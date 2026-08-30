@@ -20,7 +20,7 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `brandAccountsCreate()`
 
 ```php
-brandAccountsCreate($business_hierarchy_id, $brand_accounts_create_request): \OpenAPI\Client\Model\BrandAccountsCreate200Response
+brandAccountsCreate($business_hierarchy_id, $brand_account_create): \OpenAPI\Client\Model\BrandAccount
 ```
 
 Create a Brand Account
@@ -44,11 +44,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessRelationshipsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_hierarchy_id = 7009386637860; // string | business hierarchy node id
-$brand_accounts_create_request = new \OpenAPI\Client\Model\BrandAccountsCreateRequest(); // \OpenAPI\Client\Model\BrandAccountsCreateRequest
+$business_hierarchy_id = 'business_hierarchy_id_example'; // string | business hierarchy node id
+$brand_account_create = new \OpenAPI\Client\Model\BrandAccountCreate(); // \OpenAPI\Client\Model\BrandAccountCreate
 
 try {
-    $result = $apiInstance->brandAccountsCreate($business_hierarchy_id, $brand_accounts_create_request);
+    $result = $apiInstance->brandAccountsCreate($business_hierarchy_id, $brand_account_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessRelationshipsApi->brandAccountsCreate: ', $e->getMessage(), PHP_EOL;
@@ -60,11 +60,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_hierarchy_id** | **string**| business hierarchy node id | |
-| **brand_accounts_create_request** | [**\OpenAPI\Client\Model\BrandAccountsCreateRequest**](../Model/BrandAccountsCreateRequest.md)|  | |
+| **brand_account_create** | [**\OpenAPI\Client\Model\BrandAccountCreate**](../Model/BrandAccountCreate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BrandAccountsCreate200Response**](../Model/BrandAccountsCreate200Response.md)
+[**\OpenAPI\Client\Model\BrandAccount**](../Model/BrandAccount.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ try {
 ## `brandAccountsUpdate()`
 
 ```php
-brandAccountsUpdate($business_hierarchy_id, $brand_account_id, $brand_accounts_update_request): \OpenAPI\Client\Model\BrandAccountsCreate200Response
+brandAccountsUpdate($brand_account_id, $business_hierarchy_id, $brand_account_update): \OpenAPI\Client\Model\BrandAccount
 ```
 
 Update a Brand Account
@@ -106,12 +106,12 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessRelationshipsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_hierarchy_id = 7009386637860; // string | business hierarchy node id
-$brand_account_id = 729090764583391194; // string | Unique identifier of a brand account.
-$brand_accounts_update_request = new \OpenAPI\Client\Model\BrandAccountsUpdateRequest(); // \OpenAPI\Client\Model\BrandAccountsUpdateRequest
+$brand_account_id = 'brand_account_id_example'; // string
+$business_hierarchy_id = 'business_hierarchy_id_example'; // string | business hierarchy node id
+$brand_account_update = new \OpenAPI\Client\Model\BrandAccountUpdate(); // \OpenAPI\Client\Model\BrandAccountUpdate
 
 try {
-    $result = $apiInstance->brandAccountsUpdate($business_hierarchy_id, $brand_account_id, $brand_accounts_update_request);
+    $result = $apiInstance->brandAccountsUpdate($brand_account_id, $business_hierarchy_id, $brand_account_update);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessRelationshipsApi->brandAccountsUpdate: ', $e->getMessage(), PHP_EOL;
@@ -122,13 +122,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **brand_account_id** | **string**|  | |
 | **business_hierarchy_id** | **string**| business hierarchy node id | |
-| **brand_account_id** | **string**| Unique identifier of a brand account. | |
-| **brand_accounts_update_request** | [**\OpenAPI\Client\Model\BrandAccountsUpdateRequest**](../Model/BrandAccountsUpdateRequest.md)|  | |
+| **brand_account_update** | [**\OpenAPI\Client\Model\BrandAccountUpdate**](../Model/BrandAccountUpdate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BrandAccountsCreate200Response**](../Model/BrandAccountsCreate200Response.md)
+[**\OpenAPI\Client\Model\BrandAccount**](../Model/BrandAccount.md)
 
 ### Authorization
 
@@ -146,7 +146,7 @@ try {
 ## `deleteBusinessMembership()`
 
 ```php
-deleteBusinessMembership($business_id, $members_to_delete_body): \OpenAPI\Client\Model\DeletedMembersResponse
+deleteBusinessMembership($business_id, $delete_business_membership_body): \OpenAPI\Client\Model\DeleteBusinessMembership200Response
 ```
 
 Terminate business memberships
@@ -170,11 +170,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessRelationshipsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Business id
-$members_to_delete_body = new \OpenAPI\Client\Model\MembersToDeleteBody(); // \OpenAPI\Client\Model\MembersToDeleteBody | List of members with role to delete.
+$business_id = 'business_id_example'; // string | Business id
+$delete_business_membership_body = new \OpenAPI\Client\Model\DeleteBusinessMembershipBody(); // \OpenAPI\Client\Model\DeleteBusinessMembershipBody
 
 try {
-    $result = $apiInstance->deleteBusinessMembership($business_id, $members_to_delete_body);
+    $result = $apiInstance->deleteBusinessMembership($business_id, $delete_business_membership_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessRelationshipsApi->deleteBusinessMembership: ', $e->getMessage(), PHP_EOL;
@@ -186,11 +186,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Business id | |
-| **members_to_delete_body** | [**\OpenAPI\Client\Model\MembersToDeleteBody**](../Model/MembersToDeleteBody.md)| List of members with role to delete. | |
+| **delete_business_membership_body** | [**\OpenAPI\Client\Model\DeleteBusinessMembershipBody**](../Model/DeleteBusinessMembershipBody.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeletedMembersResponse**](../Model/DeletedMembersResponse.md)
+[**\OpenAPI\Client\Model\DeleteBusinessMembership200Response**](../Model/DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -208,7 +208,7 @@ try {
 ## `deleteBusinessPartners()`
 
 ```php
-deleteBusinessPartners($business_id, $delete_partners_request): \OpenAPI\Client\Model\DeletePartnersResponse
+deleteBusinessPartners($business_id, $delete_business_partners_delete): \OpenAPI\Client\Model\DeleteBusinessPartners
 ```
 
 Terminate business partnerships
@@ -232,11 +232,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessRelationshipsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$delete_partners_request = new \OpenAPI\Client\Model\DeletePartnersRequest(); // \OpenAPI\Client\Model\DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$delete_business_partners_delete = new \OpenAPI\Client\Model\DeleteBusinessPartnersDelete(); // \OpenAPI\Client\Model\DeleteBusinessPartnersDelete
 
 try {
-    $result = $apiInstance->deleteBusinessPartners($business_id, $delete_partners_request);
+    $result = $apiInstance->deleteBusinessPartners($business_id, $delete_business_partners_delete);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessRelationshipsApi->deleteBusinessPartners: ', $e->getMessage(), PHP_EOL;
@@ -248,11 +248,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **delete_partners_request** | [**\OpenAPI\Client\Model\DeletePartnersRequest**](../Model/DeletePartnersRequest.md)| An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. | |
+| **delete_business_partners_delete** | [**\OpenAPI\Client\Model\DeleteBusinessPartnersDelete**](../Model/DeleteBusinessPartnersDelete.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeletePartnersResponse**](../Model/DeletePartnersResponse.md)
+[**\OpenAPI\Client\Model\DeleteBusinessPartners**](../Model/DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -270,7 +270,7 @@ try {
 ## `getBusinessEmployers()`
 
 ```php
-getBusinessEmployers($page_size, $bookmark): \OpenAPI\Client\Model\GetBusinessEmployers200Response
+getBusinessEmployers($assets_summary, $bookmark, $page_size): \OpenAPI\Client\Model\GetBusinessEmployers200Response
 ```
 
 List business employers for user
@@ -294,11 +294,12 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessRelationshipsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$assets_summary = true; // bool | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->getBusinessEmployers($page_size, $bookmark);
+    $result = $apiInstance->getBusinessEmployers($assets_summary, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessRelationshipsApi->getBusinessEmployers: ', $e->getMessage(), PHP_EOL;
@@ -309,8 +310,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **assets_summary** | **bool**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -332,7 +334,7 @@ try {
 ## `getBusinessMembers()`
 
 ```php
-getBusinessMembers($business_id, $fetch_system_users, $assets_summary, $business_roles, $member_ids, $start_index, $bookmark, $page_size): \OpenAPI\Client\Model\GetBusinessMembers200Response
+getBusinessMembers($business_id, $fetch_system_users, $assets_summary, $business_roles, $member_ids, $start_index, $bookmark, $page_size): \OpenAPI\Client\Model\GetBusinessEmployers200Response
 ```
 
 Get business members
@@ -356,14 +358,14 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessRelationshipsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
 $fetch_system_users = false; // bool | Fetches system users if True. Fetches regular user employees if False.
 $assets_summary = false; // bool | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 $business_roles = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\MemberBusinessRole()); // \OpenAPI\Client\Model\MemberBusinessRole[] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
-$member_ids = 00101010101,2222220101; // string | A list of business members ids separated by comma.
+$member_ids = 'member_ids_example'; // string | A list of business members ids separated by comma.
 $start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->getBusinessMembers($business_id, $fetch_system_users, $assets_summary, $business_roles, $member_ids, $start_index, $bookmark, $page_size);
@@ -384,11 +386,11 @@ try {
 | **member_ids** | **string**| A list of business members ids separated by comma. | [optional] |
 | **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetBusinessMembers200Response**](../Model/GetBusinessMembers200Response.md)
+[**\OpenAPI\Client\Model\GetBusinessEmployers200Response**](../Model/GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -406,7 +408,7 @@ try {
 ## `getBusinessPartners()`
 
 ```php
-getBusinessPartners($business_id, $assets_summary, $partner_type, $partner_ids, $start_index, $page_size, $bookmark): \OpenAPI\Client\Model\GetBusinessPartners200Response
+getBusinessPartners($business_id, $assets_summary, $partner_type, $partner_ids, $start_index, $sort_ascending, $bookmark, $page_size): \OpenAPI\Client\Model\GetBusinessEmployers200Response
 ```
 
 Get business partners
@@ -430,16 +432,17 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessRelationshipsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
 $assets_summary = false; // bool | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-$partner_type = INTERNAL; // \OpenAPI\Client\Model\PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-$partner_ids = 00101010101,2222220101; // string | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
+$partner_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\PartnerType(); // \OpenAPI\Client\Model\PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+$partner_ids = 'partner_ids_example'; // string | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
 $start_index = 0; // int | An index to start fetching the results from. Only the results starting from this index will be returned.
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$sort_ascending = True; // bool | Sort ascending.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->getBusinessPartners($business_id, $assets_summary, $partner_type, $partner_ids, $start_index, $page_size, $bookmark);
+    $result = $apiInstance->getBusinessPartners($business_id, $assets_summary, $partner_type, $partner_ids, $start_index, $sort_ascending, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessRelationshipsApi->getBusinessPartners: ', $e->getMessage(), PHP_EOL;
@@ -452,15 +455,16 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
 | **assets_summary** | **bool**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false] |
-| **partner_type** | [**\OpenAPI\Client\Model\PartnerType**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] |
+| **partner_type** | [**\OpenAPI\Client\Model\PartnerType**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] |
 | **partner_ids** | **string**| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] |
 | **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **sort_ascending** | **bool**| Sort ascending. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetBusinessPartners200Response**](../Model/GetBusinessPartners200Response.md)
+[**\OpenAPI\Client\Model\GetBusinessEmployers200Response**](../Model/GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -478,7 +482,7 @@ try {
 ## `systemUserUpdate()`
 
 ```php
-systemUserUpdate($business_id, $system_user_id, $system_user_update_request)
+systemUserUpdate($business_id, $system_user_id, $system_user_update_with_required_body)
 ```
 
 Update a system user information.
@@ -502,12 +506,12 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessRelationshipsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$system_user_id = 729090764583391194; // string | Unique identifier of a system user.
-$system_user_update_request = new \OpenAPI\Client\Model\SystemUserUpdateRequest(); // \OpenAPI\Client\Model\SystemUserUpdateRequest
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$system_user_id = 'system_user_id_example'; // string | Unique identifier of a system user.
+$system_user_update_with_required_body = new \OpenAPI\Client\Model\SystemUserUpdateWithRequiredBody(); // \OpenAPI\Client\Model\SystemUserUpdateWithRequiredBody
 
 try {
-    $apiInstance->systemUserUpdate($business_id, $system_user_id, $system_user_update_request);
+    $apiInstance->systemUserUpdate($business_id, $system_user_id, $system_user_update_with_required_body);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessRelationshipsApi->systemUserUpdate: ', $e->getMessage(), PHP_EOL;
 }
@@ -519,7 +523,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
 | **system_user_id** | **string**| Unique identifier of a system user. | |
-| **system_user_update_request** | [**\OpenAPI\Client\Model\SystemUserUpdateRequest**](../Model/SystemUserUpdateRequest.md)|  | |
+| **system_user_update_with_required_body** | [**\OpenAPI\Client\Model\SystemUserUpdateWithRequiredBody**](../Model/SystemUserUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
@@ -541,7 +545,7 @@ void (empty response body)
 ## `updateBusinessMemberships()`
 
 ```php
-updateBusinessMemberships($business_id, $update_member_business_role_body): \OpenAPI\Client\Model\UpdateMemberResultsResponseArray
+updateBusinessMemberships($business_id, $business_membership_member): \OpenAPI\Client\Model\UpdateBusinessMembershipsResponse
 ```
 
 Update member's business role
@@ -565,11 +569,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessRelationshipsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Business id
-$update_member_business_role_body = array(new \OpenAPI\Client\Model\UpdateMemberBusinessRoleBody()); // \OpenAPI\Client\Model\UpdateMemberBusinessRoleBody[] | List of objects with the member id and the business_role.
+$business_id = 'business_id_example'; // string | Business id
+$business_membership_member = array(new \OpenAPI\Client\Model\BusinessMembershipMember()); // \OpenAPI\Client\Model\BusinessMembershipMember[]
 
 try {
-    $result = $apiInstance->updateBusinessMemberships($business_id, $update_member_business_role_body);
+    $result = $apiInstance->updateBusinessMemberships($business_id, $business_membership_member);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessRelationshipsApi->updateBusinessMemberships: ', $e->getMessage(), PHP_EOL;
@@ -581,11 +585,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Business id | |
-| **update_member_business_role_body** | [**\OpenAPI\Client\Model\UpdateMemberBusinessRoleBody[]**](../Model/UpdateMemberBusinessRoleBody.md)| List of objects with the member id and the business_role. | |
+| **business_membership_member** | [**\OpenAPI\Client\Model\BusinessMembershipMember[]**](../Model/BusinessMembershipMember.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UpdateMemberResultsResponseArray**](../Model/UpdateMemberResultsResponseArray.md)
+[**\OpenAPI\Client\Model\UpdateBusinessMembershipsResponse**](../Model/UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

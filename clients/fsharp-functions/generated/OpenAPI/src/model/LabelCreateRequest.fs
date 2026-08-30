@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.LabelCreateRequestLabelsInner
+open OpenAPI.Model.LabelCreateItem
 
 module LabelCreateRequest =
 
@@ -12,9 +12,7 @@ module LabelCreateRequest =
   [<CLIMutable>]
   type LabelCreateRequest = {
     [<JsonProperty(PropertyName = "labels")>]
-    Labels : LabelCreateRequestLabelsInner[];
-    [<JsonProperty(PropertyName = "parent_id")>]
-    ParentId : string;
+    Labels : LabelCreateItem[];
   }
 
   //#endregion

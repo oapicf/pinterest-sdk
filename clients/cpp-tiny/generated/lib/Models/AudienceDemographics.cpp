@@ -233,7 +233,7 @@ AudienceDemographics::getAges()
 }
 
 void
-AudienceDemographics::setAges(std::list <AudienceDemographicValue> ages)
+AudienceDemographics::setAges(std::list<AudienceDemographicValue> ages)
 {
 	this->ages = ages;
 }
@@ -245,7 +245,7 @@ AudienceDemographics::getCountries()
 }
 
 void
-AudienceDemographics::setCountries(std::list <AudienceDemographicValue> countries)
+AudienceDemographics::setCountries(std::list<AudienceDemographicValue> countries)
 {
 	this->countries = countries;
 }
@@ -257,7 +257,7 @@ AudienceDemographics::getDevices()
 }
 
 void
-AudienceDemographics::setDevices(std::list <AudienceDemographicValue> devices)
+AudienceDemographics::setDevices(std::list<AudienceDemographicValue> devices)
 {
 	this->devices = devices;
 }
@@ -269,7 +269,7 @@ AudienceDemographics::getGenders()
 }
 
 void
-AudienceDemographics::setGenders(std::list <AudienceDemographicValue> genders)
+AudienceDemographics::setGenders(std::list<AudienceDemographicValue> genders)
 {
 	this->genders = genders;
 }
@@ -281,7 +281,7 @@ AudienceDemographics::getMetros()
 }
 
 void
-AudienceDemographics::setMetros(std::list <AudienceDemographicValue> metros)
+AudienceDemographics::setMetros(std::list<AudienceDemographicValue> metros)
 {
 	this->metros = metros;
 }

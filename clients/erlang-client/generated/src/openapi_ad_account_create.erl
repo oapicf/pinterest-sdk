@@ -8,16 +8,19 @@
     #{ 'country' => openapi_country:openapi_country(),
        'currency' => openapi_currency:openapi_currency(),
        'name' => binary(),
-       'owner_user_id' => binary()
+       'owner_user_id' => binary(),
+       'time_zone' => binary()
      }.
 
 encode(#{ 'country' := Country,
           'currency' := Currency,
           'name' := Name,
-          'owner_user_id' := OwnerUserId
+          'owner_user_id' := OwnerUserId,
+          'time_zone' := TimeZone
         }) ->
     #{ 'country' => Country,
        'currency' => Currency,
        'name' => Name,
-       'owner_user_id' => OwnerUserId
+       'owner_user_id' => OwnerUserId,
+       'time_zone' => TimeZone
      }.

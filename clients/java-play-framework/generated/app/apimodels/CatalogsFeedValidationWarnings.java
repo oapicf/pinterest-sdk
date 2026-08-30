@@ -9,7 +9,7 @@ import javax.validation.Valid;
 /**
  * CatalogsFeedValidationWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeedValidationWarnings   {
   @JsonProperty("AD_IMAGE_0_LINK_DUPLICATED")
@@ -712,38 +712,9 @@ public class CatalogsFeedValidationWarnings   {
   
   private Integer EXPIRATION_DATE_INVALID;
 
-  /**
-   * Ingestion completed early because there are no changes to your feed since the last successful update.
-   */
-  public enum FETCHSAMESIGNATUREEnum {
-    NUMBER_1(1);
-
-    private final Integer value;
-
-    FETCHSAMESIGNATUREEnum(Integer value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FETCHSAMESIGNATUREEnum fromValue(Integer value) {
-      for (FETCHSAMESIGNATUREEnum b : FETCHSAMESIGNATUREEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("FETCH_SAME_SIGNATURE")
   
-  private FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
+  private Integer FETCH_SAME_SIGNATURE;
 
   @JsonProperty("GENDER_INVALID")
   
@@ -3860,7 +3831,7 @@ public class CatalogsFeedValidationWarnings   {
     this.EXPIRATION_DATE_INVALID = EXPIRATION_DATE_INVALID;
   }
 
-  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
     return this;
   }
@@ -3869,11 +3840,11 @@ public class CatalogsFeedValidationWarnings   {
    * Ingestion completed early because there are no changes to your feed since the last successful update.
    * @return FETCH_SAME_SIGNATURE
   **/
-  public FETCHSAMESIGNATUREEnum getFETCHSAMESIGNATURE() {
+  public Integer getFETCHSAMESIGNATURE() {
     return FETCH_SAME_SIGNATURE;
   }
 
-  public void setFETCHSAMESIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public void setFETCHSAMESIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
   }
 
@@ -4926,10 +4897,7 @@ public class CatalogsFeedValidationWarnings   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

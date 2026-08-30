@@ -1,0 +1,80 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ScheduleAction = openapi_server.resourceTypes.ScheduleAction
+  ScheduleCommonDeltaValue = openapi_server.resourceTypes.ScheduleCommonDeltaValue
+  ScheduleStatus = openapi_server.resourceTypes.ScheduleStatus
+  ScheduleType = openapi_server.resourceTypes.ScheduleType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  ScheduleCreateRequest {
+    title = ScheduleCreateRequest
+    description = ScheduleCreateRequest
+    derivedFrom = Root
+    properties {
+        entity_id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        entity_type {
+          type =  string
+          description = "Entity type"
+          optional = true
+        }
+        delta_value {
+          type = ScheduleCommonDeltaValue
+          description = ""
+          optional = true
+        }
+        end_timestamp {
+          type =  integer
+          description = "Schedule end time. Unix timestamp in seconds."
+          optional = true
+        }
+        name {
+          type =  string
+          description = ""
+          optional = true
+        }
+        schedule_action {
+          type = ScheduleAction
+          description = ""
+          optional = true
+        }
+        schedule_status {
+          type = ScheduleStatus
+          description = ""
+          optional = true
+        }
+        schedule_type {
+          type = ScheduleType
+          description = ""
+          optional = true
+        }
+        start_timestamp {
+          type =  integer
+          description = "Schedule start time. Unix timestamp in seconds."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleCreateRequest {
+    title = ScheduleCreateRequest
+    description = ScheduleCreateRequest
+    implements = openapi_server.resourceTypes.ScheduleCreateRequest
+
+  }
+}

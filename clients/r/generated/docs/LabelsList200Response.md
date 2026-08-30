@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[LabelsResponse]**](LabelsResponse.md) |  | 
+**items** | [**array[Label]**](Label.md) |  | 
 
 

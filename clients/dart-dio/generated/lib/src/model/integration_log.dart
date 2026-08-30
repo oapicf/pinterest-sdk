@@ -3,9 +3,10 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/integration_log_level.dart';
+import 'package:openapi/src/model/integration_log_event_type.dart';
 import 'package:openapi/src/model/integration_log_client_request.dart';
 import 'package:openapi/src/model/integration_log_client_error.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -45,7 +46,7 @@ abstract class IntegrationLog implements Built<IntegrationLog, IntegrationLogBui
 
   /// Log event type
   @BuiltValueField(wireName: r'event_type')
-  IntegrationLogEventTypeEnum get eventType;
+  IntegrationLogEventType get eventType;
   // enum eventTypeEnum {  APP,  API,  };
 
   @BuiltValueField(wireName: r'external_business_id')
@@ -56,7 +57,7 @@ abstract class IntegrationLog implements Built<IntegrationLog, IntegrationLogBui
 
   /// Log level type
   @BuiltValueField(wireName: r'log_level')
-  IntegrationLogLogLevelEnum get logLevel;
+  IntegrationLogLevel get logLevel;
   // enum logLevelEnum {  INFO,  WARN,  ERROR,  };
 
   @BuiltValueField(wireName: r'merchant_id')
@@ -128,7 +129,7 @@ class _$IntegrationLogSerializer implements PrimitiveSerializer<IntegrationLog> 
     yield r'event_type';
     yield serializers.serialize(
       object.eventType,
-      specifiedType: const FullType(IntegrationLogEventTypeEnum),
+      specifiedType: const FullType(IntegrationLogEventType),
     );
     if (object.externalBusinessId != null) {
       yield r'external_business_id';
@@ -147,7 +148,7 @@ class _$IntegrationLogSerializer implements PrimitiveSerializer<IntegrationLog> 
     yield r'log_level';
     yield serializers.serialize(
       object.logLevel,
-      specifiedType: const FullType(IntegrationLogLogLevelEnum),
+      specifiedType: const FullType(IntegrationLogLevel),
     );
     if (object.merchantId != null) {
       yield r'merchant_id';
@@ -218,8 +219,9 @@ class _$IntegrationLogSerializer implements PrimitiveSerializer<IntegrationLog> 
         case r'app_version_number':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.appVersionNumber = valueDes;
           break;
         case r'client_timestamp':
@@ -232,15 +234,16 @@ class _$IntegrationLogSerializer implements PrimitiveSerializer<IntegrationLog> 
         case r'error':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(IntegrationLogClientError),
-          ) as IntegrationLogClientError;
+            specifiedType: const FullType.nullable(IntegrationLogClientError),
+          ) as IntegrationLogClientError?;
+          if (valueDes == null) continue;
           result.error.replace(valueDes);
           break;
         case r'event_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(IntegrationLogEventTypeEnum),
-          ) as IntegrationLogEventTypeEnum;
+            specifiedType: const FullType(IntegrationLogEventType),
+          ) as IntegrationLogEventType;
           result.eventType = valueDes;
           break;
         case r'external_business_id':
@@ -262,8 +265,8 @@ class _$IntegrationLogSerializer implements PrimitiveSerializer<IntegrationLog> 
         case r'log_level':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(IntegrationLogLogLevelEnum),
-          ) as IntegrationLogLogLevelEnum;
+            specifiedType: const FullType(IntegrationLogLevel),
+          ) as IntegrationLogLevel;
           result.logLevel = valueDes;
           break;
         case r'merchant_id':
@@ -277,22 +280,25 @@ class _$IntegrationLogSerializer implements PrimitiveSerializer<IntegrationLog> 
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.message = valueDes;
           break;
         case r'platform_version_number':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.platformVersionNumber = valueDes;
           break;
         case r'request':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(IntegrationLogClientRequest),
-          ) as IntegrationLogClientRequest;
+            specifiedType: const FullType.nullable(IntegrationLogClientRequest),
+          ) as IntegrationLogClientRequest?;
+          if (valueDes == null) continue;
           result.request.replace(valueDes);
           break;
         case r'tag_id':
@@ -330,42 +336,5 @@ class _$IntegrationLogSerializer implements PrimitiveSerializer<IntegrationLog> 
     );
     return result.build();
   }
-}
-
-class IntegrationLogEventTypeEnum extends EnumClass {
-
-  /// Log event type
-  @BuiltValueEnumConst(wireName: r'APP')
-  static const IntegrationLogEventTypeEnum APP = _$integrationLogEventTypeEnum_APP;
-  /// Log event type
-  @BuiltValueEnumConst(wireName: r'API')
-  static const IntegrationLogEventTypeEnum API = _$integrationLogEventTypeEnum_API;
-
-  static Serializer<IntegrationLogEventTypeEnum> get serializer => _$integrationLogEventTypeEnumSerializer;
-
-  const IntegrationLogEventTypeEnum._(String name): super(name);
-
-  static BuiltSet<IntegrationLogEventTypeEnum> get values => _$integrationLogEventTypeEnumValues;
-  static IntegrationLogEventTypeEnum valueOf(String name) => _$integrationLogEventTypeEnumValueOf(name);
-}
-
-class IntegrationLogLogLevelEnum extends EnumClass {
-
-  /// Log level type
-  @BuiltValueEnumConst(wireName: r'INFO')
-  static const IntegrationLogLogLevelEnum INFO = _$integrationLogLogLevelEnum_INFO;
-  /// Log level type
-  @BuiltValueEnumConst(wireName: r'WARN')
-  static const IntegrationLogLogLevelEnum WARN = _$integrationLogLogLevelEnum_WARN;
-  /// Log level type
-  @BuiltValueEnumConst(wireName: r'ERROR')
-  static const IntegrationLogLogLevelEnum ERROR = _$integrationLogLogLevelEnum_ERROR;
-
-  static Serializer<IntegrationLogLogLevelEnum> get serializer => _$integrationLogLogLevelEnumSerializer;
-
-  const IntegrationLogLogLevelEnum._(String name): super(name);
-
-  static BuiltSet<IntegrationLogLogLevelEnum> get values => _$integrationLogLogLevelEnumValues;
-  static IntegrationLogLogLevelEnum valueOf(String name) => _$integrationLogLogLevelEnumValueOf(name);
 }
 

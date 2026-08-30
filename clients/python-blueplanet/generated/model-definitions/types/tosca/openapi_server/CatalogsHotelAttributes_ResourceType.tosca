@@ -7,9 +7,10 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  CatalogsAiContentDisclosure = openapi_server.resourceTypes.CatalogsAiContentDisclosure
   CatalogsHotelAddress = openapi_server.resourceTypes.CatalogsHotelAddress
-  CatalogsHotelAttributesAllOfMainImage = openapi_server.resourceTypes.CatalogsHotelAttributesAllOfMainImage
   CatalogsHotelGuestRatings = openapi_server.resourceTypes.CatalogsHotelGuestRatings
+  CatalogsHotelMainImage = openapi_server.resourceTypes.CatalogsHotelMainImage
 }
 resourceTypes {
 
@@ -20,7 +21,7 @@ resourceTypes {
     properties {
         address {
           type = CatalogsHotelAddress
-          description = ""
+          description = "Hotel address"
           optional = false
         }
         base_price {
@@ -70,7 +71,7 @@ resourceTypes {
         }
         guest_ratings {
           type = CatalogsHotelGuestRatings
-          description = ""
+          description = "If specified, you must provide all properties"
           optional = false
         }
         latitude {
@@ -107,12 +108,18 @@ resourceTypes {
         additional_image_link {
           type = array
           items.type =  string
-          description = "&lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.&lt;/p&gt;"
+          description = "&lt;&#x3D; 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://."
+          optional = false
+        }
+        ai_disclosures {
+          type = array
+          items.type = CatalogsAiContentDisclosure
+          description = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL."
           optional = false
         }
         main_image {
-          type = CatalogsHotelAttributesAllOfMainImage
-          description = ""
+          type = CatalogsHotelMainImage
+          description = "The main hotel image"
           optional = false
         }
     }

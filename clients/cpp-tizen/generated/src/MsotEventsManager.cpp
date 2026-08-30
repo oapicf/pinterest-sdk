@@ -82,7 +82,7 @@ static bool msotEventsCreateProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool msotEventsCreateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ConversionMSOTEvents> conversionMSOTEvents, 
+	std::string adAccountId, std::shared_ptr<ConversionMSOTEventsCreate> conversionMSOTEventsCreate, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -103,11 +103,11 @@ static bool msotEventsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("ConversionMSOTEvents")) {
-		node = converttoJson(&conversionMSOTEvents, "ConversionMSOTEvents", "");
+	if (isprimitive("ConversionMSOTEventsCreate")) {
+		node = converttoJson(&conversionMSOTEventsCreate, "ConversionMSOTEventsCreate", "");
 	}
 	
-	char *jsonStr =  conversionMSOTEvents.toJson();
+	char *jsonStr =  conversionMSOTEventsCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -172,22 +172,22 @@ static bool msotEventsCreateHelper(char * accessToken,
 
 
 bool MsotEventsManager::msotEventsCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ConversionMSOTEvents> conversionMSOTEvents, 
+	std::string adAccountId, std::shared_ptr<ConversionMSOTEventsCreate> conversionMSOTEventsCreate, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return msotEventsCreateHelper(accessToken,
-	adAccountId, conversionMSOTEvents, 
+	adAccountId, conversionMSOTEventsCreate, 
 	handler, userData, true);
 }
 
 bool MsotEventsManager::msotEventsCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ConversionMSOTEvents> conversionMSOTEvents, 
+	std::string adAccountId, std::shared_ptr<ConversionMSOTEventsCreate> conversionMSOTEventsCreate, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return msotEventsCreateHelper(accessToken,
-	adAccountId, conversionMSOTEvents, 
+	adAccountId, conversionMSOTEventsCreate, 
 	handler, userData, false);
 }
 

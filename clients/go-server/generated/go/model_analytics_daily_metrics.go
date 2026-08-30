@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -21,11 +21,11 @@ type AnalyticsDailyMetrics struct {
 	// Metrics date (UTC): YYYY-MM-DD.
 	Date string `json:"date,omitempty"`
 
-	// The metric name and daily value for each requested metric
 	Metrics map[string]float32 `json:"metrics,omitempty"`
 }
 
-// AssertAnalyticsDailyMetricsRequired checks if the required fields are not zero-ed
+// AssertAnalyticsDailyMetricsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAnalyticsDailyMetricsRequired(obj AnalyticsDailyMetrics) error {
 	return nil
 }

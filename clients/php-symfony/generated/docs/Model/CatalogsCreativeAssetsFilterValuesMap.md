@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **googleProductCategory4** | **string** |  | [optional] 
 **googleProductCategory5** | **string** |  | [optional] 
 **googleProductCategory6** | **string** |  | [optional] 
-**mediaType** | **string** |  | [optional] 
+**mediaType** | [**OpenAPI\Server\Model\MediaType**](MediaType.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

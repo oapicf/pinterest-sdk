@@ -9,14 +9,14 @@ use WWW::OpenAPIClient::Object::IntegrationRecord;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additional_id_1** | **string** |  | [optional] 
-**connected_advertiser_id** | **string** |  | [optional] [readonly] 
+**connected_advertiser_id** | **string** |  | [optional] 
 **connected_lba_id** | **string** |  | [optional] 
 **connected_merchant_id** | **string** |  | [optional] 
 **connected_tag_id** | **string** |  | [optional] 
-**connected_user_id** | **string** |  | [optional] [readonly] 
+**connected_user_id** | **string** |  | [optional] 
 **created_time** | **int** |  | [optional] 
 **external_business_id** | **string** |  | [optional] 
-**id** | **string** |  | [optional] 
+**id** | **string** | Integration record ID. | [readonly] 
 **partner_access_token** | **string** |  | [optional] 
 **partner_access_token_expiry** | **int** |  | [optional] 
 **partner_metadata** | **string** |  | [optional] 

@@ -1,4 +1,4 @@
-goog.provide('API.Client.catalogs_hotel_filter_values_map');
+goog.provide('API.Client.CatalogsHotelFilterValuesMap');
 
 /**
  * A map of filter attributes to their available values.

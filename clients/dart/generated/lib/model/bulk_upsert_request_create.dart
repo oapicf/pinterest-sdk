@@ -20,6 +20,7 @@ class BulkUpsertRequestCreate {
     this.keywords = const [],
     this.labels = const [],
     this.productGroups = const [],
+    this.schedules = const [],
   });
 
   List<AdGroupCreateRequest> adGroups;
@@ -28,13 +29,15 @@ class BulkUpsertRequestCreate {
 
   List<CampaignCreateRequest> campaigns;
 
-  List<MultipleProductGroupsInner> catalogProductGroups;
+  List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups;
 
   List<KeywordsRequest> keywords;
 
-  List<LabelCreateRequest> labels;
+  List<LabelBulkCreateRequest> labels;
 
   List<ProductGroupPromotionCreateRequest> productGroups;
+
+  List<ScheduleCreateRequest> schedules;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BulkUpsertRequestCreate &&
@@ -44,7 +47,8 @@ class BulkUpsertRequestCreate {
     _deepEquality.equals(other.catalogProductGroups, catalogProductGroups) &&
     _deepEquality.equals(other.keywords, keywords) &&
     _deepEquality.equals(other.labels, labels) &&
-    _deepEquality.equals(other.productGroups, productGroups);
+    _deepEquality.equals(other.productGroups, productGroups) &&
+    _deepEquality.equals(other.schedules, schedules);
 
   @override
   int get hashCode =>
@@ -55,10 +59,11 @@ class BulkUpsertRequestCreate {
     (catalogProductGroups.hashCode) +
     (keywords.hashCode) +
     (labels.hashCode) +
-    (productGroups.hashCode);
+    (productGroups.hashCode) +
+    (schedules.hashCode);
 
   @override
-  String toString() => 'BulkUpsertRequestCreate[adGroups=$adGroups, ads=$ads, campaigns=$campaigns, catalogProductGroups=$catalogProductGroups, keywords=$keywords, labels=$labels, productGroups=$productGroups]';
+  String toString() => 'BulkUpsertRequestCreate[adGroups=$adGroups, ads=$ads, campaigns=$campaigns, catalogProductGroups=$catalogProductGroups, keywords=$keywords, labels=$labels, productGroups=$productGroups, schedules=$schedules]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -69,6 +74,7 @@ class BulkUpsertRequestCreate {
       json[r'keywords'] = this.keywords;
       json[r'labels'] = this.labels;
       json[r'product_groups'] = this.productGroups;
+      json[r'schedules'] = this.schedules;
     return json;
   }
 
@@ -83,10 +89,6 @@ class BulkUpsertRequestCreate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BulkUpsertRequestCreate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BulkUpsertRequestCreate[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -94,10 +96,11 @@ class BulkUpsertRequestCreate {
         adGroups: AdGroupCreateRequest.listFromJson(json[r'ad_groups']),
         ads: AdCreateRequest.listFromJson(json[r'ads']),
         campaigns: CampaignCreateRequest.listFromJson(json[r'campaigns']),
-        catalogProductGroups: MultipleProductGroupsInner.listFromJson(json[r'catalog_product_groups']),
+        catalogProductGroups: BulkUpsertRequestCreateCatalogProductGroupsItems.listFromJson(json[r'catalog_product_groups']),
         keywords: KeywordsRequest.listFromJson(json[r'keywords']),
-        labels: LabelCreateRequest.listFromJson(json[r'labels']),
+        labels: LabelBulkCreateRequest.listFromJson(json[r'labels']),
         productGroups: ProductGroupPromotionCreateRequest.listFromJson(json[r'product_groups']),
+        schedules: ScheduleCreateRequest.listFromJson(json[r'schedules']),
       );
     }
     return null;

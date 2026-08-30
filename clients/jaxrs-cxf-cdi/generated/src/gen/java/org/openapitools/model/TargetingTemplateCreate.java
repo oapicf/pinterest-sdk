@@ -9,18 +9,21 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.PlacementGroupType;
-import org.openapitools.model.TargetingSpec;
+import org.openapitools.model.TargetingSpecOptimal;
 import org.openapitools.model.TargetingTemplateKeyword;
 import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+/**
+ * Resource create operation model.
+ **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-
+@ApiModel(description = "Resource create operation model.")
 public class TargetingTemplateCreate   {
   
   private Boolean autoTargetingEnabled = true;
@@ -31,12 +34,12 @@ public class TargetingTemplateCreate   {
 
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
-  private TargetingSpec targetingAttributes;
+  private TargetingSpecOptimal targetingAttributes;
 
   private TrackingUrls trackingUrls;
 
   /**
-   * Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
+   * Enable auto-targeting for ad group. Also known as [\&quot;expanded targeting\&quot;](https://help.pinterest.com/en/business/article/expanded-targeting).
    **/
   public TargetingTemplateCreate autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
@@ -44,7 +47,7 @@ public class TargetingTemplateCreate   {
   }
 
   
-  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).")
   @JsonProperty("auto_targeting_enabled")
   public Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
@@ -62,7 +65,7 @@ public class TargetingTemplateCreate   {
   }
 
   
-  @ApiModelProperty(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("keywords")
   public List<@Valid TargetingTemplateKeyword> getKeywords() {
     return keywords;
@@ -81,7 +84,7 @@ public class TargetingTemplateCreate   {
 
 
   /**
-   * Name of targeting template.
+   * targeting template name
    **/
   public TargetingTemplateCreate name(String name) {
     this.name = name;
@@ -89,7 +92,7 @@ public class TargetingTemplateCreate   {
   }
 
   
-  @ApiModelProperty(example = "Gaming", required = true, value = "Name of targeting template.")
+  @ApiModelProperty(required = true, value = "targeting template name")
   @JsonProperty("name")
   @NotNull
   public String getName() {
@@ -119,20 +122,21 @@ public class TargetingTemplateCreate   {
 
 
   /**
+   * targeting profile attributes
    **/
-  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateCreate targetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "targeting profile attributes")
   @JsonProperty("targeting_attributes")
   @NotNull
-  public TargetingSpec getTargetingAttributes() {
+  public TargetingSpecOptimal getTargetingAttributes() {
     return targetingAttributes;
   }
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
@@ -198,10 +202,7 @@ public class TargetingTemplateCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -198,6 +198,7 @@ public class IntegrationRecord   {
 
 
   /**
+   * Integration record ID.
    **/
   public IntegrationRecord id(String id) {
     this.id = id;
@@ -205,8 +206,9 @@ public class IntegrationRecord   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Integration record ID.")
   @JsonProperty("id")
+  @NotNull
  @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
@@ -424,10 +426,7 @@ public class IntegrationRecord   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Type of user conversion event.",
+  "name": "MsotEventName",
+  "symbols": [
+    "add_to_cart",
+    "checkout",
+    "lead",
+    "signup"
+  ]
+}

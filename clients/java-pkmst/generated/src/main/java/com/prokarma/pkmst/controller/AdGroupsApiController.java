@@ -1,22 +1,31 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.AdGroupArrayResponse;
-import com.prokarma.pkmst.model.AdGroupAudienceSizingRequest;
-import com.prokarma.pkmst.model.AdGroupAudienceSizingResponse;
-import com.prokarma.pkmst.model.AdGroupCreateRequest;
-import com.prokarma.pkmst.model.AdGroupResponse;
-import com.prokarma.pkmst.model.AdGroupUpdateRequest;
-import com.prokarma.pkmst.model.AdGroupsAnalyticsResponseInner;
+import com.prokarma.pkmst.model.AdGroup;
+import com.prokarma.pkmst.model.AdGroupAudienceSizing;
+import com.prokarma.pkmst.model.AdGroupAudienceSizingCreate;
+import com.prokarma.pkmst.model.AdGroupCreateCreate;
+import com.prokarma.pkmst.model.AdGroupUpdateBatchUpdate;
+import com.prokarma.pkmst.model.AdGroupsAnalyticsMetrics;
+import com.prokarma.pkmst.model.AdGroupsCreate200Response;
 import com.prokarma.pkmst.model.AdGroupsList200Response;
 import com.prokarma.pkmst.model.AdsAnalyticsAdGroupTargetingType;
 import com.prokarma.pkmst.model.BidFloor;
-import com.prokarma.pkmst.model.BidFloorRequest;
+import com.prokarma.pkmst.model.BidFloorCreate;
+import java.math.BigDecimal;
 import com.prokarma.pkmst.model.ConversionReportAttributionType;
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.DynamicTitlesDownloadCSV;
+import com.prokarma.pkmst.model.DynamicTitlesGetStatus;
+import com.prokarma.pkmst.model.DynamicTitlesProcessCSV;
+import com.prokarma.pkmst.model.DynamicTitlesProcessCSVCreate;
+import com.prokarma.pkmst.model.DynamicTitlesUploadURL;
+import com.prokarma.pkmst.model.EntityStatus;
 import com.prokarma.pkmst.model.Granularity;
 import java.util.List;
 import java.time.LocalDate;
 import com.prokarma.pkmst.model.MetricsResponse;
+import com.prokarma.pkmst.model.PinterestLibError;
+import com.prokarma.pkmst.model.PinterestLibPaginationOrder;
+import com.prokarma.pkmst.model.ReportingColumnSync;
 import com.prokarma.pkmst.model.ReportingTimeZone;
 
 import io.swagger.annotations.*;
@@ -40,7 +49,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class AdGroupsApiController implements AdGroupsApi {
     private final ObjectMapper objectMapper;
@@ -49,15 +58,15 @@ public class AdGroupsApiController implements AdGroupsApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<List<AdGroupsAnalyticsResponseInner>> adGroupsAnalytics(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true)  @RequestParam(value = "start_date", required = true) LocalDate startDate,
+    public ResponseEntity<List<AdGroupsAnalyticsMetrics>> adGroupsAnalytics(@ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true)  @RequestParam(value = "start_date", required = true) LocalDate startDate,
         @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true)  @RequestParam(value = "end_date", required = true) LocalDate endDate,
         @ApiParam(value = "List of Ad group Ids to use to filter the results.", required = true)  @RequestParam(value = "ad_group_ids", required = true) List<String> adGroupIds,
-        @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, allowableValues = "SPEND_IN_MICRO_DOLLAR, PAID_IMPRESSION, SPEND_IN_DOLLAR, CPC_IN_MICRO_DOLLAR, ECPC_IN_MICRO_DOLLAR, ECPC_IN_DOLLAR, CTR, ECTR, OUTBOUND_CTR_1, CAMPAIGN_NAME, CAMPAIGN_BRAND_LABEL, PIN_ID, TOTAL_ENGAGEMENT, ENGAGEMENT_1, ENGAGEMENT_2, ECPE_IN_DOLLAR, ENGAGEMENT_RATE, EENGAGEMENT_RATE, ECPM_IN_MICRO_DOLLAR, REPIN_RATE, CTR_2, CAMPAIGN_ID, ADVERTISER_ID, AD_ACCOUNT_ID, PIN_PROMOTION_ID, AD_ID, AD_GROUP_ID, CAMPAIGN_ENTITY_STATUS, CAMPAIGN_OBJECTIVE_TYPE, CPM_IN_MICRO_DOLLAR, CPM_IN_DOLLAR, AD_GROUP_NAME, AD_GROUP_BUDGET_TYPE, AD_GROUP_BUDGET_IN_LOCAL_CURRENCY, AD_GROUP_ENTITY_STATUS, AD_GROUP_BID_MULTIPLIER, PROMO_ID, PROMO_NAME, ORDER_LINE_ID, ORDER_LINE_NAME, CLICKTHROUGH_1, REPIN_1, IMPRESSION_1, IMPRESSION_1_GROSS, CLICKTHROUGH_1_GROSS, OUTBOUND_CLICK_1, CLICKTHROUGH_2, REPIN_2, IMPRESSION_2, OUTBOUND_CLICK_2, TOTAL_CLICKTHROUGH, TOTAL_IMPRESSION, TOTAL_IMPRESSION_USER, TOTAL_IMPRESSION_FREQUENCY, COST_PER_OUTBOUND_CLICK_IN_DOLLAR, COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1, TOTAL_ENGAGEMENT_SIGNUP, TOTAL_ENGAGEMENT_CHECKOUT, TOTAL_ENGAGEMENT_LEAD, TOTAL_CLICK_SIGNUP, TOTAL_CLICK_CHECKOUT, TOTAL_CLICK_ADD_TO_CART, TOTAL_CLICK_LEAD, TOTAL_VIEW_SIGNUP, TOTAL_VIEW_CHECKOUT, TOTAL_VIEW_ADD_TO_CART, TOTAL_VIEW_LEAD, TOTAL_CONVERSIONS, TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_SESSIONS, WEB_SESSIONS_1, WEB_SESSIONS_2, AD_NAME, CAMPAIGN_LIFETIME_SPEND_CAP, AD_GROUP_OPTIMIZATION, CAMPAIGN_DAILY_SPEND_CAP, CAMPAIGN_BUDGET_OPTIMIZATION, IS_PREMIERE_CAMPAIGN, TOTAL_PAGE_VISIT, TOTAL_SIGNUP, TOTAL_CHECKOUT, TOTAL_CUSTOM, TOTAL_LEAD, TOTAL_ADD_TO_WISHLIST, TOTAL_SUBSCRIBE, TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR, PAGE_VISIT_COST_PER_ACTION, PAGE_VISIT_ROAS, CHECKOUT_ROAS, CUSTOM_ROAS, PRODUCT_GROUP_AD_IMAGE_TAG, PRODUCT_GROUP_AD_VIDEO_TAG, VIDEO_3SEC_VIEWS_1, VIDEO_15SEC_UNIQUE_VIEWS_1, VIDEO_MRC_VIEWS_1, VIDEO_3SEC_VIEWS_2, VIDEO_15SEC_UNIQUE_VIEWS_2, VIDEO_P100_COMPLETE_2, VIDEO_P0_COMBINED_2, VIDEO_P25_COMBINED_2, VIDEO_P50_COMBINED_2, VIDEO_P75_COMBINED_2, VIDEO_P95_COMBINED_2, VIDEO_MRC_VIEWS_2, PAID_VIDEO_VIEWABLE_RATE, VIDEO_LENGTH, VIDEO_SPEND_IN_DOLLAR, ECPV_IN_DOLLAR, ECPCV_IN_DOLLAR, ECPCV_P95_IN_DOLLAR, TOTAL_VIDEO_3SEC_VIEWS, TOTAL_VIDEO_15SEC_UNIQUE_VIEWS, TOTAL_VIDEO_P100_COMPLETE, TOTAL_VIDEO_P0_COMBINED, TOTAL_VIDEO_P25_COMBINED, TOTAL_VIDEO_P50_COMBINED, TOTAL_VIDEO_P75_COMBINED, TOTAL_VIDEO_P95_COMBINED, TOTAL_VIDEO_MRC_VIEWS, TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND, TOTAL_REPIN_RATE, WEB_CHECKOUT_COST_PER_ACTION, WEB_CHECKOUT_ROAS, TOTAL_WEB_CHECKOUT, TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_CLICK_CHECKOUT, TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_ENGAGEMENT_CHECKOUT, TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_VIEW_CHECKOUT, TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR, INAPP_CHECKOUT_COST_PER_ACTION, TOTAL_OFFLINE_CHECKOUT, TOTAL_APP_INSTALL_CONVERSION_RATE, TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE, IDEA_PIN_PRODUCT_TAG_VISIT_1, IDEA_PIN_PRODUCT_TAG_VISIT_2, TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT, LEADS, COST_PER_LEAD, QUIZ_COMPLETED, QUIZ_PIN_RESULT_OPEN, QUIZ_COMPLETION_RATE, SHOWCASE_PIN_CLICKTHROUGH, SHOWCASE_SUBPAGE_CLICKTHROUGH, SHOWCASE_SUBPIN_CLICKTHROUGH, SHOWCASE_SUBPAGE_IMPRESSION, SHOWCASE_SUBPIN_IMPRESSION, SHOWCASE_SUBPAGE_SWIPE_LEFT, SHOWCASE_SUBPAGE_SWIPE_RIGHT, SHOWCASE_SUBPIN_SWIPE_LEFT, SHOWCASE_SUBPIN_SWIPE_RIGHT, SHOWCASE_SUBPAGE_REPIN, SHOWCASE_SUBPIN_REPIN, SHOWCASE_SUBPAGE_CLOSEUP, SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD, SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD, SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION, TOTAL_CHECKOUT_CONVERSION_RATE, TOTAL_VIEW_CATEGORY_CONVERSION_RATE, TOTAL_ADD_TO_CART_CONVERSION_RATE, TOTAL_SIGNUP_CONVERSION_RATE, TOTAL_PAGE_VISIT_CONVERSION_RATE, TOTAL_LEAD_CONVERSION_RATE, TOTAL_SEARCH_CONVERSION_RATE, TOTAL_WATCH_VIDEO_CONVERSION_RATE, TOTAL_UNKNOWN_CONVERSION_RATE, TOTAL_CUSTOM_CONVERSION_RATE")  @RequestParam(value = "columns", required = true) List<String> columns,
-        @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, allowableValues = "TOTAL, DAY, HOUR, WEEK, MONTH")  @RequestParam(value = "granularity", required = true) Granularity granularity,
-        @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "30")  @RequestParam(value = "click_window_days", required = false, defaultValue="30") Integer clickWindowDays,
-        @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "30")  @RequestParam(value = "engagement_window_days", required = false, defaultValue="30") Integer engagementWindowDays,
-        @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "1")  @RequestParam(value = "view_window_days", required = false, defaultValue="1") Integer viewWindowDays,
+        @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.", required = true)  @RequestParam(value = "columns", required = true) List<ReportingColumnSync> columns,
+        @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly", required = true, allowableValues = "TOTAL, DAY, HOUR, WEEK, MONTH")  @RequestParam(value = "granularity", required = true) Granularity granularity,
+        @ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "30")  @RequestParam(value = "click_window_days", required = false, defaultValue="30") BigDecimal clickWindowDays,
+        @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "30")  @RequestParam(value = "engagement_window_days", required = false, defaultValue="30") BigDecimal engagementWindowDays,
+        @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "1")  @RequestParam(value = "view_window_days", required = false, defaultValue="1") BigDecimal viewWindowDays,
         @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues = "TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue = "TIME_OF_AD_ACTION")  @RequestParam(value = "conversion_report_time", required = false, defaultValue="TIME_OF_AD_ACTION") String conversionReportTime,
         @ApiParam(value = "Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.", defaultValue = "false")  @RequestParam(value = "aggregate_report_rows", required = false, defaultValue="false") Boolean aggregateReportRows,
         @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues = "PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @RequestParam(value = "reporting_timezone", required = false) ReportingTimeZone reportingTimezone,
@@ -65,53 +74,123 @@ public class AdGroupsApiController implements AdGroupsApi {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<List<AdGroupsAnalyticsResponseInner>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+            return new ResponseEntity<List<AdGroupsAnalyticsMetrics>>(objectMapper.readValue("", List.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<List<AdGroupsAnalyticsResponseInner>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+            return new ResponseEntity<List<AdGroupsAnalyticsMetrics>>(objectMapper.readValue("", List.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<List<AdGroupsAnalyticsResponseInner>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+            return new ResponseEntity<List<AdGroupsAnalyticsMetrics>>(objectMapper.readValue("", List.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<List<AdGroupsAnalyticsResponseInner>>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<List<AdGroupsAnalyticsMetrics>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<List<AdGroupsAnalyticsMetrics>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<List<AdGroupsAnalyticsMetrics>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<List<AdGroupsAnalyticsMetrics>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<List<AdGroupsAnalyticsMetrics>>(HttpStatus.OK);
     }
 
-    public ResponseEntity<AdGroupAudienceSizingResponse> adGroupsAudienceSizing(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "" ,required=true )   @RequestBody AdGroupAudienceSizingRequest adGroupAudienceSizingRequest,
+    public ResponseEntity<AdGroupAudienceSizing> adGroupsAudienceSizing(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "" ,required=true )   @RequestBody AdGroupAudienceSizingCreate adGroupAudienceSizingCreate,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupAudienceSizingResponse>(objectMapper.readValue("", AdGroupAudienceSizingResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdGroupAudienceSizing>(objectMapper.readValue("", AdGroupAudienceSizing.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupAudienceSizingResponse>(objectMapper.readValue("", AdGroupAudienceSizingResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdGroupAudienceSizing>(objectMapper.readValue("", AdGroupAudienceSizing.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupAudienceSizingResponse>(objectMapper.readValue("", AdGroupAudienceSizingResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdGroupAudienceSizing>(objectMapper.readValue("", AdGroupAudienceSizing.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupAudienceSizingResponse>(objectMapper.readValue("", AdGroupAudienceSizingResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdGroupAudienceSizing>(objectMapper.readValue("", AdGroupAudienceSizing.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<AdGroupAudienceSizingResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupAudienceSizing>(objectMapper.readValue("", AdGroupAudienceSizing.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupAudienceSizing>(objectMapper.readValue("", AdGroupAudienceSizing.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupAudienceSizing>(objectMapper.readValue("", AdGroupAudienceSizing.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupAudienceSizing>(objectMapper.readValue("", AdGroupAudienceSizing.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AdGroupAudienceSizing>(HttpStatus.OK);
     }
 
     public ResponseEntity<BidFloor> adGroupsBidFloorGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Parameters to get bid_floor info" ,required=true )   @RequestBody BidFloorRequest bidFloorRequest,
+        @ApiParam(value = "" ,required=true )   @RequestBody BidFloorCreate bidFloorCreate,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BidFloor>(objectMapper.readValue("", BidFloor.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BidFloor>(objectMapper.readValue("", BidFloor.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BidFloor>(objectMapper.readValue("", BidFloor.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BidFloor>(objectMapper.readValue("", BidFloor.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BidFloor>(objectMapper.readValue("", BidFloor.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BidFloor>(objectMapper.readValue("", BidFloor.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<BidFloor>(objectMapper.readValue("", BidFloor.class), HttpStatus.OK);
@@ -125,50 +204,294 @@ public class AdGroupsApiController implements AdGroupsApi {
         return new ResponseEntity<BidFloor>(HttpStatus.OK);
     }
 
-    public ResponseEntity<AdGroupArrayResponse> adGroupsCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "List of ad groups to create, size limit [1, 30]." ,required=true )   @RequestBody List<AdGroupCreateRequest> adGroupCreateRequest,
+    public ResponseEntity<AdGroupsCreate200Response> adGroupsCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "" ,required=true )   @RequestBody List<AdGroupCreateCreate> adGroupCreateCreate,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupArrayResponse>(objectMapper.readValue("", AdGroupArrayResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupArrayResponse>(objectMapper.readValue("", AdGroupArrayResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<AdGroupArrayResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AdGroupsCreate200Response>(HttpStatus.OK);
     }
 
-    public ResponseEntity<AdGroupResponse> adGroupsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Unique identifier of an ad group.",required=true ) @PathVariable("ad_group_id") String adGroupId,
+    public ResponseEntity<DynamicTitlesDownloadCSV> adGroupsDynamicTitlesDownloadCsv(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Ad group ID.",required=true ) @PathVariable("ad_group_id") String adGroupId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupResponse>(objectMapper.readValue("", AdGroupResponse.class), HttpStatus.OK);
+            return new ResponseEntity<DynamicTitlesDownloadCSV>(objectMapper.readValue("", DynamicTitlesDownloadCSV.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupResponse>(objectMapper.readValue("", AdGroupResponse.class), HttpStatus.OK);
+            return new ResponseEntity<DynamicTitlesDownloadCSV>(objectMapper.readValue("", DynamicTitlesDownloadCSV.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<AdGroupResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesDownloadCSV>(objectMapper.readValue("", DynamicTitlesDownloadCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesDownloadCSV>(objectMapper.readValue("", DynamicTitlesDownloadCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesDownloadCSV>(objectMapper.readValue("", DynamicTitlesDownloadCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesDownloadCSV>(objectMapper.readValue("", DynamicTitlesDownloadCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesDownloadCSV>(objectMapper.readValue("", DynamicTitlesDownloadCSV.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<DynamicTitlesDownloadCSV>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<DynamicTitlesGetStatus> adGroupsDynamicTitlesGetStatus(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Ad group ID.",required=true ) @PathVariable("ad_group_id") String adGroupId,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesGetStatus>(objectMapper.readValue("", DynamicTitlesGetStatus.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesGetStatus>(objectMapper.readValue("", DynamicTitlesGetStatus.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesGetStatus>(objectMapper.readValue("", DynamicTitlesGetStatus.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesGetStatus>(objectMapper.readValue("", DynamicTitlesGetStatus.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesGetStatus>(objectMapper.readValue("", DynamicTitlesGetStatus.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesGetStatus>(objectMapper.readValue("", DynamicTitlesGetStatus.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesGetStatus>(objectMapper.readValue("", DynamicTitlesGetStatus.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<DynamicTitlesGetStatus>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<DynamicTitlesUploadURL> adGroupsDynamicTitlesGetUploadUrl(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Ad group ID.",required=true ) @PathVariable("ad_group_id") String adGroupId,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesUploadURL>(objectMapper.readValue("", DynamicTitlesUploadURL.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesUploadURL>(objectMapper.readValue("", DynamicTitlesUploadURL.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesUploadURL>(objectMapper.readValue("", DynamicTitlesUploadURL.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesUploadURL>(objectMapper.readValue("", DynamicTitlesUploadURL.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesUploadURL>(objectMapper.readValue("", DynamicTitlesUploadURL.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesUploadURL>(objectMapper.readValue("", DynamicTitlesUploadURL.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesUploadURL>(objectMapper.readValue("", DynamicTitlesUploadURL.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<DynamicTitlesUploadURL>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<DynamicTitlesProcessCSV> adGroupsDynamicTitlesProcessCsv(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Ad group ID.",required=true ) @PathVariable("ad_group_id") String adGroupId,
+        @ApiParam(value = "" ,required=true )   @RequestBody DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesProcessCSV>(objectMapper.readValue("", DynamicTitlesProcessCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesProcessCSV>(objectMapper.readValue("", DynamicTitlesProcessCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesProcessCSV>(objectMapper.readValue("", DynamicTitlesProcessCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesProcessCSV>(objectMapper.readValue("", DynamicTitlesProcessCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesProcessCSV>(objectMapper.readValue("", DynamicTitlesProcessCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesProcessCSV>(objectMapper.readValue("", DynamicTitlesProcessCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesProcessCSV>(objectMapper.readValue("", DynamicTitlesProcessCSV.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<DynamicTitlesProcessCSV>(objectMapper.readValue("", DynamicTitlesProcessCSV.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<DynamicTitlesProcessCSV>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<AdGroup> adGroupsGet(@ApiParam(value = "Ad group ID.",required=true ) @PathVariable("ad_group_id") String adGroupId,
+        @ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroup>(objectMapper.readValue("", AdGroup.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroup>(objectMapper.readValue("", AdGroup.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroup>(objectMapper.readValue("", AdGroup.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroup>(objectMapper.readValue("", AdGroup.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroup>(objectMapper.readValue("", AdGroup.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroup>(objectMapper.readValue("", AdGroup.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroup>(objectMapper.readValue("", AdGroup.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AdGroup>(HttpStatus.OK);
     }
 
     public ResponseEntity<AdGroupsList200Response> adGroupsList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "List of Campaign Ids to use to filter the results.")  @RequestParam(value = "campaign_ids", required = false) List<String> campaignIds,
-        @ApiParam(value = "List of Ad group Ids to use to filter the results.")  @RequestParam(value = "ad_group_ids", required = false) List<String> adGroupIds,
-        @ApiParam(value = "Entity status", allowableValues = "ACTIVE, PAUSED, ARCHIVED, DRAFT, DELETED_DRAFT")  @RequestParam(value = "entity_statuses", required = false) List<String> entityStatuses,
-        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
-        @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues = "ASCENDING, DESCENDING")  @RequestParam(value = "order", required = false) String order,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
+        @ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
+        @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues = "ASCENDING, DESCENDING")  @RequestParam(value = "order", required = false) PinterestLibPaginationOrder order,
+        @ApiParam(value = "List of Campaign Ids to use to filter the results.")  @RequestParam(value = "campaign_ids", required = false) List<String> campaignIds,
+        @ApiParam(value = "List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  @RequestParam(value = "ad_group_ids", required = false) List<String> adGroupIds,
+        @ApiParam(value = "Entity status")  @RequestParam(value = "entity_statuses", required = false) List<EntityStatus> entityStatuses,
         @ApiParam(value = "Return interests as text names (if value is true) rather than topic IDs.", defaultValue = "false")  @RequestParam(value = "translate_interests_to_names", required = false, defaultValue="false") Boolean translateInterestsToNames,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
@@ -191,17 +514,44 @@ public class AdGroupsApiController implements AdGroupsApi {
         @ApiParam(value = "List of Ad group Ids to use to filter the results.", required = true)  @RequestParam(value = "ad_group_ids", required = true) List<String> adGroupIds,
         @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true)  @RequestParam(value = "start_date", required = true) LocalDate startDate,
         @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true)  @RequestParam(value = "end_date", required = true) LocalDate endDate,
-        @ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.", required = true)  @RequestParam(value = "targeting_types", required = true) List<AdsAnalyticsAdGroupTargetingType> targetingTypes,
-        @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, allowableValues = "SPEND_IN_MICRO_DOLLAR, PAID_IMPRESSION, SPEND_IN_DOLLAR, CPC_IN_MICRO_DOLLAR, ECPC_IN_MICRO_DOLLAR, ECPC_IN_DOLLAR, CTR, ECTR, OUTBOUND_CTR_1, CAMPAIGN_NAME, CAMPAIGN_BRAND_LABEL, PIN_ID, TOTAL_ENGAGEMENT, ENGAGEMENT_1, ENGAGEMENT_2, ECPE_IN_DOLLAR, ENGAGEMENT_RATE, EENGAGEMENT_RATE, ECPM_IN_MICRO_DOLLAR, REPIN_RATE, CTR_2, CAMPAIGN_ID, ADVERTISER_ID, AD_ACCOUNT_ID, PIN_PROMOTION_ID, AD_ID, AD_GROUP_ID, CAMPAIGN_ENTITY_STATUS, CAMPAIGN_OBJECTIVE_TYPE, CPM_IN_MICRO_DOLLAR, CPM_IN_DOLLAR, AD_GROUP_NAME, AD_GROUP_BUDGET_TYPE, AD_GROUP_BUDGET_IN_LOCAL_CURRENCY, AD_GROUP_ENTITY_STATUS, AD_GROUP_BID_MULTIPLIER, PROMO_ID, PROMO_NAME, ORDER_LINE_ID, ORDER_LINE_NAME, CLICKTHROUGH_1, REPIN_1, IMPRESSION_1, IMPRESSION_1_GROSS, CLICKTHROUGH_1_GROSS, OUTBOUND_CLICK_1, CLICKTHROUGH_2, REPIN_2, IMPRESSION_2, OUTBOUND_CLICK_2, TOTAL_CLICKTHROUGH, TOTAL_IMPRESSION, TOTAL_IMPRESSION_USER, TOTAL_IMPRESSION_FREQUENCY, COST_PER_OUTBOUND_CLICK_IN_DOLLAR, COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1, TOTAL_ENGAGEMENT_SIGNUP, TOTAL_ENGAGEMENT_CHECKOUT, TOTAL_ENGAGEMENT_LEAD, TOTAL_CLICK_SIGNUP, TOTAL_CLICK_CHECKOUT, TOTAL_CLICK_ADD_TO_CART, TOTAL_CLICK_LEAD, TOTAL_VIEW_SIGNUP, TOTAL_VIEW_CHECKOUT, TOTAL_VIEW_ADD_TO_CART, TOTAL_VIEW_LEAD, TOTAL_CONVERSIONS, TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_SESSIONS, WEB_SESSIONS_1, WEB_SESSIONS_2, AD_NAME, CAMPAIGN_LIFETIME_SPEND_CAP, AD_GROUP_OPTIMIZATION, CAMPAIGN_DAILY_SPEND_CAP, CAMPAIGN_BUDGET_OPTIMIZATION, IS_PREMIERE_CAMPAIGN, TOTAL_PAGE_VISIT, TOTAL_SIGNUP, TOTAL_CHECKOUT, TOTAL_CUSTOM, TOTAL_LEAD, TOTAL_ADD_TO_WISHLIST, TOTAL_SUBSCRIBE, TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR, TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR, PAGE_VISIT_COST_PER_ACTION, PAGE_VISIT_ROAS, CHECKOUT_ROAS, CUSTOM_ROAS, PRODUCT_GROUP_AD_IMAGE_TAG, PRODUCT_GROUP_AD_VIDEO_TAG, VIDEO_3SEC_VIEWS_1, VIDEO_15SEC_UNIQUE_VIEWS_1, VIDEO_MRC_VIEWS_1, VIDEO_3SEC_VIEWS_2, VIDEO_15SEC_UNIQUE_VIEWS_2, VIDEO_P100_COMPLETE_2, VIDEO_P0_COMBINED_2, VIDEO_P25_COMBINED_2, VIDEO_P50_COMBINED_2, VIDEO_P75_COMBINED_2, VIDEO_P95_COMBINED_2, VIDEO_MRC_VIEWS_2, PAID_VIDEO_VIEWABLE_RATE, VIDEO_LENGTH, VIDEO_SPEND_IN_DOLLAR, ECPV_IN_DOLLAR, ECPCV_IN_DOLLAR, ECPCV_P95_IN_DOLLAR, TOTAL_VIDEO_3SEC_VIEWS, TOTAL_VIDEO_15SEC_UNIQUE_VIEWS, TOTAL_VIDEO_P100_COMPLETE, TOTAL_VIDEO_P0_COMBINED, TOTAL_VIDEO_P25_COMBINED, TOTAL_VIDEO_P50_COMBINED, TOTAL_VIDEO_P75_COMBINED, TOTAL_VIDEO_P95_COMBINED, TOTAL_VIDEO_MRC_VIEWS, TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND, TOTAL_REPIN_RATE, WEB_CHECKOUT_COST_PER_ACTION, WEB_CHECKOUT_ROAS, TOTAL_WEB_CHECKOUT, TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_CLICK_CHECKOUT, TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_ENGAGEMENT_CHECKOUT, TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR, TOTAL_WEB_VIEW_CHECKOUT, TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR, INAPP_CHECKOUT_COST_PER_ACTION, TOTAL_OFFLINE_CHECKOUT, TOTAL_APP_INSTALL_CONVERSION_RATE, TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE, IDEA_PIN_PRODUCT_TAG_VISIT_1, IDEA_PIN_PRODUCT_TAG_VISIT_2, TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT, LEADS, COST_PER_LEAD, QUIZ_COMPLETED, QUIZ_PIN_RESULT_OPEN, QUIZ_COMPLETION_RATE, SHOWCASE_PIN_CLICKTHROUGH, SHOWCASE_SUBPAGE_CLICKTHROUGH, SHOWCASE_SUBPIN_CLICKTHROUGH, SHOWCASE_SUBPAGE_IMPRESSION, SHOWCASE_SUBPIN_IMPRESSION, SHOWCASE_SUBPAGE_SWIPE_LEFT, SHOWCASE_SUBPAGE_SWIPE_RIGHT, SHOWCASE_SUBPIN_SWIPE_LEFT, SHOWCASE_SUBPIN_SWIPE_RIGHT, SHOWCASE_SUBPAGE_REPIN, SHOWCASE_SUBPIN_REPIN, SHOWCASE_SUBPAGE_CLOSEUP, SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD, SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD, SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION, TOTAL_CHECKOUT_CONVERSION_RATE, TOTAL_VIEW_CATEGORY_CONVERSION_RATE, TOTAL_ADD_TO_CART_CONVERSION_RATE, TOTAL_SIGNUP_CONVERSION_RATE, TOTAL_PAGE_VISIT_CONVERSION_RATE, TOTAL_LEAD_CONVERSION_RATE, TOTAL_SEARCH_CONVERSION_RATE, TOTAL_WATCH_VIDEO_CONVERSION_RATE, TOTAL_UNKNOWN_CONVERSION_RATE, TOTAL_CUSTOM_CONVERSION_RATE")  @RequestParam(value = "columns", required = true) List<String> columns,
-        @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, allowableValues = "TOTAL, DAY, HOUR, WEEK, MONTH")  @RequestParam(value = "granularity", required = true) Granularity granularity,
-        @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "30")  @RequestParam(value = "click_window_days", required = false, defaultValue="30") Integer clickWindowDays,
-        @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "30")  @RequestParam(value = "engagement_window_days", required = false, defaultValue="30") Integer engagementWindowDays,
-        @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "1")  @RequestParam(value = "view_window_days", required = false, defaultValue="1") Integer viewWindowDays,
+        @ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.", required = true)  @RequestParam(value = "targeting_types", required = true) List<AdsAnalyticsAdGroupTargetingType> targetingTypes,
+        @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.", required = true)  @RequestParam(value = "columns", required = true) List<ReportingColumnSync> columns,
+        @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly", required = true, allowableValues = "TOTAL, DAY, HOUR, WEEK, MONTH")  @RequestParam(value = "granularity", required = true) Granularity granularity,
+        @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "30")  @RequestParam(value = "click_window_days", required = false, defaultValue="30") BigDecimal clickWindowDays,
+        @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "30")  @RequestParam(value = "engagement_window_days", required = false, defaultValue="30") BigDecimal engagementWindowDays,
+        @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues = "0, 1, 7, 14, 30, 60", defaultValue = "1")  @RequestParam(value = "view_window_days", required = false, defaultValue="1") BigDecimal viewWindowDays,
         @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues = "TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue = "TIME_OF_AD_ACTION")  @RequestParam(value = "conversion_report_time", required = false, defaultValue="TIME_OF_AD_ACTION") String conversionReportTime,
         @ApiParam(value = "List of types of attribution for the conversion report")  @RequestParam(value = "attribution_types", required = false) List<ConversionReportAttributionType> attributionTypes,
         @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues = "PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @RequestParam(value = "reporting_timezone", required = false) ReportingTimeZone reportingTimezone,
+        @ApiParam(value = "Sort Columns.")  @RequestParam(value = "sort_columns", required = false) List<String> sortColumns,
+        @ApiParam(value = "Sort ascending.")  @RequestParam(value = "sort_ascending", required = false) Boolean sortAscending,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MetricsResponse>(objectMapper.readValue("", MetricsResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MetricsResponse>(objectMapper.readValue("", MetricsResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MetricsResponse>(objectMapper.readValue("", MetricsResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MetricsResponse>(objectMapper.readValue("", MetricsResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<MetricsResponse>(objectMapper.readValue("", MetricsResponse.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<MetricsResponse>(objectMapper.readValue("", MetricsResponse.class), HttpStatus.OK);
@@ -215,21 +565,91 @@ public class AdGroupsApiController implements AdGroupsApi {
         return new ResponseEntity<MetricsResponse>(HttpStatus.OK);
     }
 
-    public ResponseEntity<AdGroupArrayResponse> adGroupsUpdate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "List of ad groups to update, size limit [1, 30]." ,required=true )   @RequestBody List<AdGroupUpdateRequest> adGroupUpdateRequest,
+    public ResponseEntity<AdGroupsCreate200Response> adGroupsUpdate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "" ,required=true )   @RequestBody List<AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupArrayResponse>(objectMapper.readValue("", AdGroupArrayResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AdGroupArrayResponse>(objectMapper.readValue("", AdGroupArrayResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<AdGroupArrayResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsCreate200Response>(objectMapper.readValue("", AdGroupsCreate200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AdGroupsCreate200Response>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<AdGroupsList200Response> getAdGroupsByPromotionIdsList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "List of Promotion IDs to use to filter the results.", required = true)  @RequestParam(value = "promotion_ids", required = true) List<String> promotionIds,
+        @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
+        @ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
+        @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues = "ASCENDING, DESCENDING")  @RequestParam(value = "order", required = false) PinterestLibPaginationOrder order,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdGroupsList200Response>(objectMapper.readValue("", AdGroupsList200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AdGroupsList200Response>(HttpStatus.OK);
     }
 
 }

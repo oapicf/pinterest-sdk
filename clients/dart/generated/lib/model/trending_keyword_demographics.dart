@@ -17,9 +17,9 @@ class TrendingKeywordDemographics {
     this.genderDistribution,
   });
 
-  TrendingKeywordDemographicsAgeDistribution? ageDistribution;
+  TrendsAgeDistribution? ageDistribution;
 
-  TrendingKeywordDemographicsGenderDistribution? genderDistribution;
+  TrendsGenderDistribution? genderDistribution;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TrendingKeywordDemographics &&
@@ -61,16 +61,12 @@ class TrendingKeywordDemographics {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TrendingKeywordDemographics[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TrendingKeywordDemographics[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return TrendingKeywordDemographics(
-        ageDistribution: TrendingKeywordDemographicsAgeDistribution.fromJson(json[r'age_distribution']),
-        genderDistribution: TrendingKeywordDemographicsGenderDistribution.fromJson(json[r'gender_distribution']),
+        ageDistribution: TrendsAgeDistribution.fromJson(json[r'age_distribution']),
+        genderDistribution: TrendsGenderDistribution.fromJson(json[r'gender_distribution']),
       );
     }
     return null;

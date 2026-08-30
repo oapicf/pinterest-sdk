@@ -147,7 +147,7 @@ LeadFormQuestion::getCustomQuestionFieldType()
 }
 
 void
-LeadFormQuestion::setCustomQuestionFieldType(LeadFormQuestionFieldType  custom_question_field_type)
+LeadFormQuestion::setCustomQuestionFieldType(LeadFormQuestionFieldType custom_question_field_type)
 {
 	this->custom_question_field_type = custom_question_field_type;
 }
@@ -159,7 +159,7 @@ LeadFormQuestion::getCustomQuestionLabel()
 }
 
 void
-LeadFormQuestion::setCustomQuestionLabel(std::string  custom_question_label)
+LeadFormQuestion::setCustomQuestionLabel(std::string custom_question_label)
 {
 	this->custom_question_label = custom_question_label;
 }
@@ -171,7 +171,7 @@ LeadFormQuestion::getCustomQuestionOptions()
 }
 
 void
-LeadFormQuestion::setCustomQuestionOptions(std::list <std::string> custom_question_options)
+LeadFormQuestion::setCustomQuestionOptions(std::list<std::string> custom_question_options)
 {
 	this->custom_question_options = custom_question_options;
 }
@@ -183,7 +183,7 @@ LeadFormQuestion::getQuestionType()
 }
 
 void
-LeadFormQuestion::setQuestionType(LeadFormQuestionType  question_type)
+LeadFormQuestion::setQuestionType(LeadFormQuestionType question_type)
 {
 	this->question_type = question_type;
 }

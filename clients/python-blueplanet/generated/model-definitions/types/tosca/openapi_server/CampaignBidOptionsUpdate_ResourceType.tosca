@@ -7,8 +7,13 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  AgeBucketMultipliers = openapi_server.resourceTypes.AgeBucketMultipliers
   AppTypeMultipliers = openapi_server.resourceTypes.AppTypeMultipliers
   CampaignAudienceMultipliers = openapi_server.resourceTypes.CampaignAudienceMultipliers
+  CampaignBidOptionsUpdateMaskItems = openapi_server.resourceTypes.CampaignBidOptionsUpdateMaskItems
+  FreqBidMultiplierTimeWindow = openapi_server.resourceTypes.FreqBidMultiplierTimeWindow
+  FrequencyMultipliers = openapi_server.resourceTypes.FrequencyMultipliers
+  GenderMultipliers = openapi_server.resourceTypes.GenderMultipliers
   PlacementMultipliers = openapi_server.resourceTypes.PlacementMultipliers
 }
 resourceTypes {
@@ -18,26 +23,45 @@ resourceTypes {
     description = CampaignBidOptionsUpdate
     derivedFrom = Root
     properties {
+        age_bucket_multipliers {
+          type = AgeBucketMultipliers
+          description = "Age bucket multipliers for bid adjustments."
+          optional = false
+        }
         app_type_multipliers {
           type = AppTypeMultipliers
-          description = ""
+          description = "App type multipliers for bid adjustments."
           optional = false
         }
         audience_multipliers {
           type = CampaignAudienceMultipliers
-          description = ""
+          description = "Audience multipliers for bid adjustments."
+          optional = false
+        }
+        freq_bid_multiplier_time_window {
+          type = FreqBidMultiplierTimeWindow
+          description = "The time window for frequency bid multipliers."
+          optional = false
+        }
+        frequency_multipliers {
+          type = FrequencyMultipliers
+          description = "Frequency multipliers for bid adjustments."
+          optional = false
+        }
+        gender_multipliers {
+          type = GenderMultipliers
+          description = "Gender multipliers for bid adjustments."
           optional = false
         }
         placement_multipliers {
           type = PlacementMultipliers
-          description = ""
+          description = "Placement multipliers for bid adjustments."
           optional = false
         }
         update_mask {
           type = array
-          items.type =  string
-          description = "List of fields to update, only the fields in the list will be updated."
-          enum = ["AUDIENCE", "APP_TYPE", "PLACEMENT", "GENDER", "AGE_BUCKET"]
+          items.type = CampaignBidOptionsUpdateMaskItems
+          description = "List of fields to update. Only the fields in the list will be updated."
           optional = true
         }
     }

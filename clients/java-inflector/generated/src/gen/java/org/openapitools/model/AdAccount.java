@@ -19,7 +19,7 @@ import org.openapitools.model.Currency;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdAccount   {
   @JsonProperty("country")
   private Country country;
@@ -41,6 +41,9 @@ public class AdAccount   {
 
   @JsonProperty("permissions")
   private List<BusinessAccessRole> permissions = null;
+
+  @JsonProperty("time_zone")
+  private String timeZone;
 
   @JsonProperty("updated_time")
   private Integer updatedTime;
@@ -168,6 +171,24 @@ public class AdAccount   {
   }
 
   /**
+   * The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+   **/
+  public AdAccount timeZone(String timeZone) {
+    this.timeZone = timeZone;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "America/Los_Angeles", value = "The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.")
+  @JsonProperty("time_zone")
+  public String getTimeZone() {
+    return timeZone;
+  }
+  public void setTimeZone(String timeZone) {
+    this.timeZone = timeZone;
+  }
+
+  /**
    **/
   public AdAccount updatedTime(Integer updatedTime) {
     this.updatedTime = updatedTime;
@@ -201,12 +222,13 @@ public class AdAccount   {
         Objects.equals(name, adAccount.name) &&
         Objects.equals(owner, adAccount.owner) &&
         Objects.equals(permissions, adAccount.permissions) &&
+        Objects.equals(timeZone, adAccount.timeZone) &&
         Objects.equals(updatedTime, adAccount.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, createdTime, currency, id, name, owner, permissions, updatedTime);
+    return Objects.hash(country, createdTime, currency, id, name, owner, permissions, timeZone, updatedTime);
   }
 
   @Override
@@ -221,6 +243,7 @@ public class AdAccount   {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
+    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -231,10 +254,7 @@ public class AdAccount   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

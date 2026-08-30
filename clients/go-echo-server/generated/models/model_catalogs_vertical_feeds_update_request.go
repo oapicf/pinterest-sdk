@@ -3,7 +3,7 @@ package models
 // CatalogsVerticalFeedsUpdateRequest - Request object for updating a feed.
 type CatalogsVerticalFeedsUpdateRequest struct {
 
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 
 	Credentials *CatalogsFeedCredentials `json:"credentials,omitempty"`
 

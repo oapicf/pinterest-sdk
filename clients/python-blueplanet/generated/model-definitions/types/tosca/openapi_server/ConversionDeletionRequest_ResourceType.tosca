@@ -1,0 +1,52 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionDeletionRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionDeletionRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionDeletionRequestStatus = openapi_server.resourceTypes.ConversionDeletionRequestStatus
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  ConversionDeletionRequest {
+    title = ConversionDeletionRequest
+    description = ConversionDeletionRequest
+    derivedFrom = Root
+    properties {
+        created_time {
+          type =  string
+          description = "Timestamp when the conversion deletion request was succesfully created."
+          optional = true
+        }
+        processed_time {
+          type =  string
+          description = "Timestamp when the conversion deletion request was processed."
+          optional = false
+        }
+        request_id {
+          type =  string
+          description = "Unique identifier of the conversion deletion request"
+          optional = true
+        }
+        status {
+          type = ConversionDeletionRequestStatus
+          description = "Represents the status of the conversion deletion request. \&quot;PENDING\&quot; or \&quot;SUBMITTED\&quot;. \&quot;PENDING\&quot; meaning the Advertiser can cancel the request. The advertiser has a 7 day time window after the conversion deletion request was submitted to cancel it. \&quot;SUBMITTED\&quot; meaning that the Data Deletion process has begun and can no longer be canceled."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionDeletionRequest {
+    title = ConversionDeletionRequest
+    description = ConversionDeletionRequest
+    implements = openapi_server.resourceTypes.ConversionDeletionRequest
+
+  }
+}

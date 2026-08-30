@@ -65,7 +65,7 @@ using namespace Tiny;
         }
 
         Response<
-            Search_user_boards_get_200_response
+            Boards_list_200_response
         >
         SearchApi::
         searchUserBoards_get(
@@ -73,13 +73,13 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
+            std::string query
+            , 
+            
             std::string bookmark
             , 
             
             int pageSize
-            , 
-            
-            std::string query
             
         )
         {
@@ -88,11 +88,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | adAccountId bookmark pageSize query 
+            // Query    | adAccountId query bookmark pageSize 
             addQueryParam("ad_account_id",adAccountId);
+            addQueryParam("query",query);
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
-            addQueryParam("query",query);
 
             // Form     | 
 
@@ -113,15 +113,15 @@ using namespace Tiny;
 
 
 
-            Search_user_boards_get_200_response obj(output_string);
+            Boards_list_200_response obj(output_string);
 
 
-            Response<Search_user_boards_get_200_response> response(obj, httpCode);
+            Response<Boards_list_200_response> response(obj, httpCode);
             return response;
         }
 
         Response<
-            Search_user_pins_list_200_response
+            Pins_list_200_response
         >
         SearchApi::
         searchUserPins_list(
@@ -165,10 +165,10 @@ using namespace Tiny;
 
 
 
-            Search_user_pins_list_200_response obj(output_string);
+            Pins_list_200_response obj(output_string);
 
 
-            Response<Search_user_pins_list_200_response> response(obj, httpCode);
+            Response<Pins_list_200_response> response(obj, httpCode);
             return response;
         }
 

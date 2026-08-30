@@ -23,10 +23,10 @@ import type { ConversionTagCommon } from ''
 const example = {
   "codeSnippet": <script type=text/javascript> [...],
   "configs": null,
-  "enhancedMatchStatus": null,
+  "enhancedMatchStatus": VALIDATION_COMPLETE,
   "id": 2617998078212,
   "lastFiredTimeMs": 1599030000000,
-  "name": ACME Checkout Test Tag,
+  "name": download_picture,
   "version": 3,
 } satisfies ConversionTagCommon
 

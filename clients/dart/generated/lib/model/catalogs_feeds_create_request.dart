@@ -22,7 +22,7 @@ class CatalogsFeedsCreateRequest {
     required this.location,
     required this.name,
     this.preferredProcessingSchedule,
-    this.status = 'ACTIVE',
+    this.status = CatalogsStatus.ACTIVE,
   });
 
   CatalogsFeedCredentials? credentials;
@@ -45,7 +45,7 @@ class CatalogsFeedsCreateRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsFeedsCreateRequestDefaultLocale? defaultLocale;
+  CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale? defaultLocale;
 
   CatalogsFormat format;
 
@@ -139,10 +139,12 @@ class CatalogsFeedsCreateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsFeedsCreateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsFeedsCreateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'format'), 'Required key "CatalogsFeedsCreateRequest[format]" is missing from JSON.');
+        assert(json[r'format'] != null, 'Required key "CatalogsFeedsCreateRequest[format]" has a null value in JSON.');
+        assert(json.containsKey(r'location'), 'Required key "CatalogsFeedsCreateRequest[location]" is missing from JSON.');
+        assert(json[r'location'] != null, 'Required key "CatalogsFeedsCreateRequest[location]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "CatalogsFeedsCreateRequest[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "CatalogsFeedsCreateRequest[name]" has a null value in JSON.');
         return true;
       }());
 
@@ -151,12 +153,12 @@ class CatalogsFeedsCreateRequest {
         defaultAvailability: ProductAvailabilityType.fromJson(json[r'default_availability']),
         defaultCountry: Country.fromJson(json[r'default_country']),
         defaultCurrency: NullableCurrency.fromJson(json[r'default_currency']),
-        defaultLocale: CatalogsFeedsCreateRequestDefaultLocale.fromJson(json[r'default_locale']),
+        defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.fromJson(json[r'default_locale']),
         format: CatalogsFormat.fromJson(json[r'format'])!,
         location: mapValueOfType<String>(json, r'location')!,
         name: mapValueOfType<String>(json, r'name')!,
         preferredProcessingSchedule: CatalogsFeedProcessingSchedule.fromJson(json[r'preferred_processing_schedule']),
-        status: CatalogsStatus.fromJson(json[r'status']) ?? 'ACTIVE',
+        status: CatalogsStatus.fromJson(json[r'status']) ?? CatalogsStatus.ACTIVE,
       );
     }
     return null;

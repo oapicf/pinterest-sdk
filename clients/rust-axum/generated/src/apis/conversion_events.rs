@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,37 +12,41 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum EventsSlashCreateResponse {
-    /// Success
-    Status200_Success
-    (models::ConversionApiResponse)
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::ConversionEvents)
     ,
-    /// The request was invalid.
-    Status400_TheRequestWasInvalid
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Not authorized to send conversion events
-    Status401_NotAuthorizedToSendConversionEvents
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Unauthorized access.
-    Status403_UnauthorizedAccess
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Not all events were successfully processed.
-    Status422_NotAllEventsWereSuccessfullyProcessed
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The request was well-formed but was unable to be followed due to semantic errors.
+    Status422_TheRequestWasWell
     (models::DetailedError)
     ,
-    /// This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.
-    Status429_ThisRequestExceededARateLimit
-    (models::Error)
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
     ,
-    /// The endpoint has been ramped down and is currently not accepting any traffic.
-    Status503_TheEndpointHasBeenRampedDownAndIsCurrentlyNotAcceptingAnyTraffic
-    (models::Error)
+    /// The server is currently unable to handle the request due to a temporary overload or scheduled maintenance.
+    Status503_TheServerIsCurrentlyUnableToHandleTheRequestDueToATemporaryOverloadOrScheduledMaintenance
+    (models::PinterestLibError)
     ,
-    /// Unexpected errors
-    Status0_UnexpectedErrors
-    (models::Error)
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 
@@ -65,6 +70,6 @@ pub trait ConversionEvents<E: std::fmt::Debug + Send + Sync + 'static = ()>: sup
         claims: &Self::Claims,
       path_params: &models::EventsSlashCreatePathParams,
       query_params: &models::EventsSlashCreateQueryParams,
-            body: &models::ConversionEvents,
+            body: &models::ConversionEventsCreate,
     ) -> Result<EventsSlashCreateResponse, E>;
 }

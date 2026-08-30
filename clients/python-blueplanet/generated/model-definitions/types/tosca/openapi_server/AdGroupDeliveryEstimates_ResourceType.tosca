@@ -1,0 +1,84 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupDeliveryEstimates"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupDeliveryEstimates"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdGroupAudienceSizingCreativeTypes = openapi_server.resourceTypes.AdGroupAudienceSizingCreativeTypes
+  AdGroupDeliveryEstimatesKeywordsItems = openapi_server.resourceTypes.AdGroupDeliveryEstimatesKeywordsItems
+  OptimizationGoalMetadata = openapi_server.resourceTypes.OptimizationGoalMetadata
+  OptimizationType = openapi_server.resourceTypes.OptimizationType
+  PlacementGroupType = openapi_server.resourceTypes.PlacementGroupType
+  TargetingSpecOptimal = openapi_server.resourceTypes.TargetingSpecOptimal
+}
+resourceTypes {
+
+  AdGroupDeliveryEstimates {
+    title = AdGroupDeliveryEstimates
+    description = AdGroupDeliveryEstimates
+    derivedFrom = Root
+    properties {
+        auto_targeting_enabled {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        creative_types {
+          type = array
+          items.type = AdGroupAudienceSizingCreativeTypes
+          description = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead."
+          optional = false
+        }
+        keywords {
+          type = array
+          items.type = AdGroupDeliveryEstimatesKeywordsItems
+          description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted."
+          optional = false
+        }
+        monthly_frequency_cap {
+          type =  integer
+          description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups."
+          optional = false
+        }
+        optimization_goal_metadata {
+          type = OptimizationGoalMetadata
+          description = ""
+          optional = false
+        }
+        optimization_type {
+          type = OptimizationType
+          description = "Optimization type for ad group delivery. Defaults to WEB_CONVERSION for WEB_CONVERSION/AWARENESS objectives, CLICKTHROUGH otherwise."
+          optional = false
+        }
+        placement_group {
+          type = PlacementGroupType
+          description = ""
+          optional = false
+        }
+        product_group_ids {
+          type = array
+          items.type =  string
+          description = "[Targeted product group IDs](/docs/redoc/#section/AdGroup-Audience-Sizing) **Note:** This can only be combined with shopping/catalog sales campaigns."
+          optional = false
+        }
+        targeting_spec {
+          type = TargetingSpecOptimal
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupDeliveryEstimates {
+    title = AdGroupDeliveryEstimates
+    description = AdGroupDeliveryEstimates
+    implements = openapi_server.resourceTypes.AdGroupDeliveryEstimates
+
+  }
+}

@@ -21,14 +21,19 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
+import org.openapitools.client.api.AdAccountToAdAccountSharedAudience
+import org.openapitools.client.api.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.client.api.AdAccountToBusinessSharedAudience
+import org.openapitools.client.api.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 import org.openapitools.client.api.AdAccountsAudiencesSharedAccountsList200Response
 import org.openapitools.client.api.AudienceAccountType
-import org.openapitools.client.api.AudiencesList200Response
-import org.openapitools.client.api.BusinessSharedAudience
-import org.openapitools.client.api.BusinessSharedAudienceResponse
+import org.openapitools.client.api.BusinessToAdAccountSharedAudience
+import org.openapitools.client.api.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.client.api.BusinessToBusinessSharedAudience
+import org.openapitools.client.api.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
 import org.openapitools.client.api.Error
-import org.openapitools.client.api.SharedAudience
-import org.openapitools.client.api.SharedAudienceResponse
+import org.openapitools.client.api.Order
+import org.openapitools.client.api.SharedAudiencesForBusinessList200Response
 
 object AudienceSharingApi {
 
@@ -36,7 +41,7 @@ object AudienceSharingApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adAccountsAudiencesSharedAccountsList(host: String, adAccountId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Integer = 25, bookmark: String)(implicit audienceIdQuery: QueryParam[String], accountTypeQuery: QueryParam[AudienceAccountType], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[AdAccountsAudiencesSharedAccountsList200Response] = {
+  def adAccountsAudiencesSharedAccountsList(host: String, audienceId: String, accountType: AudienceAccountType, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit audienceIdQuery: QueryParam[String], accountTypeQuery: QueryParam[AudienceAccountType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AdAccountsAudiencesSharedAccountsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccountsAudiencesSharedAccountsList200Response] = jsonOf[AdAccountsAudiencesSharedAccountsList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/audiences/shared/accounts".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -46,7 +51,7 @@ object AudienceSharingApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("audienceId", Some(audience_idQuery.toParamString(audience_id))), ("accountType", Some(account_typeQuery.toParamString(account_type))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("audienceId", Some(audience_idQuery.toParamString(audience_id))), ("accountType", Some(account_typeQuery.toParamString(account_type))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -57,7 +62,7 @@ object AudienceSharingApi {
     } yield resp
   }
 
-  def businessAccountAudiencesSharedAccountsList(host: String, businessId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Integer = 25, bookmark: String)(implicit audienceIdQuery: QueryParam[String], accountTypeQuery: QueryParam[AudienceAccountType], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[AdAccountsAudiencesSharedAccountsList200Response] = {
+  def businessAccountAudiencesSharedAccountsList(host: String, businessId: String, audienceId: String, accountType: AudienceAccountType, bookmark: String, pageSize: Integer = 25)(implicit audienceIdQuery: QueryParam[String], accountTypeQuery: QueryParam[AudienceAccountType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AdAccountsAudiencesSharedAccountsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccountsAudiencesSharedAccountsList200Response] = jsonOf[AdAccountsAudiencesSharedAccountsList200Response]
 
     val path = "/businesses/{business_id}/audiences/shared/accounts".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
@@ -67,7 +72,7 @@ object AudienceSharingApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("audienceId", Some(audience_idQuery.toParamString(audience_id))), ("accountType", Some(account_typeQuery.toParamString(account_type))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("audienceId", Some(audience_idQuery.toParamString(audience_id))), ("accountType", Some(account_typeQuery.toParamString(account_type))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -78,8 +83,8 @@ object AudienceSharingApi {
     } yield resp
   }
 
-  def sharedAudiencesForBusinessList(host: String, businessId: String, bookmark: String, order: String, pageSize: Integer = 25)(implicit bookmarkQuery: QueryParam[String], orderQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AudiencesList200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[AudiencesList200Response] = jsonOf[AudiencesList200Response]
+  def sharedAudiencesForBusinessList(host: String, businessId: String, order: Order, bookmark: String, pageSize: Integer = 25)(implicit orderQuery: QueryParam[Order], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[SharedAudiencesForBusinessList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[SharedAudiencesForBusinessList200Response] = jsonOf[SharedAudiencesForBusinessList200Response]
 
     val path = "/businesses/{business_id}/audiences".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -88,19 +93,19 @@ object AudienceSharingApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("order", Some(orderQuery.toParamString(order))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
+      ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AudiencesList200Response](req)
+      resp          <- client.expect[SharedAudiencesForBusinessList200Response](req)
 
     } yield resp
   }
 
-  def updateAdAccountToAdAccountSharedAudience(host: String, adAccountId: String, sharedAudience: SharedAudience): Task[SharedAudienceResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SharedAudienceResponse] = jsonOf[SharedAudienceResponse]
+  def updateAdAccountToAdAccountSharedAudience(host: String, adAccountId: String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody): Task[AdAccountToAdAccountSharedAudience] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdAccountToAdAccountSharedAudience] = jsonOf[AdAccountToAdAccountSharedAudience]
 
     val path = "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -114,14 +119,14 @@ object AudienceSharingApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sharedAudience)
-      resp          <- client.expect[SharedAudienceResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
+      resp          <- client.expect[AdAccountToAdAccountSharedAudience](req)
 
     } yield resp
   }
 
-  def updateAdAccountToBusinessSharedAudience(host: String, adAccountId: String, businessSharedAudience: BusinessSharedAudience): Task[BusinessSharedAudienceResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[BusinessSharedAudienceResponse] = jsonOf[BusinessSharedAudienceResponse]
+  def updateAdAccountToBusinessSharedAudience(host: String, adAccountId: String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody): Task[AdAccountToBusinessSharedAudience] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdAccountToBusinessSharedAudience] = jsonOf[AdAccountToBusinessSharedAudience]
 
     val path = "/ad_accounts/{ad_account_id}/audiences/businesses/shared".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -135,14 +140,14 @@ object AudienceSharingApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessSharedAudience)
-      resp          <- client.expect[BusinessSharedAudienceResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
+      resp          <- client.expect[AdAccountToBusinessSharedAudience](req)
 
     } yield resp
   }
 
-  def updateBusinessToAdAccountSharedAudience(host: String, businessId: String, sharedAudience: SharedAudience): Task[SharedAudienceResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SharedAudienceResponse] = jsonOf[SharedAudienceResponse]
+  def updateBusinessToAdAccountSharedAudience(host: String, businessId: String, businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody): Task[BusinessToAdAccountSharedAudience] = {
+    implicit val returnTypeDecoder: EntityDecoder[BusinessToAdAccountSharedAudience] = jsonOf[BusinessToAdAccountSharedAudience]
 
     val path = "/businesses/{business_id}/audiences/ad_accounts/shared".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -156,14 +161,14 @@ object AudienceSharingApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sharedAudience)
-      resp          <- client.expect[SharedAudienceResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessToAdAccountSharedAudienceUpdateWithRequiredBody)
+      resp          <- client.expect[BusinessToAdAccountSharedAudience](req)
 
     } yield resp
   }
 
-  def updateBusinessToBusinessSharedAudience(host: String, businessId: String, businessSharedAudience: BusinessSharedAudience): Task[BusinessSharedAudienceResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[BusinessSharedAudienceResponse] = jsonOf[BusinessSharedAudienceResponse]
+  def updateBusinessToBusinessSharedAudience(host: String, businessId: String, businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody): Task[BusinessToBusinessSharedAudience] = {
+    implicit val returnTypeDecoder: EntityDecoder[BusinessToBusinessSharedAudience] = jsonOf[BusinessToBusinessSharedAudience]
 
     val path = "/businesses/{business_id}/audiences/businesses/shared".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -177,8 +182,8 @@ object AudienceSharingApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessSharedAudience)
-      resp          <- client.expect[BusinessSharedAudienceResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessToBusinessSharedAudienceUpdateWithRequiredBody)
+      resp          <- client.expect[BusinessToBusinessSharedAudience](req)
 
     } yield resp
   }
@@ -190,7 +195,7 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adAccountsAudiencesSharedAccountsList(adAccountId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Integer = 25, bookmark: String)(implicit audienceIdQuery: QueryParam[String], accountTypeQuery: QueryParam[AudienceAccountType], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[AdAccountsAudiencesSharedAccountsList200Response] = {
+  def adAccountsAudiencesSharedAccountsList(audienceId: String, accountType: AudienceAccountType, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit audienceIdQuery: QueryParam[String], accountTypeQuery: QueryParam[AudienceAccountType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AdAccountsAudiencesSharedAccountsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccountsAudiencesSharedAccountsList200Response] = jsonOf[AdAccountsAudiencesSharedAccountsList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/audiences/shared/accounts".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -200,7 +205,7 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("audienceId", Some(audience_idQuery.toParamString(audience_id))), ("accountType", Some(account_typeQuery.toParamString(account_type))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("audienceId", Some(audience_idQuery.toParamString(audience_id))), ("accountType", Some(account_typeQuery.toParamString(account_type))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -211,7 +216,7 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
     } yield resp
   }
 
-  def businessAccountAudiencesSharedAccountsList(businessId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Integer = 25, bookmark: String)(implicit audienceIdQuery: QueryParam[String], accountTypeQuery: QueryParam[AudienceAccountType], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[AdAccountsAudiencesSharedAccountsList200Response] = {
+  def businessAccountAudiencesSharedAccountsList(businessId: String, audienceId: String, accountType: AudienceAccountType, bookmark: String, pageSize: Integer = 25)(implicit audienceIdQuery: QueryParam[String], accountTypeQuery: QueryParam[AudienceAccountType], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AdAccountsAudiencesSharedAccountsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccountsAudiencesSharedAccountsList200Response] = jsonOf[AdAccountsAudiencesSharedAccountsList200Response]
 
     val path = "/businesses/{business_id}/audiences/shared/accounts".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
@@ -221,7 +226,7 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("audienceId", Some(audience_idQuery.toParamString(audience_id))), ("accountType", Some(account_typeQuery.toParamString(account_type))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("audienceId", Some(audience_idQuery.toParamString(audience_id))), ("accountType", Some(account_typeQuery.toParamString(account_type))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -232,8 +237,8 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
     } yield resp
   }
 
-  def sharedAudiencesForBusinessList(businessId: String, bookmark: String, order: String, pageSize: Integer = 25)(implicit bookmarkQuery: QueryParam[String], orderQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AudiencesList200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[AudiencesList200Response] = jsonOf[AudiencesList200Response]
+  def sharedAudiencesForBusinessList(businessId: String, order: Order, bookmark: String, pageSize: Integer = 25)(implicit orderQuery: QueryParam[Order], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[SharedAudiencesForBusinessList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[SharedAudiencesForBusinessList200Response] = jsonOf[SharedAudiencesForBusinessList200Response]
 
     val path = "/businesses/{business_id}/audiences".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -242,19 +247,19 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("order", Some(orderQuery.toParamString(order))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
+      ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AudiencesList200Response](req)
+      resp          <- client.expect[SharedAudiencesForBusinessList200Response](req)
 
     } yield resp
   }
 
-  def updateAdAccountToAdAccountSharedAudience(adAccountId: String, sharedAudience: SharedAudience): Task[SharedAudienceResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SharedAudienceResponse] = jsonOf[SharedAudienceResponse]
+  def updateAdAccountToAdAccountSharedAudience(adAccountId: String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody): Task[AdAccountToAdAccountSharedAudience] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdAccountToAdAccountSharedAudience] = jsonOf[AdAccountToAdAccountSharedAudience]
 
     val path = "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -268,14 +273,14 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sharedAudience)
-      resp          <- client.expect[SharedAudienceResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
+      resp          <- client.expect[AdAccountToAdAccountSharedAudience](req)
 
     } yield resp
   }
 
-  def updateAdAccountToBusinessSharedAudience(adAccountId: String, businessSharedAudience: BusinessSharedAudience): Task[BusinessSharedAudienceResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[BusinessSharedAudienceResponse] = jsonOf[BusinessSharedAudienceResponse]
+  def updateAdAccountToBusinessSharedAudience(adAccountId: String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody): Task[AdAccountToBusinessSharedAudience] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdAccountToBusinessSharedAudience] = jsonOf[AdAccountToBusinessSharedAudience]
 
     val path = "/ad_accounts/{ad_account_id}/audiences/businesses/shared".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -289,14 +294,14 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessSharedAudience)
-      resp          <- client.expect[BusinessSharedAudienceResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
+      resp          <- client.expect[AdAccountToBusinessSharedAudience](req)
 
     } yield resp
   }
 
-  def updateBusinessToAdAccountSharedAudience(businessId: String, sharedAudience: SharedAudience): Task[SharedAudienceResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SharedAudienceResponse] = jsonOf[SharedAudienceResponse]
+  def updateBusinessToAdAccountSharedAudience(businessId: String, businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody): Task[BusinessToAdAccountSharedAudience] = {
+    implicit val returnTypeDecoder: EntityDecoder[BusinessToAdAccountSharedAudience] = jsonOf[BusinessToAdAccountSharedAudience]
 
     val path = "/businesses/{business_id}/audiences/ad_accounts/shared".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -310,14 +315,14 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sharedAudience)
-      resp          <- client.expect[SharedAudienceResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessToAdAccountSharedAudienceUpdateWithRequiredBody)
+      resp          <- client.expect[BusinessToAdAccountSharedAudience](req)
 
     } yield resp
   }
 
-  def updateBusinessToBusinessSharedAudience(businessId: String, businessSharedAudience: BusinessSharedAudience): Task[BusinessSharedAudienceResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[BusinessSharedAudienceResponse] = jsonOf[BusinessSharedAudienceResponse]
+  def updateBusinessToBusinessSharedAudience(businessId: String, businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody): Task[BusinessToBusinessSharedAudience] = {
+    implicit val returnTypeDecoder: EntityDecoder[BusinessToBusinessSharedAudience] = jsonOf[BusinessToBusinessSharedAudience]
 
     val path = "/businesses/{business_id}/audiences/businesses/shared".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -331,8 +336,8 @@ class HttpServiceAudienceSharingApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessSharedAudience)
-      resp          <- client.expect[BusinessSharedAudienceResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessToBusinessSharedAudienceUpdateWithRequiredBody)
+      resp          <- client.expect[BusinessToBusinessSharedAudience](req)
 
     } yield resp
   }

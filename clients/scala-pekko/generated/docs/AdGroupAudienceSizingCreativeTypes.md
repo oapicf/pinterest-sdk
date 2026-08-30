@@ -1,0 +1,9 @@
+
+
+# AdGroupAudienceSizingCreativeTypes
+
+## Enum
+
+
+
+

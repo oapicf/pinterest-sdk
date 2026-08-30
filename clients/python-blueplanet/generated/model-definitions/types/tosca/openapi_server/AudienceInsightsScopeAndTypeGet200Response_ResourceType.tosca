@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceInsightsScopeAndTypeGet200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceInsightsScopeAndTypeGet200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AudienceDefinition = openapi_server.resourceTypes.AudienceDefinition
+}
+resourceTypes {
+
+  AudienceInsightsScopeAndTypeGet200Response {
+    title = AudienceInsightsScopeAndTypeGet200Response
+    description = AudienceInsightsScopeAndTypeGet200Response
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = AudienceDefinition
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceInsightsScopeAndTypeGet200Response {
+    title = AudienceInsightsScopeAndTypeGet200Response
+    description = AudienceInsightsScopeAndTypeGet200Response
+    implements = openapi_server.resourceTypes.AudienceInsightsScopeAndTypeGet200Response
+
+  }
+}

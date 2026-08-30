@@ -1,14 +1,17 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.KeywordUpdateBody;
+import apimodels.Keywords;
+import apimodels.KeywordsCreate;
 import apimodels.KeywordsGet200Response;
 import apimodels.KeywordsMetricsArrayResponse;
-import apimodels.KeywordsRequest;
-import apimodels.KeywordsResponse;
+import apimodels.KeywordsUpdate;
 import apimodels.MatchType;
+import apimodels.PinterestLibError;
 import apimodels.TrendType;
 import apimodels.TrendingKeywordsResponse;
+import apimodels.TrendsAgeBucket;
+import apimodels.TrendsGenderFilter;
+import apimodels.TrendsL1Interest;
 import apimodels.TrendsSupportedRegion;
 
 import com.google.inject.Inject;
@@ -55,12 +58,12 @@ public abstract class KeywordsApiControllerImpInterface {
 
     public abstract KeywordsMetricsArrayResponse countryKeywordsMetricsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String countryCode, @NotNull  @Size(min=1,max=2000)List<String> keywords) throws Exception;
 
-    public Result keywordsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordsRequest keywordsRequest) throws Exception {
+    public Result keywordsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordsCreate keywordsCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        KeywordsResponse obj = keywordsCreate(request, adAccountId, keywordsRequest);
+        Keywords obj = keywordsCreate(request, adAccountId, keywordsCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -72,14 +75,14 @@ public abstract class KeywordsApiControllerImpInterface {
 
     }
 
-    public abstract KeywordsResponse keywordsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordsRequest keywordsRequest) throws Exception;
+    public abstract Keywords keywordsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordsCreate keywordsCreate) throws Exception;
 
-    public Result keywordsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @Size(min=1,max=5)List<MatchType> matchTypes,  @Min(1)Integer pageSize, String bookmark) throws Exception {
+    public Result keywordsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> adGroupIds,  @Size(min=1,max=5)List<MatchType> matchTypes, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        KeywordsGet200Response obj = keywordsGet(request, adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark);
+        KeywordsGet200Response obj = keywordsGet(request, adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -91,14 +94,14 @@ public abstract class KeywordsApiControllerImpInterface {
 
     }
 
-    public abstract KeywordsGet200Response keywordsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @Size(min=1,max=5)List<MatchType> matchTypes,  @Min(1)Integer pageSize, String bookmark) throws Exception;
+    public abstract KeywordsGet200Response keywordsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> adGroupIds,  @Size(min=1,max=5)List<MatchType> matchTypes, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result keywordsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordUpdateBody keywordUpdateBody) throws Exception {
+    public Result keywordsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordsUpdate keywordsUpdate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        KeywordsResponse obj = keywordsUpdate(request, adAccountId, keywordUpdateBody);
+        Keywords obj = keywordsUpdate(request, adAccountId, keywordsUpdate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -110,14 +113,14 @@ public abstract class KeywordsApiControllerImpInterface {
 
     }
 
-    public abstract KeywordsResponse keywordsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordUpdateBody keywordUpdateBody) throws Exception;
+    public abstract Keywords keywordsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordsUpdate keywordsUpdate) throws Exception;
 
-    public Result trendingKeywordsListHttp(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit, Boolean includePrediction, Boolean includeDemographics) throws Exception {
+    public Result trendingKeywordsListHttp(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<TrendsL1Interest> interests, List<TrendsGenderFilter> genders, List<TrendsAgeBucket> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit, Boolean includeDemographics) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        TrendingKeywordsResponse obj = trendingKeywordsList(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics);
+        TrendingKeywordsResponse obj = trendingKeywordsList(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includeDemographics);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -129,6 +132,6 @@ public abstract class KeywordsApiControllerImpInterface {
 
     }
 
-    public abstract TrendingKeywordsResponse trendingKeywordsList(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit, Boolean includePrediction, Boolean includeDemographics) throws Exception;
+    public abstract TrendingKeywordsResponse trendingKeywordsList(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<TrendsL1Interest> interests, List<TrendsGenderFilter> genders, List<TrendsAgeBucket> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit, Boolean includeDemographics) throws Exception;
 
 }

@@ -86,15 +86,17 @@ class _$KeywordErrorSerializer implements PrimitiveSerializer<KeywordError> {
         case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Keyword),
-          ) as Keyword;
+            specifiedType: const FullType.nullable(Keyword),
+          ) as Keyword?;
+          if (valueDes == null) continue;
           result.data.replace(valueDes);
           break;
         case r'error_messages':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.errorMessages.replace(valueDes);
           break;
         default:

@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.targeting_template_get_response_data import TargetingTemplateGetResponseData  # noqa: F401,E501
+from app.openapi_server.models.targeting_template import TargetingTemplate  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class TargetingTemplateList200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[TargetingTemplateGetResponseData]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[TargetingTemplate]=None):  # noqa: E501
         """TargetingTemplateList200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this TargetingTemplateList200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this TargetingTemplateList200Response.  # noqa: E501
-        :type items: List[TargetingTemplateGetResponseData]
+        :type items: List[TargetingTemplate]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[TargetingTemplateGetResponseData]
+            'items': List[TargetingTemplate]
         }
 
         self.attribute_map = {
@@ -70,22 +70,22 @@ class TargetingTemplateList200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[TargetingTemplateGetResponseData]:
+    def items(self) -> List[TargetingTemplate]:
         """Gets the items of this TargetingTemplateList200Response.
 
 
         :return: The items of this TargetingTemplateList200Response.
-        :rtype: List[TargetingTemplateGetResponseData]
+        :rtype: List[TargetingTemplate]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[TargetingTemplateGetResponseData]):
+    def items(self, items: List[TargetingTemplate]):
         """Sets the items of this TargetingTemplateList200Response.
 
 
         :param items: The items of this TargetingTemplateList200Response.
-        :type items: List[TargetingTemplateGetResponseData]
+        :type items: List[TargetingTemplate]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

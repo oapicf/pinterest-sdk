@@ -73,7 +73,6 @@ class SsioInsertionOrdersStatusGetByAdAccount200Response(Model):
     def items(self) -> List[SSIOInsertionOrderStatus]:
         """Gets the items of this SsioInsertionOrdersStatusGetByAdAccount200Response.
 
-        Insertion orders status by ad acount id  # noqa: E501
 
         :return: The items of this SsioInsertionOrdersStatusGetByAdAccount200Response.
         :rtype: List[SSIOInsertionOrderStatus]
@@ -84,7 +83,6 @@ class SsioInsertionOrdersStatusGetByAdAccount200Response(Model):
     def items(self, items: List[SSIOInsertionOrderStatus]):
         """Sets the items of this SsioInsertionOrdersStatusGetByAdAccount200Response.
 
-        Insertion orders status by ad acount id  # noqa: E501
 
         :param items: The items of this SsioInsertionOrdersStatusGetByAdAccount200Response.
         :type items: List[SSIOInsertionOrderStatus]

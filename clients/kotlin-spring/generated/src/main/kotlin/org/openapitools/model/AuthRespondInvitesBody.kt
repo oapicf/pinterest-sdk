@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.AuthRespondInvitesBodyInvitesInner
+import org.openapitools.model.AuthRespondInvitesBodyItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,8 +22,9 @@ data class AuthRespondInvitesBody(
 
     @field:Valid
     @get:Size(min=1,max=100) 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("invites", required = true) val invites: kotlin.collections.List<AuthRespondInvitesBodyInvitesInner>
+    @Schema(required = true, description = "")
+    @param:JsonProperty("invites")
+    @get:JsonProperty("invites", required = true) val invites: kotlin.collections.List<AuthRespondInvitesBodyItem>
 ) {
 
 }

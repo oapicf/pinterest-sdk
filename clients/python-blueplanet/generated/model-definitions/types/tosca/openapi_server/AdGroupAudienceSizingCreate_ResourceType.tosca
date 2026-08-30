@@ -1,0 +1,67 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupAudienceSizingCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupAudienceSizingCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdGroupAudienceSizingCreativeTypes = openapi_server.resourceTypes.AdGroupAudienceSizingCreativeTypes
+  AdGroupAudienceSizingKeyword = openapi_server.resourceTypes.AdGroupAudienceSizingKeyword
+  AdgroupPlacementGroupType = openapi_server.resourceTypes.AdgroupPlacementGroupType
+  TargetingSpecOptimal = openapi_server.resourceTypes.TargetingSpecOptimal
+}
+resourceTypes {
+
+  AdGroupAudienceSizingCreate {
+    title = AdGroupAudienceSizingCreate
+    description = AdGroupAudienceSizingCreate
+    derivedFrom = Root
+    properties {
+        auto_targeting_enabled {
+          type =  boolean
+          description = "Enable auto-targeting for ad group. Default value is True. Also known as [Pinterest Performance+ targeting](https://help.pinterest.com/en/business/article/performance-plus-targeting)."
+          optional = false
+        }
+        creative_types {
+          type = array
+          items.type = AdGroupAudienceSizingCreativeTypes
+          description = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead."
+          optional = false
+        }
+        keywords {
+          type = array
+          items.type = AdGroupAudienceSizingKeyword
+          description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted."
+          optional = false
+        }
+        placement_group {
+          type = AdgroupPlacementGroupType
+          description = "[Placement group](/docs/redoc/#section/Placement-group)."
+          optional = false
+        }
+        product_group_ids {
+          type = array
+          items.type =  string
+          description = "Targeted product group IDs. **Note:** This can only be combined with shopping/catalog sales campaigns. For more information, [click here](https://help.pinterest.com/en/business/article/shopping-ads#section-14571). SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored."
+          optional = false
+        }
+        targeting_spec {
+          type = TargetingSpecOptimal
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupAudienceSizingCreate {
+    title = AdGroupAudienceSizingCreate
+    description = AdGroupAudienceSizingCreate
+    implements = openapi_server.resourceTypes.AdGroupAudienceSizingCreate
+
+  }
+}

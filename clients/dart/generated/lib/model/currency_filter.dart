@@ -47,15 +47,13 @@ class CurrencyFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CurrencyFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CurrencyFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'CURRENCY'), 'Required key "CurrencyFilter[CURRENCY]" is missing from JSON.');
+        assert(json[r'CURRENCY'] != null, 'Required key "CurrencyFilter[CURRENCY]" has a null value in JSON.');
         return true;
       }());
 
       return CurrencyFilter(
-        CURRENCY: mapValueOfType<CatalogsProductGroupCurrencyCriteria>(json, r'CURRENCY')!,
+        CURRENCY: CatalogsProductGroupCurrencyCriteria.fromJson(json[r'CURRENCY'])!,
       );
     }
     return null;

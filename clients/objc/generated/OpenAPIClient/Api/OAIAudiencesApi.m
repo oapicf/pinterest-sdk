@@ -1,11 +1,13 @@
 #import "OAIAudiencesApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIAudience.h"
-#import "OAIAudienceCreateRequest.h"
-#import "OAIAudienceUpdateRequest.h"
+#import "OAIAdAccountsAudience.h"
+#import "OAIAdAccountsAudienceCreate.h"
+#import "OAIAdAccountsAudienceUpdate.h"
+#import "OAIAudienceOwnershipType.h"
 #import "OAIAudiencesList200Response.h"
-#import "OAIError.h"
+#import "OAIPinterestLibError.h"
+#import "OAIPinterestLibPaginationOrder.h"
 
 
 @interface OAIAudiencesApi ()
@@ -55,16 +57,16 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
 
 ///
 /// Create audience
-/// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+/// Create a new audience for the ad account.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param audienceCreateRequest List of ads to create, size limit [1, 30] 
+///  @param adAccountsAudienceCreate  
 ///
-///  @returns OAIAudience*
+///  @returns OAIAdAccountsAudience*
 ///
 -(NSURLSessionTask*) audiencesCreateWithAdAccountId: (NSString*) adAccountId
-    audienceCreateRequest: (OAIAudienceCreateRequest*) audienceCreateRequest
-    completionHandler: (void (^)(OAIAudience* output, NSError* error)) handler {
+    adAccountsAudienceCreate: (OAIAdAccountsAudienceCreate*) adAccountsAudienceCreate
+    completionHandler: (void (^)(OAIAdAccountsAudience* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -76,11 +78,11 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'audienceCreateRequest' is set
-    if (audienceCreateRequest == nil) {
-        NSParameterAssert(audienceCreateRequest);
+    // verify the required parameter 'adAccountsAudienceCreate' is set
+    if (adAccountsAudienceCreate == nil) {
+        NSParameterAssert(adAccountsAudienceCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"audienceCreateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountsAudienceCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -115,7 +117,7 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = audienceCreateRequest;
+    bodyParam = adAccountsAudienceCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -128,10 +130,10 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIAudience*"
+                              responseType: @"OAIAdAccountsAudience*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIAudience*)data, error);
+                                    handler((OAIAdAccountsAudience*)data, error);
                                 }
                             }];
 }
@@ -139,26 +141,15 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
 ///
 /// Get audience
 /// Get a specific audience given the audience ID.
+///  @param audienceId Audience ID. 
+///
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param audienceId Unique identifier of an audience 
+///  @returns OAIAdAccountsAudience*
 ///
-///  @returns OAIAudience*
-///
--(NSURLSessionTask*) audiencesGetWithAdAccountId: (NSString*) adAccountId
-    audienceId: (NSString*) audienceId
-    completionHandler: (void (^)(OAIAudience* output, NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
+-(NSURLSessionTask*) audiencesGetWithAudienceId: (NSString*) audienceId
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAIAdAccountsAudience* output, NSError* error)) handler {
     // verify the required parameter 'audienceId' is set
     if (audienceId == nil) {
         NSParameterAssert(audienceId);
@@ -170,14 +161,25 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
         return nil;
     }
 
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/audiences/{audience_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (adAccountId != nil) {
-        pathParams[@"ad_account_id"] = adAccountId;
-    }
     if (audienceId != nil) {
         pathParams[@"audience_id"] = audienceId;
+    }
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -213,10 +215,10 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIAudience*"
+                              responseType: @"OAIAdAccountsAudience*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIAudience*)data, error);
+                                    handler((OAIAdAccountsAudience*)data, error);
                                 }
                             }];
 }
@@ -228,19 +230,22 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///
-///  @param ownershipType Filter audiences by ownership type. (optional, default to @"OWNED")
+///  @param ownershipType  (optional)
+///
+///  @param excludeNca When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional, default to @(NO))
 ///
 ///  @returns OAIAudiencesList200Response*
 ///
 -(NSURLSessionTask*) audiencesListWithAdAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
-    order: (NSString*) order
     pageSize: (NSNumber*) pageSize
-    ownershipType: (NSString*) ownershipType
+    order: (OAIPinterestLibPaginationOrder) order
+    ownershipType: (OAIAudienceOwnershipType) ownershipType
+    excludeNca: (NSNumber*) excludeNca
     completionHandler: (void (^)(OAIAudiencesList200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -264,14 +269,17 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
     }
-    if (order != nil) {
-        queryParams[@"order"] = order;
-    }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
     }
+    if (order != nil) {
+        queryParams[@"order"] = order;
+    }
     if (ownershipType != nil) {
         queryParams[@"ownership_type"] = ownershipType;
+    }
+    if (excludeNca != nil) {
+        queryParams[@"exclude_nca"] = [excludeNca isEqual:@(YES)] ? @"true" : @"false";
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -315,30 +323,19 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
 
 ///
 /// Update audience
-/// Update (edit or remove) an existing targeting audience.
+/// Update an existing audience for the ad account.
+///  @param audienceId Audience ID. 
+///
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param audienceId Unique identifier of an audience 
+///  @param adAccountsAudienceUpdate  
 ///
-///  @param audienceUpdateRequest The audience to be updated. 
+///  @returns OAIAdAccountsAudience*
 ///
-///  @returns OAIAudience*
-///
--(NSURLSessionTask*) audiencesUpdateWithAdAccountId: (NSString*) adAccountId
-    audienceId: (NSString*) audienceId
-    audienceUpdateRequest: (OAIAudienceUpdateRequest*) audienceUpdateRequest
-    completionHandler: (void (^)(OAIAudience* output, NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
+-(NSURLSessionTask*) audiencesUpdateWithAudienceId: (NSString*) audienceId
+    adAccountId: (NSString*) adAccountId
+    adAccountsAudienceUpdate: (OAIAdAccountsAudienceUpdate*) adAccountsAudienceUpdate
+    completionHandler: (void (^)(OAIAdAccountsAudience* output, NSError* error)) handler {
     // verify the required parameter 'audienceId' is set
     if (audienceId == nil) {
         NSParameterAssert(audienceId);
@@ -350,11 +347,22 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'audienceUpdateRequest' is set
-    if (audienceUpdateRequest == nil) {
-        NSParameterAssert(audienceUpdateRequest);
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"audienceUpdateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'adAccountsAudienceUpdate' is set
+    if (adAccountsAudienceUpdate == nil) {
+        NSParameterAssert(adAccountsAudienceUpdate);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountsAudienceUpdate"] };
             NSError* error = [NSError errorWithDomain:kOAIAudiencesApiErrorDomain code:kOAIAudiencesApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -364,11 +372,11 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/audiences/{audience_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (adAccountId != nil) {
-        pathParams[@"ad_account_id"] = adAccountId;
-    }
     if (audienceId != nil) {
         pathParams[@"audience_id"] = audienceId;
+    }
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -392,7 +400,7 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = audienceUpdateRequest;
+    bodyParam = adAccountsAudienceUpdate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -405,10 +413,10 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIAudience*"
+                              responseType: @"OAIAdAccountsAudience*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIAudience*)data, error);
+                                    handler((OAIAdAccountsAudience*)data, error);
                                 }
                             }];
 }

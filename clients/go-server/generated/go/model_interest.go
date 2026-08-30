@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,14 +18,15 @@ type Interest struct {
 
 	CanonicalUrl string `json:"canonical_url,omitempty"`
 
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
 	Key string `json:"key,omitempty"`
 
 	Name string `json:"name,omitempty"`
 }
 
-// AssertInterestRequired checks if the required fields are not zero-ed
+// AssertInterestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertInterestRequired(obj Interest) error {
 	return nil
 }

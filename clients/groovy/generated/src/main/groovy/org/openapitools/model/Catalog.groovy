@@ -8,13 +8,13 @@ import org.openapitools.model.CatalogsType;
 @Canonical
 class Catalog {
     
+    CatalogsType catalogType
+    
     Date createdAt
     /* ID of the catalog entity. */
     String id
-    
-    Date updatedAt
-    
-    CatalogsType catalogType
     /* A human-friendly name associated to a catalog entity. */
     String name
+    
+    Date updatedAt
 }

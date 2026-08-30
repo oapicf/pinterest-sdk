@@ -5,7 +5,7 @@
 -export_type([openapi_create_membership_or_partnership_invites_body/0]).
 
 -type openapi_create_membership_or_partnership_invites_body() ::
-    #{ 'business_role' := binary(),
+    #{ 'business_role' := openapi_business_role_for_invite:openapi_business_role_for_invite(),
        'invite_type' := openapi_invite_type:openapi_invite_type(),
        'members' => list(),
        'partners' => list()

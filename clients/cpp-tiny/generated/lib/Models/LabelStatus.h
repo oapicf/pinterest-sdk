@@ -2,7 +2,7 @@
 /*
  * LabelStatus.h
  *
- * The new status you want to give the label, either &#x60;ACTIVE&#x60; (in use) or no longer in use (&#x60;ARCHIVED&#x60;).
+ * Label status values.
  */
 
 #ifndef TINY_CPP_CLIENT_LabelStatus_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).
+/*! \brief Label status values.
  *
  *  \ingroup Models
  *

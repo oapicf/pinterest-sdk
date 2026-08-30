@@ -12,7 +12,13 @@
     },
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailItemResponse_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      },
       "doc": ""
     },
     {
@@ -20,6 +26,17 @@
       "type": ["null", "string"],
       "doc": "The catalog retail item id in the merchant namespace",
       "default": null
+    },
+    {
+      "name": "item_response_kind",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailItemResponse_itemUnderscoreresponseUnderscorekind",
+        "symbols": [
+          "retail_item"
+        ]
+      },
+      "doc": "Discriminator literal identifying this leaf inside an `ItemResponse` payload."
     },
     {
       "name": "pins",

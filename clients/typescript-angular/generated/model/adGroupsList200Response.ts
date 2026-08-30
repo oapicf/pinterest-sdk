@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AdGroupResponse } from './adGroupResponse';
+import { AdGroup } from './adGroup';
 
 
 export interface AdGroupsList200Response { 
     bookmark?: string | null;
-    items: Array<AdGroupResponse>;
+    items: Array<AdGroup>;
 }
 

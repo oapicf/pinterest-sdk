@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AssetTypeResponse
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,7 +32,7 @@ import com.squareup.moshi.JsonClass
  * An object containing the permissions a business partner has on the asset.
  *
  * @param assetId Unique identifier of a business asset.
- * @param assetType Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * @param assetType 
  * @param partnerId Unique identifier of a business partner.
  * @param permissions Permission levels member or partner has on an asset.
  */
@@ -35,9 +44,8 @@ data class UpdatePartnerAssetsResult (
     @Json(name = "asset_id")
     val assetId: kotlin.String? = null,
 
-    /* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     @Json(name = "asset_type")
-    val assetType: kotlin.String? = null,
+    val assetType: AssetTypeResponse? = null,
 
     /* Unique identifier of a business partner. */
     @Json(name = "partner_id")

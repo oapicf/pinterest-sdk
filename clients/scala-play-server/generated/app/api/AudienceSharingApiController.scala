@@ -4,20 +4,25 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
+import model.AdAccountToAdAccountSharedAudience
+import model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+import model.AdAccountToBusinessSharedAudience
+import model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 import model.AdAccountsAudiencesSharedAccountsList200Response
 import model.AudienceAccountType
-import model.AudiencesList200Response
-import model.BusinessSharedAudience
-import model.BusinessSharedAudienceResponse
+import model.BusinessToAdAccountSharedAudience
+import model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+import model.BusinessToBusinessSharedAudience
+import model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
 import model.Error
-import model.SharedAudience
-import model.SharedAudienceResponse
+import model.Order
+import model.SharedAudiencesForBusinessList200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class AudienceSharingApiController @Inject()(cc: ControllerComponents, api: AudienceSharingApi) extends AbstractController(cc) {
   /**
-    * GET /v5/ad_accounts/:adAccountId/audiences/shared/accounts?audienceId=[value]&accountType=[value]&pageSize=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/audiences/shared/accounts?audienceId=[value]&accountType=[value]&bookmark=[value]&pageSize=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def adAccountsAudiencesSharedAccountsList(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -33,12 +38,12 @@ class AudienceSharingApiController @Inject()(cc: ControllerComponents, api: Audi
           throw new OpenApiExceptions.MissingRequiredParameterException("account_type", "query string")
         }
         
+      val bookmark = request.getQueryString("bookmark")
+        
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val bookmark = request.getQueryString("bookmark")
-        
-      api.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark)
+      api.adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -47,7 +52,7 @@ class AudienceSharingApiController @Inject()(cc: ControllerComponents, api: Audi
   }
 
   /**
-    * GET /v5/businesses/:businessId/audiences/shared/accounts?audienceId=[value]&accountType=[value]&pageSize=[value]&bookmark=[value]
+    * GET /v5/businesses/:businessId/audiences/shared/accounts?audienceId=[value]&accountType=[value]&bookmark=[value]&pageSize=[value]
     * @param businessId Unique identifier of the requesting business.
     */
   def businessAccountAudiencesSharedAccountsList(businessId: String): Action[AnyContent] = Action { request =>
@@ -63,12 +68,12 @@ class AudienceSharingApiController @Inject()(cc: ControllerComponents, api: Audi
           throw new OpenApiExceptions.MissingRequiredParameterException("account_type", "query string")
         }
         
+      val bookmark = request.getQueryString("bookmark")
+        
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val bookmark = request.getQueryString("bookmark")
-        
-      api.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark)
+      api.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -77,19 +82,20 @@ class AudienceSharingApiController @Inject()(cc: ControllerComponents, api: Audi
   }
 
   /**
-    * GET /v5/businesses/:businessId/audiences?bookmark=[value]&order=[value]&pageSize=[value]
+    * GET /v5/businesses/:businessId/audiences?order=[value]&bookmark=[value]&pageSize=[value]
     * @param businessId Unique identifier of the requesting business.
     */
   def sharedAudiencesForBusinessList(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): AudiencesList200Response = {
-      val bookmark = request.getQueryString("bookmark")
-        
+    def executeApi(): SharedAudiencesForBusinessList200Response = {
       val order = request.getQueryString("order")
+        .map(value => )
+        
+      val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      api.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize)
+      api.sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -102,11 +108,11 @@ class AudienceSharingApiController @Inject()(cc: ControllerComponents, api: Audi
     * @param adAccountId Unique identifier of an ad account.
     */
   def updateAdAccountToAdAccountSharedAudience(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): SharedAudienceResponse = {
-      val sharedAudience = request.body.asJson.map(_.as[SharedAudience]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "sharedAudience")
+    def executeApi(): AdAccountToAdAccountSharedAudience = {
+      val adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = request.body.asJson.map(_.as[AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adAccountToAdAccountSharedAudienceUpdateWithRequiredBody")
       }
-      api.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
+      api.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
     }
 
     val result = executeApi()
@@ -119,11 +125,11 @@ class AudienceSharingApiController @Inject()(cc: ControllerComponents, api: Audi
     * @param adAccountId Unique identifier of an ad account.
     */
   def updateAdAccountToBusinessSharedAudience(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): BusinessSharedAudienceResponse = {
-      val businessSharedAudience = request.body.asJson.map(_.as[BusinessSharedAudience]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "businessSharedAudience")
+    def executeApi(): AdAccountToBusinessSharedAudience = {
+      val adAccountToBusinessSharedAudienceUpdateWithRequiredBody = request.body.asJson.map(_.as[AdAccountToBusinessSharedAudienceUpdateWithRequiredBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adAccountToBusinessSharedAudienceUpdateWithRequiredBody")
       }
-      api.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
+      api.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
     }
 
     val result = executeApi()
@@ -136,11 +142,11 @@ class AudienceSharingApiController @Inject()(cc: ControllerComponents, api: Audi
     * @param businessId Unique identifier of the requesting business.
     */
   def updateBusinessToAdAccountSharedAudience(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): SharedAudienceResponse = {
-      val sharedAudience = request.body.asJson.map(_.as[SharedAudience]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "sharedAudience")
+    def executeApi(): BusinessToAdAccountSharedAudience = {
+      val businessToAdAccountSharedAudienceUpdateWithRequiredBody = request.body.asJson.map(_.as[BusinessToAdAccountSharedAudienceUpdateWithRequiredBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "businessToAdAccountSharedAudienceUpdateWithRequiredBody")
       }
-      api.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience)
+      api.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody)
     }
 
     val result = executeApi()
@@ -153,11 +159,11 @@ class AudienceSharingApiController @Inject()(cc: ControllerComponents, api: Audi
     * @param businessId Unique identifier of the requesting business.
     */
   def updateBusinessToBusinessSharedAudience(businessId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): BusinessSharedAudienceResponse = {
-      val businessSharedAudience = request.body.asJson.map(_.as[BusinessSharedAudience]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "businessSharedAudience")
+    def executeApi(): BusinessToBusinessSharedAudience = {
+      val businessToBusinessSharedAudienceUpdateWithRequiredBody = request.body.asJson.map(_.as[BusinessToBusinessSharedAudienceUpdateWithRequiredBody]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "businessToBusinessSharedAudienceUpdateWithRequiredBody")
       }
-      api.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience)
+      api.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody)
     }
 
     val result = executeApi()

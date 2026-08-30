@@ -217,12 +217,3 @@ Name | Type | Description | Notes
 **WEIGHT_UNIT_INVALID** | **Number** | Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit. | [optional] 
 
 
-
-## Enum: FETCHSAMESIGNATUREEnum
-
-
-* `1` (value: `1`)
-
-
-
-

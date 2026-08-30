@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **NSString*** | Unique identifier of the invite/request. | [optional] 
-**inviteData** | [**OAIBaseInviteDataResponseInviteData***](OAIBaseInviteDataResponseInviteData.md) |  | [optional] 
+**inviteData** | [**OAIInviteDataResponse***](OAIInviteDataResponse.md) |  | [optional] 
 **isReceivedInvite** | **NSNumber*** | Indicates whether the invite/request was received. | [optional] 
 **user** | [**OAIBusinessAccessUserSummary***](OAIBusinessAccessUserSummary.md) | Metadata for the member/partner that was sent the invite/request. | [optional] 
 

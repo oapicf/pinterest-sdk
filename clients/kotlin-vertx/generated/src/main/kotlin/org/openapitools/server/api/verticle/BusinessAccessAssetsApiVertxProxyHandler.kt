@@ -16,24 +16,26 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
+import org.openapitools.server.api.model.AssetGroupDeletion
+import org.openapitools.server.api.model.AssetGroupDeletionDelete
+import org.openapitools.server.api.model.AssetGroupInput
+import org.openapitools.server.api.model.AssetGroupInputCreate
+import org.openapitools.server.api.model.AssetGroupModification
+import org.openapitools.server.api.model.AssetGroupModificationReadOrUpdate
+import org.openapitools.server.api.model.AssetPermissionType
+import org.openapitools.server.api.model.AssetSearchBy
+import org.openapitools.server.api.model.AssetSortBy
 import org.openapitools.server.api.model.BusinessAssetMembersGet200Response
-import org.openapitools.server.api.model.BusinessAssetPartnersGet200Response
 import org.openapitools.server.api.model.BusinessAssetsGet200Response
-import org.openapitools.server.api.model.BusinessMemberAssetsGet200Response
-import org.openapitools.server.api.model.BusinessMembersAssetAccessDeleteRequest
+import org.openapitools.server.api.model.BusinessMemberAssetsGetResponse
+import org.openapitools.server.api.model.BusinessMembersAssetAccessDeleteBody
 import org.openapitools.server.api.model.BusinessPartnerAssetAccessGet200Response
-import org.openapitools.server.api.model.CreateAssetGroupBody
-import org.openapitools.server.api.model.CreateAssetGroupResponse
-import org.openapitools.server.api.model.DeleteAssetGroupBody
-import org.openapitools.server.api.model.DeleteAssetGroupResponse
 import org.openapitools.server.api.model.DeleteMemberAccessResultsResponseArray
 import org.openapitools.server.api.model.DeletePartnerAssetAccessBody
-import org.openapitools.server.api.model.DeletePartnerAssetsResultsResponseArray
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.PartnerType
+import org.openapitools.server.api.model.DeletePartnerAssetAccessResultsResponseArray
+import org.openapitools.server.api.model.NonDraftEntityStatus
 import org.openapitools.server.api.model.PermissionsWithOwner
-import org.openapitools.server.api.model.UpdateAssetGroupBody
-import org.openapitools.server.api.model.UpdateAssetGroupResponse
+import org.openapitools.server.api.model.PinterestLibError
 import org.openapitools.server.api.model.UpdateMemberAssetAccessBody
 import org.openapitools.server.api.model.UpdateMemberAssetsResultsResponseArray
 import org.openapitools.server.api.model.UpdatePartnerAssetAccessBody
@@ -91,13 +93,13 @@ class BusinessAccessAssetsApiVertxProxyHandler(private val vertx: Vertx, private
                     if(businessId == null){
                         throw IllegalArgumentException("businessId is required")
                     }
-                    val createAssetGroupBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (createAssetGroupBodyParam == null) {
-                        throw IllegalArgumentException("createAssetGroupBody is required")
+                    val assetGroupInputCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (assetGroupInputCreateParam == null) {
+                        throw IllegalArgumentException("assetGroupInputCreate is required")
                     }
-                    val createAssetGroupBody = Gson().fromJson(createAssetGroupBodyParam.encode(), CreateAssetGroupBody::class.java)
+                    val assetGroupInputCreate = Gson().fromJson(assetGroupInputCreateParam.encode(), AssetGroupInputCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.assetGroupCreate(businessId,createAssetGroupBody,context)
+                        val result = service.assetGroupCreate(businessId,assetGroupInputCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -112,13 +114,13 @@ class BusinessAccessAssetsApiVertxProxyHandler(private val vertx: Vertx, private
                     if(businessId == null){
                         throw IllegalArgumentException("businessId is required")
                     }
-                    val deleteAssetGroupBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (deleteAssetGroupBodyParam == null) {
-                        throw IllegalArgumentException("deleteAssetGroupBody is required")
+                    val assetGroupDeletionDeleteParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (assetGroupDeletionDeleteParam == null) {
+                        throw IllegalArgumentException("assetGroupDeletionDelete is required")
                     }
-                    val deleteAssetGroupBody = Gson().fromJson(deleteAssetGroupBodyParam.encode(), DeleteAssetGroupBody::class.java)
+                    val assetGroupDeletionDelete = Gson().fromJson(assetGroupDeletionDeleteParam.encode(), AssetGroupDeletionDelete::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.assetGroupDelete(businessId,deleteAssetGroupBody,context)
+                        val result = service.assetGroupDelete(businessId,assetGroupDeletionDelete,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -133,13 +135,13 @@ class BusinessAccessAssetsApiVertxProxyHandler(private val vertx: Vertx, private
                     if(businessId == null){
                         throw IllegalArgumentException("businessId is required")
                     }
-                    val updateAssetGroupBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (updateAssetGroupBodyParam == null) {
-                        throw IllegalArgumentException("updateAssetGroupBody is required")
+                    val assetGroupModificationReadOrUpdateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (assetGroupModificationReadOrUpdateParam == null) {
+                        throw IllegalArgumentException("assetGroupModificationReadOrUpdate is required")
                     }
-                    val updateAssetGroupBody = Gson().fromJson(updateAssetGroupBodyParam.encode(), UpdateAssetGroupBody::class.java)
+                    val assetGroupModificationReadOrUpdate = Gson().fromJson(assetGroupModificationReadOrUpdateParam.encode(), AssetGroupModificationReadOrUpdate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.assetGroupUpdate(businessId,updateAssetGroupBody,context)
+                        val result = service.assetGroupUpdate(businessId,assetGroupModificationReadOrUpdate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -158,12 +160,12 @@ class BusinessAccessAssetsApiVertxProxyHandler(private val vertx: Vertx, private
                     if(assetId == null){
                         throw IllegalArgumentException("assetId is required")
                     }
+                    val startIndex = ApiHandlerUtils.searchIntegerInJson(params,"start_index")
                     val fetchSystemUsers = ApiHandlerUtils.searchStringInJson(params,"fetch_system_users")?.toBoolean()
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val startIndex = ApiHandlerUtils.searchIntegerInJson(params,"start_index")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.businessAssetMembersGet(businessId,assetId,fetchSystemUsers,bookmark,pageSize,startIndex,context)
+                        val result = service.businessAssetMembersGet(businessId,assetId,startIndex,fetchSystemUsers,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -233,10 +235,22 @@ class BusinessAccessAssetsApiVertxProxyHandler(private val vertx: Vertx, private
                     }
                     val assetType = ApiHandlerUtils.searchStringInJson(params,"asset_type")
                     val startIndex = ApiHandlerUtils.searchIntegerInJson(params,"start_index")
+                    val sortByParam = ApiHandlerUtils.searchJsonObjectInJson(params,"sort_by")
+                    val sortBy = if(sortByParam ==null) null else Gson().fromJson(sortByParam.encode(), AssetSortBy::class.java)
+                    val sortAscending = ApiHandlerUtils.searchStringInJson(params,"sort_ascending")?.toBoolean()
+                    val searchByParam = ApiHandlerUtils.searchJsonObjectInJson(params,"search_by")
+                    val searchBy = if(searchByParam ==null) null else Gson().fromJson(searchByParam.encode(), AssetSearchBy::class.java)
+                    val searchValue = ApiHandlerUtils.searchStringInJson(params,"search_value")
+                    val assetPermissionTypeParam = ApiHandlerUtils.searchJsonObjectInJson(params,"asset_permission_type")
+                    val assetPermissionType = if(assetPermissionTypeParam ==null) null else Gson().fromJson(assetPermissionTypeParam.encode(), AssetPermissionType::class.java)
+                    val adAccountStatusesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"ad_account_statuses")
+                    val adAccountStatuses:kotlin.Array<NonDraftEntityStatus>? = if(adAccountStatusesParam == null) null
+                            else Gson().fromJson(adAccountStatusesParam.encode(),
+                            , object : TypeToken<kotlin.collections.List<NonDraftEntityStatus>>(){}.type)
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.businessMemberAssetsGet(businessId,memberId,assetType,startIndex,bookmark,pageSize,context)
+                        val result = service.businessMemberAssetsGet(businessId,memberId,assetType,startIndex,sortBy,sortAscending,searchBy,searchValue,assetPermissionType,adAccountStatuses,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -251,13 +265,13 @@ class BusinessAccessAssetsApiVertxProxyHandler(private val vertx: Vertx, private
                     if(businessId == null){
                         throw IllegalArgumentException("businessId is required")
                     }
-                    val businessMembersAssetAccessDeleteRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (businessMembersAssetAccessDeleteRequestParam == null) {
-                        throw IllegalArgumentException("businessMembersAssetAccessDeleteRequest is required")
+                    val businessMembersAssetAccessDeleteBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (businessMembersAssetAccessDeleteBodyParam == null) {
+                        throw IllegalArgumentException("businessMembersAssetAccessDeleteBody is required")
                     }
-                    val businessMembersAssetAccessDeleteRequest = Gson().fromJson(businessMembersAssetAccessDeleteRequestParam.encode(), BusinessMembersAssetAccessDeleteRequest::class.java)
+                    val businessMembersAssetAccessDeleteBody = Gson().fromJson(businessMembersAssetAccessDeleteBodyParam.encode(), BusinessMembersAssetAccessDeleteBody::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.businessMembersAssetAccessDelete(businessId,businessMembersAssetAccessDeleteRequest,context)
+                        val result = service.businessMembersAssetAccessDelete(businessId,businessMembersAssetAccessDeleteBody,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -297,14 +311,19 @@ class BusinessAccessAssetsApiVertxProxyHandler(private val vertx: Vertx, private
                     if(partnerId == null){
                         throw IllegalArgumentException("partnerId is required")
                     }
-                    val partnerTypeParam = ApiHandlerUtils.searchJsonObjectInJson(params,"partner_type")
-                    val partnerType = if(partnerTypeParam ==null) null else Gson().fromJson(partnerTypeParam.encode(), PartnerType::class.java)
+                    val partnerType = ApiHandlerUtils.searchStringInJson(params,"partner_type")
                     val assetType = ApiHandlerUtils.searchStringInJson(params,"asset_type")
                     val startIndex = ApiHandlerUtils.searchIntegerInJson(params,"start_index")
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
+                    val sortByParam = ApiHandlerUtils.searchJsonObjectInJson(params,"sort_by")
+                    val sortBy = if(sortByParam ==null) null else Gson().fromJson(sortByParam.encode(), AssetSortBy::class.java)
+                    val sortAscending = ApiHandlerUtils.searchStringInJson(params,"sort_ascending")?.toBoolean()
+                    val searchByParam = ApiHandlerUtils.searchJsonObjectInJson(params,"search_by")
+                    val searchBy = if(searchByParam ==null) null else Gson().fromJson(searchByParam.encode(), AssetSearchBy::class.java)
+                    val searchValue = ApiHandlerUtils.searchStringInJson(params,"search_value")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.businessPartnerAssetAccessGet(businessId,partnerId,partnerType,assetType,startIndex,pageSize,bookmark,context)
+                        val result = service.businessPartnerAssetAccessGet(businessId,partnerId,partnerType,assetType,startIndex,sortBy,sortAscending,searchBy,searchValue,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

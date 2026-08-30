@@ -6,18 +6,21 @@
 
 -type openapi_advanced_auction_items_submit_delete_record() ::
     #{ 'country' := openapi_country:openapi_country(),
+       'errors' => list(),
        'item_id' := binary(),
        'language' := openapi_language:openapi_language(),
-       'errors' => list()
+       'operation' := binary()
      }.
 
 encode(#{ 'country' := Country,
+          'errors' := Errors,
           'item_id' := ItemId,
           'language' := Language,
-          'errors' := Errors
+          'operation' := Operation
         }) ->
     #{ 'country' => Country,
+       'errors' => Errors,
        'item_id' => ItemId,
        'language' => Language,
-       'errors' => Errors
+       'operation' => Operation
      }.

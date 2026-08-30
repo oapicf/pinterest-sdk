@@ -2,32 +2,36 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Demographic detail for a single audience demographic
  */
 
 @Schema(name = "AudienceDemographicValue", description = "Demographic detail for a single audience demographic")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceDemographicValue {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String key;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal ratio;
 
   public AudienceDemographicValue key(@Nullable String key) {
@@ -46,6 +50,7 @@ public class AudienceDemographicValue {
     return key;
   }
 
+  @JsonProperty("key")
   public void setKey(@Nullable String key) {
     this.key = key;
   }
@@ -66,6 +71,7 @@ public class AudienceDemographicValue {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
@@ -86,6 +92,7 @@ public class AudienceDemographicValue {
     return ratio;
   }
 
+  @JsonProperty("ratio")
   public void setRatio(@Nullable BigDecimal ratio) {
     this.ratio = ratio;
   }
@@ -124,11 +131,8 @@ public class AudienceDemographicValue {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

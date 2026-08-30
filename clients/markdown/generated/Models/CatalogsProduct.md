@@ -3,7 +3,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **catalog\_type** | [**CatalogsType**](CatalogsType.md) |  | [default to null] |
+| **catalog\_type** | **String** |  | [default to null] |
 | **metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | [default to null] |
 | **pin** | [**Pin**](Pin.md) |  | [default to null] |
 

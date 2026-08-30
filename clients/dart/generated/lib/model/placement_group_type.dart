@@ -11,33 +11,31 @@
 part of openapi.api;
 
 /// Campaign placement group type
-class PlacementGroupType {
-  /// Instantiate a new enum with the provided [value].
-  const PlacementGroupType._(this.value);
+enum PlacementGroupType {
+  ALL._(r'ALL'),
+  SEARCH._(r'SEARCH'),
+  BROWSE._(r'BROWSE'),
+  OTHER._(r'OTHER'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PlacementGroupType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ALL = PlacementGroupType._(r'ALL');
-  static const SEARCH = PlacementGroupType._(r'SEARCH');
-  static const BROWSE = PlacementGroupType._(r'BROWSE');
-  static const OTHER = PlacementGroupType._(r'OTHER');
-
-  /// List of all possible values in this [enum][PlacementGroupType].
-  static const values = <PlacementGroupType>[
-    ALL,
-    SEARCH,
-    BROWSE,
-    OTHER,
-  ];
-
+  /// Returns the instance of [PlacementGroupType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PlacementGroupType? fromJson(dynamic value) => PlacementGroupTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PlacementGroupType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PlacementGroupType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PlacementGroupType>[];
     if (json is List && json.isNotEmpty) {
@@ -59,9 +57,11 @@ class PlacementGroupTypeTypeTransformer {
 
   const PlacementGroupTypeTypeTransformer._();
 
-  String encode(PlacementGroupType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(PlacementGroupType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PlacementGroupType.
+  /// Returns the instance of [PlacementGroupType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -70,6 +70,9 @@ class PlacementGroupTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PlacementGroupType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PlacementGroupType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ALL': return PlacementGroupType.ALL;
@@ -85,7 +88,7 @@ class PlacementGroupTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [PlacementGroupTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PlacementGroupTypeTypeTransformer? _instance;
 }
 

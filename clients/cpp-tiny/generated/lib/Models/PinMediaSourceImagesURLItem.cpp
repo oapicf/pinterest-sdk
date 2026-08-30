@@ -127,7 +127,7 @@ PinMediaSourceImagesURLItem::getDescription()
 }
 
 void
-PinMediaSourceImagesURLItem::setDescription(std::string  description)
+PinMediaSourceImagesURLItem::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -139,7 +139,7 @@ PinMediaSourceImagesURLItem::getLink()
 }
 
 void
-PinMediaSourceImagesURLItem::setLink(std::string  link)
+PinMediaSourceImagesURLItem::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -151,7 +151,7 @@ PinMediaSourceImagesURLItem::getTitle()
 }
 
 void
-PinMediaSourceImagesURLItem::setTitle(std::string  title)
+PinMediaSourceImagesURLItem::setTitle(std::string title)
 {
 	this->title = title;
 }
@@ -163,7 +163,7 @@ PinMediaSourceImagesURLItem::getUrl()
 }
 
 void
-PinMediaSourceImagesURLItem::setUrl(std::string  url)
+PinMediaSourceImagesURLItem::setUrl(std::string url)
 {
 	this->url = url;
 }

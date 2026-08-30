@@ -25,7 +25,7 @@ public class MediaUpload  {
   @ApiModelProperty(example = "12345", required = true, value = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")
   private String mediaId;
 
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "video", required = true, value = "")
   @Valid
   private MediaUploadType mediaType;
 
@@ -184,10 +184,7 @@ public class MediaUpload  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

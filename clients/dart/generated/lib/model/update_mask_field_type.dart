@@ -11,123 +11,76 @@
 part of openapi.api;
 
 /// The field types supported by the update mask
-class UpdateMaskFieldType {
-  /// Instantiate a new enum with the provided [value].
-  const UpdateMaskFieldType._(this.value);
+enum UpdateMaskFieldType {
+  adLink._(r'ad_link'),
+  adult._(r'adult'),
+  ageGroup._(r'age_group'),
+  availability._(r'availability'),
+  averageReviewRating._(r'average_review_rating'),
+  brand._(r'brand'),
+  checkoutEnabled._(r'checkout_enabled'),
+  color._(r'color'),
+  condition._(r'condition'),
+  customLabel0._(r'custom_label_0'),
+  customLabel1._(r'custom_label_1'),
+  customLabel2._(r'custom_label_2'),
+  customLabel3._(r'custom_label_3'),
+  customLabel4._(r'custom_label_4'),
+  customNumber0._(r'custom_number_0'),
+  customNumber1._(r'custom_number_1'),
+  customNumber2._(r'custom_number_2'),
+  customNumber3._(r'custom_number_3'),
+  customNumber4._(r'custom_number_4'),
+  description._(r'description'),
+  freeShippingLabel._(r'free_shipping_label'),
+  freeShippingLimit._(r'free_shipping_limit'),
+  gender._(r'gender'),
+  googleProductCategory._(r'google_product_category'),
+  gtin._(r'gtin'),
+  itemGroupId._(r'item_group_id'),
+  lastUpdatedTime._(r'last_updated_time'),
+  link._(r'link'),
+  material._(r'material'),
+  minAdPrice._(r'min_ad_price'),
+  mpn._(r'mpn'),
+  numberOfRatings._(r'number_of_ratings'),
+  numberOfReviews._(r'number_of_reviews'),
+  pattern._(r'pattern'),
+  price._(r'price'),
+  productType._(r'product_type'),
+  salePrice._(r'sale_price'),
+  shipping._(r'shipping'),
+  shippingHeight._(r'shipping_height'),
+  shippingWeight._(r'shipping_weight'),
+  shippingWidth._(r'shipping_width'),
+  size._(r'size'),
+  sizeSystem._(r'size_system'),
+  sizeType._(r'size_type'),
+  tax._(r'tax'),
+  title._(r'title'),
+  variantNames._(r'variant_names'),
+  variantValues._(r'variant_values'),
+  promotionId._(r'promotion_id'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const UpdateMaskFieldType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const adLink = UpdateMaskFieldType._(r'ad_link');
-  static const adult = UpdateMaskFieldType._(r'adult');
-  static const ageGroup = UpdateMaskFieldType._(r'age_group');
-  static const availability = UpdateMaskFieldType._(r'availability');
-  static const averageReviewRating = UpdateMaskFieldType._(r'average_review_rating');
-  static const brand = UpdateMaskFieldType._(r'brand');
-  static const checkoutEnabled = UpdateMaskFieldType._(r'checkout_enabled');
-  static const color = UpdateMaskFieldType._(r'color');
-  static const condition = UpdateMaskFieldType._(r'condition');
-  static const customLabel0 = UpdateMaskFieldType._(r'custom_label_0');
-  static const customLabel1 = UpdateMaskFieldType._(r'custom_label_1');
-  static const customLabel2 = UpdateMaskFieldType._(r'custom_label_2');
-  static const customLabel3 = UpdateMaskFieldType._(r'custom_label_3');
-  static const customLabel4 = UpdateMaskFieldType._(r'custom_label_4');
-  static const customNumber0 = UpdateMaskFieldType._(r'custom_number_0');
-  static const customNumber1 = UpdateMaskFieldType._(r'custom_number_1');
-  static const customNumber2 = UpdateMaskFieldType._(r'custom_number_2');
-  static const customNumber3 = UpdateMaskFieldType._(r'custom_number_3');
-  static const customNumber4 = UpdateMaskFieldType._(r'custom_number_4');
-  static const description = UpdateMaskFieldType._(r'description');
-  static const freeShippingLabel = UpdateMaskFieldType._(r'free_shipping_label');
-  static const freeShippingLimit = UpdateMaskFieldType._(r'free_shipping_limit');
-  static const gender = UpdateMaskFieldType._(r'gender');
-  static const googleProductCategory = UpdateMaskFieldType._(r'google_product_category');
-  static const gtin = UpdateMaskFieldType._(r'gtin');
-  static const itemGroupId = UpdateMaskFieldType._(r'item_group_id');
-  static const lastUpdatedTime = UpdateMaskFieldType._(r'last_updated_time');
-  static const link = UpdateMaskFieldType._(r'link');
-  static const material = UpdateMaskFieldType._(r'material');
-  static const minAdPrice = UpdateMaskFieldType._(r'min_ad_price');
-  static const mpn = UpdateMaskFieldType._(r'mpn');
-  static const numberOfRatings = UpdateMaskFieldType._(r'number_of_ratings');
-  static const numberOfReviews = UpdateMaskFieldType._(r'number_of_reviews');
-  static const pattern = UpdateMaskFieldType._(r'pattern');
-  static const price = UpdateMaskFieldType._(r'price');
-  static const productType = UpdateMaskFieldType._(r'product_type');
-  static const salePrice = UpdateMaskFieldType._(r'sale_price');
-  static const shipping = UpdateMaskFieldType._(r'shipping');
-  static const shippingHeight = UpdateMaskFieldType._(r'shipping_height');
-  static const shippingWeight = UpdateMaskFieldType._(r'shipping_weight');
-  static const shippingWidth = UpdateMaskFieldType._(r'shipping_width');
-  static const size = UpdateMaskFieldType._(r'size');
-  static const sizeSystem = UpdateMaskFieldType._(r'size_system');
-  static const sizeType = UpdateMaskFieldType._(r'size_type');
-  static const tax = UpdateMaskFieldType._(r'tax');
-  static const title = UpdateMaskFieldType._(r'title');
-  static const variantNames = UpdateMaskFieldType._(r'variant_names');
-  static const variantValues = UpdateMaskFieldType._(r'variant_values');
-  static const promotionId = UpdateMaskFieldType._(r'promotion_id');
-
-  /// List of all possible values in this [enum][UpdateMaskFieldType].
-  static const values = <UpdateMaskFieldType>[
-    adLink,
-    adult,
-    ageGroup,
-    availability,
-    averageReviewRating,
-    brand,
-    checkoutEnabled,
-    color,
-    condition,
-    customLabel0,
-    customLabel1,
-    customLabel2,
-    customLabel3,
-    customLabel4,
-    customNumber0,
-    customNumber1,
-    customNumber2,
-    customNumber3,
-    customNumber4,
-    description,
-    freeShippingLabel,
-    freeShippingLimit,
-    gender,
-    googleProductCategory,
-    gtin,
-    itemGroupId,
-    lastUpdatedTime,
-    link,
-    material,
-    minAdPrice,
-    mpn,
-    numberOfRatings,
-    numberOfReviews,
-    pattern,
-    price,
-    productType,
-    salePrice,
-    shipping,
-    shippingHeight,
-    shippingWeight,
-    shippingWidth,
-    size,
-    sizeSystem,
-    sizeType,
-    tax,
-    title,
-    variantNames,
-    variantValues,
-    promotionId,
-  ];
-
+  /// Returns the instance of [UpdateMaskFieldType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static UpdateMaskFieldType? fromJson(dynamic value) => UpdateMaskFieldTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [UpdateMaskFieldType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<UpdateMaskFieldType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpdateMaskFieldType>[];
     if (json is List && json.isNotEmpty) {
@@ -149,9 +102,11 @@ class UpdateMaskFieldTypeTypeTransformer {
 
   const UpdateMaskFieldTypeTypeTransformer._();
 
-  String encode(UpdateMaskFieldType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(UpdateMaskFieldType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a UpdateMaskFieldType.
+  /// Returns the instance of [UpdateMaskFieldType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -160,6 +115,9 @@ class UpdateMaskFieldTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   UpdateMaskFieldType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is UpdateMaskFieldType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ad_link': return UpdateMaskFieldType.adLink;
@@ -220,7 +178,7 @@ class UpdateMaskFieldTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [UpdateMaskFieldTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static UpdateMaskFieldTypeTypeTransformer? _instance;
 }
 

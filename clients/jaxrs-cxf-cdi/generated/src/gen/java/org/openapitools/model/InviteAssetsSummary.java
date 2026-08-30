@@ -7,8 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.InviteAssetsSummaryAdAccountsInner;
-import org.openapitools.model.InviteAssetsSummaryProfilesInner;
+import org.openapitools.model.InviteAssetsSummaryItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,14 +22,14 @@ import java.util.Objects;
 @ApiModel(description = "Ad accounts and profiles the member/partner will be granted access to with this invite/request.")
 public class InviteAssetsSummary   {
   
-  private List<@Valid InviteAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
+  private List<@Valid InviteAssetsSummaryItem> adAccounts = new ArrayList<>();
 
-  private List<@Valid InviteAssetsSummaryProfilesInner> profiles = new ArrayList<>();
+  private List<@Valid InviteAssetsSummaryItem> profiles = new ArrayList<>();
 
   /**
    * List of ad account IDs and respective permission levels that will be assigned.
    **/
-  public InviteAssetsSummary adAccounts(List<@Valid InviteAssetsSummaryAdAccountsInner> adAccounts) {
+  public InviteAssetsSummary adAccounts(List<@Valid InviteAssetsSummaryItem> adAccounts) {
     this.adAccounts = adAccounts;
     return this;
   }
@@ -38,14 +37,14 @@ public class InviteAssetsSummary   {
   
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels that will be assigned.")
   @JsonProperty("ad_accounts")
-  public List<@Valid InviteAssetsSummaryAdAccountsInner> getAdAccounts() {
+  public List<@Valid InviteAssetsSummaryItem> getAdAccounts() {
     return adAccounts;
   }
-  public void setAdAccounts(List<@Valid InviteAssetsSummaryAdAccountsInner> adAccounts) {
+  public void setAdAccounts(List<@Valid InviteAssetsSummaryItem> adAccounts) {
     this.adAccounts = adAccounts;
   }
 
-  public InviteAssetsSummary addAdAccountsItem(InviteAssetsSummaryAdAccountsInner adAccountsItem) {
+  public InviteAssetsSummary addAdAccountsItem(InviteAssetsSummaryItem adAccountsItem) {
     if (this.adAccounts == null) {
       this.adAccounts = new ArrayList<>();
     }
@@ -57,7 +56,7 @@ public class InviteAssetsSummary   {
   /**
    * List of profile IDs and respective permission levels that will be assigned.
    **/
-  public InviteAssetsSummary profiles(List<@Valid InviteAssetsSummaryProfilesInner> profiles) {
+  public InviteAssetsSummary profiles(List<@Valid InviteAssetsSummaryItem> profiles) {
     this.profiles = profiles;
     return this;
   }
@@ -65,14 +64,14 @@ public class InviteAssetsSummary   {
   
   @ApiModelProperty(value = "List of profile IDs and respective permission levels that will be assigned.")
   @JsonProperty("profiles")
-  public List<@Valid InviteAssetsSummaryProfilesInner> getProfiles() {
+  public List<@Valid InviteAssetsSummaryItem> getProfiles() {
     return profiles;
   }
-  public void setProfiles(List<@Valid InviteAssetsSummaryProfilesInner> profiles) {
+  public void setProfiles(List<@Valid InviteAssetsSummaryItem> profiles) {
     this.profiles = profiles;
   }
 
-  public InviteAssetsSummary addProfilesItem(InviteAssetsSummaryProfilesInner profilesItem) {
+  public InviteAssetsSummary addProfilesItem(InviteAssetsSummaryItem profilesItem) {
     if (this.profiles == null) {
       this.profiles = new ArrayList<>();
     }
@@ -116,10 +115,7 @@ public class InviteAssetsSummary   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

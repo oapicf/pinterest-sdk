@@ -9,7 +9,7 @@
 -export_type([openapi_placement_multipliers/0]).
 
 -type openapi_placement_multipliers() ::
-  [ {'PLACEMENT', binary() }
+  [ {'PLACEMENT', openapi_placement_type:openapi_placement_type() }
   ].
 
 
@@ -17,7 +17,7 @@ openapi_placement_multipliers() ->
     openapi_placement_multipliers([]).
 
 openapi_placement_multipliers(Fields) ->
-  Default = [ {'PLACEMENT', elements([<<"SEARCH">>, <<"BROWSE">>, <<"RELATED_PINS">>]) }
+  Default = [ {'PLACEMENT', openapi_placement_type:openapi_placement_type() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

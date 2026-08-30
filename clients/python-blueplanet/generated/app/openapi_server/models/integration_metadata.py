@@ -259,6 +259,7 @@ class IntegrationMetadata(Model):
     def external_business_id(self) -> str:
         """Gets the external_business_id of this IntegrationMetadata.
 
+        External business ID for the integration.  # noqa: E501
 
         :return: The external_business_id of this IntegrationMetadata.
         :rtype: str
@@ -269,6 +270,7 @@ class IntegrationMetadata(Model):
     def external_business_id(self, external_business_id: str):
         """Sets the external_business_id of this IntegrationMetadata.
 
+        External business ID for the integration.  # noqa: E501
 
         :param external_business_id: The external_business_id of this IntegrationMetadata.
         :type external_business_id: str

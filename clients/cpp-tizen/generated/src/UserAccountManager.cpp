@@ -51,14 +51,14 @@ static gpointer __UserAccountManagerthreadFunc(gpointer data)
 static bool boardsUserFollowsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Boards_user_follows_list_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Boards_user_follows_list_200_response, Error, void* )> (voidHandler);
+	void(* handler)(Boards_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Boards_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Boards_user_follows_list_200_response out;
+	Boards_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,38 @@ static bool boardsUserFollowsListProcessor(MemoryStruct_s p_chunk, long code, ch
 
 
 
-		if (isprimitive("Boards_user_follows_list_200_response")) {
+		if (isprimitive("Boards_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Boards_user_follows_list_200_response", "Boards_user_follows_list_200_response");
+			jsonToValue(&out, pJson, "Boards_list_200_response", "Boards_list_200_response");
 			json_node_free(pJson);
 
-			if ("Boards_user_follows_list_200_response" == "std::string") {
+			if ("Boards_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -114,8 +134,8 @@ static bool boardsUserFollowsListProcessor(MemoryStruct_s p_chunk, long code, ch
 }
 
 static bool boardsUserFollowsListHelper(char * accessToken,
-	std::string bookmark, int pageSize, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(Boards_user_follows_list_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, std::string bookmark, int pageSize, 
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -132,6 +152,20 @@ static bool boardsUserFollowsListHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&explicitFollowing, "bool");
+	queryParams.insert(pair<string, string>("explicit_following", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("explicit_following");
+	}
+
+
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
@@ -143,20 +177,6 @@ static bool boardsUserFollowsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&explicitFollowing, "bool");
-	queryParams.insert(pair<string, string>("explicit_following", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("explicit_following");
-	}
-
-
-	itemAtq = stringify(&adAccountId, "std::string");
-	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -213,36 +233,36 @@ static bool boardsUserFollowsListHelper(char * accessToken,
 
 
 bool UserAccountManager::boardsUserFollowsListAsync(char * accessToken,
-	std::string bookmark, int pageSize, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(Boards_user_follows_list_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, std::string bookmark, int pageSize, 
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData)
 {
 	return boardsUserFollowsListHelper(accessToken,
-	bookmark, pageSize, explicitFollowing, adAccountId, 
+	adAccountId, explicitFollowing, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool UserAccountManager::boardsUserFollowsListSync(char * accessToken,
-	std::string bookmark, int pageSize, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(Boards_user_follows_list_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, std::string bookmark, int pageSize, 
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData)
 {
 	return boardsUserFollowsListHelper(accessToken,
-	bookmark, pageSize, explicitFollowing, adAccountId, 
+	adAccountId, explicitFollowing, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool followUserUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(UserSummary, Error, void* )
-	= reinterpret_cast<void(*)(UserSummary, Error, void* )> (voidHandler);
+	void(* handler)(FollowUser, Error, void* )
+	= reinterpret_cast<void(*)(FollowUser, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	UserSummary out;
+	FollowUser out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -250,18 +270,43 @@ static bool followUserUpdateProcessor(MemoryStruct_s p_chunk, long code, char* e
 
 
 
-		if (isprimitive("UserSummary")) {
+		if (isprimitive("FollowUser")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "UserSummary", "UserSummary");
+			jsonToValue(&out, pJson, "FollowUser", "FollowUser");
 			json_node_free(pJson);
 
-			if ("UserSummary" == "std::string") {
+			if ("FollowUser" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -298,8 +343,8 @@ static bool followUserUpdateProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool followUserUpdateHelper(char * accessToken,
-	std::string username, std::shared_ptr<FollowUserRequest> followUserRequest, 
-	void(* handler)(UserSummary, Error, void* )
+	std::string username, std::shared_ptr<FollowUserCreate> followUserCreate, 
+	void(* handler)(FollowUser, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -319,11 +364,11 @@ static bool followUserUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("FollowUserRequest")) {
-		node = converttoJson(&followUserRequest, "FollowUserRequest", "");
+	if (isprimitive("FollowUserCreate")) {
+		node = converttoJson(&followUserCreate, "FollowUserCreate", "");
 	}
 	
-	char *jsonStr =  followUserRequest.toJson();
+	char *jsonStr =  followUserCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -388,22 +433,22 @@ static bool followUserUpdateHelper(char * accessToken,
 
 
 bool UserAccountManager::followUserUpdateAsync(char * accessToken,
-	std::string username, std::shared_ptr<FollowUserRequest> followUserRequest, 
-	void(* handler)(UserSummary, Error, void* )
+	std::string username, std::shared_ptr<FollowUserCreate> followUserCreate, 
+	void(* handler)(FollowUser, Error, void* )
 	, void* userData)
 {
 	return followUserUpdateHelper(accessToken,
-	username, followUserRequest, 
+	username, followUserCreate, 
 	handler, userData, true);
 }
 
 bool UserAccountManager::followUserUpdateSync(char * accessToken,
-	std::string username, std::shared_ptr<FollowUserRequest> followUserRequest, 
-	void(* handler)(UserSummary, Error, void* )
+	std::string username, std::shared_ptr<FollowUserCreate> followUserCreate, 
+	void(* handler)(FollowUser, Error, void* )
 	, void* userData)
 {
 	return followUserUpdateHelper(accessToken,
-	username, followUserRequest, 
+	username, followUserCreate, 
 	handler, userData, false);
 }
 
@@ -437,6 +482,26 @@ static bool followersListProcessor(MemoryStruct_s p_chunk, long code, char* erro
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -718,21 +783,73 @@ bool UserAccountManager::linkedBusinessAccountsGetSync(char * accessToken,
 static bool unverifyWebsiteDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(UserWebsite, Error, void* )
+	= reinterpret_cast<void(*)(UserWebsite, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	UserWebsite out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("UserWebsite")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "UserWebsite", "UserWebsite");
+			json_node_free(pJson);
+
+			if ("UserWebsite" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -743,15 +860,15 @@ static bool unverifyWebsiteDeleteProcessor(MemoryStruct_s p_chunk, long code, ch
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool unverifyWebsiteDeleteHelper(char * accessToken,
 	std::string website, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(UserWebsite, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -825,8 +942,8 @@ static bool unverifyWebsiteDeleteHelper(char * accessToken,
 
 bool UserAccountManager::unverifyWebsiteDeleteAsync(char * accessToken,
 	std::string website, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(UserWebsite, Error, void* )
+	, void* userData)
 {
 	return unverifyWebsiteDeleteHelper(accessToken,
 	website, 
@@ -835,8 +952,8 @@ bool UserAccountManager::unverifyWebsiteDeleteAsync(char * accessToken,
 
 bool UserAccountManager::unverifyWebsiteDeleteSync(char * accessToken,
 	std::string website, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(UserWebsite, Error, void* )
+	, void* userData)
 {
 	return unverifyWebsiteDeleteHelper(accessToken,
 	website, 
@@ -877,7 +994,7 @@ static bool userAccountAnalyticsProcessor(MemoryStruct_s p_chunk, long code, cha
 }
 
 static bool userAccountAnalyticsHelper(char * accessToken,
-	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, std::string splitField, std::string adAccountId, 
+	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -938,8 +1055,8 @@ static bool userAccountAnalyticsHelper(char * accessToken,
 	}
 
 	for (std::list
-	<std::string>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<QuerymetrictypesItems>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "QuerymetrictypesItems");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -1014,7 +1131,7 @@ static bool userAccountAnalyticsHelper(char * accessToken,
 
 
 bool UserAccountManager::userAccountAnalyticsAsync(char * accessToken,
-	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, std::string splitField, std::string adAccountId, 
+	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
@@ -1024,7 +1141,7 @@ bool UserAccountManager::userAccountAnalyticsAsync(char * accessToken,
 }
 
 bool UserAccountManager::userAccountAnalyticsSync(char * accessToken,
-	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, std::string splitField, std::string adAccountId, 
+	Date startDate, Date endDate, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
@@ -1079,6 +1196,26 @@ static bool userAccountAnalyticsTopPinsProcessor(MemoryStruct_s p_chunk, long co
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1099,7 +1236,7 @@ static bool userAccountAnalyticsTopPinsProcessor(MemoryStruct_s p_chunk, long co
 }
 
 static bool userAccountAnalyticsTopPinsHelper(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopPinsAnalyticsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1125,7 +1262,7 @@ static bool userAccountAnalyticsTopPinsHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("end_date", itemAtq));
 
 
-	itemAtq = stringify(&sortBy, "std::string");
+	itemAtq = stringify(&sortBy, "TopPinsSortBy");
 	queryParams.insert(pair<string, string>("sort_by", itemAtq));
 
 
@@ -1164,8 +1301,8 @@ static bool userAccountAnalyticsTopPinsHelper(char * accessToken,
 	}
 
 	for (std::list
-	<std::string>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<QuerymetrictypesItems>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "QuerymetrictypesItems");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -1180,7 +1317,7 @@ static bool userAccountAnalyticsTopPinsHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&createdInLastNDays, "int");
+	itemAtq = stringify(&createdInLastNDays, "long long");
 	queryParams.insert(pair<string, string>("created_in_last_n_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("created_in_last_n_days");
@@ -1247,7 +1384,7 @@ static bool userAccountAnalyticsTopPinsHelper(char * accessToken,
 
 
 bool UserAccountManager::userAccountAnalyticsTopPinsAsync(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopPinsAnalyticsResponse, Error, void* )
 	, void* userData)
 {
@@ -1257,7 +1394,7 @@ bool UserAccountManager::userAccountAnalyticsTopPinsAsync(char * accessToken,
 }
 
 bool UserAccountManager::userAccountAnalyticsTopPinsSync(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QuerymetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopPinsAnalyticsResponse, Error, void* )
 	, void* userData)
 {
@@ -1312,6 +1449,26 @@ static bool userAccountAnalyticsTopVideoPinsProcessor(MemoryStruct_s p_chunk, lo
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1332,7 +1489,7 @@ static bool userAccountAnalyticsTopVideoPinsProcessor(MemoryStruct_s p_chunk, lo
 }
 
 static bool userAccountAnalyticsTopVideoPinsHelper(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopVideoPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QueryvideopinmetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopVideoPinsAnalyticsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1358,7 +1515,7 @@ static bool userAccountAnalyticsTopVideoPinsHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("end_date", itemAtq));
 
 
-	itemAtq = stringify(&sortBy, "std::string");
+	itemAtq = stringify(&sortBy, "TopVideoPinsSortBy");
 	queryParams.insert(pair<string, string>("sort_by", itemAtq));
 
 
@@ -1397,8 +1554,8 @@ static bool userAccountAnalyticsTopVideoPinsHelper(char * accessToken,
 	}
 
 	for (std::list
-	<std::string>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<QueryvideopinmetrictypesItems>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "QueryvideopinmetrictypesItems");
 		if( itemAt.empty()){
 			continue;
 		}
@@ -1413,7 +1570,7 @@ static bool userAccountAnalyticsTopVideoPinsHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&createdInLastNDays, "int");
+	itemAtq = stringify(&createdInLastNDays, "long long");
 	queryParams.insert(pair<string, string>("created_in_last_n_days", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("created_in_last_n_days");
@@ -1480,7 +1637,7 @@ static bool userAccountAnalyticsTopVideoPinsHelper(char * accessToken,
 
 
 bool UserAccountManager::userAccountAnalyticsTopVideoPinsAsync(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopVideoPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QueryvideopinmetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopVideoPinsAnalyticsResponse, Error, void* )
 	, void* userData)
 {
@@ -1490,7 +1647,7 @@ bool UserAccountManager::userAccountAnalyticsTopVideoPinsAsync(char * accessToke
 }
 
 bool UserAccountManager::userAccountAnalyticsTopVideoPinsSync(char * accessToken,
-	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	Date startDate, Date endDate, TopVideoPinsSortBy sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::string contentType, std::string source, std::list<QueryvideopinmetrictypesItems> metricTypes, int numOfPins, long long createdInLastNDays, std::string adAccountId, 
 	void(* handler)(TopVideoPinsAnalyticsResponse, Error, void* )
 	, void* userData)
 {
@@ -1731,6 +1888,26 @@ static bool userAccountGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1851,14 +2028,14 @@ bool UserAccountManager::userAccountGetSync(char * accessToken,
 static bool userFollowingGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(User_following_get_200_response, Error, void* )
-	= reinterpret_cast<void(*)(User_following_get_200_response, Error, void* )> (voidHandler);
+	void(* handler)(Followers_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Followers_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	User_following_get_200_response out;
+	Followers_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1866,18 +2043,43 @@ static bool userFollowingGetProcessor(MemoryStruct_s p_chunk, long code, char* e
 
 
 
-		if (isprimitive("User_following_get_200_response")) {
+		if (isprimitive("Followers_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "User_following_get_200_response", "User_following_get_200_response");
+			jsonToValue(&out, pJson, "Followers_list_200_response", "Followers_list_200_response");
 			json_node_free(pJson);
 
-			if ("User_following_get_200_response" == "std::string") {
+			if ("Followers_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1909,8 +2111,8 @@ static bool userFollowingGetProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool userFollowingGetHelper(char * accessToken,
-	std::string bookmark, int pageSize, UserFollowingFeedType feedType, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(User_following_get_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, UserFollowingFeedType feedType, std::string bookmark, int pageSize, 
+	void(* handler)(Followers_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1927,6 +2129,27 @@ static bool userFollowingGetHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&explicitFollowing, "bool");
+	queryParams.insert(pair<string, string>("explicit_following", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("explicit_following");
+	}
+
+
+	itemAtq = stringify(&feedType, "UserFollowingFeedType");
+	queryParams.insert(pair<string, string>("feed_type", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("feed_type");
+	}
+
+
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
@@ -1938,27 +2161,6 @@ static bool userFollowingGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&feedType, "UserFollowingFeedType");
-	queryParams.insert(pair<string, string>("feed_type", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("feed_type");
-	}
-
-
-	itemAtq = stringify(&explicitFollowing, "bool");
-	queryParams.insert(pair<string, string>("explicit_following", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("explicit_following");
-	}
-
-
-	itemAtq = stringify(&adAccountId, "std::string");
-	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -2015,22 +2217,22 @@ static bool userFollowingGetHelper(char * accessToken,
 
 
 bool UserAccountManager::userFollowingGetAsync(char * accessToken,
-	std::string bookmark, int pageSize, UserFollowingFeedType feedType, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(User_following_get_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, UserFollowingFeedType feedType, std::string bookmark, int pageSize, 
+	void(* handler)(Followers_list_200_response, Error, void* )
 	, void* userData)
 {
 	return userFollowingGetHelper(accessToken,
-	bookmark, pageSize, feedType, explicitFollowing, adAccountId, 
+	adAccountId, explicitFollowing, feedType, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool UserAccountManager::userFollowingGetSync(char * accessToken,
-	std::string bookmark, int pageSize, UserFollowingFeedType feedType, bool explicitFollowing, std::string adAccountId, 
-	void(* handler)(User_following_get_200_response, Error, void* )
+	std::string adAccountId, bool explicitFollowing, UserFollowingFeedType feedType, std::string bookmark, int pageSize, 
+	void(* handler)(Followers_list_200_response, Error, void* )
 	, void* userData)
 {
 	return userFollowingGetHelper(accessToken,
-	bookmark, pageSize, feedType, explicitFollowing, adAccountId, 
+	adAccountId, explicitFollowing, feedType, bookmark, pageSize, 
 	handler, userData, false);
 }
 
@@ -2064,6 +2266,26 @@ static bool userWebsitesGetProcessor(MemoryStruct_s p_chunk, long code, char* er
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -2207,14 +2429,14 @@ bool UserAccountManager::userWebsitesGetSync(char * accessToken,
 static bool verifyWebsiteUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(UserWebsiteSummary, Error, void* )
-	= reinterpret_cast<void(*)(UserWebsiteSummary, Error, void* )> (voidHandler);
+	void(* handler)(UserWebsite, Error, void* )
+	= reinterpret_cast<void(*)(UserWebsite, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	UserWebsiteSummary out;
+	UserWebsite out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -2222,18 +2444,48 @@ static bool verifyWebsiteUpdateProcessor(MemoryStruct_s p_chunk, long code, char
 
 
 
-		if (isprimitive("UserWebsiteSummary")) {
+		if (isprimitive("UserWebsite")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "UserWebsiteSummary", "UserWebsiteSummary");
+			jsonToValue(&out, pJson, "UserWebsite", "UserWebsite");
 			json_node_free(pJson);
 
-			if ("UserWebsiteSummary" == "std::string") {
+			if ("UserWebsite" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -2265,8 +2517,8 @@ static bool verifyWebsiteUpdateProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool verifyWebsiteUpdateHelper(char * accessToken,
-	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, std::string adAccountId, 
-	void(* handler)(UserWebsiteSummary, Error, void* )
+	std::shared_ptr<UserWebsiteCreate> userWebsiteCreate, std::string adAccountId, 
+	void(* handler)(UserWebsite, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -2293,11 +2545,11 @@ static bool verifyWebsiteUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("UserWebsiteVerifyRequest")) {
-		node = converttoJson(&userWebsiteVerifyRequest, "UserWebsiteVerifyRequest", "");
+	if (isprimitive("UserWebsiteCreate")) {
+		node = converttoJson(&userWebsiteCreate, "UserWebsiteCreate", "");
 	}
 	
-	char *jsonStr =  userWebsiteVerifyRequest.toJson();
+	char *jsonStr =  userWebsiteCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -2356,36 +2608,36 @@ static bool verifyWebsiteUpdateHelper(char * accessToken,
 
 
 bool UserAccountManager::verifyWebsiteUpdateAsync(char * accessToken,
-	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, std::string adAccountId, 
-	void(* handler)(UserWebsiteSummary, Error, void* )
+	std::shared_ptr<UserWebsiteCreate> userWebsiteCreate, std::string adAccountId, 
+	void(* handler)(UserWebsite, Error, void* )
 	, void* userData)
 {
 	return verifyWebsiteUpdateHelper(accessToken,
-	userWebsiteVerifyRequest, adAccountId, 
+	userWebsiteCreate, adAccountId, 
 	handler, userData, true);
 }
 
 bool UserAccountManager::verifyWebsiteUpdateSync(char * accessToken,
-	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, std::string adAccountId, 
-	void(* handler)(UserWebsiteSummary, Error, void* )
+	std::shared_ptr<UserWebsiteCreate> userWebsiteCreate, std::string adAccountId, 
+	void(* handler)(UserWebsite, Error, void* )
 	, void* userData)
 {
 	return verifyWebsiteUpdateHelper(accessToken,
-	userWebsiteVerifyRequest, adAccountId, 
+	userWebsiteCreate, adAccountId, 
 	handler, userData, false);
 }
 
 static bool websiteVerificationGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(UserWebsiteVerificationCode, Error, void* )
-	= reinterpret_cast<void(*)(UserWebsiteVerificationCode, Error, void* )> (voidHandler);
+	void(* handler)(UserWebsiteVerification, Error, void* )
+	= reinterpret_cast<void(*)(UserWebsiteVerification, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	UserWebsiteVerificationCode out;
+	UserWebsiteVerification out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -2393,18 +2645,38 @@ static bool websiteVerificationGetProcessor(MemoryStruct_s p_chunk, long code, c
 
 
 
-		if (isprimitive("UserWebsiteVerificationCode")) {
+		if (isprimitive("UserWebsiteVerification")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "UserWebsiteVerificationCode", "UserWebsiteVerificationCode");
+			jsonToValue(&out, pJson, "UserWebsiteVerification", "UserWebsiteVerification");
 			json_node_free(pJson);
 
-			if ("UserWebsiteVerificationCode" == "std::string") {
+			if ("UserWebsiteVerification" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -2442,7 +2714,7 @@ static bool websiteVerificationGetProcessor(MemoryStruct_s p_chunk, long code, c
 
 static bool websiteVerificationGetHelper(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(UserWebsiteVerificationCode, Error, void* )
+	void(* handler)(UserWebsiteVerification, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -2520,7 +2792,7 @@ static bool websiteVerificationGetHelper(char * accessToken,
 
 bool UserAccountManager::websiteVerificationGetAsync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(UserWebsiteVerificationCode, Error, void* )
+	void(* handler)(UserWebsiteVerification, Error, void* )
 	, void* userData)
 {
 	return websiteVerificationGetHelper(accessToken,
@@ -2530,7 +2802,7 @@ bool UserAccountManager::websiteVerificationGetAsync(char * accessToken,
 
 bool UserAccountManager::websiteVerificationGetSync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(UserWebsiteVerificationCode, Error, void* )
+	void(* handler)(UserWebsiteVerification, Error, void* )
 	, void* userData)
 {
 	return websiteVerificationGetHelper(accessToken,

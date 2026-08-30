@@ -23,7 +23,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## boardsUserFollowsList
 
-> BoardsUserFollowsList200Response boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId)
+> BoardsList200Response boardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize)
 
 List following boards
 
@@ -49,14 +49,14 @@ async function example() {
   const api = new UserAccountApi(config);
 
   const body = {
-    // string | Cursor used to fetch the next page of items (optional)
-    bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
-    pageSize: 56,
-    // boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
-    explicitFollowing: true,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
+    // boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
+    explicitFollowing: true,
+    // string | Cursor used to fetch the next page of items (optional)
+    bookmark: bookmark_example,
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+    pageSize: 56,
   } satisfies BoardsUserFollowsListRequest;
 
   try {
@@ -76,14 +76,14 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
-| **explicitFollowing** | `boolean` | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [Optional] [Defaults to `false`] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
+| **explicitFollowing** | `boolean` | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [Optional] [Defaults to `false`] |
+| **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -98,20 +98,24 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## followUserUpdate
 
-> UserSummary followUserUpdate(username, followUserRequest)
+> FollowUser followUserUpdate(username, followUserCreate)
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 
@@ -132,9 +136,9 @@ async function example() {
 
   const body = {
     // string | A valid username
-    username: username,
-    // FollowUserRequest | Follow a user.
-    followUserRequest: ...,
+    username: username_example,
+    // FollowUserCreate
+    followUserCreate: ...,
   } satisfies FollowUserUpdateRequest;
 
   try {
@@ -155,11 +159,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **username** | `string` | A valid username | [Defaults to `undefined`] |
-| **followUserRequest** | [FollowUserRequest](FollowUserRequest.md) | Follow a user. | |
+| **followUserCreate** | [FollowUserCreate](FollowUserCreate.md) |  | |
 
 ### Return type
 
-[**UserSummary**](UserSummary.md)
+[**FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -174,9 +178,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | User not found |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -211,7 +220,7 @@ async function example() {
   const body = {
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies FollowersListRequest;
 
@@ -233,7 +242,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -252,9 +261,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -319,19 +332,24 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## unverifyWebsiteDelete
 
-> unverifyWebsiteDelete(website)
+> UserWebsite unverifyWebsiteDelete(website)
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 
@@ -352,7 +370,7 @@ async function example() {
 
   const body = {
     // string | Website with path or domain only
-    website: mysite.test,
+    website: website_example,
   } satisfies UnverifyWebsiteDeleteRequest;
 
   try {
@@ -376,7 +394,7 @@ example().catch(console.error);
 
 ### Return type
 
-`void` (Empty response body)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -391,9 +409,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Successfully unverified website |  -  |
-| **404** | Website not in user list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -438,7 +461,7 @@ async function example() {
     contentType: contentType_example,
     // 'ALL' | 'YOUR_PINS' | 'OTHER_PINS' | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
     source: source_example,
-    // Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'> | Metric types to get data for, default is all.  (optional)
+    // Array<QuerymetrictypesItems> | Metric types to get data for, default is all. (optional)
     metricTypes: ...,
     // 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT' | How to split the data into groups. Not including this param means data won\'t be split. (optional)
     splitField: splitField_example,
@@ -470,7 +493,7 @@ example().catch(console.error);
 | **appTypes** | `ALL`, `MOBILE`, `TABLET`, `WEB` | Apps or devices to get data for, default is all. | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, MOBILE, TABLET, WEB] |
 | **contentType** | `ALL`, `PAID`, `ORGANIC` | Filter to paid or organic data. Default is all. | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, PAID, ORGANIC] |
 | **source** | `ALL`, `YOUR_PINS`, `OTHER_PINS` | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, YOUR_PINS, OTHER_PINS] |
-| **metricTypes** | `ENGAGEMENT`, `ENGAGEMENT_RATE`, `IMPRESSION`, `OUTBOUND_CLICK`, `OUTBOUND_CLICK_RATE`, `PIN_CLICK`, `PIN_CLICK_RATE`, `SAVE`, `SAVE_RATE` | Metric types to get data for, default is all.  | [Optional] [Enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] |
+| **metricTypes** | `Array<QuerymetrictypesItems>` | Metric types to get data for, default is all. | [Optional] |
 | **splitField** | `NO_SPLIT`, `APP_TYPE`, `OWNED_CONTENT`, `SOURCE`, `PIN_FORMAT` | How to split the data into groups. Not including this param means data won\&#39;t be split. | [Optional] [Defaults to `&#39;NO_SPLIT&#39;`] [Enum: NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 
@@ -491,10 +514,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user accounts analytics parameters. |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -531,8 +557,8 @@ async function example() {
     startDate: 2013-10-20,
     // Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
     endDate: 2013-10-20,
-    // 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | Specify sorting order for metrics
-    sortBy: sortBy_example,
+    // TopPinsSortBy | Specify sorting order for metrics
+    sortBy: ...,
     // 'OTHER' | 'CLAIMED' | 'BOTH' | Filter on Pins that match your claimed domain. (optional)
     fromClaimedContent: fromClaimedContent_example,
     // 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | Pin formats to get data for, default is all. (optional)
@@ -543,12 +569,12 @@ async function example() {
     contentType: contentType_example,
     // 'ALL' | 'YOUR_PINS' | 'OTHER_PINS' | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
     source: source_example,
-    // Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'> | Metric types to get data for, default is all.  (optional)
+    // Array<QuerymetrictypesItems> | Metric types to get data for, default is all. (optional)
     metricTypes: ...,
     // number | Number of pins to include, default is 10. Max is 50. (optional)
-    numOfPins: 25,
+    numOfPins: 56,
     // 30 | Get metrics for pins created in the last \"n\" days. (optional)
-    createdInLastNDays: 30,
+    createdInLastNDays: 8.14,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
   } satisfies UserAccountAnalyticsTopPinsRequest;
@@ -572,13 +598,13 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **startDate** | `Date` | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [Defaults to `undefined`] |
 | **endDate** | `Date` | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [Defaults to `undefined`] |
-| **sortBy** | `ENGAGEMENT`, `IMPRESSION`, `OUTBOUND_CLICK`, `PIN_CLICK`, `SAVE` | Specify sorting order for metrics | [Defaults to `undefined`] [Enum: ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE] |
+| **sortBy** | `TopPinsSortBy` | Specify sorting order for metrics | [Defaults to `undefined`] [Enum: ENGAGEMENT, SAVE, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK] |
 | **fromClaimedContent** | `OTHER`, `CLAIMED`, `BOTH` | Filter on Pins that match your claimed domain. | [Optional] [Defaults to `&#39;BOTH&#39;`] [Enum: OTHER, CLAIMED, BOTH] |
 | **pinFormat** | `ALL`, `ORGANIC_IMAGE`, `ORGANIC_PRODUCT`, `ORGANIC_VIDEO`, `ADS_STANDARD`, `ADS_PRODUCT`, `ADS_VIDEO`, `ADS_IDEA` | Pin formats to get data for, default is all. | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
 | **appTypes** | `ALL`, `MOBILE`, `TABLET`, `WEB` | Apps or devices to get data for, default is all. | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, MOBILE, TABLET, WEB] |
 | **contentType** | `ALL`, `PAID`, `ORGANIC` | Filter to paid or organic data. Default is all. | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, PAID, ORGANIC] |
 | **source** | `ALL`, `YOUR_PINS`, `OTHER_PINS` | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, YOUR_PINS, OTHER_PINS] |
-| **metricTypes** | `ENGAGEMENT`, `ENGAGEMENT_RATE`, `IMPRESSION`, `OUTBOUND_CLICK`, `OUTBOUND_CLICK_RATE`, `PIN_CLICK`, `PIN_CLICK_RATE`, `SAVE`, `SAVE_RATE` | Metric types to get data for, default is all.  | [Optional] [Enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] |
+| **metricTypes** | `Array<QuerymetrictypesItems>` | Metric types to get data for, default is all. | [Optional] |
 | **numOfPins** | `number` | Number of pins to include, default is 10. Max is 50. | [Optional] [Defaults to `10`] |
 | **createdInLastNDays** | `30` | Get metrics for pins created in the last \&quot;n\&quot; days. | [Optional] [Defaults to `undefined`] [Enum: 30] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
@@ -600,9 +626,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -639,8 +669,8 @@ async function example() {
     startDate: 2013-10-20,
     // Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
     endDate: 2013-10-20,
-    // 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | Specify sorting order for video metrics
-    sortBy: sortBy_example,
+    // TopVideoPinsSortBy | Specify sorting order for video metrics
+    sortBy: ...,
     // 'OTHER' | 'CLAIMED' | 'BOTH' | Filter on Pins that match your claimed domain. (optional)
     fromClaimedContent: fromClaimedContent_example,
     // 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | Pin formats to get data for, default is all. (optional)
@@ -651,12 +681,12 @@ async function example() {
     contentType: contentType_example,
     // 'ALL' | 'YOUR_PINS' | 'OTHER_PINS' | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
     source: source_example,
-    // Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'> | Metric types to get video data for, default is all.  (optional)
+    // Array<QueryvideopinmetrictypesItems> | Metric types to get video data for, default is all. (optional)
     metricTypes: ...,
     // number | Number of pins to include, default is 10. Max is 50. (optional)
-    numOfPins: 25,
+    numOfPins: 56,
     // 30 | Get metrics for pins created in the last \"n\" days. (optional)
-    createdInLastNDays: 30,
+    createdInLastNDays: 8.14,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
   } satisfies UserAccountAnalyticsTopVideoPinsRequest;
@@ -680,13 +710,13 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **startDate** | `Date` | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [Defaults to `undefined`] |
 | **endDate** | `Date` | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [Defaults to `undefined`] |
-| **sortBy** | `IMPRESSION`, `SAVE`, `OUTBOUND_CLICK`, `VIDEO_MRC_VIEW`, `VIDEO_AVG_WATCH_TIME`, `VIDEO_V50_WATCH_TIME`, `QUARTILE_95_PERCENT_VIEW`, `VIDEO_10S_VIEW`, `VIDEO_START` | Specify sorting order for video metrics | [Defaults to `undefined`] [Enum: IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START] |
+| **sortBy** | `TopVideoPinsSortBy` | Specify sorting order for video metrics | [Defaults to `undefined`] [Enum: SAVE, IMPRESSION, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START] |
 | **fromClaimedContent** | `OTHER`, `CLAIMED`, `BOTH` | Filter on Pins that match your claimed domain. | [Optional] [Defaults to `&#39;BOTH&#39;`] [Enum: OTHER, CLAIMED, BOTH] |
 | **pinFormat** | `ALL`, `ORGANIC_IMAGE`, `ORGANIC_PRODUCT`, `ORGANIC_VIDEO`, `ADS_STANDARD`, `ADS_PRODUCT`, `ADS_VIDEO`, `ADS_IDEA` | Pin formats to get data for, default is all. | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
 | **appTypes** | `ALL`, `MOBILE`, `TABLET`, `WEB` | Apps or devices to get data for, default is all. | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, MOBILE, TABLET, WEB] |
 | **contentType** | `ALL`, `PAID`, `ORGANIC` | Filter to paid or organic data. Default is all. | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, PAID, ORGANIC] |
 | **source** | `ALL`, `YOUR_PINS`, `OTHER_PINS` | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [Optional] [Defaults to `&#39;ALL&#39;`] [Enum: ALL, YOUR_PINS, OTHER_PINS] |
-| **metricTypes** | `IMPRESSION`, `SAVE`, `VIDEO_MRC_VIEW`, `VIDEO_AVG_WATCH_TIME`, `VIDEO_V50_WATCH_TIME`, `QUARTILE_95_PERCENT_VIEW`, `VIDEO_10S_VIEW`, `VIDEO_START`, `OUTBOUND_CLICK` | Metric types to get video data for, default is all.  | [Optional] [Enum: IMPRESSION, SAVE, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START, OUTBOUND_CLICK] |
+| **metricTypes** | `Array<QueryvideopinmetrictypesItems>` | Metric types to get video data for, default is all. | [Optional] |
 | **numOfPins** | `number` | Number of pins to include, default is 10. Max is 50. | [Optional] [Defaults to `10`] |
 | **createdInLastNDays** | `30` | Get metrics for pins created in the last \&quot;n\&quot; days. | [Optional] [Defaults to `undefined`] [Enum: 30] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
@@ -708,9 +738,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -744,10 +778,10 @@ async function example() {
 
   const body = {
     // string | A valid username
-    username: username,
+    username: username_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies UserAccountFollowedInterestsRequest;
 
@@ -770,7 +804,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **username** | `string` | A valid username | [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -789,10 +823,10 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters |  -  |
-| **401** | Authorization failed |  -  |
-| **404** | User not found |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The server could not understand the request due to invalid syntax. |  -  |
+| **401** | Access is unauthorized. |  -  |
+| **404** | The server cannot find the requested resource. |  -  |
 | **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
@@ -804,7 +838,7 @@ example().catch(console.error);
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;\&#39;/docs/getting-started/using-business-access/\&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
 
 ### Example
 
@@ -866,16 +900,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access the user account. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## userFollowingGet
 
-> UserFollowingGet200Response userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId)
+> FollowersList200Response userFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize)
 
 List following
 
@@ -901,16 +939,16 @@ async function example() {
   const api = new UserAccountApi(config);
 
   const body = {
-    // string | Cursor used to fetch the next page of items (optional)
-    bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
-    pageSize: 56,
-    // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
-    feedType: feedType_example,
-    // boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
-    explicitFollowing: true,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
+    // boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
+    explicitFollowing: true,
+    // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
+    feedType: ...,
+    // string | Cursor used to fetch the next page of items (optional)
+    bookmark: bookmark_example,
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+    pageSize: 56,
   } satisfies UserFollowingGetRequest;
 
   try {
@@ -930,15 +968,15 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
-| **feedType** | `UserFollowingFeedType` | Thrift param specifying what type of followees will be kept. Default to include all followees. | [Optional] [Defaults to `undefined`] [Enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY] |
-| **explicitFollowing** | `boolean` | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [Optional] [Defaults to `false`] |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
+| **explicitFollowing** | `boolean` | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [Optional] [Defaults to `false`] |
+| **feedType** | `UserFollowingFeedType` | Thrift param specifying what type of followees will be kept. Default to include all followees. | [Optional] [Defaults to `undefined`] [Enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY] |
+| **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
-[**UserFollowingGet200Response**](UserFollowingGet200Response.md)
+[**FollowersList200Response**](FollowersList200Response.md)
 
 ### Authorization
 
@@ -953,8 +991,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -987,7 +1030,7 @@ async function example() {
   const body = {
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies UserWebsitesGetRequest;
 
@@ -1009,7 +1052,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -1028,16 +1071,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user website list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## verifyWebsiteUpdate
 
-> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
+> UserWebsite verifyWebsiteUpdate(userWebsiteCreate, adAccountId)
 
 Verify website
 
@@ -1061,8 +1108,8 @@ async function example() {
   const api = new UserAccountApi(config);
 
   const body = {
-    // UserWebsiteVerifyRequest | Verify a website.
-    userWebsiteVerifyRequest: ...,
+    // UserWebsiteCreate
+    userWebsiteCreate: ...,
     // string | Unique identifier of an ad account. (optional)
     adAccountId: adAccountId_example,
   } satisfies VerifyWebsiteUpdateRequest;
@@ -1084,12 +1131,12 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userWebsiteVerifyRequest** | [UserWebsiteVerifyRequest](UserWebsiteVerifyRequest.md) | Verify a website. | |
+| **userWebsiteCreate** | [UserWebsiteCreate](UserWebsiteCreate.md) |  | |
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -1104,15 +1151,21 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## websiteVerificationGet
 
-> UserWebsiteVerificationCode websiteVerificationGet(adAccountId)
+> UserWebsiteVerification websiteVerificationGet(adAccountId)
 
 Get user verification code for website claiming
 
@@ -1163,7 +1216,7 @@ example().catch(console.error);
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 
@@ -1178,9 +1231,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user verification code for website claiming. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

@@ -5,7 +5,7 @@ Retail product metadata entity
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Availability** | **NonNullableProductAvailabilityType** |  | 
+**Availability** | **ProductAvailability** |  | 
 **Currency** | **NonNullableCatalogsCurrency** |  | 
 **ItemId** | **string** | The user-created unique ID that represents the product. | 
 **Price** | **decimal** | The price of the product. | 

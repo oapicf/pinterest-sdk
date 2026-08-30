@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -23,12 +28,79 @@ type AdsAnalyticsMetricsFilter struct {
 	// List of values for filtering
 	Values []float32 `json:"values"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into AdsAnalyticsMetricsFilter
+func (o *AdsAnalyticsMetricsFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"field",
+		"operator",
+		"values",
+	}
 
-// AssertAdsAnalyticsMetricsFilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"field": false,
+		"operator": false,
+		"values": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"field": {},
+		"operator": {},
+		"values": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AdsAnalyticsMetricsFilter
+
+	if value, exists := allProperties["field"]; exists {
+		if err = json.Unmarshal(value, &decoded.Field); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["operator"]; exists {
+		if err = json.Unmarshal(value, &decoded.Operator); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["values"]; exists {
+		if err = json.Unmarshal(value, &decoded.Values); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertAdsAnalyticsMetricsFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdsAnalyticsMetricsFilterRequired(obj AdsAnalyticsMetricsFilter) error {
 	elements := map[string]interface{}{
-		"field": obj.Field,
-		"operator": obj.Operator,
 		"values": obj.Values,
 	}
 	for name, el := range elements {

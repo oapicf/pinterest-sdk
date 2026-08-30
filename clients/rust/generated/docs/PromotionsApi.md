@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## promotions_slash_create
 
-> models::PromotionsResponse promotions_slash_create(ad_account_id, promotion_create_request)
+> models::PromotionsResponse promotions_slash_create(ad_account_id, promotion_create)
 Create promotions
 
 Create multiple new promotions.
@@ -25,7 +25,7 @@ Create multiple new promotions.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**promotion_create_request** | [**Vec<models::PromotionCreateRequest>**](PromotionCreateRequest.md) | List of promotions to create, size limit [1, 30]. | [required] |
+**promotion_create** | [**Vec<models::PromotionCreate>**](PromotionCreate.md) |  | [required] |
 
 ### Return type
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 
 ## promotions_slash_delete
 
-> promotions_slash_delete(ad_account_id, promotion_id)
+> models::Promotion promotions_slash_delete(promotion_id, ad_account_id)
 Delete promotion by id
 
 Delete a promotion within Pinterest.
@@ -55,12 +55,12 @@ Delete a promotion within Pinterest.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**promotion_id** | **String** | Promotion ID | [required] |
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**promotion_id** | **String** | Unique identifier of a promotion | [required] |
 
 ### Return type
 
- (empty response body)
+[**models::Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## promotions_slash_get
 
-> models::PromotionResponse promotions_slash_get(ad_account_id, promotion_id)
+> models::Promotion promotions_slash_get(promotion_id, ad_account_id)
 Get promotion by id
 
 Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
@@ -86,12 +86,12 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**promotion_id** | **String** | Promotion ID | [required] |
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**promotion_id** | **String** | Unique identifier of a promotion | [required] |
 
 ### Return type
 
-[**models::PromotionResponse**](PromotionResponse.md)
+[**models::Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Required | Notes
 
 ## promotions_slash_list
 
-> models::PromotionsList200Response promotions_slash_list(ad_account_id, page_size, order, bookmark)
+> models::PromotionsList200Response promotions_slash_list(ad_account_id, bookmark, page_size, order)
 Get promotions
 
 Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
@@ -118,9 +118,9 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
-**order** | Option<**String**> | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
+**order** | Option<[**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)> | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. |  |
 
 ### Return type
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Required | Notes
 
 ## promotions_slash_update
 
-> models::PromotionsResponse promotions_slash_update(ad_account_id, promotion_update_request)
+> models::PromotionsResponse promotions_slash_update(ad_account_id, promotion_batch_update)
 Update promotions
 
 Update multiple promotions.
@@ -151,7 +151,7 @@ Update multiple promotions.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**promotion_update_request** | [**Vec<models::PromotionUpdateRequest>**](PromotionUpdateRequest.md) | List of promotions to create, size limit [1, 30]. | [required] |
+**promotion_batch_update** | [**Vec<models::PromotionBatchUpdate>**](PromotionBatchUpdate.md) |  | [required] |
 
 ### Return type
 

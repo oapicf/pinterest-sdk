@@ -5,15 +5,15 @@ Integration record
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** | Integration record ID. | [readonly] 
 **AdditionalId1** | **string** |  | [optional] 
-**ConnectedAdvertiserId** | **string** |  | [optional] [readonly] 
+**ConnectedAdvertiserId** | **string** |  | [optional] 
 **ConnectedLbaId** | **string** |  | [optional] 
 **ConnectedMerchantId** | **string** |  | [optional] 
 **ConnectedTagId** | **string** |  | [optional] 
-**ConnectedUserId** | **string** |  | [optional] [readonly] 
+**ConnectedUserId** | **string** |  | [optional] 
 **CreatedTime** | **int** |  | [optional] 
 **ExternalBusinessId** | **string** |  | [optional] 
-**Id** | **string** |  | [optional] 
 **PartnerAccessToken** | **string** |  | [optional] 
 **PartnerAccessTokenExpiry** | **int** |  | [optional] 
 **PartnerMetadata** | **string** |  | [optional] 

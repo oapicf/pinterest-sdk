@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**labels** | [**Vec<models::LabelUpdateRequestLabelsInner>**](LabelUpdateRequest_labels_inner.md) | Labels that you are applying to the campaign. | 
+**labels** | [**Vec<models::LabelUpdateItem>**](LabelUpdateItem.md) | Labels that you are applying to the campaign. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

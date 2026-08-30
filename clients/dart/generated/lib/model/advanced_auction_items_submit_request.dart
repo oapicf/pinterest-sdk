@@ -55,10 +55,10 @@ class AdvancedAuctionItemsSubmitRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdvancedAuctionItemsSubmitRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdvancedAuctionItemsSubmitRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_id'), 'Required key "AdvancedAuctionItemsSubmitRequest[catalog_id]" is missing from JSON.');
+        assert(json[r'catalog_id'] != null, 'Required key "AdvancedAuctionItemsSubmitRequest[catalog_id]" has a null value in JSON.');
+        assert(json.containsKey(r'items'), 'Required key "AdvancedAuctionItemsSubmitRequest[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "AdvancedAuctionItemsSubmitRequest[items]" has a null value in JSON.');
         return true;
       }());
 

@@ -5,7 +5,7 @@ Request object for creating a catalog based product group.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **character** | Catalog id pertaining to the creative assets product group. | [Pattern: ^\\d+$] 
+**catalog_id** | **character** | Catalog ID pertaining to the product group. | [Pattern: ^\\d+$] 
 **catalog_type** | **character** |  | [Enum: [CREATIVE_ASSETS]] 
 **country** | [**Country**](Country.md) |  | [optional] [Enum: ] 
 **description** | **character** |  | [optional] 

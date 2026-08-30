@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`bRAND` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`bRAND` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
 
 ## Example
 

@@ -4,26 +4,9 @@
 #include "create_membership_or_partnership_invites_body.h"
 
 
-char* create_membership_or_partnership_invites_body_business_role_ToString(pinterest_rest_api_create_membership_or_partnership_invites_body_BUSINESSROLE_e business_role) {
-    char* business_roleArray[] =  { "NULL", "EMPLOYEE", "BIZ_ADMIN", "PARTNER" };
-    return business_roleArray[business_role];
-}
-
-pinterest_rest_api_create_membership_or_partnership_invites_body_BUSINESSROLE_e create_membership_or_partnership_invites_body_business_role_FromString(char* business_role){
-    int stringToReturn = 0;
-    char *business_roleArray[] =  { "NULL", "EMPLOYEE", "BIZ_ADMIN", "PARTNER" };
-    size_t sizeofArray = sizeof(business_roleArray) / sizeof(business_roleArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(business_role, business_roleArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static create_membership_or_partnership_invites_body_t *create_membership_or_partnership_invites_body_create_internal(
-    pinterest_rest_api_create_membership_or_partnership_invites_body_BUSINESSROLE_e business_role,
+    business_role_for_invite_t *business_role,
     pinterest_rest_api_invite_type__e invite_type,
     list_t *members,
     list_t *partners
@@ -32,27 +15,30 @@ static create_membership_or_partnership_invites_body_t *create_membership_or_par
     if (!create_membership_or_partnership_invites_body_local_var) {
         return NULL;
     }
+    memset(create_membership_or_partnership_invites_body_local_var, 0, sizeof(create_membership_or_partnership_invites_body_t));
+    create_membership_or_partnership_invites_body_local_var->_library_owned = 1;
     create_membership_or_partnership_invites_body_local_var->business_role = business_role;
     create_membership_or_partnership_invites_body_local_var->invite_type = invite_type;
     create_membership_or_partnership_invites_body_local_var->members = members;
     create_membership_or_partnership_invites_body_local_var->partners = partners;
-
-    create_membership_or_partnership_invites_body_local_var->_library_owned = 1;
     return create_membership_or_partnership_invites_body_local_var;
 }
 
 __attribute__((deprecated)) create_membership_or_partnership_invites_body_t *create_membership_or_partnership_invites_body_create(
-    pinterest_rest_api_create_membership_or_partnership_invites_body_BUSINESSROLE_e business_role,
+    business_role_for_invite_t *business_role,
     pinterest_rest_api_invite_type__e invite_type,
     list_t *members,
     list_t *partners
     ) {
-    return create_membership_or_partnership_invites_body_create_internal (
+    create_membership_or_partnership_invites_body_t *result = create_membership_or_partnership_invites_body_create_internal (
         business_role,
         invite_type,
         members,
         partners
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void create_membership_or_partnership_invites_body_free(create_membership_or_partnership_invites_body_t *create_membership_or_partnership_invites_body) {
@@ -64,6 +50,10 @@ void create_membership_or_partnership_invites_body_free(create_membership_or_par
         return ;
     }
     listEntry_t *listEntry;
+    if (create_membership_or_partnership_invites_body->business_role) {
+        business_role_for_invite_free(create_membership_or_partnership_invites_body->business_role);
+        create_membership_or_partnership_invites_body->business_role = NULL;
+    }
     if (create_membership_or_partnership_invites_body->members) {
         list_ForEach(listEntry, create_membership_or_partnership_invites_body->members) {
             free(listEntry->data);
@@ -85,12 +75,16 @@ cJSON *create_membership_or_partnership_invites_body_convertToJSON(create_member
     cJSON *item = cJSON_CreateObject();
 
     // create_membership_or_partnership_invites_body->business_role
-    if (pinterest_rest_api_create_membership_or_partnership_invites_body_BUSINESSROLE_NULL == create_membership_or_partnership_invites_body->business_role) {
+    if (!create_membership_or_partnership_invites_body->business_role) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "business_role", create_membership_or_partnership_invites_body_business_role_ToString(create_membership_or_partnership_invites_body->business_role)) == NULL)
-    {
-    goto fail; //Enum
+    cJSON *business_role_local_JSON = business_role_for_invite_convertToJSON(create_membership_or_partnership_invites_body->business_role);
+    if(business_role_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "business_role", business_role_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
 
@@ -153,6 +147,9 @@ create_membership_or_partnership_invites_body_t *create_membership_or_partnershi
 
     create_membership_or_partnership_invites_body_t *create_membership_or_partnership_invites_body_local_var = NULL;
 
+    // define the local variable for create_membership_or_partnership_invites_body->business_role
+    business_role_for_invite_t *business_role_local_nonprim = NULL;
+
     // define the local variable for create_membership_or_partnership_invites_body->invite_type
     pinterest_rest_api_invite_type__e invite_type_local_nonprim = 0;
 
@@ -171,13 +168,8 @@ create_membership_or_partnership_invites_body_t *create_membership_or_partnershi
         goto end;
     }
 
-    pinterest_rest_api_create_membership_or_partnership_invites_body_BUSINESSROLE_e business_roleVariable;
     
-    if(!cJSON_IsString(business_role))
-    {
-    goto end; //Enum
-    }
-    business_roleVariable = create_membership_or_partnership_invites_body_business_role_FromString(business_role->valuestring);
+    business_role_local_nonprim = business_role_for_invite_parseFromJSON(business_role); //custom
 
     // create_membership_or_partnership_invites_body->invite_type
     cJSON *invite_type = cJSON_GetObjectItemCaseSensitive(create_membership_or_partnership_invites_bodyJSON, "invite_type");
@@ -236,15 +228,24 @@ create_membership_or_partnership_invites_body_t *create_membership_or_partnershi
     }
 
 
+
     create_membership_or_partnership_invites_body_local_var = create_membership_or_partnership_invites_body_create_internal (
-        business_roleVariable,
+        business_role_local_nonprim,
         invite_type_local_nonprim,
         members ? membersList : NULL,
         partners ? partnersList : NULL
         );
 
+    if (!create_membership_or_partnership_invites_body_local_var) {
+        goto end;
+    }
+
     return create_membership_or_partnership_invites_body_local_var;
 end:
+    if (business_role_local_nonprim) {
+        business_role_for_invite_free(business_role_local_nonprim);
+        business_role_local_nonprim = NULL;
+    }
     if (invite_type_local_nonprim) {
         invite_type_local_nonprim = 0;
     }

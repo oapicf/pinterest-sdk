@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BasePreferredMediaType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BasePreferredMediaType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BasePreferredMediaType {
+    title = BasePreferredMediaType
+    description = BasePreferredMediaType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BasePreferredMediaType {
+    title = BasePreferredMediaType
+    description = BasePreferredMediaType
+    implements = openapi_server.resourceTypes.BasePreferredMediaType
+
+  }
+}

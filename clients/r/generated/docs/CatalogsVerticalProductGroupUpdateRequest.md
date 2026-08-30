@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **description** | **character** |  | [optional] 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] [Enum: ] 
-**name** | **character** |  | [optional] 
+**name** | **character** | Name of catalog product group | [optional] 
 
 

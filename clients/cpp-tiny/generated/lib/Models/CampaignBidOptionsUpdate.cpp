@@ -6,10 +6,14 @@ using namespace Tiny;
 
 CampaignBidOptionsUpdate::CampaignBidOptionsUpdate()
 {
-	app_type_multipliers = AppTypeMultipliers();
-	audience_multipliers = CampaignAudienceMultipliers();
-	placement_multipliers = PlacementMultipliers();
-	update_mask = std::list<std::string>();
+	age_bucket_multipliers = null;
+	app_type_multipliers = null;
+	audience_multipliers = null;
+	freq_bid_multiplier_time_window = null;
+	frequency_multipliers = null;
+	gender_multipliers = null;
+	placement_multipliers = null;
+	update_mask = std::list<CampaignBidOptionsUpdateMaskItems>();
 }
 
 CampaignBidOptionsUpdate::CampaignBidOptionsUpdate(std::string jsonString)
@@ -26,6 +30,20 @@ void
 CampaignBidOptionsUpdate::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
+
+    const char *age_bucket_multipliersKey = "age_bucket_multipliers";
+
+    if(object.has_key(age_bucket_multipliersKey))
+    {
+        bourne::json value = object[age_bucket_multipliersKey];
+
+
+
+
+        AgeBucketMultipliers* obj = &age_bucket_multipliers;
+		obj->fromJson(value.dump());
+
+    }
 
     const char *app_type_multipliersKey = "app_type_multipliers";
 
@@ -55,6 +73,48 @@ CampaignBidOptionsUpdate::fromJson(std::string jsonObj)
 
     }
 
+    const char *freq_bid_multiplier_time_windowKey = "freq_bid_multiplier_time_window";
+
+    if(object.has_key(freq_bid_multiplier_time_windowKey))
+    {
+        bourne::json value = object[freq_bid_multiplier_time_windowKey];
+
+
+
+
+        FreqBidMultiplierTimeWindow* obj = &freq_bid_multiplier_time_window;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *frequency_multipliersKey = "frequency_multipliers";
+
+    if(object.has_key(frequency_multipliersKey))
+    {
+        bourne::json value = object[frequency_multipliersKey];
+
+
+
+
+        FrequencyMultipliers* obj = &frequency_multipliers;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *gender_multipliersKey = "gender_multipliers";
+
+    if(object.has_key(gender_multipliersKey))
+    {
+        bourne::json value = object[gender_multipliersKey];
+
+
+
+
+        GenderMultipliers* obj = &gender_multipliers;
+		obj->fromJson(value.dump());
+
+    }
+
     const char *placement_multipliersKey = "placement_multipliers";
 
     if(object.has_key(placement_multipliersKey))
@@ -76,13 +136,13 @@ CampaignBidOptionsUpdate::fromJson(std::string jsonObj)
         bourne::json value = object[update_maskKey];
 
 
-        std::list<std::string> update_mask_list;
-        std::string element;
+        std::list<CampaignBidOptionsUpdateMaskItems> update_mask_list;
+        CampaignBidOptionsUpdateMaskItems element;
         for(auto& var : value.array_range())
         {
 
-            jsonToValue(&element, var, "std::string");
 
+            element.fromJson(var.dump());
 
             update_mask_list.push_back(element);
         }
@@ -104,6 +164,13 @@ CampaignBidOptionsUpdate::toJson()
 
 
 
+	object["age_bucket_multipliers"] = getAgeBucketMultipliers().toJson();
+
+
+
+
+
+
 	object["app_type_multipliers"] = getAppTypeMultipliers().toJson();
 
 
@@ -118,21 +185,41 @@ CampaignBidOptionsUpdate::toJson()
 
 
 
+	object["freq_bid_multiplier_time_window"] = getFreqBidMultiplierTimeWindow().toJson();
+
+
+
+
+
+
+	object["frequency_multipliers"] = getFrequencyMultipliers().toJson();
+
+
+
+
+
+
+	object["gender_multipliers"] = getGenderMultipliers().toJson();
+
+
+
+
+
+
 	object["placement_multipliers"] = getPlacementMultipliers().toJson();
 
 
 
 
-    std::list<std::string> update_mask_list = getUpdateMask();
+    std::list<CampaignBidOptionsUpdateMaskItems> update_mask_list = getUpdateMask();
     bourne::json update_mask_arr = bourne::json::array();
 
     for(auto& var : update_mask_list)
     {
-        update_mask_arr.append(var);
+        CampaignBidOptionsUpdateMaskItems obj = var;
+        update_mask_arr.append(obj.toJson());
     }
     object["update_mask"] = update_mask_arr;
-
-
 
 
 
@@ -141,50 +228,98 @@ CampaignBidOptionsUpdate::toJson()
 
 }
 
-AppTypeMultipliers
+AgeBucketMultipliers&lt;std::string, double&gt;
+CampaignBidOptionsUpdate::getAgeBucketMultipliers()
+{
+	return age_bucket_multipliers;
+}
+
+void
+CampaignBidOptionsUpdate::setAgeBucketMultipliers(AgeBucketMultipliers&lt;std::string, double&gt; age_bucket_multipliers)
+{
+	this->age_bucket_multipliers = age_bucket_multipliers;
+}
+
+AppTypeMultipliers&lt;std::string, double&gt;
 CampaignBidOptionsUpdate::getAppTypeMultipliers()
 {
 	return app_type_multipliers;
 }
 
 void
-CampaignBidOptionsUpdate::setAppTypeMultipliers(AppTypeMultipliers  app_type_multipliers)
+CampaignBidOptionsUpdate::setAppTypeMultipliers(AppTypeMultipliers&lt;std::string, double&gt; app_type_multipliers)
 {
 	this->app_type_multipliers = app_type_multipliers;
 }
 
-CampaignAudienceMultipliers
+CampaignAudienceMultipliers&lt;std::string, double&gt;
 CampaignBidOptionsUpdate::getAudienceMultipliers()
 {
 	return audience_multipliers;
 }
 
 void
-CampaignBidOptionsUpdate::setAudienceMultipliers(CampaignAudienceMultipliers  audience_multipliers)
+CampaignBidOptionsUpdate::setAudienceMultipliers(CampaignAudienceMultipliers&lt;std::string, double&gt; audience_multipliers)
 {
 	this->audience_multipliers = audience_multipliers;
 }
 
-PlacementMultipliers
+FreqBidMultiplierTimeWindow
+CampaignBidOptionsUpdate::getFreqBidMultiplierTimeWindow()
+{
+	return freq_bid_multiplier_time_window;
+}
+
+void
+CampaignBidOptionsUpdate::setFreqBidMultiplierTimeWindow(FreqBidMultiplierTimeWindow freq_bid_multiplier_time_window)
+{
+	this->freq_bid_multiplier_time_window = freq_bid_multiplier_time_window;
+}
+
+FrequencyMultipliers&lt;std::string, double&gt;
+CampaignBidOptionsUpdate::getFrequencyMultipliers()
+{
+	return frequency_multipliers;
+}
+
+void
+CampaignBidOptionsUpdate::setFrequencyMultipliers(FrequencyMultipliers&lt;std::string, double&gt; frequency_multipliers)
+{
+	this->frequency_multipliers = frequency_multipliers;
+}
+
+GenderMultipliers&lt;std::string, double&gt;
+CampaignBidOptionsUpdate::getGenderMultipliers()
+{
+	return gender_multipliers;
+}
+
+void
+CampaignBidOptionsUpdate::setGenderMultipliers(GenderMultipliers&lt;std::string, double&gt; gender_multipliers)
+{
+	this->gender_multipliers = gender_multipliers;
+}
+
+PlacementMultipliers&lt;std::string, double&gt;
 CampaignBidOptionsUpdate::getPlacementMultipliers()
 {
 	return placement_multipliers;
 }
 
 void
-CampaignBidOptionsUpdate::setPlacementMultipliers(PlacementMultipliers  placement_multipliers)
+CampaignBidOptionsUpdate::setPlacementMultipliers(PlacementMultipliers&lt;std::string, double&gt; placement_multipliers)
 {
 	this->placement_multipliers = placement_multipliers;
 }
 
-std::list<std::string>
+std::list<CampaignBidOptionsUpdateMaskItems>
 CampaignBidOptionsUpdate::getUpdateMask()
 {
 	return update_mask;
 }
 
 void
-CampaignBidOptionsUpdate::setUpdateMask(std::list <std::string> update_mask)
+CampaignBidOptionsUpdate::setUpdateMask(std::list<CampaignBidOptionsUpdateMaskItems> update_mask)
 {
 	this->update_mask = update_mask;
 }

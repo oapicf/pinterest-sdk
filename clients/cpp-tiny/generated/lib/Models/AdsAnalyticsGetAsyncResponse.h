@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setReportStatus(BulkReportingJobStatus  report_status);
+	void setReportStatus(BulkReportingJobStatus report_status);
 	/*! \brief Get 
 	 */
 	long getSize();
 
 	/*! \brief Set 
 	 */
-	void setSize(long  size);
+	void setSize(long size);
 	/*! \brief Get 
 	 */
 	std::string getUrl();
 
 	/*! \brief Set 
 	 */
-	void setUrl(std::string  url);
+	void setUrl(std::string url);
 
 
     private:

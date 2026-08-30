@@ -4,8 +4,8 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/targeting_spec_operation_list.dart';
 import 'package:openapi/src/model/targeting_spec_app_type.dart';
+import 'package:openapi/src/model/targeting_spec_list_operation.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,7 +18,18 @@ part 'targeting_spec_operation_app_type.g.dart';
 /// * [operation] 
 /// * [values] 
 @BuiltValue()
-abstract class TargetingSpecOperationAppType implements TargetingSpecOperationList, Built<TargetingSpecOperationAppType, TargetingSpecOperationAppTypeBuilder> {
+abstract class TargetingSpecOperationAppType implements Built<TargetingSpecOperationAppType, TargetingSpecOperationAppTypeBuilder> {
+  @BuiltValueField(wireName: r'field')
+  TargetingSpecOperationAppTypeFieldEnum get field;
+  // enum fieldEnum {  APPTYPE,  };
+
+  @BuiltValueField(wireName: r'operation')
+  TargetingSpecListOperation get operation;
+  // enum operationEnum {  SET,  ADD,  REMOVE,  };
+
+  @BuiltValueField(wireName: r'values')
+  BuiltList<TargetingSpecAppType> get values;
+
   TargetingSpecOperationAppType._();
 
   factory TargetingSpecOperationAppType([void updates(TargetingSpecOperationAppTypeBuilder b)]) = _$TargetingSpecOperationAppType;
@@ -45,17 +56,17 @@ class _$TargetingSpecOperationAppTypeSerializer implements PrimitiveSerializer<T
     yield r'field';
     yield serializers.serialize(
       object.field,
-      specifiedType: const FullType(String),
+      specifiedType: const FullType(TargetingSpecOperationAppTypeFieldEnum),
     );
     yield r'operation';
     yield serializers.serialize(
       object.operation,
-      specifiedType: const FullType(TargetingSpecOperationListOperationEnum),
+      specifiedType: const FullType(TargetingSpecListOperation),
     );
     yield r'values';
-    yield object.values == null ? null : serializers.serialize(
+    yield serializers.serialize(
       object.values,
-      specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+      specifiedType: const FullType(BuiltList, [FullType(TargetingSpecAppType)]),
     );
   }
 
@@ -83,23 +94,22 @@ class _$TargetingSpecOperationAppTypeSerializer implements PrimitiveSerializer<T
         case r'field':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(TargetingSpecOperationAppTypeFieldEnum),
+          ) as TargetingSpecOperationAppTypeFieldEnum;
           result.field = valueDes;
           break;
         case r'operation':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TargetingSpecOperationListOperationEnum),
-          ) as TargetingSpecOperationListOperationEnum;
+            specifiedType: const FullType(TargetingSpecListOperation),
+          ) as TargetingSpecListOperation;
           result.operation = valueDes;
           break;
         case r'values':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BuiltList, [FullType(TargetingSpecAppType)]),
+          ) as BuiltList<TargetingSpecAppType>;
           result.values.replace(valueDes);
           break;
         default:
@@ -142,22 +152,5 @@ class TargetingSpecOperationAppTypeFieldEnum extends EnumClass {
 
   static BuiltSet<TargetingSpecOperationAppTypeFieldEnum> get values => _$targetingSpecOperationAppTypeFieldEnumValues;
   static TargetingSpecOperationAppTypeFieldEnum valueOf(String name) => _$targetingSpecOperationAppTypeFieldEnumValueOf(name);
-}
-
-class TargetingSpecOperationAppTypeOperationEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'SET')
-  static const TargetingSpecOperationAppTypeOperationEnum SET = _$targetingSpecOperationAppTypeOperationEnum_SET;
-  @BuiltValueEnumConst(wireName: r'ADD')
-  static const TargetingSpecOperationAppTypeOperationEnum ADD = _$targetingSpecOperationAppTypeOperationEnum_ADD;
-  @BuiltValueEnumConst(wireName: r'REMOVE')
-  static const TargetingSpecOperationAppTypeOperationEnum REMOVE = _$targetingSpecOperationAppTypeOperationEnum_REMOVE;
-
-  static Serializer<TargetingSpecOperationAppTypeOperationEnum> get serializer => _$targetingSpecOperationAppTypeOperationEnumSerializer;
-
-  const TargetingSpecOperationAppTypeOperationEnum._(String name): super(name);
-
-  static BuiltSet<TargetingSpecOperationAppTypeOperationEnum> get values => _$targetingSpecOperationAppTypeOperationEnumValues;
-  static TargetingSpecOperationAppTypeOperationEnum valueOf(String name) => _$targetingSpecOperationAppTypeOperationEnumValueOf(name);
 }
 

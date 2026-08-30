@@ -5,6 +5,12 @@
   "name": "PinCreate",
   "fields": [
     {
+      "name": "ai_disclosures",
+      "type": ["null", "model.AiDisclosures"],
+      "doc": "AI disclosure declarations the creator has made about this Pin.",
+      "default": null
+    },
+    {
       "name": "alt_text",
       "type": ["null", "string"],
       "doc": "",

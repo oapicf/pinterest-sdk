@@ -21,15 +21,16 @@ Name | Type | Description | Notes
 **disclosure_url** | **string** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional] 
 **grid_click_type** | [**GridClickType**](GridClickType.md) |  | [optional] 
 **ios_deep_link** | **string** | Deep link URL for iOS devices. | [optional] 
+**is_carting** | **boolean** | Is the ad a carting/WTB ad? | [optional] 
 **is_pin_deleted** | **boolean** | Is original pin deleted? | [optional] 
 **is_removable** | **boolean** | Is pin repinnable? | [optional] 
 **lead_form_id** | **string** | Lead form ID for lead ad generation. | [optional] 
 **name** | **string** | Name of the ad - 255 chars max. | [optional] 
-**quiz_pin_data** | [**QuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
-**status** | [**EntityStatus**](EntityStatus.md) |  | [optional] 
-**tracking_urls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] 
-**view_tracking_url** | **string** | Tracking URL for ad impressions. | [optional] 
 **pin_id** | **string** | Pin ID. | 
+**quiz_pin_data** | **object** | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
+**status** | [**EntityStatus**](EntityStatus.md) |  | [optional] 
+**tracking_urls** | **object** |  | [optional] 
+**view_tracking_url** | **string** | Tracking URL for ad impressions. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

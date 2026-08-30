@@ -5,10 +5,16 @@
 -export_type([openapi_conversion_events/0]).
 
 -type openapi_conversion_events() ::
-    #{ 'data' := list()
+    #{ 'events' := list(),
+       'num_events_processed' := integer(),
+       'num_events_received' := integer()
      }.
 
-encode(#{ 'data' := Data
+encode(#{ 'events' := Events,
+          'num_events_processed' := NumEventsProcessed,
+          'num_events_received' := NumEventsReceived
         }) ->
-    #{ 'data' => Data
+    #{ 'events' => Events,
+       'num_events_processed' => NumEventsProcessed,
+       'num_events_received' => NumEventsReceived
      }.

@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"additionalId1", @"connectedAdvertiserId", @"connectedLbaId", @"connectedMerchantId", @"connectedTagId", @"connectedUserId", @"createdTime", @"externalBusinessId", @"_id", @"partnerAccessToken", @"partnerAccessTokenExpiry", @"partnerMetadata", @"partnerPrimaryEmail", @"partnerRefreshToken", @"partnerRefreshTokenExpiry", @"scopes", @"updatedTime"];
+  NSArray *optionalProperties = @[@"additionalId1", @"connectedAdvertiserId", @"connectedLbaId", @"connectedMerchantId", @"connectedTagId", @"connectedUserId", @"createdTime", @"externalBusinessId", @"partnerAccessToken", @"partnerAccessTokenExpiry", @"partnerMetadata", @"partnerPrimaryEmail", @"partnerRefreshToken", @"partnerRefreshTokenExpiry", @"scopes", @"updatedTime"];
   return [optionalProperties containsObject:propertyName];
 }
 

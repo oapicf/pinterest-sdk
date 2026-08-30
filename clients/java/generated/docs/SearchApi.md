@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Example
 ```java
@@ -38,7 +38,7 @@ public class Example {
 
     SearchApi apiInstance = new SearchApi(defaultClient);
     String term = "term_example"; // String | Search term to look up pins.
-    String countryCode = "US"; // String | Two letter country code (ISO 3166-1 alpha-2)
+    String countryCode = "countryCode_example"; // String | Two letter country code (ISO 3166-1 alpha-2)
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
     String locale = "locale_example"; // String | Search locale.
     Integer limit = 10; // Integer | Max search result size
@@ -82,17 +82,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid pins |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="searchUserBoardsGet"></a>
 # **searchUserBoardsGet**
-> SearchUserBoardsGet200Response searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
+> BoardsList200Response searchUserBoardsGet(adAccountId, query, bookmark, pageSize)
 
 Search user&#39;s boards
 
-Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 ```java
@@ -119,11 +123,11 @@ public class Example {
 
     SearchApi apiInstance = new SearchApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     String query = "query_example"; // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+    String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      SearchUserBoardsGet200Response result = apiInstance.searchUserBoardsGet(adAccountId, bookmark, pageSize, query);
+      BoardsList200Response result = apiInstance.searchUserBoardsGet(adAccountId, query, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SearchApi#searchUserBoardsGet");
@@ -141,13 +145,13 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
-| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **query** | **String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**SearchUserBoardsGet200Response**](SearchUserBoardsGet200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -161,16 +165,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="searchUserPinsList"></a>
 # **searchUserPinsList**
-> SearchUserPinsList200Response searchUserPinsList(query, adAccountId, bookmark)
+> PinsList200Response searchUserPinsList(query, adAccountId, bookmark)
 
 Search user&#39;s Pins
 
-Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 ```java
@@ -192,11 +201,11 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     SearchApi apiInstance = new SearchApi(defaultClient);
-    String query = "Plants"; // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+    String query = "query_example"; // String | Search query. Can contain pin description keywords or comma-separated pin IDs.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
     try {
-      SearchUserPinsList200Response result = apiInstance.searchUserPinsList(query, adAccountId, bookmark);
+      PinsList200Response result = apiInstance.searchUserPinsList(query, adAccountId, bookmark);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SearchApi#searchUserPinsList");
@@ -219,7 +228,7 @@ public class Example {
 
 ### Return type
 
-[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
+[**PinsList200Response**](PinsList200Response.md)
 
 ### Authorization
 
@@ -233,7 +242,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | User not found |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

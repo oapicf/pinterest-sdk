@@ -1,0 +1,9 @@
+
+
+# ConversionProductReportGranularity
+
+## Enum
+
+
+
+

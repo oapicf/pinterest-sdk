@@ -49,7 +49,7 @@
     {
       "name": "external_business_id",
       "type": ["null", "string"],
-      "doc": "",
+      "doc": "External business ID for the integration.",
       "default": null
     },
     {

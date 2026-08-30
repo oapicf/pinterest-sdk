@@ -18,7 +18,7 @@ class PinMediaMetadata(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, description: str=None, images: ImageSize=None, item_type: str=None, link: str=None, title: str=None, cover_image_url: str=None, duration: float=None, height: int=None, video_url: str=None, width: int=None):  # noqa: E501
+    def __init__(self, description: str=None, images: ImageSize=None, item_type: str=None, link: str=None, title: str=None, cover_image_url: str=None, duration: float=None, height: int=None, video_url: str=None, video_url_hls: str=None, width: int=None):  # noqa: E501
         """PinMediaMetadata - a model defined in Swagger
 
         :param description: The description of this PinMediaMetadata.  # noqa: E501
@@ -39,6 +39,8 @@ class PinMediaMetadata(Model):
         :type height: int
         :param video_url: The video_url of this PinMediaMetadata.  # noqa: E501
         :type video_url: str
+        :param video_url_hls: The video_url_hls of this PinMediaMetadata.  # noqa: E501
+        :type video_url_hls: str
         :param width: The width of this PinMediaMetadata.  # noqa: E501
         :type width: int
         """
@@ -52,6 +54,7 @@ class PinMediaMetadata(Model):
             'duration': float,
             'height': int,
             'video_url': str,
+            'video_url_hls': str,
             'width': int
         }
 
@@ -65,6 +68,7 @@ class PinMediaMetadata(Model):
             'duration': 'duration',
             'height': 'height',
             'video_url': 'video_url',
+            'video_url_hls': 'video_url_hls',
             'width': 'width'
         }
 
@@ -77,6 +81,7 @@ class PinMediaMetadata(Model):
         self._duration = duration
         self._height = height
         self._video_url = video_url
+        self._video_url_hls = video_url_hls
         self._width = width
 
     @classmethod
@@ -136,6 +141,7 @@ class PinMediaMetadata(Model):
     def item_type(self) -> str:
         """Gets the item_type of this PinMediaMetadata.
 
+        Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.  # noqa: E501
 
         :return: The item_type of this PinMediaMetadata.
         :rtype: str
@@ -146,10 +152,17 @@ class PinMediaMetadata(Model):
     def item_type(self, item_type: str):
         """Sets the item_type of this PinMediaMetadata.
 
+        Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.  # noqa: E501
 
         :param item_type: The item_type of this PinMediaMetadata.
         :type item_type: str
         """
+        allowed_values = ["video"]  # noqa: E501
+        if item_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `item_type` ({0}), must be one of {1}"
+                .format(item_type, allowed_values)
+            )
 
         self._item_type = item_type
 
@@ -284,6 +297,29 @@ class PinMediaMetadata(Model):
         """
 
         self._video_url = video_url
+
+    @property
+    def video_url_hls(self) -> str:
+        """Gets the video_url_hls of this PinMediaMetadata.
+
+        Video url (HLS).  **Note:** This field is limited and not available to all apps.  # noqa: E501
+
+        :return: The video_url_hls of this PinMediaMetadata.
+        :rtype: str
+        """
+        return self._video_url_hls
+
+    @video_url_hls.setter
+    def video_url_hls(self, video_url_hls: str):
+        """Sets the video_url_hls of this PinMediaMetadata.
+
+        Video url (HLS).  **Note:** This field is limited and not available to all apps.  # noqa: E501
+
+        :param video_url_hls: The video_url_hls of this PinMediaMetadata.
+        :type video_url_hls: str
+        """
+
+        self._video_url_hls = video_url_hls
 
     @property
     def width(self) -> int:

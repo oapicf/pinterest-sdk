@@ -17,7 +17,7 @@ class CatalogsProductGroupCreateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, description: str=None, feed_id: str=None, filters: CatalogsProductGroupFiltersRequest=None, is_featured: bool=False, name: str=None):  # noqa: E501
+    def __init__(self, description: str=None, feed_id: str=None, filters: CatalogsProductGroupFiltersRequest=None, is_featured: bool=None, name: str=None):  # noqa: E501
         """CatalogsProductGroupCreateRequest - a model defined in Swagger
 
         :param description: The description of this CatalogsProductGroupCreateRequest.  # noqa: E501

@@ -1,0 +1,9 @@
+
+
+# AdeColumnType
+
+## Enum
+
+
+
+

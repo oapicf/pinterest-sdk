@@ -1,12 +1,12 @@
 
 /*
- * Catalogs_hotel_filter_values_map.h
+ * CatalogsHotelFilterValuesMap.h
  *
  * A map of filter attributes to their available values.
  */
 
-#ifndef TINY_CPP_CLIENT_Catalogs_hotel_filter_values_map_H_
-#define TINY_CPP_CLIENT_Catalogs_hotel_filter_values_map_H_
+#ifndef TINY_CPP_CLIENT_CatalogsHotelFilterValuesMap_H_
+#define TINY_CPP_CLIENT_CatalogsHotelFilterValuesMap_H_
 
 
 #include <string>
@@ -23,18 +23,18 @@ namespace Tiny {
  *
  */
 
-class Catalogs_hotel_filter_values_map{
+class CatalogsHotelFilterValuesMap{
 public:
 
     /*! \brief Constructor.
 	 */
-    Catalogs_hotel_filter_values_map();
-    Catalogs_hotel_filter_values_map(std::string jsonString);
+    CatalogsHotelFilterValuesMap();
+    CatalogsHotelFilterValuesMap(std::string jsonString);
 
 
     /*! \brief Destructor.
 	 */
-    virtual ~Catalogs_hotel_filter_values_map();
+    virtual ~CatalogsHotelFilterValuesMap();
 
 
     /*! \brief Retrieve a bourne JSON representation of this class.
@@ -52,42 +52,42 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBrand(std::list <std::string> brand);
+	void setBrand(std::list<std::string> brand);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getCustomLabel0();
 
 	/*! \brief Set 
 	 */
-	void setCustomLabel0(std::list <std::string> custom_label_0);
+	void setCustomLabel0(std::list<std::string> custom_label_0);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getCustomLabel1();
 
 	/*! \brief Set 
 	 */
-	void setCustomLabel1(std::list <std::string> custom_label_1);
+	void setCustomLabel1(std::list<std::string> custom_label_1);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getCustomLabel2();
 
 	/*! \brief Set 
 	 */
-	void setCustomLabel2(std::list <std::string> custom_label_2);
+	void setCustomLabel2(std::list<std::string> custom_label_2);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getCustomLabel3();
 
 	/*! \brief Set 
 	 */
-	void setCustomLabel3(std::list <std::string> custom_label_3);
+	void setCustomLabel3(std::list<std::string> custom_label_3);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getCustomLabel4();
 
 	/*! \brief Set 
 	 */
-	void setCustomLabel4(std::list <std::string> custom_label_4);
+	void setCustomLabel4(std::list<std::string> custom_label_4);
 
 
     private:
@@ -100,4 +100,4 @@ public:
 };
 }
 
-#endif /* TINY_CPP_CLIENT_Catalogs_hotel_filter_values_map_H_ */
+#endif /* TINY_CPP_CLIENT_CatalogsHotelFilterValuesMap_H_ */

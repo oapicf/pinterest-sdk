@@ -1,0 +1,53 @@
+package org.openapitools.vertxweb.server.model;
+
+import java.util.Objects;
+import org.openapitools.vertxweb.server.model.CatalogsLocale;
+
+/**
+ * The locale used within a feed for product descriptions.
+ **/
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale   {
+  
+
+  public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale () {
+
+  }
+
+  public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale () {
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale catalogsCreativeAssetsFeedsCreateRequestDefaultLocale = (CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale) o;return true;
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale {\n");
+    
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}

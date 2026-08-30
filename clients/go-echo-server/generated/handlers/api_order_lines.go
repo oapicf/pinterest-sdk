@@ -13,7 +13,7 @@ func (c *Container) OrderLinesGet(ctx echo.Context) error {
 }
 
 
-// OrderLinesList - Get order lines
+// OrderLinesList - Get order lines.
 func (c *Container) OrderLinesList(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
 		Message: "Hello World",

@@ -6,6 +6,7 @@ goog.provide('API.Client.CatalogsHotelAttributes');
 API.Client.CatalogsHotelAttributes = function() {}
 
 /**
+ * Hotel address
  * @type {!API.Client.CatalogsHotelAddress}
  * @export
  */
@@ -75,6 +76,7 @@ API.Client.CatalogsHotelAttributes.prototype.customLabel4;
 API.Client.CatalogsHotelAttributes.prototype.description;
 
 /**
+ * If specified, you must provide all properties
  * @type {!API.Client.CatalogsHotelGuestRatings}
  * @export
  */
@@ -123,14 +125,22 @@ API.Client.CatalogsHotelAttributes.prototype.neighborhood;
 API.Client.CatalogsHotelAttributes.prototype.salePrice;
 
 /**
- * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+ * <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
  * @type {!Array<!string>}
  * @export
  */
 API.Client.CatalogsHotelAttributes.prototype.additionalImageLink;
 
 /**
- * @type {!API.Client.CatalogsHotelAttributes_allOf_main_image}
+ * AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+ * @type {!Array<!API.Client.CatalogsAiContentDisclosure>}
+ * @export
+ */
+API.Client.CatalogsHotelAttributes.prototype.aiDisclosures;
+
+/**
+ * The main hotel image
+ * @type {!API.Client.CatalogsHotelMainImage}
  * @export
  */
 API.Client.CatalogsHotelAttributes.prototype.mainImage;

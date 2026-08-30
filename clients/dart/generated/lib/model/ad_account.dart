@@ -20,6 +20,7 @@ class AdAccount {
     this.name,
     this.owner,
     this.permissions = const [],
+    this.timeZone,
     this.updatedTime,
   });
 
@@ -64,6 +65,15 @@ class AdAccount {
 
   List<BusinessAccessRole> permissions;
 
+  /// The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? timeZone;
+
   int? updatedTime;
 
   @override
@@ -75,6 +85,7 @@ class AdAccount {
     other.name == name &&
     other.owner == owner &&
     _deepEquality.equals(other.permissions, permissions) &&
+    other.timeZone == timeZone &&
     other.updatedTime == updatedTime;
 
   @override
@@ -87,10 +98,11 @@ class AdAccount {
     (name == null ? 0 : name!.hashCode) +
     (owner == null ? 0 : owner!.hashCode) +
     (permissions.hashCode) +
+    (timeZone == null ? 0 : timeZone!.hashCode) +
     (updatedTime == null ? 0 : updatedTime!.hashCode);
 
   @override
-  String toString() => 'AdAccount[country=$country, createdTime=$createdTime, currency=$currency, id=$id, name=$name, owner=$owner, permissions=$permissions, updatedTime=$updatedTime]';
+  String toString() => 'AdAccount[country=$country, createdTime=$createdTime, currency=$currency, id=$id, name=$name, owner=$owner, permissions=$permissions, timeZone=$timeZone, updatedTime=$updatedTime]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -121,6 +133,11 @@ class AdAccount {
       json[r'owner'] = null;
     }
       json[r'permissions'] = this.permissions;
+    if (this.timeZone != null) {
+      json[r'time_zone'] = this.timeZone;
+    } else {
+      json[r'time_zone'] = null;
+    }
     if (this.updatedTime != null) {
       json[r'updated_time'] = this.updatedTime;
     } else {
@@ -140,10 +157,8 @@ class AdAccount {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdAccount[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdAccount[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "AdAccount[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "AdAccount[id]" has a null value in JSON.');
         return true;
       }());
 
@@ -155,6 +170,7 @@ class AdAccount {
         name: mapValueOfType<String>(json, r'name'),
         owner: AdAccountOwner.fromJson(json[r'owner']),
         permissions: BusinessAccessRole.listFromJson(json[r'permissions']),
+        timeZone: mapValueOfType<String>(json, r'time_zone'),
         updatedTime: mapValueOfType<int>(json, r'updated_time'),
       );
     }

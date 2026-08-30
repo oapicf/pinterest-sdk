@@ -2,8 +2,6 @@
 
 # RecordCounts
 
-Record processing counts
-
 The class is defined in **[RecordCounts.java](../../src/main/java/org/openapitools/model/RecordCounts.java)**
 
 ## Properties

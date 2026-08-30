@@ -85,7 +85,7 @@ CatalogsFeedProductCounts::getIngested()
 }
 
 void
-CatalogsFeedProductCounts::setIngested(int  ingested)
+CatalogsFeedProductCounts::setIngested(int ingested)
 {
 	this->ingested = ingested;
 }
@@ -97,7 +97,7 @@ CatalogsFeedProductCounts::getOriginal()
 }
 
 void
-CatalogsFeedProductCounts::setOriginal(int  original)
+CatalogsFeedProductCounts::setOriginal(int original)
 {
 	this->original = original;
 }

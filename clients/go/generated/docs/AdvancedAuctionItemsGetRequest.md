@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogId** | **string** | Catalog id pertaining to the retail item | 
-**Items** | [**[]AdvancedAuctionItemsGetRecord**](AdvancedAuctionItemsGetRecord.md) | A list of retail catalog items to fetch bid options for | 
+**Items** | [**[]AdvancedAuctionKey**](AdvancedAuctionKey.md) | A list of retail catalog items to fetch bid options for | 
 
 ## Methods
 
 ### NewAdvancedAuctionItemsGetRequest
 
-`func NewAdvancedAuctionItemsGetRequest(catalogId string, items []AdvancedAuctionItemsGetRecord, ) *AdvancedAuctionItemsGetRequest`
+`func NewAdvancedAuctionItemsGetRequest(catalogId string, items []AdvancedAuctionKey, ) *AdvancedAuctionItemsGetRequest`
 
 NewAdvancedAuctionItemsGetRequest instantiates a new AdvancedAuctionItemsGetRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetCatalogId sets CatalogId field to given value.
 
 ### GetItems
 
-`func (o *AdvancedAuctionItemsGetRequest) GetItems() []AdvancedAuctionItemsGetRecord`
+`func (o *AdvancedAuctionItemsGetRequest) GetItems() []AdvancedAuctionKey`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *AdvancedAuctionItemsGetRequest) GetItemsOk() (*[]AdvancedAuctionItemsGetRecord, bool)`
+`func (o *AdvancedAuctionItemsGetRequest) GetItemsOk() (*[]AdvancedAuctionKey, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *AdvancedAuctionItemsGetRequest) SetItems(v []AdvancedAuctionItemsGetRecord)`
+`func (o *AdvancedAuctionItemsGetRequest) SetItems(v []AdvancedAuctionKey)`
 
 SetItems sets Items field to given value.
 

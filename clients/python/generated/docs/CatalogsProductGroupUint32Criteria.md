@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**negated** | **bool** |  | [optional] [default to False]
-**operator** | **str** |  | 
+**negated** | **bool** |  | [optional] 
+**operator** | [**NumericFilterOperatorType**](NumericFilterOperatorType.md) |  | 
 **value** | **int** |  | 
 
 ## Example

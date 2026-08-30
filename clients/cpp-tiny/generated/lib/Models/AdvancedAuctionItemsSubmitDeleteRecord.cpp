@@ -7,9 +7,10 @@ using namespace Tiny;
 AdvancedAuctionItemsSubmitDeleteRecord::AdvancedAuctionItemsSubmitDeleteRecord()
 {
 	country = Country();
+	errors = std::list<AdvancedAuctionOperationError>();
 	item_id = std::string();
 	language = Language();
-	errors = std::list<AdvancedAuctionOperationError>();
+	operation = std::string();
 }
 
 AdvancedAuctionItemsSubmitDeleteRecord::AdvancedAuctionItemsSubmitDeleteRecord(std::string jsonString)
@@ -41,6 +42,28 @@ AdvancedAuctionItemsSubmitDeleteRecord::fromJson(std::string jsonObj)
 
     }
 
+    const char *errorsKey = "errors";
+
+    if(object.has_key(errorsKey))
+    {
+        bourne::json value = object[errorsKey];
+
+
+        std::list<AdvancedAuctionOperationError> errors_list;
+        AdvancedAuctionOperationError element;
+        for(auto& var : value.array_range())
+        {
+
+
+            element.fromJson(var.dump());
+
+            errors_list.push_back(element);
+        }
+        errors = errors_list;
+
+
+    }
+
     const char *item_idKey = "item_id";
 
     if(object.has_key(item_idKey))
@@ -68,24 +91,15 @@ AdvancedAuctionItemsSubmitDeleteRecord::fromJson(std::string jsonObj)
 
     }
 
-    const char *errorsKey = "errors";
+    const char *operationKey = "operation";
 
-    if(object.has_key(errorsKey))
+    if(object.has_key(operationKey))
     {
-        bourne::json value = object[errorsKey];
+        bourne::json value = object[operationKey];
 
 
-        std::list<AdvancedAuctionOperationError> errors_list;
-        AdvancedAuctionOperationError element;
-        for(auto& var : value.array_range())
-        {
 
-
-            element.fromJson(var.dump());
-
-            errors_list.push_back(element);
-        }
-        errors = errors_list;
+        jsonToValue(&operation, value, "std::string");
 
 
     }
@@ -108,6 +122,21 @@ AdvancedAuctionItemsSubmitDeleteRecord::toJson()
 
 
 
+    std::list<AdvancedAuctionOperationError> errors_list = getErrors();
+    bourne::json errors_arr = bourne::json::array();
+
+    for(auto& var : errors_list)
+    {
+        AdvancedAuctionOperationError obj = var;
+        errors_arr.append(obj.toJson());
+    }
+    object["errors"] = errors_arr;
+
+
+
+
+
+
 
     object["item_id"] = getItemId();
 
@@ -122,16 +151,8 @@ AdvancedAuctionItemsSubmitDeleteRecord::toJson()
 
 
 
-    std::list<AdvancedAuctionOperationError> errors_list = getErrors();
-    bourne::json errors_arr = bourne::json::array();
 
-    for(auto& var : errors_list)
-    {
-        AdvancedAuctionOperationError obj = var;
-        errors_arr.append(obj.toJson());
-    }
-    object["errors"] = errors_arr;
-
+    object["operation"] = getOperation();
 
 
 
@@ -146,9 +167,21 @@ AdvancedAuctionItemsSubmitDeleteRecord::getCountry()
 }
 
 void
-AdvancedAuctionItemsSubmitDeleteRecord::setCountry(Country  country)
+AdvancedAuctionItemsSubmitDeleteRecord::setCountry(Country country)
 {
 	this->country = country;
+}
+
+std::list<AdvancedAuctionOperationError>
+AdvancedAuctionItemsSubmitDeleteRecord::getErrors()
+{
+	return errors;
+}
+
+void
+AdvancedAuctionItemsSubmitDeleteRecord::setErrors(std::list<AdvancedAuctionOperationError> errors)
+{
+	this->errors = errors;
 }
 
 std::string
@@ -158,7 +191,7 @@ AdvancedAuctionItemsSubmitDeleteRecord::getItemId()
 }
 
 void
-AdvancedAuctionItemsSubmitDeleteRecord::setItemId(std::string  item_id)
+AdvancedAuctionItemsSubmitDeleteRecord::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -170,21 +203,21 @@ AdvancedAuctionItemsSubmitDeleteRecord::getLanguage()
 }
 
 void
-AdvancedAuctionItemsSubmitDeleteRecord::setLanguage(Language  language)
+AdvancedAuctionItemsSubmitDeleteRecord::setLanguage(Language language)
 {
 	this->language = language;
 }
 
-std::list<AdvancedAuctionOperationError>
-AdvancedAuctionItemsSubmitDeleteRecord::getErrors()
+std::string
+AdvancedAuctionItemsSubmitDeleteRecord::getOperation()
 {
-	return errors;
+	return operation;
 }
 
 void
-AdvancedAuctionItemsSubmitDeleteRecord::setErrors(std::list <AdvancedAuctionOperationError> errors)
+AdvancedAuctionItemsSubmitDeleteRecord::setOperation(std::string operation)
 {
-	this->errors = errors;
+	this->operation = operation;
 }
 
 

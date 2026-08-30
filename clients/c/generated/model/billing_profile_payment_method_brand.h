@@ -1,0 +1,32 @@
+/*
+ * billing_profile_payment_method_brand.h
+ *
+ * Brand of the payment method.
+ */
+
+#ifndef _billing_profile_payment_method_brand_H_
+#define _billing_profile_payment_method_brand_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct billing_profile_payment_method_brand_t billing_profile_payment_method_brand_t;
+
+
+// Enum  for billing_profile_payment_method_brand
+
+typedef enum { pinterest_rest_api_billing_profile_payment_method_brand__NULL = 0, pinterest_rest_api_billing_profile_payment_method_brand__UNKNOWN, pinterest_rest_api_billing_profile_payment_method_brand__VISA, pinterest_rest_api_billing_profile_payment_method_brand__MASTERCARD, pinterest_rest_api_billing_profile_payment_method_brand__AMERICAN_EXPRESS, pinterest_rest_api_billing_profile_payment_method_brand__DISCOVER, pinterest_rest_api_billing_profile_payment_method_brand__SOFORT, pinterest_rest_api_billing_profile_payment_method_brand__DINERS_CLUB, pinterest_rest_api_billing_profile_payment_method_brand__ELO, pinterest_rest_api_billing_profile_payment_method_brand__CARTE_BANCAIRE } pinterest_rest_api_billing_profile_payment_method_brand__e;
+
+char* billing_profile_payment_method_brand_billing_profile_payment_method_brand_ToString(pinterest_rest_api_billing_profile_payment_method_brand__e billing_profile_payment_method_brand);
+
+pinterest_rest_api_billing_profile_payment_method_brand__e billing_profile_payment_method_brand_billing_profile_payment_method_brand_FromString(char* billing_profile_payment_method_brand);
+
+cJSON *billing_profile_payment_method_brand_convertToJSON(pinterest_rest_api_billing_profile_payment_method_brand__e billing_profile_payment_method_brand);
+
+pinterest_rest_api_billing_profile_payment_method_brand__e billing_profile_payment_method_brand_parseFromJSON(cJSON *billing_profile_payment_method_brandJSON);
+
+#endif /* _billing_profile_payment_method_brand_H_ */
+

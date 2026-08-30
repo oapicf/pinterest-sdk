@@ -8,7 +8,7 @@ The class is defined in **[CurrencyFilter.java](../../src/main/java/org/openapit
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CURRENCY** | `CatalogsProductGroupCurrencyCriteria` |  | 
+**CURRENCY** | [`CatalogsProductGroupCurrencyCriteria`](CatalogsProductGroupCurrencyCriteria.md) |  | 
 
 
 

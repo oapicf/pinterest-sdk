@@ -114,7 +114,7 @@ static bool notificationPostProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool notificationPostHelper(char * accessToken,
-	std::shared_ptr<Notification_post_request> notificationPostRequest, 
+	std::shared_ptr<NotificationPostRequest> notificationPostRequest, 
 	void(* handler)(NotificationResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -135,8 +135,8 @@ static bool notificationPostHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Notification_post_request")) {
-		node = converttoJson(&notificationPostRequest, "Notification_post_request", "");
+	if (isprimitive("NotificationPostRequest")) {
+		node = converttoJson(&notificationPostRequest, "NotificationPostRequest", "");
 	}
 	
 	char *jsonStr =  notificationPostRequest.toJson();
@@ -198,7 +198,7 @@ static bool notificationPostHelper(char * accessToken,
 
 
 bool NotificationManager::notificationPostAsync(char * accessToken,
-	std::shared_ptr<Notification_post_request> notificationPostRequest, 
+	std::shared_ptr<NotificationPostRequest> notificationPostRequest, 
 	void(* handler)(NotificationResponse, Error, void* )
 	, void* userData)
 {
@@ -208,7 +208,7 @@ bool NotificationManager::notificationPostAsync(char * accessToken,
 }
 
 bool NotificationManager::notificationPostSync(char * accessToken,
-	std::shared_ptr<Notification_post_request> notificationPostRequest, 
+	std::shared_ptr<NotificationPostRequest> notificationPostRequest, 
 	void(* handler)(NotificationResponse, Error, void* )
 	, void* userData)
 {

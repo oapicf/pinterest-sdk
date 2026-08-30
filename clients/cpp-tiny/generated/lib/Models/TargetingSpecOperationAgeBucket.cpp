@@ -123,7 +123,7 @@ TargetingSpecOperationAgeBucket::getField()
 }
 
 void
-TargetingSpecOperationAgeBucket::setField(std::string  field)
+TargetingSpecOperationAgeBucket::setField(std::string field)
 {
 	this->field = field;
 }
@@ -135,7 +135,7 @@ TargetingSpecOperationAgeBucket::getOperation()
 }
 
 void
-TargetingSpecOperationAgeBucket::setOperation(std::string  operation)
+TargetingSpecOperationAgeBucket::setOperation(std::string operation)
 {
 	this->operation = operation;
 }
@@ -147,7 +147,7 @@ TargetingSpecOperationAgeBucket::getValues()
 }
 
 void
-TargetingSpecOperationAgeBucket::setValues(std::list <TargetingSpecAgeBucket> values)
+TargetingSpecOperationAgeBucket::setValues(std::list<TargetingSpecAgeBucket> values)
 {
 	this->values = values;
 }

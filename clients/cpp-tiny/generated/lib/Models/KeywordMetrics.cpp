@@ -64,7 +64,7 @@ KeywordMetrics::getKeywordQueryVolume()
 }
 
 void
-KeywordMetrics::setKeywordQueryVolume(std::string  keyword_query_volume)
+KeywordMetrics::setKeywordQueryVolume(std::string keyword_query_volume)
 {
 	this->keyword_query_volume = keyword_query_volume;
 }

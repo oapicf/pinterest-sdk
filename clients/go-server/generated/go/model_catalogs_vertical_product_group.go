@@ -5,18 +5,23 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type CatalogsVerticalProductGroup struct {
 
-	// Catalog id pertaining to the creative assets product group.
+	// Catalog ID pertaining to the product group.
 	CatalogId string `json:"catalog_id"`
 
 	CatalogType string `json:"catalog_type"`
@@ -33,7 +38,7 @@ type CatalogsVerticalProductGroup struct {
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 
-	// ID of the creative assets product group.
+	// ID of the catalog product group.
 	Id string `json:"id"`
 
 	// boolean indicator of whether the product group is being featured or not
@@ -42,7 +47,7 @@ type CatalogsVerticalProductGroup struct {
 
 	Locale *string `json:"locale,omitempty"`
 
-	// Name of creative assets product group
+	// Name of catalog product group
 	Name string `json:"name,omitempty"`
 
 	Status CatalogsProductGroupStatus `json:"status,omitempty"`
@@ -52,16 +57,152 @@ type CatalogsVerticalProductGroup struct {
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt int32 `json:"updated_at,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsVerticalProductGroup
+func (o *CatalogsVerticalProductGroup) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_id",
+		"catalog_type",
+		"feed_id",
+		"filters",
+		"id",
+		"type",
+	}
 
-// AssertCatalogsVerticalProductGroupRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"catalog_id": false,
+		"catalog_type": false,
+		"feed_id": true,
+		"filters": false,
+		"id": false,
+		"type": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_id": {},
+		"catalog_type": {},
+		"country": {},
+		"created_at": {},
+		"description": {},
+		"feed_id": {},
+		"filters": {},
+		"id": {},
+		"is_featured": {},
+		"locale": {},
+		"name": {},
+		"status": {},
+		"type": {},
+		"updated_at": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsVerticalProductGroup
+
+	if value, exists := allProperties["catalog_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["country"]; exists {
+		if err = json.Unmarshal(value, &decoded.Country); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["created_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreatedAt); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["feed_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.FeedId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["filters"]; exists {
+		if err = json.Unmarshal(value, &decoded.Filters); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_featured"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsFeatured); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["locale"]; exists {
+		if err = json.Unmarshal(value, &decoded.Locale); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["type"]; exists {
+		if err = json.Unmarshal(value, &decoded.Type); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["updated_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdatedAt); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsVerticalProductGroupRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsVerticalProductGroupRequired(obj CatalogsVerticalProductGroup) error {
 	elements := map[string]interface{}{
-		"catalog_id": obj.CatalogId,
-		"catalog_type": obj.CatalogType,
-		"feed_id": obj.FeedId,
 		"filters": obj.Filters,
-		"id": obj.Id,
-		"type": obj.Type,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

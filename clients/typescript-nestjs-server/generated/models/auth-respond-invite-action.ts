@@ -1,0 +1,14 @@
+import { Permissions } from './permissions';
+
+
+export interface AuthRespondInviteAction { 
+  /**
+   * Whether the invite/request is accepted.
+   */
+  accept_invite: boolean;
+  /**
+   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
+   */
+  asset_id_to_permissions?: { [key: string]: Array<Permissions>; };
+}
+

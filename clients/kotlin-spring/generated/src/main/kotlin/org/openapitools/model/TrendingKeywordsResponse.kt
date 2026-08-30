@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.TrendingKeyword
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -16,12 +19,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param trends The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
+ * @param trends The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.
  */
 data class TrendingKeywordsResponse(
 
     @field:Valid
-    @Schema(example = "null", description = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
+    @Schema(description = "The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("trends")
     @get:JsonProperty("trends") val trends: kotlin.collections.List<TrendingKeyword>? = null
 ) {
 

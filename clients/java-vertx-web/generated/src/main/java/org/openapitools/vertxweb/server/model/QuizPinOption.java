@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 
 /**
- *  This field contains multiple options to a quiz question.
+ * This field contains multiple options to a quiz question.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuizPinOption   {
@@ -76,9 +76,6 @@ public class QuizPinOption   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

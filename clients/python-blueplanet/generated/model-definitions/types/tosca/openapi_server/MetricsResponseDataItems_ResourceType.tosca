@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MetricsResponseDataItems"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MetricsResponseDataItems"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  MetricsResponseDataItems {
+    title = MetricsResponseDataItems
+    description = MetricsResponseDataItems
+    derivedFrom = Root
+    properties {
+        metrics {
+          type =  
+          description = "Metrics object containing the requested metric columns and their values. The keys are metric names (e.g., AD_GROUP_ID, DATE, SPEND_IN_DOLLAR) and values are the metric values (strings or numbers)."
+          optional = true
+        }
+        targeting_type {
+          type =  string
+          description = "The targeting type for this data item (e.g., KEYWORD, APPTYPE, GENDER)"
+          optional = true
+        }
+        targeting_value {
+          type =  string
+          description = "The targeting value for this data item (e.g., &#39;christmas decor ideas&#39;, &#39;iphone&#39;, &#39;female&#39;)"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  MetricsResponseDataItems {
+    title = MetricsResponseDataItems
+    description = MetricsResponseDataItems
+    implements = openapi_server.resourceTypes.MetricsResponseDataItems
+
+  }
+}

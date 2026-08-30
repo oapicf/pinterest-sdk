@@ -9,12 +9,12 @@
 -export_type([openapi_advanced_auction_items_submit_record/0]).
 
 -type openapi_advanced_auction_items_submit_record() ::
-  [ {'operation', openapi_advanced_auction_operation:openapi_advanced_auction_operation() }
+  [ {'bid_options', openapi_advanced_auction_bid_options:openapi_advanced_auction_bid_options() }
   | {'country', openapi_country:openapi_country() }
+  | {'errors', list(openapi_advanced_auction_operation_error:openapi_advanced_auction_operation_error()) }
   | {'item_id', binary() }
   | {'language', openapi_language:openapi_language() }
-  | {'bid_options', openapi_advanced_auction_bid_options:openapi_advanced_auction_bid_options() }
-  | {'errors', list(openapi_advanced_auction_operation_error:openapi_advanced_auction_operation_error()) }
+  | {'operation', binary() }
   | {'update_mask', list(openapi_update_mask_bid_option_field:openapi_update_mask_bid_option_field()) }
   ].
 
@@ -23,12 +23,12 @@ openapi_advanced_auction_items_submit_record() ->
     openapi_advanced_auction_items_submit_record([]).
 
 openapi_advanced_auction_items_submit_record(Fields) ->
-  Default = [ {'operation', openapi_advanced_auction_operation:openapi_advanced_auction_operation() }
+  Default = [ {'bid_options', openapi_advanced_auction_bid_options:openapi_advanced_auction_bid_options() }
             , {'country', openapi_country:openapi_country() }
+            , {'errors', list(openapi_advanced_auction_operation_error:openapi_advanced_auction_operation_error()) }
             , {'item_id', binary() }
             , {'language', openapi_language:openapi_language() }
-            , {'bid_options', openapi_advanced_auction_bid_options:openapi_advanced_auction_bid_options() }
-            , {'errors', list(openapi_advanced_auction_operation_error:openapi_advanced_auction_operation_error()) }
+            , {'operation', elements([<<"DELETE">>]) }
             , {'update_mask', list(openapi_update_mask_bid_option_field:openapi_update_mask_bid_option_field()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

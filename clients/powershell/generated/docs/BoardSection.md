@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** |  | [optional] [readonly] 
+**Id** | **String** |  | [optional] 
 **Name** | **String** |  | 
 
 ## Examples

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsRetailProductMetadata::CatalogsRetailProductMetadata()
 {
-	availability = NonNullableProductAvailabilityType();
+	availability = ProductAvailability();
 	currency = NonNullableCatalogsCurrency();
 	item_group_id = std::string();
 	item_id = std::string();
@@ -38,7 +38,7 @@ CatalogsRetailProductMetadata::fromJson(std::string jsonObj)
 
 
 
-        NonNullableProductAvailabilityType* obj = &availability;
+        ProductAvailability* obj = &availability;
 		obj->fromJson(value.dump());
 
     }
@@ -164,14 +164,14 @@ CatalogsRetailProductMetadata::toJson()
 
 }
 
-NonNullableProductAvailabilityType
+ProductAvailability
 CatalogsRetailProductMetadata::getAvailability()
 {
 	return availability;
 }
 
 void
-CatalogsRetailProductMetadata::setAvailability(NonNullableProductAvailabilityType  availability)
+CatalogsRetailProductMetadata::setAvailability(ProductAvailability availability)
 {
 	this->availability = availability;
 }
@@ -183,7 +183,7 @@ CatalogsRetailProductMetadata::getCurrency()
 }
 
 void
-CatalogsRetailProductMetadata::setCurrency(NonNullableCatalogsCurrency  currency)
+CatalogsRetailProductMetadata::setCurrency(NonNullableCatalogsCurrency currency)
 {
 	this->currency = currency;
 }
@@ -195,7 +195,7 @@ CatalogsRetailProductMetadata::getItemGroupId()
 }
 
 void
-CatalogsRetailProductMetadata::setItemGroupId(std::string  item_group_id)
+CatalogsRetailProductMetadata::setItemGroupId(std::string item_group_id)
 {
 	this->item_group_id = item_group_id;
 }
@@ -207,7 +207,7 @@ CatalogsRetailProductMetadata::getItemId()
 }
 
 void
-CatalogsRetailProductMetadata::setItemId(std::string  item_id)
+CatalogsRetailProductMetadata::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -219,7 +219,7 @@ CatalogsRetailProductMetadata::getPrice()
 }
 
 void
-CatalogsRetailProductMetadata::setPrice(long  price)
+CatalogsRetailProductMetadata::setPrice(long price)
 {
 	this->price = price;
 }
@@ -231,7 +231,7 @@ CatalogsRetailProductMetadata::getSalePrice()
 }
 
 void
-CatalogsRetailProductMetadata::setSalePrice(long  sale_price)
+CatalogsRetailProductMetadata::setSalePrice(long sale_price)
 {
 	this->sale_price = sale_price;
 }

@@ -5,7 +5,7 @@
 -export_type([openapi_catalogs_report_parameters/0]).
 
 -type openapi_catalogs_report_parameters() ::
-    #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
+    #{ 'catalog_type' := binary(),
        'report' := openapi_catalogs_hotel_report_parameters_report:openapi_catalogs_hotel_report_parameters_report()
      }.
 

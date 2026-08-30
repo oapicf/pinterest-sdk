@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -28,7 +36,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a catalog based product group.
  *
- * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogId Catalog ID pertaining to the product group.
  * @param catalogType 
  * @param filters 
  * @param name 
@@ -40,7 +48,7 @@ import com.squareup.moshi.JsonClass
 
 interface CatalogsVerticalProductGroupCreateRequest {
 
-    /* Catalog id pertaining to the creative assets product group. */
+    /* Catalog ID pertaining to the product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String
     @Json(name = "catalog_type")

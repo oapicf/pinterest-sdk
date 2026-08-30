@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -33,7 +33,8 @@ type IntegrationRecord struct {
 
 	ExternalBusinessId *string `json:"external_business_id,omitempty"`
 
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Integration record ID.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	PartnerAccessToken *string `json:"partner_access_token,omitempty"`
 
@@ -52,7 +53,8 @@ type IntegrationRecord struct {
 	UpdatedTime int32 `json:"updated_time,omitempty"`
 }
 
-// AssertIntegrationRecordRequired checks if the required fields are not zero-ed
+// AssertIntegrationRecordRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertIntegrationRecordRequired(obj IntegrationRecord) error {
 	return nil
 }

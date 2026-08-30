@@ -22,7 +22,7 @@ type ConversionEventDeviceInfo struct {
 	ExternalStorageSize int32 `json:"external_storage_size,omitempty"`
 
 	// Device form factor
-	FormFactor string `json:"form_factor,omitempty"`
+	FormFactor FormFactor `json:"form_factor,omitempty"`
 
 	// Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release
 	KernelVersion string `json:"kernel_version,omitempty"`
@@ -37,10 +37,10 @@ type ConversionEventDeviceInfo struct {
 	Model string `json:"model,omitempty"`
 
 	// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-	NetworkType string `json:"network_type,omitempty"`
+	NetworkType NetworkType `json:"network_type,omitempty"`
 
 	// OS Family
-	OsFamily string `json:"os_family,omitempty"`
+	OsFamily OsFamily `json:"os_family,omitempty"`
 
 	// Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch
 	OsName string `json:"os_name,omitempty"`

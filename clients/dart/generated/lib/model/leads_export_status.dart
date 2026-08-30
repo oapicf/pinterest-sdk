@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// Status of a leads export job
-class LeadsExportStatus {
-  /// Instantiate a new enum with the provided [value].
-  const LeadsExportStatus._(this.value);
+enum LeadsExportStatus {
+  IN_PROGRESS._(r'IN_PROGRESS'),
+  FINISHED._(r'FINISHED'),
+  FAILED._(r'FAILED'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const LeadsExportStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const IN_PROGRESS = LeadsExportStatus._(r'IN_PROGRESS');
-  static const FINISHED = LeadsExportStatus._(r'FINISHED');
-  static const FAILED = LeadsExportStatus._(r'FAILED');
-
-  /// List of all possible values in this [enum][LeadsExportStatus].
-  static const values = <LeadsExportStatus>[
-    IN_PROGRESS,
-    FINISHED,
-    FAILED,
-  ];
-
+  /// Returns the instance of [LeadsExportStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static LeadsExportStatus? fromJson(dynamic value) => LeadsExportStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [LeadsExportStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<LeadsExportStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <LeadsExportStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class LeadsExportStatusTypeTransformer {
 
   const LeadsExportStatusTypeTransformer._();
 
-  String encode(LeadsExportStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(LeadsExportStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a LeadsExportStatus.
+  /// Returns the instance of [LeadsExportStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class LeadsExportStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   LeadsExportStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is LeadsExportStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'IN_PROGRESS': return LeadsExportStatus.IN_PROGRESS;
@@ -82,7 +86,7 @@ class LeadsExportStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [LeadsExportStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static LeadsExportStatusTypeTransformer? _instance;
 }
 

@@ -23,7 +23,7 @@ CatalogsHotelAttributes::~CatalogsHotelAttributes()
 void
 CatalogsHotelAttributes::__init()
 {
-	//address = new CatalogsHotelAddress();
+	//address = null;
 	//base_price = std::string();
 	//brand = std::string();
 	//category = std::string();
@@ -33,7 +33,7 @@ CatalogsHotelAttributes::__init()
 	//custom_label_3 = std::string();
 	//custom_label_4 = std::string();
 	//description = std::string();
-	//guest_ratings = new CatalogsHotelGuestRatings();
+	//guest_ratings = null;
 	//latitude = double(0);
 	//link = std::string();
 	//longitude = double(0);
@@ -41,7 +41,8 @@ CatalogsHotelAttributes::__init()
 	//new std::list()std::list> neighborhood;
 	//sale_price = std::string();
 	//new std::list()std::list> additional_image_link;
-	//main_image = new CatalogsHotelAttributes_allOf_main_image();
+	//new std::list()std::list> ai_disclosures;
+	//main_image = null;
 }
 
 void
@@ -136,6 +137,11 @@ CatalogsHotelAttributes::__cleanup()
 	//additional_image_link.RemoveAll(true);
 	//delete additional_image_link;
 	//additional_image_link = NULL;
+	//}
+	//if(ai_disclosures != NULL) {
+	//ai_disclosures.RemoveAll(true);
+	//delete ai_disclosures;
+	//ai_disclosures = NULL;
 	//}
 	//if(main_image != NULL) {
 	//
@@ -382,16 +388,40 @@ CatalogsHotelAttributes::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	node = json_object_get_member(pJsonObject, ai_disclosuresKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<CatalogsAiContentDisclosure> new_list;
+			CatalogsAiContentDisclosure inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("CatalogsAiContentDisclosure")) {
+					jsonToValue(&inst, temp_json, "CatalogsAiContentDisclosure", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			ai_disclosures = new_list;
+		}
+		
+	}
 	const gchar *main_imageKey = "main_image";
 	node = json_object_get_member(pJsonObject, main_imageKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsHotelAttributes_allOf_main_image")) {
-			jsonToValue(&main_image, node, "CatalogsHotelAttributes_allOf_main_image", "CatalogsHotelAttributes_allOf_main_image");
+		if (isprimitive("CatalogsHotelMainImage")) {
+			jsonToValue(&main_image, node, "CatalogsHotelMainImage", "CatalogsHotelMainImage");
 		} else {
 			
-			CatalogsHotelAttributes_allOf_main_image* obj = static_cast<CatalogsHotelAttributes_allOf_main_image*> (&main_image);
+			CatalogsHotelMainImage* obj = static_cast<CatalogsHotelMainImage*> (&main_image);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -602,13 +632,38 @@ CatalogsHotelAttributes::toJson()
 	
 	const gchar *additional_image_linkKey = "additional_image_link";
 	json_object_set_member(pJsonObject, additional_image_linkKey, node);
-	if (isprimitive("CatalogsHotelAttributes_allOf_main_image")) {
-		CatalogsHotelAttributes_allOf_main_image obj = getMainImage();
-		node = converttoJson(&obj, "CatalogsHotelAttributes_allOf_main_image", "");
+	if (isprimitive("CatalogsAiContentDisclosure")) {
+		list<CatalogsAiContentDisclosure> new_list = static_cast<list <CatalogsAiContentDisclosure> > (getAiDisclosures());
+		node = converttoJson(&new_list, "CatalogsAiContentDisclosure", "array");
+	} else {
+		node = json_node_alloc();
+		list<CatalogsAiContentDisclosure> new_list = static_cast<list <CatalogsAiContentDisclosure> > (getAiDisclosures());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<CatalogsAiContentDisclosure>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			CatalogsAiContentDisclosure obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	json_object_set_member(pJsonObject, ai_disclosuresKey, node);
+	if (isprimitive("CatalogsHotelMainImage")) {
+		CatalogsHotelMainImage obj = getMainImage();
+		node = converttoJson(&obj, "CatalogsHotelMainImage", "");
 	}
 	else {
 		
-		CatalogsHotelAttributes_allOf_main_image obj = static_cast<CatalogsHotelAttributes_allOf_main_image> (getMainImage());
+		CatalogsHotelMainImage obj = static_cast<CatalogsHotelMainImage> (getMainImage());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -840,14 +895,26 @@ CatalogsHotelAttributes::setAdditionalImageLink(std::list <std::string> addition
 	this->additional_image_link = additional_image_link;
 }
 
-CatalogsHotelAttributes_allOf_main_image
+std::list<CatalogsAiContentDisclosure>
+CatalogsHotelAttributes::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+CatalogsHotelAttributes::setAiDisclosures(std::list <CatalogsAiContentDisclosure> ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
+}
+
+CatalogsHotelMainImage
 CatalogsHotelAttributes::getMainImage()
 {
 	return main_image;
 }
 
 void
-CatalogsHotelAttributes::setMainImage(CatalogsHotelAttributes_allOf_main_image  main_image)
+CatalogsHotelAttributes::setMainImage(CatalogsHotelMainImage  main_image)
 {
 	this->main_image = main_image;
 }

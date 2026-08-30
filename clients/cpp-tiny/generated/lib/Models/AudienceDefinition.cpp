@@ -106,7 +106,7 @@ AudienceDefinition::getDate()
 }
 
 void
-AudienceDefinition::setDate(std::string  date)
+AudienceDefinition::setDate(std::string date)
 {
 	this->date = date;
 }
@@ -118,7 +118,7 @@ AudienceDefinition::getScope()
 }
 
 void
-AudienceDefinition::setScope(std::string  scope)
+AudienceDefinition::setScope(std::string scope)
 {
 	this->scope = scope;
 }
@@ -130,7 +130,7 @@ AudienceDefinition::getType()
 }
 
 void
-AudienceDefinition::setType(std::string  type)
+AudienceDefinition::setType(std::string type)
 {
 	this->type = type;
 }

@@ -7,7 +7,7 @@
 #' @title AdPreviewURLResponse
 #' @description AdPreviewURLResponse Class
 #' @format An \code{R6Class} generator object
-#' @field url 'Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19' character [optional]
+#' @field url Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19 character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,7 +19,7 @@ AdPreviewURLResponse <- R6::R6Class(
     #' @description
     #' Initialize a new AdPreviewURLResponse class.
     #'
-    #' @param url 'Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19'
+    #' @param url Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19
     #' @param ... Other optional arguments.
     initialize = function(`url` = NULL, ...) {
       if (!is.null(`url`)) {

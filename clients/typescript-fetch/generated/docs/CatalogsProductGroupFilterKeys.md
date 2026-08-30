@@ -6,40 +6,41 @@
 
 Name | Type
 ------------ | -------------
-`mINPRICE` | [CatalogsProductGroupPricingCriteria](.md)
-`mAXPRICE` | [CatalogsProductGroupPricingCriteria](.md)
-`cURRENCY` | [CatalogsProductGroupCurrencyCriteria](.md)
-`iTEMID` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`aVAILABILITY` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`bRAND` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cONDITION` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMLABEL0` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
-`cUSTOMLABEL1` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
-`cUSTOMLABEL2` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
-`cUSTOMLABEL3` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
-`cUSTOMLABEL4` | [CatalogsProductGroupFilterOperatorTypeCriteria](.md)
-`iTEMGROUPID` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`gENDER` | [CatalogsProductGroupMultipleGenderCriteria](.md)
-`mEDIATYPE` | [CatalogsProductGroupMultipleMediaTypesCriteria](.md)
-`pRODUCTTYPE4` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`pRODUCTTYPE3` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`pRODUCTTYPE2` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`pRODUCTTYPE1` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`pRODUCTTYPE0` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`gOOGLEPRODUCTCATEGORY6` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`gOOGLEPRODUCTCATEGORY5` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`gOOGLEPRODUCTCATEGORY4` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`gOOGLEPRODUCTCATEGORY3` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`gOOGLEPRODUCTCATEGORY2` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`gOOGLEPRODUCTCATEGORY1` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`gOOGLEPRODUCTCATEGORY0` | [CatalogsProductGroupMultipleStringListCriteria](.md)
-`pRODUCTGROUP` | [CatalogsProductGroupMultipleStringCriteria](.md)
-`cUSTOMNUMBER0` | [CatalogsProductGroupUint32Criteria](.md)
-`cUSTOMNUMBER1` | [CatalogsProductGroupUint32Criteria](.md)
-`cUSTOMNUMBER2` | [CatalogsProductGroupUint32Criteria](.md)
-`cUSTOMNUMBER3` | [CatalogsProductGroupUint32Criteria](.md)
-`cUSTOMNUMBER4` | [CatalogsProductGroupUint32Criteria](.md)
-`tITLEKEYWORDS` | [CatalogsProductGroupMultipleStringCriteria](.md)
+`mINPRICE` | [CatalogsProductGroupPricingCriteria](CatalogsProductGroupPricingCriteria.md)
+`mAXPRICE` | [CatalogsProductGroupPricingCriteria](CatalogsProductGroupPricingCriteria.md)
+`cURRENCY` | [CatalogsProductGroupCurrencyCriteria](CatalogsProductGroupCurrencyCriteria.md)
+`iTEMID` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
+`aVAILABILITY` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
+`bRAND` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
+`cONDITION` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
+`cUSTOMLABEL0` | [CatalogsProductGroupFilterOperatorTypeCriteria](CatalogsProductGroupFilterOperatorTypeCriteria.md)
+`cUSTOMLABEL1` | [CatalogsProductGroupFilterOperatorTypeCriteria](CatalogsProductGroupFilterOperatorTypeCriteria.md)
+`cUSTOMLABEL2` | [CatalogsProductGroupFilterOperatorTypeCriteria](CatalogsProductGroupFilterOperatorTypeCriteria.md)
+`cUSTOMLABEL3` | [CatalogsProductGroupFilterOperatorTypeCriteria](CatalogsProductGroupFilterOperatorTypeCriteria.md)
+`cUSTOMLABEL4` | [CatalogsProductGroupFilterOperatorTypeCriteria](CatalogsProductGroupFilterOperatorTypeCriteria.md)
+`iTEMGROUPID` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
+`gENDER` | [CatalogsProductGroupMultipleGenderCriteria](CatalogsProductGroupMultipleGenderCriteria.md)
+`mEDIATYPE` | [CatalogsProductGroupMultipleMediaTypesCriteria](CatalogsProductGroupMultipleMediaTypesCriteria.md)
+`pRODUCTTYPE4` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`pRODUCTTYPE3` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`pRODUCTTYPE2` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`pRODUCTTYPE1` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`pRODUCTTYPE0` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`gOOGLEPRODUCTCATEGORY6` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`gOOGLEPRODUCTCATEGORY5` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`gOOGLEPRODUCTCATEGORY4` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`gOOGLEPRODUCTCATEGORY3` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`gOOGLEPRODUCTCATEGORY2` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`gOOGLEPRODUCTCATEGORY1` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`gOOGLEPRODUCTCATEGORY0` | [CatalogsProductGroupMultipleStringListCriteria](CatalogsProductGroupMultipleStringListCriteria.md)
+`cUSTOMNUMBER0` | [CatalogsProductGroupUint32Criteria](CatalogsProductGroupUint32Criteria.md)
+`cUSTOMNUMBER1` | [CatalogsProductGroupUint32Criteria](CatalogsProductGroupUint32Criteria.md)
+`cUSTOMNUMBER2` | [CatalogsProductGroupUint32Criteria](CatalogsProductGroupUint32Criteria.md)
+`cUSTOMNUMBER3` | [CatalogsProductGroupUint32Criteria](CatalogsProductGroupUint32Criteria.md)
+`cUSTOMNUMBER4` | [CatalogsProductGroupUint32Criteria](CatalogsProductGroupUint32Criteria.md)
+`tITLEKEYWORDS` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
+`pINTERESTPRODUCTCATEGORIES` | [CatalogsProductGroupMultiplePinterestProductCategoryCriteria](CatalogsProductGroupMultiplePinterestProductCategoryCriteria.md)
+`pRODUCTGROUP` | [CatalogsProductGroupMultipleStringCriteria](CatalogsProductGroupMultipleStringCriteria.md)
 
 ## Example
 
@@ -75,13 +76,14 @@ const example = {
   "gOOGLEPRODUCTCATEGORY2": null,
   "gOOGLEPRODUCTCATEGORY1": null,
   "gOOGLEPRODUCTCATEGORY0": null,
-  "pRODUCTGROUP": null,
   "cUSTOMNUMBER0": null,
   "cUSTOMNUMBER1": null,
   "cUSTOMNUMBER2": null,
   "cUSTOMNUMBER3": null,
   "cUSTOMNUMBER4": null,
   "tITLEKEYWORDS": null,
+  "pINTERESTPRODUCTCATEGORIES": null,
+  "pRODUCTGROUP": null,
 } satisfies CatalogsProductGroupFilterKeys
 
 console.log(example)

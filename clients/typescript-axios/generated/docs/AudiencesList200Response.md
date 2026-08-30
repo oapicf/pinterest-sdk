@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;Audience&gt;**](Audience.md) |  | [default to undefined]
+**items** | [**Array&lt;AdAccountsAudience&gt;**](AdAccountsAudience.md) |  | [default to undefined]
 
 ## Example
 

@@ -4,10 +4,27 @@
 #include "catalogs_retail_items_batch.h"
 
 
+char* catalogs_retail_items_batch_catalog_type_ToString(pinterest_rest_api_catalogs_retail_items_batch_CATALOGTYPE_e catalog_type) {
+    char* catalog_typeArray[] =  { "NULL", "RETAIL" };
+    return catalog_typeArray[catalog_type];
+}
+
+pinterest_rest_api_catalogs_retail_items_batch_CATALOGTYPE_e catalogs_retail_items_batch_catalog_type_FromString(char* catalog_type){
+    int stringToReturn = 0;
+    char *catalog_typeArray[] =  { "NULL", "RETAIL" };
+    size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 static catalogs_retail_items_batch_t *catalogs_retail_items_batch_create_internal(
     char *batch_id,
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_retail_items_batch_CATALOGTYPE_e catalog_type,
     char *completed_time,
     char *created_time,
     list_t *items,
@@ -17,26 +34,26 @@ static catalogs_retail_items_batch_t *catalogs_retail_items_batch_create_interna
     if (!catalogs_retail_items_batch_local_var) {
         return NULL;
     }
+    memset(catalogs_retail_items_batch_local_var, 0, sizeof(catalogs_retail_items_batch_t));
+    catalogs_retail_items_batch_local_var->_library_owned = 1;
     catalogs_retail_items_batch_local_var->batch_id = batch_id;
     catalogs_retail_items_batch_local_var->catalog_type = catalog_type;
     catalogs_retail_items_batch_local_var->completed_time = completed_time;
     catalogs_retail_items_batch_local_var->created_time = created_time;
     catalogs_retail_items_batch_local_var->items = items;
     catalogs_retail_items_batch_local_var->status = status;
-
-    catalogs_retail_items_batch_local_var->_library_owned = 1;
     return catalogs_retail_items_batch_local_var;
 }
 
 __attribute__((deprecated)) catalogs_retail_items_batch_t *catalogs_retail_items_batch_create(
     char *batch_id,
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_retail_items_batch_CATALOGTYPE_e catalog_type,
     char *completed_time,
     char *created_time,
     list_t *items,
     pinterest_rest_api_batch_operation_status__e status
     ) {
-    return catalogs_retail_items_batch_create_internal (
+    catalogs_retail_items_batch_t *result = catalogs_retail_items_batch_create_internal (
         batch_id,
         catalog_type,
         completed_time,
@@ -44,6 +61,9 @@ __attribute__((deprecated)) catalogs_retail_items_batch_t *catalogs_retail_items
         items,
         status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_retail_items_batch_free(catalogs_retail_items_batch_t *catalogs_retail_items_batch) {
@@ -89,16 +109,12 @@ cJSON *catalogs_retail_items_batch_convertToJSON(catalogs_retail_items_batch_t *
 
 
     // catalogs_retail_items_batch->catalog_type
-    if (pinterest_rest_api_catalogs_type__NULL == catalogs_retail_items_batch->catalog_type) {
+    if (pinterest_rest_api_catalogs_retail_items_batch_CATALOGTYPE_NULL == catalogs_retail_items_batch->catalog_type) {
         goto fail;
     }
-    cJSON *catalog_type_local_JSON = catalogs_type_convertToJSON(catalogs_retail_items_batch->catalog_type);
-    if(catalog_type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "catalog_type", catalog_type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_retail_items_batch_catalog_type_ToString(catalogs_retail_items_batch->catalog_type)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -163,8 +179,11 @@ catalogs_retail_items_batch_t *catalogs_retail_items_batch_parseFromJSON(cJSON *
 
     catalogs_retail_items_batch_t *catalogs_retail_items_batch_local_var = NULL;
 
-    // define the local variable for catalogs_retail_items_batch->catalog_type
-    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
+    char *batch_id_local_str = NULL;
+
+    char *completed_time_local_str = NULL;
+
+    char *created_time_local_str = NULL;
 
     // define the local list for catalogs_retail_items_batch->items
     list_t *itemsList = NULL;
@@ -193,8 +212,13 @@ catalogs_retail_items_batch_t *catalogs_retail_items_batch_parseFromJSON(cJSON *
         goto end;
     }
 
+    pinterest_rest_api_catalogs_retail_items_batch_CATALOGTYPE_e catalog_typeVariable;
     
-    catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
+    if(!cJSON_IsString(catalog_type))
+    {
+    goto end; //Enum
+    }
+    catalog_typeVariable = catalogs_retail_items_batch_catalog_type_FromString(catalog_type->valuestring);
 
     // catalogs_retail_items_batch->completed_time
     cJSON *completed_time = cJSON_GetObjectItemCaseSensitive(catalogs_retail_items_batchJSON, "completed_time");
@@ -257,19 +281,36 @@ catalogs_retail_items_batch_t *catalogs_retail_items_batch_parseFromJSON(cJSON *
     }
 
 
+    if (batch_id && !cJSON_IsNull(batch_id)) batch_id_local_str = strdup(batch_id->valuestring);
+    if (completed_time && !cJSON_IsNull(completed_time)) completed_time_local_str = strdup(completed_time->valuestring);
+    if (created_time && !cJSON_IsNull(created_time)) created_time_local_str = strdup(created_time->valuestring);
+
     catalogs_retail_items_batch_local_var = catalogs_retail_items_batch_create_internal (
-        batch_id && !cJSON_IsNull(batch_id) ? strdup(batch_id->valuestring) : NULL,
-        catalog_type_local_nonprim,
-        completed_time && !cJSON_IsNull(completed_time) ? strdup(completed_time->valuestring) : NULL,
-        strdup(created_time->valuestring),
+        batch_id_local_str,
+        catalog_typeVariable,
+        completed_time_local_str,
+        created_time_local_str,
         items ? itemsList : NULL,
         status ? status_local_nonprim : 0
         );
 
+    if (!catalogs_retail_items_batch_local_var) {
+        goto end;
+    }
+
     return catalogs_retail_items_batch_local_var;
 end:
-    if (catalog_type_local_nonprim) {
-        catalog_type_local_nonprim = 0;
+    if (batch_id_local_str) {
+        free(batch_id_local_str);
+        batch_id_local_str = NULL;
+    }
+    if (completed_time_local_str) {
+        free(completed_time_local_str);
+        completed_time_local_str = NULL;
+    }
+    if (created_time_local_str) {
+        free(created_time_local_str);
+        created_time_local_str = NULL;
     }
     if (itemsList) {
         listEntry_t *listEntry = NULL;

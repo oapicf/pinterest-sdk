@@ -17,19 +17,19 @@ postAdAccountsByTextPromotionsR adAccountId = notImplemented
 --
 -- Delete a promotion within Pinterest.
 -- operationId: promotions/delete
-deleteAdAccountsByTextPromotionsByTextR :: Text -- ^ Unique identifier of an ad account.
-                                        -> Text -- ^ Unique identifier of a promotion
+deleteAdAccountsByTextPromotionsByTextR :: Text -- ^ Promotion ID
+                                        -> Text -- ^ Unique identifier of an ad account.
                                         -> Handler Value
-deleteAdAccountsByTextPromotionsByTextR adAccountId promotionId = notImplemented
+deleteAdAccountsByTextPromotionsByTextR promotionId adAccountId = notImplemented
 
 -- | Get promotion by id
 --
 -- Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
 -- operationId: promotions/get
-getAdAccountsByTextPromotionsByTextR :: Text -- ^ Unique identifier of an ad account.
-                                     -> Text -- ^ Unique identifier of a promotion
+getAdAccountsByTextPromotionsByTextR :: Text -- ^ Promotion ID
+                                     -> Text -- ^ Unique identifier of an ad account.
                                      -> Handler Value
-getAdAccountsByTextPromotionsByTextR adAccountId promotionId = notImplemented
+getAdAccountsByTextPromotionsByTextR promotionId adAccountId = notImplemented
 
 -- | Get promotions
 --

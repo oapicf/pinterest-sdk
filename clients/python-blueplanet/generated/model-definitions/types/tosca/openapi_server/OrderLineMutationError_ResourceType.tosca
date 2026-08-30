@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OrderLineMutationError"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OrderLineMutationError"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  OrderLine = openapi_server.resourceTypes.OrderLine
+}
+resourceTypes {
+
+  OrderLineMutationError {
+    title = OrderLineMutationError
+    description = OrderLineMutationError
+    derivedFrom = Root
+    properties {
+        data {
+          type = OrderLine
+          description = ""
+          optional = false
+        }
+        error_messages {
+          type = array
+          items.type =  string
+          description = "Error messages."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OrderLineMutationError {
+    title = OrderLineMutationError
+    description = OrderLineMutationError
+    implements = openapi_server.resourceTypes.OrderLineMutationError
+
+  }
+}

@@ -12,18 +12,21 @@ static catalogs_create_report_response_t *catalogs_create_report_response_create
     if (!catalogs_create_report_response_local_var) {
         return NULL;
     }
-    catalogs_create_report_response_local_var->token = token;
-
+    memset(catalogs_create_report_response_local_var, 0, sizeof(catalogs_create_report_response_t));
     catalogs_create_report_response_local_var->_library_owned = 1;
+    catalogs_create_report_response_local_var->token = token;
     return catalogs_create_report_response_local_var;
 }
 
 __attribute__((deprecated)) catalogs_create_report_response_t *catalogs_create_report_response_create(
     char *token
     ) {
-    return catalogs_create_report_response_create_internal (
+    catalogs_create_report_response_t *result = catalogs_create_report_response_create_internal (
         token
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_create_report_response_free(catalogs_create_report_response_t *catalogs_create_report_response) {
@@ -64,6 +67,8 @@ catalogs_create_report_response_t *catalogs_create_report_response_parseFromJSON
 
     catalogs_create_report_response_t *catalogs_create_report_response_local_var = NULL;
 
+    char *token_local_str = NULL;
+
     // catalogs_create_report_response->token
     cJSON *token = cJSON_GetObjectItemCaseSensitive(catalogs_create_report_responseJSON, "token");
     if (cJSON_IsNull(token)) {
@@ -77,12 +82,22 @@ catalogs_create_report_response_t *catalogs_create_report_response_parseFromJSON
     }
 
 
+    if (token && !cJSON_IsNull(token)) token_local_str = strdup(token->valuestring);
+
     catalogs_create_report_response_local_var = catalogs_create_report_response_create_internal (
-        token && !cJSON_IsNull(token) ? strdup(token->valuestring) : NULL
+        token_local_str
         );
+
+    if (!catalogs_create_report_response_local_var) {
+        goto end;
+    }
 
     return catalogs_create_report_response_local_var;
 end:
+    if (token_local_str) {
+        free(token_local_str);
+        token_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -12,13 +12,13 @@ Method | HTTP request | Description
 # **bulkDownloadCreate**
 ```objc
 -(NSURLSessionTask*) bulkDownloadCreateWithAdAccountId: (NSString*) adAccountId
-    bulkDownloadRequest: (OAIBulkDownloadRequest*) bulkDownloadRequest
-        completionHandler: (void (^)(OAIBulkDownloadResponse* output, NSError* error)) handler;
+    bulkDownloadCreate: (OAIBulkDownloadCreate*) bulkDownloadCreate
+        completionHandler: (void (^)(OAIBulkDownload* output, NSError* error)) handler;
 ```
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 ```objc
@@ -29,14 +29,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIBulkDownloadRequest* bulkDownloadRequest = [[OAIBulkDownloadRequest alloc] init]; // Parameters to get ad entities in bulk
+OAIBulkDownloadCreate* bulkDownloadCreate = [[OAIBulkDownloadCreate alloc] init]; // 
 
 OAIBulkApi*apiInstance = [[OAIBulkApi alloc] init];
 
 // Get advertiser entities in bulk
 [apiInstance bulkDownloadCreateWithAdAccountId:adAccountId
-              bulkDownloadRequest:bulkDownloadRequest
-          completionHandler: ^(OAIBulkDownloadResponse* output, NSError* error) {
+              bulkDownloadCreate:bulkDownloadCreate
+          completionHandler: ^(OAIBulkDownload* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -51,11 +51,11 @@ OAIBulkApi*apiInstance = [[OAIBulkApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **bulkDownloadRequest** | [**OAIBulkDownloadRequest***](OAIBulkDownloadRequest.md)| Parameters to get ad entities in bulk | 
+ **bulkDownloadCreate** | [**OAIBulkDownloadCreate***](OAIBulkDownloadCreate.md)|  | 
 
 ### Return type
 
-[**OAIBulkDownloadResponse***](OAIBulkDownloadResponse.md)
+[**OAIBulkDownload***](OAIBulkDownload.md)
 
 ### Authorization
 
@@ -73,12 +73,12 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) bulkRequestGetWithAdAccountId: (NSString*) adAccountId
     bulkRequestId: (NSString*) bulkRequestId
     includeDetails: (NSNumber*) includeDetails
-        completionHandler: (void (^)(OAIBulkUpsertStatusResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIBulkJobData* output, NSError* error)) handler;
 ```
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 ```objc
@@ -92,8 +92,8 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* bulkRequestId = @"bulkRequestId_example"; // Unique identifier of a bulk upsert request.
-NSNumber* includeDetails = @(NO); // if set to True then attach the errors/details to all the requests (optional) (default to @(NO))
+NSString* bulkRequestId = @"bulkRequestId_example"; // Bulk request ID that is from one of the entities bulk endpoints
+NSNumber* includeDetails = @(NO); // If set to True then attach the errors/details to all the requests (optional) (default to @(NO))
 
 OAIBulkApi*apiInstance = [[OAIBulkApi alloc] init];
 
@@ -101,7 +101,7 @@ OAIBulkApi*apiInstance = [[OAIBulkApi alloc] init];
 [apiInstance bulkRequestGetWithAdAccountId:adAccountId
               bulkRequestId:bulkRequestId
               includeDetails:includeDetails
-          completionHandler: ^(OAIBulkUpsertStatusResponse* output, NSError* error) {
+          completionHandler: ^(OAIBulkJobData* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -116,12 +116,12 @@ OAIBulkApi*apiInstance = [[OAIBulkApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **bulkRequestId** | **NSString***| Unique identifier of a bulk upsert request. | 
- **includeDetails** | **NSNumber***| if set to True then attach the errors/details to all the requests | [optional] [default to @(NO)]
+ **bulkRequestId** | **NSString***| Bulk request ID that is from one of the entities bulk endpoints | 
+ **includeDetails** | **NSNumber***| If set to True then attach the errors/details to all the requests | [optional] [default to @(NO)]
 
 ### Return type
 
-[**OAIBulkUpsertStatusResponse***](OAIBulkUpsertStatusResponse.md)
+[**OAIBulkJobData***](OAIBulkJobData.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 
 ### Example
 ```objc

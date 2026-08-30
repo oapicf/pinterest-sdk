@@ -17,41 +17,41 @@ class Catalog(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, created_at: datetime=None, id: str=None, updated_at: datetime=None, catalog_type: CatalogsType=None, name: str=None):  # noqa: E501
+    def __init__(self, catalog_type: CatalogsType=None, created_at: datetime=None, id: str=None, name: str=None, updated_at: datetime=None):  # noqa: E501
         """Catalog - a model defined in Swagger
 
+        :param catalog_type: The catalog_type of this Catalog.  # noqa: E501
+        :type catalog_type: CatalogsType
         :param created_at: The created_at of this Catalog.  # noqa: E501
         :type created_at: datetime
         :param id: The id of this Catalog.  # noqa: E501
         :type id: str
-        :param updated_at: The updated_at of this Catalog.  # noqa: E501
-        :type updated_at: datetime
-        :param catalog_type: The catalog_type of this Catalog.  # noqa: E501
-        :type catalog_type: CatalogsType
         :param name: The name of this Catalog.  # noqa: E501
         :type name: str
+        :param updated_at: The updated_at of this Catalog.  # noqa: E501
+        :type updated_at: datetime
         """
         self.swagger_types = {
+            'catalog_type': CatalogsType,
             'created_at': datetime,
             'id': str,
-            'updated_at': datetime,
-            'catalog_type': CatalogsType,
-            'name': str
+            'name': str,
+            'updated_at': datetime
         }
 
         self.attribute_map = {
+            'catalog_type': 'catalog_type',
             'created_at': 'created_at',
             'id': 'id',
-            'updated_at': 'updated_at',
-            'catalog_type': 'catalog_type',
-            'name': 'name'
+            'name': 'name',
+            'updated_at': 'updated_at'
         }
 
+        self._catalog_type = catalog_type
         self._created_at = created_at
         self._id = id
-        self._updated_at = updated_at
-        self._catalog_type = catalog_type
         self._name = name
+        self._updated_at = updated_at
 
     @classmethod
     def from_dict(cls, dikt) -> 'Catalog':
@@ -63,6 +63,29 @@ class Catalog(Model):
         :rtype: Catalog
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def catalog_type(self) -> CatalogsType:
+        """Gets the catalog_type of this Catalog.
+
+
+        :return: The catalog_type of this Catalog.
+        :rtype: CatalogsType
+        """
+        return self._catalog_type
+
+    @catalog_type.setter
+    def catalog_type(self, catalog_type: CatalogsType):
+        """Sets the catalog_type of this Catalog.
+
+
+        :param catalog_type: The catalog_type of this Catalog.
+        :type catalog_type: CatalogsType
+        """
+        if catalog_type is None:
+            raise ValueError("Invalid value for `catalog_type`, must not be `None`")  # noqa: E501
+
+        self._catalog_type = catalog_type
 
     @property
     def created_at(self) -> datetime:
@@ -115,52 +138,6 @@ class Catalog(Model):
         self._id = id
 
     @property
-    def updated_at(self) -> datetime:
-        """Gets the updated_at of this Catalog.
-
-
-        :return: The updated_at of this Catalog.
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at: datetime):
-        """Sets the updated_at of this Catalog.
-
-
-        :param updated_at: The updated_at of this Catalog.
-        :type updated_at: datetime
-        """
-        if updated_at is None:
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
-
-        self._updated_at = updated_at
-
-    @property
-    def catalog_type(self) -> CatalogsType:
-        """Gets the catalog_type of this Catalog.
-
-
-        :return: The catalog_type of this Catalog.
-        :rtype: CatalogsType
-        """
-        return self._catalog_type
-
-    @catalog_type.setter
-    def catalog_type(self, catalog_type: CatalogsType):
-        """Sets the catalog_type of this Catalog.
-
-
-        :param catalog_type: The catalog_type of this Catalog.
-        :type catalog_type: CatalogsType
-        """
-        if catalog_type is None:
-            raise ValueError("Invalid value for `catalog_type`, must not be `None`")  # noqa: E501
-
-        self._catalog_type = catalog_type
-
-    @property
     def name(self) -> str:
         """Gets the name of this Catalog.
 
@@ -184,3 +161,26 @@ class Catalog(Model):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def updated_at(self) -> datetime:
+        """Gets the updated_at of this Catalog.
+
+
+        :return: The updated_at of this Catalog.
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at: datetime):
+        """Sets the updated_at of this Catalog.
+
+
+        :param updated_at: The updated_at of this Catalog.
+        :type updated_at: datetime
+        """
+        if updated_at is None:
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+
+        self._updated_at = updated_at

@@ -1,0 +1,65 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LocalInventoryOperationResult"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LocalInventoryOperationResult"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  SupplementalItemProcessingStatus = openapi_server.resourceTypes.SupplementalItemProcessingStatus
+  SupplementalItemValidationEvent = openapi_server.resourceTypes.SupplementalItemValidationEvent
+}
+resourceTypes {
+
+  LocalInventoryOperationResult {
+    title = LocalInventoryOperationResult
+    description = LocalInventoryOperationResult
+    derivedFrom = Root
+    properties {
+        errors {
+          type = array
+          items.type = SupplementalItemValidationEvent
+          description = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail."
+          optional = false
+        }
+        item_id {
+          type =  string
+          description = "Catalog item id in the merchant namespace"
+          optional = true
+        }
+        status {
+          type = SupplementalItemProcessingStatus
+          description = "Status of the item processing record"
+          optional = true
+        }
+        store_code {
+          type =  string
+          description = "Store code for the local inventory item"
+          optional = true
+        }
+        supplemental_type {
+          type =  string
+          description = ""
+          enum = ["LOCAL_INVENTORY"]
+          optional = true
+        }
+        warnings {
+          type = array
+          items.type = SupplementalItemValidationEvent
+          description = "Array with the validation warnings for the item processing record"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LocalInventoryOperationResult {
+    title = LocalInventoryOperationResult
+    description = LocalInventoryOperationResult
+    implements = openapi_server.resourceTypes.LocalInventoryOperationResult
+
+  }
+}

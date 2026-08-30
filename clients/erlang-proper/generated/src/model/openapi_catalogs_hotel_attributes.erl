@@ -27,7 +27,8 @@
   | {'neighborhood', list(binary()) }
   | {'sale_price', binary() }
   | {'additional_image_link', list(binary()) }
-  | {'main_image', openapi_catalogs_hotel_attributes_all_of_main_image:openapi_catalogs_hotel_attributes_all_of_main_image() }
+  | {'ai_disclosures', list(openapi_catalogs_ai_content_disclosure:openapi_catalogs_ai_content_disclosure()) }
+  | {'main_image', openapi_catalogs_hotel_main_image:openapi_catalogs_hotel_main_image() }
   ].
 
 
@@ -53,7 +54,8 @@ openapi_catalogs_hotel_attributes(Fields) ->
             , {'neighborhood', list(binary()) }
             , {'sale_price', binary() }
             , {'additional_image_link', list(binary()) }
-            , {'main_image', openapi_catalogs_hotel_attributes_all_of_main_image:openapi_catalogs_hotel_attributes_all_of_main_image() }
+            , {'ai_disclosures', list(openapi_catalogs_ai_content_disclosure:openapi_catalogs_ai_content_disclosure()) }
+            , {'main_image', openapi_catalogs_hotel_main_image:openapi_catalogs_hotel_main_image() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

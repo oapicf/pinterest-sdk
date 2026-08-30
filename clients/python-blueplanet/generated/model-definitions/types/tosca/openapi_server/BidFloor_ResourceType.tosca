@@ -23,7 +23,7 @@ resourceTypes {
         }
         type {
           type =  string
-          description = "Always the string &#39;bidfloor&#39;"
+          description = "Always the string &#39;bidfloor&#39;."
           optional = false
         }
     }

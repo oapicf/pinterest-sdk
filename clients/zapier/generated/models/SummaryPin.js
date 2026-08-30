@@ -18,6 +18,7 @@ module.exports = {
             {
                 key: `${keyPrefix}id`,
                 label: `[${labelPrefix}id]`,
+                required: true,
                 type: 'string',
             },
             {

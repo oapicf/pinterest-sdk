@@ -1,6 +1,7 @@
 
 # SSIOAccountPMPName
 
+Pinterest marketing partner name.
 
 ## Properties
 

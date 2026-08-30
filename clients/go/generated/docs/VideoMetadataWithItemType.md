@@ -7,15 +7,16 @@ Name | Type | Description | Notes
 **CoverImageUrl** | Pointer to **string** |  | [optional] 
 **Duration** | Pointer to **NullableFloat32** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
 **Height** | Pointer to **NullableInt32** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
-**ItemType** | Pointer to **string** |  | [optional] 
+**ItemType** | **string** | Discriminator literal identifying this as video metadata inside a &#x60;PinMediaMetadata&#x60; payload. | 
 **VideoUrl** | Pointer to **NullableString** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**VideoUrlHls** | Pointer to **NullableString** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **Width** | Pointer to **NullableInt32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Methods
 
 ### NewVideoMetadataWithItemType
 
-`func NewVideoMetadataWithItemType() *VideoMetadataWithItemType`
+`func NewVideoMetadataWithItemType(itemType string, ) *VideoMetadataWithItemType`
 
 NewVideoMetadataWithItemType instantiates a new VideoMetadataWithItemType object
 This constructor will assign default values to properties that have it defined,
@@ -144,11 +145,6 @@ and a boolean to check if the value has been set.
 
 SetItemType sets ItemType field to given value.
 
-### HasItemType
-
-`func (o *VideoMetadataWithItemType) HasItemType() bool`
-
-HasItemType returns a boolean if a field has been set.
 
 ### GetVideoUrl
 
@@ -185,6 +181,41 @@ HasVideoUrl returns a boolean if a field has been set.
 `func (o *VideoMetadataWithItemType) UnsetVideoUrl()`
 
 UnsetVideoUrl ensures that no value is present for VideoUrl, not even an explicit nil
+### GetVideoUrlHls
+
+`func (o *VideoMetadataWithItemType) GetVideoUrlHls() string`
+
+GetVideoUrlHls returns the VideoUrlHls field if non-nil, zero value otherwise.
+
+### GetVideoUrlHlsOk
+
+`func (o *VideoMetadataWithItemType) GetVideoUrlHlsOk() (*string, bool)`
+
+GetVideoUrlHlsOk returns a tuple with the VideoUrlHls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVideoUrlHls
+
+`func (o *VideoMetadataWithItemType) SetVideoUrlHls(v string)`
+
+SetVideoUrlHls sets VideoUrlHls field to given value.
+
+### HasVideoUrlHls
+
+`func (o *VideoMetadataWithItemType) HasVideoUrlHls() bool`
+
+HasVideoUrlHls returns a boolean if a field has been set.
+
+### SetVideoUrlHlsNil
+
+`func (o *VideoMetadataWithItemType) SetVideoUrlHlsNil(b bool)`
+
+ SetVideoUrlHlsNil sets the value for VideoUrlHls to be an explicit nil
+
+### UnsetVideoUrlHls
+`func (o *VideoMetadataWithItemType) UnsetVideoUrlHls()`
+
+UnsetVideoUrlHls ensures that no value is present for VideoUrlHls, not even an explicit nil
 ### GetWidth
 
 `func (o *VideoMetadataWithItemType) GetWidth() int32`

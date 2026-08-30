@@ -1,10 +1,11 @@
 package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.CustomerList
-import org.openapitools.server.api.model.CustomerListRequest
-import org.openapitools.server.api.model.CustomerListUpdateRequest
+import org.openapitools.server.api.model.CustomerListCreate
+import org.openapitools.server.api.model.CustomerListUpdateWithRequiredBody
 import org.openapitools.server.api.model.CustomerListsList200Response
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -23,16 +24,16 @@ interface CustomerListsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* customerListsCreate
      * Create customer lists */
-    suspend fun customerListsCreate(adAccountId:kotlin.String?,customerListRequest:CustomerListRequest?,context:OperationRequest):Response<CustomerList>
+    suspend fun customerListsCreate(adAccountId:kotlin.String?,customerListCreate:CustomerListCreate?,context:OperationRequest):Response<CustomerList>
     /* customerListsGet
      * Get customer list */
     suspend fun customerListsGet(adAccountId:kotlin.String?,customerListId:kotlin.String?,context:OperationRequest):Response<CustomerList>
     /* customerListsList
      * Get customer lists */
-    suspend fun customerListsList(adAccountId:kotlin.String?,pageSize:kotlin.Int?,order:kotlin.String?,bookmark:kotlin.String?,context:OperationRequest):Response<CustomerListsList200Response>
+    suspend fun customerListsList(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,order:PinterestLibPaginationOrder?,excludeNca:kotlin.Boolean?,context:OperationRequest):Response<CustomerListsList200Response>
     /* customerListsUpdate
      * Update customer list */
-    suspend fun customerListsUpdate(adAccountId:kotlin.String?,customerListId:kotlin.String?,customerListUpdateRequest:CustomerListUpdateRequest?,context:OperationRequest):Response<CustomerList>
+    suspend fun customerListsUpdate(adAccountId:kotlin.String?,customerListId:kotlin.String?,customerListUpdateWithRequiredBody:CustomerListUpdateWithRequiredBody?,context:OperationRequest):Response<CustomerList>
     companion object {
         const val address = "CustomerListsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

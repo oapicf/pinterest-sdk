@@ -64,10 +64,8 @@ class CatalogsReportDistributionIssueFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsReportDistributionIssueFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsReportDistributionIssueFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'report_type'), 'Required key "CatalogsReportDistributionIssueFilter[report_type]" is missing from JSON.');
+        assert(json[r'report_type'] != null, 'Required key "CatalogsReportDistributionIssueFilter[report_type]" has a null value in JSON.');
         return true;
       }());
 
@@ -126,27 +124,28 @@ class CatalogsReportDistributionIssueFilter {
 }
 
 
-class CatalogsReportDistributionIssueFilterReportTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsReportDistributionIssueFilterReportTypeEnum._(this.value);
+enum CatalogsReportDistributionIssueFilterReportTypeEnum {
+  DISTRIBUTION_ISSUES._(r'DISTRIBUTION_ISSUES'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsReportDistributionIssueFilterReportTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const DISTRIBUTION_ISSUES = CatalogsReportDistributionIssueFilterReportTypeEnum._(r'DISTRIBUTION_ISSUES');
-
-  /// List of all possible values in this [enum][CatalogsReportDistributionIssueFilterReportTypeEnum].
-  static const values = <CatalogsReportDistributionIssueFilterReportTypeEnum>[
-    DISTRIBUTION_ISSUES,
-  ];
-
+  /// Returns the instance of [CatalogsReportDistributionIssueFilterReportTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsReportDistributionIssueFilterReportTypeEnum? fromJson(dynamic value) => CatalogsReportDistributionIssueFilterReportTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsReportDistributionIssueFilterReportTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsReportDistributionIssueFilterReportTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsReportDistributionIssueFilterReportTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -168,9 +167,10 @@ class CatalogsReportDistributionIssueFilterReportTypeEnumTypeTransformer {
 
   const CatalogsReportDistributionIssueFilterReportTypeEnumTypeTransformer._();
 
-  String encode(CatalogsReportDistributionIssueFilterReportTypeEnum data) => data.value;
+  String encode(CatalogsReportDistributionIssueFilterReportTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsReportDistributionIssueFilterReportTypeEnum.
+  /// Returns the instance of [CatalogsReportDistributionIssueFilterReportTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -179,6 +179,9 @@ class CatalogsReportDistributionIssueFilterReportTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsReportDistributionIssueFilterReportTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsReportDistributionIssueFilterReportTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'DISTRIBUTION_ISSUES': return CatalogsReportDistributionIssueFilterReportTypeEnum.DISTRIBUTION_ISSUES;
@@ -191,7 +194,7 @@ class CatalogsReportDistributionIssueFilterReportTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsReportDistributionIssueFilterReportTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsReportDistributionIssueFilterReportTypeEnumTypeTransformer? _instance;
 }
 

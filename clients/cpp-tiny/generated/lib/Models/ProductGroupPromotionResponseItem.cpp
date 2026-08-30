@@ -103,7 +103,7 @@ ProductGroupPromotionResponseItem::getData()
 }
 
 void
-ProductGroupPromotionResponseItem::setData(ProductGroupPromotion  data)
+ProductGroupPromotionResponseItem::setData(ProductGroupPromotion data)
 {
 	this->data = data;
 }
@@ -115,7 +115,7 @@ ProductGroupPromotionResponseItem::getExceptions()
 }
 
 void
-ProductGroupPromotionResponseItem::setExceptions(std::list <Exception> exceptions)
+ProductGroupPromotionResponseItem::setExceptions(std::list<Exception> exceptions)
 {
 	this->exceptions = exceptions;
 }

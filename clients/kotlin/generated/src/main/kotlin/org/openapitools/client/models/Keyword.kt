@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.MatchTypeResponse
+import org.openapitools.client.models.MatchType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,42 +31,43 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param matchType 
- * @param `value` Keyword value (120 chars max).
- * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
- * @param archived 
  * @param id Keyword ID .
+ * @param matchType Keyword [match type](/docs/api-features/targeting-overview/)
  * @param parentId Keyword parent entity ID (advertiser, campaign, ad group).
- * @param parentType Parent entity type
+ * @param `value` Keyword value (120 chars max).
+ * @param archived 
+ * @param bid **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+ * @param parentType Parent entity type (advertiser, campaign, ad group).
  * @param type Always keyword
  */
 
 
 data class Keyword (
 
+    /* Keyword ID . */
+    @Json(name = "id")
+    val id: kotlin.String,
+
+    /* Keyword [match type](/docs/api-features/targeting-overview/) */
     @Json(name = "match_type")
-    val matchType: MatchTypeResponse?,
+    val matchType: MatchType?,
+
+    /* Keyword parent entity ID (advertiser, campaign, ad group). */
+    @Json(name = "parent_id")
+    val parentId: kotlin.String,
 
     /* Keyword value (120 chars max). */
     @Json(name = "value")
     val `value`: kotlin.String,
 
-    /* </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
-    @Json(name = "bid")
-    val bid: kotlin.Int? = null,
-
     @Json(name = "archived")
     val archived: kotlin.Boolean? = null,
 
-    /* Keyword ID . */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
+    /* **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
+    @Json(name = "bid")
+    val bid: kotlin.Int? = null,
 
-    /* Keyword parent entity ID (advertiser, campaign, ad group). */
-    @Json(name = "parent_id")
-    val parentId: kotlin.String? = null,
-
-    /* Parent entity type */
+    /* Parent entity type (advertiser, campaign, ad group). */
     @Json(name = "parent_type")
     val parentType: kotlin.String? = null,
 

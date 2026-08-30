@@ -1,19 +1,22 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdsCreditRedeemRequest;
-import org.openapitools.vertxweb.server.model.AdsCreditRedeemResponse;
+import org.openapitools.vertxweb.server.model.AdsCreditRedeem;
+import org.openapitools.vertxweb.server.model.AdsCreditRedeemCreate;
 import org.openapitools.vertxweb.server.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.vertxweb.server.model.BillingInvoiceDocumentType;
 import org.openapitools.vertxweb.server.model.BillingInvoiceDownloadResponse;
+import org.openapitools.vertxweb.server.model.BillingInvoiceSortField;
+import org.openapitools.vertxweb.server.model.BillingInvoiceStatus;
 import org.openapitools.vertxweb.server.model.BillingInvoicesGet200Response;
 import org.openapitools.vertxweb.server.model.BillingProfilesGet200Response;
-import org.openapitools.vertxweb.server.model.Error;
 import java.time.LocalDate;
-import org.openapitools.vertxweb.server.model.SSIOAccountResponse;
-import org.openapitools.vertxweb.server.model.SSIOCreateInsertionOrderRequest;
-import org.openapitools.vertxweb.server.model.SSIOCreateInsertionOrderResponse;
-import org.openapitools.vertxweb.server.model.SSIOEditInsertionOrderRequest;
-import org.openapitools.vertxweb.server.model.SSIOEditInsertionOrderResponse;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
+import org.openapitools.vertxweb.server.model.SSIOAccount;
+import org.openapitools.vertxweb.server.model.SSIOInsertionOrder;
+import org.openapitools.vertxweb.server.model.SSIOInsertionOrderCreate;
 import org.openapitools.vertxweb.server.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.vertxweb.server.model.SSIOInsertionOrderUpdate;
 import org.openapitools.vertxweb.server.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.vertxweb.server.model.SsioOrderLinesGetByAdAccount200Response;
 
@@ -68,12 +71,12 @@ public class BillingApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        AdsCreditRedeemRequest adsCreditRedeemRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdsCreditRedeemRequest>(){}) : null;
+        AdsCreditRedeemCreate adsCreditRedeemCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdsCreditRedeemCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adsCreditRedeemRequest is {}", adsCreditRedeemRequest);
+        logger.debug("Parameter adsCreditRedeemCreate is {}", adsCreditRedeemCreate);
 
-        api.adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+        api.adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -144,24 +147,24 @@ public class BillingApiHandler {
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String sort = requestParameters.queryParameter("sort") != null ? requestParameters.queryParameter("sort").getString() : "DUE_DATE";
-        String order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getString() : null;
-        String status = requestParameters.queryParameter("status") != null ? requestParameters.queryParameter("status").getString() : null;
-        String documentType = requestParameters.queryParameter("document_type") != null ? requestParameters.queryParameter("document_type").getString() : null;
+        PinterestLibPaginationOrder order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getPinterestLibPaginationOrder() : null;
+        BillingInvoiceSortField sort = requestParameters.queryParameter("sort") != null ? requestParameters.queryParameter("sort").getBillingInvoiceSortField() : ;
+        BillingInvoiceStatus status = requestParameters.queryParameter("status") != null ? requestParameters.queryParameter("status").getBillingInvoiceStatus() : null;
+        BillingInvoiceDocumentType documentType = requestParameters.queryParameter("document_type") != null ? requestParameters.queryParameter("document_type").getBillingInvoiceDocumentType() : null;
         LocalDate startDueDate = requestParameters.queryParameter("start_due_date") != null ? requestParameters.queryParameter("start_due_date").getLocalDate() : null;
         LocalDate endDueDate = requestParameters.queryParameter("end_due_date") != null ? requestParameters.queryParameter("end_due_date").getLocalDate() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter sort is {}", sort);
         logger.debug("Parameter order is {}", order);
+        logger.debug("Parameter sort is {}", sort);
         logger.debug("Parameter status is {}", status);
         logger.debug("Parameter documentType is {}", documentType);
         logger.debug("Parameter startDueDate is {}", startDueDate);
         logger.debug("Parameter endDueDate is {}", endDueDate);
 
-        api.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+        api.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -179,17 +182,17 @@ public class BillingApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         Boolean isActive = requestParameters.queryParameter("is_active") != null ? requestParameters.queryParameter("is_active").getBoolean() : null;
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
-        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter isActive is {}", isActive);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
+        api.billingProfilesGet(isActive, adAccountId, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -231,12 +234,12 @@ public class BillingApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<SSIOCreateInsertionOrderRequest>(){}) : null;
+        SSIOInsertionOrderCreate ssIOInsertionOrderCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<SSIOInsertionOrderCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter ssIOCreateInsertionOrderRequest is {}", ssIOCreateInsertionOrderRequest);
+        logger.debug("Parameter ssIOInsertionOrderCreate is {}", ssIOInsertionOrderCreate);
 
-        api.ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest)
+        api.ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -256,12 +259,12 @@ public class BillingApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<SSIOEditInsertionOrderRequest>(){}) : null;
+        SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<SSIOInsertionOrderUpdate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter ssIOEditInsertionOrderRequest is {}", ssIOEditInsertionOrderRequest);
+        logger.debug("Parameter ssIOInsertionOrderUpdate is {}", ssIOInsertionOrderUpdate);
 
-        api.ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest)
+        api.ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -330,16 +333,16 @@ public class BillingApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
+        String pinOrderId = requestParameters.queryParameter("pin_order_id") != null ? requestParameters.queryParameter("pin_order_id").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String pinOrderId = requestParameters.queryParameter("pin_order_id") != null ? requestParameters.queryParameter("pin_order_id").getString() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter pinOrderId is {}", pinOrderId);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter pinOrderId is {}", pinOrderId);
 
-        api.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+        api.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

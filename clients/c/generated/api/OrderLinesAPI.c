@@ -8,19 +8,19 @@
 #define MAX_BUFFER_LENGTH 4096
 #define MAX_NUMBER_LENGTH_LONG 21
 
-// Functions for enum ORDER for OrderLinesAPI_orderLinesList
+// Functions for enum  for OrderLinesAPI_orderLinesList
 
-static char* orderLinesList_ORDER_ToString(pinterest_rest_api_orderLinesList_order_e ORDER){
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    return ORDERArray[ORDER];
+static char* orderLinesList__ToString(pinterest_rest_api_orderLinesList_order_e ){
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    return Array[];
 }
 
-static pinterest_rest_api_orderLinesList_order_e orderLinesList_ORDER_FromString(char* ORDER){
+static pinterest_rest_api_orderLinesList_order_e orderLinesList__FromString(char* ){
     int stringToReturn = 0;
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    size_t sizeofArray = sizeof(ORDERArray) / sizeof(ORDERArray[0]);
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(ORDER, ORDERArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -29,32 +29,23 @@ static pinterest_rest_api_orderLinesList_order_e orderLinesList_ORDER_FromString
 }
 
 /*
-// Function orderLinesList_ORDER_convertToJSON is not currently used,
+// Function orderLinesList__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *orderLinesList_ORDER_convertToJSON(pinterest_rest_api_orderLinesList_order_e ORDER) {
+static cJSON *orderLinesList__convertToJSON(pinterest_rest_api_orderLinesList_order_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "order", orderLinesList_ORDER_ToString(ORDER)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function orderLinesList_ORDER_parseFromJSON is not currently used,
+// Function orderLinesList__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_orderLinesList_order_e orderLinesList_ORDER_parseFromJSON(cJSON* ORDERJSON) {
-    pinterest_rest_api_orderLinesList_order_e ORDERVariable = 0;
-    cJSON *ORDERVar = cJSON_GetObjectItemCaseSensitive(ORDERJSON, "order");
-    if(!cJSON_IsString(ORDERVar) || (ORDERVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    ORDERVariable = orderLinesList_ORDER_FromString(ORDERVar->valuestring);
-    return ORDERVariable;
+static pinterest_rest_api_orderLinesList_order_e orderLinesList__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_orderLinesList_order_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
@@ -66,7 +57,7 @@ end:
 // Get a specific existing order line associated with an ad account.
 //
 order_line_t*
-OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *ad_account_id, char *order_line_id)
+OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *order_line_id, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -82,24 +73,14 @@ OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *ad_account_id, char *o
     // create the path
     char *localVarPath = strdup("/ad_accounts/{ad_account_id}/order_lines/{order_line_id}");
 
-    if(!ad_account_id)
-        goto end;
     if(!order_line_id)
         goto end;
-
-
-    // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + strlen(order_line_id)+3 + sizeof("{ ad_account_id }") - 1;
-    if(ad_account_id == NULL) {
+    if(!ad_account_id)
         goto end;
-    }
-    char* localVarToReplace_ad_account_id = malloc(sizeOfPathParams_ad_account_id);
-    sprintf(localVarToReplace_ad_account_id, "{%s}", "ad_account_id");
 
-    localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
     // Path Params
-    long sizeOfPathParams_order_line_id = strlen(ad_account_id)+3 + strlen(order_line_id)+3 + sizeof("{ order_line_id }") - 1;
+    long sizeOfPathParams_order_line_id = strlen(order_line_id)+3 + strlen(ad_account_id)+3 + sizeof("{ order_line_id }") - 1;
     if(order_line_id == NULL) {
         goto end;
     }
@@ -107,6 +88,16 @@ OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *ad_account_id, char *o
     sprintf(localVarToReplace_order_line_id, "{%s}", "order_line_id");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_order_line_id, order_line_id);
+
+    // Path Params
+    long sizeOfPathParams_ad_account_id = strlen(order_line_id)+3 + strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
+    if(ad_account_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_ad_account_id = malloc(sizeOfPathParams_ad_account_id);
+    sprintf(localVarToReplace_ad_account_id, "{%s}", "ad_account_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
 
 
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -123,11 +114,31 @@ OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *ad_account_id, char *o
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     order_line_t *elementToReturn = NULL;
@@ -152,8 +163,8 @@ OrderLinesAPI_orderLinesGet(apiClient_t *apiClient, char *ad_account_id, char *o
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
-    free(localVarToReplace_ad_account_id);
     free(localVarToReplace_order_line_id);
+    free(localVarToReplace_ad_account_id);
     return elementToReturn;
 end:
     free(localVarPath);
@@ -161,12 +172,12 @@ end:
 
 }
 
-// Get order lines
+// Get order lines.
 //
 // List existing order lines associated with an ad account.
 //
 order_lines_list_200_response_t*
-OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *page_size, pinterest_rest_api_orderLinesList_order_e order, char *bookmark)
+OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -199,6 +210,18 @@ OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *p
 
 
     // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
     char *keyQuery_page_size = NULL;
     char * valueQuery_page_size = NULL;
     keyValuePair_t *keyPairQuery_page_size = 0;
@@ -213,27 +236,15 @@ OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *p
 
     // query parameters
     char *keyQuery_order = NULL;
-    pinterest_rest_api_orderLinesList_order_e valueQuery_order ;
+    pinterest_lib_pagination_order_e valueQuery_order ;
     keyValuePair_t *keyPairQuery_order = 0;
     if (order)
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(orderLinesList_ORDER_ToString(
-        valueQuery_order)));
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(orderLinesList__ToString(
+        &valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
-    }
-
-    // query parameters
-    char *keyQuery_bookmark = NULL;
-    char * valueQuery_bookmark = NULL;
-    keyValuePair_t *keyPairQuery_bookmark = 0;
-    if (bookmark)
-    {
-        keyQuery_bookmark = strdup("bookmark");
-        valueQuery_bookmark = strdup((bookmark));
-        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
-        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -249,11 +260,31 @@ OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *p
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     order_lines_list_200_response_t *elementToReturn = NULL;
@@ -279,6 +310,18 @@ OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *p
     
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
+    if(keyQuery_bookmark){
+        free(keyQuery_bookmark);
+        keyQuery_bookmark = NULL;
+    }
+    if(valueQuery_bookmark){
+        free(valueQuery_bookmark);
+        valueQuery_bookmark = NULL;
+    }
+    if(keyPairQuery_bookmark){
+        keyValuePair_free(keyPairQuery_bookmark);
+        keyPairQuery_bookmark = NULL;
+    }
     if(keyQuery_page_size){
         free(keyQuery_page_size);
         keyQuery_page_size = NULL;
@@ -298,18 +341,6 @@ OrderLinesAPI_orderLinesList(apiClient_t *apiClient, char *ad_account_id, int *p
     if(keyPairQuery_order){
         keyValuePair_free(keyPairQuery_order);
         keyPairQuery_order = NULL;
-    }
-    if(keyQuery_bookmark){
-        free(keyQuery_bookmark);
-        keyQuery_bookmark = NULL;
-    }
-    if(valueQuery_bookmark){
-        free(valueQuery_bookmark);
-        valueQuery_bookmark = NULL;
-    }
-    if(keyPairQuery_bookmark){
-        keyValuePair_free(keyPairQuery_bookmark);
-        keyPairQuery_bookmark = NULL;
     }
     return elementToReturn;
 end:

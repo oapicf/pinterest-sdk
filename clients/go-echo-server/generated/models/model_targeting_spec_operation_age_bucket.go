@@ -6,5 +6,5 @@ type TargetingSpecOperationAgeBucket struct {
 
 	Operation string `json:"operation"`
 
-	Values *[]TargetingSpecAgeBucket `json:"values"`
+	Values []TargetingSpecAgeBucket `json:"values"`
 }

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **IosDeepLink** | Pointer to **NullableString** | IOS deep link to the creative assets page. | [optional] 
 **Link** | Pointer to **string** | Link to the creative assets page. | [optional] 
 **Title** | Pointer to **string** | The name of the creative assets. | [optional] 
-**Visibility** | Pointer to **NullableString** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. | [optional] 
+**Visibility** | Pointer to **NullableString** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): &#39;visible&#39;, &#39;hidden&#39;. | [optional] 
 
 ## Methods
 

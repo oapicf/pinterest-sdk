@@ -8,13 +8,13 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ActionType;
+import org.openapitools.model.BidStrategyType;
 import org.openapitools.model.BudgetType;
 import org.openapitools.model.EntityStatus;
-import org.openapitools.model.OptimizationGoalMetadata;
 import org.openapitools.model.PacingDeliveryType;
 import org.openapitools.model.PlacementGroupType;
 import org.openapitools.model.TargetingSpec;
-import org.openapitools.model.TrackingUrls;
+import org.openapitools.model.TargetingSpecOperations;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -25,6 +25,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdGroupUpdateRequest  {
   
+ /**
+  * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+  */
+  @ApiModelProperty(value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.")
+  @Valid
+  private BigDecimal bidMultiplier;
+
+ /**
+  * Ad group ID.
+  */
+  @ApiModelProperty(required = true, value = "Ad group ID.")
+  private String id;
+
+ /**
+  * <div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>
+  */
+  @ApiModelProperty(value = "<div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>")
+  @Valid
+  private List<@Valid TargetingSpecOperations> targetingSpecOperations = new ArrayList<>();
+
  /**
   * Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
   */
@@ -37,42 +57,9 @@ public class AdGroupUpdateRequest  {
   @ApiModelProperty(example = "5000000", value = "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.")
   private Integer bidInMicroCurrency;
 
-public enum BidStrategyTypeEnum {
-
-    @JsonProperty("AUTOMATIC_BID") AUTOMATIC_BID(String.valueOf("AUTOMATIC_BID")),
-    @JsonProperty("MAX_BID") MAX_BID(String.valueOf("MAX_BID")),
-    @JsonProperty("TARGET_AVG") TARGET_AVG(String.valueOf("TARGET_AVG"));
-
-    private String value;
-
-    BidStrategyTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static BidStrategyTypeEnum fromValue(String value) {
-        for (BidStrategyTypeEnum b : BidStrategyTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
- /**
-  * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-  */
-  @ApiModelProperty(example = "MAX_BID", value = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".")
-  private BidStrategyTypeEnum bidStrategyType;
+  @ApiModelProperty(value = "")
+  @Valid
+  private BidStrategyType bidStrategyType;
 
   @ApiModelProperty(value = "")
   @Valid
@@ -122,8 +109,7 @@ public enum BidStrategyTypeEnum {
   * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
   */
   @ApiModelProperty(value = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.")
-  @Valid
-  private OptimizationGoalMetadata optimizationGoalMetadata;
+  private Object optimizationGoalMetadata;
 
   @ApiModelProperty(value = "")
   @Valid
@@ -180,6 +166,12 @@ public enum PromotionApplicationLevelEnum {
   private String promotionId = "0";
 
  /**
+  * Promotion IDs list. To clear this field, set to an empty array [].
+  */
+  @ApiModelProperty(example = "[\"7834020347906\",\"7834020347907\"]", value = "Promotion IDs list. To clear this field, set to an empty array [].")
+  private List<String> promotionIds = new ArrayList<>();
+
+ /**
   * Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
   */
   @ApiModelProperty(example = "5686848000", value = "Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.")
@@ -203,24 +195,93 @@ public enum PromotionApplicationLevelEnum {
   private List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
 
  /**
-  * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+  * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
   */
-  @ApiModelProperty(value = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
-  @Valid
-  private TrackingUrls trackingUrls;
-
+  @ApiModelProperty(value = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
+  private Object trackingUrls;
  /**
-  * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+  * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;.
+  * minimum: 0
+  * maximum: 10
+  * @return bidMultiplier
   */
-  @ApiModelProperty(example = "1", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.")
-  @Valid
-  private BigDecimal bidMultiplier;
+  @JsonProperty("bid_multiplier")
+ @DecimalMin("0") @DecimalMax("10")  public BigDecimal getBidMultiplier() {
+    return bidMultiplier;
+  }
+
+  /**
+   * Sets the <code>bidMultiplier</code> property.
+   */
+ public void setBidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+  }
+
+  /**
+   * Sets the <code>bidMultiplier</code> property.
+   */
+  public AdGroupUpdateRequest bidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+    return this;
+  }
 
  /**
   * Ad group ID.
+  * @return id
   */
-  @ApiModelProperty(example = "2680060704746", required = true, value = "Ad group ID.")
-  private String id;
+  @JsonProperty("id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+ public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Sets the <code>id</code> property.
+   */
+  public AdGroupUpdateRequest id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
+  * &lt;div&gt;Targeting spec operations define modifications to apply to the targeting spec.&lt;/div&gt; &lt;br /&gt; &lt;div&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The &lt;code&gt;targeting_spec&lt;/code&gt; and &lt;code&gt;targeting_spec_operations&lt;/code&gt; cannot be sent at the same time.&lt;/div&gt; &lt;br /&gt; &lt;div&gt;The supported operations are:&lt;/div&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;SET&lt;/code&gt;: sets the field with the given values. If value is set to &lt;code&gt;null&lt;/code&gt;, the field will be removed.&lt;/li&gt; &lt;li&gt;&lt;code&gt;ADD&lt;/code&gt;: adds the given values to the field.&lt;/li&gt; &lt;li&gt;&lt;code&gt;REMOVE&lt;/code&gt;: removes the given values from the field.&lt;/li&gt; &lt;/ul&gt; &lt;div&gt;Note the following:&lt;/div&gt; &lt;ul&gt; &lt;li&gt;Same items are not added and removed at the same time.&lt;/li&gt; &lt;li&gt;For a given field, only &lt;code&gt;ADD&lt;/code&gt;/&lt;code&gt;REMOVE&lt;/code&gt; or &lt;code&gt;SET&lt;/code&gt; operations are allowed, not a mix of them.&lt;/li&gt; &lt;li&gt;Only one SET operation is allowed for a given field.&lt;/li&gt; &lt;li&gt;The &lt;code&gt;AGE_BUCKET&lt;/code&gt;, &lt;code&gt;MAXIMUM_AGE&lt;/code&gt;, &lt;code&gt;MINIMUM_AGE&lt;/code&gt; and &lt;code&gt;SHOPPING_RETARGETING&lt;/code&gt; fields only support the &lt;code&gt;SET&lt;/code&gt; operation.&lt;/li&gt; &lt;/ul&gt;
+  * @return targetingSpecOperations
+  */
+  @JsonProperty("targeting_spec_operations")
+  public List<@Valid TargetingSpecOperations> getTargetingSpecOperations() {
+    return targetingSpecOperations;
+  }
+
+  /**
+   * Sets the <code>targetingSpecOperations</code> property.
+   */
+ public void setTargetingSpecOperations(List<@Valid TargetingSpecOperations> targetingSpecOperations) {
+    this.targetingSpecOperations = targetingSpecOperations;
+  }
+
+  /**
+   * Sets the <code>targetingSpecOperations</code> property.
+   */
+  public AdGroupUpdateRequest targetingSpecOperations(List<@Valid TargetingSpecOperations> targetingSpecOperations) {
+    this.targetingSpecOperations = targetingSpecOperations;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>targetingSpecOperations</code> list.
+   */
+  public AdGroupUpdateRequest addTargetingSpecOperationsItem(TargetingSpecOperations targetingSpecOperationsItem) {
+    this.targetingSpecOperations.add(targetingSpecOperationsItem);
+    return this;
+  }
+
  /**
   * Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.
   * @return autoTargetingEnabled
@@ -270,25 +331,25 @@ public enum PromotionApplicationLevelEnum {
   }
 
  /**
-  * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \&quot;Pinterest Performance+ bidding\&quot;.
+  * Get bidStrategyType
   * @return bidStrategyType
   */
   @JsonProperty("bid_strategy_type")
-  public String getBidStrategyType() {
-    return bidStrategyType == null ? null : bidStrategyType.value();
+  public BidStrategyType getBidStrategyType() {
+    return bidStrategyType;
   }
 
   /**
    * Sets the <code>bidStrategyType</code> property.
    */
- public void setBidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+ public void setBidStrategyType(BidStrategyType bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
   }
 
   /**
    * Sets the <code>bidStrategyType</code> property.
    */
-  public AdGroupUpdateRequest bidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+  public AdGroupUpdateRequest bidStrategyType(BidStrategyType bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
     return this;
   }
@@ -490,21 +551,21 @@ public enum PromotionApplicationLevelEnum {
   * @return optimizationGoalMetadata
   */
   @JsonProperty("optimization_goal_metadata")
-  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
+  public Object getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
 
   /**
    * Sets the <code>optimizationGoalMetadata</code> property.
    */
- public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+ public void setOptimizationGoalMetadata(Object optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
   /**
    * Sets the <code>optimizationGoalMetadata</code> property.
    */
-  public AdGroupUpdateRequest optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public AdGroupUpdateRequest optimizationGoalMetadata(Object optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
     return this;
   }
@@ -602,6 +663,38 @@ public enum PromotionApplicationLevelEnum {
    */
   public AdGroupUpdateRequest promotionId(String promotionId) {
     this.promotionId = promotionId;
+    return this;
+  }
+
+ /**
+  * Promotion IDs list. To clear this field, set to an empty array [].
+  * @return promotionIds
+  */
+  @JsonProperty("promotion_ids")
+  public List<String> getPromotionIds() {
+    return promotionIds;
+  }
+
+  /**
+   * Sets the <code>promotionIds</code> property.
+   */
+ public void setPromotionIds(List<String> promotionIds) {
+    this.promotionIds = promotionIds;
+  }
+
+  /**
+   * Sets the <code>promotionIds</code> property.
+   */
+  public AdGroupUpdateRequest promotionIds(List<String> promotionIds) {
+    this.promotionIds = promotionIds;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>promotionIds</code> list.
+   */
+  public AdGroupUpdateRequest addPromotionIdsItem(String promotionIdsItem) {
+    this.promotionIds.add(promotionIdsItem);
     return this;
   }
 
@@ -710,77 +803,26 @@ public enum PromotionApplicationLevelEnum {
   }
 
  /**
-  * Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
+  * Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
   * @return trackingUrls
   */
   @JsonProperty("tracking_urls")
-  public TrackingUrls getTrackingUrls() {
+  public Object getTrackingUrls() {
     return trackingUrls;
   }
 
   /**
    * Sets the <code>trackingUrls</code> property.
    */
- public void setTrackingUrls(TrackingUrls trackingUrls) {
+ public void setTrackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
   /**
    * Sets the <code>trackingUrls</code> property.
    */
-  public AdGroupUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public AdGroupUpdateRequest trackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
-    return this;
-  }
-
- /**
-  * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;.
-  * minimum: 0
-  * maximum: 10
-  * @return bidMultiplier
-  */
-  @JsonProperty("bid_multiplier")
- @DecimalMin("0") @DecimalMax("10")  public BigDecimal getBidMultiplier() {
-    return bidMultiplier;
-  }
-
-  /**
-   * Sets the <code>bidMultiplier</code> property.
-   */
- public void setBidMultiplier(BigDecimal bidMultiplier) {
-    this.bidMultiplier = bidMultiplier;
-  }
-
-  /**
-   * Sets the <code>bidMultiplier</code> property.
-   */
-  public AdGroupUpdateRequest bidMultiplier(BigDecimal bidMultiplier) {
-    this.bidMultiplier = bidMultiplier;
-    return this;
-  }
-
- /**
-  * Ad group ID.
-  * @return id
-  */
-  @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
-    return id;
-  }
-
-  /**
-   * Sets the <code>id</code> property.
-   */
- public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   * Sets the <code>id</code> property.
-   */
-  public AdGroupUpdateRequest id(String id) {
-    this.id = id;
     return this;
   }
 
@@ -794,7 +836,10 @@ public enum PromotionApplicationLevelEnum {
       return false;
     }
     AdGroupUpdateRequest adGroupUpdateRequest = (AdGroupUpdateRequest) o;
-    return Objects.equals(this.autoTargetingEnabled, adGroupUpdateRequest.autoTargetingEnabled) &&
+    return Objects.equals(this.bidMultiplier, adGroupUpdateRequest.bidMultiplier) &&
+        Objects.equals(this.id, adGroupUpdateRequest.id) &&
+        Objects.equals(this.targetingSpecOperations, adGroupUpdateRequest.targetingSpecOperations) &&
+        Objects.equals(this.autoTargetingEnabled, adGroupUpdateRequest.autoTargetingEnabled) &&
         Objects.equals(this.bidInMicroCurrency, adGroupUpdateRequest.bidInMicroCurrency) &&
         Objects.equals(this.bidStrategyType, adGroupUpdateRequest.bidStrategyType) &&
         Objects.equals(this.billableEvent, adGroupUpdateRequest.billableEvent) &&
@@ -810,18 +855,17 @@ public enum PromotionApplicationLevelEnum {
         Objects.equals(this.placementGroup, adGroupUpdateRequest.placementGroup) &&
         Objects.equals(this.promotionApplicationLevel, adGroupUpdateRequest.promotionApplicationLevel) &&
         Objects.equals(this.promotionId, adGroupUpdateRequest.promotionId) &&
+        Objects.equals(this.promotionIds, adGroupUpdateRequest.promotionIds) &&
         Objects.equals(this.startTime, adGroupUpdateRequest.startTime) &&
         Objects.equals(this.status, adGroupUpdateRequest.status) &&
         Objects.equals(this.targetingSpec, adGroupUpdateRequest.targetingSpec) &&
         Objects.equals(this.targetingTemplateIds, adGroupUpdateRequest.targetingTemplateIds) &&
-        Objects.equals(this.trackingUrls, adGroupUpdateRequest.trackingUrls) &&
-        Objects.equals(this.bidMultiplier, adGroupUpdateRequest.bidMultiplier) &&
-        Objects.equals(this.id, adGroupUpdateRequest.id);
+        Objects.equals(this.trackingUrls, adGroupUpdateRequest.trackingUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoTargetingEnabled, bidInMicroCurrency, bidStrategyType, billableEvent, budgetInMicroCurrency, budgetType, campaignId, endTime, isCreativeOptimization, lifetimeFrequencyCap, name, optimizationGoalMetadata, pacingDeliveryType, placementGroup, promotionApplicationLevel, promotionId, startTime, status, targetingSpec, targetingTemplateIds, trackingUrls, bidMultiplier, id);
+    return Objects.hash(bidMultiplier, id, targetingSpecOperations, autoTargetingEnabled, bidInMicroCurrency, bidStrategyType, billableEvent, budgetInMicroCurrency, budgetType, campaignId, endTime, isCreativeOptimization, lifetimeFrequencyCap, name, optimizationGoalMetadata, pacingDeliveryType, placementGroup, promotionApplicationLevel, promotionId, promotionIds, startTime, status, targetingSpec, targetingTemplateIds, trackingUrls);
   }
 
   @Override
@@ -829,6 +873,9 @@ public enum PromotionApplicationLevelEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdGroupUpdateRequest {\n");
     
+    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    targetingSpecOperations: ").append(toIndentedString(targetingSpecOperations)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
     sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
@@ -845,13 +892,12 @@ public enum PromotionApplicationLevelEnum {
     sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    promotionApplicationLevel: ").append(toIndentedString(promotionApplicationLevel)).append("\n");
     sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
+    sb.append("    promotionIds: ").append(toIndentedString(promotionIds)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -861,10 +907,7 @@ public enum PromotionApplicationLevelEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

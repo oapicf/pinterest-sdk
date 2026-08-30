@@ -7,25 +7,20 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { TargetingSpecListOperation } from './targetingSpecListOperation';
 import { TargetingSpecGender } from './targetingSpecGender';
 
 
 export interface TargetingSpecOperationGender { 
     field: TargetingSpecOperationGender.FieldEnum;
-    operation: TargetingSpecOperationGender.OperationEnum;
-    values: Array<TargetingSpecGender> | null;
+    operation: TargetingSpecListOperation;
+    values: Array<TargetingSpecGender>;
 }
 export namespace TargetingSpecOperationGender {
     export const FieldEnum = {
         Gender: 'GENDER'
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
-    export const OperationEnum = {
-        Set: 'SET',
-        Add: 'ADD',
-        Remove: 'REMOVE'
-    } as const;
-    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

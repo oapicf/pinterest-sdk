@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.HashMap;
@@ -10,53 +11,53 @@ import org.openapitools.model.QualityComponentDetails;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Set of quality components, with each component containing a event coverage and details.
  */
 
 @Schema(name = "QualityComponents", description = "Set of quality components, with each component containing a event coverage and details.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class QualityComponents {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> advertiserExternalId = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> clickIdEpik = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> externalEventId = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> hashedEmail = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> hashedMaid = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> ipAddress = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> orderId = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> orderValue = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> productId = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> sourceUrl = new HashMap<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, QualityComponentDetails> userAgent = new HashMap<>();
 
   public QualityComponents advertiserExternalId(Map<String, QualityComponentDetails> advertiserExternalId) {
@@ -83,6 +84,7 @@ public class QualityComponents {
     return advertiserExternalId;
   }
 
+  @JsonProperty("advertiser_external_id")
   public void setAdvertiserExternalId(Map<String, QualityComponentDetails> advertiserExternalId) {
     this.advertiserExternalId = advertiserExternalId;
   }
@@ -111,6 +113,7 @@ public class QualityComponents {
     return clickIdEpik;
   }
 
+  @JsonProperty("click_id_epik")
   public void setClickIdEpik(Map<String, QualityComponentDetails> clickIdEpik) {
     this.clickIdEpik = clickIdEpik;
   }
@@ -139,6 +142,7 @@ public class QualityComponents {
     return externalEventId;
   }
 
+  @JsonProperty("external_event_id")
   public void setExternalEventId(Map<String, QualityComponentDetails> externalEventId) {
     this.externalEventId = externalEventId;
   }
@@ -167,6 +171,7 @@ public class QualityComponents {
     return hashedEmail;
   }
 
+  @JsonProperty("hashed_email")
   public void setHashedEmail(Map<String, QualityComponentDetails> hashedEmail) {
     this.hashedEmail = hashedEmail;
   }
@@ -195,6 +200,7 @@ public class QualityComponents {
     return hashedMaid;
   }
 
+  @JsonProperty("hashed_maid")
   public void setHashedMaid(Map<String, QualityComponentDetails> hashedMaid) {
     this.hashedMaid = hashedMaid;
   }
@@ -223,6 +229,7 @@ public class QualityComponents {
     return ipAddress;
   }
 
+  @JsonProperty("ip_address")
   public void setIpAddress(Map<String, QualityComponentDetails> ipAddress) {
     this.ipAddress = ipAddress;
   }
@@ -251,6 +258,7 @@ public class QualityComponents {
     return orderId;
   }
 
+  @JsonProperty("order_id")
   public void setOrderId(Map<String, QualityComponentDetails> orderId) {
     this.orderId = orderId;
   }
@@ -279,6 +287,7 @@ public class QualityComponents {
     return orderValue;
   }
 
+  @JsonProperty("order_value")
   public void setOrderValue(Map<String, QualityComponentDetails> orderValue) {
     this.orderValue = orderValue;
   }
@@ -307,6 +316,7 @@ public class QualityComponents {
     return productId;
   }
 
+  @JsonProperty("product_id")
   public void setProductId(Map<String, QualityComponentDetails> productId) {
     this.productId = productId;
   }
@@ -335,6 +345,7 @@ public class QualityComponents {
     return sourceUrl;
   }
 
+  @JsonProperty("source_url")
   public void setSourceUrl(Map<String, QualityComponentDetails> sourceUrl) {
     this.sourceUrl = sourceUrl;
   }
@@ -363,6 +374,7 @@ public class QualityComponents {
     return userAgent;
   }
 
+  @JsonProperty("user_agent")
   public void setUserAgent(Map<String, QualityComponentDetails> userAgent) {
     this.userAgent = userAgent;
   }
@@ -417,11 +429,8 @@ public class QualityComponents {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

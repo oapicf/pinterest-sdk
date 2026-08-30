@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **string** | HTTP request host from host header. | 
-**method** | **string** |  | 
+**method** | [**OpenAPI\Server\Model\HttpMethod**](HttpMethod.md) |  | 
 **path** | **string** | HTTP request path. | 
 **requestHeaders** | **string** | HTTP request headers as key-value pairs. | [optional] 
 **responseHeaders** | **string** | HTTP response headers as key-value pairs. | [optional] 

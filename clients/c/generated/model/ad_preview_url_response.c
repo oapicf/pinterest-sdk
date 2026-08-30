@@ -12,18 +12,21 @@ static ad_preview_url_response_t *ad_preview_url_response_create_internal(
     if (!ad_preview_url_response_local_var) {
         return NULL;
     }
-    ad_preview_url_response_local_var->url = url;
-
+    memset(ad_preview_url_response_local_var, 0, sizeof(ad_preview_url_response_t));
     ad_preview_url_response_local_var->_library_owned = 1;
+    ad_preview_url_response_local_var->url = url;
     return ad_preview_url_response_local_var;
 }
 
 __attribute__((deprecated)) ad_preview_url_response_t *ad_preview_url_response_create(
     char *url
     ) {
-    return ad_preview_url_response_create_internal (
+    ad_preview_url_response_t *result = ad_preview_url_response_create_internal (
         url
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ad_preview_url_response_free(ad_preview_url_response_t *ad_preview_url_response) {
@@ -64,6 +67,8 @@ ad_preview_url_response_t *ad_preview_url_response_parseFromJSON(cJSON *ad_previ
 
     ad_preview_url_response_t *ad_preview_url_response_local_var = NULL;
 
+    char *url_local_str = NULL;
+
     // ad_preview_url_response->url
     cJSON *url = cJSON_GetObjectItemCaseSensitive(ad_preview_url_responseJSON, "url");
     if (cJSON_IsNull(url)) {
@@ -77,12 +82,22 @@ ad_preview_url_response_t *ad_preview_url_response_parseFromJSON(cJSON *ad_previ
     }
 
 
+    if (url && !cJSON_IsNull(url)) url_local_str = strdup(url->valuestring);
+
     ad_preview_url_response_local_var = ad_preview_url_response_create_internal (
-        url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL
+        url_local_str
         );
+
+    if (!ad_preview_url_response_local_var) {
+        goto end;
+    }
 
     return ad_preview_url_response_local_var;
 end:
+    if (url_local_str) {
+        free(url_local_str);
+        url_local_str = NULL;
+    }
     return NULL;
 
 }

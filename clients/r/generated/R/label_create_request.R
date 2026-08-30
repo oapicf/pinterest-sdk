@@ -7,8 +7,7 @@
 #' @title LabelCreateRequest
 #' @description LabelCreateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field labels Labels that you are applying to the campaign. list(\link{LabelCreateRequestLabelsInner})
-#' @field parent_id Unique identifier of the asset you are labelling. Currently, you can only label campaigns. character
+#' @field labels Labels that you are applying to the campaign. list(\link{LabelCreateItem})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -16,25 +15,17 @@ LabelCreateRequest <- R6::R6Class(
   "LabelCreateRequest",
   public = list(
     `labels` = NULL,
-    `parent_id` = NULL,
 
     #' @description
     #' Initialize a new LabelCreateRequest class.
     #'
     #' @param labels Labels that you are applying to the campaign.
-    #' @param parent_id Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
     #' @param ... Other optional arguments.
-    initialize = function(`labels`, `parent_id`, ...) {
+    initialize = function(`labels`, ...) {
       if (!missing(`labels`)) {
         stopifnot(is.vector(`labels`), length(`labels`) != 0)
         sapply(`labels`, function(x) stopifnot(R6::is.R6(x)))
         self$`labels` <- `labels`
-      }
-      if (!missing(`parent_id`)) {
-        if (!(is.character(`parent_id`) && length(`parent_id`) == 1)) {
-          stop(paste("Error! Invalid data for `parent_id`. Must be a string:", `parent_id`))
-        }
-        self$`parent_id` <- `parent_id`
       }
     },
 
@@ -71,13 +62,32 @@ LabelCreateRequest <- R6::R6Class(
       LabelCreateRequestObject <- list()
       if (!is.null(self$`labels`)) {
         LabelCreateRequestObject[["labels"]] <-
-          lapply(self$`labels`, function(x) x$toSimpleType())
-      }
-      if (!is.null(self$`parent_id`)) {
-        LabelCreateRequestObject[["parent_id"]] <-
-          self$`parent_id`
+          self$extractSimpleType(self$`labels`)
       }
       return(LabelCreateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -88,10 +98,7 @@ LabelCreateRequest <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`labels`)) {
-        self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelCreateRequestLabelsInner]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`parent_id`)) {
-        self$`parent_id` <- this_object$`parent_id`
+        self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelCreateItem]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +121,7 @@ LabelCreateRequest <- R6::R6Class(
     #' @return the instance of LabelCreateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelCreateRequestLabelsInner]", loadNamespace("openapi"))
-      self$`parent_id` <- this_object$`parent_id`
+      self$`labels` <- ApiClient$new()$deserializeObj(this_object$`labels`, "array[LabelCreateItem]", loadNamespace("openapi"))
       self
     },
 
@@ -131,14 +137,6 @@ LabelCreateRequest <- R6::R6Class(
         tmp <- sapply(input_json$`labels`, function(x) stopifnot(R6::is.R6(x)))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for LabelCreateRequest: the required field `labels` is missing."))
-      }
-      # check the required field `parent_id`
-      if (!is.null(input_json$`parent_id`)) {
-        if (!(is.character(input_json$`parent_id`) && length(input_json$`parent_id`) == 1)) {
-          stop(paste("Error! Invalid data for `parent_id`. Must be a string:", input_json$`parent_id`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for LabelCreateRequest: the required field `parent_id` is missing."))
       }
     },
 
@@ -160,15 +158,6 @@ LabelCreateRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `parent_id` is null
-      if (is.null(self$`parent_id`)) {
-        return(FALSE)
-      }
-
-      if (!str_detect(self$`parent_id`, "^[C]?\\d+$")) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -181,15 +170,6 @@ LabelCreateRequest <- R6::R6Class(
       # check if the required `labels` is null
       if (is.null(self$`labels`)) {
         invalid_fields["labels"] <- "Non-nullable required field `labels` cannot be null."
-      }
-
-      # check if the required `parent_id` is null
-      if (is.null(self$`parent_id`)) {
-        invalid_fields["parent_id"] <- "Non-nullable required field `parent_id` cannot be null."
-      }
-
-      if (!str_detect(self$`parent_id`, "^[C]?\\d+$")) {
-        invalid_fields["parent_id"] <- "Invalid value for `parent_id`, must conform to the pattern ^[C]?\\d+$."
       }
 
       invalid_fields

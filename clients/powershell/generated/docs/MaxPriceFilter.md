@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MAXPRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | 
+**MAXPRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | 
 
 ## Examples
 

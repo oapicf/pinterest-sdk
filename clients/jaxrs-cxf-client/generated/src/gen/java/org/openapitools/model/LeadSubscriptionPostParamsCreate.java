@@ -1,6 +1,6 @@
 package org.openapitools.model;
 
-import org.openapitools.model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
+import org.openapitools.model.PartnerMetadata;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -30,9 +30,12 @@ public class LeadSubscriptionPostParamsCreate  {
 
   private String partnerAccessToken;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+  */
+  @ApiModelProperty(value = "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.")
 
-  private LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata;
+  private PartnerMetadata partnerMetadata;
 
  /**
   * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
@@ -95,19 +98,19 @@ public class LeadSubscriptionPostParamsCreate  {
   }
 
  /**
-   * Get partnerMetadata
+   * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
    * @return partnerMetadata
   **/
   @JsonProperty("partner_metadata")
-  public LeadSubscriptionPostParamsCreateAllOfPartnerMetadata getPartnerMetadata() {
+  public PartnerMetadata getPartnerMetadata() {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public void setPartnerMetadata(PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 
-  public LeadSubscriptionPostParamsCreate partnerMetadata(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public LeadSubscriptionPostParamsCreate partnerMetadata(PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
@@ -170,10 +173,7 @@ public class LeadSubscriptionPostParamsCreate  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

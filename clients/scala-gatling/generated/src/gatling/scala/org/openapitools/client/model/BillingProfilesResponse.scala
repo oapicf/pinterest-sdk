@@ -6,15 +6,15 @@ case class BillingProfilesResponse (
     /* Advertiser ID of the billing. */
     _advertiserId: Option[String],
     /* Billing type of the advertiser */
-    _billingType: Option[String],
+    _billingType: Option[BillingType],
     /* Type of the card. */
-    _cardType: Option[String],
+    _cardType: Option[BillingProfileCardType],
     /* Billing ID. */
     _id: Option[String],
     /* Brand of the payment method. */
-    _paymentMethodBrand: Option[String],
+    _paymentMethodBrand: Option[BillingProfilePaymentMethodBrand],
     /* Status of the billing. */
-    _status: Option[String]
+    _status: Option[BillingProfileStatus]
 )
 object BillingProfilesResponse {
     def toStringBody(var_advertiserId: Object, var_billingType: Object, var_cardType: Object, var_id: Object, var_paymentMethodBrand: Object, var_status: Object) =

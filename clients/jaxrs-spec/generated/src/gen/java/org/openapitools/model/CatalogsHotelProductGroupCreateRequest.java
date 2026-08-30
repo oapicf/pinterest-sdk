@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for creating a hotel product group.")
 @JsonTypeName("CatalogsHotelProductGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelProductGroupCreateRequest   {
   private String catalogId;
   public enum CatalogTypeEnum {
@@ -92,7 +92,7 @@ public class CatalogsHotelProductGroupCreateRequest   {
   }
 
   /**
-   * Catalog id pertaining to the hotel product group.
+   * Catalog ID pertaining to the product group.
    **/
   public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -100,7 +100,7 @@ public class CatalogsHotelProductGroupCreateRequest   {
   }
 
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
   @JsonProperty(required = true, value = "catalog_id")
   @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
@@ -228,12 +228,8 @@ public class CatalogsHotelProductGroupCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

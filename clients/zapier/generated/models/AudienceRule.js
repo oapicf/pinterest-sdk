@@ -41,7 +41,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}engagement_type`,
-                label: `Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.  - [${labelPrefix}engagement_type]`,
+                label: `Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. - [${labelPrefix}engagement_type]`,
                 type: 'string',
             },
             {
@@ -94,13 +94,13 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}seed_id`,
-                label: `Audience ID(s). For ACTALIKE `audience_type`.  - [${labelPrefix}seed_id]`,
+                label: `Audience ID(s). For ACTALIKE `audience_type`. - [${labelPrefix}seed_id]`,
                 list: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}url`,
-                label: `Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"} - [${labelPrefix}url]`,
+                label: `Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"} - [${labelPrefix}url]`,
                 list: true,
                 type: 'string',
             },

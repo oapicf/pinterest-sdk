@@ -16,7 +16,7 @@ import { PinMedia } from './pinMedia';
 export interface SummaryPin { 
     alt_text?: string | null;
     description?: string | null;
-    id?: string;
+    id: string;
     link?: string | null;
     readonly media?: PinMedia;
     title?: string | null;

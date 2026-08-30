@@ -6,11 +6,12 @@ import model.ConversionTagCreate
 import model.ConversionTagsList200Response
 import model.Error
 import model.PageVisitConversionTagsGet200Response
+import model.PaginationOrder
 
 /**
   * Provides a default implementation for [[ConversionTagsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class ConversionTagsApiImpl extends ConversionTagsApi {
   /**
     * @inheritdoc
@@ -51,7 +52,7 @@ class ConversionTagsApiImpl extends ConversionTagsApi {
   /**
     * @inheritdoc
     */
-  override def pageVisitConversionTagsGet(adAccountId: String, pageSize: Option[Int], order: Option[String], bookmark: Option[String]): PageVisitConversionTagsGet200Response = {
+  override def pageVisitConversionTagsGet(adAccountId: String, bookmark: Option[String], pageSize: Option[Int], order: Option[PaginationOrder]): PageVisitConversionTagsGet200Response = {
     // TODO: Implement better logic
 
     PageVisitConversionTagsGet200Response(None, List.empty[ConversionEventResponse])

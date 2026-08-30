@@ -2,42 +2,111 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemValidationEvent;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Object describing a creative assets item error
  */
 
 @Schema(name = "CatalogsCreativeAssetsItemErrorResponse", description = "Object describing a creative assets item error")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseOneOf1 {
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponse {
 
-  private CatalogsType catalogType;
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
 
   private String creativeAssetsId;
 
   @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+
+  /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   */
+  public enum ItemResponseKindEnum {
+    CREATIVE_ASSETS_ITEM_ERROR("creative_assets_item_error");
+
+    private final String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemResponseKindEnum fromValue(String value) {
+      for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private ItemResponseKindEnum itemResponseKind;
 
   public CatalogsCreativeAssetsItemErrorResponse() {
     super();
@@ -46,12 +115,13 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseOneO
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreativeAssetsItemErrorResponse(CatalogsType catalogType, List<@Valid ItemValidationEvent> errors) {
+  public CatalogsCreativeAssetsItemErrorResponse(CatalogTypeEnum catalogType, List<@Valid ItemValidationEvent> errors, ItemResponseKindEnum itemResponseKind) {
     this.catalogType = catalogType;
     this.errors = errors;
+    this.itemResponseKind = itemResponseKind;
   }
 
-  public CatalogsCreativeAssetsItemErrorResponse catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemErrorResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -60,14 +130,14 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseOneO
    * Get catalogType
    * @return catalogType
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -119,6 +189,26 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseOneO
     this.errors = errors;
   }
 
+  public CatalogsCreativeAssetsItemErrorResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+    return this;
+  }
+
+  /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   * @return itemResponseKind
+   */
+  @NotNull 
+  @Schema(name = "item_response_kind", description = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("item_response_kind")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -130,12 +220,13 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseOneO
     CatalogsCreativeAssetsItemErrorResponse catalogsCreativeAssetsItemErrorResponse = (CatalogsCreativeAssetsItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsCreativeAssetsItemErrorResponse.catalogType) &&
         Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsItemErrorResponse.creativeAssetsId) &&
-        Objects.equals(this.errors, catalogsCreativeAssetsItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsCreativeAssetsItemErrorResponse.errors) &&
+        Objects.equals(this.itemResponseKind, catalogsCreativeAssetsItemErrorResponse.itemResponseKind);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsId, errors);
+    return Objects.hash(catalogType, creativeAssetsId, errors, itemResponseKind);
   }
 
   @Override
@@ -145,6 +236,7 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseOneO
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -154,10 +246,7 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseOneO
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

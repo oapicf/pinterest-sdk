@@ -1,0 +1,56 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LocalInventoryOperation"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LocalInventoryOperation"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LocalInventoryCreateOperation = openapi_server.resourceTypes.LocalInventoryCreateOperation
+  LocalInventoryDeleteOperation = openapi_server.resourceTypes.LocalInventoryDeleteOperation
+  LocalInventoryUpdateOperation = openapi_server.resourceTypes.LocalInventoryUpdateOperation
+  LocalInventoryUpsertOperation = openapi_server.resourceTypes.LocalInventoryUpsertOperation
+  RetailLocalInventoryItemAttributes = openapi_server.resourceTypes.RetailLocalInventoryItemAttributes
+}
+resourceTypes {
+
+  LocalInventoryOperation {
+    title = LocalInventoryOperation
+    description = LocalInventoryOperation
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = RetailLocalInventoryItemAttributes
+          description = ""
+          optional = true
+        }
+        item_id {
+          type =  string
+          description = "Catalog item id in the merchant namespace"
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["DELETE"]
+          optional = true
+        }
+        store_code {
+          type =  string
+          description = "Store code for the local inventory item"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LocalInventoryOperation {
+    title = LocalInventoryOperation
+    description = LocalInventoryOperation
+    implements = openapi_server.resourceTypes.LocalInventoryOperation
+
+  }
+}

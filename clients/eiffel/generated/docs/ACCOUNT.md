@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | [**STRING_32**](STRING_32.md) | Profile about description. | [optional] [default to null]
-**account_type** | [**STRING_32**](STRING_32.md) | Type of account | [optional] [default to null]
-**board_count** | **INTEGER_32** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] [default to null]
+**account_type** | [**USER_ACCOUNT_TYPE**](UserAccountType.md) | Type of account | [optional] [default to null]
+**board_count** | **INTEGER_32** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] [default to null]
 **business_name** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **follower_count** | **INTEGER_32** | User account follower count. | [optional] [readonly] [default to null]
 **following_count** | **INTEGER_32** | User account following count. | [optional] [readonly] [default to null]

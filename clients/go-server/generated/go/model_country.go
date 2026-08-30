@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -187,7 +187,7 @@ const (
 	NG Country = "NG"
 	NI Country = "NI"
 	NL Country = "NL"
-	NO Country = "NO"
+	FALSE Country = "false"
 	NP Country = "NP"
 	NR Country = "NR"
 	NU Country = "NU"
@@ -439,7 +439,7 @@ var AllowedCountryEnumValues = []Country{
 	"NG",
 	"NI",
 	"NL",
-	"NO",
+	"false",
 	"NP",
 	"NR",
 	"NU",
@@ -691,7 +691,7 @@ var validCountryEnumValues = map[Country]struct{}{
 	"NG": {},
 	"NI": {},
 	"NL": {},
-	"NO": {},
+	"false": {},
 	"NP": {},
 	"NR": {},
 	"NU": {},
@@ -794,8 +794,8 @@ func NewCountryFromValue(v string) (Country, error) {
 }
 
 
-
-// AssertCountryRequired checks if the required fields are not zero-ed
+// AssertCountryRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCountryRequired(obj Country) error {
 	return nil
 }

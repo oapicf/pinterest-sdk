@@ -22,7 +22,7 @@ Protected Class CatalogsFeedsCreateRequest
 
 
 	#tag Property, Flags = &h0
-		default_locale As OpenAPIClient.Models.CatalogsFeedsCreateRequestDefaultLocale
+		default_locale As OpenAPIClient.Models.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 	#tag EndProperty
 
 
@@ -130,7 +130,7 @@ Protected Class CatalogsFeedsCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsFeedsCreateRequestDefaultLocale"
+			Type="CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

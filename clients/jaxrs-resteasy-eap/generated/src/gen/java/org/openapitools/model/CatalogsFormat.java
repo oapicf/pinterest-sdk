@@ -9,5 +9,6 @@ import javax.validation.Valid;
 public enum CatalogsFormat {
   TSV,
   CSV,
-  XML;
+  XML,
+  INTEGRATION;
 }

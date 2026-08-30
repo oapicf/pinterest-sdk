@@ -50,7 +50,7 @@ API.Client.ConversionEventDeviceInfo.prototype.externalStorageSize;
 
 /**
  * Device form factor
- * @type {!string}
+ * @type {!API.Client.FormFactor}
  * @export
  */
 API.Client.ConversionEventDeviceInfo.prototype.formFactor;
@@ -85,14 +85,14 @@ API.Client.ConversionEventDeviceInfo.prototype.model;
 
 /**
  * Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
- * @type {!string}
+ * @type {!API.Client.NetworkType}
  * @export
  */
 API.Client.ConversionEventDeviceInfo.prototype.networkType;
 
 /**
  * OS Family
- * @type {!string}
+ * @type {!API.Client.OsFamily}
  * @export
  */
 API.Client.ConversionEventDeviceInfo.prototype.osFamily;
@@ -174,36 +174,3 @@ API.Client.ConversionEventDeviceInfo.prototype.timezoneAbbr;
  */
 API.Client.ConversionEventDeviceInfo.prototype.type;
 
-/** @enum {string} */
-API.Client.ConversionEventDeviceInfo.FormFactorEnum = { 
-  desktop: 'desktop',
-  laptop: 'laptop',
-  cellphone: 'cellphone',
-  tablet: 'tablet',
-  smartwatch: 'smartwatch',
-  tv: 'tv',
-  vr: 'vr',
-  console: 'console',
-  other: 'other',
-}
-/** @enum {string} */
-API.Client.ConversionEventDeviceInfo.NetworkTypeEnum = { 
-  wifi: 'wifi',
-  cellular_2g: 'cellular_2g',
-  cellular_3g: 'cellular_3g',
-  cellular_4g: 'cellular_4g',
-  cellular_5g: 'cellular_5g',
-  cellular_6g: 'cellular_6g',
-  ethernet: 'ethernet',
-  unknown: 'unknown',
-}
-/** @enum {string} */
-API.Client.ConversionEventDeviceInfo.OsFamilyEnum = { 
-  ios: 'ios',
-  android: 'android',
-  macos: 'macos',
-  windows: 'windows',
-  linux: 'linux',
-  bsd: 'bsd',
-  other: 'other',
-}

@@ -10,42 +10,36 @@
 
 part of openapi.api;
 
-/// Summary status for campaign
-class CampaignSummaryStatus {
-  /// Instantiate a new enum with the provided [value].
-  const CampaignSummaryStatus._(this.value);
+
+enum CampaignSummaryStatus {
+  RUNNING._(r'RUNNING'),
+  PAUSED._(r'PAUSED'),
+  NOT_STARTED._(r'NOT_STARTED'),
+  COMPLETED._(r'COMPLETED'),
+  ADVERTISER_DISABLED._(r'ADVERTISER_DISABLED'),
+  ARCHIVED._(r'ARCHIVED'),
+  DRAFT._(r'DRAFT'),
+  DELETED_DRAFT._(r'DELETED_DRAFT'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CampaignSummaryStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const RUNNING = CampaignSummaryStatus._(r'RUNNING');
-  static const PAUSED = CampaignSummaryStatus._(r'PAUSED');
-  static const NOT_STARTED = CampaignSummaryStatus._(r'NOT_STARTED');
-  static const COMPLETED = CampaignSummaryStatus._(r'COMPLETED');
-  static const ADVERTISER_DISABLED = CampaignSummaryStatus._(r'ADVERTISER_DISABLED');
-  static const ARCHIVED = CampaignSummaryStatus._(r'ARCHIVED');
-  static const DRAFT = CampaignSummaryStatus._(r'DRAFT');
-  static const DELETED_DRAFT = CampaignSummaryStatus._(r'DELETED_DRAFT');
-
-  /// List of all possible values in this [enum][CampaignSummaryStatus].
-  static const values = <CampaignSummaryStatus>[
-    RUNNING,
-    PAUSED,
-    NOT_STARTED,
-    COMPLETED,
-    ADVERTISER_DISABLED,
-    ARCHIVED,
-    DRAFT,
-    DELETED_DRAFT,
-  ];
-
+  /// Returns the instance of [CampaignSummaryStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CampaignSummaryStatus? fromJson(dynamic value) => CampaignSummaryStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CampaignSummaryStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CampaignSummaryStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CampaignSummaryStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -67,9 +61,11 @@ class CampaignSummaryStatusTypeTransformer {
 
   const CampaignSummaryStatusTypeTransformer._();
 
-  String encode(CampaignSummaryStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(CampaignSummaryStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CampaignSummaryStatus.
+  /// Returns the instance of [CampaignSummaryStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -78,6 +74,9 @@ class CampaignSummaryStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CampaignSummaryStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CampaignSummaryStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'RUNNING': return CampaignSummaryStatus.RUNNING;
@@ -97,7 +96,7 @@ class CampaignSummaryStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [CampaignSummaryStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CampaignSummaryStatusTypeTransformer? _instance;
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**daily_metrics** | Option<[**Vec<models::PinAnalyticsMetricsResponseDailyMetricsInner>**](PinAnalyticsMetricsResponse_daily_metrics_inner.md)> | Array with the requested daily metric records | [optional]
+**daily_metrics** | Option<[**Vec<models::PinAnalyticsDailyMetrics>**](PinAnalyticsDailyMetrics.md)> | Array with the requested daily metric records | [optional]
 **lifetime_metrics** | Option<**std::collections::HashMap<String, i32>**> | The lifetime metric name and value. | [optional]
 **summary_metrics** | Option<**std::collections::HashMap<String, f64>**> | The metric name and value over the requested period for each requested metric | [optional]
 

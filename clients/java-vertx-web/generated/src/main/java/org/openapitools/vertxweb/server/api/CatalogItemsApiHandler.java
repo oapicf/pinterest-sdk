@@ -1,10 +1,10 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.CatalogsItems;
 import org.openapitools.vertxweb.server.model.CatalogsItemsBatch;
+import org.openapitools.vertxweb.server.model.CatalogsItemsBatchPostRequest;
 import org.openapitools.vertxweb.server.model.CatalogsItemsRequest;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.ItemsBatchPostRequest;
+import org.openapitools.vertxweb.server.model.ItemsPost200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -72,13 +72,13 @@ public class CatalogItemsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         RequestParameter body = requestParameters.body();
-        ItemsBatchPostRequest itemsBatchPostRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ItemsBatchPostRequest>(){}) : null;
+        CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsItemsBatchPostRequest>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter itemsBatchPostRequest is {}", itemsBatchPostRequest);
+        logger.debug("Parameter catalogsItemsBatchPostRequest is {}", catalogsItemsBatchPostRequest);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.itemsBatchPost(itemsBatchPostRequest, adAccountId)
+        api.itemsBatchPost(catalogsItemsBatchPostRequest, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

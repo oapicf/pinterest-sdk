@@ -1,9 +1,9 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.AudienceDefinitionResponse;
 import com.prokarma.pkmst.model.AudienceInsightType;
-import com.prokarma.pkmst.model.AudienceInsightsResponse;
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.AudienceInsights;
+import com.prokarma.pkmst.model.AudienceInsightsScopeAndTypeGet200Response;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -26,7 +26,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class AudienceInsightsApiController implements AudienceInsightsApi {
     private final ObjectMapper objectMapper;
@@ -35,37 +35,87 @@ public class AudienceInsightsApiController implements AudienceInsightsApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<AudienceInsightsResponse> audienceInsightsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Type of audience insights.", required = true, allowableValues = "YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE", defaultValue = "YOUR_TOTAL_AUDIENCE")  @RequestParam(value = "audience_insight_type", required = true, defaultValue="YOUR_TOTAL_AUDIENCE") AudienceInsightType audienceInsightType,
+    public ResponseEntity<AudienceInsights> audienceInsightsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Type of audience insights.", required = true, allowableValues = "YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE")  @RequestParam(value = "audience_insight_type", required = true) AudienceInsightType audienceInsightType,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AudienceInsightsResponse>(objectMapper.readValue("", AudienceInsightsResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AudienceInsights>(objectMapper.readValue("", AudienceInsights.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AudienceInsightsResponse>(objectMapper.readValue("", AudienceInsightsResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AudienceInsights>(objectMapper.readValue("", AudienceInsights.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<AudienceInsightsResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsights>(objectMapper.readValue("", AudienceInsights.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsights>(objectMapper.readValue("", AudienceInsights.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsights>(objectMapper.readValue("", AudienceInsights.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsights>(objectMapper.readValue("", AudienceInsights.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsights>(objectMapper.readValue("", AudienceInsights.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AudienceInsights>(HttpStatus.OK);
     }
 
-    public ResponseEntity<AudienceDefinitionResponse> audienceInsightsScopeAndTypeGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+    public ResponseEntity<AudienceInsightsScopeAndTypeGet200Response> audienceInsightsScopeAndTypeGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AudienceDefinitionResponse>(objectMapper.readValue("", AudienceDefinitionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AudienceInsightsScopeAndTypeGet200Response>(objectMapper.readValue("", AudienceInsightsScopeAndTypeGet200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<AudienceDefinitionResponse>(objectMapper.readValue("", AudienceDefinitionResponse.class), HttpStatus.OK);
+            return new ResponseEntity<AudienceInsightsScopeAndTypeGet200Response>(objectMapper.readValue("", AudienceInsightsScopeAndTypeGet200Response.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<AudienceDefinitionResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsightsScopeAndTypeGet200Response>(objectMapper.readValue("", AudienceInsightsScopeAndTypeGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsightsScopeAndTypeGet200Response>(objectMapper.readValue("", AudienceInsightsScopeAndTypeGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsightsScopeAndTypeGet200Response>(objectMapper.readValue("", AudienceInsightsScopeAndTypeGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsightsScopeAndTypeGet200Response>(objectMapper.readValue("", AudienceInsightsScopeAndTypeGet200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AudienceInsightsScopeAndTypeGet200Response>(objectMapper.readValue("", AudienceInsightsScopeAndTypeGet200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<AudienceInsightsScopeAndTypeGet200Response>(HttpStatus.OK);
     }
 
 }

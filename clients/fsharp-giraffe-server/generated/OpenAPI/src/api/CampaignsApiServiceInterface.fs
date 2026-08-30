@@ -16,4 +16,5 @@ module CampaignsApiServiceInterface =
       abstract member CampaignsGet:HttpContext -> CampaignsGetArgs->CampaignsGetResult
       abstract member CampaignsList:HttpContext -> CampaignsListArgs->CampaignsListResult
       abstract member CampaignsUpdate:HttpContext -> CampaignsUpdateArgs->CampaignsUpdateResult
+      abstract member GetCampaignDeliveryEstimates:HttpContext -> GetCampaignDeliveryEstimatesArgs->GetCampaignDeliveryEstimatesResult
     //#endregion

@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Model for getting local inventory items",
+  "name": "LocalInventoryItemsGet",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.LocalInventoryItemResponse"
+      },
+      "doc": "Array of local inventory items"
+    }
+  ]
+
+}

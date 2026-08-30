@@ -6,10 +6,11 @@ Name | Type | Description | Notes
 **AdGroups** | [**AdGroupCreateRequest[]**](AdGroupCreateRequest.md) |  | [optional] 
 **Ads** | [**AdCreateRequest[]**](AdCreateRequest.md) |  | [optional] 
 **Campaigns** | [**CampaignCreateRequest[]**](CampaignCreateRequest.md) |  | [optional] 
-**CatalogProductGroups** | [**MultipleProductGroupsInner[]**](MultipleProductGroupsInner.md) |  | [optional] 
+**CatalogProductGroups** | [**BulkUpsertRequestCreateCatalogProductGroupsItems[]**](BulkUpsertRequestCreateCatalogProductGroupsItems.md) |  | [optional] 
 **Keywords** | [**KeywordsRequest[]**](KeywordsRequest.md) |  | [optional] 
-**Labels** | [**LabelCreateRequest[]**](LabelCreateRequest.md) |  | [optional] 
+**Labels** | [**LabelBulkCreateRequest[]**](LabelBulkCreateRequest.md) |  | [optional] 
 **ProductGroups** | [**ProductGroupPromotionCreateRequest[]**](ProductGroupPromotionCreateRequest.md) |  | [optional] 
+**Schedules** | [**ScheduleCreateRequest[]**](ScheduleCreateRequest.md) |  | [optional] 
 
 ## Examples
 
@@ -21,7 +22,8 @@ $BulkUpsertRequestCreate = Initialize-PSOpenAPIToolsBulkUpsertRequestCreate  -Ad
  -CatalogProductGroups null `
  -Keywords null `
  -Labels null `
- -ProductGroups null
+ -ProductGroups null `
+ -Schedules null
 ```
 
 - Convert the resource to JSON

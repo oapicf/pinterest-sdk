@@ -9,6 +9,6 @@ package org.openapitools.server.model
 */
 final case class AdvancedAuctionItemsGetRequest (
   catalogId: String,
-  items: Seq[AdvancedAuctionItemsGetRecord]
+  items: Seq[AdvancedAuctionKey]
 )
 

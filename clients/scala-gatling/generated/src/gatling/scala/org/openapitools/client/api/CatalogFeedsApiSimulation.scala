@@ -208,9 +208,9 @@ class CatalogFeedsApiSimulation extends Simulation {
         .httpRequest("GET","/catalogs/processing_results/${processing_result_id}/item_issues")
         .queryParam("item_validation_issue","${item_validation_issue}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("item_numbers","${item_numbers}")
         .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("item_numbers","${item_numbers}")
 )
 
     // Run scnitemsIssuesList with warm up and reach a constant rate for entire duration

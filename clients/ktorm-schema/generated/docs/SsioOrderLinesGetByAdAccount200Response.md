@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;SSIOOrderLine&gt;**](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;SSIOOrderLine&gt;**](SSIOOrderLine.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 

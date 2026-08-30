@@ -23,12 +23,12 @@ BidFloorSpec::~BidFloorSpec()
 void
 BidFloorSpec::__init()
 {
-	//billable_event = new ActionType();
+	//billable_event = null;
 	//new std::list()std::list> countries;
-	//creative_type = new CreativeType();
-	//currency = new Currency();
-	//objective_type = new ObjectiveType();
-	//optimization_goal_metadata = new OptimizationGoalMetadata();
+	//creative_type = null;
+	//currency = null;
+	//objective_type = null;
+	//optimization_goal_metadata = null;
 }
 
 void
@@ -143,11 +143,11 @@ BidFloorSpec::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("ObjectiveType")) {
-			jsonToValue(&objective_type, node, "ObjectiveType", "ObjectiveType");
+		if (isprimitive("BidFloorObjectiveType")) {
+			jsonToValue(&objective_type, node, "BidFloorObjectiveType", "BidFloorObjectiveType");
 		} else {
 			
-			ObjectiveType* obj = static_cast<ObjectiveType*> (&objective_type);
+			BidFloorObjectiveType* obj = static_cast<BidFloorObjectiveType*> (&objective_type);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -245,13 +245,13 @@ BidFloorSpec::toJson()
 	}
 	const gchar *currencyKey = "currency";
 	json_object_set_member(pJsonObject, currencyKey, node);
-	if (isprimitive("ObjectiveType")) {
-		ObjectiveType obj = getObjectiveType();
-		node = converttoJson(&obj, "ObjectiveType", "");
+	if (isprimitive("BidFloorObjectiveType")) {
+		BidFloorObjectiveType obj = getObjectiveType();
+		node = converttoJson(&obj, "BidFloorObjectiveType", "");
 	}
 	else {
 		
-		ObjectiveType obj = static_cast<ObjectiveType> (getObjectiveType());
+		BidFloorObjectiveType obj = static_cast<BidFloorObjectiveType> (getObjectiveType());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -329,14 +329,14 @@ BidFloorSpec::setCurrency(Currency  currency)
 	this->currency = currency;
 }
 
-ObjectiveType
+BidFloorObjectiveType
 BidFloorSpec::getObjectiveType()
 {
 	return objective_type;
 }
 
 void
-BidFloorSpec::setObjectiveType(ObjectiveType  objective_type)
+BidFloorSpec::setObjectiveType(BidFloorObjectiveType  objective_type)
 {
 	this->objective_type = objective_type;
 }

@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { TargetingTemplateGetResponseData } from './targetingTemplateGetResponseData';
+import { TargetingTemplate } from './targetingTemplate';
 
 
 export interface TargetingTemplateList200Response { 
     bookmark?: string | null;
-    items: Array<TargetingTemplateGetResponseData>;
+    items: Array<TargetingTemplate>;
 }
 

@@ -2,7 +2,7 @@
 Protected Class PriceFilter
 
 	#tag Property, Flags = &h0
-		PRICE As OpenAPIClient.Models.CatalogsProductGroupPricingCurrencyCriteria
+		PRICE As OpenAPIClient.Models.PriceFilterPrice
 	#tag EndProperty
 
 
@@ -47,7 +47,7 @@ Protected Class PriceFilter
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupPricingCurrencyCriteria"
+			Type="PriceFilterPrice"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

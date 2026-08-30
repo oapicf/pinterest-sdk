@@ -5,13 +5,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | **String** |  | [optional] 
 **Images** | [**ImageSize**](ImageSize.md) |  | [optional] 
-**ItemType** | **String** |  | [optional] 
+**ItemType** | **String** | Discriminator literal identifying this as video metadata inside a &#x60;PinMediaMetadata&#x60; payload. | 
 **Link** | **String** |  | [optional] 
 **Title** | **String** |  | [optional] 
 **CoverImageUrl** | **String** |  | [optional] 
 **Duration** | **Decimal** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
 **Height** | **Int32** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 **VideoUrl** | **String** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**VideoUrlHls** | **String** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **Width** | **Int32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Examples
@@ -27,6 +28,7 @@ $PinMediaMetadata = Initialize-PSOpenAPIToolsPinMediaMetadata  -Description null
  -Duration null `
  -Height null `
  -VideoUrl null `
+ -VideoUrlHls null `
  -Width null
 ```
 

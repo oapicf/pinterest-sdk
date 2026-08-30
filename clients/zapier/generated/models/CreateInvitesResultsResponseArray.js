@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const CreateInvitesResultsResponseArray_items_inner = require('../models/CreateInvitesResultsResponseArray_items_inner');
+const InviteActionResultItem = require('../models/InviteActionResultItem');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -8,14 +8,14 @@ module.exports = {
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
-                children: CreateInvitesResultsResponseArray_items_inner.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+                children: InviteActionResultItem.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, CreateInvitesResultsResponseArray_items_inner),
+            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, InviteActionResultItem),
         }
     },
 }

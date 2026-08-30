@@ -2,7 +2,7 @@
 /*
  * TermsOfService.h
  *
- * 
+ * The ID of the ad account.
  */
 
 #ifndef TINY_CPP_CLIENT_TermsOfService_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief The ID of the ad account.
  *
  *  \ingroup Models
  *
@@ -51,28 +51,28 @@ public:
 
 	/*! \brief Set The ID of the ad account.
 	 */
-	void setAdAccountId(std::string  ad_account_id);
+	void setAdAccountId(std::string ad_account_id);
 	/*! \brief Get Whether the ad account has accepted terms of service.
 	 */
 	bool isHasAccepted();
 
 	/*! \brief Set Whether the ad account has accepted terms of service.
 	 */
-	void setHasAccepted(bool  has_accepted);
+	void setHasAccepted(bool has_accepted);
 	/*! \brief Get The terms of service content
 	 */
 	std::string getHtml();
 
 	/*! \brief Set The terms of service content
 	 */
-	void setHtml(std::string  html);
+	void setHtml(std::string html);
 	/*! \brief Get The ID of the terms of service
 	 */
 	std::string getId();
 
 	/*! \brief Set The ID of the terms of service
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 
 
     private:

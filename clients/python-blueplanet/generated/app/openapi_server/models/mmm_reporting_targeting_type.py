@@ -23,6 +23,8 @@ class MMMReportingTargetingType(Model):
     CREATIVE_TYPE = 'CREATIVE_TYPE'
     GENDER = 'GENDER'
     LOCATION = 'LOCATION'
+    PLACEMENT = 'PLACEMENT'
+    AUDIENCE_INCLUDE = 'AUDIENCE_INCLUDE'
 
     def __init__(self):  # noqa: E501
         """MMMReportingTargetingType - a model defined in Swagger

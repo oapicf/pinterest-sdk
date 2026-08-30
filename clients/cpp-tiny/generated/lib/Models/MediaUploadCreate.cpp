@@ -65,7 +65,7 @@ MediaUploadCreate::getMediaType()
 }
 
 void
-MediaUploadCreate::setMediaType(MediaUploadType  media_type)
+MediaUploadCreate::setMediaType(MediaUploadType media_type)
 {
 	this->media_type = media_type;
 }

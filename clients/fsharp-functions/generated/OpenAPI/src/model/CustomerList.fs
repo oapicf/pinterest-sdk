@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CustomerListStatus
 
 module CustomerList =
 
@@ -18,6 +19,8 @@ module CustomerList =
     Exceptions : obj;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
+    [<JsonProperty(PropertyName = "is_nca")>]
+    IsNca : bool;
     [<JsonProperty(PropertyName = "name")>]
     Name : string;
     [<JsonProperty(PropertyName = "num_batches")>]
@@ -27,7 +30,7 @@ module CustomerList =
     [<JsonProperty(PropertyName = "num_uploaded_user_records")>]
     NumUploadedUserRecords : decimal;
     [<JsonProperty(PropertyName = "status")>]
-    Status : string;
+    Status : CustomerListStatus;
     [<JsonProperty(PropertyName = "type")>]
     Type : string;
     [<JsonProperty(PropertyName = "updated_time")>]

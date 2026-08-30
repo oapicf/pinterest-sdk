@@ -30,10 +30,10 @@ static catalogs_hotel_available_filter_values_t *catalogs_hotel_available_filter
     if (!catalogs_hotel_available_filter_values_local_var) {
         return NULL;
     }
+    memset(catalogs_hotel_available_filter_values_local_var, 0, sizeof(catalogs_hotel_available_filter_values_t));
+    catalogs_hotel_available_filter_values_local_var->_library_owned = 1;
     catalogs_hotel_available_filter_values_local_var->catalog_type = catalog_type;
     catalogs_hotel_available_filter_values_local_var->filter_values = filter_values;
-
-    catalogs_hotel_available_filter_values_local_var->_library_owned = 1;
     return catalogs_hotel_available_filter_values_local_var;
 }
 
@@ -41,10 +41,13 @@ __attribute__((deprecated)) catalogs_hotel_available_filter_values_t *catalogs_h
     pinterest_rest_api_catalogs_hotel_available_filter_values_CATALOGTYPE_e catalog_type,
     catalogs_hotel_filter_values_map_t *filter_values
     ) {
-    return catalogs_hotel_available_filter_values_create_internal (
+    catalogs_hotel_available_filter_values_t *result = catalogs_hotel_available_filter_values_create_internal (
         catalog_type,
         filter_values
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_hotel_available_filter_values_free(catalogs_hotel_available_filter_values_t *catalogs_hotel_available_filter_values) {
@@ -134,10 +137,15 @@ catalogs_hotel_available_filter_values_t *catalogs_hotel_available_filter_values
     filter_values_local_nonprim = catalogs_hotel_filter_values_map_parseFromJSON(filter_values); //nonprimitive
 
 
+
     catalogs_hotel_available_filter_values_local_var = catalogs_hotel_available_filter_values_create_internal (
         catalog_typeVariable,
         filter_values_local_nonprim
         );
+
+    if (!catalogs_hotel_available_filter_values_local_var) {
+        goto end;
+    }
 
     return catalogs_hotel_available_filter_values_local_var;
 end:

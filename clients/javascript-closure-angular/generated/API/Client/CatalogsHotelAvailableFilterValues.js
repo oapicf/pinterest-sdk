@@ -12,7 +12,7 @@ API.Client.CatalogsHotelAvailableFilterValues = function() {}
 API.Client.CatalogsHotelAvailableFilterValues.prototype.catalogType;
 
 /**
- * @type {!API.Client.catalogs_hotel_filter_values_map}
+ * @type {!API.Client.CatalogsHotelFilterValuesMap}
  * @export
  */
 API.Client.CatalogsHotelAvailableFilterValues.prototype.filterValues;

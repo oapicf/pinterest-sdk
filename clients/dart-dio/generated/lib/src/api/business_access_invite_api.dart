@@ -11,16 +11,17 @@ import 'package:dio/dio.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/auth_respond_invites_body.dart';
-import 'package:openapi/src/model/cancel_invites_body.dart';
+import 'package:openapi/src/model/cancel_invites_request.dart';
+import 'package:openapi/src/model/cancel_invites_response.dart';
 import 'package:openapi/src/model/create_asset_access_request_body.dart';
 import 'package:openapi/src/model/create_asset_access_request_response.dart';
 import 'package:openapi/src/model/create_asset_invites_request.dart';
 import 'package:openapi/src/model/create_invites_results_response_array.dart';
 import 'package:openapi/src/model/create_membership_or_partnership_invites_body.dart';
-import 'package:openapi/src/model/delete_invites_results_response_array.dart';
-import 'package:openapi/src/model/error.dart';
 import 'package:openapi/src/model/get_invites200_response.dart';
+import 'package:openapi/src/model/invite_filter_status.dart';
 import 'package:openapi/src/model/invite_type.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 import 'package:openapi/src/model/respond_to_invites_response_array.dart';
 import 'package:openapi/src/model/update_invites_results_response_array.dart';
 
@@ -139,7 +140,7 @@ class BusinessAccessInviteApi {
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [cancelInvitesBody] - A list with invite ids
+  /// * [cancelInvitesRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -147,11 +148,11 @@ class BusinessAccessInviteApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [DeleteInvitesResultsResponseArray] as data
+  /// Returns a [Future] containing a [Response] with a [CancelInvitesResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DeleteInvitesResultsResponseArray>> cancelInvitesOrRequests({ 
+  Future<Response<CancelInvitesResponse>> cancelInvitesOrRequests({ 
     required String businessId,
-    required CancelInvitesBody cancelInvitesBody,
+    required CancelInvitesRequest cancelInvitesRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -181,8 +182,8 @@ class BusinessAccessInviteApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CancelInvitesBody);
-      _bodyData = _serializers.serialize(cancelInvitesBody, specifiedType: _type);
+      const _type = FullType(CancelInvitesRequest);
+      _bodyData = _serializers.serialize(cancelInvitesRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -205,14 +206,14 @@ class BusinessAccessInviteApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    DeleteInvitesResultsResponseArray? _responseData;
+    CancelInvitesResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(DeleteInvitesResultsResponseArray),
-      ) as DeleteInvitesResultsResponseArray;
+        specifiedType: const FullType(CancelInvitesResponse),
+      ) as CancelInvitesResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -224,7 +225,7 @@ class BusinessAccessInviteApi {
       );
     }
 
-    return Response<DeleteInvitesResultsResponseArray>(
+    return Response<CancelInvitesResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -241,7 +242,7 @@ class BusinessAccessInviteApi {
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [createAssetInvitesRequest] - A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+  /// * [createAssetInvitesRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -343,7 +344,7 @@ class BusinessAccessInviteApi {
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [createMembershipOrPartnershipInvitesBody] - An object with the properties: invite_type, partners, members, business_role
+  /// * [createMembershipOrPartnershipInvitesBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -449,7 +450,7 @@ class BusinessAccessInviteApi {
   /// * [inviteStatus] - A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
   /// * [inviteType] - Invite type to filter invites by. Only invites of the specified type will be returned.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -462,7 +463,7 @@ class BusinessAccessInviteApi {
   Future<Response<GetInvites200Response>> getInvites({ 
     required String businessId,
     bool? isMember = true,
-    BuiltList<String>? inviteStatus,
+    BuiltList<InviteFilterStatus>? inviteStatus,
     InviteType? inviteType,
     String? bookmark,
     int? pageSize = 25,
@@ -493,7 +494,7 @@ class BusinessAccessInviteApi {
 
     final _queryParameters = <String, dynamic>{
       if (isMember != null) r'is_member': encodeQueryParameter(_serializers, isMember, const FullType(bool)),
-      if (inviteStatus != null) r'invite_status': encodeCollectionQueryParameter<String>(_serializers, inviteStatus, const FullType(BuiltList, [FullType(String)]), format: ListFormat.multi,),
+      if (inviteStatus != null) r'invite_status': encodeCollectionQueryParameter<InviteFilterStatus>(_serializers, inviteStatus, const FullType(BuiltList, [FullType(InviteFilterStatus)]), format: ListFormat.multi,),
       if (inviteType != null) r'invite_type': encodeQueryParameter(_serializers, inviteType, const FullType(InviteType)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),

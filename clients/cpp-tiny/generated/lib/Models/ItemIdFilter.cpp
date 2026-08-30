@@ -65,7 +65,7 @@ ItemIdFilter::getITEMID()
 }
 
 void
-ItemIdFilter::setITEMID(CatalogsProductGroupMultipleStringCriteria  iTEM_ID)
+ItemIdFilter::setITEMID(CatalogsProductGroupMultipleStringCriteria iTEM_ID)
 {
 	this->iTEM_ID = iTEM_ID;
 }

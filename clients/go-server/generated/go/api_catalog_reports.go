@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 )
@@ -141,6 +142,11 @@ func (c *CatalogReportsAPIController) ReportsCreate(w http.ResponseWriter, r *ht
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&catalogsReportParametersParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -176,9 +182,9 @@ func (c *CatalogReportsAPIController) ReportsStats(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var parametersParam ReportsStatsParametersParameter
+	var parametersParam CatalogsReportStatsParameters
 	if query.Has("parameters") {
-		param := ReportsStatsParametersParameter(query.Get("parameters"))
+		param := CatalogsReportStatsParameters(query.Get("parameters"))
 
 		parametersParam = param
 	} else {
@@ -190,6 +196,13 @@ func (c *CatalogReportsAPIController) ReportsStats(w http.ResponseWriter, r *htt
 		param := query.Get("ad_account_id")
 
 		adAccountIdParam = param
+	} else {
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
 	} else {
 	}
 	var pageSizeParam int32
@@ -210,14 +223,7 @@ func (c *CatalogReportsAPIController) ReportsStats(w http.ResponseWriter, r *htt
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.ReportsStats(r.Context(), parametersParam, adAccountIdParam, pageSizeParam, bookmarkParam)
+	result, err := c.service.ReportsStats(r.Context(), parametersParam, adAccountIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

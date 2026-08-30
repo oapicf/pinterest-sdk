@@ -1,0 +1,27 @@
+## LeadAdsApi
+
+### Delete lead ads subscription
+## Delete lead ads subscription
+DELETE https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/leads/subscriptions/{{subscription_id}}
+Accept: application/json
+
+### Get lead ads subscription by ID
+## Get lead ads subscription by ID
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/leads/subscriptions/{{subscription_id}}
+Accept: application/json
+
+### Get lead ads subscriptions
+## Get lead ads subscriptions
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/leads/subscriptions?bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Create lead ads subscription
+## Create lead ads subscription
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/leads/subscriptions
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+

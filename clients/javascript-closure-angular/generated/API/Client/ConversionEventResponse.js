@@ -32,3 +32,10 @@ API.Client.ConversionEventResponse.prototype.conversionTagId;
  */
 API.Client.ConversionEventResponse.prototype.createdTime;
 
+/**
+ * For advertiser-defined events, the reporting event label shown in optimization UIs.
+ * @type {!string}
+ * @export
+ */
+API.Client.ConversionEventResponse.prototype.reportingConversionEvent;
+

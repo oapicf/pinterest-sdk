@@ -8,13 +8,14 @@ import org.openapitools.model.Board;
 import org.openapitools.model.BoardCreate;
 import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
+import org.openapitools.model.BoardSectionCreate;
+import org.openapitools.model.BoardSectionUpdateWithRequiredBody;
 import org.openapitools.model.BoardSectionsList200Response;
 import org.openapitools.model.BoardWithUpdatePrivacy;
 import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
 import org.openapitools.model.CreativeType;
-import org.openapitools.model.Error;
 import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
@@ -26,9 +27,9 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BoardsApiServiceImpl implements BoardsApi {
-      public Response boardSectionsCreate(String boardId,BoardSection boardSection,String adAccountId,SecurityContext securityContext) {
+      public Response boardSectionsCreate(String boardId,BoardSectionCreate boardSectionCreate,String adAccountId,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -44,7 +45,7 @@ public class BoardsApiServiceImpl implements BoardsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response boardSectionsUpdate(String boardId,String sectionId,BoardSection boardSection,String adAccountId,SecurityContext securityContext) {
+      public Response boardSectionsUpdate(String boardId,String sectionId,BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody,String adAccountId,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -64,7 +65,7 @@ public class BoardsApiServiceImpl implements BoardsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response boardsListPins(String boardId,String bookmark,Integer pageSize,List<CreativeType> creativeTypes,String adAccountId,Boolean pinMetrics,SecurityContext securityContext) {
+      public Response boardsListPins(String boardId,List<CreativeType> creativeTypes,String adAccountId,Boolean pinMetrics,String bookmark,Integer pageSize,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

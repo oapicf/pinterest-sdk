@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **images** | [**OAIImageSize***](OAIImageSize.md) |  | [optional] 
 **mediaType** | **NSString*** |  | 
 **videoUrl** | **NSString*** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**videoUrlHls** | **NSString*** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **width** | **NSNumber*** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

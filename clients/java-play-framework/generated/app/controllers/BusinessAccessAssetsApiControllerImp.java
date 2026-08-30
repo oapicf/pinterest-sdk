@@ -1,23 +1,25 @@
 package controllers;
 
+import apimodels.AssetGroupDeletion;
+import apimodels.AssetGroupDeletionDelete;
+import apimodels.AssetGroupInput;
+import apimodels.AssetGroupInputCreate;
+import apimodels.AssetGroupModification;
+import apimodels.AssetGroupModificationReadOrUpdate;
+import apimodels.AssetPermissionType;
+import apimodels.AssetSearchBy;
+import apimodels.AssetSortBy;
 import apimodels.BusinessAssetMembersGet200Response;
-import apimodels.BusinessAssetPartnersGet200Response;
 import apimodels.BusinessAssetsGet200Response;
-import apimodels.BusinessMemberAssetsGet200Response;
-import apimodels.BusinessMembersAssetAccessDeleteRequest;
+import apimodels.BusinessMemberAssetsGetResponse;
+import apimodels.BusinessMembersAssetAccessDeleteBody;
 import apimodels.BusinessPartnerAssetAccessGet200Response;
-import apimodels.CreateAssetGroupBody;
-import apimodels.CreateAssetGroupResponse;
-import apimodels.DeleteAssetGroupBody;
-import apimodels.DeleteAssetGroupResponse;
 import apimodels.DeleteMemberAccessResultsResponseArray;
 import apimodels.DeletePartnerAssetAccessBody;
-import apimodels.DeletePartnerAssetsResultsResponseArray;
-import apimodels.Error;
-import apimodels.PartnerType;
+import apimodels.DeletePartnerAssetAccessResultsResponseArray;
+import apimodels.NonDraftEntityStatus;
 import apimodels.PermissionsWithOwner;
-import apimodels.UpdateAssetGroupBody;
-import apimodels.UpdateAssetGroupResponse;
+import apimodels.PinterestLibError;
 import apimodels.UpdateMemberAssetAccessBody;
 import apimodels.UpdateMemberAssetsResultsResponseArray;
 import apimodels.UpdatePartnerAssetAccessBody;
@@ -32,36 +34,36 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAccessAssetsApiControllerImp extends BusinessAccessAssetsApiControllerImpInterface {
     @Override
-    public CreateAssetGroupResponse assetGroupCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CreateAssetGroupBody createAssetGroupBody) throws Exception {
+    public AssetGroupInput assetGroupCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, AssetGroupInputCreate assetGroupInputCreate) throws Exception {
         //Do your magic!!!
-        return new CreateAssetGroupResponse();
+        return new AssetGroupInput();
     }
 
     @Override
-    public DeleteAssetGroupResponse assetGroupDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeleteAssetGroupBody deleteAssetGroupBody) throws Exception {
+    public AssetGroupDeletion assetGroupDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, AssetGroupDeletionDelete assetGroupDeletionDelete) throws Exception {
         //Do your magic!!!
-        return new DeleteAssetGroupResponse();
+        return new AssetGroupDeletion();
     }
 
     @Override
-    public UpdateAssetGroupResponse assetGroupUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, UpdateAssetGroupBody updateAssetGroupBody) throws Exception {
+    public AssetGroupModification assetGroupUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate) throws Exception {
         //Do your magic!!!
-        return new UpdateAssetGroupResponse();
+        return new AssetGroupModification();
     }
 
     @Override
-    public BusinessAssetMembersGet200Response businessAssetMembersGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId, Boolean fetchSystemUsers, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Min(0)Integer startIndex) throws Exception {
+    public BusinessAssetMembersGet200Response businessAssetMembersGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId,  @Min(0)Integer startIndex, Boolean fetchSystemUsers, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new BusinessAssetMembersGet200Response();
     }
 
     @Override
-    public BusinessAssetPartnersGet200Response businessAssetPartnersGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public BusinessAssetMembersGet200Response businessAssetPartnersGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
-        return new BusinessAssetPartnersGet200Response();
+        return new BusinessAssetMembersGet200Response();
     }
 
     @Override
@@ -71,13 +73,13 @@ public class BusinessAccessAssetsApiControllerImp extends BusinessAccessAssetsAp
     }
 
     @Override
-    public BusinessMemberAssetsGet200Response businessMemberAssetsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String memberId, String assetType,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public BusinessMemberAssetsGetResponse businessMemberAssetsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String memberId, String assetType,  @Min(0)Integer startIndex, AssetSortBy sortBy, Boolean sortAscending, AssetSearchBy searchBy, String searchValue, AssetPermissionType assetPermissionType, List<NonDraftEntityStatus> adAccountStatuses, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
-        return new BusinessMemberAssetsGet200Response();
+        return new BusinessMemberAssetsGetResponse();
     }
 
     @Override
-    public DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest) throws Exception {
+    public DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody) throws Exception {
         //Do your magic!!!
         return new DeleteMemberAccessResultsResponseArray();
     }
@@ -89,15 +91,15 @@ public class BusinessAccessAssetsApiControllerImp extends BusinessAccessAssetsAp
     }
 
     @Override
-    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String partnerId, PartnerType partnerType, String assetType,  @Min(0)Integer startIndex,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String partnerId, String partnerType, String assetType,  @Min(0)Integer startIndex, AssetSortBy sortBy, Boolean sortAscending, AssetSearchBy searchBy, String searchValue, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new BusinessPartnerAssetAccessGet200Response();
     }
 
     @Override
-    public DeletePartnerAssetsResultsResponseArray deletePartnerAssetAccessHandlerImpl(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody) throws Exception {
+    public DeletePartnerAssetAccessResultsResponseArray deletePartnerAssetAccessHandlerImpl(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody) throws Exception {
         //Do your magic!!!
-        return new DeletePartnerAssetsResultsResponseArray();
+        return new DeletePartnerAssetAccessResultsResponseArray();
     }
 
     @Override

@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.LeadFormResponse;
+import org.openapitools.model.LeadForm;
 
 @Canonical
 class LeadFormsList200Response {
     
     String bookmark
     
-    List<LeadFormResponse> items = new ArrayList<>()
+    List<LeadForm> items = new ArrayList<>()
 }

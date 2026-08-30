@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -18,6 +26,7 @@ package org.openapitools.client.models
 import org.openapitools.client.models.ErrorDetail
 import org.openapitools.client.models.RecordCounts
 import org.openapitools.client.models.UserListOperationType
+import org.openapitools.client.models.WorkloadState
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -30,10 +39,10 @@ import com.squareup.moshi.JsonClass
  * @param customerListId ID of the customer list associated with this upload.
  * @param id Customer List Upload ID.
  * @param operation 
- * @param state Workload processing state
+ * @param state 
  * @param updatedTime Customer List Upload updated_time. Epoch (seconds).
  * @param errorCounts Error counts by error code
- * @param recordCounts 
+ * @param recordCounts Record processing counts
  */
 
 
@@ -58,9 +67,8 @@ data class CustomerListUpload (
     @Json(name = "operation")
     val operation: UserListOperationType,
 
-    /* Workload processing state */
     @Json(name = "state")
-    val state: CustomerListUpload.State,
+    val state: WorkloadState,
 
     /* Customer List Upload updated_time. Epoch (seconds). */
     @Json(name = "updated_time")
@@ -70,24 +78,12 @@ data class CustomerListUpload (
     @Json(name = "error_counts")
     val errorCounts: kotlin.collections.List<ErrorDetail>? = null,
 
+    /* Record processing counts */
     @Json(name = "record_counts")
     val recordCounts: RecordCounts? = null
 
 ) {
 
-    /**
-     * Workload processing state
-     *
-     * Values: NOT_STARTED,RUNNING,PAUSED,SUCCEEDED,FAILED
-     */
-    @JsonClass(generateAdapter = false)
-    enum class State(val value: kotlin.String) {
-        @Json(name = "NOT_STARTED") NOT_STARTED("NOT_STARTED"),
-        @Json(name = "RUNNING") RUNNING("RUNNING"),
-        @Json(name = "PAUSED") PAUSED("PAUSED"),
-        @Json(name = "SUCCEEDED") SUCCEEDED("SUCCEEDED"),
-        @Json(name = "FAILED") FAILED("FAILED");
-    }
 
 }
 

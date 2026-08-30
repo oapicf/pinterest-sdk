@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | **String** |  | [optional] 
 **Images** | [**ImageSize**](ImageSize.md) |  | [optional] 
-**ItemType** | **String** |  | [optional] 
+**ItemType** | **String** | Discriminator literal identifying this as image metadata inside a &#x60;PinMediaMetadata&#x60; payload. | 
 **Link** | **String** |  | [optional] 
 **Title** | **String** |  | [optional] 
 

@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductGroupPromotionsUpdateWithRequiredBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductGroupPromotionsUpdateWithRequiredBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ProductGroupPromotion = openapi_server.resourceTypes.ProductGroupPromotion
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  ProductGroupPromotionsUpdateWithRequiredBody {
+    title = ProductGroupPromotionsUpdateWithRequiredBody
+    description = ProductGroupPromotionsUpdateWithRequiredBody
+    derivedFrom = Root
+    properties {
+        ad_group_id {
+          type =  string
+          description = "ID of the ad group the product group promotion belongs to."
+          optional = true
+        }
+        product_group_promotion {
+          type = array
+          items.type = ProductGroupPromotion
+          description = "List of product group promotions to create or update."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductGroupPromotionsUpdateWithRequiredBody {
+    title = ProductGroupPromotionsUpdateWithRequiredBody
+    description = ProductGroupPromotionsUpdateWithRequiredBody
+    implements = openapi_server.resourceTypes.ProductGroupPromotionsUpdateWithRequiredBody
+
+  }
+}

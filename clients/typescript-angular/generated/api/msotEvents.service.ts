@@ -17,7 +17,9 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { ConversionMSOTEvents } from '../model/conversionMSOTEvents';
+import { ConversionMSOTEventsCreate } from '../model/conversionMSOTEventsCreate';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -37,23 +39,23 @@ export class MsotEventsService extends BaseService {
 
     /**
      * Send Measurement Source Of Truth (MSOT) attributed conversion events
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt; &lt;br&gt; &lt;p&gt;Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object.&lt;/p&gt; - These events will NOT be used in Reporting.
+     * **This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &#x60;ad_account_id&#x60;. The request body should be a JSON object.  - These events will not be used in Reporting.
      * @endpoint post /ad_accounts/{ad_account_id}/msot/events
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionMSOTEvents Attributed MSOT conversion events
+     * @param conversionMSOTEventsCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public msotEventsCreate(adAccountId: string, conversionMSOTEvents: ConversionMSOTEvents, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public msotEventsCreate(adAccountId: string, conversionMSOTEvents: ConversionMSOTEvents, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public msotEventsCreate(adAccountId: string, conversionMSOTEvents: ConversionMSOTEvents, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public msotEventsCreate(adAccountId: string, conversionMSOTEvents: ConversionMSOTEvents, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public msotEventsCreate(adAccountId: string, conversionMSOTEventsCreate: ConversionMSOTEventsCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public msotEventsCreate(adAccountId: string, conversionMSOTEventsCreate: ConversionMSOTEventsCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public msotEventsCreate(adAccountId: string, conversionMSOTEventsCreate: ConversionMSOTEventsCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public msotEventsCreate(adAccountId: string, conversionMSOTEventsCreate: ConversionMSOTEventsCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling msotEventsCreate.');
         }
-        if (conversionMSOTEvents === null || conversionMSOTEvents === undefined) {
-            throw new Error('Required parameter conversionMSOTEvents was null or undefined when calling msotEventsCreate.');
+        if (conversionMSOTEventsCreate === null || conversionMSOTEventsCreate === undefined) {
+            throw new Error('Required parameter conversionMSOTEventsCreate was null or undefined when calling msotEventsCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -98,7 +100,7 @@ export class MsotEventsService extends BaseService {
         return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: conversionMSOTEvents,
+                body: conversionMSOTEventsCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

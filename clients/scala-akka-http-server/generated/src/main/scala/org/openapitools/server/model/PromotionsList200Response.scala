@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class PromotionsList200Response (
   bookmark: Option[String] = None,
-  items: Seq[PromotionResponse]
+  items: Seq[Promotion]
 )
 

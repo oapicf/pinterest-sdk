@@ -17,14 +17,17 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.CreativeType
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.MultiPinsAnalyticsMetricTypesItem
 import org.openapitools.server.api.model.Pin
 import org.openapitools.server.api.model.PinAnalyticsMetricsResponse
 import org.openapitools.server.api.model.PinCreate
+import org.openapitools.server.api.model.PinFilter
+import org.openapitools.server.api.model.PinType
 import org.openapitools.server.api.model.PinUpdate
 import org.openapitools.server.api.model.PinsList200Response
-import org.openapitools.server.api.model.PinsSaveRequest
+import org.openapitools.server.api.model.PinsSaveRequestCreate
 import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.QuerypinanalyticsmetrictypesItems
 
 class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: PinsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -92,8 +95,8 @@ class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: Pi
                     if(metricTypesParam == null){
                          throw IllegalArgumentException("metricTypes is required")
                     }
-                    val metricTypes:kotlin.Array<kotlin.String> = Gson().fromJson(metricTypesParam.encode()
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val metricTypes:kotlin.Array<MultiPinsAnalyticsMetricTypesItem> = Gson().fromJson(metricTypesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<MultiPinsAnalyticsMetricTypesItem>>(){}.type)
                     val appTypes = ApiHandlerUtils.searchStringInJson(params,"app_types")
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
@@ -124,8 +127,8 @@ class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: Pi
                     if(metricTypesParam == null){
                          throw IllegalArgumentException("metricTypes is required")
                     }
-                    val metricTypes:kotlin.Array<kotlin.String> = Gson().fromJson(metricTypesParam.encode()
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val metricTypes:kotlin.Array<QuerypinanalyticsmetrictypesItems> = Gson().fromJson(metricTypesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<QuerypinanalyticsmetrictypesItems>>(){}.type)
                     val appTypes = ApiHandlerUtils.searchStringInJson(params,"app_types")
                     val splitField = ApiHandlerUtils.searchStringInJson(params,"split_field")
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
@@ -194,19 +197,27 @@ class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: Pi
         
                 "pinsList" -> {
                     val params = context.params
-                    val pinFilter = ApiHandlerUtils.searchStringInJson(params,"pin_filter")
+                    val pinFilterParam = ApiHandlerUtils.searchJsonObjectInJson(params,"pin_filter")
+                    val pinFilter = if(pinFilterParam ==null) null else Gson().fromJson(pinFilterParam.encode(), PinFilter::class.java)
                     val pinMetrics = ApiHandlerUtils.searchStringInJson(params,"pin_metrics")?.toBoolean()
                     val includeProtectedPins = ApiHandlerUtils.searchStringInJson(params,"include_protected_pins")?.toBoolean()
-                    val pinType = ApiHandlerUtils.searchStringInJson(params,"pin_type")
+                    val pinTypeParam = ApiHandlerUtils.searchJsonObjectInJson(params,"pin_type")
+                    val pinType = if(pinTypeParam ==null) null else Gson().fromJson(pinTypeParam.encode(), PinType::class.java)
                     val creativeTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"creative_types")
                     val creativeTypes:kotlin.Array<CreativeType>? = if(creativeTypesParam == null) null
                             else Gson().fromJson(creativeTypesParam.encode(),
                             , object : TypeToken<kotlin.collections.List<CreativeType>>(){}.type)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    val domain = ApiHandlerUtils.searchStringInJson(params,"domain")
+                    val domainsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"domains")
+                    val domains:kotlin.Array<kotlin.String>? = if(domainsParam == null) null
+                            else Gson().fromJson(domainsParam.encode(),
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val includeProductTagObj = ApiHandlerUtils.searchStringInJson(params,"include_product_tag_obj")?.toBoolean()
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.pinsList(pinFilter,pinMetrics,includeProtectedPins,pinType,creativeTypes,adAccountId,bookmark,pageSize,context)
+                        val result = service.pinsList(pinFilter,pinMetrics,includeProtectedPins,pinType,creativeTypes,adAccountId,domain,domains,includeProductTagObj,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -221,14 +232,14 @@ class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: Pi
                     if(pinId == null){
                         throw IllegalArgumentException("pinId is required")
                     }
-                    val pinsSaveRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (pinsSaveRequestParam == null) {
-                        throw IllegalArgumentException("pinsSaveRequest is required")
+                    val pinsSaveRequestCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (pinsSaveRequestCreateParam == null) {
+                        throw IllegalArgumentException("pinsSaveRequestCreate is required")
                     }
-                    val pinsSaveRequest = Gson().fromJson(pinsSaveRequestParam.encode(), PinsSaveRequest::class.java)
+                    val pinsSaveRequestCreate = Gson().fromJson(pinsSaveRequestCreateParam.encode(), PinsSaveRequestCreate::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.pinsSave(pinId,pinsSaveRequest,adAccountId,context)
+                        val result = service.pinsSave(pinId,pinsSaveRequestCreate,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

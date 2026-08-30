@@ -3,7 +3,7 @@ package models
 // CatalogsVerticalsListProductsByCatalogBasedFilterRequest - Request object to list products for a given catalog_id and product group filter.
 type CatalogsVerticalsListProductsByCatalogBasedFilterRequest struct {
 
-	// Catalog id pertaining to the creative assets product group.
+	// Catalog ID pertaining to the product group.
 	CatalogId string `json:"catalog_id"`
 
 	CatalogType string `json:"catalog_type"`

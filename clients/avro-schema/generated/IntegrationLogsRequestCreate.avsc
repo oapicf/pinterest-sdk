@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "IntegrationLogsRequestCreate",
+  "fields": [
+    {
+      "name": "logs",
+      "type": {
+        "type": "array",
+        "items": "model.IntegrationLog"
+      },
+      "doc": ""
+    }
+  ]
+
+}

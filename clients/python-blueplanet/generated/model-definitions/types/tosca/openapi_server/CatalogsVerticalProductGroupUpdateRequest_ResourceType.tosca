@@ -49,7 +49,7 @@ resourceTypes {
         }
         name {
           type =  string
-          description = ""
+          description = "Name of catalog product group"
           optional = false
         }
     }

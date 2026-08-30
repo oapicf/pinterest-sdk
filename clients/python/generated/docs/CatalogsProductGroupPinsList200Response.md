@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[CatalogsProduct]**](CatalogsProduct.md) | Pins | 
+**items** | [**List[CatalogsProduct]**](CatalogsProduct.md) |  | 
 
 ## Example
 

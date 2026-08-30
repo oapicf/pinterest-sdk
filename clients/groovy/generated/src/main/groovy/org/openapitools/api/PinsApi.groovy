@@ -2,27 +2,31 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.CreativeType
-import org.openapitools.model.Error
+import org.openapitools.model.MultiPinsAnalyticsMetricTypesItem
 import org.openapitools.model.Pin
 import org.openapitools.model.PinAnalyticsMetricsResponse
 import org.openapitools.model.PinCreate
+import org.openapitools.model.PinFilter
+import org.openapitools.model.PinType
 import org.openapitools.model.PinUpdate
 import org.openapitools.model.PinsList200Response
-import org.openapitools.model.PinsSaveRequest
+import org.openapitools.model.PinsSaveRequestCreate
 import org.openapitools.model.PinterestLibError
+import org.openapitools.model.QuerypinanalyticsmetrictypesItems
 
 class PinsApi {
     String basePath = "https://api.pinterest.com/v5"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def multiPinsAnalytics ( List<String> pinIds, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def multiPinsAnalytics ( List<String> pinIds, Date startDate, Date endDate, List<MultiPinsAnalyticsMetricTypesItem> metricTypes, String appTypes, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/pins/analytics"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -64,19 +68,22 @@ class PinsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "map",
                     Map.class )
 
     }
 
-    def pinsAnalytics ( String pinId, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String splitField, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def pinsAnalytics ( String pinId, Date startDate, Date endDate, List<QuerypinanalyticsmetrictypesItems> metricTypes, String appTypes, String splitField, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/pins/${pin_id}/analytics"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -118,7 +125,9 @@ class PinsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "map",
                     PinAnalyticsMetricsResponse.class )
 
@@ -131,6 +140,7 @@ class PinsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -147,7 +157,9 @@ class PinsApi {
         bodyParams = pinCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     Pin.class )
 
@@ -160,6 +172,7 @@ class PinsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -174,9 +187,11 @@ class PinsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    null )
+                    Pin.class )
 
     }
 
@@ -187,6 +202,7 @@ class PinsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -204,19 +220,22 @@ class PinsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     Pin.class )
 
     }
 
-    def pinsList ( String pinFilter, Boolean pinMetrics, Boolean includeProtectedPins, String pinType, List<CreativeType> creativeTypes, String adAccountId, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
+    def pinsList ( PinFilter pinFilter, Boolean pinMetrics, Boolean includeProtectedPins, PinType pinType, List<CreativeType> creativeTypes, String adAccountId, String domain, List<String> domains, Boolean includeProductTagObj, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/pins"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
@@ -238,6 +257,15 @@ class PinsApi {
         if (adAccountId != null) {
             queryParams.put("ad_account_id", adAccountId)
         }
+        if (domain != null) {
+            queryParams.put("domain", domain)
+        }
+        if (domains != null) {
+            queryParams.put("domains", domains)
+        }
+        if (includeProductTagObj != null) {
+            queryParams.put("include_product_tag_obj", includeProductTagObj)
+        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
@@ -248,19 +276,22 @@ class PinsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     PinsList200Response.class )
 
     }
 
-    def pinsSave ( String pinId, PinsSaveRequest pinsSaveRequest, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def pinsSave ( String pinId, PinsSaveRequestCreate pinsSaveRequestCreate, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/pins/${pin_id}/save"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -268,8 +299,8 @@ class PinsApi {
             throw new RuntimeException("missing required params pinId")
         }
         // verify required params are set
-        if (pinsSaveRequest == null) {
-            throw new RuntimeException("missing required params pinsSaveRequest")
+        if (pinsSaveRequestCreate == null) {
+            throw new RuntimeException("missing required params pinsSaveRequestCreate")
         }
 
         if (adAccountId != null) {
@@ -278,10 +309,12 @@ class PinsApi {
 
 
         contentType = 'application/json';
-        bodyParams = pinsSaveRequest
+        bodyParams = pinsSaveRequestCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     Pin.class )
 
@@ -294,6 +327,7 @@ class PinsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -314,7 +348,9 @@ class PinsApi {
         bodyParams = pinUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     Pin.class )
 

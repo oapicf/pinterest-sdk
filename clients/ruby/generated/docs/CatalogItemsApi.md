@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Get item batch status
 
-Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Get a single catalogs items batch owned by the \"operating user_account\". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Examples
 
@@ -32,7 +32,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CatalogItemsApi.new
-batch_id = '66753b9bb65c46c49bd8503b27fecf9e' # String | Id of a catalogs items batch to fetch
+batch_id = 'batch_id_example' # String | Id of a catalogs items batch to fetch
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -87,11 +87,11 @@ end
 
 ## items_batch_post
 
-> <CatalogsItemsBatch> items_batch_post(items_batch_post_request, opts)
+> <CatalogsItemsBatch> items_batch_post(catalogs_items_batch_post_request, opts)
 
 Operate on item batch
 
-This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
 
 ### Examples
 
@@ -108,14 +108,14 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CatalogItemsApi.new
-items_batch_post_request = PinterestSdkClient::CatalogsItemsCreateBatchRequest.new({country: PinterestSdkClient::Country::AD, items: [PinterestSdkClient::ItemCreateBatchRecord.new], language: 'af-ZA', operation: PinterestSdkClient::BatchOperation::UPDATE}) # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+catalogs_items_batch_post_request = PinterestSdkClient::CatalogsItemsCreateBatchRequest.new({country: PinterestSdkClient::Country::AD, items: [PinterestSdkClient::ItemCreateBatchRecord.new], language: 'af-ZA', operation: 'CREATE'}) # CatalogsItemsBatchPostRequest | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
 begin
   # Operate on item batch
-  result = api_instance.items_batch_post(items_batch_post_request, opts)
+  result = api_instance.items_batch_post(catalogs_items_batch_post_request, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CatalogItemsApi->items_batch_post: #{e}"
@@ -126,12 +126,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CatalogsItemsBatch>, Integer, Hash)> items_batch_post_with_http_info(items_batch_post_request, opts)
+> <Array(<CatalogsItemsBatch>, Integer, Hash)> items_batch_post_with_http_info(catalogs_items_batch_post_request, opts)
 
 ```ruby
 begin
   # Operate on item batch
-  data, status_code, headers = api_instance.items_batch_post_with_http_info(items_batch_post_request, opts)
+  data, status_code, headers = api_instance.items_batch_post_with_http_info(catalogs_items_batch_post_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <CatalogsItemsBatch>
@@ -144,7 +144,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items_batch_post_request** | [**ItemsBatchPostRequest**](ItemsBatchPostRequest.md) | Request object used to create catalogs items in a batch |  |
+| **catalogs_items_batch_post_request** | [**CatalogsItemsBatchPostRequest**](CatalogsItemsBatchPostRequest.md) |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -163,11 +163,11 @@ end
 
 ## items_post
 
-> <CatalogsItems> items_post(catalogs_items_request, opts)
+> <ItemsPost200Response> items_post(catalogs_items_request, opts)
 
 Get catalogs items (POST)
 
-Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Get the items of the catalog owned by the \"operation user_account\". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Examples
 
@@ -181,7 +181,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CatalogItemsApi.new
-catalogs_items_request = PinterestSdkClient::CatalogsItemsRequest.new({country: PinterestSdkClient::Country::AD, filters: PinterestSdkClient::CatalogsCreativeAssetsItemsPostFilter.new({catalog_type: 'CREATIVE_ASSETS', creative_assets_ids: ['creative_assets_ids_example']}), language: 'af-ZA'}) # CatalogsItemsRequest | Request object used to get catalogs items
+catalogs_items_request = PinterestSdkClient::CatalogsItemsRequest.new({country: PinterestSdkClient::Country::AD, filters: PinterestSdkClient::CatalogsCreativeAssetsItemsPostFilter.new({catalog_type: 'CREATIVE_ASSETS', creative_assets_ids: ['creative_assets_ids_example']}), language: 'af-ZA'}) # CatalogsItemsRequest | 
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -199,7 +199,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CatalogsItems>, Integer, Hash)> items_post_with_http_info(catalogs_items_request, opts)
+> <Array(<ItemsPost200Response>, Integer, Hash)> items_post_with_http_info(catalogs_items_request, opts)
 
 ```ruby
 begin
@@ -207,7 +207,7 @@ begin
   data, status_code, headers = api_instance.items_post_with_http_info(catalogs_items_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CatalogsItems>
+  p data # => <ItemsPost200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling CatalogItemsApi->items_post_with_http_info: #{e}"
 end
@@ -217,12 +217,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **catalogs_items_request** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md) | Request object used to get catalogs items |  |
+| **catalogs_items_request** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md) |  |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
-[**CatalogsItems**](CatalogsItems.md)
+[**ItemsPost200Response**](ItemsPost200Response.md)
 
 ### Authorization
 

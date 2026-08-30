@@ -8,10 +8,10 @@
 static line_item_t *line_item_create_internal(
     char *product_brand,
     char *product_category,
-    int product_id,
+    int *product_id,
     char *product_name,
     char *product_price,
-    int product_quantity,
+    int *product_quantity,
     char *product_variant,
     char *product_variant_id
     ) {
@@ -19,6 +19,8 @@ static line_item_t *line_item_create_internal(
     if (!line_item_local_var) {
         return NULL;
     }
+    memset(line_item_local_var, 0, sizeof(line_item_t));
+    line_item_local_var->_library_owned = 1;
     line_item_local_var->product_brand = product_brand;
     line_item_local_var->product_category = product_category;
     line_item_local_var->product_id = product_id;
@@ -27,31 +29,44 @@ static line_item_t *line_item_create_internal(
     line_item_local_var->product_quantity = product_quantity;
     line_item_local_var->product_variant = product_variant;
     line_item_local_var->product_variant_id = product_variant_id;
-
-    line_item_local_var->_library_owned = 1;
     return line_item_local_var;
 }
 
 __attribute__((deprecated)) line_item_t *line_item_create(
     char *product_brand,
     char *product_category,
-    int product_id,
+    int *product_id,
     char *product_name,
     char *product_price,
-    int product_quantity,
+    int *product_quantity,
     char *product_variant,
     char *product_variant_id
     ) {
-    return line_item_create_internal (
+    int *product_id_copy = NULL;
+    if (product_id) {
+        product_id_copy = malloc(sizeof(int));
+        if (product_id_copy) *product_id_copy = *product_id;
+    }
+    int *product_quantity_copy = NULL;
+    if (product_quantity) {
+        product_quantity_copy = malloc(sizeof(int));
+        if (product_quantity_copy) *product_quantity_copy = *product_quantity;
+    }
+    line_item_t *result = line_item_create_internal (
         product_brand,
         product_category,
-        product_id,
+        product_id_copy,
         product_name,
         product_price,
-        product_quantity,
+        product_quantity_copy,
         product_variant,
         product_variant_id
         );
+    if (!result) {
+        free(product_id_copy);
+        free(product_quantity_copy);
+    }
+    return result;
 }
 
 void line_item_free(line_item_t *line_item) {
@@ -71,6 +86,10 @@ void line_item_free(line_item_t *line_item) {
         free(line_item->product_category);
         line_item->product_category = NULL;
     }
+    if (line_item->product_id) {
+        free(line_item->product_id);
+        line_item->product_id = NULL;
+    }
     if (line_item->product_name) {
         free(line_item->product_name);
         line_item->product_name = NULL;
@@ -78,6 +97,10 @@ void line_item_free(line_item_t *line_item) {
     if (line_item->product_price) {
         free(line_item->product_price);
         line_item->product_price = NULL;
+    }
+    if (line_item->product_quantity) {
+        free(line_item->product_quantity);
+        line_item->product_quantity = NULL;
     }
     if (line_item->product_variant) {
         free(line_item->product_variant);
@@ -111,7 +134,7 @@ cJSON *line_item_convertToJSON(line_item_t *line_item) {
 
     // line_item->product_id
     if(line_item->product_id) {
-    if(cJSON_AddNumberToObject(item, "product_id", line_item->product_id) == NULL) {
+    if(cJSON_AddNumberToObject(item, "product_id", *line_item->product_id) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -135,7 +158,7 @@ cJSON *line_item_convertToJSON(line_item_t *line_item) {
 
     // line_item->product_quantity
     if(line_item->product_quantity) {
-    if(cJSON_AddNumberToObject(item, "product_quantity", line_item->product_quantity) == NULL) {
+    if(cJSON_AddNumberToObject(item, "product_quantity", *line_item->product_quantity) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -167,6 +190,24 @@ fail:
 line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
 
     line_item_t *line_item_local_var = NULL;
+
+    char *product_brand_local_str = NULL;
+
+    char *product_category_local_str = NULL;
+
+    // define the local variable for line_item->product_id
+    int *product_id_local_var = NULL;
+
+    char *product_name_local_str = NULL;
+
+    char *product_price_local_str = NULL;
+
+    // define the local variable for line_item->product_quantity
+    int *product_quantity_local_var = NULL;
+
+    char *product_variant_local_str = NULL;
+
+    char *product_variant_id_local_str = NULL;
 
     // line_item->product_brand
     cJSON *product_brand = cJSON_GetObjectItemCaseSensitive(line_itemJSON, "product_brand");
@@ -202,6 +243,12 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
     {
     goto end; //Numeric
     }
+    product_id_local_var = malloc(sizeof(int));
+    if(!product_id_local_var)
+    {
+        goto end;
+    }
+    *product_id_local_var = product_id->valuedouble;
     }
 
     // line_item->product_name
@@ -238,6 +285,12 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
     {
     goto end; //Numeric
     }
+    product_quantity_local_var = malloc(sizeof(int));
+    if(!product_quantity_local_var)
+    {
+        goto end;
+    }
+    *product_quantity_local_var = product_quantity->valuedouble;
     }
 
     // line_item->product_variant
@@ -265,19 +318,62 @@ line_item_t *line_item_parseFromJSON(cJSON *line_itemJSON){
     }
 
 
+    if (product_brand && !cJSON_IsNull(product_brand)) product_brand_local_str = strdup(product_brand->valuestring);
+    if (product_category && !cJSON_IsNull(product_category)) product_category_local_str = strdup(product_category->valuestring);
+    if (product_name && !cJSON_IsNull(product_name)) product_name_local_str = strdup(product_name->valuestring);
+    if (product_price && !cJSON_IsNull(product_price)) product_price_local_str = strdup(product_price->valuestring);
+    if (product_variant && !cJSON_IsNull(product_variant)) product_variant_local_str = strdup(product_variant->valuestring);
+    if (product_variant_id && !cJSON_IsNull(product_variant_id)) product_variant_id_local_str = strdup(product_variant_id->valuestring);
+
     line_item_local_var = line_item_create_internal (
-        product_brand && !cJSON_IsNull(product_brand) ? strdup(product_brand->valuestring) : NULL,
-        product_category && !cJSON_IsNull(product_category) ? strdup(product_category->valuestring) : NULL,
-        product_id ? product_id->valuedouble : 0,
-        product_name && !cJSON_IsNull(product_name) ? strdup(product_name->valuestring) : NULL,
-        product_price && !cJSON_IsNull(product_price) ? strdup(product_price->valuestring) : NULL,
-        product_quantity ? product_quantity->valuedouble : 0,
-        product_variant && !cJSON_IsNull(product_variant) ? strdup(product_variant->valuestring) : NULL,
-        product_variant_id && !cJSON_IsNull(product_variant_id) ? strdup(product_variant_id->valuestring) : NULL
+        product_brand_local_str,
+        product_category_local_str,
+        product_id_local_var,
+        product_name_local_str,
+        product_price_local_str,
+        product_quantity_local_var,
+        product_variant_local_str,
+        product_variant_id_local_str
         );
+
+    if (!line_item_local_var) {
+        goto end;
+    }
 
     return line_item_local_var;
 end:
+    if (product_brand_local_str) {
+        free(product_brand_local_str);
+        product_brand_local_str = NULL;
+    }
+    if (product_category_local_str) {
+        free(product_category_local_str);
+        product_category_local_str = NULL;
+    }
+    if (product_id_local_var) {
+        free(product_id_local_var);
+        product_id_local_var = NULL;
+    }
+    if (product_name_local_str) {
+        free(product_name_local_str);
+        product_name_local_str = NULL;
+    }
+    if (product_price_local_str) {
+        free(product_price_local_str);
+        product_price_local_str = NULL;
+    }
+    if (product_quantity_local_var) {
+        free(product_quantity_local_var);
+        product_quantity_local_var = NULL;
+    }
+    if (product_variant_local_str) {
+        free(product_variant_local_str);
+        product_variant_local_str = NULL;
+    }
+    if (product_variant_id_local_str) {
+        free(product_variant_id_local_str);
+        product_variant_id_local_str = NULL;
+    }
     return NULL;
 
 }

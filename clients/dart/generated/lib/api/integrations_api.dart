@@ -26,7 +26,7 @@ class IntegrationsApi {
   ///
   /// * [String] externalBusinessId (required):
   ///   External business ID for the integration.
-  Future<Response> integrationsCommerceDelWithHttpInfo(String externalBusinessId,) async {
+  Future<Response> integrationsCommerceDelWithHttpInfo(String externalBusinessId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/integrations/commerce/{external_business_id}'
       .replaceAll('{external_business_id}', externalBusinessId);
@@ -49,6 +49,7 @@ class IntegrationsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -60,11 +61,19 @@ class IntegrationsApi {
   ///
   /// * [String] externalBusinessId (required):
   ///   External business ID for the integration.
-  Future<void> integrationsCommerceDel(String externalBusinessId,) async {
-    final response = await integrationsCommerceDelWithHttpInfo(externalBusinessId,);
+  Future<IntegrationMetadata?> integrationsCommerceDel(String externalBusinessId, { Future<void>? abortTrigger, }) async {
+    final response = await integrationsCommerceDelWithHttpInfo(externalBusinessId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'IntegrationMetadata',) as IntegrationMetadata;
+    
+    }
+    return null;
   }
 
   /// Get commerce integration
@@ -77,7 +86,7 @@ class IntegrationsApi {
   ///
   /// * [String] externalBusinessId (required):
   ///   External business ID for the integration.
-  Future<Response> integrationsCommerceGetWithHttpInfo(String externalBusinessId,) async {
+  Future<Response> integrationsCommerceGetWithHttpInfo(String externalBusinessId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/integrations/commerce/{external_business_id}'
       .replaceAll('{external_business_id}', externalBusinessId);
@@ -100,6 +109,7 @@ class IntegrationsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -111,8 +121,8 @@ class IntegrationsApi {
   ///
   /// * [String] externalBusinessId (required):
   ///   External business ID for the integration.
-  Future<IntegrationMetadata?> integrationsCommerceGet(String externalBusinessId,) async {
-    final response = await integrationsCommerceGetWithHttpInfo(externalBusinessId,);
+  Future<IntegrationMetadata?> integrationsCommerceGet(String externalBusinessId, { Future<void>? abortTrigger, }) async {
+    final response = await integrationsCommerceGetWithHttpInfo(externalBusinessId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -137,15 +147,14 @@ class IntegrationsApi {
   /// * [String] externalBusinessId (required):
   ///   External business ID for the integration.
   ///
-  /// * [IntegrationRequestPatch] integrationRequestPatch (required):
-  ///   Parameters to get create/update the Integration Metadata
-  Future<Response> integrationsCommercePatchWithHttpInfo(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch,) async {
+  /// * [IntegrationMetadataUpdate] integrationMetadataUpdate (required):
+  Future<Response> integrationsCommercePatchWithHttpInfo(String externalBusinessId, IntegrationMetadataUpdate integrationMetadataUpdate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/integrations/commerce/{external_business_id}'
       .replaceAll('{external_business_id}', externalBusinessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = integrationRequestPatch;
+    Object? postBody = integrationMetadataUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -162,6 +171,7 @@ class IntegrationsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -174,10 +184,9 @@ class IntegrationsApi {
   /// * [String] externalBusinessId (required):
   ///   External business ID for the integration.
   ///
-  /// * [IntegrationRequestPatch] integrationRequestPatch (required):
-  ///   Parameters to get create/update the Integration Metadata
-  Future<IntegrationMetadata?> integrationsCommercePatch(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch,) async {
-    final response = await integrationsCommercePatchWithHttpInfo(externalBusinessId, integrationRequestPatch,);
+  /// * [IntegrationMetadataUpdate] integrationMetadataUpdate (required):
+  Future<IntegrationMetadata?> integrationsCommercePatch(String externalBusinessId, IntegrationMetadataUpdate integrationMetadataUpdate, { Future<void>? abortTrigger, }) async {
+    final response = await integrationsCommercePatchWithHttpInfo(externalBusinessId, integrationMetadataUpdate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -199,14 +208,13 @@ class IntegrationsApi {
   ///
   /// Parameters:
   ///
-  /// * [IntegrationRequest] integrationRequest (required):
-  ///   Parameters to get create/update the Integration Metadata
-  Future<Response> integrationsCommercePostWithHttpInfo(IntegrationRequest integrationRequest,) async {
+  /// * [IntegrationMetadataCreate] integrationMetadataCreate (required):
+  Future<Response> integrationsCommercePostWithHttpInfo(IntegrationMetadataCreate integrationMetadataCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/integrations/commerce';
 
     // ignore: prefer_final_locals
-    Object? postBody = integrationRequest;
+    Object? postBody = integrationMetadataCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -223,6 +231,7 @@ class IntegrationsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -232,10 +241,9 @@ class IntegrationsApi {
   ///
   /// Parameters:
   ///
-  /// * [IntegrationRequest] integrationRequest (required):
-  ///   Parameters to get create/update the Integration Metadata
-  Future<IntegrationMetadata?> integrationsCommercePost(IntegrationRequest integrationRequest,) async {
-    final response = await integrationsCommercePostWithHttpInfo(integrationRequest,);
+  /// * [IntegrationMetadataCreate] integrationMetadataCreate (required):
+  Future<IntegrationMetadata?> integrationsCommercePost(IntegrationMetadataCreate integrationMetadataCreate, { Future<void>? abortTrigger, }) async {
+    final response = await integrationsCommercePostWithHttpInfo(integrationMetadataCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -258,8 +266,8 @@ class IntegrationsApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   Integration ID.
-  Future<Response> integrationsGetByIdWithHttpInfo(String id,) async {
+  ///   Integration record ID.
+  Future<Response> integrationsGetByIdWithHttpInfo(String id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/integrations/{id}'
       .replaceAll('{id}', id);
@@ -282,6 +290,7 @@ class IntegrationsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -292,9 +301,9 @@ class IntegrationsApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   Integration ID.
-  Future<IntegrationRecord?> integrationsGetById(String id,) async {
-    final response = await integrationsGetByIdWithHttpInfo(id,);
+  ///   Integration record ID.
+  Future<IntegrationRecord?> integrationsGetById(String id, { Future<void>? abortTrigger, }) async {
+    final response = await integrationsGetByIdWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -320,8 +329,8 @@ class IntegrationsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> integrationsGetListWithHttpInfo({ String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> integrationsGetListWithHttpInfo({ String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/integrations';
 
@@ -350,6 +359,7 @@ class IntegrationsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -363,9 +373,9 @@ class IntegrationsApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<IntegrationsGetList200Response?> integrationsGetList({ String? bookmark, int? pageSize, }) async {
-    final response = await integrationsGetListWithHttpInfo( bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<IntegrationsGetList200Response?> integrationsGetList({ String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await integrationsGetListWithHttpInfo(bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -387,14 +397,13 @@ class IntegrationsApi {
   ///
   /// Parameters:
   ///
-  /// * [IntegrationLogsRequest] integrationLogsRequest (required):
-  ///   Ingest log information from external integration application.
-  Future<Response> integrationsLogsPostWithHttpInfo(IntegrationLogsRequest integrationLogsRequest,) async {
+  /// * [IntegrationLogsRequestCreate] integrationLogsRequestCreate (required):
+  Future<Response> integrationsLogsPostWithHttpInfo(IntegrationLogsRequestCreate integrationLogsRequestCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/integrations/logs';
 
     // ignore: prefer_final_locals
-    Object? postBody = integrationLogsRequest;
+    Object? postBody = integrationLogsRequestCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -411,6 +420,7 @@ class IntegrationsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -420,10 +430,9 @@ class IntegrationsApi {
   ///
   /// Parameters:
   ///
-  /// * [IntegrationLogsRequest] integrationLogsRequest (required):
-  ///   Ingest log information from external integration application.
-  Future<IntegrationLogsSuccessResponse?> integrationsLogsPost(IntegrationLogsRequest integrationLogsRequest,) async {
-    final response = await integrationsLogsPostWithHttpInfo(integrationLogsRequest,);
+  /// * [IntegrationLogsRequestCreate] integrationLogsRequestCreate (required):
+  Future<IntegrationLogsSuccessResponse?> integrationsLogsPost(IntegrationLogsRequestCreate integrationLogsRequestCreate, { Future<void>? abortTrigger, }) async {
+    final response = await integrationsLogsPostWithHttpInfo(integrationLogsRequestCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

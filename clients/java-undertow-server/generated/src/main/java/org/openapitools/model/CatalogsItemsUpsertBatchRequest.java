@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,7 +19,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.BatchOperation;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemUpsertBatchRecord;
 
@@ -30,7 +29,7 @@ import org.openapitools.model.ItemUpsertBatchRecord;
  */
 
 @ApiModel(description = "Request object to upsert catalogs items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemsUpsertBatchRequest   {
   
   private Country country;
@@ -127,7 +126,7 @@ public class CatalogsItemsUpsertBatchRequest   {
     NB("NB"),
     NE("NE"),
     NL2("NL"),
-    NO("NO"),
+    FALSE("false"),
     PL("PL"),
     PT("PT"),
     RO("RO"),
@@ -160,7 +159,25 @@ public class CatalogsItemsUpsertBatchRequest   {
   }
 
   private LanguageEnum language;
-  private BatchOperation operation;
+
+
+  public enum OperationEnum {
+    UPSERT("UPSERT");
+
+    private String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private OperationEnum operation;
 
   /**
    */
@@ -217,7 +234,7 @@ public class CatalogsItemsUpsertBatchRequest   {
 
   /**
    */
-  public CatalogsItemsUpsertBatchRequest operation(BatchOperation operation) {
+  public CatalogsItemsUpsertBatchRequest operation(OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -225,10 +242,10 @@ public class CatalogsItemsUpsertBatchRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation")
-  public BatchOperation getOperation() {
+  public OperationEnum getOperation() {
     return operation;
   }
-  public void setOperation(BatchOperation operation) {
+  public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
@@ -271,10 +288,7 @@ public class CatalogsItemsUpsertBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

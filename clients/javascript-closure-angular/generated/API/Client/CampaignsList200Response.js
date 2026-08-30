@@ -12,7 +12,7 @@ API.Client.CampaignsList200Response = function() {}
 API.Client.CampaignsList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.CampaignResponse>}
+ * @type {!Array<!API.Client.Campaign>}
  * @export
  */
 API.Client.CampaignsList200Response.prototype.items;

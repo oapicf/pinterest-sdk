@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,18 +17,22 @@ package openapi
 type ConversionEventResponse struct {
 
 	// Id of the ad account.
-	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\d+$"`
 
 	ConversionEvent ConversionTagType `json:"conversion_event,omitempty"`
 
 	// Id of the tag.
-	ConversionTagId string `json:"conversion_tag_id,omitempty" validate:"regexp=^\\\\d+$"`
+	ConversionTagId string `json:"conversion_tag_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Creation date in epoch format.
 	CreatedTime int32 `json:"created_time,omitempty"`
+
+	// For advertiser-defined events, the reporting event label shown in optimization UIs.
+	ReportingConversionEvent string `json:"reporting_conversion_event,omitempty"`
 }
 
-// AssertConversionEventResponseRequired checks if the required fields are not zero-ed
+// AssertConversionEventResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertConversionEventResponseRequired(obj ConversionEventResponse) error {
 	return nil
 }

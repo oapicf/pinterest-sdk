@@ -10,8 +10,8 @@ The class is defined in **[InviteAssetsSummary.java](../../src/main/java/org/ope
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adAccounts** | [`List&lt;InviteAssetsSummaryAdAccountsInner&gt;`](InviteAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels that will be assigned. |  [optional property]
-**profiles** | [`List&lt;InviteAssetsSummaryProfilesInner&gt;`](InviteAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels that will be assigned. |  [optional property]
+**adAccounts** | [`List&lt;InviteAssetsSummaryItem&gt;`](InviteAssetsSummaryItem.md) | List of ad account IDs and respective permission levels that will be assigned. |  [optional property]
+**profiles** | [`List&lt;InviteAssetsSummaryItem&gt;`](InviteAssetsSummaryItem.md) | List of profile IDs and respective permission levels that will be assigned. |  [optional property]
 
 
 

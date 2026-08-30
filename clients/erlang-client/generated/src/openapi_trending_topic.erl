@@ -6,7 +6,8 @@
 
 -type openapi_trending_topic() ::
     #{ 'description' := binary(),
-       'percent_growth_mom' := integer(),
+       'id' := binary(),
+       'percent_growth_mom' => integer(),
        'pins' := list(),
        'related_interests' := list(),
        'related_searches' := list(),
@@ -15,6 +16,7 @@
      }.
 
 encode(#{ 'description' := Description,
+          'id' := Id,
           'percent_growth_mom' := PercentGrowthMom,
           'pins' := Pins,
           'related_interests' := RelatedInterests,
@@ -23,6 +25,7 @@ encode(#{ 'description' := Description,
           'title' := Title
         }) ->
     #{ 'description' => Description,
+       'id' => Id,
        'percent_growth_mom' => PercentGrowthMom,
        'pins' => Pins,
        'related_interests' => RelatedInterests,

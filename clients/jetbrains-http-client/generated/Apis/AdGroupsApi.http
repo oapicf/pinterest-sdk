@@ -1,0 +1,102 @@
+## AdGroupsApi
+
+### Get ad group analytics
+## Get ad group analytics
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups/analytics?startDate={{startDate}}&endDate={{endDate}}&adGroupIds={{adGroupIds}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}&aggregateReportRows={{aggregateReportRows}}&reportingTimezone={{reportingTimezone}}
+Accept: application/json
+
+### Get audience sizing
+## Get audience sizing
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups/audience_sizing
+Content-Type: application/json
+Accept: application/json
+
+{
+ "auto_targeting_enabled": "<string>",
+ "creative_types": "<string>",
+ "keywords": "<string>",
+ "placement_group": "<string>",
+ "product_group_ids": "<string>",
+ "targeting_spec": "<string>"
+}
+
+
+### Create ad groups
+## Create ad groups
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Get ad group
+## Get ad group
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups/{{ad_group_id}}
+Accept: application/json
+
+### List ad groups
+## List ad groups
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&campaignIds={{campaignIds}}&adGroupIds={{adGroupIds}}&entityStatuses={{entityStatuses}}&translateInterestsToNames={{translateInterestsToNames}}
+Accept: application/json
+
+### Update ad groups
+## Update ad groups
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Get bid floors
+## Get bid floors
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/bid_floor
+Content-Type: application/json
+Accept: application/json
+
+{
+ "bid_floor_specs": "<string>",
+ "targeting_spec": "<string>"
+}
+
+
+### Get dynamic titles CSV download URL
+## Get dynamic titles CSV download URL
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups/{{ad_group_id}}/dynamic_titles/csv
+Accept: application/json
+
+### Get dynamic titles status
+## Get dynamic titles status
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups/{{ad_group_id}}/dynamic_titles/status
+Accept: application/json
+
+### Get dynamic titles upload URL
+## Get dynamic titles upload URL
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups/{{ad_group_id}}/dynamic_titles/uploads
+Accept: application/json
+
+### Process dynamic titles CSV
+## Process dynamic titles CSV
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups/{{ad_group_id}}/dynamic_titles
+Content-Type: application/json
+Accept: application/json
+
+{
+ "request_id": "<string>"
+}
+
+
+### Get targeting analytics for ad groups
+## Get targeting analytics for ad groups
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ad_groups/targeting_analytics?adGroupIds={{adGroupIds}}&startDate={{startDate}}&endDate={{endDate}}&targetingTypes={{targetingTypes}}&columns={{columns}}&granularity={{granularity}}&clickWindowDays={{clickWindowDays}}&engagementWindowDays={{engagementWindowDays}}&viewWindowDays={{viewWindowDays}}&conversionReportTime={{conversionReportTime}}&attributionTypes={{attributionTypes}}&reportingTimezone={{reportingTimezone}}&sortColumns={{sortColumns}}&sortAscending={{sortAscending}}
+Accept: application/json
+
+### List of ad groups using promotions IDs.
+## List of ad groups using promotions IDs.
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/promotion_applied_entities?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&promotionIds={{promotionIds}}
+Accept: application/json

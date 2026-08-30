@@ -1,0 +1,81 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdAccountEntityType = openapi_server.resourceTypes.AdAccountEntityType
+  ScheduleAction = openapi_server.resourceTypes.ScheduleAction
+  ScheduleDeltaValue = openapi_server.resourceTypes.ScheduleDeltaValue
+  ScheduleStatus = openapi_server.resourceTypes.ScheduleStatus
+  ScheduleType = openapi_server.resourceTypes.ScheduleType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  ScheduleCreate {
+    title = ScheduleCreate
+    description = ScheduleCreate
+    derivedFrom = Root
+    properties {
+        delta_value {
+          type = ScheduleDeltaValue
+          description = ""
+          optional = false
+        }
+        end_timestamp {
+          type =  integer
+          description = "Schedule end time. Unix timestamp in seconds."
+          optional = false
+        }
+        entity_id {
+          type =  string
+          description = "entity ID."
+          optional = true
+        }
+        entity_type {
+          type = AdAccountEntityType
+          description = "Specify the entity_type to get summary information"
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Schedule name."
+          optional = false
+        }
+        schedule_action {
+          type = ScheduleAction
+          description = "The schedule action."
+          optional = false
+        }
+        schedule_status {
+          type = ScheduleStatus
+          description = "Schedule status."
+          optional = false
+        }
+        schedule_type {
+          type = ScheduleType
+          description = "The schedule type."
+          optional = false
+        }
+        start_timestamp {
+          type =  integer
+          description = "Schedule start time. Unix timestamp in seconds."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleCreate {
+    title = ScheduleCreate
+    description = ScheduleCreate
+    implements = openapi_server.resourceTypes.ScheduleCreate
+
+  }
+}

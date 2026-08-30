@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.BatchOperationStatus;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.CreativeAssetsProcessingRecord;
 
 /**
@@ -20,7 +19,25 @@ import org.openapitools.vertxweb.server.model.CreativeAssetsProcessingRecord;
 public class CatalogsCreativeAssetsItemsBatch   {
   
   private String batchId;
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private OffsetDateTime completedTime;
   private OffsetDateTime createdTime;
   private List<CreativeAssetsProcessingRecord> items = new ArrayList<>();
@@ -30,7 +47,7 @@ public class CatalogsCreativeAssetsItemsBatch   {
 
   }
 
-  public CatalogsCreativeAssetsItemsBatch (String batchId, CatalogsType catalogType, OffsetDateTime completedTime, OffsetDateTime createdTime, List<CreativeAssetsProcessingRecord> items, BatchOperationStatus status) {
+  public CatalogsCreativeAssetsItemsBatch (String batchId, CatalogTypeEnum catalogType, OffsetDateTime completedTime, OffsetDateTime createdTime, List<CreativeAssetsProcessingRecord> items, BatchOperationStatus status) {
     this.batchId = batchId;
     this.catalogType = catalogType;
     this.completedTime = completedTime;
@@ -50,10 +67,10 @@ public class CatalogsCreativeAssetsItemsBatch   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -136,9 +153,6 @@ public class CatalogsCreativeAssetsItemsBatch   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

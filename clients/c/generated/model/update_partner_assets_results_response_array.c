@@ -12,18 +12,21 @@ static update_partner_assets_results_response_array_t *update_partner_assets_res
     if (!update_partner_assets_results_response_array_local_var) {
         return NULL;
     }
-    update_partner_assets_results_response_array_local_var->items = items;
-
+    memset(update_partner_assets_results_response_array_local_var, 0, sizeof(update_partner_assets_results_response_array_t));
     update_partner_assets_results_response_array_local_var->_library_owned = 1;
+    update_partner_assets_results_response_array_local_var->items = items;
     return update_partner_assets_results_response_array_local_var;
 }
 
 __attribute__((deprecated)) update_partner_assets_results_response_array_t *update_partner_assets_results_response_array_create(
     list_t *items
     ) {
-    return update_partner_assets_results_response_array_create_internal (
+    update_partner_assets_results_response_array_t *result = update_partner_assets_results_response_array_create_internal (
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void update_partner_assets_results_response_array_free(update_partner_assets_results_response_array_t *update_partner_assets_results_response_array) {
@@ -107,9 +110,14 @@ update_partner_assets_results_response_array_t *update_partner_assets_results_re
     }
 
 
+
     update_partner_assets_results_response_array_local_var = update_partner_assets_results_response_array_create_internal (
         items ? itemsList : NULL
         );
+
+    if (!update_partner_assets_results_response_array_local_var) {
+        goto end;
+    }
 
     return update_partner_assets_results_response_array_local_var;
 end:

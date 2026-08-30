@@ -1,19 +1,29 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.AdArrayResponse
-import org.openapitools.model.AdCreateRequest
+import org.openapitools.model.Ad
+import org.openapitools.model.AdBatchUpdate
+import org.openapitools.model.AdBatchWriteResponseModel
+import org.openapitools.model.AdCreate
 import org.openapitools.model.AdPreviewRequest
 import org.openapitools.model.AdPreviewURLResponse
-import org.openapitools.model.AdResponse
-import org.openapitools.model.AdUpdateRequest
+import org.openapitools.model.AdsAnalytics
 import org.openapitools.model.AdsAnalyticsAdTargetingType
-import org.openapitools.model.AdsAnalyticsResponseInner
 import org.openapitools.model.AdsList200Response
+import java.math.BigDecimal
+import org.openapitools.model.CampaignAdPreview
+import org.openapitools.model.CampaignAdPreviewCreate
+import org.openapitools.model.CampaignAdPreviewCreate200ResponseInner
+import org.openapitools.model.CampaignAdPreviewDelete200ResponseInner
+import org.openapitools.model.ConversionAttributionWindowDays
 import org.openapitools.model.ConversionReportAttributionType
-import org.openapitools.model.Error
+import org.openapitools.model.ConversionReportTimeType
+import org.openapitools.model.EntityStatus
 import org.openapitools.model.Granularity
 import org.openapitools.model.MetricsResponse
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PinterestLibPaginationOrder
+import org.openapitools.model.ReportingColumnSync
 import org.openapitools.model.ReportingTimeZone
 
 class AdsApi {
@@ -28,6 +38,7 @@ class AdsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -45,19 +56,22 @@ class AdsApi {
         bodyParams = adPreviewRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     AdPreviewURLResponse.class )
 
     }
 
-    def adTargetingAnalyticsGet ( String adAccountId, List<String> adIds, Date startDate, Date endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
+    def adTargetingAnalyticsGet ( String adAccountId, List<String> adIds, Date startDate, Date endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<ReportingColumnSync> columns, Granularity granularity, ConversionAttributionWindowDays clickWindowDays, ConversionAttributionWindowDays engagementWindowDays, ConversionAttributionWindowDays viewWindowDays, ConversionReportTimeType conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, List<String> sortColumns, Boolean sortAscending, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads/targeting_analytics"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -125,29 +139,34 @@ class AdsApi {
         if (reportingTimezone != null) {
             queryParams.put("reporting_timezone", reportingTimezone)
         }
+        if (sortColumns != null) {
+            queryParams.put("sort_columns", sortColumns)
+        }
+        if (sortAscending != null) {
+            queryParams.put("sort_ascending", sortAscending)
+        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     MetricsResponse.class )
 
     }
 
-    def adsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
+    def adsAnalytics ( Date startDate, Date endDate, List<ReportingColumnSync> columns, Granularity granularity, String adAccountId, List<String> pinIds, List<String> adIds, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, List<String> campaignIds, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads/analytics"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
-        // verify required params are set
-        if (adAccountId == null) {
-            throw new RuntimeException("missing required params adAccountId")
-        }
         // verify required params are set
         if (startDate == null) {
             throw new RuntimeException("missing required params startDate")
@@ -164,7 +183,14 @@ class AdsApi {
         if (granularity == null) {
             throw new RuntimeException("missing required params granularity")
         }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
 
+        if (pinIds != null) {
+            queryParams.put("pin_ids", pinIds)
+        }
         if (startDate != null) {
             queryParams.put("start_date", startDate)
         }
@@ -192,9 +218,6 @@ class AdsApi {
         if (conversionReportTime != null) {
             queryParams.put("conversion_report_time", conversionReportTime)
         }
-        if (pinIds != null) {
-            queryParams.put("pin_ids", pinIds)
-        }
         if (campaignIds != null) {
             queryParams.put("campaign_ids", campaignIds)
         }
@@ -205,19 +228,22 @@ class AdsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "array",
-                    AdsAnalyticsResponseInner.class )
+                    AdsAnalytics.class )
 
     }
 
-    def adsCreate ( String adAccountId, List<AdCreateRequest> adCreateRequest, Closure onSuccess, Closure onFailure)  {
+    def adsCreate ( String adAccountId, List<AdCreate> adCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -225,57 +251,63 @@ class AdsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (adCreateRequest == null) {
-            throw new RuntimeException("missing required params adCreateRequest")
+        if (adCreate == null) {
+            throw new RuntimeException("missing required params adCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = adCreateRequest
+        bodyParams = adCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    AdArrayResponse.class )
+                    AdBatchWriteResponseModel.class )
 
     }
 
-    def adsGet ( String adAccountId, String adId, Closure onSuccess, Closure onFailure)  {
+    def adsGet ( String adId, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads/${ad_id}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
-        // verify required params are set
-        if (adAccountId == null) {
-            throw new RuntimeException("missing required params adAccountId")
-        }
         // verify required params are set
         if (adId == null) {
             throw new RuntimeException("missing required params adId")
         }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
 
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    AdResponse.class )
+                    Ad.class )
 
     }
 
-    def adsList ( String adAccountId, List<String> campaignIds, List<String> adGroupIds, List<String> adIds, List<String> entityStatuses, Integer pageSize, String order, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def adsList ( String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, List<String> campaignIds, List<String> adGroupIds, List<String> adIds, List<EntityStatus> entityStatuses, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -283,6 +315,15 @@ class AdsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
 
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
+        if (order != null) {
+            queryParams.put("order", order)
+        }
         if (campaignIds != null) {
             queryParams.put("campaign_ids", campaignIds)
         }
@@ -295,32 +336,26 @@ class AdsApi {
         if (entityStatuses != null) {
             queryParams.put("entity_statuses", entityStatuses)
         }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
-        if (order != null) {
-            queryParams.put("order", order)
-        }
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     AdsList200Response.class )
 
     }
 
-    def adsUpdate ( String adAccountId, List<AdUpdateRequest> adUpdateRequest, Closure onSuccess, Closure onFailure)  {
+    def adsUpdate ( String adAccountId, List<AdBatchUpdate> adBatchUpdate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -328,19 +363,122 @@ class AdsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (adUpdateRequest == null) {
-            throw new RuntimeException("missing required params adUpdateRequest")
+        if (adBatchUpdate == null) {
+            throw new RuntimeException("missing required params adBatchUpdate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = adUpdateRequest
+        bodyParams = adBatchUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    AdArrayResponse.class )
+                    AdBatchWriteResponseModel.class )
+
+    }
+
+    def campaignAdPreviewCreate ( String adAccountId, List<CampaignAdPreviewCreate> campaignAdPreviewCreate, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/campaign_ad_preview"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def accept
+        def contentType
+
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+        // verify required params are set
+        if (campaignAdPreviewCreate == null) {
+            throw new RuntimeException("missing required params campaignAdPreviewCreate")
+        }
+
+
+
+        contentType = 'application/json';
+        bodyParams = campaignAdPreviewCreate
+
+
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
+                    "POST", "array",
+                    CampaignAdPreviewCreate200ResponseInner.class )
+
+    }
+
+    def campaignAdPreviewDelete ( List<String> adGroupIds, String adAccountId, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/campaign_ad_preview"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def accept
+        def contentType
+
+        // verify required params are set
+        if (adGroupIds == null) {
+            throw new RuntimeException("missing required params adGroupIds")
+        }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+
+        if (adGroupIds != null) {
+            queryParams.put("ad_group_ids", adGroupIds)
+        }
+
+
+
+
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
+                    "DELETE", "array",
+                    CampaignAdPreviewDelete200ResponseInner.class )
+
+    }
+
+    def campaignAdPreviewRead ( List<String> adGroupIds, String adAccountId, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/campaign_ad_preview"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def accept
+        def contentType
+
+        // verify required params are set
+        if (adGroupIds == null) {
+            throw new RuntimeException("missing required params adGroupIds")
+        }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+
+        if (adGroupIds != null) {
+            queryParams.put("ad_group_ids", adGroupIds)
+        }
+
+
+
+
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
+                    "GET", "array",
+                    CampaignAdPreview.class )
 
     }
 

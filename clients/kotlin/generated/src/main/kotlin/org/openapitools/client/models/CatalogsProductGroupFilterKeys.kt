@@ -8,55 +8,32 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.AvailabilityFilter
-import org.openapitools.client.models.BrandFilter
+import org.openapitools.client.models.CatalogsBaseFilterKeys
 import org.openapitools.client.models.CatalogsProductGroupCurrencyCriteria
 import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleGenderCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleMediaTypesCriteria
+import org.openapitools.client.models.CatalogsProductGroupMultiplePinterestProductCategoryCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringListCriteria
 import org.openapitools.client.models.CatalogsProductGroupPricingCriteria
 import org.openapitools.client.models.CatalogsProductGroupUint32Criteria
-import org.openapitools.client.models.ConditionFilter
-import org.openapitools.client.models.CurrencyFilter
-import org.openapitools.client.models.CustomLabel0Filter
-import org.openapitools.client.models.CustomLabel1Filter
-import org.openapitools.client.models.CustomLabel2Filter
-import org.openapitools.client.models.CustomLabel3Filter
-import org.openapitools.client.models.CustomLabel4Filter
-import org.openapitools.client.models.CustomNumber0Filter
-import org.openapitools.client.models.CustomNumber1Filter
-import org.openapitools.client.models.CustomNumber2Filter
-import org.openapitools.client.models.CustomNumber3Filter
-import org.openapitools.client.models.CustomNumber4Filter
-import org.openapitools.client.models.GenderFilter
-import org.openapitools.client.models.GoogleProductCategory0Filter
-import org.openapitools.client.models.GoogleProductCategory1Filter
-import org.openapitools.client.models.GoogleProductCategory2Filter
-import org.openapitools.client.models.GoogleProductCategory3Filter
-import org.openapitools.client.models.GoogleProductCategory4Filter
-import org.openapitools.client.models.GoogleProductCategory5Filter
-import org.openapitools.client.models.GoogleProductCategory6Filter
-import org.openapitools.client.models.ItemGroupIdFilter
-import org.openapitools.client.models.ItemIdFilter
-import org.openapitools.client.models.MaxPriceFilter
-import org.openapitools.client.models.MediaTypeFilter
-import org.openapitools.client.models.MinPriceFilter
 import org.openapitools.client.models.ProductGroupReferenceFilter
-import org.openapitools.client.models.ProductType0Filter
-import org.openapitools.client.models.ProductType1Filter
-import org.openapitools.client.models.ProductType2Filter
-import org.openapitools.client.models.ProductType3Filter
-import org.openapitools.client.models.ProductType4Filter
-import org.openapitools.client.models.TitleKeywordsFilter
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -91,13 +68,14 @@ import com.squareup.moshi.JsonClass
  * @param GOOGLE_PRODUCT_CATEGORY_2 
  * @param GOOGLE_PRODUCT_CATEGORY_1 
  * @param GOOGLE_PRODUCT_CATEGORY_0 
- * @param PRODUCT_GROUP 
  * @param CUSTOM_NUMBER_0 
  * @param CUSTOM_NUMBER_1 
  * @param CUSTOM_NUMBER_2 
  * @param CUSTOM_NUMBER_3 
  * @param CUSTOM_NUMBER_4 
  * @param TITLE_KEYWORDS 
+ * @param PINTEREST_PRODUCT_CATEGORIES 
+ * @param PRODUCT_GROUP 
  */
 
 
@@ -184,9 +162,6 @@ data class CatalogsProductGroupFilterKeys (
     @Json(name = "GOOGLE_PRODUCT_CATEGORY_0")
     val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
 
-    @Json(name = "PRODUCT_GROUP")
-    val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria,
-
     @Json(name = "CUSTOM_NUMBER_0")
     val CUSTOM_NUMBER_0: CatalogsProductGroupUint32Criteria,
 
@@ -203,7 +178,13 @@ data class CatalogsProductGroupFilterKeys (
     val CUSTOM_NUMBER_4: CatalogsProductGroupUint32Criteria,
 
     @Json(name = "TITLE_KEYWORDS")
-    val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
+    val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria,
+
+    @Json(name = "PINTEREST_PRODUCT_CATEGORIES")
+    val PINTEREST_PRODUCT_CATEGORIES: CatalogsProductGroupMultiplePinterestProductCategoryCriteria,
+
+    @Json(name = "PRODUCT_GROUP")
+    val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
 
 ) {
 

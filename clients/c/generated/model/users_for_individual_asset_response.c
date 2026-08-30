@@ -14,11 +14,11 @@ static users_for_individual_asset_response_t *users_for_individual_asset_respons
     if (!users_for_individual_asset_response_local_var) {
         return NULL;
     }
+    memset(users_for_individual_asset_response_local_var, 0, sizeof(users_for_individual_asset_response_t));
+    users_for_individual_asset_response_local_var->_library_owned = 1;
     users_for_individual_asset_response_local_var->asset_id = asset_id;
     users_for_individual_asset_response_local_var->member_id = member_id;
     users_for_individual_asset_response_local_var->permissions = permissions;
-
-    users_for_individual_asset_response_local_var->_library_owned = 1;
     return users_for_individual_asset_response_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) users_for_individual_asset_response_t *users_for_ind
     char *member_id,
     list_t *permissions
     ) {
-    return users_for_individual_asset_response_create_internal (
+    users_for_individual_asset_response_t *result = users_for_individual_asset_response_create_internal (
         asset_id,
         member_id,
         permissions
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void users_for_individual_asset_response_free(users_for_individual_asset_response_t *users_for_individual_asset_response) {
@@ -108,6 +111,10 @@ users_for_individual_asset_response_t *users_for_individual_asset_response_parse
 
     users_for_individual_asset_response_t *users_for_individual_asset_response_local_var = NULL;
 
+    char *asset_id_local_str = NULL;
+
+    char *member_id_local_str = NULL;
+
     // define the local list for users_for_individual_asset_response->permissions
     list_t *permissionsList = NULL;
 
@@ -158,14 +165,29 @@ users_for_individual_asset_response_t *users_for_individual_asset_response_parse
     }
 
 
+    if (asset_id && !cJSON_IsNull(asset_id)) asset_id_local_str = strdup(asset_id->valuestring);
+    if (member_id && !cJSON_IsNull(member_id)) member_id_local_str = strdup(member_id->valuestring);
+
     users_for_individual_asset_response_local_var = users_for_individual_asset_response_create_internal (
-        asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
-        member_id && !cJSON_IsNull(member_id) ? strdup(member_id->valuestring) : NULL,
+        asset_id_local_str,
+        member_id_local_str,
         permissions ? permissionsList : NULL
         );
 
+    if (!users_for_individual_asset_response_local_var) {
+        goto end;
+    }
+
     return users_for_individual_asset_response_local_var;
 end:
+    if (asset_id_local_str) {
+        free(asset_id_local_str);
+        asset_id_local_str = NULL;
+    }
+    if (member_id_local_str) {
+        free(member_id_local_str);
+        member_id_local_str = NULL;
+    }
     if (permissionsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, permissionsList) {

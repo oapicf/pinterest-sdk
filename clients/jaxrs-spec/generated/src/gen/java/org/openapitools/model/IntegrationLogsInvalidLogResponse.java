@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsInner;
+import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsItems;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,16 +22,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Schema describing the response when a log has invalid fields.")
 @JsonTypeName("IntegrationLogsInvalidLogResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogsInvalidLogResponse   {
-  private @Valid List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
+  private @Valid List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs = new ArrayList<>();
 
   public IntegrationLogsInvalidLogResponse() {
   }
 
   /**
    **/
-  public IntegrationLogsInvalidLogResponse rejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public IntegrationLogsInvalidLogResponse rejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
     return this;
   }
@@ -39,16 +39,16 @@ public class IntegrationLogsInvalidLogResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("rejected_logs")
-  @Valid public List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> getRejectedLogs() {
+  @Valid public List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> getRejectedLogs() {
     return rejectedLogs;
   }
 
   @JsonProperty("rejected_logs")
-  public void setRejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public void setRejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
   }
 
-  public IntegrationLogsInvalidLogResponse addRejectedLogsItem(IntegrationLogsInvalidLogResponseRejectedLogsInner rejectedLogsItem) {
+  public IntegrationLogsInvalidLogResponse addRejectedLogsItem(IntegrationLogsInvalidLogResponseRejectedLogsItems rejectedLogsItem) {
     if (this.rejectedLogs == null) {
       this.rejectedLogs = new ArrayList<>();
     }
@@ -57,7 +57,7 @@ public class IntegrationLogsInvalidLogResponse   {
     return this;
   }
 
-  public IntegrationLogsInvalidLogResponse removeRejectedLogsItem(IntegrationLogsInvalidLogResponseRejectedLogsInner rejectedLogsItem) {
+  public IntegrationLogsInvalidLogResponse removeRejectedLogsItem(IntegrationLogsInvalidLogResponseRejectedLogsItems rejectedLogsItem) {
     if (rejectedLogsItem != null && this.rejectedLogs != null) {
       this.rejectedLogs.remove(rejectedLogsItem);
     }
@@ -97,12 +97,8 @@ public class IntegrationLogsInvalidLogResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

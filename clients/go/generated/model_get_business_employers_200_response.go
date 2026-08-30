@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,6 @@ var _ MappedNullable = &GetBusinessEmployers200Response{}
 // GetBusinessEmployers200Response struct for GetBusinessEmployers200Response
 type GetBusinessEmployers200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	// List of employers.
 	Items []UserBusinessRoleBinding `json:"items"`
 }
 

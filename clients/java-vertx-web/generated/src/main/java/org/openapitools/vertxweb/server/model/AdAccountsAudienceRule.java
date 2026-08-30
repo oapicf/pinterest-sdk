@@ -1,0 +1,319 @@
+package org.openapitools.vertxweb.server.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.vertxweb.server.model.AudienceObjectiveType;
+import org.openapitools.vertxweb.server.model.EventData;
+
+/**
+ * JSON object defining targeted audience users. Example rule formats per audience type: CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&lt;customer list ID&gt;\&quot;} ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&lt;audience ID&gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; } (Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10. The targeted audience should be this % size across Pinterest.) VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&lt;conversion tag ID&gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}} (Retention days should be 1-540. Retention applies to specific customers.) ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.example.com\&quot;], \&quot;engager_type\&quot;: 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).
+ **/
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class AdAccountsAudienceRule   {
+  
+  private String adAccountId;
+  private List<String> adId = new ArrayList<>();
+  private List<String> campaignId = new ArrayList<>();
+  private String country;
+  private String customerListId;
+  private List<String> engagementDomain = new ArrayList<>();
+  private String engagementType;
+  private Integer engagerType;
+  private String event;
+  private EventData eventData;
+  private Object eventSource;
+  private Object ingestionSource;
+  private List<AudienceObjectiveType> objectiveType = new ArrayList<>();
+  private Integer percentage;
+  private List<String> pinId = new ArrayList<>();
+  private Boolean prefill;
+  private Integer retentionDays;
+  private List<String> seedId = new ArrayList<>();
+  private List<String> url = new ArrayList<>();
+  private String visitorSourceId;
+
+  public AdAccountsAudienceRule () {
+
+  }
+
+  public AdAccountsAudienceRule (String adAccountId, List<String> adId, List<String> campaignId, String country, String customerListId, List<String> engagementDomain, String engagementType, Integer engagerType, String event, EventData eventData, Object eventSource, Object ingestionSource, List<AudienceObjectiveType> objectiveType, Integer percentage, List<String> pinId, Boolean prefill, Integer retentionDays, List<String> seedId, List<String> url, String visitorSourceId) {
+    this.adAccountId = adAccountId;
+    this.adId = adId;
+    this.campaignId = campaignId;
+    this.country = country;
+    this.customerListId = customerListId;
+    this.engagementDomain = engagementDomain;
+    this.engagementType = engagementType;
+    this.engagerType = engagerType;
+    this.event = event;
+    this.eventData = eventData;
+    this.eventSource = eventSource;
+    this.ingestionSource = ingestionSource;
+    this.objectiveType = objectiveType;
+    this.percentage = percentage;
+    this.pinId = pinId;
+    this.prefill = prefill;
+    this.retentionDays = retentionDays;
+    this.seedId = seedId;
+    this.url = url;
+    this.visitorSourceId = visitorSourceId;
+  }
+
+    
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
+  }
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
+
+    
+  @JsonProperty("ad_id")
+  public List<String> getAdId() {
+    return adId;
+  }
+  public void setAdId(List<String> adId) {
+    this.adId = adId;
+  }
+
+    
+  @JsonProperty("campaign_id")
+  public List<String> getCampaignId() {
+    return campaignId;
+  }
+  public void setCampaignId(List<String> campaignId) {
+    this.campaignId = campaignId;
+  }
+
+    
+  @JsonProperty("country")
+  public String getCountry() {
+    return country;
+  }
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+    
+  @JsonProperty("customer_list_id")
+  public String getCustomerListId() {
+    return customerListId;
+  }
+  public void setCustomerListId(String customerListId) {
+    this.customerListId = customerListId;
+  }
+
+    
+  @JsonProperty("engagement_domain")
+  public List<String> getEngagementDomain() {
+    return engagementDomain;
+  }
+  public void setEngagementDomain(List<String> engagementDomain) {
+    this.engagementDomain = engagementDomain;
+  }
+
+    
+  @JsonProperty("engagement_type")
+  public String getEngagementType() {
+    return engagementType;
+  }
+  public void setEngagementType(String engagementType) {
+    this.engagementType = engagementType;
+  }
+
+    
+  @JsonProperty("engager_type")
+  public Integer getEngagerType() {
+    return engagerType;
+  }
+  public void setEngagerType(Integer engagerType) {
+    this.engagerType = engagerType;
+  }
+
+    
+  @JsonProperty("event")
+  public String getEvent() {
+    return event;
+  }
+  public void setEvent(String event) {
+    this.event = event;
+  }
+
+    
+  @JsonProperty("event_data")
+  public EventData getEventData() {
+    return eventData;
+  }
+  public void setEventData(EventData eventData) {
+    this.eventData = eventData;
+  }
+
+    
+  @JsonProperty("event_source")
+  public Object getEventSource() {
+    return eventSource;
+  }
+  public void setEventSource(Object eventSource) {
+    this.eventSource = eventSource;
+  }
+
+    
+  @JsonProperty("ingestion_source")
+  public Object getIngestionSource() {
+    return ingestionSource;
+  }
+  public void setIngestionSource(Object ingestionSource) {
+    this.ingestionSource = ingestionSource;
+  }
+
+    
+  @JsonProperty("objective_type")
+  public List<AudienceObjectiveType> getObjectiveType() {
+    return objectiveType;
+  }
+  public void setObjectiveType(List<AudienceObjectiveType> objectiveType) {
+    this.objectiveType = objectiveType;
+  }
+
+    
+  @JsonProperty("percentage")
+  public Integer getPercentage() {
+    return percentage;
+  }
+  public void setPercentage(Integer percentage) {
+    this.percentage = percentage;
+  }
+
+    
+  @JsonProperty("pin_id")
+  public List<String> getPinId() {
+    return pinId;
+  }
+  public void setPinId(List<String> pinId) {
+    this.pinId = pinId;
+  }
+
+    
+  @JsonProperty("prefill")
+  public Boolean getPrefill() {
+    return prefill;
+  }
+  public void setPrefill(Boolean prefill) {
+    this.prefill = prefill;
+  }
+
+    
+  @JsonProperty("retention_days")
+  public Integer getRetentionDays() {
+    return retentionDays;
+  }
+  public void setRetentionDays(Integer retentionDays) {
+    this.retentionDays = retentionDays;
+  }
+
+    
+  @JsonProperty("seed_id")
+  public List<String> getSeedId() {
+    return seedId;
+  }
+  public void setSeedId(List<String> seedId) {
+    this.seedId = seedId;
+  }
+
+    
+  @JsonProperty("url")
+  public List<String> getUrl() {
+    return url;
+  }
+  public void setUrl(List<String> url) {
+    this.url = url;
+  }
+
+    
+  @JsonProperty("visitor_source_id")
+  public String getVisitorSourceId() {
+    return visitorSourceId;
+  }
+  public void setVisitorSourceId(String visitorSourceId) {
+    this.visitorSourceId = visitorSourceId;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AdAccountsAudienceRule adAccountsAudienceRule = (AdAccountsAudienceRule) o;
+    return Objects.equals(adAccountId, adAccountsAudienceRule.adAccountId) &&
+        Objects.equals(adId, adAccountsAudienceRule.adId) &&
+        Objects.equals(campaignId, adAccountsAudienceRule.campaignId) &&
+        Objects.equals(country, adAccountsAudienceRule.country) &&
+        Objects.equals(customerListId, adAccountsAudienceRule.customerListId) &&
+        Objects.equals(engagementDomain, adAccountsAudienceRule.engagementDomain) &&
+        Objects.equals(engagementType, adAccountsAudienceRule.engagementType) &&
+        Objects.equals(engagerType, adAccountsAudienceRule.engagerType) &&
+        Objects.equals(event, adAccountsAudienceRule.event) &&
+        Objects.equals(eventData, adAccountsAudienceRule.eventData) &&
+        Objects.equals(eventSource, adAccountsAudienceRule.eventSource) &&
+        Objects.equals(ingestionSource, adAccountsAudienceRule.ingestionSource) &&
+        Objects.equals(objectiveType, adAccountsAudienceRule.objectiveType) &&
+        Objects.equals(percentage, adAccountsAudienceRule.percentage) &&
+        Objects.equals(pinId, adAccountsAudienceRule.pinId) &&
+        Objects.equals(prefill, adAccountsAudienceRule.prefill) &&
+        Objects.equals(retentionDays, adAccountsAudienceRule.retentionDays) &&
+        Objects.equals(seedId, adAccountsAudienceRule.seedId) &&
+        Objects.equals(url, adAccountsAudienceRule.url) &&
+        Objects.equals(visitorSourceId, adAccountsAudienceRule.visitorSourceId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(adAccountId, adId, campaignId, country, customerListId, engagementDomain, engagementType, engagerType, event, eventData, eventSource, ingestionSource, objectiveType, percentage, pinId, prefill, retentionDays, seedId, url, visitorSourceId);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AdAccountsAudienceRule {\n");
+    
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    adId: ").append(toIndentedString(adId)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    customerListId: ").append(toIndentedString(customerListId)).append("\n");
+    sb.append("    engagementDomain: ").append(toIndentedString(engagementDomain)).append("\n");
+    sb.append("    engagementType: ").append(toIndentedString(engagementType)).append("\n");
+    sb.append("    engagerType: ").append(toIndentedString(engagerType)).append("\n");
+    sb.append("    event: ").append(toIndentedString(event)).append("\n");
+    sb.append("    eventData: ").append(toIndentedString(eventData)).append("\n");
+    sb.append("    eventSource: ").append(toIndentedString(eventSource)).append("\n");
+    sb.append("    ingestionSource: ").append(toIndentedString(ingestionSource)).append("\n");
+    sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
+    sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
+    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
+    sb.append("    prefill: ").append(toIndentedString(prefill)).append("\n");
+    sb.append("    retentionDays: ").append(toIndentedString(retentionDays)).append("\n");
+    sb.append("    seedId: ").append(toIndentedString(seedId)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    visitorSourceId: ").append(toIndentedString(visitorSourceId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}

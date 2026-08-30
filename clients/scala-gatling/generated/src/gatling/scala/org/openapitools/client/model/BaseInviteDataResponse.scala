@@ -5,7 +5,7 @@ package org.openapitools.client.model
 case class BaseInviteDataResponse (
     /* Unique identifier of the invite/request. */
     _id: Option[String],
-    _inviteData: Option[BaseInviteDataResponseInviteData],
+    _inviteData: Option[InviteDataResponse],
     /* Indicates whether the invite/request was received. */
     _isReceivedInvite: Option[Boolean],
     /* Metadata for the member/partner that was sent the invite/request. */

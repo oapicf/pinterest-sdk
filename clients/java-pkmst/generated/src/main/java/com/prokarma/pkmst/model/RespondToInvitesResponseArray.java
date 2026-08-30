@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.RespondToInvitesResponseArrayItemsInner;
+import com.prokarma.pkmst.model.RespondToInviteResultItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,18 +18,18 @@ import java.util.List;
  * RespondToInvitesResponseArray
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class RespondToInvitesResponseArray   {
   @JsonProperty("items")
   
-  private List<RespondToInvitesResponseArrayItemsInner> items = null;
+  private List<RespondToInviteResultItem> items = null;
 
-  public RespondToInvitesResponseArray items(List<RespondToInvitesResponseArrayItemsInner> items) {
+  public RespondToInvitesResponseArray items(List<RespondToInviteResultItem> items) {
     this.items = items;
     return this;
   }
 
-  public RespondToInvitesResponseArray addItemsItem(RespondToInvitesResponseArrayItemsInner itemsItem) {
+  public RespondToInvitesResponseArray addItemsItem(RespondToInviteResultItem itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -42,11 +42,11 @@ public class RespondToInvitesResponseArray   {
    * @return items
    */
   @ApiModelProperty(value = "List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.")
-  public List<RespondToInvitesResponseArrayItemsInner> getItems() {
+  public List<RespondToInviteResultItem> getItems() {
     return items;
   }
 
-  public void setItems(List<RespondToInvitesResponseArrayItemsInner> items) {
+  public void setItems(List<RespondToInviteResultItem> items) {
     this.items = items;
   }
 
@@ -83,10 +83,7 @@ public class RespondToInvitesResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

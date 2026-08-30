@@ -1,5 +1,7 @@
 const utils = require('../utils/utils');
 const AudienceRule = require('../models/AudienceRule');
+const AudienceStatus = require('../models/AudienceStatus');
+const PinnerListType = require('../models/PinnerListType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -12,8 +14,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}audience_type`,
-                label: `<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR - [${labelPrefix}audience_type]`,
-                type: 'string',
+                ...PinnerListType.fields(`${keyPrefix}audience_type`, isInput),
             },
             {
                 key: `${keyPrefix}created_by_company_name`,
@@ -36,6 +37,11 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}is_nca`,
+                label: `Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only. - [${labelPrefix}is_nca]`,
+                type: 'boolean',
+            },
+            {
                 key: `${keyPrefix}name`,
                 label: `Audience name. - [${labelPrefix}name]`,
                 type: 'string',
@@ -48,8 +54,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}status`,
-                label: `Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. - [${labelPrefix}status]`,
-                type: 'string',
+                ...AudienceStatus.fields(`${keyPrefix}status`, isInput),
             },
             {
                 key: `${keyPrefix}type`,
@@ -72,6 +77,7 @@ module.exports = {
             'created_timestamp': bundle.inputData?.[`${keyPrefix}created_timestamp`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
             'id': bundle.inputData?.[`${keyPrefix}id`],
+            'is_nca': bundle.inputData?.[`${keyPrefix}is_nca`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'rule': utils.removeIfEmpty(AudienceRule.mapping(bundle, `${keyPrefix}rule`)),
             'size': bundle.inputData?.[`${keyPrefix}size`],

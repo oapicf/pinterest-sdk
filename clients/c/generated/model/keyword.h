@@ -15,32 +15,32 @@
 
 typedef struct keyword_t keyword_t;
 
-#include "match_type_response.h"
+#include "match_type.h"
 
 
 
 typedef struct keyword_t {
-    int bid; //numeric
-    pinterest_rest_api_match_type_response__e match_type; //referenced enum
-    char *value; // string
-    int archived; //boolean
+    int *archived; //boolean
+    int *bid; //numeric
     char *id; // string
+    match_type_t *match_type; // custom
     char *parent_id; // string
     char *parent_type; // string
     char *type; // string
+    char *value; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } keyword_t;
 
 __attribute__((deprecated)) keyword_t *keyword_create(
-    int bid,
-    pinterest_rest_api_match_type_response__e match_type,
-    char *value,
-    int archived,
+    int *archived,
+    int *bid,
     char *id,
+    match_type_t *match_type,
     char *parent_id,
     char *parent_type,
-    char *type
+    char *type,
+    char *value
 );
 
 void keyword_free(keyword_t *keyword);

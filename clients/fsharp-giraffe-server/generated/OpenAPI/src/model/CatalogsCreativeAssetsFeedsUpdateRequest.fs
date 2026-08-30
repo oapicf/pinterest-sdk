@@ -6,16 +6,18 @@ open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
 open OpenAPI.Model.CatalogsFormat
 open OpenAPI.Model.CatalogsStatus
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.NullableCurrency
 
 module CatalogsCreativeAssetsFeedsUpdateRequest =
 
   //#region CatalogsCreativeAssetsFeedsUpdateRequest
 
+  //#region enums
+  type CatalogTypeEnum = CREATIVEASSETSEnum of string  
+  //#endregion
 
   type CatalogsCreativeAssetsFeedsUpdateRequest = {
-    CatalogType : CatalogsType;
+    CatalogType : CatalogTypeEnum;
     Credentials : CatalogsFeedCredentials;
     DefaultCurrency : NullableCurrency;
     Format : CatalogsFormat;

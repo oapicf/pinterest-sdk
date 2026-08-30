@@ -24,9 +24,9 @@ import HelperCodecs._
 import org.openapitools.client.api.CatalogsCreateReportResponse
 import org.openapitools.client.api.CatalogsReport
 import org.openapitools.client.api.CatalogsReportParameters
+import org.openapitools.client.api.CatalogsReportStatsParameters
 import org.openapitools.client.api.Error
 import org.openapitools.client.api.ReportsStats200Response
-import org.openapitools.client.api.ReportsStatsParametersParameter
 
 object CatalogReportsApi {
 
@@ -76,7 +76,7 @@ object CatalogReportsApi {
     } yield resp
   }
 
-  def reportsStats(host: String, parameters: ReportsStatsParametersParameter, adAccountId: String, pageSize: Integer = 25, bookmark: String)(implicit adAccountIdQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], parametersQuery: QueryParam[ReportsStatsParametersParameter]): Task[ReportsStats200Response] = {
+  def reportsStats(host: String, parameters: CatalogsReportStatsParameters, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], parametersQuery: QueryParam[CatalogsReportStatsParameters], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[ReportsStats200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[ReportsStats200Response] = jsonOf[ReportsStats200Response]
 
     val path = "/catalogs/reports/stats"
@@ -86,7 +86,7 @@ object CatalogReportsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("parameters", Some(parametersQuery.toParamString(parameters))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("parameters", Some(parametersQuery.toParamString(parameters))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -146,7 +146,7 @@ class HttpServiceCatalogReportsApi(service: HttpService) {
     } yield resp
   }
 
-  def reportsStats(parameters: ReportsStatsParametersParameter, adAccountId: String, pageSize: Integer = 25, bookmark: String)(implicit adAccountIdQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], parametersQuery: QueryParam[ReportsStatsParametersParameter]): Task[ReportsStats200Response] = {
+  def reportsStats(parameters: CatalogsReportStatsParameters, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], parametersQuery: QueryParam[CatalogsReportStatsParameters], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[ReportsStats200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[ReportsStats200Response] = jsonOf[ReportsStats200Response]
 
     val path = "/catalogs/reports/stats"
@@ -156,7 +156,7 @@ class HttpServiceCatalogReportsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("parameters", Some(parametersQuery.toParamString(parameters))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("parameters", Some(parametersQuery.toParamString(parameters))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

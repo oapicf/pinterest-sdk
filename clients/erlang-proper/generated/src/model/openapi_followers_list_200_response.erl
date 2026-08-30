@@ -10,7 +10,7 @@
 
 -type openapi_followers_list_200_response() ::
   [ {'bookmark', binary() }
-  | {'items', list(openapi_user_summary:openapi_user_summary()) }
+  | {'items', list(openapi_follow_user:openapi_follow_user()) }
   ].
 
 
@@ -19,7 +19,7 @@ openapi_followers_list_200_response() ->
 
 openapi_followers_list_200_response(Fields) ->
   Default = [ {'bookmark', binary() }
-            , {'items', list(openapi_user_summary:openapi_user_summary()) }
+            , {'items', list(openapi_follow_user:openapi_follow_user()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -12,7 +12,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}type`,
-                label: `Always the string 'bidfloor' - [${labelPrefix}type]`,
+                label: `Always the string 'bidfloor'. - [${labelPrefix}type]`,
                 type: 'string',
             },
         ]

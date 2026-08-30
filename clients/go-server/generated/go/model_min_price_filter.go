@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type MinPriceFilter struct {
 
 	MIN_PRICE CatalogsProductGroupPricingCriteria `json:"MIN_PRICE"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into MinPriceFilter
+func (o *MinPriceFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"MIN_PRICE",
+	}
 
-// AssertMinPriceFilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"MIN_PRICE": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"MIN_PRICE": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded MinPriceFilter
+
+	if value, exists := allProperties["MIN_PRICE"]; exists {
+		if err = json.Unmarshal(value, &decoded.MIN_PRICE); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertMinPriceFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertMinPriceFilterRequired(obj MinPriceFilter) error {
 	elements := map[string]interface{}{
 		"MIN_PRICE": obj.MIN_PRICE,
@@ -30,10 +88,16 @@ func AssertMinPriceFilterRequired(obj MinPriceFilter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupPricingCriteriaRequired(obj.MIN_PRICE); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertMinPriceFilterConstraints checks if the values respects the defined constraints
 func AssertMinPriceFilterConstraints(obj MinPriceFilter) error {
+	if err := AssertCatalogsProductGroupPricingCriteriaConstraints(obj.MIN_PRICE); err != nil {
+		return err
+	}
 	return nil
 }

@@ -17,8 +17,8 @@ Method | HTTP request | Description
 Get country's keyword metrics
 
 See keyword metrics for a specified country, aggregated across all of Pinterest.
-(Definitions are available from the \"Get delivery metrics definitions\"
-<a href=\"/docs/api/v5/#operation/delivery_metrics/get\">API endpoint</a>).
+  (Definitions are available from the \"Get delivery metrics definitions\"
+  [API endpoint](/docs/api/v5/#operation/delivery_metrics/get)).
 
 ### Example
 
@@ -55,10 +55,37 @@ Name | Type | Description  | Notes
 
 Create keywords
 
-<p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p>
-<p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p>
-<p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>
-<p><b>Rate limit</b>: <a href=\"/docs/reference/rate-limits/\">WRITE</a>.</p>
+Create keywords for the following entity types (advertiser, campaign, ad group, or ad). For more information, see [Keyword targeting](https://help.pinterest.com/en/business/article/keyword-targeting).
+
+  **Notes:**
+  - Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').
+  - All keyword match types are available for ad groups.
+
+  For more information on match types, see [match type enums](/docs/api-features/targeting-overview/).
+
+  **Returns:**
+  - A successful call returns an object containing an array of new keyword objects and an empty 'errors' object array.
+  - An unsuccessful call returns an empty keywords array, and instead, inserts the entire object with nulled/negated properties into the 'errors' object array:
+    '''json
+    {
+      \"keywords\": [],
+      \"errors\": [
+        {
+          \"data\": {
+            \"archived\": null,
+            \"match_type\": \"EXACT\",
+            \"parent_type\": null,
+            \"value\": \"foobar\",
+            \"parent_id\": null,
+            \"type\": \"keyword\",
+            \"id\": null
+          },
+          \"error_messages\": [
+            \"Advertisers and Campaigns only accept excluded targeting attributes.\"
+          ]
+        }
+      ]
+    }
 
 ### Example
 
@@ -72,11 +99,11 @@ Create keywords
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **keywordsRequest** | [**KeywordsRequest**](KeywordsRequest.md) |  |
+ **keywordsCreate** | [**KeywordsCreate**](KeywordsCreate.md) |  |
 
 ### Return type
 
-[**KeywordsResponse**](KeywordsResponse.md)
+[**Keywords**](Keywords.md)
 
 ### Authorization
 
@@ -94,15 +121,44 @@ Name | Type | Description  | Notes
 
 Get keywords
 
-<p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p>
-<p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p>
-<p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p>
-<p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>
+Get a list of keywords based on the filters provided. If no filter is provided, it will default to the 'ad_account_id' filter, which means it will only return keywords that specifically have 'parent_id' set to the 'ad_account_id'. Note: Keywords can have 'ad_account_ids', 'campaign_ids', and 'ad_group_ids' set as their 'parent_ids'. Keywords created through Ads Manager will have their 'parent_id' set to an 'ad_group_id', not 'ad_account_id'.
+
+    For more information, see [Keyword targeting](https://help.pinterest.com/en/business/article/keyword-targeting).
+
+    **Notes:**
+    - Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').
+    - All keyword match types are available for ad groups.
+
+    For more information on match types, see [match type enums](/docs/api-features/targeting-overview/).
+
+    **Returns:**
+    - A successful call returns an object containing an array of new keyword objects and an empty 'errors' object array.
+    - An unsuccessful call returns an empty keywords array, and instead, inserts the entire object with nulled/negated properties into the 'errors' object array:
+      '''json
+      {
+        \"keywords\": [],
+        \"errors\": [
+          {
+            \"data\": {
+              \"archived\": null,
+              \"match_type\": \"EXACT\",
+              \"parent_type\": null,
+              \"value\": \"foobar\",
+              \"parent_id\": null,
+              \"type\": \"keyword\",
+              \"id\": null
+            },
+            \"error_messages\": [
+              \"Advertisers and Campaigns only accept excluded targeting attributes.\"
+            ]
+          }
+        ]
+      }
 
 ### Example
 
 ```bash
- keywordsGet ad_account_id=value  campaign_id=value  ad_group_id=value  Specify as:  ad_group_ids=value1 ad_group_ids=value2 ad_group_ids=...  Specify as:  match_types=value1 match_types=value2 match_types=...  page_size=value  bookmark=value
+ keywordsGet ad_account_id=value  campaign_id=value  ad_group_id=value  Specify as:  ad_group_ids=value1 ad_group_ids=value2 ad_group_ids=...  Specify as:  match_types=value1 match_types=value2 match_types=...  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -114,9 +170,10 @@ Name | Type | Description  | Notes
  **campaignId** | **string** | Campaign Id to use to filter the results. | [optional] [default to null]
  **adGroupId** | **string** | Ad group Id. | [optional] [default to null]
  **adGroupIds** | [**array[string]**](string.md) | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] [default to null]
- **matchTypes** | [**array[MatchType]**](MatchType.md) | Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a> | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **matchTypes** | [**array[MatchType]**](MatchType.md) | Keyword [match type](/docs/api-features/targeting-overview/) | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -138,7 +195,9 @@ Name | Type | Description  | Notes
 
 Update keywords
 
-<p>Update one or more keywords' bid and archived fields.</p> <p>Archiving a keyword effectively deletes it - keywords no longer receive metrics and no longer visible within the parent entity's keywords list.</p>
+Update one or more keywords' bid and archived fields. Archiving
+  a keyword effectively deletes it - keywords no longer receive metrics and
+  are no longer visible within the parent entity's keywords list.
 
 ### Example
 
@@ -152,11 +211,11 @@ Update keywords
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **keywordUpdateBody** | [**KeywordUpdateBody**](KeywordUpdateBody.md) |  |
+ **keywordsUpdate** | [**KeywordsUpdate**](KeywordsUpdate.md) |  |
 
 ### Return type
 
-[**KeywordsResponse**](KeywordsResponse.md)
+[**Keywords**](Keywords.md)
 
 ### Authorization
 
@@ -174,12 +233,18 @@ Name | Type | Description  | Notes
 
 List trending keywords
 
-<p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>.
+Get the top trending search keywords among the Pinterest user audience.
+
+Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.
+
+Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.
+
+For an interactive way to explore this data, please visit [trends.pinterest.com](https://trends.pinterest.com).
 
 ### Example
 
 ```bash
- trendingKeywordsList region=value trend_type=value  Specify as:  interests=value1 interests=value2 interests=...  Specify as:  genders=value1 genders=value2 genders=...  Specify as:  ages=value1 ages=value2 ages=...  Specify as:  include_keywords=value1 include_keywords=value2 include_keywords=...  normalize_against_group=value  limit=value  include_prediction=value  include_demographics=value
+ trendingKeywordsList region=value trend_type=value  Specify as:  interests=value1 interests=value2 interests=...  Specify as:  genders=value1 genders=value2 genders=...  Specify as:  ages=value1 ages=value2 ages=...  Specify as:  include_keywords=value1 include_keywords=value2 include_keywords=...  normalize_against_group=value  limit=value  include_demographics=value
 ```
 
 ### Parameters
@@ -187,75 +252,75 @@ List trending keywords
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region** | [**TrendsSupportedRegion**](.md) | The geographic region of interest. Only top trends within the specified region will be returned.<br />
-The 'region' parameter is formatted as ISO 3166-2 country codes delimited by '+', corresponding to the following geographic areas:
-- 'US' - United States
-- 'CA' - Canada
-- 'DE' - Germany
-- 'FR' - France
-- 'ES' - Spain
-- 'IT' - Italy
-- 'DE+AT+CH' - Germanic countries
-- 'GB+IE' - Great Britain & Ireland
-- 'IT+ES+PT+GR+MT' - Southern Europe
-- 'PL+RO+HU+SK+CZ' - Eastern Europe
-- 'SE+DK+FI+NO' - Nordic countries
-- 'NL+BE+LU' - Benelux
-- 'AR' - Argentina
-- 'BR' - Brazil
-- 'CO' - Colombia
-- 'MX' - Mexico
-- 'MX+AR+CO+CL' - Hispanic LatAm
-- 'AU+NZ' - Australasia | [default to null]
+ **region** | [**TrendsSupportedRegion**](.md) | The geographic region of interest. Only top trends within the specified region will be returned.
+
+  The 'region' parameter is formatted as ISO 3166-2 country codes delimited by '+', corresponding to the following geographic areas:
+  - 'US' - United States
+  - 'CA' - Canada
+  - 'DE' - Germany
+  - 'FR' - France
+  - 'ES' - Spain
+  - 'IT' - Italy
+  - 'DE+AT+CH' - Germanic countries
+  - 'GB+IE' - Great Britain & Ireland
+  - 'IT+ES+PT+GR+MT' - Southern Europe
+  - 'PL+RO+HU+SK+CZ' - Eastern Europe
+  - 'SE+DK+FI+NO' - Nordic countries
+  - 'NL+BE+LU' - Benelux
+  - 'AR' - Argentina
+  - 'BR' - Brazil
+  - 'CO' - Colombia
+  - 'MX' - Mexico
+  - 'MX+AR+CO+CL' - Hispanic LatAm
+  - 'AU+NZ' - Australasia | [default to null]
  **trendType** | [**TrendType**](.md) | The methodology used to rank how trendy a keyword is.
-- 'growing' trends have high upward growth in search volume over the last quarter
-- 'monthly' trends have high search volume in the last month
-- 'yearly' trends have high search volume in the last year
-- 'seasonal' trends have high upward growth in search volume over the last month and exhibit a seasonal recurring pattern (typically annual) | [default to null]
- **interests** | [**array[string]**](string.md) | If set, filters the results to trends associated with the specified interests.<br />
-If unset, trends for all interests will be returned.<br />
-The list of supported interests is:
-- 'animals' - Animals
-- 'architecture' - Architecture
-- 'art' - Art
-- 'beauty' - Beauty
-- 'childrens_fashion' - Children's Fashion
-- 'design' - Design
-- 'diy_and_crafts' - DIY & Crafts
-- 'education' - Education
-- 'electronics' - Electronics
-- 'entertainment' - Entertainment
-- 'event_planning' - Event Planning
-- 'finance' - Finance
-- 'food_and_drinks' - Food & Drink
-- 'gardening' - Gardening
-- 'health' - Health
-- 'home_decor' - Home Decor
-- 'mens_fashion' - Men's Fashion
-- 'parenting' - Parenting
-- 'quotes' - Quotes
-- 'sport' - Sports
-- 'travel' - Travel
-- 'vehicles' - Vehicles
-- 'wedding' - Wedding
-- 'womens_fashion' - Women's Fashion | [optional] [default to null]
- **genders** | [**array[string]**](string.md) | If set, filters the results to trends among users who identify with the specified gender(s).<br />
-If unset, trends among all genders will be returned.<br />
-The 'unknown' group includes users with unspecified or customized gender profile settings. | [optional] [default to null]
- **ages** | [**array[string]**](string.md) | If set, filters the results to trends among users in the specified age range(s).<br />
-If unset, trends among all age groups will be returned. | [optional] [default to null]
- **includeKeywords** | [**array[string]**](string.md) | If set, filters the results to top trends which include at least one of the specified keywords.<br />
-If unset, no keyword filtering logic is applied. | [optional] [default to null]
- **normalizeAgainstGroup** | **boolean** | Governs how the resulting time series data will be normalized to a [0-100] scale.<br />
-By default ('false'), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br />
-If set to 'true', the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [optional] [default to false]
- **limit** | **integer** | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a 'limit' of 50 will return the top 50 trends. | [optional] [default to 50]
- **includePrediction** | **boolean** | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>
-Including predicted weekly search volume data for the next 90 days.
-By default ('false'), the response will not include predicted data. | [optional] [default to false]
- **includeDemographics** | **boolean** | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>
-Including the age and gender distribution for each keyword.
-By default ('false'), the response will not include demographics data. | [optional] [default to false]
+  - 'growing' trends have high upward growth in search volume over the last quarter
+  - 'monthly' trends have high search volume in the last month
+  - 'yearly' trends have high search volume in the last year
+  - 'seasonal' trends have high upward growth in search volume over the last month and exhibit a seasonal recurring pattern (typically annual) | [default to null]
+ **interests** | [**array[TrendsL1Interest]**](TrendsL1Interest.md) | The list of supported interests is:
+  - 'animals' - Animals
+  - 'architecture' - Architecture
+  - 'art' - Art
+  - 'beauty' - Beauty
+  - 'childrens_fashion' - Children's Fashion
+  - 'design' - Design
+  - 'diy_and_crafts' - DIY & Crafts
+  - 'education' - Education
+  - 'electronics' - Electronics
+  - 'entertainment' - Entertainment
+  - 'event_planning' - Event Planning
+  - 'finance' - Finance
+  - 'food_and_drinks' - Food & Drink
+  - 'gardening' - Gardening
+  - 'health' - Health
+  - 'home_decor' - Home Decor
+  - 'mens_fashion' - Men's Fashion
+  - 'parenting' - Parenting
+  - 'quotes' - Quotes
+  - 'sport' - Sports
+  - 'travel' - Travel
+  - 'vehicles' - Vehicles
+  - 'wedding' - Wedding
+  - 'womens_fashion' - Women's Fashion | [optional] [default to null]
+ **genders** | [**array[TrendsGenderFilter]**](TrendsGenderFilter.md) | If set, filters the results to trends among users who identify with the
+specified gender(s). If unset, trends among all genders will be returned.
+The 'unknown' group includes users with unspecified or customized gender
+profile settings. | [optional] [default to null]
+ **ages** | [**array[TrendsAgeBucket]**](TrendsAgeBucket.md) | If set, filters the results to trends among users in the specified age
+range(s). If unset, trends among all age groups will be returned. | [optional] [default to null]
+ **includeKeywords** | [**array[string]**](string.md) | If set, filters the results to top trends which include at least one of
+the specified keywords. If unset, no keyword filtering logic is applied. | [optional] [default to null]
+ **normalizeAgainstGroup** | **boolean** | Governs how the resulting time series data will be normalized to a [0-100] scale.
+
+  By default ('false'), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.
+
+  If set to 'true', the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [optional] [default to false]
+ **limit** | **integer** | The maximum number of trending keywords that will be returned. Keywords
+are returned in trend-ranked order, so a 'limit' of 50 will return the
+top 50 trends. | [optional] [default to 50]
+ **includeDemographics** | **boolean** | Including the age and gender distribution for each keyword. By default
+('false'), the response will not include demographics data. | [optional] [default to false]
 
 ### Return type
 

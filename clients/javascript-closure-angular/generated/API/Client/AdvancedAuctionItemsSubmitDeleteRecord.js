@@ -13,6 +13,13 @@ API.Client.AdvancedAuctionItemsSubmitDeleteRecord = function() {}
 API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.country;
 
 /**
+ * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+ * @type {!Array<!API.Client.AdvancedAuctionOperationError>}
+ * @export
+ */
+API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.errors;
+
+/**
  * The catalog retail item id in the merchant namespace
  * @type {!string}
  * @export
@@ -26,9 +33,12 @@ API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.itemId;
 API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.language;
 
 /**
- * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
- * @type {!Array<!API.Client.AdvancedAuctionOperationError>}
+ * @type {!string}
  * @export
  */
-API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.errors;
+API.Client.AdvancedAuctionItemsSubmitDeleteRecord.prototype.operation;
 
+/** @enum {string} */
+API.Client.AdvancedAuctionItemsSubmitDeleteRecord.OperationEnum = { 
+  DELETE: 'DELETE',
+}

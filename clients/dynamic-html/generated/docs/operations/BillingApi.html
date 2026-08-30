@@ -5,13 +5,13 @@
   <h2><a name="adsCredit/redeem"></a>adsCredit/redeem</h2>
   <hr>
   <p></p>
-  <p>Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</p>
+  <p>Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ads_credit/redeem</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="AdsCreditRedeemResponse"><a href="">AdsCreditRedeemResponse</a></div>
+  <div class="model" data-model="AdsCreditRedeem"><a href="">AdsCreditRedeem</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -31,16 +31,16 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">AdsCreditRedeemRequest</span>
-      <span class="param-type">AdsCreditRedeemRequest(AdsCreditRedeemRequest)</span>
+      <span class="param-name">AdsCreditRedeemCreate</span>
+      <span class="param-type">AdsCreditRedeemCreate(AdsCreditRedeemCreate)</span>
       
-      <p class="param-description">Redeem ad credits request.</p>
+      <p class="param-description"></p>
       </li>
   </ul>
   <h2><a name="adsCreditsDiscounts/get"></a>adsCreditsDiscounts/get</h2>
   <hr>
   <p></p>
-  <p>Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</p>
+  <p>Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ads_credit/discounts</code>
   <h3 class="section">HTTP Method</h3>
@@ -80,7 +80,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
   <h2><a name="billingInvoiceDownload/get"></a>billingInvoiceDownload/get</h2>
@@ -161,7 +161,18 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">order</span>
+      <span class="param-type">PinterestLibPaginationOrder</span>
+      
+      <p class="param-description">The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.</p>
       </li>
       <li class="parameter">
       
@@ -170,7 +181,7 @@
       
       
       <span class="param-name">sort</span>
-      <span class="param-type">String</span>
+      <span class="param-type">BillingInvoiceSortField</span>
       
       <p class="param-description">Field of which to sort billing invoices</p>
       </li>
@@ -180,19 +191,8 @@
       
       
       
-      <span class="param-name">order</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
       <span class="param-name">status</span>
-      <span class="param-type">String</span>
+      <span class="param-type">BillingInvoiceStatus</span>
       
       <p class="param-description">Status of billing invoices to filter by</p>
       </li>
@@ -203,7 +203,7 @@
       
       
       <span class="param-name">document_type</span>
-      <span class="param-type">String</span>
+      <span class="param-type">BillingInvoiceDocumentType</span>
       
       <p class="param-description">Document type of billing invoices to filter by</p>
       </li>
@@ -233,7 +233,7 @@
   <h2><a name="billingProfiles/get"></a>billingProfiles/get</h2>
   <hr>
   <p></p>
-  <p>Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</p>
+  <p>Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/billing_profiles</code>
   <h3 class="section">HTTP Method</h3>
@@ -244,17 +244,6 @@
   <ul>
       <li class="parameter">
       
-      
-      <span class="param-in">Path: </span>
-      
-      
-      <span class="param-name">ad_account_id</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">Unique identifier of an ad account.</p>
-      </li>
-      <li class="parameter">
-      
       <span class="param-in">Query: </span>
       
       
@@ -263,6 +252,17 @@
       <span class="param-type">Boolean</span>
       
       <p class="param-description">Return active billing profiles, if false return all billing profiles.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
       </li>
       <li class="parameter">
       
@@ -284,19 +284,19 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
   <h2><a name="ssioAccounts/get"></a>ssioAccounts/get</h2>
   <hr>
   <p></p>
-  <p>Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.</p>
+  <p>  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ssio/accounts</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="SSIOAccountResponse"><a href="">SSIOAccountResponse</a></div>
+  <div class="model" data-model="SSIOAccount"><a href="">SSIOAccount</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -314,13 +314,13 @@
   <h2><a name="ssioInsertionOrder/create"></a>ssioInsertionOrder/create</h2>
   <hr>
   <p></p>
-  <p>Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.</p>
+  <p>  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="SSIOCreateInsertionOrderResponse"><a href="">SSIOCreateInsertionOrderResponse</a></div>
+  <div class="model" data-model="SSIOInsertionOrder"><a href="">SSIOInsertionOrder</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -340,22 +340,22 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">SSIOCreateInsertionOrderRequest</span>
-      <span class="param-type">SSIOCreateInsertionOrderRequest(SSIOCreateInsertionOrderRequest)</span>
+      <span class="param-name">SSIOInsertionOrderCreate</span>
+      <span class="param-type">SSIOInsertionOrderCreate(SSIOInsertionOrderCreate)</span>
       
-      <p class="param-description">Order line to create.</p>
+      <p class="param-description"></p>
       </li>
   </ul>
   <h2><a name="ssioInsertionOrder/edit"></a>ssioInsertionOrder/edit</h2>
   <hr>
   <p></p>
-  <p>Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.</p>
+  <p>  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders</code>
   <h3 class="section">HTTP Method</h3>
   <code>PATCH</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="SSIOEditInsertionOrderResponse"><a href="">SSIOEditInsertionOrderResponse</a></div>
+  <div class="model" data-model="SSIOInsertionOrder"><a href="">SSIOInsertionOrder</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -375,16 +375,16 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">SSIOEditInsertionOrderRequest</span>
-      <span class="param-type">SSIOEditInsertionOrderRequest(SSIOEditInsertionOrderRequest)</span>
+      <span class="param-name">SSIOInsertionOrderUpdate</span>
+      <span class="param-type">SSIOInsertionOrderUpdate(SSIOInsertionOrderUpdate)</span>
       
-      <p class="param-description">Order line to create.</p>
+      <p class="param-description"></p>
       </li>
   </ul>
   <h2><a name="ssioInsertionOrdersStatus/getByAdAccount"></a>ssioInsertionOrdersStatus/getByAdAccount</h2>
   <hr>
   <p></p>
-  <p>Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.</p>
+  <p>  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders/status</code>
   <h3 class="section">HTTP Method</h3>
@@ -424,13 +424,13 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
   <h2><a name="ssioInsertionOrdersStatus/getByPinOrderId"></a>ssioInsertionOrdersStatus/getByPinOrderId</h2>
   <hr>
   <p></p>
-  <p>Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.</p>
+  <p>  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status</code>
   <h3 class="section">HTTP Method</h3>
@@ -465,7 +465,7 @@
   <h2><a name="ssioOrderLines/getByAdAccount"></a>ssioOrderLines/getByAdAccount</h2>
   <hr>
   <p></p>
-  <p>Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.</p>
+  <p>  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ssio/order_lines</code>
   <h3 class="section">HTTP Method</h3>
@@ -491,6 +491,17 @@
       
       
       
+      <span class="param-name">pin_order_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The pin order id associated with the SSIO insertion order</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
       <span class="param-name">bookmark</span>
       <span class="param-type">String</span>
       
@@ -505,18 +516,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
-      <span class="param-name">pin_order_id</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">The pin order id associated with the ssio insertino order</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
 </div>

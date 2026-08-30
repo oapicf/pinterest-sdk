@@ -4,10 +4,10 @@ import apimodels.ConversionEventResponse;
 import apimodels.ConversionTag;
 import apimodels.ConversionTagCreate;
 import apimodels.ConversionTagsList200Response;
-import apimodels.Error;
 import java.util.Map;
 import apimodels.PageVisitConversionTagsGet200Response;
 import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -31,7 +31,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionTagsApiController extends Controller {
     private final ConversionTagsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -83,6 +83,13 @@ public class ConversionTagsApiController extends Controller {
 
     @ApiAction
     public Result pageVisitConversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
         String valuepageSize = request.getQueryString("page_size");
         Integer pageSize;
         if (valuepageSize != null) {
@@ -91,20 +98,13 @@ public class ConversionTagsApiController extends Controller {
             pageSize = 25;
         }
         String valueorder = request.getQueryString("order");
-        String order;
+        PinterestLibPaginationOrder order;
         if (valueorder != null) {
             order = valueorder;
         } else {
             order = null;
         }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        return imp.pageVisitConversionTagsGetHttp(request, adAccountId, pageSize, order, bookmark);
+        return imp.pageVisitConversionTagsGetHttp(request, adAccountId, bookmark, pageSize, order);
     }
 
 }

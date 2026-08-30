@@ -13,6 +13,7 @@
   | {'conversion_event', openapi_conversion_tag_type:openapi_conversion_tag_type() }
   | {'conversion_tag_id', binary() }
   | {'created_time', integer() }
+  | {'reporting_conversion_event', binary() }
   ].
 
 
@@ -21,9 +22,10 @@ openapi_conversion_event_response() ->
 
 openapi_conversion_event_response(Fields) ->
   Default = [ {'ad_account_id', binary() }
-            , {'conversion_event', binary() }
+            , {'conversion_event', openapi_conversion_tag_type:openapi_conversion_tag_type() }
             , {'conversion_tag_id', binary() }
             , {'created_time', integer() }
+            , {'reporting_conversion_event', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

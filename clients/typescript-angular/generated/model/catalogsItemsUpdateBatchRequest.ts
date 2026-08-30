@@ -9,7 +9,6 @@
  */
 import { ItemUpdateBatchRecord } from './itemUpdateBatchRecord';
 import { Country } from './country';
-import { BatchOperation } from './batchOperation';
 
 
 /**
@@ -25,7 +24,7 @@ export interface CatalogsItemsUpdateBatchRequest {
      * We recommend using the CatalogsLocale values.
      */
     language: CatalogsItemsUpdateBatchRequest.LanguageEnum;
-    operation: BatchOperation;
+    operation: CatalogsItemsUpdateBatchRequest.OperationEnum;
 }
 export namespace CatalogsItemsUpdateBatchRequest {
     export const LanguageEnum = {
@@ -118,7 +117,7 @@ export namespace CatalogsItemsUpdateBatchRequest {
         Nb: 'NB',
         Ne: 'NE',
         Nl2: 'NL',
-        No: 'NO',
+        False: 'false',
         Pl: 'PL',
         Pt: 'PT',
         Ro: 'RO',
@@ -138,6 +137,10 @@ export namespace CatalogsItemsUpdateBatchRequest {
         Zh: 'ZH'
     } as const;
     export type LanguageEnum = typeof LanguageEnum[keyof typeof LanguageEnum];
+    export const OperationEnum = {
+        Update: 'UPDATE'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

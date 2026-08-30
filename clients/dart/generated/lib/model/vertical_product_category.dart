@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// List of verticals for product categories.
-class VerticalProductCategory {
-  /// Instantiate a new enum with the provided [value].
-  const VerticalProductCategory._(this.value);
+enum VerticalProductCategory {
+  FASHION._(r'FASHION'),
+  HOME_DECOR._(r'HOME_DECOR'),
+  BEAUTY._(r'BEAUTY'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const VerticalProductCategory._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const FASHION = VerticalProductCategory._(r'FASHION');
-  static const HOME_DECOR = VerticalProductCategory._(r'HOME_DECOR');
-  static const BEAUTY = VerticalProductCategory._(r'BEAUTY');
-
-  /// List of all possible values in this [enum][VerticalProductCategory].
-  static const values = <VerticalProductCategory>[
-    FASHION,
-    HOME_DECOR,
-    BEAUTY,
-  ];
-
+  /// Returns the instance of [VerticalProductCategory] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static VerticalProductCategory? fromJson(dynamic value) => VerticalProductCategoryTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [VerticalProductCategory]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<VerticalProductCategory> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <VerticalProductCategory>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class VerticalProductCategoryTypeTransformer {
 
   const VerticalProductCategoryTypeTransformer._();
 
-  String encode(VerticalProductCategory data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(VerticalProductCategory data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a VerticalProductCategory.
+  /// Returns the instance of [VerticalProductCategory] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class VerticalProductCategoryTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   VerticalProductCategory? decode(dynamic data, {bool allowNull = true}) {
+    if (data is VerticalProductCategory) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'FASHION': return VerticalProductCategory.FASHION;
@@ -82,7 +86,7 @@ class VerticalProductCategoryTypeTransformer {
     return null;
   }
 
-  /// Singleton [VerticalProductCategoryTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static VerticalProductCategoryTypeTransformer? _instance;
 }
 

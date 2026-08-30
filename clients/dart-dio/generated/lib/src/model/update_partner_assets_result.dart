@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/asset_type_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,7 +14,7 @@ part 'update_partner_assets_result.g.dart';
 ///
 /// Properties:
 /// * [assetId] - Unique identifier of a business asset.
-/// * [assetType] - Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+/// * [assetType] 
 /// * [partnerId] - Unique identifier of a business partner.
 /// * [permissions] - Permission levels member or partner has on an asset.
 @BuiltValue()
@@ -22,9 +23,9 @@ abstract class UpdatePartnerAssetsResult implements Built<UpdatePartnerAssetsRes
   @BuiltValueField(wireName: r'asset_id')
   String? get assetId;
 
-  /// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
   @BuiltValueField(wireName: r'asset_type')
-  String? get assetType;
+  AssetTypeResponse? get assetType;
+  // enum assetTypeEnum {  AD_ACCOUNT,  MERCHANT,  PROFILE,  ASSET_GROUP,  PINNER_LIST,  CONVERSION_TAG,  CATALOG,  CONVERSION_SEGMENT,  };
 
   /// Unique identifier of a business partner.
   @BuiltValueField(wireName: r'partner_id')
@@ -68,7 +69,7 @@ class _$UpdatePartnerAssetsResultSerializer implements PrimitiveSerializer<Updat
       yield r'asset_type';
       yield serializers.serialize(
         object.assetType,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType(AssetTypeResponse),
       );
     }
     if (object.partnerId != null) {
@@ -111,29 +112,33 @@ class _$UpdatePartnerAssetsResultSerializer implements PrimitiveSerializer<Updat
         case r'asset_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.assetId = valueDes;
           break;
         case r'asset_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(AssetTypeResponse),
+          ) as AssetTypeResponse?;
+          if (valueDes == null) continue;
           result.assetType = valueDes;
           break;
         case r'partner_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.partnerId = valueDes;
           break;
         case r'permissions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.permissions.replace(valueDes);
           break;
         default:

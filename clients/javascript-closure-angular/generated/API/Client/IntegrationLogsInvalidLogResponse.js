@@ -7,7 +7,7 @@ goog.provide('API.Client.IntegrationLogsInvalidLogResponse');
 API.Client.IntegrationLogsInvalidLogResponse = function() {}
 
 /**
- * @type {!Array<!API.Client.IntegrationLogsInvalidLogResponse_rejected_logs_inner>}
+ * @type {!Array<!API.Client.IntegrationLogsInvalidLogResponseRejectedLogsItems>}
  * @export
  */
 API.Client.IntegrationLogsInvalidLogResponse.prototype.rejectedLogs;

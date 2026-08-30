@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**availability** | **non_nullable_product_availability_type_t \*** |  | 
+**availability** | **product_availability_t \*** |  | 
 **currency** | **non_nullable_catalogs_currency_t \*** |  | 
 **item_group_id** | **char \*** | The parent ID of the product. | 
 **item_id** | **char \*** | The user-created unique ID that represents the product. | 

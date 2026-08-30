@@ -6,7 +6,7 @@ case class CatalogsListProductsByFilterRequest (
     /* Catalog Feed id pertaining to the catalog product group filter. */
     _feedId: String,
     _filters: CatalogsCreativeAssetsProductGroupFilters,
-    /* Catalog id pertaining to the creative assets product group. */
+    /* Catalog ID pertaining to the product group. */
     _catalogId: String,
     _catalogType: String,
     _country: Country,

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]BillingInvoiceResponse**](BillingInvoiceResponse.md) |  | 
+**Items** | [**[]BillingInvoice**](BillingInvoice.md) |  | 
 
 ## Methods
 
 ### NewBillingInvoicesGet200Response
 
-`func NewBillingInvoicesGet200Response(items []BillingInvoiceResponse, ) *BillingInvoicesGet200Response`
+`func NewBillingInvoicesGet200Response(items []BillingInvoice, ) *BillingInvoicesGet200Response`
 
 NewBillingInvoicesGet200Response instantiates a new BillingInvoicesGet200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *BillingInvoicesGet200Response) GetItems() []BillingInvoiceResponse`
+`func (o *BillingInvoicesGet200Response) GetItems() []BillingInvoice`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *BillingInvoicesGet200Response) GetItemsOk() (*[]BillingInvoiceResponse, bool)`
+`func (o *BillingInvoicesGet200Response) GetItemsOk() (*[]BillingInvoice, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *BillingInvoicesGet200Response) SetItems(v []BillingInvoiceResponse)`
+`func (o *BillingInvoicesGet200Response) SetItems(v []BillingInvoice)`
 
 SetItems sets Items field to given value.
 

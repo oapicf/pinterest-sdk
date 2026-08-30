@@ -1,13 +1,13 @@
 #tag Interface
 Protected Interface BulkApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub BulkDownloadCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BulkDownloadResponse)
+		Sub BulkDownloadCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BulkDownload)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BulkRequestGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BulkUpsertStatusResponse)
+		Sub BulkRequestGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BulkJobData)
 		  
 		End Sub
 	#tag EndMethod

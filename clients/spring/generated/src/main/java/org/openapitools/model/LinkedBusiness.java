@@ -2,34 +2,40 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * LinkedBusiness
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LinkedBusiness {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String imageLargeUrl;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String imageMediumUrl;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String imageSmallUrl;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String imageXlargeUrl;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String username;
 
   public LinkedBusiness imageLargeUrl(@Nullable String imageLargeUrl) {
@@ -48,6 +54,7 @@ public class LinkedBusiness {
     return imageLargeUrl;
   }
 
+  @JsonProperty("image_large_url")
   public void setImageLargeUrl(@Nullable String imageLargeUrl) {
     this.imageLargeUrl = imageLargeUrl;
   }
@@ -68,6 +75,7 @@ public class LinkedBusiness {
     return imageMediumUrl;
   }
 
+  @JsonProperty("image_medium_url")
   public void setImageMediumUrl(@Nullable String imageMediumUrl) {
     this.imageMediumUrl = imageMediumUrl;
   }
@@ -88,6 +96,7 @@ public class LinkedBusiness {
     return imageSmallUrl;
   }
 
+  @JsonProperty("image_small_url")
   public void setImageSmallUrl(@Nullable String imageSmallUrl) {
     this.imageSmallUrl = imageSmallUrl;
   }
@@ -108,6 +117,7 @@ public class LinkedBusiness {
     return imageXlargeUrl;
   }
 
+  @JsonProperty("image_xlarge_url")
   public void setImageXlargeUrl(@Nullable String imageXlargeUrl) {
     this.imageXlargeUrl = imageXlargeUrl;
   }
@@ -128,6 +138,7 @@ public class LinkedBusiness {
     return username;
   }
 
+  @JsonProperty("username")
   public void setUsername(@Nullable String username) {
     this.username = username;
   }
@@ -170,11 +181,8 @@ public class LinkedBusiness {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

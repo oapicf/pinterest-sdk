@@ -8,36 +8,16 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.UserAccountType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="User account model containing properties related to a user's account.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Account   {
   
   private String about;
-
-  /**
-   * Type of account
-   */
-  public enum AccountTypeEnum {
-    PINNER("PINNER"),
-
-        BUSINESS("BUSINESS");
-    private String value;
-
-    AccountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private AccountTypeEnum accountType;
+  private UserAccountType accountType;
   private Integer boardCount;
   private String businessName;
   private Integer followerCount;
@@ -68,18 +48,19 @@ public class Account   {
   
   @ApiModelProperty(value = "Type of account")
   @JsonProperty("account_type")
-  public AccountTypeEnum getAccountType() {
+  @Valid
+  public UserAccountType getAccountType() {
     return accountType;
   }
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(UserAccountType accountType) {
     this.accountType = accountType;
   }
 
   /**
-   * User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+   *   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
    **/
   
-  @ApiModelProperty(example = "14", value = "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
+  @ApiModelProperty(example = "14", value = "  User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
   @JsonProperty("board_count")
   public Integer getBoardCount() {
     return boardCount;
@@ -256,10 +237,7 @@ public class Account   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

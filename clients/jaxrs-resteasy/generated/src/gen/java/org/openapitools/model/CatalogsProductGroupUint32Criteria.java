@@ -7,40 +7,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.NumericFilterOperatorType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupUint32Criteria   {
   
-  private Boolean negated = false;
-
-  /**
-   * Gets or Sets operator
-   */
-  public enum OperatorEnum {
-    GREATER_THAN("GREATER_THAN"),
-
-        GREATER_THAN_OR_EQUALS("GREATER_THAN_OR_EQUALS"),
-
-        LESS_THAN("LESS_THAN"),
-
-        LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
-    private String value;
-
-    OperatorEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private OperatorEnum operator;
+  private Boolean negated;
+  private NumericFilterOperatorType operator;
   private Integer value;
 
   /**
@@ -61,10 +37,11 @@ public class CatalogsProductGroupUint32Criteria   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operator")
   @NotNull
-  public OperatorEnum getOperator() {
+  @Valid
+  public NumericFilterOperatorType getOperator() {
     return operator;
   }
-  public void setOperator(OperatorEnum operator) {
+  public void setOperator(NumericFilterOperatorType operator) {
     this.operator = operator;
   }
 
@@ -120,10 +97,7 @@ public class CatalogsProductGroupUint32Criteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -9,12 +9,11 @@
 
 
 #include <string>
+#include "CatalogsCreativeAssetsFeedsCreateRequest_default_locale.h"
 #include "CatalogsFeedCredentials.h"
 #include "CatalogsFeedProcessingSchedule.h"
-#include "CatalogsFeedsCreateRequest_default_locale.h"
 #include "CatalogsFormat.h"
 #include "CatalogsStatus.h"
-#include "CatalogsType.h"
 #include "Country.h"
 #include "NullableCurrency.h"
 #include "Object.h"
@@ -53,20 +52,20 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+	/*! \brief Get Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+	/*! \brief Set Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 	 */
 	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	CatalogsFeedCredentials getCredentials();
@@ -90,11 +89,11 @@ public:
 	void setDefaultCurrency(NullableCurrency  default_currency);
 	/*! \brief Get 
 	 */
-	CatalogsFeedsCreateRequest_default_locale getDefaultLocale();
+	CatalogsCreativeAssetsFeedsCreateRequest_default_locale getDefaultLocale();
 
 	/*! \brief Set 
 	 */
-	void setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale);
+	void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequest_default_locale  default_locale);
 	/*! \brief Get 
 	 */
 	CatalogsFormat getFormat();
@@ -133,11 +132,11 @@ public:
 
 private:
 	std::string catalog_id;
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	CatalogsFeedCredentials credentials;
 	Country default_country;
 	NullableCurrency default_currency;
-	CatalogsFeedsCreateRequest_default_locale default_locale;
+	CatalogsCreativeAssetsFeedsCreateRequest_default_locale default_locale;
 	CatalogsFormat format;
 	std::string location;
 	std::string name;

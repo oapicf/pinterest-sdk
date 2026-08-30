@@ -103,7 +103,7 @@ BidFloor::getBidFloors()
 }
 
 void
-BidFloor::setBidFloors(std::list <int> bid_floors)
+BidFloor::setBidFloors(std::list<int> bid_floors)
 {
 	this->bid_floors = bid_floors;
 }
@@ -115,7 +115,7 @@ BidFloor::getType()
 }
 
 void
-BidFloor::setType(std::string  type)
+BidFloor::setType(std::string type)
 {
 	this->type = type;
 }

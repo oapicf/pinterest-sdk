@@ -42,7 +42,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="promotionsCreate"></a>
 # **promotionsCreate**
 ```java
-Mono<PromotionsResponse> PromotionsApi.promotionsCreate(adAccountIdpromotionCreateRequest)
+Mono<PromotionsResponse> PromotionsApi.promotionsCreate(adAccountIdpromotionCreate)
 ```
 
 Create promotions
@@ -53,7 +53,7 @@ Create multiple new promotions.
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **promotionCreateRequest** | [**List&lt;@Valid PromotionCreateRequest&gt;**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **promotionCreate** | [**List&lt;@Valid PromotionCreate&gt;**](PromotionCreate.md)|  | |
 
 
 ### Return type
@@ -69,7 +69,7 @@ Create multiple new promotions.
 <a id="promotionsDelete"></a>
 # **promotionsDelete**
 ```java
-Mono<Void> PromotionsApi.promotionsDelete(adAccountIdpromotionId)
+Mono<Promotion> PromotionsApi.promotionsDelete(promotionIdadAccountId)
 ```
 
 Delete promotion by id
@@ -79,11 +79,12 @@ Delete a promotion within Pinterest.
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **promotionId** | `String`| Promotion ID | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **promotionId** | `String`| Unique identifier of a promotion | |
 
 
-
+### Return type
+[**Promotion**](Promotion.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`
@@ -95,7 +96,7 @@ Delete a promotion within Pinterest.
 <a id="promotionsGet"></a>
 # **promotionsGet**
 ```java
-Mono<PromotionResponse> PromotionsApi.promotionsGet(adAccountIdpromotionId)
+Mono<Promotion> PromotionsApi.promotionsGet(promotionIdadAccountId)
 ```
 
 Get promotion by id
@@ -105,12 +106,12 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **promotionId** | `String`| Promotion ID | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **promotionId** | `String`| Unique identifier of a promotion | |
 
 
 ### Return type
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
@@ -122,7 +123,7 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 <a id="promotionsList"></a>
 # **promotionsList**
 ```java
-Mono<PromotionsList200Response> PromotionsApi.promotionsList(adAccountIdpageSizeorderbookmark)
+Mono<PromotionsList200Response> PromotionsApi.promotionsList(adAccountIdbookmarkpageSizeorder)
 ```
 
 Get promotions
@@ -133,9 +134,9 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
-| **order** | `String`| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`] |
 
 
 ### Return type
@@ -151,7 +152,7 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 <a id="promotionsUpdate"></a>
 # **promotionsUpdate**
 ```java
-Mono<PromotionsResponse> PromotionsApi.promotionsUpdate(adAccountIdpromotionUpdateRequest)
+Mono<PromotionsResponse> PromotionsApi.promotionsUpdate(adAccountIdpromotionBatchUpdate)
 ```
 
 Update promotions
@@ -162,7 +163,7 @@ Update multiple promotions.
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **promotionUpdateRequest** | [**List&lt;@Valid PromotionUpdateRequest&gt;**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **promotionBatchUpdate** | [**List&lt;@Valid PromotionBatchUpdate&gt;**](PromotionBatchUpdate.md)|  | |
 
 
 ### Return type

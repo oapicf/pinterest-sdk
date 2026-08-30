@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "OrderLineMutationResponse",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", "model.OrderLineMutationResult"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

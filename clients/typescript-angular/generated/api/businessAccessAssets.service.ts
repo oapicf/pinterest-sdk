@@ -17,39 +17,45 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { BusinessAssetMembersGet200Response } from '../model/businessAssetMembersGet200Response';
+import { AssetGroupDeletion } from '../model/assetGroupDeletion';
 // @ts-ignore
-import { BusinessAssetPartnersGet200Response } from '../model/businessAssetPartnersGet200Response';
+import { AssetGroupDeletionDelete } from '../model/assetGroupDeletionDelete';
+// @ts-ignore
+import { AssetGroupInput } from '../model/assetGroupInput';
+// @ts-ignore
+import { AssetGroupInputCreate } from '../model/assetGroupInputCreate';
+// @ts-ignore
+import { AssetGroupModification } from '../model/assetGroupModification';
+// @ts-ignore
+import { AssetGroupModificationReadOrUpdate } from '../model/assetGroupModificationReadOrUpdate';
+// @ts-ignore
+import { AssetPermissionType } from '../model/assetPermissionType';
+// @ts-ignore
+import { AssetSearchBy } from '../model/assetSearchBy';
+// @ts-ignore
+import { AssetSortBy } from '../model/assetSortBy';
+// @ts-ignore
+import { BusinessAssetMembersGet200Response } from '../model/businessAssetMembersGet200Response';
 // @ts-ignore
 import { BusinessAssetsGet200Response } from '../model/businessAssetsGet200Response';
 // @ts-ignore
-import { BusinessMemberAssetsGet200Response } from '../model/businessMemberAssetsGet200Response';
+import { BusinessMemberAssetsGetResponse } from '../model/businessMemberAssetsGetResponse';
 // @ts-ignore
-import { BusinessMembersAssetAccessDeleteRequest } from '../model/businessMembersAssetAccessDeleteRequest';
+import { BusinessMembersAssetAccessDeleteBody } from '../model/businessMembersAssetAccessDeleteBody';
 // @ts-ignore
 import { BusinessPartnerAssetAccessGet200Response } from '../model/businessPartnerAssetAccessGet200Response';
-// @ts-ignore
-import { CreateAssetGroupBody } from '../model/createAssetGroupBody';
-// @ts-ignore
-import { CreateAssetGroupResponse } from '../model/createAssetGroupResponse';
-// @ts-ignore
-import { DeleteAssetGroupBody } from '../model/deleteAssetGroupBody';
-// @ts-ignore
-import { DeleteAssetGroupResponse } from '../model/deleteAssetGroupResponse';
 // @ts-ignore
 import { DeleteMemberAccessResultsResponseArray } from '../model/deleteMemberAccessResultsResponseArray';
 // @ts-ignore
 import { DeletePartnerAssetAccessBody } from '../model/deletePartnerAssetAccessBody';
 // @ts-ignore
-import { DeletePartnerAssetsResultsResponseArray } from '../model/deletePartnerAssetsResultsResponseArray';
+import { DeletePartnerAssetAccessResultsResponseArray } from '../model/deletePartnerAssetAccessResultsResponseArray';
 // @ts-ignore
-import { PartnerType } from '../model/partnerType';
+import { NonDraftEntityStatus } from '../model/nonDraftEntityStatus';
 // @ts-ignore
 import { PermissionsWithOwner } from '../model/permissionsWithOwner';
 // @ts-ignore
-import { UpdateAssetGroupBody } from '../model/updateAssetGroupBody';
-// @ts-ignore
-import { UpdateAssetGroupResponse } from '../model/updateAssetGroupResponse';
+import { PinterestLibError } from '../model/pinterestLibError';
 // @ts-ignore
 import { UpdateMemberAssetAccessBody } from '../model/updateMemberAssetAccessBody';
 // @ts-ignore
@@ -77,23 +83,23 @@ export class BusinessAccessAssetsService extends BaseService {
 
     /**
      * Create a new asset group.
-     * Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+     * Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
      * @endpoint post /businesses/{business_id}/asset_groups
      * @param businessId Unique identifier of the requesting business.
-     * @param createAssetGroupBody 
+     * @param assetGroupInputCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CreateAssetGroupResponse>;
-    public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreateAssetGroupResponse>>;
-    public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CreateAssetGroupResponse>>;
-    public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public assetGroupCreate(businessId: string, assetGroupInputCreate: AssetGroupInputCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AssetGroupInput>;
+    public assetGroupCreate(businessId: string, assetGroupInputCreate: AssetGroupInputCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AssetGroupInput>>;
+    public assetGroupCreate(businessId: string, assetGroupInputCreate: AssetGroupInputCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AssetGroupInput>>;
+    public assetGroupCreate(businessId: string, assetGroupInputCreate: AssetGroupInputCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling assetGroupCreate.');
         }
-        if (createAssetGroupBody === null || createAssetGroupBody === undefined) {
-            throw new Error('Required parameter createAssetGroupBody was null or undefined when calling assetGroupCreate.');
+        if (assetGroupInputCreate === null || assetGroupInputCreate === undefined) {
+            throw new Error('Required parameter assetGroupInputCreate was null or undefined when calling assetGroupCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -135,10 +141,10 @@ export class BusinessAccessAssetsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/asset_groups`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<CreateAssetGroupResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AssetGroupInput>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: createAssetGroupBody,
+                body: assetGroupInputCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -154,20 +160,20 @@ export class BusinessAccessAssetsService extends BaseService {
      * Delete a batch of asset groups.
      * @endpoint delete /businesses/{business_id}/asset_groups
      * @param businessId Unique identifier of the requesting business.
-     * @param deleteAssetGroupBody 
+     * @param assetGroupDeletionDelete 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteAssetGroupResponse>;
-    public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteAssetGroupResponse>>;
-    public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeleteAssetGroupResponse>>;
-    public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public assetGroupDelete(businessId: string, assetGroupDeletionDelete: AssetGroupDeletionDelete, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AssetGroupDeletion>;
+    public assetGroupDelete(businessId: string, assetGroupDeletionDelete: AssetGroupDeletionDelete, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AssetGroupDeletion>>;
+    public assetGroupDelete(businessId: string, assetGroupDeletionDelete: AssetGroupDeletionDelete, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AssetGroupDeletion>>;
+    public assetGroupDelete(businessId: string, assetGroupDeletionDelete: AssetGroupDeletionDelete, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling assetGroupDelete.');
         }
-        if (deleteAssetGroupBody === null || deleteAssetGroupBody === undefined) {
-            throw new Error('Required parameter deleteAssetGroupBody was null or undefined when calling assetGroupDelete.');
+        if (assetGroupDeletionDelete === null || assetGroupDeletionDelete === undefined) {
+            throw new Error('Required parameter assetGroupDeletionDelete was null or undefined when calling assetGroupDelete.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -209,10 +215,10 @@ export class BusinessAccessAssetsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/asset_groups`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<DeleteAssetGroupResponse>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AssetGroupDeletion>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: deleteAssetGroupBody,
+                body: assetGroupDeletionDelete,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -228,20 +234,20 @@ export class BusinessAccessAssetsService extends BaseService {
      * Update a batch of asset groups with the specified parameters.
      * @endpoint patch /businesses/{business_id}/asset_groups
      * @param businessId Unique identifier of the requesting business.
-     * @param updateAssetGroupBody 
+     * @param assetGroupModificationReadOrUpdate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<UpdateAssetGroupResponse>;
-    public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateAssetGroupResponse>>;
-    public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UpdateAssetGroupResponse>>;
-    public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public assetGroupUpdate(businessId: string, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AssetGroupModification>;
+    public assetGroupUpdate(businessId: string, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AssetGroupModification>>;
+    public assetGroupUpdate(businessId: string, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AssetGroupModification>>;
+    public assetGroupUpdate(businessId: string, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling assetGroupUpdate.');
         }
-        if (updateAssetGroupBody === null || updateAssetGroupBody === undefined) {
-            throw new Error('Required parameter updateAssetGroupBody was null or undefined when calling assetGroupUpdate.');
+        if (assetGroupModificationReadOrUpdate === null || assetGroupModificationReadOrUpdate === undefined) {
+            throw new Error('Required parameter assetGroupModificationReadOrUpdate was null or undefined when calling assetGroupUpdate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -283,10 +289,10 @@ export class BusinessAccessAssetsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/asset_groups`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<UpdateAssetGroupResponse>('patch', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AssetGroupModification>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: updateAssetGroupBody,
+                body: assetGroupModificationReadOrUpdate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -303,18 +309,18 @@ export class BusinessAccessAssetsService extends BaseService {
      * @endpoint get /businesses/{business_id}/assets/{asset_id}/members
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
+     * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
      * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public businessAssetMembersGet(businessId: string, assetId: string, fetchSystemUsers?: boolean, bookmark?: string, pageSize?: number, startIndex?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessAssetMembersGet200Response>;
-    public businessAssetMembersGet(businessId: string, assetId: string, fetchSystemUsers?: boolean, bookmark?: string, pageSize?: number, startIndex?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessAssetMembersGet200Response>>;
-    public businessAssetMembersGet(businessId: string, assetId: string, fetchSystemUsers?: boolean, bookmark?: string, pageSize?: number, startIndex?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BusinessAssetMembersGet200Response>>;
-    public businessAssetMembersGet(businessId: string, assetId: string, fetchSystemUsers?: boolean, bookmark?: string, pageSize?: number, startIndex?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public businessAssetMembersGet(businessId: string, assetId: string, startIndex?: number, fetchSystemUsers?: boolean, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessAssetMembersGet200Response>;
+    public businessAssetMembersGet(businessId: string, assetId: string, startIndex?: number, fetchSystemUsers?: boolean, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessAssetMembersGet200Response>>;
+    public businessAssetMembersGet(businessId: string, assetId: string, startIndex?: number, fetchSystemUsers?: boolean, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BusinessAssetMembersGet200Response>>;
+    public businessAssetMembersGet(businessId: string, assetId: string, startIndex?: number, fetchSystemUsers?: boolean, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessAssetMembersGet.');
         }
@@ -323,6 +329,15 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'start_index',
+            <any>startIndex,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
@@ -346,15 +361,6 @@ export class BusinessAccessAssetsService extends BaseService {
             localVarQueryParameters,
             'page_size',
             <any>pageSize,
-            QueryParamStyle.Form,
-            true,
-        );
-
-
-        localVarQueryParameters = this.addToHttpParams(
-            localVarQueryParameters,
-            'start_index',
-            <any>startIndex,
             QueryParamStyle.Form,
             true,
         );
@@ -412,14 +418,14 @@ export class BusinessAccessAssetsService extends BaseService {
      * @param assetId Unique identifier of a business asset.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessAssetPartnersGet200Response>;
-    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessAssetPartnersGet200Response>>;
-    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BusinessAssetPartnersGet200Response>>;
+    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessAssetMembersGet200Response>;
+    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessAssetMembersGet200Response>>;
+    public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BusinessAssetMembersGet200Response>>;
     public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessAssetPartnersGet.');
@@ -487,7 +493,7 @@ export class BusinessAccessAssetsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/assets/${this.configuration.encodeParam({name: "assetId", value: assetId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<BusinessAssetPartnersGet200Response>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<BusinessAssetMembersGet200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
@@ -512,7 +518,7 @@ export class BusinessAccessAssetsService extends BaseService {
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -642,16 +648,22 @@ export class BusinessAccessAssetsService extends BaseService {
      * @param memberId The member id to fetch assets for.
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
+     * @param sortBy The field to sort member assets by
+     * @param sortAscending Sort assets in ascending order
+     * @param searchBy The field to search member assets by
+     * @param searchValue The value to search for
+     * @param assetPermissionType The type of asset permission to filter by
+     * @param adAccountStatuses A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessMemberAssetsGet200Response>;
-    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessMemberAssetsGet200Response>>;
-    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BusinessMemberAssetsGet200Response>>;
-    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_TAG', startIndex?: number, sortBy?: AssetSortBy, sortAscending?: boolean, searchBy?: AssetSearchBy, searchValue?: string, assetPermissionType?: AssetPermissionType, adAccountStatuses?: Array<NonDraftEntityStatus>, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessMemberAssetsGetResponse>;
+    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_TAG', startIndex?: number, sortBy?: AssetSortBy, sortAscending?: boolean, searchBy?: AssetSearchBy, searchValue?: string, assetPermissionType?: AssetPermissionType, adAccountStatuses?: Array<NonDraftEntityStatus>, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessMemberAssetsGetResponse>>;
+    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_TAG', startIndex?: number, sortBy?: AssetSortBy, sortAscending?: boolean, searchBy?: AssetSearchBy, searchValue?: string, assetPermissionType?: AssetPermissionType, adAccountStatuses?: Array<NonDraftEntityStatus>, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BusinessMemberAssetsGetResponse>>;
+    public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_TAG', startIndex?: number, sortBy?: AssetSortBy, sortAscending?: boolean, searchBy?: AssetSearchBy, searchValue?: string, assetPermissionType?: AssetPermissionType, adAccountStatuses?: Array<NonDraftEntityStatus>, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessMemberAssetsGet.');
         }
@@ -674,6 +686,60 @@ export class BusinessAccessAssetsService extends BaseService {
             localVarQueryParameters,
             'start_index',
             <any>startIndex,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'sort_by',
+            <any>sortBy,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'sort_ascending',
+            <any>sortAscending,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'search_by',
+            <any>searchBy,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'search_value',
+            <any>searchValue,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'asset_permission_type',
+            <any>assetPermissionType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'ad_account_statuses',
+            <any>adAccountStatuses,
             QueryParamStyle.Form,
             true,
         );
@@ -727,7 +793,7 @@ export class BusinessAccessAssetsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members/${this.configuration.encodeParam({name: "memberId", value: memberId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/assets`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<BusinessMemberAssetsGet200Response>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<BusinessMemberAssetsGetResponse>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
@@ -746,20 +812,20 @@ export class BusinessAccessAssetsService extends BaseService {
      * Terminate multiple members\&#39; access to an asset.
      * @endpoint delete /businesses/{business_id}/members/assets/access
      * @param businessId Unique identifier of the requesting business.
-     * @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete.
+     * @param businessMembersAssetAccessDeleteBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteMemberAccessResultsResponseArray>;
-    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteMemberAccessResultsResponseArray>>;
-    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeleteMemberAccessResultsResponseArray>>;
-    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteMemberAccessResultsResponseArray>;
+    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteMemberAccessResultsResponseArray>>;
+    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeleteMemberAccessResultsResponseArray>>;
+    public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessMembersAssetAccessDelete.');
         }
-        if (businessMembersAssetAccessDeleteRequest === null || businessMembersAssetAccessDeleteRequest === undefined) {
-            throw new Error('Required parameter businessMembersAssetAccessDeleteRequest was null or undefined when calling businessMembersAssetAccessDelete.');
+        if (businessMembersAssetAccessDeleteBody === null || businessMembersAssetAccessDeleteBody === undefined) {
+            throw new Error('Required parameter businessMembersAssetAccessDeleteBody was null or undefined when calling businessMembersAssetAccessDelete.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -804,7 +870,7 @@ export class BusinessAccessAssetsService extends BaseService {
         return this.httpClient.request<DeleteMemberAccessResultsResponseArray>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: businessMembersAssetAccessDeleteRequest,
+                body: businessMembersAssetAccessDeleteBody,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -817,10 +883,10 @@ export class BusinessAccessAssetsService extends BaseService {
 
     /**
      * Assign/Update member asset permissions
-     * Grant multiple members access to assets and/or update multiple member\&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+     * Grant multiple members access to assets and/or update multiple member\&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      * @endpoint patch /businesses/{business_id}/members/assets/access
      * @param businessId Unique identifier of the requesting business.
-     * @param updateMemberAssetAccessBody List of member asset permissions to create or update.
+     * @param updateMemberAssetAccessBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -895,19 +961,23 @@ export class BusinessAccessAssetsService extends BaseService {
      * @endpoint get /businesses/{business_id}/partners/{partner_id}/assets
      * @param businessId Unique identifier of the requesting business.
      * @param partnerId The partner id to be bound to the Business
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset.
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset.
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param sortBy The field to sort member assets by
+     * @param sortAscending Sort assets in ascending order
+     * @param searchBy The field to search member assets by
+     * @param searchValue The value to search for
      * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessPartnerAssetAccessGet200Response>;
-    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessPartnerAssetAccessGet200Response>>;
-    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BusinessPartnerAssetAccessGet200Response>>;
-    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER', startIndex?: number, pageSize?: number, bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: 'INTERNAL' | 'EXTERNAL', assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'PINNER_LIST' | 'CONVERSION_TAG' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_SEGMENT', startIndex?: number, sortBy?: AssetSortBy, sortAscending?: boolean, searchBy?: AssetSearchBy, searchValue?: string, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessPartnerAssetAccessGet200Response>;
+    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: 'INTERNAL' | 'EXTERNAL', assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'PINNER_LIST' | 'CONVERSION_TAG' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_SEGMENT', startIndex?: number, sortBy?: AssetSortBy, sortAscending?: boolean, searchBy?: AssetSearchBy, searchValue?: string, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessPartnerAssetAccessGet200Response>>;
+    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: 'INTERNAL' | 'EXTERNAL', assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'PINNER_LIST' | 'CONVERSION_TAG' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_SEGMENT', startIndex?: number, sortBy?: AssetSortBy, sortAscending?: boolean, searchBy?: AssetSearchBy, searchValue?: string, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BusinessPartnerAssetAccessGet200Response>>;
+    public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: 'INTERNAL' | 'EXTERNAL', assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'PINNER_LIST' | 'CONVERSION_TAG' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_SEGMENT', startIndex?: number, sortBy?: AssetSortBy, sortAscending?: boolean, searchBy?: AssetSearchBy, searchValue?: string, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling businessPartnerAssetAccessGet.');
         }
@@ -946,8 +1016,35 @@ export class BusinessAccessAssetsService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'page_size',
-            <any>pageSize,
+            'sort_by',
+            <any>sortBy,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'sort_ascending',
+            <any>sortAscending,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'search_by',
+            <any>searchBy,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'search_value',
+            <any>searchValue,
             QueryParamStyle.Form,
             true,
         );
@@ -957,6 +1054,15 @@ export class BusinessAccessAssetsService extends BaseService {
             localVarQueryParameters,
             'bookmark',
             <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
             QueryParamStyle.Form,
             true,
         );
@@ -1016,9 +1122,9 @@ export class BusinessAccessAssetsService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeletePartnerAssetsResultsResponseArray>;
-    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeletePartnerAssetsResultsResponseArray>>;
-    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeletePartnerAssetsResultsResponseArray>>;
+    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeletePartnerAssetAccessResultsResponseArray>;
+    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeletePartnerAssetAccessResultsResponseArray>>;
+    public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeletePartnerAssetAccessResultsResponseArray>>;
     public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling deletePartnerAssetAccessHandlerImpl.');
@@ -1066,7 +1172,7 @@ export class BusinessAccessAssetsService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners/assets`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<DeletePartnerAssetsResultsResponseArray>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<DeletePartnerAssetAccessResultsResponseArray>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: deletePartnerAssetAccessBody,
@@ -1085,7 +1191,7 @@ export class BusinessAccessAssetsService extends BaseService {
      * Grant multiple partners access to assets and/or update multiple partner\&#39;s exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      * @endpoint patch /businesses/{business_id}/partners/assets
      * @param businessId Unique identifier of the requesting business.
-     * @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
+     * @param updatePartnerAssetAccessBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options

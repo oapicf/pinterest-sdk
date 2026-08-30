@@ -12,10 +12,12 @@
 #' @field AUDIENCE_EXCLUDE Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**. list(character) [optional]
 #' @field AUDIENCE_INCLUDE Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**. list(character) [optional]
 #' @field GENDER Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**. list(\link{TargetingSpecGender}) [optional]
-#' @field GEO Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below). list(character) [optional]
+#' @field GEO Region codes or postal codes to include for targeting.<br /><br /> Region codes represent broader geographical areas. Example: <code>US-CA</code> is the region code for California in the United States.<br /><br /> Postal codes represent more granular, specific areas. Example: <code>94103</code> is a postal code for a specifc area in San Francisco, California, U.S.A.<br /><br /> For each ad group, use only one of these methods, depending on which fits your targeting needs. Do not use both. For example, either specify a broader region code like <code>US-CA</code> or a more granular postal code within that regon, such as <code>94103</code>.<br /><br /> You can specify multiple region codes or postal codes in an array, depending on which method you choose.<br /><br /> Precede a region code array with the <code>region_codes</code> key and a postal code value with the <code>postal_codes</code> key. Examples:<br /><br /> <code>\"geo\": {</code><br /> <code>\"region_codes\": [\"US-CA\"]</code><br /> <code>}</code><br /><br /> <code>\"geo\": {</code><br /> <code>\"postal_codes\": [\"94103\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code>. <br /><br /> If you do not specifiy a <code>GEO</code> code, only <code>LOCATION</code> values will be targeted (See <code>LOCATION</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>. list(character) [optional]
+#' @field GEO_EXCLUDE Region codes or postal codes to exclude from the targeting inclusion area.<br /><br /> See <code>GEO</code> parameter in this targeting spec for rules, syntax, and other information.<br /> list(character) [optional]
 #' @field INTEREST Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**. list(character) [optional]
 #' @field LOCALE 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted. list(character) [optional]
-#' @field LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). list(character) [optional]
+#' @field LOCATION Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to include for targeting.<br /><br /> Precede country code values with the <code>country_codes</code> key and metro code values with <code>metro_codes</code> key. Example:<br /><br /> <code>\"location\": {</code><br /> <code>\"country_codes\": [\"US\", \"CA\"],</code><br /> <code>\"metro_codes\": [\"501\", \"602\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code> code. <br /><br /> If you do not specify a <code>LOCATION</code> code, only <code>GEO</code> values will be targeted (See <code>GEO</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>. list(character) [optional]
+#' @field LOCATION_EXCLUDE Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to exclude from targeting.<br /><br /> See <code>LOCATION</code> parameter in this targeting spec for rules, syntax, and other information. list(character) [optional]
 #' @field MAXIMUM_AGE Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted. character [optional]
 #' @field MINIMUM_AGE Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted. character [optional]
 #' @field SHOPPING_RETARGETING Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting list(\link{TargetingSpecShoppingRetargeting}) [optional]
@@ -32,9 +34,11 @@ TargetingSpec <- R6::R6Class(
     `AUDIENCE_INCLUDE` = NULL,
     `GENDER` = NULL,
     `GEO` = NULL,
+    `GEO_EXCLUDE` = NULL,
     `INTEREST` = NULL,
     `LOCALE` = NULL,
     `LOCATION` = NULL,
+    `LOCATION_EXCLUDE` = NULL,
     `MAXIMUM_AGE` = NULL,
     `MINIMUM_AGE` = NULL,
     `SHOPPING_RETARGETING` = NULL,
@@ -48,16 +52,18 @@ TargetingSpec <- R6::R6Class(
     #' @param AUDIENCE_EXCLUDE Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
     #' @param AUDIENCE_INCLUDE Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
     #' @param GENDER Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
-    #' @param GEO Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
+    #' @param GEO Region codes or postal codes to include for targeting.<br /><br /> Region codes represent broader geographical areas. Example: <code>US-CA</code> is the region code for California in the United States.<br /><br /> Postal codes represent more granular, specific areas. Example: <code>94103</code> is a postal code for a specifc area in San Francisco, California, U.S.A.<br /><br /> For each ad group, use only one of these methods, depending on which fits your targeting needs. Do not use both. For example, either specify a broader region code like <code>US-CA</code> or a more granular postal code within that regon, such as <code>94103</code>.<br /><br /> You can specify multiple region codes or postal codes in an array, depending on which method you choose.<br /><br /> Precede a region code array with the <code>region_codes</code> key and a postal code value with the <code>postal_codes</code> key. Examples:<br /><br /> <code>\"geo\": {</code><br /> <code>\"region_codes\": [\"US-CA\"]</code><br /> <code>}</code><br /><br /> <code>\"geo\": {</code><br /> <code>\"postal_codes\": [\"94103\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code>. <br /><br /> If you do not specifiy a <code>GEO</code> code, only <code>LOCATION</code> values will be targeted (See <code>LOCATION</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.
+    #' @param GEO_EXCLUDE Region codes or postal codes to exclude from the targeting inclusion area.<br /><br /> See <code>GEO</code> parameter in this targeting spec for rules, syntax, and other information.<br />
     #' @param INTEREST Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
     #' @param LOCALE 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
-    #' @param LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+    #' @param LOCATION Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to include for targeting.<br /><br /> Precede country code values with the <code>country_codes</code> key and metro code values with <code>metro_codes</code> key. Example:<br /><br /> <code>\"location\": {</code><br /> <code>\"country_codes\": [\"US\", \"CA\"],</code><br /> <code>\"metro_codes\": [\"501\", \"602\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code> code. <br /><br /> If you do not specify a <code>LOCATION</code> code, only <code>GEO</code> values will be targeted (See <code>GEO</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.
+    #' @param LOCATION_EXCLUDE Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to exclude from targeting.<br /><br /> See <code>LOCATION</code> parameter in this targeting spec for rules, syntax, and other information.
     #' @param MAXIMUM_AGE Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
     #' @param MINIMUM_AGE Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
     #' @param SHOPPING_RETARGETING Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
-    #' @param TARGETING_STRATEGY 
+    #' @param TARGETING_STRATEGY TARGETING_STRATEGY
     #' @param ... Other optional arguments.
-    initialize = function(`AGE_BUCKET` = NULL, `APPTYPE` = NULL, `AUDIENCE_EXCLUDE` = NULL, `AUDIENCE_INCLUDE` = NULL, `GENDER` = NULL, `GEO` = NULL, `INTEREST` = NULL, `LOCALE` = NULL, `LOCATION` = NULL, `MAXIMUM_AGE` = NULL, `MINIMUM_AGE` = NULL, `SHOPPING_RETARGETING` = NULL, `TARGETING_STRATEGY` = NULL, ...) {
+    initialize = function(`AGE_BUCKET` = NULL, `APPTYPE` = NULL, `AUDIENCE_EXCLUDE` = NULL, `AUDIENCE_INCLUDE` = NULL, `GENDER` = NULL, `GEO` = NULL, `GEO_EXCLUDE` = NULL, `INTEREST` = NULL, `LOCALE` = NULL, `LOCATION` = NULL, `LOCATION_EXCLUDE` = NULL, `MAXIMUM_AGE` = NULL, `MINIMUM_AGE` = NULL, `SHOPPING_RETARGETING` = NULL, `TARGETING_STRATEGY` = NULL, ...) {
       if (!is.null(`AGE_BUCKET`)) {
         stopifnot(is.vector(`AGE_BUCKET`), length(`AGE_BUCKET`) != 0)
         sapply(`AGE_BUCKET`, function(x) stopifnot(R6::is.R6(x)))
@@ -88,6 +94,11 @@ TargetingSpec <- R6::R6Class(
         sapply(`GEO`, function(x) stopifnot(is.character(x)))
         self$`GEO` <- `GEO`
       }
+      if (!is.null(`GEO_EXCLUDE`)) {
+        stopifnot(is.vector(`GEO_EXCLUDE`), length(`GEO_EXCLUDE`) != 0)
+        sapply(`GEO_EXCLUDE`, function(x) stopifnot(is.character(x)))
+        self$`GEO_EXCLUDE` <- `GEO_EXCLUDE`
+      }
       if (!is.null(`INTEREST`)) {
         stopifnot(is.vector(`INTEREST`), length(`INTEREST`) != 0)
         sapply(`INTEREST`, function(x) stopifnot(is.character(x)))
@@ -102,6 +113,11 @@ TargetingSpec <- R6::R6Class(
         stopifnot(is.vector(`LOCATION`), length(`LOCATION`) != 0)
         sapply(`LOCATION`, function(x) stopifnot(is.character(x)))
         self$`LOCATION` <- `LOCATION`
+      }
+      if (!is.null(`LOCATION_EXCLUDE`)) {
+        stopifnot(is.vector(`LOCATION_EXCLUDE`), length(`LOCATION_EXCLUDE`) != 0)
+        sapply(`LOCATION_EXCLUDE`, function(x) stopifnot(is.character(x)))
+        self$`LOCATION_EXCLUDE` <- `LOCATION_EXCLUDE`
       }
       if (!is.null(`MAXIMUM_AGE`)) {
         if (!(is.character(`MAXIMUM_AGE`) && length(`MAXIMUM_AGE`) == 1)) {
@@ -160,11 +176,11 @@ TargetingSpec <- R6::R6Class(
       TargetingSpecObject <- list()
       if (!is.null(self$`AGE_BUCKET`)) {
         TargetingSpecObject[["AGE_BUCKET"]] <-
-          lapply(self$`AGE_BUCKET`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`AGE_BUCKET`)
       }
       if (!is.null(self$`APPTYPE`)) {
         TargetingSpecObject[["APPTYPE"]] <-
-          lapply(self$`APPTYPE`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`APPTYPE`)
       }
       if (!is.null(self$`AUDIENCE_EXCLUDE`)) {
         TargetingSpecObject[["AUDIENCE_EXCLUDE"]] <-
@@ -176,11 +192,15 @@ TargetingSpec <- R6::R6Class(
       }
       if (!is.null(self$`GENDER`)) {
         TargetingSpecObject[["GENDER"]] <-
-          lapply(self$`GENDER`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`GENDER`)
       }
       if (!is.null(self$`GEO`)) {
         TargetingSpecObject[["GEO"]] <-
           self$`GEO`
+      }
+      if (!is.null(self$`GEO_EXCLUDE`)) {
+        TargetingSpecObject[["GEO_EXCLUDE"]] <-
+          self$`GEO_EXCLUDE`
       }
       if (!is.null(self$`INTEREST`)) {
         TargetingSpecObject[["INTEREST"]] <-
@@ -194,6 +214,10 @@ TargetingSpec <- R6::R6Class(
         TargetingSpecObject[["LOCATION"]] <-
           self$`LOCATION`
       }
+      if (!is.null(self$`LOCATION_EXCLUDE`)) {
+        TargetingSpecObject[["LOCATION_EXCLUDE"]] <-
+          self$`LOCATION_EXCLUDE`
+      }
       if (!is.null(self$`MAXIMUM_AGE`)) {
         TargetingSpecObject[["MAXIMUM_AGE"]] <-
           self$`MAXIMUM_AGE`
@@ -204,13 +228,36 @@ TargetingSpec <- R6::R6Class(
       }
       if (!is.null(self$`SHOPPING_RETARGETING`)) {
         TargetingSpecObject[["SHOPPING_RETARGETING"]] <-
-          lapply(self$`SHOPPING_RETARGETING`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`SHOPPING_RETARGETING`)
       }
       if (!is.null(self$`TARGETING_STRATEGY`)) {
         TargetingSpecObject[["TARGETING_STRATEGY"]] <-
           self$`TARGETING_STRATEGY`
       }
       return(TargetingSpecObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -238,6 +285,9 @@ TargetingSpec <- R6::R6Class(
       if (!is.null(this_object$`GEO`)) {
         self$`GEO` <- ApiClient$new()$deserializeObj(this_object$`GEO`, "array[character]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`GEO_EXCLUDE`)) {
+        self$`GEO_EXCLUDE` <- ApiClient$new()$deserializeObj(this_object$`GEO_EXCLUDE`, "array[character]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`INTEREST`)) {
         self$`INTEREST` <- ApiClient$new()$deserializeObj(this_object$`INTEREST`, "array[character]", loadNamespace("openapi"))
       }
@@ -246,6 +296,9 @@ TargetingSpec <- R6::R6Class(
       }
       if (!is.null(this_object$`LOCATION`)) {
         self$`LOCATION` <- ApiClient$new()$deserializeObj(this_object$`LOCATION`, "array[character]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`LOCATION_EXCLUDE`)) {
+        self$`LOCATION_EXCLUDE` <- ApiClient$new()$deserializeObj(this_object$`LOCATION_EXCLUDE`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`MAXIMUM_AGE`)) {
         self$`MAXIMUM_AGE` <- this_object$`MAXIMUM_AGE`
@@ -286,9 +339,11 @@ TargetingSpec <- R6::R6Class(
       self$`AUDIENCE_INCLUDE` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_INCLUDE`, "array[character]", loadNamespace("openapi"))
       self$`GENDER` <- ApiClient$new()$deserializeObj(this_object$`GENDER`, "array[TargetingSpecGender]", loadNamespace("openapi"))
       self$`GEO` <- ApiClient$new()$deserializeObj(this_object$`GEO`, "array[character]", loadNamespace("openapi"))
+      self$`GEO_EXCLUDE` <- ApiClient$new()$deserializeObj(this_object$`GEO_EXCLUDE`, "array[character]", loadNamespace("openapi"))
       self$`INTEREST` <- ApiClient$new()$deserializeObj(this_object$`INTEREST`, "array[character]", loadNamespace("openapi"))
       self$`LOCALE` <- ApiClient$new()$deserializeObj(this_object$`LOCALE`, "array[character]", loadNamespace("openapi"))
       self$`LOCATION` <- ApiClient$new()$deserializeObj(this_object$`LOCATION`, "array[character]", loadNamespace("openapi"))
+      self$`LOCATION_EXCLUDE` <- ApiClient$new()$deserializeObj(this_object$`LOCATION_EXCLUDE`, "array[character]", loadNamespace("openapi"))
       self$`MAXIMUM_AGE` <- this_object$`MAXIMUM_AGE`
       self$`MINIMUM_AGE` <- this_object$`MINIMUM_AGE`
       self$`SHOPPING_RETARGETING` <- ApiClient$new()$deserializeObj(this_object$`SHOPPING_RETARGETING`, "array[TargetingSpecShoppingRetargeting]", loadNamespace("openapi"))

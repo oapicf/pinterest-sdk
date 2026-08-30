@@ -1,2 +1,2 @@
-testCase,httpStatusCode,term,countryCode,bookmark,locale,limit,adAccountId,bookmark,pageSize,query,query,adAccountId,bookmark
+testCase,httpStatusCode,term,countryCode,bookmark,locale,limit,adAccountId,query,bookmark,pageSize,query,adAccountId,bookmark
 Success,200,0,0,0,0,0,0,0,0,0,0,0,0

@@ -1,13 +1,18 @@
 package org.openapitools.api;
 
+import org.openapitools.model.AdAccountToAdAccountSharedAudience;
+import org.openapitools.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.AdAccountToBusinessSharedAudience;
+import org.openapitools.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudiencesList200Response;
-import org.openapitools.model.BusinessSharedAudience;
-import org.openapitools.model.BusinessSharedAudienceResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.SharedAudience;
-import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.BusinessToAdAccountSharedAudience;
+import org.openapitools.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.BusinessToBusinessSharedAudience;
+import org.openapitools.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.Order;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.SharedAudiencesForBusinessList200Response;
 
 import java.util.List;
 import java.util.Map;
@@ -43,11 +48,14 @@ public interface AudienceSharingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List accounts with access to an audience owned by an ad account", tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdAccountsAudiencesSharedAccountsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account audiences shared accounts parameters.", response = Error.class),
-        @ApiResponse(code = 404, message = "Shared accounts not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("audience_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18) String audienceId, @QueryParam("account_type") @NotNull @DefaultValue("AD_ACCOUNT")AudienceAccountType accountType, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsAudiencesSharedAccountsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(@QueryParam("audience_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18) String audienceId, @QueryParam("account_type") @NotNull AudienceAccountType accountType, @PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize);
 
     /**
      * List accounts with access to an audience owned by a business
@@ -60,11 +68,14 @@ public interface AudienceSharingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List accounts with access to an audience owned by a business", tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdAccountsAudiencesSharedAccountsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid business audiences shared accounts parameters.", response = Error.class),
-        @ApiResponse(code = 404, message = "Shared accounts not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @QueryParam("audience_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18) String audienceId, @QueryParam("account_type") @NotNull @DefaultValue("AD_ACCOUNT")AudienceAccountType accountType, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsAudiencesSharedAccountsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @QueryParam("audience_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18) String audienceId, @QueryParam("account_type") @NotNull AudienceAccountType accountType, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize);
 
     /**
      * List received audiences for a business
@@ -77,15 +88,19 @@ public interface AudienceSharingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List received audiences for a business", tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AudiencesList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public AudiencesList200Response sharedAudiencesForBusinessList(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @QueryParam("bookmark") String bookmark, @QueryParam("order") String order, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SharedAudiencesForBusinessList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @QueryParam("order") Order order, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize);
 
     /**
      * Update audience sharing between ad accounts
      *
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      */
     @PATCH
@@ -94,15 +109,19 @@ public interface AudienceSharingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update audience sharing between ad accounts", tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SharedAudienceResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull SharedAudience sharedAudience);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountToAdAccountSharedAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AdAccountToAdAccountSharedAudience updateAdAccountToAdAccountSharedAudience(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody);
 
     /**
      * Update audience sharing from an ad account to businesses
      *
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      */
     @PATCH
@@ -111,15 +130,19 @@ public interface AudienceSharingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update audience sharing from an ad account to businesses", tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BusinessSharedAudienceResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull BusinessSharedAudience businessSharedAudience);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountToBusinessSharedAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AdAccountToBusinessSharedAudience updateAdAccountToBusinessSharedAudience(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody);
 
     /**
      * Update audience sharing from a business to ad accounts
      *
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      */
     @PATCH
@@ -128,15 +151,19 @@ public interface AudienceSharingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update audience sharing from a business to ad accounts", tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SharedAudienceResponse.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public SharedAudienceResponse updateBusinessToAdAccountSharedAudience(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid @NotNull SharedAudience sharedAudience);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BusinessToAdAccountSharedAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BusinessToAdAccountSharedAudience updateBusinessToAdAccountSharedAudience(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid @NotNull BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody);
 
     /**
      * Update audience sharing between businesses
      *
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      */
     @PATCH
@@ -145,8 +172,12 @@ public interface AudienceSharingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update audience sharing between businesses", tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BusinessSharedAudienceResponse.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid @NotNull BusinessSharedAudience businessSharedAudience);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BusinessToBusinessSharedAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BusinessToBusinessSharedAudience updateBusinessToBusinessSharedAudience(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid @NotNull BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody);
 }

@@ -94,9 +94,32 @@ TargetingSpecOperationShoppingRetargeting <- R6::R6Class(
       }
       if (!is.null(self$`values`)) {
         TargetingSpecOperationShoppingRetargetingObject[["values"]] <-
-          lapply(self$`values`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`values`)
       }
       return(TargetingSpecOperationShoppingRetargetingObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -208,6 +231,11 @@ TargetingSpecOperationShoppingRetargeting <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `values` is null
+      if (is.null(self$`values`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -225,6 +253,11 @@ TargetingSpecOperationShoppingRetargeting <- R6::R6Class(
       # check if the required `operation` is null
       if (is.null(self$`operation`)) {
         invalid_fields["operation"] <- "Non-nullable required field `operation` cannot be null."
+      }
+
+      # check if the required `values` is null
+      if (is.null(self$`values`)) {
+        invalid_fields["values"] <- "Non-nullable required field `values` cannot be null."
       }
 
       invalid_fields

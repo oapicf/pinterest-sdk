@@ -1,7 +1,7 @@
 #tag Interface
 Protected Interface AdAccountsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AdAccountAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As AdAccountAnalyticsResponseInner)
+		Sub AdAccountAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As OpenAPIClient.Models.AdAccountAnalyticsItems)
 		  
 		End Sub
 	#tag EndMethod
@@ -31,13 +31,13 @@ Protected Interface AdAccountsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AnalyticsCreateConversionProductReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse)
+		Sub AnalyticsCreateConversionProductReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionProductReport)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AnalyticsCreateMmmReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CreateMMMReportResponse)
+		Sub AnalyticsCreateMmmReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.MMMReport)
 		  
 		End Sub
 	#tag EndMethod
@@ -55,13 +55,13 @@ Protected Interface AdAccountsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AnalyticsGetConversionProductReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdsAnalyticsGetAsyncResponse)
+		Sub AnalyticsGetConversionProductReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionProductReport)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AnalyticsGetMmmReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.GetMMMReportResponse)
+		Sub AnalyticsGetMmmReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.MMMReport)
 		  
 		End Sub
 	#tag EndMethod

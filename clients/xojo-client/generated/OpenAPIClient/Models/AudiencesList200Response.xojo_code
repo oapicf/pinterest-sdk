@@ -7,7 +7,7 @@ Protected Class AudiencesList200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.Audience
+		items() As OpenAPIClient.Models.AdAccountsAudience
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class AudiencesList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Audience"
+			Type="AdAccountsAudience"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

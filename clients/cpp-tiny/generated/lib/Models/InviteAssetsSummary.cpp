@@ -6,8 +6,8 @@ using namespace Tiny;
 
 InviteAssetsSummary::InviteAssetsSummary()
 {
-	ad_accounts = std::list<InviteAssetsSummary_ad_accounts_inner>();
-	profiles = std::list<InviteAssetsSummary_profiles_inner>();
+	ad_accounts = std::list<InviteAssetsSummaryItem>();
+	profiles = std::list<InviteAssetsSummaryItem>();
 }
 
 InviteAssetsSummary::InviteAssetsSummary(std::string jsonString)
@@ -32,8 +32,8 @@ InviteAssetsSummary::fromJson(std::string jsonObj)
         bourne::json value = object[ad_accountsKey];
 
 
-        std::list<InviteAssetsSummary_ad_accounts_inner> ad_accounts_list;
-        InviteAssetsSummary_ad_accounts_inner element;
+        std::list<InviteAssetsSummaryItem> ad_accounts_list;
+        InviteAssetsSummaryItem element;
         for(auto& var : value.array_range())
         {
 
@@ -54,8 +54,8 @@ InviteAssetsSummary::fromJson(std::string jsonObj)
         bourne::json value = object[profilesKey];
 
 
-        std::list<InviteAssetsSummary_profiles_inner> profiles_list;
-        InviteAssetsSummary_profiles_inner element;
+        std::list<InviteAssetsSummaryItem> profiles_list;
+        InviteAssetsSummaryItem element;
         for(auto& var : value.array_range())
         {
 
@@ -80,12 +80,12 @@ InviteAssetsSummary::toJson()
 
 
 
-    std::list<InviteAssetsSummary_ad_accounts_inner> ad_accounts_list = getAdAccounts();
+    std::list<InviteAssetsSummaryItem> ad_accounts_list = getAdAccounts();
     bourne::json ad_accounts_arr = bourne::json::array();
 
     for(auto& var : ad_accounts_list)
     {
-        InviteAssetsSummary_ad_accounts_inner obj = var;
+        InviteAssetsSummaryItem obj = var;
         ad_accounts_arr.append(obj.toJson());
     }
     object["ad_accounts"] = ad_accounts_arr;
@@ -95,12 +95,12 @@ InviteAssetsSummary::toJson()
 
 
 
-    std::list<InviteAssetsSummary_profiles_inner> profiles_list = getProfiles();
+    std::list<InviteAssetsSummaryItem> profiles_list = getProfiles();
     bourne::json profiles_arr = bourne::json::array();
 
     for(auto& var : profiles_list)
     {
-        InviteAssetsSummary_profiles_inner obj = var;
+        InviteAssetsSummaryItem obj = var;
         profiles_arr.append(obj.toJson());
     }
     object["profiles"] = profiles_arr;
@@ -112,26 +112,26 @@ InviteAssetsSummary::toJson()
 
 }
 
-std::list<InviteAssetsSummary_ad_accounts_inner>
+std::list<InviteAssetsSummaryItem>
 InviteAssetsSummary::getAdAccounts()
 {
 	return ad_accounts;
 }
 
 void
-InviteAssetsSummary::setAdAccounts(std::list <InviteAssetsSummary_ad_accounts_inner> ad_accounts)
+InviteAssetsSummary::setAdAccounts(std::list<InviteAssetsSummaryItem> ad_accounts)
 {
 	this->ad_accounts = ad_accounts;
 }
 
-std::list<InviteAssetsSummary_profiles_inner>
+std::list<InviteAssetsSummaryItem>
 InviteAssetsSummary::getProfiles()
 {
 	return profiles;
 }
 
 void
-InviteAssetsSummary::setProfiles(std::list <InviteAssetsSummary_profiles_inner> profiles)
+InviteAssetsSummary::setProfiles(std::list<InviteAssetsSummaryItem> profiles)
 {
 	this->profiles = profiles;
 }

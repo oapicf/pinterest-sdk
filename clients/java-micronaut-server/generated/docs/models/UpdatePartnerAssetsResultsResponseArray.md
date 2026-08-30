@@ -8,7 +8,7 @@ The class is defined in **[UpdatePartnerAssetsResultsResponseArray.java](../../s
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | `List&lt;UpdatePartnerAssetsResult&gt;` | List of assigned/updated partner asset access. |  [optional property]
+**items** | [`List&lt;UpdatePartnerAssetsResult&gt;`](UpdatePartnerAssetsResult.md) | List of assigned/updated partner asset access. |  [optional property]
 
 
 

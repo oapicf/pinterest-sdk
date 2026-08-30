@@ -11,117 +11,73 @@
 part of openapi.api;
 
 
-class CatalogsLocale {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsLocale._(this.value);
+enum CatalogsLocale {
+  afZA._(r'af-ZA'),
+  arSA._(r'ar-SA'),
+  bgBG._(r'bg-BG'),
+  bnIN._(r'bn-IN'),
+  csCZ._(r'cs-CZ'),
+  daDK._(r'da-DK'),
+  de._(r'de'),
+  elGR._(r'el-GR'),
+  enAU._(r'en-AU'),
+  enCA._(r'en-CA'),
+  enGB._(r'en-GB'),
+  enIN._(r'en-IN'),
+  enUS._(r'en-US'),
+  es419._(r'es-419'),
+  esAR._(r'es-AR'),
+  esES._(r'es-ES'),
+  esMX._(r'es-MX'),
+  fiFI._(r'fi-FI'),
+  fr._(r'fr'),
+  frCA._(r'fr-CA'),
+  heIL._(r'he-IL'),
+  hiIN._(r'hi-IN'),
+  hrHR._(r'hr-HR'),
+  huHU._(r'hu-HU'),
+  idID._(r'id-ID'),
+  it._(r'it'),
+  ja._(r'ja'),
+  koKR._(r'ko-KR'),
+  msMY._(r'ms-MY'),
+  nbNO._(r'nb-NO'),
+  nl._(r'nl'),
+  plPL._(r'pl-PL'),
+  ptBR._(r'pt-BR'),
+  ptPT._(r'pt-PT'),
+  roRO._(r'ro-RO'),
+  ruRU._(r'ru-RU'),
+  skSK._(r'sk-SK'),
+  svSE._(r'sv-SE'),
+  teIN._(r'te-IN'),
+  thTH._(r'th-TH'),
+  tlPH._(r'tl-PH'),
+  tr._(r'tr'),
+  ukUA._(r'uk-UA'),
+  viVN._(r'vi-VN'),
+  zhCN._(r'zh-CN'),
+  zhTW._(r'zh-TW'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsLocale._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const afZA = CatalogsLocale._(r'af-ZA');
-  static const arSA = CatalogsLocale._(r'ar-SA');
-  static const bgBG = CatalogsLocale._(r'bg-BG');
-  static const bnIN = CatalogsLocale._(r'bn-IN');
-  static const csCZ = CatalogsLocale._(r'cs-CZ');
-  static const daDK = CatalogsLocale._(r'da-DK');
-  static const de = CatalogsLocale._(r'de');
-  static const elGR = CatalogsLocale._(r'el-GR');
-  static const enAU = CatalogsLocale._(r'en-AU');
-  static const enCA = CatalogsLocale._(r'en-CA');
-  static const enGB = CatalogsLocale._(r'en-GB');
-  static const enIN = CatalogsLocale._(r'en-IN');
-  static const enUS = CatalogsLocale._(r'en-US');
-  static const es419 = CatalogsLocale._(r'es-419');
-  static const esAR = CatalogsLocale._(r'es-AR');
-  static const esES = CatalogsLocale._(r'es-ES');
-  static const esMX = CatalogsLocale._(r'es-MX');
-  static const fiFI = CatalogsLocale._(r'fi-FI');
-  static const fr = CatalogsLocale._(r'fr');
-  static const frCA = CatalogsLocale._(r'fr-CA');
-  static const heIL = CatalogsLocale._(r'he-IL');
-  static const hiIN = CatalogsLocale._(r'hi-IN');
-  static const hrHR = CatalogsLocale._(r'hr-HR');
-  static const huHU = CatalogsLocale._(r'hu-HU');
-  static const idID = CatalogsLocale._(r'id-ID');
-  static const it = CatalogsLocale._(r'it');
-  static const ja = CatalogsLocale._(r'ja');
-  static const koKR = CatalogsLocale._(r'ko-KR');
-  static const msMY = CatalogsLocale._(r'ms-MY');
-  static const nbNO = CatalogsLocale._(r'nb-NO');
-  static const nl = CatalogsLocale._(r'nl');
-  static const plPL = CatalogsLocale._(r'pl-PL');
-  static const ptBR = CatalogsLocale._(r'pt-BR');
-  static const ptPT = CatalogsLocale._(r'pt-PT');
-  static const roRO = CatalogsLocale._(r'ro-RO');
-  static const ruRU = CatalogsLocale._(r'ru-RU');
-  static const skSK = CatalogsLocale._(r'sk-SK');
-  static const svSE = CatalogsLocale._(r'sv-SE');
-  static const teIN = CatalogsLocale._(r'te-IN');
-  static const thTH = CatalogsLocale._(r'th-TH');
-  static const tlPH = CatalogsLocale._(r'tl-PH');
-  static const tr = CatalogsLocale._(r'tr');
-  static const ukUA = CatalogsLocale._(r'uk-UA');
-  static const viVN = CatalogsLocale._(r'vi-VN');
-  static const zhCN = CatalogsLocale._(r'zh-CN');
-  static const zhTW = CatalogsLocale._(r'zh-TW');
-
-  /// List of all possible values in this [enum][CatalogsLocale].
-  static const values = <CatalogsLocale>[
-    afZA,
-    arSA,
-    bgBG,
-    bnIN,
-    csCZ,
-    daDK,
-    de,
-    elGR,
-    enAU,
-    enCA,
-    enGB,
-    enIN,
-    enUS,
-    es419,
-    esAR,
-    esES,
-    esMX,
-    fiFI,
-    fr,
-    frCA,
-    heIL,
-    hiIN,
-    hrHR,
-    huHU,
-    idID,
-    it,
-    ja,
-    koKR,
-    msMY,
-    nbNO,
-    nl,
-    plPL,
-    ptBR,
-    ptPT,
-    roRO,
-    ruRU,
-    skSK,
-    svSE,
-    teIN,
-    thTH,
-    tlPH,
-    tr,
-    ukUA,
-    viVN,
-    zhCN,
-    zhTW,
-  ];
-
+  /// Returns the instance of [CatalogsLocale] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsLocale? fromJson(dynamic value) => CatalogsLocaleTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsLocale]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsLocale> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsLocale>[];
     if (json is List && json.isNotEmpty) {
@@ -143,9 +99,11 @@ class CatalogsLocaleTypeTransformer {
 
   const CatalogsLocaleTypeTransformer._();
 
-  String encode(CatalogsLocale data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(CatalogsLocale data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsLocale.
+  /// Returns the instance of [CatalogsLocale] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -154,6 +112,9 @@ class CatalogsLocaleTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsLocale? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsLocale) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'af-ZA': return CatalogsLocale.afZA;
@@ -211,7 +172,7 @@ class CatalogsLocaleTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsLocaleTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsLocaleTypeTransformer? _instance;
 }
 

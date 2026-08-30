@@ -9,7 +9,7 @@ The class is defined in **[SsioOrderLinesGetByAdAccount200Response.java](../../s
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;SSIOOrderLine&gt;`](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
+**items** | [`List&lt;SSIOOrderLine&gt;`](SSIOOrderLine.md) |  | 
 
 
 

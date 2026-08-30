@@ -8,7 +8,7 @@
       "name": "daily_metrics",
       "type": ["null", {
         "type": "array",
-        "items": "model.PinAnalyticsMetricsResponseDailyMetricsInner"
+        "items": "model.PinAnalyticsDailyMetrics"
       }],
       "doc": "Array with the requested daily metric records",
       "default": null

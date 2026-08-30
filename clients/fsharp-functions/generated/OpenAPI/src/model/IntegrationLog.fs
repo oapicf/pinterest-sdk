@@ -5,6 +5,8 @@ open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.IntegrationLogClientError
 open OpenAPI.Model.IntegrationLogClientRequest
+open OpenAPI.Model.IntegrationLogEventType
+open OpenAPI.Model.IntegrationLogLevel
 open OpenAPI.Model.string option
 
 module IntegrationLog =
@@ -22,13 +24,13 @@ module IntegrationLog =
     [<JsonProperty(PropertyName = "error")>]
     Error : IntegrationLogClientError;
     [<JsonProperty(PropertyName = "event_type")>]
-    EventType : string;
+    EventType : IntegrationLogEventType;
     [<JsonProperty(PropertyName = "external_business_id")>]
     ExternalBusinessId : string option;
     [<JsonProperty(PropertyName = "feed_profile_id")>]
     FeedProfileId : string option;
     [<JsonProperty(PropertyName = "log_level")>]
-    LogLevel : string;
+    LogLevel : IntegrationLogLevel;
     [<JsonProperty(PropertyName = "merchant_id")>]
     MerchantId : string option;
     [<JsonProperty(PropertyName = "message")>]

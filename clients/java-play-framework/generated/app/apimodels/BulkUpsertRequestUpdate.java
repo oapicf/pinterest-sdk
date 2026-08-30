@@ -2,11 +2,12 @@ package apimodels;
 
 import apimodels.AdGroupUpdateRequest;
 import apimodels.AdUpdateRequest;
+import apimodels.BulkUpsertRequestUpdateCatalogProductGroupsItems;
 import apimodels.CampaignUpdateRequest;
-import apimodels.CatalogsProductGroupsUpdateRequest;
-import apimodels.KeywordUpdate;
+import apimodels.KeywordUpdateGenerated;
 import apimodels.LabelBulkUpdateRequest;
 import apimodels.ProductGroupPromotionUpdateRequest;
+import apimodels.ScheduleUpdateRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +20,7 @@ import javax.validation.Valid;
 /**
  * Request for creation of entities in bulk.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BulkUpsertRequestUpdate   {
   @JsonProperty("ad_groups")
@@ -40,12 +41,12 @@ public class BulkUpsertRequestUpdate   {
   @JsonProperty("catalog_product_groups")
   @Valid
 
-  private List<CatalogsProductGroupsUpdateRequest> catalogProductGroups = null;
+  private List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = null;
 
   @JsonProperty("keywords")
   @Valid
 
-  private List<@Valid KeywordUpdate> keywords = null;
+  private List<@Valid KeywordUpdateGenerated> keywords = null;
 
   @JsonProperty("labels")
   @Valid
@@ -56,6 +57,11 @@ public class BulkUpsertRequestUpdate   {
   @Valid
 
   private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = null;
+
+  @JsonProperty("schedules")
+  @Valid
+
+  private List<@Valid ScheduleUpdateRequest> schedules = null;
 
   public BulkUpsertRequestUpdate adGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
@@ -132,12 +138,12 @@ public class BulkUpsertRequestUpdate   {
     this.campaigns = campaigns;
   }
 
-  public BulkUpsertRequestUpdate catalogProductGroups(List<CatalogsProductGroupsUpdateRequest> catalogProductGroups) {
+  public BulkUpsertRequestUpdate catalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
     return this;
   }
 
-  public BulkUpsertRequestUpdate addCatalogProductGroupsItem(CatalogsProductGroupsUpdateRequest catalogProductGroupsItem) {
+  public BulkUpsertRequestUpdate addCatalogProductGroupsItem(BulkUpsertRequestUpdateCatalogProductGroupsItems catalogProductGroupsItem) {
     if (this.catalogProductGroups == null) {
       this.catalogProductGroups = new ArrayList<>();
     }
@@ -149,20 +155,20 @@ public class BulkUpsertRequestUpdate   {
    * Get catalogProductGroups
    * @return catalogProductGroups
   **/
-  public List<CatalogsProductGroupsUpdateRequest> getCatalogProductGroups() {
+  public List<BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
 
-  public void setCatalogProductGroups(List<CatalogsProductGroupsUpdateRequest> catalogProductGroups) {
+  public void setCatalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 
-  public BulkUpsertRequestUpdate keywords(List<@Valid KeywordUpdate> keywords) {
+  public BulkUpsertRequestUpdate keywords(List<@Valid KeywordUpdateGenerated> keywords) {
     this.keywords = keywords;
     return this;
   }
 
-  public BulkUpsertRequestUpdate addKeywordsItem(KeywordUpdate keywordsItem) {
+  public BulkUpsertRequestUpdate addKeywordsItem(KeywordUpdateGenerated keywordsItem) {
     if (this.keywords == null) {
       this.keywords = new ArrayList<>();
     }
@@ -174,11 +180,11 @@ public class BulkUpsertRequestUpdate   {
    * Get keywords
    * @return keywords
   **/
-  public List<@Valid KeywordUpdate> getKeywords() {
+  public List<@Valid KeywordUpdateGenerated> getKeywords() {
     return keywords;
   }
 
-  public void setKeywords(List<@Valid KeywordUpdate> keywords) {
+  public void setKeywords(List<@Valid KeywordUpdateGenerated> keywords) {
     this.keywords = keywords;
   }
 
@@ -232,6 +238,31 @@ public class BulkUpsertRequestUpdate   {
     this.productGroups = productGroups;
   }
 
+  public BulkUpsertRequestUpdate schedules(List<@Valid ScheduleUpdateRequest> schedules) {
+    this.schedules = schedules;
+    return this;
+  }
+
+  public BulkUpsertRequestUpdate addSchedulesItem(ScheduleUpdateRequest schedulesItem) {
+    if (this.schedules == null) {
+      this.schedules = new ArrayList<>();
+    }
+    this.schedules.add(schedulesItem);
+    return this;
+  }
+
+   /**
+   * Get schedules
+   * @return schedules
+  **/
+  public List<@Valid ScheduleUpdateRequest> getSchedules() {
+    return schedules;
+  }
+
+  public void setSchedules(List<@Valid ScheduleUpdateRequest> schedules) {
+    this.schedules = schedules;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -248,12 +279,13 @@ public class BulkUpsertRequestUpdate   {
         Objects.equals(catalogProductGroups, bulkUpsertRequestUpdate.catalogProductGroups) &&
         Objects.equals(keywords, bulkUpsertRequestUpdate.keywords) &&
         Objects.equals(labels, bulkUpsertRequestUpdate.labels) &&
-        Objects.equals(productGroups, bulkUpsertRequestUpdate.productGroups);
+        Objects.equals(productGroups, bulkUpsertRequestUpdate.productGroups) &&
+        Objects.equals(schedules, bulkUpsertRequestUpdate.schedules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups);
+    return Objects.hash(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups, schedules);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -269,6 +301,7 @@ public class BulkUpsertRequestUpdate   {
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
+    sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -278,10 +311,7 @@ public class BulkUpsertRequestUpdate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

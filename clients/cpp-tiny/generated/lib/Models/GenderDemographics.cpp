@@ -106,7 +106,7 @@ GenderDemographics::getFemale()
 }
 
 void
-GenderDemographics::setFemale(long  female)
+GenderDemographics::setFemale(long female)
 {
 	this->female = female;
 }
@@ -118,7 +118,7 @@ GenderDemographics::getMale()
 }
 
 void
-GenderDemographics::setMale(long  male)
+GenderDemographics::setMale(long male)
 {
 	this->male = male;
 }
@@ -130,7 +130,7 @@ GenderDemographics::getUnspecified()
 }
 
 void
-GenderDemographics::setUnspecified(long  unspecified)
+GenderDemographics::setUnspecified(long unspecified)
 {
 	this->unspecified = unspecified;
 }

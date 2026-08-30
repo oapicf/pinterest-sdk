@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AuthRespondInvitesBodyInvitesInner;
+import org.openapitools.model.AuthRespondInvitesBodyItem;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,26 +19,26 @@ public class AuthRespondInvitesBody  {
   
   @ApiModelProperty(required = true, value = "")
 
-  private List<AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();
+  private List<AuthRespondInvitesBodyItem> invites = new ArrayList<>();
  /**
    * Get invites
    * @return invites
   **/
   @JsonProperty("invites")
-  public List<AuthRespondInvitesBodyInvitesInner> getInvites() {
+  public List<AuthRespondInvitesBodyItem> getInvites() {
     return invites;
   }
 
-  public void setInvites(List<AuthRespondInvitesBodyInvitesInner> invites) {
+  public void setInvites(List<AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
   }
 
-  public AuthRespondInvitesBody invites(List<AuthRespondInvitesBodyInvitesInner> invites) {
+  public AuthRespondInvitesBody invites(List<AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
     return this;
   }
 
-  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyInvitesInner invitesItem) {
+  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyItem invitesItem) {
     this.invites.add(invitesItem);
     return this;
   }
@@ -75,10 +75,7 @@ public class AuthRespondInvitesBody  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

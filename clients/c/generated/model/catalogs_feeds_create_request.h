@@ -15,9 +15,9 @@
 
 typedef struct catalogs_feeds_create_request_t catalogs_feeds_create_request_t;
 
+#include "catalogs_creative_assets_feeds_create_request_default_locale.h"
 #include "catalogs_feed_credentials.h"
 #include "catalogs_feed_processing_schedule.h"
-#include "catalogs_feeds_create_request_default_locale.h"
 #include "catalogs_format.h"
 #include "catalogs_status.h"
 #include "country.h"
@@ -31,7 +31,7 @@ typedef struct catalogs_feeds_create_request_t {
     pinterest_rest_api_product_availability_type__e default_availability; //referenced enum
     pinterest_rest_api_country__e default_country; //referenced enum
     pinterest_rest_api_nullable_currency__e default_currency; //referenced enum
-    struct catalogs_feeds_create_request_default_locale_t *default_locale; //model
+    struct catalogs_creative_assets_feeds_create_request_default_locale_t *default_locale; //model
     pinterest_rest_api_catalogs_format__e format; //referenced enum
     char *location; // string
     char *name; // string
@@ -46,7 +46,7 @@ __attribute__((deprecated)) catalogs_feeds_create_request_t *catalogs_feeds_crea
     pinterest_rest_api_product_availability_type__e default_availability,
     pinterest_rest_api_country__e default_country,
     pinterest_rest_api_nullable_currency__e default_currency,
-    catalogs_feeds_create_request_default_locale_t *default_locale,
+    catalogs_creative_assets_feeds_create_request_default_locale_t *default_locale,
     pinterest_rest_api_catalogs_format__e format,
     char *location,
     char *name,

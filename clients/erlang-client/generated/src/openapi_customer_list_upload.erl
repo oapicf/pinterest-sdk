@@ -12,7 +12,7 @@
        'id' := binary(),
        'operation' := openapi_user_list_operation_type:openapi_user_list_operation_type(),
        'record_counts' => openapi_record_counts:openapi_record_counts(),
-       'state' := binary(),
+       'state' := openapi_workload_state:openapi_workload_state(),
        'updated_time' := integer()
      }.
 

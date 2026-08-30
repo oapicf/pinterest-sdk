@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Level of the report",
+  "name": "ConversionProductReportLevel",
+  "symbols": [
+    "ADVERTISER",
+    "CAMPAIGN",
+    "AD_GROUP"
+  ]
+}

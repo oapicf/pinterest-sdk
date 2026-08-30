@@ -17,6 +17,9 @@ export interface CatalogsHotelProductGroupUpdateRequest {
     catalog_type?: CatalogsHotelProductGroupUpdateRequest.CatalogTypeEnum;
     description?: string | null;
     filters?: CatalogsHotelProductGroupFilters;
+    /**
+     * Name of catalog product group
+     */
     name?: string;
 }
 export namespace CatalogsHotelProductGroupUpdateRequest {

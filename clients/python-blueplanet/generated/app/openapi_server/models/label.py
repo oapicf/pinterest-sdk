@@ -6,8 +6,9 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.label_status import LabelStatus  # noqa: F401,E501
-from app.openapi_server.models.label_type import LabelType  # noqa: F401,E501
+from app.openapi_server.models.nullable_label_status import NullableLabelStatus  # noqa: F401,E501
+from app.openapi_server.models.nullable_label_type import NullableLabelType  # noqa: F401,E501
+import re  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,44 +18,34 @@ class Label(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: str=None, label_type: LabelType=None, parent_id: str=None, parent_type: str=None, status: LabelStatus=None, value: str=None):  # noqa: E501
+    def __init__(self, id: str=None, label_type: NullableLabelType=None, status: NullableLabelStatus=None, value: str=None):  # noqa: E501
         """Label - a model defined in Swagger
 
         :param id: The id of this Label.  # noqa: E501
         :type id: str
         :param label_type: The label_type of this Label.  # noqa: E501
-        :type label_type: LabelType
-        :param parent_id: The parent_id of this Label.  # noqa: E501
-        :type parent_id: str
-        :param parent_type: The parent_type of this Label.  # noqa: E501
-        :type parent_type: str
+        :type label_type: NullableLabelType
         :param status: The status of this Label.  # noqa: E501
-        :type status: LabelStatus
+        :type status: NullableLabelStatus
         :param value: The value of this Label.  # noqa: E501
         :type value: str
         """
         self.swagger_types = {
             'id': str,
-            'label_type': LabelType,
-            'parent_id': str,
-            'parent_type': str,
-            'status': LabelStatus,
+            'label_type': NullableLabelType,
+            'status': NullableLabelStatus,
             'value': str
         }
 
         self.attribute_map = {
             'id': 'id',
             'label_type': 'label_type',
-            'parent_id': 'parent_id',
-            'parent_type': 'parent_type',
             'status': 'status',
             'value': 'value'
         }
 
         self._id = id
         self._label_type = label_type
-        self._parent_id = parent_id
-        self._parent_type = parent_type
         self._status = status
         self._value = value
 
@@ -89,99 +80,53 @@ class Label(Model):
         :param id: The id of this Label.
         :type id: str
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._id = id
 
     @property
-    def label_type(self) -> LabelType:
+    def label_type(self) -> NullableLabelType:
         """Gets the label_type of this Label.
 
 
         :return: The label_type of this Label.
-        :rtype: LabelType
+        :rtype: NullableLabelType
         """
         return self._label_type
 
     @label_type.setter
-    def label_type(self, label_type: LabelType):
+    def label_type(self, label_type: NullableLabelType):
         """Sets the label_type of this Label.
 
 
         :param label_type: The label_type of this Label.
-        :type label_type: LabelType
+        :type label_type: NullableLabelType
         """
+        if label_type is None:
+            raise ValueError("Invalid value for `label_type`, must not be `None`")  # noqa: E501
 
         self._label_type = label_type
 
     @property
-    def parent_id(self) -> str:
-        """Gets the parent_id of this Label.
-
-        Label parent entity ID.  # noqa: E501
-
-        :return: The parent_id of this Label.
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id: str):
-        """Sets the parent_id of this Label.
-
-        Label parent entity ID.  # noqa: E501
-
-        :param parent_id: The parent_id of this Label.
-        :type parent_id: str
-        """
-
-        self._parent_id = parent_id
-
-    @property
-    def parent_type(self) -> str:
-        """Gets the parent_type of this Label.
-
-        Label parent entity type.  # noqa: E501
-
-        :return: The parent_type of this Label.
-        :rtype: str
-        """
-        return self._parent_type
-
-    @parent_type.setter
-    def parent_type(self, parent_type: str):
-        """Sets the parent_type of this Label.
-
-        Label parent entity type.  # noqa: E501
-
-        :param parent_type: The parent_type of this Label.
-        :type parent_type: str
-        """
-        allowed_values = ["CAMPAIGN", ""]  # noqa: E501
-        if parent_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `parent_type` ({0}), must be one of {1}"
-                .format(parent_type, allowed_values)
-            )
-
-        self._parent_type = parent_type
-
-    @property
-    def status(self) -> LabelStatus:
+    def status(self) -> NullableLabelStatus:
         """Gets the status of this Label.
 
 
         :return: The status of this Label.
-        :rtype: LabelStatus
+        :rtype: NullableLabelStatus
         """
         return self._status
 
     @status.setter
-    def status(self, status: LabelStatus):
+    def status(self, status: NullableLabelStatus):
         """Sets the status of this Label.
 
 
         :param status: The status of this Label.
-        :type status: LabelStatus
+        :type status: NullableLabelStatus
         """
 
         self._status = status
@@ -190,7 +135,7 @@ class Label(Model):
     def value(self) -> str:
         """Gets the value of this Label.
 
-        Label name.  # noqa: E501
+        Label name. 100-character limit.  # noqa: E501
 
         :return: The value of this Label.
         :rtype: str
@@ -201,11 +146,13 @@ class Label(Model):
     def value(self, value: str):
         """Sets the value of this Label.
 
-        Label name.  # noqa: E501
+        Label name. 100-character limit.  # noqa: E501
 
         :param value: The value of this Label.
         :type value: str
         """
+        if value is None:
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
         if value is not None and len(value) > 100:
             raise ValueError("Invalid value for `value`, length must be less than or equal to `100`")  # noqa: E501
 

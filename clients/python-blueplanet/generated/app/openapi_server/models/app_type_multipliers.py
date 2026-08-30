@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.targeting_spec_app_type import TargetingSpecAppType  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,14 +16,14 @@ class AppTypeMultipliers(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, app_type: str=None):  # noqa: E501
+    def __init__(self, app_type: TargetingSpecAppType=None):  # noqa: E501
         """AppTypeMultipliers - a model defined in Swagger
 
         :param app_type: The app_type of this AppTypeMultipliers.  # noqa: E501
-        :type app_type: str
+        :type app_type: TargetingSpecAppType
         """
         self.swagger_types = {
-            'app_type': str
+            'app_type': TargetingSpecAppType
         }
 
         self.attribute_map = {
@@ -43,28 +44,24 @@ class AppTypeMultipliers(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def app_type(self) -> str:
+    def app_type(self) -> TargetingSpecAppType:
         """Gets the app_type of this AppTypeMultipliers.
 
+        App type identifier.  # noqa: E501
 
         :return: The app_type of this AppTypeMultipliers.
-        :rtype: str
+        :rtype: TargetingSpecAppType
         """
         return self._app_type
 
     @app_type.setter
-    def app_type(self, app_type: str):
+    def app_type(self, app_type: TargetingSpecAppType):
         """Sets the app_type of this AppTypeMultipliers.
 
+        App type identifier.  # noqa: E501
 
         :param app_type: The app_type of this AppTypeMultipliers.
-        :type app_type: str
+        :type app_type: TargetingSpecAppType
         """
-        allowed_values = ["android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile"]  # noqa: E501
-        if app_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `app_type` ({0}), must be one of {1}"
-                .format(app_type, allowed_values)
-            )
 
         self._app_type = app_type

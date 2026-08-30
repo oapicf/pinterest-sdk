@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `TrendingTopic`
 --
-SELECT `description`, `percent_growth_mom`, `pins`, `related_interests`, `related_searches`, `time_series`, `title` FROM `TrendingTopic` WHERE 1;
+SELECT `description`, `id`, `percent_growth_mom`, `pins`, `related_interests`, `related_searches`, `time_series`, `title` FROM `TrendingTopic` WHERE 1;
 
 --
 -- INSERT template for table `TrendingTopic`
 --
-INSERT INTO `TrendingTopic`(`description`, `percent_growth_mom`, `pins`, `related_interests`, `related_searches`, `time_series`, `title`) VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `TrendingTopic`(`description`, `id`, `percent_growth_mom`, `pins`, `related_interests`, `related_searches`, `time_series`, `title`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `TrendingTopic`
 --
-UPDATE `TrendingTopic` SET `description` = ?, `percent_growth_mom` = ?, `pins` = ?, `related_interests` = ?, `related_searches` = ?, `time_series` = ?, `title` = ? WHERE 1;
+UPDATE `TrendingTopic` SET `description` = ?, `id` = ?, `percent_growth_mom` = ?, `pins` = ?, `related_interests` = ?, `related_searches` = ?, `time_series` = ?, `title` = ? WHERE 1;
 
 --
 -- DELETE template for table `TrendingTopic`

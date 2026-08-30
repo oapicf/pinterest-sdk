@@ -8,14 +8,14 @@ API.Client.BusinessMemberAssetsSummary = function() {}
 
 /**
  * List of ad account IDs and respective permission levels.
- * @type {!Array<!API.Client.BusinessMemberAssetsSummary_ad_accounts_inner>}
+ * @type {!Array<!API.Client.AssetIdWithPermissions>}
  * @export
  */
 API.Client.BusinessMemberAssetsSummary.prototype.adAccounts;
 
 /**
  * List of profile IDs and respective permission levels.
- * @type {!Array<!API.Client.BusinessMemberAssetsSummary_profiles_inner>}
+ * @type {!Array<!API.Client.AssetIdWithPermissions>}
  * @export
  */
 API.Client.BusinessMemberAssetsSummary.prototype.profiles;

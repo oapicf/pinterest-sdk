@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **promotions_create**
-> PromotionsResponse promotions_create(ad_account_id, promotion_create_request)
+> PromotionsResponse promotions_create(ad_account_id, promotion_create)
 
 Create promotions
 
@@ -24,7 +24,7 @@ Create multiple new promotions.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.promotion_create_request import PromotionCreateRequest
+from pinterestsdk.models.promotion_create import PromotionCreate
 from pinterestsdk.models.promotions_response import PromotionsResponse
 from pinterestsdk.rest import ApiException
 from pprint import pprint
@@ -47,11 +47,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.PromotionsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    promotion_create_request = [pinterestsdk.PromotionCreateRequest()] # List[PromotionCreateRequest] | List of promotions to create, size limit [1, 30].
+    promotion_create = [pinterestsdk.PromotionCreate()] # List[PromotionCreate] | 
 
     try:
         # Create promotions
-        api_response = api_instance.promotions_create(ad_account_id, promotion_create_request)
+        api_response = api_instance.promotions_create(ad_account_id, promotion_create)
         print("The response of PromotionsApi->promotions_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,7 +66,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **promotion_create_request** | [**List[PromotionCreateRequest]**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotion_create** | [**List[PromotionCreate]**](PromotionCreate.md)|  | 
 
 ### Return type
 
@@ -85,14 +85,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid create promotions request parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_delete**
-> promotions_delete(ad_account_id, promotion_id)
+> Promotion promotions_delete(promotion_id, ad_account_id)
 
 Delete promotion by id
 
@@ -104,6 +108,7 @@ Delete a promotion within Pinterest.
 
 ```python
 import pinterestsdk
+from pinterestsdk.models.promotion import Promotion
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -124,12 +129,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.PromotionsApi(api_client)
+    promotion_id = 'promotion_id_example' # str | Promotion ID
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    promotion_id = 'promotion_id_example' # str | Unique identifier of a promotion
 
     try:
         # Delete promotion by id
-        api_instance.promotions_delete(ad_account_id, promotion_id)
+        api_response = api_instance.promotions_delete(promotion_id, ad_account_id)
+        print("The response of PromotionsApi->promotions_delete:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling PromotionsApi->promotions_delete: %s\n" % e)
 ```
@@ -141,12 +148,12 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotion_id** | **str**| Promotion ID | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **promotion_id** | **str**| Unique identifier of a promotion | 
 
 ### Return type
 
-void (empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -161,13 +168,19 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Promotion deleted successfully |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**204** | Resource deleted successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_get**
-> PromotionResponse promotions_get(ad_account_id, promotion_id)
+> Promotion promotions_get(promotion_id, ad_account_id)
 
 Get promotion by id
 
@@ -179,7 +192,7 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.promotion_response import PromotionResponse
+from pinterestsdk.models.promotion import Promotion
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -200,12 +213,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.PromotionsApi(api_client)
+    promotion_id = 'promotion_id_example' # str | Promotion ID
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    promotion_id = 'promotion_id_example' # str | Unique identifier of a promotion
 
     try:
         # Get promotion by id
-        api_response = api_instance.promotions_get(ad_account_id, promotion_id)
+        api_response = api_instance.promotions_get(promotion_id, ad_account_id)
         print("The response of PromotionsApi->promotions_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -219,12 +232,12 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotion_id** | **str**| Promotion ID | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **promotion_id** | **str**| Unique identifier of a promotion | 
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -239,18 +252,24 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | The promotion ID for the given ad account ID was not found. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_list**
-> PromotionsList200Response promotions_list(ad_account_id, page_size=page_size, order=order, bookmark=bookmark)
+> PromotionsList200Response promotions_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order)
 
 Get promotions
 
-Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
+Gets all promotions associated with an ad account ID that can be
+applied to an ad group. Can be either internally-saved promotions or external
+promotions imported from a commerce integration.
 
 ### Example
 
@@ -258,6 +277,7 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 
 ```python
 import pinterestsdk
+from pinterestsdk.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder
 from pinterestsdk.models.promotions_list200_response import PromotionsList200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
@@ -280,13 +300,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.PromotionsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-    order = 'ASCENDING' # str | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+    order = pinterestsdk.PinterestLibPaginationOrder() # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
     try:
         # Get promotions
-        api_response = api_instance.promotions_list(ad_account_id, page_size=page_size, order=order, bookmark=bookmark)
+        api_response = api_instance.promotions_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order)
         print("The response of PromotionsApi->promotions_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -301,9 +321,9 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **str**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -322,14 +342,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account promotions parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_update**
-> PromotionsResponse promotions_update(ad_account_id, promotion_update_request)
+> PromotionsResponse promotions_update(ad_account_id, promotion_batch_update)
 
 Update promotions
 
@@ -341,7 +365,7 @@ Update multiple promotions.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.promotion_update_request import PromotionUpdateRequest
+from pinterestsdk.models.promotion_batch_update import PromotionBatchUpdate
 from pinterestsdk.models.promotions_response import PromotionsResponse
 from pinterestsdk.rest import ApiException
 from pprint import pprint
@@ -364,11 +388,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.PromotionsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    promotion_update_request = [pinterestsdk.PromotionUpdateRequest()] # List[PromotionUpdateRequest] | List of promotions to create, size limit [1, 30].
+    promotion_batch_update = [pinterestsdk.PromotionBatchUpdate()] # List[PromotionBatchUpdate] | 
 
     try:
         # Update promotions
-        api_response = api_instance.promotions_update(ad_account_id, promotion_update_request)
+        api_response = api_instance.promotions_update(ad_account_id, promotion_batch_update)
         print("The response of PromotionsApi->promotions_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -383,7 +407,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **promotion_update_request** | [**List[PromotionUpdateRequest]**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotion_batch_update** | [**List[PromotionBatchUpdate]**](PromotionBatchUpdate.md)|  | 
 
 ### Return type
 
@@ -402,9 +426,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid create promotions request parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -26,12 +26,12 @@ class Board {
     Boolean isAdsOnly = false
     /* Board media. */
     BoardMedia media
-    /*      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
+    /*     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
     String name
     
     BoardOwner owner
     /* Count of Pins on the board. */
     Integer pinCount
     /*     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`.  */
-    BoardPrivacy privacy = BoardPrivacy.PUBLIC
+    BoardPrivacy privacy
 }

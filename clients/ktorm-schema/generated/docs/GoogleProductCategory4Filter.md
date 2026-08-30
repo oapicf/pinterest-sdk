@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**GOOGLE_PRODUCT_CATEGORY_4** | GOOGLE_PRODUCT_CATEGORY_4 | long NOT NULL |  | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  [foreignkey]
+**GOOGLE_PRODUCT_CATEGORY_4** | GOOGLE_PRODUCT_CATEGORY_4 | long NOT NULL |  | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |  [foreignkey]
 
 
 

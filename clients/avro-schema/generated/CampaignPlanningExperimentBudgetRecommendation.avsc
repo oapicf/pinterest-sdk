@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Experimental budget recommendation for a single experiment version.",
+  "name": "CampaignPlanningExperimentBudgetRecommendation",
+  "fields": [
+    {
+      "name": "budget_recommendation",
+      "type": ["null", "int"],
+      "doc": "Recommended budget for this experiment version.",
+      "default": null
+    },
+    {
+      "name": "lifetime_days_recommendation",
+      "type": ["null", "int"],
+      "doc": "Recommended lifetime days for this experiment.",
+      "default": null
+    },
+    {
+      "name": "point_estimations",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignPlanningBudgetRecommendationPoint"
+      }],
+      "doc": "Point estimations for this experiment version.",
+      "default": null
+    },
+    {
+      "name": "version_id",
+      "type": ["null", "string"],
+      "doc": "Version identifier for the experiment.",
+      "default": null
+    }
+  ]
+
+}

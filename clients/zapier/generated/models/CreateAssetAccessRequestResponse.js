@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const CreateAssetAccessRequestErrorMessage_inner = require('../models/CreateAssetAccessRequestErrorMessage_inner');
+const AssetAccessRequestError = require('../models/AssetAccessRequestError');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -8,11 +8,11 @@ module.exports = {
             {
                 key: `${keyPrefix}exceptions`,
                 label: `[${labelPrefix}exceptions]`,
-                children: CreateAssetAccessRequestErrorMessage_inner.fields(`${keyPrefix}exceptions${!isInput ? '[]' : ''}`, isInput, true), 
+                children: AssetAccessRequestError.fields(`${keyPrefix}exceptions${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
                 key: `${keyPrefix}invites`,
-                label: `[${labelPrefix}invites]`,
+                label: `An object mapping each partner id to the asset access request id. Only one request id is returned per partner. - [${labelPrefix}invites]`,
                 type: 'object',
             },
         ]
@@ -20,7 +20,7 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'exceptions': utils.childMapping(bundle.inputData?.[`${keyPrefix}exceptions`], `${keyPrefix}exceptions`, CreateAssetAccessRequestErrorMessage_inner),
+            'exceptions': utils.childMapping(bundle.inputData?.[`${keyPrefix}exceptions`], `${keyPrefix}exceptions`, AssetAccessRequestError),
             'invites': bundle.inputData?.[`${keyPrefix}invites`],
         }
     },

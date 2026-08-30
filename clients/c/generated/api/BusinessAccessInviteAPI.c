@@ -156,11 +156,35 @@ BusinessAccessInviteAPI_assetAccessRequestsCreate(apiClient_t *apiClient, char *
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     create_asset_access_request_response_t *elementToReturn = NULL;
@@ -202,8 +226,8 @@ end:
 //
 // Cancel membership/partnership invites and/or requests.
 //
-delete_invites_results_response_array_t*
-BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *business_id, cancel_invites_body_t *cancel_invites_body)
+cancel_invites_response_t*
+BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *business_id, cancel_invites_request_t *cancel_invites_request)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -236,12 +260,12 @@ BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *bu
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_cancel_invites_body = NULL;
-    if (cancel_invites_body != NULL)
+    cJSON *localVarSingleItemJSON_cancel_invites_request = NULL;
+    if (cancel_invites_request != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_cancel_invites_body = cancel_invites_body_convertToJSON(cancel_invites_body);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cancel_invites_body);
+        localVarSingleItemJSON_cancel_invites_request = cancel_invites_request_convertToJSON(cancel_invites_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cancel_invites_request);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -259,17 +283,17 @@ BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *bu
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    delete_invites_results_response_array_t *elementToReturn = NULL;
+    cancel_invites_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BusinessAccessInviteAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = delete_invites_results_response_array_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
+        elementToReturn = cancel_invites_response_parseFromJSON(BusinessAccessInviteAPIlocalVarJSON);
         cJSON_Delete(BusinessAccessInviteAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -289,9 +313,9 @@ BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *bu
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_business_id);
-    if (localVarSingleItemJSON_cancel_invites_body) {
-        cJSON_Delete(localVarSingleItemJSON_cancel_invites_body);
-        localVarSingleItemJSON_cancel_invites_body = NULL;
+    if (localVarSingleItemJSON_cancel_invites_request) {
+        cJSON_Delete(localVarSingleItemJSON_cancel_invites_request);
+        localVarSingleItemJSON_cancel_invites_request = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -362,11 +386,35 @@ BusinessAccessInviteAPI_createAssetInvites(apiClient_t *apiClient, char *busines
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     update_invites_results_response_array_t *elementToReturn = NULL;
@@ -465,11 +513,35 @@ BusinessAccessInviteAPI_createMembershipOrPartnershipInvites(apiClient_t *apiCli
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     create_invites_results_response_array_t *elementToReturn = NULL;
@@ -614,11 +686,31 @@ BusinessAccessInviteAPI_getInvites(apiClient_t *apiClient, char *business_id, in
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     get_invites_200_response_t *elementToReturn = NULL;
@@ -744,11 +836,31 @@ BusinessAccessInviteAPI_respondBusinessAccessInvites(apiClient_t *apiClient, aut
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     respond_to_invites_response_array_t *elementToReturn = NULL;

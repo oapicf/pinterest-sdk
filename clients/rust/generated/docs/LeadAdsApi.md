@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## ad_accounts_subscriptions_slash_del_by_id
 
-> ad_accounts_subscriptions_slash_del_by_id(ad_account_id, subscription_id)
+> models::LeadSubscription ad_accounts_subscriptions_slash_del_by_id(ad_account_id, subscription_id)
 Delete lead ads subscription
 
 Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
@@ -28,7 +28,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 

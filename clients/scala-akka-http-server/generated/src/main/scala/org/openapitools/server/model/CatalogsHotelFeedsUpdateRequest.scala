@@ -16,7 +16,7 @@ package org.openapitools.server.model
  * @param status  for example: ''null''
 */
 final case class CatalogsHotelFeedsUpdateRequest (
-  catalogType: CatalogsType,
+  catalogType: String,
   credentials: Option[CatalogsFeedCredentials] = None,
   defaultCurrency: Option[NullableCurrency] = None,
   format: Option[CatalogsFormat] = None,

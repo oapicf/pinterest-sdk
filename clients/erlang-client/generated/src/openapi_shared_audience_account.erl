@@ -7,7 +7,7 @@
 -type openapi_shared_audience_account() ::
     #{ 'account_id' := binary(),
        'account_name' := binary(),
-       'account_type' := binary(),
+       'account_type' := openapi_audience_account_type:openapi_audience_account_type(),
        'shared_on_timestamp' := integer()
      }.
 

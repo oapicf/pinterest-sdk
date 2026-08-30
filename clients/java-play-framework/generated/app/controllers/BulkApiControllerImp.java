@@ -1,11 +1,11 @@
 package controllers;
 
-import apimodels.BulkDownloadRequest;
-import apimodels.BulkDownloadResponse;
+import apimodels.BulkDownload;
+import apimodels.BulkDownloadCreate;
+import apimodels.BulkJobData;
 import apimodels.BulkUpsertRequest;
 import apimodels.BulkUpsertResponse;
-import apimodels.BulkUpsertStatusResponse;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import play.mvc.Http;
 import java.util.List;
@@ -16,18 +16,18 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BulkApiControllerImp extends BulkApiControllerImpInterface {
     @Override
-    public BulkDownloadResponse bulkDownloadCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BulkDownloadRequest bulkDownloadRequest) throws Exception {
+    public BulkDownload bulkDownloadCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BulkDownloadCreate bulkDownloadCreate) throws Exception {
         //Do your magic!!!
-        return new BulkDownloadResponse();
+        return new BulkDownload();
     }
 
     @Override
-    public BulkUpsertStatusResponse bulkRequestGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bulkRequestId, Boolean includeDetails) throws Exception {
+    public BulkJobData bulkRequestGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bulkRequestId, Boolean includeDetails) throws Exception {
         //Do your magic!!!
-        return new BulkUpsertStatusResponse();
+        return new BulkJobData();
     }
 
     @Override

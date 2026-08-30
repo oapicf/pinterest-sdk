@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -53,17 +54,23 @@ func NewBusinessAccessRelationshipsAPIController(s BusinessAccessRelationshipsAP
 // Routes returns all the api routes for the BusinessAccessRelationshipsAPIController
 func (c *BusinessAccessRelationshipsAPIController) Routes() Routes {
 	return Routes{
+		"BrandAccountsCreate": Route{
+			"BrandAccountsCreate",
+			strings.ToUpper("Post"),
+			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts",
+			c.BrandAccountsCreate,
+		},
+		"BrandAccountsUpdate": Route{
+			"BrandAccountsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}",
+			c.BrandAccountsUpdate,
+		},
 		"GetBusinessEmployers": Route{
 			"GetBusinessEmployers",
 			strings.ToUpper("Get"),
 			"/v5/businesses/employers",
 			c.GetBusinessEmployers,
-		},
-		"SystemUserUpdate": Route{
-			"SystemUserUpdate",
-			strings.ToUpper("Patch"),
-			"/v5/businesses/{business_id}/system_users/{system_user_id}",
-			c.SystemUserUpdate,
 		},
 		"GetBusinessMembers": Route{
 			"GetBusinessMembers",
@@ -95,17 +102,11 @@ func (c *BusinessAccessRelationshipsAPIController) Routes() Routes {
 			"/v5/businesses/{business_id}/partners",
 			c.DeleteBusinessPartners,
 		},
-		"BrandAccountsCreate": Route{
-			"BrandAccountsCreate",
-			strings.ToUpper("Post"),
-			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts",
-			c.BrandAccountsCreate,
-		},
-		"BrandAccountsUpdate": Route{
-			"BrandAccountsUpdate",
+		"SystemUserUpdate": Route{
+			"SystemUserUpdate",
 			strings.ToUpper("Patch"),
-			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}",
-			c.BrandAccountsUpdate,
+			"/v5/businesses/{business_id}/system_users/{system_user_id}",
+			c.SystemUserUpdate,
 		},
 	}
 }
@@ -114,16 +115,22 @@ func (c *BusinessAccessRelationshipsAPIController) Routes() Routes {
 func (c *BusinessAccessRelationshipsAPIController) OrderedRoutes() []Route {
 	return []Route{
 		Route{
+			"BrandAccountsCreate",
+			strings.ToUpper("Post"),
+			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts",
+			c.BrandAccountsCreate,
+		},
+		Route{
+			"BrandAccountsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}",
+			c.BrandAccountsUpdate,
+		},
+		Route{
 			"GetBusinessEmployers",
 			strings.ToUpper("Get"),
 			"/v5/businesses/employers",
 			c.GetBusinessEmployers,
-		},
-		Route{
-			"SystemUserUpdate",
-			strings.ToUpper("Patch"),
-			"/v5/businesses/{business_id}/system_users/{system_user_id}",
-			c.SystemUserUpdate,
 		},
 		Route{
 			"GetBusinessMembers",
@@ -156,21 +163,96 @@ func (c *BusinessAccessRelationshipsAPIController) OrderedRoutes() []Route {
 			c.DeleteBusinessPartners,
 		},
 		Route{
-			"BrandAccountsCreate",
-			strings.ToUpper("Post"),
-			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts",
-			c.BrandAccountsCreate,
-		},
-		Route{
-			"BrandAccountsUpdate",
+			"SystemUserUpdate",
 			strings.ToUpper("Patch"),
-			"/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}",
-			c.BrandAccountsUpdate,
+			"/v5/businesses/{business_id}/system_users/{system_user_id}",
+			c.SystemUserUpdate,
 		},
 	}
 }
 
 
+
+// BrandAccountsCreate - Create a Brand Account
+func (c *BusinessAccessRelationshipsAPIController) BrandAccountsCreate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	businessHierarchyIdParam := params["business_hierarchy_id"]
+	if businessHierarchyIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_hierarchy_id"}, nil)
+		return
+	}
+	var brandAccountCreateParam BrandAccountCreate
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&brandAccountCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertBrandAccountCreateRequired(brandAccountCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertBrandAccountCreateConstraints(brandAccountCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.BrandAccountsCreate(r.Context(), businessHierarchyIdParam, brandAccountCreateParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// BrandAccountsUpdate - Update a Brand Account
+func (c *BusinessAccessRelationshipsAPIController) BrandAccountsUpdate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	brandAccountIdParam := params["brand_account_id"]
+	if brandAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"brand_account_id"}, nil)
+		return
+	}
+	businessHierarchyIdParam := params["business_hierarchy_id"]
+	if businessHierarchyIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_hierarchy_id"}, nil)
+		return
+	}
+	var brandAccountUpdateParam BrandAccountUpdate
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&brandAccountUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertBrandAccountUpdateRequired(brandAccountUpdateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertBrandAccountUpdateConstraints(brandAccountUpdateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.BrandAccountsUpdate(r.Context(), brandAccountIdParam, businessHierarchyIdParam, brandAccountUpdateParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
 
 // GetBusinessEmployers - List business employers for user
 func (c *BusinessAccessRelationshipsAPIController) GetBusinessEmployers(w http.ResponseWriter, r *http.Request) {
@@ -178,6 +260,29 @@ func (c *BusinessAccessRelationshipsAPIController) GetBusinessEmployers(w http.R
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
+	}
+	var assetsSummaryParam bool
+	if query.Has("assets_summary") {
+		param, err := parseBoolParameter(
+			query.Get("assets_summary"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "assets_summary", Err: err}, nil)
+			return
+		}
+
+		assetsSummaryParam = param
+	} else {
+		var param bool = true
+		assetsSummaryParam = param
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
 	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
@@ -197,52 +302,7 @@ func (c *BusinessAccessRelationshipsAPIController) GetBusinessEmployers(w http.R
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.GetBusinessEmployers(r.Context(), pageSizeParam, bookmarkParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// SystemUserUpdate - Update a system user information.
-func (c *BusinessAccessRelationshipsAPIController) SystemUserUpdate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessIdParam := params["business_id"]
-	if businessIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
-		return
-	}
-	systemUserIdParam := params["system_user_id"]
-	if systemUserIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"system_user_id"}, nil)
-		return
-	}
-	var systemUserUpdateRequestParam SystemUserUpdateRequest
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&systemUserUpdateRequestParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertSystemUserUpdateRequestRequired(systemUserUpdateRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertSystemUserUpdateRequestConstraints(systemUserUpdateRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.SystemUserUpdate(r.Context(), businessIdParam, systemUserIdParam, systemUserUpdateRequestParam)
+	result, err := c.service.GetBusinessEmployers(r.Context(), assetsSummaryParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -377,22 +437,27 @@ func (c *BusinessAccessRelationshipsAPIController) DeleteBusinessMembership(w ht
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	var membersToDeleteBodyParam MembersToDeleteBody
+	var deleteBusinessMembershipBodyParam DeleteBusinessMembershipBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&membersToDeleteBodyParam); err != nil {
+	if err := d.Decode(&deleteBusinessMembershipBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertMembersToDeleteBodyRequired(membersToDeleteBodyParam); err != nil {
+	if err := AssertDeleteBusinessMembershipBodyRequired(deleteBusinessMembershipBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertMembersToDeleteBodyConstraints(membersToDeleteBodyParam); err != nil {
+	if err := AssertDeleteBusinessMembershipBodyConstraints(deleteBusinessMembershipBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.DeleteBusinessMembership(r.Context(), businessIdParam, membersToDeleteBodyParam)
+	result, err := c.service.DeleteBusinessMembership(r.Context(), businessIdParam, deleteBusinessMembershipBodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -410,20 +475,25 @@ func (c *BusinessAccessRelationshipsAPIController) UpdateBusinessMemberships(w h
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	var updateMemberBusinessRoleBodyParam []UpdateMemberBusinessRoleBody
+	var businessMembershipMemberParam []BusinessMembershipMember
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&updateMemberBusinessRoleBodyParam); err != nil {
+	if err := d.Decode(&businessMembershipMemberParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range updateMemberBusinessRoleBodyParam {
-		if err := AssertUpdateMemberBusinessRoleBodyRequired(el); err != nil {
+	for _, el := range businessMembershipMemberParam {
+		if err := AssertBusinessMembershipMemberRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
 	}
-	result, err := c.service.UpdateBusinessMemberships(r.Context(), businessIdParam, updateMemberBusinessRoleBodyParam)
+	result, err := c.service.UpdateBusinessMemberships(r.Context(), businessIdParam, businessMembershipMemberParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -493,6 +563,27 @@ func (c *BusinessAccessRelationshipsAPIController) GetBusinessPartners(w http.Re
 		var param int32 = 0
 		startIndexParam = param
 	}
+	var sortAscendingParam bool
+	if query.Has("sort_ascending") {
+		param, err := parseBoolParameter(
+			query.Get("sort_ascending"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "sort_ascending", Err: err}, nil)
+			return
+		}
+
+		sortAscendingParam = param
+	} else {
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -511,14 +602,7 @@ func (c *BusinessAccessRelationshipsAPIController) GetBusinessPartners(w http.Re
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.GetBusinessPartners(r.Context(), businessIdParam, assetsSummaryParam, partnerTypeParam, partnerIdsParam, startIndexParam, pageSizeParam, bookmarkParam)
+	result, err := c.service.GetBusinessPartners(r.Context(), businessIdParam, assetsSummaryParam, partnerTypeParam, partnerIdsParam, startIndexParam, sortAscendingParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -536,22 +620,27 @@ func (c *BusinessAccessRelationshipsAPIController) DeleteBusinessPartners(w http
 		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	var deletePartnersRequestParam DeletePartnersRequest
+	var deleteBusinessPartnersDeleteParam DeleteBusinessPartnersDelete
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&deletePartnersRequestParam); err != nil {
+	if err := d.Decode(&deleteBusinessPartnersDeleteParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertDeletePartnersRequestRequired(deletePartnersRequestParam); err != nil {
+	if err := AssertDeleteBusinessPartnersDeleteRequired(deleteBusinessPartnersDeleteParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertDeletePartnersRequestConstraints(deletePartnersRequestParam); err != nil {
+	if err := AssertDeleteBusinessPartnersDeleteConstraints(deleteBusinessPartnersDeleteParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.DeleteBusinessPartners(r.Context(), businessIdParam, deletePartnersRequestParam)
+	result, err := c.service.DeleteBusinessPartners(r.Context(), businessIdParam, deleteBusinessPartnersDeleteParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -561,68 +650,40 @@ func (c *BusinessAccessRelationshipsAPIController) DeleteBusinessPartners(w http
 	_ = EncodeJSONResponse(result.Body, &result.Code, w)
 }
 
-// BrandAccountsCreate - Create a Brand Account
-func (c *BusinessAccessRelationshipsAPIController) BrandAccountsCreate(w http.ResponseWriter, r *http.Request) {
+// SystemUserUpdate - Update a system user information.
+func (c *BusinessAccessRelationshipsAPIController) SystemUserUpdate(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	businessHierarchyIdParam := params["business_hierarchy_id"]
-	if businessHierarchyIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_hierarchy_id"}, nil)
+	businessIdParam := params["business_id"]
+	if businessIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"business_id"}, nil)
 		return
 	}
-	var brandAccountsCreateRequestParam BrandAccountsCreateRequest
+	systemUserIdParam := params["system_user_id"]
+	if systemUserIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"system_user_id"}, nil)
+		return
+	}
+	var systemUserUpdateWithRequiredBodyParam SystemUserUpdateWithRequiredBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&brandAccountsCreateRequestParam); err != nil {
+	if err := d.Decode(&systemUserUpdateWithRequiredBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertBrandAccountsCreateRequestRequired(brandAccountsCreateRequestParam); err != nil {
+	if err := AssertSystemUserUpdateWithRequiredBodyRequired(systemUserUpdateWithRequiredBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertBrandAccountsCreateRequestConstraints(brandAccountsCreateRequestParam); err != nil {
+	if err := AssertSystemUserUpdateWithRequiredBodyConstraints(systemUserUpdateWithRequiredBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.BrandAccountsCreate(r.Context(), businessHierarchyIdParam, brandAccountsCreateRequestParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// BrandAccountsUpdate - Update a Brand Account
-func (c *BusinessAccessRelationshipsAPIController) BrandAccountsUpdate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	businessHierarchyIdParam := params["business_hierarchy_id"]
-	if businessHierarchyIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"business_hierarchy_id"}, nil)
-		return
-	}
-	brandAccountIdParam := params["brand_account_id"]
-	if brandAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"brand_account_id"}, nil)
-		return
-	}
-	var brandAccountsUpdateRequestParam BrandAccountsUpdateRequest
-	d := json.NewDecoder(r.Body)
-	d.DisallowUnknownFields()
-	if err := d.Decode(&brandAccountsUpdateRequestParam); err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	if err := AssertBrandAccountsUpdateRequestRequired(brandAccountsUpdateRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertBrandAccountsUpdateRequestConstraints(brandAccountsUpdateRequestParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.BrandAccountsUpdate(r.Context(), businessHierarchyIdParam, brandAccountIdParam, brandAccountsUpdateRequestParam)
+	result, err := c.service.SystemUserUpdate(r.Context(), businessIdParam, systemUserIdParam, systemUserUpdateWithRequiredBodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TopVideoPinsAnalyticsResponseDateAvailability",
+  "fields": [
+    {
+      "name": "is_realtime",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "latest_available_timestamp",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

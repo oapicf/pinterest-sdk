@@ -10,12 +10,12 @@ import java.util.List;
 
 import org.openapitools.model.*;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.BoardsList200Response;
+import org.openapitools.model.PinsList200Response;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.SearchPartnerPins200Response;
-import org.openapitools.model.SearchUserBoardsGet200Response;
-import org.openapitools.model.SearchUserPinsList200Response;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SearchController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -30,7 +30,7 @@ public class SearchController  {
   */
 
   /*
-    public ResponseContext searchUserBoardsGet(RequestContext request , String adAccountId, String bookmark, Integer pageSize, String query) {
+    public ResponseContext searchUserBoardsGet(RequestContext request , String adAccountId, String query, String bookmark, Integer pageSize) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

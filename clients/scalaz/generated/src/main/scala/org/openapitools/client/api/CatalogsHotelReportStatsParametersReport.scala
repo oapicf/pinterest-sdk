@@ -12,29 +12,26 @@ import org.joda.time.DateTime
 import CatalogsHotelReportStatsParametersReport._
 
 case class CatalogsHotelReportStatsParametersReport (
-  reportType: Option[ReportType],
-/* ID of the feed entity. */
+  /* ID of the feed entity. */
   feedId: String,
 /* Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result. */
   processingResultId: Option[String],
+reportType: ReportType,
 /* Unique identifier of a catalog. If not given, oldest catalog will be used */
   catalogId: Option[String])
 
 object CatalogsHotelReportStatsParametersReport {
   import DateTimeCodecs._
   sealed trait ReportType
-  case object FEEDINGESTIONISSUES extends ReportType
   case object DISTRIBUTIONISSUES extends ReportType
 
   object ReportType {
     def toReportType(s: String): Option[ReportType] = s match {
-      case "FEEDINGESTIONISSUES" => Some(FEEDINGESTIONISSUES)
       case "DISTRIBUTIONISSUES" => Some(DISTRIBUTIONISSUES)
       case _ => None
     }
 
     def fromReportType(x: ReportType): String = x match {
-      case FEEDINGESTIONISSUES => "FEEDINGESTIONISSUES"
       case DISTRIBUTIONISSUES => "DISTRIBUTIONISSUES"
     }
   }

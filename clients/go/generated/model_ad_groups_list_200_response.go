@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &AdGroupsList200Response{}
 // AdGroupsList200Response struct for AdGroupsList200Response
 type AdGroupsList200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	Items []AdGroupResponse `json:"items"`
+	Items []AdGroup `json:"items"`
 }
 
 type _AdGroupsList200Response AdGroupsList200Response
@@ -32,7 +32,7 @@ type _AdGroupsList200Response AdGroupsList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdGroupsList200Response(items []AdGroupResponse) *AdGroupsList200Response {
+func NewAdGroupsList200Response(items []AdGroup) *AdGroupsList200Response {
 	this := AdGroupsList200Response{}
 	this.Items = items
 	return &this
@@ -89,9 +89,9 @@ func (o *AdGroupsList200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *AdGroupsList200Response) GetItems() []AdGroupResponse {
+func (o *AdGroupsList200Response) GetItems() []AdGroup {
 	if o == nil {
-		var ret []AdGroupResponse
+		var ret []AdGroup
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *AdGroupsList200Response) GetItems() []AdGroupResponse {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *AdGroupsList200Response) GetItemsOk() ([]AdGroupResponse, bool) {
+func (o *AdGroupsList200Response) GetItemsOk() ([]AdGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *AdGroupsList200Response) GetItemsOk() ([]AdGroupResponse, bool) {
 }
 
 // SetItems sets field value
-func (o *AdGroupsList200Response) SetItems(v []AdGroupResponse) {
+func (o *AdGroupsList200Response) SetItems(v []AdGroup) {
 	o.Items = v
 }
 

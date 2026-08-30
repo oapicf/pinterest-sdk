@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "LocalInventoryItemsBatchCreate",
+  "fields": [
+    {
+      "name": "operations",
+      "type": {
+        "type": "array",
+        "items": "model.LocalInventoryOperation"
+      },
+      "doc": "Array of inventory operations. Up to 1000 items per request."
+    }
+  ]
+
+}

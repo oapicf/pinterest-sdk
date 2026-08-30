@@ -10,18 +10,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetPartnerAssetsResponse;
+import org.openapitools.model.BaseBusinessAssets;
 
 /**
  * BusinessPartnerAssetAccessGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessPartnerAssetAccessGet200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
-  private List<@Valid GetPartnerAssetsResponse> items = new ArrayList<>();
+  private List<@Valid BaseBusinessAssets> items = new ArrayList<>();
 
   public BusinessPartnerAssetAccessGet200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -41,26 +41,26 @@ public class BusinessPartnerAssetAccessGet200Response   {
     this.bookmark = bookmark;
   }
 
-  public BusinessPartnerAssetAccessGet200Response items(List<@Valid GetPartnerAssetsResponse> items) {
+  public BusinessPartnerAssetAccessGet200Response items(List<@Valid BaseBusinessAssets> items) {
     this.items = items;
     return this;
   }
 
-  public BusinessPartnerAssetAccessGet200Response addItemsItem(GetPartnerAssetsResponse itemsItem) {
+  public BusinessPartnerAssetAccessGet200Response addItemsItem(BaseBusinessAssets itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
 
    /**
-   * List assets on which you granted access to your partner or assets on which your partner has granted you access.
+   * Get items
    * @return items
   **/
-  @ApiModelProperty(required = true, value = "List assets on which you granted access to your partner or assets on which your partner has granted you access.")
-  public List<@Valid GetPartnerAssetsResponse> getItems() {
+  @ApiModelProperty(required = true, value = "")
+  public List<@Valid BaseBusinessAssets> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid GetPartnerAssetsResponse> items) {
+  public void setItems(List<@Valid BaseBusinessAssets> items) {
     this.items = items;
   }
 
@@ -99,10 +99,7 @@ public class BusinessPartnerAssetAccessGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

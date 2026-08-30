@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "GetPartnerAssetsResponse.h"
+#include "BaseBusinessAssets.h"
 #include <list>
 
 namespace Tiny {
@@ -53,19 +53,19 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBookmark(std::string  bookmark);
-	/*! \brief Get List assets on which you granted access to your partner or assets on which your partner has granted you access.
+	void setBookmark(std::string bookmark);
+	/*! \brief Get 
 	 */
-	std::list<GetPartnerAssetsResponse> getItems();
+	std::list<BaseBusinessAssets> getItems();
 
-	/*! \brief Set List assets on which you granted access to your partner or assets on which your partner has granted you access.
+	/*! \brief Set 
 	 */
-	void setItems(std::list <GetPartnerAssetsResponse> items);
+	void setItems(std::list<BaseBusinessAssets> items);
 
 
     private:
     std::string bookmark{};
-    std::list<GetPartnerAssetsResponse> items;
+    std::list<BaseBusinessAssets> items;
 };
 }
 

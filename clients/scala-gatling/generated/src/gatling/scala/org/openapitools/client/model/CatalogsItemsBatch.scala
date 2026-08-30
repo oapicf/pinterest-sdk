@@ -4,9 +4,9 @@ package org.openapitools.client.model
 import java.time.OffsetDateTime
 
 case class CatalogsItemsBatch (
-    _catalogType: CatalogsType,
     /* Id of the catalogs items batch */
     _batchId: Option[String],
+    _catalogType: String,
     /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     _completedTime: Option[OffsetDateTime],
     /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
@@ -16,10 +16,10 @@ case class CatalogsItemsBatch (
     _status: Option[BatchOperationStatus]
 )
 object CatalogsItemsBatch {
-    def toStringBody(var_catalogType: Object, var_batchId: Object, var_completedTime: Object, var_createdTime: Object, var_items: Object, var_status: Object) =
+    def toStringBody(var_batchId: Object, var_catalogType: Object, var_completedTime: Object, var_createdTime: Object, var_items: Object, var_status: Object) =
         s"""
         | {
-        | "catalogType":$var_catalogType,"batchId":$var_batchId,"completedTime":$var_completedTime,"createdTime":$var_createdTime,"items":$var_items,"status":$var_status
+        | "batchId":$var_batchId,"catalogType":$var_catalogType,"completedTime":$var_completedTime,"createdTime":$var_createdTime,"items":$var_items,"status":$var_status
         | }
         """.stripMargin
 }

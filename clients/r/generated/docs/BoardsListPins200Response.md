@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[Pin]**](Pin.md) | Pins | 
+**items** | [**array[PinRead]**](PinRead.md) |  | 
 
 

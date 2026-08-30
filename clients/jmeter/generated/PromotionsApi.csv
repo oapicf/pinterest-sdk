@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId,promotionCreateRequest,adAccountId,promotionId,adAccountId,promotionId,adAccountId,pageSize,order,bookmark,adAccountId,promotionUpdateRequest
+testCase,httpStatusCode,adAccountId,promotionCreate,promotionId,adAccountId,promotionId,adAccountId,adAccountId,bookmark,pageSize,order,adAccountId,promotionBatchUpdate
 Success,200,0,0,0,0,0,0,0,0,0,0,0,0

@@ -6,7 +6,8 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.base_invite_data_response_invite_data import BaseInviteDataResponseInviteData  # noqa: F401,E501
+from app.openapi_server.models.business_access_user_summary import BusinessAccessUserSummary  # noqa: F401,E501
+from app.openapi_server.models.invite_data_response import InviteDataResponse  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -17,46 +18,46 @@ class InviteBusinessRoleBinding(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: str=None, invite_data: BaseInviteDataResponseInviteData=None, is_received_invite: bool=None, user: object=None, created_by_business_id: str=None, created_by_user_id: str=None):  # noqa: E501
+    def __init__(self, created_by_business_id: str=None, created_by_user_id: str=None, id: str=None, invite_data: InviteDataResponse=None, is_received_invite: bool=None, user: BusinessAccessUserSummary=None):  # noqa: E501
         """InviteBusinessRoleBinding - a model defined in Swagger
 
-        :param id: The id of this InviteBusinessRoleBinding.  # noqa: E501
-        :type id: str
-        :param invite_data: The invite_data of this InviteBusinessRoleBinding.  # noqa: E501
-        :type invite_data: BaseInviteDataResponseInviteData
-        :param is_received_invite: The is_received_invite of this InviteBusinessRoleBinding.  # noqa: E501
-        :type is_received_invite: bool
-        :param user: The user of this InviteBusinessRoleBinding.  # noqa: E501
-        :type user: object
         :param created_by_business_id: The created_by_business_id of this InviteBusinessRoleBinding.  # noqa: E501
         :type created_by_business_id: str
         :param created_by_user_id: The created_by_user_id of this InviteBusinessRoleBinding.  # noqa: E501
         :type created_by_user_id: str
+        :param id: The id of this InviteBusinessRoleBinding.  # noqa: E501
+        :type id: str
+        :param invite_data: The invite_data of this InviteBusinessRoleBinding.  # noqa: E501
+        :type invite_data: InviteDataResponse
+        :param is_received_invite: The is_received_invite of this InviteBusinessRoleBinding.  # noqa: E501
+        :type is_received_invite: bool
+        :param user: The user of this InviteBusinessRoleBinding.  # noqa: E501
+        :type user: BusinessAccessUserSummary
         """
         self.swagger_types = {
-            'id': str,
-            'invite_data': BaseInviteDataResponseInviteData,
-            'is_received_invite': bool,
-            'user': object,
             'created_by_business_id': str,
-            'created_by_user_id': str
+            'created_by_user_id': str,
+            'id': str,
+            'invite_data': InviteDataResponse,
+            'is_received_invite': bool,
+            'user': BusinessAccessUserSummary
         }
 
         self.attribute_map = {
+            'created_by_business_id': 'created_by_business_id',
+            'created_by_user_id': 'created_by_user_id',
             'id': 'id',
             'invite_data': 'invite_data',
             'is_received_invite': 'is_received_invite',
-            'user': 'user',
-            'created_by_business_id': 'created_by_business_id',
-            'created_by_user_id': 'created_by_user_id'
+            'user': 'user'
         }
 
+        self._created_by_business_id = created_by_business_id
+        self._created_by_user_id = created_by_user_id
         self._id = id
         self._invite_data = invite_data
         self._is_received_invite = is_received_invite
         self._user = user
-        self._created_by_business_id = created_by_business_id
-        self._created_by_user_id = created_by_user_id
 
     @classmethod
     def from_dict(cls, dikt) -> 'InviteBusinessRoleBinding':
@@ -68,98 +69,6 @@ class InviteBusinessRoleBinding(Model):
         :rtype: InviteBusinessRoleBinding
         """
         return util.deserialize_model(dikt, cls)
-
-    @property
-    def id(self) -> str:
-        """Gets the id of this InviteBusinessRoleBinding.
-
-        Unique identifier of the invite/request.  # noqa: E501
-
-        :return: The id of this InviteBusinessRoleBinding.
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id: str):
-        """Sets the id of this InviteBusinessRoleBinding.
-
-        Unique identifier of the invite/request.  # noqa: E501
-
-        :param id: The id of this InviteBusinessRoleBinding.
-        :type id: str
-        """
-        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
-            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
-
-        self._id = id
-
-    @property
-    def invite_data(self) -> BaseInviteDataResponseInviteData:
-        """Gets the invite_data of this InviteBusinessRoleBinding.
-
-
-        :return: The invite_data of this InviteBusinessRoleBinding.
-        :rtype: BaseInviteDataResponseInviteData
-        """
-        return self._invite_data
-
-    @invite_data.setter
-    def invite_data(self, invite_data: BaseInviteDataResponseInviteData):
-        """Sets the invite_data of this InviteBusinessRoleBinding.
-
-
-        :param invite_data: The invite_data of this InviteBusinessRoleBinding.
-        :type invite_data: BaseInviteDataResponseInviteData
-        """
-
-        self._invite_data = invite_data
-
-    @property
-    def is_received_invite(self) -> bool:
-        """Gets the is_received_invite of this InviteBusinessRoleBinding.
-
-        Indicates whether the invite/request was received.  # noqa: E501
-
-        :return: The is_received_invite of this InviteBusinessRoleBinding.
-        :rtype: bool
-        """
-        return self._is_received_invite
-
-    @is_received_invite.setter
-    def is_received_invite(self, is_received_invite: bool):
-        """Sets the is_received_invite of this InviteBusinessRoleBinding.
-
-        Indicates whether the invite/request was received.  # noqa: E501
-
-        :param is_received_invite: The is_received_invite of this InviteBusinessRoleBinding.
-        :type is_received_invite: bool
-        """
-
-        self._is_received_invite = is_received_invite
-
-    @property
-    def user(self) -> object:
-        """Gets the user of this InviteBusinessRoleBinding.
-
-        Metadata for the user that updated the invite/request.  # noqa: E501
-
-        :return: The user of this InviteBusinessRoleBinding.
-        :rtype: object
-        """
-        return self._user
-
-    @user.setter
-    def user(self, user: object):
-        """Sets the user of this InviteBusinessRoleBinding.
-
-        Metadata for the user that updated the invite/request.  # noqa: E501
-
-        :param user: The user of this InviteBusinessRoleBinding.
-        :type user: object
-        """
-
-        self._user = user
 
     @property
     def created_by_business_id(self) -> str:
@@ -206,3 +115,95 @@ class InviteBusinessRoleBinding(Model):
         """
 
         self._created_by_user_id = created_by_user_id
+
+    @property
+    def id(self) -> str:
+        """Gets the id of this InviteBusinessRoleBinding.
+
+        Unique identifier of the invite/request.  # noqa: E501
+
+        :return: The id of this InviteBusinessRoleBinding.
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id: str):
+        """Sets the id of this InviteBusinessRoleBinding.
+
+        Unique identifier of the invite/request.  # noqa: E501
+
+        :param id: The id of this InviteBusinessRoleBinding.
+        :type id: str
+        """
+        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
+
+        self._id = id
+
+    @property
+    def invite_data(self) -> InviteDataResponse:
+        """Gets the invite_data of this InviteBusinessRoleBinding.
+
+
+        :return: The invite_data of this InviteBusinessRoleBinding.
+        :rtype: InviteDataResponse
+        """
+        return self._invite_data
+
+    @invite_data.setter
+    def invite_data(self, invite_data: InviteDataResponse):
+        """Sets the invite_data of this InviteBusinessRoleBinding.
+
+
+        :param invite_data: The invite_data of this InviteBusinessRoleBinding.
+        :type invite_data: InviteDataResponse
+        """
+
+        self._invite_data = invite_data
+
+    @property
+    def is_received_invite(self) -> bool:
+        """Gets the is_received_invite of this InviteBusinessRoleBinding.
+
+        Indicates whether the invite/request was received.  # noqa: E501
+
+        :return: The is_received_invite of this InviteBusinessRoleBinding.
+        :rtype: bool
+        """
+        return self._is_received_invite
+
+    @is_received_invite.setter
+    def is_received_invite(self, is_received_invite: bool):
+        """Sets the is_received_invite of this InviteBusinessRoleBinding.
+
+        Indicates whether the invite/request was received.  # noqa: E501
+
+        :param is_received_invite: The is_received_invite of this InviteBusinessRoleBinding.
+        :type is_received_invite: bool
+        """
+
+        self._is_received_invite = is_received_invite
+
+    @property
+    def user(self) -> BusinessAccessUserSummary:
+        """Gets the user of this InviteBusinessRoleBinding.
+
+        Metadata for the member/partner that was sent the invite/request.  # noqa: E501
+
+        :return: The user of this InviteBusinessRoleBinding.
+        :rtype: BusinessAccessUserSummary
+        """
+        return self._user
+
+    @user.setter
+    def user(self, user: BusinessAccessUserSummary):
+        """Sets the user of this InviteBusinessRoleBinding.
+
+        Metadata for the member/partner that was sent the invite/request.  # noqa: E501
+
+        :param user: The user of this InviteBusinessRoleBinding.
+        :type user: BusinessAccessUserSummary
+        """
+
+        self._user = user

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsHotelProductGroupCreateRequest::CatalogsHotelProductGroupCreateRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	description = std::string();
 	filters = CatalogsHotelProductGroupFilters();
@@ -149,7 +149,7 @@ CatalogsHotelProductGroupCreateRequest::getCatalogId()
 }
 
 void
-CatalogsHotelProductGroupCreateRequest::setCatalogId(std::string  catalog_id)
+CatalogsHotelProductGroupCreateRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -161,7 +161,7 @@ CatalogsHotelProductGroupCreateRequest::getCatalogType()
 }
 
 void
-CatalogsHotelProductGroupCreateRequest::setCatalogType(std::string  catalog_type)
+CatalogsHotelProductGroupCreateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -173,7 +173,7 @@ CatalogsHotelProductGroupCreateRequest::getDescription()
 }
 
 void
-CatalogsHotelProductGroupCreateRequest::setDescription(std::string  description)
+CatalogsHotelProductGroupCreateRequest::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -185,7 +185,7 @@ CatalogsHotelProductGroupCreateRequest::getFilters()
 }
 
 void
-CatalogsHotelProductGroupCreateRequest::setFilters(CatalogsHotelProductGroupFilters  filters)
+CatalogsHotelProductGroupCreateRequest::setFilters(CatalogsHotelProductGroupFilters filters)
 {
 	this->filters = filters;
 }
@@ -197,7 +197,7 @@ CatalogsHotelProductGroupCreateRequest::getName()
 }
 
 void
-CatalogsHotelProductGroupCreateRequest::setName(std::string  name)
+CatalogsHotelProductGroupCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }

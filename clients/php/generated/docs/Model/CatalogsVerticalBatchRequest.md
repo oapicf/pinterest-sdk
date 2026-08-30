@@ -1,4 +1,4 @@
-# # CatalogsVerticalBatchRequest
+# CatalogsVerticalBatchRequest
 
 ## Properties
 

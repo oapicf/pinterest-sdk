@@ -7,8 +7,9 @@ using namespace Tiny;
 CatalogsRetailItemResponse::CatalogsRetailItemResponse()
 {
 	attributes = ItemAttributes();
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	item_id = std::string();
+	item_response_kind = std::string();
 	pins = std::list<Pin>();
 }
 
@@ -49,9 +50,8 @@ CatalogsRetailItemResponse::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -64,6 +64,19 @@ CatalogsRetailItemResponse::fromJson(std::string jsonObj)
 
 
         jsonToValue(&item_id, value, "std::string");
+
+
+    }
+
+    const char *item_response_kindKey = "item_response_kind";
+
+    if(object.has_key(item_response_kindKey))
+    {
+        bourne::json value = object[item_response_kindKey];
+
+
+
+        jsonToValue(&item_response_kind, value, "std::string");
 
 
     }
@@ -109,14 +122,21 @@ CatalogsRetailItemResponse::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
 
 
     object["item_id"] = getItemId();
+
+
+
+
+
+
+    object["item_response_kind"] = getItemResponseKind();
 
 
 
@@ -146,19 +166,19 @@ CatalogsRetailItemResponse::getAttributes()
 }
 
 void
-CatalogsRetailItemResponse::setAttributes(ItemAttributes  attributes)
+CatalogsRetailItemResponse::setAttributes(ItemAttributes attributes)
 {
 	this->attributes = attributes;
 }
 
-CatalogsType
+std::string
 CatalogsRetailItemResponse::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsRetailItemResponse::setCatalogType(CatalogsType  catalog_type)
+CatalogsRetailItemResponse::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -170,9 +190,21 @@ CatalogsRetailItemResponse::getItemId()
 }
 
 void
-CatalogsRetailItemResponse::setItemId(std::string  item_id)
+CatalogsRetailItemResponse::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
+}
+
+std::string
+CatalogsRetailItemResponse::getItemResponseKind()
+{
+	return item_response_kind;
+}
+
+void
+CatalogsRetailItemResponse::setItemResponseKind(std::string item_response_kind)
+{
+	this->item_response_kind = item_response_kind;
 }
 
 std::list<Pin>
@@ -182,7 +214,7 @@ CatalogsRetailItemResponse::getPins()
 }
 
 void
-CatalogsRetailItemResponse::setPins(std::list <Pin> pins)
+CatalogsRetailItemResponse::setPins(std::list<Pin> pins)
 {
 	this->pins = pins;
 }

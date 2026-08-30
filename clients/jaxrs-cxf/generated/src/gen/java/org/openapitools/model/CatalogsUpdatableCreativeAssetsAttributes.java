@@ -89,9 +89,9 @@ public class CatalogsUpdatableCreativeAssetsAttributes  {
   private String title;
 
  /**
-  * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+  * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
   */
-  @ApiModelProperty(value = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.")
+  @ApiModelProperty(value = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.")
 
   private String visibility;
  /**
@@ -293,7 +293,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes  {
   }
 
  /**
-   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): &#39;visible&#39;, &#39;hidden&#39;.
    * @return visibility
   **/
   @JsonProperty("visibility")
@@ -364,10 +364,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

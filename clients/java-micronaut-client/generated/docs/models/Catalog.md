@@ -10,11 +10,11 @@ The class is defined in **[Catalog.java](../../src/main/java/org/openapitools/mo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | `OffsetDateTime` |  | 
-**id** | `String` | ID of the catalog entity. | 
-**updatedAt** | `OffsetDateTime` |  | 
 **catalogType** | `CatalogsType` |  | 
+**createdAt** | `OffsetDateTime` |  |  [readonly property]
+**id** | `String` | ID of the catalog entity. | 
 **name** | `String` | A human-friendly name associated to a catalog entity. | 
+**updatedAt** | `OffsetDateTime` |  |  [readonly property]
 
 
 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
+**data** | [**Array&lt;MetricsResponseDataItems&gt;**](MetricsResponseDataItems.md) |  | [optional] [default to undefined]
 
 ## Example
 

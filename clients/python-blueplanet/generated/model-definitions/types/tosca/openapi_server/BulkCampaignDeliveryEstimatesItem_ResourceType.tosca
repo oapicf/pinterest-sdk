@@ -1,0 +1,79 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkCampaignDeliveryEstimatesItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkCampaignDeliveryEstimatesItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignDeliveryEstimatesDerivedMetrics = openapi_server.resourceTypes.CampaignDeliveryEstimatesDerivedMetrics
+  CampaignPlanningAdGroupAudienceSize = openapi_server.resourceTypes.CampaignPlanningAdGroupAudienceSize
+  CampaignPlanningConversionRate = openapi_server.resourceTypes.CampaignPlanningConversionRate
+  CampaignPlanningCurveEstimate = openapi_server.resourceTypes.CampaignPlanningCurveEstimate
+  CampaignPlanningResponseError = openapi_server.resourceTypes.CampaignPlanningResponseError
+}
+resourceTypes {
+
+  BulkCampaignDeliveryEstimatesItem {
+    title = BulkCampaignDeliveryEstimatesItem
+    description = BulkCampaignDeliveryEstimatesItem
+    derivedFrom = Root
+    properties {
+        adgroup_audience_sizes {
+          type = array
+          items.type = CampaignPlanningAdGroupAudienceSize
+          description = "Range audience sizes for each ad group, in the same order as the ad groups in the request."
+          optional = false
+        }
+        conversion_rate {
+          type =  integer
+          description = "Conversion rate estimate. Used to translate impressions into conversions for oCPM ads, adapted based on the input conversion event and attribution windows."
+          optional = false
+        }
+        conversion_rates {
+          type = array
+          items.type = CampaignPlanningConversionRate
+          description = "Conversion rate estimates. Used to translate impressions into conversions for oCPM ads based on different conversion event and attribution windows settings."
+          optional = false
+        }
+        curves {
+          type = array
+          items.type = CampaignPlanningCurveEstimate
+          description = "Estimated curves. Each curve will pertain to a single estimation type."
+          optional = false
+        }
+        derived_metrics {
+          type = CampaignDeliveryEstimatesDerivedMetrics
+          description = ""
+          optional = false
+        }
+        errors {
+          type = array
+          items.type = CampaignPlanningResponseError
+          description = "Errors encountered during estimation for this campaign."
+          optional = false
+        }
+        estimate_id {
+          type =  string
+          description = "UUID used to track delivery estimates when they are generated as part of a saved campaign."
+          optional = false
+        }
+        max_potential_spend {
+          type =  integer
+          description = "Maximum potential spend estimate."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkCampaignDeliveryEstimatesItem {
+    title = BulkCampaignDeliveryEstimatesItem
+    description = BulkCampaignDeliveryEstimatesItem
+    implements = openapi_server.resourceTypes.BulkCampaignDeliveryEstimatesItem
+
+  }
+}

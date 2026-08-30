@@ -1,0 +1,38 @@
+import { ContentType } from './content-type';
+
+
+/**
+ * Video ID-based media source.
+ */
+export interface PinMediaSourceVideoID { 
+  /**
+   * Content type for cover image Base64.
+   */
+  cover_image_content_type?: ContentType;
+  /**
+   * Cover image Base64.
+   */
+  cover_image_data?: string;
+  /**
+   * Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+   */
+  cover_image_key_frame_time?: number;
+  /**
+   * Cover image URL.
+   */
+  cover_image_url?: string;
+  /**
+   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+   */
+  is_standard?: boolean;
+  media_id: string;
+  source_type: PinMediaSourceVideoID.SourceTypeEnum;
+}
+export namespace PinMediaSourceVideoID {
+  export const SourceTypeEnum = {
+    VideoId: 'video_id'
+  } as const;
+  export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
+}
+
+

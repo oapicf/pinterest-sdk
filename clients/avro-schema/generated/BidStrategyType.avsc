@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".",
+  "name": "BidStrategyType",
+  "symbols": [
+    "AUTOMATIC_BID",
+    "MAX_BID",
+    "TARGET_AVG"
+  ]
+}

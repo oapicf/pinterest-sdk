@@ -4,7 +4,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **catalog\_type** | **String** |  | [default to null] |
-| **report** | [**CatalogsHotelReportStatsParameters_report**](CatalogsHotelReportStatsParameters_report.md) |  | [default to null] |
+| **report** | [**CatalogsRetailReportStatsParametersReport**](CatalogsRetailReportStatsParametersReport.md) |  | [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

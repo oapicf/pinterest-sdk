@@ -123,7 +123,7 @@ PinMediaSourceImagesBase64::getIndex()
 }
 
 void
-PinMediaSourceImagesBase64::setIndex(int  index)
+PinMediaSourceImagesBase64::setIndex(int index)
 {
 	this->index = index;
 }
@@ -135,7 +135,7 @@ PinMediaSourceImagesBase64::getItems()
 }
 
 void
-PinMediaSourceImagesBase64::setItems(std::list <PinMediaSourceImagesBase64Item> items)
+PinMediaSourceImagesBase64::setItems(std::list<PinMediaSourceImagesBase64Item> items)
 {
 	this->items = items;
 }
@@ -147,7 +147,7 @@ PinMediaSourceImagesBase64::getSourceType()
 }
 
 void
-PinMediaSourceImagesBase64::setSourceType(std::string  source_type)
+PinMediaSourceImagesBase64::setSourceType(std::string source_type)
 {
 	this->source_type = source_type;
 }

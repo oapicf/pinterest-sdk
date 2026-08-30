@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | [**STRING_32**](STRING_32.md) | Catalog id pertaining to the retail product group. | [default to null]
+**catalog_id** | [**STRING_32**](STRING_32.md) | Catalog ID pertaining to the product group. | [default to null]
 **catalog_type** | [**STRING_32**](STRING_32.md) |  | [default to null]
 **country** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **created_at** | **INTEGER_32** | Unix timestamp in seconds of when catalog product group was created. | [optional] [default to null]

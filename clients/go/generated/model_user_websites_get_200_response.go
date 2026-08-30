@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &UserWebsitesGet200Response{}
 // UserWebsitesGet200Response struct for UserWebsitesGet200Response
 type UserWebsitesGet200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	Items []UserWebsiteSummary `json:"items"`
+	Items []UserWebsite `json:"items"`
 }
 
 type _UserWebsitesGet200Response UserWebsitesGet200Response
@@ -32,7 +32,7 @@ type _UserWebsitesGet200Response UserWebsitesGet200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserWebsitesGet200Response(items []UserWebsiteSummary) *UserWebsitesGet200Response {
+func NewUserWebsitesGet200Response(items []UserWebsite) *UserWebsitesGet200Response {
 	this := UserWebsitesGet200Response{}
 	this.Items = items
 	return &this
@@ -89,9 +89,9 @@ func (o *UserWebsitesGet200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *UserWebsitesGet200Response) GetItems() []UserWebsiteSummary {
+func (o *UserWebsitesGet200Response) GetItems() []UserWebsite {
 	if o == nil {
-		var ret []UserWebsiteSummary
+		var ret []UserWebsite
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *UserWebsitesGet200Response) GetItems() []UserWebsiteSummary {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *UserWebsitesGet200Response) GetItemsOk() ([]UserWebsiteSummary, bool) {
+func (o *UserWebsitesGet200Response) GetItemsOk() ([]UserWebsite, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *UserWebsitesGet200Response) GetItemsOk() ([]UserWebsiteSummary, bool) {
 }
 
 // SetItems sets field value
-func (o *UserWebsitesGet200Response) SetItems(v []UserWebsiteSummary) {
+func (o *UserWebsitesGet200Response) SetItems(v []UserWebsite) {
 	o.Items = v
 }
 

@@ -13,7 +13,7 @@ Protected Interface CatalogItemsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ItemsPostCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CatalogsItems)
+		Sub ItemsPostCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ItemsPost200Response)
 		  
 		End Sub
 	#tag EndMethod

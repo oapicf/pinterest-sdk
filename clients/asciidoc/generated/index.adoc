@@ -36527,8 +36527,8 @@ Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/cr
 | seed_id
 | 
 | 
-| <<AdAccountsAudienceRule_seed_id>>    
-| 
+|   List   of <<string>>
+| Audience ID(s). For ACTALIKE &#x60;audience_type&#x60;.
 |     
 
 | url
@@ -36541,39 +36541,9 @@ Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/cr
 | visitor_source_id
 | 
 | 
-| <<AdAccountsAudienceRule_visitor_source_id>>    
-| 
+|   String  
+| The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR &#x60;audience_type&#x60;.
 |     
-
-|===
-
-
-
-[#AdAccountsAudienceRuleSeedId]
-=== _AdAccountsAudienceRuleSeedId_ 
-
-Audience ID(s). For ACTALIKE &#x60;audience_type&#x60;.
-
-
-[.fields-AdAccountsAudienceRuleSeedId]
-[cols="2,1,1,2,4,1"]
-|===
-| Field Name| Required| Nullable | Type| Description | Format
-
-|===
-
-
-
-[#AdAccountsAudienceRuleVisitorSourceId]
-=== _AdAccountsAudienceRuleVisitorSourceId_ 
-
-The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR &#x60;audience_type&#x60;.
-
-
-[.fields-AdAccountsAudienceRuleVisitorSourceId]
-[cols="2,1,1,2,4,1"]
-|===
-| Field Name| Required| Nullable | Type| Description | Format
 
 |===
 

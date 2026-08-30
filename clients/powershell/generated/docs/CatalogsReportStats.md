@@ -3,12 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportType** | **String** |  | 
 **CatalogId** | **String** | ID of the catalog entity. | [optional] 
 **Code** | **Int32** | The event code that a diagnostics aggregated number references | [optional] 
 **CodeLabel** | **String** | A human-friendly label for the event code (e.g, &#39;SPAM&#39;) | [optional] 
 **Message** | **String** | Title message describing the diagnostic issue | [optional] 
 **Occurrences** | **Int32** | Number of occurrences of the issue | [optional] 
+**ReportType** | **String** |  | [optional] 
 **Severity** | **String** | An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue | [optional] 
 **IneligibleForAds** | **Boolean** | Indicates if issue makes items ineligible for ads distribution | [optional] 
 **IneligibleForOrganic** | **Boolean** | Indicates if issue makes items ineligible for organic distribution | [optional] 
@@ -17,12 +17,12 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogsReportStats = Initialize-PSOpenAPIToolsCatalogsReportStats  -ReportType null `
- -CatalogId null `
+$CatalogsReportStats = Initialize-PSOpenAPIToolsCatalogsReportStats  -CatalogId null `
  -Code null `
  -CodeLabel SPAM `
  -Message null `
  -Occurrences 10 `
+ -ReportType null `
  -Severity null `
  -IneligibleForAds true `
  -IneligibleForOrganic true

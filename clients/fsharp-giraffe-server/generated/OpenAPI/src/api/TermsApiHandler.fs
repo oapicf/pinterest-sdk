@@ -7,7 +7,7 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open TermsApiHandlerParams
 open TermsApiServiceInterface
 open TermsApiServiceImplementation
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 open OpenAPI.Model.RelatedTerms
 
 module TermsApiHandler =
@@ -32,6 +32,14 @@ module TermsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | TermsRelatedListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | TermsRelatedListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | TermsRelatedListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | TermsRelatedListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | TermsRelatedListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | TermsRelatedListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -54,6 +62,14 @@ module TermsApiHandler =
                             setStatusCode 200 >=> text resolved.content
                       | TermsSuggestedListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | TermsSuggestedListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | TermsSuggestedListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | TermsSuggestedListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | TermsSuggestedListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | TermsSuggestedListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

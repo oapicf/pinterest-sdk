@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [default to null]
 **operation** | [**UserListOperationType**](UserListOperationType.md) |  | [default to null]
 **recordUnderscorecounts** | [**RecordCounts**](RecordCounts.md) |  | [optional] [default to null]
-**state** | **string** |  | [default to null]
+**state** | [**WorkloadState**](WorkloadState.md) |  | [default to null]
 **updatedUnderscoretime** | **integer** |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

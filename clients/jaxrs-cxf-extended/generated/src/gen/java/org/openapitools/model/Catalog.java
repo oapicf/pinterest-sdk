@@ -19,6 +19,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Catalog  {
   
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsType catalogType;
+
   @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
   private Date createdAt;
@@ -29,19 +33,40 @@ public class Catalog  {
   @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the catalog entity.")
   private String id;
 
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
-  private Date updatedAt;
-
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsType catalogType;
-
  /**
   * A human-friendly name associated to a catalog entity.
   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a catalog entity.")
   private String name;
+
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
+  private Date updatedAt;
+ /**
+  * Get catalogType
+  * @return catalogType
+  */
+  @JsonProperty("catalog_type")
+  @NotNull
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+ public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  /**
+   * Sets the <code>catalogType</code> property.
+   */
+  public Catalog catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
  /**
   * Get createdAt
   * @return createdAt
@@ -54,6 +79,7 @@ public class Catalog  {
 
   /**
    * Sets the <code>createdAt</code> property.
+   * <br><em>N.B. <code>createdAt</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setCreatedAt(Date createdAt) {
     this.createdAt = createdAt;
@@ -61,6 +87,7 @@ public class Catalog  {
 
   /**
    * Sets the <code>createdAt</code> property.
+   * <br><em>N.B. <code>createdAt</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public Catalog createdAt(Date createdAt) {
     this.createdAt = createdAt;
@@ -93,56 +120,6 @@ public class Catalog  {
   }
 
  /**
-  * Get updatedAt
-  * @return updatedAt
-  */
-  @JsonProperty("updated_at")
-  @NotNull
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-
-  /**
-   * Sets the <code>updatedAt</code> property.
-   */
- public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  /**
-   * Sets the <code>updatedAt</code> property.
-   */
-  public Catalog updatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
- /**
-  * Get catalogType
-  * @return catalogType
-  */
-  @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
- public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
-  public Catalog catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
- /**
   * A human-friendly name associated to a catalog entity.
   * @return name
   */
@@ -167,6 +144,33 @@ public class Catalog  {
     return this;
   }
 
+ /**
+  * Get updatedAt
+  * @return updatedAt
+  */
+  @JsonProperty("updated_at")
+  @NotNull
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+
+  /**
+   * Sets the <code>updatedAt</code> property.
+   * <br><em>N.B. <code>updatedAt</code> is <b>read only</b>; client code should not call this method</em>.
+   */
+ public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  /**
+   * Sets the <code>updatedAt</code> property.
+   * <br><em>N.B. <code>updatedAt</code> is <b>read only</b>; client code should not call this method</em>.
+   */
+  public Catalog updatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -177,16 +181,16 @@ public class Catalog  {
       return false;
     }
     Catalog catalog = (Catalog) o;
-    return Objects.equals(this.createdAt, catalog.createdAt) &&
+    return Objects.equals(this.catalogType, catalog.catalogType) &&
+        Objects.equals(this.createdAt, catalog.createdAt) &&
         Objects.equals(this.id, catalog.id) &&
-        Objects.equals(this.updatedAt, catalog.updatedAt) &&
-        Objects.equals(this.catalogType, catalog.catalogType) &&
-        Objects.equals(this.name, catalog.name);
+        Objects.equals(this.name, catalog.name) &&
+        Objects.equals(this.updatedAt, catalog.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
+    return Objects.hash(catalogType, createdAt, id, name, updatedAt);
   }
 
   @Override
@@ -194,11 +198,11 @@ public class Catalog  {
     StringBuilder sb = new StringBuilder();
     sb.append("class Catalog {\n");
     
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -208,10 +212,7 @@ public class Catalog  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

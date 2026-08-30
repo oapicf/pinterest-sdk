@@ -14,11 +14,11 @@ static ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_create_inter
     if (!ads_analytics_metrics_filter_local_var) {
         return NULL;
     }
+    memset(ads_analytics_metrics_filter_local_var, 0, sizeof(ads_analytics_metrics_filter_t));
+    ads_analytics_metrics_filter_local_var->_library_owned = 1;
     ads_analytics_metrics_filter_local_var->field = field;
     ads_analytics_metrics_filter_local_var->_operator = _operator;
     ads_analytics_metrics_filter_local_var->values = values;
-
-    ads_analytics_metrics_filter_local_var->_library_owned = 1;
     return ads_analytics_metrics_filter_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) ads_analytics_metrics_filter_t *ads_analytics_metric
     pinterest_rest_api_ads_analytics_filter_operator__e _operator,
     list_t *values
     ) {
-    return ads_analytics_metrics_filter_create_internal (
+    ads_analytics_metrics_filter_t *result = ads_analytics_metrics_filter_create_internal (
         field,
         _operator,
         values
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ads_analytics_metrics_filter_free(ads_analytics_metrics_filter_t *ads_analytics_metrics_filter) {
@@ -178,11 +181,16 @@ ads_analytics_metrics_filter_t *ads_analytics_metrics_filter_parseFromJSON(cJSON
     }
 
 
+
     ads_analytics_metrics_filter_local_var = ads_analytics_metrics_filter_create_internal (
         field_local_nonprim,
         _operator_local_nonprim,
         valuesList
         );
+
+    if (!ads_analytics_metrics_filter_local_var) {
+        goto end;
+    }
 
     return ads_analytics_metrics_filter_local_var;
 end:

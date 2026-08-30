@@ -5,15 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Attributes** | Pointer to [**ItemAttributes**](ItemAttributes.md) |  | [optional] 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **string** |  | 
 **ItemId** | Pointer to **string** | The catalog retail item id in the merchant namespace | [optional] 
+**ItemResponseKind** | **string** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | 
 **Pins** | Pointer to [**[]Pin**](Pin.md) | The pins mapped to the item | [optional] 
 
 ## Methods
 
 ### NewCatalogsRetailItemResponse
 
-`func NewCatalogsRetailItemResponse(catalogType CatalogsType, ) *CatalogsRetailItemResponse`
+`func NewCatalogsRetailItemResponse(catalogType string, itemResponseKind string, ) *CatalogsRetailItemResponse`
 
 NewCatalogsRetailItemResponse instantiates a new CatalogsRetailItemResponse object
 This constructor will assign default values to properties that have it defined,
@@ -55,20 +56,20 @@ HasAttributes returns a boolean if a field has been set.
 
 ### GetCatalogType
 
-`func (o *CatalogsRetailItemResponse) GetCatalogType() CatalogsType`
+`func (o *CatalogsRetailItemResponse) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsRetailItemResponse) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsRetailItemResponse) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsRetailItemResponse) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsRetailItemResponse) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 
@@ -97,6 +98,26 @@ SetItemId sets ItemId field to given value.
 `func (o *CatalogsRetailItemResponse) HasItemId() bool`
 
 HasItemId returns a boolean if a field has been set.
+
+### GetItemResponseKind
+
+`func (o *CatalogsRetailItemResponse) GetItemResponseKind() string`
+
+GetItemResponseKind returns the ItemResponseKind field if non-nil, zero value otherwise.
+
+### GetItemResponseKindOk
+
+`func (o *CatalogsRetailItemResponse) GetItemResponseKindOk() (*string, bool)`
+
+GetItemResponseKindOk returns a tuple with the ItemResponseKind field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemResponseKind
+
+`func (o *CatalogsRetailItemResponse) SetItemResponseKind(v string)`
+
+SetItemResponseKind sets ItemResponseKind field to given value.
+
 
 ### GetPins
 

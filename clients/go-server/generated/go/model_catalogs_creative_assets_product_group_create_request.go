@@ -5,20 +5,25 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // CatalogsCreativeAssetsProductGroupCreateRequest - Request object for creating a creative assets product group.
 type CatalogsCreativeAssetsProductGroupCreateRequest struct {
 
-	// Catalog id pertaining to the creative assets product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	// Catalog ID pertaining to the product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 
 	CatalogType string `json:"catalog_type"`
 
@@ -28,14 +33,94 @@ type CatalogsCreativeAssetsProductGroupCreateRequest struct {
 
 	Name string `json:"name"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsCreativeAssetsProductGroupCreateRequest
+func (o *CatalogsCreativeAssetsProductGroupCreateRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_id",
+		"catalog_type",
+		"filters",
+		"name",
+	}
 
-// AssertCatalogsCreativeAssetsProductGroupCreateRequestRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"catalog_id": false,
+		"catalog_type": false,
+		"filters": false,
+		"name": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_id": {},
+		"catalog_type": {},
+		"description": {},
+		"filters": {},
+		"name": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsCreativeAssetsProductGroupCreateRequest
+
+	if value, exists := allProperties["catalog_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["filters"]; exists {
+		if err = json.Unmarshal(value, &decoded.Filters); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsCreativeAssetsProductGroupCreateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsCreativeAssetsProductGroupCreateRequestRequired(obj CatalogsCreativeAssetsProductGroupCreateRequest) error {
 	elements := map[string]interface{}{
-		"catalog_id": obj.CatalogId,
-		"catalog_type": obj.CatalogType,
 		"filters": obj.Filters,
-		"name": obj.Name,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

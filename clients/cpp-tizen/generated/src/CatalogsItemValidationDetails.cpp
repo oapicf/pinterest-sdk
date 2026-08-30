@@ -23,7 +23,7 @@ CatalogsItemValidationDetails::~CatalogsItemValidationDetails()
 void
 CatalogsItemValidationDetails::__init()
 {
-	//attribute_name = new NullableCatalogsItemFieldType();
+	//attribute_name = null;
 	//provided_value = std::string();
 }
 

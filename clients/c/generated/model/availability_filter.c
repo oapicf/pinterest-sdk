@@ -12,18 +12,21 @@ static availability_filter_t *availability_filter_create_internal(
     if (!availability_filter_local_var) {
         return NULL;
     }
-    availability_filter_local_var->availability = availability;
-
+    memset(availability_filter_local_var, 0, sizeof(availability_filter_t));
     availability_filter_local_var->_library_owned = 1;
+    availability_filter_local_var->availability = availability;
     return availability_filter_local_var;
 }
 
 __attribute__((deprecated)) availability_filter_t *availability_filter_create(
     catalogs_product_group_multiple_string_criteria_t *availability
     ) {
-    return availability_filter_create_internal (
+    availability_filter_t *result = availability_filter_create_internal (
         availability
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void availability_filter_free(availability_filter_t *availability_filter) {
@@ -36,7 +39,7 @@ void availability_filter_free(availability_filter_t *availability_filter) {
     }
     listEntry_t *listEntry;
     if (availability_filter->availability) {
-        object_free(availability_filter->availability);
+        catalogs_product_group_multiple_string_criteria_free(availability_filter->availability);
         availability_filter->availability = NULL;
     }
     free(availability_filter);
@@ -49,11 +52,11 @@ cJSON *availability_filter_convertToJSON(availability_filter_t *availability_fil
     if (!availability_filter->availability) {
         goto fail;
     }
-    cJSON *availability_object = object_convertToJSON(availability_filter->availability);
-    if(availability_object == NULL) {
+    cJSON *availability_local_JSON = catalogs_product_group_multiple_string_criteria_convertToJSON(availability_filter->availability);
+    if(availability_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "AVAILABILITY", availability_object);
+    cJSON_AddItemToObject(item, "AVAILABILITY", availability_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ availability_filter_t *availability_filter_parseFromJSON(cJSON *availability_fil
 
     availability_filter_t *availability_filter_local_var = NULL;
 
+    // define the local variable for availability_filter->availability
+    catalogs_product_group_multiple_string_criteria_t *availability_local_nonprim = NULL;
+
     // availability_filter->availability
     cJSON *availability = cJSON_GetObjectItemCaseSensitive(availability_filterJSON, "AVAILABILITY");
     if (cJSON_IsNull(availability)) {
@@ -79,17 +85,25 @@ availability_filter_t *availability_filter_parseFromJSON(cJSON *availability_fil
         goto end;
     }
 
-    object_t *availability_local_object = NULL;
     
-    availability_local_object = object_parseFromJSON(availability); //object
+    availability_local_nonprim = catalogs_product_group_multiple_string_criteria_parseFromJSON(availability); //nonprimitive
+
 
 
     availability_filter_local_var = availability_filter_create_internal (
-        availability_local_object
+        availability_local_nonprim
         );
+
+    if (!availability_filter_local_var) {
+        goto end;
+    }
 
     return availability_filter_local_var;
 end:
+    if (availability_local_nonprim) {
+        catalogs_product_group_multiple_string_criteria_free(availability_local_nonprim);
+        availability_local_nonprim = NULL;
+    }
     return NULL;
 
 }

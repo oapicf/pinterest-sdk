@@ -14,7 +14,7 @@ part 'catalogs_updatable_hotel_attributes.g.dart';
 /// CatalogsUpdatableHotelAttributes
 ///
 /// Properties:
-/// * [address] 
+/// * [address] - Hotel address
 /// * [basePrice] - Base price of the hotel room per night followed by the ISO currency code
 /// * [brand] - The brand to which this hotel belongs to.
 /// * [category] - The type of property. The category can be any type of internal description desired.
@@ -24,7 +24,7 @@ part 'catalogs_updatable_hotel_attributes.g.dart';
 /// * [customLabel3] - Custom grouping of hotels
 /// * [customLabel4] - Custom grouping of hotels
 /// * [description] - Brief description of the hotel.
-/// * [guestRatings] 
+/// * [guestRatings] - If specified, you must provide all properties
 /// * [latitude] - Latitude of the hotel.
 /// * [link] - Link to the product page
 /// * [longitude] - Longitude of the hotel.
@@ -33,6 +33,7 @@ part 'catalogs_updatable_hotel_attributes.g.dart';
 /// * [salePrice] - Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 @BuiltValue(instantiable: false)
 abstract class CatalogsUpdatableHotelAttributes  {
+  /// Hotel address
   @BuiltValueField(wireName: r'address')
   CatalogsHotelAddress? get address;
 
@@ -72,6 +73,7 @@ abstract class CatalogsUpdatableHotelAttributes  {
   @BuiltValueField(wireName: r'description')
   String? get description;
 
+  /// If specified, you must provide all properties
   @BuiltValueField(wireName: r'guest_ratings')
   CatalogsHotelGuestRatings? get guestRatings;
 
@@ -300,8 +302,9 @@ class _$$CatalogsUpdatableHotelAttributesSerializer implements PrimitiveSerializ
         case r'address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsHotelAddress),
-          ) as CatalogsHotelAddress;
+            specifiedType: const FullType.nullable(CatalogsHotelAddress),
+          ) as CatalogsHotelAddress?;
+          if (valueDes == null) continue;
           result.address.replace(valueDes);
           break;
         case r'base_price':
@@ -379,15 +382,17 @@ class _$$CatalogsUpdatableHotelAttributesSerializer implements PrimitiveSerializ
         case r'guest_ratings':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsHotelGuestRatings),
-          ) as CatalogsHotelGuestRatings;
+            specifiedType: const FullType.nullable(CatalogsHotelGuestRatings),
+          ) as CatalogsHotelGuestRatings?;
+          if (valueDes == null) continue;
           result.guestRatings.replace(valueDes);
           break;
         case r'latitude':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.latitude = valueDes;
           break;
         case r'link':

@@ -31,7 +31,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}name`,
-                label: `[${labelPrefix}name]`,
+                label: `Name of catalog product group - [${labelPrefix}name]`,
                 type: 'string',
             },
         ]

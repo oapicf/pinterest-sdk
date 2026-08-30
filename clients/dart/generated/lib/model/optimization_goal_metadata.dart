@@ -24,7 +24,7 @@ class OptimizationGoalMetadata {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  OptimizationGoalMetadataConversionTagV3GoalMetadata? conversionTagV3GoalMetadata;
+  ConversionTagV3GoalMetadata? conversionTagV3GoalMetadata;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -32,7 +32,7 @@ class OptimizationGoalMetadata {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  OptimizationGoalMetadataFrequencyGoalMetadata? frequencyGoalMetadata;
+  FrequencyGoalMetadata? frequencyGoalMetadata;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -40,7 +40,7 @@ class OptimizationGoalMetadata {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  OptimizationGoalMetadataScrollupGoalMetadata? scrollupGoalMetadata;
+  ScrollupGoalMetadata? scrollupGoalMetadata;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OptimizationGoalMetadata &&
@@ -89,17 +89,13 @@ class OptimizationGoalMetadata {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "OptimizationGoalMetadata[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "OptimizationGoalMetadata[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return OptimizationGoalMetadata(
-        conversionTagV3GoalMetadata: OptimizationGoalMetadataConversionTagV3GoalMetadata.fromJson(json[r'conversion_tag_v3_goal_metadata']),
-        frequencyGoalMetadata: OptimizationGoalMetadataFrequencyGoalMetadata.fromJson(json[r'frequency_goal_metadata']),
-        scrollupGoalMetadata: OptimizationGoalMetadataScrollupGoalMetadata.fromJson(json[r'scrollup_goal_metadata']),
+        conversionTagV3GoalMetadata: ConversionTagV3GoalMetadata.fromJson(json[r'conversion_tag_v3_goal_metadata']),
+        frequencyGoalMetadata: FrequencyGoalMetadata.fromJson(json[r'frequency_goal_metadata']),
+        scrollupGoalMetadata: ScrollupGoalMetadata.fromJson(json[r'scrollup_goal_metadata']),
       );
     }
     return null;

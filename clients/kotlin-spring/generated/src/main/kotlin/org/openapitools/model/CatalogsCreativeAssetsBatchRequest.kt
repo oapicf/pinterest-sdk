@@ -2,10 +2,16 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsCreativeAssetsBatchItem
 import org.openapitools.model.Country
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -27,25 +33,32 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsCreativeAssetsBatchRequest(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsCreativeAssetsBatchRequest.CatalogType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("catalog_type")
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsCreativeAssetsBatchRequest.CatalogType = kotlin.String.CREATIVE_ASSETS,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("country")
     @get:JsonProperty("country", required = true) val country: Country,
 
     @field:Valid
     @get:Size(min=1,max=1000) 
-    @Schema(example = "null", required = true, description = "Array with creative assets item operations")
+    @Schema(required = true, description = "Array with creative assets item operations")
+    @param:JsonProperty("items")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<CatalogsCreativeAssetsBatchItem>,
 
-    @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
+    @Schema(required = true, description = "We recommend using the CatalogsLocale values.")
+    @param:JsonProperty("language")
     @get:JsonProperty("language", required = true) val language: CatalogsCreativeAssetsBatchRequest.Language,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", description = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("catalog_id")
     @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null
-) {
+) : CatalogsVerticalBatchRequest {
 
     /**
     * 
@@ -60,14 +73,14 @@ data class CatalogsCreativeAssetsBatchRequest(
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsCreativeAssetsBatchRequest'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }
     }
 
     /**
     * We recommend using the CatalogsLocale values.
-    * Values: afMinusZA,arMinusSA,bgMinusBG,bnMinusIN,csMinusCZ,daMinusDK,de,elMinusGR,enMinusAU,enMinusCA,enMinusGB,enMinusIN,enMinusUS,esMinus419,esMinusAR,esMinusES,esMinusMX,fiMinusFI,fr,frMinusCA,heMinusIL,hiMinusIN,hrMinusHR,huMinusHU,idMinusID,`it`,ja,koMinusKR,msMinusMY,nbMinusNO,nl,plMinusPL,ptMinusBR,ptMinusPT,roMinusRO,ruMinusRU,skMinusSK,svMinusSE,teMinusIN,thMinusTH,tlMinusPH,tr,ukMinusUA,viMinusVN,zhMinusCN,zhMinusTW,AM,AR,AZ,BG,BN,BS,CA,CS,DA,DV,DZ,DE,EL,EN,ES,ET,FA,FI,FR,HE,HI,HR,HU,HY,ID,IN,IS,IT,IW,JA,KA,KM,KO,LO,LT,LV,MK,MN,MS,MY,NB,NE,NL,NO,PL,PT,RO,RU,SK,SL,SQ,SR,SV,TL,UK,VI,TE,TH,TR,XX,ZH
+    * Values: afMinusZA,arMinusSA,bgMinusBG,bnMinusIN,csMinusCZ,daMinusDK,de,elMinusGR,enMinusAU,enMinusCA,enMinusGB,enMinusIN,enMinusUS,esMinus419,esMinusAR,esMinusES,esMinusMX,fiMinusFI,fr,frMinusCA,heMinusIL,hiMinusIN,hrMinusHR,huMinusHU,idMinusID,`it`,ja,koMinusKR,msMinusMY,nbMinusNO,nl,plMinusPL,ptMinusBR,ptMinusPT,roMinusRO,ruMinusRU,skMinusSK,svMinusSE,teMinusIN,thMinusTH,tlMinusPH,tr,ukMinusUA,viMinusVN,zhMinusCN,zhMinusTW,AM,AR,AZ,BG,BN,BS,CA,CS,DA,DV,DZ,DE,EL,EN,ES,ET,FA,FI,FR,HE,HI,HR,HU,HY,ID,IN,IS,IT,IW,JA,KA,KM,KO,LO,LT,LV,MK,MN,MS,MY,NB,NE,NL,`false`,PL,PT,RO,RU,SK,SL,SQ,SR,SV,TL,UK,VI,TE,TH,TR,XX,ZH
     */
     enum class Language(@get:JsonValue val value: kotlin.String) {
 
@@ -160,7 +173,7 @@ data class CatalogsCreativeAssetsBatchRequest(
         NB("NB"),
         NE("NE"),
         NL("NL"),
-        NO("NO"),
+        `false`("false"),
         PL("PL"),
         PT("PT"),
         RO("RO"),
@@ -184,7 +197,7 @@ data class CatalogsCreativeAssetsBatchRequest(
             @JsonCreator
             fun forValue(value: kotlin.String): Language {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsCreativeAssetsBatchRequest'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Language'")
             }
         }
     }

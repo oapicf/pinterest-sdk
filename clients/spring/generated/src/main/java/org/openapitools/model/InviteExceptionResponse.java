@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -12,30 +13,33 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * An exception object if there is an error performing the action. Will only be provided if there is an error.
  */
 
 @Schema(name = "InviteExceptionResponse", description = "An exception object if there is an error performing the action. Will only be provided if there is an error.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class InviteExceptionResponse {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer code;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> inviteOrRequestId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String message;
 
-  @Valid
-  private JsonNullable<List<String>> usersOrPartnerIds = JsonNullable.<List<String>>undefined();
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<String> usersOrPartnerIds = new ArrayList<>();
 
   public InviteExceptionResponse code(@Nullable Integer code) {
     this.code = code;
@@ -53,6 +57,7 @@ public class InviteExceptionResponse {
     return code;
   }
 
+  @JsonProperty("code")
   public void setCode(@Nullable Integer code) {
     this.code = code;
   }
@@ -93,20 +98,21 @@ public class InviteExceptionResponse {
     return message;
   }
 
+  @JsonProperty("message")
   public void setMessage(@Nullable String message) {
     this.message = message;
   }
 
   public InviteExceptionResponse usersOrPartnerIds(List<String> usersOrPartnerIds) {
-    this.usersOrPartnerIds = JsonNullable.of(usersOrPartnerIds);
+    this.usersOrPartnerIds = usersOrPartnerIds;
     return this;
   }
 
   public InviteExceptionResponse addUsersOrPartnerIdsItem(String usersOrPartnerIdsItem) {
-    if (this.usersOrPartnerIds == null || !this.usersOrPartnerIds.isPresent()) {
-      this.usersOrPartnerIds = JsonNullable.of(new ArrayList<>());
+    if (this.usersOrPartnerIds == null) {
+      this.usersOrPartnerIds = new ArrayList<>();
     }
-    this.usersOrPartnerIds.get().add(usersOrPartnerIdsItem);
+    this.usersOrPartnerIds.add(usersOrPartnerIdsItem);
     return this;
   }
 
@@ -117,11 +123,12 @@ public class InviteExceptionResponse {
   
   @Schema(name = "users_or_partner_ids", example = "[\"businessMember0101\",\"business+member@business.com\"]", description = "A list of users' usernames or emails OR a list of partner ids that caused the error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("users_or_partner_ids")
-  public JsonNullable<List<String>> getUsersOrPartnerIds() {
+  public List<String> getUsersOrPartnerIds() {
     return usersOrPartnerIds;
   }
 
-  public void setUsersOrPartnerIds(JsonNullable<List<String>> usersOrPartnerIds) {
+  @JsonProperty("users_or_partner_ids")
+  public void setUsersOrPartnerIds(List<String> usersOrPartnerIds) {
     this.usersOrPartnerIds = usersOrPartnerIds;
   }
 
@@ -137,7 +144,7 @@ public class InviteExceptionResponse {
     return Objects.equals(this.code, inviteExceptionResponse.code) &&
         equalsNullable(this.inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
         Objects.equals(this.message, inviteExceptionResponse.message) &&
-        equalsNullable(this.usersOrPartnerIds, inviteExceptionResponse.usersOrPartnerIds);
+        Objects.equals(this.usersOrPartnerIds, inviteExceptionResponse.usersOrPartnerIds);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -146,7 +153,7 @@ public class InviteExceptionResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, hashCodeNullable(inviteOrRequestId), message, hashCodeNullable(usersOrPartnerIds));
+    return Objects.hash(code, hashCodeNullable(inviteOrRequestId), message, usersOrPartnerIds);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -173,10 +180,7 @@ public class InviteExceptionResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

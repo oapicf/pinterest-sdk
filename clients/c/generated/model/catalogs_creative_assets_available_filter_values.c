@@ -30,10 +30,10 @@ static catalogs_creative_assets_available_filter_values_t *catalogs_creative_ass
     if (!catalogs_creative_assets_available_filter_values_local_var) {
         return NULL;
     }
+    memset(catalogs_creative_assets_available_filter_values_local_var, 0, sizeof(catalogs_creative_assets_available_filter_values_t));
+    catalogs_creative_assets_available_filter_values_local_var->_library_owned = 1;
     catalogs_creative_assets_available_filter_values_local_var->catalog_type = catalog_type;
     catalogs_creative_assets_available_filter_values_local_var->filter_values = filter_values;
-
-    catalogs_creative_assets_available_filter_values_local_var->_library_owned = 1;
     return catalogs_creative_assets_available_filter_values_local_var;
 }
 
@@ -41,10 +41,13 @@ __attribute__((deprecated)) catalogs_creative_assets_available_filter_values_t *
     pinterest_rest_api_catalogs_creative_assets_available_filter_values_CATALOGTYPE_e catalog_type,
     catalogs_creative_assets_filter_values_map_t *filter_values
     ) {
-    return catalogs_creative_assets_available_filter_values_create_internal (
+    catalogs_creative_assets_available_filter_values_t *result = catalogs_creative_assets_available_filter_values_create_internal (
         catalog_type,
         filter_values
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_creative_assets_available_filter_values_free(catalogs_creative_assets_available_filter_values_t *catalogs_creative_assets_available_filter_values) {
@@ -134,10 +137,15 @@ catalogs_creative_assets_available_filter_values_t *catalogs_creative_assets_ava
     filter_values_local_nonprim = catalogs_creative_assets_filter_values_map_parseFromJSON(filter_values); //nonprimitive
 
 
+
     catalogs_creative_assets_available_filter_values_local_var = catalogs_creative_assets_available_filter_values_create_internal (
         catalog_typeVariable,
         filter_values_local_nonprim
         );
+
+    if (!catalogs_creative_assets_available_filter_values_local_var) {
+        goto end;
+    }
 
     return catalogs_creative_assets_available_filter_values_local_var;
 end:

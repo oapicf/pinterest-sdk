@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.RelatedTermsRelatedTermsListInner;
+import apimodels.RelatedTermsRelatedTermsListItems;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 /**
  * RelatedTerms
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class RelatedTerms   {
   @JsonProperty("id")
@@ -27,7 +27,7 @@ public class RelatedTerms   {
   @JsonProperty("related_terms_list")
   @Valid
 
-  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = null;
+  private List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList = null;
 
   public RelatedTerms id(String id) {
     this.id = id;
@@ -63,12 +63,12 @@ public class RelatedTerms   {
     this.relatedTermCount = relatedTermCount;
   }
 
-  public RelatedTerms relatedTermsList(List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public RelatedTerms relatedTermsList(List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
     return this;
   }
 
-  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListInner relatedTermsListItem) {
+  public RelatedTerms addRelatedTermsListItem(RelatedTermsRelatedTermsListItems relatedTermsListItem) {
     if (this.relatedTermsList == null) {
       this.relatedTermsList = new ArrayList<>();
     }
@@ -80,11 +80,11 @@ public class RelatedTerms   {
    * The id of the advertiser.
    * @return relatedTermsList
   **/
-  public List<@Valid RelatedTermsRelatedTermsListInner> getRelatedTermsList() {
+  public List<@Valid RelatedTermsRelatedTermsListItems> getRelatedTermsList() {
     return relatedTermsList;
   }
 
-  public void setRelatedTermsList(List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList) {
+  public void setRelatedTermsList(List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList) {
     this.relatedTermsList = relatedTermsList;
   }
 
@@ -126,10 +126,7 @@ public class RelatedTerms   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

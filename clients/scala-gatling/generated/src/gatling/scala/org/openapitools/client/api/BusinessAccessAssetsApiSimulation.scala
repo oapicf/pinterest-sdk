@@ -140,10 +140,10 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_asset_members/getPATHFeeder)
         .exec(http("businessAssetMembersGet")
         .httpRequest("GET","/businesses/${business_id}/assets/${asset_id}/members")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("start_index","${start_index}")
-        .queryParam("page_size","${page_size}")
         .queryParam("fetch_system_users","${fetch_system_users}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("start_index","${start_index}")
 )
 
     // Run scnbusinessAssetMembersGet with warm up and reach a constant rate for entire duration
@@ -159,9 +159,9 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_asset_partners/getPATHFeeder)
         .exec(http("businessAssetPartnersGet")
         .httpRequest("GET","/businesses/${business_id}/assets/${asset_id}/partners")
-        .queryParam("start_index","${start_index}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("start_index","${start_index}")
 )
 
     // Run scnbusinessAssetPartnersGet with warm up and reach a constant rate for entire duration
@@ -178,12 +178,12 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .exec(http("businessAssetsGet")
         .httpRequest("GET","/businesses/${business_id}/assets")
         .queryParam("asset_type","${asset_type}")
-        .queryParam("start_index","${start_index}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
         .queryParam("permissions","${permissions}")
-        .queryParam("child_asset_id","${child_asset_id}")
         .queryParam("asset_group_id","${asset_group_id}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("start_index","${start_index}")
+        .queryParam("child_asset_id","${child_asset_id}")
 )
 
     // Run scnbusinessAssetsGet with warm up and reach a constant rate for entire duration
@@ -199,10 +199,16 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_member_assets/getPATHFeeder)
         .exec(http("businessMemberAssetsGet")
         .httpRequest("GET","/businesses/${business_id}/members/${member_id}/assets")
-        .queryParam("asset_type","${asset_type}")
-        .queryParam("start_index","${start_index}")
+        .queryParam("sort_by","${sort_by}")
+        .queryParam("asset_permission_type","${asset_permission_type}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("search_value","${search_value}")
+        .queryParam("sort_ascending","${sort_ascending}")
         .queryParam("page_size","${page_size}")
+        .queryParam("search_by","${search_by}")
+        .queryParam("start_index","${start_index}")
+        .queryParam("asset_type","${asset_type}")
+        .queryParam("ad_account_statuses","${ad_account_statuses}")
 )
 
     // Run scnbusinessMemberAssetsGet with warm up and reach a constant rate for entire duration
@@ -247,10 +253,14 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .exec(http("businessPartnerAssetAccessGet")
         .httpRequest("GET","/businesses/${business_id}/partners/${partner_id}/assets")
         .queryParam("asset_type","${asset_type}")
-        .queryParam("start_index","${start_index}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
+        .queryParam("sort_by","${sort_by}")
         .queryParam("partner_type","${partner_type}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("search_value","${search_value}")
+        .queryParam("sort_ascending","${sort_ascending}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("search_by","${search_by}")
+        .queryParam("start_index","${start_index}")
 )
 
     // Run scnbusinessPartnerAssetAccessGet with warm up and reach a constant rate for entire duration

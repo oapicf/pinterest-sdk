@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setOperation(UserListOperationType  operation);
+	void setOperation(UserListOperationType operation);
 	/*! \brief Get Number of parts to upload the file in.
 	 */
 	int getTotalParts();
 
 	/*! \brief Set Number of parts to upload the file in.
 	 */
-	void setTotalParts(int  total_parts);
+	void setTotalParts(int total_parts);
 
 
     private:

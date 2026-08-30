@@ -9,22 +9,28 @@
  */
 import { TargetingTemplateKeyword } from './targetingTemplateKeyword';
 import { TrackingUrls } from './trackingUrls';
-import { TargetingSpec } from './targetingSpec';
 import { PlacementGroupType } from './placementGroupType';
+import { TargetingSpecOptimal } from './targetingSpecOptimal';
 
 
+/**
+ * Resource create operation model.
+ */
 export interface TargetingTemplateCreate { 
     /**
-     * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+     * Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
      */
     auto_targeting_enabled?: boolean;
     keywords?: Array<TargetingTemplateKeyword>;
     /**
-     * Name of targeting template.
+     * targeting template name
      */
     name: string;
     placement_group?: PlacementGroupType;
-    targeting_attributes: TargetingSpec;
+    /**
+     * targeting profile attributes
+     */
+    targeting_attributes: TargetingSpecOptimal;
     tracking_urls?: TrackingUrls | null;
 }
 export namespace TargetingTemplateCreate {

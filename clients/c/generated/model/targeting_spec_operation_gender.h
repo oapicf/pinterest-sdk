@@ -16,6 +16,7 @@
 typedef struct targeting_spec_operation_gender_t targeting_spec_operation_gender_t;
 
 #include "targeting_spec_gender.h"
+#include "targeting_spec_list_operation.h"
 
 // Enum FIELD for targeting_spec_operation_gender
 
@@ -24,14 +25,6 @@ typedef enum  { pinterest_rest_api_targeting_spec_operation_gender_FIELD_NULL = 
 char* targeting_spec_operation_gender_field_ToString(pinterest_rest_api_targeting_spec_operation_gender_FIELD_e field);
 
 pinterest_rest_api_targeting_spec_operation_gender_FIELD_e targeting_spec_operation_gender_field_FromString(char* field);
-
-// Enum OPERATION for targeting_spec_operation_gender
-
-typedef enum  { pinterest_rest_api_targeting_spec_operation_gender_OPERATION_NULL = 0, pinterest_rest_api_targeting_spec_operation_gender_OPERATION_SET, pinterest_rest_api_targeting_spec_operation_gender_OPERATION_ADD, pinterest_rest_api_targeting_spec_operation_gender_OPERATION__REMOVE } pinterest_rest_api_targeting_spec_operation_gender_OPERATION_e;
-
-char* targeting_spec_operation_gender_operation_ToString(pinterest_rest_api_targeting_spec_operation_gender_OPERATION_e operation);
-
-pinterest_rest_api_targeting_spec_operation_gender_OPERATION_e targeting_spec_operation_gender_operation_FromString(char* operation);
 
 // Enum  for targeting_spec_operation_gender
 
@@ -45,7 +38,7 @@ pinterest_rest_api_targeting_spec_operation_gender__e targeting_spec_operation_g
 
 typedef struct targeting_spec_operation_gender_t {
     pinterest_rest_api_targeting_spec_operation_gender_FIELD_e field; //enum
-    pinterest_rest_api_targeting_spec_operation_gender_OPERATION_e operation; //enum
+    pinterest_rest_api_targeting_spec_list_operation__e operation; //referenced enum
     list_t *values; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -53,7 +46,7 @@ typedef struct targeting_spec_operation_gender_t {
 
 __attribute__((deprecated)) targeting_spec_operation_gender_t *targeting_spec_operation_gender_create(
     pinterest_rest_api_targeting_spec_operation_gender_FIELD_e field,
-    pinterest_rest_api_targeting_spec_operation_gender_OPERATION_e operation,
+    pinterest_rest_api_targeting_spec_list_operation__e operation,
     list_t *values
 );
 

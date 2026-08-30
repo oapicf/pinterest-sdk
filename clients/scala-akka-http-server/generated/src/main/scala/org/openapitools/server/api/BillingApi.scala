@@ -8,20 +8,23 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
-import org.openapitools.server.model.AdsCreditRedeemRequest
-import org.openapitools.server.model.AdsCreditRedeemResponse
+import org.openapitools.server.model.AdsCreditRedeem
+import org.openapitools.server.model.AdsCreditRedeemCreate
 import org.openapitools.server.model.AdsCreditsDiscountsGet200Response
+import org.openapitools.server.model.BillingInvoiceDocumentType
 import org.openapitools.server.model.BillingInvoiceDownloadResponse
+import org.openapitools.server.model.BillingInvoiceSortField
+import org.openapitools.server.model.BillingInvoiceStatus
 import org.openapitools.server.model.BillingInvoicesGet200Response
 import org.openapitools.server.model.BillingProfilesGet200Response
 import org.openapitools.server.model.Error
 import java.time.LocalDate
-import org.openapitools.server.model.SSIOAccountResponse
-import org.openapitools.server.model.SSIOCreateInsertionOrderRequest
-import org.openapitools.server.model.SSIOCreateInsertionOrderResponse
-import org.openapitools.server.model.SSIOEditInsertionOrderRequest
-import org.openapitools.server.model.SSIOEditInsertionOrderResponse
+import org.openapitools.server.model.PaginationOrder
+import org.openapitools.server.model.SSIOAccount
+import org.openapitools.server.model.SSIOInsertionOrder
+import org.openapitools.server.model.SSIOInsertionOrderCreate
 import org.openapitools.server.model.SSIOInsertionOrderStatusResponse
+import org.openapitools.server.model.SSIOInsertionOrderUpdate
 import org.openapitools.server.model.SsioInsertionOrdersStatusGetByAdAccount200Response
 import org.openapitools.server.model.SsioOrderLinesGetByAdAccount200Response
 
@@ -39,8 +42,8 @@ import BillingApiPatterns.adAccountIdPattern
   lazy val route: Route =
     path("ad_accounts" / adAccountIdPattern / "ads_credit" / "redeem") { (adAccountId) => 
       post {  
-            entity(as[AdsCreditRedeemRequest]){ adsCreditRedeemRequest =>
-              billingService.adsCreditRedeem(adAccountId = adAccountId, adsCreditRedeemRequest = adsCreditRedeemRequest)
+            entity(as[AdsCreditRedeemCreate]){ adsCreditRedeemCreate =>
+              billingService.adsCreditRedeem(adAccountId = adAccountId, adsCreditRedeemCreate = adsCreditRedeemCreate)
             }
       }
     } ~
@@ -58,15 +61,15 @@ import BillingApiPatterns.adAccountIdPattern
     } ~
     path("ad_accounts" / adAccountIdPattern / "billing_invoices") { (adAccountId) => 
       get { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "sort".as[String].?("DUE_DATE"), "order".as[String].?, "status".as[String].?, "document_type".as[String].?, "start_due_date".as[String].?, "end_due_date".as[String].?) { (bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate) => 
-            billingService.billingInvoicesGet(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, sort = sort, order = order, status = status, documentType = documentType, startDueDate = startDueDate, endDueDate = endDueDate)
+        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "order".as[String].?, "sort".as[String].?, "status".as[String].?, "document_type".as[String].?, "start_due_date".as[String].?, "end_due_date".as[String].?) { (bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate) => 
+            billingService.billingInvoicesGet(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order, sort = sort, status = status, documentType = documentType, startDueDate = startDueDate, endDueDate = endDueDate)
         }
       }
     } ~
     path("ad_accounts" / adAccountIdPattern / "billing_profiles") { (adAccountId) => 
       get { 
         parameters("is_active".as[Boolean], "bookmark".as[String].?, "page_size".as[Int].?(25)) { (isActive, bookmark, pageSize) => 
-            billingService.billingProfilesGet(adAccountId = adAccountId, isActive = isActive, bookmark = bookmark, pageSize = pageSize)
+            billingService.billingProfilesGet(isActive = isActive, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
@@ -77,15 +80,15 @@ import BillingApiPatterns.adAccountIdPattern
     } ~
     path("ad_accounts" / adAccountIdPattern / "ssio" / "insertion_orders") { (adAccountId) => 
       post {  
-            entity(as[SSIOCreateInsertionOrderRequest]){ sSIOCreateInsertionOrderRequest =>
-              billingService.ssioInsertionOrderCreate(adAccountId = adAccountId, sSIOCreateInsertionOrderRequest = sSIOCreateInsertionOrderRequest)
+            entity(as[SSIOInsertionOrderCreate]){ sSIOInsertionOrderCreate =>
+              billingService.ssioInsertionOrderCreate(adAccountId = adAccountId, sSIOInsertionOrderCreate = sSIOInsertionOrderCreate)
             }
       }
     } ~
     path("ad_accounts" / adAccountIdPattern / "ssio" / "insertion_orders") { (adAccountId) => 
       patch {  
-            entity(as[SSIOEditInsertionOrderRequest]){ sSIOEditInsertionOrderRequest =>
-              billingService.ssioInsertionOrderEdit(adAccountId = adAccountId, sSIOEditInsertionOrderRequest = sSIOEditInsertionOrderRequest)
+            entity(as[SSIOInsertionOrderUpdate]){ sSIOInsertionOrderUpdate =>
+              billingService.ssioInsertionOrderEdit(adAccountId = adAccountId, sSIOInsertionOrderUpdate = sSIOInsertionOrderUpdate)
             }
       }
     } ~
@@ -103,8 +106,8 @@ import BillingApiPatterns.adAccountIdPattern
     } ~
     path("ad_accounts" / adAccountIdPattern / "ssio" / "order_lines") { (adAccountId) => 
       get { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "pin_order_id".as[String].?) { (bookmark, pageSize, pinOrderId) => 
-            billingService.ssioOrderLinesGetByAdAccount(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, pinOrderId = pinOrderId)
+        parameters("pin_order_id".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (pinOrderId, bookmark, pageSize) => 
+            billingService.ssioOrderLinesGetByAdAccount(adAccountId = adAccountId, pinOrderId = pinOrderId, bookmark = bookmark, pageSize = pageSize)
         }
       }
     }
@@ -112,33 +115,63 @@ import BillingApiPatterns.adAccountIdPattern
 
 object BillingApiPatterns {
 
-    val billingInvoiceIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
-val adAccountIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val billingInvoiceIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
+val adAccountIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait BillingApiService {
 
-  def adsCreditRedeem200(responseAdsCreditRedeemResponse: AdsCreditRedeemResponse)(implicit toEntityMarshallerAdsCreditRedeemResponse: ToEntityMarshaller[AdsCreditRedeemResponse]): Route =
-    complete((200, responseAdsCreditRedeemResponse))
+  def adsCreditRedeem200(responseAdsCreditRedeem: AdsCreditRedeem)(implicit toEntityMarshallerAdsCreditRedeem: ToEntityMarshaller[AdsCreditRedeem]): Route =
+    complete((200, responseAdsCreditRedeem))
+  def adsCreditRedeem201(responseAdsCreditRedeem: AdsCreditRedeem)(implicit toEntityMarshallerAdsCreditRedeem: ToEntityMarshaller[AdsCreditRedeem]): Route =
+    complete((201, responseAdsCreditRedeem))
   def adsCreditRedeem400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def adsCreditRedeem401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def adsCreditRedeem403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def adsCreditRedeem404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def adsCreditRedeem429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def adsCreditRedeemDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Successfully redeemed ad credits., DataType: AdsCreditRedeemResponse
-   * Code: 400, Message: Error thrown when unable to redeem offer code., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AdsCreditRedeem
+   * Code: 201, Message: Resource create operation completed successfully., DataType: AdsCreditRedeem
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def adsCreditRedeem(adAccountId: String, adsCreditRedeemRequest: AdsCreditRedeemRequest)
-      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerAdsCreditRedeemResponse: ToEntityMarshaller[AdsCreditRedeemResponse]): Route
+  def adsCreditRedeem(adAccountId: String, adsCreditRedeemCreate: AdsCreditRedeemCreate)
+      (implicit toEntityMarshallerAdsCreditRedeem: ToEntityMarshaller[AdsCreditRedeem], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def adsCreditsDiscountsGet200(responseAdsCreditsDiscountsGet200Response: AdsCreditsDiscountsGet200Response)(implicit toEntityMarshallerAdsCreditsDiscountsGet200Response: ToEntityMarshaller[AdsCreditsDiscountsGet200Response]): Route =
     complete((200, responseAdsCreditsDiscountsGet200Response))
+  def adsCreditsDiscountsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def adsCreditsDiscountsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def adsCreditsDiscountsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def adsCreditsDiscountsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def adsCreditsDiscountsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def adsCreditsDiscountsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: AdsCreditsDiscountsGet200Response
-   * Code: 0, Message: Unexpected error., DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AdsCreditsDiscountsGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def adsCreditsDiscountsGet(adAccountId: String, bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerAdsCreditsDiscountsGet200Response: ToEntityMarshaller[AdsCreditsDiscountsGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -147,12 +180,24 @@ trait BillingApiService {
     complete((200, responseBillingInvoiceDownloadResponse))
   def billingInvoiceDownloadGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def billingInvoiceDownloadGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def billingInvoiceDownloadGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def billingInvoiceDownloadGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def billingInvoiceDownloadGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def billingInvoiceDownloadGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Successfully fetched Billing invoice information for a given ad account, DataType: BillingInvoiceDownloadResponse
-   * Code: 400, Message: Invalid request parameter., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BillingInvoiceDownloadResponse
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def billingInvoiceDownloadGet(adAccountId: String, billingInvoiceId: String)
       (implicit toEntityMarshallerBillingInvoiceDownloadResponse: ToEntityMarshaller[BillingInvoiceDownloadResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -161,79 +206,157 @@ trait BillingApiService {
     complete((200, responseBillingInvoicesGet200Response))
   def billingInvoicesGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def billingInvoicesGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def billingInvoicesGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def billingInvoicesGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def billingInvoicesGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def billingInvoicesGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: BillingInvoicesGet200Response
-   * Code: 400, Message: Invalid request parameter., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BillingInvoicesGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def billingInvoicesGet(adAccountId: String, bookmark: Option[String], pageSize: Int, sort: String, order: Option[String], status: Option[String], documentType: Option[String], startDueDate: Option[String], endDueDate: Option[String])
+  def billingInvoicesGet(adAccountId: String, bookmark: Option[String], pageSize: Int, order: Option[String], sort: Option[String], status: Option[String], documentType: Option[String], startDueDate: Option[String], endDueDate: Option[String])
       (implicit toEntityMarshallerBillingInvoicesGet200Response: ToEntityMarshaller[BillingInvoicesGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def billingProfilesGet200(responseBillingProfilesGet200Response: BillingProfilesGet200Response)(implicit toEntityMarshallerBillingProfilesGet200Response: ToEntityMarshaller[BillingProfilesGet200Response]): Route =
     complete((200, responseBillingProfilesGet200Response))
+  def billingProfilesGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def billingProfilesGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def billingProfilesGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def billingProfilesGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def billingProfilesGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def billingProfilesGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: BillingProfilesGet200Response
-   * Code: 0, Message: Unexpected error., DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BillingProfilesGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def billingProfilesGet(adAccountId: String, isActive: Boolean, bookmark: Option[String], pageSize: Int)
+  def billingProfilesGet(isActive: Boolean, adAccountId: String, bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerBillingProfilesGet200Response: ToEntityMarshaller[BillingProfilesGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def ssioAccountsGet200(responseSSIOAccountResponse: SSIOAccountResponse)(implicit toEntityMarshallerSSIOAccountResponse: ToEntityMarshaller[SSIOAccountResponse]): Route =
-    complete((200, responseSSIOAccountResponse))
+  def ssioAccountsGet200(responseSSIOAccount: SSIOAccount)(implicit toEntityMarshallerSSIOAccount: ToEntityMarshaller[SSIOAccount]): Route =
+    complete((200, responseSSIOAccount))
   def ssioAccountsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def ssioAccountsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def ssioAccountsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def ssioAccountsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def ssioAccountsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def ssioAccountsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: SSIOAccountResponse
-   * Code: 400, Message: Invalid request parameter., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: SSIOAccount
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def ssioAccountsGet(adAccountId: String)
-      (implicit toEntityMarshallerSSIOAccountResponse: ToEntityMarshaller[SSIOAccountResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerSSIOAccount: ToEntityMarshaller[SSIOAccount], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def ssioInsertionOrderCreate200(responseSSIOCreateInsertionOrderResponse: SSIOCreateInsertionOrderResponse)(implicit toEntityMarshallerSSIOCreateInsertionOrderResponse: ToEntityMarshaller[SSIOCreateInsertionOrderResponse]): Route =
-    complete((200, responseSSIOCreateInsertionOrderResponse))
+  def ssioInsertionOrderCreate200(responseSSIOInsertionOrder: SSIOInsertionOrder)(implicit toEntityMarshallerSSIOInsertionOrder: ToEntityMarshaller[SSIOInsertionOrder]): Route =
+    complete((200, responseSSIOInsertionOrder))
+  def ssioInsertionOrderCreate201(responseSSIOInsertionOrder: SSIOInsertionOrder)(implicit toEntityMarshallerSSIOInsertionOrder: ToEntityMarshaller[SSIOInsertionOrder]): Route =
+    complete((201, responseSSIOInsertionOrder))
   def ssioInsertionOrderCreate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def ssioInsertionOrderCreate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def ssioInsertionOrderCreate403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def ssioInsertionOrderCreate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def ssioInsertionOrderCreate429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def ssioInsertionOrderCreateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: SSIOCreateInsertionOrderResponse
-   * Code: 400, Message: Invalid request., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: SSIOInsertionOrder
+   * Code: 201, Message: Resource create operation completed successfully., DataType: SSIOInsertionOrder
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def ssioInsertionOrderCreate(adAccountId: String, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest)
-      (implicit toEntityMarshallerSSIOCreateInsertionOrderResponse: ToEntityMarshaller[SSIOCreateInsertionOrderResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def ssioInsertionOrderCreate(adAccountId: String, sSIOInsertionOrderCreate: SSIOInsertionOrderCreate)
+      (implicit toEntityMarshallerSSIOInsertionOrder: ToEntityMarshaller[SSIOInsertionOrder], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def ssioInsertionOrderEdit200(responseSSIOEditInsertionOrderResponse: SSIOEditInsertionOrderResponse)(implicit toEntityMarshallerSSIOEditInsertionOrderResponse: ToEntityMarshaller[SSIOEditInsertionOrderResponse]): Route =
-    complete((200, responseSSIOEditInsertionOrderResponse))
+  def ssioInsertionOrderEdit200(responseSSIOInsertionOrder: SSIOInsertionOrder)(implicit toEntityMarshallerSSIOInsertionOrder: ToEntityMarshaller[SSIOInsertionOrder]): Route =
+    complete((200, responseSSIOInsertionOrder))
   def ssioInsertionOrderEdit400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def ssioInsertionOrderEdit401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def ssioInsertionOrderEdit403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def ssioInsertionOrderEdit404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def ssioInsertionOrderEdit429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def ssioInsertionOrderEditDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: SSIOEditInsertionOrderResponse
-   * Code: 400, Message: Invalid request., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: SSIOInsertionOrder
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def ssioInsertionOrderEdit(adAccountId: String, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest)
-      (implicit toEntityMarshallerSSIOEditInsertionOrderResponse: ToEntityMarshaller[SSIOEditInsertionOrderResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def ssioInsertionOrderEdit(adAccountId: String, sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate)
+      (implicit toEntityMarshallerSSIOInsertionOrder: ToEntityMarshaller[SSIOInsertionOrder], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def ssioInsertionOrdersStatusGetByAdAccount200(responseSsioInsertionOrdersStatusGetByAdAccount200Response: SsioInsertionOrdersStatusGetByAdAccount200Response)(implicit toEntityMarshallerSsioInsertionOrdersStatusGetByAdAccount200Response: ToEntityMarshaller[SsioInsertionOrdersStatusGetByAdAccount200Response]): Route =
     complete((200, responseSsioInsertionOrdersStatusGetByAdAccount200Response))
   def ssioInsertionOrdersStatusGetByAdAccount400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def ssioInsertionOrdersStatusGetByAdAccount401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def ssioInsertionOrdersStatusGetByAdAccount403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def ssioInsertionOrdersStatusGetByAdAccount404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def ssioInsertionOrdersStatusGetByAdAccount429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def ssioInsertionOrdersStatusGetByAdAccountDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: SsioInsertionOrdersStatusGetByAdAccount200Response
-   * Code: 400, Message: Invalid request parameter., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: SsioInsertionOrdersStatusGetByAdAccount200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def ssioInsertionOrdersStatusGetByAdAccount(adAccountId: String, bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerSsioInsertionOrdersStatusGetByAdAccount200Response: ToEntityMarshaller[SsioInsertionOrdersStatusGetByAdAccount200Response]): Route
@@ -242,12 +365,24 @@ trait BillingApiService {
     complete((200, responseSSIOInsertionOrderStatusResponse))
   def ssioInsertionOrdersStatusGetByPinOrderId400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def ssioInsertionOrdersStatusGetByPinOrderId401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def ssioInsertionOrdersStatusGetByPinOrderId403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def ssioInsertionOrdersStatusGetByPinOrderId404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def ssioInsertionOrdersStatusGetByPinOrderId429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def ssioInsertionOrdersStatusGetByPinOrderIdDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: SSIOInsertionOrderStatusResponse
-   * Code: 400, Message: Invalid request parameter., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: SSIOInsertionOrderStatusResponse
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: String, pinOrderId: String)
       (implicit toEntityMarshallerSSIOInsertionOrderStatusResponse: ToEntityMarshaller[SSIOInsertionOrderStatusResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -256,30 +391,38 @@ trait BillingApiService {
     complete((200, responseSsioOrderLinesGetByAdAccount200Response))
   def ssioOrderLinesGetByAdAccount400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def ssioOrderLinesGetByAdAccount401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def ssioOrderLinesGetByAdAccount403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def ssioOrderLinesGetByAdAccount404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def ssioOrderLinesGetByAdAccount429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def ssioOrderLinesGetByAdAccountDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: SsioOrderLinesGetByAdAccount200Response
-   * Code: 400, Message: Invalid request parameter., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: SsioOrderLinesGetByAdAccount200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def ssioOrderLinesGetByAdAccount(adAccountId: String, bookmark: Option[String], pageSize: Int, pinOrderId: Option[String])
+  def ssioOrderLinesGetByAdAccount(adAccountId: String, pinOrderId: Option[String], bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerSsioOrderLinesGetByAdAccount200Response: ToEntityMarshaller[SsioOrderLinesGetByAdAccount200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
 
 trait BillingApiMarshaller {
-  implicit def fromEntityUnmarshallerSSIOCreateInsertionOrderRequest: FromEntityUnmarshaller[SSIOCreateInsertionOrderRequest]
+  implicit def fromEntityUnmarshallerAdsCreditRedeemCreate: FromEntityUnmarshaller[AdsCreditRedeemCreate]
 
-  implicit def fromEntityUnmarshallerAdsCreditRedeemRequest: FromEntityUnmarshaller[AdsCreditRedeemRequest]
+  implicit def fromEntityUnmarshallerSSIOInsertionOrderCreate: FromEntityUnmarshaller[SSIOInsertionOrderCreate]
 
-  implicit def fromEntityUnmarshallerSSIOEditInsertionOrderRequest: FromEntityUnmarshaller[SSIOEditInsertionOrderRequest]
+  implicit def fromEntityUnmarshallerSSIOInsertionOrderUpdate: FromEntityUnmarshaller[SSIOInsertionOrderUpdate]
 
 
-
-  implicit def toEntityMarshallerSSIOAccountResponse: ToEntityMarshaller[SSIOAccountResponse]
-
-  implicit def toEntityMarshallerSSIOEditInsertionOrderResponse: ToEntityMarshaller[SSIOEditInsertionOrderResponse]
 
   implicit def toEntityMarshallerAdsCreditsDiscountsGet200Response: ToEntityMarshaller[AdsCreditsDiscountsGet200Response]
 
@@ -287,19 +430,21 @@ trait BillingApiMarshaller {
 
   implicit def toEntityMarshallerBillingProfilesGet200Response: ToEntityMarshaller[BillingProfilesGet200Response]
 
-  implicit def toEntityMarshallerSSIOCreateInsertionOrderResponse: ToEntityMarshaller[SSIOCreateInsertionOrderResponse]
-
   implicit def toEntityMarshallerSSIOInsertionOrderStatusResponse: ToEntityMarshaller[SSIOInsertionOrderStatusResponse]
 
   implicit def toEntityMarshallerBillingInvoicesGet200Response: ToEntityMarshaller[BillingInvoicesGet200Response]
+
+  implicit def toEntityMarshallerSSIOAccount: ToEntityMarshaller[SSIOAccount]
+
+  implicit def toEntityMarshallerAdsCreditRedeem: ToEntityMarshaller[AdsCreditRedeem]
 
   implicit def toEntityMarshallerBillingInvoiceDownloadResponse: ToEntityMarshaller[BillingInvoiceDownloadResponse]
 
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
 
-  implicit def toEntityMarshallerSsioInsertionOrdersStatusGetByAdAccount200Response: ToEntityMarshaller[SsioInsertionOrdersStatusGetByAdAccount200Response]
+  implicit def toEntityMarshallerSSIOInsertionOrder: ToEntityMarshaller[SSIOInsertionOrder]
 
-  implicit def toEntityMarshallerAdsCreditRedeemResponse: ToEntityMarshaller[AdsCreditRedeemResponse]
+  implicit def toEntityMarshallerSsioInsertionOrdersStatusGetByAdAccount200Response: ToEntityMarshaller[SsioInsertionOrdersStatusGetByAdAccount200Response]
 
 }
 

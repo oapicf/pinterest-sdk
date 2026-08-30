@@ -19,7 +19,7 @@ part 'integration_record.g.dart';
 /// * [connectedUserId] 
 /// * [createdTime] 
 /// * [externalBusinessId] 
-/// * [id] 
+/// * [id] - Integration record ID.
 /// * [partnerAccessToken] 
 /// * [partnerAccessTokenExpiry] 
 /// * [partnerMetadata] 
@@ -54,8 +54,9 @@ abstract class IntegrationRecord implements Built<IntegrationRecord, Integration
   @BuiltValueField(wireName: r'external_business_id')
   String? get externalBusinessId;
 
+  /// Integration record ID.
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
 
   @BuiltValueField(wireName: r'partner_access_token')
   String? get partnerAccessToken;
@@ -160,13 +161,11 @@ class _$IntegrationRecordSerializer implements PrimitiveSerializer<IntegrationRe
         specifiedType: const FullType.nullable(String),
       );
     }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     if (object.partnerAccessToken != null) {
       yield r'partner_access_token';
       yield serializers.serialize(
@@ -289,15 +288,17 @@ class _$IntegrationRecordSerializer implements PrimitiveSerializer<IntegrationRe
         case r'connected_user_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.connectedUserId = valueDes;
           break;
         case r'created_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdTime = valueDes;
           break;
         case r'external_business_id':
@@ -374,8 +375,9 @@ class _$IntegrationRecordSerializer implements PrimitiveSerializer<IntegrationRe
         case r'updated_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.updatedTime = valueDes;
           break;
         default:

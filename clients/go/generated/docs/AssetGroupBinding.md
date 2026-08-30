@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccountsIds** | Pointer to **[]string** | A list of ad account IDs under the asset group | [optional] 
-**AssetGroupDescription** | Pointer to **NullableString** | Asset group description | [optional] 
-**AssetGroupName** | Pointer to **NullableString** | Asset Group name | [optional] 
-**AssetGroupTypes** | Pointer to **[]string** | Asset group types | [optional] 
-**CatalogsIds** | Pointer to **[]string** | A list of catalog IDs under asset group | [optional] 
-**CreatedBy** | Pointer to [**NullableBusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the user that created the asset group. | [optional] 
-**CreatedTime** | Pointer to **NullableInt32** | The creation time of the asset group | [optional] 
-**Id** | Pointer to **string** | Asset Group ID. | [optional] 
-**Owner** | Pointer to [**NullableBusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | [optional] 
-**ProfilesIds** | Pointer to **[]string** | A list of profile IDs under asset group | [optional] 
-**UpdatedTime** | Pointer to **NullableInt32** | The last update time of the asset group | [optional] 
+**AdAccountsIds** | **[]string** | A list of ad account IDs under the asset group | 
+**AssetGroupDescription** | **NullableString** | Asset group description | 
+**AssetGroupName** | **NullableString** | Asset Group name | 
+**AssetGroupTypes** | **[]string** | Asset group types | 
+**CatalogsIds** | **[]string** | A list of catalog IDs under asset group | 
+**CreatedBy** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the user that created the asset group. | 
+**CreatedTime** | **NullableInt32** | The creation time of the asset group | 
+**Id** | **string** | Asset Group ID. | 
+**Owner** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | 
+**ProfilesIds** | **[]string** | A list of profile IDs under asset group | 
+**UpdatedTime** | **NullableInt32** | The last update time of the asset group | 
 
 ## Methods
 
 ### NewAssetGroupBinding
 
-`func NewAssetGroupBinding() *AssetGroupBinding`
+`func NewAssetGroupBinding(adAccountsIds []string, assetGroupDescription NullableString, assetGroupName NullableString, assetGroupTypes []string, catalogsIds []string, createdBy BusinessAccessUserSummary, createdTime NullableInt32, id string, owner BusinessAccessUserSummary, profilesIds []string, updatedTime NullableInt32, ) *AssetGroupBinding`
 
 NewAssetGroupBinding instantiates a new AssetGroupBinding object
 This constructor will assign default values to properties that have it defined,
@@ -54,22 +54,7 @@ and a boolean to check if the value has been set.
 
 SetAdAccountsIds sets AdAccountsIds field to given value.
 
-### HasAdAccountsIds
 
-`func (o *AssetGroupBinding) HasAdAccountsIds() bool`
-
-HasAdAccountsIds returns a boolean if a field has been set.
-
-### SetAdAccountsIdsNil
-
-`func (o *AssetGroupBinding) SetAdAccountsIdsNil(b bool)`
-
- SetAdAccountsIdsNil sets the value for AdAccountsIds to be an explicit nil
-
-### UnsetAdAccountsIds
-`func (o *AssetGroupBinding) UnsetAdAccountsIds()`
-
-UnsetAdAccountsIds ensures that no value is present for AdAccountsIds, not even an explicit nil
 ### GetAssetGroupDescription
 
 `func (o *AssetGroupBinding) GetAssetGroupDescription() string`
@@ -89,11 +74,6 @@ and a boolean to check if the value has been set.
 
 SetAssetGroupDescription sets AssetGroupDescription field to given value.
 
-### HasAssetGroupDescription
-
-`func (o *AssetGroupBinding) HasAssetGroupDescription() bool`
-
-HasAssetGroupDescription returns a boolean if a field has been set.
 
 ### SetAssetGroupDescriptionNil
 
@@ -124,11 +104,6 @@ and a boolean to check if the value has been set.
 
 SetAssetGroupName sets AssetGroupName field to given value.
 
-### HasAssetGroupName
-
-`func (o *AssetGroupBinding) HasAssetGroupName() bool`
-
-HasAssetGroupName returns a boolean if a field has been set.
 
 ### SetAssetGroupNameNil
 
@@ -159,11 +134,6 @@ and a boolean to check if the value has been set.
 
 SetAssetGroupTypes sets AssetGroupTypes field to given value.
 
-### HasAssetGroupTypes
-
-`func (o *AssetGroupBinding) HasAssetGroupTypes() bool`
-
-HasAssetGroupTypes returns a boolean if a field has been set.
 
 ### GetCatalogsIds
 
@@ -184,22 +154,7 @@ and a boolean to check if the value has been set.
 
 SetCatalogsIds sets CatalogsIds field to given value.
 
-### HasCatalogsIds
 
-`func (o *AssetGroupBinding) HasCatalogsIds() bool`
-
-HasCatalogsIds returns a boolean if a field has been set.
-
-### SetCatalogsIdsNil
-
-`func (o *AssetGroupBinding) SetCatalogsIdsNil(b bool)`
-
- SetCatalogsIdsNil sets the value for CatalogsIds to be an explicit nil
-
-### UnsetCatalogsIds
-`func (o *AssetGroupBinding) UnsetCatalogsIds()`
-
-UnsetCatalogsIds ensures that no value is present for CatalogsIds, not even an explicit nil
 ### GetCreatedBy
 
 `func (o *AssetGroupBinding) GetCreatedBy() BusinessAccessUserSummary`
@@ -219,22 +174,7 @@ and a boolean to check if the value has been set.
 
 SetCreatedBy sets CreatedBy field to given value.
 
-### HasCreatedBy
 
-`func (o *AssetGroupBinding) HasCreatedBy() bool`
-
-HasCreatedBy returns a boolean if a field has been set.
-
-### SetCreatedByNil
-
-`func (o *AssetGroupBinding) SetCreatedByNil(b bool)`
-
- SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-
-### UnsetCreatedBy
-`func (o *AssetGroupBinding) UnsetCreatedBy()`
-
-UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
 ### GetCreatedTime
 
 `func (o *AssetGroupBinding) GetCreatedTime() int32`
@@ -254,11 +194,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedTime sets CreatedTime field to given value.
 
-### HasCreatedTime
-
-`func (o *AssetGroupBinding) HasCreatedTime() bool`
-
-HasCreatedTime returns a boolean if a field has been set.
 
 ### SetCreatedTimeNil
 
@@ -289,11 +224,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *AssetGroupBinding) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetOwner
 
@@ -314,22 +244,7 @@ and a boolean to check if the value has been set.
 
 SetOwner sets Owner field to given value.
 
-### HasOwner
 
-`func (o *AssetGroupBinding) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
-
-### SetOwnerNil
-
-`func (o *AssetGroupBinding) SetOwnerNil(b bool)`
-
- SetOwnerNil sets the value for Owner to be an explicit nil
-
-### UnsetOwner
-`func (o *AssetGroupBinding) UnsetOwner()`
-
-UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetProfilesIds
 
 `func (o *AssetGroupBinding) GetProfilesIds() []string`
@@ -349,22 +264,7 @@ and a boolean to check if the value has been set.
 
 SetProfilesIds sets ProfilesIds field to given value.
 
-### HasProfilesIds
 
-`func (o *AssetGroupBinding) HasProfilesIds() bool`
-
-HasProfilesIds returns a boolean if a field has been set.
-
-### SetProfilesIdsNil
-
-`func (o *AssetGroupBinding) SetProfilesIdsNil(b bool)`
-
- SetProfilesIdsNil sets the value for ProfilesIds to be an explicit nil
-
-### UnsetProfilesIds
-`func (o *AssetGroupBinding) UnsetProfilesIds()`
-
-UnsetProfilesIds ensures that no value is present for ProfilesIds, not even an explicit nil
 ### GetUpdatedTime
 
 `func (o *AssetGroupBinding) GetUpdatedTime() int32`
@@ -384,11 +284,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedTime sets UpdatedTime field to given value.
 
-### HasUpdatedTime
-
-`func (o *AssetGroupBinding) HasUpdatedTime() bool`
-
-HasUpdatedTime returns a boolean if a field has been set.
 
 ### SetUpdatedTimeNil
 

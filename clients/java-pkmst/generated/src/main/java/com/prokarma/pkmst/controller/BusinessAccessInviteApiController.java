@@ -1,17 +1,18 @@
 package com.prokarma.pkmst.controller;
 
 import com.prokarma.pkmst.model.AuthRespondInvitesBody;
-import com.prokarma.pkmst.model.CancelInvitesBody;
+import com.prokarma.pkmst.model.CancelInvitesRequest;
+import com.prokarma.pkmst.model.CancelInvitesResponse;
 import com.prokarma.pkmst.model.CreateAssetAccessRequestBody;
 import com.prokarma.pkmst.model.CreateAssetAccessRequestResponse;
 import com.prokarma.pkmst.model.CreateAssetInvitesRequest;
 import com.prokarma.pkmst.model.CreateInvitesResultsResponseArray;
 import com.prokarma.pkmst.model.CreateMembershipOrPartnershipInvitesBody;
-import com.prokarma.pkmst.model.DeleteInvitesResultsResponseArray;
-import com.prokarma.pkmst.model.Error;
 import com.prokarma.pkmst.model.GetInvites200Response;
+import com.prokarma.pkmst.model.InviteFilterStatus;
 import com.prokarma.pkmst.model.InviteType;
 import java.util.List;
+import com.prokarma.pkmst.model.PinterestLibError;
 import com.prokarma.pkmst.model.RespondToInvitesResponseArray;
 import com.prokarma.pkmst.model.UpdateInvitesResultsResponseArray;
 
@@ -36,7 +37,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class BusinessAccessInviteApiController implements BusinessAccessInviteApi {
     private final ObjectMapper objectMapper;
@@ -59,30 +60,90 @@ public class BusinessAccessInviteApiController implements BusinessAccessInviteAp
             return new ResponseEntity<CreateAssetAccessRequestResponse>(objectMapper.readValue("", CreateAssetAccessRequestResponse.class), HttpStatus.OK);
         }
 
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateAssetAccessRequestResponse>(objectMapper.readValue("", CreateAssetAccessRequestResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateAssetAccessRequestResponse>(objectMapper.readValue("", CreateAssetAccessRequestResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateAssetAccessRequestResponse>(objectMapper.readValue("", CreateAssetAccessRequestResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateAssetAccessRequestResponse>(objectMapper.readValue("", CreateAssetAccessRequestResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateAssetAccessRequestResponse>(objectMapper.readValue("", CreateAssetAccessRequestResponse.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateAssetAccessRequestResponse>(objectMapper.readValue("", CreateAssetAccessRequestResponse.class), HttpStatus.OK);
+        }
+
         return new ResponseEntity<CreateAssetAccessRequestResponse>(HttpStatus.OK);
     }
 
-    public ResponseEntity<DeleteInvitesResultsResponseArray> cancelInvitesOrRequests(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
-        @ApiParam(value = "A list with invite ids" ,required=true )   @RequestBody CancelInvitesBody cancelInvitesBody,
+    public ResponseEntity<CancelInvitesResponse> cancelInvitesOrRequests(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
+        @ApiParam(value = "" ,required=true )   @RequestBody CancelInvitesRequest cancelInvitesRequest,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<DeleteInvitesResultsResponseArray>(objectMapper.readValue("", DeleteInvitesResultsResponseArray.class), HttpStatus.OK);
+            return new ResponseEntity<CancelInvitesResponse>(objectMapper.readValue("", CancelInvitesResponse.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<DeleteInvitesResultsResponseArray>(objectMapper.readValue("", DeleteInvitesResultsResponseArray.class), HttpStatus.OK);
+            return new ResponseEntity<CancelInvitesResponse>(objectMapper.readValue("", CancelInvitesResponse.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<DeleteInvitesResultsResponseArray>(HttpStatus.OK);
+        return new ResponseEntity<CancelInvitesResponse>(HttpStatus.OK);
     }
 
     public ResponseEntity<UpdateInvitesResultsResponseArray> createAssetInvites(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
-        @ApiParam(value = "A list of invites/requests together with the asset permissions to be assigned to the invite/request. " ,required=true )   @RequestBody CreateAssetInvitesRequest createAssetInvitesRequest,
+        @ApiParam(value = "" ,required=true )   @RequestBody CreateAssetInvitesRequest createAssetInvitesRequest,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<UpdateInvitesResultsResponseArray>(objectMapper.readValue("", UpdateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<UpdateInvitesResultsResponseArray>(objectMapper.readValue("", UpdateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<UpdateInvitesResultsResponseArray>(objectMapper.readValue("", UpdateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<UpdateInvitesResultsResponseArray>(objectMapper.readValue("", UpdateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<UpdateInvitesResultsResponseArray>(objectMapper.readValue("", UpdateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<UpdateInvitesResultsResponseArray>(objectMapper.readValue("", UpdateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<UpdateInvitesResultsResponseArray>(objectMapper.readValue("", UpdateInvitesResultsResponseArray.class), HttpStatus.OK);
@@ -97,9 +158,39 @@ public class BusinessAccessInviteApiController implements BusinessAccessInviteAp
     }
 
     public ResponseEntity<CreateInvitesResultsResponseArray> createMembershipOrPartnershipInvites(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
-        @ApiParam(value = "An object with the properties: invite_type, partners, members, business_role" ,required=true )   @RequestBody CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody,
+        @ApiParam(value = "" ,required=true )   @RequestBody CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateInvitesResultsResponseArray>(objectMapper.readValue("", CreateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateInvitesResultsResponseArray>(objectMapper.readValue("", CreateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateInvitesResultsResponseArray>(objectMapper.readValue("", CreateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateInvitesResultsResponseArray>(objectMapper.readValue("", CreateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateInvitesResultsResponseArray>(objectMapper.readValue("", CreateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<CreateInvitesResultsResponseArray>(objectMapper.readValue("", CreateInvitesResultsResponseArray.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<CreateInvitesResultsResponseArray>(objectMapper.readValue("", CreateInvitesResultsResponseArray.class), HttpStatus.OK);
@@ -115,12 +206,37 @@ public class BusinessAccessInviteApiController implements BusinessAccessInviteAp
 
     public ResponseEntity<GetInvites200Response> getInvites(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
         @ApiParam(value = "A boolean field to indicate whether the invite is to create a partnership or a membership.", defaultValue = "true")  @RequestParam(value = "is_member", required = false, defaultValue="true") Boolean isMember,
-        @ApiParam(value = "A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.", allowableValues = "PENDING, EXPIRED")  @RequestParam(value = "invite_status", required = false) List<String> inviteStatus,
+        @ApiParam(value = "A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.")  @RequestParam(value = "invite_status", required = false) List<InviteFilterStatus> inviteStatus,
         @ApiParam(value = "Invite type to filter invites by. Only invites of the specified type will be returned.", allowableValues = "MEMBER_INVITE, PARTNER_INVITE, PARTNER_REQUEST")  @RequestParam(value = "invite_type", required = false) InviteType inviteType,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
-        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
+        @ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<GetInvites200Response>(objectMapper.readValue("", GetInvites200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<GetInvites200Response>(objectMapper.readValue("", GetInvites200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<GetInvites200Response>(objectMapper.readValue("", GetInvites200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<GetInvites200Response>(objectMapper.readValue("", GetInvites200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<GetInvites200Response>(objectMapper.readValue("", GetInvites200Response.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<GetInvites200Response>(objectMapper.readValue("", GetInvites200Response.class), HttpStatus.OK);
@@ -137,6 +253,31 @@ public class BusinessAccessInviteApiController implements BusinessAccessInviteAp
     public ResponseEntity<RespondToInvitesResponseArray> respondBusinessAccessInvites(@ApiParam(value = "" ,required=true )   @RequestBody AuthRespondInvitesBody authRespondInvitesBody,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<RespondToInvitesResponseArray>(objectMapper.readValue("", RespondToInvitesResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<RespondToInvitesResponseArray>(objectMapper.readValue("", RespondToInvitesResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<RespondToInvitesResponseArray>(objectMapper.readValue("", RespondToInvitesResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<RespondToInvitesResponseArray>(objectMapper.readValue("", RespondToInvitesResponseArray.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<RespondToInvitesResponseArray>(objectMapper.readValue("", RespondToInvitesResponseArray.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<RespondToInvitesResponseArray>(objectMapper.readValue("", RespondToInvitesResponseArray.class), HttpStatus.OK);

@@ -9,10 +9,11 @@ BulkUpsertRequestCreate::BulkUpsertRequestCreate()
 	ad_groups = std::list<AdGroupCreateRequest>();
 	ads = std::list<AdCreateRequest>();
 	campaigns = std::list<CampaignCreateRequest>();
-	catalog_product_groups = std::list<Multiple_product_groups_inner>();
+	catalog_product_groups = std::list<BulkUpsertRequestCreateCatalogProductGroupsItems>();
 	keywords = std::list<KeywordsRequest>();
-	labels = std::list<LabelCreateRequest>();
+	labels = std::list<LabelBulkCreateRequest>();
 	product_groups = std::list<ProductGroupPromotionCreateRequest>();
+	schedules = std::list<ScheduleCreateRequest>();
 }
 
 BulkUpsertRequestCreate::BulkUpsertRequestCreate(std::string jsonString)
@@ -103,8 +104,8 @@ BulkUpsertRequestCreate::fromJson(std::string jsonObj)
         bourne::json value = object[catalog_product_groupsKey];
 
 
-        std::list<Multiple_product_groups_inner> catalog_product_groups_list;
-        Multiple_product_groups_inner element;
+        std::list<BulkUpsertRequestCreateCatalogProductGroupsItems> catalog_product_groups_list;
+        BulkUpsertRequestCreateCatalogProductGroupsItems element;
         for(auto& var : value.array_range())
         {
 
@@ -147,8 +148,8 @@ BulkUpsertRequestCreate::fromJson(std::string jsonObj)
         bourne::json value = object[labelsKey];
 
 
-        std::list<LabelCreateRequest> labels_list;
-        LabelCreateRequest element;
+        std::list<LabelBulkCreateRequest> labels_list;
+        LabelBulkCreateRequest element;
         for(auto& var : value.array_range())
         {
 
@@ -180,6 +181,28 @@ BulkUpsertRequestCreate::fromJson(std::string jsonObj)
             product_groups_list.push_back(element);
         }
         product_groups = product_groups_list;
+
+
+    }
+
+    const char *schedulesKey = "schedules";
+
+    if(object.has_key(schedulesKey))
+    {
+        bourne::json value = object[schedulesKey];
+
+
+        std::list<ScheduleCreateRequest> schedules_list;
+        ScheduleCreateRequest element;
+        for(auto& var : value.array_range())
+        {
+
+
+            element.fromJson(var.dump());
+
+            schedules_list.push_back(element);
+        }
+        schedules = schedules_list;
 
 
     }
@@ -240,12 +263,12 @@ BulkUpsertRequestCreate::toJson()
 
 
 
-    std::list<Multiple_product_groups_inner> catalog_product_groups_list = getCatalogProductGroups();
+    std::list<BulkUpsertRequestCreateCatalogProductGroupsItems> catalog_product_groups_list = getCatalogProductGroups();
     bourne::json catalog_product_groups_arr = bourne::json::array();
 
     for(auto& var : catalog_product_groups_list)
     {
-        Multiple_product_groups_inner obj = var;
+        BulkUpsertRequestCreateCatalogProductGroupsItems obj = var;
         catalog_product_groups_arr.append(obj.toJson());
     }
     object["catalog_product_groups"] = catalog_product_groups_arr;
@@ -270,12 +293,12 @@ BulkUpsertRequestCreate::toJson()
 
 
 
-    std::list<LabelCreateRequest> labels_list = getLabels();
+    std::list<LabelBulkCreateRequest> labels_list = getLabels();
     bourne::json labels_arr = bourne::json::array();
 
     for(auto& var : labels_list)
     {
-        LabelCreateRequest obj = var;
+        LabelBulkCreateRequest obj = var;
         labels_arr.append(obj.toJson());
     }
     object["labels"] = labels_arr;
@@ -298,6 +321,21 @@ BulkUpsertRequestCreate::toJson()
 
 
 
+
+
+    std::list<ScheduleCreateRequest> schedules_list = getSchedules();
+    bourne::json schedules_arr = bourne::json::array();
+
+    for(auto& var : schedules_list)
+    {
+        ScheduleCreateRequest obj = var;
+        schedules_arr.append(obj.toJson());
+    }
+    object["schedules"] = schedules_arr;
+
+
+
+
     return object;
 
 }
@@ -309,7 +347,7 @@ BulkUpsertRequestCreate::getAdGroups()
 }
 
 void
-BulkUpsertRequestCreate::setAdGroups(std::list <AdGroupCreateRequest> ad_groups)
+BulkUpsertRequestCreate::setAdGroups(std::list<AdGroupCreateRequest> ad_groups)
 {
 	this->ad_groups = ad_groups;
 }
@@ -321,7 +359,7 @@ BulkUpsertRequestCreate::getAds()
 }
 
 void
-BulkUpsertRequestCreate::setAds(std::list <AdCreateRequest> ads)
+BulkUpsertRequestCreate::setAds(std::list<AdCreateRequest> ads)
 {
 	this->ads = ads;
 }
@@ -333,19 +371,19 @@ BulkUpsertRequestCreate::getCampaigns()
 }
 
 void
-BulkUpsertRequestCreate::setCampaigns(std::list <CampaignCreateRequest> campaigns)
+BulkUpsertRequestCreate::setCampaigns(std::list<CampaignCreateRequest> campaigns)
 {
 	this->campaigns = campaigns;
 }
 
-std::list<Multiple_product_groups_inner>
+std::list<BulkUpsertRequestCreateCatalogProductGroupsItems>
 BulkUpsertRequestCreate::getCatalogProductGroups()
 {
 	return catalog_product_groups;
 }
 
 void
-BulkUpsertRequestCreate::setCatalogProductGroups(std::list <Multiple_product_groups_inner> catalog_product_groups)
+BulkUpsertRequestCreate::setCatalogProductGroups(std::list<BulkUpsertRequestCreateCatalogProductGroupsItems> catalog_product_groups)
 {
 	this->catalog_product_groups = catalog_product_groups;
 }
@@ -357,19 +395,19 @@ BulkUpsertRequestCreate::getKeywords()
 }
 
 void
-BulkUpsertRequestCreate::setKeywords(std::list <KeywordsRequest> keywords)
+BulkUpsertRequestCreate::setKeywords(std::list<KeywordsRequest> keywords)
 {
 	this->keywords = keywords;
 }
 
-std::list<LabelCreateRequest>
+std::list<LabelBulkCreateRequest>
 BulkUpsertRequestCreate::getLabels()
 {
 	return labels;
 }
 
 void
-BulkUpsertRequestCreate::setLabels(std::list <LabelCreateRequest> labels)
+BulkUpsertRequestCreate::setLabels(std::list<LabelBulkCreateRequest> labels)
 {
 	this->labels = labels;
 }
@@ -381,9 +419,21 @@ BulkUpsertRequestCreate::getProductGroups()
 }
 
 void
-BulkUpsertRequestCreate::setProductGroups(std::list <ProductGroupPromotionCreateRequest> product_groups)
+BulkUpsertRequestCreate::setProductGroups(std::list<ProductGroupPromotionCreateRequest> product_groups)
 {
 	this->product_groups = product_groups;
+}
+
+std::list<ScheduleCreateRequest>
+BulkUpsertRequestCreate::getSchedules()
+{
+	return schedules;
+}
+
+void
+BulkUpsertRequestCreate::setSchedules(std::list<ScheduleCreateRequest> schedules)
+{
+	this->schedules = schedules;
 }
 
 

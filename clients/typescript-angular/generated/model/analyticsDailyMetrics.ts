@@ -16,9 +16,6 @@ export interface AnalyticsDailyMetrics {
      * Metrics date (UTC): YYYY-MM-DD.
      */
     date?: string;
-    /**
-     * The metric name and daily value for each requested metric
-     */
     metrics?: { [key: string]: number; };
 }
 export namespace AnalyticsDailyMetrics {

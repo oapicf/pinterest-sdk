@@ -7,7 +7,7 @@
 | **catalog_type** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] |
-| **name** | **String** |  | [optional] |
+| **name** | **String** | Name of catalog product group | [optional] |
 
 ## Example
 
@@ -18,7 +18,7 @@ instance = PinterestSdkClient::CatalogsCreativeAssetsProductGroupUpdateRequest.n
   catalog_type: null,
   description: null,
   filters: null,
-  name: null
+  name: Most Popular
 )
 ```
 

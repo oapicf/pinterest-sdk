@@ -4,6 +4,7 @@ package org.openapitools.client.model
 import java.util.HashMap
 
 case class CampaignAudienceMultipliers (
+    /* Audience ID for the multiplier. */
     _AUDIENCE_ID: Option[String]
 )
 object CampaignAudienceMultipliers {

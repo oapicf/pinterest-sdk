@@ -6,8 +6,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AgeBucketMultipliers;
 import org.openapitools.model.AppTypeMultipliers;
 import org.openapitools.model.CampaignAudienceMultipliers;
+import org.openapitools.model.CampaignBidOptionsUpdateMaskItems;
+import org.openapitools.model.FreqBidMultiplierTimeWindow;
+import org.openapitools.model.FrequencyMultipliers;
+import org.openapitools.model.GenderMultipliers;
 import org.openapitools.model.PlacementMultipliers;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -24,58 +29,87 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CampaignBidOptionsUpdate  {
   
-  @ApiModelProperty(value = "")
+ /**
+  * Age bucket multipliers for bid adjustments.
+  */
+  @ApiModelProperty(value = "Age bucket multipliers for bid adjustments.")
+  @Valid
+  private AgeBucketMultipliers ageBucketMultipliers;
+
+ /**
+  * App type multipliers for bid adjustments.
+  */
+  @ApiModelProperty(value = "App type multipliers for bid adjustments.")
   @Valid
   private AppTypeMultipliers appTypeMultipliers;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Audience multipliers for bid adjustments.
+  */
+  @ApiModelProperty(value = "Audience multipliers for bid adjustments.")
   @Valid
   private CampaignAudienceMultipliers audienceMultipliers;
 
-  @ApiModelProperty(value = "")
+ /**
+  * The time window for frequency bid multipliers.
+  */
+  @ApiModelProperty(value = "The time window for frequency bid multipliers.")
+  @Valid
+  private FreqBidMultiplierTimeWindow freqBidMultiplierTimeWindow;
+
+ /**
+  * Frequency multipliers for bid adjustments.
+  */
+  @ApiModelProperty(value = "Frequency multipliers for bid adjustments.")
+  @Valid
+  private FrequencyMultipliers frequencyMultipliers;
+
+ /**
+  * Gender multipliers for bid adjustments.
+  */
+  @ApiModelProperty(value = "Gender multipliers for bid adjustments.")
+  @Valid
+  private GenderMultipliers genderMultipliers;
+
+ /**
+  * Placement multipliers for bid adjustments.
+  */
+  @ApiModelProperty(value = "Placement multipliers for bid adjustments.")
   @Valid
   private PlacementMultipliers placementMultipliers;
 
-public enum UpdateMaskEnum {
-
-    @JsonProperty("AUDIENCE") AUDIENCE(String.valueOf("AUDIENCE")),
-    @JsonProperty("APP_TYPE") APP_TYPE(String.valueOf("APP_TYPE")),
-    @JsonProperty("PLACEMENT") PLACEMENT(String.valueOf("PLACEMENT")),
-    @JsonProperty("GENDER") GENDER(String.valueOf("GENDER")),
-    @JsonProperty("AGE_BUCKET") AGE_BUCKET(String.valueOf("AGE_BUCKET"));
-
-    private String value;
-
-    UpdateMaskEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static UpdateMaskEnum fromValue(String value) {
-        for (UpdateMaskEnum b : UpdateMaskEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
-  * List of fields to update, only the fields in the list will be updated.
+  * List of fields to update. Only the fields in the list will be updated.
   */
-  @ApiModelProperty(required = true, value = "List of fields to update, only the fields in the list will be updated.")
-  private List<UpdateMaskEnum> updateMask = new ArrayList<>();
+  @ApiModelProperty(required = true, value = "List of fields to update. Only the fields in the list will be updated.")
+  @Valid
+  private List<CampaignBidOptionsUpdateMaskItems> updateMask = new ArrayList<>();
  /**
-  * Get appTypeMultipliers
+  * Age bucket multipliers for bid adjustments.
+  * @return ageBucketMultipliers
+  */
+  @JsonProperty("age_bucket_multipliers")
+  public AgeBucketMultipliers getAgeBucketMultipliers() {
+    return ageBucketMultipliers;
+  }
+
+  /**
+   * Sets the <code>ageBucketMultipliers</code> property.
+   */
+ public void setAgeBucketMultipliers(AgeBucketMultipliers ageBucketMultipliers) {
+    this.ageBucketMultipliers = ageBucketMultipliers;
+  }
+
+  /**
+   * Sets the <code>ageBucketMultipliers</code> property.
+   */
+  public CampaignBidOptionsUpdate ageBucketMultipliers(AgeBucketMultipliers ageBucketMultipliers) {
+    this.ageBucketMultipliers = ageBucketMultipliers;
+    return this;
+  }
+
+ /**
+  * App type multipliers for bid adjustments.
   * @return appTypeMultipliers
   */
   @JsonProperty("app_type_multipliers")
@@ -99,7 +133,7 @@ public enum UpdateMaskEnum {
   }
 
  /**
-  * Get audienceMultipliers
+  * Audience multipliers for bid adjustments.
   * @return audienceMultipliers
   */
   @JsonProperty("audience_multipliers")
@@ -123,7 +157,79 @@ public enum UpdateMaskEnum {
   }
 
  /**
-  * Get placementMultipliers
+  * The time window for frequency bid multipliers.
+  * @return freqBidMultiplierTimeWindow
+  */
+  @JsonProperty("freq_bid_multiplier_time_window")
+  public FreqBidMultiplierTimeWindow getFreqBidMultiplierTimeWindow() {
+    return freqBidMultiplierTimeWindow;
+  }
+
+  /**
+   * Sets the <code>freqBidMultiplierTimeWindow</code> property.
+   */
+ public void setFreqBidMultiplierTimeWindow(FreqBidMultiplierTimeWindow freqBidMultiplierTimeWindow) {
+    this.freqBidMultiplierTimeWindow = freqBidMultiplierTimeWindow;
+  }
+
+  /**
+   * Sets the <code>freqBidMultiplierTimeWindow</code> property.
+   */
+  public CampaignBidOptionsUpdate freqBidMultiplierTimeWindow(FreqBidMultiplierTimeWindow freqBidMultiplierTimeWindow) {
+    this.freqBidMultiplierTimeWindow = freqBidMultiplierTimeWindow;
+    return this;
+  }
+
+ /**
+  * Frequency multipliers for bid adjustments.
+  * @return frequencyMultipliers
+  */
+  @JsonProperty("frequency_multipliers")
+  public FrequencyMultipliers getFrequencyMultipliers() {
+    return frequencyMultipliers;
+  }
+
+  /**
+   * Sets the <code>frequencyMultipliers</code> property.
+   */
+ public void setFrequencyMultipliers(FrequencyMultipliers frequencyMultipliers) {
+    this.frequencyMultipliers = frequencyMultipliers;
+  }
+
+  /**
+   * Sets the <code>frequencyMultipliers</code> property.
+   */
+  public CampaignBidOptionsUpdate frequencyMultipliers(FrequencyMultipliers frequencyMultipliers) {
+    this.frequencyMultipliers = frequencyMultipliers;
+    return this;
+  }
+
+ /**
+  * Gender multipliers for bid adjustments.
+  * @return genderMultipliers
+  */
+  @JsonProperty("gender_multipliers")
+  public GenderMultipliers getGenderMultipliers() {
+    return genderMultipliers;
+  }
+
+  /**
+   * Sets the <code>genderMultipliers</code> property.
+   */
+ public void setGenderMultipliers(GenderMultipliers genderMultipliers) {
+    this.genderMultipliers = genderMultipliers;
+  }
+
+  /**
+   * Sets the <code>genderMultipliers</code> property.
+   */
+  public CampaignBidOptionsUpdate genderMultipliers(GenderMultipliers genderMultipliers) {
+    this.genderMultipliers = genderMultipliers;
+    return this;
+  }
+
+ /**
+  * Placement multipliers for bid adjustments.
   * @return placementMultipliers
   */
   @JsonProperty("placement_multipliers")
@@ -147,26 +253,26 @@ public enum UpdateMaskEnum {
   }
 
  /**
-  * List of fields to update, only the fields in the list will be updated.
+  * List of fields to update. Only the fields in the list will be updated.
   * @return updateMask
   */
   @JsonProperty("update_mask")
   @NotNull
-  public List<UpdateMaskEnum> getUpdateMask() {
+  public List<CampaignBidOptionsUpdateMaskItems> getUpdateMask() {
     return updateMask;
   }
 
   /**
    * Sets the <code>updateMask</code> property.
    */
- public void setUpdateMask(List<UpdateMaskEnum> updateMask) {
+ public void setUpdateMask(List<CampaignBidOptionsUpdateMaskItems> updateMask) {
     this.updateMask = updateMask;
   }
 
   /**
    * Sets the <code>updateMask</code> property.
    */
-  public CampaignBidOptionsUpdate updateMask(List<UpdateMaskEnum> updateMask) {
+  public CampaignBidOptionsUpdate updateMask(List<CampaignBidOptionsUpdateMaskItems> updateMask) {
     this.updateMask = updateMask;
     return this;
   }
@@ -174,7 +280,7 @@ public enum UpdateMaskEnum {
   /**
    * Adds a new item to the <code>updateMask</code> list.
    */
-  public CampaignBidOptionsUpdate addUpdateMaskItem(UpdateMaskEnum updateMaskItem) {
+  public CampaignBidOptionsUpdate addUpdateMaskItem(CampaignBidOptionsUpdateMaskItems updateMaskItem) {
     this.updateMask.add(updateMaskItem);
     return this;
   }
@@ -189,15 +295,19 @@ public enum UpdateMaskEnum {
       return false;
     }
     CampaignBidOptionsUpdate campaignBidOptionsUpdate = (CampaignBidOptionsUpdate) o;
-    return Objects.equals(this.appTypeMultipliers, campaignBidOptionsUpdate.appTypeMultipliers) &&
+    return Objects.equals(this.ageBucketMultipliers, campaignBidOptionsUpdate.ageBucketMultipliers) &&
+        Objects.equals(this.appTypeMultipliers, campaignBidOptionsUpdate.appTypeMultipliers) &&
         Objects.equals(this.audienceMultipliers, campaignBidOptionsUpdate.audienceMultipliers) &&
+        Objects.equals(this.freqBidMultiplierTimeWindow, campaignBidOptionsUpdate.freqBidMultiplierTimeWindow) &&
+        Objects.equals(this.frequencyMultipliers, campaignBidOptionsUpdate.frequencyMultipliers) &&
+        Objects.equals(this.genderMultipliers, campaignBidOptionsUpdate.genderMultipliers) &&
         Objects.equals(this.placementMultipliers, campaignBidOptionsUpdate.placementMultipliers) &&
         Objects.equals(this.updateMask, campaignBidOptionsUpdate.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appTypeMultipliers, audienceMultipliers, placementMultipliers, updateMask);
+    return Objects.hash(ageBucketMultipliers, appTypeMultipliers, audienceMultipliers, freqBidMultiplierTimeWindow, frequencyMultipliers, genderMultipliers, placementMultipliers, updateMask);
   }
 
   @Override
@@ -205,8 +315,12 @@ public enum UpdateMaskEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignBidOptionsUpdate {\n");
     
+    sb.append("    ageBucketMultipliers: ").append(toIndentedString(ageBucketMultipliers)).append("\n");
     sb.append("    appTypeMultipliers: ").append(toIndentedString(appTypeMultipliers)).append("\n");
     sb.append("    audienceMultipliers: ").append(toIndentedString(audienceMultipliers)).append("\n");
+    sb.append("    freqBidMultiplierTimeWindow: ").append(toIndentedString(freqBidMultiplierTimeWindow)).append("\n");
+    sb.append("    frequencyMultipliers: ").append(toIndentedString(frequencyMultipliers)).append("\n");
+    sb.append("    genderMultipliers: ").append(toIndentedString(genderMultipliers)).append("\n");
     sb.append("    placementMultipliers: ").append(toIndentedString(placementMultipliers)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
@@ -218,10 +332,7 @@ public enum UpdateMaskEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

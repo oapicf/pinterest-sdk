@@ -8,7 +8,7 @@ The class is defined in **[CatalogsHotelProductGroupFiltersAllOf.java](../../src
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allOf** | `List&lt;CatalogsHotelProductGroupFilterKeys&gt;` |  | 
+**allOf** | [`List&lt;CatalogsHotelProductGroupFilterKeys&gt;`](CatalogsHotelProductGroupFilterKeys.md) |  | 
 
 
 

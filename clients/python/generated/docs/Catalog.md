@@ -6,11 +6,11 @@ Catalog entity
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** |  | 
-**id** | **str** | ID of the catalog entity. | 
-**updated_at** | **datetime** |  | 
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**created_at** | **datetime** |  | [readonly] 
+**id** | **str** | ID of the catalog entity. | 
 **name** | **str** | A human-friendly name associated to a catalog entity. | 
+**updated_at** | **datetime** |  | [readonly] 
 
 ## Example
 

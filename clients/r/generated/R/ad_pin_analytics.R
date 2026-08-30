@@ -9,28 +9,22 @@
 #' @format An \code{R6Class} generator object
 #' @field DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) character [optional]
 #' @field PIN_ID The ID of the pin that the metric belongs to. character
-#' @field _field_list a list of fields list(character)
-#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdPinAnalytics <- R6::R6Class(
   "AdPinAnalytics",
-  inherit = AnyType,
   public = list(
     `DATE` = NULL,
     `PIN_ID` = NULL,
-    `_field_list` = c("DATE", "PIN_ID"),
-    `additional_properties` = list(),
 
     #' @description
     #' Initialize a new AdPinAnalytics class.
     #'
     #' @param PIN_ID The ID of the pin that the metric belongs to.
     #' @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
-    #' @param additional_properties additional properties (optional)
     #' @param ... Other optional arguments.
-    initialize = function(`PIN_ID`, `DATE` = NULL, additional_properties = NULL, ...) {
+    initialize = function(`PIN_ID`, `DATE` = NULL, ...) {
       if (!missing(`PIN_ID`)) {
         if (!(is.character(`PIN_ID`) && length(`PIN_ID`) == 1)) {
           stop(paste("Error! Invalid data for `PIN_ID`. Must be a string:", `PIN_ID`))
@@ -42,11 +36,6 @@ AdPinAnalytics <- R6::R6Class(
           stop(paste("Error! Invalid data for `DATE`. Must be a string:", `DATE`))
         }
         self$`DATE` <- `DATE`
-      }
-      if (!is.null(additional_properties)) {
-        for (key in names(additional_properties)) {
-          self$additional_properties[[key]] <- additional_properties[[key]]
-        }
       }
     },
 
@@ -89,10 +78,6 @@ AdPinAnalytics <- R6::R6Class(
         AdPinAnalyticsObject[["PIN_ID"]] <-
           self$`PIN_ID`
       }
-      for (key in names(self$additional_properties)) {
-        AdPinAnalyticsObject[[key]] <- self$additional_properties[[key]]
-      }
-
       return(AdPinAnalyticsObject)
     },
 
@@ -109,13 +94,6 @@ AdPinAnalytics <- R6::R6Class(
       if (!is.null(this_object$`PIN_ID`)) {
         self$`PIN_ID` <- this_object$`PIN_ID`
       }
-      # process additional properties/fields in the payload
-      for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
-          self$additional_properties[[key]] <- this_object[[key]]
-        }
-      }
-
       self
     },
 
@@ -126,9 +104,6 @@ AdPinAnalytics <- R6::R6Class(
     #' @return AdPinAnalytics in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
-      for (key in names(self$additional_properties)) {
-        simple[[key]] <- self$additional_properties[[key]]
-      }
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
       return(as.character(jsonlite::minify(json)))
     },
@@ -142,13 +117,6 @@ AdPinAnalytics <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`DATE` <- this_object$`DATE`
       self$`PIN_ID` <- this_object$`PIN_ID`
-      # process additional properties/fields in the payload
-      for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
-          self$additional_properties[[key]] <- this_object[[key]]
-        }
-      }
-
       self
     },
 

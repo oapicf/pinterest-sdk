@@ -4,23 +4,6 @@
 #include "ad_group_create_request.h"
 
 
-char* ad_group_create_request_bid_strategy_type_ToString(pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_e bid_strategy_type) {
-    char* bid_strategy_typeArray[] =  { "NULL", "AUTOMATIC_BID", "MAX_BID", "TARGET_AVG", "" };
-    return bid_strategy_typeArray[bid_strategy_type];
-}
-
-pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_e ad_group_create_request_bid_strategy_type_FromString(char* bid_strategy_type){
-    int stringToReturn = 0;
-    char *bid_strategy_typeArray[] =  { "NULL", "AUTOMATIC_BID", "MAX_BID", "TARGET_AVG", "" };
-    size_t sizeofArray = sizeof(bid_strategy_typeArray) / sizeof(bid_strategy_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(bid_strategy_type, bid_strategy_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 char* ad_group_create_request_promotion_application_level_ToString(pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_e promotion_application_level) {
     char* promotion_application_levelArray[] =  { "NULL", "NONE", "ITEM", "AD_GROUP", "" };
     return promotion_application_levelArray[promotion_application_level];
@@ -40,108 +23,163 @@ pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_e ad_group_
 }
 
 static ad_group_create_request_t *ad_group_create_request_create_internal(
-    int auto_targeting_enabled,
-    int bid_in_micro_currency,
-    pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_e bid_strategy_type,
+    int *auto_targeting_enabled,
+    double *bid_multiplier,
+    pinterest_rest_api_budget_type__e budget_type,
+    pinterest_rest_api_pacing_delivery_type__e pacing_delivery_type,
+    int *bid_in_micro_currency,
+    pinterest_rest_api_bid_strategy_type__e bid_strategy_type,
     pinterest_rest_api_action_type__e billable_event,
-    int budget_in_micro_currency,
-    budget_type_t *budget_type,
+    int *budget_in_micro_currency,
     char *campaign_id,
-    int end_time,
-    int is_creative_optimization,
-    int lifetime_frequency_cap,
+    int *end_time,
+    int *is_creative_optimization,
+    int *lifetime_frequency_cap,
     char *name,
-    optimization_goal_metadata_t *optimization_goal_metadata,
-    pacing_delivery_type_t *pacing_delivery_type,
+    object_t *optimization_goal_metadata,
     placement_group_type_t *placement_group,
     pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_e promotion_application_level,
     char *promotion_id,
-    int start_time,
+    list_t *promotion_ids,
+    int *start_time,
     entity_status_t *status,
     targeting_spec_t *targeting_spec,
     list_t *targeting_template_ids,
-    tracking_urls_t *tracking_urls,
-    double bid_multiplier
+    object_t *tracking_urls
     ) {
     ad_group_create_request_t *ad_group_create_request_local_var = malloc(sizeof(ad_group_create_request_t));
     if (!ad_group_create_request_local_var) {
         return NULL;
     }
+    memset(ad_group_create_request_local_var, 0, sizeof(ad_group_create_request_t));
+    ad_group_create_request_local_var->_library_owned = 1;
     ad_group_create_request_local_var->auto_targeting_enabled = auto_targeting_enabled;
+    ad_group_create_request_local_var->bid_multiplier = bid_multiplier;
+    ad_group_create_request_local_var->budget_type = budget_type;
+    ad_group_create_request_local_var->pacing_delivery_type = pacing_delivery_type;
     ad_group_create_request_local_var->bid_in_micro_currency = bid_in_micro_currency;
     ad_group_create_request_local_var->bid_strategy_type = bid_strategy_type;
     ad_group_create_request_local_var->billable_event = billable_event;
     ad_group_create_request_local_var->budget_in_micro_currency = budget_in_micro_currency;
-    ad_group_create_request_local_var->budget_type = budget_type;
     ad_group_create_request_local_var->campaign_id = campaign_id;
     ad_group_create_request_local_var->end_time = end_time;
     ad_group_create_request_local_var->is_creative_optimization = is_creative_optimization;
     ad_group_create_request_local_var->lifetime_frequency_cap = lifetime_frequency_cap;
     ad_group_create_request_local_var->name = name;
     ad_group_create_request_local_var->optimization_goal_metadata = optimization_goal_metadata;
-    ad_group_create_request_local_var->pacing_delivery_type = pacing_delivery_type;
     ad_group_create_request_local_var->placement_group = placement_group;
     ad_group_create_request_local_var->promotion_application_level = promotion_application_level;
     ad_group_create_request_local_var->promotion_id = promotion_id;
+    ad_group_create_request_local_var->promotion_ids = promotion_ids;
     ad_group_create_request_local_var->start_time = start_time;
     ad_group_create_request_local_var->status = status;
     ad_group_create_request_local_var->targeting_spec = targeting_spec;
     ad_group_create_request_local_var->targeting_template_ids = targeting_template_ids;
     ad_group_create_request_local_var->tracking_urls = tracking_urls;
-    ad_group_create_request_local_var->bid_multiplier = bid_multiplier;
-
-    ad_group_create_request_local_var->_library_owned = 1;
     return ad_group_create_request_local_var;
 }
 
 __attribute__((deprecated)) ad_group_create_request_t *ad_group_create_request_create(
-    int auto_targeting_enabled,
-    int bid_in_micro_currency,
-    pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_e bid_strategy_type,
+    int *auto_targeting_enabled,
+    double *bid_multiplier,
+    pinterest_rest_api_budget_type__e budget_type,
+    pinterest_rest_api_pacing_delivery_type__e pacing_delivery_type,
+    int *bid_in_micro_currency,
+    pinterest_rest_api_bid_strategy_type__e bid_strategy_type,
     pinterest_rest_api_action_type__e billable_event,
-    int budget_in_micro_currency,
-    budget_type_t *budget_type,
+    int *budget_in_micro_currency,
     char *campaign_id,
-    int end_time,
-    int is_creative_optimization,
-    int lifetime_frequency_cap,
+    int *end_time,
+    int *is_creative_optimization,
+    int *lifetime_frequency_cap,
     char *name,
-    optimization_goal_metadata_t *optimization_goal_metadata,
-    pacing_delivery_type_t *pacing_delivery_type,
+    object_t *optimization_goal_metadata,
     placement_group_type_t *placement_group,
     pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_e promotion_application_level,
     char *promotion_id,
-    int start_time,
+    list_t *promotion_ids,
+    int *start_time,
     entity_status_t *status,
     targeting_spec_t *targeting_spec,
     list_t *targeting_template_ids,
-    tracking_urls_t *tracking_urls,
-    double bid_multiplier
+    object_t *tracking_urls
     ) {
-    return ad_group_create_request_create_internal (
-        auto_targeting_enabled,
-        bid_in_micro_currency,
+    int *auto_targeting_enabled_copy = NULL;
+    if (auto_targeting_enabled) {
+        auto_targeting_enabled_copy = malloc(sizeof(int));
+        if (auto_targeting_enabled_copy) *auto_targeting_enabled_copy = *auto_targeting_enabled;
+    }
+    double *bid_multiplier_copy = NULL;
+    if (bid_multiplier) {
+        bid_multiplier_copy = malloc(sizeof(double));
+        if (bid_multiplier_copy) *bid_multiplier_copy = *bid_multiplier;
+    }
+    int *bid_in_micro_currency_copy = NULL;
+    if (bid_in_micro_currency) {
+        bid_in_micro_currency_copy = malloc(sizeof(int));
+        if (bid_in_micro_currency_copy) *bid_in_micro_currency_copy = *bid_in_micro_currency;
+    }
+    int *budget_in_micro_currency_copy = NULL;
+    if (budget_in_micro_currency) {
+        budget_in_micro_currency_copy = malloc(sizeof(int));
+        if (budget_in_micro_currency_copy) *budget_in_micro_currency_copy = *budget_in_micro_currency;
+    }
+    int *end_time_copy = NULL;
+    if (end_time) {
+        end_time_copy = malloc(sizeof(int));
+        if (end_time_copy) *end_time_copy = *end_time;
+    }
+    int *is_creative_optimization_copy = NULL;
+    if (is_creative_optimization) {
+        is_creative_optimization_copy = malloc(sizeof(int));
+        if (is_creative_optimization_copy) *is_creative_optimization_copy = *is_creative_optimization;
+    }
+    int *lifetime_frequency_cap_copy = NULL;
+    if (lifetime_frequency_cap) {
+        lifetime_frequency_cap_copy = malloc(sizeof(int));
+        if (lifetime_frequency_cap_copy) *lifetime_frequency_cap_copy = *lifetime_frequency_cap;
+    }
+    int *start_time_copy = NULL;
+    if (start_time) {
+        start_time_copy = malloc(sizeof(int));
+        if (start_time_copy) *start_time_copy = *start_time;
+    }
+    ad_group_create_request_t *result = ad_group_create_request_create_internal (
+        auto_targeting_enabled_copy,
+        bid_multiplier_copy,
+        budget_type,
+        pacing_delivery_type,
+        bid_in_micro_currency_copy,
         bid_strategy_type,
         billable_event,
-        budget_in_micro_currency,
-        budget_type,
+        budget_in_micro_currency_copy,
         campaign_id,
-        end_time,
-        is_creative_optimization,
-        lifetime_frequency_cap,
+        end_time_copy,
+        is_creative_optimization_copy,
+        lifetime_frequency_cap_copy,
         name,
         optimization_goal_metadata,
-        pacing_delivery_type,
         placement_group,
         promotion_application_level,
         promotion_id,
-        start_time,
+        promotion_ids,
+        start_time_copy,
         status,
         targeting_spec,
         targeting_template_ids,
-        tracking_urls,
-        bid_multiplier
+        tracking_urls
         );
+    if (!result) {
+        free(auto_targeting_enabled_copy);
+        free(bid_multiplier_copy);
+        free(bid_in_micro_currency_copy);
+        free(budget_in_micro_currency_copy);
+        free(end_time_copy);
+        free(is_creative_optimization_copy);
+        free(lifetime_frequency_cap_copy);
+        free(start_time_copy);
+    }
+    return result;
 }
 
 void ad_group_create_request_free(ad_group_create_request_t *ad_group_create_request) {
@@ -153,25 +191,45 @@ void ad_group_create_request_free(ad_group_create_request_t *ad_group_create_req
         return ;
     }
     listEntry_t *listEntry;
-    if (ad_group_create_request->budget_type) {
-        budget_type_free(ad_group_create_request->budget_type);
-        ad_group_create_request->budget_type = NULL;
+    if (ad_group_create_request->auto_targeting_enabled) {
+        free(ad_group_create_request->auto_targeting_enabled);
+        ad_group_create_request->auto_targeting_enabled = NULL;
+    }
+    if (ad_group_create_request->bid_multiplier) {
+        free(ad_group_create_request->bid_multiplier);
+        ad_group_create_request->bid_multiplier = NULL;
+    }
+    if (ad_group_create_request->bid_in_micro_currency) {
+        free(ad_group_create_request->bid_in_micro_currency);
+        ad_group_create_request->bid_in_micro_currency = NULL;
+    }
+    if (ad_group_create_request->budget_in_micro_currency) {
+        free(ad_group_create_request->budget_in_micro_currency);
+        ad_group_create_request->budget_in_micro_currency = NULL;
     }
     if (ad_group_create_request->campaign_id) {
         free(ad_group_create_request->campaign_id);
         ad_group_create_request->campaign_id = NULL;
+    }
+    if (ad_group_create_request->end_time) {
+        free(ad_group_create_request->end_time);
+        ad_group_create_request->end_time = NULL;
+    }
+    if (ad_group_create_request->is_creative_optimization) {
+        free(ad_group_create_request->is_creative_optimization);
+        ad_group_create_request->is_creative_optimization = NULL;
+    }
+    if (ad_group_create_request->lifetime_frequency_cap) {
+        free(ad_group_create_request->lifetime_frequency_cap);
+        ad_group_create_request->lifetime_frequency_cap = NULL;
     }
     if (ad_group_create_request->name) {
         free(ad_group_create_request->name);
         ad_group_create_request->name = NULL;
     }
     if (ad_group_create_request->optimization_goal_metadata) {
-        optimization_goal_metadata_free(ad_group_create_request->optimization_goal_metadata);
+        object_free(ad_group_create_request->optimization_goal_metadata);
         ad_group_create_request->optimization_goal_metadata = NULL;
-    }
-    if (ad_group_create_request->pacing_delivery_type) {
-        pacing_delivery_type_free(ad_group_create_request->pacing_delivery_type);
-        ad_group_create_request->pacing_delivery_type = NULL;
     }
     if (ad_group_create_request->placement_group) {
         placement_group_type_free(ad_group_create_request->placement_group);
@@ -180,6 +238,17 @@ void ad_group_create_request_free(ad_group_create_request_t *ad_group_create_req
     if (ad_group_create_request->promotion_id) {
         free(ad_group_create_request->promotion_id);
         ad_group_create_request->promotion_id = NULL;
+    }
+    if (ad_group_create_request->promotion_ids) {
+        list_ForEach(listEntry, ad_group_create_request->promotion_ids) {
+            free(listEntry->data);
+        }
+        list_freeList(ad_group_create_request->promotion_ids);
+        ad_group_create_request->promotion_ids = NULL;
+    }
+    if (ad_group_create_request->start_time) {
+        free(ad_group_create_request->start_time);
+        ad_group_create_request->start_time = NULL;
     }
     if (ad_group_create_request->status) {
         entity_status_free(ad_group_create_request->status);
@@ -197,7 +266,7 @@ void ad_group_create_request_free(ad_group_create_request_t *ad_group_create_req
         ad_group_create_request->targeting_template_ids = NULL;
     }
     if (ad_group_create_request->tracking_urls) {
-        tracking_urls_free(ad_group_create_request->tracking_urls);
+        object_free(ad_group_create_request->tracking_urls);
         ad_group_create_request->tracking_urls = NULL;
     }
     free(ad_group_create_request);
@@ -208,25 +277,63 @@ cJSON *ad_group_create_request_convertToJSON(ad_group_create_request_t *ad_group
 
     // ad_group_create_request->auto_targeting_enabled
     if(ad_group_create_request->auto_targeting_enabled) {
-    if(cJSON_AddBoolToObject(item, "auto_targeting_enabled", ad_group_create_request->auto_targeting_enabled) == NULL) {
+    if(cJSON_AddBoolToObject(item, "auto_targeting_enabled", *ad_group_create_request->auto_targeting_enabled) == NULL) {
     goto fail; //Bool
+    }
+    }
+
+
+    // ad_group_create_request->bid_multiplier
+    if(ad_group_create_request->bid_multiplier) {
+    if(cJSON_AddNumberToObject(item, "bid_multiplier", *ad_group_create_request->bid_multiplier) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // ad_group_create_request->budget_type
+    if(ad_group_create_request->budget_type != pinterest_rest_api_budget_type__NULL) {
+    cJSON *budget_type_local_JSON = budget_type_convertToJSON(ad_group_create_request->budget_type);
+    if(budget_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "budget_type", budget_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+    }
+
+
+    // ad_group_create_request->pacing_delivery_type
+    if(ad_group_create_request->pacing_delivery_type != pinterest_rest_api_pacing_delivery_type__NULL) {
+    cJSON *pacing_delivery_type_local_JSON = pacing_delivery_type_convertToJSON(ad_group_create_request->pacing_delivery_type);
+    if(pacing_delivery_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "pacing_delivery_type", pacing_delivery_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
 
     // ad_group_create_request->bid_in_micro_currency
     if(ad_group_create_request->bid_in_micro_currency) {
-    if(cJSON_AddNumberToObject(item, "bid_in_micro_currency", ad_group_create_request->bid_in_micro_currency) == NULL) {
+    if(cJSON_AddNumberToObject(item, "bid_in_micro_currency", *ad_group_create_request->bid_in_micro_currency) == NULL) {
     goto fail; //Numeric
     }
     }
 
 
     // ad_group_create_request->bid_strategy_type
-    if(ad_group_create_request->bid_strategy_type != pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "bid_strategy_type", ad_group_create_request_bid_strategy_type_ToString(ad_group_create_request->bid_strategy_type)) == NULL)
-    {
-    goto fail; //Enum
+    if(ad_group_create_request->bid_strategy_type != pinterest_rest_api_bid_strategy_type__NULL) {
+    cJSON *bid_strategy_type_local_JSON = bid_strategy_type_convertToJSON(ad_group_create_request->bid_strategy_type);
+    if(bid_strategy_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "bid_strategy_type", bid_strategy_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -247,21 +354,8 @@ cJSON *ad_group_create_request_convertToJSON(ad_group_create_request_t *ad_group
 
     // ad_group_create_request->budget_in_micro_currency
     if(ad_group_create_request->budget_in_micro_currency) {
-    if(cJSON_AddNumberToObject(item, "budget_in_micro_currency", ad_group_create_request->budget_in_micro_currency) == NULL) {
+    if(cJSON_AddNumberToObject(item, "budget_in_micro_currency", *ad_group_create_request->budget_in_micro_currency) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // ad_group_create_request->budget_type
-    if(ad_group_create_request->budget_type) {
-    cJSON *budget_type_local_JSON = budget_type_convertToJSON(ad_group_create_request->budget_type);
-    if(budget_type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "budget_type", budget_type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
     }
     }
 
@@ -277,7 +371,7 @@ cJSON *ad_group_create_request_convertToJSON(ad_group_create_request_t *ad_group
 
     // ad_group_create_request->end_time
     if(ad_group_create_request->end_time) {
-    if(cJSON_AddNumberToObject(item, "end_time", ad_group_create_request->end_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "end_time", *ad_group_create_request->end_time) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -285,7 +379,7 @@ cJSON *ad_group_create_request_convertToJSON(ad_group_create_request_t *ad_group
 
     // ad_group_create_request->is_creative_optimization
     if(ad_group_create_request->is_creative_optimization) {
-    if(cJSON_AddBoolToObject(item, "is_creative_optimization", ad_group_create_request->is_creative_optimization) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_creative_optimization", *ad_group_create_request->is_creative_optimization) == NULL) {
     goto fail; //Bool
     }
     }
@@ -293,7 +387,7 @@ cJSON *ad_group_create_request_convertToJSON(ad_group_create_request_t *ad_group
 
     // ad_group_create_request->lifetime_frequency_cap
     if(ad_group_create_request->lifetime_frequency_cap) {
-    if(cJSON_AddNumberToObject(item, "lifetime_frequency_cap", ad_group_create_request->lifetime_frequency_cap) == NULL) {
+    if(cJSON_AddNumberToObject(item, "lifetime_frequency_cap", *ad_group_create_request->lifetime_frequency_cap) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -310,26 +404,13 @@ cJSON *ad_group_create_request_convertToJSON(ad_group_create_request_t *ad_group
 
     // ad_group_create_request->optimization_goal_metadata
     if(ad_group_create_request->optimization_goal_metadata) {
-    cJSON *optimization_goal_metadata_local_JSON = optimization_goal_metadata_convertToJSON(ad_group_create_request->optimization_goal_metadata);
-    if(optimization_goal_metadata_local_JSON == NULL) {
+    cJSON *optimization_goal_metadata_object = object_convertToJSON(ad_group_create_request->optimization_goal_metadata);
+    if(optimization_goal_metadata_object == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "optimization_goal_metadata", optimization_goal_metadata_local_JSON);
+    cJSON_AddItemToObject(item, "optimization_goal_metadata", optimization_goal_metadata_object);
     if(item->child == NULL) {
     goto fail;
-    }
-    }
-
-
-    // ad_group_create_request->pacing_delivery_type
-    if(ad_group_create_request->pacing_delivery_type) {
-    cJSON *pacing_delivery_type_local_JSON = pacing_delivery_type_convertToJSON(ad_group_create_request->pacing_delivery_type);
-    if(pacing_delivery_type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "pacing_delivery_type", pacing_delivery_type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
     }
     }
 
@@ -364,9 +445,26 @@ cJSON *ad_group_create_request_convertToJSON(ad_group_create_request_t *ad_group
     }
 
 
+    // ad_group_create_request->promotion_ids
+    if(ad_group_create_request->promotion_ids) {
+    cJSON *promotion_ids = cJSON_AddArrayToObject(item, "promotion_ids");
+    if(promotion_ids == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *promotion_idsListEntry;
+    list_ForEach(promotion_idsListEntry, ad_group_create_request->promotion_ids) {
+    if(cJSON_AddStringToObject(promotion_ids, "", promotion_idsListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
+
     // ad_group_create_request->start_time
     if(ad_group_create_request->start_time) {
-    if(cJSON_AddNumberToObject(item, "start_time", ad_group_create_request->start_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "start_time", *ad_group_create_request->start_time) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -417,21 +515,13 @@ cJSON *ad_group_create_request_convertToJSON(ad_group_create_request_t *ad_group
 
     // ad_group_create_request->tracking_urls
     if(ad_group_create_request->tracking_urls) {
-    cJSON *tracking_urls_local_JSON = tracking_urls_convertToJSON(ad_group_create_request->tracking_urls);
-    if(tracking_urls_local_JSON == NULL) {
+    cJSON *tracking_urls_object = object_convertToJSON(ad_group_create_request->tracking_urls);
+    if(tracking_urls_object == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "tracking_urls", tracking_urls_local_JSON);
+    cJSON_AddItemToObject(item, "tracking_urls", tracking_urls_object);
     if(item->child == NULL) {
     goto fail;
-    }
-    }
-
-
-    // ad_group_create_request->bid_multiplier
-    if(ad_group_create_request->bid_multiplier) {
-    if(cJSON_AddNumberToObject(item, "bid_multiplier", ad_group_create_request->bid_multiplier) == NULL) {
-    goto fail; //Numeric
     }
     }
 
@@ -447,20 +537,53 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
 
     ad_group_create_request_t *ad_group_create_request_local_var = NULL;
 
+    // define the local variable for ad_group_create_request->auto_targeting_enabled
+    int *auto_targeting_enabled_local_var = NULL;
+
+    // define the local variable for ad_group_create_request->bid_multiplier
+    double *bid_multiplier_local_var = NULL;
+
+    // define the local variable for ad_group_create_request->budget_type
+    pinterest_rest_api_budget_type__e budget_type_local_nonprim = 0;
+
+    // define the local variable for ad_group_create_request->pacing_delivery_type
+    pinterest_rest_api_pacing_delivery_type__e pacing_delivery_type_local_nonprim = 0;
+
+    // define the local variable for ad_group_create_request->bid_in_micro_currency
+    int *bid_in_micro_currency_local_var = NULL;
+
+    // define the local variable for ad_group_create_request->bid_strategy_type
+    pinterest_rest_api_bid_strategy_type__e bid_strategy_type_local_nonprim = 0;
+
     // define the local variable for ad_group_create_request->billable_event
     pinterest_rest_api_action_type__e billable_event_local_nonprim = 0;
 
-    // define the local variable for ad_group_create_request->budget_type
-    budget_type_t *budget_type_local_nonprim = NULL;
+    // define the local variable for ad_group_create_request->budget_in_micro_currency
+    int *budget_in_micro_currency_local_var = NULL;
 
-    // define the local variable for ad_group_create_request->optimization_goal_metadata
-    optimization_goal_metadata_t *optimization_goal_metadata_local_nonprim = NULL;
+    char *campaign_id_local_str = NULL;
 
-    // define the local variable for ad_group_create_request->pacing_delivery_type
-    pacing_delivery_type_t *pacing_delivery_type_local_nonprim = NULL;
+    // define the local variable for ad_group_create_request->end_time
+    int *end_time_local_var = NULL;
+
+    // define the local variable for ad_group_create_request->is_creative_optimization
+    int *is_creative_optimization_local_var = NULL;
+
+    // define the local variable for ad_group_create_request->lifetime_frequency_cap
+    int *lifetime_frequency_cap_local_var = NULL;
+
+    char *name_local_str = NULL;
 
     // define the local variable for ad_group_create_request->placement_group
     placement_group_type_t *placement_group_local_nonprim = NULL;
+
+    char *promotion_id_local_str = NULL;
+
+    // define the local list for ad_group_create_request->promotion_ids
+    list_t *promotion_idsList = NULL;
+
+    // define the local variable for ad_group_create_request->start_time
+    int *start_time_local_var = NULL;
 
     // define the local variable for ad_group_create_request->status
     entity_status_t *status_local_nonprim = NULL;
@@ -470,9 +593,6 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
 
     // define the local list for ad_group_create_request->targeting_template_ids
     list_t *targeting_template_idsList = NULL;
-
-    // define the local variable for ad_group_create_request->tracking_urls
-    tracking_urls_t *tracking_urls_local_nonprim = NULL;
 
     // ad_group_create_request->auto_targeting_enabled
     cJSON *auto_targeting_enabled = cJSON_GetObjectItemCaseSensitive(ad_group_create_requestJSON, "auto_targeting_enabled");
@@ -484,6 +604,48 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     {
     goto end; //Bool
     }
+    auto_targeting_enabled_local_var = malloc(sizeof(int));
+    if(!auto_targeting_enabled_local_var)
+    {
+        goto end;
+    }
+    *auto_targeting_enabled_local_var = auto_targeting_enabled->valueint;
+    }
+
+    // ad_group_create_request->bid_multiplier
+    cJSON *bid_multiplier = cJSON_GetObjectItemCaseSensitive(ad_group_create_requestJSON, "bid_multiplier");
+    if (cJSON_IsNull(bid_multiplier)) {
+        bid_multiplier = NULL;
+    }
+    if (bid_multiplier) { 
+    if(!cJSON_IsNumber(bid_multiplier))
+    {
+    goto end; //Numeric
+    }
+    bid_multiplier_local_var = malloc(sizeof(double));
+    if(!bid_multiplier_local_var)
+    {
+        goto end;
+    }
+    *bid_multiplier_local_var = bid_multiplier->valuedouble;
+    }
+
+    // ad_group_create_request->budget_type
+    cJSON *budget_type = cJSON_GetObjectItemCaseSensitive(ad_group_create_requestJSON, "budget_type");
+    if (cJSON_IsNull(budget_type)) {
+        budget_type = NULL;
+    }
+    if (budget_type) { 
+    budget_type_local_nonprim = budget_type_parseFromJSON(budget_type); //custom
+    }
+
+    // ad_group_create_request->pacing_delivery_type
+    cJSON *pacing_delivery_type = cJSON_GetObjectItemCaseSensitive(ad_group_create_requestJSON, "pacing_delivery_type");
+    if (cJSON_IsNull(pacing_delivery_type)) {
+        pacing_delivery_type = NULL;
+    }
+    if (pacing_delivery_type) { 
+    pacing_delivery_type_local_nonprim = pacing_delivery_type_parseFromJSON(pacing_delivery_type); //custom
     }
 
     // ad_group_create_request->bid_in_micro_currency
@@ -496,6 +658,12 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     {
     goto end; //Numeric
     }
+    bid_in_micro_currency_local_var = malloc(sizeof(int));
+    if(!bid_in_micro_currency_local_var)
+    {
+        goto end;
+    }
+    *bid_in_micro_currency_local_var = bid_in_micro_currency->valuedouble;
     }
 
     // ad_group_create_request->bid_strategy_type
@@ -503,13 +671,8 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     if (cJSON_IsNull(bid_strategy_type)) {
         bid_strategy_type = NULL;
     }
-    pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_e bid_strategy_typeVariable;
     if (bid_strategy_type) { 
-    if(!cJSON_IsString(bid_strategy_type))
-    {
-    goto end; //Enum
-    }
-    bid_strategy_typeVariable = ad_group_create_request_bid_strategy_type_FromString(bid_strategy_type->valuestring);
+    bid_strategy_type_local_nonprim = bid_strategy_type_parseFromJSON(bid_strategy_type); //custom
     }
 
     // ad_group_create_request->billable_event
@@ -534,15 +697,12 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     {
     goto end; //Numeric
     }
+    budget_in_micro_currency_local_var = malloc(sizeof(int));
+    if(!budget_in_micro_currency_local_var)
+    {
+        goto end;
     }
-
-    // ad_group_create_request->budget_type
-    cJSON *budget_type = cJSON_GetObjectItemCaseSensitive(ad_group_create_requestJSON, "budget_type");
-    if (cJSON_IsNull(budget_type)) {
-        budget_type = NULL;
-    }
-    if (budget_type) { 
-    budget_type_local_nonprim = budget_type_parseFromJSON(budget_type); //custom
+    *budget_in_micro_currency_local_var = budget_in_micro_currency->valuedouble;
     }
 
     // ad_group_create_request->campaign_id
@@ -570,6 +730,12 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     {
     goto end; //Numeric
     }
+    end_time_local_var = malloc(sizeof(int));
+    if(!end_time_local_var)
+    {
+        goto end;
+    }
+    *end_time_local_var = end_time->valuedouble;
     }
 
     // ad_group_create_request->is_creative_optimization
@@ -582,6 +748,12 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     {
     goto end; //Bool
     }
+    is_creative_optimization_local_var = malloc(sizeof(int));
+    if(!is_creative_optimization_local_var)
+    {
+        goto end;
+    }
+    *is_creative_optimization_local_var = is_creative_optimization->valueint;
     }
 
     // ad_group_create_request->lifetime_frequency_cap
@@ -594,6 +766,12 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     {
     goto end; //Numeric
     }
+    lifetime_frequency_cap_local_var = malloc(sizeof(int));
+    if(!lifetime_frequency_cap_local_var)
+    {
+        goto end;
+    }
+    *lifetime_frequency_cap_local_var = lifetime_frequency_cap->valuedouble;
     }
 
     // ad_group_create_request->name
@@ -616,17 +794,9 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     if (cJSON_IsNull(optimization_goal_metadata)) {
         optimization_goal_metadata = NULL;
     }
+    object_t *optimization_goal_metadata_local_object = NULL;
     if (optimization_goal_metadata) { 
-    optimization_goal_metadata_local_nonprim = optimization_goal_metadata_parseFromJSON(optimization_goal_metadata); //nonprimitive
-    }
-
-    // ad_group_create_request->pacing_delivery_type
-    cJSON *pacing_delivery_type = cJSON_GetObjectItemCaseSensitive(ad_group_create_requestJSON, "pacing_delivery_type");
-    if (cJSON_IsNull(pacing_delivery_type)) {
-        pacing_delivery_type = NULL;
-    }
-    if (pacing_delivery_type) { 
-    pacing_delivery_type_local_nonprim = pacing_delivery_type_parseFromJSON(pacing_delivery_type); //custom
+    optimization_goal_metadata_local_object = object_parseFromJSON(optimization_goal_metadata); //object
     }
 
     // ad_group_create_request->placement_group
@@ -664,6 +834,28 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     }
     }
 
+    // ad_group_create_request->promotion_ids
+    cJSON *promotion_ids = cJSON_GetObjectItemCaseSensitive(ad_group_create_requestJSON, "promotion_ids");
+    if (cJSON_IsNull(promotion_ids)) {
+        promotion_ids = NULL;
+    }
+    if (promotion_ids) { 
+    cJSON *promotion_ids_local = NULL;
+    if(!cJSON_IsArray(promotion_ids)) {
+        goto end;//primitive container
+    }
+    promotion_idsList = list_createList();
+
+    cJSON_ArrayForEach(promotion_ids_local, promotion_ids)
+    {
+        if(!cJSON_IsString(promotion_ids_local))
+        {
+            goto end;
+        }
+        list_addElement(promotion_idsList , strdup(promotion_ids_local->valuestring));
+    }
+    }
+
     // ad_group_create_request->start_time
     cJSON *start_time = cJSON_GetObjectItemCaseSensitive(ad_group_create_requestJSON, "start_time");
     if (cJSON_IsNull(start_time)) {
@@ -674,6 +866,12 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     {
     goto end; //Numeric
     }
+    start_time_local_var = malloc(sizeof(int));
+    if(!start_time_local_var)
+    {
+        goto end;
+    }
+    *start_time_local_var = start_time->valuedouble;
     }
 
     // ad_group_create_request->status
@@ -721,68 +919,116 @@ ad_group_create_request_t *ad_group_create_request_parseFromJSON(cJSON *ad_group
     if (cJSON_IsNull(tracking_urls)) {
         tracking_urls = NULL;
     }
+    object_t *tracking_urls_local_object = NULL;
     if (tracking_urls) { 
-    tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
+    tracking_urls_local_object = object_parseFromJSON(tracking_urls); //object
     }
 
-    // ad_group_create_request->bid_multiplier
-    cJSON *bid_multiplier = cJSON_GetObjectItemCaseSensitive(ad_group_create_requestJSON, "bid_multiplier");
-    if (cJSON_IsNull(bid_multiplier)) {
-        bid_multiplier = NULL;
-    }
-    if (bid_multiplier) { 
-    if(!cJSON_IsNumber(bid_multiplier))
-    {
-    goto end; //Numeric
-    }
-    }
 
+    if (campaign_id && !cJSON_IsNull(campaign_id)) campaign_id_local_str = strdup(campaign_id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (promotion_id && !cJSON_IsNull(promotion_id)) promotion_id_local_str = strdup(promotion_id->valuestring);
 
     ad_group_create_request_local_var = ad_group_create_request_create_internal (
-        auto_targeting_enabled ? auto_targeting_enabled->valueint : 0,
-        bid_in_micro_currency ? bid_in_micro_currency->valuedouble : 0,
-        bid_strategy_type ? bid_strategy_typeVariable : pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_NULL,
+        auto_targeting_enabled_local_var,
+        bid_multiplier_local_var,
+        budget_type ? budget_type_local_nonprim : 0,
+        pacing_delivery_type ? pacing_delivery_type_local_nonprim : 0,
+        bid_in_micro_currency_local_var,
+        bid_strategy_type ? bid_strategy_type_local_nonprim : 0,
         billable_event_local_nonprim,
-        budget_in_micro_currency ? budget_in_micro_currency->valuedouble : 0,
-        budget_type ? budget_type_local_nonprim : NULL,
-        strdup(campaign_id->valuestring),
-        end_time ? end_time->valuedouble : 0,
-        is_creative_optimization ? is_creative_optimization->valueint : 0,
-        lifetime_frequency_cap ? lifetime_frequency_cap->valuedouble : 0,
-        strdup(name->valuestring),
-        optimization_goal_metadata ? optimization_goal_metadata_local_nonprim : NULL,
-        pacing_delivery_type ? pacing_delivery_type_local_nonprim : NULL,
+        budget_in_micro_currency_local_var,
+        campaign_id_local_str,
+        end_time_local_var,
+        is_creative_optimization_local_var,
+        lifetime_frequency_cap_local_var,
+        name_local_str,
+        optimization_goal_metadata ? optimization_goal_metadata_local_object : NULL,
         placement_group ? placement_group_local_nonprim : NULL,
         promotion_application_level ? promotion_application_levelVariable : pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_NULL,
-        promotion_id && !cJSON_IsNull(promotion_id) ? strdup(promotion_id->valuestring) : NULL,
-        start_time ? start_time->valuedouble : 0,
+        promotion_id_local_str,
+        promotion_ids ? promotion_idsList : NULL,
+        start_time_local_var,
         status ? status_local_nonprim : NULL,
         targeting_spec ? targeting_spec_local_nonprim : NULL,
         targeting_template_ids ? targeting_template_idsList : NULL,
-        tracking_urls ? tracking_urls_local_nonprim : NULL,
-        bid_multiplier ? bid_multiplier->valuedouble : 0
+        tracking_urls ? tracking_urls_local_object : NULL
         );
+
+    if (!ad_group_create_request_local_var) {
+        goto end;
+    }
 
     return ad_group_create_request_local_var;
 end:
+    if (auto_targeting_enabled_local_var) {
+        free(auto_targeting_enabled_local_var);
+        auto_targeting_enabled_local_var = NULL;
+    }
+    if (bid_multiplier_local_var) {
+        free(bid_multiplier_local_var);
+        bid_multiplier_local_var = NULL;
+    }
+    if (budget_type_local_nonprim) {
+        budget_type_local_nonprim = 0;
+    }
+    if (pacing_delivery_type_local_nonprim) {
+        pacing_delivery_type_local_nonprim = 0;
+    }
+    if (bid_in_micro_currency_local_var) {
+        free(bid_in_micro_currency_local_var);
+        bid_in_micro_currency_local_var = NULL;
+    }
+    if (bid_strategy_type_local_nonprim) {
+        bid_strategy_type_local_nonprim = 0;
+    }
     if (billable_event_local_nonprim) {
         billable_event_local_nonprim = 0;
     }
-    if (budget_type_local_nonprim) {
-        budget_type_free(budget_type_local_nonprim);
-        budget_type_local_nonprim = NULL;
+    if (budget_in_micro_currency_local_var) {
+        free(budget_in_micro_currency_local_var);
+        budget_in_micro_currency_local_var = NULL;
     }
-    if (optimization_goal_metadata_local_nonprim) {
-        optimization_goal_metadata_free(optimization_goal_metadata_local_nonprim);
-        optimization_goal_metadata_local_nonprim = NULL;
+    if (campaign_id_local_str) {
+        free(campaign_id_local_str);
+        campaign_id_local_str = NULL;
     }
-    if (pacing_delivery_type_local_nonprim) {
-        pacing_delivery_type_free(pacing_delivery_type_local_nonprim);
-        pacing_delivery_type_local_nonprim = NULL;
+    if (end_time_local_var) {
+        free(end_time_local_var);
+        end_time_local_var = NULL;
+    }
+    if (is_creative_optimization_local_var) {
+        free(is_creative_optimization_local_var);
+        is_creative_optimization_local_var = NULL;
+    }
+    if (lifetime_frequency_cap_local_var) {
+        free(lifetime_frequency_cap_local_var);
+        lifetime_frequency_cap_local_var = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
     }
     if (placement_group_local_nonprim) {
         placement_group_type_free(placement_group_local_nonprim);
         placement_group_local_nonprim = NULL;
+    }
+    if (promotion_id_local_str) {
+        free(promotion_id_local_str);
+        promotion_id_local_str = NULL;
+    }
+    if (promotion_idsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, promotion_idsList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(promotion_idsList);
+        promotion_idsList = NULL;
+    }
+    if (start_time_local_var) {
+        free(start_time_local_var);
+        start_time_local_var = NULL;
     }
     if (status_local_nonprim) {
         entity_status_free(status_local_nonprim);
@@ -800,10 +1046,6 @@ end:
         }
         list_freeList(targeting_template_idsList);
         targeting_template_idsList = NULL;
-    }
-    if (tracking_urls_local_nonprim) {
-        tracking_urls_free(tracking_urls_local_nonprim);
-        tracking_urls_local_nonprim = NULL;
     }
     return NULL;
 

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ProductCategoriesEngagementType;
-import org.openapitools.model.VerticalProductCategory;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,13 +22,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Trending shopping product category")
 @JsonTypeName("TrendingProductCategory")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendingProductCategory   {
   private ProductCategoriesEngagementType engagementType;
   private Integer pctChangeMom;
   private Integer percentRelativeVolume;
+  private Integer pinterestProductCategoryId;
   private String productCategory;
-  private @Valid List<VerticalProductCategory> verticals = new ArrayList<>();
+  private @Valid List<String> verticals = new ArrayList<>();
 
   public TrendingProductCategory() {
   }
@@ -39,11 +39,13 @@ public class TrendingProductCategory   {
     @JsonProperty(required = true, value = "engagement_type") ProductCategoriesEngagementType engagementType,
     @JsonProperty(required = true, value = "pct_change_mom") Integer pctChangeMom,
     @JsonProperty(required = true, value = "percent_relative_volume") Integer percentRelativeVolume,
+    @JsonProperty(required = true, value = "pinterest_product_category_id") Integer pinterestProductCategoryId,
     @JsonProperty(required = true, value = "product_category") String productCategory
   ) {
     this.engagementType = engagementType;
     this.pctChangeMom = pctChangeMom;
     this.percentRelativeVolume = percentRelativeVolume;
+    this.pinterestProductCategoryId = pinterestProductCategoryId;
     this.productCategory = productCategory;
   }
 
@@ -108,6 +110,26 @@ public class TrendingProductCategory   {
   }
 
   /**
+   * Pinterest Product Category Id
+   **/
+  public TrendingProductCategory pinterestProductCategoryId(Integer pinterestProductCategoryId) {
+    this.pinterestProductCategoryId = pinterestProductCategoryId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Pinterest Product Category Id")
+  @JsonProperty(required = true, value = "pinterest_product_category_id")
+  @NotNull public Integer getPinterestProductCategoryId() {
+    return pinterestProductCategoryId;
+  }
+
+  @JsonProperty(required = true, value = "pinterest_product_category_id")
+  public void setPinterestProductCategoryId(Integer pinterestProductCategoryId) {
+    this.pinterestProductCategoryId = pinterestProductCategoryId;
+  }
+
+  /**
    * Product Category Name
    **/
   public TrendingProductCategory productCategory(String productCategory) {
@@ -130,7 +152,7 @@ public class TrendingProductCategory   {
   /**
    * Vertical name associated with the product category
    **/
-  public TrendingProductCategory verticals(List<VerticalProductCategory> verticals) {
+  public TrendingProductCategory verticals(List<String> verticals) {
     this.verticals = verticals;
     return this;
   }
@@ -138,16 +160,16 @@ public class TrendingProductCategory   {
   
   @ApiModelProperty(value = "Vertical name associated with the product category")
   @JsonProperty("verticals")
-  public List<VerticalProductCategory> getVerticals() {
+  public List<String> getVerticals() {
     return verticals;
   }
 
   @JsonProperty("verticals")
-  public void setVerticals(List<VerticalProductCategory> verticals) {
+  public void setVerticals(List<String> verticals) {
     this.verticals = verticals;
   }
 
-  public TrendingProductCategory addVerticalsItem(VerticalProductCategory verticalsItem) {
+  public TrendingProductCategory addVerticalsItem(String verticalsItem) {
     if (this.verticals == null) {
       this.verticals = new ArrayList<>();
     }
@@ -156,7 +178,7 @@ public class TrendingProductCategory   {
     return this;
   }
 
-  public TrendingProductCategory removeVerticalsItem(VerticalProductCategory verticalsItem) {
+  public TrendingProductCategory removeVerticalsItem(String verticalsItem) {
     if (verticalsItem != null && this.verticals != null) {
       this.verticals.remove(verticalsItem);
     }
@@ -176,13 +198,14 @@ public class TrendingProductCategory   {
     return Objects.equals(this.engagementType, trendingProductCategory.engagementType) &&
         Objects.equals(this.pctChangeMom, trendingProductCategory.pctChangeMom) &&
         Objects.equals(this.percentRelativeVolume, trendingProductCategory.percentRelativeVolume) &&
+        Objects.equals(this.pinterestProductCategoryId, trendingProductCategory.pinterestProductCategoryId) &&
         Objects.equals(this.productCategory, trendingProductCategory.productCategory) &&
         Objects.equals(this.verticals, trendingProductCategory.verticals);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(engagementType, pctChangeMom, percentRelativeVolume, productCategory, verticals);
+    return Objects.hash(engagementType, pctChangeMom, percentRelativeVolume, pinterestProductCategoryId, productCategory, verticals);
   }
 
   @Override
@@ -193,6 +216,7 @@ public class TrendingProductCategory   {
     sb.append("    engagementType: ").append(toIndentedString(engagementType)).append("\n");
     sb.append("    pctChangeMom: ").append(toIndentedString(pctChangeMom)).append("\n");
     sb.append("    percentRelativeVolume: ").append(toIndentedString(percentRelativeVolume)).append("\n");
+    sb.append("    pinterestProductCategoryId: ").append(toIndentedString(pinterestProductCategoryId)).append("\n");
     sb.append("    productCategory: ").append(toIndentedString(productCategory)).append("\n");
     sb.append("    verticals: ").append(toIndentedString(verticals)).append("\n");
     sb.append("}");
@@ -204,12 +228,8 @@ public class TrendingProductCategory   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

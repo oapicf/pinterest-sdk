@@ -20,6 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsHotelProductMetadata(
 
     @Schema(example = "123abc", required = true, description = "The user-created unique ID that represents the hotel item.")
+    @param:JsonProperty("hotel_id")
     @get:JsonProperty("hotel_id", required = true) val hotelId: kotlin.String
 ) {
 

@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-    &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+    **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Parameters
 
@@ -42,24 +42,24 @@ Search pins by a given search term
 
 <a name="searchUserBoards/get"></a>
 # **searchUserBoards/get**
-> search_user_boards_get_200_response searchUserBoards/get(ad\_account\_id, bookmark, page\_size, query)
+> boards_list_200_response searchUserBoards/get(ad\_account\_id, query, bookmark, page\_size)
 
 Search user&#39;s boards
 
-    Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+    Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Parameters
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
-| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **query** | **String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] [default to null] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**search_user_boards_get_200_response**](../Models/search_user_boards_get_200_response.md)
+[**boards_list_200_response**](../Models/boards_list_200_response.md)
 
 ### Authorization
 
@@ -72,11 +72,11 @@ Search user&#39;s boards
 
 <a name="searchUserPins/list"></a>
 # **searchUserPins/list**
-> search_user_pins_list_200_response searchUserPins/list(query, ad\_account\_id, bookmark)
+> pins_list_200_response searchUserPins/list(query, ad\_account\_id, bookmark)
 
 Search user&#39;s Pins
 
-    Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+    Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Parameters
 
@@ -88,7 +88,7 @@ Search user&#39;s Pins
 
 ### Return type
 
-[**search_user_pins_list_200_response**](../Models/search_user_pins_list_200_response.md)
+[**pins_list_200_response**](../Models/pins_list_200_response.md)
 
 ### Authorization
 

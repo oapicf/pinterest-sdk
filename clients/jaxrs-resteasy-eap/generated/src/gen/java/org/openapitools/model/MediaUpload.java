@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Media upload that has been registered but not uploaded/processed yet.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Media upload that has been registered but not uploaded/processed yet.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class MediaUpload   {
   
   private String mediaId;
@@ -38,7 +38,7 @@ public class MediaUpload   {
   /**
    **/
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "video", required = true, value = "")
   @JsonProperty("media_type")
   @NotNull
   public MediaUploadType getMediaType() {
@@ -113,10 +113,7 @@ public class MediaUpload   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

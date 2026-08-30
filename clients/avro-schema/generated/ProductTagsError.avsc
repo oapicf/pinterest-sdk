@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Error response for requests containing ineligible product tags.",
+  "name": "ProductTagsError",
+  "fields": [
+    {
+      "name": "code",
+      "type": "int",
+      "doc": ""
+    },
+    {
+      "name": "details",
+      "type": ["null", "model.IneligibleProductTagsErrorDetails"],
+      "doc": "Details about which product tags failed eligibility check.",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

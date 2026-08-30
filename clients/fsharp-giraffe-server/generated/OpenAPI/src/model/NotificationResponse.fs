@@ -9,8 +9,8 @@ module NotificationResponse =
 
 
   type NotificationResponse = {
-    Success : bool;
-    ReceivedAt : int;
     ErrorMsg : string;
+    ReceivedAt : int;
+    Success : bool;
   }
   //#endregion

@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **String** |  | 
+**app_links** | **f64** |  | 
+**catalog_type** | **CatalogType** |  (enum: CREATIVE_ASSETS) | 
+**images** | **f64** |  | 
 **total** | **f64** |  | 
 **videos** | **f64** |  | 
 

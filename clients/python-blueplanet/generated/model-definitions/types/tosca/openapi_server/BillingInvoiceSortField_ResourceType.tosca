@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BillingInvoiceSortField"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BillingInvoiceSortField"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BillingInvoiceSortField {
+    title = BillingInvoiceSortField
+    description = BillingInvoiceSortField
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BillingInvoiceSortField {
+    title = BillingInvoiceSortField
+    description = BillingInvoiceSortField
+    implements = openapi_server.resourceTypes.BillingInvoiceSortField
+
+  }
+}

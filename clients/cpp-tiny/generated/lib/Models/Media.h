@@ -53,21 +53,21 @@ public:
 
 	/*! \brief Set Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
 	 */
-	void setMediaId(std::string  media_id);
+	void setMediaId(std::string media_id);
 	/*! \brief Get 
 	 */
 	MediaUploadType getMediaType();
 
 	/*! \brief Set 
 	 */
-	void setMediaType(MediaUploadType  media_type);
+	void setMediaType(MediaUploadType media_type);
 	/*! \brief Get 
 	 */
 	MediaUploadStatus getStatus();
 
 	/*! \brief Set 
 	 */
-	void setStatus(MediaUploadStatus  status);
+	void setStatus(MediaUploadStatus status);
 
 
     private:

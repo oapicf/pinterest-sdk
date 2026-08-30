@@ -6,9 +6,9 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.all_of import AllOf  # noqa: F401,E501
-from app.openapi_server.models.any_of import AnyOf  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_filter_keys import CatalogsProductGroupFilterKeys  # noqa: F401,E501
+from app.openapi_server.models.catalogs_product_group_filters_request_any_of_items0 import CatalogsProductGroupFiltersRequestAnyOfItems0  # noqa: F401,E501
+from app.openapi_server.models.catalogs_product_group_filters_request_any_of_items1 import CatalogsProductGroupFiltersRequestAnyOfItems1  # noqa: F401,E501
 from openapi_server import util
 
 

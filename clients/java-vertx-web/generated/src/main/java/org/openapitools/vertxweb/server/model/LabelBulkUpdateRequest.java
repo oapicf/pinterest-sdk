@@ -4,40 +4,23 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.vertxweb.server.model.LabelStatusBulkUpdate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LabelBulkUpdateRequest   {
   
   private String id;
-
-
-  public enum StatusEnum {
-    ARCHIVED("ARCHIVED");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private StatusEnum status;
-  private String value;
+  private String parentId;
+  private LabelStatusBulkUpdate status;
 
   public LabelBulkUpdateRequest () {
 
   }
 
-  public LabelBulkUpdateRequest (String id, StatusEnum status, String value) {
+  public LabelBulkUpdateRequest (String id, String parentId, LabelStatusBulkUpdate status) {
     this.id = id;
+    this.parentId = parentId;
     this.status = status;
-    this.value = value;
   }
 
     
@@ -50,21 +33,21 @@ public class LabelBulkUpdateRequest   {
   }
 
     
-  @JsonProperty("status")
-  public StatusEnum getStatus() {
-    return status;
+  @JsonProperty("parent_id")
+  public String getParentId() {
+    return parentId;
   }
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
   }
 
     
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
+  @JsonProperty("status")
+  public LabelStatusBulkUpdate getStatus() {
+    return status;
   }
-  public void setValue(String value) {
-    this.value = value;
+  public void setStatus(LabelStatusBulkUpdate status) {
+    this.status = status;
   }
 
 
@@ -78,13 +61,13 @@ public class LabelBulkUpdateRequest   {
     }
     LabelBulkUpdateRequest labelBulkUpdateRequest = (LabelBulkUpdateRequest) o;
     return Objects.equals(id, labelBulkUpdateRequest.id) &&
-        Objects.equals(status, labelBulkUpdateRequest.status) &&
-        Objects.equals(value, labelBulkUpdateRequest.value);
+        Objects.equals(parentId, labelBulkUpdateRequest.parentId) &&
+        Objects.equals(status, labelBulkUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, value);
+    return Objects.hash(id, parentId, status);
   }
 
   @Override
@@ -93,8 +76,8 @@ public class LabelBulkUpdateRequest   {
     sb.append("class LabelBulkUpdateRequest {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -104,9 +87,6 @@ public class LabelBulkUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

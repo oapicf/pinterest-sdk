@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **catalogType** | [**inline**](#CatalogType) |  |  |
-| **report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  |  |
+| **report** | [**CatalogsRetailReportParametersReport**](CatalogsRetailReportParametersReport.md) |  |  |
 
 
 <a id="CatalogType"></a>

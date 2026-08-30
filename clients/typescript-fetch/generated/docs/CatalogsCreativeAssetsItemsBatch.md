@@ -8,7 +8,7 @@ Object describing the catalogs creative assets items batch
 Name | Type
 ------------ | -------------
 `batchId` | string
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `completedTime` | Date
 `createdTime` | Date
 `items` | [Array&lt;CreativeAssetsProcessingRecord&gt;](CreativeAssetsProcessingRecord.md)
@@ -21,10 +21,10 @@ import type { CatalogsCreativeAssetsItemsBatch } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "batchId": 595953100599279259-66753b9bb65c46c49bd8503b27fecf9e,
+  "batchId": 595953100599279259,
   "catalogType": null,
-  "completedTime": null,
-  "createdTime": null,
+  "completedTime": 2024-01-01T20:20Z,
+  "createdTime": 2024-01-01T20:10:40Z,
   "items": null,
   "status": null,
 } satisfies CatalogsCreativeAssetsItemsBatch

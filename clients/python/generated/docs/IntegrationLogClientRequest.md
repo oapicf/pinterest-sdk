@@ -7,7 +7,7 @@ HTTP request details included in the log sent by the client.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **str** | HTTP request host from host header. | 
-**method** | **str** |  | 
+**method** | [**HttpMethod**](HttpMethod.md) |  | 
 **path** | **str** | HTTP request path. | 
 **request_headers** | **Dict[str, str]** | HTTP request headers as key-value pairs. | [optional] 
 **response_headers** | **Dict[str, str]** | HTTP response headers as key-value pairs. | [optional] 

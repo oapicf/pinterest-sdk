@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.audience_account_type import AudienceAccountType  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -16,7 +17,7 @@ class SharedAudienceAccount(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, account_id: str=None, account_name: str=None, account_type: str=None, shared_on_timestamp: int=None):  # noqa: E501
+    def __init__(self, account_id: str=None, account_name: str=None, account_type: AudienceAccountType=None, shared_on_timestamp: int=None):  # noqa: E501
         """SharedAudienceAccount - a model defined in Swagger
 
         :param account_id: The account_id of this SharedAudienceAccount.  # noqa: E501
@@ -24,14 +25,14 @@ class SharedAudienceAccount(Model):
         :param account_name: The account_name of this SharedAudienceAccount.  # noqa: E501
         :type account_name: str
         :param account_type: The account_type of this SharedAudienceAccount.  # noqa: E501
-        :type account_type: str
+        :type account_type: AudienceAccountType
         :param shared_on_timestamp: The shared_on_timestamp of this SharedAudienceAccount.  # noqa: E501
         :type shared_on_timestamp: int
         """
         self.swagger_types = {
             'account_id': str,
             'account_name': str,
-            'account_type': str,
+            'account_type': AudienceAccountType,
             'shared_on_timestamp': int
         }
 
@@ -111,31 +112,27 @@ class SharedAudienceAccount(Model):
         self._account_name = account_name
 
     @property
-    def account_type(self) -> str:
+    def account_type(self) -> AudienceAccountType:
         """Gets the account_type of this SharedAudienceAccount.
 
         account type  # noqa: E501
 
         :return: The account_type of this SharedAudienceAccount.
-        :rtype: str
+        :rtype: AudienceAccountType
         """
         return self._account_type
 
     @account_type.setter
-    def account_type(self, account_type: str):
+    def account_type(self, account_type: AudienceAccountType):
         """Sets the account_type of this SharedAudienceAccount.
 
         account type  # noqa: E501
 
         :param account_type: The account_type of this SharedAudienceAccount.
-        :type account_type: str
+        :type account_type: AudienceAccountType
         """
-        allowed_values = ["AD_ACCOUNT", "BUSINESS_ACCOUNT"]  # noqa: E501
-        if account_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `account_type` ({0}), must be one of {1}"
-                .format(account_type, allowed_values)
-            )
+        if account_type is None:
+            raise ValueError("Invalid value for `account_type`, must not be `None`")  # noqa: E501
 
         self._account_type = account_type
 

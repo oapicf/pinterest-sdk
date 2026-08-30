@@ -86,7 +86,7 @@ CatalogsCreativeAssetsProductMetadata::getCreativeAssetsId()
 }
 
 void
-CatalogsCreativeAssetsProductMetadata::setCreativeAssetsId(std::string  creative_assets_id)
+CatalogsCreativeAssetsProductMetadata::setCreativeAssetsId(std::string creative_assets_id)
 {
 	this->creative_assets_id = creative_assets_id;
 }
@@ -98,7 +98,7 @@ CatalogsCreativeAssetsProductMetadata::getVisibility()
 }
 
 void
-CatalogsCreativeAssetsProductMetadata::setVisibility(CreativeAssetsVisibilityType  visibility)
+CatalogsCreativeAssetsProductMetadata::setVisibility(CreativeAssetsVisibilityType visibility)
 {
 	this->visibility = visibility;
 }

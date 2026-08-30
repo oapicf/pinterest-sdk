@@ -10,15 +10,15 @@ Name | Type | Description | Notes
 **ErrorCounts** | Pointer to [**[]ErrorDetail**](ErrorDetail.md) | Error counts by error code | [optional] 
 **Id** | **string** | Customer List Upload ID. | 
 **Operation** | [**UserListOperationType**](UserListOperationType.md) |  | 
-**RecordCounts** | Pointer to [**NullableRecordCounts**](RecordCounts.md) |  | [optional] 
-**State** | **string** | Workload processing state | 
+**RecordCounts** | Pointer to [**RecordCounts**](RecordCounts.md) | Record processing counts | [optional] 
+**State** | [**WorkloadState**](WorkloadState.md) |  | 
 **UpdatedTime** | **int32** | Customer List Upload updated_time. Epoch (seconds). | 
 
 ## Methods
 
 ### NewCustomerListUpload
 
-`func NewCustomerListUpload(adAccountId string, creationTime int32, customerListId string, id string, operation UserListOperationType, state string, updatedTime int32, ) *CustomerListUpload`
+`func NewCustomerListUpload(adAccountId string, creationTime int32, customerListId string, id string, operation UserListOperationType, state WorkloadState, updatedTime int32, ) *CustomerListUpload`
 
 NewCustomerListUpload instantiates a new CustomerListUpload object
 This constructor will assign default values to properties that have it defined,
@@ -193,32 +193,22 @@ SetRecordCounts sets RecordCounts field to given value.
 
 HasRecordCounts returns a boolean if a field has been set.
 
-### SetRecordCountsNil
-
-`func (o *CustomerListUpload) SetRecordCountsNil(b bool)`
-
- SetRecordCountsNil sets the value for RecordCounts to be an explicit nil
-
-### UnsetRecordCounts
-`func (o *CustomerListUpload) UnsetRecordCounts()`
-
-UnsetRecordCounts ensures that no value is present for RecordCounts, not even an explicit nil
 ### GetState
 
-`func (o *CustomerListUpload) GetState() string`
+`func (o *CustomerListUpload) GetState() WorkloadState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *CustomerListUpload) GetStateOk() (*string, bool)`
+`func (o *CustomerListUpload) GetStateOk() (*WorkloadState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *CustomerListUpload) SetState(v string)`
+`func (o *CustomerListUpload) SetState(v WorkloadState)`
 
 SetState sets State field to given value.
 

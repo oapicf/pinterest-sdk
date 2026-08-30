@@ -27,15 +27,14 @@ class ProductGroupPromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [ProductGroupPromotionCreateRequest] productGroupPromotionCreateRequest (required):
-  ///   List of Product Group Promotions to create, size limit [1, 30].
-  Future<Response> productGroupPromotionsCreateWithHttpInfo(String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest,) async {
+  /// * [ProductGroupPromotionsCreate] productGroupPromotionsCreate (required):
+  Future<Response> productGroupPromotionsCreateWithHttpInfo(String adAccountId, ProductGroupPromotionsCreate productGroupPromotionsCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/product_group_promotions'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = productGroupPromotionCreateRequest;
+    Object? postBody = productGroupPromotionsCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -52,6 +51,7 @@ class ProductGroupPromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -64,10 +64,9 @@ class ProductGroupPromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [ProductGroupPromotionCreateRequest] productGroupPromotionCreateRequest (required):
-  ///   List of Product Group Promotions to create, size limit [1, 30].
-  Future<ProductGroupPromotionResponse?> productGroupPromotionsCreate(String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest,) async {
-    final response = await productGroupPromotionsCreateWithHttpInfo(adAccountId, productGroupPromotionCreateRequest,);
+  /// * [ProductGroupPromotionsCreate] productGroupPromotionsCreate (required):
+  Future<ProductGroupPromotions?> productGroupPromotionsCreate(String adAccountId, ProductGroupPromotionsCreate productGroupPromotionsCreate, { Future<void>? abortTrigger, }) async {
+    final response = await productGroupPromotionsCreateWithHttpInfo(adAccountId, productGroupPromotionsCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -75,7 +74,7 @@ class ProductGroupPromotionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductGroupPromotionResponse',) as ProductGroupPromotionResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductGroupPromotions',) as ProductGroupPromotions;
     
     }
     return null;
@@ -94,7 +93,7 @@ class ProductGroupPromotionsApi {
   ///
   /// * [String] productGroupPromotionId (required):
   ///   Unique identifier of a product group promotion
-  Future<Response> productGroupPromotionsGetWithHttpInfo(String adAccountId, String productGroupPromotionId,) async {
+  Future<Response> productGroupPromotionsGetWithHttpInfo(String adAccountId, String productGroupPromotionId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}'
       .replaceAll('{ad_account_id}', adAccountId)
@@ -118,6 +117,7 @@ class ProductGroupPromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -132,8 +132,8 @@ class ProductGroupPromotionsApi {
   ///
   /// * [String] productGroupPromotionId (required):
   ///   Unique identifier of a product group promotion
-  Future<ProductGroupPromotion?> productGroupPromotionsGet(String adAccountId, String productGroupPromotionId,) async {
-    final response = await productGroupPromotionsGetWithHttpInfo(adAccountId, productGroupPromotionId,);
+  Future<ProductGroupPromotion?> productGroupPromotionsGet(String adAccountId, String productGroupPromotionId, { Future<void>? abortTrigger, }) async {
+    final response = await productGroupPromotionsGetWithHttpInfo(adAccountId, productGroupPromotionId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -149,7 +149,7 @@ class ProductGroupPromotionsApi {
 
   /// Get product group promotions
   ///
-  /// List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+  /// List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -158,24 +158,24 @@ class ProductGroupPromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
   /// * [List<String>] productGroupPromotionIds:
   ///   List of Product group promotion Ids.
   ///
-  /// * [List<String>] entityStatuses:
+  /// * [List<EntityStatus>] entityStatuses:
   ///   Entity status
   ///
   /// * [String] adGroupId:
   ///   Ad group Id.
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  Future<Response> productGroupPromotionsListWithHttpInfo(String adAccountId, { List<String>? productGroupPromotionIds, List<String>? entityStatuses, String? adGroupId, int? pageSize, String? order, String? bookmark, }) async {
+  Future<Response> productGroupPromotionsListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, List<String>? productGroupPromotionIds, List<EntityStatus>? entityStatuses, String? adGroupId, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/product_group_promotions'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -187,6 +187,15 @@ class ProductGroupPromotionsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
+    }
+    if (order != null) {
+      queryParams.addAll(_queryParams('', 'order', order));
+    }
     if (productGroupPromotionIds != null) {
       queryParams.addAll(_queryParams('multi', 'product_group_promotion_ids', productGroupPromotionIds));
     }
@@ -195,15 +204,6 @@ class ProductGroupPromotionsApi {
     }
     if (adGroupId != null) {
       queryParams.addAll(_queryParams('', 'ad_group_id', adGroupId));
-    }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
-    if (order != null) {
-      queryParams.addAll(_queryParams('', 'order', order));
-    }
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
 
     const contentTypes = <String>[];
@@ -217,37 +217,38 @@ class ProductGroupPromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get product group promotions
   ///
-  /// List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+  /// List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
   /// * [List<String>] productGroupPromotionIds:
   ///   List of Product group promotion Ids.
   ///
-  /// * [List<String>] entityStatuses:
+  /// * [List<EntityStatus>] entityStatuses:
   ///   Entity status
   ///
   /// * [String] adGroupId:
   ///   Ad group Id.
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
-  Future<ProductGroupPromotionsList200Response?> productGroupPromotionsList(String adAccountId, { List<String>? productGroupPromotionIds, List<String>? entityStatuses, String? adGroupId, int? pageSize, String? order, String? bookmark, }) async {
-    final response = await productGroupPromotionsListWithHttpInfo(adAccountId,  productGroupPromotionIds: productGroupPromotionIds, entityStatuses: entityStatuses, adGroupId: adGroupId, pageSize: pageSize, order: order, bookmark: bookmark, );
+  Future<ProductGroupPromotionsList200Response?> productGroupPromotionsList(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, List<String>? productGroupPromotionIds, List<EntityStatus>? entityStatuses, String? adGroupId, Future<void>? abortTrigger, }) async {
+    final response = await productGroupPromotionsListWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, productGroupPromotionIds: productGroupPromotionIds, entityStatuses: entityStatuses, adGroupId: adGroupId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -272,15 +273,14 @@ class ProductGroupPromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [ProductGroupPromotionUpdateRequest] productGroupPromotionUpdateRequest (required):
-  ///   Parameters to update Product group promotions
-  Future<Response> productGroupPromotionsUpdateWithHttpInfo(String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest,) async {
+  /// * [ProductGroupPromotionsUpdateWithRequiredBody] productGroupPromotionsUpdateWithRequiredBody (required):
+  Future<Response> productGroupPromotionsUpdateWithHttpInfo(String adAccountId, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/product_group_promotions'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = productGroupPromotionUpdateRequest;
+    Object? postBody = productGroupPromotionsUpdateWithRequiredBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -297,6 +297,7 @@ class ProductGroupPromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -309,10 +310,9 @@ class ProductGroupPromotionsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [ProductGroupPromotionUpdateRequest] productGroupPromotionUpdateRequest (required):
-  ///   Parameters to update Product group promotions
-  Future<ProductGroupPromotionResponse?> productGroupPromotionsUpdate(String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest,) async {
-    final response = await productGroupPromotionsUpdateWithHttpInfo(adAccountId, productGroupPromotionUpdateRequest,);
+  /// * [ProductGroupPromotionsUpdateWithRequiredBody] productGroupPromotionsUpdateWithRequiredBody (required):
+  Future<ProductGroupPromotions?> productGroupPromotionsUpdate(String adAccountId, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
+    final response = await productGroupPromotionsUpdateWithHttpInfo(adAccountId, productGroupPromotionsUpdateWithRequiredBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -320,7 +320,7 @@ class ProductGroupPromotionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductGroupPromotionResponse',) as ProductGroupPromotionResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductGroupPromotions',) as ProductGroupPromotions;
     
     }
     return null;
@@ -328,14 +328,11 @@ class ProductGroupPromotionsApi {
 
   /// Get product group analytics
   ///
-  /// Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+  /// Get analytics for the specified product groups in the specified `ad_account_id`, filtered by the specified options.  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  ///
-  /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [DateTime] startDate (required):
   ///   Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -346,19 +343,22 @@ class ProductGroupPromotionsApi {
   /// * [List<String>] productGroupIds (required):
   ///   List of Product group Ids to use to filter the results.
   ///
-  /// * [List<String>] columns (required):
-  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
+  /// * [List<ReportingColumnSync>] columns (required):
+  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
   ///
   /// * [Granularity] granularity (required):
-  ///   TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  ///     TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
   ///
-  /// * [int] clickWindowDays:
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [num] clickWindowDays:
   ///   Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
   ///
-  /// * [int] engagementWindowDays:
-  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
+  /// * [num] engagementWindowDays:
+  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
   ///
-  /// * [int] viewWindowDays:
+  /// * [num] viewWindowDays:
   ///   Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   ///
   /// * [String] conversionReportTime:
@@ -366,7 +366,7 @@ class ProductGroupPromotionsApi {
   ///
   /// * [ReportingTimeZone] reportingTimezone:
   ///   Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
-  Future<Response> productGroupsAnalyticsWithHttpInfo(String adAccountId, DateTime startDate, DateTime endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, { int? clickWindowDays, int? engagementWindowDays, int? viewWindowDays, String? conversionReportTime, ReportingTimeZone? reportingTimezone, }) async {
+  Future<Response> productGroupsAnalyticsWithHttpInfo(DateTime startDate, DateTime endDate, List<String> productGroupIds, List<ReportingColumnSync> columns, Granularity granularity, String adAccountId, { num? clickWindowDays, num? engagementWindowDays, num? viewWindowDays, String? conversionReportTime, ReportingTimeZone? reportingTimezone, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/product_groups/analytics'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -410,17 +410,15 @@ class ProductGroupPromotionsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get product group analytics
   ///
-  /// Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+  /// Get analytics for the specified product groups in the specified `ad_account_id`, filtered by the specified options.  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   ///
   /// Parameters:
-  ///
-  /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [DateTime] startDate (required):
   ///   Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -431,19 +429,22 @@ class ProductGroupPromotionsApi {
   /// * [List<String>] productGroupIds (required):
   ///   List of Product group Ids to use to filter the results.
   ///
-  /// * [List<String>] columns (required):
-  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
+  /// * [List<ReportingColumnSync>] columns (required):
+  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
   ///
   /// * [Granularity] granularity (required):
-  ///   TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  ///     TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
   ///
-  /// * [int] clickWindowDays:
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [num] clickWindowDays:
   ///   Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
   ///
-  /// * [int] engagementWindowDays:
-  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
+  /// * [num] engagementWindowDays:
+  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
   ///
-  /// * [int] viewWindowDays:
+  /// * [num] viewWindowDays:
   ///   Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   ///
   /// * [String] conversionReportTime:
@@ -451,8 +452,8 @@ class ProductGroupPromotionsApi {
   ///
   /// * [ReportingTimeZone] reportingTimezone:
   ///   Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
-  Future<List<ProductGroupAnalyticsResponseInner>?> productGroupsAnalytics(String adAccountId, DateTime startDate, DateTime endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, { int? clickWindowDays, int? engagementWindowDays, int? viewWindowDays, String? conversionReportTime, ReportingTimeZone? reportingTimezone, }) async {
-    final response = await productGroupsAnalyticsWithHttpInfo(adAccountId, startDate, endDate, productGroupIds, columns, granularity,  clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, reportingTimezone: reportingTimezone, );
+  Future<List<ProductGroupAnalyticsItems>?> productGroupsAnalytics(DateTime startDate, DateTime endDate, List<String> productGroupIds, List<ReportingColumnSync> columns, Granularity granularity, String adAccountId, { num? clickWindowDays, num? engagementWindowDays, num? viewWindowDays, String? conversionReportTime, ReportingTimeZone? reportingTimezone, Future<void>? abortTrigger, }) async {
+    final response = await productGroupsAnalyticsWithHttpInfo(startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, reportingTimezone: reportingTimezone, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -461,8 +462,8 @@ class ProductGroupPromotionsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ProductGroupAnalyticsResponseInner>') as List)
-        .cast<ProductGroupAnalyticsResponseInner>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<ProductGroupAnalyticsItems>') as List)
+        .cast<ProductGroupAnalyticsItems>()
         .toList(growable: false);
 
     }

@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AssetIdWithPermissions"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AssetIdWithPermissions"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AssetIdWithPermissions {
+    title = AssetIdWithPermissions
+    description = AssetIdWithPermissions
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Unique identifier of a business asset."
+          optional = false
+        }
+        permissions {
+          type = array
+          items.type =  string
+          description = "Permission levels member or partner has on an asset."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AssetIdWithPermissions {
+    title = AssetIdWithPermissions
+    description = AssetIdWithPermissions
+    implements = openapi_server.resourceTypes.AssetIdWithPermissions
+
+  }
+}

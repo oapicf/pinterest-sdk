@@ -9,8 +9,9 @@ TrendingProductCategory::TrendingProductCategory()
 	engagement_type = null;
 	pct_change_mom = int(0);
 	percent_relative_volume = int(0);
+	pinterest_product_category_id = int(0);
 	product_category = std::string();
-	verticals = std::list<VerticalProductCategory>();
+	verticals = std::list<std::string>();
 }
 
 TrendingProductCategory::TrendingProductCategory(std::string jsonString)
@@ -68,6 +69,19 @@ TrendingProductCategory::fromJson(std::string jsonObj)
 
     }
 
+    const char *pinterest_product_category_idKey = "pinterest_product_category_id";
+
+    if(object.has_key(pinterest_product_category_idKey))
+    {
+        bourne::json value = object[pinterest_product_category_idKey];
+
+
+
+        jsonToValue(&pinterest_product_category_id, value, "int");
+
+
+    }
+
     const char *product_categoryKey = "product_category";
 
     if(object.has_key(product_categoryKey))
@@ -88,13 +102,13 @@ TrendingProductCategory::fromJson(std::string jsonObj)
         bourne::json value = object[verticalsKey];
 
 
-        std::list<VerticalProductCategory> verticals_list;
-        VerticalProductCategory element;
+        std::list<std::string> verticals_list;
+        std::string element;
         for(auto& var : value.array_range())
         {
 
+            jsonToValue(&element, var, "std::string");
 
-            element.fromJson(var.dump());
 
             verticals_list.push_back(element);
         }
@@ -136,21 +150,29 @@ TrendingProductCategory::toJson()
 
 
 
+    object["pinterest_product_category_id"] = getPinterestProductCategoryId();
+
+
+
+
+
+
     object["product_category"] = getProductCategory();
 
 
 
 
 
-    std::list<VerticalProductCategory> verticals_list = getVerticals();
+    std::list<std::string> verticals_list = getVerticals();
     bourne::json verticals_arr = bourne::json::array();
 
     for(auto& var : verticals_list)
     {
-        VerticalProductCategory obj = var;
-        verticals_arr.append(obj.toJson());
+        verticals_arr.append(var);
     }
     object["verticals"] = verticals_arr;
+
+
 
 
 
@@ -166,7 +188,7 @@ TrendingProductCategory::getEngagementType()
 }
 
 void
-TrendingProductCategory::setEngagementType(ProductCategoriesEngagementType  engagement_type)
+TrendingProductCategory::setEngagementType(ProductCategoriesEngagementType engagement_type)
 {
 	this->engagement_type = engagement_type;
 }
@@ -178,7 +200,7 @@ TrendingProductCategory::getPctChangeMom()
 }
 
 void
-TrendingProductCategory::setPctChangeMom(int  pct_change_mom)
+TrendingProductCategory::setPctChangeMom(int pct_change_mom)
 {
 	this->pct_change_mom = pct_change_mom;
 }
@@ -190,9 +212,21 @@ TrendingProductCategory::getPercentRelativeVolume()
 }
 
 void
-TrendingProductCategory::setPercentRelativeVolume(int  percent_relative_volume)
+TrendingProductCategory::setPercentRelativeVolume(int percent_relative_volume)
 {
 	this->percent_relative_volume = percent_relative_volume;
+}
+
+int
+TrendingProductCategory::getPinterestProductCategoryId()
+{
+	return pinterest_product_category_id;
+}
+
+void
+TrendingProductCategory::setPinterestProductCategoryId(int pinterest_product_category_id)
+{
+	this->pinterest_product_category_id = pinterest_product_category_id;
 }
 
 std::string
@@ -202,19 +236,19 @@ TrendingProductCategory::getProductCategory()
 }
 
 void
-TrendingProductCategory::setProductCategory(std::string  product_category)
+TrendingProductCategory::setProductCategory(std::string product_category)
 {
 	this->product_category = product_category;
 }
 
-std::list<VerticalProductCategory>
+std::list<std::string>
 TrendingProductCategory::getVerticals()
 {
 	return verticals;
 }
 
 void
-TrendingProductCategory::setVerticals(std::list <VerticalProductCategory> verticals)
+TrendingProductCategory::setVerticals(std::list<std::string> verticals)
 {
 	this->verticals = verticals;
 }

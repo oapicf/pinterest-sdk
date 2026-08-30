@@ -16,13 +16,13 @@ static tracking_urls_t *tracking_urls_create_internal(
     if (!tracking_urls_local_var) {
         return NULL;
     }
+    memset(tracking_urls_local_var, 0, sizeof(tracking_urls_t));
+    tracking_urls_local_var->_library_owned = 1;
     tracking_urls_local_var->audience_verification = audience_verification;
     tracking_urls_local_var->buyable_button = buyable_button;
     tracking_urls_local_var->click = click;
     tracking_urls_local_var->engagement = engagement;
     tracking_urls_local_var->impression = impression;
-
-    tracking_urls_local_var->_library_owned = 1;
     return tracking_urls_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) tracking_urls_t *tracking_urls_create(
     list_t *engagement,
     list_t *impression
     ) {
-    return tracking_urls_create_internal (
+    tracking_urls_t *result = tracking_urls_create_internal (
         audience_verification,
         buyable_button,
         click,
         engagement,
         impression
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void tracking_urls_free(tracking_urls_t *tracking_urls) {
@@ -314,6 +317,7 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
     }
 
 
+
     tracking_urls_local_var = tracking_urls_create_internal (
         audience_verification ? audience_verificationList : NULL,
         buyable_button ? buyable_buttonList : NULL,
@@ -321,6 +325,10 @@ tracking_urls_t *tracking_urls_parseFromJSON(cJSON *tracking_urlsJSON){
         engagement ? engagementList : NULL,
         impression ? impressionList : NULL
         );
+
+    if (!tracking_urls_local_var) {
+        goto end;
+    }
 
     return tracking_urls_local_var;
 end:

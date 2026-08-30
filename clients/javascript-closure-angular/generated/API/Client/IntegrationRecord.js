@@ -55,6 +55,7 @@ API.Client.IntegrationRecord.prototype.createdTime;
 API.Client.IntegrationRecord.prototype.externalBusinessId;
 
 /**
+ * Integration record ID.
  * @type {!string}
  * @export
  */

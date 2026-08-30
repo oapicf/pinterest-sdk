@@ -1,10 +1,14 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.CatalogsAiContentDisclosure
 import org.openapitools.model.CatalogsHotelAddress
-import org.openapitools.model.CatalogsHotelAttributesAllOfMainImage
 import org.openapitools.model.CatalogsHotelGuestRatings
+import org.openapitools.model.CatalogsHotelMainImage
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -18,7 +22,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param address 
+ * @param address Hotel address
  * @param basePrice Base price of the hotel room per night followed by the ISO currency code
  * @param brand The brand to which this hotel belongs to.
  * @param category The type of property. The category can be any type of internal description desired.
@@ -28,77 +32,112 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param customLabel3 Custom grouping of hotels
  * @param customLabel4 Custom grouping of hotels
  * @param description Brief description of the hotel.
- * @param guestRatings 
+ * @param guestRatings If specified, you must provide all properties
  * @param latitude Latitude of the hotel.
  * @param link Link to the product page
  * @param longitude Longitude of the hotel.
  * @param name The hotel's name.
  * @param neighborhood A list of neighborhoods where the hotel is located
  * @param salePrice Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
- * @param additionalImageLink <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
- * @param mainImage 
+ * @param additionalImageLink <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
+ * @param aiDisclosures AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+ * @param mainImage The main hotel image
  */
 data class CatalogsHotelAttributes(
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "Hotel address")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("address")
     @get:JsonProperty("address") val address: CatalogsHotelAddress? = null,
 
     @Schema(example = "100 USD", description = "Base price of the hotel room per night followed by the ISO currency code")
+    @param:JsonProperty("base_price")
     @get:JsonProperty("base_price") val basePrice: kotlin.String? = null,
 
-    @Schema(example = "null", description = "The brand to which this hotel belongs to.")
+    @Schema(description = "The brand to which this hotel belongs to.")
+    @param:JsonProperty("brand")
     @get:JsonProperty("brand") val brand: kotlin.String? = null,
 
-    @Schema(example = "null", description = "The type of property. The category can be any type of internal description desired.")
+    @Schema(description = "The type of property. The category can be any type of internal description desired.")
+    @param:JsonProperty("category")
     @get:JsonProperty("category") val category: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of hotels")
+    @Schema(description = "Custom grouping of hotels")
+    @param:JsonProperty("custom_label_0")
     @get:JsonProperty("custom_label_0") val customLabel0: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of hotels")
+    @Schema(description = "Custom grouping of hotels")
+    @param:JsonProperty("custom_label_1")
     @get:JsonProperty("custom_label_1") val customLabel1: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of hotels")
+    @Schema(description = "Custom grouping of hotels")
+    @param:JsonProperty("custom_label_2")
     @get:JsonProperty("custom_label_2") val customLabel2: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of hotels")
+    @Schema(description = "Custom grouping of hotels")
+    @param:JsonProperty("custom_label_3")
     @get:JsonProperty("custom_label_3") val customLabel3: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of hotels")
+    @Schema(description = "Custom grouping of hotels")
+    @param:JsonProperty("custom_label_4")
     @get:JsonProperty("custom_label_4") val customLabel4: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Brief description of the hotel.")
+    @Schema(description = "Brief description of the hotel.")
+    @param:JsonProperty("description")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "If specified, you must provide all properties")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("guest_ratings")
     @get:JsonProperty("guest_ratings") val guestRatings: CatalogsHotelGuestRatings? = null,
 
-    @Schema(example = "null", description = "Latitude of the hotel.")
+    @Schema(description = "Latitude of the hotel.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("latitude")
     @get:JsonProperty("latitude") val latitude: java.math.BigDecimal? = null,
 
-    @Schema(example = "null", description = "Link to the product page")
+    @Schema(description = "Link to the product page")
+    @param:JsonProperty("link")
     @get:JsonProperty("link") val link: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Longitude of the hotel.")
+    @Schema(description = "Longitude of the hotel.")
+    @param:JsonProperty("longitude")
     @get:JsonProperty("longitude") val longitude: java.math.BigDecimal? = null,
 
-    @Schema(example = "null", description = "The hotel's name.")
+    @Schema(description = "The hotel's name.")
+    @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
-    @Schema(example = "null", description = "A list of neighborhoods where the hotel is located")
+    @Schema(description = "A list of neighborhoods where the hotel is located")
+    @param:JsonProperty("neighborhood")
     @get:JsonProperty("neighborhood") val neighborhood: kotlin.collections.List<kotlin.String>? = null,
 
     @Schema(example = "90 USD", description = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.")
+    @param:JsonProperty("sale_price")
     @get:JsonProperty("sale_price") val salePrice: kotlin.String? = null,
 
-    @Schema(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>")
+    @Schema(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.")
+    @param:JsonProperty("additional_image_link")
     @get:JsonProperty("additional_image_link") val additionalImageLink: kotlin.collections.List<kotlin.String>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("main_image") val mainImage: CatalogsHotelAttributesAllOfMainImage? = null
+    @Schema(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ai_disclosures")
+    @get:JsonProperty("ai_disclosures") val aiDisclosures: kotlin.collections.List<CatalogsAiContentDisclosure>? = null,
+
+    @field:Valid
+    @Schema(description = "The main hotel image")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("main_image")
+    @get:JsonProperty("main_image") val mainImage: CatalogsHotelMainImage? = null
 ) {
 
 }

@@ -2,8 +2,11 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.BulkReportingJobStatus
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -25,13 +28,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AdsAnalyticsGetAsyncResponse(
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("report_status")
     @get:JsonProperty("report_status") val reportStatus: BulkReportingJobStatus? = null,
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("size")
     @get:JsonProperty("size") val propertySize: java.math.BigDecimal? = null,
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("url")
     @get:JsonProperty("url") val url: kotlin.String? = null
 ) {
 

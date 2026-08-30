@@ -1,0 +1,42 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "BrandAccountCreate",
+  "fields": [
+    {
+      "name": "about",
+      "type": ["null", "string"],
+      "doc": "Brand Account about information",
+      "default": null
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Brand Account name"
+    },
+    {
+      "name": "profile_image",
+      "type": ["null", "model.BrandAccountProfileImage"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "doc": "Brand Account username"
+    },
+    {
+      "name": "website",
+      "type": ["null", "string"],
+      "doc": "Brand Account website",
+      "default": null
+    }
+  ]
+
+}

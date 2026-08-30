@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.ad_response import AdResponse  # noqa: F401,E501
+from app.openapi_server.models.ad import Ad  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class AdsList200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[AdResponse]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[Ad]=None):  # noqa: E501
         """AdsList200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this AdsList200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this AdsList200Response.  # noqa: E501
-        :type items: List[AdResponse]
+        :type items: List[Ad]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[AdResponse]
+            'items': List[Ad]
         }
 
         self.attribute_map = {
@@ -70,22 +70,22 @@ class AdsList200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[AdResponse]:
+    def items(self) -> List[Ad]:
         """Gets the items of this AdsList200Response.
 
 
         :return: The items of this AdsList200Response.
-        :rtype: List[AdResponse]
+        :rtype: List[Ad]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[AdResponse]):
+    def items(self, items: List[Ad]):
         """Sets the items of this AdsList200Response.
 
 
         :param items: The items of this AdsList200Response.
-        :type items: List[AdResponse]
+        :type items: List[Ad]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

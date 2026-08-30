@@ -5,19 +5,24 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type AdCreateRequest struct {
 
 	// ID of the ad group that contains the ad.
-	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\\\d+$"`
+	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\d+$"`
 
 	// Deep link URL for Android devices.
 	AndroidDeepLink *string `json:"android_deep_link,omitempty"`
@@ -51,6 +56,9 @@ type AdCreateRequest struct {
 	// Deep link URL for iOS devices.
 	IosDeepLink *string `json:"ios_deep_link,omitempty"`
 
+	// Is the ad a carting/WTB ad?
+	IsCarting bool `json:"is_carting,omitempty"`
+
 	// Is original pin deleted?
 	IsPinDeleted bool `json:"is_pin_deleted,omitempty"`
 
@@ -58,62 +66,220 @@ type AdCreateRequest struct {
 	IsRemovable bool `json:"is_removable,omitempty"`
 
 	// Lead form ID for lead ad generation.
-	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
+	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\d+$"`
 
 	// Name of the ad - 255 chars max.
 	Name *string `json:"name,omitempty"`
 
+	// Pin ID.
+	PinId string `json:"pin_id" validate:"regexp=^\\d+$"`
+
 	// Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-	QuizPinData *QuizPinData `json:"quiz_pin_data,omitempty"`
+	QuizPinData *map[string]interface{} `json:"quiz_pin_data,omitempty"`
 
 	Status EntityStatus `json:"status,omitempty"`
 
-	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
+	TrackingUrls *map[string]interface{} `json:"tracking_urls,omitempty"`
 
 	// Tracking URL for ad impressions.
 	ViewTrackingUrl *string `json:"view_tracking_url,omitempty"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into AdCreateRequest
+func (o *AdCreateRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"ad_group_id",
+		"creative_type",
+		"pin_id",
+	}
 
-	// Pin ID.
-	PinId string `json:"pin_id" validate:"regexp=^\\\\d+$"`
+	requiredNullableProperties := map[string]bool{
+		"ad_group_id": false,
+		"creative_type": false,
+		"pin_id": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"ad_group_id": {},
+		"android_deep_link": {},
+		"carousel_android_deep_links": {},
+		"carousel_destination_urls": {},
+		"carousel_ios_deep_links": {},
+		"click_tracking_url": {},
+		"creative_type": {},
+		"customizable_cta_type": {},
+		"destination_url": {},
+		"disclosure_type": {},
+		"disclosure_url": {},
+		"grid_click_type": {},
+		"ios_deep_link": {},
+		"is_carting": {},
+		"is_pin_deleted": {},
+		"is_removable": {},
+		"lead_form_id": {},
+		"name": {},
+		"pin_id": {},
+		"quiz_pin_data": {},
+		"status": {},
+		"tracking_urls": {},
+		"view_tracking_url": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AdCreateRequest
+
+	if value, exists := allProperties["ad_group_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AdGroupId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["android_deep_link"]; exists {
+		if err = json.Unmarshal(value, &decoded.AndroidDeepLink); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["carousel_android_deep_links"]; exists {
+		if err = json.Unmarshal(value, &decoded.CarouselAndroidDeepLinks); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["carousel_destination_urls"]; exists {
+		if err = json.Unmarshal(value, &decoded.CarouselDestinationUrls); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["carousel_ios_deep_links"]; exists {
+		if err = json.Unmarshal(value, &decoded.CarouselIosDeepLinks); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["click_tracking_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.ClickTrackingUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["creative_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreativeType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["customizable_cta_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CustomizableCtaType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["destination_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.DestinationUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["disclosure_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.DisclosureType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["disclosure_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.DisclosureUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["grid_click_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.GridClickType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["ios_deep_link"]; exists {
+		if err = json.Unmarshal(value, &decoded.IosDeepLink); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_carting"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsCarting); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_pin_deleted"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsPinDeleted); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_removable"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsRemovable); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["lead_form_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.LeadFormId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pin_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.PinId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["quiz_pin_data"]; exists {
+		if err = json.Unmarshal(value, &decoded.QuizPinData); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["tracking_urls"]; exists {
+		if err = json.Unmarshal(value, &decoded.TrackingUrls); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["view_tracking_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.ViewTrackingUrl); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertAdCreateRequestRequired checks if the required fields are not zero-ed
+// AssertAdCreateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdCreateRequestRequired(obj AdCreateRequest) error {
-	elements := map[string]interface{}{
-		"ad_group_id": obj.AdGroupId,
-		"creative_type": obj.CreativeType,
-		"pin_id": obj.PinId,
-	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
-		}
-	}
-
-	if obj.QuizPinData != nil {
-		if err := AssertQuizPinDataRequired(*obj.QuizPinData); err != nil {
-			return err
-		}
-	}
-	if obj.TrackingUrls != nil {
-		if err := AssertTrackingUrlsRequired(*obj.TrackingUrls); err != nil {
-			return err
-		}
-	}
 	return nil
 }
 
 // AssertAdCreateRequestConstraints checks if the values respects the defined constraints
 func AssertAdCreateRequestConstraints(obj AdCreateRequest) error {
-    if obj.QuizPinData != nil {
-     	if err := AssertQuizPinDataConstraints(*obj.QuizPinData); err != nil {
-     		return err
-     	}
-    }
-    if obj.TrackingUrls != nil {
-     	if err := AssertTrackingUrlsConstraints(*obj.TrackingUrls); err != nil {
-     		return err
-     	}
-    }
 	return nil
 }

@@ -15,7 +15,7 @@ case class AdvancedAuctionItemsGetRequest (
   /* Catalog id pertaining to the retail item */
   catalogId: String,
 /* A list of retail catalog items to fetch bid options for */
-  items: List[AdvancedAuctionItemsGetRecord])
+  items: List[AdvancedAuctionKey])
 
 object AdvancedAuctionItemsGetRequest {
   import DateTimeCodecs._

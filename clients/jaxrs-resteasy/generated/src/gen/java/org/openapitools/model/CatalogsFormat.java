@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum CatalogsFormat {
-    TSV, CSV, XML
+    TSV, CSV, XML, INTEGRATION
 }

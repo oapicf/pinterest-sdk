@@ -3,9 +3,9 @@ Protected Class NotificationResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Returns true if the notification accepted.
+			error message when success is false
 		#tag EndNote
-		success As Xoson.O.OptionalBoolean
+		error_msg As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -19,9 +19,9 @@ Protected Class NotificationResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			error message when success is false
+			Returns true if the notification accepted.
 		#tag EndNote
-		error_msg As Xoson.O.OptionalString
+		success As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -62,11 +62,11 @@ Protected Class NotificationResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="success"
+			Name="error_msg"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Boolean"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -78,11 +78,11 @@ Protected Class NotificationResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="error_msg"
+			Name="success"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CatalogsRetailProductMetadata._
 
 case class CatalogsRetailProductMetadata (
-  availability: NonNullableProductAvailabilityType,
+  availability: ProductAvailability,
 currency: NonNullableCatalogsCurrency,
 /* The parent ID of the product. */
   itemGroupId: String,

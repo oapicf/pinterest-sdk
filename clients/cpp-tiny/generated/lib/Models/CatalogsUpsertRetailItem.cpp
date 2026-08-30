@@ -107,7 +107,7 @@ CatalogsUpsertRetailItem::getAttributes()
 }
 
 void
-CatalogsUpsertRetailItem::setAttributes(ItemAttributesRequest  attributes)
+CatalogsUpsertRetailItem::setAttributes(ItemAttributesRequest attributes)
 {
 	this->attributes = attributes;
 }
@@ -119,7 +119,7 @@ CatalogsUpsertRetailItem::getItemId()
 }
 
 void
-CatalogsUpsertRetailItem::setItemId(std::string  item_id)
+CatalogsUpsertRetailItem::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -131,7 +131,7 @@ CatalogsUpsertRetailItem::getOperation()
 }
 
 void
-CatalogsUpsertRetailItem::setOperation(std::string  operation)
+CatalogsUpsertRetailItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

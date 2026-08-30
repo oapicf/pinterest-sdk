@@ -3,18 +3,12 @@ package models
 type Label struct {
 
 	// Label ID.
-	Id string `json:"id,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
-	LabelType *LabelType `json:"label_type,omitempty"`
+	LabelType *NullableLabelType `json:"label_type"`
 
-	// Label parent entity ID.
-	ParentId string `json:"parent_id,omitempty"`
+	Status *NullableLabelStatus `json:"status,omitempty"`
 
-	// Label parent entity type.
-	ParentType *string `json:"parent_type,omitempty"`
-
-	Status *LabelStatus `json:"status,omitempty"`
-
-	// Label name.
-	Value string `json:"value,omitempty"`
+	// Label name. 100-character limit.
+	Value string `json:"value"`
 }

@@ -51,7 +51,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setStatusCode(long  statusCode);
+	void setStatusCode(long statusCode);
 
 
     private:

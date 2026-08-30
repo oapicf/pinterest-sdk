@@ -15,7 +15,7 @@
 
 typedef struct ads_list_200_response_t ads_list_200_response_t;
 
-#include "ad_response.h"
+#include "ad.h"
 
 
 

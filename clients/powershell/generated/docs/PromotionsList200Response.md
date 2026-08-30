@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**PromotionResponse[]**](PromotionResponse.md) |  | 
+**Items** | [**Promotion[]**](Promotion.md) |  | 
 
 ## Examples
 

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## AdAccountsAudiencesSharedAccountsList
 
-> AdAccountsAudiencesSharedAccountsList200Response AdAccountsAudiencesSharedAccountsList(ctx, adAccountId).AudienceId(audienceId).AccountType(accountType).PageSize(pageSize).Bookmark(bookmark).Execute()
+> AdAccountsAudiencesSharedAccountsList200Response AdAccountsAudiencesSharedAccountsList(ctx, adAccountId).AudienceId(audienceId).AccountType(accountType).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List accounts with access to an audience owned by an ad account
 
@@ -35,15 +35,15 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	audienceId := "audienceId_example" // string | Unique identifier of the audience to use to filter the results.
-	accountType := openapiclient.AudienceAccountType("AD_ACCOUNT") // AudienceAccountType | Filter accounts by account type. (default to "AD_ACCOUNT")
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	accountType := openapiclient.AudienceAccountType("AD_ACCOUNT") // AudienceAccountType | Filter accounts by account type.
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudienceSharingAPI.AdAccountsAudiencesSharedAccountsList(context.Background(), adAccountId).AudienceId(audienceId).AccountType(accountType).PageSize(pageSize).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.AudienceSharingAPI.AdAccountsAudiencesSharedAccountsList(context.Background(), adAccountId).AudienceId(audienceId).AccountType(accountType).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudienceSharingAPI.AdAccountsAudiencesSharedAccountsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,11 +68,11 @@ Other parameters are passed through a pointer to a apiAdAccountsAudiencesSharedA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **audienceId** | **string** | Unique identifier of the audience to use to filter the results. | 
- **accountType** | [**AudienceAccountType**](AudienceAccountType.md) | Filter accounts by account type. | [default to &quot;AD_ACCOUNT&quot;]
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **accountType** | [**AudienceAccountType**](AudienceAccountType.md) | Filter accounts by account type. | 
+
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## BusinessAccountAudiencesSharedAccountsList
 
-> AdAccountsAudiencesSharedAccountsList200Response BusinessAccountAudiencesSharedAccountsList(ctx, businessId).AudienceId(audienceId).AccountType(accountType).PageSize(pageSize).Bookmark(bookmark).Execute()
+> AdAccountsAudiencesSharedAccountsList200Response BusinessAccountAudiencesSharedAccountsList(ctx, businessId).AudienceId(audienceId).AccountType(accountType).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List accounts with access to an audience owned by a business
 
@@ -113,15 +113,15 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
 	audienceId := "audienceId_example" // string | Unique identifier of the audience to use to filter the results.
-	accountType := openapiclient.AudienceAccountType("AD_ACCOUNT") // AudienceAccountType | Filter accounts by account type. (default to "AD_ACCOUNT")
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	accountType := openapiclient.AudienceAccountType("AD_ACCOUNT") // AudienceAccountType | Filter accounts by account type.
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudienceSharingAPI.BusinessAccountAudiencesSharedAccountsList(context.Background(), businessId).AudienceId(audienceId).AccountType(accountType).PageSize(pageSize).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.AudienceSharingAPI.BusinessAccountAudiencesSharedAccountsList(context.Background(), businessId).AudienceId(audienceId).AccountType(accountType).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudienceSharingAPI.BusinessAccountAudiencesSharedAccountsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -148,9 +148,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **audienceId** | **string** | Unique identifier of the audience to use to filter the results. | 
- **accountType** | [**AudienceAccountType**](AudienceAccountType.md) | Filter accounts by account type. | [default to &quot;AD_ACCOUNT&quot;]
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **accountType** | [**AudienceAccountType**](AudienceAccountType.md) | Filter accounts by account type. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ## SharedAudiencesForBusinessList
 
-> AudiencesList200Response SharedAudiencesForBusinessList(ctx, businessId).Bookmark(bookmark).Order(order).PageSize(pageSize).Execute()
+> SharedAudiencesForBusinessList200Response SharedAudiencesForBusinessList(ctx, businessId).Order(order).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List received audiences for a business
 
@@ -191,19 +191,19 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	order := openapiclient.Order("ASCENDING") // Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudienceSharingAPI.SharedAudiencesForBusinessList(context.Background(), businessId).Bookmark(bookmark).Order(order).PageSize(pageSize).Execute()
+	resp, r, err := apiClient.AudienceSharingAPI.SharedAudiencesForBusinessList(context.Background(), businessId).Order(order).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudienceSharingAPI.SharedAudiencesForBusinessList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SharedAudiencesForBusinessList`: AudiencesList200Response
+	// response from `SharedAudiencesForBusinessList`: SharedAudiencesForBusinessList200Response
 	fmt.Fprintf(os.Stdout, "Response from `AudienceSharingAPI.SharedAudiencesForBusinessList`: %v\n", resp)
 }
 ```
@@ -224,13 +224,13 @@ Other parameters are passed through a pointer to a apiSharedAudiencesForBusiness
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **order** | [**Order**](Order.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
-[**AudiencesList200Response**](AudiencesList200Response.md)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAdAccountToAdAccountSharedAudience
 
-> SharedAudienceResponse UpdateAdAccountToAdAccountSharedAudience(ctx, adAccountId).SharedAudience(sharedAudience).Execute()
+> AdAccountToAdAccountSharedAudience UpdateAdAccountToAdAccountSharedAudience(ctx, adAccountId).AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody(adAccountToAdAccountSharedAudienceUpdateWithRequiredBody).Execute()
 
 Update audience sharing between ad accounts
 
@@ -268,16 +268,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	sharedAudience := *openapiclient.NewSharedAudience("2542621871096", openapiclient.OperationType("SHARE"), []string{"RecipientAccountIds_example"}) // SharedAudience | 
+	adAccountToAdAccountSharedAudienceUpdateWithRequiredBody := *openapiclient.NewAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody("2542621871096", openapiclient.OperationType("SHARE"), []string{"RecipientAccountIds_example"}) // AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudienceSharingAPI.UpdateAdAccountToAdAccountSharedAudience(context.Background(), adAccountId).SharedAudience(sharedAudience).Execute()
+	resp, r, err := apiClient.AudienceSharingAPI.UpdateAdAccountToAdAccountSharedAudience(context.Background(), adAccountId).AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody(adAccountToAdAccountSharedAudienceUpdateWithRequiredBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudienceSharingAPI.UpdateAdAccountToAdAccountSharedAudience``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateAdAccountToAdAccountSharedAudience`: SharedAudienceResponse
+	// response from `UpdateAdAccountToAdAccountSharedAudience`: AdAccountToAdAccountSharedAudience
 	fmt.Fprintf(os.Stdout, "Response from `AudienceSharingAPI.UpdateAdAccountToAdAccountSharedAudience`: %v\n", resp)
 }
 ```
@@ -298,11 +298,11 @@ Other parameters are passed through a pointer to a apiUpdateAdAccountToAdAccount
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sharedAudience** | [**SharedAudience**](SharedAudience.md) |  | 
+ **adAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md) |  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAdAccountToBusinessSharedAudience
 
-> BusinessSharedAudienceResponse UpdateAdAccountToBusinessSharedAudience(ctx, adAccountId).BusinessSharedAudience(businessSharedAudience).Execute()
+> AdAccountToBusinessSharedAudience UpdateAdAccountToBusinessSharedAudience(ctx, adAccountId).AdAccountToBusinessSharedAudienceUpdateWithRequiredBody(adAccountToBusinessSharedAudienceUpdateWithRequiredBody).Execute()
 
 Update audience sharing from an ad account to businesses
 
@@ -340,16 +340,16 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	businessSharedAudience := *openapiclient.NewBusinessSharedAudience("2542621871096", openapiclient.OperationType("SHARE"), []string{"RecipientBusinessIds_example"}) // BusinessSharedAudience | 
+	adAccountToBusinessSharedAudienceUpdateWithRequiredBody := *openapiclient.NewAdAccountToBusinessSharedAudienceUpdateWithRequiredBody("2542621871096", openapiclient.OperationType("SHARE"), []string{"RecipientBusinessIds_example"}) // AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudienceSharingAPI.UpdateAdAccountToBusinessSharedAudience(context.Background(), adAccountId).BusinessSharedAudience(businessSharedAudience).Execute()
+	resp, r, err := apiClient.AudienceSharingAPI.UpdateAdAccountToBusinessSharedAudience(context.Background(), adAccountId).AdAccountToBusinessSharedAudienceUpdateWithRequiredBody(adAccountToBusinessSharedAudienceUpdateWithRequiredBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudienceSharingAPI.UpdateAdAccountToBusinessSharedAudience``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateAdAccountToBusinessSharedAudience`: BusinessSharedAudienceResponse
+	// response from `UpdateAdAccountToBusinessSharedAudience`: AdAccountToBusinessSharedAudience
 	fmt.Fprintf(os.Stdout, "Response from `AudienceSharingAPI.UpdateAdAccountToBusinessSharedAudience`: %v\n", resp)
 }
 ```
@@ -370,11 +370,11 @@ Other parameters are passed through a pointer to a apiUpdateAdAccountToBusinessS
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md) |  | 
+ **adAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md) |  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -392,7 +392,7 @@ Name | Type | Description  | Notes
 
 ## UpdateBusinessToAdAccountSharedAudience
 
-> SharedAudienceResponse UpdateBusinessToAdAccountSharedAudience(ctx, businessId).SharedAudience(sharedAudience).Execute()
+> BusinessToAdAccountSharedAudience UpdateBusinessToAdAccountSharedAudience(ctx, businessId).BusinessToAdAccountSharedAudienceUpdateWithRequiredBody(businessToAdAccountSharedAudienceUpdateWithRequiredBody).Execute()
 
 Update audience sharing from a business to ad accounts
 
@@ -411,17 +411,17 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	sharedAudience := *openapiclient.NewSharedAudience("2542621871096", openapiclient.OperationType("SHARE"), []string{"RecipientAccountIds_example"}) // SharedAudience | 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	businessToAdAccountSharedAudienceUpdateWithRequiredBody := *openapiclient.NewBusinessToAdAccountSharedAudienceUpdateWithRequiredBody("2542621871096", openapiclient.OperationType("SHARE"), []string{"RecipientAccountIds_example"}) // BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudienceSharingAPI.UpdateBusinessToAdAccountSharedAudience(context.Background(), businessId).SharedAudience(sharedAudience).Execute()
+	resp, r, err := apiClient.AudienceSharingAPI.UpdateBusinessToAdAccountSharedAudience(context.Background(), businessId).BusinessToAdAccountSharedAudienceUpdateWithRequiredBody(businessToAdAccountSharedAudienceUpdateWithRequiredBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudienceSharingAPI.UpdateBusinessToAdAccountSharedAudience``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateBusinessToAdAccountSharedAudience`: SharedAudienceResponse
+	// response from `UpdateBusinessToAdAccountSharedAudience`: BusinessToAdAccountSharedAudience
 	fmt.Fprintf(os.Stdout, "Response from `AudienceSharingAPI.UpdateBusinessToAdAccountSharedAudience`: %v\n", resp)
 }
 ```
@@ -442,11 +442,11 @@ Other parameters are passed through a pointer to a apiUpdateBusinessToAdAccountS
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sharedAudience** | [**SharedAudience**](SharedAudience.md) |  | 
+ **businessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md) |  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 
 ## UpdateBusinessToBusinessSharedAudience
 
-> BusinessSharedAudienceResponse UpdateBusinessToBusinessSharedAudience(ctx, businessId).BusinessSharedAudience(businessSharedAudience).Execute()
+> BusinessToBusinessSharedAudience UpdateBusinessToBusinessSharedAudience(ctx, businessId).BusinessToBusinessSharedAudienceUpdateWithRequiredBody(businessToBusinessSharedAudienceUpdateWithRequiredBody).Execute()
 
 Update audience sharing between businesses
 
@@ -483,17 +483,17 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	businessSharedAudience := *openapiclient.NewBusinessSharedAudience("2542621871096", openapiclient.OperationType("SHARE"), []string{"RecipientBusinessIds_example"}) // BusinessSharedAudience | 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	businessToBusinessSharedAudienceUpdateWithRequiredBody := *openapiclient.NewBusinessToBusinessSharedAudienceUpdateWithRequiredBody("2542621871096", openapiclient.OperationType("SHARE"), []string{"RecipientBusinessIds_example"}) // BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AudienceSharingAPI.UpdateBusinessToBusinessSharedAudience(context.Background(), businessId).BusinessSharedAudience(businessSharedAudience).Execute()
+	resp, r, err := apiClient.AudienceSharingAPI.UpdateBusinessToBusinessSharedAudience(context.Background(), businessId).BusinessToBusinessSharedAudienceUpdateWithRequiredBody(businessToBusinessSharedAudienceUpdateWithRequiredBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AudienceSharingAPI.UpdateBusinessToBusinessSharedAudience``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateBusinessToBusinessSharedAudience`: BusinessSharedAudienceResponse
+	// response from `UpdateBusinessToBusinessSharedAudience`: BusinessToBusinessSharedAudience
 	fmt.Fprintf(os.Stdout, "Response from `AudienceSharingAPI.UpdateBusinessToBusinessSharedAudience`: %v\n", resp)
 }
 ```
@@ -514,11 +514,11 @@ Other parameters are passed through a pointer to a apiUpdateBusinessToBusinessSh
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md) |  | 
+ **businessToBusinessSharedAudienceUpdateWithRequiredBody** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md) |  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

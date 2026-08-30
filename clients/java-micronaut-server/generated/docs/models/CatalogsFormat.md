@@ -13,5 +13,7 @@ The class is defined in **[CatalogsFormat.java](../../src/main/java/org/openapit
 
 * `XML` (value: `"XML"`)
 
+* `INTEGRATION` (value: `"INTEGRATION"`)
+
 
 

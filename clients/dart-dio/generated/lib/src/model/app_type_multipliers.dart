@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/targeting_spec_app_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,11 +13,12 @@ part 'app_type_multipliers.g.dart';
 /// This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
 ///
 /// Properties:
-/// * [APP_TYPE] 
+/// * [APP_TYPE] - App type identifier.
 @BuiltValue()
 abstract class AppTypeMultipliers implements Built<AppTypeMultipliers, AppTypeMultipliersBuilder> {
+  /// App type identifier.
   @BuiltValueField(wireName: r'APP_TYPE')
-  AppTypeMultipliersAPP_TYPEEnum? get APP_TYPE;
+  TargetingSpecAppType? get APP_TYPE;
   // enum APP_TYPEEnum {  android_mobile,  android_tablet,  ipad,  iphone,  web,  web_mobile,  };
 
   AppTypeMultipliers._();
@@ -46,7 +48,7 @@ class _$AppTypeMultipliersSerializer implements PrimitiveSerializer<AppTypeMulti
       yield r'APP_TYPE';
       yield serializers.serialize(
         object.APP_TYPE,
-        specifiedType: const FullType(AppTypeMultipliersAPP_TYPEEnum),
+        specifiedType: const FullType(TargetingSpecAppType),
       );
     }
   }
@@ -75,8 +77,9 @@ class _$AppTypeMultipliersSerializer implements PrimitiveSerializer<AppTypeMulti
         case r'APP_TYPE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(AppTypeMultipliersAPP_TYPEEnum),
-          ) as AppTypeMultipliersAPP_TYPEEnum;
+            specifiedType: const FullType.nullable(TargetingSpecAppType),
+          ) as TargetingSpecAppType?;
+          if (valueDes == null) continue;
           result.APP_TYPE = valueDes;
           break;
         default:
@@ -106,28 +109,5 @@ class _$AppTypeMultipliersSerializer implements PrimitiveSerializer<AppTypeMulti
     );
     return result.build();
   }
-}
-
-class AppTypeMultipliersAPP_TYPEEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'android_mobile')
-  static const AppTypeMultipliersAPP_TYPEEnum androidMobile = _$appTypeMultipliersAPPTYPEEnum_androidMobile;
-  @BuiltValueEnumConst(wireName: r'android_tablet')
-  static const AppTypeMultipliersAPP_TYPEEnum androidTablet = _$appTypeMultipliersAPPTYPEEnum_androidTablet;
-  @BuiltValueEnumConst(wireName: r'ipad')
-  static const AppTypeMultipliersAPP_TYPEEnum ipad = _$appTypeMultipliersAPPTYPEEnum_ipad;
-  @BuiltValueEnumConst(wireName: r'iphone')
-  static const AppTypeMultipliersAPP_TYPEEnum iphone = _$appTypeMultipliersAPPTYPEEnum_iphone;
-  @BuiltValueEnumConst(wireName: r'web')
-  static const AppTypeMultipliersAPP_TYPEEnum web = _$appTypeMultipliersAPPTYPEEnum_web;
-  @BuiltValueEnumConst(wireName: r'web_mobile')
-  static const AppTypeMultipliersAPP_TYPEEnum webMobile = _$appTypeMultipliersAPPTYPEEnum_webMobile;
-
-  static Serializer<AppTypeMultipliersAPP_TYPEEnum> get serializer => _$appTypeMultipliersAPPTYPEEnumSerializer;
-
-  const AppTypeMultipliersAPP_TYPEEnum._(String name): super(name);
-
-  static BuiltSet<AppTypeMultipliersAPP_TYPEEnum> get values => _$appTypeMultipliersAPPTYPEEnumValues;
-  static AppTypeMultipliersAPP_TYPEEnum valueOf(String name) => _$appTypeMultipliersAPPTYPEEnumValueOf(name);
 }
 

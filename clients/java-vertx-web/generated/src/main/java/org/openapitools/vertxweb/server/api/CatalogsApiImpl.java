@@ -1,12 +1,12 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.Catalog;
+import org.openapitools.vertxweb.server.model.CatalogCreate;
 import org.openapitools.vertxweb.server.model.CatalogsAvailableFilterValues;
-import org.openapitools.vertxweb.server.model.CatalogsCreateRequest;
 import org.openapitools.vertxweb.server.model.CatalogsList200Response;
 import org.openapitools.vertxweb.server.model.CatalogsLocale;
 import org.openapitools.vertxweb.server.model.Country;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -24,11 +24,11 @@ public class CatalogsApiImpl implements CatalogsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<Catalog>> catalogsCreate(CatalogsCreateRequest catalogsCreateRequest, String adAccountId) {
+    public Future<ApiResponse<Catalog>> catalogsCreate(CatalogCreate catalogCreate, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<CatalogsList200Response>> catalogsList(String bookmark, Integer pageSize, String adAccountId) {
+    public Future<ApiResponse<CatalogsList200Response>> catalogsList(String adAccountId, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 

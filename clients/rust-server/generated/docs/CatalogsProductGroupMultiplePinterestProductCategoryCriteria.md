@@ -1,0 +1,11 @@
+# CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**negated** | **bool** |  | [optional] [default to None]
+**values** | [**Vec<models::ProductCategoryEnum>**](ProductCategoryEnum.md) |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

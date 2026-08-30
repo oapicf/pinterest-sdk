@@ -54,21 +54,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setErrors(CatalogsFeedIngestionErrors  errors);
+	void setErrors(CatalogsFeedIngestionErrors errors);
 	/*! \brief Get 
 	 */
 	CatalogsFeedIngestionInfo getInfo();
 
 	/*! \brief Set 
 	 */
-	void setInfo(CatalogsFeedIngestionInfo  info);
+	void setInfo(CatalogsFeedIngestionInfo info);
 	/*! \brief Get 
 	 */
 	CatalogsFeedIngestionWarnings getWarnings();
 
 	/*! \brief Set 
 	 */
-	void setWarnings(CatalogsFeedIngestionWarnings  warnings);
+	void setWarnings(CatalogsFeedIngestionWarnings warnings);
 
 
     private:

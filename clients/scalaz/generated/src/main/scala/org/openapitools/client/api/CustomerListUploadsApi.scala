@@ -21,9 +21,9 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
+import org.openapitools.client.api.CustomerListUpload
 import org.openapitools.client.api.CustomerListUploadCreateRequest
 import org.openapitools.client.api.CustomerListUploadCreateResponse
-import org.openapitools.client.api.CustomerListUploadResponse
 import org.openapitools.client.api.Error
 
 object CustomerListUploadsApi {
@@ -53,8 +53,8 @@ object CustomerListUploadsApi {
     } yield resp
   }
 
-  def customerListUploadsGet(host: String, adAccountId: String, customerListId: String, customerListUploadId: String): Task[CustomerListUploadResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[CustomerListUploadResponse] = jsonOf[CustomerListUploadResponse]
+  def customerListUploadsGet(host: String, adAccountId: String, customerListId: String, customerListUploadId: String): Task[CustomerListUpload] = {
+    implicit val returnTypeDecoder: EntityDecoder[CustomerListUpload] = jsonOf[CustomerListUpload]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "customer_list_id" + "\\}",escape(customerListId.toString)).replaceAll("\\{" + "customer_list_upload_id" + "\\}",escape(customerListUploadId.toString))
 
@@ -69,13 +69,13 @@ object CustomerListUploadsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[CustomerListUploadResponse](req)
+      resp          <- client.expect[CustomerListUpload](req)
 
     } yield resp
   }
 
-  def customerListUploadsRun(host: String, adAccountId: String, customerListId: String, customerListUploadId: String): Task[CustomerListUploadResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[CustomerListUploadResponse] = jsonOf[CustomerListUploadResponse]
+  def customerListUploadsRun(host: String, adAccountId: String, customerListId: String, customerListUploadId: String): Task[CustomerListUpload] = {
+    implicit val returnTypeDecoder: EntityDecoder[CustomerListUpload] = jsonOf[CustomerListUpload]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "customer_list_id" + "\\}",escape(customerListId.toString)).replaceAll("\\{" + "customer_list_upload_id" + "\\}",escape(customerListUploadId.toString))
 
@@ -90,7 +90,7 @@ object CustomerListUploadsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[CustomerListUploadResponse](req)
+      resp          <- client.expect[CustomerListUpload](req)
 
     } yield resp
   }
@@ -123,8 +123,8 @@ class HttpServiceCustomerListUploadsApi(service: HttpService) {
     } yield resp
   }
 
-  def customerListUploadsGet(adAccountId: String, customerListId: String, customerListUploadId: String): Task[CustomerListUploadResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[CustomerListUploadResponse] = jsonOf[CustomerListUploadResponse]
+  def customerListUploadsGet(adAccountId: String, customerListId: String, customerListUploadId: String): Task[CustomerListUpload] = {
+    implicit val returnTypeDecoder: EntityDecoder[CustomerListUpload] = jsonOf[CustomerListUpload]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "customer_list_id" + "\\}",escape(customerListId.toString)).replaceAll("\\{" + "customer_list_upload_id" + "\\}",escape(customerListUploadId.toString))
 
@@ -139,13 +139,13 @@ class HttpServiceCustomerListUploadsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[CustomerListUploadResponse](req)
+      resp          <- client.expect[CustomerListUpload](req)
 
     } yield resp
   }
 
-  def customerListUploadsRun(adAccountId: String, customerListId: String, customerListUploadId: String): Task[CustomerListUploadResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[CustomerListUploadResponse] = jsonOf[CustomerListUploadResponse]
+  def customerListUploadsRun(adAccountId: String, customerListId: String, customerListUploadId: String): Task[CustomerListUpload] = {
+    implicit val returnTypeDecoder: EntityDecoder[CustomerListUpload] = jsonOf[CustomerListUpload]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "customer_list_id" + "\\}",escape(customerListId.toString)).replaceAll("\\{" + "customer_list_upload_id" + "\\}",escape(customerListUploadId.toString))
 
@@ -160,7 +160,7 @@ class HttpServiceCustomerListUploadsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[CustomerListUploadResponse](req)
+      resp          <- client.expect[CustomerListUpload](req)
 
     } yield resp
   }

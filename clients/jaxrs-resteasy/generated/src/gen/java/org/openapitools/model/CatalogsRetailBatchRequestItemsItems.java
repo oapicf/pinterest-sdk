@@ -1,0 +1,174 @@
+package org.openapitools.model;
+
+import java.util.Objects;
+import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreateRetailItem;
+import org.openapitools.model.CatalogsDeleteRetailItem;
+import org.openapitools.model.CatalogsUpdateRetailItem;
+import org.openapitools.model.CatalogsUpsertRetailItem;
+import org.openapitools.model.ItemAttributesRequest;
+import org.openapitools.model.UpdateMaskFieldType;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+import io.swagger.annotations.*;
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreateRetailItem.class, name = "CREATE"),
+  @JsonSubTypes.Type(value = CatalogsDeleteRetailItem.class, name = "DELETE"),
+  @JsonSubTypes.Type(value = CatalogsUpdateRetailItem.class, name = "UPDATE"),
+  @JsonSubTypes.Type(value = CatalogsUpsertRetailItem.class, name = "UPSERT"),
+})
+
+public class CatalogsRetailBatchRequestItemsItems   {
+  
+  private ItemAttributesRequest attributes;
+  private String itemId;
+
+  /**
+   * Gets or Sets operation
+   */
+  public enum OperationEnum {
+    DELETE("DELETE");
+    private String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+  }
+
+  private OperationEnum operation;
+  private List<UpdateMaskFieldType> updateMask;
+  private Long lastUpdatedTime;
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  @NotNull
+  @Valid
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
+
+  /**
+   * The catalog item id in the merchant namespace
+   **/
+  
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
+  @JsonProperty("item_id")
+  @NotNull
+  public String getItemId() {
+    return itemId;
+  }
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("operation")
+  @NotNull
+  public OperationEnum getOperation() {
+    return operation;
+  }
+  public void setOperation(OperationEnum operation) {
+    this.operation = operation;
+  }
+
+  /**
+   * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+   **/
+  
+  @ApiModelProperty(example = "[ad_link, adult, age_group, availability, average_review_rating, brand, checkout_enabled, color, condition, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, description, free_shipping_label, free_shipping_limit, gender, google_product_category, gtin, item_group_id, last_updated_time, link, material, min_ad_price, mpn, number_of_ratings, number_of_reviews, pattern, price, product_type, sale_price, shipping, shipping_height, shipping_weight, shipping_width, size, size_system, size_type, tax, title, variant_names, variant_values, promotion_id]", value = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.")
+  @JsonProperty("update_mask")
+  @Valid
+  public List<UpdateMaskFieldType> getUpdateMask() {
+    return updateMask;
+  }
+  public void setUpdateMask(List<UpdateMaskFieldType> updateMask) {
+    this.updateMask = updateMask;
+  }
+
+  /**
+   * The millisecond timestamp when the item was lastly modified by the merchant.
+   **/
+  
+  @ApiModelProperty(example = "1641483432072", value = "The millisecond timestamp when the item was lastly modified by the merchant.")
+  @JsonProperty("last_updated_time")
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CatalogsRetailBatchRequestItemsItems catalogsRetailBatchRequestItemsItems = (CatalogsRetailBatchRequestItemsItems) o;
+    return Objects.equals(this.attributes, catalogsRetailBatchRequestItemsItems.attributes) &&
+        Objects.equals(this.itemId, catalogsRetailBatchRequestItemsItems.itemId) &&
+        Objects.equals(this.operation, catalogsRetailBatchRequestItemsItems.operation) &&
+        Objects.equals(this.updateMask, catalogsRetailBatchRequestItemsItems.updateMask) &&
+        Objects.equals(this.lastUpdatedTime, catalogsRetailBatchRequestItemsItems.lastUpdatedTime);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(attributes, itemId, operation, updateMask, lastUpdatedTime);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CatalogsRetailBatchRequestItemsItems {\n");
+    
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
+    sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

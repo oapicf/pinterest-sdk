@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.model.NonNullableCatalogsCurrency;
-import org.openapitools.model.NonNullableProductAvailabilityType;
+import org.openapitools.model.ProductAvailability;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,9 +21,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Retail product metadata entity")
 @JsonTypeName("CatalogsRetailProductMetadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailProductMetadata   {
-  private NonNullableProductAvailabilityType availability;
+  private ProductAvailability availability;
   private NonNullableCatalogsCurrency currency;
   private String itemGroupId;
   private String itemId;
@@ -35,7 +35,7 @@ public class CatalogsRetailProductMetadata   {
 
   @JsonCreator
   public CatalogsRetailProductMetadata(
-    @JsonProperty(required = true, value = "availability") NonNullableProductAvailabilityType availability,
+    @JsonProperty(required = true, value = "availability") ProductAvailability availability,
     @JsonProperty(required = true, value = "currency") NonNullableCatalogsCurrency currency,
     @JsonProperty(required = true, value = "item_group_id") String itemGroupId,
     @JsonProperty(required = true, value = "item_id") String itemId,
@@ -52,7 +52,7 @@ public class CatalogsRetailProductMetadata   {
 
   /**
    **/
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+  public CatalogsRetailProductMetadata availability(ProductAvailability availability) {
     this.availability = availability;
     return this;
   }
@@ -60,12 +60,12 @@ public class CatalogsRetailProductMetadata   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "availability")
-  @NotNull public NonNullableProductAvailabilityType getAvailability() {
+  @NotNull public ProductAvailability getAvailability() {
     return availability;
   }
 
   @JsonProperty(required = true, value = "availability")
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
+  public void setAvailability(ProductAvailability availability) {
     this.availability = availability;
   }
 
@@ -211,12 +211,8 @@ public class CatalogsRetailProductMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

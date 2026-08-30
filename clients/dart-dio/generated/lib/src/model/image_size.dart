@@ -107,29 +107,33 @@ class _$ImageSizeSerializer implements PrimitiveSerializer<ImageSize> {
         case r'1200x':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ImageDetails),
-          ) as ImageDetails;
+            specifiedType: const FullType.nullable(ImageDetails),
+          ) as ImageDetails?;
+          if (valueDes == null) continue;
           result.n1200x.replace(valueDes);
           break;
         case r'150x150':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ImageDetails),
-          ) as ImageDetails;
+            specifiedType: const FullType.nullable(ImageDetails),
+          ) as ImageDetails?;
+          if (valueDes == null) continue;
           result.n150x150.replace(valueDes);
           break;
         case r'400x300':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ImageDetails),
-          ) as ImageDetails;
+            specifiedType: const FullType.nullable(ImageDetails),
+          ) as ImageDetails?;
+          if (valueDes == null) continue;
           result.n400x300.replace(valueDes);
           break;
         case r'600x':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ImageDetails),
-          ) as ImageDetails;
+            specifiedType: const FullType.nullable(ImageDetails),
+          ) as ImageDetails?;
+          if (valueDes == null) continue;
           result.n600x.replace(valueDes);
           break;
         default:

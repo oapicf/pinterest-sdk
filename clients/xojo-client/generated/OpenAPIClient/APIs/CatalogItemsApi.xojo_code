@@ -11,7 +11,7 @@ Protected Class CatalogItemsApi
 		  // Invokes CatalogItemsApiCallbackHandler.ItemsBatchGetCallback(CatalogsItemsBatch) on completion. 
 		  //
 		  // - GET /catalogs/items/batch/{batch_id}
-		  // - Get a single catalogs items batch owned by the "operating user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a> - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+		  // - Get a single catalogs items batch owned by the "operating user_account". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -141,17 +141,17 @@ Protected Class CatalogItemsApi
 
 
 	#tag Method, Flags = &h0
-		Sub ItemsBatchPost(, itemsBatchPostRequest As OpenAPIClient.Models.ItemsBatchPostRequest, Optional adAccountId As Xoson.O.OptionalString)
+		Sub ItemsBatchPost(, catalogsItemsBatchPostRequest As OpenAPIClient.Models.CatalogsItemsBatchPostRequest, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation items_batch/post
 		  // Operate on item batch
 		  // - 
-		  // - parameter itemsBatchPostRequest: (body) Request object used to create catalogs items in a batch 
+		  // - parameter catalogsItemsBatchPostRequest: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes CatalogItemsApiCallbackHandler.ItemsBatchPostCallback(CatalogsItemsBatch) on completion. 
 		  //
 		  // - POST /catalogs/items/batch
-		  // - This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a> - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+		  // - This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/) - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -164,7 +164,7 @@ Protected Class CatalogItemsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(itemsBatchPostRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(catalogsItemsBatchPostRequest), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
@@ -282,13 +282,13 @@ Protected Class CatalogItemsApi
 		  // Operation items/post
 		  // Get catalogs items (POST)
 		  // - 
-		  // - parameter catalogsItemsRequest: (body) Request object used to get catalogs items 
+		  // - parameter catalogsItemsRequest: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
-		  // Invokes CatalogItemsApiCallbackHandler.ItemsPostCallback(CatalogsItems) on completion. 
+		  // Invokes CatalogItemsApiCallbackHandler.ItemsPostCallback(ItemsPost200Response) on completion. 
 		  //
 		  // - POST /catalogs/items
-		  // - Get the items of the catalog owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a> - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+		  // - Get the items of the catalog owned by the "operation user_account". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -325,7 +325,7 @@ Protected Class CatalogItemsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function ItemsPostPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.CatalogsItems) As Boolean
+		Private Function ItemsPostPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ItemsPost200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -333,7 +333,7 @@ Protected Class CatalogItemsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.CatalogsItems
+			  outData = New OpenAPIClient.Models.ItemsPost200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -386,7 +386,7 @@ Protected Class CatalogItemsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.CatalogsItems
+		  Dim data As OpenAPIClient.Models.ItemsPost200Response
 		  CallbackHandler.ItemsPostCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -400,7 +400,7 @@ Protected Class CatalogItemsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.CatalogsItems
+		  Dim data As OpenAPIClient.Models.ItemsPost200Response
 		  Call ItemsPostPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.ItemsPostCallback(error, data)

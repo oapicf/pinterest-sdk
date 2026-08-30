@@ -7,22 +7,22 @@
     {
       "name": "created_at",
       "type": "string",
-      "doc": ""
+      "doc": "Timestamp of the feed ingestion."
     },
     {
       "name": "feed_id",
       "type": "string",
-      "doc": ""
+      "doc": "Catalog Feed id pertaining to the feed ingestion."
     },
     {
       "name": "id",
       "type": "string",
-      "doc": ""
+      "doc": "Unique identifier of a feed ingestion."
     },
     {
       "name": "status",
       "type": "model.CatalogsFeedProcessingStatus",
-      "doc": ""
+      "doc": "Status of the feed ingestion."
     }
   ]
 

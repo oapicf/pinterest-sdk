@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rejectedLogs** | [**List&lt;IntegrationLogsInvalidLogResponseRejectedLogsInner&gt;**](IntegrationLogsInvalidLogResponseRejectedLogsInner.md) |  |  [optional]
+**rejectedLogs** | [**List&lt;IntegrationLogsInvalidLogResponseRejectedLogsItems&gt;**](IntegrationLogsInvalidLogResponseRejectedLogsItems.md) |  |  [optional]
 
 
 

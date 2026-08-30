@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,31 +14,23 @@ package openapi
 
 
 
+// AdvertiserDefinedEvent - Advertiser defined event
 type AdvertiserDefinedEvent struct {
 
-	// raw string name of the event, usually logged as raw_event_name in our dataset
-	Name string `json:"name,omitempty"`
+	// Standard type mapped to ADE for optimization
+	MappedConversionType ConversionTagTypeOptimal `json:"mapped_conversion_type,omitempty"`
 
-	// standard type mapped to ADE for optimization
-	MappedConversionType *string `json:"mapped_conversion_type,omitempty"`
+	// Raw string name of the event, usually logged as raw_event_name in our dataset
+	Name string `json:"name,omitempty"`
 }
 
-// AssertAdvertiserDefinedEventRequired checks if the required fields are not zero-ed
+// AssertAdvertiserDefinedEventRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdvertiserDefinedEventRequired(obj AdvertiserDefinedEvent) error {
-	if obj.MappedConversionType != nil {
-		if err := AssertstringRequired(*obj.MappedConversionType); err != nil {
-			return err
-		}
-	}
 	return nil
 }
 
 // AssertAdvertiserDefinedEventConstraints checks if the values respects the defined constraints
 func AssertAdvertiserDefinedEventConstraints(obj AdvertiserDefinedEvent) error {
-    if obj.MappedConversionType != nil {
-     	if err := AssertstringConstraints(*obj.MappedConversionType); err != nil {
-     		return err
-     	}
-    }
 	return nil
 }

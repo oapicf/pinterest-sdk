@@ -5,12 +5,13 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...CatalogsProductGroupCurrencyCriteria.fields(`${keyPrefix}CURRENCY`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'CURRENCY': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CURRENCY`)),
+            'CURRENCY': utils.removeIfEmpty(CatalogsProductGroupCurrencyCriteria.mapping(bundle, `${keyPrefix}CURRENCY`)),
         }
     },
 }

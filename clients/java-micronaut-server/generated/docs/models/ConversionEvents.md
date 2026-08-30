@@ -2,7 +2,7 @@
 
 # ConversionEvents
 
-A list of events (one or more) encapsulated by a data object.
+Conversion events.
 
 The class is defined in **[ConversionEvents.java](../../src/main/java/org/openapitools/model/ConversionEvents.java)**
 
@@ -10,7 +10,11 @@ The class is defined in **[ConversionEvents.java](../../src/main/java/org/openap
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [`List&lt;ConversionEventsDataInner&gt;`](ConversionEventsDataInner.md) |  | 
+**events** | [`List&lt;ConversionApiResponseEventsItems&gt;`](ConversionApiResponseEventsItems.md) | Specific messages for each event received. The order will match the order in which the events were received in the request. |  [readonly property]
+**numEventsProcessed** | `Integer` | Number of events that were successfully processed from the events. |  [readonly property]
+**numEventsReceived** | `Integer` | Total number of events received in the request. |  [readonly property]
+
+
 
 
 

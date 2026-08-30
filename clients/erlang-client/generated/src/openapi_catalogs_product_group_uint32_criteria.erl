@@ -6,7 +6,7 @@
 
 -type openapi_catalogs_product_group_uint32_criteria() ::
     #{ 'negated' => boolean(),
-       'operator' := binary(),
+       'operator' := openapi_numeric_filter_operator_type:openapi_numeric_filter_operator_type(),
        'value' := integer()
      }.
 

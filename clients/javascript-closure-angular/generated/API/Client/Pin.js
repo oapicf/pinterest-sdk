@@ -1,16 +1,16 @@
 goog.provide('API.Client.Pin');
 
 /**
- * Pin model containing properties related to a Pinterest Pin.
  * @record
  */
 API.Client.Pin = function() {}
 
 /**
- * @type {!string}
+ * AI disclosure declarations the creator has made about this Pin.
+ * @type {!API.Client.AiDisclosures}
  * @export
  */
-API.Client.Pin.prototype.altText;
+API.Client.Pin.prototype.aiDisclosures;
 
 /**
  * The board to which this Pin belongs.
@@ -45,12 +45,6 @@ API.Client.Pin.prototype.createdAt;
 API.Client.Pin.prototype.creativeType;
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.Pin.prototype.description;
-
-/**
  * Dominant pin color. Hex number, e.g. `#6E7874`.
  * @type {!string}
  * @export
@@ -78,17 +72,18 @@ API.Client.Pin.prototype.id;
 API.Client.Pin.prototype.isOwner;
 
 /**
+ * Whether the Pin is a product Pin.
+ * @type {!boolean}
+ * @export
+ */
+API.Client.Pin.prototype.isProduct;
+
+/**
  * Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
  * @type {!boolean}
  * @export
  */
 API.Client.Pin.prototype.isStandard;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.Pin.prototype.link;
 
 /**
  * @type {!API.Client.PinMedia}
@@ -109,6 +104,24 @@ API.Client.Pin.prototype.parentPinId;
  * @export
  */
 API.Client.Pin.prototype.pinMetrics;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.Pin.prototype.altText;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.Pin.prototype.description;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.Pin.prototype.link;
 
 /**
  * @type {!string}

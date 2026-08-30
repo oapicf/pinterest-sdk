@@ -4,6 +4,23 @@
 #include "advanced_auction_items_submit_record.h"
 
 
+char* advanced_auction_items_submit_record_operation_ToString(pinterest_rest_api_advanced_auction_items_submit_record_OPERATION_e operation) {
+    char* operationArray[] =  { "NULL", "DELETE" };
+    return operationArray[operation];
+}
+
+pinterest_rest_api_advanced_auction_items_submit_record_OPERATION_e advanced_auction_items_submit_record_operation_FromString(char* operation){
+    int stringToReturn = 0;
+    char *operationArray[] =  { "NULL", "DELETE" };
+    size_t sizeofArray = sizeof(operationArray) / sizeof(operationArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(operation, operationArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 char* advanced_auction_items_submit_record_update_mask_ToString(pinterest_rest_api_advanced_auction_items_submit_record__e update_mask) {
     char *update_maskArray[] =  { "NULL", "BID", "APP_TYPE_BID_MULTIPLIER_SET", "PLACEMENT_BID_MULTIPLIER_SET" };
     return update_maskArray[update_mask - 1];
@@ -23,48 +40,51 @@ pinterest_rest_api_advanced_auction_items_submit_record__e advanced_auction_item
 }
 
 static advanced_auction_items_submit_record_t *advanced_auction_items_submit_record_create_internal(
-    pinterest_rest_api_advanced_auction_operation__e operation,
+    advanced_auction_bid_options_t *bid_options,
     pinterest_rest_api_country__e country,
+    list_t *errors,
     char *item_id,
     pinterest_rest_api_language__e language,
-    advanced_auction_bid_options_t *bid_options,
-    list_t *errors,
+    pinterest_rest_api_advanced_auction_items_submit_record_OPERATION_e operation,
     list_t *update_mask
     ) {
     advanced_auction_items_submit_record_t *advanced_auction_items_submit_record_local_var = malloc(sizeof(advanced_auction_items_submit_record_t));
     if (!advanced_auction_items_submit_record_local_var) {
         return NULL;
     }
-    advanced_auction_items_submit_record_local_var->operation = operation;
+    memset(advanced_auction_items_submit_record_local_var, 0, sizeof(advanced_auction_items_submit_record_t));
+    advanced_auction_items_submit_record_local_var->_library_owned = 1;
+    advanced_auction_items_submit_record_local_var->bid_options = bid_options;
     advanced_auction_items_submit_record_local_var->country = country;
+    advanced_auction_items_submit_record_local_var->errors = errors;
     advanced_auction_items_submit_record_local_var->item_id = item_id;
     advanced_auction_items_submit_record_local_var->language = language;
-    advanced_auction_items_submit_record_local_var->bid_options = bid_options;
-    advanced_auction_items_submit_record_local_var->errors = errors;
+    advanced_auction_items_submit_record_local_var->operation = operation;
     advanced_auction_items_submit_record_local_var->update_mask = update_mask;
-
-    advanced_auction_items_submit_record_local_var->_library_owned = 1;
     return advanced_auction_items_submit_record_local_var;
 }
 
 __attribute__((deprecated)) advanced_auction_items_submit_record_t *advanced_auction_items_submit_record_create(
-    pinterest_rest_api_advanced_auction_operation__e operation,
+    advanced_auction_bid_options_t *bid_options,
     pinterest_rest_api_country__e country,
+    list_t *errors,
     char *item_id,
     pinterest_rest_api_language__e language,
-    advanced_auction_bid_options_t *bid_options,
-    list_t *errors,
+    pinterest_rest_api_advanced_auction_items_submit_record_OPERATION_e operation,
     list_t *update_mask
     ) {
-    return advanced_auction_items_submit_record_create_internal (
-        operation,
+    advanced_auction_items_submit_record_t *result = advanced_auction_items_submit_record_create_internal (
+        bid_options,
         country,
+        errors,
         item_id,
         language,
-        bid_options,
-        errors,
+        operation,
         update_mask
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void advanced_auction_items_submit_record_free(advanced_auction_items_submit_record_t *advanced_auction_items_submit_record) {
@@ -76,10 +96,6 @@ void advanced_auction_items_submit_record_free(advanced_auction_items_submit_rec
         return ;
     }
     listEntry_t *listEntry;
-    if (advanced_auction_items_submit_record->item_id) {
-        free(advanced_auction_items_submit_record->item_id);
-        advanced_auction_items_submit_record->item_id = NULL;
-    }
     if (advanced_auction_items_submit_record->bid_options) {
         advanced_auction_bid_options_free(advanced_auction_items_submit_record->bid_options);
         advanced_auction_items_submit_record->bid_options = NULL;
@@ -90,6 +106,10 @@ void advanced_auction_items_submit_record_free(advanced_auction_items_submit_rec
         }
         list_freeList(advanced_auction_items_submit_record->errors);
         advanced_auction_items_submit_record->errors = NULL;
+    }
+    if (advanced_auction_items_submit_record->item_id) {
+        free(advanced_auction_items_submit_record->item_id);
+        advanced_auction_items_submit_record->item_id = NULL;
     }
     if (advanced_auction_items_submit_record->update_mask) {
         list_ForEach(listEntry, advanced_auction_items_submit_record->update_mask) {
@@ -104,17 +124,17 @@ void advanced_auction_items_submit_record_free(advanced_auction_items_submit_rec
 cJSON *advanced_auction_items_submit_record_convertToJSON(advanced_auction_items_submit_record_t *advanced_auction_items_submit_record) {
     cJSON *item = cJSON_CreateObject();
 
-    // advanced_auction_items_submit_record->operation
-    if (pinterest_rest_api_advanced_auction_operation__NULL == advanced_auction_items_submit_record->operation) {
+    // advanced_auction_items_submit_record->bid_options
+    if (!advanced_auction_items_submit_record->bid_options) {
         goto fail;
     }
-    cJSON *operation_local_JSON = advanced_auction_operation_convertToJSON(advanced_auction_items_submit_record->operation);
-    if(operation_local_JSON == NULL) {
-        goto fail; // custom
+    cJSON *bid_options_local_JSON = advanced_auction_bid_options_convertToJSON(advanced_auction_items_submit_record->bid_options);
+    if(bid_options_local_JSON == NULL) {
+    goto fail; //model
     }
-    cJSON_AddItemToObject(item, "operation", operation_local_JSON);
+    cJSON_AddItemToObject(item, "bid_options", bid_options_local_JSON);
     if(item->child == NULL) {
-        goto fail;
+    goto fail;
     }
 
 
@@ -129,6 +149,26 @@ cJSON *advanced_auction_items_submit_record_convertToJSON(advanced_auction_items
     cJSON_AddItemToObject(item, "country", country_local_JSON);
     if(item->child == NULL) {
         goto fail;
+    }
+
+
+    // advanced_auction_items_submit_record->errors
+    if(advanced_auction_items_submit_record->errors) {
+    cJSON *errors = cJSON_AddArrayToObject(item, "errors");
+    if(errors == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *errorsListEntry;
+    if (advanced_auction_items_submit_record->errors) {
+    list_ForEach(errorsListEntry, advanced_auction_items_submit_record->errors) {
+    cJSON *itemLocal = advanced_auction_operation_error_convertToJSON(errorsListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(errors, itemLocal);
+    }
+    }
     }
 
 
@@ -155,37 +195,13 @@ cJSON *advanced_auction_items_submit_record_convertToJSON(advanced_auction_items
     }
 
 
-    // advanced_auction_items_submit_record->bid_options
-    if (!advanced_auction_items_submit_record->bid_options) {
+    // advanced_auction_items_submit_record->operation
+    if (pinterest_rest_api_advanced_auction_items_submit_record_OPERATION_NULL == advanced_auction_items_submit_record->operation) {
         goto fail;
     }
-    cJSON *bid_options_local_JSON = advanced_auction_bid_options_convertToJSON(advanced_auction_items_submit_record->bid_options);
-    if(bid_options_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "bid_options", bid_options_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-
-
-    // advanced_auction_items_submit_record->errors
-    if(advanced_auction_items_submit_record->errors) {
-    cJSON *errors = cJSON_AddArrayToObject(item, "errors");
-    if(errors == NULL) {
-    goto fail; //nonprimitive container
-    }
-
-    listEntry_t *errorsListEntry;
-    if (advanced_auction_items_submit_record->errors) {
-    list_ForEach(errorsListEntry, advanced_auction_items_submit_record->errors) {
-    cJSON *itemLocal = advanced_auction_operation_error_convertToJSON(errorsListEntry->data);
-    if(itemLocal == NULL) {
-    goto fail;
-    }
-    cJSON_AddItemToArray(errors, itemLocal);
-    }
-    }
+    if(cJSON_AddStringToObject(item, "operation", advanced_auction_items_submit_record_operation_ToString(advanced_auction_items_submit_record->operation)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -221,35 +237,34 @@ advanced_auction_items_submit_record_t *advanced_auction_items_submit_record_par
 
     advanced_auction_items_submit_record_t *advanced_auction_items_submit_record_local_var = NULL;
 
-    // define the local variable for advanced_auction_items_submit_record->operation
-    pinterest_rest_api_advanced_auction_operation__e operation_local_nonprim = 0;
+    // define the local variable for advanced_auction_items_submit_record->bid_options
+    advanced_auction_bid_options_t *bid_options_local_nonprim = NULL;
 
     // define the local variable for advanced_auction_items_submit_record->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
 
-    // define the local variable for advanced_auction_items_submit_record->language
-    pinterest_rest_api_language__e language_local_nonprim = 0;
-
-    // define the local variable for advanced_auction_items_submit_record->bid_options
-    advanced_auction_bid_options_t *bid_options_local_nonprim = NULL;
-
     // define the local list for advanced_auction_items_submit_record->errors
     list_t *errorsList = NULL;
+
+    char *item_id_local_str = NULL;
+
+    // define the local variable for advanced_auction_items_submit_record->language
+    pinterest_rest_api_language__e language_local_nonprim = 0;
 
     // define the local list for advanced_auction_items_submit_record->update_mask
     list_t *update_maskList = NULL;
 
-    // advanced_auction_items_submit_record->operation
-    cJSON *operation = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_recordJSON, "operation");
-    if (cJSON_IsNull(operation)) {
-        operation = NULL;
+    // advanced_auction_items_submit_record->bid_options
+    cJSON *bid_options = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_recordJSON, "bid_options");
+    if (cJSON_IsNull(bid_options)) {
+        bid_options = NULL;
     }
-    if (!operation) {
+    if (!bid_options) {
         goto end;
     }
 
     
-    operation_local_nonprim = advanced_auction_operation_parseFromJSON(operation); //custom
+    bid_options_local_nonprim = advanced_auction_bid_options_parseFromJSON(bid_options); //nonprimitive
 
     // advanced_auction_items_submit_record->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_recordJSON, "country");
@@ -262,6 +277,30 @@ advanced_auction_items_submit_record_t *advanced_auction_items_submit_record_par
 
     
     country_local_nonprim = country_parseFromJSON(country); //custom
+
+    // advanced_auction_items_submit_record->errors
+    cJSON *errors = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_recordJSON, "errors");
+    if (cJSON_IsNull(errors)) {
+        errors = NULL;
+    }
+    if (errors) { 
+    cJSON *errors_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(errors)){
+        goto end; //nonprimitive container
+    }
+
+    errorsList = list_createList();
+
+    cJSON_ArrayForEach(errors_local_nonprimitive,errors )
+    {
+        if(!cJSON_IsObject(errors_local_nonprimitive)){
+            goto end;
+        }
+        advanced_auction_operation_error_t *errorsItem = advanced_auction_operation_error_parseFromJSON(errors_local_nonprimitive);
+
+        list_addElement(errorsList, errorsItem);
+    }
+    }
 
     // advanced_auction_items_submit_record->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_recordJSON, "item_id");
@@ -290,41 +329,22 @@ advanced_auction_items_submit_record_t *advanced_auction_items_submit_record_par
     
     language_local_nonprim = language_parseFromJSON(language); //custom
 
-    // advanced_auction_items_submit_record->bid_options
-    cJSON *bid_options = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_recordJSON, "bid_options");
-    if (cJSON_IsNull(bid_options)) {
-        bid_options = NULL;
+    // advanced_auction_items_submit_record->operation
+    cJSON *operation = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_recordJSON, "operation");
+    if (cJSON_IsNull(operation)) {
+        operation = NULL;
     }
-    if (!bid_options) {
+    if (!operation) {
         goto end;
     }
 
+    pinterest_rest_api_advanced_auction_items_submit_record_OPERATION_e operationVariable;
     
-    bid_options_local_nonprim = advanced_auction_bid_options_parseFromJSON(bid_options); //nonprimitive
-
-    // advanced_auction_items_submit_record->errors
-    cJSON *errors = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_recordJSON, "errors");
-    if (cJSON_IsNull(errors)) {
-        errors = NULL;
-    }
-    if (errors) { 
-    cJSON *errors_local_nonprimitive = NULL;
-    if(!cJSON_IsArray(errors)){
-        goto end; //nonprimitive container
-    }
-
-    errorsList = list_createList();
-
-    cJSON_ArrayForEach(errors_local_nonprimitive,errors )
+    if(!cJSON_IsString(operation))
     {
-        if(!cJSON_IsObject(errors_local_nonprimitive)){
-            goto end;
-        }
-        advanced_auction_operation_error_t *errorsItem = advanced_auction_operation_error_parseFromJSON(errors_local_nonprimitive);
-
-        list_addElement(errorsList, errorsItem);
+    goto end; //Enum
     }
-    }
+    operationVariable = advanced_auction_items_submit_record_operation_FromString(operation->valuestring);
 
     // advanced_auction_items_submit_record->update_mask
     cJSON *update_mask = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_recordJSON, "update_mask");
@@ -354,30 +374,30 @@ advanced_auction_items_submit_record_t *advanced_auction_items_submit_record_par
     }
 
 
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
     advanced_auction_items_submit_record_local_var = advanced_auction_items_submit_record_create_internal (
-        operation_local_nonprim,
-        country_local_nonprim,
-        strdup(item_id->valuestring),
-        language_local_nonprim,
         bid_options_local_nonprim,
+        country_local_nonprim,
         errors ? errorsList : NULL,
+        item_id_local_str,
+        language_local_nonprim,
+        operationVariable,
         update_maskList
         );
 
+    if (!advanced_auction_items_submit_record_local_var) {
+        goto end;
+    }
+
     return advanced_auction_items_submit_record_local_var;
 end:
-    if (operation_local_nonprim) {
-        operation_local_nonprim = 0;
-    }
-    if (country_local_nonprim) {
-        country_local_nonprim = 0;
-    }
-    if (language_local_nonprim) {
-        language_local_nonprim = 0;
-    }
     if (bid_options_local_nonprim) {
         advanced_auction_bid_options_free(bid_options_local_nonprim);
         bid_options_local_nonprim = NULL;
+    }
+    if (country_local_nonprim) {
+        country_local_nonprim = 0;
     }
     if (errorsList) {
         listEntry_t *listEntry = NULL;
@@ -387,6 +407,13 @@ end:
         }
         list_freeList(errorsList);
         errorsList = NULL;
+    }
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
+    }
+    if (language_local_nonprim) {
+        language_local_nonprim = 0;
     }
     if (update_maskList) {
         listEntry_t *listEntry = NULL;

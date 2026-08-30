@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"createdAt": @"created_at", @"_id": @"id", @"updatedAt": @"updated_at", @"catalogId": @"catalog_id", @"catalogType": @"catalog_type", @"credentials": @"credentials", @"defaultCountry": @"default_country", @"defaultCurrency": @"default_currency", @"defaultLocale": @"default_locale", @"format": @"format", @"location": @"location", @"name": @"name", @"preferredProcessingSchedule": @"preferred_processing_schedule", @"status": @"status" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogId": @"catalog_id", @"catalogType": @"catalog_type", @"createdAt": @"created_at", @"credentials": @"credentials", @"defaultCountry": @"default_country", @"defaultCurrency": @"default_currency", @"defaultLocale": @"default_locale", @"format": @"format", @"_id": @"id", @"location": @"location", @"name": @"name", @"preferredProcessingSchedule": @"preferred_processing_schedule", @"status": @"status", @"updatedAt": @"updated_at" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[];
+  NSArray *optionalProperties = @[@"credentials", @"defaultCurrency", @"preferredProcessingSchedule", ];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -1,10 +1,10 @@
 package apimodels;
 
 import apimodels.ActionType;
+import apimodels.BidFloorObjectiveType;
 import apimodels.Country;
 import apimodels.CreativeType;
 import apimodels.Currency;
-import apimodels.ObjectiveType;
 import apimodels.OptimizationGoalMetadata;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,9 +16,9 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * BidFloorSpec
+ * Bid floor specification for a given campaign configuration.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BidFloorSpec   {
   @JsonProperty("billable_event")
@@ -46,7 +46,7 @@ public class BidFloorSpec   {
   @JsonProperty("objective_type")
   @Valid
 
-  private ObjectiveType objectiveType;
+  private BidFloorObjectiveType objectiveType;
 
   @JsonProperty("optimization_goal_metadata")
   @Valid
@@ -59,7 +59,7 @@ public class BidFloorSpec   {
   }
 
    /**
-   * Get billableEvent
+   * Ad group billable event type.
    * @return billableEvent
   **/
   public ActionType getBillableEvent() {
@@ -84,7 +84,7 @@ public class BidFloorSpec   {
   }
 
    /**
-   * Get countries
+   * List of ISO 3166-1 alpha-2 country codes.
    * @return countries
   **/
   public List<Country> getCountries() {
@@ -101,7 +101,7 @@ public class BidFloorSpec   {
   }
 
    /**
-   * Get creativeType
+   * Creative type for the bid floor request.
    * @return creativeType
   **/
   public CreativeType getCreativeType() {
@@ -118,7 +118,7 @@ public class BidFloorSpec   {
   }
 
    /**
-   * Get currency
+   * Currency for the bid floor value.
    * @return currency
   **/
   public Currency getCurrency() {
@@ -129,20 +129,20 @@ public class BidFloorSpec   {
     this.currency = currency;
   }
 
-  public BidFloorSpec objectiveType(ObjectiveType objectiveType) {
+  public BidFloorSpec objectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
 
    /**
-   * Get objectiveType
+   * Campaign objective type.
    * @return objectiveType
   **/
-  public ObjectiveType getObjectiveType() {
+  public BidFloorObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
@@ -152,7 +152,7 @@ public class BidFloorSpec   {
   }
 
    /**
-   * Get optimizationGoalMetadata
+   * Optimization goal metadata.
    * @return optimizationGoalMetadata
   **/
   public OptimizationGoalMetadata getOptimizationGoalMetadata() {
@@ -207,10 +207,7 @@ public class BidFloorSpec   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

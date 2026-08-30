@@ -95,3 +95,9 @@ API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.MEDIA_TYPE;
  */
 API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.TITLE_KEYWORDS;
 
+/**
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsProductGroupFilterKeys.prototype.LINK;
+

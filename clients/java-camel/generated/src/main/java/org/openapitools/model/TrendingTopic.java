@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -13,23 +14,25 @@ import java.util.Map;
 import org.openapitools.model.TrendingPin;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Individual trending topic within an interest category
  */
 
 @Schema(name = "TrendingTopic", description = "Individual trending topic within an interest category")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendingTopic {
 
   private String description;
+
+  private String id;
 
   private Integer percentGrowthMom;
 
@@ -54,9 +57,9 @@ public class TrendingTopic {
   /**
    * Constructor with only required parameters
    */
-  public TrendingTopic(String description, Integer percentGrowthMom, List<@Valid TrendingPin> pins, List<String> relatedInterests, List<String> relatedSearches, Map<String, BigDecimal> timeSeries, String title) {
+  public TrendingTopic(String description, String id, List<@Valid TrendingPin> pins, List<String> relatedInterests, List<String> relatedSearches, Map<String, BigDecimal> timeSeries, String title) {
     this.description = description;
-    this.percentGrowthMom = percentGrowthMom;
+    this.id = id;
     this.pins = pins;
     this.relatedInterests = relatedInterests;
     this.relatedSearches = relatedSearches;
@@ -84,6 +87,26 @@ public class TrendingTopic {
     this.description = description;
   }
 
+  public TrendingTopic id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Unique identifier for the trending topic
+   * @return id
+   */
+  @NotNull 
+  @Schema(name = "id", description = "Unique identifier for the trending topic", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   public TrendingTopic percentGrowthMom(Integer percentGrowthMom) {
     this.percentGrowthMom = percentGrowthMom;
     return this;
@@ -93,8 +116,8 @@ public class TrendingTopic {
    * Month-over-month growth percentage
    * @return percentGrowthMom
    */
-  @NotNull 
-  @Schema(name = "percent_growth_mom", description = "Month-over-month growth percentage", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "percent_growth_mom", description = "Month-over-month growth percentage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("percent_growth_mom")
   public Integer getPercentGrowthMom() {
     return percentGrowthMom;
@@ -246,6 +269,7 @@ public class TrendingTopic {
     }
     TrendingTopic trendingTopic = (TrendingTopic) o;
     return Objects.equals(this.description, trendingTopic.description) &&
+        Objects.equals(this.id, trendingTopic.id) &&
         Objects.equals(this.percentGrowthMom, trendingTopic.percentGrowthMom) &&
         Objects.equals(this.pins, trendingTopic.pins) &&
         Objects.equals(this.relatedInterests, trendingTopic.relatedInterests) &&
@@ -256,7 +280,7 @@ public class TrendingTopic {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, percentGrowthMom, pins, relatedInterests, relatedSearches, timeSeries, title);
+    return Objects.hash(description, id, percentGrowthMom, pins, relatedInterests, relatedSearches, timeSeries, title);
   }
 
   @Override
@@ -264,6 +288,7 @@ public class TrendingTopic {
     StringBuilder sb = new StringBuilder();
     sb.append("class TrendingTopic {\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    percentGrowthMom: ").append(toIndentedString(percentGrowthMom)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("    relatedInterests: ").append(toIndentedString(relatedInterests)).append("\n");
@@ -279,10 +304,7 @@ public class TrendingTopic {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

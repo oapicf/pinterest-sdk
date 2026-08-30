@@ -7,19 +7,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { FilterOperatorType } from './filterOperatorType';
 
 
 export interface CatalogsProductGroupFilterOperatorTypeCriteria { 
-    filter_operator_type?: CatalogsProductGroupFilterOperatorTypeCriteria.FilterOperatorTypeEnum;
+    filter_operator_type?: FilterOperatorType;
     negated?: boolean;
     values: Array<string>;
 }
 export namespace CatalogsProductGroupFilterOperatorTypeCriteria {
-    export const FilterOperatorTypeEnum = {
-        Is: 'IS',
-        Contains: 'CONTAINS'
-    } as const;
-    export type FilterOperatorTypeEnum = typeof FilterOperatorTypeEnum[keyof typeof FilterOperatorTypeEnum];
 }
 
 

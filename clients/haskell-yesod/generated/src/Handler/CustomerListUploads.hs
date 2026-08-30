@@ -7,29 +7,29 @@ import           Import
 
 -- | Create customer list upload
 --
--- &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
+-- Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 -- operationId: customerListUploads/create
-postAdAccountsByTextCustomerListsByTextUploadsR :: Text -- ^ Unique identifier of an ad account.
-                                                -> Text -- ^ Unique identifier of a customer list
+postAdAccountsByTextCustomerListsByTextUploadsR :: Text -- ^ 
+                                                -> Text -- ^ Customer list ID.
                                                 -> Handler Value
 postAdAccountsByTextCustomerListsByTextUploadsR adAccountId customerListId = notImplemented
 
 -- | Get customer list upload
 --
--- &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
+-- Get the metadata for a given upload by its ID.
 -- operationId: customerListUploads/get
-getAdAccountsByTextCustomerListsByTextUploadsByTextR :: Text -- ^ Unique identifier of an ad account.
-                                                     -> Text -- ^ Unique identifier of a customer list
-                                                     -> Text -- ^ Unique identifier of a customer list upload
+getAdAccountsByTextCustomerListsByTextUploadsByTextR :: Text -- ^ 
+                                                     -> Text -- ^ Customer list ID.
+                                                     -> Text -- ^ Customer List Upload ID.
                                                      -> Handler Value
 getAdAccountsByTextCustomerListsByTextUploadsByTextR adAccountId customerListId customerListUploadId = notImplemented
 
 -- | Run customer list upload
 --
--- &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
+-- Begin processing a customer list upload.
 -- operationId: customerListUploads/run
-postAdAccountsByTextCustomerListsByTextUploadsByTextRunR :: Text -- ^ Unique identifier of an ad account.
-                                                         -> Text -- ^ Unique identifier of a customer list
-                                                         -> Text -- ^ Unique identifier of a customer list upload
+postAdAccountsByTextCustomerListsByTextUploadsByTextRunR :: Text -- ^ 
+                                                         -> Text -- ^ Customer list ID.
+                                                         -> Text -- ^ Customer List Upload ID.
                                                          -> Handler Value
 postAdAccountsByTextCustomerListsByTextUploadsByTextRunR adAccountId customerListId customerListUploadId = notImplemented

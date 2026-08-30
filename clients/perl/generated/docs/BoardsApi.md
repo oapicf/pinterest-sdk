@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 
 # **board_sections_create**
-> BoardSection board_sections_create(board_id => $board_id, board_section => $board_section, ad_account_id => $ad_account_id)
+> BoardSection board_sections_create(board_id => $board_id, board_section_create => $board_section_create, ad_account_id => $ad_account_id)
 
 Create board section
 
@@ -40,11 +40,11 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 );
 
 my $board_id = "board_id_example"; # string | Unique identifier of a board.
-my $board_section = WWW::OpenAPIClient::Object::BoardSection->new(); # BoardSection | Create a board section.
+my $board_section_create = WWW::OpenAPIClient::Object::BoardSectionCreate->new(); # BoardSectionCreate | 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    my $result = $api_instance->board_sections_create(board_id => $board_id, board_section => $board_section, ad_account_id => $ad_account_id);
+    my $result = $api_instance->board_sections_create(board_id => $board_id, board_section_create => $board_section_create, ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -57,7 +57,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **string**| Unique identifier of a board. | 
- **board_section** | [**BoardSection**](BoardSection.md)| Create a board section. | 
+ **board_section_create** | [**BoardSectionCreate**](BoardSectionCreate.md)|  | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **board_sections_delete**
-> board_sections_delete(board_id => $board_id, section_id => $section_id, ad_account_id => $ad_account_id)
+> BoardSection board_sections_delete(board_id => $board_id, section_id => $section_id, ad_account_id => $ad_account_id)
 
 Delete board section
 
@@ -97,7 +97,8 @@ my $section_id = "section_id_example"; # string | Unique identifier of a board s
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    $api_instance->board_sections_delete(board_id => $board_id, section_id => $section_id, ad_account_id => $ad_account_id);
+    my $result = $api_instance->board_sections_delete(board_id => $board_id, section_id => $section_id, ad_account_id => $ad_account_id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling BoardsApi->board_sections_delete: $@\n";
@@ -114,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -149,7 +150,7 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 my $board_id = "board_id_example"; # string | Unique identifier of a board.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
     my $result = $api_instance->board_sections_list(board_id => $board_id, ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size);
@@ -167,7 +168,7 @@ Name | Type | Description  | Notes
  **board_id** | **string**| Unique identifier of a board. | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -207,7 +208,7 @@ my $board_id = "board_id_example"; # string | Unique identifier of a board.
 my $section_id = "section_id_example"; # string | Unique identifier of a board section.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
     my $result = $api_instance->board_sections_list_pins(board_id => $board_id, section_id => $section_id, ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size);
@@ -226,7 +227,7 @@ Name | Type | Description  | Notes
  **section_id** | **string**| Unique identifier of a board section. | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -244,7 +245,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **board_sections_update**
-> BoardSection board_sections_update(board_id => $board_id, section_id => $section_id, board_section => $board_section, ad_account_id => $ad_account_id)
+> BoardSection board_sections_update(board_id => $board_id, section_id => $section_id, board_section_update_with_required_body => $board_section_update_with_required_body, ad_account_id => $ad_account_id)
 
 Update board section
 
@@ -262,11 +263,11 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 
 my $board_id = "board_id_example"; # string | Unique identifier of a board.
 my $section_id = "section_id_example"; # string | Unique identifier of a board section.
-my $board_section = WWW::OpenAPIClient::Object::BoardSection->new(); # BoardSection | Update a board section.
+my $board_section_update_with_required_body = WWW::OpenAPIClient::Object::BoardSectionUpdateWithRequiredBody->new(); # BoardSectionUpdateWithRequiredBody | 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    my $result = $api_instance->board_sections_update(board_id => $board_id, section_id => $section_id, board_section => $board_section, ad_account_id => $ad_account_id);
+    my $result = $api_instance->board_sections_update(board_id => $board_id, section_id => $section_id, board_section_update_with_required_body => $board_section_update_with_required_body, ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -280,7 +281,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **string**| Unique identifier of a board. | 
  **section_id** | **string**| Unique identifier of a board section. | 
- **board_section** | [**BoardSection**](BoardSection.md)| Update a board section. | 
+ **board_section_update_with_required_body** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md)|  | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -352,7 +353,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_delete**
-> boards_delete(board_id => $board_id, ad_account_id => $ad_account_id)
+> Board boards_delete(board_id => $board_id, ad_account_id => $ad_account_id)
 
 Delete board
 
@@ -372,7 +373,8 @@ my $board_id = "board_id_example"; # string |
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    $api_instance->boards_delete(board_id => $board_id, ad_account_id => $ad_account_id);
+    my $result = $api_instance->boards_delete(board_id => $board_id, ad_account_id => $ad_account_id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling BoardsApi->boards_delete: $@\n";
@@ -388,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -512,7 +514,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_list_pins**
-> BoardsListPins200Response boards_list_pins(board_id => $board_id, bookmark => $bookmark, page_size => $page_size, creative_types => $creative_types, ad_account_id => $ad_account_id, pin_metrics => $pin_metrics)
+> BoardsListPins200Response boards_list_pins(board_id => $board_id, creative_types => $creative_types, ad_account_id => $ad_account_id, pin_metrics => $pin_metrics, bookmark => $bookmark, page_size => $page_size)
 
 List Pins on board
 
@@ -531,14 +533,14 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 );
 
 my $board_id = "board_id_example"; # string | Unique identifier of a board.
-my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $creative_types = [(new WWW::OpenAPIClient.CreativeType())]; # ARRAY[CreativeType] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $pin_metrics = false; # boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->boards_list_pins(board_id => $board_id, bookmark => $bookmark, page_size => $page_size, creative_types => $creative_types, ad_account_id => $ad_account_id, pin_metrics => $pin_metrics);
+    my $result = $api_instance->boards_list_pins(board_id => $board_id, creative_types => $creative_types, ad_account_id => $ad_account_id, pin_metrics => $pin_metrics, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -551,11 +553,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **string**| Unique identifier of a board. | 
- **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creative_types** | [**ARRAY[CreativeType]**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
  **pin_metrics** | **boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

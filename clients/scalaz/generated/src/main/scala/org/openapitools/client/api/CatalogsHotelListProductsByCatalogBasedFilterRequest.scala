@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CatalogsHotelListProductsByCatalogBasedFilterRequest._
 
 case class CatalogsHotelListProductsByCatalogBasedFilterRequest (
-  /* Catalog id pertaining to the hotel product group. */
+  /* Catalog ID pertaining to the product group. */
   catalogId: String,
 catalogType: CatalogType,
 filters: CatalogsHotelProductGroupFilters)

@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Sort metric for top pins analytics.",
+  "name": "TopPinsSortBy",
+  "symbols": [
+    "ENGAGEMENT",
+    "SAVE",
+    "IMPRESSION",
+    "OUTBOUND_CLICK",
+    "PIN_CLICK"
+  ]
+}

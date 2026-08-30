@@ -5,19 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdditionalId1** | Pointer to **string** |  | [optional] 
-**ConnectedAdvertiserId** | Pointer to **string** |  | [optional] [readonly] 
+**ConnectedAdvertiserId** | Pointer to **string** |  | [optional] 
 **ConnectedLbaId** | Pointer to **string** |  | [optional] 
 **ConnectedMerchantId** | Pointer to **string** |  | [optional] 
 **ConnectedTagId** | Pointer to **string** |  | [optional] 
 **ConnectedUserId** | Pointer to **string** |  | [optional] [readonly] 
-**CreatedTimestamp** | Pointer to **float32** |  | [optional] 
-**ExternalBusinessId** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
+**CreatedTimestamp** | Pointer to **float32** |  | [optional] [readonly] 
+**ExternalBusinessId** | Pointer to **string** | External business ID for the integration. | [optional] 
+**Id** | Pointer to **string** |  | [optional] [readonly] 
 **PartnerAccessTokenExpiry** | Pointer to **float32** |  | [optional] 
 **PartnerMetadata** | Pointer to **string** |  | [optional] 
 **PartnerRefreshTokenExpiry** | Pointer to **float32** |  | [optional] 
 **Scopes** | Pointer to **string** |  | [optional] 
-**UpdatedTimestamp** | Pointer to **float32** |  | [optional] 
+**UpdatedTimestamp** | Pointer to **float32** |  | [optional] [readonly] 
 
 ## Methods
 

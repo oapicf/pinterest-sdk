@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// PromotionType : Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.
+// PromotionType : Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
 type PromotionType string
 
 // List of PromotionType
@@ -119,8 +119,8 @@ func NewPromotionTypeFromValue(v string) (PromotionType, error) {
 }
 
 
-
-// AssertPromotionTypeRequired checks if the required fields are not zero-ed
+// AssertPromotionTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertPromotionTypeRequired(obj PromotionType) error {
 	return nil
 }

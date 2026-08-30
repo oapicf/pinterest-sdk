@@ -13,7 +13,7 @@ import { TargetingSpecShoppingRetargeting } from './targetingSpecShoppingRetarge
 export interface TargetingSpecOperationShoppingRetargeting { 
     field: TargetingSpecOperationShoppingRetargeting.FieldEnum;
     operation: TargetingSpecOperationShoppingRetargeting.OperationEnum;
-    values: Array<TargetingSpecShoppingRetargeting> | null;
+    values: Array<TargetingSpecShoppingRetargeting>;
 }
 export namespace TargetingSpecOperationShoppingRetargeting {
     export const FieldEnum = {

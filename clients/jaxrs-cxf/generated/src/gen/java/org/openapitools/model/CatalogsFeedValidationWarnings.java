@@ -1,7 +1,5 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -1237,44 +1235,12 @@ public class CatalogsFeedValidationWarnings  {
 
   private Integer EXPIRATION_DATE_INVALID;
 
-public enum FETCHSAMESIGNATUREEnum {
-
-NUMBER_1(Integer.valueOf(1));
-
-
-    private Integer value;
-
-    FETCHSAMESIGNATUREEnum (Integer v) {
-        value = v;
-    }
-
-    public Integer value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FETCHSAMESIGNATUREEnum fromValue(Integer value) {
-        for (FETCHSAMESIGNATUREEnum b : FETCHSAMESIGNATUREEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * Ingestion completed early because there are no changes to your feed since the last successful update.
   */
   @ApiModelProperty(value = "Ingestion completed early because there are no changes to your feed since the last successful update.")
 
-  private FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
+  private Integer FETCH_SAME_SIGNATURE;
 
  /**
   * Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
@@ -4676,17 +4642,14 @@ NUMBER_1(Integer.valueOf(1));
   **/
   @JsonProperty("FETCH_SAME_SIGNATURE")
   public Integer getFETCHSAMESIGNATURE() {
-    if (FETCH_SAME_SIGNATURE == null) {
-      return null;
-    }
-    return FETCH_SAME_SIGNATURE.value();
+    return FETCH_SAME_SIGNATURE;
   }
 
-  public void setFETCHSAMESIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public void setFETCHSAMESIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
   }
 
-  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
     return this;
   }
@@ -5773,10 +5736,7 @@ NUMBER_1(Integer.valueOf(1));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

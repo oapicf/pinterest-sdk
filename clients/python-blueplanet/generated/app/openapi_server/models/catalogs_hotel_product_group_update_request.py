@@ -131,6 +131,7 @@ class CatalogsHotelProductGroupUpdateRequest(Model):
     def name(self) -> str:
         """Gets the name of this CatalogsHotelProductGroupUpdateRequest.
 
+        Name of catalog product group  # noqa: E501
 
         :return: The name of this CatalogsHotelProductGroupUpdateRequest.
         :rtype: str
@@ -141,6 +142,7 @@ class CatalogsHotelProductGroupUpdateRequest(Model):
     def name(self, name: str):
         """Sets the name of this CatalogsHotelProductGroupUpdateRequest.
 
+        Name of catalog product group  # noqa: E501
 
         :param name: The name of this CatalogsHotelProductGroupUpdateRequest.
         :type name: str

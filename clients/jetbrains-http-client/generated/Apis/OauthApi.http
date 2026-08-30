@@ -1,0 +1,20 @@
+## OauthApi
+
+### Generate OAuth access token for conversion API
+## Generate OAuth access token for conversion API
+POST https://api.pinterest.com/v5/oauth/conversion_token
+Accept: application/json
+
+### Generate OAuth access token
+## Generate OAuth access token
+POST https://api.pinterest.com/v5/oauth/token
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Authorization: Basic: {{username-password}}
+
+### Revoke a token
+## Revoke a token
+POST https://api.pinterest.com/v5/oauth/token/revoke
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Authorization: Basic: {{username-password}}

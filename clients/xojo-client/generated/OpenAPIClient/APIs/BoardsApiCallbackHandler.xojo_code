@@ -7,7 +7,7 @@ Protected Interface BoardsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BoardSectionsDeleteCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub BoardSectionsDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BoardSection)
 		  
 		End Sub
 	#tag EndMethod
@@ -37,7 +37,7 @@ Protected Interface BoardsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BoardsDeleteCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub BoardsDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Board)
 		  
 		End Sub
 	#tag EndMethod

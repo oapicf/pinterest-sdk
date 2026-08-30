@@ -1,24 +1,26 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
+import org.openapitools.model.AssetGroupDeletion
+import org.openapitools.model.AssetGroupDeletionDelete
+import org.openapitools.model.AssetGroupInput
+import org.openapitools.model.AssetGroupInputCreate
+import org.openapitools.model.AssetGroupModification
+import org.openapitools.model.AssetGroupModificationReadOrUpdate
+import org.openapitools.model.AssetPermissionType
+import org.openapitools.model.AssetSearchBy
+import org.openapitools.model.AssetSortBy
 import org.openapitools.model.BusinessAssetMembersGet200Response
-import org.openapitools.model.BusinessAssetPartnersGet200Response
 import org.openapitools.model.BusinessAssetsGet200Response
-import org.openapitools.model.BusinessMemberAssetsGet200Response
-import org.openapitools.model.BusinessMembersAssetAccessDeleteRequest
+import org.openapitools.model.BusinessMemberAssetsGetResponse
+import org.openapitools.model.BusinessMembersAssetAccessDeleteBody
 import org.openapitools.model.BusinessPartnerAssetAccessGet200Response
-import org.openapitools.model.CreateAssetGroupBody
-import org.openapitools.model.CreateAssetGroupResponse
-import org.openapitools.model.DeleteAssetGroupBody
-import org.openapitools.model.DeleteAssetGroupResponse
 import org.openapitools.model.DeleteMemberAccessResultsResponseArray
 import org.openapitools.model.DeletePartnerAssetAccessBody
-import org.openapitools.model.DeletePartnerAssetsResultsResponseArray
-import org.openapitools.model.Error
-import org.openapitools.model.PartnerType
+import org.openapitools.model.DeletePartnerAssetAccessResultsResponseArray
+import org.openapitools.model.NonDraftEntityStatus
 import org.openapitools.model.PermissionsWithOwner
-import org.openapitools.model.UpdateAssetGroupBody
-import org.openapitools.model.UpdateAssetGroupResponse
+import org.openapitools.model.PinterestLibError
 import org.openapitools.model.UpdateMemberAssetAccessBody
 import org.openapitools.model.UpdateMemberAssetsResultsResponseArray
 import org.openapitools.model.UpdatePartnerAssetAccessBody
@@ -29,13 +31,14 @@ class BusinessAccessAssetsApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def assetGroupCreate ( String businessId, CreateAssetGroupBody createAssetGroupBody, Closure onSuccess, Closure onFailure)  {
+    def assetGroupCreate ( String businessId, AssetGroupInputCreate assetGroupInputCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/asset_groups"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -43,29 +46,32 @@ class BusinessAccessAssetsApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (createAssetGroupBody == null) {
-            throw new RuntimeException("missing required params createAssetGroupBody")
+        if (assetGroupInputCreate == null) {
+            throw new RuntimeException("missing required params assetGroupInputCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = createAssetGroupBody
+        bodyParams = assetGroupInputCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    CreateAssetGroupResponse.class )
+                    AssetGroupInput.class )
 
     }
 
-    def assetGroupDelete ( String businessId, DeleteAssetGroupBody deleteAssetGroupBody, Closure onSuccess, Closure onFailure)  {
+    def assetGroupDelete ( String businessId, AssetGroupDeletionDelete assetGroupDeletionDelete, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/asset_groups"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -73,29 +79,32 @@ class BusinessAccessAssetsApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (deleteAssetGroupBody == null) {
-            throw new RuntimeException("missing required params deleteAssetGroupBody")
+        if (assetGroupDeletionDelete == null) {
+            throw new RuntimeException("missing required params assetGroupDeletionDelete")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = deleteAssetGroupBody
+        bodyParams = assetGroupDeletionDelete
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    DeleteAssetGroupResponse.class )
+                    AssetGroupDeletion.class )
 
     }
 
-    def assetGroupUpdate ( String businessId, UpdateAssetGroupBody updateAssetGroupBody, Closure onSuccess, Closure onFailure)  {
+    def assetGroupUpdate ( String businessId, AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/asset_groups"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -103,29 +112,32 @@ class BusinessAccessAssetsApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (updateAssetGroupBody == null) {
-            throw new RuntimeException("missing required params updateAssetGroupBody")
+        if (assetGroupModificationReadOrUpdate == null) {
+            throw new RuntimeException("missing required params assetGroupModificationReadOrUpdate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = updateAssetGroupBody
+        bodyParams = assetGroupModificationReadOrUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    UpdateAssetGroupResponse.class )
+                    AssetGroupModification.class )
 
     }
 
-    def businessAssetMembersGet ( String businessId, String assetId, Boolean fetchSystemUsers, String bookmark, Integer pageSize, Integer startIndex, Closure onSuccess, Closure onFailure)  {
+    def businessAssetMembersGet ( String businessId, String assetId, Integer startIndex, Boolean fetchSystemUsers, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/assets/${asset_id}/members"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -137,6 +149,9 @@ class BusinessAccessAssetsApi {
             throw new RuntimeException("missing required params assetId")
         }
 
+        if (startIndex != null) {
+            queryParams.put("start_index", startIndex)
+        }
         if (fetchSystemUsers != null) {
             queryParams.put("fetch_system_users", fetchSystemUsers)
         }
@@ -146,14 +161,13 @@ class BusinessAccessAssetsApi {
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
         }
-        if (startIndex != null) {
-            queryParams.put("start_index", startIndex)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BusinessAssetMembersGet200Response.class )
 
@@ -166,6 +180,7 @@ class BusinessAccessAssetsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -190,9 +205,11 @@ class BusinessAccessAssetsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    BusinessAssetPartnersGet200Response.class )
+                    BusinessAssetMembersGet200Response.class )
 
     }
 
@@ -203,6 +220,7 @@ class BusinessAccessAssetsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -235,19 +253,22 @@ class BusinessAccessAssetsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BusinessAssetsGet200Response.class )
 
     }
 
-    def businessMemberAssetsGet ( String businessId, String memberId, String assetType, Integer startIndex, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
+    def businessMemberAssetsGet ( String businessId, String memberId, String assetType, Integer startIndex, AssetSortBy sortBy, Boolean sortAscending, AssetSearchBy searchBy, String searchValue, AssetPermissionType assetPermissionType, List<NonDraftEntityStatus> adAccountStatuses, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/members/${member_id}/assets"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -265,6 +286,24 @@ class BusinessAccessAssetsApi {
         if (startIndex != null) {
             queryParams.put("start_index", startIndex)
         }
+        if (sortBy != null) {
+            queryParams.put("sort_by", sortBy)
+        }
+        if (sortAscending != null) {
+            queryParams.put("sort_ascending", sortAscending)
+        }
+        if (searchBy != null) {
+            queryParams.put("search_by", searchBy)
+        }
+        if (searchValue != null) {
+            queryParams.put("search_value", searchValue)
+        }
+        if (assetPermissionType != null) {
+            queryParams.put("asset_permission_type", assetPermissionType)
+        }
+        if (adAccountStatuses != null) {
+            queryParams.put("ad_account_statuses", adAccountStatuses)
+        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
@@ -275,19 +314,22 @@ class BusinessAccessAssetsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    BusinessMemberAssetsGet200Response.class )
+                    BusinessMemberAssetsGetResponse.class )
 
     }
 
-    def businessMembersAssetAccessDelete ( String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest, Closure onSuccess, Closure onFailure)  {
+    def businessMembersAssetAccessDelete ( String businessId, BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/members/assets/access"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -295,17 +337,19 @@ class BusinessAccessAssetsApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (businessMembersAssetAccessDeleteRequest == null) {
-            throw new RuntimeException("missing required params businessMembersAssetAccessDeleteRequest")
+        if (businessMembersAssetAccessDeleteBody == null) {
+            throw new RuntimeException("missing required params businessMembersAssetAccessDeleteBody")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = businessMembersAssetAccessDeleteRequest
+        bodyParams = businessMembersAssetAccessDeleteBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
                     DeleteMemberAccessResultsResponseArray.class )
 
@@ -318,6 +362,7 @@ class BusinessAccessAssetsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -335,19 +380,22 @@ class BusinessAccessAssetsApi {
         bodyParams = updateMemberAssetAccessBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     UpdateMemberAssetsResultsResponseArray.class )
 
     }
 
-    def businessPartnerAssetAccessGet ( String businessId, String partnerId, PartnerType partnerType, String assetType, Integer startIndex, Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def businessPartnerAssetAccessGet ( String businessId, String partnerId, String partnerType, String assetType, Integer startIndex, AssetSortBy sortBy, Boolean sortAscending, AssetSearchBy searchBy, String searchValue, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/partners/${partner_id}/assets"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -368,17 +416,31 @@ class BusinessAccessAssetsApi {
         if (startIndex != null) {
             queryParams.put("start_index", startIndex)
         }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
+        if (sortBy != null) {
+            queryParams.put("sort_by", sortBy)
+        }
+        if (sortAscending != null) {
+            queryParams.put("sort_ascending", sortAscending)
+        }
+        if (searchBy != null) {
+            queryParams.put("search_by", searchBy)
+        }
+        if (searchValue != null) {
+            queryParams.put("search_value", searchValue)
         }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BusinessPartnerAssetAccessGet200Response.class )
 
@@ -391,6 +453,7 @@ class BusinessAccessAssetsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -408,9 +471,11 @@ class BusinessAccessAssetsApi {
         bodyParams = deletePartnerAssetAccessBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    DeletePartnerAssetsResultsResponseArray.class )
+                    DeletePartnerAssetAccessResultsResponseArray.class )
 
     }
 
@@ -421,6 +486,7 @@ class BusinessAccessAssetsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -438,7 +504,9 @@ class BusinessAccessAssetsApi {
         bodyParams = updatePartnerAssetAccessBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     UpdatePartnerAssetsResultsResponseArray.class )
 

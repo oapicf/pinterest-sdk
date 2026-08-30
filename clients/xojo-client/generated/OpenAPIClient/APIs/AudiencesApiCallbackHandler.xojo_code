@@ -1,13 +1,13 @@
 #tag Interface
 Protected Interface AudiencesApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AudiencesCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Audience)
+		Sub AudiencesCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdAccountsAudience)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AudiencesGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Audience)
+		Sub AudiencesGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdAccountsAudience)
 		  
 		End Sub
 	#tag EndMethod
@@ -19,7 +19,7 @@ Protected Interface AudiencesApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AudiencesUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Audience)
+		Sub AudiencesUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdAccountsAudience)
 		  
 		End Sub
 	#tag EndMethod

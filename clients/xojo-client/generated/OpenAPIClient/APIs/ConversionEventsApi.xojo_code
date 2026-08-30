@@ -1,18 +1,18 @@
 #tag Class
 Protected Class ConversionEventsApi
 	#tag Method, Flags = &h0
-		Sub EventsCreate(, adAccountId As String, conversionEvents As OpenAPIClient.Models.ConversionEvents, Optional test As Xoson.O.OptionalBoolean)
+		Sub EventsCreate(, adAccountId As String, conversionEventsCreate As OpenAPIClient.Models.ConversionEventsCreate, Optional test As Xoson.O.OptionalBoolean)
 		  // Operation events/create
 		  // Send conversions
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter conversionEvents: (body) Conversion events. 
+		  // - parameter conversionEventsCreate: (body)  
 		  // - parameter test: (query) Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request. (optional, default to False)
 		  //
-		  // Invokes ConversionEventsApiCallbackHandler.EventsCreateCallback(ConversionApiResponse) on completion. 
+		  // Invokes ConversionEventsApiCallbackHandler.EventsCreateCallback(ConversionEvents) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/events
-		  // - The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object. - This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href="/docs/api-features/conversion-overview/">Conversions Guide</a> for more details. (Note that the authorization header required is <code>Authorization: Bearer &lt;access_token&gt;</code>). - The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
+		  // - The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their `ad_account_id`. The request body should be a JSON object. - This endpoint requires an `access_token` be generated through Ads Manager. Review the [Conversions Guide](/docs/api-features/conversion-overview/) for more details. (Note that the authorization header required is `Authorization: Bearer <access_token>`). - The token's `user_account` must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -25,7 +25,7 @@ Protected Class ConversionEventsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(conversionEvents), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(conversionEventsCreate), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If test <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("test") + "=" + EncodeURLComponent(test.ToString)
 		  
@@ -56,7 +56,7 @@ Protected Class ConversionEventsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function EventsCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ConversionApiResponse) As Boolean
+		Private Function EventsCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ConversionEvents) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -64,7 +64,7 @@ Protected Class ConversionEventsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.ConversionApiResponse
+			  outData = New OpenAPIClient.Models.ConversionEvents
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -117,7 +117,7 @@ Protected Class ConversionEventsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.ConversionApiResponse
+		  Dim data As OpenAPIClient.Models.ConversionEvents
 		  CallbackHandler.EventsCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -131,7 +131,7 @@ Protected Class ConversionEventsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.ConversionApiResponse
+		  Dim data As OpenAPIClient.Models.ConversionEvents
 		  Call EventsCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.EventsCreateCallback(error, data)

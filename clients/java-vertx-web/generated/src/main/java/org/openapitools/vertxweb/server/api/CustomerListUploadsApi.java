@@ -1,9 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.CustomerListUpload;
 import org.openapitools.vertxweb.server.model.CustomerListUploadCreateRequest;
 import org.openapitools.vertxweb.server.model.CustomerListUploadCreateResponse;
-import org.openapitools.vertxweb.server.model.CustomerListUploadResponse;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -15,6 +15,6 @@ import java.util.Map;
 
 public interface CustomerListUploadsApi  {
     Future<ApiResponse<CustomerListUploadCreateResponse>> customerListUploadsCreate(String adAccountId, String customerListId, CustomerListUploadCreateRequest customerListUploadCreateRequest);
-    Future<ApiResponse<CustomerListUploadResponse>> customerListUploadsGet(String adAccountId, String customerListId, String customerListUploadId);
-    Future<ApiResponse<CustomerListUploadResponse>> customerListUploadsRun(String adAccountId, String customerListId, String customerListUploadId);
+    Future<ApiResponse<CustomerListUpload>> customerListUploadsGet(String adAccountId, String customerListId, String customerListUploadId);
+    Future<ApiResponse<CustomerListUpload>> customerListUploadsRun(String adAccountId, String customerListId, String customerListUploadId);
 }

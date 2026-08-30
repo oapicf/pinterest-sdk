@@ -1,10 +1,11 @@
 package controllers;
 
 import apimodels.CustomerList;
-import apimodels.CustomerListRequest;
-import apimodels.CustomerListUpdateRequest;
+import apimodels.CustomerListCreate;
+import apimodels.CustomerListUpdateWithRequiredBody;
 import apimodels.CustomerListsList200Response;
-import apimodels.Error;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -31,12 +32,12 @@ public abstract class CustomerListsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result customerListsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, CustomerListRequest customerListRequest) throws Exception {
+    public Result customerListsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, CustomerListCreate customerListCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CustomerList obj = customerListsCreate(request, adAccountId, customerListRequest);
+        CustomerList obj = customerListsCreate(request, adAccountId, customerListCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -48,7 +49,7 @@ public abstract class CustomerListsApiControllerImpInterface {
 
     }
 
-    public abstract CustomerList customerListsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, CustomerListRequest customerListRequest) throws Exception;
+    public abstract CustomerList customerListsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, CustomerListCreate customerListCreate) throws Exception;
 
     public Result customerListsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -69,12 +70,12 @@ public abstract class CustomerListsApiControllerImpInterface {
 
     public abstract CustomerList customerListsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId) throws Exception;
 
-    public Result customerListsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public Result customerListsListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, Boolean excludeNca) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CustomerListsList200Response obj = customerListsList(request, adAccountId, pageSize, order, bookmark);
+        CustomerListsList200Response obj = customerListsList(request, adAccountId, bookmark, pageSize, order, excludeNca);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -86,14 +87,14 @@ public abstract class CustomerListsApiControllerImpInterface {
 
     }
 
-    public abstract CustomerListsList200Response customerListsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception;
+    public abstract CustomerListsList200Response customerListsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, Boolean excludeNca) throws Exception;
 
-    public Result customerListsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId, CustomerListUpdateRequest customerListUpdateRequest) throws Exception {
+    public Result customerListsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId, CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CustomerList obj = customerListsUpdate(request, adAccountId, customerListId, customerListUpdateRequest);
+        CustomerList obj = customerListsUpdate(request, adAccountId, customerListId, customerListUpdateWithRequiredBody);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -105,6 +106,6 @@ public abstract class CustomerListsApiControllerImpInterface {
 
     }
 
-    public abstract CustomerList customerListsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId, CustomerListUpdateRequest customerListUpdateRequest) throws Exception;
+    public abstract CustomerList customerListsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId, CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody) throws Exception;
 
 }

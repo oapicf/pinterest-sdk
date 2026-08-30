@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.NonNullableCatalogsCurrency;
-import com.prokarma.pkmst.model.NonNullableProductAvailabilityType;
+import com.prokarma.pkmst.model.ProductAvailability;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -19,10 +19,10 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "Retail product metadata entity")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailProductMetadata   {
   @JsonProperty("availability")
-  private NonNullableProductAvailabilityType availability;
+  private ProductAvailability availability;
 
   @JsonProperty("currency")
   private NonNullableCatalogsCurrency currency;
@@ -39,7 +39,7 @@ public class CatalogsRetailProductMetadata   {
   @JsonProperty("sale_price")
   private BigDecimal salePrice;
 
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+  public CatalogsRetailProductMetadata availability(ProductAvailability availability) {
     this.availability = availability;
     return this;
   }
@@ -49,11 +49,11 @@ public class CatalogsRetailProductMetadata   {
    * @return availability
    */
   @ApiModelProperty(required = true, value = "")
-  public NonNullableProductAvailabilityType getAvailability() {
+  public ProductAvailability getAvailability() {
     return availability;
   }
 
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
+  public void setAvailability(ProductAvailability availability) {
     this.availability = availability;
   }
 
@@ -190,10 +190,7 @@ public class CatalogsRetailProductMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

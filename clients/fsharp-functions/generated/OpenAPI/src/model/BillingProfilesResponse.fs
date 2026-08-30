@@ -3,6 +3,10 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.BillingProfileCardType
+open OpenAPI.Model.BillingProfilePaymentMethodBrand
+open OpenAPI.Model.BillingProfileStatus
+open OpenAPI.Model.BillingType
 
 module BillingProfilesResponse =
 
@@ -13,15 +17,15 @@ module BillingProfilesResponse =
     [<JsonProperty(PropertyName = "advertiser_id")>]
     AdvertiserId : string;
     [<JsonProperty(PropertyName = "billing_type")>]
-    BillingType : string;
+    BillingType : BillingType;
     [<JsonProperty(PropertyName = "card_type")>]
-    CardType : string;
+    CardType : BillingProfileCardType;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "payment_method_brand")>]
-    PaymentMethodBrand : string;
+    PaymentMethodBrand : BillingProfilePaymentMethodBrand;
     [<JsonProperty(PropertyName = "status")>]
-    Status : string;
+    Status : BillingProfileStatus;
   }
 
   //#endregion

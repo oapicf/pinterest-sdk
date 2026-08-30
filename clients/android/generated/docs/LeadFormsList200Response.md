@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  |  [optional]
-**items** | [**List&lt;LeadFormResponse&gt;**](LeadFormResponse.md) |  | 
+**items** | [**List&lt;LeadForm&gt;**](LeadForm.md) |  | 
 
 
 

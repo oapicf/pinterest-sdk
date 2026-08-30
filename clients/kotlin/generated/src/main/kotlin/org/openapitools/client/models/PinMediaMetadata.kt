@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,59 +31,61 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.
  *
+ * @param itemType Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
  * @param description 
  * @param images 
- * @param itemType 
  * @param link 
  * @param title 
  * @param coverImageUrl 
  * @param duration Duration (in miliseconds). Field maybe null after creation due to video processing time.
  * @param height Height (in pixels). Field maybe null after creation due to video processing time.
  * @param videoUrl Video url (720p).  **Note:** This field is limited and not available to all apps.
+ * @param videoUrlHls Video url (HLS).  **Note:** This field is limited and not available to all apps.
  * @param width Width (in pixels). Field maybe null after creation due to video processing time.
  */
 
 
-data class PinMediaMetadata (
+interface PinMediaMetadata {
 
-    @Json(name = "description")
-    val description: kotlin.String? = null,
-
-    @Json(name = "images")
-    val images: ImageSize? = null,
-
+    /* Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload. */
     @Json(name = "item_type")
-    val itemType: kotlin.String? = null,
-
+    val itemType: PinMediaMetadata.ItemType
+    @Json(name = "description")
+    val description: kotlin.String?
+    @Json(name = "images")
+    val images: ImageSize?
     @Json(name = "link")
-    val link: kotlin.String? = null,
-
+    val link: kotlin.String?
     @Json(name = "title")
-    val title: kotlin.String? = null,
-
+    val title: kotlin.String?
     @Json(name = "cover_image_url")
-    val coverImageUrl: kotlin.String? = null,
-
+    val coverImageUrl: kotlin.String?
     /* Duration (in miliseconds). Field maybe null after creation due to video processing time. */
     @Json(name = "duration")
-    val duration: java.math.BigDecimal? = null,
-
+    val duration: java.math.BigDecimal?
     /* Height (in pixels). Field maybe null after creation due to video processing time. */
     @Json(name = "height")
-    val height: kotlin.Int? = null,
-
+    val height: kotlin.Int?
     /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
     @Json(name = "video_url")
-    val videoUrl: kotlin.String? = null,
-
+    val videoUrl: kotlin.String?
+    /* Video url (HLS).  **Note:** This field is limited and not available to all apps. */
+    @Json(name = "video_url_hls")
+    val videoUrlHls: kotlin.String?
     /* Width (in pixels). Field maybe null after creation due to video processing time. */
     @Json(name = "width")
-    val width: kotlin.Int? = null
-
-) {
-
+    val width: kotlin.Int?
+    /**
+     * Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+     *
+     * Values: video
+     */
+    @JsonClass(generateAdapter = false)
+    enum class ItemType(val value: kotlin.String) {
+        @Json(name = "video") video("video");
+    }
 
 }
 

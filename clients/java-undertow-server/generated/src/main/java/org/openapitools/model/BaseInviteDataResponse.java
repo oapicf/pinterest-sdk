@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -15,18 +15,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.BaseInviteDataResponseInviteData;
 import org.openapitools.model.BusinessAccessUserSummary;
+import org.openapitools.model.InviteDataResponse;
 
 
 
+/**
+ * Common invite/request data returned by the business access endpoints.
+ */
 
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Common invite/request data returned by the business access endpoints.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BaseInviteDataResponse   {
   
   private String id;
-  private BaseInviteDataResponseInviteData inviteData;
+  private InviteDataResponse inviteData;
   private Boolean isReceivedInvite;
   private BusinessAccessUserSummary user;
 
@@ -50,7 +53,7 @@ public class BaseInviteDataResponse   {
 
   /**
    */
-  public BaseInviteDataResponse inviteData(BaseInviteDataResponseInviteData inviteData) {
+  public BaseInviteDataResponse inviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
     return this;
   }
@@ -58,10 +61,10 @@ public class BaseInviteDataResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("invite_data")
-  public BaseInviteDataResponseInviteData getInviteData() {
+  public InviteDataResponse getInviteData() {
     return inviteData;
   }
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
+  public void setInviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
   }
 
@@ -140,10 +143,7 @@ public class BaseInviteDataResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

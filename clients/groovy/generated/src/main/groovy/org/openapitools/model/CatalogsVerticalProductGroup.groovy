@@ -13,7 +13,7 @@ import org.openapitools.model.CatalogsRetailProductGroup;
 
 @Canonical
 class CatalogsVerticalProductGroup {
-    /* Catalog id pertaining to the creative assets product group. */
+    /* Catalog ID pertaining to the product group. */
     String catalogId
 
     enum CatalogTypeEnum {
@@ -48,13 +48,13 @@ class CatalogsVerticalProductGroup {
     String feedId
     
     CatalogsCreativeAssetsProductGroupFilters filters
-    /* ID of the creative assets product group. */
+    /* ID of the catalog product group. */
     String id
     /* boolean indicator of whether the product group is being featured or not */
     Boolean isFeatured
     
     String locale
-    /* Name of creative assets product group */
+    /* Name of catalog product group */
     String name
     
     CatalogsProductGroupStatus status

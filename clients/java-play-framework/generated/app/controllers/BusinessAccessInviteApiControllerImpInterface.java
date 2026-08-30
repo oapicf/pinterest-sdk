@@ -1,16 +1,17 @@
 package controllers;
 
 import apimodels.AuthRespondInvitesBody;
-import apimodels.CancelInvitesBody;
+import apimodels.CancelInvitesRequest;
+import apimodels.CancelInvitesResponse;
 import apimodels.CreateAssetAccessRequestBody;
 import apimodels.CreateAssetAccessRequestResponse;
 import apimodels.CreateAssetInvitesRequest;
 import apimodels.CreateInvitesResultsResponseArray;
 import apimodels.CreateMembershipOrPartnershipInvitesBody;
-import apimodels.DeleteInvitesResultsResponseArray;
-import apimodels.Error;
 import apimodels.GetInvites200Response;
+import apimodels.InviteFilterStatus;
 import apimodels.InviteType;
+import apimodels.PinterestLibError;
 import apimodels.RespondToInvitesResponseArray;
 import apimodels.UpdateInvitesResultsResponseArray;
 
@@ -58,12 +59,12 @@ public abstract class BusinessAccessInviteApiControllerImpInterface {
 
     public abstract CreateAssetAccessRequestResponse assetAccessRequestsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody) throws Exception;
 
-    public Result cancelInvitesOrRequestsHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CancelInvitesBody cancelInvitesBody) throws Exception {
+    public Result cancelInvitesOrRequestsHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CancelInvitesRequest cancelInvitesRequest) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        DeleteInvitesResultsResponseArray obj = cancelInvitesOrRequests(request, businessId, cancelInvitesBody);
+        CancelInvitesResponse obj = cancelInvitesOrRequests(request, businessId, cancelInvitesRequest);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -75,7 +76,7 @@ public abstract class BusinessAccessInviteApiControllerImpInterface {
 
     }
 
-    public abstract DeleteInvitesResultsResponseArray cancelInvitesOrRequests(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CancelInvitesBody cancelInvitesBody) throws Exception;
+    public abstract CancelInvitesResponse cancelInvitesOrRequests(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CancelInvitesRequest cancelInvitesRequest) throws Exception;
 
     public Result createAssetInvitesHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, CreateAssetInvitesRequest createAssetInvitesRequest) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -115,7 +116,7 @@ public abstract class BusinessAccessInviteApiControllerImpInterface {
 
     public abstract CreateInvitesResultsResponseArray createMembershipOrPartnershipInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody) throws Exception;
 
-    public Result getInvitesHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, Boolean isMember,  @Size(min=1)List<String> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public Result getInvitesHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, Boolean isMember,  @Size(min=1)List<InviteFilterStatus> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -132,7 +133,7 @@ public abstract class BusinessAccessInviteApiControllerImpInterface {
 
     }
 
-    public abstract GetInvites200Response getInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, Boolean isMember,  @Size(min=1)List<String> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
+    public abstract GetInvites200Response getInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId, Boolean isMember,  @Size(min=1)List<InviteFilterStatus> inviteStatus, InviteType inviteType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
     public Result respondBusinessAccessInvitesHttp(Http.Request request, AuthRespondInvitesBody authRespondInvitesBody) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

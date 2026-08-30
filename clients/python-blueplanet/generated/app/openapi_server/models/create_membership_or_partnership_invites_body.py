@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.business_role_for_invite import BusinessRoleForInvite  # noqa: F401,E501
 from app.openapi_server.models.invite_type import InviteType  # noqa: F401,E501
 from openapi_server import util
 
@@ -16,11 +17,11 @@ class CreateMembershipOrPartnershipInvitesBody(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, business_role: str=None, invite_type: InviteType=None, members: List[str]=None, partners: List[str]=None):  # noqa: E501
+    def __init__(self, business_role: BusinessRoleForInvite=None, invite_type: InviteType=None, members: List[str]=None, partners: List[str]=None):  # noqa: E501
         """CreateMembershipOrPartnershipInvitesBody - a model defined in Swagger
 
         :param business_role: The business_role of this CreateMembershipOrPartnershipInvitesBody.  # noqa: E501
-        :type business_role: str
+        :type business_role: BusinessRoleForInvite
         :param invite_type: The invite_type of this CreateMembershipOrPartnershipInvitesBody.  # noqa: E501
         :type invite_type: InviteType
         :param members: The members of this CreateMembershipOrPartnershipInvitesBody.  # noqa: E501
@@ -29,7 +30,7 @@ class CreateMembershipOrPartnershipInvitesBody(Model):
         :type partners: List[str]
         """
         self.swagger_types = {
-            'business_role': str,
+            'business_role': BusinessRoleForInvite,
             'invite_type': InviteType,
             'members': List[str],
             'partners': List[str]
@@ -59,31 +60,25 @@ class CreateMembershipOrPartnershipInvitesBody(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def business_role(self) -> str:
+    def business_role(self) -> BusinessRoleForInvite:
         """Gets the business_role of this CreateMembershipOrPartnershipInvitesBody.
 
-        The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.  # noqa: E501
 
         :return: The business_role of this CreateMembershipOrPartnershipInvitesBody.
-        :rtype: str
+        :rtype: BusinessRoleForInvite
         """
         return self._business_role
 
     @business_role.setter
-    def business_role(self, business_role: str):
+    def business_role(self, business_role: BusinessRoleForInvite):
         """Sets the business_role of this CreateMembershipOrPartnershipInvitesBody.
 
-        The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.  # noqa: E501
 
         :param business_role: The business_role of this CreateMembershipOrPartnershipInvitesBody.
-        :type business_role: str
+        :type business_role: BusinessRoleForInvite
         """
-        allowed_values = ["EMPLOYEE", "BIZ_ADMIN", "PARTNER"]  # noqa: E501
-        if business_role not in allowed_values:
-            raise ValueError(
-                "Invalid value for `business_role` ({0}), must be one of {1}"
-                .format(business_role, allowed_values)
-            )
+        if business_role is None:
+            raise ValueError("Invalid value for `business_role`, must not be `None`")  # noqa: E501
 
         self._business_role = business_role
 

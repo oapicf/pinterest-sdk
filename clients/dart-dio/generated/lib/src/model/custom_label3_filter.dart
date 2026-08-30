@@ -12,11 +12,11 @@ part 'custom_label3_filter.g.dart';
 /// CustomLabel3Filter
 ///
 /// Properties:
-/// * [cUSTOMLABEL3] 
+/// * [CUSTOM_LABEL_3] 
 @BuiltValue()
 abstract class CustomLabel3Filter implements Built<CustomLabel3Filter, CustomLabel3FilterBuilder> {
   @BuiltValueField(wireName: r'CUSTOM_LABEL_3')
-  CatalogsProductGroupFilterOperatorTypeCriteria get cUSTOMLABEL3;
+  CatalogsProductGroupFilterOperatorTypeCriteria get CUSTOM_LABEL_3;
 
   CustomLabel3Filter._();
 
@@ -43,7 +43,7 @@ class _$CustomLabel3FilterSerializer implements PrimitiveSerializer<CustomLabel3
   }) sync* {
     yield r'CUSTOM_LABEL_3';
     yield serializers.serialize(
-      object.cUSTOMLABEL3,
+      object.CUSTOM_LABEL_3,
       specifiedType: const FullType(CatalogsProductGroupFilterOperatorTypeCriteria),
     );
   }
@@ -74,7 +74,7 @@ class _$CustomLabel3FilterSerializer implements PrimitiveSerializer<CustomLabel3
             value,
             specifiedType: const FullType(CatalogsProductGroupFilterOperatorTypeCriteria),
           ) as CatalogsProductGroupFilterOperatorTypeCriteria;
-          result.cUSTOMLABEL3 = valueDes;
+          result.CUSTOM_LABEL_3.replace(valueDes);
           break;
         default:
           unhandled.add(key);

@@ -3,13 +3,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **String** | Catalog id pertaining to the hotel product group. | 
+**CatalogId** | **String** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **String** |  | 
 **CreatedAt** | **Int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**Id** | **String** | ID of the hotel product group. | 
-**Name** | **String** | Name of hotel product group | [optional] 
+**Id** | **String** | ID of the catalog product group. | 
+**Name** | **String** | Name of catalog product group | [optional] 
 **Type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | 
 **UpdatedAt** | **Int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelProductGroup = Initialize-PSOpenAPIToolsCatalogsHotelProductGroup  -CatalogId null `
+$CatalogsHotelProductGroup = Initialize-PSOpenAPIToolsCatalogsHotelProductGroup  -CatalogId 2680059592705 `
  -CatalogType null `
  -CreatedAt 1621350033000 `
  -Description null `

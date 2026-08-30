@@ -2,8 +2,14 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,17 +29,22 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsRetailItemsPostFilter(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsRetailItemsPostFilter.CatalogType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("catalog_type")
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsRetailItemsPostFilter.CatalogType = kotlin.String.RETAIL,
 
     @get:Size(min=1,max=1000) 
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("item_ids")
     @get:JsonProperty("item_ids", required = true) val itemIds: kotlin.collections.List<kotlin.String>,
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "null", description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
+    @Schema(description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("catalog_id")
     @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null
-) {
+) : CatalogsItemsPostFilters {
 
     /**
     * 
@@ -48,7 +59,7 @@ data class CatalogsRetailItemsPostFilter(
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsRetailItemsPostFilter'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }
     }

@@ -1,0 +1,244 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server Ad"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a Ad"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdCollectionsHeaderType = openapi_server.resourceTypes.AdCollectionsHeaderType
+  AdDisapprovalReasons = openapi_server.resourceTypes.AdDisapprovalReasons
+  AdReviewStatus = openapi_server.resourceTypes.AdReviewStatus
+  CartingProduct = openapi_server.resourceTypes.CartingProduct
+  CreativeType = openapi_server.resourceTypes.CreativeType
+  CustomizableCTAType = openapi_server.resourceTypes.CustomizableCTAType
+  DisclosureType = openapi_server.resourceTypes.DisclosureType
+  EntityStatus = openapi_server.resourceTypes.EntityStatus
+  GridClickType = openapi_server.resourceTypes.GridClickType
+  PinPromotionSummaryStatus = openapi_server.resourceTypes.PinPromotionSummaryStatus
+  QuizPinData = openapi_server.resourceTypes.QuizPinData
+  TrackingUrls = openapi_server.resourceTypes.TrackingUrls
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  Ad {
+    title = Ad
+    description = Ad
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "The ID of the advertiser that this ad belongs to."
+          optional = true
+        }
+        ad_group_id {
+          type =  string
+          description = "ID of the ad group that contains the ad."
+          optional = true
+        }
+        android_deep_link {
+          type =  string
+          description = "Deep link URL for Android devices."
+          optional = false
+        }
+        campaign_id {
+          type =  string
+          description = "ID of the ad campaign that contains this ad."
+          optional = true
+        }
+        carousel_android_deep_links {
+          type = array
+          items.type =  string
+          description = "Comma-separated deep links for the carousel pin on Android."
+          optional = false
+        }
+        carousel_destination_urls {
+          type = array
+          items.type =  string
+          description = "Comma-separated destination URLs for the carousel pin to promote."
+          optional = false
+        }
+        carousel_ios_deep_links {
+          type = array
+          items.type =  string
+          description = "Comma-separated deep links for the carousel pin on iOS."
+          optional = false
+        }
+        carting_platform_type {
+          type =  integer
+          description = "The vendor platform type of the carting/WTB ad."
+          optional = false
+        }
+        carting_products {
+          type = array
+          items.type = CartingProduct
+          description = "Array of carting/WTB products for the ad."
+          optional = false
+        }
+        click_tracking_url {
+          type =  string
+          description = "Tracking url for the ad clicks."
+          optional = false
+        }
+        collection_items_destination_url_template {
+          type =  string
+          description = "Destination URL template for all items within a collections drawer."
+          optional = false
+        }
+        collections_header_type {
+          type = AdCollectionsHeaderType
+          description = ""
+          optional = false
+        }
+        created_time {
+          type =  integer
+          description = "Pin creation time. Unix timestamp in seconds."
+          optional = false
+        }
+        creative_type {
+          type = CreativeType
+          description = ""
+          optional = true
+        }
+        customizable_cta_type {
+          type = CustomizableCTAType
+          description = ""
+          optional = false
+        }
+        destination_url {
+          type =  string
+          description = "Destination URL."
+          optional = false
+        }
+        disclosure_type {
+          type = DisclosureType
+          description = ""
+          optional = false
+        }
+        disclosure_url {
+          type =  string
+          description = "URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure."
+          optional = false
+        }
+        grid_click_type {
+          type = GridClickType
+          description = ""
+          optional = false
+        }
+        id {
+          type =  string
+          description = "The ID of this ad."
+          optional = true
+        }
+        ios_deep_link {
+          type =  string
+          description = "Deep link URL for iOS devices."
+          optional = false
+        }
+        is_carting {
+          type =  boolean
+          description = "Is the ad a carting/WTB ad?"
+          optional = false
+        }
+        is_collage_accepted_terms {
+          type =  boolean
+          description = "Whether the advertiser has accepted the terms and conditions for collage ad."
+          optional = false
+        }
+        is_collage_single_destination {
+          type =  boolean
+          description = "Whether the collage ad has a single destination url override."
+          optional = false
+        }
+        is_pin_deleted {
+          type =  boolean
+          description = "Is original pin deleted?"
+          optional = false
+        }
+        is_removable {
+          type =  boolean
+          description = "Is pin repinnable?"
+          optional = false
+        }
+        lead_form_id {
+          type =  string
+          description = "Lead form ID for lead ad generation."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Name of the ad - 255 chars max."
+          optional = false
+        }
+        pin_id {
+          type =  string
+          description = "Pin ID. This field may only be updated for draft ads."
+          optional = true
+        }
+        quiz_pin_data {
+          type = QuizPinData
+          description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved."
+          optional = false
+        }
+        rejected_reasons {
+          type = array
+          items.type = AdDisapprovalReasons
+          description = "Enum reason why the pin was rejected. Returned if &#x60;review_status&#x60; is \&quot;REJECTED\&quot;."
+          optional = true
+        }
+        rejection_labels {
+          type = array
+          items.type =  string
+          description = "Text reason why the pin was rejected. Returned if &#x60;review_status&#x60; is \&quot;REJECTED\&quot;."
+          optional = true
+        }
+        review_status {
+          type = AdReviewStatus
+          description = "Ad review status"
+          optional = true
+        }
+        status {
+          type = EntityStatus
+          description = ""
+          optional = false
+        }
+        summary_status {
+          type = PinPromotionSummaryStatus
+          description = "Ad summary status"
+          optional = true
+        }
+        tracking_urls {
+          type = TrackingUrls
+          description = ""
+          optional = false
+        }
+        type {
+          type =  string
+          description = "Always \&quot;ad\&quot;."
+          optional = true
+        }
+        updated_time {
+          type =  integer
+          description = "Last update time. Unix timestamp in seconds."
+          optional = false
+        }
+        view_tracking_url {
+          type =  string
+          description = "Tracking URL for ad impressions."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  Ad {
+    title = Ad
+    description = Ad
+    implements = openapi_server.resourceTypes.Ad
+
+  }
+}

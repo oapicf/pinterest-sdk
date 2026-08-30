@@ -7,10 +7,11 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open PromotionsApiHandlerParams
 open PromotionsApiServiceInterface
 open PromotionsApiServiceImplementation
-open OpenAPI.Model.Error
-open OpenAPI.Model.PromotionCreateRequest
-open OpenAPI.Model.PromotionResponse
-open OpenAPI.Model.PromotionUpdateRequest
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.Promotion
+open OpenAPI.Model.PromotionBatchUpdate
+open OpenAPI.Model.PromotionCreate
 open OpenAPI.Model.PromotionsList200Response
 open OpenAPI.Model.PromotionsResponse
 
@@ -37,6 +38,14 @@ module PromotionsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | PromotionsCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | PromotionsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | PromotionsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | PromotionsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | PromotionsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | PromotionsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -54,8 +63,20 @@ module PromotionsApiHandler =
           let serviceArgs = {    pathParams=pathParams;  } : PromotionsDeleteArgs
           let result = PromotionsApiService.PromotionsDelete ctx serviceArgs
           return! (match result with
+                      | PromotionsDeleteStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | PromotionsDeleteStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
+                      | PromotionsDeleteStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | PromotionsDeleteStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | PromotionsDeleteStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | PromotionsDeleteStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | PromotionsDeleteStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | PromotionsDeleteDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -75,8 +96,16 @@ module PromotionsApiHandler =
           return! (match result with
                       | PromotionsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | PromotionsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | PromotionsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | PromotionsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | PromotionsGetStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | PromotionsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | PromotionsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -99,6 +128,14 @@ module PromotionsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | PromotionsListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | PromotionsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | PromotionsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | PromotionsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | PromotionsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | PromotionsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -122,6 +159,14 @@ module PromotionsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | PromotionsUpdateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | PromotionsUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | PromotionsUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | PromotionsUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | PromotionsUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | PromotionsUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

@@ -6,7 +6,7 @@ goog.provide('API.Client.CatalogsCreativeAssetsProductGroup');
 API.Client.CatalogsCreativeAssetsProductGroup = function() {}
 
 /**
- * Catalog id pertaining to the creative assets product group.
+ * Catalog ID pertaining to the product group.
  * @type {!string}
  * @export
  */
@@ -38,14 +38,14 @@ API.Client.CatalogsCreativeAssetsProductGroup.prototype.description;
 API.Client.CatalogsCreativeAssetsProductGroup.prototype.filters;
 
 /**
- * ID of the creative assets product group.
+ * ID of the catalog product group.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsProductGroup.prototype.id;
 
 /**
- * Name of creative assets product group
+ * Name of catalog product group
  * @type {!string}
  * @export
  */

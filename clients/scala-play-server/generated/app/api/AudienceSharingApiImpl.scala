@@ -1,23 +1,28 @@
 package api
 
+import model.AdAccountToAdAccountSharedAudience
+import model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+import model.AdAccountToBusinessSharedAudience
+import model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 import model.AdAccountsAudiencesSharedAccountsList200Response
 import model.AudienceAccountType
-import model.AudiencesList200Response
-import model.BusinessSharedAudience
-import model.BusinessSharedAudienceResponse
+import model.BusinessToAdAccountSharedAudience
+import model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+import model.BusinessToBusinessSharedAudience
+import model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
 import model.Error
-import model.SharedAudience
-import model.SharedAudienceResponse
+import model.Order
+import model.SharedAudiencesForBusinessList200Response
 
 /**
   * Provides a default implementation for [[AudienceSharingApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class AudienceSharingApiImpl extends AudienceSharingApi {
   /**
     * @inheritdoc
     */
-  override def adAccountsAudiencesSharedAccountsList(adAccountId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Option[Int], bookmark: Option[String]): AdAccountsAudiencesSharedAccountsList200Response = {
+  override def adAccountsAudiencesSharedAccountsList(audienceId: String, accountType: AudienceAccountType, adAccountId: String, bookmark: Option[String], pageSize: Option[Int]): AdAccountsAudiencesSharedAccountsList200Response = {
     // TODO: Implement better logic
 
     AdAccountsAudiencesSharedAccountsList200Response(None, List.empty[SharedAudienceAccount])
@@ -26,7 +31,7 @@ class AudienceSharingApiImpl extends AudienceSharingApi {
   /**
     * @inheritdoc
     */
-  override def businessAccountAudiencesSharedAccountsList(businessId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Option[Int], bookmark: Option[String]): AdAccountsAudiencesSharedAccountsList200Response = {
+  override def businessAccountAudiencesSharedAccountsList(businessId: String, audienceId: String, accountType: AudienceAccountType, bookmark: Option[String], pageSize: Option[Int]): AdAccountsAudiencesSharedAccountsList200Response = {
     // TODO: Implement better logic
 
     AdAccountsAudiencesSharedAccountsList200Response(None, List.empty[SharedAudienceAccount])
@@ -35,45 +40,45 @@ class AudienceSharingApiImpl extends AudienceSharingApi {
   /**
     * @inheritdoc
     */
-  override def sharedAudiencesForBusinessList(businessId: String, bookmark: Option[String], order: Option[String], pageSize: Option[Int]): AudiencesList200Response = {
+  override def sharedAudiencesForBusinessList(businessId: String, order: Option[Order], bookmark: Option[String], pageSize: Option[Int]): SharedAudiencesForBusinessList200Response = {
     // TODO: Implement better logic
 
-    AudiencesList200Response(None, List.empty[Audience])
+    SharedAudiencesForBusinessList200Response(None, List.empty[Audience])
   }
 
   /**
     * @inheritdoc
     */
-  override def updateAdAccountToAdAccountSharedAudience(adAccountId: String, sharedAudience: SharedAudience): SharedAudienceResponse = {
+  override def updateAdAccountToAdAccountSharedAudience(adAccountId: String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody): AdAccountToAdAccountSharedAudience = {
     // TODO: Implement better logic
 
-    SharedAudienceResponse(None, None, None, Map.empty)
+    AdAccountToAdAccountSharedAudience(null, None, List.empty[String])
   }
 
   /**
     * @inheritdoc
     */
-  override def updateAdAccountToBusinessSharedAudience(adAccountId: String, businessSharedAudience: BusinessSharedAudience): BusinessSharedAudienceResponse = {
+  override def updateAdAccountToBusinessSharedAudience(adAccountId: String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody): AdAccountToBusinessSharedAudience = {
     // TODO: Implement better logic
 
-    BusinessSharedAudienceResponse(None, None, None, Map.empty)
+    AdAccountToBusinessSharedAudience(null, None, List.empty[String])
   }
 
   /**
     * @inheritdoc
     */
-  override def updateBusinessToAdAccountSharedAudience(businessId: String, sharedAudience: SharedAudience): SharedAudienceResponse = {
+  override def updateBusinessToAdAccountSharedAudience(businessId: String, businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody): BusinessToAdAccountSharedAudience = {
     // TODO: Implement better logic
 
-    SharedAudienceResponse(None, None, None, Map.empty)
+    BusinessToAdAccountSharedAudience(null, None, List.empty[String])
   }
 
   /**
     * @inheritdoc
     */
-  override def updateBusinessToBusinessSharedAudience(businessId: String, businessSharedAudience: BusinessSharedAudience): BusinessSharedAudienceResponse = {
+  override def updateBusinessToBusinessSharedAudience(businessId: String, businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody): BusinessToBusinessSharedAudience = {
     // TODO: Implement better logic
 
-    BusinessSharedAudienceResponse(None, None, None, Map.empty)
+    BusinessToBusinessSharedAudience(null, None, List.empty[String])
   }
 }

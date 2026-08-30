@@ -80,7 +80,7 @@ class CatalogsRetailProductGroupCreateRequest(Model):
     def catalog_id(self) -> str:
         """Gets the catalog_id of this CatalogsRetailProductGroupCreateRequest.
 
-        Catalog id pertaining to the retail product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :return: The catalog_id of this CatalogsRetailProductGroupCreateRequest.
         :rtype: str
@@ -91,7 +91,7 @@ class CatalogsRetailProductGroupCreateRequest(Model):
     def catalog_id(self, catalog_id: str):
         """Sets the catalog_id of this CatalogsRetailProductGroupCreateRequest.
 
-        Catalog id pertaining to the retail product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :param catalog_id: The catalog_id of this CatalogsRetailProductGroupCreateRequest.
         :type catalog_id: str

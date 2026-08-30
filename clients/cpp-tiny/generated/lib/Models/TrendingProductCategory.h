@@ -13,7 +13,6 @@
 #include "bourne/json.hpp"
 #include "Helpers.h"
 #include "ProductCategoriesEngagementType.h"
-#include "VerticalProductCategory.h"
 #include <list>
 
 namespace Tiny {
@@ -54,43 +53,51 @@ public:
 
 	/*! \brief Set Engagement type
 	 */
-	void setEngagementType(ProductCategoriesEngagementType  engagement_type);
+	void setEngagementType(ProductCategoriesEngagementType engagement_type);
 	/*! \brief Get Month-over-month change percentage
 	 */
 	int getPctChangeMom();
 
 	/*! \brief Set Month-over-month change percentage
 	 */
-	void setPctChangeMom(int  pct_change_mom);
+	void setPctChangeMom(int pct_change_mom);
 	/*! \brief Get Relative volume percentage
 	 */
 	int getPercentRelativeVolume();
 
 	/*! \brief Set Relative volume percentage
 	 */
-	void setPercentRelativeVolume(int  percent_relative_volume);
+	void setPercentRelativeVolume(int percent_relative_volume);
+	/*! \brief Get Pinterest Product Category Id
+	 */
+	int getPinterestProductCategoryId();
+
+	/*! \brief Set Pinterest Product Category Id
+	 */
+	void setPinterestProductCategoryId(int pinterest_product_category_id);
 	/*! \brief Get Product Category Name
 	 */
 	std::string getProductCategory();
 
 	/*! \brief Set Product Category Name
 	 */
-	void setProductCategory(std::string  product_category);
+	void setProductCategory(std::string product_category);
 	/*! \brief Get Vertical name associated with the product category
 	 */
-	std::list<VerticalProductCategory> getVerticals();
+	std::list<std::string> getVerticals();
 
 	/*! \brief Set Vertical name associated with the product category
 	 */
-	void setVerticals(std::list <VerticalProductCategory> verticals);
+	void setVerticals(std::list<std::string> verticals);
 
 
     private:
     ProductCategoriesEngagementType engagement_type;
     int pct_change_mom{};
     int percent_relative_volume{};
+    int pinterest_product_category_id{};
     std::string product_category{};
-    std::list<VerticalProductCategory> verticals;
+    std::list<std::string> verticals;
 };
 }
 

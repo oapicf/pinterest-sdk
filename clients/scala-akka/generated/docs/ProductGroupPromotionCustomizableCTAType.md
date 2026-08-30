@@ -1,0 +1,9 @@
+
+
+# ProductGroupPromotionCustomizableCTAType
+
+## Enum
+
+
+
+

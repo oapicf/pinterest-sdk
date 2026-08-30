@@ -17,7 +17,7 @@ case class CatalogsItemsUpsertBatchRequest (
   items: List[ItemUpsertBatchRecord],
 /* We recommend using the CatalogsLocale values. */
   language: Language,
-operation: BatchOperation)
+operation: Operation)
 
 object CatalogsItemsUpsertBatchRequest {
   import DateTimeCodecs._
@@ -111,7 +111,7 @@ object CatalogsItemsUpsertBatchRequest {
   case object NB extends Language
   case object NE extends Language
   case object NL extends Language
-  case object NO extends Language
+  case object `False` extends Language
   case object PL extends Language
   case object PT extends Language
   case object RO extends Language
@@ -221,7 +221,7 @@ object CatalogsItemsUpsertBatchRequest {
       case "NB" => Some(NB)
       case "NE" => Some(NE)
       case "NL" => Some(NL)
-      case "NO" => Some(NO)
+      case "`False`" => Some(`False`)
       case "PL" => Some(PL)
       case "PT" => Some(PT)
       case "RO" => Some(RO)
@@ -332,7 +332,7 @@ object CatalogsItemsUpsertBatchRequest {
       case NB => "NB"
       case NE => "NE"
       case NL => "NL"
-      case NO => "NO"
+      case `False` => "`False`"
       case PL => "PL"
       case PT => "PT"
       case RO => "RO"
@@ -358,6 +358,25 @@ object CatalogsItemsUpsertBatchRequest {
 
   implicit val LanguageEnumDecoder: DecodeJson[Language] =
     DecodeJson.optionDecoder[Language](n => n.string.flatMap(jStr => Language.toLanguage(jStr)), "Language failed to de-serialize")
+  sealed trait Operation
+  case object UPSERT extends Operation
+
+  object Operation {
+    def toOperation(s: String): Option[Operation] = s match {
+      case "UPSERT" => Some(UPSERT)
+      case _ => None
+    }
+
+    def fromOperation(x: Operation): String = x match {
+      case UPSERT => "UPSERT"
+    }
+  }
+
+  implicit val OperationEnumEncoder: EncodeJson[Operation] =
+    EncodeJson[Operation](is => StringEncodeJson(Operation.fromOperation(is)))
+
+  implicit val OperationEnumDecoder: DecodeJson[Operation] =
+    DecodeJson.optionDecoder[Operation](n => n.string.flatMap(jStr => Operation.toOperation(jStr)), "Operation failed to de-serialize")
 
   implicit val CatalogsItemsUpsertBatchRequestCodecJson: CodecJson[CatalogsItemsUpsertBatchRequest] = CodecJson.derive[CatalogsItemsUpsertBatchRequest]
   implicit val CatalogsItemsUpsertBatchRequestDecoder: EntityDecoder[CatalogsItemsUpsertBatchRequest] = jsonOf[CatalogsItemsUpsertBatchRequest]

@@ -1,4 +1,4 @@
-goog.provide('API.Client.TopPinsAnalyticsResponse_date_availability');
+goog.provide('API.Client.TopPinsAnalyticsResponseDateAvailability');
 
 /**
  * @record

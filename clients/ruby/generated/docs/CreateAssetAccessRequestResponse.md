@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **exceptions** | [**Array&lt;CreateAssetAccessRequestErrorMessageInner&gt;**](CreateAssetAccessRequestErrorMessageInner.md) | A list of errors associated with the asset access requests. Will be returned if there is an error. | [optional] |
-| **invites** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **exceptions** | [**Array&lt;AssetAccessRequestError&gt;**](AssetAccessRequestError.md) | A list of errors associated with the asset access requests. Will be returned if there is an error. | [optional] |
+| **invites** | **Hash&lt;String, String&gt;** | An object mapping each partner id to the asset access request id. Only one request id is returned per partner. | [optional] |
 
 ## Example
 

@@ -13,10 +13,10 @@ static leads_export_response_data_t *leads_export_response_data_create_internal(
     if (!leads_export_response_data_local_var) {
         return NULL;
     }
+    memset(leads_export_response_data_local_var, 0, sizeof(leads_export_response_data_t));
+    leads_export_response_data_local_var->_library_owned = 1;
     leads_export_response_data_local_var->download_url = download_url;
     leads_export_response_data_local_var->export_status = export_status;
-
-    leads_export_response_data_local_var->_library_owned = 1;
     return leads_export_response_data_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) leads_export_response_data_t *leads_export_response_
     char *download_url,
     pinterest_rest_api_leads_export_status__e export_status
     ) {
-    return leads_export_response_data_create_internal (
+    leads_export_response_data_t *result = leads_export_response_data_create_internal (
         download_url,
         export_status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void leads_export_response_data_free(leads_export_response_data_t *leads_export_response_data) {
@@ -81,6 +84,8 @@ leads_export_response_data_t *leads_export_response_data_parseFromJSON(cJSON *le
 
     leads_export_response_data_t *leads_export_response_data_local_var = NULL;
 
+    char *download_url_local_str = NULL;
+
     // define the local variable for leads_export_response_data->export_status
     pinterest_rest_api_leads_export_status__e export_status_local_nonprim = 0;
 
@@ -106,13 +111,23 @@ leads_export_response_data_t *leads_export_response_data_parseFromJSON(cJSON *le
     }
 
 
+    if (download_url && !cJSON_IsNull(download_url)) download_url_local_str = strdup(download_url->valuestring);
+
     leads_export_response_data_local_var = leads_export_response_data_create_internal (
-        download_url && !cJSON_IsNull(download_url) ? strdup(download_url->valuestring) : NULL,
+        download_url_local_str,
         export_status ? export_status_local_nonprim : 0
         );
 
+    if (!leads_export_response_data_local_var) {
+        goto end;
+    }
+
     return leads_export_response_data_local_var;
 end:
+    if (download_url_local_str) {
+        free(download_url_local_str);
+        download_url_local_str = NULL;
+    }
     if (export_status_local_nonprim) {
         export_status_local_nonprim = 0;
     }

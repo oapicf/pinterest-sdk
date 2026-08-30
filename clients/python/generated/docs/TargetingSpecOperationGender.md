@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_field** | **str** |  | 
-**operation** | **str** |  | 
+**operation** | [**TargetingSpecListOperation**](TargetingSpecListOperation.md) |  | 
 **values** | [**List[TargetingSpecGender]**](TargetingSpecGender.md) |  | 
 
 ## Example

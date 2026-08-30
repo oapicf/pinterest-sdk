@@ -14,7 +14,7 @@ Feature | HTTP request | Description
 
 
 # **integrations_commerce_del**
-> integrations_commerce_del (external_business_id: STRING_32 )
+> integrations_commerce_del (external_business_id: STRING_32 ): detachable INTEGRATION_METADATA
 
 
 Delete commerce integration
@@ -30,7 +30,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**INTEGRATION_METADATA**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_commerce_patch**
-> integrations_commerce_patch (external_business_id: STRING_32 ; integration_request_patch: INTEGRATION_REQUEST_PATCH ): detachable INTEGRATION_METADATA
+> integrations_commerce_patch (external_business_id: STRING_32 ; integration_metadata_update: INTEGRATION_METADATA_UPDATE ): detachable INTEGRATION_METADATA
 
 
 Update commerce integration
@@ -87,7 +87,7 @@ Update commerce integration metadata for the given external business ID. Note: I
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_business_id** | **STRING_32**| External business ID for the integration. | [default to null]
- **integration_request_patch** | [**INTEGRATION_REQUEST_PATCH**](INTEGRATION_REQUEST_PATCH.md)| Parameters to get create/update the Integration Metadata | 
+ **integration_metadata_update** | [**INTEGRATION_METADATA_UPDATE**](INTEGRATION_METADATA_UPDATE.md)|  | 
 
 ### Return type
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_commerce_post**
-> integrations_commerce_post (integration_request: INTEGRATION_REQUEST ): detachable INTEGRATION_METADATA
+> integrations_commerce_post (integration_metadata_create: INTEGRATION_METADATA_CREATE ): detachable INTEGRATION_METADATA
 
 
 Create commerce integration
@@ -117,7 +117,7 @@ Create commerce integration metadata to link an external business ID with a Pint
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_request** | [**INTEGRATION_REQUEST**](INTEGRATION_REQUEST.md)| Parameters to get create/update the Integration Metadata | 
+ **integration_metadata_create** | [**INTEGRATION_METADATA_CREATE**](INTEGRATION_METADATA_CREATE.md)|  | 
 
 ### Return type
 
@@ -147,7 +147,7 @@ Get integration metadata by ID. Note: If you're interested in joining the beta, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **STRING_32**| Integration ID. | [default to null]
+ **id** | **STRING_32**| Integration record ID. | [default to null]
 
 ### Return type
 
@@ -178,7 +178,7 @@ Get integration metadata list. Note: If you're interested in joining the beta, p
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_logs_post**
-> integrations_logs_post (integration_logs_request: INTEGRATION_LOGS_REQUEST ): detachable INTEGRATION_LOGS_SUCCESS_RESPONSE
+> integrations_logs_post (integration_logs_request_create: INTEGRATION_LOGS_REQUEST_CREATE ): detachable INTEGRATION_LOGS_SUCCESS_RESPONSE
 
 
 Receives batched logs from integration applications.
@@ -208,7 +208,7 @@ This endpoint receives batched logs from integration applications on partner pla
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_logs_request** | [**INTEGRATION_LOGS_REQUEST**](INTEGRATION_LOGS_REQUEST.md)| Ingest log information from external integration application. | 
+ **integration_logs_request_create** | [**INTEGRATION_LOGS_REQUEST_CREATE**](INTEGRATION_LOGS_REQUEST_CREATE.md)|  | 
 
 ### Return type
 

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **AdAccountsAudiencesSharedAccountsList**
-> AdAccountsAudiencesSharedAccountsList200Response AdAccountsAudiencesSharedAccountsList(ad_account_id, audience_id, account_type, page_size = 25, bookmark = var.bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response AdAccountsAudiencesSharedAccountsList(audience_id, account_type, ad_account_id, bookmark = var.bookmark, page_size = 25)
 
 List accounts with access to an audience owned by an ad account
 
@@ -27,11 +27,11 @@ library(openapi)
 # List accounts with access to an audience owned by an ad account
 #
 # prepare function argument(s)
-var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_audience_id <- "audience_id_example" # character | Unique identifier of the audience to use to filter the results.
 var_account_type <- AudienceAccountType$new() # AudienceAccountType | Filter accounts by account type.
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- AudienceSharingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -39,8 +39,8 @@ api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # Configure OAuth2 access token for authorization: client_credentials
 # api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AdAccountsAudiencesSharedAccountsList(var_ad_account_id, var_audience_id, var_account_type, page_size = var_page_size, bookmark = var_bookmarkdata_file = "result.txt")
-result <- api_instance$AdAccountsAudiencesSharedAccountsList(var_ad_account_id, var_audience_id, var_account_type, page_size = var_page_size, bookmark = var_bookmark)
+# result <- api_instance$AdAccountsAudiencesSharedAccountsList(var_audience_id, var_account_type, var_ad_account_id, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$AdAccountsAudiencesSharedAccountsList(var_audience_id, var_account_type, var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -48,11 +48,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **audience_id** | **character**| Unique identifier of the audience to use to filter the results. | 
  **account_type** | [**AudienceAccountType**](.md)| Filter accounts by account type. | 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -70,13 +70,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account audiences shared accounts parameters. |  -  |
-| **404** | Shared accounts not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BusinessAccountAudiencesSharedAccountsList**
-> AdAccountsAudiencesSharedAccountsList200Response BusinessAccountAudiencesSharedAccountsList(business_id, audience_id, account_type, page_size = 25, bookmark = var.bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response BusinessAccountAudiencesSharedAccountsList(business_id, audience_id, account_type, bookmark = var.bookmark, page_size = 25)
 
 List accounts with access to an audience owned by a business
 
@@ -89,18 +92,18 @@ library(openapi)
 # List accounts with access to an audience owned by a business
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
 var_audience_id <- "audience_id_example" # character | Unique identifier of the audience to use to filter the results.
 var_account_type <- AudienceAccountType$new() # AudienceAccountType | Filter accounts by account type.
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- AudienceSharingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BusinessAccountAudiencesSharedAccountsList(var_business_id, var_audience_id, var_account_type, page_size = var_page_size, bookmark = var_bookmarkdata_file = "result.txt")
-result <- api_instance$BusinessAccountAudiencesSharedAccountsList(var_business_id, var_audience_id, var_account_type, page_size = var_page_size, bookmark = var_bookmark)
+# result <- api_instance$BusinessAccountAudiencesSharedAccountsList(var_business_id, var_audience_id, var_account_type, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$BusinessAccountAudiencesSharedAccountsList(var_business_id, var_audience_id, var_account_type, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -111,8 +114,8 @@ Name | Type | Description  | Notes
  **business_id** | **character**| Unique identifier of the requesting business. | 
  **audience_id** | **character**| Unique identifier of the audience to use to filter the results. | 
  **account_type** | [**AudienceAccountType**](.md)| Filter accounts by account type. | 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -130,13 +133,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid business audiences shared accounts parameters. |  -  |
-| **404** | Shared accounts not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **SharedAudiencesForBusinessList**
-> AudiencesList200Response SharedAudiencesForBusinessList(business_id, bookmark = var.bookmark, order = var.order, page_size = 25)
+> SharedAudiencesForBusinessList200Response SharedAudiencesForBusinessList(business_id, order = var.order, bookmark = var.bookmark, page_size = 25)
 
 List received audiences for a business
 
@@ -149,17 +155,17 @@ library(openapi)
 # List received audiences for a business
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_order <- Order$new() # Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_order <- "ASCENDING" # character | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- AudienceSharingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$SharedAudiencesForBusinessList(var_business_id, bookmark = var_bookmark, order = var_order, page_size = var_page_sizedata_file = "result.txt")
-result <- api_instance$SharedAudiencesForBusinessList(var_business_id, bookmark = var_bookmark, order = var_order, page_size = var_page_size)
+# result <- api_instance$SharedAudiencesForBusinessList(var_business_id, order = var_order, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$SharedAudiencesForBusinessList(var_business_id, order = var_order, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -168,13 +174,13 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
+ **order** | [**Order**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **order** | Enum [ASCENDING, DESCENDING] | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**AudiencesList200Response**](audiences_list_200_response.md)
+[**SharedAudiencesForBusinessList200Response**](shared_audiences_for_business_list_200_response.md)
 
 ### Authorization
 
@@ -188,16 +194,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UpdateAdAccountToAdAccountSharedAudience**
-> SharedAudienceResponse UpdateAdAccountToAdAccountSharedAudience(ad_account_id, shared_audience)
+> AdAccountToAdAccountSharedAudience UpdateAdAccountToAdAccountSharedAudience(ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body)
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```R
@@ -207,14 +217,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_shared_audience <- SharedAudience$new("audience_id_example", OperationType$new(), c("recipient_account_ids_example")) # SharedAudience | 
+var_ad_account_to_ad_account_shared_audience_update_with_required_body <- AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody$new("audience_id_example", OperationType$new(), c("recipient_account_ids_example")) # AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 api_instance <- AudienceSharingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$UpdateAdAccountToAdAccountSharedAudience(var_ad_account_id, var_shared_audiencedata_file = "result.txt")
-result <- api_instance$UpdateAdAccountToAdAccountSharedAudience(var_ad_account_id, var_shared_audience)
+# result <- api_instance$UpdateAdAccountToAdAccountSharedAudience(var_ad_account_id, var_ad_account_to_ad_account_shared_audience_update_with_required_bodydata_file = "result.txt")
+result <- api_instance$UpdateAdAccountToAdAccountSharedAudience(var_ad_account_id, var_ad_account_to_ad_account_shared_audience_update_with_required_body)
 dput(result)
 ```
 
@@ -223,11 +233,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **shared_audience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **ad_account_to_ad_account_shared_audience_update_with_required_body** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -241,16 +251,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UpdateAdAccountToBusinessSharedAudience**
-> BusinessSharedAudienceResponse UpdateAdAccountToBusinessSharedAudience(ad_account_id, business_shared_audience)
+> AdAccountToBusinessSharedAudience UpdateAdAccountToBusinessSharedAudience(ad_account_id, ad_account_to_business_shared_audience_update_with_required_body)
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```R
@@ -260,14 +274,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_business_shared_audience <- BusinessSharedAudience$new("audience_id_example", OperationType$new(), c("recipient_business_ids_example")) # BusinessSharedAudience | 
+var_ad_account_to_business_shared_audience_update_with_required_body <- AdAccountToBusinessSharedAudienceUpdateWithRequiredBody$new("audience_id_example", OperationType$new(), c("recipient_business_ids_example")) # AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 api_instance <- AudienceSharingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$UpdateAdAccountToBusinessSharedAudience(var_ad_account_id, var_business_shared_audiencedata_file = "result.txt")
-result <- api_instance$UpdateAdAccountToBusinessSharedAudience(var_ad_account_id, var_business_shared_audience)
+# result <- api_instance$UpdateAdAccountToBusinessSharedAudience(var_ad_account_id, var_ad_account_to_business_shared_audience_update_with_required_bodydata_file = "result.txt")
+result <- api_instance$UpdateAdAccountToBusinessSharedAudience(var_ad_account_id, var_ad_account_to_business_shared_audience_update_with_required_body)
 dput(result)
 ```
 
@@ -276,11 +290,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **business_shared_audience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **ad_account_to_business_shared_audience_update_with_required_body** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -294,16 +308,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account id. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UpdateBusinessToAdAccountSharedAudience**
-> SharedAudienceResponse UpdateBusinessToAdAccountSharedAudience(business_id, shared_audience)
+> BusinessToAdAccountSharedAudience UpdateBusinessToAdAccountSharedAudience(business_id, business_to_ad_account_shared_audience_update_with_required_body)
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```R
@@ -312,15 +330,15 @@ library(openapi)
 # Update audience sharing from a business to ad accounts
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_shared_audience <- SharedAudience$new("audience_id_example", OperationType$new(), c("recipient_account_ids_example")) # SharedAudience | 
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_business_to_ad_account_shared_audience_update_with_required_body <- BusinessToAdAccountSharedAudienceUpdateWithRequiredBody$new("audience_id_example", OperationType$new(), c("recipient_account_ids_example")) # BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 api_instance <- AudienceSharingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$UpdateBusinessToAdAccountSharedAudience(var_business_id, var_shared_audiencedata_file = "result.txt")
-result <- api_instance$UpdateBusinessToAdAccountSharedAudience(var_business_id, var_shared_audience)
+# result <- api_instance$UpdateBusinessToAdAccountSharedAudience(var_business_id, var_business_to_ad_account_shared_audience_update_with_required_bodydata_file = "result.txt")
+result <- api_instance$UpdateBusinessToAdAccountSharedAudience(var_business_id, var_business_to_ad_account_shared_audience_update_with_required_body)
 dput(result)
 ```
 
@@ -329,11 +347,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
- **shared_audience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **business_to_ad_account_shared_audience_update_with_required_body** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -347,16 +365,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UpdateBusinessToBusinessSharedAudience**
-> BusinessSharedAudienceResponse UpdateBusinessToBusinessSharedAudience(business_id, business_shared_audience)
+> BusinessToBusinessSharedAudience UpdateBusinessToBusinessSharedAudience(business_id, business_to_business_shared_audience_update_with_required_body)
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```R
@@ -365,15 +387,15 @@ library(openapi)
 # Update audience sharing between businesses
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_business_shared_audience <- BusinessSharedAudience$new("audience_id_example", OperationType$new(), c("recipient_business_ids_example")) # BusinessSharedAudience | 
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_business_to_business_shared_audience_update_with_required_body <- BusinessToBusinessSharedAudienceUpdateWithRequiredBody$new("audience_id_example", OperationType$new(), c("recipient_business_ids_example")) # BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 api_instance <- AudienceSharingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$UpdateBusinessToBusinessSharedAudience(var_business_id, var_business_shared_audiencedata_file = "result.txt")
-result <- api_instance$UpdateBusinessToBusinessSharedAudience(var_business_id, var_business_shared_audience)
+# result <- api_instance$UpdateBusinessToBusinessSharedAudience(var_business_id, var_business_to_business_shared_audience_update_with_required_bodydata_file = "result.txt")
+result <- api_instance$UpdateBusinessToBusinessSharedAudience(var_business_id, var_business_to_business_shared_audience_update_with_required_body)
 dput(result)
 ```
 
@@ -382,11 +404,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
- **business_shared_audience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **business_to_business_shared_audience_update_with_required_body** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -400,7 +422,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

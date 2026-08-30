@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningAdGroupAudienceSize"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningAdGroupAudienceSize"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CampaignPlanningAdGroupAudienceSize {
+    title = CampaignPlanningAdGroupAudienceSize
+    description = CampaignPlanningAdGroupAudienceSize
+    derivedFrom = Root
+    properties {
+        count_lower {
+          type =  integer
+          description = "Lower bound of the audience size estimate."
+          optional = false
+        }
+        count_upper {
+          type =  integer
+          description = "Upper bound of the audience size estimate."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningAdGroupAudienceSize {
+    title = CampaignPlanningAdGroupAudienceSize
+    description = CampaignPlanningAdGroupAudienceSize
+    implements = openapi_server.resourceTypes.CampaignPlanningAdGroupAudienceSize
+
+  }
+}

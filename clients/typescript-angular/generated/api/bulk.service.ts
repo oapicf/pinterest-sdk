@@ -17,15 +17,17 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { BulkDownloadRequest } from '../model/bulkDownloadRequest';
+import { BulkDownload } from '../model/bulkDownload';
 // @ts-ignore
-import { BulkDownloadResponse } from '../model/bulkDownloadResponse';
+import { BulkDownloadCreate } from '../model/bulkDownloadCreate';
+// @ts-ignore
+import { BulkJobData } from '../model/bulkJobData';
 // @ts-ignore
 import { BulkUpsertRequest } from '../model/bulkUpsertRequest';
 // @ts-ignore
 import { BulkUpsertResponse } from '../model/bulkUpsertResponse';
 // @ts-ignore
-import { BulkUpsertStatusResponse } from '../model/bulkUpsertStatusResponse';
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -45,23 +47,23 @@ export class BulkService extends BaseService {
 
     /**
      * Get advertiser entities in bulk
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      * @endpoint post /ad_accounts/{ad_account_id}/bulk/download
      * @param adAccountId Unique identifier of an ad account.
-     * @param bulkDownloadRequest Parameters to get ad entities in bulk
+     * @param bulkDownloadCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BulkDownloadResponse>;
-    public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BulkDownloadResponse>>;
-    public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BulkDownloadResponse>>;
-    public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public bulkDownloadCreate(adAccountId: string, bulkDownloadCreate: BulkDownloadCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BulkDownload>;
+    public bulkDownloadCreate(adAccountId: string, bulkDownloadCreate: BulkDownloadCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BulkDownload>>;
+    public bulkDownloadCreate(adAccountId: string, bulkDownloadCreate: BulkDownloadCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BulkDownload>>;
+    public bulkDownloadCreate(adAccountId: string, bulkDownloadCreate: BulkDownloadCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling bulkDownloadCreate.');
         }
-        if (bulkDownloadRequest === null || bulkDownloadRequest === undefined) {
-            throw new Error('Required parameter bulkDownloadRequest was null or undefined when calling bulkDownloadCreate.');
+        if (bulkDownloadCreate === null || bulkDownloadCreate === undefined) {
+            throw new Error('Required parameter bulkDownloadCreate was null or undefined when calling bulkDownloadCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -103,10 +105,10 @@ export class BulkService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/bulk/download`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<BulkDownloadResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<BulkDownload>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: bulkDownloadRequest,
+                body: bulkDownloadCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -119,18 +121,18 @@ export class BulkService extends BaseService {
 
     /**
      * Download advertiser entities in bulk
-     * Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+     * Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
      * @endpoint get /ad_accounts/{ad_account_id}/bulk/{bulk_request_id}
      * @param adAccountId Unique identifier of an ad account.
-     * @param bulkRequestId Unique identifier of a bulk upsert request.
-     * @param includeDetails if set to True then attach the errors/details to all the requests
+     * @param bulkRequestId Bulk request ID that is from one of the entities bulk endpoints
+     * @param includeDetails If set to True then attach the errors/details to all the requests
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BulkUpsertStatusResponse>;
-    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BulkUpsertStatusResponse>>;
-    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BulkUpsertStatusResponse>>;
+    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BulkJobData>;
+    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BulkJobData>>;
+    public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BulkJobData>>;
     public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling bulkRequestGet.');
@@ -183,7 +185,7 @@ export class BulkService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/bulk/${this.configuration.encodeParam({name: "bulkRequestId", value: bulkRequestId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<BulkUpsertStatusResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<BulkJobData>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
@@ -199,7 +201,7 @@ export class BulkService extends BaseService {
 
     /**
      * Create/update ad entities in bulk
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
      * @endpoint post /ad_accounts/{ad_account_id}/bulk/upsert
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk

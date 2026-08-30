@@ -1,6 +1,7 @@
 (ns pinterest-rest-api.specs.catalogs-creative-assets-attributes
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.catalogs-ai-content-disclosure :refer :all]
             )
   (:import (java.io File)))
 
@@ -19,6 +20,7 @@
    (ds/opt :link) string?
    (ds/opt :title) string?
    (ds/opt :visibility) string?
+   (ds/opt :ai_disclosures) (s/coll-of catalogs-ai-content-disclosure-spec)
    (ds/opt :image_link) string?
    (ds/opt :video_link) string?
    })

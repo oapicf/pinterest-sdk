@@ -13,12 +13,12 @@ part 'catalogs_hotel_list_products_by_catalog_based_filter_request.g.dart';
 /// Request object to list products for a given hotel catalog_id and product group filter.
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the hotel product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [filters] 
 @BuiltValue()
 abstract class CatalogsHotelListProductsByCatalogBasedFilterRequest implements Built<CatalogsHotelListProductsByCatalogBasedFilterRequest, CatalogsHotelListProductsByCatalogBasedFilterRequestBuilder> {
-  /// Catalog id pertaining to the hotel product group.
+  /// Catalog ID pertaining to the product group.
   @BuiltValueField(wireName: r'catalog_id')
   String get catalogId;
 

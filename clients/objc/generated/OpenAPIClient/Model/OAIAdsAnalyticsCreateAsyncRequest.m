@@ -6,12 +6,7 @@
   self = [super init];
   if (self) {
     // initialize property's default value, if any
-    self.clickWindowDays = @30;
-    self.conversionReportTime = @"TIME_OF_AD_ACTION";
-    self.engagementWindowDays = @30;
-    self.viewWindowDays = @1;
     self.combineTargetingTypes = @(NO);
-    self.reportFormat = @"JSON";
     
   }
   return self;
@@ -23,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"attributionTypes": @"attribution_types", @"clickWindowDays": @"click_window_days", @"conversionReportTime": @"conversion_report_time", @"endDate": @"end_date", @"engagementWindowDays": @"engagement_window_days", @"granularity": @"granularity", @"startDate": @"start_date", @"viewWindowDays": @"view_window_days", @"campaignIds": @"campaign_ids", @"campaignStatuses": @"campaign_statuses", @"campaignObjectiveTypes": @"campaign_objective_types", @"campaignBrandLabel": @"campaign_brand_label", @"adGroupIds": @"ad_group_ids", @"adGroupStatuses": @"ad_group_statuses", @"adIds": @"ad_ids", @"adStatuses": @"ad_statuses", @"productGroupIds": @"product_group_ids", @"productGroupStatuses": @"product_group_statuses", @"productItemIds": @"product_item_ids", @"targetingTypes": @"targeting_types", @"metricsFilters": @"metrics_filters", @"columns": @"columns", @"combineTargetingTypes": @"combine_targeting_types", @"customConversionEventMetrics": @"custom_conversion_event_metrics", @"endHour": @"end_hour", @"level": @"level", @"primarySort": @"primary_sort", @"reportFormat": @"report_format", @"reportingTimezone": @"reporting_timezone", @"startHour": @"start_hour" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adGroupIds": @"ad_group_ids", @"adGroupStatuses": @"ad_group_statuses", @"adIds": @"ad_ids", @"adStatuses": @"ad_statuses", @"attributionTypes": @"attribution_types", @"campaignBrandLabel": @"campaign_brand_label", @"campaignCustomLabel": @"campaign_custom_label", @"campaignIds": @"campaign_ids", @"campaignObjectiveTypes": @"campaign_objective_types", @"campaignStatuses": @"campaign_statuses", @"clickWindowDays": @"click_window_days", @"columns": @"columns", @"combineTargetingTypes": @"combine_targeting_types", @"conversionReportTime": @"conversion_report_time", @"customConversionEventMetrics": @"custom_conversion_event_metrics", @"endDate": @"end_date", @"endHour": @"end_hour", @"engagementWindowDays": @"engagement_window_days", @"granularity": @"granularity", @"level": @"level", @"metricsFilters": @"metrics_filters", @"primarySort": @"primary_sort", @"productGroupIds": @"product_group_ids", @"productGroupStatuses": @"product_group_statuses", @"productItemIds": @"product_item_ids", @"reportFormat": @"report_format", @"reportingTimezone": @"reporting_timezone", @"startDate": @"start_date", @"startHour": @"start_hour", @"targetingTypes": @"targeting_types", @"viewWindowDays": @"view_window_days" }];
 }
 
 /**
@@ -33,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"attributionTypes", @"clickWindowDays", @"conversionReportTime", @"engagementWindowDays", @"viewWindowDays", @"campaignIds", @"campaignStatuses", @"campaignObjectiveTypes", @"campaignBrandLabel", @"adGroupIds", @"adGroupStatuses", @"adIds", @"adStatuses", @"productGroupIds", @"productGroupStatuses", @"productItemIds", @"targetingTypes", @"metricsFilters", @"combineTargetingTypes", @"customConversionEventMetrics", @"endHour", @"primarySort", @"reportFormat", @"reportingTimezone", @"startHour"];
+  NSArray *optionalProperties = @[@"adGroupIds", @"adGroupStatuses", @"adIds", @"adStatuses", @"attributionTypes", @"campaignBrandLabel", @"campaignCustomLabel", @"campaignIds", @"campaignObjectiveTypes", @"campaignStatuses", @"clickWindowDays", @"columns", @"combineTargetingTypes", @"conversionReportTime", @"customConversionEventMetrics", @"endHour", @"engagementWindowDays", @"level", @"metricsFilters", @"primarySort", @"productGroupIds", @"productGroupStatuses", @"productItemIds", @"reportFormat", @"reportingTimezone", @"startHour", @"targetingTypes", @"viewWindowDays"];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -1,7 +1,7 @@
 /*
  * update_member_asset_access_body.h
  *
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  */
 
 #ifndef _update_member_asset_access_body_H_
@@ -15,7 +15,7 @@
 
 typedef struct update_member_asset_access_body_t update_member_asset_access_body_t;
 
-#include "update_member_asset_access_body_accesses_inner.h"
+#include "update_member_asset_access_item.h"
 
 
 

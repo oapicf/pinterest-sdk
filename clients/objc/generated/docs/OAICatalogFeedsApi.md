@@ -17,15 +17,15 @@ Method | HTTP request | Description
 # **feedProcessingResultsList**
 ```objc
 -(NSURLSessionTask*) feedProcessingResultsListWithFeedId: (NSString*) feedId
+    adAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAIFeedProcessingResultsList200Response* output, NSError* error)) handler;
 ```
 
 List feed processing results
 
-Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 ```objc
@@ -35,18 +35,18 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* feedId = @"feedId_example"; // Unique identifier of a feed
-NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSString* feedId = @"feedId_example"; // Unique identifier of a feed.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
+NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 // List feed processing results
 [apiInstance feedProcessingResultsListWithFeedId:feedId
+              adAccountId:adAccountId
               bookmark:bookmark
               pageSize:pageSize
-              adAccountId:adAccountId
           completionHandler: ^(OAIFeedProcessingResultsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -61,10 +61,10 @@ OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **NSString***| Unique identifier of a feed | 
- **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **feedId** | **NSString***| Unique identifier of a feed. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
+ **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -83,14 +83,14 @@ Name | Type | Description  | Notes
 
 # **feedsCreate**
 ```objc
--(NSURLSessionTask*) feedsCreateWithFeedsCreateRequest: (OAIFeedsCreateRequest*) feedsCreateRequest
+-(NSURLSessionTask*) feedsCreateWithCatalogsFeedCreateRequestSchema: (OAICatalogsFeedCreateRequestSchema*) catalogsFeedCreateRequestSchema
     adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAICatalogsFeed* output, NSError* error)) handler;
 ```
 
 Create feed
 
-Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example
 ```objc
@@ -103,13 +103,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-OAIFeedsCreateRequest* feedsCreateRequest = [[OAIFeedsCreateRequest alloc] init]; // Request object used to created a feed.
+OAICatalogsFeedCreateRequestSchema* catalogsFeedCreateRequestSchema = [[OAICatalogsFeedCreateRequestSchema alloc] init]; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 // Create feed
-[apiInstance feedsCreateWithFeedsCreateRequest:feedsCreateRequest
+[apiInstance feedsCreateWithCatalogsFeedCreateRequestSchema:catalogsFeedCreateRequestSchema
               adAccountId:adAccountId
           completionHandler: ^(OAICatalogsFeed* output, NSError* error) {
                         if (output) {
@@ -125,7 +125,7 @@ OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedsCreateRequest** | [**OAIFeedsCreateRequest***](OAIFeedsCreateRequest.md)| Request object used to created a feed. | 
+ **catalogsFeedCreateRequestSchema** | [**OAICatalogsFeedCreateRequestSchema***](OAICatalogsFeedCreateRequestSchema.md)|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -147,12 +147,12 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) feedsDeleteWithFeedId: (NSString*) feedId
     adAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(OAICatalogsFeed* output, NSError* error)) handler;
 ```
 
 Delete feed
 
-Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+Delete a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 
 ### Example
 ```objc
@@ -165,7 +165,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* feedId = @"feedId_example"; // Unique identifier of a feed
+NSString* feedId = @"feedId_example"; // Unique identifier of a feed.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
@@ -173,7 +173,10 @@ OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 // Delete feed
 [apiInstance feedsDeleteWithFeedId:feedId
               adAccountId:adAccountId
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(OAICatalogsFeed* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling OAICatalogFeedsApi->feedsDelete: %@", error);
                         }
@@ -184,12 +187,12 @@ OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **NSString***| Unique identifier of a feed | 
+ **feedId** | **NSString***| Unique identifier of a feed. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**OAICatalogsFeed***](OAICatalogsFeed.md)
 
 ### Authorization
 
@@ -211,7 +214,7 @@ void (empty response body)
 
 Get feed
 
-Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 
 ### Example
 ```objc
@@ -224,7 +227,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* feedId = @"feedId_example"; // Unique identifier of a feed
+NSString* feedId = @"feedId_example"; // Unique identifier of a feed.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
@@ -246,7 +249,7 @@ OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **NSString***| Unique identifier of a feed | 
+ **feedId** | **NSString***| Unique identifier of a feed. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -273,7 +276,7 @@ Name | Type | Description  | Notes
 
 Ingest feed items
 
-Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example
 ```objc
@@ -283,7 +286,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* feedId = @"feedId_example"; // Unique identifier of a feed
+NSString* feedId = @"feedId_example"; // Unique identifier of a feed.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
@@ -305,7 +308,7 @@ OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **NSString***| Unique identifier of a feed | 
+ **feedId** | **NSString***| Unique identifier of a feed. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -325,16 +328,16 @@ Name | Type | Description  | Notes
 
 # **feedsList**
 ```objc
--(NSURLSessionTask*) feedsListWithBookmark: (NSString*) bookmark
-    pageSize: (NSNumber*) pageSize
-    catalogId: (NSString*) catalogId
+-(NSURLSessionTask*) feedsListWithCatalogId: (NSString*) catalogId
     adAccountId: (NSString*) adAccountId
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
         completionHandler: (void (^)(OAIFeedsList200Response* output, NSError* error)) handler;
 ```
 
 List feeds
 
-Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).
 
 ### Example
 ```objc
@@ -347,18 +350,18 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSString* catalogId = @"catalogId_example"; // Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
+NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 // List feeds
-[apiInstance feedsListWithBookmark:bookmark
-              pageSize:pageSize
-              catalogId:catalogId
+[apiInstance feedsListWithCatalogId:catalogId
               adAccountId:adAccountId
+              bookmark:bookmark
+              pageSize:pageSize
           completionHandler: ^(OAIFeedsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -373,10 +376,10 @@ OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **catalogId** | **NSString***| Filter entities for a given catalog_id. If not given, all catalogs are considered. | [optional] 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
+ **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -396,14 +399,14 @@ Name | Type | Description  | Notes
 # **feedsUpdate**
 ```objc
 -(NSURLSessionTask*) feedsUpdateWithFeedId: (NSString*) feedId
-    feedsUpdateRequest: (OAIFeedsUpdateRequest*) feedsUpdateRequest
+    catalogsFeedUpdateRequestSchema: (OAICatalogsFeedUpdateRequestSchema*) catalogsFeedUpdateRequestSchema
     adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAICatalogsFeed* output, NSError* error)) handler;
 ```
 
 Update feed
 
-Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to [Before you get started with Catalogs](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs). For Hotel partners, refer to [Pinterest API for shopping](/docs/api-features/shopping-overview/).  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example
 ```objc
@@ -416,15 +419,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* feedId = @"feedId_example"; // Unique identifier of a feed
-OAIFeedsUpdateRequest* feedsUpdateRequest = [[OAIFeedsUpdateRequest alloc] init]; // Request object used to update a feed.
+NSString* feedId = @"feedId_example"; // Unique identifier of a feed.
+OAICatalogsFeedUpdateRequestSchema* catalogsFeedUpdateRequestSchema = [[OAICatalogsFeedUpdateRequestSchema alloc] init]; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 // Update feed
 [apiInstance feedsUpdateWithFeedId:feedId
-              feedsUpdateRequest:feedsUpdateRequest
+              catalogsFeedUpdateRequestSchema:catalogsFeedUpdateRequestSchema
               adAccountId:adAccountId
           completionHandler: ^(OAICatalogsFeed* output, NSError* error) {
                         if (output) {
@@ -440,8 +443,8 @@ OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedId** | **NSString***| Unique identifier of a feed | 
- **feedsUpdateRequest** | [**OAIFeedsUpdateRequest***](OAIFeedsUpdateRequest.md)| Request object used to update a feed. | 
+ **feedId** | **NSString***| Unique identifier of a feed. | 
+ **catalogsFeedUpdateRequestSchema** | [**OAICatalogsFeedUpdateRequestSchema***](OAICatalogsFeedUpdateRequestSchema.md)|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -462,17 +465,17 @@ Name | Type | Description  | Notes
 # **itemsIssuesList**
 ```objc
 -(NSURLSessionTask*) itemsIssuesListWithProcessingResultId: (NSString*) processingResultId
-    bookmark: (NSString*) bookmark
-    pageSize: (NSNumber*) pageSize
     itemNumbers: (NSArray<NSNumber*>*) itemNumbers
     itemValidationIssue: (OAICatalogsItemValidationIssue) itemValidationIssue
     adAccountId: (NSString*) adAccountId
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
         completionHandler: (void (^)(OAIItemsIssuesList200Response* output, NSError* error)) handler;
 ```
 
 List item issues
 
-List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to [Build catalogs report](/docs/api/v5/#operation/reports/create) and [Get catalogs report](/docs/api/v5/#operation/reports/get) endpoints. Moreover, they support multiple types of catalogs.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 ```objc
@@ -482,22 +485,22 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* processingResultId = 5224831246441439241; // Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
-NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSArray<NSNumber*>* itemNumbers = [1,5]; // Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. (optional)
-OAICatalogsItemValidationIssue itemValidationIssue = TITLE_MISSING; // Filter item validation issues that have a given type of item validation issue. (optional)
+NSString* processingResultId = @"processingResultId_example"; // Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
+NSArray<NSNumber*>* itemNumbers = @[@56]; // Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. (optional)
+OAICatalogsItemValidationIssue itemValidationIssue = [[OAICatalogsItemValidationIssue alloc] init]; // Filter item validation issues that have a given type of item validation issue. (optional)
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
+NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 
 // List item issues
 [apiInstance itemsIssuesListWithProcessingResultId:processingResultId
-              bookmark:bookmark
-              pageSize:pageSize
               itemNumbers:itemNumbers
               itemValidationIssue:itemValidationIssue
               adAccountId:adAccountId
+              bookmark:bookmark
+              pageSize:pageSize
           completionHandler: ^(OAIItemsIssuesList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -513,11 +516,11 @@ OAICatalogFeedsApi*apiInstance = [[OAICatalogFeedsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **processingResultId** | **NSString***| Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). | 
- **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **itemNumbers** | [**NSArray&lt;NSNumber*&gt;***](NSNumber*.md)| Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. | [optional] 
  **itemValidationIssue** | [**OAICatalogsItemValidationIssue**](.md)| Filter item validation issues that have a given type of item validation issue. | [optional] 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
+ **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 

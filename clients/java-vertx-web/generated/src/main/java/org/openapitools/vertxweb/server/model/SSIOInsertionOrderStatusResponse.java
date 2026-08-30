@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+/**
+ * SSIO insertion order status response for a single pin order id lookup.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOInsertionOrderStatusResponse   {
   
@@ -86,9 +89,6 @@ public class SSIOInsertionOrderStatusResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

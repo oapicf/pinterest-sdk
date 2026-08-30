@@ -14,10 +14,10 @@ Name | Type | Description | Notes
 **appVersionNumber** | `String` | Version number of the integration application. |  [optional property]
 **clientTimestamp** | `Integer` | Timestamp in milliseconds of when the log was executed at the client. | 
 **error** | [`IntegrationLogClientError`](IntegrationLogClientError.md) |  |  [optional property]
-**eventType** | [**EventTypeEnum**](#EventTypeEnum) | Log event type | 
+**eventType** | `IntegrationLogEventType` | Log event type | 
 **externalBusinessId** | `String` |  |  [optional property]
 **feedProfileId** | `String` |  |  [optional property]
-**logLevel** | [**LogLevelEnum**](#LogLevelEnum) | Log level type | 
+**logLevel** | `IntegrationLogLevel` | Log level type | 
 **merchantId** | `String` |  |  [optional property]
 **message** | `String` | Explanation of the event that occured. |  [optional property]
 **platformVersionNumber** | `String` | Version number of the platform the integration application is running on. |  [optional property]
@@ -28,22 +28,9 @@ Name | Type | Description | Notes
 
 
 
-## EventTypeEnum
-
-Name | Value
----- | -----
-APP | `"APP"`
-API | `"API"`
 
 
 
-## LogLevelEnum
-
-Name | Value
----- | -----
-INFO | `"INFO"`
-WARN | `"WARN"`
-ERROR | `"ERROR"`
 
 
 

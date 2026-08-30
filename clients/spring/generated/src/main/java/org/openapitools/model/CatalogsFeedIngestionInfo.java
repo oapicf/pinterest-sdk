@@ -2,30 +2,34 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedIngestionInfo
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestionInfo {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IN_STOCK;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer OUT_OF_STOCK;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PREORDER;
 
   public CatalogsFeedIngestionInfo IN_STOCK(@Nullable Integer IN_STOCK) {
@@ -44,6 +48,7 @@ public class CatalogsFeedIngestionInfo {
     return IN_STOCK;
   }
 
+  @JsonProperty("IN_STOCK")
   public void setINSTOCK(@Nullable Integer IN_STOCK) {
     this.IN_STOCK = IN_STOCK;
   }
@@ -64,6 +69,7 @@ public class CatalogsFeedIngestionInfo {
     return OUT_OF_STOCK;
   }
 
+  @JsonProperty("OUT_OF_STOCK")
   public void setOUTOFSTOCK(@Nullable Integer OUT_OF_STOCK) {
     this.OUT_OF_STOCK = OUT_OF_STOCK;
   }
@@ -84,6 +90,7 @@ public class CatalogsFeedIngestionInfo {
     return PREORDER;
   }
 
+  @JsonProperty("PREORDER")
   public void setPREORDER(@Nullable Integer PREORDER) {
     this.PREORDER = PREORDER;
   }
@@ -122,11 +129,8 @@ public class CatalogsFeedIngestionInfo {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

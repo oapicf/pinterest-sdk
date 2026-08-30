@@ -44,7 +44,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="integrationsCommerceDel"></a>
 # **integrationsCommerceDel**
 ```java
-Mono<Void> IntegrationsApi.integrationsCommerceDel(externalBusinessId)
+Mono<IntegrationMetadata> IntegrationsApi.integrationsCommerceDel(externalBusinessId)
 ```
 
 Delete commerce integration
@@ -57,7 +57,8 @@ Delete commerce integration metadata for the given external business ID. Note: I
 | **externalBusinessId** | `String`| External business ID for the integration. | |
 
 
-
+### Return type
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`
@@ -95,7 +96,7 @@ Get commerce integration metadata associated with the given external business ID
 <a id="integrationsCommercePatch"></a>
 # **integrationsCommercePatch**
 ```java
-Mono<IntegrationMetadata> IntegrationsApi.integrationsCommercePatch(externalBusinessIdintegrationRequestPatch)
+Mono<IntegrationMetadata> IntegrationsApi.integrationsCommercePatch(externalBusinessIdintegrationMetadataUpdate)
 ```
 
 Update commerce integration
@@ -106,7 +107,7 @@ Update commerce integration metadata for the given external business ID. Note: I
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **externalBusinessId** | `String`| External business ID for the integration. | |
-| **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataUpdate** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md)|  | |
 
 
 ### Return type
@@ -122,7 +123,7 @@ Update commerce integration metadata for the given external business ID. Note: I
 <a id="integrationsCommercePost"></a>
 # **integrationsCommercePost**
 ```java
-Mono<IntegrationMetadata> IntegrationsApi.integrationsCommercePost(integrationRequest)
+Mono<IntegrationMetadata> IntegrationsApi.integrationsCommercePost(integrationMetadataCreate)
 ```
 
 Create commerce integration
@@ -132,7 +133,7 @@ Create commerce integration metadata to link an external business ID with a Pint
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataCreate** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md)|  | |
 
 
 ### Return type
@@ -158,7 +159,7 @@ Get integration metadata by ID. Note: If you&#39;re interested in joining the be
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | `String`| Integration ID. | |
+| **id** | `String`| Integration record ID. | |
 
 
 ### Return type
@@ -185,7 +186,7 @@ Get integration metadata list. Note: If you&#39;re interested in joining the bet
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -201,7 +202,7 @@ Get integration metadata list. Note: If you&#39;re interested in joining the bet
 <a id="integrationsLogsPost"></a>
 # **integrationsLogsPost**
 ```java
-Mono<IntegrationLogsSuccessResponse> IntegrationsApi.integrationsLogsPost(integrationLogsRequest)
+Mono<IntegrationLogsSuccessResponse> IntegrationsApi.integrationsLogsPost(integrationLogsRequestCreate)
 ```
 
 Receives batched logs from integration applications.
@@ -211,7 +212,7 @@ This endpoint receives batched logs from integration applications on partner pla
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationLogsRequest** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md)| Ingest log information from external integration application. | |
+| **integrationLogsRequestCreate** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md)|  | |
 
 
 ### Return type

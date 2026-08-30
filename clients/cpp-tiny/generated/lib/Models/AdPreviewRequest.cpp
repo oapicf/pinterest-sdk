@@ -7,17 +7,19 @@ using namespace Tiny;
 AdPreviewRequest::AdPreviewRequest()
 {
 	image_url = std::string();
+	promotion_id = std::string();
 	title = std::string();
+	creative_type = null;
 	pin_id = std::string();
 	catalog_product_group_id = std::string();
-	creative_type = std::string();
 	customizable_cta_type = null;
 	hero_image_title = std::string();
 	hero_image_url = std::string();
 	hero_pin_id = std::string();
 	image_tag = std::string();
 	item_id = std::string();
-	preferred_media_type = std::string();
+	preferred_media_type = null;
+	show_promotion = bool(false);
 	video_tag = std::string();
 }
 
@@ -49,6 +51,19 @@ AdPreviewRequest::fromJson(std::string jsonObj)
 
     }
 
+    const char *promotion_idKey = "promotion_id";
+
+    if(object.has_key(promotion_idKey))
+    {
+        bourne::json value = object[promotion_idKey];
+
+
+
+        jsonToValue(&promotion_id, value, "std::string");
+
+
+    }
+
     const char *titleKey = "title";
 
     if(object.has_key(titleKey))
@@ -59,6 +74,20 @@ AdPreviewRequest::fromJson(std::string jsonObj)
 
         jsonToValue(&title, value, "std::string");
 
+
+    }
+
+    const char *creative_typeKey = "creative_type";
+
+    if(object.has_key(creative_typeKey))
+    {
+        bourne::json value = object[creative_typeKey];
+
+
+
+
+        AdShoppingPreviewCreativeType* obj = &creative_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -84,19 +113,6 @@ AdPreviewRequest::fromJson(std::string jsonObj)
 
 
         jsonToValue(&catalog_product_group_id, value, "std::string");
-
-
-    }
-
-    const char *creative_typeKey = "creative_type";
-
-    if(object.has_key(creative_typeKey))
-    {
-        bourne::json value = object[creative_typeKey];
-
-
-
-        jsonToValue(&creative_type, value, "std::string");
 
 
     }
@@ -188,7 +204,21 @@ AdPreviewRequest::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&preferred_media_type, value, "std::string");
+
+        BasePreferredMediaType* obj = &preferred_media_type;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *show_promotionKey = "show_promotion";
+
+    if(object.has_key(show_promotionKey))
+    {
+        bourne::json value = object[show_promotionKey];
+
+
+
+        jsonToValue(&show_promotion, value, "bool");
 
 
     }
@@ -225,8 +255,22 @@ AdPreviewRequest::toJson()
 
 
 
+    object["promotion_id"] = getPromotionId();
+
+
+
+
+
+
     object["title"] = getTitle();
 
+
+
+
+
+
+
+	object["creative_type"] = getCreativeType().toJson();
 
 
 
@@ -240,13 +284,6 @@ AdPreviewRequest::toJson()
 
 
     object["catalog_product_group_id"] = getCatalogProductGroupId();
-
-
-
-
-
-
-    object["creative_type"] = getCreativeType();
 
 
 
@@ -295,7 +332,14 @@ AdPreviewRequest::toJson()
 
 
 
-    object["preferred_media_type"] = getPreferredMediaType();
+
+	object["preferred_media_type"] = getPreferredMediaType().toJson();
+
+
+
+
+
+    object["show_promotion"] = isShowPromotion();
 
 
 
@@ -317,9 +361,21 @@ AdPreviewRequest::getImageUrl()
 }
 
 void
-AdPreviewRequest::setImageUrl(std::string  image_url)
+AdPreviewRequest::setImageUrl(std::string image_url)
 {
 	this->image_url = image_url;
+}
+
+std::string
+AdPreviewRequest::getPromotionId()
+{
+	return promotion_id;
+}
+
+void
+AdPreviewRequest::setPromotionId(std::string promotion_id)
+{
+	this->promotion_id = promotion_id;
 }
 
 std::string
@@ -329,9 +385,21 @@ AdPreviewRequest::getTitle()
 }
 
 void
-AdPreviewRequest::setTitle(std::string  title)
+AdPreviewRequest::setTitle(std::string title)
 {
 	this->title = title;
+}
+
+AdShoppingPreviewCreativeType
+AdPreviewRequest::getCreativeType()
+{
+	return creative_type;
+}
+
+void
+AdPreviewRequest::setCreativeType(AdShoppingPreviewCreativeType creative_type)
+{
+	this->creative_type = creative_type;
 }
 
 std::string
@@ -341,7 +409,7 @@ AdPreviewRequest::getPinId()
 }
 
 void
-AdPreviewRequest::setPinId(std::string  pin_id)
+AdPreviewRequest::setPinId(std::string pin_id)
 {
 	this->pin_id = pin_id;
 }
@@ -353,21 +421,9 @@ AdPreviewRequest::getCatalogProductGroupId()
 }
 
 void
-AdPreviewRequest::setCatalogProductGroupId(std::string  catalog_product_group_id)
+AdPreviewRequest::setCatalogProductGroupId(std::string catalog_product_group_id)
 {
 	this->catalog_product_group_id = catalog_product_group_id;
-}
-
-std::string
-AdPreviewRequest::getCreativeType()
-{
-	return creative_type;
-}
-
-void
-AdPreviewRequest::setCreativeType(std::string  creative_type)
-{
-	this->creative_type = creative_type;
 }
 
 CustomizableCTAType
@@ -377,7 +433,7 @@ AdPreviewRequest::getCustomizableCtaType()
 }
 
 void
-AdPreviewRequest::setCustomizableCtaType(CustomizableCTAType  customizable_cta_type)
+AdPreviewRequest::setCustomizableCtaType(CustomizableCTAType customizable_cta_type)
 {
 	this->customizable_cta_type = customizable_cta_type;
 }
@@ -389,7 +445,7 @@ AdPreviewRequest::getHeroImageTitle()
 }
 
 void
-AdPreviewRequest::setHeroImageTitle(std::string  hero_image_title)
+AdPreviewRequest::setHeroImageTitle(std::string hero_image_title)
 {
 	this->hero_image_title = hero_image_title;
 }
@@ -401,7 +457,7 @@ AdPreviewRequest::getHeroImageUrl()
 }
 
 void
-AdPreviewRequest::setHeroImageUrl(std::string  hero_image_url)
+AdPreviewRequest::setHeroImageUrl(std::string hero_image_url)
 {
 	this->hero_image_url = hero_image_url;
 }
@@ -413,7 +469,7 @@ AdPreviewRequest::getHeroPinId()
 }
 
 void
-AdPreviewRequest::setHeroPinId(std::string  hero_pin_id)
+AdPreviewRequest::setHeroPinId(std::string hero_pin_id)
 {
 	this->hero_pin_id = hero_pin_id;
 }
@@ -425,7 +481,7 @@ AdPreviewRequest::getImageTag()
 }
 
 void
-AdPreviewRequest::setImageTag(std::string  image_tag)
+AdPreviewRequest::setImageTag(std::string image_tag)
 {
 	this->image_tag = image_tag;
 }
@@ -437,21 +493,33 @@ AdPreviewRequest::getItemId()
 }
 
 void
-AdPreviewRequest::setItemId(std::string  item_id)
+AdPreviewRequest::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
 
-std::string
+BasePreferredMediaType
 AdPreviewRequest::getPreferredMediaType()
 {
 	return preferred_media_type;
 }
 
 void
-AdPreviewRequest::setPreferredMediaType(std::string  preferred_media_type)
+AdPreviewRequest::setPreferredMediaType(BasePreferredMediaType preferred_media_type)
 {
 	this->preferred_media_type = preferred_media_type;
+}
+
+bool
+AdPreviewRequest::isShowPromotion()
+{
+	return show_promotion;
+}
+
+void
+AdPreviewRequest::setShowPromotion(bool show_promotion)
+{
+	this->show_promotion = show_promotion;
 }
 
 std::string
@@ -461,7 +529,7 @@ AdPreviewRequest::getVideoTag()
 }
 
 void
-AdPreviewRequest::setVideoTag(std::string  video_tag)
+AdPreviewRequest::setVideoTag(std::string video_tag)
 {
 	this->video_tag = video_tag;
 }

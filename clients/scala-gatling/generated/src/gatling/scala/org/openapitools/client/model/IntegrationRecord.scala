@@ -11,7 +11,8 @@ case class IntegrationRecord (
     _connectedUserId: Option[String],
     _createdTime: Option[Integer],
     _externalBusinessId: Option[String],
-    _id: Option[String],
+    /* Integration record ID. */
+    _id: String,
     _partnerAccessToken: Option[String],
     _partnerAccessTokenExpiry: Option[Integer],
     _partnerMetadata: Option[String],

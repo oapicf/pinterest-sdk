@@ -15,12 +15,12 @@ static interest_t *interest_create_internal(
     if (!interest_local_var) {
         return NULL;
     }
+    memset(interest_local_var, 0, sizeof(interest_t));
+    interest_local_var->_library_owned = 1;
     interest_local_var->canonical_url = canonical_url;
     interest_local_var->id = id;
     interest_local_var->key = key;
     interest_local_var->name = name;
-
-    interest_local_var->_library_owned = 1;
     return interest_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) interest_t *interest_create(
     char *key,
     char *name
     ) {
-    return interest_create_internal (
+    interest_t *result = interest_create_internal (
         canonical_url,
         id,
         key,
         name
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void interest_free(interest_t *interest) {
@@ -112,6 +115,14 @@ interest_t *interest_parseFromJSON(cJSON *interestJSON){
 
     interest_t *interest_local_var = NULL;
 
+    char *canonical_url_local_str = NULL;
+
+    char *id_local_str = NULL;
+
+    char *key_local_str = NULL;
+
+    char *name_local_str = NULL;
+
     // interest->canonical_url
     cJSON *canonical_url = cJSON_GetObjectItemCaseSensitive(interestJSON, "canonical_url");
     if (cJSON_IsNull(canonical_url)) {
@@ -161,15 +172,40 @@ interest_t *interest_parseFromJSON(cJSON *interestJSON){
     }
 
 
+    if (canonical_url && !cJSON_IsNull(canonical_url)) canonical_url_local_str = strdup(canonical_url->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (key && !cJSON_IsNull(key)) key_local_str = strdup(key->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     interest_local_var = interest_create_internal (
-        canonical_url && !cJSON_IsNull(canonical_url) ? strdup(canonical_url->valuestring) : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        key && !cJSON_IsNull(key) ? strdup(key->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL
+        canonical_url_local_str,
+        id_local_str,
+        key_local_str,
+        name_local_str
         );
+
+    if (!interest_local_var) {
+        goto end;
+    }
 
     return interest_local_var;
 end:
+    if (canonical_url_local_str) {
+        free(canonical_url_local_str);
+        canonical_url_local_str = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (key_local_str) {
+        free(key_local_str);
+        key_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     return NULL;
 
 }

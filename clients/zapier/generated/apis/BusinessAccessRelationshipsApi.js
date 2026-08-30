@@ -1,20 +1,18 @@
 const samples = require('../samples/BusinessAccessRelationshipsApi');
-const DeletePartnersRequest = require('../models/DeletePartnersRequest');
-const DeletePartnersResponse = require('../models/DeletePartnersResponse');
-const DeletedMembersResponse = require('../models/DeletedMembersResponse');
-const Error = require('../models/Error');
+const BrandAccount = require('../models/BrandAccount');
+const BrandAccountCreate = require('../models/BrandAccountCreate');
+const BrandAccountUpdate = require('../models/BrandAccountUpdate');
+const BusinessMembershipMember = require('../models/BusinessMembershipMember');
+const DeleteBusinessMembershipBody = require('../models/DeleteBusinessMembershipBody');
+const DeleteBusinessPartners = require('../models/DeleteBusinessPartners');
+const DeleteBusinessPartnersDelete = require('../models/DeleteBusinessPartnersDelete');
 const MemberBusinessRole = require('../models/MemberBusinessRole');
-const MembersToDeleteBody = require('../models/MembersToDeleteBody');
 const PartnerType = require('../models/PartnerType');
-const UpdateMemberBusinessRoleBody = require('../models/UpdateMemberBusinessRoleBody');
-const UpdateMemberResultsResponseArray = require('../models/UpdateMemberResultsResponseArray');
-const brand_accounts_create_200_response = require('../models/brand_accounts_create_200_response');
-const brand_accounts_create_request = require('../models/brand_accounts_create_request');
-const brand_accounts_update_request = require('../models/brand_accounts_update_request');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const SystemUserUpdateWithRequiredBody = require('../models/SystemUserUpdateWithRequiredBody');
+const UpdateBusinessMembershipsResponse = require('../models/UpdateBusinessMembershipsResponse');
+const delete_business_membership_200_response = require('../models/delete_business_membership_200_response');
 const get_business_employers_200_response = require('../models/get_business_employers_200_response');
-const get_business_members_200_response = require('../models/get_business_members_200_response');
-const get_business_partners_200_response = require('../models/get_business_partners_200_response');
-const system_user_update_request = require('../models/system_user_update_request');
 const utils = require('../utils/utils');
 
 module.exports = {
@@ -34,10 +32,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...brand_accounts_create_request.fields(),
+                ...BrandAccountCreate.fields(),
             ],
             outputFields: [
-                ...brand_accounts_create_200_response.fields('', false),
+                ...BrandAccount.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -51,7 +49,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...brand_accounts_create_request.mapping(bundle),
+                        ...BrandAccountCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -60,7 +58,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['brand_accounts_create_200_responseSample']
+            sample: samples['BrandAccountSample']samples['BrandAccountSample']
         }
     },
     brandAccounts/update: {
@@ -74,21 +72,21 @@ module.exports = {
         operation: {
             inputFields: [
                 {
+                    key: 'brand_account_id',
+                    label: '',
+                    type: 'string',
+                    required: true,
+                },
+                {
                     key: 'business_hierarchy_id',
                     label: 'business hierarchy node id',
                     type: 'string',
                     required: true,
                 },
-                {
-                    key: 'brand_account_id',
-                    label: 'Unique identifier of a brand account.',
-                    type: 'string',
-                    required: true,
-                },
-                ...brand_accounts_update_request.fields(),
+                ...BrandAccountUpdate.fields(),
             ],
             outputFields: [
-                ...brand_accounts_create_200_response.fields('', false),
+                ...BrandAccount.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -102,7 +100,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...brand_accounts_update_request.mapping(bundle),
+                        ...BrandAccountUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -111,7 +109,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['brand_accounts_create_200_responseSample']
+            sample: samples['BrandAccountSample']
         }
     },
     deleteBusinessMembership: {
@@ -130,10 +128,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...MembersToDeleteBody.fields(),
+                ...DeleteBusinessMembershipBody.fields(),
             ],
             outputFields: [
-                ...DeletedMembersResponse.fields('', false),
+                ...delete_business_membership_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -147,7 +145,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...MembersToDeleteBody.mapping(bundle),
+                        ...DeleteBusinessMembershipBody.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -156,7 +154,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['DeletedMembersResponseSample']
+            sample: samples['delete_business_membership_200_responseSample']
         }
     },
     deleteBusinessPartners: {
@@ -175,10 +173,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...DeletePartnersRequest.fields(),
+                ...DeleteBusinessPartnersDelete.fields(),
             ],
             outputFields: [
-                ...DeletePartnersResponse.fields('', false),
+                ...DeleteBusinessPartners.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -192,7 +190,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...DeletePartnersRequest.mapping(bundle),
+                        ...DeleteBusinessPartnersDelete.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -201,7 +199,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['DeletePartnersResponseSample']
+            sample: samples['DeleteBusinessPartnersSample']
         }
     },
     get/businessEmployers: {
@@ -215,14 +213,19 @@ module.exports = {
         operation: {
             inputFields: [
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
+                    key: 'assets_summary',
+                    label: 'Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are',
+                    type: 'boolean',
                 },
                 {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
                 },
             ],
             outputFields: [
@@ -238,8 +241,9 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
-                        'page_size': bundle.inputData?.['page_size'],
+                        'assets_summary': bundle.inputData?.['assets_summary'],
                         'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
                     },
                     body: {
                     },
@@ -301,12 +305,12 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
             outputFields: [
-                ...get_business_members_200_response.fields('', false),
+                ...get_business_employers_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -335,7 +339,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['get_business_members_200_responseSample']
+            sample: samples['get_business_employers_200_responseSample']
         }
     },
     get/businessPartners: {
@@ -371,18 +375,23 @@ module.exports = {
                     type: 'integer',
                 },
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
+                    key: 'sort_ascending',
+                    label: 'Sort ascending.',
+                    type: 'boolean',
                 },
                 {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
                 },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
+                },
             ],
             outputFields: [
-                ...get_business_partners_200_response.fields('', false),
+                ...get_business_employers_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -398,8 +407,9 @@ module.exports = {
                         'partner_type': bundle.inputData?.['partner_type'],
                         'partner_ids': bundle.inputData?.['partner_ids'],
                         'start_index': bundle.inputData?.['start_index'],
-                        'page_size': bundle.inputData?.['page_size'],
+                        'sort_ascending': bundle.inputData?.['sort_ascending'],
                         'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
                     },
                     body: {
                     },
@@ -410,7 +420,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['get_business_partners_200_responseSample']
+            sample: samples['get_business_employers_200_responseSample']
         }
     },
     systemUser/update: {
@@ -435,7 +445,7 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...system_user_update_request.fields(),
+                ...SystemUserUpdateWithRequiredBody.fields(),
             ],
             outputFields: [
             ],
@@ -451,7 +461,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...system_user_update_request.mapping(bundle),
+                        ...SystemUserUpdateWithRequiredBody.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -480,13 +490,13 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'UpdateMemberBusinessRoleBody',
-                    label: 'List of objects with the member id and the business_role.',
+                    key: 'BusinessMembershipMember',
+                    label: '',
                     type: 'string',
                 }
             ],
             outputFields: [
-                ...UpdateMemberResultsResponseArray.fields('', false),
+                ...UpdateBusinessMembershipsResponse.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -500,7 +510,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...UpdateMemberBusinessRoleBody.mapping(bundle),
+                        ...BusinessMembershipMember.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -509,7 +519,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['UpdateMemberResultsResponseArraySample']
+            sample: samples['UpdateBusinessMembershipsResponseSample']
         }
     },
 }

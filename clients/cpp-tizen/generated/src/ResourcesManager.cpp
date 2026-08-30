@@ -51,14 +51,14 @@ static gpointer __ResourcesManagerthreadFunc(gpointer data)
 static bool adAccountCountriesGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(AdAccountsCountryResponse, Error, void* )
-	= reinterpret_cast<void(*)(AdAccountsCountryResponse, Error, void* )> (voidHandler);
+	void(* handler)(Ad_account_countries_get_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Ad_account_countries_get_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	AdAccountsCountryResponse out;
+	Ad_account_countries_get_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,43 @@ static bool adAccountCountriesGetProcessor(MemoryStruct_s p_chunk, long code, ch
 
 
 
-		if (isprimitive("AdAccountsCountryResponse")) {
+		if (isprimitive("Ad_account_countries_get_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "AdAccountsCountryResponse", "AdAccountsCountryResponse");
+			jsonToValue(&out, pJson, "Ad_account_countries_get_200_response", "Ad_account_countries_get_200_response");
 			json_node_free(pJson);
 
-			if ("AdAccountsCountryResponse" == "std::string") {
+			if ("Ad_account_countries_get_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -110,7 +135,7 @@ static bool adAccountCountriesGetProcessor(MemoryStruct_s p_chunk, long code, ch
 
 static bool adAccountCountriesGetHelper(char * accessToken,
 	
-	void(* handler)(AdAccountsCountryResponse, Error, void* )
+	void(* handler)(Ad_account_countries_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -181,7 +206,7 @@ static bool adAccountCountriesGetHelper(char * accessToken,
 
 bool ResourcesManager::adAccountCountriesGetAsync(char * accessToken,
 	
-	void(* handler)(AdAccountsCountryResponse, Error, void* )
+	void(* handler)(Ad_account_countries_get_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountCountriesGetHelper(accessToken,
@@ -191,7 +216,7 @@ bool ResourcesManager::adAccountCountriesGetAsync(char * accessToken,
 
 bool ResourcesManager::adAccountCountriesGetSync(char * accessToken,
 	
-	void(* handler)(AdAccountsCountryResponse, Error, void* )
+	void(* handler)(Ad_account_countries_get_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountCountriesGetHelper(accessToken,
@@ -202,14 +227,14 @@ bool ResourcesManager::adAccountCountriesGetSync(char * accessToken,
 static bool deliveryMetricsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(DeliveryMetricsResponse, Error, void* )
-	= reinterpret_cast<void(*)(DeliveryMetricsResponse, Error, void* )> (voidHandler);
+	void(* handler)(Delivery_metrics_get_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Delivery_metrics_get_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	DeliveryMetricsResponse out;
+	Delivery_metrics_get_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -217,18 +242,43 @@ static bool deliveryMetricsGetProcessor(MemoryStruct_s p_chunk, long code, char*
 
 
 
-		if (isprimitive("DeliveryMetricsResponse")) {
+		if (isprimitive("Delivery_metrics_get_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "DeliveryMetricsResponse", "DeliveryMetricsResponse");
+			jsonToValue(&out, pJson, "Delivery_metrics_get_200_response", "Delivery_metrics_get_200_response");
 			json_node_free(pJson);
 
-			if ("DeliveryMetricsResponse" == "std::string") {
+			if ("Delivery_metrics_get_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -260,8 +310,8 @@ static bool deliveryMetricsGetProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool deliveryMetricsGetHelper(char * accessToken,
-	std::string reportType, 
-	void(* handler)(DeliveryMetricsResponse, Error, void* )
+	ReportType reportType, 
+	void(* handler)(Delivery_metrics_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -278,7 +328,7 @@ static bool deliveryMetricsGetHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&reportType, "std::string");
+	itemAtq = stringify(&reportType, "ReportType");
 	queryParams.insert(pair<string, string>("report_type", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("report_type");
@@ -338,8 +388,8 @@ static bool deliveryMetricsGetHelper(char * accessToken,
 
 
 bool ResourcesManager::deliveryMetricsGetAsync(char * accessToken,
-	std::string reportType, 
-	void(* handler)(DeliveryMetricsResponse, Error, void* )
+	ReportType reportType, 
+	void(* handler)(Delivery_metrics_get_200_response, Error, void* )
 	, void* userData)
 {
 	return deliveryMetricsGetHelper(accessToken,
@@ -348,8 +398,8 @@ bool ResourcesManager::deliveryMetricsGetAsync(char * accessToken,
 }
 
 bool ResourcesManager::deliveryMetricsGetSync(char * accessToken,
-	std::string reportType, 
-	void(* handler)(DeliveryMetricsResponse, Error, void* )
+	ReportType reportType, 
+	void(* handler)(Delivery_metrics_get_200_response, Error, void* )
 	, void* userData)
 {
 	return deliveryMetricsGetHelper(accessToken,
@@ -360,14 +410,14 @@ bool ResourcesManager::deliveryMetricsGetSync(char * accessToken,
 static bool interestTargetingOptionsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(SingleInterestTargetingOptionResponse, Error, void* )
-	= reinterpret_cast<void(*)(SingleInterestTargetingOptionResponse, Error, void* )> (voidHandler);
+	void(* handler)(SingleInterestTargetingOption, Error, void* )
+	= reinterpret_cast<void(*)(SingleInterestTargetingOption, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	SingleInterestTargetingOptionResponse out;
+	SingleInterestTargetingOption out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -375,18 +425,43 @@ static bool interestTargetingOptionsGetProcessor(MemoryStruct_s p_chunk, long co
 
 
 
-		if (isprimitive("SingleInterestTargetingOptionResponse")) {
+		if (isprimitive("SingleInterestTargetingOption")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "SingleInterestTargetingOptionResponse", "SingleInterestTargetingOptionResponse");
+			jsonToValue(&out, pJson, "SingleInterestTargetingOption", "SingleInterestTargetingOption");
 			json_node_free(pJson);
 
-			if ("SingleInterestTargetingOptionResponse" == "std::string") {
+			if ("SingleInterestTargetingOption" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -419,7 +494,7 @@ static bool interestTargetingOptionsGetProcessor(MemoryStruct_s p_chunk, long co
 
 static bool interestTargetingOptionsGetHelper(char * accessToken,
 	std::string interestId, 
-	void(* handler)(SingleInterestTargetingOptionResponse, Error, void* )
+	void(* handler)(SingleInterestTargetingOption, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -496,7 +571,7 @@ static bool interestTargetingOptionsGetHelper(char * accessToken,
 
 bool ResourcesManager::interestTargetingOptionsGetAsync(char * accessToken,
 	std::string interestId, 
-	void(* handler)(SingleInterestTargetingOptionResponse, Error, void* )
+	void(* handler)(SingleInterestTargetingOption, Error, void* )
 	, void* userData)
 {
 	return interestTargetingOptionsGetHelper(accessToken,
@@ -506,7 +581,7 @@ bool ResourcesManager::interestTargetingOptionsGetAsync(char * accessToken,
 
 bool ResourcesManager::interestTargetingOptionsGetSync(char * accessToken,
 	std::string interestId, 
-	void(* handler)(SingleInterestTargetingOptionResponse, Error, void* )
+	void(* handler)(SingleInterestTargetingOption, Error, void* )
 	, void* userData)
 {
 	return interestTargetingOptionsGetHelper(accessToken,
@@ -641,14 +716,14 @@ bool ResourcesManager::leadFormQuestionsGetSync(char * accessToken,
 static bool metricsReadyStateGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(BookClosedResponse, Error, void* )
-	= reinterpret_cast<void(*)(BookClosedResponse, Error, void* )> (voidHandler);
+	void(* handler)(BookClosed, Error, void* )
+	= reinterpret_cast<void(*)(BookClosed, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	BookClosedResponse out;
+	BookClosed out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -656,18 +731,43 @@ static bool metricsReadyStateGetProcessor(MemoryStruct_s p_chunk, long code, cha
 
 
 
-		if (isprimitive("BookClosedResponse")) {
+		if (isprimitive("BookClosed")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "BookClosedResponse", "BookClosedResponse");
+			jsonToValue(&out, pJson, "BookClosed", "BookClosed");
 			json_node_free(pJson);
 
-			if ("BookClosedResponse" == "std::string") {
+			if ("BookClosed" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -700,7 +800,7 @@ static bool metricsReadyStateGetProcessor(MemoryStruct_s p_chunk, long code, cha
 
 static bool metricsReadyStateGetHelper(char * accessToken,
 	std::string date, 
-	void(* handler)(BookClosedResponse, Error, void* )
+	void(* handler)(BookClosed, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -775,7 +875,7 @@ static bool metricsReadyStateGetHelper(char * accessToken,
 
 bool ResourcesManager::metricsReadyStateGetAsync(char * accessToken,
 	std::string date, 
-	void(* handler)(BookClosedResponse, Error, void* )
+	void(* handler)(BookClosed, Error, void* )
 	, void* userData)
 {
 	return metricsReadyStateGetHelper(accessToken,
@@ -785,7 +885,7 @@ bool ResourcesManager::metricsReadyStateGetAsync(char * accessToken,
 
 bool ResourcesManager::metricsReadyStateGetSync(char * accessToken,
 	std::string date, 
-	void(* handler)(BookClosedResponse, Error, void* )
+	void(* handler)(BookClosed, Error, void* )
 	, void* userData)
 {
 	return metricsReadyStateGetHelper(accessToken,
@@ -841,7 +941,7 @@ static bool targetingOptionsGetProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool targetingOptionsGetHelper(char * accessToken,
-	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, std::string adAccountId, 
+	PublicTargetingType targetingType, std::string adAccountId, std::string clientId, std::string oauthSignature, std::string timestamp, 
 	void(* handler)(std::list<std::string>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -858,6 +958,13 @@ static bool targetingOptionsGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 
 	itemAtq = stringify(&clientId, "std::string");
 	queryParams.insert(pair<string, string>("client_id", itemAtq));
@@ -879,13 +986,6 @@ static bool targetingOptionsGetHelper(char * accessToken,
 		queryParams.erase("timestamp");
 	}
 
-
-	itemAtq = stringify(&adAccountId, "std::string");
-	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("ad_account_id");
-	}
-
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -898,7 +998,7 @@ static bool targetingOptionsGetHelper(char * accessToken,
 	s_targetingType.append("}");
 	pos = url.find(s_targetingType);
 	url.erase(pos, s_targetingType.length());
-	url.insert(pos, stringify(&targetingType, "std::string"));
+	url.insert(pos, stringify(&targetingType, "PublicTargetingType"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -946,22 +1046,22 @@ static bool targetingOptionsGetHelper(char * accessToken,
 
 
 bool ResourcesManager::targetingOptionsGetAsync(char * accessToken,
-	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, std::string adAccountId, 
+	PublicTargetingType targetingType, std::string adAccountId, std::string clientId, std::string oauthSignature, std::string timestamp, 
 	void(* handler)(std::list<std::string>, Error, void* )
 	, void* userData)
 {
 	return targetingOptionsGetHelper(accessToken,
-	targetingType, clientId, oauthSignature, timestamp, adAccountId, 
+	targetingType, adAccountId, clientId, oauthSignature, timestamp, 
 	handler, userData, true);
 }
 
 bool ResourcesManager::targetingOptionsGetSync(char * accessToken,
-	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, std::string adAccountId, 
+	PublicTargetingType targetingType, std::string adAccountId, std::string clientId, std::string oauthSignature, std::string timestamp, 
 	void(* handler)(std::list<std::string>, Error, void* )
 	, void* userData)
 {
 	return targetingOptionsGetHelper(accessToken,
-	targetingType, clientId, oauthSignature, timestamp, adAccountId, 
+	targetingType, adAccountId, clientId, oauthSignature, timestamp, 
 	handler, userData, false);
 }
 

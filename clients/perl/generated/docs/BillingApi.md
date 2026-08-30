@@ -23,11 +23,11 @@ Method | HTTP request | Description
 
 
 # **ads_credit_redeem**
-> AdsCreditRedeemResponse ads_credit_redeem(ad_account_id => $ad_account_id, ads_credit_redeem_request => $ads_credit_redeem_request)
+> AdsCreditRedeem ads_credit_redeem(ad_account_id => $ad_account_id, ads_credit_redeem_create => $ads_credit_redeem_create)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```perl
@@ -40,10 +40,10 @@ my $api_instance = WWW::OpenAPIClient::BillingApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $ads_credit_redeem_request = WWW::OpenAPIClient::Object::AdsCreditRedeemRequest->new(); # AdsCreditRedeemRequest | Redeem ad credits request.
+my $ads_credit_redeem_create = WWW::OpenAPIClient::Object::AdsCreditRedeemCreate->new(); # AdsCreditRedeemCreate | 
 
 eval {
-    my $result = $api_instance->ads_credit_redeem(ad_account_id => $ad_account_id, ads_credit_redeem_request => $ads_credit_redeem_request);
+    my $result = $api_instance->ads_credit_redeem(ad_account_id => $ad_account_id, ads_credit_redeem_create => $ads_credit_redeem_create);
     print Dumper($result);
 };
 if ($@) {
@@ -56,11 +56,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **ads_credit_redeem_request** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md)| Redeem ad credits request. | 
+ **ads_credit_redeem_create** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md)|  | 
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```perl
@@ -92,7 +92,7 @@ my $api_instance = WWW::OpenAPIClient::BillingApi->new(
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
     my $result = $api_instance->ads_credits_discounts_get(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size);
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billing_invoices_get**
-> BillingInvoicesGet200Response billing_invoices_get(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, sort => $sort, order => $order, status => $status, document_type => $document_type, start_due_date => $start_due_date, end_due_date => $end_due_date)
+> BillingInvoicesGet200Response billing_invoices_get(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order, sort => $sort, status => $status, document_type => $document_type, start_due_date => $start_due_date, end_due_date => $end_due_date)
 
 Get billing invoices
 
@@ -196,16 +196,16 @@ my $api_instance = WWW::OpenAPIClient::BillingApi->new(
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-my $sort = DUE_DATE; # string | Field of which to sort billing invoices
-my $order = ASCENDING; # string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-my $status = OPEN; # string | Status of billing invoices to filter by
-my $document_type = INVOICE; # string | Document type of billing invoices to filter by
-my $start_due_date = Sun Jan 01 00:00:00 UTC 2023; # DATE | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
-my $end_due_date = Mon Jan 01 00:00:00 UTC 2024; # DATE | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+my $order = new WWW::OpenAPIClient.PinterestLibPaginationOrder(); # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+my $sort = new WWW::OpenAPIClient.BillingInvoiceSortField(); # BillingInvoiceSortField | Field of which to sort billing invoices
+my $status = new WWW::OpenAPIClient.BillingInvoiceStatus(); # BillingInvoiceStatus | Status of billing invoices to filter by
+my $document_type = new WWW::OpenAPIClient.BillingInvoiceDocumentType(); # BillingInvoiceDocumentType | Document type of billing invoices to filter by
+my $start_due_date = DateTime->from_epoch(epoch => str2time('null')); # DATE | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+my $end_due_date = DateTime->from_epoch(epoch => str2time('null')); # DATE | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
 
 eval {
-    my $result = $api_instance->billing_invoices_get(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, sort => $sort, order => $order, status => $status, document_type => $document_type, start_due_date => $start_due_date, end_due_date => $end_due_date);
+    my $result = $api_instance->billing_invoices_get(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order, sort => $sort, status => $status, document_type => $document_type, start_due_date => $start_due_date, end_due_date => $end_due_date);
     print Dumper($result);
 };
 if ($@) {
@@ -219,11 +219,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **sort** | **string**| Field of which to sort billing invoices | [optional] [default to &#39;DUE_DATE&#39;]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **status** | **string**| Status of billing invoices to filter by | [optional] 
- **document_type** | **string**| Document type of billing invoices to filter by | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **sort** | [**BillingInvoiceSortField**](.md)| Field of which to sort billing invoices | [optional] 
+ **status** | [**BillingInvoiceStatus**](.md)| Status of billing invoices to filter by | [optional] 
+ **document_type** | [**BillingInvoiceDocumentType**](.md)| Document type of billing invoices to filter by | [optional] 
  **start_due_date** | **DATE**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
  **end_due_date** | **DATE**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
 
@@ -243,11 +243,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billing_profiles_get**
-> BillingProfilesGet200Response billing_profiles_get(ad_account_id => $ad_account_id, is_active => $is_active, bookmark => $bookmark, page_size => $page_size)
+> BillingProfilesGet200Response billing_profiles_get(is_active => $is_active, ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```perl
@@ -259,13 +259,13 @@ my $api_instance = WWW::OpenAPIClient::BillingApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $is_active = null; # boolean | Return active billing profiles, if false return all billing profiles.
+my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->billing_profiles_get(ad_account_id => $ad_account_id, is_active => $is_active, bookmark => $bookmark, page_size => $page_size);
+    my $result = $api_instance->billing_profiles_get(is_active => $is_active, ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -277,10 +277,10 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
  **is_active** | **boolean**| Return active billing profiles, if false return all billing profiles. | 
+ **ad_account_id** | **string**| Unique identifier of an ad account. | 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -298,11 +298,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ssio_accounts_get**
-> SSIOAccountResponse ssio_accounts_get(ad_account_id => $ad_account_id)
+> SSIOAccount ssio_accounts_get(ad_account_id => $ad_account_id)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```perl
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -347,11 +347,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ssio_insertion_order_create**
-> SSIOCreateInsertionOrderResponse ssio_insertion_order_create(ad_account_id => $ad_account_id, ssio_create_insertion_order_request => $ssio_create_insertion_order_request)
+> SSIOInsertionOrder ssio_insertion_order_create(ad_account_id => $ad_account_id, ssio_insertion_order_create => $ssio_insertion_order_create)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```perl
@@ -364,10 +364,10 @@ my $api_instance = WWW::OpenAPIClient::BillingApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $ssio_create_insertion_order_request = WWW::OpenAPIClient::Object::SSIOCreateInsertionOrderRequest->new(); # SSIOCreateInsertionOrderRequest | Order line to create.
+my $ssio_insertion_order_create = WWW::OpenAPIClient::Object::SSIOInsertionOrderCreate->new(); # SSIOInsertionOrderCreate | 
 
 eval {
-    my $result = $api_instance->ssio_insertion_order_create(ad_account_id => $ad_account_id, ssio_create_insertion_order_request => $ssio_create_insertion_order_request);
+    my $result = $api_instance->ssio_insertion_order_create(ad_account_id => $ad_account_id, ssio_insertion_order_create => $ssio_insertion_order_create);
     print Dumper($result);
 };
 if ($@) {
@@ -380,11 +380,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **ssio_create_insertion_order_request** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md)| Order line to create. | 
+ **ssio_insertion_order_create** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md)|  | 
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -398,11 +398,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ssio_insertion_order_edit**
-> SSIOEditInsertionOrderResponse ssio_insertion_order_edit(ad_account_id => $ad_account_id, ssio_edit_insertion_order_request => $ssio_edit_insertion_order_request)
+> SSIOInsertionOrder ssio_insertion_order_edit(ad_account_id => $ad_account_id, ssio_insertion_order_update => $ssio_insertion_order_update)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```perl
@@ -415,10 +415,10 @@ my $api_instance = WWW::OpenAPIClient::BillingApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $ssio_edit_insertion_order_request = WWW::OpenAPIClient::Object::SSIOEditInsertionOrderRequest->new(); # SSIOEditInsertionOrderRequest | Order line to create.
+my $ssio_insertion_order_update = WWW::OpenAPIClient::Object::SSIOInsertionOrderUpdate->new(); # SSIOInsertionOrderUpdate | 
 
 eval {
-    my $result = $api_instance->ssio_insertion_order_edit(ad_account_id => $ad_account_id, ssio_edit_insertion_order_request => $ssio_edit_insertion_order_request);
+    my $result = $api_instance->ssio_insertion_order_edit(ad_account_id => $ad_account_id, ssio_insertion_order_update => $ssio_insertion_order_update);
     print Dumper($result);
 };
 if ($@) {
@@ -431,11 +431,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **ssio_edit_insertion_order_request** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md)| Order line to create. | 
+ **ssio_insertion_order_update** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md)|  | 
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```perl
@@ -467,7 +467,7 @@ my $api_instance = WWW::OpenAPIClient::BillingApi->new(
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
     my $result = $api_instance->ssio_insertion_orders_status_get_by_ad_account(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size);
@@ -484,7 +484,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```perl
@@ -519,7 +519,7 @@ my $api_instance = WWW::OpenAPIClient::BillingApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $pin_order_id = 0Q01N0000015hekSVDFDC; # string | The pin order id associated with the ssio insertion order
+my $pin_order_id = "pin_order_id_example"; # string | The pin order id associated with the ssio insertion order
 
 eval {
     my $result = $api_instance->ssio_insertion_orders_status_get_by_pin_order_id(ad_account_id => $ad_account_id, pin_order_id => $pin_order_id);
@@ -553,11 +553,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ssio_order_lines_get_by_ad_account**
-> SsioOrderLinesGetByAdAccount200Response ssio_order_lines_get_by_ad_account(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, pin_order_id => $pin_order_id)
+> SsioOrderLinesGetByAdAccount200Response ssio_order_lines_get_by_ad_account(ad_account_id => $ad_account_id, pin_order_id => $pin_order_id, bookmark => $bookmark, page_size => $page_size)
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```perl
@@ -570,12 +570,12 @@ my $api_instance = WWW::OpenAPIClient::BillingApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
+my $pin_order_id = "pin_order_id_example"; # string | The pin order id associated with the SSIO insertion order
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-my $pin_order_id = 0Q01N0000015hekSVDFDC; # string | The pin order id associated with the ssio insertino order
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->ssio_order_lines_get_by_ad_account(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, pin_order_id => $pin_order_id);
+    my $result = $api_instance->ssio_order_lines_get_by_ad_account(ad_account_id => $ad_account_id, pin_order_id => $pin_order_id, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -588,9 +588,9 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
+ **pin_order_id** | **string**| The pin order id associated with the SSIO insertion order | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **pin_order_id** | **string**| The pin order id associated with the ssio insertino order | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

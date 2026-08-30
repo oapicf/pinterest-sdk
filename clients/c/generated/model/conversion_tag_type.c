@@ -5,13 +5,13 @@
 
 
 char* conversion_tag_type_conversion_tag_type_ToString(pinterest_rest_api_conversion_tag_type__e conversion_tag_type) {
-    char *conversion_tag_typeArray[] =  { "NULL", "PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT" };
+    char *conversion_tag_typeArray[] =  { "NULL", "PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT", "ADD_PAYMENT_INFO", "ADD_TO_WISHLIST", "INITIATE_CHECKOUT", "SUBSCRIBE", "VIEW_CONTENT", "ADVERTISER_DEFINED_EVENT", "APP_OPEN", "CONTACT", "SCHEDULE", "FIND_LOCATION", "CUSTOMIZE_PRODUCT", "SUBMIT_APPLICATION", "START_TRIAL" };
     return conversion_tag_typeArray[conversion_tag_type];
 }
 
 pinterest_rest_api_conversion_tag_type__e conversion_tag_type_conversion_tag_type_FromString(char* conversion_tag_type) {
     int stringToReturn = 0;
-    char *conversion_tag_typeArray[] =  { "NULL", "PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT" };
+    char *conversion_tag_typeArray[] =  { "NULL", "PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT", "ADD_PAYMENT_INFO", "ADD_TO_WISHLIST", "INITIATE_CHECKOUT", "SUBSCRIBE", "VIEW_CONTENT", "ADVERTISER_DEFINED_EVENT", "APP_OPEN", "CONTACT", "SCHEDULE", "FIND_LOCATION", "CUSTOMIZE_PRODUCT", "SUBMIT_APPLICATION", "START_TRIAL" };
     size_t sizeofArray = sizeof(conversion_tag_typeArray) / sizeof(conversion_tag_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(conversion_tag_type, conversion_tag_typeArray[stringToReturn]) == 0) {

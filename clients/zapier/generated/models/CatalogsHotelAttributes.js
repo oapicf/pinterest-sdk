@@ -1,7 +1,8 @@
 const utils = require('../utils/utils');
+const CatalogsAiContentDisclosure = require('../models/CatalogsAiContentDisclosure');
 const CatalogsHotelAddress = require('../models/CatalogsHotelAddress');
-const CatalogsHotelAttributes_allOf_main_image = require('../models/CatalogsHotelAttributes_allOf_main_image');
 const CatalogsHotelGuestRatings = require('../models/CatalogsHotelGuestRatings');
+const CatalogsHotelMainImage = require('../models/CatalogsHotelMainImage');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -87,11 +88,16 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}additional_image_link`,
-                label: `<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p> - [${labelPrefix}additional_image_link]`,
+                label: `<= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://. - [${labelPrefix}additional_image_link]`,
                 list: true,
                 type: 'string',
             },
-            ...CatalogsHotelAttributes_allOf_main_image.fields(`${keyPrefix}main_image`, isInput),
+            {
+                key: `${keyPrefix}ai_disclosures`,
+                label: `[${labelPrefix}ai_disclosures]`,
+                children: CatalogsAiContentDisclosure.fields(`${keyPrefix}ai_disclosures${!isInput ? '[]' : ''}`, isInput, true), 
+            },
+            ...CatalogsHotelMainImage.fields(`${keyPrefix}main_image`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -115,7 +121,8 @@ module.exports = {
             'neighborhood': bundle.inputData?.[`${keyPrefix}neighborhood`],
             'sale_price': bundle.inputData?.[`${keyPrefix}sale_price`],
             'additional_image_link': bundle.inputData?.[`${keyPrefix}additional_image_link`],
-            'main_image': utils.removeIfEmpty(CatalogsHotelAttributes_allOf_main_image.mapping(bundle, `${keyPrefix}main_image`)),
+            'ai_disclosures': utils.childMapping(bundle.inputData?.[`${keyPrefix}ai_disclosures`], `${keyPrefix}ai_disclosures`, CatalogsAiContentDisclosure),
+            'main_image': utils.removeIfEmpty(CatalogsHotelMainImage.mapping(bundle, `${keyPrefix}main_image`)),
         }
     },
 }

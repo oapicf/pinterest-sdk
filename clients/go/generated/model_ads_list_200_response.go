@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &AdsList200Response{}
 // AdsList200Response struct for AdsList200Response
 type AdsList200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	Items []AdResponse `json:"items"`
+	Items []Ad `json:"items"`
 }
 
 type _AdsList200Response AdsList200Response
@@ -32,7 +32,7 @@ type _AdsList200Response AdsList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdsList200Response(items []AdResponse) *AdsList200Response {
+func NewAdsList200Response(items []Ad) *AdsList200Response {
 	this := AdsList200Response{}
 	this.Items = items
 	return &this
@@ -89,9 +89,9 @@ func (o *AdsList200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *AdsList200Response) GetItems() []AdResponse {
+func (o *AdsList200Response) GetItems() []Ad {
 	if o == nil {
-		var ret []AdResponse
+		var ret []Ad
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *AdsList200Response) GetItems() []AdResponse {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *AdsList200Response) GetItemsOk() ([]AdResponse, bool) {
+func (o *AdsList200Response) GetItemsOk() ([]Ad, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *AdsList200Response) GetItemsOk() ([]AdResponse, bool) {
 }
 
 // SetItems sets field value
-func (o *AdsList200Response) SetItems(v []AdResponse) {
+func (o *AdsList200Response) SetItems(v []Ad) {
 	o.Items = v
 }
 

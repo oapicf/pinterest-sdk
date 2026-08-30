@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AmazonConnectResponse",
+  "fields": [
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Amazon connect response message",
+      "default": null
+    }
+  ]
+
+}

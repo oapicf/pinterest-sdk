@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            String
+            IntegrationMetadata
         >
         IntegrationsApi::
         integrationsCommerce_del(
@@ -46,7 +46,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            IntegrationMetadata obj(output_string);
+
+
+            Response<IntegrationMetadata> response(obj, httpCode);
             return response;
         }
 
@@ -110,7 +115,7 @@ using namespace Tiny;
             std::string externalBusinessId
             , 
             
-            IntegrationRequestPatch integrationRequestPatch
+            IntegrationMetadataUpdate integrationMetadataUpdate
             
         )
         {
@@ -139,11 +144,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | integrationRequestPatch
+            // Body     | integrationMetadataUpdate
 
 
 
-            payload = integrationRequestPatch.toJson().dump();
+            payload = integrationMetadataUpdate.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -167,7 +172,7 @@ using namespace Tiny;
         IntegrationsApi::
         integrationsCommerce_post(
             
-            IntegrationRequest integrationRequest
+            IntegrationMetadataCreate integrationMetadataCreate
             
         )
         {
@@ -188,11 +193,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | integrationRequest
+            // Body     | integrationMetadataCreate
 
 
 
-            payload = integrationRequest.toJson().dump();
+            payload = integrationMetadataCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -216,7 +221,7 @@ using namespace Tiny;
         IntegrationsApi::
         integrationsLogs_post(
             
-            IntegrationLogsRequest integrationLogsRequest
+            IntegrationLogsRequestCreate integrationLogsRequestCreate
             
         )
         {
@@ -237,11 +242,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | integrationLogsRequest
+            // Body     | integrationLogsRequestCreate
 
 
 
-            payload = integrationLogsRequest.toJson().dump();
+            payload = integrationLogsRequestCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 

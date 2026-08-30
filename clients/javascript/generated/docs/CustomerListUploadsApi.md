@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Create customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 
@@ -28,9 +28,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.CustomerListUploadsApi();
-let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let customerListId = "customerListId_example"; // String | Unique identifier of a customer list
-let customerListUploadCreateRequest = new PinterestSdk.CustomerListUploadCreateRequest(); // CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+let adAccountId = "adAccountId_example"; // String | 
+let customerListId = "customerListId_example"; // String | Customer list ID.
+let customerListUploadCreateRequest = new PinterestSdk.CustomerListUploadCreateRequest(); // CustomerListUploadCreateRequest | 
 apiInstance.customerListUploadsCreate(adAccountId, customerListId, customerListUploadCreateRequest, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -45,9 +45,9 @@ apiInstance.customerListUploadsCreate(adAccountId, customerListId, customerListU
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | 
- **customerListId** | **String**| Unique identifier of a customer list | 
- **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request | 
+ **adAccountId** | **String**|  | 
+ **customerListId** | **String**| Customer list ID. | 
+ **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)|  | 
 
 ### Return type
 
@@ -65,11 +65,11 @@ Name | Type | Description  | Notes
 
 ## customerListUploadsGet
 
-> CustomerListUploadResponse customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
+> CustomerListUpload customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
 
 Get customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
+Get the metadata for a given upload by its ID.
 
 ### Example
 
@@ -81,9 +81,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.CustomerListUploadsApi();
-let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let customerListId = "customerListId_example"; // String | Unique identifier of a customer list
-let customerListUploadId = "customerListUploadId_example"; // String | Unique identifier of a customer list upload
+let adAccountId = "adAccountId_example"; // String | 
+let customerListId = "customerListId_example"; // String | Customer list ID.
+let customerListUploadId = "customerListUploadId_example"; // String | Customer List Upload ID.
 apiInstance.customerListUploadsGet(adAccountId, customerListId, customerListUploadId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -98,13 +98,13 @@ apiInstance.customerListUploadsGet(adAccountId, customerListId, customerListUplo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | 
- **customerListId** | **String**| Unique identifier of a customer list | 
- **customerListUploadId** | **String**| Unique identifier of a customer list upload | 
+ **adAccountId** | **String**|  | 
+ **customerListId** | **String**| Customer list ID. | 
+ **customerListUploadId** | **String**| Customer List Upload ID. | 
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -118,11 +118,11 @@ Name | Type | Description  | Notes
 
 ## customerListUploadsRun
 
-> CustomerListUploadResponse customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
+> CustomerListUpload customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
 
 Run customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
+Begin processing a customer list upload.
 
 ### Example
 
@@ -134,9 +134,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.CustomerListUploadsApi();
-let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let customerListId = "customerListId_example"; // String | Unique identifier of a customer list
-let customerListUploadId = "customerListUploadId_example"; // String | Unique identifier of a customer list upload
+let adAccountId = "adAccountId_example"; // String | 
+let customerListId = "customerListId_example"; // String | Customer list ID.
+let customerListUploadId = "customerListUploadId_example"; // String | Customer List Upload ID.
 apiInstance.customerListUploadsRun(adAccountId, customerListId, customerListUploadId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -151,13 +151,13 @@ apiInstance.customerListUploadsRun(adAccountId, customerListId, customerListUplo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | 
- **customerListId** | **String**| Unique identifier of a customer list | 
- **customerListUploadId** | **String**| Unique identifier of a customer list upload | 
+ **adAccountId** | **String**|  | 
+ **customerListId** | **String**| Customer list ID. | 
+ **customerListUploadId** | **String**| Customer List Upload ID. | 
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 

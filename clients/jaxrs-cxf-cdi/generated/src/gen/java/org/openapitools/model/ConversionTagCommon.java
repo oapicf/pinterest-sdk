@@ -79,7 +79,7 @@ public class ConversionTagCommon   {
   }
 
   
-  @ApiModelProperty(value = "The enhanced match status of the tag")
+  @ApiModelProperty(example = "VALIDATION_COMPLETE", value = "The enhanced match status of the tag")
   @JsonProperty("enhanced_match_status")
   public EnhancedMatchStatusType getEnhancedMatchStatus() {
     return enhancedMatchStatus;
@@ -136,7 +136,7 @@ public class ConversionTagCommon   {
   }
 
   
-  @ApiModelProperty(example = "ACME Checkout Test Tag", required = true, value = "Conversion tag name.")
+  @ApiModelProperty(example = "download_picture", required = true, value = "Conversion tag name.")
   @JsonProperty("name")
   @NotNull
   public String getName() {
@@ -211,10 +211,7 @@ public class ConversionTagCommon   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

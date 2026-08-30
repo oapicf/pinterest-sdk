@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ai_disclosures** | Option<[**models::AiDisclosuresUpdate**](AiDisclosuresUpdate.md)> | AI disclosure declarations the creator has made about this Pin. | [optional]
 **alt_text** | Option<**String**> |  | [optional]
 **board_id** | Option<**String**> | The board to which this Pin belongs. | [optional]
 **board_section_id** | Option<**String**> | The board section to which this Pin belongs. | [optional]

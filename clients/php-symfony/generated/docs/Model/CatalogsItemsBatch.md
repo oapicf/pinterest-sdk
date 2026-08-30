@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**OpenAPI\Server\Model\CatalogsType**](CatalogsType.md) |  | 
 **batchId** | **string** | Id of the catalogs items batch | [optional] 
-**completedTime** | **\DateTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**createdTime** | **\DateTime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [readonly] 
+**catalogType** | **string** |  | 
+**completedTime** | **\DateTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
+**createdTime** | **\DateTime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | 
 **items** | [**OpenAPI\Server\Model\CreativeAssetsProcessingRecord**](CreativeAssetsProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 **status** | [**OpenAPI\Server\Model\BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 

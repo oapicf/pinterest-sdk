@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -21,13 +24,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AdPinAnalytics(
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "null", required = true, description = "The ID of the pin that the metric belongs to.")
+    @Schema(required = true, description = "The ID of the pin that the metric belongs to.")
+    @param:JsonProperty("PIN_ID")
     @get:JsonProperty("PIN_ID", required = true) val PIN_ID: kotlin.String,
 
     @field:Valid
-    @Schema(example = "null", description = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")
+    @Schema(description = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("DATE")
     @get:JsonProperty("DATE") val DATE: java.time.LocalDate? = null
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 }
 

@@ -12,18 +12,21 @@ static keywords_metrics_array_response_t *keywords_metrics_array_response_create
     if (!keywords_metrics_array_response_local_var) {
         return NULL;
     }
-    keywords_metrics_array_response_local_var->data = data;
-
+    memset(keywords_metrics_array_response_local_var, 0, sizeof(keywords_metrics_array_response_t));
     keywords_metrics_array_response_local_var->_library_owned = 1;
+    keywords_metrics_array_response_local_var->data = data;
     return keywords_metrics_array_response_local_var;
 }
 
 __attribute__((deprecated)) keywords_metrics_array_response_t *keywords_metrics_array_response_create(
     list_t *data
     ) {
-    return keywords_metrics_array_response_create_internal (
+    keywords_metrics_array_response_t *result = keywords_metrics_array_response_create_internal (
         data
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void keywords_metrics_array_response_free(keywords_metrics_array_response_t *keywords_metrics_array_response) {
@@ -107,9 +110,14 @@ keywords_metrics_array_response_t *keywords_metrics_array_response_parseFromJSON
     }
 
 
+
     keywords_metrics_array_response_local_var = keywords_metrics_array_response_create_internal (
         data ? dataList : NULL
         );
+
+    if (!keywords_metrics_array_response_local_var) {
+        goto end;
+    }
 
     return keywords_metrics_array_response_local_var;
 end:

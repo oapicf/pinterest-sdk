@@ -36,6 +36,18 @@ const ads/update = async (request, response) => {
   await Controller.handleRequest(request, response, service.ads/update);
 };
 
+const campaign_ad_preview/create = async (request, response) => {
+  await Controller.handleRequest(request, response, service.campaign_ad_preview/create);
+};
+
+const campaign_ad_preview/delete = async (request, response) => {
+  await Controller.handleRequest(request, response, service.campaign_ad_preview/delete);
+};
+
+const campaign_ad_preview/read = async (request, response) => {
+  await Controller.handleRequest(request, response, service.campaign_ad_preview/read);
+};
+
 
 module.exports = {
   ad_previews/create,
@@ -45,4 +57,7 @@ module.exports = {
   ads/get,
   ads/list,
   ads/update,
+  campaign_ad_preview/create,
+  campaign_ad_preview/delete,
+  campaign_ad_preview/read,
 };

@@ -2,9 +2,15 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.PinMediaSourceImagesBase64Item
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -26,16 +32,21 @@ data class PinMediaSourceImagesBase64(
 
     @field:Valid
     @get:Size(min=2,max=5) 
-    @Schema(example = "null", required = true, description = "Array with image objects.")
+    @Schema(required = true, description = "Array with image objects.")
+    @param:JsonProperty("items")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<PinMediaSourceImagesBase64Item>,
 
-    @Schema(example = "null", required = true, description = "The source type of the media.")
-    @get:JsonProperty("source_type", required = true) val sourceType: PinMediaSourceImagesBase64.SourceType,
+    @Schema(required = true, description = "The source type of the media.")
+    @param:JsonProperty("source_type")
+    @get:JsonProperty("source_type", required = true) override val sourceType: PinMediaSourceImagesBase64.SourceType = kotlin.String.multiple_image_base64,
 
     @get:Min(value=0)
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("index")
     @get:JsonProperty("index") val index: kotlin.Int? = null
-) {
+) : PinMediaSource {
 
     /**
     * The source type of the media.
@@ -50,7 +61,7 @@ data class PinMediaSourceImagesBase64(
             @JsonCreator
             fun forValue(value: kotlin.String): SourceType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourceImagesBase64'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SourceType'")
             }
         }
     }

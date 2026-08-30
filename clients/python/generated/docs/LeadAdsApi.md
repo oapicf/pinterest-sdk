@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **ad_accounts_subscriptions_del_by_id**
-> ad_accounts_subscriptions_del_by_id(ad_account_id, subscription_id)
+> LeadSubscription ad_accounts_subscriptions_del_by_id(ad_account_id, subscription_id)
 
 Delete lead ads subscription
 
@@ -24,6 +24,7 @@ Delete an existing lead ads webhook subscription by ID.
 
 ```python
 import pinterestsdk
+from pinterestsdk.models.lead_subscription import LeadSubscription
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -49,7 +50,9 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
     try:
         # Delete lead ads subscription
-        api_instance.ad_accounts_subscriptions_del_by_id(ad_account_id, subscription_id)
+        api_response = api_instance.ad_accounts_subscriptions_del_by_id(ad_account_id, subscription_id)
+        print("The response of LeadAdsApi->ad_accounts_subscriptions_del_by_id:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling LeadAdsApi->ad_accounts_subscriptions_del_by_id: %s\n" % e)
 ```
@@ -66,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 
@@ -81,6 +84,7 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | The request has succeeded. |  -  |
 **204** | Resource deleted successfully. |  -  |
 **400** | The request could not be understood by the server due to unexpected data. |  -  |
 **401** | Authentication is required and has either failed or not been provided. |  -  |

@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class AdGroupsList200Response (
   bookmark: Option[String] = None,
-  items: Seq[AdGroupResponse]
+  items: Seq[AdGroup]
 )
 

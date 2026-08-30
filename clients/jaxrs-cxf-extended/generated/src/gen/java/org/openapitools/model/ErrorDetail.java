@@ -13,19 +13,19 @@ public class ErrorDetail  {
  /**
   * Number of records with this error
   */
-  @ApiModelProperty(example = "20", required = true, value = "Number of records with this error")
+  @ApiModelProperty(required = true, value = "Number of records with this error")
   private Integer count;
 
  /**
   * Numeric error code
   */
-  @ApiModelProperty(example = "42", required = true, value = "Numeric error code")
+  @ApiModelProperty(required = true, value = "Numeric error code")
   private Integer errorCode;
 
  /**
   * Error message description
   */
-  @ApiModelProperty(example = "Invalid email", required = true, value = "Error message description")
+  @ApiModelProperty(required = true, value = "Error message description")
   private String message;
  /**
   * Number of records with this error
@@ -139,10 +139,7 @@ public class ErrorDetail  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

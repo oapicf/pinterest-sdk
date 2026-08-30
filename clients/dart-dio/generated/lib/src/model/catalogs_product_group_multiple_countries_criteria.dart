@@ -28,8 +28,7 @@ abstract class CatalogsProductGroupMultipleCountriesCriteria implements Built<Ca
   factory CatalogsProductGroupMultipleCountriesCriteria([void updates(CatalogsProductGroupMultipleCountriesCriteriaBuilder b)]) = _$CatalogsProductGroupMultipleCountriesCriteria;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsProductGroupMultipleCountriesCriteriaBuilder b) => b
-      ..negated = false;
+  static void _defaults(CatalogsProductGroupMultipleCountriesCriteriaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsProductGroupMultipleCountriesCriteria> get serializer => _$CatalogsProductGroupMultipleCountriesCriteriaSerializer();
@@ -85,8 +84,9 @@ class _$CatalogsProductGroupMultipleCountriesCriteriaSerializer implements Primi
         case r'negated':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.negated = valueDes;
           break;
         case r'values':

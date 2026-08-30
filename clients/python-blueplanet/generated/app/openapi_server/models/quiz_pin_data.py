@@ -8,6 +8,7 @@ from typing import List, Dict  # noqa: F401
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.quiz_pin_question import QuizPinQuestion  # noqa: F401,E501
 from app.openapi_server.models.quiz_pin_result import QuizPinResult  # noqa: F401,E501
+from app.openapi_server.models.tie_breaker_type import TieBreakerType  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,7 +18,7 @@ class QuizPinData(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, questions: List[QuizPinQuestion]=None, results: List[QuizPinResult]=None, tie_breaker_custom_result: QuizPinResult=None, tie_breaker_type: str=None):  # noqa: E501
+    def __init__(self, questions: List[QuizPinQuestion]=None, results: List[QuizPinResult]=None, tie_breaker_custom_result: QuizPinResult=None, tie_breaker_type: TieBreakerType=None):  # noqa: E501
         """QuizPinData - a model defined in Swagger
 
         :param questions: The questions of this QuizPinData.  # noqa: E501
@@ -27,13 +28,13 @@ class QuizPinData(Model):
         :param tie_breaker_custom_result: The tie_breaker_custom_result of this QuizPinData.  # noqa: E501
         :type tie_breaker_custom_result: QuizPinResult
         :param tie_breaker_type: The tie_breaker_type of this QuizPinData.  # noqa: E501
-        :type tie_breaker_type: str
+        :type tie_breaker_type: TieBreakerType
         """
         self.swagger_types = {
             'questions': List[QuizPinQuestion],
             'results': List[QuizPinResult],
             'tie_breaker_custom_result': QuizPinResult,
-            'tie_breaker_type': str
+            'tie_breaker_type': TieBreakerType
         }
 
         self.attribute_map = {
@@ -123,30 +124,22 @@ class QuizPinData(Model):
         self._tie_breaker_custom_result = tie_breaker_custom_result
 
     @property
-    def tie_breaker_type(self) -> str:
+    def tie_breaker_type(self) -> TieBreakerType:
         """Gets the tie_breaker_type of this QuizPinData.
 
-        Quiz ad tie breaker type, default is RANDOM  # noqa: E501
 
         :return: The tie_breaker_type of this QuizPinData.
-        :rtype: str
+        :rtype: TieBreakerType
         """
         return self._tie_breaker_type
 
     @tie_breaker_type.setter
-    def tie_breaker_type(self, tie_breaker_type: str):
+    def tie_breaker_type(self, tie_breaker_type: TieBreakerType):
         """Sets the tie_breaker_type of this QuizPinData.
 
-        Quiz ad tie breaker type, default is RANDOM  # noqa: E501
 
         :param tie_breaker_type: The tie_breaker_type of this QuizPinData.
-        :type tie_breaker_type: str
+        :type tie_breaker_type: TieBreakerType
         """
-        allowed_values = ["RANDOM", "CUSTOM"]  # noqa: E501
-        if tie_breaker_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `tie_breaker_type` ({0}), must be one of {1}"
-                .format(tie_breaker_type, allowed_values)
-            )
 
         self._tie_breaker_type = tie_breaker_type

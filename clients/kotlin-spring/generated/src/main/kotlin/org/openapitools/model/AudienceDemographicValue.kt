@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,12 +25,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AudienceDemographicValue(
 
     @Schema(example = "us", description = "Unique key for demographic item")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("key")
     @get:JsonProperty("key") val key: kotlin.String? = null,
 
     @Schema(example = "United States", description = "Display name for demographic")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
     @Schema(example = "0.551", description = "Value of demographic item as a percent of total audience")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ratio")
     @get:JsonProperty("ratio") val ratio: java.math.BigDecimal? = null
 ) {
 

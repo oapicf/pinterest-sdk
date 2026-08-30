@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BatchId** | Pointer to **string** | Id of the catalogs items batch | [optional] 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**CreatedTime** | Pointer to **time.Time** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
+**CatalogType** | **string** |  | 
+**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
+**CreatedTime** | Pointer to **time.Time** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
 **Items** | Pointer to [**[]HotelProcessingRecord**](HotelProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 **Status** | Pointer to [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsHotelItemsBatch
 
-`func NewCatalogsHotelItemsBatch(catalogType CatalogsType, ) *CatalogsHotelItemsBatch`
+`func NewCatalogsHotelItemsBatch(catalogType string, ) *CatalogsHotelItemsBatch`
 
 NewCatalogsHotelItemsBatch instantiates a new CatalogsHotelItemsBatch object
 This constructor will assign default values to properties that have it defined,
@@ -57,20 +57,20 @@ HasBatchId returns a boolean if a field has been set.
 
 ### GetCatalogType
 
-`func (o *CatalogsHotelItemsBatch) GetCatalogType() CatalogsType`
+`func (o *CatalogsHotelItemsBatch) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsHotelItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsHotelItemsBatch) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsHotelItemsBatch) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsHotelItemsBatch) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 

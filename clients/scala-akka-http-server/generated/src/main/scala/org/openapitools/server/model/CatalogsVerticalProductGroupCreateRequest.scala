@@ -6,7 +6,7 @@ package org.openapitools.server.model
  *
  * Request object for creating a catalog based product group.
  *
- * @param catalogId Catalog id pertaining to the creative assets product group. for example: ''2680059592705''
+ * @param catalogId Catalog ID pertaining to the product group. for example: ''2680059592705''
  * @param catalogType  for example: ''null''
  * @param country  for example: ''null''
  * @param description  for example: ''null''

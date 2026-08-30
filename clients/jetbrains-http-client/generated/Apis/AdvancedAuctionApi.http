@@ -1,0 +1,25 @@
+## AdvancedAuctionApi
+
+### Get item bid options (POST)
+## Get item bid options (POST)
+POST https://api.pinterest.com/v5/advanced_auction/items/get?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "catalog_id": "<string>",
+ "items": "<string>"
+}
+
+
+### Operate on item level bid options
+## Operate on item level bid options
+POST https://api.pinterest.com/v5/advanced_auction/items/submit?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "catalog_id": "<string>",
+ "items": "<string>"
+}
+

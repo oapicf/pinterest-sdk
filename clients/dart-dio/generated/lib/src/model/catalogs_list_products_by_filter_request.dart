@@ -20,7 +20,7 @@ part 'catalogs_list_products_by_filter_request.g.dart';
 /// Properties:
 /// * [feedId] - Catalog Feed id pertaining to the catalog product group filter.
 /// * [filters] 
-/// * [catalogId] - Catalog id pertaining to the creative assets product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [country] 
 /// * [locale] 

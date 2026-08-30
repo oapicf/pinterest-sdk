@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/pin_analytics_daily_metrics.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/pin_analytics_metrics_response_daily_metrics_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,7 +20,7 @@ part 'pin_analytics_metrics_response.g.dart';
 abstract class PinAnalyticsMetricsResponse implements Built<PinAnalyticsMetricsResponse, PinAnalyticsMetricsResponseBuilder> {
   /// Array with the requested daily metric records
   @BuiltValueField(wireName: r'daily_metrics')
-  BuiltList<PinAnalyticsMetricsResponseDailyMetricsInner>? get dailyMetrics;
+  BuiltList<PinAnalyticsDailyMetrics>? get dailyMetrics;
 
   /// The lifetime metric name and value.
   @BuiltValueField(wireName: r'lifetime_metrics')
@@ -57,7 +57,7 @@ class _$PinAnalyticsMetricsResponseSerializer implements PrimitiveSerializer<Pin
       yield r'daily_metrics';
       yield serializers.serialize(
         object.dailyMetrics,
-        specifiedType: const FullType(BuiltList, [FullType(PinAnalyticsMetricsResponseDailyMetricsInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(PinAnalyticsDailyMetrics)]),
       );
     }
     if (object.lifetimeMetrics != null) {
@@ -100,22 +100,25 @@ class _$PinAnalyticsMetricsResponseSerializer implements PrimitiveSerializer<Pin
         case r'daily_metrics':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PinAnalyticsMetricsResponseDailyMetricsInner)]),
-          ) as BuiltList<PinAnalyticsMetricsResponseDailyMetricsInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(PinAnalyticsDailyMetrics)]),
+          ) as BuiltList<PinAnalyticsDailyMetrics>?;
+          if (valueDes == null) continue;
           result.dailyMetrics.replace(valueDes);
           break;
         case r'lifetime_metrics':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(int)]),
-          ) as BuiltMap<String, int>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(int)]),
+          ) as BuiltMap<String, int>?;
+          if (valueDes == null) continue;
           result.lifetimeMetrics.replace(valueDes);
           break;
         case r'summary_metrics':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(num)]),
-          ) as BuiltMap<String, num>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(num)]),
+          ) as BuiltMap<String, num>?;
+          if (valueDes == null) continue;
           result.summaryMetrics.replace(valueDes);
           break;
         default:

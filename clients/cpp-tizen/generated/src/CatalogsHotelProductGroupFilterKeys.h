@@ -13,7 +13,6 @@
 #include "CatalogsProductGroupFilterOperatorTypeCriteria.h"
 #include "CatalogsProductGroupMultipleCountriesCriteria.h"
 #include "CatalogsProductGroupMultipleStringCriteria.h"
-#include "Catalogs_product_group_pricing_currency_criteria.h"
 #include "CountryFilter.h"
 #include "CustomLabel0Filter.h"
 #include "CustomLabel1Filter.h"
@@ -22,6 +21,7 @@
 #include "CustomLabel4Filter.h"
 #include "HotelIdFilter.h"
 #include "PriceFilter.h"
+#include "PriceFilterPrice.h"
 #include "TitleKeywordsFilter.h"
 #include "Object.h"
 
@@ -61,11 +61,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	Catalogs_product_group_pricing_currency_criteria getPRICE();
+	PriceFilterPrice getPRICE();
 
 	/*! \brief Set 
 	 */
-	void setPRICE(Catalogs_product_group_pricing_currency_criteria  pRICE);
+	void setPRICE(PriceFilterPrice  pRICE);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupMultipleStringCriteria getHOTELID();
@@ -131,7 +131,7 @@ public:
 	void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS);
 
 private:
-	Catalogs_product_group_pricing_currency_criteria pRICE;
+	PriceFilterPrice pRICE;
 	CatalogsProductGroupMultipleStringCriteria hOTEL_ID;
 	CatalogsProductGroupMultipleStringCriteria bRAND;
 	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_0;

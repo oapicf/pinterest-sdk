@@ -13,10 +13,10 @@ static analytics_metrics_response_t *analytics_metrics_response_create_internal(
     if (!analytics_metrics_response_local_var) {
         return NULL;
     }
+    memset(analytics_metrics_response_local_var, 0, sizeof(analytics_metrics_response_t));
+    analytics_metrics_response_local_var->_library_owned = 1;
     analytics_metrics_response_local_var->daily_metrics = daily_metrics;
     analytics_metrics_response_local_var->summary_metrics = summary_metrics;
-
-    analytics_metrics_response_local_var->_library_owned = 1;
     return analytics_metrics_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) analytics_metrics_response_t *analytics_metrics_resp
     list_t *daily_metrics,
     list_t* summary_metrics
     ) {
-    return analytics_metrics_response_create_internal (
+    analytics_metrics_response_t *result = analytics_metrics_response_create_internal (
         daily_metrics,
         summary_metrics
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void analytics_metrics_response_free(analytics_metrics_response_t *analytics_metrics_response) {
@@ -172,10 +175,15 @@ analytics_metrics_response_t *analytics_metrics_response_parseFromJSON(cJSON *an
     }
 
 
+
     analytics_metrics_response_local_var = analytics_metrics_response_create_internal (
         daily_metrics ? daily_metricsList : NULL,
         summary_metrics ? summary_metricsList : NULL
         );
+
+    if (!analytics_metrics_response_local_var) {
+        goto end;
+    }
 
     return analytics_metrics_response_local_var;
 end:

@@ -12,6 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "AudienceAccountType.h"
 
 namespace Tiny {
 
@@ -51,34 +52,34 @@ public:
 
 	/*! \brief Set Account ID (ad account or business ID).
 	 */
-	void setAccountId(std::string  account_id);
+	void setAccountId(std::string account_id);
 	/*! \brief Get Account name.
 	 */
 	std::string getAccountName();
 
 	/*! \brief Set Account name.
 	 */
-	void setAccountName(std::string  account_name);
+	void setAccountName(std::string account_name);
 	/*! \brief Get account type
 	 */
-	std::string getAccountType();
+	AudienceAccountType getAccountType();
 
 	/*! \brief Set account type
 	 */
-	void setAccountType(std::string  account_type);
+	void setAccountType(AudienceAccountType account_type);
 	/*! \brief Get Epoch timestamp in seconds for the shared audience event
 	 */
 	int getSharedOnTimestamp();
 
 	/*! \brief Set Epoch timestamp in seconds for the shared audience event
 	 */
-	void setSharedOnTimestamp(int  shared_on_timestamp);
+	void setSharedOnTimestamp(int shared_on_timestamp);
 
 
     private:
     std::string account_id{};
     std::string account_name{};
-    std::string account_type{};
+    AudienceAccountType account_type;
     int shared_on_timestamp{};
 };
 }

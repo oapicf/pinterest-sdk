@@ -1,14 +1,15 @@
 #import "OAILeadFormsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIError.h"
-#import "OAILeadFormArrayResponse.h"
-#import "OAILeadFormCreateRequest.h"
-#import "OAILeadFormResponse.h"
-#import "OAILeadFormTestRequest.h"
-#import "OAILeadFormTestResponse.h"
-#import "OAILeadFormUpdateRequest.h"
+#import "OAILeadForm.h"
+#import "OAILeadFormBatchUpdate.h"
+#import "OAILeadFormCreate.h"
+#import "OAILeadFormTest.h"
+#import "OAILeadFormTestCreate.h"
+#import "OAILeadFormsCreate200Response.h"
 #import "OAILeadFormsList200Response.h"
+#import "OAIPinterestLibError.h"
+#import "OAIPinterestLibPaginationOrder.h"
 
 
 @interface OAILeadFormsApi ()
@@ -58,27 +59,16 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get lead form by id
-/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+/// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
+///  @param leadFormId The ID of this lead form 
+///
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param leadFormId Unique identifier of a lead form. 
+///  @returns OAILeadForm*
 ///
-///  @returns OAILeadFormResponse*
-///
--(NSURLSessionTask*) leadFormGetWithAdAccountId: (NSString*) adAccountId
-    leadFormId: (NSString*) leadFormId
-    completionHandler: (void (^)(OAILeadFormResponse* output, NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAILeadFormsApiErrorDomain code:kOAILeadFormsApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
+-(NSURLSessionTask*) leadFormGetWithLeadFormId: (NSString*) leadFormId
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAILeadForm* output, NSError* error)) handler {
     // verify the required parameter 'leadFormId' is set
     if (leadFormId == nil) {
         NSParameterAssert(leadFormId);
@@ -90,14 +80,25 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAILeadFormsApiErrorDomain code:kOAILeadFormsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (adAccountId != nil) {
-        pathParams[@"ad_account_id"] = adAccountId;
-    }
     if (leadFormId != nil) {
         pathParams[@"lead_form_id"] = leadFormId;
+    }
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -133,10 +134,10 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAILeadFormResponse*"
+                              responseType: @"OAILeadForm*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAILeadFormResponse*)data, error);
+                                    handler((OAILeadForm*)data, error);
                                 }
                             }];
 }
@@ -144,18 +145,18 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
 ///
 /// Create lead form test data
 /// Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
-///  @param adAccountId Unique identifier of an ad account. 
+///  @param adAccountId  
 ///
 ///  @param leadFormId Unique identifier of a lead form. 
 ///
-///  @param leadFormTestRequest Subscription to create. 
+///  @param leadFormTestCreate  
 ///
-///  @returns OAILeadFormTestResponse*
+///  @returns OAILeadFormTest*
 ///
 -(NSURLSessionTask*) leadFormTestCreateWithAdAccountId: (NSString*) adAccountId
     leadFormId: (NSString*) leadFormId
-    leadFormTestRequest: (OAILeadFormTestRequest*) leadFormTestRequest
-    completionHandler: (void (^)(OAILeadFormTestResponse* output, NSError* error)) handler {
+    leadFormTestCreate: (OAILeadFormTestCreate*) leadFormTestCreate
+    completionHandler: (void (^)(OAILeadFormTest* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -178,11 +179,11 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'leadFormTestRequest' is set
-    if (leadFormTestRequest == nil) {
-        NSParameterAssert(leadFormTestRequest);
+    // verify the required parameter 'leadFormTestCreate' is set
+    if (leadFormTestCreate == nil) {
+        NSParameterAssert(leadFormTestCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadFormTestRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadFormTestCreate"] };
             NSError* error = [NSError errorWithDomain:kOAILeadFormsApiErrorDomain code:kOAILeadFormsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -220,7 +221,7 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = leadFormTestRequest;
+    bodyParam = leadFormTestCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -233,26 +234,26 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAILeadFormTestResponse*"
+                              responseType: @"OAILeadFormTest*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAILeadFormTestResponse*)data, error);
+                                    handler((OAILeadFormTest*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Create lead forms
-/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+/// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param leadFormCreateRequest List of lead forms to create, size limit [1, 30]. 
+///  @param leadFormCreate  
 ///
-///  @returns OAILeadFormArrayResponse*
+///  @returns OAILeadFormsCreate200Response*
 ///
 -(NSURLSessionTask*) leadFormsCreateWithAdAccountId: (NSString*) adAccountId
-    leadFormCreateRequest: (NSArray<OAILeadFormCreateRequest>*) leadFormCreateRequest
-    completionHandler: (void (^)(OAILeadFormArrayResponse* output, NSError* error)) handler {
+    leadFormCreate: (NSArray<OAILeadFormCreate>*) leadFormCreate
+    completionHandler: (void (^)(OAILeadFormsCreate200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -264,11 +265,11 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'leadFormCreateRequest' is set
-    if (leadFormCreateRequest == nil) {
-        NSParameterAssert(leadFormCreateRequest);
+    // verify the required parameter 'leadFormCreate' is set
+    if (leadFormCreate == nil) {
+        NSParameterAssert(leadFormCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadFormCreateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadFormCreate"] };
             NSError* error = [NSError errorWithDomain:kOAILeadFormsApiErrorDomain code:kOAILeadFormsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -303,7 +304,7 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = leadFormCreateRequest;
+    bodyParam = leadFormCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -316,31 +317,31 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAILeadFormArrayResponse*"
+                              responseType: @"OAILeadFormsCreate200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAILeadFormArrayResponse*)data, error);
+                                    handler((OAILeadFormsCreate200Response*)data, error);
                                 }
                             }];
 }
 
 ///
 /// List lead forms
-/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+/// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
-///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
+///  @param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///
 ///  @returns OAILeadFormsList200Response*
 ///
 -(NSURLSessionTask*) leadFormsListWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
     completionHandler: (void (^)(OAILeadFormsList200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -361,14 +362,14 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (bookmark != nil) {
+        queryParams[@"bookmark"] = bookmark;
+    }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
     }
     if (order != nil) {
         queryParams[@"order"] = order;
-    }
-    if (bookmark != nil) {
-        queryParams[@"bookmark"] = bookmark;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -412,16 +413,16 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
 
 ///
 /// Update lead forms
-/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+/// **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30]. 
+///  @param leadFormBatchUpdate  
 ///
-///  @returns OAILeadFormArrayResponse*
+///  @returns OAILeadFormsCreate200Response*
 ///
 -(NSURLSessionTask*) leadFormsUpdateWithAdAccountId: (NSString*) adAccountId
-    leadFormUpdateRequest: (NSArray<OAILeadFormUpdateRequest>*) leadFormUpdateRequest
-    completionHandler: (void (^)(OAILeadFormArrayResponse* output, NSError* error)) handler {
+    leadFormBatchUpdate: (NSArray<OAILeadFormBatchUpdate>*) leadFormBatchUpdate
+    completionHandler: (void (^)(OAILeadFormsCreate200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -433,11 +434,11 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'leadFormUpdateRequest' is set
-    if (leadFormUpdateRequest == nil) {
-        NSParameterAssert(leadFormUpdateRequest);
+    // verify the required parameter 'leadFormBatchUpdate' is set
+    if (leadFormBatchUpdate == nil) {
+        NSParameterAssert(leadFormBatchUpdate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadFormUpdateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadFormBatchUpdate"] };
             NSError* error = [NSError errorWithDomain:kOAILeadFormsApiErrorDomain code:kOAILeadFormsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -472,7 +473,7 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = leadFormUpdateRequest;
+    bodyParam = leadFormBatchUpdate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -485,10 +486,10 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAILeadFormArrayResponse*"
+                              responseType: @"OAILeadFormsCreate200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAILeadFormArrayResponse*)data, error);
+                                    handler((OAILeadFormsCreate200Response*)data, error);
                                 }
                             }];
 }

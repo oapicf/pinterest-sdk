@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **duration** | **NSNumber*** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
 **height** | **NSNumber*** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 **videoUrl** | **NSString*** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**videoUrlHls** | **NSString*** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **width** | **NSNumber*** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 **items** | [**NSArray&lt;OAIPinMediaMetadata&gt;***](OAIPinMediaMetadata.md) |  | [optional] 
 

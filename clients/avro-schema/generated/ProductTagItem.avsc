@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Product tag request item containing the pin_id of the product to tag.",
+  "name": "ProductTagItem",
+  "fields": [
+    {
+      "name": "pin_id",
+      "type": "string",
+      "doc": "Pin ID of the product pin to tag onto the hero pin."
+    }
+  ]
+
+}

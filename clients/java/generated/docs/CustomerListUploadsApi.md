@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Create customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 ```java
@@ -37,9 +37,9 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CustomerListUploadsApi apiInstance = new CustomerListUploadsApi(defaultClient);
-    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String customerListId = "customerListId_example"; // String | Unique identifier of a customer list
-    CustomerListUploadCreateRequest customerListUploadCreateRequest = new CustomerListUploadCreateRequest(); // CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+    String adAccountId = "adAccountId_example"; // String | 
+    String customerListId = "customerListId_example"; // String | Customer list ID.
+    CustomerListUploadCreateRequest customerListUploadCreateRequest = new CustomerListUploadCreateRequest(); // CustomerListUploadCreateRequest | 
     try {
       CustomerListUploadCreateResponse result = apiInstance.customerListUploadsCreate(adAccountId, customerListId, customerListUploadCreateRequest);
       System.out.println(result);
@@ -58,9 +58,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **customerListId** | **String**| Unique identifier of a customer list | |
-| **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request | |
+| **adAccountId** | **String**|  | |
+| **customerListId** | **String**| Customer list ID. | |
+| **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)|  | |
 
 ### Return type
 
@@ -78,16 +78,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="customerListUploadsGet"></a>
 # **customerListUploadsGet**
-> CustomerListUploadResponse customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
+> CustomerListUpload customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
 
 Get customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
+Get the metadata for a given upload by its ID.
 
 ### Example
 ```java
@@ -109,11 +114,11 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CustomerListUploadsApi apiInstance = new CustomerListUploadsApi(defaultClient);
-    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String customerListId = "customerListId_example"; // String | Unique identifier of a customer list
-    String customerListUploadId = "customerListUploadId_example"; // String | Unique identifier of a customer list upload
+    String adAccountId = "adAccountId_example"; // String | 
+    String customerListId = "customerListId_example"; // String | Customer list ID.
+    String customerListUploadId = "customerListUploadId_example"; // String | Customer List Upload ID.
     try {
-      CustomerListUploadResponse result = apiInstance.customerListUploadsGet(adAccountId, customerListId, customerListUploadId);
+      CustomerListUpload result = apiInstance.customerListUploadsGet(adAccountId, customerListId, customerListUploadId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CustomerListUploadsApi#customerListUploadsGet");
@@ -130,13 +135,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **customerListId** | **String**| Unique identifier of a customer list | |
-| **customerListUploadId** | **String**| Unique identifier of a customer list upload | |
+| **adAccountId** | **String**|  | |
+| **customerListId** | **String**| Customer list ID. | |
+| **customerListUploadId** | **String**| Customer List Upload ID. | |
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -150,16 +155,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="customerListUploadsRun"></a>
 # **customerListUploadsRun**
-> CustomerListUploadResponse customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
+> CustomerListUpload customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
 
 Run customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
+Begin processing a customer list upload.
 
 ### Example
 ```java
@@ -181,11 +191,11 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CustomerListUploadsApi apiInstance = new CustomerListUploadsApi(defaultClient);
-    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String customerListId = "customerListId_example"; // String | Unique identifier of a customer list
-    String customerListUploadId = "customerListUploadId_example"; // String | Unique identifier of a customer list upload
+    String adAccountId = "adAccountId_example"; // String | 
+    String customerListId = "customerListId_example"; // String | Customer list ID.
+    String customerListUploadId = "customerListUploadId_example"; // String | Customer List Upload ID.
     try {
-      CustomerListUploadResponse result = apiInstance.customerListUploadsRun(adAccountId, customerListId, customerListUploadId);
+      CustomerListUpload result = apiInstance.customerListUploadsRun(adAccountId, customerListId, customerListUploadId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CustomerListUploadsApi#customerListUploadsRun");
@@ -202,13 +212,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **customerListId** | **String**| Unique identifier of a customer list | |
-| **customerListUploadId** | **String**| Unique identifier of a customer list upload | |
+| **adAccountId** | **String**|  | |
+| **customerListId** | **String**| Customer list ID. | |
+| **customerListUploadId** | **String**| Customer List Upload ID. | |
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -222,6 +232,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

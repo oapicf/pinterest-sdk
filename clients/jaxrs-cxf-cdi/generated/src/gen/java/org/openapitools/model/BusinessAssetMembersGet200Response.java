@@ -44,7 +44,6 @@ public class BusinessAssetMembersGet200Response   {
 
 
   /**
-   * List of members with permissions to the asset.
    **/
   public BusinessAssetMembersGet200Response items(List<@Valid UserSingleAssetBinding> items) {
     this.items = items;
@@ -52,7 +51,7 @@ public class BusinessAssetMembersGet200Response   {
   }
 
   
-  @ApiModelProperty(required = true, value = "List of members with permissions to the asset.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
   public List<@Valid UserSingleAssetBinding> getItems() {
@@ -106,10 +105,7 @@ public class BusinessAssetMembersGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

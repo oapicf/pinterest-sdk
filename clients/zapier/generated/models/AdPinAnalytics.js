@@ -1,5 +1,4 @@
 const utils = require('../utils/utils');
-const AnyType = require('../models/AnyType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {

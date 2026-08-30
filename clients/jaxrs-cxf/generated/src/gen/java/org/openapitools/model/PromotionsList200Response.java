@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.Promotion;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -24,7 +24,7 @@ public class PromotionsList200Response  {
 
   @Valid
 
-  private List<@Valid PromotionResponse> items = new ArrayList<>();
+  private List<@Valid Promotion> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -49,20 +49,20 @@ public class PromotionsList200Response  {
   **/
   @JsonProperty("items")
   @NotNull
-  public List<@Valid PromotionResponse> getItems() {
+  public List<@Valid Promotion> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid PromotionResponse> items) {
+  public void setItems(List<@Valid Promotion> items) {
     this.items = items;
   }
 
-  public PromotionsList200Response items(List<@Valid PromotionResponse> items) {
+  public PromotionsList200Response items(List<@Valid Promotion> items) {
     this.items = items;
     return this;
   }
 
-  public PromotionsList200Response addItemsItem(PromotionResponse itemsItem) {
+  public PromotionsList200Response addItemsItem(Promotion itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -101,10 +101,7 @@ public class PromotionsList200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

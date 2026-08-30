@@ -12,7 +12,7 @@ API.Client.TargetingSpecOperationGender = function() {}
 API.Client.TargetingSpecOperationGender.prototype.field;
 
 /**
- * @type {!string}
+ * @type {!API.Client.TargetingSpecListOperation}
  * @export
  */
 API.Client.TargetingSpecOperationGender.prototype.operation;
@@ -26,10 +26,4 @@ API.Client.TargetingSpecOperationGender.prototype.values;
 /** @enum {string} */
 API.Client.TargetingSpecOperationGender.FieldEnum = { 
   GENDER: 'GENDER',
-}
-/** @enum {string} */
-API.Client.TargetingSpecOperationGender.OperationEnum = { 
-  SET: 'SET',
-  ADD: 'ADD',
-  REMOVE: 'REMOVE',
 }

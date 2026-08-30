@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.CatalogsAiContentDisclosure;
 import org.openapitools.vertxweb.server.model.UpdatableItemAttributesGtin;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -117,6 +118,7 @@ public class ItemAttributes   {
   private List<String> variantNames;
   private List<String> variantValues;
   private List<String> additionalImageLink;
+  private List<CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
   private List<String> imageLink = new ArrayList<>();
   private String videoLink;
 
@@ -124,7 +126,7 @@ public class ItemAttributes   {
 
   }
 
-  public ItemAttributes (String adImage0Link, String adImage0Tag, String adImage10Link, String adImage10Tag, String adImage11Link, String adImage11Tag, String adImage12Link, String adImage12Tag, String adImage13Link, String adImage13Tag, String adImage14Link, String adImage14Tag, String adImage15Link, String adImage15Tag, String adImage16Link, String adImage16Tag, String adImage17Link, String adImage17Tag, String adImage18Link, String adImage18Tag, String adImage19Link, String adImage19Tag, String adImage1Link, String adImage1Tag, String adImage2Link, String adImage2Tag, String adImage3Link, String adImage3Tag, String adImage4Link, String adImage4Tag, String adImage5Link, String adImage5Tag, String adImage6Link, String adImage6Tag, String adImage7Link, String adImage7Tag, String adImage8Link, String adImage8Tag, String adImage9Link, String adImage9Tag, String adLink, String adVideo0Link, String adVideo0Tag, String adVideo1Link, String adVideo1Tag, String adVideo2Link, String adVideo2Tag, Boolean adult, String ageGroup, String androidDeepLink, String availability, BigDecimal averageReviewRating, String brand, Boolean checkoutEnabled, String color, String condition, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, Integer customNumber0, Integer customNumber1, Integer customNumber2, Integer customNumber3, Integer customNumber4, String description, Boolean freeShippingLabel, String freeShippingLimit, String gender, String googleProductCategory, UpdatableItemAttributesGtin gtin, String id, String installmentPrice, String iosDeepLink, String itemGroupId, Long lastUpdatedTime, String link, String material, String minAdPrice, String mobileLink, String mpn, Integer numberOfRatings, Integer numberOfReviews, String pattern, String price, String productType, String promotionId, String salePrice, String salePriceEffectiveDate, String shipping, String shippingHeight, String shippingWeight, String shippingWidth, String size, String sizeSystem, String sizeType, String tax, String title, String unitPricingBaseMeasure, String unitPricingMeasure, List<String> variantNames, List<String> variantValues, List<String> additionalImageLink, List<String> imageLink, String videoLink) {
+  public ItemAttributes (String adImage0Link, String adImage0Tag, String adImage10Link, String adImage10Tag, String adImage11Link, String adImage11Tag, String adImage12Link, String adImage12Tag, String adImage13Link, String adImage13Tag, String adImage14Link, String adImage14Tag, String adImage15Link, String adImage15Tag, String adImage16Link, String adImage16Tag, String adImage17Link, String adImage17Tag, String adImage18Link, String adImage18Tag, String adImage19Link, String adImage19Tag, String adImage1Link, String adImage1Tag, String adImage2Link, String adImage2Tag, String adImage3Link, String adImage3Tag, String adImage4Link, String adImage4Tag, String adImage5Link, String adImage5Tag, String adImage6Link, String adImage6Tag, String adImage7Link, String adImage7Tag, String adImage8Link, String adImage8Tag, String adImage9Link, String adImage9Tag, String adLink, String adVideo0Link, String adVideo0Tag, String adVideo1Link, String adVideo1Tag, String adVideo2Link, String adVideo2Tag, Boolean adult, String ageGroup, String androidDeepLink, String availability, BigDecimal averageReviewRating, String brand, Boolean checkoutEnabled, String color, String condition, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, Integer customNumber0, Integer customNumber1, Integer customNumber2, Integer customNumber3, Integer customNumber4, String description, Boolean freeShippingLabel, String freeShippingLimit, String gender, String googleProductCategory, UpdatableItemAttributesGtin gtin, String id, String installmentPrice, String iosDeepLink, String itemGroupId, Long lastUpdatedTime, String link, String material, String minAdPrice, String mobileLink, String mpn, Integer numberOfRatings, Integer numberOfReviews, String pattern, String price, String productType, String promotionId, String salePrice, String salePriceEffectiveDate, String shipping, String shippingHeight, String shippingWeight, String shippingWidth, String size, String sizeSystem, String sizeType, String tax, String title, String unitPricingBaseMeasure, String unitPricingMeasure, List<String> variantNames, List<String> variantValues, List<String> additionalImageLink, List<CatalogsAiContentDisclosure> aiDisclosures, List<String> imageLink, String videoLink) {
     this.adImage0Link = adImage0Link;
     this.adImage0Tag = adImage0Tag;
     this.adImage10Link = adImage10Link;
@@ -229,6 +231,7 @@ public class ItemAttributes   {
     this.variantNames = variantNames;
     this.variantValues = variantValues;
     this.additionalImageLink = additionalImageLink;
+    this.aiDisclosures = aiDisclosures;
     this.imageLink = imageLink;
     this.videoLink = videoLink;
   }
@@ -1170,6 +1173,15 @@ public class ItemAttributes   {
   }
 
     
+  @JsonProperty("ai_disclosures")
+  public List<CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+  public void setAiDisclosures(List<CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
+
+    
   @JsonProperty("image_link")
   public List<String> getImageLink() {
     return imageLink;
@@ -1301,13 +1313,14 @@ public class ItemAttributes   {
         Objects.equals(variantNames, itemAttributes.variantNames) &&
         Objects.equals(variantValues, itemAttributes.variantValues) &&
         Objects.equals(additionalImageLink, itemAttributes.additionalImageLink) &&
+        Objects.equals(aiDisclosures, itemAttributes.aiDisclosures) &&
         Objects.equals(imageLink, itemAttributes.imageLink) &&
         Objects.equals(videoLink, itemAttributes.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, adult, ageGroup, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, additionalImageLink, imageLink, videoLink);
+    return Objects.hash(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, adult, ageGroup, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, additionalImageLink, aiDisclosures, imageLink, videoLink);
   }
 
   @Override
@@ -1419,6 +1432,7 @@ public class ItemAttributes   {
     sb.append("    variantNames: ").append(toIndentedString(variantNames)).append("\n");
     sb.append("    variantValues: ").append(toIndentedString(variantValues)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
@@ -1430,9 +1444,6 @@ public class ItemAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* <p>Catalog hotel product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_LISTINGS: Includes every hotel item in your catalog.
+* Catalog hotel product group type
 * Values: MERCHANT_CREATED,ALL_LISTINGS
 */
 enum class CatalogsHotelProductGroupType(@get:JsonValue val value: kotlin.String) {

@@ -134,14 +134,14 @@ Protected Class BusinessAccessInviteApi
 
 
 	#tag Method, Flags = &h0
-		Sub CancelInvitesOrRequests(, businessId As String, cancelInvitesBody As OpenAPIClient.Models.CancelInvitesBody)
+		Sub CancelInvitesOrRequests(, businessId As String, cancelInvitesRequest As OpenAPIClient.Models.CancelInvitesRequest)
 		  // Operation cancel_invites_or_requests
 		  // Cancel invites/requests
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter cancelInvitesBody: (body) A list with invite ids 
+		  // - parameter cancelInvitesRequest: (body)  
 		  //
-		  // Invokes BusinessAccessInviteApiCallbackHandler.CancelInvitesOrRequestsCallback(DeleteInvitesResultsResponseArray) on completion. 
+		  // Invokes BusinessAccessInviteApiCallbackHandler.CancelInvitesOrRequestsCallback(CancelInvitesResponse) on completion. 
 		  //
 		  // - DELETE /businesses/{business_id}/invites
 		  // - Cancel membership/partnership invites and/or requests.
@@ -154,7 +154,7 @@ Protected Class BusinessAccessInviteApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(cancelInvitesBody), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(cancelInvitesRequest), "application/json")
 		  
 		  
 		  
@@ -181,7 +181,7 @@ Protected Class BusinessAccessInviteApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function CancelInvitesOrRequestsPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.DeleteInvitesResultsResponseArray) As Boolean
+		Private Function CancelInvitesOrRequestsPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.CancelInvitesResponse) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -189,7 +189,7 @@ Protected Class BusinessAccessInviteApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.DeleteInvitesResultsResponseArray
+			  outData = New OpenAPIClient.Models.CancelInvitesResponse
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -242,7 +242,7 @@ Protected Class BusinessAccessInviteApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.DeleteInvitesResultsResponseArray
+		  Dim data As OpenAPIClient.Models.CancelInvitesResponse
 		  CallbackHandler.CancelInvitesOrRequestsCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -256,7 +256,7 @@ Protected Class BusinessAccessInviteApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.DeleteInvitesResultsResponseArray
+		  Dim data As OpenAPIClient.Models.CancelInvitesResponse
 		  Call CancelInvitesOrRequestsPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.CancelInvitesOrRequestsCallback(error, data)
@@ -272,7 +272,7 @@ Protected Class BusinessAccessInviteApi
 		  // Update invite/request with an asset permission
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter createAssetInvitesRequest: (body) A list of invites/requests together with the asset permissions to be assigned to the invite/request.  
+		  // - parameter createAssetInvitesRequest: (body)  
 		  //
 		  // Invokes BusinessAccessInviteApiCallbackHandler.CreateAssetInvitesCallback(UpdateInvitesResultsResponseArray) on completion. 
 		  //
@@ -405,7 +405,7 @@ Protected Class BusinessAccessInviteApi
 		  // Create invites or requests
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
-		  // - parameter createMembershipOrPartnershipInvitesBody: (body) An object with the properties: invite_type, partners, members, business_role 
+		  // - parameter createMembershipOrPartnershipInvitesBody: (body)  
 		  //
 		  // Invokes BusinessAccessInviteApiCallbackHandler.CreateMembershipOrPartnershipInvitesCallback(CreateInvitesResultsResponseArray) on completion. 
 		  //
@@ -533,7 +533,7 @@ Protected Class BusinessAccessInviteApi
 
 
 	#tag Method, Flags = &h0
-		Sub GetInvites(, businessId As String, Optional isMember As Xoson.O.OptionalBoolean, inviteStatus() As Invite_statusEnum_GetInvites, inviteType As OpenAPIClient.Models.InviteTypeOptional, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
+		Sub GetInvites(, businessId As String, Optional isMember As Xoson.O.OptionalBoolean, inviteStatus() As InviteFilterStatus, inviteType As OpenAPIClient.Models.InviteTypeOptional, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation get/invites
 		  // Get invites/requests
 		  // - 
@@ -542,7 +542,7 @@ Protected Class BusinessAccessInviteApi
 		  // - parameter inviteStatus: (query) A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional, default to Nil)
 		  // - parameter inviteType: (query) Invite type to filter invites by. Only invites of the specified type will be returned. (optional, default to Nil)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes BusinessAccessInviteApiCallbackHandler.GetInvitesCallback(GetInvites200Response) on completion. 
 		  //
@@ -563,15 +563,15 @@ Protected Class BusinessAccessInviteApi
 		  
 		  
 		  Dim localVarQueryStringsinviteStatus() As String
-		  For Each localVarIteminviteStatus As Invite_statusEnum_GetInvites in inviteStatus
-		    Dim encodedParameter As String = EncodeURLComponent(Invite_statusEnum_GetInvitesToString(localVarIteminviteStatus))
+		  For Each localVarIteminviteStatus As InviteFilterStatus in inviteStatus
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarIteminviteStatus))
 		    Select Case "form"
 		      Case "form"
-		        localVarQueryStringsinviteStatus.Append("invite_status=" + encodedParameter)
+		        localVarQueryStringsinviteStatus.Append("inner=" + encodedParameter)
 		      Case "spaceDelimited"
-		        localVarQueryStringsinviteStatus.Append("invite_status=" + encodedParameter)
+		        localVarQueryStringsinviteStatus.Append("inner=" + encodedParameter)
 		      Case "pipeDelimited"
-		        localVarQueryStringsinviteStatus.Append("invite_status=" + encodedParameter)
+		        localVarQueryStringsinviteStatus.Append("inner=" + encodedParameter)
 		      Case "deepObject"
 		        Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
 		    End Select
@@ -695,19 +695,6 @@ Protected Class BusinessAccessInviteApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function Invite_statusEnum_GetInvitesToString(value As Invite_statusEnum_GetInvites) As String
-		  Select Case value
-		    
-		    Case Invite_statusEnum_GetInvites.Pending
-		      Return "PENDING"
-		    Case Invite_statusEnum_GetInvites.Expired
-		      Return "EXPIRED"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub RespondBusinessAccessInvites(, authRespondInvitesBody As OpenAPIClient.Models.AuthRespondInvitesBody)
@@ -913,13 +900,6 @@ Protected Class BusinessAccessInviteApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = Invite_statusEnum_GetInvites, Type = Integer, Flags = &h0
-		
-        Pending
-        Expired
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

@@ -11,7 +11,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | [**businessAssetPartnersGet**](BusinessAccessAssetsApi.md#businessassetpartnersget) | **GET** /businesses/{business_id}/assets/{asset_id}/partners | Get partners with access to asset |
 | [**businessAssetsGet**](BusinessAccessAssetsApi.md#businessassetsget) | **GET** /businesses/{business_id}/assets | List business assets |
 | [**businessMemberAssetsGet**](BusinessAccessAssetsApi.md#businessmemberassetsget) | **GET** /businesses/{business_id}/members/{member_id}/assets | Get assets assigned to a member |
-| [**businessMembersAssetAccessDelete**](BusinessAccessAssetsApi.md#businessmembersassetaccessdeleteoperation) | **DELETE** /businesses/{business_id}/members/assets/access | Delete member access to asset |
+| [**businessMembersAssetAccessDelete**](BusinessAccessAssetsApi.md#businessmembersassetaccessdelete) | **DELETE** /businesses/{business_id}/members/assets/access | Delete member access to asset |
 | [**businessMembersAssetAccessUpdate**](BusinessAccessAssetsApi.md#businessmembersassetaccessupdate) | **PATCH** /businesses/{business_id}/members/assets/access | Assign/Update member asset permissions |
 | [**businessPartnerAssetAccessGet**](BusinessAccessAssetsApi.md#businesspartnerassetaccessget) | **GET** /businesses/{business_id}/partners/{partner_id}/assets | Get assets assigned to a partner or assets assigned by a partner |
 | [**deletePartnerAssetAccessHandlerImpl**](BusinessAccessAssetsApi.md#deletepartnerassetaccesshandlerimpl) | **DELETE** /businesses/{business_id}/partners/assets | Delete partner access to asset |
@@ -21,11 +21,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## assetGroupCreate
 
-> CreateAssetGroupResponse assetGroupCreate(businessId, createAssetGroupBody)
+> AssetGroupInput assetGroupCreate(businessId, assetGroupInputCreate)
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 
@@ -46,9 +46,9 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // CreateAssetGroupBody
-    createAssetGroupBody: ...,
+    businessId: businessId_example,
+    // AssetGroupInputCreate
+    assetGroupInputCreate: ...,
   } satisfies AssetGroupCreateRequest;
 
   try {
@@ -69,11 +69,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **createAssetGroupBody** | [CreateAssetGroupBody](CreateAssetGroupBody.md) |  | |
+| **assetGroupInputCreate** | [AssetGroupInputCreate](AssetGroupInputCreate.md) |  | |
 
 ### Return type
 
-[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md)
+[**AssetGroupInput**](AssetGroupInput.md)
 
 ### Authorization
 
@@ -88,16 +88,21 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## assetGroupDelete
 
-> DeleteAssetGroupResponse assetGroupDelete(businessId, deleteAssetGroupBody)
+> AssetGroupDeletion assetGroupDelete(businessId, assetGroupDeletionDelete)
 
 Delete asset groups.
 
@@ -122,9 +127,9 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // DeleteAssetGroupBody
-    deleteAssetGroupBody: ...,
+    businessId: businessId_example,
+    // AssetGroupDeletionDelete
+    assetGroupDeletionDelete: ...,
   } satisfies AssetGroupDeleteRequest;
 
   try {
@@ -145,11 +150,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **deleteAssetGroupBody** | [DeleteAssetGroupBody](DeleteAssetGroupBody.md) |  | |
+| **assetGroupDeletionDelete** | [AssetGroupDeletionDelete](AssetGroupDeletionDelete.md) |  | |
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md)
+[**AssetGroupDeletion**](AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -164,16 +169,15 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## assetGroupUpdate
 
-> UpdateAssetGroupResponse assetGroupUpdate(businessId, updateAssetGroupBody)
+> AssetGroupModification assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate)
 
 Update asset groups.
 
@@ -198,9 +202,9 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // UpdateAssetGroupBody
-    updateAssetGroupBody: ...,
+    businessId: businessId_example,
+    // AssetGroupModificationReadOrUpdate
+    assetGroupModificationReadOrUpdate: ...,
   } satisfies AssetGroupUpdateRequest;
 
   try {
@@ -221,11 +225,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **updateAssetGroupBody** | [UpdateAssetGroupBody](UpdateAssetGroupBody.md) |  | |
+| **assetGroupModificationReadOrUpdate** | [AssetGroupModificationReadOrUpdate](AssetGroupModificationReadOrUpdate.md) |  | |
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md)
+[**AssetGroupModification**](AssetGroupModification.md)
 
 ### Authorization
 
@@ -240,16 +244,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## businessAssetMembersGet
 
-> BusinessAssetMembersGet200Response businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
+> BusinessAssetMembersGet200Response businessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize)
 
 Get members with access to asset
 
@@ -274,17 +282,17 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // string | Unique identifier of a business asset.
-    assetId: 729090764583391194,
+    assetId: assetId_example,
+    // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
+    startIndex: 56,
     // boolean | Fetches system users if True. Fetches regular user employees if False. (optional)
     fetchSystemUsers: true,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
-    // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-    startIndex: 0,
   } satisfies BusinessAssetMembersGetRequest;
 
   try {
@@ -306,10 +314,10 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **assetId** | `string` | Unique identifier of a business asset. | [Defaults to `undefined`] |
+| **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
 | **fetchSystemUsers** | `boolean` | Fetches system users if True. Fetches regular user employees if False. | [Optional] [Defaults to `false`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
-| **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -328,15 +336,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Sucess |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## businessAssetPartnersGet
 
-> BusinessAssetPartnersGet200Response businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
+> BusinessAssetMembersGet200Response businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
 
 Get partners with access to asset
 
@@ -361,14 +374,14 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // string | Unique identifier of a business asset.
-    assetId: 729090764583391194,
+    assetId: assetId_example,
     // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-    startIndex: 0,
+    startIndex: 56,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies BusinessAssetPartnersGetRequest;
 
@@ -393,11 +406,11 @@ example().catch(console.error);
 | **assetId** | `string` | Unique identifier of a business asset. | [Defaults to `undefined`] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
-[**BusinessAssetPartnersGet200Response**](BusinessAssetPartnersGet200Response.md)
+[**BusinessAssetMembersGet200Response**](BusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -412,8 +425,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Sucess |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -445,20 +463,20 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // Array<PermissionsWithOwner> | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional)
     permissions: ...,
     // string | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
-    childAssetId: 549764894835,
+    childAssetId: childAssetId_example,
     // string | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
-    assetGroupId: 7078106104032,
+    assetGroupId: assetGroupId_example,
     // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
-    assetType: AD_ACCOUNT,
+    assetType: assetType_example,
     // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-    startIndex: 0,
+    startIndex: 56,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies BusinessAssetsGetRequest;
 
@@ -486,7 +504,7 @@ example().catch(console.error);
 | **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP`, `CATALOG`, `CONSUMER` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -505,15 +523,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## businessMemberAssetsGet
 
-> BusinessMemberAssetsGet200Response businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize)
+> BusinessMemberAssetsGetResponse businessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize)
 
 Get assets assigned to a member
 
@@ -538,16 +561,28 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // string | The member id to fetch assets for.
-    memberId: 729090764583391194,
-    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
-    assetType: AD_ACCOUNT,
+    memberId: memberId_example,
+    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_TAG' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
+    assetType: assetType_example,
     // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-    startIndex: 0,
+    startIndex: 56,
+    // AssetSortBy | The field to sort member assets by (optional)
+    sortBy: ...,
+    // boolean | Sort assets in ascending order (optional)
+    sortAscending: true,
+    // AssetSearchBy | The field to search member assets by (optional)
+    searchBy: ...,
+    // string | The value to search for (optional)
+    searchValue: searchValue_example,
+    // AssetPermissionType | The type of asset permission to filter by (optional)
+    assetPermissionType: ...,
+    // Array<NonDraftEntityStatus> | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
+    adAccountStatuses: ...,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies BusinessMemberAssetsGetRequest;
 
@@ -570,14 +605,20 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **memberId** | `string` | The member id to fetch assets for. | [Defaults to `undefined`] |
-| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP`, `CATALOG`, `CONSUMER` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
+| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP`, `CATALOG`, `CONSUMER`, `CONVERSION_TAG` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER, CONVERSION_TAG] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
+| **sortBy** | `AssetSortBy` | The field to sort member assets by | [Optional] [Defaults to `undefined`] [Enum: NAME, ID, PERMISSIONS] |
+| **sortAscending** | `boolean` | Sort assets in ascending order | [Optional] [Defaults to `true`] |
+| **searchBy** | `AssetSearchBy` | The field to search member assets by | [Optional] [Defaults to `undefined`] [Enum: NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER] |
+| **searchValue** | `string` | The value to search for | [Optional] [Defaults to `undefined`] |
+| **assetPermissionType** | `AssetPermissionType` | The type of asset permission to filter by | [Optional] [Defaults to `undefined`] [Enum: AGGREGATED_PERMISSION, DIRECT_PERMISSION] |
+| **adAccountStatuses** | `Array<NonDraftEntityStatus>` | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [Optional] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
-[**BusinessMemberAssetsGet200Response**](BusinessMemberAssetsGet200Response.md)
+[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -592,15 +633,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## businessMembersAssetAccessDelete
 
-> DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest)
+> DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody)
 
 Delete member access to asset
 
@@ -613,7 +659,7 @@ import {
   Configuration,
   BusinessAccessAssetsApi,
 } from '';
-import type { BusinessMembersAssetAccessDeleteOperationRequest } from '';
+import type { BusinessMembersAssetAccessDeleteRequest } from '';
 
 async function example() {
   console.log("🚀 Testing  SDK...");
@@ -625,10 +671,10 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
-    businessMembersAssetAccessDeleteRequest: ...,
-  } satisfies BusinessMembersAssetAccessDeleteOperationRequest;
+    businessId: businessId_example,
+    // BusinessMembersAssetAccessDeleteBody
+    businessMembersAssetAccessDeleteBody: ...,
+  } satisfies BusinessMembersAssetAccessDeleteRequest;
 
   try {
     const data = await api.businessMembersAssetAccessDelete(body);
@@ -648,7 +694,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **businessMembersAssetAccessDeleteRequest** | [BusinessMembersAssetAccessDeleteRequest](BusinessMembersAssetAccessDeleteRequest.md) | List member assset permissions to delete. | |
+| **businessMembersAssetAccessDeleteBody** | [BusinessMembersAssetAccessDeleteBody](BusinessMembersAssetAccessDeleteBody.md) |  | |
 
 ### Return type
 
@@ -667,8 +713,8 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -679,7 +725,7 @@ example().catch(console.error);
 
 Assign/Update member asset permissions
 
-Grant multiple members access to assets and/or update multiple member\&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+Grant multiple members access to assets and/or update multiple member\&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
 ### Example
 
@@ -700,8 +746,8 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+    businessId: businessId_example,
+    // UpdateMemberAssetAccessBody
     updateMemberAssetAccessBody: ...,
   } satisfies BusinessMembersAssetAccessUpdateRequest;
 
@@ -723,7 +769,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **updateMemberAssetAccessBody** | [UpdateMemberAssetAccessBody](UpdateMemberAssetAccessBody.md) | List of member asset permissions to create or update. | |
+| **updateMemberAssetAccessBody** | [UpdateMemberAssetAccessBody](UpdateMemberAssetAccessBody.md) |  | |
 
 ### Return type
 
@@ -742,15 +788,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## businessPartnerAssetAccessGet
 
-> BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark)
+> BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize)
 
 Get assets assigned to a partner or assets assigned by a partner
 
@@ -775,19 +826,27 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // string | The partner id to be bound to the Business
-    partnerId: 729090764583391194,
-    // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner\'s business asset. (optional)
-    partnerType: INTERNAL,
-    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
-    assetType: AD_ACCOUNT,
+    partnerId: partnerId_example,
+    // 'INTERNAL' | 'EXTERNAL' | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner\'s business asset. (optional)
+    partnerType: partnerType_example,
+    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'PINNER_LIST' | 'CONVERSION_TAG' | 'CATALOG' | 'CONSUMER' | 'CONVERSION_SEGMENT' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
+    assetType: assetType_example,
     // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-    startIndex: 0,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
-    pageSize: 56,
+    startIndex: 56,
+    // AssetSortBy | The field to sort member assets by (optional)
+    sortBy: ...,
+    // boolean | Sort assets in ascending order (optional)
+    sortAscending: true,
+    // AssetSearchBy | The field to search member assets by (optional)
+    searchBy: ...,
+    // string | The value to search for (optional)
+    searchValue: searchValue_example,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+    pageSize: 56,
   } satisfies BusinessPartnerAssetAccessGetRequest;
 
   try {
@@ -809,11 +868,15 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **partnerId** | `string` | The partner id to be bound to the Business | [Defaults to `undefined`] |
-| **partnerType** | `PartnerType` | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset. | [Optional] [Defaults to `undefined`] [Enum: INTERNAL, EXTERNAL] |
-| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP`, `CATALOG`, `CONSUMER` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
+| **partnerType** | `INTERNAL`, `EXTERNAL` | Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset. | [Optional] [Defaults to `&#39;INTERNAL&#39;`] [Enum: INTERNAL, EXTERNAL] |
+| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP`, `PINNER_LIST`, `CONVERSION_TAG`, `CATALOG`, `CONSUMER`, `CONVERSION_SEGMENT` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, PINNER_LIST, CONVERSION_TAG, CATALOG, CONSUMER, CONVERSION_SEGMENT] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **sortBy** | `AssetSortBy` | The field to sort member assets by | [Optional] [Defaults to `undefined`] [Enum: NAME, ID, PERMISSIONS] |
+| **sortAscending** | `boolean` | Sort assets in ascending order | [Optional] [Defaults to `true`] |
+| **searchBy** | `AssetSearchBy` | The field to search member assets by | [Optional] [Defaults to `undefined`] [Enum: NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER] |
+| **searchValue** | `string` | The value to search for | [Optional] [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -832,15 +895,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## deletePartnerAssetAccessHandlerImpl
 
-> DeletePartnerAssetsResultsResponseArray deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
+> DeletePartnerAssetAccessResultsResponseArray deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
 
 Delete partner access to asset
 
@@ -865,7 +933,7 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // DeletePartnerAssetAccessBody
     deletePartnerAssetAccessBody: ...,
   } satisfies DeletePartnerAssetAccessHandlerImplRequest;
@@ -892,7 +960,7 @@ example().catch(console.error);
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md)
+[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -907,8 +975,8 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -940,8 +1008,8 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+    businessId: businessId_example,
+    // UpdatePartnerAssetAccessBody
     updatePartnerAssetAccessBody: ...,
   } satisfies UpdatePartnerAssetAccessHandlerImplRequest;
 
@@ -963,7 +1031,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **updatePartnerAssetAccessBody** | [UpdatePartnerAssetAccessBody](UpdatePartnerAssetAccessBody.md) | A list of assets and permissions to assign to your partners. | |
+| **updatePartnerAssetAccessBody** | [UpdatePartnerAssetAccessBody](UpdatePartnerAssetAccessBody.md) |  | |
 
 ### Return type
 
@@ -982,8 +1050,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

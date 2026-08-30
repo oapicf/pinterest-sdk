@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Summary status for campaign
+* 
 * Values: RUNNING,PAUSED,NOT_STARTED,COMPLETED,ADVERTISER_DISABLED,ARCHIVED,DRAFT,DELETED_DRAFT
 */
 enum class CampaignSummaryStatus(@get:JsonValue val value: kotlin.String) {

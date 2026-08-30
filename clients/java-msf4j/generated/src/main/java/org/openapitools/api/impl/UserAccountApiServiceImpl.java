@@ -5,22 +5,26 @@ import org.openapitools.model.*;
 
 import org.openapitools.model.Account;
 import org.openapitools.model.AnalyticsMetricsResponse;
-import org.openapitools.model.BoardsUserFollowsList200Response;
+import java.math.BigDecimal;
+import org.openapitools.model.BoardsList200Response;
 import java.util.Date;
-import org.openapitools.model.Error;
-import org.openapitools.model.FollowUserRequest;
+import org.openapitools.model.FollowUser;
+import org.openapitools.model.FollowUserCreate;
 import org.openapitools.model.FollowersList200Response;
 import org.openapitools.model.LinkedBusiness;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.QuerymetrictypesItems;
+import org.openapitools.model.QueryvideopinmetrictypesItems;
 import org.openapitools.model.TopPinsAnalyticsResponse;
+import org.openapitools.model.TopPinsSortBy;
 import org.openapitools.model.TopVideoPinsAnalyticsResponse;
+import org.openapitools.model.TopVideoPinsSortBy;
 import org.openapitools.model.UserFollowingFeedType;
-import org.openapitools.model.UserFollowingGet200Response;
-import org.openapitools.model.UserSummary;
-import org.openapitools.model.UserWebsiteSummary;
-import org.openapitools.model.UserWebsiteVerificationCode;
-import org.openapitools.model.UserWebsiteVerifyRequest;
+import org.openapitools.model.UserWebsite;
+import org.openapitools.model.UserWebsiteCreate;
+import org.openapitools.model.UserWebsiteVerification;
 import org.openapitools.model.UserWebsitesGet200Response;
 
 import java.util.List;
@@ -34,20 +38,20 @@ import org.wso2.msf4j.formparam.FileInfo;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UserAccountApiServiceImpl extends UserAccountApiService {
     @Override
-    public Response boardsUserFollowsList(String bookmark
-, Integer pageSize
+    public Response boardsUserFollowsList(String adAccountId
 , Boolean explicitFollowing
-, String adAccountId
+, String bookmark
+, Integer pageSize
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response followUserUpdate(String username
-, FollowUserRequest followUserRequest
+, FollowUserCreate followUserCreate
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -78,7 +82,7 @@ public class UserAccountApiServiceImpl extends UserAccountApiService {
 , String appTypes
 , String contentType
 , String source
-, List<String> metricTypes
+, List<QuerymetrictypesItems> metricTypes
 , String splitField
 , String adAccountId
  ) throws NotFoundException {
@@ -88,15 +92,15 @@ public class UserAccountApiServiceImpl extends UserAccountApiService {
     @Override
     public Response userAccountAnalyticsTopPins(Date startDate
 , Date endDate
-, String sortBy
+, TopPinsSortBy sortBy
 , String fromClaimedContent
 , String pinFormat
 , String appTypes
 , String contentType
 , String source
-, List<String> metricTypes
+, List<QuerymetrictypesItems> metricTypes
 , Integer numOfPins
-, Integer createdInLastNDays
+, BigDecimal createdInLastNDays
 , String adAccountId
  ) throws NotFoundException {
         // do some magic!
@@ -105,15 +109,15 @@ public class UserAccountApiServiceImpl extends UserAccountApiService {
     @Override
     public Response userAccountAnalyticsTopVideoPins(Date startDate
 , Date endDate
-, String sortBy
+, TopVideoPinsSortBy sortBy
 , String fromClaimedContent
 , String pinFormat
 , String appTypes
 , String contentType
 , String source
-, List<String> metricTypes
+, List<QueryvideopinmetrictypesItems> metricTypes
 , Integer numOfPins
-, Integer createdInLastNDays
+, BigDecimal createdInLastNDays
 , String adAccountId
  ) throws NotFoundException {
         // do some magic!
@@ -126,11 +130,11 @@ public class UserAccountApiServiceImpl extends UserAccountApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response userFollowingGet(String bookmark
-, Integer pageSize
-, UserFollowingFeedType feedType
+    public Response userFollowingGet(String adAccountId
 , Boolean explicitFollowing
-, String adAccountId
+, UserFollowingFeedType feedType
+, String bookmark
+, Integer pageSize
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -143,7 +147,7 @@ public class UserAccountApiServiceImpl extends UserAccountApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest
+    public Response verifyWebsiteUpdate(UserWebsiteCreate userWebsiteCreate
 , String adAccountId
  ) throws NotFoundException {
         // do some magic!

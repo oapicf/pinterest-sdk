@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleUpdateRequestAllOf1"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleUpdateRequestAllOf1"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  ScheduleUpdateRequestAllOf1 {
+    title = ScheduleUpdateRequestAllOf1
+    description = ScheduleUpdateRequestAllOf1
+    derivedFrom = Root
+    properties {
+        entity_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        entity_type {
+          type =  string
+          description = "Entity type"
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Schedule ID."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleUpdateRequestAllOf1 {
+    title = ScheduleUpdateRequestAllOf1
+    description = ScheduleUpdateRequestAllOf1
+    implements = openapi_server.resourceTypes.ScheduleUpdateRequestAllOf1
+
+  }
+}

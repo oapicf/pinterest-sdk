@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -35,7 +35,7 @@ type AmazonConnectRequest struct {
 	// The one time passcode for Pinterest-initiated linking requests
 	OneTimePasscode *string `json:"one_time_passcode,omitempty"`
 	// The Pinterest user id for Amazon-initiated linking requests
-	PinterestUserId *string `json:"pinterest_user_id,omitempty" validate:"regexp=^\\\\d+$"`
+	PinterestUserId *string `json:"pinterest_user_id,omitempty" validate:"regexp=^\\d+$"`
 }
 
 type _AmazonConnectRequest AmazonConnectRequest

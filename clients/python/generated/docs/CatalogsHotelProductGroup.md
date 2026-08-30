@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **str** | Catalog id pertaining to the hotel product group. | 
+**catalog_id** | **str** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **str** |  | 
 **created_at** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **description** | **str** |  | [optional] 
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**id** | **str** | ID of the hotel product group. | 
-**name** | **str** | Name of hotel product group | [optional] 
+**id** | **str** | ID of the catalog product group. | 
+**name** | **str** | Name of catalog product group | [optional] 
 **type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | 
 **updated_at** | **int** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
 

@@ -1,0 +1,9 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "PinType",
+  "symbols": [
+    "PRIVATE"
+  ]
+}

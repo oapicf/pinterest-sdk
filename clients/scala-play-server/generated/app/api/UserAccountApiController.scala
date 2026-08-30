@@ -6,42 +6,46 @@ import play.api.libs.json._
 import play.api.mvc._
 import model.Account
 import model.AnalyticsMetricsResponse
-import model.BoardsUserFollowsList200Response
+import model.BigDecimal
+import model.BoardsList200Response
 import model.Error
-import model.FollowUserRequest
+import model.FollowUser
+import model.FollowUserCreate
 import model.FollowersList200Response
 import model.LinkedBusiness
 import java.time.LocalDate
+import model.QuerymetrictypesItems
+import model.QueryvideopinmetrictypesItems
 import model.TopPinsAnalyticsResponse
+import model.TopPinsSortBy
 import model.TopVideoPinsAnalyticsResponse
+import model.TopVideoPinsSortBy
 import model.UserAccountFollowedInterests200Response
 import model.UserFollowingFeedType
-import model.UserFollowingGet200Response
-import model.UserSummary
-import model.UserWebsiteSummary
-import model.UserWebsiteVerificationCode
-import model.UserWebsiteVerifyRequest
+import model.UserWebsite
+import model.UserWebsiteCreate
+import model.UserWebsiteVerification
 import model.UserWebsitesGet200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAccountApi) extends AbstractController(cc) {
   /**
-    * GET /v5/user_account/following/boards?bookmark=[value]&pageSize=[value]&explicitFollowing=[value]&adAccountId=[value]
+    * GET /v5/user_account/following/boards?adAccountId=[value]&explicitFollowing=[value]&bookmark=[value]&pageSize=[value]
     */
   def boardsUserFollowsList(): Action[AnyContent] = Action { request =>
-    def executeApi(): BoardsUserFollowsList200Response = {
+    def executeApi(): BoardsList200Response = {
+      val adAccountId = request.getQueryString("ad_account_id")
+        
+      val explicitFollowing = request.getQueryString("explicit_following")
+        .map(value => value.toBoolean)
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val explicitFollowing = request.getQueryString("explicit_following")
-        .map(value => value.toBoolean)
-        
-      val adAccountId = request.getQueryString("ad_account_id")
-        
-      api.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId)
+      api.boardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -54,11 +58,11 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
     * @param username A valid username
     */
   def followUserUpdate(username: String): Action[AnyContent] = Action { request =>
-    def executeApi(): UserSummary = {
-      val followUserRequest = request.body.asJson.map(_.as[FollowUserRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "followUserRequest")
+    def executeApi(): FollowUser = {
+      val followUserCreate = request.body.asJson.map(_.as[FollowUserCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "followUserCreate")
       }
-      api.followUserUpdate(username, followUserRequest)
+      api.followUserUpdate(username, followUserCreate)
     }
 
     val result = executeApi()
@@ -101,7 +105,7 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
     * DELETE /v5/user_account/websites?website=[value]
     */
   def unverifyWebsiteDelete(): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
+    def executeApi(): UserWebsite = {
       val website = request.getQueryString("website")
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("website", "query string")
@@ -110,8 +114,9 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
       api.unverifyWebsiteDelete(website)
     }
 
-    executeApi()
-    Ok
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
   }
 
   /**
@@ -143,6 +148,7 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
         
       val metricTypes = request.getQueryString("metric_types")
         .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
         
       val splitField = request.getQueryString("split_field")
         
@@ -174,6 +180,7 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
         }
         
       val sortBy = request.getQueryString("sort_by")
+        .map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("sort_by", "query string")
         }
@@ -190,12 +197,13 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
         
       val metricTypes = request.getQueryString("metric_types")
         .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
         
       val numOfPins = request.getQueryString("num_of_pins")
         .map(value => value.toInt)
         
       val createdInLastNDays = request.getQueryString("created_in_last_n_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val adAccountId = request.getQueryString("ad_account_id")
         
@@ -225,6 +233,7 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
         }
         
       val sortBy = request.getQueryString("sort_by")
+        .map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("sort_by", "query string")
         }
@@ -241,12 +250,13 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
         
       val metricTypes = request.getQueryString("metric_types")
         .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
         
       val numOfPins = request.getQueryString("num_of_pins")
         .map(value => value.toInt)
         
       val createdInLastNDays = request.getQueryString("created_in_last_n_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val adAccountId = request.getQueryString("ad_account_id")
         
@@ -293,23 +303,24 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
   }
 
   /**
-    * GET /v5/user_account/following?bookmark=[value]&pageSize=[value]&feedType=[value]&explicitFollowing=[value]&adAccountId=[value]
+    * GET /v5/user_account/following?adAccountId=[value]&explicitFollowing=[value]&feedType=[value]&bookmark=[value]&pageSize=[value]
     */
   def userFollowingGet(): Action[AnyContent] = Action { request =>
-    def executeApi(): UserFollowingGet200Response = {
+    def executeApi(): FollowersList200Response = {
+      val adAccountId = request.getQueryString("ad_account_id")
+        
+      val explicitFollowing = request.getQueryString("explicit_following")
+        .map(value => value.toBoolean)
+        
+      val feedType = request.getQueryString("feed_type")
+        .map(value => )
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val feedType = request.getQueryString("feed_type")
-        
-      val explicitFollowing = request.getQueryString("explicit_following")
-        .map(value => value.toBoolean)
-        
-      val adAccountId = request.getQueryString("ad_account_id")
-        
-      api.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId)
+      api.userFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -339,13 +350,13 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
     * POST /v5/user_account/websites?adAccountId=[value]
     */
   def verifyWebsiteUpdate(): Action[AnyContent] = Action { request =>
-    def executeApi(): UserWebsiteSummary = {
-      val userWebsiteVerifyRequest = request.body.asJson.map(_.as[UserWebsiteVerifyRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "userWebsiteVerifyRequest")
+    def executeApi(): UserWebsite = {
+      val userWebsiteCreate = request.body.asJson.map(_.as[UserWebsiteCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "userWebsiteCreate")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
+      api.verifyWebsiteUpdate(userWebsiteCreate, adAccountId)
     }
 
     val result = executeApi()
@@ -357,7 +368,7 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
     * GET /v5/user_account/websites/verification?adAccountId=[value]
     */
   def websiteVerificationGet(): Action[AnyContent] = Action { request =>
-    def executeApi(): UserWebsiteVerificationCode = {
+    def executeApi(): UserWebsiteVerification = {
       val adAccountId = request.getQueryString("ad_account_id")
         
       api.websiteVerificationGet(adAccountId)

@@ -1,0 +1,51 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server RetailLocalInventoryItemAttributesOptional"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a RetailLocalInventoryItemAttributesOptional"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ItemAvailability = openapi_server.resourceTypes.ItemAvailability
+}
+resourceTypes {
+
+  RetailLocalInventoryItemAttributesOptional {
+    title = RetailLocalInventoryItemAttributesOptional
+    description = RetailLocalInventoryItemAttributesOptional
+    derivedFrom = Root
+    properties {
+        ad_link {
+          type =  string
+          description = "Ad link for the item"
+          optional = false
+        }
+        availability {
+          type = ItemAvailability
+          description = "Availability status of the item"
+          optional = false
+        }
+        price {
+          type =  string
+          description = "The price of the product. It supports the following formats, \&quot;49.99 USD\&quot;, \&quot;49.99USD\&quot; and \&quot;49.99\&quot;. If the currency is not included, we default to US dollars."
+          optional = false
+        }
+        sale_price {
+          type =  string
+          description = "The sale price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  RetailLocalInventoryItemAttributesOptional {
+    title = RetailLocalInventoryItemAttributesOptional
+    description = RetailLocalInventoryItemAttributesOptional
+    implements = openapi_server.resourceTypes.RetailLocalInventoryItemAttributesOptional
+
+  }
+}

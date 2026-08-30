@@ -1,21 +1,30 @@
 package controllers;
 
-import apimodels.AdGroupArrayResponse;
-import apimodels.AdGroupAudienceSizingRequest;
-import apimodels.AdGroupAudienceSizingResponse;
-import apimodels.AdGroupCreateRequest;
-import apimodels.AdGroupResponse;
-import apimodels.AdGroupUpdateRequest;
-import apimodels.AdGroupsAnalyticsResponseInner;
+import apimodels.AdGroup;
+import apimodels.AdGroupAudienceSizing;
+import apimodels.AdGroupAudienceSizingCreate;
+import apimodels.AdGroupCreateCreate;
+import apimodels.AdGroupUpdateBatchUpdate;
+import apimodels.AdGroupsAnalyticsMetrics;
+import apimodels.AdGroupsCreate200Response;
 import apimodels.AdGroupsList200Response;
 import apimodels.AdsAnalyticsAdGroupTargetingType;
 import apimodels.BidFloor;
-import apimodels.BidFloorRequest;
+import apimodels.BidFloorCreate;
+import java.math.BigDecimal;
 import apimodels.ConversionReportAttributionType;
-import apimodels.Error;
+import apimodels.DynamicTitlesDownloadCSV;
+import apimodels.DynamicTitlesGetStatus;
+import apimodels.DynamicTitlesProcessCSV;
+import apimodels.DynamicTitlesProcessCSVCreate;
+import apimodels.DynamicTitlesUploadURL;
+import apimodels.EntityStatus;
 import apimodels.Granularity;
 import java.time.LocalDate;
 import apimodels.MetricsResponse;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.ReportingColumnSync;
 import apimodels.ReportingTimeZone;
 
 import com.typesafe.config.Config;
@@ -40,7 +49,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdGroupsApiController extends Controller {
     private final AdGroupsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -86,7 +95,7 @@ public class AdGroupsApiController extends Controller {
             throw new IllegalArgumentException("'columns' parameter is required");
         }
         List<String> columnsList = OpenAPIUtils.parametersToList("csv", columnsArray);
-        List<String> columns = new ArrayList<>();
+        List<ReportingColumnSync> columns = new ArrayList<>();
         for (String curParam : columnsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -101,23 +110,23 @@ public class AdGroupsApiController extends Controller {
             throw new IllegalArgumentException("'granularity' parameter is required");
         }
         String valueclickWindowDays = request.getQueryString("click_window_days");
-        Integer clickWindowDays;
+        BigDecimal clickWindowDays;
         if (valueclickWindowDays != null) {
-            clickWindowDays = Integer.parseInt(valueclickWindowDays);
+            clickWindowDays = new BigDecimal(valueclickWindowDays);
         } else {
             clickWindowDays = 30;
         }
         String valueengagementWindowDays = request.getQueryString("engagement_window_days");
-        Integer engagementWindowDays;
+        BigDecimal engagementWindowDays;
         if (valueengagementWindowDays != null) {
-            engagementWindowDays = Integer.parseInt(valueengagementWindowDays);
+            engagementWindowDays = new BigDecimal(valueengagementWindowDays);
         } else {
             engagementWindowDays = 30;
         }
         String valueviewWindowDays = request.getQueryString("view_window_days");
-        Integer viewWindowDays;
+        BigDecimal viewWindowDays;
         if (valueviewWindowDays != null) {
-            viewWindowDays = Integer.parseInt(valueviewWindowDays);
+            viewWindowDays = new BigDecimal(valueviewWindowDays);
         } else {
             viewWindowDays = 1;
         }
@@ -142,63 +151,114 @@ public class AdGroupsApiController extends Controller {
         } else {
             reportingTimezone = null;
         }
-        return imp.adGroupsAnalyticsHttp(request, adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone);
+        return imp.adGroupsAnalyticsHttp(request, startDate, endDate, adGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone);
     }
 
     @ApiAction
     public Result adGroupsAudienceSizing(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeadGroupAudienceSizingRequest = request.body().asJson();
-        AdGroupAudienceSizingRequest adGroupAudienceSizingRequest;
-        if (nodeadGroupAudienceSizingRequest != null) {
-            adGroupAudienceSizingRequest = mapper.readValue(nodeadGroupAudienceSizingRequest.toString(), AdGroupAudienceSizingRequest.class);
+        JsonNode nodeadGroupAudienceSizingCreate = request.body().asJson();
+        AdGroupAudienceSizingCreate adGroupAudienceSizingCreate;
+        if (nodeadGroupAudienceSizingCreate != null) {
+            adGroupAudienceSizingCreate = mapper.readValue(nodeadGroupAudienceSizingCreate.toString(), AdGroupAudienceSizingCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(adGroupAudienceSizingRequest);
+                OpenAPIUtils.validate(adGroupAudienceSizingCreate);
             }
         } else {
-            throw new IllegalArgumentException("'AdGroupAudienceSizingRequest' parameter is required");
+            throw new IllegalArgumentException("'AdGroupAudienceSizingCreate' parameter is required");
         }
-        return imp.adGroupsAudienceSizingHttp(request, adAccountId, adGroupAudienceSizingRequest);
+        return imp.adGroupsAudienceSizingHttp(request, adAccountId, adGroupAudienceSizingCreate);
     }
 
     @ApiAction
     public Result adGroupsBidFloorGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodebidFloorRequest = request.body().asJson();
-        BidFloorRequest bidFloorRequest;
-        if (nodebidFloorRequest != null) {
-            bidFloorRequest = mapper.readValue(nodebidFloorRequest.toString(), BidFloorRequest.class);
+        JsonNode nodebidFloorCreate = request.body().asJson();
+        BidFloorCreate bidFloorCreate;
+        if (nodebidFloorCreate != null) {
+            bidFloorCreate = mapper.readValue(nodebidFloorCreate.toString(), BidFloorCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(bidFloorRequest);
+                OpenAPIUtils.validate(bidFloorCreate);
             }
         } else {
-            throw new IllegalArgumentException("'BidFloorRequest' parameter is required");
+            throw new IllegalArgumentException("'BidFloorCreate' parameter is required");
         }
-        return imp.adGroupsBidFloorGetHttp(request, adAccountId, bidFloorRequest);
+        return imp.adGroupsBidFloorGetHttp(request, adAccountId, bidFloorCreate);
     }
 
     @ApiAction
     public Result adGroupsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeadGroupCreateRequest = request.body().asJson();
-        List<@Valid AdGroupCreateRequest> adGroupCreateRequest;
-        if (nodeadGroupCreateRequest != null) {
-            adGroupCreateRequest = mapper.readValue(nodeadGroupCreateRequest.toString(), new TypeReference<List<@Valid AdGroupCreateRequest>>(){});
+        JsonNode nodeadGroupCreateCreate = request.body().asJson();
+        List<@Valid AdGroupCreateCreate> adGroupCreateCreate;
+        if (nodeadGroupCreateCreate != null) {
+            adGroupCreateCreate = mapper.readValue(nodeadGroupCreateCreate.toString(), new TypeReference<List<@Valid AdGroupCreateCreate>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (AdGroupCreateRequest curItem : adGroupCreateRequest) {
+                for (AdGroupCreateCreate curItem : adGroupCreateCreate) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'AdGroupCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'AdGroupCreateCreate' parameter is required");
         }
-        return imp.adGroupsCreateHttp(request, adAccountId, adGroupCreateRequest);
+        return imp.adGroupsCreateHttp(request, adAccountId, adGroupCreateCreate);
     }
 
     @ApiAction
-    public Result adGroupsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId) throws Exception {
-        return imp.adGroupsGetHttp(request, adAccountId, adGroupId);
+    public Result adGroupsDynamicTitlesDownloadCsv(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId) throws Exception {
+        return imp.adGroupsDynamicTitlesDownloadCsvHttp(request, adAccountId, adGroupId);
+    }
+
+    @ApiAction
+    public Result adGroupsDynamicTitlesGetStatus(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId) throws Exception {
+        return imp.adGroupsDynamicTitlesGetStatusHttp(request, adAccountId, adGroupId);
+    }
+
+    @ApiAction
+    public Result adGroupsDynamicTitlesGetUploadUrl(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId) throws Exception {
+        return imp.adGroupsDynamicTitlesGetUploadUrlHttp(request, adAccountId, adGroupId);
+    }
+
+    @ApiAction
+    public Result adGroupsDynamicTitlesProcessCsv(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId) throws Exception {
+        JsonNode nodedynamicTitlesProcessCSVCreate = request.body().asJson();
+        DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate;
+        if (nodedynamicTitlesProcessCSVCreate != null) {
+            dynamicTitlesProcessCSVCreate = mapper.readValue(nodedynamicTitlesProcessCSVCreate.toString(), DynamicTitlesProcessCSVCreate.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(dynamicTitlesProcessCSVCreate);
+            }
+        } else {
+            throw new IllegalArgumentException("'DynamicTitlesProcessCSVCreate' parameter is required");
+        }
+        return imp.adGroupsDynamicTitlesProcessCsvHttp(request, adAccountId, adGroupId, dynamicTitlesProcessCSVCreate);
+    }
+
+    @ApiAction
+    public Result adGroupsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        return imp.adGroupsGetHttp(request, adGroupId, adAccountId);
     }
 
     @ApiAction
     public Result adGroupsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        String valueorder = request.getQueryString("order");
+        PinterestLibPaginationOrder order;
+        if (valueorder != null) {
+            order = valueorder;
+        } else {
+            order = null;
+        }
         String[] campaignIdsArray = request.queryString().get("campaign_ids");
         List<String> campaignIdsList = OpenAPIUtils.parametersToList("multi", campaignIdsArray);
         List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds = new ArrayList<>();
@@ -219,33 +279,12 @@ public class AdGroupsApiController extends Controller {
         }
         String[] entityStatusesArray = request.queryString().get("entity_statuses");
         List<String> entityStatusesList = OpenAPIUtils.parametersToList("multi", entityStatusesArray);
-        List<String> entityStatuses = new ArrayList<>();
+        List<EntityStatus> entityStatuses = new ArrayList<>();
         for (String curParam : entityStatusesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
                 entityStatuses.add(curParam);
             }
-        }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
-        String valueorder = request.getQueryString("order");
-        String order;
-        if (valueorder != null) {
-            order = valueorder;
-        } else {
-            order = null;
-        }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
         }
         String valuetranslateInterestsToNames = request.getQueryString("translate_interests_to_names");
         Boolean translateInterestsToNames;
@@ -254,7 +293,7 @@ public class AdGroupsApiController extends Controller {
         } else {
             translateInterestsToNames = false;
         }
-        return imp.adGroupsListHttp(request, adAccountId, campaignIds, adGroupIds, entityStatuses, pageSize, order, bookmark, translateInterestsToNames);
+        return imp.adGroupsListHttp(request, adAccountId, bookmark, pageSize, order, campaignIds, adGroupIds, entityStatuses, translateInterestsToNames);
     }
 
     @ApiAction
@@ -302,7 +341,7 @@ public class AdGroupsApiController extends Controller {
             throw new IllegalArgumentException("'columns' parameter is required");
         }
         List<String> columnsList = OpenAPIUtils.parametersToList("csv", columnsArray);
-        List<String> columns = new ArrayList<>();
+        List<ReportingColumnSync> columns = new ArrayList<>();
         for (String curParam : columnsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -317,23 +356,23 @@ public class AdGroupsApiController extends Controller {
             throw new IllegalArgumentException("'granularity' parameter is required");
         }
         String valueclickWindowDays = request.getQueryString("click_window_days");
-        Integer clickWindowDays;
+        BigDecimal clickWindowDays;
         if (valueclickWindowDays != null) {
-            clickWindowDays = Integer.parseInt(valueclickWindowDays);
+            clickWindowDays = new BigDecimal(valueclickWindowDays);
         } else {
             clickWindowDays = 30;
         }
         String valueengagementWindowDays = request.getQueryString("engagement_window_days");
-        Integer engagementWindowDays;
+        BigDecimal engagementWindowDays;
         if (valueengagementWindowDays != null) {
-            engagementWindowDays = Integer.parseInt(valueengagementWindowDays);
+            engagementWindowDays = new BigDecimal(valueengagementWindowDays);
         } else {
             engagementWindowDays = 30;
         }
         String valueviewWindowDays = request.getQueryString("view_window_days");
-        Integer viewWindowDays;
+        BigDecimal viewWindowDays;
         if (valueviewWindowDays != null) {
-            viewWindowDays = Integer.parseInt(valueviewWindowDays);
+            viewWindowDays = new BigDecimal(valueviewWindowDays);
         } else {
             viewWindowDays = 1;
         }
@@ -360,24 +399,78 @@ public class AdGroupsApiController extends Controller {
         } else {
             reportingTimezone = null;
         }
-        return imp.adGroupsTargetingAnalyticsGetHttp(request, adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone);
+        String[] sortColumnsArray = request.queryString().get("sort_columns");
+        List<String> sortColumnsList = OpenAPIUtils.parametersToList("multi", sortColumnsArray);
+        List<String> sortColumns = new ArrayList<>();
+        for (String curParam : sortColumnsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                sortColumns.add(curParam);
+            }
+        }
+        String valuesortAscending = request.getQueryString("sort_ascending");
+        Boolean sortAscending;
+        if (valuesortAscending != null) {
+            sortAscending = Boolean.valueOf(valuesortAscending);
+        } else {
+            sortAscending = null;
+        }
+        return imp.adGroupsTargetingAnalyticsGetHttp(request, adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, sortColumns, sortAscending);
     }
 
     @ApiAction
     public Result adGroupsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeadGroupUpdateRequest = request.body().asJson();
-        List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest;
-        if (nodeadGroupUpdateRequest != null) {
-            adGroupUpdateRequest = mapper.readValue(nodeadGroupUpdateRequest.toString(), new TypeReference<List<@Valid AdGroupUpdateRequest>>(){});
+        JsonNode nodeadGroupUpdateBatchUpdate = request.body().asJson();
+        List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate;
+        if (nodeadGroupUpdateBatchUpdate != null) {
+            adGroupUpdateBatchUpdate = mapper.readValue(nodeadGroupUpdateBatchUpdate.toString(), new TypeReference<List<@Valid AdGroupUpdateBatchUpdate>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (AdGroupUpdateRequest curItem : adGroupUpdateRequest) {
+                for (AdGroupUpdateBatchUpdate curItem : adGroupUpdateBatchUpdate) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'AdGroupUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'AdGroupUpdateBatchUpdate' parameter is required");
         }
-        return imp.adGroupsUpdateHttp(request, adAccountId, adGroupUpdateRequest);
+        return imp.adGroupsUpdateHttp(request, adAccountId, adGroupUpdateBatchUpdate);
+    }
+
+    @ApiAction
+    public Result getAdGroupsByPromotionIdsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        String valueorder = request.getQueryString("order");
+        PinterestLibPaginationOrder order;
+        if (valueorder != null) {
+            order = valueorder;
+        } else {
+            order = null;
+        }
+        String[] promotionIdsArray = request.queryString().get("promotion_ids");
+        if (promotionIdsArray == null) {
+            throw new IllegalArgumentException("'promotion_ids' parameter is required");
+        }
+        List<String> promotionIdsList = OpenAPIUtils.parametersToList("multi", promotionIdsArray);
+        List<String> promotionIds = new ArrayList<>();
+        for (String curParam : promotionIdsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                promotionIds.add(curParam);
+            }
+        }
+        return imp.getAdGroupsByPromotionIdsListHttp(request, adAccountId, promotionIds, bookmark, pageSize, order);
     }
 
 }

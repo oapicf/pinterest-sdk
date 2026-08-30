@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.Audience;
+import org.openapitools.model.AdAccountsAudience;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -24,7 +24,7 @@ public class AudiencesList200Response  {
 
   @Valid
 
-  private List<@Valid Audience> items = new ArrayList<>();
+  private List<@Valid AdAccountsAudience> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -49,20 +49,20 @@ public class AudiencesList200Response  {
   **/
   @JsonProperty("items")
   @NotNull
-  public List<@Valid Audience> getItems() {
+  public List<@Valid AdAccountsAudience> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid Audience> items) {
+  public void setItems(List<@Valid AdAccountsAudience> items) {
     this.items = items;
   }
 
-  public AudiencesList200Response items(List<@Valid Audience> items) {
+  public AudiencesList200Response items(List<@Valid AdAccountsAudience> items) {
     this.items = items;
     return this;
   }
 
-  public AudiencesList200Response addItemsItem(Audience itemsItem) {
+  public AudiencesList200Response addItemsItem(AdAccountsAudience itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -101,10 +101,7 @@ public class AudiencesList200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

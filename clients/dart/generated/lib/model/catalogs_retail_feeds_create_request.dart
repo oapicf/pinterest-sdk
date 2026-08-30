@@ -24,10 +24,10 @@ class CatalogsRetailFeedsCreateRequest {
     required this.location,
     required this.name,
     this.preferredProcessingSchedule,
-    this.status = 'ACTIVE',
+    this.status = CatalogsStatus.ACTIVE,
   });
 
-  /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
+  /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,7 +36,7 @@ class CatalogsRetailFeedsCreateRequest {
   ///
   String? catalogId;
 
-  CatalogsType catalogType;
+  CatalogsRetailFeedsCreateRequestCatalogTypeEnum catalogType;
 
   CatalogsFeedCredentials? credentials;
 
@@ -46,7 +46,7 @@ class CatalogsRetailFeedsCreateRequest {
 
   NullableCurrency? defaultCurrency;
 
-  CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
 
   CatalogsFormat format;
 
@@ -142,26 +142,34 @@ class CatalogsRetailFeedsCreateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailFeedsCreateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailFeedsCreateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsRetailFeedsCreateRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsRetailFeedsCreateRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'default_country'), 'Required key "CatalogsRetailFeedsCreateRequest[default_country]" is missing from JSON.');
+        assert(json[r'default_country'] != null, 'Required key "CatalogsRetailFeedsCreateRequest[default_country]" has a null value in JSON.');
+        assert(json.containsKey(r'default_locale'), 'Required key "CatalogsRetailFeedsCreateRequest[default_locale]" is missing from JSON.');
+        assert(json[r'default_locale'] != null, 'Required key "CatalogsRetailFeedsCreateRequest[default_locale]" has a null value in JSON.');
+        assert(json.containsKey(r'format'), 'Required key "CatalogsRetailFeedsCreateRequest[format]" is missing from JSON.');
+        assert(json[r'format'] != null, 'Required key "CatalogsRetailFeedsCreateRequest[format]" has a null value in JSON.');
+        assert(json.containsKey(r'location'), 'Required key "CatalogsRetailFeedsCreateRequest[location]" is missing from JSON.');
+        assert(json[r'location'] != null, 'Required key "CatalogsRetailFeedsCreateRequest[location]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "CatalogsRetailFeedsCreateRequest[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "CatalogsRetailFeedsCreateRequest[name]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsRetailFeedsCreateRequest(
         catalogId: mapValueOfType<String>(json, r'catalog_id'),
-        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
+        catalogType: CatalogsRetailFeedsCreateRequestCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
         credentials: CatalogsFeedCredentials.fromJson(json[r'credentials']),
         defaultAvailability: ProductAvailabilityType.fromJson(json[r'default_availability']),
         defaultCountry: Country.fromJson(json[r'default_country'])!,
         defaultCurrency: NullableCurrency.fromJson(json[r'default_currency']),
-        defaultLocale: CatalogsFeedsCreateRequestDefaultLocale.fromJson(json[r'default_locale'])!,
+        defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.fromJson(json[r'default_locale'])!,
         format: CatalogsFormat.fromJson(json[r'format'])!,
         location: mapValueOfType<String>(json, r'location')!,
         name: mapValueOfType<String>(json, r'name')!,
         preferredProcessingSchedule: CatalogsFeedProcessingSchedule.fromJson(json[r'preferred_processing_schedule']),
-        status: CatalogsStatus.fromJson(json[r'status']) ?? 'ACTIVE',
+        status: CatalogsStatus.fromJson(json[r'status']) ?? CatalogsStatus.ACTIVE,
       );
     }
     return null;
@@ -217,4 +225,80 @@ class CatalogsRetailFeedsCreateRequest {
     'name',
   };
 }
+
+
+enum CatalogsRetailFeedsCreateRequestCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailFeedsCreateRequestCatalogTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsRetailFeedsCreateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsRetailFeedsCreateRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailFeedsCreateRequestCatalogTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsRetailFeedsCreateRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsRetailFeedsCreateRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsRetailFeedsCreateRequestCatalogTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsRetailFeedsCreateRequestCatalogTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsRetailFeedsCreateRequestCatalogTypeEnum] to String,
+/// and [decode] dynamic data back to [CatalogsRetailFeedsCreateRequestCatalogTypeEnum].
+class CatalogsRetailFeedsCreateRequestCatalogTypeEnumTypeTransformer {
+  factory CatalogsRetailFeedsCreateRequestCatalogTypeEnumTypeTransformer() => _instance ??= const CatalogsRetailFeedsCreateRequestCatalogTypeEnumTypeTransformer._();
+
+  const CatalogsRetailFeedsCreateRequestCatalogTypeEnumTypeTransformer._();
+
+  String encode(CatalogsRetailFeedsCreateRequestCatalogTypeEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsRetailFeedsCreateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsRetailFeedsCreateRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailFeedsCreateRequestCatalogTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'RETAIL': return CatalogsRetailFeedsCreateRequestCatalogTypeEnum.RETAIL;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsRetailFeedsCreateRequestCatalogTypeEnumTypeTransformer? _instance;
+}
+
 

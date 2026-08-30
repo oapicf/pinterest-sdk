@@ -1,0 +1,9 @@
+
+
+# CustomerListStatus
+
+## Enum
+
+
+
+

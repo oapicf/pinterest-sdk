@@ -12,18 +12,21 @@ static google_product_category2_filter_t *google_product_category2_filter_create
     if (!google_product_category2_filter_local_var) {
         return NULL;
     }
-    google_product_category2_filter_local_var->google_product_category_2 = google_product_category_2;
-
+    memset(google_product_category2_filter_local_var, 0, sizeof(google_product_category2_filter_t));
     google_product_category2_filter_local_var->_library_owned = 1;
+    google_product_category2_filter_local_var->google_product_category_2 = google_product_category_2;
     return google_product_category2_filter_local_var;
 }
 
 __attribute__((deprecated)) google_product_category2_filter_t *google_product_category2_filter_create(
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_2
     ) {
-    return google_product_category2_filter_create_internal (
+    google_product_category2_filter_t *result = google_product_category2_filter_create_internal (
         google_product_category_2
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void google_product_category2_filter_free(google_product_category2_filter_t *google_product_category2_filter) {
@@ -36,7 +39,7 @@ void google_product_category2_filter_free(google_product_category2_filter_t *goo
     }
     listEntry_t *listEntry;
     if (google_product_category2_filter->google_product_category_2) {
-        object_free(google_product_category2_filter->google_product_category_2);
+        catalogs_product_group_multiple_string_list_criteria_free(google_product_category2_filter->google_product_category_2);
         google_product_category2_filter->google_product_category_2 = NULL;
     }
     free(google_product_category2_filter);
@@ -49,11 +52,11 @@ cJSON *google_product_category2_filter_convertToJSON(google_product_category2_fi
     if (!google_product_category2_filter->google_product_category_2) {
         goto fail;
     }
-    cJSON *google_product_category_2_object = object_convertToJSON(google_product_category2_filter->google_product_category_2);
-    if(google_product_category_2_object == NULL) {
+    cJSON *google_product_category_2_local_JSON = catalogs_product_group_multiple_string_list_criteria_convertToJSON(google_product_category2_filter->google_product_category_2);
+    if(google_product_category_2_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "GOOGLE_PRODUCT_CATEGORY_2", google_product_category_2_object);
+    cJSON_AddItemToObject(item, "GOOGLE_PRODUCT_CATEGORY_2", google_product_category_2_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ google_product_category2_filter_t *google_product_category2_filter_parseFromJSON
 
     google_product_category2_filter_t *google_product_category2_filter_local_var = NULL;
 
+    // define the local variable for google_product_category2_filter->google_product_category_2
+    catalogs_product_group_multiple_string_list_criteria_t *google_product_category_2_local_nonprim = NULL;
+
     // google_product_category2_filter->google_product_category_2
     cJSON *google_product_category_2 = cJSON_GetObjectItemCaseSensitive(google_product_category2_filterJSON, "GOOGLE_PRODUCT_CATEGORY_2");
     if (cJSON_IsNull(google_product_category_2)) {
@@ -79,17 +85,25 @@ google_product_category2_filter_t *google_product_category2_filter_parseFromJSON
         goto end;
     }
 
-    object_t *google_product_category_2_local_object = NULL;
     
-    google_product_category_2_local_object = object_parseFromJSON(google_product_category_2); //object
+    google_product_category_2_local_nonprim = catalogs_product_group_multiple_string_list_criteria_parseFromJSON(google_product_category_2); //nonprimitive
+
 
 
     google_product_category2_filter_local_var = google_product_category2_filter_create_internal (
-        google_product_category_2_local_object
+        google_product_category_2_local_nonprim
         );
+
+    if (!google_product_category2_filter_local_var) {
+        goto end;
+    }
 
     return google_product_category2_filter_local_var;
 end:
+    if (google_product_category_2_local_nonprim) {
+        catalogs_product_group_multiple_string_list_criteria_free(google_product_category_2_local_nonprim);
+        google_product_category_2_local_nonprim = NULL;
+    }
     return NULL;
 
 }

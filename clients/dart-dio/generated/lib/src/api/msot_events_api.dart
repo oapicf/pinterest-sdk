@@ -8,9 +8,10 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_value/json_object.dart';
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/conversion_msot_events.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/conversion_msot_events_create.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 
 class MsotEventsApi {
 
@@ -21,11 +22,11 @@ class MsotEventsApi {
   const MsotEventsApi(this._dio, this._serializers);
 
   /// Send Measurement Source Of Truth (MSOT) attributed conversion events
-  /// &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt; &lt;br&gt; &lt;p&gt;Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object.&lt;/p&gt; - These events will NOT be used in Reporting.
+  /// **This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &#x60;ad_account_id&#x60;. The request body should be a JSON object.  - These events will not be used in Reporting.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [conversionMSOTEvents] - Attributed MSOT conversion events
+  /// * [conversionMSOTEventsCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -37,7 +38,7 @@ class MsotEventsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> msotEventsCreate({ 
     required String adAccountId,
-    required ConversionMSOTEvents conversionMSOTEvents,
+    required ConversionMSOTEventsCreate conversionMSOTEventsCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -67,8 +68,8 @@ class MsotEventsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ConversionMSOTEvents);
-      _bodyData = _serializers.serialize(conversionMSOTEvents, specifiedType: _type);
+      const _type = FullType(ConversionMSOTEventsCreate);
+      _bodyData = _serializers.serialize(conversionMSOTEventsCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

@@ -145,7 +145,7 @@ InviteExceptionResponse::getCode()
 }
 
 void
-InviteExceptionResponse::setCode(int  code)
+InviteExceptionResponse::setCode(int code)
 {
 	this->code = code;
 }
@@ -157,7 +157,7 @@ InviteExceptionResponse::getInviteOrRequestId()
 }
 
 void
-InviteExceptionResponse::setInviteOrRequestId(std::string  invite_or_request_id)
+InviteExceptionResponse::setInviteOrRequestId(std::string invite_or_request_id)
 {
 	this->invite_or_request_id = invite_or_request_id;
 }
@@ -169,7 +169,7 @@ InviteExceptionResponse::getMessage()
 }
 
 void
-InviteExceptionResponse::setMessage(std::string  message)
+InviteExceptionResponse::setMessage(std::string message)
 {
 	this->message = message;
 }
@@ -181,7 +181,7 @@ InviteExceptionResponse::getUsersOrPartnerIds()
 }
 
 void
-InviteExceptionResponse::setUsersOrPartnerIds(std::list <std::string> users_or_partner_ids)
+InviteExceptionResponse::setUsersOrPartnerIds(std::list<std::string> users_or_partner_ids)
 {
 	this->users_or_partner_ids = users_or_partner_ids;
 }

@@ -12,8 +12,7 @@ API.Client.BusinessAssetsGet200Response = function() {}
 API.Client.BusinessAssetsGet200Response.prototype.bookmark;
 
 /**
- * List of assets the requesting business has access to.
- * @type {!Array<!API.Client.GetBusinessAssetsResponse>}
+ * @type {!Array<!API.Client.BusinessAssets>}
  * @export
  */
 API.Client.BusinessAssetsGet200Response.prototype.items;

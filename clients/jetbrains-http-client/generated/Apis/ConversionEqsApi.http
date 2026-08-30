@@ -1,0 +1,6 @@
+## ConversionEqsApi
+
+### Get event quality score (EQS)
+## Get event quality score (EQS)
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_eqs?lookbackPeriod={{lookbackPeriod}}&sourcePlatform={{sourcePlatform}}&ingestionSource={{ingestionSource}}
+Accept: application/json

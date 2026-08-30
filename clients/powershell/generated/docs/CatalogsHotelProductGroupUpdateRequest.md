@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **CatalogType** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | [optional] 
-**Name** | **String** |  | [optional] 
+**Name** | **String** | Name of catalog product group | [optional] 
 
 ## Examples
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 $CatalogsHotelProductGroupUpdateRequest = Initialize-PSOpenAPIToolsCatalogsHotelProductGroupUpdateRequest  -CatalogType null `
  -Description null `
  -Filters null `
- -Name null
+ -Name Most Popular
 ```
 
 - Convert the resource to JSON

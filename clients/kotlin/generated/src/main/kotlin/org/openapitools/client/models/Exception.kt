@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,20 +30,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param code Exception error code.
- * @param message Exception message.
+ * @param message 
+ * @param code 
  */
 
 
 data class Exception (
 
-    /* Exception error code. */
-    @Json(name = "code")
-    val code: kotlin.Int? = null,
-
-    /* Exception message. */
     @Json(name = "message")
-    val message: kotlin.String? = null
+    val message: kotlin.String,
+
+    @Json(name = "code")
+    val code: kotlin.Int? = null
 
 ) {
 

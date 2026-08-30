@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -11,7 +12,6 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
 import org.springframework.lang.Nullable;
@@ -21,38 +21,79 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request object for updating a feed.
  */
 
 @Schema(name = "CatalogsRetailFeedsUpdateRequest", description = "Request object for updating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUpdateRequest {
 
-  private CatalogsType catalogType;
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
 
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsFormat format;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String location;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsStatus status;
 
   public CatalogsRetailFeedsUpdateRequest() {
@@ -62,11 +103,11 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailFeedsUpdateRequest(CatalogsType catalogType) {
+  public CatalogsRetailFeedsUpdateRequest(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsRetailFeedsUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -75,14 +116,15 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
    * Get catalogType
    * @return catalogType
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  @JsonProperty("catalog_type")
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -162,6 +204,7 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
     return format;
   }
 
+  @JsonProperty("format")
   public void setFormat(@Nullable CatalogsFormat format) {
     this.format = format;
   }
@@ -182,6 +225,7 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
     return location;
   }
 
+  @JsonProperty("location")
   public void setLocation(@Nullable String location) {
     this.location = location;
   }
@@ -202,6 +246,7 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
@@ -242,6 +287,7 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
     return status;
   }
 
+  @JsonProperty("status")
   public void setStatus(@Nullable CatalogsStatus status) {
     this.status = status;
   }
@@ -303,11 +349,8 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

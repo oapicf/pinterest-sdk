@@ -74,7 +74,7 @@ class _$ProductGroupReferenceFilterSerializer implements PrimitiveSerializer<Pro
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringCriteria),
           ) as CatalogsProductGroupMultipleStringCriteria;
-          result.PRODUCT_GROUP = valueDes;
+          result.PRODUCT_GROUP.replace(valueDes);
           break;
         default:
           unhandled.add(key);

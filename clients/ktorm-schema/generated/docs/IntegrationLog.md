@@ -6,8 +6,8 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **clientTimestamp** | client_timestamp | int NOT NULL |  | **kotlin.Int** | Timestamp in milliseconds of when the log was executed at the client. | 
-**eventType** | event_type | text NOT NULL |  | [**event_type**](#EventType) | Log event type | 
-**logLevel** | log_level | text NOT NULL |  | [**log_level**](#LogLevel) | Log level type | 
+**eventType** | event_type | long NOT NULL |  | [**IntegrationLogEventType**](IntegrationLogEventType.md) | Log event type |  [foreignkey]
+**logLevel** | log_level | long NOT NULL |  | [**IntegrationLogLevel**](IntegrationLogLevel.md) | Log level type |  [foreignkey]
 **advertiserId** | advertiser_id | text |  | **kotlin.String** |  |  [optional]
 **appVersionNumber** | app_version_number | text |  | **kotlin.String** | Version number of the integration application. |  [optional]
 **error** | error | long |  | [**IntegrationLogClientError**](IntegrationLogClientError.md) |  |  [optional] [foreignkey]

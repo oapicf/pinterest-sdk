@@ -3,7 +3,6 @@ package apimodels;
 import apimodels.AdvancedAuctionBidOptions;
 import apimodels.AdvancedAuctionItemsSubmitDeleteRecord;
 import apimodels.AdvancedAuctionItemsSubmitUpsertRecord;
-import apimodels.AdvancedAuctionOperation;
 import apimodels.AdvancedAuctionOperationError;
 import apimodels.Country;
 import apimodels.Language;
@@ -23,20 +22,25 @@ import javax.validation.Valid;
 /**
  * Object describing an item bid option operation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdvancedAuctionItemsSubmitRecord   {
-  @JsonProperty("operation")
+  @JsonProperty("bid_options")
   @NotNull
 @Valid
 
-  private AdvancedAuctionOperation operation;
+  private AdvancedAuctionBidOptions bidOptions;
 
   @JsonProperty("country")
   @NotNull
 @Valid
 
   private Country country;
+
+  @JsonProperty("errors")
+  @Valid
+
+  private List<@Valid AdvancedAuctionOperationError> errors = null;
 
   @JsonProperty("item_id")
   @NotNull
@@ -49,16 +53,39 @@ public class AdvancedAuctionItemsSubmitRecord   {
 
   private Language language;
 
-  @JsonProperty("bid_options")
+  /**
+   * Gets or Sets operation
+   */
+  public enum OperationEnum {
+    DELETE("DELETE");
+
+    private final String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static OperationEnum fromValue(String value) {
+      for (OperationEnum b : OperationEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("operation")
   @NotNull
-@Valid
 
-  private AdvancedAuctionBidOptions bidOptions;
-
-  @JsonProperty("errors")
-  @Valid
-
-  private List<@Valid AdvancedAuctionOperationError> errors = null;
+  private OperationEnum operation;
 
   @JsonProperty("update_mask")
   @NotNull
@@ -66,21 +93,21 @@ public class AdvancedAuctionItemsSubmitRecord   {
 
   private List<UpdateMaskBidOptionField> updateMask = ;
 
-  public AdvancedAuctionItemsSubmitRecord operation(AdvancedAuctionOperation operation) {
-    this.operation = operation;
+  public AdvancedAuctionItemsSubmitRecord bidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
     return this;
   }
 
    /**
-   * Get operation
-   * @return operation
+   * Get bidOptions
+   * @return bidOptions
   **/
-  public AdvancedAuctionOperation getOperation() {
-    return operation;
+  public AdvancedAuctionBidOptions getBidOptions() {
+    return bidOptions;
   }
 
-  public void setOperation(AdvancedAuctionOperation operation) {
-    this.operation = operation;
+  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
   }
 
   public AdvancedAuctionItemsSubmitRecord country(Country country) {
@@ -98,6 +125,31 @@ public class AdvancedAuctionItemsSubmitRecord   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public AdvancedAuctionItemsSubmitRecord errors(List<@Valid AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public AdvancedAuctionItemsSubmitRecord addErrorsItem(AdvancedAuctionOperationError errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+   /**
+   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+   * @return errors
+  **/
+  public List<@Valid AdvancedAuctionOperationError> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<@Valid AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
   }
 
   public AdvancedAuctionItemsSubmitRecord itemId(String itemId) {
@@ -134,46 +186,21 @@ public class AdvancedAuctionItemsSubmitRecord   {
     this.language = language;
   }
 
-  public AdvancedAuctionItemsSubmitRecord bidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
+  public AdvancedAuctionItemsSubmitRecord operation(OperationEnum operation) {
+    this.operation = operation;
     return this;
   }
 
    /**
-   * Get bidOptions
-   * @return bidOptions
+   * Get operation
+   * @return operation
   **/
-  public AdvancedAuctionBidOptions getBidOptions() {
-    return bidOptions;
+  public OperationEnum getOperation() {
+    return operation;
   }
 
-  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-  }
-
-  public AdvancedAuctionItemsSubmitRecord errors(List<@Valid AdvancedAuctionOperationError> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public AdvancedAuctionItemsSubmitRecord addErrorsItem(AdvancedAuctionOperationError errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-   /**
-   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-   * @return errors
-  **/
-  public List<@Valid AdvancedAuctionOperationError> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(List<@Valid AdvancedAuctionOperationError> errors) {
-    this.errors = errors;
+  public void setOperation(OperationEnum operation) {
+    this.operation = operation;
   }
 
   public AdvancedAuctionItemsSubmitRecord updateMask(List<UpdateMaskBidOptionField> updateMask) {
@@ -211,18 +238,18 @@ public class AdvancedAuctionItemsSubmitRecord   {
       return false;
     }
     AdvancedAuctionItemsSubmitRecord advancedAuctionItemsSubmitRecord = (AdvancedAuctionItemsSubmitRecord) o;
-    return Objects.equals(operation, advancedAuctionItemsSubmitRecord.operation) &&
+    return Objects.equals(bidOptions, advancedAuctionItemsSubmitRecord.bidOptions) &&
         Objects.equals(country, advancedAuctionItemsSubmitRecord.country) &&
+        Objects.equals(errors, advancedAuctionItemsSubmitRecord.errors) &&
         Objects.equals(itemId, advancedAuctionItemsSubmitRecord.itemId) &&
         Objects.equals(language, advancedAuctionItemsSubmitRecord.language) &&
-        Objects.equals(bidOptions, advancedAuctionItemsSubmitRecord.bidOptions) &&
-        Objects.equals(errors, advancedAuctionItemsSubmitRecord.errors) &&
+        Objects.equals(operation, advancedAuctionItemsSubmitRecord.operation) &&
         Objects.equals(updateMask, advancedAuctionItemsSubmitRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operation, country, itemId, language, bidOptions, errors, updateMask);
+    return Objects.hash(bidOptions, country, errors, itemId, language, operation, updateMask);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -231,12 +258,12 @@ public class AdvancedAuctionItemsSubmitRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsSubmitRecord {\n");
     
-    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -247,10 +274,7 @@ public class AdvancedAuctionItemsSubmitRecord   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

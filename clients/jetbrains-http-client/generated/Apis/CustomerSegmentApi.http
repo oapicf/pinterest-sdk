@@ -1,0 +1,31 @@
+## CustomerSegmentApi
+
+### Create customer segments
+## Create customer segments
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_segments
+Content-Type: application/json
+Accept: application/json
+
+{
+ "audience_ids": "<string>",
+ "name": "<string>"
+}
+
+
+### List customer segments
+## List customer segments
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_segments?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&includeSizing={{includeSizing}}&searchQuery={{searchQuery}}
+Accept: application/json
+
+### Update customer segments
+## Update customer segments
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/customer_segments
+Content-Type: application/json
+Accept: application/json
+
+{
+ "audience_ids": "<string>",
+ "id": "<string>",
+ "operation_type": "<string>"
+}
+

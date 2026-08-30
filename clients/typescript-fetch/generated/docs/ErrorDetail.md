@@ -17,9 +17,9 @@ import type { ErrorDetail } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "count": 20,
-  "errorCode": 42,
-  "message": Invalid email,
+  "count": null,
+  "errorCode": null,
+  "message": null,
 } satisfies ErrorDetail
 
 console.log(example)

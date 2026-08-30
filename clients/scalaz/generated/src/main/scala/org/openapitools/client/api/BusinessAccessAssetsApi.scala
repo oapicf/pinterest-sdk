@@ -21,24 +21,26 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
+import org.openapitools.client.api.AssetGroupDeletion
+import org.openapitools.client.api.AssetGroupDeletionDelete
+import org.openapitools.client.api.AssetGroupInput
+import org.openapitools.client.api.AssetGroupInputCreate
+import org.openapitools.client.api.AssetGroupModification
+import org.openapitools.client.api.AssetGroupModificationReadOrUpdate
+import org.openapitools.client.api.AssetPermissionType
+import org.openapitools.client.api.AssetSearchBy
+import org.openapitools.client.api.AssetSortBy
 import org.openapitools.client.api.BusinessAssetMembersGet200Response
-import org.openapitools.client.api.BusinessAssetPartnersGet200Response
 import org.openapitools.client.api.BusinessAssetsGet200Response
-import org.openapitools.client.api.BusinessMemberAssetsGet200Response
-import org.openapitools.client.api.BusinessMembersAssetAccessDeleteRequest
+import org.openapitools.client.api.BusinessMemberAssetsGetResponse
+import org.openapitools.client.api.BusinessMembersAssetAccessDeleteBody
 import org.openapitools.client.api.BusinessPartnerAssetAccessGet200Response
-import org.openapitools.client.api.CreateAssetGroupBody
-import org.openapitools.client.api.CreateAssetGroupResponse
-import org.openapitools.client.api.DeleteAssetGroupBody
-import org.openapitools.client.api.DeleteAssetGroupResponse
 import org.openapitools.client.api.DeleteMemberAccessResultsResponseArray
 import org.openapitools.client.api.DeletePartnerAssetAccessBody
-import org.openapitools.client.api.DeletePartnerAssetsResultsResponseArray
+import org.openapitools.client.api.DeletePartnerAssetAccessResultsResponseArray
 import org.openapitools.client.api.Error
-import org.openapitools.client.api.PartnerType
+import org.openapitools.client.api.NonDraftEntityStatus
 import org.openapitools.client.api.PermissionsWithOwner
-import org.openapitools.client.api.UpdateAssetGroupBody
-import org.openapitools.client.api.UpdateAssetGroupResponse
 import org.openapitools.client.api.UpdateMemberAssetAccessBody
 import org.openapitools.client.api.UpdateMemberAssetsResultsResponseArray
 import org.openapitools.client.api.UpdatePartnerAssetAccessBody
@@ -50,8 +52,8 @@ object BusinessAccessAssetsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def assetGroupCreate(host: String, businessId: String, createAssetGroupBody: CreateAssetGroupBody): Task[CreateAssetGroupResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[CreateAssetGroupResponse] = jsonOf[CreateAssetGroupResponse]
+  def assetGroupCreate(host: String, businessId: String, assetGroupInputCreate: AssetGroupInputCreate): Task[AssetGroupInput] = {
+    implicit val returnTypeDecoder: EntityDecoder[AssetGroupInput] = jsonOf[AssetGroupInput]
 
     val path = "/businesses/{business_id}/asset_groups".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -65,14 +67,14 @@ object BusinessAccessAssetsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(createAssetGroupBody)
-      resp          <- client.expect[CreateAssetGroupResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(assetGroupInputCreate)
+      resp          <- client.expect[AssetGroupInput](req)
 
     } yield resp
   }
 
-  def assetGroupDelete(host: String, businessId: String, deleteAssetGroupBody: DeleteAssetGroupBody): Task[DeleteAssetGroupResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[DeleteAssetGroupResponse] = jsonOf[DeleteAssetGroupResponse]
+  def assetGroupDelete(host: String, businessId: String, assetGroupDeletionDelete: AssetGroupDeletionDelete): Task[AssetGroupDeletion] = {
+    implicit val returnTypeDecoder: EntityDecoder[AssetGroupDeletion] = jsonOf[AssetGroupDeletion]
 
     val path = "/businesses/{business_id}/asset_groups".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -86,14 +88,14 @@ object BusinessAccessAssetsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(deleteAssetGroupBody)
-      resp          <- client.expect[DeleteAssetGroupResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(assetGroupDeletionDelete)
+      resp          <- client.expect[AssetGroupDeletion](req)
 
     } yield resp
   }
 
-  def assetGroupUpdate(host: String, businessId: String, updateAssetGroupBody: UpdateAssetGroupBody): Task[UpdateAssetGroupResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[UpdateAssetGroupResponse] = jsonOf[UpdateAssetGroupResponse]
+  def assetGroupUpdate(host: String, businessId: String, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate): Task[AssetGroupModification] = {
+    implicit val returnTypeDecoder: EntityDecoder[AssetGroupModification] = jsonOf[AssetGroupModification]
 
     val path = "/businesses/{business_id}/asset_groups".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -107,13 +109,13 @@ object BusinessAccessAssetsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(updateAssetGroupBody)
-      resp          <- client.expect[UpdateAssetGroupResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(assetGroupModificationReadOrUpdate)
+      resp          <- client.expect[AssetGroupModification](req)
 
     } yield resp
   }
 
-  def businessAssetMembersGet(host: String, businessId: String, assetId: String, fetchSystemUsers: Boolean = false, bookmark: String, pageSize: Integer = 25, startIndex: Integer = 0)(implicit fetchSystemUsersQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], startIndexQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
+  def businessAssetMembersGet(host: String, businessId: String, assetId: String, startIndex: Integer = 0, fetchSystemUsers: Boolean = false, bookmark: String, pageSize: Integer = 25)(implicit startIndexQuery: QueryParam[Integer], fetchSystemUsersQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BusinessAssetMembersGet200Response] = jsonOf[BusinessAssetMembersGet200Response]
 
     val path = "/businesses/{business_id}/assets/{asset_id}/members".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "asset_id" + "\\}",escape(assetId.toString))
@@ -123,7 +125,7 @@ object BusinessAccessAssetsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("fetchSystemUsers", Some(fetch_system_usersQuery.toParamString(fetch_system_users))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("startIndex", Some(start_indexQuery.toParamString(start_index))))
+      ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("fetchSystemUsers", Some(fetch_system_usersQuery.toParamString(fetch_system_users))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -134,8 +136,8 @@ object BusinessAccessAssetsApi {
     } yield resp
   }
 
-  def businessAssetPartnersGet(host: String, businessId: String, assetId: String, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessAssetPartnersGet200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[BusinessAssetPartnersGet200Response] = jsonOf[BusinessAssetPartnersGet200Response]
+  def businessAssetPartnersGet(host: String, businessId: String, assetId: String, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BusinessAssetMembersGet200Response] = jsonOf[BusinessAssetMembersGet200Response]
 
     val path = "/businesses/{business_id}/assets/{asset_id}/partners".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "asset_id" + "\\}",escape(assetId.toString))
 
@@ -150,7 +152,7 @@ object BusinessAccessAssetsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[BusinessAssetPartnersGet200Response](req)
+      resp          <- client.expect[BusinessAssetMembersGet200Response](req)
 
     } yield resp
   }
@@ -176,8 +178,8 @@ object BusinessAccessAssetsApi {
     } yield resp
   }
 
-  def businessMemberAssetsGet(host: String, businessId: String, memberId: String, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessMemberAssetsGet200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[BusinessMemberAssetsGet200Response] = jsonOf[BusinessMemberAssetsGet200Response]
+  def businessMemberAssetsGet(host: String, businessId: String, memberId: String, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, sortBy: AssetSortBy, sortAscending: Boolean = true, searchBy: AssetSearchBy, searchValue: String, assetPermissionType: AssetPermissionType, adAccountStatuses: List[NonDraftEntityStatus] = List.empty[NonDraftEntityStatus] , bookmark: String, pageSize: Integer = 25)(implicit assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], sortByQuery: QueryParam[AssetSortBy], sortAscendingQuery: QueryParam[Boolean], searchByQuery: QueryParam[AssetSearchBy], searchValueQuery: QueryParam[String], assetPermissionTypeQuery: QueryParam[AssetPermissionType], adAccountStatusesQuery: QueryParam[List[NonDraftEntityStatus]], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessMemberAssetsGetResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[BusinessMemberAssetsGetResponse] = jsonOf[BusinessMemberAssetsGetResponse]
 
     val path = "/businesses/{business_id}/members/{member_id}/assets".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "member_id" + "\\}",escape(memberId.toString))
 
@@ -186,18 +188,18 @@ object BusinessAccessAssetsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("assetType", Some(asset_typeQuery.toParamString(asset_type))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
+      ("assetType", Some(asset_typeQuery.toParamString(asset_type))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("sortBy", Some(sort_byQuery.toParamString(sort_by))), ("sortAscending", Some(sort_ascendingQuery.toParamString(sort_ascending))), ("searchBy", Some(search_byQuery.toParamString(search_by))), ("searchValue", Some(search_valueQuery.toParamString(search_value))), ("assetPermissionType", Some(asset_permission_typeQuery.toParamString(asset_permission_type))), ("adAccountStatuses", Some(ad_account_statusesQuery.toParamString(ad_account_statuses))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[BusinessMemberAssetsGet200Response](req)
+      resp          <- client.expect[BusinessMemberAssetsGetResponse](req)
 
     } yield resp
   }
 
-  def businessMembersAssetAccessDelete(host: String, businessId: String, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest): Task[DeleteMemberAccessResultsResponseArray] = {
+  def businessMembersAssetAccessDelete(host: String, businessId: String, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody): Task[DeleteMemberAccessResultsResponseArray] = {
     implicit val returnTypeDecoder: EntityDecoder[DeleteMemberAccessResultsResponseArray] = jsonOf[DeleteMemberAccessResultsResponseArray]
 
     val path = "/businesses/{business_id}/members/assets/access".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
@@ -212,7 +214,7 @@ object BusinessAccessAssetsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessMembersAssetAccessDeleteRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessMembersAssetAccessDeleteBody)
       resp          <- client.expect[DeleteMemberAccessResultsResponseArray](req)
 
     } yield resp
@@ -239,7 +241,7 @@ object BusinessAccessAssetsApi {
     } yield resp
   }
 
-  def businessPartnerAssetAccessGet(host: String, businessId: String, partnerId: String, partnerType: PartnerType = INTERNAL, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, pageSize: Integer = 25, bookmark: String)(implicit partnerTypeQuery: QueryParam[PartnerType], assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[BusinessPartnerAssetAccessGet200Response] = {
+  def businessPartnerAssetAccessGet(host: String, businessId: String, partnerId: String, partnerType: String = INTERNAL, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, sortBy: AssetSortBy, sortAscending: Boolean = true, searchBy: AssetSearchBy, searchValue: String, bookmark: String, pageSize: Integer = 25)(implicit partnerTypeQuery: QueryParam[String], assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], sortByQuery: QueryParam[AssetSortBy], sortAscendingQuery: QueryParam[Boolean], searchByQuery: QueryParam[AssetSearchBy], searchValueQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessPartnerAssetAccessGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BusinessPartnerAssetAccessGet200Response] = jsonOf[BusinessPartnerAssetAccessGet200Response]
 
     val path = "/businesses/{business_id}/partners/{partner_id}/assets".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "partner_id" + "\\}",escape(partnerId.toString))
@@ -249,7 +251,7 @@ object BusinessAccessAssetsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("partnerType", Some(partner_typeQuery.toParamString(partner_type))), ("assetType", Some(asset_typeQuery.toParamString(asset_type))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("partnerType", Some(partner_typeQuery.toParamString(partner_type))), ("assetType", Some(asset_typeQuery.toParamString(asset_type))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("sortBy", Some(sort_byQuery.toParamString(sort_by))), ("sortAscending", Some(sort_ascendingQuery.toParamString(sort_ascending))), ("searchBy", Some(search_byQuery.toParamString(search_by))), ("searchValue", Some(search_valueQuery.toParamString(search_value))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -260,8 +262,8 @@ object BusinessAccessAssetsApi {
     } yield resp
   }
 
-  def deletePartnerAssetAccessHandlerImpl(host: String, businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody): Task[DeletePartnerAssetsResultsResponseArray] = {
-    implicit val returnTypeDecoder: EntityDecoder[DeletePartnerAssetsResultsResponseArray] = jsonOf[DeletePartnerAssetsResultsResponseArray]
+  def deletePartnerAssetAccessHandlerImpl(host: String, businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody): Task[DeletePartnerAssetAccessResultsResponseArray] = {
+    implicit val returnTypeDecoder: EntityDecoder[DeletePartnerAssetAccessResultsResponseArray] = jsonOf[DeletePartnerAssetAccessResultsResponseArray]
 
     val path = "/businesses/{business_id}/partners/assets".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -276,7 +278,7 @@ object BusinessAccessAssetsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(deletePartnerAssetAccessBody)
-      resp          <- client.expect[DeletePartnerAssetsResultsResponseArray](req)
+      resp          <- client.expect[DeletePartnerAssetAccessResultsResponseArray](req)
 
     } yield resp
   }
@@ -309,8 +311,8 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def assetGroupCreate(businessId: String, createAssetGroupBody: CreateAssetGroupBody): Task[CreateAssetGroupResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[CreateAssetGroupResponse] = jsonOf[CreateAssetGroupResponse]
+  def assetGroupCreate(businessId: String, assetGroupInputCreate: AssetGroupInputCreate): Task[AssetGroupInput] = {
+    implicit val returnTypeDecoder: EntityDecoder[AssetGroupInput] = jsonOf[AssetGroupInput]
 
     val path = "/businesses/{business_id}/asset_groups".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -324,14 +326,14 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(createAssetGroupBody)
-      resp          <- client.expect[CreateAssetGroupResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(assetGroupInputCreate)
+      resp          <- client.expect[AssetGroupInput](req)
 
     } yield resp
   }
 
-  def assetGroupDelete(businessId: String, deleteAssetGroupBody: DeleteAssetGroupBody): Task[DeleteAssetGroupResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[DeleteAssetGroupResponse] = jsonOf[DeleteAssetGroupResponse]
+  def assetGroupDelete(businessId: String, assetGroupDeletionDelete: AssetGroupDeletionDelete): Task[AssetGroupDeletion] = {
+    implicit val returnTypeDecoder: EntityDecoder[AssetGroupDeletion] = jsonOf[AssetGroupDeletion]
 
     val path = "/businesses/{business_id}/asset_groups".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -345,14 +347,14 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(deleteAssetGroupBody)
-      resp          <- client.expect[DeleteAssetGroupResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(assetGroupDeletionDelete)
+      resp          <- client.expect[AssetGroupDeletion](req)
 
     } yield resp
   }
 
-  def assetGroupUpdate(businessId: String, updateAssetGroupBody: UpdateAssetGroupBody): Task[UpdateAssetGroupResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[UpdateAssetGroupResponse] = jsonOf[UpdateAssetGroupResponse]
+  def assetGroupUpdate(businessId: String, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate): Task[AssetGroupModification] = {
+    implicit val returnTypeDecoder: EntityDecoder[AssetGroupModification] = jsonOf[AssetGroupModification]
 
     val path = "/businesses/{business_id}/asset_groups".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -366,13 +368,13 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(updateAssetGroupBody)
-      resp          <- client.expect[UpdateAssetGroupResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(assetGroupModificationReadOrUpdate)
+      resp          <- client.expect[AssetGroupModification](req)
 
     } yield resp
   }
 
-  def businessAssetMembersGet(businessId: String, assetId: String, fetchSystemUsers: Boolean = false, bookmark: String, pageSize: Integer = 25, startIndex: Integer = 0)(implicit fetchSystemUsersQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], startIndexQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
+  def businessAssetMembersGet(businessId: String, assetId: String, startIndex: Integer = 0, fetchSystemUsers: Boolean = false, bookmark: String, pageSize: Integer = 25)(implicit startIndexQuery: QueryParam[Integer], fetchSystemUsersQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BusinessAssetMembersGet200Response] = jsonOf[BusinessAssetMembersGet200Response]
 
     val path = "/businesses/{business_id}/assets/{asset_id}/members".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "asset_id" + "\\}",escape(assetId.toString))
@@ -382,7 +384,7 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("fetchSystemUsers", Some(fetch_system_usersQuery.toParamString(fetch_system_users))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("startIndex", Some(start_indexQuery.toParamString(start_index))))
+      ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("fetchSystemUsers", Some(fetch_system_usersQuery.toParamString(fetch_system_users))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -393,8 +395,8 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     } yield resp
   }
 
-  def businessAssetPartnersGet(businessId: String, assetId: String, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessAssetPartnersGet200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[BusinessAssetPartnersGet200Response] = jsonOf[BusinessAssetPartnersGet200Response]
+  def businessAssetPartnersGet(businessId: String, assetId: String, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BusinessAssetMembersGet200Response] = jsonOf[BusinessAssetMembersGet200Response]
 
     val path = "/businesses/{business_id}/assets/{asset_id}/partners".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "asset_id" + "\\}",escape(assetId.toString))
 
@@ -409,7 +411,7 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[BusinessAssetPartnersGet200Response](req)
+      resp          <- client.expect[BusinessAssetMembersGet200Response](req)
 
     } yield resp
   }
@@ -435,8 +437,8 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     } yield resp
   }
 
-  def businessMemberAssetsGet(businessId: String, memberId: String, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, bookmark: String, pageSize: Integer = 25)(implicit assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessMemberAssetsGet200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[BusinessMemberAssetsGet200Response] = jsonOf[BusinessMemberAssetsGet200Response]
+  def businessMemberAssetsGet(businessId: String, memberId: String, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, sortBy: AssetSortBy, sortAscending: Boolean = true, searchBy: AssetSearchBy, searchValue: String, assetPermissionType: AssetPermissionType, adAccountStatuses: List[NonDraftEntityStatus] = List.empty[NonDraftEntityStatus] , bookmark: String, pageSize: Integer = 25)(implicit assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], sortByQuery: QueryParam[AssetSortBy], sortAscendingQuery: QueryParam[Boolean], searchByQuery: QueryParam[AssetSearchBy], searchValueQuery: QueryParam[String], assetPermissionTypeQuery: QueryParam[AssetPermissionType], adAccountStatusesQuery: QueryParam[List[NonDraftEntityStatus]], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessMemberAssetsGetResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[BusinessMemberAssetsGetResponse] = jsonOf[BusinessMemberAssetsGetResponse]
 
     val path = "/businesses/{business_id}/members/{member_id}/assets".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "member_id" + "\\}",escape(memberId.toString))
 
@@ -445,18 +447,18 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("assetType", Some(asset_typeQuery.toParamString(asset_type))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
+      ("assetType", Some(asset_typeQuery.toParamString(asset_type))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("sortBy", Some(sort_byQuery.toParamString(sort_by))), ("sortAscending", Some(sort_ascendingQuery.toParamString(sort_ascending))), ("searchBy", Some(search_byQuery.toParamString(search_by))), ("searchValue", Some(search_valueQuery.toParamString(search_value))), ("assetPermissionType", Some(asset_permission_typeQuery.toParamString(asset_permission_type))), ("adAccountStatuses", Some(ad_account_statusesQuery.toParamString(ad_account_statuses))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[BusinessMemberAssetsGet200Response](req)
+      resp          <- client.expect[BusinessMemberAssetsGetResponse](req)
 
     } yield resp
   }
 
-  def businessMembersAssetAccessDelete(businessId: String, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest): Task[DeleteMemberAccessResultsResponseArray] = {
+  def businessMembersAssetAccessDelete(businessId: String, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody): Task[DeleteMemberAccessResultsResponseArray] = {
     implicit val returnTypeDecoder: EntityDecoder[DeleteMemberAccessResultsResponseArray] = jsonOf[DeleteMemberAccessResultsResponseArray]
 
     val path = "/businesses/{business_id}/members/assets/access".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
@@ -471,7 +473,7 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessMembersAssetAccessDeleteRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(businessMembersAssetAccessDeleteBody)
       resp          <- client.expect[DeleteMemberAccessResultsResponseArray](req)
 
     } yield resp
@@ -498,7 +500,7 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     } yield resp
   }
 
-  def businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: PartnerType = INTERNAL, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, pageSize: Integer = 25, bookmark: String)(implicit partnerTypeQuery: QueryParam[PartnerType], assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[BusinessPartnerAssetAccessGet200Response] = {
+  def businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: String = INTERNAL, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, sortBy: AssetSortBy, sortAscending: Boolean = true, searchBy: AssetSearchBy, searchValue: String, bookmark: String, pageSize: Integer = 25)(implicit partnerTypeQuery: QueryParam[String], assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], sortByQuery: QueryParam[AssetSortBy], sortAscendingQuery: QueryParam[Boolean], searchByQuery: QueryParam[AssetSearchBy], searchValueQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BusinessPartnerAssetAccessGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BusinessPartnerAssetAccessGet200Response] = jsonOf[BusinessPartnerAssetAccessGet200Response]
 
     val path = "/businesses/{business_id}/partners/{partner_id}/assets".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "partner_id" + "\\}",escape(partnerId.toString))
@@ -508,7 +510,7 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("partnerType", Some(partner_typeQuery.toParamString(partner_type))), ("assetType", Some(asset_typeQuery.toParamString(asset_type))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("partnerType", Some(partner_typeQuery.toParamString(partner_type))), ("assetType", Some(asset_typeQuery.toParamString(asset_type))), ("startIndex", Some(start_indexQuery.toParamString(start_index))), ("sortBy", Some(sort_byQuery.toParamString(sort_by))), ("sortAscending", Some(sort_ascendingQuery.toParamString(sort_ascending))), ("searchBy", Some(search_byQuery.toParamString(search_by))), ("searchValue", Some(search_valueQuery.toParamString(search_value))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -519,8 +521,8 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     } yield resp
   }
 
-  def deletePartnerAssetAccessHandlerImpl(businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody): Task[DeletePartnerAssetsResultsResponseArray] = {
-    implicit val returnTypeDecoder: EntityDecoder[DeletePartnerAssetsResultsResponseArray] = jsonOf[DeletePartnerAssetsResultsResponseArray]
+  def deletePartnerAssetAccessHandlerImpl(businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody): Task[DeletePartnerAssetAccessResultsResponseArray] = {
+    implicit val returnTypeDecoder: EntityDecoder[DeletePartnerAssetAccessResultsResponseArray] = jsonOf[DeletePartnerAssetAccessResultsResponseArray]
 
     val path = "/businesses/{business_id}/partners/assets".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString))
 
@@ -535,7 +537,7 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(deletePartnerAssetAccessBody)
-      resp          <- client.expect[DeletePartnerAssetsResultsResponseArray](req)
+      resp          <- client.expect[DeletePartnerAssetAccessResultsResponseArray](req)
 
     } yield resp
   }

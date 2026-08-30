@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**Label**](Label.md) |  | [optional] [default to undefined]
+**data** | [**LabelErrorData**](LabelErrorData.md) |  | [optional] [default to undefined]
 **error_messages** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 
 ## Example

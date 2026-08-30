@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &LabelUpdateRequest{}
 // LabelUpdateRequest struct for LabelUpdateRequest
 type LabelUpdateRequest struct {
 	// Labels that you are applying to the campaign.
-	Labels []LabelUpdateRequestLabelsInner `json:"labels"`
+	Labels []LabelUpdateItem `json:"labels"`
 }
 
 type _LabelUpdateRequest LabelUpdateRequest
@@ -32,7 +32,7 @@ type _LabelUpdateRequest LabelUpdateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLabelUpdateRequest(labels []LabelUpdateRequestLabelsInner) *LabelUpdateRequest {
+func NewLabelUpdateRequest(labels []LabelUpdateItem) *LabelUpdateRequest {
 	this := LabelUpdateRequest{}
 	this.Labels = labels
 	return &this
@@ -47,9 +47,9 @@ func NewLabelUpdateRequestWithDefaults() *LabelUpdateRequest {
 }
 
 // GetLabels returns the Labels field value
-func (o *LabelUpdateRequest) GetLabels() []LabelUpdateRequestLabelsInner {
+func (o *LabelUpdateRequest) GetLabels() []LabelUpdateItem {
 	if o == nil {
-		var ret []LabelUpdateRequestLabelsInner
+		var ret []LabelUpdateItem
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *LabelUpdateRequest) GetLabels() []LabelUpdateRequestLabelsInner {
 
 // GetLabelsOk returns a tuple with the Labels field value
 // and a boolean to check if the value has been set.
-func (o *LabelUpdateRequest) GetLabelsOk() ([]LabelUpdateRequestLabelsInner, bool) {
+func (o *LabelUpdateRequest) GetLabelsOk() ([]LabelUpdateItem, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *LabelUpdateRequest) GetLabelsOk() ([]LabelUpdateRequestLabelsInner, boo
 }
 
 // SetLabels sets field value
-func (o *LabelUpdateRequest) SetLabels(v []LabelUpdateRequestLabelsInner) {
+func (o *LabelUpdateRequest) SetLabels(v []LabelUpdateItem) {
 	o.Labels = v
 }
 

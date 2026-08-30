@@ -48,7 +48,7 @@ MinPriceFilter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupPricingCriteria")) {
-			jsonToValue(&mIN_PRICE, node, "CatalogsProductGroupPricingCriteria", "");
+			jsonToValue(&mIN_PRICE, node, "CatalogsProductGroupPricingCriteria", "CatalogsProductGroupPricingCriteria");
 		} else {
 			
 			CatalogsProductGroupPricingCriteria* obj = static_cast<CatalogsProductGroupPricingCriteria*> (&mIN_PRICE);

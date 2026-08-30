@@ -8,11 +8,11 @@
 %% @doc Get order line
 %% Get a specific existing order line associated with an ad account.
 -spec order_lines/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_order_line:openapi_order_line(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-order_lines/get(Ctx, AdAccountId, OrderLineId) ->
-    order_lines/get(Ctx, AdAccountId, OrderLineId, #{}).
+order_lines/get(Ctx, OrderLineId, AdAccountId) ->
+    order_lines/get(Ctx, OrderLineId, AdAccountId, #{}).
 
 -spec order_lines/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_order_line:openapi_order_line(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-order_lines/get(Ctx, AdAccountId, OrderLineId, Optional) ->
+order_lines/get(Ctx, OrderLineId, AdAccountId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -26,7 +26,7 @@ order_lines/get(Ctx, AdAccountId, OrderLineId, Optional) ->
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
-%% @doc Get order lines
+%% @doc Get order lines.
 %% List existing order lines associated with an ad account.
 -spec order_lines/list(ctx:ctx(), binary()) -> {ok, openapi_order_lines_list_200_response:openapi_order_lines_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 order_lines/list(Ctx, AdAccountId) ->
@@ -39,7 +39,7 @@ order_lines/list(Ctx, AdAccountId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/order_lines"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['page_size', 'order', 'bookmark'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'order'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

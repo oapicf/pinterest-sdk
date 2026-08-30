@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.NumericFilterOperatorType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,28 +40,16 @@ import com.squareup.moshi.JsonClass
 data class CatalogsProductGroupUint32Criteria (
 
     @Json(name = "operator")
-    val `operator`: CatalogsProductGroupUint32Criteria.`Operator`,
+    val `operator`: NumericFilterOperatorType,
 
     @Json(name = "value")
     val `value`: kotlin.Int,
 
     @Json(name = "negated")
-    val negated: kotlin.Boolean? = false
+    val negated: kotlin.Boolean? = null
 
 ) {
 
-    /**
-     * 
-     *
-     * Values: GREATER_THAN,GREATER_THAN_OR_EQUALS,LESS_THAN,LESS_THAN_OR_EQUALS
-     */
-    @JsonClass(generateAdapter = false)
-    enum class `Operator`(val value: kotlin.String) {
-        @Json(name = "GREATER_THAN") GREATER_THAN("GREATER_THAN"),
-        @Json(name = "GREATER_THAN_OR_EQUALS") GREATER_THAN_OR_EQUALS("GREATER_THAN_OR_EQUALS"),
-        @Json(name = "LESS_THAN") LESS_THAN("LESS_THAN"),
-        @Json(name = "LESS_THAN_OR_EQUALS") LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
-    }
 
 }
 

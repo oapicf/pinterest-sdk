@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -263,6 +264,11 @@ func (c *BoardsAPIController) BoardsCreate(w http.ResponseWriter, r *http.Reques
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&boardCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -368,6 +374,11 @@ func (c *BoardsAPIController) BoardsUpdate(w http.ResponseWriter, r *http.Reques
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&boardWithUpdatePrivacyUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -409,31 +420,6 @@ func (c *BoardsAPIController) BoardsListPins(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{"board_id"}, nil)
 		return
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	var pageSizeParam int32
-	if query.Has("page_size") {
-		param, err := parseNumericParameter[int32](
-			query.Get("page_size"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](1),
-			WithMaximum[int32](250),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
-			return
-		}
-
-		pageSizeParam = param
-	} else {
-		var param int32 = 25
-		pageSizeParam = param
-	}
 	var creativeTypesParam []CreativeType
 	if query.Has("creative_types") {
 		paramSplits := strings.Split(query.Get("creative_types"), ",")
@@ -470,7 +456,32 @@ func (c *BoardsAPIController) BoardsListPins(w http.ResponseWriter, r *http.Requ
 		var param bool = false
 		pinMetricsParam = param
 	}
-	result, err := c.service.BoardsListPins(r.Context(), boardIdParam, bookmarkParam, pageSizeParam, creativeTypesParam, adAccountIdParam, pinMetricsParam)
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	result, err := c.service.BoardsListPins(r.Context(), boardIdParam, creativeTypesParam, adAccountIdParam, pinMetricsParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -548,18 +559,23 @@ func (c *BoardsAPIController) BoardSectionsCreate(w http.ResponseWriter, r *http
 		c.errorHandler(w, r, &RequiredError{"board_id"}, nil)
 		return
 	}
-	var boardSectionParam BoardSection
+	var boardSectionCreateParam BoardSectionCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&boardSectionParam); err != nil {
+	if err := d.Decode(&boardSectionCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertBoardSectionRequired(boardSectionParam); err != nil {
+	if err := AssertBoardSectionCreateRequired(boardSectionCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertBoardSectionConstraints(boardSectionParam); err != nil {
+	if err := AssertBoardSectionCreateConstraints(boardSectionCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -570,7 +586,7 @@ func (c *BoardsAPIController) BoardSectionsCreate(w http.ResponseWriter, r *http
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.BoardSectionsCreate(r.Context(), boardIdParam, boardSectionParam, adAccountIdParam)
+	result, err := c.service.BoardSectionsCreate(r.Context(), boardIdParam, boardSectionCreateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -633,18 +649,23 @@ func (c *BoardsAPIController) BoardSectionsUpdate(w http.ResponseWriter, r *http
 		c.errorHandler(w, r, &RequiredError{"section_id"}, nil)
 		return
 	}
-	var boardSectionParam BoardSection
+	var boardSectionUpdateWithRequiredBodyParam BoardSectionUpdateWithRequiredBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&boardSectionParam); err != nil {
+	if err := d.Decode(&boardSectionUpdateWithRequiredBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertBoardSectionRequired(boardSectionParam); err != nil {
+	if err := AssertBoardSectionUpdateWithRequiredBodyRequired(boardSectionUpdateWithRequiredBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertBoardSectionConstraints(boardSectionParam); err != nil {
+	if err := AssertBoardSectionUpdateWithRequiredBodyConstraints(boardSectionUpdateWithRequiredBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -655,7 +676,7 @@ func (c *BoardsAPIController) BoardSectionsUpdate(w http.ResponseWriter, r *http
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.BoardSectionsUpdate(r.Context(), boardIdParam, sectionIdParam, boardSectionParam, adAccountIdParam)
+	result, err := c.service.BoardSectionsUpdate(r.Context(), boardIdParam, sectionIdParam, boardSectionUpdateWithRequiredBodyParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

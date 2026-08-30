@@ -7,19 +7,19 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}created_at`,
-                label: `[${labelPrefix}created_at]`,
+                label: `Timestamp of the feed ingestion. - [${labelPrefix}created_at]`,
                 required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}feed_id`,
-                label: `[${labelPrefix}feed_id]`,
+                label: `Catalog Feed id pertaining to the feed ingestion. - [${labelPrefix}feed_id]`,
                 required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}id`,
-                label: `[${labelPrefix}id]`,
+                label: `Unique identifier of a feed ingestion. - [${labelPrefix}id]`,
                 required: true,
                 type: 'string',
             },

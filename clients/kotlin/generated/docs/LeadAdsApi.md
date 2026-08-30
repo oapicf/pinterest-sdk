@@ -12,7 +12,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="adAccountsSubscriptionsDelById"></a>
 # **adAccountsSubscriptionsDelById**
-> adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
+> LeadSubscription adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
 
 Delete lead ads subscription
 
@@ -28,7 +28,8 @@ val apiInstance = LeadAdsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val subscriptionId : kotlin.String = subscriptionId_example // kotlin.String | Unique identifier of a subscription.
 try {
-    apiInstance.adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
+    val result : LeadSubscription = apiInstance.adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling LeadAdsApi#adAccountsSubscriptionsDelById")
     e.printStackTrace()
@@ -46,13 +47,19 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -101,10 +108,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -155,8 +174,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -205,8 +230,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

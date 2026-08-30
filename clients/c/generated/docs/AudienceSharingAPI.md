@@ -19,18 +19,18 @@ Method | HTTP request | Description
 //
 // List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
 //
-ad_accounts_audiences_shared_accounts_list_200_response_t* AudienceSharingAPI_adAccountsAudiencesSharedAccountsList(apiClient_t *apiClient, char *ad_account_id, char *audience_id, audience_account_type_e account_type, int *page_size, char *bookmark);
+ad_accounts_audiences_shared_accounts_list_200_response_t* AudienceSharingAPI_adAccountsAudiencesSharedAccountsList(apiClient_t *apiClient, char *audience_id, audience_account_type_e account_type, char *ad_account_id, char *bookmark, int *page_size);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
 **audience_id** | **char \*** | Unique identifier of the audience to use to filter the results. | 
 **account_type** | **audience_account_type_e** | Filter accounts by account type. | 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 //
 // List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
 //
-ad_accounts_audiences_shared_accounts_list_200_response_t* AudienceSharingAPI_businessAccountAudiencesSharedAccountsList(apiClient_t *apiClient, char *business_id, char *audience_id, audience_account_type_e account_type, int *page_size, char *bookmark);
+ad_accounts_audiences_shared_accounts_list_200_response_t* AudienceSharingAPI_businessAccountAudiencesSharedAccountsList(apiClient_t *apiClient, char *business_id, char *audience_id, audience_account_type_e account_type, char *bookmark, int *page_size);
 ```
 
 ### Parameters
@@ -64,8 +64,8 @@ Name | Type | Description  | Notes
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
 **audience_id** | **char \*** | Unique identifier of the audience to use to filter the results. | 
 **account_type** | **audience_account_type_e** | Filter accounts by account type. | 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 //
 // Get a list of received audiences for the given business.
 //
-audiences_list_200_response_t* AudienceSharingAPI_sharedAudiencesForBusinessList(apiClient_t *apiClient, char *business_id, char *bookmark, pinterest_rest_api_sharedAudiencesForBusinessList_order_e order, int *page_size);
+shared_audiences_for_business_list_200_response_t* AudienceSharingAPI_sharedAudiencesForBusinessList(apiClient_t *apiClient, char *business_id, order_e order, char *bookmark, int *page_size);
 ```
 
 ### Parameters
@@ -97,13 +97,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
+**order** | **order_e** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**order** | **pinterest_rest_api_sharedAudiencesForBusinessList_order_e** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[audiences_list_200_response_t](audiences_list_200_response.md) *
+[shared_audiences_for_business_list_200_response_t](shared_audiences_for_business_list_200_response.md) *
 
 
 ### Authorization
@@ -121,9 +121,9 @@ Name | Type | Description  | Notes
 ```c
 // Update audience sharing between ad accounts
 //
-// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 //
-shared_audience_response_t* AudienceSharingAPI_updateAdAccountToAdAccountSharedAudience(apiClient_t *apiClient, char *ad_account_id, shared_audience_t *shared_audience);
+ad_account_to_ad_account_shared_audience_t* AudienceSharingAPI_updateAdAccountToAdAccountSharedAudience(apiClient_t *apiClient, char *ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body_t *ad_account_to_ad_account_shared_audience_update_with_required_body);
 ```
 
 ### Parameters
@@ -131,11 +131,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**shared_audience** | **[shared_audience_t](shared_audience.md) \*** |  | 
+**ad_account_to_ad_account_shared_audience_update_with_required_body** | **[ad_account_to_ad_account_shared_audience_update_with_required_body_t](ad_account_to_ad_account_shared_audience_update_with_required_body.md) \*** |  | 
 
 ### Return type
 
-[shared_audience_response_t](shared_audience_response.md) *
+[ad_account_to_ad_account_shared_audience_t](ad_account_to_ad_account_shared_audience.md) *
 
 
 ### Authorization
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 ```c
 // Update audience sharing from an ad account to businesses
 //
-// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 //
-business_shared_audience_response_t* AudienceSharingAPI_updateAdAccountToBusinessSharedAudience(apiClient_t *apiClient, char *ad_account_id, business_shared_audience_t *business_shared_audience);
+ad_account_to_business_shared_audience_t* AudienceSharingAPI_updateAdAccountToBusinessSharedAudience(apiClient_t *apiClient, char *ad_account_id, ad_account_to_business_shared_audience_update_with_required_body_t *ad_account_to_business_shared_audience_update_with_required_body);
 ```
 
 ### Parameters
@@ -163,11 +163,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**business_shared_audience** | **[business_shared_audience_t](business_shared_audience.md) \*** |  | 
+**ad_account_to_business_shared_audience_update_with_required_body** | **[ad_account_to_business_shared_audience_update_with_required_body_t](ad_account_to_business_shared_audience_update_with_required_body.md) \*** |  | 
 
 ### Return type
 
-[business_shared_audience_response_t](business_shared_audience_response.md) *
+[ad_account_to_business_shared_audience_t](ad_account_to_business_shared_audience.md) *
 
 
 ### Authorization
@@ -185,9 +185,9 @@ Name | Type | Description  | Notes
 ```c
 // Update audience sharing from a business to ad accounts
 //
-// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 //
-shared_audience_response_t* AudienceSharingAPI_updateBusinessToAdAccountSharedAudience(apiClient_t *apiClient, char *business_id, shared_audience_t *shared_audience);
+business_to_ad_account_shared_audience_t* AudienceSharingAPI_updateBusinessToAdAccountSharedAudience(apiClient_t *apiClient, char *business_id, business_to_ad_account_shared_audience_update_with_required_body_t *business_to_ad_account_shared_audience_update_with_required_body);
 ```
 
 ### Parameters
@@ -195,11 +195,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
-**shared_audience** | **[shared_audience_t](shared_audience.md) \*** |  | 
+**business_to_ad_account_shared_audience_update_with_required_body** | **[business_to_ad_account_shared_audience_update_with_required_body_t](business_to_ad_account_shared_audience_update_with_required_body.md) \*** |  | 
 
 ### Return type
 
-[shared_audience_response_t](shared_audience_response.md) *
+[business_to_ad_account_shared_audience_t](business_to_ad_account_shared_audience.md) *
 
 
 ### Authorization
@@ -217,9 +217,9 @@ Name | Type | Description  | Notes
 ```c
 // Update audience sharing between businesses
 //
-// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 //
-business_shared_audience_response_t* AudienceSharingAPI_updateBusinessToBusinessSharedAudience(apiClient_t *apiClient, char *business_id, business_shared_audience_t *business_shared_audience);
+business_to_business_shared_audience_t* AudienceSharingAPI_updateBusinessToBusinessSharedAudience(apiClient_t *apiClient, char *business_id, business_to_business_shared_audience_update_with_required_body_t *business_to_business_shared_audience_update_with_required_body);
 ```
 
 ### Parameters
@@ -227,11 +227,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
-**business_shared_audience** | **[business_shared_audience_t](business_shared_audience.md) \*** |  | 
+**business_to_business_shared_audience_update_with_required_body** | **[business_to_business_shared_audience_update_with_required_body_t](business_to_business_shared_audience_update_with_required_body.md) \*** |  | 
 
 ### Return type
 
-[business_shared_audience_response_t](business_shared_audience_response.md) *
+[business_to_business_shared_audience_t](business_to_business_shared_audience.md) *
 
 
 ### Authorization

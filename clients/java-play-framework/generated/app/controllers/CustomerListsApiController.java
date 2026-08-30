@@ -1,10 +1,11 @@
 package controllers;
 
 import apimodels.CustomerList;
-import apimodels.CustomerListRequest;
-import apimodels.CustomerListUpdateRequest;
+import apimodels.CustomerListCreate;
+import apimodels.CustomerListUpdateWithRequiredBody;
 import apimodels.CustomerListsList200Response;
-import apimodels.Error;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -28,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListsApiController extends Controller {
     private final CustomerListsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -43,17 +44,17 @@ public class CustomerListsApiController extends Controller {
 
     @ApiAction
     public Result customerListsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodecustomerListRequest = request.body().asJson();
-        CustomerListRequest customerListRequest;
-        if (nodecustomerListRequest != null) {
-            customerListRequest = mapper.readValue(nodecustomerListRequest.toString(), CustomerListRequest.class);
+        JsonNode nodecustomerListCreate = request.body().asJson();
+        CustomerListCreate customerListCreate;
+        if (nodecustomerListCreate != null) {
+            customerListCreate = mapper.readValue(nodecustomerListCreate.toString(), CustomerListCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(customerListRequest);
+                OpenAPIUtils.validate(customerListCreate);
             }
         } else {
-            throw new IllegalArgumentException("'CustomerListRequest' parameter is required");
+            throw new IllegalArgumentException("'CustomerListCreate' parameter is required");
         }
-        return imp.customerListsCreateHttp(request, adAccountId, customerListRequest);
+        return imp.customerListsCreateHttp(request, adAccountId, customerListCreate);
     }
 
     @ApiAction
@@ -63,6 +64,13 @@ public class CustomerListsApiController extends Controller {
 
     @ApiAction
     public Result customerListsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
         String valuepageSize = request.getQueryString("page_size");
         Integer pageSize;
         if (valuepageSize != null) {
@@ -71,35 +79,35 @@ public class CustomerListsApiController extends Controller {
             pageSize = 25;
         }
         String valueorder = request.getQueryString("order");
-        String order;
+        PinterestLibPaginationOrder order;
         if (valueorder != null) {
             order = valueorder;
         } else {
             order = null;
         }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
+        String valueexcludeNca = request.getQueryString("exclude_nca");
+        Boolean excludeNca;
+        if (valueexcludeNca != null) {
+            excludeNca = Boolean.valueOf(valueexcludeNca);
         } else {
-            bookmark = null;
+            excludeNca = false;
         }
-        return imp.customerListsListHttp(request, adAccountId, pageSize, order, bookmark);
+        return imp.customerListsListHttp(request, adAccountId, bookmark, pageSize, order, excludeNca);
     }
 
     @ApiAction
     public Result customerListsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId) throws Exception {
-        JsonNode nodecustomerListUpdateRequest = request.body().asJson();
-        CustomerListUpdateRequest customerListUpdateRequest;
-        if (nodecustomerListUpdateRequest != null) {
-            customerListUpdateRequest = mapper.readValue(nodecustomerListUpdateRequest.toString(), CustomerListUpdateRequest.class);
+        JsonNode nodecustomerListUpdateWithRequiredBody = request.body().asJson();
+        CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody;
+        if (nodecustomerListUpdateWithRequiredBody != null) {
+            customerListUpdateWithRequiredBody = mapper.readValue(nodecustomerListUpdateWithRequiredBody.toString(), CustomerListUpdateWithRequiredBody.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(customerListUpdateRequest);
+                OpenAPIUtils.validate(customerListUpdateWithRequiredBody);
             }
         } else {
-            throw new IllegalArgumentException("'CustomerListUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'CustomerListUpdateWithRequiredBody' parameter is required");
         }
-        return imp.customerListsUpdateHttp(request, adAccountId, customerListId, customerListUpdateRequest);
+        return imp.customerListsUpdateHttp(request, adAccountId, customerListId, customerListUpdateWithRequiredBody);
     }
 
 }

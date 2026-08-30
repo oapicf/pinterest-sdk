@@ -12,6 +12,7 @@ package org.openapitools.server.model
  * @param images  for example: ''null''
  * @param mediaType  for example: ''null''
  * @param videoUrl Video url (720p).  **Note:** This field is limited and not available to all apps. for example: ''null''
+ * @param videoUrlHls Video url (HLS).  **Note:** This field is limited and not available to all apps. for example: ''null''
  * @param width Width (in pixels). Field maybe null after creation due to video processing time. for example: ''null''
 */
 final case class PinMediaWithVideo (
@@ -21,6 +22,7 @@ final case class PinMediaWithVideo (
   images: Option[ImageSize] = None,
   mediaType: String,
   videoUrl: Option[String] = None,
+  videoUrlHls: Option[String] = None,
   width: Option[Int] = None
 )
 

@@ -9,10 +9,11 @@ BulkUpsertRequestUpdate::BulkUpsertRequestUpdate()
 	ad_groups = std::list<AdGroupUpdateRequest>();
 	ads = std::list<AdUpdateRequest>();
 	campaigns = std::list<CampaignUpdateRequest>();
-	catalog_product_groups = std::list<Catalogs_product_groups_update_request>();
-	keywords = std::list<KeywordUpdate>();
+	catalog_product_groups = std::list<BulkUpsertRequestUpdateCatalogProductGroupsItems>();
+	keywords = std::list<KeywordUpdateGenerated>();
 	labels = std::list<LabelBulkUpdateRequest>();
 	product_groups = std::list<ProductGroupPromotionUpdateRequest>();
+	schedules = std::list<ScheduleUpdateRequest>();
 }
 
 BulkUpsertRequestUpdate::BulkUpsertRequestUpdate(std::string jsonString)
@@ -103,8 +104,8 @@ BulkUpsertRequestUpdate::fromJson(std::string jsonObj)
         bourne::json value = object[catalog_product_groupsKey];
 
 
-        std::list<Catalogs_product_groups_update_request> catalog_product_groups_list;
-        Catalogs_product_groups_update_request element;
+        std::list<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalog_product_groups_list;
+        BulkUpsertRequestUpdateCatalogProductGroupsItems element;
         for(auto& var : value.array_range())
         {
 
@@ -125,8 +126,8 @@ BulkUpsertRequestUpdate::fromJson(std::string jsonObj)
         bourne::json value = object[keywordsKey];
 
 
-        std::list<KeywordUpdate> keywords_list;
-        KeywordUpdate element;
+        std::list<KeywordUpdateGenerated> keywords_list;
+        KeywordUpdateGenerated element;
         for(auto& var : value.array_range())
         {
 
@@ -180,6 +181,28 @@ BulkUpsertRequestUpdate::fromJson(std::string jsonObj)
             product_groups_list.push_back(element);
         }
         product_groups = product_groups_list;
+
+
+    }
+
+    const char *schedulesKey = "schedules";
+
+    if(object.has_key(schedulesKey))
+    {
+        bourne::json value = object[schedulesKey];
+
+
+        std::list<ScheduleUpdateRequest> schedules_list;
+        ScheduleUpdateRequest element;
+        for(auto& var : value.array_range())
+        {
+
+
+            element.fromJson(var.dump());
+
+            schedules_list.push_back(element);
+        }
+        schedules = schedules_list;
 
 
     }
@@ -240,12 +263,12 @@ BulkUpsertRequestUpdate::toJson()
 
 
 
-    std::list<Catalogs_product_groups_update_request> catalog_product_groups_list = getCatalogProductGroups();
+    std::list<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalog_product_groups_list = getCatalogProductGroups();
     bourne::json catalog_product_groups_arr = bourne::json::array();
 
     for(auto& var : catalog_product_groups_list)
     {
-        Catalogs_product_groups_update_request obj = var;
+        BulkUpsertRequestUpdateCatalogProductGroupsItems obj = var;
         catalog_product_groups_arr.append(obj.toJson());
     }
     object["catalog_product_groups"] = catalog_product_groups_arr;
@@ -255,12 +278,12 @@ BulkUpsertRequestUpdate::toJson()
 
 
 
-    std::list<KeywordUpdate> keywords_list = getKeywords();
+    std::list<KeywordUpdateGenerated> keywords_list = getKeywords();
     bourne::json keywords_arr = bourne::json::array();
 
     for(auto& var : keywords_list)
     {
-        KeywordUpdate obj = var;
+        KeywordUpdateGenerated obj = var;
         keywords_arr.append(obj.toJson());
     }
     object["keywords"] = keywords_arr;
@@ -298,6 +321,21 @@ BulkUpsertRequestUpdate::toJson()
 
 
 
+
+
+    std::list<ScheduleUpdateRequest> schedules_list = getSchedules();
+    bourne::json schedules_arr = bourne::json::array();
+
+    for(auto& var : schedules_list)
+    {
+        ScheduleUpdateRequest obj = var;
+        schedules_arr.append(obj.toJson());
+    }
+    object["schedules"] = schedules_arr;
+
+
+
+
     return object;
 
 }
@@ -309,7 +347,7 @@ BulkUpsertRequestUpdate::getAdGroups()
 }
 
 void
-BulkUpsertRequestUpdate::setAdGroups(std::list <AdGroupUpdateRequest> ad_groups)
+BulkUpsertRequestUpdate::setAdGroups(std::list<AdGroupUpdateRequest> ad_groups)
 {
 	this->ad_groups = ad_groups;
 }
@@ -321,7 +359,7 @@ BulkUpsertRequestUpdate::getAds()
 }
 
 void
-BulkUpsertRequestUpdate::setAds(std::list <AdUpdateRequest> ads)
+BulkUpsertRequestUpdate::setAds(std::list<AdUpdateRequest> ads)
 {
 	this->ads = ads;
 }
@@ -333,31 +371,31 @@ BulkUpsertRequestUpdate::getCampaigns()
 }
 
 void
-BulkUpsertRequestUpdate::setCampaigns(std::list <CampaignUpdateRequest> campaigns)
+BulkUpsertRequestUpdate::setCampaigns(std::list<CampaignUpdateRequest> campaigns)
 {
 	this->campaigns = campaigns;
 }
 
-std::list<Catalogs_product_groups_update_request>
+std::list<BulkUpsertRequestUpdateCatalogProductGroupsItems>
 BulkUpsertRequestUpdate::getCatalogProductGroups()
 {
 	return catalog_product_groups;
 }
 
 void
-BulkUpsertRequestUpdate::setCatalogProductGroups(std::list <Catalogs_product_groups_update_request> catalog_product_groups)
+BulkUpsertRequestUpdate::setCatalogProductGroups(std::list<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalog_product_groups)
 {
 	this->catalog_product_groups = catalog_product_groups;
 }
 
-std::list<KeywordUpdate>
+std::list<KeywordUpdateGenerated>
 BulkUpsertRequestUpdate::getKeywords()
 {
 	return keywords;
 }
 
 void
-BulkUpsertRequestUpdate::setKeywords(std::list <KeywordUpdate> keywords)
+BulkUpsertRequestUpdate::setKeywords(std::list<KeywordUpdateGenerated> keywords)
 {
 	this->keywords = keywords;
 }
@@ -369,7 +407,7 @@ BulkUpsertRequestUpdate::getLabels()
 }
 
 void
-BulkUpsertRequestUpdate::setLabels(std::list <LabelBulkUpdateRequest> labels)
+BulkUpsertRequestUpdate::setLabels(std::list<LabelBulkUpdateRequest> labels)
 {
 	this->labels = labels;
 }
@@ -381,9 +419,21 @@ BulkUpsertRequestUpdate::getProductGroups()
 }
 
 void
-BulkUpsertRequestUpdate::setProductGroups(std::list <ProductGroupPromotionUpdateRequest> product_groups)
+BulkUpsertRequestUpdate::setProductGroups(std::list<ProductGroupPromotionUpdateRequest> product_groups)
 {
 	this->product_groups = product_groups;
+}
+
+std::list<ScheduleUpdateRequest>
+BulkUpsertRequestUpdate::getSchedules()
+{
+	return schedules;
+}
+
+void
+BulkUpsertRequestUpdate::setSchedules(std::list<ScheduleUpdateRequest> schedules)
+{
+	this->schedules = schedules;
 }
 
 

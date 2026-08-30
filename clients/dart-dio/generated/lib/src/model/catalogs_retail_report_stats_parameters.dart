@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/catalogs_hotel_report_stats_parameters_report.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/catalogs_retail_report_stats_parameters_report.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -22,7 +22,7 @@ abstract class CatalogsRetailReportStatsParameters implements Built<CatalogsReta
   // enum catalogTypeEnum {  RETAIL,  };
 
   @BuiltValueField(wireName: r'report')
-  CatalogsHotelReportStatsParametersReport get report;
+  CatalogsRetailReportStatsParametersReport get report;
 
   CatalogsRetailReportStatsParameters._();
 
@@ -55,7 +55,7 @@ class _$CatalogsRetailReportStatsParametersSerializer implements PrimitiveSerial
     yield r'report';
     yield serializers.serialize(
       object.report,
-      specifiedType: const FullType(CatalogsHotelReportStatsParametersReport),
+      specifiedType: const FullType(CatalogsRetailReportStatsParametersReport),
     );
   }
 
@@ -90,8 +90,8 @@ class _$CatalogsRetailReportStatsParametersSerializer implements PrimitiveSerial
         case r'report':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsHotelReportStatsParametersReport),
-          ) as CatalogsHotelReportStatsParametersReport;
+            specifiedType: const FullType(CatalogsRetailReportStatsParametersReport),
+          ) as CatalogsRetailReportStatsParametersReport;
           result.report.replace(valueDes);
           break;
         default:

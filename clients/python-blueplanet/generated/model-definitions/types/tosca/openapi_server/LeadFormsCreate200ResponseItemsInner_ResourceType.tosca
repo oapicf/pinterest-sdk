@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadFormsCreate200ResponseItemsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadFormsCreate200ResponseItemsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LeadForm = openapi_server.resourceTypes.LeadForm
+  PinterestLibBatchItemException = openapi_server.resourceTypes.PinterestLibBatchItemException
+}
+resourceTypes {
+
+  LeadFormsCreate200ResponseItemsInner {
+    title = LeadFormsCreate200ResponseItemsInner
+    description = LeadFormsCreate200ResponseItemsInner
+    derivedFrom = Root
+    properties {
+        data {
+          type = LeadForm
+          description = ""
+          optional = false
+        }
+        exceptions {
+          type = array
+          items.type = PinterestLibBatchItemException
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadFormsCreate200ResponseItemsInner {
+    title = LeadFormsCreate200ResponseItemsInner
+    description = LeadFormsCreate200ResponseItemsInner
+    implements = openapi_server.resourceTypes.LeadFormsCreate200ResponseItemsInner
+
+  }
+}

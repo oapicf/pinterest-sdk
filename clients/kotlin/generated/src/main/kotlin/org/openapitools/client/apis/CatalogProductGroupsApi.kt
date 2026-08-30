@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -22,11 +30,12 @@ import okhttp3.HttpUrl
 import org.openapitools.client.models.CatalogsListProductsByFilterRequest
 import org.openapitools.client.models.CatalogsProductGroupPinsList200Response
 import org.openapitools.client.models.CatalogsProductGroupProductCountsVertical
+import org.openapitools.client.models.CatalogsProductGroupsCreateManyRequestItems
+import org.openapitools.client.models.CatalogsProductGroupsCreateRequestSchema
 import org.openapitools.client.models.CatalogsProductGroupsList200Response
-import org.openapitools.client.models.CatalogsProductGroupsUpdateRequest
+import org.openapitools.client.models.CatalogsProductGroupsUpdateRequestSchema
 import org.openapitools.client.models.CatalogsVerticalProductGroup
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.MultipleProductGroupsInner
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -48,19 +57,19 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * GET /catalogs/product_groups/{product_group_id}/products
      * List products by product group
-     * Get a list of product pins for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a list of product pins for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param productGroupId Unique identifier of a product group
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return CatalogsProductGroupPinsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -70,8 +79,8 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun catalogsProductGroupPinsList(productGroupId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, adAccountId: kotlin.String? = null, pinMetrics: kotlin.Boolean? = false) : CatalogsProductGroupPinsList200Response {
-        val localVarResponse = catalogsProductGroupPinsListWithHttpInfo(productGroupId = productGroupId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId, pinMetrics = pinMetrics)
+    fun catalogsProductGroupPinsList(productGroupId: kotlin.String, adAccountId: kotlin.String? = null, pinMetrics: kotlin.Boolean? = false, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : CatalogsProductGroupPinsList200Response {
+        val localVarResponse = catalogsProductGroupPinsListWithHttpInfo(productGroupId = productGroupId, adAccountId = adAccountId, pinMetrics = pinMetrics, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsProductGroupPinsList200Response
@@ -91,20 +100,20 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * GET /catalogs/product_groups/{product_group_id}/products
      * List products by product group
-     * Get a list of product pins for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a list of product pins for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param productGroupId Unique identifier of a product group
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<CatalogsProductGroupPinsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun catalogsProductGroupPinsListWithHttpInfo(productGroupId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, adAccountId: kotlin.String?, pinMetrics: kotlin.Boolean?) : ApiResponse<CatalogsProductGroupPinsList200Response?> {
-        val localVariableConfig = catalogsProductGroupPinsListRequestConfig(productGroupId = productGroupId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId, pinMetrics = pinMetrics)
+    fun catalogsProductGroupPinsListWithHttpInfo(productGroupId: kotlin.String, adAccountId: kotlin.String?, pinMetrics: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<CatalogsProductGroupPinsList200Response?> {
+        val localVariableConfig = catalogsProductGroupPinsListRequestConfig(productGroupId = productGroupId, adAccountId = adAccountId, pinMetrics = pinMetrics, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, CatalogsProductGroupPinsList200Response>(
             localVariableConfig
@@ -115,27 +124,27 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation catalogsProductGroupPinsList
      *
      * @param productGroupId Unique identifier of a product group
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun catalogsProductGroupPinsListRequestConfig(productGroupId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, adAccountId: kotlin.String?, pinMetrics: kotlin.Boolean?) : RequestConfig<Unit> {
+    fun catalogsProductGroupPinsListRequestConfig(productGroupId: kotlin.String, adAccountId: kotlin.String?, pinMetrics: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
-                }
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
-                }
                 if (adAccountId != null) {
                     put("ad_account_id", listOf(adAccountId.toString()))
                 }
                 if (pinMetrics != null) {
                     put("pin_metrics", listOf(pinMetrics.toString()))
+                }
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -154,8 +163,8 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * POST /catalogs/product_groups
      * Create product group
-     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param multipleProductGroupsInner Request object used to create a single catalogs product groups.
+     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param catalogsProductGroupsCreateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsVerticalProductGroup
      * @throws IllegalStateException If the request is not correctly configured
@@ -166,8 +175,8 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: kotlin.String? = null) : CatalogsVerticalProductGroup {
-        val localVarResponse = catalogsProductGroupsCreateWithHttpInfo(multipleProductGroupsInner = multipleProductGroupsInner, adAccountId = adAccountId)
+    fun catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema: CatalogsProductGroupsCreateRequestSchema, adAccountId: kotlin.String? = null) : CatalogsVerticalProductGroup {
+        val localVarResponse = catalogsProductGroupsCreateWithHttpInfo(catalogsProductGroupsCreateRequestSchema = catalogsProductGroupsCreateRequestSchema, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsVerticalProductGroup
@@ -187,8 +196,8 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * POST /catalogs/product_groups
      * Create product group
-     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param multipleProductGroupsInner Request object used to create a single catalogs product groups.
+     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param catalogsProductGroupsCreateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsVerticalProductGroup?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -196,10 +205,10 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun catalogsProductGroupsCreateWithHttpInfo(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: kotlin.String?) : ApiResponse<CatalogsVerticalProductGroup?> {
-        val localVariableConfig = catalogsProductGroupsCreateRequestConfig(multipleProductGroupsInner = multipleProductGroupsInner, adAccountId = adAccountId)
+    fun catalogsProductGroupsCreateWithHttpInfo(catalogsProductGroupsCreateRequestSchema: CatalogsProductGroupsCreateRequestSchema, adAccountId: kotlin.String?) : ApiResponse<CatalogsVerticalProductGroup?> {
+        val localVariableConfig = catalogsProductGroupsCreateRequestConfig(catalogsProductGroupsCreateRequestSchema = catalogsProductGroupsCreateRequestSchema, adAccountId = adAccountId)
 
-        return request<MultipleProductGroupsInner, CatalogsVerticalProductGroup>(
+        return request<CatalogsProductGroupsCreateRequestSchema, CatalogsVerticalProductGroup>(
             localVariableConfig
         )
     }
@@ -207,12 +216,12 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * To obtain the request config of the operation catalogsProductGroupsCreate
      *
-     * @param multipleProductGroupsInner Request object used to create a single catalogs product groups.
+     * @param catalogsProductGroupsCreateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun catalogsProductGroupsCreateRequestConfig(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: kotlin.String?) : RequestConfig<MultipleProductGroupsInner> {
-        val localVariableBody = multipleProductGroupsInner
+    fun catalogsProductGroupsCreateRequestConfig(catalogsProductGroupsCreateRequestSchema: CatalogsProductGroupsCreateRequestSchema, adAccountId: kotlin.String?) : RequestConfig<CatalogsProductGroupsCreateRequestSchema> {
+        val localVariableBody = catalogsProductGroupsCreateRequestSchema
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
@@ -236,8 +245,8 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * POST /catalogs/product_groups/multiple
      * Create product groups
-     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param multipleProductGroupsInner Request object used to create one or more catalogs product groups.
+     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param catalogsProductGroupsCreateManyRequestItems 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return kotlin.collections.List<kotlin.String>
      * @throws IllegalStateException If the request is not correctly configured
@@ -248,8 +257,8 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun catalogsProductGroupsCreateMany(multipleProductGroupsInner: kotlin.collections.List<MultipleProductGroupsInner>, adAccountId: kotlin.String? = null) : kotlin.collections.List<kotlin.String> {
-        val localVarResponse = catalogsProductGroupsCreateManyWithHttpInfo(multipleProductGroupsInner = multipleProductGroupsInner, adAccountId = adAccountId)
+    fun catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems: kotlin.collections.List<CatalogsProductGroupsCreateManyRequestItems>, adAccountId: kotlin.String? = null) : kotlin.collections.List<kotlin.String> {
+        val localVarResponse = catalogsProductGroupsCreateManyWithHttpInfo(catalogsProductGroupsCreateManyRequestItems = catalogsProductGroupsCreateManyRequestItems, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<kotlin.String>
@@ -269,8 +278,8 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * POST /catalogs/product_groups/multiple
      * Create product groups
-     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param multipleProductGroupsInner Request object used to create one or more catalogs product groups.
+     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param catalogsProductGroupsCreateManyRequestItems 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<kotlin.collections.List<kotlin.String>?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -278,10 +287,10 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun catalogsProductGroupsCreateManyWithHttpInfo(multipleProductGroupsInner: kotlin.collections.List<MultipleProductGroupsInner>, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.List<kotlin.String>?> {
-        val localVariableConfig = catalogsProductGroupsCreateManyRequestConfig(multipleProductGroupsInner = multipleProductGroupsInner, adAccountId = adAccountId)
+    fun catalogsProductGroupsCreateManyWithHttpInfo(catalogsProductGroupsCreateManyRequestItems: kotlin.collections.List<CatalogsProductGroupsCreateManyRequestItems>, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.List<kotlin.String>?> {
+        val localVariableConfig = catalogsProductGroupsCreateManyRequestConfig(catalogsProductGroupsCreateManyRequestItems = catalogsProductGroupsCreateManyRequestItems, adAccountId = adAccountId)
 
-        return request<kotlin.collections.List<MultipleProductGroupsInner>, kotlin.collections.List<kotlin.String>>(
+        return request<kotlin.collections.List<CatalogsProductGroupsCreateManyRequestItems>, kotlin.collections.List<kotlin.String>>(
             localVariableConfig
         )
     }
@@ -289,12 +298,12 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * To obtain the request config of the operation catalogsProductGroupsCreateMany
      *
-     * @param multipleProductGroupsInner Request object used to create one or more catalogs product groups.
+     * @param catalogsProductGroupsCreateManyRequestItems 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun catalogsProductGroupsCreateManyRequestConfig(multipleProductGroupsInner: kotlin.collections.List<MultipleProductGroupsInner>, adAccountId: kotlin.String?) : RequestConfig<kotlin.collections.List<MultipleProductGroupsInner>> {
-        val localVariableBody = multipleProductGroupsInner
+    fun catalogsProductGroupsCreateManyRequestConfig(catalogsProductGroupsCreateManyRequestItems: kotlin.collections.List<CatalogsProductGroupsCreateManyRequestItems>, adAccountId: kotlin.String?) : RequestConfig<kotlin.collections.List<CatalogsProductGroupsCreateManyRequestItems>> {
+        val localVariableBody = catalogsProductGroupsCreateManyRequestItems
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
@@ -318,22 +327,23 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * DELETE /catalogs/product_groups/{product_group_id}
      * Delete product group
-     * Delete a product group owned by the \&quot;operation user_account\&quot; from being in use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Delete a product group owned by the \&quot;operation user_account\&quot; from being in use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param productGroupId Unique identifier of a product group
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return void
+     * @return CatalogsVerticalProductGroup
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun catalogsProductGroupsDelete(productGroupId: kotlin.String, adAccountId: kotlin.String? = null) : Unit {
+    fun catalogsProductGroupsDelete(productGroupId: kotlin.String, adAccountId: kotlin.String? = null) : CatalogsVerticalProductGroup {
         val localVarResponse = catalogsProductGroupsDeleteWithHttpInfo(productGroupId = productGroupId, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsVerticalProductGroup
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -350,18 +360,19 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * DELETE /catalogs/product_groups/{product_group_id}
      * Delete product group
-     * Delete a product group owned by the \&quot;operation user_account\&quot; from being in use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Delete a product group owned by the \&quot;operation user_account\&quot; from being in use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param productGroupId Unique identifier of a product group
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<CatalogsVerticalProductGroup?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun catalogsProductGroupsDeleteWithHttpInfo(productGroupId: kotlin.String, adAccountId: kotlin.String?) : ApiResponse<Unit?> {
+    fun catalogsProductGroupsDeleteWithHttpInfo(productGroupId: kotlin.String, adAccountId: kotlin.String?) : ApiResponse<CatalogsVerticalProductGroup?> {
         val localVariableConfig = catalogsProductGroupsDeleteRequestConfig(productGroupId = productGroupId, adAccountId = adAccountId)
 
-        return request<Unit, Unit>(
+        return request<Unit, CatalogsVerticalProductGroup>(
             localVariableConfig
         )
     }
@@ -397,7 +408,7 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * DELETE /catalogs/product_groups/multiple
      * Delete product groups
-     * Delete product groups owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Delete product groups owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param id Comma-separated list of product group ids
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return void
@@ -429,7 +440,7 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * DELETE /catalogs/product_groups/multiple
      * Delete product groups
-     * Delete product groups owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Delete product groups owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param id Comma-separated list of product group ids
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<Unit?>
@@ -477,7 +488,7 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * GET /catalogs/product_groups/{product_group_id}
      * Get product group
-     * Get a singe product group for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a single product group for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param productGroupId Unique identifier of a product group
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsVerticalProductGroup
@@ -510,7 +521,7 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * GET /catalogs/product_groups/{product_group_id}
      * Get product group
-     * Get a singe product group for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a single product group for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param productGroupId Unique identifier of a product group
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsVerticalProductGroup?>
@@ -558,13 +569,13 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * GET /catalogs/product_groups
      * List product groups
-     * Get a list of product groups for a given Catalogs Feed Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a list of product groups for a given Catalogs Feed Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param id Comma-separated list of product group ids (optional)
      * @param feedId Filter entities for a given feed_id. If not given, all feeds are considered. (optional)
      * @param catalogId Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return CatalogsProductGroupsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -574,8 +585,8 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun catalogsProductGroupsList(id: kotlin.collections.List<kotlin.Int>? = null, feedId: kotlin.String? = null, catalogId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, adAccountId: kotlin.String? = null) : CatalogsProductGroupsList200Response {
-        val localVarResponse = catalogsProductGroupsListWithHttpInfo(id = id, feedId = feedId, catalogId = catalogId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
+    fun catalogsProductGroupsList(id: kotlin.collections.List<kotlin.Int>? = null, feedId: kotlin.String? = null, catalogId: kotlin.String? = null, adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : CatalogsProductGroupsList200Response {
+        val localVarResponse = catalogsProductGroupsListWithHttpInfo(id = id, feedId = feedId, catalogId = catalogId, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsProductGroupsList200Response
@@ -595,21 +606,21 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * GET /catalogs/product_groups
      * List product groups
-     * Get a list of product groups for a given Catalogs Feed Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a list of product groups for a given Catalogs Feed Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param id Comma-separated list of product group ids (optional)
      * @param feedId Filter entities for a given feed_id. If not given, all feeds are considered. (optional)
      * @param catalogId Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<CatalogsProductGroupsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun catalogsProductGroupsListWithHttpInfo(id: kotlin.collections.List<kotlin.Int>?, feedId: kotlin.String?, catalogId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?, adAccountId: kotlin.String?) : ApiResponse<CatalogsProductGroupsList200Response?> {
-        val localVariableConfig = catalogsProductGroupsListRequestConfig(id = id, feedId = feedId, catalogId = catalogId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
+    fun catalogsProductGroupsListWithHttpInfo(id: kotlin.collections.List<kotlin.Int>?, feedId: kotlin.String?, catalogId: kotlin.String?, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<CatalogsProductGroupsList200Response?> {
+        val localVariableConfig = catalogsProductGroupsListRequestConfig(id = id, feedId = feedId, catalogId = catalogId, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, CatalogsProductGroupsList200Response>(
             localVariableConfig
@@ -622,12 +633,12 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      * @param id Comma-separated list of product group ids (optional)
      * @param feedId Filter entities for a given feed_id. If not given, all feeds are considered. (optional)
      * @param catalogId Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun catalogsProductGroupsListRequestConfig(id: kotlin.collections.List<kotlin.Int>?, feedId: kotlin.String?, catalogId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun catalogsProductGroupsListRequestConfig(id: kotlin.collections.List<kotlin.Int>?, feedId: kotlin.String?, catalogId: kotlin.String?, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -640,14 +651,14 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
                 if (catalogId != null) {
                     put("catalog_id", listOf(catalogId.toString()))
                 }
+                if (adAccountId != null) {
+                    put("ad_account_id", listOf(adAccountId.toString()))
+                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
-                }
-                if (adAccountId != null) {
-                    put("ad_account_id", listOf(adAccountId.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -666,7 +677,7 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * GET /catalogs/product_groups/{product_group_id}/product_counts
      * Get product counts
-     * Get a product counts for a given Catalogs Product Group owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a product counts for a given Catalogs Product Group owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param productGroupId Unique identifier of a product group
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsProductGroupProductCountsVertical
@@ -699,7 +710,7 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * GET /catalogs/product_groups/{product_group_id}/product_counts
      * Get product counts
-     * Get a product counts for a given Catalogs Product Group owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a product counts for a given Catalogs Product Group owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      * @param productGroupId Unique identifier of a product group
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsProductGroupProductCountsVertical?>
@@ -747,9 +758,9 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * PATCH /catalogs/product_groups/{product_group_id}
      * Update single product group
-     * Update product group owned by the \&quot;operation user_account\&quot; to use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Update product group owned by the \&quot;operation user_account\&quot; to use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      * @param productGroupId Unique identifier of a product group
-     * @param catalogsProductGroupsUpdateRequest Request object used to Update a catalogs product group.
+     * @param catalogsProductGroupsUpdateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsVerticalProductGroup
      * @throws IllegalStateException If the request is not correctly configured
@@ -760,8 +771,8 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun catalogsProductGroupsUpdate(productGroupId: kotlin.String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: kotlin.String? = null) : CatalogsVerticalProductGroup {
-        val localVarResponse = catalogsProductGroupsUpdateWithHttpInfo(productGroupId = productGroupId, catalogsProductGroupsUpdateRequest = catalogsProductGroupsUpdateRequest, adAccountId = adAccountId)
+    fun catalogsProductGroupsUpdate(productGroupId: kotlin.String, catalogsProductGroupsUpdateRequestSchema: CatalogsProductGroupsUpdateRequestSchema, adAccountId: kotlin.String? = null) : CatalogsVerticalProductGroup {
+        val localVarResponse = catalogsProductGroupsUpdateWithHttpInfo(productGroupId = productGroupId, catalogsProductGroupsUpdateRequestSchema = catalogsProductGroupsUpdateRequestSchema, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsVerticalProductGroup
@@ -781,9 +792,9 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * PATCH /catalogs/product_groups/{product_group_id}
      * Update single product group
-     * Update product group owned by the \&quot;operation user_account\&quot; to use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Update product group owned by the \&quot;operation user_account\&quot; to use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      * @param productGroupId Unique identifier of a product group
-     * @param catalogsProductGroupsUpdateRequest Request object used to Update a catalogs product group.
+     * @param catalogsProductGroupsUpdateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsVerticalProductGroup?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -791,10 +802,10 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun catalogsProductGroupsUpdateWithHttpInfo(productGroupId: kotlin.String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: kotlin.String?) : ApiResponse<CatalogsVerticalProductGroup?> {
-        val localVariableConfig = catalogsProductGroupsUpdateRequestConfig(productGroupId = productGroupId, catalogsProductGroupsUpdateRequest = catalogsProductGroupsUpdateRequest, adAccountId = adAccountId)
+    fun catalogsProductGroupsUpdateWithHttpInfo(productGroupId: kotlin.String, catalogsProductGroupsUpdateRequestSchema: CatalogsProductGroupsUpdateRequestSchema, adAccountId: kotlin.String?) : ApiResponse<CatalogsVerticalProductGroup?> {
+        val localVariableConfig = catalogsProductGroupsUpdateRequestConfig(productGroupId = productGroupId, catalogsProductGroupsUpdateRequestSchema = catalogsProductGroupsUpdateRequestSchema, adAccountId = adAccountId)
 
-        return request<CatalogsProductGroupsUpdateRequest, CatalogsVerticalProductGroup>(
+        return request<CatalogsProductGroupsUpdateRequestSchema, CatalogsVerticalProductGroup>(
             localVariableConfig
         )
     }
@@ -803,12 +814,12 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
      * To obtain the request config of the operation catalogsProductGroupsUpdate
      *
      * @param productGroupId Unique identifier of a product group
-     * @param catalogsProductGroupsUpdateRequest Request object used to Update a catalogs product group.
+     * @param catalogsProductGroupsUpdateRequestSchema 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun catalogsProductGroupsUpdateRequestConfig(productGroupId: kotlin.String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: kotlin.String?) : RequestConfig<CatalogsProductGroupsUpdateRequest> {
-        val localVariableBody = catalogsProductGroupsUpdateRequest
+    fun catalogsProductGroupsUpdateRequestConfig(productGroupId: kotlin.String, catalogsProductGroupsUpdateRequestSchema: CatalogsProductGroupsUpdateRequestSchema, adAccountId: kotlin.String?) : RequestConfig<CatalogsProductGroupsUpdateRequestSchema> {
+        val localVariableBody = catalogsProductGroupsUpdateRequestSchema
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
@@ -832,10 +843,10 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * POST /catalogs/products/get_by_product_group_filters
      * List products by filter
-     * List products Pins owned by the \&quot;operation user_account\&quot; that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
-     * @param catalogsListProductsByFilterRequest Object holding a group of filters for a catalog product group
+     * List products Pins owned by the \&quot;operation user_account\&quot; that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  [Learn more](/docs/api-features/shopping-overview/)
+     * @param catalogsListProductsByFilterRequest 
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @return CatalogsProductGroupPinsList200Response
@@ -868,10 +879,10 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * POST /catalogs/products/get_by_product_group_filters
      * List products by filter
-     * List products Pins owned by the \&quot;operation user_account\&quot; that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
-     * @param catalogsListProductsByFilterRequest Object holding a group of filters for a catalog product group
+     * List products Pins owned by the \&quot;operation user_account\&quot; that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  [Learn more](/docs/api-features/shopping-overview/)
+     * @param catalogsListProductsByFilterRequest 
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @return ApiResponse<CatalogsProductGroupPinsList200Response?>
@@ -891,9 +902,9 @@ open class CatalogProductGroupsApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * To obtain the request config of the operation productsByProductGroupFilterList
      *
-     * @param catalogsListProductsByFilterRequest Object holding a group of filters for a catalog product group
+     * @param catalogsListProductsByFilterRequest 
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      * @return RequestConfig

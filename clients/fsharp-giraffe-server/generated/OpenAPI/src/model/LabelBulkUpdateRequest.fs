@@ -2,18 +2,16 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.LabelStatusBulkUpdate
 
 module LabelBulkUpdateRequest =
 
   //#region LabelBulkUpdateRequest
 
-  //#region enums
-  type StatusEnum = ARCHIVEDEnum of string  
-  //#endregion
 
   type LabelBulkUpdateRequest = {
     Id : string;
-    Status : StatusEnum;
-    Value : string;
+    ParentId : string;
+    Status : LabelStatusBulkUpdate;
   }
   //#endregion

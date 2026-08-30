@@ -13,14 +13,26 @@ part of openapi.api;
 class CatalogsProductGroupFilterOperatorTypeCriteria {
   /// Returns a new [CatalogsProductGroupFilterOperatorTypeCriteria] instance.
   CatalogsProductGroupFilterOperatorTypeCriteria({
-    this.filterOperatorType = const CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum._('IS'),
-    this.negated = false,
+    this.filterOperatorType,
+    this.negated,
     this.values = const [],
   });
 
-  CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum filterOperatorType;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  FilterOperatorType? filterOperatorType;
 
-  bool negated;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? negated;
 
   List<String> values;
 
@@ -33,8 +45,8 @@ class CatalogsProductGroupFilterOperatorTypeCriteria {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (filterOperatorType.hashCode) +
-    (negated.hashCode) +
+    (filterOperatorType == null ? 0 : filterOperatorType!.hashCode) +
+    (negated == null ? 0 : negated!.hashCode) +
     (values.hashCode);
 
   @override
@@ -42,8 +54,16 @@ class CatalogsProductGroupFilterOperatorTypeCriteria {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.filterOperatorType != null) {
       json[r'filter_operator_type'] = this.filterOperatorType;
+    } else {
+      json[r'filter_operator_type'] = null;
+    }
+    if (this.negated != null) {
       json[r'negated'] = this.negated;
+    } else {
+      json[r'negated'] = null;
+    }
       json[r'values'] = this.values;
     return json;
   }
@@ -59,16 +79,14 @@ class CatalogsProductGroupFilterOperatorTypeCriteria {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsProductGroupFilterOperatorTypeCriteria[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsProductGroupFilterOperatorTypeCriteria[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'values'), 'Required key "CatalogsProductGroupFilterOperatorTypeCriteria[values]" is missing from JSON.');
+        assert(json[r'values'] != null, 'Required key "CatalogsProductGroupFilterOperatorTypeCriteria[values]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsProductGroupFilterOperatorTypeCriteria(
-        filterOperatorType: CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum.fromJson(json[r'filter_operator_type']) ?? 'IS',
-        negated: mapValueOfType<bool>(json, r'negated') ?? false,
+        filterOperatorType: FilterOperatorType.fromJson(json[r'filter_operator_type']),
+        negated: mapValueOfType<bool>(json, r'negated'),
         values: json[r'values'] is Iterable
             ? (json[r'values'] as Iterable).cast<String>().toList(growable: false)
             : const [],
@@ -122,78 +140,4 @@ class CatalogsProductGroupFilterOperatorTypeCriteria {
     'values',
   };
 }
-
-
-class CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const IS = CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum._(r'IS');
-  static const CONTAINS = CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum._(r'CONTAINS');
-
-  /// List of all possible values in this [enum][CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum].
-  static const values = <CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum>[
-    IS,
-    CONTAINS,
-  ];
-
-  static CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum? fromJson(dynamic value) => CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumTypeTransformer().decode(value);
-
-  static List<CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum] to String,
-/// and [decode] dynamic data back to [CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum].
-class CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumTypeTransformer {
-  factory CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumTypeTransformer() => _instance ??= const CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumTypeTransformer._();
-
-  const CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumTypeTransformer._();
-
-  String encode(CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'IS': return CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum.IS;
-        case r'CONTAINS': return CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnum.CONTAINS;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumTypeTransformer] instance.
-  static CatalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorTypeEnumTypeTransformer? _instance;
-}
-
 

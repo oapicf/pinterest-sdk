@@ -1,6 +1,143 @@
 #tag Class
 Protected Class LabelsApi
 	#tag Method, Flags = &h0
+		Sub LabelsApply(, adAccountId As String, labelId As String, labeledEntitiesCreate As OpenAPIClient.Models.LabeledEntitiesCreate)
+		  // Operation labels/apply
+		  // Apply label to entity
+		  // - 
+		  // - parameter adAccountId: (path)  
+		  // - parameter labelId: (path) Label ID. 
+		  // - parameter labeledEntitiesCreate: (body)  
+		  //
+		  // Invokes LabelsApiCallbackHandler.LabelsApplyCallback(LabeledEntities) on completion. 
+		  //
+		  // - POST /ad_accounts/{ad_account_id}/labels/{label_id}/apply
+		  // -   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+		  // - defaultResponse: Nil
+		  //
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: pinterest_oauth2
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(labeledEntitiesCreate), "application/json")
+		  
+		  
+		  
+
+
+		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/labels/{label_id}/apply"
+		  
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
+		  Dim localVarPathStringlabelId As String = labelId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{label_id}", localVarPathStringlabelId)
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.LabelsApply_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.LabelsApply_error
+		  
+		  
+		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function LabelsApplyPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LabeledEntities) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.LabeledEntities
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub LabelsApply_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  Dim data As OpenAPIClient.Models.LabeledEntities
+		  CallbackHandler.LabelsApplyCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub LabelsApply_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
+		  
+		  Dim data As OpenAPIClient.Models.LabeledEntities
+		  Call LabelsApplyPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
+		  
+		  CallbackHandler.LabelsApplyCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
+
+	#tag Method, Flags = &h0
 		Sub LabelsCreate(, adAccountId As String, labelCreateRequest As OpenAPIClient.Models.LabelCreateRequest)
 		  // Operation labels/create
 		  // Create labels
@@ -11,7 +148,7 @@ Protected Class LabelsApi
 		  // Invokes LabelsApiCallbackHandler.LabelsCreateCallback(LabelsResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/labels
-		  // - <p> <a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">Closed beta</a> This endpoint is not available to all users. </p> <p>   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    <b>Note:</b> You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  </p>
+		  // - [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -134,7 +271,7 @@ Protected Class LabelsApi
 
 
 	#tag Method, Flags = &h0
-		Sub LabelsList(, adAccountId As String, campaignIds() As String, labelIds() As String, entityStatuses() As Entity_statusesEnum_LabelsList, labelTypes() As Label_typesEnum_LabelsList, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub LabelsList(, adAccountId As String, campaignIds() As String, labelIds() As String, entityStatuses() As QueryLabelEntityStatusesItems, labelTypes() As QueryLabelTypesItems, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation labels/list
 		  // List labels
 		  // - 
@@ -143,13 +280,13 @@ Protected Class LabelsApi
 		  // - parameter labelIds: (query) List of Label Ids to use to filter the results. (optional, default to Nil)
 		  // - parameter entityStatuses: (query) Label entity status (optional, default to ["ACTIVE"])
 		  // - parameter labelTypes: (query) Label type. (optional, default to ["BRAND","CUSTOM"])
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes LabelsApiCallbackHandler.LabelsListCallback(LabelsList200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/labels
-		  // - <p>   <a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">Closed beta</a>   This endpoint is not available to all users. </p> <p>   See a list of labels for assets that your account owns, and filter the list by different criteria. </p>
+		  // - [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -199,15 +336,15 @@ Protected Class LabelsApi
 		  localVarQueryStringlabelIds = Join(localVarQueryStringslabelIds, "&")
 		  
 		  Dim localVarQueryStringsentityStatuses() As String
-		  For Each localVarItementityStatuses As Entity_statusesEnum_LabelsList in entityStatuses
-		    Dim encodedParameter As String = EncodeURLComponent(Entity_statusesEnum_LabelsListToString(localVarItementityStatuses))
+		  For Each localVarItementityStatuses As QueryLabelEntityStatusesItems in entityStatuses
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItementityStatuses))
 		    Select Case "form"
 		      Case "form"
-		        localVarQueryStringsentityStatuses.Append("entity_statuses=" + encodedParameter)
+		        localVarQueryStringsentityStatuses.Append("inner=" + encodedParameter)
 		      Case "spaceDelimited"
-		        localVarQueryStringsentityStatuses.Append("entity_statuses=" + encodedParameter)
+		        localVarQueryStringsentityStatuses.Append("inner=" + encodedParameter)
 		      Case "pipeDelimited"
-		        localVarQueryStringsentityStatuses.Append("entity_statuses=" + encodedParameter)
+		        localVarQueryStringsentityStatuses.Append("inner=" + encodedParameter)
 		      Case "deepObject"
 		        Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
 		    End Select
@@ -217,15 +354,15 @@ Protected Class LabelsApi
 		  localVarQueryStringentityStatuses = Join(localVarQueryStringsentityStatuses, "&")
 		  
 		  Dim localVarQueryStringslabelTypes() As String
-		  For Each localVarItemlabelTypes As Label_typesEnum_LabelsList in labelTypes
-		    Dim encodedParameter As String = EncodeURLComponent(Label_typesEnum_LabelsListToString(localVarItemlabelTypes))
+		  For Each localVarItemlabelTypes As QueryLabelTypesItems in labelTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemlabelTypes))
 		    Select Case "form"
 		      Case "form"
-		        localVarQueryStringslabelTypes.Append("label_types=" + encodedParameter)
+		        localVarQueryStringslabelTypes.Append("inner=" + encodedParameter)
 		      Case "spaceDelimited"
-		        localVarQueryStringslabelTypes.Append("label_types=" + encodedParameter)
+		        localVarQueryStringslabelTypes.Append("inner=" + encodedParameter)
 		      Case "pipeDelimited"
-		        localVarQueryStringslabelTypes.Append("label_types=" + encodedParameter)
+		        localVarQueryStringslabelTypes.Append("inner=" + encodedParameter)
 		      Case "deepObject"
 		        Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
 		    End Select
@@ -233,9 +370,9 @@ Protected Class LabelsApi
 		  
 		  Dim localVarQueryStringlabelTypes As String
 		  localVarQueryStringlabelTypes = Join(localVarQueryStringslabelTypes, "&")
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  
@@ -347,32 +484,143 @@ Protected Class LabelsApi
 
 
 
+
+	#tag Method, Flags = &h0
+		Sub LabelsRemove(, adAccountId As String, labelId As String, labeledEntitiesCreate As OpenAPIClient.Models.LabeledEntitiesCreate)
+		  // Operation labels/remove
+		  // Remove label from entities
+		  // - 
+		  // - parameter adAccountId: (path)  
+		  // - parameter labelId: (path) Label ID. 
+		  // - parameter labeledEntitiesCreate: (body)  
+		  //
+		  // Invokes LabelsApiCallbackHandler.LabelsRemoveCallback(LabeledEntities) on completion. 
+		  //
+		  // - POST /ad_accounts/{ad_account_id}/labels/{label_id}/remove
+		  // -   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
+		  // - defaultResponse: Nil
+		  //
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: pinterest_oauth2
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(labeledEntitiesCreate), "application/json")
+		  
+		  
+		  
+
+
+		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/labels/{label_id}/remove"
+		  
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
+		  Dim localVarPathStringlabelId As String = labelId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{label_id}", localVarPathStringlabelId)
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.LabelsRemove_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.LabelsRemove_error
+		  
+		  
+		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h21
-		Private Function Entity_statusesEnum_LabelsListToString(value As Entity_statusesEnum_LabelsList) As String
-		  Select Case value
-		    
-		    Case Entity_statusesEnum_LabelsList.Active
-		      Return "ACTIVE"
-		    Case Entity_statusesEnum_LabelsList.Archived
-		      Return "ARCHIVED"
-		    
-		  End Select
-		  Return ""
+		Private Function LabelsRemovePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LabeledEntities) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.LabeledEntities
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
 		End Function
 	#tag EndMethod
+
 	#tag Method, Flags = &h21
-		Private Function Label_typesEnum_LabelsListToString(value As Label_typesEnum_LabelsList) As String
-		  Select Case value
-		    
-		    Case Label_typesEnum_LabelsList.Brand
-		      Return "BRAND"
-		    Case Label_typesEnum_LabelsList.Custom
-		      Return "CUSTOM"
-		    
-		  End Select
-		  Return ""
-		End Function
+		Private Sub LabelsRemove_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  Dim data As OpenAPIClient.Models.LabeledEntities
+		  CallbackHandler.LabelsRemoveCallback(error, data)
+		End Sub
 	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub LabelsRemove_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
+		  
+		  Dim data As OpenAPIClient.Models.LabeledEntities
+		  Call LabelsRemovePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
+		  
+		  CallbackHandler.LabelsRemoveCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
 
 	#tag Method, Flags = &h0
 		Sub LabelsUpdate(, adAccountId As String, labelUpdateRequest As OpenAPIClient.Models.LabelUpdateRequest)
@@ -385,7 +633,7 @@ Protected Class LabelsApi
 		  // Invokes LabelsApiCallbackHandler.LabelsUpdateCallback(LabelsResponse) on completion. 
 		  //
 		  // - PATCH /ad_accounts/{ad_account_id}/labels
-		  // - <p>   <a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">Closed beta</a>   This endpoint is not available to all users. </p> <p>   Change the properties of one or more labels. </p>
+		  // - [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -582,20 +830,6 @@ Protected Class LabelsApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = Entity_statusesEnum_LabelsList, Type = Integer, Flags = &h0
-		
-        Active
-        Archived
-		
-	#tag EndEnum
-
-	#tag Enum, Name = Label_typesEnum_LabelsList, Type = Integer, Flags = &h0
-		
-        Brand
-        Custom
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

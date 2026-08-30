@@ -5,6 +5,6 @@ This represents a mapping from Audience ID to a bid price adjustment.  Multiplie
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AUDIENCE_ID** | **character** |  | [optional] [Pattern: ^\\d+$] 
+**AUDIENCE_ID** | **character** | Audience ID for the multiplier. | [optional] [Pattern: ^\\d+$] 
 
 

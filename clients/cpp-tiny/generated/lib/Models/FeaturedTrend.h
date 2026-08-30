@@ -55,21 +55,21 @@ public:
 
 	/*! \brief Set The main interest category
 	 */
-	void setInterest(InterestsEnum  interest);
+	void setInterest(InterestsEnum interest);
 	/*! \brief Get Market code (e.g., 'US', 'UK', etc.)
 	 */
 	ProductCategoryRegion getMarket();
 
 	/*! \brief Set Market code (e.g., 'US', 'UK', etc.)
 	 */
-	void setMarket(ProductCategoryRegion  market);
+	void setMarket(ProductCategoryRegion market);
 	/*! \brief Get List of trending topics within this interest category
 	 */
 	std::list<TrendingTopic> getTrends();
 
 	/*! \brief Set List of trending topics within this interest category
 	 */
-	void setTrends(std::list <TrendingTopic> trends);
+	void setTrends(std::list<TrendingTopic> trends);
 
 
     private:

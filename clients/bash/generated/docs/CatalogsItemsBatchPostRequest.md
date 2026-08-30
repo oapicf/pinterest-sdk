@@ -1,0 +1,15 @@
+# CatalogsItemsBatchPostRequest
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**catalogUnderscoreid** | **string** |  | [optional] [default to null]
+**catalogUnderscoretype** | **string** |  | [default to null]
+**country** | [**Country**](Country.md) |  | [default to null]
+**items** | [**array[ItemDeleteBatchRecord]**](ItemDeleteBatchRecord.md) |  | [default to null]
+**language** | **string** |  | [default to null]
+**operation** | **string** |  | [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

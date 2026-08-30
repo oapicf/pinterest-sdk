@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -77,6 +78,12 @@ func (c *CampaignsAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/campaigns/analytics",
 			c.CampaignsAnalytics,
 		},
+		"GetCampaignDeliveryEstimates": Route{
+			"GetCampaignDeliveryEstimates",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/campaigns/delivery_estimates",
+			c.GetCampaignDeliveryEstimates,
+		},
 		"CampaignTargetingAnalyticsGet": Route{
 			"CampaignTargetingAnalyticsGet",
 			strings.ToUpper("Get"),
@@ -126,6 +133,12 @@ func (c *CampaignsAPIController) OrderedRoutes() []Route {
 			c.CampaignsAnalytics,
 		},
 		Route{
+			"GetCampaignDeliveryEstimates",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/campaigns/delivery_estimates",
+			c.GetCampaignDeliveryEstimates,
+		},
+		Route{
 			"CampaignTargetingAnalyticsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics",
@@ -161,13 +174,12 @@ func (c *CampaignsAPIController) CampaignsList(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var campaignIdsParam []string
-	if query.Has("campaign_ids") {
-		campaignIdsParam = strings.Split(query.Get("campaign_ids"), ",")
-	}
-	var entityStatusesParam []string
-	if query.Has("entity_statuses") {
-		entityStatusesParam = strings.Split(query.Get("entity_statuses"), ",")
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
 	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
@@ -187,21 +199,31 @@ func (c *CampaignsAPIController) CampaignsList(w http.ResponseWriter, r *http.Re
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var orderParam string
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
+	var campaignIdsParam []string
+	if query.Has("campaign_ids") {
+		campaignIdsParam = strings.Split(query.Get("campaign_ids"), ",")
 	}
-	result, err := c.service.CampaignsList(r.Context(), adAccountIdParam, campaignIdsParam, entityStatusesParam, pageSizeParam, orderParam, bookmarkParam)
+	var entityStatusesParam []EntityStatus
+	if query.Has("entity_statuses") {
+		paramSplits := strings.Split(query.Get("entity_statuses"), ",")
+		entityStatusesParam = make([]EntityStatus, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewEntityStatusFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "entity_statuses", Err: err}, nil)
+				return
+			}
+			entityStatusesParam = append(entityStatusesParam, paramEnum)
+		}
+	}
+	result, err := c.service.CampaignsList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam, campaignIdsParam, entityStatusesParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -219,20 +241,25 @@ func (c *CampaignsAPIController) CampaignsCreate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var campaignCreateRequestParam []CampaignCreateRequest
+	var campaignCreateItemParam []CampaignCreateItem
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&campaignCreateRequestParam); err != nil {
+	if err := d.Decode(&campaignCreateItemParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range campaignCreateRequestParam {
-		if err := AssertCampaignCreateRequestRequired(el); err != nil {
+	for _, el := range campaignCreateItemParam {
+		if err := AssertCampaignCreateItemRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
 	}
-	result, err := c.service.CampaignsCreate(r.Context(), adAccountIdParam, campaignCreateRequestParam)
+	result, err := c.service.CampaignsCreate(r.Context(), adAccountIdParam, campaignCreateItemParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -250,20 +277,25 @@ func (c *CampaignsAPIController) CampaignsUpdate(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var campaignUpdateRequestParam []CampaignUpdateRequest
+	var campaignBatchUpdateItemParam []CampaignBatchUpdateItem
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&campaignUpdateRequestParam); err != nil {
+	if err := d.Decode(&campaignBatchUpdateItemParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	for _, el := range campaignUpdateRequestParam {
-		if err := AssertCampaignUpdateRequestRequired(el); err != nil {
+	for _, el := range campaignBatchUpdateItemParam {
+		if err := AssertCampaignBatchUpdateItemRequired(el); err != nil {
 			c.errorHandler(w, r, err, nil)
 			return
 		}
 	}
-	result, err := c.service.CampaignsUpdate(r.Context(), adAccountIdParam, campaignUpdateRequestParam)
+	result, err := c.service.CampaignsUpdate(r.Context(), adAccountIdParam, campaignBatchUpdateItemParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -279,11 +311,6 @@ func (c *CampaignsAPIController) CampaignsAnalytics(w http.ResponseWriter, r *ht
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
 	var startDateParam string
@@ -308,9 +335,18 @@ func (c *CampaignsAPIController) CampaignsAnalytics(w http.ResponseWriter, r *ht
 	if query.Has("campaign_ids") {
 		campaignIdsParam = strings.Split(query.Get("campaign_ids"), ",")
 	}
-	var columnsParam []string
+	var columnsParam []ReportingColumnSync
 	if query.Has("columns") {
-		columnsParam = strings.Split(query.Get("columns"), ",")
+		paramSplits := strings.Split(query.Get("columns"), ",")
+		columnsParam = make([]ReportingColumnSync, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewReportingColumnSyncFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "columns", Err: err}, nil)
+				return
+			}
+			columnsParam = append(columnsParam, paramEnum)
+		}
 	}
 	var granularityParam Granularity
 	if query.Has("granularity") {
@@ -321,11 +357,16 @@ func (c *CampaignsAPIController) CampaignsAnalytics(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{Field: "granularity"}, nil)
 		return
 	}
-	var clickWindowDaysParam int32
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var clickWindowDaysParam float32
 	if query.Has("click_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("click_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "click_window_days", Err: err}, nil)
@@ -334,14 +375,14 @@ func (c *CampaignsAPIController) CampaignsAnalytics(w http.ResponseWriter, r *ht
 
 		clickWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		clickWindowDaysParam = param
 	}
-	var engagementWindowDaysParam int32
+	var engagementWindowDaysParam float32
 	if query.Has("engagement_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("engagement_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "engagement_window_days", Err: err}, nil)
@@ -350,14 +391,14 @@ func (c *CampaignsAPIController) CampaignsAnalytics(w http.ResponseWriter, r *ht
 
 		engagementWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		engagementWindowDaysParam = param
 	}
-	var viewWindowDaysParam int32
+	var viewWindowDaysParam float32
 	if query.Has("view_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("view_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "view_window_days", Err: err}, nil)
@@ -366,7 +407,7 @@ func (c *CampaignsAPIController) CampaignsAnalytics(w http.ResponseWriter, r *ht
 
 		viewWindowDaysParam = param
 	} else {
-		var param int32 = 1
+		var param float32 = 1
 		viewWindowDaysParam = param
 	}
 	var conversionReportTimeParam string
@@ -401,7 +442,43 @@ func (c *CampaignsAPIController) CampaignsAnalytics(w http.ResponseWriter, r *ht
 		reportingTimezoneParam = param
 	} else {
 	}
-	result, err := c.service.CampaignsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, campaignIdsParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, aggregateReportRowsParam, reportingTimezoneParam)
+	result, err := c.service.CampaignsAnalytics(r.Context(), startDateParam, endDateParam, campaignIdsParam, columnsParam, granularityParam, adAccountIdParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, aggregateReportRowsParam, reportingTimezoneParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// GetCampaignDeliveryEstimates - Get campaign delivery estimates
+func (c *CampaignsAPIController) GetCampaignDeliveryEstimates(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var campaignDeliveryEstimatesCampaignParam []CampaignDeliveryEstimatesCampaign
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&campaignDeliveryEstimatesCampaignParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	for _, el := range campaignDeliveryEstimatesCampaignParam {
+		if err := AssertCampaignDeliveryEstimatesCampaignRequired(el); err != nil {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+	}
+	result, err := c.service.GetCampaignDeliveryEstimates(r.Context(), adAccountIdParam, campaignDeliveryEstimatesCampaignParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -459,9 +536,18 @@ func (c *CampaignsAPIController) CampaignTargetingAnalyticsGet(w http.ResponseWr
 			targetingTypesParam = append(targetingTypesParam, paramEnum)
 		}
 	}
-	var columnsParam []string
+	var columnsParam []ReportingColumnSync
 	if query.Has("columns") {
-		columnsParam = strings.Split(query.Get("columns"), ",")
+		paramSplits := strings.Split(query.Get("columns"), ",")
+		columnsParam = make([]ReportingColumnSync, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewReportingColumnSyncFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "columns", Err: err}, nil)
+				return
+			}
+			columnsParam = append(columnsParam, paramEnum)
+		}
 	}
 	var granularityParam Granularity
 	if query.Has("granularity") {
@@ -472,11 +558,11 @@ func (c *CampaignsAPIController) CampaignTargetingAnalyticsGet(w http.ResponseWr
 		c.errorHandler(w, r, &RequiredError{Field: "granularity"}, nil)
 		return
 	}
-	var clickWindowDaysParam int32
+	var clickWindowDaysParam float32
 	if query.Has("click_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("click_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "click_window_days", Err: err}, nil)
@@ -485,14 +571,14 @@ func (c *CampaignsAPIController) CampaignTargetingAnalyticsGet(w http.ResponseWr
 
 		clickWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		clickWindowDaysParam = param
 	}
-	var engagementWindowDaysParam int32
+	var engagementWindowDaysParam float32
 	if query.Has("engagement_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("engagement_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "engagement_window_days", Err: err}, nil)
@@ -501,14 +587,14 @@ func (c *CampaignsAPIController) CampaignTargetingAnalyticsGet(w http.ResponseWr
 
 		engagementWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		engagementWindowDaysParam = param
 	}
-	var viewWindowDaysParam int32
+	var viewWindowDaysParam float32
 	if query.Has("view_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("view_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "view_window_days", Err: err}, nil)
@@ -517,7 +603,7 @@ func (c *CampaignsAPIController) CampaignTargetingAnalyticsGet(w http.ResponseWr
 
 		viewWindowDaysParam = param
 	} else {
-		var param int32 = 1
+		var param float32 = 1
 		viewWindowDaysParam = param
 	}
 	var conversionReportTimeParam string
@@ -562,17 +648,17 @@ func (c *CampaignsAPIController) CampaignTargetingAnalyticsGet(w http.ResponseWr
 // CampaignsGet - Get campaign
 func (c *CampaignsAPIController) CampaignsGet(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
 	campaignIdParam := params["campaign_id"]
 	if campaignIdParam == "" {
 		c.errorHandler(w, r, &RequiredError{"campaign_id"}, nil)
 		return
 	}
-	result, err := c.service.CampaignsGet(r.Context(), adAccountIdParam, campaignIdParam)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	result, err := c.service.CampaignsGet(r.Context(), campaignIdParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -588,11 +674,6 @@ func (c *CampaignsAPIController) AdPinsAnalytics(w http.ResponseWriter, r *http.
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
 	var campaignIdParam string
@@ -626,9 +707,18 @@ func (c *CampaignsAPIController) AdPinsAnalytics(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
 		return
 	}
-	var columnsParam []string
+	var columnsParam []ReportingColumnSync
 	if query.Has("columns") {
-		columnsParam = strings.Split(query.Get("columns"), ",")
+		paramSplits := strings.Split(query.Get("columns"), ",")
+		columnsParam = make([]ReportingColumnSync, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewReportingColumnSyncFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "columns", Err: err}, nil)
+				return
+			}
+			columnsParam = append(columnsParam, paramEnum)
+		}
 	}
 	var granularityParam Granularity
 	if query.Has("granularity") {
@@ -639,11 +729,16 @@ func (c *CampaignsAPIController) AdPinsAnalytics(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{Field: "granularity"}, nil)
 		return
 	}
-	var clickWindowDaysParam int32
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var clickWindowDaysParam float32
 	if query.Has("click_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("click_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "click_window_days", Err: err}, nil)
@@ -652,14 +747,14 @@ func (c *CampaignsAPIController) AdPinsAnalytics(w http.ResponseWriter, r *http.
 
 		clickWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		clickWindowDaysParam = param
 	}
-	var engagementWindowDaysParam int32
+	var engagementWindowDaysParam float32
 	if query.Has("engagement_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("engagement_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "engagement_window_days", Err: err}, nil)
@@ -668,14 +763,14 @@ func (c *CampaignsAPIController) AdPinsAnalytics(w http.ResponseWriter, r *http.
 
 		engagementWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		engagementWindowDaysParam = param
 	}
-	var viewWindowDaysParam int32
+	var viewWindowDaysParam float32
 	if query.Has("view_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("view_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "view_window_days", Err: err}, nil)
@@ -684,7 +779,7 @@ func (c *CampaignsAPIController) AdPinsAnalytics(w http.ResponseWriter, r *http.
 
 		viewWindowDaysParam = param
 	} else {
-		var param int32 = 1
+		var param float32 = 1
 		viewWindowDaysParam = param
 	}
 	var conversionReportTimeParam string
@@ -696,7 +791,7 @@ func (c *CampaignsAPIController) AdPinsAnalytics(w http.ResponseWriter, r *http.
 		param := "TIME_OF_AD_ACTION"
 		conversionReportTimeParam = param
 	}
-	result, err := c.service.AdPinsAnalytics(r.Context(), adAccountIdParam, campaignIdParam, pinIdsParam, startDateParam, endDateParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam)
+	result, err := c.service.AdPinsAnalytics(r.Context(), campaignIdParam, pinIdsParam, startDateParam, endDateParam, columnsParam, granularityParam, adAccountIdParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

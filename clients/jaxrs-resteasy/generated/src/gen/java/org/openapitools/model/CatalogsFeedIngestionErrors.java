@@ -4,14 +4,13 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestionErrors   {
   
   private Integer ACCOUNT_FLAGGED;
@@ -21,26 +20,7 @@ public class CatalogsFeedIngestionErrors   {
   private Integer IMAGE_INVALID_FILE;
   private Integer IMAGE_LEVEL_INTERNAL_ERROR;
   private Integer IMAGE_MALFORMED_URL;
-
-  /**
-   * The product count has decreased by more than 99% compared to the last successful ingestion.
-   */
-  public enum LARGEPRODUCTCOUNTDECREASEEnum {
-    NUMBER_1(1);
-    private Integer value;
-
-    LARGEPRODUCTCOUNTDECREASEEnum(Integer value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
+  private Integer LARGE_PRODUCT_COUNT_DECREASE;
   private Integer LINE_LEVEL_INTERNAL_ERROR;
 
   /**
@@ -140,10 +120,10 @@ public class CatalogsFeedIngestionErrors   {
   
   @ApiModelProperty(value = "The product count has decreased by more than 99% compared to the last successful ingestion.")
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
-  public LARGEPRODUCTCOUNTDECREASEEnum getLARGEPRODUCTCOUNTDECREASE() {
+  public Integer getLARGEPRODUCTCOUNTDECREASE() {
     return LARGE_PRODUCT_COUNT_DECREASE;
   }
-  public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public void setLARGEPRODUCTCOUNTDECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
   }
 
@@ -209,10 +189,7 @@ public class CatalogsFeedIngestionErrors   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

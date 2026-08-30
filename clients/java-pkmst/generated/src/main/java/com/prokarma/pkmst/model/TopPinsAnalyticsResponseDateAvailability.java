@@ -3,7 +3,6 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -16,7 +15,7 @@ import java.math.BigDecimal;
  * TopPinsAnalyticsResponseDateAvailability
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopPinsAnalyticsResponseDateAvailability   {
   @JsonProperty("is_realtime")
   private Boolean isRealtime;
@@ -33,7 +32,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
    * Get isRealtime
    * @return isRealtime
    */
-  @ApiModelProperty(example = "false", value = "")
+  @ApiModelProperty(value = "")
   public Boolean getIsRealtime() {
     return isRealtime;
   }
@@ -51,7 +50,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
    * Get latestAvailableTimestamp
    * @return latestAvailableTimestamp
    */
-  @ApiModelProperty(example = "1649116799000", value = "")
+  @ApiModelProperty(value = "")
   public BigDecimal getLatestAvailableTimestamp() {
     return latestAvailableTimestamp;
   }
@@ -95,10 +94,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

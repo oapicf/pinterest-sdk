@@ -1,0 +1,53 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LabelErrorData"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LabelErrorData"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  NullableLabelStatus = openapi_server.resourceTypes.NullableLabelStatus
+  NullableLabelType = openapi_server.resourceTypes.NullableLabelType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  LabelErrorData {
+    title = LabelErrorData
+    description = LabelErrorData
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Label ID."
+          optional = false
+        }
+        label_type {
+          type = NullableLabelType
+          description = ""
+          optional = false
+        }
+        status {
+          type = NullableLabelStatus
+          description = ""
+          optional = false
+        }
+        value {
+          type =  string
+          description = "Label name. 100-character limit."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LabelErrorData {
+    title = LabelErrorData
+    description = LabelErrorData
+    implements = openapi_server.resourceTypes.LabelErrorData
+
+  }
+}

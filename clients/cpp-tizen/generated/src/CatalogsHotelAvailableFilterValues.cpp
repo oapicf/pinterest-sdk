@@ -24,7 +24,7 @@ void
 CatalogsHotelAvailableFilterValues::__init()
 {
 	//catalog_type = std::string();
-	//filter_values = new Catalogs_hotel_filter_values_map();
+	//filter_values = new CatalogsHotelFilterValuesMap();
 }
 
 void
@@ -64,11 +64,11 @@ CatalogsHotelAvailableFilterValues::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Catalogs_hotel_filter_values_map")) {
-			jsonToValue(&filter_values, node, "Catalogs_hotel_filter_values_map", "Catalogs_hotel_filter_values_map");
+		if (isprimitive("CatalogsHotelFilterValuesMap")) {
+			jsonToValue(&filter_values, node, "CatalogsHotelFilterValuesMap", "CatalogsHotelFilterValuesMap");
 		} else {
 			
-			Catalogs_hotel_filter_values_map* obj = static_cast<Catalogs_hotel_filter_values_map*> (&filter_values);
+			CatalogsHotelFilterValuesMap* obj = static_cast<CatalogsHotelFilterValuesMap*> (&filter_values);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -94,13 +94,13 @@ CatalogsHotelAvailableFilterValues::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
-	if (isprimitive("Catalogs_hotel_filter_values_map")) {
-		Catalogs_hotel_filter_values_map obj = getFilterValues();
-		node = converttoJson(&obj, "Catalogs_hotel_filter_values_map", "");
+	if (isprimitive("CatalogsHotelFilterValuesMap")) {
+		CatalogsHotelFilterValuesMap obj = getFilterValues();
+		node = converttoJson(&obj, "CatalogsHotelFilterValuesMap", "");
 	}
 	else {
 		
-		Catalogs_hotel_filter_values_map obj = static_cast<Catalogs_hotel_filter_values_map> (getFilterValues());
+		CatalogsHotelFilterValuesMap obj = static_cast<CatalogsHotelFilterValuesMap> (getFilterValues());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -128,14 +128,14 @@ CatalogsHotelAvailableFilterValues::setCatalogType(std::string  catalog_type)
 	this->catalog_type = catalog_type;
 }
 
-Catalogs_hotel_filter_values_map
+CatalogsHotelFilterValuesMap
 CatalogsHotelAvailableFilterValues::getFilterValues()
 {
 	return filter_values;
 }
 
 void
-CatalogsHotelAvailableFilterValues::setFilterValues(Catalogs_hotel_filter_values_map  filter_values)
+CatalogsHotelAvailableFilterValues::setFilterValues(CatalogsHotelFilterValuesMap  filter_values)
 {
 	this->filter_values = filter_values;
 }

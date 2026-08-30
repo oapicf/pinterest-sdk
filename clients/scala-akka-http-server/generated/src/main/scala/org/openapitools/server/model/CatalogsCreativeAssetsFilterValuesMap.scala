@@ -33,6 +33,6 @@ final case class CatalogsCreativeAssetsFilterValuesMap (
   googleProductCategory4: Option[Seq[String]] = None,
   googleProductCategory5: Option[Seq[String]] = None,
   googleProductCategory6: Option[Seq[String]] = None,
-  mediaType: Option[Seq[String]] = None
+  mediaType: Option[Seq[MediaType]] = None
 )
 

@@ -14,11 +14,11 @@ static analytics_daily_metrics_t *analytics_daily_metrics_create_internal(
     if (!analytics_daily_metrics_local_var) {
         return NULL;
     }
+    memset(analytics_daily_metrics_local_var, 0, sizeof(analytics_daily_metrics_t));
+    analytics_daily_metrics_local_var->_library_owned = 1;
     analytics_daily_metrics_local_var->data_status = data_status;
     analytics_daily_metrics_local_var->date = date;
     analytics_daily_metrics_local_var->metrics = metrics;
-
-    analytics_daily_metrics_local_var->_library_owned = 1;
     return analytics_daily_metrics_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) analytics_daily_metrics_t *analytics_daily_metrics_c
     char *date,
     list_t* metrics
     ) {
-    return analytics_daily_metrics_create_internal (
+    analytics_daily_metrics_t *result = analytics_daily_metrics_create_internal (
         data_status,
         date,
         metrics
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void analytics_daily_metrics_free(analytics_daily_metrics_t *analytics_daily_metrics) {
@@ -118,6 +121,8 @@ analytics_daily_metrics_t *analytics_daily_metrics_parseFromJSON(cJSON *analytic
     // define the local variable for analytics_daily_metrics->data_status
     pinterest_rest_api_data_status__e data_status_local_nonprim = 0;
 
+    char *date_local_str = NULL;
+
     // define the local map for analytics_daily_metrics->metrics
     list_t *metricsList = NULL;
 
@@ -171,16 +176,26 @@ analytics_daily_metrics_t *analytics_daily_metrics_parseFromJSON(cJSON *analytic
     }
 
 
+    if (date && !cJSON_IsNull(date)) date_local_str = strdup(date->valuestring);
+
     analytics_daily_metrics_local_var = analytics_daily_metrics_create_internal (
         data_status ? data_status_local_nonprim : 0,
-        date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
+        date_local_str,
         metrics ? metricsList : NULL
         );
+
+    if (!analytics_daily_metrics_local_var) {
+        goto end;
+    }
 
     return analytics_daily_metrics_local_var;
 end:
     if (data_status_local_nonprim) {
         data_status_local_nonprim = 0;
+    }
+    if (date_local_str) {
+        free(date_local_str);
+        date_local_str = NULL;
     }
     if (metricsList) {
         listEntry_t *listEntry = NULL;

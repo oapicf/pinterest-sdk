@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &Audience{}
 // Audience struct for Audience
 type Audience struct {
 	// Ad account ID.
-	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-	AudienceType *string `json:"audience_type,omitempty"`
+	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\d+$"`
+	// [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+	AudienceType *PinnerListType `json:"audience_type,omitempty"`
 	// The company that created this audience.
 	CreatedByCompanyName NullableString `json:"created_by_company_name,omitempty"`
 	// Creation time. Unix timestamp in seconds.
@@ -31,14 +31,16 @@ type Audience struct {
 	// Audience description.
 	Description NullableString `json:"description,omitempty"`
 	// Audience ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\d+$"`
+	// Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+	IsNca *bool `json:"is_nca,omitempty"`
 	// Audience name.
 	Name *string `json:"name,omitempty"`
 	Rule *AudienceRule `json:"rule,omitempty"`
 	// Audience size.
 	Size NullableInt32 `json:"size,omitempty"`
 	// Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
-	Status *string `json:"status,omitempty"`
+	Status *AudienceStatus `json:"status,omitempty"`
 	// Always \"audience\".
 	Type *string `json:"type,omitempty"`
 	// Last update time. Unix timestamp in seconds.
@@ -95,9 +97,9 @@ func (o *Audience) SetAdAccountId(v string) {
 }
 
 // GetAudienceType returns the AudienceType field value if set, zero value otherwise.
-func (o *Audience) GetAudienceType() string {
+func (o *Audience) GetAudienceType() PinnerListType {
 	if o == nil || IsNil(o.AudienceType) {
-		var ret string
+		var ret PinnerListType
 		return ret
 	}
 	return *o.AudienceType
@@ -105,7 +107,7 @@ func (o *Audience) GetAudienceType() string {
 
 // GetAudienceTypeOk returns a tuple with the AudienceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Audience) GetAudienceTypeOk() (*string, bool) {
+func (o *Audience) GetAudienceTypeOk() (*PinnerListType, bool) {
 	if o == nil || IsNil(o.AudienceType) {
 		return nil, false
 	}
@@ -121,8 +123,8 @@ func (o *Audience) HasAudienceType() bool {
 	return false
 }
 
-// SetAudienceType gets a reference to the given string and assigns it to the AudienceType field.
-func (o *Audience) SetAudienceType(v string) {
+// SetAudienceType gets a reference to the given PinnerListType and assigns it to the AudienceType field.
+func (o *Audience) SetAudienceType(v PinnerListType) {
 	o.AudienceType = &v
 }
 
@@ -284,6 +286,38 @@ func (o *Audience) SetId(v string) {
 	o.Id = &v
 }
 
+// GetIsNca returns the IsNca field value if set, zero value otherwise.
+func (o *Audience) GetIsNca() bool {
+	if o == nil || IsNil(o.IsNca) {
+		var ret bool
+		return ret
+	}
+	return *o.IsNca
+}
+
+// GetIsNcaOk returns a tuple with the IsNca field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Audience) GetIsNcaOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsNca) {
+		return nil, false
+	}
+	return o.IsNca, true
+}
+
+// HasIsNca returns a boolean if a field has been set.
+func (o *Audience) HasIsNca() bool {
+	if o != nil && !IsNil(o.IsNca) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsNca gets a reference to the given bool and assigns it to the IsNca field.
+func (o *Audience) SetIsNca(v bool) {
+	o.IsNca = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Audience) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -391,9 +425,9 @@ func (o *Audience) UnsetSize() {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Audience) GetStatus() string {
+func (o *Audience) GetStatus() AudienceStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret string
+		var ret AudienceStatus
 		return ret
 	}
 	return *o.Status
@@ -401,7 +435,7 @@ func (o *Audience) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Audience) GetStatusOk() (*string, bool) {
+func (o *Audience) GetStatusOk() (*AudienceStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -417,8 +451,8 @@ func (o *Audience) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *Audience) SetStatus(v string) {
+// SetStatus gets a reference to the given AudienceStatus and assigns it to the Status field.
+func (o *Audience) SetStatus(v AudienceStatus) {
 	o.Status = &v
 }
 
@@ -523,6 +557,9 @@ func (o Audience) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.IsNca) {
+		toSerialize["is_nca"] = o.IsNca
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

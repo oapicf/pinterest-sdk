@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **String** | HTTP request host from host header. | 
-**method** | **String** |  | 
+**method** | [**models::HttpMethod**](HttpMethod.md) |  | 
 **path** | **String** | HTTP request path. | 
 **request_headers** | Option<**std::collections::HashMap<String, String>**> | HTTP request headers as key-value pairs. | [optional]
 **response_headers** | Option<**std::collections::HashMap<String, String>**> | HTTP response headers as key-value pairs. | [optional]

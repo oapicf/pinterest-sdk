@@ -50,7 +50,7 @@ public class TargetingSpecOperationShoppingRetargeting   {
   }
 
   private OperationEnum operation;
-  private List<TargetingSpecShoppingRetargeting> values;
+  private List<TargetingSpecShoppingRetargeting> values = new ArrayList<>();
 
   public TargetingSpecOperationShoppingRetargeting () {
 
@@ -126,9 +126,6 @@ public class TargetingSpecOperationShoppingRetargeting   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

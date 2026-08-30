@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'CatalogsHotelReportParameters_report' definition.
+-- Prepared SQL queries for 'CatalogsHotelReportParametersReport' definition.
 --
 
 
 --
--- SELECT template for table `CatalogsHotelReportParameters_report`
+-- SELECT template for table `CatalogsHotelReportParametersReport`
 --
-SELECT `report_type`, `feed_id`, `processing_result_id`, `catalog_id` FROM `CatalogsHotelReportParameters_report` WHERE 1;
+SELECT `feed_id`, `processing_result_id`, `report_type`, `catalog_id` FROM `CatalogsHotelReportParametersReport` WHERE 1;
 
 --
--- INSERT template for table `CatalogsHotelReportParameters_report`
+-- INSERT template for table `CatalogsHotelReportParametersReport`
 --
-INSERT INTO `CatalogsHotelReportParameters_report`(`report_type`, `feed_id`, `processing_result_id`, `catalog_id`) VALUES (?, ?, ?, ?);
+INSERT INTO `CatalogsHotelReportParametersReport`(`feed_id`, `processing_result_id`, `report_type`, `catalog_id`) VALUES (?, ?, ?, ?);
 
 --
--- UPDATE template for table `CatalogsHotelReportParameters_report`
+-- UPDATE template for table `CatalogsHotelReportParametersReport`
 --
-UPDATE `CatalogsHotelReportParameters_report` SET `report_type` = ?, `feed_id` = ?, `processing_result_id` = ?, `catalog_id` = ? WHERE 1;
+UPDATE `CatalogsHotelReportParametersReport` SET `feed_id` = ?, `processing_result_id` = ?, `report_type` = ?, `catalog_id` = ? WHERE 1;
 
 --
--- DELETE template for table `CatalogsHotelReportParameters_report`
+-- DELETE template for table `CatalogsHotelReportParametersReport`
 --
-DELETE FROM `CatalogsHotelReportParameters_report` WHERE 0;
+DELETE FROM `CatalogsHotelReportParametersReport` WHERE 0;
 

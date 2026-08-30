@@ -24,7 +24,7 @@ void
 UpdatePartnerAssetsResult::__init()
 {
 	//asset_id = std::string();
-	//asset_type = std::string();
+	//asset_type = new AssetTypeResponse();
 	//partner_id = std::string();
 	//new std::list()std::list> permissions;
 }
@@ -76,9 +76,12 @@ UpdatePartnerAssetsResult::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&asset_type, node, "std::string", "");
+		if (isprimitive("AssetTypeResponse")) {
+			jsonToValue(&asset_type, node, "AssetTypeResponse", "AssetTypeResponse");
 		} else {
+			
+			AssetTypeResponse* obj = static_cast<AssetTypeResponse*> (&asset_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -136,11 +139,16 @@ UpdatePartnerAssetsResult::toJson()
 	}
 	const gchar *asset_idKey = "asset_id";
 	json_object_set_member(pJsonObject, asset_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getAssetType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("AssetTypeResponse")) {
+		AssetTypeResponse obj = getAssetType();
+		node = converttoJson(&obj, "AssetTypeResponse", "");
 	}
 	else {
+		
+		AssetTypeResponse obj = static_cast<AssetTypeResponse> (getAssetType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *asset_typeKey = "asset_type";
@@ -189,14 +197,14 @@ UpdatePartnerAssetsResult::setAssetId(std::string  asset_id)
 	this->asset_id = asset_id;
 }
 
-std::string
+AssetTypeResponse
 UpdatePartnerAssetsResult::getAssetType()
 {
 	return asset_type;
 }
 
 void
-UpdatePartnerAssetsResult::setAssetType(std::string  asset_type)
+UpdatePartnerAssetsResult::setAssetType(AssetTypeResponse  asset_type)
 {
 	this->asset_type = asset_type;
 }

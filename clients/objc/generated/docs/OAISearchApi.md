@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Example
 ```objc
@@ -32,10 +32,10 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* term = @"term_example"; // Search term to look up pins.
-NSString* countryCode = US; // Two letter country code (ISO 3166-1 alpha-2)
+NSString* countryCode = @"countryCode_example"; // Two letter country code (ISO 3166-1 alpha-2)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
 NSString* locale = @"locale_example"; // Search locale. (optional)
-NSNumber* limit = 4; // Max search result size (optional) (default to @10)
+NSNumber* limit = @10; // Max search result size (optional) (default to @10)
 
 OAISearchApi*apiInstance = [[OAISearchApi alloc] init];
 
@@ -83,15 +83,15 @@ Name | Type | Description  | Notes
 # **searchUserBoardsGet**
 ```objc
 -(NSURLSessionTask*) searchUserBoardsGetWithAdAccountId: (NSString*) adAccountId
+    query: (NSString*) query
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    query: (NSString*) query
-        completionHandler: (void (^)(OAISearchUserBoardsGet200Response* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIBoardsList200Response* output, NSError* error)) handler;
 ```
 
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 ```objc
@@ -105,18 +105,18 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
-NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSString* query = @"query_example"; // Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
+NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAISearchApi*apiInstance = [[OAISearchApi alloc] init];
 
 // Search user's boards
 [apiInstance searchUserBoardsGetWithAdAccountId:adAccountId
+              query:query
               bookmark:bookmark
               pageSize:pageSize
-              query:query
-          completionHandler: ^(OAISearchUserBoardsGet200Response* output, NSError* error) {
+          completionHandler: ^(OAIBoardsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -131,13 +131,13 @@ OAISearchApi*apiInstance = [[OAISearchApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
- **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **query** | **NSString***| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
+ **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
-[**OAISearchUserBoardsGet200Response***](OAISearchUserBoardsGet200Response.md)
+[**OAIBoardsList200Response***](OAIBoardsList200Response.md)
 
 ### Authorization
 
@@ -155,12 +155,12 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) searchUserPinsListWithQuery: (NSString*) query
     adAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
-        completionHandler: (void (^)(OAISearchUserPinsList200Response* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIPinsList200Response* output, NSError* error)) handler;
 ```
 
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 ```objc
@@ -170,7 +170,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* query = Plants; // Search query. Can contain pin description keywords or comma-separated pin IDs.
+NSString* query = @"query_example"; // Search query. Can contain pin description keywords or comma-separated pin IDs.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
 
@@ -180,7 +180,7 @@ OAISearchApi*apiInstance = [[OAISearchApi alloc] init];
 [apiInstance searchUserPinsListWithQuery:query
               adAccountId:adAccountId
               bookmark:bookmark
-          completionHandler: ^(OAISearchUserPinsList200Response* output, NSError* error) {
+          completionHandler: ^(OAIPinsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAISearchUserPinsList200Response***](OAISearchUserPinsList200Response.md)
+[**OAIPinsList200Response***](OAIPinsList200Response.md)
 
 ### Authorization
 

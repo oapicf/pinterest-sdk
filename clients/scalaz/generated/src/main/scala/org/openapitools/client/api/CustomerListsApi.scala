@@ -22,10 +22,11 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.CustomerList
-import org.openapitools.client.api.CustomerListRequest
-import org.openapitools.client.api.CustomerListUpdateRequest
+import org.openapitools.client.api.CustomerListCreate
+import org.openapitools.client.api.CustomerListUpdateWithRequiredBody
 import org.openapitools.client.api.CustomerListsList200Response
 import org.openapitools.client.api.Error
+import org.openapitools.client.api.PaginationOrder
 
 object CustomerListsApi {
 
@@ -33,7 +34,7 @@ object CustomerListsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def customerListsCreate(host: String, adAccountId: String, customerListRequest: CustomerListRequest): Task[CustomerList] = {
+  def customerListsCreate(host: String, adAccountId: String, customerListCreate: CustomerListCreate): Task[CustomerList] = {
     implicit val returnTypeDecoder: EntityDecoder[CustomerList] = jsonOf[CustomerList]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -48,7 +49,7 @@ object CustomerListsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(customerListRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(customerListCreate)
       resp          <- client.expect[CustomerList](req)
 
     } yield resp
@@ -75,7 +76,7 @@ object CustomerListsApi {
     } yield resp
   }
 
-  def customerListsList(host: String, adAccountId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[CustomerListsList200Response] = {
+  def customerListsList(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder, excludeNca: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder], excludeNcaQuery: QueryParam[Boolean]): Task[CustomerListsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[CustomerListsList200Response] = jsonOf[CustomerListsList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -85,7 +86,7 @@ object CustomerListsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("excludeNca", Some(exclude_ncaQuery.toParamString(exclude_nca))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -96,7 +97,7 @@ object CustomerListsApi {
     } yield resp
   }
 
-  def customerListsUpdate(host: String, adAccountId: String, customerListId: String, customerListUpdateRequest: CustomerListUpdateRequest): Task[CustomerList] = {
+  def customerListsUpdate(host: String, adAccountId: String, customerListId: String, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody): Task[CustomerList] = {
     implicit val returnTypeDecoder: EntityDecoder[CustomerList] = jsonOf[CustomerList]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "customer_list_id" + "\\}",escape(customerListId.toString))
@@ -111,7 +112,7 @@ object CustomerListsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(customerListUpdateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(customerListUpdateWithRequiredBody)
       resp          <- client.expect[CustomerList](req)
 
     } yield resp
@@ -124,7 +125,7 @@ class HttpServiceCustomerListsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def customerListsCreate(adAccountId: String, customerListRequest: CustomerListRequest): Task[CustomerList] = {
+  def customerListsCreate(adAccountId: String, customerListCreate: CustomerListCreate): Task[CustomerList] = {
     implicit val returnTypeDecoder: EntityDecoder[CustomerList] = jsonOf[CustomerList]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -139,7 +140,7 @@ class HttpServiceCustomerListsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(customerListRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(customerListCreate)
       resp          <- client.expect[CustomerList](req)
 
     } yield resp
@@ -166,7 +167,7 @@ class HttpServiceCustomerListsApi(service: HttpService) {
     } yield resp
   }
 
-  def customerListsList(adAccountId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[CustomerListsList200Response] = {
+  def customerListsList(adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder, excludeNca: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder], excludeNcaQuery: QueryParam[Boolean]): Task[CustomerListsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[CustomerListsList200Response] = jsonOf[CustomerListsList200Response]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -176,7 +177,7 @@ class HttpServiceCustomerListsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("excludeNca", Some(exclude_ncaQuery.toParamString(exclude_nca))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -187,7 +188,7 @@ class HttpServiceCustomerListsApi(service: HttpService) {
     } yield resp
   }
 
-  def customerListsUpdate(adAccountId: String, customerListId: String, customerListUpdateRequest: CustomerListUpdateRequest): Task[CustomerList] = {
+  def customerListsUpdate(adAccountId: String, customerListId: String, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody): Task[CustomerList] = {
     implicit val returnTypeDecoder: EntityDecoder[CustomerList] = jsonOf[CustomerList]
 
     val path = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "customer_list_id" + "\\}",escape(customerListId.toString))
@@ -202,7 +203,7 @@ class HttpServiceCustomerListsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(customerListUpdateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(customerListUpdateWithRequiredBody)
       resp          <- client.expect[CustomerList](req)
 
     } yield resp

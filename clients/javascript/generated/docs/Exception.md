@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **Number** | Exception error code. | [optional] 
-**message** | **String** | Exception message. | [optional] 
+**code** | **Number** |  | [optional] 
+**message** | **String** |  | 
 
 

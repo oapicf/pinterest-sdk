@@ -1,12 +1,17 @@
 package org.openapitools.model;
 
-import org.openapitools.model.BaseInviteDataResponseInviteData;
 import org.openapitools.model.BusinessAccessUserSummary;
+import org.openapitools.model.InviteDataResponse;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Common invite/request data returned by the business access endpoints.
+ */
+@ApiModel(description="Common invite/request data returned by the business access endpoints.")
 
 public class BaseInviteDataResponse  {
   
@@ -19,7 +24,7 @@ public class BaseInviteDataResponse  {
 
   @ApiModelProperty(value = "")
 
-  private BaseInviteDataResponseInviteData inviteData;
+  private InviteDataResponse inviteData;
 
  /**
   * Indicates whether the invite/request was received.
@@ -57,15 +62,15 @@ public class BaseInviteDataResponse  {
    * @return inviteData
   **/
   @JsonProperty("invite_data")
-  public BaseInviteDataResponseInviteData getInviteData() {
+  public InviteDataResponse getInviteData() {
     return inviteData;
   }
 
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
+  public void setInviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
   }
 
-  public BaseInviteDataResponse inviteData(BaseInviteDataResponseInviteData inviteData) {
+  public BaseInviteDataResponse inviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
     return this;
   }
@@ -144,10 +149,7 @@ public class BaseInviteDataResponse  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

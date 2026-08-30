@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.IntegrationLogClientError;
 import org.openapitools.model.IntegrationLogClientRequest;
+import org.openapitools.model.IntegrationLogEventType;
+import org.openapitools.model.IntegrationLogLevel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -29,75 +31,13 @@ public class IntegrationLog   {
 
   private IntegrationLogClientError error;
 
-
-public enum EventTypeEnum {
-
-    @JsonProperty("APP") APP(String.valueOf("APP")), @JsonProperty("API") API(String.valueOf("API"));
-
-
-    private String value;
-
-    EventTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static EventTypeEnum fromValue(String value) {
-        for (EventTypeEnum b : EventTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private EventTypeEnum eventType;
+  private IntegrationLogEventType eventType;
 
   private String externalBusinessId;
 
   private String feedProfileId;
 
-
-public enum LogLevelEnum {
-
-    @JsonProperty("INFO") INFO(String.valueOf("INFO")), @JsonProperty("WARN") WARN(String.valueOf("WARN")), @JsonProperty("ERROR") ERROR(String.valueOf("ERROR"));
-
-
-    private String value;
-
-    LogLevelEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static LogLevelEnum fromValue(String value) {
-        for (LogLevelEnum b : LogLevelEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private LogLevelEnum logLevel;
+  private IntegrationLogLevel logLevel;
 
   private String merchantId;
 
@@ -187,7 +127,7 @@ public enum LogLevelEnum {
   /**
    * Log event type
    **/
-  public IntegrationLog eventType(EventTypeEnum eventType) {
+  public IntegrationLog eventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -196,10 +136,10 @@ public enum LogLevelEnum {
   @ApiModelProperty(required = true, value = "Log event type")
   @JsonProperty("event_type")
   @NotNull
-  public EventTypeEnum getEventType() {
+  public IntegrationLogEventType getEventType() {
     return eventType;
   }
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
   }
 
@@ -243,7 +183,7 @@ public enum LogLevelEnum {
   /**
    * Log level type
    **/
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+  public IntegrationLog logLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
     return this;
   }
@@ -252,10 +192,10 @@ public enum LogLevelEnum {
   @ApiModelProperty(required = true, value = "Log level type")
   @JsonProperty("log_level")
   @NotNull
-  public LogLevelEnum getLogLevel() {
+  public IntegrationLogLevel getLogLevel() {
     return logLevel;
   }
-  public void setLogLevel(LogLevelEnum logLevel) {
+  public void setLogLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
   }
 
@@ -409,10 +349,7 @@ public enum LogLevelEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -41,10 +41,10 @@ pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e catalogs_repo
 
 static catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_create_internal(
     char *catalog_id,
-    int code,
+    int *code,
     char *code_label,
     char *message,
-    int occurrences,
+    int *occurrences,
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type,
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e severity
     ) {
@@ -52,6 +52,8 @@ static catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_st
     if (!catalogs_report_feed_ingestion_stats_local_var) {
         return NULL;
     }
+    memset(catalogs_report_feed_ingestion_stats_local_var, 0, sizeof(catalogs_report_feed_ingestion_stats_t));
+    catalogs_report_feed_ingestion_stats_local_var->_library_owned = 1;
     catalogs_report_feed_ingestion_stats_local_var->catalog_id = catalog_id;
     catalogs_report_feed_ingestion_stats_local_var->code = code;
     catalogs_report_feed_ingestion_stats_local_var->code_label = code_label;
@@ -59,29 +61,42 @@ static catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_st
     catalogs_report_feed_ingestion_stats_local_var->occurrences = occurrences;
     catalogs_report_feed_ingestion_stats_local_var->report_type = report_type;
     catalogs_report_feed_ingestion_stats_local_var->severity = severity;
-
-    catalogs_report_feed_ingestion_stats_local_var->_library_owned = 1;
     return catalogs_report_feed_ingestion_stats_local_var;
 }
 
 __attribute__((deprecated)) catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_create(
     char *catalog_id,
-    int code,
+    int *code,
     char *code_label,
     char *message,
-    int occurrences,
+    int *occurrences,
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type,
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e severity
     ) {
-    return catalogs_report_feed_ingestion_stats_create_internal (
+    int *code_copy = NULL;
+    if (code) {
+        code_copy = malloc(sizeof(int));
+        if (code_copy) *code_copy = *code;
+    }
+    int *occurrences_copy = NULL;
+    if (occurrences) {
+        occurrences_copy = malloc(sizeof(int));
+        if (occurrences_copy) *occurrences_copy = *occurrences;
+    }
+    catalogs_report_feed_ingestion_stats_t *result = catalogs_report_feed_ingestion_stats_create_internal (
         catalog_id,
-        code,
+        code_copy,
         code_label,
         message,
-        occurrences,
+        occurrences_copy,
         report_type,
         severity
         );
+    if (!result) {
+        free(code_copy);
+        free(occurrences_copy);
+    }
+    return result;
 }
 
 void catalogs_report_feed_ingestion_stats_free(catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats) {
@@ -97,6 +112,10 @@ void catalogs_report_feed_ingestion_stats_free(catalogs_report_feed_ingestion_st
         free(catalogs_report_feed_ingestion_stats->catalog_id);
         catalogs_report_feed_ingestion_stats->catalog_id = NULL;
     }
+    if (catalogs_report_feed_ingestion_stats->code) {
+        free(catalogs_report_feed_ingestion_stats->code);
+        catalogs_report_feed_ingestion_stats->code = NULL;
+    }
     if (catalogs_report_feed_ingestion_stats->code_label) {
         free(catalogs_report_feed_ingestion_stats->code_label);
         catalogs_report_feed_ingestion_stats->code_label = NULL;
@@ -104,6 +123,10 @@ void catalogs_report_feed_ingestion_stats_free(catalogs_report_feed_ingestion_st
     if (catalogs_report_feed_ingestion_stats->message) {
         free(catalogs_report_feed_ingestion_stats->message);
         catalogs_report_feed_ingestion_stats->message = NULL;
+    }
+    if (catalogs_report_feed_ingestion_stats->occurrences) {
+        free(catalogs_report_feed_ingestion_stats->occurrences);
+        catalogs_report_feed_ingestion_stats->occurrences = NULL;
     }
     free(catalogs_report_feed_ingestion_stats);
 }
@@ -121,7 +144,7 @@ cJSON *catalogs_report_feed_ingestion_stats_convertToJSON(catalogs_report_feed_i
 
     // catalogs_report_feed_ingestion_stats->code
     if(catalogs_report_feed_ingestion_stats->code) {
-    if(cJSON_AddNumberToObject(item, "code", catalogs_report_feed_ingestion_stats->code) == NULL) {
+    if(cJSON_AddNumberToObject(item, "code", *catalogs_report_feed_ingestion_stats->code) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -145,7 +168,7 @@ cJSON *catalogs_report_feed_ingestion_stats_convertToJSON(catalogs_report_feed_i
 
     // catalogs_report_feed_ingestion_stats->occurrences
     if(catalogs_report_feed_ingestion_stats->occurrences) {
-    if(cJSON_AddNumberToObject(item, "occurrences", catalogs_report_feed_ingestion_stats->occurrences) == NULL) {
+    if(cJSON_AddNumberToObject(item, "occurrences", *catalogs_report_feed_ingestion_stats->occurrences) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -180,6 +203,18 @@ catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_par
 
     catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
+    // define the local variable for catalogs_report_feed_ingestion_stats->code
+    int *code_local_var = NULL;
+
+    char *code_label_local_str = NULL;
+
+    char *message_local_str = NULL;
+
+    // define the local variable for catalogs_report_feed_ingestion_stats->occurrences
+    int *occurrences_local_var = NULL;
+
     // catalogs_report_feed_ingestion_stats->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_statsJSON, "catalog_id");
     if (cJSON_IsNull(catalog_id)) {
@@ -202,6 +237,12 @@ catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_par
     {
     goto end; //Numeric
     }
+    code_local_var = malloc(sizeof(int));
+    if(!code_local_var)
+    {
+        goto end;
+    }
+    *code_local_var = code->valuedouble;
     }
 
     // catalogs_report_feed_ingestion_stats->code_label
@@ -238,6 +279,12 @@ catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_par
     {
     goto end; //Numeric
     }
+    occurrences_local_var = malloc(sizeof(int));
+    if(!occurrences_local_var)
+    {
+        goto end;
+    }
+    *occurrences_local_var = occurrences->valuedouble;
     }
 
     // catalogs_report_feed_ingestion_stats->report_type
@@ -269,18 +316,46 @@ catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_par
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+    if (code_label && !cJSON_IsNull(code_label)) code_label_local_str = strdup(code_label->valuestring);
+    if (message && !cJSON_IsNull(message)) message_local_str = strdup(message->valuestring);
+
     catalogs_report_feed_ingestion_stats_local_var = catalogs_report_feed_ingestion_stats_create_internal (
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
-        code ? code->valuedouble : 0,
-        code_label && !cJSON_IsNull(code_label) ? strdup(code_label->valuestring) : NULL,
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
-        occurrences ? occurrences->valuedouble : 0,
+        catalog_id_local_str,
+        code_local_var,
+        code_label_local_str,
+        message_local_str,
+        occurrences_local_var,
         report_type ? report_typeVariable : pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_NULL,
         severity ? severityVariable : pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_NULL
         );
 
+    if (!catalogs_report_feed_ingestion_stats_local_var) {
+        goto end;
+    }
+
     return catalogs_report_feed_ingestion_stats_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
+    if (code_local_var) {
+        free(code_local_var);
+        code_local_var = NULL;
+    }
+    if (code_label_local_str) {
+        free(code_label_local_str);
+        code_label_local_str = NULL;
+    }
+    if (message_local_str) {
+        free(message_local_str);
+        message_local_str = NULL;
+    }
+    if (occurrences_local_var) {
+        free(occurrences_local_var);
+        occurrences_local_var = NULL;
+    }
     return NULL;
 
 }

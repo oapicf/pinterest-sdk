@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "List of members with role to delete.",
+  "name": "DeleteBusinessMembershipBody",
+  "fields": [
+    {
+      "name": "members",
+      "type": {
+        "type": "array",
+        "items": "model.DeleteBusinessMembershipMember"
+      },
+      "doc": ""
+    }
+  ]
+
+}

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -53,7 +53,33 @@ public enum ConversionTagType {
         
         WEB_SESSION("WEB_SESSION"),
         
-        EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT");
+        EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT"),
+        
+        ADD_PAYMENT_INFO("ADD_PAYMENT_INFO"),
+        
+        ADD_TO_WISHLIST("ADD_TO_WISHLIST"),
+        
+        INITIATE_CHECKOUT("INITIATE_CHECKOUT"),
+        
+        SUBSCRIBE("SUBSCRIBE"),
+        
+        VIEW_CONTENT("VIEW_CONTENT"),
+        
+        ADVERTISER_DEFINED_EVENT("ADVERTISER_DEFINED_EVENT"),
+        
+        APP_OPEN("APP_OPEN"),
+        
+        CONTACT("CONTACT"),
+        
+        SCHEDULE("SCHEDULE"),
+        
+        FIND_LOCATION("FIND_LOCATION"),
+        
+        CUSTOMIZE_PRODUCT("CUSTOMIZE_PRODUCT"),
+        
+        SUBMIT_APPLICATION("SUBMIT_APPLICATION"),
+        
+        START_TRIAL("START_TRIAL");
 
 private String value;
 

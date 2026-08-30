@@ -7,11 +7,11 @@
 Name | Type
 ------------ | -------------
 `advertiserId` | string
-`billingType` | string
-`cardType` | string
+`billingType` | [BillingType](BillingType.md)
+`cardType` | [BillingProfileCardType](BillingProfileCardType.md)
 `id` | string
-`paymentMethodBrand` | string
-`status` | string
+`paymentMethodBrand` | [BillingProfilePaymentMethodBrand](BillingProfilePaymentMethodBrand.md)
+`status` | [BillingProfileStatus](BillingProfileStatus.md)
 
 ## Example
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,22 +28,10 @@ type ApiCatalogsProductGroupPinsListRequest struct {
 	ctx context.Context
 	ApiService *CatalogProductGroupsAPIService
 	productGroupId string
-	bookmark *string
-	pageSize *int32
 	adAccountId *string
 	pinMetrics *bool
-}
-
-// Cursor used to fetch the next page of items
-func (r ApiCatalogsProductGroupPinsListRequest) Bookmark(bookmark string) ApiCatalogsProductGroupPinsListRequest {
-	r.bookmark = &bookmark
-	return r
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiCatalogsProductGroupPinsListRequest) PageSize(pageSize int32) ApiCatalogsProductGroupPinsListRequest {
-	r.pageSize = &pageSize
-	return r
+	bookmark *string
+	pageSize *int32
 }
 
 // Unique identifier of an ad account.
@@ -58,6 +46,18 @@ func (r ApiCatalogsProductGroupPinsListRequest) PinMetrics(pinMetrics bool) ApiC
 	return r
 }
 
+// Cursor used to fetch the next page of items
+func (r ApiCatalogsProductGroupPinsListRequest) Bookmark(bookmark string) ApiCatalogsProductGroupPinsListRequest {
+	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiCatalogsProductGroupPinsListRequest) PageSize(pageSize int32) ApiCatalogsProductGroupPinsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
 func (r ApiCatalogsProductGroupPinsListRequest) Execute() (*CatalogsProductGroupPinsList200Response, *http.Response, error) {
 	return r.ApiService.CatalogsProductGroupPinsListExecute(r)
 }
@@ -68,9 +68,9 @@ CatalogsProductGroupPinsList List products by product group
 Get a list of product pins for a given Catalogs Product Group Id owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param productGroupId Unique identifier of a product group
@@ -106,25 +106,25 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupPinsListExecute(r A
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
-	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	if r.pinMetrics != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
-        r.pinMetrics = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
+		r.pinMetrics = &defaultValue
+	}
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	} else {
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -166,7 +166,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupPinsListExecute(r A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -177,7 +177,18 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupPinsListExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -188,7 +199,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupPinsListExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -198,7 +209,18 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupPinsListExecute(r A
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -224,13 +246,12 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupPinsListExecute(r A
 type ApiCatalogsProductGroupsCreateRequest struct {
 	ctx context.Context
 	ApiService *CatalogProductGroupsAPIService
-	multipleProductGroupsInner *MultipleProductGroupsInner
+	catalogsProductGroupsCreateRequestSchema *CatalogsProductGroupsCreateRequestSchema
 	adAccountId *string
 }
 
-// Request object used to create a single catalogs product groups.
-func (r ApiCatalogsProductGroupsCreateRequest) MultipleProductGroupsInner(multipleProductGroupsInner MultipleProductGroupsInner) ApiCatalogsProductGroupsCreateRequest {
-	r.multipleProductGroupsInner = &multipleProductGroupsInner
+func (r ApiCatalogsProductGroupsCreateRequest) CatalogsProductGroupsCreateRequestSchema(catalogsProductGroupsCreateRequestSchema CatalogsProductGroupsCreateRequestSchema) ApiCatalogsProductGroupsCreateRequest {
+	r.catalogsProductGroupsCreateRequestSchema = &catalogsProductGroupsCreateRequestSchema
 	return r
 }
 
@@ -250,9 +271,9 @@ CatalogsProductGroupsCreate Create product group
 Create product group to use in Catalogs owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 "Catalog-based product groups" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the "retail feed-based" option.
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -287,8 +308,8 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.multipleProductGroupsInner == nil {
-		return localVarReturnValue, nil, reportError("multipleProductGroupsInner is required and must be specified")
+	if r.catalogsProductGroupsCreateRequestSchema == nil {
+		return localVarReturnValue, nil, reportError("catalogsProductGroupsCreateRequestSchema is required and must be specified")
 	}
 
 	if r.adAccountId != nil {
@@ -312,7 +333,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateExecute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.multipleProductGroupsInner
+	localVarPostBody = r.catalogsProductGroupsCreateRequestSchema
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -336,7 +357,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateExecute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -347,7 +368,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -358,7 +379,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -368,8 +389,8 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateExecute(r Ap
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -379,7 +400,18 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateExecute(r Ap
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -405,13 +437,12 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateExecute(r Ap
 type ApiCatalogsProductGroupsCreateManyRequest struct {
 	ctx context.Context
 	ApiService *CatalogProductGroupsAPIService
-	multipleProductGroupsInner *[]MultipleProductGroupsInner
+	catalogsProductGroupsCreateManyRequestItems *[]CatalogsProductGroupsCreateManyRequestItems
 	adAccountId *string
 }
 
-// Request object used to create one or more catalogs product groups.
-func (r ApiCatalogsProductGroupsCreateManyRequest) MultipleProductGroupsInner(multipleProductGroupsInner []MultipleProductGroupsInner) ApiCatalogsProductGroupsCreateManyRequest {
-	r.multipleProductGroupsInner = &multipleProductGroupsInner
+func (r ApiCatalogsProductGroupsCreateManyRequest) CatalogsProductGroupsCreateManyRequestItems(catalogsProductGroupsCreateManyRequestItems []CatalogsProductGroupsCreateManyRequestItems) ApiCatalogsProductGroupsCreateManyRequest {
+	r.catalogsProductGroupsCreateManyRequestItems = &catalogsProductGroupsCreateManyRequestItems
 	return r
 }
 
@@ -431,9 +462,9 @@ CatalogsProductGroupsCreateMany Create product groups
 Create product group to use in Catalogs owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -468,14 +499,14 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateManyExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.multipleProductGroupsInner == nil {
-		return localVarReturnValue, nil, reportError("multipleProductGroupsInner is required and must be specified")
+	if r.catalogsProductGroupsCreateManyRequestItems == nil {
+		return localVarReturnValue, nil, reportError("catalogsProductGroupsCreateManyRequestItems is required and must be specified")
 	}
-	if len(*r.multipleProductGroupsInner) < 1 {
-		return localVarReturnValue, nil, reportError("multipleProductGroupsInner must have at least 1 elements")
+	if len(*r.catalogsProductGroupsCreateManyRequestItems) < 1 {
+		return localVarReturnValue, nil, reportError("catalogsProductGroupsCreateManyRequestItems must have at least 1 elements")
 	}
-	if len(*r.multipleProductGroupsInner) > 1000 {
-		return localVarReturnValue, nil, reportError("multipleProductGroupsInner must have less than 1000 elements")
+	if len(*r.catalogsProductGroupsCreateManyRequestItems) > 1000 {
+		return localVarReturnValue, nil, reportError("catalogsProductGroupsCreateManyRequestItems must have less than 1000 elements")
 	}
 
 	if r.adAccountId != nil {
@@ -499,7 +530,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateManyExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.multipleProductGroupsInner
+	localVarPostBody = r.catalogsProductGroupsCreateManyRequestItems
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -523,7 +554,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateManyExecute(
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -534,7 +565,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateManyExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -545,7 +576,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateManyExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -555,8 +586,8 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateManyExecute(
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -566,7 +597,18 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsCreateManyExecute(
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -602,7 +644,7 @@ func (r ApiCatalogsProductGroupsDeleteRequest) AdAccountId(adAccountId string) A
 	return r
 }
 
-func (r ApiCatalogsProductGroupsDeleteRequest) Execute() (*http.Response, error) {
+func (r ApiCatalogsProductGroupsDeleteRequest) Execute() (*CatalogsVerticalProductGroup, *http.Response, error) {
 	return r.ApiService.CatalogsProductGroupsDeleteExecute(r)
 }
 
@@ -612,9 +654,9 @@ CatalogsProductGroupsDelete Delete product group
 Delete a product group owned by the "operation user_account" from being in use in Catalogs.
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param productGroupId Unique identifier of a product group
@@ -629,16 +671,18 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDelete(ctx context
 }
 
 // Execute executes the request
-func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDeleteExecute(r ApiCatalogsProductGroupsDeleteRequest) (*http.Response, error) {
+//  @return CatalogsVerticalProductGroup
+func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDeleteExecute(r ApiCatalogsProductGroupsDeleteRequest) (*CatalogsVerticalProductGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *CatalogsVerticalProductGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogProductGroupsAPIService.CatalogsProductGroupsDelete")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/catalogs/product_groups/{product_group_id}"
@@ -670,19 +714,19 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDeleteExecute(r Ap
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -691,72 +735,81 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDeleteExecute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiCatalogsProductGroupsDeleteManyRequest struct {
@@ -788,9 +841,9 @@ CatalogsProductGroupsDeleteMany Delete product groups
 Delete product groups owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCatalogsProductGroupsDeleteManyRequest
@@ -873,8 +926,19 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDeleteManyExecute(
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -885,7 +949,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDeleteManyExecute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -896,7 +960,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDeleteManyExecute(
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -906,8 +970,8 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDeleteManyExecute(
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -917,7 +981,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsDeleteManyExecute(
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -951,12 +1015,12 @@ func (r ApiCatalogsProductGroupsGetRequest) Execute() (*CatalogsVerticalProductG
 /*
 CatalogsProductGroupsGet Get product group
 
-Get a singe product group for a given Catalogs Product Group Id owned by the "operation user_account".
+Get a single product group for a given Catalogs Product Group Id owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param productGroupId Unique identifier of a product group
@@ -1035,7 +1099,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsGetExecute(r ApiCa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1046,7 +1110,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsGetExecute(r ApiCa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1057,7 +1121,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsGetExecute(r ApiCa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1068,7 +1132,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsGetExecute(r ApiCa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1078,8 +1142,8 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsGetExecute(r ApiCa
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1089,7 +1153,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsGetExecute(r ApiCa
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1118,9 +1182,9 @@ type ApiCatalogsProductGroupsListRequest struct {
 	id *[]int32
 	feedId *string
 	catalogId *string
+	adAccountId *string
 	bookmark *string
 	pageSize *int32
-	adAccountId *string
 }
 
 // Comma-separated list of product group ids
@@ -1141,21 +1205,21 @@ func (r ApiCatalogsProductGroupsListRequest) CatalogId(catalogId string) ApiCata
 	return r
 }
 
+// Unique identifier of an ad account.
+func (r ApiCatalogsProductGroupsListRequest) AdAccountId(adAccountId string) ApiCatalogsProductGroupsListRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
 // Cursor used to fetch the next page of items
 func (r ApiCatalogsProductGroupsListRequest) Bookmark(bookmark string) ApiCatalogsProductGroupsListRequest {
 	r.bookmark = &bookmark
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiCatalogsProductGroupsListRequest) PageSize(pageSize int32) ApiCatalogsProductGroupsListRequest {
 	r.pageSize = &pageSize
-	return r
-}
-
-// Unique identifier of an ad account.
-func (r ApiCatalogsProductGroupsListRequest) AdAccountId(adAccountId string) ApiCatalogsProductGroupsListRequest {
-	r.adAccountId = &adAccountId
 	return r
 }
 
@@ -1169,9 +1233,9 @@ CatalogsProductGroupsList List product groups
 Get a list of product groups for a given Catalogs Feed Id owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCatalogsProductGroupsListRequest
@@ -1213,18 +1277,18 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsListExecute(r ApiC
 	if r.catalogId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "catalog_id", r.catalogId, "form", "")
 	}
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
-	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1266,7 +1330,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsListExecute(r ApiC
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1277,7 +1341,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsListExecute(r ApiC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1288,7 +1352,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsListExecute(r ApiC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1299,7 +1363,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsListExecute(r ApiC
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1309,8 +1373,8 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsListExecute(r ApiC
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1320,7 +1384,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsListExecute(r ApiC
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1366,9 +1430,9 @@ CatalogsProductGroupsProductCountsGet Get product counts
 Get a product counts for a given Catalogs Product Group owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param productGroupId Unique identifier of a product group
@@ -1446,8 +1510,41 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsProductCountsGetEx
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1457,8 +1554,8 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsProductCountsGetEx
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1468,7 +1565,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsProductCountsGetEx
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1495,13 +1592,12 @@ type ApiCatalogsProductGroupsUpdateRequest struct {
 	ctx context.Context
 	ApiService *CatalogProductGroupsAPIService
 	productGroupId string
-	catalogsProductGroupsUpdateRequest *CatalogsProductGroupsUpdateRequest
+	catalogsProductGroupsUpdateRequestSchema *CatalogsProductGroupsUpdateRequestSchema
 	adAccountId *string
 }
 
-// Request object used to Update a catalogs product group.
-func (r ApiCatalogsProductGroupsUpdateRequest) CatalogsProductGroupsUpdateRequest(catalogsProductGroupsUpdateRequest CatalogsProductGroupsUpdateRequest) ApiCatalogsProductGroupsUpdateRequest {
-	r.catalogsProductGroupsUpdateRequest = &catalogsProductGroupsUpdateRequest
+func (r ApiCatalogsProductGroupsUpdateRequest) CatalogsProductGroupsUpdateRequestSchema(catalogsProductGroupsUpdateRequestSchema CatalogsProductGroupsUpdateRequestSchema) ApiCatalogsProductGroupsUpdateRequest {
+	r.catalogsProductGroupsUpdateRequestSchema = &catalogsProductGroupsUpdateRequestSchema
 	return r
 }
 
@@ -1521,9 +1617,9 @@ CatalogsProductGroupsUpdate Update single product group
 Update product group owned by the "operation user_account" to use in Catalogs.
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 "Catalog-based product groups" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the "retail feed-based" option.
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
 Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
 If you require access, please reach out to your partner manager.
@@ -1561,8 +1657,8 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsUpdateExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.catalogsProductGroupsUpdateRequest == nil {
-		return localVarReturnValue, nil, reportError("catalogsProductGroupsUpdateRequest is required and must be specified")
+	if r.catalogsProductGroupsUpdateRequestSchema == nil {
+		return localVarReturnValue, nil, reportError("catalogsProductGroupsUpdateRequestSchema is required and must be specified")
 	}
 
 	if r.adAccountId != nil {
@@ -1586,7 +1682,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsUpdateExecute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.catalogsProductGroupsUpdateRequest
+	localVarPostBody = r.catalogsProductGroupsUpdateRequestSchema
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1610,7 +1706,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsUpdateExecute(r Ap
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1621,7 +1717,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsUpdateExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1632,7 +1728,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsUpdateExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1643,7 +1739,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsUpdateExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1653,8 +1749,8 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsUpdateExecute(r Ap
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1664,7 +1760,7 @@ func (a *CatalogProductGroupsAPIService) CatalogsProductGroupsUpdateExecute(r Ap
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1697,7 +1793,6 @@ type ApiProductsByProductGroupFilterListRequest struct {
 	pinMetrics *bool
 }
 
-// Object holding a group of filters for a catalog product group
 func (r ApiProductsByProductGroupFilterListRequest) CatalogsListProductsByFilterRequest(catalogsListProductsByFilterRequest CatalogsListProductsByFilterRequest) ApiProductsByProductGroupFilterListRequest {
 	r.catalogsListProductsByFilterRequest = &catalogsListProductsByFilterRequest
 	return r
@@ -1709,7 +1804,7 @@ func (r ApiProductsByProductGroupFilterListRequest) Bookmark(bookmark string) Ap
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiProductsByProductGroupFilterListRequest) PageSize(pageSize int32) ApiProductsByProductGroupFilterListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1738,11 +1833,11 @@ List products Pins owned by the "operation user_account" that meet the criteria 
 - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent.
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 Note: This endpoint only supports RETAIL catalog at the moment.
 
-<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+[Learn more](/docs/api-features/shopping-overview/)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProductsByProductGroupFilterListRequest
@@ -1784,9 +1879,9 @@ func (a *CatalogProductGroupsAPIService) ProductsByProductGroupFilterListExecute
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -1794,9 +1889,9 @@ func (a *CatalogProductGroupsAPIService) ProductsByProductGroupFilterListExecute
 	if r.pinMetrics != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
-        r.pinMetrics = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
+		r.pinMetrics = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1839,8 +1934,19 @@ func (a *CatalogProductGroupsAPIService) ProductsByProductGroupFilterListExecute
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1850,8 +1956,8 @@ func (a *CatalogProductGroupsAPIService) ProductsByProductGroupFilterListExecute
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1861,7 +1967,29 @@ func (a *CatalogProductGroupsAPIService) ProductsByProductGroupFilterListExecute
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

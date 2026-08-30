@@ -2,7 +2,10 @@
 Protected Class UpdatePartnerAssetAccessBody
 
 	#tag Property, Flags = &h0
-		accesses() As OpenAPIClient.Models.UpdatePartnerAssetAccessBodyAccessesInner
+		#tag Note
+			List of partner asset accesses to assign or update.
+		#tag EndNote
+		accesses() As OpenAPIClient.Models.UpdatePartnerAssetAccessItem
 	#tag EndProperty
 
 
@@ -47,7 +50,7 @@ Protected Class UpdatePartnerAssetAccessBody
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="UpdatePartnerAssetAccessBodyAccessesInner"
+			Type="UpdatePartnerAssetAccessItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

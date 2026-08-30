@@ -12,6 +12,6 @@ import org.openapitools.model.SSIOInsertionOrderStatus;
 class SsioInsertionOrdersStatusGetByAdAccount200Response {
     
     String bookmark
-    /* Insertion orders status by ad acount id */
+    
     List<SSIOInsertionOrderStatus> items = new ArrayList<>()
 }

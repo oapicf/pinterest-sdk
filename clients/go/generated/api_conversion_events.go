@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,13 +28,12 @@ type ApiEventsCreateRequest struct {
 	ctx context.Context
 	ApiService *ConversionEventsAPIService
 	adAccountId string
-	conversionEvents *ConversionEvents
+	conversionEventsCreate *ConversionEventsCreate
 	test *bool
 }
 
-// Conversion events.
-func (r ApiEventsCreateRequest) ConversionEvents(conversionEvents ConversionEvents) ApiEventsCreateRequest {
-	r.conversionEvents = &conversionEvents
+func (r ApiEventsCreateRequest) ConversionEventsCreate(conversionEventsCreate ConversionEventsCreate) ApiEventsCreateRequest {
+	r.conversionEventsCreate = &conversionEventsCreate
 	return r
 }
 
@@ -44,16 +43,16 @@ func (r ApiEventsCreateRequest) Test(test bool) ApiEventsCreateRequest {
 	return r
 }
 
-func (r ApiEventsCreateRequest) Execute() (*ConversionApiResponse, *http.Response, error) {
+func (r ApiEventsCreateRequest) Execute() (*ConversionEvents, *http.Response, error) {
 	return r.ApiService.EventsCreateExecute(r)
 }
 
 /*
 EventsCreate Send conversions
 
-The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object.
-- This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href="/docs/api-features/conversion-overview/">Conversions Guide</a> for more details. (Note that the authorization header required is <code>Authorization: Bearer &lt;access_token&gt;</code>).
-- The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.)
+The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their `ad_account_id`. The request body should be a JSON object.
+- This endpoint requires an `access_token` be generated through Ads Manager. Review the [Conversions Guide](/docs/api-features/conversion-overview/) for more details. (Note that the authorization header required is `Authorization: Bearer <access_token>`).
+- The token's `user_account` must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.)
 - This endpoint has a rate limit of 5,000 calls per minute per ad account.
 - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
 
@@ -70,13 +69,13 @@ func (a *ConversionEventsAPIService) EventsCreate(ctx context.Context, adAccount
 }
 
 // Execute executes the request
-//  @return ConversionApiResponse
-func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateRequest) (*ConversionApiResponse, *http.Response, error) {
+//  @return ConversionEvents
+func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateRequest) (*ConversionEvents, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ConversionApiResponse
+		localVarReturnValue  *ConversionEvents
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConversionEventsAPIService.EventsCreate")
@@ -93,8 +92,8 @@ func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateReques
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.conversionEvents == nil {
-		return localVarReturnValue, nil, reportError("conversionEvents is required and must be specified")
+	if r.conversionEventsCreate == nil {
+		return localVarReturnValue, nil, reportError("conversionEventsCreate is required and must be specified")
 	}
 
 	if r.test != nil {
@@ -118,7 +117,7 @@ func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.conversionEvents
+	localVarPostBody = r.conversionEventsCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -142,7 +141,7 @@ func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateReques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -153,7 +152,7 @@ func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +163,18 @@ func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -186,7 +196,7 @@ func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -197,7 +207,7 @@ func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -207,7 +217,7 @@ func (a *ConversionEventsAPIService) EventsCreateExecute(r ApiEventsCreateReques
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

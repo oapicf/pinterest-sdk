@@ -557,7 +557,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_0_link(self) -> str:
         """Gets the ad_image_0_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_0_link of this UpdatableItemAttributes.
         :rtype: str
@@ -568,11 +568,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_0_link(self, ad_image_0_link: str):
         """Sets the ad_image_0_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_0_link: The ad_image_0_link of this UpdatableItemAttributes.
         :type ad_image_0_link: str
         """
+        if ad_image_0_link is not None and len(ad_image_0_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_0_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_0_link = ad_image_0_link
 
@@ -580,7 +582,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_0_tag(self) -> str:
         """Gets the ad_image_0_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_0_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -591,11 +593,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_0_tag(self, ad_image_0_tag: str):
         """Sets the ad_image_0_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_0_tag: The ad_image_0_tag of this UpdatableItemAttributes.
         :type ad_image_0_tag: str
         """
+        if ad_image_0_tag is not None and len(ad_image_0_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_0_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_0_tag = ad_image_0_tag
 
@@ -603,7 +607,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_10_link(self) -> str:
         """Gets the ad_image_10_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_10_link of this UpdatableItemAttributes.
         :rtype: str
@@ -614,11 +618,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_10_link(self, ad_image_10_link: str):
         """Sets the ad_image_10_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_10_link: The ad_image_10_link of this UpdatableItemAttributes.
         :type ad_image_10_link: str
         """
+        if ad_image_10_link is not None and len(ad_image_10_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_10_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_10_link = ad_image_10_link
 
@@ -626,7 +632,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_10_tag(self) -> str:
         """Gets the ad_image_10_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_10_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -637,11 +643,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_10_tag(self, ad_image_10_tag: str):
         """Sets the ad_image_10_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_10_tag: The ad_image_10_tag of this UpdatableItemAttributes.
         :type ad_image_10_tag: str
         """
+        if ad_image_10_tag is not None and len(ad_image_10_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_10_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_10_tag = ad_image_10_tag
 
@@ -649,7 +657,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_11_link(self) -> str:
         """Gets the ad_image_11_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_11_link of this UpdatableItemAttributes.
         :rtype: str
@@ -660,11 +668,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_11_link(self, ad_image_11_link: str):
         """Sets the ad_image_11_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_11_link: The ad_image_11_link of this UpdatableItemAttributes.
         :type ad_image_11_link: str
         """
+        if ad_image_11_link is not None and len(ad_image_11_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_11_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_11_link = ad_image_11_link
 
@@ -672,7 +682,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_11_tag(self) -> str:
         """Gets the ad_image_11_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_11_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -683,11 +693,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_11_tag(self, ad_image_11_tag: str):
         """Sets the ad_image_11_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_11_tag: The ad_image_11_tag of this UpdatableItemAttributes.
         :type ad_image_11_tag: str
         """
+        if ad_image_11_tag is not None and len(ad_image_11_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_11_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_11_tag = ad_image_11_tag
 
@@ -695,7 +707,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_12_link(self) -> str:
         """Gets the ad_image_12_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_12_link of this UpdatableItemAttributes.
         :rtype: str
@@ -706,11 +718,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_12_link(self, ad_image_12_link: str):
         """Sets the ad_image_12_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_12_link: The ad_image_12_link of this UpdatableItemAttributes.
         :type ad_image_12_link: str
         """
+        if ad_image_12_link is not None and len(ad_image_12_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_12_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_12_link = ad_image_12_link
 
@@ -718,7 +732,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_12_tag(self) -> str:
         """Gets the ad_image_12_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_12_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -729,11 +743,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_12_tag(self, ad_image_12_tag: str):
         """Sets the ad_image_12_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_12_tag: The ad_image_12_tag of this UpdatableItemAttributes.
         :type ad_image_12_tag: str
         """
+        if ad_image_12_tag is not None and len(ad_image_12_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_12_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_12_tag = ad_image_12_tag
 
@@ -741,7 +757,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_13_link(self) -> str:
         """Gets the ad_image_13_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_13_link of this UpdatableItemAttributes.
         :rtype: str
@@ -752,11 +768,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_13_link(self, ad_image_13_link: str):
         """Sets the ad_image_13_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_13_link: The ad_image_13_link of this UpdatableItemAttributes.
         :type ad_image_13_link: str
         """
+        if ad_image_13_link is not None and len(ad_image_13_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_13_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_13_link = ad_image_13_link
 
@@ -764,7 +782,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_13_tag(self) -> str:
         """Gets the ad_image_13_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_13_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -775,11 +793,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_13_tag(self, ad_image_13_tag: str):
         """Sets the ad_image_13_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_13_tag: The ad_image_13_tag of this UpdatableItemAttributes.
         :type ad_image_13_tag: str
         """
+        if ad_image_13_tag is not None and len(ad_image_13_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_13_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_13_tag = ad_image_13_tag
 
@@ -787,7 +807,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_14_link(self) -> str:
         """Gets the ad_image_14_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_14_link of this UpdatableItemAttributes.
         :rtype: str
@@ -798,11 +818,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_14_link(self, ad_image_14_link: str):
         """Sets the ad_image_14_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_14_link: The ad_image_14_link of this UpdatableItemAttributes.
         :type ad_image_14_link: str
         """
+        if ad_image_14_link is not None and len(ad_image_14_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_14_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_14_link = ad_image_14_link
 
@@ -810,7 +832,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_14_tag(self) -> str:
         """Gets the ad_image_14_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_14_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -821,11 +843,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_14_tag(self, ad_image_14_tag: str):
         """Sets the ad_image_14_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_14_tag: The ad_image_14_tag of this UpdatableItemAttributes.
         :type ad_image_14_tag: str
         """
+        if ad_image_14_tag is not None and len(ad_image_14_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_14_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_14_tag = ad_image_14_tag
 
@@ -833,7 +857,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_15_link(self) -> str:
         """Gets the ad_image_15_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_15_link of this UpdatableItemAttributes.
         :rtype: str
@@ -844,11 +868,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_15_link(self, ad_image_15_link: str):
         """Sets the ad_image_15_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_15_link: The ad_image_15_link of this UpdatableItemAttributes.
         :type ad_image_15_link: str
         """
+        if ad_image_15_link is not None and len(ad_image_15_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_15_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_15_link = ad_image_15_link
 
@@ -856,7 +882,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_15_tag(self) -> str:
         """Gets the ad_image_15_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_15_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -867,11 +893,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_15_tag(self, ad_image_15_tag: str):
         """Sets the ad_image_15_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_15_tag: The ad_image_15_tag of this UpdatableItemAttributes.
         :type ad_image_15_tag: str
         """
+        if ad_image_15_tag is not None and len(ad_image_15_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_15_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_15_tag = ad_image_15_tag
 
@@ -879,7 +907,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_16_link(self) -> str:
         """Gets the ad_image_16_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_16_link of this UpdatableItemAttributes.
         :rtype: str
@@ -890,11 +918,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_16_link(self, ad_image_16_link: str):
         """Sets the ad_image_16_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_16_link: The ad_image_16_link of this UpdatableItemAttributes.
         :type ad_image_16_link: str
         """
+        if ad_image_16_link is not None and len(ad_image_16_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_16_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_16_link = ad_image_16_link
 
@@ -902,7 +932,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_16_tag(self) -> str:
         """Gets the ad_image_16_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_16_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -913,11 +943,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_16_tag(self, ad_image_16_tag: str):
         """Sets the ad_image_16_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_16_tag: The ad_image_16_tag of this UpdatableItemAttributes.
         :type ad_image_16_tag: str
         """
+        if ad_image_16_tag is not None and len(ad_image_16_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_16_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_16_tag = ad_image_16_tag
 
@@ -925,7 +957,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_17_link(self) -> str:
         """Gets the ad_image_17_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_17_link of this UpdatableItemAttributes.
         :rtype: str
@@ -936,11 +968,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_17_link(self, ad_image_17_link: str):
         """Sets the ad_image_17_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_17_link: The ad_image_17_link of this UpdatableItemAttributes.
         :type ad_image_17_link: str
         """
+        if ad_image_17_link is not None and len(ad_image_17_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_17_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_17_link = ad_image_17_link
 
@@ -948,7 +982,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_17_tag(self) -> str:
         """Gets the ad_image_17_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_17_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -959,11 +993,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_17_tag(self, ad_image_17_tag: str):
         """Sets the ad_image_17_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_17_tag: The ad_image_17_tag of this UpdatableItemAttributes.
         :type ad_image_17_tag: str
         """
+        if ad_image_17_tag is not None and len(ad_image_17_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_17_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_17_tag = ad_image_17_tag
 
@@ -971,7 +1007,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_18_link(self) -> str:
         """Gets the ad_image_18_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_18_link of this UpdatableItemAttributes.
         :rtype: str
@@ -982,11 +1018,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_18_link(self, ad_image_18_link: str):
         """Sets the ad_image_18_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_18_link: The ad_image_18_link of this UpdatableItemAttributes.
         :type ad_image_18_link: str
         """
+        if ad_image_18_link is not None and len(ad_image_18_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_18_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_18_link = ad_image_18_link
 
@@ -994,7 +1032,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_18_tag(self) -> str:
         """Gets the ad_image_18_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_18_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1005,11 +1043,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_18_tag(self, ad_image_18_tag: str):
         """Sets the ad_image_18_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_18_tag: The ad_image_18_tag of this UpdatableItemAttributes.
         :type ad_image_18_tag: str
         """
+        if ad_image_18_tag is not None and len(ad_image_18_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_18_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_18_tag = ad_image_18_tag
 
@@ -1017,7 +1057,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_19_link(self) -> str:
         """Gets the ad_image_19_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_19_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1028,11 +1068,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_19_link(self, ad_image_19_link: str):
         """Sets the ad_image_19_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_19_link: The ad_image_19_link of this UpdatableItemAttributes.
         :type ad_image_19_link: str
         """
+        if ad_image_19_link is not None and len(ad_image_19_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_19_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_19_link = ad_image_19_link
 
@@ -1040,7 +1082,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_19_tag(self) -> str:
         """Gets the ad_image_19_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_19_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1051,11 +1093,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_19_tag(self, ad_image_19_tag: str):
         """Sets the ad_image_19_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_19_tag: The ad_image_19_tag of this UpdatableItemAttributes.
         :type ad_image_19_tag: str
         """
+        if ad_image_19_tag is not None and len(ad_image_19_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_19_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_19_tag = ad_image_19_tag
 
@@ -1063,7 +1107,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_1_link(self) -> str:
         """Gets the ad_image_1_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_1_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1074,11 +1118,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_1_link(self, ad_image_1_link: str):
         """Sets the ad_image_1_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_1_link: The ad_image_1_link of this UpdatableItemAttributes.
         :type ad_image_1_link: str
         """
+        if ad_image_1_link is not None and len(ad_image_1_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_1_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_1_link = ad_image_1_link
 
@@ -1086,7 +1132,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_1_tag(self) -> str:
         """Gets the ad_image_1_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_1_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1097,11 +1143,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_1_tag(self, ad_image_1_tag: str):
         """Sets the ad_image_1_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_1_tag: The ad_image_1_tag of this UpdatableItemAttributes.
         :type ad_image_1_tag: str
         """
+        if ad_image_1_tag is not None and len(ad_image_1_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_1_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_1_tag = ad_image_1_tag
 
@@ -1109,7 +1157,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_2_link(self) -> str:
         """Gets the ad_image_2_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_2_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1120,11 +1168,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_2_link(self, ad_image_2_link: str):
         """Sets the ad_image_2_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_2_link: The ad_image_2_link of this UpdatableItemAttributes.
         :type ad_image_2_link: str
         """
+        if ad_image_2_link is not None and len(ad_image_2_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_2_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_2_link = ad_image_2_link
 
@@ -1132,7 +1182,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_2_tag(self) -> str:
         """Gets the ad_image_2_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_2_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1143,11 +1193,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_2_tag(self, ad_image_2_tag: str):
         """Sets the ad_image_2_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_2_tag: The ad_image_2_tag of this UpdatableItemAttributes.
         :type ad_image_2_tag: str
         """
+        if ad_image_2_tag is not None and len(ad_image_2_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_2_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_2_tag = ad_image_2_tag
 
@@ -1155,7 +1207,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_3_link(self) -> str:
         """Gets the ad_image_3_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_3_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1166,11 +1218,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_3_link(self, ad_image_3_link: str):
         """Sets the ad_image_3_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_3_link: The ad_image_3_link of this UpdatableItemAttributes.
         :type ad_image_3_link: str
         """
+        if ad_image_3_link is not None and len(ad_image_3_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_3_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_3_link = ad_image_3_link
 
@@ -1178,7 +1232,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_3_tag(self) -> str:
         """Gets the ad_image_3_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_3_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1189,11 +1243,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_3_tag(self, ad_image_3_tag: str):
         """Sets the ad_image_3_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_3_tag: The ad_image_3_tag of this UpdatableItemAttributes.
         :type ad_image_3_tag: str
         """
+        if ad_image_3_tag is not None and len(ad_image_3_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_3_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_3_tag = ad_image_3_tag
 
@@ -1201,7 +1257,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_4_link(self) -> str:
         """Gets the ad_image_4_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_4_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1212,11 +1268,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_4_link(self, ad_image_4_link: str):
         """Sets the ad_image_4_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_4_link: The ad_image_4_link of this UpdatableItemAttributes.
         :type ad_image_4_link: str
         """
+        if ad_image_4_link is not None and len(ad_image_4_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_4_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_4_link = ad_image_4_link
 
@@ -1224,7 +1282,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_4_tag(self) -> str:
         """Gets the ad_image_4_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_4_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1235,11 +1293,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_4_tag(self, ad_image_4_tag: str):
         """Sets the ad_image_4_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_4_tag: The ad_image_4_tag of this UpdatableItemAttributes.
         :type ad_image_4_tag: str
         """
+        if ad_image_4_tag is not None and len(ad_image_4_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_4_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_4_tag = ad_image_4_tag
 
@@ -1247,7 +1307,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_5_link(self) -> str:
         """Gets the ad_image_5_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_5_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1258,11 +1318,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_5_link(self, ad_image_5_link: str):
         """Sets the ad_image_5_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_5_link: The ad_image_5_link of this UpdatableItemAttributes.
         :type ad_image_5_link: str
         """
+        if ad_image_5_link is not None and len(ad_image_5_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_5_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_5_link = ad_image_5_link
 
@@ -1270,7 +1332,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_5_tag(self) -> str:
         """Gets the ad_image_5_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_5_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1281,11 +1343,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_5_tag(self, ad_image_5_tag: str):
         """Sets the ad_image_5_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_5_tag: The ad_image_5_tag of this UpdatableItemAttributes.
         :type ad_image_5_tag: str
         """
+        if ad_image_5_tag is not None and len(ad_image_5_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_5_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_5_tag = ad_image_5_tag
 
@@ -1293,7 +1357,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_6_link(self) -> str:
         """Gets the ad_image_6_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_6_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1304,11 +1368,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_6_link(self, ad_image_6_link: str):
         """Sets the ad_image_6_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_6_link: The ad_image_6_link of this UpdatableItemAttributes.
         :type ad_image_6_link: str
         """
+        if ad_image_6_link is not None and len(ad_image_6_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_6_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_6_link = ad_image_6_link
 
@@ -1316,7 +1382,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_6_tag(self) -> str:
         """Gets the ad_image_6_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_6_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1327,11 +1393,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_6_tag(self, ad_image_6_tag: str):
         """Sets the ad_image_6_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_6_tag: The ad_image_6_tag of this UpdatableItemAttributes.
         :type ad_image_6_tag: str
         """
+        if ad_image_6_tag is not None and len(ad_image_6_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_6_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_6_tag = ad_image_6_tag
 
@@ -1339,7 +1407,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_7_link(self) -> str:
         """Gets the ad_image_7_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_7_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1350,11 +1418,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_7_link(self, ad_image_7_link: str):
         """Sets the ad_image_7_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_7_link: The ad_image_7_link of this UpdatableItemAttributes.
         :type ad_image_7_link: str
         """
+        if ad_image_7_link is not None and len(ad_image_7_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_7_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_7_link = ad_image_7_link
 
@@ -1362,7 +1432,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_7_tag(self) -> str:
         """Gets the ad_image_7_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_7_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1373,11 +1443,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_7_tag(self, ad_image_7_tag: str):
         """Sets the ad_image_7_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_7_tag: The ad_image_7_tag of this UpdatableItemAttributes.
         :type ad_image_7_tag: str
         """
+        if ad_image_7_tag is not None and len(ad_image_7_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_7_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_7_tag = ad_image_7_tag
 
@@ -1385,7 +1457,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_8_link(self) -> str:
         """Gets the ad_image_8_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_8_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1396,11 +1468,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_8_link(self, ad_image_8_link: str):
         """Sets the ad_image_8_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_8_link: The ad_image_8_link of this UpdatableItemAttributes.
         :type ad_image_8_link: str
         """
+        if ad_image_8_link is not None and len(ad_image_8_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_8_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_8_link = ad_image_8_link
 
@@ -1408,7 +1482,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_8_tag(self) -> str:
         """Gets the ad_image_8_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_8_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1419,11 +1493,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_8_tag(self, ad_image_8_tag: str):
         """Sets the ad_image_8_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_8_tag: The ad_image_8_tag of this UpdatableItemAttributes.
         :type ad_image_8_tag: str
         """
+        if ad_image_8_tag is not None and len(ad_image_8_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_8_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_8_tag = ad_image_8_tag
 
@@ -1431,7 +1507,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_9_link(self) -> str:
         """Gets the ad_image_9_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_image_9_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1442,11 +1518,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_9_link(self, ad_image_9_link: str):
         """Sets the ad_image_9_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_image_9_link: The ad_image_9_link of this UpdatableItemAttributes.
         :type ad_image_9_link: str
         """
+        if ad_image_9_link is not None and len(ad_image_9_link) > 2000:
+            raise ValueError("Invalid value for `ad_image_9_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_image_9_link = ad_image_9_link
 
@@ -1454,7 +1532,7 @@ class UpdatableItemAttributes(Model):
     def ad_image_9_tag(self) -> str:
         """Gets the ad_image_9_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :return: The ad_image_9_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1465,11 +1543,13 @@ class UpdatableItemAttributes(Model):
     def ad_image_9_tag(self, ad_image_9_tag: str):
         """Sets the ad_image_9_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>  # noqa: E501
+        Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.  # noqa: E501
 
         :param ad_image_9_tag: The ad_image_9_tag of this UpdatableItemAttributes.
         :type ad_image_9_tag: str
         """
+        if ad_image_9_tag is not None and len(ad_image_9_tag) > 511:
+            raise ValueError("Invalid value for `ad_image_9_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_image_9_tag = ad_image_9_tag
 
@@ -1477,7 +1557,7 @@ class UpdatableItemAttributes(Model):
     def ad_link(self) -> str:
         """Gets the ad_link of this UpdatableItemAttributes.
 
-        Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.  # noqa: E501
+        Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.  # noqa: E501
 
         :return: The ad_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1488,7 +1568,7 @@ class UpdatableItemAttributes(Model):
     def ad_link(self, ad_link: str):
         """Sets the ad_link of this UpdatableItemAttributes.
 
-        Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.  # noqa: E501
+        Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.  # noqa: E501
 
         :param ad_link: The ad_link of this UpdatableItemAttributes.
         :type ad_link: str
@@ -1500,7 +1580,7 @@ class UpdatableItemAttributes(Model):
     def ad_video_0_link(self) -> str:
         """Gets the ad_video_0_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_video_0_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1511,11 +1591,13 @@ class UpdatableItemAttributes(Model):
     def ad_video_0_link(self, ad_video_0_link: str):
         """Sets the ad_video_0_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_video_0_link: The ad_video_0_link of this UpdatableItemAttributes.
         :type ad_video_0_link: str
         """
+        if ad_video_0_link is not None and len(ad_video_0_link) > 2000:
+            raise ValueError("Invalid value for `ad_video_0_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_video_0_link = ad_video_0_link
 
@@ -1523,7 +1605,7 @@ class UpdatableItemAttributes(Model):
     def ad_video_0_tag(self) -> str:
         """Gets the ad_video_0_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>  # noqa: E501
+        Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.  # noqa: E501
 
         :return: The ad_video_0_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1534,11 +1616,13 @@ class UpdatableItemAttributes(Model):
     def ad_video_0_tag(self, ad_video_0_tag: str):
         """Sets the ad_video_0_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>  # noqa: E501
+        Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.  # noqa: E501
 
         :param ad_video_0_tag: The ad_video_0_tag of this UpdatableItemAttributes.
         :type ad_video_0_tag: str
         """
+        if ad_video_0_tag is not None and len(ad_video_0_tag) > 511:
+            raise ValueError("Invalid value for `ad_video_0_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_video_0_tag = ad_video_0_tag
 
@@ -1546,7 +1630,7 @@ class UpdatableItemAttributes(Model):
     def ad_video_1_link(self) -> str:
         """Gets the ad_video_1_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_video_1_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1557,11 +1641,13 @@ class UpdatableItemAttributes(Model):
     def ad_video_1_link(self, ad_video_1_link: str):
         """Sets the ad_video_1_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_video_1_link: The ad_video_1_link of this UpdatableItemAttributes.
         :type ad_video_1_link: str
         """
+        if ad_video_1_link is not None and len(ad_video_1_link) > 2000:
+            raise ValueError("Invalid value for `ad_video_1_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_video_1_link = ad_video_1_link
 
@@ -1569,7 +1655,7 @@ class UpdatableItemAttributes(Model):
     def ad_video_1_tag(self) -> str:
         """Gets the ad_video_1_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>  # noqa: E501
+        Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.  # noqa: E501
 
         :return: The ad_video_1_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1580,11 +1666,13 @@ class UpdatableItemAttributes(Model):
     def ad_video_1_tag(self, ad_video_1_tag: str):
         """Sets the ad_video_1_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>  # noqa: E501
+        Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.  # noqa: E501
 
         :param ad_video_1_tag: The ad_video_1_tag of this UpdatableItemAttributes.
         :type ad_video_1_tag: str
         """
+        if ad_video_1_tag is not None and len(ad_video_1_tag) > 511:
+            raise ValueError("Invalid value for `ad_video_1_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_video_1_tag = ad_video_1_tag
 
@@ -1592,7 +1680,7 @@ class UpdatableItemAttributes(Model):
     def ad_video_2_link(self) -> str:
         """Gets the ad_video_2_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :return: The ad_video_2_link of this UpdatableItemAttributes.
         :rtype: str
@@ -1603,11 +1691,13 @@ class UpdatableItemAttributes(Model):
     def ad_video_2_link(self, ad_video_2_link: str):
         """Sets the ad_video_2_link of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>  # noqa: E501
+        Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://  # noqa: E501
 
         :param ad_video_2_link: The ad_video_2_link of this UpdatableItemAttributes.
         :type ad_video_2_link: str
         """
+        if ad_video_2_link is not None and len(ad_video_2_link) > 2000:
+            raise ValueError("Invalid value for `ad_video_2_link`, length must be less than or equal to `2000`")  # noqa: E501
 
         self._ad_video_2_link = ad_video_2_link
 
@@ -1615,7 +1705,7 @@ class UpdatableItemAttributes(Model):
     def ad_video_2_tag(self) -> str:
         """Gets the ad_video_2_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>  # noqa: E501
+        Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.  # noqa: E501
 
         :return: The ad_video_2_tag of this UpdatableItemAttributes.
         :rtype: str
@@ -1626,11 +1716,13 @@ class UpdatableItemAttributes(Model):
     def ad_video_2_tag(self, ad_video_2_tag: str):
         """Sets the ad_video_2_tag of this UpdatableItemAttributes.
 
-        <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>  # noqa: E501
+        Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.  # noqa: E501
 
         :param ad_video_2_tag: The ad_video_2_tag of this UpdatableItemAttributes.
         :type ad_video_2_tag: str
         """
+        if ad_video_2_tag is not None and len(ad_video_2_tag) > 511:
+            raise ValueError("Invalid value for `ad_video_2_tag`, length must be less than or equal to `511`")  # noqa: E501
 
         self._ad_video_2_tag = ad_video_2_tag
 
@@ -1638,7 +1730,7 @@ class UpdatableItemAttributes(Model):
     def adult(self) -> bool:
         """Gets the adult of this UpdatableItemAttributes.
 
-        Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.  # noqa: E501
+        Set this attribute to TRUE if you're submitting items that are considered \"adult\". These will not be shown on Pinterest.  # noqa: E501
 
         :return: The adult of this UpdatableItemAttributes.
         :rtype: bool
@@ -1649,7 +1741,7 @@ class UpdatableItemAttributes(Model):
     def adult(self, adult: bool):
         """Sets the adult of this UpdatableItemAttributes.
 
-        Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.  # noqa: E501
+        Set this attribute to TRUE if you're submitting items that are considered \"adult\". These will not be shown on Pinterest.  # noqa: E501
 
         :param adult: The adult of this UpdatableItemAttributes.
         :type adult: bool
@@ -1661,7 +1753,7 @@ class UpdatableItemAttributes(Model):
     def age_group(self) -> str:
         """Gets the age_group of this UpdatableItemAttributes.
 
-        The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.  # noqa: E501
+        The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'.  # noqa: E501
 
         :return: The age_group of this UpdatableItemAttributes.
         :rtype: str
@@ -1672,7 +1764,7 @@ class UpdatableItemAttributes(Model):
     def age_group(self, age_group: str):
         """Sets the age_group of this UpdatableItemAttributes.
 
-        The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.  # noqa: E501
+        The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'.  # noqa: E501
 
         :param age_group: The age_group of this UpdatableItemAttributes.
         :type age_group: str
@@ -1707,7 +1799,7 @@ class UpdatableItemAttributes(Model):
     def availability(self) -> str:
         """Gets the availability of this UpdatableItemAttributes.
 
-        The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.  # noqa: E501
+        The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'.  # noqa: E501
 
         :return: The availability of this UpdatableItemAttributes.
         :rtype: str
@@ -1718,7 +1810,7 @@ class UpdatableItemAttributes(Model):
     def availability(self, availability: str):
         """Sets the availability of this UpdatableItemAttributes.
 
-        The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.  # noqa: E501
+        The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'.  # noqa: E501
 
         :param availability: The availability of this UpdatableItemAttributes.
         :type availability: str
@@ -1822,7 +1914,7 @@ class UpdatableItemAttributes(Model):
     def condition(self) -> str:
         """Gets the condition of this UpdatableItemAttributes.
 
-        The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.  # noqa: E501
+        The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'.  # noqa: E501
 
         :return: The condition of this UpdatableItemAttributes.
         :rtype: str
@@ -1833,7 +1925,7 @@ class UpdatableItemAttributes(Model):
     def condition(self, condition: str):
         """Sets the condition of this UpdatableItemAttributes.
 
-        The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.  # noqa: E501
+        The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'.  # noqa: E501
 
         :param condition: The condition of this UpdatableItemAttributes.
         :type condition: str
@@ -1845,7 +1937,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_0(self) -> str:
         """Gets the custom_label_0 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :return: The custom_label_0 of this UpdatableItemAttributes.
         :rtype: str
@@ -1856,7 +1948,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_0(self, custom_label_0: str):
         """Sets the custom_label_0 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :param custom_label_0: The custom_label_0 of this UpdatableItemAttributes.
         :type custom_label_0: str
@@ -1870,7 +1962,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_1(self) -> str:
         """Gets the custom_label_1 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :return: The custom_label_1 of this UpdatableItemAttributes.
         :rtype: str
@@ -1881,7 +1973,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_1(self, custom_label_1: str):
         """Sets the custom_label_1 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :param custom_label_1: The custom_label_1 of this UpdatableItemAttributes.
         :type custom_label_1: str
@@ -1895,7 +1987,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_2(self) -> str:
         """Gets the custom_label_2 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :return: The custom_label_2 of this UpdatableItemAttributes.
         :rtype: str
@@ -1906,7 +1998,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_2(self, custom_label_2: str):
         """Sets the custom_label_2 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :param custom_label_2: The custom_label_2 of this UpdatableItemAttributes.
         :type custom_label_2: str
@@ -1920,7 +2012,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_3(self) -> str:
         """Gets the custom_label_3 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :return: The custom_label_3 of this UpdatableItemAttributes.
         :rtype: str
@@ -1931,7 +2023,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_3(self, custom_label_3: str):
         """Sets the custom_label_3 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :param custom_label_3: The custom_label_3 of this UpdatableItemAttributes.
         :type custom_label_3: str
@@ -1945,7 +2037,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_4(self) -> str:
         """Gets the custom_label_4 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :return: The custom_label_4 of this UpdatableItemAttributes.
         :rtype: str
@@ -1956,7 +2048,7 @@ class UpdatableItemAttributes(Model):
     def custom_label_4(self, custom_label_4: str):
         """Sets the custom_label_4 of this UpdatableItemAttributes.
 
-        <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>  # noqa: E501
+        <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.  # noqa: E501
 
         :param custom_label_4: The custom_label_4 of this UpdatableItemAttributes.
         :type custom_label_4: str
@@ -1970,7 +2062,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_0(self) -> int:
         """Gets the custom_number_0 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :return: The custom_number_0 of this UpdatableItemAttributes.
         :rtype: int
@@ -1981,7 +2073,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_0(self, custom_number_0: int):
         """Sets the custom_number_0 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :param custom_number_0: The custom_number_0 of this UpdatableItemAttributes.
         :type custom_number_0: int
@@ -1993,7 +2085,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_1(self) -> int:
         """Gets the custom_number_1 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :return: The custom_number_1 of this UpdatableItemAttributes.
         :rtype: int
@@ -2004,7 +2096,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_1(self, custom_number_1: int):
         """Sets the custom_number_1 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :param custom_number_1: The custom_number_1 of this UpdatableItemAttributes.
         :type custom_number_1: int
@@ -2016,7 +2108,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_2(self) -> int:
         """Gets the custom_number_2 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :return: The custom_number_2 of this UpdatableItemAttributes.
         :rtype: int
@@ -2027,7 +2119,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_2(self, custom_number_2: int):
         """Sets the custom_number_2 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :param custom_number_2: The custom_number_2 of this UpdatableItemAttributes.
         :type custom_number_2: int
@@ -2039,7 +2131,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_3(self) -> int:
         """Gets the custom_number_3 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :return: The custom_number_3 of this UpdatableItemAttributes.
         :rtype: int
@@ -2050,7 +2142,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_3(self, custom_number_3: int):
         """Sets the custom_number_3 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :param custom_number_3: The custom_number_3 of this UpdatableItemAttributes.
         :type custom_number_3: int
@@ -2062,7 +2154,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_4(self) -> int:
         """Gets the custom_number_4 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :return: The custom_number_4 of this UpdatableItemAttributes.
         :rtype: int
@@ -2073,7 +2165,7 @@ class UpdatableItemAttributes(Model):
     def custom_number_4(self, custom_number_4: int):
         """Sets the custom_number_4 of this UpdatableItemAttributes.
 
-        an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
+        An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.  # noqa: E501
 
         :param custom_number_4: The custom_number_4 of this UpdatableItemAttributes.
         :type custom_number_4: int
@@ -2085,7 +2177,7 @@ class UpdatableItemAttributes(Model):
     def description(self) -> str:
         """Gets the description of this UpdatableItemAttributes.
 
-        <p><= 10000 characters</p> <p>The description of the product.</p>  # noqa: E501
+        <= 10000 characters. The description of the product.  # noqa: E501
 
         :return: The description of this UpdatableItemAttributes.
         :rtype: str
@@ -2096,7 +2188,7 @@ class UpdatableItemAttributes(Model):
     def description(self, description: str):
         """Sets the description of this UpdatableItemAttributes.
 
-        <p><= 10000 characters</p> <p>The description of the product.</p>  # noqa: E501
+        <= 10000 characters. The description of the product.  # noqa: E501
 
         :param description: The description of this UpdatableItemAttributes.
         :type description: str
@@ -2154,7 +2246,7 @@ class UpdatableItemAttributes(Model):
     def gender(self) -> str:
         """Gets the gender of this UpdatableItemAttributes.
 
-        The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.  # noqa: E501
+        The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'.  # noqa: E501
 
         :return: The gender of this UpdatableItemAttributes.
         :rtype: str
@@ -2165,7 +2257,7 @@ class UpdatableItemAttributes(Model):
     def gender(self, gender: str):
         """Sets the gender of this UpdatableItemAttributes.
 
-        The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.  # noqa: E501
+        The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'.  # noqa: E501
 
         :param gender: The gender of this UpdatableItemAttributes.
         :type gender: str
@@ -2221,7 +2313,7 @@ class UpdatableItemAttributes(Model):
     def id(self) -> str:
         """Gets the id of this UpdatableItemAttributes.
 
-        <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>  # noqa: E501
+        <= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.  # noqa: E501
 
         :return: The id of this UpdatableItemAttributes.
         :rtype: str
@@ -2232,7 +2324,7 @@ class UpdatableItemAttributes(Model):
     def id(self, id: str):
         """Sets the id of this UpdatableItemAttributes.
 
-        <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>  # noqa: E501
+        <= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.  # noqa: E501
 
         :param id: The id of this UpdatableItemAttributes.
         :type id: str
@@ -2244,7 +2336,7 @@ class UpdatableItemAttributes(Model):
     def installment_price(self) -> str:
         """Gets the installment_price of this UpdatableItemAttributes.
 
-        Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>  # noqa: E501
+        Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>  # noqa: E501
 
         :return: The installment_price of this UpdatableItemAttributes.
         :rtype: str
@@ -2255,7 +2347,7 @@ class UpdatableItemAttributes(Model):
     def installment_price(self, installment_price: str):
         """Sets the installment_price of this UpdatableItemAttributes.
 
-        Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>  # noqa: E501
+        Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>  # noqa: E501
 
         :param installment_price: The installment_price of this UpdatableItemAttributes.
         :type installment_price: str
@@ -2290,7 +2382,7 @@ class UpdatableItemAttributes(Model):
     def item_group_id(self) -> str:
         """Gets the item_group_id of this UpdatableItemAttributes.
 
-        <p><= 127 characters</p> <p>The parent ID of the product.</p>  # noqa: E501
+        <= 127 characters. The parent ID of the product.  # noqa: E501
 
         :return: The item_group_id of this UpdatableItemAttributes.
         :rtype: str
@@ -2301,7 +2393,7 @@ class UpdatableItemAttributes(Model):
     def item_group_id(self, item_group_id: str):
         """Sets the item_group_id of this UpdatableItemAttributes.
 
-        <p><= 127 characters</p> <p>The parent ID of the product.</p>  # noqa: E501
+        <= 127 characters. The parent ID of the product.  # noqa: E501
 
         :param item_group_id: The item_group_id of this UpdatableItemAttributes.
         :type item_group_id: str
@@ -2336,7 +2428,7 @@ class UpdatableItemAttributes(Model):
     def link(self) -> str:
         """Gets the link of this UpdatableItemAttributes.
 
-        <p><= 511 characters</p> <p>The landing page for the product.</p>  # noqa: E501
+        <= 511 characters. The landing page for the product.  # noqa: E501
 
         :return: The link of this UpdatableItemAttributes.
         :rtype: str
@@ -2347,7 +2439,7 @@ class UpdatableItemAttributes(Model):
     def link(self, link: str):
         """Sets the link of this UpdatableItemAttributes.
 
-        <p><= 511 characters</p> <p>The landing page for the product.</p>  # noqa: E501
+        <= 511 characters. The landing page for the product.  # noqa: E501
 
         :param link: The link of this UpdatableItemAttributes.
         :type link: str
@@ -2382,7 +2474,7 @@ class UpdatableItemAttributes(Model):
     def min_ad_price(self) -> str:
         """Gets the min_ad_price of this UpdatableItemAttributes.
 
-        The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.  # noqa: E501
+        The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.  # noqa: E501
 
         :return: The min_ad_price of this UpdatableItemAttributes.
         :rtype: str
@@ -2393,7 +2485,7 @@ class UpdatableItemAttributes(Model):
     def min_ad_price(self, min_ad_price: str):
         """Sets the min_ad_price of this UpdatableItemAttributes.
 
-        The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.  # noqa: E501
+        The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.  # noqa: E501
 
         :param min_ad_price: The min_ad_price of this UpdatableItemAttributes.
         :type min_ad_price: str
@@ -2520,7 +2612,7 @@ class UpdatableItemAttributes(Model):
     def price(self) -> str:
         """Gets the price of this UpdatableItemAttributes.
 
-        The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.  # noqa: E501
+        The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.  # noqa: E501
 
         :return: The price of this UpdatableItemAttributes.
         :rtype: str
@@ -2531,7 +2623,7 @@ class UpdatableItemAttributes(Model):
     def price(self, price: str):
         """Sets the price of this UpdatableItemAttributes.
 
-        The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.  # noqa: E501
+        The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.  # noqa: E501
 
         :param price: The price of this UpdatableItemAttributes.
         :type price: str
@@ -2543,7 +2635,7 @@ class UpdatableItemAttributes(Model):
     def product_type(self) -> str:
         """Gets the product_type of this UpdatableItemAttributes.
 
-        <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>  # noqa: E501
+        <= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \".  # noqa: E501
 
         :return: The product_type of this UpdatableItemAttributes.
         :rtype: str
@@ -2554,7 +2646,7 @@ class UpdatableItemAttributes(Model):
     def product_type(self, product_type: str):
         """Sets the product_type of this UpdatableItemAttributes.
 
-        <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>  # noqa: E501
+        <= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \".  # noqa: E501
 
         :param product_type: The product_type of this UpdatableItemAttributes.
         :type product_type: str
@@ -2589,7 +2681,7 @@ class UpdatableItemAttributes(Model):
     def sale_price(self) -> str:
         """Gets the sale_price of this UpdatableItemAttributes.
 
-        The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.  # noqa: E501
+        The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\".  # noqa: E501
 
         :return: The sale_price of this UpdatableItemAttributes.
         :rtype: str
@@ -2600,7 +2692,7 @@ class UpdatableItemAttributes(Model):
     def sale_price(self, sale_price: str):
         """Sets the sale_price of this UpdatableItemAttributes.
 
-        The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.  # noqa: E501
+        The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\".  # noqa: E501
 
         :param sale_price: The sale_price of this UpdatableItemAttributes.
         :type sale_price: str
@@ -2750,7 +2842,7 @@ class UpdatableItemAttributes(Model):
     def size_system(self) -> str:
         """Gets the size_system of this UpdatableItemAttributes.
 
-        Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.  # noqa: E501
+        Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'.  # noqa: E501
 
         :return: The size_system of this UpdatableItemAttributes.
         :rtype: str
@@ -2761,7 +2853,7 @@ class UpdatableItemAttributes(Model):
     def size_system(self, size_system: str):
         """Sets the size_system of this UpdatableItemAttributes.
 
-        Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.  # noqa: E501
+        Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'.  # noqa: E501
 
         :param size_system: The size_system of this UpdatableItemAttributes.
         :type size_system: str
@@ -2773,7 +2865,7 @@ class UpdatableItemAttributes(Model):
     def size_type(self) -> str:
         """Gets the size_type of this UpdatableItemAttributes.
 
-        Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.  # noqa: E501
+        Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'.  # noqa: E501
 
         :return: The size_type of this UpdatableItemAttributes.
         :rtype: str
@@ -2784,7 +2876,7 @@ class UpdatableItemAttributes(Model):
     def size_type(self, size_type: str):
         """Sets the size_type of this UpdatableItemAttributes.
 
-        Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.  # noqa: E501
+        Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'.  # noqa: E501
 
         :param size_type: The size_type of this UpdatableItemAttributes.
         :type size_type: str
@@ -2819,7 +2911,7 @@ class UpdatableItemAttributes(Model):
     def title(self) -> str:
         """Gets the title of this UpdatableItemAttributes.
 
-        <p><= 500 characters</p> <p>The name of the product.</p>  # noqa: E501
+        <= 500 characters. The name of the product.  # noqa: E501
 
         :return: The title of this UpdatableItemAttributes.
         :rtype: str
@@ -2830,7 +2922,7 @@ class UpdatableItemAttributes(Model):
     def title(self, title: str):
         """Sets the title of this UpdatableItemAttributes.
 
-        <p><= 500 characters</p> <p>The name of the product.</p>  # noqa: E501
+        <= 500 characters. The name of the product.  # noqa: E501
 
         :param title: The title of this UpdatableItemAttributes.
         :type title: str
@@ -2842,7 +2934,7 @@ class UpdatableItemAttributes(Model):
     def unit_pricing_base_measure(self) -> str:
         """Gets the unit_pricing_base_measure of this UpdatableItemAttributes.
 
-        Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>  # noqa: E501
+        Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>  # noqa: E501
 
         :return: The unit_pricing_base_measure of this UpdatableItemAttributes.
         :rtype: str
@@ -2853,7 +2945,7 @@ class UpdatableItemAttributes(Model):
     def unit_pricing_base_measure(self, unit_pricing_base_measure: str):
         """Sets the unit_pricing_base_measure of this UpdatableItemAttributes.
 
-        Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>  # noqa: E501
+        Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>  # noqa: E501
 
         :param unit_pricing_base_measure: The unit_pricing_base_measure of this UpdatableItemAttributes.
         :type unit_pricing_base_measure: str
@@ -2865,7 +2957,7 @@ class UpdatableItemAttributes(Model):
     def unit_pricing_measure(self) -> str:
         """Gets the unit_pricing_measure of this UpdatableItemAttributes.
 
-        Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>  # noqa: E501
+        Unit pricing total measure of the product. Expected format: <total_units> <unit_type>  # noqa: E501
 
         :return: The unit_pricing_measure of this UpdatableItemAttributes.
         :rtype: str
@@ -2876,7 +2968,7 @@ class UpdatableItemAttributes(Model):
     def unit_pricing_measure(self, unit_pricing_measure: str):
         """Sets the unit_pricing_measure of this UpdatableItemAttributes.
 
-        Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>  # noqa: E501
+        Unit pricing total measure of the product. Expected format: <total_units> <unit_type>  # noqa: E501
 
         :param unit_pricing_measure: The unit_pricing_measure of this UpdatableItemAttributes.
         :type unit_pricing_measure: str

@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CustomLabel2Filter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("CUSTOM_LABEL_2")
     @get:JsonProperty("CUSTOM_LABEL_2", required = true) val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria
 ) {
 

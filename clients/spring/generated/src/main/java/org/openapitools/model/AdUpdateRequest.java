@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -14,75 +15,95 @@ import org.openapitools.model.CustomizableCTAType;
 import org.openapitools.model.DisclosureType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
-import org.openapitools.model.QuizPinData;
-import org.openapitools.model.TrackingUrls;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AdUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdUpdateRequest {
-
-  private @Nullable String adGroupId;
-
-  private JsonNullable<String> androidDeepLink = JsonNullable.<String>undefined();
-
-  @Valid
-  private JsonNullable<List<String>> carouselAndroidDeepLinks = JsonNullable.<List<String>>undefined();
-
-  @Valid
-  private JsonNullable<List<String>> carouselDestinationUrls = JsonNullable.<List<String>>undefined();
-
-  @Valid
-  private JsonNullable<List<String>> carouselIosDeepLinks = JsonNullable.<List<String>>undefined();
-
-  private JsonNullable<String> clickTrackingUrl = JsonNullable.<String>undefined();
-
-  private @Nullable CreativeType creativeType;
-
-  private JsonNullable<CustomizableCTAType> customizableCtaType = JsonNullable.<CustomizableCTAType>undefined();
-
-  private JsonNullable<String> destinationUrl = JsonNullable.<String>undefined();
-
-  private JsonNullable<DisclosureType> disclosureType = JsonNullable.<DisclosureType>undefined();
-
-  private JsonNullable<String> disclosureUrl = JsonNullable.<String>undefined();
-
-  private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
-
-  private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
-
-  private @Nullable Boolean isPinDeleted;
-
-  private @Nullable Boolean isRemovable;
-
-  private JsonNullable<@Pattern(regexp = "^(AG)?\\d+$") String> leadFormId = JsonNullable.<String>undefined();
-
-  private JsonNullable<String> name = JsonNullable.<String>undefined();
-
-  private JsonNullable<QuizPinData> quizPinData = JsonNullable.<QuizPinData>undefined();
-
-  private @Nullable EntityStatus status;
-
-  private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
-
-  private JsonNullable<String> viewTrackingUrl = JsonNullable.<String>undefined();
 
   private String id;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> pinId = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable String adGroupId;
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<String> androidDeepLink = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<List<String>> carouselAndroidDeepLinks = JsonNullable.<List<String>>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<List<String>> carouselDestinationUrls = JsonNullable.<List<String>>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<List<String>> carouselIosDeepLinks = JsonNullable.<List<String>>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<String> clickTrackingUrl = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable CreativeType creativeType;
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<CustomizableCTAType> customizableCtaType = JsonNullable.<CustomizableCTAType>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<String> destinationUrl = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<DisclosureType> disclosureType = JsonNullable.<DisclosureType>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<String> disclosureUrl = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable Boolean isCarting;
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable Boolean isPinDeleted;
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable Boolean isRemovable;
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<@Pattern(regexp = "^(AG)?\\d+$") String> leadFormId = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<String> name = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<Object> quizPinData = JsonNullable.<Object>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable EntityStatus status;
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<Object> trackingUrls = JsonNullable.<Object>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<String> viewTrackingUrl = JsonNullable.<String>undefined();
 
   public AdUpdateRequest() {
     super();
@@ -95,6 +116,47 @@ public class AdUpdateRequest {
     this.id = id;
   }
 
+  public AdUpdateRequest id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * The ID of this ad.
+   * @return id
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", description = "The ID of this ad.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  @JsonProperty("id")
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AdUpdateRequest pinId(String pinId) {
+    this.pinId = JsonNullable.of(pinId);
+    return this;
+  }
+
+  /**
+   * Pin ID. This field may only be updated for draft ads.
+   * @return pinId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "pin_id", description = "Pin ID. This field may only be updated for draft ads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("pin_id")
+  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getPinId() {
+    return pinId;
+  }
+
+  public void setPinId(JsonNullable<String> pinId) {
+    this.pinId = pinId;
+  }
+
   public AdUpdateRequest adGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
     return this;
@@ -105,12 +167,13 @@ public class AdUpdateRequest {
    * @return adGroupId
    */
   @Pattern(regexp = "^(AG)?\\d+$") 
-  @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group that contains the ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_group_id", description = "ID of the ad group that contains the ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_id")
   public @Nullable String getAdGroupId() {
     return adGroupId;
   }
 
+  @JsonProperty("ad_group_id")
   public void setAdGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
   }
@@ -255,6 +318,7 @@ public class AdUpdateRequest {
     return creativeType;
   }
 
+  @JsonProperty("creative_type")
   public void setCreativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
   }
@@ -379,6 +443,27 @@ public class AdUpdateRequest {
     this.iosDeepLink = iosDeepLink;
   }
 
+  public AdUpdateRequest isCarting(@Nullable Boolean isCarting) {
+    this.isCarting = isCarting;
+    return this;
+  }
+
+  /**
+   * Is the ad a carting/WTB ad?
+   * @return isCarting
+   */
+  
+  @Schema(name = "is_carting", description = "Is the ad a carting/WTB ad?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("is_carting")
+  public @Nullable Boolean getIsCarting() {
+    return isCarting;
+  }
+
+  @JsonProperty("is_carting")
+  public void setIsCarting(@Nullable Boolean isCarting) {
+    this.isCarting = isCarting;
+  }
+
   public AdUpdateRequest isPinDeleted(@Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
     return this;
@@ -395,6 +480,7 @@ public class AdUpdateRequest {
     return isPinDeleted;
   }
 
+  @JsonProperty("is_pin_deleted")
   public void setIsPinDeleted(@Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
   }
@@ -415,6 +501,7 @@ public class AdUpdateRequest {
     return isRemovable;
   }
 
+  @JsonProperty("is_removable")
   public void setIsRemovable(@Nullable Boolean isRemovable) {
     this.isRemovable = isRemovable;
   }
@@ -459,7 +546,7 @@ public class AdUpdateRequest {
     this.name = name;
   }
 
-  public AdUpdateRequest quizPinData(QuizPinData quizPinData) {
+  public AdUpdateRequest quizPinData(Object quizPinData) {
     this.quizPinData = JsonNullable.of(quizPinData);
     return this;
   }
@@ -468,14 +555,14 @@ public class AdUpdateRequest {
    * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    * @return quizPinData
    */
-  @Valid 
+  
   @Schema(name = "quiz_pin_data", description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("quiz_pin_data")
-  public JsonNullable<QuizPinData> getQuizPinData() {
+  public JsonNullable<Object> getQuizPinData() {
     return quizPinData;
   }
 
-  public void setQuizPinData(JsonNullable<QuizPinData> quizPinData) {
+  public void setQuizPinData(JsonNullable<Object> quizPinData) {
     this.quizPinData = quizPinData;
   }
 
@@ -495,11 +582,12 @@ public class AdUpdateRequest {
     return status;
   }
 
+  @JsonProperty("status")
   public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 
-  public AdUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public AdUpdateRequest trackingUrls(Object trackingUrls) {
     this.trackingUrls = JsonNullable.of(trackingUrls);
     return this;
   }
@@ -508,14 +596,14 @@ public class AdUpdateRequest {
    * Get trackingUrls
    * @return trackingUrls
    */
-  @Valid 
+  
   @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tracking_urls")
-  public JsonNullable<TrackingUrls> getTrackingUrls() {
+  public JsonNullable<Object> getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(JsonNullable<TrackingUrls> trackingUrls) {
+  public void setTrackingUrls(JsonNullable<Object> trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -539,46 +627,6 @@ public class AdUpdateRequest {
     this.viewTrackingUrl = viewTrackingUrl;
   }
 
-  public AdUpdateRequest id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * The ID of this ad.
-   * @return id
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "687195134316", description = "The ID of this ad.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public AdUpdateRequest pinId(String pinId) {
-    this.pinId = JsonNullable.of(pinId);
-    return this;
-  }
-
-  /**
-   * Pin ID. This field may only be updated for draft ads.
-   * @return pinId
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "pin_id", example = "394205773611545468", description = "Pin ID. This field may only be updated for draft ads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("pin_id")
-  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getPinId() {
-    return pinId;
-  }
-
-  public void setPinId(JsonNullable<String> pinId) {
-    this.pinId = pinId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -588,7 +636,9 @@ public class AdUpdateRequest {
       return false;
     }
     AdUpdateRequest adUpdateRequest = (AdUpdateRequest) o;
-    return Objects.equals(this.adGroupId, adUpdateRequest.adGroupId) &&
+    return Objects.equals(this.id, adUpdateRequest.id) &&
+        equalsNullable(this.pinId, adUpdateRequest.pinId) &&
+        Objects.equals(this.adGroupId, adUpdateRequest.adGroupId) &&
         equalsNullable(this.androidDeepLink, adUpdateRequest.androidDeepLink) &&
         equalsNullable(this.carouselAndroidDeepLinks, adUpdateRequest.carouselAndroidDeepLinks) &&
         equalsNullable(this.carouselDestinationUrls, adUpdateRequest.carouselDestinationUrls) &&
@@ -601,6 +651,7 @@ public class AdUpdateRequest {
         equalsNullable(this.disclosureUrl, adUpdateRequest.disclosureUrl) &&
         equalsNullable(this.gridClickType, adUpdateRequest.gridClickType) &&
         equalsNullable(this.iosDeepLink, adUpdateRequest.iosDeepLink) &&
+        Objects.equals(this.isCarting, adUpdateRequest.isCarting) &&
         Objects.equals(this.isPinDeleted, adUpdateRequest.isPinDeleted) &&
         Objects.equals(this.isRemovable, adUpdateRequest.isRemovable) &&
         equalsNullable(this.leadFormId, adUpdateRequest.leadFormId) &&
@@ -608,9 +659,7 @@ public class AdUpdateRequest {
         equalsNullable(this.quizPinData, adUpdateRequest.quizPinData) &&
         Objects.equals(this.status, adUpdateRequest.status) &&
         equalsNullable(this.trackingUrls, adUpdateRequest.trackingUrls) &&
-        equalsNullable(this.viewTrackingUrl, adUpdateRequest.viewTrackingUrl) &&
-        Objects.equals(this.id, adUpdateRequest.id) &&
-        equalsNullable(this.pinId, adUpdateRequest.pinId);
+        equalsNullable(this.viewTrackingUrl, adUpdateRequest.viewTrackingUrl);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -619,7 +668,7 @@ public class AdUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, hashCodeNullable(androidDeepLink), hashCodeNullable(carouselAndroidDeepLinks), hashCodeNullable(carouselDestinationUrls), hashCodeNullable(carouselIosDeepLinks), hashCodeNullable(clickTrackingUrl), creativeType, hashCodeNullable(customizableCtaType), hashCodeNullable(destinationUrl), hashCodeNullable(disclosureType), hashCodeNullable(disclosureUrl), hashCodeNullable(gridClickType), hashCodeNullable(iosDeepLink), isPinDeleted, isRemovable, hashCodeNullable(leadFormId), hashCodeNullable(name), hashCodeNullable(quizPinData), status, hashCodeNullable(trackingUrls), hashCodeNullable(viewTrackingUrl), id, hashCodeNullable(pinId));
+    return Objects.hash(id, hashCodeNullable(pinId), adGroupId, hashCodeNullable(androidDeepLink), hashCodeNullable(carouselAndroidDeepLinks), hashCodeNullable(carouselDestinationUrls), hashCodeNullable(carouselIosDeepLinks), hashCodeNullable(clickTrackingUrl), creativeType, hashCodeNullable(customizableCtaType), hashCodeNullable(destinationUrl), hashCodeNullable(disclosureType), hashCodeNullable(disclosureUrl), hashCodeNullable(gridClickType), hashCodeNullable(iosDeepLink), isCarting, isPinDeleted, isRemovable, hashCodeNullable(leadFormId), hashCodeNullable(name), hashCodeNullable(quizPinData), status, hashCodeNullable(trackingUrls), hashCodeNullable(viewTrackingUrl));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -633,6 +682,8 @@ public class AdUpdateRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdUpdateRequest {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("    adGroupId: ").append(toIndentedString(adGroupId)).append("\n");
     sb.append("    androidDeepLink: ").append(toIndentedString(androidDeepLink)).append("\n");
     sb.append("    carouselAndroidDeepLinks: ").append(toIndentedString(carouselAndroidDeepLinks)).append("\n");
@@ -646,6 +697,7 @@ public class AdUpdateRequest {
     sb.append("    disclosureUrl: ").append(toIndentedString(disclosureUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    isCarting: ").append(toIndentedString(isCarting)).append("\n");
     sb.append("    isPinDeleted: ").append(toIndentedString(isPinDeleted)).append("\n");
     sb.append("    isRemovable: ").append(toIndentedString(isRemovable)).append("\n");
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
@@ -654,8 +706,6 @@ public class AdUpdateRequest {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    viewTrackingUrl: ").append(toIndentedString(viewTrackingUrl)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -664,11 +714,8 @@ public class AdUpdateRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

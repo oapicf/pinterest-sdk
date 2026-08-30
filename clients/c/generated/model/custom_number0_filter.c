@@ -12,18 +12,21 @@ static custom_number0_filter_t *custom_number0_filter_create_internal(
     if (!custom_number0_filter_local_var) {
         return NULL;
     }
-    custom_number0_filter_local_var->custom_number_0 = custom_number_0;
-
+    memset(custom_number0_filter_local_var, 0, sizeof(custom_number0_filter_t));
     custom_number0_filter_local_var->_library_owned = 1;
+    custom_number0_filter_local_var->custom_number_0 = custom_number_0;
     return custom_number0_filter_local_var;
 }
 
 __attribute__((deprecated)) custom_number0_filter_t *custom_number0_filter_create(
     catalogs_product_group_uint32_criteria_t *custom_number_0
     ) {
-    return custom_number0_filter_create_internal (
+    custom_number0_filter_t *result = custom_number0_filter_create_internal (
         custom_number_0
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void custom_number0_filter_free(custom_number0_filter_t *custom_number0_filter) {
@@ -36,7 +39,7 @@ void custom_number0_filter_free(custom_number0_filter_t *custom_number0_filter) 
     }
     listEntry_t *listEntry;
     if (custom_number0_filter->custom_number_0) {
-        object_free(custom_number0_filter->custom_number_0);
+        catalogs_product_group_uint32_criteria_free(custom_number0_filter->custom_number_0);
         custom_number0_filter->custom_number_0 = NULL;
     }
     free(custom_number0_filter);
@@ -49,11 +52,11 @@ cJSON *custom_number0_filter_convertToJSON(custom_number0_filter_t *custom_numbe
     if (!custom_number0_filter->custom_number_0) {
         goto fail;
     }
-    cJSON *custom_number_0_object = object_convertToJSON(custom_number0_filter->custom_number_0);
-    if(custom_number_0_object == NULL) {
+    cJSON *custom_number_0_local_JSON = catalogs_product_group_uint32_criteria_convertToJSON(custom_number0_filter->custom_number_0);
+    if(custom_number_0_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "CUSTOM_NUMBER_0", custom_number_0_object);
+    cJSON_AddItemToObject(item, "CUSTOM_NUMBER_0", custom_number_0_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ custom_number0_filter_t *custom_number0_filter_parseFromJSON(cJSON *custom_numbe
 
     custom_number0_filter_t *custom_number0_filter_local_var = NULL;
 
+    // define the local variable for custom_number0_filter->custom_number_0
+    catalogs_product_group_uint32_criteria_t *custom_number_0_local_nonprim = NULL;
+
     // custom_number0_filter->custom_number_0
     cJSON *custom_number_0 = cJSON_GetObjectItemCaseSensitive(custom_number0_filterJSON, "CUSTOM_NUMBER_0");
     if (cJSON_IsNull(custom_number_0)) {
@@ -79,17 +85,25 @@ custom_number0_filter_t *custom_number0_filter_parseFromJSON(cJSON *custom_numbe
         goto end;
     }
 
-    object_t *custom_number_0_local_object = NULL;
     
-    custom_number_0_local_object = object_parseFromJSON(custom_number_0); //object
+    custom_number_0_local_nonprim = catalogs_product_group_uint32_criteria_parseFromJSON(custom_number_0); //nonprimitive
+
 
 
     custom_number0_filter_local_var = custom_number0_filter_create_internal (
-        custom_number_0_local_object
+        custom_number_0_local_nonprim
         );
+
+    if (!custom_number0_filter_local_var) {
+        goto end;
+    }
 
     return custom_number0_filter_local_var;
 end:
+    if (custom_number_0_local_nonprim) {
+        catalogs_product_group_uint32_criteria_free(custom_number_0_local_nonprim);
+        custom_number_0_local_nonprim = NULL;
+    }
     return NULL;
 
 }

@@ -16,8 +16,8 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Intended result of the campaign.  You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter. 
-* Values: AWARENESS,CONSIDERATION,WEB_CONVERSION,CATALOG_SALES,VIDEO_COMPLETION
+* Advertiser campaign objective type. You can only update objectives for draft campaigns. `CTV_CONSIDERATION` is in BETA. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter.
+* Values: AWARENESS,CONSIDERATION,WEB_CONVERSION,CATALOG_SALES,VIDEO_COMPLETION,SALES,APP_INSTALL,CTV_CONSIDERATION
 */
 enum class ObjectiveType(@get:JsonValue val value: kotlin.String) {
 
@@ -25,7 +25,10 @@ enum class ObjectiveType(@get:JsonValue val value: kotlin.String) {
     CONSIDERATION("CONSIDERATION"),
     WEB_CONVERSION("WEB_CONVERSION"),
     CATALOG_SALES("CATALOG_SALES"),
-    VIDEO_COMPLETION("VIDEO_COMPLETION");
+    VIDEO_COMPLETION("VIDEO_COMPLETION"),
+    SALES("SALES"),
+    APP_INSTALL("APP_INSTALL"),
+    CTV_CONSIDERATION("CTV_CONSIDERATION");
 
     companion object {
         @JvmStatic

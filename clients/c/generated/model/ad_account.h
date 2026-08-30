@@ -32,26 +32,28 @@ pinterest_rest_api_ad_account__e ad_account_permissions_FromString(char* permiss
 
 typedef struct ad_account_t {
     pinterest_rest_api_country__e country; //referenced enum
-    int created_time; //numeric
+    int *created_time; //numeric
     pinterest_rest_api_currency__e currency; //referenced enum
     char *id; // string
     char *name; // string
     struct ad_account_owner_t *owner; //model
     list_t *permissions; //nonprimitive container
-    int updated_time; //numeric
+    char *time_zone; // string
+    int *updated_time; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ad_account_t;
 
 __attribute__((deprecated)) ad_account_t *ad_account_create(
     pinterest_rest_api_country__e country,
-    int created_time,
+    int *created_time,
     pinterest_rest_api_currency__e currency,
     char *id,
     char *name,
     ad_account_owner_t *owner,
     list_t *permissions,
-    int updated_time
+    char *time_zone,
+    int *updated_time
 );
 
 void ad_account_free(ad_account_t *ad_account);

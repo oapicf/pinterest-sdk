@@ -6,19 +6,19 @@ using namespace Tiny;
 
 CatalogsHotelFeed::CatalogsHotelFeed()
 {
-	created_at = std::string();
-	id = std::string();
-	updated_at = std::string();
 	catalog_id = std::string();
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
+	created_at = std::string();
 	credentials = CatalogsFeedCredentials();
 	default_currency = NullableCurrency();
 	default_locale = std::string();
 	format = CatalogsFormat();
+	id = std::string();
 	location = std::string();
 	name = std::string();
 	preferred_processing_schedule = CatalogsFeedProcessingSchedule();
 	status = CatalogsStatus();
+	updated_at = std::string();
 }
 
 CatalogsHotelFeed::CatalogsHotelFeed(std::string jsonString)
@@ -35,45 +35,6 @@ void
 CatalogsHotelFeed::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
-
-    const char *created_atKey = "created_at";
-
-    if(object.has_key(created_atKey))
-    {
-        bourne::json value = object[created_atKey];
-
-
-
-        jsonToValue(&created_at, value, "std::string");
-
-
-    }
-
-    const char *idKey = "id";
-
-    if(object.has_key(idKey))
-    {
-        bourne::json value = object[idKey];
-
-
-
-        jsonToValue(&id, value, "std::string");
-
-
-    }
-
-    const char *updated_atKey = "updated_at";
-
-    if(object.has_key(updated_atKey))
-    {
-        bourne::json value = object[updated_atKey];
-
-
-
-        jsonToValue(&updated_at, value, "std::string");
-
-
-    }
 
     const char *catalog_idKey = "catalog_id";
 
@@ -96,9 +57,21 @@ CatalogsHotelFeed::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
+
+    }
+
+    const char *created_atKey = "created_at";
+
+    if(object.has_key(created_atKey))
+    {
+        bourne::json value = object[created_atKey];
+
+
+
+        jsonToValue(&created_at, value, "std::string");
+
 
     }
 
@@ -157,6 +130,19 @@ CatalogsHotelFeed::fromJson(std::string jsonObj)
 
     }
 
+    const char *idKey = "id";
+
+    if(object.has_key(idKey))
+    {
+        bourne::json value = object[idKey];
+
+
+
+        jsonToValue(&id, value, "std::string");
+
+
+    }
+
     const char *locationKey = "location";
 
     if(object.has_key(locationKey))
@@ -211,6 +197,19 @@ CatalogsHotelFeed::fromJson(std::string jsonObj)
 
     }
 
+    const char *updated_atKey = "updated_at";
+
+    if(object.has_key(updated_atKey))
+    {
+        bourne::json value = object[updated_atKey];
+
+
+
+        jsonToValue(&updated_at, value, "std::string");
+
+
+    }
+
 
 }
 
@@ -223,27 +222,6 @@ CatalogsHotelFeed::toJson()
 
 
 
-    object["created_at"] = getCreatedAt();
-
-
-
-
-
-
-    object["id"] = getId();
-
-
-
-
-
-
-    object["updated_at"] = getUpdatedAt();
-
-
-
-
-
-
     object["catalog_id"] = getCatalogId();
 
 
@@ -251,8 +229,15 @@ CatalogsHotelFeed::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
+
+
+
+
+
+    object["created_at"] = getCreatedAt();
+
 
 
 
@@ -286,6 +271,13 @@ CatalogsHotelFeed::toJson()
 
 
 
+    object["id"] = getId();
+
+
+
+
+
+
     object["location"] = getLocation();
 
 
@@ -311,44 +303,15 @@ CatalogsHotelFeed::toJson()
 	object["status"] = getStatus().toJson();
 
 
+
+
+
+    object["updated_at"] = getUpdatedAt();
+
+
+
     return object;
 
-}
-
-std::string
-CatalogsHotelFeed::getCreatedAt()
-{
-	return created_at;
-}
-
-void
-CatalogsHotelFeed::setCreatedAt(std::string  created_at)
-{
-	this->created_at = created_at;
-}
-
-std::string
-CatalogsHotelFeed::getId()
-{
-	return id;
-}
-
-void
-CatalogsHotelFeed::setId(std::string  id)
-{
-	this->id = id;
-}
-
-std::string
-CatalogsHotelFeed::getUpdatedAt()
-{
-	return updated_at;
-}
-
-void
-CatalogsHotelFeed::setUpdatedAt(std::string  updated_at)
-{
-	this->updated_at = updated_at;
 }
 
 std::string
@@ -358,21 +321,33 @@ CatalogsHotelFeed::getCatalogId()
 }
 
 void
-CatalogsHotelFeed::setCatalogId(std::string  catalog_id)
+CatalogsHotelFeed::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
 
-CatalogsType
+std::string
 CatalogsHotelFeed::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsHotelFeed::setCatalogType(CatalogsType  catalog_type)
+CatalogsHotelFeed::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
+}
+
+std::string
+CatalogsHotelFeed::getCreatedAt()
+{
+	return created_at;
+}
+
+void
+CatalogsHotelFeed::setCreatedAt(std::string created_at)
+{
+	this->created_at = created_at;
 }
 
 CatalogsFeedCredentials
@@ -382,7 +357,7 @@ CatalogsHotelFeed::getCredentials()
 }
 
 void
-CatalogsHotelFeed::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsHotelFeed::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -394,7 +369,7 @@ CatalogsHotelFeed::getDefaultCurrency()
 }
 
 void
-CatalogsHotelFeed::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsHotelFeed::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
@@ -406,7 +381,7 @@ CatalogsHotelFeed::getDefaultLocale()
 }
 
 void
-CatalogsHotelFeed::setDefaultLocale(std::string  default_locale)
+CatalogsHotelFeed::setDefaultLocale(std::string default_locale)
 {
 	this->default_locale = default_locale;
 }
@@ -418,9 +393,21 @@ CatalogsHotelFeed::getFormat()
 }
 
 void
-CatalogsHotelFeed::setFormat(CatalogsFormat  format)
+CatalogsHotelFeed::setFormat(CatalogsFormat format)
 {
 	this->format = format;
+}
+
+std::string
+CatalogsHotelFeed::getId()
+{
+	return id;
+}
+
+void
+CatalogsHotelFeed::setId(std::string id)
+{
+	this->id = id;
 }
 
 std::string
@@ -430,7 +417,7 @@ CatalogsHotelFeed::getLocation()
 }
 
 void
-CatalogsHotelFeed::setLocation(std::string  location)
+CatalogsHotelFeed::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -442,7 +429,7 @@ CatalogsHotelFeed::getName()
 }
 
 void
-CatalogsHotelFeed::setName(std::string  name)
+CatalogsHotelFeed::setName(std::string name)
 {
 	this->name = name;
 }
@@ -454,7 +441,7 @@ CatalogsHotelFeed::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsHotelFeed::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsHotelFeed::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -466,9 +453,21 @@ CatalogsHotelFeed::getStatus()
 }
 
 void
-CatalogsHotelFeed::setStatus(CatalogsStatus  status)
+CatalogsHotelFeed::setStatus(CatalogsStatus status)
 {
 	this->status = status;
+}
+
+std::string
+CatalogsHotelFeed::getUpdatedAt()
+{
+	return updated_at;
+}
+
+void
+CatalogsHotelFeed::setUpdatedAt(std::string updated_at)
+{
+	this->updated_at = updated_at;
 }
 
 

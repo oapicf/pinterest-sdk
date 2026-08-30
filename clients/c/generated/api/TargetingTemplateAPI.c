@@ -8,19 +8,19 @@
 #define MAX_BUFFER_LENGTH 4096
 #define MAX_NUMBER_LENGTH_LONG 21
 
-// Functions for enum ORDER for TargetingTemplateAPI_targetingTemplateList
+// Functions for enum  for TargetingTemplateAPI_targetingTemplateList
 
-static char* targetingTemplateList_ORDER_ToString(pinterest_rest_api_targetingTemplateList_order_e ORDER){
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    return ORDERArray[ORDER];
+static char* targetingTemplateList__ToString(pinterest_rest_api_targetingTemplateList_order_e ){
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    return Array[];
 }
 
-static pinterest_rest_api_targetingTemplateList_order_e targetingTemplateList_ORDER_FromString(char* ORDER){
+static pinterest_rest_api_targetingTemplateList_order_e targetingTemplateList__FromString(char* ){
     int stringToReturn = 0;
-    char *ORDERArray[] =  { "NULL", "ASCENDING", "DESCENDING" };
-    size_t sizeofArray = sizeof(ORDERArray) / sizeof(ORDERArray[0]);
+    char *Array[] =  { "NULL", "ASCENDING", "DESCENDING" };
+    size_t sizeofArray = sizeof(Array) / sizeof(Array[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(ORDER, ORDERArray[stringToReturn]) == 0) {
+        if(strcmp(, Array[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -29,32 +29,23 @@ static pinterest_rest_api_targetingTemplateList_order_e targetingTemplateList_OR
 }
 
 /*
-// Function targetingTemplateList_ORDER_convertToJSON is not currently used,
+// Function targetingTemplateList__convertToJSON is not currently used,
 // since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
 //
-static cJSON *targetingTemplateList_ORDER_convertToJSON(pinterest_rest_api_targetingTemplateList_order_e ORDER) {
+static cJSON *targetingTemplateList__convertToJSON(pinterest_rest_api_targetingTemplateList_order_e ) {
     cJSON *item = cJSON_CreateObject();
-    if(cJSON_AddStringToObject(item, "order", targetingTemplateList_ORDER_ToString(ORDER)) == NULL) {
-        goto fail;
-    }
     return item;
     fail:
     cJSON_Delete(item);
     return NULL;
 }
 
-// Function targetingTemplateList_ORDER_parseFromJSON is not currently used,
+// Function targetingTemplateList__parseFromJSON is not currently used,
 // since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
 //
-static pinterest_rest_api_targetingTemplateList_order_e targetingTemplateList_ORDER_parseFromJSON(cJSON* ORDERJSON) {
-    pinterest_rest_api_targetingTemplateList_order_e ORDERVariable = 0;
-    cJSON *ORDERVar = cJSON_GetObjectItemCaseSensitive(ORDERJSON, "order");
-    if(!cJSON_IsString(ORDERVar) || (ORDERVar->valuestring == NULL))
-    {
-        goto end;
-    }
-    ORDERVariable = targetingTemplateList_ORDER_FromString(ORDERVar->valuestring);
-    return ORDERVariable;
+static pinterest_rest_api_targetingTemplateList_order_e targetingTemplateList__parseFromJSON(cJSON* JSON) {
+    pinterest_rest_api_targetingTemplateList_order_e Variable = 0;
+    return Variable;
 end:
     return 0;
 }
@@ -63,9 +54,9 @@ end:
 
 // Create targeting templates
 //
-// <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+// Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 //
-targeting_template_get_response_data_t*
+targeting_template_t*
 TargetingTemplateAPI_targetingTemplateCreate(apiClient_t *apiClient, char *ad_account_id, targeting_template_create_t *targeting_template_create)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -122,21 +113,41 @@ TargetingTemplateAPI_targetingTemplateCreate(apiClient_t *apiClient, char *ad_ac
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid ad account id.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    targeting_template_get_response_data_t *elementToReturn = NULL;
+    targeting_template_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *TargetingTemplateAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = targeting_template_get_response_data_parseFromJSON(TargetingTemplateAPIlocalVarJSON);
+        elementToReturn = targeting_template_parseFromJSON(TargetingTemplateAPIlocalVarJSON);
         cJSON_Delete(TargetingTemplateAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -170,10 +181,10 @@ end:
 
 // List targeting templates
 //
-// Get a list of the targeting templates in the specified <code>ad_account_id</code>
+// Get a list of the targeting templates in the specified `ad_account_id`
 //
 targeting_template_list_200_response_t*
-TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_account_id, pinterest_rest_api_targetingTemplateList_order_e order, int *include_sizing, char *search_query, int *page_size, char *bookmark)
+TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order, int *include_sizing, char *search_query)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -206,15 +217,40 @@ TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_acco
 
 
     // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
+    char *keyQuery_page_size = NULL;
+    char * valueQuery_page_size = NULL;
+    keyValuePair_t *keyPairQuery_page_size = 0;
+    if (page_size)
+    {
+        keyQuery_page_size = strdup("page_size");
+        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
+        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
+        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
+    }
+
+    // query parameters
     char *keyQuery_order = NULL;
-    pinterest_rest_api_targetingTemplateList_order_e valueQuery_order ;
+    pinterest_lib_pagination_order_e valueQuery_order ;
     keyValuePair_t *keyPairQuery_order = 0;
     if (order)
     {
         keyQuery_order = strdup("order");
         valueQuery_order = (order);
-        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(targetingTemplateList_ORDER_ToString(
-        valueQuery_order)));
+        keyPairQuery_order = keyValuePair_create(keyQuery_order, strdup(targetingTemplateList__ToString(
+        &valueQuery_order)));
         list_addElement(localVarQueryParameters,keyPairQuery_order);
     }
 
@@ -242,31 +278,6 @@ TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_acco
         keyPairQuery_search_query = keyValuePair_create(keyQuery_search_query, valueQuery_search_query);
         list_addElement(localVarQueryParameters,keyPairQuery_search_query);
     }
-
-    // query parameters
-    char *keyQuery_page_size = NULL;
-    char * valueQuery_page_size = NULL;
-    keyValuePair_t *keyPairQuery_page_size = 0;
-    if (page_size)
-    {
-        keyQuery_page_size = strdup("page_size");
-        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
-        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
-        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
-    }
-
-    // query parameters
-    char *keyQuery_bookmark = NULL;
-    char * valueQuery_bookmark = NULL;
-    keyValuePair_t *keyPairQuery_bookmark = 0;
-    if (bookmark)
-    {
-        keyQuery_bookmark = strdup("bookmark");
-        valueQuery_bookmark = strdup((bookmark));
-        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
-        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -281,15 +292,31 @@ TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_acco
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid ad account id.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     targeting_template_list_200_response_t *elementToReturn = NULL;
@@ -315,6 +342,30 @@ TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_acco
     
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
+    if(keyQuery_bookmark){
+        free(keyQuery_bookmark);
+        keyQuery_bookmark = NULL;
+    }
+    if(valueQuery_bookmark){
+        free(valueQuery_bookmark);
+        valueQuery_bookmark = NULL;
+    }
+    if(keyPairQuery_bookmark){
+        keyValuePair_free(keyPairQuery_bookmark);
+        keyPairQuery_bookmark = NULL;
+    }
+    if(keyQuery_page_size){
+        free(keyQuery_page_size);
+        keyQuery_page_size = NULL;
+    }
+    if(valueQuery_page_size){
+        free(valueQuery_page_size);
+        valueQuery_page_size = NULL;
+    }
+    if(keyPairQuery_page_size){
+        keyValuePair_free(keyPairQuery_page_size);
+        keyPairQuery_page_size = NULL;
+    }
     if(keyQuery_order){
         free(keyQuery_order);
         keyQuery_order = NULL;
@@ -347,30 +398,6 @@ TargetingTemplateAPI_targetingTemplateList(apiClient_t *apiClient, char *ad_acco
         keyValuePair_free(keyPairQuery_search_query);
         keyPairQuery_search_query = NULL;
     }
-    if(keyQuery_page_size){
-        free(keyQuery_page_size);
-        keyQuery_page_size = NULL;
-    }
-    if(valueQuery_page_size){
-        free(valueQuery_page_size);
-        valueQuery_page_size = NULL;
-    }
-    if(keyPairQuery_page_size){
-        keyValuePair_free(keyPairQuery_page_size);
-        keyPairQuery_page_size = NULL;
-    }
-    if(keyQuery_bookmark){
-        free(keyQuery_bookmark);
-        keyQuery_bookmark = NULL;
-    }
-    if(valueQuery_bookmark){
-        free(valueQuery_bookmark);
-        valueQuery_bookmark = NULL;
-    }
-    if(keyPairQuery_bookmark){
-        keyValuePair_free(keyPairQuery_bookmark);
-        keyPairQuery_bookmark = NULL;
-    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -380,10 +407,10 @@ end:
 
 // Update targeting templates
 //
-// <p>Update the targeting template given advertiser ID and targeting template ID</p>
+// Update the targeting template given advertiser ID and targeting template ID
 //
 void
-TargetingTemplateAPI_targetingTemplateUpdate(apiClient_t *apiClient, char *ad_account_id, targeting_template_update_request_t *targeting_template_update_request)
+TargetingTemplateAPI_targetingTemplateUpdate(apiClient_t *apiClient, char *ad_account_id, targeting_template_update_request_read_or_update_t *targeting_template_update_request_read_or_update)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -416,12 +443,12 @@ TargetingTemplateAPI_targetingTemplateUpdate(apiClient_t *apiClient, char *ad_ac
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_targeting_template_update_request = NULL;
-    if (targeting_template_update_request != NULL)
+    cJSON *localVarSingleItemJSON_targeting_template_update_request_read_or_update = NULL;
+    if (targeting_template_update_request_read_or_update != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_targeting_template_update_request = targeting_template_update_request_convertToJSON(targeting_template_update_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_targeting_template_update_request);
+        localVarSingleItemJSON_targeting_template_update_request_read_or_update = targeting_template_update_request_read_or_update_convertToJSON(targeting_template_update_request_read_or_update);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_targeting_template_update_request_read_or_update);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -439,15 +466,31 @@ TargetingTemplateAPI_targetingTemplateUpdate(apiClient_t *apiClient, char *ad_ac
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid ad account id.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //No return type
 end:
@@ -463,9 +506,9 @@ end:
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_targeting_template_update_request) {
-        cJSON_Delete(localVarSingleItemJSON_targeting_template_update_request);
-        localVarSingleItemJSON_targeting_template_update_request = NULL;
+    if (localVarSingleItemJSON_targeting_template_update_request_read_or_update) {
+        cJSON_Delete(localVarSingleItemJSON_targeting_template_update_request_read_or_update);
+        localVarSingleItemJSON_targeting_template_update_request_read_or_update = NULL;
     }
     free(localVarBodyParameters);
 

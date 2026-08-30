@@ -7,17 +7,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LabelCreateRequestLabelsInner } from './labelCreateRequestLabelsInner';
+import { LabelCreateItem } from './labelCreateItem';
 
 
 export interface LabelCreateRequest { 
     /**
      * Labels that you are applying to the campaign.
      */
-    labels: Array<LabelCreateRequestLabelsInner>;
-    /**
-     * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-     */
-    parent_id: string;
+    labels: Array<LabelCreateItem>;
 }
 

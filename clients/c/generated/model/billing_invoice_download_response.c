@@ -13,10 +13,10 @@ static billing_invoice_download_response_t *billing_invoice_download_response_cr
     if (!billing_invoice_download_response_local_var) {
         return NULL;
     }
+    memset(billing_invoice_download_response_local_var, 0, sizeof(billing_invoice_download_response_t));
+    billing_invoice_download_response_local_var->_library_owned = 1;
     billing_invoice_download_response_local_var->download_url = download_url;
     billing_invoice_download_response_local_var->id = id;
-
-    billing_invoice_download_response_local_var->_library_owned = 1;
     return billing_invoice_download_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) billing_invoice_download_response_t *billing_invoice
     char *download_url,
     char *id
     ) {
-    return billing_invoice_download_response_create_internal (
+    billing_invoice_download_response_t *result = billing_invoice_download_response_create_internal (
         download_url,
         id
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void billing_invoice_download_response_free(billing_invoice_download_response_t *billing_invoice_download_response) {
@@ -80,6 +83,10 @@ billing_invoice_download_response_t *billing_invoice_download_response_parseFrom
 
     billing_invoice_download_response_t *billing_invoice_download_response_local_var = NULL;
 
+    char *download_url_local_str = NULL;
+
+    char *id_local_str = NULL;
+
     // billing_invoice_download_response->download_url
     cJSON *download_url = cJSON_GetObjectItemCaseSensitive(billing_invoice_download_responseJSON, "download_url");
     if (cJSON_IsNull(download_url)) {
@@ -105,13 +112,28 @@ billing_invoice_download_response_t *billing_invoice_download_response_parseFrom
     }
 
 
+    if (download_url && !cJSON_IsNull(download_url)) download_url_local_str = strdup(download_url->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+
     billing_invoice_download_response_local_var = billing_invoice_download_response_create_internal (
-        download_url && !cJSON_IsNull(download_url) ? strdup(download_url->valuestring) : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL
+        download_url_local_str,
+        id_local_str
         );
+
+    if (!billing_invoice_download_response_local_var) {
+        goto end;
+    }
 
     return billing_invoice_download_response_local_var;
 end:
+    if (download_url_local_str) {
+        free(download_url_local_str);
+        download_url_local_str = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
     return NULL;
 
 }

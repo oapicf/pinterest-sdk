@@ -20,7 +20,7 @@ type BoardBase struct {
 	// Board follower count.
 	FollowerCount int32 `json:"follower_count,omitempty"`
 
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	// If set to `true`, the board will be ad-only and can store ad-only Pins.
 	IsAdsOnly bool `json:"is_ads_only,omitempty"`
@@ -28,7 +28,7 @@ type BoardBase struct {
 	// Board media.
 	Media BoardMedia `json:"media,omitempty"`
 
-	//      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	//     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	Name string `json:"name"`
 
 	Owner BoardOwner `json:"owner,omitempty"`

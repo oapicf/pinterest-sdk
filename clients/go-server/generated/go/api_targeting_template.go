@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -112,9 +113,34 @@ func (c *TargetingTemplateAPIController) TargetingTemplateList(w http.ResponseWr
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var orderParam string
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	var pageSizeParam int32
+	if query.Has("page_size") {
+		param, err := parseNumericParameter[int32](
+			query.Get("page_size"),
+			WithParse[int32](parseInt32),
+			WithMinimum[int32](1),
+			WithMaximum[int32](250),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
+			return
+		}
+
+		pageSizeParam = param
+	} else {
+		var param int32 = 25
+		pageSizeParam = param
+	}
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
@@ -142,32 +168,7 @@ func (c *TargetingTemplateAPIController) TargetingTemplateList(w http.ResponseWr
 		searchQueryParam = param
 	} else {
 	}
-	var pageSizeParam int32
-	if query.Has("page_size") {
-		param, err := parseNumericParameter[int32](
-			query.Get("page_size"),
-			WithParse[int32](parseInt32),
-			WithMinimum[int32](1),
-			WithMaximum[int32](250),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
-			return
-		}
-
-		pageSizeParam = param
-	} else {
-		var param int32 = 25
-		pageSizeParam = param
-	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.TargetingTemplateList(r.Context(), adAccountIdParam, orderParam, includeSizingParam, searchQueryParam, pageSizeParam, bookmarkParam)
+	result, err := c.service.TargetingTemplateList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam, includeSizingParam, searchQueryParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -189,6 +190,11 @@ func (c *TargetingTemplateAPIController) TargetingTemplateCreate(w http.Response
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&targetingTemplateCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -218,22 +224,27 @@ func (c *TargetingTemplateAPIController) TargetingTemplateUpdate(w http.Response
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var targetingTemplateUpdateRequestParam TargetingTemplateUpdateRequest
+	var targetingTemplateUpdateRequestReadOrUpdateParam TargetingTemplateUpdateRequestReadOrUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&targetingTemplateUpdateRequestParam); err != nil {
+	if err := d.Decode(&targetingTemplateUpdateRequestReadOrUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertTargetingTemplateUpdateRequestRequired(targetingTemplateUpdateRequestParam); err != nil {
+	if err := AssertTargetingTemplateUpdateRequestReadOrUpdateRequired(targetingTemplateUpdateRequestReadOrUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertTargetingTemplateUpdateRequestConstraints(targetingTemplateUpdateRequestParam); err != nil {
+	if err := AssertTargetingTemplateUpdateRequestReadOrUpdateConstraints(targetingTemplateUpdateRequestReadOrUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.TargetingTemplateUpdate(r.Context(), adAccountIdParam, targetingTemplateUpdateRequestParam)
+	result, err := c.service.TargetingTemplateUpdate(r.Context(), adAccountIdParam, targetingTemplateUpdateRequestReadOrUpdateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

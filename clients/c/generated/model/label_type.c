@@ -5,13 +5,13 @@
 
 
 char* label_type_label_type_ToString(pinterest_rest_api_label_type__e label_type) {
-    char *label_typeArray[] =  { "NULL", "BRAND", "CUSTOM", "" };
+    char *label_typeArray[] =  { "NULL", "BRAND", "CUSTOM" };
     return label_typeArray[label_type];
 }
 
 pinterest_rest_api_label_type__e label_type_label_type_FromString(char* label_type) {
     int stringToReturn = 0;
-    char *label_typeArray[] =  { "NULL", "BRAND", "CUSTOM", "" };
+    char *label_typeArray[] =  { "NULL", "BRAND", "CUSTOM" };
     size_t sizeofArray = sizeof(label_typeArray) / sizeof(label_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(label_type, label_typeArray[stringToReturn]) == 0) {

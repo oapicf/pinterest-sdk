@@ -11,6 +11,9 @@ import { NullableCatalogsItemFieldType } from './nullableCatalogsItemFieldType';
 
 
 export interface CatalogsItemValidationDetails { 
+    /**
+     * Attribute that has a validation issue.
+     */
     attribute_name: NullableCatalogsItemFieldType | null;
     /**
      * Provided value that caused the validation issue.

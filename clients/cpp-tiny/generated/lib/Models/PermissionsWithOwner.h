@@ -2,7 +2,7 @@
 /*
  * PermissionsWithOwner.h
  *
- * 
+ * Permission levels including the OWNER role.
  */
 
 #ifndef TINY_CPP_CLIENT_PermissionsWithOwner_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief Permission levels including the OWNER role.
  *
  *  \ingroup Models
  *

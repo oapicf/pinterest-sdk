@@ -4,13 +4,15 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.Audience
-import model.AudienceCreateRequest
-import model.AudienceUpdateRequest
+import model.AdAccountsAudience
+import model.AdAccountsAudienceCreate
+import model.AdAccountsAudienceUpdate
+import model.AudienceOwnershipType
 import model.AudiencesList200Response
 import model.Error
+import model.PaginationOrder
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class AudiencesApiController @Inject()(cc: ControllerComponents, api: AudiencesApi) extends AbstractController(cc) {
   /**
@@ -18,11 +20,11 @@ class AudiencesApiController @Inject()(cc: ControllerComponents, api: AudiencesA
     * @param adAccountId Unique identifier of an ad account.
     */
   def audiencesCreate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Audience = {
-      val audienceCreateRequest = request.body.asJson.map(_.as[AudienceCreateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "audienceCreateRequest")
+    def executeApi(): AdAccountsAudience = {
+      val adAccountsAudienceCreate = request.body.asJson.map(_.as[AdAccountsAudienceCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adAccountsAudienceCreate")
       }
-      api.audiencesCreate(adAccountId, audienceCreateRequest)
+      api.audiencesCreate(adAccountId, adAccountsAudienceCreate)
     }
 
     val result = executeApi()
@@ -32,12 +34,12 @@ class AudiencesApiController @Inject()(cc: ControllerComponents, api: AudiencesA
 
   /**
     * GET /v5/ad_accounts/:adAccountId/audiences/:audienceId
+    * @param audienceId Audience ID.
     * @param adAccountId Unique identifier of an ad account.
-    * @param audienceId Unique identifier of an audience
     */
-  def audiencesGet(adAccountId: String, audienceId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Audience = {
-      api.audiencesGet(adAccountId, audienceId)
+  def audiencesGet(audienceId: String, adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): AdAccountsAudience = {
+      api.audiencesGet(audienceId, adAccountId)
     }
 
     val result = executeApi()
@@ -46,21 +48,26 @@ class AudiencesApiController @Inject()(cc: ControllerComponents, api: AudiencesA
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/audiences?bookmark=[value]&order=[value]&pageSize=[value]&ownershipType=[value]
+    * GET /v5/ad_accounts/:adAccountId/audiences?bookmark=[value]&pageSize=[value]&order=[value]&ownershipType=[value]&excludeNca=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def audiencesList(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): AudiencesList200Response = {
       val bookmark = request.getQueryString("bookmark")
         
-      val order = request.getQueryString("order")
-        
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val ownershipType = request.getQueryString("ownership_type")
+      val order = request.getQueryString("order")
+        .map(value => )
         
-      api.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType)
+      val ownershipType = request.getQueryString("ownership_type")
+        .map(value => )
+        
+      val excludeNca = request.getQueryString("exclude_nca")
+        .map(value => value.toBoolean)
+        
+      api.audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca)
     }
 
     val result = executeApi()
@@ -70,15 +77,15 @@ class AudiencesApiController @Inject()(cc: ControllerComponents, api: AudiencesA
 
   /**
     * PATCH /v5/ad_accounts/:adAccountId/audiences/:audienceId
+    * @param audienceId Audience ID.
     * @param adAccountId Unique identifier of an ad account.
-    * @param audienceId Unique identifier of an audience
     */
-  def audiencesUpdate(adAccountId: String, audienceId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Audience = {
-      val audienceUpdateRequest = request.body.asJson.map(_.as[AudienceUpdateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "audienceUpdateRequest")
+  def audiencesUpdate(audienceId: String, adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): AdAccountsAudience = {
+      val adAccountsAudienceUpdate = request.body.asJson.map(_.as[AdAccountsAudienceUpdate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adAccountsAudienceUpdate")
       }
-      api.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
+      api.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate)
     }
 
     val result = executeApi()

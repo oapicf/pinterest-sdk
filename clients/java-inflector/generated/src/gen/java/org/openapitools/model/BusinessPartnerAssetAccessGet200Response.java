@@ -10,19 +10,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetPartnerAssetsResponse;
+import org.openapitools.model.BaseBusinessAssets;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessPartnerAssetAccessGet200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
-  private List<GetPartnerAssetsResponse> items = new ArrayList<>();
+  private List<BaseBusinessAssets> items = new ArrayList<>();
 
   /**
    **/
@@ -42,20 +42,19 @@ public class BusinessPartnerAssetAccessGet200Response   {
   }
 
   /**
-   * List assets on which you granted access to your partner or assets on which your partner has granted you access.
    **/
-  public BusinessPartnerAssetAccessGet200Response items(List<GetPartnerAssetsResponse> items) {
+  public BusinessPartnerAssetAccessGet200Response items(List<BaseBusinessAssets> items) {
     this.items = items;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "List assets on which you granted access to your partner or assets on which your partner has granted you access.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<GetPartnerAssetsResponse> getItems() {
+  public List<BaseBusinessAssets> getItems() {
     return items;
   }
-  public void setItems(List<GetPartnerAssetsResponse> items) {
+  public void setItems(List<BaseBusinessAssets> items) {
     this.items = items;
   }
 
@@ -94,10 +93,7 @@ public class BusinessPartnerAssetAccessGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

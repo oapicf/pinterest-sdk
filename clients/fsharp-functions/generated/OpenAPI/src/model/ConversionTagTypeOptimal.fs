@@ -1,0 +1,41 @@
+namespace OpenAPI.Model
+
+open System
+open System.Collections.Generic
+open Newtonsoft.Json
+
+module ConversionTagTypeOptimal =
+
+  //#region ConversionTagTypeOptimal
+
+  let PAGELOADEnum = "PAGE_LOAD"
+  let UNKNOWNEnum = "UNKNOWN"
+  let INITIALIZEDEnum = "INITIALIZED"
+  let PAGEVISITEnum = "PAGE_VISIT"
+  let SIGNUPEnum = "SIGNUP"
+  let CHECKOUTEnum = "CHECKOUT"
+  let CUSTOMEnum = "CUSTOM"
+  let VIEWCATEGORYEnum = "VIEW_CATEGORY"
+  let SEARCHEnum = "SEARCH"
+  let ADDTOCARTEnum = "ADD_TO_CART"
+  let WATCHVIDEOEnum = "WATCH_VIDEO"
+  let LEADEnum = "LEAD"
+  let APPINSTALLEnum = "APP_INSTALL"
+  let WEBSESSIONEnum = "WEB_SESSION"
+  let EXTERNALMEASUREMENTEnum = "EXTERNAL_MEASUREMENT"
+  let ADDPAYMENTINFOEnum = "ADD_PAYMENT_INFO"
+  let ADDTOWISHLISTEnum = "ADD_TO_WISHLIST"
+  let INITIATECHECKOUTEnum = "INITIATE_CHECKOUT"
+  let SUBSCRIBEEnum = "SUBSCRIBE"
+  let VIEWCONTENTEnum = "VIEW_CONTENT"
+  let ADVERTISERDEFINEDEVENTEnum = "ADVERTISER_DEFINED_EVENT"
+  let APPOPENEnum = "APP_OPEN"
+  let CONTACTEnum = "CONTACT"
+  let SCHEDULEEnum = "SCHEDULE"
+  let FINDLOCATIONEnum = "FIND_LOCATION"
+  let CUSTOMIZEPRODUCTEnum = "CUSTOMIZE_PRODUCT"
+  let SUBMITAPPLICATIONEnum = "SUBMIT_APPLICATION"
+  let STARTTRIALEnum = "START_TRIAL"
+  type ConversionTagTypeOptimal = string
+
+  //#endregion

@@ -13,10 +13,10 @@ static labels_response_t *labels_response_create_internal(
     if (!labels_response_local_var) {
         return NULL;
     }
+    memset(labels_response_local_var, 0, sizeof(labels_response_t));
+    labels_response_local_var->_library_owned = 1;
     labels_response_local_var->errors = errors;
     labels_response_local_var->labels = labels;
-
-    labels_response_local_var->_library_owned = 1;
     return labels_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) labels_response_t *labels_response_create(
     list_t *errors,
     list_t *labels
     ) {
-    return labels_response_create_internal (
+    labels_response_t *result = labels_response_create_internal (
         errors,
         labels
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void labels_response_free(labels_response_t *labels_response) {
@@ -165,10 +168,15 @@ labels_response_t *labels_response_parseFromJSON(cJSON *labels_responseJSON){
     }
 
 
+
     labels_response_local_var = labels_response_create_internal (
         errors ? errorsList : NULL,
         labels ? labelsList : NULL
         );
+
+    if (!labels_response_local_var) {
+        goto end;
+    }
 
     return labels_response_local_var;
 end:

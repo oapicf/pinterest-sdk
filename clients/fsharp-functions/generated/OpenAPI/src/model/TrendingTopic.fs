@@ -14,6 +14,8 @@ module TrendingTopic =
   type TrendingTopic = {
     [<JsonProperty(PropertyName = "description")>]
     Description : string;
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
     [<JsonProperty(PropertyName = "percent_growth_mom")>]
     PercentGrowthMom : int;
     [<JsonProperty(PropertyName = "pins")>]

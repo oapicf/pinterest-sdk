@@ -7,7 +7,7 @@
 #' @title CatalogsRetailProductGroup
 #' @description CatalogsRetailProductGroup Class
 #' @format An \code{R6Class} generator object
-#' @field catalog_id Catalog id pertaining to the retail product group. character
+#' @field catalog_id Catalog ID pertaining to the product group. character
 #' @field catalog_type  character
 #' @field country  character [optional]
 #' @field created_at Unix timestamp in seconds of when catalog product group was created. integer [optional]
@@ -45,7 +45,7 @@ CatalogsRetailProductGroup <- R6::R6Class(
     #' @description
     #' Initialize a new CatalogsRetailProductGroup class.
     #'
-    #' @param catalog_id Catalog id pertaining to the retail product group.
+    #' @param catalog_id Catalog ID pertaining to the product group.
     #' @param catalog_type catalog_type
     #' @param feed_id id of the catalogs feed belonging to this catalog product group
     #' @param filters filters
@@ -207,7 +207,7 @@ CatalogsRetailProductGroup <- R6::R6Class(
       }
       if (!is.null(self$`filters`)) {
         CatalogsRetailProductGroupObject[["filters"]] <-
-          self$`filters`$toSimpleType()
+          self$extractSimpleType(self$`filters`)
       }
       if (!is.null(self$`id`)) {
         CatalogsRetailProductGroupObject[["id"]] <-
@@ -227,17 +227,40 @@ CatalogsRetailProductGroup <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         CatalogsRetailProductGroupObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       if (!is.null(self$`type`)) {
         CatalogsRetailProductGroupObject[["type"]] <-
-          self$`type`$toSimpleType()
+          self$extractSimpleType(self$`type`)
       }
       if (!is.null(self$`updated_at`)) {
         CatalogsRetailProductGroupObject[["updated_at"]] <-
           self$`updated_at`
       }
       return(CatalogsRetailProductGroupObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

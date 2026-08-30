@@ -5,13 +5,14 @@ import org.openapitools.model.Board
 import org.openapitools.model.BoardCreate
 import org.openapitools.model.BoardPrivacyFilter
 import org.openapitools.model.BoardSection
+import org.openapitools.model.BoardSectionCreate
+import org.openapitools.model.BoardSectionUpdateWithRequiredBody
 import org.openapitools.model.BoardSectionsList200Response
 import org.openapitools.model.BoardWithUpdatePrivacy
 import org.openapitools.model.BoardWithUpdatePrivacyUpdate
 import org.openapitools.model.BoardsList200Response
 import org.openapitools.model.BoardsListPins200Response
 import org.openapitools.model.CreativeType
-import org.openapitools.model.Error
 import org.openapitools.model.PinterestLibError
 
 class BoardsApi {
@@ -19,13 +20,14 @@ class BoardsApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def boardSectionsCreate ( String boardId, BoardSection boardSection, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def boardSectionsCreate ( String boardId, BoardSectionCreate boardSectionCreate, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/boards/${board_id}/sections"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -33,8 +35,8 @@ class BoardsApi {
             throw new RuntimeException("missing required params boardId")
         }
         // verify required params are set
-        if (boardSection == null) {
-            throw new RuntimeException("missing required params boardSection")
+        if (boardSectionCreate == null) {
+            throw new RuntimeException("missing required params boardSectionCreate")
         }
 
         if (adAccountId != null) {
@@ -43,10 +45,12 @@ class BoardsApi {
 
 
         contentType = 'application/json';
-        bodyParams = boardSection
+        bodyParams = boardSectionCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     BoardSection.class )
 
@@ -59,6 +63,7 @@ class BoardsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -77,9 +82,11 @@ class BoardsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    null )
+                    BoardSection.class )
 
     }
 
@@ -90,6 +97,7 @@ class BoardsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -110,7 +118,9 @@ class BoardsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BoardSectionsList200Response.class )
 
@@ -123,6 +133,7 @@ class BoardsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -147,19 +158,22 @@ class BoardsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BoardsListPins200Response.class )
 
     }
 
-    def boardSectionsUpdate ( String boardId, String sectionId, BoardSection boardSection, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def boardSectionsUpdate ( String boardId, String sectionId, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/boards/${board_id}/sections/${section_id}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -171,8 +185,8 @@ class BoardsApi {
             throw new RuntimeException("missing required params sectionId")
         }
         // verify required params are set
-        if (boardSection == null) {
-            throw new RuntimeException("missing required params boardSection")
+        if (boardSectionUpdateWithRequiredBody == null) {
+            throw new RuntimeException("missing required params boardSectionUpdateWithRequiredBody")
         }
 
         if (adAccountId != null) {
@@ -181,10 +195,12 @@ class BoardsApi {
 
 
         contentType = 'application/json';
-        bodyParams = boardSection
+        bodyParams = boardSectionUpdateWithRequiredBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     BoardSection.class )
 
@@ -197,6 +213,7 @@ class BoardsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -213,7 +230,9 @@ class BoardsApi {
         bodyParams = boardCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     Board.class )
 
@@ -226,6 +245,7 @@ class BoardsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -240,9 +260,11 @@ class BoardsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    null )
+                    Board.class )
 
     }
 
@@ -253,6 +275,7 @@ class BoardsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -267,7 +290,9 @@ class BoardsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     Board.class )
 
@@ -280,6 +305,7 @@ class BoardsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
@@ -299,19 +325,22 @@ class BoardsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BoardsList200Response.class )
 
     }
 
-    def boardsListPins ( String boardId, String bookmark, Integer pageSize, List<CreativeType> creativeTypes, String adAccountId, Boolean pinMetrics, Closure onSuccess, Closure onFailure)  {
+    def boardsListPins ( String boardId, List<CreativeType> creativeTypes, String adAccountId, Boolean pinMetrics, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/boards/${board_id}/pins"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -319,12 +348,6 @@ class BoardsApi {
             throw new RuntimeException("missing required params boardId")
         }
 
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
         if (creativeTypes != null) {
             queryParams.put("creative_types", creativeTypes)
         }
@@ -334,11 +357,19 @@ class BoardsApi {
         if (pinMetrics != null) {
             queryParams.put("pin_metrics", pinMetrics)
         }
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BoardsListPins200Response.class )
 
@@ -351,6 +382,7 @@ class BoardsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -371,7 +403,9 @@ class BoardsApi {
         bodyParams = boardWithUpdatePrivacyUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     BoardWithUpdatePrivacy.class )
 

@@ -1,10 +1,10 @@
 package controllers;
 
-import apimodels.CatalogsItems;
 import apimodels.CatalogsItemsBatch;
+import apimodels.CatalogsItemsBatchPostRequest;
 import apimodels.CatalogsItemsRequest;
-import apimodels.Error;
-import apimodels.ItemsBatchPostRequest;
+import apimodels.ItemsPost200Response;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -31,7 +31,7 @@ public abstract class CatalogItemsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result itemsBatchGetHttp(Http.Request request,  @Pattern(regexp="^[a-zA-Z0-9]+$")String batchId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result itemsBatchGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String batchId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -48,14 +48,14 @@ public abstract class CatalogItemsApiControllerImpInterface {
 
     }
 
-    public abstract CatalogsItemsBatch itemsBatchGet(Http.Request request,  @Pattern(regexp="^[a-zA-Z0-9]+$")String batchId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract CatalogsItemsBatch itemsBatchGet(Http.Request request,  @Pattern(regexp="^\\d+$")String batchId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result itemsBatchPostHttp(Http.Request request, ItemsBatchPostRequest itemsBatchPostRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result itemsBatchPostHttp(Http.Request request, CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CatalogsItemsBatch obj = itemsBatchPost(request, itemsBatchPostRequest, adAccountId);
+        CatalogsItemsBatch obj = itemsBatchPost(request, catalogsItemsBatchPostRequest, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -67,14 +67,14 @@ public abstract class CatalogItemsApiControllerImpInterface {
 
     }
 
-    public abstract CatalogsItemsBatch itemsBatchPost(Http.Request request, ItemsBatchPostRequest itemsBatchPostRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract CatalogsItemsBatch itemsBatchPost(Http.Request request, CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
     public Result itemsPostHttp(Http.Request request, CatalogsItemsRequest catalogsItemsRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        CatalogsItems obj = itemsPost(request, catalogsItemsRequest, adAccountId);
+        ItemsPost200Response obj = itemsPost(request, catalogsItemsRequest, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -86,6 +86,6 @@ public abstract class CatalogItemsApiControllerImpInterface {
 
     }
 
-    public abstract CatalogsItems itemsPost(Http.Request request, CatalogsItemsRequest catalogsItemsRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract ItemsPost200Response itemsPost(Http.Request request, CatalogsItemsRequest catalogsItemsRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
 }

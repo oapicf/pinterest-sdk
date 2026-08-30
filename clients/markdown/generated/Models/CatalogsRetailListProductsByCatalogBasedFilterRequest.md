@@ -3,7 +3,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **catalog\_id** | **String** | Catalog id pertaining to the retail product group. | [default to null] |
+| **catalog\_id** | **String** | Catalog ID pertaining to the product group. | [default to null] |
 | **catalog\_type** | **String** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | [default to null] |
 | **country** | [**Country**](Country.md) |  | [default to null] |
 | **filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | [default to null] |

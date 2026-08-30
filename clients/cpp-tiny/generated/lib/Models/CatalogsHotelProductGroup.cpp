@@ -6,12 +6,12 @@ using namespace Tiny;
 
 CatalogsHotelProductGroup::CatalogsHotelProductGroup()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	created_at = int(0);
 	description = std::string();
 	filters = CatalogsHotelProductGroupFilters();
-	id = std::string();
+	id = null;
 	name = std::string();
 	type = CatalogsHotelProductGroupType();
 	updated_at = int(0);
@@ -234,7 +234,7 @@ CatalogsHotelProductGroup::getCatalogId()
 }
 
 void
-CatalogsHotelProductGroup::setCatalogId(std::string  catalog_id)
+CatalogsHotelProductGroup::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -246,7 +246,7 @@ CatalogsHotelProductGroup::getCatalogType()
 }
 
 void
-CatalogsHotelProductGroup::setCatalogType(std::string  catalog_type)
+CatalogsHotelProductGroup::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -258,7 +258,7 @@ CatalogsHotelProductGroup::getCreatedAt()
 }
 
 void
-CatalogsHotelProductGroup::setCreatedAt(int  created_at)
+CatalogsHotelProductGroup::setCreatedAt(int created_at)
 {
 	this->created_at = created_at;
 }
@@ -270,7 +270,7 @@ CatalogsHotelProductGroup::getDescription()
 }
 
 void
-CatalogsHotelProductGroup::setDescription(std::string  description)
+CatalogsHotelProductGroup::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -282,7 +282,7 @@ CatalogsHotelProductGroup::getFilters()
 }
 
 void
-CatalogsHotelProductGroup::setFilters(CatalogsHotelProductGroupFilters  filters)
+CatalogsHotelProductGroup::setFilters(CatalogsHotelProductGroupFilters filters)
 {
 	this->filters = filters;
 }
@@ -294,7 +294,7 @@ CatalogsHotelProductGroup::getId()
 }
 
 void
-CatalogsHotelProductGroup::setId(std::string  id)
+CatalogsHotelProductGroup::setId(std::string id)
 {
 	this->id = id;
 }
@@ -306,7 +306,7 @@ CatalogsHotelProductGroup::getName()
 }
 
 void
-CatalogsHotelProductGroup::setName(std::string  name)
+CatalogsHotelProductGroup::setName(std::string name)
 {
 	this->name = name;
 }
@@ -318,7 +318,7 @@ CatalogsHotelProductGroup::getType()
 }
 
 void
-CatalogsHotelProductGroup::setType(CatalogsHotelProductGroupType  type)
+CatalogsHotelProductGroup::setType(CatalogsHotelProductGroupType type)
 {
 	this->type = type;
 }
@@ -330,7 +330,7 @@ CatalogsHotelProductGroup::getUpdatedAt()
 }
 
 void
-CatalogsHotelProductGroup::setUpdatedAt(int  updated_at)
+CatalogsHotelProductGroup::setUpdatedAt(int updated_at)
 {
 	this->updated_at = updated_at;
 }

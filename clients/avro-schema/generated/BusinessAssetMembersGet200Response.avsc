@@ -16,7 +16,7 @@
         "type": "array",
         "items": "model.UserSingleAssetBinding"
       },
-      "doc": "List of members with permissions to the asset."
+      "doc": ""
     }
   ]
 

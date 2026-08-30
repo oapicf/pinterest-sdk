@@ -59,18 +59,18 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
 ///
 ///  @param subscriptionId Unique identifier of a subscription. 
 ///
-///  @returns void
+///  @returns OAILeadSubscription*
 ///
 -(NSURLSessionTask*) adAccountsSubscriptionsDelByIdWithAdAccountId: (NSString*) adAccountId
     subscriptionId: (NSString*) subscriptionId
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(OAILeadSubscription* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
             NSError* error = [NSError errorWithDomain:kOAILeadAdsApiErrorDomain code:kOAILeadAdsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -81,7 +81,7 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"subscriptionId"] };
             NSError* error = [NSError errorWithDomain:kOAILeadAdsApiErrorDomain code:kOAILeadAdsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -129,10 +129,10 @@ NSInteger kOAILeadAdsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"OAILeadSubscription*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((OAILeadSubscription*)data, error);
                                 }
                             }];
 }

@@ -2,7 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsProductGroupPricingCurrencyCriteria;
+import org.openapitools.model.PriceFilterPrice;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -17,23 +17,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("PriceFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PriceFilter   {
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
 
   public PriceFilter() {
   }
 
   @JsonCreator
   public PriceFilter(
-    @JsonProperty(required = true, value = "PRICE") CatalogsProductGroupPricingCurrencyCriteria PRICE
+    @JsonProperty(required = true, value = "PRICE") PriceFilterPrice PRICE
   ) {
     this.PRICE = PRICE;
   }
 
   /**
    **/
-  public PriceFilter PRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public PriceFilter PRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
     return this;
   }
@@ -41,12 +41,12 @@ public class PriceFilter   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "PRICE")
-  @NotNull @Valid public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  @NotNull @Valid public PriceFilterPrice getPRICE() {
     return PRICE;
   }
 
   @JsonProperty(required = true, value = "PRICE")
-  public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
@@ -83,12 +83,8 @@ public class PriceFilter   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

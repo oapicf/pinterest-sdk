@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { BusinessRoleForInvite } from './businessRoleForInvite';
 import { InviteType } from './inviteType';
 
 
@@ -14,10 +15,7 @@ import { InviteType } from './inviteType';
  * Body to be used on path to send Members or Partners Invite or Request
  */
 export interface CreateMembershipOrPartnershipInvitesBody { 
-    /**
-     * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-     */
-    business_role: CreateMembershipOrPartnershipInvitesBody.BusinessRoleEnum;
+    business_role: BusinessRoleForInvite;
     invite_type: InviteType;
     /**
      * A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
@@ -29,12 +27,6 @@ export interface CreateMembershipOrPartnershipInvitesBody {
     partners?: Array<string>;
 }
 export namespace CreateMembershipOrPartnershipInvitesBody {
-    export const BusinessRoleEnum = {
-        Employee: 'EMPLOYEE',
-        BizAdmin: 'BIZ_ADMIN',
-        Partner: 'PARTNER'
-    } as const;
-    export type BusinessRoleEnum = typeof BusinessRoleEnum[keyof typeof BusinessRoleEnum];
 }
 
 

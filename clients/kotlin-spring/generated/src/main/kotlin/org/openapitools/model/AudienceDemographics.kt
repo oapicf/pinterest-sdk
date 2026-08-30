@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AudienceDemographicValue
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -25,23 +28,38 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AudienceDemographics(
 
     @field:Valid
-    @Schema(example = "null", description = "Ages distribution.")
+    @Schema(description = "Ages distribution.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ages")
     @get:JsonProperty("ages") val ages: kotlin.collections.List<AudienceDemographicValue>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Country area distribution.")
+    @Schema(description = "Country area distribution.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("countries")
     @get:JsonProperty("countries") val countries: kotlin.collections.List<AudienceDemographicValue>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Device usage distribution.")
+    @Schema(description = "Device usage distribution.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("devices")
     @get:JsonProperty("devices") val devices: kotlin.collections.List<AudienceDemographicValue>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Gender distribution.")
+    @Schema(description = "Gender distribution.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("genders")
     @get:JsonProperty("genders") val genders: kotlin.collections.List<AudienceDemographicValue>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Geographic metro area distribution.")
+    @Schema(description = "Geographic metro area distribution.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("metros")
     @get:JsonProperty("metros") val metros: kotlin.collections.List<AudienceDemographicValue>? = null
 ) {
 

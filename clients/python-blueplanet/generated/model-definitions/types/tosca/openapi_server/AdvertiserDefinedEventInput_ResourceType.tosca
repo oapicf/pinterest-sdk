@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdvertiserDefinedEventInput"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdvertiserDefinedEventInput"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdvertiserDefinedEventMappingType = openapi_server.resourceTypes.AdvertiserDefinedEventMappingType
+}
+resourceTypes {
+
+  AdvertiserDefinedEventInput {
+    title = AdvertiserDefinedEventInput
+    description = AdvertiserDefinedEventInput
+    derivedFrom = Root
+    properties {
+        mapped_conversion_type {
+          type = AdvertiserDefinedEventMappingType
+          description = "Pinterest standard event type to map this custom event to for campaign optimization and reporting"
+          optional = true
+        }
+        name {
+          type =  string
+          description = "Raw string name of the event"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdvertiserDefinedEventInput {
+    title = AdvertiserDefinedEventInput
+    description = AdvertiserDefinedEventInput
+    implements = openapi_server.resourceTypes.AdvertiserDefinedEventInput
+
+  }
+}

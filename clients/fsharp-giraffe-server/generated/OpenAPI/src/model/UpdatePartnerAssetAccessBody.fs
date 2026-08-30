@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.UpdatePartnerAssetAccessBodyAccessesInner
+open OpenAPI.Model.UpdatePartnerAssetAccessItem
 
 module UpdatePartnerAssetAccessBody =
 
@@ -10,6 +10,6 @@ module UpdatePartnerAssetAccessBody =
 
 
   type UpdatePartnerAssetAccessBody = {
-    Accesses : UpdatePartnerAssetAccessBodyAccessesInner[];
+    Accesses : UpdatePartnerAssetAccessItem[];
   }
   //#endregion

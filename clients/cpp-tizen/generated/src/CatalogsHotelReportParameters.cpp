@@ -24,7 +24,7 @@ void
 CatalogsHotelReportParameters::__init()
 {
 	//catalog_type = std::string();
-	//report = new CatalogsHotelReportParameters_report();
+	//report = new CatalogsHotelReportParametersReport();
 }
 
 void
@@ -64,11 +64,11 @@ CatalogsHotelReportParameters::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsHotelReportParameters_report")) {
-			jsonToValue(&report, node, "CatalogsHotelReportParameters_report", "CatalogsHotelReportParameters_report");
+		if (isprimitive("CatalogsHotelReportParametersReport")) {
+			jsonToValue(&report, node, "CatalogsHotelReportParametersReport", "CatalogsHotelReportParametersReport");
 		} else {
 			
-			CatalogsHotelReportParameters_report* obj = static_cast<CatalogsHotelReportParameters_report*> (&report);
+			CatalogsHotelReportParametersReport* obj = static_cast<CatalogsHotelReportParametersReport*> (&report);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -94,13 +94,13 @@ CatalogsHotelReportParameters::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
-	if (isprimitive("CatalogsHotelReportParameters_report")) {
-		CatalogsHotelReportParameters_report obj = getReport();
-		node = converttoJson(&obj, "CatalogsHotelReportParameters_report", "");
+	if (isprimitive("CatalogsHotelReportParametersReport")) {
+		CatalogsHotelReportParametersReport obj = getReport();
+		node = converttoJson(&obj, "CatalogsHotelReportParametersReport", "");
 	}
 	else {
 		
-		CatalogsHotelReportParameters_report obj = static_cast<CatalogsHotelReportParameters_report> (getReport());
+		CatalogsHotelReportParametersReport obj = static_cast<CatalogsHotelReportParametersReport> (getReport());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -128,14 +128,14 @@ CatalogsHotelReportParameters::setCatalogType(std::string  catalog_type)
 	this->catalog_type = catalog_type;
 }
 
-CatalogsHotelReportParameters_report
+CatalogsHotelReportParametersReport
 CatalogsHotelReportParameters::getReport()
 {
 	return report;
 }
 
 void
-CatalogsHotelReportParameters::setReport(CatalogsHotelReportParameters_report  report)
+CatalogsHotelReportParameters::setReport(CatalogsHotelReportParametersReport  report)
 {
 	this->report = report;
 }

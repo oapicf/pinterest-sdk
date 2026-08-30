@@ -2,7 +2,7 @@
 /*
  * AssetGroupType.h
  *
- * Asset group type
+ * Asset group type.
  */
 
 #ifndef TINY_CPP_CLIENT_AssetGroupType_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief Asset group type
+/*! \brief Asset group type.
  *
  *  \ingroup Models
  *

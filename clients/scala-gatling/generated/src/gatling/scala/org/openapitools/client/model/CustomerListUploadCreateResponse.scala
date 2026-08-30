@@ -3,7 +3,9 @@ package org.openapitools.client.model
 
 
 case class CustomerListUploadCreateResponse (
+    /* The Customer List Upload created. */
     _customerListUpload: CustomerListUpload,
+    /* Pre-signed upload URLs corresponding to each part of the upload. */
     _s3MultipartUploadData: S3MultipartUploadData
 )
 object CustomerListUploadCreateResponse {

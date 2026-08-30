@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,6 +19,8 @@ import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.IntegrationLogClientError;
 import org.openapitools.model.IntegrationLogClientRequest;
+import org.openapitools.model.IntegrationLogEventType;
+import org.openapitools.model.IntegrationLogLevel;
 
 
 
@@ -27,56 +29,17 @@ import org.openapitools.model.IntegrationLogClientRequest;
  */
 
 @ApiModel(description = "Schema for log sent from an integration application.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLog   {
   
   private String advertiserId;
   private String appVersionNumber;
   private Integer clientTimestamp;
   private IntegrationLogClientError error;
-
-
-  public enum EventTypeEnum {
-    APP("APP"),
-    API("API");
-
-    private String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private EventTypeEnum eventType;
+  private IntegrationLogEventType eventType;
   private String externalBusinessId;
   private String feedProfileId;
-
-
-  public enum LogLevelEnum {
-    INFO("INFO"),
-    WARN("WARN"),
-    ERROR("ERROR");
-
-    private String value;
-
-    LogLevelEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private LogLevelEnum logLevel;
+  private IntegrationLogLevel logLevel;
   private String merchantId;
   private String message;
   private String platformVersionNumber;
@@ -156,7 +119,7 @@ public class IntegrationLog   {
   /**
    * Log event type
    */
-  public IntegrationLog eventType(EventTypeEnum eventType) {
+  public IntegrationLog eventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -164,10 +127,10 @@ public class IntegrationLog   {
   
   @ApiModelProperty(required = true, value = "Log event type")
   @JsonProperty("event_type")
-  public EventTypeEnum getEventType() {
+  public IntegrationLogEventType getEventType() {
     return eventType;
   }
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
   }
 
@@ -208,7 +171,7 @@ public class IntegrationLog   {
   /**
    * Log level type
    */
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+  public IntegrationLog logLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
     return this;
   }
@@ -216,10 +179,10 @@ public class IntegrationLog   {
   
   @ApiModelProperty(required = true, value = "Log level type")
   @JsonProperty("log_level")
-  public LogLevelEnum getLogLevel() {
+  public IntegrationLogLevel getLogLevel() {
     return logLevel;
   }
-  public void setLogLevel(LogLevelEnum logLevel) {
+  public void setLogLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
   }
 
@@ -367,10 +330,7 @@ public class IntegrationLog   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

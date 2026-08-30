@@ -18,7 +18,7 @@
 #' @field FEED_LENGTH_TOO_LONG Your feed contains too many items, some items will not be published. integer [optional]
 #' @field FEED_TOO_SMALL Your feed couldn't be validated because the file doesn't contain the minimum number of lines required. integer [optional]
 #' @field FETCH_ERROR Pinterest couldn't download your feed. integer [optional]
-#' @field FETCH_INACTIVE_FEED_ERROR Your feed wasn't ingested because it hasn’t changed in the previous 90 days. integer [optional]
+#' @field FETCH_INACTIVE_FEED_ERROR Your feed wasn't ingested because it hasn't changed in the previous 90 days. integer [optional]
 #' @field IMAGE_LINK_INVALID Some image links are formatted incorrectly. integer [optional]
 #' @field IMAGE_LINK_LENGTH_TOO_LONG Some items have image_link URLs that contain too many characters, so those items will not be published. integer [optional]
 #' @field IMAGE_LINK_MISSING Some items are missing an image link URL in their product metadata, those items will not be published. integer [optional]
@@ -94,7 +94,7 @@ CatalogsFeedValidationErrors <- R6::R6Class(
     #' @param FEED_LENGTH_TOO_LONG Your feed contains too many items, some items will not be published.
     #' @param FEED_TOO_SMALL Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
     #' @param FETCH_ERROR Pinterest couldn't download your feed.
-    #' @param FETCH_INACTIVE_FEED_ERROR Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+    #' @param FETCH_INACTIVE_FEED_ERROR Your feed wasn't ingested because it hasn't changed in the previous 90 days.
     #' @param IMAGE_LINK_INVALID Some image links are formatted incorrectly.
     #' @param IMAGE_LINK_LENGTH_TOO_LONG Some items have image_link URLs that contain too many characters, so those items will not be published.
     #' @param IMAGE_LINK_MISSING Some items are missing an image link URL in their product metadata, those items will not be published.

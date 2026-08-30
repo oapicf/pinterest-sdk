@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TieBreakerType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TieBreakerType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TieBreakerType {
+    title = TieBreakerType
+    description = TieBreakerType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  TieBreakerType {
+    title = TieBreakerType
+    description = TieBreakerType
+    implements = openapi_server.resourceTypes.TieBreakerType
+
+  }
+}

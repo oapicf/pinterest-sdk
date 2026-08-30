@@ -15,29 +15,22 @@
 
 typedef struct label_bulk_update_request_t label_bulk_update_request_t;
 
-
-// Enum STATUS for label_bulk_update_request
-
-typedef enum  { pinterest_rest_api_label_bulk_update_request_STATUS_NULL = 0, pinterest_rest_api_label_bulk_update_request_STATUS_ARCHIVED } pinterest_rest_api_label_bulk_update_request_STATUS_e;
-
-char* label_bulk_update_request_status_ToString(pinterest_rest_api_label_bulk_update_request_STATUS_e status);
-
-pinterest_rest_api_label_bulk_update_request_STATUS_e label_bulk_update_request_status_FromString(char* status);
+#include "label_status_bulk_update.h"
 
 
 
 typedef struct label_bulk_update_request_t {
     char *id; // string
-    pinterest_rest_api_label_bulk_update_request_STATUS_e status; //enum
-    char *value; // string
+    char *parent_id; // string
+    pinterest_rest_api_label_status_bulk_update__e status; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } label_bulk_update_request_t;
 
 __attribute__((deprecated)) label_bulk_update_request_t *label_bulk_update_request_create(
     char *id,
-    pinterest_rest_api_label_bulk_update_request_STATUS_e status,
-    char *value
+    char *parent_id,
+    pinterest_rest_api_label_status_bulk_update__e status
 );
 
 void label_bulk_update_request_free(label_bulk_update_request_t *label_bulk_update_request);

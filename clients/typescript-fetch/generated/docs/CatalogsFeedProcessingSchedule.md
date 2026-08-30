@@ -8,7 +8,7 @@ Daily processing schedule. This field is **OPTIONAL**. Use this to configure the
 Name | Type
 ------------ | -------------
 `time` | string
-`timezone` | string
+`timezone` | [CatalogsFeedProcessingScheduleTimezone](CatalogsFeedProcessingScheduleTimezone.md)
 
 ## Example
 
@@ -17,7 +17,7 @@ import type { CatalogsFeedProcessingSchedule } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "time": 02:59,
+  "time": null,
   "timezone": null,
 } satisfies CatalogsFeedProcessingSchedule
 

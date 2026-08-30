@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -168,12 +169,20 @@ func (c *KeywordsAPIController) KeywordsGet(w http.ResponseWriter, r *http.Reque
 			matchTypesParam = append(matchTypesParam, paramEnum)
 		}
 	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
 			query.Get("page_size"),
 			WithParse[int32](parseInt32),
 			WithMinimum[int32](1),
+			WithMaximum[int32](250),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "page_size", Err: err}, nil)
@@ -185,14 +194,7 @@ func (c *KeywordsAPIController) KeywordsGet(w http.ResponseWriter, r *http.Reque
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.KeywordsGet(r.Context(), adAccountIdParam, campaignIdParam, adGroupIdParam, adGroupIdsParam, matchTypesParam, pageSizeParam, bookmarkParam)
+	result, err := c.service.KeywordsGet(r.Context(), adAccountIdParam, campaignIdParam, adGroupIdParam, adGroupIdsParam, matchTypesParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -210,22 +212,27 @@ func (c *KeywordsAPIController) KeywordsCreate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var keywordsRequestParam KeywordsRequest
+	var keywordsCreateParam KeywordsCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&keywordsRequestParam); err != nil {
+	if err := d.Decode(&keywordsCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertKeywordsRequestRequired(keywordsRequestParam); err != nil {
+	if err := AssertKeywordsCreateRequired(keywordsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertKeywordsRequestConstraints(keywordsRequestParam); err != nil {
+	if err := AssertKeywordsCreateConstraints(keywordsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.KeywordsCreate(r.Context(), adAccountIdParam, keywordsRequestParam)
+	result, err := c.service.KeywordsCreate(r.Context(), adAccountIdParam, keywordsCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -243,22 +250,27 @@ func (c *KeywordsAPIController) KeywordsUpdate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var keywordUpdateBodyParam KeywordUpdateBody
+	var keywordsUpdateParam KeywordsUpdate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&keywordUpdateBodyParam); err != nil {
+	if err := d.Decode(&keywordsUpdateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertKeywordUpdateBodyRequired(keywordUpdateBodyParam); err != nil {
+	if err := AssertKeywordsUpdateRequired(keywordsUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertKeywordUpdateBodyConstraints(keywordUpdateBodyParam); err != nil {
+	if err := AssertKeywordsUpdateConstraints(keywordsUpdateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.KeywordsUpdate(r.Context(), adAccountIdParam, keywordUpdateBodyParam)
+	result, err := c.service.KeywordsUpdate(r.Context(), adAccountIdParam, keywordsUpdateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -322,17 +334,44 @@ func (c *KeywordsAPIController) TrendingKeywordsList(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &ParsingError{Param: "trend_type", Err: err}, nil)
 		return
 	}
-	var interestsParam []string
+	var interestsParam []TrendsL1Interest
 	if query.Has("interests") {
-		interestsParam = strings.Split(query.Get("interests"), ",")
+		paramSplits := strings.Split(query.Get("interests"), ",")
+		interestsParam = make([]TrendsL1Interest, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewTrendsL1InterestFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "interests", Err: err}, nil)
+				return
+			}
+			interestsParam = append(interestsParam, paramEnum)
+		}
 	}
-	var gendersParam []string
+	var gendersParam []TrendsGenderFilter
 	if query.Has("genders") {
-		gendersParam = strings.Split(query.Get("genders"), ",")
+		paramSplits := strings.Split(query.Get("genders"), ",")
+		gendersParam = make([]TrendsGenderFilter, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewTrendsGenderFilterFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "genders", Err: err}, nil)
+				return
+			}
+			gendersParam = append(gendersParam, paramEnum)
+		}
 	}
-	var agesParam []string
+	var agesParam []TrendsAgeBucket
 	if query.Has("ages") {
-		agesParam = strings.Split(query.Get("ages"), ",")
+		paramSplits := strings.Split(query.Get("ages"), ",")
+		agesParam = make([]TrendsAgeBucket, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewTrendsAgeBucketFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "ages", Err: err}, nil)
+				return
+			}
+			agesParam = append(agesParam, paramEnum)
+		}
 	}
 	var includeKeywordsParam []string
 	if query.Has("include_keywords") {
@@ -372,22 +411,6 @@ func (c *KeywordsAPIController) TrendingKeywordsList(w http.ResponseWriter, r *h
 		var param int32 = 50
 		limitParam = param
 	}
-	var includePredictionParam bool
-	if query.Has("include_prediction") {
-		param, err := parseBoolParameter(
-			query.Get("include_prediction"),
-			WithParse[bool](parseBool),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "include_prediction", Err: err}, nil)
-			return
-		}
-
-		includePredictionParam = param
-	} else {
-		var param bool = false
-		includePredictionParam = param
-	}
 	var includeDemographicsParam bool
 	if query.Has("include_demographics") {
 		param, err := parseBoolParameter(
@@ -404,7 +427,7 @@ func (c *KeywordsAPIController) TrendingKeywordsList(w http.ResponseWriter, r *h
 		var param bool = false
 		includeDemographicsParam = param
 	}
-	result, err := c.service.TrendingKeywordsList(r.Context(), regionParam, trendTypeParam, interestsParam, gendersParam, agesParam, includeKeywordsParam, normalizeAgainstGroupParam, limitParam, includePredictionParam, includeDemographicsParam)
+	result, err := c.service.TrendingKeywordsList(r.Context(), regionParam, trendTypeParam, interestsParam, gendersParam, agesParam, includeKeywordsParam, normalizeAgainstGroupParam, limitParam, includeDemographicsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -30,6 +30,7 @@ BulkUpsertRequestUpdate::__init()
 	//new std::list()std::list> keywords;
 	//new std::list()std::list> labels;
 	//new std::list()std::list> product_groups;
+	//new std::list()std::list> schedules;
 }
 
 void
@@ -69,6 +70,11 @@ BulkUpsertRequestUpdate::__cleanup()
 	//product_groups.RemoveAll(true);
 	//delete product_groups;
 	//product_groups = NULL;
+	//}
+	//if(schedules != NULL) {
+	//schedules.RemoveAll(true);
+	//delete schedules;
+	//schedules = NULL;
 	//}
 	//
 }
@@ -157,12 +163,12 @@ BulkUpsertRequestUpdate::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<Catalogs_product_groups_update_request> new_list;
-			Catalogs_product_groups_update_request inst;
+			list<BulkUpsertRequestUpdateCatalogProductGroupsItems> new_list;
+			BulkUpsertRequestUpdateCatalogProductGroupsItems inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("Catalogs_product_groups_update_request")) {
-					jsonToValue(&inst, temp_json, "Catalogs_product_groups_update_request", "");
+				if (isprimitive("BulkUpsertRequestUpdateCatalogProductGroupsItems")) {
+					jsonToValue(&inst, temp_json, "BulkUpsertRequestUpdateCatalogProductGroupsItems", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -181,12 +187,12 @@ BulkUpsertRequestUpdate::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<KeywordUpdate> new_list;
-			KeywordUpdate inst;
+			list<KeywordUpdateGenerated> new_list;
+			KeywordUpdateGenerated inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("KeywordUpdate")) {
-					jsonToValue(&inst, temp_json, "KeywordUpdate", "");
+				if (isprimitive("KeywordUpdateGenerated")) {
+					jsonToValue(&inst, temp_json, "KeywordUpdateGenerated", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -243,6 +249,30 @@ BulkUpsertRequestUpdate::fromJson(char* jsonStr)
 				new_list.push_back(inst);
 			}
 			product_groups = new_list;
+		}
+		
+	}
+	const gchar *schedulesKey = "schedules";
+	node = json_object_get_member(pJsonObject, schedulesKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<ScheduleUpdateRequest> new_list;
+			ScheduleUpdateRequest inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("ScheduleUpdateRequest")) {
+					jsonToValue(&inst, temp_json, "ScheduleUpdateRequest", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			schedules = new_list;
 		}
 		
 	}
@@ -333,18 +363,18 @@ BulkUpsertRequestUpdate::toJson()
 	
 	const gchar *campaignsKey = "campaigns";
 	json_object_set_member(pJsonObject, campaignsKey, node);
-	if (isprimitive("Catalogs_product_groups_update_request")) {
-		list<Catalogs_product_groups_update_request> new_list = static_cast<list <Catalogs_product_groups_update_request> > (getCatalogProductGroups());
-		node = converttoJson(&new_list, "Catalogs_product_groups_update_request", "array");
+	if (isprimitive("BulkUpsertRequestUpdateCatalogProductGroupsItems")) {
+		list<BulkUpsertRequestUpdateCatalogProductGroupsItems> new_list = static_cast<list <BulkUpsertRequestUpdateCatalogProductGroupsItems> > (getCatalogProductGroups());
+		node = converttoJson(&new_list, "BulkUpsertRequestUpdateCatalogProductGroupsItems", "array");
 	} else {
 		node = json_node_alloc();
-		list<Catalogs_product_groups_update_request> new_list = static_cast<list <Catalogs_product_groups_update_request> > (getCatalogProductGroups());
+		list<BulkUpsertRequestUpdateCatalogProductGroupsItems> new_list = static_cast<list <BulkUpsertRequestUpdateCatalogProductGroupsItems> > (getCatalogProductGroups());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<Catalogs_product_groups_update_request>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<BulkUpsertRequestUpdateCatalogProductGroupsItems>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			Catalogs_product_groups_update_request obj = *it;
+			BulkUpsertRequestUpdateCatalogProductGroupsItems obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -358,18 +388,18 @@ BulkUpsertRequestUpdate::toJson()
 	
 	const gchar *catalog_product_groupsKey = "catalog_product_groups";
 	json_object_set_member(pJsonObject, catalog_product_groupsKey, node);
-	if (isprimitive("KeywordUpdate")) {
-		list<KeywordUpdate> new_list = static_cast<list <KeywordUpdate> > (getKeywords());
-		node = converttoJson(&new_list, "KeywordUpdate", "array");
+	if (isprimitive("KeywordUpdateGenerated")) {
+		list<KeywordUpdateGenerated> new_list = static_cast<list <KeywordUpdateGenerated> > (getKeywords());
+		node = converttoJson(&new_list, "KeywordUpdateGenerated", "array");
 	} else {
 		node = json_node_alloc();
-		list<KeywordUpdate> new_list = static_cast<list <KeywordUpdate> > (getKeywords());
+		list<KeywordUpdateGenerated> new_list = static_cast<list <KeywordUpdateGenerated> > (getKeywords());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<KeywordUpdate>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<KeywordUpdateGenerated>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			KeywordUpdate obj = *it;
+			KeywordUpdateGenerated obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -433,6 +463,31 @@ BulkUpsertRequestUpdate::toJson()
 	
 	const gchar *product_groupsKey = "product_groups";
 	json_object_set_member(pJsonObject, product_groupsKey, node);
+	if (isprimitive("ScheduleUpdateRequest")) {
+		list<ScheduleUpdateRequest> new_list = static_cast<list <ScheduleUpdateRequest> > (getSchedules());
+		node = converttoJson(&new_list, "ScheduleUpdateRequest", "array");
+	} else {
+		node = json_node_alloc();
+		list<ScheduleUpdateRequest> new_list = static_cast<list <ScheduleUpdateRequest> > (getSchedules());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<ScheduleUpdateRequest>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			ScheduleUpdateRequest obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *schedulesKey = "schedules";
+	json_object_set_member(pJsonObject, schedulesKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -477,26 +532,26 @@ BulkUpsertRequestUpdate::setCampaigns(std::list <CampaignUpdateRequest> campaign
 	this->campaigns = campaigns;
 }
 
-std::list<Catalogs_product_groups_update_request>
+std::list<BulkUpsertRequestUpdateCatalogProductGroupsItems>
 BulkUpsertRequestUpdate::getCatalogProductGroups()
 {
 	return catalog_product_groups;
 }
 
 void
-BulkUpsertRequestUpdate::setCatalogProductGroups(std::list <Catalogs_product_groups_update_request> catalog_product_groups)
+BulkUpsertRequestUpdate::setCatalogProductGroups(std::list <BulkUpsertRequestUpdateCatalogProductGroupsItems> catalog_product_groups)
 {
 	this->catalog_product_groups = catalog_product_groups;
 }
 
-std::list<KeywordUpdate>
+std::list<KeywordUpdateGenerated>
 BulkUpsertRequestUpdate::getKeywords()
 {
 	return keywords;
 }
 
 void
-BulkUpsertRequestUpdate::setKeywords(std::list <KeywordUpdate> keywords)
+BulkUpsertRequestUpdate::setKeywords(std::list <KeywordUpdateGenerated> keywords)
 {
 	this->keywords = keywords;
 }
@@ -523,6 +578,18 @@ void
 BulkUpsertRequestUpdate::setProductGroups(std::list <ProductGroupPromotionUpdateRequest> product_groups)
 {
 	this->product_groups = product_groups;
+}
+
+std::list<ScheduleUpdateRequest>
+BulkUpsertRequestUpdate::getSchedules()
+{
+	return schedules;
+}
+
+void
+BulkUpsertRequestUpdate::setSchedules(std::list <ScheduleUpdateRequest> schedules)
+{
+	this->schedules = schedules;
 }
 
 

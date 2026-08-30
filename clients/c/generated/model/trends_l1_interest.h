@@ -1,0 +1,32 @@
+/*
+ * trends_l1_interest.h
+ *
+ * L1 interest categories for filtering trends.
+ */
+
+#ifndef _trends_l1_interest_H_
+#define _trends_l1_interest_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct trends_l1_interest_t trends_l1_interest_t;
+
+
+// Enum  for trends_l1_interest
+
+typedef enum { pinterest_rest_api_trends_l1_interest__NULL = 0, pinterest_rest_api_trends_l1_interest__animals, pinterest_rest_api_trends_l1_interest__architecture, pinterest_rest_api_trends_l1_interest__art, pinterest_rest_api_trends_l1_interest__beauty, pinterest_rest_api_trends_l1_interest__childrens_fashion, pinterest_rest_api_trends_l1_interest__design, pinterest_rest_api_trends_l1_interest__diy_and_crafts, pinterest_rest_api_trends_l1_interest__education, pinterest_rest_api_trends_l1_interest__electronics, pinterest_rest_api_trends_l1_interest__entertainment, pinterest_rest_api_trends_l1_interest__event_planning, pinterest_rest_api_trends_l1_interest__finance, pinterest_rest_api_trends_l1_interest__food_and_drinks, pinterest_rest_api_trends_l1_interest__gardening, pinterest_rest_api_trends_l1_interest__health, pinterest_rest_api_trends_l1_interest__home_decor, pinterest_rest_api_trends_l1_interest__mens_fashion, pinterest_rest_api_trends_l1_interest__parenting, pinterest_rest_api_trends_l1_interest__quotes, pinterest_rest_api_trends_l1_interest__sport, pinterest_rest_api_trends_l1_interest__travel, pinterest_rest_api_trends_l1_interest__vehicles, pinterest_rest_api_trends_l1_interest__wedding, pinterest_rest_api_trends_l1_interest__womens_fashion } pinterest_rest_api_trends_l1_interest__e;
+
+char* trends_l1_interest_trends_l1_interest_ToString(pinterest_rest_api_trends_l1_interest__e trends_l1_interest);
+
+pinterest_rest_api_trends_l1_interest__e trends_l1_interest_trends_l1_interest_FromString(char* trends_l1_interest);
+
+cJSON *trends_l1_interest_convertToJSON(pinterest_rest_api_trends_l1_interest__e trends_l1_interest);
+
+pinterest_rest_api_trends_l1_interest__e trends_l1_interest_parseFromJSON(cJSON *trends_l1_interestJSON);
+
+#endif /* _trends_l1_interest_H_ */
+

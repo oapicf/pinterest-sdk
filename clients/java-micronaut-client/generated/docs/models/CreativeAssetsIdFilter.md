@@ -8,7 +8,7 @@ The class is defined in **[CreativeAssetsIdFilter.java](../../src/main/java/org/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CREATIVE_ASSETS_ID** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**CREATIVE_ASSETS_ID** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 
 

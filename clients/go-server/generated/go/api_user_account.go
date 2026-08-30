@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -325,9 +326,18 @@ func (c *UserAccountAPIController) UserAccountAnalytics(w http.ResponseWriter, r
 		param := "ALL"
 		sourceParam = param
 	}
-	var metricTypesParam []string
+	var metricTypesParam []QuerymetrictypesItems
 	if query.Has("metric_types") {
-		metricTypesParam = strings.Split(query.Get("metric_types"), ",")
+		paramSplits := strings.Split(query.Get("metric_types"), ",")
+		metricTypesParam = make([]QuerymetrictypesItems, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewQuerymetrictypesItemsFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "metric_types", Err: err}, nil)
+				return
+			}
+			metricTypesParam = append(metricTypesParam, paramEnum)
+		}
 	}
 	var splitFieldParam string
 	if query.Has("split_field") {
@@ -380,9 +390,9 @@ func (c *UserAccountAPIController) UserAccountAnalyticsTopPins(w http.ResponseWr
 		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
 		return
 	}
-	var sortByParam string
+	var sortByParam TopPinsSortBy
 	if query.Has("sort_by") {
-		param := query.Get("sort_by")
+		param := TopPinsSortBy(query.Get("sort_by"))
 
 		sortByParam = param
 	} else {
@@ -434,9 +444,18 @@ func (c *UserAccountAPIController) UserAccountAnalyticsTopPins(w http.ResponseWr
 		param := "ALL"
 		sourceParam = param
 	}
-	var metricTypesParam []string
+	var metricTypesParam []QuerymetrictypesItems
 	if query.Has("metric_types") {
-		metricTypesParam = strings.Split(query.Get("metric_types"), ",")
+		paramSplits := strings.Split(query.Get("metric_types"), ",")
+		metricTypesParam = make([]QuerymetrictypesItems, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewQuerymetrictypesItemsFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "metric_types", Err: err}, nil)
+				return
+			}
+			metricTypesParam = append(metricTypesParam, paramEnum)
+		}
 	}
 	var numOfPinsParam int32
 	if query.Has("num_of_pins") {
@@ -456,11 +475,11 @@ func (c *UserAccountAPIController) UserAccountAnalyticsTopPins(w http.ResponseWr
 		var param int32 = 10
 		numOfPinsParam = param
 	}
-	var createdInLastNDaysParam int32
+	var createdInLastNDaysParam float32
 	if query.Has("created_in_last_n_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("created_in_last_n_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "created_in_last_n_days", Err: err}, nil)
@@ -512,9 +531,9 @@ func (c *UserAccountAPIController) UserAccountAnalyticsTopVideoPins(w http.Respo
 		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
 		return
 	}
-	var sortByParam string
+	var sortByParam TopVideoPinsSortBy
 	if query.Has("sort_by") {
-		param := query.Get("sort_by")
+		param := TopVideoPinsSortBy(query.Get("sort_by"))
 
 		sortByParam = param
 	} else {
@@ -566,9 +585,18 @@ func (c *UserAccountAPIController) UserAccountAnalyticsTopVideoPins(w http.Respo
 		param := "ALL"
 		sourceParam = param
 	}
-	var metricTypesParam []string
+	var metricTypesParam []QueryvideopinmetrictypesItems
 	if query.Has("metric_types") {
-		metricTypesParam = strings.Split(query.Get("metric_types"), ",")
+		paramSplits := strings.Split(query.Get("metric_types"), ",")
+		metricTypesParam = make([]QueryvideopinmetrictypesItems, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewQueryvideopinmetrictypesItemsFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "metric_types", Err: err}, nil)
+				return
+			}
+			metricTypesParam = append(metricTypesParam, paramEnum)
+		}
 	}
 	var numOfPinsParam int32
 	if query.Has("num_of_pins") {
@@ -588,11 +616,11 @@ func (c *UserAccountAPIController) UserAccountAnalyticsTopVideoPins(w http.Respo
 		var param int32 = 10
 		numOfPinsParam = param
 	}
-	var createdInLastNDaysParam int32
+	var createdInLastNDaysParam float32
 	if query.Has("created_in_last_n_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("created_in_last_n_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "created_in_last_n_days", Err: err}, nil)
@@ -680,6 +708,36 @@ func (c *UserAccountAPIController) UserFollowingGet(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
+	var explicitFollowingParam bool
+	if query.Has("explicit_following") {
+		param, err := parseBoolParameter(
+			query.Get("explicit_following"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "explicit_following", Err: err}, nil)
+			return
+		}
+
+		explicitFollowingParam = param
+	} else {
+		var param bool = false
+		explicitFollowingParam = param
+	}
+	var feedTypeParam UserFollowingFeedType
+	if query.Has("feed_type") {
+		param := UserFollowingFeedType(query.Get("feed_type"))
+
+		feedTypeParam = param
+	} else {
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -705,37 +763,7 @@ func (c *UserAccountAPIController) UserFollowingGet(w http.ResponseWriter, r *ht
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var feedTypeParam UserFollowingFeedType
-	if query.Has("feed_type") {
-		param := query.Get("feed_type")
-
-		feedTypeParam = param
-	} else {
-	}
-	var explicitFollowingParam bool
-	if query.Has("explicit_following") {
-		param, err := parseBoolParameter(
-			query.Get("explicit_following"),
-			WithParse[bool](parseBool),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "explicit_following", Err: err}, nil)
-			return
-		}
-
-		explicitFollowingParam = param
-	} else {
-		var param bool = false
-		explicitFollowingParam = param
-	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.UserFollowingGet(r.Context(), bookmarkParam, pageSizeParam, feedTypeParam, explicitFollowingParam, adAccountIdParam)
+	result, err := c.service.UserFollowingGet(r.Context(), adAccountIdParam, explicitFollowingParam, feedTypeParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -752,6 +780,29 @@ func (c *UserAccountAPIController) BoardsUserFollowsList(w http.ResponseWriter, 
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
+	var explicitFollowingParam bool
+	if query.Has("explicit_following") {
+		param, err := parseBoolParameter(
+			query.Get("explicit_following"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "explicit_following", Err: err}, nil)
+			return
+		}
+
+		explicitFollowingParam = param
+	} else {
+		var param bool = false
+		explicitFollowingParam = param
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -777,30 +828,7 @@ func (c *UserAccountAPIController) BoardsUserFollowsList(w http.ResponseWriter, 
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var explicitFollowingParam bool
-	if query.Has("explicit_following") {
-		param, err := parseBoolParameter(
-			query.Get("explicit_following"),
-			WithParse[bool](parseBool),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "explicit_following", Err: err}, nil)
-			return
-		}
-
-		explicitFollowingParam = param
-	} else {
-		var param bool = false
-		explicitFollowingParam = param
-	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.BoardsUserFollowsList(r.Context(), bookmarkParam, pageSizeParam, explicitFollowingParam, adAccountIdParam)
+	result, err := c.service.BoardsUserFollowsList(r.Context(), adAccountIdParam, explicitFollowingParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -818,22 +846,27 @@ func (c *UserAccountAPIController) FollowUserUpdate(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{"username"}, nil)
 		return
 	}
-	var followUserRequestParam FollowUserRequest
+	var followUserCreateParam FollowUserCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&followUserRequestParam); err != nil {
+	if err := d.Decode(&followUserCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertFollowUserRequestRequired(followUserRequestParam); err != nil {
+	if err := AssertFollowUserCreateRequired(followUserCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertFollowUserRequestConstraints(followUserRequestParam); err != nil {
+	if err := AssertFollowUserCreateConstraints(followUserCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.FollowUserUpdate(r.Context(), usernameParam, followUserRequestParam)
+	result, err := c.service.FollowUserUpdate(r.Context(), usernameParam, followUserCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -892,18 +925,23 @@ func (c *UserAccountAPIController) VerifyWebsiteUpdate(w http.ResponseWriter, r 
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var userWebsiteVerifyRequestParam UserWebsiteVerifyRequest
+	var userWebsiteCreateParam UserWebsiteCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&userWebsiteVerifyRequestParam); err != nil {
+	if err := d.Decode(&userWebsiteCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertUserWebsiteVerifyRequestRequired(userWebsiteVerifyRequestParam); err != nil {
+	if err := AssertUserWebsiteCreateRequired(userWebsiteCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertUserWebsiteVerifyRequestConstraints(userWebsiteVerifyRequestParam); err != nil {
+	if err := AssertUserWebsiteCreateConstraints(userWebsiteCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -914,7 +952,7 @@ func (c *UserAccountAPIController) VerifyWebsiteUpdate(w http.ResponseWriter, r 
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.VerifyWebsiteUpdate(r.Context(), userWebsiteVerifyRequestParam, adAccountIdParam)
+	result, err := c.service.VerifyWebsiteUpdate(r.Context(), userWebsiteCreateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -975,7 +1013,6 @@ func (c *UserAccountAPIController) WebsiteVerificationGet(w http.ResponseWriter,
 }
 
 // UserAccountFollowedInterests - List following interests
-// Deprecated
 func (c *UserAccountAPIController) UserAccountFollowedInterests(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)

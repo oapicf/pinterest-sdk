@@ -5,7 +5,7 @@ Protected Class UpdateMemberAssetsResultsResponseArray
 		#tag Note
 			List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
 		#tag EndNote
-		items() As OpenAPIClient.Models.UpdateMemberAssetsResultsResponseArrayItemsInner
+		items() As OpenAPIClient.Models.UpdateMemberAssetResultItem
 	#tag EndProperty
 
 
@@ -50,7 +50,7 @@ Protected Class UpdateMemberAssetsResultsResponseArray
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="UpdateMemberAssetsResultsResponseArrayItemsInner"
+			Type="UpdateMemberAssetResultItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

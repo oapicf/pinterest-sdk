@@ -14,6 +14,7 @@
 #include "Helpers.h"
 #include "QuizPinQuestion.h"
 #include "QuizPinResult.h"
+#include "TieBreakerType.h"
 #include <list>
 
 namespace Tiny {
@@ -54,35 +55,35 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setQuestions(std::list <QuizPinQuestion> questions);
+	void setQuestions(std::list<QuizPinQuestion> questions);
 	/*! \brief Get 
 	 */
 	std::list<QuizPinResult> getResults();
 
 	/*! \brief Set 
 	 */
-	void setResults(std::list <QuizPinResult> results);
+	void setResults(std::list<QuizPinResult> results);
 	/*! \brief Get 
 	 */
 	QuizPinResult getTieBreakerCustomResult();
 
 	/*! \brief Set 
 	 */
-	void setTieBreakerCustomResult(QuizPinResult  tie_breaker_custom_result);
-	/*! \brief Get Quiz ad tie breaker type, default is RANDOM
+	void setTieBreakerCustomResult(QuizPinResult tie_breaker_custom_result);
+	/*! \brief Get 
 	 */
-	std::string getTieBreakerType();
+	TieBreakerType getTieBreakerType();
 
-	/*! \brief Set Quiz ad tie breaker type, default is RANDOM
+	/*! \brief Set 
 	 */
-	void setTieBreakerType(std::string  tie_breaker_type);
+	void setTieBreakerType(TieBreakerType tie_breaker_type);
 
 
     private:
     std::list<QuizPinQuestion> questions;
     std::list<QuizPinResult> results;
     QuizPinResult tie_breaker_custom_result;
-    std::string tie_breaker_type{};
+    TieBreakerType tie_breaker_type;
 };
 }
 

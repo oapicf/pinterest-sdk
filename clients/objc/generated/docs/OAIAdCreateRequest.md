@@ -16,15 +16,16 @@ Name | Type | Description | Notes
 **disclosureUrl** | **NSString*** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional] 
 **gridClickType** | [**OAIGridClickType***](OAIGridClickType.md) |  | [optional] 
 **iosDeepLink** | **NSString*** | Deep link URL for iOS devices. | [optional] 
+**isCarting** | **NSNumber*** | Is the ad a carting/WTB ad? | [optional] 
 **isPinDeleted** | **NSNumber*** | Is original pin deleted? | [optional] 
 **isRemovable** | **NSNumber*** | Is pin repinnable? | [optional] 
 **leadFormId** | **NSString*** | Lead form ID for lead ad generation. | [optional] 
 **name** | **NSString*** | Name of the ad - 255 chars max. | [optional] 
-**quizPinData** | [**OAIQuizPinData***](OAIQuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
-**status** | [**OAIEntityStatus***](OAIEntityStatus.md) |  | [optional] 
-**trackingUrls** | [**OAITrackingUrls***](OAITrackingUrls.md) |  | [optional] 
-**viewTrackingUrl** | **NSString*** | Tracking URL for ad impressions. | [optional] 
 **pinId** | **NSString*** | Pin ID. | 
+**quizPinData** | [**NSObject***](.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
+**status** | [**OAIEntityStatus***](OAIEntityStatus.md) |  | [optional] 
+**trackingUrls** | [**NSObject***](.md) |  | [optional] 
+**viewTrackingUrl** | **NSString*** | Tracking URL for ad impressions. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

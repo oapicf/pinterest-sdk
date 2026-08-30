@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -18,6 +18,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.HttpMethod;
 
 
 
@@ -26,37 +27,11 @@ import java.util.Map;
  */
 
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogClientRequest   {
   
   private String host;
-
-
-  public enum MethodEnum {
-    GET("GET"),
-    HEAD("HEAD"),
-    POST("POST"),
-    PUT("PUT"),
-    DELETE("DELETE"),
-    CONNECT("CONNECT"),
-    OPTIONS("OPTIONS"),
-    TRACE("TRACE"),
-    PATCH("PATCH");
-
-    private String value;
-
-    MethodEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private MethodEnum method;
+  private HttpMethod method;
   private String path;
   private Map<String, String> requestHeaders = new HashMap<>();
   private Map<String, String> responseHeaders = new HashMap<>();
@@ -82,7 +57,7 @@ public class IntegrationLogClientRequest   {
 
   /**
    */
-  public IntegrationLogClientRequest method(MethodEnum method) {
+  public IntegrationLogClientRequest method(HttpMethod method) {
     this.method = method;
     return this;
   }
@@ -90,10 +65,10 @@ public class IntegrationLogClientRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("method")
-  public MethodEnum getMethod() {
+  public HttpMethod getMethod() {
     return method;
   }
-  public void setMethod(MethodEnum method) {
+  public void setMethod(HttpMethod method) {
     this.method = method;
   }
 
@@ -211,10 +186,7 @@ public class IntegrationLogClientRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

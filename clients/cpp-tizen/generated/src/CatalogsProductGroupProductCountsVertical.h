@@ -12,7 +12,6 @@
 #include "CatalogsCreativeAssetsProductGroupProductCounts.h"
 #include "CatalogsHotelProductGroupProductCounts.h"
 #include "CatalogsRetailProductGroupProductCounts.h"
-#include "CatalogsType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -51,11 +50,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	long long getInStock();
@@ -91,14 +90,30 @@ public:
 	/*! \brief Set 
 	 */
 	void setVideos(long long  videos);
+	/*! \brief Get 
+	 */
+	long long getAppLinks();
+
+	/*! \brief Set 
+	 */
+	void setAppLinks(long long  app_links);
+	/*! \brief Get 
+	 */
+	long long getImages();
+
+	/*! \brief Set 
+	 */
+	void setImages(long long  images);
 
 private:
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	long long in_stock;
 	long long out_of_stock;
 	long long preorder;
 	long long total;
 	long long videos;
+	long long app_links;
+	long long images;
 	void __init();
 	void __cleanup();
 

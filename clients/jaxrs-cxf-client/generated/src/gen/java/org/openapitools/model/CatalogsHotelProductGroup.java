@@ -12,9 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsHotelProductGroup  {
   
  /**
-  * Catalog id pertaining to the hotel product group.
+  * Catalog ID pertaining to the product group.
   */
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
 
   private String catalogId;
 
@@ -68,16 +68,16 @@ HOTEL(String.valueOf("HOTEL"));
   private CatalogsHotelProductGroupFilters filters;
 
  /**
-  * ID of the hotel product group.
+  * ID of the catalog product group.
   */
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the hotel product group.")
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
 
   private String id;
 
  /**
-  * Name of hotel product group
+  * Name of catalog product group
   */
-  @ApiModelProperty(example = "Most Popular", value = "Name of hotel product group")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
 
   private String name;
 
@@ -92,7 +92,7 @@ HOTEL(String.valueOf("HOTEL"));
 
   private Integer updatedAt;
  /**
-   * Catalog id pertaining to the hotel product group.
+   * Catalog ID pertaining to the product group.
    * @return catalogId
   **/
   @JsonProperty("catalog_id")
@@ -185,7 +185,7 @@ HOTEL(String.valueOf("HOTEL"));
   }
 
  /**
-   * ID of the hotel product group.
+   * ID of the catalog product group.
    * @return id
   **/
   @JsonProperty("id")
@@ -203,7 +203,7 @@ HOTEL(String.valueOf("HOTEL"));
   }
 
  /**
-   * Name of hotel product group
+   * Name of catalog product group
    * @return name
   **/
   @JsonProperty("name")
@@ -304,10 +304,7 @@ HOTEL(String.valueOf("HOTEL"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

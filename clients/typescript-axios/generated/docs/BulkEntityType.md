@@ -1,6 +1,6 @@
 # BulkEntityType
 
-Refers ads entity type. Schedule enum is only applicable to beta users
+Refers ads entity type.
 
 ## Enum
 
@@ -17,5 +17,7 @@ Refers ads entity type. Schedule enum is only applicable to beta users
 * `Label` (value: `'LABEL'`)
 
 * `Schedule` (value: `'SCHEDULE'`)
+
+* `EntityHistory` (value: `'ENTITY_HISTORY'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

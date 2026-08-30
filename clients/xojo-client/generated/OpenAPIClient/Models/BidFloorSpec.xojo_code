@@ -2,31 +2,49 @@
 Protected Class BidFloorSpec
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Ad group billable event type.
+		#tag EndNote
 		billable_event As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			List of ISO 3166-1 alpha-2 country codes.
+		#tag EndNote
 		countries() As Country
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Creative type for the bid floor request.
+		#tag EndNote
 		creative_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Currency for the bid floor value.
+		#tag EndNote
 		currency As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Campaign objective type.
+		#tag EndNote
 		objective_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Optimization goal metadata.
+		#tag EndNote
 		optimization_goal_metadata As OpenAPIClient.Models.OptimizationGoalMetadata
 	#tag EndProperty
 
@@ -104,7 +122,7 @@ Protected Class BidFloorSpec
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ObjectiveType"
+			Type="BidFloorObjectiveType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

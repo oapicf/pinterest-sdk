@@ -1,21 +1,19 @@
 package org.openapitools.api;
 
-import org.openapitools.model.BrandAccountsCreate200Response;
-import org.openapitools.model.BrandAccountsCreateRequest;
-import org.openapitools.model.BrandAccountsUpdateRequest;
-import org.openapitools.model.DeletePartnersRequest;
-import org.openapitools.model.DeletePartnersResponse;
-import org.openapitools.model.DeletedMembersResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.BrandAccount;
+import org.openapitools.model.BrandAccountCreate;
+import org.openapitools.model.BrandAccountUpdate;
+import org.openapitools.model.BusinessMembershipMember;
+import org.openapitools.model.DeleteBusinessMembership200Response;
+import org.openapitools.model.DeleteBusinessMembershipBody;
+import org.openapitools.model.DeleteBusinessPartners;
+import org.openapitools.model.DeleteBusinessPartnersDelete;
 import org.openapitools.model.GetBusinessEmployers200Response;
-import org.openapitools.model.GetBusinessMembers200Response;
-import org.openapitools.model.GetBusinessPartners200Response;
 import org.openapitools.model.MemberBusinessRole;
-import org.openapitools.model.MembersToDeleteBody;
 import org.openapitools.model.PartnerType;
-import org.openapitools.model.SystemUserUpdateRequest;
-import org.openapitools.model.UpdateMemberBusinessRoleBody;
-import org.openapitools.model.UpdateMemberResultsResponseArray;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.SystemUserUpdateWithRequiredBody;
+import org.openapitools.model.UpdateBusinessMembershipsResponse;
 
 import java.util.List;
 import java.util.Map;
@@ -50,10 +48,15 @@ public interface BusinessAccessRelationshipsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create a Brand Account", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BrandAccountsCreate200Response brandAccountsCreate(@PathParam("business_hierarchy_id") String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BrandAccount.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = BrandAccount.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BrandAccount brandAccountsCreate(@PathParam("business_hierarchy_id") String businessHierarchyId, BrandAccountCreate brandAccountCreate);
 
     /**
      * Update a Brand Account
@@ -67,15 +70,15 @@ public interface BusinessAccessRelationshipsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update a Brand Account", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 401, message = "Not authenticated to update Brand Account", response = Error.class),
-        @ApiResponse(code = 403, message = "Not authorized to update Brand Account", response = Error.class),
-        @ApiResponse(code = 404, message = "Brand account not found", response = Error.class),
-        @ApiResponse(code = 409, message = "This account is not a brand account.", response = Error.class),
-        @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BrandAccountsCreate200Response brandAccountsUpdate(@PathParam("business_hierarchy_id") String businessHierarchyId, @PathParam("brand_account_id") String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BrandAccount.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 409, message = "The request could not be processed because of a conflict in the current state of the resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BrandAccount brandAccountsUpdate(@PathParam("brand_account_id") String brandAccountId, @PathParam("business_hierarchy_id") String businessHierarchyId, BrandAccountUpdate brandAccountUpdate);
 
     /**
      * Terminate business memberships
@@ -89,9 +92,9 @@ public interface BusinessAccessRelationshipsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Terminate business memberships", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = DeletedMembersResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public DeletedMembersResponse deleteBusinessMembership(@PathParam("business_id") String businessId, MembersToDeleteBody membersToDeleteBody);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = DeleteBusinessMembership200Response.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public DeleteBusinessMembership200Response deleteBusinessMembership(@PathParam("business_id") String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody);
 
     /**
      * Terminate business partnerships
@@ -105,10 +108,10 @@ public interface BusinessAccessRelationshipsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Terminate business partnerships", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = DeletePartnersResponse.class),
-        @ApiResponse(code = 404, message = "A supplied partner id doesn't exist", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public DeletePartnersResponse deleteBusinessPartners(@PathParam("business_id") String businessId, DeletePartnersRequest deletePartnersRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = DeleteBusinessPartners.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public DeleteBusinessPartners deleteBusinessPartners(@PathParam("business_id") String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete);
 
     /**
      * List business employers for user
@@ -121,9 +124,14 @@ public interface BusinessAccessRelationshipsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List business employers for user", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = GetBusinessEmployers200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public GetBusinessEmployers200Response getBusinessEmployers(@QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = GetBusinessEmployers200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public GetBusinessEmployers200Response getBusinessEmployers(@QueryParam("assets_summary") @DefaultValue("true")Boolean assetsSummary, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
 
     /**
      * Get business members
@@ -136,9 +144,14 @@ public interface BusinessAccessRelationshipsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get business members", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = GetBusinessMembers200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public GetBusinessMembers200Response getBusinessMembers(@PathParam("business_id") String businessId, @QueryParam("fetch_system_users") @DefaultValue("false")Boolean fetchSystemUsers, @QueryParam("assets_summary") @DefaultValue("false")Boolean assetsSummary, @QueryParam("business_roles") List<MemberBusinessRole> businessRoles, @QueryParam("member_ids") String memberIds, @QueryParam("start_index") @DefaultValue("0")Integer startIndex, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = GetBusinessEmployers200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public GetBusinessEmployers200Response getBusinessMembers(@PathParam("business_id") String businessId, @QueryParam("fetch_system_users") @DefaultValue("false")Boolean fetchSystemUsers, @QueryParam("assets_summary") @DefaultValue("false")Boolean assetsSummary, @QueryParam("business_roles") List<MemberBusinessRole> businessRoles, @QueryParam("member_ids") String memberIds, @QueryParam("start_index") @DefaultValue("0")Integer startIndex, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
 
     /**
      * Get business partners
@@ -151,9 +164,14 @@ public interface BusinessAccessRelationshipsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get business partners", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = GetBusinessPartners200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public GetBusinessPartners200Response getBusinessPartners(@PathParam("business_id") String businessId, @QueryParam("assets_summary") @DefaultValue("false")Boolean assetsSummary, @QueryParam("partner_type") PartnerType partnerType, @QueryParam("partner_ids") String partnerIds, @QueryParam("start_index") @DefaultValue("0")Integer startIndex, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = GetBusinessEmployers200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public GetBusinessEmployers200Response getBusinessPartners(@PathParam("business_id") String businessId, @QueryParam("assets_summary") @DefaultValue("false")Boolean assetsSummary, @QueryParam("partner_type") PartnerType partnerType, @QueryParam("partner_ids") String partnerIds, @QueryParam("start_index") @DefaultValue("0")Integer startIndex, @QueryParam("sort_ascending") Boolean sortAscending, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
 
     /**
      * Update a system user information.
@@ -167,10 +185,14 @@ public interface BusinessAccessRelationshipsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update a system user information.", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "System user updated successfully."),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public void systemUserUpdate(@PathParam("business_id") String businessId, @PathParam("system_user_id") String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded."),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public void systemUserUpdate(@PathParam("business_id") String businessId, @PathParam("system_user_id") String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody);
 
     /**
      * Update member&#39;s business role
@@ -184,7 +206,12 @@ public interface BusinessAccessRelationshipsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update member's business role", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = UpdateMemberResultsResponseArray.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public UpdateMemberResultsResponseArray updateBusinessMemberships(@PathParam("business_id") String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = UpdateBusinessMembershipsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public UpdateBusinessMembershipsResponse updateBusinessMemberships(@PathParam("business_id") String businessId, List<BusinessMembershipMember> businessMembershipMember);
 }

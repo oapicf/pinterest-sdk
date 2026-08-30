@@ -8,11 +8,13 @@ package org.openapitools.server.model
  * @param conversionEvent  for example: ''null''
  * @param conversionTagId Id of the tag. for example: ''2614324385652''
  * @param createdTime Creation date in epoch format. for example: ''1564768710''
+ * @param reportingConversionEvent For advertiser-defined events, the reporting event label shown in optimization UIs. for example: ''GET_QUOTE''
 */
 final case class ConversionEventResponse (
   adAccountId: Option[String] = None,
   conversionEvent: Option[ConversionTagType] = None,
   conversionTagId: Option[String] = None,
-  createdTime: Option[Int] = None
+  createdTime: Option[Int] = None,
+  reportingConversionEvent: Option[String] = None
 )
 

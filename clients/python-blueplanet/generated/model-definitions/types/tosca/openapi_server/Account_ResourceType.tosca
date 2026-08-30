@@ -7,6 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  UserAccountType = openapi_server.resourceTypes.UserAccountType
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -22,14 +23,13 @@ resourceTypes {
           optional = false
         }
         account_type {
-          type =  string
+          type = UserAccountType
           description = "Type of account"
-          enum = ["PINNER", "BUSINESS"]
           optional = false
         }
         board_count {
           type =  integer
-          description = "User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards."
+          description = "  User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards."
           optional = false
         }
         business_name {

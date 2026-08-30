@@ -6,16 +6,16 @@ const Service = require('./Service');
 * Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 *
 * boardUnderscoreid String Unique identifier of a board.
-* boardSection BoardSection Create a board section.
+* boardSectionCreate BoardSectionCreate 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns BoardSection
 * */
-const board_sections/create = ({ boardUnderscoreid, boardSection, adUnderscoreaccountUnderscoreid }) => new Promise(
+const board_sections/create = ({ boardUnderscoreid, boardSectionCreate, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         boardUnderscoreid,
-        boardSection,
+        boardSectionCreate,
         adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
@@ -33,7 +33,7 @@ const board_sections/create = ({ boardUnderscoreid, boardSection, adUnderscoreac
 * boardUnderscoreid String Unique identifier of a board.
 * sectionUnderscoreid String Unique identifier of a board section.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
-* no response value expected for this operation
+* returns BoardSection
 * */
 const board_sections/delete = ({ boardUnderscoreid, sectionUnderscoreid, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
@@ -58,7 +58,7 @@ const board_sections/delete = ({ boardUnderscoreid, sectionUnderscoreid, adUnder
 * boardUnderscoreid String Unique identifier of a board.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns board_sections_list_200_response
 * */
 const board_sections/list = ({ boardUnderscoreid, adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
@@ -86,7 +86,7 @@ const board_sections/list = ({ boardUnderscoreid, adUnderscoreaccountUnderscorei
 * sectionUnderscoreid String Unique identifier of a board section.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns boards_list_pins_200_response
 * */
 const board_sections/list_pins = ({ boardUnderscoreid, sectionUnderscoreid, adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
@@ -113,17 +113,17 @@ const board_sections/list_pins = ({ boardUnderscoreid, sectionUnderscoreid, adUn
 *
 * boardUnderscoreid String Unique identifier of a board.
 * sectionUnderscoreid String Unique identifier of a board section.
-* boardSection BoardSection Update a board section.
+* boardSectionUpdateWithRequiredBody BoardSectionUpdateWithRequiredBody 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns BoardSection
 * */
-const board_sections/update = ({ boardUnderscoreid, sectionUnderscoreid, boardSection, adUnderscoreaccountUnderscoreid }) => new Promise(
+const board_sections/update = ({ boardUnderscoreid, sectionUnderscoreid, boardSectionUpdateWithRequiredBody, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         boardUnderscoreid,
         sectionUnderscoreid,
-        boardSection,
+        boardSectionUpdateWithRequiredBody,
         adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
@@ -163,7 +163,7 @@ const boards/create = ({ boardCreate, adUnderscoreaccountUnderscoreid }) => new 
 *
 * boardUnderscoreid String 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
-* no response value expected for this operation
+* returns Board
 * */
 const boards/delete = ({ boardUnderscoreid, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
@@ -235,23 +235,23 @@ const boards/list = ({ adUnderscoreaccountUnderscoreid, privacy, bookmark, pageU
 * Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 *
 * boardUnderscoreid String Unique identifier of a board.
-* bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * creativeUnderscoretypes List Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * pinUnderscoremetrics Boolean Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
+* bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns boards_list_pins_200_response
 * */
-const boards/list_pins = ({ boardUnderscoreid, bookmark, pageUnderscoresize, creativeUnderscoretypes, adUnderscoreaccountUnderscoreid, pinUnderscoremetrics }) => new Promise(
+const boards/list_pins = ({ boardUnderscoreid, creativeUnderscoretypes, adUnderscoreaccountUnderscoreid, pinUnderscoremetrics, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         boardUnderscoreid,
-        bookmark,
-        pageUnderscoresize,
         creativeUnderscoretypes,
         adUnderscoreaccountUnderscoreid,
         pinUnderscoremetrics,
+        bookmark,
+        pageUnderscoresize,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

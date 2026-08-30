@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **String** | Label ID. | 
-**Status** | **String** | Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity. | [optional] 
-**Value** | **String** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit. | [optional] 
+**ParentId** | **String** | Unique identifier of the asset you are labelling. Currently, you can only label campaigns. | 
+**Status** | [**LabelStatusBulkUpdate**](LabelStatusBulkUpdate.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$LabelBulkUpdateRequest = Initialize-PSOpenAPIToolsLabelBulkUpdateRequest  -Id 1106385754497 `
- -Status ARCHIVED `
- -Value null
+$LabelBulkUpdateRequest = Initialize-PSOpenAPIToolsLabelBulkUpdateRequest  -Id null `
+ -ParentId null `
+ -Status null
 ```
 
 - Convert the resource to JSON

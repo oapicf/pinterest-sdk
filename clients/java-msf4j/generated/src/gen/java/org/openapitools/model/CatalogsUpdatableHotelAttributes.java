@@ -16,7 +16,7 @@ import org.openapitools.model.CatalogsHotelGuestRatings;
 /**
  * CatalogsUpdatableHotelAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsUpdatableHotelAttributes   {
   @JsonProperty("address")
   private CatalogsHotelAddress address;
@@ -75,10 +75,10 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
    /**
-   * Get address
+   * Hotel address
    * @return address
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Hotel address")
   public CatalogsHotelAddress getAddress() {
     return address;
   }
@@ -255,10 +255,10 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
    /**
-   * Get guestRatings
+   * If specified, you must provide all properties
    * @return guestRatings
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "If specified, you must provide all properties")
   public CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
   }
@@ -448,10 +448,7 @@ public class CatalogsUpdatableHotelAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -11,7 +11,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**promotionsUpdate**](#promotionsupdate) | **PATCH** /ad_accounts/{ad_account_id}/promotions | Update promotions|
 
 # **promotionsCreate**
-> PromotionsResponse promotionsCreate(promotionCreateRequest)
+> PromotionsResponse promotionsCreate(promotionCreate)
 
 Create multiple new promotions.
 
@@ -27,11 +27,11 @@ const configuration = new Configuration();
 const apiInstance = new PromotionsApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let promotionCreateRequest: Array<PromotionCreateRequest>; //List of promotions to create, size limit [1, 30].
+let promotionCreate: Array<PromotionCreate>; //
 
 const { status, data } = await apiInstance.promotionsCreate(
     adAccountId,
-    promotionCreateRequest
+    promotionCreate
 );
 ```
 
@@ -39,7 +39,7 @@ const { status, data } = await apiInstance.promotionsCreate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **promotionCreateRequest** | **Array<PromotionCreateRequest>**| List of promotions to create, size limit [1, 30]. | |
+| **promotionCreate** | **Array<PromotionCreate>**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 
 
@@ -60,14 +60,18 @@ const { status, data } = await apiInstance.promotionsCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid create promotions request parameters. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotionsDelete**
-> promotionsDelete()
+> Promotion promotionsDelete()
 
 Delete a promotion within Pinterest.
 
@@ -82,12 +86,12 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PromotionsApi(configuration);
 
+let promotionId: string; //Promotion ID (default to undefined)
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let promotionId: string; //Unique identifier of a promotion (default to undefined)
 
 const { status, data } = await apiInstance.promotionsDelete(
-    adAccountId,
-    promotionId
+    promotionId,
+    adAccountId
 );
 ```
 
@@ -95,13 +99,13 @@ const { status, data } = await apiInstance.promotionsDelete(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
+| **promotionId** | [**string**] | Promotion ID | defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **promotionId** | [**string**] | Unique identifier of a promotion | defaults to undefined|
 
 
 ### Return type
 
-void (empty response body)
+**Promotion**
 
 ### Authorization
 
@@ -116,13 +120,19 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | Promotion deleted successfully |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**204** | Resource deleted successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotionsGet**
-> PromotionResponse promotionsGet()
+> Promotion promotionsGet()
 
 Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
 
@@ -137,12 +147,12 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PromotionsApi(configuration);
 
+let promotionId: string; //Promotion ID (default to undefined)
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let promotionId: string; //Unique identifier of a promotion (default to undefined)
 
 const { status, data } = await apiInstance.promotionsGet(
-    adAccountId,
-    promotionId
+    promotionId,
+    adAccountId
 );
 ```
 
@@ -150,13 +160,13 @@ const { status, data } = await apiInstance.promotionsGet(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
+| **promotionId** | [**string**] | Promotion ID | defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **promotionId** | [**string**] | Unique identifier of a promotion | defaults to undefined|
 
 
 ### Return type
 
-**PromotionResponse**
+**Promotion**
 
 ### Authorization
 
@@ -171,9 +181,13 @@ const { status, data } = await apiInstance.promotionsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | The promotion ID for the given ad account ID was not found. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -194,15 +208,15 @@ const configuration = new Configuration();
 const apiInstance = new PromotionsApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
-let order: 'ASCENDING' | 'DESCENDING'; //The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional) (default to undefined)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+let order: PinterestLibPaginationOrder; //The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.promotionsList(
     adAccountId,
+    bookmark,
     pageSize,
-    order,
-    bookmark
+    order
 );
 ```
 
@@ -211,9 +225,9 @@ const { status, data } = await apiInstance.promotionsList(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
-| **order** | [**&#39;ASCENDING&#39; | &#39;DESCENDING&#39;**]**Array<&#39;ASCENDING&#39; &#124; &#39;DESCENDING&#39;>** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
+| **order** | **PinterestLibPaginationOrder** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -233,14 +247,18 @@ const { status, data } = await apiInstance.promotionsList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid ad account promotions parameters. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotionsUpdate**
-> PromotionsResponse promotionsUpdate(promotionUpdateRequest)
+> PromotionsResponse promotionsUpdate(promotionBatchUpdate)
 
 Update multiple promotions.
 
@@ -256,11 +274,11 @@ const configuration = new Configuration();
 const apiInstance = new PromotionsApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let promotionUpdateRequest: Array<PromotionUpdateRequest>; //List of promotions to create, size limit [1, 30].
+let promotionBatchUpdate: Array<PromotionBatchUpdate>; //
 
 const { status, data } = await apiInstance.promotionsUpdate(
     adAccountId,
-    promotionUpdateRequest
+    promotionBatchUpdate
 );
 ```
 
@@ -268,7 +286,7 @@ const { status, data } = await apiInstance.promotionsUpdate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **promotionUpdateRequest** | **Array<PromotionUpdateRequest>**| List of promotions to create, size limit [1, 30]. | |
+| **promotionBatchUpdate** | **Array<PromotionBatchUpdate>**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 
 
@@ -289,9 +307,13 @@ const { status, data } = await apiInstance.promotionsUpdate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid create promotions request parameters. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

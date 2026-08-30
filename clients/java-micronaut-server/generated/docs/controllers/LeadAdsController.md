@@ -14,7 +14,7 @@ Method | HTTP request | Description
 <a id="adAccountsSubscriptionsDelById"></a>
 # **adAccountsSubscriptionsDelById**
 ```java
-Mono<Object> LeadAdsController.adAccountsSubscriptionsDelById(adAccountIdsubscriptionId)
+Mono<LeadSubscription> LeadAdsController.adAccountsSubscriptionsDelById(adAccountIdsubscriptionId)
 ```
 
 Delete lead ads subscription
@@ -27,6 +27,8 @@ Name | Type | Description  | Notes
 **adAccountId** | `String` | Unique identifier of an ad account. |
 **subscriptionId** | `String` | Unique identifier of a subscription. |
 
+### Return type
+[**LeadSubscription**](../../docs/models/LeadSubscription.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:write`

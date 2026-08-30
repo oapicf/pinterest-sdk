@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttributeName** | [**NullableCatalogsItemFieldType**](NullableCatalogsItemFieldType.md) |  | 
+**AttributeName** | [**NullableCatalogsItemFieldType**](NullableCatalogsItemFieldType.md) | Attribute that has a validation issue. | 
 **ProvidedValue** | **String** | Provided value that caused the validation issue. | 
 
 ## Examples

@@ -1,14 +1,18 @@
 package org.openapitools.model;
 
 import java.util.Objects;
+import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 
 
+/**
+ * Account type filter for audience sharing.
+ **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Gets or Sets AudienceAccountType
+ * Account type filter for audience sharing.
  */
 public enum AudienceAccountType {
   

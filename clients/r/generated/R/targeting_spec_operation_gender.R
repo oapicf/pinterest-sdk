@@ -8,7 +8,7 @@
 #' @description TargetingSpecOperationGender Class
 #' @format An \code{R6Class} generator object
 #' @field field  character
-#' @field operation  character
+#' @field operation  \link{TargetingSpecListOperation}
 #' @field values  list(\link{TargetingSpecGender})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -38,12 +38,10 @@ TargetingSpecOperationGender <- R6::R6Class(
         self$`field` <- `field`
       }
       if (!missing(`operation`)) {
-        if (!(`operation` %in% c("SET", "ADD", "REMOVE"))) {
-          stop(paste("Error! \"", `operation`, "\" cannot be assigned to `operation`. Must be \"SET\", \"ADD\", \"REMOVE\".", sep = ""))
+        if (!(`operation` %in% c())) {
+          stop(paste("Error! \"", `operation`, "\" cannot be assigned to `operation`. Must be .", sep = ""))
         }
-        if (!(is.character(`operation`) && length(`operation`) == 1)) {
-          stop(paste("Error! Invalid data for `operation`. Must be a string:", `operation`))
-        }
+        stopifnot(R6::is.R6(`operation`))
         self$`operation` <- `operation`
       }
       if (!missing(`values`)) {
@@ -90,13 +88,36 @@ TargetingSpecOperationGender <- R6::R6Class(
       }
       if (!is.null(self$`operation`)) {
         TargetingSpecOperationGenderObject[["operation"]] <-
-          self$`operation`
+          self$extractSimpleType(self$`operation`)
       }
       if (!is.null(self$`values`)) {
         TargetingSpecOperationGenderObject[["values"]] <-
-          lapply(self$`values`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`values`)
       }
       return(TargetingSpecOperationGenderObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -113,10 +134,9 @@ TargetingSpecOperationGender <- R6::R6Class(
         self$`field` <- this_object$`field`
       }
       if (!is.null(this_object$`operation`)) {
-        if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("SET", "ADD", "REMOVE"))) {
-          stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"SET\", \"ADD\", \"REMOVE\".", sep = ""))
-        }
-        self$`operation` <- this_object$`operation`
+        `operation_object` <- TargetingSpecListOperation$new()
+        `operation_object`$fromJSON(jsonlite::toJSON(this_object$`operation`, auto_unbox = TRUE, digits = NA))
+        self$`operation` <- `operation_object`
       }
       if (!is.null(this_object$`values`)) {
         self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[TargetingSpecGender]", loadNamespace("openapi"))
@@ -146,10 +166,7 @@ TargetingSpecOperationGender <- R6::R6Class(
         stop(paste("Error! \"", this_object$`field`, "\" cannot be assigned to `field`. Must be \"GENDER\".", sep = ""))
       }
       self$`field` <- this_object$`field`
-      if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("SET", "ADD", "REMOVE"))) {
-        stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"SET\", \"ADD\", \"REMOVE\".", sep = ""))
-      }
-      self$`operation` <- this_object$`operation`
+      self$`operation` <- TargetingSpecListOperation$new()$fromJSON(jsonlite::toJSON(this_object$`operation`, auto_unbox = TRUE, digits = NA))
       self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[TargetingSpecGender]", loadNamespace("openapi"))
       self
     },
@@ -170,9 +187,7 @@ TargetingSpecOperationGender <- R6::R6Class(
       }
       # check the required field `operation`
       if (!is.null(input_json$`operation`)) {
-        if (!(is.character(input_json$`operation`) && length(input_json$`operation`) == 1)) {
-          stop(paste("Error! Invalid data for `operation`. Must be a string:", input_json$`operation`))
-        }
+        stopifnot(R6::is.R6(input_json$`operation`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TargetingSpecOperationGender: the required field `operation` is missing."))
       }
@@ -208,6 +223,11 @@ TargetingSpecOperationGender <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `values` is null
+      if (is.null(self$`values`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -225,6 +245,11 @@ TargetingSpecOperationGender <- R6::R6Class(
       # check if the required `operation` is null
       if (is.null(self$`operation`)) {
         invalid_fields["operation"] <- "Non-nullable required field `operation` cannot be null."
+      }
+
+      # check if the required `values` is null
+      if (is.null(self$`values`)) {
+        invalid_fields["values"] <- "Non-nullable required field `values` cannot be null."
       }
 
       invalid_fields

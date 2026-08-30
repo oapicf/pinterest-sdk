@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **time.Time** |  | 
-**Id** | **string** | ID of the catalog entity. | 
-**UpdatedAt** | **time.Time** |  | 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**Name** | **NullableString** | A human-friendly name associated to a catalog entity. | 
+**CreatedAt** | **time.Time** |  | [readonly] 
+**Id** | **string** | ID of the catalog entity. | 
+**Name** | **string** | A human-friendly name associated to a catalog entity. | 
+**UpdatedAt** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewCatalog
 
-`func NewCatalog(createdAt time.Time, id string, updatedAt time.Time, catalogType CatalogsType, name NullableString, ) *Catalog`
+`func NewCatalog(catalogType CatalogsType, createdAt time.Time, id string, name string, updatedAt time.Time, ) *Catalog`
 
 NewCatalog instantiates a new Catalog object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +28,26 @@ will change when the set of required properties is changed
 NewCatalogWithDefaults instantiates a new Catalog object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogType
+
+`func (o *Catalog) GetCatalogType() CatalogsType`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *Catalog) GetCatalogTypeOk() (*CatalogsType, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *Catalog) SetCatalogType(v CatalogsType)`
+
+SetCatalogType sets CatalogType field to given value.
+
 
 ### GetCreatedAt
 
@@ -69,46 +89,6 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
-### GetUpdatedAt
-
-`func (o *Catalog) GetUpdatedAt() time.Time`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *Catalog) GetUpdatedAtOk() (*time.Time, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *Catalog) SetUpdatedAt(v time.Time)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
-
-
-### GetCatalogType
-
-`func (o *Catalog) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *Catalog) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *Catalog) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
-
-
 ### GetName
 
 `func (o *Catalog) GetName() string`
@@ -129,16 +109,26 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### SetNameNil
+### GetUpdatedAt
 
-`func (o *Catalog) SetNameNil(b bool)`
+`func (o *Catalog) GetUpdatedAt() time.Time`
 
- SetNameNil sets the value for Name to be an explicit nil
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
-### UnsetName
-`func (o *Catalog) UnsetName()`
+### GetUpdatedAtOk
 
-UnsetName ensures that no value is present for Name, not even an explicit nil
+`func (o *Catalog) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *Catalog) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

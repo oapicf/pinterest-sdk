@@ -9,7 +9,7 @@ The class is defined in **[AdsList200Response.java](../../src/main/java/org/open
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;AdResponse&gt;`](AdResponse.md) |  | 
+**items** | [`List&lt;Ad&gt;`](Ad.md) |  | 
 
 
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,7 +18,7 @@ import (
 // checks if the TermsOfService type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TermsOfService{}
 
-// TermsOfService struct for TermsOfService
+// TermsOfService The ID of the ad account.
 type TermsOfService struct {
 	// The ID of the ad account.
 	AdAccountId *string `json:"ad_account_id,omitempty"`

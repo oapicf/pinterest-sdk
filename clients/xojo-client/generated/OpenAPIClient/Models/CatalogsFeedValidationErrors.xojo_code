@@ -91,7 +91,7 @@ Protected Class CatalogsFeedValidationErrors
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+			Your feed wasn't ingested because it hasn't changed in the previous 90 days.
 		#tag EndNote
 		FETCH_INACTIVE_FEED_ERROR As Xoson.O.OptionalInteger
 	#tag EndProperty

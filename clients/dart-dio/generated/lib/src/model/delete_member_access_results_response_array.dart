@@ -76,8 +76,9 @@ class _$DeleteMemberAccessResultsResponseArraySerializer implements PrimitiveSer
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(DeleteMemberAccessResult)]),
-          ) as BuiltList<DeleteMemberAccessResult>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(DeleteMemberAccessResult)]),
+          ) as BuiltList<DeleteMemberAccessResult>?;
+          if (valueDes == null) continue;
           result.items.replace(valueDes);
           break;
         default:

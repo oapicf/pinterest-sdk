@@ -7,8 +7,8 @@
 #' @title BusinessMemberAssetsSummary
 #' @description BusinessMemberAssetsSummary Class
 #' @format An \code{R6Class} generator object
-#' @field ad_accounts List of ad account IDs and respective permission levels. list(\link{BusinessMemberAssetsSummaryAdAccountsInner}) [optional]
-#' @field profiles List of profile IDs and respective permission levels. list(\link{BusinessMemberAssetsSummaryProfilesInner}) [optional]
+#' @field ad_accounts List of ad account IDs and respective permission levels. list(\link{AssetIdWithPermissions}) [optional]
+#' @field profiles List of profile IDs and respective permission levels. list(\link{AssetIdWithPermissions}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -70,13 +70,36 @@ BusinessMemberAssetsSummary <- R6::R6Class(
       BusinessMemberAssetsSummaryObject <- list()
       if (!is.null(self$`ad_accounts`)) {
         BusinessMemberAssetsSummaryObject[["ad_accounts"]] <-
-          lapply(self$`ad_accounts`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`ad_accounts`)
       }
       if (!is.null(self$`profiles`)) {
         BusinessMemberAssetsSummaryObject[["profiles"]] <-
-          lapply(self$`profiles`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`profiles`)
       }
       return(BusinessMemberAssetsSummaryObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -87,10 +110,10 @@ BusinessMemberAssetsSummary <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ad_accounts`)) {
-        self$`ad_accounts` <- ApiClient$new()$deserializeObj(this_object$`ad_accounts`, "array[BusinessMemberAssetsSummaryAdAccountsInner]", loadNamespace("openapi"))
+        self$`ad_accounts` <- ApiClient$new()$deserializeObj(this_object$`ad_accounts`, "array[AssetIdWithPermissions]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`profiles`)) {
-        self$`profiles` <- ApiClient$new()$deserializeObj(this_object$`profiles`, "array[BusinessMemberAssetsSummaryProfilesInner]", loadNamespace("openapi"))
+        self$`profiles` <- ApiClient$new()$deserializeObj(this_object$`profiles`, "array[AssetIdWithPermissions]", loadNamespace("openapi"))
       }
       self
     },
@@ -113,8 +136,8 @@ BusinessMemberAssetsSummary <- R6::R6Class(
     #' @return the instance of BusinessMemberAssetsSummary
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`ad_accounts` <- ApiClient$new()$deserializeObj(this_object$`ad_accounts`, "array[BusinessMemberAssetsSummaryAdAccountsInner]", loadNamespace("openapi"))
-      self$`profiles` <- ApiClient$new()$deserializeObj(this_object$`profiles`, "array[BusinessMemberAssetsSummaryProfilesInner]", loadNamespace("openapi"))
+      self$`ad_accounts` <- ApiClient$new()$deserializeObj(this_object$`ad_accounts`, "array[AssetIdWithPermissions]", loadNamespace("openapi"))
+      self$`profiles` <- ApiClient$new()$deserializeObj(this_object$`profiles`, "array[AssetIdWithPermissions]", loadNamespace("openapi"))
       self
     },
 

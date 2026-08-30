@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  Pin = openapi_server.resourceTypes.Pin
+  PinRead = openapi_server.resourceTypes.PinRead
 }
 resourceTypes {
 
@@ -23,8 +23,8 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = Pin
-          description = "Pins"
+          items.type = PinRead
+          description = ""
           optional = true
         }
     }

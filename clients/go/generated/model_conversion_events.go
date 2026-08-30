@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,14 @@ import (
 // checks if the ConversionEvents type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ConversionEvents{}
 
-// ConversionEvents A list of events (one or more) encapsulated by a data object.
+// ConversionEvents Conversion events.
 type ConversionEvents struct {
-	Data []ConversionEventsDataInner `json:"data"`
+	// Specific messages for each event received. The order will match the order in which the events were received in the request.
+	Events []ConversionApiResponseEventsItems `json:"events"`
+	// Number of events that were successfully processed from the events.
+	NumEventsProcessed int32 `json:"num_events_processed"`
+	// Total number of events received in the request.
+	NumEventsReceived int32 `json:"num_events_received"`
 }
 
 type _ConversionEvents ConversionEvents
@@ -31,9 +36,11 @@ type _ConversionEvents ConversionEvents
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConversionEvents(data []ConversionEventsDataInner) *ConversionEvents {
+func NewConversionEvents(events []ConversionApiResponseEventsItems, numEventsProcessed int32, numEventsReceived int32) *ConversionEvents {
 	this := ConversionEvents{}
-	this.Data = data
+	this.Events = events
+	this.NumEventsProcessed = numEventsProcessed
+	this.NumEventsReceived = numEventsReceived
 	return &this
 }
 
@@ -45,28 +52,76 @@ func NewConversionEventsWithDefaults() *ConversionEvents {
 	return &this
 }
 
-// GetData returns the Data field value
-func (o *ConversionEvents) GetData() []ConversionEventsDataInner {
+// GetEvents returns the Events field value
+func (o *ConversionEvents) GetEvents() []ConversionApiResponseEventsItems {
 	if o == nil {
-		var ret []ConversionEventsDataInner
+		var ret []ConversionApiResponseEventsItems
 		return ret
 	}
 
-	return o.Data
+	return o.Events
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetEventsOk returns a tuple with the Events field value
 // and a boolean to check if the value has been set.
-func (o *ConversionEvents) GetDataOk() ([]ConversionEventsDataInner, bool) {
+func (o *ConversionEvents) GetEventsOk() ([]ConversionApiResponseEventsItems, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Data, true
+	return o.Events, true
 }
 
-// SetData sets field value
-func (o *ConversionEvents) SetData(v []ConversionEventsDataInner) {
-	o.Data = v
+// SetEvents sets field value
+func (o *ConversionEvents) SetEvents(v []ConversionApiResponseEventsItems) {
+	o.Events = v
+}
+
+// GetNumEventsProcessed returns the NumEventsProcessed field value
+func (o *ConversionEvents) GetNumEventsProcessed() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.NumEventsProcessed
+}
+
+// GetNumEventsProcessedOk returns a tuple with the NumEventsProcessed field value
+// and a boolean to check if the value has been set.
+func (o *ConversionEvents) GetNumEventsProcessedOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NumEventsProcessed, true
+}
+
+// SetNumEventsProcessed sets field value
+func (o *ConversionEvents) SetNumEventsProcessed(v int32) {
+	o.NumEventsProcessed = v
+}
+
+// GetNumEventsReceived returns the NumEventsReceived field value
+func (o *ConversionEvents) GetNumEventsReceived() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.NumEventsReceived
+}
+
+// GetNumEventsReceivedOk returns a tuple with the NumEventsReceived field value
+// and a boolean to check if the value has been set.
+func (o *ConversionEvents) GetNumEventsReceivedOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NumEventsReceived, true
+}
+
+// SetNumEventsReceived sets field value
+func (o *ConversionEvents) SetNumEventsReceived(v int32) {
+	o.NumEventsReceived = v
 }
 
 func (o ConversionEvents) MarshalJSON() ([]byte, error) {
@@ -79,7 +134,9 @@ func (o ConversionEvents) MarshalJSON() ([]byte, error) {
 
 func (o ConversionEvents) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["data"] = o.Data
+	toSerialize["events"] = o.Events
+	toSerialize["num_events_processed"] = o.NumEventsProcessed
+	toSerialize["num_events_received"] = o.NumEventsReceived
 	return toSerialize, nil
 }
 
@@ -88,7 +145,9 @@ func (o *ConversionEvents) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"data",
+		"events",
+		"num_events_processed",
+		"num_events_received",
 	}
 
 	allProperties := make(map[string]interface{})

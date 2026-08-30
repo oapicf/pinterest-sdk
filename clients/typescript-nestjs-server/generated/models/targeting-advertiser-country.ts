@@ -1,0 +1,47 @@
+
+
+/**
+ * Advertiser\'s ISO two character country code.
+ */
+export const TargetingAdvertiserCountry = {
+    Us: 'US',
+    Gb: 'GB',
+    Ca: 'CA',
+    Ie: 'IE',
+    Au: 'AU',
+    Nz: 'NZ',
+    Fr: 'FR',
+    Se: 'SE',
+    Il: 'IL',
+    De: 'DE',
+    At: 'AT',
+    It: 'IT',
+    Es: 'ES',
+    Nl: 'NL',
+    Be: 'BE',
+    Pt: 'PT',
+    Ch: 'CH',
+    Hk: 'HK',
+    Jp: 'JP',
+    Kr: 'KR',
+    Sg: 'SG',
+    False: 'false',
+    Dk: 'DK',
+    Fi: 'FI',
+    Cy: 'CY',
+    Lu: 'LU',
+    Mt: 'MT',
+    Pl: 'PL',
+    Ro: 'RO',
+    Hu: 'HU',
+    Cz: 'CZ',
+    Gr: 'GR',
+    Sk: 'SK',
+    Br: 'BR',
+    Mx: 'MX',
+    Ar: 'AR',
+    Cl: 'CL',
+    Co: 'CO'
+} as const;
+export type TargetingAdvertiserCountry = typeof TargetingAdvertiserCountry[keyof typeof TargetingAdvertiserCountry];
+

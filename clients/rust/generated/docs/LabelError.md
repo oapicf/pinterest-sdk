@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | Option<[**models::Label**](Label.md)> |  | [optional]
+**data** | Option<[**models::LabelErrorData**](LabelErrorData.md)> |  | [optional]
 **error_messages** | Option<**Vec<String>**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

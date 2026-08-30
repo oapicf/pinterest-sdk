@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object with the list of invite/request ids to cancel.",
+  "name": "CancelInvitesRequest",
+  "fields": [
+    {
+      "name": "invite_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "A list of invite/request ids to cancel."
+    }
+  ]
+
+}

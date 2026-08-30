@@ -3,37 +3,45 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.DeletePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.DeletePartnerAssetAccessItem;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * An object with a list of partner asset accesses to delete.
+ */
+@ApiModel(description="An object with a list of partner asset accesses to delete.")
 
 public class DeletePartnerAssetAccessBody  {
   
-  @ApiModelProperty(required = true, value = "")
-
-  private List<DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
  /**
-   * Get accesses
+  * List of partner asset accesses to delete.
+  */
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to delete.")
+
+  private List<DeletePartnerAssetAccessItem> accesses = new ArrayList<>();
+ /**
+   * List of partner asset accesses to delete.
    * @return accesses
   **/
   @JsonProperty("accesses")
-  public List<DeletePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  public List<DeletePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
 
-  public void setAccesses(List<DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
-  public DeletePartnerAssetAccessBody accesses(List<DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public DeletePartnerAssetAccessBody accesses(List<DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
-  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessItem accessesItem) {
     this.accesses.add(accessesItem);
     return this;
   }
@@ -70,10 +78,7 @@ public class DeletePartnerAssetAccessBody  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

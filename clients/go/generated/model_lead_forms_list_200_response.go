@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &LeadFormsList200Response{}
 // LeadFormsList200Response struct for LeadFormsList200Response
 type LeadFormsList200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	Items []LeadFormResponse `json:"items"`
+	Items []LeadForm `json:"items"`
 }
 
 type _LeadFormsList200Response LeadFormsList200Response
@@ -32,7 +32,7 @@ type _LeadFormsList200Response LeadFormsList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLeadFormsList200Response(items []LeadFormResponse) *LeadFormsList200Response {
+func NewLeadFormsList200Response(items []LeadForm) *LeadFormsList200Response {
 	this := LeadFormsList200Response{}
 	this.Items = items
 	return &this
@@ -89,9 +89,9 @@ func (o *LeadFormsList200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *LeadFormsList200Response) GetItems() []LeadFormResponse {
+func (o *LeadFormsList200Response) GetItems() []LeadForm {
 	if o == nil {
-		var ret []LeadFormResponse
+		var ret []LeadForm
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *LeadFormsList200Response) GetItems() []LeadFormResponse {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *LeadFormsList200Response) GetItemsOk() ([]LeadFormResponse, bool) {
+func (o *LeadFormsList200Response) GetItemsOk() ([]LeadForm, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *LeadFormsList200Response) GetItemsOk() ([]LeadFormResponse, bool) {
 }
 
 // SetItems sets field value
-func (o *LeadFormsList200Response) SetItems(v []LeadFormResponse) {
+func (o *LeadFormsList200Response) SetItems(v []LeadForm) {
 	o.Items = v
 }
 

@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DynamicTitlesGetStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DynamicTitlesGetStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DynamicTitlesGetStatus {
+    title = DynamicTitlesGetStatus
+    description = DynamicTitlesGetStatus
+    derivedFrom = Root
+    properties {
+        generated_count {
+          type =  integer
+          description = "The count of generated titles."
+          optional = false
+        }
+        is_ready {
+          type =  boolean
+          description = "Whether dynamic titles have been generated and are ready to be reviewed for the ad group."
+          optional = false
+        }
+        reviewed_count {
+          type =  integer
+          description = "The count of advertiser reviewed titles."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DynamicTitlesGetStatus {
+    title = DynamicTitlesGetStatus
+    description = DynamicTitlesGetStatus
+    implements = openapi_server.resourceTypes.DynamicTitlesGetStatus
+
+  }
+}

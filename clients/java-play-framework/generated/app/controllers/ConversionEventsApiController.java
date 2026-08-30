@@ -1,9 +1,9 @@
 package controllers;
 
-import apimodels.ConversionApiResponse;
 import apimodels.ConversionEvents;
+import apimodels.ConversionEventsCreate;
 import apimodels.DetailedError;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -27,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEventsApiController extends Controller {
     private final ConversionEventsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,15 +42,15 @@ public class ConversionEventsApiController extends Controller {
 
     @ApiAction
     public Result eventsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeconversionEvents = request.body().asJson();
-        ConversionEvents conversionEvents;
-        if (nodeconversionEvents != null) {
-            conversionEvents = mapper.readValue(nodeconversionEvents.toString(), ConversionEvents.class);
+        JsonNode nodeconversionEventsCreate = request.body().asJson();
+        ConversionEventsCreate conversionEventsCreate;
+        if (nodeconversionEventsCreate != null) {
+            conversionEventsCreate = mapper.readValue(nodeconversionEventsCreate.toString(), ConversionEventsCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(conversionEvents);
+                OpenAPIUtils.validate(conversionEventsCreate);
             }
         } else {
-            throw new IllegalArgumentException("'ConversionEvents' parameter is required");
+            throw new IllegalArgumentException("'ConversionEventsCreate' parameter is required");
         }
         String valuetest = request.getQueryString("test");
         Boolean test;
@@ -59,7 +59,7 @@ public class ConversionEventsApiController extends Controller {
         } else {
             test = null;
         }
-        return imp.eventsCreateHttp(request, adAccountId, conversionEvents, test);
+        return imp.eventsCreateHttp(request, adAccountId, conversionEventsCreate, test);
     }
 
 }

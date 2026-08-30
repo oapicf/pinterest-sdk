@@ -1,0 +1,64 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendsEditorial"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendsEditorial"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  KeywordInfo = openapi_server.resourceTypes.KeywordInfo
+}
+resourceTypes {
+
+  TrendsEditorial {
+    title = TrendsEditorial
+    description = TrendsEditorial
+    derivedFrom = Root
+    properties {
+        board_url {
+          type =  string
+          description = "URL of the editorial board"
+          optional = true
+        }
+        description {
+          type =  string
+          description = "Description of the editorial article"
+          optional = true
+        }
+        interests {
+          type = array
+          items.type =  string
+          description = "List of interests related to the editorial article"
+          optional = true
+        }
+        pins_url {
+          type = array
+          items.type =  string
+          description = "URL of the pins related to the editorial article"
+          optional = true
+        }
+        related_keywords {
+          type = array
+          items.type = KeywordInfo
+          description = "List of keywords related to the editorial article"
+          optional = true
+        }
+        title {
+          type =  string
+          description = "Title of the editorial article"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendsEditorial {
+    title = TrendsEditorial
+    description = TrendsEditorial
+    implements = openapi_server.resourceTypes.TrendsEditorial
+
+  }
+}

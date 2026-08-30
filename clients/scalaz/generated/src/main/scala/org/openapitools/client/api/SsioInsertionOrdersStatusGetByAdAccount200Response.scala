@@ -13,8 +13,7 @@ import SsioInsertionOrdersStatusGetByAdAccount200Response._
 
 case class SsioInsertionOrdersStatusGetByAdAccount200Response (
   bookmark: Option[String],
-/* Insertion orders status by ad acount id */
-  items: List[SSIOInsertionOrderStatus])
+items: List[SSIOInsertionOrderStatus])
 
 object SsioInsertionOrdersStatusGetByAdAccount200Response {
   import DateTimeCodecs._

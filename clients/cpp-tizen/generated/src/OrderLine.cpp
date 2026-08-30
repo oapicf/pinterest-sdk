@@ -25,16 +25,16 @@ OrderLine::__init()
 {
 	//ad_account_id = std::string();
 	//budget = double(0);
+	//new std::list()std::list> campaign_ids;
 	//end_time = double(0);
 	//id = std::string();
 	//name = std::string();
 	//paid_budget = double(0);
-	//paid_type = std::string();
+	//paid_type = null;
 	//purchase_order_id = std::string();
 	//start_time = double(0);
-	//status = std::string();
+	//status = null;
 	//type = std::string();
-	//new std::list()std::list> campaign_ids;
 }
 
 void
@@ -49,6 +49,11 @@ OrderLine::__cleanup()
 	//
 	//delete budget;
 	//budget = NULL;
+	//}
+	//if(campaign_ids != NULL) {
+	//campaign_ids.RemoveAll(true);
+	//delete campaign_ids;
+	//campaign_ids = NULL;
 	//}
 	//if(end_time != NULL) {
 	//
@@ -95,11 +100,6 @@ OrderLine::__cleanup()
 	//delete type;
 	//type = NULL;
 	//}
-	//if(campaign_ids != NULL) {
-	//campaign_ids.RemoveAll(true);
-	//delete campaign_ids;
-	//campaign_ids = NULL;
-	//}
 	//
 }
 
@@ -132,6 +132,28 @@ OrderLine::fromJson(char* jsonStr)
 			obj->fromJson(json_to_string(node, false));
 			
 		}
+	}
+	const gchar *campaign_idsKey = "campaign_ids";
+	node = json_object_get_member(pJsonObject, campaign_idsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			campaign_ids = new_list;
+		}
+		
 	}
 	const gchar *end_timeKey = "end_time";
 	node = json_object_get_member(pJsonObject, end_timeKey);
@@ -247,28 +269,6 @@ OrderLine::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *campaign_idsKey = "campaign_ids";
-	node = json_object_get_member(pJsonObject, campaign_idsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
-				} else {
-					
-				}
-				new_list.push_back(inst);
-			}
-			campaign_ids = new_list;
-		}
-		
-	}
 }
 
 OrderLine::OrderLine(char* json)
@@ -304,6 +304,21 @@ OrderLine::toJson()
 	}
 	const gchar *budgetKey = "budget";
 	json_object_set_member(pJsonObject, budgetKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getCampaignIds());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getCampaignIds());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *campaign_idsKey = "campaign_ids";
+	json_object_set_member(pJsonObject, campaign_idsKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getEndTime();
 		node = converttoJson(&obj, "long long", "");
@@ -410,21 +425,6 @@ OrderLine::toJson()
 	}
 	const gchar *typeKey = "type";
 	json_object_set_member(pJsonObject, typeKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getCampaignIds());
-		node = converttoJson(&new_list, "std::string", "array");
-	} else {
-		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getCampaignIds());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-	}
-
-
-	
-	const gchar *campaign_idsKey = "campaign_ids";
-	json_object_set_member(pJsonObject, campaign_idsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -455,6 +455,18 @@ void
 OrderLine::setBudget(long long  budget)
 {
 	this->budget = budget;
+}
+
+std::list<std::string>
+OrderLine::getCampaignIds()
+{
+	return campaign_ids;
+}
+
+void
+OrderLine::setCampaignIds(std::list <std::string> campaign_ids)
+{
+	this->campaign_ids = campaign_ids;
 }
 
 long long
@@ -563,18 +575,6 @@ void
 OrderLine::setType(std::string  type)
 {
 	this->type = type;
-}
-
-std::list<std::string>
-OrderLine::getCampaignIds()
-{
-	return campaign_ids;
-}
-
-void
-OrderLine::setCampaignIds(std::list <std::string> campaign_ids)
-{
-	this->campaign_ids = campaign_ids;
 }
 
 

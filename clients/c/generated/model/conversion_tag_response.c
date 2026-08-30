@@ -10,7 +10,7 @@ static conversion_tag_response_t *conversion_tag_response_create_internal(
     conversion_tag_configs_t *configs,
     enhanced_match_status_type_t *enhanced_match_status,
     char *id,
-    double last_fired_time_ms,
+    double *last_fired_time_ms,
     char *name,
     char *version,
     char *ad_account_id,
@@ -20,6 +20,8 @@ static conversion_tag_response_t *conversion_tag_response_create_internal(
     if (!conversion_tag_response_local_var) {
         return NULL;
     }
+    memset(conversion_tag_response_local_var, 0, sizeof(conversion_tag_response_t));
+    conversion_tag_response_local_var->_library_owned = 1;
     conversion_tag_response_local_var->code_snippet = code_snippet;
     conversion_tag_response_local_var->configs = configs;
     conversion_tag_response_local_var->enhanced_match_status = enhanced_match_status;
@@ -29,8 +31,6 @@ static conversion_tag_response_t *conversion_tag_response_create_internal(
     conversion_tag_response_local_var->version = version;
     conversion_tag_response_local_var->ad_account_id = ad_account_id;
     conversion_tag_response_local_var->status = status;
-
-    conversion_tag_response_local_var->_library_owned = 1;
     return conversion_tag_response_local_var;
 }
 
@@ -39,23 +39,32 @@ __attribute__((deprecated)) conversion_tag_response_t *conversion_tag_response_c
     conversion_tag_configs_t *configs,
     enhanced_match_status_type_t *enhanced_match_status,
     char *id,
-    double last_fired_time_ms,
+    double *last_fired_time_ms,
     char *name,
     char *version,
     char *ad_account_id,
     entity_status_t *status
     ) {
-    return conversion_tag_response_create_internal (
+    double *last_fired_time_ms_copy = NULL;
+    if (last_fired_time_ms) {
+        last_fired_time_ms_copy = malloc(sizeof(double));
+        if (last_fired_time_ms_copy) *last_fired_time_ms_copy = *last_fired_time_ms;
+    }
+    conversion_tag_response_t *result = conversion_tag_response_create_internal (
         code_snippet,
         configs,
         enhanced_match_status,
         id,
-        last_fired_time_ms,
+        last_fired_time_ms_copy,
         name,
         version,
         ad_account_id,
         status
         );
+    if (!result) {
+        free(last_fired_time_ms_copy);
+    }
+    return result;
 }
 
 void conversion_tag_response_free(conversion_tag_response_t *conversion_tag_response) {
@@ -82,6 +91,10 @@ void conversion_tag_response_free(conversion_tag_response_t *conversion_tag_resp
     if (conversion_tag_response->id) {
         free(conversion_tag_response->id);
         conversion_tag_response->id = NULL;
+    }
+    if (conversion_tag_response->last_fired_time_ms) {
+        free(conversion_tag_response->last_fired_time_ms);
+        conversion_tag_response->last_fired_time_ms = NULL;
     }
     if (conversion_tag_response->name) {
         free(conversion_tag_response->name);
@@ -149,7 +162,7 @@ cJSON *conversion_tag_response_convertToJSON(conversion_tag_response_t *conversi
 
     // conversion_tag_response->last_fired_time_ms
     if(conversion_tag_response->last_fired_time_ms) {
-    if(cJSON_AddNumberToObject(item, "last_fired_time_ms", conversion_tag_response->last_fired_time_ms) == NULL) {
+    if(cJSON_AddNumberToObject(item, "last_fired_time_ms", *conversion_tag_response->last_fired_time_ms) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -205,11 +218,24 @@ conversion_tag_response_t *conversion_tag_response_parseFromJSON(cJSON *conversi
 
     conversion_tag_response_t *conversion_tag_response_local_var = NULL;
 
+    char *code_snippet_local_str = NULL;
+
     // define the local variable for conversion_tag_response->configs
     conversion_tag_configs_t *configs_local_nonprim = NULL;
 
     // define the local variable for conversion_tag_response->enhanced_match_status
     enhanced_match_status_type_t *enhanced_match_status_local_nonprim = NULL;
+
+    char *id_local_str = NULL;
+
+    // define the local variable for conversion_tag_response->last_fired_time_ms
+    double *last_fired_time_ms_local_var = NULL;
+
+    char *name_local_str = NULL;
+
+    char *version_local_str = NULL;
+
+    char *ad_account_id_local_str = NULL;
 
     // define the local variable for conversion_tag_response->status
     entity_status_t *status_local_nonprim = NULL;
@@ -266,6 +292,12 @@ conversion_tag_response_t *conversion_tag_response_parseFromJSON(cJSON *conversi
     {
     goto end; //Numeric
     }
+    last_fired_time_ms_local_var = malloc(sizeof(double));
+    if(!last_fired_time_ms_local_var)
+    {
+        goto end;
+    }
+    *last_fired_time_ms_local_var = last_fired_time_ms->valuedouble;
     }
 
     // conversion_tag_response->name
@@ -320,20 +352,34 @@ conversion_tag_response_t *conversion_tag_response_parseFromJSON(cJSON *conversi
     }
 
 
+    if (code_snippet && !cJSON_IsNull(code_snippet)) code_snippet_local_str = strdup(code_snippet->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+    if (version && !cJSON_IsNull(version)) version_local_str = strdup(version->valuestring);
+    if (ad_account_id && !cJSON_IsNull(ad_account_id)) ad_account_id_local_str = strdup(ad_account_id->valuestring);
+
     conversion_tag_response_local_var = conversion_tag_response_create_internal (
-        code_snippet && !cJSON_IsNull(code_snippet) ? strdup(code_snippet->valuestring) : NULL,
+        code_snippet_local_str,
         configs ? configs_local_nonprim : NULL,
         enhanced_match_status ? enhanced_match_status_local_nonprim : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        last_fired_time_ms ? last_fired_time_ms->valuedouble : 0,
-        strdup(name->valuestring),
-        version && !cJSON_IsNull(version) ? strdup(version->valuestring) : NULL,
-        strdup(ad_account_id->valuestring),
+        id_local_str,
+        last_fired_time_ms_local_var,
+        name_local_str,
+        version_local_str,
+        ad_account_id_local_str,
         status ? status_local_nonprim : NULL
         );
 
+    if (!conversion_tag_response_local_var) {
+        goto end;
+    }
+
     return conversion_tag_response_local_var;
 end:
+    if (code_snippet_local_str) {
+        free(code_snippet_local_str);
+        code_snippet_local_str = NULL;
+    }
     if (configs_local_nonprim) {
         conversion_tag_configs_free(configs_local_nonprim);
         configs_local_nonprim = NULL;
@@ -341,6 +387,26 @@ end:
     if (enhanced_match_status_local_nonprim) {
         enhanced_match_status_type_free(enhanced_match_status_local_nonprim);
         enhanced_match_status_local_nonprim = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (last_fired_time_ms_local_var) {
+        free(last_fired_time_ms_local_var);
+        last_fired_time_ms_local_var = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (version_local_str) {
+        free(version_local_str);
+        version_local_str = NULL;
+    }
+    if (ad_account_id_local_str) {
+        free(ad_account_id_local_str);
+        ad_account_id_local_str = NULL;
     }
     if (status_local_nonprim) {
         entity_status_free(status_local_nonprim);

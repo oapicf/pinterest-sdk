@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Pin.h"
+#include "PinRead.h"
 #include <list>
 #include "Object.h"
 
@@ -54,17 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
-	/*! \brief Get Pins
+	/*! \brief Get 
 	 */
-	std::list<Pin> getItems();
+	std::list<PinRead> getItems();
 
-	/*! \brief Set Pins
+	/*! \brief Set 
 	 */
-	void setItems(std::list <Pin> items);
+	void setItems(std::list <PinRead> items);
 
 private:
 	std::string bookmark;
-	std::list <Pin>items;
+	std::list <PinRead>items;
 	void __init();
 	void __cleanup();
 

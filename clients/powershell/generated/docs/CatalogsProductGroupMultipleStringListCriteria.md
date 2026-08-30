@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Negated** | **Boolean** |  | [optional] [default to $false]
-**Values** | [**String[][]**](Array.md) |  | 
+**Negated** | **Boolean** |  | [optional] 
+**Values** | [**Array[]**](Array.md) |  | 
 
 ## Examples
 

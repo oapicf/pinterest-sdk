@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionDeletionRequestEPIKTargets"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionDeletionRequestEPIKTargets"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionDeletionRequestEPIKTargets {
+    title = ConversionDeletionRequestEPIKTargets
+    description = ConversionDeletionRequestEPIKTargets
+    derivedFrom = Root
+    properties {
+        epiks {
+          type = array
+          items.type =  string
+          description = "Array of EPIKs (Encrypted Pinterest ID Keys). An EPIK is a user match type that utilizes 3P browser localStorage (similar to a third-party cookie)."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionDeletionRequestEPIKTargets {
+    title = ConversionDeletionRequestEPIKTargets
+    description = ConversionDeletionRequestEPIKTargets
+    implements = openapi_server.resourceTypes.ConversionDeletionRequestEPIKTargets
+
+  }
+}

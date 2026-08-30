@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.PlacementType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,53 +21,23 @@ import java.util.Objects;
 @ApiModel(description = "This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).")
 public class PlacementMultipliers extends HashMap<String, Double>  {
   
-
-public enum PLACEMENTEnum {
-
-    @JsonProperty("SEARCH") SEARCH(String.valueOf("SEARCH")), @JsonProperty("BROWSE") BROWSE(String.valueOf("BROWSE")), @JsonProperty("RELATED_PINS") RELATED_PINS(String.valueOf("RELATED_PINS"));
-
-
-    private String value;
-
-    PLACEMENTEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static PLACEMENTEnum fromValue(String value) {
-        for (PLACEMENTEnum b : PLACEMENTEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private PLACEMENTEnum PLACEMENT;
+  private PlacementType PLACEMENT;
 
   /**
+   * Placement type identifier.
    **/
-  public PlacementMultipliers PLACEMENT(PLACEMENTEnum PLACEMENT) {
+  public PlacementMultipliers PLACEMENT(PlacementType PLACEMENT) {
     this.PLACEMENT = PLACEMENT;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Placement type identifier.")
   @JsonProperty("PLACEMENT")
-  public PLACEMENTEnum getPLACEMENT() {
+  public PlacementType getPLACEMENT() {
     return PLACEMENT;
   }
-  public void setPLACEMENT(PLACEMENTEnum PLACEMENT) {
+  public void setPLACEMENT(PlacementType PLACEMENT) {
     this.PLACEMENT = PLACEMENT;
   }
 
@@ -104,10 +75,7 @@ public enum PLACEMENTEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

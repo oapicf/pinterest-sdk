@@ -73,7 +73,16 @@
     {
       "name": "visibility",
       "type": ["null", "string"],
-      "doc": "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.",
+      "doc": "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.",
+      "default": null
+    },
+    {
+      "name": "ai_disclosures",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CatalogsAiContentDisclosure"
+      }],
+      "doc": "AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.",
       "default": null
     },
     {

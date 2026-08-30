@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
  *
- * Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_SITE,APPLY_NOW,BOOK_NOW,REQUEST_DEMO,REGISTER_NOW,FIND_A_DEALER,ADD_TO_CART,WATCH_NOW,READ_MORE,BUY_TICKETS,DONATE_NOW,DOWNLOAD,EXPLORE_MORE,FIND_A_LOCATION,GET_DEAL,GET_RECIPE,GET_SHOWTIMES,ON_SALE,PLAY_GAME,TRY_IT
+ * Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_SITE,APPLY_NOW,BOOK_NOW,REQUEST_DEMO,REGISTER_NOW,FIND_A_DEALER,ADD_TO_CART,WATCH_NOW,READ_MORE,BUY_TICKETS,DONATE_NOW,DOWNLOAD,EXPLORE_MORE,FIND_A_LOCATION,FIND_RETAILERS,GET_DEAL,GET_RECIPE,GET_SHOWTIMES,ON_SALE,PLAY_GAME,TRY_IT,TAKE_A_PEEK
  */
 
 @JsonClass(generateAdapter = false)
@@ -97,6 +105,9 @@ enum class CustomizableCTAType(val value: kotlin.String) {
     @Json(name = "FIND_A_LOCATION")
     FIND_A_LOCATION("FIND_A_LOCATION"),
 
+    @Json(name = "FIND_RETAILERS")
+    FIND_RETAILERS("FIND_RETAILERS"),
+
     @Json(name = "GET_DEAL")
     GET_DEAL("GET_DEAL"),
 
@@ -113,7 +124,10 @@ enum class CustomizableCTAType(val value: kotlin.String) {
     PLAY_GAME("PLAY_GAME"),
 
     @Json(name = "TRY_IT")
-    TRY_IT("TRY_IT");
+    TRY_IT("TRY_IT"),
+
+    @Json(name = "TAKE_A_PEEK")
+    TAKE_A_PEEK("TAKE_A_PEEK");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -135,7 +149,7 @@ enum class CustomizableCTAType(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): CustomizableCTAType? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -20,10 +28,10 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Bid floor request and response model.
  *
  * @param bidFloors A list of bid floors in micro currency. For example, [100000, 200000]
- * @param type Always the string 'bidfloor'
+ * @param type Always the string 'bidfloor'.
  */
 
 
@@ -33,7 +41,7 @@ data class BidFloor (
     @Json(name = "bid_floors")
     val bidFloors: kotlin.collections.List<kotlin.Int>? = null,
 
-    /* Always the string 'bidfloor' */
+    /* Always the string 'bidfloor'. */
     @Json(name = "type")
     val type: kotlin.String? = "bidfloor"
 

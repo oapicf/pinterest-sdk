@@ -18,7 +18,8 @@
 #' @field ios_deep_link IOS deep link to the creative assets page. character [optional]
 #' @field link Link to the creative assets page. character [optional]
 #' @field title The name of the creative assets. character [optional]
-#' @field visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. character [optional]
+#' @field visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. character [optional]
+#' @field ai_disclosures AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL. list(\link{CatalogsAiContentDisclosure}) [optional]
 #' @field image_link The creative assets image. character [optional]
 #' @field video_link The creative assets video. character [optional]
 #' @importFrom R6 R6Class
@@ -39,6 +40,7 @@ CatalogsCreativeAssetsAttributes <- R6::R6Class(
     `link` = NULL,
     `title` = NULL,
     `visibility` = NULL,
+    `ai_disclosures` = NULL,
     `image_link` = NULL,
     `video_link` = NULL,
 
@@ -56,11 +58,12 @@ CatalogsCreativeAssetsAttributes <- R6::R6Class(
     #' @param ios_deep_link IOS deep link to the creative assets page.
     #' @param link Link to the creative assets page.
     #' @param title The name of the creative assets.
-    #' @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+    #' @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
+    #' @param ai_disclosures AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
     #' @param image_link The creative assets image.
     #' @param video_link The creative assets video.
     #' @param ... Other optional arguments.
-    initialize = function(`android_deep_link` = NULL, `custom_label_0` = NULL, `custom_label_1` = NULL, `custom_label_2` = NULL, `custom_label_3` = NULL, `custom_label_4` = NULL, `description` = NULL, `google_product_category` = NULL, `ios_deep_link` = NULL, `link` = NULL, `title` = NULL, `visibility` = NULL, `image_link` = NULL, `video_link` = NULL, ...) {
+    initialize = function(`android_deep_link` = NULL, `custom_label_0` = NULL, `custom_label_1` = NULL, `custom_label_2` = NULL, `custom_label_3` = NULL, `custom_label_4` = NULL, `description` = NULL, `google_product_category` = NULL, `ios_deep_link` = NULL, `link` = NULL, `title` = NULL, `visibility` = NULL, `ai_disclosures` = NULL, `image_link` = NULL, `video_link` = NULL, ...) {
       if (!is.null(`android_deep_link`)) {
         if (!(is.character(`android_deep_link`) && length(`android_deep_link`) == 1)) {
           stop(paste("Error! Invalid data for `android_deep_link`. Must be a string:", `android_deep_link`))
@@ -132,6 +135,11 @@ CatalogsCreativeAssetsAttributes <- R6::R6Class(
           stop(paste("Error! Invalid data for `visibility`. Must be a string:", `visibility`))
         }
         self$`visibility` <- `visibility`
+      }
+      if (!is.null(`ai_disclosures`)) {
+        stopifnot(is.vector(`ai_disclosures`), length(`ai_disclosures`) != 0)
+        sapply(`ai_disclosures`, function(x) stopifnot(R6::is.R6(x)))
+        self$`ai_disclosures` <- `ai_disclosures`
       }
       if (!is.null(`image_link`)) {
         if (!(is.character(`image_link`) && length(`image_link`) == 1)) {
@@ -226,6 +234,10 @@ CatalogsCreativeAssetsAttributes <- R6::R6Class(
         CatalogsCreativeAssetsAttributesObject[["visibility"]] <-
           self$`visibility`
       }
+      if (!is.null(self$`ai_disclosures`)) {
+        CatalogsCreativeAssetsAttributesObject[["ai_disclosures"]] <-
+          self$extractSimpleType(self$`ai_disclosures`)
+      }
       if (!is.null(self$`image_link`)) {
         CatalogsCreativeAssetsAttributesObject[["image_link"]] <-
           self$`image_link`
@@ -235,6 +247,29 @@ CatalogsCreativeAssetsAttributes <- R6::R6Class(
           self$`video_link`
       }
       return(CatalogsCreativeAssetsAttributesObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -280,6 +315,9 @@ CatalogsCreativeAssetsAttributes <- R6::R6Class(
       if (!is.null(this_object$`visibility`)) {
         self$`visibility` <- this_object$`visibility`
       }
+      if (!is.null(this_object$`ai_disclosures`)) {
+        self$`ai_disclosures` <- ApiClient$new()$deserializeObj(this_object$`ai_disclosures`, "array[CatalogsAiContentDisclosure]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`image_link`)) {
         self$`image_link` <- this_object$`image_link`
       }
@@ -319,6 +357,7 @@ CatalogsCreativeAssetsAttributes <- R6::R6Class(
       self$`link` <- this_object$`link`
       self$`title` <- this_object$`title`
       self$`visibility` <- this_object$`visibility`
+      self$`ai_disclosures` <- ApiClient$new()$deserializeObj(this_object$`ai_disclosures`, "array[CatalogsAiContentDisclosure]", loadNamespace("openapi"))
       self$`image_link` <- this_object$`image_link`
       self$`video_link` <- this_object$`video_link`
       self

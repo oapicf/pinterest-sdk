@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -23,9 +31,9 @@ import org.openapitools.client.models.ConversionEventResponse
 import org.openapitools.client.models.ConversionTag
 import org.openapitools.client.models.ConversionTagCreate
 import org.openapitools.client.models.ConversionTagsList200Response
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.PageVisitConversionTagsGet200Response
 import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
 
 import com.squareup.moshi.Json
 
@@ -47,7 +55,7 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
@@ -359,30 +367,13 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
     }
 
     /**
-     * enum for parameter order
-     */
-     enum class OrderPageVisitConversionTagsGet(val value: kotlin.String) {
-         @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
-
-        /**
-         * Override [toString()] to avoid using the enum variable name as the value, and instead use
-         * the actual value defined in the API spec file.
-         *
-         * This solves a problem when the variable name and its value are different, and ensures that
-         * the client sends the correct enum values to the server always.
-         */
-        override fun toString(): kotlin.String = "$value"
-     }
-
-    /**
      * GET /ad_accounts/{ad_account_id}/conversion_tags/page_visit
      * Get page visit conversion tags
      * Get all page visit conversion tag events for an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return PageVisitConversionTagsGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -392,8 +383,8 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun pageVisitConversionTagsGet(adAccountId: kotlin.String, pageSize: kotlin.Int? = 25, order: OrderPageVisitConversionTagsGet? = null, bookmark: kotlin.String? = null) : PageVisitConversionTagsGet200Response {
-        val localVarResponse = pageVisitConversionTagsGetWithHttpInfo(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun pageVisitConversionTagsGet(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, order: PinterestLibPaginationOrder? = null) : PageVisitConversionTagsGet200Response {
+        val localVarResponse = pageVisitConversionTagsGetWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PageVisitConversionTagsGet200Response
@@ -415,17 +406,17 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      * Get page visit conversion tags
      * Get all page visit conversion tag events for an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return ApiResponse<PageVisitConversionTagsGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun pageVisitConversionTagsGetWithHttpInfo(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderPageVisitConversionTagsGet?, bookmark: kotlin.String?) : ApiResponse<PageVisitConversionTagsGet200Response?> {
-        val localVariableConfig = pageVisitConversionTagsGetRequestConfig(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
+    fun pageVisitConversionTagsGetWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?) : ApiResponse<PageVisitConversionTagsGet200Response?> {
+        val localVariableConfig = pageVisitConversionTagsGetRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize, order = order)
 
         return request<Unit, PageVisitConversionTagsGet200Response>(
             localVariableConfig
@@ -436,23 +427,23 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      * To obtain the request config of the operation pageVisitConversionTagsGet
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @return RequestConfig
      */
-    fun pageVisitConversionTagsGetRequestConfig(adAccountId: kotlin.String, pageSize: kotlin.Int?, order: OrderPageVisitConversionTagsGet?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun pageVisitConversionTagsGetRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, order: PinterestLibPaginationOrder?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (bookmark != null) {
+                    put("bookmark", listOf(bookmark.toString()))
+                }
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
                 }
                 if (order != null) {
-                    put("order", listOf(order.value))
-                }
-                if (bookmark != null) {
-                    put("bookmark", listOf(bookmark.toString()))
+                    put("order", listOf(order.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

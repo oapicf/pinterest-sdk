@@ -5,22 +5,80 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type LabelUpdateRequest struct {
 
 	// Labels that you are applying to the campaign.
-	Labels []LabelUpdateRequestLabelsInner `json:"labels"`
+	Labels []LabelUpdateItem `json:"labels"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into LabelUpdateRequest
+func (o *LabelUpdateRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"labels",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"labels": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"labels": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded LabelUpdateRequest
+
+	if value, exists := allProperties["labels"]; exists {
+		if err = json.Unmarshal(value, &decoded.Labels); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertLabelUpdateRequestRequired checks if the required fields are not zero-ed
+// AssertLabelUpdateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertLabelUpdateRequestRequired(obj LabelUpdateRequest) error {
 	elements := map[string]interface{}{
 		"labels": obj.Labels,
@@ -32,7 +90,7 @@ func AssertLabelUpdateRequestRequired(obj LabelUpdateRequest) error {
 	}
 
 	for _, el := range obj.Labels {
-		if err := AssertLabelUpdateRequestLabelsInnerRequired(el); err != nil {
+		if err := AssertLabelUpdateItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -42,7 +100,7 @@ func AssertLabelUpdateRequestRequired(obj LabelUpdateRequest) error {
 // AssertLabelUpdateRequestConstraints checks if the values respects the defined constraints
 func AssertLabelUpdateRequestConstraints(obj LabelUpdateRequest) error {
 	for _, el := range obj.Labels {
-		if err := AssertLabelUpdateRequestLabelsInnerConstraints(el); err != nil {
+		if err := AssertLabelUpdateItemConstraints(el); err != nil {
 			return err
 		}
 	}

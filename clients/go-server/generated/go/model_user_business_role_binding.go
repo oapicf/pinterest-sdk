@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,6 +16,7 @@ package openapi
 
 type UserBusinessRoleBinding struct {
 
+	// Ad accounts and profiles the business member/partner has access to.
 	AssetsSummary *BusinessMemberAssetsSummary `json:"assets_summary,omitempty"`
 
 	// The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
@@ -31,16 +32,17 @@ type UserBusinessRoleBinding struct {
 	CreatedTime *int32 `json:"created_time,omitempty"`
 
 	// Unique identifier of the business member/business partner/employer.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
-	// This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+	// This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
 	IsSharedPartner bool `json:"is_shared_partner,omitempty"`
 
 	// Metadata for the business member/business partner/employer.
 	User *BusinessAccessUserSummary `json:"user,omitempty"`
 }
 
-// AssertUserBusinessRoleBindingRequired checks if the required fields are not zero-ed
+// AssertUserBusinessRoleBindingRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertUserBusinessRoleBindingRequired(obj UserBusinessRoleBinding) error {
 	if obj.AssetsSummary != nil {
 		if err := AssertBusinessMemberAssetsSummaryRequired(*obj.AssetsSummary); err != nil {

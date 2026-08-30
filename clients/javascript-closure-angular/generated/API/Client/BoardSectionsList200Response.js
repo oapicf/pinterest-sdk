@@ -12,7 +12,6 @@ API.Client.BoardSectionsList200Response = function() {}
 API.Client.BoardSectionsList200Response.prototype.bookmark;
 
 /**
- * Board sections
  * @type {!Array<!API.Client.BoardSection>}
  * @export
  */

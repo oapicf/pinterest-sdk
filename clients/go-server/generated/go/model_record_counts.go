@@ -5,16 +5,20 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
-// RecordCounts - Record processing counts
+
 type RecordCounts struct {
 
 	// Number of invalid records processed
@@ -26,20 +30,78 @@ type RecordCounts struct {
 	// Number of valid records processed
 	Valid int32 `json:"valid"`
 }
-
-// AssertRecordCountsRequired checks if the required fields are not zero-ed
-func AssertRecordCountsRequired(obj RecordCounts) error {
-	elements := map[string]interface{}{
-		"invalid": obj.Invalid,
-		"processed": obj.Processed,
-		"valid": obj.Valid,
+// UnmarshalJSON validates required property keys then unmarshals into RecordCounts
+func (o *RecordCounts) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"invalid",
+		"processed",
+		"valid",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"invalid": false,
+		"processed": false,
+		"valid": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"invalid": {},
+		"processed": {},
+		"valid": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded RecordCounts
+
+	if value, exists := allProperties["invalid"]; exists {
+		if err = json.Unmarshal(value, &decoded.Invalid); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["processed"]; exists {
+		if err = json.Unmarshal(value, &decoded.Processed); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["valid"]; exists {
+		if err = json.Unmarshal(value, &decoded.Valid); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertRecordCountsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertRecordCountsRequired(obj RecordCounts) error {
 	return nil
 }
 

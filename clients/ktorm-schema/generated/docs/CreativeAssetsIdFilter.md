@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**CREATIVE_ASSETS_ID** | CREATIVE_ASSETS_ID | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  [foreignkey]
+**CREATIVE_ASSETS_ID** | CREATIVE_ASSETS_ID | long NOT NULL |  | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |  [foreignkey]
 
 
 

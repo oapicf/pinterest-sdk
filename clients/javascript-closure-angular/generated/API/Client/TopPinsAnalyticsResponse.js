@@ -6,28 +6,20 @@ goog.provide('API.Client.TopPinsAnalyticsResponse');
 API.Client.TopPinsAnalyticsResponse = function() {}
 
 /**
- * @type {!API.Client.TopPinsAnalyticsResponse_date_availability}
+ * @type {!API.Client.TopPinsAnalyticsResponseDateAvailability}
  * @export
  */
 API.Client.TopPinsAnalyticsResponse.prototype.dateAvailability;
 
 /**
- * @type {!Array<!API.Client.TopPinsAnalyticsResponse_pins_inner>}
+ * @type {!Array<!API.Client.TopPinsAnalyticsResponsePinsItems>}
  * @export
  */
 API.Client.TopPinsAnalyticsResponse.prototype.pins;
 
 /**
- * @type {!string}
+ * @type {!API.Client.TopPinsSortBy}
  * @export
  */
 API.Client.TopPinsAnalyticsResponse.prototype.sortBy;
 
-/** @enum {string} */
-API.Client.TopPinsAnalyticsResponse.SortByEnum = { 
-  ENGAGEMENT: 'ENGAGEMENT',
-  SAVE: 'SAVE',
-  IMPRESSION: 'IMPRESSION',
-  OUTBOUND_CLICK: 'OUTBOUND_CLICK',
-  PIN_CLICK: 'PIN_CLICK',
-}

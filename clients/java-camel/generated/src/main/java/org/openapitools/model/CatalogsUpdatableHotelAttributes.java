@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -14,19 +15,19 @@ import org.openapitools.model.CatalogsHotelGuestRatings;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsUpdatableHotelAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsUpdatableHotelAttributes {
 
   private CatalogsHotelAddress address;
@@ -70,11 +71,11 @@ public class CatalogsUpdatableHotelAttributes {
   }
 
   /**
-   * Get address
+   * Hotel address
    * @return address
    */
   @Valid 
-  @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "address", description = "Hotel address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("address")
   public CatalogsHotelAddress getAddress() {
     return address;
@@ -270,11 +271,11 @@ public class CatalogsUpdatableHotelAttributes {
   }
 
   /**
-   * Get guestRatings
+   * If specified, you must provide all properties
    * @return guestRatings
    */
   @Valid 
-  @Schema(name = "guest_ratings", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "guest_ratings", description = "If specified, you must provide all properties", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("guest_ratings")
   public CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
@@ -486,10 +487,7 @@ public class CatalogsUpdatableHotelAttributes {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

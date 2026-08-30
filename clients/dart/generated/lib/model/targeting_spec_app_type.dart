@@ -11,37 +11,33 @@
 part of openapi.api;
 
 
-class TargetingSpecAppType {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecAppType._(this.value);
+enum TargetingSpecAppType {
+  androidMobile._(r'android_mobile'),
+  androidTablet._(r'android_tablet'),
+  ipad._(r'ipad'),
+  iphone._(r'iphone'),
+  web._(r'web'),
+  webMobile._(r'web_mobile'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingSpecAppType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const androidMobile = TargetingSpecAppType._(r'android_mobile');
-  static const androidTablet = TargetingSpecAppType._(r'android_tablet');
-  static const ipad = TargetingSpecAppType._(r'ipad');
-  static const iphone = TargetingSpecAppType._(r'iphone');
-  static const web = TargetingSpecAppType._(r'web');
-  static const webMobile = TargetingSpecAppType._(r'web_mobile');
-
-  /// List of all possible values in this [enum][TargetingSpecAppType].
-  static const values = <TargetingSpecAppType>[
-    androidMobile,
-    androidTablet,
-    ipad,
-    iphone,
-    web,
-    webMobile,
-  ];
-
+  /// Returns the instance of [TargetingSpecAppType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingSpecAppType? fromJson(dynamic value) => TargetingSpecAppTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingSpecAppType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingSpecAppType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingSpecAppType>[];
     if (json is List && json.isNotEmpty) {
@@ -63,9 +59,11 @@ class TargetingSpecAppTypeTypeTransformer {
 
   const TargetingSpecAppTypeTypeTransformer._();
 
-  String encode(TargetingSpecAppType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(TargetingSpecAppType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingSpecAppType.
+  /// Returns the instance of [TargetingSpecAppType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -74,6 +72,9 @@ class TargetingSpecAppTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingSpecAppType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingSpecAppType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'android_mobile': return TargetingSpecAppType.androidMobile;
@@ -91,7 +92,7 @@ class TargetingSpecAppTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingSpecAppTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingSpecAppTypeTypeTransformer? _instance;
 }
 

@@ -1,6 +1,7 @@
 package org.openapitools.model;
 
 import groovy.transform.Canonical
+import io.swagger.annotations.ApiModel;
 
 enum Permissions {
 
@@ -24,7 +25,9 @@ enum Permissions {
     
     PROFILE_PUBLISHER("PROFILE_PUBLISHER"),
     
-    CONSUMER_USER("CONSUMER_USER")
+    CONSUMER_USER("CONSUMER_USER"),
+    
+    BIZ_PINNER_LIST_SHARER("BIZ_PINNER_LIST_SHARER")
 
     private final String value
 

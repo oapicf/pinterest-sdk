@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,22 @@ var _ MappedNullable = &CampaignBidOptionsUpdate{}
 
 // CampaignBidOptionsUpdate Object describing an update to the campaign level bid multipliers.
 type CampaignBidOptionsUpdate struct {
+	// Age bucket multipliers for bid adjustments.
+	AgeBucketMultipliers NullableAgeBucketMultipliers `json:"age_bucket_multipliers,omitempty"`
+	// App type multipliers for bid adjustments.
 	AppTypeMultipliers NullableAppTypeMultipliers `json:"app_type_multipliers,omitempty"`
+	// Audience multipliers for bid adjustments.
 	AudienceMultipliers *CampaignAudienceMultipliers `json:"audience_multipliers,omitempty"`
+	// The time window for frequency bid multipliers.
+	FreqBidMultiplierTimeWindow NullableFreqBidMultiplierTimeWindow `json:"freq_bid_multiplier_time_window,omitempty"`
+	// Frequency multipliers for bid adjustments.
+	FrequencyMultipliers NullableFrequencyMultipliers `json:"frequency_multipliers,omitempty"`
+	// Gender multipliers for bid adjustments.
+	GenderMultipliers NullableGenderMultipliers `json:"gender_multipliers,omitempty"`
+	// Placement multipliers for bid adjustments.
 	PlacementMultipliers NullablePlacementMultipliers `json:"placement_multipliers,omitempty"`
-	// List of fields to update, only the fields in the list will be updated.
-	UpdateMask []string `json:"update_mask"`
+	// List of fields to update. Only the fields in the list will be updated.
+	UpdateMask []CampaignBidOptionsUpdateMaskItems `json:"update_mask"`
 }
 
 type _CampaignBidOptionsUpdate CampaignBidOptionsUpdate
@@ -35,7 +46,7 @@ type _CampaignBidOptionsUpdate CampaignBidOptionsUpdate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignBidOptionsUpdate(updateMask []string) *CampaignBidOptionsUpdate {
+func NewCampaignBidOptionsUpdate(updateMask []CampaignBidOptionsUpdateMaskItems) *CampaignBidOptionsUpdate {
 	this := CampaignBidOptionsUpdate{}
 	this.UpdateMask = updateMask
 	return &this
@@ -47,6 +58,48 @@ func NewCampaignBidOptionsUpdate(updateMask []string) *CampaignBidOptionsUpdate 
 func NewCampaignBidOptionsUpdateWithDefaults() *CampaignBidOptionsUpdate {
 	this := CampaignBidOptionsUpdate{}
 	return &this
+}
+
+// GetAgeBucketMultipliers returns the AgeBucketMultipliers field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CampaignBidOptionsUpdate) GetAgeBucketMultipliers() AgeBucketMultipliers {
+	if o == nil || IsNil(o.AgeBucketMultipliers.Get()) {
+		var ret AgeBucketMultipliers
+		return ret
+	}
+	return *o.AgeBucketMultipliers.Get()
+}
+
+// GetAgeBucketMultipliersOk returns a tuple with the AgeBucketMultipliers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CampaignBidOptionsUpdate) GetAgeBucketMultipliersOk() (*AgeBucketMultipliers, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AgeBucketMultipliers.Get(), o.AgeBucketMultipliers.IsSet()
+}
+
+// HasAgeBucketMultipliers returns a boolean if a field has been set.
+func (o *CampaignBidOptionsUpdate) HasAgeBucketMultipliers() bool {
+	if o != nil && o.AgeBucketMultipliers.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAgeBucketMultipliers gets a reference to the given NullableAgeBucketMultipliers and assigns it to the AgeBucketMultipliers field.
+func (o *CampaignBidOptionsUpdate) SetAgeBucketMultipliers(v AgeBucketMultipliers) {
+	o.AgeBucketMultipliers.Set(&v)
+}
+// SetAgeBucketMultipliersNil sets the value for AgeBucketMultipliers to be an explicit nil
+func (o *CampaignBidOptionsUpdate) SetAgeBucketMultipliersNil() {
+	o.AgeBucketMultipliers.Set(nil)
+}
+
+// UnsetAgeBucketMultipliers ensures that no value is present for AgeBucketMultipliers, not even an explicit nil
+func (o *CampaignBidOptionsUpdate) UnsetAgeBucketMultipliers() {
+	o.AgeBucketMultipliers.Unset()
 }
 
 // GetAppTypeMultipliers returns the AppTypeMultipliers field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -123,6 +176,132 @@ func (o *CampaignBidOptionsUpdate) SetAudienceMultipliers(v CampaignAudienceMult
 	o.AudienceMultipliers = &v
 }
 
+// GetFreqBidMultiplierTimeWindow returns the FreqBidMultiplierTimeWindow field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CampaignBidOptionsUpdate) GetFreqBidMultiplierTimeWindow() FreqBidMultiplierTimeWindow {
+	if o == nil || IsNil(o.FreqBidMultiplierTimeWindow.Get()) {
+		var ret FreqBidMultiplierTimeWindow
+		return ret
+	}
+	return *o.FreqBidMultiplierTimeWindow.Get()
+}
+
+// GetFreqBidMultiplierTimeWindowOk returns a tuple with the FreqBidMultiplierTimeWindow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CampaignBidOptionsUpdate) GetFreqBidMultiplierTimeWindowOk() (*FreqBidMultiplierTimeWindow, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FreqBidMultiplierTimeWindow.Get(), o.FreqBidMultiplierTimeWindow.IsSet()
+}
+
+// HasFreqBidMultiplierTimeWindow returns a boolean if a field has been set.
+func (o *CampaignBidOptionsUpdate) HasFreqBidMultiplierTimeWindow() bool {
+	if o != nil && o.FreqBidMultiplierTimeWindow.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFreqBidMultiplierTimeWindow gets a reference to the given NullableFreqBidMultiplierTimeWindow and assigns it to the FreqBidMultiplierTimeWindow field.
+func (o *CampaignBidOptionsUpdate) SetFreqBidMultiplierTimeWindow(v FreqBidMultiplierTimeWindow) {
+	o.FreqBidMultiplierTimeWindow.Set(&v)
+}
+// SetFreqBidMultiplierTimeWindowNil sets the value for FreqBidMultiplierTimeWindow to be an explicit nil
+func (o *CampaignBidOptionsUpdate) SetFreqBidMultiplierTimeWindowNil() {
+	o.FreqBidMultiplierTimeWindow.Set(nil)
+}
+
+// UnsetFreqBidMultiplierTimeWindow ensures that no value is present for FreqBidMultiplierTimeWindow, not even an explicit nil
+func (o *CampaignBidOptionsUpdate) UnsetFreqBidMultiplierTimeWindow() {
+	o.FreqBidMultiplierTimeWindow.Unset()
+}
+
+// GetFrequencyMultipliers returns the FrequencyMultipliers field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CampaignBidOptionsUpdate) GetFrequencyMultipliers() FrequencyMultipliers {
+	if o == nil || IsNil(o.FrequencyMultipliers.Get()) {
+		var ret FrequencyMultipliers
+		return ret
+	}
+	return *o.FrequencyMultipliers.Get()
+}
+
+// GetFrequencyMultipliersOk returns a tuple with the FrequencyMultipliers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CampaignBidOptionsUpdate) GetFrequencyMultipliersOk() (*FrequencyMultipliers, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FrequencyMultipliers.Get(), o.FrequencyMultipliers.IsSet()
+}
+
+// HasFrequencyMultipliers returns a boolean if a field has been set.
+func (o *CampaignBidOptionsUpdate) HasFrequencyMultipliers() bool {
+	if o != nil && o.FrequencyMultipliers.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFrequencyMultipliers gets a reference to the given NullableFrequencyMultipliers and assigns it to the FrequencyMultipliers field.
+func (o *CampaignBidOptionsUpdate) SetFrequencyMultipliers(v FrequencyMultipliers) {
+	o.FrequencyMultipliers.Set(&v)
+}
+// SetFrequencyMultipliersNil sets the value for FrequencyMultipliers to be an explicit nil
+func (o *CampaignBidOptionsUpdate) SetFrequencyMultipliersNil() {
+	o.FrequencyMultipliers.Set(nil)
+}
+
+// UnsetFrequencyMultipliers ensures that no value is present for FrequencyMultipliers, not even an explicit nil
+func (o *CampaignBidOptionsUpdate) UnsetFrequencyMultipliers() {
+	o.FrequencyMultipliers.Unset()
+}
+
+// GetGenderMultipliers returns the GenderMultipliers field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CampaignBidOptionsUpdate) GetGenderMultipliers() GenderMultipliers {
+	if o == nil || IsNil(o.GenderMultipliers.Get()) {
+		var ret GenderMultipliers
+		return ret
+	}
+	return *o.GenderMultipliers.Get()
+}
+
+// GetGenderMultipliersOk returns a tuple with the GenderMultipliers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CampaignBidOptionsUpdate) GetGenderMultipliersOk() (*GenderMultipliers, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GenderMultipliers.Get(), o.GenderMultipliers.IsSet()
+}
+
+// HasGenderMultipliers returns a boolean if a field has been set.
+func (o *CampaignBidOptionsUpdate) HasGenderMultipliers() bool {
+	if o != nil && o.GenderMultipliers.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGenderMultipliers gets a reference to the given NullableGenderMultipliers and assigns it to the GenderMultipliers field.
+func (o *CampaignBidOptionsUpdate) SetGenderMultipliers(v GenderMultipliers) {
+	o.GenderMultipliers.Set(&v)
+}
+// SetGenderMultipliersNil sets the value for GenderMultipliers to be an explicit nil
+func (o *CampaignBidOptionsUpdate) SetGenderMultipliersNil() {
+	o.GenderMultipliers.Set(nil)
+}
+
+// UnsetGenderMultipliers ensures that no value is present for GenderMultipliers, not even an explicit nil
+func (o *CampaignBidOptionsUpdate) UnsetGenderMultipliers() {
+	o.GenderMultipliers.Unset()
+}
+
 // GetPlacementMultipliers returns the PlacementMultipliers field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignBidOptionsUpdate) GetPlacementMultipliers() PlacementMultipliers {
 	if o == nil || IsNil(o.PlacementMultipliers.Get()) {
@@ -166,9 +345,9 @@ func (o *CampaignBidOptionsUpdate) UnsetPlacementMultipliers() {
 }
 
 // GetUpdateMask returns the UpdateMask field value
-func (o *CampaignBidOptionsUpdate) GetUpdateMask() []string {
+func (o *CampaignBidOptionsUpdate) GetUpdateMask() []CampaignBidOptionsUpdateMaskItems {
 	if o == nil {
-		var ret []string
+		var ret []CampaignBidOptionsUpdateMaskItems
 		return ret
 	}
 
@@ -177,7 +356,7 @@ func (o *CampaignBidOptionsUpdate) GetUpdateMask() []string {
 
 // GetUpdateMaskOk returns a tuple with the UpdateMask field value
 // and a boolean to check if the value has been set.
-func (o *CampaignBidOptionsUpdate) GetUpdateMaskOk() ([]string, bool) {
+func (o *CampaignBidOptionsUpdate) GetUpdateMaskOk() ([]CampaignBidOptionsUpdateMaskItems, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -185,7 +364,7 @@ func (o *CampaignBidOptionsUpdate) GetUpdateMaskOk() ([]string, bool) {
 }
 
 // SetUpdateMask sets field value
-func (o *CampaignBidOptionsUpdate) SetUpdateMask(v []string) {
+func (o *CampaignBidOptionsUpdate) SetUpdateMask(v []CampaignBidOptionsUpdateMaskItems) {
 	o.UpdateMask = v
 }
 
@@ -199,11 +378,23 @@ func (o CampaignBidOptionsUpdate) MarshalJSON() ([]byte, error) {
 
 func (o CampaignBidOptionsUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AgeBucketMultipliers.IsSet() {
+		toSerialize["age_bucket_multipliers"] = o.AgeBucketMultipliers.Get()
+	}
 	if o.AppTypeMultipliers.IsSet() {
 		toSerialize["app_type_multipliers"] = o.AppTypeMultipliers.Get()
 	}
 	if !IsNil(o.AudienceMultipliers) {
 		toSerialize["audience_multipliers"] = o.AudienceMultipliers
+	}
+	if o.FreqBidMultiplierTimeWindow.IsSet() {
+		toSerialize["freq_bid_multiplier_time_window"] = o.FreqBidMultiplierTimeWindow.Get()
+	}
+	if o.FrequencyMultipliers.IsSet() {
+		toSerialize["frequency_multipliers"] = o.FrequencyMultipliers.Get()
+	}
+	if o.GenderMultipliers.IsSet() {
+		toSerialize["gender_multipliers"] = o.GenderMultipliers.Get()
 	}
 	if o.PlacementMultipliers.IsSet() {
 		toSerialize["placement_multipliers"] = o.PlacementMultipliers.Get()

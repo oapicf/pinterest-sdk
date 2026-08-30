@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import NotificationResponse._
 
 case class NotificationResponse (
-  /* Returns true if the notification accepted. */
-  success: Option[Boolean],
+  /* error message when success is false */
+  errorMsg: Option[String],
 /* Received time. Unix timestamp in seconds. */
   receivedAt: Option[Integer],
-/* error message when success is false */
-  errorMsg: Option[String])
+/* Returns true if the notification accepted. */
+  success: Option[Boolean])
 
 object NotificationResponse {
   import DateTimeCodecs._

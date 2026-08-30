@@ -20,12 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for creating a product group.")
 @JsonTypeName("CatalogsProductGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupCreateRequest   {
   private String description;
   private String feedId;
   private CatalogsProductGroupFiltersRequest filters;
-  private Boolean isFeatured = false;
+  @Deprecated
+  private Boolean isFeatured;
   private String name;
 
   public CatalogsProductGroupCreateRequest() {
@@ -102,12 +103,18 @@ public class CatalogsProductGroupCreateRequest   {
 
   /**
    * boolean indicator of whether the product group is being featured or not
+   * @deprecated
    **/
+  @Deprecated
   public CatalogsProductGroupCreateRequest isFeatured(Boolean isFeatured) {
     this.isFeatured = isFeatured;
     return this;
   }
 
+  /**
+   * @deprecated
+   */
+  @Deprecated
   
   @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
   @JsonProperty("is_featured")
@@ -115,6 +122,10 @@ public class CatalogsProductGroupCreateRequest   {
     return isFeatured;
   }
 
+  /**
+   * @deprecated
+   */
+  @Deprecated
   @JsonProperty("is_featured")
   public void setIsFeatured(Boolean isFeatured) {
     this.isFeatured = isFeatured;
@@ -180,12 +191,8 @@ public class CatalogsProductGroupCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

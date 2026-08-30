@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## adAccountsSubscriptionsDelById
 
-> adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
+> LeadSubscription adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
 
 Delete lead ads subscription
 
@@ -29,7 +29,8 @@ LeadAdsApi apiInstance = new LeadAdsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
 String subscriptionId = null; // String | Unique identifier of a subscription.
 try {
-    apiInstance.adAccountsSubscriptionsDelById(adAccountId, subscriptionId);
+    LeadSubscription result = apiInstance.adAccountsSubscriptionsDelById(adAccountId, subscriptionId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LeadAdsApi#adAccountsSubscriptionsDelById");
     e.printStackTrace();
@@ -46,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 

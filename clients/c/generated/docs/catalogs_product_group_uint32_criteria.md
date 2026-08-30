@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**negated** | **int** |  | [optional] [default to false]
-**_operator** | **pinterest_rest_api_catalogs_product_group_uint32_criteria_OPERATOR_e** |  | 
+**negated** | **int** |  | [optional] 
+**_operator** | **numeric_filter_operator_type_t \*** |  | 
 **value** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -26,6 +26,7 @@ part 'pin_media.g.dart';
 /// * [duration] - Duration (in miliseconds). Field maybe null after creation due to video processing time.
 /// * [height] - Height (in pixels). Field maybe null after creation due to video processing time.
 /// * [videoUrl] - Video url (720p).  **Note:** This field is limited and not available to all apps.
+/// * [videoUrlHls] - Video url (HLS).  **Note:** This field is limited and not available to all apps.
 /// * [width] - Width (in pixels). Field maybe null after creation due to video processing time.
 /// * [items] 
 @BuiltValue()

@@ -1,0 +1,78 @@
+
+/*
+ * ScheduleUpdateRequestAllOf1.h
+ *
+ * 
+ */
+
+#ifndef TINY_CPP_CLIENT_ScheduleUpdateRequestAllOf1_H_
+#define TINY_CPP_CLIENT_ScheduleUpdateRequestAllOf1_H_
+
+
+#include <string>
+#include "bourne/json.hpp"
+#include "Helpers.h"
+
+namespace Tiny {
+
+
+/*! \brief 
+ *
+ *  \ingroup Models
+ *
+ */
+
+class ScheduleUpdateRequestAllOf1{
+public:
+
+    /*! \brief Constructor.
+	 */
+    ScheduleUpdateRequestAllOf1();
+    ScheduleUpdateRequestAllOf1(std::string jsonString);
+
+
+    /*! \brief Destructor.
+	 */
+    virtual ~ScheduleUpdateRequestAllOf1();
+
+
+    /*! \brief Retrieve a bourne JSON representation of this class.
+	 */
+    bourne::json toJson();
+
+
+    /*! \brief Fills in members of this class from bourne JSON object representing it.
+	 */
+    void fromJson(std::string jsonObj);
+
+	/*! \brief Get 
+	 */
+	std::string getEntityId();
+
+	/*! \brief Set 
+	 */
+	void setEntityId(std::string entity_id);
+	/*! \brief Get Entity type
+	 */
+	std::string getEntityType();
+
+	/*! \brief Set Entity type
+	 */
+	void setEntityType(std::string entity_type);
+	/*! \brief Get Schedule ID.
+	 */
+	std::string getId();
+
+	/*! \brief Set Schedule ID.
+	 */
+	void setId(std::string id);
+
+
+    private:
+    std::string entity_id{};
+    std::string entity_type{};
+    std::string id{};
+};
+}
+
+#endif /* TINY_CPP_CLIENT_ScheduleUpdateRequestAllOf1_H_ */

@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -26,20 +31,78 @@ type GenderDemographics struct {
 	// Percentage of users with unspecified gender
 	Unspecified float32 `json:"unspecified"`
 }
-
-// AssertGenderDemographicsRequired checks if the required fields are not zero-ed
-func AssertGenderDemographicsRequired(obj GenderDemographics) error {
-	elements := map[string]interface{}{
-		"female": obj.Female,
-		"male": obj.Male,
-		"unspecified": obj.Unspecified,
+// UnmarshalJSON validates required property keys then unmarshals into GenderDemographics
+func (o *GenderDemographics) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"female",
+		"male",
+		"unspecified",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"female": false,
+		"male": false,
+		"unspecified": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"female": {},
+		"male": {},
+		"unspecified": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded GenderDemographics
+
+	if value, exists := allProperties["female"]; exists {
+		if err = json.Unmarshal(value, &decoded.Female); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["male"]; exists {
+		if err = json.Unmarshal(value, &decoded.Male); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["unspecified"]; exists {
+		if err = json.Unmarshal(value, &decoded.Unspecified); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertGenderDemographicsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertGenderDemographicsRequired(obj GenderDemographics) error {
 	return nil
 }
 

@@ -5,7 +5,8 @@ package org.openapitools.client.model
 case class ImageMetadata (
     _description: Option[String],
     _images: Option[ImageSize],
-    _itemType: Option[String],
+    /* Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload. */
+    _itemType: String,
     _link: Option[String],
     _title: Option[String]
 )

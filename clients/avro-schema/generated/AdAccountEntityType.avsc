@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Specify the entity type to get summary information",
+  "name": "AdAccountEntityType",
+  "symbols": [
+    "ADVERTISER",
+    "CAMPAIGN",
+    "AD_GROUP",
+    "AD"
+  ]
+}

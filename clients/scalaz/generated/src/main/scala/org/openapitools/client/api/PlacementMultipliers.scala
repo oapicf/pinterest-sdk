@@ -13,35 +13,11 @@ import java.util.HashMap
 import PlacementMultipliers._
 
 case class PlacementMultipliers (
-  PLACEMENT: Option[PLACEMENT])
+  /* Placement type identifier. */
+  PLACEMENT: Option[PlacementType])
 
 object PlacementMultipliers {
   import DateTimeCodecs._
-  sealed trait PLACEMENT
-  case object SEARCH extends PLACEMENT
-  case object BROWSE extends PLACEMENT
-  case object RELATEDPINS extends PLACEMENT
-
-  object PLACEMENT {
-    def toPLACEMENT(s: String): Option[PLACEMENT] = s match {
-      case "SEARCH" => Some(SEARCH)
-      case "BROWSE" => Some(BROWSE)
-      case "RELATEDPINS" => Some(RELATEDPINS)
-      case _ => None
-    }
-
-    def fromPLACEMENT(x: PLACEMENT): String = x match {
-      case SEARCH => "SEARCH"
-      case BROWSE => "BROWSE"
-      case RELATEDPINS => "RELATEDPINS"
-    }
-  }
-
-  implicit val PLACEMENTEnumEncoder: EncodeJson[PLACEMENT] =
-    EncodeJson[PLACEMENT](is => StringEncodeJson(PLACEMENT.fromPLACEMENT(is)))
-
-  implicit val PLACEMENTEnumDecoder: DecodeJson[PLACEMENT] =
-    DecodeJson.optionDecoder[PLACEMENT](n => n.string.flatMap(jStr => PLACEMENT.toPLACEMENT(jStr)), "PLACEMENT failed to de-serialize")
 
   implicit val PlacementMultipliersCodecJson: CodecJson[PlacementMultipliers] = CodecJson.derive[PlacementMultipliers]
   implicit val PlacementMultipliersDecoder: EntityDecoder[PlacementMultipliers] = jsonOf[PlacementMultipliers]

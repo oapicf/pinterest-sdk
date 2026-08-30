@@ -16,30 +16,30 @@ class CatalogsHotelProductGroupFilterKeys {
     required this.PRICE,
     required this.HOTEL_ID,
     required this.BRAND,
-    required this.cUSTOMLABEL0,
-    required this.cUSTOMLABEL1,
-    required this.cUSTOMLABEL2,
-    required this.cUSTOMLABEL3,
-    required this.cUSTOMLABEL4,
+    required this.CUSTOM_LABEL_0,
+    required this.CUSTOM_LABEL_1,
+    required this.CUSTOM_LABEL_2,
+    required this.CUSTOM_LABEL_3,
+    required this.CUSTOM_LABEL_4,
     required this.COUNTRY,
     required this.TITLE_KEYWORDS,
   });
 
-  CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  PriceFilterPrice PRICE;
 
   CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
 
   CatalogsProductGroupMultipleStringCriteria BRAND;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL0;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL1;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL2;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL3;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3;
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL4;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4;
 
   CatalogsProductGroupMultipleCountriesCriteria COUNTRY;
 
@@ -50,11 +50,11 @@ class CatalogsHotelProductGroupFilterKeys {
     other.PRICE == PRICE &&
     other.HOTEL_ID == HOTEL_ID &&
     other.BRAND == BRAND &&
-    other.cUSTOMLABEL0 == cUSTOMLABEL0 &&
-    other.cUSTOMLABEL1 == cUSTOMLABEL1 &&
-    other.cUSTOMLABEL2 == cUSTOMLABEL2 &&
-    other.cUSTOMLABEL3 == cUSTOMLABEL3 &&
-    other.cUSTOMLABEL4 == cUSTOMLABEL4 &&
+    other.CUSTOM_LABEL_0 == CUSTOM_LABEL_0 &&
+    other.CUSTOM_LABEL_1 == CUSTOM_LABEL_1 &&
+    other.CUSTOM_LABEL_2 == CUSTOM_LABEL_2 &&
+    other.CUSTOM_LABEL_3 == CUSTOM_LABEL_3 &&
+    other.CUSTOM_LABEL_4 == CUSTOM_LABEL_4 &&
     other.COUNTRY == COUNTRY &&
     other.TITLE_KEYWORDS == TITLE_KEYWORDS;
 
@@ -64,27 +64,27 @@ class CatalogsHotelProductGroupFilterKeys {
     (PRICE.hashCode) +
     (HOTEL_ID.hashCode) +
     (BRAND.hashCode) +
-    (cUSTOMLABEL0.hashCode) +
-    (cUSTOMLABEL1.hashCode) +
-    (cUSTOMLABEL2.hashCode) +
-    (cUSTOMLABEL3.hashCode) +
-    (cUSTOMLABEL4.hashCode) +
+    (CUSTOM_LABEL_0.hashCode) +
+    (CUSTOM_LABEL_1.hashCode) +
+    (CUSTOM_LABEL_2.hashCode) +
+    (CUSTOM_LABEL_3.hashCode) +
+    (CUSTOM_LABEL_4.hashCode) +
     (COUNTRY.hashCode) +
     (TITLE_KEYWORDS.hashCode);
 
   @override
-  String toString() => 'CatalogsHotelProductGroupFilterKeys[PRICE=$PRICE, HOTEL_ID=$HOTEL_ID, BRAND=$BRAND, cUSTOMLABEL0=$cUSTOMLABEL0, cUSTOMLABEL1=$cUSTOMLABEL1, cUSTOMLABEL2=$cUSTOMLABEL2, cUSTOMLABEL3=$cUSTOMLABEL3, cUSTOMLABEL4=$cUSTOMLABEL4, COUNTRY=$COUNTRY, TITLE_KEYWORDS=$TITLE_KEYWORDS]';
+  String toString() => 'CatalogsHotelProductGroupFilterKeys[PRICE=$PRICE, HOTEL_ID=$HOTEL_ID, BRAND=$BRAND, CUSTOM_LABEL_0=$CUSTOM_LABEL_0, CUSTOM_LABEL_1=$CUSTOM_LABEL_1, CUSTOM_LABEL_2=$CUSTOM_LABEL_2, CUSTOM_LABEL_3=$CUSTOM_LABEL_3, CUSTOM_LABEL_4=$CUSTOM_LABEL_4, COUNTRY=$COUNTRY, TITLE_KEYWORDS=$TITLE_KEYWORDS]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'PRICE'] = this.PRICE;
       json[r'HOTEL_ID'] = this.HOTEL_ID;
       json[r'BRAND'] = this.BRAND;
-      json[r'CUSTOM_LABEL_0'] = this.cUSTOMLABEL0;
-      json[r'CUSTOM_LABEL_1'] = this.cUSTOMLABEL1;
-      json[r'CUSTOM_LABEL_2'] = this.cUSTOMLABEL2;
-      json[r'CUSTOM_LABEL_3'] = this.cUSTOMLABEL3;
-      json[r'CUSTOM_LABEL_4'] = this.cUSTOMLABEL4;
+      json[r'CUSTOM_LABEL_0'] = this.CUSTOM_LABEL_0;
+      json[r'CUSTOM_LABEL_1'] = this.CUSTOM_LABEL_1;
+      json[r'CUSTOM_LABEL_2'] = this.CUSTOM_LABEL_2;
+      json[r'CUSTOM_LABEL_3'] = this.CUSTOM_LABEL_3;
+      json[r'CUSTOM_LABEL_4'] = this.CUSTOM_LABEL_4;
       json[r'COUNTRY'] = this.COUNTRY;
       json[r'TITLE_KEYWORDS'] = this.TITLE_KEYWORDS;
     return json;
@@ -101,24 +101,40 @@ class CatalogsHotelProductGroupFilterKeys {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelProductGroupFilterKeys[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'PRICE'), 'Required key "CatalogsHotelProductGroupFilterKeys[PRICE]" is missing from JSON.');
+        assert(json[r'PRICE'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[PRICE]" has a null value in JSON.');
+        assert(json.containsKey(r'HOTEL_ID'), 'Required key "CatalogsHotelProductGroupFilterKeys[HOTEL_ID]" is missing from JSON.');
+        assert(json[r'HOTEL_ID'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[HOTEL_ID]" has a null value in JSON.');
+        assert(json.containsKey(r'BRAND'), 'Required key "CatalogsHotelProductGroupFilterKeys[BRAND]" is missing from JSON.');
+        assert(json[r'BRAND'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[BRAND]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_0'), 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_0]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_0'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_0]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_1'), 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_1]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_1'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_1]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_2'), 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_2]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_2'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_2]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_3'), 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_3]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_3'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_3]" has a null value in JSON.');
+        assert(json.containsKey(r'CUSTOM_LABEL_4'), 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_4]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_4'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[CUSTOM_LABEL_4]" has a null value in JSON.');
+        assert(json.containsKey(r'COUNTRY'), 'Required key "CatalogsHotelProductGroupFilterKeys[COUNTRY]" is missing from JSON.');
+        assert(json[r'COUNTRY'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[COUNTRY]" has a null value in JSON.');
+        assert(json.containsKey(r'TITLE_KEYWORDS'), 'Required key "CatalogsHotelProductGroupFilterKeys[TITLE_KEYWORDS]" is missing from JSON.');
+        assert(json[r'TITLE_KEYWORDS'] != null, 'Required key "CatalogsHotelProductGroupFilterKeys[TITLE_KEYWORDS]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsHotelProductGroupFilterKeys(
-        PRICE: CatalogsProductGroupPricingCurrencyCriteria.fromJson(json[r'PRICE'])!,
-        HOTEL_ID: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'HOTEL_ID')!,
-        BRAND: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'BRAND')!,
-        cUSTOMLABEL0: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_0')!,
-        cUSTOMLABEL1: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_1')!,
-        cUSTOMLABEL2: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_2')!,
-        cUSTOMLABEL3: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_3')!,
-        cUSTOMLABEL4: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_4')!,
-        COUNTRY: mapValueOfType<CatalogsProductGroupMultipleCountriesCriteria>(json, r'COUNTRY')!,
-        TITLE_KEYWORDS: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'TITLE_KEYWORDS')!,
+        PRICE: PriceFilterPrice.fromJson(json[r'PRICE'])!,
+        HOTEL_ID: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'HOTEL_ID'])!,
+        BRAND: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'BRAND'])!,
+        CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_0'])!,
+        CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_1'])!,
+        CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_2'])!,
+        CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_3'])!,
+        CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_4'])!,
+        COUNTRY: CatalogsProductGroupMultipleCountriesCriteria.fromJson(json[r'COUNTRY'])!,
+        TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'TITLE_KEYWORDS'])!,
       );
     }
     return null;

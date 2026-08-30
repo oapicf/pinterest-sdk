@@ -12,20 +12,21 @@ import org.joda.time.DateTime
 import Keyword._
 
 case class Keyword (
-  /* </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
+  archived: Option[Boolean],
+/* **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
   bid: Option[Integer],
-matchType: MatchTypeResponse,
-/* Keyword value (120 chars max). */
-  value: String,
-archived: Option[Boolean],
 /* Keyword ID . */
-  id: Option[String],
+  id: String,
+/* Keyword [match type](/docs/api-features/targeting-overview/) */
+  matchType: MatchType,
 /* Keyword parent entity ID (advertiser, campaign, ad group). */
-  parentId: Option[String],
-/* Parent entity type */
+  parentId: String,
+/* Parent entity type (advertiser, campaign, ad group). */
   parentType: Option[String],
 /* Always keyword */
-  `type`: Option[String])
+  `type`: Option[String],
+/* Keyword value (120 chars max). */
+  value: String)
 
 object Keyword {
   import DateTimeCodecs._

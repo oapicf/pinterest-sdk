@@ -10,18 +10,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.AdAdsAnalyticsAsyncTargetingTypes;
 import org.openapitools.model.AdGroupSummaryStatus;
-import org.openapitools.model.AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics;
 import org.openapitools.model.AdsAnalyticsMetricsFilter;
+import org.openapitools.model.CampaignObjectiveType;
 import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.ConversionAttributionWindowDays;
 import org.openapitools.model.ConversionReportAttributionType;
 import org.openapitools.model.ConversionReportTimeType;
+import org.openapitools.model.CustomConversionEventMetrics;
 import org.openapitools.model.DataOutputFormat;
 import org.openapitools.model.Granularity;
 import org.openapitools.model.MetricsReportingLevel;
-import org.openapitools.model.ObjectiveType;
 import org.openapitools.model.PinPromotionSummaryStatus;
+import org.openapitools.model.PrimarySort;
 import org.openapitools.model.ProductGroupSummaryStatus;
 import org.openapitools.model.ReportingColumnAsync;
 import org.openapitools.model.ReportingTimeZone;
@@ -29,276 +31,46 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   
-  private List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
-  private ConversionAttributionWindowDays clickWindowDays = ConversionAttributionWindowDays.NUMBER_30;
-  private ConversionReportTimeType conversionReportTime = "TIME_OF_AD_ACTION";
-  private String endDate;
-  private ConversionAttributionWindowDays engagementWindowDays = ConversionAttributionWindowDays.NUMBER_30;
-  private Granularity granularity;
-  private String startDate;
-  private ConversionAttributionWindowDays viewWindowDays = ConversionAttributionWindowDays.NUMBER_1;
-  private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
-  private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
-  private List<ObjectiveType> campaignObjectiveTypes = new ArrayList<>();
-  private String campaignBrandLabel;
   private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
   private List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
   private List<@Pattern(regexp = "^\\d+$")String> adIds = new ArrayList<>();
   private List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
+  private List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
+  private String campaignBrandLabel;
+  private String campaignCustomLabel;
+  private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
+  private List<CampaignObjectiveType> campaignObjectiveTypes = new ArrayList<>();
+  private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
+  private ConversionAttributionWindowDays clickWindowDays;
+  private List<ReportingColumnAsync> columns = new ArrayList<>();
+  private Boolean combineTargetingTypes = false;
+  private ConversionReportTimeType conversionReportTime;
+  private List<@Valid CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
+  private String endDate;
+  private Integer endHour;
+  private ConversionAttributionWindowDays engagementWindowDays;
+  private Granularity granularity;
+  private MetricsReportingLevel level;
+  private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
+  private PrimarySort primarySort;
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
   private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
   private List<@Pattern(regexp = "^\\d+$")String> productItemIds = new ArrayList<>();
-
-  /**
-   * Reporting targeting type
-   */
-  public enum TargetingTypesEnum {
-    KEYWORD("KEYWORD"),
-
-        APPTYPE("APPTYPE"),
-
-        GENDER("GENDER"),
-
-        LOCATION("LOCATION"),
-
-        PLACEMENT("PLACEMENT"),
-
-        COUNTRY("COUNTRY"),
-
-        TARGETED_INTEREST("TARGETED_INTEREST"),
-
-        PINNER_INTEREST("PINNER_INTEREST"),
-
-        AUDIENCE_INCLUDE("AUDIENCE_INCLUDE"),
-
-        GEO("GEO"),
-
-        AGE_BUCKET("AGE_BUCKET"),
-
-        REGION("REGION"),
-
-        MEDIA_TYPE("MEDIA_TYPE"),
-
-        AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER"),
-
-        AUDIENCE_MULTIPLIER("AUDIENCE_MULTIPLIER"),
-
-        CREATIVE_ENHANCEMENTS("CREATIVE_ENHANCEMENTS"),
-
-        LOCAL_ADS_STORE_CODE("LOCAL_ADS_STORE_CODE");
-    private String value;
-
-    TargetingTypesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private List<TargetingTypesEnum> targetingTypes = new ArrayList<>();
-  private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
-  private List<ReportingColumnAsync> columns = new ArrayList<>();
-  private Boolean combineTargetingTypes = false;
-  private List<@Valid AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
-  private Integer endHour;
-  private MetricsReportingLevel level;
-
-  /**
-   * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
-   */
-  public enum PrimarySortEnum {
-    BY_ID("BY_ID"),
-
-        BY_DATE("BY_DATE");
-    private String value;
-
-    PrimarySortEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private PrimarySortEnum primarySort;
-  private DataOutputFormat reportFormat = "JSON";
+  private DataOutputFormat reportFormat;
   private ReportingTimeZone reportingTimezone;
+  private String startDate;
   private Integer startHour;
-
-  /**
-   * List of types of attribution for the conversion report
-   **/
-  
-  @ApiModelProperty(value = "List of types of attribution for the conversion report")
-  @JsonProperty("attribution_types")
-  public List<ConversionReportAttributionType> getAttributionTypes() {
-    return attributionTypes;
-  }
-  public void setAttributionTypes(List<ConversionReportAttributionType> attributionTypes) {
-    this.attributionTypes = attributionTypes;
-  }
-
-  /**
-   * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-   **/
-  
-  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.")
-  @JsonProperty("click_window_days")
-  public ConversionAttributionWindowDays getClickWindowDays() {
-    return clickWindowDays;
-  }
-  public void setClickWindowDays(ConversionAttributionWindowDays clickWindowDays) {
-    this.clickWindowDays = clickWindowDays;
-  }
-
-  /**
-   * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-   **/
-  
-  @ApiModelProperty(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")
-  @JsonProperty("conversion_report_time")
-  public ConversionReportTimeType getConversionReportTime() {
-    return conversionReportTime;
-  }
-  public void setConversionReportTime(ConversionReportTimeType conversionReportTime) {
-    this.conversionReportTime = conversionReportTime;
-  }
-
-  /**
-   * Metric report end date (UTC). Format: YYYY-MM-DD
-   **/
-  
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty("end_date")
-  @NotNull
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getEndDate() {
-    return endDate;
-  }
-  public void setEndDate(String endDate) {
-    this.endDate = endDate;
-  }
-
-  /**
-   * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-   **/
-  
-  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.")
-  @JsonProperty("engagement_window_days")
-  public ConversionAttributionWindowDays getEngagementWindowDays() {
-    return engagementWindowDays;
-  }
-  public void setEngagementWindowDays(ConversionAttributionWindowDays engagementWindowDays) {
-    this.engagementWindowDays = engagementWindowDays;
-  }
-
-  /**
-   * TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
-   **/
-  
-  @ApiModelProperty(required = true, value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly")
-  @JsonProperty("granularity")
-  @NotNull
-  public Granularity getGranularity() {
-    return granularity;
-  }
-  public void setGranularity(Granularity granularity) {
-    this.granularity = granularity;
-  }
-
-  /**
-   * Metric report start date (UTC). Format: YYYY-MM-DD
-   **/
-  
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty("start_date")
-  @NotNull
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getStartDate() {
-    return startDate;
-  }
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
-  }
-
-  /**
-   * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
-   **/
-  
-  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.")
-  @JsonProperty("view_window_days")
-  public ConversionAttributionWindowDays getViewWindowDays() {
-    return viewWindowDays;
-  }
-  public void setViewWindowDays(ConversionAttributionWindowDays viewWindowDays) {
-    this.viewWindowDays = viewWindowDays;
-  }
-
-  /**
-   * List of campaign ids
-   **/
-  
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of campaign ids")
-  @JsonProperty("campaign_ids")
- @Size(min=1,max=500)  public List<@Pattern(regexp = "^\\d+$")String> getCampaignIds() {
-    return campaignIds;
-  }
-  public void setCampaignIds(List<@Pattern(regexp = "^\\d+$")String> campaignIds) {
-    this.campaignIds = campaignIds;
-  }
-
-  /**
-   * List of status values for filtering
-   **/
-  
-  @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of status values for filtering")
-  @JsonProperty("campaign_statuses")
- @Size(min=1,max=6)  public List<CampaignSummaryStatus> getCampaignStatuses() {
-    return campaignStatuses;
-  }
-  public void setCampaignStatuses(List<CampaignSummaryStatus> campaignStatuses) {
-    this.campaignStatuses = campaignStatuses;
-  }
-
-  /**
-   * List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] in BETA.
-   **/
-  
-  @ApiModelProperty(example = "[\"AWARENESS\"]", value = "List of values for filtering. [\"WEB_SESSIONS\"] in BETA.")
-  @JsonProperty("campaign_objective_types")
- @Size(min=1,max=7)  public List<ObjectiveType> getCampaignObjectiveTypes() {
-    return campaignObjectiveTypes;
-  }
-  public void setCampaignObjectiveTypes(List<ObjectiveType> campaignObjectiveTypes) {
-    this.campaignObjectiveTypes = campaignObjectiveTypes;
-  }
-
-  /**
-   * Campaign brand label for filtering.
-   **/
-  
-  @ApiModelProperty(example = "Brand", value = "Campaign brand label for filtering.")
-  @JsonProperty("campaign_brand_label")
-  public String getCampaignBrandLabel() {
-    return campaignBrandLabel;
-  }
-  public void setCampaignBrandLabel(String campaignBrandLabel) {
-    this.campaignBrandLabel = campaignBrandLabel;
-  }
+  private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>();
+  private ConversionAttributionWindowDays viewWindowDays;
 
   /**
    * List of ad group ids
    **/
   
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of ad group ids")
+  @ApiModelProperty(value = "List of ad group ids")
   @JsonProperty("ad_group_ids")
  @Size(min=1,max=500)  public List<@Pattern(regexp = "^\\d+$")String> getAdGroupIds() {
     return adGroupIds;
@@ -311,7 +83,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
    * List of values for filtering
    **/
   
-  @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of values for filtering")
+  @ApiModelProperty(value = "List of values for filtering")
   @JsonProperty("ad_group_statuses")
  @Size(min=1,max=6)  public List<AdGroupSummaryStatus> getAdGroupStatuses() {
     return adGroupStatuses;
@@ -321,10 +93,10 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
   /**
-   * List of ad ids [This parameter is no supported for Product Item Level Reports]
+   * List of ad ids. This parameter is not supported for Product Item level reports.
    **/
   
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of ad ids [This parameter is no supported for Product Item Level Reports]")
+  @ApiModelProperty(value = "List of ad ids. This parameter is not supported for Product Item level reports.")
   @JsonProperty("ad_ids")
  @Size(min=1,max=500)  public List<@Pattern(regexp = "^\\d+$")String> getAdIds() {
     return adIds;
@@ -334,10 +106,10 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
   /**
-   * List of values for filtering [This parameter is not supported for Product Item Level Reports]
+   * List of values for filtering. This parameter is not supported for Product Item level reports.
    **/
   
-  @ApiModelProperty(example = "[\"APPROVED\",\"PAUSED\"]", value = "List of values for filtering [This parameter is not supported for Product Item Level Reports]")
+  @ApiModelProperty(value = "List of values for filtering. This parameter is not supported for Product Item level reports.")
   @JsonProperty("ad_statuses")
  @Size(min=1,max=6)  public List<PinPromotionSummaryStatus> getAdStatuses() {
     return adStatuses;
@@ -347,55 +119,215 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
   /**
-   * List of product group ids
+   * List of attribution types for the conversion report.
    **/
   
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of product group ids")
-  @JsonProperty("product_group_ids")
- @Size(min=1,max=500)  public List<@Pattern(regexp = "^\\d+$")String> getProductGroupIds() {
-    return productGroupIds;
+  @ApiModelProperty(value = "List of attribution types for the conversion report.")
+  @JsonProperty("attribution_types")
+  public List<ConversionReportAttributionType> getAttributionTypes() {
+    return attributionTypes;
   }
-  public void setProductGroupIds(List<@Pattern(regexp = "^\\d+$")String> productGroupIds) {
-    this.productGroupIds = productGroupIds;
+  public void setAttributionTypes(List<ConversionReportAttributionType> attributionTypes) {
+    this.attributionTypes = attributionTypes;
   }
 
   /**
-   * List of values for filtering
+   * Campaign brand label for filtering.
    **/
   
-  @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of values for filtering")
-  @JsonProperty("product_group_statuses")
- @Size(min=1,max=6)  public List<ProductGroupSummaryStatus> getProductGroupStatuses() {
-    return productGroupStatuses;
+  @ApiModelProperty(value = "Campaign brand label for filtering.")
+  @JsonProperty("campaign_brand_label")
+  public String getCampaignBrandLabel() {
+    return campaignBrandLabel;
   }
-  public void setProductGroupStatuses(List<ProductGroupSummaryStatus> productGroupStatuses) {
-    this.productGroupStatuses = productGroupStatuses;
+  public void setCampaignBrandLabel(String campaignBrandLabel) {
+    this.campaignBrandLabel = campaignBrandLabel;
   }
 
   /**
-   * List of product item ids
+   * Campaign custom label for filtering.
    **/
   
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of product item ids")
-  @JsonProperty("product_item_ids")
- @Size(min=1,max=500)  public List<@Pattern(regexp = "^\\d+$")String> getProductItemIds() {
-    return productItemIds;
+  @ApiModelProperty(value = "Campaign custom label for filtering.")
+  @JsonProperty("campaign_custom_label")
+  public String getCampaignCustomLabel() {
+    return campaignCustomLabel;
   }
-  public void setProductItemIds(List<@Pattern(regexp = "^\\d+$")String> productItemIds) {
-    this.productItemIds = productItemIds;
+  public void setCampaignCustomLabel(String campaignCustomLabel) {
+    this.campaignCustomLabel = campaignCustomLabel;
   }
 
   /**
-   * List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AUDIENCE_MULTIPLIER\&quot;] is only available in CAMPAIGN_TARGETING level. [\&quot;MEDIA_TYPE\&quot;] is only available in PRODUCT_ITEM_TARGETING level. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+   * List of campaign ids
    **/
   
-  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
-  @JsonProperty("targeting_types")
- @Size(min=1,max=5)  public List<TargetingTypesEnum> getTargetingTypes() {
-    return targetingTypes;
+  @ApiModelProperty(value = "List of campaign ids")
+  @JsonProperty("campaign_ids")
+ @Size(min=1,max=500)  public List<@Pattern(regexp = "^\\d+$")String> getCampaignIds() {
+    return campaignIds;
   }
-  public void setTargetingTypes(List<TargetingTypesEnum> targetingTypes) {
-    this.targetingTypes = targetingTypes;
+  public void setCampaignIds(List<@Pattern(regexp = "^\\d+$")String> campaignIds) {
+    this.campaignIds = campaignIds;
+  }
+
+  /**
+   * List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] is in BETA.
+   **/
+  
+  @ApiModelProperty(value = "List of values for filtering. [\"WEB_SESSIONS\"] is in BETA.")
+  @JsonProperty("campaign_objective_types")
+ @Size(min=1,max=7)  public List<CampaignObjectiveType> getCampaignObjectiveTypes() {
+    return campaignObjectiveTypes;
+  }
+  public void setCampaignObjectiveTypes(List<CampaignObjectiveType> campaignObjectiveTypes) {
+    this.campaignObjectiveTypes = campaignObjectiveTypes;
+  }
+
+  /**
+   * List of status values for filtering
+   **/
+  
+  @ApiModelProperty(value = "List of status values for filtering")
+  @JsonProperty("campaign_statuses")
+ @Size(min=1,max=6)  public List<CampaignSummaryStatus> getCampaignStatuses() {
+    return campaignStatuses;
+  }
+  public void setCampaignStatuses(List<CampaignSummaryStatus> campaignStatuses) {
+    this.campaignStatuses = campaignStatuses;
+  }
+
+  /**
+   * Number of days to use as the conversion attribution window for a pin click action.
+   **/
+  
+  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a pin click action.")
+  @JsonProperty("click_window_days")
+  public ConversionAttributionWindowDays getClickWindowDays() {
+    return clickWindowDays;
+  }
+  public void setClickWindowDays(ConversionAttributionWindowDays clickWindowDays) {
+    this.clickWindowDays = clickWindowDays;
+  }
+
+  /**
+   * Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.
+   **/
+  
+  @ApiModelProperty(value = "Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.")
+  @JsonProperty("columns")
+  public List<ReportingColumnAsync> getColumns() {
+    return columns;
+  }
+  public void setColumns(List<ReportingColumnAsync> columns) {
+    this.columns = columns;
+  }
+
+  /**
+   * Determines if the targeting types included in the request should be consolidated into a single breakdown.
+   **/
+  
+  @ApiModelProperty(value = "Determines if the targeting types included in the request should be consolidated into a single breakdown.")
+  @JsonProperty("combine_targeting_types")
+  public Boolean getCombineTargetingTypes() {
+    return combineTargetingTypes;
+  }
+  public void setCombineTargetingTypes(Boolean combineTargetingTypes) {
+    this.combineTargetingTypes = combineTargetingTypes;
+  }
+
+  /**
+   * Date dimension for conversion metrics.
+   **/
+  
+  @ApiModelProperty(value = "Date dimension for conversion metrics.")
+  @JsonProperty("conversion_report_time")
+  public ConversionReportTimeType getConversionReportTime() {
+    return conversionReportTime;
+  }
+  public void setConversionReportTime(ConversionReportTimeType conversionReportTime) {
+    this.conversionReportTime = conversionReportTime;
+  }
+
+  /**
+   * List of advertiser-defined custom conversion event metrics to include in the report
+   **/
+  
+  @ApiModelProperty(value = "List of advertiser-defined custom conversion event metrics to include in the report")
+  @JsonProperty("custom_conversion_event_metrics")
+  public List<@Valid CustomConversionEventMetrics> getCustomConversionEventMetrics() {
+    return customConversionEventMetrics;
+  }
+  public void setCustomConversionEventMetrics(List<@Valid CustomConversionEventMetrics> customConversionEventMetrics) {
+    this.customConversionEventMetrics = customConversionEventMetrics;
+  }
+
+  /**
+   * Metric report end date (UTC). Format: YYYY-MM-DD
+   **/
+  
+  @ApiModelProperty(required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
+  @JsonProperty("end_date")
+  @NotNull
+ @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")  public String getEndDate() {
+    return endDate;
+  }
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
+  }
+
+  /**
+   * Which hour of the end date to stop the report (inclusive). Only allowed for hourly reports.
+   * minimum: 0
+   * maximum: 23
+   **/
+  
+  @ApiModelProperty(value = "Which hour of the end date to stop the report (inclusive). Only allowed for hourly reports.")
+  @JsonProperty("end_hour")
+ @Min(0) @Max(23)  public Integer getEndHour() {
+    return endHour;
+  }
+  public void setEndHour(Integer endHour) {
+    this.endHour = endHour;
+  }
+
+  /**
+   * Number of days to use as the conversion attribution window for an engagement action.
+   **/
+  
+  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for an engagement action.")
+  @JsonProperty("engagement_window_days")
+  public ConversionAttributionWindowDays getEngagementWindowDays() {
+    return engagementWindowDays;
+  }
+  public void setEngagementWindowDays(ConversionAttributionWindowDays engagementWindowDays) {
+    this.engagementWindowDays = engagementWindowDays;
+  }
+
+  /**
+   *   TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly.
+   **/
+  
+  @ApiModelProperty(required = true, value = "  TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly.")
+  @JsonProperty("granularity")
+  @NotNull
+  public Granularity getGranularity() {
+    return granularity;
+  }
+  public void setGranularity(Granularity granularity) {
+    this.granularity = granularity;
+  }
+
+  /**
+   * Level of the report
+   **/
+  
+  @ApiModelProperty(value = "Level of the report")
+  @JsonProperty("level")
+  public MetricsReportingLevel getLevel() {
+    return level;
+  }
+  public void setLevel(MetricsReportingLevel level) {
+    this.level = level;
   }
 
   /**
@@ -412,92 +344,60 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
   /**
-   * Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
    **/
   
-  @ApiModelProperty(required = true, value = "Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.")
-  @JsonProperty("columns")
-  @NotNull
-  public List<ReportingColumnAsync> getColumns() {
-    return columns;
-  }
-  public void setColumns(List<ReportingColumnAsync> columns) {
-    this.columns = columns;
-  }
-
-  /**
-   * Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&amp;US. This feature is currently in BETA and is not available to all users.
-   **/
-  
-  @ApiModelProperty(example = "false", value = "Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users.")
-  @JsonProperty("combine_targeting_types")
-  public Boolean getCombineTargetingTypes() {
-    return combineTargetingTypes;
-  }
-  public void setCombineTargetingTypes(Boolean combineTargetingTypes) {
-    this.combineTargetingTypes = combineTargetingTypes;
-  }
-
-  /**
-   * List of advertiser-defined custom conversion event metrics to include in the report
-   **/
-  
-  @ApiModelProperty(value = "List of advertiser-defined custom conversion event metrics to include in the report")
-  @JsonProperty("custom_conversion_event_metrics")
-  public List<@Valid AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics> getCustomConversionEventMetrics() {
-    return customConversionEventMetrics;
-  }
-  public void setCustomConversionEventMetrics(List<@Valid AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics> customConversionEventMetrics) {
-    this.customConversionEventMetrics = customConversionEventMetrics;
-  }
-
-  /**
-   * Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
-   * minimum: 0
-   * maximum: 23
-   **/
-  
-  @ApiModelProperty(value = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.")
-  @JsonProperty("end_hour")
- @Min(0) @Max(23)  public Integer getEndHour() {
-    return endHour;
-  }
-  public void setEndHour(Integer endHour) {
-    this.endHour = endHour;
-  }
-
-  /**
-   * Level of the report
-   **/
-  
-  @ApiModelProperty(required = true, value = "Level of the report")
-  @JsonProperty("level")
-  @NotNull
-  public MetricsReportingLevel getLevel() {
-    return level;
-  }
-  public void setLevel(MetricsReportingLevel level) {
-    this.level = level;
-  }
-
-  /**
-   * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
-   **/
-  
-  @ApiModelProperty(example = "BY_ID", value = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.")
+  @ApiModelProperty(value = "")
   @JsonProperty("primary_sort")
-  public PrimarySortEnum getPrimarySort() {
+  public PrimarySort getPrimarySort() {
     return primarySort;
   }
-  public void setPrimarySort(PrimarySortEnum primarySort) {
+  public void setPrimarySort(PrimarySort primarySort) {
     this.primarySort = primarySort;
   }
 
   /**
-   * Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+   * List of product group ids
    **/
   
-  @ApiModelProperty(value = "Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.")
+  @ApiModelProperty(value = "List of product group ids")
+  @JsonProperty("product_group_ids")
+ @Size(min=1,max=500)  public List<@Pattern(regexp = "^\\d+$")String> getProductGroupIds() {
+    return productGroupIds;
+  }
+  public void setProductGroupIds(List<@Pattern(regexp = "^\\d+$")String> productGroupIds) {
+    this.productGroupIds = productGroupIds;
+  }
+
+  /**
+   * List of values for filtering
+   **/
+  
+  @ApiModelProperty(value = "List of values for filtering")
+  @JsonProperty("product_group_statuses")
+ @Size(min=1,max=6)  public List<ProductGroupSummaryStatus> getProductGroupStatuses() {
+    return productGroupStatuses;
+  }
+  public void setProductGroupStatuses(List<ProductGroupSummaryStatus> productGroupStatuses) {
+    this.productGroupStatuses = productGroupStatuses;
+  }
+
+  /**
+   * List of product item ids
+   **/
+  
+  @ApiModelProperty(value = "List of product item ids")
+  @JsonProperty("product_item_ids")
+ @Size(min=1,max=500)  public List<@Pattern(regexp = "^\\d+$")String> getProductItemIds() {
+    return productItemIds;
+  }
+  public void setProductItemIds(List<@Pattern(regexp = "^\\d+$")String> productItemIds) {
+    this.productItemIds = productItemIds;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
   @JsonProperty("report_format")
   public DataOutputFormat getReportFormat() {
     return reportFormat;
@@ -507,10 +407,10 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
   /**
-   * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+   * Specify the timezone to be applied for the reporting.
    **/
   
-  @ApiModelProperty(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")
+  @ApiModelProperty(value = "Specify the timezone to be applied for the reporting.")
   @JsonProperty("reporting_timezone")
   public ReportingTimeZone getReportingTimezone() {
     return reportingTimezone;
@@ -520,18 +420,58 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
   /**
-   * Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+   * Metric report start date (UTC). Format: YYYY-MM-DD
+   **/
+  
+  @ApiModelProperty(required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
+  @JsonProperty("start_date")
+  @NotNull
+ @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")  public String getStartDate() {
+    return startDate;
+  }
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
+  }
+
+  /**
+   * Which hour of the start date to begin the report. Only allowed for hourly reports.
    * minimum: 0
    * maximum: 23
    **/
   
-  @ApiModelProperty(value = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.")
+  @ApiModelProperty(value = "Which hour of the start date to begin the report. Only allowed for hourly reports.")
   @JsonProperty("start_hour")
  @Min(0) @Max(23)  public Integer getStartHour() {
     return startHour;
   }
   public void setStartHour(Integer startHour) {
     this.startHour = startHour;
+  }
+
+  /**
+   * List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;.
+   **/
+  
+  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
+  @JsonProperty("targeting_types")
+ @Size(min=1,max=5)  public List<AdAdsAnalyticsAsyncTargetingTypes> getTargetingTypes() {
+    return targetingTypes;
+  }
+  public void setTargetingTypes(List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes) {
+    this.targetingTypes = targetingTypes;
+  }
+
+  /**
+   * Number of days to use as the conversion attribution window for a view action.
+   **/
+  
+  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a view action.")
+  @JsonProperty("view_window_days")
+  public ConversionAttributionWindowDays getViewWindowDays() {
+    return viewWindowDays;
+  }
+  public void setViewWindowDays(ConversionAttributionWindowDays viewWindowDays) {
+    this.viewWindowDays = viewWindowDays;
   }
 
 
@@ -544,41 +484,42 @@ public class AdsAnalyticsCreateAsyncRequest   {
       return false;
     }
     AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest = (AdsAnalyticsCreateAsyncRequest) o;
-    return Objects.equals(this.attributionTypes, adsAnalyticsCreateAsyncRequest.attributionTypes) &&
-        Objects.equals(this.clickWindowDays, adsAnalyticsCreateAsyncRequest.clickWindowDays) &&
-        Objects.equals(this.conversionReportTime, adsAnalyticsCreateAsyncRequest.conversionReportTime) &&
-        Objects.equals(this.endDate, adsAnalyticsCreateAsyncRequest.endDate) &&
-        Objects.equals(this.engagementWindowDays, adsAnalyticsCreateAsyncRequest.engagementWindowDays) &&
-        Objects.equals(this.granularity, adsAnalyticsCreateAsyncRequest.granularity) &&
-        Objects.equals(this.startDate, adsAnalyticsCreateAsyncRequest.startDate) &&
-        Objects.equals(this.viewWindowDays, adsAnalyticsCreateAsyncRequest.viewWindowDays) &&
-        Objects.equals(this.campaignIds, adsAnalyticsCreateAsyncRequest.campaignIds) &&
-        Objects.equals(this.campaignStatuses, adsAnalyticsCreateAsyncRequest.campaignStatuses) &&
-        Objects.equals(this.campaignObjectiveTypes, adsAnalyticsCreateAsyncRequest.campaignObjectiveTypes) &&
-        Objects.equals(this.campaignBrandLabel, adsAnalyticsCreateAsyncRequest.campaignBrandLabel) &&
-        Objects.equals(this.adGroupIds, adsAnalyticsCreateAsyncRequest.adGroupIds) &&
+    return Objects.equals(this.adGroupIds, adsAnalyticsCreateAsyncRequest.adGroupIds) &&
         Objects.equals(this.adGroupStatuses, adsAnalyticsCreateAsyncRequest.adGroupStatuses) &&
         Objects.equals(this.adIds, adsAnalyticsCreateAsyncRequest.adIds) &&
         Objects.equals(this.adStatuses, adsAnalyticsCreateAsyncRequest.adStatuses) &&
+        Objects.equals(this.attributionTypes, adsAnalyticsCreateAsyncRequest.attributionTypes) &&
+        Objects.equals(this.campaignBrandLabel, adsAnalyticsCreateAsyncRequest.campaignBrandLabel) &&
+        Objects.equals(this.campaignCustomLabel, adsAnalyticsCreateAsyncRequest.campaignCustomLabel) &&
+        Objects.equals(this.campaignIds, adsAnalyticsCreateAsyncRequest.campaignIds) &&
+        Objects.equals(this.campaignObjectiveTypes, adsAnalyticsCreateAsyncRequest.campaignObjectiveTypes) &&
+        Objects.equals(this.campaignStatuses, adsAnalyticsCreateAsyncRequest.campaignStatuses) &&
+        Objects.equals(this.clickWindowDays, adsAnalyticsCreateAsyncRequest.clickWindowDays) &&
+        Objects.equals(this.columns, adsAnalyticsCreateAsyncRequest.columns) &&
+        Objects.equals(this.combineTargetingTypes, adsAnalyticsCreateAsyncRequest.combineTargetingTypes) &&
+        Objects.equals(this.conversionReportTime, adsAnalyticsCreateAsyncRequest.conversionReportTime) &&
+        Objects.equals(this.customConversionEventMetrics, adsAnalyticsCreateAsyncRequest.customConversionEventMetrics) &&
+        Objects.equals(this.endDate, adsAnalyticsCreateAsyncRequest.endDate) &&
+        Objects.equals(this.endHour, adsAnalyticsCreateAsyncRequest.endHour) &&
+        Objects.equals(this.engagementWindowDays, adsAnalyticsCreateAsyncRequest.engagementWindowDays) &&
+        Objects.equals(this.granularity, adsAnalyticsCreateAsyncRequest.granularity) &&
+        Objects.equals(this.level, adsAnalyticsCreateAsyncRequest.level) &&
+        Objects.equals(this.metricsFilters, adsAnalyticsCreateAsyncRequest.metricsFilters) &&
+        Objects.equals(this.primarySort, adsAnalyticsCreateAsyncRequest.primarySort) &&
         Objects.equals(this.productGroupIds, adsAnalyticsCreateAsyncRequest.productGroupIds) &&
         Objects.equals(this.productGroupStatuses, adsAnalyticsCreateAsyncRequest.productGroupStatuses) &&
         Objects.equals(this.productItemIds, adsAnalyticsCreateAsyncRequest.productItemIds) &&
-        Objects.equals(this.targetingTypes, adsAnalyticsCreateAsyncRequest.targetingTypes) &&
-        Objects.equals(this.metricsFilters, adsAnalyticsCreateAsyncRequest.metricsFilters) &&
-        Objects.equals(this.columns, adsAnalyticsCreateAsyncRequest.columns) &&
-        Objects.equals(this.combineTargetingTypes, adsAnalyticsCreateAsyncRequest.combineTargetingTypes) &&
-        Objects.equals(this.customConversionEventMetrics, adsAnalyticsCreateAsyncRequest.customConversionEventMetrics) &&
-        Objects.equals(this.endHour, adsAnalyticsCreateAsyncRequest.endHour) &&
-        Objects.equals(this.level, adsAnalyticsCreateAsyncRequest.level) &&
-        Objects.equals(this.primarySort, adsAnalyticsCreateAsyncRequest.primarySort) &&
         Objects.equals(this.reportFormat, adsAnalyticsCreateAsyncRequest.reportFormat) &&
         Objects.equals(this.reportingTimezone, adsAnalyticsCreateAsyncRequest.reportingTimezone) &&
-        Objects.equals(this.startHour, adsAnalyticsCreateAsyncRequest.startHour);
+        Objects.equals(this.startDate, adsAnalyticsCreateAsyncRequest.startDate) &&
+        Objects.equals(this.startHour, adsAnalyticsCreateAsyncRequest.startHour) &&
+        Objects.equals(this.targetingTypes, adsAnalyticsCreateAsyncRequest.targetingTypes) &&
+        Objects.equals(this.viewWindowDays, adsAnalyticsCreateAsyncRequest.viewWindowDays);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionTypes, clickWindowDays, conversionReportTime, endDate, engagementWindowDays, granularity, startDate, viewWindowDays, campaignIds, campaignStatuses, campaignObjectiveTypes, campaignBrandLabel, adGroupIds, adGroupStatuses, adIds, adStatuses, productGroupIds, productGroupStatuses, productItemIds, targetingTypes, metricsFilters, columns, combineTargetingTypes, customConversionEventMetrics, endHour, level, primarySort, reportFormat, reportingTimezone, startHour);
+    return Objects.hash(adGroupIds, adGroupStatuses, adIds, adStatuses, attributionTypes, campaignBrandLabel, campaignCustomLabel, campaignIds, campaignObjectiveTypes, campaignStatuses, clickWindowDays, columns, combineTargetingTypes, conversionReportTime, customConversionEventMetrics, endDate, endHour, engagementWindowDays, granularity, level, metricsFilters, primarySort, productGroupIds, productGroupStatuses, productItemIds, reportFormat, reportingTimezone, startDate, startHour, targetingTypes, viewWindowDays);
   }
 
   @Override
@@ -586,36 +527,37 @@ public class AdsAnalyticsCreateAsyncRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsAnalyticsCreateAsyncRequest {\n");
     
-    sb.append("    attributionTypes: ").append(toIndentedString(attributionTypes)).append("\n");
-    sb.append("    clickWindowDays: ").append(toIndentedString(clickWindowDays)).append("\n");
-    sb.append("    conversionReportTime: ").append(toIndentedString(conversionReportTime)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    engagementWindowDays: ").append(toIndentedString(engagementWindowDays)).append("\n");
-    sb.append("    granularity: ").append(toIndentedString(granularity)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    viewWindowDays: ").append(toIndentedString(viewWindowDays)).append("\n");
-    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
-    sb.append("    campaignStatuses: ").append(toIndentedString(campaignStatuses)).append("\n");
-    sb.append("    campaignObjectiveTypes: ").append(toIndentedString(campaignObjectiveTypes)).append("\n");
-    sb.append("    campaignBrandLabel: ").append(toIndentedString(campaignBrandLabel)).append("\n");
     sb.append("    adGroupIds: ").append(toIndentedString(adGroupIds)).append("\n");
     sb.append("    adGroupStatuses: ").append(toIndentedString(adGroupStatuses)).append("\n");
     sb.append("    adIds: ").append(toIndentedString(adIds)).append("\n");
     sb.append("    adStatuses: ").append(toIndentedString(adStatuses)).append("\n");
+    sb.append("    attributionTypes: ").append(toIndentedString(attributionTypes)).append("\n");
+    sb.append("    campaignBrandLabel: ").append(toIndentedString(campaignBrandLabel)).append("\n");
+    sb.append("    campaignCustomLabel: ").append(toIndentedString(campaignCustomLabel)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
+    sb.append("    campaignObjectiveTypes: ").append(toIndentedString(campaignObjectiveTypes)).append("\n");
+    sb.append("    campaignStatuses: ").append(toIndentedString(campaignStatuses)).append("\n");
+    sb.append("    clickWindowDays: ").append(toIndentedString(clickWindowDays)).append("\n");
+    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
+    sb.append("    combineTargetingTypes: ").append(toIndentedString(combineTargetingTypes)).append("\n");
+    sb.append("    conversionReportTime: ").append(toIndentedString(conversionReportTime)).append("\n");
+    sb.append("    customConversionEventMetrics: ").append(toIndentedString(customConversionEventMetrics)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    endHour: ").append(toIndentedString(endHour)).append("\n");
+    sb.append("    engagementWindowDays: ").append(toIndentedString(engagementWindowDays)).append("\n");
+    sb.append("    granularity: ").append(toIndentedString(granularity)).append("\n");
+    sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    metricsFilters: ").append(toIndentedString(metricsFilters)).append("\n");
+    sb.append("    primarySort: ").append(toIndentedString(primarySort)).append("\n");
     sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
     sb.append("    productGroupStatuses: ").append(toIndentedString(productGroupStatuses)).append("\n");
     sb.append("    productItemIds: ").append(toIndentedString(productItemIds)).append("\n");
-    sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
-    sb.append("    metricsFilters: ").append(toIndentedString(metricsFilters)).append("\n");
-    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-    sb.append("    combineTargetingTypes: ").append(toIndentedString(combineTargetingTypes)).append("\n");
-    sb.append("    customConversionEventMetrics: ").append(toIndentedString(customConversionEventMetrics)).append("\n");
-    sb.append("    endHour: ").append(toIndentedString(endHour)).append("\n");
-    sb.append("    level: ").append(toIndentedString(level)).append("\n");
-    sb.append("    primarySort: ").append(toIndentedString(primarySort)).append("\n");
     sb.append("    reportFormat: ").append(toIndentedString(reportFormat)).append("\n");
     sb.append("    reportingTimezone: ").append(toIndentedString(reportingTimezone)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    startHour: ").append(toIndentedString(startHour)).append("\n");
+    sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
+    sb.append("    viewWindowDays: ").append(toIndentedString(viewWindowDays)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -625,10 +567,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,14 +1,14 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.IntegrationLogsRequest;
+import org.openapitools.model.IntegrationLogsInvalidLogResponse;
+import org.openapitools.model.IntegrationLogsRequestCreate;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
 import org.openapitools.model.IntegrationMetadata;
+import org.openapitools.model.IntegrationMetadataCreate;
+import org.openapitools.model.IntegrationMetadataUpdate;
 import org.openapitools.model.IntegrationRecord;
-import org.openapitools.model.IntegrationRequest;
-import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
-import org.openapitools.model.IntegrationsLogsPost400Response;
+import org.openapitools.model.PinterestLibError;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -26,19 +26,25 @@ import javax.validation.Valid;
 */
 @Path("/integrations")
 @Api(description = "the integrations API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationsApi {
 
     @DELETE
     @Path("/commerce/{external_business_id}")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Delete commerce integration", notes = "Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = Void.class, authorizations = {
+    @ApiOperation(value = "Delete commerce integration", notes = "Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = IntegrationMetadata.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "integrations" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 204, message = "Commerce Integration deleted successfully", response = Void.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
+        @ApiResponse(code = 204, message = "Resource deleted successfully.", response = Void.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
     public Response integrationsCommerceDel(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId) {
         return Response.ok().entity("magic!").build();
@@ -52,10 +58,13 @@ public class IntegrationsApi {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "integrations" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = IntegrationMetadata.class),
-        @ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
-        @ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
     public Response integrationsCommerceGet(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId) {
         return Response.ok().entity("magic!").build();
@@ -70,12 +79,15 @@ public class IntegrationsApi {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "integrations" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = IntegrationMetadata.class),
-        @ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
-        @ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsCommercePatch(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId,@Valid @NotNull IntegrationRequestPatch integrationRequestPatch) {
+    public Response integrationsCommercePatch(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId,@Valid @NotNull IntegrationMetadataUpdate integrationMetadataUpdate) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -88,12 +100,16 @@ public class IntegrationsApi {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "integrations" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = IntegrationMetadata.class),
-        @ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
-        @ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = IntegrationMetadata.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsCommercePost(@Valid @NotNull IntegrationRequest integrationRequest) {
+    public Response integrationsCommercePost(@Valid @NotNull IntegrationMetadataCreate integrationMetadataCreate) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -105,11 +121,15 @@ public class IntegrationsApi {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "integrations" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = IntegrationRecord.class),
-        @ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationRecord.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsGetById(@PathParam("id") @ApiParam("Integration ID.") String id) {
+    public Response integrationsGetById(@PathParam("id") @Pattern(regexp="^\\d+$") @ApiParam("Integration record ID.") String id) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -120,10 +140,15 @@ public class IntegrationsApi {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "integrations" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = IntegrationsGetList200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationsGetList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsGetList(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize) {
+    public Response integrationsGetList(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -136,11 +161,15 @@ public class IntegrationsApi {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "integrations" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success.", response = IntegrationLogsSuccessResponse.class),
-        @ApiResponse(code = 400, message = "Bad request.", response = IntegrationsLogsPost400Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationLogsSuccessResponse.class),
+        @ApiResponse(code = 400, message = "The server could not understand the request due to invalid syntax.", response = IntegrationLogsInvalidLogResponse.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsLogsPost(@Valid @NotNull IntegrationLogsRequest integrationLogsRequest) {
+    public Response integrationsLogsPost(@Valid @NotNull IntegrationLogsRequestCreate integrationLogsRequestCreate) {
         return Response.ok().entity("magic!").build();
     }
 }

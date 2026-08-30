@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "EntityDataChangeHistory",
+  "fields": [
+    {
+      "name": "changed_field_id",
+      "type": ["null", "string"],
+      "doc": "A string identifier representing the changed field on the entity",
+      "default": null
+    },
+    {
+      "name": "changed_field_name",
+      "type": ["null", "string"],
+      "doc": "The human readable name of the changed field on the entity",
+      "default": null
+    },
+    {
+      "name": "data_type",
+      "type": ["null", "model.ChangeHistoryDataType"],
+      "doc": "Specifies the type of the field's data values",
+      "default": null
+    },
+    {
+      "name": "new_data_value",
+      "type": ["null", "string"],
+      "doc": "A string representation of the value of the changed field, after the change",
+      "default": null
+    },
+    {
+      "name": "old_data_value",
+      "type": ["null", "string"],
+      "doc": "A string representation of the value of the changed field, before the change",
+      "default": null
+    }
+  ]
+
+}

@@ -23,28 +23,37 @@ pinterest_rest_api_catalogs_product_group_multiple_gender_criteria__e catalogs_p
 }
 
 static catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multiple_gender_criteria_create_internal(
-    int negated,
+    int *negated,
     list_t *values
     ) {
     catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multiple_gender_criteria_local_var = malloc(sizeof(catalogs_product_group_multiple_gender_criteria_t));
     if (!catalogs_product_group_multiple_gender_criteria_local_var) {
         return NULL;
     }
+    memset(catalogs_product_group_multiple_gender_criteria_local_var, 0, sizeof(catalogs_product_group_multiple_gender_criteria_t));
+    catalogs_product_group_multiple_gender_criteria_local_var->_library_owned = 1;
     catalogs_product_group_multiple_gender_criteria_local_var->negated = negated;
     catalogs_product_group_multiple_gender_criteria_local_var->values = values;
-
-    catalogs_product_group_multiple_gender_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_multiple_gender_criteria_local_var;
 }
 
 __attribute__((deprecated)) catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multiple_gender_criteria_create(
-    int negated,
+    int *negated,
     list_t *values
     ) {
-    return catalogs_product_group_multiple_gender_criteria_create_internal (
-        negated,
+    int *negated_copy = NULL;
+    if (negated) {
+        negated_copy = malloc(sizeof(int));
+        if (negated_copy) *negated_copy = *negated;
+    }
+    catalogs_product_group_multiple_gender_criteria_t *result = catalogs_product_group_multiple_gender_criteria_create_internal (
+        negated_copy,
         values
         );
+    if (!result) {
+        free(negated_copy);
+    }
+    return result;
 }
 
 void catalogs_product_group_multiple_gender_criteria_free(catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multiple_gender_criteria) {
@@ -56,6 +65,10 @@ void catalogs_product_group_multiple_gender_criteria_free(catalogs_product_group
         return ;
     }
     listEntry_t *listEntry;
+    if (catalogs_product_group_multiple_gender_criteria->negated) {
+        free(catalogs_product_group_multiple_gender_criteria->negated);
+        catalogs_product_group_multiple_gender_criteria->negated = NULL;
+    }
     if (catalogs_product_group_multiple_gender_criteria->values) {
         list_ForEach(listEntry, catalogs_product_group_multiple_gender_criteria->values) {
             gender_free(listEntry->data);
@@ -71,7 +84,7 @@ cJSON *catalogs_product_group_multiple_gender_criteria_convertToJSON(catalogs_pr
 
     // catalogs_product_group_multiple_gender_criteria->negated
     if(catalogs_product_group_multiple_gender_criteria->negated) {
-    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_multiple_gender_criteria->negated) == NULL) {
+    if(cJSON_AddBoolToObject(item, "negated", *catalogs_product_group_multiple_gender_criteria->negated) == NULL) {
     goto fail; //Bool
     }
     }
@@ -109,6 +122,9 @@ catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multip
 
     catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multiple_gender_criteria_local_var = NULL;
 
+    // define the local variable for catalogs_product_group_multiple_gender_criteria->negated
+    int *negated_local_var = NULL;
+
     // define the local list for catalogs_product_group_multiple_gender_criteria->values
     list_t *valuesList = NULL;
 
@@ -122,6 +138,12 @@ catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multip
     {
     goto end; //Bool
     }
+    negated_local_var = malloc(sizeof(int));
+    if(!negated_local_var)
+    {
+        goto end;
+    }
+    *negated_local_var = negated->valueint;
     }
 
     // catalogs_product_group_multiple_gender_criteria->values
@@ -152,13 +174,22 @@ catalogs_product_group_multiple_gender_criteria_t *catalogs_product_group_multip
     }
 
 
+
     catalogs_product_group_multiple_gender_criteria_local_var = catalogs_product_group_multiple_gender_criteria_create_internal (
-        negated ? negated->valueint : 0,
+        negated_local_var,
         valuesList
         );
 
+    if (!catalogs_product_group_multiple_gender_criteria_local_var) {
+        goto end;
+    }
+
     return catalogs_product_group_multiple_gender_criteria_local_var;
 end:
+    if (negated_local_var) {
+        free(negated_local_var);
+        negated_local_var = NULL;
+    }
     if (valuesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, valuesList) {

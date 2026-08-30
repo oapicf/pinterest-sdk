@@ -23,44 +23,34 @@ CatalogsRetailFeed::~CatalogsRetailFeed()
 void
 CatalogsRetailFeed::__init()
 {
+	//catalog_type = std::string();
 	//created_at = null;
-	//id = std::string();
-	//updated_at = null;
-	//catalog_type = new CatalogsType();
 	//credentials = new CatalogsFeedCredentials();
 	//default_availability = new ProductAvailabilityType();
 	//default_country = new Country();
 	//default_currency = new NullableCurrency();
 	//default_locale = std::string();
 	//format = new CatalogsFormat();
+	//id = std::string();
 	//location = std::string();
 	//name = std::string();
 	//preferred_processing_schedule = new CatalogsFeedProcessingSchedule();
 	//status = new CatalogsStatus();
+	//updated_at = null;
 }
 
 void
 CatalogsRetailFeed::__cleanup()
 {
-	//if(created_at != NULL) {
-	//
-	//delete created_at;
-	//created_at = NULL;
-	//}
-	//if(id != NULL) {
-	//
-	//delete id;
-	//id = NULL;
-	//}
-	//if(updated_at != NULL) {
-	//
-	//delete updated_at;
-	//updated_at = NULL;
-	//}
 	//if(catalog_type != NULL) {
 	//
 	//delete catalog_type;
 	//catalog_type = NULL;
+	//}
+	//if(created_at != NULL) {
+	//
+	//delete created_at;
+	//created_at = NULL;
 	//}
 	//if(credentials != NULL) {
 	//
@@ -92,6 +82,11 @@ CatalogsRetailFeed::__cleanup()
 	//delete format;
 	//format = NULL;
 	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
+	//}
 	//if(location != NULL) {
 	//
 	//delete location;
@@ -112,6 +107,11 @@ CatalogsRetailFeed::__cleanup()
 	//delete status;
 	//status = NULL;
 	//}
+	//if(updated_at != NULL) {
+	//
+	//delete updated_at;
+	//updated_at = NULL;
+	//}
 	//
 }
 
@@ -120,6 +120,17 @@ CatalogsRetailFeed::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *catalog_typeKey = "catalog_type";
+	node = json_object_get_member(pJsonObject, catalog_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *created_atKey = "created_at";
 	node = json_object_get_member(pJsonObject, created_atKey);
 	if (node !=NULL) {
@@ -128,42 +139,6 @@ CatalogsRetailFeed::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&created_at, node, "std::string", "");
 		} else {
-			
-		}
-	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *updated_atKey = "updated_at";
-	node = json_object_get_member(pJsonObject, updated_atKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&updated_at, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *catalog_typeKey = "catalog_type";
-	node = json_object_get_member(pJsonObject, catalog_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
-		} else {
-			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -248,6 +223,17 @@ CatalogsRetailFeed::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *locationKey = "location";
 	node = json_object_get_member(pJsonObject, locationKey);
 	if (node !=NULL) {
@@ -298,6 +284,17 @@ CatalogsRetailFeed::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *updated_atKey = "updated_at";
+	node = json_object_get_member(pJsonObject, updated_atKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&updated_at, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsRetailFeed::CatalogsRetailFeed(char* json)
@@ -311,6 +308,15 @@ CatalogsRetailFeed::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_typeKey = "catalog_type";
+	json_object_set_member(pJsonObject, catalog_typeKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getCreatedAt();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -319,38 +325,6 @@ CatalogsRetailFeed::toJson()
 	}
 	const gchar *created_atKey = "created_at";
 	json_object_set_member(pJsonObject, created_atKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getUpdatedAt();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *updated_atKey = "updated_at";
-	json_object_set_member(pJsonObject, updated_atKey, node);
-	if (isprimitive("CatalogsType")) {
-		CatalogsType obj = getCatalogType();
-		node = converttoJson(&obj, "CatalogsType", "");
-	}
-	else {
-		
-		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *catalog_typeKey = "catalog_type";
-	json_object_set_member(pJsonObject, catalog_typeKey, node);
 	if (isprimitive("CatalogsFeedCredentials")) {
 		CatalogsFeedCredentials obj = getCredentials();
 		node = converttoJson(&obj, "CatalogsFeedCredentials", "");
@@ -431,6 +405,15 @@ CatalogsRetailFeed::toJson()
 	const gchar *formatKey = "format";
 	json_object_set_member(pJsonObject, formatKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getLocation();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -476,12 +459,33 @@ CatalogsRetailFeed::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUpdatedAt();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *updated_atKey = "updated_at";
+	json_object_set_member(pJsonObject, updated_atKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+CatalogsRetailFeed::getCatalogType()
+{
+	return catalog_type;
+}
+
+void
+CatalogsRetailFeed::setCatalogType(std::string  catalog_type)
+{
+	this->catalog_type = catalog_type;
 }
 
 std::string
@@ -494,42 +498,6 @@ void
 CatalogsRetailFeed::setCreatedAt(std::string  created_at)
 {
 	this->created_at = created_at;
-}
-
-std::string
-CatalogsRetailFeed::getId()
-{
-	return id;
-}
-
-void
-CatalogsRetailFeed::setId(std::string  id)
-{
-	this->id = id;
-}
-
-std::string
-CatalogsRetailFeed::getUpdatedAt()
-{
-	return updated_at;
-}
-
-void
-CatalogsRetailFeed::setUpdatedAt(std::string  updated_at)
-{
-	this->updated_at = updated_at;
-}
-
-CatalogsType
-CatalogsRetailFeed::getCatalogType()
-{
-	return catalog_type;
-}
-
-void
-CatalogsRetailFeed::setCatalogType(CatalogsType  catalog_type)
-{
-	this->catalog_type = catalog_type;
 }
 
 CatalogsFeedCredentials
@@ -605,6 +573,18 @@ CatalogsRetailFeed::setFormat(CatalogsFormat  format)
 }
 
 std::string
+CatalogsRetailFeed::getId()
+{
+	return id;
+}
+
+void
+CatalogsRetailFeed::setId(std::string  id)
+{
+	this->id = id;
+}
+
+std::string
 CatalogsRetailFeed::getLocation()
 {
 	return location;
@@ -650,6 +630,18 @@ void
 CatalogsRetailFeed::setStatus(CatalogsStatus  status)
 {
 	this->status = status;
+}
+
+std::string
+CatalogsRetailFeed::getUpdatedAt()
+{
+	return updated_at;
+}
+
+void
+CatalogsRetailFeed::setUpdatedAt(std::string  updated_at)
+{
+	this->updated_at = updated_at;
 }
 
 

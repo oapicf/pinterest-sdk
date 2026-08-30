@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.GetBusinessAssetsResponse
+import org.openapitools.client.models.BusinessAssets
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,16 +31,15 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param items List of assets the requesting business has access to.
+ * @param items 
  * @param bookmark 
  */
 
 
 data class BusinessAssetsGet200Response (
 
-    /* List of assets the requesting business has access to. */
     @Json(name = "items")
-    val items: kotlin.collections.List<GetBusinessAssetsResponse>,
+    val items: kotlin.collections.List<BusinessAssets>,
 
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null

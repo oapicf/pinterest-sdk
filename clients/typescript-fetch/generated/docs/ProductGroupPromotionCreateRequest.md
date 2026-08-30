@@ -16,7 +16,7 @@ import type { ProductGroupPromotionCreateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "adGroupId": 2680059592705,
+  "adGroupId": null,
   "productGroupPromotion": null,
 } satisfies ProductGroupPromotionCreateRequest
 

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## BrandAccountsCreate
 
-> BrandAccountsCreate200Response BrandAccountsCreate(ctx, businessHierarchyId).BrandAccountsCreateRequest(brandAccountsCreateRequest).Execute()
+> BrandAccount BrandAccountsCreate(ctx, businessHierarchyId).BrandAccountCreate(brandAccountCreate).Execute()
 
 Create a Brand Account
 
@@ -37,17 +37,17 @@ import (
 )
 
 func main() {
-	businessHierarchyId := "7009386637860" // string | business hierarchy node id
-	brandAccountsCreateRequest := *openapiclient.NewBrandAccountsCreateRequest("Canada Stores", "canada_stores", openapiclient.Country("AD")) // BrandAccountsCreateRequest | 
+	businessHierarchyId := "businessHierarchyId_example" // string | business hierarchy node id
+	brandAccountCreate := *openapiclient.NewBrandAccountCreate(openapiclient.Country("AD"), "Name_example", "Username_example") // BrandAccountCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsCreate(context.Background(), businessHierarchyId).BrandAccountsCreateRequest(brandAccountsCreateRequest).Execute()
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsCreate(context.Background(), businessHierarchyId).BrandAccountCreate(brandAccountCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.BrandAccountsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BrandAccountsCreate`: BrandAccountsCreate200Response
+	// response from `BrandAccountsCreate`: BrandAccount
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessRelationshipsAPI.BrandAccountsCreate`: %v\n", resp)
 }
 ```
@@ -68,11 +68,11 @@ Other parameters are passed through a pointer to a apiBrandAccountsCreateRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  | 
+ **brandAccountCreate** | [**BrandAccountCreate**](BrandAccountCreate.md) |  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## BrandAccountsUpdate
 
-> BrandAccountsCreate200Response BrandAccountsUpdate(ctx, businessHierarchyId, brandAccountId).BrandAccountsUpdateRequest(brandAccountsUpdateRequest).Execute()
+> BrandAccount BrandAccountsUpdate(ctx, brandAccountId, businessHierarchyId).BrandAccountUpdate(brandAccountUpdate).Execute()
 
 Update a Brand Account
 
@@ -109,18 +109,18 @@ import (
 )
 
 func main() {
-	businessHierarchyId := "7009386637860" // string | business hierarchy node id
-	brandAccountId := "729090764583391194" // string | Unique identifier of a brand account.
-	brandAccountsUpdateRequest := *openapiclient.NewBrandAccountsUpdateRequest() // BrandAccountsUpdateRequest | 
+	brandAccountId := "brandAccountId_example" // string | 
+	businessHierarchyId := "businessHierarchyId_example" // string | business hierarchy node id
+	brandAccountUpdate := *openapiclient.NewBrandAccountUpdate() // BrandAccountUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsUpdate(context.Background(), businessHierarchyId, brandAccountId).BrandAccountsUpdateRequest(brandAccountsUpdateRequest).Execute()
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsUpdate(context.Background(), brandAccountId, businessHierarchyId).BrandAccountUpdate(brandAccountUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.BrandAccountsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BrandAccountsUpdate`: BrandAccountsCreate200Response
+	// response from `BrandAccountsUpdate`: BrandAccount
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessRelationshipsAPI.BrandAccountsUpdate`: %v\n", resp)
 }
 ```
@@ -131,8 +131,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**brandAccountId** | **string** |  | 
 **businessHierarchyId** | **string** | business hierarchy node id | 
-**brandAccountId** | **string** | Unique identifier of a brand account. | 
 
 ### Other Parameters
 
@@ -143,11 +143,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  | 
+ **brandAccountUpdate** | [**BrandAccountUpdate**](BrandAccountUpdate.md) |  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## DeleteBusinessMembership
 
-> DeletedMembersResponse DeleteBusinessMembership(ctx, businessId).MembersToDeleteBody(membersToDeleteBody).Execute()
+> DeleteBusinessMembership200Response DeleteBusinessMembership(ctx, businessId).DeleteBusinessMembershipBody(deleteBusinessMembershipBody).Execute()
 
 Terminate business memberships
 
@@ -184,17 +184,17 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Business id
-	membersToDeleteBody := *openapiclient.NewMembersToDeleteBody([]openapiclient.MembersToDeleteBodyMembersInner{*openapiclient.NewMembersToDeleteBodyMembersInner(openapiclient.BusinessRoleForMembers("EMPLOYEE"), "140943737684417")}) // MembersToDeleteBody | List of members with role to delete.
+	businessId := "businessId_example" // string | Business id
+	deleteBusinessMembershipBody := *openapiclient.NewDeleteBusinessMembershipBody([]openapiclient.DeleteBusinessMembershipMember{*openapiclient.NewDeleteBusinessMembershipMember(openapiclient.BusinessRoleForMembers("EMPLOYEE"), "140943737684417")}) // DeleteBusinessMembershipBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.DeleteBusinessMembership(context.Background(), businessId).MembersToDeleteBody(membersToDeleteBody).Execute()
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.DeleteBusinessMembership(context.Background(), businessId).DeleteBusinessMembershipBody(deleteBusinessMembershipBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.DeleteBusinessMembership``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteBusinessMembership`: DeletedMembersResponse
+	// response from `DeleteBusinessMembership`: DeleteBusinessMembership200Response
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessRelationshipsAPI.DeleteBusinessMembership`: %v\n", resp)
 }
 ```
@@ -215,11 +215,11 @@ Other parameters are passed through a pointer to a apiDeleteBusinessMembershipRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **membersToDeleteBody** | [**MembersToDeleteBody**](MembersToDeleteBody.md) | List of members with role to delete. | 
+ **deleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md) |  | 
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## DeleteBusinessPartners
 
-> DeletePartnersResponse DeleteBusinessPartners(ctx, businessId).DeletePartnersRequest(deletePartnersRequest).Execute()
+> DeleteBusinessPartners DeleteBusinessPartners(ctx, businessId).DeleteBusinessPartnersDelete(deleteBusinessPartnersDelete).Execute()
 
 Terminate business partnerships
 
@@ -256,17 +256,17 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	deletePartnersRequest := *openapiclient.NewDeletePartnersRequest([]string{"1234567890123"}) // DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	deleteBusinessPartnersDelete := *openapiclient.NewDeleteBusinessPartnersDelete([]string{"PartnerIds_example"}) // DeleteBusinessPartnersDelete | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.DeleteBusinessPartners(context.Background(), businessId).DeletePartnersRequest(deletePartnersRequest).Execute()
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.DeleteBusinessPartners(context.Background(), businessId).DeleteBusinessPartnersDelete(deleteBusinessPartnersDelete).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.DeleteBusinessPartners``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteBusinessPartners`: DeletePartnersResponse
+	// response from `DeleteBusinessPartners`: DeleteBusinessPartners
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessRelationshipsAPI.DeleteBusinessPartners`: %v\n", resp)
 }
 ```
@@ -287,11 +287,11 @@ Other parameters are passed through a pointer to a apiDeleteBusinessPartnersRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **deletePartnersRequest** | [**DeletePartnersRequest**](DeletePartnersRequest.md) | An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  | 
+ **deleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md) |  | 
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## GetBusinessEmployers
 
-> GetBusinessEmployers200Response GetBusinessEmployers(ctx).PageSize(pageSize).Bookmark(bookmark).Execute()
+> GetBusinessEmployers200Response GetBusinessEmployers(ctx).AssetsSummary(assetsSummary).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List business employers for user
 
@@ -328,12 +328,13 @@ import (
 )
 
 func main() {
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	assetsSummary := true // bool | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to true)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.GetBusinessEmployers(context.Background()).PageSize(pageSize).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.GetBusinessEmployers(context.Background()).AssetsSummary(assetsSummary).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.GetBusinessEmployers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -354,8 +355,9 @@ Other parameters are passed through a pointer to a apiGetBusinessEmployersReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **assetsSummary** | **bool** | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [default to true]
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -377,7 +379,7 @@ Name | Type | Description  | Notes
 
 ## GetBusinessMembers
 
-> GetBusinessMembers200Response GetBusinessMembers(ctx, businessId).FetchSystemUsers(fetchSystemUsers).AssetsSummary(assetsSummary).BusinessRoles(businessRoles).MemberIds(memberIds).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
+> GetBusinessEmployers200Response GetBusinessMembers(ctx, businessId).FetchSystemUsers(fetchSystemUsers).AssetsSummary(assetsSummary).BusinessRoles(businessRoles).MemberIds(memberIds).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Get business members
 
@@ -396,14 +398,14 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
 	fetchSystemUsers := true // bool | Fetches system users if True. Fetches regular user employees if False. (optional) (default to false)
 	assetsSummary := true // bool | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to false)
 	businessRoles := []openapiclient.MemberBusinessRole{openapiclient.MemberBusinessRole("EMPLOYEE")} // []MemberBusinessRole | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
-	memberIds := "00101010101,2222220101" // string | A list of business members ids separated by comma. (optional)
-	startIndex := int32(0) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+	memberIds := "memberIds_example" // string | A list of business members ids separated by comma. (optional)
+	startIndex := int32(56) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -412,7 +414,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.GetBusinessMembers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetBusinessMembers`: GetBusinessMembers200Response
+	// response from `GetBusinessMembers`: GetBusinessEmployers200Response
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessRelationshipsAPI.GetBusinessMembers`: %v\n", resp)
 }
 ```
@@ -439,11 +441,11 @@ Name | Type | Description  | Notes
  **memberIds** | **string** | A list of business members ids separated by comma. | 
  **startIndex** | **int32** | An index to start fetching the results from. Only the results starting from this index will be returned. | [default to 0]
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -461,7 +463,7 @@ Name | Type | Description  | Notes
 
 ## GetBusinessPartners
 
-> GetBusinessPartners200Response GetBusinessPartners(ctx, businessId).AssetsSummary(assetsSummary).PartnerType(partnerType).PartnerIds(partnerIds).StartIndex(startIndex).PageSize(pageSize).Bookmark(bookmark).Execute()
+> GetBusinessEmployers200Response GetBusinessPartners(ctx, businessId).AssetsSummary(assetsSummary).PartnerType(partnerType).PartnerIds(partnerIds).StartIndex(startIndex).SortAscending(sortAscending).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Get business partners
 
@@ -480,22 +482,23 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
 	assetsSummary := true // bool | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional) (default to false)
-	partnerType := openapiclient.PartnerType("INTERNAL") // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
-	partnerIds := "00101010101,2222220101" // string | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
-	startIndex := int32(0) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	partnerType := openapiclient.PartnerType("INTERNAL") // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+	partnerIds := "partnerIds_example" // string | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
+	startIndex := int32(56) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+	sortAscending := true // bool | Sort ascending. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.GetBusinessPartners(context.Background(), businessId).AssetsSummary(assetsSummary).PartnerType(partnerType).PartnerIds(partnerIds).StartIndex(startIndex).PageSize(pageSize).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.GetBusinessPartners(context.Background(), businessId).AssetsSummary(assetsSummary).PartnerType(partnerType).PartnerIds(partnerIds).StartIndex(startIndex).SortAscending(sortAscending).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.GetBusinessPartners``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetBusinessPartners`: GetBusinessPartners200Response
+	// response from `GetBusinessPartners`: GetBusinessEmployers200Response
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessRelationshipsAPI.GetBusinessPartners`: %v\n", resp)
 }
 ```
@@ -517,15 +520,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **assetsSummary** | **bool** | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [default to false]
- **partnerType** | [**PartnerType**](PartnerType.md) | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | 
+ **partnerType** | [**PartnerType**](PartnerType.md) | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | 
  **partnerIds** | **string** | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | 
  **startIndex** | **int32** | An index to start fetching the results from. Only the results starting from this index will be returned. | [default to 0]
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **sortAscending** | **bool** | Sort ascending. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -543,7 +547,7 @@ Name | Type | Description  | Notes
 
 ## SystemUserUpdate
 
-> SystemUserUpdate(ctx, businessId, systemUserId).SystemUserUpdateRequest(systemUserUpdateRequest).Execute()
+> SystemUserUpdate(ctx, businessId, systemUserId).SystemUserUpdateWithRequiredBody(systemUserUpdateWithRequiredBody).Execute()
 
 Update a system user information.
 
@@ -562,13 +566,13 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	systemUserId := "729090764583391194" // string | Unique identifier of a system user.
-	systemUserUpdateRequest := *openapiclient.NewSystemUserUpdateRequest("Billing API") // SystemUserUpdateRequest | 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	systemUserId := "systemUserId_example" // string | Unique identifier of a system user.
+	systemUserUpdateWithRequiredBody := *openapiclient.NewSystemUserUpdateWithRequiredBody("Name_example") // SystemUserUpdateWithRequiredBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BusinessAccessRelationshipsAPI.SystemUserUpdate(context.Background(), businessId, systemUserId).SystemUserUpdateRequest(systemUserUpdateRequest).Execute()
+	r, err := apiClient.BusinessAccessRelationshipsAPI.SystemUserUpdate(context.Background(), businessId, systemUserId).SystemUserUpdateWithRequiredBody(systemUserUpdateWithRequiredBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.SystemUserUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -594,7 +598,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  | 
+ **systemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md) |  | 
 
 ### Return type
 
@@ -616,7 +620,7 @@ Name | Type | Description  | Notes
 
 ## UpdateBusinessMemberships
 
-> UpdateMemberResultsResponseArray UpdateBusinessMemberships(ctx, businessId).UpdateMemberBusinessRoleBody(updateMemberBusinessRoleBody).Execute()
+> UpdateBusinessMembershipsResponse UpdateBusinessMemberships(ctx, businessId).BusinessMembershipMember(businessMembershipMember).Execute()
 
 Update member's business role
 
@@ -635,17 +639,17 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Business id
-	updateMemberBusinessRoleBody := []openapiclient.UpdateMemberBusinessRoleBody{*openapiclient.NewUpdateMemberBusinessRoleBody(openapiclient.BusinessRoleForMembers("EMPLOYEE"), "140943737684417")} // []UpdateMemberBusinessRoleBody | List of objects with the member id and the business_role.
+	businessId := "businessId_example" // string | Business id
+	businessMembershipMember := []openapiclient.BusinessMembershipMember{*openapiclient.NewBusinessMembershipMember(openapiclient.BusinessRoleForMembers("EMPLOYEE"), "140943737684417")} // []BusinessMembershipMember | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.UpdateBusinessMemberships(context.Background(), businessId).UpdateMemberBusinessRoleBody(updateMemberBusinessRoleBody).Execute()
+	resp, r, err := apiClient.BusinessAccessRelationshipsAPI.UpdateBusinessMemberships(context.Background(), businessId).BusinessMembershipMember(businessMembershipMember).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessRelationshipsAPI.UpdateBusinessMemberships``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateBusinessMemberships`: UpdateMemberResultsResponseArray
+	// response from `UpdateBusinessMemberships`: UpdateBusinessMembershipsResponse
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessRelationshipsAPI.UpdateBusinessMemberships`: %v\n", resp)
 }
 ```
@@ -666,11 +670,11 @@ Other parameters are passed through a pointer to a apiUpdateBusinessMembershipsR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateMemberBusinessRoleBody** | [**[]UpdateMemberBusinessRoleBody**](UpdateMemberBusinessRoleBody.md) | List of objects with the member id and the business_role. | 
+ **businessMembershipMember** | [**[]BusinessMembershipMember**](BusinessMembershipMember.md) |  | 
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

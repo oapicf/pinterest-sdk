@@ -7,7 +7,7 @@ using namespace Tiny;
 CatalogsProductGroupUint32Criteria::CatalogsProductGroupUint32Criteria()
 {
 	negated = bool(false);
-	r_operator = std::string();
+	r_operator = NumericFilterOperatorType();
 	value = int(0);
 }
 
@@ -47,8 +47,9 @@ CatalogsProductGroupUint32Criteria::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&r_operator, value, "std::string");
 
+        NumericFilterOperatorType* obj = &r_operator;
+		obj->fromJson(value.dump());
 
     }
 
@@ -84,8 +85,8 @@ CatalogsProductGroupUint32Criteria::toJson()
 
 
 
-    object["r_operator"] = getROperator();
 
+	object["r_operator"] = getROperator().toJson();
 
 
 
@@ -106,19 +107,19 @@ CatalogsProductGroupUint32Criteria::isNegated()
 }
 
 void
-CatalogsProductGroupUint32Criteria::setNegated(bool  negated)
+CatalogsProductGroupUint32Criteria::setNegated(bool negated)
 {
 	this->negated = negated;
 }
 
-std::string
+NumericFilterOperatorType
 CatalogsProductGroupUint32Criteria::getROperator()
 {
 	return r_operator;
 }
 
 void
-CatalogsProductGroupUint32Criteria::setROperator(std::string  r_operator)
+CatalogsProductGroupUint32Criteria::setROperator(NumericFilterOperatorType r_operator)
 {
 	this->r_operator = r_operator;
 }
@@ -130,7 +131,7 @@ CatalogsProductGroupUint32Criteria::getValue()
 }
 
 void
-CatalogsProductGroupUint32Criteria::setValue(int  value)
+CatalogsProductGroupUint32Criteria::setValue(int value)
 {
 	this->value = value;
 }

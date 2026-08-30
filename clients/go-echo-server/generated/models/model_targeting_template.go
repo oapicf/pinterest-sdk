@@ -1,0 +1,39 @@
+package models
+
+type TargetingTemplate struct {
+
+	// The ID of the advertiser that this targeting template belongs to.
+	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\d+$"`
+
+	// Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
+	AutoTargetingEnabled bool `json:"auto_targeting_enabled,omitempty"`
+
+	// Targeting template created time. Unix timestamp in seconds.
+	CreatedTime int32 `json:"created_time,omitempty"`
+
+	// Targeting template ID.
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
+
+	Keywords []TargetingTemplateKeyword `json:"keywords,omitempty"`
+
+	// targeting template name
+	Name string `json:"name"`
+
+	PlacementGroup PlacementGroupType `json:"placement_group,omitempty"`
+
+	Sizing *TargetingTemplateAudienceSizing `json:"sizing,omitempty"`
+
+	// Indicate targeting template is active or Deleted
+	Status TargetingTemplateStatus `json:"status,omitempty"`
+
+	// targeting profile attributes
+	TargetingAttributes TargetingSpecOptimal `json:"targeting_attributes"`
+
+	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
+
+	// Targeting template updated time.Unix timestamp in seconds.
+	UpdatedTime int32 `json:"updated_time,omitempty"`
+
+	// Inform if the targeting template is valid (ex. would be false if has revoked audience)
+	Valid *bool `json:"valid,omitempty"`
+}

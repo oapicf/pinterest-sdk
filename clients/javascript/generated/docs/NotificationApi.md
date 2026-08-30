@@ -29,7 +29,7 @@ let client_credentials = defaultClient.authentications['client_credentials'];
 client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.NotificationApi();
-let notificationPostRequest = new PinterestSdk.NotificationPostRequest(); // NotificationPostRequest | notification event.
+let notificationPostRequest = new PinterestSdk.NotificationPostRequest(); // NotificationPostRequest | 
 apiInstance.notificationPost(notificationPostRequest, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -44,7 +44,7 @@ apiInstance.notificationPost(notificationPostRequest, (error, data, response) =>
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)| notification event. | 
+ **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)|  | 
 
 ### Return type
 

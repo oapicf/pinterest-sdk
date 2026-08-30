@@ -7,7 +7,7 @@ using namespace Tiny;
 CatalogsRetailAvailableFilterValues::CatalogsRetailAvailableFilterValues()
 {
 	catalog_type = std::string();
-	filter_values = Catalogs_retail_filter_values_map();
+	filter_values = CatalogsRetailFilterValuesMap();
 }
 
 CatalogsRetailAvailableFilterValues::CatalogsRetailAvailableFilterValues(std::string jsonString)
@@ -47,7 +47,7 @@ CatalogsRetailAvailableFilterValues::fromJson(std::string jsonObj)
 
 
 
-        Catalogs_retail_filter_values_map* obj = &filter_values;
+        CatalogsRetailFilterValuesMap* obj = &filter_values;
 		obj->fromJson(value.dump());
 
     }
@@ -86,19 +86,19 @@ CatalogsRetailAvailableFilterValues::getCatalogType()
 }
 
 void
-CatalogsRetailAvailableFilterValues::setCatalogType(std::string  catalog_type)
+CatalogsRetailAvailableFilterValues::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
 
-Catalogs_retail_filter_values_map
+CatalogsRetailFilterValuesMap
 CatalogsRetailAvailableFilterValues::getFilterValues()
 {
 	return filter_values;
 }
 
 void
-CatalogsRetailAvailableFilterValues::setFilterValues(Catalogs_retail_filter_values_map  filter_values)
+CatalogsRetailAvailableFilterValues::setFilterValues(CatalogsRetailFilterValuesMap filter_values)
 {
 	this->filter_values = filter_values;
 }

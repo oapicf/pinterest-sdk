@@ -6,7 +6,7 @@ using namespace Tiny;
 
 TargetingTemplateAudienceSizing::TargetingTemplateAudienceSizing()
 {
-	reach_estimate = TargetingTemplateAudienceSizing_reach_estimate();
+	reach_estimate = TargetingTemplateAudienceSizingReachEstimate();
 }
 
 TargetingTemplateAudienceSizing::TargetingTemplateAudienceSizing(std::string jsonString)
@@ -33,7 +33,7 @@ TargetingTemplateAudienceSizing::fromJson(std::string jsonObj)
 
 
 
-        TargetingTemplateAudienceSizing_reach_estimate* obj = &reach_estimate;
+        TargetingTemplateAudienceSizingReachEstimate* obj = &reach_estimate;
 		obj->fromJson(value.dump());
 
     }
@@ -58,14 +58,14 @@ TargetingTemplateAudienceSizing::toJson()
 
 }
 
-TargetingTemplateAudienceSizing_reach_estimate
+TargetingTemplateAudienceSizingReachEstimate
 TargetingTemplateAudienceSizing::getReachEstimate()
 {
 	return reach_estimate;
 }
 
 void
-TargetingTemplateAudienceSizing::setReachEstimate(TargetingTemplateAudienceSizing_reach_estimate  reach_estimate)
+TargetingTemplateAudienceSizing::setReachEstimate(TargetingTemplateAudienceSizingReachEstimate reach_estimate)
 {
 	this->reach_estimate = reach_estimate;
 }

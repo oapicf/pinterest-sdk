@@ -6,29 +6,29 @@ using namespace Tiny;
 
 CatalogsItemValidationErrors::CatalogsItemValidationErrors()
 {
-	aDULT_INVALID = CatalogsItemValidationDetails();
-	aDWORDS_FORMAT_INVALID = CatalogsItemValidationDetails();
-	aVAILABILITY_INVALID = CatalogsItemValidationDetails();
-	bLOCKLISTED_IMAGE_SIGNATURE = CatalogsItemValidationDetails();
-	dESCRIPTION_MISSING = CatalogsItemValidationDetails();
-	dUPLICATE_PRODUCTS = CatalogsItemValidationDetails();
-	iMAGE_LINK_INVALID = CatalogsItemValidationDetails();
-	iMAGE_LINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	iMAGE_LINK_MISSING = CatalogsItemValidationDetails();
-	iNVALID_DOMAIN = CatalogsItemValidationDetails();
-	iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = CatalogsItemValidationDetails();
-	iTEMID_MISSING = CatalogsItemValidationDetails();
-	lINK_FORMAT_INVALID = CatalogsItemValidationDetails();
-	lINK_LENGTH_TOO_LONG = CatalogsItemValidationDetails();
-	lIST_PRICE_INVALID = CatalogsItemValidationDetails();
-	mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = CatalogsItemValidationDetails();
-	pARSE_LINE_ERROR = CatalogsItemValidationDetails();
-	pINJOIN_CONTENT_UNSAFE = CatalogsItemValidationDetails();
-	pRICE_CANNOT_BE_DETERMINED = CatalogsItemValidationDetails();
-	pRICE_MISSING = CatalogsItemValidationDetails();
-	pRODUCT_LINK_MISSING = CatalogsItemValidationDetails();
-	pRODUCT_PRICE_INVALID = CatalogsItemValidationDetails();
-	tITLE_MISSING = CatalogsItemValidationDetails();
+	aDULT_INVALID = null;
+	aDWORDS_FORMAT_INVALID = null;
+	aVAILABILITY_INVALID = null;
+	bLOCKLISTED_IMAGE_SIGNATURE = null;
+	dESCRIPTION_MISSING = null;
+	dUPLICATE_PRODUCTS = null;
+	iMAGE_LINK_INVALID = null;
+	iMAGE_LINK_LENGTH_TOO_LONG = null;
+	iMAGE_LINK_MISSING = null;
+	iNVALID_DOMAIN = null;
+	iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = null;
+	iTEMID_MISSING = null;
+	lINK_FORMAT_INVALID = null;
+	lINK_LENGTH_TOO_LONG = null;
+	lIST_PRICE_INVALID = null;
+	mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = null;
+	pARSE_LINE_ERROR = null;
+	pINJOIN_CONTENT_UNSAFE = null;
+	pRICE_CANNOT_BE_DETERMINED = null;
+	pRICE_MISSING = null;
+	pRODUCT_LINK_MISSING = null;
+	pRODUCT_PRICE_INVALID = null;
+	tITLE_MISSING = null;
 }
 
 CatalogsItemValidationErrors::CatalogsItemValidationErrors(std::string jsonString)
@@ -549,7 +549,7 @@ CatalogsItemValidationErrors::getADULTINVALID()
 }
 
 void
-CatalogsItemValidationErrors::setADULTINVALID(CatalogsItemValidationDetails  aDULT_INVALID)
+CatalogsItemValidationErrors::setADULTINVALID(CatalogsItemValidationDetails aDULT_INVALID)
 {
 	this->aDULT_INVALID = aDULT_INVALID;
 }
@@ -561,7 +561,7 @@ CatalogsItemValidationErrors::getADWORDSFORMATINVALID()
 }
 
 void
-CatalogsItemValidationErrors::setADWORDSFORMATINVALID(CatalogsItemValidationDetails  aDWORDS_FORMAT_INVALID)
+CatalogsItemValidationErrors::setADWORDSFORMATINVALID(CatalogsItemValidationDetails aDWORDS_FORMAT_INVALID)
 {
 	this->aDWORDS_FORMAT_INVALID = aDWORDS_FORMAT_INVALID;
 }
@@ -573,7 +573,7 @@ CatalogsItemValidationErrors::getAVAILABILITYINVALID()
 }
 
 void
-CatalogsItemValidationErrors::setAVAILABILITYINVALID(CatalogsItemValidationDetails  aVAILABILITY_INVALID)
+CatalogsItemValidationErrors::setAVAILABILITYINVALID(CatalogsItemValidationDetails aVAILABILITY_INVALID)
 {
 	this->aVAILABILITY_INVALID = aVAILABILITY_INVALID;
 }
@@ -585,7 +585,7 @@ CatalogsItemValidationErrors::getBLOCKLISTEDIMAGESIGNATURE()
 }
 
 void
-CatalogsItemValidationErrors::setBLOCKLISTEDIMAGESIGNATURE(CatalogsItemValidationDetails  bLOCKLISTED_IMAGE_SIGNATURE)
+CatalogsItemValidationErrors::setBLOCKLISTEDIMAGESIGNATURE(CatalogsItemValidationDetails bLOCKLISTED_IMAGE_SIGNATURE)
 {
 	this->bLOCKLISTED_IMAGE_SIGNATURE = bLOCKLISTED_IMAGE_SIGNATURE;
 }
@@ -597,7 +597,7 @@ CatalogsItemValidationErrors::getDESCRIPTIONMISSING()
 }
 
 void
-CatalogsItemValidationErrors::setDESCRIPTIONMISSING(CatalogsItemValidationDetails  dESCRIPTION_MISSING)
+CatalogsItemValidationErrors::setDESCRIPTIONMISSING(CatalogsItemValidationDetails dESCRIPTION_MISSING)
 {
 	this->dESCRIPTION_MISSING = dESCRIPTION_MISSING;
 }
@@ -609,7 +609,7 @@ CatalogsItemValidationErrors::getDUPLICATEPRODUCTS()
 }
 
 void
-CatalogsItemValidationErrors::setDUPLICATEPRODUCTS(CatalogsItemValidationDetails  dUPLICATE_PRODUCTS)
+CatalogsItemValidationErrors::setDUPLICATEPRODUCTS(CatalogsItemValidationDetails dUPLICATE_PRODUCTS)
 {
 	this->dUPLICATE_PRODUCTS = dUPLICATE_PRODUCTS;
 }
@@ -621,7 +621,7 @@ CatalogsItemValidationErrors::getIMAGELINKINVALID()
 }
 
 void
-CatalogsItemValidationErrors::setIMAGELINKINVALID(CatalogsItemValidationDetails  iMAGE_LINK_INVALID)
+CatalogsItemValidationErrors::setIMAGELINKINVALID(CatalogsItemValidationDetails iMAGE_LINK_INVALID)
 {
 	this->iMAGE_LINK_INVALID = iMAGE_LINK_INVALID;
 }
@@ -633,7 +633,7 @@ CatalogsItemValidationErrors::getIMAGELINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationErrors::setIMAGELINKLENGTHTOOLONG(CatalogsItemValidationDetails  iMAGE_LINK_LENGTH_TOO_LONG)
+CatalogsItemValidationErrors::setIMAGELINKLENGTHTOOLONG(CatalogsItemValidationDetails iMAGE_LINK_LENGTH_TOO_LONG)
 {
 	this->iMAGE_LINK_LENGTH_TOO_LONG = iMAGE_LINK_LENGTH_TOO_LONG;
 }
@@ -645,7 +645,7 @@ CatalogsItemValidationErrors::getIMAGELINKMISSING()
 }
 
 void
-CatalogsItemValidationErrors::setIMAGELINKMISSING(CatalogsItemValidationDetails  iMAGE_LINK_MISSING)
+CatalogsItemValidationErrors::setIMAGELINKMISSING(CatalogsItemValidationDetails iMAGE_LINK_MISSING)
 {
 	this->iMAGE_LINK_MISSING = iMAGE_LINK_MISSING;
 }
@@ -657,7 +657,7 @@ CatalogsItemValidationErrors::getINVALIDDOMAIN()
 }
 
 void
-CatalogsItemValidationErrors::setINVALIDDOMAIN(CatalogsItemValidationDetails  iNVALID_DOMAIN)
+CatalogsItemValidationErrors::setINVALIDDOMAIN(CatalogsItemValidationDetails iNVALID_DOMAIN)
 {
 	this->iNVALID_DOMAIN = iNVALID_DOMAIN;
 }
@@ -669,7 +669,7 @@ CatalogsItemValidationErrors::getITEMMAINIMAGEDOWNLOADFAILURE()
 }
 
 void
-CatalogsItemValidationErrors::setITEMMAINIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails  iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE)
+CatalogsItemValidationErrors::setITEMMAINIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE)
 {
 	this->iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 }
@@ -681,7 +681,7 @@ CatalogsItemValidationErrors::getITEMIDMISSING()
 }
 
 void
-CatalogsItemValidationErrors::setITEMIDMISSING(CatalogsItemValidationDetails  iTEMID_MISSING)
+CatalogsItemValidationErrors::setITEMIDMISSING(CatalogsItemValidationDetails iTEMID_MISSING)
 {
 	this->iTEMID_MISSING = iTEMID_MISSING;
 }
@@ -693,7 +693,7 @@ CatalogsItemValidationErrors::getLINKFORMATINVALID()
 }
 
 void
-CatalogsItemValidationErrors::setLINKFORMATINVALID(CatalogsItemValidationDetails  lINK_FORMAT_INVALID)
+CatalogsItemValidationErrors::setLINKFORMATINVALID(CatalogsItemValidationDetails lINK_FORMAT_INVALID)
 {
 	this->lINK_FORMAT_INVALID = lINK_FORMAT_INVALID;
 }
@@ -705,7 +705,7 @@ CatalogsItemValidationErrors::getLINKLENGTHTOOLONG()
 }
 
 void
-CatalogsItemValidationErrors::setLINKLENGTHTOOLONG(CatalogsItemValidationDetails  lINK_LENGTH_TOO_LONG)
+CatalogsItemValidationErrors::setLINKLENGTHTOOLONG(CatalogsItemValidationDetails lINK_LENGTH_TOO_LONG)
 {
 	this->lINK_LENGTH_TOO_LONG = lINK_LENGTH_TOO_LONG;
 }
@@ -717,7 +717,7 @@ CatalogsItemValidationErrors::getLISTPRICEINVALID()
 }
 
 void
-CatalogsItemValidationErrors::setLISTPRICEINVALID(CatalogsItemValidationDetails  lIST_PRICE_INVALID)
+CatalogsItemValidationErrors::setLISTPRICEINVALID(CatalogsItemValidationDetails lIST_PRICE_INVALID)
 {
 	this->lIST_PRICE_INVALID = lIST_PRICE_INVALID;
 }
@@ -729,7 +729,7 @@ CatalogsItemValidationErrors::getMAXITEMSPERITEMGROUPEXCEEDED()
 }
 
 void
-CatalogsItemValidationErrors::setMAXITEMSPERITEMGROUPEXCEEDED(CatalogsItemValidationDetails  mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED)
+CatalogsItemValidationErrors::setMAXITEMSPERITEMGROUPEXCEEDED(CatalogsItemValidationDetails mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED)
 {
 	this->mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 }
@@ -741,7 +741,7 @@ CatalogsItemValidationErrors::getPARSELINEERROR()
 }
 
 void
-CatalogsItemValidationErrors::setPARSELINEERROR(CatalogsItemValidationDetails  pARSE_LINE_ERROR)
+CatalogsItemValidationErrors::setPARSELINEERROR(CatalogsItemValidationDetails pARSE_LINE_ERROR)
 {
 	this->pARSE_LINE_ERROR = pARSE_LINE_ERROR;
 }
@@ -753,7 +753,7 @@ CatalogsItemValidationErrors::getPINJOINCONTENTUNSAFE()
 }
 
 void
-CatalogsItemValidationErrors::setPINJOINCONTENTUNSAFE(CatalogsItemValidationDetails  pINJOIN_CONTENT_UNSAFE)
+CatalogsItemValidationErrors::setPINJOINCONTENTUNSAFE(CatalogsItemValidationDetails pINJOIN_CONTENT_UNSAFE)
 {
 	this->pINJOIN_CONTENT_UNSAFE = pINJOIN_CONTENT_UNSAFE;
 }
@@ -765,7 +765,7 @@ CatalogsItemValidationErrors::getPRICECANNOTBEDETERMINED()
 }
 
 void
-CatalogsItemValidationErrors::setPRICECANNOTBEDETERMINED(CatalogsItemValidationDetails  pRICE_CANNOT_BE_DETERMINED)
+CatalogsItemValidationErrors::setPRICECANNOTBEDETERMINED(CatalogsItemValidationDetails pRICE_CANNOT_BE_DETERMINED)
 {
 	this->pRICE_CANNOT_BE_DETERMINED = pRICE_CANNOT_BE_DETERMINED;
 }
@@ -777,7 +777,7 @@ CatalogsItemValidationErrors::getPRICEMISSING()
 }
 
 void
-CatalogsItemValidationErrors::setPRICEMISSING(CatalogsItemValidationDetails  pRICE_MISSING)
+CatalogsItemValidationErrors::setPRICEMISSING(CatalogsItemValidationDetails pRICE_MISSING)
 {
 	this->pRICE_MISSING = pRICE_MISSING;
 }
@@ -789,7 +789,7 @@ CatalogsItemValidationErrors::getPRODUCTLINKMISSING()
 }
 
 void
-CatalogsItemValidationErrors::setPRODUCTLINKMISSING(CatalogsItemValidationDetails  pRODUCT_LINK_MISSING)
+CatalogsItemValidationErrors::setPRODUCTLINKMISSING(CatalogsItemValidationDetails pRODUCT_LINK_MISSING)
 {
 	this->pRODUCT_LINK_MISSING = pRODUCT_LINK_MISSING;
 }
@@ -801,7 +801,7 @@ CatalogsItemValidationErrors::getPRODUCTPRICEINVALID()
 }
 
 void
-CatalogsItemValidationErrors::setPRODUCTPRICEINVALID(CatalogsItemValidationDetails  pRODUCT_PRICE_INVALID)
+CatalogsItemValidationErrors::setPRODUCTPRICEINVALID(CatalogsItemValidationDetails pRODUCT_PRICE_INVALID)
 {
 	this->pRODUCT_PRICE_INVALID = pRODUCT_PRICE_INVALID;
 }
@@ -813,7 +813,7 @@ CatalogsItemValidationErrors::getTITLEMISSING()
 }
 
 void
-CatalogsItemValidationErrors::setTITLEMISSING(CatalogsItemValidationDetails  tITLE_MISSING)
+CatalogsItemValidationErrors::setTITLEMISSING(CatalogsItemValidationDetails tITLE_MISSING)
 {
 	this->tITLE_MISSING = tITLE_MISSING;
 }

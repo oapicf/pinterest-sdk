@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 List related terms
 
-Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
+Get a list of terms logically related to each input term.  Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
 
 ### Example
 ```powershell
@@ -24,7 +24,7 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$Terms = "workout" # String[] | List of input terms.
+$Terms = "MyTerms" # String[] | List of input terms.
 
 # List related terms
 try {
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 List suggested terms
 
-Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
+Get popular search terms that begin with your input term.  Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
 
 ### Example
 ```powershell
@@ -73,8 +73,8 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$Term = "sports" # String | Input term.
-$Limit = 4 # Int32 | Max suggested terms to return. (optional) (default to 4)
+$Term = "MyTerm" # String | Input term.
+$Limit = 56 # Int32 | Max suggested terms to return. (optional) (default to 4)
 
 # List suggested terms
 try {

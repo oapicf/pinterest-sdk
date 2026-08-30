@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProductGroupMultiplePinterestProductCategoryCriteria",
+  "fields": [
+    {
+      "name": "negated",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "model.ProductCategoryEnum"
+      },
+      "doc": ""
+    }
+  ]
+
+}

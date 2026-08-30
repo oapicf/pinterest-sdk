@@ -3,13 +3,14 @@ open OpenAPI.Model.Board
 open OpenAPI.Model.BoardCreate
 open OpenAPI.Model.BoardPrivacyFilter
 open OpenAPI.Model.BoardSection
+open OpenAPI.Model.BoardSectionCreate
+open OpenAPI.Model.BoardSectionUpdateWithRequiredBody
 open OpenAPI.Model.BoardSectionsList200Response
 open OpenAPI.Model.BoardWithUpdatePrivacy
 open OpenAPI.Model.BoardWithUpdatePrivacyUpdate
 open OpenAPI.Model.BoardsList200Response
 open OpenAPI.Model.BoardsListPins200Response
 open OpenAPI.Model.CreativeType
-open OpenAPI.Model.Error
 open OpenAPI.Model.PinterestLibError
 open BoardsApiHandlerParams
 open BoardsApiServiceInterface
@@ -25,81 +26,123 @@ module BoardsApiServiceImplementation =
 
         member this.BoardSectionsCreate ctx args =
           if true then
-            let content = "response" :> obj :?> BoardSection // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> BoardSection // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsCreateStatusCode200 { content = content }
+          else if true then
+            let content = "Resource create operation completed successfully." :> obj :?> BoardSection // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsCreateStatusCode201 { content = content }
           else if true then
-            let content = "Invalid board section parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsCreateStatusCode400 { content = content }
           else if true then
-            let content = "Not authorized to create board sections." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsCreateStatusCode401 { content = content }
+          else if true then
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsCreateStatusCode403 { content = content }
           else if true then
-            let content = "Could not get exclusive access to the board to create a new section." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            BoardSectionsCreateStatusCode409 { content = content }
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsCreateStatusCode404 { content = content }
           else if true then
-            let content = "Could not create a new board section." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            BoardSectionsCreateStatusCode500 { content = content }
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsCreateStatusCode429 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsCreateDefaultStatusCode { content = content }
 
         member this.BoardSectionsDelete ctx args =
           if true then
-            let content = "Board section deleted successfully" 
+            let content = "The request has succeeded." :> obj :?> BoardSection // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsDeleteStatusCode200 { content = content }
+          else if true then
+            let content = "Resource deleted successfully." 
             BoardSectionsDeleteStatusCode204 { content = content }
           else if true then
-            let content = "Not authorized to delete board section." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsDeleteStatusCode400 { content = content }
+          else if true then
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsDeleteStatusCode401 { content = content }
+          else if true then
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsDeleteStatusCode403 { content = content }
           else if true then
-            let content = "Board section not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsDeleteStatusCode404 { content = content }
           else if true then
-            let content = "Board section conflict." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            BoardSectionsDeleteStatusCode409 { content = content }
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsDeleteStatusCode429 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsDeleteDefaultStatusCode { content = content }
 
         member this.BoardSectionsList ctx args =
           if true then
-            let content = "response" :> obj :?> BoardSectionsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> BoardSectionsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsListStatusCode200 { content = content }
+          else if true then
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsListStatusCode400 { content = content }
+          else if true then
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsListStatusCode401 { content = content }
+          else if true then
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsListStatusCode403 { content = content }
+          else if true then
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsListStatusCode404 { content = content }
+          else if true then
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsListStatusCode429 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsListDefaultStatusCode { content = content }
 
         member this.BoardSectionsListPins ctx args =
           if true then
-            let content = "response" :> obj :?> BoardsListPins200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> BoardsListPins200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsListPinsStatusCode200 { content = content }
           else if true then
-            let content = "Not authorized to access Pins on board section." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsListPinsStatusCode400 { content = content }
+          else if true then
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsListPinsStatusCode401 { content = content }
+          else if true then
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsListPinsStatusCode403 { content = content }
           else if true then
-            let content = "Board or section not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsListPinsStatusCode404 { content = content }
           else if true then
-            let content = "Board section conflict." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            BoardSectionsListPinsStatusCode409 { content = content }
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsListPinsStatusCode429 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsListPinsDefaultStatusCode { content = content }
 
         member this.BoardSectionsUpdate ctx args =
           if true then
-            let content = "response" :> obj :?> BoardSection // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> BoardSection // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsUpdateStatusCode200 { content = content }
           else if true then
-            let content = "Invalid board section parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsUpdateStatusCode400 { content = content }
           else if true then
-            let content = "Not authorized to update board section." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsUpdateStatusCode401 { content = content }
+          else if true then
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsUpdateStatusCode403 { content = content }
           else if true then
-            let content = "Board section conflict." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            BoardSectionsUpdateStatusCode409 { content = content }
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsUpdateStatusCode404 { content = content }
+          else if true then
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardSectionsUpdateStatusCode429 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardSectionsUpdateDefaultStatusCode { content = content }
 
         member this.BoardsCreate ctx args =
@@ -130,6 +173,9 @@ module BoardsApiServiceImplementation =
 
         member this.BoardsDelete ctx args =
           if true then
+            let content = "The request has succeeded." :> obj :?> Board // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardsDeleteStatusCode200 { content = content }
+          else if true then
             let content = "Resource deleted successfully." 
             BoardsDeleteStatusCode204 { content = content }
           else if true then
@@ -199,13 +245,25 @@ module BoardsApiServiceImplementation =
 
         member this.BoardsListPins ctx args =
           if true then
-            let content = "response" :> obj :?> BoardsListPins200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> BoardsListPins200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardsListPinsStatusCode200 { content = content }
           else if true then
-            let content = "Board not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardsListPinsStatusCode400 { content = content }
+          else if true then
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardsListPinsStatusCode401 { content = content }
+          else if true then
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardsListPinsStatusCode403 { content = content }
+          else if true then
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardsListPinsStatusCode404 { content = content }
+          else if true then
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            BoardsListPinsStatusCode429 { content = content }
           else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             BoardsListPinsDefaultStatusCode { content = content }
 
         member this.BoardsUpdate ctx args =

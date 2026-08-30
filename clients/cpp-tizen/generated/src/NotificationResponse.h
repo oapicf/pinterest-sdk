@@ -45,20 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Returns true if the notification accepted.
-	 */
-	bool getSuccess();
-
-	/*! \brief Set Returns true if the notification accepted.
-	 */
-	void setSuccess(bool  success);
-	/*! \brief Get Received time. Unix timestamp in seconds.
-	 */
-	int getReceivedAt();
-
-	/*! \brief Set Received time. Unix timestamp in seconds.
-	 */
-	void setReceivedAt(int  received_at);
 	/*! \brief Get error message when success is false
 	 */
 	std::string getErrorMsg();
@@ -66,11 +52,25 @@ public:
 	/*! \brief Set error message when success is false
 	 */
 	void setErrorMsg(std::string  error_msg);
+	/*! \brief Get Received time. Unix timestamp in seconds.
+	 */
+	int getReceivedAt();
+
+	/*! \brief Set Received time. Unix timestamp in seconds.
+	 */
+	void setReceivedAt(int  received_at);
+	/*! \brief Get Returns true if the notification accepted.
+	 */
+	bool getSuccess();
+
+	/*! \brief Set Returns true if the notification accepted.
+	 */
+	void setSuccess(bool  success);
 
 private:
-	bool success;
-	int received_at;
 	std::string error_msg;
+	int received_at;
+	bool success;
 	void __init();
 	void __cleanup();
 

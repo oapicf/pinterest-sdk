@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **google_product_category_4** | **list_t \*** |  | [optional] 
 **google_product_category_5** | **list_t \*** |  | [optional] 
 **google_product_category_6** | **list_t \*** |  | [optional] 
-**media_type** | **list_t \*** |  | [optional] 
+**media_type** | [**list_t**](media_type.md) \* |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

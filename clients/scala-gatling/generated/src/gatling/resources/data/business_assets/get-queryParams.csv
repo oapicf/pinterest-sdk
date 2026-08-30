@@ -1,1 +1,1 @@
-asset_type,start_index,bookmark,page_size,permissions,child_asset_id,asset_group_id
+asset_type,bookmark,permissions,asset_group_id,page_size,start_index,child_asset_id

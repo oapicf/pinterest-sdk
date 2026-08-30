@@ -1,12 +1,10 @@
 package apimodels;
 
-import apimodels.CatalogsReportAllItemsFilter;
 import apimodels.CatalogsReportDistributionIssueFilter;
 import apimodels.CatalogsReportFeedIngestionFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -16,18 +14,25 @@ import javax.validation.Valid;
 /**
  * CatalogsHotelReportParametersReport
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelReportParametersReport   {
+  @JsonProperty("feed_id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String feedId;
+
+  @JsonProperty("processing_result_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String processingResultId;
+
   /**
    * Gets or Sets reportType
    */
   public enum ReportTypeEnum {
-    FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-    
-    DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES"),
-    
-    ALL_ITEMS("ALL_ITEMS");
+    DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
 
     private final String value;
 
@@ -53,41 +58,14 @@ public class CatalogsHotelReportParametersReport   {
   }
 
   @JsonProperty("report_type")
-  
-  private ReportTypeEnum reportType;
-
-  @JsonProperty("feed_id")
   @NotNull
-@Pattern(regexp="^\\d+$")
 
-  private String feedId;
-
-  @JsonProperty("processing_result_id")
-  @Pattern(regexp="^\\d+$")
-
-  private String processingResultId;
+  private ReportTypeEnum reportType;
 
   @JsonProperty("catalog_id")
   @Pattern(regexp="^\\d+$")
 
   private String catalogId;
-
-  public CatalogsHotelReportParametersReport reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-   /**
-   * Get reportType
-   * @return reportType
-  **/
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   public CatalogsHotelReportParametersReport feedId(String feedId) {
     this.feedId = feedId;
@@ -123,6 +101,23 @@ public class CatalogsHotelReportParametersReport   {
     this.processingResultId = processingResultId;
   }
 
+  public CatalogsHotelReportParametersReport reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Get reportType
+   * @return reportType
+  **/
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
   public CatalogsHotelReportParametersReport catalogId(String catalogId) {
     this.catalogId = catalogId;
     return this;
@@ -150,15 +145,15 @@ public class CatalogsHotelReportParametersReport   {
       return false;
     }
     CatalogsHotelReportParametersReport catalogsHotelReportParametersReport = (CatalogsHotelReportParametersReport) o;
-    return Objects.equals(reportType, catalogsHotelReportParametersReport.reportType) &&
-        Objects.equals(feedId, catalogsHotelReportParametersReport.feedId) &&
+    return Objects.equals(feedId, catalogsHotelReportParametersReport.feedId) &&
         Objects.equals(processingResultId, catalogsHotelReportParametersReport.processingResultId) &&
+        Objects.equals(reportType, catalogsHotelReportParametersReport.reportType) &&
         Objects.equals(catalogId, catalogsHotelReportParametersReport.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId, catalogId);
+    return Objects.hash(feedId, processingResultId, reportType, catalogId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -167,9 +162,9 @@ public class CatalogsHotelReportParametersReport   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelReportParametersReport {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -180,10 +175,7 @@ public class CatalogsHotelReportParametersReport   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

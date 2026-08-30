@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **Date** |  | 
-**id** | **String** | ID of the catalog entity. | 
-**updatedAt** | **Date** |  | 
 **catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**createdAt** | **Date** |  | [readonly] 
+**id** | **String** | ID of the catalog entity. | 
 **name** | **String** | A human-friendly name associated to a catalog entity. | 
+**updatedAt** | **Date** |  | [readonly] 
 
 

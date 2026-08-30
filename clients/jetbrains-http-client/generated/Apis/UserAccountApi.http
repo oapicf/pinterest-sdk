@@ -1,0 +1,84 @@
+## UserAccountApi
+
+### List following boards
+## List following boards
+GET https://api.pinterest.com/v5/user_account/following/boards?adAccountId={{adAccountId}}&explicitFollowing={{explicitFollowing}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Follow user
+## Follow user
+POST https://api.pinterest.com/v5/user_account/following/{{username}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "auto_follow": "<string>"
+}
+
+
+### List followers
+## List followers
+GET https://api.pinterest.com/v5/user_account/followers?bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### List linked businesses
+## List linked businesses
+GET https://api.pinterest.com/v5/user_account/businesses
+Accept: application/json
+
+### Unverify website
+## Unverify website
+DELETE https://api.pinterest.com/v5/user_account/websites?website={{website}}
+Accept: application/json
+
+### Get user account analytics
+## Get user account analytics
+GET https://api.pinterest.com/v5/user_account/analytics?startDate={{startDate}}&endDate={{endDate}}&fromClaimedContent={{fromClaimedContent}}&pinFormat={{pinFormat}}&appTypes={{appTypes}}&contentType={{contentType}}&source={{source}}&metricTypes={{metricTypes}}&splitField={{splitField}}&adAccountId={{adAccountId}}
+Accept: application/json
+
+### Get user account top pins analytics
+## Get user account top pins analytics
+GET https://api.pinterest.com/v5/user_account/analytics/top_pins?startDate={{startDate}}&endDate={{endDate}}&sortBy={{sortBy}}&fromClaimedContent={{fromClaimedContent}}&pinFormat={{pinFormat}}&appTypes={{appTypes}}&contentType={{contentType}}&source={{source}}&metricTypes={{metricTypes}}&numOfPins={{numOfPins}}&createdInLastNDays={{createdInLastNDays}}&adAccountId={{adAccountId}}
+Accept: application/json
+
+### Get user account top video pins analytics
+## Get user account top video pins analytics
+GET https://api.pinterest.com/v5/user_account/analytics/top_video_pins?startDate={{startDate}}&endDate={{endDate}}&sortBy={{sortBy}}&fromClaimedContent={{fromClaimedContent}}&pinFormat={{pinFormat}}&appTypes={{appTypes}}&contentType={{contentType}}&source={{source}}&metricTypes={{metricTypes}}&numOfPins={{numOfPins}}&createdInLastNDays={{createdInLastNDays}}&adAccountId={{adAccountId}}
+Accept: application/json
+
+### List following interests
+## List following interests
+GET https://api.pinterest.com/v5/users/{{username}}/interests/follow?bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get user account
+## Get user account
+GET https://api.pinterest.com/v5/user_account?adAccountId={{adAccountId}}
+Accept: application/json
+
+### List following
+## List following
+GET https://api.pinterest.com/v5/user_account/following?adAccountId={{adAccountId}}&explicitFollowing={{explicitFollowing}}&feedType={{feedType}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get user websites
+## Get user websites
+GET https://api.pinterest.com/v5/user_account/websites?bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Verify website
+## Verify website
+POST https://api.pinterest.com/v5/user_account/websites?adAccountId={{adAccountId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+ "verification_method": "<string>",
+ "website": "<string>"
+}
+
+
+### Get user verification code for website claiming
+## Get user verification code for website claiming
+GET https://api.pinterest.com/v5/user_account/websites/verification?adAccountId={{adAccountId}}
+Accept: application/json

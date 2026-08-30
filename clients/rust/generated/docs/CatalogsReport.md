@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**report_status** | Option<**String**> |  | [optional]
+**report_status** | Option<**ReportStatus**> |  (enum: FINISHED, IN_PROGRESS) | [optional]
 **size** | Option<**f64**> | Size of the report in bytes | [optional]
 **url** | Option<**String**> | URL to download the report | [optional]
 

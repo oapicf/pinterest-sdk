@@ -19,7 +19,6 @@ class BusinessAssetMembersGet200Response {
 
   String? bookmark;
 
-  /// List of members with permissions to the asset.
   List<UserSingleAssetBinding> items;
 
   @override
@@ -58,10 +57,8 @@ class BusinessAssetMembersGet200Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BusinessAssetMembersGet200Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BusinessAssetMembersGet200Response[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'items'), 'Required key "BusinessAssetMembersGet200Response[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "BusinessAssetMembersGet200Response[items]" has a null value in JSON.');
         return true;
       }());
 

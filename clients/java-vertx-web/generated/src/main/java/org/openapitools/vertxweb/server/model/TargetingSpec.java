@@ -25,9 +25,11 @@ public class TargetingSpec   {
   private List<String> AUDIENCE_INCLUDE;
   private List<TargetingSpecGender> GENDER;
   private List<String> GEO;
+  private List<String> GEO_EXCLUDE = new ArrayList<>();
   private List<String> INTEREST = new ArrayList<>();
   private List<String> LOCALE;
   private List<String> LOCATION;
+  private List<String> LOCATION_EXCLUDE = new ArrayList<>();
   private String MAXIMUM_AGE;
   private String MINIMUM_AGE;
   private List<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING;
@@ -57,16 +59,18 @@ public class TargetingSpec   {
 
   }
 
-  public TargetingSpec (List<TargetingSpecAgeBucket> AGE_BUCKET, List<TargetingSpecAppType> APPTYPE, List<String> AUDIENCE_EXCLUDE, List<String> AUDIENCE_INCLUDE, List<TargetingSpecGender> GENDER, List<String> GEO, List<String> INTEREST, List<String> LOCALE, List<String> LOCATION, String MAXIMUM_AGE, String MINIMUM_AGE, List<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING, List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
+  public TargetingSpec (List<TargetingSpecAgeBucket> AGE_BUCKET, List<TargetingSpecAppType> APPTYPE, List<String> AUDIENCE_EXCLUDE, List<String> AUDIENCE_INCLUDE, List<TargetingSpecGender> GENDER, List<String> GEO, List<String> GEO_EXCLUDE, List<String> INTEREST, List<String> LOCALE, List<String> LOCATION, List<String> LOCATION_EXCLUDE, String MAXIMUM_AGE, String MINIMUM_AGE, List<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING, List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
     this.AGE_BUCKET = AGE_BUCKET;
     this.APPTYPE = APPTYPE;
     this.AUDIENCE_EXCLUDE = AUDIENCE_EXCLUDE;
     this.AUDIENCE_INCLUDE = AUDIENCE_INCLUDE;
     this.GENDER = GENDER;
     this.GEO = GEO;
+    this.GEO_EXCLUDE = GEO_EXCLUDE;
     this.INTEREST = INTEREST;
     this.LOCALE = LOCALE;
     this.LOCATION = LOCATION;
+    this.LOCATION_EXCLUDE = LOCATION_EXCLUDE;
     this.MAXIMUM_AGE = MAXIMUM_AGE;
     this.MINIMUM_AGE = MINIMUM_AGE;
     this.SHOPPING_RETARGETING = SHOPPING_RETARGETING;
@@ -128,6 +132,15 @@ public class TargetingSpec   {
   }
 
     
+  @JsonProperty("GEO_EXCLUDE")
+  public List<String> getGEOEXCLUDE() {
+    return GEO_EXCLUDE;
+  }
+  public void setGEOEXCLUDE(List<String> GEO_EXCLUDE) {
+    this.GEO_EXCLUDE = GEO_EXCLUDE;
+  }
+
+    
   @JsonProperty("INTEREST")
   public List<String> getINTEREST() {
     return INTEREST;
@@ -152,6 +165,15 @@ public class TargetingSpec   {
   }
   public void setLOCATION(List<String> LOCATION) {
     this.LOCATION = LOCATION;
+  }
+
+    
+  @JsonProperty("LOCATION_EXCLUDE")
+  public List<String> getLOCATIONEXCLUDE() {
+    return LOCATION_EXCLUDE;
+  }
+  public void setLOCATIONEXCLUDE(List<String> LOCATION_EXCLUDE) {
+    this.LOCATION_EXCLUDE = LOCATION_EXCLUDE;
   }
 
     
@@ -206,9 +228,11 @@ public class TargetingSpec   {
         Objects.equals(AUDIENCE_INCLUDE, targetingSpec.AUDIENCE_INCLUDE) &&
         Objects.equals(GENDER, targetingSpec.GENDER) &&
         Objects.equals(GEO, targetingSpec.GEO) &&
+        Objects.equals(GEO_EXCLUDE, targetingSpec.GEO_EXCLUDE) &&
         Objects.equals(INTEREST, targetingSpec.INTEREST) &&
         Objects.equals(LOCALE, targetingSpec.LOCALE) &&
         Objects.equals(LOCATION, targetingSpec.LOCATION) &&
+        Objects.equals(LOCATION_EXCLUDE, targetingSpec.LOCATION_EXCLUDE) &&
         Objects.equals(MAXIMUM_AGE, targetingSpec.MAXIMUM_AGE) &&
         Objects.equals(MINIMUM_AGE, targetingSpec.MINIMUM_AGE) &&
         Objects.equals(SHOPPING_RETARGETING, targetingSpec.SHOPPING_RETARGETING) &&
@@ -217,7 +241,7 @@ public class TargetingSpec   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE, GENDER, GEO, INTEREST, LOCALE, LOCATION, MAXIMUM_AGE, MINIMUM_AGE, SHOPPING_RETARGETING, TARGETING_STRATEGY);
+    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE, GENDER, GEO, GEO_EXCLUDE, INTEREST, LOCALE, LOCATION, LOCATION_EXCLUDE, MAXIMUM_AGE, MINIMUM_AGE, SHOPPING_RETARGETING, TARGETING_STRATEGY);
   }
 
   @Override
@@ -231,9 +255,11 @@ public class TargetingSpec   {
     sb.append("    AUDIENCE_INCLUDE: ").append(toIndentedString(AUDIENCE_INCLUDE)).append("\n");
     sb.append("    GENDER: ").append(toIndentedString(GENDER)).append("\n");
     sb.append("    GEO: ").append(toIndentedString(GEO)).append("\n");
+    sb.append("    GEO_EXCLUDE: ").append(toIndentedString(GEO_EXCLUDE)).append("\n");
     sb.append("    INTEREST: ").append(toIndentedString(INTEREST)).append("\n");
     sb.append("    LOCALE: ").append(toIndentedString(LOCALE)).append("\n");
     sb.append("    LOCATION: ").append(toIndentedString(LOCATION)).append("\n");
+    sb.append("    LOCATION_EXCLUDE: ").append(toIndentedString(LOCATION_EXCLUDE)).append("\n");
     sb.append("    MAXIMUM_AGE: ").append(toIndentedString(MAXIMUM_AGE)).append("\n");
     sb.append("    MINIMUM_AGE: ").append(toIndentedString(MINIMUM_AGE)).append("\n");
     sb.append("    SHOPPING_RETARGETING: ").append(toIndentedString(SHOPPING_RETARGETING)).append("\n");
@@ -247,9 +273,6 @@ public class TargetingSpec   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -9,8 +9,7 @@
 -export_type([openapi_label_create_request/0]).
 
 -type openapi_label_create_request() ::
-  [ {'labels', list(openapi_label_create_request_labels_inner:openapi_label_create_request_labels_inner()) }
-  | {'parent_id', binary() }
+  [ {'labels', list(openapi_label_create_item:openapi_label_create_item()) }
   ].
 
 
@@ -18,8 +17,7 @@ openapi_label_create_request() ->
     openapi_label_create_request([]).
 
 openapi_label_create_request(Fields) ->
-  Default = [ {'labels', list(openapi_label_create_request_labels_inner:openapi_label_create_request_labels_inner()) }
-            , {'parent_id', binary() }
+  Default = [ {'labels', list(openapi_label_create_item:openapi_label_create_item()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

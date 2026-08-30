@@ -15,8 +15,7 @@
 
 typedef struct business_member_assets_summary_t business_member_assets_summary_t;
 
-#include "business_member_assets_summary_ad_accounts_inner.h"
-#include "business_member_assets_summary_profiles_inner.h"
+#include "asset_id_with_permissions.h"
 
 
 

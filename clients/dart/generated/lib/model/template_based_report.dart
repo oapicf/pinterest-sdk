@@ -86,10 +86,10 @@ class TemplateBasedReport {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TemplateBasedReport[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TemplateBasedReport[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'report_status'), 'Required key "TemplateBasedReport[report_status]" is missing from JSON.');
+        assert(json[r'report_status'] != null, 'Required key "TemplateBasedReport[report_status]" has a null value in JSON.');
+        assert(json.containsKey(r'template_id'), 'Required key "TemplateBasedReport[template_id]" is missing from JSON.');
+        assert(json[r'template_id'] != null, 'Required key "TemplateBasedReport[template_id]" has a null value in JSON.');
         return true;
       }());
 

@@ -5,19 +5,24 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // CatalogsRetailProductMetadata - Retail product metadata entity
 type CatalogsRetailProductMetadata struct {
 
-	Availability NonNullableProductAvailabilityType `json:"availability"`
+	Availability ProductAvailability `json:"availability"`
 
 	Currency NonNullableCatalogsCurrency `json:"currency"`
 
@@ -33,23 +38,102 @@ type CatalogsRetailProductMetadata struct {
 	// The discounted price of the product.
 	SalePrice *float32 `json:"sale_price"`
 }
-
-// AssertCatalogsRetailProductMetadataRequired checks if the required fields are not zero-ed
-func AssertCatalogsRetailProductMetadataRequired(obj CatalogsRetailProductMetadata) error {
-	elements := map[string]interface{}{
-		"availability": obj.Availability,
-		"currency": obj.Currency,
-		"item_group_id": obj.ItemGroupId,
-		"item_id": obj.ItemId,
-		"price": obj.Price,
-		"sale_price": obj.SalePrice,
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsRetailProductMetadata
+func (o *CatalogsRetailProductMetadata) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"availability",
+		"currency",
+		"item_group_id",
+		"item_id",
+		"price",
+		"sale_price",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"availability": false,
+		"currency": false,
+		"item_group_id": true,
+		"item_id": false,
+		"price": false,
+		"sale_price": true,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"availability": {},
+		"currency": {},
+		"item_group_id": {},
+		"item_id": {},
+		"price": {},
+		"sale_price": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsRetailProductMetadata
+
+	if value, exists := allProperties["availability"]; exists {
+		if err = json.Unmarshal(value, &decoded.Availability); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["currency"]; exists {
+		if err = json.Unmarshal(value, &decoded.Currency); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_group_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemGroupId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["price"]; exists {
+		if err = json.Unmarshal(value, &decoded.Price); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["sale_price"]; exists {
+		if err = json.Unmarshal(value, &decoded.SalePrice); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsRetailProductMetadataRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCatalogsRetailProductMetadataRequired(obj CatalogsRetailProductMetadata) error {
 	return nil
 }
 

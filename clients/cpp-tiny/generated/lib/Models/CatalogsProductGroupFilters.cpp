@@ -119,7 +119,7 @@ CatalogsProductGroupFilters::getAnyOf()
 }
 
 void
-CatalogsProductGroupFilters::setAnyOf(std::list <CatalogsProductGroupFilterKeys> any_of)
+CatalogsProductGroupFilters::setAnyOf(std::list<CatalogsProductGroupFilterKeys> any_of)
 {
 	this->any_of = any_of;
 }
@@ -131,7 +131,7 @@ CatalogsProductGroupFilters::getAllOf()
 }
 
 void
-CatalogsProductGroupFilters::setAllOf(std::list <CatalogsProductGroupFilterKeys> all_of)
+CatalogsProductGroupFilters::setAllOf(std::list<CatalogsProductGroupFilterKeys> all_of)
 {
 	this->all_of = all_of;
 }

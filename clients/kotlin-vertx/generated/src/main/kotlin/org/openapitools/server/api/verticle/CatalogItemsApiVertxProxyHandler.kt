@@ -16,11 +16,11 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.CatalogsItems
 import org.openapitools.server.api.model.CatalogsItemsBatch
+import org.openapitools.server.api.model.CatalogsItemsBatchPostRequest
 import org.openapitools.server.api.model.CatalogsItemsRequest
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.ItemsBatchPostRequest
+import org.openapitools.server.api.model.ItemsPost200Response
+import org.openapitools.server.api.model.PinterestLibError
 
 class CatalogItemsApiVertxProxyHandler(private val vertx: Vertx, private val service: CatalogItemsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -87,14 +87,14 @@ class CatalogItemsApiVertxProxyHandler(private val vertx: Vertx, private val ser
         
                 "itemsBatchPost" -> {
                     val params = context.params
-                    val itemsBatchPostRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (itemsBatchPostRequestParam == null) {
-                        throw IllegalArgumentException("itemsBatchPostRequest is required")
+                    val catalogsItemsBatchPostRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (catalogsItemsBatchPostRequestParam == null) {
+                        throw IllegalArgumentException("catalogsItemsBatchPostRequest is required")
                     }
-                    val itemsBatchPostRequest = Gson().fromJson(itemsBatchPostRequestParam.encode(), ItemsBatchPostRequest::class.java)
+                    val catalogsItemsBatchPostRequest = Gson().fromJson(catalogsItemsBatchPostRequestParam.encode(), CatalogsItemsBatchPostRequest::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.itemsBatchPost(itemsBatchPostRequest,adAccountId,context)
+                        val result = service.itemsBatchPost(catalogsItemsBatchPostRequest,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

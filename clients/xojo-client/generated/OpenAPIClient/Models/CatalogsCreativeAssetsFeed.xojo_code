@@ -2,21 +2,6 @@
 Protected Class CatalogsCreativeAssetsFeed
 
 	#tag Property, Flags = &h0
-		created_at As Date
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		id As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		updated_at As Date
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 		#tag EndNote
@@ -26,6 +11,11 @@ Protected Class CatalogsCreativeAssetsFeed
 
 	#tag Property, Flags = &h0
 		catalog_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		created_at As Date
 	#tag EndProperty
 
 
@@ -40,7 +30,7 @@ Protected Class CatalogsCreativeAssetsFeed
 
 
 	#tag Property, Flags = &h0
-		default_currency As String
+		default_currency As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -54,6 +44,14 @@ Protected Class CatalogsCreativeAssetsFeed
 
 	#tag Property, Flags = &h0
 		format As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			ID of the feed entity.
+		#tag EndNote
+		id As String
 	#tag EndProperty
 
 
@@ -83,7 +81,29 @@ Protected Class CatalogsCreativeAssetsFeed
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		updated_at As Date
+	#tag EndProperty
 
+
+    #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
+        
+        CreativeAssets
+        
+    #tag EndEnum
+
+
+	#tag Method, Flags = &h0
+		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
+		  Select Case value
+		    
+		    Case Catalog_typeEnum.CreativeAssets
+		      Return "CREATIVE_ASSETS"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -120,30 +140,6 @@ Protected Class CatalogsCreativeAssetsFeed
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="created_at"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Date"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="updated_at"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Date"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="catalog_id"
 			Visible=false
 			Group="Behavior"
@@ -152,11 +148,11 @@ Protected Class CatalogsCreativeAssetsFeed
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_type"
+			Name="created_at"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsType"
+			Type="Date"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -200,6 +196,14 @@ Protected Class CatalogsCreativeAssetsFeed
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="location"
 			Visible=false
 			Group="Behavior"
@@ -229,6 +233,14 @@ Protected Class CatalogsCreativeAssetsFeed
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsStatus"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="updated_at"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Date"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -20,13 +20,13 @@ typedef struct integration_log_client_error_t integration_log_client_error_t;
 
 typedef struct integration_log_client_error_t {
     char *cause; // string
-    int column_number; //numeric
+    int *column_number; //numeric
     char *file_name; // string
-    int line_number; //numeric
+    int *line_number; //numeric
     char *message; // string
     char *message_detail; // string
     char *name; // string
-    int number; //numeric
+    int *number; //numeric
     char *stack_trace; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -34,13 +34,13 @@ typedef struct integration_log_client_error_t {
 
 __attribute__((deprecated)) integration_log_client_error_t *integration_log_client_error_create(
     char *cause,
-    int column_number,
+    int *column_number,
     char *file_name,
-    int line_number,
+    int *line_number,
     char *message,
     char *message_detail,
     char *name,
-    int number,
+    int *number,
     char *stack_trace
 );
 

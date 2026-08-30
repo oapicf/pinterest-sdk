@@ -3,17 +3,21 @@
 #import "OAIApiClient.h"
 #import "OAIAdPinAnalytics.h"
 #import "OAIAdsAnalyticsCampaignTargetingType.h"
-#import "OAICampaignCreateRequest.h"
-#import "OAICampaignCreateResponse.h"
-#import "OAICampaignResponse.h"
-#import "OAICampaignUpdateRequest.h"
-#import "OAICampaignUpdateResponse.h"
-#import "OAICampaignsAnalyticsResponseInner.h"
+#import "OAICampaign.h"
+#import "OAICampaignBatchUpdateItem.h"
+#import "OAICampaignBatchWriteResponseModel.h"
+#import "OAICampaignCreateItem.h"
+#import "OAICampaignDeliveryEstimatesCampaign.h"
+#import "OAICampaignDeliveryEstimatesResponse.h"
+#import "OAICampaignsAnalyticsMetrics.h"
 #import "OAICampaignsList200Response.h"
 #import "OAIConversionReportAttributionType.h"
-#import "OAIError.h"
+#import "OAIEntityStatus.h"
 #import "OAIGranularity.h"
 #import "OAIMetricsResponse.h"
+#import "OAIPinterestLibError.h"
+#import "OAIPinterestLibPaginationOrder.h"
+#import "OAIReportingColumnSync.h"
 #import "OAIReportingTimeZone.h"
 
 
@@ -64,9 +68,7 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get pins analytics
-/// Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
-///  @param adAccountId Unique identifier of an ad account. 
-///
+/// Get analytics for the pins given a campaign and pins in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
 ///  @param campaignId Campaign Id to use to filter the results. 
 ///
 ///  @param pinIds List of Pin IDs. 
@@ -75,13 +77,15 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
 ///
 ///  @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
 ///
-///  @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned 
+///  @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. 
 ///
-///  @param granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly 
+///  @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly 
+///
+///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional, default to @30)
 ///
-///  @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional, default to @30)
+///  @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to @30)
 ///
 ///  @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional, default to @1)
 ///
@@ -89,29 +93,18 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
 ///
 ///  @returns NSArray<OAIAdPinAnalytics>*
 ///
--(NSURLSessionTask*) adPinsAnalyticsWithAdAccountId: (NSString*) adAccountId
-    campaignId: (NSString*) campaignId
+-(NSURLSessionTask*) adPinsAnalyticsWithCampaignId: (NSString*) campaignId
     pinIds: (NSArray<NSString*>*) pinIds
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    columns: (NSArray<NSString*>*) columns
+    columns: (NSArray<OAIReportingColumnSync>*) columns
     granularity: (OAIGranularity) granularity
+    adAccountId: (NSString*) adAccountId
     clickWindowDays: (NSNumber*) clickWindowDays
     engagementWindowDays: (NSNumber*) engagementWindowDays
     viewWindowDays: (NSNumber*) viewWindowDays
     conversionReportTime: (NSString*) conversionReportTime
     completionHandler: (void (^)(NSArray<OAIAdPinAnalytics>* output, NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
     // verify the required parameter 'campaignId' is set
     if (campaignId == nil) {
         NSParameterAssert(campaignId);
@@ -172,6 +165,17 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
         NSParameterAssert(granularity);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"granularity"] };
+            NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
             NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -258,7 +262,7 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get targeting analytics for campaigns
-/// Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+/// Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param campaignIds List of Campaign Ids to use to filter the results. 
@@ -267,15 +271,15 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
 ///
 ///  @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
 ///
-///  @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. 
+///  @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. 
 ///
-///  @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned 
+///  @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. 
 ///
-///  @param granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly 
+///  @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly 
 ///
 ///  @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional, default to @30)
 ///
-///  @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional, default to @30)
+///  @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to @30)
 ///
 ///  @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional, default to @1)
 ///
@@ -292,7 +296,7 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
     targetingTypes: (NSArray<OAIAdsAnalyticsCampaignTargetingType>*) targetingTypes
-    columns: (NSArray<NSString*>*) columns
+    columns: (NSArray<OAIReportingColumnSync>*) columns
     granularity: (OAIGranularity) granularity
     clickWindowDays: (NSNumber*) clickWindowDays
     engagementWindowDays: (NSNumber*) engagementWindowDays
@@ -464,22 +468,22 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get campaign analytics
-/// Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
-///  @param adAccountId Unique identifier of an ad account. 
-///
+/// Get analytics for the specified campaigns in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 ///  @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
 ///
 ///  @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
 ///
 ///  @param campaignIds List of Campaign Ids to use to filter the results. 
 ///
-///  @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned 
+///  @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. 
 ///
-///  @param granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly 
+///  @param granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly 
+///
+///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional, default to @30)
 ///
-///  @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional, default to @30)
+///  @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional, default to @30)
 ///
 ///  @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional, default to @1)
 ///
@@ -489,32 +493,21 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
 ///
 ///  @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 ///
-///  @returns NSArray<OAICampaignsAnalyticsResponseInner>*
+///  @returns NSArray<OAICampaignsAnalyticsMetrics>*
 ///
--(NSURLSessionTask*) campaignsAnalyticsWithAdAccountId: (NSString*) adAccountId
-    startDate: (NSDate*) startDate
+-(NSURLSessionTask*) campaignsAnalyticsWithStartDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
     campaignIds: (NSArray<NSString*>*) campaignIds
-    columns: (NSArray<NSString*>*) columns
+    columns: (NSArray<OAIReportingColumnSync>*) columns
     granularity: (OAIGranularity) granularity
+    adAccountId: (NSString*) adAccountId
     clickWindowDays: (NSNumber*) clickWindowDays
     engagementWindowDays: (NSNumber*) engagementWindowDays
     viewWindowDays: (NSNumber*) viewWindowDays
     conversionReportTime: (NSString*) conversionReportTime
     aggregateReportRows: (NSNumber*) aggregateReportRows
     reportingTimezone: (OAIReportingTimeZone) reportingTimezone
-    completionHandler: (void (^)(NSArray<OAICampaignsAnalyticsResponseInner>* output, NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
+    completionHandler: (void (^)(NSArray<OAICampaignsAnalyticsMetrics>* output, NSError* error)) handler {
     // verify the required parameter 'startDate' is set
     if (startDate == nil) {
         NSParameterAssert(startDate);
@@ -564,6 +557,17 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
         NSParameterAssert(granularity);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"granularity"] };
+            NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
             NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -643,26 +647,26 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"NSArray<OAICampaignsAnalyticsResponseInner>*"
+                              responseType: @"NSArray<OAICampaignsAnalyticsMetrics>*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((NSArray<OAICampaignsAnalyticsResponseInner>*)data, error);
+                                    handler((NSArray<OAICampaignsAnalyticsMetrics>*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Create campaigns
-/// Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+/// Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads.  For more, see [Set up your campaign](https://help.pinterest.com/en/business/article/set-up-your-campaign/).  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param campaignCreateRequest Array of campaigns. 
+///  @param campaignCreateItem  
 ///
-///  @returns OAICampaignCreateResponse*
+///  @returns OAICampaignBatchWriteResponseModel*
 ///
 -(NSURLSessionTask*) campaignsCreateWithAdAccountId: (NSString*) adAccountId
-    campaignCreateRequest: (NSArray<OAICampaignCreateRequest>*) campaignCreateRequest
-    completionHandler: (void (^)(OAICampaignCreateResponse* output, NSError* error)) handler {
+    campaignCreateItem: (NSArray<OAICampaignCreateItem>*) campaignCreateItem
+    completionHandler: (void (^)(OAICampaignBatchWriteResponseModel* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -674,11 +678,11 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'campaignCreateRequest' is set
-    if (campaignCreateRequest == nil) {
-        NSParameterAssert(campaignCreateRequest);
+    // verify the required parameter 'campaignCreateItem' is set
+    if (campaignCreateItem == nil) {
+        NSParameterAssert(campaignCreateItem);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"campaignCreateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"campaignCreateItem"] };
             NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -713,7 +717,7 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = campaignCreateRequest;
+    bodyParam = campaignCreateItem;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -726,10 +730,10 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICampaignCreateResponse*"
+                              responseType: @"OAICampaignBatchWriteResponseModel*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICampaignCreateResponse*)data, error);
+                                    handler((OAICampaignBatchWriteResponseModel*)data, error);
                                 }
                             }];
 }
@@ -737,26 +741,15 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
 ///
 /// Get campaign
 /// Get a specific campaign given the campaign ID.
-///  @param adAccountId Unique identifier of an ad account. 
-///
 ///  @param campaignId Campaign ID, must be associated with the ad account ID provided in the path. 
 ///
-///  @returns OAICampaignResponse*
+///  @param adAccountId Unique identifier of an ad account. 
 ///
--(NSURLSessionTask*) campaignsGetWithAdAccountId: (NSString*) adAccountId
-    campaignId: (NSString*) campaignId
-    completionHandler: (void (^)(OAICampaignResponse* output, NSError* error)) handler {
-    // verify the required parameter 'adAccountId' is set
-    if (adAccountId == nil) {
-        NSParameterAssert(adAccountId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
-            NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
+///  @returns OAICampaign*
+///
+-(NSURLSessionTask*) campaignsGetWithCampaignId: (NSString*) campaignId
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAICampaign* output, NSError* error)) handler {
     // verify the required parameter 'campaignId' is set
     if (campaignId == nil) {
         NSParameterAssert(campaignId);
@@ -768,14 +761,25 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/campaigns/{campaign_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (adAccountId != nil) {
-        pathParams[@"ad_account_id"] = adAccountId;
-    }
     if (campaignId != nil) {
         pathParams[@"campaign_id"] = campaignId;
+    }
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -811,37 +815,37 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICampaignResponse*"
+                              responseType: @"OAICampaign*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICampaignResponse*)data, error);
+                                    handler((OAICampaign*)data, error);
                                 }
                             }];
 }
 
 ///
 /// List campaigns
-/// Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+/// Get a list of the campaigns in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
 ///  @param adAccountId Unique identifier of an ad account. 
+///
+///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
+///  @param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///
 ///  @param campaignIds List of Campaign Ids to use to filter the results. (optional)
 ///
 ///  @param entityStatuses Entity status (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
-///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-///
-///  @param bookmark Cursor used to fetch the next page of items (optional)
-///
 ///  @returns OAICampaignsList200Response*
 ///
 -(NSURLSessionTask*) campaignsListWithAdAccountId: (NSString*) adAccountId
-    campaignIds: (NSArray<NSString*>*) campaignIds
-    entityStatuses: (NSArray<NSString*>*) entityStatuses
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
+    campaignIds: (NSArray<NSString*>*) campaignIds
+    entityStatuses: (NSArray<OAIEntityStatus>*) entityStatuses
     completionHandler: (void (^)(OAICampaignsList200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -862,11 +866,8 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    if (campaignIds != nil) {
-        queryParams[@"campaign_ids"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: campaignIds format: @"multi"];
-    }
-    if (entityStatuses != nil) {
-        queryParams[@"entity_statuses"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: entityStatuses format: @"multi"];
+    if (bookmark != nil) {
+        queryParams[@"bookmark"] = bookmark;
     }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
@@ -874,8 +875,11 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
     if (order != nil) {
         queryParams[@"order"] = order;
     }
-    if (bookmark != nil) {
-        queryParams[@"bookmark"] = bookmark;
+    if (campaignIds != nil) {
+        queryParams[@"campaign_ids"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: campaignIds format: @"multi"];
+    }
+    if (entityStatuses != nil) {
+        queryParams[@"entity_statuses"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: entityStatuses format: @"multi"];
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -919,16 +923,16 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
 
 ///
 /// Update campaigns
-/// <p>Update multiple ad campaigns based on campaign_ids. </p> <p><strong>Note:</strong></p> - <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+/// Update multiple ad campaigns based on campaign_ids.  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param campaignUpdateRequest Array of campaigns. 
+///  @param campaignBatchUpdateItem  
 ///
-///  @returns OAICampaignUpdateResponse*
+///  @returns OAICampaignBatchWriteResponseModel*
 ///
 -(NSURLSessionTask*) campaignsUpdateWithAdAccountId: (NSString*) adAccountId
-    campaignUpdateRequest: (NSArray<OAICampaignUpdateRequest>*) campaignUpdateRequest
-    completionHandler: (void (^)(OAICampaignUpdateResponse* output, NSError* error)) handler {
+    campaignBatchUpdateItem: (NSArray<OAICampaignBatchUpdateItem>*) campaignBatchUpdateItem
+    completionHandler: (void (^)(OAICampaignBatchWriteResponseModel* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -940,11 +944,11 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'campaignUpdateRequest' is set
-    if (campaignUpdateRequest == nil) {
-        NSParameterAssert(campaignUpdateRequest);
+    // verify the required parameter 'campaignBatchUpdateItem' is set
+    if (campaignBatchUpdateItem == nil) {
+        NSParameterAssert(campaignBatchUpdateItem);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"campaignUpdateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"campaignBatchUpdateItem"] };
             NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -979,7 +983,7 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = campaignUpdateRequest;
+    bodyParam = campaignBatchUpdateItem;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -992,10 +996,93 @@ NSInteger kOAICampaignsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICampaignUpdateResponse*"
+                              responseType: @"OAICampaignBatchWriteResponseModel*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICampaignUpdateResponse*)data, error);
+                                    handler((OAICampaignBatchWriteResponseModel*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Get campaign delivery estimates
+/// Get delivery estimates for an ads campaign  **This endpoint is currently in beta and is not available to all apps [Learn more](/docs/new/about-beta-access/).**
+///  @param adAccountId Unique identifier of an ad account. 
+///
+///  @param campaignDeliveryEstimatesCampaign  
+///
+///  @returns OAICampaignDeliveryEstimatesResponse*
+///
+-(NSURLSessionTask*) getCampaignDeliveryEstimatesWithAdAccountId: (NSString*) adAccountId
+    campaignDeliveryEstimatesCampaign: (NSArray<OAICampaignDeliveryEstimatesCampaign>*) campaignDeliveryEstimatesCampaign
+    completionHandler: (void (^)(OAICampaignDeliveryEstimatesResponse* output, NSError* error)) handler {
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'campaignDeliveryEstimatesCampaign' is set
+    if (campaignDeliveryEstimatesCampaign == nil) {
+        NSParameterAssert(campaignDeliveryEstimatesCampaign);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"campaignDeliveryEstimatesCampaign"] };
+            NSError* error = [NSError errorWithDomain:kOAICampaignsApiErrorDomain code:kOAICampaignsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/campaigns/delivery_estimates"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = campaignDeliveryEstimatesCampaign;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAICampaignDeliveryEstimatesResponse*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAICampaignDeliveryEstimatesResponse*)data, error);
                                 }
                             }];
 }

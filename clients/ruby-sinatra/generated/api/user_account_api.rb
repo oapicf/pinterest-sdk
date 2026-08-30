@@ -5,23 +5,15 @@ MyApp.add_route('GET', '/v5/user_account/following/boards', {
   "resourcePath" => "/UserAccount",
   "summary" => "List following boards",
   "nickname" => "boards_user_follows/list",
-  "responseClass" => "boards_user_follows_list_200_response",
+  "responseClass" => "boards_list_200_response",
   "endpoint" => "/user_account/following/boards",
   "notes" => "Get a list of the boards a user follows. The request returns a board summary object array.",
   "parameters" => [
     {
-      "name" => "bookmark",
-      "description" => "Cursor used to fetch the next page of items",
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
       "dataType" => "String",
       "allowableValues" => "",
-      "paramType" => "query",
-    },
-    {
-      "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
-      "dataType" => "Integer",
-      "allowableValues" => "",
-      "defaultValue" => "25",
       "paramType" => "query",
     },
     {
@@ -33,10 +25,18 @@ MyApp.add_route('GET', '/v5/user_account/following/boards', {
       "paramType" => "query",
     },
     {
-      "name" => "ad_account_id",
-      "description" => "Unique identifier of an ad account.",
+      "name" => "bookmark",
+      "description" => "Cursor used to fetch the next page of items",
       "dataType" => "String",
       "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "page_size",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "defaultValue" => "25",
       "paramType" => "query",
     },
     ]}) do
@@ -51,9 +51,9 @@ MyApp.add_route('POST', '/v5/user_account/following/{username}', {
   "resourcePath" => "/UserAccount",
   "summary" => "Follow user",
   "nickname" => "follow_user/update",
-  "responseClass" => "UserSummary",
+  "responseClass" => "FollowUser",
   "endpoint" => "/user_account/following/{username}",
-  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.",
+  "notes" => "**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.",
   "parameters" => [
     {
       "name" => "username",
@@ -63,8 +63,8 @@ MyApp.add_route('POST', '/v5/user_account/following/{username}', {
     },
     {
       "name" => "body",
-      "description" => "Follow a user.",
-      "dataType" => "FollowUserRequest",
+      "description" => "",
+      "dataType" => "FollowUserCreate",
       "paramType" => "body",
     }
     ]}) do
@@ -92,7 +92,7 @@ MyApp.add_route('GET', '/v5/user_account/followers', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -126,9 +126,9 @@ MyApp.add_route('DELETE', '/v5/user_account/websites', {
   "resourcePath" => "/UserAccount",
   "summary" => "Unverify website",
   "nickname" => "unverify_website/delete",
-  "responseClass" => "void",
+  "responseClass" => "UserWebsite",
   "endpoint" => "/user_account/websites",
-  "notes" => "Unverifu a website verified by the signed-in user.",
+  "notes" => "Unverify a website verified by the signed-in user.",
   "parameters" => [
     {
       "name" => "website",
@@ -209,8 +209,8 @@ MyApp.add_route('GET', '/v5/user_account/analytics', {
     },
     {
       "name" => "metric_types",
-      "description" => "Metric types to get data for, default is all. ",
-      "dataType" => "Array<String>",
+      "description" => "Metric types to get data for, default is all.",
+      "dataType" => "Array<QuerymetrictypesItems>",
       "collectionFormat" => "csv",
       "paramType" => "query",
     },
@@ -262,8 +262,8 @@ MyApp.add_route('GET', '/v5/user_account/analytics/top_pins', {
     {
       "name" => "sort_by",
       "description" => "Specify sorting order for metrics",
-      "dataType" => "String",
-      "allowableValues" => "[ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE]",
+      "dataType" => "TopPinsSortBy",
+      "allowableValues" => "[ENGAGEMENT, SAVE, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK]",
       "paramType" => "query",
     },
     {
@@ -308,8 +308,8 @@ MyApp.add_route('GET', '/v5/user_account/analytics/top_pins', {
     },
     {
       "name" => "metric_types",
-      "description" => "Metric types to get data for, default is all. ",
-      "dataType" => "Array<String>",
+      "description" => "Metric types to get data for, default is all.",
+      "dataType" => "Array<QuerymetrictypesItems>",
       "collectionFormat" => "csv",
       "paramType" => "query",
     },
@@ -324,7 +324,7 @@ MyApp.add_route('GET', '/v5/user_account/analytics/top_pins', {
     {
       "name" => "created_in_last_n_days",
       "description" => "Get metrics for pins created in the last \&quot;n\&quot; days.",
-      "dataType" => "Integer",
+      "dataType" => "Float",
       "allowableValues" => "[30]",
       "paramType" => "query",
     },
@@ -368,8 +368,8 @@ MyApp.add_route('GET', '/v5/user_account/analytics/top_video_pins', {
     {
       "name" => "sort_by",
       "description" => "Specify sorting order for video metrics",
-      "dataType" => "String",
-      "allowableValues" => "[IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START]",
+      "dataType" => "TopVideoPinsSortBy",
+      "allowableValues" => "[SAVE, IMPRESSION, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START]",
       "paramType" => "query",
     },
     {
@@ -414,8 +414,8 @@ MyApp.add_route('GET', '/v5/user_account/analytics/top_video_pins', {
     },
     {
       "name" => "metric_types",
-      "description" => "Metric types to get video data for, default is all. ",
-      "dataType" => "Array<String>",
+      "description" => "Metric types to get video data for, default is all.",
+      "dataType" => "Array<QueryvideopinmetrictypesItems>",
       "collectionFormat" => "csv",
       "paramType" => "query",
     },
@@ -430,7 +430,7 @@ MyApp.add_route('GET', '/v5/user_account/analytics/top_video_pins', {
     {
       "name" => "created_in_last_n_days",
       "description" => "Get metrics for pins created in the last \&quot;n\&quot; days.",
-      "dataType" => "Integer",
+      "dataType" => "Float",
       "allowableValues" => "[30]",
       "paramType" => "query",
     },
@@ -466,7 +466,7 @@ MyApp.add_route('GET', '/v5/users/{username}/interests/follow', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -492,7 +492,7 @@ MyApp.add_route('GET', '/v5/user_account', {
   "nickname" => "user_account/get",
   "responseClass" => "Account",
   "endpoint" => "/user_account",
-  "notes" => "Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.",
+  "notes" => "Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -513,31 +513,15 @@ MyApp.add_route('GET', '/v5/user_account/following', {
   "resourcePath" => "/UserAccount",
   "summary" => "List following",
   "nickname" => "user_following/get",
-  "responseClass" => "user_following_get_200_response",
+  "responseClass" => "followers_list_200_response",
   "endpoint" => "/user_account/following",
   "notes" => "Get a list of who a certain user follows.",
   "parameters" => [
     {
-      "name" => "bookmark",
-      "description" => "Cursor used to fetch the next page of items",
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
       "dataType" => "String",
       "allowableValues" => "",
-      "paramType" => "query",
-    },
-    {
-      "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
-      "dataType" => "Integer",
-      "allowableValues" => "",
-      "defaultValue" => "25",
-      "paramType" => "query",
-    },
-    {
-      "name" => "feed_type",
-      "description" => "Thrift param specifying what type of followees will be kept. Default to include all followees.",
-      "dataType" => "UserFollowingFeedType",
-      "allowableValues" => "[ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY]",
-      "defaultValue" => "'ALL'",
       "paramType" => "query",
     },
     {
@@ -549,10 +533,26 @@ MyApp.add_route('GET', '/v5/user_account/following', {
       "paramType" => "query",
     },
     {
-      "name" => "ad_account_id",
-      "description" => "Unique identifier of an ad account.",
+      "name" => "feed_type",
+      "description" => "Thrift param specifying what type of followees will be kept. Default to include all followees.",
+      "dataType" => "UserFollowingFeedType",
+      "allowableValues" => "[ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY]",
+      "defaultValue" => "'ALL'",
+      "paramType" => "query",
+    },
+    {
+      "name" => "bookmark",
+      "description" => "Cursor used to fetch the next page of items",
       "dataType" => "String",
       "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "page_size",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "defaultValue" => "25",
       "paramType" => "query",
     },
     ]}) do
@@ -580,7 +580,7 @@ MyApp.add_route('GET', '/v5/user_account/websites', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -598,7 +598,7 @@ MyApp.add_route('POST', '/v5/user_account/websites', {
   "resourcePath" => "/UserAccount",
   "summary" => "Verify website",
   "nickname" => "verify_website/update",
-  "responseClass" => "UserWebsiteSummary",
+  "responseClass" => "UserWebsite",
   "endpoint" => "/user_account/websites",
   "notes" => "Verify a website as a signed-in user.",
   "parameters" => [
@@ -611,8 +611,8 @@ MyApp.add_route('POST', '/v5/user_account/websites', {
     },
     {
       "name" => "body",
-      "description" => "Verify a website.",
-      "dataType" => "UserWebsiteVerifyRequest",
+      "description" => "",
+      "dataType" => "UserWebsiteCreate",
       "paramType" => "body",
     }
     ]}) do
@@ -627,7 +627,7 @@ MyApp.add_route('GET', '/v5/user_account/websites/verification', {
   "resourcePath" => "/UserAccount",
   "summary" => "Get user verification code for website claiming",
   "nickname" => "website_verification/get",
-  "responseClass" => "UserWebsiteVerificationCode",
+  "responseClass" => "UserWebsiteVerification",
   "endpoint" => "/user_account/websites/verification",
   "notes" => "Get verification code for user to install on the website to claim it.",
   "parameters" => [

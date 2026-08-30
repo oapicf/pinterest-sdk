@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdGroupAudienceSizingKeyword",
+  "fields": [
+    {
+      "name": "match_type",
+      "type": "model.MatchType",
+      "doc": ""
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": "Keyword value (120 chars max)."
+    }
+  ]
+
+}

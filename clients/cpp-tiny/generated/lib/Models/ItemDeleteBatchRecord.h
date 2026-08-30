@@ -51,7 +51,7 @@ public:
 
 	/*! \brief Set The catalog item id in the merchant namespace
 	 */
-	void setItemId(std::string  item_id);
+	void setItemId(std::string item_id);
 
 
     private:

@@ -14,11 +14,11 @@ static media_t *media_create_internal(
     if (!media_local_var) {
         return NULL;
     }
+    memset(media_local_var, 0, sizeof(media_t));
+    media_local_var->_library_owned = 1;
     media_local_var->media_id = media_id;
     media_local_var->media_type = media_type;
     media_local_var->status = status;
-
-    media_local_var->_library_owned = 1;
     return media_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) media_t *media_create(
     media_upload_type_t *media_type,
     media_upload_status_t *status
     ) {
-    return media_create_internal (
+    media_t *result = media_create_internal (
         media_id,
         media_type,
         status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void media_free(media_t *media) {
@@ -108,6 +111,8 @@ media_t *media_parseFromJSON(cJSON *mediaJSON){
 
     media_t *media_local_var = NULL;
 
+    char *media_id_local_str = NULL;
+
     // define the local variable for media->media_type
     media_upload_type_t *media_type_local_nonprim = NULL;
 
@@ -151,14 +156,24 @@ media_t *media_parseFromJSON(cJSON *mediaJSON){
     }
 
 
+    if (media_id && !cJSON_IsNull(media_id)) media_id_local_str = strdup(media_id->valuestring);
+
     media_local_var = media_create_internal (
-        strdup(media_id->valuestring),
+        media_id_local_str,
         media_type_local_nonprim,
         status ? status_local_nonprim : NULL
         );
 
+    if (!media_local_var) {
+        goto end;
+    }
+
     return media_local_var;
 end:
+    if (media_id_local_str) {
+        free(media_id_local_str);
+        media_id_local_str = NULL;
+    }
     if (media_type_local_nonprim) {
         media_upload_type_free(media_type_local_nonprim);
         media_type_local_nonprim = NULL;

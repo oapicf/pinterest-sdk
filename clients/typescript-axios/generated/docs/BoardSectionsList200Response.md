@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;BoardSection&gt;**](BoardSection.md) | Board sections | [default to undefined]
+**items** | [**Array&lt;BoardSection&gt;**](BoardSection.md) |  | [default to undefined]
 
 ## Example
 

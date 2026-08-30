@@ -13,48 +13,13 @@ part of openapi.api;
 class InviteBusinessRoleBinding {
   /// Returns a new [InviteBusinessRoleBinding] instance.
   InviteBusinessRoleBinding({
+    this.createdByBusinessId,
+    this.createdByUserId,
     this.id,
     this.inviteData,
     this.isReceivedInvite,
     this.user,
-    this.createdByBusinessId,
-    this.createdByUserId,
   });
-
-  /// Unique identifier of the invite/request.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? id;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  BaseInviteDataResponseInviteData? inviteData;
-
-  /// Indicates whether the invite/request was received.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? isReceivedInvite;
-
-  /// Metadata for the user that updated the invite/request.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  Object? user;
 
   /// Unique identifier for the business that created the invite/request.
   ///
@@ -74,30 +39,75 @@ class InviteBusinessRoleBinding {
   ///
   String? createdByUserId;
 
+  /// Unique identifier of the invite/request.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? id;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  InviteDataResponse? inviteData;
+
+  /// Indicates whether the invite/request was received.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isReceivedInvite;
+
+  /// Metadata for the member/partner that was sent the invite/request.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  BusinessAccessUserSummary? user;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is InviteBusinessRoleBinding &&
+    other.createdByBusinessId == createdByBusinessId &&
+    other.createdByUserId == createdByUserId &&
     other.id == id &&
     other.inviteData == inviteData &&
     other.isReceivedInvite == isReceivedInvite &&
-    other.user == user &&
-    other.createdByBusinessId == createdByBusinessId &&
-    other.createdByUserId == createdByUserId;
+    other.user == user;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (createdByBusinessId == null ? 0 : createdByBusinessId!.hashCode) +
+    (createdByUserId == null ? 0 : createdByUserId!.hashCode) +
     (id == null ? 0 : id!.hashCode) +
     (inviteData == null ? 0 : inviteData!.hashCode) +
     (isReceivedInvite == null ? 0 : isReceivedInvite!.hashCode) +
-    (user == null ? 0 : user!.hashCode) +
-    (createdByBusinessId == null ? 0 : createdByBusinessId!.hashCode) +
-    (createdByUserId == null ? 0 : createdByUserId!.hashCode);
+    (user == null ? 0 : user!.hashCode);
 
   @override
-  String toString() => 'InviteBusinessRoleBinding[id=$id, inviteData=$inviteData, isReceivedInvite=$isReceivedInvite, user=$user, createdByBusinessId=$createdByBusinessId, createdByUserId=$createdByUserId]';
+  String toString() => 'InviteBusinessRoleBinding[createdByBusinessId=$createdByBusinessId, createdByUserId=$createdByUserId, id=$id, inviteData=$inviteData, isReceivedInvite=$isReceivedInvite, user=$user]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.createdByBusinessId != null) {
+      json[r'created_by_business_id'] = this.createdByBusinessId;
+    } else {
+      json[r'created_by_business_id'] = null;
+    }
+    if (this.createdByUserId != null) {
+      json[r'created_by_user_id'] = this.createdByUserId;
+    } else {
+      json[r'created_by_user_id'] = null;
+    }
     if (this.id != null) {
       json[r'id'] = this.id;
     } else {
@@ -118,16 +128,6 @@ class InviteBusinessRoleBinding {
     } else {
       json[r'user'] = null;
     }
-    if (this.createdByBusinessId != null) {
-      json[r'created_by_business_id'] = this.createdByBusinessId;
-    } else {
-      json[r'created_by_business_id'] = null;
-    }
-    if (this.createdByUserId != null) {
-      json[r'created_by_user_id'] = this.createdByUserId;
-    } else {
-      json[r'created_by_user_id'] = null;
-    }
     return json;
   }
 
@@ -142,20 +142,16 @@ class InviteBusinessRoleBinding {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "InviteBusinessRoleBinding[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "InviteBusinessRoleBinding[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return InviteBusinessRoleBinding(
-        id: mapValueOfType<String>(json, r'id'),
-        inviteData: BaseInviteDataResponseInviteData.fromJson(json[r'invite_data']),
-        isReceivedInvite: mapValueOfType<bool>(json, r'is_received_invite'),
-        user: mapValueOfType<Object>(json, r'user'),
         createdByBusinessId: mapValueOfType<String>(json, r'created_by_business_id'),
         createdByUserId: mapValueOfType<String>(json, r'created_by_user_id'),
+        id: mapValueOfType<String>(json, r'id'),
+        inviteData: InviteDataResponse.fromJson(json[r'invite_data']),
+        isReceivedInvite: mapValueOfType<bool>(json, r'is_received_invite'),
+        user: BusinessAccessUserSummary.fromJson(json[r'user']),
       );
     }
     return null;

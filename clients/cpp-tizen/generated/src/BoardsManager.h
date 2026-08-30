@@ -9,13 +9,14 @@
 #include "BoardCreate.h"
 #include "BoardPrivacyFilter.h"
 #include "BoardSection.h"
+#include "BoardSectionCreate.h"
+#include "BoardSectionUpdateWithRequiredBody.h"
 #include "BoardWithUpdatePrivacy.h"
 #include "BoardWithUpdatePrivacyUpdate.h"
 #include "Board_sections_list_200_response.h"
 #include "Boards_list_200_response.h"
 #include "Boards_list_pins_200_response.h"
 #include "CreativeType.h"
-#include "Error.h"
 #include "Pinterest.Lib.Error.h"
 #include <list>
 #include "Error.h"
@@ -40,14 +41,14 @@ public:
  *
  * Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
  * \param boardId Unique identifier of a board. *Required*
- * \param boardSection Create a board section. *Required*
+ * \param boardSectionCreate  *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool boardSectionsCreateSync(char * accessToken,
-	std::string boardId, std::shared_ptr<BoardSection> boardSection, std::string adAccountId, 
+	std::string boardId, std::shared_ptr<BoardSectionCreate> boardSectionCreate, std::string adAccountId, 
 	void(* handler)(BoardSection, Error, void* )
 	, void* userData);
 
@@ -55,14 +56,14 @@ bool boardSectionsCreateSync(char * accessToken,
  *
  * Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
  * \param boardId Unique identifier of a board. *Required*
- * \param boardSection Create a board section. *Required*
+ * \param boardSectionCreate  *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool boardSectionsCreateAsync(char * accessToken,
-	std::string boardId, std::shared_ptr<BoardSection> boardSection, std::string adAccountId, 
+	std::string boardId, std::shared_ptr<BoardSectionCreate> boardSectionCreate, std::string adAccountId, 
 	void(* handler)(BoardSection, Error, void* )
 	, void* userData);
 
@@ -79,8 +80,8 @@ bool boardSectionsCreateAsync(char * accessToken,
  */
 bool boardSectionsDeleteSync(char * accessToken,
 	std::string boardId, std::string sectionId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(BoardSection, Error, void* )
+	, void* userData);
 
 /*! \brief Delete board section. *Asynchronous*
  *
@@ -94,8 +95,8 @@ bool boardSectionsDeleteSync(char * accessToken,
  */
 bool boardSectionsDeleteAsync(char * accessToken,
 	std::string boardId, std::string sectionId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(BoardSection, Error, void* )
+	, void* userData);
 
 
 /*! \brief List board sections. *Synchronous*
@@ -104,7 +105,7 @@ bool boardSectionsDeleteAsync(char * accessToken,
  * \param boardId Unique identifier of a board. *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -120,7 +121,7 @@ bool boardSectionsListSync(char * accessToken,
  * \param boardId Unique identifier of a board. *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -138,7 +139,7 @@ bool boardSectionsListAsync(char * accessToken,
  * \param sectionId Unique identifier of a board section. *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -155,7 +156,7 @@ bool boardSectionsListPinsSync(char * accessToken,
  * \param sectionId Unique identifier of a board section. *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -171,14 +172,14 @@ bool boardSectionsListPinsAsync(char * accessToken,
  * Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
  * \param boardId Unique identifier of a board. *Required*
  * \param sectionId Unique identifier of a board section. *Required*
- * \param boardSection Update a board section. *Required*
+ * \param boardSectionUpdateWithRequiredBody  *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool boardSectionsUpdateSync(char * accessToken,
-	std::string boardId, std::string sectionId, std::shared_ptr<BoardSection> boardSection, std::string adAccountId, 
+	std::string boardId, std::string sectionId, std::shared_ptr<BoardSectionUpdateWithRequiredBody> boardSectionUpdateWithRequiredBody, std::string adAccountId, 
 	void(* handler)(BoardSection, Error, void* )
 	, void* userData);
 
@@ -187,14 +188,14 @@ bool boardSectionsUpdateSync(char * accessToken,
  * Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
  * \param boardId Unique identifier of a board. *Required*
  * \param sectionId Unique identifier of a board section. *Required*
- * \param boardSection Update a board section. *Required*
+ * \param boardSectionUpdateWithRequiredBody  *Required*
  * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool boardSectionsUpdateAsync(char * accessToken,
-	std::string boardId, std::string sectionId, std::shared_ptr<BoardSection> boardSection, std::string adAccountId, 
+	std::string boardId, std::string sectionId, std::shared_ptr<BoardSectionUpdateWithRequiredBody> boardSectionUpdateWithRequiredBody, std::string adAccountId, 
 	void(* handler)(BoardSection, Error, void* )
 	, void* userData);
 
@@ -239,8 +240,8 @@ bool boardsCreateAsync(char * accessToken,
  */
 bool boardsDeleteSync(char * accessToken,
 	std::string boardId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(Board, Error, void* )
+	, void* userData);
 
 /*! \brief Delete board. *Asynchronous*
  *
@@ -253,8 +254,8 @@ bool boardsDeleteSync(char * accessToken,
  */
 bool boardsDeleteAsync(char * accessToken,
 	std::string boardId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(Board, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get board. *Synchronous*
@@ -323,17 +324,17 @@ bool boardsListAsync(char * accessToken,
  *
  * Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
  * \param boardId Unique identifier of a board. *Required*
- * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
  * \param adAccountId Unique identifier of an ad account.
  * \param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool boardsListPinsSync(char * accessToken,
-	std::string boardId, std::string bookmark, int pageSize, std::list<CreativeType> creativeTypes, std::string adAccountId, bool pinMetrics, 
+	std::string boardId, std::list<CreativeType> creativeTypes, std::string adAccountId, bool pinMetrics, std::string bookmark, int pageSize, 
 	void(* handler)(Boards_list_pins_200_response, Error, void* )
 	, void* userData);
 
@@ -341,17 +342,17 @@ bool boardsListPinsSync(char * accessToken,
  *
  * Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
  * \param boardId Unique identifier of a board. *Required*
- * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
  * \param adAccountId Unique identifier of an ad account.
  * \param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool boardsListPinsAsync(char * accessToken,
-	std::string boardId, std::string bookmark, int pageSize, std::list<CreativeType> creativeTypes, std::string adAccountId, bool pinMetrics, 
+	std::string boardId, std::list<CreativeType> creativeTypes, std::string adAccountId, bool pinMetrics, std::string bookmark, int pageSize, 
 	void(* handler)(Boards_list_pins_200_response, Error, void* )
 	, void* userData);
 

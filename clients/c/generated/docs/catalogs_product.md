@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **catalogs_type_t \*** |  | 
+**catalog_type** | **pinterest_rest_api_catalogs_product_CATALOGTYPE_e** |  | 
 **metadata** | [**catalogs_creative_assets_product_metadata_t**](catalogs_creative_assets_product_metadata.md) \* |  | 
 **pin** | [**pin_t**](pin.md) \* |  | 
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.UserWebsiteSummary;
+import org.openapitools.model.UserWebsite;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,17 +22,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("user_websites_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UserWebsitesGet200Response   {
   private String bookmark;
-  private @Valid List<@Valid UserWebsiteSummary> items = new ArrayList<>();
+  private @Valid List<@Valid UserWebsite> items = new ArrayList<>();
 
   public UserWebsitesGet200Response() {
   }
 
   @JsonCreator
   public UserWebsitesGet200Response(
-    @JsonProperty(required = true, value = "items") List<@Valid UserWebsiteSummary> items
+    @JsonProperty(required = true, value = "items") List<@Valid UserWebsite> items
   ) {
     this.items = items;
   }
@@ -58,7 +58,7 @@ public class UserWebsitesGet200Response   {
 
   /**
    **/
-  public UserWebsitesGet200Response items(List<@Valid UserWebsiteSummary> items) {
+  public UserWebsitesGet200Response items(List<@Valid UserWebsite> items) {
     this.items = items;
     return this;
   }
@@ -66,16 +66,16 @@ public class UserWebsitesGet200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid public List<@Valid UserWebsiteSummary> getItems() {
+  @NotNull @Valid public List<@Valid UserWebsite> getItems() {
     return items;
   }
 
   @JsonProperty(required = true, value = "items")
-  public void setItems(List<@Valid UserWebsiteSummary> items) {
+  public void setItems(List<@Valid UserWebsite> items) {
     this.items = items;
   }
 
-  public UserWebsitesGet200Response addItemsItem(UserWebsiteSummary itemsItem) {
+  public UserWebsitesGet200Response addItemsItem(UserWebsite itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -84,7 +84,7 @@ public class UserWebsitesGet200Response   {
     return this;
   }
 
-  public UserWebsitesGet200Response removeItemsItem(UserWebsiteSummary itemsItem) {
+  public UserWebsitesGet200Response removeItemsItem(UserWebsite itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }
@@ -126,12 +126,8 @@ public class UserWebsitesGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

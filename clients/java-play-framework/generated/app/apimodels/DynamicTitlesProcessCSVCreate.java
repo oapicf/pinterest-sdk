@@ -1,0 +1,74 @@
+package apimodels;
+
+import com.fasterxml.jackson.annotation.*;
+import java.util.Set;
+import javax.validation.*;
+import java.util.Objects;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+/**
+ * Resource create operation model.
+ */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
+public class DynamicTitlesProcessCSVCreate   {
+  @JsonProperty("request_id")
+  @NotNull
+
+  private String requestId;
+
+  public DynamicTitlesProcessCSVCreate requestId(String requestId) {
+    this.requestId = requestId;
+    return this;
+  }
+
+   /**
+   * The request_id returned from the GET uploads endpoint.
+   * @return requestId
+  **/
+  public String getRequestId() {
+    return requestId;
+  }
+
+  public void setRequestId(String requestId) {
+    this.requestId = requestId;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate = (DynamicTitlesProcessCSVCreate) o;
+    return Objects.equals(requestId, dynamicTitlesProcessCSVCreate.requestId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(requestId);
+  }
+
+  @SuppressWarnings("StringBufferReplaceableByString")
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class DynamicTitlesProcessCSVCreate {\n");
+    
+    sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

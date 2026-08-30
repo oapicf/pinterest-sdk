@@ -8,25 +8,22 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.LabelCreateRequestLabelsInner;
+import org.openapitools.model.LabelCreateItem;
 
 /**
  * LabelCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelCreateRequest   {
   @JsonProperty("labels")
-  private List<@Valid LabelCreateRequestLabelsInner> labels = new ArrayList<>();
+  private List<@Valid LabelCreateItem> labels = new ArrayList<>();
 
-  @JsonProperty("parent_id")
-  private String parentId;
-
-  public LabelCreateRequest labels(List<@Valid LabelCreateRequestLabelsInner> labels) {
+  public LabelCreateRequest labels(List<@Valid LabelCreateItem> labels) {
     this.labels = labels;
     return this;
   }
 
-  public LabelCreateRequest addLabelsItem(LabelCreateRequestLabelsInner labelsItem) {
+  public LabelCreateRequest addLabelsItem(LabelCreateItem labelsItem) {
     this.labels.add(labelsItem);
     return this;
   }
@@ -36,30 +33,12 @@ public class LabelCreateRequest   {
    * @return labels
   **/
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
-  public List<@Valid LabelCreateRequestLabelsInner> getLabels() {
+  public List<@Valid LabelCreateItem> getLabels() {
     return labels;
   }
 
-  public void setLabels(List<@Valid LabelCreateRequestLabelsInner> labels) {
+  public void setLabels(List<@Valid LabelCreateItem> labels) {
     this.labels = labels;
-  }
-
-  public LabelCreateRequest parentId(String parentId) {
-    this.parentId = parentId;
-    return this;
-  }
-
-   /**
-   * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-   * @return parentId
-  **/
-  @ApiModelProperty(example = "626753052072", required = true, value = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
-  public String getParentId() {
-    return parentId;
-  }
-
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
   }
 
 
@@ -72,13 +51,12 @@ public class LabelCreateRequest   {
       return false;
     }
     LabelCreateRequest labelCreateRequest = (LabelCreateRequest) o;
-    return Objects.equals(this.labels, labelCreateRequest.labels) &&
-        Objects.equals(this.parentId, labelCreateRequest.parentId);
+    return Objects.equals(this.labels, labelCreateRequest.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(labels, parentId);
+    return Objects.hash(labels);
   }
 
   @Override
@@ -87,7 +65,6 @@ public class LabelCreateRequest   {
     sb.append("class LabelCreateRequest {\n");
     
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -97,10 +74,7 @@ public class LabelCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

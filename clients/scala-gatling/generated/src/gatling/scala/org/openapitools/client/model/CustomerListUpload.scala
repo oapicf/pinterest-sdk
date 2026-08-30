@@ -14,9 +14,9 @@ case class CustomerListUpload (
     /* Customer List Upload ID. */
     _id: String,
     _operation: UserListOperationType,
+    /* Record processing counts */
     _recordCounts: Option[RecordCounts],
-    /* Workload processing state */
-    _state: String,
+    _state: WorkloadState,
     /* Customer List Upload updated_time. Epoch (seconds). */
     _updatedTime: Integer
 )

@@ -148,50 +148,57 @@ class _$CatalogsReportFeedIngestionStatsSerializer implements PrimitiveSerialize
         case r'catalog_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.catalogId = valueDes;
           break;
         case r'code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.code = valueDes;
           break;
         case r'code_label':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.codeLabel = valueDes;
           break;
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.message = valueDes;
           break;
         case r'occurrences':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.occurrences = valueDes;
           break;
         case r'report_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsReportFeedIngestionStatsReportTypeEnum),
-          ) as CatalogsReportFeedIngestionStatsReportTypeEnum;
+            specifiedType: const FullType.nullable(CatalogsReportFeedIngestionStatsReportTypeEnum),
+          ) as CatalogsReportFeedIngestionStatsReportTypeEnum?;
+          if (valueDes == null) continue;
           result.reportType = valueDes;
           break;
         case r'severity':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsReportFeedIngestionStatsSeverityEnum),
-          ) as CatalogsReportFeedIngestionStatsSeverityEnum;
+            specifiedType: const FullType.nullable(CatalogsReportFeedIngestionStatsSeverityEnum),
+          ) as CatalogsReportFeedIngestionStatsSeverityEnum?;
+          if (valueDes == null) continue;
           result.severity = valueDes;
           break;
         default:

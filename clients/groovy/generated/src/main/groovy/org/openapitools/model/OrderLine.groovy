@@ -16,6 +16,8 @@ class OrderLine {
     String adAccountId
     /* Order line budget in micro currency. */
     BigDecimal budget
+    /* Associated List of campaign IDs. */
+    List<String> campaignIds = new ArrayList<>()
     /* End time. Unix timestamp. */
     BigDecimal endTime
     /* Order line ID. */
@@ -34,6 +36,4 @@ class OrderLine {
     OrderLineStatus status
     /* Always \"orderline\". */
     String type
-    /* Associated List of campaign IDs. */
-    List<String> campaignIds = new ArrayList<>()
 }

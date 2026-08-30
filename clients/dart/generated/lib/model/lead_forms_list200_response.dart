@@ -19,7 +19,7 @@ class LeadFormsList200Response {
 
   String? bookmark;
 
-  List<LeadFormResponse> items;
+  List<LeadForm> items;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LeadFormsList200Response &&
@@ -57,16 +57,14 @@ class LeadFormsList200Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LeadFormsList200Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LeadFormsList200Response[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'items'), 'Required key "LeadFormsList200Response[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "LeadFormsList200Response[items]" has a null value in JSON.');
         return true;
       }());
 
       return LeadFormsList200Response(
         bookmark: mapValueOfType<String>(json, r'bookmark'),
-        items: LeadFormResponse.listFromJson(json[r'items']),
+        items: LeadForm.listFromJson(json[r'items']),
       );
     }
     return null;

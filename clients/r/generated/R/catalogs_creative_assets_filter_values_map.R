@@ -19,7 +19,7 @@
 #' @field google_product_category_4  list(character) [optional]
 #' @field google_product_category_5  list(character) [optional]
 #' @field google_product_category_6  list(character) [optional]
-#' @field media_type  list(character) [optional]
+#' @field media_type  list(\link{MediaType}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -120,7 +120,7 @@ CatalogsCreativeAssetsFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(`media_type`)) {
         stopifnot(is.vector(`media_type`), length(`media_type`) != 0)
-        sapply(`media_type`, function(x) stopifnot(is.character(x)))
+        sapply(`media_type`, function(x) stopifnot(R6::is.R6(x)))
         self$`media_type` <- `media_type`
       }
     },
@@ -206,9 +206,32 @@ CatalogsCreativeAssetsFilterValuesMap <- R6::R6Class(
       }
       if (!is.null(self$`media_type`)) {
         CatalogsCreativeAssetsFilterValuesMapObject[["media_type"]] <-
-          self$`media_type`
+          self$extractSimpleType(self$`media_type`)
       }
       return(CatalogsCreativeAssetsFilterValuesMapObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -255,7 +278,7 @@ CatalogsCreativeAssetsFilterValuesMap <- R6::R6Class(
         self$`google_product_category_6` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_6`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`media_type`)) {
-        self$`media_type` <- ApiClient$new()$deserializeObj(this_object$`media_type`, "array[character]", loadNamespace("openapi"))
+        self$`media_type` <- ApiClient$new()$deserializeObj(this_object$`media_type`, "array[MediaType]", loadNamespace("openapi"))
       }
       self
     },
@@ -290,7 +313,7 @@ CatalogsCreativeAssetsFilterValuesMap <- R6::R6Class(
       self$`google_product_category_4` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_4`, "array[character]", loadNamespace("openapi"))
       self$`google_product_category_5` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_5`, "array[character]", loadNamespace("openapi"))
       self$`google_product_category_6` <- ApiClient$new()$deserializeObj(this_object$`google_product_category_6`, "array[character]", loadNamespace("openapi"))
-      self$`media_type` <- ApiClient$new()$deserializeObj(this_object$`media_type`, "array[character]", loadNamespace("openapi"))
+      self$`media_type` <- ApiClient$new()$deserializeObj(this_object$`media_type`, "array[MediaType]", loadNamespace("openapi"))
       self
     },
 

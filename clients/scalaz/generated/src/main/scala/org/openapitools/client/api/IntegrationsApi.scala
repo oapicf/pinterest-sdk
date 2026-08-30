@@ -22,14 +22,14 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.Error
-import org.openapitools.client.api.IntegrationLogsRequest
+import org.openapitools.client.api.IntegrationLogsInvalidLogResponse
+import org.openapitools.client.api.IntegrationLogsRequestCreate
 import org.openapitools.client.api.IntegrationLogsSuccessResponse
 import org.openapitools.client.api.IntegrationMetadata
+import org.openapitools.client.api.IntegrationMetadataCreate
+import org.openapitools.client.api.IntegrationMetadataUpdate
 import org.openapitools.client.api.IntegrationRecord
-import org.openapitools.client.api.IntegrationRequest
-import org.openapitools.client.api.IntegrationRequestPatch
 import org.openapitools.client.api.IntegrationsGetList200Response
-import org.openapitools.client.api.IntegrationsLogsPost400Response
 
 object IntegrationsApi {
 
@@ -37,7 +37,9 @@ object IntegrationsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def integrationsCommerceDel(host: String, externalBusinessId: String): Task[Unit] = {
+  def integrationsCommerceDel(host: String, externalBusinessId: String): Task[IntegrationMetadata] = {
+    implicit val returnTypeDecoder: EntityDecoder[IntegrationMetadata] = jsonOf[IntegrationMetadata]
+
     val path = "/integrations/commerce/{external_business_id}".replaceAll("\\{" + "external_business_id" + "\\}",escape(externalBusinessId.toString))
 
     val httpMethod = Method.DELETE
@@ -51,7 +53,7 @@ object IntegrationsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[IntegrationMetadata](req)
 
     } yield resp
   }
@@ -77,7 +79,7 @@ object IntegrationsApi {
     } yield resp
   }
 
-  def integrationsCommercePatch(host: String, externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch): Task[IntegrationMetadata] = {
+  def integrationsCommercePatch(host: String, externalBusinessId: String, integrationMetadataUpdate: IntegrationMetadataUpdate): Task[IntegrationMetadata] = {
     implicit val returnTypeDecoder: EntityDecoder[IntegrationMetadata] = jsonOf[IntegrationMetadata]
 
     val path = "/integrations/commerce/{external_business_id}".replaceAll("\\{" + "external_business_id" + "\\}",escape(externalBusinessId.toString))
@@ -92,13 +94,13 @@ object IntegrationsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationRequestPatch)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationMetadataUpdate)
       resp          <- client.expect[IntegrationMetadata](req)
 
     } yield resp
   }
 
-  def integrationsCommercePost(host: String, integrationRequest: IntegrationRequest): Task[IntegrationMetadata] = {
+  def integrationsCommercePost(host: String, integrationMetadataCreate: IntegrationMetadataCreate): Task[IntegrationMetadata] = {
     implicit val returnTypeDecoder: EntityDecoder[IntegrationMetadata] = jsonOf[IntegrationMetadata]
 
     val path = "/integrations/commerce"
@@ -113,7 +115,7 @@ object IntegrationsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationMetadataCreate)
       resp          <- client.expect[IntegrationMetadata](req)
 
     } yield resp
@@ -161,7 +163,7 @@ object IntegrationsApi {
     } yield resp
   }
 
-  def integrationsLogsPost(host: String, integrationLogsRequest: IntegrationLogsRequest): Task[IntegrationLogsSuccessResponse] = {
+  def integrationsLogsPost(host: String, integrationLogsRequestCreate: IntegrationLogsRequestCreate): Task[IntegrationLogsSuccessResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[IntegrationLogsSuccessResponse] = jsonOf[IntegrationLogsSuccessResponse]
 
     val path = "/integrations/logs"
@@ -176,7 +178,7 @@ object IntegrationsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationLogsRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationLogsRequestCreate)
       resp          <- client.expect[IntegrationLogsSuccessResponse](req)
 
     } yield resp
@@ -189,7 +191,9 @@ class HttpServiceIntegrationsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def integrationsCommerceDel(externalBusinessId: String): Task[Unit] = {
+  def integrationsCommerceDel(externalBusinessId: String): Task[IntegrationMetadata] = {
+    implicit val returnTypeDecoder: EntityDecoder[IntegrationMetadata] = jsonOf[IntegrationMetadata]
+
     val path = "/integrations/commerce/{external_business_id}".replaceAll("\\{" + "external_business_id" + "\\}",escape(externalBusinessId.toString))
 
     val httpMethod = Method.DELETE
@@ -203,7 +207,7 @@ class HttpServiceIntegrationsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[IntegrationMetadata](req)
 
     } yield resp
   }
@@ -229,7 +233,7 @@ class HttpServiceIntegrationsApi(service: HttpService) {
     } yield resp
   }
 
-  def integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch): Task[IntegrationMetadata] = {
+  def integrationsCommercePatch(externalBusinessId: String, integrationMetadataUpdate: IntegrationMetadataUpdate): Task[IntegrationMetadata] = {
     implicit val returnTypeDecoder: EntityDecoder[IntegrationMetadata] = jsonOf[IntegrationMetadata]
 
     val path = "/integrations/commerce/{external_business_id}".replaceAll("\\{" + "external_business_id" + "\\}",escape(externalBusinessId.toString))
@@ -244,13 +248,13 @@ class HttpServiceIntegrationsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationRequestPatch)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationMetadataUpdate)
       resp          <- client.expect[IntegrationMetadata](req)
 
     } yield resp
   }
 
-  def integrationsCommercePost(integrationRequest: IntegrationRequest): Task[IntegrationMetadata] = {
+  def integrationsCommercePost(integrationMetadataCreate: IntegrationMetadataCreate): Task[IntegrationMetadata] = {
     implicit val returnTypeDecoder: EntityDecoder[IntegrationMetadata] = jsonOf[IntegrationMetadata]
 
     val path = "/integrations/commerce"
@@ -265,7 +269,7 @@ class HttpServiceIntegrationsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationMetadataCreate)
       resp          <- client.expect[IntegrationMetadata](req)
 
     } yield resp
@@ -313,7 +317,7 @@ class HttpServiceIntegrationsApi(service: HttpService) {
     } yield resp
   }
 
-  def integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest): Task[IntegrationLogsSuccessResponse] = {
+  def integrationsLogsPost(integrationLogsRequestCreate: IntegrationLogsRequestCreate): Task[IntegrationLogsSuccessResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[IntegrationLogsSuccessResponse] = jsonOf[IntegrationLogsSuccessResponse]
 
     val path = "/integrations/logs"
@@ -328,7 +332,7 @@ class HttpServiceIntegrationsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationLogsRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(integrationLogsRequestCreate)
       resp          <- client.expect[IntegrationLogsSuccessResponse](req)
 
     } yield resp

@@ -7,6 +7,7 @@ goog.provide('API.Client.AssetIdPermissions');
 API.Client.AssetIdPermissions = function() {}
 
 /**
+ * An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
  * @type {!API.Client.AssetGroupBinding}
  * @export
  */
@@ -20,8 +21,7 @@ API.Client.AssetIdPermissions.prototype.assetGroupInfo;
 API.Client.AssetIdPermissions.prototype.assetId;
 
 /**
- * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
- * @type {!string}
+ * @type {!API.Client.AssetTypeResponse}
  * @export
  */
 API.Client.AssetIdPermissions.prototype.assetType;

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -110,6 +110,9 @@ func (s *LeadAdsAPIService) AdAccountsSubscriptionsGetById(ctx context.Context, 
 func (s *LeadAdsAPIService) AdAccountsSubscriptionsDelById(ctx context.Context, adAccountId string, subscriptionId string) (ImplResponse, error) {
 	// TODO - update AdAccountsSubscriptionsDelById with the required logic for this service method.
 	// Add api_lead_ads_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, LeadSubscription{}) or use other options such as http.Ok ...
+	// return Response(200, LeadSubscription{}), nil
 
 	// TODO: Uncomment the next line to return response Response(204, {}) or use other options such as http.Ok ...
 	// return Response(204, nil),nil

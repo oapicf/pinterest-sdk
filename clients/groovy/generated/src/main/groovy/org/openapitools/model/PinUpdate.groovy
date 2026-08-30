@@ -6,10 +6,13 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AiDisclosuresUpdate;
 import org.openapitools.model.CarouselSlot;
 
 @Canonical
 class PinUpdate {
+    /* AI disclosure declarations the creator has made about this Pin. */
+    AiDisclosuresUpdate aiDisclosures
     
     String altText
     /* The board to which this Pin belongs. */

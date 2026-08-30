@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &CatalogsCreativeAssetsFeedsUpdateRequest{}
 
 // CatalogsCreativeAssetsFeedsUpdateRequest Request object for updating a feed.
 type CatalogsCreativeAssetsFeedsUpdateRequest struct {
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 	Credentials NullableCatalogsFeedCredentials `json:"credentials,omitempty"`
 	DefaultCurrency NullableNullableCurrency `json:"default_currency,omitempty"`
 	Format *CatalogsFormat `json:"format,omitempty"`
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location *string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
+	Location *string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp)://"`
 	// A human-friendly name associated to a given feed.
 	Name *string `json:"name,omitempty"`
 	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
@@ -40,7 +40,7 @@ type _CatalogsCreativeAssetsFeedsUpdateRequest CatalogsCreativeAssetsFeedsUpdate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsFeedsUpdateRequest(catalogType CatalogsType) *CatalogsCreativeAssetsFeedsUpdateRequest {
+func NewCatalogsCreativeAssetsFeedsUpdateRequest(catalogType string) *CatalogsCreativeAssetsFeedsUpdateRequest {
 	this := CatalogsCreativeAssetsFeedsUpdateRequest{}
 	this.CatalogType = catalogType
 	return &this
@@ -55,9 +55,9 @@ func NewCatalogsCreativeAssetsFeedsUpdateRequestWithDefaults() *CatalogsCreative
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsCreativeAssetsFeedsUpdateRequest) GetCatalogType() CatalogsType {
+func (o *CatalogsCreativeAssetsFeedsUpdateRequest) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsType
+		var ret string
 		return ret
 	}
 
@@ -66,7 +66,7 @@ func (o *CatalogsCreativeAssetsFeedsUpdateRequest) GetCatalogType() CatalogsType
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsFeedsUpdateRequest) GetCatalogTypeOk() (*CatalogsType, bool) {
+func (o *CatalogsCreativeAssetsFeedsUpdateRequest) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *CatalogsCreativeAssetsFeedsUpdateRequest) GetCatalogTypeOk() (*Catalogs
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsCreativeAssetsFeedsUpdateRequest) SetCatalogType(v CatalogsType) {
+func (o *CatalogsCreativeAssetsFeedsUpdateRequest) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 

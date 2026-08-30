@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,6 +16,7 @@ package openapi
 
 type CatalogsUpdatableHotelAttributes struct {
 
+	// Hotel address
 	Address CatalogsHotelAddress `json:"address,omitempty"`
 
 	// Base price of the hotel room per night followed by the ISO currency code
@@ -45,6 +46,7 @@ type CatalogsUpdatableHotelAttributes struct {
 	// Brief description of the hotel.
 	Description *string `json:"description,omitempty"`
 
+	// If specified, you must provide all properties
 	GuestRatings CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
 
 	// Latitude of the hotel.
@@ -66,7 +68,8 @@ type CatalogsUpdatableHotelAttributes struct {
 	SalePrice *string `json:"sale_price,omitempty"`
 }
 
-// AssertCatalogsUpdatableHotelAttributesRequired checks if the required fields are not zero-ed
+// AssertCatalogsUpdatableHotelAttributesRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsUpdatableHotelAttributesRequired(obj CatalogsUpdatableHotelAttributes) error {
 	if err := AssertCatalogsHotelAddressRequired(obj.Address); err != nil {
 		return err

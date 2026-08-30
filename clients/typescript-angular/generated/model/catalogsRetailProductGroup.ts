@@ -14,7 +14,7 @@ import { CatalogsProductGroupFilters } from './catalogsProductGroupFilters';
 
 export interface CatalogsRetailProductGroup { 
     /**
-     * Catalog id pertaining to the retail product group.
+     * Catalog ID pertaining to the product group.
      */
     catalog_id: string;
     catalog_type: CatalogsRetailProductGroup.CatalogTypeEnum;

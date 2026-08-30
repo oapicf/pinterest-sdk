@@ -6,6 +6,7 @@
 import 'package:openapi/src/model/quiz_pin_result.dart';
 import 'package:openapi/src/model/quiz_pin_question.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/tie_breaker_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +18,7 @@ part 'quiz_pin_data.g.dart';
 /// * [questions] 
 /// * [results] 
 /// * [tieBreakerCustomResult] 
-/// * [tieBreakerType] - Quiz ad tie breaker type, default is RANDOM
+/// * [tieBreakerType] 
 @BuiltValue()
 abstract class QuizPinData implements Built<QuizPinData, QuizPinDataBuilder> {
   @BuiltValueField(wireName: r'questions')
@@ -29,9 +30,8 @@ abstract class QuizPinData implements Built<QuizPinData, QuizPinDataBuilder> {
   @BuiltValueField(wireName: r'tie_breaker_custom_result')
   QuizPinResult? get tieBreakerCustomResult;
 
-  /// Quiz ad tie breaker type, default is RANDOM
   @BuiltValueField(wireName: r'tie_breaker_type')
-  QuizPinDataTieBreakerTypeEnum? get tieBreakerType;
+  TieBreakerType? get tieBreakerType;
   // enum tieBreakerTypeEnum {  RANDOM,  CUSTOM,  };
 
   QuizPinData._();
@@ -82,7 +82,7 @@ class _$QuizPinDataSerializer implements PrimitiveSerializer<QuizPinData> {
       yield r'tie_breaker_type';
       yield serializers.serialize(
         object.tieBreakerType,
-        specifiedType: const FullType(QuizPinDataTieBreakerTypeEnum),
+        specifiedType: const FullType(TieBreakerType),
       );
     }
   }
@@ -111,15 +111,17 @@ class _$QuizPinDataSerializer implements PrimitiveSerializer<QuizPinData> {
         case r'questions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType.nullable(QuizPinQuestion)]),
-          ) as BuiltList<QuizPinQuestion?>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType.nullable(QuizPinQuestion)]),
+          ) as BuiltList<QuizPinQuestion?>?;
+          if (valueDes == null) continue;
           result.questions.replace(valueDes);
           break;
         case r'results':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType.nullable(QuizPinResult)]),
-          ) as BuiltList<QuizPinResult?>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType.nullable(QuizPinResult)]),
+          ) as BuiltList<QuizPinResult?>?;
+          if (valueDes == null) continue;
           result.results.replace(valueDes);
           break;
         case r'tie_breaker_custom_result':
@@ -133,8 +135,9 @@ class _$QuizPinDataSerializer implements PrimitiveSerializer<QuizPinData> {
         case r'tie_breaker_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(QuizPinDataTieBreakerTypeEnum),
-          ) as QuizPinDataTieBreakerTypeEnum;
+            specifiedType: const FullType.nullable(TieBreakerType),
+          ) as TieBreakerType?;
+          if (valueDes == null) continue;
           result.tieBreakerType = valueDes;
           break;
         default:
@@ -164,22 +167,5 @@ class _$QuizPinDataSerializer implements PrimitiveSerializer<QuizPinData> {
     );
     return result.build();
   }
-}
-
-class QuizPinDataTieBreakerTypeEnum extends EnumClass {
-
-  /// Quiz ad tie breaker type, default is RANDOM
-  @BuiltValueEnumConst(wireName: r'RANDOM')
-  static const QuizPinDataTieBreakerTypeEnum RANDOM = _$quizPinDataTieBreakerTypeEnum_RANDOM;
-  /// Quiz ad tie breaker type, default is RANDOM
-  @BuiltValueEnumConst(wireName: r'CUSTOM')
-  static const QuizPinDataTieBreakerTypeEnum CUSTOM = _$quizPinDataTieBreakerTypeEnum_CUSTOM;
-
-  static Serializer<QuizPinDataTieBreakerTypeEnum> get serializer => _$quizPinDataTieBreakerTypeEnumSerializer;
-
-  const QuizPinDataTieBreakerTypeEnum._(String name): super(name);
-
-  static BuiltSet<QuizPinDataTieBreakerTypeEnum> get values => _$quizPinDataTieBreakerTypeEnumValues;
-  static QuizPinDataTieBreakerTypeEnum valueOf(String name) => _$quizPinDataTieBreakerTypeEnumValueOf(name);
 }
 

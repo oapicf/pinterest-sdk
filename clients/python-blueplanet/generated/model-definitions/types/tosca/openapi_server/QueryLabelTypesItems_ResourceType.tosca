@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server QueryLabelTypesItems"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a QueryLabelTypesItems"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  QueryLabelTypesItems {
+    title = QueryLabelTypesItems
+    description = QueryLabelTypesItems
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  QueryLabelTypesItems {
+    title = QueryLabelTypesItems
+    description = QueryLabelTypesItems
+    implements = openapi_server.resourceTypes.QueryLabelTypesItems
+
+  }
+}

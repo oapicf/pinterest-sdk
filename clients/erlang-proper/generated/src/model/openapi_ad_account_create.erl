@@ -13,6 +13,7 @@
   | {'currency', openapi_currency:openapi_currency() }
   | {'name', binary() }
   | {'owner_user_id', binary() }
+  | {'time_zone', binary() }
   ].
 
 
@@ -24,6 +25,7 @@ openapi_ad_account_create(Fields) ->
             , {'currency', openapi_currency:openapi_currency() }
             , {'name', binary() }
             , {'owner_user_id', binary() }
+            , {'time_zone', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

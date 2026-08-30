@@ -88,15 +88,17 @@ class _$AdvancedAuctionItemsSerializer implements PrimitiveSerializer<AdvancedAu
         case r'catalog_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.catalogId = valueDes;
           break;
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AdvancedAuctionItem)]),
-          ) as BuiltList<AdvancedAuctionItem>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AdvancedAuctionItem)]),
+          ) as BuiltList<AdvancedAuctionItem>?;
+          if (valueDes == null) continue;
           result.items.replace(valueDes);
           break;
         default:

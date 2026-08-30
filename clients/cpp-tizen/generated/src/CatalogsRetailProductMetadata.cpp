@@ -23,7 +23,7 @@ CatalogsRetailProductMetadata::~CatalogsRetailProductMetadata()
 void
 CatalogsRetailProductMetadata::__init()
 {
-	//availability = new NonNullableProductAvailabilityType();
+	//availability = new ProductAvailability();
 	//currency = new NonNullableCatalogsCurrency();
 	//item_group_id = std::string();
 	//item_id = std::string();
@@ -77,11 +77,11 @@ CatalogsRetailProductMetadata::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("NonNullableProductAvailabilityType")) {
-			jsonToValue(&availability, node, "NonNullableProductAvailabilityType", "NonNullableProductAvailabilityType");
+		if (isprimitive("ProductAvailability")) {
+			jsonToValue(&availability, node, "ProductAvailability", "ProductAvailability");
 		} else {
 			
-			NonNullableProductAvailabilityType* obj = static_cast<NonNullableProductAvailabilityType*> (&availability);
+			ProductAvailability* obj = static_cast<ProductAvailability*> (&availability);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -162,13 +162,13 @@ CatalogsRetailProductMetadata::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("NonNullableProductAvailabilityType")) {
-		NonNullableProductAvailabilityType obj = getAvailability();
-		node = converttoJson(&obj, "NonNullableProductAvailabilityType", "");
+	if (isprimitive("ProductAvailability")) {
+		ProductAvailability obj = getAvailability();
+		node = converttoJson(&obj, "ProductAvailability", "");
 	}
 	else {
 		
-		NonNullableProductAvailabilityType obj = static_cast<NonNullableProductAvailabilityType> (getAvailability());
+		ProductAvailability obj = static_cast<ProductAvailability> (getAvailability());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -244,14 +244,14 @@ CatalogsRetailProductMetadata::toJson()
 	return ret;
 }
 
-NonNullableProductAvailabilityType
+ProductAvailability
 CatalogsRetailProductMetadata::getAvailability()
 {
 	return availability;
 }
 
 void
-CatalogsRetailProductMetadata::setAvailability(NonNullableProductAvailabilityType  availability)
+CatalogsRetailProductMetadata::setAvailability(ProductAvailability  availability)
 {
 	this->availability = availability;
 }

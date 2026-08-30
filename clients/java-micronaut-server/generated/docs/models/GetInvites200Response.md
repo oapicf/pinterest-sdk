@@ -9,7 +9,7 @@ The class is defined in **[GetInvites200Response.java](../../src/main/java/org/o
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;InviteResponse&gt;`](InviteResponse.md) | List of invite and request data. | 
+**items** | [`List&lt;InviteResponse&gt;`](InviteResponse.md) |  | 
 
 
 

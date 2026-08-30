@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data_status** | [**DataStatus**](DataStatus.md) |  | [optional] [default to undefined]
 **date** | **string** | Metrics date (UTC): YYYY-MM-DD. | [optional] [default to undefined]
-**metrics** | **{ [key: string]: number; }** | The metric name and daily value for each requested metric | [optional] [default to undefined]
+**metrics** | **{ [key: string]: number; }** |  | [optional] [default to undefined]
 
 ## Example
 

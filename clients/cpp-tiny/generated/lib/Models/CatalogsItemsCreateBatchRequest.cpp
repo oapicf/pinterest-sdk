@@ -9,7 +9,7 @@ CatalogsItemsCreateBatchRequest::CatalogsItemsCreateBatchRequest()
 	country = Country();
 	items = std::list<ItemCreateBatchRecord>();
 	language = std::string();
-	operation = BatchOperation();
+	operation = std::string();
 }
 
 CatalogsItemsCreateBatchRequest::CatalogsItemsCreateBatchRequest(std::string jsonString)
@@ -84,9 +84,8 @@ CatalogsItemsCreateBatchRequest::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&operation, value, "std::string");
 
-        BatchOperation* obj = &operation;
-		obj->fromJson(value.dump());
 
     }
 
@@ -131,8 +130,8 @@ CatalogsItemsCreateBatchRequest::toJson()
 
 
 
+    object["operation"] = getOperation();
 
-	object["operation"] = getOperation().toJson();
 
 
     return object;
@@ -146,7 +145,7 @@ CatalogsItemsCreateBatchRequest::getCountry()
 }
 
 void
-CatalogsItemsCreateBatchRequest::setCountry(Country  country)
+CatalogsItemsCreateBatchRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -158,7 +157,7 @@ CatalogsItemsCreateBatchRequest::getItems()
 }
 
 void
-CatalogsItemsCreateBatchRequest::setItems(std::list <ItemCreateBatchRecord> items)
+CatalogsItemsCreateBatchRequest::setItems(std::list<ItemCreateBatchRecord> items)
 {
 	this->items = items;
 }
@@ -170,19 +169,19 @@ CatalogsItemsCreateBatchRequest::getLanguage()
 }
 
 void
-CatalogsItemsCreateBatchRequest::setLanguage(std::string  language)
+CatalogsItemsCreateBatchRequest::setLanguage(std::string language)
 {
 	this->language = language;
 }
 
-BatchOperation
+std::string
 CatalogsItemsCreateBatchRequest::getOperation()
 {
 	return operation;
 }
 
 void
-CatalogsItemsCreateBatchRequest::setOperation(BatchOperation  operation)
+CatalogsItemsCreateBatchRequest::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

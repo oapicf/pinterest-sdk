@@ -7,7 +7,7 @@ using namespace Tiny;
 Followers_list_200_response::Followers_list_200_response()
 {
 	bookmark = std::string();
-	items = std::list<UserSummary>();
+	items = std::list<FollowUser>();
 }
 
 Followers_list_200_response::Followers_list_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Followers_list_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<UserSummary> items_list;
-        UserSummary element;
+        std::list<FollowUser> items_list;
+        FollowUser element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Followers_list_200_response::toJson()
 
 
 
-    std::list<UserSummary> items_list = getItems();
+    std::list<FollowUser> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        UserSummary obj = var;
+        FollowUser obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Followers_list_200_response::getBookmark()
 }
 
 void
-Followers_list_200_response::setBookmark(std::string  bookmark)
+Followers_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<UserSummary>
+std::list<FollowUser>
 Followers_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Followers_list_200_response::setItems(std::list <UserSummary> items)
+Followers_list_200_response::setItems(std::list<FollowUser> items)
 {
 	this->items = items;
 }

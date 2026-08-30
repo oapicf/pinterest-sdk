@@ -12,11 +12,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## bulkDownloadCreate
 
-> BulkDownloadResponse bulkDownloadCreate(adAccountId, bulkDownloadRequest)
+> BulkDownload bulkDownloadCreate(adAccountId, bulkDownloadCreate)
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 
@@ -38,8 +38,8 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // BulkDownloadRequest | Parameters to get ad entities in bulk
-    bulkDownloadRequest: ...,
+    // BulkDownloadCreate
+    bulkDownloadCreate: ...,
   } satisfies BulkDownloadCreateRequest;
 
   try {
@@ -60,11 +60,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **bulkDownloadRequest** | [BulkDownloadRequest](BulkDownloadRequest.md) | Parameters to get ad entities in bulk | |
+| **bulkDownloadCreate** | [BulkDownloadCreate](BulkDownloadCreate.md) |  | |
 
 ### Return type
 
-[**BulkDownloadResponse**](BulkDownloadResponse.md)
+[**BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
@@ -79,19 +79,25 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## bulkRequestGet
 
-> BulkUpsertStatusResponse bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
+> BulkJobData bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 
@@ -115,9 +121,9 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // string | Unique identifier of a bulk upsert request.
+    // string | Bulk request ID that is from one of the entities bulk endpoints
     bulkRequestId: bulkRequestId_example,
-    // boolean | if set to True then attach the errors/details to all the requests (optional)
+    // boolean | If set to True then attach the errors/details to all the requests (optional)
     includeDetails: true,
   } satisfies BulkRequestGetRequest;
 
@@ -139,12 +145,12 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **bulkRequestId** | `string` | Unique identifier of a bulk upsert request. | [Defaults to `undefined`] |
-| **includeDetails** | `boolean` | if set to True then attach the errors/details to all the requests | [Optional] [Defaults to `false`] |
+| **bulkRequestId** | `string` | Bulk request ID that is from one of the entities bulk endpoints | [Defaults to `undefined`] |
+| **includeDetails** | `boolean` | If set to True then attach the errors/details to all the requests | [Optional] [Defaults to `false`] |
 
 ### Return type
 
-[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**BulkJobData**](BulkJobData.md)
 
 ### Authorization
 
@@ -159,8 +165,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -171,7 +182,7 @@ example().catch(console.error);
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
 
 ### Example
 
@@ -234,7 +245,7 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | The request has succeeded. |  -  |
 | **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)

@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingSpecOperationAudienceInclude"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingSpecOperationAudienceInclude"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TargetingSpecListOperation = openapi_server.resourceTypes.TargetingSpecListOperation
+}
+resourceTypes {
+
+  TargetingSpecOperationAudienceInclude {
+    title = TargetingSpecOperationAudienceInclude
+    description = TargetingSpecOperationAudienceInclude
+    derivedFrom = Root
+    properties {
+        _field {
+          type =  string
+          description = ""
+          enum = ["AUDIENCE_INCLUDE"]
+          optional = true
+        }
+        operation {
+          type = TargetingSpecListOperation
+          description = ""
+          optional = true
+        }
+        values {
+          type = array
+          items.type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingSpecOperationAudienceInclude {
+    title = TargetingSpecOperationAudienceInclude
+    description = TargetingSpecOperationAudienceInclude
+    implements = openapi_server.resourceTypes.TargetingSpecOperationAudienceInclude
+
+  }
+}

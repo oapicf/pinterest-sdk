@@ -86,7 +86,7 @@ TargetingTemplateKeyword::getMatchType()
 }
 
 void
-TargetingTemplateKeyword::setMatchType(MatchType  match_type)
+TargetingTemplateKeyword::setMatchType(MatchType match_type)
 {
 	this->match_type = match_type;
 }
@@ -98,7 +98,7 @@ TargetingTemplateKeyword::getValue()
 }
 
 void
-TargetingTemplateKeyword::setValue(std::string  value)
+TargetingTemplateKeyword::setValue(std::string value)
 {
 	this->value = value;
 }

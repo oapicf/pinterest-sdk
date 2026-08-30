@@ -5,15 +5,17 @@ open System.Collections.Generic
 open OpenAPI.Model.CatalogsHotelReportParameters
 open OpenAPI.Model.CatalogsHotelReportParametersReport
 open OpenAPI.Model.CatalogsRetailReportParameters
-open OpenAPI.Model.CatalogsType
 
 module CatalogsReportParameters =
 
   //#region CatalogsReportParameters
 
+  //#region enums
+  type CatalogTypeEnum = HOTELEnum of string  
+  //#endregion
 
   type CatalogsReportParameters = {
-    CatalogType : CatalogsType;
+    CatalogType : CatalogTypeEnum;
     Report : CatalogsHotelReportParametersReport;
   }
   //#endregion

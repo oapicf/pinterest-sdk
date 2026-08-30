@@ -10,11 +10,11 @@
 
 -type openapi_billing_profiles_response() ::
   [ {'advertiser_id', binary() }
-  | {'billing_type', binary() }
-  | {'card_type', binary() }
+  | {'billing_type', openapi_billing_type:openapi_billing_type() }
+  | {'card_type', openapi_billing_profile_card_type:openapi_billing_profile_card_type() }
   | {'id', binary() }
-  | {'payment_method_brand', binary() }
-  | {'status', binary() }
+  | {'payment_method_brand', openapi_billing_profile_payment_method_brand:openapi_billing_profile_payment_method_brand() }
+  | {'status', openapi_billing_profile_status:openapi_billing_profile_status() }
   ].
 
 
@@ -23,11 +23,11 @@ openapi_billing_profiles_response() ->
 
 openapi_billing_profiles_response(Fields) ->
   Default = [ {'advertiser_id', binary() }
-            , {'billing_type', elements([<<"CREDIT_CARD">>, <<"INVOICE">>, <<"INTERNAL">>, <<"RECURRING">>, <<"PREPAID">>]) }
-            , {'card_type', elements([<<"UNKNOWN">>, <<"VISA">>, <<"MASTERCARD">>, <<"AMERICAN_EXPRESS">>, <<"DISCOVER">>, <<"ELO">>]) }
+            , {'billing_type', openapi_billing_type:openapi_billing_type() }
+            , {'card_type', openapi_billing_profile_card_type:openapi_billing_profile_card_type() }
             , {'id', binary() }
-            , {'payment_method_brand', elements([<<"UNKNOWN">>, <<"VISA">>, <<"MASTERCARD">>, <<"AMERICAN_EXPRESS">>, <<"DISCOVER">>, <<"SOFORT">>, <<"DINERS_CLUB">>, <<"ELO">>, <<"CARTE_BANCAIRE">>]) }
-            , {'status', elements([<<"UNSPECIFIED">>, <<"VALID">>, <<"INVALID">>, <<"PENDING">>, <<"DELETED">>, <<"SECONDARY">>, <<"PENDING_SECONDARY">>]) }
+            , {'payment_method_brand', openapi_billing_profile_payment_method_brand:openapi_billing_profile_payment_method_brand() }
+            , {'status', openapi_billing_profile_status:openapi_billing_profile_status() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -1,7 +1,7 @@
 /*
  * UpdatePartnerAssetAccessBody.h
  *
- * 
+ * An object with a list of partner asset accesses to assign or update.
  */
 
 #ifndef _UpdatePartnerAssetAccessBody_H_
@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "UpdatePartnerAssetAccessBody_accesses_inner.h"
+#include "UpdatePartnerAssetAccessItem.h"
 #include <list>
 #include "Object.h"
 
@@ -22,7 +22,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief An object with a list of partner asset accesses to assign or update.
  *
  *  \ingroup Models
  *
@@ -47,16 +47,16 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get List of partner asset accesses to assign or update.
 	 */
-	std::list<UpdatePartnerAssetAccessBody_accesses_inner> getAccesses();
+	std::list<UpdatePartnerAssetAccessItem> getAccesses();
 
-	/*! \brief Set 
+	/*! \brief Set List of partner asset accesses to assign or update.
 	 */
-	void setAccesses(std::list <UpdatePartnerAssetAccessBody_accesses_inner> accesses);
+	void setAccesses(std::list <UpdatePartnerAssetAccessItem> accesses);
 
 private:
-	std::list <UpdatePartnerAssetAccessBody_accesses_inner>accesses;
+	std::list <UpdatePartnerAssetAccessItem>accesses;
 	void __init();
 	void __cleanup();
 

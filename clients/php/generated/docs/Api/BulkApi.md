@@ -14,12 +14,12 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `bulkDownloadCreate()`
 
 ```php
-bulkDownloadCreate($ad_account_id, $bulk_download_request): \OpenAPI\Client\Model\BulkDownloadResponse
+bulkDownloadCreate($ad_account_id, $bulk_download_create): \OpenAPI\Client\Model\BulkDownload
 ```
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 
@@ -39,10 +39,10 @@ $apiInstance = new OpenAPI\Client\Api\BulkApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$bulk_download_request = new \OpenAPI\Client\Model\BulkDownloadRequest(); // \OpenAPI\Client\Model\BulkDownloadRequest | Parameters to get ad entities in bulk
+$bulk_download_create = new \OpenAPI\Client\Model\BulkDownloadCreate(); // \OpenAPI\Client\Model\BulkDownloadCreate
 
 try {
-    $result = $apiInstance->bulkDownloadCreate($ad_account_id, $bulk_download_request);
+    $result = $apiInstance->bulkDownloadCreate($ad_account_id, $bulk_download_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BulkApi->bulkDownloadCreate: ', $e->getMessage(), PHP_EOL;
@@ -54,11 +54,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **bulk_download_request** | [**\OpenAPI\Client\Model\BulkDownloadRequest**](../Model/BulkDownloadRequest.md)| Parameters to get ad entities in bulk | |
+| **bulk_download_create** | [**\OpenAPI\Client\Model\BulkDownloadCreate**](../Model/BulkDownloadCreate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BulkDownloadResponse**](../Model/BulkDownloadResponse.md)
+[**\OpenAPI\Client\Model\BulkDownload**](../Model/BulkDownload.md)
 
 ### Authorization
 
@@ -76,12 +76,12 @@ try {
 ## `bulkRequestGet()`
 
 ```php
-bulkRequestGet($ad_account_id, $bulk_request_id, $include_details): \OpenAPI\Client\Model\BulkUpsertStatusResponse
+bulkRequestGet($ad_account_id, $bulk_request_id, $include_details): \OpenAPI\Client\Model\BulkJobData
 ```
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 
@@ -104,8 +104,8 @@ $apiInstance = new OpenAPI\Client\Api\BulkApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$bulk_request_id = 'bulk_request_id_example'; // string | Unique identifier of a bulk upsert request.
-$include_details = false; // bool | if set to True then attach the errors/details to all the requests
+$bulk_request_id = 'bulk_request_id_example'; // string | Bulk request ID that is from one of the entities bulk endpoints
+$include_details = false; // bool | If set to True then attach the errors/details to all the requests
 
 try {
     $result = $apiInstance->bulkRequestGet($ad_account_id, $bulk_request_id, $include_details);
@@ -120,12 +120,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **bulk_request_id** | **string**| Unique identifier of a bulk upsert request. | |
-| **include_details** | **bool**| if set to True then attach the errors/details to all the requests | [optional] [default to false] |
+| **bulk_request_id** | **string**| Bulk request ID that is from one of the entities bulk endpoints | |
+| **include_details** | **bool**| If set to True then attach the errors/details to all the requests | [optional] [default to false] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BulkUpsertStatusResponse**](../Model/BulkUpsertStatusResponse.md)
+[**\OpenAPI\Client\Model\BulkJobData**](../Model/BulkJobData.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ bulkUpsertCreate($ad_account_id, $bulk_upsert_request): \OpenAPI\Client\Model\Bu
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 
 ### Example
 

@@ -12,10 +12,10 @@
 #include "ConversionTag.h"
 #include "ConversionTagCreate.h"
 #include "Conversion_tags_list_200_response.h"
-#include "Error.h"
-#include <map>
 #include "Page_visit_conversion_tags_get_200_response.h"
 #include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
+#include <map>
 
 namespace Tiny {
 
@@ -28,7 +28,7 @@ class ConversionTagsApi : public Service {
 public:
     ConversionTagsApi() = default;
 
-    virtual ~ConversionTagsApi() = default;
+    virtual ~ConversionTagsApi();
 
     /**
     * Create conversion tag.
@@ -103,9 +103,9 @@ public:
     *
     * Get all page visit conversion tag events for an ad account.
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
     * \param bookmark Cursor used to fetch the next page of items
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
     */
     Response<
                 Page_visit_conversion_tags_get_200_response
@@ -115,13 +115,13 @@ public:
             std::string adAccountId
             , 
             
+            std::string bookmark
+            , 
+            
             int pageSize
             , 
             
-            std::string order
-            , 
-            
-            std::string bookmark
+            Pinterest.Lib.PaginationOrder order
             
     );
 }; 

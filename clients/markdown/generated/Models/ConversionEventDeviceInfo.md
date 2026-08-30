@@ -9,13 +9,13 @@
 | **cpu\_cores** | **Integer** | Number of CPU cores | [optional] [default to null] |
 | **external\_storage\_free\_space** | **Integer** | External storage size in GB | [optional] [default to null] |
 | **external\_storage\_size** | **Integer** | External storage size in GB | [optional] [default to null] |
-| **form\_factor** | **String** | Device form factor | [optional] [default to null] |
+| **form\_factor** | [**FormFactor**](FormFactor.md) | Device form factor | [optional] [default to null] |
 | **kernel\_version** | **String** | Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release | [optional] [default to null] |
 | **languages** | **List** | List of user installed languages. ISO 639-1 format | [optional] [default to null] |
 | **locale** | **String** | Device locale BCP-47 format | [optional] [default to null] |
 | **model** | **String** | Device model name | [optional] [default to null] |
-| **network\_type** | **String** | Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() | [optional] [default to null] |
-| **os\_family** | **String** | OS Family | [optional] [default to null] |
+| **network\_type** | [**NetworkType**](NetworkType.md) | Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() | [optional] [default to null] |
+| **os\_family** | [**OsFamily**](OsFamily.md) | OS Family | [optional] [default to null] |
 | **os\_name** | **String** | Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch | [optional] [default to null] |
 | **os\_release\_name** | **String** | Marketing name for the release version iOS: Dawn Android: Baklava MacOS: Sequoia Ubuntu Linux: Plucky Puffin | [optional] [default to null] |
 | **os\_version** | **String** | Full name of the version. Examples: iOS: 18.3 Android: 16.1 MacOS: 15.5 Windows: 24H2 Ubuntu Linux: 25.04 | [optional] [default to null] |

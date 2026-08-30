@@ -6,7 +6,7 @@ A currency filter. This filter cannot be negated
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**negated** | **bool** |  | [optional] [default to False]
+**negated** | **bool** |  | [optional] 
 **values** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 
 ## Example

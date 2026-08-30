@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsRetailProductGroup;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the retail product group. | 
+**catalog_id** | **string** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **string** |  | 
 **country** | **string** |  | [optional] 
 **created_at** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 

@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsRetailBatchRequestItemsItems",
+  "fields": [
+    {
+      "name": "attributes",
+      "type": "model.ItemAttributesRequest",
+      "doc": ""
+    },
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "The catalog item id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailBatchRequestItemsItems_operation",
+        "symbols": [
+          "DELETE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "update_mask",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.UpdateMaskFieldType"
+      }],
+      "doc": "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.",
+      "default": null
+    },
+    {
+      "name": "last_updated_time",
+      "type": ["null", "long"],
+      "doc": "The millisecond timestamp when the item was lastly modified by the merchant.",
+      "default": null
+    }
+  ]
+
+}

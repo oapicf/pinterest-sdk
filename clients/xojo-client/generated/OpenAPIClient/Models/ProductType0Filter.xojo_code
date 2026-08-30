@@ -2,7 +2,7 @@
 Protected Class ProductType0Filter
 
 	#tag Property, Flags = &h0
-		PRODUCT_TYPE_0 As CatalogsProductGroupMultipleStringListCriteria
+		PRODUCT_TYPE_0 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringListCriteria
 	#tag EndProperty
 
 

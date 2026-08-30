@@ -1,8 +1,8 @@
 package apimodels;
 
+import apimodels.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import apimodels.CatalogsFeedCredentials;
 import apimodels.CatalogsFeedProcessingSchedule;
-import apimodels.CatalogsFeedsCreateRequestDefaultLocale;
 import apimodels.CatalogsFormat;
 import apimodels.CatalogsStatus;
 import apimodels.Country;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 /**
  * Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeedsCreateRequest   {
   @JsonProperty("credentials")
@@ -44,7 +44,7 @@ public class CatalogsFeedsCreateRequest   {
   @JsonProperty("default_locale")
   @Valid
 
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
 
   @JsonProperty("format")
   @NotNull
@@ -71,7 +71,7 @@ public class CatalogsFeedsCreateRequest   {
   @JsonProperty("status")
   @Valid
 
-  private CatalogsStatus status = "ACTIVE";
+  private CatalogsStatus status;
 
   public CatalogsFeedsCreateRequest credentials(CatalogsFeedCredentials credentials) {
     this.credentials = credentials;
@@ -141,7 +141,7 @@ public class CatalogsFeedsCreateRequest   {
     this.defaultCurrency = defaultCurrency;
   }
 
-  public CatalogsFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsFeedsCreateRequest defaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -150,11 +150,11 @@ public class CatalogsFeedsCreateRequest   {
    * Get defaultLocale
    * @return defaultLocale
   **/
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
 
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -295,10 +295,7 @@ public class CatalogsFeedsCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

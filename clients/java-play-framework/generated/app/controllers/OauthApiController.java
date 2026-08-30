@@ -1,8 +1,10 @@
 package controllers;
 
-import apimodels.ConversionAccessTokenResponse;
-import apimodels.Error;
-import apimodels.OauthAccessTokenResponse;
+import apimodels.ConversionAccessToken;
+import apimodels.OauthAccessToken;
+import apimodels.PinterestLibError;
+import apimodels.TokenGrantType;
+import apimodels.TokenTypeHint;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -26,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class OauthApiController extends Controller {
     private final OauthApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -46,14 +48,49 @@ public class OauthApiController extends Controller {
 
     @ApiAction
     public Result oauthToken(Http.Request request) throws Exception {
+        String[] valuecode = request.body().asMultipartFormData().asFormUrlEncoded().get("code");
+        String code;
+        if (valuecode != null) {
+            code = valuecode[0];
+        } else {
+            code = null;
+        }
+        String[] valuecontinuousRefresh = request.body().asMultipartFormData().asFormUrlEncoded().get("continuous_refresh");
+        String continuousRefresh;
+        if (valuecontinuousRefresh != null) {
+            continuousRefresh = valuecontinuousRefresh[0];
+        } else {
+            continuousRefresh = null;
+        }
         String[] valuegrantType = request.body().asMultipartFormData().asFormUrlEncoded().get("grant_type");
-        String grantType;
+        TokenGrantType grantType;
         if (valuegrantType != null) {
             grantType = valuegrantType[0];
         } else {
             throw new IllegalArgumentException("'grant_type' parameter is required");
         }
-        return imp.oauthTokenHttp(request, grantType);
+        String[] valueredirectUri = request.body().asMultipartFormData().asFormUrlEncoded().get("redirect_uri");
+        String redirectUri;
+        if (valueredirectUri != null) {
+            redirectUri = valueredirectUri[0];
+        } else {
+            redirectUri = null;
+        }
+        String[] valuerefreshToken = request.body().asMultipartFormData().asFormUrlEncoded().get("refresh_token");
+        String refreshToken;
+        if (valuerefreshToken != null) {
+            refreshToken = valuerefreshToken[0];
+        } else {
+            refreshToken = null;
+        }
+        String[] valuescope = request.body().asMultipartFormData().asFormUrlEncoded().get("scope");
+        String scope;
+        if (valuescope != null) {
+            scope = valuescope[0];
+        } else {
+            scope = null;
+        }
+        return imp.oauthTokenHttp(request, grantType, code, continuousRefresh, redirectUri, refreshToken, scope);
     }
 
     @ApiAction
@@ -66,7 +103,7 @@ public class OauthApiController extends Controller {
             throw new IllegalArgumentException("'token' parameter is required");
         }
         String[] valuetokenTypeHint = request.body().asMultipartFormData().asFormUrlEncoded().get("token_type_hint");
-        String tokenTypeHint;
+        TokenTypeHint tokenTypeHint;
         if (valuetokenTypeHint != null) {
             tokenTypeHint = valuetokenTypeHint[0];
         } else {

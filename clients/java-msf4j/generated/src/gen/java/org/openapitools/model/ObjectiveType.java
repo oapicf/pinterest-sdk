@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Intended result of the campaign.  You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter. 
+ * Advertiser campaign objective type. You can only update objectives for draft campaigns. `CTV_CONSIDERATION` is in BETA. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter.
  */
 public enum ObjectiveType {
   
@@ -19,7 +19,13 @@ public enum ObjectiveType {
   
   CATALOG_SALES("CATALOG_SALES"),
   
-  VIDEO_COMPLETION("VIDEO_COMPLETION");
+  VIDEO_COMPLETION("VIDEO_COMPLETION"),
+  
+  SALES("SALES"),
+  
+  APP_INSTALL("APP_INSTALL"),
+  
+  CTV_CONSIDERATION("CTV_CONSIDERATION");
 
   private String value;
 

@@ -128,7 +128,7 @@ BoardCreate::getDescription()
 }
 
 void
-BoardCreate::setDescription(std::string  description)
+BoardCreate::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -140,7 +140,7 @@ BoardCreate::isIsAdsOnly()
 }
 
 void
-BoardCreate::setIsAdsOnly(bool  is_ads_only)
+BoardCreate::setIsAdsOnly(bool is_ads_only)
 {
 	this->is_ads_only = is_ads_only;
 }
@@ -152,7 +152,7 @@ BoardCreate::getName()
 }
 
 void
-BoardCreate::setName(std::string  name)
+BoardCreate::setName(std::string name)
 {
 	this->name = name;
 }
@@ -164,7 +164,7 @@ BoardCreate::getPrivacy()
 }
 
 void
-BoardCreate::setPrivacy(BoardPrivacy  privacy)
+BoardCreate::setPrivacy(BoardPrivacy privacy)
 {
 	this->privacy = privacy;
 }

@@ -15,12 +15,12 @@ static conversion_health_selection_item_t *conversion_health_selection_item_crea
     if (!conversion_health_selection_item_local_var) {
         return NULL;
     }
+    memset(conversion_health_selection_item_local_var, 0, sizeof(conversion_health_selection_item_t));
+    conversion_health_selection_item_local_var->_library_owned = 1;
     conversion_health_selection_item_local_var->conversion_type = conversion_type;
     conversion_health_selection_item_local_var->criteria = criteria;
     conversion_health_selection_item_local_var->ingestion_source = ingestion_source;
     conversion_health_selection_item_local_var->status = status;
-
-    conversion_health_selection_item_local_var->_library_owned = 1;
     return conversion_health_selection_item_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) conversion_health_selection_item_t *conversion_healt
     object_t *ingestion_source,
     any_type_t *status
     ) {
-    return conversion_health_selection_item_create_internal (
+    conversion_health_selection_item_t *result = conversion_health_selection_item_create_internal (
         conversion_type,
         criteria,
         ingestion_source,
         status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void conversion_health_selection_item_free(conversion_health_selection_item_t *conversion_health_selection_item) {
@@ -179,12 +182,17 @@ conversion_health_selection_item_t *conversion_health_selection_item_parseFromJS
     status_local_nonprim = _parseFromJSON(status); //custom
 
 
+
     conversion_health_selection_item_local_var = conversion_health_selection_item_create_internal (
         conversion_type ? conversion_type_local_object : NULL,
         criteria ? criteria_local_object : NULL,
         ingestion_source ? ingestion_source_local_object : NULL,
         status_local_nonprim
         );
+
+    if (!conversion_health_selection_item_local_var) {
+        goto end;
+    }
 
     return conversion_health_selection_item_local_var;
 end:

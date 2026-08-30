@@ -17,13 +17,14 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * The file format of a feed.
-* Values: TSV,CSV,XML
+* Values: TSV,CSV,XML,INTEGRATION
 */
 enum class CatalogsFormat(@get:JsonValue val value: kotlin.String) {
 
     TSV("TSV"),
     CSV("CSV"),
-    XML("XML");
+    XML("XML"),
+    INTEGRATION("INTEGRATION");
 
     companion object {
         @JvmStatic

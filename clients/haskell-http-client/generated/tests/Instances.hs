@@ -120,7 +120,7 @@ genAccount :: Int -> Gen Account
 genAccount n =
   Account
     <$> arbitraryReducedMaybe n -- accountAbout :: Maybe Text
-    <*> arbitraryReducedMaybe n -- accountAccountType :: Maybe E'AccountType
+    <*> arbitraryReducedMaybe n -- accountAccountType :: Maybe UserAccountType
     <*> arbitraryReducedMaybe n -- accountBoardCount :: Maybe Int
     <*> arbitraryReducedMaybe n -- accountBusinessName :: Maybe Text
     <*> arbitraryReducedMaybe n -- accountFollowerCount :: Maybe Int
@@ -131,6 +131,89 @@ genAccount n =
     <*> arbitraryReducedMaybe n -- accountProfileImage :: Maybe Text
     <*> arbitraryReducedMaybe n -- accountUsername :: Maybe Text
     <*> arbitraryReducedMaybe n -- accountWebsiteUrl :: Maybe Text
+  
+instance Arbitrary AccountTemplate where
+  arbitrary = sized genAccountTemplate
+
+genAccountTemplate :: Int -> Gen AccountTemplate
+genAccountTemplate n =
+  AccountTemplate
+    <$> arbitraryReducedMaybe n -- accountTemplateAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- accountTemplateAdAccountIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- accountTemplateAdeColumns :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- accountTemplateAttributionType :: Maybe AnyType
+    <*> arbitraryReducedMaybe n -- accountTemplateClickWindowDays :: Maybe Double
+    <*> arbitraryReducedMaybe n -- accountTemplateColumns :: Maybe [ReportingColumn]
+    <*> arbitraryReducedMaybe n -- accountTemplateConversionReportTimeType :: Maybe ConversionReportTimeType
+    <*> arbitraryReducedMaybe n -- accountTemplateCreationSource :: Maybe CreationSource
+    <*> arbitraryReducedMaybe n -- accountTemplateCustomColumnIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- accountTemplateDisplayMetadata :: Maybe Text
+    <*> arbitraryReducedMaybe n -- accountTemplateEngagementWindowDays :: Maybe Double
+    <*> arbitraryReducedMaybe n -- accountTemplateFiltersJson :: Maybe Text
+    <*> arbitraryReducedMaybe n -- accountTemplateGranularity :: Maybe Granularity
+    <*> arbitrary -- accountTemplateId :: Text
+    <*> arbitraryReducedMaybe n -- accountTemplateIngestionSources :: Maybe [IngestionSource]
+    <*> arbitraryReducedMaybe n -- accountTemplateIsDefault :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- accountTemplateIsDeleted :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- accountTemplateIsOwnedByUser :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- accountTemplateIsScheduled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- accountTemplateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- accountTemplateReportEndRelativeDaysInPast :: Maybe Double
+    <*> arbitraryReducedMaybe n -- accountTemplateReportFormat :: Maybe DataOutputFormat
+    <*> arbitraryReducedMaybe n -- accountTemplateReportLevel :: Maybe MetricsReportingLevel
+    <*> arbitraryReducedMaybe n -- accountTemplateReportStartRelativeDaysInPast :: Maybe Double
+    <*> arbitraryReducedMaybe n -- accountTemplateReportingTimeZone :: Maybe ReportingTimeZone
+    <*> arbitraryReducedMaybe n -- accountTemplateSortBy :: Maybe AnyType
+    <*> arbitraryReducedMaybe n -- accountTemplateType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- accountTemplateUpdatedTime :: Maybe Double
+    <*> arbitraryReducedMaybe n -- accountTemplateUserId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- accountTemplateViewWindowDays :: Maybe Double
+  
+instance Arbitrary Ad where
+  arbitrary = sized genAd
+
+genAd :: Int -> Gen Ad
+genAd n =
+  Ad
+    <$> arbitrary -- adAdAccountId :: Text
+    <*> arbitrary -- adAdGroupId :: Text
+    <*> arbitraryReducedMaybe n -- adAndroidDeepLink :: Maybe Text
+    <*> arbitrary -- adCampaignId :: Text
+    <*> arbitraryReducedMaybe n -- adCarouselAndroidDeepLinks :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adCarouselDestinationUrls :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adCarouselIosDeepLinks :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adCartingPlatformType :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adCartingProducts :: Maybe [CartingProduct]
+    <*> arbitraryReducedMaybe n -- adClickTrackingUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCollectionItemsDestinationUrlTemplate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCollectionsHeaderType :: Maybe AdCollectionsHeaderType
+    <*> arbitraryReducedMaybe n -- adCreatedTime :: Maybe Int
+    <*> arbitraryReduced n -- adCreativeType :: CreativeType
+    <*> arbitraryReducedMaybe n -- adCustomizableCtaType :: Maybe CustomizableCTAType
+    <*> arbitraryReducedMaybe n -- adDestinationUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adDisclosureType :: Maybe DisclosureType
+    <*> arbitraryReducedMaybe n -- adDisclosureUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGridClickType :: Maybe GridClickType
+    <*> arbitrary -- adId :: Text
+    <*> arbitraryReducedMaybe n -- adIosDeepLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adIsCarting :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adIsCollageAcceptedTerms :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adIsCollageSingleDestination :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adIsPinDeleted :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adIsRemovable :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adLeadFormId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adName :: Maybe Text
+    <*> arbitrary -- adPinId :: Text
+    <*> arbitraryReducedMaybe n -- adQuizPinData :: Maybe QuizPinData
+    <*> arbitraryReduced n -- adRejectedReasons :: [AdDisapprovalReasons]
+    <*> arbitrary -- adRejectionLabels :: [Text]
+    <*> arbitraryReduced n -- adReviewStatus :: AdReviewStatus
+    <*> arbitraryReducedMaybe n -- adStatus :: Maybe EntityStatus
+    <*> arbitraryReduced n -- adSummaryStatus :: PinPromotionSummaryStatus
+    <*> arbitraryReducedMaybe n -- adTrackingUrls :: Maybe TrackingUrls
+    <*> arbitrary -- adType :: Text
+    <*> arbitraryReducedMaybe n -- adUpdatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adViewTrackingUrl :: Maybe Text
   
 instance Arbitrary AdAccount where
   arbitrary = sized genAdAccount
@@ -145,16 +228,25 @@ genAdAccount n =
     <*> arbitraryReducedMaybe n -- adAccountName :: Maybe Text
     <*> arbitraryReducedMaybe n -- adAccountOwner :: Maybe AdAccountOwner
     <*> arbitraryReducedMaybe n -- adAccountPermissions :: Maybe [BusinessAccessRole]
+    <*> arbitraryReducedMaybe n -- adAccountTimeZone :: Maybe Text
     <*> arbitraryReducedMaybe n -- adAccountUpdatedTime :: Maybe Int
   
-instance Arbitrary AdAccountAnalyticsResponseInner where
-  arbitrary = sized genAdAccountAnalyticsResponseInner
+instance Arbitrary AdAccountAnalyticsItems where
+  arbitrary = sized genAdAccountAnalyticsItems
 
-genAdAccountAnalyticsResponseInner :: Int -> Gen AdAccountAnalyticsResponseInner
-genAdAccountAnalyticsResponseInner n =
-  AdAccountAnalyticsResponseInner
-    <$> arbitrary -- adAccountAnalyticsResponseInnerAdAccountId :: Text
-    <*> arbitraryReducedMaybe n -- adAccountAnalyticsResponseInnerDate :: Maybe Date
+genAdAccountAnalyticsItems :: Int -> Gen AdAccountAnalyticsItems
+genAdAccountAnalyticsItems n =
+  AdAccountAnalyticsItems
+    <$> arbitrary -- adAccountAnalyticsItemsAdAccountId :: Text
+    <*> arbitraryReducedMaybe n -- adAccountAnalyticsItemsDate :: Maybe Date
+  
+instance Arbitrary AdAccountCountriesGet200Response where
+  arbitrary = sized genAdAccountCountriesGet200Response
+
+genAdAccountCountriesGet200Response :: Int -> Gen AdAccountCountriesGet200Response
+genAdAccountCountriesGet200Response n =
+  AdAccountCountriesGet200Response
+    <$> arbitraryReduced n -- adAccountCountriesGet200ResponseItems :: [AdAccountsCountry]
   
 instance Arbitrary AdAccountCreate where
   arbitrary = sized genAdAccountCreate
@@ -166,58 +258,7 @@ genAdAccountCreate n =
     <*> arbitraryReducedMaybe n -- adAccountCreateCurrency :: Maybe Currency
     <*> arbitraryReducedMaybe n -- adAccountCreateName :: Maybe Text
     <*> arbitraryReducedMaybe n -- adAccountCreateOwnerUserId :: Maybe Text
-  
-instance Arbitrary AdAccountCreateSubscriptionRequest where
-  arbitrary = sized genAdAccountCreateSubscriptionRequest
-
-genAdAccountCreateSubscriptionRequest :: Int -> Gen AdAccountCreateSubscriptionRequest
-genAdAccountCreateSubscriptionRequest n =
-  AdAccountCreateSubscriptionRequest
-    <$> arbitraryReducedMaybe n -- adAccountCreateSubscriptionRequestLeadFormId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionRequestPartnerAccessToken :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionRequestPartnerMetadata :: Maybe AdAccountCreateSubscriptionRequestPartnerMetadata
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionRequestPartnerRefreshToken :: Maybe Text
-    <*> arbitrary -- adAccountCreateSubscriptionRequestWebhookUrl :: Text
-  
-instance Arbitrary AdAccountCreateSubscriptionRequestPartnerMetadata where
-  arbitrary = sized genAdAccountCreateSubscriptionRequestPartnerMetadata
-
-genAdAccountCreateSubscriptionRequestPartnerMetadata :: Int -> Gen AdAccountCreateSubscriptionRequestPartnerMetadata
-genAdAccountCreateSubscriptionRequestPartnerMetadata n =
-  AdAccountCreateSubscriptionRequestPartnerMetadata
-    <$> arbitraryReducedMaybe n -- adAccountCreateSubscriptionRequestPartnerMetadataSubscriberKey :: Maybe Text
-  
-instance Arbitrary AdAccountCreateSubscriptionResponse where
-  arbitrary = sized genAdAccountCreateSubscriptionResponse
-
-genAdAccountCreateSubscriptionResponse :: Int -> Gen AdAccountCreateSubscriptionResponse
-genAdAccountCreateSubscriptionResponse n =
-  AdAccountCreateSubscriptionResponse
-    <$> arbitraryReducedMaybe n -- adAccountCreateSubscriptionResponseAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionResponseApiVersion :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionResponseCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionResponseCryptographicAlgorithm :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionResponseCryptographicKey :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionResponseLeadFormId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionResponseUserAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountCreateSubscriptionResponseWebhookUrl :: Maybe Text
-  
-instance Arbitrary AdAccountGetSubscriptionResponse where
-  arbitrary = sized genAdAccountGetSubscriptionResponse
-
-genAdAccountGetSubscriptionResponse :: Int -> Gen AdAccountGetSubscriptionResponse
-genAdAccountGetSubscriptionResponse n =
-  AdAccountGetSubscriptionResponse
-    <$> arbitraryReducedMaybe n -- adAccountGetSubscriptionResponseLeadFormId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountGetSubscriptionResponseWebhookUrl :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountGetSubscriptionResponseAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountGetSubscriptionResponseApiVersion :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountGetSubscriptionResponseCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adAccountGetSubscriptionResponseCryptographicAlgorithm :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountGetSubscriptionResponseCryptographicKey :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountGetSubscriptionResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountGetSubscriptionResponseUserAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountCreateTimeZone :: Maybe Text
   
 instance Arbitrary AdAccountOwner where
   arbitrary = sized genAdAccountOwner
@@ -228,6 +269,118 @@ genAdAccountOwner n =
     <$> arbitraryReducedMaybe n -- adAccountOwnerId :: Maybe Text
     <*> arbitraryReducedMaybe n -- adAccountOwnerUsername :: Maybe Text
   
+instance Arbitrary AdAccountToAdAccountSharedAudience where
+  arbitrary = sized genAdAccountToAdAccountSharedAudience
+
+genAdAccountToAdAccountSharedAudience :: Int -> Gen AdAccountToAdAccountSharedAudience
+genAdAccountToAdAccountSharedAudience n =
+  AdAccountToAdAccountSharedAudience
+    <$> arbitrary -- adAccountToAdAccountSharedAudienceAudienceId :: Text
+    <*> arbitraryReducedMaybe n -- adAccountToAdAccountSharedAudiencePermissions :: Maybe [Role]
+    <*> arbitrary -- adAccountToAdAccountSharedAudienceRecipientAccountIds :: [Text]
+  
+instance Arbitrary AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody where
+  arbitrary = sized genAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+
+genAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody :: Int -> Gen AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+genAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody n =
+  AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+    <$> arbitrary -- adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyAudienceId :: Text
+    <*> arbitraryReduced n -- adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyOperationType :: OperationType
+    <*> arbitrary -- adAccountToAdAccountSharedAudienceUpdateWithRequiredBodyRecipientAccountIds :: [Text]
+  
+instance Arbitrary AdAccountToBusinessSharedAudience where
+  arbitrary = sized genAdAccountToBusinessSharedAudience
+
+genAdAccountToBusinessSharedAudience :: Int -> Gen AdAccountToBusinessSharedAudience
+genAdAccountToBusinessSharedAudience n =
+  AdAccountToBusinessSharedAudience
+    <$> arbitrary -- adAccountToBusinessSharedAudienceAudienceId :: Text
+    <*> arbitraryReducedMaybe n -- adAccountToBusinessSharedAudiencePermissions :: Maybe [Role]
+    <*> arbitrary -- adAccountToBusinessSharedAudienceRecipientBusinessIds :: [Text]
+  
+instance Arbitrary AdAccountToBusinessSharedAudienceUpdateWithRequiredBody where
+  arbitrary = sized genAdAccountToBusinessSharedAudienceUpdateWithRequiredBody
+
+genAdAccountToBusinessSharedAudienceUpdateWithRequiredBody :: Int -> Gen AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
+genAdAccountToBusinessSharedAudienceUpdateWithRequiredBody n =
+  AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
+    <$> arbitrary -- adAccountToBusinessSharedAudienceUpdateWithRequiredBodyAudienceId :: Text
+    <*> arbitraryReduced n -- adAccountToBusinessSharedAudienceUpdateWithRequiredBodyOperationType :: OperationType
+    <*> arbitrary -- adAccountToBusinessSharedAudienceUpdateWithRequiredBodyRecipientBusinessIds :: [Text]
+  
+instance Arbitrary AdAccountsAudience where
+  arbitrary = sized genAdAccountsAudience
+
+genAdAccountsAudience :: Int -> Gen AdAccountsAudience
+genAdAccountsAudience n =
+  AdAccountsAudience
+    <$> arbitraryReducedMaybe n -- adAccountsAudienceAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceAudienceType :: Maybe AudienceType
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceCreatedByCompanyName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceCreatedTimestamp :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceDescription :: Maybe Text
+    <*> arbitrary -- adAccountsAudienceId :: Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceIsNca :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRule :: Maybe AdAccountsAudienceRule
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceSize :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceStatus :: Maybe AudienceStatus
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceUpdatedTimestamp :: Maybe Int
+  
+instance Arbitrary AdAccountsAudienceCreate where
+  arbitrary = sized genAdAccountsAudienceCreate
+
+genAdAccountsAudienceCreate :: Int -> Gen AdAccountsAudienceCreate
+genAdAccountsAudienceCreate n =
+  AdAccountsAudienceCreate
+    <$> arbitraryReducedMaybe n -- adAccountsAudienceCreateAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceCreateAudienceType :: Maybe AudienceType
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceCreateDescription :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceCreateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceCreateRule :: Maybe AdAccountsAudienceRule
+  
+instance Arbitrary AdAccountsAudienceRule where
+  arbitrary = sized genAdAccountsAudienceRule
+
+genAdAccountsAudienceRule :: Int -> Gen AdAccountsAudienceRule
+genAdAccountsAudienceRule n =
+  AdAccountsAudienceRule
+    <$> arbitraryReducedMaybe n -- adAccountsAudienceRuleAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleAdId :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleCampaignId :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleCountry :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleCustomerListId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleEngagementDomain :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleEngagementType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleEngagerType :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleEvent :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleEventData :: Maybe EventData
+    <*> arbitraryReducedMaybeValue n -- adAccountsAudienceRuleEventSource :: Maybe A.Value
+    <*> arbitraryReducedMaybeValue n -- adAccountsAudienceRuleIngestionSource :: Maybe A.Value
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleObjectiveType :: Maybe [AudienceObjectiveType]
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRulePercentage :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRulePinId :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRulePrefill :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleRetentionDays :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleSeedId :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleUrl :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceRuleVisitorSourceId :: Maybe Text
+  
+instance Arbitrary AdAccountsAudienceUpdate where
+  arbitrary = sized genAdAccountsAudienceUpdate
+
+genAdAccountsAudienceUpdate :: Int -> Gen AdAccountsAudienceUpdate
+genAdAccountsAudienceUpdate n =
+  AdAccountsAudienceUpdate
+    <$> arbitraryReducedMaybe n -- adAccountsAudienceUpdateAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceUpdateAudienceType :: Maybe AudienceType
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceUpdateDescription :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceUpdateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceUpdateOperationType :: Maybe AudienceUpdateOperationType
+    <*> arbitraryReducedMaybe n -- adAccountsAudienceUpdateRule :: Maybe AdAccountsAudienceRule
+  
 instance Arbitrary AdAccountsAudiencesSharedAccountsList200Response where
   arbitrary = sized genAdAccountsAudiencesSharedAccountsList200Response
 
@@ -237,24 +390,16 @@ genAdAccountsAudiencesSharedAccountsList200Response n =
     <$> arbitraryReducedMaybe n -- adAccountsAudiencesSharedAccountsList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- adAccountsAudiencesSharedAccountsList200ResponseItems :: [SharedAudienceAccount]
   
-instance Arbitrary AdAccountsCountryResponse where
-  arbitrary = sized genAdAccountsCountryResponse
+instance Arbitrary AdAccountsCountry where
+  arbitrary = sized genAdAccountsCountry
 
-genAdAccountsCountryResponse :: Int -> Gen AdAccountsCountryResponse
-genAdAccountsCountryResponse n =
-  AdAccountsCountryResponse
-    <$> arbitraryReducedMaybe n -- adAccountsCountryResponseItems :: Maybe [AdAccountsCountryResponseData]
-  
-instance Arbitrary AdAccountsCountryResponseData where
-  arbitrary = sized genAdAccountsCountryResponseData
-
-genAdAccountsCountryResponseData :: Int -> Gen AdAccountsCountryResponseData
-genAdAccountsCountryResponseData n =
-  AdAccountsCountryResponseData
-    <$> arbitraryReducedMaybe n -- adAccountsCountryResponseDataCode :: Maybe AdCountry
-    <*> arbitraryReducedMaybe n -- adAccountsCountryResponseDataCurrency :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adAccountsCountryResponseDataIndex :: Maybe Double
-    <*> arbitraryReducedMaybe n -- adAccountsCountryResponseDataName :: Maybe Text
+genAdAccountsCountry :: Int -> Gen AdAccountsCountry
+genAdAccountsCountry n =
+  AdAccountsCountry
+    <$> arbitraryReduced n -- adAccountsCountryCode :: Country
+    <*> arbitrary -- adAccountsCountryCurrency :: Text
+    <*> arbitrary -- adAccountsCountryIndex :: Double
+    <*> arbitrary -- adAccountsCountryName :: Text
   
 instance Arbitrary AdAccountsList200Response where
   arbitrary = sized genAdAccountsList200Response
@@ -274,50 +419,91 @@ genAdAccountsSubscriptionsGetList200Response n =
     <$> arbitraryReducedMaybe n -- adAccountsSubscriptionsGetList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- adAccountsSubscriptionsGetList200ResponseItems :: [LeadSubscription]
   
-instance Arbitrary AdArrayResponse where
-  arbitrary = sized genAdArrayResponse
+instance Arbitrary AdBatchItem where
+  arbitrary = sized genAdBatchItem
 
-genAdArrayResponse :: Int -> Gen AdArrayResponse
-genAdArrayResponse n =
-  AdArrayResponse
-    <$> arbitraryReducedMaybe n -- adArrayResponseItems :: Maybe [AdArrayResponseElement]
+genAdBatchItem :: Int -> Gen AdBatchItem
+genAdBatchItem n =
+  AdBatchItem
+    <$> arbitraryReducedMaybe n -- adBatchItemData :: Maybe Ad
+    <*> arbitraryReducedMaybe n -- adBatchItemExceptions :: Maybe PinterestLibError
   
-instance Arbitrary AdArrayResponseElement where
-  arbitrary = sized genAdArrayResponseElement
+instance Arbitrary AdBatchUpdate where
+  arbitrary = sized genAdBatchUpdate
 
-genAdArrayResponseElement :: Int -> Gen AdArrayResponseElement
-genAdArrayResponseElement n =
-  AdArrayResponseElement
-    <$> arbitraryReducedMaybe n -- adArrayResponseElementData :: Maybe AdResponse
-    <*> arbitraryReducedMaybe n -- adArrayResponseElementExceptions :: Maybe Exception
+genAdBatchUpdate :: Int -> Gen AdBatchUpdate
+genAdBatchUpdate n =
+  AdBatchUpdate
+    <$> arbitraryReducedMaybe n -- adBatchUpdateAdGroupId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateAndroidDeepLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateCarouselAndroidDeepLinks :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adBatchUpdateCarouselDestinationUrls :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adBatchUpdateCarouselIosDeepLinks :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adBatchUpdateClickTrackingUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateCollectionItemsDestinationUrlTemplate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateCollectionsHeaderType :: Maybe AdCollectionsHeaderType
+    <*> arbitraryReducedMaybe n -- adBatchUpdateCreativeType :: Maybe CreativeType
+    <*> arbitraryReducedMaybe n -- adBatchUpdateCustomizableCtaType :: Maybe CustomizableCTAType
+    <*> arbitraryReducedMaybe n -- adBatchUpdateDestinationUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateDisclosureType :: Maybe DisclosureType
+    <*> arbitraryReducedMaybe n -- adBatchUpdateDisclosureUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateGridClickType :: Maybe GridClickType
+    <*> arbitrary -- adBatchUpdateId :: Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateIosDeepLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateIsCarting :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adBatchUpdateIsCollageAcceptedTerms :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adBatchUpdateIsCollageSingleDestination :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adBatchUpdateIsPinDeleted :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adBatchUpdateIsRemovable :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adBatchUpdateLeadFormId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdatePinId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adBatchUpdateQuizPinData :: Maybe QuizPinData
+    <*> arbitraryReducedMaybe n -- adBatchUpdateStatus :: Maybe EntityStatus
+    <*> arbitraryReducedMaybe n -- adBatchUpdateTrackingUrls :: Maybe TrackingUrls
+    <*> arbitraryReducedMaybe n -- adBatchUpdateViewTrackingUrl :: Maybe Text
   
-instance Arbitrary AdCommon where
-  arbitrary = sized genAdCommon
+instance Arbitrary AdBatchWriteResponseModel where
+  arbitrary = sized genAdBatchWriteResponseModel
 
-genAdCommon :: Int -> Gen AdCommon
-genAdCommon n =
-  AdCommon
-    <$> arbitraryReducedMaybe n -- adCommonAdGroupId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adCommonAndroidDeepLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adCommonCarouselAndroidDeepLinks :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adCommonCarouselDestinationUrls :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adCommonCarouselIosDeepLinks :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adCommonClickTrackingUrl :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adCommonCreativeType :: Maybe CreativeType
-    <*> arbitraryReducedMaybe n -- adCommonCustomizableCtaType :: Maybe CustomizableCTAType
-    <*> arbitraryReducedMaybe n -- adCommonDestinationUrl :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adCommonDisclosureType :: Maybe DisclosureType
-    <*> arbitraryReducedMaybe n -- adCommonDisclosureUrl :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adCommonGridClickType :: Maybe GridClickType
-    <*> arbitraryReducedMaybe n -- adCommonIosDeepLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adCommonIsPinDeleted :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adCommonIsRemovable :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adCommonLeadFormId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adCommonName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adCommonQuizPinData :: Maybe QuizPinData
-    <*> arbitraryReducedMaybe n -- adCommonStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- adCommonTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- adCommonViewTrackingUrl :: Maybe Text
+genAdBatchWriteResponseModel :: Int -> Gen AdBatchWriteResponseModel
+genAdBatchWriteResponseModel n =
+  AdBatchWriteResponseModel
+    <$> arbitraryReduced n -- adBatchWriteResponseModelItems :: [AdBatchItem]
+  
+instance Arbitrary AdCreate where
+  arbitrary = sized genAdCreate
+
+genAdCreate :: Int -> Gen AdCreate
+genAdCreate n =
+  AdCreate
+    <$> arbitrary -- adCreateAdGroupId :: Text
+    <*> arbitraryReducedMaybe n -- adCreateAndroidDeepLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCreateCarouselAndroidDeepLinks :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adCreateCarouselDestinationUrls :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adCreateCarouselIosDeepLinks :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adCreateClickTrackingUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCreateCollectionItemsDestinationUrlTemplate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCreateCollectionsHeaderType :: Maybe AdCollectionsHeaderType
+    <*> arbitraryReduced n -- adCreateCreativeType :: CreativeType
+    <*> arbitraryReducedMaybe n -- adCreateCustomizableCtaType :: Maybe CustomizableCTAType
+    <*> arbitraryReducedMaybe n -- adCreateDestinationUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCreateDisclosureType :: Maybe DisclosureType
+    <*> arbitraryReducedMaybe n -- adCreateDisclosureUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCreateGridClickType :: Maybe GridClickType
+    <*> arbitraryReducedMaybe n -- adCreateIosDeepLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCreateIsCarting :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adCreateIsCollageAcceptedTerms :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adCreateIsCollageSingleDestination :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adCreateIsPinDeleted :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adCreateIsRemovable :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adCreateLeadFormId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCreateName :: Maybe Text
+    <*> arbitrary -- adCreatePinId :: Text
+    <*> arbitraryReducedMaybe n -- adCreateQuizPinData :: Maybe QuizPinData
+    <*> arbitraryReducedMaybe n -- adCreateStatus :: Maybe EntityStatus
+    <*> arbitraryReducedMaybe n -- adCreateTrackingUrls :: Maybe TrackingUrls
+    <*> arbitraryReducedMaybe n -- adCreateViewTrackingUrl :: Maybe Text
   
 instance Arbitrary AdCreateRequest where
   arbitrary = sized genAdCreateRequest
@@ -338,91 +524,215 @@ genAdCreateRequest n =
     <*> arbitraryReducedMaybe n -- adCreateRequestDisclosureUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- adCreateRequestGridClickType :: Maybe GridClickType
     <*> arbitraryReducedMaybe n -- adCreateRequestIosDeepLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adCreateRequestIsCarting :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adCreateRequestIsPinDeleted :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adCreateRequestIsRemovable :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adCreateRequestLeadFormId :: Maybe Text
     <*> arbitraryReducedMaybe n -- adCreateRequestName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adCreateRequestQuizPinData :: Maybe QuizPinData
-    <*> arbitraryReducedMaybe n -- adCreateRequestStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- adCreateRequestTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- adCreateRequestViewTrackingUrl :: Maybe Text
     <*> arbitrary -- adCreateRequestPinId :: Text
+    <*> arbitraryReducedMaybeValue n -- adCreateRequestQuizPinData :: Maybe A.Value
+    <*> arbitraryReducedMaybe n -- adCreateRequestStatus :: Maybe EntityStatus
+    <*> arbitraryReducedMaybeValue n -- adCreateRequestTrackingUrls :: Maybe A.Value
+    <*> arbitraryReducedMaybe n -- adCreateRequestViewTrackingUrl :: Maybe Text
   
-instance Arbitrary AdGroupArrayResponse where
-  arbitrary = sized genAdGroupArrayResponse
+instance Arbitrary AdGroup where
+  arbitrary = sized genAdGroup
 
-genAdGroupArrayResponse :: Int -> Gen AdGroupArrayResponse
-genAdGroupArrayResponse n =
-  AdGroupArrayResponse
-    <$> arbitraryReducedMaybe n -- adGroupArrayResponseItems :: Maybe [AdGroupArrayResponseElement]
+genAdGroup :: Int -> Gen AdGroup
+genAdGroup n =
+  AdGroup
+    <$> arbitraryReducedMaybe n -- adGroupAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupBidInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupBidStrategyType :: Maybe BidStrategyType
+    <*> arbitraryReduced n -- adGroupBillableEvent :: ActionType
+    <*> arbitraryReducedMaybe n -- adGroupBudgetInMicroCurrency :: Maybe Int
+    <*> arbitrary -- adGroupCampaignId :: Text
+    <*> arbitraryReduced n -- adGroupConversionLearningModeType :: ConversionLearningModeType
+    <*> arbitrary -- adGroupCreatedTime :: Int
+    <*> arbitraryReducedMaybe n -- adGroupCustomerSegmentId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupDcaAssets :: Maybe AnyType
+    <*> arbitraryReducedMaybe n -- adGroupEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupExtFeatures :: Maybe AdgroupTrackingFeatures
+    <*> arbitraryReducedMaybe n -- adGroupFeedProfileId :: Maybe Text
+    <*> arbitrary -- adGroupId :: Text
+    <*> arbitraryReducedMaybe n -- adGroupIsCreativeOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupIsLocalInventory :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupLifetimeFrequencyCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupLocalInventoryRadiusInMiles :: Maybe Double
+    <*> arbitrary -- adGroupName :: Text
+    <*> arbitraryReducedMaybe n -- adGroupOptimizationGoalMetadata :: Maybe NullableOptimizationGoalMetadata
+    <*> arbitraryReducedMaybe n -- adGroupPerformancePlusCampaignSettings :: Maybe PerformancePlusCampaignSettings
+    <*> arbitraryReducedMaybe n -- adGroupPlacementGroup :: Maybe PlacementGroupType
+    <*> arbitraryReducedMaybe n -- adGroupPlacementTrafficType :: Maybe PlacementTrafficType
+    <*> arbitraryReducedMaybe n -- adGroupPromotionApplicationLevel :: Maybe PromotionApplicationLevel
+    <*> arbitraryReducedMaybe n -- adGroupPromotionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupPromotionIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupStatus :: Maybe EntityStatus
+    <*> arbitraryReduced n -- adGroupSummaryStatus :: SummaryStatus
+    <*> arbitraryReducedMaybe n -- adGroupTargetingSpec :: Maybe TargetingSpecOptimal
+    <*> arbitraryReducedMaybe n -- adGroupTargetingTemplateIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupTrackingUrls :: Maybe AdGroupTrackingURLs
+    <*> arbitrary -- adGroupType :: Text
+    <*> arbitrary -- adGroupUpdatedTime :: Int
+    <*> arbitraryReducedMaybe n -- adGroupAutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupBidMultiplier :: Maybe Double
+    <*> arbitraryReducedMaybe n -- adGroupBudgetType :: Maybe BudgetType
+    <*> arbitraryReducedMaybe n -- adGroupPacingDeliveryType :: Maybe PacingDeliveryType
   
-instance Arbitrary AdGroupArrayResponseElement where
-  arbitrary = sized genAdGroupArrayResponseElement
+instance Arbitrary AdGroupAudienceSizing where
+  arbitrary = sized genAdGroupAudienceSizing
 
-genAdGroupArrayResponseElement :: Int -> Gen AdGroupArrayResponseElement
-genAdGroupArrayResponseElement n =
-  AdGroupArrayResponseElement
-    <$> arbitraryReducedMaybe n -- adGroupArrayResponseElementData :: Maybe AdGroupResponse
-    <*> arbitraryReducedMaybe n -- adGroupArrayResponseElementExceptions :: Maybe [Exception]
+genAdGroupAudienceSizing :: Int -> Gen AdGroupAudienceSizing
+genAdGroupAudienceSizing n =
+  AdGroupAudienceSizing
+    <$> arbitraryReducedMaybe n -- adGroupAudienceSizingAudienceSizeLowerBound :: Maybe Double
+    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingAudienceSizeUpperBound :: Maybe Double
   
-instance Arbitrary AdGroupAudienceSizingRequest where
-  arbitrary = sized genAdGroupAudienceSizingRequest
+instance Arbitrary AdGroupAudienceSizingCreate where
+  arbitrary = sized genAdGroupAudienceSizingCreate
 
-genAdGroupAudienceSizingRequest :: Int -> Gen AdGroupAudienceSizingRequest
-genAdGroupAudienceSizingRequest n =
-  AdGroupAudienceSizingRequest
-    <$> arbitraryReducedMaybe n -- adGroupAudienceSizingRequestAutoTargetingEnabled :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingRequestCreativeTypes :: Maybe [E'CreativeTypes]
-    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingRequestKeywords :: Maybe [AdGroupAudienceSizingRequestKeywordsInner]
-    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingRequestPlacementGroup :: Maybe PlacementGroupType
-    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingRequestProductGroupIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingRequestTargetingSpec :: Maybe TargetingSpec
+genAdGroupAudienceSizingCreate :: Int -> Gen AdGroupAudienceSizingCreate
+genAdGroupAudienceSizingCreate n =
+  AdGroupAudienceSizingCreate
+    <$> arbitraryReducedMaybe n -- adGroupAudienceSizingCreateAutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingCreateCreativeTypes :: Maybe [AdGroupAudienceSizingCreativeTypes]
+    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingCreateKeywords :: Maybe [AdGroupAudienceSizingKeyword]
+    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingCreatePlacementGroup :: Maybe AdgroupPlacementGroupType
+    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingCreateProductGroupIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingCreateTargetingSpec :: Maybe TargetingSpecOptimal
   
-instance Arbitrary AdGroupAudienceSizingRequestKeywordsInner where
-  arbitrary = sized genAdGroupAudienceSizingRequestKeywordsInner
+instance Arbitrary AdGroupAudienceSizingKeyword where
+  arbitrary = sized genAdGroupAudienceSizingKeyword
 
-genAdGroupAudienceSizingRequestKeywordsInner :: Int -> Gen AdGroupAudienceSizingRequestKeywordsInner
-genAdGroupAudienceSizingRequestKeywordsInner n =
-  AdGroupAudienceSizingRequestKeywordsInner
-    <$> arbitraryReduced n -- adGroupAudienceSizingRequestKeywordsInnerMatchType :: MatchTypeResponse
-    <*> arbitrary -- adGroupAudienceSizingRequestKeywordsInnerValue :: Text
+genAdGroupAudienceSizingKeyword :: Int -> Gen AdGroupAudienceSizingKeyword
+genAdGroupAudienceSizingKeyword n =
+  AdGroupAudienceSizingKeyword
+    <$> arbitraryReduced n -- adGroupAudienceSizingKeywordMatchType :: MatchType
+    <*> arbitrary -- adGroupAudienceSizingKeywordValue :: Text
   
-instance Arbitrary AdGroupAudienceSizingResponse where
-  arbitrary = sized genAdGroupAudienceSizingResponse
+instance Arbitrary AdGroupBase where
+  arbitrary = sized genAdGroupBase
 
-genAdGroupAudienceSizingResponse :: Int -> Gen AdGroupAudienceSizingResponse
-genAdGroupAudienceSizingResponse n =
-  AdGroupAudienceSizingResponse
-    <$> arbitraryReducedMaybe n -- adGroupAudienceSizingResponseAudienceSizeLowerBound :: Maybe Double
-    <*> arbitraryReducedMaybe n -- adGroupAudienceSizingResponseAudienceSizeUpperBound :: Maybe Double
+genAdGroupBase :: Int -> Gen AdGroupBase
+genAdGroupBase n =
+  AdGroupBase
+    <$> arbitraryReducedMaybe n -- adGroupBaseAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupBaseBidInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupBaseBidStrategyType :: Maybe BidStrategyType
+    <*> arbitraryReduced n -- adGroupBaseBillableEvent :: ActionType
+    <*> arbitraryReducedMaybe n -- adGroupBaseBudgetInMicroCurrency :: Maybe Int
+    <*> arbitrary -- adGroupBaseCampaignId :: Text
+    <*> arbitraryReduced n -- adGroupBaseConversionLearningModeType :: ConversionLearningModeType
+    <*> arbitrary -- adGroupBaseCreatedTime :: Int
+    <*> arbitraryReducedMaybe n -- adGroupBaseCustomerSegmentId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupBaseDcaAssets :: Maybe AnyType
+    <*> arbitraryReducedMaybe n -- adGroupBaseEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupBaseExtFeatures :: Maybe AdgroupTrackingFeatures
+    <*> arbitraryReducedMaybe n -- adGroupBaseFeedProfileId :: Maybe Text
+    <*> arbitrary -- adGroupBaseId :: Text
+    <*> arbitraryReducedMaybe n -- adGroupBaseIsCreativeOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupBaseIsLocalInventory :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupBaseLifetimeFrequencyCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupBaseLocalInventoryRadiusInMiles :: Maybe Double
+    <*> arbitrary -- adGroupBaseName :: Text
+    <*> arbitraryReducedMaybe n -- adGroupBaseOptimizationGoalMetadata :: Maybe NullableOptimizationGoalMetadata
+    <*> arbitraryReducedMaybe n -- adGroupBasePerformancePlusCampaignSettings :: Maybe PerformancePlusCampaignSettings
+    <*> arbitraryReducedMaybe n -- adGroupBasePlacementGroup :: Maybe PlacementGroupType
+    <*> arbitraryReducedMaybe n -- adGroupBasePlacementTrafficType :: Maybe PlacementTrafficType
+    <*> arbitraryReducedMaybe n -- adGroupBasePromotionApplicationLevel :: Maybe PromotionApplicationLevel
+    <*> arbitraryReducedMaybe n -- adGroupBasePromotionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupBasePromotionIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupBaseStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupBaseStatus :: Maybe EntityStatus
+    <*> arbitraryReduced n -- adGroupBaseSummaryStatus :: SummaryStatus
+    <*> arbitraryReducedMaybe n -- adGroupBaseTargetingSpec :: Maybe TargetingSpecOptimal
+    <*> arbitraryReducedMaybe n -- adGroupBaseTargetingTemplateIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupBaseTrackingUrls :: Maybe AdGroupTrackingURLs
+    <*> arbitrary -- adGroupBaseType :: Text
+    <*> arbitrary -- adGroupBaseUpdatedTime :: Int
   
-instance Arbitrary AdGroupCommon where
-  arbitrary = sized genAdGroupCommon
+instance Arbitrary AdGroupCreate where
+  arbitrary = sized genAdGroupCreate
 
-genAdGroupCommon :: Int -> Gen AdGroupCommon
-genAdGroupCommon n =
-  AdGroupCommon
-    <$> arbitraryReducedMaybe n -- adGroupCommonAutoTargetingEnabled :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adGroupCommonBidInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupCommonBidStrategyType :: Maybe E'BidStrategyType
-    <*> arbitraryReducedMaybe n -- adGroupCommonBillableEvent :: Maybe ActionType
-    <*> arbitraryReducedMaybe n -- adGroupCommonBudgetInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupCommonBudgetType :: Maybe BudgetType
-    <*> arbitraryReducedMaybe n -- adGroupCommonCampaignId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupCommonEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupCommonIsCreativeOptimization :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adGroupCommonLifetimeFrequencyCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupCommonName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupCommonOptimizationGoalMetadata :: Maybe OptimizationGoalMetadata
-    <*> arbitraryReducedMaybe n -- adGroupCommonPacingDeliveryType :: Maybe PacingDeliveryType
-    <*> arbitraryReducedMaybe n -- adGroupCommonPlacementGroup :: Maybe PlacementGroupType
-    <*> arbitraryReducedMaybe n -- adGroupCommonPromotionApplicationLevel :: Maybe E'PromotionApplicationLevel
-    <*> arbitraryReducedMaybe n -- adGroupCommonPromotionId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupCommonStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupCommonStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- adGroupCommonTargetingSpec :: Maybe TargetingSpec
-    <*> arbitraryReducedMaybe n -- adGroupCommonTargetingTemplateIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adGroupCommonTrackingUrls :: Maybe TrackingUrls
+genAdGroupCreate :: Int -> Gen AdGroupCreate
+genAdGroupCreate n =
+  AdGroupCreate
+    <$> arbitraryReducedMaybe n -- adGroupCreateAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateBidInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateBidStrategyType :: Maybe BidStrategyType
+    <*> arbitraryReduced n -- adGroupCreateBillableEvent :: ActionType
+    <*> arbitraryReducedMaybe n -- adGroupCreateBudgetInMicroCurrency :: Maybe Int
+    <*> arbitrary -- adGroupCreateCampaignId :: Text
+    <*> arbitraryReduced n -- adGroupCreateConversionLearningModeType :: ConversionLearningModeType
+    <*> arbitrary -- adGroupCreateCreatedTime :: Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateCustomerSegmentId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateDcaAssets :: Maybe AnyType
+    <*> arbitraryReducedMaybe n -- adGroupCreateEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateExtFeatures :: Maybe AdgroupTrackingFeatures
+    <*> arbitraryReducedMaybe n -- adGroupCreateFeedProfileId :: Maybe Text
+    <*> arbitrary -- adGroupCreateId :: Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateIsCreativeOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupCreateIsLocalInventory :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupCreateLifetimeFrequencyCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateLocalInventoryRadiusInMiles :: Maybe Double
+    <*> arbitrary -- adGroupCreateName :: Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateOptimizationGoalMetadata :: Maybe NullableOptimizationGoalMetadata
+    <*> arbitraryReducedMaybe n -- adGroupCreatePerformancePlusCampaignSettings :: Maybe PerformancePlusCampaignSettings
+    <*> arbitraryReducedMaybe n -- adGroupCreatePlacementGroup :: Maybe PlacementGroupType
+    <*> arbitraryReducedMaybe n -- adGroupCreatePlacementTrafficType :: Maybe PlacementTrafficType
+    <*> arbitraryReducedMaybe n -- adGroupCreatePromotionApplicationLevel :: Maybe PromotionApplicationLevel
+    <*> arbitraryReducedMaybe n -- adGroupCreatePromotionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupCreatePromotionIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupCreateStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateStatus :: Maybe EntityStatus
+    <*> arbitraryReduced n -- adGroupCreateSummaryStatus :: SummaryStatus
+    <*> arbitraryReducedMaybe n -- adGroupCreateTargetingSpec :: Maybe TargetingSpecOptimal
+    <*> arbitraryReducedMaybe n -- adGroupCreateTargetingTemplateIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupCreateTrackingUrls :: Maybe AdGroupTrackingURLs
+    <*> arbitrary -- adGroupCreateType :: Text
+    <*> arbitrary -- adGroupCreateUpdatedTime :: Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateAutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupCreateBidMultiplier :: Maybe Double
+    <*> arbitraryReducedMaybe n -- adGroupCreateBudgetType :: Maybe BudgetType
+    <*> arbitraryReducedMaybe n -- adGroupCreatePacingDeliveryType :: Maybe PacingDeliveryType
+  
+instance Arbitrary AdGroupCreateCreate where
+  arbitrary = sized genAdGroupCreateCreate
+
+genAdGroupCreateCreate :: Int -> Gen AdGroupCreateCreate
+genAdGroupCreateCreate n =
+  AdGroupCreateCreate
+    <$> arbitraryReducedMaybe n -- adGroupCreateCreateAutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateBidInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateBidMultiplier :: Maybe Double
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateBidStrategyType :: Maybe BidStrategyType
+    <*> arbitraryReduced n -- adGroupCreateCreateBillableEvent :: ActionType
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateBudgetInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateBudgetType :: Maybe BudgetType
+    <*> arbitrary -- adGroupCreateCreateCampaignId :: Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateCustomerSegmentId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateExtFeatures :: Maybe AdgroupTrackingFeatures
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateFeedProfileId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateIsCreativeOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateIsLocalInventory :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateLifetimeFrequencyCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateLocalInventoryRadiusInMiles :: Maybe Double
+    <*> arbitrary -- adGroupCreateCreateName :: Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateOptimizationGoalMetadata :: Maybe NullableOptimizationGoalMetadata
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreatePacingDeliveryType :: Maybe PacingDeliveryType
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreatePerformancePlusCampaignSettings :: Maybe PerformancePlusCampaignSettings
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreatePlacementGroup :: Maybe PlacementGroupType
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreatePlacementTrafficType :: Maybe PlacementTrafficType
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreatePromotionApplicationLevel :: Maybe PromotionApplicationLevel
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreatePromotionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreatePromotionIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateStatus :: Maybe EntityStatus
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateTargetingSpec :: Maybe TargetingSpecOptimal
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateTargetingTemplateIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupCreateCreateTrackingUrls :: Maybe AdGroupTrackingURLs
   
 instance Arbitrary AdGroupCreateRequest where
   arbitrary = sized genAdGroupCreateRequest
@@ -431,73 +741,160 @@ genAdGroupCreateRequest :: Int -> Gen AdGroupCreateRequest
 genAdGroupCreateRequest n =
   AdGroupCreateRequest
     <$> arbitraryReducedMaybe n -- adGroupCreateRequestAutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupCreateRequestBidMultiplier :: Maybe Double
+    <*> arbitraryReducedMaybe n -- adGroupCreateRequestBudgetType :: Maybe BudgetType
+    <*> arbitraryReducedMaybe n -- adGroupCreateRequestPacingDeliveryType :: Maybe PacingDeliveryType
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestBidInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupCreateRequestBidStrategyType :: Maybe E'BidStrategyType
+    <*> arbitraryReducedMaybe n -- adGroupCreateRequestBidStrategyType :: Maybe BidStrategyType
     <*> arbitraryReduced n -- adGroupCreateRequestBillableEvent :: ActionType
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestBudgetInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupCreateRequestBudgetType :: Maybe BudgetType
     <*> arbitrary -- adGroupCreateRequestCampaignId :: Text
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestEndTime :: Maybe Int
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestIsCreativeOptimization :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestLifetimeFrequencyCap :: Maybe Int
     <*> arbitrary -- adGroupCreateRequestName :: Text
-    <*> arbitraryReducedMaybe n -- adGroupCreateRequestOptimizationGoalMetadata :: Maybe OptimizationGoalMetadata
-    <*> arbitraryReducedMaybe n -- adGroupCreateRequestPacingDeliveryType :: Maybe PacingDeliveryType
+    <*> arbitraryReducedMaybeValue n -- adGroupCreateRequestOptimizationGoalMetadata :: Maybe A.Value
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestPlacementGroup :: Maybe PlacementGroupType
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestPromotionApplicationLevel :: Maybe E'PromotionApplicationLevel
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestPromotionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupCreateRequestPromotionIds :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestStartTime :: Maybe Int
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestStatus :: Maybe EntityStatus
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestTargetingSpec :: Maybe TargetingSpec
     <*> arbitraryReducedMaybe n -- adGroupCreateRequestTargetingTemplateIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adGroupCreateRequestTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- adGroupCreateRequestBidMultiplier :: Maybe Double
+    <*> arbitraryReducedMaybeValue n -- adGroupCreateRequestTrackingUrls :: Maybe A.Value
   
-instance Arbitrary AdGroupIdFilter where
-  arbitrary = sized genAdGroupIdFilter
+instance Arbitrary AdGroupCreateRequestAllOf1 where
+  arbitrary = sized genAdGroupCreateRequestAllOf1
 
-genAdGroupIdFilter :: Int -> Gen AdGroupIdFilter
-genAdGroupIdFilter n =
-  AdGroupIdFilter
-    <$> arbitraryReducedMaybe n -- adGroupIdFilterAdGroupIds :: Maybe [Text]
+genAdGroupCreateRequestAllOf1 :: Int -> Gen AdGroupCreateRequestAllOf1
+genAdGroupCreateRequestAllOf1 n =
+  AdGroupCreateRequestAllOf1
+    <$> arbitraryReducedMaybe n -- adGroupCreateRequestAllOf1AutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupCreateRequestAllOf1BidMultiplier :: Maybe Double
+    <*> arbitraryReducedMaybe n -- adGroupCreateRequestAllOf1BudgetType :: Maybe BudgetType
+    <*> arbitraryReducedMaybe n -- adGroupCreateRequestAllOf1PacingDeliveryType :: Maybe PacingDeliveryType
   
-instance Arbitrary AdGroupResponse where
-  arbitrary = sized genAdGroupResponse
+instance Arbitrary AdGroupDeliveryEstimates where
+  arbitrary = sized genAdGroupDeliveryEstimates
 
-genAdGroupResponse :: Int -> Gen AdGroupResponse
-genAdGroupResponse n =
-  AdGroupResponse
-    <$> arbitraryReducedMaybe n -- adGroupResponseAutoTargetingEnabled :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adGroupResponseBidInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupResponseBidStrategyType :: Maybe E'BidStrategyType
-    <*> arbitraryReducedMaybe n -- adGroupResponseBillableEvent :: Maybe ActionType
-    <*> arbitraryReducedMaybe n -- adGroupResponseBudgetInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupResponseBudgetType :: Maybe BudgetType
-    <*> arbitraryReducedMaybe n -- adGroupResponseCampaignId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupResponseEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupResponseIsCreativeOptimization :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adGroupResponseLifetimeFrequencyCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupResponseName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupResponseOptimizationGoalMetadata :: Maybe OptimizationGoalMetadata
-    <*> arbitraryReducedMaybe n -- adGroupResponsePacingDeliveryType :: Maybe PacingDeliveryType
-    <*> arbitraryReducedMaybe n -- adGroupResponsePlacementGroup :: Maybe PlacementGroupType
-    <*> arbitraryReducedMaybe n -- adGroupResponsePromotionApplicationLevel :: Maybe E'PromotionApplicationLevel
-    <*> arbitraryReducedMaybe n -- adGroupResponsePromotionId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupResponseStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupResponseStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- adGroupResponseTargetingSpec :: Maybe TargetingSpec
-    <*> arbitraryReducedMaybe n -- adGroupResponseTargetingTemplateIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adGroupResponseTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- adGroupResponseAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupResponseBidMultiplier :: Maybe Double
-    <*> arbitraryReducedMaybe n -- adGroupResponseConversionLearningModeType :: Maybe E'ConversionLearningModeType
-    <*> arbitraryReducedMaybe n -- adGroupResponseCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupResponseDcaAssets :: Maybe AnyType
-    <*> arbitraryReducedMaybe n -- adGroupResponseFeedProfileId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupResponseSummaryStatus :: Maybe AdGroupSummaryStatus
-    <*> arbitraryReducedMaybe n -- adGroupResponseType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupResponseUpdatedTime :: Maybe Int
+genAdGroupDeliveryEstimates :: Int -> Gen AdGroupDeliveryEstimates
+genAdGroupDeliveryEstimates n =
+  AdGroupDeliveryEstimates
+    <$> arbitraryReducedMaybe n -- adGroupDeliveryEstimatesAutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupDeliveryEstimatesCreativeTypes :: Maybe [AdGroupAudienceSizingCreativeTypes]
+    <*> arbitraryReducedMaybe n -- adGroupDeliveryEstimatesKeywords :: Maybe [AdGroupDeliveryEstimatesKeywordsItems]
+    <*> arbitraryReducedMaybe n -- adGroupDeliveryEstimatesMonthlyFrequencyCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupDeliveryEstimatesOptimizationGoalMetadata :: Maybe OptimizationGoalMetadata
+    <*> arbitraryReducedMaybe n -- adGroupDeliveryEstimatesOptimizationType :: Maybe OptimizationType
+    <*> arbitraryReducedMaybe n -- adGroupDeliveryEstimatesPlacementGroup :: Maybe PlacementGroupType
+    <*> arbitraryReducedMaybe n -- adGroupDeliveryEstimatesProductGroupIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupDeliveryEstimatesTargetingSpec :: Maybe TargetingSpecOptimal
+  
+instance Arbitrary AdGroupDeliveryEstimatesKeywordsItems where
+  arbitrary = sized genAdGroupDeliveryEstimatesKeywordsItems
+
+genAdGroupDeliveryEstimatesKeywordsItems :: Int -> Gen AdGroupDeliveryEstimatesKeywordsItems
+genAdGroupDeliveryEstimatesKeywordsItems n =
+  AdGroupDeliveryEstimatesKeywordsItems
+    <$> arbitraryReduced n -- adGroupDeliveryEstimatesKeywordsItemsMatchType :: NullalbleMatchType
+    <*> arbitrary -- adGroupDeliveryEstimatesKeywordsItemsValue :: Text
+  
+instance Arbitrary AdGroupTrackingURLs where
+  arbitrary = sized genAdGroupTrackingURLs
+
+genAdGroupTrackingURLs :: Int -> Gen AdGroupTrackingURLs
+genAdGroupTrackingURLs n =
+  AdGroupTrackingURLs
+    <$> arbitraryReducedMaybe n -- adGroupTrackingURLsAudienceVerification :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupTrackingURLsBuyableButton :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupTrackingURLsClick :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupTrackingURLsEngagement :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupTrackingURLsImpression :: Maybe [Text]
+  
+instance Arbitrary AdGroupUpdate where
+  arbitrary = sized genAdGroupUpdate
+
+genAdGroupUpdate :: Int -> Gen AdGroupUpdate
+genAdGroupUpdate n =
+  AdGroupUpdate
+    <$> arbitraryReducedMaybe n -- adGroupUpdateAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBidInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBidStrategyType :: Maybe BidStrategyType
+    <*> arbitraryReduced n -- adGroupUpdateBillableEvent :: ActionType
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBudgetInMicroCurrency :: Maybe Int
+    <*> arbitrary -- adGroupUpdateCampaignId :: Text
+    <*> arbitraryReduced n -- adGroupUpdateConversionLearningModeType :: ConversionLearningModeType
+    <*> arbitrary -- adGroupUpdateCreatedTime :: Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateCustomerSegmentId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateDcaAssets :: Maybe AnyType
+    <*> arbitraryReducedMaybe n -- adGroupUpdateEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateExtFeatures :: Maybe AdgroupTrackingFeatures
+    <*> arbitraryReducedMaybe n -- adGroupUpdateFeedProfileId :: Maybe Text
+    <*> arbitrary -- adGroupUpdateId :: Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateIsCreativeOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupUpdateIsLocalInventory :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupUpdateLifetimeFrequencyCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateLocalInventoryRadiusInMiles :: Maybe Double
+    <*> arbitrary -- adGroupUpdateName :: Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateOptimizationGoalMetadata :: Maybe NullableOptimizationGoalMetadata
+    <*> arbitraryReducedMaybe n -- adGroupUpdatePerformancePlusCampaignSettings :: Maybe PerformancePlusCampaignSettings
+    <*> arbitraryReducedMaybe n -- adGroupUpdatePlacementGroup :: Maybe PlacementGroupType
+    <*> arbitraryReducedMaybe n -- adGroupUpdatePlacementTrafficType :: Maybe PlacementTrafficType
+    <*> arbitraryReducedMaybe n -- adGroupUpdatePromotionApplicationLevel :: Maybe PromotionApplicationLevel
+    <*> arbitraryReducedMaybe n -- adGroupUpdatePromotionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdatePromotionIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupUpdateStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateStatus :: Maybe EntityStatus
+    <*> arbitraryReduced n -- adGroupUpdateSummaryStatus :: SummaryStatus
+    <*> arbitraryReducedMaybe n -- adGroupUpdateTargetingSpec :: Maybe TargetingSpecOptimal
+    <*> arbitraryReducedMaybe n -- adGroupUpdateTargetingTemplateIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupUpdateTrackingUrls :: Maybe AdGroupTrackingURLs
+    <*> arbitrary -- adGroupUpdateType :: Text
+    <*> arbitrary -- adGroupUpdateUpdatedTime :: Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateAutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBidMultiplier :: Maybe Double
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBudgetType :: Maybe BudgetType
+    <*> arbitraryReducedMaybe n -- adGroupUpdatePacingDeliveryType :: Maybe PacingDeliveryType
+  
+instance Arbitrary AdGroupUpdateBatchUpdate where
+  arbitrary = sized genAdGroupUpdateBatchUpdate
+
+genAdGroupUpdateBatchUpdate :: Int -> Gen AdGroupUpdateBatchUpdate
+genAdGroupUpdateBatchUpdate n =
+  AdGroupUpdateBatchUpdate
+    <$> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateAutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateBidInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateBidMultiplier :: Maybe Double
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateBidStrategyType :: Maybe BidStrategyType
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateBillableEvent :: Maybe ActionType
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateBudgetInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateBudgetType :: Maybe BudgetType
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateCampaignId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateCustomerSegmentId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateExtFeatures :: Maybe AdgroupTrackingFeatures
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateFeedProfileId :: Maybe Text
+    <*> arbitrary -- adGroupUpdateBatchUpdateId :: Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateIsCreativeOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateIsLocalInventory :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateLifetimeFrequencyCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateLocalInventoryRadiusInMiles :: Maybe Double
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateOptimizationGoalMetadata :: Maybe NullableOptimizationGoalMetadata
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdatePacingDeliveryType :: Maybe PacingDeliveryType
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdatePerformancePlusCampaignSettings :: Maybe PerformancePlusCampaignSettings
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdatePlacementGroup :: Maybe PlacementGroupType
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdatePlacementTrafficType :: Maybe PlacementTrafficType
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdatePromotionApplicationLevel :: Maybe PromotionApplicationLevel
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdatePromotionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdatePromotionIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateStatus :: Maybe EntityStatus
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateTargetingSpec :: Maybe TargetingSpecOptimal
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateTargetingSpecOperations :: Maybe [TargetingSpecOperations]
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateTargetingTemplateIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adGroupUpdateBatchUpdateTrackingUrls :: Maybe AdGroupTrackingURLs
   
 instance Arbitrary AdGroupUpdateRequest where
   arbitrary = sized genAdGroupUpdateRequest
@@ -505,9 +902,12 @@ instance Arbitrary AdGroupUpdateRequest where
 genAdGroupUpdateRequest :: Int -> Gen AdGroupUpdateRequest
 genAdGroupUpdateRequest n =
   AdGroupUpdateRequest
-    <$> arbitraryReducedMaybe n -- adGroupUpdateRequestAutoTargetingEnabled :: Maybe Bool
+    <$> arbitraryReducedMaybe n -- adGroupUpdateRequestBidMultiplier :: Maybe Double
+    <*> arbitrary -- adGroupUpdateRequestId :: Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateRequestTargetingSpecOperations :: Maybe [TargetingSpecOperations]
+    <*> arbitraryReducedMaybe n -- adGroupUpdateRequestAutoTargetingEnabled :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestBidInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adGroupUpdateRequestBidStrategyType :: Maybe E'BidStrategyType
+    <*> arbitraryReducedMaybe n -- adGroupUpdateRequestBidStrategyType :: Maybe BidStrategyType
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestBillableEvent :: Maybe ActionType
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestBudgetInMicroCurrency :: Maybe Int
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestBudgetType :: Maybe BudgetType
@@ -516,27 +916,53 @@ genAdGroupUpdateRequest n =
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestIsCreativeOptimization :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestLifetimeFrequencyCap :: Maybe Int
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupUpdateRequestOptimizationGoalMetadata :: Maybe OptimizationGoalMetadata
+    <*> arbitraryReducedMaybeValue n -- adGroupUpdateRequestOptimizationGoalMetadata :: Maybe A.Value
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestPacingDeliveryType :: Maybe PacingDeliveryType
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestPlacementGroup :: Maybe PlacementGroupType
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestPromotionApplicationLevel :: Maybe E'PromotionApplicationLevel
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestPromotionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateRequestPromotionIds :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestStartTime :: Maybe Int
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestStatus :: Maybe EntityStatus
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestTargetingSpec :: Maybe TargetingSpec
     <*> arbitraryReducedMaybe n -- adGroupUpdateRequestTargetingTemplateIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adGroupUpdateRequestTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- adGroupUpdateRequestBidMultiplier :: Maybe Double
-    <*> arbitrary -- adGroupUpdateRequestId :: Text
+    <*> arbitraryReducedMaybeValue n -- adGroupUpdateRequestTrackingUrls :: Maybe A.Value
   
-instance Arbitrary AdGroupsAnalyticsResponseInner where
-  arbitrary = sized genAdGroupsAnalyticsResponseInner
+instance Arbitrary AdGroupUpdateRequestAllOf1 where
+  arbitrary = sized genAdGroupUpdateRequestAllOf1
 
-genAdGroupsAnalyticsResponseInner :: Int -> Gen AdGroupsAnalyticsResponseInner
-genAdGroupsAnalyticsResponseInner n =
-  AdGroupsAnalyticsResponseInner
-    <$> arbitraryReducedMaybe n -- adGroupsAnalyticsResponseInnerAdGroupId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adGroupsAnalyticsResponseInnerDate :: Maybe Date
+genAdGroupUpdateRequestAllOf1 :: Int -> Gen AdGroupUpdateRequestAllOf1
+genAdGroupUpdateRequestAllOf1 n =
+  AdGroupUpdateRequestAllOf1
+    <$> arbitraryReducedMaybe n -- adGroupUpdateRequestAllOf1BidMultiplier :: Maybe Double
+    <*> arbitrary -- adGroupUpdateRequestAllOf1Id :: Text
+    <*> arbitraryReducedMaybe n -- adGroupUpdateRequestAllOf1TargetingSpecOperations :: Maybe [TargetingSpecOperations]
+  
+instance Arbitrary AdGroupsAnalyticsMetrics where
+  arbitrary = sized genAdGroupsAnalyticsMetrics
+
+genAdGroupsAnalyticsMetrics :: Int -> Gen AdGroupsAnalyticsMetrics
+genAdGroupsAnalyticsMetrics n =
+  AdGroupsAnalyticsMetrics
+    <$> arbitraryReducedMaybe n -- adGroupsAnalyticsMetricsAdGroupId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adGroupsAnalyticsMetricsDate :: Maybe Date
+  
+instance Arbitrary AdGroupsCreate200Response where
+  arbitrary = sized genAdGroupsCreate200Response
+
+genAdGroupsCreate200Response :: Int -> Gen AdGroupsCreate200Response
+genAdGroupsCreate200Response n =
+  AdGroupsCreate200Response
+    <$> arbitraryReduced n -- adGroupsCreate200ResponseItems :: [AdGroupsCreate200ResponseItemsInner]
+  
+instance Arbitrary AdGroupsCreate200ResponseItemsInner where
+  arbitrary = sized genAdGroupsCreate200ResponseItemsInner
+
+genAdGroupsCreate200ResponseItemsInner :: Int -> Gen AdGroupsCreate200ResponseItemsInner
+genAdGroupsCreate200ResponseItemsInner n =
+  AdGroupsCreate200ResponseItemsInner
+    <$> arbitraryReducedMaybe n -- adGroupsCreate200ResponseItemsInnerData :: Maybe AdGroup
+    <*> arbitraryReducedMaybe n -- adGroupsCreate200ResponseItemsInnerExceptions :: Maybe [PinterestLibBatchItemException]
   
 instance Arbitrary AdGroupsList200Response where
   arbitrary = sized genAdGroupsList200Response
@@ -545,7 +971,7 @@ genAdGroupsList200Response :: Int -> Gen AdGroupsList200Response
 genAdGroupsList200Response n =
   AdGroupsList200Response
     <$> arbitraryReducedMaybe n -- adGroupsList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- adGroupsList200ResponseItems :: [AdGroupResponse]
+    <*> arbitraryReduced n -- adGroupsList200ResponseItems :: [AdGroup]
   
 instance Arbitrary AdPinAnalytics where
   arbitrary = sized genAdPinAnalytics
@@ -556,31 +982,6 @@ genAdPinAnalytics n =
     <$> arbitraryReducedMaybe n -- adPinAnalyticsDate :: Maybe Date
     <*> arbitrary -- adPinAnalyticsPinId :: Text
   
-instance Arbitrary AdPinId where
-  arbitrary = sized genAdPinId
-
-genAdPinId :: Int -> Gen AdPinId
-genAdPinId n =
-  AdPinId
-    <$> arbitraryReducedMaybe n -- adPinIdPinId :: Maybe Text
-  
-instance Arbitrary AdPreviewCreateFromImage where
-  arbitrary = sized genAdPreviewCreateFromImage
-
-genAdPreviewCreateFromImage :: Int -> Gen AdPreviewCreateFromImage
-genAdPreviewCreateFromImage n =
-  AdPreviewCreateFromImage
-    <$> arbitrary -- adPreviewCreateFromImageImageUrl :: Text
-    <*> arbitrary -- adPreviewCreateFromImageTitle :: Text
-  
-instance Arbitrary AdPreviewCreateFromPin where
-  arbitrary = sized genAdPreviewCreateFromPin
-
-genAdPreviewCreateFromPin :: Int -> Gen AdPreviewCreateFromPin
-genAdPreviewCreateFromPin n =
-  AdPreviewCreateFromPin
-    <$> arbitrary -- adPreviewCreateFromPinPinId :: Text
-  
 instance Arbitrary AdPreviewRequest where
   arbitrary = sized genAdPreviewRequest
 
@@ -588,17 +989,19 @@ genAdPreviewRequest :: Int -> Gen AdPreviewRequest
 genAdPreviewRequest n =
   AdPreviewRequest
     <$> arbitrary -- adPreviewRequestImageUrl :: Text
+    <*> arbitraryReducedMaybe n -- adPreviewRequestPromotionId :: Maybe Text
     <*> arbitrary -- adPreviewRequestTitle :: Text
+    <*> arbitraryReduced n -- adPreviewRequestCreativeType :: AdShoppingPreviewCreativeType
     <*> arbitrary -- adPreviewRequestPinId :: Text
     <*> arbitrary -- adPreviewRequestCatalogProductGroupId :: Text
-    <*> arbitrary -- adPreviewRequestCreativeType :: E'CreativeType
     <*> arbitraryReducedMaybe n -- adPreviewRequestCustomizableCtaType :: Maybe CustomizableCTAType
     <*> arbitraryReducedMaybe n -- adPreviewRequestHeroImageTitle :: Maybe Text
     <*> arbitraryReducedMaybe n -- adPreviewRequestHeroImageUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- adPreviewRequestHeroPinId :: Maybe Text
     <*> arbitraryReducedMaybe n -- adPreviewRequestImageTag :: Maybe Text
     <*> arbitraryReducedMaybe n -- adPreviewRequestItemId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adPreviewRequestPreferredMediaType :: Maybe E'PreferredMediaType
+    <*> arbitraryReducedMaybe n -- adPreviewRequestPreferredMediaType :: Maybe BasePreferredMediaType
+    <*> arbitraryReducedMaybe n -- adPreviewRequestShowPromotion :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adPreviewRequestVideoTag :: Maybe Text
   
 instance Arbitrary AdPreviewShopping where
@@ -608,15 +1011,35 @@ genAdPreviewShopping :: Int -> Gen AdPreviewShopping
 genAdPreviewShopping n =
   AdPreviewShopping
     <$> arbitrary -- adPreviewShoppingCatalogProductGroupId :: Text
-    <*> arbitrary -- adPreviewShoppingCreativeType :: E'CreativeType
+    <*> arbitraryReduced n -- adPreviewShoppingCreativeType :: AdShoppingPreviewCreativeType
     <*> arbitraryReducedMaybe n -- adPreviewShoppingCustomizableCtaType :: Maybe CustomizableCTAType
     <*> arbitraryReducedMaybe n -- adPreviewShoppingHeroImageTitle :: Maybe Text
     <*> arbitraryReducedMaybe n -- adPreviewShoppingHeroImageUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- adPreviewShoppingHeroPinId :: Maybe Text
     <*> arbitraryReducedMaybe n -- adPreviewShoppingImageTag :: Maybe Text
     <*> arbitraryReducedMaybe n -- adPreviewShoppingItemId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adPreviewShoppingPreferredMediaType :: Maybe E'PreferredMediaType
+    <*> arbitraryReducedMaybe n -- adPreviewShoppingPreferredMediaType :: Maybe BasePreferredMediaType
+    <*> arbitraryReducedMaybe n -- adPreviewShoppingShowPromotion :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adPreviewShoppingVideoTag :: Maybe Text
+  
+instance Arbitrary AdPreviewSourceImage where
+  arbitrary = sized genAdPreviewSourceImage
+
+genAdPreviewSourceImage :: Int -> Gen AdPreviewSourceImage
+genAdPreviewSourceImage n =
+  AdPreviewSourceImage
+    <$> arbitrary -- adPreviewSourceImageImageUrl :: Text
+    <*> arbitraryReducedMaybe n -- adPreviewSourceImagePromotionId :: Maybe Text
+    <*> arbitrary -- adPreviewSourceImageTitle :: Text
+  
+instance Arbitrary AdPreviewSourcePinId where
+  arbitrary = sized genAdPreviewSourcePinId
+
+genAdPreviewSourcePinId :: Int -> Gen AdPreviewSourcePinId
+genAdPreviewSourcePinId n =
+  AdPreviewSourcePinId
+    <$> arbitraryReducedMaybe n -- adPreviewSourcePinIdCreativeType :: Maybe AdPinPreviewCreativeType
+    <*> arbitrary -- adPreviewSourcePinIdPinId :: Text
   
 instance Arbitrary AdPreviewURLResponse where
   arbitrary = sized genAdPreviewURLResponse
@@ -626,53 +1049,15 @@ genAdPreviewURLResponse n =
   AdPreviewURLResponse
     <$> arbitraryReducedMaybe n -- adPreviewURLResponseUrl :: Maybe Text
   
-instance Arbitrary AdResponse where
-  arbitrary = sized genAdResponse
-
-genAdResponse :: Int -> Gen AdResponse
-genAdResponse n =
-  AdResponse
-    <$> arbitraryReducedMaybe n -- adResponseAdGroupId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseAndroidDeepLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseCarouselAndroidDeepLinks :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adResponseCarouselDestinationUrls :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adResponseCarouselIosDeepLinks :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adResponseClickTrackingUrl :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseCreativeType :: Maybe CreativeType
-    <*> arbitraryReducedMaybe n -- adResponseCustomizableCtaType :: Maybe CustomizableCTAType
-    <*> arbitraryReducedMaybe n -- adResponseDestinationUrl :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseDisclosureType :: Maybe DisclosureType
-    <*> arbitraryReducedMaybe n -- adResponseDisclosureUrl :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseGridClickType :: Maybe GridClickType
-    <*> arbitraryReducedMaybe n -- adResponseIosDeepLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseIsPinDeleted :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adResponseIsRemovable :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adResponseLeadFormId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseQuizPinData :: Maybe QuizPinData
-    <*> arbitraryReducedMaybe n -- adResponseStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- adResponseTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- adResponseViewTrackingUrl :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponsePinId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseCampaignId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseCollectionItemsDestinationUrlTemplate :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseRejectedReasons :: Maybe [E'RejectedReasons]
-    <*> arbitraryReducedMaybe n -- adResponseRejectionLabels :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adResponseReviewStatus :: Maybe E'ReviewStatus
-    <*> arbitraryReducedMaybe n -- adResponseSummaryStatus :: Maybe PinPromotionSummaryStatus
-    <*> arbitraryReducedMaybe n -- adResponseType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adResponseUpdatedTime :: Maybe Int
-  
 instance Arbitrary AdUpdateRequest where
   arbitrary = sized genAdUpdateRequest
 
 genAdUpdateRequest :: Int -> Gen AdUpdateRequest
 genAdUpdateRequest n =
   AdUpdateRequest
-    <$> arbitraryReducedMaybe n -- adUpdateRequestAdGroupId :: Maybe Text
+    <$> arbitrary -- adUpdateRequestId :: Text
+    <*> arbitraryReducedMaybe n -- adUpdateRequestPinId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adUpdateRequestAdGroupId :: Maybe Text
     <*> arbitraryReducedMaybe n -- adUpdateRequestAndroidDeepLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- adUpdateRequestCarouselAndroidDeepLinks :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- adUpdateRequestCarouselDestinationUrls :: Maybe [Text]
@@ -685,16 +1070,41 @@ genAdUpdateRequest n =
     <*> arbitraryReducedMaybe n -- adUpdateRequestDisclosureUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- adUpdateRequestGridClickType :: Maybe GridClickType
     <*> arbitraryReducedMaybe n -- adUpdateRequestIosDeepLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adUpdateRequestIsCarting :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adUpdateRequestIsPinDeleted :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adUpdateRequestIsRemovable :: Maybe Bool
     <*> arbitraryReducedMaybe n -- adUpdateRequestLeadFormId :: Maybe Text
     <*> arbitraryReducedMaybe n -- adUpdateRequestName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adUpdateRequestQuizPinData :: Maybe QuizPinData
+    <*> arbitraryReducedMaybeValue n -- adUpdateRequestQuizPinData :: Maybe A.Value
     <*> arbitraryReducedMaybe n -- adUpdateRequestStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- adUpdateRequestTrackingUrls :: Maybe TrackingUrls
+    <*> arbitraryReducedMaybeValue n -- adUpdateRequestTrackingUrls :: Maybe A.Value
     <*> arbitraryReducedMaybe n -- adUpdateRequestViewTrackingUrl :: Maybe Text
-    <*> arbitrary -- adUpdateRequestId :: Text
-    <*> arbitraryReducedMaybe n -- adUpdateRequestPinId :: Maybe Text
+  
+instance Arbitrary AdUpdateRequestAllOf1 where
+  arbitrary = sized genAdUpdateRequestAllOf1
+
+genAdUpdateRequestAllOf1 :: Int -> Gen AdUpdateRequestAllOf1
+genAdUpdateRequestAllOf1 n =
+  AdUpdateRequestAllOf1
+    <$> arbitrary -- adUpdateRequestAllOf1Id :: Text
+    <*> arbitraryReducedMaybe n -- adUpdateRequestAllOf1PinId :: Maybe Text
+  
+instance Arbitrary AdgroupTrackingFeatures where
+  arbitrary = sized genAdgroupTrackingFeatures
+
+genAdgroupTrackingFeatures :: Int -> Gen AdgroupTrackingFeatures
+genAdgroupTrackingFeatures n =
+  AdgroupTrackingFeatures
+    <$> arbitraryReducedMaybe n -- adgroupTrackingFeaturesEnabled :: Maybe [AdgroupTrackingFeatureType]
+  
+instance Arbitrary AdsAnalytics where
+  arbitrary = sized genAdsAnalytics
+
+genAdsAnalytics :: Int -> Gen AdsAnalytics
+genAdsAnalytics n =
+  AdsAnalytics
+    <$> arbitrary -- adsAnalyticsAdId :: Text
+    <*> arbitraryReducedMaybe n -- adsAnalyticsDate :: Maybe Date
   
 instance Arbitrary AdsAnalyticsCreateAsyncRequest where
   arbitrary = sized genAdsAnalyticsCreateAsyncRequest
@@ -702,45 +1112,37 @@ instance Arbitrary AdsAnalyticsCreateAsyncRequest where
 genAdsAnalyticsCreateAsyncRequest :: Int -> Gen AdsAnalyticsCreateAsyncRequest
 genAdsAnalyticsCreateAsyncRequest n =
   AdsAnalyticsCreateAsyncRequest
-    <$> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestAttributionTypes :: Maybe [ConversionReportAttributionType]
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestClickWindowDays :: Maybe ConversionAttributionWindowDays
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestConversionReportTime :: Maybe ConversionReportTimeType
-    <*> arbitrary -- adsAnalyticsCreateAsyncRequestEndDate :: Text
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestEngagementWindowDays :: Maybe ConversionAttributionWindowDays
-    <*> arbitraryReduced n -- adsAnalyticsCreateAsyncRequestGranularity :: Granularity
-    <*> arbitrary -- adsAnalyticsCreateAsyncRequestStartDate :: Text
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestViewWindowDays :: Maybe ConversionAttributionWindowDays
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCampaignIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCampaignStatuses :: Maybe [CampaignSummaryStatus]
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCampaignObjectiveTypes :: Maybe [ObjectiveType]
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCampaignBrandLabel :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestAdGroupIds :: Maybe [Text]
+    <$> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestAdGroupIds :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestAdGroupStatuses :: Maybe [AdGroupSummaryStatus]
     <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestAdIds :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestAdStatuses :: Maybe [PinPromotionSummaryStatus]
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestAttributionTypes :: Maybe [ConversionReportAttributionType]
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCampaignBrandLabel :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCampaignCustomLabel :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCampaignIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCampaignObjectiveTypes :: Maybe [CampaignObjectiveType]
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCampaignStatuses :: Maybe [CampaignSummaryStatus]
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestClickWindowDays :: Maybe ConversionAttributionWindowDays
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestColumns :: Maybe [ReportingColumnAsync]
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCombineTargetingTypes :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestConversionReportTime :: Maybe ConversionReportTimeType
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCustomConversionEventMetrics :: Maybe [CustomConversionEventMetrics]
+    <*> arbitrary -- adsAnalyticsCreateAsyncRequestEndDate :: Text
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestEndHour :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestEngagementWindowDays :: Maybe ConversionAttributionWindowDays
+    <*> arbitraryReduced n -- adsAnalyticsCreateAsyncRequestGranularity :: Granularity
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestLevel :: Maybe MetricsReportingLevel
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestMetricsFilters :: Maybe [AdsAnalyticsMetricsFilter]
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestPrimarySort :: Maybe PrimarySort
     <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestProductGroupIds :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestProductGroupStatuses :: Maybe [ProductGroupSummaryStatus]
     <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestProductItemIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestTargetingTypes :: Maybe [E'TargetingTypes]
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestMetricsFilters :: Maybe [AdsAnalyticsMetricsFilter]
-    <*> arbitraryReduced n -- adsAnalyticsCreateAsyncRequestColumns :: [ReportingColumnAsync]
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCombineTargetingTypes :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestCustomConversionEventMetrics :: Maybe [AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics]
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestEndHour :: Maybe Int
-    <*> arbitraryReduced n -- adsAnalyticsCreateAsyncRequestLevel :: MetricsReportingLevel
-    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestPrimarySort :: Maybe E'PrimarySort
     <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestReportFormat :: Maybe DataOutputFormat
     <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestReportingTimezone :: Maybe ReportingTimeZone
+    <*> arbitrary -- adsAnalyticsCreateAsyncRequestStartDate :: Text
     <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestStartHour :: Maybe Int
-  
-instance Arbitrary AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics where
-  arbitrary = sized genAdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
-
-genAdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics :: Int -> Gen AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
-genAdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics n =
-  AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
-    <$> arbitrary -- adsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetricsCustomEventMetricsType :: E'CustomEventMetricsType
-    <*> arbitrary -- adsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetricsCustomEventName :: Text
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestTargetingTypes :: Maybe [AdAdsAnalyticsAsyncTargetingTypes]
+    <*> arbitraryReducedMaybe n -- adsAnalyticsCreateAsyncRequestViewWindowDays :: Maybe ConversionAttributionWindowDays
   
 instance Arbitrary AdsAnalyticsCreateAsyncResponse where
   arbitrary = sized genAdsAnalyticsCreateAsyncResponse
@@ -772,15 +1174,6 @@ genAdsAnalyticsMetricsFilter n =
     <*> arbitraryReduced n -- adsAnalyticsMetricsFilterOperator :: AdsAnalyticsFilterOperator
     <*> arbitrary -- adsAnalyticsMetricsFilterValues :: [Double]
   
-instance Arbitrary AdsAnalyticsResponseInner where
-  arbitrary = sized genAdsAnalyticsResponseInner
-
-genAdsAnalyticsResponseInner :: Int -> Gen AdsAnalyticsResponseInner
-genAdsAnalyticsResponseInner n =
-  AdsAnalyticsResponseInner
-    <$> arbitrary -- adsAnalyticsResponseInnerAdId :: Text
-    <*> arbitraryReducedMaybe n -- adsAnalyticsResponseInnerDate :: Maybe Date
-  
 instance Arbitrary AdsCreditDiscountsResponse where
   arbitrary = sized genAdsCreditDiscountsResponse
 
@@ -791,28 +1184,28 @@ genAdsCreditDiscountsResponse n =
     <*> arbitraryReducedMaybe n -- adsCreditDiscountsResponseAdvertiserId :: Maybe Text
     <*> arbitraryReducedMaybe n -- adsCreditDiscountsResponseDiscountCurrency :: Maybe Text
     <*> arbitraryReducedMaybe n -- adsCreditDiscountsResponseDiscountInMicroCurrency :: Maybe Double
-    <*> arbitraryReducedMaybe n -- adsCreditDiscountsResponseDiscountType :: Maybe E'DiscountType
+    <*> arbitraryReducedMaybe n -- adsCreditDiscountsResponseDiscountType :: Maybe AdsCreditDiscountType
     <*> arbitraryReducedMaybe n -- adsCreditDiscountsResponseRemainingDiscountInMicroCurrency :: Maybe Double
     <*> arbitraryReducedMaybe n -- adsCreditDiscountsResponseTitle :: Maybe Text
   
-instance Arbitrary AdsCreditRedeemRequest where
-  arbitrary = sized genAdsCreditRedeemRequest
+instance Arbitrary AdsCreditRedeem where
+  arbitrary = sized genAdsCreditRedeem
 
-genAdsCreditRedeemRequest :: Int -> Gen AdsCreditRedeemRequest
-genAdsCreditRedeemRequest n =
-  AdsCreditRedeemRequest
-    <$> arbitrary -- adsCreditRedeemRequestOfferCodeHash :: Text
-    <*> arbitrary -- adsCreditRedeemRequestValidateOnly :: Bool
+genAdsCreditRedeem :: Int -> Gen AdsCreditRedeem
+genAdsCreditRedeem n =
+  AdsCreditRedeem
+    <$> arbitraryReducedMaybe n -- adsCreditRedeemErrorCode :: Maybe Int
+    <*> arbitraryReducedMaybe n -- adsCreditRedeemErrorMessage :: Maybe Text
+    <*> arbitraryReducedMaybe n -- adsCreditRedeemSuccess :: Maybe Bool
   
-instance Arbitrary AdsCreditRedeemResponse where
-  arbitrary = sized genAdsCreditRedeemResponse
+instance Arbitrary AdsCreditRedeemCreate where
+  arbitrary = sized genAdsCreditRedeemCreate
 
-genAdsCreditRedeemResponse :: Int -> Gen AdsCreditRedeemResponse
-genAdsCreditRedeemResponse n =
-  AdsCreditRedeemResponse
-    <$> arbitraryReducedMaybe n -- adsCreditRedeemResponseErrorCode :: Maybe Int
-    <*> arbitraryReducedMaybe n -- adsCreditRedeemResponseErrorMessage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- adsCreditRedeemResponseSuccess :: Maybe Bool
+genAdsCreditRedeemCreate :: Int -> Gen AdsCreditRedeemCreate
+genAdsCreditRedeemCreate n =
+  AdsCreditRedeemCreate
+    <$> arbitrary -- adsCreditRedeemCreateOfferCodeHash :: Text
+    <*> arbitrary -- adsCreditRedeemCreateValidateOnly :: Bool
   
 instance Arbitrary AdsCreditsDiscountsGet200Response where
   arbitrary = sized genAdsCreditsDiscountsGet200Response
@@ -830,7 +1223,7 @@ genAdsList200Response :: Int -> Gen AdsList200Response
 genAdsList200Response n =
   AdsList200Response
     <$> arbitraryReducedMaybe n -- adsList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- adsList200ResponseItems :: [AdResponse]
+    <*> arbitraryReduced n -- adsList200ResponseItems :: [Ad]
   
 instance Arbitrary AdvancedAuctionBidOptions where
   arbitrary = sized genAdvancedAuctionBidOptions
@@ -848,10 +1241,10 @@ instance Arbitrary AdvancedAuctionItem where
 genAdvancedAuctionItem :: Int -> Gen AdvancedAuctionItem
 genAdvancedAuctionItem n =
   AdvancedAuctionItem
-    <$> arbitraryReduced n -- advancedAuctionItemCountry :: Country
+    <$> arbitraryReduced n -- advancedAuctionItemBidOptions :: AdvancedAuctionBidOptions
+    <*> arbitraryReduced n -- advancedAuctionItemCountry :: Country
     <*> arbitrary -- advancedAuctionItemItemId :: Text
     <*> arbitraryReduced n -- advancedAuctionItemLanguage :: Language
-    <*> arbitraryReduced n -- advancedAuctionItemBidOptions :: AdvancedAuctionBidOptions
   
 instance Arbitrary AdvancedAuctionItems where
   arbitrary = sized genAdvancedAuctionItems
@@ -862,16 +1255,6 @@ genAdvancedAuctionItems n =
     <$> arbitraryReducedMaybe n -- advancedAuctionItemsCatalogId :: Maybe Text
     <*> arbitraryReducedMaybe n -- advancedAuctionItemsItems :: Maybe [AdvancedAuctionItem]
   
-instance Arbitrary AdvancedAuctionItemsGetRecord where
-  arbitrary = sized genAdvancedAuctionItemsGetRecord
-
-genAdvancedAuctionItemsGetRecord :: Int -> Gen AdvancedAuctionItemsGetRecord
-genAdvancedAuctionItemsGetRecord n =
-  AdvancedAuctionItemsGetRecord
-    <$> arbitraryReduced n -- advancedAuctionItemsGetRecordCountry :: Country
-    <*> arbitrary -- advancedAuctionItemsGetRecordItemId :: Text
-    <*> arbitraryReduced n -- advancedAuctionItemsGetRecordLanguage :: Language
-  
 instance Arbitrary AdvancedAuctionItemsGetRequest where
   arbitrary = sized genAdvancedAuctionItemsGetRequest
 
@@ -879,7 +1262,7 @@ genAdvancedAuctionItemsGetRequest :: Int -> Gen AdvancedAuctionItemsGetRequest
 genAdvancedAuctionItemsGetRequest n =
   AdvancedAuctionItemsGetRequest
     <$> arbitrary -- advancedAuctionItemsGetRequestCatalogId :: Text
-    <*> arbitraryReduced n -- advancedAuctionItemsGetRequestItems :: [AdvancedAuctionItemsGetRecord]
+    <*> arbitraryReduced n -- advancedAuctionItemsGetRequestItems :: [AdvancedAuctionKey]
   
 instance Arbitrary AdvancedAuctionItemsSubmitDeleteRecord where
   arbitrary = sized genAdvancedAuctionItemsSubmitDeleteRecord
@@ -888,9 +1271,10 @@ genAdvancedAuctionItemsSubmitDeleteRecord :: Int -> Gen AdvancedAuctionItemsSubm
 genAdvancedAuctionItemsSubmitDeleteRecord n =
   AdvancedAuctionItemsSubmitDeleteRecord
     <$> arbitraryReduced n -- advancedAuctionItemsSubmitDeleteRecordCountry :: Country
+    <*> arbitraryReducedMaybe n -- advancedAuctionItemsSubmitDeleteRecordErrors :: Maybe [AdvancedAuctionOperationError]
     <*> arbitrary -- advancedAuctionItemsSubmitDeleteRecordItemId :: Text
     <*> arbitraryReduced n -- advancedAuctionItemsSubmitDeleteRecordLanguage :: Language
-    <*> arbitraryReducedMaybe n -- advancedAuctionItemsSubmitDeleteRecordErrors :: Maybe [AdvancedAuctionOperationError]
+    <*> arbitrary -- advancedAuctionItemsSubmitDeleteRecordOperation :: E'Operation
   
 instance Arbitrary AdvancedAuctionItemsSubmitRecord where
   arbitrary = sized genAdvancedAuctionItemsSubmitRecord
@@ -898,12 +1282,12 @@ instance Arbitrary AdvancedAuctionItemsSubmitRecord where
 genAdvancedAuctionItemsSubmitRecord :: Int -> Gen AdvancedAuctionItemsSubmitRecord
 genAdvancedAuctionItemsSubmitRecord n =
   AdvancedAuctionItemsSubmitRecord
-    <$> arbitraryReduced n -- advancedAuctionItemsSubmitRecordOperation :: AdvancedAuctionOperation
+    <$> arbitraryReduced n -- advancedAuctionItemsSubmitRecordBidOptions :: AdvancedAuctionBidOptions
     <*> arbitraryReduced n -- advancedAuctionItemsSubmitRecordCountry :: Country
+    <*> arbitraryReducedMaybe n -- advancedAuctionItemsSubmitRecordErrors :: Maybe [AdvancedAuctionOperationError]
     <*> arbitrary -- advancedAuctionItemsSubmitRecordItemId :: Text
     <*> arbitraryReduced n -- advancedAuctionItemsSubmitRecordLanguage :: Language
-    <*> arbitraryReduced n -- advancedAuctionItemsSubmitRecordBidOptions :: AdvancedAuctionBidOptions
-    <*> arbitraryReducedMaybe n -- advancedAuctionItemsSubmitRecordErrors :: Maybe [AdvancedAuctionOperationError]
+    <*> arbitrary -- advancedAuctionItemsSubmitRecordOperation :: E'Operation
     <*> arbitraryReduced n -- advancedAuctionItemsSubmitRecordUpdateMask :: [UpdateMaskBidOptionField]
   
 instance Arbitrary AdvancedAuctionItemsSubmitRequest where
@@ -921,11 +1305,12 @@ instance Arbitrary AdvancedAuctionItemsSubmitUpsertRecord where
 genAdvancedAuctionItemsSubmitUpsertRecord :: Int -> Gen AdvancedAuctionItemsSubmitUpsertRecord
 genAdvancedAuctionItemsSubmitUpsertRecord n =
   AdvancedAuctionItemsSubmitUpsertRecord
-    <$> arbitraryReduced n -- advancedAuctionItemsSubmitUpsertRecordCountry :: Country
+    <$> arbitraryReduced n -- advancedAuctionItemsSubmitUpsertRecordBidOptions :: AdvancedAuctionBidOptions
+    <*> arbitraryReduced n -- advancedAuctionItemsSubmitUpsertRecordCountry :: Country
+    <*> arbitraryReducedMaybe n -- advancedAuctionItemsSubmitUpsertRecordErrors :: Maybe [AdvancedAuctionOperationError]
     <*> arbitrary -- advancedAuctionItemsSubmitUpsertRecordItemId :: Text
     <*> arbitraryReduced n -- advancedAuctionItemsSubmitUpsertRecordLanguage :: Language
-    <*> arbitraryReduced n -- advancedAuctionItemsSubmitUpsertRecordBidOptions :: AdvancedAuctionBidOptions
-    <*> arbitraryReducedMaybe n -- advancedAuctionItemsSubmitUpsertRecordErrors :: Maybe [AdvancedAuctionOperationError]
+    <*> arbitrary -- advancedAuctionItemsSubmitUpsertRecordOperation :: E'Operation2
     <*> arbitraryReduced n -- advancedAuctionItemsSubmitUpsertRecordUpdateMask :: [UpdateMaskBidOptionField]
   
 instance Arbitrary AdvancedAuctionKey where
@@ -962,24 +1347,101 @@ instance Arbitrary AdvertiserDefinedEvent where
 genAdvertiserDefinedEvent :: Int -> Gen AdvertiserDefinedEvent
 genAdvertiserDefinedEvent n =
   AdvertiserDefinedEvent
-    <$> arbitraryReducedMaybe n -- advertiserDefinedEventName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- advertiserDefinedEventMappedConversionType :: Maybe E'MappedConversionType
+    <$> arbitraryReducedMaybe n -- advertiserDefinedEventMappedConversionType :: Maybe ConversionTagTypeOptimal
+    <*> arbitraryReducedMaybe n -- advertiserDefinedEventName :: Maybe Text
   
-instance Arbitrary AdvertiserDefinedEventsResponse where
-  arbitrary = sized genAdvertiserDefinedEventsResponse
+instance Arbitrary AdvertiserDefinedEventInput where
+  arbitrary = sized genAdvertiserDefinedEventInput
 
-genAdvertiserDefinedEventsResponse :: Int -> Gen AdvertiserDefinedEventsResponse
-genAdvertiserDefinedEventsResponse n =
-  AdvertiserDefinedEventsResponse
-    <$> arbitraryReducedMaybe n -- advertiserDefinedEventsResponseItems :: Maybe [AdvertiserDefinedEvent]
+genAdvertiserDefinedEventInput :: Int -> Gen AdvertiserDefinedEventInput
+genAdvertiserDefinedEventInput n =
+  AdvertiserDefinedEventInput
+    <$> arbitraryReduced n -- advertiserDefinedEventInputMappedConversionType :: AdvertiserDefinedEventMappingType
+    <*> arbitrary -- advertiserDefinedEventInputName :: Text
   
-instance Arbitrary AllOf where
-  arbitrary = sized genAllOf
+instance Arbitrary AdvertiserDefinedEventProcessingRecord where
+  arbitrary = sized genAdvertiserDefinedEventProcessingRecord
 
-genAllOf :: Int -> Gen AllOf
-genAllOf n =
-  AllOf
-    <$> arbitraryReduced n -- allOfAllOf :: [CatalogsProductGroupFilterKeys]
+genAdvertiserDefinedEventProcessingRecord :: Int -> Gen AdvertiserDefinedEventProcessingRecord
+genAdvertiserDefinedEventProcessingRecord n =
+  AdvertiserDefinedEventProcessingRecord
+    <$> arbitraryReducedMaybe n -- advertiserDefinedEventProcessingRecordExceptions :: Maybe [Text]
+    <*> arbitrary -- advertiserDefinedEventProcessingRecordName :: Text
+    <*> arbitrary -- advertiserDefinedEventProcessingRecordStatus :: Text
+  
+instance Arbitrary AdvertiserDefinedEventsCreate200Response where
+  arbitrary = sized genAdvertiserDefinedEventsCreate200Response
+
+genAdvertiserDefinedEventsCreate200Response :: Int -> Gen AdvertiserDefinedEventsCreate200Response
+genAdvertiserDefinedEventsCreate200Response n =
+  AdvertiserDefinedEventsCreate200Response
+    <$> arbitraryReduced n -- advertiserDefinedEventsCreate200ResponseItems :: [AdvertiserDefinedEventProcessingRecord]
+  
+instance Arbitrary AdvertiserDefinedEventsCreateRequest where
+  arbitrary = sized genAdvertiserDefinedEventsCreateRequest
+
+genAdvertiserDefinedEventsCreateRequest :: Int -> Gen AdvertiserDefinedEventsCreateRequest
+genAdvertiserDefinedEventsCreateRequest n =
+  AdvertiserDefinedEventsCreateRequest
+    <$> arbitraryReduced n -- advertiserDefinedEventsCreateRequestItems :: [AdvertiserDefinedEventInput]
+  
+instance Arbitrary AdvertiserDefinedEventsGet200Response where
+  arbitrary = sized genAdvertiserDefinedEventsGet200Response
+
+genAdvertiserDefinedEventsGet200Response :: Int -> Gen AdvertiserDefinedEventsGet200Response
+genAdvertiserDefinedEventsGet200Response n =
+  AdvertiserDefinedEventsGet200Response
+    <$> arbitraryReduced n -- advertiserDefinedEventsGet200ResponseItems :: [AdvertiserDefinedEvent]
+  
+instance Arbitrary AgeBucketMultipliers where
+  arbitrary = sized genAgeBucketMultipliers
+
+genAgeBucketMultipliers :: Int -> Gen AgeBucketMultipliers
+genAgeBucketMultipliers n =
+  AgeBucketMultipliers
+    <$> arbitraryReducedMaybe n -- ageBucketMultipliersAgeBucket :: Maybe TargetingSpecAgeBucket
+  
+instance Arbitrary AggregatedPinComment where
+  arbitrary = sized genAggregatedPinComment
+
+genAggregatedPinComment :: Int -> Gen AggregatedPinComment
+genAggregatedPinComment n =
+  AggregatedPinComment
+    <$> arbitraryReducedMaybe n -- aggregatedPinCommentAiDisclosures :: Maybe AiDisclosures
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentAltText :: Maybe Text
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentBoardId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentBoardOwner :: Maybe BoardOwner
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentBoardSectionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentCreatedAt :: Maybe DateTime
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentCreativeType :: Maybe CreativeType
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentDescription :: Maybe Text
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentDominantColor :: Maybe Text
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentHasBeenPromoted :: Maybe Bool
+    <*> arbitrary -- aggregatedPinCommentId :: Text
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentIsOwner :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentIsProduct :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentIsStandard :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentMedia :: Maybe PinMedia
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentParentPinId :: Maybe Text
+    <*> arbitraryReducedMaybeValue n -- aggregatedPinCommentPinMetrics :: Maybe A.Value
+    <*> arbitraryReducedMaybe n -- aggregatedPinCommentTitle :: Maybe Text
+  
+instance Arbitrary AiDisclosures where
+  arbitrary = sized genAiDisclosures
+
+genAiDisclosures :: Int -> Gen AiDisclosures
+genAiDisclosures n =
+  AiDisclosures
+    <$> arbitraryReduced n -- aiDisclosuresValues :: [AiDisclosureItem]
+  
+instance Arbitrary AiDisclosuresUpdate where
+  arbitrary = sized genAiDisclosuresUpdate
+
+genAiDisclosuresUpdate :: Int -> Gen AiDisclosuresUpdate
+genAiDisclosuresUpdate n =
+  AiDisclosuresUpdate
+    <$> arbitraryReducedMaybe n -- aiDisclosuresUpdateValues :: Maybe [AiDisclosureItem]
   
 instance Arbitrary AmazonConnectRequest where
   arbitrary = sized genAmazonConnectRequest
@@ -994,6 +1456,14 @@ genAmazonConnectRequest n =
     <*> arbitrary -- amazonConnectRequestIsAmazonAccountLinked :: Bool
     <*> arbitraryReducedMaybe n -- amazonConnectRequestOneTimePasscode :: Maybe Text
     <*> arbitraryReducedMaybe n -- amazonConnectRequestPinterestUserId :: Maybe Text
+  
+instance Arbitrary AmazonConnectResponse where
+  arbitrary = sized genAmazonConnectResponse
+
+genAmazonConnectResponse :: Int -> Gen AmazonConnectResponse
+genAmazonConnectResponse n =
+  AmazonConnectResponse
+    <$> arbitraryReducedMaybe n -- amazonConnectResponseMessage :: Maybe Text
   
 instance Arbitrary AnalyticsDailyMetrics where
   arbitrary = sized genAnalyticsDailyMetrics
@@ -1014,21 +1484,51 @@ genAnalyticsMetricsResponse n =
     <$> arbitraryReducedMaybe n -- analyticsMetricsResponseDailyMetrics :: Maybe [AnalyticsDailyMetrics]
     <*> arbitraryReducedMaybe n -- analyticsMetricsResponseSummaryMetrics :: Maybe (Map.Map String Double)
   
-instance Arbitrary AnyOf where
-  arbitrary = sized genAnyOf
-
-genAnyOf :: Int -> Gen AnyOf
-genAnyOf n =
-  AnyOf
-    <$> arbitraryReduced n -- anyOfAnyOf :: [CatalogsProductGroupFilterKeys]
-  
 instance Arbitrary AppTypeMultipliers where
   arbitrary = sized genAppTypeMultipliers
 
 genAppTypeMultipliers :: Int -> Gen AppTypeMultipliers
 genAppTypeMultipliers n =
   AppTypeMultipliers
-    <$> arbitraryReducedMaybe n -- appTypeMultipliersAppType :: Maybe E'AppType
+    <$> arbitraryReducedMaybe n -- appTypeMultipliersAppType :: Maybe TargetingSpecAppType
+  
+instance Arbitrary AppsflyerAudience where
+  arbitrary = sized genAppsflyerAudience
+
+genAppsflyerAudience :: Int -> Gen AppsflyerAudience
+genAppsflyerAudience n =
+  AppsflyerAudience
+    <$> arbitrary -- appsflyerAudienceContainerId :: Text
+    <*> arbitrary -- appsflyerAudienceName :: Text
+    <*> arbitraryReduced n -- appsflyerAudiencePlatform :: AppsflyerPlatform
+  
+instance Arbitrary AppsflyerAudienceCreate where
+  arbitrary = sized genAppsflyerAudienceCreate
+
+genAppsflyerAudienceCreate :: Int -> Gen AppsflyerAudienceCreate
+genAppsflyerAudienceCreate n =
+  AppsflyerAudienceCreate
+    <$> arbitrary -- appsflyerAudienceCreateName :: Text
+    <*> arbitraryReduced n -- appsflyerAudienceCreatePlatform :: AppsflyerPlatform
+  
+instance Arbitrary AppsflyerAudienceSyncCreate where
+  arbitrary = sized genAppsflyerAudienceSyncCreate
+
+genAppsflyerAudienceSyncCreate :: Int -> Gen AppsflyerAudienceSyncCreate
+genAppsflyerAudienceSyncCreate n =
+  AppsflyerAudienceSyncCreate
+    <$> arbitrary -- appsflyerAudienceSyncCreateContainerId :: Text
+    <*> arbitraryReducedMaybe n -- appsflyerAudienceSyncCreateUrlAdidSha256 :: Maybe Text
+    <*> arbitraryReducedMaybe n -- appsflyerAudienceSyncCreateUrlEmailSha256 :: Maybe Text
+  
+instance Arbitrary AssetAccessRequestError where
+  arbitrary = sized genAssetAccessRequestError
+
+genAssetAccessRequestError :: Int -> Gen AssetAccessRequestError
+genAssetAccessRequestError n =
+  AssetAccessRequestError
+    <$> arbitraryReducedMaybe n -- assetAccessRequestErrorCode :: Maybe Int
+    <*> arbitraryReducedMaybe n -- assetAccessRequestErrorMessages :: Maybe [Text]
   
 instance Arbitrary AssetGroupBinding where
   arbitrary = sized genAssetGroupBinding
@@ -1036,17 +1536,105 @@ instance Arbitrary AssetGroupBinding where
 genAssetGroupBinding :: Int -> Gen AssetGroupBinding
 genAssetGroupBinding n =
   AssetGroupBinding
-    <$> arbitraryReducedMaybe n -- assetGroupBindingAdAccountsIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- assetGroupBindingAssetGroupDescription :: Maybe Text
-    <*> arbitraryReducedMaybe n -- assetGroupBindingAssetGroupName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- assetGroupBindingAssetGroupTypes :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- assetGroupBindingCatalogsIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- assetGroupBindingCreatedBy :: Maybe BusinessAccessUserSummary
-    <*> arbitraryReducedMaybe n -- assetGroupBindingCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- assetGroupBindingId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- assetGroupBindingOwner :: Maybe BusinessAccessUserSummary
-    <*> arbitraryReducedMaybe n -- assetGroupBindingProfilesIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- assetGroupBindingUpdatedTime :: Maybe Int
+    <$> arbitrary -- assetGroupBindingAdAccountsIds :: [Text]
+    <*> arbitrary -- assetGroupBindingAssetGroupDescription :: Text
+    <*> arbitrary -- assetGroupBindingAssetGroupName :: Text
+    <*> arbitrary -- assetGroupBindingAssetGroupTypes :: [Text]
+    <*> arbitrary -- assetGroupBindingCatalogsIds :: [Text]
+    <*> arbitraryReduced n -- assetGroupBindingCreatedBy :: BusinessAccessUserSummary
+    <*> arbitrary -- assetGroupBindingCreatedTime :: Int
+    <*> arbitrary -- assetGroupBindingId :: Text
+    <*> arbitraryReduced n -- assetGroupBindingOwner :: BusinessAccessUserSummary
+    <*> arbitrary -- assetGroupBindingProfilesIds :: [Text]
+    <*> arbitrary -- assetGroupBindingUpdatedTime :: Int
+  
+instance Arbitrary AssetGroupDeleteError where
+  arbitrary = sized genAssetGroupDeleteError
+
+genAssetGroupDeleteError :: Int -> Gen AssetGroupDeleteError
+genAssetGroupDeleteError n =
+  AssetGroupDeleteError
+    <$> arbitraryReducedMaybe n -- assetGroupDeleteErrorAssetGroupId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- assetGroupDeleteErrorCode :: Maybe Int
+    <*> arbitraryReducedMaybe n -- assetGroupDeleteErrorMessage :: Maybe Text
+  
+instance Arbitrary AssetGroupDeletion where
+  arbitrary = sized genAssetGroupDeletion
+
+genAssetGroupDeletion :: Int -> Gen AssetGroupDeletion
+genAssetGroupDeletion n =
+  AssetGroupDeletion
+    <$> arbitraryReducedMaybe n -- assetGroupDeletionDeletedAssetGroups :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- assetGroupDeletionExceptions :: Maybe [AssetGroupDeleteError]
+  
+instance Arbitrary AssetGroupDeletionDelete where
+  arbitrary = sized genAssetGroupDeletionDelete
+
+genAssetGroupDeletionDelete :: Int -> Gen AssetGroupDeletionDelete
+genAssetGroupDeletionDelete n =
+  AssetGroupDeletionDelete
+    <$> arbitrary -- assetGroupDeletionDeleteAssetGroupsToDelete :: [Text]
+  
+instance Arbitrary AssetGroupInput where
+  arbitrary = sized genAssetGroupInput
+
+genAssetGroupInput :: Int -> Gen AssetGroupInput
+genAssetGroupInput n =
+  AssetGroupInput
+    <$> arbitraryReducedMaybe n -- assetGroupInputAssetGroup :: Maybe AssetGroupBinding
+  
+instance Arbitrary AssetGroupInputCreate where
+  arbitrary = sized genAssetGroupInputCreate
+
+genAssetGroupInputCreate :: Int -> Gen AssetGroupInputCreate
+genAssetGroupInputCreate n =
+  AssetGroupInputCreate
+    <$> arbitraryReducedMaybe n -- assetGroupInputCreateAssetGroup :: Maybe AssetGroupBinding
+    <*> arbitrary -- assetGroupInputCreateAssetGroupDescription :: Text
+    <*> arbitrary -- assetGroupInputCreateAssetGroupName :: Text
+    <*> arbitraryReduced n -- assetGroupInputCreateAssetGroupTypes :: [AssetGroupType]
+  
+instance Arbitrary AssetGroupModification where
+  arbitrary = sized genAssetGroupModification
+
+genAssetGroupModification :: Int -> Gen AssetGroupModification
+genAssetGroupModification n =
+  AssetGroupModification
+    <$> arbitraryReducedMaybe n -- assetGroupModificationExceptions :: Maybe [AssetGroupUpdateError]
+    <*> arbitraryReducedMaybe n -- assetGroupModificationUpdatedAssetGroups :: Maybe [AssetGroupBinding]
+  
+instance Arbitrary AssetGroupModificationReadOrUpdate where
+  arbitrary = sized genAssetGroupModificationReadOrUpdate
+
+genAssetGroupModificationReadOrUpdate :: Int -> Gen AssetGroupModificationReadOrUpdate
+genAssetGroupModificationReadOrUpdate n =
+  AssetGroupModificationReadOrUpdate
+    <$> arbitraryReducedMaybe n -- assetGroupModificationReadOrUpdateAssetGroupsToUpdate :: Maybe [AssetGroupUpdateItemReadOrUpdateItem]
+    <*> arbitraryReducedMaybe n -- assetGroupModificationReadOrUpdateExceptions :: Maybe [AssetGroupUpdateError]
+    <*> arbitraryReducedMaybe n -- assetGroupModificationReadOrUpdateUpdatedAssetGroups :: Maybe [AssetGroupBinding]
+  
+instance Arbitrary AssetGroupUpdateError where
+  arbitrary = sized genAssetGroupUpdateError
+
+genAssetGroupUpdateError :: Int -> Gen AssetGroupUpdateError
+genAssetGroupUpdateError n =
+  AssetGroupUpdateError
+    <$> arbitraryReducedMaybe n -- assetGroupUpdateErrorAssetGroupId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- assetGroupUpdateErrorCode :: Maybe Int
+    <*> arbitraryReducedMaybe n -- assetGroupUpdateErrorMessage :: Maybe Text
+  
+instance Arbitrary AssetGroupUpdateItemReadOrUpdateItem where
+  arbitrary = sized genAssetGroupUpdateItemReadOrUpdateItem
+
+genAssetGroupUpdateItemReadOrUpdateItem :: Int -> Gen AssetGroupUpdateItemReadOrUpdateItem
+genAssetGroupUpdateItemReadOrUpdateItem n =
+  AssetGroupUpdateItemReadOrUpdateItem
+    <$> arbitrary -- assetGroupUpdateItemReadOrUpdateItemAssetGroupId :: Text
+    <*> arbitraryReducedMaybe n -- assetGroupUpdateItemReadOrUpdateItemAssetGroupTypes :: Maybe [AssetGroupType]
+    <*> arbitraryReducedMaybe n -- assetGroupUpdateItemReadOrUpdateItemAssetsToAdd :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- assetGroupUpdateItemReadOrUpdateItemAssetsToRemove :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- assetGroupUpdateItemReadOrUpdateItemDescription :: Maybe Text
+    <*> arbitraryReducedMaybe n -- assetGroupUpdateItemReadOrUpdateItemName :: Maybe Text
   
 instance Arbitrary AssetIdPermissions where
   arbitrary = sized genAssetIdPermissions
@@ -1055,9 +1643,28 @@ genAssetIdPermissions :: Int -> Gen AssetIdPermissions
 genAssetIdPermissions n =
   AssetIdPermissions
     <$> arbitraryReducedMaybe n -- assetIdPermissionsAssetGroupInfo :: Maybe AssetGroupBinding
-    <*> arbitraryReducedMaybe n -- assetIdPermissionsAssetId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- assetIdPermissionsAssetType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- assetIdPermissionsPermissions :: Maybe [Text]
+    <*> arbitrary -- assetIdPermissionsAssetId :: Text
+    <*> arbitraryReduced n -- assetIdPermissionsAssetType :: AssetTypeResponse
+    <*> arbitrary -- assetIdPermissionsPermissions :: [Text]
+  
+instance Arbitrary AssetIdWithPermissions where
+  arbitrary = sized genAssetIdWithPermissions
+
+genAssetIdWithPermissions :: Int -> Gen AssetIdWithPermissions
+genAssetIdWithPermissions n =
+  AssetIdWithPermissions
+    <$> arbitraryReducedMaybe n -- assetIdWithPermissionsId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- assetIdWithPermissionsPermissions :: Maybe [Text]
+  
+instance Arbitrary AttributionWindows where
+  arbitrary = sized genAttributionWindows
+
+genAttributionWindows :: Int -> Gen AttributionWindows
+genAttributionWindows n =
+  AttributionWindows
+    <$> arbitraryReducedMaybe n -- attributionWindowsClickWindowDays :: Maybe Int
+    <*> arbitraryReducedMaybe n -- attributionWindowsEngagementWindowDays :: Maybe Int
+    <*> arbitraryReducedMaybe n -- attributionWindowsViewWindowDays :: Maybe Int
   
 instance Arbitrary Audience where
   arbitrary = sized genAudience
@@ -1066,15 +1673,16 @@ genAudience :: Int -> Gen Audience
 genAudience n =
   Audience
     <$> arbitraryReducedMaybe n -- audienceAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceAudienceType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- audienceAudienceType :: Maybe PinnerListType
     <*> arbitraryReducedMaybe n -- audienceCreatedByCompanyName :: Maybe Text
     <*> arbitraryReducedMaybe n -- audienceCreatedTimestamp :: Maybe Int
     <*> arbitraryReducedMaybe n -- audienceDescription :: Maybe Text
     <*> arbitraryReducedMaybe n -- audienceId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- audienceIsNca :: Maybe Bool
     <*> arbitraryReducedMaybe n -- audienceName :: Maybe Text
     <*> arbitraryReducedMaybe n -- audienceRule :: Maybe AudienceRule
     <*> arbitraryReducedMaybe n -- audienceSize :: Maybe Int
-    <*> arbitraryReducedMaybe n -- audienceStatus :: Maybe Text
+    <*> arbitraryReducedMaybe n -- audienceStatus :: Maybe AudienceStatus
     <*> arbitraryReducedMaybe n -- audienceType :: Maybe Text
     <*> arbitraryReducedMaybe n -- audienceUpdatedTimestamp :: Maybe Int
   
@@ -1091,28 +1699,6 @@ genAudienceCategory n =
     <*> arbitraryReducedMaybe n -- audienceCategoryRatio :: Maybe Double
     <*> arbitraryReducedMaybe n -- audienceCategorySubcategories :: Maybe [AudienceSubcategory]
   
-instance Arbitrary AudienceCommon where
-  arbitrary = sized genAudienceCommon
-
-genAudienceCommon :: Int -> Gen AudienceCommon
-genAudienceCommon n =
-  AudienceCommon
-    <$> arbitraryReducedMaybe n -- audienceCommonAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceCommonName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceCommonRule :: Maybe AudienceRule
-  
-instance Arbitrary AudienceCreateRequest where
-  arbitrary = sized genAudienceCreateRequest
-
-genAudienceCreateRequest :: Int -> Gen AudienceCreateRequest
-genAudienceCreateRequest n =
-  AudienceCreateRequest
-    <$> arbitraryReducedMaybe n -- audienceCreateRequestAdAccountId :: Maybe Text
-    <*> arbitrary -- audienceCreateRequestName :: Text
-    <*> arbitraryReduced n -- audienceCreateRequestRule :: AudienceRule
-    <*> arbitraryReduced n -- audienceCreateRequestAudienceType :: AudienceType
-    <*> arbitraryReducedMaybe n -- audienceCreateRequestDescription :: Maybe Text
-  
 instance Arbitrary AudienceDefinition where
   arbitrary = sized genAudienceDefinition
 
@@ -1122,30 +1708,6 @@ genAudienceDefinition n =
     <$> arbitraryReducedMaybe n -- audienceDefinitionDate :: Maybe Text
     <*> arbitraryReducedMaybe n -- audienceDefinitionScope :: Maybe Text
     <*> arbitraryReducedMaybe n -- audienceDefinitionType :: Maybe Text
-  
-instance Arbitrary AudienceDefinitionResponse where
-  arbitrary = sized genAudienceDefinitionResponse
-
-genAudienceDefinitionResponse :: Int -> Gen AudienceDefinitionResponse
-genAudienceDefinitionResponse n =
-  AudienceDefinitionResponse
-    <$> arbitraryReducedMaybe n -- audienceDefinitionResponseItems :: Maybe [AudienceDefinition]
-  
-instance Arbitrary AudienceDefinitionScope where
-  arbitrary = sized genAudienceDefinitionScope
-
-genAudienceDefinitionScope :: Int -> Gen AudienceDefinitionScope
-genAudienceDefinitionScope n =
-  AudienceDefinitionScope
-    <$> arbitraryReducedMaybe n -- audienceDefinitionScopeScope :: Maybe E'Scope
-  
-instance Arbitrary AudienceDefinitionType where
-  arbitrary = sized genAudienceDefinitionType
-
-genAudienceDefinitionType :: Int -> Gen AudienceDefinitionType
-genAudienceDefinitionType n =
-  AudienceDefinitionType
-    <$> arbitraryReducedMaybe n -- audienceDefinitionTypeScope :: Maybe E'Scope2
   
 instance Arbitrary AudienceDemographicValue where
   arbitrary = sized genAudienceDemographicValue
@@ -1169,38 +1731,26 @@ genAudienceDemographics n =
     <*> arbitraryReducedMaybe n -- audienceDemographicsGenders :: Maybe [AudienceDemographicValue]
     <*> arbitraryReducedMaybe n -- audienceDemographicsMetros :: Maybe [AudienceDemographicValue]
   
-instance Arbitrary AudienceInsightCategoryArrayResponse where
-  arbitrary = sized genAudienceInsightCategoryArrayResponse
+instance Arbitrary AudienceInsights where
+  arbitrary = sized genAudienceInsights
 
-genAudienceInsightCategoryArrayResponse :: Int -> Gen AudienceInsightCategoryArrayResponse
-genAudienceInsightCategoryArrayResponse n =
-  AudienceInsightCategoryArrayResponse
-    <$> arbitraryReducedMaybe n -- audienceInsightCategoryArrayResponseItems :: Maybe [AudienceInsightCategoryCommon]
+genAudienceInsights :: Int -> Gen AudienceInsights
+genAudienceInsights n =
+  AudienceInsights
+    <$> arbitraryReducedMaybe n -- audienceInsightsCategories :: Maybe [AudienceCategory]
+    <*> arbitraryReducedMaybe n -- audienceInsightsDate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- audienceInsightsDemographics :: Maybe AudienceDemographics
+    <*> arbitraryReducedMaybe n -- audienceInsightsSize :: Maybe Int
+    <*> arbitraryReducedMaybe n -- audienceInsightsSizeIsUpperBound :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- audienceInsightsType :: Maybe AudienceInsightType
   
-instance Arbitrary AudienceInsightCategoryCommon where
-  arbitrary = sized genAudienceInsightCategoryCommon
+instance Arbitrary AudienceInsightsScopeAndTypeGet200Response where
+  arbitrary = sized genAudienceInsightsScopeAndTypeGet200Response
 
-genAudienceInsightCategoryCommon :: Int -> Gen AudienceInsightCategoryCommon
-genAudienceInsightCategoryCommon n =
-  AudienceInsightCategoryCommon
-    <$> arbitraryReducedMaybe n -- audienceInsightCategoryCommonId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceInsightCategoryCommonIndex :: Maybe Double
-    <*> arbitraryReducedMaybe n -- audienceInsightCategoryCommonKey :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceInsightCategoryCommonName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceInsightCategoryCommonRatio :: Maybe Double
-  
-instance Arbitrary AudienceInsightsResponse where
-  arbitrary = sized genAudienceInsightsResponse
-
-genAudienceInsightsResponse :: Int -> Gen AudienceInsightsResponse
-genAudienceInsightsResponse n =
-  AudienceInsightsResponse
-    <$> arbitraryReducedMaybe n -- audienceInsightsResponseCategories :: Maybe [AudienceCategory]
-    <*> arbitraryReducedMaybe n -- audienceInsightsResponseDate :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceInsightsResponseDemographics :: Maybe AudienceDemographics
-    <*> arbitraryReducedMaybe n -- audienceInsightsResponseSize :: Maybe Int
-    <*> arbitraryReducedMaybe n -- audienceInsightsResponseSizeIsUpperBound :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- audienceInsightsResponseType :: Maybe AudienceInsightType
+genAudienceInsightsScopeAndTypeGet200Response :: Int -> Gen AudienceInsightsScopeAndTypeGet200Response
+genAudienceInsightsScopeAndTypeGet200Response n =
+  AudienceInsightsScopeAndTypeGet200Response
+    <$> arbitraryReduced n -- audienceInsightsScopeAndTypeGet200ResponseItems :: [AudienceDefinition]
   
 instance Arbitrary AudienceRule where
   arbitrary = sized genAudienceRule
@@ -1241,18 +1791,6 @@ genAudienceSubcategory n =
     <*> arbitraryReducedMaybe n -- audienceSubcategoryName :: Maybe Text
     <*> arbitraryReducedMaybe n -- audienceSubcategoryRatio :: Maybe Double
   
-instance Arbitrary AudienceUpdateRequest where
-  arbitrary = sized genAudienceUpdateRequest
-
-genAudienceUpdateRequest :: Int -> Gen AudienceUpdateRequest
-genAudienceUpdateRequest n =
-  AudienceUpdateRequest
-    <$> arbitraryReducedMaybe n -- audienceUpdateRequestAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceUpdateRequestName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceUpdateRequestRule :: Maybe AudienceRule
-    <*> arbitraryReducedMaybe n -- audienceUpdateRequestDescription :: Maybe Text
-    <*> arbitraryReducedMaybe n -- audienceUpdateRequestOperationType :: Maybe AudienceUpdateOperationType
-  
 instance Arbitrary AudiencesList200Response where
   arbitrary = sized genAudiencesList200Response
 
@@ -1260,7 +1798,16 @@ genAudiencesList200Response :: Int -> Gen AudiencesList200Response
 genAudiencesList200Response n =
   AudiencesList200Response
     <$> arbitraryReducedMaybe n -- audiencesList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- audiencesList200ResponseItems :: [Audience]
+    <*> arbitraryReduced n -- audiencesList200ResponseItems :: [AdAccountsAudience]
+  
+instance Arbitrary AuthRespondInviteAction where
+  arbitrary = sized genAuthRespondInviteAction
+
+genAuthRespondInviteAction :: Int -> Gen AuthRespondInviteAction
+genAuthRespondInviteAction n =
+  AuthRespondInviteAction
+    <$> arbitrary -- authRespondInviteActionAcceptInvite :: Bool
+    <*> arbitraryReducedMaybe n -- authRespondInviteActionAssetIdToPermissions :: Maybe (Map.Map String Array)
   
 instance Arbitrary AuthRespondInvitesBody where
   arbitrary = sized genAuthRespondInvitesBody
@@ -1268,25 +1815,16 @@ instance Arbitrary AuthRespondInvitesBody where
 genAuthRespondInvitesBody :: Int -> Gen AuthRespondInvitesBody
 genAuthRespondInvitesBody n =
   AuthRespondInvitesBody
-    <$> arbitraryReduced n -- authRespondInvitesBodyInvites :: [AuthRespondInvitesBodyInvitesInner]
+    <$> arbitraryReduced n -- authRespondInvitesBodyInvites :: [AuthRespondInvitesBodyItem]
   
-instance Arbitrary AuthRespondInvitesBodyInvitesInner where
-  arbitrary = sized genAuthRespondInvitesBodyInvitesInner
+instance Arbitrary AuthRespondInvitesBodyItem where
+  arbitrary = sized genAuthRespondInvitesBodyItem
 
-genAuthRespondInvitesBodyInvitesInner :: Int -> Gen AuthRespondInvitesBodyInvitesInner
-genAuthRespondInvitesBodyInvitesInner n =
-  AuthRespondInvitesBodyInvitesInner
-    <$> arbitraryReduced n -- authRespondInvitesBodyInvitesInnerAction :: AuthRespondInvitesBodyInvitesInnerAction
-    <*> arbitrary -- authRespondInvitesBodyInvitesInnerInviteId :: Text
-  
-instance Arbitrary AuthRespondInvitesBodyInvitesInnerAction where
-  arbitrary = sized genAuthRespondInvitesBodyInvitesInnerAction
-
-genAuthRespondInvitesBodyInvitesInnerAction :: Int -> Gen AuthRespondInvitesBodyInvitesInnerAction
-genAuthRespondInvitesBodyInvitesInnerAction n =
-  AuthRespondInvitesBodyInvitesInnerAction
-    <$> arbitrary -- authRespondInvitesBodyInvitesInnerActionAcceptInvite :: Bool
-    <*> arbitraryReducedMaybe n -- authRespondInvitesBodyInvitesInnerActionAssetIdToPermissions :: Maybe (Map.Map String [Permissions])
+genAuthRespondInvitesBodyItem :: Int -> Gen AuthRespondInvitesBodyItem
+genAuthRespondInvitesBodyItem n =
+  AuthRespondInvitesBodyItem
+    <$> arbitraryReduced n -- authRespondInvitesBodyItemAction :: AuthRespondInviteAction
+    <*> arbitrary -- authRespondInvitesBodyItemInviteId :: Text
   
 instance Arbitrary AvailabilityFilter where
   arbitrary = sized genAvailabilityFilter
@@ -1296,6 +1834,17 @@ genAvailabilityFilter n =
   AvailabilityFilter
     <$> arbitraryReduced n -- availabilityFilterAvailability :: CatalogsProductGroupMultipleStringCriteria
   
+instance Arbitrary BaseBusinessAssets where
+  arbitrary = sized genBaseBusinessAssets
+
+genBaseBusinessAssets :: Int -> Gen BaseBusinessAssets
+genBaseBusinessAssets n =
+  BaseBusinessAssets
+    <$> arbitraryReducedMaybe n -- baseBusinessAssetsAssetGroupInfo :: Maybe AssetGroupBinding
+    <*> arbitraryReducedMaybe n -- baseBusinessAssetsAssetId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- baseBusinessAssetsAssetType :: Maybe AssetTypeResponse
+    <*> arbitraryReducedMaybe n -- baseBusinessAssetsPermissions :: Maybe [Text]
+  
 instance Arbitrary BaseInviteDataResponse where
   arbitrary = sized genBaseInviteDataResponse
 
@@ -1303,21 +1852,9 @@ genBaseInviteDataResponse :: Int -> Gen BaseInviteDataResponse
 genBaseInviteDataResponse n =
   BaseInviteDataResponse
     <$> arbitraryReducedMaybe n -- baseInviteDataResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- baseInviteDataResponseInviteData :: Maybe BaseInviteDataResponseInviteData
+    <*> arbitraryReducedMaybe n -- baseInviteDataResponseInviteData :: Maybe InviteDataResponse
     <*> arbitraryReducedMaybe n -- baseInviteDataResponseIsReceivedInvite :: Maybe Bool
     <*> arbitraryReducedMaybe n -- baseInviteDataResponseUser :: Maybe BusinessAccessUserSummary
-  
-instance Arbitrary BaseInviteDataResponseInviteData where
-  arbitrary = sized genBaseInviteDataResponseInviteData
-
-genBaseInviteDataResponseInviteData :: Int -> Gen BaseInviteDataResponseInviteData
-genBaseInviteDataResponseInviteData n =
-  BaseInviteDataResponseInviteData
-    <$> arbitraryReducedMaybe n -- baseInviteDataResponseInviteDataInviteExpiration :: Maybe Int
-    <*> arbitraryReducedMaybe n -- baseInviteDataResponseInviteDataInviteStatus :: Maybe Text
-    <*> arbitraryReducedMaybe n -- baseInviteDataResponseInviteDataInviteType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- baseInviteDataResponseInviteDataLastUpdatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- baseInviteDataResponseInviteDataSentAt :: Maybe Int
   
 instance Arbitrary BidFloor where
   arbitrary = sized genBidFloor
@@ -1328,14 +1865,14 @@ genBidFloor n =
     <$> arbitraryReducedMaybe n -- bidFloorBidFloors :: Maybe [Int]
     <*> arbitraryReducedMaybe n -- bidFloorType :: Maybe Text
   
-instance Arbitrary BidFloorRequest where
-  arbitrary = sized genBidFloorRequest
+instance Arbitrary BidFloorCreate where
+  arbitrary = sized genBidFloorCreate
 
-genBidFloorRequest :: Int -> Gen BidFloorRequest
-genBidFloorRequest n =
-  BidFloorRequest
-    <$> arbitraryReduced n -- bidFloorRequestBidFloorSpecs :: [BidFloorSpec]
-    <*> arbitraryReducedMaybe n -- bidFloorRequestTargetingSpec :: Maybe TargetingSpec
+genBidFloorCreate :: Int -> Gen BidFloorCreate
+genBidFloorCreate n =
+  BidFloorCreate
+    <$> arbitraryReduced n -- bidFloorCreateBidFloorSpecs :: [BidFloorSpec]
+    <*> arbitraryReducedMaybe n -- bidFloorCreateTargetingSpec :: Maybe TargetingSpecOptimal
   
 instance Arbitrary BidFloorSpec where
   arbitrary = sized genBidFloorSpec
@@ -1347,8 +1884,85 @@ genBidFloorSpec n =
     <*> arbitraryReducedMaybe n -- bidFloorSpecCountries :: Maybe [Country]
     <*> arbitraryReducedMaybe n -- bidFloorSpecCreativeType :: Maybe CreativeType
     <*> arbitraryReduced n -- bidFloorSpecCurrency :: Currency
-    <*> arbitraryReducedMaybe n -- bidFloorSpecObjectiveType :: Maybe ObjectiveType
+    <*> arbitraryReducedMaybe n -- bidFloorSpecObjectiveType :: Maybe BidFloorObjectiveType
     <*> arbitraryReducedMaybe n -- bidFloorSpecOptimizationGoalMetadata :: Maybe OptimizationGoalMetadata
+  
+instance Arbitrary BidOptionsAgeBucketMultipliers where
+  arbitrary = sized genBidOptionsAgeBucketMultipliers
+
+genBidOptionsAgeBucketMultipliers :: Int -> Gen BidOptionsAgeBucketMultipliers
+genBidOptionsAgeBucketMultipliers n =
+  BidOptionsAgeBucketMultipliers
+    <$> arbitraryReducedMaybe n -- bidOptionsAgeBucketMultipliers1824 :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAgeBucketMultipliers2534 :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAgeBucketMultipliers3544 :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAgeBucketMultipliers4549 :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAgeBucketMultipliers5054 :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAgeBucketMultipliers5564 :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAgeBucketMultipliers65 :: Maybe Double
+  
+instance Arbitrary BidOptionsAppTypeMultipliers where
+  arbitrary = sized genBidOptionsAppTypeMultipliers
+
+genBidOptionsAppTypeMultipliers :: Int -> Gen BidOptionsAppTypeMultipliers
+genBidOptionsAppTypeMultipliers n =
+  BidOptionsAppTypeMultipliers
+    <$> arbitraryReducedMaybe n -- bidOptionsAppTypeMultipliersAndroidMobile :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAppTypeMultipliersAndroidTablet :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAppTypeMultipliersIpad :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAppTypeMultipliersIphone :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAppTypeMultipliersWeb :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsAppTypeMultipliersWebMobile :: Maybe Double
+  
+instance Arbitrary BidOptionsAudienceMultipliers where
+  arbitrary = sized genBidOptionsAudienceMultipliers
+
+genBidOptionsAudienceMultipliers :: Int -> Gen BidOptionsAudienceMultipliers
+genBidOptionsAudienceMultipliers n =
+  BidOptionsAudienceMultipliers
+    <$> arbitrary -- bidOptionsAudienceMultipliersAudienceId :: Text
+    <*> arbitrary -- bidOptionsAudienceMultipliersMultiplier :: Double
+  
+instance Arbitrary BidOptionsGenderMultipliers where
+  arbitrary = sized genBidOptionsGenderMultipliers
+
+genBidOptionsGenderMultipliers :: Int -> Gen BidOptionsGenderMultipliers
+genBidOptionsGenderMultipliers n =
+  BidOptionsGenderMultipliers
+    <$> arbitraryReducedMaybe n -- bidOptionsGenderMultipliersFemale :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsGenderMultipliersMale :: Maybe Double
+  
+instance Arbitrary BidOptionsPlacementMultipliers where
+  arbitrary = sized genBidOptionsPlacementMultipliers
+
+genBidOptionsPlacementMultipliers :: Int -> Gen BidOptionsPlacementMultipliers
+genBidOptionsPlacementMultipliers n =
+  BidOptionsPlacementMultipliers
+    <$> arbitraryReducedMaybe n -- bidOptionsPlacementMultipliersBrowse :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsPlacementMultipliersRelatedPins :: Maybe Double
+    <*> arbitraryReducedMaybe n -- bidOptionsPlacementMultipliersSearch :: Maybe Double
+  
+instance Arbitrary BillingInvoice where
+  arbitrary = sized genBillingInvoice
+
+genBillingInvoice :: Int -> Gen BillingInvoice
+genBillingInvoice n =
+  BillingInvoice
+    <$> arbitraryReducedMaybe n -- billingInvoiceAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- billingInvoiceAdAccountName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- billingInvoiceAmountBilledMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- billingInvoiceAmountDiscountMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- billingInvoiceAmountNetMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- billingInvoiceAmountTaxMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- billingInvoiceBillToCountry :: Maybe Text
+    <*> arbitraryReducedMaybe n -- billingInvoiceBillingPeriodEndDate :: Maybe Date
+    <*> arbitraryReducedMaybe n -- billingInvoiceBillingPeriodStartDate :: Maybe Date
+    <*> arbitraryReducedMaybe n -- billingInvoiceCurrency :: Maybe Currency
+    <*> arbitraryReducedMaybe n -- billingInvoiceDocumentType :: Maybe BillingInvoiceDocumentType
+    <*> arbitraryReducedMaybe n -- billingInvoiceId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- billingInvoiceInvoiceDueDate :: Maybe Date
+    <*> arbitraryReducedMaybe n -- billingInvoicePaymentTerms :: Maybe Text
+    <*> arbitraryReducedMaybe n -- billingInvoiceStatus :: Maybe BillingInvoiceStatus
   
 instance Arbitrary BillingInvoiceDownloadResponse where
   arbitrary = sized genBillingInvoiceDownloadResponse
@@ -1359,28 +1973,6 @@ genBillingInvoiceDownloadResponse n =
     <$> arbitraryReducedMaybe n -- billingInvoiceDownloadResponseDownloadUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- billingInvoiceDownloadResponseId :: Maybe Text
   
-instance Arbitrary BillingInvoiceResponse where
-  arbitrary = sized genBillingInvoiceResponse
-
-genBillingInvoiceResponse :: Int -> Gen BillingInvoiceResponse
-genBillingInvoiceResponse n =
-  BillingInvoiceResponse
-    <$> arbitraryReducedMaybe n -- billingInvoiceResponseAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseAdAccountName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseAmountBilledMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseAmountDiscountMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseAmountNetMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseAmountTaxMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseBillToCountry :: Maybe Text
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseBillingPeriodEndDate :: Maybe Date
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseBillingPeriodStartDate :: Maybe Date
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseCurrency :: Maybe Currency
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseDocumentType :: Maybe E'DocumentType
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseInvoiceDueDate :: Maybe Date
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponsePaymentTerms :: Maybe Text
-    <*> arbitraryReducedMaybe n -- billingInvoiceResponseStatus :: Maybe E'Status2
-  
 instance Arbitrary BillingInvoicesGet200Response where
   arbitrary = sized genBillingInvoicesGet200Response
 
@@ -1388,7 +1980,7 @@ genBillingInvoicesGet200Response :: Int -> Gen BillingInvoicesGet200Response
 genBillingInvoicesGet200Response n =
   BillingInvoicesGet200Response
     <$> arbitraryReducedMaybe n -- billingInvoicesGet200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- billingInvoicesGet200ResponseItems :: [BillingInvoiceResponse]
+    <*> arbitraryReduced n -- billingInvoicesGet200ResponseItems :: [BillingInvoice]
   
 instance Arbitrary BillingProfilesGet200Response where
   arbitrary = sized genBillingProfilesGet200Response
@@ -1406,11 +1998,11 @@ genBillingProfilesResponse :: Int -> Gen BillingProfilesResponse
 genBillingProfilesResponse n =
   BillingProfilesResponse
     <$> arbitraryReducedMaybe n -- billingProfilesResponseAdvertiserId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- billingProfilesResponseBillingType :: Maybe E'BillingType
-    <*> arbitraryReducedMaybe n -- billingProfilesResponseCardType :: Maybe E'CardType
+    <*> arbitraryReducedMaybe n -- billingProfilesResponseBillingType :: Maybe BillingType
+    <*> arbitraryReducedMaybe n -- billingProfilesResponseCardType :: Maybe BillingProfileCardType
     <*> arbitraryReducedMaybe n -- billingProfilesResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- billingProfilesResponsePaymentMethodBrand :: Maybe E'PaymentMethodBrand
-    <*> arbitraryReducedMaybe n -- billingProfilesResponseStatus :: Maybe E'Status
+    <*> arbitraryReducedMaybe n -- billingProfilesResponsePaymentMethodBrand :: Maybe BillingProfilePaymentMethodBrand
+    <*> arbitraryReducedMaybe n -- billingProfilesResponseStatus :: Maybe BillingProfileStatus
   
 instance Arbitrary Board where
   arbitrary = sized genBoard
@@ -1486,6 +2078,24 @@ genBoardSection n =
     <$> arbitraryReducedMaybe n -- boardSectionId :: Maybe Text
     <*> arbitrary -- boardSectionName :: Text
   
+instance Arbitrary BoardSectionCreate where
+  arbitrary = sized genBoardSectionCreate
+
+genBoardSectionCreate :: Int -> Gen BoardSectionCreate
+genBoardSectionCreate n =
+  BoardSectionCreate
+    <$> arbitraryReducedMaybe n -- boardSectionCreateId :: Maybe Text
+    <*> arbitrary -- boardSectionCreateName :: Text
+  
+instance Arbitrary BoardSectionUpdateWithRequiredBody where
+  arbitrary = sized genBoardSectionUpdateWithRequiredBody
+
+genBoardSectionUpdateWithRequiredBody :: Int -> Gen BoardSectionUpdateWithRequiredBody
+genBoardSectionUpdateWithRequiredBody n =
+  BoardSectionUpdateWithRequiredBody
+    <$> arbitraryReducedMaybe n -- boardSectionUpdateWithRequiredBodyId :: Maybe Text
+    <*> arbitrary -- boardSectionUpdateWithRequiredBodyName :: Text
+  
 instance Arbitrary BoardSectionsList200Response where
   arbitrary = sized genBoardSectionsList200Response
 
@@ -1540,59 +2150,68 @@ genBoardsListPins200Response :: Int -> Gen BoardsListPins200Response
 genBoardsListPins200Response n =
   BoardsListPins200Response
     <$> arbitraryReducedMaybe n -- boardsListPins200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- boardsListPins200ResponseItems :: [Pin]
+    <*> arbitraryReduced n -- boardsListPins200ResponseItems :: [PinRead]
   
-instance Arbitrary BoardsUserFollowsList200Response where
-  arbitrary = sized genBoardsUserFollowsList200Response
+instance Arbitrary BookClosed where
+  arbitrary = sized genBookClosed
 
-genBoardsUserFollowsList200Response :: Int -> Gen BoardsUserFollowsList200Response
-genBoardsUserFollowsList200Response n =
-  BoardsUserFollowsList200Response
-    <$> arbitraryReducedMaybe n -- boardsUserFollowsList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- boardsUserFollowsList200ResponseItems :: [Board]
+genBookClosed :: Int -> Gen BookClosed
+genBookClosed n =
+  BookClosed
+    <$> arbitrary -- bookClosedConversionMetricsReady :: Bool
+    <*> arbitrary -- bookClosedNonConversionMetricsReady :: Bool
   
-instance Arbitrary BookClosedResponse where
-  arbitrary = sized genBookClosedResponse
+instance Arbitrary BrandAccount where
+  arbitrary = sized genBrandAccount
 
-genBookClosedResponse :: Int -> Gen BookClosedResponse
-genBookClosedResponse n =
-  BookClosedResponse
-    <$> arbitraryReducedMaybe n -- bookClosedResponseConversionMetricsReady :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- bookClosedResponseNonConversionMetricsReady :: Maybe Bool
+genBrandAccount :: Int -> Gen BrandAccount
+genBrandAccount n =
+  BrandAccount
+    <$> arbitrary -- brandAccountBrandAccountId :: Text
   
-instance Arbitrary BrandAccountsCreate200Response where
-  arbitrary = sized genBrandAccountsCreate200Response
+instance Arbitrary BrandAccountCreate where
+  arbitrary = sized genBrandAccountCreate
 
-genBrandAccountsCreate200Response :: Int -> Gen BrandAccountsCreate200Response
-genBrandAccountsCreate200Response n =
-  BrandAccountsCreate200Response
-    <$> arbitraryReducedMaybe n -- brandAccountsCreate200ResponseBrandAccountId :: Maybe Text
+genBrandAccountCreate :: Int -> Gen BrandAccountCreate
+genBrandAccountCreate n =
+  BrandAccountCreate
+    <$> arbitraryReducedMaybe n -- brandAccountCreateAbout :: Maybe Text
+    <*> arbitraryReduced n -- brandAccountCreateCountry :: Country
+    <*> arbitrary -- brandAccountCreateName :: Text
+    <*> arbitraryReducedMaybe n -- brandAccountCreateProfileImage :: Maybe BrandAccountProfileImage
+    <*> arbitrary -- brandAccountCreateUsername :: Text
+    <*> arbitraryReducedMaybe n -- brandAccountCreateWebsite :: Maybe Text
   
-instance Arbitrary BrandAccountsCreateRequest where
-  arbitrary = sized genBrandAccountsCreateRequest
+instance Arbitrary BrandAccountProfileImage where
+  arbitrary = sized genBrandAccountProfileImage
 
-genBrandAccountsCreateRequest :: Int -> Gen BrandAccountsCreateRequest
-genBrandAccountsCreateRequest n =
-  BrandAccountsCreateRequest
-    <$> arbitrary -- brandAccountsCreateRequestName :: Text
-    <*> arbitrary -- brandAccountsCreateRequestUsername :: Text
-    <*> arbitraryReduced n -- brandAccountsCreateRequestCountry :: Country
-    <*> arbitraryReducedMaybe n -- brandAccountsCreateRequestAbout :: Maybe Text
-    <*> arbitraryReducedMaybe n -- brandAccountsCreateRequestWebsite :: Maybe Text
-    <*> arbitraryReducedMaybe n -- brandAccountsCreateRequestProfileImage :: Maybe ImageBase64
+genBrandAccountProfileImage :: Int -> Gen BrandAccountProfileImage
+genBrandAccountProfileImage n =
+  BrandAccountProfileImage
+    <$> arbitrary -- brandAccountProfileImageContentType :: E'ContentType
+    <*> arbitrary -- brandAccountProfileImageData :: Text
   
-instance Arbitrary BrandAccountsUpdateRequest where
-  arbitrary = sized genBrandAccountsUpdateRequest
+instance Arbitrary BrandAccountProfileImageUpdate where
+  arbitrary = sized genBrandAccountProfileImageUpdate
 
-genBrandAccountsUpdateRequest :: Int -> Gen BrandAccountsUpdateRequest
-genBrandAccountsUpdateRequest n =
-  BrandAccountsUpdateRequest
-    <$> arbitraryReducedMaybe n -- brandAccountsUpdateRequestName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- brandAccountsUpdateRequestUsername :: Maybe Text
-    <*> arbitraryReducedMaybe n -- brandAccountsUpdateRequestCountry :: Maybe Country
-    <*> arbitraryReducedMaybe n -- brandAccountsUpdateRequestAbout :: Maybe Text
-    <*> arbitraryReducedMaybe n -- brandAccountsUpdateRequestWebsite :: Maybe Text
-    <*> arbitraryReducedMaybe n -- brandAccountsUpdateRequestProfileImage :: Maybe ImageBase64
+genBrandAccountProfileImageUpdate :: Int -> Gen BrandAccountProfileImageUpdate
+genBrandAccountProfileImageUpdate n =
+  BrandAccountProfileImageUpdate
+    <$> arbitraryReducedMaybe n -- brandAccountProfileImageUpdateContentType :: Maybe E'ContentType
+    <*> arbitraryReducedMaybe n -- brandAccountProfileImageUpdateData :: Maybe Text
+  
+instance Arbitrary BrandAccountUpdate where
+  arbitrary = sized genBrandAccountUpdate
+
+genBrandAccountUpdate :: Int -> Gen BrandAccountUpdate
+genBrandAccountUpdate n =
+  BrandAccountUpdate
+    <$> arbitraryReducedMaybe n -- brandAccountUpdateAbout :: Maybe Text
+    <*> arbitraryReducedMaybe n -- brandAccountUpdateCountry :: Maybe Country
+    <*> arbitraryReducedMaybe n -- brandAccountUpdateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- brandAccountUpdateProfileImage :: Maybe BrandAccountProfileImageUpdate
+    <*> arbitraryReducedMaybe n -- brandAccountUpdateUsername :: Maybe Text
+    <*> arbitraryReducedMaybe n -- brandAccountUpdateWebsite :: Maybe Text
   
 instance Arbitrary BrandFilter where
   arbitrary = sized genBrandFilter
@@ -1602,37 +2221,70 @@ genBrandFilter n =
   BrandFilter
     <$> arbitraryReduced n -- brandFilterBrand :: CatalogsProductGroupMultipleStringCriteria
   
-instance Arbitrary BulkDownloadRequest where
-  arbitrary = sized genBulkDownloadRequest
+instance Arbitrary BulkCampaignDeliveryEstimatesItem where
+  arbitrary = sized genBulkCampaignDeliveryEstimatesItem
 
-genBulkDownloadRequest :: Int -> Gen BulkDownloadRequest
-genBulkDownloadRequest n =
-  BulkDownloadRequest
-    <$> arbitraryReducedMaybe n -- bulkDownloadRequestCampaignFilter :: Maybe BulkDownloadRequestCampaignFilter
-    <*> arbitraryReducedMaybe n -- bulkDownloadRequestEntityIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- bulkDownloadRequestEntityTypes :: Maybe [BulkEntityType]
-    <*> arbitraryReducedMaybe n -- bulkDownloadRequestOutputFormat :: Maybe BulkOutputFormat
-    <*> arbitraryReducedMaybe n -- bulkDownloadRequestUpdatedSince :: Maybe Text
+genBulkCampaignDeliveryEstimatesItem :: Int -> Gen BulkCampaignDeliveryEstimatesItem
+genBulkCampaignDeliveryEstimatesItem n =
+  BulkCampaignDeliveryEstimatesItem
+    <$> arbitraryReducedMaybe n -- bulkCampaignDeliveryEstimatesItemAdgroupAudienceSizes :: Maybe [CampaignPlanningAdGroupAudienceSize]
+    <*> arbitraryReducedMaybe n -- bulkCampaignDeliveryEstimatesItemConversionRate :: Maybe Float
+    <*> arbitraryReducedMaybe n -- bulkCampaignDeliveryEstimatesItemConversionRates :: Maybe [CampaignPlanningConversionRate]
+    <*> arbitraryReducedMaybe n -- bulkCampaignDeliveryEstimatesItemCurves :: Maybe [CampaignPlanningCurveEstimate]
+    <*> arbitraryReducedMaybe n -- bulkCampaignDeliveryEstimatesItemDerivedMetrics :: Maybe CampaignDeliveryEstimatesDerivedMetrics
+    <*> arbitraryReducedMaybe n -- bulkCampaignDeliveryEstimatesItemErrors :: Maybe [CampaignPlanningResponseError]
+    <*> arbitraryReducedMaybe n -- bulkCampaignDeliveryEstimatesItemEstimateId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- bulkCampaignDeliveryEstimatesItemMaxPotentialSpend :: Maybe Int
   
-instance Arbitrary BulkDownloadRequestCampaignFilter where
-  arbitrary = sized genBulkDownloadRequestCampaignFilter
+instance Arbitrary BulkCampaignDeliveryEstimatesResponse where
+  arbitrary = sized genBulkCampaignDeliveryEstimatesResponse
 
-genBulkDownloadRequestCampaignFilter :: Int -> Gen BulkDownloadRequestCampaignFilter
-genBulkDownloadRequestCampaignFilter n =
-  BulkDownloadRequestCampaignFilter
-    <$> arbitraryReducedMaybe n -- bulkDownloadRequestCampaignFilterCampaignStatus :: Maybe [CampaignSummaryStatus]
-    <*> arbitraryReducedMaybe n -- bulkDownloadRequestCampaignFilterEndTime :: Maybe Text
-    <*> arbitraryReducedMaybe n -- bulkDownloadRequestCampaignFilterName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- bulkDownloadRequestCampaignFilterObjectiveType :: Maybe [ObjectiveType]
-    <*> arbitraryReducedMaybe n -- bulkDownloadRequestCampaignFilterStartTime :: Maybe Text
+genBulkCampaignDeliveryEstimatesResponse :: Int -> Gen BulkCampaignDeliveryEstimatesResponse
+genBulkCampaignDeliveryEstimatesResponse n =
+  BulkCampaignDeliveryEstimatesResponse
+    <$> arbitraryReduced n -- bulkCampaignDeliveryEstimatesResponseData :: [BulkCampaignDeliveryEstimatesItem]
   
-instance Arbitrary BulkDownloadResponse where
-  arbitrary = sized genBulkDownloadResponse
+instance Arbitrary BulkDownload where
+  arbitrary = sized genBulkDownload
 
-genBulkDownloadResponse :: Int -> Gen BulkDownloadResponse
-genBulkDownloadResponse n =
-  BulkDownloadResponse
-    <$> arbitraryReducedMaybe n -- bulkDownloadResponseRequestId :: Maybe Text
+genBulkDownload :: Int -> Gen BulkDownload
+genBulkDownload n =
+  BulkDownload
+    <$> arbitraryReducedMaybe n -- bulkDownloadRequestId :: Maybe Text
+  
+instance Arbitrary BulkDownloadCampaignFilter where
+  arbitrary = sized genBulkDownloadCampaignFilter
+
+genBulkDownloadCampaignFilter :: Int -> Gen BulkDownloadCampaignFilter
+genBulkDownloadCampaignFilter n =
+  BulkDownloadCampaignFilter
+    <$> arbitraryReducedMaybe n -- bulkDownloadCampaignFilterCampaignStatus :: Maybe [SummaryStatus]
+    <*> arbitraryReducedMaybe n -- bulkDownloadCampaignFilterEndTime :: Maybe Text
+    <*> arbitraryReducedMaybe n -- bulkDownloadCampaignFilterName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- bulkDownloadCampaignFilterObjectiveType :: Maybe [ConversionObjectiveType]
+    <*> arbitraryReducedMaybe n -- bulkDownloadCampaignFilterStartTime :: Maybe Text
+  
+instance Arbitrary BulkDownloadCreate where
+  arbitrary = sized genBulkDownloadCreate
+
+genBulkDownloadCreate :: Int -> Gen BulkDownloadCreate
+genBulkDownloadCreate n =
+  BulkDownloadCreate
+    <$> arbitraryReducedMaybe n -- bulkDownloadCreateCampaignFilter :: Maybe BulkDownloadCampaignFilter
+    <*> arbitraryReducedMaybe n -- bulkDownloadCreateEntityIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- bulkDownloadCreateEntityTypes :: Maybe [BulkEntityType]
+    <*> arbitraryReducedMaybe n -- bulkDownloadCreateOutputFormat :: Maybe BulkOutputFormat
+    <*> arbitraryReducedMaybe n -- bulkDownloadCreateUpdatedSince :: Maybe Text
+  
+instance Arbitrary BulkJobData where
+  arbitrary = sized genBulkJobData
+
+genBulkJobData :: Int -> Gen BulkJobData
+genBulkJobData n =
+  BulkJobData
+    <$> arbitraryReducedMaybe n -- bulkJobDataResultUrl :: Maybe Text
+    <*> arbitraryReduced n -- bulkJobDataStatus :: BulkRequestStatus
+    <*> arbitraryReducedMaybe n -- bulkJobDataWorkloadId :: Maybe Int
   
 instance Arbitrary BulkUpsertRequest where
   arbitrary = sized genBulkUpsertRequest
@@ -1652,10 +2304,27 @@ genBulkUpsertRequestCreate n =
     <$> arbitraryReducedMaybe n -- bulkUpsertRequestCreateAdGroups :: Maybe [AdGroupCreateRequest]
     <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateAds :: Maybe [AdCreateRequest]
     <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateCampaigns :: Maybe [CampaignCreateRequest]
-    <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateCatalogProductGroups :: Maybe [MultipleProductGroupsInner]
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateCatalogProductGroups :: Maybe [BulkUpsertRequestCreateCatalogProductGroupsItems]
     <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateKeywords :: Maybe [KeywordsRequest]
-    <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateLabels :: Maybe [LabelCreateRequest]
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateLabels :: Maybe [LabelBulkCreateRequest]
     <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateProductGroups :: Maybe [ProductGroupPromotionCreateRequest]
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateSchedules :: Maybe [ScheduleCreateRequest]
+  
+instance Arbitrary BulkUpsertRequestCreateCatalogProductGroupsItems where
+  arbitrary = sized genBulkUpsertRequestCreateCatalogProductGroupsItems
+
+genBulkUpsertRequestCreateCatalogProductGroupsItems :: Int -> Gen BulkUpsertRequestCreateCatalogProductGroupsItems
+genBulkUpsertRequestCreateCatalogProductGroupsItems n =
+  BulkUpsertRequestCreateCatalogProductGroupsItems
+    <$> arbitraryReducedMaybe n -- bulkUpsertRequestCreateCatalogProductGroupsItemsDescription :: Maybe Text
+    <*> arbitrary -- bulkUpsertRequestCreateCatalogProductGroupsItemsFeedId :: Text
+    <*> arbitraryReduced n -- bulkUpsertRequestCreateCatalogProductGroupsItemsFilters :: CatalogsCreativeAssetsProductGroupFilters
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateCatalogProductGroupsItemsIsFeatured :: Maybe Bool
+    <*> arbitrary -- bulkUpsertRequestCreateCatalogProductGroupsItemsName :: Text
+    <*> arbitrary -- bulkUpsertRequestCreateCatalogProductGroupsItemsCatalogId :: Text
+    <*> arbitrary -- bulkUpsertRequestCreateCatalogProductGroupsItemsCatalogType :: E'CatalogType
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateCatalogProductGroupsItemsCountry :: Maybe Country
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestCreateCatalogProductGroupsItemsLocale :: Maybe CatalogsLocale
   
 instance Arbitrary BulkUpsertRequestUpdate where
   arbitrary = sized genBulkUpsertRequestUpdate
@@ -1666,10 +2335,25 @@ genBulkUpsertRequestUpdate n =
     <$> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateAdGroups :: Maybe [AdGroupUpdateRequest]
     <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateAds :: Maybe [AdUpdateRequest]
     <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCampaigns :: Maybe [CampaignUpdateRequest]
-    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCatalogProductGroups :: Maybe [CatalogsProductGroupsUpdateRequest]
-    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateKeywords :: Maybe [KeywordUpdate]
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCatalogProductGroups :: Maybe [BulkUpsertRequestUpdateCatalogProductGroupsItems]
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateKeywords :: Maybe [KeywordUpdateGenerated]
     <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateLabels :: Maybe [LabelBulkUpdateRequest]
     <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateProductGroups :: Maybe [ProductGroupPromotionUpdateRequest]
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateSchedules :: Maybe [ScheduleUpdateRequest]
+  
+instance Arbitrary BulkUpsertRequestUpdateCatalogProductGroupsItems where
+  arbitrary = sized genBulkUpsertRequestUpdateCatalogProductGroupsItems
+
+genBulkUpsertRequestUpdateCatalogProductGroupsItems :: Int -> Gen BulkUpsertRequestUpdateCatalogProductGroupsItems
+genBulkUpsertRequestUpdateCatalogProductGroupsItems n =
+  BulkUpsertRequestUpdateCatalogProductGroupsItems
+    <$> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCatalogProductGroupsItemsDescription :: Maybe Text
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCatalogProductGroupsItemsFilters :: Maybe CatalogsCreativeAssetsProductGroupFilters
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCatalogProductGroupsItemsIsFeatured :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCatalogProductGroupsItemsName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCatalogProductGroupsItemsCatalogType :: Maybe E'CatalogType
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCatalogProductGroupsItemsCountry :: Maybe Country
+    <*> arbitraryReducedMaybe n -- bulkUpsertRequestUpdateCatalogProductGroupsItemsLocale :: Maybe CatalogsLocale
   
 instance Arbitrary BulkUpsertResponse where
   arbitrary = sized genBulkUpsertResponse
@@ -1678,24 +2362,6 @@ genBulkUpsertResponse :: Int -> Gen BulkUpsertResponse
 genBulkUpsertResponse n =
   BulkUpsertResponse
     <$> arbitraryReducedMaybe n -- bulkUpsertResponseRequestId :: Maybe Text
-  
-instance Arbitrary BulkUpsertStatusResponse where
-  arbitrary = sized genBulkUpsertStatusResponse
-
-genBulkUpsertStatusResponse :: Int -> Gen BulkUpsertStatusResponse
-genBulkUpsertStatusResponse n =
-  BulkUpsertStatusResponse
-    <$> arbitraryReducedMaybe n -- bulkUpsertStatusResponseResultUrl :: Maybe Text
-    <*> arbitraryReducedMaybe n -- bulkUpsertStatusResponseStatus :: Maybe BulkUpsertStatus
-  
-instance Arbitrary BusinessAccessError where
-  arbitrary = sized genBusinessAccessError
-
-genBusinessAccessError :: Int -> Gen BusinessAccessError
-genBusinessAccessError n =
-  BusinessAccessError
-    <$> arbitrary -- businessAccessErrorCode :: Int
-    <*> arbitrary -- businessAccessErrorMessage :: Text
   
 instance Arbitrary BusinessAccessUserSummary where
   arbitrary = sized genBusinessAccessUserSummary
@@ -1716,14 +2382,17 @@ genBusinessAssetMembersGet200Response n =
     <$> arbitraryReducedMaybe n -- businessAssetMembersGet200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- businessAssetMembersGet200ResponseItems :: [UserSingleAssetBinding]
   
-instance Arbitrary BusinessAssetPartnersGet200Response where
-  arbitrary = sized genBusinessAssetPartnersGet200Response
+instance Arbitrary BusinessAssets where
+  arbitrary = sized genBusinessAssets
 
-genBusinessAssetPartnersGet200Response :: Int -> Gen BusinessAssetPartnersGet200Response
-genBusinessAssetPartnersGet200Response n =
-  BusinessAssetPartnersGet200Response
-    <$> arbitraryReducedMaybe n -- businessAssetPartnersGet200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- businessAssetPartnersGet200ResponseItems :: [UserSingleAssetBinding]
+genBusinessAssets :: Int -> Gen BusinessAssets
+genBusinessAssets n =
+  BusinessAssets
+    <$> arbitraryReducedMaybe n -- businessAssetsAssetGroupInfo :: Maybe AssetGroupBinding
+    <*> arbitraryReducedMaybe n -- businessAssetsAssetId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- businessAssetsAssetType :: Maybe AssetTypeResponse
+    <*> arbitraryReducedMaybe n -- businessAssetsPermissions :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- businessAssetsCatalogInfo :: Maybe CatalogBinding
   
 instance Arbitrary BusinessAssetsGet200Response where
   arbitrary = sized genBusinessAssetsGet200Response
@@ -1732,16 +2401,18 @@ genBusinessAssetsGet200Response :: Int -> Gen BusinessAssetsGet200Response
 genBusinessAssetsGet200Response n =
   BusinessAssetsGet200Response
     <$> arbitraryReducedMaybe n -- businessAssetsGet200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- businessAssetsGet200ResponseItems :: [GetBusinessAssetsResponse]
+    <*> arbitraryReduced n -- businessAssetsGet200ResponseItems :: [BusinessAssets]
   
-instance Arbitrary BusinessMemberAssetsGet200Response where
-  arbitrary = sized genBusinessMemberAssetsGet200Response
+instance Arbitrary BusinessMemberAssetsGetResponse where
+  arbitrary = sized genBusinessMemberAssetsGetResponse
 
-genBusinessMemberAssetsGet200Response :: Int -> Gen BusinessMemberAssetsGet200Response
-genBusinessMemberAssetsGet200Response n =
-  BusinessMemberAssetsGet200Response
-    <$> arbitraryReducedMaybe n -- businessMemberAssetsGet200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- businessMemberAssetsGet200ResponseItems :: [AssetIdPermissions]
+genBusinessMemberAssetsGetResponse :: Int -> Gen BusinessMemberAssetsGetResponse
+genBusinessMemberAssetsGetResponse n =
+  BusinessMemberAssetsGetResponse
+    <$> arbitraryReducedMaybe n -- businessMemberAssetsGetResponseBookmark :: Maybe Text
+    <*> arbitraryReduced n -- businessMemberAssetsGetResponseItems :: [AssetIdPermissions]
+    <*> arbitrary -- businessMemberAssetsGetResponseTotalDataCount :: Int
+    <*> arbitraryReducedMaybe n -- businessMemberAssetsGetResponseTotalDataCountByStatus :: Maybe TotalCountByEntityStatus
   
 instance Arbitrary BusinessMemberAssetsSummary where
   arbitrary = sized genBusinessMemberAssetsSummary
@@ -1749,43 +2420,25 @@ instance Arbitrary BusinessMemberAssetsSummary where
 genBusinessMemberAssetsSummary :: Int -> Gen BusinessMemberAssetsSummary
 genBusinessMemberAssetsSummary n =
   BusinessMemberAssetsSummary
-    <$> arbitraryReducedMaybe n -- businessMemberAssetsSummaryAdAccounts :: Maybe [BusinessMemberAssetsSummaryAdAccountsInner]
-    <*> arbitraryReducedMaybe n -- businessMemberAssetsSummaryProfiles :: Maybe [BusinessMemberAssetsSummaryProfilesInner]
+    <$> arbitraryReducedMaybe n -- businessMemberAssetsSummaryAdAccounts :: Maybe [AssetIdWithPermissions]
+    <*> arbitraryReducedMaybe n -- businessMemberAssetsSummaryProfiles :: Maybe [AssetIdWithPermissions]
   
-instance Arbitrary BusinessMemberAssetsSummaryAdAccountsInner where
-  arbitrary = sized genBusinessMemberAssetsSummaryAdAccountsInner
+instance Arbitrary BusinessMembersAssetAccessDeleteBody where
+  arbitrary = sized genBusinessMembersAssetAccessDeleteBody
 
-genBusinessMemberAssetsSummaryAdAccountsInner :: Int -> Gen BusinessMemberAssetsSummaryAdAccountsInner
-genBusinessMemberAssetsSummaryAdAccountsInner n =
-  BusinessMemberAssetsSummaryAdAccountsInner
-    <$> arbitraryReducedMaybe n -- businessMemberAssetsSummaryAdAccountsInnerId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- businessMemberAssetsSummaryAdAccountsInnerPermissions :: Maybe [Text]
+genBusinessMembersAssetAccessDeleteBody :: Int -> Gen BusinessMembersAssetAccessDeleteBody
+genBusinessMembersAssetAccessDeleteBody n =
+  BusinessMembersAssetAccessDeleteBody
+    <$> arbitraryReduced n -- businessMembersAssetAccessDeleteBodyAccesses :: [DeleteMemberAssetAccessItem]
   
-instance Arbitrary BusinessMemberAssetsSummaryProfilesInner where
-  arbitrary = sized genBusinessMemberAssetsSummaryProfilesInner
+instance Arbitrary BusinessMembershipMember where
+  arbitrary = sized genBusinessMembershipMember
 
-genBusinessMemberAssetsSummaryProfilesInner :: Int -> Gen BusinessMemberAssetsSummaryProfilesInner
-genBusinessMemberAssetsSummaryProfilesInner n =
-  BusinessMemberAssetsSummaryProfilesInner
-    <$> arbitraryReducedMaybe n -- businessMemberAssetsSummaryProfilesInnerId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- businessMemberAssetsSummaryProfilesInnerPermissions :: Maybe [Text]
-  
-instance Arbitrary BusinessMembersAssetAccessDeleteRequest where
-  arbitrary = sized genBusinessMembersAssetAccessDeleteRequest
-
-genBusinessMembersAssetAccessDeleteRequest :: Int -> Gen BusinessMembersAssetAccessDeleteRequest
-genBusinessMembersAssetAccessDeleteRequest n =
-  BusinessMembersAssetAccessDeleteRequest
-    <$> arbitraryReduced n -- businessMembersAssetAccessDeleteRequestAccesses :: [BusinessMembersAssetAccessDeleteRequestAccessesInner]
-  
-instance Arbitrary BusinessMembersAssetAccessDeleteRequestAccessesInner where
-  arbitrary = sized genBusinessMembersAssetAccessDeleteRequestAccessesInner
-
-genBusinessMembersAssetAccessDeleteRequestAccessesInner :: Int -> Gen BusinessMembersAssetAccessDeleteRequestAccessesInner
-genBusinessMembersAssetAccessDeleteRequestAccessesInner n =
-  BusinessMembersAssetAccessDeleteRequestAccessesInner
-    <$> arbitrary -- businessMembersAssetAccessDeleteRequestAccessesInnerAssetId :: Text
-    <*> arbitrary -- businessMembersAssetAccessDeleteRequestAccessesInnerMemberId :: Text
+genBusinessMembershipMember :: Int -> Gen BusinessMembershipMember
+genBusinessMembershipMember n =
+  BusinessMembershipMember
+    <$> arbitraryReduced n -- businessMembershipMemberBusinessRole :: BusinessRoleForMembers
+    <*> arbitrary -- businessMembershipMemberMemberId :: Text
   
 instance Arbitrary BusinessPartnerAssetAccessGet200Response where
   arbitrary = sized genBusinessPartnerAssetAccessGet200Response
@@ -1794,27 +2447,159 @@ genBusinessPartnerAssetAccessGet200Response :: Int -> Gen BusinessPartnerAssetAc
 genBusinessPartnerAssetAccessGet200Response n =
   BusinessPartnerAssetAccessGet200Response
     <$> arbitraryReducedMaybe n -- businessPartnerAssetAccessGet200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- businessPartnerAssetAccessGet200ResponseItems :: [GetPartnerAssetsResponse]
+    <*> arbitraryReduced n -- businessPartnerAssetAccessGet200ResponseItems :: [BaseBusinessAssets]
   
-instance Arbitrary BusinessSharedAudience where
-  arbitrary = sized genBusinessSharedAudience
+instance Arbitrary BusinessToAdAccountSharedAudience where
+  arbitrary = sized genBusinessToAdAccountSharedAudience
 
-genBusinessSharedAudience :: Int -> Gen BusinessSharedAudience
-genBusinessSharedAudience n =
-  BusinessSharedAudience
-    <$> arbitrary -- businessSharedAudienceAudienceId :: Text
-    <*> arbitraryReduced n -- businessSharedAudienceOperationType :: OperationType
-    <*> arbitrary -- businessSharedAudienceRecipientBusinessIds :: [Text]
+genBusinessToAdAccountSharedAudience :: Int -> Gen BusinessToAdAccountSharedAudience
+genBusinessToAdAccountSharedAudience n =
+  BusinessToAdAccountSharedAudience
+    <$> arbitrary -- businessToAdAccountSharedAudienceAudienceId :: Text
+    <*> arbitraryReducedMaybe n -- businessToAdAccountSharedAudiencePermissions :: Maybe [Role]
+    <*> arbitrary -- businessToAdAccountSharedAudienceRecipientAccountIds :: [Text]
   
-instance Arbitrary BusinessSharedAudienceResponse where
-  arbitrary = sized genBusinessSharedAudienceResponse
+instance Arbitrary BusinessToAdAccountSharedAudienceUpdateWithRequiredBody where
+  arbitrary = sized genBusinessToAdAccountSharedAudienceUpdateWithRequiredBody
 
-genBusinessSharedAudienceResponse :: Int -> Gen BusinessSharedAudienceResponse
-genBusinessSharedAudienceResponse n =
-  BusinessSharedAudienceResponse
-    <$> arbitraryReducedMaybe n -- businessSharedAudienceResponseAudienceId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- businessSharedAudienceResponsePermissions :: Maybe [Role]
-    <*> arbitraryReducedMaybe n -- businessSharedAudienceResponseRecipientBusinessIds :: Maybe [Text]
+genBusinessToAdAccountSharedAudienceUpdateWithRequiredBody :: Int -> Gen BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+genBusinessToAdAccountSharedAudienceUpdateWithRequiredBody n =
+  BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+    <$> arbitrary -- businessToAdAccountSharedAudienceUpdateWithRequiredBodyAudienceId :: Text
+    <*> arbitraryReduced n -- businessToAdAccountSharedAudienceUpdateWithRequiredBodyOperationType :: OperationType
+    <*> arbitrary -- businessToAdAccountSharedAudienceUpdateWithRequiredBodyRecipientAccountIds :: [Text]
+  
+instance Arbitrary BusinessToBusinessSharedAudience where
+  arbitrary = sized genBusinessToBusinessSharedAudience
+
+genBusinessToBusinessSharedAudience :: Int -> Gen BusinessToBusinessSharedAudience
+genBusinessToBusinessSharedAudience n =
+  BusinessToBusinessSharedAudience
+    <$> arbitrary -- businessToBusinessSharedAudienceAudienceId :: Text
+    <*> arbitraryReducedMaybe n -- businessToBusinessSharedAudiencePermissions :: Maybe [Role]
+    <*> arbitrary -- businessToBusinessSharedAudienceRecipientBusinessIds :: [Text]
+  
+instance Arbitrary BusinessToBusinessSharedAudienceUpdateWithRequiredBody where
+  arbitrary = sized genBusinessToBusinessSharedAudienceUpdateWithRequiredBody
+
+genBusinessToBusinessSharedAudienceUpdateWithRequiredBody :: Int -> Gen BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+genBusinessToBusinessSharedAudienceUpdateWithRequiredBody n =
+  BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+    <$> arbitrary -- businessToBusinessSharedAudienceUpdateWithRequiredBodyAudienceId :: Text
+    <*> arbitraryReduced n -- businessToBusinessSharedAudienceUpdateWithRequiredBodyOperationType :: OperationType
+    <*> arbitrary -- businessToBusinessSharedAudienceUpdateWithRequiredBodyRecipientBusinessIds :: [Text]
+  
+instance Arbitrary Campaign where
+  arbitrary = sized genCampaign
+
+genCampaign :: Int -> Gen Campaign
+genCampaign n =
+  Campaign
+    <$> arbitraryReducedMaybe n -- campaignAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBidOptions :: Maybe CampaignBidOptions
+    <*> arbitraryReducedMaybe n -- campaignCreatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignDailySpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignEndTime :: Maybe Int
+    <*> arbitrary -- campaignId :: Text
+    <*> arbitraryReducedMaybe n -- campaignIntendedPromotionType :: Maybe IntendedPromotionType
+    <*> arbitraryReducedMaybe n -- campaignIsAutomatedCampaign :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignIsCampaignBudgetOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignIsCarting :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignIsFlexibleDailyBudgets :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignIsLtvOptimized :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignIsPerformancePlus :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignIsTopOfSearch :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignLifetimeSpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignName :: Maybe Text
+    <*> arbitraryReduced n -- campaignObjectiveType :: CampaignObjectiveType
+    <*> arbitraryReducedMaybe n -- campaignOrderLineId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignPerformancePlusCampaignSettings :: Maybe PerformancePlusCampaignSettings
+    <*> arbitraryReducedMaybe n -- campaignStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignStatus :: Maybe EntityStatus
+    <*> arbitraryReducedMaybe n -- campaignSummaryStatus :: Maybe SummaryStatus
+    <*> arbitraryReducedMaybe n -- campaignTrackingUrls :: Maybe TrackingUrls
+    <*> arbitraryReducedMaybe n -- campaignType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignUpdatedTime :: Maybe Int
+  
+instance Arbitrary CampaignAdPreview where
+  arbitrary = sized genCampaignAdPreview
+
+genCampaignAdPreview :: Int -> Gen CampaignAdPreview
+genCampaignAdPreview n =
+  CampaignAdPreview
+    <$> arbitrary -- campaignAdPreviewAdAccountId :: Text
+    <*> arbitrary -- campaignAdPreviewAdGroupId :: Text
+    <*> arbitraryReducedMaybe n -- campaignAdPreviewClientId :: Maybe Int
+    <*> arbitrary -- campaignAdPreviewExpiresAt :: Int
+    <*> arbitrary -- campaignAdPreviewIsActive :: Bool
+    <*> arbitraryReducedMaybe n -- campaignAdPreviewPinId :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignAdPreviewPinPromotionId :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignAdPreviewPromotedProductGroupId :: Maybe Int
+    <*> arbitrary -- campaignAdPreviewUrl :: Text
+    <*> arbitrary -- campaignAdPreviewUserId :: Int
+    <*> arbitrary -- campaignAdPreviewUuid :: Text
+  
+instance Arbitrary CampaignAdPreviewCreate where
+  arbitrary = sized genCampaignAdPreviewCreate
+
+genCampaignAdPreviewCreate :: Int -> Gen CampaignAdPreviewCreate
+genCampaignAdPreviewCreate n =
+  CampaignAdPreviewCreate
+    <$> arbitrary -- campaignAdPreviewCreateAdGroupId :: Text
+  
+instance Arbitrary CampaignAdPreviewCreate200ResponseInner where
+  arbitrary = sized genCampaignAdPreviewCreate200ResponseInner
+
+genCampaignAdPreviewCreate200ResponseInner :: Int -> Gen CampaignAdPreviewCreate200ResponseInner
+genCampaignAdPreviewCreate200ResponseInner n =
+  CampaignAdPreviewCreate200ResponseInner
+    <$> arbitraryReduced n -- campaignAdPreviewCreate200ResponseInnerData :: CampaignAdPreviewCreate200ResponseInnerData
+  
+instance Arbitrary CampaignAdPreviewCreate200ResponseInnerData where
+  arbitrary = sized genCampaignAdPreviewCreate200ResponseInnerData
+
+genCampaignAdPreviewCreate200ResponseInnerData :: Int -> Gen CampaignAdPreviewCreate200ResponseInnerData
+genCampaignAdPreviewCreate200ResponseInnerData n =
+  CampaignAdPreviewCreate200ResponseInnerData
+    <$> arbitrary -- campaignAdPreviewCreate200ResponseInnerDataAdAccountId :: Text
+    <*> arbitrary -- campaignAdPreviewCreate200ResponseInnerDataAdGroupId :: Text
+    <*> arbitraryReducedMaybe n -- campaignAdPreviewCreate200ResponseInnerDataClientId :: Maybe Int
+    <*> arbitrary -- campaignAdPreviewCreate200ResponseInnerDataExpiresAt :: Int
+    <*> arbitrary -- campaignAdPreviewCreate200ResponseInnerDataIsActive :: Bool
+    <*> arbitraryReducedMaybe n -- campaignAdPreviewCreate200ResponseInnerDataPinId :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignAdPreviewCreate200ResponseInnerDataPinPromotionId :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignAdPreviewCreate200ResponseInnerDataPromotedProductGroupId :: Maybe Int
+    <*> arbitrary -- campaignAdPreviewCreate200ResponseInnerDataUrl :: Text
+    <*> arbitrary -- campaignAdPreviewCreate200ResponseInnerDataUserId :: Int
+    <*> arbitrary -- campaignAdPreviewCreate200ResponseInnerDataUuid :: Text
+    <*> arbitraryReduced n -- campaignAdPreviewCreate200ResponseInnerDataExceptions :: PinterestLibError
+  
+instance Arbitrary CampaignAdPreviewCreate200ResponseInnerDataOneOf where
+  arbitrary = sized genCampaignAdPreviewCreate200ResponseInnerDataOneOf
+
+genCampaignAdPreviewCreate200ResponseInnerDataOneOf :: Int -> Gen CampaignAdPreviewCreate200ResponseInnerDataOneOf
+genCampaignAdPreviewCreate200ResponseInnerDataOneOf n =
+  CampaignAdPreviewCreate200ResponseInnerDataOneOf
+    <$> arbitraryReduced n -- campaignAdPreviewCreate200ResponseInnerDataOneOfExceptions :: PinterestLibError
+  
+instance Arbitrary CampaignAdPreviewDelete200ResponseInner where
+  arbitrary = sized genCampaignAdPreviewDelete200ResponseInner
+
+genCampaignAdPreviewDelete200ResponseInner :: Int -> Gen CampaignAdPreviewDelete200ResponseInner
+genCampaignAdPreviewDelete200ResponseInner n =
+  CampaignAdPreviewDelete200ResponseInner
+    <$> arbitraryReduced n -- campaignAdPreviewDelete200ResponseInnerStatus :: CampaignAdPreviewDelete200ResponseInnerStatus
+  
+instance Arbitrary CampaignAdPreviewDelete200ResponseInnerStatus where
+  arbitrary = sized genCampaignAdPreviewDelete200ResponseInnerStatus
+
+genCampaignAdPreviewDelete200ResponseInnerStatus :: Int -> Gen CampaignAdPreviewDelete200ResponseInnerStatus
+genCampaignAdPreviewDelete200ResponseInnerStatus n =
+  CampaignAdPreviewDelete200ResponseInnerStatus
+    <$> arbitrary -- campaignAdPreviewDelete200ResponseInnerStatusStatusCode :: E'StatusCode
+    <*> arbitrary -- campaignAdPreviewDelete200ResponseInnerStatusCode :: Int
+    <*> arbitrary -- campaignAdPreviewDelete200ResponseInnerStatusMessage :: Text
   
 instance Arbitrary CampaignAudienceMultipliers where
   arbitrary = sized genCampaignAudienceMultipliers
@@ -1824,14 +2609,98 @@ genCampaignAudienceMultipliers n =
   CampaignAudienceMultipliers
     <$> arbitraryReducedMaybe n -- campaignAudienceMultipliersAudienceId :: Maybe Text
   
+instance Arbitrary CampaignBatchItem where
+  arbitrary = sized genCampaignBatchItem
+
+genCampaignBatchItem :: Int -> Gen CampaignBatchItem
+genCampaignBatchItem n =
+  CampaignBatchItem
+    <$> arbitraryReducedMaybe n -- campaignBatchItemData :: Maybe CampaignBatchResponseData
+    <*> arbitraryReducedMaybe n -- campaignBatchItemExceptions :: Maybe [Exception]
+  
+instance Arbitrary CampaignBatchResponseData where
+  arbitrary = sized genCampaignBatchResponseData
+
+genCampaignBatchResponseData :: Int -> Gen CampaignBatchResponseData
+genCampaignBatchResponseData n =
+  CampaignBatchResponseData
+    <$> arbitraryReducedMaybe n -- campaignBatchResponseDataAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataBidOptions :: Maybe CampaignBidOptions
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataCreatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataDailySpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataIntendedPromotionType :: Maybe IntendedPromotionType
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataIsAutomatedCampaign :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataIsCampaignBudgetOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataIsCarting :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataIsFlexibleDailyBudgets :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataIsLtvOptimized :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataIsPerformancePlus :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataIsTopOfSearch :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataLifetimeSpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataObjectiveType :: Maybe CampaignObjectiveType
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataOrderLineId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataPerformancePlusCampaignSettings :: Maybe PerformancePlusCampaignSettings
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataStatus :: Maybe NullableEntityStatus
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataSummaryStatus :: Maybe SummaryStatus
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataTrackingUrls :: Maybe TrackingUrls
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBatchResponseDataUpdatedTime :: Maybe Int
+  
+instance Arbitrary CampaignBatchUpdateItem where
+  arbitrary = sized genCampaignBatchUpdateItem
+
+genCampaignBatchUpdateItem :: Int -> Gen CampaignBatchUpdateItem
+genCampaignBatchUpdateItem n =
+  CampaignBatchUpdateItem
+    <$> arbitraryReducedMaybe n -- campaignBatchUpdateItemAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemAppId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemAppPlatform :: Maybe MobileAppPlatform
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemBidOptions :: Maybe CampaignBidOptionsUpdate
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemDailySpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemEndTime :: Maybe Int
+    <*> arbitrary -- campaignBatchUpdateItemId :: Text
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemIntendedPromotionType :: Maybe IntendedPromotionType
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemIsAutomatedCampaign :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemIsCampaignBudgetOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemIsFlexibleDailyBudgets :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemIsLtvOptimized :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemIsPerformancePlus :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemIsTopOfSearch :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemLifetimeSpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemObjectiveType :: Maybe ConversionObjectiveType
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemOrderLineId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemPerformancePlusCampaignSettings :: Maybe PerformancePlusCampaignSettings
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemStatus :: Maybe EntityStatus
+    <*> arbitraryReducedMaybe n -- campaignBatchUpdateItemTrackingUrls :: Maybe TrackingUrls
+  
+instance Arbitrary CampaignBatchWriteResponseModel where
+  arbitrary = sized genCampaignBatchWriteResponseModel
+
+genCampaignBatchWriteResponseModel :: Int -> Gen CampaignBatchWriteResponseModel
+genCampaignBatchWriteResponseModel n =
+  CampaignBatchWriteResponseModel
+    <$> arbitraryReduced n -- campaignBatchWriteResponseModelItems :: [CampaignBatchItem]
+  
 instance Arbitrary CampaignBidOptions where
   arbitrary = sized genCampaignBidOptions
 
 genCampaignBidOptions :: Int -> Gen CampaignBidOptions
 genCampaignBidOptions n =
   CampaignBidOptions
-    <$> arbitraryReducedMaybe n -- campaignBidOptionsAppTypeMultipliers :: Maybe AppTypeMultipliers
+    <$> arbitraryReducedMaybe n -- campaignBidOptionsAgeBucketMultipliers :: Maybe AgeBucketMultipliers
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsAppTypeMultipliers :: Maybe AppTypeMultipliers
     <*> arbitraryReducedMaybe n -- campaignBidOptionsAudienceMultipliers :: Maybe CampaignAudienceMultipliers
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsFreqBidMultiplierTimeWindow :: Maybe FreqBidMultiplierTimeWindow
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsFrequencyMultipliers :: Maybe FrequencyMultipliers
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsGenderMultipliers :: Maybe GenderMultipliers
     <*> arbitraryReducedMaybe n -- campaignBidOptionsPlacementMultipliers :: Maybe PlacementMultipliers
   
 instance Arbitrary CampaignBidOptionsCreate where
@@ -1840,8 +2709,12 @@ instance Arbitrary CampaignBidOptionsCreate where
 genCampaignBidOptionsCreate :: Int -> Gen CampaignBidOptionsCreate
 genCampaignBidOptionsCreate n =
   CampaignBidOptionsCreate
-    <$> arbitraryReducedMaybe n -- campaignBidOptionsCreateAppTypeMultipliers :: Maybe AppTypeMultipliers
+    <$> arbitraryReducedMaybe n -- campaignBidOptionsCreateAgeBucketMultipliers :: Maybe AgeBucketMultipliers
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsCreateAppTypeMultipliers :: Maybe AppTypeMultipliers
     <*> arbitraryReducedMaybe n -- campaignBidOptionsCreateAudienceMultipliers :: Maybe CampaignAudienceMultipliers
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsCreateFreqBidMultiplierTimeWindow :: Maybe FreqBidMultiplierTimeWindow
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsCreateFrequencyMultipliers :: Maybe FrequencyMultipliers
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsCreateGenderMultipliers :: Maybe GenderMultipliers
     <*> arbitraryReducedMaybe n -- campaignBidOptionsCreatePlacementMultipliers :: Maybe PlacementMultipliers
   
 instance Arbitrary CampaignBidOptionsUpdate where
@@ -1850,48 +2723,42 @@ instance Arbitrary CampaignBidOptionsUpdate where
 genCampaignBidOptionsUpdate :: Int -> Gen CampaignBidOptionsUpdate
 genCampaignBidOptionsUpdate n =
   CampaignBidOptionsUpdate
-    <$> arbitraryReducedMaybe n -- campaignBidOptionsUpdateAppTypeMultipliers :: Maybe AppTypeMultipliers
+    <$> arbitraryReducedMaybe n -- campaignBidOptionsUpdateAgeBucketMultipliers :: Maybe AgeBucketMultipliers
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsUpdateAppTypeMultipliers :: Maybe AppTypeMultipliers
     <*> arbitraryReducedMaybe n -- campaignBidOptionsUpdateAudienceMultipliers :: Maybe CampaignAudienceMultipliers
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsUpdateFreqBidMultiplierTimeWindow :: Maybe FreqBidMultiplierTimeWindow
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsUpdateFrequencyMultipliers :: Maybe FrequencyMultipliers
+    <*> arbitraryReducedMaybe n -- campaignBidOptionsUpdateGenderMultipliers :: Maybe GenderMultipliers
     <*> arbitraryReducedMaybe n -- campaignBidOptionsUpdatePlacementMultipliers :: Maybe PlacementMultipliers
-    <*> arbitrary -- campaignBidOptionsUpdateUpdateMask :: [E'UpdateMask]
+    <*> arbitraryReduced n -- campaignBidOptionsUpdateUpdateMask :: [CampaignBidOptionsUpdateMaskItems]
   
-instance Arbitrary CampaignCommon where
-  arbitrary = sized genCampaignCommon
+instance Arbitrary CampaignCreateItem where
+  arbitrary = sized genCampaignCreateItem
 
-genCampaignCommon :: Int -> Gen CampaignCommon
-genCampaignCommon n =
-  CampaignCommon
-    <$> arbitraryReducedMaybe n -- campaignCommonAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCommonDailySpendCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCommonEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCommonIsAutomatedCampaign :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignCommonIsFlexibleDailyBudgets :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignCommonLifetimeSpendCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCommonName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCommonOrderLineId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCommonStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCommonStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- campaignCommonTrackingUrls :: Maybe TrackingUrls
-  
-instance Arbitrary CampaignCreateCommon where
-  arbitrary = sized genCampaignCreateCommon
-
-genCampaignCreateCommon :: Int -> Gen CampaignCreateCommon
-genCampaignCreateCommon n =
-  CampaignCreateCommon
-    <$> arbitraryReducedMaybe n -- campaignCreateCommonAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonDailySpendCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonIsAutomatedCampaign :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonIsFlexibleDailyBudgets :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonLifetimeSpendCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonOrderLineId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateCommonIsCampaignBudgetOptimization :: Maybe Bool
+genCampaignCreateItem :: Int -> Gen CampaignCreateItem
+genCampaignCreateItem n =
+  CampaignCreateItem
+    <$> arbitraryReducedMaybe n -- campaignCreateItemAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignCreateItemAppId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignCreateItemAppPlatform :: Maybe MobileAppPlatform
+    <*> arbitraryReducedMaybe n -- campaignCreateItemBidOptions :: Maybe CampaignBidOptions
+    <*> arbitraryReducedMaybe n -- campaignCreateItemDailySpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignCreateItemDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignCreateItemEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignCreateItemIntendedPromotionType :: Maybe IntendedPromotionType
+    <*> arbitraryReducedMaybe n -- campaignCreateItemIsAutomatedCampaign :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateItemIsCampaignBudgetOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateItemIsFlexibleDailyBudgets :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateItemIsLtvOptimized :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateItemIsPerformancePlus :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateItemIsTopOfSearch :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateItemLifetimeSpendCap :: Maybe Int
+    <*> arbitrary -- campaignCreateItemName :: Text
+    <*> arbitraryReduced n -- campaignCreateItemObjectiveType :: ConversionObjectiveType
+    <*> arbitraryReducedMaybe n -- campaignCreateItemOrderLineId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignCreateItemStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignCreateItemStatus :: Maybe EntityStatus
+    <*> arbitraryReducedMaybe n -- campaignCreateItemTrackingUrls :: Maybe TrackingUrls
   
 instance Arbitrary CampaignCreateRequest where
   arbitrary = sized genCampaignCreateRequest
@@ -1899,118 +2766,200 @@ instance Arbitrary CampaignCreateRequest where
 genCampaignCreateRequest :: Int -> Gen CampaignCreateRequest
 genCampaignCreateRequest n =
   CampaignCreateRequest
-    <$> arbitrary -- campaignCreateRequestAdAccountId :: Text
-    <*> arbitraryReducedMaybe n -- campaignCreateRequestDailySpendCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateRequestEndTime :: Maybe Int
+    <$> arbitraryReducedMaybe n -- campaignCreateRequestBidOptions :: Maybe CampaignBidOptionsCreate
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestIntendedPromotionType :: Maybe IntendedPromotionType
     <*> arbitraryReducedMaybe n -- campaignCreateRequestIsAutomatedCampaign :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestIsCampaignBudgetOptimization :: Maybe Bool
     <*> arbitraryReducedMaybe n -- campaignCreateRequestIsFlexibleDailyBudgets :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestIsLtvOptimized :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestIsPerformancePlus :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestIsTopOfSearch :: Maybe Bool
+    <*> arbitraryReduced n -- campaignCreateRequestObjectiveType :: ObjectiveType
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestStatus :: Maybe EntityStatus
+    <*> arbitrary -- campaignCreateRequestAdAccountId :: Text
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestDailySpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestEndTime :: Maybe Int
     <*> arbitraryReducedMaybe n -- campaignCreateRequestLifetimeSpendCap :: Maybe Int
     <*> arbitrary -- campaignCreateRequestName :: Text
     <*> arbitraryReducedMaybe n -- campaignCreateRequestOrderLineId :: Maybe Text
     <*> arbitraryReducedMaybe n -- campaignCreateRequestStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateRequestStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- campaignCreateRequestTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- campaignCreateRequestDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateRequestIsCampaignBudgetOptimization :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignCreateRequestBidOptions :: Maybe CampaignBidOptionsCreate
-    <*> arbitraryReducedMaybe n -- campaignCreateRequestIsPerformancePlus :: Maybe Bool
-    <*> arbitraryReduced n -- campaignCreateRequestObjectiveType :: ObjectiveType
+    <*> arbitraryReducedMaybeValue n -- campaignCreateRequestTrackingUrls :: Maybe A.Value
   
-instance Arbitrary CampaignCreateResponse where
-  arbitrary = sized genCampaignCreateResponse
+instance Arbitrary CampaignCreateRequestAllOf1 where
+  arbitrary = sized genCampaignCreateRequestAllOf1
 
-genCampaignCreateResponse :: Int -> Gen CampaignCreateResponse
-genCampaignCreateResponse n =
-  CampaignCreateResponse
-    <$> arbitraryReducedMaybe n -- campaignCreateResponseItems :: Maybe [CampaignCreateResponseItem]
+genCampaignCreateRequestAllOf1 :: Int -> Gen CampaignCreateRequestAllOf1
+genCampaignCreateRequestAllOf1 n =
+  CampaignCreateRequestAllOf1
+    <$> arbitraryReducedMaybe n -- campaignCreateRequestAllOf1BidOptions :: Maybe CampaignBidOptionsCreate
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestAllOf1IntendedPromotionType :: Maybe IntendedPromotionType
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestAllOf1IsAutomatedCampaign :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestAllOf1IsCampaignBudgetOptimization :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestAllOf1IsFlexibleDailyBudgets :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestAllOf1IsLtvOptimized :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestAllOf1IsPerformancePlus :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestAllOf1IsTopOfSearch :: Maybe Bool
+    <*> arbitraryReduced n -- campaignCreateRequestAllOf1ObjectiveType :: ObjectiveType
+    <*> arbitraryReducedMaybe n -- campaignCreateRequestAllOf1Status :: Maybe EntityStatus
   
-instance Arbitrary CampaignCreateResponseData where
-  arbitrary = sized genCampaignCreateResponseData
+instance Arbitrary CampaignDeliveryEstimatesCampaign where
+  arbitrary = sized genCampaignDeliveryEstimatesCampaign
 
-genCampaignCreateResponseData :: Int -> Gen CampaignCreateResponseData
-genCampaignCreateResponseData n =
-  CampaignCreateResponseData
-    <$> arbitraryReducedMaybe n -- campaignCreateResponseDataAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataDailySpendCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataIsAutomatedCampaign :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataIsFlexibleDailyBudgets :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataLifetimeSpendCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataOrderLineId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataIsCampaignBudgetOptimization :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataBidOptions :: Maybe CampaignBidOptions
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataIsPerformancePlus :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataObjectiveType :: Maybe ObjectiveType
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataSummaryStatus :: Maybe CampaignSummaryStatus
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseDataUpdatedTime :: Maybe Int
+genCampaignDeliveryEstimatesCampaign :: Int -> Gen CampaignDeliveryEstimatesCampaign
+genCampaignDeliveryEstimatesCampaign n =
+  CampaignDeliveryEstimatesCampaign
+    <$> arbitraryReduced n -- campaignDeliveryEstimatesCampaignAdGroups :: [AdGroupDeliveryEstimates]
+    <*> arbitraryReduced n -- campaignDeliveryEstimatesCampaignBudgetDurationType :: BudgetDurationType
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesCampaignDailySpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesCampaignEndDate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesCampaignLifetimeSpendCap :: Maybe Int
+    <*> arbitraryReduced n -- campaignDeliveryEstimatesCampaignObjectiveType :: DeliveryEstimateObjectiveType
+    <*> arbitrary -- campaignDeliveryEstimatesCampaignStartDate :: Text
   
-instance Arbitrary CampaignCreateResponseItem where
-  arbitrary = sized genCampaignCreateResponseItem
+instance Arbitrary CampaignDeliveryEstimatesDerivedMetrics where
+  arbitrary = sized genCampaignDeliveryEstimatesDerivedMetrics
 
-genCampaignCreateResponseItem :: Int -> Gen CampaignCreateResponseItem
-genCampaignCreateResponseItem n =
-  CampaignCreateResponseItem
-    <$> arbitraryReducedMaybe n -- campaignCreateResponseItemData :: Maybe CampaignCreateResponseData
-    <*> arbitraryReducedMaybe n -- campaignCreateResponseItemExceptions :: Maybe [Exception]
+genCampaignDeliveryEstimatesDerivedMetrics :: Int -> Gen CampaignDeliveryEstimatesDerivedMetrics
+genCampaignDeliveryEstimatesDerivedMetrics n =
+  CampaignDeliveryEstimatesDerivedMetrics
+    <$> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsCpc :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsCpcLower :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsCpcUpper :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsCpm :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsCpmLower :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsCpmUpper :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsLifetimeFrequency :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsLifetimeFrequencyLower :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsLifetimeFrequencyUpper :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsLifetimeImpression :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsLifetimeImpressionLower :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsLifetimeImpressionUpper :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsLifetimeReach :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsLifetimeReachLower :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsLifetimeReachUpper :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyClick :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyClickLower :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyClickUpper :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyFrequency :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyFrequencyLower :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyFrequencyUpper :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyImpression :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyImpressionLower :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyImpressionUpper :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyReach :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyReachLower :: Maybe Float
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesDerivedMetricsWeeklyReachUpper :: Maybe Float
   
-instance Arbitrary CampaignId where
-  arbitrary = sized genCampaignId
+instance Arbitrary CampaignDeliveryEstimatesResponse where
+  arbitrary = sized genCampaignDeliveryEstimatesResponse
 
-genCampaignId :: Int -> Gen CampaignId
-genCampaignId n =
-  CampaignId
-    <$> arbitraryReducedMaybe n -- campaignIdId :: Maybe Text
+genCampaignDeliveryEstimatesResponse :: Int -> Gen CampaignDeliveryEstimatesResponse
+genCampaignDeliveryEstimatesResponse n =
+  CampaignDeliveryEstimatesResponse
+    <$> arbitraryReducedMaybe n -- campaignDeliveryEstimatesResponseCurves :: Maybe [CampaignPlanningCurveEstimate]
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesResponseDerivedMetrics :: Maybe CampaignDeliveryEstimatesDerivedMetrics
+    <*> arbitraryReducedMaybe n -- campaignDeliveryEstimatesResponseMaxPotentialSpend :: Maybe Int
   
-instance Arbitrary CampaignIdFilter where
-  arbitrary = sized genCampaignIdFilter
+instance Arbitrary CampaignPlanningAdGroupAudienceSize where
+  arbitrary = sized genCampaignPlanningAdGroupAudienceSize
 
-genCampaignIdFilter :: Int -> Gen CampaignIdFilter
-genCampaignIdFilter n =
-  CampaignIdFilter
-    <$> arbitraryReducedMaybe n -- campaignIdFilterCampaignIds :: Maybe [Text]
+genCampaignPlanningAdGroupAudienceSize :: Int -> Gen CampaignPlanningAdGroupAudienceSize
+genCampaignPlanningAdGroupAudienceSize n =
+  CampaignPlanningAdGroupAudienceSize
+    <$> arbitraryReducedMaybe n -- campaignPlanningAdGroupAudienceSizeCountLower :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignPlanningAdGroupAudienceSizeCountUpper :: Maybe Int
   
-instance Arbitrary CampaignObjectivesFilter where
-  arbitrary = sized genCampaignObjectivesFilter
+instance Arbitrary CampaignPlanningBudgetRecommendation where
+  arbitrary = sized genCampaignPlanningBudgetRecommendation
 
-genCampaignObjectivesFilter :: Int -> Gen CampaignObjectivesFilter
-genCampaignObjectivesFilter n =
-  CampaignObjectivesFilter
-    <$> arbitraryReducedMaybe n -- campaignObjectivesFilterCampaignObjectiveTypes :: Maybe [ObjectiveType]
+genCampaignPlanningBudgetRecommendation :: Int -> Gen CampaignPlanningBudgetRecommendation
+genCampaignPlanningBudgetRecommendation n =
+  CampaignPlanningBudgetRecommendation
+    <$> arbitraryReducedMaybe n -- campaignPlanningBudgetRecommendationBudgetRecommendation :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignPlanningBudgetRecommendationExperimentCampaignBudgetRecommendation :: Maybe [CampaignPlanningExperimentBudgetRecommendation]
+    <*> arbitraryReducedMaybe n -- campaignPlanningBudgetRecommendationLifetimeDaysRecommendation :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignPlanningBudgetRecommendationPointEstimations :: Maybe [CampaignPlanningBudgetRecommendationPoint]
   
-instance Arbitrary CampaignResponse where
-  arbitrary = sized genCampaignResponse
+instance Arbitrary CampaignPlanningBudgetRecommendationPoint where
+  arbitrary = sized genCampaignPlanningBudgetRecommendationPoint
 
-genCampaignResponse :: Int -> Gen CampaignResponse
-genCampaignResponse n =
-  CampaignResponse
-    <$> arbitraryReducedMaybe n -- campaignResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignResponseAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignResponseDailySpendCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignResponseEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignResponseIsAutomatedCampaign :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignResponseIsFlexibleDailyBudgets :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignResponseLifetimeSpendCap :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignResponseName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignResponseOrderLineId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignResponseStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignResponseStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- campaignResponseTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- campaignResponseBidOptions :: Maybe CampaignBidOptions
-    <*> arbitraryReducedMaybe n -- campaignResponseCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignResponseIsCampaignBudgetOptimization :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignResponseIsPerformancePlus :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignResponseObjectiveType :: Maybe ObjectiveType
-    <*> arbitraryReducedMaybe n -- campaignResponseSummaryStatus :: Maybe CampaignSummaryStatus
-    <*> arbitraryReducedMaybe n -- campaignResponseType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignResponseUpdatedTime :: Maybe Int
+genCampaignPlanningBudgetRecommendationPoint :: Int -> Gen CampaignPlanningBudgetRecommendationPoint
+genCampaignPlanningBudgetRecommendationPoint n =
+  CampaignPlanningBudgetRecommendationPoint
+    <$> arbitraryReducedMaybe n -- campaignPlanningBudgetRecommendationPointEstimationType :: Maybe CampaignPlanningEstimationType
+    <*> arbitraryReducedMaybe n -- campaignPlanningBudgetRecommendationPointPointEstimate :: Maybe CampaignPlanningPointEstimate
+  
+instance Arbitrary CampaignPlanningConfidenceLevelAlert where
+  arbitrary = sized genCampaignPlanningConfidenceLevelAlert
+
+genCampaignPlanningConfidenceLevelAlert :: Int -> Gen CampaignPlanningConfidenceLevelAlert
+genCampaignPlanningConfidenceLevelAlert n =
+  CampaignPlanningConfidenceLevelAlert
+    <$> arbitraryReducedMaybe n -- campaignPlanningConfidenceLevelAlertDescription :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignPlanningConfidenceLevelAlertReason :: Maybe CampaignPlanningConfidenceLevelAlertReason
+    <*> arbitraryReducedMaybe n -- campaignPlanningConfidenceLevelAlertSeverity :: Maybe CampaignPlanningConfidenceLevelAlertSeverity
+  
+instance Arbitrary CampaignPlanningConversionAttribution where
+  arbitrary = sized genCampaignPlanningConversionAttribution
+
+genCampaignPlanningConversionAttribution :: Int -> Gen CampaignPlanningConversionAttribution
+genCampaignPlanningConversionAttribution n =
+  CampaignPlanningConversionAttribution
+    <$> arbitraryReducedMaybe n -- campaignPlanningConversionAttributionClickWindowDays :: Maybe CampaignPlanningConversionAttributionWindowDays
+    <*> arbitraryReducedMaybe n -- campaignPlanningConversionAttributionEngagementWindowDays :: Maybe CampaignPlanningConversionAttributionWindowDays
+    <*> arbitraryReducedMaybe n -- campaignPlanningConversionAttributionViewWindowDays :: Maybe CampaignPlanningConversionAttributionWindowDays
+  
+instance Arbitrary CampaignPlanningConversionRate where
+  arbitrary = sized genCampaignPlanningConversionRate
+
+genCampaignPlanningConversionRate :: Int -> Gen CampaignPlanningConversionRate
+genCampaignPlanningConversionRate n =
+  CampaignPlanningConversionRate
+    <$> arbitraryReduced n -- campaignPlanningConversionRateAttributionWindows :: CampaignPlanningConversionAttribution
+    <*> arbitraryReduced n -- campaignPlanningConversionRateConversionEvent :: CampaignPlanningConversionEvent
+    <*> arbitrary -- campaignPlanningConversionRateConversionRate :: Float
+  
+instance Arbitrary CampaignPlanningCurveEstimate where
+  arbitrary = sized genCampaignPlanningCurveEstimate
+
+genCampaignPlanningCurveEstimate :: Int -> Gen CampaignPlanningCurveEstimate
+genCampaignPlanningCurveEstimate n =
+  CampaignPlanningCurveEstimate
+    <$> arbitraryReducedMaybe n -- campaignPlanningCurveEstimateEstimationType :: Maybe CampaignPlanningEstimationType
+    <*> arbitraryReducedMaybe n -- campaignPlanningCurveEstimatePoints :: Maybe [CampaignPlanningPointEstimate]
+  
+instance Arbitrary CampaignPlanningExperimentBudgetRecommendation where
+  arbitrary = sized genCampaignPlanningExperimentBudgetRecommendation
+
+genCampaignPlanningExperimentBudgetRecommendation :: Int -> Gen CampaignPlanningExperimentBudgetRecommendation
+genCampaignPlanningExperimentBudgetRecommendation n =
+  CampaignPlanningExperimentBudgetRecommendation
+    <$> arbitraryReducedMaybe n -- campaignPlanningExperimentBudgetRecommendationBudgetRecommendation :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignPlanningExperimentBudgetRecommendationLifetimeDaysRecommendation :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignPlanningExperimentBudgetRecommendationPointEstimations :: Maybe [CampaignPlanningBudgetRecommendationPoint]
+    <*> arbitraryReducedMaybe n -- campaignPlanningExperimentBudgetRecommendationVersionId :: Maybe Text
+  
+instance Arbitrary CampaignPlanningPointEstimate where
+  arbitrary = sized genCampaignPlanningPointEstimate
+
+genCampaignPlanningPointEstimate :: Int -> Gen CampaignPlanningPointEstimate
+genCampaignPlanningPointEstimate n =
+  CampaignPlanningPointEstimate
+    <$> arbitrary -- campaignPlanningPointEstimateBudget :: Int
+    <*> arbitrary -- campaignPlanningPointEstimateDoubleY :: Double
+    <*> arbitrary -- campaignPlanningPointEstimateMaxY :: Int
+    <*> arbitrary -- campaignPlanningPointEstimateMinY :: Int
+    <*> arbitrary -- campaignPlanningPointEstimateY :: Int
+  
+instance Arbitrary CampaignPlanningResponseError where
+  arbitrary = sized genCampaignPlanningResponseError
+
+genCampaignPlanningResponseError :: Int -> Gen CampaignPlanningResponseError
+genCampaignPlanningResponseError n =
+  CampaignPlanningResponseError
+    <$> arbitraryReducedMaybe n -- campaignPlanningResponseErrorCode :: Maybe CampaignPlanningResponseErrorCode
+    <*> arbitraryReducedMaybe n -- campaignPlanningResponseErrorMessage :: Maybe Text
   
 instance Arbitrary CampaignUpdateRequest where
   arbitrary = sized genCampaignUpdateRequest
@@ -2018,40 +2967,48 @@ instance Arbitrary CampaignUpdateRequest where
 genCampaignUpdateRequest :: Int -> Gen CampaignUpdateRequest
 genCampaignUpdateRequest n =
   CampaignUpdateRequest
-    <$> arbitrary -- campaignUpdateRequestId :: Text
+    <$> arbitraryReducedMaybe n -- campaignUpdateRequestBidOptions :: Maybe CampaignBidOptionsUpdate
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestIntendedPromotionType :: Maybe IntendedPromotionType
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestIsLtvOptimized :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestIsPerformancePlus :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestIsTopOfSearch :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestObjectiveType :: Maybe ObjectiveType
     <*> arbitrary -- campaignUpdateRequestAdAccountId :: Text
     <*> arbitraryReducedMaybe n -- campaignUpdateRequestDailySpendCap :: Maybe Int
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
     <*> arbitraryReducedMaybe n -- campaignUpdateRequestEndTime :: Maybe Int
+    <*> arbitrary -- campaignUpdateRequestId :: Text
     <*> arbitraryReducedMaybe n -- campaignUpdateRequestIsAutomatedCampaign :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestIsCampaignBudgetOptimization :: Maybe Bool
     <*> arbitraryReducedMaybe n -- campaignUpdateRequestIsFlexibleDailyBudgets :: Maybe Bool
     <*> arbitraryReducedMaybe n -- campaignUpdateRequestLifetimeSpendCap :: Maybe Int
     <*> arbitraryReducedMaybe n -- campaignUpdateRequestName :: Maybe Text
     <*> arbitraryReducedMaybe n -- campaignUpdateRequestOrderLineId :: Maybe Text
     <*> arbitraryReducedMaybe n -- campaignUpdateRequestStartTime :: Maybe Int
     <*> arbitraryReducedMaybe n -- campaignUpdateRequestStatus :: Maybe EntityStatus
-    <*> arbitraryReducedMaybe n -- campaignUpdateRequestTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- campaignUpdateRequestDefaultAdGroupBudgetInMicroCurrency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- campaignUpdateRequestIsCampaignBudgetOptimization :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignUpdateRequestBidOptions :: Maybe CampaignBidOptionsUpdate
-    <*> arbitraryReducedMaybe n -- campaignUpdateRequestIsPerformancePlus :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- campaignUpdateRequestObjectiveType :: Maybe ObjectiveType
+    <*> arbitraryReducedMaybeValue n -- campaignUpdateRequestTrackingUrls :: Maybe A.Value
   
-instance Arbitrary CampaignUpdateResponse where
-  arbitrary = sized genCampaignUpdateResponse
+instance Arbitrary CampaignUpdateRequestAllOf2 where
+  arbitrary = sized genCampaignUpdateRequestAllOf2
 
-genCampaignUpdateResponse :: Int -> Gen CampaignUpdateResponse
-genCampaignUpdateResponse n =
-  CampaignUpdateResponse
-    <$> arbitraryReducedMaybe n -- campaignUpdateResponseItems :: Maybe [CampaignCreateResponseItem]
+genCampaignUpdateRequestAllOf2 :: Int -> Gen CampaignUpdateRequestAllOf2
+genCampaignUpdateRequestAllOf2 n =
+  CampaignUpdateRequestAllOf2
+    <$> arbitraryReducedMaybe n -- campaignUpdateRequestAllOf2BidOptions :: Maybe CampaignBidOptionsUpdate
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestAllOf2IntendedPromotionType :: Maybe IntendedPromotionType
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestAllOf2IsLtvOptimized :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestAllOf2IsPerformancePlus :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestAllOf2IsTopOfSearch :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- campaignUpdateRequestAllOf2ObjectiveType :: Maybe ObjectiveType
   
-instance Arbitrary CampaignsAnalyticsResponseInner where
-  arbitrary = sized genCampaignsAnalyticsResponseInner
+instance Arbitrary CampaignsAnalyticsMetrics where
+  arbitrary = sized genCampaignsAnalyticsMetrics
 
-genCampaignsAnalyticsResponseInner :: Int -> Gen CampaignsAnalyticsResponseInner
-genCampaignsAnalyticsResponseInner n =
-  CampaignsAnalyticsResponseInner
-    <$> arbitraryReducedMaybe n -- campaignsAnalyticsResponseInnerCampaignId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- campaignsAnalyticsResponseInnerDate :: Maybe Date
+genCampaignsAnalyticsMetrics :: Int -> Gen CampaignsAnalyticsMetrics
+genCampaignsAnalyticsMetrics n =
+  CampaignsAnalyticsMetrics
+    <$> arbitraryReducedMaybe n -- campaignsAnalyticsMetricsCampaignId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- campaignsAnalyticsMetricsDate :: Maybe Date
   
 instance Arbitrary CampaignsList200Response where
   arbitrary = sized genCampaignsList200Response
@@ -2060,15 +3017,62 @@ genCampaignsList200Response :: Int -> Gen CampaignsList200Response
 genCampaignsList200Response n =
   CampaignsList200Response
     <$> arbitraryReducedMaybe n -- campaignsList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- campaignsList200ResponseItems :: [CampaignResponse]
+    <*> arbitraryReduced n -- campaignsList200ResponseItems :: [Campaign]
   
-instance Arbitrary CancelInvitesBody where
-  arbitrary = sized genCancelInvitesBody
+instance Arbitrary CancelInviteException where
+  arbitrary = sized genCancelInviteException
 
-genCancelInvitesBody :: Int -> Gen CancelInvitesBody
-genCancelInvitesBody n =
-  CancelInvitesBody
-    <$> arbitrary -- cancelInvitesBodyInviteIds :: [Text]
+genCancelInviteException :: Int -> Gen CancelInviteException
+genCancelInviteException n =
+  CancelInviteException
+    <$> arbitraryReducedMaybe n -- cancelInviteExceptionInviteId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- cancelInviteExceptionMessage :: Maybe Text
+  
+instance Arbitrary CancelInviteResult where
+  arbitrary = sized genCancelInviteResult
+
+genCancelInviteResult :: Int -> Gen CancelInviteResult
+genCancelInviteResult n =
+  CancelInviteResult
+    <$> arbitraryReducedMaybe n -- cancelInviteResultId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- cancelInviteResultInviteData :: Maybe InviteDataResponse
+    <*> arbitraryReducedMaybe n -- cancelInviteResultIsReceivedInvite :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- cancelInviteResultUser :: Maybe CancelInviteResultUser
+  
+instance Arbitrary CancelInviteResultItem where
+  arbitrary = sized genCancelInviteResultItem
+
+genCancelInviteResultItem :: Int -> Gen CancelInviteResultItem
+genCancelInviteResultItem n =
+  CancelInviteResultItem
+    <$> arbitraryReducedMaybe n -- cancelInviteResultItemException :: Maybe CancelInviteException
+    <*> arbitraryReducedMaybe n -- cancelInviteResultItemInvite :: Maybe CancelInviteResult
+  
+instance Arbitrary CancelInviteResultUser where
+  arbitrary = sized genCancelInviteResultUser
+
+genCancelInviteResultUser :: Int -> Gen CancelInviteResultUser
+genCancelInviteResultUser n =
+  CancelInviteResultUser
+    <$> arbitraryReducedMaybe n -- cancelInviteResultUserEmail :: Maybe Text
+    <*> arbitraryReducedMaybe n -- cancelInviteResultUserId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- cancelInviteResultUserUsername :: Maybe Text
+  
+instance Arbitrary CancelInvitesRequest where
+  arbitrary = sized genCancelInvitesRequest
+
+genCancelInvitesRequest :: Int -> Gen CancelInvitesRequest
+genCancelInvitesRequest n =
+  CancelInvitesRequest
+    <$> arbitrary -- cancelInvitesRequestInviteIds :: [Text]
+  
+instance Arbitrary CancelInvitesResponse where
+  arbitrary = sized genCancelInvitesResponse
+
+genCancelInvitesResponse :: Int -> Gen CancelInvitesResponse
+genCancelInvitesResponse n =
+  CancelInvitesResponse
+    <$> arbitraryReducedMaybe n -- cancelInvitesResponseItems :: Maybe [CancelInviteResultItem]
   
 instance Arbitrary CarouselSlot where
   arbitrary = sized genCarouselSlot
@@ -2080,17 +3084,75 @@ genCarouselSlot n =
     <*> arbitraryReducedMaybe n -- carouselSlotLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- carouselSlotTitle :: Maybe Text
   
+instance Arbitrary CartingProduct where
+  arbitrary = sized genCartingProduct
+
+genCartingProduct :: Int -> Gen CartingProduct
+genCartingProduct n =
+  CartingProduct
+    <$> arbitrary -- cartingProductCartingProductId :: Text
+    <*> arbitraryReducedMaybe n -- cartingProductDisplayPreferredRetailersOnly :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- cartingProductDisplayProductPrice :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- cartingProductPreferredRetailers :: Maybe [CartingRetailer]
+    <*> arbitraryReducedMaybe n -- cartingProductRandomizePreferredRetailers :: Maybe Bool
+  
+instance Arbitrary CartingRetailer where
+  arbitrary = sized genCartingRetailer
+
+genCartingRetailer :: Int -> Gen CartingRetailer
+genCartingRetailer n =
+  CartingRetailer
+    <$> arbitrary -- cartingRetailerRetailerId :: Text
+    <*> arbitrary -- cartingRetailerRetailerName :: Text
+  
 instance Arbitrary Catalog where
   arbitrary = sized genCatalog
 
 genCatalog :: Int -> Gen Catalog
 genCatalog n =
   Catalog
-    <$> arbitraryReduced n -- catalogCreatedAt :: DateTime
+    <$> arbitraryReduced n -- catalogCatalogType :: CatalogsType
+    <*> arbitraryReduced n -- catalogCreatedAt :: DateTime
     <*> arbitrary -- catalogId :: Text
-    <*> arbitraryReduced n -- catalogUpdatedAt :: DateTime
-    <*> arbitraryReduced n -- catalogCatalogType :: CatalogsType
     <*> arbitrary -- catalogName :: Text
+    <*> arbitraryReduced n -- catalogUpdatedAt :: DateTime
+  
+instance Arbitrary CatalogBinding where
+  arbitrary = sized genCatalogBinding
+
+genCatalogBinding :: Int -> Gen CatalogBinding
+genCatalogBinding n =
+  CatalogBinding
+    <$> arbitraryReducedMaybe n -- catalogBindingCatalogType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogBindingId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogBindingName :: Maybe Text
+  
+instance Arbitrary CatalogCreate where
+  arbitrary = sized genCatalogCreate
+
+genCatalogCreate :: Int -> Gen CatalogCreate
+genCatalogCreate n =
+  CatalogCreate
+    <$> arbitraryReduced n -- catalogCreateCatalogType :: CatalogsType
+    <*> arbitrary -- catalogCreateName :: Text
+  
+instance Arbitrary CatalogUpdate where
+  arbitrary = sized genCatalogUpdate
+
+genCatalogUpdate :: Int -> Gen CatalogUpdate
+genCatalogUpdate n =
+  CatalogUpdate
+    <$> arbitraryReducedMaybe n -- catalogUpdateCatalogType :: Maybe CatalogsType
+    <*> arbitraryReducedMaybe n -- catalogUpdateName :: Maybe Text
+  
+instance Arbitrary CatalogsAiContentDisclosure where
+  arbitrary = sized genCatalogsAiContentDisclosure
+
+genCatalogsAiContentDisclosure :: Int -> Gen CatalogsAiContentDisclosure
+genCatalogsAiContentDisclosure n =
+  CatalogsAiContentDisclosure
+    <$> arbitraryReduced n -- catalogsAiContentDisclosureDisclosure :: [CatalogsAiContentDisclosureLabel]
+    <*> arbitrary -- catalogsAiContentDisclosureUrl :: Text
   
 instance Arbitrary CatalogsAvailableFilterValues where
   arbitrary = sized genCatalogsAvailableFilterValues
@@ -2098,8 +3160,65 @@ instance Arbitrary CatalogsAvailableFilterValues where
 genCatalogsAvailableFilterValues :: Int -> Gen CatalogsAvailableFilterValues
 genCatalogsAvailableFilterValues n =
   CatalogsAvailableFilterValues
-    <$> arbitrary -- catalogsAvailableFilterValuesCatalogType :: E'CatalogType3
+    <$> arbitrary -- catalogsAvailableFilterValuesCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsAvailableFilterValuesFilterValues :: CatalogsCreativeAssetsFilterValuesMap
+  
+instance Arbitrary CatalogsBaseFilterKeys where
+  arbitrary = sized genCatalogsBaseFilterKeys
+
+genCatalogsBaseFilterKeys :: Int -> Gen CatalogsBaseFilterKeys
+genCatalogsBaseFilterKeys n =
+  CatalogsBaseFilterKeys
+    <$> arbitraryReduced n -- catalogsBaseFilterKeysMinPrice :: CatalogsProductGroupPricingCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysMaxPrice :: CatalogsProductGroupPricingCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCurrency :: CatalogsProductGroupCurrencyCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysItemId :: CatalogsProductGroupMultipleStringCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysAvailability :: CatalogsProductGroupMultipleStringCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysBrand :: CatalogsProductGroupMultipleStringCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCondition :: CatalogsProductGroupMultipleStringCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomLabel0 :: CatalogsProductGroupFilterOperatorTypeCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomLabel1 :: CatalogsProductGroupFilterOperatorTypeCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomLabel2 :: CatalogsProductGroupFilterOperatorTypeCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomLabel3 :: CatalogsProductGroupFilterOperatorTypeCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomLabel4 :: CatalogsProductGroupFilterOperatorTypeCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysItemGroupId :: CatalogsProductGroupMultipleStringCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysGender :: CatalogsProductGroupMultipleGenderCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysMediaType :: CatalogsProductGroupMultipleMediaTypesCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysProductType4 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysProductType3 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysProductType2 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysProductType1 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysProductType0 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysGoogleProductCategory6 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysGoogleProductCategory5 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysGoogleProductCategory4 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysGoogleProductCategory3 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysGoogleProductCategory2 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysGoogleProductCategory1 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysGoogleProductCategory0 :: CatalogsProductGroupMultipleStringListCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomNumber0 :: CatalogsProductGroupUint32Criteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomNumber1 :: CatalogsProductGroupUint32Criteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomNumber2 :: CatalogsProductGroupUint32Criteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomNumber3 :: CatalogsProductGroupUint32Criteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysCustomNumber4 :: CatalogsProductGroupUint32Criteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysTitleKeywords :: CatalogsProductGroupMultipleStringCriteria
+    <*> arbitraryReduced n -- catalogsBaseFilterKeysPinterestProductCategories :: CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+  
+instance Arbitrary CatalogsBaseFiltersAllOf where
+  arbitrary = sized genCatalogsBaseFiltersAllOf
+
+genCatalogsBaseFiltersAllOf :: Int -> Gen CatalogsBaseFiltersAllOf
+genCatalogsBaseFiltersAllOf n =
+  CatalogsBaseFiltersAllOf
+    <$> arbitraryReduced n -- catalogsBaseFiltersAllOfAllOf :: [CatalogsBaseFilterKeys]
+  
+instance Arbitrary CatalogsBaseFiltersAnyOf where
+  arbitrary = sized genCatalogsBaseFiltersAnyOf
+
+genCatalogsBaseFiltersAnyOf :: Int -> Gen CatalogsBaseFiltersAnyOf
+genCatalogsBaseFiltersAnyOf n =
+  CatalogsBaseFiltersAnyOf
+    <$> arbitraryReduced n -- catalogsBaseFiltersAnyOfAnyOf :: [CatalogsBaseFilterKeys]
   
 instance Arbitrary CatalogsCreateCreativeAssetsItem where
   arbitrary = sized genCatalogsCreateCreativeAssetsItem
@@ -2109,7 +3228,7 @@ genCatalogsCreateCreativeAssetsItem n =
   CatalogsCreateCreativeAssetsItem
     <$> arbitraryReduced n -- catalogsCreateCreativeAssetsItemAttributes :: CatalogsCreativeAssetsAttributes
     <*> arbitrary -- catalogsCreateCreativeAssetsItemCreativeAssetsId :: Text
-    <*> arbitrary -- catalogsCreateCreativeAssetsItemOperation :: E'Operation2
+    <*> arbitrary -- catalogsCreateCreativeAssetsItemOperation :: E'Operation3
   
 instance Arbitrary CatalogsCreateHotelItem where
   arbitrary = sized genCatalogsCreateHotelItem
@@ -2119,7 +3238,7 @@ genCatalogsCreateHotelItem n =
   CatalogsCreateHotelItem
     <$> arbitraryReduced n -- catalogsCreateHotelItemAttributes :: CatalogsHotelAttributes
     <*> arbitrary -- catalogsCreateHotelItemHotelId :: Text
-    <*> arbitrary -- catalogsCreateHotelItemOperation :: E'Operation2
+    <*> arbitrary -- catalogsCreateHotelItemOperation :: E'Operation3
   
 instance Arbitrary CatalogsCreateReportResponse where
   arbitrary = sized genCatalogsCreateReportResponse
@@ -2129,15 +3248,6 @@ genCatalogsCreateReportResponse n =
   CatalogsCreateReportResponse
     <$> arbitraryReducedMaybe n -- catalogsCreateReportResponseToken :: Maybe Text
   
-instance Arbitrary CatalogsCreateRequest where
-  arbitrary = sized genCatalogsCreateRequest
-
-genCatalogsCreateRequest :: Int -> Gen CatalogsCreateRequest
-genCatalogsCreateRequest n =
-  CatalogsCreateRequest
-    <$> arbitraryReduced n -- catalogsCreateRequestCatalogType :: CatalogsType
-    <*> arbitrary -- catalogsCreateRequestName :: Text
-  
 instance Arbitrary CatalogsCreateRetailItem where
   arbitrary = sized genCatalogsCreateRetailItem
 
@@ -2146,7 +3256,7 @@ genCatalogsCreateRetailItem n =
   CatalogsCreateRetailItem
     <$> arbitraryReduced n -- catalogsCreateRetailItemAttributes :: ItemAttributesRequest
     <*> arbitrary -- catalogsCreateRetailItemItemId :: Text
-    <*> arbitrary -- catalogsCreateRetailItemOperation :: E'Operation2
+    <*> arbitrary -- catalogsCreateRetailItemOperation :: E'Operation3
   
 instance Arbitrary CatalogsCreativeAssetsAttributes where
   arbitrary = sized genCatalogsCreativeAssetsAttributes
@@ -2166,6 +3276,7 @@ genCatalogsCreativeAssetsAttributes n =
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsAttributesLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsAttributesTitle :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsAttributesVisibility :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsAttributesAiDisclosures :: Maybe [CatalogsAiContentDisclosure]
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsAttributesImageLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsAttributesVideoLink :: Maybe Text
   
@@ -2175,7 +3286,7 @@ instance Arbitrary CatalogsCreativeAssetsAvailableFilterValues where
 genCatalogsCreativeAssetsAvailableFilterValues :: Int -> Gen CatalogsCreativeAssetsAvailableFilterValues
 genCatalogsCreativeAssetsAvailableFilterValues n =
   CatalogsCreativeAssetsAvailableFilterValues
-    <$> arbitrary -- catalogsCreativeAssetsAvailableFilterValuesCatalogType :: E'CatalogType3
+    <$> arbitrary -- catalogsCreativeAssetsAvailableFilterValuesCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsCreativeAssetsAvailableFilterValuesFilterValues :: CatalogsCreativeAssetsFilterValuesMap
   
 instance Arbitrary CatalogsCreativeAssetsBatchItem where
@@ -2195,7 +3306,7 @@ genCatalogsCreativeAssetsBatchRequest :: Int -> Gen CatalogsCreativeAssetsBatchR
 genCatalogsCreativeAssetsBatchRequest n =
   CatalogsCreativeAssetsBatchRequest
     <$> arbitraryReducedMaybe n -- catalogsCreativeAssetsBatchRequestCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsCreativeAssetsBatchRequestCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsCreativeAssetsBatchRequestCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsCreativeAssetsBatchRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsCreativeAssetsBatchRequestItems :: [CatalogsCreativeAssetsBatchItem]
     <*> arbitrary -- catalogsCreativeAssetsBatchRequestLanguage :: E'Language
@@ -2206,20 +3317,20 @@ instance Arbitrary CatalogsCreativeAssetsFeed where
 genCatalogsCreativeAssetsFeed :: Int -> Gen CatalogsCreativeAssetsFeed
 genCatalogsCreativeAssetsFeed n =
   CatalogsCreativeAssetsFeed
-    <$> arbitraryReduced n -- catalogsCreativeAssetsFeedCreatedAt :: DateTime
-    <*> arbitrary -- catalogsCreativeAssetsFeedId :: Text
-    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedUpdatedAt :: DateTime
-    <*> arbitrary -- catalogsCreativeAssetsFeedCatalogId :: Text
-    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedCatalogType :: CatalogsType
-    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedCredentials :: CatalogsFeedCredentials
+    <$> arbitrary -- catalogsCreativeAssetsFeedCatalogId :: Text
+    <*> arbitrary -- catalogsCreativeAssetsFeedCatalogType :: E'CatalogType
+    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedCreatedAt :: DateTime
+    <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedCredentials :: Maybe CatalogsFeedCredentials
     <*> arbitraryReduced n -- catalogsCreativeAssetsFeedDefaultCountry :: Country
-    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedDefaultCurrency :: NullableCurrency
+    <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedDefaultCurrency :: Maybe NullableCurrency
     <*> arbitrary -- catalogsCreativeAssetsFeedDefaultLocale :: Text
     <*> arbitraryReduced n -- catalogsCreativeAssetsFeedFormat :: CatalogsFormat
+    <*> arbitrary -- catalogsCreativeAssetsFeedId :: Text
     <*> arbitrary -- catalogsCreativeAssetsFeedLocation :: Text
     <*> arbitrary -- catalogsCreativeAssetsFeedName :: Text
-    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedPreferredProcessingSchedule :: CatalogsFeedProcessingSchedule
+    <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
     <*> arbitraryReduced n -- catalogsCreativeAssetsFeedStatus :: CatalogsStatus
+    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedUpdatedAt :: DateTime
   
 instance Arbitrary CatalogsCreativeAssetsFeedsCreateRequest where
   arbitrary = sized genCatalogsCreativeAssetsFeedsCreateRequest
@@ -2228,24 +3339,32 @@ genCatalogsCreativeAssetsFeedsCreateRequest :: Int -> Gen CatalogsCreativeAssets
 genCatalogsCreativeAssetsFeedsCreateRequest n =
   CatalogsCreativeAssetsFeedsCreateRequest
     <$> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedsCreateRequestCatalogId :: Maybe Text
-    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedsCreateRequestCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsCreativeAssetsFeedsCreateRequestCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedsCreateRequestCredentials :: Maybe CatalogsFeedCredentials
     <*> arbitraryReduced n -- catalogsCreativeAssetsFeedsCreateRequestDefaultCountry :: Country
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedsCreateRequestDefaultCurrency :: Maybe NullableCurrency
-    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedsCreateRequestDefaultLocale :: CatalogsFeedsCreateRequestDefaultLocale
+    <*> arbitraryReduced n -- catalogsCreativeAssetsFeedsCreateRequestDefaultLocale :: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
     <*> arbitraryReduced n -- catalogsCreativeAssetsFeedsCreateRequestFormat :: CatalogsFormat
     <*> arbitrary -- catalogsCreativeAssetsFeedsCreateRequestLocation :: Text
     <*> arbitrary -- catalogsCreativeAssetsFeedsCreateRequestName :: Text
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedsCreateRequestPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedsCreateRequestStatus :: Maybe CatalogsStatus
   
+instance Arbitrary CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale where
+  arbitrary = sized genCatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
+
+genCatalogsCreativeAssetsFeedsCreateRequestDefaultLocale :: Int -> Gen CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
+genCatalogsCreativeAssetsFeedsCreateRequestDefaultLocale n =
+  
+  pure CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
+   
 instance Arbitrary CatalogsCreativeAssetsFeedsUpdateRequest where
   arbitrary = sized genCatalogsCreativeAssetsFeedsUpdateRequest
 
 genCatalogsCreativeAssetsFeedsUpdateRequest :: Int -> Gen CatalogsCreativeAssetsFeedsUpdateRequest
 genCatalogsCreativeAssetsFeedsUpdateRequest n =
   CatalogsCreativeAssetsFeedsUpdateRequest
-    <$> arbitraryReduced n -- catalogsCreativeAssetsFeedsUpdateRequestCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsCreativeAssetsFeedsUpdateRequestCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedsUpdateRequestCredentials :: Maybe CatalogsFeedCredentials
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedsUpdateRequestDefaultCurrency :: Maybe NullableCurrency
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFeedsUpdateRequestFormat :: Maybe CatalogsFormat
@@ -2272,7 +3391,7 @@ genCatalogsCreativeAssetsFilterValuesMap n =
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFilterValuesMapGoogleProductCategory4 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFilterValuesMapGoogleProductCategory5 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFilterValuesMapGoogleProductCategory6 :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFilterValuesMapMediaType :: Maybe [E'MediaType6]
+    <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsFilterValuesMapMediaType :: Maybe [MediaType]
   
 instance Arbitrary CatalogsCreativeAssetsItemErrorResponse where
   arbitrary = sized genCatalogsCreativeAssetsItemErrorResponse
@@ -2280,9 +3399,10 @@ instance Arbitrary CatalogsCreativeAssetsItemErrorResponse where
 genCatalogsCreativeAssetsItemErrorResponse :: Int -> Gen CatalogsCreativeAssetsItemErrorResponse
 genCatalogsCreativeAssetsItemErrorResponse n =
   CatalogsCreativeAssetsItemErrorResponse
-    <$> arbitraryReduced n -- catalogsCreativeAssetsItemErrorResponseCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsCreativeAssetsItemErrorResponseCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemErrorResponseCreativeAssetsId :: Maybe Text
     <*> arbitraryReduced n -- catalogsCreativeAssetsItemErrorResponseErrors :: [ItemValidationEvent]
+    <*> arbitrary -- catalogsCreativeAssetsItemErrorResponseItemResponseKind :: E'ItemResponseKind
   
 instance Arbitrary CatalogsCreativeAssetsItemResponse where
   arbitrary = sized genCatalogsCreativeAssetsItemResponse
@@ -2291,8 +3411,9 @@ genCatalogsCreativeAssetsItemResponse :: Int -> Gen CatalogsCreativeAssetsItemRe
 genCatalogsCreativeAssetsItemResponse n =
   CatalogsCreativeAssetsItemResponse
     <$> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemResponseAttributes :: Maybe CatalogsCreativeAssetsAttributes
-    <*> arbitraryReduced n -- catalogsCreativeAssetsItemResponseCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsCreativeAssetsItemResponseCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemResponseCreativeAssetsId :: Maybe Text
+    <*> arbitrary -- catalogsCreativeAssetsItemResponseItemResponseKind :: E'ItemResponseKind2
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemResponsePins :: Maybe [Pin]
   
 instance Arbitrary CatalogsCreativeAssetsItemsBatch where
@@ -2302,21 +3423,11 @@ genCatalogsCreativeAssetsItemsBatch :: Int -> Gen CatalogsCreativeAssetsItemsBat
 genCatalogsCreativeAssetsItemsBatch n =
   CatalogsCreativeAssetsItemsBatch
     <$> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemsBatchBatchId :: Maybe Text
-    <*> arbitraryReduced n -- catalogsCreativeAssetsItemsBatchCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsCreativeAssetsItemsBatchCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemsBatchCompletedTime :: Maybe DateTime
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemsBatchCreatedTime :: Maybe DateTime
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemsBatchItems :: Maybe [CreativeAssetsProcessingRecord]
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemsBatchStatus :: Maybe BatchOperationStatus
-  
-instance Arbitrary CatalogsCreativeAssetsItemsFilter where
-  arbitrary = sized genCatalogsCreativeAssetsItemsFilter
-
-genCatalogsCreativeAssetsItemsFilter :: Int -> Gen CatalogsCreativeAssetsItemsFilter
-genCatalogsCreativeAssetsItemsFilter n =
-  CatalogsCreativeAssetsItemsFilter
-    <$> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemsFilterCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsCreativeAssetsItemsFilterCatalogType :: E'CatalogType3
-    <*> arbitrary -- catalogsCreativeAssetsItemsFilterCreativeAssetsIds :: [Text]
   
 instance Arbitrary CatalogsCreativeAssetsItemsPostFilter where
   arbitrary = sized genCatalogsCreativeAssetsItemsPostFilter
@@ -2325,7 +3436,7 @@ genCatalogsCreativeAssetsItemsPostFilter :: Int -> Gen CatalogsCreativeAssetsIte
 genCatalogsCreativeAssetsItemsPostFilter n =
   CatalogsCreativeAssetsItemsPostFilter
     <$> arbitraryReducedMaybe n -- catalogsCreativeAssetsItemsPostFilterCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsCreativeAssetsItemsPostFilterCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsCreativeAssetsItemsPostFilterCatalogType :: E'CatalogType
     <*> arbitrary -- catalogsCreativeAssetsItemsPostFilterCreativeAssetsIds :: [Text]
   
 instance Arbitrary CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest where
@@ -2335,7 +3446,7 @@ genCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest :: Int -> Gen C
 genCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest n =
   CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
     <$> arbitrary -- catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogId :: Text
-    <*> arbitrary -- catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestFilters :: CatalogsCreativeAssetsProductGroupFilters
   
 instance Arbitrary CatalogsCreativeAssetsProduct where
@@ -2344,7 +3455,7 @@ instance Arbitrary CatalogsCreativeAssetsProduct where
 genCatalogsCreativeAssetsProduct :: Int -> Gen CatalogsCreativeAssetsProduct
 genCatalogsCreativeAssetsProduct n =
   CatalogsCreativeAssetsProduct
-    <$> arbitrary -- catalogsCreativeAssetsProductCatalogType :: E'CatalogType3
+    <$> arbitrary -- catalogsCreativeAssetsProductCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsCreativeAssetsProductMetadata :: CatalogsCreativeAssetsProductMetadata
     <*> arbitraryReduced n -- catalogsCreativeAssetsProductPin :: Pin
   
@@ -2355,7 +3466,7 @@ genCatalogsCreativeAssetsProductGroup :: Int -> Gen CatalogsCreativeAssetsProduc
 genCatalogsCreativeAssetsProductGroup n =
   CatalogsCreativeAssetsProductGroup
     <$> arbitrary -- catalogsCreativeAssetsProductGroupCatalogId :: Text
-    <*> arbitrary -- catalogsCreativeAssetsProductGroupCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsCreativeAssetsProductGroupCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsProductGroupCreatedAt :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsProductGroupDescription :: Maybe Text
     <*> arbitraryReduced n -- catalogsCreativeAssetsProductGroupFilters :: CatalogsCreativeAssetsProductGroupFilters
@@ -2370,7 +3481,7 @@ genCatalogsCreativeAssetsProductGroupCreateRequest :: Int -> Gen CatalogsCreativ
 genCatalogsCreativeAssetsProductGroupCreateRequest n =
   CatalogsCreativeAssetsProductGroupCreateRequest
     <$> arbitrary -- catalogsCreativeAssetsProductGroupCreateRequestCatalogId :: Text
-    <*> arbitrary -- catalogsCreativeAssetsProductGroupCreateRequestCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsCreativeAssetsProductGroupCreateRequestCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsProductGroupCreateRequestDescription :: Maybe Text
     <*> arbitraryReduced n -- catalogsCreativeAssetsProductGroupCreateRequestFilters :: CatalogsCreativeAssetsProductGroupFilters
     <*> arbitrary -- catalogsCreativeAssetsProductGroupCreateRequestName :: Text
@@ -2396,6 +3507,7 @@ genCatalogsCreativeAssetsProductGroupFilterKeys n =
     <*> arbitraryReduced n -- catalogsCreativeAssetsProductGroupFilterKeysGoogleProductCategory0 :: CatalogsProductGroupMultipleStringListCriteria
     <*> arbitraryReduced n -- catalogsCreativeAssetsProductGroupFilterKeysMediaType :: CatalogsProductGroupMultipleMediaTypesCriteria
     <*> arbitraryReduced n -- catalogsCreativeAssetsProductGroupFilterKeysTitleKeywords :: CatalogsProductGroupMultipleStringCriteria
+    <*> arbitraryReduced n -- catalogsCreativeAssetsProductGroupFilterKeysLink :: CatalogsProductGroupFilterOperatorTypeCriteria
   
 instance Arbitrary CatalogsCreativeAssetsProductGroupFilters where
   arbitrary = sized genCatalogsCreativeAssetsProductGroupFilters
@@ -2428,7 +3540,9 @@ instance Arbitrary CatalogsCreativeAssetsProductGroupProductCounts where
 genCatalogsCreativeAssetsProductGroupProductCounts :: Int -> Gen CatalogsCreativeAssetsProductGroupProductCounts
 genCatalogsCreativeAssetsProductGroupProductCounts n =
   CatalogsCreativeAssetsProductGroupProductCounts
-    <$> arbitrary -- catalogsCreativeAssetsProductGroupProductCountsCatalogType :: E'CatalogType3
+    <$> arbitrary -- catalogsCreativeAssetsProductGroupProductCountsAppLinks :: Double
+    <*> arbitrary -- catalogsCreativeAssetsProductGroupProductCountsCatalogType :: E'CatalogType
+    <*> arbitrary -- catalogsCreativeAssetsProductGroupProductCountsImages :: Double
     <*> arbitrary -- catalogsCreativeAssetsProductGroupProductCountsTotal :: Double
     <*> arbitrary -- catalogsCreativeAssetsProductGroupProductCountsVideos :: Double
   
@@ -2438,7 +3552,7 @@ instance Arbitrary CatalogsCreativeAssetsProductGroupUpdateRequest where
 genCatalogsCreativeAssetsProductGroupUpdateRequest :: Int -> Gen CatalogsCreativeAssetsProductGroupUpdateRequest
 genCatalogsCreativeAssetsProductGroupUpdateRequest n =
   CatalogsCreativeAssetsProductGroupUpdateRequest
-    <$> arbitraryReducedMaybe n -- catalogsCreativeAssetsProductGroupUpdateRequestCatalogType :: Maybe E'CatalogType3
+    <$> arbitraryReducedMaybe n -- catalogsCreativeAssetsProductGroupUpdateRequestCatalogType :: Maybe E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsProductGroupUpdateRequestDescription :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsProductGroupUpdateRequestFilters :: Maybe CatalogsCreativeAssetsProductGroupFilters
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsProductGroupUpdateRequestName :: Maybe Text
@@ -2451,16 +3565,6 @@ genCatalogsCreativeAssetsProductMetadata n =
   CatalogsCreativeAssetsProductMetadata
     <$> arbitrary -- catalogsCreativeAssetsProductMetadataCreativeAssetsId :: Text
     <*> arbitraryReduced n -- catalogsCreativeAssetsProductMetadataVisibility :: CreativeAssetsVisibilityType
-  
-instance Arbitrary CatalogsDbItem where
-  arbitrary = sized genCatalogsDbItem
-
-genCatalogsDbItem :: Int -> Gen CatalogsDbItem
-genCatalogsDbItem n =
-  CatalogsDbItem
-    <$> arbitraryReduced n -- catalogsDbItemCreatedAt :: DateTime
-    <*> arbitrary -- catalogsDbItemId :: Text
-    <*> arbitraryReduced n -- catalogsDbItemUpdatedAt :: DateTime
   
 instance Arbitrary CatalogsDeleteCreativeAssetsItem where
   arbitrary = sized genCatalogsDeleteCreativeAssetsItem
@@ -2496,21 +3600,40 @@ instance Arbitrary CatalogsFeed where
 genCatalogsFeed :: Int -> Gen CatalogsFeed
 genCatalogsFeed n =
   CatalogsFeed
-    <$> arbitraryReduced n -- catalogsFeedCreatedAt :: DateTime
-    <*> arbitrary -- catalogsFeedId :: Text
-    <*> arbitraryReduced n -- catalogsFeedUpdatedAt :: DateTime
-    <*> arbitraryReduced n -- catalogsFeedCatalogType :: CatalogsType
-    <*> arbitraryReduced n -- catalogsFeedCredentials :: CatalogsFeedCredentials
-    <*> arbitraryReduced n -- catalogsFeedDefaultAvailability :: ProductAvailabilityType
+    <$> arbitrary -- catalogsFeedCatalogType :: E'CatalogType
+    <*> arbitraryReduced n -- catalogsFeedCreatedAt :: DateTime
+    <*> arbitraryReducedMaybe n -- catalogsFeedCredentials :: Maybe CatalogsFeedCredentials
+    <*> arbitraryReducedMaybe n -- catalogsFeedDefaultAvailability :: Maybe ProductAvailabilityType
     <*> arbitraryReduced n -- catalogsFeedDefaultCountry :: Country
-    <*> arbitraryReduced n -- catalogsFeedDefaultCurrency :: NullableCurrency
+    <*> arbitraryReducedMaybe n -- catalogsFeedDefaultCurrency :: Maybe NullableCurrency
     <*> arbitrary -- catalogsFeedDefaultLocale :: Text
     <*> arbitraryReduced n -- catalogsFeedFormat :: CatalogsFormat
+    <*> arbitrary -- catalogsFeedId :: Text
     <*> arbitrary -- catalogsFeedLocation :: Text
     <*> arbitrary -- catalogsFeedName :: Text
-    <*> arbitraryReduced n -- catalogsFeedPreferredProcessingSchedule :: CatalogsFeedProcessingSchedule
+    <*> arbitraryReducedMaybe n -- catalogsFeedPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
     <*> arbitraryReduced n -- catalogsFeedStatus :: CatalogsStatus
+    <*> arbitraryReduced n -- catalogsFeedUpdatedAt :: DateTime
     <*> arbitrary -- catalogsFeedCatalogId :: Text
+  
+instance Arbitrary CatalogsFeedCreateRequestSchema where
+  arbitrary = sized genCatalogsFeedCreateRequestSchema
+
+genCatalogsFeedCreateRequestSchema :: Int -> Gen CatalogsFeedCreateRequestSchema
+genCatalogsFeedCreateRequestSchema n =
+  CatalogsFeedCreateRequestSchema
+    <$> arbitraryReducedMaybe n -- catalogsFeedCreateRequestSchemaCatalogId :: Maybe Text
+    <*> arbitrary -- catalogsFeedCreateRequestSchemaCatalogType :: E'CatalogType
+    <*> arbitraryReducedMaybe n -- catalogsFeedCreateRequestSchemaCredentials :: Maybe CatalogsFeedCredentials
+    <*> arbitraryReducedMaybe n -- catalogsFeedCreateRequestSchemaDefaultAvailability :: Maybe ProductAvailabilityType
+    <*> arbitraryReduced n -- catalogsFeedCreateRequestSchemaDefaultCountry :: Country
+    <*> arbitraryReducedMaybe n -- catalogsFeedCreateRequestSchemaDefaultCurrency :: Maybe NullableCurrency
+    <*> arbitraryReduced n -- catalogsFeedCreateRequestSchemaDefaultLocale :: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
+    <*> arbitraryReduced n -- catalogsFeedCreateRequestSchemaFormat :: CatalogsFormat
+    <*> arbitrary -- catalogsFeedCreateRequestSchemaLocation :: Text
+    <*> arbitrary -- catalogsFeedCreateRequestSchemaName :: Text
+    <*> arbitraryReducedMaybe n -- catalogsFeedCreateRequestSchemaPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
+    <*> arbitraryReducedMaybe n -- catalogsFeedCreateRequestSchemaStatus :: Maybe CatalogsStatus
   
 instance Arbitrary CatalogsFeedCredentials where
   arbitrary = sized genCatalogsFeedCredentials
@@ -2555,7 +3678,7 @@ genCatalogsFeedIngestionErrors n =
     <*> arbitraryReducedMaybe n -- catalogsFeedIngestionErrorsImageInvalidFile :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsFeedIngestionErrorsImageLevelInternalError :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsFeedIngestionErrorsImageMalformedUrl :: Maybe Int
-    <*> arbitraryReducedMaybe n -- catalogsFeedIngestionErrorsLargeProductCountDecrease :: Maybe E'LargeProductCountDecrease
+    <*> arbitraryReducedMaybe n -- catalogsFeedIngestionErrorsLargeProductCountDecrease :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsFeedIngestionErrorsLineLevelInternalError :: Maybe Int
   
 instance Arbitrary CatalogsFeedIngestionInfo where
@@ -2669,10 +3792,10 @@ genCatalogsFeedProcessingResult n =
   CatalogsFeedProcessingResult
     <$> arbitraryReduced n -- catalogsFeedProcessingResultCreatedAt :: DateTime
     <*> arbitrary -- catalogsFeedProcessingResultId :: Text
-    <*> arbitraryReduced n -- catalogsFeedProcessingResultUpdatedAt :: DateTime
     <*> arbitraryReduced n -- catalogsFeedProcessingResultIngestionDetails :: CatalogsFeedIngestionDetails
     <*> arbitraryReduced n -- catalogsFeedProcessingResultProductCounts :: CatalogsFeedProductCounts
     <*> arbitraryReduced n -- catalogsFeedProcessingResultStatus :: CatalogsFeedProcessingStatus
+    <*> arbitraryReduced n -- catalogsFeedProcessingResultUpdatedAt :: DateTime
     <*> arbitraryReduced n -- catalogsFeedProcessingResultValidationDetails :: CatalogsFeedValidationDetails
     <*> arbitraryReducedMaybe n -- catalogsFeedProcessingResultVideoCounts :: Maybe CatalogsFeedVideoCounts
   
@@ -2683,7 +3806,7 @@ genCatalogsFeedProcessingSchedule :: Int -> Gen CatalogsFeedProcessingSchedule
 genCatalogsFeedProcessingSchedule n =
   CatalogsFeedProcessingSchedule
     <$> arbitrary -- catalogsFeedProcessingScheduleTime :: Text
-    <*> arbitrary -- catalogsFeedProcessingScheduleTimezone :: E'Timezone
+    <*> arbitraryReduced n -- catalogsFeedProcessingScheduleTimezone :: CatalogsFeedProcessingScheduleTimezone
   
 instance Arbitrary CatalogsFeedProductCounts where
   arbitrary = sized genCatalogsFeedProductCounts
@@ -2693,6 +3816,22 @@ genCatalogsFeedProductCounts n =
   CatalogsFeedProductCounts
     <$> arbitraryReducedMaybe n -- catalogsFeedProductCountsIngested :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsFeedProductCountsOriginal :: Maybe Int
+  
+instance Arbitrary CatalogsFeedUpdateRequestSchema where
+  arbitrary = sized genCatalogsFeedUpdateRequestSchema
+
+genCatalogsFeedUpdateRequestSchema :: Int -> Gen CatalogsFeedUpdateRequestSchema
+genCatalogsFeedUpdateRequestSchema n =
+  CatalogsFeedUpdateRequestSchema
+    <$> arbitrary -- catalogsFeedUpdateRequestSchemaCatalogType :: E'CatalogType
+    <*> arbitraryReducedMaybe n -- catalogsFeedUpdateRequestSchemaCredentials :: Maybe CatalogsFeedCredentials
+    <*> arbitraryReducedMaybe n -- catalogsFeedUpdateRequestSchemaDefaultAvailability :: Maybe ProductAvailabilityType
+    <*> arbitraryReducedMaybe n -- catalogsFeedUpdateRequestSchemaDefaultCurrency :: Maybe NullableCurrency
+    <*> arbitraryReducedMaybe n -- catalogsFeedUpdateRequestSchemaFormat :: Maybe CatalogsFormat
+    <*> arbitraryReducedMaybe n -- catalogsFeedUpdateRequestSchemaLocation :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsFeedUpdateRequestSchemaName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsFeedUpdateRequestSchemaPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
+    <*> arbitraryReducedMaybe n -- catalogsFeedUpdateRequestSchemaStatus :: Maybe CatalogsStatus
   
 instance Arbitrary CatalogsFeedValidationDetails where
   arbitrary = sized genCatalogsFeedValidationDetails
@@ -2924,7 +4063,7 @@ genCatalogsFeedValidationWarnings n =
     <*> arbitraryReducedMaybe n -- catalogsFeedValidationWarningsDescriptionLengthTooLong :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsFeedValidationWarningsDuplicateHeaders :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsFeedValidationWarningsExpirationDateInvalid :: Maybe Int
-    <*> arbitraryReducedMaybe n -- catalogsFeedValidationWarningsFetchSameSignature :: Maybe E'LargeProductCountDecrease
+    <*> arbitraryReducedMaybe n -- catalogsFeedValidationWarningsFetchSameSignature :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsFeedValidationWarningsGenderInvalid :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsFeedValidationWarningsGtinInvalid :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsFeedValidationWarningsImageLinkWarning :: Maybe Int
@@ -2981,21 +4120,13 @@ genCatalogsFeedsCreateRequest n =
     <*> arbitraryReducedMaybe n -- catalogsFeedsCreateRequestDefaultAvailability :: Maybe ProductAvailabilityType
     <*> arbitraryReducedMaybe n -- catalogsFeedsCreateRequestDefaultCountry :: Maybe Country
     <*> arbitraryReducedMaybe n -- catalogsFeedsCreateRequestDefaultCurrency :: Maybe NullableCurrency
-    <*> arbitraryReducedMaybe n -- catalogsFeedsCreateRequestDefaultLocale :: Maybe CatalogsFeedsCreateRequestDefaultLocale
+    <*> arbitraryReducedMaybe n -- catalogsFeedsCreateRequestDefaultLocale :: Maybe CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
     <*> arbitraryReduced n -- catalogsFeedsCreateRequestFormat :: CatalogsFormat
     <*> arbitrary -- catalogsFeedsCreateRequestLocation :: Text
     <*> arbitrary -- catalogsFeedsCreateRequestName :: Text
     <*> arbitraryReducedMaybe n -- catalogsFeedsCreateRequestPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
     <*> arbitraryReducedMaybe n -- catalogsFeedsCreateRequestStatus :: Maybe CatalogsStatus
   
-instance Arbitrary CatalogsFeedsCreateRequestDefaultLocale where
-  arbitrary = sized genCatalogsFeedsCreateRequestDefaultLocale
-
-genCatalogsFeedsCreateRequestDefaultLocale :: Int -> Gen CatalogsFeedsCreateRequestDefaultLocale
-genCatalogsFeedsCreateRequestDefaultLocale n =
-  
-  pure CatalogsFeedsCreateRequestDefaultLocale
-   
 instance Arbitrary CatalogsFeedsUpdateRequest where
   arbitrary = sized genCatalogsFeedsUpdateRequest
 
@@ -3047,16 +4178,8 @@ genCatalogsHotelAttributes n =
     <*> arbitraryReducedMaybe n -- catalogsHotelAttributesNeighborhood :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsHotelAttributesSalePrice :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsHotelAttributesAdditionalImageLink :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- catalogsHotelAttributesMainImage :: Maybe CatalogsHotelAttributesAllOfMainImage
-  
-instance Arbitrary CatalogsHotelAttributesAllOfMainImage where
-  arbitrary = sized genCatalogsHotelAttributesAllOfMainImage
-
-genCatalogsHotelAttributesAllOfMainImage :: Int -> Gen CatalogsHotelAttributesAllOfMainImage
-genCatalogsHotelAttributesAllOfMainImage n =
-  CatalogsHotelAttributesAllOfMainImage
-    <$> arbitraryReducedMaybe n -- catalogsHotelAttributesAllOfMainImageLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- catalogsHotelAttributesAllOfMainImageTag :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- catalogsHotelAttributesAiDisclosures :: Maybe [CatalogsAiContentDisclosure]
+    <*> arbitraryReducedMaybe n -- catalogsHotelAttributesMainImage :: Maybe CatalogsHotelMainImage
   
 instance Arbitrary CatalogsHotelAvailableFilterValues where
   arbitrary = sized genCatalogsHotelAvailableFilterValues
@@ -3064,7 +4187,7 @@ instance Arbitrary CatalogsHotelAvailableFilterValues where
 genCatalogsHotelAvailableFilterValues :: Int -> Gen CatalogsHotelAvailableFilterValues
 genCatalogsHotelAvailableFilterValues n =
   CatalogsHotelAvailableFilterValues
-    <$> arbitrary -- catalogsHotelAvailableFilterValuesCatalogType :: E'CatalogType
+    <$> arbitrary -- catalogsHotelAvailableFilterValuesCatalogType :: E'CatalogType2
     <*> arbitraryReduced n -- catalogsHotelAvailableFilterValuesFilterValues :: CatalogsHotelFilterValuesMap
   
 instance Arbitrary CatalogsHotelBatchItem where
@@ -3084,7 +4207,7 @@ genCatalogsHotelBatchRequest :: Int -> Gen CatalogsHotelBatchRequest
 genCatalogsHotelBatchRequest n =
   CatalogsHotelBatchRequest
     <$> arbitraryReducedMaybe n -- catalogsHotelBatchRequestCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsHotelBatchRequestCatalogType :: E'CatalogType
+    <*> arbitrary -- catalogsHotelBatchRequestCatalogType :: E'CatalogType2
     <*> arbitraryReduced n -- catalogsHotelBatchRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsHotelBatchRequestItems :: [CatalogsHotelBatchItem]
     <*> arbitrary -- catalogsHotelBatchRequestLanguage :: E'Language
@@ -3095,19 +4218,19 @@ instance Arbitrary CatalogsHotelFeed where
 genCatalogsHotelFeed :: Int -> Gen CatalogsHotelFeed
 genCatalogsHotelFeed n =
   CatalogsHotelFeed
-    <$> arbitraryReduced n -- catalogsHotelFeedCreatedAt :: DateTime
-    <*> arbitrary -- catalogsHotelFeedId :: Text
-    <*> arbitraryReduced n -- catalogsHotelFeedUpdatedAt :: DateTime
-    <*> arbitrary -- catalogsHotelFeedCatalogId :: Text
-    <*> arbitraryReduced n -- catalogsHotelFeedCatalogType :: CatalogsType
-    <*> arbitraryReduced n -- catalogsHotelFeedCredentials :: CatalogsFeedCredentials
-    <*> arbitraryReduced n -- catalogsHotelFeedDefaultCurrency :: NullableCurrency
+    <$> arbitrary -- catalogsHotelFeedCatalogId :: Text
+    <*> arbitrary -- catalogsHotelFeedCatalogType :: E'CatalogType2
+    <*> arbitraryReduced n -- catalogsHotelFeedCreatedAt :: DateTime
+    <*> arbitraryReducedMaybe n -- catalogsHotelFeedCredentials :: Maybe CatalogsFeedCredentials
+    <*> arbitraryReducedMaybe n -- catalogsHotelFeedDefaultCurrency :: Maybe NullableCurrency
     <*> arbitrary -- catalogsHotelFeedDefaultLocale :: Text
     <*> arbitraryReduced n -- catalogsHotelFeedFormat :: CatalogsFormat
+    <*> arbitrary -- catalogsHotelFeedId :: Text
     <*> arbitrary -- catalogsHotelFeedLocation :: Text
     <*> arbitrary -- catalogsHotelFeedName :: Text
-    <*> arbitraryReduced n -- catalogsHotelFeedPreferredProcessingSchedule :: CatalogsFeedProcessingSchedule
+    <*> arbitraryReducedMaybe n -- catalogsHotelFeedPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
     <*> arbitraryReduced n -- catalogsHotelFeedStatus :: CatalogsStatus
+    <*> arbitraryReduced n -- catalogsHotelFeedUpdatedAt :: DateTime
   
 instance Arbitrary CatalogsHotelFeedsCreateRequest where
   arbitrary = sized genCatalogsHotelFeedsCreateRequest
@@ -3116,10 +4239,10 @@ genCatalogsHotelFeedsCreateRequest :: Int -> Gen CatalogsHotelFeedsCreateRequest
 genCatalogsHotelFeedsCreateRequest n =
   CatalogsHotelFeedsCreateRequest
     <$> arbitraryReducedMaybe n -- catalogsHotelFeedsCreateRequestCatalogId :: Maybe Text
-    <*> arbitraryReduced n -- catalogsHotelFeedsCreateRequestCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsHotelFeedsCreateRequestCatalogType :: E'CatalogType2
     <*> arbitraryReducedMaybe n -- catalogsHotelFeedsCreateRequestCredentials :: Maybe CatalogsFeedCredentials
     <*> arbitraryReducedMaybe n -- catalogsHotelFeedsCreateRequestDefaultCurrency :: Maybe NullableCurrency
-    <*> arbitraryReduced n -- catalogsHotelFeedsCreateRequestDefaultLocale :: CatalogsFeedsCreateRequestDefaultLocale
+    <*> arbitraryReduced n -- catalogsHotelFeedsCreateRequestDefaultLocale :: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
     <*> arbitraryReduced n -- catalogsHotelFeedsCreateRequestFormat :: CatalogsFormat
     <*> arbitrary -- catalogsHotelFeedsCreateRequestLocation :: Text
     <*> arbitrary -- catalogsHotelFeedsCreateRequestName :: Text
@@ -3132,7 +4255,7 @@ instance Arbitrary CatalogsHotelFeedsUpdateRequest where
 genCatalogsHotelFeedsUpdateRequest :: Int -> Gen CatalogsHotelFeedsUpdateRequest
 genCatalogsHotelFeedsUpdateRequest n =
   CatalogsHotelFeedsUpdateRequest
-    <$> arbitraryReduced n -- catalogsHotelFeedsUpdateRequestCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsHotelFeedsUpdateRequestCatalogType :: E'CatalogType2
     <*> arbitraryReducedMaybe n -- catalogsHotelFeedsUpdateRequestCredentials :: Maybe CatalogsFeedCredentials
     <*> arbitraryReducedMaybe n -- catalogsHotelFeedsUpdateRequestDefaultCurrency :: Maybe NullableCurrency
     <*> arbitraryReducedMaybe n -- catalogsHotelFeedsUpdateRequestFormat :: Maybe CatalogsFormat
@@ -3171,9 +4294,10 @@ instance Arbitrary CatalogsHotelItemErrorResponse where
 genCatalogsHotelItemErrorResponse :: Int -> Gen CatalogsHotelItemErrorResponse
 genCatalogsHotelItemErrorResponse n =
   CatalogsHotelItemErrorResponse
-    <$> arbitraryReduced n -- catalogsHotelItemErrorResponseCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsHotelItemErrorResponseCatalogType :: E'CatalogType2
     <*> arbitraryReduced n -- catalogsHotelItemErrorResponseErrors :: [ItemValidationEvent]
     <*> arbitraryReducedMaybe n -- catalogsHotelItemErrorResponseHotelId :: Maybe Text
+    <*> arbitrary -- catalogsHotelItemErrorResponseItemResponseKind :: E'ItemResponseKind3
   
 instance Arbitrary CatalogsHotelItemResponse where
   arbitrary = sized genCatalogsHotelItemResponse
@@ -3182,8 +4306,9 @@ genCatalogsHotelItemResponse :: Int -> Gen CatalogsHotelItemResponse
 genCatalogsHotelItemResponse n =
   CatalogsHotelItemResponse
     <$> arbitraryReducedMaybe n -- catalogsHotelItemResponseAttributes :: Maybe CatalogsHotelAttributes
-    <*> arbitraryReduced n -- catalogsHotelItemResponseCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsHotelItemResponseCatalogType :: E'CatalogType2
     <*> arbitraryReducedMaybe n -- catalogsHotelItemResponseHotelId :: Maybe Text
+    <*> arbitrary -- catalogsHotelItemResponseItemResponseKind :: E'ItemResponseKind4
     <*> arbitraryReducedMaybe n -- catalogsHotelItemResponsePins :: Maybe [Pin]
   
 instance Arbitrary CatalogsHotelItemsBatch where
@@ -3193,21 +4318,11 @@ genCatalogsHotelItemsBatch :: Int -> Gen CatalogsHotelItemsBatch
 genCatalogsHotelItemsBatch n =
   CatalogsHotelItemsBatch
     <$> arbitraryReducedMaybe n -- catalogsHotelItemsBatchBatchId :: Maybe Text
-    <*> arbitraryReduced n -- catalogsHotelItemsBatchCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsHotelItemsBatchCatalogType :: E'CatalogType2
     <*> arbitraryReducedMaybe n -- catalogsHotelItemsBatchCompletedTime :: Maybe DateTime
     <*> arbitraryReducedMaybe n -- catalogsHotelItemsBatchCreatedTime :: Maybe DateTime
     <*> arbitraryReducedMaybe n -- catalogsHotelItemsBatchItems :: Maybe [HotelProcessingRecord]
     <*> arbitraryReducedMaybe n -- catalogsHotelItemsBatchStatus :: Maybe BatchOperationStatus
-  
-instance Arbitrary CatalogsHotelItemsFilter where
-  arbitrary = sized genCatalogsHotelItemsFilter
-
-genCatalogsHotelItemsFilter :: Int -> Gen CatalogsHotelItemsFilter
-genCatalogsHotelItemsFilter n =
-  CatalogsHotelItemsFilter
-    <$> arbitraryReducedMaybe n -- catalogsHotelItemsFilterCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsHotelItemsFilterCatalogType :: E'CatalogType
-    <*> arbitrary -- catalogsHotelItemsFilterHotelIds :: [Text]
   
 instance Arbitrary CatalogsHotelItemsPostFilter where
   arbitrary = sized genCatalogsHotelItemsPostFilter
@@ -3216,7 +4331,7 @@ genCatalogsHotelItemsPostFilter :: Int -> Gen CatalogsHotelItemsPostFilter
 genCatalogsHotelItemsPostFilter n =
   CatalogsHotelItemsPostFilter
     <$> arbitraryReducedMaybe n -- catalogsHotelItemsPostFilterCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsHotelItemsPostFilterCatalogType :: E'CatalogType
+    <*> arbitrary -- catalogsHotelItemsPostFilterCatalogType :: E'CatalogType2
     <*> arbitrary -- catalogsHotelItemsPostFilterHotelIds :: [Text]
   
 instance Arbitrary CatalogsHotelListProductsByCatalogBasedFilterRequest where
@@ -3226,8 +4341,17 @@ genCatalogsHotelListProductsByCatalogBasedFilterRequest :: Int -> Gen CatalogsHo
 genCatalogsHotelListProductsByCatalogBasedFilterRequest n =
   CatalogsHotelListProductsByCatalogBasedFilterRequest
     <$> arbitrary -- catalogsHotelListProductsByCatalogBasedFilterRequestCatalogId :: Text
-    <*> arbitrary -- catalogsHotelListProductsByCatalogBasedFilterRequestCatalogType :: E'CatalogType
+    <*> arbitrary -- catalogsHotelListProductsByCatalogBasedFilterRequestCatalogType :: E'CatalogType2
     <*> arbitraryReduced n -- catalogsHotelListProductsByCatalogBasedFilterRequestFilters :: CatalogsHotelProductGroupFilters
+  
+instance Arbitrary CatalogsHotelMainImage where
+  arbitrary = sized genCatalogsHotelMainImage
+
+genCatalogsHotelMainImage :: Int -> Gen CatalogsHotelMainImage
+genCatalogsHotelMainImage n =
+  CatalogsHotelMainImage
+    <$> arbitraryReducedMaybe n -- catalogsHotelMainImageLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsHotelMainImageTag :: Maybe [Text]
   
 instance Arbitrary CatalogsHotelProduct where
   arbitrary = sized genCatalogsHotelProduct
@@ -3235,7 +4359,7 @@ instance Arbitrary CatalogsHotelProduct where
 genCatalogsHotelProduct :: Int -> Gen CatalogsHotelProduct
 genCatalogsHotelProduct n =
   CatalogsHotelProduct
-    <$> arbitrary -- catalogsHotelProductCatalogType :: E'CatalogType
+    <$> arbitrary -- catalogsHotelProductCatalogType :: E'CatalogType2
     <*> arbitraryReduced n -- catalogsHotelProductMetadata :: CatalogsHotelProductMetadata
     <*> arbitraryReduced n -- catalogsHotelProductPin :: Pin
   
@@ -3246,7 +4370,7 @@ genCatalogsHotelProductGroup :: Int -> Gen CatalogsHotelProductGroup
 genCatalogsHotelProductGroup n =
   CatalogsHotelProductGroup
     <$> arbitrary -- catalogsHotelProductGroupCatalogId :: Text
-    <*> arbitrary -- catalogsHotelProductGroupCatalogType :: E'CatalogType
+    <*> arbitrary -- catalogsHotelProductGroupCatalogType :: E'CatalogType2
     <*> arbitraryReducedMaybe n -- catalogsHotelProductGroupCreatedAt :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsHotelProductGroupDescription :: Maybe Text
     <*> arbitraryReduced n -- catalogsHotelProductGroupFilters :: CatalogsHotelProductGroupFilters
@@ -3262,7 +4386,7 @@ genCatalogsHotelProductGroupCreateRequest :: Int -> Gen CatalogsHotelProductGrou
 genCatalogsHotelProductGroupCreateRequest n =
   CatalogsHotelProductGroupCreateRequest
     <$> arbitrary -- catalogsHotelProductGroupCreateRequestCatalogId :: Text
-    <*> arbitrary -- catalogsHotelProductGroupCreateRequestCatalogType :: E'CatalogType
+    <*> arbitrary -- catalogsHotelProductGroupCreateRequestCatalogType :: E'CatalogType2
     <*> arbitraryReducedMaybe n -- catalogsHotelProductGroupCreateRequestDescription :: Maybe Text
     <*> arbitraryReduced n -- catalogsHotelProductGroupCreateRequestFilters :: CatalogsHotelProductGroupFilters
     <*> arbitrary -- catalogsHotelProductGroupCreateRequestName :: Text
@@ -3273,7 +4397,7 @@ instance Arbitrary CatalogsHotelProductGroupFilterKeys where
 genCatalogsHotelProductGroupFilterKeys :: Int -> Gen CatalogsHotelProductGroupFilterKeys
 genCatalogsHotelProductGroupFilterKeys n =
   CatalogsHotelProductGroupFilterKeys
-    <$> arbitraryReduced n -- catalogsHotelProductGroupFilterKeysPrice :: CatalogsProductGroupPricingCurrencyCriteria
+    <$> arbitraryReduced n -- catalogsHotelProductGroupFilterKeysPrice :: PriceFilterPrice
     <*> arbitraryReduced n -- catalogsHotelProductGroupFilterKeysHotelId :: CatalogsProductGroupMultipleStringCriteria
     <*> arbitraryReduced n -- catalogsHotelProductGroupFilterKeysBrand :: CatalogsProductGroupMultipleStringCriteria
     <*> arbitraryReduced n -- catalogsHotelProductGroupFilterKeysCustomLabel0 :: CatalogsProductGroupFilterOperatorTypeCriteria
@@ -3315,7 +4439,7 @@ instance Arbitrary CatalogsHotelProductGroupProductCounts where
 genCatalogsHotelProductGroupProductCounts :: Int -> Gen CatalogsHotelProductGroupProductCounts
 genCatalogsHotelProductGroupProductCounts n =
   CatalogsHotelProductGroupProductCounts
-    <$> arbitrary -- catalogsHotelProductGroupProductCountsCatalogType :: E'CatalogType
+    <$> arbitrary -- catalogsHotelProductGroupProductCountsCatalogType :: E'CatalogType2
     <*> arbitrary -- catalogsHotelProductGroupProductCountsTotal :: Double
   
 instance Arbitrary CatalogsHotelProductGroupUpdateRequest where
@@ -3324,7 +4448,7 @@ instance Arbitrary CatalogsHotelProductGroupUpdateRequest where
 genCatalogsHotelProductGroupUpdateRequest :: Int -> Gen CatalogsHotelProductGroupUpdateRequest
 genCatalogsHotelProductGroupUpdateRequest n =
   CatalogsHotelProductGroupUpdateRequest
-    <$> arbitraryReducedMaybe n -- catalogsHotelProductGroupUpdateRequestCatalogType :: Maybe E'CatalogType
+    <$> arbitraryReducedMaybe n -- catalogsHotelProductGroupUpdateRequestCatalogType :: Maybe E'CatalogType2
     <*> arbitraryReducedMaybe n -- catalogsHotelProductGroupUpdateRequestDescription :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsHotelProductGroupUpdateRequestFilters :: Maybe CatalogsHotelProductGroupFilters
     <*> arbitraryReducedMaybe n -- catalogsHotelProductGroupUpdateRequestName :: Maybe Text
@@ -3343,7 +4467,7 @@ instance Arbitrary CatalogsHotelReportParameters where
 genCatalogsHotelReportParameters :: Int -> Gen CatalogsHotelReportParameters
 genCatalogsHotelReportParameters n =
   CatalogsHotelReportParameters
-    <$> arbitrary -- catalogsHotelReportParametersCatalogType :: E'CatalogType
+    <$> arbitrary -- catalogsHotelReportParametersCatalogType :: E'CatalogType2
     <*> arbitraryReduced n -- catalogsHotelReportParametersReport :: CatalogsHotelReportParametersReport
   
 instance Arbitrary CatalogsHotelReportParametersReport where
@@ -3352,9 +4476,9 @@ instance Arbitrary CatalogsHotelReportParametersReport where
 genCatalogsHotelReportParametersReport :: Int -> Gen CatalogsHotelReportParametersReport
 genCatalogsHotelReportParametersReport n =
   CatalogsHotelReportParametersReport
-    <$> arbitraryReducedMaybe n -- catalogsHotelReportParametersReportReportType :: Maybe E'ReportType5
-    <*> arbitrary -- catalogsHotelReportParametersReportFeedId :: Text
+    <$> arbitrary -- catalogsHotelReportParametersReportFeedId :: Text
     <*> arbitraryReducedMaybe n -- catalogsHotelReportParametersReportProcessingResultId :: Maybe Text
+    <*> arbitrary -- catalogsHotelReportParametersReportReportType :: E'ReportType
     <*> arbitraryReducedMaybe n -- catalogsHotelReportParametersReportCatalogId :: Maybe Text
   
 instance Arbitrary CatalogsHotelReportStatsParameters where
@@ -3363,7 +4487,7 @@ instance Arbitrary CatalogsHotelReportStatsParameters where
 genCatalogsHotelReportStatsParameters :: Int -> Gen CatalogsHotelReportStatsParameters
 genCatalogsHotelReportStatsParameters n =
   CatalogsHotelReportStatsParameters
-    <$> arbitrary -- catalogsHotelReportStatsParametersCatalogType :: E'CatalogType
+    <$> arbitrary -- catalogsHotelReportStatsParametersCatalogType :: E'CatalogType2
     <*> arbitraryReduced n -- catalogsHotelReportStatsParametersReport :: CatalogsHotelReportStatsParametersReport
   
 instance Arbitrary CatalogsHotelReportStatsParametersReport where
@@ -3372,9 +4496,9 @@ instance Arbitrary CatalogsHotelReportStatsParametersReport where
 genCatalogsHotelReportStatsParametersReport :: Int -> Gen CatalogsHotelReportStatsParametersReport
 genCatalogsHotelReportStatsParametersReport n =
   CatalogsHotelReportStatsParametersReport
-    <$> arbitraryReducedMaybe n -- catalogsHotelReportStatsParametersReportReportType :: Maybe E'ReportType
-    <*> arbitrary -- catalogsHotelReportStatsParametersReportFeedId :: Text
+    <$> arbitrary -- catalogsHotelReportStatsParametersReportFeedId :: Text
     <*> arbitraryReducedMaybe n -- catalogsHotelReportStatsParametersReportProcessingResultId :: Maybe Text
+    <*> arbitrary -- catalogsHotelReportStatsParametersReportReportType :: E'ReportType
     <*> arbitraryReducedMaybe n -- catalogsHotelReportStatsParametersReportCatalogId :: Maybe Text
   
 instance Arbitrary CatalogsItemValidationDetails where
@@ -3640,26 +4764,31 @@ genCatalogsItemValidationWarnings n =
     <*> arbitraryReducedMaybe n -- catalogsItemValidationWarningsVideoRequiredWhenAdVideoProvided :: Maybe CatalogsItemValidationDetails
     <*> arbitraryReducedMaybe n -- catalogsItemValidationWarningsWeightUnitInvalid :: Maybe CatalogsItemValidationDetails
   
-instance Arbitrary CatalogsItems where
-  arbitrary = sized genCatalogsItems
-
-genCatalogsItems :: Int -> Gen CatalogsItems
-genCatalogsItems n =
-  CatalogsItems
-    <$> arbitraryReducedMaybe n -- catalogsItemsItems :: Maybe [ItemResponse]
-  
 instance Arbitrary CatalogsItemsBatch where
   arbitrary = sized genCatalogsItemsBatch
 
 genCatalogsItemsBatch :: Int -> Gen CatalogsItemsBatch
 genCatalogsItemsBatch n =
   CatalogsItemsBatch
-    <$> arbitraryReduced n -- catalogsItemsBatchCatalogType :: CatalogsType
-    <*> arbitraryReducedMaybe n -- catalogsItemsBatchBatchId :: Maybe Text
+    <$> arbitraryReducedMaybe n -- catalogsItemsBatchBatchId :: Maybe Text
+    <*> arbitrary -- catalogsItemsBatchCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsItemsBatchCompletedTime :: Maybe DateTime
     <*> arbitraryReduced n -- catalogsItemsBatchCreatedTime :: DateTime
     <*> arbitraryReducedMaybe n -- catalogsItemsBatchItems :: Maybe [CreativeAssetsProcessingRecord]
     <*> arbitraryReducedMaybe n -- catalogsItemsBatchStatus :: Maybe BatchOperationStatus
+  
+instance Arbitrary CatalogsItemsBatchPostRequest where
+  arbitrary = sized genCatalogsItemsBatchPostRequest
+
+genCatalogsItemsBatchPostRequest :: Int -> Gen CatalogsItemsBatchPostRequest
+genCatalogsItemsBatchPostRequest n =
+  CatalogsItemsBatchPostRequest
+    <$> arbitraryReducedMaybe n -- catalogsItemsBatchPostRequestCatalogId :: Maybe Text
+    <*> arbitrary -- catalogsItemsBatchPostRequestCatalogType :: E'CatalogType
+    <*> arbitraryReduced n -- catalogsItemsBatchPostRequestCountry :: Country
+    <*> arbitraryReduced n -- catalogsItemsBatchPostRequestItems :: [ItemDeleteBatchRecord]
+    <*> arbitrary -- catalogsItemsBatchPostRequestLanguage :: E'Language
+    <*> arbitrary -- catalogsItemsBatchPostRequestOperation :: E'Operation
   
 instance Arbitrary CatalogsItemsBatchRequest where
   arbitrary = sized genCatalogsItemsBatchRequest
@@ -3670,7 +4799,7 @@ genCatalogsItemsBatchRequest n =
     <$> arbitraryReduced n -- catalogsItemsBatchRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsItemsBatchRequestItems :: [ItemDeleteBatchRecord]
     <*> arbitrary -- catalogsItemsBatchRequestLanguage :: E'Language
-    <*> arbitraryReduced n -- catalogsItemsBatchRequestOperation :: BatchOperation
+    <*> arbitrary -- catalogsItemsBatchRequestOperation :: E'Operation
   
 instance Arbitrary CatalogsItemsCreateBatchRequest where
   arbitrary = sized genCatalogsItemsCreateBatchRequest
@@ -3681,7 +4810,7 @@ genCatalogsItemsCreateBatchRequest n =
     <$> arbitraryReduced n -- catalogsItemsCreateBatchRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsItemsCreateBatchRequestItems :: [ItemCreateBatchRecord]
     <*> arbitrary -- catalogsItemsCreateBatchRequestLanguage :: E'Language
-    <*> arbitraryReduced n -- catalogsItemsCreateBatchRequestOperation :: BatchOperation
+    <*> arbitrary -- catalogsItemsCreateBatchRequestOperation :: E'Operation3
   
 instance Arbitrary CatalogsItemsDeleteBatchRequest where
   arbitrary = sized genCatalogsItemsDeleteBatchRequest
@@ -3692,7 +4821,7 @@ genCatalogsItemsDeleteBatchRequest n =
     <$> arbitraryReduced n -- catalogsItemsDeleteBatchRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsItemsDeleteBatchRequestItems :: [ItemDeleteBatchRecord]
     <*> arbitrary -- catalogsItemsDeleteBatchRequestLanguage :: E'Language
-    <*> arbitraryReduced n -- catalogsItemsDeleteBatchRequestOperation :: BatchOperation
+    <*> arbitrary -- catalogsItemsDeleteBatchRequestOperation :: E'Operation
   
 instance Arbitrary CatalogsItemsDeleteDiscontinuedBatchRequest where
   arbitrary = sized genCatalogsItemsDeleteDiscontinuedBatchRequest
@@ -3703,19 +4832,7 @@ genCatalogsItemsDeleteDiscontinuedBatchRequest n =
     <$> arbitraryReduced n -- catalogsItemsDeleteDiscontinuedBatchRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsItemsDeleteDiscontinuedBatchRequestItems :: [ItemDeleteDiscontinuedBatchRecord]
     <*> arbitrary -- catalogsItemsDeleteDiscontinuedBatchRequestLanguage :: E'Language
-    <*> arbitraryReduced n -- catalogsItemsDeleteDiscontinuedBatchRequestOperation :: BatchOperation
-  
-instance Arbitrary CatalogsItemsFilters where
-  arbitrary = sized genCatalogsItemsFilters
-
-genCatalogsItemsFilters :: Int -> Gen CatalogsItemsFilters
-genCatalogsItemsFilters n =
-  CatalogsItemsFilters
-    <$> arbitraryReduced n -- catalogsItemsFiltersCatalogType :: CatalogsType
-    <*> arbitraryReducedMaybe n -- catalogsItemsFiltersCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsItemsFiltersItemIds :: [Text]
-    <*> arbitrary -- catalogsItemsFiltersHotelIds :: [Text]
-    <*> arbitrary -- catalogsItemsFiltersCreativeAssetsIds :: [Text]
+    <*> arbitrary -- catalogsItemsDeleteDiscontinuedBatchRequestOperation :: E'Operation4
   
 instance Arbitrary CatalogsItemsPostFilters where
   arbitrary = sized genCatalogsItemsPostFilters
@@ -3723,8 +4840,8 @@ instance Arbitrary CatalogsItemsPostFilters where
 genCatalogsItemsPostFilters :: Int -> Gen CatalogsItemsPostFilters
 genCatalogsItemsPostFilters n =
   CatalogsItemsPostFilters
-    <$> arbitraryReduced n -- catalogsItemsPostFiltersCatalogType :: CatalogsType
-    <*> arbitraryReducedMaybe n -- catalogsItemsPostFiltersCatalogId :: Maybe Text
+    <$> arbitraryReducedMaybe n -- catalogsItemsPostFiltersCatalogId :: Maybe Text
+    <*> arbitrary -- catalogsItemsPostFiltersCatalogType :: E'CatalogType
     <*> arbitrary -- catalogsItemsPostFiltersItemIds :: [Text]
     <*> arbitrary -- catalogsItemsPostFiltersHotelIds :: [Text]
     <*> arbitrary -- catalogsItemsPostFiltersCreativeAssetsIds :: [Text]
@@ -3748,7 +4865,7 @@ genCatalogsItemsUpdateBatchRequest n =
     <$> arbitraryReduced n -- catalogsItemsUpdateBatchRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsItemsUpdateBatchRequestItems :: [ItemUpdateBatchRecord]
     <*> arbitrary -- catalogsItemsUpdateBatchRequestLanguage :: E'Language
-    <*> arbitraryReduced n -- catalogsItemsUpdateBatchRequestOperation :: BatchOperation
+    <*> arbitrary -- catalogsItemsUpdateBatchRequestOperation :: E'Operation5
   
 instance Arbitrary CatalogsItemsUpsertBatchRequest where
   arbitrary = sized genCatalogsItemsUpsertBatchRequest
@@ -3759,7 +4876,7 @@ genCatalogsItemsUpsertBatchRequest n =
     <$> arbitraryReduced n -- catalogsItemsUpsertBatchRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsItemsUpsertBatchRequestItems :: [ItemUpsertBatchRecord]
     <*> arbitrary -- catalogsItemsUpsertBatchRequestLanguage :: E'Language
-    <*> arbitraryReduced n -- catalogsItemsUpsertBatchRequestOperation :: BatchOperation
+    <*> arbitrary -- catalogsItemsUpsertBatchRequestOperation :: E'Operation2
   
 instance Arbitrary CatalogsList200Response where
   arbitrary = sized genCatalogsList200Response
@@ -3788,9 +4905,65 @@ genCatalogsListProductsByFilterRequest n =
     <$> arbitrary -- catalogsListProductsByFilterRequestFeedId :: Text
     <*> arbitraryReduced n -- catalogsListProductsByFilterRequestFilters :: CatalogsCreativeAssetsProductGroupFilters
     <*> arbitrary -- catalogsListProductsByFilterRequestCatalogId :: Text
-    <*> arbitrary -- catalogsListProductsByFilterRequestCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsListProductsByFilterRequestCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsListProductsByFilterRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsListProductsByFilterRequestLocale :: CatalogsLocale
+  
+instance Arbitrary CatalogsLocalStoresCreate200ResponseInner where
+  arbitrary = sized genCatalogsLocalStoresCreate200ResponseInner
+
+genCatalogsLocalStoresCreate200ResponseInner :: Int -> Gen CatalogsLocalStoresCreate200ResponseInner
+genCatalogsLocalStoresCreate200ResponseInner n =
+  CatalogsLocalStoresCreate200ResponseInner
+    <$> arbitraryReduced n -- catalogsLocalStoresCreate200ResponseInnerData :: CatalogsLocalStoresCreate200ResponseInnerData
+  
+instance Arbitrary CatalogsLocalStoresCreate200ResponseInnerData where
+  arbitrary = sized genCatalogsLocalStoresCreate200ResponseInnerData
+
+genCatalogsLocalStoresCreate200ResponseInnerData :: Int -> Gen CatalogsLocalStoresCreate200ResponseInnerData
+genCatalogsLocalStoresCreate200ResponseInnerData n =
+  CatalogsLocalStoresCreate200ResponseInnerData
+    <$> arbitraryReducedMaybe n -- catalogsLocalStoresCreate200ResponseInnerDataAddressPrimary :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsLocalStoresCreate200ResponseInnerDataAddressSecondary :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsLocalStoresCreate200ResponseInnerDataCity :: Maybe Text
+    <*> arbitraryReduced n -- catalogsLocalStoresCreate200ResponseInnerDataCountry :: Country
+    <*> arbitraryReduced n -- catalogsLocalStoresCreate200ResponseInnerDataCreatedAt :: DateTime
+    <*> arbitrary -- catalogsLocalStoresCreate200ResponseInnerDataId :: Text
+    <*> arbitraryReducedMaybe n -- catalogsLocalStoresCreate200ResponseInnerDataLatitude :: Maybe Float
+    <*> arbitraryReducedMaybe n -- catalogsLocalStoresCreate200ResponseInnerDataLongitude :: Maybe Float
+    <*> arbitrary -- catalogsLocalStoresCreate200ResponseInnerDataName :: Text
+    <*> arbitraryReducedMaybe n -- catalogsLocalStoresCreate200ResponseInnerDataPostalCode :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsLocalStoresCreate200ResponseInnerDataRegion :: Maybe Text
+    <*> arbitrary -- catalogsLocalStoresCreate200ResponseInnerDataStoreCode :: Text
+    <*> arbitraryReduced n -- catalogsLocalStoresCreate200ResponseInnerDataUpdatedAt :: DateTime
+    <*> arbitraryReduced n -- catalogsLocalStoresCreate200ResponseInnerDataExceptions :: PinterestLibError
+  
+instance Arbitrary CatalogsLocalStoresCreate200ResponseInnerDataOneOf where
+  arbitrary = sized genCatalogsLocalStoresCreate200ResponseInnerDataOneOf
+
+genCatalogsLocalStoresCreate200ResponseInnerDataOneOf :: Int -> Gen CatalogsLocalStoresCreate200ResponseInnerDataOneOf
+genCatalogsLocalStoresCreate200ResponseInnerDataOneOf n =
+  CatalogsLocalStoresCreate200ResponseInnerDataOneOf
+    <$> arbitrary -- catalogsLocalStoresCreate200ResponseInnerDataOneOfId :: Text
+    <*> arbitraryReduced n -- catalogsLocalStoresCreate200ResponseInnerDataOneOfExceptions :: PinterestLibError
+  
+instance Arbitrary CatalogsLocalStoresDelete200ResponseInner where
+  arbitrary = sized genCatalogsLocalStoresDelete200ResponseInner
+
+genCatalogsLocalStoresDelete200ResponseInner :: Int -> Gen CatalogsLocalStoresDelete200ResponseInner
+genCatalogsLocalStoresDelete200ResponseInner n =
+  CatalogsLocalStoresDelete200ResponseInner
+    <$> arbitrary -- catalogsLocalStoresDelete200ResponseInnerId :: Text
+    <*> arbitraryReduced n -- catalogsLocalStoresDelete200ResponseInnerStatus :: CampaignAdPreviewDelete200ResponseInnerStatus
+  
+instance Arbitrary CatalogsLocalStoresList200Response where
+  arbitrary = sized genCatalogsLocalStoresList200Response
+
+genCatalogsLocalStoresList200Response :: Int -> Gen CatalogsLocalStoresList200Response
+genCatalogsLocalStoresList200Response n =
+  CatalogsLocalStoresList200Response
+    <$> arbitraryReducedMaybe n -- catalogsLocalStoresList200ResponseBookmark :: Maybe Text
+    <*> arbitraryReduced n -- catalogsLocalStoresList200ResponseItems :: [LocalStore]
   
 instance Arbitrary CatalogsProduct where
   arbitrary = sized genCatalogsProduct
@@ -3798,7 +4971,7 @@ instance Arbitrary CatalogsProduct where
 genCatalogsProduct :: Int -> Gen CatalogsProduct
 genCatalogsProduct n =
   CatalogsProduct
-    <$> arbitraryReduced n -- catalogsProductCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsProductCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsProductMetadata :: CatalogsCreativeAssetsProductMetadata
     <*> arbitraryReduced n -- catalogsProductPin :: Pin
   
@@ -3856,13 +5029,14 @@ genCatalogsProductGroupFilterKeys n =
     <*> arbitraryReduced n -- catalogsProductGroupFilterKeysGoogleProductCategory2 :: CatalogsProductGroupMultipleStringListCriteria
     <*> arbitraryReduced n -- catalogsProductGroupFilterKeysGoogleProductCategory1 :: CatalogsProductGroupMultipleStringListCriteria
     <*> arbitraryReduced n -- catalogsProductGroupFilterKeysGoogleProductCategory0 :: CatalogsProductGroupMultipleStringListCriteria
-    <*> arbitraryReduced n -- catalogsProductGroupFilterKeysProductGroup :: CatalogsProductGroupMultipleStringCriteria
     <*> arbitraryReduced n -- catalogsProductGroupFilterKeysCustomNumber0 :: CatalogsProductGroupUint32Criteria
     <*> arbitraryReduced n -- catalogsProductGroupFilterKeysCustomNumber1 :: CatalogsProductGroupUint32Criteria
     <*> arbitraryReduced n -- catalogsProductGroupFilterKeysCustomNumber2 :: CatalogsProductGroupUint32Criteria
     <*> arbitraryReduced n -- catalogsProductGroupFilterKeysCustomNumber3 :: CatalogsProductGroupUint32Criteria
     <*> arbitraryReduced n -- catalogsProductGroupFilterKeysCustomNumber4 :: CatalogsProductGroupUint32Criteria
     <*> arbitraryReduced n -- catalogsProductGroupFilterKeysTitleKeywords :: CatalogsProductGroupMultipleStringCriteria
+    <*> arbitraryReduced n -- catalogsProductGroupFilterKeysPinterestProductCategories :: CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+    <*> arbitraryReduced n -- catalogsProductGroupFilterKeysProductGroup :: CatalogsProductGroupMultipleStringCriteria
   
 instance Arbitrary CatalogsProductGroupFilterOperatorTypeCriteria where
   arbitrary = sized genCatalogsProductGroupFilterOperatorTypeCriteria
@@ -3870,7 +5044,7 @@ instance Arbitrary CatalogsProductGroupFilterOperatorTypeCriteria where
 genCatalogsProductGroupFilterOperatorTypeCriteria :: Int -> Gen CatalogsProductGroupFilterOperatorTypeCriteria
 genCatalogsProductGroupFilterOperatorTypeCriteria n =
   CatalogsProductGroupFilterOperatorTypeCriteria
-    <$> arbitraryReducedMaybe n -- catalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorType :: Maybe E'FilterOperatorType
+    <$> arbitraryReducedMaybe n -- catalogsProductGroupFilterOperatorTypeCriteriaFilterOperatorType :: Maybe FilterOperatorType
     <*> arbitraryReducedMaybe n -- catalogsProductGroupFilterOperatorTypeCriteriaNegated :: Maybe Bool
     <*> arbitrary -- catalogsProductGroupFilterOperatorTypeCriteriaValues :: [Text]
   
@@ -3908,6 +5082,22 @@ genCatalogsProductGroupFiltersRequest n =
     <$> arbitraryReduced n -- catalogsProductGroupFiltersRequestAnyOf :: [CatalogsProductGroupFilterKeys]
     <*> arbitraryReduced n -- catalogsProductGroupFiltersRequestAllOf :: [CatalogsProductGroupFilterKeys]
   
+instance Arbitrary CatalogsProductGroupFiltersRequestAnyOfItems0 where
+  arbitrary = sized genCatalogsProductGroupFiltersRequestAnyOfItems0
+
+genCatalogsProductGroupFiltersRequestAnyOfItems0 :: Int -> Gen CatalogsProductGroupFiltersRequestAnyOfItems0
+genCatalogsProductGroupFiltersRequestAnyOfItems0 n =
+  CatalogsProductGroupFiltersRequestAnyOfItems0
+    <$> arbitraryReduced n -- catalogsProductGroupFiltersRequestAnyOfItems0AnyOf :: [CatalogsProductGroupFilterKeys]
+  
+instance Arbitrary CatalogsProductGroupFiltersRequestAnyOfItems1 where
+  arbitrary = sized genCatalogsProductGroupFiltersRequestAnyOfItems1
+
+genCatalogsProductGroupFiltersRequestAnyOfItems1 :: Int -> Gen CatalogsProductGroupFiltersRequestAnyOfItems1
+genCatalogsProductGroupFiltersRequestAnyOfItems1 n =
+  CatalogsProductGroupFiltersRequestAnyOfItems1
+    <$> arbitraryReduced n -- catalogsProductGroupFiltersRequestAnyOfItems1AllOf :: [CatalogsProductGroupFilterKeys]
+  
 instance Arbitrary CatalogsProductGroupMultipleCountriesCriteria where
   arbitrary = sized genCatalogsProductGroupMultipleCountriesCriteria
 
@@ -3935,6 +5125,15 @@ genCatalogsProductGroupMultipleMediaTypesCriteria n =
     <$> arbitraryReducedMaybe n -- catalogsProductGroupMultipleMediaTypesCriteriaNegated :: Maybe Bool
     <*> arbitraryReduced n -- catalogsProductGroupMultipleMediaTypesCriteriaValues :: [MediaType]
   
+instance Arbitrary CatalogsProductGroupMultiplePinterestProductCategoryCriteria where
+  arbitrary = sized genCatalogsProductGroupMultiplePinterestProductCategoryCriteria
+
+genCatalogsProductGroupMultiplePinterestProductCategoryCriteria :: Int -> Gen CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+genCatalogsProductGroupMultiplePinterestProductCategoryCriteria n =
+  CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+    <$> arbitraryReducedMaybe n -- catalogsProductGroupMultiplePinterestProductCategoryCriteriaNegated :: Maybe Bool
+    <*> arbitraryReduced n -- catalogsProductGroupMultiplePinterestProductCategoryCriteriaValues :: [ProductCategoryEnum]
+  
 instance Arbitrary CatalogsProductGroupMultipleStringCriteria where
   arbitrary = sized genCatalogsProductGroupMultipleStringCriteria
 
@@ -3951,7 +5150,7 @@ genCatalogsProductGroupMultipleStringListCriteria :: Int -> Gen CatalogsProductG
 genCatalogsProductGroupMultipleStringListCriteria n =
   CatalogsProductGroupMultipleStringListCriteria
     <$> arbitraryReducedMaybe n -- catalogsProductGroupMultipleStringListCriteriaNegated :: Maybe Bool
-    <*> arbitraryReduced n -- catalogsProductGroupMultipleStringListCriteriaValues :: [[Text]]
+    <*> arbitraryReduced n -- catalogsProductGroupMultipleStringListCriteriaValues :: [Array]
   
 instance Arbitrary CatalogsProductGroupPinsList200Response where
   arbitrary = sized genCatalogsProductGroupPinsList200Response
@@ -3972,29 +5171,20 @@ genCatalogsProductGroupPricingCriteria n =
     <*> arbitraryReducedMaybe n -- catalogsProductGroupPricingCriteriaNegated :: Maybe Bool
     <*> arbitrary -- catalogsProductGroupPricingCriteriaValues :: Double
   
-instance Arbitrary CatalogsProductGroupPricingCurrencyCriteria where
-  arbitrary = sized genCatalogsProductGroupPricingCurrencyCriteria
-
-genCatalogsProductGroupPricingCurrencyCriteria :: Int -> Gen CatalogsProductGroupPricingCurrencyCriteria
-genCatalogsProductGroupPricingCurrencyCriteria n =
-  CatalogsProductGroupPricingCurrencyCriteria
-    <$> arbitraryReduced n -- catalogsProductGroupPricingCurrencyCriteriaCurrency :: NonNullableCatalogsCurrency
-    <*> arbitraryReducedMaybe n -- catalogsProductGroupPricingCurrencyCriteriaNegated :: Maybe Bool
-    <*> arbitrary -- catalogsProductGroupPricingCurrencyCriteriaOperator :: E'Operator
-    <*> arbitrary -- catalogsProductGroupPricingCurrencyCriteriaValue :: Double
-  
 instance Arbitrary CatalogsProductGroupProductCountsVertical where
   arbitrary = sized genCatalogsProductGroupProductCountsVertical
 
 genCatalogsProductGroupProductCountsVertical :: Int -> Gen CatalogsProductGroupProductCountsVertical
 genCatalogsProductGroupProductCountsVertical n =
   CatalogsProductGroupProductCountsVertical
-    <$> arbitraryReduced n -- catalogsProductGroupProductCountsVerticalCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsProductGroupProductCountsVerticalCatalogType :: E'CatalogType
     <*> arbitrary -- catalogsProductGroupProductCountsVerticalInStock :: Double
     <*> arbitrary -- catalogsProductGroupProductCountsVerticalOutOfStock :: Double
     <*> arbitrary -- catalogsProductGroupProductCountsVerticalPreorder :: Double
     <*> arbitrary -- catalogsProductGroupProductCountsVerticalTotal :: Double
     <*> arbitrary -- catalogsProductGroupProductCountsVerticalVideos :: Double
+    <*> arbitrary -- catalogsProductGroupProductCountsVerticalAppLinks :: Double
+    <*> arbitrary -- catalogsProductGroupProductCountsVerticalImages :: Double
   
 instance Arbitrary CatalogsProductGroupUint32Criteria where
   arbitrary = sized genCatalogsProductGroupUint32Criteria
@@ -4003,8 +5193,20 @@ genCatalogsProductGroupUint32Criteria :: Int -> Gen CatalogsProductGroupUint32Cr
 genCatalogsProductGroupUint32Criteria n =
   CatalogsProductGroupUint32Criteria
     <$> arbitraryReducedMaybe n -- catalogsProductGroupUint32CriteriaNegated :: Maybe Bool
-    <*> arbitrary -- catalogsProductGroupUint32CriteriaOperator :: E'Operator
+    <*> arbitraryReduced n -- catalogsProductGroupUint32CriteriaOperator :: NumericFilterOperatorType
     <*> arbitrary -- catalogsProductGroupUint32CriteriaValue :: Int
+  
+instance Arbitrary CatalogsProductGroupUpdateManyRequestItemsOneOfItems0 where
+  arbitrary = sized genCatalogsProductGroupUpdateManyRequestItemsOneOfItems0
+
+genCatalogsProductGroupUpdateManyRequestItemsOneOfItems0 :: Int -> Gen CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
+genCatalogsProductGroupUpdateManyRequestItemsOneOfItems0 n =
+  CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
+    <$> arbitraryReducedMaybe n -- catalogsProductGroupUpdateManyRequestItemsOneOfItems0Description :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupUpdateManyRequestItemsOneOfItems0Filters :: Maybe CatalogsProductGroupFiltersRequest
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupUpdateManyRequestItemsOneOfItems0IsFeatured :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupUpdateManyRequestItemsOneOfItems0Name :: Maybe Text
+    <*> arbitrary -- catalogsProductGroupUpdateManyRequestItemsOneOfItems0Id :: Text
   
 instance Arbitrary CatalogsProductGroupUpdateRequest where
   arbitrary = sized genCatalogsProductGroupUpdateRequest
@@ -4017,6 +5219,38 @@ genCatalogsProductGroupUpdateRequest n =
     <*> arbitraryReducedMaybe n -- catalogsProductGroupUpdateRequestIsFeatured :: Maybe Bool
     <*> arbitraryReducedMaybe n -- catalogsProductGroupUpdateRequestName :: Maybe Text
   
+instance Arbitrary CatalogsProductGroupsCreateManyRequestItems where
+  arbitrary = sized genCatalogsProductGroupsCreateManyRequestItems
+
+genCatalogsProductGroupsCreateManyRequestItems :: Int -> Gen CatalogsProductGroupsCreateManyRequestItems
+genCatalogsProductGroupsCreateManyRequestItems n =
+  CatalogsProductGroupsCreateManyRequestItems
+    <$> arbitraryReducedMaybe n -- catalogsProductGroupsCreateManyRequestItemsDescription :: Maybe Text
+    <*> arbitrary -- catalogsProductGroupsCreateManyRequestItemsFeedId :: Text
+    <*> arbitraryReduced n -- catalogsProductGroupsCreateManyRequestItemsFilters :: CatalogsCreativeAssetsProductGroupFilters
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsCreateManyRequestItemsIsFeatured :: Maybe Bool
+    <*> arbitrary -- catalogsProductGroupsCreateManyRequestItemsName :: Text
+    <*> arbitrary -- catalogsProductGroupsCreateManyRequestItemsCatalogId :: Text
+    <*> arbitrary -- catalogsProductGroupsCreateManyRequestItemsCatalogType :: E'CatalogType
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsCreateManyRequestItemsCountry :: Maybe Country
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsCreateManyRequestItemsLocale :: Maybe CatalogsLocale
+  
+instance Arbitrary CatalogsProductGroupsCreateRequestSchema where
+  arbitrary = sized genCatalogsProductGroupsCreateRequestSchema
+
+genCatalogsProductGroupsCreateRequestSchema :: Int -> Gen CatalogsProductGroupsCreateRequestSchema
+genCatalogsProductGroupsCreateRequestSchema n =
+  CatalogsProductGroupsCreateRequestSchema
+    <$> arbitraryReducedMaybe n -- catalogsProductGroupsCreateRequestSchemaDescription :: Maybe Text
+    <*> arbitrary -- catalogsProductGroupsCreateRequestSchemaFeedId :: Text
+    <*> arbitraryReduced n -- catalogsProductGroupsCreateRequestSchemaFilters :: CatalogsCreativeAssetsProductGroupFilters
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsCreateRequestSchemaIsFeatured :: Maybe Bool
+    <*> arbitrary -- catalogsProductGroupsCreateRequestSchemaName :: Text
+    <*> arbitrary -- catalogsProductGroupsCreateRequestSchemaCatalogId :: Text
+    <*> arbitrary -- catalogsProductGroupsCreateRequestSchemaCatalogType :: E'CatalogType
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsCreateRequestSchemaCountry :: Maybe Country
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsCreateRequestSchemaLocale :: Maybe CatalogsLocale
+  
 instance Arbitrary CatalogsProductGroupsList200Response where
   arbitrary = sized genCatalogsProductGroupsList200Response
 
@@ -4026,19 +5260,19 @@ genCatalogsProductGroupsList200Response n =
     <$> arbitraryReducedMaybe n -- catalogsProductGroupsList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- catalogsProductGroupsList200ResponseItems :: [CatalogsVerticalProductGroup]
   
-instance Arbitrary CatalogsProductGroupsUpdateRequest where
-  arbitrary = sized genCatalogsProductGroupsUpdateRequest
+instance Arbitrary CatalogsProductGroupsUpdateRequestSchema where
+  arbitrary = sized genCatalogsProductGroupsUpdateRequestSchema
 
-genCatalogsProductGroupsUpdateRequest :: Int -> Gen CatalogsProductGroupsUpdateRequest
-genCatalogsProductGroupsUpdateRequest n =
-  CatalogsProductGroupsUpdateRequest
-    <$> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestDescription :: Maybe Text
-    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestFilters :: Maybe CatalogsCreativeAssetsProductGroupFilters
-    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestIsFeatured :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestCatalogType :: Maybe E'CatalogType3
-    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestCountry :: Maybe Country
-    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestLocale :: Maybe CatalogsLocale
+genCatalogsProductGroupsUpdateRequestSchema :: Int -> Gen CatalogsProductGroupsUpdateRequestSchema
+genCatalogsProductGroupsUpdateRequestSchema n =
+  CatalogsProductGroupsUpdateRequestSchema
+    <$> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestSchemaDescription :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestSchemaFilters :: Maybe CatalogsCreativeAssetsProductGroupFilters
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestSchemaIsFeatured :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestSchemaName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestSchemaCatalogType :: Maybe E'CatalogType
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestSchemaCountry :: Maybe Country
+    <*> arbitraryReducedMaybe n -- catalogsProductGroupsUpdateRequestSchemaLocale :: Maybe CatalogsLocale
   
 instance Arbitrary CatalogsReport where
   arbitrary = sized genCatalogsReport
@@ -4050,15 +5284,6 @@ genCatalogsReport n =
     <*> arbitraryReducedMaybe n -- catalogsReportSize :: Maybe Double
     <*> arbitraryReducedMaybe n -- catalogsReportUrl :: Maybe Text
   
-instance Arbitrary CatalogsReportAllItemsFilter where
-  arbitrary = sized genCatalogsReportAllItemsFilter
-
-genCatalogsReportAllItemsFilter :: Int -> Gen CatalogsReportAllItemsFilter
-genCatalogsReportAllItemsFilter n =
-  CatalogsReportAllItemsFilter
-    <$> arbitraryReducedMaybe n -- catalogsReportAllItemsFilterCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsReportAllItemsFilterReportType :: E'ReportType4
-  
 instance Arbitrary CatalogsReportDistributionIssueFilter where
   arbitrary = sized genCatalogsReportDistributionIssueFilter
 
@@ -4066,7 +5291,7 @@ genCatalogsReportDistributionIssueFilter :: Int -> Gen CatalogsReportDistributio
 genCatalogsReportDistributionIssueFilter n =
   CatalogsReportDistributionIssueFilter
     <$> arbitraryReducedMaybe n -- catalogsReportDistributionIssueFilterCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsReportDistributionIssueFilterReportType :: E'ReportType3
+    <*> arbitrary -- catalogsReportDistributionIssueFilterReportType :: E'ReportType
   
 instance Arbitrary CatalogsReportDistributionStats where
   arbitrary = sized genCatalogsReportDistributionStats
@@ -4081,7 +5306,7 @@ genCatalogsReportDistributionStats n =
     <*> arbitraryReducedMaybe n -- catalogsReportDistributionStatsIneligibleForOrganic :: Maybe Bool
     <*> arbitraryReducedMaybe n -- catalogsReportDistributionStatsMessage :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsReportDistributionStatsOccurrences :: Maybe Int
-    <*> arbitraryReducedMaybe n -- catalogsReportDistributionStatsReportType :: Maybe E'ReportType3
+    <*> arbitraryReducedMaybe n -- catalogsReportDistributionStatsReportType :: Maybe E'ReportType
   
 instance Arbitrary CatalogsReportFeedIngestionFilter where
   arbitrary = sized genCatalogsReportFeedIngestionFilter
@@ -4113,7 +5338,7 @@ instance Arbitrary CatalogsReportParameters where
 genCatalogsReportParameters :: Int -> Gen CatalogsReportParameters
 genCatalogsReportParameters n =
   CatalogsReportParameters
-    <$> arbitraryReduced n -- catalogsReportParametersCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsReportParametersCatalogType :: E'CatalogType2
     <*> arbitraryReduced n -- catalogsReportParametersReport :: CatalogsHotelReportParametersReport
   
 instance Arbitrary CatalogsReportStats where
@@ -4122,15 +5347,24 @@ instance Arbitrary CatalogsReportStats where
 genCatalogsReportStats :: Int -> Gen CatalogsReportStats
 genCatalogsReportStats n =
   CatalogsReportStats
-    <$> arbitrary -- catalogsReportStatsReportType :: E'ReportType
-    <*> arbitraryReducedMaybe n -- catalogsReportStatsCatalogId :: Maybe Text
+    <$> arbitraryReducedMaybe n -- catalogsReportStatsCatalogId :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsReportStatsCode :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsReportStatsCodeLabel :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsReportStatsMessage :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsReportStatsOccurrences :: Maybe Int
+    <*> arbitraryReducedMaybe n -- catalogsReportStatsReportType :: Maybe E'ReportType
     <*> arbitraryReducedMaybe n -- catalogsReportStatsSeverity :: Maybe E'Severity
     <*> arbitraryReducedMaybe n -- catalogsReportStatsIneligibleForAds :: Maybe Bool
     <*> arbitraryReducedMaybe n -- catalogsReportStatsIneligibleForOrganic :: Maybe Bool
+  
+instance Arbitrary CatalogsReportStatsParameters where
+  arbitrary = sized genCatalogsReportStatsParameters
+
+genCatalogsReportStatsParameters :: Int -> Gen CatalogsReportStatsParameters
+genCatalogsReportStatsParameters n =
+  CatalogsReportStatsParameters
+    <$> arbitrary -- catalogsReportStatsParametersCatalogType :: E'CatalogType2
+    <*> arbitraryReduced n -- catalogsReportStatsParametersReport :: CatalogsHotelReportStatsParametersReport
   
 instance Arbitrary CatalogsRetailAvailableFilterValues where
   arbitrary = sized genCatalogsRetailAvailableFilterValues
@@ -4138,7 +5372,7 @@ instance Arbitrary CatalogsRetailAvailableFilterValues where
 genCatalogsRetailAvailableFilterValues :: Int -> Gen CatalogsRetailAvailableFilterValues
 genCatalogsRetailAvailableFilterValues n =
   CatalogsRetailAvailableFilterValues
-    <$> arbitrary -- catalogsRetailAvailableFilterValuesCatalogType :: E'CatalogType2
+    <$> arbitrary -- catalogsRetailAvailableFilterValuesCatalogType :: E'CatalogType3
     <*> arbitraryReduced n -- catalogsRetailAvailableFilterValuesFilterValues :: CatalogsRetailFilterValuesMap
   
 instance Arbitrary CatalogsRetailBatchRequest where
@@ -4148,22 +5382,22 @@ genCatalogsRetailBatchRequest :: Int -> Gen CatalogsRetailBatchRequest
 genCatalogsRetailBatchRequest n =
   CatalogsRetailBatchRequest
     <$> arbitraryReducedMaybe n -- catalogsRetailBatchRequestCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsRetailBatchRequestCatalogType :: E'CatalogType2
+    <*> arbitrary -- catalogsRetailBatchRequestCatalogType :: E'CatalogType3
     <*> arbitraryReduced n -- catalogsRetailBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsRetailBatchRequestItems :: [CatalogsRetailBatchRequestItemsInner]
+    <*> arbitraryReduced n -- catalogsRetailBatchRequestItems :: [CatalogsRetailBatchRequestItemsItems]
     <*> arbitrary -- catalogsRetailBatchRequestLanguage :: E'Language
   
-instance Arbitrary CatalogsRetailBatchRequestItemsInner where
-  arbitrary = sized genCatalogsRetailBatchRequestItemsInner
+instance Arbitrary CatalogsRetailBatchRequestItemsItems where
+  arbitrary = sized genCatalogsRetailBatchRequestItemsItems
 
-genCatalogsRetailBatchRequestItemsInner :: Int -> Gen CatalogsRetailBatchRequestItemsInner
-genCatalogsRetailBatchRequestItemsInner n =
-  CatalogsRetailBatchRequestItemsInner
-    <$> arbitraryReduced n -- catalogsRetailBatchRequestItemsInnerAttributes :: ItemAttributesRequest
-    <*> arbitrary -- catalogsRetailBatchRequestItemsInnerItemId :: Text
-    <*> arbitrary -- catalogsRetailBatchRequestItemsInnerOperation :: E'Operation
-    <*> arbitraryReducedMaybe n -- catalogsRetailBatchRequestItemsInnerUpdateMask :: Maybe [UpdateMaskFieldType]
-    <*> arbitraryReducedMaybe n -- catalogsRetailBatchRequestItemsInnerLastUpdatedTime :: Maybe Integer
+genCatalogsRetailBatchRequestItemsItems :: Int -> Gen CatalogsRetailBatchRequestItemsItems
+genCatalogsRetailBatchRequestItemsItems n =
+  CatalogsRetailBatchRequestItemsItems
+    <$> arbitraryReduced n -- catalogsRetailBatchRequestItemsItemsAttributes :: ItemAttributesRequest
+    <*> arbitrary -- catalogsRetailBatchRequestItemsItemsItemId :: Text
+    <*> arbitrary -- catalogsRetailBatchRequestItemsItemsOperation :: E'Operation
+    <*> arbitraryReducedMaybe n -- catalogsRetailBatchRequestItemsItemsUpdateMask :: Maybe [UpdateMaskFieldType]
+    <*> arbitraryReducedMaybe n -- catalogsRetailBatchRequestItemsItemsLastUpdatedTime :: Maybe Integer
   
 instance Arbitrary CatalogsRetailFeed where
   arbitrary = sized genCatalogsRetailFeed
@@ -4171,20 +5405,20 @@ instance Arbitrary CatalogsRetailFeed where
 genCatalogsRetailFeed :: Int -> Gen CatalogsRetailFeed
 genCatalogsRetailFeed n =
   CatalogsRetailFeed
-    <$> arbitraryReduced n -- catalogsRetailFeedCreatedAt :: DateTime
-    <*> arbitrary -- catalogsRetailFeedId :: Text
-    <*> arbitraryReduced n -- catalogsRetailFeedUpdatedAt :: DateTime
-    <*> arbitraryReduced n -- catalogsRetailFeedCatalogType :: CatalogsType
-    <*> arbitraryReduced n -- catalogsRetailFeedCredentials :: CatalogsFeedCredentials
-    <*> arbitraryReduced n -- catalogsRetailFeedDefaultAvailability :: ProductAvailabilityType
+    <$> arbitrary -- catalogsRetailFeedCatalogType :: E'CatalogType3
+    <*> arbitraryReduced n -- catalogsRetailFeedCreatedAt :: DateTime
+    <*> arbitraryReducedMaybe n -- catalogsRetailFeedCredentials :: Maybe CatalogsFeedCredentials
+    <*> arbitraryReducedMaybe n -- catalogsRetailFeedDefaultAvailability :: Maybe ProductAvailabilityType
     <*> arbitraryReduced n -- catalogsRetailFeedDefaultCountry :: Country
-    <*> arbitraryReduced n -- catalogsRetailFeedDefaultCurrency :: NullableCurrency
+    <*> arbitraryReducedMaybe n -- catalogsRetailFeedDefaultCurrency :: Maybe NullableCurrency
     <*> arbitrary -- catalogsRetailFeedDefaultLocale :: Text
     <*> arbitraryReduced n -- catalogsRetailFeedFormat :: CatalogsFormat
+    <*> arbitrary -- catalogsRetailFeedId :: Text
     <*> arbitrary -- catalogsRetailFeedLocation :: Text
     <*> arbitrary -- catalogsRetailFeedName :: Text
-    <*> arbitraryReduced n -- catalogsRetailFeedPreferredProcessingSchedule :: CatalogsFeedProcessingSchedule
+    <*> arbitraryReducedMaybe n -- catalogsRetailFeedPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
     <*> arbitraryReduced n -- catalogsRetailFeedStatus :: CatalogsStatus
+    <*> arbitraryReduced n -- catalogsRetailFeedUpdatedAt :: DateTime
   
 instance Arbitrary CatalogsRetailFeedsCreateRequest where
   arbitrary = sized genCatalogsRetailFeedsCreateRequest
@@ -4193,12 +5427,12 @@ genCatalogsRetailFeedsCreateRequest :: Int -> Gen CatalogsRetailFeedsCreateReque
 genCatalogsRetailFeedsCreateRequest n =
   CatalogsRetailFeedsCreateRequest
     <$> arbitraryReducedMaybe n -- catalogsRetailFeedsCreateRequestCatalogId :: Maybe Text
-    <*> arbitraryReduced n -- catalogsRetailFeedsCreateRequestCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsRetailFeedsCreateRequestCatalogType :: E'CatalogType3
     <*> arbitraryReducedMaybe n -- catalogsRetailFeedsCreateRequestCredentials :: Maybe CatalogsFeedCredentials
     <*> arbitraryReducedMaybe n -- catalogsRetailFeedsCreateRequestDefaultAvailability :: Maybe ProductAvailabilityType
     <*> arbitraryReduced n -- catalogsRetailFeedsCreateRequestDefaultCountry :: Country
     <*> arbitraryReducedMaybe n -- catalogsRetailFeedsCreateRequestDefaultCurrency :: Maybe NullableCurrency
-    <*> arbitraryReduced n -- catalogsRetailFeedsCreateRequestDefaultLocale :: CatalogsFeedsCreateRequestDefaultLocale
+    <*> arbitraryReduced n -- catalogsRetailFeedsCreateRequestDefaultLocale :: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
     <*> arbitraryReduced n -- catalogsRetailFeedsCreateRequestFormat :: CatalogsFormat
     <*> arbitrary -- catalogsRetailFeedsCreateRequestLocation :: Text
     <*> arbitrary -- catalogsRetailFeedsCreateRequestName :: Text
@@ -4211,7 +5445,7 @@ instance Arbitrary CatalogsRetailFeedsUpdateRequest where
 genCatalogsRetailFeedsUpdateRequest :: Int -> Gen CatalogsRetailFeedsUpdateRequest
 genCatalogsRetailFeedsUpdateRequest n =
   CatalogsRetailFeedsUpdateRequest
-    <$> arbitraryReduced n -- catalogsRetailFeedsUpdateRequestCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsRetailFeedsUpdateRequestCatalogType :: E'CatalogType3
     <*> arbitraryReducedMaybe n -- catalogsRetailFeedsUpdateRequestCredentials :: Maybe CatalogsFeedCredentials
     <*> arbitraryReducedMaybe n -- catalogsRetailFeedsUpdateRequestDefaultAvailability :: Maybe ProductAvailabilityType
     <*> arbitraryReducedMaybe n -- catalogsRetailFeedsUpdateRequestDefaultCurrency :: Maybe NullableCurrency
@@ -4229,15 +5463,15 @@ genCatalogsRetailFilterValuesMap n =
   CatalogsRetailFilterValuesMap
     <$> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapAdImageTags :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapAdVideoTags :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapAvailability :: Maybe [E'Availability]
+    <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapAvailability :: Maybe [ProductAvailability]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapBrand :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapCondition :: Maybe [E'Condition]
+    <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapCondition :: Maybe [ProductCondition]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapCustomLabel0 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapCustomLabel1 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapCustomLabel2 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapCustomLabel3 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapCustomLabel4 :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapGender :: Maybe [E'Gender]
+    <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapGender :: Maybe [Gender]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapGoogleProductCategory0 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapGoogleProductCategory1 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapGoogleProductCategory2 :: Maybe [Text]
@@ -4245,7 +5479,7 @@ genCatalogsRetailFilterValuesMap n =
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapGoogleProductCategory4 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapGoogleProductCategory5 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapGoogleProductCategory6 :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapMediaType :: Maybe [E'MediaType6]
+    <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapMediaType :: Maybe [MediaType]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapProductType0 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapProductType1 :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- catalogsRetailFilterValuesMapProductType2 :: Maybe [Text]
@@ -4258,9 +5492,10 @@ instance Arbitrary CatalogsRetailItemErrorResponse where
 genCatalogsRetailItemErrorResponse :: Int -> Gen CatalogsRetailItemErrorResponse
 genCatalogsRetailItemErrorResponse n =
   CatalogsRetailItemErrorResponse
-    <$> arbitraryReduced n -- catalogsRetailItemErrorResponseCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsRetailItemErrorResponseCatalogType :: E'CatalogType3
     <*> arbitraryReduced n -- catalogsRetailItemErrorResponseErrors :: [ItemValidationEvent]
     <*> arbitraryReducedMaybe n -- catalogsRetailItemErrorResponseItemId :: Maybe Text
+    <*> arbitrary -- catalogsRetailItemErrorResponseItemResponseKind :: E'ItemResponseKind5
   
 instance Arbitrary CatalogsRetailItemResponse where
   arbitrary = sized genCatalogsRetailItemResponse
@@ -4269,8 +5504,9 @@ genCatalogsRetailItemResponse :: Int -> Gen CatalogsRetailItemResponse
 genCatalogsRetailItemResponse n =
   CatalogsRetailItemResponse
     <$> arbitraryReducedMaybe n -- catalogsRetailItemResponseAttributes :: Maybe ItemAttributes
-    <*> arbitraryReduced n -- catalogsRetailItemResponseCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsRetailItemResponseCatalogType :: E'CatalogType3
     <*> arbitraryReducedMaybe n -- catalogsRetailItemResponseItemId :: Maybe Text
+    <*> arbitrary -- catalogsRetailItemResponseItemResponseKind :: E'ItemResponseKind6
     <*> arbitraryReducedMaybe n -- catalogsRetailItemResponsePins :: Maybe [Pin]
   
 instance Arbitrary CatalogsRetailItemsBatch where
@@ -4280,21 +5516,11 @@ genCatalogsRetailItemsBatch :: Int -> Gen CatalogsRetailItemsBatch
 genCatalogsRetailItemsBatch n =
   CatalogsRetailItemsBatch
     <$> arbitraryReducedMaybe n -- catalogsRetailItemsBatchBatchId :: Maybe Text
-    <*> arbitraryReduced n -- catalogsRetailItemsBatchCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsRetailItemsBatchCatalogType :: E'CatalogType3
     <*> arbitraryReducedMaybe n -- catalogsRetailItemsBatchCompletedTime :: Maybe DateTime
     <*> arbitraryReduced n -- catalogsRetailItemsBatchCreatedTime :: DateTime
     <*> arbitraryReducedMaybe n -- catalogsRetailItemsBatchItems :: Maybe [ItemProcessingRecord]
     <*> arbitraryReducedMaybe n -- catalogsRetailItemsBatchStatus :: Maybe BatchOperationStatus
-  
-instance Arbitrary CatalogsRetailItemsFilter where
-  arbitrary = sized genCatalogsRetailItemsFilter
-
-genCatalogsRetailItemsFilter :: Int -> Gen CatalogsRetailItemsFilter
-genCatalogsRetailItemsFilter n =
-  CatalogsRetailItemsFilter
-    <$> arbitraryReducedMaybe n -- catalogsRetailItemsFilterCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsRetailItemsFilterCatalogType :: E'CatalogType2
-    <*> arbitrary -- catalogsRetailItemsFilterItemIds :: [Text]
   
 instance Arbitrary CatalogsRetailItemsPostFilter where
   arbitrary = sized genCatalogsRetailItemsPostFilter
@@ -4303,7 +5529,7 @@ genCatalogsRetailItemsPostFilter :: Int -> Gen CatalogsRetailItemsPostFilter
 genCatalogsRetailItemsPostFilter n =
   CatalogsRetailItemsPostFilter
     <$> arbitraryReducedMaybe n -- catalogsRetailItemsPostFilterCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsRetailItemsPostFilterCatalogType :: E'CatalogType2
+    <*> arbitrary -- catalogsRetailItemsPostFilterCatalogType :: E'CatalogType3
     <*> arbitrary -- catalogsRetailItemsPostFilterItemIds :: [Text]
   
 instance Arbitrary CatalogsRetailListProductsByCatalogBasedFilterRequest where
@@ -4313,7 +5539,7 @@ genCatalogsRetailListProductsByCatalogBasedFilterRequest :: Int -> Gen CatalogsR
 genCatalogsRetailListProductsByCatalogBasedFilterRequest n =
   CatalogsRetailListProductsByCatalogBasedFilterRequest
     <$> arbitrary -- catalogsRetailListProductsByCatalogBasedFilterRequestCatalogId :: Text
-    <*> arbitrary -- catalogsRetailListProductsByCatalogBasedFilterRequestCatalogType :: E'CatalogType2
+    <*> arbitrary -- catalogsRetailListProductsByCatalogBasedFilterRequestCatalogType :: E'CatalogType3
     <*> arbitraryReduced n -- catalogsRetailListProductsByCatalogBasedFilterRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsRetailListProductsByCatalogBasedFilterRequestFilters :: CatalogsProductGroupFilters
     <*> arbitraryReduced n -- catalogsRetailListProductsByCatalogBasedFilterRequestLocale :: CatalogsLocale
@@ -4324,7 +5550,7 @@ instance Arbitrary CatalogsRetailProduct where
 genCatalogsRetailProduct :: Int -> Gen CatalogsRetailProduct
 genCatalogsRetailProduct n =
   CatalogsRetailProduct
-    <$> arbitrary -- catalogsRetailProductCatalogType :: E'CatalogType2
+    <$> arbitrary -- catalogsRetailProductCatalogType :: E'CatalogType3
     <*> arbitraryReduced n -- catalogsRetailProductMetadata :: CatalogsRetailProductMetadata
     <*> arbitraryReduced n -- catalogsRetailProductPin :: Pin
   
@@ -4335,7 +5561,7 @@ genCatalogsRetailProductGroup :: Int -> Gen CatalogsRetailProductGroup
 genCatalogsRetailProductGroup n =
   CatalogsRetailProductGroup
     <$> arbitrary -- catalogsRetailProductGroupCatalogId :: Text
-    <*> arbitrary -- catalogsRetailProductGroupCatalogType :: E'CatalogType2
+    <*> arbitrary -- catalogsRetailProductGroupCatalogType :: E'CatalogType3
     <*> arbitraryReducedMaybe n -- catalogsRetailProductGroupCountry :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsRetailProductGroupCreatedAt :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsRetailProductGroupDescription :: Maybe Text
@@ -4356,7 +5582,7 @@ genCatalogsRetailProductGroupCreateRequest :: Int -> Gen CatalogsRetailProductGr
 genCatalogsRetailProductGroupCreateRequest n =
   CatalogsRetailProductGroupCreateRequest
     <$> arbitrary -- catalogsRetailProductGroupCreateRequestCatalogId :: Text
-    <*> arbitrary -- catalogsRetailProductGroupCreateRequestCatalogType :: E'CatalogType2
+    <*> arbitrary -- catalogsRetailProductGroupCreateRequestCatalogType :: E'CatalogType3
     <*> arbitraryReducedMaybe n -- catalogsRetailProductGroupCreateRequestCountry :: Maybe Country
     <*> arbitraryReducedMaybe n -- catalogsRetailProductGroupCreateRequestDescription :: Maybe Text
     <*> arbitraryReduced n -- catalogsRetailProductGroupCreateRequestFilters :: CatalogsProductGroupFiltersRequest
@@ -4369,7 +5595,7 @@ instance Arbitrary CatalogsRetailProductGroupProductCounts where
 genCatalogsRetailProductGroupProductCounts :: Int -> Gen CatalogsRetailProductGroupProductCounts
 genCatalogsRetailProductGroupProductCounts n =
   CatalogsRetailProductGroupProductCounts
-    <$> arbitrary -- catalogsRetailProductGroupProductCountsCatalogType :: E'CatalogType2
+    <$> arbitrary -- catalogsRetailProductGroupProductCountsCatalogType :: E'CatalogType3
     <*> arbitrary -- catalogsRetailProductGroupProductCountsInStock :: Double
     <*> arbitrary -- catalogsRetailProductGroupProductCountsOutOfStock :: Double
     <*> arbitrary -- catalogsRetailProductGroupProductCountsPreorder :: Double
@@ -4382,7 +5608,7 @@ instance Arbitrary CatalogsRetailProductGroupUpdateRequest where
 genCatalogsRetailProductGroupUpdateRequest :: Int -> Gen CatalogsRetailProductGroupUpdateRequest
 genCatalogsRetailProductGroupUpdateRequest n =
   CatalogsRetailProductGroupUpdateRequest
-    <$> arbitraryReducedMaybe n -- catalogsRetailProductGroupUpdateRequestCatalogType :: Maybe E'CatalogType2
+    <$> arbitraryReducedMaybe n -- catalogsRetailProductGroupUpdateRequestCatalogType :: Maybe E'CatalogType3
     <*> arbitraryReducedMaybe n -- catalogsRetailProductGroupUpdateRequestCountry :: Maybe Country
     <*> arbitraryReducedMaybe n -- catalogsRetailProductGroupUpdateRequestDescription :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsRetailProductGroupUpdateRequestFilters :: Maybe CatalogsProductGroupFiltersRequest
@@ -4395,12 +5621,22 @@ instance Arbitrary CatalogsRetailProductMetadata where
 genCatalogsRetailProductMetadata :: Int -> Gen CatalogsRetailProductMetadata
 genCatalogsRetailProductMetadata n =
   CatalogsRetailProductMetadata
-    <$> arbitraryReduced n -- catalogsRetailProductMetadataAvailability :: NonNullableProductAvailabilityType
+    <$> arbitraryReduced n -- catalogsRetailProductMetadataAvailability :: ProductAvailability
     <*> arbitraryReduced n -- catalogsRetailProductMetadataCurrency :: NonNullableCatalogsCurrency
     <*> arbitrary -- catalogsRetailProductMetadataItemGroupId :: Text
     <*> arbitrary -- catalogsRetailProductMetadataItemId :: Text
     <*> arbitrary -- catalogsRetailProductMetadataPrice :: Double
     <*> arbitrary -- catalogsRetailProductMetadataSalePrice :: Double
+  
+instance Arbitrary CatalogsRetailReportAllItemsFilter where
+  arbitrary = sized genCatalogsRetailReportAllItemsFilter
+
+genCatalogsRetailReportAllItemsFilter :: Int -> Gen CatalogsRetailReportAllItemsFilter
+genCatalogsRetailReportAllItemsFilter n =
+  CatalogsRetailReportAllItemsFilter
+    <$> arbitraryReducedMaybe n -- catalogsRetailReportAllItemsFilterCatalogId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsRetailReportAllItemsFilterProductGroupId :: Maybe Text
+    <*> arbitrary -- catalogsRetailReportAllItemsFilterReportType :: E'ReportType3
   
 instance Arbitrary CatalogsRetailReportParameters where
   arbitrary = sized genCatalogsRetailReportParameters
@@ -4408,8 +5644,20 @@ instance Arbitrary CatalogsRetailReportParameters where
 genCatalogsRetailReportParameters :: Int -> Gen CatalogsRetailReportParameters
 genCatalogsRetailReportParameters n =
   CatalogsRetailReportParameters
-    <$> arbitrary -- catalogsRetailReportParametersCatalogType :: E'CatalogType2
-    <*> arbitraryReduced n -- catalogsRetailReportParametersReport :: CatalogsHotelReportParametersReport
+    <$> arbitrary -- catalogsRetailReportParametersCatalogType :: E'CatalogType3
+    <*> arbitraryReduced n -- catalogsRetailReportParametersReport :: CatalogsRetailReportParametersReport
+  
+instance Arbitrary CatalogsRetailReportParametersReport where
+  arbitrary = sized genCatalogsRetailReportParametersReport
+
+genCatalogsRetailReportParametersReport :: Int -> Gen CatalogsRetailReportParametersReport
+genCatalogsRetailReportParametersReport n =
+  CatalogsRetailReportParametersReport
+    <$> arbitrary -- catalogsRetailReportParametersReportFeedId :: Text
+    <*> arbitraryReducedMaybe n -- catalogsRetailReportParametersReportProcessingResultId :: Maybe Text
+    <*> arbitrary -- catalogsRetailReportParametersReportReportType :: E'ReportType3
+    <*> arbitraryReducedMaybe n -- catalogsRetailReportParametersReportCatalogId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- catalogsRetailReportParametersReportProductGroupId :: Maybe Text
   
 instance Arbitrary CatalogsRetailReportStatsParameters where
   arbitrary = sized genCatalogsRetailReportStatsParameters
@@ -4417,8 +5665,19 @@ instance Arbitrary CatalogsRetailReportStatsParameters where
 genCatalogsRetailReportStatsParameters :: Int -> Gen CatalogsRetailReportStatsParameters
 genCatalogsRetailReportStatsParameters n =
   CatalogsRetailReportStatsParameters
-    <$> arbitrary -- catalogsRetailReportStatsParametersCatalogType :: E'CatalogType2
-    <*> arbitraryReduced n -- catalogsRetailReportStatsParametersReport :: CatalogsHotelReportStatsParametersReport
+    <$> arbitrary -- catalogsRetailReportStatsParametersCatalogType :: E'CatalogType3
+    <*> arbitraryReduced n -- catalogsRetailReportStatsParametersReport :: CatalogsRetailReportStatsParametersReport
+  
+instance Arbitrary CatalogsRetailReportStatsParametersReport where
+  arbitrary = sized genCatalogsRetailReportStatsParametersReport
+
+genCatalogsRetailReportStatsParametersReport :: Int -> Gen CatalogsRetailReportStatsParametersReport
+genCatalogsRetailReportStatsParametersReport n =
+  CatalogsRetailReportStatsParametersReport
+    <$> arbitrary -- catalogsRetailReportStatsParametersReportFeedId :: Text
+    <*> arbitraryReducedMaybe n -- catalogsRetailReportStatsParametersReportProcessingResultId :: Maybe Text
+    <*> arbitrary -- catalogsRetailReportStatsParametersReportReportType :: E'ReportType
+    <*> arbitraryReducedMaybe n -- catalogsRetailReportStatsParametersReportCatalogId :: Maybe Text
   
 instance Arbitrary CatalogsUpdatableCreativeAssetsAttributes where
   arbitrary = sized genCatalogsUpdatableCreativeAssetsAttributes
@@ -4471,7 +5730,7 @@ genCatalogsUpdateCreativeAssetsItem n =
   CatalogsUpdateCreativeAssetsItem
     <$> arbitraryReduced n -- catalogsUpdateCreativeAssetsItemAttributes :: CatalogsUpdatableCreativeAssetsAttributes
     <*> arbitrary -- catalogsUpdateCreativeAssetsItemCreativeAssetsId :: Text
-    <*> arbitrary -- catalogsUpdateCreativeAssetsItemOperation :: E'Operation3
+    <*> arbitrary -- catalogsUpdateCreativeAssetsItemOperation :: E'Operation5
   
 instance Arbitrary CatalogsUpdateHotelItem where
   arbitrary = sized genCatalogsUpdateHotelItem
@@ -4481,7 +5740,7 @@ genCatalogsUpdateHotelItem n =
   CatalogsUpdateHotelItem
     <$> arbitraryReduced n -- catalogsUpdateHotelItemAttributes :: CatalogsUpdatableHotelAttributes
     <*> arbitrary -- catalogsUpdateHotelItemHotelId :: Text
-    <*> arbitrary -- catalogsUpdateHotelItemOperation :: E'Operation3
+    <*> arbitrary -- catalogsUpdateHotelItemOperation :: E'Operation5
   
 instance Arbitrary CatalogsUpdateRetailItem where
   arbitrary = sized genCatalogsUpdateRetailItem
@@ -4491,7 +5750,7 @@ genCatalogsUpdateRetailItem n =
   CatalogsUpdateRetailItem
     <$> arbitraryReduced n -- catalogsUpdateRetailItemAttributes :: UpdatableItemAttributes
     <*> arbitrary -- catalogsUpdateRetailItemItemId :: Text
-    <*> arbitrary -- catalogsUpdateRetailItemOperation :: E'Operation3
+    <*> arbitrary -- catalogsUpdateRetailItemOperation :: E'Operation5
     <*> arbitraryReducedMaybe n -- catalogsUpdateRetailItemUpdateMask :: Maybe [UpdateMaskFieldType]
   
 instance Arbitrary CatalogsUpsertCreativeAssetsItem where
@@ -4502,7 +5761,7 @@ genCatalogsUpsertCreativeAssetsItem n =
   CatalogsUpsertCreativeAssetsItem
     <$> arbitraryReduced n -- catalogsUpsertCreativeAssetsItemAttributes :: CatalogsCreativeAssetsAttributes
     <*> arbitrary -- catalogsUpsertCreativeAssetsItemCreativeAssetsId :: Text
-    <*> arbitrary -- catalogsUpsertCreativeAssetsItemOperation :: E'Operation4
+    <*> arbitrary -- catalogsUpsertCreativeAssetsItemOperation :: E'Operation2
   
 instance Arbitrary CatalogsUpsertHotelItem where
   arbitrary = sized genCatalogsUpsertHotelItem
@@ -4512,7 +5771,7 @@ genCatalogsUpsertHotelItem n =
   CatalogsUpsertHotelItem
     <$> arbitraryReduced n -- catalogsUpsertHotelItemAttributes :: CatalogsHotelAttributes
     <*> arbitrary -- catalogsUpsertHotelItemHotelId :: Text
-    <*> arbitrary -- catalogsUpsertHotelItemOperation :: E'Operation4
+    <*> arbitrary -- catalogsUpsertHotelItemOperation :: E'Operation2
   
 instance Arbitrary CatalogsUpsertRetailItem where
   arbitrary = sized genCatalogsUpsertRetailItem
@@ -4522,7 +5781,7 @@ genCatalogsUpsertRetailItem n =
   CatalogsUpsertRetailItem
     <$> arbitraryReduced n -- catalogsUpsertRetailItemAttributes :: ItemAttributesRequest
     <*> arbitrary -- catalogsUpsertRetailItemItemId :: Text
-    <*> arbitrary -- catalogsUpsertRetailItemOperation :: E'Operation4
+    <*> arbitrary -- catalogsUpsertRetailItemOperation :: E'Operation2
   
 instance Arbitrary CatalogsVerticalBatchRequest where
   arbitrary = sized genCatalogsVerticalBatchRequest
@@ -4531,7 +5790,7 @@ genCatalogsVerticalBatchRequest :: Int -> Gen CatalogsVerticalBatchRequest
 genCatalogsVerticalBatchRequest n =
   CatalogsVerticalBatchRequest
     <$> arbitraryReducedMaybe n -- catalogsVerticalBatchRequestCatalogId :: Maybe Text
-    <*> arbitrary -- catalogsVerticalBatchRequestCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsVerticalBatchRequestCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsVerticalBatchRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsVerticalBatchRequestItems :: [CatalogsCreativeAssetsBatchItem]
     <*> arbitrary -- catalogsVerticalBatchRequestLanguage :: E'Language
@@ -4543,12 +5802,12 @@ genCatalogsVerticalFeedsCreateRequest :: Int -> Gen CatalogsVerticalFeedsCreateR
 genCatalogsVerticalFeedsCreateRequest n =
   CatalogsVerticalFeedsCreateRequest
     <$> arbitraryReducedMaybe n -- catalogsVerticalFeedsCreateRequestCatalogId :: Maybe Text
-    <*> arbitraryReduced n -- catalogsVerticalFeedsCreateRequestCatalogType :: CatalogsType
+    <*> arbitrary -- catalogsVerticalFeedsCreateRequestCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsVerticalFeedsCreateRequestCredentials :: Maybe CatalogsFeedCredentials
     <*> arbitraryReducedMaybe n -- catalogsVerticalFeedsCreateRequestDefaultAvailability :: Maybe ProductAvailabilityType
     <*> arbitraryReduced n -- catalogsVerticalFeedsCreateRequestDefaultCountry :: Country
     <*> arbitraryReducedMaybe n -- catalogsVerticalFeedsCreateRequestDefaultCurrency :: Maybe NullableCurrency
-    <*> arbitraryReduced n -- catalogsVerticalFeedsCreateRequestDefaultLocale :: CatalogsFeedsCreateRequestDefaultLocale
+    <*> arbitraryReduced n -- catalogsVerticalFeedsCreateRequestDefaultLocale :: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
     <*> arbitraryReduced n -- catalogsVerticalFeedsCreateRequestFormat :: CatalogsFormat
     <*> arbitrary -- catalogsVerticalFeedsCreateRequestLocation :: Text
     <*> arbitrary -- catalogsVerticalFeedsCreateRequestName :: Text
@@ -4561,7 +5820,7 @@ instance Arbitrary CatalogsVerticalFeedsUpdateRequest where
 genCatalogsVerticalFeedsUpdateRequest :: Int -> Gen CatalogsVerticalFeedsUpdateRequest
 genCatalogsVerticalFeedsUpdateRequest n =
   CatalogsVerticalFeedsUpdateRequest
-    <$> arbitraryReduced n -- catalogsVerticalFeedsUpdateRequestCatalogType :: CatalogsType
+    <$> arbitrary -- catalogsVerticalFeedsUpdateRequestCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsVerticalFeedsUpdateRequestCredentials :: Maybe CatalogsFeedCredentials
     <*> arbitraryReducedMaybe n -- catalogsVerticalFeedsUpdateRequestDefaultAvailability :: Maybe ProductAvailabilityType
     <*> arbitraryReducedMaybe n -- catalogsVerticalFeedsUpdateRequestDefaultCurrency :: Maybe NullableCurrency
@@ -4578,7 +5837,7 @@ genCatalogsVerticalProductGroup :: Int -> Gen CatalogsVerticalProductGroup
 genCatalogsVerticalProductGroup n =
   CatalogsVerticalProductGroup
     <$> arbitrary -- catalogsVerticalProductGroupCatalogId :: Text
-    <*> arbitrary -- catalogsVerticalProductGroupCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsVerticalProductGroupCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsVerticalProductGroupCountry :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsVerticalProductGroupCreatedAt :: Maybe Int
     <*> arbitraryReducedMaybe n -- catalogsVerticalProductGroupDescription :: Maybe Text
@@ -4599,7 +5858,7 @@ genCatalogsVerticalProductGroupCreateRequest :: Int -> Gen CatalogsVerticalProdu
 genCatalogsVerticalProductGroupCreateRequest n =
   CatalogsVerticalProductGroupCreateRequest
     <$> arbitrary -- catalogsVerticalProductGroupCreateRequestCatalogId :: Text
-    <*> arbitrary -- catalogsVerticalProductGroupCreateRequestCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsVerticalProductGroupCreateRequestCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsVerticalProductGroupCreateRequestCountry :: Maybe Country
     <*> arbitraryReducedMaybe n -- catalogsVerticalProductGroupCreateRequestDescription :: Maybe Text
     <*> arbitraryReduced n -- catalogsVerticalProductGroupCreateRequestFilters :: CatalogsCreativeAssetsProductGroupFilters
@@ -4612,7 +5871,7 @@ instance Arbitrary CatalogsVerticalProductGroupUpdateRequest where
 genCatalogsVerticalProductGroupUpdateRequest :: Int -> Gen CatalogsVerticalProductGroupUpdateRequest
 genCatalogsVerticalProductGroupUpdateRequest n =
   CatalogsVerticalProductGroupUpdateRequest
-    <$> arbitraryReducedMaybe n -- catalogsVerticalProductGroupUpdateRequestCatalogType :: Maybe E'CatalogType3
+    <$> arbitraryReducedMaybe n -- catalogsVerticalProductGroupUpdateRequestCatalogType :: Maybe E'CatalogType
     <*> arbitraryReducedMaybe n -- catalogsVerticalProductGroupUpdateRequestCountry :: Maybe Country
     <*> arbitraryReducedMaybe n -- catalogsVerticalProductGroupUpdateRequestDescription :: Maybe Text
     <*> arbitraryReducedMaybe n -- catalogsVerticalProductGroupUpdateRequestFilters :: Maybe CatalogsCreativeAssetsProductGroupFilters
@@ -4626,7 +5885,7 @@ genCatalogsVerticalsListProductsByCatalogBasedFilterRequest :: Int -> Gen Catalo
 genCatalogsVerticalsListProductsByCatalogBasedFilterRequest n =
   CatalogsVerticalsListProductsByCatalogBasedFilterRequest
     <$> arbitrary -- catalogsVerticalsListProductsByCatalogBasedFilterRequestCatalogId :: Text
-    <*> arbitrary -- catalogsVerticalsListProductsByCatalogBasedFilterRequestCatalogType :: E'CatalogType3
+    <*> arbitrary -- catalogsVerticalsListProductsByCatalogBasedFilterRequestCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsVerticalsListProductsByCatalogBasedFilterRequestCountry :: Country
     <*> arbitraryReduced n -- catalogsVerticalsListProductsByCatalogBasedFilterRequestFilters :: CatalogsCreativeAssetsProductGroupFilters
     <*> arbitraryReduced n -- catalogsVerticalsListProductsByCatalogBasedFilterRequestLocale :: CatalogsLocale
@@ -4639,34 +5898,77 @@ genConditionFilter n =
   ConditionFilter
     <$> arbitraryReduced n -- conditionFilterCondition :: CatalogsProductGroupMultipleStringCriteria
   
-instance Arbitrary ConversionAccessTokenResponse where
-  arbitrary = sized genConversionAccessTokenResponse
+instance Arbitrary ConversionAccessToken where
+  arbitrary = sized genConversionAccessToken
 
-genConversionAccessTokenResponse :: Int -> Gen ConversionAccessTokenResponse
-genConversionAccessTokenResponse n =
-  ConversionAccessTokenResponse
-    <$> arbitrary -- conversionAccessTokenResponseAccessToken :: Text
-    <*> arbitraryReducedMaybe n -- conversionAccessTokenResponseTokenType :: Maybe Text
+genConversionAccessToken :: Int -> Gen ConversionAccessToken
+genConversionAccessToken n =
+  ConversionAccessToken
+    <$> arbitrary -- conversionAccessTokenAccessToken :: Text
+    <*> arbitraryReducedMaybe n -- conversionAccessTokenTokenType :: Maybe Text
   
-instance Arbitrary ConversionApiResponse where
-  arbitrary = sized genConversionApiResponse
+instance Arbitrary ConversionApiResponseEventsItems where
+  arbitrary = sized genConversionApiResponseEventsItems
 
-genConversionApiResponse :: Int -> Gen ConversionApiResponse
-genConversionApiResponse n =
-  ConversionApiResponse
-    <$> arbitraryReduced n -- conversionApiResponseEvents :: [ConversionApiResponseEventsInner]
-    <*> arbitrary -- conversionApiResponseNumEventsProcessed :: Int
-    <*> arbitrary -- conversionApiResponseNumEventsReceived :: Int
+genConversionApiResponseEventsItems :: Int -> Gen ConversionApiResponseEventsItems
+genConversionApiResponseEventsItems n =
+  ConversionApiResponseEventsItems
+    <$> arbitraryReducedMaybe n -- conversionApiResponseEventsItemsErrorMessage :: Maybe Text
+    <*> arbitraryReduced n -- conversionApiResponseEventsItemsStatus :: EventProcessingStatus
+    <*> arbitraryReducedMaybe n -- conversionApiResponseEventsItemsWarningMessage :: Maybe Text
   
-instance Arbitrary ConversionApiResponseEventsInner where
-  arbitrary = sized genConversionApiResponseEventsInner
+instance Arbitrary ConversionDeletionRequest where
+  arbitrary = sized genConversionDeletionRequest
 
-genConversionApiResponseEventsInner :: Int -> Gen ConversionApiResponseEventsInner
-genConversionApiResponseEventsInner n =
-  ConversionApiResponseEventsInner
-    <$> arbitraryReducedMaybe n -- conversionApiResponseEventsInnerErrorMessage :: Maybe Text
-    <*> arbitrary -- conversionApiResponseEventsInnerStatus :: E'Status6
-    <*> arbitraryReducedMaybe n -- conversionApiResponseEventsInnerWarningMessage :: Maybe Text
+genConversionDeletionRequest :: Int -> Gen ConversionDeletionRequest
+genConversionDeletionRequest n =
+  ConversionDeletionRequest
+    <$> arbitraryReduced n -- conversionDeletionRequestCreatedTime :: Date
+    <*> arbitraryReducedMaybe n -- conversionDeletionRequestProcessedTime :: Maybe Date
+    <*> arbitrary -- conversionDeletionRequestRequestId :: Text
+    <*> arbitraryReduced n -- conversionDeletionRequestStatus :: ConversionDeletionRequestStatus
+  
+instance Arbitrary ConversionDeletionRequestCreate where
+  arbitrary = sized genConversionDeletionRequestCreate
+
+genConversionDeletionRequestCreate :: Int -> Gen ConversionDeletionRequestCreate
+genConversionDeletionRequestCreate n =
+  ConversionDeletionRequestCreate
+    <$> arbitraryReduced n -- conversionDeletionRequestCreateDeletionTargets :: ConversionDeletionRequestTargets
+  
+instance Arbitrary ConversionDeletionRequestEPIKTargets where
+  arbitrary = sized genConversionDeletionRequestEPIKTargets
+
+genConversionDeletionRequestEPIKTargets :: Int -> Gen ConversionDeletionRequestEPIKTargets
+genConversionDeletionRequestEPIKTargets n =
+  ConversionDeletionRequestEPIKTargets
+    <$> arbitrary -- conversionDeletionRequestEPIKTargetsEpiks :: [Text]
+  
+instance Arbitrary ConversionDeletionRequestList200Response where
+  arbitrary = sized genConversionDeletionRequestList200Response
+
+genConversionDeletionRequestList200Response :: Int -> Gen ConversionDeletionRequestList200Response
+genConversionDeletionRequestList200Response n =
+  ConversionDeletionRequestList200Response
+    <$> arbitraryReducedMaybe n -- conversionDeletionRequestList200ResponseBookmark :: Maybe Text
+    <*> arbitraryReduced n -- conversionDeletionRequestList200ResponseItems :: [ConversionDeletionRequest]
+  
+instance Arbitrary ConversionDeletionRequestTargets where
+  arbitrary = sized genConversionDeletionRequestTargets
+
+genConversionDeletionRequestTargets :: Int -> Gen ConversionDeletionRequestTargets
+genConversionDeletionRequestTargets n =
+  ConversionDeletionRequestTargets
+    <$> arbitrary -- conversionDeletionRequestTargetsUserEmails :: [Text]
+    <*> arbitrary -- conversionDeletionRequestTargetsEpiks :: [Text]
+  
+instance Arbitrary ConversionDeletionRequestUserEmailTargets where
+  arbitrary = sized genConversionDeletionRequestUserEmailTargets
+
+genConversionDeletionRequestUserEmailTargets :: Int -> Gen ConversionDeletionRequestUserEmailTargets
+genConversionDeletionRequestUserEmailTargets n =
+  ConversionDeletionRequestUserEmailTargets
+    <$> arbitrary -- conversionDeletionRequestUserEmailTargetsUserEmails :: [Text]
   
 instance Arbitrary ConversionEventAppInfo where
   arbitrary = sized genConversionEventAppInfo
@@ -4696,13 +5998,13 @@ genConversionEventDeviceInfo n =
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoCpuCores :: Maybe Int
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoExternalStorageFreeSpace :: Maybe Int
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoExternalStorageSize :: Maybe Int
-    <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoFormFactor :: Maybe E'FormFactor
+    <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoFormFactor :: Maybe FormFactor
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoKernelVersion :: Maybe Text
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoLanguages :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoLocale :: Maybe Text
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoModel :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoNetworkType :: Maybe E'NetworkType
-    <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoOsFamily :: Maybe E'OsFamily
+    <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoNetworkType :: Maybe NetworkType
+    <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoOsFamily :: Maybe OsFamily
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoOsName :: Maybe Text
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoOsReleaseName :: Maybe Text
     <*> arbitraryReducedMaybe n -- conversionEventDeviceInfoOsVersion :: Maybe Text
@@ -4725,6 +6027,7 @@ genConversionEventResponse n =
     <*> arbitraryReducedMaybe n -- conversionEventResponseConversionEvent :: Maybe ConversionTagType
     <*> arbitraryReducedMaybe n -- conversionEventResponseConversionTagId :: Maybe Text
     <*> arbitraryReducedMaybe n -- conversionEventResponseCreatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- conversionEventResponseReportingConversionEvent :: Maybe Text
   
 instance Arbitrary ConversionEvents where
   arbitrary = sized genConversionEvents
@@ -4732,93 +6035,81 @@ instance Arbitrary ConversionEvents where
 genConversionEvents :: Int -> Gen ConversionEvents
 genConversionEvents n =
   ConversionEvents
-    <$> arbitraryReduced n -- conversionEventsData :: [ConversionEventsDataInner]
+    <$> arbitraryReduced n -- conversionEventsEvents :: [ConversionApiResponseEventsItems]
+    <*> arbitrary -- conversionEventsNumEventsProcessed :: Int
+    <*> arbitrary -- conversionEventsNumEventsReceived :: Int
   
-instance Arbitrary ConversionEventsDataInner where
-  arbitrary = sized genConversionEventsDataInner
+instance Arbitrary ConversionEventsCreate where
+  arbitrary = sized genConversionEventsCreate
 
-genConversionEventsDataInner :: Int -> Gen ConversionEventsDataInner
-genConversionEventsDataInner n =
-  ConversionEventsDataInner
-    <$> arbitrary -- conversionEventsDataInnerActionSource :: Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerAppId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerAppInfo :: Maybe ConversionEventAppInfo
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerAppName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerAppVersion :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomData :: Maybe ConversionEventsDataInnerCustomData
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerDeviceBrand :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerDeviceCarrier :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerDeviceInfo :: Maybe ConversionEventDeviceInfo
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerDeviceModel :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerDeviceType :: Maybe Text
-    <*> arbitrary -- conversionEventsDataInnerEventId :: Text
-    <*> arbitrary -- conversionEventsDataInnerEventName :: Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerEventSourceUrl :: Maybe Text
-    <*> arbitrary -- conversionEventsDataInnerEventTime :: Integer
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerLanguage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerOptOut :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerOsVersion :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerPartnerName :: Maybe Text
-    <*> arbitraryReduced n -- conversionEventsDataInnerUserData :: ConversionEventsUserData
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerWifi :: Maybe Bool
+genConversionEventsCreate :: Int -> Gen ConversionEventsCreate
+genConversionEventsCreate n =
+  ConversionEventsCreate
+    <$> arbitraryReduced n -- conversionEventsCreateData :: [ConversionEventsDataItems]
   
-instance Arbitrary ConversionEventsDataInnerCustomData where
-  arbitrary = sized genConversionEventsDataInnerCustomData
+instance Arbitrary ConversionEventsDataItems where
+  arbitrary = sized genConversionEventsDataItems
 
-genConversionEventsDataInnerCustomData :: Int -> Gen ConversionEventsDataInnerCustomData
-genConversionEventsDataInnerCustomData n =
-  ConversionEventsDataInnerCustomData
-    <$> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentBrand :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentCategory :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContents :: Maybe [ConversionEventsDataInnerCustomDataContentsInner]
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataCurrency :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataExternalMeasurementId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataExternalMeasurementVendorId :: Maybe Int
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataNp :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataNumItems :: Maybe Integer
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataOptOutType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataOrderId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataPredictedLtv :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataSearchString :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataValue :: Maybe Text
+genConversionEventsDataItems :: Int -> Gen ConversionEventsDataItems
+genConversionEventsDataItems n =
+  ConversionEventsDataItems
+    <$> arbitrary -- conversionEventsDataItemsActionSource :: Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsAppId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsAppInfo :: Maybe ConversionEventAppInfo
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsAppName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsAppVersion :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomData :: Maybe ConversionEventsDataItemsCustomData
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsDeviceBrand :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsDeviceCarrier :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsDeviceInfo :: Maybe ConversionEventDeviceInfo
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsDeviceModel :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsDeviceType :: Maybe Text
+    <*> arbitrary -- conversionEventsDataItemsEventId :: Text
+    <*> arbitrary -- conversionEventsDataItemsEventName :: Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsEventSourceUrl :: Maybe Text
+    <*> arbitrary -- conversionEventsDataItemsEventTime :: Integer
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsLanguage :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsOptOut :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsOsVersion :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsPartnerName :: Maybe Text
+    <*> arbitraryReduced n -- conversionEventsDataItemsUserData :: ConversionEventsUserDataProperties
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsWifi :: Maybe Bool
   
-instance Arbitrary ConversionEventsDataInnerCustomDataContentsInner where
-  arbitrary = sized genConversionEventsDataInnerCustomDataContentsInner
+instance Arbitrary ConversionEventsDataItemsCustomData where
+  arbitrary = sized genConversionEventsDataItemsCustomData
 
-genConversionEventsDataInnerCustomDataContentsInner :: Int -> Gen ConversionEventsDataInnerCustomDataContentsInner
-genConversionEventsDataInnerCustomDataContentsInner n =
-  ConversionEventsDataInnerCustomDataContentsInner
-    <$> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentsInnerId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentsInnerItemBrand :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentsInnerItemCategory :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentsInnerItemName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentsInnerItemPrice :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsDataInnerCustomDataContentsInnerQuantity :: Maybe Integer
+genConversionEventsDataItemsCustomData :: Int -> Gen ConversionEventsDataItemsCustomData
+genConversionEventsDataItemsCustomData n =
+  ConversionEventsDataItemsCustomData
+    <$> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentBrand :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentCategory :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContents :: Maybe [ConversionEventsDataItemsCustomDataContentsItems]
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataCurrency :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataExternalMeasurementId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataExternalMeasurementVendorId :: Maybe Int
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataNp :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataNumItems :: Maybe Integer
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataOptOutType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataOrderId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataPredictedLtv :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataSearchString :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataValue :: Maybe Text
   
-instance Arbitrary ConversionEventsUserData where
-  arbitrary = sized genConversionEventsUserData
+instance Arbitrary ConversionEventsDataItemsCustomDataContentsItems where
+  arbitrary = sized genConversionEventsDataItemsCustomDataContentsItems
 
-genConversionEventsUserData :: Int -> Gen ConversionEventsUserData
-genConversionEventsUserData n =
-  ConversionEventsUserData
-    <$> arbitraryReducedMaybe n -- conversionEventsUserDataClickId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataClientIpAddress :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataClientUserAgent :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataCountry :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataCt :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataDb :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataEm :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataExternalId :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataFn :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataGe :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataHashedMaids :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataLn :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataPartnerId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataPh :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataSt :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionEventsUserDataZp :: Maybe [Text]
+genConversionEventsDataItemsCustomDataContentsItems :: Int -> Gen ConversionEventsDataItemsCustomDataContentsItems
+genConversionEventsDataItemsCustomDataContentsItems n =
+  ConversionEventsDataItemsCustomDataContentsItems
+    <$> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentsItemsId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentsItemsItemBrand :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentsItemsItemBrandId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentsItemsItemCategory :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentsItemsItemName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentsItemsItemPrice :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionEventsDataItemsCustomDataContentsItemsQuantity :: Maybe Integer
   
 instance Arbitrary ConversionEventsUserDataProperties where
   arbitrary = sized genConversionEventsUserDataProperties
@@ -4854,47 +6145,62 @@ genConversionHealthSelectionItem n =
     <*> arbitraryReducedMaybeValue n -- conversionHealthSelectionItemIngestionSource :: Maybe A.Value
     <*> arbitraryReduced n -- conversionHealthSelectionItemStatus :: AnyType
   
-instance Arbitrary ConversionMSOTEvents where
-  arbitrary = sized genConversionMSOTEvents
+instance Arbitrary ConversionMSOTEventsCreate where
+  arbitrary = sized genConversionMSOTEventsCreate
 
-genConversionMSOTEvents :: Int -> Gen ConversionMSOTEvents
-genConversionMSOTEvents n =
-  ConversionMSOTEvents
-    <$> arbitraryReducedMaybe n -- conversionMSOTEventsActionTimestamps :: Maybe [Integer]
-    <*> arbitrary -- conversionMSOTEventsAdGroupId :: Text
-    <*> arbitraryReducedMaybe n -- conversionMSOTEventsAttributionModel :: Maybe E'AttributionModel
-    <*> arbitrary -- conversionMSOTEventsAttributionScope :: E'AttributionScope
-    <*> arbitraryReducedMaybe n -- conversionMSOTEventsAttributionScore :: Maybe Double
-    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCampaignId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCurrency :: Maybe Currency
-    <*> arbitrary -- conversionMSOTEventsEventId :: Text
-    <*> arbitrary -- conversionMSOTEventsEventName :: E'EventName
-    <*> arbitrary -- conversionMSOTEventsEventTimestamp :: Integer
-    <*> arbitraryReducedMaybe n -- conversionMSOTEventsTotalEventTouchpoints :: Maybe Int
-    <*> arbitraryReducedMaybe n -- conversionMSOTEventsTotalEvents :: Maybe Int
-    <*> arbitraryReducedMaybe n -- conversionMSOTEventsValue :: Maybe Double
+genConversionMSOTEventsCreate :: Int -> Gen ConversionMSOTEventsCreate
+genConversionMSOTEventsCreate n =
+  ConversionMSOTEventsCreate
+    <$> arbitraryReducedMaybe n -- conversionMSOTEventsCreateActionTimestamps :: Maybe [Integer]
+    <*> arbitrary -- conversionMSOTEventsCreateAdGroupId :: Text
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateAttributionModel :: Maybe AttributionModel
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateAttributionScope :: Maybe AttributionScope
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateAttributionScore :: Maybe Double
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateCampaignId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateClickWindow :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateCurrency :: Maybe Currency
+    <*> arbitrary -- conversionMSOTEventsCreateEventId :: Text
+    <*> arbitraryReduced n -- conversionMSOTEventsCreateEventName :: MsotEventName
+    <*> arbitrary -- conversionMSOTEventsCreateEventTimestamp :: Integer
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateTotalEventTouchpoints :: Maybe Int
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateTotalEvents :: Maybe Int
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateTotalEventsFractional :: Maybe Double
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateValue :: Maybe Double
+    <*> arbitraryReducedMaybe n -- conversionMSOTEventsCreateViewWindow :: Maybe Text
   
-instance Arbitrary ConversionProductReportRequest where
-  arbitrary = sized genConversionProductReportRequest
+instance Arbitrary ConversionProductReport where
+  arbitrary = sized genConversionProductReport
 
-genConversionProductReportRequest :: Int -> Gen ConversionProductReportRequest
-genConversionProductReportRequest n =
-  ConversionProductReportRequest
-    <$> arbitraryReducedMaybe n -- conversionProductReportRequestAdGroupIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionProductReportRequestCampaignIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- conversionProductReportRequestCampaignObjectiveTypes :: Maybe [ObjectiveType]
-    <*> arbitraryReducedMaybe n -- conversionProductReportRequestClickWindowDays :: Maybe ConversionAttributionWindowDays
-    <*> arbitraryReduced n -- conversionProductReportRequestColumns :: [ConversionProductReportingColumn]
-    <*> arbitraryReducedMaybe n -- conversionProductReportRequestConversionProductAttributionType :: Maybe E'ConversionProductAttributionType
-    <*> arbitraryReducedMaybe n -- conversionProductReportRequestConversionProductBreakdown :: Maybe E'ConversionProductBreakdown
-    <*> arbitraryReducedMaybe n -- conversionProductReportRequestConversionReportTime :: Maybe ConversionReportTimeType
-    <*> arbitrary -- conversionProductReportRequestEndDate :: Text
-    <*> arbitrary -- conversionProductReportRequestGranularity :: E'Granularity
-    <*> arbitrary -- conversionProductReportRequestLevel :: E'Level
-    <*> arbitraryReducedMaybe n -- conversionProductReportRequestProductSkuIds :: Maybe [Text]
-    <*> arbitrary -- conversionProductReportRequestReportName :: Text
-    <*> arbitrary -- conversionProductReportRequestStartDate :: Text
-    <*> arbitraryReducedMaybe n -- conversionProductReportRequestViewWindowDays :: Maybe ConversionAttributionWindowDays
+genConversionProductReport :: Int -> Gen ConversionProductReport
+genConversionProductReport n =
+  ConversionProductReport
+    <$> arbitraryReducedMaybe n -- conversionProductReportMessage :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionProductReportReportStatus :: Maybe BulkReportingJobStatus
+    <*> arbitraryReducedMaybe n -- conversionProductReportSize :: Maybe Double
+    <*> arbitraryReducedMaybe n -- conversionProductReportToken :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionProductReportUrl :: Maybe Text
+  
+instance Arbitrary ConversionProductReportCreate where
+  arbitrary = sized genConversionProductReportCreate
+
+genConversionProductReportCreate :: Int -> Gen ConversionProductReportCreate
+genConversionProductReportCreate n =
+  ConversionProductReportCreate
+    <$> arbitraryReducedMaybe n -- conversionProductReportCreateAdGroupIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- conversionProductReportCreateCampaignIds :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- conversionProductReportCreateCampaignObjectiveTypes :: Maybe [ConversionObjectiveType]
+    <*> arbitraryReducedMaybe n -- conversionProductReportCreateClickWindowDays :: Maybe ConversionAttributionWindowDays
+    <*> arbitraryReduced n -- conversionProductReportCreateColumns :: [ConversionProductReportingColumn]
+    <*> arbitraryReducedMaybe n -- conversionProductReportCreateConversionProductAttributionType :: Maybe ConversionProductAttributionType
+    <*> arbitraryReducedMaybe n -- conversionProductReportCreateConversionProductBreakdown :: Maybe ConversionProductReportBreakdownType
+    <*> arbitraryReducedMaybe n -- conversionProductReportCreateConversionReportTime :: Maybe ConversionReportTimeType
+    <*> arbitrary -- conversionProductReportCreateEndDate :: Text
+    <*> arbitraryReduced n -- conversionProductReportCreateGranularity :: ConversionProductReportGranularity
+    <*> arbitraryReduced n -- conversionProductReportCreateLevel :: ConversionProductReportLevel
+    <*> arbitraryReducedMaybe n -- conversionProductReportCreateProductSkuIds :: Maybe [Text]
+    <*> arbitrary -- conversionProductReportCreateReportName :: Text
+    <*> arbitrary -- conversionProductReportCreateStartDate :: Text
+    <*> arbitraryReducedMaybe n -- conversionProductReportCreateViewWindowDays :: Maybe ConversionAttributionWindowDays
   
 instance Arbitrary ConversionTag where
   arbitrary = sized genConversionTag
@@ -4958,14 +6264,6 @@ genConversionTagCreate n =
     <*> arbitraryReducedMaybe n -- conversionTagCreateMdFrequency :: Maybe Double
     <*> arbitrary -- conversionTagCreateName :: Text
   
-instance Arbitrary ConversionTagListResponse where
-  arbitrary = sized genConversionTagListResponse
-
-genConversionTagListResponse :: Int -> Gen ConversionTagListResponse
-genConversionTagListResponse n =
-  ConversionTagListResponse
-    <$> arbitraryReducedMaybe n -- conversionTagListResponseItems :: Maybe [ConversionTag]
-  
 instance Arbitrary ConversionTagResponse where
   arbitrary = sized genConversionTagResponse
 
@@ -4981,6 +6279,19 @@ genConversionTagResponse n =
     <*> arbitraryReducedMaybe n -- conversionTagResponseVersion :: Maybe Text
     <*> arbitrary -- conversionTagResponseAdAccountId :: Text
     <*> arbitraryReducedMaybe n -- conversionTagResponseStatus :: Maybe EntityStatus
+  
+instance Arbitrary ConversionTagV3GoalMetadata where
+  arbitrary = sized genConversionTagV3GoalMetadata
+
+genConversionTagV3GoalMetadata :: Int -> Gen ConversionTagV3GoalMetadata
+genConversionTagV3GoalMetadata n =
+  ConversionTagV3GoalMetadata
+    <$> arbitraryReducedMaybe n -- conversionTagV3GoalMetadataAttributionWindows :: Maybe AttributionWindows
+    <*> arbitraryReducedMaybe n -- conversionTagV3GoalMetadataConversionEvent :: Maybe ConversionEvent
+    <*> arbitraryReducedMaybe n -- conversionTagV3GoalMetadataConversionTagId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionTagV3GoalMetadataCpaGoalValueInMicroCurrency :: Maybe Text
+    <*> arbitraryReducedMaybe n -- conversionTagV3GoalMetadataIsRoasOptimized :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- conversionTagV3GoalMetadataReportingEvent :: Maybe Text
   
 instance Arbitrary ConversionTagsList200Response where
   arbitrary = sized genConversionTagsList200Response
@@ -5004,25 +6315,16 @@ instance Arbitrary CreateAssetAccessRequestBody where
 genCreateAssetAccessRequestBody :: Int -> Gen CreateAssetAccessRequestBody
 genCreateAssetAccessRequestBody n =
   CreateAssetAccessRequestBody
-    <$> arbitraryReduced n -- createAssetAccessRequestBodyAssetRequests :: [CreateAssetAccessRequestBodyAssetRequestsInner]
+    <$> arbitraryReduced n -- createAssetAccessRequestBodyAssetRequests :: [CreateAssetAccessRequestItem]
   
-instance Arbitrary CreateAssetAccessRequestBodyAssetRequestsInner where
-  arbitrary = sized genCreateAssetAccessRequestBodyAssetRequestsInner
+instance Arbitrary CreateAssetAccessRequestItem where
+  arbitrary = sized genCreateAssetAccessRequestItem
 
-genCreateAssetAccessRequestBodyAssetRequestsInner :: Int -> Gen CreateAssetAccessRequestBodyAssetRequestsInner
-genCreateAssetAccessRequestBodyAssetRequestsInner n =
-  CreateAssetAccessRequestBodyAssetRequestsInner
-    <$> arbitraryReduced n -- createAssetAccessRequestBodyAssetRequestsInnerAssetIdToPermissions :: (Map.Map String [Permissions])
-    <*> arbitrary -- createAssetAccessRequestBodyAssetRequestsInnerPartnerId :: Text
-  
-instance Arbitrary CreateAssetAccessRequestErrorMessageInner where
-  arbitrary = sized genCreateAssetAccessRequestErrorMessageInner
-
-genCreateAssetAccessRequestErrorMessageInner :: Int -> Gen CreateAssetAccessRequestErrorMessageInner
-genCreateAssetAccessRequestErrorMessageInner n =
-  CreateAssetAccessRequestErrorMessageInner
-    <$> arbitraryReducedMaybe n -- createAssetAccessRequestErrorMessageInnerCode :: Maybe Int
-    <*> arbitraryReducedMaybe n -- createAssetAccessRequestErrorMessageInnerMessages :: Maybe [Text]
+genCreateAssetAccessRequestItem :: Int -> Gen CreateAssetAccessRequestItem
+genCreateAssetAccessRequestItem n =
+  CreateAssetAccessRequestItem
+    <$> arbitraryReduced n -- createAssetAccessRequestItemAssetIdToPermissions :: (Map.Map String Array)
+    <*> arbitrary -- createAssetAccessRequestItemPartnerId :: Text
   
 instance Arbitrary CreateAssetAccessRequestResponse where
   arbitrary = sized genCreateAssetAccessRequestResponse
@@ -5030,26 +6332,8 @@ instance Arbitrary CreateAssetAccessRequestResponse where
 genCreateAssetAccessRequestResponse :: Int -> Gen CreateAssetAccessRequestResponse
 genCreateAssetAccessRequestResponse n =
   CreateAssetAccessRequestResponse
-    <$> arbitraryReducedMaybe n -- createAssetAccessRequestResponseExceptions :: Maybe [CreateAssetAccessRequestErrorMessageInner]
+    <$> arbitraryReducedMaybe n -- createAssetAccessRequestResponseExceptions :: Maybe [AssetAccessRequestError]
     <*> arbitraryReducedMaybe n -- createAssetAccessRequestResponseInvites :: Maybe (Map.Map String Text)
-  
-instance Arbitrary CreateAssetGroupBody where
-  arbitrary = sized genCreateAssetGroupBody
-
-genCreateAssetGroupBody :: Int -> Gen CreateAssetGroupBody
-genCreateAssetGroupBody n =
-  CreateAssetGroupBody
-    <$> arbitrary -- createAssetGroupBodyAssetGroupDescription :: Text
-    <*> arbitrary -- createAssetGroupBodyAssetGroupName :: Text
-    <*> arbitraryReduced n -- createAssetGroupBodyAssetGroupTypes :: [AssetGroupType]
-  
-instance Arbitrary CreateAssetGroupResponse where
-  arbitrary = sized genCreateAssetGroupResponse
-
-genCreateAssetGroupResponse :: Int -> Gen CreateAssetGroupResponse
-genCreateAssetGroupResponse n =
-  CreateAssetGroupResponse
-    <$> arbitraryReducedMaybe n -- createAssetGroupResponseAssetGroup :: Maybe AssetGroupBinding
   
 instance Arbitrary CreateAssetInvitesRequest where
   arbitrary = sized genCreateAssetInvitesRequest
@@ -5065,7 +6349,7 @@ instance Arbitrary CreateAssetInvitesRequestItem where
 genCreateAssetInvitesRequestItem :: Int -> Gen CreateAssetInvitesRequestItem
 genCreateAssetInvitesRequestItem n =
   CreateAssetInvitesRequestItem
-    <$> arbitraryReduced n -- createAssetInvitesRequestItemAssetIdToPermissions :: (Map.Map String [Permissions])
+    <$> arbitraryReduced n -- createAssetInvitesRequestItemAssetIdToPermissions :: (Map.Map String Array)
     <*> arbitrary -- createAssetInvitesRequestItemInviteId :: Text
     <*> arbitraryReduced n -- createAssetInvitesRequestItemInviteType :: InviteType
   
@@ -5075,60 +6359,7 @@ instance Arbitrary CreateInvitesResultsResponseArray where
 genCreateInvitesResultsResponseArray :: Int -> Gen CreateInvitesResultsResponseArray
 genCreateInvitesResultsResponseArray n =
   CreateInvitesResultsResponseArray
-    <$> arbitraryReducedMaybe n -- createInvitesResultsResponseArrayItems :: Maybe [CreateInvitesResultsResponseArrayItemsInner]
-  
-instance Arbitrary CreateInvitesResultsResponseArrayItemsInner where
-  arbitrary = sized genCreateInvitesResultsResponseArrayItemsInner
-
-genCreateInvitesResultsResponseArrayItemsInner :: Int -> Gen CreateInvitesResultsResponseArrayItemsInner
-genCreateInvitesResultsResponseArrayItemsInner n =
-  CreateInvitesResultsResponseArrayItemsInner
-    <$> arbitraryReducedMaybe n -- createInvitesResultsResponseArrayItemsInnerException :: Maybe InviteExceptionResponse
-    <*> arbitraryReducedMaybe n -- createInvitesResultsResponseArrayItemsInnerInvite :: Maybe CreateInvitesResultsResponseArrayItemsInnerInvite
-  
-instance Arbitrary CreateInvitesResultsResponseArrayItemsInnerInvite where
-  arbitrary = sized genCreateInvitesResultsResponseArrayItemsInnerInvite
-
-genCreateInvitesResultsResponseArrayItemsInnerInvite :: Int -> Gen CreateInvitesResultsResponseArrayItemsInnerInvite
-genCreateInvitesResultsResponseArrayItemsInnerInvite n =
-  CreateInvitesResultsResponseArrayItemsInnerInvite
-    <$> arbitraryReducedMaybe n -- createInvitesResultsResponseArrayItemsInnerInviteId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- createInvitesResultsResponseArrayItemsInnerInviteUser :: Maybe BusinessAccessUserSummary
-  
-instance Arbitrary CreateMMMReportRequest where
-  arbitrary = sized genCreateMMMReportRequest
-
-genCreateMMMReportRequest :: Int -> Gen CreateMMMReportRequest
-genCreateMMMReportRequest n =
-  CreateMMMReportRequest
-    <$> arbitraryReducedMaybe n -- createMMMReportRequestCountries :: Maybe [TargetingAdvertiserCountry]
-    <*> arbitraryReduced n -- createMMMReportRequestColumns :: [MMMReportingColumn]
-    <*> arbitrary -- createMMMReportRequestEndDate :: Text
-    <*> arbitrary -- createMMMReportRequestGranularity :: E'Granularity2
-    <*> arbitrary -- createMMMReportRequestLevel :: E'Level2
-    <*> arbitrary -- createMMMReportRequestReportName :: Text
-    <*> arbitrary -- createMMMReportRequestStartDate :: Text
-    <*> arbitraryReduced n -- createMMMReportRequestTargetingTypes :: [MMMReportingTargetingType]
-  
-instance Arbitrary CreateMMMReportResponse where
-  arbitrary = sized genCreateMMMReportResponse
-
-genCreateMMMReportResponse :: Int -> Gen CreateMMMReportResponse
-genCreateMMMReportResponse n =
-  CreateMMMReportResponse
-    <$> arbitraryReducedMaybe n -- createMMMReportResponseCode :: Maybe Double
-    <*> arbitraryReducedMaybe n -- createMMMReportResponseData :: Maybe CreateMMMReportResponseData
-  
-instance Arbitrary CreateMMMReportResponseData where
-  arbitrary = sized genCreateMMMReportResponseData
-
-genCreateMMMReportResponseData :: Int -> Gen CreateMMMReportResponseData
-genCreateMMMReportResponseData n =
-  CreateMMMReportResponseData
-    <$> arbitraryReducedMaybe n -- createMMMReportResponseDataMessage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- createMMMReportResponseDataReportStatus :: Maybe BulkReportingJobStatus
-    <*> arbitraryReducedMaybe n -- createMMMReportResponseDataStatus :: Maybe Text
-    <*> arbitraryReducedMaybe n -- createMMMReportResponseDataToken :: Maybe Text
+    <$> arbitraryReducedMaybe n -- createInvitesResultsResponseArrayItems :: Maybe [InviteActionResultItem]
   
 instance Arbitrary CreateMembershipOrPartnershipInvitesBody where
   arbitrary = sized genCreateMembershipOrPartnershipInvitesBody
@@ -5136,7 +6367,7 @@ instance Arbitrary CreateMembershipOrPartnershipInvitesBody where
 genCreateMembershipOrPartnershipInvitesBody :: Int -> Gen CreateMembershipOrPartnershipInvitesBody
 genCreateMembershipOrPartnershipInvitesBody n =
   CreateMembershipOrPartnershipInvitesBody
-    <$> arbitrary -- createMembershipOrPartnershipInvitesBodyBusinessRole :: E'BusinessRole
+    <$> arbitraryReduced n -- createMembershipOrPartnershipInvitesBodyBusinessRole :: BusinessRoleForInvite
     <*> arbitraryReduced n -- createMembershipOrPartnershipInvitesBodyInviteType :: InviteType
     <*> arbitraryReducedMaybe n -- createMembershipOrPartnershipInvitesBodyMembers :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- createMembershipOrPartnershipInvitesBodyPartners :: Maybe [Text]
@@ -5167,6 +6398,15 @@ genCurrencyFilter :: Int -> Gen CurrencyFilter
 genCurrencyFilter n =
   CurrencyFilter
     <$> arbitraryReduced n -- currencyFilterCurrency :: CatalogsProductGroupCurrencyCriteria
+  
+instance Arbitrary CustomConversionEventMetrics where
+  arbitrary = sized genCustomConversionEventMetrics
+
+genCustomConversionEventMetrics :: Int -> Gen CustomConversionEventMetrics
+genCustomConversionEventMetrics n =
+  CustomConversionEventMetrics
+    <$> arbitraryReduced n -- customConversionEventMetricsCustomEventMetricsType :: AdeColumnType
+    <*> arbitrary -- customConversionEventMetricsCustomEventName :: Text
   
 instance Arbitrary CustomLabel0Filter where
   arbitrary = sized genCustomLabel0Filter
@@ -5257,33 +6497,52 @@ genCustomerList n =
     <$> arbitraryReducedMaybe n -- customerListAdAccountId :: Maybe Text
     <*> arbitraryReducedMaybe n -- customerListCreatedTime :: Maybe Double
     <*> arbitraryReducedMaybeValue n -- customerListExceptions :: Maybe A.Value
-    <*> arbitraryReducedMaybe n -- customerListId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- customerListName :: Maybe Text
+    <*> arbitrary -- customerListId :: Text
+    <*> arbitraryReducedMaybe n -- customerListIsNca :: Maybe Bool
+    <*> arbitrary -- customerListName :: Text
     <*> arbitraryReducedMaybe n -- customerListNumBatches :: Maybe Double
     <*> arbitraryReducedMaybe n -- customerListNumRemovedUserRecords :: Maybe Double
     <*> arbitraryReducedMaybe n -- customerListNumUploadedUserRecords :: Maybe Double
-    <*> arbitraryReducedMaybe n -- customerListStatus :: Maybe E'Status3
+    <*> arbitraryReducedMaybe n -- customerListStatus :: Maybe CustomerListStatus
     <*> arbitraryReducedMaybe n -- customerListType :: Maybe Text
     <*> arbitraryReducedMaybe n -- customerListUpdatedTime :: Maybe Double
   
-instance Arbitrary CustomerListRequest where
-  arbitrary = sized genCustomerListRequest
+instance Arbitrary CustomerListCreate where
+  arbitrary = sized genCustomerListCreate
 
-genCustomerListRequest :: Int -> Gen CustomerListRequest
-genCustomerListRequest n =
-  CustomerListRequest
-    <$> arbitraryReducedMaybe n -- customerListRequestListType :: Maybe UserListType
-    <*> arbitrary -- customerListRequestName :: Text
-    <*> arbitrary -- customerListRequestRecords :: Text
+genCustomerListCreate :: Int -> Gen CustomerListCreate
+genCustomerListCreate n =
+  CustomerListCreate
+    <$> arbitraryReducedMaybe n -- customerListCreateIsNca :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- customerListCreateListType :: Maybe UserListType
+    <*> arbitrary -- customerListCreateName :: Text
+    <*> arbitraryReducedMaybe n -- customerListCreateRecords :: Maybe Text
+    <*> arbitraryReducedMaybe n -- customerListCreateRecordsV2 :: Maybe [CustomerListRecordRow]
   
-instance Arbitrary CustomerListUpdateRequest where
-  arbitrary = sized genCustomerListUpdateRequest
+instance Arbitrary CustomerListRecordRow where
+  arbitrary = sized genCustomerListRecordRow
 
-genCustomerListUpdateRequest :: Int -> Gen CustomerListUpdateRequest
-genCustomerListUpdateRequest n =
-  CustomerListUpdateRequest
-    <$> arbitraryReduced n -- customerListUpdateRequestOperationType :: UserListOperationType
-    <*> arbitrary -- customerListUpdateRequestRecords :: Text
+genCustomerListRecordRow :: Int -> Gen CustomerListRecordRow
+genCustomerListRecordRow n =
+  CustomerListRecordRow
+    <$> arbitraryReducedMaybe n -- customerListRecordRowEmail :: Maybe Text
+    <*> arbitraryReducedMaybe n -- customerListRecordRowExternalId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- customerListRecordRowHashedPhoneNumber :: Maybe Text
+    <*> arbitraryReducedMaybe n -- customerListRecordRowHashedPinnerId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- customerListRecordRowIpAddress :: Maybe Text
+    <*> arbitraryReducedMaybe n -- customerListRecordRowLiverampEnvelope :: Maybe Text
+    <*> arbitraryReducedMaybe n -- customerListRecordRowMaid :: Maybe Text
+    <*> arbitraryReducedMaybe n -- customerListRecordRowUserAgent :: Maybe Text
+  
+instance Arbitrary CustomerListUpdateWithRequiredBody where
+  arbitrary = sized genCustomerListUpdateWithRequiredBody
+
+genCustomerListUpdateWithRequiredBody :: Int -> Gen CustomerListUpdateWithRequiredBody
+genCustomerListUpdateWithRequiredBody n =
+  CustomerListUpdateWithRequiredBody
+    <$> arbitraryReduced n -- customerListUpdateWithRequiredBodyOperationType :: UserListOperationType
+    <*> arbitraryReducedMaybe n -- customerListUpdateWithRequiredBodyRecords :: Maybe Text
+    <*> arbitraryReducedMaybe n -- customerListUpdateWithRequiredBodyRecordsV2 :: Maybe [CustomerListRecordRow]
   
 instance Arbitrary CustomerListUpload where
   arbitrary = sized genCustomerListUpload
@@ -5298,7 +6557,7 @@ genCustomerListUpload n =
     <*> arbitrary -- customerListUploadId :: Text
     <*> arbitraryReduced n -- customerListUploadOperation :: UserListOperationType
     <*> arbitraryReducedMaybe n -- customerListUploadRecordCounts :: Maybe RecordCounts
-    <*> arbitrary -- customerListUploadState :: E'State
+    <*> arbitraryReduced n -- customerListUploadState :: WorkloadState
     <*> arbitrary -- customerListUploadUpdatedTime :: Int
   
 instance Arbitrary CustomerListUploadCreateRequest where
@@ -5319,22 +6578,6 @@ genCustomerListUploadCreateResponse n =
     <$> arbitraryReduced n -- customerListUploadCreateResponseCustomerListUpload :: CustomerListUpload
     <*> arbitraryReduced n -- customerListUploadCreateResponseS3MultipartUploadData :: S3MultipartUploadData
   
-instance Arbitrary CustomerListUploadResponse where
-  arbitrary = sized genCustomerListUploadResponse
-
-genCustomerListUploadResponse :: Int -> Gen CustomerListUploadResponse
-genCustomerListUploadResponse n =
-  CustomerListUploadResponse
-    <$> arbitrary -- customerListUploadResponseAdAccountId :: Text
-    <*> arbitrary -- customerListUploadResponseCreationTime :: Int
-    <*> arbitrary -- customerListUploadResponseCustomerListId :: Text
-    <*> arbitraryReducedMaybe n -- customerListUploadResponseErrorCounts :: Maybe [ErrorDetail]
-    <*> arbitrary -- customerListUploadResponseId :: Text
-    <*> arbitraryReduced n -- customerListUploadResponseOperation :: UserListOperationType
-    <*> arbitraryReducedMaybe n -- customerListUploadResponseRecordCounts :: Maybe RecordCounts
-    <*> arbitrary -- customerListUploadResponseState :: E'State
-    <*> arbitrary -- customerListUploadResponseUpdatedTime :: Int
-  
 instance Arbitrary CustomerListsList200Response where
   arbitrary = sized genCustomerListsList200Response
 
@@ -5344,58 +6587,89 @@ genCustomerListsList200Response n =
     <$> arbitraryReducedMaybe n -- customerListsList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- customerListsList200ResponseItems :: [CustomerList]
   
-instance Arbitrary DeleteAssetGroupBody where
-  arbitrary = sized genDeleteAssetGroupBody
+instance Arbitrary CustomerSegment where
+  arbitrary = sized genCustomerSegment
 
-genDeleteAssetGroupBody :: Int -> Gen DeleteAssetGroupBody
-genDeleteAssetGroupBody n =
-  DeleteAssetGroupBody
-    <$> arbitrary -- deleteAssetGroupBodyAssetGroupsToDelete :: [Text]
+genCustomerSegment :: Int -> Gen CustomerSegment
+genCustomerSegment n =
+  CustomerSegment
+    <$> arbitraryReducedMaybe n -- customerSegmentAdAccountId :: Maybe Text
+    <*> arbitrary -- customerSegmentAudienceIds :: [Text]
+    <*> arbitraryReducedMaybe n -- customerSegmentCreatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- customerSegmentId :: Maybe Text
+    <*> arbitrary -- customerSegmentName :: Text
+    <*> arbitraryReducedMaybe n -- customerSegmentStatus :: Maybe TargetingTemplateStatus
+    <*> arbitraryReducedMaybe n -- customerSegmentUpdatedTime :: Maybe Int
   
-instance Arbitrary DeleteAssetGroupResponse where
-  arbitrary = sized genDeleteAssetGroupResponse
+instance Arbitrary CustomerSegmentCreate where
+  arbitrary = sized genCustomerSegmentCreate
 
-genDeleteAssetGroupResponse :: Int -> Gen DeleteAssetGroupResponse
-genDeleteAssetGroupResponse n =
-  DeleteAssetGroupResponse
-    <$> arbitraryReducedMaybe n -- deleteAssetGroupResponseDeletedAssetGroups :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- deleteAssetGroupResponseExceptions :: Maybe [DeleteAssetGroupResponseExceptionsInner]
+genCustomerSegmentCreate :: Int -> Gen CustomerSegmentCreate
+genCustomerSegmentCreate n =
+  CustomerSegmentCreate
+    <$> arbitrary -- customerSegmentCreateAudienceIds :: [Text]
+    <*> arbitrary -- customerSegmentCreateName :: Text
   
-instance Arbitrary DeleteAssetGroupResponseExceptionsInner where
-  arbitrary = sized genDeleteAssetGroupResponseExceptionsInner
+instance Arbitrary CustomerSegmentList200Response where
+  arbitrary = sized genCustomerSegmentList200Response
 
-genDeleteAssetGroupResponseExceptionsInner :: Int -> Gen DeleteAssetGroupResponseExceptionsInner
-genDeleteAssetGroupResponseExceptionsInner n =
-  DeleteAssetGroupResponseExceptionsInner
-    <$> arbitraryReducedMaybe n -- deleteAssetGroupResponseExceptionsInnerAssetGroupId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- deleteAssetGroupResponseExceptionsInnerCode :: Maybe Int
-    <*> arbitraryReducedMaybe n -- deleteAssetGroupResponseExceptionsInnerMessage :: Maybe Text
+genCustomerSegmentList200Response :: Int -> Gen CustomerSegmentList200Response
+genCustomerSegmentList200Response n =
+  CustomerSegmentList200Response
+    <$> arbitraryReducedMaybe n -- customerSegmentList200ResponseBookmark :: Maybe Text
+    <*> arbitraryReduced n -- customerSegmentList200ResponseItems :: [CustomerSegment]
   
-instance Arbitrary DeleteInvitesResultsResponseArray where
-  arbitrary = sized genDeleteInvitesResultsResponseArray
+instance Arbitrary CustomerSegmentUpdateRequestUpdateWithRequiredBody where
+  arbitrary = sized genCustomerSegmentUpdateRequestUpdateWithRequiredBody
 
-genDeleteInvitesResultsResponseArray :: Int -> Gen DeleteInvitesResultsResponseArray
-genDeleteInvitesResultsResponseArray n =
-  DeleteInvitesResultsResponseArray
-    <$> arbitraryReducedMaybe n -- deleteInvitesResultsResponseArrayItems :: Maybe [DeleteInvitesResultsResponseArrayItemsInner]
+genCustomerSegmentUpdateRequestUpdateWithRequiredBody :: Int -> Gen CustomerSegmentUpdateRequestUpdateWithRequiredBody
+genCustomerSegmentUpdateRequestUpdateWithRequiredBody n =
+  CustomerSegmentUpdateRequestUpdateWithRequiredBody
+    <$> arbitraryReducedMaybe n -- customerSegmentUpdateRequestUpdateWithRequiredBodyAudienceIds :: Maybe [Text]
+    <*> arbitrary -- customerSegmentUpdateRequestUpdateWithRequiredBodyId :: Text
+    <*> arbitraryReduced n -- customerSegmentUpdateRequestUpdateWithRequiredBodyOperationType :: AudienceUpdateOperationType
   
-instance Arbitrary DeleteInvitesResultsResponseArrayItemsInner where
-  arbitrary = sized genDeleteInvitesResultsResponseArrayItemsInner
+instance Arbitrary DeleteBusinessMembership200Response where
+  arbitrary = sized genDeleteBusinessMembership200Response
 
-genDeleteInvitesResultsResponseArrayItemsInner :: Int -> Gen DeleteInvitesResultsResponseArrayItemsInner
-genDeleteInvitesResultsResponseArrayItemsInner n =
-  DeleteInvitesResultsResponseArrayItemsInner
-    <$> arbitraryReducedMaybe n -- deleteInvitesResultsResponseArrayItemsInnerException :: Maybe DeleteInvitesResultsResponseArrayItemsInnerException
-    <*> arbitraryReducedMaybe n -- deleteInvitesResultsResponseArrayItemsInnerInvite :: Maybe BaseInviteDataResponse
+genDeleteBusinessMembership200Response :: Int -> Gen DeleteBusinessMembership200Response
+genDeleteBusinessMembership200Response n =
+  DeleteBusinessMembership200Response
+    <$> arbitraryReducedMaybe n -- deleteBusinessMembership200ResponseDeletedMembers :: Maybe [Text]
   
-instance Arbitrary DeleteInvitesResultsResponseArrayItemsInnerException where
-  arbitrary = sized genDeleteInvitesResultsResponseArrayItemsInnerException
+instance Arbitrary DeleteBusinessMembershipBody where
+  arbitrary = sized genDeleteBusinessMembershipBody
 
-genDeleteInvitesResultsResponseArrayItemsInnerException :: Int -> Gen DeleteInvitesResultsResponseArrayItemsInnerException
-genDeleteInvitesResultsResponseArrayItemsInnerException n =
-  DeleteInvitesResultsResponseArrayItemsInnerException
-    <$> arbitraryReducedMaybe n -- deleteInvitesResultsResponseArrayItemsInnerExceptionInviteId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- deleteInvitesResultsResponseArrayItemsInnerExceptionMessage :: Maybe Text
+genDeleteBusinessMembershipBody :: Int -> Gen DeleteBusinessMembershipBody
+genDeleteBusinessMembershipBody n =
+  DeleteBusinessMembershipBody
+    <$> arbitraryReduced n -- deleteBusinessMembershipBodyMembers :: [DeleteBusinessMembershipMember]
+  
+instance Arbitrary DeleteBusinessMembershipMember where
+  arbitrary = sized genDeleteBusinessMembershipMember
+
+genDeleteBusinessMembershipMember :: Int -> Gen DeleteBusinessMembershipMember
+genDeleteBusinessMembershipMember n =
+  DeleteBusinessMembershipMember
+    <$> arbitraryReduced n -- deleteBusinessMembershipMemberBusinessRole :: BusinessRoleForMembers
+    <*> arbitrary -- deleteBusinessMembershipMemberMemberId :: Text
+  
+instance Arbitrary DeleteBusinessPartners where
+  arbitrary = sized genDeleteBusinessPartners
+
+genDeleteBusinessPartners :: Int -> Gen DeleteBusinessPartners
+genDeleteBusinessPartners n =
+  DeleteBusinessPartners
+    <$> arbitraryReducedMaybe n -- deleteBusinessPartnersDeletedPartners :: Maybe [Text]
+  
+instance Arbitrary DeleteBusinessPartnersDelete where
+  arbitrary = sized genDeleteBusinessPartnersDelete
+
+genDeleteBusinessPartnersDelete :: Int -> Gen DeleteBusinessPartnersDelete
+genDeleteBusinessPartnersDelete n =
+  DeleteBusinessPartnersDelete
+    <$> arbitrary -- deleteBusinessPartnersDeletePartnerIds :: [Text]
+    <*> arbitraryReducedMaybe n -- deleteBusinessPartnersDeletePartnerType :: Maybe NullablePartnerType
   
 instance Arbitrary DeleteMemberAccessResult where
   arbitrary = sized genDeleteMemberAccessResult
@@ -5414,87 +6688,71 @@ genDeleteMemberAccessResultsResponseArray n =
   DeleteMemberAccessResultsResponseArray
     <$> arbitraryReducedMaybe n -- deleteMemberAccessResultsResponseArrayItems :: Maybe [DeleteMemberAccessResult]
   
+instance Arbitrary DeleteMemberAssetAccessItem where
+  arbitrary = sized genDeleteMemberAssetAccessItem
+
+genDeleteMemberAssetAccessItem :: Int -> Gen DeleteMemberAssetAccessItem
+genDeleteMemberAssetAccessItem n =
+  DeleteMemberAssetAccessItem
+    <$> arbitrary -- deleteMemberAssetAccessItemAssetId :: Text
+    <*> arbitrary -- deleteMemberAssetAccessItemMemberId :: Text
+  
 instance Arbitrary DeletePartnerAssetAccessBody where
   arbitrary = sized genDeletePartnerAssetAccessBody
 
 genDeletePartnerAssetAccessBody :: Int -> Gen DeletePartnerAssetAccessBody
 genDeletePartnerAssetAccessBody n =
   DeletePartnerAssetAccessBody
-    <$> arbitraryReduced n -- deletePartnerAssetAccessBodyAccesses :: [DeletePartnerAssetAccessBodyAccessesInner]
+    <$> arbitraryReduced n -- deletePartnerAssetAccessBodyAccesses :: [DeletePartnerAssetAccessItem]
   
-instance Arbitrary DeletePartnerAssetAccessBodyAccessesInner where
-  arbitrary = sized genDeletePartnerAssetAccessBodyAccessesInner
+instance Arbitrary DeletePartnerAssetAccessItem where
+  arbitrary = sized genDeletePartnerAssetAccessItem
 
-genDeletePartnerAssetAccessBodyAccessesInner :: Int -> Gen DeletePartnerAssetAccessBodyAccessesInner
-genDeletePartnerAssetAccessBodyAccessesInner n =
-  DeletePartnerAssetAccessBodyAccessesInner
-    <$> arbitrary -- deletePartnerAssetAccessBodyAccessesInnerAssetId :: Text
-    <*> arbitrary -- deletePartnerAssetAccessBodyAccessesInnerPartnerId :: Text
-    <*> arbitraryReducedMaybe n -- deletePartnerAssetAccessBodyAccessesInnerPartnerType :: Maybe E'PartnerType
+genDeletePartnerAssetAccessItem :: Int -> Gen DeletePartnerAssetAccessItem
+genDeletePartnerAssetAccessItem n =
+  DeletePartnerAssetAccessItem
+    <$> arbitrary -- deletePartnerAssetAccessItemAssetId :: Text
+    <*> arbitrary -- deletePartnerAssetAccessItemPartnerId :: Text
+    <*> arbitraryReducedMaybe n -- deletePartnerAssetAccessItemPartnerType :: Maybe E'PartnerType
   
-instance Arbitrary DeletePartnerAssetsResult where
-  arbitrary = sized genDeletePartnerAssetsResult
+instance Arbitrary DeletePartnerAssetAccessResult where
+  arbitrary = sized genDeletePartnerAssetAccessResult
 
-genDeletePartnerAssetsResult :: Int -> Gen DeletePartnerAssetsResult
-genDeletePartnerAssetsResult n =
-  DeletePartnerAssetsResult
-    <$> arbitraryReducedMaybe n -- deletePartnerAssetsResultAssetId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- deletePartnerAssetsResultAssetType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- deletePartnerAssetsResultIsSharedPartner :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- deletePartnerAssetsResultPartnerId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- deletePartnerAssetsResultPermissions :: Maybe [Text]
+genDeletePartnerAssetAccessResult :: Int -> Gen DeletePartnerAssetAccessResult
+genDeletePartnerAssetAccessResult n =
+  DeletePartnerAssetAccessResult
+    <$> arbitraryReducedMaybe n -- deletePartnerAssetAccessResultAssetId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- deletePartnerAssetAccessResultAssetType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- deletePartnerAssetAccessResultIsSharedPartner :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- deletePartnerAssetAccessResultPartnerId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- deletePartnerAssetAccessResultPermissions :: Maybe [Text]
   
-instance Arbitrary DeletePartnerAssetsResultsResponseArray where
-  arbitrary = sized genDeletePartnerAssetsResultsResponseArray
+instance Arbitrary DeletePartnerAssetAccessResultsResponseArray where
+  arbitrary = sized genDeletePartnerAssetAccessResultsResponseArray
 
-genDeletePartnerAssetsResultsResponseArray :: Int -> Gen DeletePartnerAssetsResultsResponseArray
-genDeletePartnerAssetsResultsResponseArray n =
-  DeletePartnerAssetsResultsResponseArray
-    <$> arbitraryReducedMaybe n -- deletePartnerAssetsResultsResponseArrayItems :: Maybe [DeletePartnerAssetsResult]
+genDeletePartnerAssetAccessResultsResponseArray :: Int -> Gen DeletePartnerAssetAccessResultsResponseArray
+genDeletePartnerAssetAccessResultsResponseArray n =
+  DeletePartnerAssetAccessResultsResponseArray
+    <$> arbitraryReducedMaybe n -- deletePartnerAssetAccessResultsResponseArrayItems :: Maybe [DeletePartnerAssetAccessResult]
   
-instance Arbitrary DeletePartnersRequest where
-  arbitrary = sized genDeletePartnersRequest
+instance Arbitrary DeliveryMetricsGet200Response where
+  arbitrary = sized genDeliveryMetricsGet200Response
 
-genDeletePartnersRequest :: Int -> Gen DeletePartnersRequest
-genDeletePartnersRequest n =
-  DeletePartnersRequest
-    <$> arbitrary -- deletePartnersRequestPartnerIds :: [Text]
-    <*> arbitraryReducedMaybe n -- deletePartnersRequestPartnerType :: Maybe Text
+genDeliveryMetricsGet200Response :: Int -> Gen DeliveryMetricsGet200Response
+genDeliveryMetricsGet200Response n =
+  DeliveryMetricsGet200Response
+    <$> arbitraryReduced n -- deliveryMetricsGet200ResponseItems :: [DeliveryMetricsResponseItemsItems]
   
-instance Arbitrary DeletePartnersResponse where
-  arbitrary = sized genDeletePartnersResponse
+instance Arbitrary DeliveryMetricsResponseItemsItems where
+  arbitrary = sized genDeliveryMetricsResponseItemsItems
 
-genDeletePartnersResponse :: Int -> Gen DeletePartnersResponse
-genDeletePartnersResponse n =
-  DeletePartnersResponse
-    <$> arbitraryReducedMaybe n -- deletePartnersResponseDeletedPartners :: Maybe [Text]
-  
-instance Arbitrary DeletedMembersResponse where
-  arbitrary = sized genDeletedMembersResponse
-
-genDeletedMembersResponse :: Int -> Gen DeletedMembersResponse
-genDeletedMembersResponse n =
-  DeletedMembersResponse
-    <$> arbitraryReducedMaybe n -- deletedMembersResponseDeletedMembers :: Maybe [Text]
-  
-instance Arbitrary DeliveryMetricsResponse where
-  arbitrary = sized genDeliveryMetricsResponse
-
-genDeliveryMetricsResponse :: Int -> Gen DeliveryMetricsResponse
-genDeliveryMetricsResponse n =
-  DeliveryMetricsResponse
-    <$> arbitraryReducedMaybe n -- deliveryMetricsResponseItems :: Maybe [DeliveryMetricsResponseItemsInner]
-  
-instance Arbitrary DeliveryMetricsResponseItemsInner where
-  arbitrary = sized genDeliveryMetricsResponseItemsInner
-
-genDeliveryMetricsResponseItemsInner :: Int -> Gen DeliveryMetricsResponseItemsInner
-genDeliveryMetricsResponseItemsInner n =
-  DeliveryMetricsResponseItemsInner
-    <$> arbitraryReducedMaybe n -- deliveryMetricsResponseItemsInnerCategory :: Maybe E'Category
-    <*> arbitraryReducedMaybe n -- deliveryMetricsResponseItemsInnerDefinition :: Maybe Text
-    <*> arbitraryReducedMaybe n -- deliveryMetricsResponseItemsInnerDisplayName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- deliveryMetricsResponseItemsInnerName :: Maybe Text
+genDeliveryMetricsResponseItemsItems :: Int -> Gen DeliveryMetricsResponseItemsItems
+genDeliveryMetricsResponseItemsItems n =
+  DeliveryMetricsResponseItemsItems
+    <$> arbitraryReducedMaybe n -- deliveryMetricsResponseItemsItemsCategory :: Maybe E'Category
+    <*> arbitraryReducedMaybe n -- deliveryMetricsResponseItemsItemsDefinition :: Maybe Text
+    <*> arbitraryReducedMaybe n -- deliveryMetricsResponseItemsItemsDisplayName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- deliveryMetricsResponseItemsItemsName :: Maybe Text
   
 instance Arbitrary DetailedError where
   arbitrary = sized genDetailedError
@@ -5506,14 +6764,105 @@ genDetailedError n =
     <*> arbitraryReduced n -- detailedErrorDetails :: A.Value
     <*> arbitrary -- detailedErrorMessage :: Text
   
-instance Arbitrary Error where
-  arbitrary = sized genError
+instance Arbitrary DynamicTitlesDownloadCSV where
+  arbitrary = sized genDynamicTitlesDownloadCSV
 
-genError :: Int -> Gen Error
-genError n =
-  Error
-    <$> arbitrary -- errorCode :: Int
-    <*> arbitrary -- errorMessage :: Text
+genDynamicTitlesDownloadCSV :: Int -> Gen DynamicTitlesDownloadCSV
+genDynamicTitlesDownloadCSV n =
+  DynamicTitlesDownloadCSV
+    <$> arbitraryReducedMaybe n -- dynamicTitlesDownloadCSVDownloadUrl :: Maybe Text
+  
+instance Arbitrary DynamicTitlesGetStatus where
+  arbitrary = sized genDynamicTitlesGetStatus
+
+genDynamicTitlesGetStatus :: Int -> Gen DynamicTitlesGetStatus
+genDynamicTitlesGetStatus n =
+  DynamicTitlesGetStatus
+    <$> arbitraryReducedMaybe n -- dynamicTitlesGetStatusGeneratedCount :: Maybe Int
+    <*> arbitraryReducedMaybe n -- dynamicTitlesGetStatusIsReady :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- dynamicTitlesGetStatusReviewedCount :: Maybe Int
+  
+instance Arbitrary DynamicTitlesProcessCSV where
+  arbitrary = sized genDynamicTitlesProcessCSV
+
+genDynamicTitlesProcessCSV :: Int -> Gen DynamicTitlesProcessCSV
+genDynamicTitlesProcessCSV n =
+  DynamicTitlesProcessCSV
+    <$> arbitraryReducedMaybe n -- dynamicTitlesProcessCSVErrors :: Maybe [DynamicTitlesProcessCSVError]
+    <*> arbitraryReducedMaybe n -- dynamicTitlesProcessCSVStatus :: Maybe Text
+  
+instance Arbitrary DynamicTitlesProcessCSVCreate where
+  arbitrary = sized genDynamicTitlesProcessCSVCreate
+
+genDynamicTitlesProcessCSVCreate :: Int -> Gen DynamicTitlesProcessCSVCreate
+genDynamicTitlesProcessCSVCreate n =
+  DynamicTitlesProcessCSVCreate
+    <$> arbitrary -- dynamicTitlesProcessCSVCreateRequestId :: Text
+  
+instance Arbitrary DynamicTitlesProcessCSVError where
+  arbitrary = sized genDynamicTitlesProcessCSVError
+
+genDynamicTitlesProcessCSVError :: Int -> Gen DynamicTitlesProcessCSVError
+genDynamicTitlesProcessCSVError n =
+  DynamicTitlesProcessCSVError
+    <$> arbitraryReducedMaybe n -- dynamicTitlesProcessCSVErrorErrorType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- dynamicTitlesProcessCSVErrorRowNumber :: Maybe Int
+  
+instance Arbitrary DynamicTitlesUploadURL where
+  arbitrary = sized genDynamicTitlesUploadURL
+
+genDynamicTitlesUploadURL :: Int -> Gen DynamicTitlesUploadURL
+genDynamicTitlesUploadURL n =
+  DynamicTitlesUploadURL
+    <$> arbitraryReducedMaybe n -- dynamicTitlesUploadURLExistingFilename :: Maybe Text
+    <*> arbitrary -- dynamicTitlesUploadURLRequestId :: Text
+    <*> arbitrary -- dynamicTitlesUploadURLUploadUrl :: Text
+  
+instance Arbitrary EntityDataChangeHistory where
+  arbitrary = sized genEntityDataChangeHistory
+
+genEntityDataChangeHistory :: Int -> Gen EntityDataChangeHistory
+genEntityDataChangeHistory n =
+  EntityDataChangeHistory
+    <$> arbitraryReducedMaybe n -- entityDataChangeHistoryChangedFieldId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- entityDataChangeHistoryChangedFieldName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- entityDataChangeHistoryDataType :: Maybe ChangeHistoryDataType
+    <*> arbitraryReducedMaybe n -- entityDataChangeHistoryNewDataValue :: Maybe Text
+    <*> arbitraryReducedMaybe n -- entityDataChangeHistoryOldDataValue :: Maybe Text
+  
+instance Arbitrary EntityHistory where
+  arbitrary = sized genEntityHistory
+
+genEntityHistory :: Int -> Gen EntityHistory
+genEntityHistory n =
+  EntityHistory
+    <$> arbitraryReducedMaybe n -- entityHistoryChangeTimestamp :: Maybe Int
+    <*> arbitraryReducedMaybe n -- entityHistoryDataChanges :: Maybe [EntityDataChangeHistory]
+    <*> arbitraryReducedMaybe n -- entityHistoryEntityId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- entityHistoryEntityName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- entityHistoryLdap :: Maybe Text
+    <*> arbitraryReducedMaybe n -- entityHistoryOperation :: Maybe ChangeHistoryOperationType
+    <*> arbitraryReducedMaybe n -- entityHistoryUserId :: Maybe Text
+  
+instance Arbitrary EntityLabel where
+  arbitrary = sized genEntityLabel
+
+genEntityLabel :: Int -> Gen EntityLabel
+genEntityLabel n =
+  EntityLabel
+    <$> arbitrary -- entityLabelEntityId :: Text
+    <*> arbitraryReducedMaybe n -- entityLabelEntityType :: Maybe LabelParentType
+    <*> arbitrary -- entityLabelLabelId :: Text
+    <*> arbitraryReducedMaybe n -- entityLabelStatus :: Maybe EntityLabelStatus
+  
+instance Arbitrary EntityLabelError where
+  arbitrary = sized genEntityLabelError
+
+genEntityLabelError :: Int -> Gen EntityLabelError
+genEntityLabelError n =
+  EntityLabelError
+    <$> arbitraryReducedMaybe n -- entityLabelErrorData :: Maybe EntityLabel
+    <*> arbitraryReducedMaybe n -- entityLabelErrorErrorMessages :: Maybe [Text]
   
 instance Arbitrary ErrorDetail where
   arbitrary = sized genErrorDetail
@@ -5562,7 +6911,7 @@ genException :: Int -> Gen Exception
 genException n =
   Exception
     <$> arbitraryReducedMaybe n -- exceptionCode :: Maybe Int
-    <*> arbitraryReducedMaybe n -- exceptionMessage :: Maybe Text
+    <*> arbitrary -- exceptionMessage :: Text
   
 instance Arbitrary FeaturedTrend where
   arbitrary = sized genFeaturedTrend
@@ -5583,25 +6932,6 @@ genFeedProcessingResultsList200Response n =
     <$> arbitraryReducedMaybe n -- feedProcessingResultsList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- feedProcessingResultsList200ResponseItems :: [CatalogsFeedProcessingResult]
   
-instance Arbitrary FeedsCreateRequest where
-  arbitrary = sized genFeedsCreateRequest
-
-genFeedsCreateRequest :: Int -> Gen FeedsCreateRequest
-genFeedsCreateRequest n =
-  FeedsCreateRequest
-    <$> arbitraryReducedMaybe n -- feedsCreateRequestCatalogId :: Maybe Text
-    <*> arbitraryReduced n -- feedsCreateRequestCatalogType :: CatalogsType
-    <*> arbitraryReducedMaybe n -- feedsCreateRequestCredentials :: Maybe CatalogsFeedCredentials
-    <*> arbitraryReducedMaybe n -- feedsCreateRequestDefaultAvailability :: Maybe ProductAvailabilityType
-    <*> arbitraryReduced n -- feedsCreateRequestDefaultCountry :: Country
-    <*> arbitraryReducedMaybe n -- feedsCreateRequestDefaultCurrency :: Maybe NullableCurrency
-    <*> arbitraryReduced n -- feedsCreateRequestDefaultLocale :: CatalogsFeedsCreateRequestDefaultLocale
-    <*> arbitraryReduced n -- feedsCreateRequestFormat :: CatalogsFormat
-    <*> arbitrary -- feedsCreateRequestLocation :: Text
-    <*> arbitrary -- feedsCreateRequestName :: Text
-    <*> arbitraryReducedMaybe n -- feedsCreateRequestPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
-    <*> arbitraryReducedMaybe n -- feedsCreateRequestStatus :: Maybe CatalogsStatus
-  
 instance Arbitrary FeedsList200Response where
   arbitrary = sized genFeedsList200Response
 
@@ -5611,29 +6941,22 @@ genFeedsList200Response n =
     <$> arbitraryReducedMaybe n -- feedsList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- feedsList200ResponseItems :: [CatalogsFeed]
   
-instance Arbitrary FeedsUpdateRequest where
-  arbitrary = sized genFeedsUpdateRequest
+instance Arbitrary FollowUser where
+  arbitrary = sized genFollowUser
 
-genFeedsUpdateRequest :: Int -> Gen FeedsUpdateRequest
-genFeedsUpdateRequest n =
-  FeedsUpdateRequest
-    <$> arbitraryReduced n -- feedsUpdateRequestCatalogType :: CatalogsType
-    <*> arbitraryReducedMaybe n -- feedsUpdateRequestCredentials :: Maybe CatalogsFeedCredentials
-    <*> arbitraryReducedMaybe n -- feedsUpdateRequestDefaultAvailability :: Maybe ProductAvailabilityType
-    <*> arbitraryReducedMaybe n -- feedsUpdateRequestDefaultCurrency :: Maybe NullableCurrency
-    <*> arbitraryReducedMaybe n -- feedsUpdateRequestFormat :: Maybe CatalogsFormat
-    <*> arbitraryReducedMaybe n -- feedsUpdateRequestLocation :: Maybe Text
-    <*> arbitraryReducedMaybe n -- feedsUpdateRequestName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- feedsUpdateRequestPreferredProcessingSchedule :: Maybe CatalogsFeedProcessingSchedule
-    <*> arbitraryReducedMaybe n -- feedsUpdateRequestStatus :: Maybe CatalogsStatus
+genFollowUser :: Int -> Gen FollowUser
+genFollowUser n =
+  FollowUser
+    <$> arbitraryReducedMaybe n -- followUserType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- followUserUsername :: Maybe Text
   
-instance Arbitrary FollowUserRequest where
-  arbitrary = sized genFollowUserRequest
+instance Arbitrary FollowUserCreate where
+  arbitrary = sized genFollowUserCreate
 
-genFollowUserRequest :: Int -> Gen FollowUserRequest
-genFollowUserRequest n =
-  FollowUserRequest
-    <$> arbitraryReducedMaybe n -- followUserRequestAutoFollow :: Maybe Bool
+genFollowUserCreate :: Int -> Gen FollowUserCreate
+genFollowUserCreate n =
+  FollowUserCreate
+    <$> arbitraryReducedMaybe n -- followUserCreateAutoFollow :: Maybe Bool
   
 instance Arbitrary FollowersList200Response where
   arbitrary = sized genFollowersList200Response
@@ -5642,7 +6965,24 @@ genFollowersList200Response :: Int -> Gen FollowersList200Response
 genFollowersList200Response n =
   FollowersList200Response
     <$> arbitraryReducedMaybe n -- followersList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- followersList200ResponseItems :: [UserSummary]
+    <*> arbitraryReduced n -- followersList200ResponseItems :: [FollowUser]
+  
+instance Arbitrary FrequencyGoalMetadata where
+  arbitrary = sized genFrequencyGoalMetadata
+
+genFrequencyGoalMetadata :: Int -> Gen FrequencyGoalMetadata
+genFrequencyGoalMetadata n =
+  FrequencyGoalMetadata
+    <$> arbitraryReducedMaybe n -- frequencyGoalMetadataFrequency :: Maybe Int
+    <*> arbitraryReducedMaybe n -- frequencyGoalMetadataTimerange :: Maybe FrequencyGoalMetadataTimerange
+  
+instance Arbitrary FrequencyMultipliers where
+  arbitrary = sized genFrequencyMultipliers
+
+genFrequencyMultipliers :: Int -> Gen FrequencyMultipliers
+genFrequencyMultipliers n =
+  FrequencyMultipliers
+    <$> arbitraryReducedMaybe n -- frequencyMultipliersImpressionCount :: Maybe Text
   
 instance Arbitrary GenderDemographics where
   arbitrary = sized genGenderDemographics
@@ -5662,26 +7002,13 @@ genGenderFilter n =
   GenderFilter
     <$> arbitraryReduced n -- genderFilterGender :: CatalogsProductGroupMultipleGenderCriteria
   
-instance Arbitrary GetBusinessAssetsResponse where
-  arbitrary = sized genGetBusinessAssetsResponse
+instance Arbitrary GenderMultipliers where
+  arbitrary = sized genGenderMultipliers
 
-genGetBusinessAssetsResponse :: Int -> Gen GetBusinessAssetsResponse
-genGetBusinessAssetsResponse n =
-  GetBusinessAssetsResponse
-    <$> arbitraryReducedMaybe n -- getBusinessAssetsResponseAssetGroupInfo :: Maybe AssetGroupBinding
-    <*> arbitraryReducedMaybe n -- getBusinessAssetsResponseAssetId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- getBusinessAssetsResponseAssetType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- getBusinessAssetsResponseCatalogInfo :: Maybe GetBusinessAssetsResponseCatalogInfo
-  
-instance Arbitrary GetBusinessAssetsResponseCatalogInfo where
-  arbitrary = sized genGetBusinessAssetsResponseCatalogInfo
-
-genGetBusinessAssetsResponseCatalogInfo :: Int -> Gen GetBusinessAssetsResponseCatalogInfo
-genGetBusinessAssetsResponseCatalogInfo n =
-  GetBusinessAssetsResponseCatalogInfo
-    <$> arbitraryReducedMaybe n -- getBusinessAssetsResponseCatalogInfoCatalogType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- getBusinessAssetsResponseCatalogInfoId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- getBusinessAssetsResponseCatalogInfoName :: Maybe Text
+genGenderMultipliers :: Int -> Gen GenderMultipliers
+genGenderMultipliers n =
+  GenderMultipliers
+    <$> arbitraryReducedMaybe n -- genderMultipliersGender :: Maybe TargetingSpecGender
   
 instance Arbitrary GetBusinessEmployers200Response where
   arbitrary = sized genGetBusinessEmployers200Response
@@ -5692,24 +7019,6 @@ genGetBusinessEmployers200Response n =
     <$> arbitraryReducedMaybe n -- getBusinessEmployers200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- getBusinessEmployers200ResponseItems :: [UserBusinessRoleBinding]
   
-instance Arbitrary GetBusinessMembers200Response where
-  arbitrary = sized genGetBusinessMembers200Response
-
-genGetBusinessMembers200Response :: Int -> Gen GetBusinessMembers200Response
-genGetBusinessMembers200Response n =
-  GetBusinessMembers200Response
-    <$> arbitraryReducedMaybe n -- getBusinessMembers200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- getBusinessMembers200ResponseItems :: [UserBusinessRoleBinding]
-  
-instance Arbitrary GetBusinessPartners200Response where
-  arbitrary = sized genGetBusinessPartners200Response
-
-genGetBusinessPartners200Response :: Int -> Gen GetBusinessPartners200Response
-genGetBusinessPartners200Response n =
-  GetBusinessPartners200Response
-    <$> arbitraryReducedMaybe n -- getBusinessPartners200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- getBusinessPartners200ResponseItems :: [UserBusinessRoleBinding]
-  
 instance Arbitrary GetInvites200Response where
   arbitrary = sized genGetInvites200Response
 
@@ -5718,38 +7027,6 @@ genGetInvites200Response n =
   GetInvites200Response
     <$> arbitraryReducedMaybe n -- getInvites200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- getInvites200ResponseItems :: [InviteResponse]
-  
-instance Arbitrary GetMMMReportResponse where
-  arbitrary = sized genGetMMMReportResponse
-
-genGetMMMReportResponse :: Int -> Gen GetMMMReportResponse
-genGetMMMReportResponse n =
-  GetMMMReportResponse
-    <$> arbitraryReducedMaybe n -- getMMMReportResponseCode :: Maybe Double
-    <*> arbitraryReducedMaybe n -- getMMMReportResponseData :: Maybe GetMMMReportResponseData
-    <*> arbitraryReducedMaybe n -- getMMMReportResponseMessage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- getMMMReportResponseStatus :: Maybe Text
-  
-instance Arbitrary GetMMMReportResponseData where
-  arbitrary = sized genGetMMMReportResponseData
-
-genGetMMMReportResponseData :: Int -> Gen GetMMMReportResponseData
-genGetMMMReportResponseData n =
-  GetMMMReportResponseData
-    <$> arbitraryReducedMaybe n -- getMMMReportResponseDataReportStatus :: Maybe E'ReportStatus2
-    <*> arbitraryReducedMaybe n -- getMMMReportResponseDataSize :: Maybe Double
-    <*> arbitraryReducedMaybe n -- getMMMReportResponseDataUrl :: Maybe Text
-  
-instance Arbitrary GetPartnerAssetsResponse where
-  arbitrary = sized genGetPartnerAssetsResponse
-
-genGetPartnerAssetsResponse :: Int -> Gen GetPartnerAssetsResponse
-genGetPartnerAssetsResponse n =
-  GetPartnerAssetsResponse
-    <$> arbitraryReducedMaybe n -- getPartnerAssetsResponseAssetGroupInfo :: Maybe AssetGroupBinding
-    <*> arbitraryReducedMaybe n -- getPartnerAssetsResponseAssetId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- getPartnerAssetsResponseAssetType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- getPartnerAssetsResponsePermissions :: Maybe [Text]
   
 instance Arbitrary GoogleProductCategory0Filter where
   arbitrary = sized genGoogleProductCategory0Filter
@@ -5826,15 +7103,6 @@ genHotelProcessingRecord n =
     <*> arbitraryReducedMaybe n -- hotelProcessingRecordStatus :: Maybe ItemProcessingStatus
     <*> arbitraryReducedMaybe n -- hotelProcessingRecordWarnings :: Maybe [ItemValidationEvent]
   
-instance Arbitrary ImageBase64 where
-  arbitrary = sized genImageBase64
-
-genImageBase64 :: Int -> Gen ImageBase64
-genImageBase64 n =
-  ImageBase64
-    <$> arbitrary -- imageBase64ContentType :: E'ContentType
-    <*> arbitrary -- imageBase64Data :: Text
-  
 instance Arbitrary ImageDetails where
   arbitrary = sized genImageDetails
 
@@ -5853,7 +7121,7 @@ genImageMetadata n =
   ImageMetadata
     <$> arbitraryReducedMaybe n -- imageMetadataDescription :: Maybe Text
     <*> arbitraryReducedMaybe n -- imageMetadataImages :: Maybe ImageSize
-    <*> arbitraryReducedMaybe n -- imageMetadataItemType :: Maybe Text
+    <*> arbitrary -- imageMetadataItemType :: E'ItemType
     <*> arbitraryReducedMaybe n -- imageMetadataLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- imageMetadataTitle :: Maybe Text
   
@@ -5867,6 +7135,23 @@ genImageSize n =
     <*> arbitraryReducedMaybe n -- imageSize150x150 :: Maybe ImageDetails
     <*> arbitraryReducedMaybe n -- imageSize400x300 :: Maybe ImageDetails
     <*> arbitraryReducedMaybe n -- imageSize600x :: Maybe ImageDetails
+  
+instance Arbitrary IneligibleProductTagErrorItem where
+  arbitrary = sized genIneligibleProductTagErrorItem
+
+genIneligibleProductTagErrorItem :: Int -> Gen IneligibleProductTagErrorItem
+genIneligibleProductTagErrorItem n =
+  IneligibleProductTagErrorItem
+    <$> arbitraryReduced n -- ineligibleProductTagErrorItemErrorMessage :: IneligibleProductTagReason
+    <*> arbitrary -- ineligibleProductTagErrorItemPinId :: Text
+  
+instance Arbitrary IneligibleProductTagsErrorDetails where
+  arbitrary = sized genIneligibleProductTagsErrorDetails
+
+genIneligibleProductTagsErrorDetails :: Int -> Gen IneligibleProductTagsErrorDetails
+genIneligibleProductTagsErrorDetails n =
+  IneligibleProductTagsErrorDetails
+    <$> arbitraryReduced n -- ineligibleProductTagsErrorDetailsProductTags :: [IneligibleProductTagErrorItem]
   
 instance Arbitrary InnerProductCategoriesMetricsHighlights where
   arbitrary = sized genInnerProductCategoriesMetricsHighlights
@@ -5886,10 +7171,10 @@ genIntegrationLog n =
     <*> arbitraryReducedMaybe n -- integrationLogAppVersionNumber :: Maybe Text
     <*> arbitrary -- integrationLogClientTimestamp :: Int
     <*> arbitraryReducedMaybe n -- integrationLogError :: Maybe IntegrationLogClientError
-    <*> arbitrary -- integrationLogEventType :: E'EventType
+    <*> arbitraryReduced n -- integrationLogEventType :: IntegrationLogEventType
     <*> arbitraryReducedMaybe n -- integrationLogExternalBusinessId :: Maybe Text
     <*> arbitraryReducedMaybe n -- integrationLogFeedProfileId :: Maybe Text
-    <*> arbitrary -- integrationLogLogLevel :: E'LogLevel
+    <*> arbitraryReduced n -- integrationLogLogLevel :: IntegrationLogLevel
     <*> arbitraryReducedMaybe n -- integrationLogMerchantId :: Maybe Text
     <*> arbitraryReducedMaybe n -- integrationLogMessage :: Maybe Text
     <*> arbitraryReducedMaybe n -- integrationLogPlatformVersionNumber :: Maybe Text
@@ -5919,7 +7204,7 @@ genIntegrationLogClientRequest :: Int -> Gen IntegrationLogClientRequest
 genIntegrationLogClientRequest n =
   IntegrationLogClientRequest
     <$> arbitrary -- integrationLogClientRequestHost :: Text
-    <*> arbitrary -- integrationLogClientRequestMethod :: E'Method
+    <*> arbitraryReduced n -- integrationLogClientRequestMethod :: HttpMethod
     <*> arbitrary -- integrationLogClientRequestPath :: Text
     <*> arbitraryReducedMaybe n -- integrationLogClientRequestRequestHeaders :: Maybe (Map.Map String Text)
     <*> arbitraryReducedMaybe n -- integrationLogClientRequestResponseHeaders :: Maybe (Map.Map String Text)
@@ -5931,26 +7216,26 @@ instance Arbitrary IntegrationLogsInvalidLogResponse where
 genIntegrationLogsInvalidLogResponse :: Int -> Gen IntegrationLogsInvalidLogResponse
 genIntegrationLogsInvalidLogResponse n =
   IntegrationLogsInvalidLogResponse
-    <$> arbitraryReducedMaybe n -- integrationLogsInvalidLogResponseRejectedLogs :: Maybe [IntegrationLogsInvalidLogResponseRejectedLogsInner]
+    <$> arbitraryReducedMaybe n -- integrationLogsInvalidLogResponseRejectedLogs :: Maybe [IntegrationLogsInvalidLogResponseRejectedLogsItems]
   
-instance Arbitrary IntegrationLogsInvalidLogResponseRejectedLogsInner where
-  arbitrary = sized genIntegrationLogsInvalidLogResponseRejectedLogsInner
+instance Arbitrary IntegrationLogsInvalidLogResponseRejectedLogsItems where
+  arbitrary = sized genIntegrationLogsInvalidLogResponseRejectedLogsItems
 
-genIntegrationLogsInvalidLogResponseRejectedLogsInner :: Int -> Gen IntegrationLogsInvalidLogResponseRejectedLogsInner
-genIntegrationLogsInvalidLogResponseRejectedLogsInner n =
-  IntegrationLogsInvalidLogResponseRejectedLogsInner
-    <$> arbitrary -- integrationLogsInvalidLogResponseRejectedLogsInnerField :: Text
-    <*> arbitraryReducedMaybe n -- integrationLogsInvalidLogResponseRejectedLogsInnerLogIndex :: Maybe Int
-    <*> arbitrary -- integrationLogsInvalidLogResponseRejectedLogsInnerReason :: Text
-    <*> arbitrary -- integrationLogsInvalidLogResponseRejectedLogsInnerValue :: Text
+genIntegrationLogsInvalidLogResponseRejectedLogsItems :: Int -> Gen IntegrationLogsInvalidLogResponseRejectedLogsItems
+genIntegrationLogsInvalidLogResponseRejectedLogsItems n =
+  IntegrationLogsInvalidLogResponseRejectedLogsItems
+    <$> arbitrary -- integrationLogsInvalidLogResponseRejectedLogsItemsField :: Text
+    <*> arbitraryReducedMaybe n -- integrationLogsInvalidLogResponseRejectedLogsItemsLogIndex :: Maybe Int
+    <*> arbitrary -- integrationLogsInvalidLogResponseRejectedLogsItemsReason :: Text
+    <*> arbitrary -- integrationLogsInvalidLogResponseRejectedLogsItemsValue :: Text
   
-instance Arbitrary IntegrationLogsRequest where
-  arbitrary = sized genIntegrationLogsRequest
+instance Arbitrary IntegrationLogsRequestCreate where
+  arbitrary = sized genIntegrationLogsRequestCreate
 
-genIntegrationLogsRequest :: Int -> Gen IntegrationLogsRequest
-genIntegrationLogsRequest n =
-  IntegrationLogsRequest
-    <$> arbitraryReduced n -- integrationLogsRequestLogs :: [IntegrationLog]
+genIntegrationLogsRequestCreate :: Int -> Gen IntegrationLogsRequestCreate
+genIntegrationLogsRequestCreate n =
+  IntegrationLogsRequestCreate
+    <$> arbitraryReduced n -- integrationLogsRequestCreateLogs :: [IntegrationLog]
   
 instance Arbitrary IntegrationLogsSuccessResponse where
   arbitrary = sized genIntegrationLogsSuccessResponse
@@ -5981,6 +7266,45 @@ genIntegrationMetadata n =
     <*> arbitraryReducedMaybe n -- integrationMetadataScopes :: Maybe Text
     <*> arbitraryReducedMaybe n -- integrationMetadataUpdatedTimestamp :: Maybe Double
   
+instance Arbitrary IntegrationMetadataCreate where
+  arbitrary = sized genIntegrationMetadataCreate
+
+genIntegrationMetadataCreate :: Int -> Gen IntegrationMetadataCreate
+genIntegrationMetadataCreate n =
+  IntegrationMetadataCreate
+    <$> arbitraryReducedMaybe n -- integrationMetadataCreateAdditionalId1 :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreateConnectedAdvertiserId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreateConnectedLbaId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreateConnectedMerchantId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreateConnectedTagId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreateExternalBusinessId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreatePartnerAccessToken :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreatePartnerAccessTokenExpiry :: Maybe Double
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreatePartnerMetadata :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreatePartnerPrimaryEmail :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreatePartnerRefreshToken :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreatePartnerRefreshTokenExpiry :: Maybe Double
+    <*> arbitraryReducedMaybe n -- integrationMetadataCreateScopes :: Maybe Text
+  
+instance Arbitrary IntegrationMetadataUpdate where
+  arbitrary = sized genIntegrationMetadataUpdate
+
+genIntegrationMetadataUpdate :: Int -> Gen IntegrationMetadataUpdate
+genIntegrationMetadataUpdate n =
+  IntegrationMetadataUpdate
+    <$> arbitraryReducedMaybe n -- integrationMetadataUpdateAdditionalId1 :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdateConnectedAdvertiserId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdateConnectedLbaId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdateConnectedMerchantId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdateConnectedTagId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdatePartnerAccessToken :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdatePartnerAccessTokenExpiry :: Maybe Double
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdatePartnerMetadata :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdatePartnerPrimaryEmail :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdatePartnerRefreshToken :: Maybe Text
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdatePartnerRefreshTokenExpiry :: Maybe Double
+    <*> arbitraryReducedMaybe n -- integrationMetadataUpdateScopes :: Maybe Text
+  
 instance Arbitrary IntegrationRecord where
   arbitrary = sized genIntegrationRecord
 
@@ -5995,7 +7319,7 @@ genIntegrationRecord n =
     <*> arbitraryReducedMaybe n -- integrationRecordConnectedUserId :: Maybe Text
     <*> arbitraryReducedMaybe n -- integrationRecordCreatedTime :: Maybe Int
     <*> arbitraryReducedMaybe n -- integrationRecordExternalBusinessId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRecordId :: Maybe Text
+    <*> arbitrary -- integrationRecordId :: Text
     <*> arbitraryReducedMaybe n -- integrationRecordPartnerAccessToken :: Maybe Text
     <*> arbitraryReducedMaybe n -- integrationRecordPartnerAccessTokenExpiry :: Maybe Int
     <*> arbitraryReducedMaybe n -- integrationRecordPartnerMetadata :: Maybe Text
@@ -6005,45 +7329,6 @@ genIntegrationRecord n =
     <*> arbitraryReducedMaybe n -- integrationRecordScopes :: Maybe Text
     <*> arbitraryReducedMaybe n -- integrationRecordUpdatedTime :: Maybe Int
   
-instance Arbitrary IntegrationRequest where
-  arbitrary = sized genIntegrationRequest
-
-genIntegrationRequest :: Int -> Gen IntegrationRequest
-genIntegrationRequest n =
-  IntegrationRequest
-    <$> arbitraryReducedMaybe n -- integrationRequestAdditionalId1 :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestConnectedAdvertiserId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestConnectedLbaId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestConnectedMerchantId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestConnectedTagId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestExternalBusinessId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPartnerAccessToken :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPartnerAccessTokenExpiry :: Maybe Int
-    <*> arbitraryReducedMaybe n -- integrationRequestPartnerMetadata :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPartnerPrimaryEmail :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPartnerRefreshToken :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPartnerRefreshTokenExpiry :: Maybe Int
-    <*> arbitraryReducedMaybe n -- integrationRequestScopes :: Maybe Text
-  
-instance Arbitrary IntegrationRequestPatch where
-  arbitrary = sized genIntegrationRequestPatch
-
-genIntegrationRequestPatch :: Int -> Gen IntegrationRequestPatch
-genIntegrationRequestPatch n =
-  IntegrationRequestPatch
-    <$> arbitraryReducedMaybe n -- integrationRequestPatchAdditionalId1 :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchConnectedAdvertiserId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchConnectedLbaId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchConnectedMerchantId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchConnectedTagId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchPartnerAccessToken :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchPartnerAccessTokenExpiry :: Maybe Double
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchPartnerMetadata :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchPartnerPrimaryEmail :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchPartnerRefreshToken :: Maybe Text
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchPartnerRefreshTokenExpiry :: Maybe Double
-    <*> arbitraryReducedMaybe n -- integrationRequestPatchScopes :: Maybe Text
-  
 instance Arbitrary IntegrationsGetList200Response where
   arbitrary = sized genIntegrationsGetList200Response
 
@@ -6052,16 +7337,6 @@ genIntegrationsGetList200Response n =
   IntegrationsGetList200Response
     <$> arbitraryReducedMaybe n -- integrationsGetList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- integrationsGetList200ResponseItems :: [IntegrationRecord]
-  
-instance Arbitrary IntegrationsLogsPost400Response where
-  arbitrary = sized genIntegrationsLogsPost400Response
-
-genIntegrationsLogsPost400Response :: Int -> Gen IntegrationsLogsPost400Response
-genIntegrationsLogsPost400Response n =
-  IntegrationsLogsPost400Response
-    <$> arbitrary -- integrationsLogsPost400ResponseCode :: Int
-    <*> arbitrary -- integrationsLogsPost400ResponseMessage :: Text
-    <*> arbitraryReduced n -- integrationsLogsPost400ResponseDetails :: A.Value
   
 instance Arbitrary Interest where
   arbitrary = sized genInterest
@@ -6074,32 +7349,32 @@ genInterest n =
     <*> arbitraryReducedMaybe n -- interestKey :: Maybe Text
     <*> arbitraryReducedMaybe n -- interestName :: Maybe Text
   
+instance Arbitrary InviteActionResultItem where
+  arbitrary = sized genInviteActionResultItem
+
+genInviteActionResultItem :: Int -> Gen InviteActionResultItem
+genInviteActionResultItem n =
+  InviteActionResultItem
+    <$> arbitraryReducedMaybe n -- inviteActionResultItemException :: Maybe InviteExceptionResponse
+    <*> arbitraryReducedMaybe n -- inviteActionResultItemInvite :: Maybe InviteBusinessRoleBinding
+  
 instance Arbitrary InviteAssetsSummary where
   arbitrary = sized genInviteAssetsSummary
 
 genInviteAssetsSummary :: Int -> Gen InviteAssetsSummary
 genInviteAssetsSummary n =
   InviteAssetsSummary
-    <$> arbitraryReducedMaybe n -- inviteAssetsSummaryAdAccounts :: Maybe [InviteAssetsSummaryAdAccountsInner]
-    <*> arbitraryReducedMaybe n -- inviteAssetsSummaryProfiles :: Maybe [InviteAssetsSummaryProfilesInner]
+    <$> arbitraryReducedMaybe n -- inviteAssetsSummaryAdAccounts :: Maybe [InviteAssetsSummaryItem]
+    <*> arbitraryReducedMaybe n -- inviteAssetsSummaryProfiles :: Maybe [InviteAssetsSummaryItem]
   
-instance Arbitrary InviteAssetsSummaryAdAccountsInner where
-  arbitrary = sized genInviteAssetsSummaryAdAccountsInner
+instance Arbitrary InviteAssetsSummaryItem where
+  arbitrary = sized genInviteAssetsSummaryItem
 
-genInviteAssetsSummaryAdAccountsInner :: Int -> Gen InviteAssetsSummaryAdAccountsInner
-genInviteAssetsSummaryAdAccountsInner n =
-  InviteAssetsSummaryAdAccountsInner
-    <$> arbitraryReducedMaybe n -- inviteAssetsSummaryAdAccountsInnerId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- inviteAssetsSummaryAdAccountsInnerPermissions :: Maybe [Text]
-  
-instance Arbitrary InviteAssetsSummaryProfilesInner where
-  arbitrary = sized genInviteAssetsSummaryProfilesInner
-
-genInviteAssetsSummaryProfilesInner :: Int -> Gen InviteAssetsSummaryProfilesInner
-genInviteAssetsSummaryProfilesInner n =
-  InviteAssetsSummaryProfilesInner
-    <$> arbitraryReducedMaybe n -- inviteAssetsSummaryProfilesInnerId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- inviteAssetsSummaryProfilesInnerPermissions :: Maybe [Text]
+genInviteAssetsSummaryItem :: Int -> Gen InviteAssetsSummaryItem
+genInviteAssetsSummaryItem n =
+  InviteAssetsSummaryItem
+    <$> arbitraryReducedMaybe n -- inviteAssetsSummaryItemId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- inviteAssetsSummaryItemPermissions :: Maybe [Text]
   
 instance Arbitrary InviteBusinessRoleBinding where
   arbitrary = sized genInviteBusinessRoleBinding
@@ -6107,12 +7382,24 @@ instance Arbitrary InviteBusinessRoleBinding where
 genInviteBusinessRoleBinding :: Int -> Gen InviteBusinessRoleBinding
 genInviteBusinessRoleBinding n =
   InviteBusinessRoleBinding
-    <$> arbitraryReducedMaybe n -- inviteBusinessRoleBindingId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingInviteData :: Maybe BaseInviteDataResponseInviteData
-    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingIsReceivedInvite :: Maybe Bool
-    <*> arbitraryReducedMaybeValue n -- inviteBusinessRoleBindingUser :: Maybe A.Value
-    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingCreatedByBusinessId :: Maybe Text
+    <$> arbitraryReducedMaybe n -- inviteBusinessRoleBindingCreatedByBusinessId :: Maybe Text
     <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingCreatedByUserId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingInviteData :: Maybe InviteDataResponse
+    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingIsReceivedInvite :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingUser :: Maybe BusinessAccessUserSummary
+  
+instance Arbitrary InviteDataResponse where
+  arbitrary = sized genInviteDataResponse
+
+genInviteDataResponse :: Int -> Gen InviteDataResponse
+genInviteDataResponse n =
+  InviteDataResponse
+    <$> arbitraryReducedMaybe n -- inviteDataResponseInviteExpiration :: Maybe Int
+    <*> arbitraryReducedMaybe n -- inviteDataResponseInviteStatus :: Maybe Text
+    <*> arbitraryReducedMaybe n -- inviteDataResponseInviteType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- inviteDataResponseLastUpdatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- inviteDataResponseSentAt :: Maybe Int
   
 instance Arbitrary InviteExceptionResponse where
   arbitrary = sized genInviteExceptionResponse
@@ -6131,15 +7418,15 @@ instance Arbitrary InviteResponse where
 genInviteResponse :: Int -> Gen InviteResponse
 genInviteResponse n =
   InviteResponse
-    <$> arbitraryReducedMaybe n -- inviteResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- inviteResponseInviteData :: Maybe BaseInviteDataResponseInviteData
+    <$> arbitraryReducedMaybe n -- inviteResponseAssetsSummary :: Maybe InviteAssetsSummary
+    <*> arbitraryReducedMaybe n -- inviteResponseBusinessRoles :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- inviteResponseCreatedByBusiness :: Maybe BusinessAccessUserSummary
+    <*> arbitraryReducedMaybe n -- inviteResponseCreatedByUser :: Maybe BusinessAccessUserSummary
+    <*> arbitraryReducedMaybe n -- inviteResponseCreatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- inviteResponseId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- inviteResponseInviteData :: Maybe InviteDataResponse
     <*> arbitraryReducedMaybe n -- inviteResponseIsReceivedInvite :: Maybe Bool
     <*> arbitraryReducedMaybe n -- inviteResponseUser :: Maybe BusinessAccessUserSummary
-    <*> arbitraryReducedMaybe n -- inviteResponseAssetsSummary :: Maybe InviteAssetsSummary
-    <*> arbitraryReducedMaybe n -- inviteResponseBusinessRoles :: Maybe [Text]
-    <*> arbitraryReducedMaybeValue n -- inviteResponseCreatedByBusiness :: Maybe A.Value
-    <*> arbitraryReducedMaybeValue n -- inviteResponseCreatedByUser :: Maybe A.Value
-    <*> arbitraryReducedMaybe n -- inviteResponseCreatedTime :: Maybe Int
   
 instance Arbitrary ItemAttributes where
   arbitrary = sized genItemAttributes
@@ -6251,6 +7538,7 @@ genItemAttributes n =
     <*> arbitraryReducedMaybe n -- itemAttributesVariantNames :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- itemAttributesVariantValues :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- itemAttributesAdditionalImageLink :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- itemAttributesAiDisclosures :: Maybe [CatalogsAiContentDisclosure]
     <*> arbitraryReducedMaybe n -- itemAttributesImageLink :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- itemAttributesVideoLink :: Maybe Text
   
@@ -6307,8 +7595,10 @@ genItemAttributesRequest n =
     <*> arbitraryReducedMaybe n -- itemAttributesRequestAdVideo1Tag :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestAdVideo2Link :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestAdVideo2Tag :: Maybe Text
+    <*> arbitraryReducedMaybe n -- itemAttributesRequestAdditionalImageLink :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- itemAttributesRequestAdult :: Maybe Bool
     <*> arbitraryReducedMaybe n -- itemAttributesRequestAgeGroup :: Maybe Text
+    <*> arbitraryReducedMaybe n -- itemAttributesRequestAiDisclosures :: Maybe [CatalogsAiContentDisclosure]
     <*> arbitraryReducedMaybe n -- itemAttributesRequestAndroidDeepLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestAvailability :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestAverageReviewRating :: Maybe Double
@@ -6333,6 +7623,7 @@ genItemAttributesRequest n =
     <*> arbitraryReducedMaybe n -- itemAttributesRequestGoogleProductCategory :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestGtin :: Maybe UpdatableItemAttributesGtin
     <*> arbitraryReducedMaybe n -- itemAttributesRequestId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- itemAttributesRequestImageLink :: Maybe ItemAttributesRequestImageLink
     <*> arbitraryReducedMaybe n -- itemAttributesRequestInstallmentPrice :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestIosDeepLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestItemGroupId :: Maybe Text
@@ -6350,6 +7641,7 @@ genItemAttributesRequest n =
     <*> arbitraryReducedMaybe n -- itemAttributesRequestPromotionId :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestSalePrice :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestSalePriceEffectiveDate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- itemAttributesRequestSavePinDisabled :: Maybe Bool
     <*> arbitraryReducedMaybe n -- itemAttributesRequestShipping :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestShippingHeight :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestShippingWeight :: Maybe Text
@@ -6363,29 +7655,16 @@ genItemAttributesRequest n =
     <*> arbitraryReducedMaybe n -- itemAttributesRequestUnitPricingMeasure :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemAttributesRequestVariantNames :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- itemAttributesRequestVariantValues :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- itemAttributesRequestAdditionalImageLink :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- itemAttributesRequestImageLink :: Maybe ItemAttributesRequestAllOfImageLink
-    <*> arbitraryReducedMaybe n -- itemAttributesRequestSavePinDisabled :: Maybe Bool
     <*> arbitraryReducedMaybe n -- itemAttributesRequestVideoLink :: Maybe Text
   
-instance Arbitrary ItemAttributesRequestAllOfImageLink where
-  arbitrary = sized genItemAttributesRequestAllOfImageLink
+instance Arbitrary ItemAttributesRequestImageLink where
+  arbitrary = sized genItemAttributesRequestImageLink
 
-genItemAttributesRequestAllOfImageLink :: Int -> Gen ItemAttributesRequestAllOfImageLink
-genItemAttributesRequestAllOfImageLink n =
+genItemAttributesRequestImageLink :: Int -> Gen ItemAttributesRequestImageLink
+genItemAttributesRequestImageLink n =
   
-  pure ItemAttributesRequestAllOfImageLink
+  pure ItemAttributesRequestImageLink
    
-instance Arbitrary ItemBatchRecord where
-  arbitrary = sized genItemBatchRecord
-
-genItemBatchRecord :: Int -> Gen ItemBatchRecord
-genItemBatchRecord n =
-  ItemBatchRecord
-    <$> arbitraryReducedMaybe n -- itemBatchRecordAttributes :: Maybe ItemAttributesRequest
-    <*> arbitraryReducedMaybe n -- itemBatchRecordItemId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- itemBatchRecordUpdateMask :: Maybe [UpdateMaskFieldType]
-  
 instance Arbitrary ItemCreateBatchRecord where
   arbitrary = sized genItemCreateBatchRecord
 
@@ -6427,6 +7706,15 @@ genItemIdFilter n =
   ItemIdFilter
     <$> arbitraryReduced n -- itemIdFilterItemId :: CatalogsProductGroupMultipleStringCriteria
   
+instance Arbitrary ItemIdStoreCodePair where
+  arbitrary = sized genItemIdStoreCodePair
+
+genItemIdStoreCodePair :: Int -> Gen ItemIdStoreCodePair
+genItemIdStoreCodePair n =
+  ItemIdStoreCodePair
+    <$> arbitrary -- itemIdStoreCodePairItemId :: Text
+    <*> arbitrary -- itemIdStoreCodePairStoreCode :: Text
+  
 instance Arbitrary ItemProcessingRecord where
   arbitrary = sized genItemProcessingRecord
 
@@ -6444,38 +7732,14 @@ instance Arbitrary ItemResponse where
 genItemResponse :: Int -> Gen ItemResponse
 genItemResponse n =
   ItemResponse
-    <$> arbitraryReduced n -- itemResponseCatalogType :: CatalogsType
-    <*> arbitraryReducedMaybe n -- itemResponseAttributes :: Maybe CatalogsCreativeAssetsAttributes
+    <$> arbitraryReducedMaybe n -- itemResponseAttributes :: Maybe CatalogsCreativeAssetsAttributes
+    <*> arbitrary -- itemResponseCatalogType :: E'CatalogType
     <*> arbitraryReducedMaybe n -- itemResponseItemId :: Maybe Text
+    <*> arbitrary -- itemResponseItemResponseKind :: E'ItemResponseKind
     <*> arbitraryReducedMaybe n -- itemResponsePins :: Maybe [Pin]
     <*> arbitraryReducedMaybe n -- itemResponseHotelId :: Maybe Text
     <*> arbitraryReducedMaybe n -- itemResponseCreativeAssetsId :: Maybe Text
     <*> arbitraryReduced n -- itemResponseErrors :: [ItemValidationEvent]
-  
-instance Arbitrary ItemResponseOneOf where
-  arbitrary = sized genItemResponseOneOf
-
-genItemResponseOneOf :: Int -> Gen ItemResponseOneOf
-genItemResponseOneOf n =
-  ItemResponseOneOf
-    <$> arbitraryReduced n -- itemResponseOneOfCatalogType :: CatalogsType
-    <*> arbitraryReducedMaybe n -- itemResponseOneOfAttributes :: Maybe CatalogsCreativeAssetsAttributes
-    <*> arbitraryReducedMaybe n -- itemResponseOneOfItemId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- itemResponseOneOfPins :: Maybe [Pin]
-    <*> arbitraryReducedMaybe n -- itemResponseOneOfHotelId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- itemResponseOneOfCreativeAssetsId :: Maybe Text
-  
-instance Arbitrary ItemResponseOneOf1 where
-  arbitrary = sized genItemResponseOneOf1
-
-genItemResponseOneOf1 :: Int -> Gen ItemResponseOneOf1
-genItemResponseOneOf1 n =
-  ItemResponseOneOf1
-    <$> arbitraryReduced n -- itemResponseOneOf1CatalogType :: CatalogsType
-    <*> arbitraryReduced n -- itemResponseOneOf1Errors :: [ItemValidationEvent]
-    <*> arbitraryReducedMaybe n -- itemResponseOneOf1ItemId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- itemResponseOneOf1HotelId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- itemResponseOneOf1CreativeAssetsId :: Maybe Text
   
 instance Arbitrary ItemUpdateBatchRecord where
   arbitrary = sized genItemUpdateBatchRecord
@@ -6506,19 +7770,6 @@ genItemValidationEvent n =
     <*> arbitraryReducedMaybe n -- itemValidationEventCode :: Maybe Int
     <*> arbitraryReducedMaybe n -- itemValidationEventMessage :: Maybe Text
   
-instance Arbitrary ItemsBatchPostRequest where
-  arbitrary = sized genItemsBatchPostRequest
-
-genItemsBatchPostRequest :: Int -> Gen ItemsBatchPostRequest
-genItemsBatchPostRequest n =
-  ItemsBatchPostRequest
-    <$> arbitraryReducedMaybe n -- itemsBatchPostRequestCatalogId :: Maybe Text
-    <*> arbitrary -- itemsBatchPostRequestCatalogType :: E'CatalogType3
-    <*> arbitraryReduced n -- itemsBatchPostRequestCountry :: Country
-    <*> arbitraryReduced n -- itemsBatchPostRequestItems :: [ItemDeleteBatchRecord]
-    <*> arbitrary -- itemsBatchPostRequestLanguage :: E'Language
-    <*> arbitraryReduced n -- itemsBatchPostRequestOperation :: BatchOperation
-  
 instance Arbitrary ItemsIssuesList200Response where
   arbitrary = sized genItemsIssuesList200Response
 
@@ -6528,20 +7779,38 @@ genItemsIssuesList200Response n =
     <$> arbitraryReducedMaybe n -- itemsIssuesList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- itemsIssuesList200ResponseItems :: [CatalogsItemValidationIssues]
   
+instance Arbitrary ItemsPost200Response where
+  arbitrary = sized genItemsPost200Response
+
+genItemsPost200Response :: Int -> Gen ItemsPost200Response
+genItemsPost200Response n =
+  ItemsPost200Response
+    <$> arbitraryReduced n -- itemsPost200ResponseItems :: [ItemResponse]
+  
 instance Arbitrary Keyword where
   arbitrary = sized genKeyword
 
 genKeyword :: Int -> Gen Keyword
 genKeyword n =
   Keyword
-    <$> arbitraryReducedMaybe n -- keywordBid :: Maybe Int
-    <*> arbitraryReduced n -- keywordMatchType :: MatchTypeResponse
-    <*> arbitrary -- keywordValue :: Text
-    <*> arbitraryReducedMaybe n -- keywordArchived :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- keywordId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- keywordParentId :: Maybe Text
+    <$> arbitraryReducedMaybe n -- keywordArchived :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- keywordBid :: Maybe Int
+    <*> arbitrary -- keywordId :: Text
+    <*> arbitraryReduced n -- keywordMatchType :: MatchType
+    <*> arbitrary -- keywordParentId :: Text
     <*> arbitraryReducedMaybe n -- keywordParentType :: Maybe Text
     <*> arbitraryReducedMaybe n -- keywordType :: Maybe Text
+    <*> arbitrary -- keywordValue :: Text
+  
+instance Arbitrary KeywordCreateItem where
+  arbitrary = sized genKeywordCreateItem
+
+genKeywordCreateItem :: Int -> Gen KeywordCreateItem
+genKeywordCreateItem n =
+  KeywordCreateItem
+    <$> arbitraryReducedMaybe n -- keywordCreateItemBid :: Maybe Int
+    <*> arbitraryReduced n -- keywordCreateItemMatchType :: MatchType
+    <*> arbitrary -- keywordCreateItemValue :: Text
   
 instance Arbitrary KeywordError where
   arbitrary = sized genKeywordError
@@ -6551,6 +7820,15 @@ genKeywordError n =
   KeywordError
     <$> arbitraryReducedMaybe n -- keywordErrorData :: Maybe Keyword
     <*> arbitraryReducedMaybe n -- keywordErrorErrorMessages :: Maybe [Text]
+  
+instance Arbitrary KeywordInfo where
+  arbitrary = sized genKeywordInfo
+
+genKeywordInfo :: Int -> Gen KeywordInfo
+genKeywordInfo n =
+  KeywordInfo
+    <$> arbitrary -- keywordInfoName :: Text
+    <*> arbitraryReducedMaybe n -- keywordInfoPctGrowthMom :: Maybe Double
   
 instance Arbitrary KeywordMetrics where
   arbitrary = sized genKeywordMetrics
@@ -6569,23 +7847,34 @@ genKeywordMetricsResponse n =
     <$> arbitraryReducedMaybe n -- keywordMetricsResponseKeyword :: Maybe Text
     <*> arbitraryReducedMaybe n -- keywordMetricsResponseMetrics :: Maybe KeywordMetrics
   
-instance Arbitrary KeywordUpdate where
-  arbitrary = sized genKeywordUpdate
+instance Arbitrary KeywordUpdateGenerated where
+  arbitrary = sized genKeywordUpdateGenerated
 
-genKeywordUpdate :: Int -> Gen KeywordUpdate
-genKeywordUpdate n =
-  KeywordUpdate
-    <$> arbitraryReducedMaybe n -- keywordUpdateArchived :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- keywordUpdateBid :: Maybe Int
-    <*> arbitrary -- keywordUpdateId :: Text
+genKeywordUpdateGenerated :: Int -> Gen KeywordUpdateGenerated
+genKeywordUpdateGenerated n =
+  KeywordUpdateGenerated
+    <$> arbitraryReducedMaybe n -- keywordUpdateGeneratedArchived :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- keywordUpdateGeneratedBid :: Maybe Int
+    <*> arbitrary -- keywordUpdateGeneratedId :: Text
   
-instance Arbitrary KeywordUpdateBody where
-  arbitrary = sized genKeywordUpdateBody
+instance Arbitrary KeywordUpdateItem where
+  arbitrary = sized genKeywordUpdateItem
 
-genKeywordUpdateBody :: Int -> Gen KeywordUpdateBody
-genKeywordUpdateBody n =
-  KeywordUpdateBody
-    <$> arbitraryReduced n -- keywordUpdateBodyKeywords :: [KeywordUpdate]
+genKeywordUpdateItem :: Int -> Gen KeywordUpdateItem
+genKeywordUpdateItem n =
+  KeywordUpdateItem
+    <$> arbitraryReducedMaybe n -- keywordUpdateItemArchived :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- keywordUpdateItemBid :: Maybe Int
+    <*> arbitrary -- keywordUpdateItemId :: Text
+  
+instance Arbitrary Keywords where
+  arbitrary = sized genKeywords
+
+genKeywords :: Int -> Gen Keywords
+genKeywords n =
+  Keywords
+    <$> arbitraryReduced n -- keywordsErrors :: [KeywordError]
+    <*> arbitraryReduced n -- keywordsKeywords :: [Keyword]
   
 instance Arbitrary KeywordsCommon where
   arbitrary = sized genKeywordsCommon
@@ -6596,6 +7885,15 @@ genKeywordsCommon n =
     <$> arbitraryReducedMaybe n -- keywordsCommonBid :: Maybe Int
     <*> arbitraryReduced n -- keywordsCommonMatchType :: MatchTypeResponse
     <*> arbitrary -- keywordsCommonValue :: Text
+  
+instance Arbitrary KeywordsCreate where
+  arbitrary = sized genKeywordsCreate
+
+genKeywordsCreate :: Int -> Gen KeywordsCreate
+genKeywordsCreate n =
+  KeywordsCreate
+    <$> arbitraryReduced n -- keywordsCreateKeywords :: [KeywordCreateItem]
+    <*> arbitrary -- keywordsCreateParentId :: Text
   
 instance Arbitrary KeywordsGet200Response where
   arbitrary = sized genKeywordsGet200Response
@@ -6623,14 +7921,13 @@ genKeywordsRequest n =
     <$> arbitraryReduced n -- keywordsRequestKeywords :: [KeywordsCommon]
     <*> arbitrary -- keywordsRequestParentId :: Text
   
-instance Arbitrary KeywordsResponse where
-  arbitrary = sized genKeywordsResponse
+instance Arbitrary KeywordsUpdate where
+  arbitrary = sized genKeywordsUpdate
 
-genKeywordsResponse :: Int -> Gen KeywordsResponse
-genKeywordsResponse n =
-  KeywordsResponse
-    <$> arbitraryReducedMaybe n -- keywordsResponseErrors :: Maybe [KeywordError]
-    <*> arbitraryReducedMaybe n -- keywordsResponseKeywords :: Maybe [Keyword]
+genKeywordsUpdate :: Int -> Gen KeywordsUpdate
+genKeywordsUpdate n =
+  KeywordsUpdate
+    <$> arbitraryReducedMaybe n -- keywordsUpdateKeywords :: Maybe [KeywordUpdateItem]
   
 instance Arbitrary Label where
   arbitrary = sized genLabel
@@ -6638,12 +7935,19 @@ instance Arbitrary Label where
 genLabel :: Int -> Gen Label
 genLabel n =
   Label
-    <$> arbitraryReducedMaybe n -- labelId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- labelLabelType :: Maybe LabelType
-    <*> arbitraryReducedMaybe n -- labelParentId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- labelParentType :: Maybe E'ParentType
-    <*> arbitraryReducedMaybe n -- labelStatus :: Maybe LabelStatus
-    <*> arbitraryReducedMaybe n -- labelValue :: Maybe Text
+    <$> arbitrary -- labelId :: Text
+    <*> arbitraryReduced n -- labelLabelType :: NullableLabelType
+    <*> arbitraryReducedMaybe n -- labelStatus :: Maybe NullableLabelStatus
+    <*> arbitrary -- labelValue :: Text
+  
+instance Arbitrary LabelBulkCreateRequest where
+  arbitrary = sized genLabelBulkCreateRequest
+
+genLabelBulkCreateRequest :: Int -> Gen LabelBulkCreateRequest
+genLabelBulkCreateRequest n =
+  LabelBulkCreateRequest
+    <$> arbitraryReduced n -- labelBulkCreateRequestLabels :: [LabelCreateItem]
+    <*> arbitrary -- labelBulkCreateRequestParentId :: Text
   
 instance Arbitrary LabelBulkUpdateRequest where
   arbitrary = sized genLabelBulkUpdateRequest
@@ -6652,8 +7956,17 @@ genLabelBulkUpdateRequest :: Int -> Gen LabelBulkUpdateRequest
 genLabelBulkUpdateRequest n =
   LabelBulkUpdateRequest
     <$> arbitrary -- labelBulkUpdateRequestId :: Text
-    <*> arbitraryReducedMaybe n -- labelBulkUpdateRequestStatus :: Maybe E'Status5
-    <*> arbitraryReducedMaybe n -- labelBulkUpdateRequestValue :: Maybe Text
+    <*> arbitrary -- labelBulkUpdateRequestParentId :: Text
+    <*> arbitraryReduced n -- labelBulkUpdateRequestStatus :: LabelStatusBulkUpdate
+  
+instance Arbitrary LabelCreateItem where
+  arbitrary = sized genLabelCreateItem
+
+genLabelCreateItem :: Int -> Gen LabelCreateItem
+genLabelCreateItem n =
+  LabelCreateItem
+    <$> arbitraryReduced n -- labelCreateItemLabelType :: LabelType
+    <*> arbitrary -- labelCreateItemValue :: Text
   
 instance Arbitrary LabelCreateRequest where
   arbitrary = sized genLabelCreateRequest
@@ -6661,17 +7974,7 @@ instance Arbitrary LabelCreateRequest where
 genLabelCreateRequest :: Int -> Gen LabelCreateRequest
 genLabelCreateRequest n =
   LabelCreateRequest
-    <$> arbitraryReduced n -- labelCreateRequestLabels :: [LabelCreateRequestLabelsInner]
-    <*> arbitrary -- labelCreateRequestParentId :: Text
-  
-instance Arbitrary LabelCreateRequestLabelsInner where
-  arbitrary = sized genLabelCreateRequestLabelsInner
-
-genLabelCreateRequestLabelsInner :: Int -> Gen LabelCreateRequestLabelsInner
-genLabelCreateRequestLabelsInner n =
-  LabelCreateRequestLabelsInner
-    <$> arbitraryReduced n -- labelCreateRequestLabelsInnerLabelType :: LabelType
-    <*> arbitrary -- labelCreateRequestLabelsInnerValue :: Text
+    <$> arbitraryReduced n -- labelCreateRequestLabels :: [LabelCreateItem]
   
 instance Arbitrary LabelError where
   arbitrary = sized genLabelError
@@ -6679,8 +7982,29 @@ instance Arbitrary LabelError where
 genLabelError :: Int -> Gen LabelError
 genLabelError n =
   LabelError
-    <$> arbitraryReducedMaybe n -- labelErrorData :: Maybe Label
+    <$> arbitraryReducedMaybe n -- labelErrorData :: Maybe LabelErrorData
     <*> arbitraryReducedMaybe n -- labelErrorErrorMessages :: Maybe [Text]
+  
+instance Arbitrary LabelErrorData where
+  arbitrary = sized genLabelErrorData
+
+genLabelErrorData :: Int -> Gen LabelErrorData
+genLabelErrorData n =
+  LabelErrorData
+    <$> arbitraryReducedMaybe n -- labelErrorDataId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- labelErrorDataLabelType :: Maybe NullableLabelType
+    <*> arbitraryReducedMaybe n -- labelErrorDataStatus :: Maybe NullableLabelStatus
+    <*> arbitraryReducedMaybe n -- labelErrorDataValue :: Maybe Text
+  
+instance Arbitrary LabelUpdateItem where
+  arbitrary = sized genLabelUpdateItem
+
+genLabelUpdateItem :: Int -> Gen LabelUpdateItem
+genLabelUpdateItem n =
+  LabelUpdateItem
+    <$> arbitrary -- labelUpdateItemId :: Text
+    <*> arbitraryReducedMaybe n -- labelUpdateItemStatus :: Maybe LabelStatus
+    <*> arbitraryReducedMaybe n -- labelUpdateItemValue :: Maybe Text
   
 instance Arbitrary LabelUpdateRequest where
   arbitrary = sized genLabelUpdateRequest
@@ -6688,17 +8012,24 @@ instance Arbitrary LabelUpdateRequest where
 genLabelUpdateRequest :: Int -> Gen LabelUpdateRequest
 genLabelUpdateRequest n =
   LabelUpdateRequest
-    <$> arbitraryReduced n -- labelUpdateRequestLabels :: [LabelUpdateRequestLabelsInner]
+    <$> arbitraryReduced n -- labelUpdateRequestLabels :: [LabelUpdateItem]
   
-instance Arbitrary LabelUpdateRequestLabelsInner where
-  arbitrary = sized genLabelUpdateRequestLabelsInner
+instance Arbitrary LabeledEntities where
+  arbitrary = sized genLabeledEntities
 
-genLabelUpdateRequestLabelsInner :: Int -> Gen LabelUpdateRequestLabelsInner
-genLabelUpdateRequestLabelsInner n =
-  LabelUpdateRequestLabelsInner
-    <$> arbitrary -- labelUpdateRequestLabelsInnerId :: Text
-    <*> arbitraryReducedMaybe n -- labelUpdateRequestLabelsInnerStatus :: Maybe LabelStatus
-    <*> arbitraryReducedMaybe n -- labelUpdateRequestLabelsInnerValue :: Maybe Text
+genLabeledEntities :: Int -> Gen LabeledEntities
+genLabeledEntities n =
+  LabeledEntities
+    <$> arbitraryReducedMaybe n -- labeledEntitiesEntitiesLabels :: Maybe [EntityLabel]
+    <*> arbitraryReducedMaybe n -- labeledEntitiesErrors :: Maybe [EntityLabelError]
+  
+instance Arbitrary LabeledEntitiesCreate where
+  arbitrary = sized genLabeledEntitiesCreate
+
+genLabeledEntitiesCreate :: Int -> Gen LabeledEntitiesCreate
+genLabeledEntitiesCreate n =
+  LabeledEntitiesCreate
+    <$> arbitrary -- labeledEntitiesCreateEntityIds :: [Text]
   
 instance Arbitrary LabelsList200Response where
   arbitrary = sized genLabelsList200Response
@@ -6707,7 +8038,7 @@ genLabelsList200Response :: Int -> Gen LabelsList200Response
 genLabelsList200Response n =
   LabelsList200Response
     <$> arbitraryReducedMaybe n -- labelsList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- labelsList200ResponseItems :: [LabelsResponse]
+    <*> arbitraryReduced n -- labelsList200ResponseItems :: [Label]
   
 instance Arbitrary LabelsResponse where
   arbitrary = sized genLabelsResponse
@@ -6718,61 +8049,64 @@ genLabelsResponse n =
     <$> arbitraryReducedMaybe n -- labelsResponseErrors :: Maybe [LabelError]
     <*> arbitraryReducedMaybe n -- labelsResponseLabels :: Maybe [Label]
   
-instance Arbitrary LeadFormArrayResponse where
-  arbitrary = sized genLeadFormArrayResponse
+instance Arbitrary LeadForm where
+  arbitrary = sized genLeadForm
 
-genLeadFormArrayResponse :: Int -> Gen LeadFormArrayResponse
-genLeadFormArrayResponse n =
-  LeadFormArrayResponse
-    <$> arbitraryReducedMaybe n -- leadFormArrayResponseItems :: Maybe [LeadFormArrayResponseItemsInner]
+genLeadForm :: Int -> Gen LeadForm
+genLeadForm n =
+  LeadForm
+    <$> arbitraryReducedMaybe n -- leadFormAdAccountId :: Maybe Text
+    <*> arbitrary -- leadFormCompletionMessage :: Text
+    <*> arbitraryReducedMaybe n -- leadFormCreatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- leadFormDisclosureLanguage :: Maybe Text
+    <*> arbitrary -- leadFormHasAcceptedTerms :: Bool
+    <*> arbitrary -- leadFormId :: Text
+    <*> arbitrary -- leadFormName :: Text
+    <*> arbitraryReducedMaybe n -- leadFormPolicyLinks :: Maybe [LeadFormPolicyLink]
+    <*> arbitrary -- leadFormPrivacyPolicyLink :: Text
+    <*> arbitraryReduced n -- leadFormQuestions :: [LeadFormQuestion]
+    <*> arbitraryReducedMaybe n -- leadFormStatus :: Maybe LeadFormStatus
+    <*> arbitraryReducedMaybe n -- leadFormUpdatedTime :: Maybe Int
   
-instance Arbitrary LeadFormArrayResponseItemsInner where
-  arbitrary = sized genLeadFormArrayResponseItemsInner
+instance Arbitrary LeadFormBatchUpdate where
+  arbitrary = sized genLeadFormBatchUpdate
 
-genLeadFormArrayResponseItemsInner :: Int -> Gen LeadFormArrayResponseItemsInner
-genLeadFormArrayResponseItemsInner n =
-  LeadFormArrayResponseItemsInner
-    <$> arbitraryReducedMaybe n -- leadFormArrayResponseItemsInnerData :: Maybe LeadFormResponse
-    <*> arbitraryReducedMaybe n -- leadFormArrayResponseItemsInnerExceptions :: Maybe [Exception]
+genLeadFormBatchUpdate :: Int -> Gen LeadFormBatchUpdate
+genLeadFormBatchUpdate n =
+  LeadFormBatchUpdate
+    <$> arbitraryReducedMaybe n -- leadFormBatchUpdateCompletionMessage :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadFormBatchUpdateDisclosureLanguage :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadFormBatchUpdateHasAcceptedTerms :: Maybe Bool
+    <*> arbitrary -- leadFormBatchUpdateId :: Text
+    <*> arbitraryReducedMaybe n -- leadFormBatchUpdateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadFormBatchUpdatePolicyLinks :: Maybe [LeadFormPolicyLink]
+    <*> arbitraryReducedMaybe n -- leadFormBatchUpdatePrivacyPolicyLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadFormBatchUpdateQuestions :: Maybe [LeadFormQuestion]
+    <*> arbitraryReducedMaybe n -- leadFormBatchUpdateStatus :: Maybe LeadFormStatus
   
-instance Arbitrary LeadFormCommon where
-  arbitrary = sized genLeadFormCommon
+instance Arbitrary LeadFormCreate where
+  arbitrary = sized genLeadFormCreate
 
-genLeadFormCommon :: Int -> Gen LeadFormCommon
-genLeadFormCommon n =
-  LeadFormCommon
-    <$> arbitraryReducedMaybe n -- leadFormCommonCompletionMessage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormCommonDisclosureLanguage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormCommonHasAcceptedTerms :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- leadFormCommonName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormCommonPolicyLinks :: Maybe [LeadFormCommonPolicyLinksInner]
-    <*> arbitraryReducedMaybe n -- leadFormCommonPrivacyPolicyLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormCommonQuestions :: Maybe [LeadFormQuestion]
-    <*> arbitraryReducedMaybe n -- leadFormCommonStatus :: Maybe LeadFormStatus
+genLeadFormCreate :: Int -> Gen LeadFormCreate
+genLeadFormCreate n =
+  LeadFormCreate
+    <$> arbitrary -- leadFormCreateCompletionMessage :: Text
+    <*> arbitraryReducedMaybe n -- leadFormCreateDisclosureLanguage :: Maybe Text
+    <*> arbitrary -- leadFormCreateHasAcceptedTerms :: Bool
+    <*> arbitrary -- leadFormCreateName :: Text
+    <*> arbitraryReducedMaybe n -- leadFormCreatePolicyLinks :: Maybe [LeadFormPolicyLink]
+    <*> arbitrary -- leadFormCreatePrivacyPolicyLink :: Text
+    <*> arbitraryReduced n -- leadFormCreateQuestions :: [LeadFormQuestion]
+    <*> arbitraryReducedMaybe n -- leadFormCreateStatus :: Maybe LeadFormStatus
   
-instance Arbitrary LeadFormCommonPolicyLinksInner where
-  arbitrary = sized genLeadFormCommonPolicyLinksInner
+instance Arbitrary LeadFormPolicyLink where
+  arbitrary = sized genLeadFormPolicyLink
 
-genLeadFormCommonPolicyLinksInner :: Int -> Gen LeadFormCommonPolicyLinksInner
-genLeadFormCommonPolicyLinksInner n =
-  LeadFormCommonPolicyLinksInner
-    <$> arbitraryReducedMaybe n -- leadFormCommonPolicyLinksInnerLabel :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormCommonPolicyLinksInnerLink :: Maybe Text
-  
-instance Arbitrary LeadFormCreateRequest where
-  arbitrary = sized genLeadFormCreateRequest
-
-genLeadFormCreateRequest :: Int -> Gen LeadFormCreateRequest
-genLeadFormCreateRequest n =
-  LeadFormCreateRequest
-    <$> arbitraryReducedMaybe n -- leadFormCreateRequestCompletionMessage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormCreateRequestDisclosureLanguage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormCreateRequestHasAcceptedTerms :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- leadFormCreateRequestName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormCreateRequestPolicyLinks :: Maybe [LeadFormCommonPolicyLinksInner]
-    <*> arbitraryReducedMaybe n -- leadFormCreateRequestPrivacyPolicyLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormCreateRequestQuestions :: Maybe [LeadFormQuestion]
-    <*> arbitraryReducedMaybe n -- leadFormCreateRequestStatus :: Maybe LeadFormStatus
+genLeadFormPolicyLink :: Int -> Gen LeadFormPolicyLink
+genLeadFormPolicyLink n =
+  LeadFormPolicyLink
+    <$> arbitraryReducedMaybe n -- leadFormPolicyLinkLabel :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadFormPolicyLinkLink :: Maybe Text
   
 instance Arbitrary LeadFormQuestion where
   arbitrary = sized genLeadFormQuestion
@@ -6785,56 +8119,38 @@ genLeadFormQuestion n =
     <*> arbitraryReducedMaybe n -- leadFormQuestionCustomQuestionOptions :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- leadFormQuestionQuestionType :: Maybe LeadFormQuestionType
   
-instance Arbitrary LeadFormResponse where
-  arbitrary = sized genLeadFormResponse
+instance Arbitrary LeadFormTest where
+  arbitrary = sized genLeadFormTest
 
-genLeadFormResponse :: Int -> Gen LeadFormResponse
-genLeadFormResponse n =
-  LeadFormResponse
-    <$> arbitraryReducedMaybe n -- leadFormResponseCompletionMessage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormResponseDisclosureLanguage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormResponseHasAcceptedTerms :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- leadFormResponseName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormResponsePolicyLinks :: Maybe [LeadFormCommonPolicyLinksInner]
-    <*> arbitraryReducedMaybe n -- leadFormResponsePrivacyPolicyLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormResponseQuestions :: Maybe [LeadFormQuestion]
-    <*> arbitraryReducedMaybe n -- leadFormResponseStatus :: Maybe LeadFormStatus
-    <*> arbitraryReducedMaybe n -- leadFormResponseAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormResponseCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- leadFormResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormResponseUpdatedTime :: Maybe Int
+genLeadFormTest :: Int -> Gen LeadFormTest
+genLeadFormTest n =
+  LeadFormTest
+    <$> arbitraryReducedMaybe n -- leadFormTestSubscriptionId :: Maybe Text
   
-instance Arbitrary LeadFormTestRequest where
-  arbitrary = sized genLeadFormTestRequest
+instance Arbitrary LeadFormTestCreate where
+  arbitrary = sized genLeadFormTestCreate
 
-genLeadFormTestRequest :: Int -> Gen LeadFormTestRequest
-genLeadFormTestRequest n =
-  LeadFormTestRequest
-    <$> arbitrary -- leadFormTestRequestAnswers :: [Text]
+genLeadFormTestCreate :: Int -> Gen LeadFormTestCreate
+genLeadFormTestCreate n =
+  LeadFormTestCreate
+    <$> arbitrary -- leadFormTestCreateAnswers :: [Text]
   
-instance Arbitrary LeadFormTestResponse where
-  arbitrary = sized genLeadFormTestResponse
+instance Arbitrary LeadFormsCreate200Response where
+  arbitrary = sized genLeadFormsCreate200Response
 
-genLeadFormTestResponse :: Int -> Gen LeadFormTestResponse
-genLeadFormTestResponse n =
-  LeadFormTestResponse
-    <$> arbitraryReducedMaybe n -- leadFormTestResponseSubscriptionId :: Maybe Text
+genLeadFormsCreate200Response :: Int -> Gen LeadFormsCreate200Response
+genLeadFormsCreate200Response n =
+  LeadFormsCreate200Response
+    <$> arbitraryReduced n -- leadFormsCreate200ResponseItems :: [LeadFormsCreate200ResponseItemsInner]
   
-instance Arbitrary LeadFormUpdateRequest where
-  arbitrary = sized genLeadFormUpdateRequest
+instance Arbitrary LeadFormsCreate200ResponseItemsInner where
+  arbitrary = sized genLeadFormsCreate200ResponseItemsInner
 
-genLeadFormUpdateRequest :: Int -> Gen LeadFormUpdateRequest
-genLeadFormUpdateRequest n =
-  LeadFormUpdateRequest
-    <$> arbitraryReducedMaybe n -- leadFormUpdateRequestCompletionMessage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormUpdateRequestDisclosureLanguage :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormUpdateRequestHasAcceptedTerms :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- leadFormUpdateRequestName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormUpdateRequestPolicyLinks :: Maybe [LeadFormCommonPolicyLinksInner]
-    <*> arbitraryReducedMaybe n -- leadFormUpdateRequestPrivacyPolicyLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadFormUpdateRequestQuestions :: Maybe [LeadFormQuestion]
-    <*> arbitraryReducedMaybe n -- leadFormUpdateRequestStatus :: Maybe LeadFormStatus
-    <*> arbitrary -- leadFormUpdateRequestId :: Text
+genLeadFormsCreate200ResponseItemsInner :: Int -> Gen LeadFormsCreate200ResponseItemsInner
+genLeadFormsCreate200ResponseItemsInner n =
+  LeadFormsCreate200ResponseItemsInner
+    <$> arbitraryReducedMaybe n -- leadFormsCreate200ResponseItemsInnerData :: Maybe LeadForm
+    <*> arbitraryReducedMaybe n -- leadFormsCreate200ResponseItemsInnerExceptions :: Maybe [PinterestLibBatchItemException]
   
 instance Arbitrary LeadFormsList200Response where
   arbitrary = sized genLeadFormsList200Response
@@ -6843,7 +8159,7 @@ genLeadFormsList200Response :: Int -> Gen LeadFormsList200Response
 genLeadFormsList200Response n =
   LeadFormsList200Response
     <$> arbitraryReducedMaybe n -- leadFormsList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- leadFormsList200ResponseItems :: [LeadFormResponse]
+    <*> arbitraryReduced n -- leadFormsList200ResponseItems :: [LeadForm]
   
 instance Arbitrary LeadSubscription where
   arbitrary = sized genLeadSubscription
@@ -6861,6 +8177,34 @@ genLeadSubscription n =
     <*> arbitraryReducedMaybe n -- leadSubscriptionUserAccountId :: Maybe Text
     <*> arbitraryReducedMaybe n -- leadSubscriptionWebhookUrl :: Maybe Text
   
+instance Arbitrary LeadSubscriptionCreate where
+  arbitrary = sized genLeadSubscriptionCreate
+
+genLeadSubscriptionCreate :: Int -> Gen LeadSubscriptionCreate
+genLeadSubscriptionCreate n =
+  LeadSubscriptionCreate
+    <$> arbitraryReducedMaybe n -- leadSubscriptionCreateLeadFormId :: Maybe Text
+    <*> arbitrary -- leadSubscriptionCreateWebhookUrl :: Text
+  
+instance Arbitrary LeadSubscriptionPostParams where
+  arbitrary = sized genLeadSubscriptionPostParams
+
+genLeadSubscriptionPostParams :: Int -> Gen LeadSubscriptionPostParams
+genLeadSubscriptionPostParams n =
+  LeadSubscriptionPostParams
+    <$> arbitraryReducedMaybe n -- leadSubscriptionPostParamsAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsApiVersion :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsCreatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsCryptographicAlgorithm :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsCryptographicKey :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsLeadFormId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsUserAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsWebhookUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsPartnerAccessToken :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsPartnerMetadata :: Maybe PartnerMetadata
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsPartnerRefreshToken :: Maybe Text
+  
 instance Arbitrary LeadSubscriptionPostParamsCreate where
   arbitrary = sized genLeadSubscriptionPostParamsCreate
 
@@ -6870,34 +8214,8 @@ genLeadSubscriptionPostParamsCreate n =
     <$> arbitraryReducedMaybe n -- leadSubscriptionPostParamsCreateLeadFormId :: Maybe Text
     <*> arbitrary -- leadSubscriptionPostParamsCreateWebhookUrl :: Text
     <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsCreatePartnerAccessToken :: Maybe Text
-    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsCreatePartnerMetadata :: Maybe LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+    <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsCreatePartnerMetadata :: Maybe PartnerMetadata
     <*> arbitraryReducedMaybe n -- leadSubscriptionPostParamsCreatePartnerRefreshToken :: Maybe Text
-  
-instance Arbitrary LeadSubscriptionPostParamsCreateAllOfPartnerMetadata where
-  arbitrary = sized genLeadSubscriptionPostParamsCreateAllOfPartnerMetadata
-
-genLeadSubscriptionPostParamsCreateAllOfPartnerMetadata :: Int -> Gen LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
-genLeadSubscriptionPostParamsCreateAllOfPartnerMetadata n =
-  LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
-    <$> arbitraryReducedMaybe n -- leadSubscriptionPostParamsCreateAllOfPartnerMetadataSubscriberKey :: Maybe Text
-  
-instance Arbitrary LeadsExportCreateRequest where
-  arbitrary = sized genLeadsExportCreateRequest
-
-genLeadsExportCreateRequest :: Int -> Gen LeadsExportCreateRequest
-genLeadsExportCreateRequest n =
-  LeadsExportCreateRequest
-    <$> arbitrary -- leadsExportCreateRequestAdId :: Text
-    <*> arbitrary -- leadsExportCreateRequestEndDate :: Text
-    <*> arbitrary -- leadsExportCreateRequestStartDate :: Text
-  
-instance Arbitrary LeadsExportCreateResponse where
-  arbitrary = sized genLeadsExportCreateResponse
-
-genLeadsExportCreateResponse :: Int -> Gen LeadsExportCreateResponse
-genLeadsExportCreateResponse n =
-  LeadsExportCreateResponse
-    <$> arbitraryReducedMaybe n -- leadsExportCreateResponseLeadsExportId :: Maybe Text
   
 instance Arbitrary LeadsExportResponseData where
   arbitrary = sized genLeadsExportResponseData
@@ -6907,6 +8225,24 @@ genLeadsExportResponseData n =
   LeadsExportResponseData
     <$> arbitraryReducedMaybe n -- leadsExportResponseDataDownloadUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- leadsExportResponseDataExportStatus :: Maybe LeadsExportStatus
+  
+instance Arbitrary LeadsExports where
+  arbitrary = sized genLeadsExports
+
+genLeadsExports :: Int -> Gen LeadsExports
+genLeadsExports n =
+  LeadsExports
+    <$> arbitraryReducedMaybe n -- leadsExportsLeadsExportId :: Maybe Text
+  
+instance Arbitrary LeadsExportsCreate where
+  arbitrary = sized genLeadsExportsCreate
+
+genLeadsExportsCreate :: Int -> Gen LeadsExportsCreate
+genLeadsExportsCreate n =
+  LeadsExportsCreate
+    <$> arbitrary -- leadsExportsCreateAdId :: Text
+    <*> arbitrary -- leadsExportsCreateEndDate :: Text
+    <*> arbitrary -- leadsExportsCreateStartDate :: Text
   
 instance Arbitrary LineItem where
   arbitrary = sized genLineItem
@@ -6923,6 +8259,14 @@ genLineItem n =
     <*> arbitraryReducedMaybe n -- lineItemProductVariant :: Maybe Text
     <*> arbitraryReducedMaybe n -- lineItemProductVariantId :: Maybe Text
   
+instance Arbitrary LinkFilter where
+  arbitrary = sized genLinkFilter
+
+genLinkFilter :: Int -> Gen LinkFilter
+genLinkFilter n =
+  LinkFilter
+    <$> arbitraryReduced n -- linkFilterLink :: CatalogsProductGroupFilterOperatorTypeCriteria
+  
 instance Arbitrary LinkedBusiness where
   arbitrary = sized genLinkedBusiness
 
@@ -6935,23 +8279,208 @@ genLinkedBusiness n =
     <*> arbitraryReducedMaybe n -- linkedBusinessImageXlargeUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- linkedBusinessUsername :: Maybe Text
   
-instance Arbitrary LocalStoreUpdate where
-  arbitrary = sized genLocalStoreUpdate
+instance Arbitrary LocalInventoryCreateOperation where
+  arbitrary = sized genLocalInventoryCreateOperation
 
-genLocalStoreUpdate :: Int -> Gen LocalStoreUpdate
-genLocalStoreUpdate n =
-  LocalStoreUpdate
-    <$> arbitraryReducedMaybe n -- localStoreUpdateAddressPrimary :: Maybe Text
-    <*> arbitraryReducedMaybe n -- localStoreUpdateAddressSecondary :: Maybe Text
-    <*> arbitraryReducedMaybe n -- localStoreUpdateCity :: Maybe Text
-    <*> arbitraryReducedMaybe n -- localStoreUpdateCountry :: Maybe Country
-    <*> arbitrary -- localStoreUpdateId :: Text
-    <*> arbitraryReducedMaybe n -- localStoreUpdateLatitude :: Maybe Float
-    <*> arbitraryReducedMaybe n -- localStoreUpdateLongitude :: Maybe Float
-    <*> arbitraryReducedMaybe n -- localStoreUpdateName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- localStoreUpdatePostalCode :: Maybe Text
-    <*> arbitraryReducedMaybe n -- localStoreUpdateRegion :: Maybe Text
-    <*> arbitraryReducedMaybe n -- localStoreUpdateStoreCode :: Maybe Text
+genLocalInventoryCreateOperation :: Int -> Gen LocalInventoryCreateOperation
+genLocalInventoryCreateOperation n =
+  LocalInventoryCreateOperation
+    <$> arbitraryReduced n -- localInventoryCreateOperationAttributes :: RetailLocalInventoryItemAttributes
+    <*> arbitrary -- localInventoryCreateOperationItemId :: Text
+    <*> arbitrary -- localInventoryCreateOperationOperation :: E'Operation3
+    <*> arbitrary -- localInventoryCreateOperationStoreCode :: Text
+  
+instance Arbitrary LocalInventoryDeleteOperation where
+  arbitrary = sized genLocalInventoryDeleteOperation
+
+genLocalInventoryDeleteOperation :: Int -> Gen LocalInventoryDeleteOperation
+genLocalInventoryDeleteOperation n =
+  LocalInventoryDeleteOperation
+    <$> arbitrary -- localInventoryDeleteOperationItemId :: Text
+    <*> arbitrary -- localInventoryDeleteOperationOperation :: E'Operation
+    <*> arbitrary -- localInventoryDeleteOperationStoreCode :: Text
+  
+instance Arbitrary LocalInventoryItemResponse where
+  arbitrary = sized genLocalInventoryItemResponse
+
+genLocalInventoryItemResponse :: Int -> Gen LocalInventoryItemResponse
+genLocalInventoryItemResponse n =
+  LocalInventoryItemResponse
+    <$> arbitraryReducedMaybe n -- localInventoryItemResponseAdLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localInventoryItemResponseAvailability :: Maybe ItemAvailability
+    <*> arbitrary -- localInventoryItemResponseCreatedAt :: Integer
+    <*> arbitrary -- localInventoryItemResponseItemId :: Text
+    <*> arbitrary -- localInventoryItemResponseLastUpdatedTime :: Integer
+    <*> arbitraryReducedMaybe n -- localInventoryItemResponsePrice :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localInventoryItemResponseSalePrice :: Maybe Text
+    <*> arbitraryReduced n -- localInventoryItemResponseStoreMetadata :: StoreMetadata
+  
+instance Arbitrary LocalInventoryItemsBatch where
+  arbitrary = sized genLocalInventoryItemsBatch
+
+genLocalInventoryItemsBatch :: Int -> Gen LocalInventoryItemsBatch
+genLocalInventoryItemsBatch n =
+  LocalInventoryItemsBatch
+    <$> arbitrary -- localInventoryItemsBatchBatchId :: Text
+    <*> arbitraryReducedMaybe n -- localInventoryItemsBatchCompletedTime :: Maybe DateTime
+    <*> arbitraryReduced n -- localInventoryItemsBatchCreatedTime :: DateTime
+    <*> arbitraryReduced n -- localInventoryItemsBatchOperationResults :: [SupplementalOperationResult]
+    <*> arbitraryReduced n -- localInventoryItemsBatchStatus :: SupplementalItemBatchOperationStatus
+  
+instance Arbitrary LocalInventoryItemsBatchCreate where
+  arbitrary = sized genLocalInventoryItemsBatchCreate
+
+genLocalInventoryItemsBatchCreate :: Int -> Gen LocalInventoryItemsBatchCreate
+genLocalInventoryItemsBatchCreate n =
+  LocalInventoryItemsBatchCreate
+    <$> arbitraryReduced n -- localInventoryItemsBatchCreateOperations :: [LocalInventoryOperation]
+  
+instance Arbitrary LocalInventoryItemsGet where
+  arbitrary = sized genLocalInventoryItemsGet
+
+genLocalInventoryItemsGet :: Int -> Gen LocalInventoryItemsGet
+genLocalInventoryItemsGet n =
+  LocalInventoryItemsGet
+    <$> arbitraryReduced n -- localInventoryItemsGetItems :: [LocalInventoryItemResponse]
+  
+instance Arbitrary LocalInventoryItemsGetCreate where
+  arbitrary = sized genLocalInventoryItemsGetCreate
+
+genLocalInventoryItemsGetCreate :: Int -> Gen LocalInventoryItemsGetCreate
+genLocalInventoryItemsGetCreate n =
+  LocalInventoryItemsGetCreate
+    <$> arbitraryReduced n -- localInventoryItemsGetCreateItemFilters :: [ItemIdStoreCodePair]
+  
+instance Arbitrary LocalInventoryOperation where
+  arbitrary = sized genLocalInventoryOperation
+
+genLocalInventoryOperation :: Int -> Gen LocalInventoryOperation
+genLocalInventoryOperation n =
+  LocalInventoryOperation
+    <$> arbitraryReduced n -- localInventoryOperationAttributes :: RetailLocalInventoryItemAttributes
+    <*> arbitrary -- localInventoryOperationItemId :: Text
+    <*> arbitrary -- localInventoryOperationOperation :: E'Operation
+    <*> arbitrary -- localInventoryOperationStoreCode :: Text
+  
+instance Arbitrary LocalInventoryOperationResult where
+  arbitrary = sized genLocalInventoryOperationResult
+
+genLocalInventoryOperationResult :: Int -> Gen LocalInventoryOperationResult
+genLocalInventoryOperationResult n =
+  LocalInventoryOperationResult
+    <$> arbitraryReducedMaybe n -- localInventoryOperationResultErrors :: Maybe [SupplementalItemValidationEvent]
+    <*> arbitrary -- localInventoryOperationResultItemId :: Text
+    <*> arbitraryReduced n -- localInventoryOperationResultStatus :: SupplementalItemProcessingStatus
+    <*> arbitrary -- localInventoryOperationResultStoreCode :: Text
+    <*> arbitrary -- localInventoryOperationResultSupplementalType :: E'SupplementalType
+    <*> arbitraryReducedMaybe n -- localInventoryOperationResultWarnings :: Maybe [SupplementalItemValidationEvent]
+  
+instance Arbitrary LocalInventoryUpdateOperation where
+  arbitrary = sized genLocalInventoryUpdateOperation
+
+genLocalInventoryUpdateOperation :: Int -> Gen LocalInventoryUpdateOperation
+genLocalInventoryUpdateOperation n =
+  LocalInventoryUpdateOperation
+    <$> arbitraryReduced n -- localInventoryUpdateOperationAttributes :: RetailLocalInventoryItemAttributesOptional
+    <*> arbitrary -- localInventoryUpdateOperationItemId :: Text
+    <*> arbitrary -- localInventoryUpdateOperationOperation :: E'Operation5
+    <*> arbitrary -- localInventoryUpdateOperationStoreCode :: Text
+  
+instance Arbitrary LocalInventoryUpsertOperation where
+  arbitrary = sized genLocalInventoryUpsertOperation
+
+genLocalInventoryUpsertOperation :: Int -> Gen LocalInventoryUpsertOperation
+genLocalInventoryUpsertOperation n =
+  LocalInventoryUpsertOperation
+    <$> arbitraryReduced n -- localInventoryUpsertOperationAttributes :: RetailLocalInventoryItemAttributes
+    <*> arbitrary -- localInventoryUpsertOperationItemId :: Text
+    <*> arbitrary -- localInventoryUpsertOperationOperation :: E'Operation2
+    <*> arbitrary -- localInventoryUpsertOperationStoreCode :: Text
+  
+instance Arbitrary LocalStore where
+  arbitrary = sized genLocalStore
+
+genLocalStore :: Int -> Gen LocalStore
+genLocalStore n =
+  LocalStore
+    <$> arbitraryReducedMaybe n -- localStoreAddressPrimary :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreAddressSecondary :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreCity :: Maybe Text
+    <*> arbitraryReduced n -- localStoreCountry :: Country
+    <*> arbitraryReduced n -- localStoreCreatedAt :: DateTime
+    <*> arbitrary -- localStoreId :: Text
+    <*> arbitraryReducedMaybe n -- localStoreLatitude :: Maybe Float
+    <*> arbitraryReducedMaybe n -- localStoreLongitude :: Maybe Float
+    <*> arbitrary -- localStoreName :: Text
+    <*> arbitraryReducedMaybe n -- localStorePostalCode :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreRegion :: Maybe Text
+    <*> arbitrary -- localStoreStoreCode :: Text
+    <*> arbitraryReduced n -- localStoreUpdatedAt :: DateTime
+  
+instance Arbitrary LocalStoreBatchUpdate where
+  arbitrary = sized genLocalStoreBatchUpdate
+
+genLocalStoreBatchUpdate :: Int -> Gen LocalStoreBatchUpdate
+genLocalStoreBatchUpdate n =
+  LocalStoreBatchUpdate
+    <$> arbitraryReducedMaybe n -- localStoreBatchUpdateAddressPrimary :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreBatchUpdateAddressSecondary :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreBatchUpdateCity :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreBatchUpdateCountry :: Maybe Country
+    <*> arbitrary -- localStoreBatchUpdateId :: Text
+    <*> arbitraryReducedMaybe n -- localStoreBatchUpdateLatitude :: Maybe Float
+    <*> arbitraryReducedMaybe n -- localStoreBatchUpdateLongitude :: Maybe Float
+    <*> arbitraryReducedMaybe n -- localStoreBatchUpdateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreBatchUpdatePostalCode :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreBatchUpdateRegion :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreBatchUpdateStoreCode :: Maybe Text
+  
+instance Arbitrary LocalStoreCreate where
+  arbitrary = sized genLocalStoreCreate
+
+genLocalStoreCreate :: Int -> Gen LocalStoreCreate
+genLocalStoreCreate n =
+  LocalStoreCreate
+    <$> arbitraryReducedMaybe n -- localStoreCreateAddressPrimary :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreCreateAddressSecondary :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreCreateCity :: Maybe Text
+    <*> arbitraryReduced n -- localStoreCreateCountry :: Country
+    <*> arbitraryReducedMaybe n -- localStoreCreateLatitude :: Maybe Float
+    <*> arbitraryReducedMaybe n -- localStoreCreateLongitude :: Maybe Float
+    <*> arbitrary -- localStoreCreateName :: Text
+    <*> arbitraryReducedMaybe n -- localStoreCreatePostalCode :: Maybe Text
+    <*> arbitraryReducedMaybe n -- localStoreCreateRegion :: Maybe Text
+    <*> arbitrary -- localStoreCreateStoreCode :: Text
+  
+instance Arbitrary MMMReport where
+  arbitrary = sized genMMMReport
+
+genMMMReport :: Int -> Gen MMMReport
+genMMMReport n =
+  MMMReport
+    <$> arbitraryReducedMaybe n -- mMMReportMessage :: Maybe Text
+    <*> arbitraryReducedMaybe n -- mMMReportReportStatus :: Maybe BulkReportingJobStatus
+    <*> arbitraryReducedMaybe n -- mMMReportSize :: Maybe Double
+    <*> arbitraryReducedMaybe n -- mMMReportStatus :: Maybe Text
+    <*> arbitraryReducedMaybe n -- mMMReportToken :: Maybe Text
+    <*> arbitraryReducedMaybe n -- mMMReportUrl :: Maybe Text
+  
+instance Arbitrary MMMReportCreate where
+  arbitrary = sized genMMMReportCreate
+
+genMMMReportCreate :: Int -> Gen MMMReportCreate
+genMMMReportCreate n =
+  MMMReportCreate
+    <$> arbitraryReducedMaybe n -- mMMReportCreateAdvertiserIds :: Maybe [Text]
+    <*> arbitraryReduced n -- mMMReportCreateColumns :: [MMMReportingColumn]
+    <*> arbitraryReducedMaybe n -- mMMReportCreateCountries :: Maybe [TargetingAdvertiserCountry]
+    <*> arbitraryReducedMaybe n -- mMMReportCreateCustomColumnIds :: Maybe [Text]
+    <*> arbitrary -- mMMReportCreateEndDate :: Text
+    <*> arbitraryReduced n -- mMMReportCreateGranularity :: MMMReportGranularity
+    <*> arbitraryReduced n -- mMMReportCreateLevel :: MMMReportLevel
+    <*> arbitrary -- mMMReportCreateReportName :: Text
+    <*> arbitrary -- mMMReportCreateStartDate :: Text
+    <*> arbitraryReduced n -- mMMReportCreateTargetingTypes :: [MMMReportingTargetingType]
   
 instance Arbitrary MaxPriceFilter where
   arbitrary = sized genMaxPriceFilter
@@ -7022,30 +8551,23 @@ genMediaUploadParameters n =
     <*> arbitraryReducedMaybe n -- mediaUploadParametersXAmzSecurityToken :: Maybe Text
     <*> arbitraryReducedMaybe n -- mediaUploadParametersXAmzSignature :: Maybe Text
   
-instance Arbitrary MembersToDeleteBody where
-  arbitrary = sized genMembersToDeleteBody
-
-genMembersToDeleteBody :: Int -> Gen MembersToDeleteBody
-genMembersToDeleteBody n =
-  MembersToDeleteBody
-    <$> arbitraryReduced n -- membersToDeleteBodyMembers :: [MembersToDeleteBodyMembersInner]
-  
-instance Arbitrary MembersToDeleteBodyMembersInner where
-  arbitrary = sized genMembersToDeleteBodyMembersInner
-
-genMembersToDeleteBodyMembersInner :: Int -> Gen MembersToDeleteBodyMembersInner
-genMembersToDeleteBodyMembersInner n =
-  MembersToDeleteBodyMembersInner
-    <$> arbitraryReduced n -- membersToDeleteBodyMembersInnerBusinessRole :: BusinessRoleForMembers
-    <*> arbitrary -- membersToDeleteBodyMembersInnerMemberId :: Text
-  
 instance Arbitrary MetricsResponse where
   arbitrary = sized genMetricsResponse
 
 genMetricsResponse :: Int -> Gen MetricsResponse
 genMetricsResponse n =
   MetricsResponse
-    <$> arbitraryReducedMaybe n -- metricsResponseData :: Maybe [A.Value]
+    <$> arbitraryReducedMaybe n -- metricsResponseData :: Maybe [MetricsResponseDataItems]
+  
+instance Arbitrary MetricsResponseDataItems where
+  arbitrary = sized genMetricsResponseDataItems
+
+genMetricsResponseDataItems :: Int -> Gen MetricsResponseDataItems
+genMetricsResponseDataItems n =
+  MetricsResponseDataItems
+    <$> arbitraryReduced n -- metricsResponseDataItemsMetrics :: A.Value
+    <*> arbitrary -- metricsResponseDataItemsTargetingType :: Text
+    <*> arbitrary -- metricsResponseDataItemsTargetingValue :: Text
   
 instance Arbitrary MinPriceFilter where
   arbitrary = sized genMinPriceFilter
@@ -7054,22 +8576,6 @@ genMinPriceFilter :: Int -> Gen MinPriceFilter
 genMinPriceFilter n =
   MinPriceFilter
     <$> arbitraryReduced n -- minPriceFilterMinPrice :: CatalogsProductGroupPricingCriteria
-  
-instance Arbitrary MultipleProductGroupsInner where
-  arbitrary = sized genMultipleProductGroupsInner
-
-genMultipleProductGroupsInner :: Int -> Gen MultipleProductGroupsInner
-genMultipleProductGroupsInner n =
-  MultipleProductGroupsInner
-    <$> arbitraryReducedMaybe n -- multipleProductGroupsInnerDescription :: Maybe Text
-    <*> arbitrary -- multipleProductGroupsInnerFeedId :: Text
-    <*> arbitraryReduced n -- multipleProductGroupsInnerFilters :: CatalogsCreativeAssetsProductGroupFilters
-    <*> arbitraryReducedMaybe n -- multipleProductGroupsInnerIsFeatured :: Maybe Bool
-    <*> arbitrary -- multipleProductGroupsInnerName :: Text
-    <*> arbitrary -- multipleProductGroupsInnerCatalogId :: Text
-    <*> arbitrary -- multipleProductGroupsInnerCatalogType :: E'CatalogType3
-    <*> arbitraryReducedMaybe n -- multipleProductGroupsInnerCountry :: Maybe Country
-    <*> arbitraryReducedMaybe n -- multipleProductGroupsInnerLocale :: Maybe CatalogsLocale
   
 instance Arbitrary NotificationPostRequest where
   arbitrary = sized genNotificationPostRequest
@@ -7085,106 +8591,34 @@ instance Arbitrary NotificationResponse where
 genNotificationResponse :: Int -> Gen NotificationResponse
 genNotificationResponse n =
   NotificationResponse
-    <$> arbitraryReducedMaybe n -- notificationResponseSuccess :: Maybe Bool
+    <$> arbitraryReducedMaybe n -- notificationResponseErrorMsg :: Maybe Text
     <*> arbitraryReducedMaybe n -- notificationResponseReceivedAt :: Maybe Int
-    <*> arbitraryReducedMaybe n -- notificationResponseErrorMsg :: Maybe Text
+    <*> arbitraryReducedMaybe n -- notificationResponseSuccess :: Maybe Bool
   
-instance Arbitrary OauthAccessTokenRequestClientCredentials where
-  arbitrary = sized genOauthAccessTokenRequestClientCredentials
+instance Arbitrary NullableOptimizationGoalMetadata where
+  arbitrary = sized genNullableOptimizationGoalMetadata
 
-genOauthAccessTokenRequestClientCredentials :: Int -> Gen OauthAccessTokenRequestClientCredentials
-genOauthAccessTokenRequestClientCredentials n =
-  OauthAccessTokenRequestClientCredentials
-    <$> arbitrary -- oauthAccessTokenRequestClientCredentialsScope :: Text
-    <*> arbitrary -- oauthAccessTokenRequestClientCredentialsGrantType :: E'GrantType
+genNullableOptimizationGoalMetadata :: Int -> Gen NullableOptimizationGoalMetadata
+genNullableOptimizationGoalMetadata n =
+  NullableOptimizationGoalMetadata
+    <$> arbitraryReducedMaybe n -- nullableOptimizationGoalMetadataConversionTagV3GoalMetadata :: Maybe ConversionTagV3GoalMetadata
+    <*> arbitraryReducedMaybe n -- nullableOptimizationGoalMetadataFrequencyGoalMetadata :: Maybe FrequencyGoalMetadata
+    <*> arbitraryReducedMaybe n -- nullableOptimizationGoalMetadataScrollupGoalMetadata :: Maybe ScrollupGoalMetadata
   
-instance Arbitrary OauthAccessTokenRequestCode where
-  arbitrary = sized genOauthAccessTokenRequestCode
+instance Arbitrary OauthAccessToken where
+  arbitrary = sized genOauthAccessToken
 
-genOauthAccessTokenRequestCode :: Int -> Gen OauthAccessTokenRequestCode
-genOauthAccessTokenRequestCode n =
-  OauthAccessTokenRequestCode
-    <$> arbitrary -- oauthAccessTokenRequestCodeCode :: Text
-    <*> arbitrary -- oauthAccessTokenRequestCodeRedirectUri :: Text
-    <*> arbitrary -- oauthAccessTokenRequestCodeGrantType :: E'GrantType
-  
-instance Arbitrary OauthAccessTokenRequestRefresh where
-  arbitrary = sized genOauthAccessTokenRequestRefresh
-
-genOauthAccessTokenRequestRefresh :: Int -> Gen OauthAccessTokenRequestRefresh
-genOauthAccessTokenRequestRefresh n =
-  OauthAccessTokenRequestRefresh
-    <$> arbitrary -- oauthAccessTokenRequestRefreshRefreshToken :: Text
-    <*> arbitraryReducedMaybe n -- oauthAccessTokenRequestRefreshScope :: Maybe Text
-    <*> arbitrary -- oauthAccessTokenRequestRefreshGrantType :: E'GrantType
-  
-instance Arbitrary OauthAccessTokenResponse where
-  arbitrary = sized genOauthAccessTokenResponse
-
-genOauthAccessTokenResponse :: Int -> Gen OauthAccessTokenResponse
-genOauthAccessTokenResponse n =
-  OauthAccessTokenResponse
-    <$> arbitrary -- oauthAccessTokenResponseAccessToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseExpiresIn :: Int
-    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseResponseType :: Maybe E'GrantType
-    <*> arbitrary -- oauthAccessTokenResponseScope :: Text
-    <*> arbitrary -- oauthAccessTokenResponseTokenType :: Text
-  
-instance Arbitrary OauthAccessTokenResponseClientCredentials where
-  arbitrary = sized genOauthAccessTokenResponseClientCredentials
-
-genOauthAccessTokenResponseClientCredentials :: Int -> Gen OauthAccessTokenResponseClientCredentials
-genOauthAccessTokenResponseClientCredentials n =
-  OauthAccessTokenResponseClientCredentials
-    <$> arbitrary -- oauthAccessTokenResponseClientCredentialsAccessToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseClientCredentialsExpiresIn :: Int
-    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseClientCredentialsResponseType :: Maybe E'GrantType
-    <*> arbitrary -- oauthAccessTokenResponseClientCredentialsScope :: Text
-    <*> arbitrary -- oauthAccessTokenResponseClientCredentialsTokenType :: Text
-  
-instance Arbitrary OauthAccessTokenResponseCode where
-  arbitrary = sized genOauthAccessTokenResponseCode
-
-genOauthAccessTokenResponseCode :: Int -> Gen OauthAccessTokenResponseCode
-genOauthAccessTokenResponseCode n =
-  OauthAccessTokenResponseCode
-    <$> arbitraryReducedMaybe n -- oauthAccessTokenResponseCodeRefreshToken :: Maybe Text
-    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseCodeRefreshTokenExpiresAt :: Maybe Int
-    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseCodeRefreshTokenExpiresIn :: Maybe Int
-    <*> arbitrary -- oauthAccessTokenResponseCodeAccessToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseCodeExpiresIn :: Int
-    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseCodeResponseType :: Maybe E'GrantType
-    <*> arbitrary -- oauthAccessTokenResponseCodeScope :: Text
-    <*> arbitrary -- oauthAccessTokenResponseCodeTokenType :: Text
-  
-instance Arbitrary OauthAccessTokenResponseIntegrationRefresh where
-  arbitrary = sized genOauthAccessTokenResponseIntegrationRefresh
-
-genOauthAccessTokenResponseIntegrationRefresh :: Int -> Gen OauthAccessTokenResponseIntegrationRefresh
-genOauthAccessTokenResponseIntegrationRefresh n =
-  OauthAccessTokenResponseIntegrationRefresh
-    <$> arbitrary -- oauthAccessTokenResponseIntegrationRefreshRefreshToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshRefreshTokenExpiresIn :: Int
-    <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshAccessToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshExpiresIn :: Int
-    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseIntegrationRefreshResponseType :: Maybe E'GrantType
-    <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshScope :: Text
-    <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshTokenType :: Text
-  
-instance Arbitrary OauthAccessTokenResponseRefresh where
-  arbitrary = sized genOauthAccessTokenResponseRefresh
-
-genOauthAccessTokenResponseRefresh :: Int -> Gen OauthAccessTokenResponseRefresh
-genOauthAccessTokenResponseRefresh n =
-  OauthAccessTokenResponseRefresh
-    <$> arbitrary -- oauthAccessTokenResponseRefreshAccessToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseRefreshExpiresIn :: Int
-    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseRefreshResponseType :: Maybe E'GrantType
-    <*> arbitrary -- oauthAccessTokenResponseRefreshScope :: Text
-    <*> arbitrary -- oauthAccessTokenResponseRefreshTokenType :: Text
-    <*> arbitrary -- oauthAccessTokenResponseRefreshRefreshToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseRefreshRefreshTokenExpiresAt :: Int
-    <*> arbitrary -- oauthAccessTokenResponseRefreshRefreshTokenExpiresIn :: Int
+genOauthAccessToken :: Int -> Gen OauthAccessToken
+genOauthAccessToken n =
+  OauthAccessToken
+    <$> arbitrary -- oauthAccessTokenAccessToken :: Text
+    <*> arbitrary -- oauthAccessTokenExpiresIn :: Int
+    <*> arbitraryReducedMaybe n -- oauthAccessTokenRefreshToken :: Maybe Text
+    <*> arbitraryReducedMaybe n -- oauthAccessTokenRefreshTokenExpiresAt :: Maybe Int
+    <*> arbitraryReducedMaybe n -- oauthAccessTokenRefreshTokenExpiresIn :: Maybe Int
+    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseType :: Maybe TokenGrantType
+    <*> arbitraryReducedMaybe n -- oauthAccessTokenScope :: Maybe Text
+    <*> arbitrary -- oauthAccessTokenTokenType :: Text
   
 instance Arbitrary OptimizationGoalMetadata where
   arbitrary = sized genOptimizationGoalMetadata
@@ -7192,50 +8626,9 @@ instance Arbitrary OptimizationGoalMetadata where
 genOptimizationGoalMetadata :: Int -> Gen OptimizationGoalMetadata
 genOptimizationGoalMetadata n =
   OptimizationGoalMetadata
-    <$> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadata :: Maybe OptimizationGoalMetadataConversionTagV3GoalMetadata
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataFrequencyGoalMetadata :: Maybe OptimizationGoalMetadataFrequencyGoalMetadata
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataScrollupGoalMetadata :: Maybe OptimizationGoalMetadataScrollupGoalMetadata
-  
-instance Arbitrary OptimizationGoalMetadataConversionTagV3GoalMetadata where
-  arbitrary = sized genOptimizationGoalMetadataConversionTagV3GoalMetadata
-
-genOptimizationGoalMetadataConversionTagV3GoalMetadata :: Int -> Gen OptimizationGoalMetadataConversionTagV3GoalMetadata
-genOptimizationGoalMetadataConversionTagV3GoalMetadata n =
-  OptimizationGoalMetadataConversionTagV3GoalMetadata
-    <$> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows :: Maybe OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataConversionEvent :: Maybe E'ConversionEvent
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataConversionTagId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataCpaGoalValueInMicroCurrency :: Maybe Text
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataIsRoasOptimized :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataLearningModeType :: Maybe E'ConversionLearningModeType
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataReportingEvent :: Maybe Text
-  
-instance Arbitrary OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows where
-  arbitrary = sized genOptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
-
-genOptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows :: Int -> Gen OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
-genOptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows n =
-  OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
-    <$> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsClickWindowDays :: Maybe Int
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsEngagementWindowDays :: Maybe Int
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsViewWindowDays :: Maybe Int
-  
-instance Arbitrary OptimizationGoalMetadataFrequencyGoalMetadata where
-  arbitrary = sized genOptimizationGoalMetadataFrequencyGoalMetadata
-
-genOptimizationGoalMetadataFrequencyGoalMetadata :: Int -> Gen OptimizationGoalMetadataFrequencyGoalMetadata
-genOptimizationGoalMetadataFrequencyGoalMetadata n =
-  OptimizationGoalMetadataFrequencyGoalMetadata
-    <$> arbitraryReducedMaybe n -- optimizationGoalMetadataFrequencyGoalMetadataFrequency :: Maybe Int
-    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataFrequencyGoalMetadataTimerange :: Maybe E'Timerange
-  
-instance Arbitrary OptimizationGoalMetadataScrollupGoalMetadata where
-  arbitrary = sized genOptimizationGoalMetadataScrollupGoalMetadata
-
-genOptimizationGoalMetadataScrollupGoalMetadata :: Int -> Gen OptimizationGoalMetadataScrollupGoalMetadata
-genOptimizationGoalMetadataScrollupGoalMetadata n =
-  OptimizationGoalMetadataScrollupGoalMetadata
-    <$> arbitraryReducedMaybe n -- optimizationGoalMetadataScrollupGoalMetadataScrollupGoalValueInMicroCurrency :: Maybe Text
+    <$> arbitraryReducedMaybe n -- optimizationGoalMetadataConversionTagV3GoalMetadata :: Maybe ConversionTagV3GoalMetadata
+    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataFrequencyGoalMetadata :: Maybe FrequencyGoalMetadata
+    <*> arbitraryReducedMaybe n -- optimizationGoalMetadataScrollupGoalMetadata :: Maybe ScrollupGoalMetadata
   
 instance Arbitrary OrderLine where
   arbitrary = sized genOrderLine
@@ -7243,70 +8636,44 @@ instance Arbitrary OrderLine where
 genOrderLine :: Int -> Gen OrderLine
 genOrderLine n =
   OrderLine
-    <$> arbitraryReducedMaybe n -- orderLineAdAccountId :: Maybe Text
+    <$> arbitrary -- orderLineAdAccountId :: Text
     <*> arbitraryReducedMaybe n -- orderLineBudget :: Maybe Double
+    <*> arbitrary -- orderLineCampaignIds :: [Text]
     <*> arbitraryReducedMaybe n -- orderLineEndTime :: Maybe Double
-    <*> arbitraryReducedMaybe n -- orderLineId :: Maybe Text
+    <*> arbitrary -- orderLineId :: Text
     <*> arbitraryReducedMaybe n -- orderLineName :: Maybe Text
     <*> arbitraryReducedMaybe n -- orderLinePaidBudget :: Maybe Double
     <*> arbitraryReducedMaybe n -- orderLinePaidType :: Maybe OrderLinePaidType
     <*> arbitraryReducedMaybe n -- orderLinePurchaseOrderId :: Maybe Text
     <*> arbitraryReducedMaybe n -- orderLineStartTime :: Maybe Double
-    <*> arbitraryReducedMaybe n -- orderLineStatus :: Maybe OrderLineStatus
-    <*> arbitraryReducedMaybe n -- orderLineType :: Maybe Text
-    <*> arbitrary -- orderLineCampaignIds :: [Text]
+    <*> arbitraryReduced n -- orderLineStatus :: OrderLineStatus
+    <*> arbitrary -- orderLineType :: Text
   
-instance Arbitrary OrderLineError where
-  arbitrary = sized genOrderLineError
+instance Arbitrary OrderLineMutationError where
+  arbitrary = sized genOrderLineMutationError
 
-genOrderLineError :: Int -> Gen OrderLineError
-genOrderLineError n =
-  OrderLineError
-    <$> arbitraryReducedMaybe n -- orderLineErrorData :: Maybe OrderLine
-    <*> arbitraryReducedMaybe n -- orderLineErrorErrorMessages :: Maybe [Text]
+genOrderLineMutationError :: Int -> Gen OrderLineMutationError
+genOrderLineMutationError n =
+  OrderLineMutationError
+    <$> arbitraryReducedMaybe n -- orderLineMutationErrorData :: Maybe OrderLine
+    <*> arbitraryReducedMaybe n -- orderLineMutationErrorErrorMessages :: Maybe [Text]
   
-instance Arbitrary OrderLineResponse where
-  arbitrary = sized genOrderLineResponse
+instance Arbitrary OrderLineMutationResponse where
+  arbitrary = sized genOrderLineMutationResponse
 
-genOrderLineResponse :: Int -> Gen OrderLineResponse
-genOrderLineResponse n =
-  OrderLineResponse
-    <$> arbitraryReducedMaybe n -- orderLineResponseErrors :: Maybe [OrderLineError]
-    <*> arbitraryReducedMaybe n -- orderLineResponseOrderLine :: Maybe [OrderLine]
+genOrderLineMutationResponse :: Int -> Gen OrderLineMutationResponse
+genOrderLineMutationResponse n =
+  OrderLineMutationResponse
+    <$> arbitraryReducedMaybe n -- orderLineMutationResponseData :: Maybe OrderLineMutationResult
   
-instance Arbitrary OrderLineSingleResponse where
-  arbitrary = sized genOrderLineSingleResponse
+instance Arbitrary OrderLineMutationResult where
+  arbitrary = sized genOrderLineMutationResult
 
-genOrderLineSingleResponse :: Int -> Gen OrderLineSingleResponse
-genOrderLineSingleResponse n =
-  OrderLineSingleResponse
-    <$> arbitraryReducedMaybe n -- orderLineSingleResponseData :: Maybe OrderLineResponse
-  
-instance Arbitrary OrderLines where
-  arbitrary = sized genOrderLines
-
-genOrderLines :: Int -> Gen OrderLines
-genOrderLines n =
-  OrderLines
-    <$> arbitraryReducedMaybe n -- orderLinesAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- orderLinesBudget :: Maybe Double
-    <*> arbitraryReducedMaybe n -- orderLinesEndTime :: Maybe Double
-    <*> arbitraryReducedMaybe n -- orderLinesId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- orderLinesName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- orderLinesPaidBudget :: Maybe Double
-    <*> arbitraryReducedMaybe n -- orderLinesPaidType :: Maybe OrderLinePaidType
-    <*> arbitraryReducedMaybe n -- orderLinesPurchaseOrderId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- orderLinesStartTime :: Maybe Double
-    <*> arbitraryReducedMaybe n -- orderLinesStatus :: Maybe OrderLineStatus
-    <*> arbitraryReducedMaybe n -- orderLinesType :: Maybe Text
-  
-instance Arbitrary OrderLinesArrayResponse where
-  arbitrary = sized genOrderLinesArrayResponse
-
-genOrderLinesArrayResponse :: Int -> Gen OrderLinesArrayResponse
-genOrderLinesArrayResponse n =
-  OrderLinesArrayResponse
-    <$> arbitraryReducedMaybe n -- orderLinesArrayResponseItems :: Maybe [OrderLines]
+genOrderLineMutationResult :: Int -> Gen OrderLineMutationResult
+genOrderLineMutationResult n =
+  OrderLineMutationResult
+    <$> arbitraryReducedMaybe n -- orderLineMutationResultErrors :: Maybe [OrderLineMutationError]
+    <*> arbitraryReducedMaybe n -- orderLineMutationResultOrderLine :: Maybe [OrderLine]
   
 instance Arbitrary OrderLinesList200Response where
   arbitrary = sized genOrderLinesList200Response
@@ -7326,14 +8693,22 @@ genPageVisitConversionTagsGet200Response n =
     <$> arbitraryReducedMaybe n -- pageVisitConversionTagsGet200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- pageVisitConversionTagsGet200ResponseItems :: [ConversionEventResponse]
   
-instance Arbitrary Paginated where
-  arbitrary = sized genPaginated
+instance Arbitrary PartnerMetadata where
+  arbitrary = sized genPartnerMetadata
 
-genPaginated :: Int -> Gen Paginated
-genPaginated n =
-  Paginated
-    <$> arbitraryReducedMaybe n -- paginatedBookmark :: Maybe Text
-    <*> arbitraryReduced n -- paginatedItems :: [A.Value]
+genPartnerMetadata :: Int -> Gen PartnerMetadata
+genPartnerMetadata n =
+  PartnerMetadata
+    <$> arbitraryReducedMaybe n -- partnerMetadataSubscriberKey :: Maybe Text
+  
+instance Arbitrary PerformancePlusCampaignSettings where
+  arbitrary = sized genPerformancePlusCampaignSettings
+
+genPerformancePlusCampaignSettings :: Int -> Gen PerformancePlusCampaignSettings
+genPerformancePlusCampaignSettings n =
+  PerformancePlusCampaignSettings
+    <$> arbitraryReducedMaybe n -- performancePlusCampaignSettingsBoostProspectingAdGroupBid :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- performancePlusCampaignSettingsPinnerListExclusions :: Maybe [Text]
   
 instance Arbitrary Pin where
   arbitrary = sized genPin
@@ -7341,23 +8716,35 @@ instance Arbitrary Pin where
 genPin :: Int -> Gen Pin
 genPin n =
   Pin
-    <$> arbitraryReducedMaybe n -- pinAltText :: Maybe Text
+    <$> arbitraryReducedMaybe n -- pinAiDisclosures :: Maybe AiDisclosures
     <*> arbitraryReducedMaybe n -- pinBoardId :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinBoardOwner :: Maybe BoardOwner
     <*> arbitraryReducedMaybe n -- pinBoardSectionId :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinCreatedAt :: Maybe DateTime
     <*> arbitraryReducedMaybe n -- pinCreativeType :: Maybe CreativeType
-    <*> arbitraryReducedMaybe n -- pinDescription :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinDominantColor :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinHasBeenPromoted :: Maybe Bool
     <*> arbitrary -- pinId :: Text
     <*> arbitraryReducedMaybe n -- pinIsOwner :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- pinIsProduct :: Maybe Bool
     <*> arbitraryReducedMaybe n -- pinIsStandard :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- pinLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinMedia :: Maybe PinMedia
     <*> arbitraryReducedMaybe n -- pinParentPinId :: Maybe Text
     <*> arbitraryReducedMaybeValue n -- pinPinMetrics :: Maybe A.Value
+    <*> arbitraryReducedMaybe n -- pinAltText :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinDescription :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinTitle :: Maybe Text
+  
+instance Arbitrary PinAnalyticsDailyMetrics where
+  arbitrary = sized genPinAnalyticsDailyMetrics
+
+genPinAnalyticsDailyMetrics :: Int -> Gen PinAnalyticsDailyMetrics
+genPinAnalyticsDailyMetrics n =
+  PinAnalyticsDailyMetrics
+    <$> arbitraryReducedMaybe n -- pinAnalyticsDailyMetricsDataStatus :: Maybe DataStatus
+    <*> arbitraryReducedMaybe n -- pinAnalyticsDailyMetricsDate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinAnalyticsDailyMetricsMetrics :: Maybe (Map.Map String Double)
   
 instance Arbitrary PinAnalyticsMetricsResponse where
   arbitrary = sized genPinAnalyticsMetricsResponse
@@ -7365,19 +8752,31 @@ instance Arbitrary PinAnalyticsMetricsResponse where
 genPinAnalyticsMetricsResponse :: Int -> Gen PinAnalyticsMetricsResponse
 genPinAnalyticsMetricsResponse n =
   PinAnalyticsMetricsResponse
-    <$> arbitraryReducedMaybe n -- pinAnalyticsMetricsResponseDailyMetrics :: Maybe [PinAnalyticsMetricsResponseDailyMetricsInner]
+    <$> arbitraryReducedMaybe n -- pinAnalyticsMetricsResponseDailyMetrics :: Maybe [PinAnalyticsDailyMetrics]
     <*> arbitraryReducedMaybe n -- pinAnalyticsMetricsResponseLifetimeMetrics :: Maybe (Map.Map String Int)
     <*> arbitraryReducedMaybe n -- pinAnalyticsMetricsResponseSummaryMetrics :: Maybe (Map.Map String Double)
   
-instance Arbitrary PinAnalyticsMetricsResponseDailyMetricsInner where
-  arbitrary = sized genPinAnalyticsMetricsResponseDailyMetricsInner
+instance Arbitrary PinBase where
+  arbitrary = sized genPinBase
 
-genPinAnalyticsMetricsResponseDailyMetricsInner :: Int -> Gen PinAnalyticsMetricsResponseDailyMetricsInner
-genPinAnalyticsMetricsResponseDailyMetricsInner n =
-  PinAnalyticsMetricsResponseDailyMetricsInner
-    <$> arbitraryReducedMaybe n -- pinAnalyticsMetricsResponseDailyMetricsInnerDataStatus :: Maybe DataStatus
-    <*> arbitraryReducedMaybe n -- pinAnalyticsMetricsResponseDailyMetricsInnerDate :: Maybe Text
-    <*> arbitraryReducedMaybe n -- pinAnalyticsMetricsResponseDailyMetricsInnerMetrics :: Maybe (Map.Map String Double)
+genPinBase :: Int -> Gen PinBase
+genPinBase n =
+  PinBase
+    <$> arbitraryReducedMaybe n -- pinBaseAiDisclosures :: Maybe AiDisclosures
+    <*> arbitraryReducedMaybe n -- pinBaseBoardId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinBaseBoardOwner :: Maybe BoardOwner
+    <*> arbitraryReducedMaybe n -- pinBaseBoardSectionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinBaseCreatedAt :: Maybe DateTime
+    <*> arbitraryReducedMaybe n -- pinBaseCreativeType :: Maybe CreativeType
+    <*> arbitraryReducedMaybe n -- pinBaseDominantColor :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinBaseHasBeenPromoted :: Maybe Bool
+    <*> arbitrary -- pinBaseId :: Text
+    <*> arbitraryReducedMaybe n -- pinBaseIsOwner :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- pinBaseIsProduct :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- pinBaseIsStandard :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- pinBaseMedia :: Maybe PinMedia
+    <*> arbitraryReducedMaybe n -- pinBaseParentPinId :: Maybe Text
+    <*> arbitraryReducedMaybeValue n -- pinBasePinMetrics :: Maybe A.Value
   
 instance Arbitrary PinCreate where
   arbitrary = sized genPinCreate
@@ -7385,7 +8784,8 @@ instance Arbitrary PinCreate where
 genPinCreate :: Int -> Gen PinCreate
 genPinCreate n =
   PinCreate
-    <$> arbitraryReducedMaybe n -- pinCreateAltText :: Maybe Text
+    <$> arbitraryReducedMaybe n -- pinCreateAiDisclosures :: Maybe AiDisclosures
+    <*> arbitraryReducedMaybe n -- pinCreateAltText :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinCreateBoardId :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinCreateBoardSectionId :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinCreateDescription :: Maybe Text
@@ -7408,6 +8808,7 @@ genPinMedia n =
     <*> arbitraryReducedMaybe n -- pinMediaDuration :: Maybe Double
     <*> arbitraryReducedMaybe n -- pinMediaHeight :: Maybe Int
     <*> arbitraryReducedMaybe n -- pinMediaVideoUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinMediaVideoUrlHls :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinMediaWidth :: Maybe Int
     <*> arbitraryReducedMaybe n -- pinMediaItems :: Maybe [PinMediaMetadata]
   
@@ -7419,13 +8820,14 @@ genPinMediaMetadata n =
   PinMediaMetadata
     <$> arbitraryReducedMaybe n -- pinMediaMetadataDescription :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinMediaMetadataImages :: Maybe ImageSize
-    <*> arbitraryReducedMaybe n -- pinMediaMetadataItemType :: Maybe Text
+    <*> arbitrary -- pinMediaMetadataItemType :: E'ItemType2
     <*> arbitraryReducedMaybe n -- pinMediaMetadataLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinMediaMetadataTitle :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinMediaMetadataCoverImageUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinMediaMetadataDuration :: Maybe Double
     <*> arbitraryReducedMaybe n -- pinMediaMetadataHeight :: Maybe Int
     <*> arbitraryReducedMaybe n -- pinMediaMetadataVideoUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinMediaMetadataVideoUrlHls :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinMediaMetadataWidth :: Maybe Int
   
 instance Arbitrary PinMediaSource where
@@ -7542,7 +8944,7 @@ genPinMediaWithImage :: Int -> Gen PinMediaWithImage
 genPinMediaWithImage n =
   PinMediaWithImage
     <$> arbitraryReducedMaybe n -- pinMediaWithImageImages :: Maybe ImageSize
-    <*> arbitrary -- pinMediaWithImageMediaType :: E'MediaType2
+    <*> arbitrary -- pinMediaWithImageMediaType :: E'ItemType
   
 instance Arbitrary PinMediaWithImageAndVideo where
   arbitrary = sized genPinMediaWithImageAndVideo
@@ -7560,7 +8962,7 @@ genPinMediaWithImages :: Int -> Gen PinMediaWithImages
 genPinMediaWithImages n =
   PinMediaWithImages
     <$> arbitraryReducedMaybe n -- pinMediaWithImagesItems :: Maybe [ImageMetadata]
-    <*> arbitrary -- pinMediaWithImagesMediaType :: E'MediaType3
+    <*> arbitrary -- pinMediaWithImagesMediaType :: E'MediaType2
   
 instance Arbitrary PinMediaWithVideo where
   arbitrary = sized genPinMediaWithVideo
@@ -7572,8 +8974,9 @@ genPinMediaWithVideo n =
     <*> arbitraryReducedMaybe n -- pinMediaWithVideoDuration :: Maybe Double
     <*> arbitraryReducedMaybe n -- pinMediaWithVideoHeight :: Maybe Int
     <*> arbitraryReducedMaybe n -- pinMediaWithVideoImages :: Maybe ImageSize
-    <*> arbitrary -- pinMediaWithVideoMediaType :: E'MediaType4
+    <*> arbitrary -- pinMediaWithVideoMediaType :: E'ItemType2
     <*> arbitraryReducedMaybe n -- pinMediaWithVideoVideoUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinMediaWithVideoVideoUrlHls :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinMediaWithVideoWidth :: Maybe Int
   
 instance Arbitrary PinMediaWithVideos where
@@ -7583,7 +8986,33 @@ genPinMediaWithVideos :: Int -> Gen PinMediaWithVideos
 genPinMediaWithVideos n =
   PinMediaWithVideos
     <$> arbitraryReducedMaybe n -- pinMediaWithVideosItems :: Maybe [VideoMetadataWithItemType]
-    <*> arbitrary -- pinMediaWithVideosMediaType :: E'MediaType5
+    <*> arbitrary -- pinMediaWithVideosMediaType :: E'MediaType3
+  
+instance Arbitrary PinRead where
+  arbitrary = sized genPinRead
+
+genPinRead :: Int -> Gen PinRead
+genPinRead n =
+  PinRead
+    <$> arbitraryReducedMaybe n -- pinReadAiDisclosures :: Maybe AiDisclosures
+    <*> arbitraryReducedMaybe n -- pinReadBoardId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinReadBoardOwner :: Maybe BoardOwner
+    <*> arbitraryReducedMaybe n -- pinReadBoardSectionId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinReadCreatedAt :: Maybe DateTime
+    <*> arbitraryReducedMaybe n -- pinReadCreativeType :: Maybe CreativeType
+    <*> arbitraryReducedMaybe n -- pinReadDominantColor :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinReadHasBeenPromoted :: Maybe Bool
+    <*> arbitrary -- pinReadId :: Text
+    <*> arbitraryReducedMaybe n -- pinReadIsOwner :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- pinReadIsProduct :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- pinReadIsStandard :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- pinReadMedia :: Maybe PinMedia
+    <*> arbitraryReducedMaybe n -- pinReadParentPinId :: Maybe Text
+    <*> arbitraryReducedMaybeValue n -- pinReadPinMetrics :: Maybe A.Value
+    <*> arbitraryReducedMaybe n -- pinReadAltText :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinReadDescription :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinReadLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinReadTitle :: Maybe Text
   
 instance Arbitrary PinUpdate where
   arbitrary = sized genPinUpdate
@@ -7591,7 +9020,8 @@ instance Arbitrary PinUpdate where
 genPinUpdate :: Int -> Gen PinUpdate
 genPinUpdate n =
   PinUpdate
-    <$> arbitraryReducedMaybe n -- pinUpdateAltText :: Maybe Text
+    <$> arbitraryReducedMaybe n -- pinUpdateAiDisclosures :: Maybe AiDisclosuresUpdate
+    <*> arbitraryReducedMaybe n -- pinUpdateAltText :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinUpdateBoardId :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinUpdateBoardSectionId :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinUpdateCarouselSlots :: Maybe [CarouselSlot]
@@ -7608,14 +9038,23 @@ genPinsList200Response n =
     <$> arbitraryReducedMaybe n -- pinsList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- pinsList200ResponseItems :: [Pin]
   
-instance Arbitrary PinsSaveRequest where
-  arbitrary = sized genPinsSaveRequest
+instance Arbitrary PinsSaveRequestCreate where
+  arbitrary = sized genPinsSaveRequestCreate
 
-genPinsSaveRequest :: Int -> Gen PinsSaveRequest
-genPinsSaveRequest n =
-  PinsSaveRequest
-    <$> arbitraryReducedMaybe n -- pinsSaveRequestBoardId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- pinsSaveRequestBoardSectionId :: Maybe Text
+genPinsSaveRequestCreate :: Int -> Gen PinsSaveRequestCreate
+genPinsSaveRequestCreate n =
+  PinsSaveRequestCreate
+    <$> arbitraryReducedMaybe n -- pinsSaveRequestCreateBoardId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- pinsSaveRequestCreateBoardSectionId :: Maybe Text
+  
+instance Arbitrary PinterestLibBatchItemException where
+  arbitrary = sized genPinterestLibBatchItemException
+
+genPinterestLibBatchItemException :: Int -> Gen PinterestLibBatchItemException
+genPinterestLibBatchItemException n =
+  PinterestLibBatchItemException
+    <$> arbitraryReducedMaybe n -- pinterestLibBatchItemExceptionCode :: Maybe Int
+    <*> arbitrary -- pinterestLibBatchItemExceptionMessage :: Text
   
 instance Arbitrary PinterestLibError where
   arbitrary = sized genPinterestLibError
@@ -7634,13 +9073,21 @@ genPinterestLibStatus204 n =
   PinterestLibStatus204
     <$> arbitrary -- pinterestLibStatus204StatusCode :: E'StatusCode
   
+instance Arbitrary PinterestProductCategoriesFilter where
+  arbitrary = sized genPinterestProductCategoriesFilter
+
+genPinterestProductCategoriesFilter :: Int -> Gen PinterestProductCategoriesFilter
+genPinterestProductCategoriesFilter n =
+  PinterestProductCategoriesFilter
+    <$> arbitraryReduced n -- pinterestProductCategoriesFilterPinterestProductCategories :: CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+  
 instance Arbitrary PlacementMultipliers where
   arbitrary = sized genPlacementMultipliers
 
 genPlacementMultipliers :: Int -> Gen PlacementMultipliers
 genPlacementMultipliers n =
   PlacementMultipliers
-    <$> arbitraryReducedMaybe n -- placementMultipliersPlacement :: Maybe E'Placement
+    <$> arbitraryReducedMaybe n -- placementMultipliersPlacement :: Maybe PlacementType
   
 instance Arbitrary PredictedTimeSeries where
   arbitrary = sized genPredictedTimeSeries
@@ -7656,7 +9103,18 @@ instance Arbitrary PriceFilter where
 genPriceFilter :: Int -> Gen PriceFilter
 genPriceFilter n =
   PriceFilter
-    <$> arbitraryReduced n -- priceFilterPrice :: CatalogsProductGroupPricingCurrencyCriteria
+    <$> arbitraryReduced n -- priceFilterPrice :: PriceFilterPrice
+  
+instance Arbitrary PriceFilterPrice where
+  arbitrary = sized genPriceFilterPrice
+
+genPriceFilterPrice :: Int -> Gen PriceFilterPrice
+genPriceFilterPrice n =
+  PriceFilterPrice
+    <$> arbitraryReduced n -- priceFilterPriceCurrency :: NonNullableCatalogsCurrency
+    <*> arbitraryReducedMaybe n -- priceFilterPriceNegated :: Maybe Bool
+    <*> arbitraryReduced n -- priceFilterPriceOperator :: NumericFilterOperatorType
+    <*> arbitrary -- priceFilterPriceValue :: Double
   
 instance Arbitrary ProductCategoriesDemographic where
   arbitrary = sized genProductCategoriesDemographic
@@ -7691,14 +9149,14 @@ genProductCategoryDetails n =
     <*> arbitraryReducedMaybe n -- productCategoryDetailsRelatedSearches :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- productCategoryDetailsTimeSeries :: Maybe (Map.Map String Double)
   
-instance Arbitrary ProductGroupAnalyticsResponseInner where
-  arbitrary = sized genProductGroupAnalyticsResponseInner
+instance Arbitrary ProductGroupAnalyticsItems where
+  arbitrary = sized genProductGroupAnalyticsItems
 
-genProductGroupAnalyticsResponseInner :: Int -> Gen ProductGroupAnalyticsResponseInner
-genProductGroupAnalyticsResponseInner n =
-  ProductGroupAnalyticsResponseInner
-    <$> arbitraryReducedMaybe n -- productGroupAnalyticsResponseInnerDate :: Maybe Date
-    <*> arbitrary -- productGroupAnalyticsResponseInnerProductGroupId :: Text
+genProductGroupAnalyticsItems :: Int -> Gen ProductGroupAnalyticsItems
+genProductGroupAnalyticsItems n =
+  ProductGroupAnalyticsItems
+    <$> arbitraryReducedMaybe n -- productGroupAnalyticsItemsDate :: Maybe Date
+    <*> arbitrary -- productGroupAnalyticsItemsProductGroupId :: Text
   
 instance Arbitrary ProductGroupPromotion where
   arbitrary = sized genProductGroupPromotion
@@ -7710,19 +9168,20 @@ genProductGroupPromotion n =
     <*> arbitraryReducedMaybe n -- productGroupPromotionBidInMicroCurrency :: Maybe Int
     <*> arbitraryReducedMaybe n -- productGroupPromotionCatalogProductGroupId :: Maybe Text
     <*> arbitraryReducedMaybe n -- productGroupPromotionCatalogProductGroupName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- productGroupPromotionCollectionsHeaderType :: Maybe E'CollectionsHeaderType
+    <*> arbitraryReducedMaybe n -- productGroupPromotionCollectionsHeaderType :: Maybe CollectionsHeaderType
     <*> arbitraryReducedMaybe n -- productGroupPromotionCollectionsHeroDestinationUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- productGroupPromotionCollectionsHeroPinId :: Maybe Text
     <*> arbitraryReducedMaybe n -- productGroupPromotionCreativeType :: Maybe CreativeType
-    <*> arbitraryReducedMaybe n -- productGroupPromotionCustomizableCtaType :: Maybe E'CustomizableCtaType
+    <*> arbitraryReducedMaybe n -- productGroupPromotionCustomizableCtaType :: Maybe ProductGroupPromotionCustomizableCTAType
     <*> arbitraryReducedMaybe n -- productGroupPromotionDefinition :: Maybe Text
     <*> arbitraryReducedMaybe n -- productGroupPromotionGridClickType :: Maybe GridClickType
     <*> arbitraryReducedMaybe n -- productGroupPromotionId :: Maybe Text
     <*> arbitraryReducedMaybe n -- productGroupPromotionIncluded :: Maybe Bool
     <*> arbitraryReducedMaybe n -- productGroupPromotionIsGenerateBackground :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- productGroupPromotionIsImageAutoResizing :: Maybe Bool
     <*> arbitraryReducedMaybe n -- productGroupPromotionIsMdl :: Maybe Bool
     <*> arbitraryReducedMaybe n -- productGroupPromotionParentId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- productGroupPromotionPreferredMediaType :: Maybe E'PreferredMediaType
+    <*> arbitraryReducedMaybe n -- productGroupPromotionPreferredMediaType :: Maybe PreferredMediaType
     <*> arbitraryReducedMaybe n -- productGroupPromotionRelativeDefinition :: Maybe Text
     <*> arbitraryReducedMaybe n -- productGroupPromotionSelectedImageTag :: Maybe Text
     <*> arbitraryReducedMaybe n -- productGroupPromotionSelectedVideoTag :: Maybe Text
@@ -7739,14 +9198,6 @@ genProductGroupPromotionCreateRequest n =
   ProductGroupPromotionCreateRequest
     <$> arbitrary -- productGroupPromotionCreateRequestAdGroupId :: Text
     <*> arbitraryReduced n -- productGroupPromotionCreateRequestProductGroupPromotion :: [ProductGroupPromotion]
-  
-instance Arbitrary ProductGroupPromotionResponse where
-  arbitrary = sized genProductGroupPromotionResponse
-
-genProductGroupPromotionResponse :: Int -> Gen ProductGroupPromotionResponse
-genProductGroupPromotionResponse n =
-  ProductGroupPromotionResponse
-    <$> arbitraryReducedMaybe n -- productGroupPromotionResponseItems :: Maybe [ProductGroupPromotionResponseItem]
   
 instance Arbitrary ProductGroupPromotionResponseItem where
   arbitrary = sized genProductGroupPromotionResponseItem
@@ -7766,6 +9217,23 @@ genProductGroupPromotionUpdateRequest n =
     <$> arbitrary -- productGroupPromotionUpdateRequestAdGroupId :: Text
     <*> arbitraryReduced n -- productGroupPromotionUpdateRequestProductGroupPromotion :: [ProductGroupPromotion]
   
+instance Arbitrary ProductGroupPromotions where
+  arbitrary = sized genProductGroupPromotions
+
+genProductGroupPromotions :: Int -> Gen ProductGroupPromotions
+genProductGroupPromotions n =
+  ProductGroupPromotions
+    <$> arbitraryReducedMaybe n -- productGroupPromotionsItems :: Maybe [ProductGroupPromotionResponseItem]
+  
+instance Arbitrary ProductGroupPromotionsCreate where
+  arbitrary = sized genProductGroupPromotionsCreate
+
+genProductGroupPromotionsCreate :: Int -> Gen ProductGroupPromotionsCreate
+genProductGroupPromotionsCreate n =
+  ProductGroupPromotionsCreate
+    <$> arbitrary -- productGroupPromotionsCreateAdGroupId :: Text
+    <*> arbitraryReduced n -- productGroupPromotionsCreateProductGroupPromotion :: [ProductGroupPromotion]
+  
 instance Arbitrary ProductGroupPromotionsList200Response where
   arbitrary = sized genProductGroupPromotionsList200Response
 
@@ -7775,6 +9243,15 @@ genProductGroupPromotionsList200Response n =
     <$> arbitraryReducedMaybe n -- productGroupPromotionsList200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- productGroupPromotionsList200ResponseItems :: [ProductGroupPromotion]
   
+instance Arbitrary ProductGroupPromotionsUpdateWithRequiredBody where
+  arbitrary = sized genProductGroupPromotionsUpdateWithRequiredBody
+
+genProductGroupPromotionsUpdateWithRequiredBody :: Int -> Gen ProductGroupPromotionsUpdateWithRequiredBody
+genProductGroupPromotionsUpdateWithRequiredBody n =
+  ProductGroupPromotionsUpdateWithRequiredBody
+    <$> arbitrary -- productGroupPromotionsUpdateWithRequiredBodyAdGroupId :: Text
+    <*> arbitraryReduced n -- productGroupPromotionsUpdateWithRequiredBodyProductGroupPromotion :: [ProductGroupPromotion]
+  
 instance Arbitrary ProductGroupReferenceFilter where
   arbitrary = sized genProductGroupReferenceFilter
 
@@ -7782,6 +9259,48 @@ genProductGroupReferenceFilter :: Int -> Gen ProductGroupReferenceFilter
 genProductGroupReferenceFilter n =
   ProductGroupReferenceFilter
     <$> arbitraryReduced n -- productGroupReferenceFilterProductGroup :: CatalogsProductGroupMultipleStringCriteria
+  
+instance Arbitrary ProductTagItem where
+  arbitrary = sized genProductTagItem
+
+genProductTagItem :: Int -> Gen ProductTagItem
+genProductTagItem n =
+  ProductTagItem
+    <$> arbitrary -- productTagItemPinId :: Text
+  
+instance Arbitrary ProductTagsBulkAddRequest where
+  arbitrary = sized genProductTagsBulkAddRequest
+
+genProductTagsBulkAddRequest :: Int -> Gen ProductTagsBulkAddRequest
+genProductTagsBulkAddRequest n =
+  ProductTagsBulkAddRequest
+    <$> arbitraryReduced n -- productTagsBulkAddRequestProductTags :: [ProductTagItem]
+  
+instance Arbitrary ProductTagsBulkDeleteRequest where
+  arbitrary = sized genProductTagsBulkDeleteRequest
+
+genProductTagsBulkDeleteRequest :: Int -> Gen ProductTagsBulkDeleteRequest
+genProductTagsBulkDeleteRequest n =
+  ProductTagsBulkDeleteRequest
+    <$> arbitraryReduced n -- productTagsBulkDeleteRequestProductTags :: [ProductTagItem]
+  
+instance Arbitrary ProductTagsError where
+  arbitrary = sized genProductTagsError
+
+genProductTagsError :: Int -> Gen ProductTagsError
+genProductTagsError n =
+  ProductTagsError
+    <$> arbitrary -- productTagsErrorCode :: Int
+    <*> arbitraryReducedMaybe n -- productTagsErrorDetails :: Maybe IneligibleProductTagsErrorDetails
+    <*> arbitrary -- productTagsErrorMessage :: Text
+  
+instance Arbitrary ProductTagsResponse where
+  arbitrary = sized genProductTagsResponse
+
+genProductTagsResponse :: Int -> Gen ProductTagsResponse
+genProductTagsResponse n =
+  ProductTagsResponse
+    <$> arbitraryReduced n -- productTagsResponseProductTags :: [ProductTagItem]
   
 instance Arbitrary ProductType0Filter where
   arbitrary = sized genProductType0Filter
@@ -7823,68 +9342,69 @@ genProductType4Filter n =
   ProductType4Filter
     <$> arbitraryReduced n -- productType4FilterProductType4 :: CatalogsProductGroupMultipleStringListCriteria
   
+instance Arbitrary Promotion where
+  arbitrary = sized genPromotion
+
+genPromotion :: Int -> Gen Promotion
+genPromotion n =
+  Promotion
+    <$> arbitrary -- promotionAdAccountId :: Text
+    <*> arbitraryReducedMaybe n -- promotionDiscountStatus :: Maybe DiscountStatus
+    <*> arbitraryReducedMaybe n -- promotionEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- promotionExternalId :: Maybe Text
+    <*> arbitrary -- promotionId :: Text
+    <*> arbitraryReducedMaybe n -- promotionPlatformType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- promotionPromotionCode :: Maybe Text
+    <*> arbitraryReducedMaybe n -- promotionPromotionCustomId :: Maybe Text
+    <*> arbitrary -- promotionPromotionTitle :: Text
+    <*> arbitraryReduced n -- promotionPromotionType :: PromotionType
+    <*> arbitraryReducedMaybe n -- promotionStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- promotionStatus :: Maybe EntityStatus
+    <*> arbitraryReducedMaybe n -- promotionTemplateValues :: Maybe [PromotionTemplateValue]
+  
 instance Arbitrary PromotionArrayElement where
   arbitrary = sized genPromotionArrayElement
 
 genPromotionArrayElement :: Int -> Gen PromotionArrayElement
 genPromotionArrayElement n =
   PromotionArrayElement
-    <$> arbitraryReducedMaybe n -- promotionArrayElementData :: Maybe PromotionResponse
+    <$> arbitraryReducedMaybe n -- promotionArrayElementData :: Maybe Promotion
     <*> arbitraryReducedMaybe n -- promotionArrayElementException :: Maybe Exception
   
-instance Arbitrary PromotionCommon where
-  arbitrary = sized genPromotionCommon
+instance Arbitrary PromotionBatchUpdate where
+  arbitrary = sized genPromotionBatchUpdate
 
-genPromotionCommon :: Int -> Gen PromotionCommon
-genPromotionCommon n =
-  PromotionCommon
-    <$> arbitraryReducedMaybe n -- promotionCommonDiscountStatus :: Maybe E'DiscountStatus
-    <*> arbitraryReducedMaybe n -- promotionCommonEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- promotionCommonExternalId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionCommonPlatformType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionCommonPromotionCode :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionCommonPromotionCustomId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionCommonPromotionTitle :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionCommonPromotionType :: Maybe PromotionType
-    <*> arbitraryReducedMaybe n -- promotionCommonStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- promotionCommonTemplateValues :: Maybe [PromotionTemplateValue]
+genPromotionBatchUpdate :: Int -> Gen PromotionBatchUpdate
+genPromotionBatchUpdate n =
+  PromotionBatchUpdate
+    <$> arbitraryReducedMaybe n -- promotionBatchUpdateDiscountStatus :: Maybe DiscountStatus
+    <*> arbitraryReducedMaybe n -- promotionBatchUpdateEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- promotionBatchUpdateExternalId :: Maybe Text
+    <*> arbitrary -- promotionBatchUpdateId :: Text
+    <*> arbitraryReducedMaybe n -- promotionBatchUpdatePlatformType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- promotionBatchUpdatePromotionCode :: Maybe Text
+    <*> arbitraryReducedMaybe n -- promotionBatchUpdatePromotionCustomId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- promotionBatchUpdatePromotionTitle :: Maybe Text
+    <*> arbitraryReducedMaybe n -- promotionBatchUpdatePromotionType :: Maybe PromotionType
+    <*> arbitraryReducedMaybe n -- promotionBatchUpdateStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- promotionBatchUpdateTemplateValues :: Maybe [PromotionTemplateValue]
   
-instance Arbitrary PromotionCreateRequest where
-  arbitrary = sized genPromotionCreateRequest
+instance Arbitrary PromotionCreate where
+  arbitrary = sized genPromotionCreate
 
-genPromotionCreateRequest :: Int -> Gen PromotionCreateRequest
-genPromotionCreateRequest n =
-  PromotionCreateRequest
-    <$> arbitraryReducedMaybe n -- promotionCreateRequestDiscountStatus :: Maybe E'DiscountStatus
-    <*> arbitraryReducedMaybe n -- promotionCreateRequestEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- promotionCreateRequestExternalId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionCreateRequestPlatformType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionCreateRequestPromotionCode :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionCreateRequestPromotionCustomId :: Maybe Text
-    <*> arbitrary -- promotionCreateRequestPromotionTitle :: Text
-    <*> arbitraryReduced n -- promotionCreateRequestPromotionType :: PromotionType
-    <*> arbitraryReducedMaybe n -- promotionCreateRequestStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- promotionCreateRequestTemplateValues :: Maybe [PromotionTemplateValue]
-  
-instance Arbitrary PromotionResponse where
-  arbitrary = sized genPromotionResponse
-
-genPromotionResponse :: Int -> Gen PromotionResponse
-genPromotionResponse n =
-  PromotionResponse
-    <$> arbitraryReducedMaybe n -- promotionResponseDiscountStatus :: Maybe E'DiscountStatus
-    <*> arbitraryReducedMaybe n -- promotionResponseEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- promotionResponseExternalId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionResponsePlatformType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionResponsePromotionCode :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionResponsePromotionCustomId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionResponsePromotionTitle :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionResponsePromotionType :: Maybe PromotionType
-    <*> arbitraryReducedMaybe n -- promotionResponseStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- promotionResponseTemplateValues :: Maybe [PromotionTemplateValue]
-    <*> arbitraryReducedMaybe n -- promotionResponseAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionResponseStatus :: Maybe EntityStatus
+genPromotionCreate :: Int -> Gen PromotionCreate
+genPromotionCreate n =
+  PromotionCreate
+    <$> arbitraryReducedMaybe n -- promotionCreateDiscountStatus :: Maybe DiscountStatus
+    <*> arbitraryReducedMaybe n -- promotionCreateEndTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- promotionCreateExternalId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- promotionCreatePlatformType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- promotionCreatePromotionCode :: Maybe Text
+    <*> arbitraryReducedMaybe n -- promotionCreatePromotionCustomId :: Maybe Text
+    <*> arbitrary -- promotionCreatePromotionTitle :: Text
+    <*> arbitraryReduced n -- promotionCreatePromotionType :: PromotionType
+    <*> arbitraryReducedMaybe n -- promotionCreateStartTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- promotionCreateTemplateValues :: Maybe [PromotionTemplateValue]
   
 instance Arbitrary PromotionTemplateValue where
   arbitrary = sized genPromotionTemplateValue
@@ -7897,25 +9417,6 @@ genPromotionTemplateValue n =
     <*> arbitraryReducedMaybe n -- promotionTemplateValueCustomText :: Maybe Text
     <*> arbitraryReducedMaybe n -- promotionTemplateValuePercent :: Maybe Double
   
-instance Arbitrary PromotionUpdateRequest where
-  arbitrary = sized genPromotionUpdateRequest
-
-genPromotionUpdateRequest :: Int -> Gen PromotionUpdateRequest
-genPromotionUpdateRequest n =
-  PromotionUpdateRequest
-    <$> arbitraryReducedMaybe n -- promotionUpdateRequestDiscountStatus :: Maybe E'DiscountStatus
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestEndTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestExternalId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestPlatformType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestPromotionCode :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestPromotionCustomId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestPromotionTitle :: Maybe Text
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestPromotionType :: Maybe PromotionType
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestStartTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestTemplateValues :: Maybe [PromotionTemplateValue]
-    <*> arbitrary -- promotionUpdateRequestId :: Text
-    <*> arbitraryReducedMaybe n -- promotionUpdateRequestStatus :: Maybe EntityStatus
-  
 instance Arbitrary PromotionsList200Response where
   arbitrary = sized genPromotionsList200Response
 
@@ -7923,7 +9424,7 @@ genPromotionsList200Response :: Int -> Gen PromotionsList200Response
 genPromotionsList200Response n =
   PromotionsList200Response
     <$> arbitraryReducedMaybe n -- promotionsList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- promotionsList200ResponseItems :: [PromotionResponse]
+    <*> arbitraryReduced n -- promotionsList200ResponseItems :: [Promotion]
   
 instance Arbitrary PromotionsResponse where
   arbitrary = sized genPromotionsResponse
@@ -7980,7 +9481,7 @@ genQuizPinData n =
     <$> arbitraryReducedMaybe n -- quizPinDataQuestions :: Maybe [QuizPinQuestion]
     <*> arbitraryReducedMaybe n -- quizPinDataResults :: Maybe [QuizPinResult]
     <*> arbitraryReducedMaybe n -- quizPinDataTieBreakerCustomResult :: Maybe QuizPinResult
-    <*> arbitraryReducedMaybe n -- quizPinDataTieBreakerType :: Maybe E'TieBreakerType
+    <*> arbitraryReducedMaybe n -- quizPinDataTieBreakerType :: Maybe TieBreakerType
   
 instance Arbitrary QuizPinOption where
   arbitrary = sized genQuizPinOption
@@ -8031,16 +9532,16 @@ genRelatedTerms n =
   RelatedTerms
     <$> arbitraryReducedMaybe n -- relatedTermsId :: Maybe Text
     <*> arbitraryReducedMaybe n -- relatedTermsRelatedTermCount :: Maybe Int
-    <*> arbitraryReducedMaybe n -- relatedTermsRelatedTermsList :: Maybe [RelatedTermsRelatedTermsListInner]
+    <*> arbitraryReducedMaybe n -- relatedTermsRelatedTermsList :: Maybe [RelatedTermsRelatedTermsListItems]
   
-instance Arbitrary RelatedTermsRelatedTermsListInner where
-  arbitrary = sized genRelatedTermsRelatedTermsListInner
+instance Arbitrary RelatedTermsRelatedTermsListItems where
+  arbitrary = sized genRelatedTermsRelatedTermsListItems
 
-genRelatedTermsRelatedTermsListInner :: Int -> Gen RelatedTermsRelatedTermsListInner
-genRelatedTermsRelatedTermsListInner n =
-  RelatedTermsRelatedTermsListInner
-    <$> arbitraryReducedMaybe n -- relatedTermsRelatedTermsListInnerRelatedTerms :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- relatedTermsRelatedTermsListInnerTerm :: Maybe Text
+genRelatedTermsRelatedTermsListItems :: Int -> Gen RelatedTermsRelatedTermsListItems
+genRelatedTermsRelatedTermsListItems n =
+  RelatedTermsRelatedTermsListItems
+    <$> arbitraryReducedMaybe n -- relatedTermsRelatedTermsListItemsRelatedTerms :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- relatedTermsRelatedTermsListItemsTerm :: Maybe Text
   
 instance Arbitrary ReportsStats200Response where
   arbitrary = sized genReportsStats200Response
@@ -8051,14 +9552,14 @@ genReportsStats200Response n =
     <$> arbitraryReducedMaybe n -- reportsStats200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- reportsStats200ResponseItems :: [CatalogsReportStats]
   
-instance Arbitrary ReportsStatsParametersParameter where
-  arbitrary = sized genReportsStatsParametersParameter
+instance Arbitrary RespondToInviteResultItem where
+  arbitrary = sized genRespondToInviteResultItem
 
-genReportsStatsParametersParameter :: Int -> Gen ReportsStatsParametersParameter
-genReportsStatsParametersParameter n =
-  ReportsStatsParametersParameter
-    <$> arbitraryReduced n -- reportsStatsParametersParameterCatalogType :: CatalogsType
-    <*> arbitraryReduced n -- reportsStatsParametersParameterReport :: CatalogsHotelReportStatsParametersReport
+genRespondToInviteResultItem :: Int -> Gen RespondToInviteResultItem
+genRespondToInviteResultItem n =
+  RespondToInviteResultItem
+    <$> arbitraryReducedMaybe n -- respondToInviteResultItemException :: Maybe InviteExceptionResponse
+    <*> arbitraryReducedMaybe n -- respondToInviteResultItemInvite :: Maybe BaseInviteDataResponse
   
 instance Arbitrary RespondToInvitesResponseArray where
   arbitrary = sized genRespondToInvitesResponseArray
@@ -8066,16 +9567,29 @@ instance Arbitrary RespondToInvitesResponseArray where
 genRespondToInvitesResponseArray :: Int -> Gen RespondToInvitesResponseArray
 genRespondToInvitesResponseArray n =
   RespondToInvitesResponseArray
-    <$> arbitraryReducedMaybe n -- respondToInvitesResponseArrayItems :: Maybe [RespondToInvitesResponseArrayItemsInner]
+    <$> arbitraryReducedMaybe n -- respondToInvitesResponseArrayItems :: Maybe [RespondToInviteResultItem]
   
-instance Arbitrary RespondToInvitesResponseArrayItemsInner where
-  arbitrary = sized genRespondToInvitesResponseArrayItemsInner
+instance Arbitrary RetailLocalInventoryItemAttributes where
+  arbitrary = sized genRetailLocalInventoryItemAttributes
 
-genRespondToInvitesResponseArrayItemsInner :: Int -> Gen RespondToInvitesResponseArrayItemsInner
-genRespondToInvitesResponseArrayItemsInner n =
-  RespondToInvitesResponseArrayItemsInner
-    <$> arbitraryReducedMaybe n -- respondToInvitesResponseArrayItemsInnerException :: Maybe InviteExceptionResponse
-    <*> arbitraryReducedMaybe n -- respondToInvitesResponseArrayItemsInnerInvite :: Maybe BaseInviteDataResponse
+genRetailLocalInventoryItemAttributes :: Int -> Gen RetailLocalInventoryItemAttributes
+genRetailLocalInventoryItemAttributes n =
+  RetailLocalInventoryItemAttributes
+    <$> arbitraryReducedMaybe n -- retailLocalInventoryItemAttributesAdLink :: Maybe Text
+    <*> arbitraryReduced n -- retailLocalInventoryItemAttributesAvailability :: ItemAvailability
+    <*> arbitrary -- retailLocalInventoryItemAttributesPrice :: Text
+    <*> arbitraryReducedMaybe n -- retailLocalInventoryItemAttributesSalePrice :: Maybe Text
+  
+instance Arbitrary RetailLocalInventoryItemAttributesOptional where
+  arbitrary = sized genRetailLocalInventoryItemAttributesOptional
+
+genRetailLocalInventoryItemAttributesOptional :: Int -> Gen RetailLocalInventoryItemAttributesOptional
+genRetailLocalInventoryItemAttributesOptional n =
+  RetailLocalInventoryItemAttributesOptional
+    <$> arbitraryReducedMaybe n -- retailLocalInventoryItemAttributesOptionalAdLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- retailLocalInventoryItemAttributesOptionalAvailability :: Maybe ItemAvailability
+    <*> arbitraryReducedMaybe n -- retailLocalInventoryItemAttributesOptionalPrice :: Maybe Text
+    <*> arbitraryReducedMaybe n -- retailLocalInventoryItemAttributesOptionalSalePrice :: Maybe Text
   
 instance Arbitrary S3FilePart where
   arbitrary = sized genS3FilePart
@@ -8093,6 +9607,19 @@ genS3MultipartUploadData :: Int -> Gen S3MultipartUploadData
 genS3MultipartUploadData n =
   S3MultipartUploadData
     <$> arbitraryReducedMaybe n -- s3MultipartUploadDataFileParts :: Maybe [S3FilePart]
+  
+instance Arbitrary SSIOAccount where
+  arbitrary = sized genSSIOAccount
+
+genSSIOAccount :: Int -> Gen SSIOAccount
+genSSIOAccount n =
+  SSIOAccount
+    <$> arbitraryReducedMaybe n -- sSIOAccountBilltoInfos :: Maybe [SSIOAccountItem]
+    <*> arbitraryReducedMaybe n -- sSIOAccountCanEdit :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- sSIOAccountCurrency :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOAccountEligible :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- sSIOAccountError :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOAccountPmpNames :: Maybe [SSIOAccountPMPName]
   
 instance Arbitrary SSIOAccountAddress where
   arbitrary = sized genSSIOAccountAddress
@@ -8130,105 +9657,42 @@ genSSIOAccountPMPName n =
     <$> arbitraryReducedMaybe n -- sSIOAccountPMPNameId :: Maybe Text
     <*> arbitraryReducedMaybe n -- sSIOAccountPMPNameName :: Maybe Text
   
-instance Arbitrary SSIOAccountResponse where
-  arbitrary = sized genSSIOAccountResponse
+instance Arbitrary SSIOInsertionOrder where
+  arbitrary = sized genSSIOInsertionOrder
 
-genSSIOAccountResponse :: Int -> Gen SSIOAccountResponse
-genSSIOAccountResponse n =
-  SSIOAccountResponse
-    <$> arbitraryReducedMaybe n -- sSIOAccountResponseBilltoInfos :: Maybe [SSIOAccountItem]
-    <*> arbitraryReducedMaybe n -- sSIOAccountResponseCanEdit :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- sSIOAccountResponseCurrency :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOAccountResponseEligible :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- sSIOAccountResponseError :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOAccountResponsePmpNames :: Maybe [SSIOAccountPMPName]
+genSSIOInsertionOrder :: Int -> Gen SSIOInsertionOrder
+genSSIOInsertionOrder n =
+  SSIOInsertionOrder
+    <$> arbitraryReducedMaybe n -- sSIOInsertionOrderPinOrderId :: Maybe Text
   
-instance Arbitrary SSIOCreateInsertionOrderRequest where
-  arbitrary = sized genSSIOCreateInsertionOrderRequest
+instance Arbitrary SSIOInsertionOrderCreate where
+  arbitrary = sized genSSIOInsertionOrderCreate
 
-genSSIOCreateInsertionOrderRequest :: Int -> Gen SSIOCreateInsertionOrderRequest
-genSSIOCreateInsertionOrderRequest n =
-  SSIOCreateInsertionOrderRequest
-    <$> arbitraryReducedMaybe n -- sSIOCreateInsertionOrderRequestAgencyLink :: Maybe Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestBillingContactEmail :: Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestBillingContactFirstname :: Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestBillingContactLastname :: Text
-    <*> arbitraryReducedMaybe n -- sSIOCreateInsertionOrderRequestBudgetAmount :: Maybe Double
-    <*> arbitraryReducedMaybe n -- sSIOCreateInsertionOrderRequestEndDate :: Maybe Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestMediaContactEmail :: Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestMediaContactFirstname :: Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestMediaContactLastname :: Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestPoNumber :: Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestStartDate :: Text
-    <*> arbitraryReducedMaybe n -- sSIOCreateInsertionOrderRequestUserEmail :: Maybe Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestAcceptedTermsId :: Text
-    <*> arbitraryReducedMaybe n -- sSIOCreateInsertionOrderRequestAcceptedTermsTime :: Maybe Int
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestBilltoBillingAddressId :: Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestBilltoBusinessAddressId :: Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestBilltoCompanyId :: Text
-    <*> arbitraryReduced n -- sSIOCreateInsertionOrderRequestCurrencyInfo :: Currency
-    <*> arbitraryReducedMaybe n -- sSIOCreateInsertionOrderRequestEstimatedMonthlySpend :: Maybe Double
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestOrderLineType :: E'OrderLineType
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestOrderName :: Text
-    <*> arbitrary -- sSIOCreateInsertionOrderRequestPmpId :: Text
-  
-instance Arbitrary SSIOCreateInsertionOrderResponse where
-  arbitrary = sized genSSIOCreateInsertionOrderResponse
-
-genSSIOCreateInsertionOrderResponse :: Int -> Gen SSIOCreateInsertionOrderResponse
-genSSIOCreateInsertionOrderResponse n =
-  SSIOCreateInsertionOrderResponse
-    <$> arbitraryReducedMaybe n -- sSIOCreateInsertionOrderResponsePinOrderId :: Maybe Text
-  
-instance Arbitrary SSIOEditInsertionOrderRequest where
-  arbitrary = sized genSSIOEditInsertionOrderRequest
-
-genSSIOEditInsertionOrderRequest :: Int -> Gen SSIOEditInsertionOrderRequest
-genSSIOEditInsertionOrderRequest n =
-  SSIOEditInsertionOrderRequest
-    <$> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestAgencyLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestBillingContactEmail :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestBillingContactFirstname :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestBillingContactLastname :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestBudgetAmount :: Maybe Double
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestEndDate :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestMediaContactEmail :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestMediaContactFirstname :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestMediaContactLastname :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestPoNumber :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestStartDate :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestUserEmail :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestAdsManagerOrderLineId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestOracleLineId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestSalesforceOrderId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOEditInsertionOrderRequestSalesforceOrderLineId :: Maybe Text
-  
-instance Arbitrary SSIOEditInsertionOrderResponse where
-  arbitrary = sized genSSIOEditInsertionOrderResponse
-
-genSSIOEditInsertionOrderResponse :: Int -> Gen SSIOEditInsertionOrderResponse
-genSSIOEditInsertionOrderResponse n =
-  SSIOEditInsertionOrderResponse
-    <$> arbitraryReducedMaybe n -- sSIOEditInsertionOrderResponsePinOrderId :: Maybe Text
-  
-instance Arbitrary SSIOInsertionOrderCommon where
-  arbitrary = sized genSSIOInsertionOrderCommon
-
-genSSIOInsertionOrderCommon :: Int -> Gen SSIOInsertionOrderCommon
-genSSIOInsertionOrderCommon n =
-  SSIOInsertionOrderCommon
-    <$> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonAgencyLink :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonBillingContactEmail :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonBillingContactFirstname :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonBillingContactLastname :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonBudgetAmount :: Maybe Double
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonEndDate :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonMediaContactEmail :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonMediaContactFirstname :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonMediaContactLastname :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonPoNumber :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonStartDate :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCommonUserEmail :: Maybe Text
+genSSIOInsertionOrderCreate :: Int -> Gen SSIOInsertionOrderCreate
+genSSIOInsertionOrderCreate n =
+  SSIOInsertionOrderCreate
+    <$> arbitrary -- sSIOInsertionOrderCreateAcceptedTermsId :: Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCreateAcceptedTermsTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCreateAgencyLink :: Maybe Text
+    <*> arbitrary -- sSIOInsertionOrderCreateBillingContactEmail :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreateBillingContactFirstname :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreateBillingContactLastname :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreateBilltoBillingAddressId :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreateBilltoBusinessAddressId :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreateBilltoCompanyId :: Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCreateBudgetAmount :: Maybe Double
+    <*> arbitraryReduced n -- sSIOInsertionOrderCreateCurrencyInfo :: Currency
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCreateEndDate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCreateEstimatedMonthlySpend :: Maybe Double
+    <*> arbitrary -- sSIOInsertionOrderCreateMediaContactEmail :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreateMediaContactFirstname :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreateMediaContactLastname :: Text
+    <*> arbitraryReduced n -- sSIOInsertionOrderCreateOrderLineType :: SSIOOrderLineType
+    <*> arbitrary -- sSIOInsertionOrderCreateOrderName :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreatePmpId :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreatePoNumber :: Text
+    <*> arbitrary -- sSIOInsertionOrderCreateStartDate :: Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderCreateUserEmail :: Maybe Text
   
 instance Arbitrary SSIOInsertionOrderStatus where
   arbitrary = sized genSSIOInsertionOrderStatus
@@ -8249,6 +9713,29 @@ genSSIOInsertionOrderStatusResponse n =
     <$> arbitraryReducedMaybe n -- sSIOInsertionOrderStatusResponseCreationTime :: Maybe Text
     <*> arbitraryReducedMaybe n -- sSIOInsertionOrderStatusResponsePinOrderId :: Maybe Text
     <*> arbitraryReducedMaybe n -- sSIOInsertionOrderStatusResponseStatus :: Maybe Text
+  
+instance Arbitrary SSIOInsertionOrderUpdate where
+  arbitrary = sized genSSIOInsertionOrderUpdate
+
+genSSIOInsertionOrderUpdate :: Int -> Gen SSIOInsertionOrderUpdate
+genSSIOInsertionOrderUpdate n =
+  SSIOInsertionOrderUpdate
+    <$> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateAdsManagerOrderLineId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateAgencyLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateBillingContactEmail :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateBillingContactFirstname :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateBillingContactLastname :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateBudgetAmount :: Maybe Double
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateEndDate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateMediaContactEmail :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateMediaContactFirstname :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateMediaContactLastname :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateOracleLineId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdatePoNumber :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateSalesforceOrderId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateSalesforceOrderLineId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateStartDate :: Maybe Text
+    <*> arbitraryReducedMaybe n -- sSIOInsertionOrderUpdateUserEmail :: Maybe Text
   
 instance Arbitrary SSIOOrderLine where
   arbitrary = sized genSSIOOrderLine
@@ -8279,6 +9766,271 @@ genSSIOOrderLine n =
     <*> arbitraryReducedMaybe n -- sSIOOrderLineSalesforceOrderLineId :: Maybe Text
     <*> arbitraryReducedMaybe n -- sSIOOrderLineStartDate :: Maybe Date
   
+instance Arbitrary Schedule where
+  arbitrary = sized genSchedule
+
+genSchedule :: Int -> Gen Schedule
+genSchedule n =
+  Schedule
+    <$> arbitraryReducedMaybe n -- scheduleDeltaValue :: Maybe ScheduleDeltaValue
+    <*> arbitraryReducedMaybe n -- scheduleEndTimestamp :: Maybe Int
+    <*> arbitrary -- scheduleEntityId :: Text
+    <*> arbitraryReducedMaybe n -- scheduleEntityType :: Maybe AdAccountEntityType
+    <*> arbitraryReducedMaybe n -- scheduleName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- scheduleScheduleAction :: Maybe ScheduleAction
+    <*> arbitrary -- scheduleScheduleId :: Text
+    <*> arbitraryReducedMaybe n -- scheduleScheduleStatus :: Maybe ScheduleStatus
+    <*> arbitraryReducedMaybe n -- scheduleScheduleType :: Maybe ScheduleType
+    <*> arbitraryReducedMaybe n -- scheduleStartTimestamp :: Maybe Int
+  
+instance Arbitrary ScheduleAgeBucketMultipliers where
+  arbitrary = sized genScheduleAgeBucketMultipliers
+
+genScheduleAgeBucketMultipliers :: Int -> Gen ScheduleAgeBucketMultipliers
+genScheduleAgeBucketMultipliers n =
+  ScheduleAgeBucketMultipliers
+    <$> arbitraryReducedMaybe n -- scheduleAgeBucketMultipliersAgeBucket :: Maybe E'AgeBucket
+  
+instance Arbitrary ScheduleAppTypeMultipliers where
+  arbitrary = sized genScheduleAppTypeMultipliers
+
+genScheduleAppTypeMultipliers :: Int -> Gen ScheduleAppTypeMultipliers
+genScheduleAppTypeMultipliers n =
+  ScheduleAppTypeMultipliers
+    <$> arbitraryReducedMaybe n -- scheduleAppTypeMultipliersAppType :: Maybe TargetingSpecAppType
+  
+instance Arbitrary ScheduleAudienceMultipliers where
+  arbitrary = sized genScheduleAudienceMultipliers
+
+genScheduleAudienceMultipliers :: Int -> Gen ScheduleAudienceMultipliers
+genScheduleAudienceMultipliers n =
+  ScheduleAudienceMultipliers
+    <$> arbitraryReducedMaybe n -- scheduleAudienceMultipliersAudienceId :: Maybe Text
+  
+instance Arbitrary ScheduleBatchUpdate where
+  arbitrary = sized genScheduleBatchUpdate
+
+genScheduleBatchUpdate :: Int -> Gen ScheduleBatchUpdate
+genScheduleBatchUpdate n =
+  ScheduleBatchUpdate
+    <$> arbitraryReducedMaybe n -- scheduleBatchUpdateDeltaValue :: Maybe ScheduleDeltaValue
+    <*> arbitraryReducedMaybe n -- scheduleBatchUpdateEndTimestamp :: Maybe Int
+    <*> arbitraryReducedMaybe n -- scheduleBatchUpdateEntityId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- scheduleBatchUpdateEntityType :: Maybe AdAccountEntityType
+    <*> arbitrary -- scheduleBatchUpdateId :: Text
+    <*> arbitraryReducedMaybe n -- scheduleBatchUpdateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- scheduleBatchUpdateScheduleAction :: Maybe ScheduleAction
+    <*> arbitrary -- scheduleBatchUpdateScheduleId :: Text
+    <*> arbitraryReducedMaybe n -- scheduleBatchUpdateScheduleStatus :: Maybe ScheduleStatus
+    <*> arbitraryReducedMaybe n -- scheduleBatchUpdateScheduleType :: Maybe ScheduleType
+    <*> arbitraryReducedMaybe n -- scheduleBatchUpdateStartTimestamp :: Maybe Int
+  
+instance Arbitrary ScheduleBidMultipliers where
+  arbitrary = sized genScheduleBidMultipliers
+
+genScheduleBidMultipliers :: Int -> Gen ScheduleBidMultipliers
+genScheduleBidMultipliers n =
+  ScheduleBidMultipliers
+    <$> arbitraryReducedMaybe n -- scheduleBidMultipliersAgeBucketMultipliers :: Maybe BidOptionsAgeBucketMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleBidMultipliersAppTypeMultipliers :: Maybe BidOptionsAppTypeMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleBidMultipliersAudienceMultipliers :: Maybe [BidOptionsAudienceMultipliers]
+    <*> arbitraryReducedMaybe n -- scheduleBidMultipliersGenderMultipliers :: Maybe BidOptionsGenderMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleBidMultipliersPlacementMultipliers :: Maybe BidOptionsPlacementMultipliers
+  
+instance Arbitrary ScheduleBidOptions where
+  arbitrary = sized genScheduleBidOptions
+
+genScheduleBidOptions :: Int -> Gen ScheduleBidOptions
+genScheduleBidOptions n =
+  ScheduleBidOptions
+    <$> arbitraryReducedMaybe n -- scheduleBidOptionsAgeBucketMultipliers :: Maybe ScheduleAgeBucketMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleBidOptionsAppTypeMultipliers :: Maybe ScheduleAppTypeMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleBidOptionsAudienceMultipliers :: Maybe ScheduleAudienceMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleBidOptionsGenderMultipliers :: Maybe ScheduleBidOptionsGenderMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleBidOptionsPlacementMultipliers :: Maybe ScheduleBidOptionsPlacementMultipliers
+  
+instance Arbitrary ScheduleBidOptionsGenderMultipliers where
+  arbitrary = sized genScheduleBidOptionsGenderMultipliers
+
+genScheduleBidOptionsGenderMultipliers :: Int -> Gen ScheduleBidOptionsGenderMultipliers
+genScheduleBidOptionsGenderMultipliers n =
+  ScheduleBidOptionsGenderMultipliers
+    <$> arbitraryReducedMaybe n -- scheduleBidOptionsGenderMultipliersGender :: Maybe TargetingSpecGender
+  
+instance Arbitrary ScheduleBidOptionsPlacementMultipliers where
+  arbitrary = sized genScheduleBidOptionsPlacementMultipliers
+
+genScheduleBidOptionsPlacementMultipliers :: Int -> Gen ScheduleBidOptionsPlacementMultipliers
+genScheduleBidOptionsPlacementMultipliers n =
+  ScheduleBidOptionsPlacementMultipliers
+    <$> arbitraryReducedMaybe n -- scheduleBidOptionsPlacementMultipliersBrowse :: Maybe Double
+    <*> arbitraryReducedMaybe n -- scheduleBidOptionsPlacementMultipliersRelatedPins :: Maybe Double
+    <*> arbitraryReducedMaybe n -- scheduleBidOptionsPlacementMultipliersSearch :: Maybe Double
+  
+instance Arbitrary ScheduleCommonDeltaValue where
+  arbitrary = sized genScheduleCommonDeltaValue
+
+genScheduleCommonDeltaValue :: Int -> Gen ScheduleCommonDeltaValue
+genScheduleCommonDeltaValue n =
+  ScheduleCommonDeltaValue
+    <$> arbitraryReducedMaybe n -- scheduleCommonDeltaValueAgeBucketMultipliers :: Maybe ScheduleAgeBucketMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleCommonDeltaValueAppTypeMultipliers :: Maybe ScheduleAppTypeMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleCommonDeltaValueAudienceMultipliers :: Maybe ScheduleAudienceMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleCommonDeltaValueGenderMultipliers :: Maybe ScheduleBidOptionsGenderMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleCommonDeltaValuePlacementMultipliers :: Maybe ScheduleBidOptionsPlacementMultipliers
+  
+instance Arbitrary ScheduleCreate where
+  arbitrary = sized genScheduleCreate
+
+genScheduleCreate :: Int -> Gen ScheduleCreate
+genScheduleCreate n =
+  ScheduleCreate
+    <$> arbitraryReducedMaybe n -- scheduleCreateDeltaValue :: Maybe ScheduleDeltaValue
+    <*> arbitraryReducedMaybe n -- scheduleCreateEndTimestamp :: Maybe Int
+    <*> arbitrary -- scheduleCreateEntityId :: Text
+    <*> arbitraryReducedMaybe n -- scheduleCreateEntityType :: Maybe AdAccountEntityType
+    <*> arbitraryReducedMaybe n -- scheduleCreateName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- scheduleCreateScheduleAction :: Maybe ScheduleAction
+    <*> arbitraryReducedMaybe n -- scheduleCreateScheduleStatus :: Maybe ScheduleStatus
+    <*> arbitraryReducedMaybe n -- scheduleCreateScheduleType :: Maybe ScheduleType
+    <*> arbitraryReducedMaybe n -- scheduleCreateStartTimestamp :: Maybe Int
+  
+instance Arbitrary ScheduleCreateRequest where
+  arbitrary = sized genScheduleCreateRequest
+
+genScheduleCreateRequest :: Int -> Gen ScheduleCreateRequest
+genScheduleCreateRequest n =
+  ScheduleCreateRequest
+    <$> arbitrary -- scheduleCreateRequestEntityId :: Text
+    <*> arbitrary -- scheduleCreateRequestEntityType :: Text
+    <*> arbitraryReduced n -- scheduleCreateRequestDeltaValue :: ScheduleCommonDeltaValue
+    <*> arbitrary -- scheduleCreateRequestEndTimestamp :: Int
+    <*> arbitrary -- scheduleCreateRequestName :: Text
+    <*> arbitraryReduced n -- scheduleCreateRequestScheduleAction :: ScheduleAction
+    <*> arbitraryReduced n -- scheduleCreateRequestScheduleStatus :: ScheduleStatus
+    <*> arbitraryReduced n -- scheduleCreateRequestScheduleType :: ScheduleType
+    <*> arbitrary -- scheduleCreateRequestStartTimestamp :: Int
+  
+instance Arbitrary ScheduleCreateRequestAllOf1 where
+  arbitrary = sized genScheduleCreateRequestAllOf1
+
+genScheduleCreateRequestAllOf1 :: Int -> Gen ScheduleCreateRequestAllOf1
+genScheduleCreateRequestAllOf1 n =
+  ScheduleCreateRequestAllOf1
+    <$> arbitrary -- scheduleCreateRequestAllOf1EntityId :: Text
+    <*> arbitrary -- scheduleCreateRequestAllOf1EntityType :: Text
+  
+instance Arbitrary ScheduleDeltaValue where
+  arbitrary = sized genScheduleDeltaValue
+
+genScheduleDeltaValue :: Int -> Gen ScheduleDeltaValue
+genScheduleDeltaValue n =
+  ScheduleDeltaValue
+    <$> arbitraryReducedMaybe n -- scheduleDeltaValueAgeBucketMultipliers :: Maybe BidOptionsAgeBucketMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleDeltaValueAppTypeMultipliers :: Maybe BidOptionsAppTypeMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleDeltaValueAudienceMultipliers :: Maybe [BidOptionsAudienceMultipliers]
+    <*> arbitraryReducedMaybe n -- scheduleDeltaValueGenderMultipliers :: Maybe BidOptionsGenderMultipliers
+    <*> arbitraryReducedMaybe n -- scheduleDeltaValuePlacementMultipliers :: Maybe BidOptionsPlacementMultipliers
+  
+instance Arbitrary ScheduleGenderMultipliers where
+  arbitrary = sized genScheduleGenderMultipliers
+
+genScheduleGenderMultipliers :: Int -> Gen ScheduleGenderMultipliers
+genScheduleGenderMultipliers n =
+  ScheduleGenderMultipliers
+    <$> arbitraryReducedMaybe n -- scheduleGenderMultipliersGender :: Maybe TargetingSpecGender
+  
+instance Arbitrary SchedulePlacementMultipliers where
+  arbitrary = sized genSchedulePlacementMultipliers
+
+genSchedulePlacementMultipliers :: Int -> Gen SchedulePlacementMultipliers
+genSchedulePlacementMultipliers n =
+  SchedulePlacementMultipliers
+    <$> arbitraryReducedMaybe n -- schedulePlacementMultipliersBrowse :: Maybe Double
+    <*> arbitraryReducedMaybe n -- schedulePlacementMultipliersRelatedPins :: Maybe Double
+    <*> arbitraryReducedMaybe n -- schedulePlacementMultipliersSearch :: Maybe Double
+  
+instance Arbitrary ScheduleUpdateRequest where
+  arbitrary = sized genScheduleUpdateRequest
+
+genScheduleUpdateRequest :: Int -> Gen ScheduleUpdateRequest
+genScheduleUpdateRequest n =
+  ScheduleUpdateRequest
+    <$> arbitraryReducedMaybe n -- scheduleUpdateRequestEntityId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- scheduleUpdateRequestEntityType :: Maybe Text
+    <*> arbitrary -- scheduleUpdateRequestId :: Text
+    <*> arbitraryReducedMaybe n -- scheduleUpdateRequestDeltaValue :: Maybe ScheduleCommonDeltaValue
+    <*> arbitraryReducedMaybe n -- scheduleUpdateRequestEndTimestamp :: Maybe Int
+    <*> arbitraryReducedMaybe n -- scheduleUpdateRequestName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- scheduleUpdateRequestScheduleAction :: Maybe ScheduleAction
+    <*> arbitraryReducedMaybe n -- scheduleUpdateRequestScheduleStatus :: Maybe ScheduleStatus
+    <*> arbitraryReducedMaybe n -- scheduleUpdateRequestScheduleType :: Maybe ScheduleType
+    <*> arbitraryReducedMaybe n -- scheduleUpdateRequestStartTimestamp :: Maybe Int
+  
+instance Arbitrary ScheduleUpdateRequestAllOf1 where
+  arbitrary = sized genScheduleUpdateRequestAllOf1
+
+genScheduleUpdateRequestAllOf1 :: Int -> Gen ScheduleUpdateRequestAllOf1
+genScheduleUpdateRequestAllOf1 n =
+  ScheduleUpdateRequestAllOf1
+    <$> arbitraryReducedMaybe n -- scheduleUpdateRequestAllOf1EntityId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- scheduleUpdateRequestAllOf1EntityType :: Maybe Text
+    <*> arbitrary -- scheduleUpdateRequestAllOf1Id :: Text
+  
+instance Arbitrary SchedulesCreate200ResponseInner where
+  arbitrary = sized genSchedulesCreate200ResponseInner
+
+genSchedulesCreate200ResponseInner :: Int -> Gen SchedulesCreate200ResponseInner
+genSchedulesCreate200ResponseInner n =
+  SchedulesCreate200ResponseInner
+    <$> arbitraryReduced n -- schedulesCreate200ResponseInnerData :: SchedulesCreate200ResponseInnerData
+  
+instance Arbitrary SchedulesCreate200ResponseInnerData where
+  arbitrary = sized genSchedulesCreate200ResponseInnerData
+
+genSchedulesCreate200ResponseInnerData :: Int -> Gen SchedulesCreate200ResponseInnerData
+genSchedulesCreate200ResponseInnerData n =
+  SchedulesCreate200ResponseInnerData
+    <$> arbitraryReducedMaybe n -- schedulesCreate200ResponseInnerDataDeltaValue :: Maybe ScheduleDeltaValue
+    <*> arbitraryReducedMaybe n -- schedulesCreate200ResponseInnerDataEndTimestamp :: Maybe Int
+    <*> arbitrary -- schedulesCreate200ResponseInnerDataEntityId :: Text
+    <*> arbitraryReducedMaybe n -- schedulesCreate200ResponseInnerDataEntityType :: Maybe AdAccountEntityType
+    <*> arbitraryReducedMaybe n -- schedulesCreate200ResponseInnerDataName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- schedulesCreate200ResponseInnerDataScheduleAction :: Maybe ScheduleAction
+    <*> arbitrary -- schedulesCreate200ResponseInnerDataScheduleId :: Text
+    <*> arbitraryReducedMaybe n -- schedulesCreate200ResponseInnerDataScheduleStatus :: Maybe ScheduleStatus
+    <*> arbitraryReducedMaybe n -- schedulesCreate200ResponseInnerDataScheduleType :: Maybe ScheduleType
+    <*> arbitraryReducedMaybe n -- schedulesCreate200ResponseInnerDataStartTimestamp :: Maybe Int
+    <*> arbitrary -- schedulesCreate200ResponseInnerDataId :: Text
+    <*> arbitraryReduced n -- schedulesCreate200ResponseInnerDataExceptions :: PinterestLibError
+  
+instance Arbitrary SchedulesCreate200ResponseInnerDataOneOf where
+  arbitrary = sized genSchedulesCreate200ResponseInnerDataOneOf
+
+genSchedulesCreate200ResponseInnerDataOneOf :: Int -> Gen SchedulesCreate200ResponseInnerDataOneOf
+genSchedulesCreate200ResponseInnerDataOneOf n =
+  SchedulesCreate200ResponseInnerDataOneOf
+    <$> arbitrary -- schedulesCreate200ResponseInnerDataOneOfId :: Text
+    <*> arbitrary -- schedulesCreate200ResponseInnerDataOneOfScheduleId :: Text
+    <*> arbitraryReduced n -- schedulesCreate200ResponseInnerDataOneOfExceptions :: PinterestLibError
+  
+instance Arbitrary SchedulesList200Response where
+  arbitrary = sized genSchedulesList200Response
+
+genSchedulesList200Response :: Int -> Gen SchedulesList200Response
+genSchedulesList200Response n =
+  SchedulesList200Response
+    <$> arbitraryReducedMaybe n -- schedulesList200ResponseBookmark :: Maybe Text
+    <*> arbitraryReduced n -- schedulesList200ResponseItems :: [Schedule]
+  
+instance Arbitrary ScrollupGoalMetadata where
+  arbitrary = sized genScrollupGoalMetadata
+
+genScrollupGoalMetadata :: Int -> Gen ScrollupGoalMetadata
+genScrollupGoalMetadata n =
+  ScrollupGoalMetadata
+    <$> arbitraryReducedMaybe n -- scrollupGoalMetadataScrollupGoalValueInMicroCurrency :: Maybe Text
+  
 instance Arbitrary SearchPartnerPins200Response where
   arbitrary = sized genSearchPartnerPins200Response
 
@@ -8288,34 +10040,6 @@ genSearchPartnerPins200Response n =
     <$> arbitraryReducedMaybe n -- searchPartnerPins200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- searchPartnerPins200ResponseItems :: [SummaryPin]
   
-instance Arbitrary SearchUserBoardsGet200Response where
-  arbitrary = sized genSearchUserBoardsGet200Response
-
-genSearchUserBoardsGet200Response :: Int -> Gen SearchUserBoardsGet200Response
-genSearchUserBoardsGet200Response n =
-  SearchUserBoardsGet200Response
-    <$> arbitraryReducedMaybe n -- searchUserBoardsGet200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- searchUserBoardsGet200ResponseItems :: [Board]
-  
-instance Arbitrary SearchUserPinsList200Response where
-  arbitrary = sized genSearchUserPinsList200Response
-
-genSearchUserPinsList200Response :: Int -> Gen SearchUserPinsList200Response
-genSearchUserPinsList200Response n =
-  SearchUserPinsList200Response
-    <$> arbitraryReducedMaybe n -- searchUserPinsList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- searchUserPinsList200ResponseItems :: [Pin]
-  
-instance Arbitrary SharedAudience where
-  arbitrary = sized genSharedAudience
-
-genSharedAudience :: Int -> Gen SharedAudience
-genSharedAudience n =
-  SharedAudience
-    <$> arbitrary -- sharedAudienceAudienceId :: Text
-    <*> arbitraryReduced n -- sharedAudienceOperationType :: OperationType
-    <*> arbitrary -- sharedAudienceRecipientAccountIds :: [Text]
-  
 instance Arbitrary SharedAudienceAccount where
   arbitrary = sized genSharedAudienceAccount
 
@@ -8324,47 +10048,28 @@ genSharedAudienceAccount n =
   SharedAudienceAccount
     <$> arbitrary -- sharedAudienceAccountAccountId :: Text
     <*> arbitrary -- sharedAudienceAccountAccountName :: Text
-    <*> arbitrary -- sharedAudienceAccountAccountType :: E'AccountType2
+    <*> arbitraryReduced n -- sharedAudienceAccountAccountType :: AudienceAccountType
     <*> arbitrary -- sharedAudienceAccountSharedOnTimestamp :: Int
   
-instance Arbitrary SharedAudienceCommon where
-  arbitrary = sized genSharedAudienceCommon
+instance Arbitrary SharedAudiencesForBusinessList200Response where
+  arbitrary = sized genSharedAudiencesForBusinessList200Response
 
-genSharedAudienceCommon :: Int -> Gen SharedAudienceCommon
-genSharedAudienceCommon n =
-  SharedAudienceCommon
-    <$> arbitraryReducedMaybe n -- sharedAudienceCommonAudienceId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sharedAudienceCommonOperationType :: Maybe OperationType
+genSharedAudiencesForBusinessList200Response :: Int -> Gen SharedAudiencesForBusinessList200Response
+genSharedAudiencesForBusinessList200Response n =
+  SharedAudiencesForBusinessList200Response
+    <$> arbitraryReducedMaybe n -- sharedAudiencesForBusinessList200ResponseBookmark :: Maybe Text
+    <*> arbitraryReduced n -- sharedAudiencesForBusinessList200ResponseItems :: [Audience]
   
-instance Arbitrary SharedAudienceResponse where
-  arbitrary = sized genSharedAudienceResponse
+instance Arbitrary SingleInterestTargetingOption where
+  arbitrary = sized genSingleInterestTargetingOption
 
-genSharedAudienceResponse :: Int -> Gen SharedAudienceResponse
-genSharedAudienceResponse n =
-  SharedAudienceResponse
-    <$> arbitraryReducedMaybe n -- sharedAudienceResponseAudienceId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sharedAudienceResponsePermissions :: Maybe [Role]
-    <*> arbitraryReducedMaybe n -- sharedAudienceResponseRecipientAccountIds :: Maybe [Text]
-  
-instance Arbitrary SharedAudienceResponseCommon where
-  arbitrary = sized genSharedAudienceResponseCommon
-
-genSharedAudienceResponseCommon :: Int -> Gen SharedAudienceResponseCommon
-genSharedAudienceResponseCommon n =
-  SharedAudienceResponseCommon
-    <$> arbitraryReducedMaybe n -- sharedAudienceResponseCommonAudienceId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- sharedAudienceResponseCommonPermissions :: Maybe [Role]
-  
-instance Arbitrary SingleInterestTargetingOptionResponse where
-  arbitrary = sized genSingleInterestTargetingOptionResponse
-
-genSingleInterestTargetingOptionResponse :: Int -> Gen SingleInterestTargetingOptionResponse
-genSingleInterestTargetingOptionResponse n =
-  SingleInterestTargetingOptionResponse
-    <$> arbitraryReducedMaybe n -- singleInterestTargetingOptionResponseChildInterests :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- singleInterestTargetingOptionResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- singleInterestTargetingOptionResponseLevel :: Maybe Int
-    <*> arbitraryReducedMaybe n -- singleInterestTargetingOptionResponseName :: Maybe Text
+genSingleInterestTargetingOption :: Int -> Gen SingleInterestTargetingOption
+genSingleInterestTargetingOption n =
+  SingleInterestTargetingOption
+    <$> arbitrary -- singleInterestTargetingOptionChildInterests :: [Text]
+    <*> arbitrary -- singleInterestTargetingOptionId :: Text
+    <*> arbitrary -- singleInterestTargetingOptionLevel :: Int
+    <*> arbitrary -- singleInterestTargetingOptionName :: Text
   
 instance Arbitrary SsioInsertionOrdersStatusGetByAdAccount200Response where
   arbitrary = sized genSsioInsertionOrdersStatusGetByAdAccount200Response
@@ -8384,6 +10089,19 @@ genSsioOrderLinesGetByAdAccount200Response n =
     <$> arbitraryReducedMaybe n -- ssioOrderLinesGetByAdAccount200ResponseBookmark :: Maybe Text
     <*> arbitraryReduced n -- ssioOrderLinesGetByAdAccount200ResponseItems :: [SSIOOrderLine]
   
+instance Arbitrary StoreMetadata where
+  arbitrary = sized genStoreMetadata
+
+genStoreMetadata :: Int -> Gen StoreMetadata
+genStoreMetadata n =
+  StoreMetadata
+    <$> arbitraryReducedMaybe n -- storeMetadataGeohash :: Maybe Text
+    <*> arbitraryReducedMaybe n -- storeMetadataLatitude :: Maybe Double
+    <*> arbitraryReducedMaybe n -- storeMetadataLongitude :: Maybe Double
+    <*> arbitrary -- storeMetadataStoreCode :: Text
+    <*> arbitrary -- storeMetadataStoreId :: Text
+    <*> arbitraryReducedMaybe n -- storeMetadataStoreName :: Maybe Text
+  
 instance Arbitrary SummaryPin where
   arbitrary = sized genSummaryPin
 
@@ -8392,18 +10110,53 @@ genSummaryPin n =
   SummaryPin
     <$> arbitraryReducedMaybe n -- summaryPinAltText :: Maybe Text
     <*> arbitraryReducedMaybe n -- summaryPinDescription :: Maybe Text
-    <*> arbitraryReducedMaybe n -- summaryPinId :: Maybe Text
+    <*> arbitrary -- summaryPinId :: Text
     <*> arbitraryReducedMaybe n -- summaryPinLink :: Maybe Text
     <*> arbitraryReducedMaybe n -- summaryPinMedia :: Maybe PinMedia
     <*> arbitraryReducedMaybe n -- summaryPinTitle :: Maybe Text
   
-instance Arbitrary SystemUserUpdateRequest where
-  arbitrary = sized genSystemUserUpdateRequest
+instance Arbitrary SupplementalItemValidationEvent where
+  arbitrary = sized genSupplementalItemValidationEvent
 
-genSystemUserUpdateRequest :: Int -> Gen SystemUserUpdateRequest
-genSystemUserUpdateRequest n =
-  SystemUserUpdateRequest
-    <$> arbitrary -- systemUserUpdateRequestName :: Text
+genSupplementalItemValidationEvent :: Int -> Gen SupplementalItemValidationEvent
+genSupplementalItemValidationEvent n =
+  SupplementalItemValidationEvent
+    <$> arbitrary -- supplementalItemValidationEventAttribute :: Text
+    <*> arbitrary -- supplementalItemValidationEventCode :: Int
+    <*> arbitrary -- supplementalItemValidationEventMessage :: Text
+  
+instance Arbitrary SupplementalItemsBatchResponse where
+  arbitrary = sized genSupplementalItemsBatchResponse
+
+genSupplementalItemsBatchResponse :: Int -> Gen SupplementalItemsBatchResponse
+genSupplementalItemsBatchResponse n =
+  SupplementalItemsBatchResponse
+    <$> arbitrary -- supplementalItemsBatchResponseBatchId :: Text
+    <*> arbitraryReducedMaybe n -- supplementalItemsBatchResponseCompletedTime :: Maybe DateTime
+    <*> arbitraryReduced n -- supplementalItemsBatchResponseCreatedTime :: DateTime
+    <*> arbitraryReduced n -- supplementalItemsBatchResponseOperationResults :: [SupplementalOperationResult]
+    <*> arbitraryReduced n -- supplementalItemsBatchResponseStatus :: SupplementalItemBatchOperationStatus
+  
+instance Arbitrary SupplementalOperationResult where
+  arbitrary = sized genSupplementalOperationResult
+
+genSupplementalOperationResult :: Int -> Gen SupplementalOperationResult
+genSupplementalOperationResult n =
+  SupplementalOperationResult
+    <$> arbitraryReducedMaybe n -- supplementalOperationResultErrors :: Maybe [SupplementalItemValidationEvent]
+    <*> arbitrary -- supplementalOperationResultItemId :: Text
+    <*> arbitraryReduced n -- supplementalOperationResultStatus :: SupplementalItemProcessingStatus
+    <*> arbitrary -- supplementalOperationResultStoreCode :: Text
+    <*> arbitrary -- supplementalOperationResultSupplementalType :: E'SupplementalType
+    <*> arbitraryReducedMaybe n -- supplementalOperationResultWarnings :: Maybe [SupplementalItemValidationEvent]
+  
+instance Arbitrary SystemUserUpdateWithRequiredBody where
+  arbitrary = sized genSystemUserUpdateWithRequiredBody
+
+genSystemUserUpdateWithRequiredBody :: Int -> Gen SystemUserUpdateWithRequiredBody
+genSystemUserUpdateWithRequiredBody n =
+  SystemUserUpdateWithRequiredBody
+    <$> arbitrary -- systemUserUpdateWithRequiredBodyName :: Text
   
 instance Arbitrary TargetingSpec where
   arbitrary = sized genTargetingSpec
@@ -8417,9 +10170,11 @@ genTargetingSpec n =
     <*> arbitraryReducedMaybe n -- targetingSpecAudienceInclude :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- targetingSpecGender :: Maybe [TargetingSpecGender]
     <*> arbitraryReducedMaybe n -- targetingSpecGeo :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecGeoExclude :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- targetingSpecInterest :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- targetingSpecLocale :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- targetingSpecLocation :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecLocationExclude :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- targetingSpecMaximumAge :: Maybe Text
     <*> arbitraryReducedMaybe n -- targetingSpecMinimumAge :: Maybe Text
     <*> arbitraryReducedMaybe n -- targetingSpecShoppingRetargeting :: Maybe [TargetingSpecShoppingRetargeting]
@@ -8431,7 +10186,7 @@ instance Arbitrary TargetingSpecOperationAgeBucket where
 genTargetingSpecOperationAgeBucket :: Int -> Gen TargetingSpecOperationAgeBucket
 genTargetingSpecOperationAgeBucket n =
   TargetingSpecOperationAgeBucket
-    <$> arbitrary -- targetingSpecOperationAgeBucketField :: E'Field2
+    <$> arbitrary -- targetingSpecOperationAgeBucketField :: E'Field
     <*> arbitrary -- targetingSpecOperationAgeBucketOperation :: E'Operation6
     <*> arbitraryReduced n -- targetingSpecOperationAgeBucketValues :: [TargetingSpecAgeBucket]
   
@@ -8441,9 +10196,29 @@ instance Arbitrary TargetingSpecOperationAppType where
 genTargetingSpecOperationAppType :: Int -> Gen TargetingSpecOperationAppType
 genTargetingSpecOperationAppType n =
   TargetingSpecOperationAppType
-    <$> arbitrary -- targetingSpecOperationAppTypeField :: E'Field
-    <*> arbitrary -- targetingSpecOperationAppTypeOperation :: E'Operation5
+    <$> arbitrary -- targetingSpecOperationAppTypeField :: E'Field2
+    <*> arbitraryReduced n -- targetingSpecOperationAppTypeOperation :: TargetingSpecListOperation
     <*> arbitraryReduced n -- targetingSpecOperationAppTypeValues :: [TargetingSpecAppType]
+  
+instance Arbitrary TargetingSpecOperationAudienceExclude where
+  arbitrary = sized genTargetingSpecOperationAudienceExclude
+
+genTargetingSpecOperationAudienceExclude :: Int -> Gen TargetingSpecOperationAudienceExclude
+genTargetingSpecOperationAudienceExclude n =
+  TargetingSpecOperationAudienceExclude
+    <$> arbitrary -- targetingSpecOperationAudienceExcludeField :: E'Field3
+    <*> arbitraryReduced n -- targetingSpecOperationAudienceExcludeOperation :: TargetingSpecListOperation
+    <*> arbitrary -- targetingSpecOperationAudienceExcludeValues :: [Text]
+  
+instance Arbitrary TargetingSpecOperationAudienceInclude where
+  arbitrary = sized genTargetingSpecOperationAudienceInclude
+
+genTargetingSpecOperationAudienceInclude :: Int -> Gen TargetingSpecOperationAudienceInclude
+genTargetingSpecOperationAudienceInclude n =
+  TargetingSpecOperationAudienceInclude
+    <$> arbitrary -- targetingSpecOperationAudienceIncludeField :: E'Field4
+    <*> arbitraryReduced n -- targetingSpecOperationAudienceIncludeOperation :: TargetingSpecListOperation
+    <*> arbitrary -- targetingSpecOperationAudienceIncludeValues :: [Text]
   
 instance Arbitrary TargetingSpecOperationGender where
   arbitrary = sized genTargetingSpecOperationGender
@@ -8451,29 +10226,89 @@ instance Arbitrary TargetingSpecOperationGender where
 genTargetingSpecOperationGender :: Int -> Gen TargetingSpecOperationGender
 genTargetingSpecOperationGender n =
   TargetingSpecOperationGender
-    <$> arbitrary -- targetingSpecOperationGenderField :: E'Field3
-    <*> arbitrary -- targetingSpecOperationGenderOperation :: E'Operation5
+    <$> arbitrary -- targetingSpecOperationGenderField :: E'Field5
+    <*> arbitraryReduced n -- targetingSpecOperationGenderOperation :: TargetingSpecListOperation
     <*> arbitraryReduced n -- targetingSpecOperationGenderValues :: [TargetingSpecGender]
   
-instance Arbitrary TargetingSpecOperationList where
-  arbitrary = sized genTargetingSpecOperationList
+instance Arbitrary TargetingSpecOperationGeo where
+  arbitrary = sized genTargetingSpecOperationGeo
 
-genTargetingSpecOperationList :: Int -> Gen TargetingSpecOperationList
-genTargetingSpecOperationList n =
-  TargetingSpecOperationList
-    <$> arbitrary -- targetingSpecOperationListField :: Text
-    <*> arbitrary -- targetingSpecOperationListOperation :: E'Operation5
-    <*> arbitrary -- targetingSpecOperationListValues :: [Text]
+genTargetingSpecOperationGeo :: Int -> Gen TargetingSpecOperationGeo
+genTargetingSpecOperationGeo n =
+  TargetingSpecOperationGeo
+    <$> arbitrary -- targetingSpecOperationGeoField :: E'Field6
+    <*> arbitraryReduced n -- targetingSpecOperationGeoOperation :: TargetingSpecListOperation
+    <*> arbitrary -- targetingSpecOperationGeoValues :: [Text]
   
-instance Arbitrary TargetingSpecOperationMinMaxAge where
-  arbitrary = sized genTargetingSpecOperationMinMaxAge
+instance Arbitrary TargetingSpecOperationGeoExclude where
+  arbitrary = sized genTargetingSpecOperationGeoExclude
 
-genTargetingSpecOperationMinMaxAge :: Int -> Gen TargetingSpecOperationMinMaxAge
-genTargetingSpecOperationMinMaxAge n =
-  TargetingSpecOperationMinMaxAge
-    <$> arbitrary -- targetingSpecOperationMinMaxAgeField :: E'Field5
-    <*> arbitrary -- targetingSpecOperationMinMaxAgeOperation :: E'Operation6
-    <*> arbitrary -- targetingSpecOperationMinMaxAgeValue :: Text
+genTargetingSpecOperationGeoExclude :: Int -> Gen TargetingSpecOperationGeoExclude
+genTargetingSpecOperationGeoExclude n =
+  TargetingSpecOperationGeoExclude
+    <$> arbitrary -- targetingSpecOperationGeoExcludeField :: E'Field7
+    <*> arbitraryReduced n -- targetingSpecOperationGeoExcludeOperation :: TargetingSpecListOperation
+    <*> arbitrary -- targetingSpecOperationGeoExcludeValues :: [Text]
+  
+instance Arbitrary TargetingSpecOperationInterest where
+  arbitrary = sized genTargetingSpecOperationInterest
+
+genTargetingSpecOperationInterest :: Int -> Gen TargetingSpecOperationInterest
+genTargetingSpecOperationInterest n =
+  TargetingSpecOperationInterest
+    <$> arbitrary -- targetingSpecOperationInterestField :: E'Field8
+    <*> arbitraryReduced n -- targetingSpecOperationInterestOperation :: TargetingSpecListOperation
+    <*> arbitrary -- targetingSpecOperationInterestValues :: [Text]
+  
+instance Arbitrary TargetingSpecOperationLocale where
+  arbitrary = sized genTargetingSpecOperationLocale
+
+genTargetingSpecOperationLocale :: Int -> Gen TargetingSpecOperationLocale
+genTargetingSpecOperationLocale n =
+  TargetingSpecOperationLocale
+    <$> arbitrary -- targetingSpecOperationLocaleField :: E'Field9
+    <*> arbitraryReduced n -- targetingSpecOperationLocaleOperation :: TargetingSpecListOperation
+    <*> arbitrary -- targetingSpecOperationLocaleValues :: [Text]
+  
+instance Arbitrary TargetingSpecOperationLocation where
+  arbitrary = sized genTargetingSpecOperationLocation
+
+genTargetingSpecOperationLocation :: Int -> Gen TargetingSpecOperationLocation
+genTargetingSpecOperationLocation n =
+  TargetingSpecOperationLocation
+    <$> arbitrary -- targetingSpecOperationLocationField :: E'Field10
+    <*> arbitraryReduced n -- targetingSpecOperationLocationOperation :: TargetingSpecListOperation
+    <*> arbitrary -- targetingSpecOperationLocationValues :: [Text]
+  
+instance Arbitrary TargetingSpecOperationLocationExclude where
+  arbitrary = sized genTargetingSpecOperationLocationExclude
+
+genTargetingSpecOperationLocationExclude :: Int -> Gen TargetingSpecOperationLocationExclude
+genTargetingSpecOperationLocationExclude n =
+  TargetingSpecOperationLocationExclude
+    <$> arbitrary -- targetingSpecOperationLocationExcludeField :: E'Field11
+    <*> arbitraryReduced n -- targetingSpecOperationLocationExcludeOperation :: TargetingSpecListOperation
+    <*> arbitrary -- targetingSpecOperationLocationExcludeValues :: [Text]
+  
+instance Arbitrary TargetingSpecOperationMaximumAge where
+  arbitrary = sized genTargetingSpecOperationMaximumAge
+
+genTargetingSpecOperationMaximumAge :: Int -> Gen TargetingSpecOperationMaximumAge
+genTargetingSpecOperationMaximumAge n =
+  TargetingSpecOperationMaximumAge
+    <$> arbitrary -- targetingSpecOperationMaximumAgeField :: E'Field12
+    <*> arbitrary -- targetingSpecOperationMaximumAgeOperation :: E'Operation6
+    <*> arbitrary -- targetingSpecOperationMaximumAgeValue :: Text
+  
+instance Arbitrary TargetingSpecOperationMinimumAge where
+  arbitrary = sized genTargetingSpecOperationMinimumAge
+
+genTargetingSpecOperationMinimumAge :: Int -> Gen TargetingSpecOperationMinimumAge
+genTargetingSpecOperationMinimumAge n =
+  TargetingSpecOperationMinimumAge
+    <$> arbitrary -- targetingSpecOperationMinimumAgeField :: E'Field13
+    <*> arbitrary -- targetingSpecOperationMinimumAgeOperation :: E'Operation6
+    <*> arbitrary -- targetingSpecOperationMinimumAgeValue :: Text
   
 instance Arbitrary TargetingSpecOperationShoppingRetargeting where
   arbitrary = sized genTargetingSpecOperationShoppingRetargeting
@@ -8481,19 +10316,42 @@ instance Arbitrary TargetingSpecOperationShoppingRetargeting where
 genTargetingSpecOperationShoppingRetargeting :: Int -> Gen TargetingSpecOperationShoppingRetargeting
 genTargetingSpecOperationShoppingRetargeting n =
   TargetingSpecOperationShoppingRetargeting
-    <$> arbitrary -- targetingSpecOperationShoppingRetargetingField :: E'Field4
+    <$> arbitrary -- targetingSpecOperationShoppingRetargetingField :: E'Field14
     <*> arbitrary -- targetingSpecOperationShoppingRetargetingOperation :: E'Operation6
     <*> arbitraryReduced n -- targetingSpecOperationShoppingRetargetingValues :: [TargetingSpecShoppingRetargeting]
   
-instance Arbitrary TargetingSpecOperationString where
-  arbitrary = sized genTargetingSpecOperationString
+instance Arbitrary TargetingSpecOperations where
+  arbitrary = sized genTargetingSpecOperations
 
-genTargetingSpecOperationString :: Int -> Gen TargetingSpecOperationString
-genTargetingSpecOperationString n =
-  TargetingSpecOperationString
-    <$> arbitrary -- targetingSpecOperationStringField :: Text
-    <*> arbitrary -- targetingSpecOperationStringOperation :: E'Operation6
-    <*> arbitrary -- targetingSpecOperationStringValue :: Text
+genTargetingSpecOperations :: Int -> Gen TargetingSpecOperations
+genTargetingSpecOperations n =
+  TargetingSpecOperations
+    <$> arbitrary -- targetingSpecOperationsField :: E'Field13
+    <*> arbitrary -- targetingSpecOperationsOperation :: E'Operation6
+    <*> arbitraryReduced n -- targetingSpecOperationsValues :: [TargetingSpecShoppingRetargeting]
+    <*> arbitrary -- targetingSpecOperationsValue :: Text
+  
+instance Arbitrary TargetingSpecOptimal where
+  arbitrary = sized genTargetingSpecOptimal
+
+genTargetingSpecOptimal :: Int -> Gen TargetingSpecOptimal
+genTargetingSpecOptimal n =
+  TargetingSpecOptimal
+    <$> arbitraryReducedMaybe n -- targetingSpecOptimalAgeBucket :: Maybe [TargetingSpecAgeBucket]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalApptype :: Maybe [TargetingSpecAppType]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalAudienceExclude :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalAudienceInclude :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalGender :: Maybe [TargetingSpecGender]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalGeo :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalGeoExclude :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalInterest :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalLocale :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalLocation :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalLocationExclude :: Maybe [Text]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalMaximumAge :: Maybe Text
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalMinimumAge :: Maybe Text
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalShoppingRetargeting :: Maybe [TargetingSpecShoppingRetargeting]
+    <*> arbitraryReducedMaybe n -- targetingSpecOptimalTargetingStrategy :: Maybe [TargetingStrategy]
   
 instance Arbitrary TargetingSpecShoppingRetargeting where
   arbitrary = sized genTargetingSpecShoppingRetargeting
@@ -8504,6 +10362,26 @@ genTargetingSpecShoppingRetargeting n =
     <$> arbitraryReducedMaybe n -- targetingSpecShoppingRetargetingExclusionWindow :: Maybe Int
     <*> arbitraryReducedMaybe n -- targetingSpecShoppingRetargetingLookbackWindow :: Maybe Int
     <*> arbitraryReducedMaybe n -- targetingSpecShoppingRetargetingTagTypes :: Maybe [Int]
+  
+instance Arbitrary TargetingTemplate where
+  arbitrary = sized genTargetingTemplate
+
+genTargetingTemplate :: Int -> Gen TargetingTemplate
+genTargetingTemplate n =
+  TargetingTemplate
+    <$> arbitraryReducedMaybe n -- targetingTemplateAdAccountId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- targetingTemplateAutoTargetingEnabled :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- targetingTemplateCreatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- targetingTemplateId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- targetingTemplateKeywords :: Maybe [TargetingTemplateKeyword]
+    <*> arbitrary -- targetingTemplateName :: Text
+    <*> arbitraryReducedMaybe n -- targetingTemplatePlacementGroup :: Maybe PlacementGroupType
+    <*> arbitraryReducedMaybe n -- targetingTemplateSizing :: Maybe TargetingTemplateAudienceSizing
+    <*> arbitraryReducedMaybe n -- targetingTemplateStatus :: Maybe TargetingTemplateStatus
+    <*> arbitraryReduced n -- targetingTemplateTargetingAttributes :: TargetingSpecOptimal
+    <*> arbitraryReducedMaybe n -- targetingTemplateTrackingUrls :: Maybe TrackingUrls
+    <*> arbitraryReducedMaybe n -- targetingTemplateUpdatedTime :: Maybe Int
+    <*> arbitraryReducedMaybe n -- targetingTemplateValid :: Maybe Bool
   
 instance Arbitrary TargetingTemplateAudienceSizing where
   arbitrary = sized genTargetingTemplateAudienceSizing
@@ -8523,19 +10401,6 @@ genTargetingTemplateAudienceSizingReachEstimate n =
     <*> arbitraryReducedMaybe n -- targetingTemplateAudienceSizingReachEstimateLowerBound :: Maybe Integer
     <*> arbitraryReducedMaybe n -- targetingTemplateAudienceSizingReachEstimateUpperBound :: Maybe Integer
   
-instance Arbitrary TargetingTemplateCommon where
-  arbitrary = sized genTargetingTemplateCommon
-
-genTargetingTemplateCommon :: Int -> Gen TargetingTemplateCommon
-genTargetingTemplateCommon n =
-  TargetingTemplateCommon
-    <$> arbitraryReducedMaybe n -- targetingTemplateCommonAutoTargetingEnabled :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- targetingTemplateCommonKeywords :: Maybe [TargetingTemplateKeyword]
-    <*> arbitraryReducedMaybe n -- targetingTemplateCommonName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- targetingTemplateCommonPlacementGroup :: Maybe PlacementGroupType
-    <*> arbitraryReducedMaybe n -- targetingTemplateCommonTargetingAttributes :: Maybe TargetingSpec
-    <*> arbitraryReducedMaybe n -- targetingTemplateCommonTrackingUrls :: Maybe TrackingUrls
-  
 instance Arbitrary TargetingTemplateCreate where
   arbitrary = sized genTargetingTemplateCreate
 
@@ -8546,28 +10411,8 @@ genTargetingTemplateCreate n =
     <*> arbitraryReducedMaybe n -- targetingTemplateCreateKeywords :: Maybe [TargetingTemplateKeyword]
     <*> arbitrary -- targetingTemplateCreateName :: Text
     <*> arbitraryReducedMaybe n -- targetingTemplateCreatePlacementGroup :: Maybe PlacementGroupType
-    <*> arbitraryReduced n -- targetingTemplateCreateTargetingAttributes :: TargetingSpec
+    <*> arbitraryReduced n -- targetingTemplateCreateTargetingAttributes :: TargetingSpecOptimal
     <*> arbitraryReducedMaybe n -- targetingTemplateCreateTrackingUrls :: Maybe TrackingUrls
-  
-instance Arbitrary TargetingTemplateGetResponseData where
-  arbitrary = sized genTargetingTemplateGetResponseData
-
-genTargetingTemplateGetResponseData :: Int -> Gen TargetingTemplateGetResponseData
-genTargetingTemplateGetResponseData n =
-  TargetingTemplateGetResponseData
-    <$> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataAutoTargetingEnabled :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataKeywords :: Maybe [TargetingTemplateKeyword]
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataPlacementGroup :: Maybe PlacementGroupType
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataTargetingAttributes :: Maybe TargetingSpec
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataSizing :: Maybe TargetingTemplateAudienceSizing
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataStatus :: Maybe E'Status4
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataUpdatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- targetingTemplateGetResponseDataValid :: Maybe Bool
   
 instance Arbitrary TargetingTemplateKeyword where
   arbitrary = sized genTargetingTemplateKeyword
@@ -8585,44 +10430,17 @@ genTargetingTemplateList200Response :: Int -> Gen TargetingTemplateList200Respon
 genTargetingTemplateList200Response n =
   TargetingTemplateList200Response
     <$> arbitraryReducedMaybe n -- targetingTemplateList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- targetingTemplateList200ResponseItems :: [TargetingTemplateGetResponseData]
+    <*> arbitraryReduced n -- targetingTemplateList200ResponseItems :: [TargetingTemplate]
   
-instance Arbitrary TargetingTemplateResponseData where
-  arbitrary = sized genTargetingTemplateResponseData
+instance Arbitrary TargetingTemplateUpdateRequestReadOrUpdate where
+  arbitrary = sized genTargetingTemplateUpdateRequestReadOrUpdate
 
-genTargetingTemplateResponseData :: Int -> Gen TargetingTemplateResponseData
-genTargetingTemplateResponseData n =
-  TargetingTemplateResponseData
-    <$> arbitraryReducedMaybe n -- targetingTemplateResponseDataAutoTargetingEnabled :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataKeywords :: Maybe [TargetingTemplateKeyword]
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataPlacementGroup :: Maybe PlacementGroupType
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataTargetingAttributes :: Maybe TargetingSpec
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataTrackingUrls :: Maybe TrackingUrls
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataSizing :: Maybe TargetingTemplateAudienceSizing
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataStatus :: Maybe E'Status4
-    <*> arbitraryReducedMaybe n -- targetingTemplateResponseDataUpdatedTime :: Maybe Int
-  
-instance Arbitrary TargetingTemplateUpdateRequest where
-  arbitrary = sized genTargetingTemplateUpdateRequest
-
-genTargetingTemplateUpdateRequest :: Int -> Gen TargetingTemplateUpdateRequest
-genTargetingTemplateUpdateRequest n =
-  TargetingTemplateUpdateRequest
-    <$> arbitrary -- targetingTemplateUpdateRequestId :: Text
-    <*> arbitrary -- targetingTemplateUpdateRequestOperationType :: E'OperationType
-    <*> arbitraryReducedMaybe n -- targetingTemplateUpdateRequestTargetingAttributes :: Maybe TargetingSpec
-  
-instance Arbitrary TargetingTypeFilter where
-  arbitrary = sized genTargetingTypeFilter
-
-genTargetingTypeFilter :: Int -> Gen TargetingTypeFilter
-genTargetingTypeFilter n =
-  TargetingTypeFilter
-    <$> arbitraryReducedMaybe n -- targetingTypeFilterTargetingTypes :: Maybe [E'TargetingTypes]
+genTargetingTemplateUpdateRequestReadOrUpdate :: Int -> Gen TargetingTemplateUpdateRequestReadOrUpdate
+genTargetingTemplateUpdateRequestReadOrUpdate n =
+  TargetingTemplateUpdateRequestReadOrUpdate
+    <$> arbitrary -- targetingTemplateUpdateRequestReadOrUpdateId :: Text
+    <*> arbitraryReduced n -- targetingTemplateUpdateRequestReadOrUpdateOperationType :: AudienceUpdateOperationType
+    <*> arbitraryReducedMaybe n -- targetingTemplateUpdateRequestReadOrUpdateTargetingAttributes :: Maybe TargetingSpecOptimal
   
 instance Arbitrary TemplateBasedReport where
   arbitrary = sized genTemplateBasedReport
@@ -8635,76 +10453,15 @@ genTemplateBasedReport n =
     <*> arbitrary -- templateBasedReportTemplateId :: Text
     <*> arbitraryReducedMaybe n -- templateBasedReportToken :: Maybe Text
   
-instance Arbitrary TemplateResponse where
-  arbitrary = sized genTemplateResponse
+instance Arbitrary TemplateBasedReportCreate where
+  arbitrary = sized genTemplateBasedReportCreate
 
-genTemplateResponse :: Int -> Gen TemplateResponse
-genTemplateResponse n =
-  TemplateResponse
-    <$> arbitraryReducedMaybe n -- templateResponseAdAccountId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- templateResponseAdAccountIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- templateResponseClickWindowDays :: Maybe Double
-    <*> arbitraryReducedMaybe n -- templateResponseColumns :: Maybe [E'Columns]
-    <*> arbitraryReducedMaybe n -- templateResponseConversionReportTimeType :: Maybe E'ConversionReportTimeType
-    <*> arbitraryReducedMaybe n -- templateResponseCreationSource :: Maybe E'CreationSource
-    <*> arbitraryReducedMaybe n -- templateResponseCustomColumnIds :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- templateResponseDateRange :: Maybe TemplateResponseDateRange
-    <*> arbitraryReducedMaybe n -- templateResponseEngagementWindowDays :: Maybe Double
-    <*> arbitraryReducedMaybe n -- templateResponseFiltersJson :: Maybe Text
-    <*> arbitraryReducedMaybe n -- templateResponseGranularity :: Maybe Granularity
-    <*> arbitraryReducedMaybe n -- templateResponseId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- templateResponseIngestionSources :: Maybe [E'IngestionSources]
-    <*> arbitraryReducedMaybe n -- templateResponseIsDeleted :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- templateResponseIsOwnedByUser :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- templateResponseIsScheduled :: Maybe Bool
-    <*> arbitraryReducedMaybe n -- templateResponseName :: Maybe Text
-    <*> arbitraryReducedMaybe n -- templateResponseReportEndRelativeDaysInPast :: Maybe Double
-    <*> arbitraryReducedMaybe n -- templateResponseReportFormat :: Maybe DataOutputFormat
-    <*> arbitraryReducedMaybe n -- templateResponseReportLevel :: Maybe MetricsReportingLevel
-    <*> arbitraryReducedMaybe n -- templateResponseReportStartRelativeDaysInPast :: Maybe Double
-    <*> arbitraryReducedMaybe n -- templateResponseType :: Maybe E'Type
-    <*> arbitraryReducedMaybe n -- templateResponseUpdatedTime :: Maybe Double
-    <*> arbitraryReducedMaybe n -- templateResponseUserId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- templateResponseViewWindowDays :: Maybe Double
-  
-instance Arbitrary TemplateResponseDateRange where
-  arbitrary = sized genTemplateResponseDateRange
-
-genTemplateResponseDateRange :: Int -> Gen TemplateResponseDateRange
-genTemplateResponseDateRange n =
-  TemplateResponseDateRange
-    <$> arbitraryReducedMaybe n -- templateResponseDateRangeAbsoluteDateRange :: Maybe TemplateResponseDateRangeAbsoluteDateRange
-    <*> arbitraryReducedMaybe n -- templateResponseDateRangeDynamicDateRange :: Maybe TemplateResponseDateRangeDynamicDateRange
-    <*> arbitraryReducedMaybe n -- templateResponseDateRangeRelativeDateRange :: Maybe TemplateResponseDateRangeRelativeDateRange
-  
-instance Arbitrary TemplateResponseDateRangeAbsoluteDateRange where
-  arbitrary = sized genTemplateResponseDateRangeAbsoluteDateRange
-
-genTemplateResponseDateRangeAbsoluteDateRange :: Int -> Gen TemplateResponseDateRangeAbsoluteDateRange
-genTemplateResponseDateRangeAbsoluteDateRange n =
-  TemplateResponseDateRangeAbsoluteDateRange
-    <$> arbitraryReducedMaybe n -- templateResponseDateRangeAbsoluteDateRangeEndDate :: Maybe Double
-    <*> arbitraryReducedMaybe n -- templateResponseDateRangeAbsoluteDateRangeStartDate :: Maybe Double
-    <*> arbitraryReducedMaybe n -- templateResponseDateRangeAbsoluteDateRangeType :: Maybe Text
-  
-instance Arbitrary TemplateResponseDateRangeDynamicDateRange where
-  arbitrary = sized genTemplateResponseDateRangeDynamicDateRange
-
-genTemplateResponseDateRangeDynamicDateRange :: Int -> Gen TemplateResponseDateRangeDynamicDateRange
-genTemplateResponseDateRangeDynamicDateRange n =
-  TemplateResponseDateRangeDynamicDateRange
-    <$> arbitraryReducedMaybe n -- templateResponseDateRangeDynamicDateRangeRange :: Maybe E'Range
-    <*> arbitraryReducedMaybe n -- templateResponseDateRangeDynamicDateRangeType :: Maybe Text
-  
-instance Arbitrary TemplateResponseDateRangeRelativeDateRange where
-  arbitrary = sized genTemplateResponseDateRangeRelativeDateRange
-
-genTemplateResponseDateRangeRelativeDateRange :: Int -> Gen TemplateResponseDateRangeRelativeDateRange
-genTemplateResponseDateRangeRelativeDateRange n =
-  TemplateResponseDateRangeRelativeDateRange
-    <$> arbitraryReducedMaybe n -- templateResponseDateRangeRelativeDateRangeEndDaysInPast :: Maybe Double
-    <*> arbitraryReducedMaybe n -- templateResponseDateRangeRelativeDateRangeStartDaysInPast :: Maybe Double
-    <*> arbitraryReducedMaybe n -- templateResponseDateRangeRelativeDateRangeType :: Maybe Text
+genTemplateBasedReportCreate :: Int -> Gen TemplateBasedReportCreate
+genTemplateBasedReportCreate n =
+  TemplateBasedReportCreate
+    <$> arbitraryReducedMaybe n -- templateBasedReportCreateMessage :: Maybe Text
+    <*> arbitraryReduced n -- templateBasedReportCreateReportStatus :: BulkReportingJobStatus
+    <*> arbitraryReducedMaybe n -- templateBasedReportCreateToken :: Maybe Text
   
 instance Arbitrary TemplatesList200Response where
   arbitrary = sized genTemplatesList200Response
@@ -8713,7 +10470,7 @@ genTemplatesList200Response :: Int -> Gen TemplatesList200Response
 genTemplatesList200Response n =
   TemplatesList200Response
     <$> arbitraryReducedMaybe n -- templatesList200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- templatesList200ResponseItems :: [TemplateResponse]
+    <*> arbitraryReduced n -- templatesList200ResponseItems :: [AccountTemplate]
   
 instance Arbitrary TermsOfService where
   arbitrary = sized genTermsOfService
@@ -8749,8 +10506,8 @@ genTopPinsAnalyticsResponse :: Int -> Gen TopPinsAnalyticsResponse
 genTopPinsAnalyticsResponse n =
   TopPinsAnalyticsResponse
     <$> arbitraryReducedMaybe n -- topPinsAnalyticsResponseDateAvailability :: Maybe TopPinsAnalyticsResponseDateAvailability
-    <*> arbitraryReducedMaybe n -- topPinsAnalyticsResponsePins :: Maybe [TopPinsAnalyticsResponsePinsInner]
-    <*> arbitraryReducedMaybe n -- topPinsAnalyticsResponseSortBy :: Maybe E'SortBy
+    <*> arbitraryReducedMaybe n -- topPinsAnalyticsResponsePins :: Maybe [TopPinsAnalyticsResponsePinsItems]
+    <*> arbitraryReducedMaybe n -- topPinsAnalyticsResponseSortBy :: Maybe TopPinsSortBy
   
 instance Arbitrary TopPinsAnalyticsResponseDateAvailability where
   arbitrary = sized genTopPinsAnalyticsResponseDateAvailability
@@ -8761,15 +10518,15 @@ genTopPinsAnalyticsResponseDateAvailability n =
     <$> arbitraryReducedMaybe n -- topPinsAnalyticsResponseDateAvailabilityIsRealtime :: Maybe Bool
     <*> arbitraryReducedMaybe n -- topPinsAnalyticsResponseDateAvailabilityLatestAvailableTimestamp :: Maybe Double
   
-instance Arbitrary TopPinsAnalyticsResponsePinsInner where
-  arbitrary = sized genTopPinsAnalyticsResponsePinsInner
+instance Arbitrary TopPinsAnalyticsResponsePinsItems where
+  arbitrary = sized genTopPinsAnalyticsResponsePinsItems
 
-genTopPinsAnalyticsResponsePinsInner :: Int -> Gen TopPinsAnalyticsResponsePinsInner
-genTopPinsAnalyticsResponsePinsInner n =
-  TopPinsAnalyticsResponsePinsInner
-    <$> arbitraryReducedMaybe n -- topPinsAnalyticsResponsePinsInnerDataStatus :: Maybe (Map.Map String DataStatus)
-    <*> arbitraryReducedMaybe n -- topPinsAnalyticsResponsePinsInnerMetrics :: Maybe (Map.Map String Double)
-    <*> arbitraryReducedMaybe n -- topPinsAnalyticsResponsePinsInnerPinId :: Maybe Text
+genTopPinsAnalyticsResponsePinsItems :: Int -> Gen TopPinsAnalyticsResponsePinsItems
+genTopPinsAnalyticsResponsePinsItems n =
+  TopPinsAnalyticsResponsePinsItems
+    <$> arbitraryReducedMaybe n -- topPinsAnalyticsResponsePinsItemsDataStatus :: Maybe (Map.Map String DataStatus)
+    <*> arbitraryReducedMaybe n -- topPinsAnalyticsResponsePinsItemsMetrics :: Maybe (Map.Map String Double)
+    <*> arbitraryReducedMaybe n -- topPinsAnalyticsResponsePinsItemsPinId :: Maybe Text
   
 instance Arbitrary TopVideoPinsAnalyticsResponse where
   arbitrary = sized genTopVideoPinsAnalyticsResponse
@@ -8777,19 +10534,38 @@ instance Arbitrary TopVideoPinsAnalyticsResponse where
 genTopVideoPinsAnalyticsResponse :: Int -> Gen TopVideoPinsAnalyticsResponse
 genTopVideoPinsAnalyticsResponse n =
   TopVideoPinsAnalyticsResponse
-    <$> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponseDateAvailability :: Maybe TopPinsAnalyticsResponseDateAvailability
-    <*> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponsePins :: Maybe [TopVideoPinsAnalyticsResponsePinsInner]
-    <*> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponseSortBy :: Maybe E'SortBy2
+    <$> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponseDateAvailability :: Maybe TopVideoPinsAnalyticsResponseDateAvailability
+    <*> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponsePins :: Maybe [TopVideoPinsAnalyticsResponsePinsItems]
+    <*> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponseSortBy :: Maybe TopVideoPinsSortBy
   
-instance Arbitrary TopVideoPinsAnalyticsResponsePinsInner where
-  arbitrary = sized genTopVideoPinsAnalyticsResponsePinsInner
+instance Arbitrary TopVideoPinsAnalyticsResponseDateAvailability where
+  arbitrary = sized genTopVideoPinsAnalyticsResponseDateAvailability
 
-genTopVideoPinsAnalyticsResponsePinsInner :: Int -> Gen TopVideoPinsAnalyticsResponsePinsInner
-genTopVideoPinsAnalyticsResponsePinsInner n =
-  TopVideoPinsAnalyticsResponsePinsInner
-    <$> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponsePinsInnerDataStatus :: Maybe (Map.Map String DataStatus)
-    <*> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponsePinsInnerMetrics :: Maybe (Map.Map String Double)
-    <*> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponsePinsInnerPinId :: Maybe Text
+genTopVideoPinsAnalyticsResponseDateAvailability :: Int -> Gen TopVideoPinsAnalyticsResponseDateAvailability
+genTopVideoPinsAnalyticsResponseDateAvailability n =
+  TopVideoPinsAnalyticsResponseDateAvailability
+    <$> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponseDateAvailabilityIsRealtime :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponseDateAvailabilityLatestAvailableTimestamp :: Maybe Double
+  
+instance Arbitrary TopVideoPinsAnalyticsResponsePinsItems where
+  arbitrary = sized genTopVideoPinsAnalyticsResponsePinsItems
+
+genTopVideoPinsAnalyticsResponsePinsItems :: Int -> Gen TopVideoPinsAnalyticsResponsePinsItems
+genTopVideoPinsAnalyticsResponsePinsItems n =
+  TopVideoPinsAnalyticsResponsePinsItems
+    <$> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponsePinsItemsDataStatus :: Maybe (Map.Map String DataStatus)
+    <*> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponsePinsItemsMetrics :: Maybe (Map.Map String Double)
+    <*> arbitraryReducedMaybe n -- topVideoPinsAnalyticsResponsePinsItemsPinId :: Maybe Text
+  
+instance Arbitrary TotalCountByEntityStatus where
+  arbitrary = sized genTotalCountByEntityStatus
+
+genTotalCountByEntityStatus :: Int -> Gen TotalCountByEntityStatus
+genTotalCountByEntityStatus n =
+  TotalCountByEntityStatus
+    <$> arbitraryReducedMaybe n -- totalCountByEntityStatusActive :: Maybe Int
+    <*> arbitraryReducedMaybe n -- totalCountByEntityStatusArchived :: Maybe Int
+    <*> arbitraryReducedMaybe n -- totalCountByEntityStatusPaused :: Maybe Int
   
 instance Arbitrary TrackingUrls where
   arbitrary = sized genTrackingUrls
@@ -8824,24 +10600,8 @@ instance Arbitrary TrendingKeywordDemographics where
 genTrendingKeywordDemographics :: Int -> Gen TrendingKeywordDemographics
 genTrendingKeywordDemographics n =
   TrendingKeywordDemographics
-    <$> arbitraryReducedMaybe n -- trendingKeywordDemographicsAgeDistribution :: Maybe TrendingKeywordDemographicsAgeDistribution
-    <*> arbitraryReducedMaybe n -- trendingKeywordDemographicsGenderDistribution :: Maybe TrendingKeywordDemographicsGenderDistribution
-  
-instance Arbitrary TrendingKeywordDemographicsAgeDistribution where
-  arbitrary = sized genTrendingKeywordDemographicsAgeDistribution
-
-genTrendingKeywordDemographicsAgeDistribution :: Int -> Gen TrendingKeywordDemographicsAgeDistribution
-genTrendingKeywordDemographicsAgeDistribution n =
-  TrendingKeywordDemographicsAgeDistribution
-    <$> arbitraryReducedMaybe n -- trendingKeywordDemographicsAgeDistributionAgeDistribution :: Maybe E'AgeDistribution
-  
-instance Arbitrary TrendingKeywordDemographicsGenderDistribution where
-  arbitrary = sized genTrendingKeywordDemographicsGenderDistribution
-
-genTrendingKeywordDemographicsGenderDistribution :: Int -> Gen TrendingKeywordDemographicsGenderDistribution
-genTrendingKeywordDemographicsGenderDistribution n =
-  TrendingKeywordDemographicsGenderDistribution
-    <$> arbitraryReducedMaybe n -- trendingKeywordDemographicsGenderDistributionGenderDistribution :: Maybe E'GenderDistribution
+    <$> arbitraryReducedMaybe n -- trendingKeywordDemographicsAgeDistribution :: Maybe TrendsAgeDistribution
+    <*> arbitraryReducedMaybe n -- trendingKeywordDemographicsGenderDistribution :: Maybe TrendsGenderDistribution
   
 instance Arbitrary TrendingKeywordsResponse where
   arbitrary = sized genTrendingKeywordsResponse
@@ -8857,9 +10617,11 @@ instance Arbitrary TrendingPin where
 genTrendingPin :: Int -> Gen TrendingPin
 genTrendingPin n =
   TrendingPin
-    <$> arbitrary -- trendingPinHeight :: Int
+    <$> arbitrary -- trendingPinColor :: Text
+    <*> arbitrary -- trendingPinHeight :: Int
     <*> arbitrary -- trendingPinId :: Text
     <*> arbitrary -- trendingPinSrc :: Text
+    <*> arbitraryReducedMaybe n -- trendingPinVerticalOffset :: Maybe Double
     <*> arbitrary -- trendingPinWidth :: Int
   
 instance Arbitrary TrendingProductCategory where
@@ -8871,8 +10633,9 @@ genTrendingProductCategory n =
     <$> arbitraryReduced n -- trendingProductCategoryEngagementType :: ProductCategoriesEngagementType
     <*> arbitrary -- trendingProductCategoryPctChangeMom :: Int
     <*> arbitrary -- trendingProductCategoryPercentRelativeVolume :: Int
+    <*> arbitrary -- trendingProductCategoryPinterestProductCategoryId :: Int
     <*> arbitrary -- trendingProductCategoryProductCategory :: Text
-    <*> arbitraryReducedMaybe n -- trendingProductCategoryVerticals :: Maybe [VerticalProductCategory]
+    <*> arbitraryReducedMaybe n -- trendingProductCategoryVerticals :: Maybe [Text]
   
 instance Arbitrary TrendingTopic where
   arbitrary = sized genTrendingTopic
@@ -8881,12 +10644,42 @@ genTrendingTopic :: Int -> Gen TrendingTopic
 genTrendingTopic n =
   TrendingTopic
     <$> arbitrary -- trendingTopicDescription :: Text
-    <*> arbitrary -- trendingTopicPercentGrowthMom :: Int
+    <*> arbitrary -- trendingTopicId :: Text
+    <*> arbitraryReducedMaybe n -- trendingTopicPercentGrowthMom :: Maybe Int
     <*> arbitraryReduced n -- trendingTopicPins :: [TrendingPin]
     <*> arbitrary -- trendingTopicRelatedInterests :: [Text]
     <*> arbitrary -- trendingTopicRelatedSearches :: [Text]
     <*> arbitrary -- trendingTopicTimeSeries :: (Map.Map String Double)
     <*> arbitrary -- trendingTopicTitle :: Text
+  
+instance Arbitrary TrendsAgeDistribution where
+  arbitrary = sized genTrendsAgeDistribution
+
+genTrendsAgeDistribution :: Int -> Gen TrendsAgeDistribution
+genTrendsAgeDistribution n =
+  TrendsAgeDistribution
+    <$> arbitraryReducedMaybe n -- trendsAgeDistributionAgeDistribution :: Maybe TrendsAgeBucket
+  
+instance Arbitrary TrendsEditorial where
+  arbitrary = sized genTrendsEditorial
+
+genTrendsEditorial :: Int -> Gen TrendsEditorial
+genTrendsEditorial n =
+  TrendsEditorial
+    <$> arbitrary -- trendsEditorialBoardUrl :: Text
+    <*> arbitrary -- trendsEditorialDescription :: Text
+    <*> arbitrary -- trendsEditorialInterests :: [Text]
+    <*> arbitrary -- trendsEditorialPinsUrl :: [Text]
+    <*> arbitraryReduced n -- trendsEditorialRelatedKeywords :: [KeywordInfo]
+    <*> arbitrary -- trendsEditorialTitle :: Text
+  
+instance Arbitrary TrendsGenderDistribution where
+  arbitrary = sized genTrendsGenderDistribution
+
+genTrendsGenderDistribution :: Int -> Gen TrendsGenderDistribution
+genTrendsGenderDistribution n =
+  TrendsGenderDistribution
+    <$> arbitraryReducedMaybe n -- trendsGenderDistributionGenderDistribution :: Maybe TrendsGender
   
 instance Arbitrary UpdatableItemAttributes where
   arbitrary = sized genUpdatableItemAttributes
@@ -9006,45 +10799,13 @@ genUpdatableItemAttributesGtin n =
   
   pure UpdatableItemAttributesGtin
    
-instance Arbitrary UpdateAssetGroupBody where
-  arbitrary = sized genUpdateAssetGroupBody
+instance Arbitrary UpdateBusinessMembershipsResponse where
+  arbitrary = sized genUpdateBusinessMembershipsResponse
 
-genUpdateAssetGroupBody :: Int -> Gen UpdateAssetGroupBody
-genUpdateAssetGroupBody n =
-  UpdateAssetGroupBody
-    <$> arbitraryReducedMaybe n -- updateAssetGroupBodyAssetGroupsToUpdate :: Maybe [UpdateAssetGroupBodyAssetGroupsToUpdateInner]
-  
-instance Arbitrary UpdateAssetGroupBodyAssetGroupsToUpdateInner where
-  arbitrary = sized genUpdateAssetGroupBodyAssetGroupsToUpdateInner
-
-genUpdateAssetGroupBodyAssetGroupsToUpdateInner :: Int -> Gen UpdateAssetGroupBodyAssetGroupsToUpdateInner
-genUpdateAssetGroupBodyAssetGroupsToUpdateInner n =
-  UpdateAssetGroupBodyAssetGroupsToUpdateInner
-    <$> arbitrary -- updateAssetGroupBodyAssetGroupsToUpdateInnerAssetGroupId :: Text
-    <*> arbitraryReducedMaybe n -- updateAssetGroupBodyAssetGroupsToUpdateInnerAssetGroupTypes :: Maybe [AssetGroupType]
-    <*> arbitraryReducedMaybe n -- updateAssetGroupBodyAssetGroupsToUpdateInnerAssetsToAdd :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- updateAssetGroupBodyAssetGroupsToUpdateInnerAssetsToRemove :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- updateAssetGroupBodyAssetGroupsToUpdateInnerDescription :: Maybe Text
-    <*> arbitraryReducedMaybe n -- updateAssetGroupBodyAssetGroupsToUpdateInnerName :: Maybe Text
-  
-instance Arbitrary UpdateAssetGroupResponse where
-  arbitrary = sized genUpdateAssetGroupResponse
-
-genUpdateAssetGroupResponse :: Int -> Gen UpdateAssetGroupResponse
-genUpdateAssetGroupResponse n =
-  UpdateAssetGroupResponse
-    <$> arbitraryReducedMaybe n -- updateAssetGroupResponseExceptions :: Maybe [UpdateAssetGroupResponseExceptionsInner]
-    <*> arbitraryReducedMaybe n -- updateAssetGroupResponseUpdatedAssetGroups :: Maybe [AssetGroupBinding]
-  
-instance Arbitrary UpdateAssetGroupResponseExceptionsInner where
-  arbitrary = sized genUpdateAssetGroupResponseExceptionsInner
-
-genUpdateAssetGroupResponseExceptionsInner :: Int -> Gen UpdateAssetGroupResponseExceptionsInner
-genUpdateAssetGroupResponseExceptionsInner n =
-  UpdateAssetGroupResponseExceptionsInner
-    <$> arbitraryReducedMaybe n -- updateAssetGroupResponseExceptionsInnerAssetGroupId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- updateAssetGroupResponseExceptionsInnerCode :: Maybe Int
-    <*> arbitraryReducedMaybe n -- updateAssetGroupResponseExceptionsInnerMessage :: Maybe Text
+genUpdateBusinessMembershipsResponse :: Int -> Gen UpdateBusinessMembershipsResponse
+genUpdateBusinessMembershipsResponse n =
+  UpdateBusinessMembershipsResponse
+    <$> arbitraryReducedMaybe n -- updateBusinessMembershipsResponseItems :: Maybe [BusinessMembershipMember]
   
 instance Arbitrary UpdateInvitesResultsResponseArray where
   arbitrary = sized genUpdateInvitesResultsResponseArray
@@ -9052,16 +10813,7 @@ instance Arbitrary UpdateInvitesResultsResponseArray where
 genUpdateInvitesResultsResponseArray :: Int -> Gen UpdateInvitesResultsResponseArray
 genUpdateInvitesResultsResponseArray n =
   UpdateInvitesResultsResponseArray
-    <$> arbitraryReducedMaybe n -- updateInvitesResultsResponseArrayItems :: Maybe [UpdateInvitesResultsResponseArrayItemsInner]
-  
-instance Arbitrary UpdateInvitesResultsResponseArrayItemsInner where
-  arbitrary = sized genUpdateInvitesResultsResponseArrayItemsInner
-
-genUpdateInvitesResultsResponseArrayItemsInner :: Int -> Gen UpdateInvitesResultsResponseArrayItemsInner
-genUpdateInvitesResultsResponseArrayItemsInner n =
-  UpdateInvitesResultsResponseArrayItemsInner
-    <$> arbitraryReducedMaybe n -- updateInvitesResultsResponseArrayItemsInnerException :: Maybe InviteExceptionResponse
-    <*> arbitraryReducedMaybe n -- updateInvitesResultsResponseArrayItemsInnerInvite :: Maybe InviteBusinessRoleBinding
+    <$> arbitraryReducedMaybe n -- updateInvitesResultsResponseArrayItems :: Maybe [InviteActionResultItem]
   
 instance Arbitrary UpdateMemberAssetAccessBody where
   arbitrary = sized genUpdateMemberAssetAccessBody
@@ -9069,17 +10821,25 @@ instance Arbitrary UpdateMemberAssetAccessBody where
 genUpdateMemberAssetAccessBody :: Int -> Gen UpdateMemberAssetAccessBody
 genUpdateMemberAssetAccessBody n =
   UpdateMemberAssetAccessBody
-    <$> arbitraryReduced n -- updateMemberAssetAccessBodyAccesses :: [UpdateMemberAssetAccessBodyAccessesInner]
+    <$> arbitraryReduced n -- updateMemberAssetAccessBodyAccesses :: [UpdateMemberAssetAccessItem]
   
-instance Arbitrary UpdateMemberAssetAccessBodyAccessesInner where
-  arbitrary = sized genUpdateMemberAssetAccessBodyAccessesInner
+instance Arbitrary UpdateMemberAssetAccessItem where
+  arbitrary = sized genUpdateMemberAssetAccessItem
 
-genUpdateMemberAssetAccessBodyAccessesInner :: Int -> Gen UpdateMemberAssetAccessBodyAccessesInner
-genUpdateMemberAssetAccessBodyAccessesInner n =
-  UpdateMemberAssetAccessBodyAccessesInner
-    <$> arbitrary -- updateMemberAssetAccessBodyAccessesInnerAssetId :: Text
-    <*> arbitrary -- updateMemberAssetAccessBodyAccessesInnerMemberId :: Text
-    <*> arbitraryReduced n -- updateMemberAssetAccessBodyAccessesInnerPermissions :: [Permissions]
+genUpdateMemberAssetAccessItem :: Int -> Gen UpdateMemberAssetAccessItem
+genUpdateMemberAssetAccessItem n =
+  UpdateMemberAssetAccessItem
+    <$> arbitrary -- updateMemberAssetAccessItemAssetId :: Text
+    <*> arbitrary -- updateMemberAssetAccessItemMemberId :: Text
+    <*> arbitraryReduced n -- updateMemberAssetAccessItemPermissions :: [Permissions]
+  
+instance Arbitrary UpdateMemberAssetResultItem where
+  arbitrary = sized genUpdateMemberAssetResultItem
+
+genUpdateMemberAssetResultItem :: Int -> Gen UpdateMemberAssetResultItem
+genUpdateMemberAssetResultItem n =
+  UpdateMemberAssetResultItem
+    <$> arbitraryReducedMaybe n -- updateMemberAssetResultItemResponse :: Maybe UsersForIndividualAssetResponse
   
 instance Arbitrary UpdateMemberAssetsResultsResponseArray where
   arbitrary = sized genUpdateMemberAssetsResultsResponseArray
@@ -9087,41 +10847,7 @@ instance Arbitrary UpdateMemberAssetsResultsResponseArray where
 genUpdateMemberAssetsResultsResponseArray :: Int -> Gen UpdateMemberAssetsResultsResponseArray
 genUpdateMemberAssetsResultsResponseArray n =
   UpdateMemberAssetsResultsResponseArray
-    <$> arbitraryReducedMaybe n -- updateMemberAssetsResultsResponseArrayItems :: Maybe [UpdateMemberAssetsResultsResponseArrayItemsInner]
-  
-instance Arbitrary UpdateMemberAssetsResultsResponseArrayItemsInner where
-  arbitrary = sized genUpdateMemberAssetsResultsResponseArrayItemsInner
-
-genUpdateMemberAssetsResultsResponseArrayItemsInner :: Int -> Gen UpdateMemberAssetsResultsResponseArrayItemsInner
-genUpdateMemberAssetsResultsResponseArrayItemsInner n =
-  UpdateMemberAssetsResultsResponseArrayItemsInner
-    <$> arbitraryReducedMaybe n -- updateMemberAssetsResultsResponseArrayItemsInnerResponse :: Maybe UsersForIndividualAssetResponse
-  
-instance Arbitrary UpdateMemberBusinessRoleBody where
-  arbitrary = sized genUpdateMemberBusinessRoleBody
-
-genUpdateMemberBusinessRoleBody :: Int -> Gen UpdateMemberBusinessRoleBody
-genUpdateMemberBusinessRoleBody n =
-  UpdateMemberBusinessRoleBody
-    <$> arbitraryReduced n -- updateMemberBusinessRoleBodyBusinessRole :: BusinessRoleForMembers
-    <*> arbitrary -- updateMemberBusinessRoleBodyMemberId :: Text
-  
-instance Arbitrary UpdateMemberResult where
-  arbitrary = sized genUpdateMemberResult
-
-genUpdateMemberResult :: Int -> Gen UpdateMemberResult
-genUpdateMemberResult n =
-  UpdateMemberResult
-    <$> arbitraryReducedMaybe n -- updateMemberResultBusinessRole :: Maybe Text
-    <*> arbitraryReducedMaybe n -- updateMemberResultMemberId :: Maybe Text
-  
-instance Arbitrary UpdateMemberResultsResponseArray where
-  arbitrary = sized genUpdateMemberResultsResponseArray
-
-genUpdateMemberResultsResponseArray :: Int -> Gen UpdateMemberResultsResponseArray
-genUpdateMemberResultsResponseArray n =
-  UpdateMemberResultsResponseArray
-    <$> arbitraryReducedMaybe n -- updateMemberResultsResponseArrayItems :: Maybe [UpdateMemberResult]
+    <$> arbitraryReducedMaybe n -- updateMemberAssetsResultsResponseArrayItems :: Maybe [UpdateMemberAssetResultItem]
   
 instance Arbitrary UpdatePartnerAssetAccessBody where
   arbitrary = sized genUpdatePartnerAssetAccessBody
@@ -9129,17 +10855,17 @@ instance Arbitrary UpdatePartnerAssetAccessBody where
 genUpdatePartnerAssetAccessBody :: Int -> Gen UpdatePartnerAssetAccessBody
 genUpdatePartnerAssetAccessBody n =
   UpdatePartnerAssetAccessBody
-    <$> arbitraryReduced n -- updatePartnerAssetAccessBodyAccesses :: [UpdatePartnerAssetAccessBodyAccessesInner]
+    <$> arbitraryReduced n -- updatePartnerAssetAccessBodyAccesses :: [UpdatePartnerAssetAccessItem]
   
-instance Arbitrary UpdatePartnerAssetAccessBodyAccessesInner where
-  arbitrary = sized genUpdatePartnerAssetAccessBodyAccessesInner
+instance Arbitrary UpdatePartnerAssetAccessItem where
+  arbitrary = sized genUpdatePartnerAssetAccessItem
 
-genUpdatePartnerAssetAccessBodyAccessesInner :: Int -> Gen UpdatePartnerAssetAccessBodyAccessesInner
-genUpdatePartnerAssetAccessBodyAccessesInner n =
-  UpdatePartnerAssetAccessBodyAccessesInner
-    <$> arbitrary -- updatePartnerAssetAccessBodyAccessesInnerAssetId :: Text
-    <*> arbitrary -- updatePartnerAssetAccessBodyAccessesInnerPartnerId :: Text
-    <*> arbitraryReduced n -- updatePartnerAssetAccessBodyAccessesInnerPermissions :: [Permissions]
+genUpdatePartnerAssetAccessItem :: Int -> Gen UpdatePartnerAssetAccessItem
+genUpdatePartnerAssetAccessItem n =
+  UpdatePartnerAssetAccessItem
+    <$> arbitrary -- updatePartnerAssetAccessItemAssetId :: Text
+    <*> arbitrary -- updatePartnerAssetAccessItemPartnerId :: Text
+    <*> arbitraryReduced n -- updatePartnerAssetAccessItemPermissions :: [Permissions]
   
 instance Arbitrary UpdatePartnerAssetsResult where
   arbitrary = sized genUpdatePartnerAssetsResult
@@ -9148,7 +10874,7 @@ genUpdatePartnerAssetsResult :: Int -> Gen UpdatePartnerAssetsResult
 genUpdatePartnerAssetsResult n =
   UpdatePartnerAssetsResult
     <$> arbitraryReducedMaybe n -- updatePartnerAssetsResultAssetId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- updatePartnerAssetsResultAssetType :: Maybe Text
+    <*> arbitraryReducedMaybe n -- updatePartnerAssetsResultAssetType :: Maybe AssetTypeResponse
     <*> arbitraryReducedMaybe n -- updatePartnerAssetsResultPartnerId :: Maybe Text
     <*> arbitraryReducedMaybe n -- updatePartnerAssetsResultPermissions :: Maybe [Text]
   
@@ -9159,23 +10885,6 @@ genUpdatePartnerAssetsResultsResponseArray :: Int -> Gen UpdatePartnerAssetsResu
 genUpdatePartnerAssetsResultsResponseArray n =
   UpdatePartnerAssetsResultsResponseArray
     <$> arbitraryReducedMaybe n -- updatePartnerAssetsResultsResponseArrayItems :: Maybe [UpdatePartnerAssetsResult]
-  
-instance Arbitrary UpdatePartnerResultsResponseArray where
-  arbitrary = sized genUpdatePartnerResultsResponseArray
-
-genUpdatePartnerResultsResponseArray :: Int -> Gen UpdatePartnerResultsResponseArray
-genUpdatePartnerResultsResponseArray n =
-  UpdatePartnerResultsResponseArray
-    <$> arbitraryReducedMaybe n -- updatePartnerResultsResponseArrayItems :: Maybe [UpdatePartnerResultsResponseArrayItemsInner]
-  
-instance Arbitrary UpdatePartnerResultsResponseArrayItemsInner where
-  arbitrary = sized genUpdatePartnerResultsResponseArrayItemsInner
-
-genUpdatePartnerResultsResponseArrayItemsInner :: Int -> Gen UpdatePartnerResultsResponseArrayItemsInner
-genUpdatePartnerResultsResponseArrayItemsInner n =
-  UpdatePartnerResultsResponseArrayItemsInner
-    <$> arbitraryReducedMaybe n -- updatePartnerResultsResponseArrayItemsInnerException :: Maybe BusinessAccessError
-    <*> arbitraryReducedMaybe n -- updatePartnerResultsResponseArrayItemsInnerMemberOrPartnerId :: Maybe Text
   
 instance Arbitrary UserAccountFollowedInterests200Response where
   arbitrary = sized genUserAccountFollowedInterests200Response
@@ -9201,15 +10910,6 @@ genUserBusinessRoleBinding n =
     <*> arbitraryReducedMaybe n -- userBusinessRoleBindingIsSharedPartner :: Maybe Bool
     <*> arbitraryReducedMaybe n -- userBusinessRoleBindingUser :: Maybe BusinessAccessUserSummary
   
-instance Arbitrary UserFollowingGet200Response where
-  arbitrary = sized genUserFollowingGet200Response
-
-genUserFollowingGet200Response :: Int -> Gen UserFollowingGet200Response
-genUserFollowingGet200Response n =
-  UserFollowingGet200Response
-    <$> arbitraryReducedMaybe n -- userFollowingGet200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- userFollowingGet200ResponseItems :: [UserSummary]
-  
 instance Arbitrary UserSingleAssetBinding where
   arbitrary = sized genUserSingleAssetBinding
 
@@ -9219,45 +10919,36 @@ genUserSingleAssetBinding n =
     <$> arbitraryReducedMaybe n -- userSingleAssetBindingPermissions :: Maybe [Text]
     <*> arbitraryReducedMaybe n -- userSingleAssetBindingUser :: Maybe BusinessAccessUserSummary
   
-instance Arbitrary UserSummary where
-  arbitrary = sized genUserSummary
+instance Arbitrary UserWebsite where
+  arbitrary = sized genUserWebsite
 
-genUserSummary :: Int -> Gen UserSummary
-genUserSummary n =
-  UserSummary
-    <$> arbitraryReducedMaybe n -- userSummaryType :: Maybe Text
-    <*> arbitraryReducedMaybe n -- userSummaryUsername :: Maybe Text
+genUserWebsite :: Int -> Gen UserWebsite
+genUserWebsite n =
+  UserWebsite
+    <$> arbitraryReducedMaybe n -- userWebsiteStatus :: Maybe Text
+    <*> arbitraryReducedMaybe n -- userWebsiteVerifiedAt :: Maybe Text
+    <*> arbitraryReducedMaybe n -- userWebsiteWebsite :: Maybe Text
   
-instance Arbitrary UserWebsiteSummary where
-  arbitrary = sized genUserWebsiteSummary
+instance Arbitrary UserWebsiteCreate where
+  arbitrary = sized genUserWebsiteCreate
 
-genUserWebsiteSummary :: Int -> Gen UserWebsiteSummary
-genUserWebsiteSummary n =
-  UserWebsiteSummary
-    <$> arbitraryReducedMaybe n -- userWebsiteSummaryStatus :: Maybe Text
-    <*> arbitraryReducedMaybe n -- userWebsiteSummaryVerifiedAt :: Maybe Text
-    <*> arbitraryReducedMaybe n -- userWebsiteSummaryWebsite :: Maybe Text
+genUserWebsiteCreate :: Int -> Gen UserWebsiteCreate
+genUserWebsiteCreate n =
+  UserWebsiteCreate
+    <$> arbitraryReducedMaybe n -- userWebsiteCreateVerificationMethod :: Maybe WebsiteVerificationMethod
+    <*> arbitraryReducedMaybe n -- userWebsiteCreateWebsite :: Maybe Text
   
-instance Arbitrary UserWebsiteVerificationCode where
-  arbitrary = sized genUserWebsiteVerificationCode
+instance Arbitrary UserWebsiteVerification where
+  arbitrary = sized genUserWebsiteVerification
 
-genUserWebsiteVerificationCode :: Int -> Gen UserWebsiteVerificationCode
-genUserWebsiteVerificationCode n =
-  UserWebsiteVerificationCode
-    <$> arbitraryReducedMaybe n -- userWebsiteVerificationCodeDnsTxtRecord :: Maybe Text
-    <*> arbitraryReducedMaybe n -- userWebsiteVerificationCodeFileContent :: Maybe Text
-    <*> arbitraryReducedMaybe n -- userWebsiteVerificationCodeFilename :: Maybe Text
-    <*> arbitraryReducedMaybe n -- userWebsiteVerificationCodeMetatag :: Maybe Text
-    <*> arbitraryReducedMaybe n -- userWebsiteVerificationCodeVerificationCode :: Maybe Text
-  
-instance Arbitrary UserWebsiteVerifyRequest where
-  arbitrary = sized genUserWebsiteVerifyRequest
-
-genUserWebsiteVerifyRequest :: Int -> Gen UserWebsiteVerifyRequest
-genUserWebsiteVerifyRequest n =
-  UserWebsiteVerifyRequest
-    <$> arbitraryReducedMaybe n -- userWebsiteVerifyRequestVerificationMethod :: Maybe E'VerificationMethod
-    <*> arbitraryReducedMaybe n -- userWebsiteVerifyRequestWebsite :: Maybe Text
+genUserWebsiteVerification :: Int -> Gen UserWebsiteVerification
+genUserWebsiteVerification n =
+  UserWebsiteVerification
+    <$> arbitraryReducedMaybe n -- userWebsiteVerificationDnsTxtRecord :: Maybe Text
+    <*> arbitraryReducedMaybe n -- userWebsiteVerificationFileContent :: Maybe Text
+    <*> arbitraryReducedMaybe n -- userWebsiteVerificationFilename :: Maybe Text
+    <*> arbitraryReducedMaybe n -- userWebsiteVerificationMetatag :: Maybe Text
+    <*> arbitraryReducedMaybe n -- userWebsiteVerificationVerificationCode :: Maybe Text
   
 instance Arbitrary UserWebsitesGet200Response where
   arbitrary = sized genUserWebsitesGet200Response
@@ -9266,7 +10957,7 @@ genUserWebsitesGet200Response :: Int -> Gen UserWebsitesGet200Response
 genUserWebsitesGet200Response n =
   UserWebsitesGet200Response
     <$> arbitraryReducedMaybe n -- userWebsitesGet200ResponseBookmark :: Maybe Text
-    <*> arbitraryReduced n -- userWebsitesGet200ResponseItems :: [UserWebsiteSummary]
+    <*> arbitraryReduced n -- userWebsitesGet200ResponseItems :: [UserWebsite]
   
 instance Arbitrary UsersForIndividualAssetResponse where
   arbitrary = sized genUsersForIndividualAssetResponse
@@ -9287,8 +10978,9 @@ genVideoMetadataWithItemType n =
     <$> arbitraryReducedMaybe n -- videoMetadataWithItemTypeCoverImageUrl :: Maybe Text
     <*> arbitraryReducedMaybe n -- videoMetadataWithItemTypeDuration :: Maybe Double
     <*> arbitraryReducedMaybe n -- videoMetadataWithItemTypeHeight :: Maybe Int
-    <*> arbitraryReducedMaybe n -- videoMetadataWithItemTypeItemType :: Maybe Text
+    <*> arbitrary -- videoMetadataWithItemTypeItemType :: E'ItemType2
     <*> arbitraryReducedMaybe n -- videoMetadataWithItemTypeVideoUrl :: Maybe Text
+    <*> arbitraryReducedMaybe n -- videoMetadataWithItemTypeVideoUrlHls :: Maybe Text
     <*> arbitraryReducedMaybe n -- videoMetadataWithItemTypeWidth :: Maybe Int
   
 
@@ -9297,10 +10989,43 @@ genVideoMetadataWithItemType n =
 instance Arbitrary ActionType where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary AdCountry where
+instance Arbitrary AdAccountEntityType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdAdsAnalyticsAsyncTargetingTypes where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdCollectionsHeaderType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdDisapprovalReasons where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdGroupAudienceSizingCreativeTypes where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary AdGroupSummaryStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdPinPreviewCreativeType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdReviewStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdShoppingPreviewCreativeType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdeColumnType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdgroupPlacementGroupType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdgroupTrackingFeatureType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AdsAnalyticsAccountTargetingType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary AdsAnalyticsAdGroupTargetingType where
@@ -9318,16 +11043,46 @@ instance Arbitrary AdsAnalyticsFilterColumn where
 instance Arbitrary AdsAnalyticsFilterOperator where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary AdsAnalyticsTargetingType where
+instance Arbitrary AdsCreditDiscountType where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary AdvancedAuctionOperation where
+instance Arbitrary AdvertiserDefinedEventMappingType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary AgeTrendsBucket where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary AiDisclosureItem where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AppsflyerPlatform where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary AssetGroupType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AssetPermissionType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AssetSearchBy where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AssetSortBy where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AssetTypeResponse where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AttributionActionType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AttributionMatchType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AttributionModel where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AttributionScope where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary AudienceAccountType where
@@ -9336,7 +11091,13 @@ instance Arbitrary AudienceAccountType where
 instance Arbitrary AudienceInsightType where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary AudienceShareType where
+instance Arbitrary AudienceObjectiveType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AudienceOwnershipType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary AudienceStatus where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary AudienceType where
@@ -9345,10 +11106,37 @@ instance Arbitrary AudienceType where
 instance Arbitrary AudienceUpdateOperationType where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary BatchOperation where
+instance Arbitrary BasePreferredMediaType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary BatchOperationStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BidFloorObjectiveType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BidStrategyType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BillingInvoiceDocumentType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BillingInvoiceSortField where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BillingInvoiceStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BillingProfileCardType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BillingProfilePaymentMethodBrand where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BillingProfileStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BillingType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary BoardPrivacy where
@@ -9358,6 +11146,9 @@ instance Arbitrary BoardPrivacyFilter where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary BoardUpdatePrivacy where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary BudgetDurationType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary BudgetType where
@@ -9372,22 +11163,55 @@ instance Arbitrary BulkOutputFormat where
 instance Arbitrary BulkReportingJobStatus where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary BulkUpsertStatus where
+instance Arbitrary BulkRequestStatus where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary BusinessAccessRole where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary BusinessRole where
+instance Arbitrary BusinessMemberSortBy where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary BusinessRoleCheckMode where
+instance Arbitrary BusinessRoleForInvite where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary BusinessRoleForMembers where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary BusinessSearchBy where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CampaignBidOptionsUpdateMaskItems where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CampaignObjectiveType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CampaignPlanningConfidenceLevelAlertReason where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CampaignPlanningConfidenceLevelAlertSeverity where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CampaignPlanningConversionAttributionWindowDays where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CampaignPlanningConversionEvent where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CampaignPlanningEstimationType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CampaignPlanningResponseErrorCode where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary CampaignSummaryStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CatalogsAiContentDisclosureLabel where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CatalogsFeedProcessingScheduleTimezone where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary CatalogsFeedProcessingStatus where
@@ -9417,7 +11241,43 @@ instance Arbitrary CatalogsStatus where
 instance Arbitrary CatalogsType where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary ChangeHistoryDataType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ChangeHistoryOperationType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CollectionsHeaderType where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary ConversionAttributionWindowDays where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ConversionDeletionRequestStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ConversionEvent where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ConversionEventIngestionSource where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ConversionLearningModeType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ConversionObjectiveType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ConversionProductAttributionType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ConversionProductReportBreakdownType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ConversionProductReportGranularity where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ConversionProductReportLevel where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary ConversionProductReportingColumn where
@@ -9432,7 +11292,13 @@ instance Arbitrary ConversionReportTimeType where
 instance Arbitrary ConversionTagType where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary ConversionTagTypeOptimal where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary Country where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary CreationSource where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary CreativeAssetsVisibilityType where
@@ -9444,6 +11310,9 @@ instance Arbitrary CreativeType where
 instance Arbitrary Currency where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary CustomerListStatus where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary CustomizableCTAType where
   arbitrary = arbitraryBoundedEnum
 
@@ -9453,19 +11322,16 @@ instance Arbitrary DataOutputFormat where
 instance Arbitrary DataStatus where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary DeliveryEstimateObjectiveType where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary DisclosureType where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'AccountType where
+instance Arbitrary DiscountStatus where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'AccountType2 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'AgeDistribution where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'AppType where
+instance Arbitrary E'AgeBucket where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'AppTypes where
@@ -9474,25 +11340,10 @@ instance Arbitrary E'AppTypes where
 instance Arbitrary E'AssetType where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'AttributionModel where
+instance Arbitrary E'AssetType2 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'AttributionScope where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Availability where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'BidStrategyType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'BillingType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'BusinessRole where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'CardType where
+instance Arbitrary E'AssetType3 where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'CatalogType where
@@ -9510,79 +11361,34 @@ instance Arbitrary E'Category where
 instance Arbitrary E'ClickWindowDays where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'CollectionsHeaderType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Columns where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Columns2 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Condition where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary E'ContentType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'ContentType2 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'ConversionEvent where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'ConversionLearningModeType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'ConversionProductAttributionType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'ConversionProductBreakdown where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'ConversionReportTimeType where
+instance Arbitrary E'ConversionReportTime where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'CreatedInLastNDays where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'CreationSource where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'CreativeType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'CreativeTypes where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'CustomEventMetricsType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'CustomizableCtaType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'DiscountStatus where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'DiscountType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'DocumentType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'EntityStatuses where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'EntityStatuses2 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'EventName where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'EventType where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary E'Field where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary E'Field10 where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary E'Field11 where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary E'Field12 where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary E'Field13 where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary E'Field14 where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'Field2 where
@@ -9597,61 +11403,46 @@ instance Arbitrary E'Field4 where
 instance Arbitrary E'Field5 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'FilterOperatorType where
+instance Arbitrary E'Field6 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'FormFactor where
+instance Arbitrary E'Field7 where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary E'Field8 where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary E'Field9 where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'FromClaimedContent where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'Gender where
+instance Arbitrary E'ItemResponseKind where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'GenderDistribution where
+instance Arbitrary E'ItemResponseKind2 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'Genders where
+instance Arbitrary E'ItemResponseKind3 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'GrantType where
+instance Arbitrary E'ItemResponseKind4 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'Granularity where
+instance Arbitrary E'ItemResponseKind5 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'Granularity2 where
+instance Arbitrary E'ItemResponseKind6 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'IngestionSources where
+instance Arbitrary E'ItemType where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'Interests where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'InviteStatus where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'LabelTypes where
+instance Arbitrary E'ItemType2 where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'Language where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'LargeProductCountDecrease where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Level where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Level2 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'LogLevel where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'MappedConversionType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'MediaType where
@@ -9661,30 +11452,6 @@ instance Arbitrary E'MediaType2 where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'MediaType3 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'MediaType4 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'MediaType5 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'MediaType6 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Method where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'MetricTypes where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'MetricTypes2 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'MetricTypes3 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'NetworkType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'Operation where
@@ -9705,64 +11472,16 @@ instance Arbitrary E'Operation5 where
 instance Arbitrary E'Operation6 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'OperationType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Operator where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Order where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'OrderLineType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'OsFamily where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'OwnershipType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'ParentType where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary E'PartnerType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'PaymentMethodBrand where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'PinFilter where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'PinFormat where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'PinType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Placement where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'PreferredMediaType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'PrimarySort where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary E'PromotionApplicationLevel where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'Range where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'RejectedReasons where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary E'ReportStatus where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'ReportStatus2 where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'ReportType where
@@ -9774,40 +11493,7 @@ instance Arbitrary E'ReportType2 where
 instance Arbitrary E'ReportType3 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'ReportType4 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'ReportType5 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'ReportType6 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'ReviewStatus where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Scope where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Scope2 where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary E'Severity where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Sort where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'SortBy where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'SortBy2 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'SortBy3 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'SortBy4 where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'Source where
@@ -9837,64 +11523,37 @@ instance Arbitrary E'SplitField where
 instance Arbitrary E'SplitField2 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'State where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Status where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Status2 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Status3 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Status4 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Status5 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Status6 where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary E'StatusCode where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary E'SupplementalType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'TargetingStrategy where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'TargetingType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'TargetingTypes where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'TieBreakerType where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Timerange where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Timezone where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'TokenTypeHint where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'Type where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'UpdateMask where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'VerificationMethod where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary EnhancedMatchStatusType where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary EntityLabelStatus where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary EntityStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary EventProcessingStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary FilterOperatorType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary FormFactor where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary FreqBidMultiplierTimeWindow where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary FrequencyGoalMetadataTimerange where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary Gender where
@@ -9903,28 +11562,46 @@ instance Arbitrary Gender where
 instance Arbitrary GenderBucket where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary GetAudiencesOrderBy where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary GetBusinessAssetTypeResponse where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary Granularity where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary GridClickType where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary HttpMethod where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary IneligibleProductTagReason where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary IngestionSource where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary IngestionSourceOptions where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary IntegrationLogEventType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary IntegrationLogLevel where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary IntendedPromotionType where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary InterestsEnum where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary InviteFilterStatus where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary InviteStatus where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary InviteType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ItemAvailability where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary ItemProcessingStatus where
@@ -9934,6 +11611,9 @@ instance Arbitrary LabelParentType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary LabelStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary LabelStatusBulkUpdate where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary LabelType where
@@ -9955,6 +11635,12 @@ instance Arbitrary LeadsExportStatus where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary LookbackPeriodOptions where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary MMMReportGranularity where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary MMMReportLevel where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary MMMReportingColumn where
@@ -9984,7 +11670,22 @@ instance Arbitrary MemberBusinessRole where
 instance Arbitrary MetricsReportingLevel where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary MetricsReportingTemplateType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary MobileAppPlatform where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary ModelContentType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary MsotEventName where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary MultiPinsAnalyticsMetricTypesItem where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary NetworkType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary NonDraftEntityStatus where
@@ -9993,13 +11694,28 @@ instance Arbitrary NonDraftEntityStatus where
 instance Arbitrary NonNullableCatalogsCurrency where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary NonNullableProductAvailabilityType where
-  arbitrary = arbitraryBoundedEnum
-
 instance Arbitrary NullableCatalogsItemFieldType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary NullableCurrency where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary NullableEntityStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary NullableLabelStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary NullableLabelType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary NullablePartnerType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary NullalbleMatchType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary NumericFilterOperatorType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary ObjectiveType where
@@ -10008,10 +11724,19 @@ instance Arbitrary ObjectiveType where
 instance Arbitrary OperationType where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary OptimizationType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary Order where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary OrderLinePaidType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary OrderLineStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary OsFamily where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary OverallStatusOptions where
@@ -10029,13 +11754,37 @@ instance Arbitrary Permissions where
 instance Arbitrary PermissionsWithOwner where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary PinFilter where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary PinPromotionSummaryStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary PinType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary PinnerListType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary PinterestLibPaginationOrder where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary PlacementGroupType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary PlacementTrafficType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary PlacementType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary PreferredMediaType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary PrimarySort where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ProductAvailability where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary ProductAvailabilityType where
@@ -10053,13 +11802,49 @@ instance Arbitrary ProductCategoryEnum where
 instance Arbitrary ProductCategoryRegion where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary ProductCondition where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ProductGroupPromotionCustomizableCTAType where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary ProductGroupSummaryStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary PromotionApplicationLevel where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary PromotionType where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary PublicTargetingType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary QueryLabelEntityStatusesItems where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary QueryLabelTypesItems where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary QuerymetrictypesItems where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary QuerypinanalyticsmetrictypesItems where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary QueryvideopinmetrictypesItems where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ReportType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ReportingColumn where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary ReportingColumnAsync where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ReportingColumnSync where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary ReportingTimeZone where
@@ -10068,7 +11853,31 @@ instance Arbitrary ReportingTimeZone where
 instance Arbitrary Role where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary SSIOOrderLineType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ScheduleAction where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ScheduleStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary ScheduleType where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary SourcePlatformOptions where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary StandardPinMetricTypes where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary SummaryStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary SupplementalItemBatchOperationStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary SupplementalItemProcessingStatus where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary TargetingAdvertiserCountry where
@@ -10083,7 +11892,46 @@ instance Arbitrary TargetingSpecAppType where
 instance Arbitrary TargetingSpecGender where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary TargetingSpecListOperation where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TargetingSpecTargetingStrategyItems where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TargetingStrategy where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TargetingTemplateStatus where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TieBreakerType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TokenGrantType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TokenTypeHint where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TopPinsSortBy where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TopVideoPinsSortBy where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary TrendType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TrendsAgeBucket where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TrendsGender where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TrendsGenderFilter where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary TrendsL1Interest where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary TrendsSupportedRegion where
@@ -10093,6 +11941,9 @@ instance Arbitrary UpdateMaskBidOptionField where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary UpdateMaskFieldType where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary UserAccountType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary UserFollowingFeedType where
@@ -10105,5 +11956,14 @@ instance Arbitrary UserListType where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary VerticalProductCategory where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary VideoPinMetricTypes where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary WebsiteVerificationMethod where
+  arbitrary = arbitraryBoundedEnum
+
+instance Arbitrary WorkloadState where
   arbitrary = arbitraryBoundedEnum
 

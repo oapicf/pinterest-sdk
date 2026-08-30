@@ -1,0 +1,35 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LocalInventoryOperation",
+  "fields": [
+    {
+      "name": "attributes",
+      "type": "model.RetailLocalInventoryItemAttributes",
+      "doc": ""
+    },
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "Catalog item id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "LocalInventoryOperation_operation",
+        "symbols": [
+          "DELETE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "store_code",
+      "type": "string",
+      "doc": "Store code for the local inventory item"
+    }
+  ]
+
+}

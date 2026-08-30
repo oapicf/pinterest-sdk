@@ -11,22 +11,22 @@ part 'notification_response.g.dart';
 /// NotificationResponse
 ///
 /// Properties:
-/// * [success] - Returns true if the notification accepted.
-/// * [receivedAt] - Received time. Unix timestamp in seconds.
 /// * [errorMsg] - error message when success is false
+/// * [receivedAt] - Received time. Unix timestamp in seconds.
+/// * [success] - Returns true if the notification accepted.
 @BuiltValue()
 abstract class NotificationResponse implements Built<NotificationResponse, NotificationResponseBuilder> {
-  /// Returns true if the notification accepted.
-  @BuiltValueField(wireName: r'success')
-  bool? get success;
+  /// error message when success is false
+  @BuiltValueField(wireName: r'error_msg')
+  String? get errorMsg;
 
   /// Received time. Unix timestamp in seconds.
   @BuiltValueField(wireName: r'received_at')
   int? get receivedAt;
 
-  /// error message when success is false
-  @BuiltValueField(wireName: r'error_msg')
-  String? get errorMsg;
+  /// Returns true if the notification accepted.
+  @BuiltValueField(wireName: r'success')
+  bool? get success;
 
   NotificationResponse._();
 
@@ -51,11 +51,11 @@ class _$NotificationResponseSerializer implements PrimitiveSerializer<Notificati
     NotificationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.success != null) {
-      yield r'success';
+    if (object.errorMsg != null) {
+      yield r'error_msg';
       yield serializers.serialize(
-        object.success,
-        specifiedType: const FullType(bool),
+        object.errorMsg,
+        specifiedType: const FullType(String),
       );
     }
     if (object.receivedAt != null) {
@@ -65,11 +65,11 @@ class _$NotificationResponseSerializer implements PrimitiveSerializer<Notificati
         specifiedType: const FullType(int),
       );
     }
-    if (object.errorMsg != null) {
-      yield r'error_msg';
+    if (object.success != null) {
+      yield r'success';
       yield serializers.serialize(
-        object.errorMsg,
-        specifiedType: const FullType(String),
+        object.success,
+        specifiedType: const FullType(bool),
       );
     }
   }
@@ -95,26 +95,29 @@ class _$NotificationResponseSerializer implements PrimitiveSerializer<Notificati
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'success':
+        case r'error_msg':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.success = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.errorMsg = valueDes;
           break;
         case r'received_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.receivedAt = valueDes;
           break;
-        case r'error_msg':
+        case r'success':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.errorMsg = valueDes;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.success = valueDes;
           break;
         default:
           unhandled.add(key);

@@ -95,7 +95,7 @@ TemplateBasedReport <- R6::R6Class(
       }
       if (!is.null(self$`report_status`)) {
         TemplateBasedReportObject[["report_status"]] <-
-          self$`report_status`$toSimpleType()
+          self$extractSimpleType(self$`report_status`)
       }
       if (!is.null(self$`template_id`)) {
         TemplateBasedReportObject[["template_id"]] <-
@@ -106,6 +106,29 @@ TemplateBasedReport <- R6::R6Class(
           self$`token`
       }
       return(TemplateBasedReportObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

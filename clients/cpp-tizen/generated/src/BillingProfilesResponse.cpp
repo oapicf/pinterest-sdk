@@ -24,11 +24,11 @@ void
 BillingProfilesResponse::__init()
 {
 	//advertiser_id = std::string();
-	//billing_type = std::string();
-	//card_type = std::string();
+	//billing_type = null;
+	//card_type = null;
 	//id = std::string();
-	//payment_method_brand = std::string();
-	//status = std::string();
+	//payment_method_brand = null;
+	//status = null;
 }
 
 void
@@ -88,9 +88,12 @@ BillingProfilesResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&billing_type, node, "std::string", "");
+		if (isprimitive("BillingType")) {
+			jsonToValue(&billing_type, node, "BillingType", "BillingType");
 		} else {
+			
+			BillingType* obj = static_cast<BillingType*> (&billing_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -99,9 +102,12 @@ BillingProfilesResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&card_type, node, "std::string", "");
+		if (isprimitive("BillingProfileCardType")) {
+			jsonToValue(&card_type, node, "BillingProfileCardType", "BillingProfileCardType");
 		} else {
+			
+			BillingProfileCardType* obj = static_cast<BillingProfileCardType*> (&card_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -121,9 +127,12 @@ BillingProfilesResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&payment_method_brand, node, "std::string", "");
+		if (isprimitive("BillingProfilePaymentMethodBrand")) {
+			jsonToValue(&payment_method_brand, node, "BillingProfilePaymentMethodBrand", "BillingProfilePaymentMethodBrand");
 		} else {
+			
+			BillingProfilePaymentMethodBrand* obj = static_cast<BillingProfilePaymentMethodBrand*> (&payment_method_brand);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -132,9 +141,12 @@ BillingProfilesResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&status, node, "std::string", "");
+		if (isprimitive("BillingProfileStatus")) {
+			jsonToValue(&status, node, "BillingProfileStatus", "BillingProfileStatus");
 		} else {
+			
+			BillingProfileStatus* obj = static_cast<BillingProfileStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -159,20 +171,30 @@ BillingProfilesResponse::toJson()
 	}
 	const gchar *advertiser_idKey = "advertiser_id";
 	json_object_set_member(pJsonObject, advertiser_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getBillingType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("BillingType")) {
+		BillingType obj = getBillingType();
+		node = converttoJson(&obj, "BillingType", "");
 	}
 	else {
+		
+		BillingType obj = static_cast<BillingType> (getBillingType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *billing_typeKey = "billing_type";
 	json_object_set_member(pJsonObject, billing_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCardType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("BillingProfileCardType")) {
+		BillingProfileCardType obj = getCardType();
+		node = converttoJson(&obj, "BillingProfileCardType", "");
 	}
 	else {
+		
+		BillingProfileCardType obj = static_cast<BillingProfileCardType> (getCardType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *card_typeKey = "card_type";
@@ -186,20 +208,30 @@ BillingProfilesResponse::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getPaymentMethodBrand();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("BillingProfilePaymentMethodBrand")) {
+		BillingProfilePaymentMethodBrand obj = getPaymentMethodBrand();
+		node = converttoJson(&obj, "BillingProfilePaymentMethodBrand", "");
 	}
 	else {
+		
+		BillingProfilePaymentMethodBrand obj = static_cast<BillingProfilePaymentMethodBrand> (getPaymentMethodBrand());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *payment_method_brandKey = "payment_method_brand";
 	json_object_set_member(pJsonObject, payment_method_brandKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getStatus();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("BillingProfileStatus")) {
+		BillingProfileStatus obj = getStatus();
+		node = converttoJson(&obj, "BillingProfileStatus", "");
 	}
 	else {
+		
+		BillingProfileStatus obj = static_cast<BillingProfileStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *statusKey = "status";
@@ -224,26 +256,26 @@ BillingProfilesResponse::setAdvertiserId(std::string  advertiser_id)
 	this->advertiser_id = advertiser_id;
 }
 
-std::string
+BillingType
 BillingProfilesResponse::getBillingType()
 {
 	return billing_type;
 }
 
 void
-BillingProfilesResponse::setBillingType(std::string  billing_type)
+BillingProfilesResponse::setBillingType(BillingType  billing_type)
 {
 	this->billing_type = billing_type;
 }
 
-std::string
+BillingProfileCardType
 BillingProfilesResponse::getCardType()
 {
 	return card_type;
 }
 
 void
-BillingProfilesResponse::setCardType(std::string  card_type)
+BillingProfilesResponse::setCardType(BillingProfileCardType  card_type)
 {
 	this->card_type = card_type;
 }
@@ -260,26 +292,26 @@ BillingProfilesResponse::setId(std::string  id)
 	this->id = id;
 }
 
-std::string
+BillingProfilePaymentMethodBrand
 BillingProfilesResponse::getPaymentMethodBrand()
 {
 	return payment_method_brand;
 }
 
 void
-BillingProfilesResponse::setPaymentMethodBrand(std::string  payment_method_brand)
+BillingProfilesResponse::setPaymentMethodBrand(BillingProfilePaymentMethodBrand  payment_method_brand)
 {
 	this->payment_method_brand = payment_method_brand;
 }
 
-std::string
+BillingProfileStatus
 BillingProfilesResponse::getStatus()
 {
 	return status;
 }
 
 void
-BillingProfilesResponse::setStatus(std::string  status)
+BillingProfilesResponse::setStatus(BillingProfileStatus  status)
 {
 	this->status = status;
 }

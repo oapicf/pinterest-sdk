@@ -8,7 +8,7 @@ package org.openapitools.server.model
  * @param profiles List of profile IDs and respective permission levels. for example: ''null''
 */
 final case class BusinessMemberAssetsSummary (
-  adAccounts: Option[Seq[BusinessMemberAssetsSummaryAdAccountsInner]] = None,
-  profiles: Option[Seq[BusinessMemberAssetsSummaryProfilesInner]] = None
+  adAccounts: Option[Seq[AssetIdWithPermissions]] = None,
+  profiles: Option[Seq[AssetIdWithPermissions]] = None
 )
 

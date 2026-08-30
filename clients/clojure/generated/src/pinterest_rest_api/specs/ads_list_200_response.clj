@@ -1,7 +1,7 @@
 (ns pinterest-rest-api.specs.ads-list-200-response
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.ad-response :refer :all]
+            [pinterest-rest-api.specs.ad :refer :all]
             )
   (:import (java.io File)))
 
@@ -9,7 +9,7 @@
 (def ads-list-200-response-data
   {
    (ds/opt :bookmark) string?
-   (ds/req :items) (s/coll-of ad-response-spec)
+   (ds/req :items) (s/coll-of ad-spec)
    })
 
 (def ads-list-200-response-spec

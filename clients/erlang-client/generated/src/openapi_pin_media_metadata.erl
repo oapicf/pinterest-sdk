@@ -7,13 +7,14 @@
 -type openapi_pin_media_metadata() ::
     #{ 'description' => binary(),
        'images' => openapi_image_size:openapi_image_size(),
-       'item_type' => binary(),
+       'item_type' := binary(),
        'link' => binary(),
        'title' => binary(),
        'cover_image_url' => binary(),
        'duration' => integer(),
        'height' => integer(),
        'video_url' => binary(),
+       'video_url_hls' => binary(),
        'width' => integer()
      }.
 
@@ -26,6 +27,7 @@ encode(#{ 'description' := Description,
           'duration' := Duration,
           'height' := Height,
           'video_url' := VideoUrl,
+          'video_url_hls' := VideoUrlHls,
           'width' := Width
         }) ->
     #{ 'description' => Description,
@@ -37,5 +39,6 @@ encode(#{ 'description' := Description,
        'duration' => Duration,
        'height' => Height,
        'video_url' => VideoUrl,
+       'video_url_hls' => VideoUrlHls,
        'width' => Width
      }.

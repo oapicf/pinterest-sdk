@@ -14,11 +14,11 @@ static board_with_update_privacy_update_t *board_with_update_privacy_update_crea
     if (!board_with_update_privacy_update_local_var) {
         return NULL;
     }
+    memset(board_with_update_privacy_update_local_var, 0, sizeof(board_with_update_privacy_update_t));
+    board_with_update_privacy_update_local_var->_library_owned = 1;
     board_with_update_privacy_update_local_var->description = description;
     board_with_update_privacy_update_local_var->name = name;
     board_with_update_privacy_update_local_var->privacy = privacy;
-
-    board_with_update_privacy_update_local_var->_library_owned = 1;
     return board_with_update_privacy_update_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) board_with_update_privacy_update_t *board_with_updat
     char *name,
     pinterest_rest_api_board_update_privacy__e privacy
     ) {
-    return board_with_update_privacy_update_create_internal (
+    board_with_update_privacy_update_t *result = board_with_update_privacy_update_create_internal (
         description,
         name,
         privacy
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void board_with_update_privacy_update_free(board_with_update_privacy_update_t *board_with_update_privacy_update) {
@@ -97,6 +100,10 @@ board_with_update_privacy_update_t *board_with_update_privacy_update_parseFromJS
 
     board_with_update_privacy_update_t *board_with_update_privacy_update_local_var = NULL;
 
+    char *description_local_str = NULL;
+
+    char *name_local_str = NULL;
+
     // define the local variable for board_with_update_privacy_update->privacy
     pinterest_rest_api_board_update_privacy__e privacy_local_nonprim = 0;
 
@@ -134,14 +141,29 @@ board_with_update_privacy_update_t *board_with_update_privacy_update_parseFromJS
     }
 
 
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     board_with_update_privacy_update_local_var = board_with_update_privacy_update_create_internal (
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        description_local_str,
+        name_local_str,
         privacy ? privacy_local_nonprim : 0
         );
 
+    if (!board_with_update_privacy_update_local_var) {
+        goto end;
+    }
+
     return board_with_update_privacy_update_local_var;
 end:
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     if (privacy_local_nonprim) {
         privacy_local_nonprim = 0;
     }

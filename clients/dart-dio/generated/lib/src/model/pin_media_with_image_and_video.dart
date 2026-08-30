@@ -85,8 +85,9 @@ class _$PinMediaWithImageAndVideoSerializer implements PrimitiveSerializer<PinMe
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PinMediaMetadata)]),
-          ) as BuiltList<PinMediaMetadata>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(PinMediaMetadata)]),
+          ) as BuiltList<PinMediaMetadata>?;
+          if (valueDes == null) continue;
           result.items.replace(valueDes);
           break;
         case r'media_type':

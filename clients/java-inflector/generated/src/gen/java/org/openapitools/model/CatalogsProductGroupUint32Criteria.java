@@ -6,53 +6,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.NumericFilterOperatorType;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupUint32Criteria   {
   @JsonProperty("negated")
-  private Boolean negated = false;
-
-  /**
-   * Gets or Sets operator
-   */
-  public enum OperatorEnum {
-    GREATER_THAN("GREATER_THAN"),
-    
-    GREATER_THAN_OR_EQUALS("GREATER_THAN_OR_EQUALS"),
-    
-    LESS_THAN("LESS_THAN"),
-    
-    LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
-
-    private String value;
-
-    OperatorEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OperatorEnum fromValue(String text) {
-      for (OperatorEnum b : OperatorEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
+  private Boolean negated;
 
   @JsonProperty("operator")
-  private OperatorEnum operator;
+  private NumericFilterOperatorType operator;
 
   @JsonProperty("value")
   private Integer value;
@@ -76,7 +42,7 @@ public class CatalogsProductGroupUint32Criteria   {
 
   /**
    **/
-  public CatalogsProductGroupUint32Criteria operator(OperatorEnum operator) {
+  public CatalogsProductGroupUint32Criteria operator(NumericFilterOperatorType operator) {
     this.operator = operator;
     return this;
   }
@@ -84,10 +50,10 @@ public class CatalogsProductGroupUint32Criteria   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operator")
-  public OperatorEnum getOperator() {
+  public NumericFilterOperatorType getOperator() {
     return operator;
   }
-  public void setOperator(OperatorEnum operator) {
+  public void setOperator(NumericFilterOperatorType operator) {
     this.operator = operator;
   }
 
@@ -147,10 +113,7 @@ public class CatalogsProductGroupUint32Criteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

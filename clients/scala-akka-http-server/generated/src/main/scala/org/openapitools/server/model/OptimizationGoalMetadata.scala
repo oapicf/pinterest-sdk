@@ -7,8 +7,8 @@ package org.openapitools.server.model
  * @param scrollupGoalMetadata  for example: ''null''
 */
 final case class OptimizationGoalMetadata (
-  conversionTagV3GoalMetadata: Option[OptimizationGoalMetadataConversionTagV3GoalMetadata] = None,
-  frequencyGoalMetadata: Option[OptimizationGoalMetadataFrequencyGoalMetadata] = None,
-  scrollupGoalMetadata: Option[OptimizationGoalMetadataScrollupGoalMetadata] = None
+  conversionTagV3GoalMetadata: Option[ConversionTagV3GoalMetadata] = None,
+  frequencyGoalMetadata: Option[FrequencyGoalMetadata] = None,
+  scrollupGoalMetadata: Option[ScrollupGoalMetadata] = None
 )
 

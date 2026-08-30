@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.IntegrationLogClientError;
 import org.openapitools.model.IntegrationLogClientRequest;
+import org.openapitools.model.IntegrationLogEventType;
+import org.openapitools.model.IntegrationLogLevel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -39,41 +41,12 @@ public class IntegrationLog  {
   @Valid
   private IntegrationLogClientError error;
 
-public enum EventTypeEnum {
-
-    @JsonProperty("APP") APP(String.valueOf("APP")),
-    @JsonProperty("API") API(String.valueOf("API"));
-
-    private String value;
-
-    EventTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static EventTypeEnum fromValue(String value) {
-        for (EventTypeEnum b : EventTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * Log event type
   */
   @ApiModelProperty(required = true, value = "Log event type")
-  private EventTypeEnum eventType;
+  @Valid
+  private IntegrationLogEventType eventType;
 
   @ApiModelProperty(value = "")
   private String externalBusinessId;
@@ -81,42 +54,12 @@ public enum EventTypeEnum {
   @ApiModelProperty(value = "")
   private String feedProfileId;
 
-public enum LogLevelEnum {
-
-    @JsonProperty("INFO") INFO(String.valueOf("INFO")),
-    @JsonProperty("WARN") WARN(String.valueOf("WARN")),
-    @JsonProperty("ERROR") ERROR(String.valueOf("ERROR"));
-
-    private String value;
-
-    LogLevelEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static LogLevelEnum fromValue(String value) {
-        for (LogLevelEnum b : LogLevelEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * Log level type
   */
   @ApiModelProperty(required = true, value = "Log level type")
-  private LogLevelEnum logLevel;
+  @Valid
+  private IntegrationLogLevel logLevel;
 
   @ApiModelProperty(value = "")
   private String merchantId;
@@ -242,21 +185,21 @@ public enum LogLevelEnum {
   */
   @JsonProperty("event_type")
   @NotNull
-  public String getEventType() {
-    return eventType == null ? null : eventType.value();
+  public IntegrationLogEventType getEventType() {
+    return eventType;
   }
 
   /**
    * Sets the <code>eventType</code> property.
    */
- public void setEventType(EventTypeEnum eventType) {
+ public void setEventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
   }
 
   /**
    * Sets the <code>eventType</code> property.
    */
-  public IntegrationLog eventType(EventTypeEnum eventType) {
+  public IntegrationLog eventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -315,21 +258,21 @@ public enum LogLevelEnum {
   */
   @JsonProperty("log_level")
   @NotNull
-  public String getLogLevel() {
-    return logLevel == null ? null : logLevel.value();
+  public IntegrationLogLevel getLogLevel() {
+    return logLevel;
   }
 
   /**
    * Sets the <code>logLevel</code> property.
    */
- public void setLogLevel(LogLevelEnum logLevel) {
+ public void setLogLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
   }
 
   /**
    * Sets the <code>logLevel</code> property.
    */
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+  public IntegrationLog logLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
     return this;
   }
@@ -511,10 +454,7 @@ public enum LogLevelEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

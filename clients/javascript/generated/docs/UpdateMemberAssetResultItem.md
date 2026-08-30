@@ -1,0 +1,9 @@
+# PinterestSdk.UpdateMemberAssetResultItem
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**response** | [**UsersForIndividualAssetResponse**](UsersForIndividualAssetResponse.md) |  | [optional] 
+
+

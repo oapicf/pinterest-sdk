@@ -1,0 +1,14 @@
+
+
+# ConversionDeletionRequestEPIKTargets
+
+The class is defined in **[ConversionDeletionRequestEPIKTargets.java](../../src/main/java/org/openapitools/model/ConversionDeletionRequestEPIKTargets.java)**
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**epiks** | `List&lt;String&gt;` | Array of EPIKs (Encrypted Pinterest ID Keys). An EPIK is a user match type that utilizes 3P browser localStorage (similar to a third-party cookie). | 
+
+
+

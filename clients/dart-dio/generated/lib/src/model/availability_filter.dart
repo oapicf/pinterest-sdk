@@ -74,7 +74,7 @@ class _$AvailabilityFilterSerializer implements PrimitiveSerializer<Availability
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringCriteria),
           ) as CatalogsProductGroupMultipleStringCriteria;
-          result.AVAILABILITY = valueDes;
+          result.AVAILABILITY.replace(valueDes);
           break;
         default:
           unhandled.add(key);

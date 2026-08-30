@@ -1,0 +1,231 @@
+package org.openapitools.model;
+
+import org.openapitools.model.BrandFilter;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
+import org.openapitools.model.CatalogsProductGroupMultipleCountriesCriteria;
+import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
+import org.openapitools.model.CountryFilter;
+import org.openapitools.model.CustomLabel0Filter;
+import org.openapitools.model.CustomLabel1Filter;
+import org.openapitools.model.CustomLabel2Filter;
+import org.openapitools.model.CustomLabel3Filter;
+import org.openapitools.model.CustomLabel4Filter;
+import org.openapitools.model.HotelIdFilter;
+import org.openapitools.model.PriceFilter;
+import org.openapitools.model.PriceFilterPrice;
+import org.openapitools.model.TitleKeywordsFilter;
+import java.util.Objects;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.annotation.Generated;
+import java.time.*;
+import java.math.*;
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+
+public class CatalogsHotelProductGroupFilterKeys implements Serializable {
+  private static final long serialVersionUID = 1L;
+
+  @JsonProperty("PRICE")
+  private PriceFilterPrice PRICE;
+
+  @JsonProperty("HOTEL_ID")
+  private CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
+
+  @JsonProperty("BRAND")
+  private CatalogsProductGroupMultipleStringCriteria BRAND;
+
+  @JsonProperty("CUSTOM_LABEL_0")
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0;
+
+  @JsonProperty("CUSTOM_LABEL_1")
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1;
+
+  @JsonProperty("CUSTOM_LABEL_2")
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2;
+
+  @JsonProperty("CUSTOM_LABEL_3")
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3;
+
+  @JsonProperty("CUSTOM_LABEL_4")
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4;
+
+  @JsonProperty("COUNTRY")
+  private CatalogsProductGroupMultipleCountriesCriteria COUNTRY;
+
+  @JsonProperty("TITLE_KEYWORDS")
+  private CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS;
+
+  /**
+   * 
+   * @return PRICE
+   */
+  public PriceFilterPrice getPRICE() {
+    return PRICE;
+  }
+
+  public void setPRICE(PriceFilterPrice PRICE) {
+    this.PRICE = PRICE;
+  }
+
+  /**
+   * 
+   * @return HOTEL_ID
+   */
+  public CatalogsProductGroupMultipleStringCriteria getHOTELID() {
+    return HOTEL_ID;
+  }
+
+  public void setHOTELID(CatalogsProductGroupMultipleStringCriteria HOTEL_ID) {
+    this.HOTEL_ID = HOTEL_ID;
+  }
+
+  /**
+   * 
+   * @return BRAND
+   */
+  public CatalogsProductGroupMultipleStringCriteria getBRAND() {
+    return BRAND;
+  }
+
+  public void setBRAND(CatalogsProductGroupMultipleStringCriteria BRAND) {
+    this.BRAND = BRAND;
+  }
+
+  /**
+   * 
+   * @return CUSTOM_LABEL_0
+   */
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL0() {
+    return CUSTOM_LABEL_0;
+  }
+
+  public void setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0) {
+    this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
+  }
+
+  /**
+   * 
+   * @return CUSTOM_LABEL_1
+   */
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL1() {
+    return CUSTOM_LABEL_1;
+  }
+
+  public void setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1) {
+    this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
+  }
+
+  /**
+   * 
+   * @return CUSTOM_LABEL_2
+   */
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL2() {
+    return CUSTOM_LABEL_2;
+  }
+
+  public void setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
+    this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
+  }
+
+  /**
+   * 
+   * @return CUSTOM_LABEL_3
+   */
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL3() {
+    return CUSTOM_LABEL_3;
+  }
+
+  public void setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3) {
+    this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
+  }
+
+  /**
+   * 
+   * @return CUSTOM_LABEL_4
+   */
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL4() {
+    return CUSTOM_LABEL_4;
+  }
+
+  public void setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4) {
+    this.CUSTOM_LABEL_4 = CUSTOM_LABEL_4;
+  }
+
+  /**
+   * 
+   * @return COUNTRY
+   */
+  public CatalogsProductGroupMultipleCountriesCriteria getCOUNTRY() {
+    return COUNTRY;
+  }
+
+  public void setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria COUNTRY) {
+    this.COUNTRY = COUNTRY;
+  }
+
+  /**
+   * 
+   * @return TITLE_KEYWORDS
+   */
+  public CatalogsProductGroupMultipleStringCriteria getTITLEKEYWORDS() {
+    return TITLE_KEYWORDS;
+  }
+
+  public void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
+    this.TITLE_KEYWORDS = TITLE_KEYWORDS;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CatalogsHotelProductGroupFilterKeys catalogsHotelProductGroupFilterKeys = (CatalogsHotelProductGroupFilterKeys) o;
+    return Objects.equals(this.PRICE, catalogsHotelProductGroupFilterKeys.PRICE) &&
+        Objects.equals(this.HOTEL_ID, catalogsHotelProductGroupFilterKeys.HOTEL_ID) &&
+        Objects.equals(this.BRAND, catalogsHotelProductGroupFilterKeys.BRAND) &&
+        Objects.equals(this.CUSTOM_LABEL_0, catalogsHotelProductGroupFilterKeys.CUSTOM_LABEL_0) &&
+        Objects.equals(this.CUSTOM_LABEL_1, catalogsHotelProductGroupFilterKeys.CUSTOM_LABEL_1) &&
+        Objects.equals(this.CUSTOM_LABEL_2, catalogsHotelProductGroupFilterKeys.CUSTOM_LABEL_2) &&
+        Objects.equals(this.CUSTOM_LABEL_3, catalogsHotelProductGroupFilterKeys.CUSTOM_LABEL_3) &&
+        Objects.equals(this.CUSTOM_LABEL_4, catalogsHotelProductGroupFilterKeys.CUSTOM_LABEL_4) &&
+        Objects.equals(this.COUNTRY, catalogsHotelProductGroupFilterKeys.COUNTRY) &&
+        Objects.equals(this.TITLE_KEYWORDS, catalogsHotelProductGroupFilterKeys.TITLE_KEYWORDS);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(PRICE, HOTEL_ID, BRAND, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, COUNTRY, TITLE_KEYWORDS);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CatalogsHotelProductGroupFilterKeys {\n");
+    
+    sb.append("    PRICE: ").append(toIndentedString(PRICE)).append("\n");
+    sb.append("    HOTEL_ID: ").append(toIndentedString(HOTEL_ID)).append("\n");
+    sb.append("    BRAND: ").append(toIndentedString(BRAND)).append("\n");
+    sb.append("    CUSTOM_LABEL_0: ").append(toIndentedString(CUSTOM_LABEL_0)).append("\n");
+    sb.append("    CUSTOM_LABEL_1: ").append(toIndentedString(CUSTOM_LABEL_1)).append("\n");
+    sb.append("    CUSTOM_LABEL_2: ").append(toIndentedString(CUSTOM_LABEL_2)).append("\n");
+    sb.append("    CUSTOM_LABEL_3: ").append(toIndentedString(CUSTOM_LABEL_3)).append("\n");
+    sb.append("    CUSTOM_LABEL_4: ").append(toIndentedString(CUSTOM_LABEL_4)).append("\n");
+    sb.append("    COUNTRY: ").append(toIndentedString(COUNTRY)).append("\n");
+    sb.append("    TITLE_KEYWORDS: ").append(toIndentedString(TITLE_KEYWORDS)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}

@@ -30,7 +30,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::NotificationApi.new
-notification_post_request = nil # NotificationPostRequest | notification event.
+notification_post_request = nil # NotificationPostRequest | 
 
 begin
   # Receive notifications from external partners.
@@ -63,7 +63,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **notification_post_request** | [**NotificationPostRequest**](NotificationPostRequest.md) | notification event. |  |
+| **notification_post_request** | [**NotificationPostRequest**](NotificationPostRequest.md) |  |  |
 
 ### Return type
 

@@ -3,10 +3,10 @@ package models
 // CatalogsVerticalFeedsCreateRequest - Request object for creating a feed.
 type CatalogsVerticalFeedsCreateRequest struct {
 
-	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 	CatalogId string `json:"catalog_id,omitempty"`
 
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 
 	Credentials *CatalogsFeedCredentials `json:"credentials,omitempty"`
 
@@ -16,7 +16,7 @@ type CatalogsVerticalFeedsCreateRequest struct {
 
 	DefaultCurrency *NullableCurrency `json:"default_currency,omitempty"`
 
-	DefaultLocale CatalogsFeedsCreateRequestDefaultLocale `json:"default_locale"`
+	DefaultLocale CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale `json:"default_locale"`
 
 	Format CatalogsFormat `json:"format"`
 

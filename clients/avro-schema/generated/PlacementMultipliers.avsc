@@ -6,16 +6,8 @@
   "fields": [
     {
       "name": "PLACEMENT",
-      "type": ["null", {
-        "type": "enum",
-        "name": "PlacementMultipliers_PLACEMENT",
-        "symbols": [
-          "SEARCH",
-          "BROWSE",
-          "RELATED_PINS"
-        ]
-      }],
-      "doc": "",
+      "type": ["null", "model.PlacementType"],
+      "doc": "Placement type identifier.",
       "default": null
     }
   ]

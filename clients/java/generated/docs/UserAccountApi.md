@@ -22,7 +22,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="boardsUserFollowsList"></a>
 # **boardsUserFollowsList**
-> BoardsUserFollowsList200Response boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId)
+> BoardsList200Response boardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize)
 
 List following boards
 
@@ -52,12 +52,12 @@ public class Example {
     client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
-    String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    Boolean explicitFollowing = false; // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+    Boolean explicitFollowing = false; // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+    String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      BoardsUserFollowsList200Response result = apiInstance.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId);
+      BoardsList200Response result = apiInstance.boardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserAccountApi#boardsUserFollowsList");
@@ -74,14 +74,14 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
+| **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -95,17 +95,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="followUserUpdate"></a>
 # **followUserUpdate**
-> UserSummary followUserUpdate(username, followUserRequest)
+> FollowUser followUserUpdate(username, followUserCreate)
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```java
@@ -127,10 +131,10 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
-    String username = "username"; // String | A valid username
-    FollowUserRequest followUserRequest = new FollowUserRequest(); // FollowUserRequest | Follow a user.
+    String username = "username_example"; // String | A valid username
+    FollowUserCreate followUserCreate = new FollowUserCreate(); // FollowUserCreate | 
     try {
-      UserSummary result = apiInstance.followUserUpdate(username, followUserRequest);
+      FollowUser result = apiInstance.followUserUpdate(username, followUserCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserAccountApi#followUserUpdate");
@@ -148,11 +152,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **username** | **String**| A valid username | |
-| **followUserRequest** | [**FollowUserRequest**](FollowUserRequest.md)| Follow a user. | |
+| **followUserCreate** | [**FollowUserCreate**](FollowUserCreate.md)|  | |
 
 ### Return type
 
-[**UserSummary**](UserSummary.md)
+[**FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -166,9 +170,14 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | User not found |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="followersList"></a>
 # **followersList**
@@ -203,7 +212,7 @@ public class Example {
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
       FollowersList200Response result = apiInstance.followersList(bookmark, pageSize);
       System.out.println(result);
@@ -223,7 +232,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -241,9 +250,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="linkedBusinessAccountsGet"></a>
 # **linkedBusinessAccountsGet**
@@ -310,16 +323,21 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="unverifyWebsiteDelete"></a>
 # **unverifyWebsiteDelete**
-> unverifyWebsiteDelete(website)
+> UserWebsite unverifyWebsiteDelete(website)
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 ```java
@@ -341,9 +359,10 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
-    String website = "mysite.test"; // String | Website with path or domain only
+    String website = "website_example"; // String | Website with path or domain only
     try {
-      apiInstance.unverifyWebsiteDelete(website);
+      UserWebsite result = apiInstance.unverifyWebsiteDelete(website);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserAccountApi#unverifyWebsiteDelete");
       System.err.println("Status code: " + e.getCode());
@@ -363,7 +382,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -377,9 +396,14 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Successfully unverified website |  -  |
-| **404** | Website not in user list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="userAccountAnalytics"></a>
 # **userAccountAnalytics**
@@ -416,7 +440,7 @@ public class Example {
     String appTypes = "ALL"; // String | Apps or devices to get data for, default is all.
     String contentType = "ALL"; // String | Filter to paid or organic data. Default is all.
     String source = "ALL"; // String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-    List<String> metricTypes = Arrays.asList(); // List<String> | Metric types to get data for, default is all. 
+    List<QuerymetrictypesItems> metricTypes = Arrays.asList(); // List<QuerymetrictypesItems> | Metric types to get data for, default is all.
     String splitField = "NO_SPLIT"; // String | How to split the data into groups. Not including this param means data won't be split.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
@@ -444,7 +468,7 @@ public class Example {
 | **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
 | **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
 | **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
-| **metricTypes** | [**List&lt;String&gt;**](String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] |
+| **metricTypes** | [**List&lt;QuerymetrictypesItems&gt;**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] |
 | **splitField** | **String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT] [enum: NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
@@ -464,10 +488,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user accounts analytics parameters. |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="userAccountAnalyticsTopPins"></a>
 # **userAccountAnalyticsTopPins**
@@ -503,15 +530,15 @@ public class Example {
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     LocalDate startDate = LocalDate.now(); // LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     LocalDate endDate = LocalDate.now(); // LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    String sortBy = "ENGAGEMENT"; // String | Specify sorting order for metrics
+    TopPinsSortBy sortBy = TopPinsSortBy.fromValue("ENGAGEMENT"); // TopPinsSortBy | Specify sorting order for metrics
     String fromClaimedContent = "OTHER"; // String | Filter on Pins that match your claimed domain.
     String pinFormat = "ALL"; // String | Pin formats to get data for, default is all.
     String appTypes = "ALL"; // String | Apps or devices to get data for, default is all.
     String contentType = "ALL"; // String | Filter to paid or organic data. Default is all.
     String source = "ALL"; // String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-    List<String> metricTypes = Arrays.asList(); // List<String> | Metric types to get data for, default is all. 
+    List<QuerymetrictypesItems> metricTypes = Arrays.asList(); // List<QuerymetrictypesItems> | Metric types to get data for, default is all.
     Integer numOfPins = 10; // Integer | Number of pins to include, default is 10. Max is 50.
-    Integer createdInLastNDays = 30; // Integer | Get metrics for pins created in the last \"n\" days.
+    BigDecimal createdInLastNDays = new BigDecimal("30"); // BigDecimal | Get metrics for pins created in the last \"n\" days.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
       TopPinsAnalyticsResponse result = apiInstance.userAccountAnalyticsTopPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId);
@@ -533,15 +560,15 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **startDate** | **LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
-| **sortBy** | **String**| Specify sorting order for metrics | [enum: ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE] |
+| **sortBy** | [**TopPinsSortBy**](.md)| Specify sorting order for metrics | [enum: ENGAGEMENT, SAVE, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK] |
 | **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
 | **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
 | **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
 | **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
 | **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
-| **metricTypes** | [**List&lt;String&gt;**](String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] |
+| **metricTypes** | [**List&lt;QuerymetrictypesItems&gt;**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] |
 | **numOfPins** | **Integer**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
-| **createdInLastNDays** | **Integer**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30] |
+| **createdInLastNDays** | **BigDecimal**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -560,9 +587,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="userAccountAnalyticsTopVideoPins"></a>
 # **userAccountAnalyticsTopVideoPins**
@@ -598,15 +629,15 @@ public class Example {
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     LocalDate startDate = LocalDate.now(); // LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     LocalDate endDate = LocalDate.now(); // LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    String sortBy = "IMPRESSION"; // String | Specify sorting order for video metrics
+    TopVideoPinsSortBy sortBy = TopVideoPinsSortBy.fromValue("SAVE"); // TopVideoPinsSortBy | Specify sorting order for video metrics
     String fromClaimedContent = "OTHER"; // String | Filter on Pins that match your claimed domain.
     String pinFormat = "ALL"; // String | Pin formats to get data for, default is all.
     String appTypes = "ALL"; // String | Apps or devices to get data for, default is all.
     String contentType = "ALL"; // String | Filter to paid or organic data. Default is all.
     String source = "ALL"; // String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-    List<String> metricTypes = Arrays.asList(); // List<String> | Metric types to get video data for, default is all. 
+    List<QueryvideopinmetrictypesItems> metricTypes = Arrays.asList(); // List<QueryvideopinmetrictypesItems> | Metric types to get video data for, default is all.
     Integer numOfPins = 10; // Integer | Number of pins to include, default is 10. Max is 50.
-    Integer createdInLastNDays = 30; // Integer | Get metrics for pins created in the last \"n\" days.
+    BigDecimal createdInLastNDays = new BigDecimal("30"); // BigDecimal | Get metrics for pins created in the last \"n\" days.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
       TopVideoPinsAnalyticsResponse result = apiInstance.userAccountAnalyticsTopVideoPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId);
@@ -628,15 +659,15 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **startDate** | **LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
-| **sortBy** | **String**| Specify sorting order for video metrics | [enum: IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START] |
+| **sortBy** | [**TopVideoPinsSortBy**](.md)| Specify sorting order for video metrics | [enum: SAVE, IMPRESSION, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START] |
 | **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
 | **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
 | **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
 | **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
 | **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
-| **metricTypes** | [**List&lt;String&gt;**](String.md)| Metric types to get video data for, default is all.  | [optional] [enum: IMPRESSION, SAVE, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START, OUTBOUND_CLICK] |
+| **metricTypes** | [**List&lt;QueryvideopinmetrictypesItems&gt;**](QueryvideopinmetrictypesItems.md)| Metric types to get video data for, default is all. | [optional] |
 | **numOfPins** | **Integer**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
-| **createdInLastNDays** | **Integer**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30] |
+| **createdInLastNDays** | **BigDecimal**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -655,9 +686,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="userAccountFollowedInterests"></a>
 # **userAccountFollowedInterests**
@@ -691,9 +726,9 @@ public class Example {
     client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
-    String username = "username"; // String | A valid username
+    String username = "username_example"; // String | A valid username
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
       UserAccountFollowedInterests200Response result = apiInstance.userAccountFollowedInterests(username, bookmark, pageSize);
       System.out.println(result);
@@ -714,7 +749,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **username** | **String**| A valid username | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -732,10 +767,10 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters |  -  |
-| **401** | Authorization failed |  -  |
-| **404** | User not found |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The server could not understand the request due to invalid syntax. |  -  |
+| **401** | Access is unauthorized. |  -  |
+| **404** | The server cannot find the requested resource. |  -  |
 | **0** | Unexpected error |  -  |
 
 <a id="userAccountGet"></a>
@@ -744,7 +779,7 @@ public class Example {
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
 
 ### Example
 ```java
@@ -807,13 +842,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access the user account. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="userFollowingGet"></a>
 # **userFollowingGet**
-> UserFollowingGet200Response userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId)
+> FollowersList200Response userFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize)
 
 List following
 
@@ -843,13 +882,13 @@ public class Example {
     client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
-    String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    UserFollowingFeedType feedType = UserFollowingFeedType.fromValue("ALL"); // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
-    Boolean explicitFollowing = false; // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+    Boolean explicitFollowing = false; // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+    UserFollowingFeedType feedType = UserFollowingFeedType.fromValue("ALL"); // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+    String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      UserFollowingGet200Response result = apiInstance.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId);
+      FollowersList200Response result = apiInstance.userFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserAccountApi#userFollowingGet");
@@ -866,15 +905,15 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to ALL] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY] |
-| **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
+| **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
+| **feedType** | [**UserFollowingFeedType**](.md)| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to ALL] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**UserFollowingGet200Response**](UserFollowingGet200Response.md)
+[**FollowersList200Response**](FollowersList200Response.md)
 
 ### Authorization
 
@@ -888,8 +927,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="userWebsitesGet"></a>
 # **userWebsitesGet**
@@ -920,7 +964,7 @@ public class Example {
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
       UserWebsitesGet200Response result = apiInstance.userWebsitesGet(bookmark, pageSize);
       System.out.println(result);
@@ -940,7 +984,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -958,13 +1002,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user website list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="verifyWebsiteUpdate"></a>
 # **verifyWebsiteUpdate**
-> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
+> UserWebsite verifyWebsiteUpdate(userWebsiteCreate, adAccountId)
 
 Verify website
 
@@ -990,10 +1038,10 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
-    UserWebsiteVerifyRequest userWebsiteVerifyRequest = new UserWebsiteVerifyRequest(); // UserWebsiteVerifyRequest | Verify a website.
+    UserWebsiteCreate userWebsiteCreate = new UserWebsiteCreate(); // UserWebsiteCreate | 
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      UserWebsiteSummary result = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId);
+      UserWebsite result = apiInstance.verifyWebsiteUpdate(userWebsiteCreate, adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserAccountApi#verifyWebsiteUpdate");
@@ -1010,12 +1058,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | |
+| **userWebsiteCreate** | [**UserWebsiteCreate**](UserWebsiteCreate.md)|  | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -1029,12 +1077,18 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="websiteVerificationGet"></a>
 # **websiteVerificationGet**
-> UserWebsiteVerificationCode websiteVerificationGet(adAccountId)
+> UserWebsiteVerification websiteVerificationGet(adAccountId)
 
 Get user verification code for website claiming
 
@@ -1066,7 +1120,7 @@ public class Example {
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      UserWebsiteVerificationCode result = apiInstance.websiteVerificationGet(adAccountId);
+      UserWebsiteVerification result = apiInstance.websiteVerificationGet(adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserAccountApi#websiteVerificationGet");
@@ -1087,7 +1141,7 @@ public class Example {
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 
@@ -1101,7 +1155,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user verification code for website claiming. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

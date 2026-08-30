@@ -41,12 +41,14 @@ class CustomizableCTAType(Model):
     DOWNLOAD = 'DOWNLOAD'
     EXPLORE_MORE = 'EXPLORE_MORE'
     FIND_A_LOCATION = 'FIND_A_LOCATION'
+    FIND_RETAILERS = 'FIND_RETAILERS'
     GET_DEAL = 'GET_DEAL'
     GET_RECIPE = 'GET_RECIPE'
     GET_SHOWTIMES = 'GET_SHOWTIMES'
     ON_SALE = 'ON_SALE'
     PLAY_GAME = 'PLAY_GAME'
     TRY_IT = 'TRY_IT'
+    TAKE_A_PEEK = 'TAKE_A_PEEK'
 
     def __init__(self):  # noqa: E501
         """CustomizableCTAType - a model defined in Swagger

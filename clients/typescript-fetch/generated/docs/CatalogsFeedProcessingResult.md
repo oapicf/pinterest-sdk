@@ -8,10 +8,10 @@ Name | Type
 ------------ | -------------
 `createdAt` | Date
 `id` | string
-`updatedAt` | Date
 `ingestionDetails` | [CatalogsFeedIngestionDetails](CatalogsFeedIngestionDetails.md)
 `productCounts` | [CatalogsFeedProductCounts](CatalogsFeedProductCounts.md)
 `status` | [CatalogsFeedProcessingStatus](CatalogsFeedProcessingStatus.md)
+`updatedAt` | Date
 `validationDetails` | [CatalogsFeedValidationDetails](CatalogsFeedValidationDetails.md)
 `videoCounts` | [CatalogsFeedVideoCounts](CatalogsFeedVideoCounts.md)
 
@@ -23,11 +23,11 @@ import type { CatalogsFeedProcessingResult } from ''
 // TODO: Update the object below with actual values
 const example = {
   "createdAt": 2022-03-14T15:15:22Z,
-  "id": null,
-  "updatedAt": 2022-03-14T15:16:34Z,
+  "id": 864344156814050986,
   "ingestionDetails": null,
   "productCounts": null,
   "status": null,
+  "updatedAt": 2022-03-14T15:16:34Z,
   "validationDetails": null,
   "videoCounts": null,
 } satisfies CatalogsFeedProcessingResult

@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::IntegrationLogsInvalidLogResponse;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rejected_logs** | [**ARRAY[IntegrationLogsInvalidLogResponseRejectedLogsInner]**](IntegrationLogsInvalidLogResponseRejectedLogsInner.md) |  | [optional] 
+**rejected_logs** | [**ARRAY[IntegrationLogsInvalidLogResponseRejectedLogsItems]**](IntegrationLogsInvalidLogResponseRejectedLogsItems.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,4 +1,7 @@
 const utils = require('../utils/utils');
+const FormFactor = require('../models/FormFactor');
+const NetworkType = require('../models/NetworkType');
+const OsFamily = require('../models/OsFamily');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -36,19 +39,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}form_factor`,
-                label: `Device form factor - [${labelPrefix}form_factor]`,
-                type: 'string',
-                choices: [
-                    'desktop',
-                    'laptop',
-                    'cellphone',
-                    'tablet',
-                    'smartwatch',
-                    'tv',
-                    'vr',
-                    'console',
-                    'other',
-                ],
+                ...FormFactor.fields(`${keyPrefix}form_factor`, isInput),
             },
             {
                 key: `${keyPrefix}kernel_version`,
@@ -73,32 +64,11 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}network_type`,
-                label: `Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() - [${labelPrefix}network_type]`,
-                type: 'string',
-                choices: [
-                    'wifi',
-                    'cellular_2g',
-                    'cellular_3g',
-                    'cellular_4g',
-                    'cellular_5g',
-                    'cellular_6g',
-                    'ethernet',
-                    'unknown',
-                ],
+                ...NetworkType.fields(`${keyPrefix}network_type`, isInput),
             },
             {
                 key: `${keyPrefix}os_family`,
-                label: `OS Family - [${labelPrefix}os_family]`,
-                type: 'string',
-                choices: [
-                    'ios',
-                    'android',
-                    'macos',
-                    'windows',
-                    'linux',
-                    'bsd',
-                    'other',
-                ],
+                ...OsFamily.fields(`${keyPrefix}os_family`, isInput),
             },
             {
                 key: `${keyPrefix}os_name`,

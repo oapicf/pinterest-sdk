@@ -1,12 +1,13 @@
 # openapi::Account
 
+User account model containing properties related to a user's account.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | **character** | Profile about description. | [optional] 
-**account_type** | **character** | Type of account | [optional] [Enum: [PINNER, BUSINESS]] 
-**board_count** | **integer** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
+**account_type** | [**UserAccountType**](UserAccountType.md) | Type of account | [optional] [Enum: ] 
+**board_count** | **integer** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
 **business_name** | **character** |  | [optional] 
 **follower_count** | **integer** | User account follower count. | [optional] [readonly] 
 **following_count** | **integer** | User account following count. | [optional] [readonly] 

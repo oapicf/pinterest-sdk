@@ -1,6 +1,7 @@
 goog.provide('API.Client.SSIOAccountAddress');
 
 /**
+ * Salesforce address information.
  * @record
  */
 API.Client.SSIOAccountAddress = function() {}

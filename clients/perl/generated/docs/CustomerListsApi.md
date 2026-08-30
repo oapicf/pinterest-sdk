@@ -16,11 +16,11 @@ Method | HTTP request | Description
 
 
 # **customer_lists_create**
-> CustomerList customer_lists_create(ad_account_id => $ad_account_id, customer_list_request => $customer_list_request)
+> CustomerList customer_lists_create(ad_account_id => $ad_account_id, customer_list_create => $customer_list_create)
 
 Create customer lists
 
-<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
+Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
 
 ### Example
 ```perl
@@ -32,11 +32,11 @@ my $api_instance = WWW::OpenAPIClient::CustomerListsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $customer_list_request = WWW::OpenAPIClient::Object::CustomerListRequest->new(); # CustomerListRequest | Parameters to get Customer lists info
+my $ad_account_id = "ad_account_id_example"; # string | 
+my $customer_list_create = WWW::OpenAPIClient::Object::CustomerListCreate->new(); # CustomerListCreate | 
 
 eval {
-    my $result = $api_instance->customer_lists_create(ad_account_id => $ad_account_id, customer_list_request => $customer_list_request);
+    my $result = $api_instance->customer_lists_create(ad_account_id => $ad_account_id, customer_list_create => $customer_list_create);
     print Dumper($result);
 };
 if ($@) {
@@ -48,8 +48,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **customer_list_request** | [**CustomerListRequest**](CustomerListRequest.md)| Parameters to get Customer lists info | 
+ **ad_account_id** | **string**|  | 
+ **customer_list_create** | [**CustomerListCreate**](CustomerListCreate.md)|  | 
 
 ### Return type
 
@@ -85,8 +85,8 @@ my $api_instance = WWW::OpenAPIClient::CustomerListsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $customer_list_id = "customer_list_id_example"; # string | Unique identifier of a customer list
+my $ad_account_id = "ad_account_id_example"; # string | 
+my $customer_list_id = "customer_list_id_example"; # string | Customer list ID.
 
 eval {
     my $result = $api_instance->customer_lists_get(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id);
@@ -101,8 +101,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **customer_list_id** | **string**| Unique identifier of a customer list | 
+ **ad_account_id** | **string**|  | 
+ **customer_list_id** | **string**| Customer list ID. | 
 
 ### Return type
 
@@ -120,11 +120,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_lists_list**
-> CustomerListsList200Response customer_lists_list(ad_account_id => $ad_account_id, page_size => $page_size, order => $order, bookmark => $bookmark)
+> CustomerListsList200Response customer_lists_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order, exclude_nca => $exclude_nca)
 
 Get customer lists
 
-<p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 ```perl
@@ -136,13 +136,14 @@ my $api_instance = WWW::OpenAPIClient::CustomerListsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-my $order = ASCENDING; # string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+my $ad_account_id = "ad_account_id_example"; # string | 
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+my $order = new WWW::OpenAPIClient.PinterestLibPaginationOrder(); # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+my $exclude_nca = false; # boolean | When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
 
 eval {
-    my $result = $api_instance->customer_lists_list(ad_account_id => $ad_account_id, page_size => $page_size, order => $order, bookmark => $bookmark);
+    my $result = $api_instance->customer_lists_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order, exclude_nca => $exclude_nca);
     print Dumper($result);
 };
 if ($@) {
@@ -154,10 +155,11 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **ad_account_id** | **string**|  | 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **exclude_nca** | **boolean**| When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). | [optional] [default to false]
 
 ### Return type
 
@@ -175,11 +177,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_lists_update**
-> CustomerList customer_lists_update(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_update_request => $customer_list_update_request)
+> CustomerList customer_lists_update(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_update_with_required_body => $customer_list_update_with_required_body)
 
 Update customer list
 
-<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 ```perl
@@ -191,12 +193,12 @@ my $api_instance = WWW::OpenAPIClient::CustomerListsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $customer_list_id = "customer_list_id_example"; # string | Unique identifier of a customer list
-my $customer_list_update_request = WWW::OpenAPIClient::Object::CustomerListUpdateRequest->new(); # CustomerListUpdateRequest | 
+my $ad_account_id = "ad_account_id_example"; # string | 
+my $customer_list_id = "customer_list_id_example"; # string | Customer list ID.
+my $customer_list_update_with_required_body = WWW::OpenAPIClient::Object::CustomerListUpdateWithRequiredBody->new(); # CustomerListUpdateWithRequiredBody | 
 
 eval {
-    my $result = $api_instance->customer_lists_update(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_update_request => $customer_list_update_request);
+    my $result = $api_instance->customer_lists_update(ad_account_id => $ad_account_id, customer_list_id => $customer_list_id, customer_list_update_with_required_body => $customer_list_update_with_required_body);
     print Dumper($result);
 };
 if ($@) {
@@ -208,9 +210,9 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **customer_list_id** | **string**| Unique identifier of a customer list | 
- **customer_list_update_request** | [**CustomerListUpdateRequest**](CustomerListUpdateRequest.md)|  | 
+ **ad_account_id** | **string**|  | 
+ **customer_list_id** | **string**| Customer list ID. | 
+ **customer_list_update_with_required_body** | [**CustomerListUpdateWithRequiredBody**](CustomerListUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 

@@ -11,31 +11,30 @@
 part of openapi.api;
 
 
-class TargetingSpecGender {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecGender._(this.value);
+enum TargetingSpecGender {
+  unknown._(r'unknown'),
+  male._(r'male'),
+  female._(r'female'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingSpecGender._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const unknown = TargetingSpecGender._(r'unknown');
-  static const male = TargetingSpecGender._(r'male');
-  static const female = TargetingSpecGender._(r'female');
-
-  /// List of all possible values in this [enum][TargetingSpecGender].
-  static const values = <TargetingSpecGender>[
-    unknown,
-    male,
-    female,
-  ];
-
+  /// Returns the instance of [TargetingSpecGender] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingSpecGender? fromJson(dynamic value) => TargetingSpecGenderTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingSpecGender]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingSpecGender> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingSpecGender>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class TargetingSpecGenderTypeTransformer {
 
   const TargetingSpecGenderTypeTransformer._();
 
-  String encode(TargetingSpecGender data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(TargetingSpecGender data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingSpecGender.
+  /// Returns the instance of [TargetingSpecGender] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class TargetingSpecGenderTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingSpecGender? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingSpecGender) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'unknown': return TargetingSpecGender.unknown;
@@ -82,7 +86,7 @@ class TargetingSpecGenderTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingSpecGenderTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingSpecGenderTypeTransformer? _instance;
 }
 

@@ -10,6 +10,8 @@ module.exports = {
                     'CREATIVE_TYPE',
                     'GENDER',
                     'LOCATION',
+                    'PLACEMENT',
+                    'AUDIENCE_INCLUDE',
                 ],
             }
         )

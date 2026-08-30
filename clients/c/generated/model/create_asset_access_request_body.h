@@ -15,7 +15,7 @@
 
 typedef struct create_asset_access_request_body_t create_asset_access_request_body_t;
 
-#include "create_asset_access_request_body_asset_requests_inner.h"
+#include "create_asset_access_request_item.h"
 
 
 

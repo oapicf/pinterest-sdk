@@ -44,7 +44,6 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
 
 
   /**
-   * Insertion orders status by ad acount id
    **/
   public SsioInsertionOrdersStatusGetByAdAccount200Response items(List<@Valid SSIOInsertionOrderStatus> items) {
     this.items = items;
@@ -52,7 +51,7 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
   }
 
   
-  @ApiModelProperty(required = true, value = "Insertion orders status by ad acount id")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
   public List<@Valid SSIOInsertionOrderStatus> getItems() {
@@ -106,10 +105,7 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

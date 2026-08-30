@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ScheduleCommonDeltaValue",
+  "fields": [
+    {
+      "name": "age_bucket_multipliers",
+      "type": ["null", "model.ScheduleAgeBucketMultipliers"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "app_type_multipliers",
+      "type": ["null", "model.ScheduleAppTypeMultipliers"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "audience_multipliers",
+      "type": ["null", "model.ScheduleAudienceMultipliers"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "gender_multipliers",
+      "type": ["null", "model.ScheduleBidOptionsGenderMultipliers"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "placement_multipliers",
+      "type": ["null", "model.ScheduleBidOptionsPlacementMultipliers"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

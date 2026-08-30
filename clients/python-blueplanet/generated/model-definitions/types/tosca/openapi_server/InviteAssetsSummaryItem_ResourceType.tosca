@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server InviteAssetsSummaryItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a InviteAssetsSummaryItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  InviteAssetsSummaryItem {
+    title = InviteAssetsSummaryItem
+    description = InviteAssetsSummaryItem
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Unique identifier of the asset."
+          optional = false
+        }
+        permissions {
+          type = array
+          items.type =  string
+          description = "Permission levels member or partner has on an asset."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  InviteAssetsSummaryItem {
+    title = InviteAssetsSummaryItem
+    description = InviteAssetsSummaryItem
+    implements = openapi_server.resourceTypes.InviteAssetsSummaryItem
+
+  }
+}

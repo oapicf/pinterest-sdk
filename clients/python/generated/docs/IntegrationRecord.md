@@ -7,14 +7,14 @@ Integration record
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additional_id_1** | **str** |  | [optional] 
-**connected_advertiser_id** | **str** |  | [optional] [readonly] 
+**connected_advertiser_id** | **str** |  | [optional] 
 **connected_lba_id** | **str** |  | [optional] 
 **connected_merchant_id** | **str** |  | [optional] 
 **connected_tag_id** | **str** |  | [optional] 
-**connected_user_id** | **str** |  | [optional] [readonly] 
+**connected_user_id** | **str** |  | [optional] 
 **created_time** | **int** |  | [optional] 
 **external_business_id** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
+**id** | **str** | Integration record ID. | [readonly] 
 **partner_access_token** | **str** |  | [optional] 
 **partner_access_token_expiry** | **int** |  | [optional] 
 **partner_metadata** | **str** |  | [optional] 

@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  UpdateMemberAssetAccessBodyAccessesInner = openapi_server.resourceTypes.UpdateMemberAssetAccessBodyAccessesInner
+  UpdateMemberAssetAccessItem = openapi_server.resourceTypes.UpdateMemberAssetAccessItem
 }
 resourceTypes {
 
@@ -18,8 +18,8 @@ resourceTypes {
     properties {
         accesses {
           type = array
-          items.type = UpdateMemberAssetAccessBodyAccessesInner
-          description = ""
+          items.type = UpdateMemberAssetAccessItem
+          description = "List of member asset accesses to assign or update."
           optional = true
         }
     }

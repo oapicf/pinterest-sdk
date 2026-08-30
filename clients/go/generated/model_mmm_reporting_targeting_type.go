@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -26,6 +26,8 @@ const (
 	CREATIVE_TYPE MMMReportingTargetingType = "CREATIVE_TYPE"
 	GENDER MMMReportingTargetingType = "GENDER"
 	LOCATION MMMReportingTargetingType = "LOCATION"
+	PLACEMENT MMMReportingTargetingType = "PLACEMENT"
+	AUDIENCE_INCLUDE MMMReportingTargetingType = "AUDIENCE_INCLUDE"
 )
 
 // All allowed values of MMMReportingTargetingType enum
@@ -35,6 +37,8 @@ var AllowedMMMReportingTargetingTypeEnumValues = []MMMReportingTargetingType{
 	"CREATIVE_TYPE",
 	"GENDER",
 	"LOCATION",
+	"PLACEMENT",
+	"AUDIENCE_INCLUDE",
 }
 
 func (v *MMMReportingTargetingType) UnmarshalJSON(src []byte) error {

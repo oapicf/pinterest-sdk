@@ -12,12 +12,17 @@ import org.joda.time.DateTime
 import AdGroupUpdateRequest._
 
 case class AdGroupUpdateRequest (
-  /* Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. */
+  /* <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>. */
+  bidMultiplier: Option[BigDecimal],
+/* Ad group ID. */
+  id: String,
+/* <div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul> */
+  targetingSpecOperations: Option[List[TargetingSpecOperations]],
+/* Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. */
   autoTargetingEnabled: Option[Boolean],
 /* Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH. */
   bidInMicroCurrency: Option[Integer],
-/* Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\". */
-  bidStrategyType: Option[BidStrategyType],
+bidStrategyType: Option[BidStrategyType],
 billableEvent: Option[ActionType],
 /* Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. */
   budgetInMicroCurrency: Option[Integer],
@@ -33,7 +38,7 @@ budgetType: Option[BudgetType],
 /* Ad group name. */
   name: Option[String],
 /* Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`. */
-  optimizationGoalMetadata: Option[OptimizationGoalMetadata],
+  optimizationGoalMetadata: Option[Any],
 pacingDeliveryType: Option[PacingDeliveryType],
 /* <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
   placementGroup: Option[PlacementGroupType],
@@ -41,6 +46,8 @@ pacingDeliveryType: Option[PacingDeliveryType],
   promotionApplicationLevel: Option[PromotionApplicationLevel],
 /* Promotion ID. To clear this field, set to null. */
   promotionId: Option[String],
+/* Promotion IDs list. To clear this field, set to an empty array []. */
+  promotionIds: Option[List[String]],
 /* Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. */
   startTime: Option[Integer],
 /* Ad group/entity status. */
@@ -48,40 +55,11 @@ pacingDeliveryType: Option[PacingDeliveryType],
 targetingSpec: Option[TargetingSpec],
 /* Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0']. */
   targetingTemplateIds: Option[List[String]],
-/* Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. */
-  trackingUrls: Option[TrackingUrls],
-/* <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>. */
-  bidMultiplier: Option[BigDecimal],
-/* Ad group ID. */
-  id: String)
+/* Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. */
+  trackingUrls: Option[Any])
 
 object AdGroupUpdateRequest {
   import DateTimeCodecs._
-  sealed trait BidStrategyType
-  case object AUTOMATICBID extends BidStrategyType
-  case object MAXBID extends BidStrategyType
-  case object TARGETAVG extends BidStrategyType
-
-  object BidStrategyType {
-    def toBidStrategyType(s: String): Option[BidStrategyType] = s match {
-      case "AUTOMATICBID" => Some(AUTOMATICBID)
-      case "MAXBID" => Some(MAXBID)
-      case "TARGETAVG" => Some(TARGETAVG)
-      case _ => None
-    }
-
-    def fromBidStrategyType(x: BidStrategyType): String = x match {
-      case AUTOMATICBID => "AUTOMATICBID"
-      case MAXBID => "MAXBID"
-      case TARGETAVG => "TARGETAVG"
-    }
-  }
-
-  implicit val BidStrategyTypeEnumEncoder: EncodeJson[BidStrategyType] =
-    EncodeJson[BidStrategyType](is => StringEncodeJson(BidStrategyType.fromBidStrategyType(is)))
-
-  implicit val BidStrategyTypeEnumDecoder: DecodeJson[BidStrategyType] =
-    DecodeJson.optionDecoder[BidStrategyType](n => n.string.flatMap(jStr => BidStrategyType.toBidStrategyType(jStr)), "BidStrategyType failed to de-serialize")
   sealed trait PromotionApplicationLevel
   case object NONE extends PromotionApplicationLevel
   case object ITEM extends PromotionApplicationLevel

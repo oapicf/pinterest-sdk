@@ -1,0 +1,81 @@
+/*
+ * UserWebsite.h
+ *
+ * 
+ */
+
+#ifndef _UserWebsite_H_
+#define _UserWebsite_H_
+
+
+#include <string>
+#include "Object.h"
+
+/** \defgroup Models Data Structures for API
+ *  Classes containing all the Data Structures needed for calling/returned by API endpoints
+ *
+ */
+
+namespace Tizen {
+namespace ArtikCloud {
+
+
+/*! \brief 
+ *
+ *  \ingroup Models
+ *
+ */
+
+class UserWebsite : public Object {
+public:
+	/*! \brief Constructor.
+	 */
+	UserWebsite();
+	UserWebsite(char* str);
+
+	/*! \brief Destructor.
+	 */
+	virtual ~UserWebsite();
+
+	/*! \brief Retrieve a string JSON representation of this class.
+	 */
+	char* toJson();
+
+	/*! \brief Fills in members of this class from JSON string representing it.
+	 */
+	void fromJson(char* jsonStr);
+
+	/*! \brief Get Status of the verification process
+	 */
+	std::string getStatus();
+
+	/*! \brief Set Status of the verification process
+	 */
+	void setStatus(std::string  status);
+	/*! \brief Get UTC timestamp when the verification happened - sometimes missing
+	 */
+	std::string getVerifiedAt();
+
+	/*! \brief Set UTC timestamp when the verification happened - sometimes missing
+	 */
+	void setVerifiedAt(std::string  verified_at);
+	/*! \brief Get Website with path or domain only
+	 */
+	std::string getWebsite();
+
+	/*! \brief Set Website with path or domain only
+	 */
+	void setWebsite(std::string  website);
+
+private:
+	std::string status;
+	std::string verified_at;
+	std::string website;
+	void __init();
+	void __cleanup();
+
+};
+}
+}
+
+#endif /* _UserWebsite_H_ */

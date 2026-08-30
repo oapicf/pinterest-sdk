@@ -7,7 +7,8 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.top_pins_analytics_response_date_availability import TopPinsAnalyticsResponseDateAvailability  # noqa: F401,E501
-from app.openapi_server.models.top_pins_analytics_response_pins_inner import TopPinsAnalyticsResponsePinsInner  # noqa: F401,E501
+from app.openapi_server.models.top_pins_analytics_response_pins_items import TopPinsAnalyticsResponsePinsItems  # noqa: F401,E501
+from app.openapi_server.models.top_pins_sort_by import TopPinsSortBy  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,20 +18,20 @@ class TopPinsAnalyticsResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, date_availability: TopPinsAnalyticsResponseDateAvailability=None, pins: List[TopPinsAnalyticsResponsePinsInner]=None, sort_by: str=None):  # noqa: E501
+    def __init__(self, date_availability: TopPinsAnalyticsResponseDateAvailability=None, pins: List[TopPinsAnalyticsResponsePinsItems]=None, sort_by: TopPinsSortBy=None):  # noqa: E501
         """TopPinsAnalyticsResponse - a model defined in Swagger
 
         :param date_availability: The date_availability of this TopPinsAnalyticsResponse.  # noqa: E501
         :type date_availability: TopPinsAnalyticsResponseDateAvailability
         :param pins: The pins of this TopPinsAnalyticsResponse.  # noqa: E501
-        :type pins: List[TopPinsAnalyticsResponsePinsInner]
+        :type pins: List[TopPinsAnalyticsResponsePinsItems]
         :param sort_by: The sort_by of this TopPinsAnalyticsResponse.  # noqa: E501
-        :type sort_by: str
+        :type sort_by: TopPinsSortBy
         """
         self.swagger_types = {
             'date_availability': TopPinsAnalyticsResponseDateAvailability,
-            'pins': List[TopPinsAnalyticsResponsePinsInner],
-            'sort_by': str
+            'pins': List[TopPinsAnalyticsResponsePinsItems],
+            'sort_by': TopPinsSortBy
         }
 
         self.attribute_map = {
@@ -76,49 +77,43 @@ class TopPinsAnalyticsResponse(Model):
         self._date_availability = date_availability
 
     @property
-    def pins(self) -> List[TopPinsAnalyticsResponsePinsInner]:
+    def pins(self) -> List[TopPinsAnalyticsResponsePinsItems]:
         """Gets the pins of this TopPinsAnalyticsResponse.
 
 
         :return: The pins of this TopPinsAnalyticsResponse.
-        :rtype: List[TopPinsAnalyticsResponsePinsInner]
+        :rtype: List[TopPinsAnalyticsResponsePinsItems]
         """
         return self._pins
 
     @pins.setter
-    def pins(self, pins: List[TopPinsAnalyticsResponsePinsInner]):
+    def pins(self, pins: List[TopPinsAnalyticsResponsePinsItems]):
         """Sets the pins of this TopPinsAnalyticsResponse.
 
 
         :param pins: The pins of this TopPinsAnalyticsResponse.
-        :type pins: List[TopPinsAnalyticsResponsePinsInner]
+        :type pins: List[TopPinsAnalyticsResponsePinsItems]
         """
 
         self._pins = pins
 
     @property
-    def sort_by(self) -> str:
+    def sort_by(self) -> TopPinsSortBy:
         """Gets the sort_by of this TopPinsAnalyticsResponse.
 
 
         :return: The sort_by of this TopPinsAnalyticsResponse.
-        :rtype: str
+        :rtype: TopPinsSortBy
         """
         return self._sort_by
 
     @sort_by.setter
-    def sort_by(self, sort_by: str):
+    def sort_by(self, sort_by: TopPinsSortBy):
         """Sets the sort_by of this TopPinsAnalyticsResponse.
 
 
         :param sort_by: The sort_by of this TopPinsAnalyticsResponse.
-        :type sort_by: str
+        :type sort_by: TopPinsSortBy
         """
-        allowed_values = ["ENGAGEMENT", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK"]  # noqa: E501
-        if sort_by not in allowed_values:
-            raise ValueError(
-                "Invalid value for `sort_by` ({0}), must be one of {1}"
-                .format(sort_by, allowed_values)
-            )
 
         self._sort_by = sort_by

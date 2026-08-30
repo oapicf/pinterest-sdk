@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -153,9 +153,9 @@ func (c *ResourcesAPIController) DeliveryMetricsGet(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var reportTypeParam string
+	var reportTypeParam ReportType
 	if query.Has("report_type") {
-		param := query.Get("report_type")
+		param := ReportType(query.Get("report_type"))
 
 		reportTypeParam = param
 	} else {
@@ -234,10 +234,17 @@ func (c *ResourcesAPIController) TargetingOptionsGet(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	targetingTypeParam := params["targeting_type"]
-	if targetingTypeParam == "" {
-		c.errorHandler(w, r, &RequiredError{"targeting_type"}, nil)
+	targetingTypeParam, err := NewPublicTargetingTypeFromValue(params["targeting_type"])
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Param: "targeting_type", Err: err}, nil)
 		return
+	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
 	}
 	var clientIdParam string
 	if query.Has("client_id") {
@@ -260,14 +267,7 @@ func (c *ResourcesAPIController) TargetingOptionsGet(w http.ResponseWriter, r *h
 		timestampParam = param
 	} else {
 	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.TargetingOptionsGet(r.Context(), targetingTypeParam, clientIdParam, oauthSignatureParam, timestampParam, adAccountIdParam)
+	result, err := c.service.TargetingOptionsGet(r.Context(), targetingTypeParam, adAccountIdParam, clientIdParam, oauthSignatureParam, timestampParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

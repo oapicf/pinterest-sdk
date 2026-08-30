@@ -1,0 +1,27 @@
+## MsotEventsApi
+
+### Send Measurement Source Of Truth (MSOT) attributed conversion events
+## Send Measurement Source Of Truth (MSOT) attributed conversion events
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/msot/events
+Content-Type: application/json
+Accept: application/json
+
+{
+ "action_timestamps": "<string>",
+ "ad_group_id": "<string>",
+ "attribution_model": "<string>",
+ "attribution_scope": "<string>",
+ "attribution_score": "<number>",
+ "campaign_id": "<string>",
+ "click_window": "<string>",
+ "currency": "<string>",
+ "event_id": "<string>",
+ "event_name": "<string>",
+ "event_timestamp": "<number>",
+ "total_event_touchpoints": "<number>",
+ "total_events": "<number>",
+ "total_events_fractional": "<number>",
+ "value": "<number>",
+ "view_window": "<string>"
+}
+

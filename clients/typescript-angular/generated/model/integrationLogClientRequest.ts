@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { HttpMethod } from './httpMethod';
 
 
 /**
@@ -17,7 +18,7 @@ export interface IntegrationLogClientRequest {
      * HTTP request host from host header.
      */
     host: string;
-    method: IntegrationLogClientRequest.MethodEnum;
+    method: HttpMethod;
     /**
      * HTTP request path.
      */
@@ -33,18 +34,6 @@ export interface IntegrationLogClientRequest {
     response_status_code?: number;
 }
 export namespace IntegrationLogClientRequest {
-    export const MethodEnum = {
-        Get: 'GET',
-        Head: 'HEAD',
-        Post: 'POST',
-        Put: 'PUT',
-        Delete: 'DELETE',
-        Connect: 'CONNECT',
-        Options: 'OPTIONS',
-        Trace: 'TRACE',
-        Patch: 'PATCH'
-    } as const;
-    export type MethodEnum = typeof MethodEnum[keyof typeof MethodEnum];
 }
 
 

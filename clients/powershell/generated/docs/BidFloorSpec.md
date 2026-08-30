@@ -3,12 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BillableEvent** | [**ActionType**](ActionType.md) |  | 
-**Countries** | [**Country[]**](Country.md) |  | [optional] 
-**CreativeType** | [**CreativeType**](CreativeType.md) |  | [optional] 
-**Currency** | [**Currency**](Currency.md) |  | 
-**ObjectiveType** | [**ObjectiveType**](ObjectiveType.md) |  | [optional] 
-**OptimizationGoalMetadata** | [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) |  | [optional] 
+**BillableEvent** | [**ActionType**](ActionType.md) | Ad group billable event type. | 
+**Countries** | [**Country[]**](Country.md) | List of ISO 3166-1 alpha-2 country codes. | [optional] 
+**CreativeType** | [**CreativeType**](CreativeType.md) | Creative type for the bid floor request. | [optional] 
+**Currency** | [**Currency**](Currency.md) | Currency for the bid floor value. | 
+**ObjectiveType** | [**BidFloorObjectiveType**](BidFloorObjectiveType.md) | Campaign objective type. | [optional] 
+**OptimizationGoalMetadata** | [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) | Optimization goal metadata. | [optional] 
 
 ## Examples
 

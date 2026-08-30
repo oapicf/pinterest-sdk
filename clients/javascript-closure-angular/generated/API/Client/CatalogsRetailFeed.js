@@ -7,28 +7,16 @@ goog.provide('API.Client.CatalogsRetailFeed');
 API.Client.CatalogsRetailFeed = function() {}
 
 /**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailFeed.prototype.catalogType;
+
+/**
  * @type {!Date}
  * @export
  */
 API.Client.CatalogsRetailFeed.prototype.createdAt;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsRetailFeed.prototype.id;
-
-/**
- * @type {!Date}
- * @export
- */
-API.Client.CatalogsRetailFeed.prototype.updatedAt;
-
-/**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsRetailFeed.prototype.catalogType;
 
 /**
  * @type {!API.Client.CatalogsFeedCredentials}
@@ -68,6 +56,13 @@ API.Client.CatalogsRetailFeed.prototype.defaultLocale;
 API.Client.CatalogsRetailFeed.prototype.format;
 
 /**
+ * ID of the feed entity.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailFeed.prototype.id;
+
+/**
  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @type {!string}
  * @export
@@ -93,3 +88,13 @@ API.Client.CatalogsRetailFeed.prototype.preferredProcessingSchedule;
  */
 API.Client.CatalogsRetailFeed.prototype.status;
 
+/**
+ * @type {!Date}
+ * @export
+ */
+API.Client.CatalogsRetailFeed.prototype.updatedAt;
+
+/** @enum {string} */
+API.Client.CatalogsRetailFeed.CatalogTypeEnum = { 
+  RETAIL: 'RETAIL',
+}

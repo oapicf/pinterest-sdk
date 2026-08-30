@@ -7,13 +7,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AnyOf } from './anyOf';
+import { CatalogsProductGroupFiltersRequestAnyOfItems1 } from './catalogsProductGroupFiltersRequestAnyOfItems1';
+import { CatalogsProductGroupFiltersRequestAnyOfItems0 } from './catalogsProductGroupFiltersRequestAnyOfItems0';
 import { CatalogsProductGroupFilterKeys } from './catalogsProductGroupFilterKeys';
-import { AllOf } from './allOf';
 
 
 /**
- * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
+ * Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
  */
 export interface CatalogsProductGroupFiltersRequest { 
     any_of: Array<CatalogsProductGroupFilterKeys>;

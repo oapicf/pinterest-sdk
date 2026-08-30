@@ -29,6 +29,8 @@ module AdAccount =
     Owner : AdAccountOwner;
     [<JsonProperty(PropertyName = "permissions")>]
     Permissions : BusinessAccessRole[];
+    [<JsonProperty(PropertyName = "time_zone")>]
+    TimeZone : string;
     [<JsonProperty(PropertyName = "updated_time")>]
     UpdatedTime : int option;
   }

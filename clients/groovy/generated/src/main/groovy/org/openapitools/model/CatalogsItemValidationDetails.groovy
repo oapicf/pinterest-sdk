@@ -7,7 +7,7 @@ import org.openapitools.model.NullableCatalogsItemFieldType;
 
 @Canonical
 class CatalogsItemValidationDetails {
-    
+    /* Attribute that has a validation issue. */
     NullableCatalogsItemFieldType attributeName
     /* Provided value that caused the validation issue. */
     String providedValue

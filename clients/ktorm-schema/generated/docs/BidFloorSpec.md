@@ -5,12 +5,12 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**billableEvent** | billable_event | long NOT NULL |  | [**ActionType**](ActionType.md) |  |  [foreignkey]
-**currency** | currency | long NOT NULL |  | [**Currency**](Currency.md) |  |  [foreignkey]
-**countries** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;Country&gt;**](Country.md) |  |  [optional]
-**creativeType** | creative_type | long |  | [**CreativeType**](CreativeType.md) |  |  [optional] [foreignkey]
-**objectiveType** | objective_type | long |  | [**ObjectiveType**](ObjectiveType.md) |  |  [optional] [foreignkey]
-**optimizationGoalMetadata** | optimization_goal_metadata | long |  | [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) |  |  [optional] [foreignkey]
+**billableEvent** | billable_event | long NOT NULL |  | [**ActionType**](ActionType.md) | Ad group billable event type. |  [foreignkey]
+**currency** | currency | long NOT NULL |  | [**Currency**](Currency.md) | Currency for the bid floor value. |  [foreignkey]
+**countries** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;Country&gt;**](Country.md) | List of ISO 3166-1 alpha-2 country codes. |  [optional]
+**creativeType** | creative_type | long |  | [**CreativeType**](CreativeType.md) | Creative type for the bid floor request. |  [optional] [foreignkey]
+**objectiveType** | objective_type | long |  | [**BidFloorObjectiveType**](BidFloorObjectiveType.md) | Campaign objective type. |  [optional] [foreignkey]
+**optimizationGoalMetadata** | optimization_goal_metadata | long |  | [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) | Optimization goal metadata. |  [optional] [foreignkey]
 
 
 

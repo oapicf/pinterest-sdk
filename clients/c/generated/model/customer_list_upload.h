@@ -18,41 +18,34 @@ typedef struct customer_list_upload_t customer_list_upload_t;
 #include "error_detail.h"
 #include "record_counts.h"
 #include "user_list_operation_type.h"
-
-// Enum STATE for customer_list_upload
-
-typedef enum  { pinterest_rest_api_customer_list_upload_STATE_NULL = 0, pinterest_rest_api_customer_list_upload_STATE_NOT_STARTED, pinterest_rest_api_customer_list_upload_STATE_RUNNING, pinterest_rest_api_customer_list_upload_STATE_PAUSED, pinterest_rest_api_customer_list_upload_STATE_SUCCEEDED, pinterest_rest_api_customer_list_upload_STATE_FAILED } pinterest_rest_api_customer_list_upload_STATE_e;
-
-char* customer_list_upload_state_ToString(pinterest_rest_api_customer_list_upload_STATE_e state);
-
-pinterest_rest_api_customer_list_upload_STATE_e customer_list_upload_state_FromString(char* state);
+#include "workload_state.h"
 
 
 
 typedef struct customer_list_upload_t {
     char *ad_account_id; // string
-    int creation_time; //numeric
+    int *creation_time; //numeric
     char *customer_list_id; // string
     list_t *error_counts; //nonprimitive container
     char *id; // string
     pinterest_rest_api_user_list_operation_type__e operation; //referenced enum
     struct record_counts_t *record_counts; //model
-    pinterest_rest_api_customer_list_upload_STATE_e state; //enum
-    int updated_time; //numeric
+    workload_state_t *state; // custom
+    int *updated_time; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } customer_list_upload_t;
 
 __attribute__((deprecated)) customer_list_upload_t *customer_list_upload_create(
     char *ad_account_id,
-    int creation_time,
+    int *creation_time,
     char *customer_list_id,
     list_t *error_counts,
     char *id,
     pinterest_rest_api_user_list_operation_type__e operation,
     record_counts_t *record_counts,
-    pinterest_rest_api_customer_list_upload_STATE_e state,
-    int updated_time
+    workload_state_t *state,
+    int *updated_time
 );
 
 void customer_list_upload_free(customer_list_upload_t *customer_list_upload);

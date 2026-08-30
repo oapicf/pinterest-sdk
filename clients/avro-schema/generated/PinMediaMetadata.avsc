@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.",
   "name": "PinMediaMetadata",
   "fields": [
     {
@@ -18,9 +18,14 @@
     },
     {
       "name": "item_type",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
+      "type": {
+        "type": "enum",
+        "name": "PinMediaMetadata_itemUnderscoretype",
+        "symbols": [
+          "video"
+        ]
+      },
+      "doc": "Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload."
     },
     {
       "name": "link",
@@ -56,6 +61,12 @@
       "name": "video_url",
       "type": ["null", "string"],
       "doc": "Video url (720p).  **Note:** This field is limited and not available to all apps.",
+      "default": null
+    },
+    {
+      "name": "video_url_hls",
+      "type": ["null", "string"],
+      "doc": "Video url (HLS).  **Note:** This field is limited and not available to all apps.",
       "default": null
     },
     {

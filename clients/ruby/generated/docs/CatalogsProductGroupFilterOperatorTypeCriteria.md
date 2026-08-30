@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **filter_operator_type** | **String** |  | [optional][default to &#39;IS&#39;] |
-| **negated** | **Boolean** |  | [optional][default to false] |
+| **filter_operator_type** | [**FilterOperatorType**](FilterOperatorType.md) |  | [optional] |
+| **negated** | **Boolean** |  | [optional] |
 | **values** | **Array&lt;String&gt;** |  |  |
 
 ## Example

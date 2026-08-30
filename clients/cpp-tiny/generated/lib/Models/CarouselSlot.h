@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set Carousel Pin slot description.
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get Carousel Pin slot link.
 	 */
 	std::string getLink();
 
 	/*! \brief Set Carousel Pin slot link.
 	 */
-	void setLink(std::string  link);
+	void setLink(std::string link);
 	/*! \brief Get Carousel Pin slot title.
 	 */
 	std::string getTitle();
 
 	/*! \brief Set Carousel Pin slot title.
 	 */
-	void setTitle(std::string  title);
+	void setTitle(std::string title);
 
 
     private:

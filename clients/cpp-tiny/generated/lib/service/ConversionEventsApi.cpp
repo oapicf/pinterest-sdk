@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            ConversionApiResponse
+            ConversionEvents
         >
         ConversionEventsApi::
         events_create(
@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            ConversionEvents conversionEvents
+            ConversionEventsCreate conversionEventsCreate
             , 
             
             bool test
@@ -46,11 +46,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | conversionEvents
+            // Body     | conversionEventsCreate
 
 
 
-            payload = conversionEvents.toJson().dump();
+            payload = conversionEventsCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -61,10 +61,10 @@ using namespace Tiny;
 
 
 
-            ConversionApiResponse obj(output_string);
+            ConversionEvents obj(output_string);
 
 
-            Response<ConversionApiResponse> response(obj, httpCode);
+            Response<ConversionEvents> response(obj, httpCode);
             return response;
         }
 

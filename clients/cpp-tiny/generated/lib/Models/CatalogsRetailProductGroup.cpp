@@ -6,14 +6,14 @@ using namespace Tiny;
 
 CatalogsRetailProductGroup::CatalogsRetailProductGroup()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	country = std::string();
 	created_at = int(0);
 	description = std::string();
 	feed_id = std::string();
 	filters = CatalogsProductGroupFilters();
-	id = std::string();
+	id = null;
 	is_featured = bool(false);
 	locale = std::string();
 	name = std::string();
@@ -340,7 +340,7 @@ CatalogsRetailProductGroup::getCatalogId()
 }
 
 void
-CatalogsRetailProductGroup::setCatalogId(std::string  catalog_id)
+CatalogsRetailProductGroup::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -352,7 +352,7 @@ CatalogsRetailProductGroup::getCatalogType()
 }
 
 void
-CatalogsRetailProductGroup::setCatalogType(std::string  catalog_type)
+CatalogsRetailProductGroup::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -364,7 +364,7 @@ CatalogsRetailProductGroup::getCountry()
 }
 
 void
-CatalogsRetailProductGroup::setCountry(std::string  country)
+CatalogsRetailProductGroup::setCountry(std::string country)
 {
 	this->country = country;
 }
@@ -376,7 +376,7 @@ CatalogsRetailProductGroup::getCreatedAt()
 }
 
 void
-CatalogsRetailProductGroup::setCreatedAt(int  created_at)
+CatalogsRetailProductGroup::setCreatedAt(int created_at)
 {
 	this->created_at = created_at;
 }
@@ -388,7 +388,7 @@ CatalogsRetailProductGroup::getDescription()
 }
 
 void
-CatalogsRetailProductGroup::setDescription(std::string  description)
+CatalogsRetailProductGroup::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -400,7 +400,7 @@ CatalogsRetailProductGroup::getFeedId()
 }
 
 void
-CatalogsRetailProductGroup::setFeedId(std::string  feed_id)
+CatalogsRetailProductGroup::setFeedId(std::string feed_id)
 {
 	this->feed_id = feed_id;
 }
@@ -412,7 +412,7 @@ CatalogsRetailProductGroup::getFilters()
 }
 
 void
-CatalogsRetailProductGroup::setFilters(CatalogsProductGroupFilters  filters)
+CatalogsRetailProductGroup::setFilters(CatalogsProductGroupFilters filters)
 {
 	this->filters = filters;
 }
@@ -424,7 +424,7 @@ CatalogsRetailProductGroup::getId()
 }
 
 void
-CatalogsRetailProductGroup::setId(std::string  id)
+CatalogsRetailProductGroup::setId(std::string id)
 {
 	this->id = id;
 }
@@ -436,7 +436,7 @@ CatalogsRetailProductGroup::isIsFeatured()
 }
 
 void
-CatalogsRetailProductGroup::setIsFeatured(bool  is_featured)
+CatalogsRetailProductGroup::setIsFeatured(bool is_featured)
 {
 	this->is_featured = is_featured;
 }
@@ -448,7 +448,7 @@ CatalogsRetailProductGroup::getLocale()
 }
 
 void
-CatalogsRetailProductGroup::setLocale(std::string  locale)
+CatalogsRetailProductGroup::setLocale(std::string locale)
 {
 	this->locale = locale;
 }
@@ -460,7 +460,7 @@ CatalogsRetailProductGroup::getName()
 }
 
 void
-CatalogsRetailProductGroup::setName(std::string  name)
+CatalogsRetailProductGroup::setName(std::string name)
 {
 	this->name = name;
 }
@@ -472,7 +472,7 @@ CatalogsRetailProductGroup::getStatus()
 }
 
 void
-CatalogsRetailProductGroup::setStatus(CatalogsProductGroupStatus  status)
+CatalogsRetailProductGroup::setStatus(CatalogsProductGroupStatus status)
 {
 	this->status = status;
 }
@@ -484,7 +484,7 @@ CatalogsRetailProductGroup::getType()
 }
 
 void
-CatalogsRetailProductGroup::setType(CatalogsProductGroupType  type)
+CatalogsRetailProductGroup::setType(CatalogsProductGroupType type)
 {
 	this->type = type;
 }
@@ -496,7 +496,7 @@ CatalogsRetailProductGroup::getUpdatedAt()
 }
 
 void
-CatalogsRetailProductGroup::setUpdatedAt(int  updated_at)
+CatalogsRetailProductGroup::setUpdatedAt(int updated_at)
 {
 	this->updated_at = updated_at;
 }

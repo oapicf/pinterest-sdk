@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]LabelsResponse**](LabelsResponse.md) |  | 
+**Items** | [**[]Label**](Label.md) |  | 
 
 ## Methods
 
 ### NewLabelsList200Response
 
-`func NewLabelsList200Response(items []LabelsResponse, ) *LabelsList200Response`
+`func NewLabelsList200Response(items []Label, ) *LabelsList200Response`
 
 NewLabelsList200Response instantiates a new LabelsList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *LabelsList200Response) GetItems() []LabelsResponse`
+`func (o *LabelsList200Response) GetItems() []Label`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *LabelsList200Response) GetItemsOk() (*[]LabelsResponse, bool)`
+`func (o *LabelsList200Response) GetItemsOk() (*[]Label, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *LabelsList200Response) SetItems(v []LabelsResponse)`
+`func (o *LabelsList200Response) SetItems(v []Label)`
 
 SetItems sets Items field to given value.
 

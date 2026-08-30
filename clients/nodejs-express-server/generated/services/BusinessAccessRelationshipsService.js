@@ -6,15 +6,15 @@ const Service = require('./Service');
 * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
 *
 * businessUnderscorehierarchyUnderscoreid String business hierarchy node id
-* brandAccountsCreateRequest BrandAccountsCreateRequest 
-* returns brand_accounts_create_200_response
+* brandAccountCreate BrandAccountCreate 
+* returns BrandAccount
 * */
-const brand_accounts/create = ({ businessUnderscorehierarchyUnderscoreid, brandAccountsCreateRequest }) => new Promise(
+const brand_accounts/create = ({ businessUnderscorehierarchyUnderscoreid, brandAccountCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscorehierarchyUnderscoreid,
-        brandAccountsCreateRequest,
+        brandAccountCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -28,18 +28,18 @@ const brand_accounts/create = ({ businessUnderscorehierarchyUnderscoreid, brandA
 * Update a Brand Account
 * Update an existing Brand Account
 *
+* brandUnderscoreaccountUnderscoreid String 
 * businessUnderscorehierarchyUnderscoreid String business hierarchy node id
-* brandUnderscoreaccountUnderscoreid String Unique identifier of a brand account.
-* brandAccountsUpdateRequest BrandAccountsUpdateRequest 
-* returns brand_accounts_create_200_response
+* brandAccountUpdate BrandAccountUpdate 
+* returns BrandAccount
 * */
-const brand_accounts/update = ({ businessUnderscorehierarchyUnderscoreid, brandUnderscoreaccountUnderscoreid, brandAccountsUpdateRequest }) => new Promise(
+const brand_accounts/update = ({ brandUnderscoreaccountUnderscoreid, businessUnderscorehierarchyUnderscoreid, brandAccountUpdate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        businessUnderscorehierarchyUnderscoreid,
         brandUnderscoreaccountUnderscoreid,
-        brandAccountsUpdateRequest,
+        businessUnderscorehierarchyUnderscoreid,
+        brandAccountUpdate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -54,15 +54,15 @@ const brand_accounts/update = ({ businessUnderscorehierarchyUnderscoreid, brandU
 * Terminate memberships between the specified members and your business.
 *
 * businessUnderscoreid String Business id
-* membersToDeleteBody MembersToDeleteBody List of members with role to delete.
-* returns DeletedMembersResponse
+* deleteBusinessMembershipBody DeleteBusinessMembershipBody 
+* returns delete_business_membership_200_response
 * */
-const delete_business_membership = ({ businessUnderscoreid, membersToDeleteBody }) => new Promise(
+const delete_business_membership = ({ businessUnderscoreid, deleteBusinessMembershipBody }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
-        membersToDeleteBody,
+        deleteBusinessMembershipBody,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -77,15 +77,15 @@ const delete_business_membership = ({ businessUnderscoreid, membersToDeleteBody 
 * Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
-* deletePartnersRequest DeletePartnersRequest An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
-* returns DeletePartnersResponse
+* deleteBusinessPartnersDelete DeleteBusinessPartnersDelete 
+* returns DeleteBusinessPartners
 * */
-const delete_business_partners = ({ businessUnderscoreid, deletePartnersRequest }) => new Promise(
+const delete_business_partners = ({ businessUnderscoreid, deleteBusinessPartnersDelete }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
-        deletePartnersRequest,
+        deleteBusinessPartnersDelete,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -99,16 +99,18 @@ const delete_business_partners = ({ businessUnderscoreid, deletePartnersRequest 
 * List business employers for user
 * Get all of the viewing user's business employers.
 *
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* assetsUnderscoresummary Boolean Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns get_business_employers_200_response
 * */
-const get/business_employers = ({ pageUnderscoresize, bookmark }) => new Promise(
+const get/business_employers = ({ assetsUnderscoresummary, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        pageUnderscoresize,
+        assetsUnderscoresummary,
         bookmark,
+        pageUnderscoresize,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -129,8 +131,8 @@ const get/business_employers = ({ pageUnderscoresize, bookmark }) => new Promise
 * memberUnderscoreids String A list of business members ids separated by comma. (optional)
 * startUnderscoreindex Integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* returns get_business_members_200_response
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* returns get_business_employers_200_response
 * */
 const get/business_members = ({ businessUnderscoreid, fetchUnderscoresystemUnderscoreusers, assetsUnderscoresummary, businessUnderscoreroles, memberUnderscoreids, startUnderscoreindex, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
@@ -159,14 +161,15 @@ const get/business_members = ({ businessUnderscoreid, fetchUnderscoresystemUnder
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
 * assetsUnderscoresummary Boolean Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
-* partnerUnderscoretype PartnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+* partnerUnderscoretype PartnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
 * partnerUnderscoreids String A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
 * startUnderscoreindex Integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* sortUnderscoreascending Boolean Sort ascending. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* returns get_business_partners_200_response
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* returns get_business_employers_200_response
 * */
-const get/business_partners = ({ businessUnderscoreid, assetsUnderscoresummary, partnerUnderscoretype, partnerUnderscoreids, startUnderscoreindex, pageUnderscoresize, bookmark }) => new Promise(
+const get/business_partners = ({ businessUnderscoreid, assetsUnderscoresummary, partnerUnderscoretype, partnerUnderscoreids, startUnderscoreindex, sortUnderscoreascending, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
@@ -175,8 +178,9 @@ const get/business_partners = ({ businessUnderscoreid, assetsUnderscoresummary, 
         partnerUnderscoretype,
         partnerUnderscoreids,
         startUnderscoreindex,
-        pageUnderscoresize,
+        sortUnderscoreascending,
         bookmark,
+        pageUnderscoresize,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -192,16 +196,16 @@ const get/business_partners = ({ businessUnderscoreid, assetsUnderscoresummary, 
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
 * systemUnderscoreuserUnderscoreid String Unique identifier of a system user.
-* systemUserUpdateRequest SystemUserUpdateRequest 
+* systemUserUpdateWithRequiredBody SystemUserUpdateWithRequiredBody 
 * no response value expected for this operation
 * */
-const system_user/update = ({ businessUnderscoreid, systemUnderscoreuserUnderscoreid, systemUserUpdateRequest }) => new Promise(
+const system_user/update = ({ businessUnderscoreid, systemUnderscoreuserUnderscoreid, systemUserUpdateWithRequiredBody }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
         systemUnderscoreuserUnderscoreid,
-        systemUserUpdateRequest,
+        systemUserUpdateWithRequiredBody,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -216,15 +220,15 @@ const system_user/update = ({ businessUnderscoreid, systemUnderscoreuserUndersco
 * Update a member's business role within the business.
 *
 * businessUnderscoreid String Business id
-* updateMemberBusinessRoleBody List List of objects with the member id and the business_role.
-* returns UpdateMemberResultsResponseArray
+* businessMembershipMember List 
+* returns UpdateBusinessMembershipsResponse
 * */
-const update/business_memberships = ({ businessUnderscoreid, updateMemberBusinessRoleBody }) => new Promise(
+const update/business_memberships = ({ businessUnderscoreid, businessMembershipMember }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
-        updateMemberBusinessRoleBody,
+        businessMembershipMember,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

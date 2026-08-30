@@ -23,7 +23,8 @@ typedef struct conversion_event_response_t {
     char *ad_account_id; // string
     pinterest_rest_api_conversion_tag_type__e conversion_event; //referenced enum
     char *conversion_tag_id; // string
-    int created_time; //numeric
+    int *created_time; //numeric
+    char *reporting_conversion_event; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } conversion_event_response_t;
@@ -32,7 +33,8 @@ __attribute__((deprecated)) conversion_event_response_t *conversion_event_respon
     char *ad_account_id,
     pinterest_rest_api_conversion_tag_type__e conversion_event,
     char *conversion_tag_id,
-    int created_time
+    int *created_time,
+    char *reporting_conversion_event
 );
 
 void conversion_event_response_free(conversion_event_response_t *conversion_event_response);

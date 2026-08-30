@@ -1,19 +1,22 @@
 package controllers;
 
-import apimodels.AdsCreditRedeemRequest;
-import apimodels.AdsCreditRedeemResponse;
+import apimodels.AdsCreditRedeem;
+import apimodels.AdsCreditRedeemCreate;
 import apimodels.AdsCreditsDiscountsGet200Response;
+import apimodels.BillingInvoiceDocumentType;
 import apimodels.BillingInvoiceDownloadResponse;
+import apimodels.BillingInvoiceSortField;
+import apimodels.BillingInvoiceStatus;
 import apimodels.BillingInvoicesGet200Response;
 import apimodels.BillingProfilesGet200Response;
-import apimodels.Error;
 import java.time.LocalDate;
-import apimodels.SSIOAccountResponse;
-import apimodels.SSIOCreateInsertionOrderRequest;
-import apimodels.SSIOCreateInsertionOrderResponse;
-import apimodels.SSIOEditInsertionOrderRequest;
-import apimodels.SSIOEditInsertionOrderResponse;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.SSIOAccount;
+import apimodels.SSIOInsertionOrder;
+import apimodels.SSIOInsertionOrderCreate;
 import apimodels.SSIOInsertionOrderStatusResponse;
+import apimodels.SSIOInsertionOrderUpdate;
 import apimodels.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import apimodels.SsioOrderLinesGetByAdAccount200Response;
 
@@ -26,12 +29,12 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BillingApiControllerImp extends BillingApiControllerImpInterface {
     @Override
-    public AdsCreditRedeemResponse adsCreditRedeem(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) throws Exception {
+    public AdsCreditRedeem adsCreditRedeem(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdsCreditRedeemCreate adsCreditRedeemCreate) throws Exception {
         //Do your magic!!!
-        return new AdsCreditRedeemResponse();
+        return new AdsCreditRedeem();
     }
 
     @Override
@@ -47,33 +50,33 @@ public class BillingApiControllerImp extends BillingApiControllerImpInterface {
     }
 
     @Override
-    public BillingInvoicesGet200Response billingInvoicesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String sort, String order, String status, String documentType,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate startDueDate,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate endDueDate) throws Exception {
+    public BillingInvoicesGet200Response billingInvoicesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, LocalDate startDueDate, LocalDate endDueDate) throws Exception {
         //Do your magic!!!
         return new BillingInvoicesGet200Response();
     }
 
     @Override
-    public BillingProfilesGet200Response billingProfilesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull Boolean isActive, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public BillingProfilesGet200Response billingProfilesGet(Http.Request request, @NotNull Boolean isActive,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new BillingProfilesGet200Response();
     }
 
     @Override
-    public SSIOAccountResponse ssioAccountsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public SSIOAccount ssioAccountsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
-        return new SSIOAccountResponse();
+        return new SSIOAccount();
     }
 
     @Override
-    public SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) throws Exception {
+    public SSIOInsertionOrder ssioInsertionOrderCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOInsertionOrderCreate ssIOInsertionOrderCreate) throws Exception {
         //Do your magic!!!
-        return new SSIOCreateInsertionOrderResponse();
+        return new SSIOInsertionOrder();
     }
 
     @Override
-    public SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) throws Exception {
+    public SSIOInsertionOrder ssioInsertionOrderEdit(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate) throws Exception {
         //Do your magic!!!
-        return new SSIOEditInsertionOrderResponse();
+        return new SSIOInsertionOrder();
     }
 
     @Override
@@ -89,7 +92,7 @@ public class BillingApiControllerImp extends BillingApiControllerImpInterface {
     }
 
     @Override
-    public SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String pinOrderId) throws Exception {
+    public SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String pinOrderId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new SsioOrderLinesGetByAdAccount200Response();
     }

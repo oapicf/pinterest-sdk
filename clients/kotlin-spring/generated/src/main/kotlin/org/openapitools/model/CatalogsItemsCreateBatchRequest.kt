@@ -4,9 +4,11 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.BatchOperation
 import org.openapitools.model.Country
 import org.openapitools.model.ItemCreateBatchRecord
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -28,25 +30,28 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsItemsCreateBatchRequest(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("country")
     @get:JsonProperty("country", required = true) val country: Country,
 
     @field:Valid
     @get:Size(min=1,max=1000) 
-    @Schema(example = "null", required = true, description = "Array with catalogs items")
+    @Schema(required = true, description = "Array with catalogs items")
+    @param:JsonProperty("items")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ItemCreateBatchRecord>,
 
-    @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
+    @Schema(required = true, description = "We recommend using the CatalogsLocale values.")
+    @param:JsonProperty("language")
     @get:JsonProperty("language", required = true) val language: CatalogsItemsCreateBatchRequest.Language,
 
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operation", required = true) val operation: BatchOperation
-) {
+    @Schema(required = true, description = "")
+    @param:JsonProperty("operation")
+    @get:JsonProperty("operation", required = true) override val operation: CatalogsItemsCreateBatchRequest.Operation = kotlin.String.CREATE
+) : CatalogsItemsBatchRequest {
 
     /**
     * We recommend using the CatalogsLocale values.
-    * Values: afMinusZA,arMinusSA,bgMinusBG,bnMinusIN,csMinusCZ,daMinusDK,de,elMinusGR,enMinusAU,enMinusCA,enMinusGB,enMinusIN,enMinusUS,esMinus419,esMinusAR,esMinusES,esMinusMX,fiMinusFI,fr,frMinusCA,heMinusIL,hiMinusIN,hrMinusHR,huMinusHU,idMinusID,`it`,ja,koMinusKR,msMinusMY,nbMinusNO,nl,plMinusPL,ptMinusBR,ptMinusPT,roMinusRO,ruMinusRU,skMinusSK,svMinusSE,teMinusIN,thMinusTH,tlMinusPH,tr,ukMinusUA,viMinusVN,zhMinusCN,zhMinusTW,AM,AR,AZ,BG,BN,BS,CA,CS,DA,DV,DZ,DE,EL,EN,ES,ET,FA,FI,FR,HE,HI,HR,HU,HY,ID,IN,IS,IT,IW,JA,KA,KM,KO,LO,LT,LV,MK,MN,MS,MY,NB,NE,NL,NO,PL,PT,RO,RU,SK,SL,SQ,SR,SV,TL,UK,VI,TE,TH,TR,XX,ZH
+    * Values: afMinusZA,arMinusSA,bgMinusBG,bnMinusIN,csMinusCZ,daMinusDK,de,elMinusGR,enMinusAU,enMinusCA,enMinusGB,enMinusIN,enMinusUS,esMinus419,esMinusAR,esMinusES,esMinusMX,fiMinusFI,fr,frMinusCA,heMinusIL,hiMinusIN,hrMinusHR,huMinusHU,idMinusID,`it`,ja,koMinusKR,msMinusMY,nbMinusNO,nl,plMinusPL,ptMinusBR,ptMinusPT,roMinusRO,ruMinusRU,skMinusSK,svMinusSE,teMinusIN,thMinusTH,tlMinusPH,tr,ukMinusUA,viMinusVN,zhMinusCN,zhMinusTW,AM,AR,AZ,BG,BN,BS,CA,CS,DA,DV,DZ,DE,EL,EN,ES,ET,FA,FI,FR,HE,HI,HR,HU,HY,ID,IN,IS,IT,IW,JA,KA,KM,KO,LO,LT,LV,MK,MN,MS,MY,NB,NE,NL,`false`,PL,PT,RO,RU,SK,SL,SQ,SR,SV,TL,UK,VI,TE,TH,TR,XX,ZH
     */
     enum class Language(@get:JsonValue val value: kotlin.String) {
 
@@ -139,7 +144,7 @@ data class CatalogsItemsCreateBatchRequest(
         NB("NB"),
         NE("NE"),
         NL("NL"),
-        NO("NO"),
+        `false`("false"),
         PL("PL"),
         PT("PT"),
         RO("RO"),
@@ -163,7 +168,25 @@ data class CatalogsItemsCreateBatchRequest(
             @JsonCreator
             fun forValue(value: kotlin.String): Language {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsItemsCreateBatchRequest'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Language'")
+            }
+        }
+    }
+
+    /**
+    * 
+    * Values: CREATE
+    */
+    enum class Operation(@get:JsonValue val value: kotlin.String) {
+
+        CREATE("CREATE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Operation {
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Operation'")
             }
         }
     }

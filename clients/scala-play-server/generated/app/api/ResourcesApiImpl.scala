@@ -1,42 +1,44 @@
 package api
 
-import model.AdAccountsCountryResponse
-import model.BookClosedResponse
-import model.DeliveryMetricsResponse
+import model.AdAccountCountriesGet200Response
+import model.BookClosed
+import model.DeliveryMetricsGet200Response
 import model.Error
 import model.JsObject
-import model.SingleInterestTargetingOptionResponse
+import model.PublicTargetingType
+import model.ReportType
+import model.SingleInterestTargetingOption
 
 /**
   * Provides a default implementation for [[ResourcesApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class ResourcesApiImpl extends ResourcesApi {
   /**
     * @inheritdoc
     */
-  override def adAccountCountriesGet(): AdAccountsCountryResponse = {
+  override def adAccountCountriesGet(): AdAccountCountriesGet200Response = {
     // TODO: Implement better logic
 
-    AdAccountsCountryResponse(None)
+    AdAccountCountriesGet200Response(List.empty[AdAccountsCountry])
   }
 
   /**
     * @inheritdoc
     */
-  override def deliveryMetricsGet(reportType: Option[String]): DeliveryMetricsResponse = {
+  override def deliveryMetricsGet(reportType: Option[ReportType]): DeliveryMetricsGet200Response = {
     // TODO: Implement better logic
 
-    DeliveryMetricsResponse(None)
+    DeliveryMetricsGet200Response(List.empty[DeliveryMetricsResponseItemsItems])
   }
 
   /**
     * @inheritdoc
     */
-  override def interestTargetingOptionsGet(interestId: String): SingleInterestTargetingOptionResponse = {
+  override def interestTargetingOptionsGet(interestId: String): SingleInterestTargetingOption = {
     // TODO: Implement better logic
 
-    SingleInterestTargetingOptionResponse(None, None, None, None)
+    SingleInterestTargetingOption(List.empty[String], "", 0, "")
   }
 
   /**
@@ -51,16 +53,16 @@ class ResourcesApiImpl extends ResourcesApi {
   /**
     * @inheritdoc
     */
-  override def metricsReadyStateGet(date: String): BookClosedResponse = {
+  override def metricsReadyStateGet(date: String): BookClosed = {
     // TODO: Implement better logic
 
-    BookClosedResponse(None, None)
+    BookClosed(false, false)
   }
 
   /**
     * @inheritdoc
     */
-  override def targetingOptionsGet(targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String], adAccountId: Option[String]): List[JsObject] = {
+  override def targetingOptionsGet(targetingType: PublicTargetingType, adAccountId: Option[String], clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String]): List[JsObject] = {
     // TODO: Implement better logic
 
     List.empty[JsObject]

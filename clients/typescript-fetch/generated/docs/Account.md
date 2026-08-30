@@ -1,13 +1,14 @@
 
 # Account
 
+User account model containing properties related to a user\'s account.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
 `about` | string
-`accountType` | string
+`accountType` | [UserAccountType](UserAccountType.md)
 `boardCount` | number
 `businessName` | string
 `followerCount` | number

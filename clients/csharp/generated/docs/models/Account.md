@@ -1,12 +1,13 @@
 # Org.OpenAPITools.Model.Account
+User account model containing properties related to a user's account.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **About** | **string** | Profile about description. | [optional] 
-**AccountType** | **string** | Type of account | [optional] 
-**BoardCount** | **int** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
+**AccountType** | **UserAccountType** | Type of account | [optional] 
+**BoardCount** | **int** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
 **BusinessName** | **string** |  | [optional] 
 **FollowerCount** | **int** | User account follower count. | [optional] [readonly] 
 **FollowingCount** | **int** | User account following count. | [optional] [readonly] 

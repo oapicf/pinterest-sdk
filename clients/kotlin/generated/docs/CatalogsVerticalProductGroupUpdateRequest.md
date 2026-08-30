@@ -9,7 +9,7 @@
 | **description** | **kotlin.String** |  |  [optional] |
 | **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional] |
 | **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  |  [optional] |
-| **name** | **kotlin.String** |  |  [optional] |
+| **name** | **kotlin.String** | Name of catalog product group |  [optional] |
 
 
 <a id="CatalogType"></a>

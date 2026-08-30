@@ -1,21 +1,19 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.BrandAccountsCreate200Response
-import org.openapitools.server.api.model.BrandAccountsCreateRequest
-import org.openapitools.server.api.model.BrandAccountsUpdateRequest
-import org.openapitools.server.api.model.DeletePartnersRequest
-import org.openapitools.server.api.model.DeletePartnersResponse
-import org.openapitools.server.api.model.DeletedMembersResponse
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.BrandAccount
+import org.openapitools.server.api.model.BrandAccountCreate
+import org.openapitools.server.api.model.BrandAccountUpdate
+import org.openapitools.server.api.model.BusinessMembershipMember
+import org.openapitools.server.api.model.DeleteBusinessMembership200Response
+import org.openapitools.server.api.model.DeleteBusinessMembershipBody
+import org.openapitools.server.api.model.DeleteBusinessPartners
+import org.openapitools.server.api.model.DeleteBusinessPartnersDelete
 import org.openapitools.server.api.model.GetBusinessEmployers200Response
-import org.openapitools.server.api.model.GetBusinessMembers200Response
-import org.openapitools.server.api.model.GetBusinessPartners200Response
 import org.openapitools.server.api.model.MemberBusinessRole
-import org.openapitools.server.api.model.MembersToDeleteBody
 import org.openapitools.server.api.model.PartnerType
-import org.openapitools.server.api.model.SystemUserUpdateRequest
-import org.openapitools.server.api.model.UpdateMemberBusinessRoleBody
-import org.openapitools.server.api.model.UpdateMemberResultsResponseArray
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.SystemUserUpdateWithRequiredBody
+import org.openapitools.server.api.model.UpdateBusinessMembershipsResponse
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -34,31 +32,31 @@ interface BusinessAccessRelationshipsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* brandAccountsCreate
      * Create a Brand Account */
-    suspend fun brandAccountsCreate(businessHierarchyId:kotlin.String?,brandAccountsCreateRequest:BrandAccountsCreateRequest?,context:OperationRequest):Response<BrandAccountsCreate200Response>
+    suspend fun brandAccountsCreate(businessHierarchyId:kotlin.String?,brandAccountCreate:BrandAccountCreate?,context:OperationRequest):Response<BrandAccount>
     /* brandAccountsUpdate
      * Update a Brand Account */
-    suspend fun brandAccountsUpdate(businessHierarchyId:kotlin.String?,brandAccountId:kotlin.String?,brandAccountsUpdateRequest:BrandAccountsUpdateRequest?,context:OperationRequest):Response<BrandAccountsCreate200Response>
+    suspend fun brandAccountsUpdate(brandAccountId:kotlin.String?,businessHierarchyId:kotlin.String?,brandAccountUpdate:BrandAccountUpdate?,context:OperationRequest):Response<BrandAccount>
     /* deleteBusinessMembership
      * Terminate business memberships */
-    suspend fun deleteBusinessMembership(businessId:kotlin.String?,membersToDeleteBody:MembersToDeleteBody?,context:OperationRequest):Response<DeletedMembersResponse>
+    suspend fun deleteBusinessMembership(businessId:kotlin.String?,deleteBusinessMembershipBody:DeleteBusinessMembershipBody?,context:OperationRequest):Response<DeleteBusinessMembership200Response>
     /* deleteBusinessPartners
      * Terminate business partnerships */
-    suspend fun deleteBusinessPartners(businessId:kotlin.String?,deletePartnersRequest:DeletePartnersRequest?,context:OperationRequest):Response<DeletePartnersResponse>
+    suspend fun deleteBusinessPartners(businessId:kotlin.String?,deleteBusinessPartnersDelete:DeleteBusinessPartnersDelete?,context:OperationRequest):Response<DeleteBusinessPartners>
     /* getBusinessEmployers
      * List business employers for user */
-    suspend fun getBusinessEmployers(pageSize:kotlin.Int?,bookmark:kotlin.String?,context:OperationRequest):Response<GetBusinessEmployers200Response>
+    suspend fun getBusinessEmployers(assetsSummary:kotlin.Boolean?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<GetBusinessEmployers200Response>
     /* getBusinessMembers
      * Get business members */
-    suspend fun getBusinessMembers(businessId:kotlin.String?,fetchSystemUsers:kotlin.Boolean?,assetsSummary:kotlin.Boolean?,businessRoles:kotlin.Array<MemberBusinessRole>?,memberIds:kotlin.String?,startIndex:kotlin.Int?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<GetBusinessMembers200Response>
+    suspend fun getBusinessMembers(businessId:kotlin.String?,fetchSystemUsers:kotlin.Boolean?,assetsSummary:kotlin.Boolean?,businessRoles:kotlin.Array<MemberBusinessRole>?,memberIds:kotlin.String?,startIndex:kotlin.Int?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<GetBusinessEmployers200Response>
     /* getBusinessPartners
      * Get business partners */
-    suspend fun getBusinessPartners(businessId:kotlin.String?,assetsSummary:kotlin.Boolean?,partnerType:PartnerType?,partnerIds:kotlin.String?,startIndex:kotlin.Int?,pageSize:kotlin.Int?,bookmark:kotlin.String?,context:OperationRequest):Response<GetBusinessPartners200Response>
+    suspend fun getBusinessPartners(businessId:kotlin.String?,assetsSummary:kotlin.Boolean?,partnerType:PartnerType?,partnerIds:kotlin.String?,startIndex:kotlin.Int?,sortAscending:kotlin.Boolean?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<GetBusinessEmployers200Response>
     /* systemUserUpdate
      * Update a system user information. */
-    suspend fun systemUserUpdate(businessId:kotlin.String?,systemUserId:kotlin.String?,systemUserUpdateRequest:SystemUserUpdateRequest?,context:OperationRequest):Response<Void>
+    suspend fun systemUserUpdate(businessId:kotlin.String?,systemUserId:kotlin.String?,systemUserUpdateWithRequiredBody:SystemUserUpdateWithRequiredBody?,context:OperationRequest):Response<Void>
     /* updateBusinessMemberships
      * Update member&#39;s business role */
-    suspend fun updateBusinessMemberships(businessId:kotlin.String?,updateMemberBusinessRoleBody:kotlin.Array<UpdateMemberBusinessRoleBody>?,context:OperationRequest):Response<UpdateMemberResultsResponseArray>
+    suspend fun updateBusinessMemberships(businessId:kotlin.String?,businessMembershipMember:kotlin.Array<BusinessMembershipMember>?,context:OperationRequest):Response<UpdateBusinessMembershipsResponse>
     companion object {
         const val address = "BusinessAccessRelationshipsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

@@ -1,20 +1,22 @@
 
 # AdPreviewShopping
 
+Ad preview from a catalog product group (shopping).
 
 ## Properties
 
 Name | Type
 ------------ | -------------
 `catalogProductGroupId` | string
-`creativeType` | string
+`creativeType` | [AdShoppingPreviewCreativeType](AdShoppingPreviewCreativeType.md)
 `customizableCtaType` | [CustomizableCTAType](CustomizableCTAType.md)
 `heroImageTitle` | string
 `heroImageUrl` | string
 `heroPinId` | string
 `imageTag` | string
 `itemId` | string
-`preferredMediaType` | string
+`preferredMediaType` | [BasePreferredMediaType](BasePreferredMediaType.md)
+`showPromotion` | boolean
 `videoTag` | string
 
 ## Example
@@ -33,6 +35,7 @@ const example = {
   "imageTag": Christmas Sale,
   "itemId": 111111111,
   "preferredMediaType": IMAGE,
+  "showPromotion": null,
   "videoTag": Black Friday Sale,
 } satisfies AdPreviewShopping
 

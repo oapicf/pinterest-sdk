@@ -5,29 +5,144 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // CampaignBidOptionsUpdate - Object describing an update to the campaign level bid multipliers.
 type CampaignBidOptionsUpdate struct {
 
+	// Age bucket multipliers for bid adjustments.
+	AgeBucketMultipliers *AgeBucketMultipliers `json:"age_bucket_multipliers,omitempty"`
+
+	// App type multipliers for bid adjustments.
 	AppTypeMultipliers *AppTypeMultipliers `json:"app_type_multipliers,omitempty"`
 
+	// Audience multipliers for bid adjustments.
 	AudienceMultipliers CampaignAudienceMultipliers `json:"audience_multipliers,omitempty"`
 
+	// The time window for frequency bid multipliers.
+	FreqBidMultiplierTimeWindow *FreqBidMultiplierTimeWindow `json:"freq_bid_multiplier_time_window,omitempty"`
+
+	// Frequency multipliers for bid adjustments.
+	FrequencyMultipliers *FrequencyMultipliers `json:"frequency_multipliers,omitempty"`
+
+	// Gender multipliers for bid adjustments.
+	GenderMultipliers *GenderMultipliers `json:"gender_multipliers,omitempty"`
+
+	// Placement multipliers for bid adjustments.
 	PlacementMultipliers *PlacementMultipliers `json:"placement_multipliers,omitempty"`
 
-	// List of fields to update, only the fields in the list will be updated.
-	UpdateMask []string `json:"update_mask"`
+	// List of fields to update. Only the fields in the list will be updated.
+	UpdateMask []CampaignBidOptionsUpdateMaskItems `json:"update_mask"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into CampaignBidOptionsUpdate
+func (o *CampaignBidOptionsUpdate) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"update_mask",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"update_mask": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"age_bucket_multipliers": {},
+		"app_type_multipliers": {},
+		"audience_multipliers": {},
+		"freq_bid_multiplier_time_window": {},
+		"frequency_multipliers": {},
+		"gender_multipliers": {},
+		"placement_multipliers": {},
+		"update_mask": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CampaignBidOptionsUpdate
+
+	if value, exists := allProperties["age_bucket_multipliers"]; exists {
+		if err = json.Unmarshal(value, &decoded.AgeBucketMultipliers); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["app_type_multipliers"]; exists {
+		if err = json.Unmarshal(value, &decoded.AppTypeMultipliers); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["audience_multipliers"]; exists {
+		if err = json.Unmarshal(value, &decoded.AudienceMultipliers); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["freq_bid_multiplier_time_window"]; exists {
+		if err = json.Unmarshal(value, &decoded.FreqBidMultiplierTimeWindow); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["frequency_multipliers"]; exists {
+		if err = json.Unmarshal(value, &decoded.FrequencyMultipliers); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["gender_multipliers"]; exists {
+		if err = json.Unmarshal(value, &decoded.GenderMultipliers); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["placement_multipliers"]; exists {
+		if err = json.Unmarshal(value, &decoded.PlacementMultipliers); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["update_mask"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdateMask); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertCampaignBidOptionsUpdateRequired checks if the required fields are not zero-ed
+// AssertCampaignBidOptionsUpdateRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCampaignBidOptionsUpdateRequired(obj CampaignBidOptionsUpdate) error {
 	elements := map[string]interface{}{
 		"update_mask": obj.UpdateMask,

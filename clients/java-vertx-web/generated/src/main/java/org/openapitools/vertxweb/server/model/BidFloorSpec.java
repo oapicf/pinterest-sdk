@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.vertxweb.server.model.ActionType;
+import org.openapitools.vertxweb.server.model.BidFloorObjectiveType;
 import org.openapitools.vertxweb.server.model.Country;
 import org.openapitools.vertxweb.server.model.CreativeType;
 import org.openapitools.vertxweb.server.model.Currency;
-import org.openapitools.vertxweb.server.model.ObjectiveType;
 import org.openapitools.vertxweb.server.model.OptimizationGoalMetadata;
 
+/**
+ * Bid floor specification for a given campaign configuration.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BidFloorSpec   {
   
@@ -21,14 +24,14 @@ public class BidFloorSpec   {
   private List<Country> countries = new ArrayList<>();
   private CreativeType creativeType;
   private Currency currency;
-  private ObjectiveType objectiveType;
+  private BidFloorObjectiveType objectiveType;
   private OptimizationGoalMetadata optimizationGoalMetadata;
 
   public BidFloorSpec () {
 
   }
 
-  public BidFloorSpec (ActionType billableEvent, List<Country> countries, CreativeType creativeType, Currency currency, ObjectiveType objectiveType, OptimizationGoalMetadata optimizationGoalMetadata) {
+  public BidFloorSpec (ActionType billableEvent, List<Country> countries, CreativeType creativeType, Currency currency, BidFloorObjectiveType objectiveType, OptimizationGoalMetadata optimizationGoalMetadata) {
     this.billableEvent = billableEvent;
     this.countries = countries;
     this.creativeType = creativeType;
@@ -75,10 +78,10 @@ public class BidFloorSpec   {
 
     
   @JsonProperty("objective_type")
-  public ObjectiveType getObjectiveType() {
+  public BidFloorObjectiveType getObjectiveType() {
     return objectiveType;
   }
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
@@ -134,9 +137,6 @@ public class BidFloorSpec   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

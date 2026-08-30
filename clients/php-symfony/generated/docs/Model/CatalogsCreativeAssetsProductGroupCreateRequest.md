@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
+**catalogId** | **string** | Catalog ID pertaining to the product group. | 
 **catalogType** | **string** |  | 
 **description** | **string** |  | [optional] 
 **filters** | [**OpenAPI\Server\Model\CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 

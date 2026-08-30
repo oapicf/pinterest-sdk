@@ -307,6 +307,26 @@ static bool catalogsCreateProcessor(MemoryStruct_s p_chunk, long code, char* err
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -327,7 +347,7 @@ static bool catalogsCreateProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool catalogsCreateHelper(char * accessToken,
-	std::shared_ptr<CatalogsCreateRequest> catalogsCreateRequest, std::string adAccountId, 
+	std::shared_ptr<CatalogCreate> catalogCreate, std::string adAccountId, 
 	void(* handler)(Catalog, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -355,11 +375,11 @@ static bool catalogsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("CatalogsCreateRequest")) {
-		node = converttoJson(&catalogsCreateRequest, "CatalogsCreateRequest", "");
+	if (isprimitive("CatalogCreate")) {
+		node = converttoJson(&catalogCreate, "CatalogCreate", "");
 	}
 	
-	char *jsonStr =  catalogsCreateRequest.toJson();
+	char *jsonStr =  catalogCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -418,22 +438,22 @@ static bool catalogsCreateHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsCreateAsync(char * accessToken,
-	std::shared_ptr<CatalogsCreateRequest> catalogsCreateRequest, std::string adAccountId, 
+	std::shared_ptr<CatalogCreate> catalogCreate, std::string adAccountId, 
 	void(* handler)(Catalog, Error, void* )
 	, void* userData)
 {
 	return catalogsCreateHelper(accessToken,
-	catalogsCreateRequest, adAccountId, 
+	catalogCreate, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsCreateSync(char * accessToken,
-	std::shared_ptr<CatalogsCreateRequest> catalogsCreateRequest, std::string adAccountId, 
+	std::shared_ptr<CatalogCreate> catalogCreate, std::string adAccountId, 
 	void(* handler)(Catalog, Error, void* )
 	, void* userData)
 {
 	return catalogsCreateHelper(accessToken,
-	catalogsCreateRequest, adAccountId, 
+	catalogCreate, adAccountId, 
 	handler, userData, false);
 }
 
@@ -488,6 +508,21 @@ static bool catalogsListProcessor(MemoryStruct_s p_chunk, long code, char* error
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -508,7 +543,7 @@ static bool catalogsListProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool catalogsListHelper(char * accessToken,
-	std::string bookmark, int pageSize, std::string adAccountId, 
+	std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Catalogs_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -526,6 +561,13 @@ static bool catalogsListHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
@@ -537,13 +579,6 @@ static bool catalogsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&adAccountId, "std::string");
-	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -600,22 +635,22 @@ static bool catalogsListHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsListAsync(char * accessToken,
-	std::string bookmark, int pageSize, std::string adAccountId, 
+	std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Catalogs_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsListHelper(accessToken,
-	bookmark, pageSize, adAccountId, 
+	adAccountId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsListSync(char * accessToken,
-	std::string bookmark, int pageSize, std::string adAccountId, 
+	std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Catalogs_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsListHelper(accessToken,
-	bookmark, pageSize, adAccountId, 
+	adAccountId, bookmark, pageSize, 
 	handler, userData, false);
 }
 

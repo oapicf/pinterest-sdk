@@ -123,7 +123,7 @@ PinMediaSourceImagesURL::getIndex()
 }
 
 void
-PinMediaSourceImagesURL::setIndex(int  index)
+PinMediaSourceImagesURL::setIndex(int index)
 {
 	this->index = index;
 }
@@ -135,7 +135,7 @@ PinMediaSourceImagesURL::getItems()
 }
 
 void
-PinMediaSourceImagesURL::setItems(std::list <PinMediaSourceImagesURLItem> items)
+PinMediaSourceImagesURL::setItems(std::list<PinMediaSourceImagesURLItem> items)
 {
 	this->items = items;
 }
@@ -147,7 +147,7 @@ PinMediaSourceImagesURL::getSourceType()
 }
 
 void
-PinMediaSourceImagesURL::setSourceType(std::string  source_type)
+PinMediaSourceImagesURL::setSourceType(std::string source_type)
 {
 	this->source_type = source_type;
 }

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **oauth_conversion_token**
-> ConversionAccessTokenResponse oauth_conversion_token()
+> ConversionAccessToken oauth_conversion_token()
 
 Generate OAuth access token for conversion API
 
@@ -22,7 +22,7 @@ Generate a new and long-lived OAuth access token dedicated for sending conversio
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.conversion_access_token_response import ConversionAccessTokenResponse
+from pinterestsdk.models.conversion_access_token import ConversionAccessToken
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -61,7 +61,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ConversionAccessTokenResponse**](ConversionAccessTokenResponse.md)
+[**ConversionAccessToken**](ConversionAccessToken.md)
 
 ### Authorization
 
@@ -76,25 +76,31 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | response |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **oauth_token**
-> OauthAccessTokenResponse oauth_token(grant_type)
+> OauthAccessToken oauth_token(grant_type, code=code, continuous_refresh=continuous_refresh, redirect_uri=redirect_uri, refresh_token=refresh_token, scope=scope)
 
 Generate OAuth access token
 
 Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.
 
-Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.
+Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).
 
-<strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).
+**Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).
 
 Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.
 
-Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token.
+
 
 ### Example
 
@@ -102,7 +108,8 @@ Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugge
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.oauth_access_token_response import OauthAccessTokenResponse
+from pinterestsdk.models.oauth_access_token import OauthAccessToken
+from pinterestsdk.models.token_grant_type import TokenGrantType
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -127,11 +134,16 @@ configuration = pinterestsdk.Configuration(
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.OauthApi(api_client)
-    grant_type = 'grant_type_example' # str | 
+    grant_type = pinterestsdk.TokenGrantType() # TokenGrantType | 
+    code = 'code_example' # str |  (optional)
+    continuous_refresh = 'continuous_refresh_example' # str |   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. (optional)
+    redirect_uri = 'redirect_uri_example' # str |  (optional)
+    refresh_token = 'refresh_token_example' # str |  (optional)
+    scope = 'scope_example' # str |  (optional)
 
     try:
         # Generate OAuth access token
-        api_response = api_instance.oauth_token(grant_type)
+        api_response = api_instance.oauth_token(grant_type, code=code, continuous_refresh=continuous_refresh, redirect_uri=redirect_uri, refresh_token=refresh_token, scope=scope)
         print("The response of OauthApi->oauth_token:\n")
         pprint(api_response)
     except Exception as e:
@@ -145,11 +157,16 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **grant_type** | **str**|  | 
+ **grant_type** | [**TokenGrantType**](TokenGrantType.md)|  | 
+ **code** | **str**|  | [optional] 
+ **continuous_refresh** | **str**|   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | [optional] 
+ **redirect_uri** | **str**|  | [optional] 
+ **refresh_token** | **str**|  | [optional] 
+ **scope** | **str**|  | [optional] 
 
 ### Return type
 
-[**OauthAccessTokenResponse**](OauthAccessTokenResponse.md)
+[**OauthAccessToken**](OauthAccessToken.md)
 
 ### Authorization
 
@@ -164,8 +181,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | response |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -207,7 +230,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.OauthApi(api_client)
     token = 'token_example' # str | The token to revoke.
-    token_type_hint = 'token_type_hint_example' # str | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional)
+    token_type_hint = pinterestsdk.TokenTypeHint() # TokenTypeHint | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional)
 
     try:
         # Revoke a token
@@ -224,7 +247,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **str**| The token to revoke. | 
- **token_type_hint** | **str**| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] 
+ **token_type_hint** | [**TokenTypeHint**](TokenTypeHint.md)| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] 
 
 ### Return type
 
@@ -243,10 +266,10 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful token revocation. No content is returned. |  -  |
-**401** | Client authentication error. |  -  |
-**403** | Client is not allowed to revoke token. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

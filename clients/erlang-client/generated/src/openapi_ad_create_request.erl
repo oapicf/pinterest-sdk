@@ -18,15 +18,16 @@
        'disclosure_url' => binary(),
        'grid_click_type' => openapi_grid_click_type:openapi_grid_click_type(),
        'ios_deep_link' => binary(),
+       'is_carting' => boolean(),
        'is_pin_deleted' => boolean(),
        'is_removable' => boolean(),
        'lead_form_id' => binary(),
        'name' => binary(),
-       'quiz_pin_data' => openapi_quiz_pin_data:openapi_quiz_pin_data(),
+       'pin_id' := binary(),
+       'quiz_pin_data' => maps:map(),
        'status' => openapi_entity_status:openapi_entity_status(),
-       'tracking_urls' => openapi_tracking_urls:openapi_tracking_urls(),
-       'view_tracking_url' => binary(),
-       'pin_id' := binary()
+       'tracking_urls' => maps:map(),
+       'view_tracking_url' => binary()
      }.
 
 encode(#{ 'ad_group_id' := AdGroupId,
@@ -42,15 +43,16 @@ encode(#{ 'ad_group_id' := AdGroupId,
           'disclosure_url' := DisclosureUrl,
           'grid_click_type' := GridClickType,
           'ios_deep_link' := IosDeepLink,
+          'is_carting' := IsCarting,
           'is_pin_deleted' := IsPinDeleted,
           'is_removable' := IsRemovable,
           'lead_form_id' := LeadFormId,
           'name' := Name,
+          'pin_id' := PinId,
           'quiz_pin_data' := QuizPinData,
           'status' := Status,
           'tracking_urls' := TrackingUrls,
-          'view_tracking_url' := ViewTrackingUrl,
-          'pin_id' := PinId
+          'view_tracking_url' := ViewTrackingUrl
         }) ->
     #{ 'ad_group_id' => AdGroupId,
        'android_deep_link' => AndroidDeepLink,
@@ -65,13 +67,14 @@ encode(#{ 'ad_group_id' := AdGroupId,
        'disclosure_url' => DisclosureUrl,
        'grid_click_type' => GridClickType,
        'ios_deep_link' => IosDeepLink,
+       'is_carting' => IsCarting,
        'is_pin_deleted' => IsPinDeleted,
        'is_removable' => IsRemovable,
        'lead_form_id' => LeadFormId,
        'name' => Name,
+       'pin_id' => PinId,
        'quiz_pin_data' => QuizPinData,
        'status' => Status,
        'tracking_urls' => TrackingUrls,
-       'view_tracking_url' => ViewTrackingUrl,
-       'pin_id' => PinId
+       'view_tracking_url' => ViewTrackingUrl
      }.

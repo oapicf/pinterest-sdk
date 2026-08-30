@@ -7,13 +7,13 @@
 #' @title UserBusinessRoleBinding
 #' @description UserBusinessRoleBinding Class
 #' @format An \code{R6Class} generator object
-#' @field assets_summary  \link{BusinessMemberAssetsSummary} [optional]
+#' @field assets_summary Ad accounts and profiles the business member/partner has access to. \link{BusinessMemberAssetsSummary} [optional]
 #' @field business_roles The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. list(character) [optional]
 #' @field created_by_business Metadata for the business that created the business relationship. \link{BusinessAccessUserSummary} [optional]
 #' @field created_by_user Metadata for the user that created the business relationship. \link{BusinessAccessUserSummary} [optional]
 #' @field created_time The time the business relationship was created. Returned in milliseconds. integer [optional]
 #' @field id Unique identifier of the business member/business partner/employer. character [optional]
-#' @field is_shared_partner This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to. character [optional]
+#' @field is_shared_partner This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to. character [optional]
 #' @field user Metadata for the business member/business partner/employer. \link{BusinessAccessUserSummary} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -33,13 +33,13 @@ UserBusinessRoleBinding <- R6::R6Class(
     #' @description
     #' Initialize a new UserBusinessRoleBinding class.
     #'
-    #' @param assets_summary assets_summary
+    #' @param assets_summary Ad accounts and profiles the business member/partner has access to.
     #' @param business_roles The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
     #' @param created_by_business Metadata for the business that created the business relationship.
     #' @param created_by_user Metadata for the user that created the business relationship.
     #' @param created_time The time the business relationship was created. Returned in milliseconds.
     #' @param id Unique identifier of the business member/business partner/employer.
-    #' @param is_shared_partner This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+    #' @param is_shared_partner This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
     #' @param user Metadata for the business member/business partner/employer.
     #' @param ... Other optional arguments.
     initialize = function(`assets_summary` = NULL, `business_roles` = NULL, `created_by_business` = NULL, `created_by_user` = NULL, `created_time` = NULL, `id` = NULL, `is_shared_partner` = NULL, `user` = NULL, ...) {
@@ -117,7 +117,7 @@ UserBusinessRoleBinding <- R6::R6Class(
       UserBusinessRoleBindingObject <- list()
       if (!is.null(self$`assets_summary`)) {
         UserBusinessRoleBindingObject[["assets_summary"]] <-
-          self$`assets_summary`$toSimpleType()
+          self$extractSimpleType(self$`assets_summary`)
       }
       if (!is.null(self$`business_roles`)) {
         UserBusinessRoleBindingObject[["business_roles"]] <-
@@ -125,11 +125,11 @@ UserBusinessRoleBinding <- R6::R6Class(
       }
       if (!is.null(self$`created_by_business`)) {
         UserBusinessRoleBindingObject[["created_by_business"]] <-
-          self$`created_by_business`$toSimpleType()
+          self$extractSimpleType(self$`created_by_business`)
       }
       if (!is.null(self$`created_by_user`)) {
         UserBusinessRoleBindingObject[["created_by_user"]] <-
-          self$`created_by_user`$toSimpleType()
+          self$extractSimpleType(self$`created_by_user`)
       }
       if (!is.null(self$`created_time`)) {
         UserBusinessRoleBindingObject[["created_time"]] <-
@@ -145,9 +145,32 @@ UserBusinessRoleBinding <- R6::R6Class(
       }
       if (!is.null(self$`user`)) {
         UserBusinessRoleBindingObject[["user"]] <-
-          self$`user`$toSimpleType()
+          self$extractSimpleType(self$`user`)
       }
       return(UserBusinessRoleBindingObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

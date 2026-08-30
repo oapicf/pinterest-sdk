@@ -3,9 +3,9 @@ package controllers;
 import apimodels.CatalogsCreateReportResponse;
 import apimodels.CatalogsReport;
 import apimodels.CatalogsReportParameters;
-import apimodels.Error;
+import apimodels.CatalogsReportStatsParameters;
+import apimodels.PinterestLibError;
 import apimodels.ReportsStats200Response;
-import apimodels.ReportsStatsParametersParameter;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -29,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogReportsApiController extends Controller {
     private final CatalogReportsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -92,12 +92,12 @@ public class CatalogReportsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
+        String valueparameters = request.getQueryString("parameters");
+        CatalogsReportStatsParameters parameters;
+        if (valueparameters != null) {
+            parameters = valueparameters;
         } else {
-            pageSize = 25;
+            throw new IllegalArgumentException("'parameters' parameter is required");
         }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
@@ -106,14 +106,14 @@ public class CatalogReportsApiController extends Controller {
         } else {
             bookmark = null;
         }
-        String valueparameters = request.getQueryString("parameters");
-        ReportsStatsParametersParameter parameters;
-        if (valueparameters != null) {
-            parameters = valueparameters;
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
         } else {
-            throw new IllegalArgumentException("'parameters' parameter is required");
+            pageSize = 25;
         }
-        return imp.reportsStatsHttp(request, parameters, adAccountId, pageSize, bookmark);
+        return imp.reportsStatsHttp(request, parameters, adAccountId, bookmark, pageSize);
     }
 
 }

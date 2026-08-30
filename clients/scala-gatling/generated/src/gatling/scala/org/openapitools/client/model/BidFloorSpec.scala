@@ -3,11 +3,17 @@ package org.openapitools.client.model
 
 
 case class BidFloorSpec (
+    /* Ad group billable event type. */
     _billableEvent: ActionType,
+    /* List of ISO 3166-1 alpha-2 country codes. */
     _countries: Option[List[Country]],
+    /* Creative type for the bid floor request. */
     _creativeType: Option[CreativeType],
+    /* Currency for the bid floor value. */
     _currency: Currency,
-    _objectiveType: Option[ObjectiveType],
+    /* Campaign objective type. */
+    _objectiveType: Option[BidFloorObjectiveType],
+    /* Optimization goal metadata. */
     _optimizationGoalMetadata: Option[OptimizationGoalMetadata]
 )
 object BidFloorSpec {

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,25 +17,26 @@ package openapi
 type BillingProfilesResponse struct {
 
 	// Advertiser ID of the billing.
-	AdvertiserId string `json:"advertiser_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdvertiserId string `json:"advertiser_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Billing type of the advertiser
-	BillingType string `json:"billing_type,omitempty"`
+	BillingType BillingType `json:"billing_type,omitempty"`
 
 	// Type of the card.
-	CardType string `json:"card_type,omitempty"`
+	CardType BillingProfileCardType `json:"card_type,omitempty"`
 
 	// Billing ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Brand of the payment method.
-	PaymentMethodBrand string `json:"payment_method_brand,omitempty"`
+	PaymentMethodBrand BillingProfilePaymentMethodBrand `json:"payment_method_brand,omitempty"`
 
 	// Status of the billing.
-	Status string `json:"status,omitempty"`
+	Status BillingProfileStatus `json:"status,omitempty"`
 }
 
-// AssertBillingProfilesResponseRequired checks if the required fields are not zero-ed
+// AssertBillingProfilesResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertBillingProfilesResponseRequired(obj BillingProfilesResponse) error {
 	return nil
 }

@@ -8,42 +8,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.vertxweb.server.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.vertxweb.server.model.TopPinsAnalyticsResponsePinsInner;
+import org.openapitools.vertxweb.server.model.TopPinsAnalyticsResponsePinsItems;
+import org.openapitools.vertxweb.server.model.TopPinsSortBy;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TopPinsAnalyticsResponse   {
   
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
-  private List<TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
-
-
-  public enum SortByEnum {
-    ENGAGEMENT("ENGAGEMENT"),
-    SAVE("SAVE"),
-    IMPRESSION("IMPRESSION"),
-    OUTBOUND_CLICK("OUTBOUND_CLICK"),
-    PIN_CLICK("PIN_CLICK");
-
-    private String value;
-
-    SortByEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private SortByEnum sortBy;
+  private List<TopPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
+  private TopPinsSortBy sortBy;
 
   public TopPinsAnalyticsResponse () {
 
   }
 
-  public TopPinsAnalyticsResponse (TopPinsAnalyticsResponseDateAvailability dateAvailability, List<TopPinsAnalyticsResponsePinsInner> pins, SortByEnum sortBy) {
+  public TopPinsAnalyticsResponse (TopPinsAnalyticsResponseDateAvailability dateAvailability, List<TopPinsAnalyticsResponsePinsItems> pins, TopPinsSortBy sortBy) {
     this.dateAvailability = dateAvailability;
     this.pins = pins;
     this.sortBy = sortBy;
@@ -60,19 +39,19 @@ public class TopPinsAnalyticsResponse   {
 
     
   @JsonProperty("pins")
-  public List<TopPinsAnalyticsResponsePinsInner> getPins() {
+  public List<TopPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
-  public void setPins(List<TopPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(List<TopPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
     
   @JsonProperty("sort_by")
-  public SortByEnum getSortBy() {
+  public TopPinsSortBy getSortBy() {
     return sortBy;
   }
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(TopPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -113,9 +92,6 @@ public class TopPinsAnalyticsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

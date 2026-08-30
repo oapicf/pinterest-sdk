@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CancelInviteResultUser"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CancelInviteResultUser"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CancelInviteResultUser {
+    title = CancelInviteResultUser
+    description = CancelInviteResultUser
+    derivedFrom = Root
+    properties {
+        email {
+          type =  string
+          description = "Email of the business member/partner."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Unique identifier of the business member/partner."
+          optional = false
+        }
+        username {
+          type =  string
+          description = "Username of the business member/partner."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CancelInviteResultUser {
+    title = CancelInviteResultUser
+    description = CancelInviteResultUser
+    implements = openapi_server.resourceTypes.CancelInviteResultUser
+
+  }
+}

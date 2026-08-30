@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -17,37 +18,39 @@ import org.openapitools.model.ProductCategoryEnum;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Product category details
  */
 
 @Schema(name = "ProductCategoryDetails", description = "Product category details")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ProductCategoryDetails {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ProductCategoriesDemographic demographics;
 
   private Boolean hasPrediction;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ProductCategoriesMetricsHighlights metricsHighlights;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, BigDecimal> predictedTimeSeries = new HashMap<>();
 
   private ProductCategoryEnum productCategory;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> relatedSearches = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, BigDecimal> timeSeries = new HashMap<>();
 
   public ProductCategoryDetails() {
@@ -78,6 +81,7 @@ public class ProductCategoryDetails {
     return demographics;
   }
 
+  @JsonProperty("demographics")
   public void setDemographics(@Nullable ProductCategoriesDemographic demographics) {
     this.demographics = demographics;
   }
@@ -88,16 +92,17 @@ public class ProductCategoryDetails {
   }
 
   /**
-   *      Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.
+   *     Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.
    * @return hasPrediction
    */
   @NotNull 
-  @Schema(name = "has_prediction", description = "     Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "has_prediction", description = "    Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("has_prediction")
   public Boolean getHasPrediction() {
     return hasPrediction;
   }
 
+  @JsonProperty("has_prediction")
   public void setHasPrediction(Boolean hasPrediction) {
     this.hasPrediction = hasPrediction;
   }
@@ -118,6 +123,7 @@ public class ProductCategoryDetails {
     return metricsHighlights;
   }
 
+  @JsonProperty("metrics_highlights")
   public void setMetricsHighlights(@Nullable ProductCategoriesMetricsHighlights metricsHighlights) {
     this.metricsHighlights = metricsHighlights;
   }
@@ -136,16 +142,17 @@ public class ProductCategoryDetails {
   }
 
   /**
-   *      A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.
+   *     A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.
    * @return predictedTimeSeries
    */
   @Valid 
-  @Schema(name = "predicted_time_series", description = "     A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "predicted_time_series", description = "    A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("predicted_time_series")
   public Map<String, BigDecimal> getPredictedTimeSeries() {
     return predictedTimeSeries;
   }
 
+  @JsonProperty("predicted_time_series")
   public void setPredictedTimeSeries(Map<String, BigDecimal> predictedTimeSeries) {
     this.predictedTimeSeries = predictedTimeSeries;
   }
@@ -166,6 +173,7 @@ public class ProductCategoryDetails {
     return productCategory;
   }
 
+  @JsonProperty("product_category")
   public void setProductCategory(ProductCategoryEnum productCategory) {
     this.productCategory = productCategory;
   }
@@ -194,6 +202,7 @@ public class ProductCategoryDetails {
     return relatedSearches;
   }
 
+  @JsonProperty("related_searches")
   public void setRelatedSearches(List<String> relatedSearches) {
     this.relatedSearches = relatedSearches;
   }
@@ -222,6 +231,7 @@ public class ProductCategoryDetails {
     return timeSeries;
   }
 
+  @JsonProperty("time_series")
   public void setTimeSeries(Map<String, BigDecimal> timeSeries) {
     this.timeSeries = timeSeries;
   }
@@ -268,11 +278,8 @@ public class ProductCategoryDetails {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

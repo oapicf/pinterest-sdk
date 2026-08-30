@@ -60,10 +60,12 @@ class CatalogsItemsRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsItemsRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsItemsRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'country'), 'Required key "CatalogsItemsRequest[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "CatalogsItemsRequest[country]" has a null value in JSON.');
+        assert(json.containsKey(r'filters'), 'Required key "CatalogsItemsRequest[filters]" is missing from JSON.');
+        assert(json[r'filters'] != null, 'Required key "CatalogsItemsRequest[filters]" has a null value in JSON.');
+        assert(json.containsKey(r'language'), 'Required key "CatalogsItemsRequest[language]" is missing from JSON.');
+        assert(json[r'language'] != null, 'Required key "CatalogsItemsRequest[language]" has a null value in JSON.');
         return true;
       }());
 

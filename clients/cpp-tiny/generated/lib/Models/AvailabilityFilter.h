@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAVAILABILITY(CatalogsProductGroupMultipleStringCriteria  aVAILABILITY);
+	void setAVAILABILITY(CatalogsProductGroupMultipleStringCriteria aVAILABILITY);
 
 
     private:

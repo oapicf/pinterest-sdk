@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -26,10 +26,10 @@ type CatalogsFeedsCreateRequest struct {
 	DefaultAvailability NullableProductAvailabilityType `json:"default_availability,omitempty"`
 	DefaultCountry *Country `json:"default_country,omitempty"`
 	DefaultCurrency NullableNullableCurrency `json:"default_currency,omitempty"`
-	DefaultLocale *CatalogsFeedsCreateRequestDefaultLocale `json:"default_locale,omitempty"`
+	DefaultLocale *CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale `json:"default_locale,omitempty"`
 	Format CatalogsFormat `json:"format"`
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
+	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp)://"`
 	// A human-friendly name associated to a given feed.
 	Name string `json:"name"`
 	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
@@ -221,9 +221,9 @@ func (o *CatalogsFeedsCreateRequest) UnsetDefaultCurrency() {
 }
 
 // GetDefaultLocale returns the DefaultLocale field value if set, zero value otherwise.
-func (o *CatalogsFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale {
+func (o *CatalogsFeedsCreateRequest) GetDefaultLocale() CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale {
 	if o == nil || IsNil(o.DefaultLocale) {
-		var ret CatalogsFeedsCreateRequestDefaultLocale
+		var ret CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 		return ret
 	}
 	return *o.DefaultLocale
@@ -231,7 +231,7 @@ func (o *CatalogsFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateReque
 
 // GetDefaultLocaleOk returns a tuple with the DefaultLocale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool) {
+func (o *CatalogsFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale, bool) {
 	if o == nil || IsNil(o.DefaultLocale) {
 		return nil, false
 	}
@@ -247,8 +247,8 @@ func (o *CatalogsFeedsCreateRequest) HasDefaultLocale() bool {
 	return false
 }
 
-// SetDefaultLocale gets a reference to the given CatalogsFeedsCreateRequestDefaultLocale and assigns it to the DefaultLocale field.
-func (o *CatalogsFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale) {
+// SetDefaultLocale gets a reference to the given CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale and assigns it to the DefaultLocale field.
+func (o *CatalogsFeedsCreateRequest) SetDefaultLocale(v CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale) {
 	o.DefaultLocale = &v
 }
 

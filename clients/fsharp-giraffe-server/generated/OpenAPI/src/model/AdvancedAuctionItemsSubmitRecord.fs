@@ -5,7 +5,6 @@ open System.Collections.Generic
 open OpenAPI.Model.AdvancedAuctionBidOptions
 open OpenAPI.Model.AdvancedAuctionItemsSubmitDeleteRecord
 open OpenAPI.Model.AdvancedAuctionItemsSubmitUpsertRecord
-open OpenAPI.Model.AdvancedAuctionOperation
 open OpenAPI.Model.AdvancedAuctionOperationError
 open OpenAPI.Model.Country
 open OpenAPI.Model.Language
@@ -15,14 +14,17 @@ module AdvancedAuctionItemsSubmitRecord =
 
   //#region AdvancedAuctionItemsSubmitRecord
 
+  //#region enums
+  type OperationEnum = DELETEEnum of string  
+  //#endregion
 
   type AdvancedAuctionItemsSubmitRecord = {
-    Operation : AdvancedAuctionOperation;
+    BidOptions : AdvancedAuctionBidOptions;
     Country : Country;
+    Errors : AdvancedAuctionOperationError[];
     ItemId : string;
     Language : Language;
-    BidOptions : AdvancedAuctionBidOptions;
-    Errors : AdvancedAuctionOperationError[];
+    Operation : OperationEnum;
     UpdateMask : UpdateMaskBidOptionField[];
   }
   //#endregion

@@ -109,6 +109,7 @@ class ImageMetadata(Model):
     def item_type(self) -> str:
         """Gets the item_type of this ImageMetadata.
 
+        Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.  # noqa: E501
 
         :return: The item_type of this ImageMetadata.
         :rtype: str
@@ -119,10 +120,17 @@ class ImageMetadata(Model):
     def item_type(self, item_type: str):
         """Sets the item_type of this ImageMetadata.
 
+        Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.  # noqa: E501
 
         :param item_type: The item_type of this ImageMetadata.
         :type item_type: str
         """
+        allowed_values = ["image"]  # noqa: E501
+        if item_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `item_type` ({0}), must be one of {1}"
+                .format(item_type, allowed_values)
+            )
 
         self._item_type = item_type
 

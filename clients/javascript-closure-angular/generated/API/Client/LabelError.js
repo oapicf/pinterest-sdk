@@ -6,7 +6,7 @@ goog.provide('API.Client.LabelError');
 API.Client.LabelError = function() {}
 
 /**
- * @type {!API.Client.Label}
+ * @type {!API.Client.LabelErrorData}
  * @export
  */
 API.Client.LabelError.prototype.data;

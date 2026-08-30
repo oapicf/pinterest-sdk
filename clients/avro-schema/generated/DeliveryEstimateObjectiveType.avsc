@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Objective type for delivery estimates.",
+  "name": "DeliveryEstimateObjectiveType",
+  "symbols": [
+    "AWARENESS",
+    "CONSIDERATION",
+    "CATALOG_SALES",
+    "WEB_CONVERSION"
+  ]
+}

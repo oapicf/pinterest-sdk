@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VideoMetadataWithItemType type satisfies the MappedNullable interface at compile time
@@ -25,19 +27,25 @@ type VideoMetadataWithItemType struct {
 	Duration NullableFloat32 `json:"duration,omitempty"`
 	// Height (in pixels). Field maybe null after creation due to video processing time.
 	Height NullableInt32 `json:"height,omitempty"`
-	ItemType *string `json:"item_type,omitempty"`
+	// Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+	ItemType string `json:"item_type"`
 	// Video url (720p).  **Note:** This field is limited and not available to all apps.
 	VideoUrl NullableString `json:"video_url,omitempty"`
+	// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	VideoUrlHls NullableString `json:"video_url_hls,omitempty"`
 	// Width (in pixels). Field maybe null after creation due to video processing time.
 	Width NullableInt32 `json:"width,omitempty"`
 }
+
+type _VideoMetadataWithItemType VideoMetadataWithItemType
 
 // NewVideoMetadataWithItemType instantiates a new VideoMetadataWithItemType object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVideoMetadataWithItemType() *VideoMetadataWithItemType {
+func NewVideoMetadataWithItemType(itemType string) *VideoMetadataWithItemType {
 	this := VideoMetadataWithItemType{}
+	this.ItemType = itemType
 	return &this
 }
 
@@ -165,36 +173,28 @@ func (o *VideoMetadataWithItemType) UnsetHeight() {
 	o.Height.Unset()
 }
 
-// GetItemType returns the ItemType field value if set, zero value otherwise.
+// GetItemType returns the ItemType field value
 func (o *VideoMetadataWithItemType) GetItemType() string {
-	if o == nil || IsNil(o.ItemType) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ItemType
+
+	return o.ItemType
 }
 
-// GetItemTypeOk returns a tuple with the ItemType field value if set, nil otherwise
+// GetItemTypeOk returns a tuple with the ItemType field value
 // and a boolean to check if the value has been set.
 func (o *VideoMetadataWithItemType) GetItemTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ItemType, true
+	return &o.ItemType, true
 }
 
-// HasItemType returns a boolean if a field has been set.
-func (o *VideoMetadataWithItemType) HasItemType() bool {
-	if o != nil && !IsNil(o.ItemType) {
-		return true
-	}
-
-	return false
-}
-
-// SetItemType gets a reference to the given string and assigns it to the ItemType field.
+// SetItemType sets field value
 func (o *VideoMetadataWithItemType) SetItemType(v string) {
-	o.ItemType = &v
+	o.ItemType = v
 }
 
 // GetVideoUrl returns the VideoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -237,6 +237,48 @@ func (o *VideoMetadataWithItemType) SetVideoUrlNil() {
 // UnsetVideoUrl ensures that no value is present for VideoUrl, not even an explicit nil
 func (o *VideoMetadataWithItemType) UnsetVideoUrl() {
 	o.VideoUrl.Unset()
+}
+
+// GetVideoUrlHls returns the VideoUrlHls field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VideoMetadataWithItemType) GetVideoUrlHls() string {
+	if o == nil || IsNil(o.VideoUrlHls.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VideoUrlHls.Get()
+}
+
+// GetVideoUrlHlsOk returns a tuple with the VideoUrlHls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VideoMetadataWithItemType) GetVideoUrlHlsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VideoUrlHls.Get(), o.VideoUrlHls.IsSet()
+}
+
+// HasVideoUrlHls returns a boolean if a field has been set.
+func (o *VideoMetadataWithItemType) HasVideoUrlHls() bool {
+	if o != nil && o.VideoUrlHls.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVideoUrlHls gets a reference to the given NullableString and assigns it to the VideoUrlHls field.
+func (o *VideoMetadataWithItemType) SetVideoUrlHls(v string) {
+	o.VideoUrlHls.Set(&v)
+}
+// SetVideoUrlHlsNil sets the value for VideoUrlHls to be an explicit nil
+func (o *VideoMetadataWithItemType) SetVideoUrlHlsNil() {
+	o.VideoUrlHls.Set(nil)
+}
+
+// UnsetVideoUrlHls ensures that no value is present for VideoUrlHls, not even an explicit nil
+func (o *VideoMetadataWithItemType) UnsetVideoUrlHls() {
+	o.VideoUrlHls.Unset()
 }
 
 // GetWidth returns the Width field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -300,16 +342,54 @@ func (o VideoMetadataWithItemType) ToMap() (map[string]interface{}, error) {
 	if o.Height.IsSet() {
 		toSerialize["height"] = o.Height.Get()
 	}
-	if !IsNil(o.ItemType) {
-		toSerialize["item_type"] = o.ItemType
-	}
+	toSerialize["item_type"] = o.ItemType
 	if o.VideoUrl.IsSet() {
 		toSerialize["video_url"] = o.VideoUrl.Get()
+	}
+	if o.VideoUrlHls.IsSet() {
+		toSerialize["video_url_hls"] = o.VideoUrlHls.Get()
 	}
 	if o.Width.IsSet() {
 		toSerialize["width"] = o.Width.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *VideoMetadataWithItemType) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"item_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVideoMetadataWithItemType := _VideoMetadataWithItemType{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVideoMetadataWithItemType)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VideoMetadataWithItemType(varVideoMetadataWithItemType)
+
+	return err
 }
 
 type NullableVideoMetadataWithItemType struct {

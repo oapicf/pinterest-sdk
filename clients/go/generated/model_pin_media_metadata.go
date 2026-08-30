@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -14,45 +14,88 @@ package openapi
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
-
-// PinMediaMetadata struct for PinMediaMetadata
+// PinMediaMetadata - Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.
 type PinMediaMetadata struct {
 	ImageMetadata *ImageMetadata
 	VideoMetadataWithItemType *VideoMetadataWithItemType
 }
 
-// Unmarshal JSON data into any of the pointers in the struct
+// ImageMetadataAsPinMediaMetadata is a convenience function that returns ImageMetadata wrapped in PinMediaMetadata
+func ImageMetadataAsPinMediaMetadata(v *ImageMetadata) PinMediaMetadata {
+	return PinMediaMetadata{
+		ImageMetadata: v,
+	}
+}
+
+// VideoMetadataWithItemTypeAsPinMediaMetadata is a convenience function that returns VideoMetadataWithItemType wrapped in PinMediaMetadata
+func VideoMetadataWithItemTypeAsPinMediaMetadata(v *VideoMetadataWithItemType) PinMediaMetadata {
+	return PinMediaMetadata{
+		VideoMetadataWithItemType: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
 func (dst *PinMediaMetadata) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into ImageMetadata
-	err = json.Unmarshal(data, &dst.ImageMetadata);
+	match := 0
+	// try to unmarshal data into ImageMetadata
+	err = newStrictDecoder(data).Decode(&dst.ImageMetadata)
 	if err == nil {
 		jsonImageMetadata, _ := json.Marshal(dst.ImageMetadata)
 		if string(jsonImageMetadata) == "{}" { // empty struct
 			dst.ImageMetadata = nil
 		} else {
-			return nil // data stored in dst.ImageMetadata, return on the first match
+			if err = validator.Validate(dst.ImageMetadata); err != nil {
+				dst.ImageMetadata = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ImageMetadata = nil
 	}
 
-	// try to unmarshal JSON data into VideoMetadataWithItemType
-	err = json.Unmarshal(data, &dst.VideoMetadataWithItemType);
+	// try to unmarshal data into VideoMetadataWithItemType
+	err = newStrictDecoder(data).Decode(&dst.VideoMetadataWithItemType)
 	if err == nil {
 		jsonVideoMetadataWithItemType, _ := json.Marshal(dst.VideoMetadataWithItemType)
 		if string(jsonVideoMetadataWithItemType) == "{}" { // empty struct
 			dst.VideoMetadataWithItemType = nil
 		} else {
-			return nil // data stored in dst.VideoMetadataWithItemType, return on the first match
+			if err = validator.Validate(dst.VideoMetadataWithItemType); err != nil {
+				dst.VideoMetadataWithItemType = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VideoMetadataWithItemType = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(PinMediaMetadata)")
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.ImageMetadata = nil
+		dst.VideoMetadataWithItemType = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(PinMediaMetadata)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMediaMetadata): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMediaMetadata)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMediaMetadata): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(PinMediaMetadata)")
+        }
+	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
@@ -65,9 +108,39 @@ func (src PinMediaMetadata) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.VideoMetadataWithItemType)
 	}
 
-	return nil, nil // no data in anyOf schemas
+	return nil, nil // no data in oneOf schemas
 }
 
+// Get the actual instance
+func (obj *PinMediaMetadata) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.ImageMetadata != nil {
+		return obj.ImageMetadata
+	}
+
+	if obj.VideoMetadataWithItemType != nil {
+		return obj.VideoMetadataWithItemType
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj PinMediaMetadata) GetActualInstanceValue() (interface{}) {
+	if obj.ImageMetadata != nil {
+		return *obj.ImageMetadata
+	}
+
+	if obj.VideoMetadataWithItemType != nil {
+		return *obj.VideoMetadataWithItemType
+	}
+
+	// all schemas are nil
+	return nil
+}
 
 type NullablePinMediaMetadata struct {
 	value *PinMediaMetadata

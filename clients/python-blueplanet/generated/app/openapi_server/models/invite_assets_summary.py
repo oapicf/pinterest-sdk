@@ -6,8 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.invite_assets_summary_ad_accounts_inner import InviteAssetsSummaryAdAccountsInner  # noqa: F401,E501
-from app.openapi_server.models.invite_assets_summary_profiles_inner import InviteAssetsSummaryProfilesInner  # noqa: F401,E501
+from app.openapi_server.models.invite_assets_summary_item import InviteAssetsSummaryItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,17 +16,17 @@ class InviteAssetsSummary(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_accounts: List[InviteAssetsSummaryAdAccountsInner]=None, profiles: List[InviteAssetsSummaryProfilesInner]=None):  # noqa: E501
+    def __init__(self, ad_accounts: List[InviteAssetsSummaryItem]=None, profiles: List[InviteAssetsSummaryItem]=None):  # noqa: E501
         """InviteAssetsSummary - a model defined in Swagger
 
         :param ad_accounts: The ad_accounts of this InviteAssetsSummary.  # noqa: E501
-        :type ad_accounts: List[InviteAssetsSummaryAdAccountsInner]
+        :type ad_accounts: List[InviteAssetsSummaryItem]
         :param profiles: The profiles of this InviteAssetsSummary.  # noqa: E501
-        :type profiles: List[InviteAssetsSummaryProfilesInner]
+        :type profiles: List[InviteAssetsSummaryItem]
         """
         self.swagger_types = {
-            'ad_accounts': List[InviteAssetsSummaryAdAccountsInner],
-            'profiles': List[InviteAssetsSummaryProfilesInner]
+            'ad_accounts': List[InviteAssetsSummaryItem],
+            'profiles': List[InviteAssetsSummaryItem]
         }
 
         self.attribute_map = {
@@ -50,47 +49,47 @@ class InviteAssetsSummary(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def ad_accounts(self) -> List[InviteAssetsSummaryAdAccountsInner]:
+    def ad_accounts(self) -> List[InviteAssetsSummaryItem]:
         """Gets the ad_accounts of this InviteAssetsSummary.
 
         List of ad account IDs and respective permission levels that will be assigned.  # noqa: E501
 
         :return: The ad_accounts of this InviteAssetsSummary.
-        :rtype: List[InviteAssetsSummaryAdAccountsInner]
+        :rtype: List[InviteAssetsSummaryItem]
         """
         return self._ad_accounts
 
     @ad_accounts.setter
-    def ad_accounts(self, ad_accounts: List[InviteAssetsSummaryAdAccountsInner]):
+    def ad_accounts(self, ad_accounts: List[InviteAssetsSummaryItem]):
         """Sets the ad_accounts of this InviteAssetsSummary.
 
         List of ad account IDs and respective permission levels that will be assigned.  # noqa: E501
 
         :param ad_accounts: The ad_accounts of this InviteAssetsSummary.
-        :type ad_accounts: List[InviteAssetsSummaryAdAccountsInner]
+        :type ad_accounts: List[InviteAssetsSummaryItem]
         """
 
         self._ad_accounts = ad_accounts
 
     @property
-    def profiles(self) -> List[InviteAssetsSummaryProfilesInner]:
+    def profiles(self) -> List[InviteAssetsSummaryItem]:
         """Gets the profiles of this InviteAssetsSummary.
 
         List of profile IDs and respective permission levels that will be assigned.  # noqa: E501
 
         :return: The profiles of this InviteAssetsSummary.
-        :rtype: List[InviteAssetsSummaryProfilesInner]
+        :rtype: List[InviteAssetsSummaryItem]
         """
         return self._profiles
 
     @profiles.setter
-    def profiles(self, profiles: List[InviteAssetsSummaryProfilesInner]):
+    def profiles(self, profiles: List[InviteAssetsSummaryItem]):
         """Sets the profiles of this InviteAssetsSummary.
 
         List of profile IDs and respective permission levels that will be assigned.  # noqa: E501
 
         :param profiles: The profiles of this InviteAssetsSummary.
-        :type profiles: List[InviteAssetsSummaryProfilesInner]
+        :type profiles: List[InviteAssetsSummaryItem]
         """
 
         self._profiles = profiles

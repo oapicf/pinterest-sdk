@@ -68,7 +68,7 @@ public enum CatalogTypeEnum {
   private Integer updatedAt;
 
   /**
-   * Catalog id pertaining to the hotel product group.
+   * Catalog ID pertaining to the product group.
    **/
   public CatalogsHotelProductGroup catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -76,7 +76,7 @@ public enum CatalogTypeEnum {
   }
 
   
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
   @JsonProperty("catalog_id")
   @NotNull
  @Pattern(regexp="^\\d+$")  public String getCatalogId() {
@@ -163,7 +163,7 @@ public enum CatalogTypeEnum {
 
 
   /**
-   * ID of the hotel product group.
+   * ID of the catalog product group.
    **/
   public CatalogsHotelProductGroup id(String id) {
     this.id = id;
@@ -171,7 +171,7 @@ public enum CatalogTypeEnum {
   }
 
   
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the hotel product group.")
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
   @JsonProperty("id")
   @NotNull
  @Pattern(regexp="^\\d+$")  public String getId() {
@@ -183,7 +183,7 @@ public enum CatalogTypeEnum {
 
 
   /**
-   * Name of hotel product group
+   * Name of catalog product group
    **/
   public CatalogsHotelProductGroup name(String name) {
     this.name = name;
@@ -191,7 +191,7 @@ public enum CatalogTypeEnum {
   }
 
   
-  @ApiModelProperty(example = "Most Popular", value = "Name of hotel product group")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -288,10 +288,7 @@ public enum CatalogTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

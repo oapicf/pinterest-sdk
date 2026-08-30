@@ -13,7 +13,6 @@
 #include "CatalogsFeedProcessingSchedule.h"
 #include "CatalogsFormat.h"
 #include "CatalogsStatus.h"
-#include "CatalogsType.h"
 #include "NullableCurrency.h"
 #include "ProductAvailabilityType.h"
 #include "Object.h"
@@ -54,11 +53,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	CatalogsFeedCredentials getCredentials();
@@ -117,7 +116,7 @@ public:
 	void setStatus(CatalogsStatus  status);
 
 private:
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	CatalogsFeedCredentials credentials;
 	ProductAvailabilityType default_availability;
 	NullableCurrency default_currency;

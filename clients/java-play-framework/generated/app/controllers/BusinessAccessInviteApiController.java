@@ -1,16 +1,17 @@
 package controllers;
 
 import apimodels.AuthRespondInvitesBody;
-import apimodels.CancelInvitesBody;
+import apimodels.CancelInvitesRequest;
+import apimodels.CancelInvitesResponse;
 import apimodels.CreateAssetAccessRequestBody;
 import apimodels.CreateAssetAccessRequestResponse;
 import apimodels.CreateAssetInvitesRequest;
 import apimodels.CreateInvitesResultsResponseArray;
 import apimodels.CreateMembershipOrPartnershipInvitesBody;
-import apimodels.DeleteInvitesResultsResponseArray;
-import apimodels.Error;
 import apimodels.GetInvites200Response;
+import apimodels.InviteFilterStatus;
 import apimodels.InviteType;
+import apimodels.PinterestLibError;
 import apimodels.RespondToInvitesResponseArray;
 import apimodels.UpdateInvitesResultsResponseArray;
 
@@ -36,7 +37,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAccessInviteApiController extends Controller {
     private final BusinessAccessInviteApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -66,17 +67,17 @@ public class BusinessAccessInviteApiController extends Controller {
 
     @ApiAction
     public Result cancelInvitesOrRequests(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId) throws Exception {
-        JsonNode nodecancelInvitesBody = request.body().asJson();
-        CancelInvitesBody cancelInvitesBody;
-        if (nodecancelInvitesBody != null) {
-            cancelInvitesBody = mapper.readValue(nodecancelInvitesBody.toString(), CancelInvitesBody.class);
+        JsonNode nodecancelInvitesRequest = request.body().asJson();
+        CancelInvitesRequest cancelInvitesRequest;
+        if (nodecancelInvitesRequest != null) {
+            cancelInvitesRequest = mapper.readValue(nodecancelInvitesRequest.toString(), CancelInvitesRequest.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(cancelInvitesBody);
+                OpenAPIUtils.validate(cancelInvitesRequest);
             }
         } else {
-            throw new IllegalArgumentException("'CancelInvitesBody' parameter is required");
+            throw new IllegalArgumentException("'CancelInvitesRequest' parameter is required");
         }
-        return imp.cancelInvitesOrRequestsHttp(request, businessId, cancelInvitesBody);
+        return imp.cancelInvitesOrRequestsHttp(request, businessId, cancelInvitesRequest);
     }
 
     @ApiAction
@@ -120,7 +121,7 @@ public class BusinessAccessInviteApiController extends Controller {
         }
         String[] inviteStatusArray = request.queryString().get("invite_status");
         List<String> inviteStatusList = OpenAPIUtils.parametersToList("multi", inviteStatusArray);
-        List<String> inviteStatus = new ArrayList<>();
+        List<InviteFilterStatus> inviteStatus = new ArrayList<>();
         for (String curParam : inviteStatusList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation

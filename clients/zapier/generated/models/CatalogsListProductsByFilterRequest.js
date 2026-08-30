@@ -18,7 +18,7 @@ module.exports = {
             ...CatalogsCreativeAssetsProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
             {
                 key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the creative assets product group. - [${labelPrefix}catalog_id]`,
+                label: `Catalog ID pertaining to the product group. - [${labelPrefix}catalog_id]`,
                 required: true,
                 type: 'string',
             },

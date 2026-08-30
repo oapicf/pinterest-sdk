@@ -14,18 +14,18 @@ part 'catalogs_hotel_product_group.g.dart';
 /// CatalogsHotelProductGroup
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the hotel product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [createdAt] - Unix timestamp in seconds of when catalog product group was created.
 /// * [description] 
 /// * [filters] 
-/// * [id] - ID of the hotel product group.
-/// * [name] - Name of hotel product group
+/// * [id] - ID of the catalog product group.
+/// * [name] - Name of catalog product group
 /// * [type] 
 /// * [updatedAt] - Unix timestamp in seconds of last time catalog product group was updated.
 @BuiltValue()
 abstract class CatalogsHotelProductGroup implements Built<CatalogsHotelProductGroup, CatalogsHotelProductGroupBuilder> {
-  /// Catalog id pertaining to the hotel product group.
+  /// Catalog ID pertaining to the product group.
   @BuiltValueField(wireName: r'catalog_id')
   String get catalogId;
 
@@ -43,11 +43,11 @@ abstract class CatalogsHotelProductGroup implements Built<CatalogsHotelProductGr
   @BuiltValueField(wireName: r'filters')
   CatalogsHotelProductGroupFilters get filters;
 
-  /// ID of the hotel product group.
+  /// ID of the catalog product group.
   @BuiltValueField(wireName: r'id')
   String get id;
 
-  /// Name of hotel product group
+  /// Name of catalog product group
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -175,8 +175,9 @@ class _$CatalogsHotelProductGroupSerializer implements PrimitiveSerializer<Catal
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'description':
@@ -204,8 +205,9 @@ class _$CatalogsHotelProductGroupSerializer implements PrimitiveSerializer<Catal
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'type':
@@ -218,8 +220,9 @@ class _$CatalogsHotelProductGroupSerializer implements PrimitiveSerializer<Catal
         case r'updated_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.updatedAt = valueDes;
           break;
         default:

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [optional] [default to null]
 **owner** | [**AdAccountOwner**](AdAccountOwner.md) |  | [optional] [readonly] [default to null]
 **permissions** | [**array[BusinessAccessRole]**](BusinessAccessRole.md) | permissions | [optional] [readonly] [default to null]
+**timeUnderscorezone** | **string** |  | [optional] [default to null]
 **updatedUnderscoretime** | **integer** | updated_time | [optional] [readonly] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

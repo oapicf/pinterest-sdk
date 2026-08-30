@@ -12,29 +12,52 @@ import org.joda.time.DateTime
 import CatalogsItemValidationErrors._
 
 case class CatalogsItemValidationErrors (
+  /* Item has an invalid adult value. */
   ADULT_INVALID: Option[CatalogsItemValidationDetails],
-ADWORDS_FORMAT_INVALID: Option[CatalogsItemValidationDetails],
-AVAILABILITY_INVALID: Option[CatalogsItemValidationDetails],
-BLOCKLISTED_IMAGE_SIGNATURE: Option[CatalogsItemValidationDetails],
-DESCRIPTION_MISSING: Option[CatalogsItemValidationDetails],
-DUPLICATE_PRODUCTS: Option[CatalogsItemValidationDetails],
-IMAGE_LINK_INVALID: Option[CatalogsItemValidationDetails],
-IMAGE_LINK_LENGTH_TOO_LONG: Option[CatalogsItemValidationDetails],
-IMAGE_LINK_MISSING: Option[CatalogsItemValidationDetails],
-INVALID_DOMAIN: Option[CatalogsItemValidationDetails],
-ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: Option[CatalogsItemValidationDetails],
-ITEMID_MISSING: Option[CatalogsItemValidationDetails],
-LINK_FORMAT_INVALID: Option[CatalogsItemValidationDetails],
-LINK_LENGTH_TOO_LONG: Option[CatalogsItemValidationDetails],
-LIST_PRICE_INVALID: Option[CatalogsItemValidationDetails],
-MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED: Option[CatalogsItemValidationDetails],
-PARSE_LINE_ERROR: Option[CatalogsItemValidationDetails],
-PINJOIN_CONTENT_UNSAFE: Option[CatalogsItemValidationDetails],
-PRICE_CANNOT_BE_DETERMINED: Option[CatalogsItemValidationDetails],
-PRICE_MISSING: Option[CatalogsItemValidationDetails],
-PRODUCT_LINK_MISSING: Option[CatalogsItemValidationDetails],
-PRODUCT_PRICE_INVALID: Option[CatalogsItemValidationDetails],
-TITLE_MISSING: Option[CatalogsItemValidationDetails])
+/* Adword link contains too many characters. */
+  ADWORDS_FORMAT_INVALID: Option[CatalogsItemValidationDetails],
+/* Item is missing availability value in its product metadata, this item will not be published. */
+  AVAILABILITY_INVALID: Option[CatalogsItemValidationDetails],
+/* Item will not be published because it doesn't meet Pinterest's Merchant Guidelines. */
+  BLOCKLISTED_IMAGE_SIGNATURE: Option[CatalogsItemValidationDetails],
+/* Item is missing description in its product metadata, this item will not be published. */
+  DESCRIPTION_MISSING: Option[CatalogsItemValidationDetails],
+/* This product is duplicated. The duplicate entry will not be published. */
+  DUPLICATE_PRODUCTS: Option[CatalogsItemValidationDetails],
+/* Image link is invalid. */
+  IMAGE_LINK_INVALID: Option[CatalogsItemValidationDetails],
+/* Item has image_link URL that contains too many characters, so the item will not be published. */
+  IMAGE_LINK_LENGTH_TOO_LONG: Option[CatalogsItemValidationDetails],
+/* Item is missing an image link URL in its product metadata, this item will not be published. */
+  IMAGE_LINK_MISSING: Option[CatalogsItemValidationDetails],
+/* Product link value doesn't match the verified domain associated with this account. */
+  INVALID_DOMAIN: Option[CatalogsItemValidationDetails],
+/* Main image can't be found. */
+  ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: Option[CatalogsItemValidationDetails],
+/* Item is missing item id in its product metadata, this item will not be published. */
+  ITEMID_MISSING: Option[CatalogsItemValidationDetails],
+/* Link is invalid. */
+  LINK_FORMAT_INVALID: Option[CatalogsItemValidationDetails],
+/* Product link contains too many characters, this item will not be published. */
+  LINK_LENGTH_TOO_LONG: Option[CatalogsItemValidationDetails],
+/* Item has a list price formatting error, this item will not be published. */
+  LIST_PRICE_INVALID: Option[CatalogsItemValidationDetails],
+/* Item exceed the maximum number of items per item group, this item will not be published. */
+  MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED: Option[CatalogsItemValidationDetails],
+/* Item contains formating errors. */
+  PARSE_LINE_ERROR: Option[CatalogsItemValidationDetails],
+/* Item will not be published because it doesn't meet Pinterest's Merchant Guidelines. */
+  PINJOIN_CONTENT_UNSAFE: Option[CatalogsItemValidationDetails],
+/* Item price cannot be determined because the price, list price, and sale price are all different. */
+  PRICE_CANNOT_BE_DETERMINED: Option[CatalogsItemValidationDetails],
+/* Product is missing a price, this item will not be published. */
+  PRICE_MISSING: Option[CatalogsItemValidationDetails],
+/* Item is missing a link URL in its product metadata, this item will not be published. */
+  PRODUCT_LINK_MISSING: Option[CatalogsItemValidationDetails],
+/* Item has a price formatting error in its product metadata, this item will not be published. */
+  PRODUCT_PRICE_INVALID: Option[CatalogsItemValidationDetails],
+/* Item is missing title in its product metadata, this item will not be published. */
+  TITLE_MISSING: Option[CatalogsItemValidationDetails])
 
 object CatalogsItemValidationErrors {
   import DateTimeCodecs._

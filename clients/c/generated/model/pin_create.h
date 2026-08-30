@@ -15,11 +15,13 @@
 
 typedef struct pin_create_t pin_create_t;
 
+#include "ai_disclosures.h"
 #include "pin_media_source.h"
 
 
 
 typedef struct pin_create_t {
+    struct ai_disclosures_t *ai_disclosures; //model
     char *alt_text; // string
     char *board_id; // string
     char *board_section_id; // string
@@ -35,6 +37,7 @@ typedef struct pin_create_t {
 } pin_create_t;
 
 __attribute__((deprecated)) pin_create_t *pin_create_create(
+    ai_disclosures_t *ai_disclosures,
     char *alt_text,
     char *board_id,
     char *board_section_id,

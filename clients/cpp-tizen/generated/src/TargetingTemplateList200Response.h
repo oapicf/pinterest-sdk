@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "TargetingTemplateGetResponseData.h"
+#include "TargetingTemplate.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setBookmark(std::string  bookmark);
 	/*! \brief Get 
 	 */
-	std::list<TargetingTemplateGetResponseData> getItems();
+	std::list<TargetingTemplate> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <TargetingTemplateGetResponseData> items);
+	void setItems(std::list <TargetingTemplate> items);
 
 private:
 	std::string bookmark;
-	std::list <TargetingTemplateGetResponseData>items;
+	std::list <TargetingTemplate>items;
 	void __init();
 	void __cleanup();
 

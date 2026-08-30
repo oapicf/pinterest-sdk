@@ -1,7 +1,7 @@
 const utils = require('../utils/utils');
+const CatalogsCreativeAssetsFeedsCreateRequest_default_locale = require('../models/CatalogsCreativeAssetsFeedsCreateRequest_default_locale');
 const CatalogsFeedCredentials = require('../models/CatalogsFeedCredentials');
 const CatalogsFeedProcessingSchedule = require('../models/CatalogsFeedProcessingSchedule');
-const CatalogsFeedsCreateRequest_default_locale = require('../models/CatalogsFeedsCreateRequest_default_locale');
 const CatalogsFormat = require('../models/CatalogsFormat');
 const CatalogsStatus = require('../models/CatalogsStatus');
 const Country = require('../models/Country');
@@ -25,7 +25,7 @@ module.exports = {
                 key: `${keyPrefix}default_currency`,
                 ...NullableCurrency.fields(`${keyPrefix}default_currency`, isInput),
             },
-            ...CatalogsFeedsCreateRequest_default_locale.fields(`${keyPrefix}default_locale`, isInput),
+            ...CatalogsCreativeAssetsFeedsCreateRequest_default_locale.fields(`${keyPrefix}default_locale`, isInput),
             {
                 key: `${keyPrefix}format`,
                 ...CatalogsFormat.fields(`${keyPrefix}format`, isInput),
@@ -56,7 +56,7 @@ module.exports = {
             'default_availability': bundle.inputData?.[`${keyPrefix}default_availability`],
             'default_country': bundle.inputData?.[`${keyPrefix}default_country`],
             'default_currency': bundle.inputData?.[`${keyPrefix}default_currency`],
-            'default_locale': utils.removeIfEmpty(CatalogsFeedsCreateRequest_default_locale.mapping(bundle, `${keyPrefix}default_locale`)),
+            'default_locale': utils.removeIfEmpty(CatalogsCreativeAssetsFeedsCreateRequest_default_locale.mapping(bundle, `${keyPrefix}default_locale`)),
             'format': bundle.inputData?.[`${keyPrefix}format`],
             'location': bundle.inputData?.[`${keyPrefix}location`],
             'name': bundle.inputData?.[`${keyPrefix}name`],

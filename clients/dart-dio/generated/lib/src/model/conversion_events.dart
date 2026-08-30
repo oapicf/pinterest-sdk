@@ -4,20 +4,31 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/conversion_events_data_inner.dart';
+import 'package:openapi/src/model/conversion_api_response_events_items.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'conversion_events.g.dart';
 
-/// A list of events (one or more) encapsulated by a data object.
+/// Conversion events.
 ///
 /// Properties:
-/// * [data] 
+/// * [events] - Specific messages for each event received. The order will match the order in which the events were received in the request.
+/// * [numEventsProcessed] - Number of events that were successfully processed from the events.
+/// * [numEventsReceived] - Total number of events received in the request.
 @BuiltValue()
 abstract class ConversionEvents implements Built<ConversionEvents, ConversionEventsBuilder> {
-  @BuiltValueField(wireName: r'data')
-  BuiltList<ConversionEventsDataInner> get data;
+  /// Specific messages for each event received. The order will match the order in which the events were received in the request.
+  @BuiltValueField(wireName: r'events')
+  BuiltList<ConversionApiResponseEventsItems> get events;
+
+  /// Number of events that were successfully processed from the events.
+  @BuiltValueField(wireName: r'num_events_processed')
+  int get numEventsProcessed;
+
+  /// Total number of events received in the request.
+  @BuiltValueField(wireName: r'num_events_received')
+  int get numEventsReceived;
 
   ConversionEvents._();
 
@@ -42,10 +53,20 @@ class _$ConversionEventsSerializer implements PrimitiveSerializer<ConversionEven
     ConversionEvents object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'data';
+    yield r'events';
     yield serializers.serialize(
-      object.data,
-      specifiedType: const FullType(BuiltList, [FullType(ConversionEventsDataInner)]),
+      object.events,
+      specifiedType: const FullType(BuiltList, [FullType(ConversionApiResponseEventsItems)]),
+    );
+    yield r'num_events_processed';
+    yield serializers.serialize(
+      object.numEventsProcessed,
+      specifiedType: const FullType(int),
+    );
+    yield r'num_events_received';
+    yield serializers.serialize(
+      object.numEventsReceived,
+      specifiedType: const FullType(int),
     );
   }
 
@@ -70,12 +91,26 @@ class _$ConversionEventsSerializer implements PrimitiveSerializer<ConversionEven
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'data':
+        case r'events':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ConversionEventsDataInner)]),
-          ) as BuiltList<ConversionEventsDataInner>;
-          result.data.replace(valueDes);
+            specifiedType: const FullType(BuiltList, [FullType(ConversionApiResponseEventsItems)]),
+          ) as BuiltList<ConversionApiResponseEventsItems>;
+          result.events.replace(valueDes);
+          break;
+        case r'num_events_processed':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.numEventsProcessed = valueDes;
+          break;
+        case r'num_events_received':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.numEventsReceived = valueDes;
           break;
         default:
           unhandled.add(key);

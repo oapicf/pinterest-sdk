@@ -9,6 +9,5 @@ type QuizPinData struct {
 
 	TieBreakerCustomResult *QuizPinResult `json:"tie_breaker_custom_result,omitempty"`
 
-	// Quiz ad tie breaker type, default is RANDOM
-	TieBreakerType string `json:"tie_breaker_type,omitempty"`
+	TieBreakerType TieBreakerType `json:"tie_breaker_type,omitempty"`
 }

@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Specify if the promotion is applied at ad group or item level.",
+  "name": "PromotionApplicationLevel",
+  "symbols": [
+    "NONE",
+    "ITEM",
+    "AD_GROUP"
+  ]
+}

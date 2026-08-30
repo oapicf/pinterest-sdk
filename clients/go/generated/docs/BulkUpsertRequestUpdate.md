@@ -7,10 +7,11 @@ Name | Type | Description | Notes
 **AdGroups** | Pointer to [**[]AdGroupUpdateRequest**](AdGroupUpdateRequest.md) |  | [optional] 
 **Ads** | Pointer to [**[]AdUpdateRequest**](AdUpdateRequest.md) |  | [optional] 
 **Campaigns** | Pointer to [**[]CampaignUpdateRequest**](CampaignUpdateRequest.md) |  | [optional] 
-**CatalogProductGroups** | Pointer to [**[]CatalogsProductGroupsUpdateRequest**](CatalogsProductGroupsUpdateRequest.md) |  | [optional] 
-**Keywords** | Pointer to [**[]KeywordUpdate**](KeywordUpdate.md) |  | [optional] 
+**CatalogProductGroups** | Pointer to [**[]BulkUpsertRequestUpdateCatalogProductGroupsItems**](BulkUpsertRequestUpdateCatalogProductGroupsItems.md) |  | [optional] 
+**Keywords** | Pointer to [**[]KeywordUpdateGenerated**](KeywordUpdateGenerated.md) |  | [optional] 
 **Labels** | Pointer to [**[]LabelBulkUpdateRequest**](LabelBulkUpdateRequest.md) |  | [optional] 
 **ProductGroups** | Pointer to [**[]ProductGroupPromotionUpdateRequest**](ProductGroupPromotionUpdateRequest.md) |  | [optional] 
+**Schedules** | Pointer to [**[]ScheduleUpdateRequest**](ScheduleUpdateRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -108,20 +109,20 @@ HasCampaigns returns a boolean if a field has been set.
 
 ### GetCatalogProductGroups
 
-`func (o *BulkUpsertRequestUpdate) GetCatalogProductGroups() []CatalogsProductGroupsUpdateRequest`
+`func (o *BulkUpsertRequestUpdate) GetCatalogProductGroups() []BulkUpsertRequestUpdateCatalogProductGroupsItems`
 
 GetCatalogProductGroups returns the CatalogProductGroups field if non-nil, zero value otherwise.
 
 ### GetCatalogProductGroupsOk
 
-`func (o *BulkUpsertRequestUpdate) GetCatalogProductGroupsOk() (*[]CatalogsProductGroupsUpdateRequest, bool)`
+`func (o *BulkUpsertRequestUpdate) GetCatalogProductGroupsOk() (*[]BulkUpsertRequestUpdateCatalogProductGroupsItems, bool)`
 
 GetCatalogProductGroupsOk returns a tuple with the CatalogProductGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogProductGroups
 
-`func (o *BulkUpsertRequestUpdate) SetCatalogProductGroups(v []CatalogsProductGroupsUpdateRequest)`
+`func (o *BulkUpsertRequestUpdate) SetCatalogProductGroups(v []BulkUpsertRequestUpdateCatalogProductGroupsItems)`
 
 SetCatalogProductGroups sets CatalogProductGroups field to given value.
 
@@ -133,20 +134,20 @@ HasCatalogProductGroups returns a boolean if a field has been set.
 
 ### GetKeywords
 
-`func (o *BulkUpsertRequestUpdate) GetKeywords() []KeywordUpdate`
+`func (o *BulkUpsertRequestUpdate) GetKeywords() []KeywordUpdateGenerated`
 
 GetKeywords returns the Keywords field if non-nil, zero value otherwise.
 
 ### GetKeywordsOk
 
-`func (o *BulkUpsertRequestUpdate) GetKeywordsOk() (*[]KeywordUpdate, bool)`
+`func (o *BulkUpsertRequestUpdate) GetKeywordsOk() (*[]KeywordUpdateGenerated, bool)`
 
 GetKeywordsOk returns a tuple with the Keywords field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKeywords
 
-`func (o *BulkUpsertRequestUpdate) SetKeywords(v []KeywordUpdate)`
+`func (o *BulkUpsertRequestUpdate) SetKeywords(v []KeywordUpdateGenerated)`
 
 SetKeywords sets Keywords field to given value.
 
@@ -205,6 +206,31 @@ SetProductGroups sets ProductGroups field to given value.
 `func (o *BulkUpsertRequestUpdate) HasProductGroups() bool`
 
 HasProductGroups returns a boolean if a field has been set.
+
+### GetSchedules
+
+`func (o *BulkUpsertRequestUpdate) GetSchedules() []ScheduleUpdateRequest`
+
+GetSchedules returns the Schedules field if non-nil, zero value otherwise.
+
+### GetSchedulesOk
+
+`func (o *BulkUpsertRequestUpdate) GetSchedulesOk() (*[]ScheduleUpdateRequest, bool)`
+
+GetSchedulesOk returns a tuple with the Schedules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchedules
+
+`func (o *BulkUpsertRequestUpdate) SetSchedules(v []ScheduleUpdateRequest)`
+
+SetSchedules sets Schedules field to given value.
+
+### HasSchedules
+
+`func (o *BulkUpsertRequestUpdate) HasSchedules() bool`
+
+HasSchedules returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

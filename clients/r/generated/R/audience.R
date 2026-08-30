@@ -8,15 +8,16 @@
 #' @description Audience Class
 #' @format An \code{R6Class} generator object
 #' @field ad_account_id Ad account ID. character [optional]
-#' @field audience_type <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR character [optional]
+#' @field audience_type [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR \link{PinnerListType} [optional]
 #' @field created_by_company_name The company that created this audience. character [optional]
 #' @field created_timestamp Creation time. Unix timestamp in seconds. integer [optional]
 #' @field description Audience description. character [optional]
 #' @field id Audience ID. character [optional]
+#' @field is_nca Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only. character [optional]
 #' @field name Audience name. character [optional]
 #' @field rule  \link{AudienceRule} [optional]
 #' @field size Audience size. integer [optional]
-#' @field status Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. character [optional]
+#' @field status Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. \link{AudienceStatus} [optional]
 #' @field type Always \"audience\". character [optional]
 #' @field updated_timestamp Last update time. Unix timestamp in seconds. integer [optional]
 #' @importFrom R6 R6Class
@@ -31,6 +32,7 @@ Audience <- R6::R6Class(
     `created_timestamp` = NULL,
     `description` = NULL,
     `id` = NULL,
+    `is_nca` = NULL,
     `name` = NULL,
     `rule` = NULL,
     `size` = NULL,
@@ -42,11 +44,12 @@ Audience <- R6::R6Class(
     #' Initialize a new Audience class.
     #'
     #' @param ad_account_id Ad account ID.
-    #' @param audience_type <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+    #' @param audience_type [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
     #' @param created_by_company_name The company that created this audience.
     #' @param created_timestamp Creation time. Unix timestamp in seconds.
     #' @param description Audience description.
     #' @param id Audience ID.
+    #' @param is_nca Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
     #' @param name Audience name.
     #' @param rule rule
     #' @param size Audience size.
@@ -54,7 +57,7 @@ Audience <- R6::R6Class(
     #' @param type Always \"audience\".
     #' @param updated_timestamp Last update time. Unix timestamp in seconds.
     #' @param ... Other optional arguments.
-    initialize = function(`ad_account_id` = NULL, `audience_type` = NULL, `created_by_company_name` = NULL, `created_timestamp` = NULL, `description` = NULL, `id` = NULL, `name` = NULL, `rule` = NULL, `size` = NULL, `status` = NULL, `type` = NULL, `updated_timestamp` = NULL, ...) {
+    initialize = function(`ad_account_id` = NULL, `audience_type` = NULL, `created_by_company_name` = NULL, `created_timestamp` = NULL, `description` = NULL, `id` = NULL, `is_nca` = NULL, `name` = NULL, `rule` = NULL, `size` = NULL, `status` = NULL, `type` = NULL, `updated_timestamp` = NULL, ...) {
       if (!is.null(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
           stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
@@ -62,9 +65,10 @@ Audience <- R6::R6Class(
         self$`ad_account_id` <- `ad_account_id`
       }
       if (!is.null(`audience_type`)) {
-        if (!(is.character(`audience_type`) && length(`audience_type`) == 1)) {
-          stop(paste("Error! Invalid data for `audience_type`. Must be a string:", `audience_type`))
+        if (!(`audience_type` %in% c())) {
+          stop(paste("Error! \"", `audience_type`, "\" cannot be assigned to `audience_type`. Must be .", sep = ""))
         }
+        stopifnot(R6::is.R6(`audience_type`))
         self$`audience_type` <- `audience_type`
       }
       if (!is.null(`created_by_company_name`)) {
@@ -91,6 +95,12 @@ Audience <- R6::R6Class(
         }
         self$`id` <- `id`
       }
+      if (!is.null(`is_nca`)) {
+        if (!(is.logical(`is_nca`) && length(`is_nca`) == 1)) {
+          stop(paste("Error! Invalid data for `is_nca`. Must be a boolean:", `is_nca`))
+        }
+        self$`is_nca` <- `is_nca`
+      }
       if (!is.null(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -108,9 +118,10 @@ Audience <- R6::R6Class(
         self$`size` <- `size`
       }
       if (!is.null(`status`)) {
-        if (!(is.character(`status`) && length(`status`) == 1)) {
-          stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
+        stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
       }
       if (!is.null(`type`)) {
@@ -164,7 +175,7 @@ Audience <- R6::R6Class(
       }
       if (!is.null(self$`audience_type`)) {
         AudienceObject[["audience_type"]] <-
-          self$`audience_type`
+          self$extractSimpleType(self$`audience_type`)
       }
       if (!is.null(self$`created_by_company_name`)) {
         AudienceObject[["created_by_company_name"]] <-
@@ -182,13 +193,17 @@ Audience <- R6::R6Class(
         AudienceObject[["id"]] <-
           self$`id`
       }
+      if (!is.null(self$`is_nca`)) {
+        AudienceObject[["is_nca"]] <-
+          self$`is_nca`
+      }
       if (!is.null(self$`name`)) {
         AudienceObject[["name"]] <-
           self$`name`
       }
       if (!is.null(self$`rule`)) {
         AudienceObject[["rule"]] <-
-          self$`rule`$toSimpleType()
+          self$extractSimpleType(self$`rule`)
       }
       if (!is.null(self$`size`)) {
         AudienceObject[["size"]] <-
@@ -196,7 +211,7 @@ Audience <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         AudienceObject[["status"]] <-
-          self$`status`
+          self$extractSimpleType(self$`status`)
       }
       if (!is.null(self$`type`)) {
         AudienceObject[["type"]] <-
@@ -207,6 +222,29 @@ Audience <- R6::R6Class(
           self$`updated_timestamp`
       }
       return(AudienceObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -220,7 +258,9 @@ Audience <- R6::R6Class(
         self$`ad_account_id` <- this_object$`ad_account_id`
       }
       if (!is.null(this_object$`audience_type`)) {
-        self$`audience_type` <- this_object$`audience_type`
+        `audience_type_object` <- PinnerListType$new()
+        `audience_type_object`$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
+        self$`audience_type` <- `audience_type_object`
       }
       if (!is.null(this_object$`created_by_company_name`)) {
         self$`created_by_company_name` <- this_object$`created_by_company_name`
@@ -234,6 +274,9 @@ Audience <- R6::R6Class(
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
+      if (!is.null(this_object$`is_nca`)) {
+        self$`is_nca` <- this_object$`is_nca`
+      }
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
       }
@@ -246,7 +289,9 @@ Audience <- R6::R6Class(
         self$`size` <- this_object$`size`
       }
       if (!is.null(this_object$`status`)) {
-        self$`status` <- this_object$`status`
+        `status_object` <- AudienceStatus$new()
+        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+        self$`status` <- `status_object`
       }
       if (!is.null(this_object$`type`)) {
         self$`type` <- this_object$`type`
@@ -276,15 +321,16 @@ Audience <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_account_id` <- this_object$`ad_account_id`
-      self$`audience_type` <- this_object$`audience_type`
+      self$`audience_type` <- PinnerListType$new()$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
       self$`created_by_company_name` <- this_object$`created_by_company_name`
       self$`created_timestamp` <- this_object$`created_timestamp`
       self$`description` <- this_object$`description`
       self$`id` <- this_object$`id`
+      self$`is_nca` <- this_object$`is_nca`
       self$`name` <- this_object$`name`
       self$`rule` <- AudienceRule$new()$fromJSON(jsonlite::toJSON(this_object$`rule`, auto_unbox = TRUE, digits = NA))
       self$`size` <- this_object$`size`
-      self$`status` <- this_object$`status`
+      self$`status` <- AudienceStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`type` <- this_object$`type`
       self$`updated_timestamp` <- this_object$`updated_timestamp`
       self

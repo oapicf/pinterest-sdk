@@ -2,6 +2,8 @@ package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.AudienceRule;
+import org.openapitools.model.AudienceStatus;
+import org.openapitools.model.PinnerListType;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -18,11 +20,11 @@ public class Audience  {
   private String adAccountId;
 
  /**
-  * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+  * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
   */
-  @ApiModelProperty(value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR")
+  @ApiModelProperty(value = "[Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR")
 
-  private String audienceType;
+  private PinnerListType audienceType;
 
  /**
   * The company that created this audience.
@@ -53,6 +55,13 @@ public class Audience  {
   private String id;
 
  /**
+  * Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+  */
+  @ApiModelProperty(value = "Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.")
+
+  private Boolean isNca;
+
+ /**
   * Audience name.
   */
   @ApiModelProperty(example = "ACME Tools", value = "Audience name.")
@@ -75,7 +84,7 @@ public class Audience  {
   */
   @ApiModelProperty(value = "Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.")
 
-  private String status;
+  private AudienceStatus status;
 
  /**
   * Always \"audience\".
@@ -109,19 +118,19 @@ public class Audience  {
   }
 
  /**
-   * &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+   * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
    * @return audienceType
   **/
   @JsonProperty("audience_type")
-  public String getAudienceType() {
+  public PinnerListType getAudienceType() {
     return audienceType;
   }
 
-  public void setAudienceType(String audienceType) {
+  public void setAudienceType(PinnerListType audienceType) {
     this.audienceType = audienceType;
   }
 
-  public Audience audienceType(String audienceType) {
+  public Audience audienceType(PinnerListType audienceType) {
     this.audienceType = audienceType;
     return this;
   }
@@ -199,6 +208,24 @@ public class Audience  {
   }
 
  /**
+   * Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+   * @return isNca
+  **/
+  @JsonProperty("is_nca")
+  public Boolean getIsNca() {
+    return isNca;
+  }
+
+  public void setIsNca(Boolean isNca) {
+    this.isNca = isNca;
+  }
+
+  public Audience isNca(Boolean isNca) {
+    this.isNca = isNca;
+    return this;
+  }
+
+ /**
    * Audience name.
    * @return name
   **/
@@ -257,15 +284,15 @@ public class Audience  {
    * @return status
   **/
   @JsonProperty("status")
-  public String getStatus() {
+  public AudienceStatus getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(AudienceStatus status) {
     this.status = status;
   }
 
-  public Audience status(String status) {
+  public Audience status(AudienceStatus status) {
     this.status = status;
     return this;
   }
@@ -321,6 +348,7 @@ public class Audience  {
         Objects.equals(this.createdTimestamp, audience.createdTimestamp) &&
         Objects.equals(this.description, audience.description) &&
         Objects.equals(this.id, audience.id) &&
+        Objects.equals(this.isNca, audience.isNca) &&
         Objects.equals(this.name, audience.name) &&
         Objects.equals(this.rule, audience.rule) &&
         Objects.equals(this.size, audience.size) &&
@@ -331,7 +359,7 @@ public class Audience  {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, audienceType, createdByCompanyName, createdTimestamp, description, id, name, rule, size, status, type, updatedTimestamp);
+    return Objects.hash(adAccountId, audienceType, createdByCompanyName, createdTimestamp, description, id, isNca, name, rule, size, status, type, updatedTimestamp);
   }
 
   @Override
@@ -345,6 +373,7 @@ public class Audience  {
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isNca: ").append(toIndentedString(isNca)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
@@ -360,10 +389,7 @@ public class Audience  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

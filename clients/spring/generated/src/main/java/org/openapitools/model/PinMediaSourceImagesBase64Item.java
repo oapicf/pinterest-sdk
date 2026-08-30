@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -9,29 +10,32 @@ import org.openapitools.model.ContentType;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * PinMediaSourceImagesBase64Item
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinMediaSourceImagesBase64Item {
 
   private ContentType contentType;
 
   private String data;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String description;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String link;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String title;
 
   public PinMediaSourceImagesBase64Item() {
@@ -62,6 +66,7 @@ public class PinMediaSourceImagesBase64Item {
     return contentType;
   }
 
+  @JsonProperty("content_type")
   public void setContentType(ContentType contentType) {
     this.contentType = contentType;
   }
@@ -82,6 +87,7 @@ public class PinMediaSourceImagesBase64Item {
     return data;
   }
 
+  @JsonProperty("data")
   public void setData(String data) {
     this.data = data;
   }
@@ -102,6 +108,7 @@ public class PinMediaSourceImagesBase64Item {
     return description;
   }
 
+  @JsonProperty("description")
   public void setDescription(@Nullable String description) {
     this.description = description;
   }
@@ -122,6 +129,7 @@ public class PinMediaSourceImagesBase64Item {
     return link;
   }
 
+  @JsonProperty("link")
   public void setLink(@Nullable String link) {
     this.link = link;
   }
@@ -142,6 +150,7 @@ public class PinMediaSourceImagesBase64Item {
     return title;
   }
 
+  @JsonProperty("title")
   public void setTitle(@Nullable String title) {
     this.title = title;
   }
@@ -184,11 +193,8 @@ public class PinMediaSourceImagesBase64Item {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

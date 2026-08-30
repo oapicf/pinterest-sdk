@@ -9,48 +9,17 @@
 
 
 #include <string>
-#include "AvailabilityFilter.h"
-#include "BrandFilter.h"
+#include "CatalogsBaseFilterKeys.h"
 #include "CatalogsProductGroupCurrencyCriteria.h"
 #include "CatalogsProductGroupFilterOperatorTypeCriteria.h"
 #include "CatalogsProductGroupMultipleGenderCriteria.h"
 #include "CatalogsProductGroupMultipleMediaTypesCriteria.h"
+#include "CatalogsProductGroupMultiplePinterestProductCategoryCriteria.h"
 #include "CatalogsProductGroupMultipleStringCriteria.h"
 #include "CatalogsProductGroupMultipleStringListCriteria.h"
 #include "CatalogsProductGroupPricingCriteria.h"
 #include "CatalogsProductGroupUint32Criteria.h"
-#include "ConditionFilter.h"
-#include "CurrencyFilter.h"
-#include "CustomLabel0Filter.h"
-#include "CustomLabel1Filter.h"
-#include "CustomLabel2Filter.h"
-#include "CustomLabel3Filter.h"
-#include "CustomLabel4Filter.h"
-#include "CustomNumber0Filter.h"
-#include "CustomNumber1Filter.h"
-#include "CustomNumber2Filter.h"
-#include "CustomNumber3Filter.h"
-#include "CustomNumber4Filter.h"
-#include "GenderFilter.h"
-#include "GoogleProductCategory0Filter.h"
-#include "GoogleProductCategory1Filter.h"
-#include "GoogleProductCategory2Filter.h"
-#include "GoogleProductCategory3Filter.h"
-#include "GoogleProductCategory4Filter.h"
-#include "GoogleProductCategory5Filter.h"
-#include "GoogleProductCategory6Filter.h"
-#include "ItemGroupIdFilter.h"
-#include "ItemIdFilter.h"
-#include "MaxPriceFilter.h"
-#include "MediaTypeFilter.h"
-#include "MinPriceFilter.h"
 #include "ProductGroupReferenceFilter.h"
-#include "ProductType0Filter.h"
-#include "ProductType1Filter.h"
-#include "ProductType2Filter.h"
-#include "ProductType3Filter.h"
-#include "ProductType4Filter.h"
-#include "TitleKeywordsFilter.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -278,13 +247,6 @@ public:
 	void setGOOGLEPRODUCTCATEGORY0(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_0);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getPRODUCTGROUP();
-
-	/*! \brief Set 
-	 */
-	void setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria  pRODUCT_GROUP);
-	/*! \brief Get 
-	 */
 	CatalogsProductGroupUint32Criteria getCUSTOMNUMBER0();
 
 	/*! \brief Set 
@@ -325,6 +287,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS);
+	/*! \brief Get 
+	 */
+	CatalogsProductGroupMultiplePinterestProductCategoryCriteria getPINTERESTPRODUCTCATEGORIES();
+
+	/*! \brief Set 
+	 */
+	void setPINTERESTPRODUCTCATEGORIES(CatalogsProductGroupMultiplePinterestProductCategoryCriteria  pINTEREST_PRODUCT_CATEGORIES);
+	/*! \brief Get 
+	 */
+	CatalogsProductGroupMultipleStringCriteria getPRODUCTGROUP();
+
+	/*! \brief Set 
+	 */
+	void setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria  pRODUCT_GROUP);
 
 private:
 	CatalogsProductGroupPricingCriteria mIN_PRICE;
@@ -354,13 +330,14 @@ private:
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_2;
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_1;
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_0;
-	CatalogsProductGroupMultipleStringCriteria pRODUCT_GROUP;
 	CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_0;
 	CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_1;
 	CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_2;
 	CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_3;
 	CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_4;
 	CatalogsProductGroupMultipleStringCriteria tITLE_KEYWORDS;
+	CatalogsProductGroupMultiplePinterestProductCategoryCriteria pINTEREST_PRODUCT_CATEGORIES;
+	CatalogsProductGroupMultipleStringCriteria pRODUCT_GROUP;
 	void __init();
 	void __cleanup();
 

@@ -7,7 +7,6 @@ open OpenAPI.Model.CatalogsCreativeAssetsProduct
 open OpenAPI.Model.CatalogsCreativeAssetsProductMetadata
 open OpenAPI.Model.CatalogsHotelProduct
 open OpenAPI.Model.CatalogsRetailProduct
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Pin
 
 module CatalogsProduct =
@@ -17,7 +16,7 @@ module CatalogsProduct =
   [<CLIMutable>]
   type CatalogsProduct = {
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "metadata")>]
     Metadata : CatalogsCreativeAssetsProductMetadata;
     [<JsonProperty(PropertyName = "pin")>]

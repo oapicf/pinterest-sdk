@@ -7,7 +7,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { VerticalProductCategory } from './verticalProductCategory';
 import { ProductCategoriesEngagementType } from './productCategoriesEngagementType';
 
 
@@ -28,13 +27,17 @@ export interface TrendingProductCategory {
      */
     percent_relative_volume: number;
     /**
+     * Pinterest Product Category Id
+     */
+    pinterest_product_category_id: number;
+    /**
      * Product Category Name
      */
     product_category: string;
     /**
      * Vertical name associated with the product category
      */
-    verticals?: Array<VerticalProductCategory>;
+    verticals?: Array<string>;
 }
 export namespace TrendingProductCategory {
 }

@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 //
 // Cancel membership/partnership invites and/or requests.
 //
-delete_invites_results_response_array_t* BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *business_id, cancel_invites_body_t *cancel_invites_body);
+cancel_invites_response_t* BusinessAccessInviteAPI_cancelInvitesOrRequests(apiClient_t *apiClient, char *business_id, cancel_invites_request_t *cancel_invites_request);
 ```
 
 ### Parameters
@@ -58,11 +58,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
-**cancel_invites_body** | **[cancel_invites_body_t](cancel_invites_body.md) \*** | A list with invite ids | 
+**cancel_invites_request** | **[cancel_invites_request_t](cancel_invites_request.md) \*** |  | 
 
 ### Return type
 
-[delete_invites_results_response_array_t](delete_invites_results_response_array.md) *
+[cancel_invites_response_t](cancel_invites_response.md) *
 
 
 ### Authorization
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
-**create_asset_invites_request** | **[create_asset_invites_request_t](create_asset_invites_request.md) \*** | A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | 
+**create_asset_invites_request** | **[create_asset_invites_request_t](create_asset_invites_request.md) \*** |  | 
 
 ### Return type
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
-**create_membership_or_partnership_invites_body** | **[create_membership_or_partnership_invites_body_t](create_membership_or_partnership_invites_body.md) \*** | An object with the properties: invite_type, partners, members, business_role | 
+**create_membership_or_partnership_invites_body** | **[create_membership_or_partnership_invites_body_t](create_membership_or_partnership_invites_body.md) \*** |  | 
 
 ### Return type
 
@@ -155,10 +155,10 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
 **is_member** | **int \*** | A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true]
-**invite_status** | **[list_t](char.md) \*** | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
+**invite_status** | **[list_t](invite_filter_status.md) \*** | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
 **invite_type** | **invite_type_e** | Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

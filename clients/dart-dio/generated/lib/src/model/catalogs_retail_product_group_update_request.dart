@@ -20,7 +20,7 @@ part 'catalogs_retail_product_group_update_request.g.dart';
 /// * [description] 
 /// * [filters] 
 /// * [locale] 
-/// * [name] 
+/// * [name] - Name of catalog product group
 @BuiltValue()
 abstract class CatalogsRetailProductGroupUpdateRequest implements Built<CatalogsRetailProductGroupUpdateRequest, CatalogsRetailProductGroupUpdateRequestBuilder> {
   /// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -30,7 +30,7 @@ abstract class CatalogsRetailProductGroupUpdateRequest implements Built<Catalogs
 
   @BuiltValueField(wireName: r'country')
   Country? get country;
-  // enum countryEnum {  AD,  AE,  AF,  AG,  AI,  AL,  AM,  AO,  AQ,  AR,  AS,  AT,  AU,  AW,  AX,  AZ,  BA,  BB,  BD,  BE,  BF,  BG,  BH,  BI,  BJ,  BL,  BM,  BN,  BO,  BQ,  BR,  BS,  BT,  BV,  BW,  BY,  BZ,  CA,  CC,  CD,  CF,  CG,  CH,  CI,  CK,  CL,  CM,  CN,  CO,  CR,  CU,  CV,  CW,  CX,  CY,  CZ,  DE,  DJ,  DK,  DM,  DO,  DZ,  EC,  EE,  EG,  EH,  ER,  ES,  ET,  FI,  FJ,  FK,  FM,  FO,  FR,  GA,  GB,  GD,  GE,  GF,  GG,  GH,  GI,  GL,  GM,  GN,  GP,  GQ,  GR,  GS,  GT,  GU,  GW,  GY,  HK,  HM,  HN,  HR,  HT,  HU,  ID,  IE,  IL,  IM,  IN,  IO,  IQ,  IR,  IS,  IT,  JE,  JM,  JO,  JP,  KE,  KG,  KH,  KI,  KM,  KN,  KR,  KW,  KY,  KZ,  LA,  LB,  LC,  LI,  LK,  LR,  LS,  LT,  LU,  LV,  LY,  MA,  MC,  MD,  ME,  MF,  MG,  MH,  MK,  ML,  MM,  MN,  MO,  MP,  MQ,  MR,  MS,  MT,  MU,  MV,  MW,  MX,  MY,  MZ,  NA,  NC,  NE,  NF,  NG,  NI,  NL,  NO,  NP,  NR,  NU,  NZ,  OM,  PA,  PE,  PF,  PG,  PH,  PK,  PL,  PM,  PN,  PR,  PS,  PT,  PW,  PY,  QA,  RE,  RO,  RS,  RU,  RW,  SA,  SB,  SC,  SD,  SE,  SG,  SH,  SI,  SJ,  SK,  SL,  SM,  SN,  SO,  SR,  SS,  ST,  SV,  SX,  SY,  SZ,  TC,  TD,  TF,  TG,  TH,  TJ,  TK,  TL,  TM,  TN,  TO,  TR,  TT,  TV,  TW,  TZ,  UA,  UG,  UM,  US,  UY,  UZ,  VA,  VC,  VE,  VG,  VI,  VN,  VU,  WF,  WS,  YE,  YT,  ZA,  ZM,  ZW,  };
+  // enum countryEnum {  AD,  AE,  AF,  AG,  AI,  AL,  AM,  AO,  AQ,  AR,  AS,  AT,  AU,  AW,  AX,  AZ,  BA,  BB,  BD,  BE,  BF,  BG,  BH,  BI,  BJ,  BL,  BM,  BN,  BO,  BQ,  BR,  BS,  BT,  BV,  BW,  BY,  BZ,  CA,  CC,  CD,  CF,  CG,  CH,  CI,  CK,  CL,  CM,  CN,  CO,  CR,  CU,  CV,  CW,  CX,  CY,  CZ,  DE,  DJ,  DK,  DM,  DO,  DZ,  EC,  EE,  EG,  EH,  ER,  ES,  ET,  FI,  FJ,  FK,  FM,  FO,  FR,  GA,  GB,  GD,  GE,  GF,  GG,  GH,  GI,  GL,  GM,  GN,  GP,  GQ,  GR,  GS,  GT,  GU,  GW,  GY,  HK,  HM,  HN,  HR,  HT,  HU,  ID,  IE,  IL,  IM,  IN,  IO,  IQ,  IR,  IS,  IT,  JE,  JM,  JO,  JP,  KE,  KG,  KH,  KI,  KM,  KN,  KR,  KW,  KY,  KZ,  LA,  LB,  LC,  LI,  LK,  LR,  LS,  LT,  LU,  LV,  LY,  MA,  MC,  MD,  ME,  MF,  MG,  MH,  MK,  ML,  MM,  MN,  MO,  MP,  MQ,  MR,  MS,  MT,  MU,  MV,  MW,  MX,  MY,  MZ,  NA,  NC,  NE,  NF,  NG,  NI,  NL,  false,  NP,  NR,  NU,  NZ,  OM,  PA,  PE,  PF,  PG,  PH,  PK,  PL,  PM,  PN,  PR,  PS,  PT,  PW,  PY,  QA,  RE,  RO,  RS,  RU,  RW,  SA,  SB,  SC,  SD,  SE,  SG,  SH,  SI,  SJ,  SK,  SL,  SM,  SN,  SO,  SR,  SS,  ST,  SV,  SX,  SY,  SZ,  TC,  TD,  TF,  TG,  TH,  TJ,  TK,  TL,  TM,  TN,  TO,  TR,  TT,  TV,  TW,  TZ,  UA,  UG,  UM,  US,  UY,  UZ,  VA,  VC,  VE,  VG,  VI,  VN,  VU,  WF,  WS,  YE,  YT,  ZA,  ZM,  ZW,  };
 
   @BuiltValueField(wireName: r'description')
   String? get description;
@@ -42,6 +42,7 @@ abstract class CatalogsRetailProductGroupUpdateRequest implements Built<Catalogs
   CatalogsLocale? get locale;
   // enum localeEnum {  af-ZA,  ar-SA,  bg-BG,  bn-IN,  cs-CZ,  da-DK,  de,  el-GR,  en-AU,  en-CA,  en-GB,  en-IN,  en-US,  es-419,  es-AR,  es-ES,  es-MX,  fi-FI,  fr,  fr-CA,  he-IL,  hi-IN,  hr-HR,  hu-HU,  id-ID,  it,  ja,  ko-KR,  ms-MY,  nb-NO,  nl,  pl-PL,  pt-BR,  pt-PT,  ro-RO,  ru-RU,  sk-SK,  sv-SE,  te-IN,  th-TH,  tl-PH,  tr,  uk-UA,  vi-VN,  zh-CN,  zh-TW,  };
 
+  /// Name of catalog product group
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -136,15 +137,17 @@ class _$CatalogsRetailProductGroupUpdateRequestSerializer implements PrimitiveSe
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum),
-          ) as CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum;
+            specifiedType: const FullType.nullable(CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum),
+          ) as CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum?;
+          if (valueDes == null) continue;
           result.catalogType = valueDes;
           break;
         case r'country':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Country),
-          ) as Country;
+            specifiedType: const FullType.nullable(Country),
+          ) as Country?;
+          if (valueDes == null) continue;
           result.country = valueDes;
           break;
         case r'description':
@@ -158,22 +161,25 @@ class _$CatalogsRetailProductGroupUpdateRequestSerializer implements PrimitiveSe
         case r'filters':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsProductGroupFiltersRequest),
-          ) as CatalogsProductGroupFiltersRequest;
+            specifiedType: const FullType.nullable(CatalogsProductGroupFiltersRequest),
+          ) as CatalogsProductGroupFiltersRequest?;
+          if (valueDes == null) continue;
           result.filters.replace(valueDes);
           break;
         case r'locale':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsLocale),
-          ) as CatalogsLocale;
+            specifiedType: const FullType.nullable(CatalogsLocale),
+          ) as CatalogsLocale?;
+          if (valueDes == null) continue;
           result.locale = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         default:

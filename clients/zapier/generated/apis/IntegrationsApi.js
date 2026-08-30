@@ -1,13 +1,13 @@
 const samples = require('../samples/IntegrationsApi');
-const Error = require('../models/Error');
-const IntegrationLogsRequest = require('../models/IntegrationLogsRequest');
+const IntegrationLogsInvalidLogResponse = require('../models/IntegrationLogsInvalidLogResponse');
+const IntegrationLogsRequestCreate = require('../models/IntegrationLogsRequestCreate');
 const IntegrationLogsSuccessResponse = require('../models/IntegrationLogsSuccessResponse');
 const IntegrationMetadata = require('../models/IntegrationMetadata');
+const IntegrationMetadataCreate = require('../models/IntegrationMetadataCreate');
+const IntegrationMetadataUpdate = require('../models/IntegrationMetadataUpdate');
 const IntegrationRecord = require('../models/IntegrationRecord');
-const IntegrationRequest = require('../models/IntegrationRequest');
-const IntegrationRequestPatch = require('../models/IntegrationRequestPatch');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const integrations_get_list_200_response = require('../models/integrations_get_list_200_response');
-const integrations_logs_post_400_response = require('../models/integrations_logs_post_400_response');
 const utils = require('../utils/utils');
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
             inputFields: [
                 {
                     key: 'id',
-                    label: 'Integration ID.',
+                    label: 'Integration record ID.',
                     type: 'string',
                     required: true,
                 },
@@ -71,7 +71,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -121,6 +121,7 @@ module.exports = {
                 },
             ],
             outputFields: [
+                ...IntegrationMetadata.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -142,7 +143,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: { data: {} }
+            sample: samples['IntegrationMetadataSample']
         }
     },
     integrationsCommerce/get: {
@@ -204,7 +205,7 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...IntegrationRequestPatch.fields(),
+                ...IntegrationMetadataUpdate.fields(),
             ],
             outputFields: [
                 ...IntegrationMetadata.fields('', false),
@@ -221,7 +222,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...IntegrationRequestPatch.mapping(bundle),
+                        ...IntegrationMetadataUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -243,7 +244,7 @@ module.exports = {
         },
         operation: {
             inputFields: [
-                ...IntegrationRequest.fields(),
+                ...IntegrationMetadataCreate.fields(),
             ],
             outputFields: [
                 ...IntegrationMetadata.fields('', false),
@@ -260,7 +261,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...IntegrationRequest.mapping(bundle),
+                        ...IntegrationMetadataCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -269,7 +270,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['IntegrationMetadataSample']
+            sample: samples['IntegrationMetadataSample']samples['IntegrationMetadataSample']
         }
     },
     integrationsLogs/post: {
@@ -282,7 +283,7 @@ module.exports = {
         },
         operation: {
             inputFields: [
-                ...IntegrationLogsRequest.fields(),
+                ...IntegrationLogsRequestCreate.fields(),
             ],
             outputFields: [
                 ...IntegrationLogsSuccessResponse.fields('', false),
@@ -299,7 +300,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...IntegrationLogsRequest.mapping(bundle),
+                        ...IntegrationLogsRequestCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {

@@ -8,9 +8,10 @@
 #' @description AdvancedAuctionItemsSubmitDeleteRecord Class
 #' @format An \code{R6Class} generator object
 #' @field country  \link{Country}
+#' @field errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. list(\link{AdvancedAuctionOperationError}) [optional]
 #' @field item_id The catalog retail item id in the merchant namespace character
 #' @field language  \link{Language}
-#' @field errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. list(\link{AdvancedAuctionOperationError}) [optional]
+#' @field operation  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,9 +19,10 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
   "AdvancedAuctionItemsSubmitDeleteRecord",
   public = list(
     `country` = NULL,
+    `errors` = NULL,
     `item_id` = NULL,
     `language` = NULL,
-    `errors` = NULL,
+    `operation` = NULL,
 
     #' @description
     #' Initialize a new AdvancedAuctionItemsSubmitDeleteRecord class.
@@ -28,9 +30,10 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
     #' @param country country
     #' @param item_id The catalog retail item id in the merchant namespace
     #' @param language language
+    #' @param operation operation
     #' @param errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
     #' @param ... Other optional arguments.
-    initialize = function(`country`, `item_id`, `language`, `errors` = NULL, ...) {
+    initialize = function(`country`, `item_id`, `language`, `operation`, `errors` = NULL, ...) {
       if (!missing(`country`)) {
         if (!(`country` %in% c())) {
           stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
@@ -50,6 +53,15 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
         }
         stopifnot(R6::is.R6(`language`))
         self$`language` <- `language`
+      }
+      if (!missing(`operation`)) {
+        if (!(`operation` %in% c("DELETE"))) {
+          stop(paste("Error! \"", `operation`, "\" cannot be assigned to `operation`. Must be \"DELETE\".", sep = ""))
+        }
+        if (!(is.character(`operation`) && length(`operation`) == 1)) {
+          stop(paste("Error! Invalid data for `operation`. Must be a string:", `operation`))
+        }
+        self$`operation` <- `operation`
       }
       if (!is.null(`errors`)) {
         stopifnot(is.vector(`errors`), length(`errors`) != 0)
@@ -91,7 +103,11 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
       AdvancedAuctionItemsSubmitDeleteRecordObject <- list()
       if (!is.null(self$`country`)) {
         AdvancedAuctionItemsSubmitDeleteRecordObject[["country"]] <-
-          self$`country`$toSimpleType()
+          self$extractSimpleType(self$`country`)
+      }
+      if (!is.null(self$`errors`)) {
+        AdvancedAuctionItemsSubmitDeleteRecordObject[["errors"]] <-
+          self$extractSimpleType(self$`errors`)
       }
       if (!is.null(self$`item_id`)) {
         AdvancedAuctionItemsSubmitDeleteRecordObject[["item_id"]] <-
@@ -99,13 +115,36 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
       }
       if (!is.null(self$`language`)) {
         AdvancedAuctionItemsSubmitDeleteRecordObject[["language"]] <-
-          self$`language`$toSimpleType()
+          self$extractSimpleType(self$`language`)
       }
-      if (!is.null(self$`errors`)) {
-        AdvancedAuctionItemsSubmitDeleteRecordObject[["errors"]] <-
-          lapply(self$`errors`, function(x) x$toSimpleType())
+      if (!is.null(self$`operation`)) {
+        AdvancedAuctionItemsSubmitDeleteRecordObject[["operation"]] <-
+          self$`operation`
       }
       return(AdvancedAuctionItemsSubmitDeleteRecordObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -120,6 +159,9 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
         `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
         self$`country` <- `country_object`
       }
+      if (!is.null(this_object$`errors`)) {
+        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AdvancedAuctionOperationError]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`item_id`)) {
         self$`item_id` <- this_object$`item_id`
       }
@@ -128,8 +170,11 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
         `language_object`$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
         self$`language` <- `language_object`
       }
-      if (!is.null(this_object$`errors`)) {
-        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AdvancedAuctionOperationError]", loadNamespace("openapi"))
+      if (!is.null(this_object$`operation`)) {
+        if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("DELETE"))) {
+          stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"DELETE\".", sep = ""))
+        }
+        self$`operation` <- this_object$`operation`
       }
       self
     },
@@ -153,9 +198,13 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AdvancedAuctionOperationError]", loadNamespace("openapi"))
       self$`item_id` <- this_object$`item_id`
       self$`language` <- Language$new()$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
-      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AdvancedAuctionOperationError]", loadNamespace("openapi"))
+      if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("DELETE"))) {
+        stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"DELETE\".", sep = ""))
+      }
+      self$`operation` <- this_object$`operation`
       self
     },
 
@@ -184,6 +233,14 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`language`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AdvancedAuctionItemsSubmitDeleteRecord: the required field `language` is missing."))
+      }
+      # check the required field `operation`
+      if (!is.null(input_json$`operation`)) {
+        if (!(is.character(input_json$`operation`) && length(input_json$`operation`) == 1)) {
+          stop(paste("Error! Invalid data for `operation`. Must be a string:", input_json$`operation`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AdvancedAuctionItemsSubmitDeleteRecord: the required field `operation` is missing."))
       }
     },
 
@@ -215,6 +272,11 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `operation` is null
+      if (is.null(self$`operation`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -237,6 +299,11 @@ AdvancedAuctionItemsSubmitDeleteRecord <- R6::R6Class(
       # check if the required `language` is null
       if (is.null(self$`language`)) {
         invalid_fields["language"] <- "Non-nullable required field `language` cannot be null."
+      }
+
+      # check if the required `operation` is null
+      if (is.null(self$`operation`)) {
+        invalid_fields["operation"] <- "Non-nullable required field `operation` cannot be null."
       }
 
       invalid_fields

@@ -4,39 +4,21 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.vertxweb.server.model.AudienceAccountType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SharedAudienceAccount   {
   
   private String accountId;
   private String accountName;
-
-
-  public enum AccountTypeEnum {
-    AD_ACCOUNT("AD_ACCOUNT"),
-    BUSINESS_ACCOUNT("BUSINESS_ACCOUNT");
-
-    private String value;
-
-    AccountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private AccountTypeEnum accountType;
+  private AudienceAccountType accountType;
   private Integer sharedOnTimestamp;
 
   public SharedAudienceAccount () {
 
   }
 
-  public SharedAudienceAccount (String accountId, String accountName, AccountTypeEnum accountType, Integer sharedOnTimestamp) {
+  public SharedAudienceAccount (String accountId, String accountName, AudienceAccountType accountType, Integer sharedOnTimestamp) {
     this.accountId = accountId;
     this.accountName = accountName;
     this.accountType = accountType;
@@ -63,10 +45,10 @@ public class SharedAudienceAccount   {
 
     
   @JsonProperty("account_type")
-  public AccountTypeEnum getAccountType() {
+  public AudienceAccountType getAccountType() {
     return accountType;
   }
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(AudienceAccountType accountType) {
     this.accountType = accountType;
   }
 
@@ -118,9 +100,6 @@ public class SharedAudienceAccount   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

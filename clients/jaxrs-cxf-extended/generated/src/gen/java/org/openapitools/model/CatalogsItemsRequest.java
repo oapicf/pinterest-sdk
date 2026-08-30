@@ -118,7 +118,7 @@ public enum LanguageEnum {
     @JsonProperty("NB") NB(String.valueOf("NB")),
     @JsonProperty("NE") NE(String.valueOf("NE")),
     @JsonProperty("NL") NL2(String.valueOf("NL")),
-    @JsonProperty("NO") NO(String.valueOf("NO")),
+    @JsonProperty("false") FALSE(String.valueOf("false")),
     @JsonProperty("PL") PL(String.valueOf("PL")),
     @JsonProperty("PT") PT(String.valueOf("PT")),
     @JsonProperty("RO") RO(String.valueOf("RO")),
@@ -279,10 +279,7 @@ public enum LanguageEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

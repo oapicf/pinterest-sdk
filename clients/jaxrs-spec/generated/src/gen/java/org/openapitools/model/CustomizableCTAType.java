@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
  */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public enum CustomizableCTAType {
   
   GET_OFFER("GET_OFFER"),
@@ -58,6 +59,8 @@ public enum CustomizableCTAType {
   
   FIND_A_LOCATION("FIND_A_LOCATION"),
   
+  FIND_RETAILERS("FIND_RETAILERS"),
+  
   GET_DEAL("GET_DEAL"),
   
   GET_RECIPE("GET_RECIPE"),
@@ -68,7 +71,9 @@ public enum CustomizableCTAType {
   
   PLAY_GAME("PLAY_GAME"),
   
-  TRY_IT("TRY_IT");
+  TRY_IT("TRY_IT"),
+  
+  TAKE_A_PEEK("TAKE_A_PEEK");
 
   private String value;
 

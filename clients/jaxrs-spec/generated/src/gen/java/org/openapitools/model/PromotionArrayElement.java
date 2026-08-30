@@ -3,7 +3,7 @@ package org.openapitools.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.model.Exception;
-import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.Promotion;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,9 +18,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("PromotionArrayElement")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PromotionArrayElement   {
-  private PromotionResponse data;
+  private Promotion data;
   private Exception exception;
 
   public PromotionArrayElement() {
@@ -28,7 +28,7 @@ public class PromotionArrayElement   {
 
   /**
    **/
-  public PromotionArrayElement data(PromotionResponse data) {
+  public PromotionArrayElement data(Promotion data) {
     this.data = data;
     return this;
   }
@@ -36,12 +36,12 @@ public class PromotionArrayElement   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  @Valid public PromotionResponse getData() {
+  @Valid public Promotion getData() {
     return data;
   }
 
   @JsonProperty("data")
-  public void setData(PromotionResponse data) {
+  public void setData(Promotion data) {
     this.data = data;
   }
 
@@ -99,12 +99,8 @@ public class PromotionArrayElement   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

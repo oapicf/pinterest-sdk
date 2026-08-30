@@ -2,7 +2,6 @@
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.catalogs-hotel-attributes :refer :all]
-            [pinterest-rest-api.specs.catalogs-type :refer :all]
             [pinterest-rest-api.specs.pin :refer :all]
             )
   (:import (java.io File)))
@@ -11,8 +10,9 @@
 (def catalogs-hotel-item-response-data
   {
    (ds/opt :attributes) catalogs-hotel-attributes-spec
-   (ds/req :catalog_type) catalogs-type-spec
+   (ds/req :catalog_type) string?
    (ds/opt :hotel_id) string?
+   (ds/req :item_response_kind) string?
    (ds/opt :pins) (s/coll-of pin-spec)
    })
 

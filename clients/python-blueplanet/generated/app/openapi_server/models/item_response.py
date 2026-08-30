@@ -7,9 +7,12 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.catalogs_creative_assets_attributes import CatalogsCreativeAssetsAttributes  # noqa: F401,E501
-from app.openapi_server.models.catalogs_type import CatalogsType  # noqa: F401,E501
-from app.openapi_server.models.item_response_one_of import ItemResponseOneOf  # noqa: F401,E501
-from app.openapi_server.models.item_response_one_of1 import ItemResponseOneOf1  # noqa: F401,E501
+from app.openapi_server.models.catalogs_creative_assets_item_error_response import CatalogsCreativeAssetsItemErrorResponse  # noqa: F401,E501
+from app.openapi_server.models.catalogs_creative_assets_item_response import CatalogsCreativeAssetsItemResponse  # noqa: F401,E501
+from app.openapi_server.models.catalogs_hotel_item_error_response import CatalogsHotelItemErrorResponse  # noqa: F401,E501
+from app.openapi_server.models.catalogs_hotel_item_response import CatalogsHotelItemResponse  # noqa: F401,E501
+from app.openapi_server.models.catalogs_retail_item_error_response import CatalogsRetailItemErrorResponse  # noqa: F401,E501
+from app.openapi_server.models.catalogs_retail_item_response import CatalogsRetailItemResponse  # noqa: F401,E501
 from app.openapi_server.models.item_validation_event import ItemValidationEvent  # noqa: F401,E501
 from app.openapi_server.models.pin import Pin  # noqa: F401,E501
 from openapi_server import util
@@ -21,15 +24,17 @@ class ItemResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, catalog_type: CatalogsType=None, attributes: CatalogsCreativeAssetsAttributes=None, item_id: str=None, pins: List[Pin]=None, hotel_id: str=None, creative_assets_id: str=None, errors: List[ItemValidationEvent]=None):  # noqa: E501
+    def __init__(self, attributes: CatalogsCreativeAssetsAttributes=None, catalog_type: str=None, item_id: str=None, item_response_kind: str=None, pins: List[Pin]=None, hotel_id: str=None, creative_assets_id: str=None, errors: List[ItemValidationEvent]=None):  # noqa: E501
         """ItemResponse - a model defined in Swagger
 
-        :param catalog_type: The catalog_type of this ItemResponse.  # noqa: E501
-        :type catalog_type: CatalogsType
         :param attributes: The attributes of this ItemResponse.  # noqa: E501
         :type attributes: CatalogsCreativeAssetsAttributes
+        :param catalog_type: The catalog_type of this ItemResponse.  # noqa: E501
+        :type catalog_type: str
         :param item_id: The item_id of this ItemResponse.  # noqa: E501
         :type item_id: str
+        :param item_response_kind: The item_response_kind of this ItemResponse.  # noqa: E501
+        :type item_response_kind: str
         :param pins: The pins of this ItemResponse.  # noqa: E501
         :type pins: List[Pin]
         :param hotel_id: The hotel_id of this ItemResponse.  # noqa: E501
@@ -40,9 +45,10 @@ class ItemResponse(Model):
         :type errors: List[ItemValidationEvent]
         """
         self.swagger_types = {
-            'catalog_type': CatalogsType,
             'attributes': CatalogsCreativeAssetsAttributes,
+            'catalog_type': str,
             'item_id': str,
+            'item_response_kind': str,
             'pins': List[Pin],
             'hotel_id': str,
             'creative_assets_id': str,
@@ -50,18 +56,20 @@ class ItemResponse(Model):
         }
 
         self.attribute_map = {
-            'catalog_type': 'catalog_type',
             'attributes': 'attributes',
+            'catalog_type': 'catalog_type',
             'item_id': 'item_id',
+            'item_response_kind': 'item_response_kind',
             'pins': 'pins',
             'hotel_id': 'hotel_id',
             'creative_assets_id': 'creative_assets_id',
             'errors': 'errors'
         }
 
-        self._catalog_type = catalog_type
         self._attributes = attributes
+        self._catalog_type = catalog_type
         self._item_id = item_id
+        self._item_response_kind = item_response_kind
         self._pins = pins
         self._hotel_id = hotel_id
         self._creative_assets_id = creative_assets_id
@@ -77,29 +85,6 @@ class ItemResponse(Model):
         :rtype: ItemResponse
         """
         return util.deserialize_model(dikt, cls)
-
-    @property
-    def catalog_type(self) -> CatalogsType:
-        """Gets the catalog_type of this ItemResponse.
-
-
-        :return: The catalog_type of this ItemResponse.
-        :rtype: CatalogsType
-        """
-        return self._catalog_type
-
-    @catalog_type.setter
-    def catalog_type(self, catalog_type: CatalogsType):
-        """Sets the catalog_type of this ItemResponse.
-
-
-        :param catalog_type: The catalog_type of this ItemResponse.
-        :type catalog_type: CatalogsType
-        """
-        if catalog_type is None:
-            raise ValueError("Invalid value for `catalog_type`, must not be `None`")  # noqa: E501
-
-        self._catalog_type = catalog_type
 
     @property
     def attributes(self) -> CatalogsCreativeAssetsAttributes:
@@ -123,6 +108,33 @@ class ItemResponse(Model):
         self._attributes = attributes
 
     @property
+    def catalog_type(self) -> str:
+        """Gets the catalog_type of this ItemResponse.
+
+
+        :return: The catalog_type of this ItemResponse.
+        :rtype: str
+        """
+        return self._catalog_type
+
+    @catalog_type.setter
+    def catalog_type(self, catalog_type: str):
+        """Sets the catalog_type of this ItemResponse.
+
+
+        :param catalog_type: The catalog_type of this ItemResponse.
+        :type catalog_type: str
+        """
+        allowed_values = ["CREATIVE_ASSETS"]  # noqa: E501
+        if catalog_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `catalog_type` ({0}), must be one of {1}"
+                .format(catalog_type, allowed_values)
+            )
+
+        self._catalog_type = catalog_type
+
+    @property
     def item_id(self) -> str:
         """Gets the item_id of this ItemResponse.
 
@@ -144,6 +156,35 @@ class ItemResponse(Model):
         """
 
         self._item_id = item_id
+
+    @property
+    def item_response_kind(self) -> str:
+        """Gets the item_response_kind of this ItemResponse.
+
+        Discriminator literal identifying this leaf inside an `ItemResponse` payload.  # noqa: E501
+
+        :return: The item_response_kind of this ItemResponse.
+        :rtype: str
+        """
+        return self._item_response_kind
+
+    @item_response_kind.setter
+    def item_response_kind(self, item_response_kind: str):
+        """Sets the item_response_kind of this ItemResponse.
+
+        Discriminator literal identifying this leaf inside an `ItemResponse` payload.  # noqa: E501
+
+        :param item_response_kind: The item_response_kind of this ItemResponse.
+        :type item_response_kind: str
+        """
+        allowed_values = ["creative_assets_item_error"]  # noqa: E501
+        if item_response_kind not in allowed_values:
+            raise ValueError(
+                "Invalid value for `item_response_kind` ({0}), must be one of {1}"
+                .format(item_response_kind, allowed_values)
+            )
+
+        self._item_response_kind = item_response_kind
 
     @property
     def pins(self) -> List[Pin]:

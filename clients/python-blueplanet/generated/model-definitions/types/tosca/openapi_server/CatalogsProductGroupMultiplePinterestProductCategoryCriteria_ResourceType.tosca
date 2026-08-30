@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupMultiplePinterestProductCategoryCriteria"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupMultiplePinterestProductCategoryCriteria"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ProductCategoryEnum = openapi_server.resourceTypes.ProductCategoryEnum
+}
+resourceTypes {
+
+  CatalogsProductGroupMultiplePinterestProductCategoryCriteria {
+    title = CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+    description = CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+    derivedFrom = Root
+    properties {
+        negated {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        values {
+          type = array
+          items.type = ProductCategoryEnum
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupMultiplePinterestProductCategoryCriteria {
+    title = CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+    description = CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+    implements = openapi_server.resourceTypes.CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+
+  }
+}

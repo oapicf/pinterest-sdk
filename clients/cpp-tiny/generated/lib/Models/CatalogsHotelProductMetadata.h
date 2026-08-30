@@ -51,7 +51,7 @@ public:
 
 	/*! \brief Set The user-created unique ID that represents the hotel item.
 	 */
-	void setHotelId(std::string  hotel_id);
+	void setHotelId(std::string hotel_id);
 
 
     private:

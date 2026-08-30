@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.PlacementType
 open System.Collections.Generic
 
 module PlacementMultipliers =
@@ -12,7 +13,7 @@ module PlacementMultipliers =
   [<CLIMutable>]
   type PlacementMultipliers = {
     [<JsonProperty(PropertyName = "PLACEMENT")>]
-    PLACEMENT : string;
+    PLACEMENT : PlacementType;
   }
 
   //#endregion

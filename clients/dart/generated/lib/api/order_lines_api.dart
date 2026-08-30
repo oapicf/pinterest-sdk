@@ -24,16 +24,16 @@ class OrderLinesApi {
   ///
   /// Parameters:
   ///
+  /// * [String] orderLineId (required):
+  ///   Order line ID.
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] orderLineId (required):
-  ///   Unique identifier of an order line.
-  Future<Response> orderLinesGetWithHttpInfo(String adAccountId, String orderLineId,) async {
+  Future<Response> orderLinesGetWithHttpInfo(String orderLineId, String adAccountId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/order_lines/{order_line_id}'
-      .replaceAll('{ad_account_id}', adAccountId)
-      .replaceAll('{order_line_id}', orderLineId);
+      .replaceAll('{order_line_id}', orderLineId)
+      .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -53,6 +53,7 @@ class OrderLinesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -62,13 +63,13 @@ class OrderLinesApi {
   ///
   /// Parameters:
   ///
+  /// * [String] orderLineId (required):
+  ///   Order line ID.
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] orderLineId (required):
-  ///   Unique identifier of an order line.
-  Future<OrderLine?> orderLinesGet(String adAccountId, String orderLineId,) async {
-    final response = await orderLinesGetWithHttpInfo(adAccountId, orderLineId,);
+  Future<OrderLine?> orderLinesGet(String orderLineId, String adAccountId, { Future<void>? abortTrigger, }) async {
+    final response = await orderLinesGetWithHttpInfo(orderLineId, adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -82,7 +83,7 @@ class OrderLinesApi {
     return null;
   }
 
-  /// Get order lines
+  /// Get order lines.
   ///
   /// List existing order lines associated with an ad account.
   ///
@@ -93,15 +94,15 @@ class OrderLinesApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> orderLinesListWithHttpInfo(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<Response> orderLinesListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/order_lines'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -113,14 +114,14 @@ class OrderLinesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
     if (order != null) {
       queryParams.addAll(_queryParams('', 'order', order));
-    }
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
 
     const contentTypes = <String>[];
@@ -134,10 +135,11 @@ class OrderLinesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Get order lines
+  /// Get order lines.
   ///
   /// List existing order lines associated with an ad account.
   ///
@@ -146,16 +148,16 @@ class OrderLinesApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<OrderLinesList200Response?> orderLinesList(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
-    final response = await orderLinesListWithHttpInfo(adAccountId,  pageSize: pageSize, order: order, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<OrderLinesList200Response?> orderLinesList(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
+    final response = await orderLinesListWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -1,14 +1,14 @@
 (ns pinterest-rest-api.specs.delete-partner-asset-access-body
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.delete-partner-asset-access-body-accesses-inner :refer :all]
+            [pinterest-rest-api.specs.delete-partner-asset-access-item :refer :all]
             )
   (:import (java.io File)))
 
 
 (def delete-partner-asset-access-body-data
   {
-   (ds/req :accesses) (s/coll-of delete-partner-asset-access-body-accesses-inner-spec)
+   (ds/req :accesses) (s/coll-of delete-partner-asset-access-item-spec)
    })
 
 (def delete-partner-asset-access-body-spec

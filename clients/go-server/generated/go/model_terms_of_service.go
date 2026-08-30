@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,6 +14,7 @@ package openapi
 
 
 
+// TermsOfService - The ID of the ad account.
 type TermsOfService struct {
 
 	// The ID of the ad account.
@@ -29,7 +30,8 @@ type TermsOfService struct {
 	Id string `json:"id,omitempty"`
 }
 
-// AssertTermsOfServiceRequired checks if the required fields are not zero-ed
+// AssertTermsOfServiceRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTermsOfServiceRequired(obj TermsOfService) error {
 	return nil
 }

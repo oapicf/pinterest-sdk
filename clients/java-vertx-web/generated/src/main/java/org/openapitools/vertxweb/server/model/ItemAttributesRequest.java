@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.ItemAttributesRequestAllOfImageLink;
+import org.openapitools.vertxweb.server.model.CatalogsAiContentDisclosure;
+import org.openapitools.vertxweb.server.model.ItemAttributesRequestImageLink;
 import org.openapitools.vertxweb.server.model.UpdatableItemAttributesGtin;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -61,8 +62,10 @@ public class ItemAttributesRequest   {
   private String adVideo1Tag;
   private String adVideo2Link;
   private String adVideo2Tag;
+  private List<String> additionalImageLink;
   private Boolean adult;
   private String ageGroup;
+  private List<CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
   private String androidDeepLink;
   private String availability;
   private BigDecimal averageReviewRating;
@@ -87,6 +90,7 @@ public class ItemAttributesRequest   {
   private String googleProductCategory;
   private UpdatableItemAttributesGtin gtin;
   private String id;
+  private ItemAttributesRequestImageLink imageLink;
   private String installmentPrice;
   private String iosDeepLink;
   private String itemGroupId;
@@ -104,6 +108,7 @@ public class ItemAttributesRequest   {
   private String promotionId;
   private String salePrice;
   private String salePriceEffectiveDate;
+  private Boolean savePinDisabled = false;
   private String shipping;
   private String shippingHeight;
   private String shippingWeight;
@@ -117,16 +122,13 @@ public class ItemAttributesRequest   {
   private String unitPricingMeasure;
   private List<String> variantNames;
   private List<String> variantValues;
-  private List<String> additionalImageLink;
-  private ItemAttributesRequestAllOfImageLink imageLink;
-  private Boolean savePinDisabled = false;
   private String videoLink;
 
   public ItemAttributesRequest () {
 
   }
 
-  public ItemAttributesRequest (String adImage0Link, String adImage0Tag, String adImage10Link, String adImage10Tag, String adImage11Link, String adImage11Tag, String adImage12Link, String adImage12Tag, String adImage13Link, String adImage13Tag, String adImage14Link, String adImage14Tag, String adImage15Link, String adImage15Tag, String adImage16Link, String adImage16Tag, String adImage17Link, String adImage17Tag, String adImage18Link, String adImage18Tag, String adImage19Link, String adImage19Tag, String adImage1Link, String adImage1Tag, String adImage2Link, String adImage2Tag, String adImage3Link, String adImage3Tag, String adImage4Link, String adImage4Tag, String adImage5Link, String adImage5Tag, String adImage6Link, String adImage6Tag, String adImage7Link, String adImage7Tag, String adImage8Link, String adImage8Tag, String adImage9Link, String adImage9Tag, String adLink, String adVideo0Link, String adVideo0Tag, String adVideo1Link, String adVideo1Tag, String adVideo2Link, String adVideo2Tag, Boolean adult, String ageGroup, String androidDeepLink, String availability, BigDecimal averageReviewRating, String brand, Boolean checkoutEnabled, String color, String condition, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, Integer customNumber0, Integer customNumber1, Integer customNumber2, Integer customNumber3, Integer customNumber4, String description, Boolean freeShippingLabel, String freeShippingLimit, String gender, String googleProductCategory, UpdatableItemAttributesGtin gtin, String id, String installmentPrice, String iosDeepLink, String itemGroupId, Long lastUpdatedTime, String link, String material, String minAdPrice, String mobileLink, String mpn, Integer numberOfRatings, Integer numberOfReviews, String pattern, String price, String productType, String promotionId, String salePrice, String salePriceEffectiveDate, String shipping, String shippingHeight, String shippingWeight, String shippingWidth, String size, String sizeSystem, String sizeType, String tax, String title, String unitPricingBaseMeasure, String unitPricingMeasure, List<String> variantNames, List<String> variantValues, List<String> additionalImageLink, ItemAttributesRequestAllOfImageLink imageLink, Boolean savePinDisabled, String videoLink) {
+  public ItemAttributesRequest (String adImage0Link, String adImage0Tag, String adImage10Link, String adImage10Tag, String adImage11Link, String adImage11Tag, String adImage12Link, String adImage12Tag, String adImage13Link, String adImage13Tag, String adImage14Link, String adImage14Tag, String adImage15Link, String adImage15Tag, String adImage16Link, String adImage16Tag, String adImage17Link, String adImage17Tag, String adImage18Link, String adImage18Tag, String adImage19Link, String adImage19Tag, String adImage1Link, String adImage1Tag, String adImage2Link, String adImage2Tag, String adImage3Link, String adImage3Tag, String adImage4Link, String adImage4Tag, String adImage5Link, String adImage5Tag, String adImage6Link, String adImage6Tag, String adImage7Link, String adImage7Tag, String adImage8Link, String adImage8Tag, String adImage9Link, String adImage9Tag, String adLink, String adVideo0Link, String adVideo0Tag, String adVideo1Link, String adVideo1Tag, String adVideo2Link, String adVideo2Tag, List<String> additionalImageLink, Boolean adult, String ageGroup, List<CatalogsAiContentDisclosure> aiDisclosures, String androidDeepLink, String availability, BigDecimal averageReviewRating, String brand, Boolean checkoutEnabled, String color, String condition, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, Integer customNumber0, Integer customNumber1, Integer customNumber2, Integer customNumber3, Integer customNumber4, String description, Boolean freeShippingLabel, String freeShippingLimit, String gender, String googleProductCategory, UpdatableItemAttributesGtin gtin, String id, ItemAttributesRequestImageLink imageLink, String installmentPrice, String iosDeepLink, String itemGroupId, Long lastUpdatedTime, String link, String material, String minAdPrice, String mobileLink, String mpn, Integer numberOfRatings, Integer numberOfReviews, String pattern, String price, String productType, String promotionId, String salePrice, String salePriceEffectiveDate, Boolean savePinDisabled, String shipping, String shippingHeight, String shippingWeight, String shippingWidth, String size, String sizeSystem, String sizeType, String tax, String title, String unitPricingBaseMeasure, String unitPricingMeasure, List<String> variantNames, List<String> variantValues, String videoLink) {
     this.adImage0Link = adImage0Link;
     this.adImage0Tag = adImage0Tag;
     this.adImage10Link = adImage10Link;
@@ -174,8 +176,10 @@ public class ItemAttributesRequest   {
     this.adVideo1Tag = adVideo1Tag;
     this.adVideo2Link = adVideo2Link;
     this.adVideo2Tag = adVideo2Tag;
+    this.additionalImageLink = additionalImageLink;
     this.adult = adult;
     this.ageGroup = ageGroup;
+    this.aiDisclosures = aiDisclosures;
     this.androidDeepLink = androidDeepLink;
     this.availability = availability;
     this.averageReviewRating = averageReviewRating;
@@ -200,6 +204,7 @@ public class ItemAttributesRequest   {
     this.googleProductCategory = googleProductCategory;
     this.gtin = gtin;
     this.id = id;
+    this.imageLink = imageLink;
     this.installmentPrice = installmentPrice;
     this.iosDeepLink = iosDeepLink;
     this.itemGroupId = itemGroupId;
@@ -217,6 +222,7 @@ public class ItemAttributesRequest   {
     this.promotionId = promotionId;
     this.salePrice = salePrice;
     this.salePriceEffectiveDate = salePriceEffectiveDate;
+    this.savePinDisabled = savePinDisabled;
     this.shipping = shipping;
     this.shippingHeight = shippingHeight;
     this.shippingWeight = shippingWeight;
@@ -230,9 +236,6 @@ public class ItemAttributesRequest   {
     this.unitPricingMeasure = unitPricingMeasure;
     this.variantNames = variantNames;
     this.variantValues = variantValues;
-    this.additionalImageLink = additionalImageLink;
-    this.imageLink = imageLink;
-    this.savePinDisabled = savePinDisabled;
     this.videoLink = videoLink;
   }
 
@@ -660,6 +663,15 @@ public class ItemAttributesRequest   {
   }
 
     
+  @JsonProperty("additional_image_link")
+  public List<String> getAdditionalImageLink() {
+    return additionalImageLink;
+  }
+  public void setAdditionalImageLink(List<String> additionalImageLink) {
+    this.additionalImageLink = additionalImageLink;
+  }
+
+    
   @JsonProperty("adult")
   public Boolean getAdult() {
     return adult;
@@ -675,6 +687,15 @@ public class ItemAttributesRequest   {
   }
   public void setAgeGroup(String ageGroup) {
     this.ageGroup = ageGroup;
+  }
+
+    
+  @JsonProperty("ai_disclosures")
+  public List<CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+  public void setAiDisclosures(List<CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
   }
 
     
@@ -894,6 +915,15 @@ public class ItemAttributesRequest   {
   }
 
     
+  @JsonProperty("image_link")
+  public ItemAttributesRequestImageLink getImageLink() {
+    return imageLink;
+  }
+  public void setImageLink(ItemAttributesRequestImageLink imageLink) {
+    this.imageLink = imageLink;
+  }
+
+    
   @JsonProperty("installment_price")
   public String getInstallmentPrice() {
     return installmentPrice;
@@ -1047,6 +1077,15 @@ public class ItemAttributesRequest   {
   }
 
     
+  @JsonProperty("save_pin_disabled")
+  public Boolean getSavePinDisabled() {
+    return savePinDisabled;
+  }
+  public void setSavePinDisabled(Boolean savePinDisabled) {
+    this.savePinDisabled = savePinDisabled;
+  }
+
+    
   @JsonProperty("shipping")
   public String getShipping() {
     return shipping;
@@ -1164,33 +1203,6 @@ public class ItemAttributesRequest   {
   }
 
     
-  @JsonProperty("additional_image_link")
-  public List<String> getAdditionalImageLink() {
-    return additionalImageLink;
-  }
-  public void setAdditionalImageLink(List<String> additionalImageLink) {
-    this.additionalImageLink = additionalImageLink;
-  }
-
-    
-  @JsonProperty("image_link")
-  public ItemAttributesRequestAllOfImageLink getImageLink() {
-    return imageLink;
-  }
-  public void setImageLink(ItemAttributesRequestAllOfImageLink imageLink) {
-    this.imageLink = imageLink;
-  }
-
-    
-  @JsonProperty("save_pin_disabled")
-  public Boolean getSavePinDisabled() {
-    return savePinDisabled;
-  }
-  public void setSavePinDisabled(Boolean savePinDisabled) {
-    this.savePinDisabled = savePinDisabled;
-  }
-
-    
   @JsonProperty("video_link")
   public String getVideoLink() {
     return videoLink;
@@ -1256,8 +1268,10 @@ public class ItemAttributesRequest   {
         Objects.equals(adVideo1Tag, itemAttributesRequest.adVideo1Tag) &&
         Objects.equals(adVideo2Link, itemAttributesRequest.adVideo2Link) &&
         Objects.equals(adVideo2Tag, itemAttributesRequest.adVideo2Tag) &&
+        Objects.equals(additionalImageLink, itemAttributesRequest.additionalImageLink) &&
         Objects.equals(adult, itemAttributesRequest.adult) &&
         Objects.equals(ageGroup, itemAttributesRequest.ageGroup) &&
+        Objects.equals(aiDisclosures, itemAttributesRequest.aiDisclosures) &&
         Objects.equals(androidDeepLink, itemAttributesRequest.androidDeepLink) &&
         Objects.equals(availability, itemAttributesRequest.availability) &&
         Objects.equals(averageReviewRating, itemAttributesRequest.averageReviewRating) &&
@@ -1282,6 +1296,7 @@ public class ItemAttributesRequest   {
         Objects.equals(googleProductCategory, itemAttributesRequest.googleProductCategory) &&
         Objects.equals(gtin, itemAttributesRequest.gtin) &&
         Objects.equals(id, itemAttributesRequest.id) &&
+        Objects.equals(imageLink, itemAttributesRequest.imageLink) &&
         Objects.equals(installmentPrice, itemAttributesRequest.installmentPrice) &&
         Objects.equals(iosDeepLink, itemAttributesRequest.iosDeepLink) &&
         Objects.equals(itemGroupId, itemAttributesRequest.itemGroupId) &&
@@ -1299,6 +1314,7 @@ public class ItemAttributesRequest   {
         Objects.equals(promotionId, itemAttributesRequest.promotionId) &&
         Objects.equals(salePrice, itemAttributesRequest.salePrice) &&
         Objects.equals(salePriceEffectiveDate, itemAttributesRequest.salePriceEffectiveDate) &&
+        Objects.equals(savePinDisabled, itemAttributesRequest.savePinDisabled) &&
         Objects.equals(shipping, itemAttributesRequest.shipping) &&
         Objects.equals(shippingHeight, itemAttributesRequest.shippingHeight) &&
         Objects.equals(shippingWeight, itemAttributesRequest.shippingWeight) &&
@@ -1312,15 +1328,12 @@ public class ItemAttributesRequest   {
         Objects.equals(unitPricingMeasure, itemAttributesRequest.unitPricingMeasure) &&
         Objects.equals(variantNames, itemAttributesRequest.variantNames) &&
         Objects.equals(variantValues, itemAttributesRequest.variantValues) &&
-        Objects.equals(additionalImageLink, itemAttributesRequest.additionalImageLink) &&
-        Objects.equals(imageLink, itemAttributesRequest.imageLink) &&
-        Objects.equals(savePinDisabled, itemAttributesRequest.savePinDisabled) &&
         Objects.equals(videoLink, itemAttributesRequest.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, adult, ageGroup, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, additionalImageLink, imageLink, savePinDisabled, videoLink);
+    return Objects.hash(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, additionalImageLink, adult, ageGroup, aiDisclosures, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, imageLink, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, savePinDisabled, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, videoLink);
   }
 
   @Override
@@ -1375,8 +1388,10 @@ public class ItemAttributesRequest   {
     sb.append("    adVideo1Tag: ").append(toIndentedString(adVideo1Tag)).append("\n");
     sb.append("    adVideo2Link: ").append(toIndentedString(adVideo2Link)).append("\n");
     sb.append("    adVideo2Tag: ").append(toIndentedString(adVideo2Tag)).append("\n");
+    sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
     sb.append("    adult: ").append(toIndentedString(adult)).append("\n");
     sb.append("    ageGroup: ").append(toIndentedString(ageGroup)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    androidDeepLink: ").append(toIndentedString(androidDeepLink)).append("\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
     sb.append("    averageReviewRating: ").append(toIndentedString(averageReviewRating)).append("\n");
@@ -1401,6 +1416,7 @@ public class ItemAttributesRequest   {
     sb.append("    googleProductCategory: ").append(toIndentedString(googleProductCategory)).append("\n");
     sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    installmentPrice: ").append(toIndentedString(installmentPrice)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
@@ -1418,6 +1434,7 @@ public class ItemAttributesRequest   {
     sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    salePriceEffectiveDate: ").append(toIndentedString(salePriceEffectiveDate)).append("\n");
+    sb.append("    savePinDisabled: ").append(toIndentedString(savePinDisabled)).append("\n");
     sb.append("    shipping: ").append(toIndentedString(shipping)).append("\n");
     sb.append("    shippingHeight: ").append(toIndentedString(shippingHeight)).append("\n");
     sb.append("    shippingWeight: ").append(toIndentedString(shippingWeight)).append("\n");
@@ -1431,9 +1448,6 @@ public class ItemAttributesRequest   {
     sb.append("    unitPricingMeasure: ").append(toIndentedString(unitPricingMeasure)).append("\n");
     sb.append("    variantNames: ").append(toIndentedString(variantNames)).append("\n");
     sb.append("    variantValues: ").append(toIndentedString(variantValues)).append("\n");
-    sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
-    sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
-    sb.append("    savePinDisabled: ").append(toIndentedString(savePinDisabled)).append("\n");
     sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1444,9 +1458,6 @@ public class ItemAttributesRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

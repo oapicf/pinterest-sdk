@@ -11,16 +11,16 @@ part 'asset_group_type.g.dart';
 
 class AssetGroupType extends EnumClass {
 
-  /// Asset group type
+  /// Asset group type.
   @BuiltValueEnumConst(wireName: r'BRAND')
   static const AssetGroupType BRAND = _$BRAND;
-  /// Asset group type
+  /// Asset group type.
   @BuiltValueEnumConst(wireName: r'LOCATION_OR_LANGUAGE')
   static const AssetGroupType LOCATION_OR_LANGUAGE = _$LOCATION_OR_LANGUAGE;
-  /// Asset group type
+  /// Asset group type.
   @BuiltValueEnumConst(wireName: r'PRODUCT_LINE')
   static const AssetGroupType PRODUCT_LINE = _$PRODUCT_LINE;
-  /// Asset group type
+  /// Asset group type.
   @BuiltValueEnumConst(wireName: r'OTHER')
   static const AssetGroupType OTHER = _$OTHER;
 

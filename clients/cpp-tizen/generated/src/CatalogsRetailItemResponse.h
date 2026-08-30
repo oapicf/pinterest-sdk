@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "CatalogsType.h"
 #include "ItemAttributes.h"
 #include "Pin.h"
 #include <list>
@@ -58,11 +57,11 @@ public:
 	void setAttributes(ItemAttributes  attributes);
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get The catalog retail item id in the merchant namespace
 	 */
 	std::string getItemId();
@@ -70,6 +69,13 @@ public:
 	/*! \brief Set The catalog retail item id in the merchant namespace
 	 */
 	void setItemId(std::string  item_id);
+	/*! \brief Get Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	std::string getItemResponseKind();
+
+	/*! \brief Set Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	void setItemResponseKind(std::string  item_response_kind);
 	/*! \brief Get The pins mapped to the item
 	 */
 	std::list<Pin> getPins();
@@ -80,8 +86,9 @@ public:
 
 private:
 	ItemAttributes attributes;
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	std::string item_id;
+	std::string item_response_kind;
 	std::list <Pin>pins;
 	void __init();
 	void __cleanup();

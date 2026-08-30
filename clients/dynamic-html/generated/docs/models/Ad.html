@@ -1,0 +1,197 @@
+
+<h2>Ad</h2>
+<ul class="parameter">
+  <li class="param-required-true">adUnderscoreaccountUnderscoreid : String
+    <br/>The ID of the advertiser that this ad belongs to.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">adUnderscoregroupUnderscoreid : String
+    <br/>ID of the ad group that contains the ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">androidUnderscoredeepUnderscorelink : String
+    <br/>Deep link URL for Android devices.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">campaignUnderscoreid : String
+    <br/>ID of the ad campaign that contains this ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">carouselUnderscoreandroidUnderscoredeepUnderscorelinks : List
+    <br/>Comma-separated deep links for the carousel pin on Android.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">carouselUnderscoredestinationUnderscoreurls : List
+    <br/>Comma-separated destination URLs for the carousel pin to promote.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">carouselUnderscoreiosUnderscoredeepUnderscorelinks : List
+    <br/>Comma-separated deep links for the carousel pin on iOS.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">cartingUnderscoreplatformUnderscoretype : Integer
+    <br/>The vendor platform type of the carting/WTB ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">cartingUnderscoreproducts : List
+    <br/>Array of carting/WTB products for the ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">clickUnderscoretrackingUnderscoreurl : String
+    <br/>Tracking url for the ad clicks.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">collectionUnderscoreitemsUnderscoredestinationUnderscoreurlUnderscoretemplate : String
+    <br/>Destination URL template for all items within a collections drawer.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">collectionsUnderscoreheaderUnderscoretype : AdCollectionsHeaderType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscoretime : Integer
+    <br/>Pin creation time. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">creativeUnderscoretype : CreativeType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">customizableUnderscorectaUnderscoretype : CustomizableCTAType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">destinationUnderscoreurl : String
+    <br/>Destination URL.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">disclosureUnderscoretype : DisclosureType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">disclosureUnderscoreurl : String
+    <br/>URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">gridUnderscoreclickUnderscoretype : GridClickType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">id : String
+    <br/>The ID of this ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">iosUnderscoredeepUnderscorelink : String
+    <br/>Deep link URL for iOS devices.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscorecarting : Boolean
+    <br/>Is the ad a carting/WTB ad?
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscorecollageUnderscoreacceptedUnderscoreterms : Boolean
+    <br/>Whether the advertiser has accepted the terms and conditions for collage ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscorecollageUnderscoresingleUnderscoredestination : Boolean
+    <br/>Whether the collage ad has a single destination url override.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscorepinUnderscoredeleted : Boolean
+    <br/>Is original pin deleted?
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscoreremovable : Boolean
+    <br/>Is pin repinnable?
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">leadUnderscoreformUnderscoreid : String
+    <br/>Lead form ID for lead ad generation.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">name : String
+    <br/>Name of the ad - 255 chars max.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">pinUnderscoreid : String
+    <br/>Pin ID. This field may only be updated for draft ads.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">quizUnderscorepinUnderscoredata : QuizPinData
+    <br/>Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rejectedUnderscorereasons : List
+    <br/>Enum reason why the pin was rejected. Returned if &#x60;review_status&#x60; is \&quot;REJECTED\&quot;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rejectionUnderscorelabels : List
+    <br/>Text reason why the pin was rejected. Returned if &#x60;review_status&#x60; is \&quot;REJECTED\&quot;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">reviewUnderscorestatus : AdReviewStatus
+    <br/>Ad review status
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : EntityStatus
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">summaryUnderscorestatus : PinPromotionSummaryStatus
+    <br/>Ad summary status
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">trackingUnderscoreurls : TrackingUrls
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">type : String
+    <br/>Always \&quot;ad\&quot;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">updatedUnderscoretime : Integer
+    <br/>Last update time. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">viewUnderscoretrackingUnderscoreurl : String
+    <br/>Tracking URL for ad impressions.
+  </li>
+</ul>

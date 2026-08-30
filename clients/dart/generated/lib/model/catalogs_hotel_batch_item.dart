@@ -60,10 +60,12 @@ class CatalogsHotelBatchItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelBatchItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelBatchItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'attributes'), 'Required key "CatalogsHotelBatchItem[attributes]" is missing from JSON.');
+        assert(json[r'attributes'] != null, 'Required key "CatalogsHotelBatchItem[attributes]" has a null value in JSON.');
+        assert(json.containsKey(r'hotel_id'), 'Required key "CatalogsHotelBatchItem[hotel_id]" is missing from JSON.');
+        assert(json[r'hotel_id'] != null, 'Required key "CatalogsHotelBatchItem[hotel_id]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsHotelBatchItem[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsHotelBatchItem[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -125,27 +127,28 @@ class CatalogsHotelBatchItem {
 }
 
 
-class CatalogsHotelBatchItemOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsHotelBatchItemOperationEnum._(this.value);
+enum CatalogsHotelBatchItemOperationEnum {
+  DELETE._(r'DELETE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelBatchItemOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const DELETE = CatalogsHotelBatchItemOperationEnum._(r'DELETE');
-
-  /// List of all possible values in this [enum][CatalogsHotelBatchItemOperationEnum].
-  static const values = <CatalogsHotelBatchItemOperationEnum>[
-    DELETE,
-  ];
-
+  /// Returns the instance of [CatalogsHotelBatchItemOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsHotelBatchItemOperationEnum? fromJson(dynamic value) => CatalogsHotelBatchItemOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsHotelBatchItemOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsHotelBatchItemOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsHotelBatchItemOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -167,9 +170,10 @@ class CatalogsHotelBatchItemOperationEnumTypeTransformer {
 
   const CatalogsHotelBatchItemOperationEnumTypeTransformer._();
 
-  String encode(CatalogsHotelBatchItemOperationEnum data) => data.value;
+  String encode(CatalogsHotelBatchItemOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsHotelBatchItemOperationEnum.
+  /// Returns the instance of [CatalogsHotelBatchItemOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -178,6 +182,9 @@ class CatalogsHotelBatchItemOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsHotelBatchItemOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelBatchItemOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'DELETE': return CatalogsHotelBatchItemOperationEnum.DELETE;
@@ -190,7 +197,7 @@ class CatalogsHotelBatchItemOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsHotelBatchItemOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsHotelBatchItemOperationEnumTypeTransformer? _instance;
 }
 

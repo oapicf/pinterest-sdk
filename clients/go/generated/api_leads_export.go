@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,28 +28,28 @@ type ApiLeadsExportCreateRequest struct {
 	ctx context.Context
 	ApiService *LeadsExportAPIService
 	adAccountId string
-	leadsExportCreateRequest *LeadsExportCreateRequest
+	leadsExportsCreate *LeadsExportsCreate
 }
 
-func (r ApiLeadsExportCreateRequest) LeadsExportCreateRequest(leadsExportCreateRequest LeadsExportCreateRequest) ApiLeadsExportCreateRequest {
-	r.leadsExportCreateRequest = &leadsExportCreateRequest
+func (r ApiLeadsExportCreateRequest) LeadsExportsCreate(leadsExportsCreate LeadsExportsCreate) ApiLeadsExportCreateRequest {
+	r.leadsExportsCreate = &leadsExportsCreate
 	return r
 }
 
-func (r ApiLeadsExportCreateRequest) Execute() (*LeadsExportCreateResponse, *http.Response, error) {
+func (r ApiLeadsExportCreateRequest) Execute() (*LeadsExports, *http.Response, error) {
 	return r.ApiService.LeadsExportCreateExecute(r)
 }
 
 /*
 LeadsExportCreate Create a request to export leads collected from a lead ad
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
-Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.
+Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.
 
 Note: Lead ad data will be available up to 30 days after the lead has been submitted.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -64,13 +64,13 @@ func (a *LeadsExportAPIService) LeadsExportCreate(ctx context.Context, adAccount
 }
 
 // Execute executes the request
-//  @return LeadsExportCreateResponse
-func (a *LeadsExportAPIService) LeadsExportCreateExecute(r ApiLeadsExportCreateRequest) (*LeadsExportCreateResponse, *http.Response, error) {
+//  @return LeadsExports
+func (a *LeadsExportAPIService) LeadsExportCreateExecute(r ApiLeadsExportCreateRequest) (*LeadsExports, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *LeadsExportCreateResponse
+		localVarReturnValue  *LeadsExports
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LeadsExportAPIService.LeadsExportCreate")
@@ -87,8 +87,8 @@ func (a *LeadsExportAPIService) LeadsExportCreateExecute(r ApiLeadsExportCreateR
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.leadsExportCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("leadsExportCreateRequest is required and must be specified")
+	if r.leadsExportsCreate == nil {
+		return localVarReturnValue, nil, reportError("leadsExportsCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -109,7 +109,7 @@ func (a *LeadsExportAPIService) LeadsExportCreateExecute(r ApiLeadsExportCreateR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.leadsExportCreateRequest
+	localVarPostBody = r.leadsExportsCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -133,7 +133,7 @@ func (a *LeadsExportAPIService) LeadsExportCreateExecute(r ApiLeadsExportCreateR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -143,7 +143,51 @@ func (a *LeadsExportAPIService) LeadsExportCreateExecute(r ApiLeadsExportCreateR
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -180,13 +224,13 @@ func (r ApiLeadsExportGetRequest) Execute() (*LeadsExportResponseData, *http.Res
 /*
 LeadsExportGet Get the lead export from the lead export create call
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.
 
 Note: Lead ad data will be available up to 30 days after the lead has been submitted.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -268,7 +312,29 @@ func (a *LeadsExportAPIService) LeadsExportGetExecute(r ApiLeadsExportGetRequest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -279,7 +345,7 @@ func (a *LeadsExportAPIService) LeadsExportGetExecute(r ApiLeadsExportGetRequest
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -289,7 +355,18 @@ func (a *LeadsExportAPIService) LeadsExportGetExecute(r ApiLeadsExportGetRequest
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

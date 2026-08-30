@@ -1,0 +1,16 @@
+
+
+# AppsflyerAudienceSyncCreate
+
+Resource create operation model.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**containerId** | **String** | The container ID of the audience | 
+**urlAdidSha256** | **String** | The pre-signed URL for SHA256 hashed GAID/IDFA file |  [optional]
+**urlEmailSha256** | **String** | The pre-signed URL for SHA256 hashed email file |  [optional]
+
+
+

@@ -8,11 +8,11 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
-import org.openapitools.server.model.CatalogsItems
 import org.openapitools.server.model.CatalogsItemsBatch
+import org.openapitools.server.model.CatalogsItemsBatchPostRequest
 import org.openapitools.server.model.CatalogsItemsRequest
 import org.openapitools.server.model.Error
-import org.openapitools.server.model.ItemsBatchPostRequest
+import org.openapitools.server.model.ItemsPost200Response
 
 
 class CatalogItemsApi(
@@ -35,8 +35,8 @@ class CatalogItemsApi(
     path("catalogs" / "items" / "batch") { 
       post { 
         parameters("ad_account_id".as[String].?) { (adAccountId) => 
-            entity(as[ItemsBatchPostRequest]){ itemsBatchPostRequest =>
-              catalogItemsService.itemsBatchPost(itemsBatchPostRequest = itemsBatchPostRequest, adAccountId = adAccountId)
+            entity(as[CatalogsItemsBatchPostRequest]){ catalogsItemsBatchPostRequest =>
+              catalogItemsService.itemsBatchPost(catalogsItemsBatchPostRequest = catalogsItemsBatchPostRequest, adAccountId = adAccountId)
             }
         }
       }
@@ -54,30 +54,33 @@ class CatalogItemsApi(
 
 object CatalogItemsApiPatterns {
 
-    val batchIdPattern: PathMatcher1[String] = PathMatcher("^[a-zA-Z0-9]+$".r)
+    val batchIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait CatalogItemsApiService {
 
   def itemsBatchGet200(responseCatalogsItemsBatch: CatalogsItemsBatch)(implicit toEntityMarshallerCatalogsItemsBatch: ToEntityMarshaller[CatalogsItemsBatch]): Route =
     complete((200, responseCatalogsItemsBatch))
+  def itemsBatchGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
   def itemsBatchGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((401, responseError))
   def itemsBatchGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
   def itemsBatchGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
-  def itemsBatchGet405(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
-    complete((405, responseError))
+  def itemsBatchGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def itemsBatchGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Response containing the requested catalogs items batch, DataType: CatalogsItemsBatch
-   * Code: 401, Message: Not authenticated to access catalogs items batch, DataType: Error
-   * Code: 403, Message: Not authorized to access catalogs items batch, DataType: Error
-   * Code: 404, Message: Catalogs items batch not found, DataType: Error
-   * Code: 405, Message: Method Not Allowed., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: CatalogsItemsBatch
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def itemsBatchGet(batchId: String, adAccountId: Option[String])
       (implicit toEntityMarshallerCatalogsItemsBatch: ToEntityMarshaller[CatalogsItemsBatch], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -90,50 +93,62 @@ trait CatalogItemsApiService {
     complete((401, responseError))
   def itemsBatchPost403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
+  def itemsBatchPost404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def itemsBatchPost429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def itemsBatchPostDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Response containing the requested catalogs items batch, DataType: CatalogsItemsBatch
-   * Code: 400, Message: Invalid request parameters., DataType: Error
-   * Code: 401, Message: Not authenticated to post catalogs items, DataType: Error
-   * Code: 403, Message: Not authorized to post catalogs items, DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: CatalogsItemsBatch
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def itemsBatchPost(itemsBatchPostRequest: ItemsBatchPostRequest, adAccountId: Option[String])
+  def itemsBatchPost(catalogsItemsBatchPostRequest: CatalogsItemsBatchPostRequest, adAccountId: Option[String])
       (implicit toEntityMarshallerCatalogsItemsBatch: ToEntityMarshaller[CatalogsItemsBatch], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def itemsPost200(responseCatalogsItems: CatalogsItems)(implicit toEntityMarshallerCatalogsItems: ToEntityMarshaller[CatalogsItems]): Route =
-    complete((200, responseCatalogsItems))
+  def itemsPost200(responseItemsPost200Response: ItemsPost200Response)(implicit toEntityMarshallerItemsPost200Response: ToEntityMarshaller[ItemsPost200Response]): Route =
+    complete((200, responseItemsPost200Response))
   def itemsPost400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
   def itemsPost401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((401, responseError))
   def itemsPost403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
+  def itemsPost404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def itemsPost429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def itemsPostDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Response containing the requested catalogs items, DataType: CatalogsItems
-   * Code: 400, Message: Invalid request, DataType: Error
-   * Code: 401, Message: Not authorized to access catalogs items, DataType: Error
-   * Code: 403, Message: Not authorized to access catalogs items, DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: ItemsPost200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: Option[String])
-      (implicit toEntityMarshallerCatalogsItems: ToEntityMarshaller[CatalogsItems], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerItemsPost200Response: ToEntityMarshaller[ItemsPost200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
 
 trait CatalogItemsApiMarshaller {
   implicit def fromEntityUnmarshallerCatalogsItemsRequest: FromEntityUnmarshaller[CatalogsItemsRequest]
 
-  implicit def fromEntityUnmarshallerItemsBatchPostRequest: FromEntityUnmarshaller[ItemsBatchPostRequest]
+  implicit def fromEntityUnmarshallerCatalogsItemsBatchPostRequest: FromEntityUnmarshaller[CatalogsItemsBatchPostRequest]
 
 
 
   implicit def toEntityMarshallerCatalogsItemsBatch: ToEntityMarshaller[CatalogsItemsBatch]
 
-  implicit def toEntityMarshallerCatalogsItems: ToEntityMarshaller[CatalogsItems]
+  implicit def toEntityMarshallerItemsPost200Response: ToEntityMarshaller[ItemsPost200Response]
 
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
 

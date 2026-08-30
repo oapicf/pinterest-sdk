@@ -10,7 +10,7 @@
 #' @field lead_form_id Lead form ID. character [optional]
 #' @field webhook_url Standard HTTPS webhook URL. character
 #' @field partner_access_token Partner access token. Only for clients that requires authentication. We recommend to avoid this param. character [optional]
-#' @field partner_metadata  \link{LeadSubscriptionPostParamsCreateAllOfPartnerMetadata} [optional]
+#' @field partner_metadata Partner metadata. Only for clients that requires special handling. We recommend to avoid this param. \link{PartnerMetadata} [optional]
 #' @field partner_refresh_token Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -30,7 +30,7 @@ LeadSubscriptionPostParamsCreate <- R6::R6Class(
     #' @param webhook_url Standard HTTPS webhook URL.
     #' @param lead_form_id Lead form ID.
     #' @param partner_access_token Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
-    #' @param partner_metadata partner_metadata
+    #' @param partner_metadata Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
     #' @param partner_refresh_token Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
     #' @param ... Other optional arguments.
     initialize = function(`webhook_url`, `lead_form_id` = NULL, `partner_access_token` = NULL, `partner_metadata` = NULL, `partner_refresh_token` = NULL, ...) {
@@ -109,13 +109,36 @@ LeadSubscriptionPostParamsCreate <- R6::R6Class(
       }
       if (!is.null(self$`partner_metadata`)) {
         LeadSubscriptionPostParamsCreateObject[["partner_metadata"]] <-
-          self$`partner_metadata`$toSimpleType()
+          self$extractSimpleType(self$`partner_metadata`)
       }
       if (!is.null(self$`partner_refresh_token`)) {
         LeadSubscriptionPostParamsCreateObject[["partner_refresh_token"]] <-
           self$`partner_refresh_token`
       }
       return(LeadSubscriptionPostParamsCreateObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -135,7 +158,7 @@ LeadSubscriptionPostParamsCreate <- R6::R6Class(
         self$`partner_access_token` <- this_object$`partner_access_token`
       }
       if (!is.null(this_object$`partner_metadata`)) {
-        `partner_metadata_object` <- LeadSubscriptionPostParamsCreateAllOfPartnerMetadata$new()
+        `partner_metadata_object` <- PartnerMetadata$new()
         `partner_metadata_object`$fromJSON(jsonlite::toJSON(this_object$`partner_metadata`, auto_unbox = TRUE, digits = NA))
         self$`partner_metadata` <- `partner_metadata_object`
       }
@@ -166,7 +189,7 @@ LeadSubscriptionPostParamsCreate <- R6::R6Class(
       self$`lead_form_id` <- this_object$`lead_form_id`
       self$`webhook_url` <- this_object$`webhook_url`
       self$`partner_access_token` <- this_object$`partner_access_token`
-      self$`partner_metadata` <- LeadSubscriptionPostParamsCreateAllOfPartnerMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`partner_metadata`, auto_unbox = TRUE, digits = NA))
+      self$`partner_metadata` <- PartnerMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`partner_metadata`, auto_unbox = TRUE, digits = NA))
       self$`partner_refresh_token` <- this_object$`partner_refresh_token`
       self
     },

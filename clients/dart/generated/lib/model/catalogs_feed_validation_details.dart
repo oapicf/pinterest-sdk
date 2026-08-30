@@ -53,10 +53,10 @@ class CatalogsFeedValidationDetails {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsFeedValidationDetails[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsFeedValidationDetails[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'errors'), 'Required key "CatalogsFeedValidationDetails[errors]" is missing from JSON.');
+        assert(json[r'errors'] != null, 'Required key "CatalogsFeedValidationDetails[errors]" has a null value in JSON.');
+        assert(json.containsKey(r'warnings'), 'Required key "CatalogsFeedValidationDetails[warnings]" is missing from JSON.');
+        assert(json[r'warnings'] != null, 'Required key "CatalogsFeedValidationDetails[warnings]" has a null value in JSON.');
         return true;
       }());
 

@@ -5,7 +5,6 @@ import org.openapitools.api.*;
 import org.glassfish.jersey.media.multipart.FormDataBodyPart;
 
 import org.openapitools.model.AgeTrendsBucket;
-import org.openapitools.model.Error;
 import org.openapitools.model.FeaturedTrend;
 import org.openapitools.model.GenderBucket;
 import org.openapitools.model.InterestsEnum;
@@ -18,6 +17,10 @@ import org.openapitools.model.ProductCategoryRegion;
 import org.openapitools.model.TrendType;
 import org.openapitools.model.TrendingKeywordsResponse;
 import org.openapitools.model.TrendingProductCategory;
+import org.openapitools.model.TrendsAgeBucket;
+import org.openapitools.model.TrendsEditorial;
+import org.openapitools.model.TrendsGenderFilter;
+import org.openapitools.model.TrendsL1Interest;
 import org.openapitools.model.TrendsSupportedRegion;
 import org.openapitools.model.VerticalProductCategory;
 
@@ -30,9 +33,10 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-31T04:54:42.155723473Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public abstract class TrendsApiService {
-    public abstract Response trendingKeywordsList(TrendsSupportedRegion region,TrendType trendType,List<String> interests,List<String> genders,List<String> ages, @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords,Boolean normalizeAgainstGroup, @Min(1) @Max(50)Integer limit,Boolean includePrediction,Boolean includeDemographics,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response trendingKeywordsList(TrendsSupportedRegion region,TrendType trendType,List<TrendsL1Interest> interests,List<TrendsGenderFilter> genders,List<TrendsAgeBucket> ages, @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords,Boolean normalizeAgainstGroup, @Min(1) @Max(50)Integer limit,Boolean includeDemographics,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response trendsEditorialArticlesList( @NotNull ProductCategoryRegion region,SecurityContext securityContext) throws NotFoundException;
     public abstract Response trendsFeaturedTopicsList( @NotNull ProductCategoryRegion region,InterestsEnum interest,SecurityContext securityContext) throws NotFoundException;
     public abstract Response trendsProductCategoriesDetailsList( @NotNull  @Size(min=1,max=20)List<ProductCategoryEnum> productCategories, @NotNull ProductCategoryRegion region,ProductCategoryDetailLookbackWindow lookbackWindow,ProductCategoriesEngagementType engagementType,SecurityContext securityContext) throws NotFoundException;
     public abstract Response trendsProductCategoriesTrendingList( @NotNull ProductCategoryRegion region,List<VerticalProductCategory> verticals,List<AgeTrendsBucket> ages,List<GenderBucket> genders,ProductCategoriesEngagementType engagementType,SecurityContext securityContext) throws NotFoundException;

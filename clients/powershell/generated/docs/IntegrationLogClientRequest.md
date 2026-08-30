@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VarHost** | **String** | HTTP request host from host header. | 
-**Method** | **String** |  | 
+**Method** | [**HttpMethod**](HttpMethod.md) |  | 
 **Path** | **String** | HTTP request path. | 
 **RequestHeaders** | **System.Collections.Hashtable** | HTTP request headers as key-value pairs. | [optional] 
 **ResponseHeaders** | **System.Collections.Hashtable** | HTTP response headers as key-value pairs. | [optional] 

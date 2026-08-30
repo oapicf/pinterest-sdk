@@ -19,16 +19,16 @@ typedef struct targeting_spec_shopping_retargeting_t targeting_spec_shopping_ret
 
 
 typedef struct targeting_spec_shopping_retargeting_t {
-    int exclusion_window; //numeric
-    int lookback_window; //numeric
+    int *exclusion_window; //numeric
+    int *lookback_window; //numeric
     list_t *tag_types; //primitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } targeting_spec_shopping_retargeting_t;
 
 __attribute__((deprecated)) targeting_spec_shopping_retargeting_t *targeting_spec_shopping_retargeting_create(
-    int exclusion_window,
-    int lookback_window,
+    int *exclusion_window,
+    int *lookback_window,
     list_t *tag_types
 );
 

@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "BatchOperation.h"
 #include "Country.h"
 #include "ItemUpdateBatchRecord.h"
 #include <list>
@@ -72,17 +71,17 @@ public:
 	void setLanguage(std::string  language);
 	/*! \brief Get 
 	 */
-	BatchOperation getOperation();
+	std::string getOperation();
 
 	/*! \brief Set 
 	 */
-	void setOperation(BatchOperation  operation);
+	void setOperation(std::string  operation);
 
 private:
 	Country country;
 	std::list <ItemUpdateBatchRecord>items;
 	std::string language;
-	BatchOperation operation;
+	std::string operation;
 	void __init();
 	void __cleanup();
 

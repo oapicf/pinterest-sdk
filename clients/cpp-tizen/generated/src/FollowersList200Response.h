@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "UserSummary.h"
+#include "FollowUser.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setBookmark(std::string  bookmark);
 	/*! \brief Get 
 	 */
-	std::list<UserSummary> getItems();
+	std::list<FollowUser> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <UserSummary> items);
+	void setItems(std::list <FollowUser> items);
 
 private:
 	std::string bookmark;
-	std::list <UserSummary>items;
+	std::list <FollowUser>items;
 	void __init();
 	void __cleanup();
 

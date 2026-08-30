@@ -8,30 +8,39 @@
 static audience_demographic_value_t *audience_demographic_value_create_internal(
     char *key,
     char *name,
-    double ratio
+    double *ratio
     ) {
     audience_demographic_value_t *audience_demographic_value_local_var = malloc(sizeof(audience_demographic_value_t));
     if (!audience_demographic_value_local_var) {
         return NULL;
     }
+    memset(audience_demographic_value_local_var, 0, sizeof(audience_demographic_value_t));
+    audience_demographic_value_local_var->_library_owned = 1;
     audience_demographic_value_local_var->key = key;
     audience_demographic_value_local_var->name = name;
     audience_demographic_value_local_var->ratio = ratio;
-
-    audience_demographic_value_local_var->_library_owned = 1;
     return audience_demographic_value_local_var;
 }
 
 __attribute__((deprecated)) audience_demographic_value_t *audience_demographic_value_create(
     char *key,
     char *name,
-    double ratio
+    double *ratio
     ) {
-    return audience_demographic_value_create_internal (
+    double *ratio_copy = NULL;
+    if (ratio) {
+        ratio_copy = malloc(sizeof(double));
+        if (ratio_copy) *ratio_copy = *ratio;
+    }
+    audience_demographic_value_t *result = audience_demographic_value_create_internal (
         key,
         name,
-        ratio
+        ratio_copy
         );
+    if (!result) {
+        free(ratio_copy);
+    }
+    return result;
 }
 
 void audience_demographic_value_free(audience_demographic_value_t *audience_demographic_value) {
@@ -50,6 +59,10 @@ void audience_demographic_value_free(audience_demographic_value_t *audience_demo
     if (audience_demographic_value->name) {
         free(audience_demographic_value->name);
         audience_demographic_value->name = NULL;
+    }
+    if (audience_demographic_value->ratio) {
+        free(audience_demographic_value->ratio);
+        audience_demographic_value->ratio = NULL;
     }
     free(audience_demographic_value);
 }
@@ -75,7 +88,7 @@ cJSON *audience_demographic_value_convertToJSON(audience_demographic_value_t *au
 
     // audience_demographic_value->ratio
     if(audience_demographic_value->ratio) {
-    if(cJSON_AddNumberToObject(item, "ratio", audience_demographic_value->ratio) == NULL) {
+    if(cJSON_AddNumberToObject(item, "ratio", *audience_demographic_value->ratio) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -91,6 +104,13 @@ fail:
 audience_demographic_value_t *audience_demographic_value_parseFromJSON(cJSON *audience_demographic_valueJSON){
 
     audience_demographic_value_t *audience_demographic_value_local_var = NULL;
+
+    char *key_local_str = NULL;
+
+    char *name_local_str = NULL;
+
+    // define the local variable for audience_demographic_value->ratio
+    double *ratio_local_var = NULL;
 
     // audience_demographic_value->key
     cJSON *key = cJSON_GetObjectItemCaseSensitive(audience_demographic_valueJSON, "key");
@@ -126,17 +146,42 @@ audience_demographic_value_t *audience_demographic_value_parseFromJSON(cJSON *au
     {
     goto end; //Numeric
     }
+    ratio_local_var = malloc(sizeof(double));
+    if(!ratio_local_var)
+    {
+        goto end;
+    }
+    *ratio_local_var = ratio->valuedouble;
     }
 
 
+    if (key && !cJSON_IsNull(key)) key_local_str = strdup(key->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     audience_demographic_value_local_var = audience_demographic_value_create_internal (
-        key && !cJSON_IsNull(key) ? strdup(key->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        ratio ? ratio->valuedouble : 0
+        key_local_str,
+        name_local_str,
+        ratio_local_var
         );
+
+    if (!audience_demographic_value_local_var) {
+        goto end;
+    }
 
     return audience_demographic_value_local_var;
 end:
+    if (key_local_str) {
+        free(key_local_str);
+        key_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
+    if (ratio_local_var) {
+        free(ratio_local_var);
+        ratio_local_var = NULL;
+    }
     return NULL;
 
 }

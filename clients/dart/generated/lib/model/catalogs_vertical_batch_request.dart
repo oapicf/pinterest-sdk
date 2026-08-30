@@ -84,10 +84,14 @@ class CatalogsVerticalBatchRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsVerticalBatchRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsVerticalBatchRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsVerticalBatchRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsVerticalBatchRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'country'), 'Required key "CatalogsVerticalBatchRequest[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "CatalogsVerticalBatchRequest[country]" has a null value in JSON.');
+        assert(json.containsKey(r'items'), 'Required key "CatalogsVerticalBatchRequest[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "CatalogsVerticalBatchRequest[items]" has a null value in JSON.');
+        assert(json.containsKey(r'language'), 'Required key "CatalogsVerticalBatchRequest[language]" is missing from JSON.');
+        assert(json[r'language'] != null, 'Required key "CatalogsVerticalBatchRequest[language]" has a null value in JSON.');
         return true;
       }());
 
@@ -152,27 +156,28 @@ class CatalogsVerticalBatchRequest {
 }
 
 
-class CatalogsVerticalBatchRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsVerticalBatchRequestCatalogTypeEnum._(this.value);
+enum CatalogsVerticalBatchRequestCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsVerticalBatchRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATIVE_ASSETS = CatalogsVerticalBatchRequestCatalogTypeEnum._(r'CREATIVE_ASSETS');
-
-  /// List of all possible values in this [enum][CatalogsVerticalBatchRequestCatalogTypeEnum].
-  static const values = <CatalogsVerticalBatchRequestCatalogTypeEnum>[
-    CREATIVE_ASSETS,
-  ];
-
+  /// Returns the instance of [CatalogsVerticalBatchRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsVerticalBatchRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsVerticalBatchRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsVerticalBatchRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsVerticalBatchRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsVerticalBatchRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -194,9 +199,10 @@ class CatalogsVerticalBatchRequestCatalogTypeEnumTypeTransformer {
 
   const CatalogsVerticalBatchRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsVerticalBatchRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsVerticalBatchRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsVerticalBatchRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsVerticalBatchRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -205,6 +211,9 @@ class CatalogsVerticalBatchRequestCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsVerticalBatchRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsVerticalBatchRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATIVE_ASSETS': return CatalogsVerticalBatchRequestCatalogTypeEnum.CREATIVE_ASSETS;
@@ -217,245 +226,140 @@ class CatalogsVerticalBatchRequestCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsVerticalBatchRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsVerticalBatchRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 
 
 /// We recommend using the CatalogsLocale values.
-class CatalogsVerticalBatchRequestLanguageEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsVerticalBatchRequestLanguageEnum._(this.value);
+enum CatalogsVerticalBatchRequestLanguageEnum {
+  afZA._(r'af-ZA'),
+  arSA._(r'ar-SA'),
+  bgBG._(r'bg-BG'),
+  bnIN._(r'bn-IN'),
+  csCZ._(r'cs-CZ'),
+  daDK._(r'da-DK'),
+  de._(r'de'),
+  elGR._(r'el-GR'),
+  enAU._(r'en-AU'),
+  enCA._(r'en-CA'),
+  enGB._(r'en-GB'),
+  enIN._(r'en-IN'),
+  enUS._(r'en-US'),
+  es419._(r'es-419'),
+  esAR._(r'es-AR'),
+  esES._(r'es-ES'),
+  esMX._(r'es-MX'),
+  fiFI._(r'fi-FI'),
+  fr._(r'fr'),
+  frCA._(r'fr-CA'),
+  heIL._(r'he-IL'),
+  hiIN._(r'hi-IN'),
+  hrHR._(r'hr-HR'),
+  huHU._(r'hu-HU'),
+  idID._(r'id-ID'),
+  it._(r'it'),
+  ja._(r'ja'),
+  koKR._(r'ko-KR'),
+  msMY._(r'ms-MY'),
+  nbNO._(r'nb-NO'),
+  nl._(r'nl'),
+  plPL._(r'pl-PL'),
+  ptBR._(r'pt-BR'),
+  ptPT._(r'pt-PT'),
+  roRO._(r'ro-RO'),
+  ruRU._(r'ru-RU'),
+  skSK._(r'sk-SK'),
+  svSE._(r'sv-SE'),
+  teIN._(r'te-IN'),
+  thTH._(r'th-TH'),
+  tlPH._(r'tl-PH'),
+  tr._(r'tr'),
+  ukUA._(r'uk-UA'),
+  viVN._(r'vi-VN'),
+  zhCN._(r'zh-CN'),
+  zhTW._(r'zh-TW'),
+  AM._(r'AM'),
+  AR._(r'AR'),
+  AZ._(r'AZ'),
+  BG._(r'BG'),
+  BN._(r'BN'),
+  BS._(r'BS'),
+  CA._(r'CA'),
+  CS._(r'CS'),
+  DA._(r'DA'),
+  DV._(r'DV'),
+  DZ._(r'DZ'),
+  DE._(r'DE'),
+  EL._(r'EL'),
+  EN._(r'EN'),
+  ES._(r'ES'),
+  ET._(r'ET'),
+  FA._(r'FA'),
+  FI._(r'FI'),
+  FR._(r'FR'),
+  HE._(r'HE'),
+  HI._(r'HI'),
+  HR._(r'HR'),
+  HU._(r'HU'),
+  HY._(r'HY'),
+  ID._(r'ID'),
+  IN._(r'IN'),
+  IS._(r'IS'),
+  IT._(r'IT'),
+  IW._(r'IW'),
+  JA._(r'JA'),
+  KA._(r'KA'),
+  KM._(r'KM'),
+  KO._(r'KO'),
+  LO._(r'LO'),
+  LT._(r'LT'),
+  LV._(r'LV'),
+  MK._(r'MK'),
+  MN._(r'MN'),
+  MS._(r'MS'),
+  MY._(r'MY'),
+  NB._(r'NB'),
+  NE._(r'NE'),
+  NL._(r'NL'),
+  false_._(r'false'),
+  PL._(r'PL'),
+  PT._(r'PT'),
+  RO._(r'RO'),
+  RU._(r'RU'),
+  SK._(r'SK'),
+  SL._(r'SL'),
+  SQ._(r'SQ'),
+  SR._(r'SR'),
+  SV._(r'SV'),
+  TL._(r'TL'),
+  UK._(r'UK'),
+  VI._(r'VI'),
+  TE._(r'TE'),
+  TH._(r'TH'),
+  TR._(r'TR'),
+  XX._(r'XX'),
+  ZH._(r'ZH'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsVerticalBatchRequestLanguageEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const afZA = CatalogsVerticalBatchRequestLanguageEnum._(r'af-ZA');
-  static const arSA = CatalogsVerticalBatchRequestLanguageEnum._(r'ar-SA');
-  static const bgBG = CatalogsVerticalBatchRequestLanguageEnum._(r'bg-BG');
-  static const bnIN = CatalogsVerticalBatchRequestLanguageEnum._(r'bn-IN');
-  static const csCZ = CatalogsVerticalBatchRequestLanguageEnum._(r'cs-CZ');
-  static const daDK = CatalogsVerticalBatchRequestLanguageEnum._(r'da-DK');
-  static const de = CatalogsVerticalBatchRequestLanguageEnum._(r'de');
-  static const elGR = CatalogsVerticalBatchRequestLanguageEnum._(r'el-GR');
-  static const enAU = CatalogsVerticalBatchRequestLanguageEnum._(r'en-AU');
-  static const enCA = CatalogsVerticalBatchRequestLanguageEnum._(r'en-CA');
-  static const enGB = CatalogsVerticalBatchRequestLanguageEnum._(r'en-GB');
-  static const enIN = CatalogsVerticalBatchRequestLanguageEnum._(r'en-IN');
-  static const enUS = CatalogsVerticalBatchRequestLanguageEnum._(r'en-US');
-  static const es419 = CatalogsVerticalBatchRequestLanguageEnum._(r'es-419');
-  static const esAR = CatalogsVerticalBatchRequestLanguageEnum._(r'es-AR');
-  static const esES = CatalogsVerticalBatchRequestLanguageEnum._(r'es-ES');
-  static const esMX = CatalogsVerticalBatchRequestLanguageEnum._(r'es-MX');
-  static const fiFI = CatalogsVerticalBatchRequestLanguageEnum._(r'fi-FI');
-  static const fr = CatalogsVerticalBatchRequestLanguageEnum._(r'fr');
-  static const frCA = CatalogsVerticalBatchRequestLanguageEnum._(r'fr-CA');
-  static const heIL = CatalogsVerticalBatchRequestLanguageEnum._(r'he-IL');
-  static const hiIN = CatalogsVerticalBatchRequestLanguageEnum._(r'hi-IN');
-  static const hrHR = CatalogsVerticalBatchRequestLanguageEnum._(r'hr-HR');
-  static const huHU = CatalogsVerticalBatchRequestLanguageEnum._(r'hu-HU');
-  static const idID = CatalogsVerticalBatchRequestLanguageEnum._(r'id-ID');
-  static const it = CatalogsVerticalBatchRequestLanguageEnum._(r'it');
-  static const ja = CatalogsVerticalBatchRequestLanguageEnum._(r'ja');
-  static const koKR = CatalogsVerticalBatchRequestLanguageEnum._(r'ko-KR');
-  static const msMY = CatalogsVerticalBatchRequestLanguageEnum._(r'ms-MY');
-  static const nbNO = CatalogsVerticalBatchRequestLanguageEnum._(r'nb-NO');
-  static const nl = CatalogsVerticalBatchRequestLanguageEnum._(r'nl');
-  static const plPL = CatalogsVerticalBatchRequestLanguageEnum._(r'pl-PL');
-  static const ptBR = CatalogsVerticalBatchRequestLanguageEnum._(r'pt-BR');
-  static const ptPT = CatalogsVerticalBatchRequestLanguageEnum._(r'pt-PT');
-  static const roRO = CatalogsVerticalBatchRequestLanguageEnum._(r'ro-RO');
-  static const ruRU = CatalogsVerticalBatchRequestLanguageEnum._(r'ru-RU');
-  static const skSK = CatalogsVerticalBatchRequestLanguageEnum._(r'sk-SK');
-  static const svSE = CatalogsVerticalBatchRequestLanguageEnum._(r'sv-SE');
-  static const teIN = CatalogsVerticalBatchRequestLanguageEnum._(r'te-IN');
-  static const thTH = CatalogsVerticalBatchRequestLanguageEnum._(r'th-TH');
-  static const tlPH = CatalogsVerticalBatchRequestLanguageEnum._(r'tl-PH');
-  static const tr = CatalogsVerticalBatchRequestLanguageEnum._(r'tr');
-  static const ukUA = CatalogsVerticalBatchRequestLanguageEnum._(r'uk-UA');
-  static const viVN = CatalogsVerticalBatchRequestLanguageEnum._(r'vi-VN');
-  static const zhCN = CatalogsVerticalBatchRequestLanguageEnum._(r'zh-CN');
-  static const zhTW = CatalogsVerticalBatchRequestLanguageEnum._(r'zh-TW');
-  static const AM = CatalogsVerticalBatchRequestLanguageEnum._(r'AM');
-  static const AR = CatalogsVerticalBatchRequestLanguageEnum._(r'AR');
-  static const AZ = CatalogsVerticalBatchRequestLanguageEnum._(r'AZ');
-  static const BG = CatalogsVerticalBatchRequestLanguageEnum._(r'BG');
-  static const BN = CatalogsVerticalBatchRequestLanguageEnum._(r'BN');
-  static const BS = CatalogsVerticalBatchRequestLanguageEnum._(r'BS');
-  static const CA = CatalogsVerticalBatchRequestLanguageEnum._(r'CA');
-  static const CS = CatalogsVerticalBatchRequestLanguageEnum._(r'CS');
-  static const DA = CatalogsVerticalBatchRequestLanguageEnum._(r'DA');
-  static const DV = CatalogsVerticalBatchRequestLanguageEnum._(r'DV');
-  static const DZ = CatalogsVerticalBatchRequestLanguageEnum._(r'DZ');
-  static const DE = CatalogsVerticalBatchRequestLanguageEnum._(r'DE');
-  static const EL = CatalogsVerticalBatchRequestLanguageEnum._(r'EL');
-  static const EN = CatalogsVerticalBatchRequestLanguageEnum._(r'EN');
-  static const ES = CatalogsVerticalBatchRequestLanguageEnum._(r'ES');
-  static const ET = CatalogsVerticalBatchRequestLanguageEnum._(r'ET');
-  static const FA = CatalogsVerticalBatchRequestLanguageEnum._(r'FA');
-  static const FI = CatalogsVerticalBatchRequestLanguageEnum._(r'FI');
-  static const FR = CatalogsVerticalBatchRequestLanguageEnum._(r'FR');
-  static const HE = CatalogsVerticalBatchRequestLanguageEnum._(r'HE');
-  static const HI = CatalogsVerticalBatchRequestLanguageEnum._(r'HI');
-  static const HR = CatalogsVerticalBatchRequestLanguageEnum._(r'HR');
-  static const HU = CatalogsVerticalBatchRequestLanguageEnum._(r'HU');
-  static const HY = CatalogsVerticalBatchRequestLanguageEnum._(r'HY');
-  static const ID = CatalogsVerticalBatchRequestLanguageEnum._(r'ID');
-  static const IN = CatalogsVerticalBatchRequestLanguageEnum._(r'IN');
-  static const IS = CatalogsVerticalBatchRequestLanguageEnum._(r'IS');
-  static const IT = CatalogsVerticalBatchRequestLanguageEnum._(r'IT');
-  static const IW = CatalogsVerticalBatchRequestLanguageEnum._(r'IW');
-  static const JA = CatalogsVerticalBatchRequestLanguageEnum._(r'JA');
-  static const KA = CatalogsVerticalBatchRequestLanguageEnum._(r'KA');
-  static const KM = CatalogsVerticalBatchRequestLanguageEnum._(r'KM');
-  static const KO = CatalogsVerticalBatchRequestLanguageEnum._(r'KO');
-  static const LO = CatalogsVerticalBatchRequestLanguageEnum._(r'LO');
-  static const LT = CatalogsVerticalBatchRequestLanguageEnum._(r'LT');
-  static const LV = CatalogsVerticalBatchRequestLanguageEnum._(r'LV');
-  static const MK = CatalogsVerticalBatchRequestLanguageEnum._(r'MK');
-  static const MN = CatalogsVerticalBatchRequestLanguageEnum._(r'MN');
-  static const MS = CatalogsVerticalBatchRequestLanguageEnum._(r'MS');
-  static const MY = CatalogsVerticalBatchRequestLanguageEnum._(r'MY');
-  static const NB = CatalogsVerticalBatchRequestLanguageEnum._(r'NB');
-  static const NE = CatalogsVerticalBatchRequestLanguageEnum._(r'NE');
-  static const NL = CatalogsVerticalBatchRequestLanguageEnum._(r'NL');
-  static const NO = CatalogsVerticalBatchRequestLanguageEnum._(r'NO');
-  static const PL = CatalogsVerticalBatchRequestLanguageEnum._(r'PL');
-  static const PT = CatalogsVerticalBatchRequestLanguageEnum._(r'PT');
-  static const RO = CatalogsVerticalBatchRequestLanguageEnum._(r'RO');
-  static const RU = CatalogsVerticalBatchRequestLanguageEnum._(r'RU');
-  static const SK = CatalogsVerticalBatchRequestLanguageEnum._(r'SK');
-  static const SL = CatalogsVerticalBatchRequestLanguageEnum._(r'SL');
-  static const SQ = CatalogsVerticalBatchRequestLanguageEnum._(r'SQ');
-  static const SR = CatalogsVerticalBatchRequestLanguageEnum._(r'SR');
-  static const SV = CatalogsVerticalBatchRequestLanguageEnum._(r'SV');
-  static const TL = CatalogsVerticalBatchRequestLanguageEnum._(r'TL');
-  static const UK = CatalogsVerticalBatchRequestLanguageEnum._(r'UK');
-  static const VI = CatalogsVerticalBatchRequestLanguageEnum._(r'VI');
-  static const TE = CatalogsVerticalBatchRequestLanguageEnum._(r'TE');
-  static const TH = CatalogsVerticalBatchRequestLanguageEnum._(r'TH');
-  static const TR = CatalogsVerticalBatchRequestLanguageEnum._(r'TR');
-  static const XX = CatalogsVerticalBatchRequestLanguageEnum._(r'XX');
-  static const ZH = CatalogsVerticalBatchRequestLanguageEnum._(r'ZH');
-
-  /// List of all possible values in this [enum][CatalogsVerticalBatchRequestLanguageEnum].
-  static const values = <CatalogsVerticalBatchRequestLanguageEnum>[
-    afZA,
-    arSA,
-    bgBG,
-    bnIN,
-    csCZ,
-    daDK,
-    de,
-    elGR,
-    enAU,
-    enCA,
-    enGB,
-    enIN,
-    enUS,
-    es419,
-    esAR,
-    esES,
-    esMX,
-    fiFI,
-    fr,
-    frCA,
-    heIL,
-    hiIN,
-    hrHR,
-    huHU,
-    idID,
-    it,
-    ja,
-    koKR,
-    msMY,
-    nbNO,
-    nl,
-    plPL,
-    ptBR,
-    ptPT,
-    roRO,
-    ruRU,
-    skSK,
-    svSE,
-    teIN,
-    thTH,
-    tlPH,
-    tr,
-    ukUA,
-    viVN,
-    zhCN,
-    zhTW,
-    AM,
-    AR,
-    AZ,
-    BG,
-    BN,
-    BS,
-    CA,
-    CS,
-    DA,
-    DV,
-    DZ,
-    DE,
-    EL,
-    EN,
-    ES,
-    ET,
-    FA,
-    FI,
-    FR,
-    HE,
-    HI,
-    HR,
-    HU,
-    HY,
-    ID,
-    IN,
-    IS,
-    IT,
-    IW,
-    JA,
-    KA,
-    KM,
-    KO,
-    LO,
-    LT,
-    LV,
-    MK,
-    MN,
-    MS,
-    MY,
-    NB,
-    NE,
-    NL,
-    NO,
-    PL,
-    PT,
-    RO,
-    RU,
-    SK,
-    SL,
-    SQ,
-    SR,
-    SV,
-    TL,
-    UK,
-    VI,
-    TE,
-    TH,
-    TR,
-    XX,
-    ZH,
-  ];
-
+  /// Returns the instance of [CatalogsVerticalBatchRequestLanguageEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsVerticalBatchRequestLanguageEnum? fromJson(dynamic value) => CatalogsVerticalBatchRequestLanguageEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsVerticalBatchRequestLanguageEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsVerticalBatchRequestLanguageEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsVerticalBatchRequestLanguageEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -477,9 +381,10 @@ class CatalogsVerticalBatchRequestLanguageEnumTypeTransformer {
 
   const CatalogsVerticalBatchRequestLanguageEnumTypeTransformer._();
 
-  String encode(CatalogsVerticalBatchRequestLanguageEnum data) => data.value;
+  String encode(CatalogsVerticalBatchRequestLanguageEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsVerticalBatchRequestLanguageEnum.
+  /// Returns the instance of [CatalogsVerticalBatchRequestLanguageEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -488,6 +393,9 @@ class CatalogsVerticalBatchRequestLanguageEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsVerticalBatchRequestLanguageEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsVerticalBatchRequestLanguageEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'af-ZA': return CatalogsVerticalBatchRequestLanguageEnum.afZA;
@@ -579,7 +487,7 @@ class CatalogsVerticalBatchRequestLanguageEnumTypeTransformer {
         case r'NB': return CatalogsVerticalBatchRequestLanguageEnum.NB;
         case r'NE': return CatalogsVerticalBatchRequestLanguageEnum.NE;
         case r'NL': return CatalogsVerticalBatchRequestLanguageEnum.NL;
-        case r'NO': return CatalogsVerticalBatchRequestLanguageEnum.NO;
+        case r'false': return CatalogsVerticalBatchRequestLanguageEnum.false_;
         case r'PL': return CatalogsVerticalBatchRequestLanguageEnum.PL;
         case r'PT': return CatalogsVerticalBatchRequestLanguageEnum.PT;
         case r'RO': return CatalogsVerticalBatchRequestLanguageEnum.RO;
@@ -606,7 +514,7 @@ class CatalogsVerticalBatchRequestLanguageEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsVerticalBatchRequestLanguageEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsVerticalBatchRequestLanguageEnumTypeTransformer? _instance;
 }
 

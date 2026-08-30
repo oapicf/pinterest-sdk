@@ -1,12 +1,12 @@
 #tag Class
 Protected Class PromotionsApi
 	#tag Method, Flags = &h0
-		Sub PromotionsCreate(, adAccountId As String, promotionCreateRequest() As OpenAPIClient.Models.PromotionCreateRequest)
+		Sub PromotionsCreate(, adAccountId As String, promotionCreate() As OpenAPIClient.Models.PromotionCreate)
 		  // Operation promotions/create
 		  // Create promotions
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter promotionCreateRequest: (body) List of promotions to create, size limit [1, 30]. 
+		  // - parameter promotionCreate: (body)  
 		  //
 		  // Invokes PromotionsApiCallbackHandler.PromotionsCreateCallback(PromotionsResponse) on completion. 
 		  //
@@ -21,7 +21,7 @@ Protected Class PromotionsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(promotionCreateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(promotionCreate), "application/json")
 		  
 		  
 		  
@@ -134,16 +134,18 @@ Protected Class PromotionsApi
 
 
 	#tag Method, Flags = &h0
-		Sub PromotionsDelete(, adAccountId As String, promotionId As String)
+		Sub PromotionsDelete(, promotionId As String, adAccountId As String)
 		  // Operation promotions/delete
 		  // Delete promotion by id
+		  // - 
+		  // - parameter promotionId: (path) Promotion ID 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter promotionId: (path) Unique identifier of a promotion 
 		  //
-		  // Invokes PromotionsApiCallbackHandler.PromotionsDeleteCallback() on completion. 
+		  // Invokes PromotionsApiCallbackHandler.PromotionsDeleteCallback(Promotion) on completion. Note that the response is optional. 
 		  //
 		  // - DELETE /ad_accounts/{ad_account_id}/promotions/{promotion_id}
 		  // - Delete a promotion within Pinterest.
+		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -160,16 +162,17 @@ Protected Class PromotionsApi
 
 		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/promotions/{promotion_id}"
 		  
-		  Dim localVarPathStringadAccountId As String = adAccountId
-		  
-		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  Dim localVarPathStringpromotionId As String = promotionId
 		  
 		  localVarPath = localVarPath.ReplaceAllB("{promotion_id}", localVarPathStringpromotionId)
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  
 		  
-		  AddHandler localVarHTTPSocket.PageReceived, addressof Me.PromotionsDelete_handler
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.PromotionsDelete_handler
 		  AddHandler localVarHTTPSocket.Error, addressof Me.PromotionsDelete_error
+		  
 		  
 		  localVarHTTPSocket.SendRequest("DELETE", Me.BasePath + localVarPath)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
@@ -180,29 +183,86 @@ Protected Class PromotionsApi
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function PromotionsDeletePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.Promotion) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.Promotion
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub PromotionsDelete_error(sender As HTTPSecureSocket, Code As Integer)
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  CallbackHandler.PromotionsDeleteCallback(error)
+		  Dim data As OpenAPIClient.Models.Promotion
+		  CallbackHandler.PromotionsDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub PromotionsDelete_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
 		  #Pragma Unused URL
-		  #Pragma Unused Headers
-		  #Pragma Unused Content
+		  
 
 		  If sender <> nil Then sender.Close()
 		  
-		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", "")
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
+		  Dim data As OpenAPIClient.Models.Promotion
+		  Call PromotionsDeletePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
-		  
-		  CallbackHandler.PromotionsDeleteCallback(error)
+		  CallbackHandler.PromotionsDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
@@ -210,14 +270,14 @@ Protected Class PromotionsApi
 
 
 	#tag Method, Flags = &h0
-		Sub PromotionsGet(, adAccountId As String, promotionId As String)
+		Sub PromotionsGet(, promotionId As String, adAccountId As String)
 		  // Operation promotions/get
 		  // Get promotion by id
 		  // - 
+		  // - parameter promotionId: (path) Promotion ID 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter promotionId: (path) Unique identifier of a promotion 
 		  //
-		  // Invokes PromotionsApiCallbackHandler.PromotionsGetCallback(PromotionResponse) on completion. 
+		  // Invokes PromotionsApiCallbackHandler.PromotionsGetCallback(Promotion) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/promotions/{promotion_id}
 		  // - Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
@@ -238,12 +298,12 @@ Protected Class PromotionsApi
 
 		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/promotions/{promotion_id}"
 		  
-		  Dim localVarPathStringadAccountId As String = adAccountId
-		  
-		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  Dim localVarPathStringpromotionId As String = promotionId
 		  
 		  localVarPath = localVarPath.ReplaceAllB("{promotion_id}", localVarPathStringpromotionId)
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  
 		  
 		  AddHandler localVarHTTPSocket.PageReceived, addressof me.PromotionsGet_handler
@@ -260,7 +320,7 @@ Protected Class PromotionsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function PromotionsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.PromotionResponse) As Boolean
+		Private Function PromotionsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.Promotion) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -268,7 +328,7 @@ Protected Class PromotionsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.PromotionResponse
+			  outData = New OpenAPIClient.Models.Promotion
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -321,7 +381,7 @@ Protected Class PromotionsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.PromotionResponse
+		  Dim data As OpenAPIClient.Models.Promotion
 		  CallbackHandler.PromotionsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -335,7 +395,7 @@ Protected Class PromotionsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.PromotionResponse
+		  Dim data As OpenAPIClient.Models.Promotion
 		  Call PromotionsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.PromotionsGetCallback(error, data)
@@ -346,14 +406,14 @@ Protected Class PromotionsApi
 
 
 	#tag Method, Flags = &h0
-		Sub PromotionsList(, adAccountId As String, Optional pageSize As Xoson.O.OptionalInteger, order As OrderEnum_PromotionsList, Optional bookmark As Xoson.O.OptionalString)
+		Sub PromotionsList(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, order As OpenAPIClient.Models.PinterestLibPaginationOrderOptional)
 		  // Operation promotions/list
 		  // Get promotions
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+		  // - parameter order: (query) The order in which to sort the items returned: &quot;ASCENDING&quot; or &quot;DESCENDING&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Nil)
 		  //
 		  // Invokes PromotionsApiCallbackHandler.PromotionsListCallback(PromotionsList200Response) on completion. 
 		  //
@@ -370,11 +430,11 @@ Protected Class PromotionsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(OrderEnum_PromotionsListToString(order))
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If order <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(Xoson.toJSON(order))
 		  
 
 		  
@@ -486,27 +546,14 @@ Protected Class PromotionsApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function OrderEnum_PromotionsListToString(value As OrderEnum_PromotionsList) As String
-		  Select Case value
-		    
-		    Case OrderEnum_PromotionsList.Ascending
-		      Return "ASCENDING"
-		    Case OrderEnum_PromotionsList.Descending
-		      Return "DESCENDING"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub PromotionsUpdate(, adAccountId As String, promotionUpdateRequest() As OpenAPIClient.Models.PromotionUpdateRequest)
+		Sub PromotionsUpdate(, adAccountId As String, promotionBatchUpdate() As OpenAPIClient.Models.PromotionBatchUpdate)
 		  // Operation promotions/update
 		  // Update promotions
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter promotionUpdateRequest: (body) List of promotions to create, size limit [1, 30]. 
+		  // - parameter promotionBatchUpdate: (body)  
 		  //
 		  // Invokes PromotionsApiCallbackHandler.PromotionsUpdateCallback(PromotionsResponse) on completion. 
 		  //
@@ -521,7 +568,7 @@ Protected Class PromotionsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(promotionUpdateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(promotionBatchUpdate), "application/json")
 		  
 		  
 		  
@@ -708,13 +755,6 @@ Protected Class PromotionsApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = OrderEnum_PromotionsList, Type = Integer, Flags = &h0
-		
-        Ascending
-        Descending
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

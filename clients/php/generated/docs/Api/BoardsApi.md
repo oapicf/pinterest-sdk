@@ -22,7 +22,7 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `boardSectionsCreate()`
 
 ```php
-boardSectionsCreate($board_id, $board_section, $ad_account_id): \OpenAPI\Client\Model\BoardSection
+boardSectionsCreate($board_id, $board_section_create, $ad_account_id): \OpenAPI\Client\Model\BoardSection
 ```
 
 Create board section
@@ -47,11 +47,11 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     $config
 );
 $board_id = 'board_id_example'; // string | Unique identifier of a board.
-$board_section = new \OpenAPI\Client\Model\BoardSection(); // \OpenAPI\Client\Model\BoardSection | Create a board section.
+$board_section_create = new \OpenAPI\Client\Model\BoardSectionCreate(); // \OpenAPI\Client\Model\BoardSectionCreate
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $result = $apiInstance->boardSectionsCreate($board_id, $board_section, $ad_account_id);
+    $result = $apiInstance->boardSectionsCreate($board_id, $board_section_create, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BoardsApi->boardSectionsCreate: ', $e->getMessage(), PHP_EOL;
@@ -63,7 +63,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **board_id** | **string**| Unique identifier of a board. | |
-| **board_section** | [**\OpenAPI\Client\Model\BoardSection**](../Model/BoardSection.md)| Create a board section. | |
+| **board_section_create** | [**\OpenAPI\Client\Model\BoardSectionCreate**](../Model/BoardSectionCreate.md)|  | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -86,7 +86,7 @@ try {
 ## `boardSectionsDelete()`
 
 ```php
-boardSectionsDelete($board_id, $section_id, $ad_account_id)
+boardSectionsDelete($board_id, $section_id, $ad_account_id): \OpenAPI\Client\Model\BoardSection
 ```
 
 Delete board section
@@ -115,7 +115,8 @@ $section_id = 'section_id_example'; // string | Unique identifier of a board sec
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $apiInstance->boardSectionsDelete($board_id, $section_id, $ad_account_id);
+    $result = $apiInstance->boardSectionsDelete($board_id, $section_id, $ad_account_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BoardsApi->boardSectionsDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -131,7 +132,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\BoardSection**](../Model/BoardSection.md)
 
 ### Authorization
 
@@ -179,7 +180,7 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
 $board_id = 'board_id_example'; // string | Unique identifier of a board.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->boardSectionsList($board_id, $ad_account_id, $bookmark, $page_size);
@@ -196,7 +197,7 @@ try {
 | **board_id** | **string**| Unique identifier of a board. | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -249,7 +250,7 @@ $board_id = 'board_id_example'; // string | Unique identifier of a board.
 $section_id = 'section_id_example'; // string | Unique identifier of a board section.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->boardSectionsListPins($board_id, $section_id, $ad_account_id, $bookmark, $page_size);
@@ -267,7 +268,7 @@ try {
 | **section_id** | **string**| Unique identifier of a board section. | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -289,7 +290,7 @@ try {
 ## `boardSectionsUpdate()`
 
 ```php
-boardSectionsUpdate($board_id, $section_id, $board_section, $ad_account_id): \OpenAPI\Client\Model\BoardSection
+boardSectionsUpdate($board_id, $section_id, $board_section_update_with_required_body, $ad_account_id): \OpenAPI\Client\Model\BoardSection
 ```
 
 Update board section
@@ -315,11 +316,11 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
 );
 $board_id = 'board_id_example'; // string | Unique identifier of a board.
 $section_id = 'section_id_example'; // string | Unique identifier of a board section.
-$board_section = new \OpenAPI\Client\Model\BoardSection(); // \OpenAPI\Client\Model\BoardSection | Update a board section.
+$board_section_update_with_required_body = new \OpenAPI\Client\Model\BoardSectionUpdateWithRequiredBody(); // \OpenAPI\Client\Model\BoardSectionUpdateWithRequiredBody
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $result = $apiInstance->boardSectionsUpdate($board_id, $section_id, $board_section, $ad_account_id);
+    $result = $apiInstance->boardSectionsUpdate($board_id, $section_id, $board_section_update_with_required_body, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BoardsApi->boardSectionsUpdate: ', $e->getMessage(), PHP_EOL;
@@ -332,7 +333,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **board_id** | **string**| Unique identifier of a board. | |
 | **section_id** | **string**| Unique identifier of a board section. | |
-| **board_section** | [**\OpenAPI\Client\Model\BoardSection**](../Model/BoardSection.md)| Update a board section. | |
+| **board_section_update_with_required_body** | [**\OpenAPI\Client\Model\BoardSectionUpdateWithRequiredBody**](../Model/BoardSectionUpdateWithRequiredBody.md)|  | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -420,7 +421,7 @@ try {
 ## `boardsDelete()`
 
 ```php
-boardsDelete($board_id, $ad_account_id)
+boardsDelete($board_id, $ad_account_id): \OpenAPI\Client\Model\Board
 ```
 
 Delete board
@@ -448,7 +449,8 @@ $board_id = 'board_id_example'; // string
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $apiInstance->boardsDelete($board_id, $ad_account_id);
+    $result = $apiInstance->boardsDelete($board_id, $ad_account_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BoardsApi->boardsDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -463,7 +465,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\Board**](../Model/Board.md)
 
 ### Authorization
 
@@ -615,7 +617,7 @@ try {
 ## `boardsListPins()`
 
 ```php
-boardsListPins($board_id, $bookmark, $page_size, $creative_types, $ad_account_id, $pin_metrics): \OpenAPI\Client\Model\BoardsListPins200Response
+boardsListPins($board_id, $creative_types, $ad_account_id, $pin_metrics, $bookmark, $page_size): \OpenAPI\Client\Model\BoardsListPins200Response
 ```
 
 List Pins on board
@@ -643,14 +645,14 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     $config
 );
 $board_id = 'board_id_example'; // string | Unique identifier of a board.
-$bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $creative_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\CreativeType()); // \OpenAPI\Client\Model\CreativeType[] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $pin_metrics = false; // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+$bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->boardsListPins($board_id, $bookmark, $page_size, $creative_types, $ad_account_id, $pin_metrics);
+    $result = $apiInstance->boardsListPins($board_id, $creative_types, $ad_account_id, $pin_metrics, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BoardsApi->boardsListPins: ', $e->getMessage(), PHP_EOL;
@@ -662,11 +664,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **board_id** | **string**| Unique identifier of a board. | |
-| **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **creative_types** | [**\OpenAPI\Client\Model\CreativeType[]**](../Model/\OpenAPI\Client\Model\CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 | **pin_metrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
+| **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 

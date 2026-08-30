@@ -86,15 +86,17 @@ class _$CatalogsFeedProductCountsSerializer implements PrimitiveSerializer<Catal
         case r'ingested':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ingested = valueDes;
           break;
         case r'original':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.original = valueDes;
           break;
         default:

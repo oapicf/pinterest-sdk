@@ -1,0 +1,50 @@
+package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonValue;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+import com.fasterxml.jackson.annotation.JsonCreator;
+
+/**
+ * Sort metric for top pins analytics.
+ */
+public enum TopPinsSortBy {
+  
+  ENGAGEMENT("ENGAGEMENT"),
+  
+  SAVE("SAVE"),
+  
+  IMPRESSION("IMPRESSION"),
+  
+  OUTBOUND_CLICK("OUTBOUND_CLICK"),
+  
+  PIN_CLICK("PIN_CLICK");
+
+  private String value;
+
+  TopPinsSortBy(String value) {
+    this.value = value;
+  }
+
+  @Override
+  @JsonValue
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  @JsonCreator
+  public static TopPinsSortBy fromValue(String text) {
+    for (TopPinsSortBy b : TopPinsSortBy.values()) {
+      if (String.valueOf(b.value).equals(text)) {
+        return b;
+      }
+    }
+    throw new IllegalArgumentException("Unexpected value '" + text + "'");
+  }
+}
+

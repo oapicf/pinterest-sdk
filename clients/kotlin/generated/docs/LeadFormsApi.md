@@ -13,11 +13,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="leadFormGet"></a>
 # **leadFormGet**
-> LeadFormResponse leadFormGet(adAccountId, leadFormId)
+> LeadForm leadFormGet(leadFormId, adAccountId)
 
 Get lead form by id
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```kotlin
@@ -26,10 +26,10 @@ Get lead form by id
 //import org.openapitools.client.models.*
 
 val apiInstance = LeadFormsApi()
+val leadFormId : kotlin.String = leadFormId_example // kotlin.String | The ID of this lead form
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val leadFormId : kotlin.String = 1234567890123 // kotlin.String | Unique identifier of a lead form.
 try {
-    val result : LeadFormResponse = apiInstance.leadFormGet(adAccountId, leadFormId)
+    val result : LeadForm = apiInstance.leadFormGet(leadFormId, adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling LeadFormsApi#leadFormGet")
@@ -41,20 +41,26 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **leadFormId** | **kotlin.String**| The ID of this lead form | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **leadFormId** | **kotlin.String**| Unique identifier of a lead form. | |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 
 ### Return type
 
-[**LeadFormResponse**](LeadFormResponse.md)
+[**LeadForm**](LeadForm.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -63,7 +69,7 @@ Configure pinterest_oauth2:
 
 <a id="leadFormTestCreate"></a>
 # **leadFormTestCreate**
-> LeadFormTestResponse leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest)
+> LeadFormTest leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate)
 
 Create lead form test data
 
@@ -76,11 +82,11 @@ Create lead form test data based on the list of answers provided as part of the 
 //import org.openapitools.client.models.*
 
 val apiInstance = LeadFormsApi()
-val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val leadFormId : kotlin.String = 1234567890123 // kotlin.String | Unique identifier of a lead form.
-val leadFormTestRequest : LeadFormTestRequest =  // LeadFormTestRequest | Subscription to create.
+val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+val leadFormId : kotlin.String = leadFormId_example // kotlin.String | Unique identifier of a lead form.
+val leadFormTestCreate : LeadFormTestCreate =  // LeadFormTestCreate | 
 try {
-    val result : LeadFormTestResponse = apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest)
+    val result : LeadFormTest = apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling LeadFormsApi#leadFormTestCreate")
@@ -92,21 +98,27 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **adAccountId** | **kotlin.String**|  | |
 | **leadFormId** | **kotlin.String**| Unique identifier of a lead form. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **leadFormTestRequest** | [**LeadFormTestRequest**](LeadFormTestRequest.md)| Subscription to create. | |
+| **leadFormTestCreate** | [**LeadFormTestCreate**](LeadFormTestCreate.md)|  | |
 
 ### Return type
 
-[**LeadFormTestResponse**](LeadFormTestResponse.md)
+[**LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -115,11 +127,11 @@ Configure pinterest_oauth2:
 
 <a id="leadFormsCreate"></a>
 # **leadFormsCreate**
-> LeadFormArrayResponse leadFormsCreate(adAccountId, leadFormCreateRequest)
+> LeadFormsCreate200Response leadFormsCreate(adAccountId, leadFormCreate)
 
 Create lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```kotlin
@@ -129,9 +141,9 @@ Create lead forms
 
 val apiInstance = LeadFormsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val leadFormCreateRequest : kotlin.collections.List<LeadFormCreateRequest> =  // kotlin.collections.List<LeadFormCreateRequest> | List of lead forms to create, size limit [1, 30].
+val leadFormCreate : kotlin.collections.List<LeadFormCreate> =  // kotlin.collections.List<LeadFormCreate> | 
 try {
-    val result : LeadFormArrayResponse = apiInstance.leadFormsCreate(adAccountId, leadFormCreateRequest)
+    val result : LeadFormsCreate200Response = apiInstance.leadFormsCreate(adAccountId, leadFormCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling LeadFormsApi#leadFormsCreate")
@@ -146,17 +158,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **leadFormCreateRequest** | [**kotlin.collections.List&lt;LeadFormCreateRequest&gt;**](LeadFormCreateRequest.md)| List of lead forms to create, size limit [1, 30]. | |
+| **leadFormCreate** | [**kotlin.collections.List&lt;LeadFormCreate&gt;**](LeadFormCreate.md)|  | |
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -165,11 +183,11 @@ Configure pinterest_oauth2:
 
 <a id="leadFormsList"></a>
 # **leadFormsList**
-> LeadFormsList200Response leadFormsList(adAccountId, pageSize, order, bookmark)
+> LeadFormsList200Response leadFormsList(adAccountId, bookmark, pageSize, order)
 
 List lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```kotlin
@@ -179,11 +197,11 @@ List lead forms
 
 val apiInstance = LeadFormsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 try {
-    val result : LeadFormsList200Response = apiInstance.leadFormsList(adAccountId, pageSize, order, bookmark)
+    val result : LeadFormsList200Response = apiInstance.leadFormsList(adAccountId, bookmark, pageSize, order)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling LeadFormsApi#leadFormsList")
@@ -196,11 +214,11 @@ try {
 
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **kotlin.String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 
 ### Return type
 
@@ -209,8 +227,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -219,11 +243,11 @@ Configure pinterest_oauth2:
 
 <a id="leadFormsUpdate"></a>
 # **leadFormsUpdate**
-> LeadFormArrayResponse leadFormsUpdate(adAccountId, leadFormUpdateRequest)
+> LeadFormsCreate200Response leadFormsUpdate(adAccountId, leadFormBatchUpdate)
 
 Update lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```kotlin
@@ -233,9 +257,9 @@ Update lead forms
 
 val apiInstance = LeadFormsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val leadFormUpdateRequest : kotlin.collections.List<LeadFormUpdateRequest> =  // kotlin.collections.List<LeadFormUpdateRequest> | List of lead forms to update, size limit [1, 30].
+val leadFormBatchUpdate : kotlin.collections.List<LeadFormBatchUpdate> =  // kotlin.collections.List<LeadFormBatchUpdate> | 
 try {
-    val result : LeadFormArrayResponse = apiInstance.leadFormsUpdate(adAccountId, leadFormUpdateRequest)
+    val result : LeadFormsCreate200Response = apiInstance.leadFormsUpdate(adAccountId, leadFormBatchUpdate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling LeadFormsApi#leadFormsUpdate")
@@ -250,17 +274,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **leadFormUpdateRequest** | [**kotlin.collections.List&lt;LeadFormUpdateRequest&gt;**](LeadFormUpdateRequest.md)| List of lead forms to update, size limit [1, 30]. | |
+| **leadFormBatchUpdate** | [**kotlin.collections.List&lt;LeadFormBatchUpdate&gt;**](LeadFormBatchUpdate.md)|  | |
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

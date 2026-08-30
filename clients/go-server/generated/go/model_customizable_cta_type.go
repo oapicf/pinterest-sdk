@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -45,12 +45,14 @@ const (
 	DOWNLOAD CustomizableCtaType = "DOWNLOAD"
 	EXPLORE_MORE CustomizableCtaType = "EXPLORE_MORE"
 	FIND_A_LOCATION CustomizableCtaType = "FIND_A_LOCATION"
+	FIND_RETAILERS CustomizableCtaType = "FIND_RETAILERS"
 	GET_DEAL CustomizableCtaType = "GET_DEAL"
 	GET_RECIPE CustomizableCtaType = "GET_RECIPE"
 	GET_SHOWTIMES CustomizableCtaType = "GET_SHOWTIMES"
 	ON_SALE CustomizableCtaType = "ON_SALE"
 	PLAY_GAME CustomizableCtaType = "PLAY_GAME"
 	TRY_IT CustomizableCtaType = "TRY_IT"
+	TAKE_A_PEEK CustomizableCtaType = "TAKE_A_PEEK"
 )
 
 // AllowedCustomizableCtaTypeEnumValues is all the allowed values of CustomizableCtaType enum
@@ -78,12 +80,14 @@ var AllowedCustomizableCtaTypeEnumValues = []CustomizableCtaType{
 	"DOWNLOAD",
 	"EXPLORE_MORE",
 	"FIND_A_LOCATION",
+	"FIND_RETAILERS",
 	"GET_DEAL",
 	"GET_RECIPE",
 	"GET_SHOWTIMES",
 	"ON_SALE",
 	"PLAY_GAME",
 	"TRY_IT",
+	"TAKE_A_PEEK",
 }
 
 // validCustomizableCtaTypeEnumValue provides a map of CustomizableCtaTypes for fast verification of use input
@@ -111,12 +115,14 @@ var validCustomizableCtaTypeEnumValues = map[CustomizableCtaType]struct{}{
 	"DOWNLOAD": {},
 	"EXPLORE_MORE": {},
 	"FIND_A_LOCATION": {},
+	"FIND_RETAILERS": {},
 	"GET_DEAL": {},
 	"GET_RECIPE": {},
 	"GET_SHOWTIMES": {},
 	"ON_SALE": {},
 	"PLAY_GAME": {},
 	"TRY_IT": {},
+	"TAKE_A_PEEK": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -137,8 +143,8 @@ func NewCustomizableCtaTypeFromValue(v string) (CustomizableCtaType, error) {
 }
 
 
-
-// AssertCustomizableCtaTypeRequired checks if the required fields are not zero-ed
+// AssertCustomizableCtaTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCustomizableCtaTypeRequired(obj CustomizableCtaType) error {
 	return nil
 }

@@ -8,8 +8,8 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   BatchOperationStatus = openapi_server.resourceTypes.BatchOperationStatus
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
   HotelProcessingRecord = openapi_server.resourceTypes.HotelProcessingRecord
+  import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
 
@@ -24,8 +24,9 @@ resourceTypes {
           optional = false
         }
         catalog_type {
-          type = CatalogsType
+          type =  string
           description = ""
+          enum = ["HOTEL"]
           optional = true
         }
         completed_time {

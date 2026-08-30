@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,17 +21,17 @@ var _ MappedNullable = &BillingProfilesResponse{}
 // BillingProfilesResponse struct for BillingProfilesResponse
 type BillingProfilesResponse struct {
 	// Advertiser ID of the billing.
-	AdvertiserId *string `json:"advertiser_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdvertiserId *string `json:"advertiser_id,omitempty" validate:"regexp=^\\d+$"`
 	// Billing type of the advertiser
-	BillingType *string `json:"billing_type,omitempty"`
+	BillingType *BillingType `json:"billing_type,omitempty"`
 	// Type of the card.
-	CardType *string `json:"card_type,omitempty"`
+	CardType *BillingProfileCardType `json:"card_type,omitempty"`
 	// Billing ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 	// Brand of the payment method.
-	PaymentMethodBrand *string `json:"payment_method_brand,omitempty"`
+	PaymentMethodBrand *BillingProfilePaymentMethodBrand `json:"payment_method_brand,omitempty"`
 	// Status of the billing.
-	Status *string `json:"status,omitempty"`
+	Status *BillingProfileStatus `json:"status,omitempty"`
 }
 
 // NewBillingProfilesResponse instantiates a new BillingProfilesResponse object
@@ -84,9 +84,9 @@ func (o *BillingProfilesResponse) SetAdvertiserId(v string) {
 }
 
 // GetBillingType returns the BillingType field value if set, zero value otherwise.
-func (o *BillingProfilesResponse) GetBillingType() string {
+func (o *BillingProfilesResponse) GetBillingType() BillingType {
 	if o == nil || IsNil(o.BillingType) {
-		var ret string
+		var ret BillingType
 		return ret
 	}
 	return *o.BillingType
@@ -94,7 +94,7 @@ func (o *BillingProfilesResponse) GetBillingType() string {
 
 // GetBillingTypeOk returns a tuple with the BillingType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingProfilesResponse) GetBillingTypeOk() (*string, bool) {
+func (o *BillingProfilesResponse) GetBillingTypeOk() (*BillingType, bool) {
 	if o == nil || IsNil(o.BillingType) {
 		return nil, false
 	}
@@ -110,15 +110,15 @@ func (o *BillingProfilesResponse) HasBillingType() bool {
 	return false
 }
 
-// SetBillingType gets a reference to the given string and assigns it to the BillingType field.
-func (o *BillingProfilesResponse) SetBillingType(v string) {
+// SetBillingType gets a reference to the given BillingType and assigns it to the BillingType field.
+func (o *BillingProfilesResponse) SetBillingType(v BillingType) {
 	o.BillingType = &v
 }
 
 // GetCardType returns the CardType field value if set, zero value otherwise.
-func (o *BillingProfilesResponse) GetCardType() string {
+func (o *BillingProfilesResponse) GetCardType() BillingProfileCardType {
 	if o == nil || IsNil(o.CardType) {
-		var ret string
+		var ret BillingProfileCardType
 		return ret
 	}
 	return *o.CardType
@@ -126,7 +126,7 @@ func (o *BillingProfilesResponse) GetCardType() string {
 
 // GetCardTypeOk returns a tuple with the CardType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingProfilesResponse) GetCardTypeOk() (*string, bool) {
+func (o *BillingProfilesResponse) GetCardTypeOk() (*BillingProfileCardType, bool) {
 	if o == nil || IsNil(o.CardType) {
 		return nil, false
 	}
@@ -142,8 +142,8 @@ func (o *BillingProfilesResponse) HasCardType() bool {
 	return false
 }
 
-// SetCardType gets a reference to the given string and assigns it to the CardType field.
-func (o *BillingProfilesResponse) SetCardType(v string) {
+// SetCardType gets a reference to the given BillingProfileCardType and assigns it to the CardType field.
+func (o *BillingProfilesResponse) SetCardType(v BillingProfileCardType) {
 	o.CardType = &v
 }
 
@@ -180,9 +180,9 @@ func (o *BillingProfilesResponse) SetId(v string) {
 }
 
 // GetPaymentMethodBrand returns the PaymentMethodBrand field value if set, zero value otherwise.
-func (o *BillingProfilesResponse) GetPaymentMethodBrand() string {
+func (o *BillingProfilesResponse) GetPaymentMethodBrand() BillingProfilePaymentMethodBrand {
 	if o == nil || IsNil(o.PaymentMethodBrand) {
-		var ret string
+		var ret BillingProfilePaymentMethodBrand
 		return ret
 	}
 	return *o.PaymentMethodBrand
@@ -190,7 +190,7 @@ func (o *BillingProfilesResponse) GetPaymentMethodBrand() string {
 
 // GetPaymentMethodBrandOk returns a tuple with the PaymentMethodBrand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingProfilesResponse) GetPaymentMethodBrandOk() (*string, bool) {
+func (o *BillingProfilesResponse) GetPaymentMethodBrandOk() (*BillingProfilePaymentMethodBrand, bool) {
 	if o == nil || IsNil(o.PaymentMethodBrand) {
 		return nil, false
 	}
@@ -206,15 +206,15 @@ func (o *BillingProfilesResponse) HasPaymentMethodBrand() bool {
 	return false
 }
 
-// SetPaymentMethodBrand gets a reference to the given string and assigns it to the PaymentMethodBrand field.
-func (o *BillingProfilesResponse) SetPaymentMethodBrand(v string) {
+// SetPaymentMethodBrand gets a reference to the given BillingProfilePaymentMethodBrand and assigns it to the PaymentMethodBrand field.
+func (o *BillingProfilesResponse) SetPaymentMethodBrand(v BillingProfilePaymentMethodBrand) {
 	o.PaymentMethodBrand = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *BillingProfilesResponse) GetStatus() string {
+func (o *BillingProfilesResponse) GetStatus() BillingProfileStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret string
+		var ret BillingProfileStatus
 		return ret
 	}
 	return *o.Status
@@ -222,7 +222,7 @@ func (o *BillingProfilesResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingProfilesResponse) GetStatusOk() (*string, bool) {
+func (o *BillingProfilesResponse) GetStatusOk() (*BillingProfileStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -238,8 +238,8 @@ func (o *BillingProfilesResponse) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *BillingProfilesResponse) SetStatus(v string) {
+// SetStatus gets a reference to the given BillingProfileStatus and assigns it to the Status field.
+func (o *BillingProfilesResponse) SetStatus(v BillingProfileStatus) {
 	o.Status = &v
 }
 

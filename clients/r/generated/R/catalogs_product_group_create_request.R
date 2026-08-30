@@ -31,9 +31,9 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
     #' @param filters filters
     #' @param name name
     #' @param description description
-    #' @param is_featured boolean indicator of whether the product group is being featured or not. Default to FALSE.
+    #' @param is_featured boolean indicator of whether the product group is being featured or not
     #' @param ... Other optional arguments.
-    initialize = function(`feed_id`, `filters`, `name`, `description` = NULL, `is_featured` = FALSE, ...) {
+    initialize = function(`feed_id`, `filters`, `name`, `description` = NULL, `is_featured` = NULL, ...) {
       if (!missing(`feed_id`)) {
         if (!(is.character(`feed_id`) && length(`feed_id`) == 1)) {
           stop(paste("Error! Invalid data for `feed_id`. Must be a string:", `feed_id`))
@@ -105,7 +105,7 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
       }
       if (!is.null(self$`filters`)) {
         CatalogsProductGroupCreateRequestObject[["filters"]] <-
-          self$`filters`$toSimpleType()
+          self$extractSimpleType(self$`filters`)
       }
       if (!is.null(self$`is_featured`)) {
         CatalogsProductGroupCreateRequestObject[["is_featured"]] <-
@@ -116,6 +116,29 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
           self$`name`
       }
       return(CatalogsProductGroupCreateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

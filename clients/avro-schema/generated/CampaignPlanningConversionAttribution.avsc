@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Attribution windows for a conversion event.",
+  "name": "CampaignPlanningConversionAttribution",
+  "fields": [
+    {
+      "name": "click_window_days",
+      "type": ["null", "model.CampaignPlanningConversionAttributionWindowDays"],
+      "doc": "Number of days to use as the conversion attribution window for a pin click action.",
+      "default": null
+    },
+    {
+      "name": "engagement_window_days",
+      "type": ["null", "model.CampaignPlanningConversionAttributionWindowDays"],
+      "doc": "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes.",
+      "default": null
+    },
+    {
+      "name": "view_window_days",
+      "type": ["null", "model.CampaignPlanningConversionAttributionWindowDays"],
+      "doc": "Number of days to use as the conversion attribution window for a view action.",
+      "default": null
+    }
+  ]
+
+}

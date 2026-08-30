@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Schedule status",
+  "name": "ScheduleStatus",
+  "symbols": [
+    "DRAFT",
+    "CREATED",
+    "SCHEDULED",
+    "ACTIVE",
+    "COMPLETED",
+    "FAILED",
+    "CANCELED"
+  ]
+}

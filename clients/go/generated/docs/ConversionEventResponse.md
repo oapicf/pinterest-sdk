@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ConversionEvent** | Pointer to [**ConversionTagType**](ConversionTagType.md) |  | [optional] 
 **ConversionTagId** | Pointer to **string** | Id of the tag. | [optional] 
 **CreatedTime** | Pointer to **int32** | Creation date in epoch format. | [optional] 
+**ReportingConversionEvent** | Pointer to **string** | For advertiser-defined events, the reporting event label shown in optimization UIs. | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetCreatedTime sets CreatedTime field to given value.
 `func (o *ConversionEventResponse) HasCreatedTime() bool`
 
 HasCreatedTime returns a boolean if a field has been set.
+
+### GetReportingConversionEvent
+
+`func (o *ConversionEventResponse) GetReportingConversionEvent() string`
+
+GetReportingConversionEvent returns the ReportingConversionEvent field if non-nil, zero value otherwise.
+
+### GetReportingConversionEventOk
+
+`func (o *ConversionEventResponse) GetReportingConversionEventOk() (*string, bool)`
+
+GetReportingConversionEventOk returns a tuple with the ReportingConversionEvent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportingConversionEvent
+
+`func (o *ConversionEventResponse) SetReportingConversionEvent(v string)`
+
+SetReportingConversionEvent sets ReportingConversionEvent field to given value.
+
+### HasReportingConversionEvent
+
+`func (o *ConversionEventResponse) HasReportingConversionEvent() bool`
+
+HasReportingConversionEvent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

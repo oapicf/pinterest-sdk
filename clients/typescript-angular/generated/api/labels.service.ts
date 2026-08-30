@@ -21,9 +21,19 @@ import { LabelCreateRequest } from '../model/labelCreateRequest';
 // @ts-ignore
 import { LabelUpdateRequest } from '../model/labelUpdateRequest';
 // @ts-ignore
+import { LabeledEntities } from '../model/labeledEntities';
+// @ts-ignore
+import { LabeledEntitiesCreate } from '../model/labeledEntitiesCreate';
+// @ts-ignore
 import { LabelsList200Response } from '../model/labelsList200Response';
 // @ts-ignore
 import { LabelsResponse } from '../model/labelsResponse';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
+// @ts-ignore
+import { QueryLabelEntityStatusesItems } from '../model/queryLabelEntityStatusesItems';
+// @ts-ignore
+import { QueryLabelTypesItems } from '../model/queryLabelTypesItems';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -42,8 +52,86 @@ export class LabelsService extends BaseService {
     }
 
     /**
+     * Apply label to entity
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+     * @endpoint post /ad_accounts/{ad_account_id}/labels/{label_id}/apply
+     * @param adAccountId 
+     * @param labelId Label ID.
+     * @param labeledEntitiesCreate 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public labelsApply(adAccountId: string, labelId: string, labeledEntitiesCreate: LabeledEntitiesCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LabeledEntities>;
+    public labelsApply(adAccountId: string, labelId: string, labeledEntitiesCreate: LabeledEntitiesCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LabeledEntities>>;
+    public labelsApply(adAccountId: string, labelId: string, labeledEntitiesCreate: LabeledEntitiesCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LabeledEntities>>;
+    public labelsApply(adAccountId: string, labelId: string, labeledEntitiesCreate: LabeledEntitiesCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling labelsApply.');
+        }
+        if (labelId === null || labelId === undefined) {
+            throw new Error('Required parameter labelId was null or undefined when calling labelsApply.');
+        }
+        if (labeledEntitiesCreate === null || labeledEntitiesCreate === undefined) {
+            throw new Error('Required parameter labeledEntitiesCreate was null or undefined when calling labelsApply.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/labels/${this.configuration.encodeParam({name: "labelId", value: labelId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/apply`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<LabeledEntities>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: labeledEntitiesCreate,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Create labels
-     * &lt;p&gt; &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    &lt;b&gt;Note:&lt;/b&gt; You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
      * @endpoint post /ad_accounts/{ad_account_id}/labels
      * @param adAccountId Unique identifier of an ad account.
      * @param labelCreateRequest 
@@ -117,23 +205,23 @@ export class LabelsService extends BaseService {
 
     /**
      * List labels
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   See a list of labels for assets that your account owns, and filter the list by different criteria. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
      * @endpoint get /ad_accounts/{ad_account_id}/labels
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignIds List of Campaign Ids to use to filter the results.
      * @param labelIds List of Label Ids to use to filter the results.
      * @param entityStatuses Label entity status
      * @param labelTypes Label type.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public labelsList(adAccountId: string, campaignIds?: Array<string>, labelIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'ARCHIVED'>, labelTypes?: Array<'BRAND' | 'CUSTOM'>, pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LabelsList200Response>;
-    public labelsList(adAccountId: string, campaignIds?: Array<string>, labelIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'ARCHIVED'>, labelTypes?: Array<'BRAND' | 'CUSTOM'>, pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LabelsList200Response>>;
-    public labelsList(adAccountId: string, campaignIds?: Array<string>, labelIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'ARCHIVED'>, labelTypes?: Array<'BRAND' | 'CUSTOM'>, pageSize?: number, bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LabelsList200Response>>;
-    public labelsList(adAccountId: string, campaignIds?: Array<string>, labelIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'ARCHIVED'>, labelTypes?: Array<'BRAND' | 'CUSTOM'>, pageSize?: number, bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public labelsList(adAccountId: string, campaignIds?: Array<string>, labelIds?: Array<string>, entityStatuses?: Array<QueryLabelEntityStatusesItems>, labelTypes?: Array<QueryLabelTypesItems>, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LabelsList200Response>;
+    public labelsList(adAccountId: string, campaignIds?: Array<string>, labelIds?: Array<string>, entityStatuses?: Array<QueryLabelEntityStatusesItems>, labelTypes?: Array<QueryLabelTypesItems>, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LabelsList200Response>>;
+    public labelsList(adAccountId: string, campaignIds?: Array<string>, labelIds?: Array<string>, entityStatuses?: Array<QueryLabelEntityStatusesItems>, labelTypes?: Array<QueryLabelTypesItems>, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LabelsList200Response>>;
+    public labelsList(adAccountId: string, campaignIds?: Array<string>, labelIds?: Array<string>, entityStatuses?: Array<QueryLabelEntityStatusesItems>, labelTypes?: Array<QueryLabelTypesItems>, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling labelsList.');
         }
@@ -178,8 +266,8 @@ export class LabelsService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'page_size',
-            <any>pageSize,
+            'bookmark',
+            <any>bookmark,
             QueryParamStyle.Form,
             true,
         );
@@ -187,8 +275,8 @@ export class LabelsService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'bookmark',
-            <any>bookmark,
+            'page_size',
+            <any>pageSize,
             QueryParamStyle.Form,
             true,
         );
@@ -239,8 +327,86 @@ export class LabelsService extends BaseService {
     }
 
     /**
+     * Remove label from entities
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
+     * @endpoint post /ad_accounts/{ad_account_id}/labels/{label_id}/remove
+     * @param adAccountId 
+     * @param labelId Label ID.
+     * @param labeledEntitiesCreate 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public labelsRemove(adAccountId: string, labelId: string, labeledEntitiesCreate: LabeledEntitiesCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LabeledEntities>;
+    public labelsRemove(adAccountId: string, labelId: string, labeledEntitiesCreate: LabeledEntitiesCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LabeledEntities>>;
+    public labelsRemove(adAccountId: string, labelId: string, labeledEntitiesCreate: LabeledEntitiesCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LabeledEntities>>;
+    public labelsRemove(adAccountId: string, labelId: string, labeledEntitiesCreate: LabeledEntitiesCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling labelsRemove.');
+        }
+        if (labelId === null || labelId === undefined) {
+            throw new Error('Required parameter labelId was null or undefined when calling labelsRemove.');
+        }
+        if (labeledEntitiesCreate === null || labeledEntitiesCreate === undefined) {
+            throw new Error('Required parameter labeledEntitiesCreate was null or undefined when calling labelsRemove.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/labels/${this.configuration.encodeParam({name: "labelId", value: labelId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/remove`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<LabeledEntities>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: labeledEntitiesCreate,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Update labels
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Change the properties of one or more labels. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
      * @endpoint patch /ad_accounts/{ad_account_id}/labels
      * @param adAccountId Unique identifier of an ad account.
      * @param labelUpdateRequest 

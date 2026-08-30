@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/label_status.dart';
-import 'package:openapi/src/model/label_type.dart';
-import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/nullable_label_status.dart';
+import 'package:openapi/src/model/nullable_label_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -16,36 +15,25 @@ part 'label.g.dart';
 /// Properties:
 /// * [id] - Label ID.
 /// * [labelType] 
-/// * [parentId] - Label parent entity ID.
-/// * [parentType] - Label parent entity type.
 /// * [status] 
-/// * [value] - Label name.
+/// * [value] - Label name. 100-character limit.
 @BuiltValue()
 abstract class Label implements Built<Label, LabelBuilder> {
   /// Label ID.
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
 
   @BuiltValueField(wireName: r'label_type')
-  LabelType? get labelType;
+  NullableLabelType? get labelType;
   // enum labelTypeEnum {  BRAND,  CUSTOM,  ,  };
 
-  /// Label parent entity ID.
-  @BuiltValueField(wireName: r'parent_id')
-  String? get parentId;
-
-  /// Label parent entity type.
-  @BuiltValueField(wireName: r'parent_type')
-  LabelParentTypeEnum? get parentType;
-  // enum parentTypeEnum {  CAMPAIGN,  ,  };
-
   @BuiltValueField(wireName: r'status')
-  LabelStatus? get status;
+  NullableLabelStatus? get status;
   // enum statusEnum {  ACTIVE,  ARCHIVED,  ,  };
 
-  /// Label name.
+  /// Label name. 100-character limit.
   @BuiltValueField(wireName: r'value')
-  String? get value;
+  String get value;
 
   Label._();
 
@@ -70,48 +58,28 @@ class _$LabelSerializer implements PrimitiveSerializer<Label> {
     Label object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.labelType != null) {
-      yield r'label_type';
-      yield serializers.serialize(
-        object.labelType,
-        specifiedType: const FullType.nullable(LabelType),
-      );
-    }
-    if (object.parentId != null) {
-      yield r'parent_id';
-      yield serializers.serialize(
-        object.parentId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.parentType != null) {
-      yield r'parent_type';
-      yield serializers.serialize(
-        object.parentType,
-        specifiedType: const FullType.nullable(LabelParentTypeEnum),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
+    yield r'label_type';
+    yield object.labelType == null ? null : serializers.serialize(
+      object.labelType,
+      specifiedType: const FullType.nullable(NullableLabelType),
+    );
     if (object.status != null) {
       yield r'status';
       yield serializers.serialize(
         object.status,
-        specifiedType: const FullType.nullable(LabelStatus),
+        specifiedType: const FullType.nullable(NullableLabelStatus),
       );
     }
-    if (object.value != null) {
-      yield r'value';
-      yield serializers.serialize(
-        object.value,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'value';
+    yield serializers.serialize(
+      object.value,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
@@ -145,31 +113,16 @@ class _$LabelSerializer implements PrimitiveSerializer<Label> {
         case r'label_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(LabelType),
-          ) as LabelType?;
+            specifiedType: const FullType.nullable(NullableLabelType),
+          ) as NullableLabelType?;
           if (valueDes == null) continue;
           result.labelType = valueDes;
-          break;
-        case r'parent_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.parentId = valueDes;
-          break;
-        case r'parent_type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(LabelParentTypeEnum),
-          ) as LabelParentTypeEnum?;
-          if (valueDes == null) continue;
-          result.parentType = valueDes;
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(LabelStatus),
-          ) as LabelStatus?;
+            specifiedType: const FullType.nullable(NullableLabelStatus),
+          ) as NullableLabelStatus?;
           if (valueDes == null) continue;
           result.status = valueDes;
           break;
@@ -207,19 +160,5 @@ class _$LabelSerializer implements PrimitiveSerializer<Label> {
     );
     return result.build();
   }
-}
-
-class LabelParentTypeEnum extends EnumClass {
-
-  /// Label parent entity type.
-  @BuiltValueEnumConst(wireName: r'CAMPAIGN')
-  static const LabelParentTypeEnum CAMPAIGN = _$labelParentTypeEnum_CAMPAIGN;
-
-  static Serializer<LabelParentTypeEnum> get serializer => _$labelParentTypeEnumSerializer;
-
-  const LabelParentTypeEnum._(String name): super(name);
-
-  static BuiltSet<LabelParentTypeEnum> get values => _$labelParentTypeEnumValues;
-  static LabelParentTypeEnum valueOf(String name) => _$labelParentTypeEnumValueOf(name);
 }
 

@@ -5,7 +5,7 @@ All URIs are relative to */v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**orderLinesGet**](OrderLinesApi.md#orderLinesGet) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line
-[**orderLinesList**](OrderLinesApi.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines
+[**orderLinesList**](OrderLinesApi.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines.
 
 
 
@@ -18,7 +18,7 @@ Get a specific existing order line associated with an ad account.
 ### Example
 
 ```bash
- orderLinesGet ad_account_id=value order_line_id=value
+ orderLinesGet order_line_id=value ad_account_id=value
 ```
 
 ### Parameters
@@ -26,8 +26,8 @@ Get a specific existing order line associated with an ad account.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **orderLineId** | **string** | Order line ID. | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **orderLineId** | **string** | Unique identifier of an order line. | [default to null]
 
 ### Return type
 
@@ -47,14 +47,14 @@ Name | Type | Description  | Notes
 
 ## orderLinesList
 
-Get order lines
+Get order lines.
 
 List existing order lines associated with an ad account.
 
 ### Example
 
 ```bash
- orderLinesList ad_account_id=value  page_size=value  order=value  bookmark=value
+ orderLinesList ad_account_id=value  bookmark=value  page_size=value  order=value
 ```
 
 ### Parameters
@@ -63,11 +63,11 @@ List existing order lines associated with an ad account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
-by ID. Note that higher-value IDs are associated with more-recently added
-items. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID.
+Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
 
 ### Return type
 

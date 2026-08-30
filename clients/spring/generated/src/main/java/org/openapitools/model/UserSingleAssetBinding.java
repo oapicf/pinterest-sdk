@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -11,25 +12,26 @@ import org.openapitools.model.BusinessAccessUserSummary;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * An object containing the permissions a business member/partner has on the asset.
  */
 
 @Schema(name = "UserSingleAssetBinding", description = "An object containing the permissions a business member/partner has on the asset.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UserSingleAssetBinding {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> permissions = new ArrayList<>();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BusinessAccessUserSummary user;
 
   public UserSingleAssetBinding permissions(List<String> permissions) {
@@ -56,6 +58,7 @@ public class UserSingleAssetBinding {
     return permissions;
   }
 
+  @JsonProperty("permissions")
   public void setPermissions(List<String> permissions) {
     this.permissions = permissions;
   }
@@ -76,6 +79,7 @@ public class UserSingleAssetBinding {
     return user;
   }
 
+  @JsonProperty("user")
   public void setUser(@Nullable BusinessAccessUserSummary user) {
     this.user = user;
   }
@@ -112,11 +116,8 @@ public class UserSingleAssetBinding {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

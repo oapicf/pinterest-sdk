@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdditionalId1** | Pointer to **NullableString** |  | [optional] 
-**ConnectedAdvertiserId** | Pointer to **NullableString** |  | [optional] [readonly] 
+**ConnectedAdvertiserId** | Pointer to **NullableString** |  | [optional] 
 **ConnectedLbaId** | Pointer to **NullableString** |  | [optional] 
 **ConnectedMerchantId** | Pointer to **NullableString** |  | [optional] 
 **ConnectedTagId** | Pointer to **NullableString** |  | [optional] 
-**ConnectedUserId** | Pointer to **string** |  | [optional] [readonly] 
+**ConnectedUserId** | Pointer to **string** |  | [optional] 
 **CreatedTime** | Pointer to **int32** |  | [optional] 
 **ExternalBusinessId** | Pointer to **NullableString** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | **string** | Integration record ID. | [readonly] 
 **PartnerAccessToken** | Pointer to **NullableString** |  | [optional] 
 **PartnerAccessTokenExpiry** | Pointer to **NullableInt32** |  | [optional] 
 **PartnerMetadata** | Pointer to **NullableString** |  | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewIntegrationRecord
 
-`func NewIntegrationRecord() *IntegrationRecord`
+`func NewIntegrationRecord(id string, ) *IntegrationRecord`
 
 NewIntegrationRecord instantiates a new IntegrationRecord object
 This constructor will assign default values to properties that have it defined,
@@ -320,11 +320,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *IntegrationRecord) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetPartnerAccessToken
 

@@ -4,10 +4,10 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
-import org.openapitools.model.Error;
+import org.openapitools.model.BoardsList200Response;
+import org.openapitools.model.PinsList200Response;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.SearchPartnerPins200Response;
-import org.openapitools.model.SearchUserBoardsGet200Response;
-import org.openapitools.model.SearchUserPinsList200Response;
 
 import java.util.List;
 
@@ -18,13 +18,13 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SearchApiServiceImpl implements SearchApi {
       public Response searchPartnerPins(String term,String countryCode,String bookmark,String locale,Integer limit,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response searchUserBoardsGet(String adAccountId,String bookmark,Integer pageSize,String query,SecurityContext securityContext) {
+      public Response searchUserBoardsGet(String adAccountId,String query,String bookmark,Integer pageSize,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

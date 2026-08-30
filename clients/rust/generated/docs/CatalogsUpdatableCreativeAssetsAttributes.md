@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **ios_deep_link** | Option<**String**> | IOS deep link to the creative assets page. | [optional]
 **link** | Option<**String**> | Link to the creative assets page. | [optional]
 **title** | Option<**String**> | The name of the creative assets. | [optional]
-**visibility** | Option<**String**> | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. | [optional]
+**visibility** | Option<**String**> | Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

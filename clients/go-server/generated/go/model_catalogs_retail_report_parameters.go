@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -19,13 +24,73 @@ type CatalogsRetailReportParameters struct {
 
 	CatalogType string `json:"catalog_type"`
 
-	Report CatalogsHotelReportParametersReport `json:"report"`
+	Report CatalogsRetailReportParametersReport `json:"report"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsRetailReportParameters
+func (o *CatalogsRetailReportParameters) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_type",
+		"report",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"catalog_type": false,
+		"report": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_type": {},
+		"report": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsRetailReportParameters
+
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["report"]; exists {
+		if err = json.Unmarshal(value, &decoded.Report); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertCatalogsRetailReportParametersRequired checks if the required fields are not zero-ed
+// AssertCatalogsRetailReportParametersRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsRetailReportParametersRequired(obj CatalogsRetailReportParameters) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
 		"report": obj.Report,
 	}
 	for name, el := range elements {
@@ -34,7 +99,7 @@ func AssertCatalogsRetailReportParametersRequired(obj CatalogsRetailReportParame
 		}
 	}
 
-	if err := AssertCatalogsHotelReportParametersReportRequired(obj.Report); err != nil {
+	if err := AssertCatalogsRetailReportParametersReportRequired(obj.Report); err != nil {
 		return err
 	}
 	return nil
@@ -42,7 +107,7 @@ func AssertCatalogsRetailReportParametersRequired(obj CatalogsRetailReportParame
 
 // AssertCatalogsRetailReportParametersConstraints checks if the values respects the defined constraints
 func AssertCatalogsRetailReportParametersConstraints(obj CatalogsRetailReportParameters) error {
-	if err := AssertCatalogsHotelReportParametersReportConstraints(obj.Report); err != nil {
+	if err := AssertCatalogsRetailReportParametersReportConstraints(obj.Report); err != nil {
 		return err
 	}
 	return nil

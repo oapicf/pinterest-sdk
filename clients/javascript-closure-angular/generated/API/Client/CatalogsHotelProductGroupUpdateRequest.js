@@ -25,6 +25,7 @@ API.Client.CatalogsHotelProductGroupUpdateRequest.prototype.description;
 API.Client.CatalogsHotelProductGroupUpdateRequest.prototype.filters;
 
 /**
+ * Name of catalog product group
  * @type {!string}
  * @export
  */

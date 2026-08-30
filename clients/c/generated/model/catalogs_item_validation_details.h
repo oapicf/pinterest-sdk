@@ -20,14 +20,14 @@ typedef struct catalogs_item_validation_details_t catalogs_item_validation_detai
 
 
 typedef struct catalogs_item_validation_details_t {
-    pinterest_rest_api_nullable_catalogs_item_field_type__e attribute_name; //referenced enum
+    nullable_catalogs_item_field_type_t *attribute_name; // custom
     char *provided_value; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_item_validation_details_t;
 
 __attribute__((deprecated)) catalogs_item_validation_details_t *catalogs_item_validation_details_create(
-    pinterest_rest_api_nullable_catalogs_item_field_type__e attribute_name,
+    nullable_catalogs_item_field_type_t *attribute_name,
     char *provided_value
 );
 

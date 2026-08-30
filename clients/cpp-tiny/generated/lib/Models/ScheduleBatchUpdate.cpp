@@ -1,0 +1,408 @@
+
+
+#include "ScheduleBatchUpdate.h"
+
+using namespace Tiny;
+
+ScheduleBatchUpdate::ScheduleBatchUpdate()
+{
+	delta_value = Schedule_delta_value();
+	end_timestamp = int(0);
+	entity_id = null;
+	entity_type = null;
+	id = std::string();
+	name = std::string();
+	schedule_action = null;
+	schedule_id = std::string();
+	schedule_status = null;
+	schedule_type = null;
+	start_timestamp = int(0);
+}
+
+ScheduleBatchUpdate::ScheduleBatchUpdate(std::string jsonString)
+{
+	this->fromJson(jsonString);
+}
+
+ScheduleBatchUpdate::~ScheduleBatchUpdate()
+{
+
+}
+
+void
+ScheduleBatchUpdate::fromJson(std::string jsonObj)
+{
+    bourne::json object = bourne::json::parse(jsonObj);
+
+    const char *delta_valueKey = "delta_value";
+
+    if(object.has_key(delta_valueKey))
+    {
+        bourne::json value = object[delta_valueKey];
+
+
+
+
+        Schedule_delta_value* obj = &delta_value;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *end_timestampKey = "end_timestamp";
+
+    if(object.has_key(end_timestampKey))
+    {
+        bourne::json value = object[end_timestampKey];
+
+
+
+        jsonToValue(&end_timestamp, value, "int");
+
+
+    }
+
+    const char *entity_idKey = "entity_id";
+
+    if(object.has_key(entity_idKey))
+    {
+        bourne::json value = object[entity_idKey];
+
+
+
+        jsonToValue(&entity_id, value, "std::string");
+
+
+    }
+
+    const char *entity_typeKey = "entity_type";
+
+    if(object.has_key(entity_typeKey))
+    {
+        bourne::json value = object[entity_typeKey];
+
+
+
+
+        AdAccountEntityType* obj = &entity_type;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *idKey = "id";
+
+    if(object.has_key(idKey))
+    {
+        bourne::json value = object[idKey];
+
+
+
+        jsonToValue(&id, value, "std::string");
+
+
+    }
+
+    const char *nameKey = "name";
+
+    if(object.has_key(nameKey))
+    {
+        bourne::json value = object[nameKey];
+
+
+
+        jsonToValue(&name, value, "std::string");
+
+
+    }
+
+    const char *schedule_actionKey = "schedule_action";
+
+    if(object.has_key(schedule_actionKey))
+    {
+        bourne::json value = object[schedule_actionKey];
+
+
+
+
+        ScheduleAction* obj = &schedule_action;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *schedule_idKey = "schedule_id";
+
+    if(object.has_key(schedule_idKey))
+    {
+        bourne::json value = object[schedule_idKey];
+
+
+
+        jsonToValue(&schedule_id, value, "std::string");
+
+
+    }
+
+    const char *schedule_statusKey = "schedule_status";
+
+    if(object.has_key(schedule_statusKey))
+    {
+        bourne::json value = object[schedule_statusKey];
+
+
+
+
+        ScheduleStatus* obj = &schedule_status;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *schedule_typeKey = "schedule_type";
+
+    if(object.has_key(schedule_typeKey))
+    {
+        bourne::json value = object[schedule_typeKey];
+
+
+
+
+        ScheduleType* obj = &schedule_type;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *start_timestampKey = "start_timestamp";
+
+    if(object.has_key(start_timestampKey))
+    {
+        bourne::json value = object[start_timestampKey];
+
+
+
+        jsonToValue(&start_timestamp, value, "int");
+
+
+    }
+
+
+}
+
+bourne::json
+ScheduleBatchUpdate::toJson()
+{
+    bourne::json object = bourne::json::object();
+
+
+
+
+
+
+	object["delta_value"] = getDeltaValue().toJson();
+
+
+
+
+
+    object["end_timestamp"] = getEndTimestamp();
+
+
+
+
+
+
+    object["entity_id"] = getEntityId();
+
+
+
+
+
+
+
+	object["entity_type"] = getEntityType().toJson();
+
+
+
+
+
+    object["id"] = getId();
+
+
+
+
+
+
+    object["name"] = getName();
+
+
+
+
+
+
+
+	object["schedule_action"] = getScheduleAction().toJson();
+
+
+
+
+
+    object["schedule_id"] = getScheduleId();
+
+
+
+
+
+
+
+	object["schedule_status"] = getScheduleStatus().toJson();
+
+
+
+
+
+
+	object["schedule_type"] = getScheduleType().toJson();
+
+
+
+
+
+    object["start_timestamp"] = getStartTimestamp();
+
+
+
+    return object;
+
+}
+
+Schedule_delta_value
+ScheduleBatchUpdate::getDeltaValue()
+{
+	return delta_value;
+}
+
+void
+ScheduleBatchUpdate::setDeltaValue(Schedule_delta_value delta_value)
+{
+	this->delta_value = delta_value;
+}
+
+int
+ScheduleBatchUpdate::getEndTimestamp()
+{
+	return end_timestamp;
+}
+
+void
+ScheduleBatchUpdate::setEndTimestamp(int end_timestamp)
+{
+	this->end_timestamp = end_timestamp;
+}
+
+std::string
+ScheduleBatchUpdate::getEntityId()
+{
+	return entity_id;
+}
+
+void
+ScheduleBatchUpdate::setEntityId(std::string entity_id)
+{
+	this->entity_id = entity_id;
+}
+
+AdAccountEntityType
+ScheduleBatchUpdate::getEntityType()
+{
+	return entity_type;
+}
+
+void
+ScheduleBatchUpdate::setEntityType(AdAccountEntityType entity_type)
+{
+	this->entity_type = entity_type;
+}
+
+std::string
+ScheduleBatchUpdate::getId()
+{
+	return id;
+}
+
+void
+ScheduleBatchUpdate::setId(std::string id)
+{
+	this->id = id;
+}
+
+std::string
+ScheduleBatchUpdate::getName()
+{
+	return name;
+}
+
+void
+ScheduleBatchUpdate::setName(std::string name)
+{
+	this->name = name;
+}
+
+ScheduleAction
+ScheduleBatchUpdate::getScheduleAction()
+{
+	return schedule_action;
+}
+
+void
+ScheduleBatchUpdate::setScheduleAction(ScheduleAction schedule_action)
+{
+	this->schedule_action = schedule_action;
+}
+
+std::string
+ScheduleBatchUpdate::getScheduleId()
+{
+	return schedule_id;
+}
+
+void
+ScheduleBatchUpdate::setScheduleId(std::string schedule_id)
+{
+	this->schedule_id = schedule_id;
+}
+
+ScheduleStatus
+ScheduleBatchUpdate::getScheduleStatus()
+{
+	return schedule_status;
+}
+
+void
+ScheduleBatchUpdate::setScheduleStatus(ScheduleStatus schedule_status)
+{
+	this->schedule_status = schedule_status;
+}
+
+ScheduleType
+ScheduleBatchUpdate::getScheduleType()
+{
+	return schedule_type;
+}
+
+void
+ScheduleBatchUpdate::setScheduleType(ScheduleType schedule_type)
+{
+	this->schedule_type = schedule_type;
+}
+
+int
+ScheduleBatchUpdate::getStartTimestamp()
+{
+	return start_timestamp;
+}
+
+void
+ScheduleBatchUpdate::setStartTimestamp(int start_timestamp)
+{
+	this->start_timestamp = start_timestamp;
+}
+
+
+

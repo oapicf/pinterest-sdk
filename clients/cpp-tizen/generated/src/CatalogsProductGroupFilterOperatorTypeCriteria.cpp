@@ -23,7 +23,7 @@ CatalogsProductGroupFilterOperatorTypeCriteria::~CatalogsProductGroupFilterOpera
 void
 CatalogsProductGroupFilterOperatorTypeCriteria::__init()
 {
-	//filter_operator_type = std::string();
+	//filter_operator_type = new FilterOperatorType();
 	//negated = bool(false);
 	//new std::list()std::list> values;
 }
@@ -59,9 +59,12 @@ CatalogsProductGroupFilterOperatorTypeCriteria::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&filter_operator_type, node, "std::string", "");
+		if (isprimitive("FilterOperatorType")) {
+			jsonToValue(&filter_operator_type, node, "FilterOperatorType", "FilterOperatorType");
 		} else {
+			
+			FilterOperatorType* obj = static_cast<FilterOperatorType*> (&filter_operator_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -110,11 +113,16 @@ CatalogsProductGroupFilterOperatorTypeCriteria::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getFilterOperatorType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("FilterOperatorType")) {
+		FilterOperatorType obj = getFilterOperatorType();
+		node = converttoJson(&obj, "FilterOperatorType", "");
 	}
 	else {
+		
+		FilterOperatorType obj = static_cast<FilterOperatorType> (getFilterOperatorType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *filter_operator_typeKey = "filter_operator_type";
@@ -151,14 +159,14 @@ CatalogsProductGroupFilterOperatorTypeCriteria::toJson()
 	return ret;
 }
 
-std::string
+FilterOperatorType
 CatalogsProductGroupFilterOperatorTypeCriteria::getFilterOperatorType()
 {
 	return filter_operator_type;
 }
 
 void
-CatalogsProductGroupFilterOperatorTypeCriteria::setFilterOperatorType(std::string  filter_operator_type)
+CatalogsProductGroupFilterOperatorTypeCriteria::setFilterOperatorType(FilterOperatorType  filter_operator_type)
 {
 	this->filter_operator_type = filter_operator_type;
 }

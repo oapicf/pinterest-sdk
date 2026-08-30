@@ -87,7 +87,7 @@ BulkUpsertRequest::getCreate()
 }
 
 void
-BulkUpsertRequest::setCreate(BulkUpsertRequestCreate  create)
+BulkUpsertRequest::setCreate(BulkUpsertRequestCreate create)
 {
 	this->create = create;
 }
@@ -99,7 +99,7 @@ BulkUpsertRequest::getUpdate()
 }
 
 void
-BulkUpsertRequest::setUpdate(BulkUpsertRequestUpdate  update)
+BulkUpsertRequest::setUpdate(BulkUpsertRequestUpdate update)
 {
 	this->update = update;
 }

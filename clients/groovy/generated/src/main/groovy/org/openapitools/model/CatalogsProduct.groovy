@@ -7,13 +7,33 @@ import org.openapitools.model.CatalogsCreativeAssetsProduct;
 import org.openapitools.model.CatalogsCreativeAssetsProductMetadata;
 import org.openapitools.model.CatalogsHotelProduct;
 import org.openapitools.model.CatalogsRetailProduct;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 
 @Canonical
 class CatalogsProduct {
+
+    enum CatalogTypeEnum {
     
-    CatalogsType catalogType
+        CREATIVE_ASSETS("CREATIVE_ASSETS")
+    
+        private final String value
+    
+        CatalogTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    CatalogTypeEnum catalogType
     
     CatalogsCreativeAssetsProductMetadata metadata
     

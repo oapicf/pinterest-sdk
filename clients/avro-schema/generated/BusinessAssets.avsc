@@ -1,0 +1,42 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BusinessAssets",
+  "fields": [
+    {
+      "name": "asset_group_info",
+      "type": ["null", "model.AssetGroupBinding"],
+      "doc": "An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.",
+      "default": null
+    },
+    {
+      "name": "asset_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a business asset.",
+      "default": null
+    },
+    {
+      "name": "asset_type",
+      "type": ["null", "model.AssetTypeResponse"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Permission levels the requesting business has on an asset.",
+      "default": null
+    },
+    {
+      "name": "catalog_info",
+      "type": ["null", "model.CatalogBinding"],
+      "doc": "An object containing all the information specific to the provided catalog. This field will be populated only if asset_type equals 'CATALOG'.",
+      "default": null
+    }
+  ]
+
+}

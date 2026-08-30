@@ -1,4 +1,4 @@
-goog.provide('API.Client.TargetingTemplateAudienceSizing_reach_estimate');
+goog.provide('API.Client.TargetingTemplateAudienceSizingReachEstimate');
 
 /**
  * @record

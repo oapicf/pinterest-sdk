@@ -1,17 +1,17 @@
 #tag Class
 Protected Class BulkApi
 	#tag Method, Flags = &h0
-		Sub BulkDownloadCreate(, adAccountId As String, bulkDownloadRequest As OpenAPIClient.Models.BulkDownloadRequest)
+		Sub BulkDownloadCreate(, adAccountId As String, bulkDownloadCreate As OpenAPIClient.Models.BulkDownloadCreate)
 		  // Operation bulk_download/create
 		  // Get advertiser entities in bulk
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter bulkDownloadRequest: (body) Parameters to get ad entities in bulk 
+		  // - parameter bulkDownloadCreate: (body)  
 		  //
-		  // Invokes BulkApiCallbackHandler.BulkDownloadCreateCallback(BulkDownloadResponse) on completion. 
+		  // Invokes BulkApiCallbackHandler.BulkDownloadCreateCallback(BulkDownload) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/bulk/download
-		  // - Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+		  // - Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -21,7 +21,7 @@ Protected Class BulkApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(bulkDownloadRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(bulkDownloadCreate), "application/json")
 		  
 		  
 		  
@@ -48,7 +48,7 @@ Protected Class BulkApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function BulkDownloadCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BulkDownloadResponse) As Boolean
+		Private Function BulkDownloadCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BulkDownload) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -56,7 +56,7 @@ Protected Class BulkApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BulkDownloadResponse
+			  outData = New OpenAPIClient.Models.BulkDownload
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -109,7 +109,7 @@ Protected Class BulkApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BulkDownloadResponse
+		  Dim data As OpenAPIClient.Models.BulkDownload
 		  CallbackHandler.BulkDownloadCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -123,7 +123,7 @@ Protected Class BulkApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BulkDownloadResponse
+		  Dim data As OpenAPIClient.Models.BulkDownload
 		  Call BulkDownloadCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.BulkDownloadCreateCallback(error, data)
@@ -139,13 +139,13 @@ Protected Class BulkApi
 		  // Download advertiser entities in bulk
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter bulkRequestId: (path) Unique identifier of a bulk upsert request. 
-		  // - parameter includeDetails: (query) if set to True then attach the errors/details to all the requests (optional, default to false)
+		  // - parameter bulkRequestId: (path) Bulk request ID that is from one of the entities bulk endpoints 
+		  // - parameter includeDetails: (query) If set to True then attach the errors/details to all the requests (optional, default to false)
 		  //
-		  // Invokes BulkApiCallbackHandler.BulkRequestGetCallback(BulkUpsertStatusResponse) on completion. 
+		  // Invokes BulkApiCallbackHandler.BulkRequestGetCallback(BulkJobData) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/bulk/{bulk_request_id}
-		  // - Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+		  // - Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -192,7 +192,7 @@ Protected Class BulkApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function BulkRequestGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BulkUpsertStatusResponse) As Boolean
+		Private Function BulkRequestGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BulkJobData) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -200,7 +200,7 @@ Protected Class BulkApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.BulkUpsertStatusResponse
+			  outData = New OpenAPIClient.Models.BulkJobData
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -253,7 +253,7 @@ Protected Class BulkApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.BulkUpsertStatusResponse
+		  Dim data As OpenAPIClient.Models.BulkJobData
 		  CallbackHandler.BulkRequestGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -267,7 +267,7 @@ Protected Class BulkApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.BulkUpsertStatusResponse
+		  Dim data As OpenAPIClient.Models.BulkJobData
 		  Call BulkRequestGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.BulkRequestGetCallback(error, data)
@@ -288,7 +288,7 @@ Protected Class BulkApi
 		  // Invokes BulkApiCallbackHandler.BulkUpsertCreateCallback(BulkUpsertResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/bulk/upsert
-		  // - Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+		  // - Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:

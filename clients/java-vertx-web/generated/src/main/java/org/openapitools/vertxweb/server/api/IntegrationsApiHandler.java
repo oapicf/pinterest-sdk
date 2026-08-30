@@ -1,14 +1,14 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.IntegrationLogsRequest;
+import org.openapitools.vertxweb.server.model.IntegrationLogsInvalidLogResponse;
+import org.openapitools.vertxweb.server.model.IntegrationLogsRequestCreate;
 import org.openapitools.vertxweb.server.model.IntegrationLogsSuccessResponse;
 import org.openapitools.vertxweb.server.model.IntegrationMetadata;
+import org.openapitools.vertxweb.server.model.IntegrationMetadataCreate;
+import org.openapitools.vertxweb.server.model.IntegrationMetadataUpdate;
 import org.openapitools.vertxweb.server.model.IntegrationRecord;
-import org.openapitools.vertxweb.server.model.IntegrationRequest;
-import org.openapitools.vertxweb.server.model.IntegrationRequestPatch;
 import org.openapitools.vertxweb.server.model.IntegrationsGetList200Response;
-import org.openapitools.vertxweb.server.model.IntegrationsLogsPost400Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -101,12 +101,12 @@ public class IntegrationsApiHandler {
 
         String externalBusinessId = requestParameters.pathParameter("external_business_id") != null ? requestParameters.pathParameter("external_business_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        IntegrationRequestPatch integrationRequestPatch = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<IntegrationRequestPatch>(){}) : null;
+        IntegrationMetadataUpdate integrationMetadataUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<IntegrationMetadataUpdate>(){}) : null;
 
         logger.debug("Parameter externalBusinessId is {}", externalBusinessId);
-        logger.debug("Parameter integrationRequestPatch is {}", integrationRequestPatch);
+        logger.debug("Parameter integrationMetadataUpdate is {}", integrationMetadataUpdate);
 
-        api.integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+        api.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -125,11 +125,11 @@ public class IntegrationsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         RequestParameter body = requestParameters.body();
-        IntegrationRequest integrationRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<IntegrationRequest>(){}) : null;
+        IntegrationMetadataCreate integrationMetadataCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<IntegrationMetadataCreate>(){}) : null;
 
-        logger.debug("Parameter integrationRequest is {}", integrationRequest);
+        logger.debug("Parameter integrationMetadataCreate is {}", integrationMetadataCreate);
 
-        api.integrationsCommercePost(integrationRequest)
+        api.integrationsCommercePost(integrationMetadataCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -194,11 +194,11 @@ public class IntegrationsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         RequestParameter body = requestParameters.body();
-        IntegrationLogsRequest integrationLogsRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<IntegrationLogsRequest>(){}) : null;
+        IntegrationLogsRequestCreate integrationLogsRequestCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<IntegrationLogsRequestCreate>(){}) : null;
 
-        logger.debug("Parameter integrationLogsRequest is {}", integrationLogsRequest);
+        logger.debug("Parameter integrationLogsRequestCreate is {}", integrationLogsRequestCreate);
 
-        api.integrationsLogsPost(integrationLogsRequest)
+        api.integrationsLogsPost(integrationLogsRequestCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

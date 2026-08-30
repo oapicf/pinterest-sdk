@@ -9,50 +9,16 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.HttpMethod;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="HTTP request details included in the log sent by the client.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="HTTP request details included in the log sent by the client.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogClientRequest   {
   
   private String host;
-
-  /**
-   * Gets or Sets method
-   */
-  public enum MethodEnum {
-    GET("GET"),
-
-        HEAD("HEAD"),
-
-        POST("POST"),
-
-        PUT("PUT"),
-
-        DELETE("DELETE"),
-
-        CONNECT("CONNECT"),
-
-        OPTIONS("OPTIONS"),
-
-        TRACE("TRACE"),
-
-        PATCH("PATCH");
-    private String value;
-
-    MethodEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private MethodEnum method;
+  private HttpMethod method;
   private String path;
   private Map<String, String> requestHeaders = new HashMap<>();
   private Map<String, String> responseHeaders = new HashMap<>();
@@ -78,10 +44,11 @@ public class IntegrationLogClientRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("method")
   @NotNull
-  public MethodEnum getMethod() {
+  @Valid
+  public HttpMethod getMethod() {
     return method;
   }
-  public void setMethod(MethodEnum method) {
+  public void setMethod(HttpMethod method) {
     this.method = method;
   }
 
@@ -180,10 +147,7 @@ public class IntegrationLogClientRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -25,6 +25,10 @@ import { BoardPrivacyFilter } from '../model/boardPrivacyFilter';
 // @ts-ignore
 import { BoardSection } from '../model/boardSection';
 // @ts-ignore
+import { BoardSectionCreate } from '../model/boardSectionCreate';
+// @ts-ignore
+import { BoardSectionUpdateWithRequiredBody } from '../model/boardSectionUpdateWithRequiredBody';
+// @ts-ignore
 import { BoardSectionsList200Response } from '../model/boardSectionsList200Response';
 // @ts-ignore
 import { BoardWithUpdatePrivacy } from '../model/boardWithUpdatePrivacy';
@@ -60,21 +64,21 @@ export class BoardsService extends BaseService {
      * Create a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @endpoint post /boards/{board_id}/sections
      * @param boardId Unique identifier of a board.
-     * @param boardSection Create a board section.
+     * @param boardSectionCreate 
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public boardSectionsCreate(boardId: string, boardSection: BoardSection, adAccountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BoardSection>;
-    public boardSectionsCreate(boardId: string, boardSection: BoardSection, adAccountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BoardSection>>;
-    public boardSectionsCreate(boardId: string, boardSection: BoardSection, adAccountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BoardSection>>;
-    public boardSectionsCreate(boardId: string, boardSection: BoardSection, adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public boardSectionsCreate(boardId: string, boardSectionCreate: BoardSectionCreate, adAccountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BoardSection>;
+    public boardSectionsCreate(boardId: string, boardSectionCreate: BoardSectionCreate, adAccountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BoardSection>>;
+    public boardSectionsCreate(boardId: string, boardSectionCreate: BoardSectionCreate, adAccountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BoardSection>>;
+    public boardSectionsCreate(boardId: string, boardSectionCreate: BoardSectionCreate, adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardSectionsCreate.');
         }
-        if (boardSection === null || boardSection === undefined) {
-            throw new Error('Required parameter boardSection was null or undefined when calling boardSectionsCreate.');
+        if (boardSectionCreate === null || boardSectionCreate === undefined) {
+            throw new Error('Required parameter boardSectionCreate was null or undefined when calling boardSectionsCreate.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
@@ -130,7 +134,7 @@ export class BoardsService extends BaseService {
         return this.httpClient.request<BoardSection>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: boardSection,
+                body: boardSectionCreate,
                 params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
@@ -153,9 +157,9 @@ export class BoardsService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BoardSection>;
+    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BoardSection>>;
+    public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BoardSection>>;
     public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardSectionsDelete.');
@@ -205,7 +209,7 @@ export class BoardsService extends BaseService {
 
         let localVarPath = `/boards/${this.configuration.encodeParam({name: "boardId", value: boardId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/sections/${this.configuration.encodeParam({name: "sectionId", value: sectionId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<BoardSection>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
@@ -226,7 +230,7 @@ export class BoardsService extends BaseService {
      * @param boardId Unique identifier of a board.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -323,7 +327,7 @@ export class BoardsService extends BaseService {
      * @param sectionId Unique identifier of a board section.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -421,24 +425,24 @@ export class BoardsService extends BaseService {
      * @endpoint patch /boards/{board_id}/sections/{section_id}
      * @param boardId Unique identifier of a board.
      * @param sectionId Unique identifier of a board section.
-     * @param boardSection Update a board section.
+     * @param boardSectionUpdateWithRequiredBody 
      * @param adAccountId Unique identifier of an ad account.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public boardSectionsUpdate(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BoardSection>;
-    public boardSectionsUpdate(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BoardSection>>;
-    public boardSectionsUpdate(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BoardSection>>;
-    public boardSectionsUpdate(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public boardSectionsUpdate(boardId: string, sectionId: string, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BoardSection>;
+    public boardSectionsUpdate(boardId: string, sectionId: string, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BoardSection>>;
+    public boardSectionsUpdate(boardId: string, sectionId: string, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BoardSection>>;
+    public boardSectionsUpdate(boardId: string, sectionId: string, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardSectionsUpdate.');
         }
         if (sectionId === null || sectionId === undefined) {
             throw new Error('Required parameter sectionId was null or undefined when calling boardSectionsUpdate.');
         }
-        if (boardSection === null || boardSection === undefined) {
-            throw new Error('Required parameter boardSection was null or undefined when calling boardSectionsUpdate.');
+        if (boardSectionUpdateWithRequiredBody === null || boardSectionUpdateWithRequiredBody === undefined) {
+            throw new Error('Required parameter boardSectionUpdateWithRequiredBody was null or undefined when calling boardSectionsUpdate.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
@@ -494,7 +498,7 @@ export class BoardsService extends BaseService {
         return this.httpClient.request<BoardSection>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: boardSection,
+                body: boardSectionUpdateWithRequiredBody,
                 params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
@@ -602,9 +606,9 @@ export class BoardsService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public boardsDelete(boardId: string, adAccountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public boardsDelete(boardId: string, adAccountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public boardsDelete(boardId: string, adAccountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public boardsDelete(boardId: string, adAccountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Board>;
+    public boardsDelete(boardId: string, adAccountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Board>>;
+    public boardsDelete(boardId: string, adAccountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Board>>;
     public boardsDelete(boardId: string, adAccountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardsDelete.');
@@ -651,7 +655,7 @@ export class BoardsService extends BaseService {
 
         let localVarPath = `/boards/${this.configuration.encodeParam({name: "boardId", value: boardId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<Board>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
@@ -848,42 +852,24 @@ export class BoardsService extends BaseService {
      * Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @endpoint get /boards/{board_id}/pins
      * @param boardId Unique identifier of a board.
-     * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
      * @param adAccountId Unique identifier of an ad account.
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<CreativeType>, adAccountId?: string, pinMetrics?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BoardsListPins200Response>;
-    public boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<CreativeType>, adAccountId?: string, pinMetrics?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BoardsListPins200Response>>;
-    public boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<CreativeType>, adAccountId?: string, pinMetrics?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BoardsListPins200Response>>;
-    public boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<CreativeType>, adAccountId?: string, pinMetrics?: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public boardsListPins(boardId: string, creativeTypes?: Array<CreativeType>, adAccountId?: string, pinMetrics?: boolean, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BoardsListPins200Response>;
+    public boardsListPins(boardId: string, creativeTypes?: Array<CreativeType>, adAccountId?: string, pinMetrics?: boolean, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BoardsListPins200Response>>;
+    public boardsListPins(boardId: string, creativeTypes?: Array<CreativeType>, adAccountId?: string, pinMetrics?: boolean, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BoardsListPins200Response>>;
+    public boardsListPins(boardId: string, creativeTypes?: Array<CreativeType>, adAccountId?: string, pinMetrics?: boolean, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (boardId === null || boardId === undefined) {
             throw new Error('Required parameter boardId was null or undefined when calling boardsListPins.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
-
-        localVarQueryParameters = this.addToHttpParams(
-            localVarQueryParameters,
-            'bookmark',
-            <any>bookmark,
-            QueryParamStyle.Form,
-            true,
-        );
-
-
-        localVarQueryParameters = this.addToHttpParams(
-            localVarQueryParameters,
-            'page_size',
-            <any>pageSize,
-            QueryParamStyle.Form,
-            true,
-        );
-
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
@@ -907,6 +893,24 @@ export class BoardsService extends BaseService {
             localVarQueryParameters,
             'pin_metrics',
             <any>pinMetrics,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
             QueryParamStyle.Form,
             true,
         );

@@ -16,7 +16,7 @@ class AuthRespondInvitesBody {
     this.invites = const [],
   });
 
-  List<AuthRespondInvitesBodyInvitesInner> invites;
+  List<AuthRespondInvitesBodyItem> invites;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AuthRespondInvitesBody &&
@@ -47,15 +47,13 @@ class AuthRespondInvitesBody {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AuthRespondInvitesBody[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AuthRespondInvitesBody[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'invites'), 'Required key "AuthRespondInvitesBody[invites]" is missing from JSON.');
+        assert(json[r'invites'] != null, 'Required key "AuthRespondInvitesBody[invites]" has a null value in JSON.');
         return true;
       }());
 
       return AuthRespondInvitesBody(
-        invites: AuthRespondInvitesBodyInvitesInner.listFromJson(json[r'invites']),
+        invites: AuthRespondInvitesBodyItem.listFromJson(json[r'invites']),
       );
     }
     return null;

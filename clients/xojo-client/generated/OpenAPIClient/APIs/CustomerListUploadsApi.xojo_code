@@ -5,14 +5,14 @@ Protected Class CustomerListUploadsApi
 		  // Operation customer_list_uploads/create
 		  // Create customer list upload
 		  // - 
-		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter customerListId: (path) Unique identifier of a customer list 
-		  // - parameter customerListUploadCreateRequest: (body) Parameters to create a customer list upload request 
+		  // - parameter adAccountId: (path)  
+		  // - parameter customerListId: (path) Customer list ID. 
+		  // - parameter customerListUploadCreateRequest: (body)  
 		  //
 		  // Invokes CustomerListUploadsApiCallbackHandler.CustomerListUploadsCreateCallback(CustomerListUploadCreateResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads
-		  // - <a href="/docs/getting-started/using-beta-and-restricted-features/" target="_blank">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href="/docs/api/v5/customer_lists-update/" target="_blank">update customer list endpoint</a></u> documentation for additional information.</b></p>
+		  // - Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -142,14 +142,14 @@ Protected Class CustomerListUploadsApi
 		  // Operation customer_list_uploads/get
 		  // Get customer list upload
 		  // - 
-		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter customerListId: (path) Unique identifier of a customer list 
-		  // - parameter customerListUploadId: (path) Unique identifier of a customer list upload 
+		  // - parameter adAccountId: (path)  
+		  // - parameter customerListId: (path) Customer list ID. 
+		  // - parameter customerListUploadId: (path) Customer List Upload ID. 
 		  //
-		  // Invokes CustomerListUploadsApiCallbackHandler.CustomerListUploadsGetCallback(CustomerListUploadResponse) on completion. 
+		  // Invokes CustomerListUploadsApiCallbackHandler.CustomerListUploadsGetCallback(CustomerListUpload) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}
-		  // - <a href="/docs/getting-started/using-beta-and-restricted-features/" target="_blank">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+		  // - Get the metadata for a given upload by its ID.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -192,7 +192,7 @@ Protected Class CustomerListUploadsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function CustomerListUploadsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.CustomerListUploadResponse) As Boolean
+		Private Function CustomerListUploadsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.CustomerListUpload) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -200,7 +200,7 @@ Protected Class CustomerListUploadsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.CustomerListUploadResponse
+			  outData = New OpenAPIClient.Models.CustomerListUpload
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -253,7 +253,7 @@ Protected Class CustomerListUploadsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.CustomerListUploadResponse
+		  Dim data As OpenAPIClient.Models.CustomerListUpload
 		  CallbackHandler.CustomerListUploadsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -267,7 +267,7 @@ Protected Class CustomerListUploadsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.CustomerListUploadResponse
+		  Dim data As OpenAPIClient.Models.CustomerListUpload
 		  Call CustomerListUploadsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.CustomerListUploadsGetCallback(error, data)
@@ -282,14 +282,14 @@ Protected Class CustomerListUploadsApi
 		  // Operation customer_list_uploads/run
 		  // Run customer list upload
 		  // - 
-		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter customerListId: (path) Unique identifier of a customer list 
-		  // - parameter customerListUploadId: (path) Unique identifier of a customer list upload 
+		  // - parameter adAccountId: (path)  
+		  // - parameter customerListId: (path) Customer list ID. 
+		  // - parameter customerListUploadId: (path) Customer List Upload ID. 
 		  //
-		  // Invokes CustomerListUploadsApiCallbackHandler.CustomerListUploadsRunCallback(CustomerListUploadResponse) on completion. 
+		  // Invokes CustomerListUploadsApiCallbackHandler.CustomerListUploadsRunCallback(CustomerListUpload) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run
-		  // - <a href="/docs/getting-started/using-beta-and-restricted-features/" target="_blank">Closed beta</a> <p>Begin processing a customer list upload.</p>
+		  // - Begin processing a customer list upload.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -332,7 +332,7 @@ Protected Class CustomerListUploadsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function CustomerListUploadsRunPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.CustomerListUploadResponse) As Boolean
+		Private Function CustomerListUploadsRunPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.CustomerListUpload) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -340,7 +340,7 @@ Protected Class CustomerListUploadsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.CustomerListUploadResponse
+			  outData = New OpenAPIClient.Models.CustomerListUpload
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -393,7 +393,7 @@ Protected Class CustomerListUploadsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.CustomerListUploadResponse
+		  Dim data As OpenAPIClient.Models.CustomerListUpload
 		  CallbackHandler.CustomerListUploadsRunCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -407,7 +407,7 @@ Protected Class CustomerListUploadsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.CustomerListUploadResponse
+		  Dim data As OpenAPIClient.Models.CustomerListUpload
 		  Call CustomerListUploadsRunPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.CustomerListUploadsRunCallback(error, data)

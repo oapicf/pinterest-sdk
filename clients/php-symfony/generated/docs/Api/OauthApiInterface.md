@@ -21,7 +21,7 @@ services:
 ```
 
 ## **oauthConversionToken**
-> OpenAPI\Server\Model\ConversionAccessTokenResponse oauthConversionToken()
+> OpenAPI\Server\Model\ConversionAccessToken oauthConversionToken()
 
 Generate OAuth access token for conversion API
 
@@ -66,7 +66,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**OpenAPI\Server\Model\ConversionAccessTokenResponse**](../Model/ConversionAccessTokenResponse.md)
+[**OpenAPI\Server\Model\ConversionAccessToken**](../Model/ConversionAccessToken.md)
 
 ### Authorization
 
@@ -80,11 +80,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **oauthToken**
-> OpenAPI\Server\Model\OauthAccessTokenResponse oauthToken($grantType)
+> OpenAPI\Server\Model\OauthAccessToken oauthToken($grantType, $code, $continuousRefresh, $redirectUri, $refreshToken, $scope)
 
 Generate OAuth access token
 
-Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token.
 
 ### Example Implementation
 ```php
@@ -103,7 +103,7 @@ class OauthApi implements OauthApiInterface
     /**
      * Implementation of OauthApiInterface#oauthToken
      */
-    public function oauthToken(string $grantType, int &$responseCode, array &$responseHeaders): array|object|null
+    public function oauthToken(TokenGrantType $grantType, ?string $code, ?string $continuousRefresh, ?string $redirectUri, ?string $refreshToken, ?string $scope, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -116,11 +116,16 @@ class OauthApi implements OauthApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **grantType** | **string**|  |
+ **grantType** | [**TokenGrantType**](../Model/TokenGrantType.md)|  |
+ **code** | **string**|  | [optional]
+ **continuousRefresh** | **string**| If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | [optional]
+ **redirectUri** | **string**|  | [optional]
+ **refreshToken** | **string**|  | [optional]
+ **scope** | **string**|  | [optional]
 
 ### Return type
 
-[**OpenAPI\Server\Model\OauthAccessTokenResponse**](../Model/OauthAccessTokenResponse.md)
+[**OpenAPI\Server\Model\OauthAccessToken**](../Model/OauthAccessToken.md)
 
 ### Authorization
 
@@ -157,7 +162,7 @@ class OauthApi implements OauthApiInterface
     /**
      * Implementation of OauthApiInterface#tokenRevoke
      */
-    public function tokenRevoke(string $token, ?string $tokenTypeHint, int &$responseCode, array &$responseHeaders): void
+    public function tokenRevoke(string $token, ?TokenTypeHint $tokenTypeHint, int &$responseCode, array &$responseHeaders): void
     {
         // Implement the operation ...
     }
@@ -171,7 +176,7 @@ class OauthApi implements OauthApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **string**| The token to revoke. |
- **tokenTypeHint** | **string**| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional]
+ **tokenTypeHint** | [**TokenTypeHint**](../Model/TokenTypeHint.md)| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional]
 
 ### Return type
 

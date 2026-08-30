@@ -7,10 +7,10 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open SearchApiHandlerParams
 open SearchApiServiceInterface
 open SearchApiServiceImplementation
-open OpenAPI.Model.Error
+open OpenAPI.Model.BoardsList200Response
+open OpenAPI.Model.PinsList200Response
+open OpenAPI.Model.PinterestLibError
 open OpenAPI.Model.SearchPartnerPins200Response
-open OpenAPI.Model.SearchUserBoardsGet200Response
-open OpenAPI.Model.SearchUserPinsList200Response
 
 module SearchApiHandler =
 
@@ -34,6 +34,14 @@ module SearchApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | SearchPartnerPinsStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SearchPartnerPinsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SearchPartnerPinsStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SearchPartnerPinsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SearchPartnerPinsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SearchPartnerPinsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -54,6 +62,16 @@ module SearchApiHandler =
           return! (match result with
                       | SearchUserBoardsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | SearchUserBoardsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | SearchUserBoardsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SearchUserBoardsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SearchUserBoardsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SearchUserBoardsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SearchUserBoardsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -74,8 +92,16 @@ module SearchApiHandler =
           return! (match result with
                       | SearchUserPinsListStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | SearchUserPinsListStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | SearchUserPinsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SearchUserPinsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | SearchUserPinsListStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | SearchUserPinsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SearchUserPinsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

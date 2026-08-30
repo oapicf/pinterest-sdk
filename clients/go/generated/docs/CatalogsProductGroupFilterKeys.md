@@ -31,19 +31,20 @@ Name | Type | Description | Notes
 **GOOGLEPRODUCTCATEGORY2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 **GOOGLEPRODUCTCATEGORY1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 **GOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**PRODUCT_GROUP** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 **CUSTOMNUMBER0** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
 **CUSTOMNUMBER1** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
 **CUSTOMNUMBER2** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
 **CUSTOMNUMBER3** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
 **CUSTOMNUMBER4** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
 **TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**PINTEREST_PRODUCT_CATEGORIES** | [**CatalogsProductGroupMultiplePinterestProductCategoryCriteria**](CatalogsProductGroupMultiplePinterestProductCategoryCriteria.md) |  | 
+**PRODUCT_GROUP** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 ## Methods
 
 ### NewCatalogsProductGroupFilterKeys
 
-`func NewCatalogsProductGroupFilterKeys(mINPRICE CatalogsProductGroupPricingCriteria, mAXPRICE CatalogsProductGroupPricingCriteria, cURRENCY CatalogsProductGroupCurrencyCriteria, iTEMID CatalogsProductGroupMultipleStringCriteria, aVAILABILITY CatalogsProductGroupMultipleStringCriteria, bRAND CatalogsProductGroupMultipleStringCriteria, cONDITION CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria, iTEMGROUPID CatalogsProductGroupMultipleStringCriteria, gENDER CatalogsProductGroupMultipleGenderCriteria, mEDIATYPE CatalogsProductGroupMultipleMediaTypesCriteria, pRODUCTTYPE4 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE3 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE2 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE1 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE0 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria, pRODUCTGROUP CatalogsProductGroupMultipleStringCriteria, cUSTOMNUMBER0 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER1 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER2 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER3 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER4 CatalogsProductGroupUint32Criteria, tITLEKEYWORDS CatalogsProductGroupMultipleStringCriteria, ) *CatalogsProductGroupFilterKeys`
+`func NewCatalogsProductGroupFilterKeys(mINPRICE CatalogsProductGroupPricingCriteria, mAXPRICE CatalogsProductGroupPricingCriteria, cURRENCY CatalogsProductGroupCurrencyCriteria, iTEMID CatalogsProductGroupMultipleStringCriteria, aVAILABILITY CatalogsProductGroupMultipleStringCriteria, bRAND CatalogsProductGroupMultipleStringCriteria, cONDITION CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria, iTEMGROUPID CatalogsProductGroupMultipleStringCriteria, gENDER CatalogsProductGroupMultipleGenderCriteria, mEDIATYPE CatalogsProductGroupMultipleMediaTypesCriteria, pRODUCTTYPE4 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE3 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE2 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE1 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE0 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria, cUSTOMNUMBER0 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER1 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER2 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER3 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER4 CatalogsProductGroupUint32Criteria, tITLEKEYWORDS CatalogsProductGroupMultipleStringCriteria, pINTERESTPRODUCTCATEGORIES CatalogsProductGroupMultiplePinterestProductCategoryCriteria, pRODUCTGROUP CatalogsProductGroupMultipleStringCriteria, ) *CatalogsProductGroupFilterKeys`
 
 NewCatalogsProductGroupFilterKeys instantiates a new CatalogsProductGroupFilterKeys object
 This constructor will assign default values to properties that have it defined,
@@ -598,26 +599,6 @@ and a boolean to check if the value has been set.
 SetGOOGLEPRODUCTCATEGORY0 sets GOOGLEPRODUCTCATEGORY0 field to given value.
 
 
-### GetPRODUCT_GROUP
-
-`func (o *CatalogsProductGroupFilterKeys) GetPRODUCT_GROUP() CatalogsProductGroupMultipleStringCriteria`
-
-GetPRODUCT_GROUP returns the PRODUCT_GROUP field if non-nil, zero value otherwise.
-
-### GetPRODUCT_GROUPOk
-
-`func (o *CatalogsProductGroupFilterKeys) GetPRODUCT_GROUPOk() (*CatalogsProductGroupMultipleStringCriteria, bool)`
-
-GetPRODUCT_GROUPOk returns a tuple with the PRODUCT_GROUP field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPRODUCT_GROUP
-
-`func (o *CatalogsProductGroupFilterKeys) SetPRODUCT_GROUP(v CatalogsProductGroupMultipleStringCriteria)`
-
-SetPRODUCT_GROUP sets PRODUCT_GROUP field to given value.
-
-
 ### GetCUSTOMNUMBER0
 
 `func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER0() CatalogsProductGroupUint32Criteria`
@@ -736,6 +717,46 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsProductGroupFilterKeys) SetTITLE_KEYWORDS(v CatalogsProductGroupMultipleStringCriteria)`
 
 SetTITLE_KEYWORDS sets TITLE_KEYWORDS field to given value.
+
+
+### GetPINTEREST_PRODUCT_CATEGORIES
+
+`func (o *CatalogsProductGroupFilterKeys) GetPINTEREST_PRODUCT_CATEGORIES() CatalogsProductGroupMultiplePinterestProductCategoryCriteria`
+
+GetPINTEREST_PRODUCT_CATEGORIES returns the PINTEREST_PRODUCT_CATEGORIES field if non-nil, zero value otherwise.
+
+### GetPINTEREST_PRODUCT_CATEGORIESOk
+
+`func (o *CatalogsProductGroupFilterKeys) GetPINTEREST_PRODUCT_CATEGORIESOk() (*CatalogsProductGroupMultiplePinterestProductCategoryCriteria, bool)`
+
+GetPINTEREST_PRODUCT_CATEGORIESOk returns a tuple with the PINTEREST_PRODUCT_CATEGORIES field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPINTEREST_PRODUCT_CATEGORIES
+
+`func (o *CatalogsProductGroupFilterKeys) SetPINTEREST_PRODUCT_CATEGORIES(v CatalogsProductGroupMultiplePinterestProductCategoryCriteria)`
+
+SetPINTEREST_PRODUCT_CATEGORIES sets PINTEREST_PRODUCT_CATEGORIES field to given value.
+
+
+### GetPRODUCT_GROUP
+
+`func (o *CatalogsProductGroupFilterKeys) GetPRODUCT_GROUP() CatalogsProductGroupMultipleStringCriteria`
+
+GetPRODUCT_GROUP returns the PRODUCT_GROUP field if non-nil, zero value otherwise.
+
+### GetPRODUCT_GROUPOk
+
+`func (o *CatalogsProductGroupFilterKeys) GetPRODUCT_GROUPOk() (*CatalogsProductGroupMultipleStringCriteria, bool)`
+
+GetPRODUCT_GROUPOk returns a tuple with the PRODUCT_GROUP field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPRODUCT_GROUP
+
+`func (o *CatalogsProductGroupFilterKeys) SetPRODUCT_GROUP(v CatalogsProductGroupMultipleStringCriteria)`
+
+SetPRODUCT_GROUP sets PRODUCT_GROUP field to given value.
 
 
 

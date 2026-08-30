@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.UpdatePartnerAssetAccessBodyAccessesInner;
+import com.prokarma.pkmst.model.UpdatePartnerAssetAccessItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -15,21 +15,22 @@ import java.util.List;
  *
  */
 /**
- * UpdatePartnerAssetAccessBody
+ * An object with a list of partner asset accesses to assign or update.
  */
+@ApiModel(description = "An object with a list of partner asset accesses to assign or update.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdatePartnerAssetAccessBody   {
   @JsonProperty("accesses")
   
-  private List<UpdatePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<UpdatePartnerAssetAccessItem> accesses = new ArrayList<>();
 
-  public UpdatePartnerAssetAccessBody accesses(List<UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+  public UpdatePartnerAssetAccessBody accesses(List<UpdatePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
-  public UpdatePartnerAssetAccessBody addAccessesItem(UpdatePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public UpdatePartnerAssetAccessBody addAccessesItem(UpdatePartnerAssetAccessItem accessesItem) {
     if (this.accesses == null) {
       this.accesses = new ArrayList<>();
     }
@@ -38,15 +39,15 @@ public class UpdatePartnerAssetAccessBody   {
   }
 
   /**
-   * Get accesses
+   * List of partner asset accesses to assign or update.
    * @return accesses
    */
-  @ApiModelProperty(required = true, value = "")
-  public List<UpdatePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to assign or update.")
+  public List<UpdatePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
 
-  public void setAccesses(List<UpdatePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<UpdatePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -83,10 +84,7 @@ public class UpdatePartnerAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

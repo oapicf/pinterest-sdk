@@ -13,35 +13,35 @@ Method | HTTP request | Description
 
 <a name="PromotionsCreate"></a>
 # **PromotionsCreate**
-> PromotionsResponse PromotionsCreate(adAccountId, promotionCreateRequest)
+> PromotionsResponse PromotionsCreate(adAccountId, promotionCreate)
 
 Create promotions
 
 Create multiple new promotions.
 <a name="PromotionsDelete"></a>
 # **PromotionsDelete**
-> PromotionsDelete(adAccountId, promotionId)
+> Promotion PromotionsDelete(promotionId, adAccountId)
 
 Delete promotion by id
 
 Delete a promotion within Pinterest.
 <a name="PromotionsGet"></a>
 # **PromotionsGet**
-> PromotionResponse PromotionsGet(adAccountId, promotionId)
+> Promotion PromotionsGet(promotionId, adAccountId)
 
 Get promotion by id
 
 Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
 <a name="PromotionsList"></a>
 # **PromotionsList**
-> PromotionsList200Response PromotionsList(adAccountId, pageSize, order, bookmark)
+> PromotionsList200Response PromotionsList(adAccountId, bookmark, pageSize, order)
 
 Get promotions
 
 Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
 <a name="PromotionsUpdate"></a>
 # **PromotionsUpdate**
-> PromotionsResponse PromotionsUpdate(adAccountId, promotionUpdateRequest)
+> PromotionsResponse PromotionsUpdate(adAccountId, promotionBatchUpdate)
 
 Update promotions
 

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsHotelProductGroupFilterKeys::CatalogsHotelProductGroupFilterKeys()
 {
-	pRICE = Catalogs_product_group_pricing_currency_criteria();
+	pRICE = PriceFilterPrice();
 	hOTEL_ID = CatalogsProductGroupMultipleStringCriteria();
 	bRAND = CatalogsProductGroupMultipleStringCriteria();
 	cUSTOM_LABEL_0 = CatalogsProductGroupFilterOperatorTypeCriteria();
@@ -42,7 +42,7 @@ CatalogsHotelProductGroupFilterKeys::fromJson(std::string jsonObj)
 
 
 
-        Catalogs_product_group_pricing_currency_criteria* obj = &pRICE;
+        PriceFilterPrice* obj = &pRICE;
 		obj->fromJson(value.dump());
 
     }
@@ -256,14 +256,14 @@ CatalogsHotelProductGroupFilterKeys::toJson()
 
 }
 
-Catalogs_product_group_pricing_currency_criteria
+PriceFilterPrice
 CatalogsHotelProductGroupFilterKeys::getPRICE()
 {
 	return pRICE;
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setPRICE(Catalogs_product_group_pricing_currency_criteria  pRICE)
+CatalogsHotelProductGroupFilterKeys::setPRICE(PriceFilterPrice pRICE)
 {
 	this->pRICE = pRICE;
 }
@@ -275,7 +275,7 @@ CatalogsHotelProductGroupFilterKeys::getHOTELID()
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setHOTELID(CatalogsProductGroupMultipleStringCriteria  hOTEL_ID)
+CatalogsHotelProductGroupFilterKeys::setHOTELID(CatalogsProductGroupMultipleStringCriteria hOTEL_ID)
 {
 	this->hOTEL_ID = hOTEL_ID;
 }
@@ -287,7 +287,7 @@ CatalogsHotelProductGroupFilterKeys::getBRAND()
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setBRAND(CatalogsProductGroupMultipleStringCriteria  bRAND)
+CatalogsHotelProductGroupFilterKeys::setBRAND(CatalogsProductGroupMultipleStringCriteria bRAND)
 {
 	this->bRAND = bRAND;
 }
@@ -299,7 +299,7 @@ CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL0()
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_0)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_0)
 {
 	this->cUSTOM_LABEL_0 = cUSTOM_LABEL_0;
 }
@@ -311,7 +311,7 @@ CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL1()
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_1)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_1)
 {
 	this->cUSTOM_LABEL_1 = cUSTOM_LABEL_1;
 }
@@ -323,7 +323,7 @@ CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL2()
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_2)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_2)
 {
 	this->cUSTOM_LABEL_2 = cUSTOM_LABEL_2;
 }
@@ -335,7 +335,7 @@ CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL3()
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_3)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_3)
 {
 	this->cUSTOM_LABEL_3 = cUSTOM_LABEL_3;
 }
@@ -347,7 +347,7 @@ CatalogsHotelProductGroupFilterKeys::getCUSTOMLABEL4()
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_4)
+CatalogsHotelProductGroupFilterKeys::setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_4)
 {
 	this->cUSTOM_LABEL_4 = cUSTOM_LABEL_4;
 }
@@ -359,7 +359,7 @@ CatalogsHotelProductGroupFilterKeys::getCOUNTRY()
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria  cOUNTRY)
+CatalogsHotelProductGroupFilterKeys::setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria cOUNTRY)
 {
 	this->cOUNTRY = cOUNTRY;
 }
@@ -371,7 +371,7 @@ CatalogsHotelProductGroupFilterKeys::getTITLEKEYWORDS()
 }
 
 void
-CatalogsHotelProductGroupFilterKeys::setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS)
+CatalogsHotelProductGroupFilterKeys::setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria tITLE_KEYWORDS)
 {
 	this->tITLE_KEYWORDS = tITLE_KEYWORDS;
 }

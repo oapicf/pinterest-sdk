@@ -190,7 +190,7 @@ CatalogsReportFeedIngestionStats::getCatalogId()
 }
 
 void
-CatalogsReportFeedIngestionStats::setCatalogId(std::string  catalog_id)
+CatalogsReportFeedIngestionStats::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -202,7 +202,7 @@ CatalogsReportFeedIngestionStats::getCode()
 }
 
 void
-CatalogsReportFeedIngestionStats::setCode(int  code)
+CatalogsReportFeedIngestionStats::setCode(int code)
 {
 	this->code = code;
 }
@@ -214,7 +214,7 @@ CatalogsReportFeedIngestionStats::getCodeLabel()
 }
 
 void
-CatalogsReportFeedIngestionStats::setCodeLabel(std::string  code_label)
+CatalogsReportFeedIngestionStats::setCodeLabel(std::string code_label)
 {
 	this->code_label = code_label;
 }
@@ -226,7 +226,7 @@ CatalogsReportFeedIngestionStats::getMessage()
 }
 
 void
-CatalogsReportFeedIngestionStats::setMessage(std::string  message)
+CatalogsReportFeedIngestionStats::setMessage(std::string message)
 {
 	this->message = message;
 }
@@ -238,7 +238,7 @@ CatalogsReportFeedIngestionStats::getOccurrences()
 }
 
 void
-CatalogsReportFeedIngestionStats::setOccurrences(int  occurrences)
+CatalogsReportFeedIngestionStats::setOccurrences(int occurrences)
 {
 	this->occurrences = occurrences;
 }
@@ -250,7 +250,7 @@ CatalogsReportFeedIngestionStats::getReportType()
 }
 
 void
-CatalogsReportFeedIngestionStats::setReportType(std::string  report_type)
+CatalogsReportFeedIngestionStats::setReportType(std::string report_type)
 {
 	this->report_type = report_type;
 }
@@ -262,7 +262,7 @@ CatalogsReportFeedIngestionStats::getSeverity()
 }
 
 void
-CatalogsReportFeedIngestionStats::setSeverity(std::string  severity)
+CatalogsReportFeedIngestionStats::setSeverity(std::string severity)
 {
 	this->severity = severity;
 }

@@ -25,10 +25,10 @@ import type { ConversionTagResponse } from ''
 const example = {
   "codeSnippet": <script type=text/javascript> [...],
   "configs": null,
-  "enhancedMatchStatus": null,
+  "enhancedMatchStatus": VALIDATION_COMPLETE,
   "id": 2617998078212,
   "lastFiredTimeMs": 1599030000000,
-  "name": ACME Checkout Test Tag,
+  "name": download_picture,
   "version": 3,
   "adAccountId": 549755885175,
   "status": null,

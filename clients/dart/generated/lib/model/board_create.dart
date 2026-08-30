@@ -24,7 +24,7 @@ class BoardCreate {
   /// If set to `true`, the board will be ad-only and can store ad-only Pins.
   bool isAdsOnly;
 
-  ///      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+  ///     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
   String name;
 
   ///     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
@@ -72,10 +72,8 @@ class BoardCreate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BoardCreate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BoardCreate[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'name'), 'Required key "BoardCreate[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "BoardCreate[name]" has a null value in JSON.');
         return true;
       }());
 

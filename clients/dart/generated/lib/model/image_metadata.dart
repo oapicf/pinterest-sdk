@@ -15,7 +15,7 @@ class ImageMetadata {
   ImageMetadata({
     this.description,
     this.images,
-    this.itemType,
+    required this.itemType,
     this.link,
     this.title,
   });
@@ -30,13 +30,8 @@ class ImageMetadata {
   ///
   ImageSize? images;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? itemType;
+  /// Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+  ImageMetadataItemTypeEnum itemType;
 
   String? link;
 
@@ -55,7 +50,7 @@ class ImageMetadata {
     // ignore: unnecessary_parenthesis
     (description == null ? 0 : description!.hashCode) +
     (images == null ? 0 : images!.hashCode) +
-    (itemType == null ? 0 : itemType!.hashCode) +
+    (itemType.hashCode) +
     (link == null ? 0 : link!.hashCode) +
     (title == null ? 0 : title!.hashCode);
 
@@ -74,11 +69,7 @@ class ImageMetadata {
     } else {
       json[r'images'] = null;
     }
-    if (this.itemType != null) {
       json[r'item_type'] = this.itemType;
-    } else {
-      json[r'item_type'] = null;
-    }
     if (this.link != null) {
       json[r'link'] = this.link;
     } else {
@@ -103,17 +94,15 @@ class ImageMetadata {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ImageMetadata[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ImageMetadata[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'item_type'), 'Required key "ImageMetadata[item_type]" is missing from JSON.');
+        assert(json[r'item_type'] != null, 'Required key "ImageMetadata[item_type]" has a null value in JSON.');
         return true;
       }());
 
       return ImageMetadata(
         description: mapValueOfType<String>(json, r'description'),
         images: ImageSize.fromJson(json[r'images']),
-        itemType: mapValueOfType<String>(json, r'item_type'),
+        itemType: ImageMetadataItemTypeEnum.fromJson(json[r'item_type'])!,
         link: mapValueOfType<String>(json, r'link'),
         title: mapValueOfType<String>(json, r'title'),
       );
@@ -163,6 +152,83 @@ class ImageMetadata {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'item_type',
   };
 }
+
+/// Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+enum ImageMetadataItemTypeEnum {
+  image._(r'image'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ImageMetadataItemTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [ImageMetadataItemTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static ImageMetadataItemTypeEnum? fromJson(dynamic value) => ImageMetadataItemTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [ImageMetadataItemTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<ImageMetadataItemTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ImageMetadataItemTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ImageMetadataItemTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ImageMetadataItemTypeEnum] to String,
+/// and [decode] dynamic data back to [ImageMetadataItemTypeEnum].
+class ImageMetadataItemTypeEnumTypeTransformer {
+  factory ImageMetadataItemTypeEnumTypeTransformer() => _instance ??= const ImageMetadataItemTypeEnumTypeTransformer._();
+
+  const ImageMetadataItemTypeEnumTypeTransformer._();
+
+  String encode(ImageMetadataItemTypeEnum data) => data._value;
+
+  /// Returns the instance of [ImageMetadataItemTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ImageMetadataItemTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ImageMetadataItemTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'image': return ImageMetadataItemTypeEnum.image;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static ImageMetadataItemTypeEnumTypeTransformer? _instance;
+}
+
 

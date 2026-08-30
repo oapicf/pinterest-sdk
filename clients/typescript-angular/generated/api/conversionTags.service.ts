@@ -28,6 +28,8 @@ import { ConversionTagsList200Response } from '../model/conversionTagsList200Res
 import { PageVisitConversionTagsGet200Response } from '../model/pageVisitConversionTagsGet200Response';
 // @ts-ignore
 import { PinterestLibError } from '../model/pinterestLibError';
+// @ts-ignore
+import { PinterestLibPaginationOrder } from '../model/pinterestLibPaginationOrder';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -330,22 +332,31 @@ export class ConversionTagsService extends BaseService {
      * Get all page visit conversion tag events for an ad account.
      * @endpoint get /ad_accounts/{ad_account_id}/conversion_tags/page_visit
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
      * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public pageVisitConversionTagsGet(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PageVisitConversionTagsGet200Response>;
-    public pageVisitConversionTagsGet(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PageVisitConversionTagsGet200Response>>;
-    public pageVisitConversionTagsGet(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PageVisitConversionTagsGet200Response>>;
-    public pageVisitConversionTagsGet(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public pageVisitConversionTagsGet(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PageVisitConversionTagsGet200Response>;
+    public pageVisitConversionTagsGet(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PageVisitConversionTagsGet200Response>>;
+    public pageVisitConversionTagsGet(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PageVisitConversionTagsGet200Response>>;
+    public pageVisitConversionTagsGet(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling pageVisitConversionTagsGet.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
@@ -360,15 +371,6 @@ export class ConversionTagsService extends BaseService {
             localVarQueryParameters,
             'order',
             <any>order,
-            QueryParamStyle.Form,
-            true,
-        );
-
-
-        localVarQueryParameters = this.addToHttpParams(
-            localVarQueryParameters,
-            'bookmark',
-            <any>bookmark,
             QueryParamStyle.Form,
             true,
         );

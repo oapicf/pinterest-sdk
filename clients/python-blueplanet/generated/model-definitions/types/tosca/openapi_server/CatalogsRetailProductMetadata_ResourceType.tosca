@@ -8,7 +8,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   NonNullableCatalogsCurrency = openapi_server.resourceTypes.NonNullableCatalogsCurrency
-  NonNullableProductAvailabilityType = openapi_server.resourceTypes.NonNullableProductAvailabilityType
+  ProductAvailability = openapi_server.resourceTypes.ProductAvailability
 }
 resourceTypes {
 
@@ -18,7 +18,7 @@ resourceTypes {
     derivedFrom = Root
     properties {
         availability {
-          type = NonNullableProductAvailabilityType
+          type = ProductAvailability
           description = ""
           optional = true
         }

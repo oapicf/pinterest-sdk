@@ -1,6 +1,6 @@
 package models
 
-type ConversionAttributionWindowDays int32
+type ConversionAttributionWindowDays float32
 
 // List of ConversionAttributionWindowDays
 const (

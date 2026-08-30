@@ -1,0 +1,32 @@
+/*
+ * supplemental_item_processing_status.h
+ *
+ * The status of the item processing record
+ */
+
+#ifndef _supplemental_item_processing_status_H_
+#define _supplemental_item_processing_status_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct supplemental_item_processing_status_t supplemental_item_processing_status_t;
+
+
+// Enum  for supplemental_item_processing_status
+
+typedef enum { pinterest_rest_api_supplemental_item_processing_status__NULL = 0, pinterest_rest_api_supplemental_item_processing_status__SUCCESS, pinterest_rest_api_supplemental_item_processing_status__FAILURE, pinterest_rest_api_supplemental_item_processing_status__PROCESSING } pinterest_rest_api_supplemental_item_processing_status__e;
+
+char* supplemental_item_processing_status_supplemental_item_processing_status_ToString(pinterest_rest_api_supplemental_item_processing_status__e supplemental_item_processing_status);
+
+pinterest_rest_api_supplemental_item_processing_status__e supplemental_item_processing_status_supplemental_item_processing_status_FromString(char* supplemental_item_processing_status);
+
+cJSON *supplemental_item_processing_status_convertToJSON(pinterest_rest_api_supplemental_item_processing_status__e supplemental_item_processing_status);
+
+pinterest_rest_api_supplemental_item_processing_status__e supplemental_item_processing_status_parseFromJSON(cJSON *supplemental_item_processing_statusJSON);
+
+#endif /* _supplemental_item_processing_status_H_ */
+

@@ -1,11 +1,12 @@
 #import "OAITargetingTemplateApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIError.h"
+#import "OAIPinterestLibError.h"
+#import "OAIPinterestLibPaginationOrder.h"
+#import "OAITargetingTemplate.h"
 #import "OAITargetingTemplateCreate.h"
-#import "OAITargetingTemplateGetResponseData.h"
 #import "OAITargetingTemplateList200Response.h"
-#import "OAITargetingTemplateUpdateRequest.h"
+#import "OAITargetingTemplateUpdateRequestReadOrUpdate.h"
 
 
 @interface OAITargetingTemplateApi ()
@@ -55,16 +56,16 @@ NSInteger kOAITargetingTemplateApiMissingParamErrorCode = 234513;
 
 ///
 /// Create targeting templates
-/// <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+/// Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param targetingTemplateCreate targeting template creation entity 
+///  @param targetingTemplateCreate  
 ///
-///  @returns OAITargetingTemplateGetResponseData*
+///  @returns OAITargetingTemplate*
 ///
 -(NSURLSessionTask*) targetingTemplateCreateWithAdAccountId: (NSString*) adAccountId
     targetingTemplateCreate: (OAITargetingTemplateCreate*) targetingTemplateCreate
-    completionHandler: (void (^)(OAITargetingTemplateGetResponseData* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAITargetingTemplate* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -128,37 +129,37 @@ NSInteger kOAITargetingTemplateApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAITargetingTemplateGetResponseData*"
+                              responseType: @"OAITargetingTemplate*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAITargetingTemplateGetResponseData*)data, error);
+                                    handler((OAITargetingTemplate*)data, error);
                                 }
                             }];
 }
 
 ///
 /// List targeting templates
-/// Get a list of the targeting templates in the specified <code>ad_account_id</code>
+/// Get a list of the targeting templates in the specified `ad_account_id`
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
+///  @param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///
 ///  @param includeSizing Include audience sizing in result or not (optional, default to @(NO))
 ///
-///  @param searchQuery Search keyword for targeting templates (optional)
-///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
-///  @param bookmark Cursor used to fetch the next page of items (optional)
+///  @param searchQuery Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
 ///
 ///  @returns OAITargetingTemplateList200Response*
 ///
 -(NSURLSessionTask*) targetingTemplateListWithAdAccountId: (NSString*) adAccountId
-    order: (NSString*) order
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
     includeSizing: (NSNumber*) includeSizing
     searchQuery: (NSString*) searchQuery
-    pageSize: (NSNumber*) pageSize
-    bookmark: (NSString*) bookmark
     completionHandler: (void (^)(OAITargetingTemplateList200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -179,6 +180,12 @@ NSInteger kOAITargetingTemplateApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (bookmark != nil) {
+        queryParams[@"bookmark"] = bookmark;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
+    }
     if (order != nil) {
         queryParams[@"order"] = order;
     }
@@ -187,12 +194,6 @@ NSInteger kOAITargetingTemplateApiMissingParamErrorCode = 234513;
     }
     if (searchQuery != nil) {
         queryParams[@"search_query"] = searchQuery;
-    }
-    if (pageSize != nil) {
-        queryParams[@"page_size"] = pageSize;
-    }
-    if (bookmark != nil) {
-        queryParams[@"bookmark"] = bookmark;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -236,15 +237,15 @@ NSInteger kOAITargetingTemplateApiMissingParamErrorCode = 234513;
 
 ///
 /// Update targeting templates
-/// <p>Update the targeting template given advertiser ID and targeting template ID</p>
+/// Update the targeting template given advertiser ID and targeting template ID
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param targetingTemplateUpdateRequest Operation type and targeting template ID 
+///  @param targetingTemplateUpdateRequestReadOrUpdate  
 ///
 ///  @returns void
 ///
 -(NSURLSessionTask*) targetingTemplateUpdateWithAdAccountId: (NSString*) adAccountId
-    targetingTemplateUpdateRequest: (OAITargetingTemplateUpdateRequest*) targetingTemplateUpdateRequest
+    targetingTemplateUpdateRequestReadOrUpdate: (OAITargetingTemplateUpdateRequestReadOrUpdate*) targetingTemplateUpdateRequestReadOrUpdate
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -257,11 +258,11 @@ NSInteger kOAITargetingTemplateApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'targetingTemplateUpdateRequest' is set
-    if (targetingTemplateUpdateRequest == nil) {
-        NSParameterAssert(targetingTemplateUpdateRequest);
+    // verify the required parameter 'targetingTemplateUpdateRequestReadOrUpdate' is set
+    if (targetingTemplateUpdateRequestReadOrUpdate == nil) {
+        NSParameterAssert(targetingTemplateUpdateRequestReadOrUpdate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"targetingTemplateUpdateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"targetingTemplateUpdateRequestReadOrUpdate"] };
             NSError* error = [NSError errorWithDomain:kOAITargetingTemplateApiErrorDomain code:kOAITargetingTemplateApiMissingParamErrorCode userInfo:userInfo];
             handler(error);
         }
@@ -296,7 +297,7 @@ NSInteger kOAITargetingTemplateApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = targetingTemplateUpdateRequest;
+    bodyParam = targetingTemplateUpdateRequestReadOrUpdate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"

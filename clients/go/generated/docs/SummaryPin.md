@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AltText** | Pointer to **NullableString** |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | **string** |  | 
 **Link** | Pointer to **NullableString** |  | [optional] 
 **Media** | Pointer to [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **Title** | Pointer to **NullableString** |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewSummaryPin
 
-`func NewSummaryPin() *SummaryPin`
+`func NewSummaryPin(id string, ) *SummaryPin`
 
 NewSummaryPin instantiates a new SummaryPin object
 This constructor will assign default values to properties that have it defined,
@@ -119,11 +119,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *SummaryPin) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetLink
 

@@ -13,7 +13,7 @@ package org.openapitools.server.model
  * @param connectedTagId  for example: ''null''
  * @param connectedUserId  for example: ''null''
  * @param createdTimestamp  for example: ''null''
- * @param externalBusinessId  for example: ''null''
+ * @param externalBusinessId External business ID for the integration. for example: ''null''
  * @param id  for example: ''null''
  * @param partnerAccessTokenExpiry  for example: ''null''
  * @param partnerMetadata  for example: ''null''

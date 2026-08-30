@@ -1,0 +1,64 @@
+/*
+ * bulk_download_campaign_filter.h
+ *
+ * 
+ */
+
+#ifndef _bulk_download_campaign_filter_H_
+#define _bulk_download_campaign_filter_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct bulk_download_campaign_filter_t bulk_download_campaign_filter_t;
+
+#include "conversion_objective_type.h"
+#include "summary_status.h"
+
+// Enum  for bulk_download_campaign_filter
+
+typedef enum  { pinterest_rest_api_bulk_download_campaign_filter__NULL = 0, pinterest_rest_api_bulk_download_campaign_filter__RUNNING, pinterest_rest_api_bulk_download_campaign_filter__PAUSED, pinterest_rest_api_bulk_download_campaign_filter__NOT_STARTED, pinterest_rest_api_bulk_download_campaign_filter__COMPLETED, pinterest_rest_api_bulk_download_campaign_filter__ADVERTISER_DISABLED, pinterest_rest_api_bulk_download_campaign_filter__ARCHIVED, pinterest_rest_api_bulk_download_campaign_filter__DRAFT, pinterest_rest_api_bulk_download_campaign_filter__DELETED_DRAFT } pinterest_rest_api_bulk_download_campaign_filter__e;
+
+char* bulk_download_campaign_filter_campaign_status_ToString(pinterest_rest_api_bulk_download_campaign_filter__e campaign_status);
+
+pinterest_rest_api_bulk_download_campaign_filter__e bulk_download_campaign_filter_campaign_status_FromString(char* campaign_status);
+
+// Enum  for bulk_download_campaign_filter
+
+typedef enum  { pinterest_rest_api_bulk_download_campaign_filter__NULL = 0, pinterest_rest_api_bulk_download_campaign_filter__AWARENESS, pinterest_rest_api_bulk_download_campaign_filter__CONSIDERATION, pinterest_rest_api_bulk_download_campaign_filter__WEB_CONVERSION, pinterest_rest_api_bulk_download_campaign_filter__CATALOG_SALES, pinterest_rest_api_bulk_download_campaign_filter__VIDEO_COMPLETION, pinterest_rest_api_bulk_download_campaign_filter__APP_INSTALL, pinterest_rest_api_bulk_download_campaign_filter__SALES, pinterest_rest_api_bulk_download_campaign_filter__LEADS, pinterest_rest_api_bulk_download_campaign_filter__CTV_CONSIDERATION } pinterest_rest_api_bulk_download_campaign_filter__e;
+
+char* bulk_download_campaign_filter_objective_type_ToString(pinterest_rest_api_bulk_download_campaign_filter__e objective_type);
+
+pinterest_rest_api_bulk_download_campaign_filter__e bulk_download_campaign_filter_objective_type_FromString(char* objective_type);
+
+
+
+typedef struct bulk_download_campaign_filter_t {
+    list_t *campaign_status; //nonprimitive container
+    char *end_time; // string
+    char *name; // string
+    list_t *objective_type; //nonprimitive container
+    char *start_time; // string
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} bulk_download_campaign_filter_t;
+
+__attribute__((deprecated)) bulk_download_campaign_filter_t *bulk_download_campaign_filter_create(
+    list_t *campaign_status,
+    char *end_time,
+    char *name,
+    list_t *objective_type,
+    char *start_time
+);
+
+void bulk_download_campaign_filter_free(bulk_download_campaign_filter_t *bulk_download_campaign_filter);
+
+bulk_download_campaign_filter_t *bulk_download_campaign_filter_parseFromJSON(cJSON *bulk_download_campaign_filterJSON);
+
+cJSON *bulk_download_campaign_filter_convertToJSON(bulk_download_campaign_filter_t *bulk_download_campaign_filter);
+
+#endif /* _bulk_download_campaign_filter_H_ */
+

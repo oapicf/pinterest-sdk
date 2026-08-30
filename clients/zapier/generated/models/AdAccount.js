@@ -40,6 +40,11 @@ module.exports = {
                 ...BusinessAccessRole.fields(`${keyPrefix}permissions`, isInput),
             },
             {
+                key: `${keyPrefix}time_zone`,
+                label: `The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC. - [${labelPrefix}time_zone]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}updated_time`,
                 label: `[${labelPrefix}updated_time]`,
                 type: 'integer',
@@ -56,6 +61,7 @@ module.exports = {
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'owner': utils.removeIfEmpty(AdAccountOwner.mapping(bundle, `${keyPrefix}owner`)),
             'permissions': utils.childMapping(bundle.inputData?.[`${keyPrefix}permissions`], `${keyPrefix}permissions`, BusinessAccessRole),
+            'time_zone': bundle.inputData?.[`${keyPrefix}time_zone`],
             'updated_time': bundle.inputData?.[`${keyPrefix}updated_time`],
         }
     },

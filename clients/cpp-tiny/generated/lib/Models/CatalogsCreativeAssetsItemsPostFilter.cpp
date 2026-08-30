@@ -124,7 +124,7 @@ CatalogsCreativeAssetsItemsPostFilter::getCatalogId()
 }
 
 void
-CatalogsCreativeAssetsItemsPostFilter::setCatalogId(std::string  catalog_id)
+CatalogsCreativeAssetsItemsPostFilter::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -136,7 +136,7 @@ CatalogsCreativeAssetsItemsPostFilter::getCatalogType()
 }
 
 void
-CatalogsCreativeAssetsItemsPostFilter::setCatalogType(std::string  catalog_type)
+CatalogsCreativeAssetsItemsPostFilter::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -148,7 +148,7 @@ CatalogsCreativeAssetsItemsPostFilter::getCreativeAssetsIds()
 }
 
 void
-CatalogsCreativeAssetsItemsPostFilter::setCreativeAssetsIds(std::list <std::string> creative_assets_ids)
+CatalogsCreativeAssetsItemsPostFilter::setCreativeAssetsIds(std::list<std::string> creative_assets_ids)
 {
 	this->creative_assets_ids = creative_assets_ids;
 }

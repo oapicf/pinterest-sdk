@@ -31,9 +31,9 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	customerListId := "customerListId_example" // string | Unique identifier of a customer list
-	customerListUploadCreateRequest := *openapiclient.NewCustomerListUploadCreateRequest(openapiclient.UserListOperationType("ADD"), int32(2)) // CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+	adAccountId := "adAccountId_example" // string | 
+	customerListId := "customerListId_example" // string | Customer list ID.
+	customerListUploadCreateRequest := *openapiclient.NewCustomerListUploadCreateRequest(openapiclient.UserListOperationType("ADD"), int32(2)) // CustomerListUploadCreateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -53,8 +53,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
-**customerListId** | **string** | Unique identifier of a customer list | 
+**adAccountId** | **string** |  | 
+**customerListId** | **string** | Customer list ID. | 
 
 ### Other Parameters
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md) | Parameters to create a customer list upload request | 
+ **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md) |  | 
 
 ### Return type
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CustomerListUploadsGet
 
-> CustomerListUploadResponse CustomerListUploadsGet(ctx, adAccountId, customerListId, customerListUploadId).Execute()
+> CustomerListUpload CustomerListUploadsGet(ctx, adAccountId, customerListId, customerListUploadId).Execute()
 
 Get customer list upload
 
@@ -106,9 +106,9 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	customerListId := "customerListId_example" // string | Unique identifier of a customer list
-	customerListUploadId := "customerListUploadId_example" // string | Unique identifier of a customer list upload
+	adAccountId := "adAccountId_example" // string | 
+	customerListId := "customerListId_example" // string | Customer list ID.
+	customerListUploadId := "customerListUploadId_example" // string | Customer List Upload ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -117,7 +117,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerListUploadsAPI.CustomerListUploadsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CustomerListUploadsGet`: CustomerListUploadResponse
+	// response from `CustomerListUploadsGet`: CustomerListUpload
 	fmt.Fprintf(os.Stdout, "Response from `CustomerListUploadsAPI.CustomerListUploadsGet`: %v\n", resp)
 }
 ```
@@ -128,9 +128,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
-**customerListId** | **string** | Unique identifier of a customer list | 
-**customerListUploadId** | **string** | Unique identifier of a customer list upload | 
+**adAccountId** | **string** |  | 
+**customerListId** | **string** | Customer list ID. | 
+**customerListUploadId** | **string** | Customer List Upload ID. | 
 
 ### Other Parameters
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## CustomerListUploadsRun
 
-> CustomerListUploadResponse CustomerListUploadsRun(ctx, adAccountId, customerListId, customerListUploadId).Execute()
+> CustomerListUpload CustomerListUploadsRun(ctx, adAccountId, customerListId, customerListUploadId).Execute()
 
 Run customer list upload
 
@@ -182,9 +182,9 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	customerListId := "customerListId_example" // string | Unique identifier of a customer list
-	customerListUploadId := "customerListUploadId_example" // string | Unique identifier of a customer list upload
+	adAccountId := "adAccountId_example" // string | 
+	customerListId := "customerListId_example" // string | Customer list ID.
+	customerListUploadId := "customerListUploadId_example" // string | Customer List Upload ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -193,7 +193,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerListUploadsAPI.CustomerListUploadsRun``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CustomerListUploadsRun`: CustomerListUploadResponse
+	// response from `CustomerListUploadsRun`: CustomerListUpload
 	fmt.Fprintf(os.Stdout, "Response from `CustomerListUploadsAPI.CustomerListUploadsRun`: %v\n", resp)
 }
 ```
@@ -204,9 +204,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
-**customerListId** | **string** | Unique identifier of a customer list | 
-**customerListUploadId** | **string** | Unique identifier of a customer list upload | 
+**adAccountId** | **string** |  | 
+**customerListId** | **string** | Customer list ID. | 
+**customerListUploadId** | **string** | Customer List Upload ID. | 
 
 ### Other Parameters
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 

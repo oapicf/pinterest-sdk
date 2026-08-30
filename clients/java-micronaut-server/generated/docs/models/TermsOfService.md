@@ -2,6 +2,8 @@
 
 # TermsOfService
 
+The ID of the ad account.
+
 The class is defined in **[TermsOfService.java](../../src/main/java/org/openapitools/model/TermsOfService.java)**
 
 ## Properties

@@ -1,12 +1,12 @@
 
 /*
- * TargetingTemplateAudienceSizing_reach_estimate.h
+ * TargetingTemplateAudienceSizingReachEstimate.h
  *
  * 
  */
 
-#ifndef TINY_CPP_CLIENT_TargetingTemplateAudienceSizing_reach_estimate_H_
-#define TINY_CPP_CLIENT_TargetingTemplateAudienceSizing_reach_estimate_H_
+#ifndef TINY_CPP_CLIENT_TargetingTemplateAudienceSizingReachEstimate_H_
+#define TINY_CPP_CLIENT_TargetingTemplateAudienceSizingReachEstimate_H_
 
 
 #include <string>
@@ -22,18 +22,18 @@ namespace Tiny {
  *
  */
 
-class TargetingTemplateAudienceSizing_reach_estimate{
+class TargetingTemplateAudienceSizingReachEstimate{
 public:
 
     /*! \brief Constructor.
 	 */
-    TargetingTemplateAudienceSizing_reach_estimate();
-    TargetingTemplateAudienceSizing_reach_estimate(std::string jsonString);
+    TargetingTemplateAudienceSizingReachEstimate();
+    TargetingTemplateAudienceSizingReachEstimate(std::string jsonString);
 
 
     /*! \brief Destructor.
 	 */
-    virtual ~TargetingTemplateAudienceSizing_reach_estimate();
+    virtual ~TargetingTemplateAudienceSizingReachEstimate();
 
 
     /*! \brief Retrieve a bourne JSON representation of this class.
@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setEstimate(long  estimate);
+	void setEstimate(long estimate);
 	/*! \brief Get 
 	 */
 	long getLowerBound();
 
 	/*! \brief Set 
 	 */
-	void setLowerBound(long  lower_bound);
+	void setLowerBound(long lower_bound);
 	/*! \brief Get 
 	 */
 	long getUpperBound();
 
 	/*! \brief Set 
 	 */
-	void setUpperBound(long  upper_bound);
+	void setUpperBound(long upper_bound);
 
 
     private:
@@ -75,4 +75,4 @@ public:
 };
 }
 
-#endif /* TINY_CPP_CLIENT_TargetingTemplateAudienceSizing_reach_estimate_H_ */
+#endif /* TINY_CPP_CLIENT_TargetingTemplateAudienceSizingReachEstimate_H_ */

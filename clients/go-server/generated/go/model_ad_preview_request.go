@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -19,17 +24,20 @@ type AdPreviewRequest struct {
 	// Image URL.
 	ImageUrl string `json:"image_url"`
 
+	// Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
+	PromotionId string `json:"promotion_id,omitempty"`
+
 	// Title displayed below ad.
 	Title string `json:"title"`
+
+	// Ad format of the shopping ad preview.
+	CreativeType AdShoppingPreviewCreativeType `json:"creative_type"`
 
 	// Pin ID.
 	PinId string `json:"pin_id"`
 
 	// Catalog Product Group Id.
 	CatalogProductGroupId string `json:"catalog_product_group_id"`
-
-	// Ad format of the shopping ad preview.
-	CreativeType string `json:"creative_type"`
 
 	// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
 	CustomizableCtaType *CustomizableCtaType `json:"customizable_cta_type,omitempty"`
@@ -50,27 +58,162 @@ type AdPreviewRequest struct {
 	ItemId string `json:"item_id,omitempty"`
 
 	// Preferred media type.
-	PreferredMediaType string `json:"preferred_media_type,omitempty"`
+	PreferredMediaType BasePreferredMediaType `json:"preferred_media_type,omitempty"`
+
+	// Include promotion data in preview when available on catalog item. Defaults to false.
+	ShowPromotion bool `json:"show_promotion,omitempty"`
 
 	// Multi video template tag, image_tag and video_tag are mutual exclusive.
 	VideoTag string `json:"video_tag,omitempty"`
 }
-
-// AssertAdPreviewRequestRequired checks if the required fields are not zero-ed
-func AssertAdPreviewRequestRequired(obj AdPreviewRequest) error {
-	elements := map[string]interface{}{
-		"image_url": obj.ImageUrl,
-		"title": obj.Title,
-		"pin_id": obj.PinId,
-		"catalog_product_group_id": obj.CatalogProductGroupId,
-		"creative_type": obj.CreativeType,
+// UnmarshalJSON validates required property keys then unmarshals into AdPreviewRequest
+func (o *AdPreviewRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"image_url",
+		"title",
+		"creative_type",
+		"pin_id",
+		"catalog_product_group_id",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"image_url": false,
+		"title": false,
+		"creative_type": false,
+		"pin_id": false,
+		"catalog_product_group_id": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"image_url": {},
+		"promotion_id": {},
+		"title": {},
+		"creative_type": {},
+		"pin_id": {},
+		"catalog_product_group_id": {},
+		"customizable_cta_type": {},
+		"hero_image_title": {},
+		"hero_image_url": {},
+		"hero_pin_id": {},
+		"image_tag": {},
+		"item_id": {},
+		"preferred_media_type": {},
+		"show_promotion": {},
+		"video_tag": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AdPreviewRequest
+
+	if value, exists := allProperties["image_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.ImageUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["promotion_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.PromotionId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["title"]; exists {
+		if err = json.Unmarshal(value, &decoded.Title); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["creative_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreativeType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pin_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.PinId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_product_group_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogProductGroupId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["customizable_cta_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CustomizableCtaType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["hero_image_title"]; exists {
+		if err = json.Unmarshal(value, &decoded.HeroImageTitle); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["hero_image_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.HeroImageUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["hero_pin_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.HeroPinId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["image_tag"]; exists {
+		if err = json.Unmarshal(value, &decoded.ImageTag); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["preferred_media_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.PreferredMediaType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["show_promotion"]; exists {
+		if err = json.Unmarshal(value, &decoded.ShowPromotion); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["video_tag"]; exists {
+		if err = json.Unmarshal(value, &decoded.VideoTag); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertAdPreviewRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertAdPreviewRequestRequired(obj AdPreviewRequest) error {
 	return nil
 }
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -17,23 +17,55 @@ import (
 	"gopkg.in/validator.v2"
 )
 
-// ItemResponse - Object describing an item record or error
+// ItemResponse - Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
 type ItemResponse struct {
-	ItemResponseOneOf *ItemResponseOneOf
-	ItemResponseOneOf1 *ItemResponseOneOf1
+	CatalogsCreativeAssetsItemErrorResponse *CatalogsCreativeAssetsItemErrorResponse
+	CatalogsCreativeAssetsItemResponse *CatalogsCreativeAssetsItemResponse
+	CatalogsHotelItemErrorResponse *CatalogsHotelItemErrorResponse
+	CatalogsHotelItemResponse *CatalogsHotelItemResponse
+	CatalogsRetailItemErrorResponse *CatalogsRetailItemErrorResponse
+	CatalogsRetailItemResponse *CatalogsRetailItemResponse
 }
 
-// ItemResponseOneOfAsItemResponse is a convenience function that returns ItemResponseOneOf wrapped in ItemResponse
-func ItemResponseOneOfAsItemResponse(v *ItemResponseOneOf) ItemResponse {
+// CatalogsCreativeAssetsItemErrorResponseAsItemResponse is a convenience function that returns CatalogsCreativeAssetsItemErrorResponse wrapped in ItemResponse
+func CatalogsCreativeAssetsItemErrorResponseAsItemResponse(v *CatalogsCreativeAssetsItemErrorResponse) ItemResponse {
 	return ItemResponse{
-		ItemResponseOneOf: v,
+		CatalogsCreativeAssetsItemErrorResponse: v,
 	}
 }
 
-// ItemResponseOneOf1AsItemResponse is a convenience function that returns ItemResponseOneOf1 wrapped in ItemResponse
-func ItemResponseOneOf1AsItemResponse(v *ItemResponseOneOf1) ItemResponse {
+// CatalogsCreativeAssetsItemResponseAsItemResponse is a convenience function that returns CatalogsCreativeAssetsItemResponse wrapped in ItemResponse
+func CatalogsCreativeAssetsItemResponseAsItemResponse(v *CatalogsCreativeAssetsItemResponse) ItemResponse {
 	return ItemResponse{
-		ItemResponseOneOf1: v,
+		CatalogsCreativeAssetsItemResponse: v,
+	}
+}
+
+// CatalogsHotelItemErrorResponseAsItemResponse is a convenience function that returns CatalogsHotelItemErrorResponse wrapped in ItemResponse
+func CatalogsHotelItemErrorResponseAsItemResponse(v *CatalogsHotelItemErrorResponse) ItemResponse {
+	return ItemResponse{
+		CatalogsHotelItemErrorResponse: v,
+	}
+}
+
+// CatalogsHotelItemResponseAsItemResponse is a convenience function that returns CatalogsHotelItemResponse wrapped in ItemResponse
+func CatalogsHotelItemResponseAsItemResponse(v *CatalogsHotelItemResponse) ItemResponse {
+	return ItemResponse{
+		CatalogsHotelItemResponse: v,
+	}
+}
+
+// CatalogsRetailItemErrorResponseAsItemResponse is a convenience function that returns CatalogsRetailItemErrorResponse wrapped in ItemResponse
+func CatalogsRetailItemErrorResponseAsItemResponse(v *CatalogsRetailItemErrorResponse) ItemResponse {
+	return ItemResponse{
+		CatalogsRetailItemErrorResponse: v,
+	}
+}
+
+// CatalogsRetailItemResponseAsItemResponse is a convenience function that returns CatalogsRetailItemResponse wrapped in ItemResponse
+func CatalogsRetailItemResponseAsItemResponse(v *CatalogsRetailItemResponse) ItemResponse {
+	return ItemResponse{
+		CatalogsRetailItemResponse: v,
 	}
 }
 
@@ -42,61 +74,178 @@ func ItemResponseOneOf1AsItemResponse(v *ItemResponseOneOf1) ItemResponse {
 func (dst *ItemResponse) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into ItemResponseOneOf
-	err = newStrictDecoder(data).Decode(&dst.ItemResponseOneOf)
+	// try to unmarshal data into CatalogsCreativeAssetsItemErrorResponse
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsItemErrorResponse)
 	if err == nil {
-		jsonItemResponseOneOf, _ := json.Marshal(dst.ItemResponseOneOf)
-		if string(jsonItemResponseOneOf) == "{}" { // empty struct
-			dst.ItemResponseOneOf = nil
+		jsonCatalogsCreativeAssetsItemErrorResponse, _ := json.Marshal(dst.CatalogsCreativeAssetsItemErrorResponse)
+		if string(jsonCatalogsCreativeAssetsItemErrorResponse) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsItemErrorResponse = nil
 		} else {
-			if err = validator.Validate(dst.ItemResponseOneOf); err != nil {
-				dst.ItemResponseOneOf = nil
+			if err = validator.Validate(dst.CatalogsCreativeAssetsItemErrorResponse); err != nil {
+				dst.CatalogsCreativeAssetsItemErrorResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.ItemResponseOneOf = nil
+		dst.CatalogsCreativeAssetsItemErrorResponse = nil
 	}
 
-	// try to unmarshal data into ItemResponseOneOf1
-	err = newStrictDecoder(data).Decode(&dst.ItemResponseOneOf1)
+	// try to unmarshal data into CatalogsCreativeAssetsItemResponse
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsItemResponse)
 	if err == nil {
-		jsonItemResponseOneOf1, _ := json.Marshal(dst.ItemResponseOneOf1)
-		if string(jsonItemResponseOneOf1) == "{}" { // empty struct
-			dst.ItemResponseOneOf1 = nil
+		jsonCatalogsCreativeAssetsItemResponse, _ := json.Marshal(dst.CatalogsCreativeAssetsItemResponse)
+		if string(jsonCatalogsCreativeAssetsItemResponse) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsItemResponse = nil
 		} else {
-			if err = validator.Validate(dst.ItemResponseOneOf1); err != nil {
-				dst.ItemResponseOneOf1 = nil
+			if err = validator.Validate(dst.CatalogsCreativeAssetsItemResponse); err != nil {
+				dst.CatalogsCreativeAssetsItemResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.ItemResponseOneOf1 = nil
+		dst.CatalogsCreativeAssetsItemResponse = nil
+	}
+
+	// try to unmarshal data into CatalogsHotelItemErrorResponse
+	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelItemErrorResponse)
+	if err == nil {
+		jsonCatalogsHotelItemErrorResponse, _ := json.Marshal(dst.CatalogsHotelItemErrorResponse)
+		if string(jsonCatalogsHotelItemErrorResponse) == "{}" { // empty struct
+			dst.CatalogsHotelItemErrorResponse = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsHotelItemErrorResponse); err != nil {
+				dst.CatalogsHotelItemErrorResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsHotelItemErrorResponse = nil
+	}
+
+	// try to unmarshal data into CatalogsHotelItemResponse
+	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelItemResponse)
+	if err == nil {
+		jsonCatalogsHotelItemResponse, _ := json.Marshal(dst.CatalogsHotelItemResponse)
+		if string(jsonCatalogsHotelItemResponse) == "{}" { // empty struct
+			dst.CatalogsHotelItemResponse = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsHotelItemResponse); err != nil {
+				dst.CatalogsHotelItemResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsHotelItemResponse = nil
+	}
+
+	// try to unmarshal data into CatalogsRetailItemErrorResponse
+	err = newStrictDecoder(data).Decode(&dst.CatalogsRetailItemErrorResponse)
+	if err == nil {
+		jsonCatalogsRetailItemErrorResponse, _ := json.Marshal(dst.CatalogsRetailItemErrorResponse)
+		if string(jsonCatalogsRetailItemErrorResponse) == "{}" { // empty struct
+			dst.CatalogsRetailItemErrorResponse = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsRetailItemErrorResponse); err != nil {
+				dst.CatalogsRetailItemErrorResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsRetailItemErrorResponse = nil
+	}
+
+	// try to unmarshal data into CatalogsRetailItemResponse
+	err = newStrictDecoder(data).Decode(&dst.CatalogsRetailItemResponse)
+	if err == nil {
+		jsonCatalogsRetailItemResponse, _ := json.Marshal(dst.CatalogsRetailItemResponse)
+		if string(jsonCatalogsRetailItemResponse) == "{}" { // empty struct
+			dst.CatalogsRetailItemResponse = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsRetailItemResponse); err != nil {
+				dst.CatalogsRetailItemResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsRetailItemResponse = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ItemResponseOneOf = nil
-		dst.ItemResponseOneOf1 = nil
+		dst.CatalogsCreativeAssetsItemErrorResponse = nil
+		dst.CatalogsCreativeAssetsItemResponse = nil
+		dst.CatalogsHotelItemErrorResponse = nil
+		dst.CatalogsHotelItemResponse = nil
+		dst.CatalogsRetailItemErrorResponse = nil
+		dst.CatalogsRetailItemResponse = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(ItemResponse)")
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse)")
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse)")
+        }
 	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ItemResponse) MarshalJSON() ([]byte, error) {
-	if src.ItemResponseOneOf != nil {
-		return json.Marshal(&src.ItemResponseOneOf)
+	if src.CatalogsCreativeAssetsItemErrorResponse != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsItemErrorResponse)
 	}
 
-	if src.ItemResponseOneOf1 != nil {
-		return json.Marshal(&src.ItemResponseOneOf1)
+	if src.CatalogsCreativeAssetsItemResponse != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsItemResponse)
+	}
+
+	if src.CatalogsHotelItemErrorResponse != nil {
+		return json.Marshal(&src.CatalogsHotelItemErrorResponse)
+	}
+
+	if src.CatalogsHotelItemResponse != nil {
+		return json.Marshal(&src.CatalogsHotelItemResponse)
+	}
+
+	if src.CatalogsRetailItemErrorResponse != nil {
+		return json.Marshal(&src.CatalogsRetailItemErrorResponse)
+	}
+
+	if src.CatalogsRetailItemResponse != nil {
+		return json.Marshal(&src.CatalogsRetailItemResponse)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -107,12 +256,28 @@ func (obj *ItemResponse) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
-	if obj.ItemResponseOneOf != nil {
-		return obj.ItemResponseOneOf
+	if obj.CatalogsCreativeAssetsItemErrorResponse != nil {
+		return obj.CatalogsCreativeAssetsItemErrorResponse
 	}
 
-	if obj.ItemResponseOneOf1 != nil {
-		return obj.ItemResponseOneOf1
+	if obj.CatalogsCreativeAssetsItemResponse != nil {
+		return obj.CatalogsCreativeAssetsItemResponse
+	}
+
+	if obj.CatalogsHotelItemErrorResponse != nil {
+		return obj.CatalogsHotelItemErrorResponse
+	}
+
+	if obj.CatalogsHotelItemResponse != nil {
+		return obj.CatalogsHotelItemResponse
+	}
+
+	if obj.CatalogsRetailItemErrorResponse != nil {
+		return obj.CatalogsRetailItemErrorResponse
+	}
+
+	if obj.CatalogsRetailItemResponse != nil {
+		return obj.CatalogsRetailItemResponse
 	}
 
 	// all schemas are nil
@@ -121,12 +286,28 @@ func (obj *ItemResponse) GetActualInstance() (interface{}) {
 
 // Get the actual instance value
 func (obj ItemResponse) GetActualInstanceValue() (interface{}) {
-	if obj.ItemResponseOneOf != nil {
-		return *obj.ItemResponseOneOf
+	if obj.CatalogsCreativeAssetsItemErrorResponse != nil {
+		return *obj.CatalogsCreativeAssetsItemErrorResponse
 	}
 
-	if obj.ItemResponseOneOf1 != nil {
-		return *obj.ItemResponseOneOf1
+	if obj.CatalogsCreativeAssetsItemResponse != nil {
+		return *obj.CatalogsCreativeAssetsItemResponse
+	}
+
+	if obj.CatalogsHotelItemErrorResponse != nil {
+		return *obj.CatalogsHotelItemErrorResponse
+	}
+
+	if obj.CatalogsHotelItemResponse != nil {
+		return *obj.CatalogsHotelItemResponse
+	}
+
+	if obj.CatalogsRetailItemErrorResponse != nil {
+		return *obj.CatalogsRetailItemErrorResponse
+	}
+
+	if obj.CatalogsRetailItemResponse != nil {
+		return *obj.CatalogsRetailItemResponse
 	}
 
 	// all schemas are nil

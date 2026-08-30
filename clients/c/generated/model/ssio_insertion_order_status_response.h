@@ -1,7 +1,7 @@
 /*
  * ssio_insertion_order_status_response.h
  *
- * 
+ * SSIO insertion order status response for a single pin order id lookup.
  */
 
 #ifndef _ssio_insertion_order_status_response_H_

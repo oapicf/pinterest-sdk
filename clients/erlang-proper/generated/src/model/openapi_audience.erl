@@ -10,15 +10,16 @@
 
 -type openapi_audience() ::
   [ {'ad_account_id', binary() }
-  | {'audience_type', binary() }
+  | {'audience_type', openapi_pinner_list_type:openapi_pinner_list_type() }
   | {'created_by_company_name', binary() }
   | {'created_timestamp', integer() }
   | {'description', binary() }
   | {'id', binary() }
+  | {'is_nca', boolean() }
   | {'name', binary() }
   | {'rule', openapi_audience_rule:openapi_audience_rule() }
   | {'size', integer() }
-  | {'status', binary() }
+  | {'status', openapi_audience_status:openapi_audience_status() }
   | {'type', binary() }
   | {'updated_timestamp', integer() }
   ].
@@ -29,15 +30,16 @@ openapi_audience() ->
 
 openapi_audience(Fields) ->
   Default = [ {'ad_account_id', binary() }
-            , {'audience_type', binary() }
+            , {'audience_type', openapi_pinner_list_type:openapi_pinner_list_type() }
             , {'created_by_company_name', binary() }
             , {'created_timestamp', integer() }
             , {'description', binary() }
             , {'id', binary() }
+            , {'is_nca', boolean() }
             , {'name', binary() }
             , {'rule', openapi_audience_rule:openapi_audience_rule() }
             , {'size', integer() }
-            , {'status', binary() }
+            , {'status', openapi_audience_status:openapi_audience_status() }
             , {'type', binary() }
             , {'updated_timestamp', integer() }
             ],

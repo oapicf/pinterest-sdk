@@ -7,7 +7,8 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  BaseInviteDataResponseInviteData = openapi_server.resourceTypes.BaseInviteDataResponseInviteData
+  BusinessAccessUserSummary = openapi_server.resourceTypes.BusinessAccessUserSummary
+  InviteDataResponse = openapi_server.resourceTypes.InviteDataResponse
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -17,13 +18,23 @@ resourceTypes {
     description = InviteBusinessRoleBinding
     derivedFrom = Root
     properties {
+        created_by_business_id {
+          type =  string
+          description = "Unique identifier for the business that created the invite/request."
+          optional = false
+        }
+        created_by_user_id {
+          type =  string
+          description = "Unique identifier for the user that created the invite/request."
+          optional = false
+        }
         id {
           type =  string
           description = "Unique identifier of the invite/request."
           optional = false
         }
         invite_data {
-          type = BaseInviteDataResponseInviteData
+          type = InviteDataResponse
           description = ""
           optional = false
         }
@@ -33,18 +44,8 @@ resourceTypes {
           optional = false
         }
         user {
-          type =  
-          description = "Metadata for the user that updated the invite/request."
-          optional = false
-        }
-        created_by_business_id {
-          type =  string
-          description = "Unique identifier for the business that created the invite/request."
-          optional = false
-        }
-        created_by_user_id {
-          type =  string
-          description = "Unique identifier for the user that created the invite/request."
+          type = BusinessAccessUserSummary
+          description = "Metadata for the member/partner that was sent the invite/request."
           optional = false
         }
     }

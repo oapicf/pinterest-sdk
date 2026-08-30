@@ -100,15 +100,17 @@ class _$ItemUpdateBatchRecordSerializer implements PrimitiveSerializer<ItemUpdat
         case r'attributes':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(UpdatableItemAttributes),
-          ) as UpdatableItemAttributes;
+            specifiedType: const FullType.nullable(UpdatableItemAttributes),
+          ) as UpdatableItemAttributes?;
+          if (valueDes == null) continue;
           result.attributes = valueDes;
           break;
         case r'item_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.itemId = valueDes;
           break;
         case r'update_mask':

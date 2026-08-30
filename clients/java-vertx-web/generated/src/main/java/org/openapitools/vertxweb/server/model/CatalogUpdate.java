@@ -1,0 +1,82 @@
+package org.openapitools.vertxweb.server.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.vertxweb.server.model.CatalogsType;
+
+/**
+ * Resource create or update operation model.
+ **/
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CatalogUpdate   {
+  
+  private CatalogsType catalogType;
+  private String name;
+
+  public CatalogUpdate () {
+
+  }
+
+  public CatalogUpdate (CatalogsType catalogType, String name) {
+    this.catalogType = catalogType;
+    this.name = name;
+  }
+
+    
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CatalogUpdate catalogUpdate = (CatalogUpdate) o;
+    return Objects.equals(catalogType, catalogUpdate.catalogType) &&
+        Objects.equals(name, catalogUpdate.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(catalogType, name);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CatalogUpdate {\n");
+    
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}

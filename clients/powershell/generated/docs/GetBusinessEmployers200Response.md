@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**UserBusinessRoleBinding[]**](UserBusinessRoleBinding.md) | List of employers. | 
+**Items** | [**UserBusinessRoleBinding[]**](UserBusinessRoleBinding.md) |  | 
 
 ## Examples
 

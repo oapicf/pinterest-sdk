@@ -11,10 +11,10 @@
 #' @field app_version_number Version number of the integration application. character [optional]
 #' @field client_timestamp Timestamp in milliseconds of when the log was executed at the client. integer
 #' @field error  \link{IntegrationLogClientError} [optional]
-#' @field event_type Log event type character
+#' @field event_type Log event type \link{IntegrationLogEventType}
 #' @field external_business_id  character [optional]
 #' @field feed_profile_id  character [optional]
-#' @field log_level Log level type character
+#' @field log_level Log level type \link{IntegrationLogLevel}
 #' @field merchant_id  character [optional]
 #' @field message Explanation of the event that occured. character [optional]
 #' @field platform_version_number Version number of the platform the integration application is running on. character [optional]
@@ -65,21 +65,17 @@ IntegrationLog <- R6::R6Class(
         self$`client_timestamp` <- `client_timestamp`
       }
       if (!missing(`event_type`)) {
-        if (!(`event_type` %in% c("APP", "API"))) {
-          stop(paste("Error! \"", `event_type`, "\" cannot be assigned to `event_type`. Must be \"APP\", \"API\".", sep = ""))
+        if (!(`event_type` %in% c())) {
+          stop(paste("Error! \"", `event_type`, "\" cannot be assigned to `event_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`event_type`) && length(`event_type`) == 1)) {
-          stop(paste("Error! Invalid data for `event_type`. Must be a string:", `event_type`))
-        }
+        stopifnot(R6::is.R6(`event_type`))
         self$`event_type` <- `event_type`
       }
       if (!missing(`log_level`)) {
-        if (!(`log_level` %in% c("INFO", "WARN", "ERROR"))) {
-          stop(paste("Error! \"", `log_level`, "\" cannot be assigned to `log_level`. Must be \"INFO\", \"WARN\", \"ERROR\".", sep = ""))
+        if (!(`log_level` %in% c())) {
+          stop(paste("Error! \"", `log_level`, "\" cannot be assigned to `log_level`. Must be .", sep = ""))
         }
-        if (!(is.character(`log_level`) && length(`log_level`) == 1)) {
-          stop(paste("Error! Invalid data for `log_level`. Must be a string:", `log_level`))
-        }
+        stopifnot(R6::is.R6(`log_level`))
         self$`log_level` <- `log_level`
       }
       if (!is.null(`advertiser_id`)) {
@@ -185,11 +181,11 @@ IntegrationLog <- R6::R6Class(
       }
       if (!is.null(self$`error`)) {
         IntegrationLogObject[["error"]] <-
-          self$`error`$toSimpleType()
+          self$extractSimpleType(self$`error`)
       }
       if (!is.null(self$`event_type`)) {
         IntegrationLogObject[["event_type"]] <-
-          self$`event_type`
+          self$extractSimpleType(self$`event_type`)
       }
       if (!is.null(self$`external_business_id`)) {
         IntegrationLogObject[["external_business_id"]] <-
@@ -201,7 +197,7 @@ IntegrationLog <- R6::R6Class(
       }
       if (!is.null(self$`log_level`)) {
         IntegrationLogObject[["log_level"]] <-
-          self$`log_level`
+          self$extractSimpleType(self$`log_level`)
       }
       if (!is.null(self$`merchant_id`)) {
         IntegrationLogObject[["merchant_id"]] <-
@@ -217,13 +213,36 @@ IntegrationLog <- R6::R6Class(
       }
       if (!is.null(self$`request`)) {
         IntegrationLogObject[["request"]] <-
-          self$`request`$toSimpleType()
+          self$extractSimpleType(self$`request`)
       }
       if (!is.null(self$`tag_id`)) {
         IntegrationLogObject[["tag_id"]] <-
           self$`tag_id`
       }
       return(IntegrationLogObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -248,10 +267,9 @@ IntegrationLog <- R6::R6Class(
         self$`error` <- `error_object`
       }
       if (!is.null(this_object$`event_type`)) {
-        if (!is.null(this_object$`event_type`) && !(this_object$`event_type` %in% c("APP", "API"))) {
-          stop(paste("Error! \"", this_object$`event_type`, "\" cannot be assigned to `event_type`. Must be \"APP\", \"API\".", sep = ""))
-        }
-        self$`event_type` <- this_object$`event_type`
+        `event_type_object` <- IntegrationLogEventType$new()
+        `event_type_object`$fromJSON(jsonlite::toJSON(this_object$`event_type`, auto_unbox = TRUE, digits = NA))
+        self$`event_type` <- `event_type_object`
       }
       if (!is.null(this_object$`external_business_id`)) {
         self$`external_business_id` <- this_object$`external_business_id`
@@ -260,10 +278,9 @@ IntegrationLog <- R6::R6Class(
         self$`feed_profile_id` <- this_object$`feed_profile_id`
       }
       if (!is.null(this_object$`log_level`)) {
-        if (!is.null(this_object$`log_level`) && !(this_object$`log_level` %in% c("INFO", "WARN", "ERROR"))) {
-          stop(paste("Error! \"", this_object$`log_level`, "\" cannot be assigned to `log_level`. Must be \"INFO\", \"WARN\", \"ERROR\".", sep = ""))
-        }
-        self$`log_level` <- this_object$`log_level`
+        `log_level_object` <- IntegrationLogLevel$new()
+        `log_level_object`$fromJSON(jsonlite::toJSON(this_object$`log_level`, auto_unbox = TRUE, digits = NA))
+        self$`log_level` <- `log_level_object`
       }
       if (!is.null(this_object$`merchant_id`)) {
         self$`merchant_id` <- this_object$`merchant_id`
@@ -307,16 +324,10 @@ IntegrationLog <- R6::R6Class(
       self$`app_version_number` <- this_object$`app_version_number`
       self$`client_timestamp` <- this_object$`client_timestamp`
       self$`error` <- IntegrationLogClientError$new()$fromJSON(jsonlite::toJSON(this_object$`error`, auto_unbox = TRUE, digits = NA))
-      if (!is.null(this_object$`event_type`) && !(this_object$`event_type` %in% c("APP", "API"))) {
-        stop(paste("Error! \"", this_object$`event_type`, "\" cannot be assigned to `event_type`. Must be \"APP\", \"API\".", sep = ""))
-      }
-      self$`event_type` <- this_object$`event_type`
+      self$`event_type` <- IntegrationLogEventType$new()$fromJSON(jsonlite::toJSON(this_object$`event_type`, auto_unbox = TRUE, digits = NA))
       self$`external_business_id` <- this_object$`external_business_id`
       self$`feed_profile_id` <- this_object$`feed_profile_id`
-      if (!is.null(this_object$`log_level`) && !(this_object$`log_level` %in% c("INFO", "WARN", "ERROR"))) {
-        stop(paste("Error! \"", this_object$`log_level`, "\" cannot be assigned to `log_level`. Must be \"INFO\", \"WARN\", \"ERROR\".", sep = ""))
-      }
-      self$`log_level` <- this_object$`log_level`
+      self$`log_level` <- IntegrationLogLevel$new()$fromJSON(jsonlite::toJSON(this_object$`log_level`, auto_unbox = TRUE, digits = NA))
       self$`merchant_id` <- this_object$`merchant_id`
       self$`message` <- this_object$`message`
       self$`platform_version_number` <- this_object$`platform_version_number`
@@ -341,17 +352,13 @@ IntegrationLog <- R6::R6Class(
       }
       # check the required field `event_type`
       if (!is.null(input_json$`event_type`)) {
-        if (!(is.character(input_json$`event_type`) && length(input_json$`event_type`) == 1)) {
-          stop(paste("Error! Invalid data for `event_type`. Must be a string:", input_json$`event_type`))
-        }
+        stopifnot(R6::is.R6(input_json$`event_type`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for IntegrationLog: the required field `event_type` is missing."))
       }
       # check the required field `log_level`
       if (!is.null(input_json$`log_level`)) {
-        if (!(is.character(input_json$`log_level`) && length(input_json$`log_level`) == 1)) {
-          stop(paste("Error! Invalid data for `log_level`. Must be a string:", input_json$`log_level`))
-        }
+        stopifnot(R6::is.R6(input_json$`log_level`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for IntegrationLog: the required field `log_level` is missing."))
       }

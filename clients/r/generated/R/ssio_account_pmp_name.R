@@ -1,7 +1,7 @@
 #' Create a new SSIOAccountPMPName
 #'
 #' @description
-#' SSIOAccountPMPName Class
+#' Pinterest marketing partner name.
 #'
 #' @docType class
 #' @title SSIOAccountPMPName

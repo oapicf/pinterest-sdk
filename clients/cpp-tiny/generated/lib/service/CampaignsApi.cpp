@@ -10,9 +10,6 @@ using namespace Tiny;
         CampaignsApi::
         adPins_analytics(
             
-            std::string adAccountId
-            , 
-            
             std::string campaignId
             , 
             std::list<std::string> pinIds
@@ -24,20 +21,23 @@ using namespace Tiny;
             
             Date endDate
             , 
-            std::list<std::string> columns
+            std::list<ReportingColumnSync> columns
             
             , 
             
             Granularity granularity
             , 
             
-            int clickWindowDays
+            std::string adAccountId
             , 
             
-            int engagementWindowDays
+            long clickWindowDays
             , 
             
-            int viewWindowDays
+            long engagementWindowDays
+            , 
+            
+            long viewWindowDays
             , 
             
             std::string conversionReportTime
@@ -139,20 +139,20 @@ using namespace Tiny;
             std::list<AdsAnalyticsCampaignTargetingType> targetingTypes
             
             , 
-            std::list<std::string> columns
+            std::list<ReportingColumnSync> columns
             
             , 
             
             Granularity granularity
             , 
             
-            int clickWindowDays
+            long clickWindowDays
             , 
             
-            int engagementWindowDays
+            long engagementWindowDays
             , 
             
-            int viewWindowDays
+            long viewWindowDays
             , 
             
             std::string conversionReportTime
@@ -227,13 +227,10 @@ using namespace Tiny;
         }
 
         Response<
-            std::list<CampaignsAnalyticsResponse_inner>
+            std::list<CampaignsAnalyticsMetrics>
         >
         CampaignsApi::
         campaigns_analytics(
-            
-            std::string adAccountId
-            , 
             
             Date startDate
             , 
@@ -243,20 +240,23 @@ using namespace Tiny;
             std::list<std::string> campaignIds
             
             , 
-            std::list<std::string> columns
+            std::list<ReportingColumnSync> columns
             
             , 
             
             Granularity granularity
             , 
             
-            int clickWindowDays
+            std::string adAccountId
             , 
             
-            int engagementWindowDays
+            long clickWindowDays
             , 
             
-            int viewWindowDays
+            long engagementWindowDays
+            , 
+            
+            long viewWindowDays
             , 
             
             std::string conversionReportTime
@@ -317,7 +317,7 @@ using namespace Tiny;
 
 
 
-            std::list<CampaignsAnalyticsResponse_inner> obj = std::list<CampaignsAnalyticsResponse_inner>();
+            std::list<CampaignsAnalyticsMetrics> obj = std::list<CampaignsAnalyticsMetrics>();
             bourne::json jsonPayload(output_string);
 
 
@@ -330,7 +330,7 @@ using namespace Tiny;
             
             for(auto& var : jsonPayload.array_range())
             {
-                CampaignsAnalyticsResponse_inner tmp(var.dump());
+                CampaignsAnalyticsMetrics tmp(var.dump());
                 obj.push_back(tmp);
             }
             
@@ -341,19 +341,19 @@ using namespace Tiny;
 
 
 
-            Response<std::list<CampaignsAnalyticsResponse_inner>> response(obj, httpCode);
+            Response<std::list<CampaignsAnalyticsMetrics>> response(obj, httpCode);
             return response;
         }
 
         Response<
-            CampaignCreateResponse
+            CampaignBatchWriteResponseModel
         >
         CampaignsApi::
         campaigns_create(
             
             std::string adAccountId
             , 
-            std::list<CampaignCreateRequest> campaignCreateRequest
+            std::list<CampaignCreateItem> campaignCreateItem
             
             
         )
@@ -383,11 +383,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | campaignCreateRequest
+            // Body     | campaignCreateItem
 
 
             bourne::json tmp_arr = bourne::json::array();
-            for(auto& var : campaignCreateRequest)
+            for(auto& var : campaignCreateItem)
             {
                 auto tmp = var.toJson();
                 tmp_arr.append(tmp);
@@ -405,27 +405,27 @@ using namespace Tiny;
 
 
 
-            CampaignCreateResponse obj(output_string);
+            CampaignBatchWriteResponseModel obj(output_string);
 
 
-            Response<CampaignCreateResponse> response(obj, httpCode);
+            Response<CampaignBatchWriteResponseModel> response(obj, httpCode);
             return response;
         }
 
         Response<
-            CampaignResponse
+            Campaign
         >
         CampaignsApi::
         campaigns_get(
             
-            std::string adAccountId
+            std::string campaignId
             , 
             
-            std::string campaignId
+            std::string adAccountId
             
         )
         {
-            std::string url = basepath + "/ad_accounts/{ad_account_id}/campaigns/{campaign_id}"; //adAccountId campaignId 
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/campaigns/{campaign_id}"; //campaignId adAccountId 
 
 
             // Headers  | 
@@ -436,14 +436,6 @@ using namespace Tiny;
 
 
 
-                std::string s_adAccountId("{");
-                s_adAccountId.append("ad_account_id");
-                s_adAccountId.append("}");
-
-                int pos = url.find(s_adAccountId);
-
-                url.erase(pos, s_adAccountId.length());
-                url.insert(pos, stringify(adAccountId));
                 std::string s_campaignId("{");
                 s_campaignId.append("campaign_id");
                 s_campaignId.append("}");
@@ -452,6 +444,14 @@ using namespace Tiny;
 
                 url.erase(pos, s_campaignId.length());
                 url.insert(pos, stringify(campaignId));
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
 
 
             std::string payload = "";
@@ -467,10 +467,10 @@ using namespace Tiny;
 
 
 
-            CampaignResponse obj(output_string);
+            Campaign obj(output_string);
 
 
-            Response<CampaignResponse> response(obj, httpCode);
+            Response<Campaign> response(obj, httpCode);
             return response;
         }
 
@@ -482,20 +482,20 @@ using namespace Tiny;
             
             std::string adAccountId
             , 
-            std::list<std::string> campaignIds
             
-            , 
-            std::list<std::string> entityStatuses
-            
+            std::string bookmark
             , 
             
             int pageSize
             , 
             
-            std::string order
+            Pinterest.Lib.PaginationOrder order
             , 
+            std::list<std::string> campaignIds
             
-            std::string bookmark
+            , 
+            std::list<EntityStatus> entityStatuses
+            
             
         )
         {
@@ -504,16 +504,16 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | campaignIds entityStatuses pageSize order bookmark 
+            // Query    | bookmark pageSize order campaignIds entityStatuses 
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
+            addQueryParam("order",order);
             for (auto &x : campaignIds){
                 addQueryParam("campaign_ids", std::string(x));
             }
             for (auto &x : entityStatuses){
                 addQueryParam("entity_statuses", std::string(x));
             }
-            addQueryParam("page_size",pageSize);
-            addQueryParam("order",order);
-            addQueryParam("bookmark",bookmark);
 
             // Form     | 
 
@@ -550,14 +550,14 @@ using namespace Tiny;
         }
 
         Response<
-            CampaignUpdateResponse
+            CampaignBatchWriteResponseModel
         >
         CampaignsApi::
         campaigns_update(
             
             std::string adAccountId
             , 
-            std::list<CampaignUpdateRequest> campaignUpdateRequest
+            std::list<CampaignBatchUpdateItem> campaignBatchUpdateItem
             
             
         )
@@ -587,11 +587,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | campaignUpdateRequest
+            // Body     | campaignBatchUpdateItem
 
 
             bourne::json tmp_arr = bourne::json::array();
-            for(auto& var : campaignUpdateRequest)
+            for(auto& var : campaignBatchUpdateItem)
             {
                 auto tmp = var.toJson();
                 tmp_arr.append(tmp);
@@ -609,10 +609,77 @@ using namespace Tiny;
 
 
 
-            CampaignUpdateResponse obj(output_string);
+            CampaignBatchWriteResponseModel obj(output_string);
 
 
-            Response<CampaignUpdateResponse> response(obj, httpCode);
+            Response<CampaignBatchWriteResponseModel> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            CampaignDeliveryEstimatesResponse
+        >
+        CampaignsApi::
+        getCampaignDeliveryEstimates(
+            
+            std::string adAccountId
+            , 
+            std::list<CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign
+            
+            
+        )
+        {
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/campaigns/delivery_estimates"; //adAccountId 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+            addHeader("Content-Type", "application/json");
+
+
+
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | POST
+            // Body     | campaignDeliveryEstimatesCampaign
+
+
+            bourne::json tmp_arr = bourne::json::array();
+            for(auto& var : campaignDeliveryEstimatesCampaign)
+            {
+                auto tmp = var.toJson();
+                tmp_arr.append(tmp);
+
+            }
+            payload = tmp_arr.dump();
+
+
+            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            CampaignDeliveryEstimatesResponse obj(output_string);
+
+
+            Response<CampaignDeliveryEstimatesResponse> response(obj, httpCode);
             return response;
         }
 

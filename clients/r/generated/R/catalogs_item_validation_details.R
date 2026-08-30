@@ -7,7 +7,7 @@
 #' @title CatalogsItemValidationDetails
 #' @description CatalogsItemValidationDetails Class
 #' @format An \code{R6Class} generator object
-#' @field attribute_name  \link{NullableCatalogsItemFieldType}
+#' @field attribute_name Attribute that has a validation issue. \link{NullableCatalogsItemFieldType}
 #' @field provided_value Provided value that caused the validation issue. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -21,7 +21,7 @@ CatalogsItemValidationDetails <- R6::R6Class(
     #' @description
     #' Initialize a new CatalogsItemValidationDetails class.
     #'
-    #' @param attribute_name attribute_name
+    #' @param attribute_name Attribute that has a validation issue.
     #' @param provided_value Provided value that caused the validation issue.
     #' @param ... Other optional arguments.
     initialize = function(`attribute_name`, `provided_value`, ...) {
@@ -73,13 +73,36 @@ CatalogsItemValidationDetails <- R6::R6Class(
       CatalogsItemValidationDetailsObject <- list()
       if (!is.null(self$`attribute_name`)) {
         CatalogsItemValidationDetailsObject[["attribute_name"]] <-
-          self$`attribute_name`$toSimpleType()
+          self$extractSimpleType(self$`attribute_name`)
       }
       if (!is.null(self$`provided_value`)) {
         CatalogsItemValidationDetailsObject[["provided_value"]] <-
           self$`provided_value`
       }
       return(CatalogsItemValidationDetailsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -1,17 +1,17 @@
 #tag Class
 Protected Class AudiencesApi
 	#tag Method, Flags = &h0
-		Sub AudiencesCreate(, adAccountId As String, audienceCreateRequest As OpenAPIClient.Models.AudienceCreateRequest)
+		Sub AudiencesCreate(, adAccountId As String, adAccountsAudienceCreate As OpenAPIClient.Models.AdAccountsAudienceCreate)
 		  // Operation audiences/create
 		  // Create audience
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter audienceCreateRequest: (body) List of ads to create, size limit [1, 30] 
+		  // - parameter adAccountsAudienceCreate: (body)  
 		  //
-		  // Invokes AudiencesApiCallbackHandler.AudiencesCreateCallback(Audience) on completion. 
+		  // Invokes AudiencesApiCallbackHandler.AudiencesCreateCallback(AdAccountsAudience) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/audiences
-		  // - Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href="/docs/work-with-targets-and-audiences/create-audiences/" target="_blank">creating different kinds of audiences</a>.
+		  // - Create a new audience for the ad account.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -21,7 +21,7 @@ Protected Class AudiencesApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(audienceCreateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adAccountsAudienceCreate), "application/json")
 		  
 		  
 		  
@@ -48,7 +48,7 @@ Protected Class AudiencesApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AudiencesCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.Audience) As Boolean
+		Private Function AudiencesCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdAccountsAudience) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -56,7 +56,7 @@ Protected Class AudiencesApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.Audience
+			  outData = New OpenAPIClient.Models.AdAccountsAudience
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -109,7 +109,7 @@ Protected Class AudiencesApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.Audience
+		  Dim data As OpenAPIClient.Models.AdAccountsAudience
 		  CallbackHandler.AudiencesCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -123,7 +123,7 @@ Protected Class AudiencesApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.Audience
+		  Dim data As OpenAPIClient.Models.AdAccountsAudience
 		  Call AudiencesCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AudiencesCreateCallback(error, data)
@@ -134,14 +134,14 @@ Protected Class AudiencesApi
 
 
 	#tag Method, Flags = &h0
-		Sub AudiencesGet(, adAccountId As String, audienceId As String)
+		Sub AudiencesGet(, audienceId As String, adAccountId As String)
 		  // Operation audiences/get
 		  // Get audience
 		  // - 
+		  // - parameter audienceId: (path) Audience ID. 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter audienceId: (path) Unique identifier of an audience 
 		  //
-		  // Invokes AudiencesApiCallbackHandler.AudiencesGetCallback(Audience) on completion. 
+		  // Invokes AudiencesApiCallbackHandler.AudiencesGetCallback(AdAccountsAudience) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/audiences/{audience_id}
 		  // - Get a specific audience given the audience ID.
@@ -166,12 +166,12 @@ Protected Class AudiencesApi
 
 		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/audiences/{audience_id}"
 		  
-		  Dim localVarPathStringadAccountId As String = adAccountId
-		  
-		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  Dim localVarPathStringaudienceId As String = audienceId
 		  
 		  localVarPath = localVarPath.ReplaceAllB("{audience_id}", localVarPathStringaudienceId)
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  
 		  
 		  AddHandler localVarHTTPSocket.PageReceived, addressof me.AudiencesGet_handler
@@ -188,7 +188,7 @@ Protected Class AudiencesApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AudiencesGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.Audience) As Boolean
+		Private Function AudiencesGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdAccountsAudience) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -196,7 +196,7 @@ Protected Class AudiencesApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.Audience
+			  outData = New OpenAPIClient.Models.AdAccountsAudience
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -249,7 +249,7 @@ Protected Class AudiencesApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.Audience
+		  Dim data As OpenAPIClient.Models.AdAccountsAudience
 		  CallbackHandler.AudiencesGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -263,7 +263,7 @@ Protected Class AudiencesApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.Audience
+		  Dim data As OpenAPIClient.Models.AdAccountsAudience
 		  Call AudiencesGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AudiencesGetCallback(error, data)
@@ -274,15 +274,16 @@ Protected Class AudiencesApi
 
 
 	#tag Method, Flags = &h0
-		Sub AudiencesList(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, order As OrderEnum_AudiencesList, Optional pageSize As Xoson.O.OptionalInteger, ownershipType As Ownership_typeEnum_AudiencesList)
+		Sub AudiencesList(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, order As OpenAPIClient.Models.PinterestLibPaginationOrderOptional, ownershipType As OpenAPIClient.Models.AudienceOwnershipTypeOptional, Optional excludeNca As Xoson.O.OptionalBoolean)
 		  // Operation audiences/list
 		  // List audiences
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter ownershipType: (query) Filter audiences by ownership type. (optional, default to OWNED)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+		  // - parameter order: (query) The order in which to sort the items returned: &quot;ASCENDING&quot; or &quot;DESCENDING&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Nil)
+		  // - parameter ownershipType: (query)  (optional, default to Nil)
+		  // - parameter excludeNca: (query) When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional, default to false)
 		  //
 		  // Invokes AudiencesApiCallbackHandler.AudiencesListCallback(AudiencesList200Response) on completion. 
 		  //
@@ -304,11 +305,13 @@ Protected Class AudiencesApi
 		  Dim localVarQueryParams As String = "?"
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(OrderEnum_AudiencesListToString(order))
-		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ownership_type") + "=" + EncodeURLComponent(Ownership_typeEnum_AudiencesListToString(ownershipType))
+		  If order <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(Xoson.toJSON(order))
+		  
+		  If ownershipType <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ownership_type") + "=" + EncodeURLComponent(Xoson.toJSON(ownershipType))
+		  
+		  If excludeNca <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("exclude_nca") + "=" + EncodeURLComponent(excludeNca.ToString)
 		  
 
 		  
@@ -421,46 +424,20 @@ Protected Class AudiencesApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function OrderEnum_AudiencesListToString(value As OrderEnum_AudiencesList) As String
-		  Select Case value
-		    
-		    Case OrderEnum_AudiencesList.Ascending
-		      Return "ASCENDING"
-		    Case OrderEnum_AudiencesList.Descending
-		      Return "DESCENDING"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h21
-		Private Function Ownership_typeEnum_AudiencesListToString(value As Ownership_typeEnum_AudiencesList) As String
-		  Select Case value
-		    
-		    Case Ownership_typeEnum_AudiencesList.Owned
-		      Return "OWNED"
-		    Case Ownership_typeEnum_AudiencesList.Received
-		      Return "RECEIVED"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AudiencesUpdate(, adAccountId As String, audienceId As String, audienceUpdateRequest As OpenAPIClient.Models.AudienceUpdateRequest)
+		Sub AudiencesUpdate(, audienceId As String, adAccountId As String, adAccountsAudienceUpdate As OpenAPIClient.Models.AdAccountsAudienceUpdate)
 		  // Operation audiences/update
 		  // Update audience
 		  // - 
+		  // - parameter audienceId: (path) Audience ID. 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter audienceId: (path) Unique identifier of an audience 
-		  // - parameter audienceUpdateRequest: (body) The audience to be updated. 
+		  // - parameter adAccountsAudienceUpdate: (body)  
 		  //
-		  // Invokes AudiencesApiCallbackHandler.AudiencesUpdateCallback(Audience) on completion. 
+		  // Invokes AudiencesApiCallbackHandler.AudiencesUpdateCallback(AdAccountsAudience) on completion. 
 		  //
 		  // - PATCH /ad_accounts/{ad_account_id}/audiences/{audience_id}
-		  // - Update (edit or remove) an existing targeting audience.
+		  // - Update an existing audience for the ad account.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -470,7 +447,7 @@ Protected Class AudiencesApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(audienceUpdateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(adAccountsAudienceUpdate), "application/json")
 		  
 		  
 		  
@@ -478,12 +455,12 @@ Protected Class AudiencesApi
 
 		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/audiences/{audience_id}"
 		  
-		  Dim localVarPathStringadAccountId As String = adAccountId
-		  
-		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  Dim localVarPathStringaudienceId As String = audienceId
 		  
 		  localVarPath = localVarPath.ReplaceAllB("{audience_id}", localVarPathStringaudienceId)
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  
 		  
 		  AddHandler localVarHTTPSocket.PageReceived, addressof me.AudiencesUpdate_handler
@@ -500,7 +477,7 @@ Protected Class AudiencesApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AudiencesUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.Audience) As Boolean
+		Private Function AudiencesUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AdAccountsAudience) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -508,7 +485,7 @@ Protected Class AudiencesApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.Audience
+			  outData = New OpenAPIClient.Models.AdAccountsAudience
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -561,7 +538,7 @@ Protected Class AudiencesApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.Audience
+		  Dim data As OpenAPIClient.Models.AdAccountsAudience
 		  CallbackHandler.AudiencesUpdateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -575,7 +552,7 @@ Protected Class AudiencesApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.Audience
+		  Dim data As OpenAPIClient.Models.AdAccountsAudience
 		  Call AudiencesUpdatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AudiencesUpdateCallback(error, data)
@@ -660,20 +637,6 @@ Protected Class AudiencesApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = OrderEnum_AudiencesList, Type = Integer, Flags = &h0
-		
-        Ascending
-        Descending
-		
-	#tag EndEnum
-
-	#tag Enum, Name = Ownership_typeEnum_AudiencesList, Type = Integer, Flags = &h0
-		
-        Owned
-        Received
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

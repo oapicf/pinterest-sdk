@@ -6,8 +6,8 @@ using namespace Tiny;
 
 AdvancedAuctionItemsGetRequest::AdvancedAuctionItemsGetRequest()
 {
-	catalog_id = std::string();
-	items = std::list<AdvancedAuctionItemsGetRecord>();
+	catalog_id = null;
+	items = std::list<AdvancedAuctionKey>();
 }
 
 AdvancedAuctionItemsGetRequest::AdvancedAuctionItemsGetRequest(std::string jsonString)
@@ -45,8 +45,8 @@ AdvancedAuctionItemsGetRequest::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<AdvancedAuctionItemsGetRecord> items_list;
-        AdvancedAuctionItemsGetRecord element;
+        std::list<AdvancedAuctionKey> items_list;
+        AdvancedAuctionKey element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ AdvancedAuctionItemsGetRequest::toJson()
 
 
 
-    std::list<AdvancedAuctionItemsGetRecord> items_list = getItems();
+    std::list<AdvancedAuctionKey> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        AdvancedAuctionItemsGetRecord obj = var;
+        AdvancedAuctionKey obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ AdvancedAuctionItemsGetRequest::getCatalogId()
 }
 
 void
-AdvancedAuctionItemsGetRequest::setCatalogId(std::string  catalog_id)
+AdvancedAuctionItemsGetRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
 
-std::list<AdvancedAuctionItemsGetRecord>
+std::list<AdvancedAuctionKey>
 AdvancedAuctionItemsGetRequest::getItems()
 {
 	return items;
 }
 
 void
-AdvancedAuctionItemsGetRequest::setItems(std::list <AdvancedAuctionItemsGetRecord> items)
+AdvancedAuctionItemsGetRequest::setItems(std::list<AdvancedAuctionKey> items)
 {
 	this->items = items;
 }

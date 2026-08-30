@@ -51,14 +51,14 @@ static gpointer __BillingManagerthreadFunc(gpointer data)
 static bool adsCreditRedeemProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(AdsCreditRedeemResponse, Error, void* )
-	= reinterpret_cast<void(*)(AdsCreditRedeemResponse, Error, void* )> (voidHandler);
+	void(* handler)(AdsCreditRedeem, Error, void* )
+	= reinterpret_cast<void(*)(AdsCreditRedeem, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	AdsCreditRedeemResponse out;
+	AdsCreditRedeem out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,43 @@ static bool adsCreditRedeemProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("AdsCreditRedeemResponse")) {
+		if (isprimitive("AdsCreditRedeem")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "AdsCreditRedeemResponse", "AdsCreditRedeemResponse");
+			jsonToValue(&out, pJson, "AdsCreditRedeem", "AdsCreditRedeem");
 			json_node_free(pJson);
 
-			if ("AdsCreditRedeemResponse" == "std::string") {
+			if ("AdsCreditRedeem" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -114,8 +139,8 @@ static bool adsCreditRedeemProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool adsCreditRedeemHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AdsCreditRedeemRequest> adsCreditRedeemRequest, 
-	void(* handler)(AdsCreditRedeemResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdsCreditRedeemCreate> adsCreditRedeemCreate, 
+	void(* handler)(AdsCreditRedeem, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -135,11 +160,11 @@ static bool adsCreditRedeemHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("AdsCreditRedeemRequest")) {
-		node = converttoJson(&adsCreditRedeemRequest, "AdsCreditRedeemRequest", "");
+	if (isprimitive("AdsCreditRedeemCreate")) {
+		node = converttoJson(&adsCreditRedeemCreate, "AdsCreditRedeemCreate", "");
 	}
 	
-	char *jsonStr =  adsCreditRedeemRequest.toJson();
+	char *jsonStr =  adsCreditRedeemCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -204,22 +229,22 @@ static bool adsCreditRedeemHelper(char * accessToken,
 
 
 bool BillingManager::adsCreditRedeemAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AdsCreditRedeemRequest> adsCreditRedeemRequest, 
-	void(* handler)(AdsCreditRedeemResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdsCreditRedeemCreate> adsCreditRedeemCreate, 
+	void(* handler)(AdsCreditRedeem, Error, void* )
 	, void* userData)
 {
 	return adsCreditRedeemHelper(accessToken,
-	adAccountId, adsCreditRedeemRequest, 
+	adAccountId, adsCreditRedeemCreate, 
 	handler, userData, true);
 }
 
 bool BillingManager::adsCreditRedeemSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<AdsCreditRedeemRequest> adsCreditRedeemRequest, 
-	void(* handler)(AdsCreditRedeemResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdsCreditRedeemCreate> adsCreditRedeemCreate, 
+	void(* handler)(AdsCreditRedeem, Error, void* )
 	, void* userData)
 {
 	return adsCreditRedeemHelper(accessToken,
-	adAccountId, adsCreditRedeemRequest, 
+	adAccountId, adsCreditRedeemCreate, 
 	handler, userData, false);
 }
 
@@ -253,6 +278,31 @@ static bool adsCreditsDiscountsGetProcessor(MemoryStruct_s p_chunk, long code, c
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -440,6 +490,26 @@ static bool billingInvoiceDownloadGetProcessor(MemoryStruct_s p_chunk, long code
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -608,6 +678,26 @@ static bool billingInvoicesGetProcessor(MemoryStruct_s p_chunk, long code, char*
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -628,7 +718,7 @@ static bool billingInvoicesGetProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool billingInvoicesGetHelper(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string sort, std::string order, std::string status, std::string documentType, Date startDueDate, Date endDueDate, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, Date startDueDate, Date endDueDate, 
 	void(* handler)(Billing_invoices_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -660,28 +750,28 @@ static bool billingInvoicesGetHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&sort, "std::string");
-	queryParams.insert(pair<string, string>("sort", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("sort");
-	}
-
-
-	itemAtq = stringify(&order, "std::string");
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
 	queryParams.insert(pair<string, string>("order", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("order");
 	}
 
 
-	itemAtq = stringify(&status, "std::string");
+	itemAtq = stringify(&sort, "BillingInvoiceSortField");
+	queryParams.insert(pair<string, string>("sort", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("sort");
+	}
+
+
+	itemAtq = stringify(&status, "BillingInvoiceStatus");
 	queryParams.insert(pair<string, string>("status", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("status");
 	}
 
 
-	itemAtq = stringify(&documentType, "std::string");
+	itemAtq = stringify(&documentType, "BillingInvoiceDocumentType");
 	queryParams.insert(pair<string, string>("document_type", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("document_type");
@@ -761,22 +851,22 @@ static bool billingInvoicesGetHelper(char * accessToken,
 
 
 bool BillingManager::billingInvoicesGetAsync(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string sort, std::string order, std::string status, std::string documentType, Date startDueDate, Date endDueDate, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, Date startDueDate, Date endDueDate, 
 	void(* handler)(Billing_invoices_get_200_response, Error, void* )
 	, void* userData)
 {
 	return billingInvoicesGetHelper(accessToken,
-	adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate, 
+	adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate, 
 	handler, userData, true);
 }
 
 bool BillingManager::billingInvoicesGetSync(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string sort, std::string order, std::string status, std::string documentType, Date startDueDate, Date endDueDate, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, Date startDueDate, Date endDueDate, 
 	void(* handler)(Billing_invoices_get_200_response, Error, void* )
 	, void* userData)
 {
 	return billingInvoicesGetHelper(accessToken,
-	adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate, 
+	adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate, 
 	handler, userData, false);
 }
 
@@ -821,6 +911,31 @@ static bool billingProfilesGetProcessor(MemoryStruct_s p_chunk, long code, char*
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -841,7 +956,7 @@ static bool billingProfilesGetProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool billingProfilesGetHelper(char * accessToken,
-	std::string adAccountId, bool isActive, std::string bookmark, int pageSize, 
+	bool isActive, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Billing_profiles_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -936,36 +1051,36 @@ static bool billingProfilesGetHelper(char * accessToken,
 
 
 bool BillingManager::billingProfilesGetAsync(char * accessToken,
-	std::string adAccountId, bool isActive, std::string bookmark, int pageSize, 
+	bool isActive, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Billing_profiles_get_200_response, Error, void* )
 	, void* userData)
 {
 	return billingProfilesGetHelper(accessToken,
-	adAccountId, isActive, bookmark, pageSize, 
+	isActive, adAccountId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool BillingManager::billingProfilesGetSync(char * accessToken,
-	std::string adAccountId, bool isActive, std::string bookmark, int pageSize, 
+	bool isActive, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Billing_profiles_get_200_response, Error, void* )
 	, void* userData)
 {
 	return billingProfilesGetHelper(accessToken,
-	adAccountId, isActive, bookmark, pageSize, 
+	isActive, adAccountId, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool ssioAccountsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(SSIOAccountResponse, Error, void* )
-	= reinterpret_cast<void(*)(SSIOAccountResponse, Error, void* )> (voidHandler);
+	void(* handler)(SSIOAccount, Error, void* )
+	= reinterpret_cast<void(*)(SSIOAccount, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	SSIOAccountResponse out;
+	SSIOAccount out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -973,18 +1088,38 @@ static bool ssioAccountsGetProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("SSIOAccountResponse")) {
+		if (isprimitive("SSIOAccount")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "SSIOAccountResponse", "SSIOAccountResponse");
+			jsonToValue(&out, pJson, "SSIOAccount", "SSIOAccount");
 			json_node_free(pJson);
 
-			if ("SSIOAccountResponse" == "std::string") {
+			if ("SSIOAccount" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1022,7 +1157,7 @@ static bool ssioAccountsGetProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 static bool ssioAccountsGetHelper(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(SSIOAccountResponse, Error, void* )
+	void(* handler)(SSIOAccount, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1099,7 +1234,7 @@ static bool ssioAccountsGetHelper(char * accessToken,
 
 bool BillingManager::ssioAccountsGetAsync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(SSIOAccountResponse, Error, void* )
+	void(* handler)(SSIOAccount, Error, void* )
 	, void* userData)
 {
 	return ssioAccountsGetHelper(accessToken,
@@ -1109,7 +1244,7 @@ bool BillingManager::ssioAccountsGetAsync(char * accessToken,
 
 bool BillingManager::ssioAccountsGetSync(char * accessToken,
 	std::string adAccountId, 
-	void(* handler)(SSIOAccountResponse, Error, void* )
+	void(* handler)(SSIOAccount, Error, void* )
 	, void* userData)
 {
 	return ssioAccountsGetHelper(accessToken,
@@ -1120,14 +1255,14 @@ bool BillingManager::ssioAccountsGetSync(char * accessToken,
 static bool ssioInsertionOrderCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(SSIOCreateInsertionOrderResponse, Error, void* )
-	= reinterpret_cast<void(*)(SSIOCreateInsertionOrderResponse, Error, void* )> (voidHandler);
+	void(* handler)(SSIOInsertionOrder, Error, void* )
+	= reinterpret_cast<void(*)(SSIOInsertionOrder, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	SSIOCreateInsertionOrderResponse out;
+	SSIOInsertionOrder out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1135,18 +1270,43 @@ static bool ssioInsertionOrderCreateProcessor(MemoryStruct_s p_chunk, long code,
 
 
 
-		if (isprimitive("SSIOCreateInsertionOrderResponse")) {
+		if (isprimitive("SSIOInsertionOrder")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "SSIOCreateInsertionOrderResponse", "SSIOCreateInsertionOrderResponse");
+			jsonToValue(&out, pJson, "SSIOInsertionOrder", "SSIOInsertionOrder");
 			json_node_free(pJson);
 
-			if ("SSIOCreateInsertionOrderResponse" == "std::string") {
+			if ("SSIOInsertionOrder" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1183,8 +1343,8 @@ static bool ssioInsertionOrderCreateProcessor(MemoryStruct_s p_chunk, long code,
 }
 
 static bool ssioInsertionOrderCreateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<SSIOCreateInsertionOrderRequest> sSIOCreateInsertionOrderRequest, 
-	void(* handler)(SSIOCreateInsertionOrderResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<SSIOInsertionOrderCreate> sSIOInsertionOrderCreate, 
+	void(* handler)(SSIOInsertionOrder, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1204,11 +1364,11 @@ static bool ssioInsertionOrderCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("SSIOCreateInsertionOrderRequest")) {
-		node = converttoJson(&sSIOCreateInsertionOrderRequest, "SSIOCreateInsertionOrderRequest", "");
+	if (isprimitive("SSIOInsertionOrderCreate")) {
+		node = converttoJson(&sSIOInsertionOrderCreate, "SSIOInsertionOrderCreate", "");
 	}
 	
-	char *jsonStr =  sSIOCreateInsertionOrderRequest.toJson();
+	char *jsonStr =  sSIOInsertionOrderCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1273,36 +1433,36 @@ static bool ssioInsertionOrderCreateHelper(char * accessToken,
 
 
 bool BillingManager::ssioInsertionOrderCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<SSIOCreateInsertionOrderRequest> sSIOCreateInsertionOrderRequest, 
-	void(* handler)(SSIOCreateInsertionOrderResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<SSIOInsertionOrderCreate> sSIOInsertionOrderCreate, 
+	void(* handler)(SSIOInsertionOrder, Error, void* )
 	, void* userData)
 {
 	return ssioInsertionOrderCreateHelper(accessToken,
-	adAccountId, sSIOCreateInsertionOrderRequest, 
+	adAccountId, sSIOInsertionOrderCreate, 
 	handler, userData, true);
 }
 
 bool BillingManager::ssioInsertionOrderCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<SSIOCreateInsertionOrderRequest> sSIOCreateInsertionOrderRequest, 
-	void(* handler)(SSIOCreateInsertionOrderResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<SSIOInsertionOrderCreate> sSIOInsertionOrderCreate, 
+	void(* handler)(SSIOInsertionOrder, Error, void* )
 	, void* userData)
 {
 	return ssioInsertionOrderCreateHelper(accessToken,
-	adAccountId, sSIOCreateInsertionOrderRequest, 
+	adAccountId, sSIOInsertionOrderCreate, 
 	handler, userData, false);
 }
 
 static bool ssioInsertionOrderEditProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(SSIOEditInsertionOrderResponse, Error, void* )
-	= reinterpret_cast<void(*)(SSIOEditInsertionOrderResponse, Error, void* )> (voidHandler);
+	void(* handler)(SSIOInsertionOrder, Error, void* )
+	= reinterpret_cast<void(*)(SSIOInsertionOrder, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	SSIOEditInsertionOrderResponse out;
+	SSIOInsertionOrder out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1310,18 +1470,38 @@ static bool ssioInsertionOrderEditProcessor(MemoryStruct_s p_chunk, long code, c
 
 
 
-		if (isprimitive("SSIOEditInsertionOrderResponse")) {
+		if (isprimitive("SSIOInsertionOrder")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "SSIOEditInsertionOrderResponse", "SSIOEditInsertionOrderResponse");
+			jsonToValue(&out, pJson, "SSIOInsertionOrder", "SSIOInsertionOrder");
 			json_node_free(pJson);
 
-			if ("SSIOEditInsertionOrderResponse" == "std::string") {
+			if ("SSIOInsertionOrder" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1358,8 +1538,8 @@ static bool ssioInsertionOrderEditProcessor(MemoryStruct_s p_chunk, long code, c
 }
 
 static bool ssioInsertionOrderEditHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<SSIOEditInsertionOrderRequest> sSIOEditInsertionOrderRequest, 
-	void(* handler)(SSIOEditInsertionOrderResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<SSIOInsertionOrderUpdate> sSIOInsertionOrderUpdate, 
+	void(* handler)(SSIOInsertionOrder, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1379,11 +1559,11 @@ static bool ssioInsertionOrderEditHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("SSIOEditInsertionOrderRequest")) {
-		node = converttoJson(&sSIOEditInsertionOrderRequest, "SSIOEditInsertionOrderRequest", "");
+	if (isprimitive("SSIOInsertionOrderUpdate")) {
+		node = converttoJson(&sSIOInsertionOrderUpdate, "SSIOInsertionOrderUpdate", "");
 	}
 	
-	char *jsonStr =  sSIOEditInsertionOrderRequest.toJson();
+	char *jsonStr =  sSIOInsertionOrderUpdate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1448,22 +1628,22 @@ static bool ssioInsertionOrderEditHelper(char * accessToken,
 
 
 bool BillingManager::ssioInsertionOrderEditAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<SSIOEditInsertionOrderRequest> sSIOEditInsertionOrderRequest, 
-	void(* handler)(SSIOEditInsertionOrderResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<SSIOInsertionOrderUpdate> sSIOInsertionOrderUpdate, 
+	void(* handler)(SSIOInsertionOrder, Error, void* )
 	, void* userData)
 {
 	return ssioInsertionOrderEditHelper(accessToken,
-	adAccountId, sSIOEditInsertionOrderRequest, 
+	adAccountId, sSIOInsertionOrderUpdate, 
 	handler, userData, true);
 }
 
 bool BillingManager::ssioInsertionOrderEditSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<SSIOEditInsertionOrderRequest> sSIOEditInsertionOrderRequest, 
-	void(* handler)(SSIOEditInsertionOrderResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<SSIOInsertionOrderUpdate> sSIOInsertionOrderUpdate, 
+	void(* handler)(SSIOInsertionOrder, Error, void* )
 	, void* userData)
 {
 	return ssioInsertionOrderEditHelper(accessToken,
-	adAccountId, sSIOEditInsertionOrderRequest, 
+	adAccountId, sSIOInsertionOrderUpdate, 
 	handler, userData, false);
 }
 
@@ -1497,6 +1677,26 @@ static bool ssioInsertionOrdersStatusGetByAdAccountProcessor(MemoryStruct_s p_ch
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1689,6 +1889,26 @@ static bool ssioInsertionOrdersStatusGetByPinOrderIdProcessor(MemoryStruct_s p_c
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1857,6 +2077,26 @@ static bool ssioOrderLinesGetByAdAccountProcessor(MemoryStruct_s p_chunk, long c
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1877,7 +2117,7 @@ static bool ssioOrderLinesGetByAdAccountProcessor(MemoryStruct_s p_chunk, long c
 }
 
 static bool ssioOrderLinesGetByAdAccountHelper(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string pinOrderId, 
+	std::string adAccountId, std::string pinOrderId, std::string bookmark, int pageSize, 
 	void(* handler)(Ssio_order_lines_get_by_ad_account_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1895,6 +2135,13 @@ static bool ssioOrderLinesGetByAdAccountHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&pinOrderId, "std::string");
+	queryParams.insert(pair<string, string>("pin_order_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("pin_order_id");
+	}
+
+
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
@@ -1906,13 +2153,6 @@ static bool ssioOrderLinesGetByAdAccountHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&pinOrderId, "std::string");
-	queryParams.insert(pair<string, string>("pin_order_id", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("pin_order_id");
 	}
 
 	string mBody = "";
@@ -1975,22 +2215,22 @@ static bool ssioOrderLinesGetByAdAccountHelper(char * accessToken,
 
 
 bool BillingManager::ssioOrderLinesGetByAdAccountAsync(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string pinOrderId, 
+	std::string adAccountId, std::string pinOrderId, std::string bookmark, int pageSize, 
 	void(* handler)(Ssio_order_lines_get_by_ad_account_200_response, Error, void* )
 	, void* userData)
 {
 	return ssioOrderLinesGetByAdAccountHelper(accessToken,
-	adAccountId, bookmark, pageSize, pinOrderId, 
+	adAccountId, pinOrderId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool BillingManager::ssioOrderLinesGetByAdAccountSync(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string pinOrderId, 
+	std::string adAccountId, std::string pinOrderId, std::string bookmark, int pageSize, 
 	void(* handler)(Ssio_order_lines_get_by_ad_account_200_response, Error, void* )
 	, void* userData)
 {
 	return ssioOrderLinesGetByAdAccountHelper(accessToken,
-	adAccountId, bookmark, pageSize, pinOrderId, 
+	adAccountId, pinOrderId, bookmark, pageSize, 
 	handler, userData, false);
 }
 

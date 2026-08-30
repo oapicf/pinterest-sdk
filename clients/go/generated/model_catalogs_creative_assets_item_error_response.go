@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,13 @@ var _ MappedNullable = &CatalogsCreativeAssetsItemErrorResponse{}
 
 // CatalogsCreativeAssetsItemErrorResponse Object describing a creative assets item error
 type CatalogsCreativeAssetsItemErrorResponse struct {
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 	// The catalog creative assets id in the merchant namespace
 	CreativeAssetsId *string `json:"creative_assets_id,omitempty"`
 	// Array with the errors for the item id requested
 	Errors []ItemValidationEvent `json:"errors"`
+	// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	ItemResponseKind string `json:"item_response_kind"`
 }
 
 type _CatalogsCreativeAssetsItemErrorResponse CatalogsCreativeAssetsItemErrorResponse
@@ -35,10 +37,11 @@ type _CatalogsCreativeAssetsItemErrorResponse CatalogsCreativeAssetsItemErrorRes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsItemErrorResponse(catalogType CatalogsType, errors []ItemValidationEvent) *CatalogsCreativeAssetsItemErrorResponse {
+func NewCatalogsCreativeAssetsItemErrorResponse(catalogType string, errors []ItemValidationEvent, itemResponseKind string) *CatalogsCreativeAssetsItemErrorResponse {
 	this := CatalogsCreativeAssetsItemErrorResponse{}
 	this.CatalogType = catalogType
 	this.Errors = errors
+	this.ItemResponseKind = itemResponseKind
 	return &this
 }
 
@@ -51,9 +54,9 @@ func NewCatalogsCreativeAssetsItemErrorResponseWithDefaults() *CatalogsCreativeA
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogType() CatalogsType {
+func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsType
+		var ret string
 		return ret
 	}
 
@@ -62,7 +65,7 @@ func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogType() CatalogsType 
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogTypeOk() (*CatalogsType, bool) {
+func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -70,7 +73,7 @@ func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogTypeOk() (*CatalogsT
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsCreativeAssetsItemErrorResponse) SetCatalogType(v CatalogsType) {
+func (o *CatalogsCreativeAssetsItemErrorResponse) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 
@@ -130,6 +133,30 @@ func (o *CatalogsCreativeAssetsItemErrorResponse) SetErrors(v []ItemValidationEv
 	o.Errors = v
 }
 
+// GetItemResponseKind returns the ItemResponseKind field value
+func (o *CatalogsCreativeAssetsItemErrorResponse) GetItemResponseKind() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ItemResponseKind
+}
+
+// GetItemResponseKindOk returns a tuple with the ItemResponseKind field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsItemErrorResponse) GetItemResponseKindOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ItemResponseKind, true
+}
+
+// SetItemResponseKind sets field value
+func (o *CatalogsCreativeAssetsItemErrorResponse) SetItemResponseKind(v string) {
+	o.ItemResponseKind = v
+}
+
 func (o CatalogsCreativeAssetsItemErrorResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -145,6 +172,7 @@ func (o CatalogsCreativeAssetsItemErrorResponse) ToMap() (map[string]interface{}
 		toSerialize["creative_assets_id"] = o.CreativeAssetsId
 	}
 	toSerialize["errors"] = o.Errors
+	toSerialize["item_response_kind"] = o.ItemResponseKind
 	return toSerialize, nil
 }
 
@@ -155,6 +183,7 @@ func (o *CatalogsCreativeAssetsItemErrorResponse) UnmarshalJSON(data []byte) (er
 	requiredProperties := []string{
 		"catalog_type",
 		"errors",
+		"item_response_kind",
 	}
 
 	allProperties := make(map[string]interface{})

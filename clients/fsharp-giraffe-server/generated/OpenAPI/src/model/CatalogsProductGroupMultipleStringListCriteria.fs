@@ -10,6 +10,6 @@ module CatalogsProductGroupMultipleStringListCriteria =
 
   type CatalogsProductGroupMultipleStringListCriteria = {
     Negated : bool;
-    Values : string[][];
+    Values : list[];
   }
   //#endregion

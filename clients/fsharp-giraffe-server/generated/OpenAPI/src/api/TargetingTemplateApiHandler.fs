@@ -7,11 +7,12 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open TargetingTemplateApiHandlerParams
 open TargetingTemplateApiServiceInterface
 open TargetingTemplateApiServiceImplementation
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.TargetingTemplate
 open OpenAPI.Model.TargetingTemplateCreate
-open OpenAPI.Model.TargetingTemplateGetResponseData
 open OpenAPI.Model.TargetingTemplateList200Response
-open OpenAPI.Model.TargetingTemplateUpdateRequest
+open OpenAPI.Model.TargetingTemplateUpdateRequestReadOrUpdate
 
 module TargetingTemplateApiHandler =
 
@@ -34,8 +35,18 @@ module TargetingTemplateApiHandler =
           return! (match result with
                       | TargetingTemplateCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | TargetingTemplateCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
                       | TargetingTemplateCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | TargetingTemplateCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | TargetingTemplateCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | TargetingTemplateCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | TargetingTemplateCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | TargetingTemplateCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -58,6 +69,14 @@ module TargetingTemplateApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | TargetingTemplateListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | TargetingTemplateListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | TargetingTemplateListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | TargetingTemplateListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | TargetingTemplateListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | TargetingTemplateListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -81,6 +100,14 @@ module TargetingTemplateApiHandler =
                             setStatusCode 200 >=> text resolved.content
                       | TargetingTemplateUpdateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | TargetingTemplateUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | TargetingTemplateUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | TargetingTemplateUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | TargetingTemplateUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | TargetingTemplateUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

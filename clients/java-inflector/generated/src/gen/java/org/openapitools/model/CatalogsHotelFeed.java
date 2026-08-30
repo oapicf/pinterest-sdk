@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 
 
@@ -21,22 +21,45 @@ import org.openapitools.model.NullableCurrency;
  **/
 
 @ApiModel(description = "Catalogs Hotel Feed object")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelFeed   {
-  @JsonProperty("created_at")
-  private Date createdAt;
-
-  @JsonProperty("id")
-  private String id;
-
-  @JsonProperty("updated_at")
-  private Date updatedAt;
-
   @JsonProperty("catalog_id")
   private String catalogId;
 
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    HOTEL("HOTEL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
+
+  @JsonProperty("created_at")
+  private Date createdAt;
 
   @JsonProperty("credentials")
   private CatalogsFeedCredentials credentials;
@@ -50,6 +73,9 @@ public class CatalogsHotelFeed   {
   @JsonProperty("format")
   private CatalogsFormat format;
 
+  @JsonProperty("id")
+  private String id;
+
   @JsonProperty("location")
   private String location;
 
@@ -62,56 +88,8 @@ public class CatalogsHotelFeed   {
   @JsonProperty("status")
   private CatalogsStatus status;
 
-  /**
-   **/
-  public CatalogsHotelFeed createdAt(Date createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
-  @JsonProperty("created_at")
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  /**
-   **/
-  public CatalogsHotelFeed id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   **/
-  public CatalogsHotelFeed updatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
+  private Date updatedAt;
 
   /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
@@ -133,7 +111,7 @@ public class CatalogsHotelFeed   {
 
   /**
    **/
-  public CatalogsHotelFeed catalogType(CatalogsType catalogType) {
+  public CatalogsHotelFeed catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -141,11 +119,28 @@ public class CatalogsHotelFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+  }
+
+  /**
+   **/
+  public CatalogsHotelFeed createdAt(Date createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("created_at")
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
   }
 
   /**
@@ -156,7 +151,7 @@ public class CatalogsHotelFeed   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("credentials")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -173,7 +168,7 @@ public class CatalogsHotelFeed   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("default_currency")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -191,7 +186,7 @@ public class CatalogsHotelFeed   {
   }
 
   
-  @ApiModelProperty(example = "en-US", required = true, value = "The locale used within a feed for product descriptions.")
+  @ApiModelProperty(required = true, value = "The locale used within a feed for product descriptions.")
   @JsonProperty("default_locale")
   public String getDefaultLocale() {
     return defaultLocale;
@@ -215,6 +210,24 @@ public class CatalogsHotelFeed   {
   }
   public void setFormat(CatalogsFormat format) {
     this.format = format;
+  }
+
+  /**
+   * ID of the feed entity.
+   **/
+  public CatalogsHotelFeed id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the feed entity.")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
   }
 
   /**
@@ -261,7 +274,7 @@ public class CatalogsHotelFeed   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("preferred_processing_schedule")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -287,6 +300,23 @@ public class CatalogsHotelFeed   {
     this.status = status;
   }
 
+  /**
+   **/
+  public CatalogsHotelFeed updatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("updated_at")
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -297,24 +327,24 @@ public class CatalogsHotelFeed   {
       return false;
     }
     CatalogsHotelFeed catalogsHotelFeed = (CatalogsHotelFeed) o;
-    return Objects.equals(createdAt, catalogsHotelFeed.createdAt) &&
-        Objects.equals(id, catalogsHotelFeed.id) &&
-        Objects.equals(updatedAt, catalogsHotelFeed.updatedAt) &&
-        Objects.equals(catalogId, catalogsHotelFeed.catalogId) &&
+    return Objects.equals(catalogId, catalogsHotelFeed.catalogId) &&
         Objects.equals(catalogType, catalogsHotelFeed.catalogType) &&
+        Objects.equals(createdAt, catalogsHotelFeed.createdAt) &&
         Objects.equals(credentials, catalogsHotelFeed.credentials) &&
         Objects.equals(defaultCurrency, catalogsHotelFeed.defaultCurrency) &&
         Objects.equals(defaultLocale, catalogsHotelFeed.defaultLocale) &&
         Objects.equals(format, catalogsHotelFeed.format) &&
+        Objects.equals(id, catalogsHotelFeed.id) &&
         Objects.equals(location, catalogsHotelFeed.location) &&
         Objects.equals(name, catalogsHotelFeed.name) &&
         Objects.equals(preferredProcessingSchedule, catalogsHotelFeed.preferredProcessingSchedule) &&
-        Objects.equals(status, catalogsHotelFeed.status);
+        Objects.equals(status, catalogsHotelFeed.status) &&
+        Objects.equals(updatedAt, catalogsHotelFeed.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, catalogId, catalogType, credentials, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
+    return Objects.hash(catalogId, catalogType, createdAt, credentials, defaultCurrency, defaultLocale, format, id, location, name, preferredProcessingSchedule, status, updatedAt);
   }
 
   @Override
@@ -322,19 +352,19 @@ public class CatalogsHotelFeed   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelFeed {\n");
     
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
     sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -344,10 +374,7 @@ public class CatalogsHotelFeed   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

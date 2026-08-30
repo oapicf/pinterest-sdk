@@ -74,7 +74,7 @@ class _$ConditionFilterSerializer implements PrimitiveSerializer<ConditionFilter
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringCriteria),
           ) as CatalogsProductGroupMultipleStringCriteria;
-          result.CONDITION = valueDes;
+          result.CONDITION.replace(valueDes);
           break;
         default:
           unhandled.add(key);

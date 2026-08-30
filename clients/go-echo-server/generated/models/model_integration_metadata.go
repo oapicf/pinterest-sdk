@@ -17,9 +17,10 @@ type IntegrationMetadata struct {
 
 	CreatedTimestamp float32 `json:"created_timestamp,omitempty"`
 
+	// External business ID for the integration.
 	ExternalBusinessId string `json:"external_business_id,omitempty"`
 
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
 	PartnerAccessTokenExpiry float32 `json:"partner_access_token_expiry,omitempty"`
 

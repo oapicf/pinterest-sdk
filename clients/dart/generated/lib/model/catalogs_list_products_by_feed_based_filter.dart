@@ -54,10 +54,10 @@ class CatalogsListProductsByFeedBasedFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsListProductsByFeedBasedFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsListProductsByFeedBasedFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'feed_id'), 'Required key "CatalogsListProductsByFeedBasedFilter[feed_id]" is missing from JSON.');
+        assert(json[r'feed_id'] != null, 'Required key "CatalogsListProductsByFeedBasedFilter[feed_id]" has a null value in JSON.');
+        assert(json.containsKey(r'filters'), 'Required key "CatalogsListProductsByFeedBasedFilter[filters]" is missing from JSON.');
+        assert(json[r'filters'] != null, 'Required key "CatalogsListProductsByFeedBasedFilter[filters]" has a null value in JSON.');
         return true;
       }());
 

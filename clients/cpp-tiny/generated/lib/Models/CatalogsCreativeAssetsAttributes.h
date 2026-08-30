@@ -12,6 +12,8 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "CatalogsAiContentDisclosure.h"
+#include <list>
 
 namespace Tiny {
 
@@ -51,98 +53,105 @@ public:
 
 	/*! \brief Set Link to the creative assets page.
 	 */
-	void setAndroidDeepLink(std::string  android_deep_link);
+	void setAndroidDeepLink(std::string android_deep_link);
 	/*! \brief Get Custom grouping of creative assets.
 	 */
 	std::string getCustomLabel0();
 
 	/*! \brief Set Custom grouping of creative assets.
 	 */
-	void setCustomLabel0(std::string  custom_label_0);
+	void setCustomLabel0(std::string custom_label_0);
 	/*! \brief Get Custom grouping of creative assets.
 	 */
 	std::string getCustomLabel1();
 
 	/*! \brief Set Custom grouping of creative assets.
 	 */
-	void setCustomLabel1(std::string  custom_label_1);
+	void setCustomLabel1(std::string custom_label_1);
 	/*! \brief Get Custom grouping of creative assets.
 	 */
 	std::string getCustomLabel2();
 
 	/*! \brief Set Custom grouping of creative assets.
 	 */
-	void setCustomLabel2(std::string  custom_label_2);
+	void setCustomLabel2(std::string custom_label_2);
 	/*! \brief Get Custom grouping of creative assets.
 	 */
 	std::string getCustomLabel3();
 
 	/*! \brief Set Custom grouping of creative assets.
 	 */
-	void setCustomLabel3(std::string  custom_label_3);
+	void setCustomLabel3(std::string custom_label_3);
 	/*! \brief Get Custom grouping of creative assets.
 	 */
 	std::string getCustomLabel4();
 
 	/*! \brief Set Custom grouping of creative assets.
 	 */
-	void setCustomLabel4(std::string  custom_label_4);
+	void setCustomLabel4(std::string custom_label_4);
 	/*! \brief Get Brief description of the creative assets.
 	 */
 	std::string getDescription();
 
 	/*! \brief Set Brief description of the creative assets.
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
 	 */
 	std::string getGoogleProductCategory();
 
 	/*! \brief Set The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
 	 */
-	void setGoogleProductCategory(std::string  google_product_category);
+	void setGoogleProductCategory(std::string google_product_category);
 	/*! \brief Get IOS deep link to the creative assets page.
 	 */
 	std::string getIosDeepLink();
 
 	/*! \brief Set IOS deep link to the creative assets page.
 	 */
-	void setIosDeepLink(std::string  ios_deep_link);
+	void setIosDeepLink(std::string ios_deep_link);
 	/*! \brief Get Link to the creative assets page.
 	 */
 	std::string getLink();
 
 	/*! \brief Set Link to the creative assets page.
 	 */
-	void setLink(std::string  link);
+	void setLink(std::string link);
 	/*! \brief Get The name of the creative assets.
 	 */
 	std::string getTitle();
 
 	/*! \brief Set The name of the creative assets.
 	 */
-	void setTitle(std::string  title);
-	/*! \brief Get Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	void setTitle(std::string title);
+	/*! \brief Get Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	 */
 	std::string getVisibility();
 
-	/*! \brief Set Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	/*! \brief Set Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	 */
-	void setVisibility(std::string  visibility);
+	void setVisibility(std::string visibility);
+	/*! \brief Get AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+	 */
+	std::list<CatalogsAiContentDisclosure> getAiDisclosures();
+
+	/*! \brief Set AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+	 */
+	void setAiDisclosures(std::list<CatalogsAiContentDisclosure> ai_disclosures);
 	/*! \brief Get The creative assets image.
 	 */
 	std::string getImageLink();
 
 	/*! \brief Set The creative assets image.
 	 */
-	void setImageLink(std::string  image_link);
+	void setImageLink(std::string image_link);
 	/*! \brief Get The creative assets video.
 	 */
 	std::string getVideoLink();
 
 	/*! \brief Set The creative assets video.
 	 */
-	void setVideoLink(std::string  video_link);
+	void setVideoLink(std::string video_link);
 
 
     private:
@@ -158,6 +167,7 @@ public:
     std::string link{};
     std::string title{};
     std::string visibility{};
+    std::list<CatalogsAiContentDisclosure> ai_disclosures;
     std::string image_link{};
     std::string video_link{};
 };

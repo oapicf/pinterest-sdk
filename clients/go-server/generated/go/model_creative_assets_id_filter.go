@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type CreativeAssetsIdFilter struct {
 
 	CREATIVE_ASSETS_ID CatalogsProductGroupMultipleStringCriteria `json:"CREATIVE_ASSETS_ID"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CreativeAssetsIdFilter
+func (o *CreativeAssetsIdFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"CREATIVE_ASSETS_ID",
+	}
 
-// AssertCreativeAssetsIdFilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"CREATIVE_ASSETS_ID": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"CREATIVE_ASSETS_ID": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CreativeAssetsIdFilter
+
+	if value, exists := allProperties["CREATIVE_ASSETS_ID"]; exists {
+		if err = json.Unmarshal(value, &decoded.CREATIVE_ASSETS_ID); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCreativeAssetsIdFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCreativeAssetsIdFilterRequired(obj CreativeAssetsIdFilter) error {
 	elements := map[string]interface{}{
 		"CREATIVE_ASSETS_ID": obj.CREATIVE_ASSETS_ID,
@@ -30,10 +88,16 @@ func AssertCreativeAssetsIdFilterRequired(obj CreativeAssetsIdFilter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.CREATIVE_ASSETS_ID); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertCreativeAssetsIdFilterConstraints checks if the values respects the defined constraints
 func AssertCreativeAssetsIdFilterConstraints(obj CreativeAssetsIdFilter) error {
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.CREATIVE_ASSETS_ID); err != nil {
+		return err
+	}
 	return nil
 }

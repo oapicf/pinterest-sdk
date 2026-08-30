@@ -24,7 +24,7 @@ resourceTypes {
         items {
           type = array
           items.type = InviteResponse
-          description = "List of invite and request data."
+          description = ""
           optional = true
         }
     }

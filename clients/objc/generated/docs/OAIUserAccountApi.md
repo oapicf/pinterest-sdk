@@ -22,11 +22,11 @@ Method | HTTP request | Description
 
 # **boardsUserFollowsList**
 ```objc
--(NSURLSessionTask*) boardsUserFollowsListWithBookmark: (NSString*) bookmark
-    pageSize: (NSNumber*) pageSize
+-(NSURLSessionTask*) boardsUserFollowsListWithAdAccountId: (NSString*) adAccountId
     explicitFollowing: (NSNumber*) explicitFollowing
-    adAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(OAIBoardsUserFollowsList200Response* output, NSError* error)) handler;
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+        completionHandler: (void (^)(OAIBoardsList200Response* output, NSError* error)) handler;
 ```
 
 List following boards
@@ -44,19 +44,19 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSNumber* explicitFollowing = @(NO); // Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to @(NO))
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
+NSNumber* explicitFollowing = @(NO); // Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to @(NO))
+NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 // List following boards
-[apiInstance boardsUserFollowsListWithBookmark:bookmark
-              pageSize:pageSize
+[apiInstance boardsUserFollowsListWithAdAccountId:adAccountId
               explicitFollowing:explicitFollowing
-              adAccountId:adAccountId
-          completionHandler: ^(OAIBoardsUserFollowsList200Response* output, NSError* error) {
+              bookmark:bookmark
+              pageSize:pageSize
+          completionHandler: ^(OAIBoardsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -70,14 +70,14 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **explicitFollowing** | **NSNumber***| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to @(NO)]
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
+ **explicitFollowing** | **NSNumber***| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to @(NO)]
+ **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
-[**OAIBoardsUserFollowsList200Response***](OAIBoardsUserFollowsList200Response.md)
+[**OAIBoardsList200Response***](OAIBoardsList200Response.md)
 
 ### Authorization
 
@@ -93,13 +93,13 @@ Name | Type | Description  | Notes
 # **followUserUpdate**
 ```objc
 -(NSURLSessionTask*) followUserUpdateWithUsername: (NSString*) username
-    followUserRequest: (OAIFollowUserRequest*) followUserRequest
-        completionHandler: (void (^)(OAIUserSummary* output, NSError* error)) handler;
+    followUserCreate: (OAIFollowUserCreate*) followUserCreate
+        completionHandler: (void (^)(OAIFollowUser* output, NSError* error)) handler;
 ```
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```objc
@@ -109,15 +109,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* username = username; // A valid username
-OAIFollowUserRequest* followUserRequest = [[OAIFollowUserRequest alloc] init]; // Follow a user.
+NSString* username = @"username_example"; // A valid username
+OAIFollowUserCreate* followUserCreate = [[OAIFollowUserCreate alloc] init]; // 
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 // Follow user
 [apiInstance followUserUpdateWithUsername:username
-              followUserRequest:followUserRequest
-          completionHandler: ^(OAIUserSummary* output, NSError* error) {
+              followUserCreate:followUserCreate
+          completionHandler: ^(OAIFollowUser* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -132,11 +132,11 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **NSString***| A valid username | 
- **followUserRequest** | [**OAIFollowUserRequest***](OAIFollowUserRequest.md)| Follow a user. | 
+ **followUserCreate** | [**OAIFollowUserCreate***](OAIFollowUserCreate.md)|  | 
 
 ### Return type
 
-[**OAIUserSummary***](OAIUserSummary.md)
+[**OAIFollowUser***](OAIFollowUser.md)
 
 ### Authorization
 
@@ -172,7 +172,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
@@ -194,7 +194,7 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -268,12 +268,12 @@ This endpoint does not need any parameter.
 # **unverifyWebsiteDelete**
 ```objc
 -(NSURLSessionTask*) unverifyWebsiteDeleteWithWebsite: (NSString*) website
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(OAIUserWebsite* output, NSError* error)) handler;
 ```
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 ```objc
@@ -283,13 +283,16 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* website = mysite.test; // Website with path or domain only
+NSString* website = @"website_example"; // Website with path or domain only
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 // Unverify website
 [apiInstance unverifyWebsiteDeleteWithWebsite:website
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(OAIUserWebsite* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling OAIUserAccountApi->unverifyWebsiteDelete: %@", error);
                         }
@@ -304,7 +307,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OAIUserWebsite***](OAIUserWebsite.md)
 
 ### Authorization
 
@@ -326,7 +329,7 @@ void (empty response body)
     appTypes: (NSString*) appTypes
     contentType: (NSString*) contentType
     source: (NSString*) source
-    metricTypes: (NSArray<NSString*>*) metricTypes
+    metricTypes: (NSArray<OAIQuerymetrictypesItems>*) metricTypes
     splitField: (NSString*) splitField
     adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(NSDictionary<OAIAnalyticsMetricsResponse>* output, NSError* error)) handler;
@@ -351,7 +354,7 @@ NSString* pinFormat = @"ALL"; // Pin formats to get data for, default is all. (o
 NSString* appTypes = @"ALL"; // Apps or devices to get data for, default is all. (optional) (default to @"ALL")
 NSString* contentType = @"ALL"; // Filter to paid or organic data. Default is all. (optional) (default to @"ALL")
 NSString* source = @"ALL"; // Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to @"ALL")
-NSArray<NSString*>* metricTypes = @[@"metricTypes_example"]; // Metric types to get data for, default is all.  (optional)
+NSArray<OAIQuerymetrictypesItems>* metricTypes = @[[[OAIQuerymetrictypesItems alloc] init]]; // Metric types to get data for, default is all. (optional)
 NSString* splitField = @"NO_SPLIT"; // How to split the data into groups. Not including this param means data won't be split. (optional) (default to @"NO_SPLIT")
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
@@ -389,7 +392,7 @@ Name | Type | Description  | Notes
  **appTypes** | **NSString***| Apps or devices to get data for, default is all. | [optional] [default to @&quot;ALL&quot;]
  **contentType** | **NSString***| Filter to paid or organic data. Default is all. | [optional] [default to @&quot;ALL&quot;]
  **source** | **NSString***| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to @&quot;ALL&quot;]
- **metricTypes** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Metric types to get data for, default is all.  | [optional] 
+ **metricTypes** | [**NSArray&lt;OAIQuerymetrictypesItems&gt;***](OAIQuerymetrictypesItems*.md)| Metric types to get data for, default is all. | [optional] 
  **splitField** | **NSString***| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to @&quot;NO_SPLIT&quot;]
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
@@ -412,13 +415,13 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) userAccountAnalyticsTopPinsWithStartDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    sortBy: (NSString*) sortBy
+    sortBy: (OAITopPinsSortBy) sortBy
     fromClaimedContent: (NSString*) fromClaimedContent
     pinFormat: (NSString*) pinFormat
     appTypes: (NSString*) appTypes
     contentType: (NSString*) contentType
     source: (NSString*) source
-    metricTypes: (NSArray<NSString*>*) metricTypes
+    metricTypes: (NSArray<OAIQuerymetrictypesItems>*) metricTypes
     numOfPins: (NSNumber*) numOfPins
     createdInLastNDays: (NSNumber*) createdInLastNDays
     adAccountId: (NSString*) adAccountId
@@ -442,15 +445,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSString* sortBy = @"sortBy_example"; // Specify sorting order for metrics
+OAITopPinsSortBy sortBy = [[OAITopPinsSortBy alloc] init]; // Specify sorting order for metrics
 NSString* fromClaimedContent = @"BOTH"; // Filter on Pins that match your claimed domain. (optional) (default to @"BOTH")
 NSString* pinFormat = @"ALL"; // Pin formats to get data for, default is all. (optional) (default to @"ALL")
 NSString* appTypes = @"ALL"; // Apps or devices to get data for, default is all. (optional) (default to @"ALL")
 NSString* contentType = @"ALL"; // Filter to paid or organic data. Default is all. (optional) (default to @"ALL")
 NSString* source = @"ALL"; // Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to @"ALL")
-NSArray<NSString*>* metricTypes = @[@"metricTypes_example"]; // Metric types to get data for, default is all.  (optional)
-NSNumber* numOfPins = 25; // Number of pins to include, default is 10. Max is 50. (optional) (default to @10)
-NSNumber* createdInLastNDays = 30; // Get metrics for pins created in the last \"n\" days. (optional)
+NSArray<OAIQuerymetrictypesItems>* metricTypes = @[[[OAIQuerymetrictypesItems alloc] init]]; // Metric types to get data for, default is all. (optional)
+NSNumber* numOfPins = @10; // Number of pins to include, default is 10. Max is 50. (optional) (default to @10)
+NSNumber* createdInLastNDays = @56; // Get metrics for pins created in the last \"n\" days. (optional)
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
@@ -484,13 +487,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sortBy** | **NSString***| Specify sorting order for metrics | 
+ **sortBy** | [**OAITopPinsSortBy**](.md)| Specify sorting order for metrics | 
  **fromClaimedContent** | **NSString***| Filter on Pins that match your claimed domain. | [optional] [default to @&quot;BOTH&quot;]
  **pinFormat** | **NSString***| Pin formats to get data for, default is all. | [optional] [default to @&quot;ALL&quot;]
  **appTypes** | **NSString***| Apps or devices to get data for, default is all. | [optional] [default to @&quot;ALL&quot;]
  **contentType** | **NSString***| Filter to paid or organic data. Default is all. | [optional] [default to @&quot;ALL&quot;]
  **source** | **NSString***| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to @&quot;ALL&quot;]
- **metricTypes** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Metric types to get data for, default is all.  | [optional] 
+ **metricTypes** | [**NSArray&lt;OAIQuerymetrictypesItems&gt;***](OAIQuerymetrictypesItems*.md)| Metric types to get data for, default is all. | [optional] 
  **numOfPins** | **NSNumber***| Number of pins to include, default is 10. Max is 50. | [optional] [default to @10]
  **createdInLastNDays** | **NSNumber***| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
@@ -514,13 +517,13 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) userAccountAnalyticsTopVideoPinsWithStartDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    sortBy: (NSString*) sortBy
+    sortBy: (OAITopVideoPinsSortBy) sortBy
     fromClaimedContent: (NSString*) fromClaimedContent
     pinFormat: (NSString*) pinFormat
     appTypes: (NSString*) appTypes
     contentType: (NSString*) contentType
     source: (NSString*) source
-    metricTypes: (NSArray<NSString*>*) metricTypes
+    metricTypes: (NSArray<OAIQueryvideopinmetrictypesItems>*) metricTypes
     numOfPins: (NSNumber*) numOfPins
     createdInLastNDays: (NSNumber*) createdInLastNDays
     adAccountId: (NSString*) adAccountId
@@ -544,15 +547,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSString* sortBy = @"sortBy_example"; // Specify sorting order for video metrics
+OAITopVideoPinsSortBy sortBy = [[OAITopVideoPinsSortBy alloc] init]; // Specify sorting order for video metrics
 NSString* fromClaimedContent = @"BOTH"; // Filter on Pins that match your claimed domain. (optional) (default to @"BOTH")
 NSString* pinFormat = @"ALL"; // Pin formats to get data for, default is all. (optional) (default to @"ALL")
 NSString* appTypes = @"ALL"; // Apps or devices to get data for, default is all. (optional) (default to @"ALL")
 NSString* contentType = @"ALL"; // Filter to paid or organic data. Default is all. (optional) (default to @"ALL")
 NSString* source = @"ALL"; // Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to @"ALL")
-NSArray<NSString*>* metricTypes = @[@"metricTypes_example"]; // Metric types to get video data for, default is all.  (optional)
-NSNumber* numOfPins = 25; // Number of pins to include, default is 10. Max is 50. (optional) (default to @10)
-NSNumber* createdInLastNDays = 30; // Get metrics for pins created in the last \"n\" days. (optional)
+NSArray<OAIQueryvideopinmetrictypesItems>* metricTypes = @[[[OAIQueryvideopinmetrictypesItems alloc] init]]; // Metric types to get video data for, default is all. (optional)
+NSNumber* numOfPins = @10; // Number of pins to include, default is 10. Max is 50. (optional) (default to @10)
+NSNumber* createdInLastNDays = @56; // Get metrics for pins created in the last \"n\" days. (optional)
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
@@ -586,13 +589,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sortBy** | **NSString***| Specify sorting order for video metrics | 
+ **sortBy** | [**OAITopVideoPinsSortBy**](.md)| Specify sorting order for video metrics | 
  **fromClaimedContent** | **NSString***| Filter on Pins that match your claimed domain. | [optional] [default to @&quot;BOTH&quot;]
  **pinFormat** | **NSString***| Pin formats to get data for, default is all. | [optional] [default to @&quot;ALL&quot;]
  **appTypes** | **NSString***| Apps or devices to get data for, default is all. | [optional] [default to @&quot;ALL&quot;]
  **contentType** | **NSString***| Filter to paid or organic data. Default is all. | [optional] [default to @&quot;ALL&quot;]
  **source** | **NSString***| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to @&quot;ALL&quot;]
- **metricTypes** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Metric types to get video data for, default is all.  | [optional] 
+ **metricTypes** | [**NSArray&lt;OAIQueryvideopinmetrictypesItems&gt;***](OAIQueryvideopinmetrictypesItems*.md)| Metric types to get video data for, default is all. | [optional] 
  **numOfPins** | **NSNumber***| Number of pins to include, default is 10. Max is 50. | [optional] [default to @10]
  **createdInLastNDays** | **NSNumber***| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
@@ -635,9 +638,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* username = username; // A valid username
+NSString* username = @"username_example"; // A valid username
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
@@ -661,7 +664,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **NSString***| A valid username | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -686,7 +689,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 
 ### Example
 ```objc
@@ -738,12 +741,12 @@ Name | Type | Description  | Notes
 
 # **userFollowingGet**
 ```objc
--(NSURLSessionTask*) userFollowingGetWithBookmark: (NSString*) bookmark
-    pageSize: (NSNumber*) pageSize
-    feedType: (OAIUserFollowingFeedType) feedType
+-(NSURLSessionTask*) userFollowingGetWithAdAccountId: (NSString*) adAccountId
     explicitFollowing: (NSNumber*) explicitFollowing
-    adAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(OAIUserFollowingGet200Response* output, NSError* error)) handler;
+    feedType: (OAIUserFollowingFeedType) feedType
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+        completionHandler: (void (^)(OAIFollowersList200Response* output, NSError* error)) handler;
 ```
 
 List following
@@ -761,21 +764,21 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-OAIUserFollowingFeedType feedType = [[OAIUserFollowingFeedType alloc] init]; // Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
-NSNumber* explicitFollowing = @(NO); // Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to @(NO))
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
+NSNumber* explicitFollowing = @(NO); // Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to @(NO))
+OAIUserFollowingFeedType feedType = [[OAIUserFollowingFeedType alloc] init]; // Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
+NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 // List following
-[apiInstance userFollowingGetWithBookmark:bookmark
-              pageSize:pageSize
-              feedType:feedType
+[apiInstance userFollowingGetWithAdAccountId:adAccountId
               explicitFollowing:explicitFollowing
-              adAccountId:adAccountId
-          completionHandler: ^(OAIUserFollowingGet200Response* output, NSError* error) {
+              feedType:feedType
+              bookmark:bookmark
+              pageSize:pageSize
+          completionHandler: ^(OAIFollowersList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -789,15 +792,15 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **feedType** | **OAIUserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
- **explicitFollowing** | **NSNumber***| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to @(NO)]
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
+ **explicitFollowing** | **NSNumber***| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to @(NO)]
+ **feedType** | [**OAIUserFollowingFeedType**](.md)| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
+ **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
-[**OAIUserFollowingGet200Response***](OAIUserFollowingGet200Response.md)
+[**OAIFollowersList200Response***](OAIFollowersList200Response.md)
 
 ### Authorization
 
@@ -830,7 +833,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
@@ -852,7 +855,7 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -871,9 +874,9 @@ Name | Type | Description  | Notes
 
 # **verifyWebsiteUpdate**
 ```objc
--(NSURLSessionTask*) verifyWebsiteUpdateWithUserWebsiteVerifyRequest: (OAIUserWebsiteVerifyRequest*) userWebsiteVerifyRequest
+-(NSURLSessionTask*) verifyWebsiteUpdateWithUserWebsiteCreate: (OAIUserWebsiteCreate*) userWebsiteCreate
     adAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(OAIUserWebsiteSummary* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIUserWebsite* output, NSError* error)) handler;
 ```
 
 Verify website
@@ -888,15 +891,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-OAIUserWebsiteVerifyRequest* userWebsiteVerifyRequest = [[OAIUserWebsiteVerifyRequest alloc] init]; // Verify a website.
+OAIUserWebsiteCreate* userWebsiteCreate = [[OAIUserWebsiteCreate alloc] init]; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 // Verify website
-[apiInstance verifyWebsiteUpdateWithUserWebsiteVerifyRequest:userWebsiteVerifyRequest
+[apiInstance verifyWebsiteUpdateWithUserWebsiteCreate:userWebsiteCreate
               adAccountId:adAccountId
-          completionHandler: ^(OAIUserWebsiteSummary* output, NSError* error) {
+          completionHandler: ^(OAIUserWebsite* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -910,12 +913,12 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userWebsiteVerifyRequest** | [**OAIUserWebsiteVerifyRequest***](OAIUserWebsiteVerifyRequest.md)| Verify a website. | 
+ **userWebsiteCreate** | [**OAIUserWebsiteCreate***](OAIUserWebsiteCreate.md)|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**OAIUserWebsiteSummary***](OAIUserWebsiteSummary.md)
+[**OAIUserWebsite***](OAIUserWebsite.md)
 
 ### Authorization
 
@@ -931,7 +934,7 @@ Name | Type | Description  | Notes
 # **websiteVerificationGet**
 ```objc
 -(NSURLSessionTask*) websiteVerificationGetWithAdAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(OAIUserWebsiteVerificationCode* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAIUserWebsiteVerification* output, NSError* error)) handler;
 ```
 
 Get user verification code for website claiming
@@ -955,7 +958,7 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 // Get user verification code for website claiming
 [apiInstance websiteVerificationGetWithAdAccountId:adAccountId
-          completionHandler: ^(OAIUserWebsiteVerificationCode* output, NSError* error) {
+          completionHandler: ^(OAIUserWebsiteVerification* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -973,7 +976,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAIUserWebsiteVerificationCode***](OAIUserWebsiteVerificationCode.md)
+[**OAIUserWebsiteVerification***](OAIUserWebsiteVerification.md)
 
 ### Authorization
 

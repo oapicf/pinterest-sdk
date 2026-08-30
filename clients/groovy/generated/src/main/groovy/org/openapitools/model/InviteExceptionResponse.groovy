@@ -16,5 +16,5 @@ class InviteExceptionResponse {
     /* Error message associated with the error in performing the action on the invite/request. */
     String message
     /* A list of users' usernames or emails OR a list of partner ids that caused the error. */
-    List<String> usersOrPartnerIds
+    List<String> usersOrPartnerIds = new ArrayList<>()
 }

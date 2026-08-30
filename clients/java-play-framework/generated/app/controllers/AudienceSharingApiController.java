@@ -1,13 +1,18 @@
 package controllers;
 
+import apimodels.AdAccountToAdAccountSharedAudience;
+import apimodels.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import apimodels.AdAccountToBusinessSharedAudience;
+import apimodels.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 import apimodels.AdAccountsAudiencesSharedAccountsList200Response;
 import apimodels.AudienceAccountType;
-import apimodels.AudiencesList200Response;
-import apimodels.BusinessSharedAudience;
-import apimodels.BusinessSharedAudienceResponse;
-import apimodels.Error;
-import apimodels.SharedAudience;
-import apimodels.SharedAudienceResponse;
+import apimodels.BusinessToAdAccountSharedAudience;
+import apimodels.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
+import apimodels.BusinessToBusinessSharedAudience;
+import apimodels.BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
+import apimodels.Order;
+import apimodels.PinterestLibError;
+import apimodels.SharedAudiencesForBusinessList200Response;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -31,7 +36,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceSharingApiController extends Controller {
     private final AudienceSharingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -60,13 +65,6 @@ public class AudienceSharingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'account_type' parameter is required");
         }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -74,7 +72,14 @@ public class AudienceSharingApiController extends Controller {
         } else {
             bookmark = null;
         }
-        return imp.adAccountsAudiencesSharedAccountsListHttp(request, adAccountId, audienceId, accountType, pageSize, bookmark);
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        return imp.adAccountsAudiencesSharedAccountsListHttp(request, audienceId, accountType, adAccountId, bookmark, pageSize);
     }
 
     @ApiAction
@@ -93,6 +98,13 @@ public class AudienceSharingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'account_type' parameter is required");
         }
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
         String valuepageSize = request.getQueryString("page_size");
         Integer pageSize;
         if (valuepageSize != null) {
@@ -100,32 +112,25 @@ public class AudienceSharingApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        return imp.businessAccountAudiencesSharedAccountsListHttp(request, businessId, audienceId, accountType, pageSize, bookmark);
+        return imp.businessAccountAudiencesSharedAccountsListHttp(request, businessId, audienceId, accountType, bookmark, pageSize);
     }
 
     @ApiAction
     public Result sharedAudiencesForBusinessList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
         String valueorder = request.getQueryString("order");
-        String order;
+        Order order;
         if (valueorder != null) {
             order = valueorder;
         } else {
             order = null;
         }
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
         String valuepageSize = request.getQueryString("page_size");
         Integer pageSize;
         if (valuepageSize != null) {
@@ -133,67 +138,67 @@ public class AudienceSharingApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        return imp.sharedAudiencesForBusinessListHttp(request, businessId, bookmark, order, pageSize);
+        return imp.sharedAudiencesForBusinessListHttp(request, businessId, order, bookmark, pageSize);
     }
 
     @ApiAction
     public Result updateAdAccountToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodesharedAudience = request.body().asJson();
-        SharedAudience sharedAudience;
-        if (nodesharedAudience != null) {
-            sharedAudience = mapper.readValue(nodesharedAudience.toString(), SharedAudience.class);
+        JsonNode nodeadAccountToAdAccountSharedAudienceUpdateWithRequiredBody = request.body().asJson();
+        AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+        if (nodeadAccountToAdAccountSharedAudienceUpdateWithRequiredBody != null) {
+            adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = mapper.readValue(nodeadAccountToAdAccountSharedAudienceUpdateWithRequiredBody.toString(), AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(sharedAudience);
+                OpenAPIUtils.validate(adAccountToAdAccountSharedAudienceUpdateWithRequiredBody);
             }
         } else {
-            throw new IllegalArgumentException("'SharedAudience' parameter is required");
+            throw new IllegalArgumentException("'AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody' parameter is required");
         }
-        return imp.updateAdAccountToAdAccountSharedAudienceHttp(request, adAccountId, sharedAudience);
+        return imp.updateAdAccountToAdAccountSharedAudienceHttp(request, adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody);
     }
 
     @ApiAction
     public Result updateAdAccountToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodebusinessSharedAudience = request.body().asJson();
-        BusinessSharedAudience businessSharedAudience;
-        if (nodebusinessSharedAudience != null) {
-            businessSharedAudience = mapper.readValue(nodebusinessSharedAudience.toString(), BusinessSharedAudience.class);
+        JsonNode nodeadAccountToBusinessSharedAudienceUpdateWithRequiredBody = request.body().asJson();
+        AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody;
+        if (nodeadAccountToBusinessSharedAudienceUpdateWithRequiredBody != null) {
+            adAccountToBusinessSharedAudienceUpdateWithRequiredBody = mapper.readValue(nodeadAccountToBusinessSharedAudienceUpdateWithRequiredBody.toString(), AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(businessSharedAudience);
+                OpenAPIUtils.validate(adAccountToBusinessSharedAudienceUpdateWithRequiredBody);
             }
         } else {
-            throw new IllegalArgumentException("'BusinessSharedAudience' parameter is required");
+            throw new IllegalArgumentException("'AdAccountToBusinessSharedAudienceUpdateWithRequiredBody' parameter is required");
         }
-        return imp.updateAdAccountToBusinessSharedAudienceHttp(request, adAccountId, businessSharedAudience);
+        return imp.updateAdAccountToBusinessSharedAudienceHttp(request, adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody);
     }
 
     @ApiAction
     public Result updateBusinessToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
-        JsonNode nodesharedAudience = request.body().asJson();
-        SharedAudience sharedAudience;
-        if (nodesharedAudience != null) {
-            sharedAudience = mapper.readValue(nodesharedAudience.toString(), SharedAudience.class);
+        JsonNode nodebusinessToAdAccountSharedAudienceUpdateWithRequiredBody = request.body().asJson();
+        BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody;
+        if (nodebusinessToAdAccountSharedAudienceUpdateWithRequiredBody != null) {
+            businessToAdAccountSharedAudienceUpdateWithRequiredBody = mapper.readValue(nodebusinessToAdAccountSharedAudienceUpdateWithRequiredBody.toString(), BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(sharedAudience);
+                OpenAPIUtils.validate(businessToAdAccountSharedAudienceUpdateWithRequiredBody);
             }
         } else {
-            throw new IllegalArgumentException("'SharedAudience' parameter is required");
+            throw new IllegalArgumentException("'BusinessToAdAccountSharedAudienceUpdateWithRequiredBody' parameter is required");
         }
-        return imp.updateBusinessToAdAccountSharedAudienceHttp(request, businessId, sharedAudience);
+        return imp.updateBusinessToAdAccountSharedAudienceHttp(request, businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody);
     }
 
     @ApiAction
     public Result updateBusinessToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
-        JsonNode nodebusinessSharedAudience = request.body().asJson();
-        BusinessSharedAudience businessSharedAudience;
-        if (nodebusinessSharedAudience != null) {
-            businessSharedAudience = mapper.readValue(nodebusinessSharedAudience.toString(), BusinessSharedAudience.class);
+        JsonNode nodebusinessToBusinessSharedAudienceUpdateWithRequiredBody = request.body().asJson();
+        BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody;
+        if (nodebusinessToBusinessSharedAudienceUpdateWithRequiredBody != null) {
+            businessToBusinessSharedAudienceUpdateWithRequiredBody = mapper.readValue(nodebusinessToBusinessSharedAudienceUpdateWithRequiredBody.toString(), BusinessToBusinessSharedAudienceUpdateWithRequiredBody.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(businessSharedAudience);
+                OpenAPIUtils.validate(businessToBusinessSharedAudienceUpdateWithRequiredBody);
             }
         } else {
-            throw new IllegalArgumentException("'BusinessSharedAudience' parameter is required");
+            throw new IllegalArgumentException("'BusinessToBusinessSharedAudienceUpdateWithRequiredBody' parameter is required");
         }
-        return imp.updateBusinessToBusinessSharedAudienceHttp(request, businessId, businessSharedAudience);
+        return imp.updateBusinessToBusinessSharedAudienceHttp(request, businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody);
     }
 
 }

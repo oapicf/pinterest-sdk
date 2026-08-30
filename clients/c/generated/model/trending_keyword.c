@@ -7,11 +7,11 @@
 
 static trending_keyword_t *trending_keyword_create_internal(
     trending_keyword_demographics_t *demographics,
-    int has_prediction,
+    int *has_prediction,
     char *keyword,
-    int pct_growth_mom,
-    int pct_growth_wow,
-    int pct_growth_yoy,
+    int *pct_growth_mom,
+    int *pct_growth_wow,
+    int *pct_growth_yoy,
     predicted_time_series_t *predicted_time_series,
     time_series_t *time_series
     ) {
@@ -19,6 +19,8 @@ static trending_keyword_t *trending_keyword_create_internal(
     if (!trending_keyword_local_var) {
         return NULL;
     }
+    memset(trending_keyword_local_var, 0, sizeof(trending_keyword_t));
+    trending_keyword_local_var->_library_owned = 1;
     trending_keyword_local_var->demographics = demographics;
     trending_keyword_local_var->has_prediction = has_prediction;
     trending_keyword_local_var->keyword = keyword;
@@ -27,31 +29,56 @@ static trending_keyword_t *trending_keyword_create_internal(
     trending_keyword_local_var->pct_growth_yoy = pct_growth_yoy;
     trending_keyword_local_var->predicted_time_series = predicted_time_series;
     trending_keyword_local_var->time_series = time_series;
-
-    trending_keyword_local_var->_library_owned = 1;
     return trending_keyword_local_var;
 }
 
 __attribute__((deprecated)) trending_keyword_t *trending_keyword_create(
     trending_keyword_demographics_t *demographics,
-    int has_prediction,
+    int *has_prediction,
     char *keyword,
-    int pct_growth_mom,
-    int pct_growth_wow,
-    int pct_growth_yoy,
+    int *pct_growth_mom,
+    int *pct_growth_wow,
+    int *pct_growth_yoy,
     predicted_time_series_t *predicted_time_series,
     time_series_t *time_series
     ) {
-    return trending_keyword_create_internal (
+    int *has_prediction_copy = NULL;
+    if (has_prediction) {
+        has_prediction_copy = malloc(sizeof(int));
+        if (has_prediction_copy) *has_prediction_copy = *has_prediction;
+    }
+    int *pct_growth_mom_copy = NULL;
+    if (pct_growth_mom) {
+        pct_growth_mom_copy = malloc(sizeof(int));
+        if (pct_growth_mom_copy) *pct_growth_mom_copy = *pct_growth_mom;
+    }
+    int *pct_growth_wow_copy = NULL;
+    if (pct_growth_wow) {
+        pct_growth_wow_copy = malloc(sizeof(int));
+        if (pct_growth_wow_copy) *pct_growth_wow_copy = *pct_growth_wow;
+    }
+    int *pct_growth_yoy_copy = NULL;
+    if (pct_growth_yoy) {
+        pct_growth_yoy_copy = malloc(sizeof(int));
+        if (pct_growth_yoy_copy) *pct_growth_yoy_copy = *pct_growth_yoy;
+    }
+    trending_keyword_t *result = trending_keyword_create_internal (
         demographics,
-        has_prediction,
+        has_prediction_copy,
         keyword,
-        pct_growth_mom,
-        pct_growth_wow,
-        pct_growth_yoy,
+        pct_growth_mom_copy,
+        pct_growth_wow_copy,
+        pct_growth_yoy_copy,
         predicted_time_series,
         time_series
         );
+    if (!result) {
+        free(has_prediction_copy);
+        free(pct_growth_mom_copy);
+        free(pct_growth_wow_copy);
+        free(pct_growth_yoy_copy);
+    }
+    return result;
 }
 
 void trending_keyword_free(trending_keyword_t *trending_keyword) {
@@ -67,9 +94,25 @@ void trending_keyword_free(trending_keyword_t *trending_keyword) {
         trending_keyword_demographics_free(trending_keyword->demographics);
         trending_keyword->demographics = NULL;
     }
+    if (trending_keyword->has_prediction) {
+        free(trending_keyword->has_prediction);
+        trending_keyword->has_prediction = NULL;
+    }
     if (trending_keyword->keyword) {
         free(trending_keyword->keyword);
         trending_keyword->keyword = NULL;
+    }
+    if (trending_keyword->pct_growth_mom) {
+        free(trending_keyword->pct_growth_mom);
+        trending_keyword->pct_growth_mom = NULL;
+    }
+    if (trending_keyword->pct_growth_wow) {
+        free(trending_keyword->pct_growth_wow);
+        trending_keyword->pct_growth_wow = NULL;
+    }
+    if (trending_keyword->pct_growth_yoy) {
+        free(trending_keyword->pct_growth_yoy);
+        trending_keyword->pct_growth_yoy = NULL;
     }
     if (trending_keyword->predicted_time_series) {
         predicted_time_series_free(trending_keyword->predicted_time_series);
@@ -100,7 +143,7 @@ cJSON *trending_keyword_convertToJSON(trending_keyword_t *trending_keyword) {
 
     // trending_keyword->has_prediction
     if(trending_keyword->has_prediction) {
-    if(cJSON_AddBoolToObject(item, "has_prediction", trending_keyword->has_prediction) == NULL) {
+    if(cJSON_AddBoolToObject(item, "has_prediction", *trending_keyword->has_prediction) == NULL) {
     goto fail; //Bool
     }
     }
@@ -116,7 +159,7 @@ cJSON *trending_keyword_convertToJSON(trending_keyword_t *trending_keyword) {
 
     // trending_keyword->pct_growth_mom
     if(trending_keyword->pct_growth_mom) {
-    if(cJSON_AddNumberToObject(item, "pct_growth_mom", trending_keyword->pct_growth_mom) == NULL) {
+    if(cJSON_AddNumberToObject(item, "pct_growth_mom", *trending_keyword->pct_growth_mom) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -124,7 +167,7 @@ cJSON *trending_keyword_convertToJSON(trending_keyword_t *trending_keyword) {
 
     // trending_keyword->pct_growth_wow
     if(trending_keyword->pct_growth_wow) {
-    if(cJSON_AddNumberToObject(item, "pct_growth_wow", trending_keyword->pct_growth_wow) == NULL) {
+    if(cJSON_AddNumberToObject(item, "pct_growth_wow", *trending_keyword->pct_growth_wow) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -132,7 +175,7 @@ cJSON *trending_keyword_convertToJSON(trending_keyword_t *trending_keyword) {
 
     // trending_keyword->pct_growth_yoy
     if(trending_keyword->pct_growth_yoy) {
-    if(cJSON_AddNumberToObject(item, "pct_growth_yoy", trending_keyword->pct_growth_yoy) == NULL) {
+    if(cJSON_AddNumberToObject(item, "pct_growth_yoy", *trending_keyword->pct_growth_yoy) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -178,6 +221,20 @@ trending_keyword_t *trending_keyword_parseFromJSON(cJSON *trending_keywordJSON){
     // define the local variable for trending_keyword->demographics
     trending_keyword_demographics_t *demographics_local_nonprim = NULL;
 
+    // define the local variable for trending_keyword->has_prediction
+    int *has_prediction_local_var = NULL;
+
+    char *keyword_local_str = NULL;
+
+    // define the local variable for trending_keyword->pct_growth_mom
+    int *pct_growth_mom_local_var = NULL;
+
+    // define the local variable for trending_keyword->pct_growth_wow
+    int *pct_growth_wow_local_var = NULL;
+
+    // define the local variable for trending_keyword->pct_growth_yoy
+    int *pct_growth_yoy_local_var = NULL;
+
     // define the local variable for trending_keyword->predicted_time_series
     predicted_time_series_t *predicted_time_series_local_nonprim = NULL;
 
@@ -203,6 +260,12 @@ trending_keyword_t *trending_keyword_parseFromJSON(cJSON *trending_keywordJSON){
     {
     goto end; //Bool
     }
+    has_prediction_local_var = malloc(sizeof(int));
+    if(!has_prediction_local_var)
+    {
+        goto end;
+    }
+    *has_prediction_local_var = has_prediction->valueint;
     }
 
     // trending_keyword->keyword
@@ -227,6 +290,12 @@ trending_keyword_t *trending_keyword_parseFromJSON(cJSON *trending_keywordJSON){
     {
     goto end; //Numeric
     }
+    pct_growth_mom_local_var = malloc(sizeof(int));
+    if(!pct_growth_mom_local_var)
+    {
+        goto end;
+    }
+    *pct_growth_mom_local_var = pct_growth_mom->valuedouble;
     }
 
     // trending_keyword->pct_growth_wow
@@ -239,6 +308,12 @@ trending_keyword_t *trending_keyword_parseFromJSON(cJSON *trending_keywordJSON){
     {
     goto end; //Numeric
     }
+    pct_growth_wow_local_var = malloc(sizeof(int));
+    if(!pct_growth_wow_local_var)
+    {
+        goto end;
+    }
+    *pct_growth_wow_local_var = pct_growth_wow->valuedouble;
     }
 
     // trending_keyword->pct_growth_yoy
@@ -251,6 +326,12 @@ trending_keyword_t *trending_keyword_parseFromJSON(cJSON *trending_keywordJSON){
     {
     goto end; //Numeric
     }
+    pct_growth_yoy_local_var = malloc(sizeof(int));
+    if(!pct_growth_yoy_local_var)
+    {
+        goto end;
+    }
+    *pct_growth_yoy_local_var = pct_growth_yoy->valuedouble;
     }
 
     // trending_keyword->predicted_time_series
@@ -272,22 +353,48 @@ trending_keyword_t *trending_keyword_parseFromJSON(cJSON *trending_keywordJSON){
     }
 
 
+    if (keyword && !cJSON_IsNull(keyword)) keyword_local_str = strdup(keyword->valuestring);
+
     trending_keyword_local_var = trending_keyword_create_internal (
         demographics ? demographics_local_nonprim : NULL,
-        has_prediction ? has_prediction->valueint : 0,
-        keyword && !cJSON_IsNull(keyword) ? strdup(keyword->valuestring) : NULL,
-        pct_growth_mom ? pct_growth_mom->valuedouble : 0,
-        pct_growth_wow ? pct_growth_wow->valuedouble : 0,
-        pct_growth_yoy ? pct_growth_yoy->valuedouble : 0,
+        has_prediction_local_var,
+        keyword_local_str,
+        pct_growth_mom_local_var,
+        pct_growth_wow_local_var,
+        pct_growth_yoy_local_var,
         predicted_time_series ? predicted_time_series_local_nonprim : NULL,
         time_series ? time_series_local_nonprim : NULL
         );
+
+    if (!trending_keyword_local_var) {
+        goto end;
+    }
 
     return trending_keyword_local_var;
 end:
     if (demographics_local_nonprim) {
         trending_keyword_demographics_free(demographics_local_nonprim);
         demographics_local_nonprim = NULL;
+    }
+    if (has_prediction_local_var) {
+        free(has_prediction_local_var);
+        has_prediction_local_var = NULL;
+    }
+    if (keyword_local_str) {
+        free(keyword_local_str);
+        keyword_local_str = NULL;
+    }
+    if (pct_growth_mom_local_var) {
+        free(pct_growth_mom_local_var);
+        pct_growth_mom_local_var = NULL;
+    }
+    if (pct_growth_wow_local_var) {
+        free(pct_growth_wow_local_var);
+        pct_growth_wow_local_var = NULL;
+    }
+    if (pct_growth_yoy_local_var) {
+        free(pct_growth_yoy_local_var);
+        pct_growth_yoy_local_var = NULL;
     }
     if (predicted_time_series_local_nonprim) {
         predicted_time_series_free(predicted_time_series_local_nonprim);

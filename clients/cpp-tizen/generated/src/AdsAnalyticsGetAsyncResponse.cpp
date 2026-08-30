@@ -23,7 +23,7 @@ AdsAnalyticsGetAsyncResponse::~AdsAnalyticsGetAsyncResponse()
 void
 AdsAnalyticsGetAsyncResponse::__init()
 {
-	//report_status = std::string();
+	//report_status = new BulkReportingJobStatus();
 	//size = double(0);
 	//url = std::string();
 }

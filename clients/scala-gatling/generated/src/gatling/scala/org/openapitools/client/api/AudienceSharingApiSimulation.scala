@@ -86,10 +86,10 @@ class AudienceSharingApiSimulation extends Simulation {
         .feed(ad_accounts_audiences_shared_accounts/listPATHFeeder)
         .exec(http("adAccountsAudiencesSharedAccountsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/audiences/shared/accounts")
-        .queryParam("account_type","${account_type}")
-        .queryParam("audience_id","${audience_id}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("account_type","${account_type}")
+        .queryParam("audience_id","${audience_id}")
 )
 
     // Run scnadAccountsAudiencesSharedAccountsList with warm up and reach a constant rate for entire duration
@@ -105,10 +105,10 @@ class AudienceSharingApiSimulation extends Simulation {
         .feed(business_account_audiences_shared_accounts/listPATHFeeder)
         .exec(http("businessAccountAudiencesSharedAccountsList")
         .httpRequest("GET","/businesses/${business_id}/audiences/shared/accounts")
-        .queryParam("account_type","${account_type}")
-        .queryParam("audience_id","${audience_id}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("account_type","${account_type}")
+        .queryParam("audience_id","${audience_id}")
 )
 
     // Run scnbusinessAccountAudiencesSharedAccountsList with warm up and reach a constant rate for entire duration

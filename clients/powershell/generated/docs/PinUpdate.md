@@ -3,6 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AiDisclosures** | [**AiDisclosuresUpdate**](AiDisclosuresUpdate.md) | AI disclosure declarations the creator has made about this Pin. | [optional] 
 **AltText** | **String** |  | [optional] 
 **BoardId** | **String** | The board to which this Pin belongs. | [optional] 
 **BoardSectionId** | **String** | The board section to which this Pin belongs. | [optional] 
@@ -15,7 +16,8 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PinUpdate = Initialize-PSOpenAPIToolsPinUpdate  -AltText null `
+$PinUpdate = Initialize-PSOpenAPIToolsPinUpdate  -AiDisclosures null `
+ -AltText null `
  -BoardId null `
  -BoardSectionId null `
  -CarouselSlots null `

@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.prokarma.pkmst.model.CampaignResponse;
+import com.prokarma.pkmst.model.Campaign;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -20,14 +20,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CampaignsList200Response
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CampaignsList200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
   
-  private List<CampaignResponse> items = new ArrayList<>();
+  private List<Campaign> items = new ArrayList<>();
 
   public CampaignsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -47,12 +47,12 @@ public class CampaignsList200Response   {
     this.bookmark = bookmark;
   }
 
-  public CampaignsList200Response items(List<CampaignResponse> items) {
+  public CampaignsList200Response items(List<Campaign> items) {
     this.items = items;
     return this;
   }
 
-  public CampaignsList200Response addItemsItem(CampaignResponse itemsItem) {
+  public CampaignsList200Response addItemsItem(Campaign itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -65,11 +65,11 @@ public class CampaignsList200Response   {
    * @return items
    */
   @ApiModelProperty(required = true, value = "")
-  public List<CampaignResponse> getItems() {
+  public List<Campaign> getItems() {
     return items;
   }
 
-  public void setItems(List<CampaignResponse> items) {
+  public void setItems(List<Campaign> items) {
     this.items = items;
   }
 
@@ -108,10 +108,7 @@ public class CampaignsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

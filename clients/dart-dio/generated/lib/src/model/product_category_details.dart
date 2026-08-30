@@ -16,9 +16,9 @@ part 'product_category_details.g.dart';
 ///
 /// Properties:
 /// * [demographics] 
-/// * [hasPrediction] -      Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.
+/// * [hasPrediction] -     Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.
 /// * [metricsHighlights] 
-/// * [predictedTimeSeries] -      A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.
+/// * [predictedTimeSeries] -     A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.
 /// * [productCategory] 
 /// * [relatedSearches] - Related search terms for this product category
 /// * [timeSeries] - Time series data showing trend values over time, indexed between 0 and 100
@@ -27,14 +27,14 @@ abstract class ProductCategoryDetails implements Built<ProductCategoryDetails, P
   @BuiltValueField(wireName: r'demographics')
   ProductCategoriesDemographic? get demographics;
 
-  ///      Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.
+  ///     Indicates whether the keyword has a prediction available for the next 90 days.     This field is only applicable when include_prediction query parameter is set to true.     By default, the value is false and no prediction data is included in the response.
   @BuiltValueField(wireName: r'has_prediction')
   bool get hasPrediction;
 
   @BuiltValueField(wireName: r'metrics_highlights')
   ProductCategoriesMetricsHighlights? get metricsHighlights;
 
-  ///      A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.
+  ///     A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.
   @BuiltValueField(wireName: r'predicted_time_series')
   BuiltMap<String, num>? get predictedTimeSeries;
 
@@ -144,8 +144,9 @@ class _$ProductCategoryDetailsSerializer implements PrimitiveSerializer<ProductC
         case r'demographics':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ProductCategoriesDemographic),
-          ) as ProductCategoriesDemographic;
+            specifiedType: const FullType.nullable(ProductCategoriesDemographic),
+          ) as ProductCategoriesDemographic?;
+          if (valueDes == null) continue;
           result.demographics.replace(valueDes);
           break;
         case r'has_prediction':
@@ -158,15 +159,17 @@ class _$ProductCategoryDetailsSerializer implements PrimitiveSerializer<ProductC
         case r'metrics_highlights':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ProductCategoriesMetricsHighlights),
-          ) as ProductCategoriesMetricsHighlights;
+            specifiedType: const FullType.nullable(ProductCategoriesMetricsHighlights),
+          ) as ProductCategoriesMetricsHighlights?;
+          if (valueDes == null) continue;
           result.metricsHighlights.replace(valueDes);
           break;
         case r'predicted_time_series':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(num)]),
-          ) as BuiltMap<String, num>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(num)]),
+          ) as BuiltMap<String, num>?;
+          if (valueDes == null) continue;
           result.predictedTimeSeries.replace(valueDes);
           break;
         case r'product_category':
@@ -179,15 +182,17 @@ class _$ProductCategoryDetailsSerializer implements PrimitiveSerializer<ProductC
         case r'related_searches':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.relatedSearches.replace(valueDes);
           break;
         case r'time_series':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(num)]),
-          ) as BuiltMap<String, num>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(num)]),
+          ) as BuiltMap<String, num>?;
+          if (valueDes == null) continue;
           result.timeSeries.replace(valueDes);
           break;
         default:

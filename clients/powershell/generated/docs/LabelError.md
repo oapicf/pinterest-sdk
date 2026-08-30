@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarData** | [**Label**](Label.md) |  | [optional] 
+**VarData** | [**LabelErrorData**](LabelErrorData.md) |  | [optional] 
 **ErrorMessages** | **String[]** |  | [optional] 
 
 ## Examples

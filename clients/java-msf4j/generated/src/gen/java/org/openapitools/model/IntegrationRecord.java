@@ -11,7 +11,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Integration record
  */
 @ApiModel(description = "Integration record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationRecord   {
   @JsonProperty("additional_id_1")
   private String additionalId1;
@@ -82,6 +82,11 @@ public class IntegrationRecord   {
     this.additionalId1 = additionalId1;
   }
 
+  public IntegrationRecord connectedAdvertiserId(String connectedAdvertiserId) {
+    this.connectedAdvertiserId = connectedAdvertiserId;
+    return this;
+  }
+
    /**
    * Get connectedAdvertiserId
    * @return connectedAdvertiserId
@@ -89,6 +94,10 @@ public class IntegrationRecord   {
   @ApiModelProperty(value = "")
   public String getConnectedAdvertiserId() {
     return connectedAdvertiserId;
+  }
+
+  public void setConnectedAdvertiserId(String connectedAdvertiserId) {
+    this.connectedAdvertiserId = connectedAdvertiserId;
   }
 
   public IntegrationRecord connectedLbaId(String connectedLbaId) {
@@ -145,6 +154,11 @@ public class IntegrationRecord   {
     this.connectedTagId = connectedTagId;
   }
 
+  public IntegrationRecord connectedUserId(String connectedUserId) {
+    this.connectedUserId = connectedUserId;
+    return this;
+  }
+
    /**
    * Get connectedUserId
    * @return connectedUserId
@@ -152,6 +166,10 @@ public class IntegrationRecord   {
   @ApiModelProperty(value = "")
   public String getConnectedUserId() {
     return connectedUserId;
+  }
+
+  public void setConnectedUserId(String connectedUserId) {
+    this.connectedUserId = connectedUserId;
   }
 
   public IntegrationRecord createdTime(Integer createdTime) {
@@ -190,22 +208,13 @@ public class IntegrationRecord   {
     this.externalBusinessId = externalBusinessId;
   }
 
-  public IntegrationRecord id(String id) {
-    this.id = id;
-    return this;
-  }
-
    /**
-   * Get id
+   * Integration record ID.
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Integration record ID.")
   public String getId() {
     return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
   }
 
   public IntegrationRecord partnerAccessToken(String partnerAccessToken) {
@@ -417,10 +426,7 @@ public class IntegrationRecord   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

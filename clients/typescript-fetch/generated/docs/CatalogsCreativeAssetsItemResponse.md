@@ -1,15 +1,16 @@
 
 # CatalogsCreativeAssetsItemResponse
 
-Object describing a hotel record
+Object describing a creative assets item record
 
 ## Properties
 
 Name | Type
 ------------ | -------------
 `attributes` | [CatalogsCreativeAssetsAttributes](CatalogsCreativeAssetsAttributes.md)
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `creativeAssetsId` | string
+`itemResponseKind` | string
 `pins` | [Array&lt;Pin&gt;](Pin.md)
 
 ## Example
@@ -22,6 +23,7 @@ const example = {
   "attributes": null,
   "catalogType": null,
   "creativeAssetsId": DS0294-M,
+  "itemResponseKind": null,
   "pins": null,
 } satisfies CatalogsCreativeAssetsItemResponse
 

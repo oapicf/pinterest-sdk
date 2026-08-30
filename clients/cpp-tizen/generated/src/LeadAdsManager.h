@@ -38,8 +38,8 @@ public:
  */
 bool adAccountsSubscriptionsDelByIdSync(char * accessToken,
 	std::string adAccountId, std::string subscriptionId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(LeadSubscription, Error, void* )
+	, void* userData);
 
 /*! \brief Delete lead ads subscription. *Asynchronous*
  *
@@ -52,8 +52,8 @@ bool adAccountsSubscriptionsDelByIdSync(char * accessToken,
  */
 bool adAccountsSubscriptionsDelByIdAsync(char * accessToken,
 	std::string adAccountId, std::string subscriptionId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(LeadSubscription, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get lead ads subscription by ID. *Synchronous*

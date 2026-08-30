@@ -145,6 +145,12 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/conversion_deletion_requests/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/conversion_deletion_requests/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
         .requestMatchers().antMatchers(HttpMethod.GET, "/conversion_eqs/**")
         .and().authorizeRequests()
         .antMatchers(HttpMethod.GET, "/conversion_eqs/**").access("hasRole('ADMIN')")
@@ -157,15 +163,33 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/conversion_segments/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/conversion_segments/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
         .requestMatchers().antMatchers(HttpMethod.GET, "/conversion_tags/**")
         .and().authorizeRequests()
         .antMatchers(HttpMethod.GET, "/conversion_tags/**").access("hasRole('ADMIN')")
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/customer_list_uploads/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/customer_list_uploads/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
         .requestMatchers().antMatchers(HttpMethod.GET, "/customer_lists/**")
         .and().authorizeRequests()
         .antMatchers(HttpMethod.GET, "/customer_lists/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/customer_segment/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/customer_segment/**").access("hasRole('ADMIN')")
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
@@ -178,6 +202,12 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         .requestMatchers().antMatchers(HttpMethod.GET, "/keywords/**")
         .and().authorizeRequests()
         .antMatchers(HttpMethod.GET, "/keywords/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/labels/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/labels/**").access("hasRole('ADMIN')")
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
@@ -211,15 +241,39 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/notification/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/notification/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
         .requestMatchers().antMatchers(HttpMethod.GET, "/oauth/**")
         .and().authorizeRequests()
         .antMatchers(HttpMethod.GET, "/oauth/**").access("hasRole('ADMIN')")
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/opportunities/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/opportunities/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
         .requestMatchers().antMatchers(HttpMethod.GET, "/order_lines/**")
         .and().authorizeRequests()
         .antMatchers(HttpMethod.GET, "/order_lines/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/overlay_assignment_rules/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/overlay_assignment_rules/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/overlays/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/overlays/**").access("hasRole('ADMIN')")
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
@@ -235,9 +289,21 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/product_tags/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/product_tags/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
         .requestMatchers().antMatchers(HttpMethod.GET, "/promotions/**")
         .and().authorizeRequests()
         .antMatchers(HttpMethod.GET, "/promotions/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/resellers/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/resellers/**").access("hasRole('ADMIN')")
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()
@@ -268,6 +334,12 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         .requestMatchers().antMatchers(HttpMethod.GET, "/terms_of_service/**")
         .and().authorizeRequests()
         .antMatchers(HttpMethod.GET, "/terms_of_service/**").access("hasRole('ADMIN')")
+        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+        http.
+        anonymous().disable()
+        .requestMatchers().antMatchers(HttpMethod.GET, "/trends/**")
+        .and().authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/trends/**").access("hasRole('ADMIN')")
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.
         anonymous().disable()

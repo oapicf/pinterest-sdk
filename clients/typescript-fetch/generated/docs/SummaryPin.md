@@ -24,7 +24,7 @@ const example = {
   "altText": null,
   "description": null,
   "id": null,
-  "link": https://www.pinterest.com/,
+  "link": null,
   "media": null,
   "title": null,
 } satisfies SummaryPin

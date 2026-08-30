@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &CatalogsRetailItemsPostFilter{}
 // CatalogsRetailItemsPostFilter struct for CatalogsRetailItemsPostFilter
 type CatalogsRetailItemsPostFilter struct {
 	// Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 	CatalogType string `json:"catalog_type"`
 	ItemIds []string `json:"item_ids"`
 }

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ```c
 // Create customer list upload
 //
-// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
+// Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 //
 customer_list_upload_create_response_t* CustomerListUploadsAPI_customerListUploadsCreate(apiClient_t *apiClient, char *ad_account_id, char *customer_list_id, customer_list_upload_create_request_t *customer_list_upload_create_request);
 ```
@@ -22,9 +22,9 @@ customer_list_upload_create_response_t* CustomerListUploadsAPI_customerListUploa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**customer_list_id** | **char \*** | Unique identifier of a customer list | 
-**customer_list_upload_create_request** | **[customer_list_upload_create_request_t](customer_list_upload_create_request.md) \*** | Parameters to create a customer list upload request | 
+**ad_account_id** | **char \*** |  | 
+**customer_list_id** | **char \*** | Customer list ID. | 
+**customer_list_upload_create_request** | **[customer_list_upload_create_request_t](customer_list_upload_create_request.md) \*** |  | 
 
 ### Return type
 
@@ -46,22 +46,22 @@ Name | Type | Description  | Notes
 ```c
 // Get customer list upload
 //
-// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+// Get the metadata for a given upload by its ID.
 //
-customer_list_upload_response_t* CustomerListUploadsAPI_customerListUploadsGet(apiClient_t *apiClient, char *ad_account_id, char *customer_list_id, char *customer_list_upload_id);
+customer_list_upload_t* CustomerListUploadsAPI_customerListUploadsGet(apiClient_t *apiClient, char *ad_account_id, char *customer_list_id, char *customer_list_upload_id);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**customer_list_id** | **char \*** | Unique identifier of a customer list | 
-**customer_list_upload_id** | **char \*** | Unique identifier of a customer list upload | 
+**ad_account_id** | **char \*** |  | 
+**customer_list_id** | **char \*** | Customer list ID. | 
+**customer_list_upload_id** | **char \*** | Customer List Upload ID. | 
 
 ### Return type
 
-[customer_list_upload_response_t](customer_list_upload_response.md) *
+[customer_list_upload_t](customer_list_upload.md) *
 
 
 ### Authorization
@@ -79,22 +79,22 @@ Name | Type | Description  | Notes
 ```c
 // Run customer list upload
 //
-// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
+// Begin processing a customer list upload.
 //
-customer_list_upload_response_t* CustomerListUploadsAPI_customerListUploadsRun(apiClient_t *apiClient, char *ad_account_id, char *customer_list_id, char *customer_list_upload_id);
+customer_list_upload_t* CustomerListUploadsAPI_customerListUploadsRun(apiClient_t *apiClient, char *ad_account_id, char *customer_list_id, char *customer_list_upload_id);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**customer_list_id** | **char \*** | Unique identifier of a customer list | 
-**customer_list_upload_id** | **char \*** | Unique identifier of a customer list upload | 
+**ad_account_id** | **char \*** |  | 
+**customer_list_id** | **char \*** | Customer list ID. | 
+**customer_list_upload_id** | **char \*** | Customer List Upload ID. | 
 
 ### Return type
 
-[customer_list_upload_response_t](customer_list_upload_response.md) *
+[customer_list_upload_t](customer_list_upload.md) *
 
 
 ### Authorization

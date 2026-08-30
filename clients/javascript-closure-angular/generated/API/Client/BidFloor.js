@@ -1,6 +1,7 @@
 goog.provide('API.Client.BidFloor');
 
 /**
+ * Bid floor request and response model.
  * @record
  */
 API.Client.BidFloor = function() {}
@@ -13,7 +14,7 @@ API.Client.BidFloor = function() {}
 API.Client.BidFloor.prototype.bidFloors;
 
 /**
- * Always the string 'bidfloor'
+ * Always the string 'bidfloor'.
  * @type {!string}
  * @export
  */

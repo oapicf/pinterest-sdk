@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.CreateAssetAccessRequestBodyAssetRequestsInner;
+import org.openapitools.vertxweb.server.model.CreateAssetAccessRequestItem;
 
 /**
  * An object containing a list of all the asset access requests
@@ -14,22 +14,22 @@ import org.openapitools.vertxweb.server.model.CreateAssetAccessRequestBodyAssetR
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateAssetAccessRequestBody   {
   
-  private List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests = new ArrayList<>();
+  private List<CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();
 
   public CreateAssetAccessRequestBody () {
 
   }
 
-  public CreateAssetAccessRequestBody (List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public CreateAssetAccessRequestBody (List<CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
   }
 
     
   @JsonProperty("asset_requests")
-  public List<CreateAssetAccessRequestBodyAssetRequestsInner> getAssetRequests() {
+  public List<CreateAssetAccessRequestItem> getAssetRequests() {
     return assetRequests;
   }
-  public void setAssetRequests(List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public void setAssetRequests(List<CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
   }
 
@@ -66,9 +66,6 @@ public class CreateAssetAccessRequestBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

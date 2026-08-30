@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **ai_disclosures** | [**AiDisclosuresUpdate**](AiDisclosuresUpdate.md) | AI disclosure declarations the creator has made about this Pin. | [optional] |
 | **alt_text** | **String** |  | [optional] |
 | **board_id** | **String** | The board to which this Pin belongs. | [optional] |
 | **board_section_id** | **String** | The board section to which this Pin belongs. | [optional] |
@@ -18,6 +19,7 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::PinUpdate.new(
+  ai_disclosures: null,
   alt_text: null,
   board_id: null,
   board_section_id: null,

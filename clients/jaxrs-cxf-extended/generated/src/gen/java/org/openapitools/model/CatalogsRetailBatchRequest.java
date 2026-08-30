@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsRetailBatchRequestItemsInner;
+import org.openapitools.model.CatalogsRetailBatchRequestItemsItems;
 import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -69,7 +69,7 @@ public enum CatalogTypeEnum {
   */
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
   @Valid
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
+  private List<@Valid CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>();
 
 public enum LanguageEnum {
 
@@ -162,7 +162,7 @@ public enum LanguageEnum {
     @JsonProperty("NB") NB(String.valueOf("NB")),
     @JsonProperty("NE") NE(String.valueOf("NE")),
     @JsonProperty("NL") NL2(String.valueOf("NL")),
-    @JsonProperty("NO") NO(String.valueOf("NO")),
+    @JsonProperty("false") FALSE(String.valueOf("false")),
     @JsonProperty("PL") PL(String.valueOf("PL")),
     @JsonProperty("PT") PT(String.valueOf("PT")),
     @JsonProperty("RO") RO(String.valueOf("RO")),
@@ -291,21 +291,21 @@ public enum LanguageEnum {
   */
   @JsonProperty("items")
   @NotNull
- @Size(min=1,max=1000)  public List<CatalogsRetailBatchRequestItemsInner> getItems() {
+ @Size(min=1,max=1000)  public List<@Valid CatalogsRetailBatchRequestItemsItems> getItems() {
     return items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
- public void setItems(List<CatalogsRetailBatchRequestItemsInner> items) {
+ public void setItems(List<@Valid CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
-  public CatalogsRetailBatchRequest items(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public CatalogsRetailBatchRequest items(List<@Valid CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
     return this;
   }
@@ -313,7 +313,7 @@ public enum LanguageEnum {
   /**
    * Adds a new item to the <code>items</code> list.
    */
-  public CatalogsRetailBatchRequest addItemsItem(CatalogsRetailBatchRequestItemsInner itemsItem) {
+  public CatalogsRetailBatchRequest addItemsItem(CatalogsRetailBatchRequestItemsItems itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -384,10 +384,7 @@ public enum LanguageEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

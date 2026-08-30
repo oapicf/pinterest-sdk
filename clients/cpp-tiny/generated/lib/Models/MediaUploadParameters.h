@@ -51,56 +51,56 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setContentType(std::string  contentType);
+	void setContentType(std::string contentType);
 	/*! \brief Get 
 	 */
 	std::string getKey();
 
 	/*! \brief Set 
 	 */
-	void setKey(std::string  key);
+	void setKey(std::string key);
 	/*! \brief Get 
 	 */
 	std::string getPolicy();
 
 	/*! \brief Set 
 	 */
-	void setPolicy(std::string  policy);
+	void setPolicy(std::string policy);
 	/*! \brief Get 
 	 */
 	std::string getXamzalgorithm();
 
 	/*! \brief Set 
 	 */
-	void setXamzalgorithm(std::string  xamzalgorithm);
+	void setXamzalgorithm(std::string xamzalgorithm);
 	/*! \brief Get 
 	 */
 	std::string getXamzcredential();
 
 	/*! \brief Set 
 	 */
-	void setXamzcredential(std::string  xamzcredential);
+	void setXamzcredential(std::string xamzcredential);
 	/*! \brief Get 
 	 */
 	std::string getXamzdate();
 
 	/*! \brief Set 
 	 */
-	void setXamzdate(std::string  xamzdate);
+	void setXamzdate(std::string xamzdate);
 	/*! \brief Get 
 	 */
 	std::string getXamzsecuritytoken();
 
 	/*! \brief Set 
 	 */
-	void setXamzsecuritytoken(std::string  xamzsecuritytoken);
+	void setXamzsecuritytoken(std::string xamzsecuritytoken);
 	/*! \brief Get 
 	 */
 	std::string getXamzsignature();
 
 	/*! \brief Set 
 	 */
-	void setXamzsignature(std::string  xamzsignature);
+	void setXamzsignature(std::string xamzsignature);
 
 
     private:

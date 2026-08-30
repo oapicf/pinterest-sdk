@@ -1,32 +1,27 @@
 
 <h2>CatalogsCreativeAssetsFeed</h2>
 <ul class="parameter">
-  <li class="param-required-true">createdUnderscoreat : Date
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">id : String
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">updatedUnderscoreat : Date
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-true">catalogUnderscoreid : String
     <br/>Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">catalogUnderscoretype : CatalogsType
+  <li class="param-required-true">catalogUnderscoretype : String
+    <br/>
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>CREATIVE_ASSETS</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">createdUnderscoreat : Date
     <br/>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">credentials : CatalogsFeedCredentials
+  <li class="param-required-false">credentials : CatalogsFeedCredentials
     <br/>
   </li>
 </ul>
@@ -36,7 +31,7 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">defaultUnderscorecurrency : NullableCurrency
+  <li class="param-required-false">defaultUnderscorecurrency : NullableCurrency
     <br/>
   </li>
 </ul>
@@ -51,6 +46,11 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-true">id : String
+    <br/>ID of the feed entity.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-true">location : String
     <br/>The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   </li>
@@ -61,12 +61,17 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">preferredUnderscoreprocessingUnderscoreschedule : CatalogsFeedProcessingSchedule
+  <li class="param-required-false">preferredUnderscoreprocessingUnderscoreschedule : CatalogsFeedProcessingSchedule
     <br/>
   </li>
 </ul>
 <ul class="parameter">
   <li class="param-required-true">status : CatalogsStatus
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">updatedUnderscoreat : Date
     <br/>
   </li>
 </ul>

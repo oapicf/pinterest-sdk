@@ -3,7 +3,7 @@ package models
 // CatalogsRetailProductMetadata - Retail product metadata entity
 type CatalogsRetailProductMetadata struct {
 
-	Availability NonNullableProductAvailabilityType `json:"availability"`
+	Availability ProductAvailability `json:"availability"`
 
 	Currency NonNullableCatalogsCurrency `json:"currency"`
 

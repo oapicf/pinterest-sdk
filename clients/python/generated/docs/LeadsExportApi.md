@@ -9,17 +9,17 @@ Method | HTTP request | Description
 
 
 # **leads_export_create**
-> LeadsExportCreateResponse leads_export_create(ad_account_id, leads_export_create_request)
+> LeadsExports leads_export_create(ad_account_id, leads_exports_create)
 
 Create a request to export leads collected from a lead ad
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
-Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.
+Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.
 
 Note: Lead ad data will be available up to 30 days after the lead has been submitted.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -27,8 +27,8 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.leads_export_create_request import LeadsExportCreateRequest
-from pinterestsdk.models.leads_export_create_response import LeadsExportCreateResponse
+from pinterestsdk.models.leads_exports import LeadsExports
+from pinterestsdk.models.leads_exports_create import LeadsExportsCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -50,11 +50,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.LeadsExportApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    leads_export_create_request = pinterestsdk.LeadsExportCreateRequest() # LeadsExportCreateRequest | 
+    leads_exports_create = pinterestsdk.LeadsExportsCreate() # LeadsExportsCreate | 
 
     try:
         # Create a request to export leads collected from a lead ad
-        api_response = api_instance.leads_export_create(ad_account_id, leads_export_create_request)
+        api_response = api_instance.leads_export_create(ad_account_id, leads_exports_create)
         print("The response of LeadsExportApi->leads_export_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,11 +69,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **leads_export_create_request** | [**LeadsExportCreateRequest**](LeadsExportCreateRequest.md)|  | 
+ **leads_exports_create** | [**LeadsExportsCreate**](LeadsExportsCreate.md)|  | 
 
 ### Return type
 
-[**LeadsExportCreateResponse**](LeadsExportCreateResponse.md)
+[**LeadsExports**](LeadsExports.md)
 
 ### Authorization
 
@@ -88,9 +88,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account parameter. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -99,13 +104,13 @@ Name | Type | Description  | Notes
 
 Get the lead export from the lead export create call
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.
 
 Note: Lead ad data will be available up to 30 days after the lead has been submitted.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -135,7 +140,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.LeadsExportApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    leads_export_id = '123755885175' # str | lead_export_id token returned from the create a lead export endpoint
+    leads_export_id = 'leads_export_id_example' # str | lead_export_id token returned from the create a lead export endpoint
 
     try:
         # Get the lead export from the lead export create call
@@ -173,10 +178,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account parameter. |  -  |
-**404** | Invalid leads export id parameter. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

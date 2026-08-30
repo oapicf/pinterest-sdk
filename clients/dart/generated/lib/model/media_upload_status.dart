@@ -11,33 +11,31 @@
 part of openapi.api;
 
 
-class MediaUploadStatus {
-  /// Instantiate a new enum with the provided [value].
-  const MediaUploadStatus._(this.value);
+enum MediaUploadStatus {
+  registered._(r'registered'),
+  processing._(r'processing'),
+  succeeded._(r'succeeded'),
+  failed._(r'failed'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const MediaUploadStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const registered = MediaUploadStatus._(r'registered');
-  static const processing = MediaUploadStatus._(r'processing');
-  static const succeeded = MediaUploadStatus._(r'succeeded');
-  static const failed = MediaUploadStatus._(r'failed');
-
-  /// List of all possible values in this [enum][MediaUploadStatus].
-  static const values = <MediaUploadStatus>[
-    registered,
-    processing,
-    succeeded,
-    failed,
-  ];
-
+  /// Returns the instance of [MediaUploadStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static MediaUploadStatus? fromJson(dynamic value) => MediaUploadStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [MediaUploadStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<MediaUploadStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MediaUploadStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -59,9 +57,11 @@ class MediaUploadStatusTypeTransformer {
 
   const MediaUploadStatusTypeTransformer._();
 
-  String encode(MediaUploadStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(MediaUploadStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a MediaUploadStatus.
+  /// Returns the instance of [MediaUploadStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -70,6 +70,9 @@ class MediaUploadStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   MediaUploadStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is MediaUploadStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'registered': return MediaUploadStatus.registered;
@@ -85,7 +88,7 @@ class MediaUploadStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [MediaUploadStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static MediaUploadStatusTypeTransformer? _instance;
 }
 

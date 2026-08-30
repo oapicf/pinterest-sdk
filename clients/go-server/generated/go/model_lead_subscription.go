@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ package openapi
 type LeadSubscription struct {
 
 	// The Ad Account ID that this lead form belongs to.
-	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// API version.
 	ApiVersion string `json:"api_version,omitempty"`
@@ -32,19 +32,20 @@ type LeadSubscription struct {
 	CryptographicKey *string `json:"cryptographic_key,omitempty"`
 
 	// Subscription ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Lead form ID.
-	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^\\\\d+$"`
+	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// User account used to subscribe lead data.
-	UserAccountId string `json:"user_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	UserAccountId string `json:"user_account_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Standard HTTPS webhook URL.
 	WebhookUrl string `json:"webhook_url,omitempty"`
 }
 
-// AssertLeadSubscriptionRequired checks if the required fields are not zero-ed
+// AssertLeadSubscriptionRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertLeadSubscriptionRequired(obj LeadSubscription) error {
 	return nil
 }

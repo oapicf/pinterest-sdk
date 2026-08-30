@@ -1,14 +1,14 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.IntegrationLogsRequest;
+import apimodels.IntegrationLogsInvalidLogResponse;
+import apimodels.IntegrationLogsRequestCreate;
 import apimodels.IntegrationLogsSuccessResponse;
 import apimodels.IntegrationMetadata;
+import apimodels.IntegrationMetadataCreate;
+import apimodels.IntegrationMetadataUpdate;
 import apimodels.IntegrationRecord;
-import apimodels.IntegrationRequest;
-import apimodels.IntegrationRequestPatch;
 import apimodels.IntegrationsGetList200Response;
-import apimodels.IntegrationsLogsPost400Response;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -32,7 +32,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationsApiController extends Controller {
     private final IntegrationsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -57,36 +57,36 @@ public class IntegrationsApiController extends Controller {
 
     @ApiAction
     public Result integrationsCommercePatch(Http.Request request, String externalBusinessId) throws Exception {
-        JsonNode nodeintegrationRequestPatch = request.body().asJson();
-        IntegrationRequestPatch integrationRequestPatch;
-        if (nodeintegrationRequestPatch != null) {
-            integrationRequestPatch = mapper.readValue(nodeintegrationRequestPatch.toString(), IntegrationRequestPatch.class);
+        JsonNode nodeintegrationMetadataUpdate = request.body().asJson();
+        IntegrationMetadataUpdate integrationMetadataUpdate;
+        if (nodeintegrationMetadataUpdate != null) {
+            integrationMetadataUpdate = mapper.readValue(nodeintegrationMetadataUpdate.toString(), IntegrationMetadataUpdate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(integrationRequestPatch);
+                OpenAPIUtils.validate(integrationMetadataUpdate);
             }
         } else {
-            throw new IllegalArgumentException("'IntegrationRequestPatch' parameter is required");
+            throw new IllegalArgumentException("'IntegrationMetadataUpdate' parameter is required");
         }
-        return imp.integrationsCommercePatchHttp(request, externalBusinessId, integrationRequestPatch);
+        return imp.integrationsCommercePatchHttp(request, externalBusinessId, integrationMetadataUpdate);
     }
 
     @ApiAction
     public Result integrationsCommercePost(Http.Request request) throws Exception {
-        JsonNode nodeintegrationRequest = request.body().asJson();
-        IntegrationRequest integrationRequest;
-        if (nodeintegrationRequest != null) {
-            integrationRequest = mapper.readValue(nodeintegrationRequest.toString(), IntegrationRequest.class);
+        JsonNode nodeintegrationMetadataCreate = request.body().asJson();
+        IntegrationMetadataCreate integrationMetadataCreate;
+        if (nodeintegrationMetadataCreate != null) {
+            integrationMetadataCreate = mapper.readValue(nodeintegrationMetadataCreate.toString(), IntegrationMetadataCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(integrationRequest);
+                OpenAPIUtils.validate(integrationMetadataCreate);
             }
         } else {
-            throw new IllegalArgumentException("'IntegrationRequest' parameter is required");
+            throw new IllegalArgumentException("'IntegrationMetadataCreate' parameter is required");
         }
-        return imp.integrationsCommercePostHttp(request, integrationRequest);
+        return imp.integrationsCommercePostHttp(request, integrationMetadataCreate);
     }
 
     @ApiAction
-    public Result integrationsGetById(Http.Request request, String id) throws Exception {
+    public Result integrationsGetById(Http.Request request,  @Pattern(regexp="^\\d+$")String id) throws Exception {
         return imp.integrationsGetByIdHttp(request, id);
     }
 
@@ -111,17 +111,17 @@ public class IntegrationsApiController extends Controller {
 
     @ApiAction
     public Result integrationsLogsPost(Http.Request request) throws Exception {
-        JsonNode nodeintegrationLogsRequest = request.body().asJson();
-        IntegrationLogsRequest integrationLogsRequest;
-        if (nodeintegrationLogsRequest != null) {
-            integrationLogsRequest = mapper.readValue(nodeintegrationLogsRequest.toString(), IntegrationLogsRequest.class);
+        JsonNode nodeintegrationLogsRequestCreate = request.body().asJson();
+        IntegrationLogsRequestCreate integrationLogsRequestCreate;
+        if (nodeintegrationLogsRequestCreate != null) {
+            integrationLogsRequestCreate = mapper.readValue(nodeintegrationLogsRequestCreate.toString(), IntegrationLogsRequestCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(integrationLogsRequest);
+                OpenAPIUtils.validate(integrationLogsRequestCreate);
             }
         } else {
-            throw new IllegalArgumentException("'IntegrationLogsRequest' parameter is required");
+            throw new IllegalArgumentException("'IntegrationLogsRequestCreate' parameter is required");
         }
-        return imp.integrationsLogsPostHttp(request, integrationLogsRequest);
+        return imp.integrationsLogsPostHttp(request, integrationLogsRequestCreate);
     }
 
 }

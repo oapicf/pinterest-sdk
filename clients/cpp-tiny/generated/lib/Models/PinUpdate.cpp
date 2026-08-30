@@ -6,6 +6,7 @@ using namespace Tiny;
 
 PinUpdate::PinUpdate()
 {
+	ai_disclosures = null;
 	alt_text = std::string();
 	board_id = std::string();
 	board_section_id = std::string();
@@ -29,6 +30,20 @@ void
 PinUpdate::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
+
+    const char *ai_disclosuresKey = "ai_disclosures";
+
+    if(object.has_key(ai_disclosuresKey))
+    {
+        bourne::json value = object[ai_disclosuresKey];
+
+
+
+
+        AiDisclosuresUpdate* obj = &ai_disclosures;
+		obj->fromJson(value.dump());
+
+    }
 
     const char *alt_textKey = "alt_text";
 
@@ -142,6 +157,13 @@ PinUpdate::toJson()
 
 
 
+
+	object["ai_disclosures"] = getAiDisclosures().toJson();
+
+
+
+
+
     object["alt_text"] = getAltText();
 
 
@@ -200,6 +222,18 @@ PinUpdate::toJson()
 
 }
 
+AiDisclosuresUpdate
+PinUpdate::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+PinUpdate::setAiDisclosures(AiDisclosuresUpdate ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
+}
+
 std::string
 PinUpdate::getAltText()
 {
@@ -207,7 +241,7 @@ PinUpdate::getAltText()
 }
 
 void
-PinUpdate::setAltText(std::string  alt_text)
+PinUpdate::setAltText(std::string alt_text)
 {
 	this->alt_text = alt_text;
 }
@@ -219,7 +253,7 @@ PinUpdate::getBoardId()
 }
 
 void
-PinUpdate::setBoardId(std::string  board_id)
+PinUpdate::setBoardId(std::string board_id)
 {
 	this->board_id = board_id;
 }
@@ -231,7 +265,7 @@ PinUpdate::getBoardSectionId()
 }
 
 void
-PinUpdate::setBoardSectionId(std::string  board_section_id)
+PinUpdate::setBoardSectionId(std::string board_section_id)
 {
 	this->board_section_id = board_section_id;
 }
@@ -243,7 +277,7 @@ PinUpdate::getCarouselSlots()
 }
 
 void
-PinUpdate::setCarouselSlots(std::list <CarouselSlot> carousel_slots)
+PinUpdate::setCarouselSlots(std::list<CarouselSlot> carousel_slots)
 {
 	this->carousel_slots = carousel_slots;
 }
@@ -255,7 +289,7 @@ PinUpdate::getDescription()
 }
 
 void
-PinUpdate::setDescription(std::string  description)
+PinUpdate::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -267,7 +301,7 @@ PinUpdate::getLink()
 }
 
 void
-PinUpdate::setLink(std::string  link)
+PinUpdate::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -279,7 +313,7 @@ PinUpdate::getTitle()
 }
 
 void
-PinUpdate::setTitle(std::string  title)
+PinUpdate::setTitle(std::string title)
 {
 	this->title = title;
 }

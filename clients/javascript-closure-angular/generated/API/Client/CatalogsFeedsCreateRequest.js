@@ -31,7 +31,7 @@ API.Client.CatalogsFeedsCreateRequest.prototype.defaultCountry;
 API.Client.CatalogsFeedsCreateRequest.prototype.defaultCurrency;
 
 /**
- * @type {!API.Client.CatalogsFeedsCreateRequest_default_locale}
+ * @type {!API.Client.CatalogsCreativeAssetsFeedsCreateRequest_default_locale}
  * @export
  */
 API.Client.CatalogsFeedsCreateRequest.prototype.defaultLocale;

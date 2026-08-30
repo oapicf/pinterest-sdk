@@ -5,13 +5,13 @@
 -export_type([openapi_advertiser_defined_event/0]).
 
 -type openapi_advertiser_defined_event() ::
-    #{ 'name' => binary(),
-       'mapped_conversion_type' => binary()
+    #{ 'mapped_conversion_type' => openapi_conversion_tag_type_optimal:openapi_conversion_tag_type_optimal(),
+       'name' => binary()
      }.
 
-encode(#{ 'name' := Name,
-          'mapped_conversion_type' := MappedConversionType
+encode(#{ 'mapped_conversion_type' := MappedConversionType,
+          'name' := Name
         }) ->
-    #{ 'name' => Name,
-       'mapped_conversion_type' => MappedConversionType
+    #{ 'mapped_conversion_type' => MappedConversionType,
+       'name' => Name
      }.

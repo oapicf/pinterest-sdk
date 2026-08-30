@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.MediaType
 
 module CatalogsCreativeAssetsFilterValuesMap =
 
@@ -35,7 +36,7 @@ module CatalogsCreativeAssetsFilterValuesMap =
     [<JsonProperty(PropertyName = "google_product_category_6")>]
     GoogleProductCategory6 : string[];
     [<JsonProperty(PropertyName = "media_type")>]
-    MediaType : string[];
+    MediaType : MediaType[];
   }
 
   //#endregion

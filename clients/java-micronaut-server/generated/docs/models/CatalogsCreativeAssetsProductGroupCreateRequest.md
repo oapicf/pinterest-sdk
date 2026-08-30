@@ -10,7 +10,7 @@ The class is defined in **[CatalogsCreativeAssetsProductGroupCreateRequest.java]
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | `String` | Catalog id pertaining to the creative assets product group. | 
+**catalogId** | `String` | Catalog ID pertaining to the product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsCreativeAssetsProductGroupFilters`](CatalogsCreativeAssetsProductGroupFilters.md) |  | 

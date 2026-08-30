@@ -3,8 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.BusinessMemberAssetsSummaryAdAccountsInner;
-import org.openapitools.model.BusinessMemberAssetsSummaryProfilesInner;
+import org.openapitools.model.AssetIdWithPermissions;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -27,7 +26,7 @@ public class BusinessMemberAssetsSummary  {
 
   @Valid
 
-  private List<@Valid BusinessMemberAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
+  private List<@Valid AssetIdWithPermissions> adAccounts = new ArrayList<>();
 
  /**
   * List of profile IDs and respective permission levels.
@@ -36,26 +35,26 @@ public class BusinessMemberAssetsSummary  {
 
   @Valid
 
-  private List<@Valid BusinessMemberAssetsSummaryProfilesInner> profiles = new ArrayList<>();
+  private List<@Valid AssetIdWithPermissions> profiles = new ArrayList<>();
  /**
    * List of ad account IDs and respective permission levels.
    * @return adAccounts
   **/
   @JsonProperty("ad_accounts")
-  public List<@Valid BusinessMemberAssetsSummaryAdAccountsInner> getAdAccounts() {
+  public List<@Valid AssetIdWithPermissions> getAdAccounts() {
     return adAccounts;
   }
 
-  public void setAdAccounts(List<@Valid BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
+  public void setAdAccounts(List<@Valid AssetIdWithPermissions> adAccounts) {
     this.adAccounts = adAccounts;
   }
 
-  public BusinessMemberAssetsSummary adAccounts(List<@Valid BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
+  public BusinessMemberAssetsSummary adAccounts(List<@Valid AssetIdWithPermissions> adAccounts) {
     this.adAccounts = adAccounts;
     return this;
   }
 
-  public BusinessMemberAssetsSummary addAdAccountsItem(BusinessMemberAssetsSummaryAdAccountsInner adAccountsItem) {
+  public BusinessMemberAssetsSummary addAdAccountsItem(AssetIdWithPermissions adAccountsItem) {
     this.adAccounts.add(adAccountsItem);
     return this;
   }
@@ -65,20 +64,20 @@ public class BusinessMemberAssetsSummary  {
    * @return profiles
   **/
   @JsonProperty("profiles")
-  public List<@Valid BusinessMemberAssetsSummaryProfilesInner> getProfiles() {
+  public List<@Valid AssetIdWithPermissions> getProfiles() {
     return profiles;
   }
 
-  public void setProfiles(List<@Valid BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public void setProfiles(List<@Valid AssetIdWithPermissions> profiles) {
     this.profiles = profiles;
   }
 
-  public BusinessMemberAssetsSummary profiles(List<@Valid BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public BusinessMemberAssetsSummary profiles(List<@Valid AssetIdWithPermissions> profiles) {
     this.profiles = profiles;
     return this;
   }
 
-  public BusinessMemberAssetsSummary addProfilesItem(BusinessMemberAssetsSummaryProfilesInner profilesItem) {
+  public BusinessMemberAssetsSummary addProfilesItem(AssetIdWithPermissions profilesItem) {
     this.profiles.add(profilesItem);
     return this;
   }
@@ -117,10 +116,7 @@ public class BusinessMemberAssetsSummary  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

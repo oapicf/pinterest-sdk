@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CATALOGS_TYPE**](CatalogsType.md) |  | [default to null]
+**catalog_type** | [**STRING_32**](STRING_32.md) |  | [default to null]
 **credentials** | [**CATALOGS_FEED_CREDENTIALS**](CatalogsFeedCredentials.md) |  | [optional] [default to null]
 **default_currency** | [**NULLABLE_CURRENCY**](NullableCurrency.md) |  | [optional] [default to null]
 **format** | [**CATALOGS_FORMAT**](CatalogsFormat.md) |  | [optional] [default to null]

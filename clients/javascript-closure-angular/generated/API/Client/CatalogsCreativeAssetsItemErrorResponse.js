@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsCreativeAssetsItemErrorResponse');
 API.Client.CatalogsCreativeAssetsItemErrorResponse = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsItemErrorResponse.prototype.catalogType;
@@ -26,3 +26,18 @@ API.Client.CatalogsCreativeAssetsItemErrorResponse.prototype.creativeAssetsId;
  */
 API.Client.CatalogsCreativeAssetsItemErrorResponse.prototype.errors;
 
+/**
+ * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsItemErrorResponse.prototype.itemResponseKind;
+
+/** @enum {string} */
+API.Client.CatalogsCreativeAssetsItemErrorResponse.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}
+/** @enum {string} */
+API.Client.CatalogsCreativeAssetsItemErrorResponse.ItemResponseKindEnum = { 
+  creative_assets_item_error: 'creative_assets_item_error',
+}

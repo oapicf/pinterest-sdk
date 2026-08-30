@@ -1,0 +1,68 @@
+## AudienceSharingApi
+
+### List accounts with access to an audience owned by an ad account
+## List accounts with access to an audience owned by an ad account
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/audiences/shared/accounts?audienceId={{audienceId}}&accountType={{accountType}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### List accounts with access to an audience owned by a business
+## List accounts with access to an audience owned by a business
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/audiences/shared/accounts?audienceId={{audienceId}}&accountType={{accountType}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### List received audiences for a business
+## List received audiences for a business
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/audiences?order={{order}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Update audience sharing between ad accounts
+## Update audience sharing between ad accounts
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/audiences/ad_accounts/shared
+Content-Type: application/json
+Accept: application/json
+
+{
+ "audience_id": "<string>",
+ "operation_type": "<string>",
+ "recipient_account_ids": "<string>"
+}
+
+
+### Update audience sharing from an ad account to businesses
+## Update audience sharing from an ad account to businesses
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/audiences/businesses/shared
+Content-Type: application/json
+Accept: application/json
+
+{
+ "audience_id": "<string>",
+ "operation_type": "<string>",
+ "recipient_business_ids": "<string>"
+}
+
+
+### Update audience sharing from a business to ad accounts
+## Update audience sharing from a business to ad accounts
+PATCH https://api.pinterest.com/v5/businesses/{{business_id}}/audiences/ad_accounts/shared
+Content-Type: application/json
+Accept: application/json
+
+{
+ "audience_id": "<string>",
+ "operation_type": "<string>",
+ "recipient_account_ids": "<string>"
+}
+
+
+### Update audience sharing between businesses
+## Update audience sharing between businesses
+PATCH https://api.pinterest.com/v5/businesses/{{business_id}}/audiences/businesses/shared
+Content-Type: application/json
+Accept: application/json
+
+{
+ "audience_id": "<string>",
+ "operation_type": "<string>",
+ "recipient_business_ids": "<string>"
+}
+

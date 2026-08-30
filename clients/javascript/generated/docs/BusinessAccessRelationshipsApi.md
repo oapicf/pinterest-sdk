@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## brandAccountsCreate
 
-> BrandAccountsCreate200Response brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+> BrandAccount brandAccountsCreate(businessHierarchyId, brandAccountCreate)
 
 Create a Brand Account
 
@@ -34,9 +34,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
-let businessHierarchyId = "7009386637860"; // String | business hierarchy node id
-let brandAccountsCreateRequest = new PinterestSdk.BrandAccountsCreateRequest(); // BrandAccountsCreateRequest | 
-apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest, (error, data, response) => {
+let businessHierarchyId = "businessHierarchyId_example"; // String | business hierarchy node id
+let brandAccountCreate = new PinterestSdk.BrandAccountCreate(); // BrandAccountCreate | 
+apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -51,11 +51,11 @@ apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessHierarchyId** | **String**| business hierarchy node id | 
- **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  | 
+ **brandAccountCreate** | [**BrandAccountCreate**](BrandAccountCreate.md)|  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ## brandAccountsUpdate
 
-> BrandAccountsCreate200Response brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+> BrandAccount brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
 
 Update a Brand Account
 
@@ -85,10 +85,10 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
-let businessHierarchyId = "7009386637860"; // String | business hierarchy node id
-let brandAccountId = "729090764583391194"; // String | Unique identifier of a brand account.
-let brandAccountsUpdateRequest = new PinterestSdk.BrandAccountsUpdateRequest(); // BrandAccountsUpdateRequest | 
-apiInstance.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest, (error, data, response) => {
+let brandAccountId = "brandAccountId_example"; // String | 
+let businessHierarchyId = "businessHierarchyId_example"; // String | business hierarchy node id
+let brandAccountUpdate = new PinterestSdk.BrandAccountUpdate(); // BrandAccountUpdate | 
+apiInstance.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -102,13 +102,13 @@ apiInstance.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccoun
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **brandAccountId** | **String**|  | 
  **businessHierarchyId** | **String**| business hierarchy node id | 
- **brandAccountId** | **String**| Unique identifier of a brand account. | 
- **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  | 
+ **brandAccountUpdate** | [**BrandAccountUpdate**](BrandAccountUpdate.md)|  | 
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ## deleteBusinessMembership
 
-> DeletedMembersResponse deleteBusinessMembership(businessId, membersToDeleteBody)
+> DeleteBusinessMembership200Response deleteBusinessMembership(businessId, deleteBusinessMembershipBody)
 
 Terminate business memberships
 
@@ -138,9 +138,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
-let businessId = "729090764583391194"; // String | Business id
-let membersToDeleteBody = new PinterestSdk.MembersToDeleteBody(); // MembersToDeleteBody | List of members with role to delete.
-apiInstance.deleteBusinessMembership(businessId, membersToDeleteBody, (error, data, response) => {
+let businessId = "businessId_example"; // String | Business id
+let deleteBusinessMembershipBody = new PinterestSdk.DeleteBusinessMembershipBody(); // DeleteBusinessMembershipBody | 
+apiInstance.deleteBusinessMembership(businessId, deleteBusinessMembershipBody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -155,11 +155,11 @@ apiInstance.deleteBusinessMembership(businessId, membersToDeleteBody, (error, da
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Business id | 
- **membersToDeleteBody** | [**MembersToDeleteBody**](MembersToDeleteBody.md)| List of members with role to delete. | 
+ **deleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md)|  | 
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## deleteBusinessPartners
 
-> DeletePartnersResponse deleteBusinessPartners(businessId, deletePartnersRequest)
+> DeleteBusinessPartners deleteBusinessPartners(businessId, deleteBusinessPartnersDelete)
 
 Terminate business partnerships
 
@@ -189,9 +189,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let deletePartnersRequest = new PinterestSdk.DeletePartnersRequest(); // DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
-apiInstance.deleteBusinessPartners(businessId, deletePartnersRequest, (error, data, response) => {
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let deleteBusinessPartnersDelete = new PinterestSdk.DeleteBusinessPartnersDelete(); // DeleteBusinessPartnersDelete | 
+apiInstance.deleteBusinessPartners(businessId, deleteBusinessPartnersDelete, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -206,11 +206,11 @@ apiInstance.deleteBusinessPartners(businessId, deletePartnersRequest, (error, da
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
- **deletePartnersRequest** | [**DeletePartnersRequest**](DeletePartnersRequest.md)| An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  | 
+ **deleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md)|  | 
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -241,8 +241,9 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
 let opts = {
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'bookmark': "bookmark_example" // String | Cursor used to fetch the next page of items
+  'assetsSummary': true, // Boolean | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.getBusinessEmployers(opts, (error, data, response) => {
   if (error) {
@@ -258,8 +259,9 @@ apiInstance.getBusinessEmployers(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **assetsSummary** | **Boolean**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -277,7 +279,7 @@ Name | Type | Description  | Notes
 
 ## getBusinessMembers
 
-> GetBusinessMembers200Response getBusinessMembers(businessId, opts)
+> GetBusinessEmployers200Response getBusinessMembers(businessId, opts)
 
 Get business members
 
@@ -293,15 +295,15 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
 let opts = {
   'fetchSystemUsers': false, // Boolean | Fetches system users if True. Fetches regular user employees if False.
   'assetsSummary': false, // Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
   'businessRoles': [new PinterestSdk.MemberBusinessRole()], // [MemberBusinessRole] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
-  'memberIds': "00101010101,2222220101", // String | A list of business members ids separated by comma.
+  'memberIds': "memberIds_example", // String | A list of business members ids separated by comma.
   'startIndex': 0, // Number | An index to start fetching the results from. Only the results starting from this index will be returned.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.getBusinessMembers(businessId, opts, (error, data, response) => {
   if (error) {
@@ -324,11 +326,11 @@ Name | Type | Description  | Notes
  **memberIds** | **String**| A list of business members ids separated by comma. | [optional] 
  **startIndex** | **Number**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -342,7 +344,7 @@ Name | Type | Description  | Notes
 
 ## getBusinessPartners
 
-> GetBusinessPartners200Response getBusinessPartners(businessId, opts)
+> GetBusinessEmployers200Response getBusinessPartners(businessId, opts)
 
 Get business partners
 
@@ -358,14 +360,15 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
 let opts = {
   'assetsSummary': false, // Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-  'partnerType': new PinterestSdk.PartnerType(), // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-  'partnerIds': "00101010101,2222220101", // String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
+  'partnerType': new PinterestSdk.PartnerType(), // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  'partnerIds': "partnerIds_example", // String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
   'startIndex': 0, // Number | An index to start fetching the results from. Only the results starting from this index will be returned.
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'bookmark': "bookmark_example" // String | Cursor used to fetch the next page of items
+  'sortAscending': true, // Boolean | Sort ascending.
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.getBusinessPartners(businessId, opts, (error, data, response) => {
   if (error) {
@@ -383,15 +386,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
  **assetsSummary** | **Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
- **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
+ **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
  **partnerIds** | **String**| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] 
  **startIndex** | **Number**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sortAscending** | **Boolean**| Sort ascending. | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -405,7 +409,7 @@ Name | Type | Description  | Notes
 
 ## systemUserUpdate
 
-> systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+> systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody)
 
 Update a system user information.
 
@@ -421,10 +425,10 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
-let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
-let systemUserId = "729090764583391194"; // String | Unique identifier of a system user.
-let systemUserUpdateRequest = new PinterestSdk.SystemUserUpdateRequest(); // SystemUserUpdateRequest | 
-apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest, (error, data, response) => {
+let businessId = "businessId_example"; // String | Unique identifier of the requesting business.
+let systemUserId = "systemUserId_example"; // String | Unique identifier of a system user.
+let systemUserUpdateWithRequiredBody = new PinterestSdk.SystemUserUpdateWithRequiredBody(); // SystemUserUpdateWithRequiredBody | 
+apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -440,7 +444,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
  **systemUserId** | **String**| Unique identifier of a system user. | 
- **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  | 
+ **systemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
@@ -458,7 +462,7 @@ null (empty response body)
 
 ## updateBusinessMemberships
 
-> UpdateMemberResultsResponseArray updateBusinessMemberships(businessId, updateMemberBusinessRoleBody)
+> UpdateBusinessMembershipsResponse updateBusinessMemberships(businessId, businessMembershipMember)
 
 Update member&#39;s business role
 
@@ -474,9 +478,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BusinessAccessRelationshipsApi();
-let businessId = "729090764583391194"; // String | Business id
-let updateMemberBusinessRoleBody = [new PinterestSdk.UpdateMemberBusinessRoleBody()]; // [UpdateMemberBusinessRoleBody] | List of objects with the member id and the business_role.
-apiInstance.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody, (error, data, response) => {
+let businessId = "businessId_example"; // String | Business id
+let businessMembershipMember = [new PinterestSdk.BusinessMembershipMember()]; // [BusinessMembershipMember] | 
+apiInstance.updateBusinessMemberships(businessId, businessMembershipMember, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -491,11 +495,11 @@ apiInstance.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Business id | 
- **updateMemberBusinessRoleBody** | [**[UpdateMemberBusinessRoleBody]**](UpdateMemberBusinessRoleBody.md)| List of objects with the member id and the business_role. | 
+ **businessMembershipMember** | [**[BusinessMembershipMember]**](BusinessMembershipMember.md)|  | 
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

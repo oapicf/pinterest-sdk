@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdGroupResponse;
+import org.openapitools.model.AdGroup;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -24,7 +24,7 @@ public class AdGroupsList200Response  {
 
   @Valid
 
-  private List<@Valid AdGroupResponse> items = new ArrayList<>();
+  private List<@Valid AdGroup> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -49,20 +49,20 @@ public class AdGroupsList200Response  {
   **/
   @JsonProperty("items")
   @NotNull
-  public List<@Valid AdGroupResponse> getItems() {
+  public List<@Valid AdGroup> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid AdGroupResponse> items) {
+  public void setItems(List<@Valid AdGroup> items) {
     this.items = items;
   }
 
-  public AdGroupsList200Response items(List<@Valid AdGroupResponse> items) {
+  public AdGroupsList200Response items(List<@Valid AdGroup> items) {
     this.items = items;
     return this;
   }
 
-  public AdGroupsList200Response addItemsItem(AdGroupResponse itemsItem) {
+  public AdGroupsList200Response addItemsItem(AdGroup itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -101,10 +101,7 @@ public class AdGroupsList200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -16,9 +16,10 @@ class CatalogsHotelItemErrorResponse {
     required this.catalogType,
     this.errors = const [],
     this.hotelId,
+    required this.itemResponseKind,
   });
 
-  CatalogsType catalogType;
+  CatalogsHotelItemErrorResponseCatalogTypeEnum catalogType;
 
   /// Array with the errors for the item id requested
   List<ItemValidationEvent> errors;
@@ -32,21 +33,26 @@ class CatalogsHotelItemErrorResponse {
   ///
   String? hotelId;
 
+  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  CatalogsHotelItemErrorResponseItemResponseKindEnum itemResponseKind;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsHotelItemErrorResponse &&
     other.catalogType == catalogType &&
     _deepEquality.equals(other.errors, errors) &&
-    other.hotelId == hotelId;
+    other.hotelId == hotelId &&
+    other.itemResponseKind == itemResponseKind;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (catalogType.hashCode) +
     (errors.hashCode) +
-    (hotelId == null ? 0 : hotelId!.hashCode);
+    (hotelId == null ? 0 : hotelId!.hashCode) +
+    (itemResponseKind.hashCode);
 
   @override
-  String toString() => 'CatalogsHotelItemErrorResponse[catalogType=$catalogType, errors=$errors, hotelId=$hotelId]';
+  String toString() => 'CatalogsHotelItemErrorResponse[catalogType=$catalogType, errors=$errors, hotelId=$hotelId, itemResponseKind=$itemResponseKind]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -57,6 +63,7 @@ class CatalogsHotelItemErrorResponse {
     } else {
       json[r'hotel_id'] = null;
     }
+      json[r'item_response_kind'] = this.itemResponseKind;
     return json;
   }
 
@@ -71,17 +78,20 @@ class CatalogsHotelItemErrorResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelItemErrorResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelItemErrorResponse[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsHotelItemErrorResponse[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsHotelItemErrorResponse[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'errors'), 'Required key "CatalogsHotelItemErrorResponse[errors]" is missing from JSON.');
+        assert(json[r'errors'] != null, 'Required key "CatalogsHotelItemErrorResponse[errors]" has a null value in JSON.');
+        assert(json.containsKey(r'item_response_kind'), 'Required key "CatalogsHotelItemErrorResponse[item_response_kind]" is missing from JSON.');
+        assert(json[r'item_response_kind'] != null, 'Required key "CatalogsHotelItemErrorResponse[item_response_kind]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsHotelItemErrorResponse(
-        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
+        catalogType: CatalogsHotelItemErrorResponseCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
         errors: ItemValidationEvent.listFromJson(json[r'errors']),
         hotelId: mapValueOfType<String>(json, r'hotel_id'),
+        itemResponseKind: CatalogsHotelItemErrorResponseItemResponseKindEnum.fromJson(json[r'item_response_kind'])!,
       );
     }
     return null;
@@ -131,6 +141,159 @@ class CatalogsHotelItemErrorResponse {
   static const requiredKeys = <String>{
     'catalog_type',
     'errors',
+    'item_response_kind',
   };
 }
+
+
+enum CatalogsHotelItemErrorResponseCatalogTypeEnum {
+  HOTEL._(r'HOTEL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelItemErrorResponseCatalogTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsHotelItemErrorResponseCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsHotelItemErrorResponseCatalogTypeEnum? fromJson(dynamic value) => CatalogsHotelItemErrorResponseCatalogTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsHotelItemErrorResponseCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsHotelItemErrorResponseCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsHotelItemErrorResponseCatalogTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsHotelItemErrorResponseCatalogTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsHotelItemErrorResponseCatalogTypeEnum] to String,
+/// and [decode] dynamic data back to [CatalogsHotelItemErrorResponseCatalogTypeEnum].
+class CatalogsHotelItemErrorResponseCatalogTypeEnumTypeTransformer {
+  factory CatalogsHotelItemErrorResponseCatalogTypeEnumTypeTransformer() => _instance ??= const CatalogsHotelItemErrorResponseCatalogTypeEnumTypeTransformer._();
+
+  const CatalogsHotelItemErrorResponseCatalogTypeEnumTypeTransformer._();
+
+  String encode(CatalogsHotelItemErrorResponseCatalogTypeEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsHotelItemErrorResponseCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsHotelItemErrorResponseCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelItemErrorResponseCatalogTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'HOTEL': return CatalogsHotelItemErrorResponseCatalogTypeEnum.HOTEL;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsHotelItemErrorResponseCatalogTypeEnumTypeTransformer? _instance;
+}
+
+
+/// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+enum CatalogsHotelItemErrorResponseItemResponseKindEnum {
+  hotelItemError._(r'hotel_item_error'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelItemErrorResponseItemResponseKindEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsHotelItemErrorResponseItemResponseKindEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsHotelItemErrorResponseItemResponseKindEnum? fromJson(dynamic value) => CatalogsHotelItemErrorResponseItemResponseKindEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsHotelItemErrorResponseItemResponseKindEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsHotelItemErrorResponseItemResponseKindEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsHotelItemErrorResponseItemResponseKindEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsHotelItemErrorResponseItemResponseKindEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsHotelItemErrorResponseItemResponseKindEnum] to String,
+/// and [decode] dynamic data back to [CatalogsHotelItemErrorResponseItemResponseKindEnum].
+class CatalogsHotelItemErrorResponseItemResponseKindEnumTypeTransformer {
+  factory CatalogsHotelItemErrorResponseItemResponseKindEnumTypeTransformer() => _instance ??= const CatalogsHotelItemErrorResponseItemResponseKindEnumTypeTransformer._();
+
+  const CatalogsHotelItemErrorResponseItemResponseKindEnumTypeTransformer._();
+
+  String encode(CatalogsHotelItemErrorResponseItemResponseKindEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsHotelItemErrorResponseItemResponseKindEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsHotelItemErrorResponseItemResponseKindEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelItemErrorResponseItemResponseKindEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'hotel_item_error': return CatalogsHotelItemErrorResponseItemResponseKindEnum.hotelItemError;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsHotelItemErrorResponseItemResponseKindEnumTypeTransformer? _instance;
+}
+
 

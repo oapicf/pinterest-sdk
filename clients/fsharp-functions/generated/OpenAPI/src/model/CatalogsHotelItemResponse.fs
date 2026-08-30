@@ -4,7 +4,6 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.CatalogsHotelAttributes
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Pin
 
 module CatalogsHotelItemResponse =
@@ -16,9 +15,11 @@ module CatalogsHotelItemResponse =
     [<JsonProperty(PropertyName = "attributes")>]
     Attributes : CatalogsHotelAttributes;
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "hotel_id")>]
     HotelId : string;
+    [<JsonProperty(PropertyName = "item_response_kind")>]
+    ItemResponseKind : string;
     [<JsonProperty(PropertyName = "pins")>]
     Pins : Pin[];
   }

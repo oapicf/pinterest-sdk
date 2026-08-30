@@ -9,9 +9,10 @@
 
 
 #include <string>
+#include "CatalogsAiContentDisclosure.h"
 #include "CatalogsHotelAddress.h"
-#include "CatalogsHotelAttributes_allOf_main_image.h"
 #include "CatalogsHotelGuestRatings.h"
+#include "CatalogsHotelMainImage.h"
 #include <list>
 #include "Object.h"
 
@@ -49,11 +50,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Hotel address
 	 */
 	CatalogsHotelAddress getAddress();
 
-	/*! \brief Set 
+	/*! \brief Set Hotel address
 	 */
 	void setAddress(CatalogsHotelAddress  address);
 	/*! \brief Get Base price of the hotel room per night followed by the ISO currency code
@@ -119,11 +120,11 @@ public:
 	/*! \brief Set Brief description of the hotel.
 	 */
 	void setDescription(std::string  description);
-	/*! \brief Get 
+	/*! \brief Get If specified, you must provide all properties
 	 */
 	CatalogsHotelGuestRatings getGuestRatings();
 
-	/*! \brief Set 
+	/*! \brief Set If specified, you must provide all properties
 	 */
 	void setGuestRatings(CatalogsHotelGuestRatings  guest_ratings);
 	/*! \brief Get Latitude of the hotel.
@@ -168,20 +169,27 @@ public:
 	/*! \brief Set Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 	 */
 	void setSalePrice(std::string  sale_price);
-	/*! \brief Get <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+	/*! \brief Get <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
 	 */
 	std::list<std::string> getAdditionalImageLink();
 
-	/*! \brief Set <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+	/*! \brief Set <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
 	 */
 	void setAdditionalImageLink(std::list <std::string> additional_image_link);
-	/*! \brief Get 
+	/*! \brief Get AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
 	 */
-	CatalogsHotelAttributes_allOf_main_image getMainImage();
+	std::list<CatalogsAiContentDisclosure> getAiDisclosures();
 
-	/*! \brief Set 
+	/*! \brief Set AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
 	 */
-	void setMainImage(CatalogsHotelAttributes_allOf_main_image  main_image);
+	void setAiDisclosures(std::list <CatalogsAiContentDisclosure> ai_disclosures);
+	/*! \brief Get The main hotel image
+	 */
+	CatalogsHotelMainImage getMainImage();
+
+	/*! \brief Set The main hotel image
+	 */
+	void setMainImage(CatalogsHotelMainImage  main_image);
 
 private:
 	CatalogsHotelAddress address;
@@ -202,7 +210,8 @@ private:
 	std::list <std::string>neighborhood;
 	std::string sale_price;
 	std::list <std::string>additional_image_link;
-	CatalogsHotelAttributes_allOf_main_image main_image;
+	std::list <CatalogsAiContentDisclosure>ai_disclosures;
+	CatalogsHotelMainImage main_image;
 	void __init();
 	void __cleanup();
 

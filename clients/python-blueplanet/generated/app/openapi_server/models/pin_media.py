@@ -22,7 +22,7 @@ class PinMedia(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, images: ImageSize=None, media_type: str=None, cover_image_url: str=None, duration: float=None, height: int=None, video_url: str=None, width: int=None, items: List[PinMediaMetadata]=None):  # noqa: E501
+    def __init__(self, images: ImageSize=None, media_type: str=None, cover_image_url: str=None, duration: float=None, height: int=None, video_url: str=None, video_url_hls: str=None, width: int=None, items: List[PinMediaMetadata]=None):  # noqa: E501
         """PinMedia - a model defined in Swagger
 
         :param images: The images of this PinMedia.  # noqa: E501
@@ -37,6 +37,8 @@ class PinMedia(Model):
         :type height: int
         :param video_url: The video_url of this PinMedia.  # noqa: E501
         :type video_url: str
+        :param video_url_hls: The video_url_hls of this PinMedia.  # noqa: E501
+        :type video_url_hls: str
         :param width: The width of this PinMedia.  # noqa: E501
         :type width: int
         :param items: The items of this PinMedia.  # noqa: E501
@@ -49,6 +51,7 @@ class PinMedia(Model):
             'duration': float,
             'height': int,
             'video_url': str,
+            'video_url_hls': str,
             'width': int,
             'items': List[PinMediaMetadata]
         }
@@ -60,6 +63,7 @@ class PinMedia(Model):
             'duration': 'duration',
             'height': 'height',
             'video_url': 'video_url',
+            'video_url_hls': 'video_url_hls',
             'width': 'width',
             'items': 'items'
         }
@@ -70,6 +74,7 @@ class PinMedia(Model):
         self._duration = duration
         self._height = height
         self._video_url = video_url
+        self._video_url_hls = video_url_hls
         self._width = width
         self._items = items
 
@@ -221,6 +226,29 @@ class PinMedia(Model):
         """
 
         self._video_url = video_url
+
+    @property
+    def video_url_hls(self) -> str:
+        """Gets the video_url_hls of this PinMedia.
+
+        Video url (HLS).  **Note:** This field is limited and not available to all apps.  # noqa: E501
+
+        :return: The video_url_hls of this PinMedia.
+        :rtype: str
+        """
+        return self._video_url_hls
+
+    @video_url_hls.setter
+    def video_url_hls(self, video_url_hls: str):
+        """Sets the video_url_hls of this PinMedia.
+
+        Video url (HLS).  **Note:** This field is limited and not available to all apps.  # noqa: E501
+
+        :param video_url_hls: The video_url_hls of this PinMedia.
+        :type video_url_hls: str
+        """
+
+        self._video_url_hls = video_url_hls
 
     @property
     def width(self) -> int:

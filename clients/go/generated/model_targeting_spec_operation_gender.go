@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &TargetingSpecOperationGender{}
 // TargetingSpecOperationGender struct for TargetingSpecOperationGender
 type TargetingSpecOperationGender struct {
 	Field string `json:"field"`
-	Operation string `json:"operation"`
+	Operation TargetingSpecListOperation `json:"operation"`
 	Values []TargetingSpecGender `json:"values"`
 }
 
@@ -33,7 +33,7 @@ type _TargetingSpecOperationGender TargetingSpecOperationGender
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTargetingSpecOperationGender(field string, operation string, values []TargetingSpecGender) *TargetingSpecOperationGender {
+func NewTargetingSpecOperationGender(field string, operation TargetingSpecListOperation, values []TargetingSpecGender) *TargetingSpecOperationGender {
 	this := TargetingSpecOperationGender{}
 	this.Field = field
 	this.Operation = operation
@@ -74,9 +74,9 @@ func (o *TargetingSpecOperationGender) SetField(v string) {
 }
 
 // GetOperation returns the Operation field value
-func (o *TargetingSpecOperationGender) GetOperation() string {
+func (o *TargetingSpecOperationGender) GetOperation() TargetingSpecListOperation {
 	if o == nil {
-		var ret string
+		var ret TargetingSpecListOperation
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *TargetingSpecOperationGender) GetOperation() string {
 
 // GetOperationOk returns a tuple with the Operation field value
 // and a boolean to check if the value has been set.
-func (o *TargetingSpecOperationGender) GetOperationOk() (*string, bool) {
+func (o *TargetingSpecOperationGender) GetOperationOk() (*TargetingSpecListOperation, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,12 +93,11 @@ func (o *TargetingSpecOperationGender) GetOperationOk() (*string, bool) {
 }
 
 // SetOperation sets field value
-func (o *TargetingSpecOperationGender) SetOperation(v string) {
+func (o *TargetingSpecOperationGender) SetOperation(v TargetingSpecListOperation) {
 	o.Operation = v
 }
 
 // GetValues returns the Values field value
-// If the value is explicit nil, the zero value for []TargetingSpecGender will be returned
 func (o *TargetingSpecOperationGender) GetValues() []TargetingSpecGender {
 	if o == nil {
 		var ret []TargetingSpecGender
@@ -110,9 +109,8 @@ func (o *TargetingSpecOperationGender) GetValues() []TargetingSpecGender {
 
 // GetValuesOk returns a tuple with the Values field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TargetingSpecOperationGender) GetValuesOk() ([]TargetingSpecGender, bool) {
-	if o == nil || IsNil(o.Values) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Values, true
@@ -135,9 +133,7 @@ func (o TargetingSpecOperationGender) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["field"] = o.Field
 	toSerialize["operation"] = o.Operation
-	if o.Values != nil {
-		toSerialize["values"] = o.Values
-	}
+	toSerialize["values"] = o.Values
 	return toSerialize, nil
 }
 

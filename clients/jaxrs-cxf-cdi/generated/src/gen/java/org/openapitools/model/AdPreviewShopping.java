@@ -5,52 +5,26 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AdShoppingPreviewCreativeType;
+import org.openapitools.model.BasePreferredMediaType;
 import org.openapitools.model.CustomizableCTAType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+/**
+ * Ad preview from a catalog product group (shopping).
+ **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-
+@ApiModel(description = "Ad preview from a catalog product group (shopping).")
 public class AdPreviewShopping   {
   
   private String catalogProductGroupId;
 
-
-public enum CreativeTypeEnum {
-
-    @JsonProperty("SHOPPING") SHOPPING(String.valueOf("SHOPPING")), @JsonProperty("CAROUSEL") CAROUSEL(String.valueOf("CAROUSEL")), @JsonProperty("COLLECTION") COLLECTION(String.valueOf("COLLECTION")), @JsonProperty("REGULAR") REGULAR(String.valueOf("REGULAR"));
-
-
-    private String value;
-
-    CreativeTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static CreativeTypeEnum fromValue(String value) {
-        for (CreativeTypeEnum b : CreativeTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private CreativeTypeEnum creativeType;
+  private AdShoppingPreviewCreativeType creativeType;
 
   private CustomizableCTAType customizableCtaType;
 
@@ -64,38 +38,9 @@ public enum CreativeTypeEnum {
 
   private String itemId;
 
+  private BasePreferredMediaType preferredMediaType;
 
-public enum PreferredMediaTypeEnum {
-
-    @JsonProperty("VIDEO") VIDEO(String.valueOf("VIDEO")), @JsonProperty("IMAGE") IMAGE(String.valueOf("IMAGE"));
-
-
-    private String value;
-
-    PreferredMediaTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static PreferredMediaTypeEnum fromValue(String value) {
-        for (PreferredMediaTypeEnum b : PreferredMediaTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private PreferredMediaTypeEnum preferredMediaType;
+  private Boolean showPromotion;
 
   private String videoTag;
 
@@ -122,7 +67,7 @@ public enum PreferredMediaTypeEnum {
   /**
    * Ad format of the shopping ad preview.
    **/
-  public AdPreviewShopping creativeType(CreativeTypeEnum creativeType) {
+  public AdPreviewShopping creativeType(AdShoppingPreviewCreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -131,10 +76,10 @@ public enum PreferredMediaTypeEnum {
   @ApiModelProperty(example = "SHOPPING", required = true, value = "Ad format of the shopping ad preview.")
   @JsonProperty("creative_type")
   @NotNull
-  public CreativeTypeEnum getCreativeType() {
+  public AdShoppingPreviewCreativeType getCreativeType() {
     return creativeType;
   }
-  public void setCreativeType(CreativeTypeEnum creativeType) {
+  public void setCreativeType(AdShoppingPreviewCreativeType creativeType) {
     this.creativeType = creativeType;
   }
 
@@ -256,7 +201,7 @@ public enum PreferredMediaTypeEnum {
   /**
    * Preferred media type.
    **/
-  public AdPreviewShopping preferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public AdPreviewShopping preferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
     return this;
   }
@@ -264,11 +209,30 @@ public enum PreferredMediaTypeEnum {
   
   @ApiModelProperty(example = "IMAGE", value = "Preferred media type.")
   @JsonProperty("preferred_media_type")
-  public PreferredMediaTypeEnum getPreferredMediaType() {
+  public BasePreferredMediaType getPreferredMediaType() {
     return preferredMediaType;
   }
-  public void setPreferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public void setPreferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
+  }
+
+
+  /**
+   * Include promotion data in preview when available on catalog item. Defaults to false.
+   **/
+  public AdPreviewShopping showPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Include promotion data in preview when available on catalog item. Defaults to false.")
+  @JsonProperty("show_promotion")
+  public Boolean getShowPromotion() {
+    return showPromotion;
+  }
+  public void setShowPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
   }
 
 
@@ -310,12 +274,13 @@ public enum PreferredMediaTypeEnum {
         Objects.equals(this.imageTag, adPreviewShopping.imageTag) &&
         Objects.equals(this.itemId, adPreviewShopping.itemId) &&
         Objects.equals(this.preferredMediaType, adPreviewShopping.preferredMediaType) &&
+        Objects.equals(this.showPromotion, adPreviewShopping.showPromotion) &&
         Objects.equals(this.videoTag, adPreviewShopping.videoTag);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogProductGroupId, creativeType, customizableCtaType, heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, videoTag);
+    return Objects.hash(catalogProductGroupId, creativeType, customizableCtaType, heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, showPromotion, videoTag);
   }
 
   @Override
@@ -332,6 +297,7 @@ public enum PreferredMediaTypeEnum {
     sb.append("    imageTag: ").append(toIndentedString(imageTag)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    preferredMediaType: ").append(toIndentedString(preferredMediaType)).append("\n");
+    sb.append("    showPromotion: ").append(toIndentedString(showPromotion)).append("\n");
     sb.append("    videoTag: ").append(toIndentedString(videoTag)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -342,10 +308,7 @@ public enum PreferredMediaTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

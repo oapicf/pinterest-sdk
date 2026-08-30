@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Conversion events.",
+  "name": "ConversionEventsCreate",
+  "fields": [
+    {
+      "name": "data",
+      "type": {
+        "type": "array",
+        "items": "model.ConversionEventsDataItems"
+      },
+      "doc": "A list of events (one or more) encapsulated by a data object."
+    }
+  ]
+
+}

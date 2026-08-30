@@ -21,9 +21,9 @@ Method | HTTP request | Description
 ```c
 // Redeem ad credits
 //
-// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+// Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 //
-ads_credit_redeem_response_t* BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_credit_redeem_request_t *ads_credit_redeem_request);
+ads_credit_redeem_t* BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_credit_redeem_create_t *ads_credit_redeem_create);
 ```
 
 ### Parameters
@@ -31,11 +31,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**ads_credit_redeem_request** | **[ads_credit_redeem_request_t](ads_credit_redeem_request.md) \*** | Redeem ad credits request. | 
+**ads_credit_redeem_create** | **[ads_credit_redeem_create_t](ads_credit_redeem_create.md) \*** |  | 
 
 ### Return type
 
-[ads_credit_redeem_response_t](ads_credit_redeem_response.md) *
+[ads_credit_redeem_t](ads_credit_redeem.md) *
 
 
 ### Authorization
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 ```c
 // Get ads credit discounts
 //
-// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+// Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 //
 ads_credits_discounts_get_200_response_t* BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size);
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 //
 // Get billing invoices in the advertiser account.
 //
-billing_invoices_get_200_response_t* BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_rest_api_billingInvoicesGet_sort_e sort, pinterest_rest_api_billingInvoicesGet_order_e order, pinterest_rest_api_billingInvoicesGet_status_e status, pinterest_rest_api_billingInvoicesGet_document_type_e document_type, char start_due_date, char end_due_date);
+billing_invoices_get_200_response_t* BillingAPI_billingInvoicesGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, pinterest_lib_pagination_order_e order, billing_invoice_sort_field_e sort, billing_invoice_status_e status, billing_invoice_document_type_e document_type, char start_due_date, char end_due_date);
 ```
 
 ### Parameters
@@ -129,11 +129,11 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
-**sort** | **pinterest_rest_api_billingInvoicesGet_sort_e** | Field of which to sort billing invoices | [optional] [default to &#39;DUE_DATE&#39;]
-**order** | **pinterest_rest_api_billingInvoicesGet_order_e** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
-**status** | **pinterest_rest_api_billingInvoicesGet_status_e** | Status of billing invoices to filter by | [optional] 
-**document_type** | **pinterest_rest_api_billingInvoicesGet_document_type_e** | Document type of billing invoices to filter by | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+**order** | **pinterest_lib_pagination_order_e** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+**sort** | **billing_invoice_sort_field_e** | Field of which to sort billing invoices | [optional] 
+**status** | **billing_invoice_status_e** | Status of billing invoices to filter by | [optional] 
+**document_type** | **billing_invoice_document_type_e** | Document type of billing invoices to filter by | [optional] 
 **start_due_date** | **char** | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
 **end_due_date** | **char** | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
 
@@ -157,19 +157,19 @@ Name | Type | Description  | Notes
 ```c
 // Get billing profiles
 //
-// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+// Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 //
-billing_profiles_get_200_response_t* BillingAPI_billingProfilesGet(apiClient_t *apiClient, char *ad_account_id, int *is_active, char *bookmark, int *page_size);
+billing_profiles_get_200_response_t* BillingAPI_billingProfilesGet(apiClient_t *apiClient, int *is_active, char *ad_account_id, char *bookmark, int *page_size);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
 **is_active** | **int \*** | Return active billing profiles, if false return all billing profiles. | 
+**ad_account_id** | **char \*** | Unique identifier of an ad account. | 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -191,9 +191,9 @@ Name | Type | Description  | Notes
 ```c
 // Get Salesforce account details including bill-to information.
 //
-// Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
-ssio_account_response_t* BillingAPI_ssioAccountsGet(apiClient_t *apiClient, char *ad_account_id);
+ssio_account_t* BillingAPI_ssioAccountsGet(apiClient_t *apiClient, char *ad_account_id);
 ```
 
 ### Parameters
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[ssio_account_response_t](ssio_account_response.md) *
+[ssio_account_t](ssio_account.md) *
 
 
 ### Authorization
@@ -222,9 +222,9 @@ Name | Type | Description  | Notes
 ```c
 // Create insertion order through SSIO.
 //
-// Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
-ssio_create_insertion_order_response_t* BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id, ssio_create_insertion_order_request_t *ssio_create_insertion_order_request);
+ssio_insertion_order_t* BillingAPI_ssioInsertionOrderCreate(apiClient_t *apiClient, char *ad_account_id, ssio_insertion_order_create_t *ssio_insertion_order_create);
 ```
 
 ### Parameters
@@ -232,11 +232,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**ssio_create_insertion_order_request** | **[ssio_create_insertion_order_request_t](ssio_create_insertion_order_request.md) \*** | Order line to create. | 
+**ssio_insertion_order_create** | **[ssio_insertion_order_create_t](ssio_insertion_order_create.md) \*** |  | 
 
 ### Return type
 
-[ssio_create_insertion_order_response_t](ssio_create_insertion_order_response.md) *
+[ssio_insertion_order_t](ssio_insertion_order.md) *
 
 
 ### Authorization
@@ -254,9 +254,9 @@ Name | Type | Description  | Notes
 ```c
 // Edit insertion order through SSIO.
 //
-// Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
-ssio_edit_insertion_order_response_t* BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, ssio_edit_insertion_order_request_t *ssio_edit_insertion_order_request);
+ssio_insertion_order_t* BillingAPI_ssioInsertionOrderEdit(apiClient_t *apiClient, char *ad_account_id, ssio_insertion_order_update_t *ssio_insertion_order_update);
 ```
 
 ### Parameters
@@ -264,11 +264,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
-**ssio_edit_insertion_order_request** | **[ssio_edit_insertion_order_request_t](ssio_edit_insertion_order_request.md) \*** | Order line to create. | 
+**ssio_insertion_order_update** | **[ssio_insertion_order_update_t](ssio_insertion_order_update.md) \*** |  | 
 
 ### Return type
 
-[ssio_edit_insertion_order_response_t](ssio_edit_insertion_order_response.md) *
+[ssio_insertion_order_t](ssio_insertion_order.md) *
 
 
 ### Authorization
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 ```c
 // Get insertion order status by ad account id.
 //
-// Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
 ssio_insertion_orders_status_get_by_ad_account_200_response_t* BillingAPI_ssioInsertionOrdersStatusGetByAdAccount(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size);
 ```
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 ```c
 // Get insertion order status by pin order id.
 //
-// Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
 ssio_insertion_order_status_response_t* BillingAPI_ssioInsertionOrdersStatusGetByPinOrderId(apiClient_t *apiClient, char *ad_account_id, char *pin_order_id);
 ```
@@ -351,9 +351,9 @@ Name | Type | Description  | Notes
 ```c
 // Get Salesforce order lines by ad account id.
 //
-// Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+//   Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 //
-ssio_order_lines_get_by_ad_account_200_response_t* BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, char *pin_order_id);
+ssio_order_lines_get_by_ad_account_200_response_t* BillingAPI_ssioOrderLinesGetByAdAccount(apiClient_t *apiClient, char *ad_account_id, char *pin_order_id, char *bookmark, int *page_size);
 ```
 
 ### Parameters
@@ -361,9 +361,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | 
+**pin_order_id** | **char \*** | The pin order id associated with the SSIO insertion order | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
-**pin_order_id** | **char \*** | The pin order id associated with the ssio insertino order | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

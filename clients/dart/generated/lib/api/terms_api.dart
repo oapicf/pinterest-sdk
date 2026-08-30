@@ -18,7 +18,7 @@ class TermsApi {
 
   /// List related terms
   ///
-  /// Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
+  /// Get a list of terms logically related to each input term.  Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -26,7 +26,7 @@ class TermsApi {
   ///
   /// * [List<String>] terms (required):
   ///   List of input terms.
-  Future<Response> termsRelatedListWithHttpInfo(List<String> terms,) async {
+  Future<Response> termsRelatedListWithHttpInfo(List<String> terms, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/terms/related';
 
@@ -50,19 +50,20 @@ class TermsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List related terms
   ///
-  /// Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
+  /// Get a list of terms logically related to each input term.  Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
   ///
   /// Parameters:
   ///
   /// * [List<String>] terms (required):
   ///   List of input terms.
-  Future<RelatedTerms?> termsRelatedList(List<String> terms,) async {
-    final response = await termsRelatedListWithHttpInfo(terms,);
+  Future<RelatedTerms?> termsRelatedList(List<String> terms, { Future<void>? abortTrigger, }) async {
+    final response = await termsRelatedListWithHttpInfo(terms, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -78,7 +79,7 @@ class TermsApi {
 
   /// List suggested terms
   ///
-  /// Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
+  /// Get popular search terms that begin with your input term.  Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -89,7 +90,7 @@ class TermsApi {
   ///
   /// * [int] limit:
   ///   Max suggested terms to return.
-  Future<Response> termsSuggestedListWithHttpInfo(String term, { int? limit, }) async {
+  Future<Response> termsSuggestedListWithHttpInfo(String term, { int? limit, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/terms/suggested';
 
@@ -116,12 +117,13 @@ class TermsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List suggested terms
   ///
-  /// Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
+  /// Get popular search terms that begin with your input term.  Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
   ///
   /// Parameters:
   ///
@@ -130,8 +132,8 @@ class TermsApi {
   ///
   /// * [int] limit:
   ///   Max suggested terms to return.
-  Future<List<String>?> termsSuggestedList(String term, { int? limit, }) async {
-    final response = await termsSuggestedListWithHttpInfo(term,  limit: limit, );
+  Future<List<String>?> termsSuggestedList(String term, { int? limit, Future<void>? abortTrigger, }) async {
+    final response = await termsSuggestedListWithHttpInfo(term, limit: limit, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

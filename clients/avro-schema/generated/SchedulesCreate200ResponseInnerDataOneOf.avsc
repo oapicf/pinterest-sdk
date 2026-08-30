@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SchedulesCreate200ResponseInnerDataOneOf",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "schedule_id",
+      "type": "string",
+      "doc": "Schedule ID."
+    },
+    {
+      "name": "exceptions",
+      "type": "model.PinterestLibError",
+      "doc": ""
+    }
+  ]
+
+}

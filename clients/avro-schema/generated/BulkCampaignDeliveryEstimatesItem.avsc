@@ -1,0 +1,69 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Delivery estimate result for a single campaign within a bulk request.",
+  "name": "BulkCampaignDeliveryEstimatesItem",
+  "fields": [
+    {
+      "name": "adgroup_audience_sizes",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignPlanningAdGroupAudienceSize"
+      }],
+      "doc": "Range audience sizes for each ad group, in the same order as the ad groups in the request.",
+      "default": null
+    },
+    {
+      "name": "conversion_rate",
+      "type": ["null", "float"],
+      "doc": "Conversion rate estimate. Used to translate impressions into conversions for oCPM ads, adapted based on the input conversion event and attribution windows.",
+      "default": null
+    },
+    {
+      "name": "conversion_rates",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignPlanningConversionRate"
+      }],
+      "doc": "Conversion rate estimates. Used to translate impressions into conversions for oCPM ads based on different conversion event and attribution windows settings.",
+      "default": null
+    },
+    {
+      "name": "curves",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignPlanningCurveEstimate"
+      }],
+      "doc": "Estimated curves. Each curve will pertain to a single estimation type.",
+      "default": null
+    },
+    {
+      "name": "derived_metrics",
+      "type": ["null", "model.CampaignDeliveryEstimatesDerivedMetrics"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "errors",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignPlanningResponseError"
+      }],
+      "doc": "Errors encountered during estimation for this campaign.",
+      "default": null
+    },
+    {
+      "name": "estimate_id",
+      "type": ["null", "string"],
+      "doc": "UUID used to track delivery estimates when they are generated as part of a saved campaign.",
+      "default": null
+    },
+    {
+      "name": "max_potential_spend",
+      "type": ["null", "int"],
+      "doc": "Maximum potential spend estimate.",
+      "default": null
+    }
+  ]
+
+}

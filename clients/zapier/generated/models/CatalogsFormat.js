@@ -8,6 +8,7 @@ module.exports = {
                     'TSV',
                     'CSV',
                     'XML',
+                    'INTEGRATION',
                 ],
             }
         )

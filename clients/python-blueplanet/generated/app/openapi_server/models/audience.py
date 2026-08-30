@@ -7,6 +7,8 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.audience_rule import AudienceRule  # noqa: F401,E501
+from app.openapi_server.models.audience_status import AudienceStatus  # noqa: F401,E501
+from app.openapi_server.models.pinner_list_type import PinnerListType  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -17,13 +19,13 @@ class Audience(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_account_id: str=None, audience_type: str=None, created_by_company_name: str=None, created_timestamp: int=None, description: str=None, id: str=None, name: str=None, rule: AudienceRule=None, size: int=None, status: str=None, type: str=None, updated_timestamp: int=None):  # noqa: E501
+    def __init__(self, ad_account_id: str=None, audience_type: PinnerListType=None, created_by_company_name: str=None, created_timestamp: int=None, description: str=None, id: str=None, is_nca: bool=None, name: str=None, rule: AudienceRule=None, size: int=None, status: AudienceStatus=None, type: str=None, updated_timestamp: int=None):  # noqa: E501
         """Audience - a model defined in Swagger
 
         :param ad_account_id: The ad_account_id of this Audience.  # noqa: E501
         :type ad_account_id: str
         :param audience_type: The audience_type of this Audience.  # noqa: E501
-        :type audience_type: str
+        :type audience_type: PinnerListType
         :param created_by_company_name: The created_by_company_name of this Audience.  # noqa: E501
         :type created_by_company_name: str
         :param created_timestamp: The created_timestamp of this Audience.  # noqa: E501
@@ -32,6 +34,8 @@ class Audience(Model):
         :type description: str
         :param id: The id of this Audience.  # noqa: E501
         :type id: str
+        :param is_nca: The is_nca of this Audience.  # noqa: E501
+        :type is_nca: bool
         :param name: The name of this Audience.  # noqa: E501
         :type name: str
         :param rule: The rule of this Audience.  # noqa: E501
@@ -39,7 +43,7 @@ class Audience(Model):
         :param size: The size of this Audience.  # noqa: E501
         :type size: int
         :param status: The status of this Audience.  # noqa: E501
-        :type status: str
+        :type status: AudienceStatus
         :param type: The type of this Audience.  # noqa: E501
         :type type: str
         :param updated_timestamp: The updated_timestamp of this Audience.  # noqa: E501
@@ -47,15 +51,16 @@ class Audience(Model):
         """
         self.swagger_types = {
             'ad_account_id': str,
-            'audience_type': str,
+            'audience_type': PinnerListType,
             'created_by_company_name': str,
             'created_timestamp': int,
             'description': str,
             'id': str,
+            'is_nca': bool,
             'name': str,
             'rule': AudienceRule,
             'size': int,
-            'status': str,
+            'status': AudienceStatus,
             'type': str,
             'updated_timestamp': int
         }
@@ -67,6 +72,7 @@ class Audience(Model):
             'created_timestamp': 'created_timestamp',
             'description': 'description',
             'id': 'id',
+            'is_nca': 'is_nca',
             'name': 'name',
             'rule': 'rule',
             'size': 'size',
@@ -81,6 +87,7 @@ class Audience(Model):
         self._created_timestamp = created_timestamp
         self._description = description
         self._id = id
+        self._is_nca = is_nca
         self._name = name
         self._rule = rule
         self._size = size
@@ -125,24 +132,24 @@ class Audience(Model):
         self._ad_account_id = ad_account_id
 
     @property
-    def audience_type(self) -> str:
+    def audience_type(self) -> PinnerListType:
         """Gets the audience_type of this Audience.
 
-        <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR  # noqa: E501
+        [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR  # noqa: E501
 
         :return: The audience_type of this Audience.
-        :rtype: str
+        :rtype: PinnerListType
         """
         return self._audience_type
 
     @audience_type.setter
-    def audience_type(self, audience_type: str):
+    def audience_type(self, audience_type: PinnerListType):
         """Sets the audience_type of this Audience.
 
-        <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR  # noqa: E501
+        [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR  # noqa: E501
 
         :param audience_type: The audience_type of this Audience.
-        :type audience_type: str
+        :type audience_type: PinnerListType
         """
 
         self._audience_type = audience_type
@@ -242,6 +249,29 @@ class Audience(Model):
         self._id = id
 
     @property
+    def is_nca(self) -> bool:
+        """Gets the is_nca of this Audience.
+
+        Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.  # noqa: E501
+
+        :return: The is_nca of this Audience.
+        :rtype: bool
+        """
+        return self._is_nca
+
+    @is_nca.setter
+    def is_nca(self, is_nca: bool):
+        """Sets the is_nca of this Audience.
+
+        Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.  # noqa: E501
+
+        :param is_nca: The is_nca of this Audience.
+        :type is_nca: bool
+        """
+
+        self._is_nca = is_nca
+
+    @property
     def name(self) -> str:
         """Gets the name of this Audience.
 
@@ -309,24 +339,24 @@ class Audience(Model):
         self._size = size
 
     @property
-    def status(self) -> str:
+    def status(self) -> AudienceStatus:
         """Gets the status of this Audience.
 
         Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.  # noqa: E501
 
         :return: The status of this Audience.
-        :rtype: str
+        :rtype: AudienceStatus
         """
         return self._status
 
     @status.setter
-    def status(self, status: str):
+    def status(self, status: AudienceStatus):
         """Sets the status of this Audience.
 
         Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.  # noqa: E501
 
         :param status: The status of this Audience.
-        :type status: str
+        :type status: AudienceStatus
         """
 
         self._status = status

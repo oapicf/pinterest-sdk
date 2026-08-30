@@ -3,7 +3,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **daily\_metrics** | [**List**](PinAnalyticsMetricsResponse_daily_metrics_inner.md) | Array with the requested daily metric records | [optional] [default to null] |
+| **daily\_metrics** | [**List**](PinAnalyticsDailyMetrics.md) | Array with the requested daily metric records | [optional] [default to null] |
 | **lifetime\_metrics** | **Map** | The lifetime metric name and value. | [optional] [default to null] |
 | **summary\_metrics** | **Map** | The metric name and value over the requested period for each requested metric | [optional] [default to null] |
 

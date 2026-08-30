@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **ios_deep_link** | **string** | IOS deep link to the creative assets page. | [optional] [default to undefined]
 **link** | **string** | Link to the creative assets page. | [optional] [default to undefined]
 **title** | **string** | The name of the creative assets. | [optional] [default to undefined]
-**visibility** | **string** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. | [optional] [default to undefined]
+**visibility** | **string** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): \&#39;visible\&#39;, \&#39;hidden\&#39;. | [optional] [default to undefined]
 
 ## Example
 

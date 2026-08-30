@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.MatchTypeResponse
+open OpenAPI.Model.MatchType
 open OpenAPI.Model.int option
 
 module Keyword =
@@ -11,13 +11,13 @@ module Keyword =
 
 
   type Keyword = {
-    Bid : int option;
-    MatchType : MatchTypeResponse;
-    Value : string;
     Archived : bool;
+    Bid : int option;
     Id : string;
+    MatchType : MatchType;
     ParentId : string;
     ParentType : string;
     Type : string;
+    Value : string;
   }
   //#endregion

@@ -15,28 +15,21 @@
 
 typedef struct catalogs_product_group_filter_operator_type_criteria_t catalogs_product_group_filter_operator_type_criteria_t;
 
-
-// Enum FILTEROPERATORTYPE for catalogs_product_group_filter_operator_type_criteria
-
-typedef enum  { pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_NULL = 0, pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_IS, pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_CONTAINS } pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e;
-
-char* catalogs_product_group_filter_operator_type_criteria_filter_operator_type_ToString(pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_type);
-
-pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e catalogs_product_group_filter_operator_type_criteria_filter_operator_type_FromString(char* filter_operator_type);
+#include "filter_operator_type.h"
 
 
 
 typedef struct catalogs_product_group_filter_operator_type_criteria_t {
-    pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_type; //enum
-    int negated; //boolean
+    pinterest_rest_api_filter_operator_type__e filter_operator_type; //referenced enum
+    int *negated; //boolean
     list_t *values; //primitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_filter_operator_type_criteria_t;
 
 __attribute__((deprecated)) catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria_create(
-    pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_type,
-    int negated,
+    pinterest_rest_api_filter_operator_type__e filter_operator_type,
+    int *negated,
     list_t *values
 );
 

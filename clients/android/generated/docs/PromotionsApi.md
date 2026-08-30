@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## promotionsCreate
 
-> PromotionsResponse promotionsCreate(adAccountId, promotionCreateRequest)
+> PromotionsResponse promotionsCreate(adAccountId, promotionCreate)
 
 Create promotions
 
@@ -28,9 +28,9 @@ Create multiple new promotions.
 
 PromotionsApi apiInstance = new PromotionsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-List<PromotionCreateRequest> promotionCreateRequest = Arrays.asList(new PromotionCreateRequest()); // List<PromotionCreateRequest> | List of promotions to create, size limit [1, 30].
+List<PromotionCreate> promotionCreate = Arrays.asList(new PromotionCreate()); // List<PromotionCreate> | 
 try {
-    PromotionsResponse result = apiInstance.promotionsCreate(adAccountId, promotionCreateRequest);
+    PromotionsResponse result = apiInstance.promotionsCreate(adAccountId, promotionCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PromotionsApi#promotionsCreate");
@@ -44,7 +44,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **promotionCreateRequest** | [**List&lt;PromotionCreateRequest&gt;**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. |
+ **promotionCreate** | [**List&lt;PromotionCreate&gt;**](PromotionCreate.md)|  |
 
 ### Return type
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ## promotionsDelete
 
-> promotionsDelete(adAccountId, promotionId)
+> Promotion promotionsDelete(promotionId, adAccountId)
 
 Delete promotion by id
 
@@ -75,10 +75,11 @@ Delete a promotion within Pinterest.
 //import org.openapitools.client.api.PromotionsApi;
 
 PromotionsApi apiInstance = new PromotionsApi();
+String promotionId = null; // String | Promotion ID
 String adAccountId = null; // String | Unique identifier of an ad account.
-String promotionId = null; // String | Unique identifier of a promotion
 try {
-    apiInstance.promotionsDelete(adAccountId, promotionId);
+    Promotion result = apiInstance.promotionsDelete(promotionId, adAccountId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PromotionsApi#promotionsDelete");
     e.printStackTrace();
@@ -90,12 +91,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **String**| Promotion ID | [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **promotionId** | **String**| Unique identifier of a promotion | [default to null]
 
 ### Return type
 
-null (empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -109,7 +110,7 @@ null (empty response body)
 
 ## promotionsGet
 
-> PromotionResponse promotionsGet(adAccountId, promotionId)
+> Promotion promotionsGet(promotionId, adAccountId)
 
 Get promotion by id
 
@@ -122,10 +123,10 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 //import org.openapitools.client.api.PromotionsApi;
 
 PromotionsApi apiInstance = new PromotionsApi();
+String promotionId = null; // String | Promotion ID
 String adAccountId = null; // String | Unique identifier of an ad account.
-String promotionId = null; // String | Unique identifier of a promotion
 try {
-    PromotionResponse result = apiInstance.promotionsGet(adAccountId, promotionId);
+    Promotion result = apiInstance.promotionsGet(promotionId, adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PromotionsApi#promotionsGet");
@@ -138,12 +139,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **String**| Promotion ID | [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **promotionId** | **String**| Unique identifier of a promotion | [default to null]
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -157,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## promotionsList
 
-> PromotionsList200Response promotionsList(adAccountId, pageSize, order, bookmark)
+> PromotionsList200Response promotionsList(adAccountId, bookmark, pageSize, order)
 
 Get promotions
 
@@ -171,11 +172,11 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 
 PromotionsApi apiInstance = new PromotionsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-String order = ASCENDING; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+PinterestLibPaginationOrder order = null; // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 try {
-    PromotionsList200Response result = apiInstance.promotionsList(adAccountId, pageSize, order, bookmark);
+    PromotionsList200Response result = apiInstance.promotionsList(adAccountId, bookmark, pageSize, order);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PromotionsApi#promotionsList");
@@ -189,9 +190,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
 
 ### Return type
 
@@ -209,7 +210,7 @@ Name | Type | Description  | Notes
 
 ## promotionsUpdate
 
-> PromotionsResponse promotionsUpdate(adAccountId, promotionUpdateRequest)
+> PromotionsResponse promotionsUpdate(adAccountId, promotionBatchUpdate)
 
 Update promotions
 
@@ -223,9 +224,9 @@ Update multiple promotions.
 
 PromotionsApi apiInstance = new PromotionsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-List<PromotionUpdateRequest> promotionUpdateRequest = Arrays.asList(new PromotionUpdateRequest()); // List<PromotionUpdateRequest> | List of promotions to create, size limit [1, 30].
+List<PromotionBatchUpdate> promotionBatchUpdate = Arrays.asList(new PromotionBatchUpdate()); // List<PromotionBatchUpdate> | 
 try {
-    PromotionsResponse result = apiInstance.promotionsUpdate(adAccountId, promotionUpdateRequest);
+    PromotionsResponse result = apiInstance.promotionsUpdate(adAccountId, promotionBatchUpdate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PromotionsApi#promotionsUpdate");
@@ -239,7 +240,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **promotionUpdateRequest** | [**List&lt;PromotionUpdateRequest&gt;**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. |
+ **promotionBatchUpdate** | [**List&lt;PromotionBatchUpdate&gt;**](PromotionBatchUpdate.md)|  |
 
 ### Return type
 

@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `id` | string
-`status` | string
-`value` | string
+`parentId` | string
+`status` | [LabelStatusBulkUpdate](LabelStatusBulkUpdate.md)
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { LabelBulkUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 1106385754497,
-  "status": ARCHIVED,
-  "value": null,
+  "id": null,
+  "parentId": null,
+  "status": null,
 } satisfies LabelBulkUpdateRequest
 
 console.log(example)

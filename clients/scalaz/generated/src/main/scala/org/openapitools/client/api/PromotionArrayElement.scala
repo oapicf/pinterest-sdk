@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import PromotionArrayElement._
 
 case class PromotionArrayElement (
-  data: Option[PromotionResponse],
+  data: Option[Promotion],
 exception: Option[Exception])
 
 object PromotionArrayElement {

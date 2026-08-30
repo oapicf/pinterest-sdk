@@ -4,22 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AltText** | Pointer to **NullableString** |  | [optional] 
+**AiDisclosures** | Pointer to [**AiDisclosures**](AiDisclosures.md) | AI disclosure declarations the creator has made about this Pin. | [optional] 
 **BoardId** | Pointer to **string** | The board to which this Pin belongs. | [optional] 
 **BoardOwner** | Pointer to [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
 **BoardSectionId** | Pointer to **NullableString** | The board section to which this Pin belongs. | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **CreativeType** | Pointer to [**NullableCreativeType**](CreativeType.md) |  | [optional] [readonly] 
-**Description** | Pointer to **NullableString** |  | [optional] 
 **DominantColor** | Pointer to **NullableString** | Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;. | [optional] 
 **HasBeenPromoted** | Pointer to **bool** | Whether the Pin has been promoted or not. | [optional] [readonly] 
 **Id** | **string** |  | 
 **IsOwner** | Pointer to **bool** | Whether the \&quot;operation user_account\&quot; is the Pin owner. | [optional] [readonly] 
+**IsProduct** | Pointer to **bool** | Whether the Pin is a product Pin. | [optional] [readonly] 
 **IsStandard** | Pointer to **bool** | Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information. | [optional] [readonly] 
-**Link** | Pointer to **NullableString** |  | [optional] 
 **Media** | Pointer to [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **ParentPinId** | Pointer to **NullableString** | The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). | [optional] 
 **PinMetrics** | Pointer to **map[string]interface{}** | Pin metrics with associated time intervals if any. | [optional] [readonly] 
+**AltText** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**Link** | Pointer to **NullableString** |  | [optional] 
 **Title** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -41,41 +43,31 @@ NewPinWithDefaults instantiates a new Pin object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAltText
+### GetAiDisclosures
 
-`func (o *Pin) GetAltText() string`
+`func (o *Pin) GetAiDisclosures() AiDisclosures`
 
-GetAltText returns the AltText field if non-nil, zero value otherwise.
+GetAiDisclosures returns the AiDisclosures field if non-nil, zero value otherwise.
 
-### GetAltTextOk
+### GetAiDisclosuresOk
 
-`func (o *Pin) GetAltTextOk() (*string, bool)`
+`func (o *Pin) GetAiDisclosuresOk() (*AiDisclosures, bool)`
 
-GetAltTextOk returns a tuple with the AltText field if it's non-nil, zero value otherwise
+GetAiDisclosuresOk returns a tuple with the AiDisclosures field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAltText
+### SetAiDisclosures
 
-`func (o *Pin) SetAltText(v string)`
+`func (o *Pin) SetAiDisclosures(v AiDisclosures)`
 
-SetAltText sets AltText field to given value.
+SetAiDisclosures sets AiDisclosures field to given value.
 
-### HasAltText
+### HasAiDisclosures
 
-`func (o *Pin) HasAltText() bool`
+`func (o *Pin) HasAiDisclosures() bool`
 
-HasAltText returns a boolean if a field has been set.
+HasAiDisclosures returns a boolean if a field has been set.
 
-### SetAltTextNil
-
-`func (o *Pin) SetAltTextNil(b bool)`
-
- SetAltTextNil sets the value for AltText to be an explicit nil
-
-### UnsetAltText
-`func (o *Pin) UnsetAltText()`
-
-UnsetAltText ensures that no value is present for AltText, not even an explicit nil
 ### GetBoardId
 
 `func (o *Pin) GetBoardId() string`
@@ -221,41 +213,6 @@ HasCreativeType returns a boolean if a field has been set.
 `func (o *Pin) UnsetCreativeType()`
 
 UnsetCreativeType ensures that no value is present for CreativeType, not even an explicit nil
-### GetDescription
-
-`func (o *Pin) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *Pin) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *Pin) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *Pin) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### SetDescriptionNil
-
-`func (o *Pin) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *Pin) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetDominantColor
 
 `func (o *Pin) GetDominantColor() string`
@@ -361,6 +318,31 @@ SetIsOwner sets IsOwner field to given value.
 
 HasIsOwner returns a boolean if a field has been set.
 
+### GetIsProduct
+
+`func (o *Pin) GetIsProduct() bool`
+
+GetIsProduct returns the IsProduct field if non-nil, zero value otherwise.
+
+### GetIsProductOk
+
+`func (o *Pin) GetIsProductOk() (*bool, bool)`
+
+GetIsProductOk returns a tuple with the IsProduct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsProduct
+
+`func (o *Pin) SetIsProduct(v bool)`
+
+SetIsProduct sets IsProduct field to given value.
+
+### HasIsProduct
+
+`func (o *Pin) HasIsProduct() bool`
+
+HasIsProduct returns a boolean if a field has been set.
+
 ### GetIsStandard
 
 `func (o *Pin) GetIsStandard() bool`
@@ -386,41 +368,6 @@ SetIsStandard sets IsStandard field to given value.
 
 HasIsStandard returns a boolean if a field has been set.
 
-### GetLink
-
-`func (o *Pin) GetLink() string`
-
-GetLink returns the Link field if non-nil, zero value otherwise.
-
-### GetLinkOk
-
-`func (o *Pin) GetLinkOk() (*string, bool)`
-
-GetLinkOk returns a tuple with the Link field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLink
-
-`func (o *Pin) SetLink(v string)`
-
-SetLink sets Link field to given value.
-
-### HasLink
-
-`func (o *Pin) HasLink() bool`
-
-HasLink returns a boolean if a field has been set.
-
-### SetLinkNil
-
-`func (o *Pin) SetLinkNil(b bool)`
-
- SetLinkNil sets the value for Link to be an explicit nil
-
-### UnsetLink
-`func (o *Pin) UnsetLink()`
-
-UnsetLink ensures that no value is present for Link, not even an explicit nil
 ### GetMedia
 
 `func (o *Pin) GetMedia() PinMedia`
@@ -516,6 +463,111 @@ HasPinMetrics returns a boolean if a field has been set.
 `func (o *Pin) UnsetPinMetrics()`
 
 UnsetPinMetrics ensures that no value is present for PinMetrics, not even an explicit nil
+### GetAltText
+
+`func (o *Pin) GetAltText() string`
+
+GetAltText returns the AltText field if non-nil, zero value otherwise.
+
+### GetAltTextOk
+
+`func (o *Pin) GetAltTextOk() (*string, bool)`
+
+GetAltTextOk returns a tuple with the AltText field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAltText
+
+`func (o *Pin) SetAltText(v string)`
+
+SetAltText sets AltText field to given value.
+
+### HasAltText
+
+`func (o *Pin) HasAltText() bool`
+
+HasAltText returns a boolean if a field has been set.
+
+### SetAltTextNil
+
+`func (o *Pin) SetAltTextNil(b bool)`
+
+ SetAltTextNil sets the value for AltText to be an explicit nil
+
+### UnsetAltText
+`func (o *Pin) UnsetAltText()`
+
+UnsetAltText ensures that no value is present for AltText, not even an explicit nil
+### GetDescription
+
+`func (o *Pin) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Pin) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Pin) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *Pin) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *Pin) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *Pin) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetLink
+
+`func (o *Pin) GetLink() string`
+
+GetLink returns the Link field if non-nil, zero value otherwise.
+
+### GetLinkOk
+
+`func (o *Pin) GetLinkOk() (*string, bool)`
+
+GetLinkOk returns a tuple with the Link field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLink
+
+`func (o *Pin) SetLink(v string)`
+
+SetLink sets Link field to given value.
+
+### HasLink
+
+`func (o *Pin) HasLink() bool`
+
+HasLink returns a boolean if a field has been set.
+
+### SetLinkNil
+
+`func (o *Pin) SetLinkNil(b bool)`
+
+ SetLinkNil sets the value for Link to be an explicit nil
+
+### UnsetLink
+`func (o *Pin) UnsetLink()`
+
+UnsetLink ensures that no value is present for Link, not even an explicit nil
 ### GetTitle
 
 `func (o *Pin) GetTitle() string`

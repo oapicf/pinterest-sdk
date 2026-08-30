@@ -1,0 +1,19 @@
+package models
+
+type CampaignUpdateRequestAllOf2 struct {
+
+	BidOptions *CampaignBidOptionsUpdate `json:"bid_options,omitempty"`
+
+	IntendedPromotionType IntendedPromotionType `json:"intended_promotion_type,omitempty"`
+
+	// Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.
+	IsLtvOptimized bool `json:"is_ltv_optimized,omitempty"`
+
+	// Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.
+	IsPerformancePlus bool `json:"is_performance_plus,omitempty"`
+
+	// Enable Top Of Search for your campaign. This field is immutable, except only for campaigns in draft status which may update this field.
+	IsTopOfSearch bool `json:"is_top_of_search,omitempty"`
+
+	ObjectiveType *ObjectiveType `json:"objective_type,omitempty"`
+}

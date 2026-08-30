@@ -10,7 +10,7 @@ The class is defined in **[CatalogsHotelFeedsUpdateRequest.java](../../src/main/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | `CatalogsType` |  | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **credentials** | [`CatalogsFeedCredentials`](CatalogsFeedCredentials.md) |  |  [optional property]
 **defaultCurrency** | `NullableCurrency` |  |  [optional property]
 **_format** | `CatalogsFormat` |  |  [optional property]
@@ -19,6 +19,11 @@ Name | Type | Description | Notes
 **preferredProcessingSchedule** | [`CatalogsFeedProcessingSchedule`](CatalogsFeedProcessingSchedule.md) |  |  [optional property]
 **status** | `CatalogsStatus` |  |  [optional property]
 
+## CatalogTypeEnum
+
+Name | Value
+---- | -----
+HOTEL | `"HOTEL"`
 
 
 

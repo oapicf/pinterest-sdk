@@ -19,11 +19,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="adsCreditRedeem"></a>
 # **adsCreditRedeem**
-> AdsCreditRedeemResponse adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+> AdsCreditRedeem adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```kotlin
@@ -33,9 +33,9 @@ Redeem ads credit on behalf of the ad account id and apply it towards billing.  
 
 val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val adsCreditRedeemRequest : AdsCreditRedeemRequest =  // AdsCreditRedeemRequest | Redeem ad credits request.
+val adsCreditRedeemCreate : AdsCreditRedeemCreate =  // AdsCreditRedeemCreate | 
 try {
-    val result : AdsCreditRedeemResponse = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+    val result : AdsCreditRedeem = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#adsCreditRedeem")
@@ -50,17 +50,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **adsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md)| Redeem ad credits request. | |
+| **adsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md)|  | |
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -73,7 +79,7 @@ Configure pinterest_oauth2:
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```kotlin
@@ -84,7 +90,7 @@ Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoi
 val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     val result : AdsCreditsDiscountsGet200Response = apiInstance.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize)
     println(result)
@@ -102,7 +108,7 @@ try {
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -111,8 +117,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -161,8 +173,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -171,7 +189,7 @@ Configure pinterest_oauth2:
 
 <a id="billingInvoicesGet"></a>
 # **billingInvoicesGet**
-> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
 
 Get billing invoices
 
@@ -186,15 +204,15 @@ Get billing invoices in the advertiser account.
 val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-val sort : kotlin.String = DUE_DATE // kotlin.String | Field of which to sort billing invoices
-val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-val status : kotlin.String = OPEN // kotlin.String | Status of billing invoices to filter by
-val documentType : kotlin.String = INVOICE // kotlin.String | Document type of billing invoices to filter by
-val startDueDate : java.time.LocalDate = Sun Jan 01 00:00:00 UTC 2023 // java.time.LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
-val endDueDate : java.time.LocalDate = Mon Jan 01 00:00:00 UTC 2024 // java.time.LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+val sort : BillingInvoiceSortField =  // BillingInvoiceSortField | Field of which to sort billing invoices
+val status : BillingInvoiceStatus =  // BillingInvoiceStatus | Status of billing invoices to filter by
+val documentType : BillingInvoiceDocumentType =  // BillingInvoiceDocumentType | Document type of billing invoices to filter by
+val startDueDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+val endDueDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
 try {
-    val result : BillingInvoicesGet200Response = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+    val result : BillingInvoicesGet200Response = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#billingInvoicesGet")
@@ -208,11 +226,11 @@ try {
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **sort** | **kotlin.String**| Field of which to sort billing invoices | [optional] [default to Sort.DUE_DATE] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] |
-| **order** | **kotlin.String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
-| **status** | **kotlin.String**| Status of billing invoices to filter by | [optional] [enum: OPEN, CLOSED] |
-| **documentType** | **kotlin.String**| Document type of billing invoices to filter by | [optional] [enum: INVOICE, CREDIT_MEMO] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
+| **sort** | [**BillingInvoiceSortField**](.md)| Field of which to sort billing invoices | [optional] [default to BillingInvoiceSortField.DUE_DATE] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] |
+| **status** | [**BillingInvoiceStatus**](.md)| Status of billing invoices to filter by | [optional] [enum: OPEN, CLOSED] |
+| **documentType** | [**BillingInvoiceDocumentType**](.md)| Document type of billing invoices to filter by | [optional] [enum: INVOICE, CREDIT_MEMO] |
 | **startDueDate** | **java.time.LocalDate**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -225,8 +243,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -239,7 +263,7 @@ Configure pinterest_oauth2:
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```kotlin
@@ -251,7 +275,7 @@ val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val isActive : kotlin.Boolean = true // kotlin.Boolean | Return active billing profiles, if false return all billing profiles.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     val result : BillingProfilesGet200Response = apiInstance.billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
     println(result)
@@ -270,7 +294,7 @@ try {
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -279,8 +303,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -289,11 +319,11 @@ Configure pinterest_oauth2:
 
 <a id="ssioAccountsGet"></a>
 # **ssioAccountsGet**
-> SSIOAccountResponse ssioAccountsGet(adAccountId)
+> SSIOAccount ssioAccountsGet(adAccountId)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```kotlin
@@ -304,7 +334,7 @@ Get Salesforce account details including bill-to information to be used in inser
 val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    val result : SSIOAccountResponse = apiInstance.ssioAccountsGet(adAccountId)
+    val result : SSIOAccount = apiInstance.ssioAccountsGet(adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#ssioAccountsGet")
@@ -322,13 +352,19 @@ try {
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -337,11 +373,11 @@ Configure pinterest_oauth2:
 
 <a id="ssioInsertionOrderCreate"></a>
 # **ssioInsertionOrderCreate**
-> SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```kotlin
@@ -351,9 +387,9 @@ Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. 
 
 val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val ssIOCreateInsertionOrderRequest : SSIOCreateInsertionOrderRequest =  // SSIOCreateInsertionOrderRequest | Order line to create.
+val ssIOInsertionOrderCreate : SSIOInsertionOrderCreate =  // SSIOInsertionOrderCreate | 
 try {
-    val result : SSIOCreateInsertionOrderResponse = apiInstance.ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest)
+    val result : SSIOInsertionOrder = apiInstance.ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#ssioInsertionOrderCreate")
@@ -368,17 +404,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md)| Order line to create. | |
+| **ssIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md)|  | |
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -387,11 +429,11 @@ Configure pinterest_oauth2:
 
 <a id="ssioInsertionOrderEdit"></a>
 # **ssioInsertionOrderEdit**
-> SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```kotlin
@@ -401,9 +443,9 @@ Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - 
 
 val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val ssIOEditInsertionOrderRequest : SSIOEditInsertionOrderRequest =  // SSIOEditInsertionOrderRequest | Order line to create.
+val ssIOInsertionOrderUpdate : SSIOInsertionOrderUpdate =  // SSIOInsertionOrderUpdate | 
 try {
-    val result : SSIOEditInsertionOrderResponse = apiInstance.ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest)
+    val result : SSIOInsertionOrder = apiInstance.ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#ssioInsertionOrderEdit")
@@ -418,17 +460,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md)| Order line to create. | |
+| **ssIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md)|  | |
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -441,7 +489,7 @@ Configure pinterest_oauth2:
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```kotlin
@@ -452,7 +500,7 @@ Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;
 val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
     val result : SsioInsertionOrdersStatusGetByAdAccount200Response = apiInstance.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize)
     println(result)
@@ -470,7 +518,7 @@ try {
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -479,8 +527,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -493,7 +547,7 @@ Configure pinterest_oauth2:
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```kotlin
@@ -503,7 +557,7 @@ Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt
 
 val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val pinOrderId : kotlin.String = 0Q01N0000015hekSVDFDC // kotlin.String | The pin order id associated with the ssio insertion order
+val pinOrderId : kotlin.String = pinOrderId_example // kotlin.String | The pin order id associated with the ssio insertion order
 try {
     val result : SSIOInsertionOrderStatusResponse = apiInstance.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId)
     println(result)
@@ -529,8 +583,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -539,11 +599,11 @@ Configure pinterest_oauth2:
 
 <a id="ssioOrderLinesGetByAdAccount"></a>
 # **ssioOrderLinesGetByAdAccount**
-> SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+> SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```kotlin
@@ -553,11 +613,11 @@ Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;
 
 val apiInstance = BillingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+val pinOrderId : kotlin.String = pinOrderId_example // kotlin.String | The pin order id associated with the SSIO insertion order
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-val pinOrderId : kotlin.String = 0Q01N0000015hekSVDFDC // kotlin.String | The pin order id associated with the ssio insertino order
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    val result : SsioOrderLinesGetByAdAccount200Response = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+    val result : SsioOrderLinesGetByAdAccount200Response = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#ssioOrderLinesGetByAdAccount")
@@ -570,11 +630,11 @@ try {
 
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **pinOrderId** | **kotlin.String**| The pin order id associated with the SSIO insertion order | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pinOrderId** | **kotlin.String**| The pin order id associated with the ssio insertino order | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -583,8 +643,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

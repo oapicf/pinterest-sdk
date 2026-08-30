@@ -16,7 +16,7 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
  **/
 
 @ApiModel(description = "Request object for creating a creative assets product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   @JsonProperty("catalog_id")
   private String catalogId;
@@ -63,7 +63,7 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   private String name;
 
   /**
-   * Catalog id pertaining to the creative assets product group.
+   * Catalog ID pertaining to the product group.
    **/
   public CatalogsCreativeAssetsProductGroupCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -71,7 +71,7 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   }
 
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
   @JsonProperty("catalog_id")
   public String getCatalogId() {
     return catalogId;
@@ -189,10 +189,7 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

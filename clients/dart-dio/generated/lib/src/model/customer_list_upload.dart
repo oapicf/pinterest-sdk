@@ -6,6 +6,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/user_list_operation_type.dart';
 import 'package:openapi/src/model/error_detail.dart';
+import 'package:openapi/src/model/workload_state.dart';
 import 'package:openapi/src/model/record_counts.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -21,8 +22,8 @@ part 'customer_list_upload.g.dart';
 /// * [errorCounts] - Error counts by error code
 /// * [id] - Customer List Upload ID.
 /// * [operation] 
-/// * [recordCounts] 
-/// * [state] - Workload processing state
+/// * [recordCounts] - Record processing counts
+/// * [state] 
 /// * [updatedTime] - Customer List Upload updated_time. Epoch (seconds).
 @BuiltValue()
 abstract class CustomerListUpload implements Built<CustomerListUpload, CustomerListUploadBuilder> {
@@ -50,12 +51,12 @@ abstract class CustomerListUpload implements Built<CustomerListUpload, CustomerL
   UserListOperationType get operation;
   // enum operationEnum {  ADD,  REMOVE,  };
 
+  /// Record processing counts
   @BuiltValueField(wireName: r'record_counts')
   RecordCounts? get recordCounts;
 
-  /// Workload processing state
   @BuiltValueField(wireName: r'state')
-  CustomerListUploadStateEnum get state;
+  WorkloadState get state;
   // enum stateEnum {  NOT_STARTED,  RUNNING,  PAUSED,  SUCCEEDED,  FAILED,  };
 
   /// Customer List Upload updated_time. Epoch (seconds).
@@ -121,13 +122,13 @@ class _$CustomerListUploadSerializer implements PrimitiveSerializer<CustomerList
       yield r'record_counts';
       yield serializers.serialize(
         object.recordCounts,
-        specifiedType: const FullType.nullable(RecordCounts),
+        specifiedType: const FullType(RecordCounts),
       );
     }
     yield r'state';
     yield serializers.serialize(
       object.state,
-      specifiedType: const FullType(CustomerListUploadStateEnum),
+      specifiedType: const FullType(WorkloadState),
     );
     yield r'updated_time';
     yield serializers.serialize(
@@ -211,8 +212,8 @@ class _$CustomerListUploadSerializer implements PrimitiveSerializer<CustomerList
         case r'state':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerListUploadStateEnum),
-          ) as CustomerListUploadStateEnum;
+            specifiedType: const FullType(WorkloadState),
+          ) as WorkloadState;
           result.state = valueDes;
           break;
         case r'updated_time':
@@ -249,31 +250,5 @@ class _$CustomerListUploadSerializer implements PrimitiveSerializer<CustomerList
     );
     return result.build();
   }
-}
-
-class CustomerListUploadStateEnum extends EnumClass {
-
-  /// Workload processing state
-  @BuiltValueEnumConst(wireName: r'NOT_STARTED')
-  static const CustomerListUploadStateEnum NOT_STARTED = _$customerListUploadStateEnum_NOT_STARTED;
-  /// Workload processing state
-  @BuiltValueEnumConst(wireName: r'RUNNING')
-  static const CustomerListUploadStateEnum RUNNING = _$customerListUploadStateEnum_RUNNING;
-  /// Workload processing state
-  @BuiltValueEnumConst(wireName: r'PAUSED')
-  static const CustomerListUploadStateEnum PAUSED = _$customerListUploadStateEnum_PAUSED;
-  /// Workload processing state
-  @BuiltValueEnumConst(wireName: r'SUCCEEDED')
-  static const CustomerListUploadStateEnum SUCCEEDED = _$customerListUploadStateEnum_SUCCEEDED;
-  /// Workload processing state
-  @BuiltValueEnumConst(wireName: r'FAILED')
-  static const CustomerListUploadStateEnum FAILED = _$customerListUploadStateEnum_FAILED;
-
-  static Serializer<CustomerListUploadStateEnum> get serializer => _$customerListUploadStateEnumSerializer;
-
-  const CustomerListUploadStateEnum._(String name): super(name);
-
-  static BuiltSet<CustomerListUploadStateEnum> get values => _$customerListUploadStateEnumValues;
-  static CustomerListUploadStateEnum valueOf(String name) => _$customerListUploadStateEnumValueOf(name);
 }
 

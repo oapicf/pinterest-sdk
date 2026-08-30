@@ -7,27 +7,43 @@
 #' @title CampaignBidOptions
 #' @description CampaignBidOptions Class
 #' @format An \code{R6Class} generator object
-#' @field app_type_multipliers  \link{AppTypeMultipliers} [optional]
-#' @field audience_multipliers  \link{CampaignAudienceMultipliers} [optional]
-#' @field placement_multipliers  \link{PlacementMultipliers} [optional]
+#' @field age_bucket_multipliers Age bucket multipliers for bid adjustments. \link{AgeBucketMultipliers} [optional]
+#' @field app_type_multipliers App type multipliers for bid adjustments. \link{AppTypeMultipliers} [optional]
+#' @field audience_multipliers Audience multipliers for bid adjustments. \link{CampaignAudienceMultipliers} [optional]
+#' @field freq_bid_multiplier_time_window The time window for frequency bid multipliers. \link{FreqBidMultiplierTimeWindow} [optional]
+#' @field frequency_multipliers Frequency multipliers for bid adjustments. \link{FrequencyMultipliers} [optional]
+#' @field gender_multipliers Gender multipliers for bid adjustments. \link{GenderMultipliers} [optional]
+#' @field placement_multipliers Placement multipliers for bid adjustments. \link{PlacementMultipliers} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CampaignBidOptions <- R6::R6Class(
   "CampaignBidOptions",
   public = list(
+    `age_bucket_multipliers` = NULL,
     `app_type_multipliers` = NULL,
     `audience_multipliers` = NULL,
+    `freq_bid_multiplier_time_window` = NULL,
+    `frequency_multipliers` = NULL,
+    `gender_multipliers` = NULL,
     `placement_multipliers` = NULL,
 
     #' @description
     #' Initialize a new CampaignBidOptions class.
     #'
-    #' @param app_type_multipliers app_type_multipliers
-    #' @param audience_multipliers audience_multipliers
-    #' @param placement_multipliers placement_multipliers
+    #' @param age_bucket_multipliers Age bucket multipliers for bid adjustments.
+    #' @param app_type_multipliers App type multipliers for bid adjustments.
+    #' @param audience_multipliers Audience multipliers for bid adjustments.
+    #' @param freq_bid_multiplier_time_window The time window for frequency bid multipliers.
+    #' @param frequency_multipliers Frequency multipliers for bid adjustments.
+    #' @param gender_multipliers Gender multipliers for bid adjustments.
+    #' @param placement_multipliers Placement multipliers for bid adjustments.
     #' @param ... Other optional arguments.
-    initialize = function(`app_type_multipliers` = NULL, `audience_multipliers` = NULL, `placement_multipliers` = NULL, ...) {
+    initialize = function(`age_bucket_multipliers` = NULL, `app_type_multipliers` = NULL, `audience_multipliers` = NULL, `freq_bid_multiplier_time_window` = NULL, `frequency_multipliers` = NULL, `gender_multipliers` = NULL, `placement_multipliers` = NULL, ...) {
+      if (!is.null(`age_bucket_multipliers`)) {
+        stopifnot(R6::is.R6(`age_bucket_multipliers`))
+        self$`age_bucket_multipliers` <- `age_bucket_multipliers`
+      }
       if (!is.null(`app_type_multipliers`)) {
         stopifnot(R6::is.R6(`app_type_multipliers`))
         self$`app_type_multipliers` <- `app_type_multipliers`
@@ -35,6 +51,21 @@ CampaignBidOptions <- R6::R6Class(
       if (!is.null(`audience_multipliers`)) {
         stopifnot(R6::is.R6(`audience_multipliers`))
         self$`audience_multipliers` <- `audience_multipliers`
+      }
+      if (!is.null(`freq_bid_multiplier_time_window`)) {
+        if (!(`freq_bid_multiplier_time_window` %in% c())) {
+          stop(paste("Error! \"", `freq_bid_multiplier_time_window`, "\" cannot be assigned to `freq_bid_multiplier_time_window`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`freq_bid_multiplier_time_window`))
+        self$`freq_bid_multiplier_time_window` <- `freq_bid_multiplier_time_window`
+      }
+      if (!is.null(`frequency_multipliers`)) {
+        stopifnot(R6::is.R6(`frequency_multipliers`))
+        self$`frequency_multipliers` <- `frequency_multipliers`
+      }
+      if (!is.null(`gender_multipliers`)) {
+        stopifnot(R6::is.R6(`gender_multipliers`))
+        self$`gender_multipliers` <- `gender_multipliers`
       }
       if (!is.null(`placement_multipliers`)) {
         stopifnot(R6::is.R6(`placement_multipliers`))
@@ -73,19 +104,58 @@ CampaignBidOptions <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CampaignBidOptionsObject <- list()
+      if (!is.null(self$`age_bucket_multipliers`)) {
+        CampaignBidOptionsObject[["age_bucket_multipliers"]] <-
+          self$extractSimpleType(self$`age_bucket_multipliers`)
+      }
       if (!is.null(self$`app_type_multipliers`)) {
         CampaignBidOptionsObject[["app_type_multipliers"]] <-
-          self$`app_type_multipliers`$toSimpleType()
+          self$extractSimpleType(self$`app_type_multipliers`)
       }
       if (!is.null(self$`audience_multipliers`)) {
         CampaignBidOptionsObject[["audience_multipliers"]] <-
-          self$`audience_multipliers`$toSimpleType()
+          self$extractSimpleType(self$`audience_multipliers`)
+      }
+      if (!is.null(self$`freq_bid_multiplier_time_window`)) {
+        CampaignBidOptionsObject[["freq_bid_multiplier_time_window"]] <-
+          self$extractSimpleType(self$`freq_bid_multiplier_time_window`)
+      }
+      if (!is.null(self$`frequency_multipliers`)) {
+        CampaignBidOptionsObject[["frequency_multipliers"]] <-
+          self$extractSimpleType(self$`frequency_multipliers`)
+      }
+      if (!is.null(self$`gender_multipliers`)) {
+        CampaignBidOptionsObject[["gender_multipliers"]] <-
+          self$extractSimpleType(self$`gender_multipliers`)
       }
       if (!is.null(self$`placement_multipliers`)) {
         CampaignBidOptionsObject[["placement_multipliers"]] <-
-          self$`placement_multipliers`$toSimpleType()
+          self$extractSimpleType(self$`placement_multipliers`)
       }
       return(CampaignBidOptionsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -95,6 +165,11 @@ CampaignBidOptions <- R6::R6Class(
     #' @return the instance of CampaignBidOptions
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`age_bucket_multipliers`)) {
+        `age_bucket_multipliers_object` <- AgeBucketMultipliers$new()
+        `age_bucket_multipliers_object`$fromJSON(jsonlite::toJSON(this_object$`age_bucket_multipliers`, auto_unbox = TRUE, digits = NA))
+        self$`age_bucket_multipliers` <- `age_bucket_multipliers_object`
+      }
       if (!is.null(this_object$`app_type_multipliers`)) {
         `app_type_multipliers_object` <- AppTypeMultipliers$new()
         `app_type_multipliers_object`$fromJSON(jsonlite::toJSON(this_object$`app_type_multipliers`, auto_unbox = TRUE, digits = NA))
@@ -104,6 +179,21 @@ CampaignBidOptions <- R6::R6Class(
         `audience_multipliers_object` <- CampaignAudienceMultipliers$new()
         `audience_multipliers_object`$fromJSON(jsonlite::toJSON(this_object$`audience_multipliers`, auto_unbox = TRUE, digits = NA))
         self$`audience_multipliers` <- `audience_multipliers_object`
+      }
+      if (!is.null(this_object$`freq_bid_multiplier_time_window`)) {
+        `freq_bid_multiplier_time_window_object` <- FreqBidMultiplierTimeWindow$new()
+        `freq_bid_multiplier_time_window_object`$fromJSON(jsonlite::toJSON(this_object$`freq_bid_multiplier_time_window`, auto_unbox = TRUE, digits = NA))
+        self$`freq_bid_multiplier_time_window` <- `freq_bid_multiplier_time_window_object`
+      }
+      if (!is.null(this_object$`frequency_multipliers`)) {
+        `frequency_multipliers_object` <- FrequencyMultipliers$new()
+        `frequency_multipliers_object`$fromJSON(jsonlite::toJSON(this_object$`frequency_multipliers`, auto_unbox = TRUE, digits = NA))
+        self$`frequency_multipliers` <- `frequency_multipliers_object`
+      }
+      if (!is.null(this_object$`gender_multipliers`)) {
+        `gender_multipliers_object` <- GenderMultipliers$new()
+        `gender_multipliers_object`$fromJSON(jsonlite::toJSON(this_object$`gender_multipliers`, auto_unbox = TRUE, digits = NA))
+        self$`gender_multipliers` <- `gender_multipliers_object`
       }
       if (!is.null(this_object$`placement_multipliers`)) {
         `placement_multipliers_object` <- PlacementMultipliers$new()
@@ -131,8 +221,12 @@ CampaignBidOptions <- R6::R6Class(
     #' @return the instance of CampaignBidOptions
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`age_bucket_multipliers` <- AgeBucketMultipliers$new()$fromJSON(jsonlite::toJSON(this_object$`age_bucket_multipliers`, auto_unbox = TRUE, digits = NA))
       self$`app_type_multipliers` <- AppTypeMultipliers$new()$fromJSON(jsonlite::toJSON(this_object$`app_type_multipliers`, auto_unbox = TRUE, digits = NA))
       self$`audience_multipliers` <- CampaignAudienceMultipliers$new()$fromJSON(jsonlite::toJSON(this_object$`audience_multipliers`, auto_unbox = TRUE, digits = NA))
+      self$`freq_bid_multiplier_time_window` <- FreqBidMultiplierTimeWindow$new()$fromJSON(jsonlite::toJSON(this_object$`freq_bid_multiplier_time_window`, auto_unbox = TRUE, digits = NA))
+      self$`frequency_multipliers` <- FrequencyMultipliers$new()$fromJSON(jsonlite::toJSON(this_object$`frequency_multipliers`, auto_unbox = TRUE, digits = NA))
+      self$`gender_multipliers` <- GenderMultipliers$new()$fromJSON(jsonlite::toJSON(this_object$`gender_multipliers`, auto_unbox = TRUE, digits = NA))
       self$`placement_multipliers` <- PlacementMultipliers$new()$fromJSON(jsonlite::toJSON(this_object$`placement_multipliers`, auto_unbox = TRUE, digits = NA))
       self
     },

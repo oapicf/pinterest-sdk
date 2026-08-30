@@ -13,8 +13,8 @@
 #' @field error_counts Error counts by error code list(\link{ErrorDetail}) [optional]
 #' @field id Customer List Upload ID. character
 #' @field operation  \link{UserListOperationType}
-#' @field record_counts  \link{RecordCounts} [optional]
-#' @field state Workload processing state character
+#' @field record_counts Record processing counts \link{RecordCounts} [optional]
+#' @field state  \link{WorkloadState}
 #' @field updated_time Customer List Upload updated_time. Epoch (seconds). integer
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -40,10 +40,10 @@ CustomerListUpload <- R6::R6Class(
     #' @param customer_list_id ID of the customer list associated with this upload.
     #' @param id Customer List Upload ID.
     #' @param operation operation
-    #' @param state Workload processing state
+    #' @param state state
     #' @param updated_time Customer List Upload updated_time. Epoch (seconds).
     #' @param error_counts Error counts by error code
-    #' @param record_counts record_counts
+    #' @param record_counts Record processing counts
     #' @param ... Other optional arguments.
     initialize = function(`ad_account_id`, `creation_time`, `customer_list_id`, `id`, `operation`, `state`, `updated_time`, `error_counts` = NULL, `record_counts` = NULL, ...) {
       if (!missing(`ad_account_id`)) {
@@ -78,12 +78,10 @@ CustomerListUpload <- R6::R6Class(
         self$`operation` <- `operation`
       }
       if (!missing(`state`)) {
-        if (!(`state` %in% c("NOT_STARTED", "RUNNING", "PAUSED", "SUCCEEDED", "FAILED"))) {
-          stop(paste("Error! \"", `state`, "\" cannot be assigned to `state`. Must be \"NOT_STARTED\", \"RUNNING\", \"PAUSED\", \"SUCCEEDED\", \"FAILED\".", sep = ""))
+        if (!(`state` %in% c())) {
+          stop(paste("Error! \"", `state`, "\" cannot be assigned to `state`. Must be .", sep = ""))
         }
-        if (!(is.character(`state`) && length(`state`) == 1)) {
-          stop(paste("Error! Invalid data for `state`. Must be a string:", `state`))
-        }
+        stopifnot(R6::is.R6(`state`))
         self$`state` <- `state`
       }
       if (!missing(`updated_time`)) {
@@ -148,7 +146,7 @@ CustomerListUpload <- R6::R6Class(
       }
       if (!is.null(self$`error_counts`)) {
         CustomerListUploadObject[["error_counts"]] <-
-          lapply(self$`error_counts`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`error_counts`)
       }
       if (!is.null(self$`id`)) {
         CustomerListUploadObject[["id"]] <-
@@ -156,21 +154,44 @@ CustomerListUpload <- R6::R6Class(
       }
       if (!is.null(self$`operation`)) {
         CustomerListUploadObject[["operation"]] <-
-          self$`operation`$toSimpleType()
+          self$extractSimpleType(self$`operation`)
       }
       if (!is.null(self$`record_counts`)) {
         CustomerListUploadObject[["record_counts"]] <-
-          self$`record_counts`$toSimpleType()
+          self$extractSimpleType(self$`record_counts`)
       }
       if (!is.null(self$`state`)) {
         CustomerListUploadObject[["state"]] <-
-          self$`state`
+          self$extractSimpleType(self$`state`)
       }
       if (!is.null(self$`updated_time`)) {
         CustomerListUploadObject[["updated_time"]] <-
           self$`updated_time`
       }
       return(CustomerListUploadObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -206,10 +227,9 @@ CustomerListUpload <- R6::R6Class(
         self$`record_counts` <- `record_counts_object`
       }
       if (!is.null(this_object$`state`)) {
-        if (!is.null(this_object$`state`) && !(this_object$`state` %in% c("NOT_STARTED", "RUNNING", "PAUSED", "SUCCEEDED", "FAILED"))) {
-          stop(paste("Error! \"", this_object$`state`, "\" cannot be assigned to `state`. Must be \"NOT_STARTED\", \"RUNNING\", \"PAUSED\", \"SUCCEEDED\", \"FAILED\".", sep = ""))
-        }
-        self$`state` <- this_object$`state`
+        `state_object` <- WorkloadState$new()
+        `state_object`$fromJSON(jsonlite::toJSON(this_object$`state`, auto_unbox = TRUE, digits = NA))
+        self$`state` <- `state_object`
       }
       if (!is.null(this_object$`updated_time`)) {
         self$`updated_time` <- this_object$`updated_time`
@@ -242,10 +262,7 @@ CustomerListUpload <- R6::R6Class(
       self$`id` <- this_object$`id`
       self$`operation` <- UserListOperationType$new()$fromJSON(jsonlite::toJSON(this_object$`operation`, auto_unbox = TRUE, digits = NA))
       self$`record_counts` <- RecordCounts$new()$fromJSON(jsonlite::toJSON(this_object$`record_counts`, auto_unbox = TRUE, digits = NA))
-      if (!is.null(this_object$`state`) && !(this_object$`state` %in% c("NOT_STARTED", "RUNNING", "PAUSED", "SUCCEEDED", "FAILED"))) {
-        stop(paste("Error! \"", this_object$`state`, "\" cannot be assigned to `state`. Must be \"NOT_STARTED\", \"RUNNING\", \"PAUSED\", \"SUCCEEDED\", \"FAILED\".", sep = ""))
-      }
-      self$`state` <- this_object$`state`
+      self$`state` <- WorkloadState$new()$fromJSON(jsonlite::toJSON(this_object$`state`, auto_unbox = TRUE, digits = NA))
       self$`updated_time` <- this_object$`updated_time`
       self
     },
@@ -296,9 +313,7 @@ CustomerListUpload <- R6::R6Class(
       }
       # check the required field `state`
       if (!is.null(input_json$`state`)) {
-        if (!(is.character(input_json$`state`) && length(input_json$`state`) == 1)) {
-          stop(paste("Error! Invalid data for `state`. Must be a string:", input_json$`state`))
-        }
+        stopifnot(R6::is.R6(input_json$`state`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CustomerListUpload: the required field `state` is missing."))
       }
@@ -353,6 +368,9 @@ CustomerListUpload <- R6::R6Class(
         return(FALSE)
       }
 
+      if (nchar(self$`id`) > 18) {
+        return(FALSE)
+      }
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
       }
@@ -409,6 +427,9 @@ CustomerListUpload <- R6::R6Class(
         invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
+      if (nchar(self$`id`) > 18) {
+        invalid_fields["id"] <- "Invalid length for `id`, must be smaller than or equal to 18."
+      }
       if (!str_detect(self$`id`, "^\\d+$")) {
         invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
       }

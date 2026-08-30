@@ -14,7 +14,7 @@ import BidFloor._
 case class BidFloor (
   /* A list of bid floors in micro currency. For example, [100000, 200000] */
   bidFloors: Option[List[Integer]],
-/* Always the string 'bidfloor' */
+/* Always the string 'bidfloor'. */
   `type`: Option[String])
 
 object BidFloor {

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 ```objc
 -(NSURLSessionTask*) adAccountsSubscriptionsDelByIdWithAdAccountId: (NSString*) adAccountId
     subscriptionId: (NSString*) subscriptionId
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(OAILeadSubscription* output, NSError* error)) handler;
 ```
 
 Delete lead ads subscription
@@ -37,7 +37,10 @@ OAILeadAdsApi*apiInstance = [[OAILeadAdsApi alloc] init];
 // Delete lead ads subscription
 [apiInstance adAccountsSubscriptionsDelByIdWithAdAccountId:adAccountId
               subscriptionId:subscriptionId
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(OAILeadSubscription* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling OAILeadAdsApi->adAccountsSubscriptionsDelById: %@", error);
                         }
@@ -53,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OAILeadSubscription***](OAILeadSubscription.md)
 
 ### Authorization
 

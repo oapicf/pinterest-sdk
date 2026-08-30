@@ -29,9 +29,6 @@ LabelStatus <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing LabelStatus with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize LabelStatus, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },
@@ -92,7 +89,7 @@ LabelStatus <- R6::R6Class(
 
 # add to utils.R
 .parse_LabelStatus <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[ACTIVE, ARCHIVED, null]")
+  res <- gsub("^\\[|\\]$", "", "[ACTIVE, ARCHIVED]")
   unlist(strsplit(res, ", "))
 }
 

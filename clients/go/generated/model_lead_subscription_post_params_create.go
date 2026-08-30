@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,12 +23,13 @@ var _ MappedNullable = &LeadSubscriptionPostParamsCreate{}
 // LeadSubscriptionPostParamsCreate struct for LeadSubscriptionPostParamsCreate
 type LeadSubscriptionPostParamsCreate struct {
 	// Lead form ID.
-	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^\\\\d+$"`
+	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^\\d+$"`
 	// Standard HTTPS webhook URL.
 	WebhookUrl string `json:"webhook_url"`
 	// Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
 	PartnerAccessToken *string `json:"partner_access_token,omitempty"`
-	PartnerMetadata *LeadSubscriptionPostParamsCreateAllOfPartnerMetadata `json:"partner_metadata,omitempty"`
+	// Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+	PartnerMetadata *PartnerMetadata `json:"partner_metadata,omitempty"`
 	// Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 	PartnerRefreshToken *string `json:"partner_refresh_token,omitempty"`
 }
@@ -142,9 +143,9 @@ func (o *LeadSubscriptionPostParamsCreate) SetPartnerAccessToken(v string) {
 }
 
 // GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise.
-func (o *LeadSubscriptionPostParamsCreate) GetPartnerMetadata() LeadSubscriptionPostParamsCreateAllOfPartnerMetadata {
+func (o *LeadSubscriptionPostParamsCreate) GetPartnerMetadata() PartnerMetadata {
 	if o == nil || IsNil(o.PartnerMetadata) {
-		var ret LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+		var ret PartnerMetadata
 		return ret
 	}
 	return *o.PartnerMetadata
@@ -152,7 +153,7 @@ func (o *LeadSubscriptionPostParamsCreate) GetPartnerMetadata() LeadSubscription
 
 // GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LeadSubscriptionPostParamsCreate) GetPartnerMetadataOk() (*LeadSubscriptionPostParamsCreateAllOfPartnerMetadata, bool) {
+func (o *LeadSubscriptionPostParamsCreate) GetPartnerMetadataOk() (*PartnerMetadata, bool) {
 	if o == nil || IsNil(o.PartnerMetadata) {
 		return nil, false
 	}
@@ -168,8 +169,8 @@ func (o *LeadSubscriptionPostParamsCreate) HasPartnerMetadata() bool {
 	return false
 }
 
-// SetPartnerMetadata gets a reference to the given LeadSubscriptionPostParamsCreateAllOfPartnerMetadata and assigns it to the PartnerMetadata field.
-func (o *LeadSubscriptionPostParamsCreate) SetPartnerMetadata(v LeadSubscriptionPostParamsCreateAllOfPartnerMetadata) {
+// SetPartnerMetadata gets a reference to the given PartnerMetadata and assigns it to the PartnerMetadata field.
+func (o *LeadSubscriptionPostParamsCreate) SetPartnerMetadata(v PartnerMetadata) {
 	o.PartnerMetadata = &v
 }
 

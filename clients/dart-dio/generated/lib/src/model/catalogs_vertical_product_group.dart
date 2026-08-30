@@ -19,17 +19,17 @@ part 'catalogs_vertical_product_group.g.dart';
 /// CatalogsVerticalProductGroup
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the creative assets product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [country] 
 /// * [createdAt] - Unix timestamp in seconds of when catalog product group was created.
 /// * [description] 
 /// * [feedId] - id of the catalogs feed belonging to this catalog product group
 /// * [filters] 
-/// * [id] - ID of the creative assets product group.
+/// * [id] - ID of the catalog product group.
 /// * [isFeatured] - boolean indicator of whether the product group is being featured or not
 /// * [locale] 
-/// * [name] - Name of creative assets product group
+/// * [name] - Name of catalog product group
 /// * [status] 
 /// * [type] 
 /// * [updatedAt] - Unix timestamp in seconds of last time catalog product group was updated.

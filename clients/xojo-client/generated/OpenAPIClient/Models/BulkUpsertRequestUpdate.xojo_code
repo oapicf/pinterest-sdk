@@ -17,12 +17,12 @@ Protected Class BulkUpsertRequestUpdate
 
 
 	#tag Property, Flags = &h0
-		catalog_product_groups() As OpenAPIClient.Models.CatalogsProductGroupsUpdateRequest
+		catalog_product_groups() As OpenAPIClient.Models.BulkUpsertRequestUpdateCatalogProductGroupsItems
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		keywords() As OpenAPIClient.Models.KeywordUpdate
+		keywords() As OpenAPIClient.Models.KeywordUpdateGenerated
 	#tag EndProperty
 
 
@@ -33,6 +33,11 @@ Protected Class BulkUpsertRequestUpdate
 
 	#tag Property, Flags = &h0
 		product_groups() As OpenAPIClient.Models.ProductGroupPromotionUpdateRequest
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		schedules() As OpenAPIClient.Models.ScheduleUpdateRequest
 	#tag EndProperty
 
 
@@ -101,7 +106,7 @@ Protected Class BulkUpsertRequestUpdate
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupsUpdateRequest"
+			Type="BulkUpsertRequestUpdateCatalogProductGroupsItems"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -109,7 +114,7 @@ Protected Class BulkUpsertRequestUpdate
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="KeywordUpdate"
+			Type="KeywordUpdateGenerated"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -126,6 +131,14 @@ Protected Class BulkUpsertRequestUpdate
 			Group="Behavior"
 			InitialValue=""
 			Type="ProductGroupPromotionUpdateRequest"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="schedules"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ScheduleUpdateRequest"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

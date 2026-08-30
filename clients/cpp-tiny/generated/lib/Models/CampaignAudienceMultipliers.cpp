@@ -64,7 +64,7 @@ CampaignAudienceMultipliers::getAUDIENCEID()
 }
 
 void
-CampaignAudienceMultipliers::setAUDIENCEID(std::string  aUDIENCE_ID)
+CampaignAudienceMultipliers::setAUDIENCEID(std::string aUDIENCE_ID)
 {
 	this->aUDIENCE_ID = aUDIENCE_ID;
 }

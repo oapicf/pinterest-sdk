@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**availability** | [**NON_NULLABLE_PRODUCT_AVAILABILITY_TYPE**](NonNullableProductAvailabilityType.md) |  | [default to null]
+**availability** | [**PRODUCT_AVAILABILITY**](ProductAvailability.md) |  | [default to null]
 **currency** | [**NON_NULLABLE_CATALOGS_CURRENCY**](NonNullableCatalogsCurrency.md) |  | [default to null]
 **item_group_id** | [**STRING_32**](STRING_32.md) | The parent ID of the product. | [default to null]
 **item_id** | [**STRING_32**](STRING_32.md) | The user-created unique ID that represents the product. | [default to null]

@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const LabelStatusBulkUpdate = require('../models/LabelStatusBulkUpdate');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -11,17 +12,14 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}status`,
-                label: `Set status to `ARCHIVED` to remove the label from the parent entity. - [${labelPrefix}status]`,
+                key: `${keyPrefix}parent_id`,
+                label: `Unique identifier of the asset you are labelling. Currently, you can only label campaigns. - [${labelPrefix}parent_id]`,
+                required: true,
                 type: 'string',
-                choices: [
-                    'ARCHIVED',
-                ],
             },
             {
-                key: `${keyPrefix}value`,
-                label: `</p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit. - [${labelPrefix}value]`,
-                type: 'string',
+                key: `${keyPrefix}status`,
+                ...LabelStatusBulkUpdate.fields(`${keyPrefix}status`, isInput),
             },
         ]
     },
@@ -29,8 +27,8 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'id': bundle.inputData?.[`${keyPrefix}id`],
+            'parent_id': bundle.inputData?.[`${keyPrefix}parent_id`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
-            'value': bundle.inputData?.[`${keyPrefix}value`],
         }
     },
 }

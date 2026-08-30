@@ -17,7 +17,7 @@ import type { KeywordsRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "keywords": null,
-  "parentId": 383791336903426391,
+  "parentId": null,
 } satisfies KeywordsRequest
 
 console.log(example)

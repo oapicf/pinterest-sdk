@@ -3,7 +3,6 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsFeedIngestionErrors   {
@@ -15,32 +14,14 @@ public class CatalogsFeedIngestionErrors   {
   private Integer IMAGE_INVALID_FILE;
   private Integer IMAGE_LEVEL_INTERNAL_ERROR;
   private Integer IMAGE_MALFORMED_URL;
-
-
-  public enum LARGEPRODUCTCOUNTDECREASEEnum {
-    NUMBER_1(1);
-
-    private String value;
-
-    LARGEPRODUCTCOUNTDECREASEEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
+  private Integer LARGE_PRODUCT_COUNT_DECREASE;
   private Integer LINE_LEVEL_INTERNAL_ERROR;
 
   public CatalogsFeedIngestionErrors () {
 
   }
 
-  public CatalogsFeedIngestionErrors (Integer ACCOUNT_FLAGGED, Integer FETCH_GOOGLE_SHEET_NOT_SHARED, Integer IMAGE_FILE_NOT_ACCESSIBLE, Integer IMAGE_FILE_NOT_FOUND, Integer IMAGE_INVALID_FILE, Integer IMAGE_LEVEL_INTERNAL_ERROR, Integer IMAGE_MALFORMED_URL, LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE, Integer LINE_LEVEL_INTERNAL_ERROR) {
+  public CatalogsFeedIngestionErrors (Integer ACCOUNT_FLAGGED, Integer FETCH_GOOGLE_SHEET_NOT_SHARED, Integer IMAGE_FILE_NOT_ACCESSIBLE, Integer IMAGE_FILE_NOT_FOUND, Integer IMAGE_INVALID_FILE, Integer IMAGE_LEVEL_INTERNAL_ERROR, Integer IMAGE_MALFORMED_URL, Integer LARGE_PRODUCT_COUNT_DECREASE, Integer LINE_LEVEL_INTERNAL_ERROR) {
     this.ACCOUNT_FLAGGED = ACCOUNT_FLAGGED;
     this.FETCH_GOOGLE_SHEET_NOT_SHARED = FETCH_GOOGLE_SHEET_NOT_SHARED;
     this.IMAGE_FILE_NOT_ACCESSIBLE = IMAGE_FILE_NOT_ACCESSIBLE;
@@ -117,10 +98,10 @@ public class CatalogsFeedIngestionErrors   {
 
     
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
-  public LARGEPRODUCTCOUNTDECREASEEnum getLARGEPRODUCTCOUNTDECREASE() {
+  public Integer getLARGEPRODUCTCOUNTDECREASE() {
     return LARGE_PRODUCT_COUNT_DECREASE;
   }
-  public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public void setLARGEPRODUCTCOUNTDECREASE(Integer LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
   }
 
@@ -182,9 +163,6 @@ public class CatalogsFeedIngestionErrors   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

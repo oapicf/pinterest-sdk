@@ -14,10 +14,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdatePartnerAssetsResultsResponseArray   {
   
-  private List<UpdatePartnerAssetsResult> items = new ArrayList<>();
+  private List<@Valid UpdatePartnerAssetsResult> items = new ArrayList<>();
 
   /**
    * List of assigned/updated partner asset access.
@@ -25,10 +25,10 @@ public class UpdatePartnerAssetsResultsResponseArray   {
   
   @ApiModelProperty(value = "List of assigned/updated partner asset access.")
   @JsonProperty("items")
-  public List<UpdatePartnerAssetsResult> getItems() {
+  public List<@Valid UpdatePartnerAssetsResult> getItems() {
     return items;
   }
-  public void setItems(List<UpdatePartnerAssetsResult> items) {
+  public void setItems(List<@Valid UpdatePartnerAssetsResult> items) {
     this.items = items;
   }
 
@@ -65,10 +65,7 @@ public class UpdatePartnerAssetsResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

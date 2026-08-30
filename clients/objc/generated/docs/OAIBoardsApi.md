@@ -20,7 +20,7 @@ Method | HTTP request | Description
 # **boardSectionsCreate**
 ```objc
 -(NSURLSessionTask*) boardSectionsCreateWithBoardId: (NSString*) boardId
-    boardSection: (OAIBoardSection*) boardSection
+    boardSectionCreate: (OAIBoardSectionCreate*) boardSectionCreate
     adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAIBoardSection* output, NSError* error)) handler;
 ```
@@ -38,14 +38,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* boardId = @"boardId_example"; // Unique identifier of a board.
-OAIBoardSection* boardSection = [[OAIBoardSection alloc] init]; // Create a board section.
+OAIBoardSectionCreate* boardSectionCreate = [[OAIBoardSectionCreate alloc] init]; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
 // Create board section
 [apiInstance boardSectionsCreateWithBoardId:boardId
-              boardSection:boardSection
+              boardSectionCreate:boardSectionCreate
               adAccountId:adAccountId
           completionHandler: ^(OAIBoardSection* output, NSError* error) {
                         if (output) {
@@ -62,7 +62,7 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **NSString***| Unique identifier of a board. | 
- **boardSection** | [**OAIBoardSection***](OAIBoardSection.md)| Create a board section. | 
+ **boardSectionCreate** | [**OAIBoardSectionCreate***](OAIBoardSectionCreate.md)|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) boardSectionsDeleteWithBoardId: (NSString*) boardId
     sectionId: (NSString*) sectionId
     adAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(OAIBoardSection* output, NSError* error)) handler;
 ```
 
 Delete board section
@@ -110,7 +110,10 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 [apiInstance boardSectionsDeleteWithBoardId:boardId
               sectionId:sectionId
               adAccountId:adAccountId
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(OAIBoardSection* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling OAIBoardsApi->boardSectionsDelete: %@", error);
                         }
@@ -127,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OAIBoardSection***](OAIBoardSection.md)
 
 ### Authorization
 
@@ -167,7 +170,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 NSString* boardId = @"boardId_example"; // Unique identifier of a board.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
@@ -193,7 +196,7 @@ Name | Type | Description  | Notes
  **boardId** | **NSString***| Unique identifier of a board. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -239,7 +242,7 @@ NSString* boardId = @"boardId_example"; // Unique identifier of a board.
 NSString* sectionId = @"sectionId_example"; // Unique identifier of a board section.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
@@ -267,7 +270,7 @@ Name | Type | Description  | Notes
  **sectionId** | **NSString***| Unique identifier of a board section. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -288,7 +291,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) boardSectionsUpdateWithBoardId: (NSString*) boardId
     sectionId: (NSString*) sectionId
-    boardSection: (OAIBoardSection*) boardSection
+    boardSectionUpdateWithRequiredBody: (OAIBoardSectionUpdateWithRequiredBody*) boardSectionUpdateWithRequiredBody
     adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAIBoardSection* output, NSError* error)) handler;
 ```
@@ -307,7 +310,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* boardId = @"boardId_example"; // Unique identifier of a board.
 NSString* sectionId = @"sectionId_example"; // Unique identifier of a board section.
-OAIBoardSection* boardSection = [[OAIBoardSection alloc] init]; // Update a board section.
+OAIBoardSectionUpdateWithRequiredBody* boardSectionUpdateWithRequiredBody = [[OAIBoardSectionUpdateWithRequiredBody alloc] init]; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
@@ -315,7 +318,7 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 // Update board section
 [apiInstance boardSectionsUpdateWithBoardId:boardId
               sectionId:sectionId
-              boardSection:boardSection
+              boardSectionUpdateWithRequiredBody:boardSectionUpdateWithRequiredBody
               adAccountId:adAccountId
           completionHandler: ^(OAIBoardSection* output, NSError* error) {
                         if (output) {
@@ -333,7 +336,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **NSString***| Unique identifier of a board. | 
  **sectionId** | **NSString***| Unique identifier of a board section. | 
- **boardSection** | [**OAIBoardSection***](OAIBoardSection.md)| Update a board section. | 
+ **boardSectionUpdateWithRequiredBody** | [**OAIBoardSectionUpdateWithRequiredBody***](OAIBoardSectionUpdateWithRequiredBody.md)|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -417,7 +420,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) boardsDeleteWithBoardId: (NSString*) boardId
     adAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(OAIBoard* output, NSError* error)) handler;
 ```
 
 Delete board
@@ -440,7 +443,10 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 // Delete board
 [apiInstance boardsDeleteWithBoardId:boardId
               adAccountId:adAccountId
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(OAIBoard* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling OAIBoardsApi->boardsDelete: %@", error);
                         }
@@ -456,7 +462,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OAIBoard***](OAIBoard.md)
 
 ### Authorization
 
@@ -604,11 +610,11 @@ Name | Type | Description  | Notes
 # **boardsListPins**
 ```objc
 -(NSURLSessionTask*) boardsListPinsWithBoardId: (NSString*) boardId
-    bookmark: (NSString*) bookmark
-    pageSize: (NSNumber*) pageSize
     creativeTypes: (NSArray<OAICreativeType>*) creativeTypes
     adAccountId: (NSString*) adAccountId
     pinMetrics: (NSNumber*) pinMetrics
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
         completionHandler: (void (^)(OAIBoardsListPins200Response* output, NSError* error)) handler;
 ```
 
@@ -628,21 +634,21 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* boardId = @"boardId_example"; // Unique identifier of a board.
-NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSArray<OAICreativeType>* creativeTypes = @[[[OAICreativeType alloc] init]]; // Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 NSNumber* pinMetrics = @(NO); // Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to @(NO))
+NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
 // List Pins on board
 [apiInstance boardsListPinsWithBoardId:boardId
-              bookmark:bookmark
-              pageSize:pageSize
               creativeTypes:creativeTypes
               adAccountId:adAccountId
               pinMetrics:pinMetrics
+              bookmark:bookmark
+              pageSize:pageSize
           completionHandler: ^(OAIBoardsListPins200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -658,11 +664,11 @@ OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **NSString***| Unique identifier of a board. | 
- **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **creativeTypes** | [**NSArray&lt;OAICreativeType&gt;***](OAICreativeType*.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
  **pinMetrics** | **NSNumber***| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to @(NO)]
+ **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 

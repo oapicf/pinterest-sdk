@@ -103,7 +103,7 @@ BoardMedia::getImageCoverUrl()
 }
 
 void
-BoardMedia::setImageCoverUrl(std::string  image_cover_url)
+BoardMedia::setImageCoverUrl(std::string image_cover_url)
 {
 	this->image_cover_url = image_cover_url;
 }
@@ -115,7 +115,7 @@ BoardMedia::getPinThumbnailUrls()
 }
 
 void
-BoardMedia::setPinThumbnailUrls(std::list <std::string> pin_thumbnail_urls)
+BoardMedia::setPinThumbnailUrls(std::list<std::string> pin_thumbnail_urls)
 {
 	this->pin_thumbnail_urls = pin_thumbnail_urls;
 }

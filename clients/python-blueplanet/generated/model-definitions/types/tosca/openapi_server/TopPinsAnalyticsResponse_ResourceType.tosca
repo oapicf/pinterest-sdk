@@ -8,7 +8,8 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   TopPinsAnalyticsResponseDateAvailability = openapi_server.resourceTypes.TopPinsAnalyticsResponseDateAvailability
-  TopPinsAnalyticsResponsePinsInner = openapi_server.resourceTypes.TopPinsAnalyticsResponsePinsInner
+  TopPinsAnalyticsResponsePinsItems = openapi_server.resourceTypes.TopPinsAnalyticsResponsePinsItems
+  TopPinsSortBy = openapi_server.resourceTypes.TopPinsSortBy
 }
 resourceTypes {
 
@@ -24,14 +25,13 @@ resourceTypes {
         }
         pins {
           type = array
-          items.type = TopPinsAnalyticsResponsePinsInner
+          items.type = TopPinsAnalyticsResponsePinsItems
           description = ""
           optional = false
         }
         sort_by {
-          type =  string
+          type = TopPinsSortBy
           description = ""
-          enum = ["ENGAGEMENT", "SAVE", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK"]
           optional = false
         }
     }

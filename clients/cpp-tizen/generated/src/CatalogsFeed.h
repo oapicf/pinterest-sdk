@@ -16,7 +16,6 @@
 #include "CatalogsHotelFeed.h"
 #include "CatalogsRetailFeed.h"
 #include "CatalogsStatus.h"
-#include "CatalogsType.h"
 #include "Country.h"
 #include "NullableCurrency.h"
 #include "ProductAvailabilityType.h"
@@ -58,32 +57,18 @@ public:
 
 	/*! \brief Get 
 	 */
+	std::string getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(std::string  catalog_type);
+	/*! \brief Get 
+	 */
 	std::string getCreatedAt();
 
 	/*! \brief Set 
 	 */
 	void setCreatedAt(std::string  created_at);
-	/*! \brief Get 
-	 */
-	std::string getId();
-
-	/*! \brief Set 
-	 */
-	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getUpdatedAt();
-
-	/*! \brief Set 
-	 */
-	void setUpdatedAt(std::string  updated_at);
-	/*! \brief Get 
-	 */
-	CatalogsType getCatalogType();
-
-	/*! \brief Set 
-	 */
-	void setCatalogType(CatalogsType  catalog_type);
 	/*! \brief Get 
 	 */
 	CatalogsFeedCredentials getCredentials();
@@ -126,6 +111,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setFormat(CatalogsFormat  format);
+	/*! \brief Get ID of the feed entity.
+	 */
+	std::string getId();
+
+	/*! \brief Set ID of the feed entity.
+	 */
+	void setId(std::string  id);
 	/*! \brief Get The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	 */
 	std::string getLocation();
@@ -154,6 +146,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setStatus(CatalogsStatus  status);
+	/*! \brief Get 
+	 */
+	std::string getUpdatedAt();
+
+	/*! \brief Set 
+	 */
+	void setUpdatedAt(std::string  updated_at);
 	/*! \brief Get Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
 	 */
 	std::string getCatalogId();
@@ -163,20 +162,20 @@ public:
 	void setCatalogId(std::string  catalog_id);
 
 private:
+	std::string catalog_type;
 	std::string created_at;
-	std::string id;
-	std::string updated_at;
-	CatalogsType catalog_type;
 	CatalogsFeedCredentials credentials;
 	ProductAvailabilityType default_availability;
 	Country default_country;
 	NullableCurrency default_currency;
 	std::string default_locale;
 	CatalogsFormat format;
+	std::string id;
 	std::string location;
 	std::string name;
 	CatalogsFeedProcessingSchedule preferred_processing_schedule;
 	CatalogsStatus status;
+	std::string updated_at;
 	std::string catalog_id;
 	void __init();
 	void __cleanup();

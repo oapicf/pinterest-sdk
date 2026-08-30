@@ -9,7 +9,7 @@ The class is defined in **[UserWebsitesGet200Response.java](../../src/main/java/
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;UserWebsiteSummary&gt;`](UserWebsiteSummary.md) |  | 
+**items** | [`List&lt;UserWebsite&gt;`](UserWebsite.md) |  | 
 
 
 

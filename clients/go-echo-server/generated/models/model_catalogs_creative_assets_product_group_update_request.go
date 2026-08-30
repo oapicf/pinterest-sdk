@@ -9,5 +9,6 @@ type CatalogsCreativeAssetsProductGroupUpdateRequest struct {
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters,omitempty"`
 
+	// Name of catalog product group
 	Name string `json:"name,omitempty"`
 }

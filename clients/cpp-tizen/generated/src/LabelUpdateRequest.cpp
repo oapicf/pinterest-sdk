@@ -49,12 +49,12 @@ LabelUpdateRequest::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<LabelUpdateRequest_labels_inner> new_list;
-			LabelUpdateRequest_labels_inner inst;
+			list<LabelUpdateItem> new_list;
+			LabelUpdateItem inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("LabelUpdateRequest_labels_inner")) {
-					jsonToValue(&inst, temp_json, "LabelUpdateRequest_labels_inner", "");
+				if (isprimitive("LabelUpdateItem")) {
+					jsonToValue(&inst, temp_json, "LabelUpdateItem", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ LabelUpdateRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("LabelUpdateRequest_labels_inner")) {
-		list<LabelUpdateRequest_labels_inner> new_list = static_cast<list <LabelUpdateRequest_labels_inner> > (getLabels());
-		node = converttoJson(&new_list, "LabelUpdateRequest_labels_inner", "array");
+	if (isprimitive("LabelUpdateItem")) {
+		list<LabelUpdateItem> new_list = static_cast<list <LabelUpdateItem> > (getLabels());
+		node = converttoJson(&new_list, "LabelUpdateItem", "array");
 	} else {
 		node = json_node_alloc();
-		list<LabelUpdateRequest_labels_inner> new_list = static_cast<list <LabelUpdateRequest_labels_inner> > (getLabels());
+		list<LabelUpdateItem> new_list = static_cast<list <LabelUpdateItem> > (getLabels());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<LabelUpdateRequest_labels_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<LabelUpdateItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			LabelUpdateRequest_labels_inner obj = *it;
+			LabelUpdateItem obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ LabelUpdateRequest::toJson()
 	return ret;
 }
 
-std::list<LabelUpdateRequest_labels_inner>
+std::list<LabelUpdateItem>
 LabelUpdateRequest::getLabels()
 {
 	return labels;
 }
 
 void
-LabelUpdateRequest::setLabels(std::list <LabelUpdateRequest_labels_inner> labels)
+LabelUpdateRequest::setLabels(std::list <LabelUpdateItem> labels)
 {
 	this->labels = labels;
 }

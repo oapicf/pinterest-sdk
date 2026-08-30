@@ -1,9 +1,21 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.",
   "name": "InviteBusinessRoleBinding",
   "fields": [
+    {
+      "name": "created_by_business_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier for the business that created the invite/request.",
+      "default": null
+    },
+    {
+      "name": "created_by_user_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier for the user that created the invite/request.",
+      "default": null
+    },
     {
       "name": "id",
       "type": ["null", "string"],
@@ -12,7 +24,7 @@
     },
     {
       "name": "invite_data",
-      "type": ["null", "model.BaseInviteDataResponseInviteData"],
+      "type": ["null", "model.InviteDataResponse"],
       "doc": "",
       "default": null
     },
@@ -24,20 +36,8 @@
     },
     {
       "name": "user",
-      "type": ["null", "model.object"],
-      "doc": "Metadata for the user that updated the invite/request.",
-      "default": null
-    },
-    {
-      "name": "created_by_business_id",
-      "type": ["null", "string"],
-      "doc": "Unique identifier for the business that created the invite/request.",
-      "default": null
-    },
-    {
-      "name": "created_by_user_id",
-      "type": ["null", "string"],
-      "doc": "Unique identifier for the user that created the invite/request.",
+      "type": ["null", "model.BusinessAccessUserSummary"],
+      "doc": "Metadata for the member/partner that was sent the invite/request.",
       "default": null
     }
   ]

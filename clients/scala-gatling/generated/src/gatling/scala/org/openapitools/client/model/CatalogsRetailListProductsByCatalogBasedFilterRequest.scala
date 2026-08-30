@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsRetailListProductsByCatalogBasedFilterRequest (
-    /* Catalog id pertaining to the retail product group. */
+    /* Catalog ID pertaining to the product group. */
     _catalogId: String,
     /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
     _catalogType: String,

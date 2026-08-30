@@ -1,9 +1,9 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.BoardsList200Response;
+import com.prokarma.pkmst.model.PinsList200Response;
+import com.prokarma.pkmst.model.PinterestLibError;
 import com.prokarma.pkmst.model.SearchPartnerPins200Response;
-import com.prokarma.pkmst.model.SearchUserBoardsGet200Response;
-import com.prokarma.pkmst.model.SearchUserPinsList200Response;
 
 import io.swagger.annotations.*;
 
@@ -26,7 +26,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class SearchApiController implements SearchApi {
     private final ObjectMapper objectMapper;
@@ -57,49 +57,114 @@ public class SearchApiController implements SearchApi {
             return new ResponseEntity<SearchPartnerPins200Response>(objectMapper.readValue("", SearchPartnerPins200Response.class), HttpStatus.OK);
         }
 
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<SearchPartnerPins200Response>(objectMapper.readValue("", SearchPartnerPins200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<SearchPartnerPins200Response>(objectMapper.readValue("", SearchPartnerPins200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<SearchPartnerPins200Response>(objectMapper.readValue("", SearchPartnerPins200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<SearchPartnerPins200Response>(objectMapper.readValue("", SearchPartnerPins200Response.class), HttpStatus.OK);
+        }
+
         return new ResponseEntity<SearchPartnerPins200Response>(HttpStatus.OK);
     }
 
-    public ResponseEntity<SearchUserBoardsGet200Response> searchUserBoardsGet(@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
-        @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
-        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
+    public ResponseEntity<BoardsList200Response> searchUserBoardsGet(@ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @ApiParam(value = "Search query. Can contain pin description keywords or comma-separated pin IDs.")  @RequestParam(value = "query", required = false) String query,
+        @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
+        @ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<SearchUserBoardsGet200Response>(objectMapper.readValue("", SearchUserBoardsGet200Response.class), HttpStatus.OK);
+            return new ResponseEntity<BoardsList200Response>(objectMapper.readValue("", BoardsList200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<SearchUserBoardsGet200Response>(objectMapper.readValue("", SearchUserBoardsGet200Response.class), HttpStatus.OK);
+            return new ResponseEntity<BoardsList200Response>(objectMapper.readValue("", BoardsList200Response.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<SearchUserBoardsGet200Response>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BoardsList200Response>(objectMapper.readValue("", BoardsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BoardsList200Response>(objectMapper.readValue("", BoardsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BoardsList200Response>(objectMapper.readValue("", BoardsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BoardsList200Response>(objectMapper.readValue("", BoardsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BoardsList200Response>(objectMapper.readValue("", BoardsList200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<BoardsList200Response>(HttpStatus.OK);
     }
 
-    public ResponseEntity<SearchUserPinsList200Response> searchUserPinsList(@ApiParam(value = "Search query. Can contain pin description keywords or comma-separated pin IDs.", required = true)  @RequestParam(value = "query", required = true) String query,
+    public ResponseEntity<PinsList200Response> searchUserPinsList(@ApiParam(value = "Search query. Can contain pin description keywords or comma-separated pin IDs.", required = true)  @RequestParam(value = "query", required = true) String query,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<SearchUserPinsList200Response>(objectMapper.readValue("", SearchUserPinsList200Response.class), HttpStatus.OK);
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<SearchUserPinsList200Response>(objectMapper.readValue("", SearchUserPinsList200Response.class), HttpStatus.OK);
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<SearchUserPinsList200Response>(objectMapper.readValue("", SearchUserPinsList200Response.class), HttpStatus.OK);
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<SearchUserPinsList200Response>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<PinsList200Response>(HttpStatus.OK);
     }
 
 }

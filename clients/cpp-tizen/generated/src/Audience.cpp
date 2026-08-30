@@ -24,15 +24,16 @@ void
 Audience::__init()
 {
 	//ad_account_id = std::string();
-	//audience_type = std::string();
+	//audience_type = null;
 	//created_by_company_name = std::string();
 	//created_timestamp = int(0);
 	//description = std::string();
 	//id = std::string();
+	//is_nca = bool(false);
 	//name = std::string();
 	//rule = new AudienceRule();
 	//size = int(0);
-	//status = std::string();
+	//status = null;
 	//type = std::string();
 	//updated_timestamp = int(0);
 }
@@ -69,6 +70,11 @@ Audience::__cleanup()
 	//
 	//delete id;
 	//id = NULL;
+	//}
+	//if(is_nca != NULL) {
+	//
+	//delete is_nca;
+	//is_nca = NULL;
 	//}
 	//if(name != NULL) {
 	//
@@ -124,9 +130,12 @@ Audience::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&audience_type, node, "std::string", "");
+		if (isprimitive("PinnerListType")) {
+			jsonToValue(&audience_type, node, "PinnerListType", "PinnerListType");
 		} else {
+			
+			PinnerListType* obj = static_cast<PinnerListType*> (&audience_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -174,6 +183,17 @@ Audience::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *is_ncaKey = "is_nca";
+	node = json_object_get_member(pJsonObject, is_ncaKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_nca, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *nameKey = "name";
 	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
@@ -215,9 +235,12 @@ Audience::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&status, node, "std::string", "");
+		if (isprimitive("AudienceStatus")) {
+			jsonToValue(&status, node, "AudienceStatus", "AudienceStatus");
 		} else {
+			
+			AudienceStatus* obj = static_cast<AudienceStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -264,11 +287,16 @@ Audience::toJson()
 	}
 	const gchar *ad_account_idKey = "ad_account_id";
 	json_object_set_member(pJsonObject, ad_account_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getAudienceType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("PinnerListType")) {
+		PinnerListType obj = getAudienceType();
+		node = converttoJson(&obj, "PinnerListType", "");
 	}
 	else {
+		
+		PinnerListType obj = static_cast<PinnerListType> (getAudienceType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *audience_typeKey = "audience_type";
@@ -309,6 +337,15 @@ Audience::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsNca();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_ncaKey = "is_nca";
+	json_object_set_member(pJsonObject, is_ncaKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
@@ -341,11 +378,16 @@ Audience::toJson()
 	}
 	const gchar *sizeKey = "size";
 	json_object_set_member(pJsonObject, sizeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getStatus();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("AudienceStatus")) {
+		AudienceStatus obj = getStatus();
+		node = converttoJson(&obj, "AudienceStatus", "");
 	}
 	else {
+		
+		AudienceStatus obj = static_cast<AudienceStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *statusKey = "status";
@@ -388,14 +430,14 @@ Audience::setAdAccountId(std::string  ad_account_id)
 	this->ad_account_id = ad_account_id;
 }
 
-std::string
+PinnerListType
 Audience::getAudienceType()
 {
 	return audience_type;
 }
 
 void
-Audience::setAudienceType(std::string  audience_type)
+Audience::setAudienceType(PinnerListType  audience_type)
 {
 	this->audience_type = audience_type;
 }
@@ -448,6 +490,18 @@ Audience::setId(std::string  id)
 	this->id = id;
 }
 
+bool
+Audience::getIsNca()
+{
+	return is_nca;
+}
+
+void
+Audience::setIsNca(bool  is_nca)
+{
+	this->is_nca = is_nca;
+}
+
 std::string
 Audience::getName()
 {
@@ -484,14 +538,14 @@ Audience::setSize(int  size)
 	this->size = size;
 }
 
-std::string
+AudienceStatus
 Audience::getStatus()
 {
 	return status;
 }
 
 void
-Audience::setStatus(std::string  status)
+Audience::setStatus(AudienceStatus  status)
 {
 	this->status = status;
 }

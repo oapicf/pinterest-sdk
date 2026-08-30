@@ -49,9 +49,9 @@ object Example extends App {
     val apiInstance = PromotionsApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val promotionCreateRequest: Seq[PromotionCreateRequest] =  // Seq[PromotionCreateRequest] | List of promotions to create, size limit [1, 30].
+    val promotionCreate: Seq[PromotionCreate] =  // Seq[PromotionCreate] | 
     
-    val request = apiInstance.promotionsCreate(adAccountId, promotionCreateRequest)
+    val request = apiInstance.promotionsCreate(adAccountId, promotionCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -80,7 +80,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **promotionCreateRequest** | [**Seq[PromotionCreateRequest]**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. |
+ **promotionCreate** | [**Seq[PromotionCreate]**](PromotionCreate.md)|  |
 
 ### Return type
 
@@ -99,14 +99,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid create promotions request parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## promotionsDelete
 
-> promotionsDelete(promotionsDeleteRequest): ApiRequest[Unit]
+> promotionsDelete(promotionsDeleteRequest): ApiRequest[Promotion]
 
 Delete promotion by id
 
@@ -116,6 +120,7 @@ Delete a promotion within Pinterest.
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -132,17 +137,18 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = PromotionsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val promotionId: String = promotionId_example // String | Promotion ID
 
-    val promotionId: String = promotionId_example // String | Unique identifier of a promotion
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.promotionsDelete(adAccountId, promotionId)
+    val request = apiInstance.promotionsDelete(promotionId, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling PromotionsApi#promotionsDelete")
@@ -163,13 +169,13 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **String**| Promotion ID |
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **promotionId** | **String**| Unique identifier of a promotion |
 
 ### Return type
 
+ApiRequest[[**Promotion**](Promotion.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -183,13 +189,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Promotion deleted successfully |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## promotionsGet
 
-> promotionsGet(promotionsGetRequest): ApiRequest[PromotionResponse]
+> promotionsGet(promotionsGetRequest): ApiRequest[Promotion]
 
 Get promotion by id
 
@@ -216,11 +228,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = PromotionsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val promotionId: String = promotionId_example // String | Promotion ID
 
-    val promotionId: String = promotionId_example // String | Unique identifier of a promotion
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.promotionsGet(adAccountId, promotionId)
+    val request = apiInstance.promotionsGet(promotionId, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -248,12 +260,12 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **String**| Promotion ID |
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **promotionId** | **String**| Unique identifier of a promotion |
 
 ### Return type
 
-ApiRequest[[**PromotionResponse**](PromotionResponse.md)]
+ApiRequest[[**Promotion**](Promotion.md)]
 
 
 ### Authorization
@@ -268,9 +280,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | The promotion ID for the given ad account ID was not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## promotionsList
@@ -285,6 +301,7 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -304,13 +321,13 @@ object Example extends App {
     val apiInstance = PromotionsApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
-    val order: String = ASCENDING // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+
+    val order: PaginationOrder =  // PaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
     
-    val request = apiInstance.promotionsList(adAccountId, pageSize, order, bookmark)
+    val request = apiInstance.promotionsList(adAccountId, bookmark, pageSize, order)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -339,9 +356,9 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
+ **order** | [**PaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
 
 ### Return type
 
@@ -360,9 +377,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account promotions parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## promotionsUpdate
@@ -397,9 +418,9 @@ object Example extends App {
     val apiInstance = PromotionsApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val promotionUpdateRequest: Seq[PromotionUpdateRequest] =  // Seq[PromotionUpdateRequest] | List of promotions to create, size limit [1, 30].
+    val promotionBatchUpdate: Seq[PromotionBatchUpdate] =  // Seq[PromotionBatchUpdate] | 
     
-    val request = apiInstance.promotionsUpdate(adAccountId, promotionUpdateRequest)
+    val request = apiInstance.promotionsUpdate(adAccountId, promotionBatchUpdate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -428,7 +449,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **promotionUpdateRequest** | [**Seq[PromotionUpdateRequest]**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. |
+ **promotionBatchUpdate** | [**Seq[PromotionBatchUpdate]**](PromotionBatchUpdate.md)|  |
 
 ### Return type
 
@@ -447,7 +468,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid create promotions request parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,39 +21,38 @@ var _ MappedNullable = &ProductGroupPromotion{}
 // ProductGroupPromotion struct for ProductGroupPromotion
 type ProductGroupPromotion struct {
 	// ID of the ad group the product group belongs to.
-	AdGroupId *string `json:"ad_group_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
+	AdGroupId *string `json:"ad_group_id,omitempty" validate:"regexp=^(AG)?\\d+$"`
 	// The bid in micro currency.
-	BidInMicroCurrency NullableInt32 `json:"bid_in_micro_currency,omitempty"`
-	// ID of the catalogs product group that this product group promotion references
-	CatalogProductGroupId NullableString `json:"catalog_product_group_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BidInMicroCurrency *int32 `json:"bid_in_micro_currency,omitempty"`
+	// ID of the catalogs product group that this product group promotion references (required for create operations)
+	CatalogProductGroupId *string `json:"catalog_product_group_id,omitempty" validate:"regexp=^\\d+$"`
 	// Catalogs product group name
-	CatalogProductGroupName NullableString `json:"catalog_product_group_name,omitempty"`
-	// Collections ad header type
-	CollectionsHeaderType NullableString `json:"collections_header_type,omitempty"`
+	CatalogProductGroupName *string `json:"catalog_product_group_name,omitempty"`
+	CollectionsHeaderType NullableCollectionsHeaderType `json:"collections_header_type,omitempty"`
 	// Collections Hero Destination Url
 	CollectionsHeroDestinationUrl NullableString `json:"collections_hero_destination_url,omitempty"`
 	// Hero Pin ID if this PG is promoted as a Collection
-	CollectionsHeroPinId NullableString `json:"collections_hero_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CollectionsHeroPinId NullableString `json:"collections_hero_pin_id,omitempty" validate:"regexp=^\\d+$"`
 	CreativeType *CreativeType `json:"creative_type,omitempty"`
-	// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-	CustomizableCtaType NullableString `json:"customizable_cta_type,omitempty"`
+	CustomizableCtaType *ProductGroupPromotionCustomizableCTAType `json:"customizable_cta_type,omitempty"`
 	// The full product group definition path
-	Definition NullableString `json:"definition,omitempty"`
+	Definition *string `json:"definition,omitempty"`
 	GridClickType NullableGridClickType `json:"grid_click_type,omitempty"`
-	// ID of the product group promotion.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// ID of the product group promotion (required for update operations).
+	Id *string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 	// True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
-	Included NullableBool `json:"included,omitempty"`
+	Included *bool `json:"included,omitempty"`
 	// Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.
 	IsGenerateBackground NullableBool `json:"is_generate_background,omitempty"`
+	// Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+	IsImageAutoResizing NullableBool `json:"is_image_auto_resizing,omitempty"`
 	// If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
-	IsMdl NullableBool `json:"is_mdl,omitempty"`
+	IsMdl *bool `json:"is_mdl,omitempty"`
 	// The parent Product Group ID of this Product Group
-	ParentId NullableString `json:"parent_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-	PreferredMediaType NullableString `json:"preferred_media_type,omitempty"`
+	ParentId *string `json:"parent_id,omitempty" validate:"regexp=^\\d+$"`
+	PreferredMediaType NullablePreferredMediaType `json:"preferred_media_type,omitempty"`
 	// The definition of the product group, relative to its parent - an attribute name/value pair
-	RelativeDefinition NullableString `json:"relative_definition,omitempty"`
+	RelativeDefinition *string `json:"relative_definition,omitempty"`
 	// The ad image tag selected for the product group promotion.
 	SelectedImageTag NullableString `json:"selected_image_tag,omitempty"`
 	// The ad video tag selected for the product group promotion.
@@ -64,7 +63,7 @@ type ProductGroupPromotion struct {
 	SlideshowCollectionsTitle NullableString `json:"slideshow_collections_title,omitempty"`
 	Status *EntityStatus `json:"status,omitempty"`
 	// Tracking template for proudct group promotions. 4000 limit
-	TrackingUrl NullableString `json:"tracking_url,omitempty"`
+	TrackingUrl *string `json:"tracking_url,omitempty"`
 }
 
 // NewProductGroupPromotion instantiates a new ProductGroupPromotion object
@@ -116,136 +115,106 @@ func (o *ProductGroupPromotion) SetAdGroupId(v string) {
 	o.AdGroupId = &v
 }
 
-// GetBidInMicroCurrency returns the BidInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBidInMicroCurrency returns the BidInMicroCurrency field value if set, zero value otherwise.
 func (o *ProductGroupPromotion) GetBidInMicroCurrency() int32 {
-	if o == nil || IsNil(o.BidInMicroCurrency.Get()) {
+	if o == nil || IsNil(o.BidInMicroCurrency) {
 		var ret int32
 		return ret
 	}
-	return *o.BidInMicroCurrency.Get()
+	return *o.BidInMicroCurrency
 }
 
 // GetBidInMicroCurrencyOk returns a tuple with the BidInMicroCurrency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotion) GetBidInMicroCurrencyOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BidInMicroCurrency) {
 		return nil, false
 	}
-	return o.BidInMicroCurrency.Get(), o.BidInMicroCurrency.IsSet()
+	return o.BidInMicroCurrency, true
 }
 
 // HasBidInMicroCurrency returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasBidInMicroCurrency() bool {
-	if o != nil && o.BidInMicroCurrency.IsSet() {
+	if o != nil && !IsNil(o.BidInMicroCurrency) {
 		return true
 	}
 
 	return false
 }
 
-// SetBidInMicroCurrency gets a reference to the given NullableInt32 and assigns it to the BidInMicroCurrency field.
+// SetBidInMicroCurrency gets a reference to the given int32 and assigns it to the BidInMicroCurrency field.
 func (o *ProductGroupPromotion) SetBidInMicroCurrency(v int32) {
-	o.BidInMicroCurrency.Set(&v)
-}
-// SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
-func (o *ProductGroupPromotion) SetBidInMicroCurrencyNil() {
-	o.BidInMicroCurrency.Set(nil)
+	o.BidInMicroCurrency = &v
 }
 
-// UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetBidInMicroCurrency() {
-	o.BidInMicroCurrency.Unset()
-}
-
-// GetCatalogProductGroupId returns the CatalogProductGroupId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCatalogProductGroupId returns the CatalogProductGroupId field value if set, zero value otherwise.
 func (o *ProductGroupPromotion) GetCatalogProductGroupId() string {
-	if o == nil || IsNil(o.CatalogProductGroupId.Get()) {
+	if o == nil || IsNil(o.CatalogProductGroupId) {
 		var ret string
 		return ret
 	}
-	return *o.CatalogProductGroupId.Get()
+	return *o.CatalogProductGroupId
 }
 
 // GetCatalogProductGroupIdOk returns a tuple with the CatalogProductGroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotion) GetCatalogProductGroupIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CatalogProductGroupId) {
 		return nil, false
 	}
-	return o.CatalogProductGroupId.Get(), o.CatalogProductGroupId.IsSet()
+	return o.CatalogProductGroupId, true
 }
 
 // HasCatalogProductGroupId returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasCatalogProductGroupId() bool {
-	if o != nil && o.CatalogProductGroupId.IsSet() {
+	if o != nil && !IsNil(o.CatalogProductGroupId) {
 		return true
 	}
 
 	return false
 }
 
-// SetCatalogProductGroupId gets a reference to the given NullableString and assigns it to the CatalogProductGroupId field.
+// SetCatalogProductGroupId gets a reference to the given string and assigns it to the CatalogProductGroupId field.
 func (o *ProductGroupPromotion) SetCatalogProductGroupId(v string) {
-	o.CatalogProductGroupId.Set(&v)
-}
-// SetCatalogProductGroupIdNil sets the value for CatalogProductGroupId to be an explicit nil
-func (o *ProductGroupPromotion) SetCatalogProductGroupIdNil() {
-	o.CatalogProductGroupId.Set(nil)
+	o.CatalogProductGroupId = &v
 }
 
-// UnsetCatalogProductGroupId ensures that no value is present for CatalogProductGroupId, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetCatalogProductGroupId() {
-	o.CatalogProductGroupId.Unset()
-}
-
-// GetCatalogProductGroupName returns the CatalogProductGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCatalogProductGroupName returns the CatalogProductGroupName field value if set, zero value otherwise.
 func (o *ProductGroupPromotion) GetCatalogProductGroupName() string {
-	if o == nil || IsNil(o.CatalogProductGroupName.Get()) {
+	if o == nil || IsNil(o.CatalogProductGroupName) {
 		var ret string
 		return ret
 	}
-	return *o.CatalogProductGroupName.Get()
+	return *o.CatalogProductGroupName
 }
 
 // GetCatalogProductGroupNameOk returns a tuple with the CatalogProductGroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotion) GetCatalogProductGroupNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CatalogProductGroupName) {
 		return nil, false
 	}
-	return o.CatalogProductGroupName.Get(), o.CatalogProductGroupName.IsSet()
+	return o.CatalogProductGroupName, true
 }
 
 // HasCatalogProductGroupName returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasCatalogProductGroupName() bool {
-	if o != nil && o.CatalogProductGroupName.IsSet() {
+	if o != nil && !IsNil(o.CatalogProductGroupName) {
 		return true
 	}
 
 	return false
 }
 
-// SetCatalogProductGroupName gets a reference to the given NullableString and assigns it to the CatalogProductGroupName field.
+// SetCatalogProductGroupName gets a reference to the given string and assigns it to the CatalogProductGroupName field.
 func (o *ProductGroupPromotion) SetCatalogProductGroupName(v string) {
-	o.CatalogProductGroupName.Set(&v)
-}
-// SetCatalogProductGroupNameNil sets the value for CatalogProductGroupName to be an explicit nil
-func (o *ProductGroupPromotion) SetCatalogProductGroupNameNil() {
-	o.CatalogProductGroupName.Set(nil)
-}
-
-// UnsetCatalogProductGroupName ensures that no value is present for CatalogProductGroupName, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetCatalogProductGroupName() {
-	o.CatalogProductGroupName.Unset()
+	o.CatalogProductGroupName = &v
 }
 
 // GetCollectionsHeaderType returns the CollectionsHeaderType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProductGroupPromotion) GetCollectionsHeaderType() string {
+func (o *ProductGroupPromotion) GetCollectionsHeaderType() CollectionsHeaderType {
 	if o == nil || IsNil(o.CollectionsHeaderType.Get()) {
-		var ret string
+		var ret CollectionsHeaderType
 		return ret
 	}
 	return *o.CollectionsHeaderType.Get()
@@ -254,7 +223,7 @@ func (o *ProductGroupPromotion) GetCollectionsHeaderType() string {
 // GetCollectionsHeaderTypeOk returns a tuple with the CollectionsHeaderType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductGroupPromotion) GetCollectionsHeaderTypeOk() (*string, bool) {
+func (o *ProductGroupPromotion) GetCollectionsHeaderTypeOk() (*CollectionsHeaderType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -270,8 +239,8 @@ func (o *ProductGroupPromotion) HasCollectionsHeaderType() bool {
 	return false
 }
 
-// SetCollectionsHeaderType gets a reference to the given NullableString and assigns it to the CollectionsHeaderType field.
-func (o *ProductGroupPromotion) SetCollectionsHeaderType(v string) {
+// SetCollectionsHeaderType gets a reference to the given NullableCollectionsHeaderType and assigns it to the CollectionsHeaderType field.
+func (o *ProductGroupPromotion) SetCollectionsHeaderType(v CollectionsHeaderType) {
 	o.CollectionsHeaderType.Set(&v)
 }
 // SetCollectionsHeaderTypeNil sets the value for CollectionsHeaderType to be an explicit nil
@@ -400,88 +369,68 @@ func (o *ProductGroupPromotion) SetCreativeType(v CreativeType) {
 	o.CreativeType = &v
 }
 
-// GetCustomizableCtaType returns the CustomizableCtaType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProductGroupPromotion) GetCustomizableCtaType() string {
-	if o == nil || IsNil(o.CustomizableCtaType.Get()) {
-		var ret string
+// GetCustomizableCtaType returns the CustomizableCtaType field value if set, zero value otherwise.
+func (o *ProductGroupPromotion) GetCustomizableCtaType() ProductGroupPromotionCustomizableCTAType {
+	if o == nil || IsNil(o.CustomizableCtaType) {
+		var ret ProductGroupPromotionCustomizableCTAType
 		return ret
 	}
-	return *o.CustomizableCtaType.Get()
+	return *o.CustomizableCtaType
 }
 
 // GetCustomizableCtaTypeOk returns a tuple with the CustomizableCtaType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductGroupPromotion) GetCustomizableCtaTypeOk() (*string, bool) {
-	if o == nil {
+func (o *ProductGroupPromotion) GetCustomizableCtaTypeOk() (*ProductGroupPromotionCustomizableCTAType, bool) {
+	if o == nil || IsNil(o.CustomizableCtaType) {
 		return nil, false
 	}
-	return o.CustomizableCtaType.Get(), o.CustomizableCtaType.IsSet()
+	return o.CustomizableCtaType, true
 }
 
 // HasCustomizableCtaType returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasCustomizableCtaType() bool {
-	if o != nil && o.CustomizableCtaType.IsSet() {
+	if o != nil && !IsNil(o.CustomizableCtaType) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomizableCtaType gets a reference to the given NullableString and assigns it to the CustomizableCtaType field.
-func (o *ProductGroupPromotion) SetCustomizableCtaType(v string) {
-	o.CustomizableCtaType.Set(&v)
-}
-// SetCustomizableCtaTypeNil sets the value for CustomizableCtaType to be an explicit nil
-func (o *ProductGroupPromotion) SetCustomizableCtaTypeNil() {
-	o.CustomizableCtaType.Set(nil)
+// SetCustomizableCtaType gets a reference to the given ProductGroupPromotionCustomizableCTAType and assigns it to the CustomizableCtaType field.
+func (o *ProductGroupPromotion) SetCustomizableCtaType(v ProductGroupPromotionCustomizableCTAType) {
+	o.CustomizableCtaType = &v
 }
 
-// UnsetCustomizableCtaType ensures that no value is present for CustomizableCtaType, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetCustomizableCtaType() {
-	o.CustomizableCtaType.Unset()
-}
-
-// GetDefinition returns the Definition field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDefinition returns the Definition field value if set, zero value otherwise.
 func (o *ProductGroupPromotion) GetDefinition() string {
-	if o == nil || IsNil(o.Definition.Get()) {
+	if o == nil || IsNil(o.Definition) {
 		var ret string
 		return ret
 	}
-	return *o.Definition.Get()
+	return *o.Definition
 }
 
 // GetDefinitionOk returns a tuple with the Definition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotion) GetDefinitionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Definition) {
 		return nil, false
 	}
-	return o.Definition.Get(), o.Definition.IsSet()
+	return o.Definition, true
 }
 
 // HasDefinition returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasDefinition() bool {
-	if o != nil && o.Definition.IsSet() {
+	if o != nil && !IsNil(o.Definition) {
 		return true
 	}
 
 	return false
 }
 
-// SetDefinition gets a reference to the given NullableString and assigns it to the Definition field.
+// SetDefinition gets a reference to the given string and assigns it to the Definition field.
 func (o *ProductGroupPromotion) SetDefinition(v string) {
-	o.Definition.Set(&v)
-}
-// SetDefinitionNil sets the value for Definition to be an explicit nil
-func (o *ProductGroupPromotion) SetDefinitionNil() {
-	o.Definition.Set(nil)
-}
-
-// UnsetDefinition ensures that no value is present for Definition, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetDefinition() {
-	o.Definition.Unset()
+	o.Definition = &v
 }
 
 // GetGridClickType returns the GridClickType field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -558,46 +507,36 @@ func (o *ProductGroupPromotion) SetId(v string) {
 	o.Id = &v
 }
 
-// GetIncluded returns the Included field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIncluded returns the Included field value if set, zero value otherwise.
 func (o *ProductGroupPromotion) GetIncluded() bool {
-	if o == nil || IsNil(o.Included.Get()) {
+	if o == nil || IsNil(o.Included) {
 		var ret bool
 		return ret
 	}
-	return *o.Included.Get()
+	return *o.Included
 }
 
 // GetIncludedOk returns a tuple with the Included field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotion) GetIncludedOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Included) {
 		return nil, false
 	}
-	return o.Included.Get(), o.Included.IsSet()
+	return o.Included, true
 }
 
 // HasIncluded returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasIncluded() bool {
-	if o != nil && o.Included.IsSet() {
+	if o != nil && !IsNil(o.Included) {
 		return true
 	}
 
 	return false
 }
 
-// SetIncluded gets a reference to the given NullableBool and assigns it to the Included field.
+// SetIncluded gets a reference to the given bool and assigns it to the Included field.
 func (o *ProductGroupPromotion) SetIncluded(v bool) {
-	o.Included.Set(&v)
-}
-// SetIncludedNil sets the value for Included to be an explicit nil
-func (o *ProductGroupPromotion) SetIncludedNil() {
-	o.Included.Set(nil)
-}
-
-// UnsetIncluded ensures that no value is present for Included, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetIncluded() {
-	o.Included.Unset()
+	o.Included = &v
 }
 
 // GetIsGenerateBackground returns the IsGenerateBackground field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -642,94 +581,116 @@ func (o *ProductGroupPromotion) UnsetIsGenerateBackground() {
 	o.IsGenerateBackground.Unset()
 }
 
-// GetIsMdl returns the IsMdl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProductGroupPromotion) GetIsMdl() bool {
-	if o == nil || IsNil(o.IsMdl.Get()) {
+// GetIsImageAutoResizing returns the IsImageAutoResizing field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProductGroupPromotion) GetIsImageAutoResizing() bool {
+	if o == nil || IsNil(o.IsImageAutoResizing.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IsMdl.Get()
+	return *o.IsImageAutoResizing.Get()
+}
+
+// GetIsImageAutoResizingOk returns a tuple with the IsImageAutoResizing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProductGroupPromotion) GetIsImageAutoResizingOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsImageAutoResizing.Get(), o.IsImageAutoResizing.IsSet()
+}
+
+// HasIsImageAutoResizing returns a boolean if a field has been set.
+func (o *ProductGroupPromotion) HasIsImageAutoResizing() bool {
+	if o != nil && o.IsImageAutoResizing.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsImageAutoResizing gets a reference to the given NullableBool and assigns it to the IsImageAutoResizing field.
+func (o *ProductGroupPromotion) SetIsImageAutoResizing(v bool) {
+	o.IsImageAutoResizing.Set(&v)
+}
+// SetIsImageAutoResizingNil sets the value for IsImageAutoResizing to be an explicit nil
+func (o *ProductGroupPromotion) SetIsImageAutoResizingNil() {
+	o.IsImageAutoResizing.Set(nil)
+}
+
+// UnsetIsImageAutoResizing ensures that no value is present for IsImageAutoResizing, not even an explicit nil
+func (o *ProductGroupPromotion) UnsetIsImageAutoResizing() {
+	o.IsImageAutoResizing.Unset()
+}
+
+// GetIsMdl returns the IsMdl field value if set, zero value otherwise.
+func (o *ProductGroupPromotion) GetIsMdl() bool {
+	if o == nil || IsNil(o.IsMdl) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMdl
 }
 
 // GetIsMdlOk returns a tuple with the IsMdl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotion) GetIsMdlOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IsMdl) {
 		return nil, false
 	}
-	return o.IsMdl.Get(), o.IsMdl.IsSet()
+	return o.IsMdl, true
 }
 
 // HasIsMdl returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasIsMdl() bool {
-	if o != nil && o.IsMdl.IsSet() {
+	if o != nil && !IsNil(o.IsMdl) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsMdl gets a reference to the given NullableBool and assigns it to the IsMdl field.
+// SetIsMdl gets a reference to the given bool and assigns it to the IsMdl field.
 func (o *ProductGroupPromotion) SetIsMdl(v bool) {
-	o.IsMdl.Set(&v)
-}
-// SetIsMdlNil sets the value for IsMdl to be an explicit nil
-func (o *ProductGroupPromotion) SetIsMdlNil() {
-	o.IsMdl.Set(nil)
+	o.IsMdl = &v
 }
 
-// UnsetIsMdl ensures that no value is present for IsMdl, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetIsMdl() {
-	o.IsMdl.Unset()
-}
-
-// GetParentId returns the ParentId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetParentId returns the ParentId field value if set, zero value otherwise.
 func (o *ProductGroupPromotion) GetParentId() string {
-	if o == nil || IsNil(o.ParentId.Get()) {
+	if o == nil || IsNil(o.ParentId) {
 		var ret string
 		return ret
 	}
-	return *o.ParentId.Get()
+	return *o.ParentId
 }
 
 // GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotion) GetParentIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ParentId) {
 		return nil, false
 	}
-	return o.ParentId.Get(), o.ParentId.IsSet()
+	return o.ParentId, true
 }
 
 // HasParentId returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasParentId() bool {
-	if o != nil && o.ParentId.IsSet() {
+	if o != nil && !IsNil(o.ParentId) {
 		return true
 	}
 
 	return false
 }
 
-// SetParentId gets a reference to the given NullableString and assigns it to the ParentId field.
+// SetParentId gets a reference to the given string and assigns it to the ParentId field.
 func (o *ProductGroupPromotion) SetParentId(v string) {
-	o.ParentId.Set(&v)
-}
-// SetParentIdNil sets the value for ParentId to be an explicit nil
-func (o *ProductGroupPromotion) SetParentIdNil() {
-	o.ParentId.Set(nil)
-}
-
-// UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetParentId() {
-	o.ParentId.Unset()
+	o.ParentId = &v
 }
 
 // GetPreferredMediaType returns the PreferredMediaType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProductGroupPromotion) GetPreferredMediaType() string {
+func (o *ProductGroupPromotion) GetPreferredMediaType() PreferredMediaType {
 	if o == nil || IsNil(o.PreferredMediaType.Get()) {
-		var ret string
+		var ret PreferredMediaType
 		return ret
 	}
 	return *o.PreferredMediaType.Get()
@@ -738,7 +699,7 @@ func (o *ProductGroupPromotion) GetPreferredMediaType() string {
 // GetPreferredMediaTypeOk returns a tuple with the PreferredMediaType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductGroupPromotion) GetPreferredMediaTypeOk() (*string, bool) {
+func (o *ProductGroupPromotion) GetPreferredMediaTypeOk() (*PreferredMediaType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -754,8 +715,8 @@ func (o *ProductGroupPromotion) HasPreferredMediaType() bool {
 	return false
 }
 
-// SetPreferredMediaType gets a reference to the given NullableString and assigns it to the PreferredMediaType field.
-func (o *ProductGroupPromotion) SetPreferredMediaType(v string) {
+// SetPreferredMediaType gets a reference to the given NullablePreferredMediaType and assigns it to the PreferredMediaType field.
+func (o *ProductGroupPromotion) SetPreferredMediaType(v PreferredMediaType) {
 	o.PreferredMediaType.Set(&v)
 }
 // SetPreferredMediaTypeNil sets the value for PreferredMediaType to be an explicit nil
@@ -768,46 +729,36 @@ func (o *ProductGroupPromotion) UnsetPreferredMediaType() {
 	o.PreferredMediaType.Unset()
 }
 
-// GetRelativeDefinition returns the RelativeDefinition field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRelativeDefinition returns the RelativeDefinition field value if set, zero value otherwise.
 func (o *ProductGroupPromotion) GetRelativeDefinition() string {
-	if o == nil || IsNil(o.RelativeDefinition.Get()) {
+	if o == nil || IsNil(o.RelativeDefinition) {
 		var ret string
 		return ret
 	}
-	return *o.RelativeDefinition.Get()
+	return *o.RelativeDefinition
 }
 
 // GetRelativeDefinitionOk returns a tuple with the RelativeDefinition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotion) GetRelativeDefinitionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RelativeDefinition) {
 		return nil, false
 	}
-	return o.RelativeDefinition.Get(), o.RelativeDefinition.IsSet()
+	return o.RelativeDefinition, true
 }
 
 // HasRelativeDefinition returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasRelativeDefinition() bool {
-	if o != nil && o.RelativeDefinition.IsSet() {
+	if o != nil && !IsNil(o.RelativeDefinition) {
 		return true
 	}
 
 	return false
 }
 
-// SetRelativeDefinition gets a reference to the given NullableString and assigns it to the RelativeDefinition field.
+// SetRelativeDefinition gets a reference to the given string and assigns it to the RelativeDefinition field.
 func (o *ProductGroupPromotion) SetRelativeDefinition(v string) {
-	o.RelativeDefinition.Set(&v)
-}
-// SetRelativeDefinitionNil sets the value for RelativeDefinition to be an explicit nil
-func (o *ProductGroupPromotion) SetRelativeDefinitionNil() {
-	o.RelativeDefinition.Set(nil)
-}
-
-// UnsetRelativeDefinition ensures that no value is present for RelativeDefinition, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetRelativeDefinition() {
-	o.RelativeDefinition.Unset()
+	o.RelativeDefinition = &v
 }
 
 // GetSelectedImageTag returns the SelectedImageTag field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1010,46 +961,36 @@ func (o *ProductGroupPromotion) SetStatus(v EntityStatus) {
 	o.Status = &v
 }
 
-// GetTrackingUrl returns the TrackingUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTrackingUrl returns the TrackingUrl field value if set, zero value otherwise.
 func (o *ProductGroupPromotion) GetTrackingUrl() string {
-	if o == nil || IsNil(o.TrackingUrl.Get()) {
+	if o == nil || IsNil(o.TrackingUrl) {
 		var ret string
 		return ret
 	}
-	return *o.TrackingUrl.Get()
+	return *o.TrackingUrl
 }
 
 // GetTrackingUrlOk returns a tuple with the TrackingUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupPromotion) GetTrackingUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TrackingUrl) {
 		return nil, false
 	}
-	return o.TrackingUrl.Get(), o.TrackingUrl.IsSet()
+	return o.TrackingUrl, true
 }
 
 // HasTrackingUrl returns a boolean if a field has been set.
 func (o *ProductGroupPromotion) HasTrackingUrl() bool {
-	if o != nil && o.TrackingUrl.IsSet() {
+	if o != nil && !IsNil(o.TrackingUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetTrackingUrl gets a reference to the given NullableString and assigns it to the TrackingUrl field.
+// SetTrackingUrl gets a reference to the given string and assigns it to the TrackingUrl field.
 func (o *ProductGroupPromotion) SetTrackingUrl(v string) {
-	o.TrackingUrl.Set(&v)
-}
-// SetTrackingUrlNil sets the value for TrackingUrl to be an explicit nil
-func (o *ProductGroupPromotion) SetTrackingUrlNil() {
-	o.TrackingUrl.Set(nil)
-}
-
-// UnsetTrackingUrl ensures that no value is present for TrackingUrl, not even an explicit nil
-func (o *ProductGroupPromotion) UnsetTrackingUrl() {
-	o.TrackingUrl.Unset()
+	o.TrackingUrl = &v
 }
 
 func (o ProductGroupPromotion) MarshalJSON() ([]byte, error) {
@@ -1065,14 +1006,14 @@ func (o ProductGroupPromotion) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdGroupId) {
 		toSerialize["ad_group_id"] = o.AdGroupId
 	}
-	if o.BidInMicroCurrency.IsSet() {
-		toSerialize["bid_in_micro_currency"] = o.BidInMicroCurrency.Get()
+	if !IsNil(o.BidInMicroCurrency) {
+		toSerialize["bid_in_micro_currency"] = o.BidInMicroCurrency
 	}
-	if o.CatalogProductGroupId.IsSet() {
-		toSerialize["catalog_product_group_id"] = o.CatalogProductGroupId.Get()
+	if !IsNil(o.CatalogProductGroupId) {
+		toSerialize["catalog_product_group_id"] = o.CatalogProductGroupId
 	}
-	if o.CatalogProductGroupName.IsSet() {
-		toSerialize["catalog_product_group_name"] = o.CatalogProductGroupName.Get()
+	if !IsNil(o.CatalogProductGroupName) {
+		toSerialize["catalog_product_group_name"] = o.CatalogProductGroupName
 	}
 	if o.CollectionsHeaderType.IsSet() {
 		toSerialize["collections_header_type"] = o.CollectionsHeaderType.Get()
@@ -1086,11 +1027,11 @@ func (o ProductGroupPromotion) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreativeType) {
 		toSerialize["creative_type"] = o.CreativeType
 	}
-	if o.CustomizableCtaType.IsSet() {
-		toSerialize["customizable_cta_type"] = o.CustomizableCtaType.Get()
+	if !IsNil(o.CustomizableCtaType) {
+		toSerialize["customizable_cta_type"] = o.CustomizableCtaType
 	}
-	if o.Definition.IsSet() {
-		toSerialize["definition"] = o.Definition.Get()
+	if !IsNil(o.Definition) {
+		toSerialize["definition"] = o.Definition
 	}
 	if o.GridClickType.IsSet() {
 		toSerialize["grid_click_type"] = o.GridClickType.Get()
@@ -1098,23 +1039,26 @@ func (o ProductGroupPromotion) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Included.IsSet() {
-		toSerialize["included"] = o.Included.Get()
+	if !IsNil(o.Included) {
+		toSerialize["included"] = o.Included
 	}
 	if o.IsGenerateBackground.IsSet() {
 		toSerialize["is_generate_background"] = o.IsGenerateBackground.Get()
 	}
-	if o.IsMdl.IsSet() {
-		toSerialize["is_mdl"] = o.IsMdl.Get()
+	if o.IsImageAutoResizing.IsSet() {
+		toSerialize["is_image_auto_resizing"] = o.IsImageAutoResizing.Get()
 	}
-	if o.ParentId.IsSet() {
-		toSerialize["parent_id"] = o.ParentId.Get()
+	if !IsNil(o.IsMdl) {
+		toSerialize["is_mdl"] = o.IsMdl
+	}
+	if !IsNil(o.ParentId) {
+		toSerialize["parent_id"] = o.ParentId
 	}
 	if o.PreferredMediaType.IsSet() {
 		toSerialize["preferred_media_type"] = o.PreferredMediaType.Get()
 	}
-	if o.RelativeDefinition.IsSet() {
-		toSerialize["relative_definition"] = o.RelativeDefinition.Get()
+	if !IsNil(o.RelativeDefinition) {
+		toSerialize["relative_definition"] = o.RelativeDefinition
 	}
 	if o.SelectedImageTag.IsSet() {
 		toSerialize["selected_image_tag"] = o.SelectedImageTag.Get()
@@ -1131,8 +1075,8 @@ func (o ProductGroupPromotion) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.TrackingUrl.IsSet() {
-		toSerialize["tracking_url"] = o.TrackingUrl.Get()
+	if !IsNil(o.TrackingUrl) {
+		toSerialize["tracking_url"] = o.TrackingUrl
 	}
 	return toSerialize, nil
 }

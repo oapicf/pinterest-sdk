@@ -13,7 +13,7 @@ API.Client.CatalogsRetailReportStatsParameters = function() {}
 API.Client.CatalogsRetailReportStatsParameters.prototype.catalogType;
 
 /**
- * @type {!API.Client.CatalogsHotelReportStatsParameters_report}
+ * @type {!API.Client.CatalogsRetailReportStatsParametersReport}
  * @export
  */
 API.Client.CatalogsRetailReportStatsParameters.prototype.report;

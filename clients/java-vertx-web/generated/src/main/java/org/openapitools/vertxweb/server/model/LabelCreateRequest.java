@@ -6,39 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.LabelCreateRequestLabelsInner;
+import org.openapitools.vertxweb.server.model.LabelCreateItem;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LabelCreateRequest   {
   
-  private List<LabelCreateRequestLabelsInner> labels = new ArrayList<>();
-  private String parentId;
+  private List<LabelCreateItem> labels = new ArrayList<>();
 
   public LabelCreateRequest () {
 
   }
 
-  public LabelCreateRequest (List<LabelCreateRequestLabelsInner> labels, String parentId) {
+  public LabelCreateRequest (List<LabelCreateItem> labels) {
     this.labels = labels;
-    this.parentId = parentId;
   }
 
     
   @JsonProperty("labels")
-  public List<LabelCreateRequestLabelsInner> getLabels() {
+  public List<LabelCreateItem> getLabels() {
     return labels;
   }
-  public void setLabels(List<LabelCreateRequestLabelsInner> labels) {
+  public void setLabels(List<LabelCreateItem> labels) {
     this.labels = labels;
-  }
-
-    
-  @JsonProperty("parent_id")
-  public String getParentId() {
-    return parentId;
-  }
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
   }
 
 
@@ -51,13 +40,12 @@ public class LabelCreateRequest   {
       return false;
     }
     LabelCreateRequest labelCreateRequest = (LabelCreateRequest) o;
-    return Objects.equals(labels, labelCreateRequest.labels) &&
-        Objects.equals(parentId, labelCreateRequest.parentId);
+    return Objects.equals(labels, labelCreateRequest.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(labels, parentId);
+    return Objects.hash(labels);
   }
 
   @Override
@@ -66,7 +54,6 @@ public class LabelCreateRequest   {
     sb.append("class LabelCreateRequest {\n");
     
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -76,9 +63,6 @@ public class LabelCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

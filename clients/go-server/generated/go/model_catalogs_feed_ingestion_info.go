@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -26,7 +26,8 @@ type CatalogsFeedIngestionInfo struct {
 	PREORDER int32 `json:"PREORDER,omitempty"`
 }
 
-// AssertCatalogsFeedIngestionInfoRequired checks if the required fields are not zero-ed
+// AssertCatalogsFeedIngestionInfoRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsFeedIngestionInfoRequired(obj CatalogsFeedIngestionInfo) error {
 	return nil
 }

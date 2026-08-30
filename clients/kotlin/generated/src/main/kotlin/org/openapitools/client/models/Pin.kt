@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AiDisclosures
 import org.openapitools.client.models.BoardOwner
 import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.PinMedia
@@ -23,24 +32,26 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Pin model containing properties related to a Pinterest Pin.
+ * 
  *
  * @param id 
- * @param altText 
+ * @param aiDisclosures AI disclosure declarations the creator has made about this Pin.
  * @param boardId The board to which this Pin belongs.
  * @param boardOwner 
  * @param boardSectionId The board section to which this Pin belongs.
  * @param createdAt 
  * @param creativeType 
- * @param description 
  * @param dominantColor Dominant pin color. Hex number, e.g. `#6E7874`.
  * @param hasBeenPromoted Whether the Pin has been promoted or not.
  * @param isOwner Whether the \"operation user_account\" is the Pin owner.
+ * @param isProduct Whether the Pin is a product Pin.
  * @param isStandard Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
- * @param link 
  * @param media 
  * @param parentPinId The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
  * @param pinMetrics Pin metrics with associated time intervals if any.
+ * @param altText 
+ * @param description 
+ * @param link 
  * @param title 
  */
 
@@ -50,8 +61,9 @@ data class Pin (
     @Json(name = "id")
     val id: kotlin.String,
 
-    @Json(name = "alt_text")
-    val altText: kotlin.String? = null,
+    /* AI disclosure declarations the creator has made about this Pin. */
+    @Json(name = "ai_disclosures")
+    val aiDisclosures: AiDisclosures? = null,
 
     /* The board to which this Pin belongs. */
     @Json(name = "board_id")
@@ -70,9 +82,6 @@ data class Pin (
     @Json(name = "creative_type")
     val creativeType: CreativeType? = null,
 
-    @Json(name = "description")
-    val description: kotlin.String? = null,
-
     /* Dominant pin color. Hex number, e.g. `#6E7874`. */
     @Json(name = "dominant_color")
     val dominantColor: kotlin.String? = null,
@@ -85,12 +94,13 @@ data class Pin (
     @Json(name = "is_owner")
     val isOwner: kotlin.Boolean? = null,
 
+    /* Whether the Pin is a product Pin. */
+    @Json(name = "is_product")
+    val isProduct: kotlin.Boolean? = null,
+
     /* Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information. */
     @Json(name = "is_standard")
     val isStandard: kotlin.Boolean? = null,
-
-    @Json(name = "link")
-    val link: kotlin.String? = null,
 
     @Json(name = "media")
     val media: PinMedia? = null,
@@ -102,6 +112,15 @@ data class Pin (
     /* Pin metrics with associated time intervals if any. */
     @Json(name = "pin_metrics")
     val pinMetrics: kotlin.Any? = null,
+
+    @Json(name = "alt_text")
+    val altText: kotlin.String? = null,
+
+    @Json(name = "description")
+    val description: kotlin.String? = null,
+
+    @Json(name = "link")
+    val link: kotlin.String? = null,
 
     @Json(name = "title")
     val title: kotlin.String? = null

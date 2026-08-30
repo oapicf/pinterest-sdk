@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -62,8 +62,8 @@ func NewProductGroupSummaryStatusFromValue(v string) (ProductGroupSummaryStatus,
 }
 
 
-
-// AssertProductGroupSummaryStatusRequired checks if the required fields are not zero-ed
+// AssertProductGroupSummaryStatusRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertProductGroupSummaryStatusRequired(obj ProductGroupSummaryStatus) error {
 	return nil
 }

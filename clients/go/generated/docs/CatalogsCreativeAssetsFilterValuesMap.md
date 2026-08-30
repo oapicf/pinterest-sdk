@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **GoogleProductCategory4** | Pointer to **[]string** |  | [optional] 
 **GoogleProductCategory5** | Pointer to **[]string** |  | [optional] 
 **GoogleProductCategory6** | Pointer to **[]string** |  | [optional] 
-**MediaType** | Pointer to **[]string** |  | [optional] 
+**MediaType** | Pointer to [**[]MediaType**](MediaType.md) |  | [optional] 
 
 ## Methods
 
@@ -339,20 +339,20 @@ HasGoogleProductCategory6 returns a boolean if a field has been set.
 
 ### GetMediaType
 
-`func (o *CatalogsCreativeAssetsFilterValuesMap) GetMediaType() []string`
+`func (o *CatalogsCreativeAssetsFilterValuesMap) GetMediaType() []MediaType`
 
 GetMediaType returns the MediaType field if non-nil, zero value otherwise.
 
 ### GetMediaTypeOk
 
-`func (o *CatalogsCreativeAssetsFilterValuesMap) GetMediaTypeOk() (*[]string, bool)`
+`func (o *CatalogsCreativeAssetsFilterValuesMap) GetMediaTypeOk() (*[]MediaType, bool)`
 
 GetMediaTypeOk returns a tuple with the MediaType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMediaType
 
-`func (o *CatalogsCreativeAssetsFilterValuesMap) SetMediaType(v []string)`
+`func (o *CatalogsCreativeAssetsFilterValuesMap) SetMediaType(v []MediaType)`
 
 SetMediaType sets MediaType field to given value.
 

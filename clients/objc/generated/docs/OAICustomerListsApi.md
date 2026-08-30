@@ -13,13 +13,13 @@ Method | HTTP request | Description
 # **customerListsCreate**
 ```objc
 -(NSURLSessionTask*) customerListsCreateWithAdAccountId: (NSString*) adAccountId
-    customerListRequest: (OAICustomerListRequest*) customerListRequest
+    customerListCreate: (OAICustomerListCreate*) customerListCreate
         completionHandler: (void (^)(OAICustomerList* output, NSError* error)) handler;
 ```
 
 Create customer lists
 
-<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
+Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
 
 ### Example
 ```objc
@@ -29,14 +29,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAICustomerListRequest* customerListRequest = [[OAICustomerListRequest alloc] init]; // Parameters to get Customer lists info
+NSString* adAccountId = @"adAccountId_example"; // 
+OAICustomerListCreate* customerListCreate = [[OAICustomerListCreate alloc] init]; // 
 
 OAICustomerListsApi*apiInstance = [[OAICustomerListsApi alloc] init];
 
 // Create customer lists
 [apiInstance customerListsCreateWithAdAccountId:adAccountId
-              customerListRequest:customerListRequest
+              customerListCreate:customerListCreate
           completionHandler: ^(OAICustomerList* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -51,8 +51,8 @@ OAICustomerListsApi*apiInstance = [[OAICustomerListsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **customerListRequest** | [**OAICustomerListRequest***](OAICustomerListRequest.md)| Parameters to get Customer lists info | 
+ **adAccountId** | **NSString***|  | 
+ **customerListCreate** | [**OAICustomerListCreate***](OAICustomerListCreate.md)|  | 
 
 ### Return type
 
@@ -91,8 +91,8 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* customerListId = @"customerListId_example"; // Unique identifier of a customer list
+NSString* adAccountId = @"adAccountId_example"; // 
+NSString* customerListId = @"customerListId_example"; // Customer list ID.
 
 OAICustomerListsApi*apiInstance = [[OAICustomerListsApi alloc] init];
 
@@ -113,8 +113,8 @@ OAICustomerListsApi*apiInstance = [[OAICustomerListsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **customerListId** | **NSString***| Unique identifier of a customer list | 
+ **adAccountId** | **NSString***|  | 
+ **customerListId** | **NSString***| Customer list ID. | 
 
 ### Return type
 
@@ -134,15 +134,16 @@ Name | Type | Description  | Notes
 # **customerListsList**
 ```objc
 -(NSURLSessionTask*) customerListsListWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
+    excludeNca: (NSNumber*) excludeNca
         completionHandler: (void (^)(OAICustomerListsList200Response* output, NSError* error)) handler;
 ```
 
 Get customer lists
 
-<p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 ```objc
@@ -152,18 +153,20 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+NSString* adAccountId = @"adAccountId_example"; // 
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+NSNumber* excludeNca = @(NO); // When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). (optional) (default to @(NO))
 
 OAICustomerListsApi*apiInstance = [[OAICustomerListsApi alloc] init];
 
 // Get customer lists
 [apiInstance customerListsListWithAdAccountId:adAccountId
+              bookmark:bookmark
               pageSize:pageSize
               order:order
-              bookmark:bookmark
+              excludeNca:excludeNca
           completionHandler: ^(OAICustomerListsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -178,10 +181,11 @@ OAICustomerListsApi*apiInstance = [[OAICustomerListsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **adAccountId** | **NSString***|  | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **excludeNca** | **NSNumber***| When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). | [optional] [default to @(NO)]
 
 ### Return type
 
@@ -202,13 +206,13 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) customerListsUpdateWithAdAccountId: (NSString*) adAccountId
     customerListId: (NSString*) customerListId
-    customerListUpdateRequest: (OAICustomerListUpdateRequest*) customerListUpdateRequest
+    customerListUpdateWithRequiredBody: (OAICustomerListUpdateWithRequiredBody*) customerListUpdateWithRequiredBody
         completionHandler: (void (^)(OAICustomerList* output, NSError* error)) handler;
 ```
 
 Update customer list
 
-<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 
 ### Example
 ```objc
@@ -218,16 +222,16 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* customerListId = @"customerListId_example"; // Unique identifier of a customer list
-OAICustomerListUpdateRequest* customerListUpdateRequest = [[OAICustomerListUpdateRequest alloc] init]; // 
+NSString* adAccountId = @"adAccountId_example"; // 
+NSString* customerListId = @"customerListId_example"; // Customer list ID.
+OAICustomerListUpdateWithRequiredBody* customerListUpdateWithRequiredBody = [[OAICustomerListUpdateWithRequiredBody alloc] init]; // 
 
 OAICustomerListsApi*apiInstance = [[OAICustomerListsApi alloc] init];
 
 // Update customer list
 [apiInstance customerListsUpdateWithAdAccountId:adAccountId
               customerListId:customerListId
-              customerListUpdateRequest:customerListUpdateRequest
+              customerListUpdateWithRequiredBody:customerListUpdateWithRequiredBody
           completionHandler: ^(OAICustomerList* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -242,9 +246,9 @@ OAICustomerListsApi*apiInstance = [[OAICustomerListsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **customerListId** | **NSString***| Unique identifier of a customer list | 
- **customerListUpdateRequest** | [**OAICustomerListUpdateRequest***](OAICustomerListUpdateRequest.md)|  | 
+ **adAccountId** | **NSString***|  | 
+ **customerListId** | **NSString***| Customer list ID. | 
+ **customerListUpdateWithRequiredBody** | [**OAICustomerListUpdateWithRequiredBody***](OAICustomerListUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 

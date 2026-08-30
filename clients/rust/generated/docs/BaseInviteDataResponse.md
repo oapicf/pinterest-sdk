@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**String**> | Unique identifier of the invite/request. | [optional]
-**invite_data** | Option<[**models::BaseInviteDataResponseInviteData**](BaseInviteDataResponse_invite_data.md)> |  | [optional]
+**invite_data** | Option<[**models::InviteDataResponse**](InviteDataResponse.md)> |  | [optional]
 **is_received_invite** | Option<**bool**> | Indicates whether the invite/request was received. | [optional]
 **user** | Option<[**models::BusinessAccessUserSummary**](BusinessAccessUserSummary.md)> | Metadata for the member/partner that was sent the invite/request. | [optional]
 

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**negated** | **character** |  | [optional] [default to FALSE] 
+**negated** | **character** |  | [optional] 
 **values** | [**array[MediaType]**](MediaType.md) |  | 
 
 

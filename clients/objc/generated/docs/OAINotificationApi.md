@@ -28,7 +28,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-OAINotificationPostRequest* notificationPostRequest = [[OAINotificationPostRequest alloc] init]; // notification event.
+OAINotificationPostRequest* notificationPostRequest = [[OAINotificationPostRequest alloc] init]; // 
 
 OAINotificationApi*apiInstance = [[OAINotificationApi alloc] init];
 
@@ -48,7 +48,7 @@ OAINotificationApi*apiInstance = [[OAINotificationApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notificationPostRequest** | [**OAINotificationPostRequest***](OAINotificationPostRequest.md)| notification event. | 
+ **notificationPostRequest** | [**OAINotificationPostRequest***](OAINotificationPostRequest.md)|  | 
 
 ### Return type
 

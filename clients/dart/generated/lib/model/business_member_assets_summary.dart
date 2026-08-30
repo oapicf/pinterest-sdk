@@ -18,10 +18,10 @@ class BusinessMemberAssetsSummary {
   });
 
   /// List of ad account IDs and respective permission levels.
-  List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts;
+  List<AssetIdWithPermissions> adAccounts;
 
   /// List of profile IDs and respective permission levels.
-  List<BusinessMemberAssetsSummaryProfilesInner> profiles;
+  List<AssetIdWithPermissions> profiles;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BusinessMemberAssetsSummary &&
@@ -55,16 +55,12 @@ class BusinessMemberAssetsSummary {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BusinessMemberAssetsSummary[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BusinessMemberAssetsSummary[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return BusinessMemberAssetsSummary(
-        adAccounts: BusinessMemberAssetsSummaryAdAccountsInner.listFromJson(json[r'ad_accounts']),
-        profiles: BusinessMemberAssetsSummaryProfilesInner.listFromJson(json[r'profiles']),
+        adAccounts: AssetIdWithPermissions.listFromJson(json[r'ad_accounts']),
+        profiles: AssetIdWithPermissions.listFromJson(json[r'profiles']),
       );
     }
     return null;

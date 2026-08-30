@@ -7,14 +7,18 @@ import play.api.mvc._
 import model.CreativeType
 import model.Error
 import java.time.LocalDate
+import model.MultiPinsAnalyticsMetricTypesItem
 import model.Pin
 import model.PinAnalyticsMetricsResponse
 import model.PinCreate
+import model.PinFilter
+import model.PinType
 import model.PinUpdate
 import model.PinsList200Response
-import model.PinsSaveRequest
+import model.PinsSaveRequestCreate
+import model.QuerypinanalyticsmetrictypesItems
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extends AbstractController(cc) {
   /**
@@ -44,6 +48,7 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
         
       val metricTypes = request.getQueryString("metric_types")
         .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("metric_types", "query string")
         }
@@ -80,6 +85,7 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
         
       val metricTypes = request.getQueryString("metric_types")
         .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("metric_types", "query string")
         }
@@ -118,14 +124,15 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
     * DELETE /v5/pins/:pinId?adAccountId=[value]
     */
   def pinsDelete(pinId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
+    def executeApi(): Pin = {
       val adAccountId = request.getQueryString("ad_account_id")
         
       api.pinsDelete(pinId, adAccountId)
     }
 
-    executeApi()
-    Ok
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
   }
 
   /**
@@ -147,11 +154,12 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
   }
 
   /**
-    * GET /v5/pins?pinFilter=[value]&pinMetrics=[value]&includeProtectedPins=[value]&pinType=[value]&creativeTypes=[value]&adAccountId=[value]&bookmark=[value]&pageSize=[value]
+    * GET /v5/pins?pinFilter=[value]&pinMetrics=[value]&includeProtectedPins=[value]&pinType=[value]&creativeTypes=[value]&adAccountId=[value]&domain=[value]&domains=[value]&includeProductTagObj=[value]&bookmark=[value]&pageSize=[value]
     */
   def pinsList(): Action[AnyContent] = Action { request =>
     def executeApi(): PinsList200Response = {
       val pinFilter = request.getQueryString("pin_filter")
+        .map(value => )
         
       val pinMetrics = request.getQueryString("pin_metrics")
         .map(value => value.toBoolean)
@@ -160,6 +168,7 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
         .map(value => value.toBoolean)
         
       val pinType = request.getQueryString("pin_type")
+        .map(value => )
         
       val creativeTypes = request.queryString.get("creative_types")
         .map(_.toList)
@@ -167,12 +176,20 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
         
       val adAccountId = request.getQueryString("ad_account_id")
         
+      val domain = request.getQueryString("domain")
+        
+      val domains = request.queryString.get("domains")
+        .map(_.toList)
+        
+      val includeProductTagObj = request.getQueryString("include_product_tag_obj")
+        .map(value => value.toBoolean)
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      api.pinsList(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize)
+      api.pinsList(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, domain, domains, includeProductTagObj, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -186,12 +203,12 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
     */
   def pinsSave(pinId: String): Action[AnyContent] = Action { request =>
     def executeApi(): Pin = {
-      val pinsSaveRequest = request.body.asJson.map(_.as[PinsSaveRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "pinsSaveRequest")
+      val pinsSaveRequestCreate = request.body.asJson.map(_.as[PinsSaveRequestCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "pinsSaveRequestCreate")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.pinsSave(pinId, pinsSaveRequest, adAccountId)
+      api.pinsSave(pinId, pinsSaveRequestCreate, adAccountId)
     }
 
     val result = executeApi()

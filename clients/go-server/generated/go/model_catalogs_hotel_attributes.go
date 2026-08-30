@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,6 +16,7 @@ package openapi
 
 type CatalogsHotelAttributes struct {
 
+	// Hotel address
 	Address CatalogsHotelAddress `json:"address,omitempty"`
 
 	// Base price of the hotel room per night followed by the ISO currency code
@@ -45,6 +46,7 @@ type CatalogsHotelAttributes struct {
 	// Brief description of the hotel.
 	Description *string `json:"description,omitempty"`
 
+	// If specified, you must provide all properties
 	GuestRatings CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
 
 	// Latitude of the hotel.
@@ -65,13 +67,18 @@ type CatalogsHotelAttributes struct {
 	// Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 	SalePrice *string `json:"sale_price,omitempty"`
 
-	// <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+	// <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
 	AdditionalImageLink *[]string `json:"additional_image_link,omitempty"`
 
-	MainImage CatalogsHotelAttributesAllOfMainImage `json:"main_image,omitempty"`
+	// AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+	AiDisclosures []CatalogsAiContentDisclosure `json:"ai_disclosures,omitempty"`
+
+	// The main hotel image
+	MainImage CatalogsHotelMainImage `json:"main_image,omitempty"`
 }
 
-// AssertCatalogsHotelAttributesRequired checks if the required fields are not zero-ed
+// AssertCatalogsHotelAttributesRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsHotelAttributesRequired(obj CatalogsHotelAttributes) error {
 	if err := AssertCatalogsHotelAddressRequired(obj.Address); err != nil {
 		return err
@@ -79,7 +86,12 @@ func AssertCatalogsHotelAttributesRequired(obj CatalogsHotelAttributes) error {
 	if err := AssertCatalogsHotelGuestRatingsRequired(obj.GuestRatings); err != nil {
 		return err
 	}
-	if err := AssertCatalogsHotelAttributesAllOfMainImageRequired(obj.MainImage); err != nil {
+	for _, el := range obj.AiDisclosures {
+		if err := AssertCatalogsAiContentDisclosureRequired(el); err != nil {
+			return err
+		}
+	}
+	if err := AssertCatalogsHotelMainImageRequired(obj.MainImage); err != nil {
 		return err
 	}
 	return nil
@@ -93,7 +105,12 @@ func AssertCatalogsHotelAttributesConstraints(obj CatalogsHotelAttributes) error
 	if err := AssertCatalogsHotelGuestRatingsConstraints(obj.GuestRatings); err != nil {
 		return err
 	}
-	if err := AssertCatalogsHotelAttributesAllOfMainImageConstraints(obj.MainImage); err != nil {
+	for _, el := range obj.AiDisclosures {
+		if err := AssertCatalogsAiContentDisclosureConstraints(el); err != nil {
+			return err
+		}
+	}
+	if err := AssertCatalogsHotelMainImageConstraints(obj.MainImage); err != nil {
 		return err
 	}
 	return nil

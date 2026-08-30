@@ -64,7 +64,7 @@ BoardOwner::getUsername()
 }
 
 void
-BoardOwner::setUsername(std::string  username)
+BoardOwner::setUsername(std::string username)
 {
 	this->username = username;
 }

@@ -22,7 +22,7 @@ const example = {
   "catalogType": null,
   "description": null,
   "filters": null,
-  "name": null,
+  "name": Most Popular,
 } satisfies CatalogsHotelProductGroupUpdateRequest
 
 console.log(example)

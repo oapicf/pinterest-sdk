@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.string option
+open OpenAPI.Model.ConversionTagTypeOptimal
 
 module AdvertiserDefinedEvent =
 
@@ -11,10 +11,10 @@ module AdvertiserDefinedEvent =
 
   [<CLIMutable>]
   type AdvertiserDefinedEvent = {
+    [<JsonProperty(PropertyName = "mapped_conversion_type")>]
+    MappedConversionType : ConversionTagTypeOptimal;
     [<JsonProperty(PropertyName = "name")>]
     Name : string;
-    [<JsonProperty(PropertyName = "mapped_conversion_type")>]
-    MappedConversionType : string option;
   }
 
   //#endregion

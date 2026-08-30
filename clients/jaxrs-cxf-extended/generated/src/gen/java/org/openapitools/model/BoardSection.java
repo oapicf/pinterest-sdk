@@ -31,7 +31,6 @@ public class BoardSection  {
 
   /**
    * Sets the <code>id</code> property.
-   * <br><em>N.B. <code>id</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setId(String id) {
     this.id = id;
@@ -39,7 +38,6 @@ public class BoardSection  {
 
   /**
    * Sets the <code>id</code> property.
-   * <br><em>N.B. <code>id</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public BoardSection id(String id) {
     this.id = id;
@@ -106,10 +104,7 @@ public class BoardSection  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

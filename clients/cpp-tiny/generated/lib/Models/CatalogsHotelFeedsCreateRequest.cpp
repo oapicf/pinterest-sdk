@@ -7,15 +7,15 @@ using namespace Tiny;
 CatalogsHotelFeedsCreateRequest::CatalogsHotelFeedsCreateRequest()
 {
 	catalog_id = std::string();
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	credentials = CatalogsFeedCredentials();
 	default_currency = NullableCurrency();
-	default_locale = CatalogsFeedsCreateRequest_default_locale();
+	default_locale = CatalogsCreativeAssetsFeedsCreateRequest_default_locale();
 	format = CatalogsFormat();
 	location = std::string();
 	name = std::string();
 	preferred_processing_schedule = CatalogsFeedProcessingSchedule();
-	status = std::string();
+	status = null;
 }
 
 CatalogsHotelFeedsCreateRequest::CatalogsHotelFeedsCreateRequest(std::string jsonString)
@@ -54,9 +54,8 @@ CatalogsHotelFeedsCreateRequest::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -97,7 +96,7 @@ CatalogsHotelFeedsCreateRequest::fromJson(std::string jsonObj)
 
 
 
-        CatalogsFeedsCreateRequest_default_locale* obj = &default_locale;
+        CatalogsCreativeAssetsFeedsCreateRequest_default_locale* obj = &default_locale;
 		obj->fromJson(value.dump());
 
     }
@@ -189,8 +188,8 @@ CatalogsHotelFeedsCreateRequest::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -260,19 +259,19 @@ CatalogsHotelFeedsCreateRequest::getCatalogId()
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setCatalogId(std::string  catalog_id)
+CatalogsHotelFeedsCreateRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
 
-CatalogsType
+std::string
 CatalogsHotelFeedsCreateRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setCatalogType(CatalogsType  catalog_type)
+CatalogsHotelFeedsCreateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -284,7 +283,7 @@ CatalogsHotelFeedsCreateRequest::getCredentials()
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsHotelFeedsCreateRequest::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -296,19 +295,19 @@ CatalogsHotelFeedsCreateRequest::getDefaultCurrency()
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsHotelFeedsCreateRequest::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
 
-CatalogsFeedsCreateRequest_default_locale
+CatalogsCreativeAssetsFeedsCreateRequest_default_locale
 CatalogsHotelFeedsCreateRequest::getDefaultLocale()
 {
 	return default_locale;
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale)
+CatalogsHotelFeedsCreateRequest::setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequest_default_locale default_locale)
 {
 	this->default_locale = default_locale;
 }
@@ -320,7 +319,7 @@ CatalogsHotelFeedsCreateRequest::getFormat()
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setFormat(CatalogsFormat  format)
+CatalogsHotelFeedsCreateRequest::setFormat(CatalogsFormat format)
 {
 	this->format = format;
 }
@@ -332,7 +331,7 @@ CatalogsHotelFeedsCreateRequest::getLocation()
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setLocation(std::string  location)
+CatalogsHotelFeedsCreateRequest::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -344,7 +343,7 @@ CatalogsHotelFeedsCreateRequest::getName()
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setName(std::string  name)
+CatalogsHotelFeedsCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }
@@ -356,7 +355,7 @@ CatalogsHotelFeedsCreateRequest::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsHotelFeedsCreateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -368,7 +367,7 @@ CatalogsHotelFeedsCreateRequest::getStatus()
 }
 
 void
-CatalogsHotelFeedsCreateRequest::setStatus(CatalogsStatus  status)
+CatalogsHotelFeedsCreateRequest::setStatus(CatalogsStatus status)
 {
 	this->status = status;
 }

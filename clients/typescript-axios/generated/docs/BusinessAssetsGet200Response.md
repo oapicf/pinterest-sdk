@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;GetBusinessAssetsResponse&gt;**](GetBusinessAssetsResponse.md) | List of assets the requesting business has access to. | [default to undefined]
+**items** | [**Array&lt;BusinessAssets&gt;**](BusinessAssets.md) |  | [default to undefined]
 
 ## Example
 

@@ -53,7 +53,7 @@ resourceTypes {
         }
         external_business_id {
           type =  string
-          description = ""
+          description = "External business ID for the integration."
           optional = false
         }
         id {

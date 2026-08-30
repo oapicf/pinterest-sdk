@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SharedAudiencesForBusinessList200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SharedAudiencesForBusinessList200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Audience = openapi_server.resourceTypes.Audience
+}
+resourceTypes {
+
+  SharedAudiencesForBusinessList200Response {
+    title = SharedAudiencesForBusinessList200Response
+    description = SharedAudiencesForBusinessList200Response
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = Audience
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SharedAudiencesForBusinessList200Response {
+    title = SharedAudiencesForBusinessList200Response
+    description = SharedAudiencesForBusinessList200Response
+    implements = openapi_server.resourceTypes.SharedAudiencesForBusinessList200Response
+
+  }
+}

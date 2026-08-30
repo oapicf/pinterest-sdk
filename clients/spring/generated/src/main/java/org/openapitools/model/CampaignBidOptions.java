@@ -2,38 +2,79 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AgeBucketMultipliers;
 import org.openapitools.model.AppTypeMultipliers;
 import org.openapitools.model.CampaignAudienceMultipliers;
+import org.openapitools.model.FreqBidMultiplierTimeWindow;
+import org.openapitools.model.FrequencyMultipliers;
+import org.openapitools.model.GenderMultipliers;
 import org.openapitools.model.PlacementMultipliers;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Object describing the campaign level bid multipliers.
  */
 
 @Schema(name = "CampaignBidOptions", description = "Object describing the campaign level bid multipliers.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CampaignBidOptions {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<AgeBucketMultipliers> ageBucketMultipliers = JsonNullable.<AgeBucketMultipliers>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<AppTypeMultipliers> appTypeMultipliers = JsonNullable.<AppTypeMultipliers>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CampaignAudienceMultipliers audienceMultipliers;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<FreqBidMultiplierTimeWindow> freqBidMultiplierTimeWindow = JsonNullable.<FreqBidMultiplierTimeWindow>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<FrequencyMultipliers> frequencyMultipliers = JsonNullable.<FrequencyMultipliers>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<GenderMultipliers> genderMultipliers = JsonNullable.<GenderMultipliers>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<PlacementMultipliers> placementMultipliers = JsonNullable.<PlacementMultipliers>undefined();
+
+  public CampaignBidOptions ageBucketMultipliers(AgeBucketMultipliers ageBucketMultipliers) {
+    this.ageBucketMultipliers = JsonNullable.of(ageBucketMultipliers);
+    return this;
+  }
+
+  /**
+   * Age bucket multipliers for bid adjustments.
+   * @return ageBucketMultipliers
+   */
+  @Valid 
+  @Schema(name = "age_bucket_multipliers", description = "Age bucket multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("age_bucket_multipliers")
+  public JsonNullable<AgeBucketMultipliers> getAgeBucketMultipliers() {
+    return ageBucketMultipliers;
+  }
+
+  public void setAgeBucketMultipliers(JsonNullable<AgeBucketMultipliers> ageBucketMultipliers) {
+    this.ageBucketMultipliers = ageBucketMultipliers;
+  }
 
   public CampaignBidOptions appTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
     this.appTypeMultipliers = JsonNullable.of(appTypeMultipliers);
@@ -41,11 +82,11 @@ public class CampaignBidOptions {
   }
 
   /**
-   * Get appTypeMultipliers
+   * App type multipliers for bid adjustments.
    * @return appTypeMultipliers
    */
   @Valid 
-  @Schema(name = "app_type_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "app_type_multipliers", description = "App type multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("app_type_multipliers")
   public JsonNullable<AppTypeMultipliers> getAppTypeMultipliers() {
     return appTypeMultipliers;
@@ -61,18 +102,79 @@ public class CampaignBidOptions {
   }
 
   /**
-   * Get audienceMultipliers
+   * Audience multipliers for bid adjustments.
    * @return audienceMultipliers
    */
   @Valid 
-  @Schema(name = "audience_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "audience_multipliers", description = "Audience multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_multipliers")
   public @Nullable CampaignAudienceMultipliers getAudienceMultipliers() {
     return audienceMultipliers;
   }
 
+  @JsonProperty("audience_multipliers")
   public void setAudienceMultipliers(@Nullable CampaignAudienceMultipliers audienceMultipliers) {
     this.audienceMultipliers = audienceMultipliers;
+  }
+
+  public CampaignBidOptions freqBidMultiplierTimeWindow(FreqBidMultiplierTimeWindow freqBidMultiplierTimeWindow) {
+    this.freqBidMultiplierTimeWindow = JsonNullable.of(freqBidMultiplierTimeWindow);
+    return this;
+  }
+
+  /**
+   * The time window for frequency bid multipliers.
+   * @return freqBidMultiplierTimeWindow
+   */
+  @Valid 
+  @Schema(name = "freq_bid_multiplier_time_window", description = "The time window for frequency bid multipliers.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("freq_bid_multiplier_time_window")
+  public JsonNullable<FreqBidMultiplierTimeWindow> getFreqBidMultiplierTimeWindow() {
+    return freqBidMultiplierTimeWindow;
+  }
+
+  public void setFreqBidMultiplierTimeWindow(JsonNullable<FreqBidMultiplierTimeWindow> freqBidMultiplierTimeWindow) {
+    this.freqBidMultiplierTimeWindow = freqBidMultiplierTimeWindow;
+  }
+
+  public CampaignBidOptions frequencyMultipliers(FrequencyMultipliers frequencyMultipliers) {
+    this.frequencyMultipliers = JsonNullable.of(frequencyMultipliers);
+    return this;
+  }
+
+  /**
+   * Frequency multipliers for bid adjustments.
+   * @return frequencyMultipliers
+   */
+  @Valid 
+  @Schema(name = "frequency_multipliers", description = "Frequency multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("frequency_multipliers")
+  public JsonNullable<FrequencyMultipliers> getFrequencyMultipliers() {
+    return frequencyMultipliers;
+  }
+
+  public void setFrequencyMultipliers(JsonNullable<FrequencyMultipliers> frequencyMultipliers) {
+    this.frequencyMultipliers = frequencyMultipliers;
+  }
+
+  public CampaignBidOptions genderMultipliers(GenderMultipliers genderMultipliers) {
+    this.genderMultipliers = JsonNullable.of(genderMultipliers);
+    return this;
+  }
+
+  /**
+   * Gender multipliers for bid adjustments.
+   * @return genderMultipliers
+   */
+  @Valid 
+  @Schema(name = "gender_multipliers", description = "Gender multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("gender_multipliers")
+  public JsonNullable<GenderMultipliers> getGenderMultipliers() {
+    return genderMultipliers;
+  }
+
+  public void setGenderMultipliers(JsonNullable<GenderMultipliers> genderMultipliers) {
+    this.genderMultipliers = genderMultipliers;
   }
 
   public CampaignBidOptions placementMultipliers(PlacementMultipliers placementMultipliers) {
@@ -81,11 +183,11 @@ public class CampaignBidOptions {
   }
 
   /**
-   * Get placementMultipliers
+   * Placement multipliers for bid adjustments.
    * @return placementMultipliers
    */
   @Valid 
-  @Schema(name = "placement_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "placement_multipliers", description = "Placement multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("placement_multipliers")
   public JsonNullable<PlacementMultipliers> getPlacementMultipliers() {
     return placementMultipliers;
@@ -104,8 +206,12 @@ public class CampaignBidOptions {
       return false;
     }
     CampaignBidOptions campaignBidOptions = (CampaignBidOptions) o;
-    return equalsNullable(this.appTypeMultipliers, campaignBidOptions.appTypeMultipliers) &&
+    return equalsNullable(this.ageBucketMultipliers, campaignBidOptions.ageBucketMultipliers) &&
+        equalsNullable(this.appTypeMultipliers, campaignBidOptions.appTypeMultipliers) &&
         Objects.equals(this.audienceMultipliers, campaignBidOptions.audienceMultipliers) &&
+        equalsNullable(this.freqBidMultiplierTimeWindow, campaignBidOptions.freqBidMultiplierTimeWindow) &&
+        equalsNullable(this.frequencyMultipliers, campaignBidOptions.frequencyMultipliers) &&
+        equalsNullable(this.genderMultipliers, campaignBidOptions.genderMultipliers) &&
         equalsNullable(this.placementMultipliers, campaignBidOptions.placementMultipliers);
   }
 
@@ -115,7 +221,7 @@ public class CampaignBidOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(appTypeMultipliers), audienceMultipliers, hashCodeNullable(placementMultipliers));
+    return Objects.hash(hashCodeNullable(ageBucketMultipliers), hashCodeNullable(appTypeMultipliers), audienceMultipliers, hashCodeNullable(freqBidMultiplierTimeWindow), hashCodeNullable(frequencyMultipliers), hashCodeNullable(genderMultipliers), hashCodeNullable(placementMultipliers));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -129,8 +235,12 @@ public class CampaignBidOptions {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignBidOptions {\n");
+    sb.append("    ageBucketMultipliers: ").append(toIndentedString(ageBucketMultipliers)).append("\n");
     sb.append("    appTypeMultipliers: ").append(toIndentedString(appTypeMultipliers)).append("\n");
     sb.append("    audienceMultipliers: ").append(toIndentedString(audienceMultipliers)).append("\n");
+    sb.append("    freqBidMultiplierTimeWindow: ").append(toIndentedString(freqBidMultiplierTimeWindow)).append("\n");
+    sb.append("    frequencyMultipliers: ").append(toIndentedString(frequencyMultipliers)).append("\n");
+    sb.append("    genderMultipliers: ").append(toIndentedString(genderMultipliers)).append("\n");
     sb.append("    placementMultipliers: ").append(toIndentedString(placementMultipliers)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -141,10 +251,7 @@ public class CampaignBidOptions {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

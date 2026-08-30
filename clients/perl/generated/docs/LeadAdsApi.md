@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **ad_accounts_subscriptions_del_by_id**
-> ad_accounts_subscriptions_del_by_id(ad_account_id => $ad_account_id, subscription_id => $subscription_id)
+> LeadSubscription ad_accounts_subscriptions_del_by_id(ad_account_id => $ad_account_id, subscription_id => $subscription_id)
 
 Delete lead ads subscription
 
@@ -36,7 +36,8 @@ my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an 
 my $subscription_id = "subscription_id_example"; # string | Unique identifier of a subscription.
 
 eval {
-    $api_instance->ad_accounts_subscriptions_del_by_id(ad_account_id => $ad_account_id, subscription_id => $subscription_id);
+    my $result = $api_instance->ad_accounts_subscriptions_del_by_id(ad_account_id => $ad_account_id, subscription_id => $subscription_id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling LeadAdsApi->ad_accounts_subscriptions_del_by_id: $@\n";
@@ -52,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 

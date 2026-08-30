@@ -5,7 +5,7 @@ Protected Class UpdatePartnerAssetsResultsResponseArray
 		#tag Note
 			List of assigned/updated partner asset access.
 		#tag EndNote
-		items() As UpdatePartnerAssetsResult
+		items() As OpenAPIClient.Models.UpdatePartnerAssetsResult
 	#tag EndProperty
 
 

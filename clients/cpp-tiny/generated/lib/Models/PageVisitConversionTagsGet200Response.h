@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBookmark(std::string  bookmark);
+	void setBookmark(std::string bookmark);
 	/*! \brief Get 
 	 */
 	std::list<ConversionEventResponse> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <ConversionEventResponse> items);
+	void setItems(std::list<ConversionEventResponse> items);
 
 
     private:

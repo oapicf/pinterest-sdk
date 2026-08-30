@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -7,8 +8,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets Permissions
+ * Permission levels available on a business asset.
  */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public enum Permissions {
   
   ADMIN("ADMIN"),
@@ -31,7 +33,9 @@ public enum Permissions {
   
   PROFILE_PUBLISHER("PROFILE_PUBLISHER"),
   
-  CONSUMER_USER("CONSUMER_USER");
+  CONSUMER_USER("CONSUMER_USER"),
+  
+  BIZ_PINNER_LIST_SHARER("BIZ_PINNER_LIST_SHARER");
 
   private String value;
 

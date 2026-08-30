@@ -89,6 +89,31 @@ static bool customerListUploadsCreateProcessor(MemoryStruct_s p_chunk, long code
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -227,14 +252,14 @@ bool CustomerListUploadsManager::customerListUploadsCreateSync(char * accessToke
 static bool customerListUploadsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(CustomerListUploadResponse, Error, void* )
-	= reinterpret_cast<void(*)(CustomerListUploadResponse, Error, void* )> (voidHandler);
+	void(* handler)(CustomerListUpload, Error, void* )
+	= reinterpret_cast<void(*)(CustomerListUpload, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	CustomerListUploadResponse out;
+	CustomerListUpload out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -242,18 +267,43 @@ static bool customerListUploadsGetProcessor(MemoryStruct_s p_chunk, long code, c
 
 
 
-		if (isprimitive("CustomerListUploadResponse")) {
+		if (isprimitive("CustomerListUpload")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "CustomerListUploadResponse", "CustomerListUploadResponse");
+			jsonToValue(&out, pJson, "CustomerListUpload", "CustomerListUpload");
 			json_node_free(pJson);
 
-			if ("CustomerListUploadResponse" == "std::string") {
+			if ("CustomerListUpload" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -286,7 +336,7 @@ static bool customerListUploadsGetProcessor(MemoryStruct_s p_chunk, long code, c
 
 static bool customerListUploadsGetHelper(char * accessToken,
 	std::string adAccountId, std::string customerListId, std::string customerListUploadId, 
-	void(* handler)(CustomerListUploadResponse, Error, void* )
+	void(* handler)(CustomerListUpload, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -375,7 +425,7 @@ static bool customerListUploadsGetHelper(char * accessToken,
 
 bool CustomerListUploadsManager::customerListUploadsGetAsync(char * accessToken,
 	std::string adAccountId, std::string customerListId, std::string customerListUploadId, 
-	void(* handler)(CustomerListUploadResponse, Error, void* )
+	void(* handler)(CustomerListUpload, Error, void* )
 	, void* userData)
 {
 	return customerListUploadsGetHelper(accessToken,
@@ -385,7 +435,7 @@ bool CustomerListUploadsManager::customerListUploadsGetAsync(char * accessToken,
 
 bool CustomerListUploadsManager::customerListUploadsGetSync(char * accessToken,
 	std::string adAccountId, std::string customerListId, std::string customerListUploadId, 
-	void(* handler)(CustomerListUploadResponse, Error, void* )
+	void(* handler)(CustomerListUpload, Error, void* )
 	, void* userData)
 {
 	return customerListUploadsGetHelper(accessToken,
@@ -396,14 +446,14 @@ bool CustomerListUploadsManager::customerListUploadsGetSync(char * accessToken,
 static bool customerListUploadsRunProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(CustomerListUploadResponse, Error, void* )
-	= reinterpret_cast<void(*)(CustomerListUploadResponse, Error, void* )> (voidHandler);
+	void(* handler)(CustomerListUpload, Error, void* )
+	= reinterpret_cast<void(*)(CustomerListUpload, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	CustomerListUploadResponse out;
+	CustomerListUpload out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -411,18 +461,43 @@ static bool customerListUploadsRunProcessor(MemoryStruct_s p_chunk, long code, c
 
 
 
-		if (isprimitive("CustomerListUploadResponse")) {
+		if (isprimitive("CustomerListUpload")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "CustomerListUploadResponse", "CustomerListUploadResponse");
+			jsonToValue(&out, pJson, "CustomerListUpload", "CustomerListUpload");
 			json_node_free(pJson);
 
-			if ("CustomerListUploadResponse" == "std::string") {
+			if ("CustomerListUpload" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -455,7 +530,7 @@ static bool customerListUploadsRunProcessor(MemoryStruct_s p_chunk, long code, c
 
 static bool customerListUploadsRunHelper(char * accessToken,
 	std::string adAccountId, std::string customerListId, std::string customerListUploadId, 
-	void(* handler)(CustomerListUploadResponse, Error, void* )
+	void(* handler)(CustomerListUpload, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -544,7 +619,7 @@ static bool customerListUploadsRunHelper(char * accessToken,
 
 bool CustomerListUploadsManager::customerListUploadsRunAsync(char * accessToken,
 	std::string adAccountId, std::string customerListId, std::string customerListUploadId, 
-	void(* handler)(CustomerListUploadResponse, Error, void* )
+	void(* handler)(CustomerListUpload, Error, void* )
 	, void* userData)
 {
 	return customerListUploadsRunHelper(accessToken,
@@ -554,7 +629,7 @@ bool CustomerListUploadsManager::customerListUploadsRunAsync(char * accessToken,
 
 bool CustomerListUploadsManager::customerListUploadsRunSync(char * accessToken,
 	std::string adAccountId, std::string customerListId, std::string customerListUploadId, 
-	void(* handler)(CustomerListUploadResponse, Error, void* )
+	void(* handler)(CustomerListUpload, Error, void* )
 	, void* userData)
 {
 	return customerListUploadsRunHelper(accessToken,

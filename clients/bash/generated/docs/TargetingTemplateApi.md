@@ -14,10 +14,9 @@ Method | HTTP request | Description
 
 Create targeting templates
 
-<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,
- keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>
- <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse
-  performance targeting from prior campaigns for new campaigns.</p>
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.
+
+Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 
@@ -31,11 +30,11 @@ Create targeting templates
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md) | targeting template creation entity |
+ **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md) |  |
 
 ### Return type
 
-[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md)
+[**TargetingTemplate**](TargetingTemplate.md)
 
 ### Authorization
 
@@ -53,12 +52,12 @@ Name | Type | Description  | Notes
 
 List targeting templates
 
-Get a list of the targeting templates in the specified <code>ad_account_id</code>
+Get a list of the targeting templates in the specified 'ad_account_id'
 
 ### Example
 
 ```bash
- targetingTemplateList ad_account_id=value  order=value  include_sizing=value  search_query=value  page_size=value  bookmark=value
+ targetingTemplateList ad_account_id=value  bookmark=value  page_size=value  order=value  include_sizing=value  search_query=value
 ```
 
 ### Parameters
@@ -67,13 +66,13 @@ Get a list of the targeting templates in the specified <code>ad_account_id</code
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
-by ID. Note that higher-value IDs are associated with more-recently added
-items. | [optional] [default to null]
- **includeSizing** | **boolean** | Include audience sizing in result or not | [optional] [default to false]
- **searchQuery** | **string** | Search keyword for targeting templates | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID.
+Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
+ **includeSizing** | **boolean** | Include audience sizing in result or not | [optional] [default to false]
+ **searchQuery** | **string** | Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] [default to null]
 
 ### Return type
 
@@ -95,7 +94,7 @@ items. | [optional] [default to null]
 
 Update targeting templates
 
-<p>Update the targeting template given advertiser ID and targeting template ID</p>
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 
@@ -109,7 +108,7 @@ Update targeting templates
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **targetingTemplateUpdateRequest** | [**TargetingTemplateUpdateRequest**](TargetingTemplateUpdateRequest.md) | Operation type and targeting template ID |
+ **targetingTemplateUpdateRequestReadOrUpdate** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md) |  |
 
 ### Return type
 

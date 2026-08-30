@@ -3,9 +3,11 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.AdPreviewCreateFromImage
-open OpenAPI.Model.AdPreviewCreateFromPin
 open OpenAPI.Model.AdPreviewShopping
+open OpenAPI.Model.AdPreviewSourceImage
+open OpenAPI.Model.AdPreviewSourcePinId
+open OpenAPI.Model.AdShoppingPreviewCreativeType
+open OpenAPI.Model.BasePreferredMediaType
 open OpenAPI.Model.CustomizableCTAType
 
 module AdPreviewRequest =
@@ -16,14 +18,16 @@ module AdPreviewRequest =
   type AdPreviewRequest = {
     [<JsonProperty(PropertyName = "image_url")>]
     ImageUrl : string;
+    [<JsonProperty(PropertyName = "promotion_id")>]
+    PromotionId : string;
     [<JsonProperty(PropertyName = "title")>]
     Title : string;
+    [<JsonProperty(PropertyName = "creative_type")>]
+    CreativeType : AdShoppingPreviewCreativeType;
     [<JsonProperty(PropertyName = "pin_id")>]
     PinId : string;
     [<JsonProperty(PropertyName = "catalog_product_group_id")>]
     CatalogProductGroupId : string;
-    [<JsonProperty(PropertyName = "creative_type")>]
-    CreativeType : string;
     [<JsonProperty(PropertyName = "customizable_cta_type")>]
     CustomizableCtaType : CustomizableCTAType;
     [<JsonProperty(PropertyName = "hero_image_title")>]
@@ -37,7 +41,9 @@ module AdPreviewRequest =
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
     [<JsonProperty(PropertyName = "preferred_media_type")>]
-    PreferredMediaType : string;
+    PreferredMediaType : BasePreferredMediaType;
+    [<JsonProperty(PropertyName = "show_promotion")>]
+    ShowPromotion : bool;
     [<JsonProperty(PropertyName = "video_tag")>]
     VideoTag : string;
   }

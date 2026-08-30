@@ -21,6 +21,7 @@ public class CatalogsItemValidationDetails   {
   private String providedValue;
 
   /**
+   * Attribute that has a validation issue.
    **/
   public CatalogsItemValidationDetails attributeName(NullableCatalogsItemFieldType attributeName) {
     this.attributeName = attributeName;
@@ -28,7 +29,7 @@ public class CatalogsItemValidationDetails   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Attribute that has a validation issue.")
   @JsonProperty("attribute_name")
   @NotNull
   public NullableCatalogsItemFieldType getAttributeName() {
@@ -94,10 +95,7 @@ public class CatalogsItemValidationDetails   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

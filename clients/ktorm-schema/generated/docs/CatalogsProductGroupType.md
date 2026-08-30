@@ -22,5 +22,7 @@
 
     * `I2PC` (value: `"I2PC"`)
 
+    * `CATALOG_EXPANSION` (value: `"CATALOG_EXPANSION"`)
+
 
 

@@ -4,5 +4,5 @@ type TemplatesList200Response struct {
 
 	Bookmark *string `json:"bookmark,omitempty"`
 
-	Items []TemplateResponse `json:"items"`
+	Items []AccountTemplate `json:"items"`
 }

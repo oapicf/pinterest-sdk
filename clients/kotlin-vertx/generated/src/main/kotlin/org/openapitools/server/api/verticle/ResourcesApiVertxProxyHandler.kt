@@ -16,11 +16,13 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.AdAccountsCountryResponse
-import org.openapitools.server.api.model.BookClosedResponse
-import org.openapitools.server.api.model.DeliveryMetricsResponse
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.SingleInterestTargetingOptionResponse
+import org.openapitools.server.api.model.AdAccountCountriesGet200Response
+import org.openapitools.server.api.model.BookClosed
+import org.openapitools.server.api.model.DeliveryMetricsGet200Response
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PublicTargetingType
+import org.openapitools.server.api.model.ReportType
+import org.openapitools.server.api.model.SingleInterestTargetingOption
 
 class ResourcesApiVertxProxyHandler(private val vertx: Vertx, private val service: ResourcesApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -73,7 +75,8 @@ class ResourcesApiVertxProxyHandler(private val vertx: Vertx, private val servic
         
                 "deliveryMetricsGet" -> {
                     val params = context.params
-                    val reportType = ApiHandlerUtils.searchStringInJson(params,"report_type")
+                    val reportTypeParam = ApiHandlerUtils.searchJsonObjectInJson(params,"report_type")
+                    val reportType = if(reportTypeParam ==null) null else Gson().fromJson(reportTypeParam.encode(), ReportType::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.deliveryMetricsGet(reportType,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
@@ -121,16 +124,17 @@ class ResourcesApiVertxProxyHandler(private val vertx: Vertx, private val servic
         
                 "targetingOptionsGet" -> {
                     val params = context.params
-                    val targetingType = ApiHandlerUtils.searchStringInJson(params,"targeting_type")
-                    if(targetingType == null){
+                    val targetingTypeParam = ApiHandlerUtils.searchJsonObjectInJson(params,"targeting_type")
+                    if (targetingTypeParam == null) {
                         throw IllegalArgumentException("targetingType is required")
                     }
+                    val targetingType = Gson().fromJson(targetingTypeParam.encode(), PublicTargetingType::class.java)
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     val clientId = ApiHandlerUtils.searchStringInJson(params,"client_id")
                     val oauthSignature = ApiHandlerUtils.searchStringInJson(params,"oauth_signature")
                     val timestamp = ApiHandlerUtils.searchStringInJson(params,"timestamp")
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.targetingOptionsGet(targetingType,clientId,oauthSignature,timestamp,adAccountId,context)
+                        val result = service.targetingOptionsGet(targetingType,adAccountId,clientId,oauthSignature,timestamp,context)
                         val payload = JsonArray(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

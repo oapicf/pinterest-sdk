@@ -13,7 +13,7 @@ Protected Class AdvancedAuctionItemsGetRequest
 		#tag Note
 			A list of retail catalog items to fetch bid options for
 		#tag EndNote
-		items() As OpenAPIClient.Models.AdvancedAuctionItemsGetRecord
+		items() As OpenAPIClient.Models.AdvancedAuctionKey
 	#tag EndProperty
 
 
@@ -66,7 +66,7 @@ Protected Class AdvancedAuctionItemsGetRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdvancedAuctionItemsGetRecord"
+			Type="AdvancedAuctionKey"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

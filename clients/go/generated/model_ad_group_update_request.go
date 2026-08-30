@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,18 +22,23 @@ var _ MappedNullable = &AdGroupUpdateRequest{}
 
 // AdGroupUpdateRequest struct for AdGroupUpdateRequest
 type AdGroupUpdateRequest struct {
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+	BidMultiplier *float32 `json:"bid_multiplier,omitempty"`
+	// Ad group ID.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+	// <div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>
+	TargetingSpecOperations []TargetingSpecOperations `json:"targeting_spec_operations,omitempty"`
 	// Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
 	AutoTargetingEnabled NullableBool `json:"auto_targeting_enabled,omitempty"`
 	// Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
 	BidInMicroCurrency NullableInt32 `json:"bid_in_micro_currency,omitempty"`
-	// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-	BidStrategyType NullableString `json:"bid_strategy_type,omitempty"`
+	BidStrategyType NullableBidStrategyType `json:"bid_strategy_type,omitempty"`
 	BillableEvent *ActionType `json:"billable_event,omitempty"`
 	// Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
 	BudgetInMicroCurrency NullableInt32 `json:"budget_in_micro_currency,omitempty"`
 	BudgetType *BudgetType `json:"budget_type,omitempty"`
 	// Campaign ID of the ad group.
-	CampaignId *string `json:"campaign_id,omitempty" validate:"regexp=^[C]?\\\\d+$"`
+	CampaignId *string `json:"campaign_id,omitempty" validate:"regexp=^[C]?\\d+$"`
 	// Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 	EndTime NullableInt32 `json:"end_time,omitempty"`
 	// Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.
@@ -43,14 +48,16 @@ type AdGroupUpdateRequest struct {
 	// Ad group name.
 	Name *string `json:"name,omitempty"`
 	// Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-	OptimizationGoalMetadata NullableOptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
+	OptimizationGoalMetadata map[string]interface{} `json:"optimization_goal_metadata,omitempty"`
 	PacingDeliveryType *PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
 	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
 	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
 	// Specify if the promotion is applied at ad group or item level
 	PromotionApplicationLevel NullableString `json:"promotion_application_level,omitempty"`
 	// Promotion ID. To clear this field, set to null.
-	PromotionId NullableString `json:"promotion_id,omitempty" validate:"regexp=^\\\\d+$"`
+	PromotionId NullableString `json:"promotion_id,omitempty" validate:"regexp=^\\d+$"`
+	// Promotion IDs list. To clear this field, set to an empty array [].
+	PromotionIds []string `json:"promotion_ids,omitempty"`
 	// Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 	StartTime NullableInt32 `json:"start_time,omitempty"`
 	// Ad group/entity status.
@@ -58,12 +65,8 @@ type AdGroupUpdateRequest struct {
 	TargetingSpec *TargetingSpec `json:"targeting_spec,omitempty"`
 	// Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
 	TargetingTemplateIds []string `json:"targeting_template_ids,omitempty"`
-	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
-	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-	BidMultiplier *float32 `json:"bid_multiplier,omitempty"`
-	// Ad group ID.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	TrackingUrls map[string]interface{} `json:"tracking_urls,omitempty"`
 }
 
 type _AdGroupUpdateRequest AdGroupUpdateRequest
@@ -74,9 +77,9 @@ type _AdGroupUpdateRequest AdGroupUpdateRequest
 // will change when the set of required properties is changed
 func NewAdGroupUpdateRequest(id string) *AdGroupUpdateRequest {
 	this := AdGroupUpdateRequest{}
+	this.Id = id
 	var promotionId string = "0"
 	this.PromotionId = *NewNullableString(&promotionId)
-	this.Id = id
 	return &this
 }
 
@@ -88,6 +91,94 @@ func NewAdGroupUpdateRequestWithDefaults() *AdGroupUpdateRequest {
 	var promotionId string = "0"
 	this.PromotionId = *NewNullableString(&promotionId)
 	return &this
+}
+
+// GetBidMultiplier returns the BidMultiplier field value if set, zero value otherwise.
+func (o *AdGroupUpdateRequest) GetBidMultiplier() float32 {
+	if o == nil || IsNil(o.BidMultiplier) {
+		var ret float32
+		return ret
+	}
+	return *o.BidMultiplier
+}
+
+// GetBidMultiplierOk returns a tuple with the BidMultiplier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupUpdateRequest) GetBidMultiplierOk() (*float32, bool) {
+	if o == nil || IsNil(o.BidMultiplier) {
+		return nil, false
+	}
+	return o.BidMultiplier, true
+}
+
+// HasBidMultiplier returns a boolean if a field has been set.
+func (o *AdGroupUpdateRequest) HasBidMultiplier() bool {
+	if o != nil && !IsNil(o.BidMultiplier) {
+		return true
+	}
+
+	return false
+}
+
+// SetBidMultiplier gets a reference to the given float32 and assigns it to the BidMultiplier field.
+func (o *AdGroupUpdateRequest) SetBidMultiplier(v float32) {
+	o.BidMultiplier = &v
+}
+
+// GetId returns the Id field value
+func (o *AdGroupUpdateRequest) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *AdGroupUpdateRequest) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *AdGroupUpdateRequest) SetId(v string) {
+	o.Id = v
+}
+
+// GetTargetingSpecOperations returns the TargetingSpecOperations field value if set, zero value otherwise.
+func (o *AdGroupUpdateRequest) GetTargetingSpecOperations() []TargetingSpecOperations {
+	if o == nil || IsNil(o.TargetingSpecOperations) {
+		var ret []TargetingSpecOperations
+		return ret
+	}
+	return o.TargetingSpecOperations
+}
+
+// GetTargetingSpecOperationsOk returns a tuple with the TargetingSpecOperations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupUpdateRequest) GetTargetingSpecOperationsOk() ([]TargetingSpecOperations, bool) {
+	if o == nil || IsNil(o.TargetingSpecOperations) {
+		return nil, false
+	}
+	return o.TargetingSpecOperations, true
+}
+
+// HasTargetingSpecOperations returns a boolean if a field has been set.
+func (o *AdGroupUpdateRequest) HasTargetingSpecOperations() bool {
+	if o != nil && !IsNil(o.TargetingSpecOperations) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetingSpecOperations gets a reference to the given []TargetingSpecOperations and assigns it to the TargetingSpecOperations field.
+func (o *AdGroupUpdateRequest) SetTargetingSpecOperations(v []TargetingSpecOperations) {
+	o.TargetingSpecOperations = v
 }
 
 // GetAutoTargetingEnabled returns the AutoTargetingEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -175,9 +266,9 @@ func (o *AdGroupUpdateRequest) UnsetBidInMicroCurrency() {
 }
 
 // GetBidStrategyType returns the BidStrategyType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupUpdateRequest) GetBidStrategyType() string {
+func (o *AdGroupUpdateRequest) GetBidStrategyType() BidStrategyType {
 	if o == nil || IsNil(o.BidStrategyType.Get()) {
-		var ret string
+		var ret BidStrategyType
 		return ret
 	}
 	return *o.BidStrategyType.Get()
@@ -186,7 +277,7 @@ func (o *AdGroupUpdateRequest) GetBidStrategyType() string {
 // GetBidStrategyTypeOk returns a tuple with the BidStrategyType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupUpdateRequest) GetBidStrategyTypeOk() (*string, bool) {
+func (o *AdGroupUpdateRequest) GetBidStrategyTypeOk() (*BidStrategyType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -202,8 +293,8 @@ func (o *AdGroupUpdateRequest) HasBidStrategyType() bool {
 	return false
 }
 
-// SetBidStrategyType gets a reference to the given NullableString and assigns it to the BidStrategyType field.
-func (o *AdGroupUpdateRequest) SetBidStrategyType(v string) {
+// SetBidStrategyType gets a reference to the given NullableBidStrategyType and assigns it to the BidStrategyType field.
+func (o *AdGroupUpdateRequest) SetBidStrategyType(v BidStrategyType) {
 	o.BidStrategyType.Set(&v)
 }
 // SetBidStrategyTypeNil sets the value for BidStrategyType to be an explicit nil
@@ -503,45 +594,36 @@ func (o *AdGroupUpdateRequest) SetName(v string) {
 }
 
 // GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupUpdateRequest) GetOptimizationGoalMetadata() OptimizationGoalMetadata {
-	if o == nil || IsNil(o.OptimizationGoalMetadata.Get()) {
-		var ret OptimizationGoalMetadata
+func (o *AdGroupUpdateRequest) GetOptimizationGoalMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.OptimizationGoalMetadata.Get()
+	return o.OptimizationGoalMetadata
 }
 
 // GetOptimizationGoalMetadataOk returns a tuple with the OptimizationGoalMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupUpdateRequest) GetOptimizationGoalMetadataOk() (*OptimizationGoalMetadata, bool) {
-	if o == nil {
-		return nil, false
+func (o *AdGroupUpdateRequest) GetOptimizationGoalMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.OptimizationGoalMetadata) {
+		return map[string]interface{}{}, false
 	}
-	return o.OptimizationGoalMetadata.Get(), o.OptimizationGoalMetadata.IsSet()
+	return o.OptimizationGoalMetadata, true
 }
 
 // HasOptimizationGoalMetadata returns a boolean if a field has been set.
 func (o *AdGroupUpdateRequest) HasOptimizationGoalMetadata() bool {
-	if o != nil && o.OptimizationGoalMetadata.IsSet() {
+	if o != nil && !IsNil(o.OptimizationGoalMetadata) {
 		return true
 	}
 
 	return false
 }
 
-// SetOptimizationGoalMetadata gets a reference to the given NullableOptimizationGoalMetadata and assigns it to the OptimizationGoalMetadata field.
-func (o *AdGroupUpdateRequest) SetOptimizationGoalMetadata(v OptimizationGoalMetadata) {
-	o.OptimizationGoalMetadata.Set(&v)
-}
-// SetOptimizationGoalMetadataNil sets the value for OptimizationGoalMetadata to be an explicit nil
-func (o *AdGroupUpdateRequest) SetOptimizationGoalMetadataNil() {
-	o.OptimizationGoalMetadata.Set(nil)
-}
-
-// UnsetOptimizationGoalMetadata ensures that no value is present for OptimizationGoalMetadata, not even an explicit nil
-func (o *AdGroupUpdateRequest) UnsetOptimizationGoalMetadata() {
-	o.OptimizationGoalMetadata.Unset()
+// SetOptimizationGoalMetadata gets a reference to the given map[string]interface{} and assigns it to the OptimizationGoalMetadata field.
+func (o *AdGroupUpdateRequest) SetOptimizationGoalMetadata(v map[string]interface{}) {
+	o.OptimizationGoalMetadata = v
 }
 
 // GetPacingDeliveryType returns the PacingDeliveryType field value if set, zero value otherwise.
@@ -692,6 +774,38 @@ func (o *AdGroupUpdateRequest) UnsetPromotionId() {
 	o.PromotionId.Unset()
 }
 
+// GetPromotionIds returns the PromotionIds field value if set, zero value otherwise.
+func (o *AdGroupUpdateRequest) GetPromotionIds() []string {
+	if o == nil || IsNil(o.PromotionIds) {
+		var ret []string
+		return ret
+	}
+	return o.PromotionIds
+}
+
+// GetPromotionIdsOk returns a tuple with the PromotionIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupUpdateRequest) GetPromotionIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.PromotionIds) {
+		return nil, false
+	}
+	return o.PromotionIds, true
+}
+
+// HasPromotionIds returns a boolean if a field has been set.
+func (o *AdGroupUpdateRequest) HasPromotionIds() bool {
+	if o != nil && !IsNil(o.PromotionIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetPromotionIds gets a reference to the given []string and assigns it to the PromotionIds field.
+func (o *AdGroupUpdateRequest) SetPromotionIds(v []string) {
+	o.PromotionIds = v
+}
+
 // GetStartTime returns the StartTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdGroupUpdateRequest) GetStartTime() int32 {
 	if o == nil || IsNil(o.StartTime.Get()) {
@@ -832,101 +946,36 @@ func (o *AdGroupUpdateRequest) SetTargetingTemplateIds(v []string) {
 }
 
 // GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupUpdateRequest) GetTrackingUrls() TrackingUrls {
-	if o == nil || IsNil(o.TrackingUrls.Get()) {
-		var ret TrackingUrls
+func (o *AdGroupUpdateRequest) GetTrackingUrls() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.TrackingUrls.Get()
+	return o.TrackingUrls
 }
 
 // GetTrackingUrlsOk returns a tuple with the TrackingUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupUpdateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool) {
-	if o == nil {
-		return nil, false
+func (o *AdGroupUpdateRequest) GetTrackingUrlsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.TrackingUrls) {
+		return map[string]interface{}{}, false
 	}
-	return o.TrackingUrls.Get(), o.TrackingUrls.IsSet()
+	return o.TrackingUrls, true
 }
 
 // HasTrackingUrls returns a boolean if a field has been set.
 func (o *AdGroupUpdateRequest) HasTrackingUrls() bool {
-	if o != nil && o.TrackingUrls.IsSet() {
+	if o != nil && !IsNil(o.TrackingUrls) {
 		return true
 	}
 
 	return false
 }
 
-// SetTrackingUrls gets a reference to the given NullableTrackingUrls and assigns it to the TrackingUrls field.
-func (o *AdGroupUpdateRequest) SetTrackingUrls(v TrackingUrls) {
-	o.TrackingUrls.Set(&v)
-}
-// SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
-func (o *AdGroupUpdateRequest) SetTrackingUrlsNil() {
-	o.TrackingUrls.Set(nil)
-}
-
-// UnsetTrackingUrls ensures that no value is present for TrackingUrls, not even an explicit nil
-func (o *AdGroupUpdateRequest) UnsetTrackingUrls() {
-	o.TrackingUrls.Unset()
-}
-
-// GetBidMultiplier returns the BidMultiplier field value if set, zero value otherwise.
-func (o *AdGroupUpdateRequest) GetBidMultiplier() float32 {
-	if o == nil || IsNil(o.BidMultiplier) {
-		var ret float32
-		return ret
-	}
-	return *o.BidMultiplier
-}
-
-// GetBidMultiplierOk returns a tuple with the BidMultiplier field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupUpdateRequest) GetBidMultiplierOk() (*float32, bool) {
-	if o == nil || IsNil(o.BidMultiplier) {
-		return nil, false
-	}
-	return o.BidMultiplier, true
-}
-
-// HasBidMultiplier returns a boolean if a field has been set.
-func (o *AdGroupUpdateRequest) HasBidMultiplier() bool {
-	if o != nil && !IsNil(o.BidMultiplier) {
-		return true
-	}
-
-	return false
-}
-
-// SetBidMultiplier gets a reference to the given float32 and assigns it to the BidMultiplier field.
-func (o *AdGroupUpdateRequest) SetBidMultiplier(v float32) {
-	o.BidMultiplier = &v
-}
-
-// GetId returns the Id field value
-func (o *AdGroupUpdateRequest) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *AdGroupUpdateRequest) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *AdGroupUpdateRequest) SetId(v string) {
-	o.Id = v
+// SetTrackingUrls gets a reference to the given map[string]interface{} and assigns it to the TrackingUrls field.
+func (o *AdGroupUpdateRequest) SetTrackingUrls(v map[string]interface{}) {
+	o.TrackingUrls = v
 }
 
 func (o AdGroupUpdateRequest) MarshalJSON() ([]byte, error) {
@@ -939,6 +988,13 @@ func (o AdGroupUpdateRequest) MarshalJSON() ([]byte, error) {
 
 func (o AdGroupUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BidMultiplier) {
+		toSerialize["bid_multiplier"] = o.BidMultiplier
+	}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.TargetingSpecOperations) {
+		toSerialize["targeting_spec_operations"] = o.TargetingSpecOperations
+	}
 	if o.AutoTargetingEnabled.IsSet() {
 		toSerialize["auto_targeting_enabled"] = o.AutoTargetingEnabled.Get()
 	}
@@ -972,8 +1028,8 @@ func (o AdGroupUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.OptimizationGoalMetadata.IsSet() {
-		toSerialize["optimization_goal_metadata"] = o.OptimizationGoalMetadata.Get()
+	if o.OptimizationGoalMetadata != nil {
+		toSerialize["optimization_goal_metadata"] = o.OptimizationGoalMetadata
 	}
 	if !IsNil(o.PacingDeliveryType) {
 		toSerialize["pacing_delivery_type"] = o.PacingDeliveryType
@@ -987,6 +1043,9 @@ func (o AdGroupUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if o.PromotionId.IsSet() {
 		toSerialize["promotion_id"] = o.PromotionId.Get()
 	}
+	if !IsNil(o.PromotionIds) {
+		toSerialize["promotion_ids"] = o.PromotionIds
+	}
 	if o.StartTime.IsSet() {
 		toSerialize["start_time"] = o.StartTime.Get()
 	}
@@ -999,13 +1058,9 @@ func (o AdGroupUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if o.TargetingTemplateIds != nil {
 		toSerialize["targeting_template_ids"] = o.TargetingTemplateIds
 	}
-	if o.TrackingUrls.IsSet() {
-		toSerialize["tracking_urls"] = o.TrackingUrls.Get()
+	if o.TrackingUrls != nil {
+		toSerialize["tracking_urls"] = o.TrackingUrls
 	}
-	if !IsNil(o.BidMultiplier) {
-		toSerialize["bid_multiplier"] = o.BidMultiplier
-	}
-	toSerialize["id"] = o.Id
 	return toSerialize, nil
 }
 

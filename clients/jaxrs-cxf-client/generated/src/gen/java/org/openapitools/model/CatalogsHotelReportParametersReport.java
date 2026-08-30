@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import org.openapitools.model.CatalogsReportAllItemsFilter;
 import org.openapitools.model.CatalogsReportDistributionIssueFilter;
 import org.openapitools.model.CatalogsReportFeedIngestionFilter;
 
@@ -11,9 +10,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelReportParametersReport  {
   
+ /**
+  * ID of the feed entity.
+  */
+  @ApiModelProperty(required = true, value = "ID of the feed entity.")
+
+  private String feedId;
+
+ /**
+  * Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
+  */
+  @ApiModelProperty(value = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.")
+
+  private String processingResultId;
+
 public enum ReportTypeEnum {
 
-FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES")), ALL_ITEMS(String.valueOf("ALL_ITEMS"));
+DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
 
 
     private String value;
@@ -41,23 +54,9 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISS
     }
 }
 
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   private ReportTypeEnum reportType;
-
- /**
-  * ID of the feed entity.
-  */
-  @ApiModelProperty(required = true, value = "ID of the feed entity.")
-
-  private String feedId;
-
- /**
-  * Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
-  */
-  @ApiModelProperty(value = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.")
-
-  private String processingResultId;
 
  /**
   * Unique identifier of a catalog. If not given, oldest catalog will be used
@@ -65,27 +64,6 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISS
   @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
 
   private String catalogId;
- /**
-   * Get reportType
-   * @return reportType
-  **/
-  @JsonProperty("report_type")
-  public String getReportType() {
-    if (reportType == null) {
-      return null;
-    }
-    return reportType.value();
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
-  public CatalogsHotelReportParametersReport reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
  /**
    * ID of the feed entity.
    * @return feedId
@@ -123,6 +101,27 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISS
   }
 
  /**
+   * Get reportType
+   * @return reportType
+  **/
+  @JsonProperty("report_type")
+  public String getReportType() {
+    if (reportType == null) {
+      return null;
+    }
+    return reportType.value();
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  public CatalogsHotelReportParametersReport reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+ /**
    * Unique identifier of a catalog. If not given, oldest catalog will be used
    * @return catalogId
   **/
@@ -149,15 +148,15 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISS
       return false;
     }
     CatalogsHotelReportParametersReport catalogsHotelReportParametersReport = (CatalogsHotelReportParametersReport) o;
-    return Objects.equals(this.reportType, catalogsHotelReportParametersReport.reportType) &&
-        Objects.equals(this.feedId, catalogsHotelReportParametersReport.feedId) &&
+    return Objects.equals(this.feedId, catalogsHotelReportParametersReport.feedId) &&
         Objects.equals(this.processingResultId, catalogsHotelReportParametersReport.processingResultId) &&
+        Objects.equals(this.reportType, catalogsHotelReportParametersReport.reportType) &&
         Objects.equals(this.catalogId, catalogsHotelReportParametersReport.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId, catalogId);
+    return Objects.hash(feedId, processingResultId, reportType, catalogId);
   }
 
   @Override
@@ -165,9 +164,9 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISS
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelReportParametersReport {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -178,10 +177,7 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISS
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -12,7 +12,6 @@ API.Client.BusinessAssetMembersGet200Response = function() {}
 API.Client.BusinessAssetMembersGet200Response.prototype.bookmark;
 
 /**
- * List of members with permissions to the asset.
  * @type {!Array<!API.Client.UserSingleAssetBinding>}
  * @export
  */

@@ -6,7 +6,7 @@ Retail product metadata entity
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**availability** | [**NonNullableProductAvailabilityType**](NonNullableProductAvailabilityType.md) |  | 
+**availability** | [**ProductAvailability**](ProductAvailability.md) |  | 
 **currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 **item_group_id** | **str** | The parent ID of the product. | 
 **item_id** | **str** | The user-created unique ID that represents the product. | 

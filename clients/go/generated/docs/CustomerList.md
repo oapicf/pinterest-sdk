@@ -4,23 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccountId** | Pointer to **string** | Associated ad account ID. | [optional] 
-**CreatedTime** | Pointer to **float32** | Creation time. Unix timestamp in seconds. | [optional] 
-**Exceptions** | Pointer to **map[string]interface{}** | Customer list errors | [optional] 
-**Id** | Pointer to **string** | Customer list ID. | [optional] 
-**Name** | Pointer to **string** | Customer list name. | [optional] 
-**NumBatches** | Pointer to **float32** | Total number of list updates.  List creation counts as one batch. Each &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists. | [optional] 
-**NumRemovedUserRecords** | Pointer to **float32** | Number of removed user records. In a &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call, this counter increases even if the user is not found in the list. | [optional] 
-**NumUploadedUserRecords** | Pointer to **float32** | Number of uploaded user records. In an &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append API&lt;/a&gt; call, this counter increases even if the uploaded user is already in the list. | [optional] 
-**Status** | Pointer to **string** | Customer list status. TOO_SMALL - the list has less than 100 Pinterest users. | [optional] 
-**Type** | Pointer to **string** | Always \&quot;customerlist\&quot;. | [optional] 
-**UpdatedTime** | Pointer to **float32** | Last update time. Unix timestamp in seconds. | [optional] 
+**AdAccountId** | Pointer to **string** | Associated ad account ID. | [optional] [readonly] 
+**CreatedTime** | Pointer to **float32** | Creation time. Unix timestamp in seconds. | [optional] [readonly] 
+**Exceptions** | Pointer to **map[string]interface{}** | Customer list errors. | [optional] [readonly] 
+**Id** | **string** | Customer list ID. | [readonly] 
+**IsNca** | Pointer to **bool** | Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation. | [optional] 
+**Name** | **string** | Customer list name. | 
+**NumBatches** | Pointer to **float32** | Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists. | [optional] [readonly] 
+**NumRemovedUserRecords** | Pointer to **float32** | Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list. | [optional] [readonly] 
+**NumUploadedUserRecords** | Pointer to **float32** | Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list. | [optional] [readonly] 
+**Status** | Pointer to [**CustomerListStatus**](CustomerListStatus.md) | Customer list status. &#x60;TOO_SMALL&#x60; means the list has fewer than 100 Pinterest users. | [optional] [readonly] 
+**Type** | Pointer to **string** | Always &#x60;customerlist&#x60;. | [optional] [readonly] 
+**UpdatedTime** | Pointer to **float32** | Last update time. Unix timestamp in seconds. | [optional] [readonly] 
 
 ## Methods
 
 ### NewCustomerList
 
-`func NewCustomerList() *CustomerList`
+`func NewCustomerList(id string, name string, ) *CustomerList`
 
 NewCustomerList instantiates a new CustomerList object
 This constructor will assign default values to properties that have it defined,
@@ -129,11 +130,31 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
 
-`func (o *CustomerList) HasId() bool`
+### GetIsNca
 
-HasId returns a boolean if a field has been set.
+`func (o *CustomerList) GetIsNca() bool`
+
+GetIsNca returns the IsNca field if non-nil, zero value otherwise.
+
+### GetIsNcaOk
+
+`func (o *CustomerList) GetIsNcaOk() (*bool, bool)`
+
+GetIsNcaOk returns a tuple with the IsNca field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsNca
+
+`func (o *CustomerList) SetIsNca(v bool)`
+
+SetIsNca sets IsNca field to given value.
+
+### HasIsNca
+
+`func (o *CustomerList) HasIsNca() bool`
+
+HasIsNca returns a boolean if a field has been set.
 
 ### GetName
 
@@ -154,11 +175,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *CustomerList) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetNumBatches
 
@@ -237,20 +253,20 @@ HasNumUploadedUserRecords returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *CustomerList) GetStatus() string`
+`func (o *CustomerList) GetStatus() CustomerListStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *CustomerList) GetStatusOk() (*string, bool)`
+`func (o *CustomerList) GetStatusOk() (*CustomerListStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *CustomerList) SetStatus(v string)`
+`func (o *CustomerList) SetStatus(v CustomerListStatus)`
 
 SetStatus sets Status field to given value.
 

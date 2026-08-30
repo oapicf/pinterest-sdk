@@ -12,9 +12,6 @@ import { SSIOInsertionOrderStatus } from './sSIOInsertionOrderStatus';
 
 export interface SsioInsertionOrdersStatusGetByAdAccount200Response { 
     bookmark?: string | null;
-    /**
-     * Insertion orders status by ad acount id
-     */
     items: Array<SSIOInsertionOrderStatus>;
 }
 

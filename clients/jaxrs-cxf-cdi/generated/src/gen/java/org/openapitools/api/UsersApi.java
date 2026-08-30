@@ -1,6 +1,6 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.UserAccountFollowedInterests200Response;
 import org.openapitools.api.UsersApiService;
 
@@ -28,7 +28,7 @@ import javax.validation.Valid;
 @Api
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-08-30T09:54:04.171825690Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 
 public class UsersApi  {
 
@@ -41,7 +41,6 @@ public class UsersApi  {
     
     
     @Produces({ "application/json" })
-    @SuppressWarnings("deprecation")
     @ApiOperation(value = "List following interests", notes = "Get a list of a user's following interests in one place.", response = UserAccountFollowedInterests200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers") }),
@@ -49,12 +48,12 @@ public class UsersApi  {
             @AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers") })
          }, tags={ "user_account" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = UserAccountFollowedInterests200Response.class),
-        @ApiResponse(code = 400, message = "Invalid parameters", response = Error.class),
-        @ApiResponse(code = 401, message = "Authorization failed", response = Error.class),
-        @ApiResponse(code = 404, message = "User not found", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response userAccountFollowedInterests( @Pattern(regexp="(?!^\\d+$)^.+$")@ApiParam(value = "A valid username",required=true) @PathParam("username") String username, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = UserAccountFollowedInterests200Response.class),
+        @ApiResponse(code = 400, message = "The server could not understand the request due to invalid syntax.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Access is unauthorized.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The server cannot find the requested resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = PinterestLibError.class) })
+    public Response userAccountFollowedInterests( @Pattern(regexp="(?!^\\d+$)^.+$")@ApiParam(value = "A valid username",required=true) @PathParam("username") String username, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
         return delegate.userAccountFollowedInterests(username, bookmark, pageSize, securityContext);
     }
 }

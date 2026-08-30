@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **images** | [**ImageSize**](ImageSize.md) |  | [optional] 
 **media_type** | **str** |  | 
 **video_url** | **str** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**video_url_hls** | **str** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **width** | **int** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Example

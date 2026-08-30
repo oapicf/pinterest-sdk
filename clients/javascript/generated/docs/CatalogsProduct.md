@@ -4,8 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalogType** | **String** |  | 
 **metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
 **pin** | [**Pin**](Pin.md) |  | 
+
+
+
+## Enum: CatalogTypeEnum
+
+
+* `CREATIVE_ASSETS` (value: `"CREATIVE_ASSETS"`)
+
+
 
 

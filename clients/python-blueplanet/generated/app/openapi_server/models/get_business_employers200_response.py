@@ -73,7 +73,6 @@ class GetBusinessEmployers200Response(Model):
     def items(self) -> List[UserBusinessRoleBinding]:
         """Gets the items of this GetBusinessEmployers200Response.
 
-        List of employers.  # noqa: E501
 
         :return: The items of this GetBusinessEmployers200Response.
         :rtype: List[UserBusinessRoleBinding]
@@ -84,7 +83,6 @@ class GetBusinessEmployers200Response(Model):
     def items(self, items: List[UserBusinessRoleBinding]):
         """Sets the items of this GetBusinessEmployers200Response.
 
-        List of employers.  # noqa: E501
 
         :param items: The items of this GetBusinessEmployers200Response.
         :type items: List[UserBusinessRoleBinding]

@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsAiContentDisclosure
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -33,7 +42,8 @@ import com.squareup.moshi.JsonClass
  * @param iosDeepLink IOS deep link to the creative assets page.
  * @param link Link to the creative assets page.
  * @param title The name of the creative assets.
- * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+ * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
+ * @param aiDisclosures AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
  * @param imageLink The creative assets image.
  * @param videoLink The creative assets video.
  */
@@ -85,9 +95,13 @@ data class CatalogsCreativeAssetsAttributes (
     @Json(name = "title")
     val title: kotlin.String? = null,
 
-    /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. */
+    /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. */
     @Json(name = "visibility")
     val visibility: kotlin.String? = null,
+
+    /* AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL. */
+    @Json(name = "ai_disclosures")
+    val aiDisclosures: kotlin.collections.List<CatalogsAiContentDisclosure>? = null,
 
     /* The creative assets image. */
     @Json(name = "image_link")

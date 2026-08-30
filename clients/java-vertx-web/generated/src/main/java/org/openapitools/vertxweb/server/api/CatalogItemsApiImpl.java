@@ -1,10 +1,10 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.CatalogsItems;
 import org.openapitools.vertxweb.server.model.CatalogsItemsBatch;
+import org.openapitools.vertxweb.server.model.CatalogsItemsBatchPostRequest;
 import org.openapitools.vertxweb.server.model.CatalogsItemsRequest;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.ItemsBatchPostRequest;
+import org.openapitools.vertxweb.server.model.ItemsPost200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -22,11 +22,11 @@ public class CatalogItemsApiImpl implements CatalogItemsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<CatalogsItemsBatch>> itemsBatchPost(ItemsBatchPostRequest itemsBatchPostRequest, String adAccountId) {
+    public Future<ApiResponse<CatalogsItemsBatch>> itemsBatchPost(CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<CatalogsItems>> itemsPost(CatalogsItemsRequest catalogsItemsRequest, String adAccountId) {
+    public Future<ApiResponse<ItemsPost200Response>> itemsPost(CatalogsItemsRequest catalogsItemsRequest, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 

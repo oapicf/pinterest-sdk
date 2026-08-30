@@ -4,21 +4,21 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**brandAccountsCreate**](BusinessAccessRelationshipsApi.md#brandaccountscreateoperation) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account |
-| [**brandAccountsUpdate**](BusinessAccessRelationshipsApi.md#brandaccountsupdateoperation) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account |
+| [**brandAccountsCreate**](BusinessAccessRelationshipsApi.md#brandaccountscreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account |
+| [**brandAccountsUpdate**](BusinessAccessRelationshipsApi.md#brandaccountsupdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account |
 | [**deleteBusinessMembership**](BusinessAccessRelationshipsApi.md#deletebusinessmembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships |
 | [**deleteBusinessPartners**](BusinessAccessRelationshipsApi.md#deletebusinesspartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships |
 | [**getBusinessEmployers**](BusinessAccessRelationshipsApi.md#getbusinessemployers) | **GET** /businesses/employers | List business employers for user |
 | [**getBusinessMembers**](BusinessAccessRelationshipsApi.md#getbusinessmembers) | **GET** /businesses/{business_id}/members | Get business members |
 | [**getBusinessPartners**](BusinessAccessRelationshipsApi.md#getbusinesspartners) | **GET** /businesses/{business_id}/partners | Get business partners |
-| [**systemUserUpdate**](BusinessAccessRelationshipsApi.md#systemuserupdateoperation) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information. |
+| [**systemUserUpdate**](BusinessAccessRelationshipsApi.md#systemuserupdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information. |
 | [**updateBusinessMemberships**](BusinessAccessRelationshipsApi.md#updatebusinessmemberships) | **PATCH** /businesses/{business_id}/members | Update member\&#39;s business role |
 
 
 
 ## brandAccountsCreate
 
-> BrandAccountsCreate200Response brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+> BrandAccount brandAccountsCreate(businessHierarchyId, brandAccountCreate)
 
 Create a Brand Account
 
@@ -31,7 +31,7 @@ import {
   Configuration,
   BusinessAccessRelationshipsApi,
 } from '';
-import type { BrandAccountsCreateOperationRequest } from '';
+import type { BrandAccountsCreateRequest } from '';
 
 async function example() {
   console.log("🚀 Testing  SDK...");
@@ -43,10 +43,10 @@ async function example() {
 
   const body = {
     // string | business hierarchy node id
-    businessHierarchyId: 7009386637860,
-    // BrandAccountsCreateRequest
-    brandAccountsCreateRequest: ...,
-  } satisfies BrandAccountsCreateOperationRequest;
+    businessHierarchyId: businessHierarchyId_example,
+    // BrandAccountCreate
+    brandAccountCreate: ...,
+  } satisfies BrandAccountsCreateRequest;
 
   try {
     const data = await api.brandAccountsCreate(body);
@@ -66,11 +66,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessHierarchyId** | `string` | business hierarchy node id | [Defaults to `undefined`] |
-| **brandAccountsCreateRequest** | [BrandAccountsCreateRequest](BrandAccountsCreateRequest.md) |  | |
+| **brandAccountCreate** | [BrandAccountCreate](BrandAccountCreate.md) |  | |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -85,16 +85,21 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## brandAccountsUpdate
 
-> BrandAccountsCreate200Response brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+> BrandAccount brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
 
 Update a Brand Account
 
@@ -107,7 +112,7 @@ import {
   Configuration,
   BusinessAccessRelationshipsApi,
 } from '';
-import type { BrandAccountsUpdateOperationRequest } from '';
+import type { BrandAccountsUpdateRequest } from '';
 
 async function example() {
   console.log("🚀 Testing  SDK...");
@@ -118,13 +123,13 @@ async function example() {
   const api = new BusinessAccessRelationshipsApi(config);
 
   const body = {
+    // string
+    brandAccountId: brandAccountId_example,
     // string | business hierarchy node id
-    businessHierarchyId: 7009386637860,
-    // string | Unique identifier of a brand account.
-    brandAccountId: 729090764583391194,
-    // BrandAccountsUpdateRequest
-    brandAccountsUpdateRequest: ...,
-  } satisfies BrandAccountsUpdateOperationRequest;
+    businessHierarchyId: businessHierarchyId_example,
+    // BrandAccountUpdate
+    brandAccountUpdate: ...,
+  } satisfies BrandAccountsUpdateRequest;
 
   try {
     const data = await api.brandAccountsUpdate(body);
@@ -143,13 +148,13 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **brandAccountId** | `string` |  | [Defaults to `undefined`] |
 | **businessHierarchyId** | `string` | business hierarchy node id | [Defaults to `undefined`] |
-| **brandAccountId** | `string` | Unique identifier of a brand account. | [Defaults to `undefined`] |
-| **brandAccountsUpdateRequest** | [BrandAccountsUpdateRequest](BrandAccountsUpdateRequest.md) |  | |
+| **brandAccountUpdate** | [BrandAccountUpdate](BrandAccountUpdate.md) |  | |
 
 ### Return type
 
-[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+[**BrandAccount**](BrandAccount.md)
 
 ### Authorization
 
@@ -164,21 +169,21 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **401** | Not authenticated to update Brand Account |  -  |
-| **403** | Not authorized to update Brand Account |  -  |
-| **404** | Brand account not found |  -  |
-| **409** | This account is not a brand account. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **409** | The request could not be processed because of a conflict in the current state of the resource. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## deleteBusinessMembership
 
-> DeletedMembersResponse deleteBusinessMembership(businessId, membersToDeleteBody)
+> DeleteBusinessMembership200Response deleteBusinessMembership(businessId, deleteBusinessMembershipBody)
 
 Terminate business memberships
 
@@ -203,9 +208,9 @@ async function example() {
 
   const body = {
     // string | Business id
-    businessId: 729090764583391194,
-    // MembersToDeleteBody | List of members with role to delete.
-    membersToDeleteBody: ...,
+    businessId: businessId_example,
+    // DeleteBusinessMembershipBody
+    deleteBusinessMembershipBody: ...,
   } satisfies DeleteBusinessMembershipRequest;
 
   try {
@@ -226,11 +231,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Business id | [Defaults to `undefined`] |
-| **membersToDeleteBody** | [MembersToDeleteBody](MembersToDeleteBody.md) | List of members with role to delete. | |
+| **deleteBusinessMembershipBody** | [DeleteBusinessMembershipBody](DeleteBusinessMembershipBody.md) |  | |
 
 ### Return type
 
-[**DeletedMembersResponse**](DeletedMembersResponse.md)
+[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -245,15 +250,15 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## deleteBusinessPartners
 
-> DeletePartnersResponse deleteBusinessPartners(businessId, deletePartnersRequest)
+> DeleteBusinessPartners deleteBusinessPartners(businessId, deleteBusinessPartnersDelete)
 
 Terminate business partnerships
 
@@ -278,9 +283,9 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
-    deletePartnersRequest: ...,
+    businessId: businessId_example,
+    // DeleteBusinessPartnersDelete
+    deleteBusinessPartnersDelete: ...,
   } satisfies DeleteBusinessPartnersRequest;
 
   try {
@@ -301,11 +306,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **deletePartnersRequest** | [DeletePartnersRequest](DeletePartnersRequest.md) | An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  | |
+| **deleteBusinessPartnersDelete** | [DeleteBusinessPartnersDelete](DeleteBusinessPartnersDelete.md) |  | |
 
 ### Return type
 
-[**DeletePartnersResponse**](DeletePartnersResponse.md)
+[**DeleteBusinessPartners**](DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -320,16 +325,16 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | A supplied partner id doesn\&#39;t exist |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## getBusinessEmployers
 
-> GetBusinessEmployers200Response getBusinessEmployers(pageSize, bookmark)
+> GetBusinessEmployers200Response getBusinessEmployers(assetsSummary, bookmark, pageSize)
 
 List business employers for user
 
@@ -353,10 +358,12 @@ async function example() {
   const api = new BusinessAccessRelationshipsApi(config);
 
   const body = {
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
-    pageSize: 56,
+    // boolean | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
+    assetsSummary: true,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+    pageSize: 56,
   } satisfies GetBusinessEmployersRequest;
 
   try {
@@ -376,8 +383,9 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **assetsSummary** | `boolean` | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [Optional] [Defaults to `true`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -396,15 +404,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## getBusinessMembers
 
-> GetBusinessMembers200Response getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+> GetBusinessEmployers200Response getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
 
 Get business members
 
@@ -429,7 +442,7 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // boolean | Fetches system users if True. Fetches regular user employees if False. (optional)
     fetchSystemUsers: true,
     // boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
@@ -437,12 +450,12 @@ async function example() {
     // Array<MemberBusinessRole> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
     businessRoles: ...,
     // string | A list of business members ids separated by comma. (optional)
-    memberIds: 00101010101,2222220101,
+    memberIds: memberIds_example,
     // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-    startIndex: 0,
+    startIndex: 56,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies GetBusinessMembersRequest;
 
@@ -470,11 +483,11 @@ example().catch(console.error);
 | **memberIds** | `string` | A list of business members ids separated by comma. | [Optional] [Defaults to `undefined`] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
-[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -489,15 +502,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## getBusinessPartners
 
-> GetBusinessPartners200Response getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark)
+> GetBusinessEmployers200Response getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize)
 
 Get business partners
 
@@ -522,19 +540,21 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
     assetsSummary: true,
-    // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner\'s business asset. (optional)
-    partnerType: INTERNAL,
+    // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner\'s business asset. (optional)
+    partnerType: ...,
     // string | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
-    partnerIds: 00101010101,2222220101,
+    partnerIds: partnerIds_example,
     // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-    startIndex: 0,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
-    pageSize: 56,
+    startIndex: 56,
+    // boolean | Sort ascending. (optional)
+    sortAscending: true,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+    pageSize: 56,
   } satisfies GetBusinessPartnersRequest;
 
   try {
@@ -556,15 +576,16 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **assetsSummary** | `boolean` | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [Optional] [Defaults to `false`] |
-| **partnerType** | `PartnerType` | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset. | [Optional] [Defaults to `undefined`] [Enum: INTERNAL, EXTERNAL] |
+| **partnerType** | `PartnerType` | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset. | [Optional] [Defaults to `undefined`] [Enum: INTERNAL, EXTERNAL] |
 | **partnerIds** | `string` | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [Optional] [Defaults to `undefined`] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **sortAscending** | `boolean` | Sort ascending. | [Optional] [Defaults to `undefined`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
-[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)
+[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -579,15 +600,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## systemUserUpdate
 
-> systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+> systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody)
 
 Update a system user information.
 
@@ -600,7 +626,7 @@ import {
   Configuration,
   BusinessAccessRelationshipsApi,
 } from '';
-import type { SystemUserUpdateOperationRequest } from '';
+import type { SystemUserUpdateRequest } from '';
 
 async function example() {
   console.log("🚀 Testing  SDK...");
@@ -612,12 +638,12 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // string | Unique identifier of a system user.
-    systemUserId: 729090764583391194,
-    // SystemUserUpdateRequest
-    systemUserUpdateRequest: ...,
-  } satisfies SystemUserUpdateOperationRequest;
+    systemUserId: systemUserId_example,
+    // SystemUserUpdateWithRequiredBody
+    systemUserUpdateWithRequiredBody: ...,
+  } satisfies SystemUserUpdateRequest;
 
   try {
     const data = await api.systemUserUpdate(body);
@@ -638,7 +664,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **systemUserId** | `string` | Unique identifier of a system user. | [Defaults to `undefined`] |
-| **systemUserUpdateRequest** | [SystemUserUpdateRequest](SystemUserUpdateRequest.md) |  | |
+| **systemUserUpdateWithRequiredBody** | [SystemUserUpdateWithRequiredBody](SystemUserUpdateWithRequiredBody.md) |  | |
 
 ### Return type
 
@@ -657,16 +683,20 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | System user updated successfully. |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## updateBusinessMemberships
 
-> UpdateMemberResultsResponseArray updateBusinessMemberships(businessId, updateMemberBusinessRoleBody)
+> UpdateBusinessMembershipsResponse updateBusinessMemberships(businessId, businessMembershipMember)
 
 Update member\&#39;s business role
 
@@ -691,9 +721,9 @@ async function example() {
 
   const body = {
     // string | Business id
-    businessId: 729090764583391194,
-    // Array<UpdateMemberBusinessRoleBody> | List of objects with the member id and the business_role.
-    updateMemberBusinessRoleBody: ...,
+    businessId: businessId_example,
+    // Array<BusinessMembershipMember>
+    businessMembershipMember: ...,
   } satisfies UpdateBusinessMembershipsRequest;
 
   try {
@@ -714,11 +744,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Business id | [Defaults to `undefined`] |
-| **updateMemberBusinessRoleBody** | `Array<UpdateMemberBusinessRoleBody>` | List of objects with the member id and the business_role. | |
+| **businessMembershipMember** | `Array<BusinessMembershipMember>` |  | |
 
 ### Return type
 
-[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)
+[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 
@@ -733,8 +763,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**APPTYPE** | **String** |  | [optional] 
+**APPTYPE** | [**TargetingSpecAppType**](TargetingSpecAppType.md) | App type identifier. | [optional] 
 
 ## Examples
 

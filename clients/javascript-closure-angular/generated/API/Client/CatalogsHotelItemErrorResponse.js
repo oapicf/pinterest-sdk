@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsHotelItemErrorResponse');
 API.Client.CatalogsHotelItemErrorResponse = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelItemErrorResponse.prototype.catalogType;
@@ -26,3 +26,18 @@ API.Client.CatalogsHotelItemErrorResponse.prototype.errors;
  */
 API.Client.CatalogsHotelItemErrorResponse.prototype.hotelId;
 
+/**
+ * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelItemErrorResponse.prototype.itemResponseKind;
+
+/** @enum {string} */
+API.Client.CatalogsHotelItemErrorResponse.CatalogTypeEnum = { 
+  HOTEL: 'HOTEL',
+}
+/** @enum {string} */
+API.Client.CatalogsHotelItemErrorResponse.ItemResponseKindEnum = { 
+  hotel_item_error: 'hotel_item_error',
+}

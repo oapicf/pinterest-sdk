@@ -20,6 +20,8 @@ static ssio_account_item_t *ssio_account_item_create_internal(
     if (!ssio_account_item_local_var) {
         return NULL;
     }
+    memset(ssio_account_item_local_var, 0, sizeof(ssio_account_item_t));
+    ssio_account_item_local_var->_library_owned = 1;
     ssio_account_item_local_var->addresses = addresses;
     ssio_account_item_local_var->id = id;
     ssio_account_item_local_var->io_terms = io_terms;
@@ -29,8 +31,6 @@ static ssio_account_item_t *ssio_account_item_create_internal(
     ssio_account_item_local_var->row_terms_id = row_terms_id;
     ssio_account_item_local_var->us_terms = us_terms;
     ssio_account_item_local_var->us_terms_id = us_terms_id;
-
-    ssio_account_item_local_var->_library_owned = 1;
     return ssio_account_item_local_var;
 }
 
@@ -45,7 +45,7 @@ __attribute__((deprecated)) ssio_account_item_t *ssio_account_item_create(
     char *us_terms,
     char *us_terms_id
     ) {
-    return ssio_account_item_create_internal (
+    ssio_account_item_t *result = ssio_account_item_create_internal (
         addresses,
         id,
         io_terms,
@@ -56,6 +56,9 @@ __attribute__((deprecated)) ssio_account_item_t *ssio_account_item_create(
         us_terms,
         us_terms_id
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ssio_account_item_free(ssio_account_item_t *ssio_account_item) {
@@ -210,6 +213,22 @@ ssio_account_item_t *ssio_account_item_parseFromJSON(cJSON *ssio_account_itemJSO
     // define the local list for ssio_account_item->addresses
     list_t *addressesList = NULL;
 
+    char *id_local_str = NULL;
+
+    char *io_terms_local_str = NULL;
+
+    char *io_terms_id_local_str = NULL;
+
+    char *io_type_local_str = NULL;
+
+    char *row_terms_local_str = NULL;
+
+    char *row_terms_id_local_str = NULL;
+
+    char *us_terms_local_str = NULL;
+
+    char *us_terms_id_local_str = NULL;
+
     // ssio_account_item->addresses
     cJSON *addresses = cJSON_GetObjectItemCaseSensitive(ssio_account_itemJSON, "addresses");
     if (cJSON_IsNull(addresses)) {
@@ -331,17 +350,30 @@ ssio_account_item_t *ssio_account_item_parseFromJSON(cJSON *ssio_account_itemJSO
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (io_terms && !cJSON_IsNull(io_terms)) io_terms_local_str = strdup(io_terms->valuestring);
+    if (io_terms_id && !cJSON_IsNull(io_terms_id)) io_terms_id_local_str = strdup(io_terms_id->valuestring);
+    if (io_type && !cJSON_IsNull(io_type)) io_type_local_str = strdup(io_type->valuestring);
+    if (row_terms && !cJSON_IsNull(row_terms)) row_terms_local_str = strdup(row_terms->valuestring);
+    if (row_terms_id && !cJSON_IsNull(row_terms_id)) row_terms_id_local_str = strdup(row_terms_id->valuestring);
+    if (us_terms && !cJSON_IsNull(us_terms)) us_terms_local_str = strdup(us_terms->valuestring);
+    if (us_terms_id && !cJSON_IsNull(us_terms_id)) us_terms_id_local_str = strdup(us_terms_id->valuestring);
+
     ssio_account_item_local_var = ssio_account_item_create_internal (
         addresses ? addressesList : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        io_terms && !cJSON_IsNull(io_terms) ? strdup(io_terms->valuestring) : NULL,
-        io_terms_id && !cJSON_IsNull(io_terms_id) ? strdup(io_terms_id->valuestring) : NULL,
-        io_type && !cJSON_IsNull(io_type) ? strdup(io_type->valuestring) : NULL,
-        row_terms && !cJSON_IsNull(row_terms) ? strdup(row_terms->valuestring) : NULL,
-        row_terms_id && !cJSON_IsNull(row_terms_id) ? strdup(row_terms_id->valuestring) : NULL,
-        us_terms && !cJSON_IsNull(us_terms) ? strdup(us_terms->valuestring) : NULL,
-        us_terms_id && !cJSON_IsNull(us_terms_id) ? strdup(us_terms_id->valuestring) : NULL
+        id_local_str,
+        io_terms_local_str,
+        io_terms_id_local_str,
+        io_type_local_str,
+        row_terms_local_str,
+        row_terms_id_local_str,
+        us_terms_local_str,
+        us_terms_id_local_str
         );
+
+    if (!ssio_account_item_local_var) {
+        goto end;
+    }
 
     return ssio_account_item_local_var;
 end:
@@ -353,6 +385,38 @@ end:
         }
         list_freeList(addressesList);
         addressesList = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (io_terms_local_str) {
+        free(io_terms_local_str);
+        io_terms_local_str = NULL;
+    }
+    if (io_terms_id_local_str) {
+        free(io_terms_id_local_str);
+        io_terms_id_local_str = NULL;
+    }
+    if (io_type_local_str) {
+        free(io_type_local_str);
+        io_type_local_str = NULL;
+    }
+    if (row_terms_local_str) {
+        free(row_terms_local_str);
+        row_terms_local_str = NULL;
+    }
+    if (row_terms_id_local_str) {
+        free(row_terms_id_local_str);
+        row_terms_id_local_str = NULL;
+    }
+    if (us_terms_local_str) {
+        free(us_terms_local_str);
+        us_terms_local_str = NULL;
+    }
+    if (us_terms_id_local_str) {
+        free(us_terms_id_local_str);
+        us_terms_id_local_str = NULL;
     }
     return NULL;
 

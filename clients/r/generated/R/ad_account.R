@@ -14,6 +14,7 @@
 #' @field name Ad account name. character [optional]
 #' @field owner Ad account owner \link{AdAccountOwner} [optional]
 #' @field permissions  list(\link{BusinessAccessRole}) [optional]
+#' @field time_zone The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC. character [optional]
 #' @field updated_time  integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -28,6 +29,7 @@ AdAccount <- R6::R6Class(
     `name` = NULL,
     `owner` = NULL,
     `permissions` = NULL,
+    `time_zone` = NULL,
     `updated_time` = NULL,
 
     #' @description
@@ -40,9 +42,10 @@ AdAccount <- R6::R6Class(
     #' @param name Ad account name.
     #' @param owner Ad account owner
     #' @param permissions permissions
+    #' @param time_zone The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
     #' @param updated_time updated_time
     #' @param ... Other optional arguments.
-    initialize = function(`id`, `country` = NULL, `created_time` = NULL, `currency` = NULL, `name` = NULL, `owner` = NULL, `permissions` = NULL, `updated_time` = NULL, ...) {
+    initialize = function(`id`, `country` = NULL, `created_time` = NULL, `currency` = NULL, `name` = NULL, `owner` = NULL, `permissions` = NULL, `time_zone` = NULL, `updated_time` = NULL, ...) {
       if (!missing(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
@@ -83,6 +86,12 @@ AdAccount <- R6::R6Class(
         stopifnot(is.vector(`permissions`), length(`permissions`) != 0)
         sapply(`permissions`, function(x) stopifnot(R6::is.R6(x)))
         self$`permissions` <- `permissions`
+      }
+      if (!is.null(`time_zone`)) {
+        if (!(is.character(`time_zone`) && length(`time_zone`) == 1)) {
+          stop(paste("Error! Invalid data for `time_zone`. Must be a string:", `time_zone`))
+        }
+        self$`time_zone` <- `time_zone`
       }
       if (!is.null(`updated_time`)) {
         if (!(is.numeric(`updated_time`) && length(`updated_time`) == 1)) {
@@ -125,7 +134,7 @@ AdAccount <- R6::R6Class(
       AdAccountObject <- list()
       if (!is.null(self$`country`)) {
         AdAccountObject[["country"]] <-
-          self$`country`$toSimpleType()
+          self$extractSimpleType(self$`country`)
       }
       if (!is.null(self$`created_time`)) {
         AdAccountObject[["created_time"]] <-
@@ -133,7 +142,7 @@ AdAccount <- R6::R6Class(
       }
       if (!is.null(self$`currency`)) {
         AdAccountObject[["currency"]] <-
-          self$`currency`$toSimpleType()
+          self$extractSimpleType(self$`currency`)
       }
       if (!is.null(self$`id`)) {
         AdAccountObject[["id"]] <-
@@ -145,17 +154,44 @@ AdAccount <- R6::R6Class(
       }
       if (!is.null(self$`owner`)) {
         AdAccountObject[["owner"]] <-
-          self$`owner`$toSimpleType()
+          self$extractSimpleType(self$`owner`)
       }
       if (!is.null(self$`permissions`)) {
         AdAccountObject[["permissions"]] <-
-          lapply(self$`permissions`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`permissions`)
+      }
+      if (!is.null(self$`time_zone`)) {
+        AdAccountObject[["time_zone"]] <-
+          self$`time_zone`
       }
       if (!is.null(self$`updated_time`)) {
         AdAccountObject[["updated_time"]] <-
           self$`updated_time`
       }
       return(AdAccountObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -192,6 +228,9 @@ AdAccount <- R6::R6Class(
       if (!is.null(this_object$`permissions`)) {
         self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[BusinessAccessRole]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`time_zone`)) {
+        self$`time_zone` <- this_object$`time_zone`
+      }
       if (!is.null(this_object$`updated_time`)) {
         self$`updated_time` <- this_object$`updated_time`
       }
@@ -223,6 +262,7 @@ AdAccount <- R6::R6Class(
       self$`name` <- this_object$`name`
       self$`owner` <- AdAccountOwner$new()$fromJSON(jsonlite::toJSON(this_object$`owner`, auto_unbox = TRUE, digits = NA))
       self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[BusinessAccessRole]", loadNamespace("openapi"))
+      self$`time_zone` <- this_object$`time_zone`
       self$`updated_time` <- this_object$`updated_time`
       self
     },

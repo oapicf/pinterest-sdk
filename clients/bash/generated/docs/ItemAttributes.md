@@ -107,6 +107,7 @@ Name | Type | Description | Notes
 **variantUnderscorenames** | **array[string]** |  | [optional] [default to null]
 **variantUnderscorevalues** | **array[string]** |  | [optional] [default to null]
 **additionalUnderscoreimageUnderscorelink** | **array[string]** |  | [optional] [default to null]
+**aiUnderscoredisclosures** | [**array[CatalogsAiContentDisclosure]**](CatalogsAiContentDisclosure.md) |  | [optional] [default to null]
 **imageUnderscorelink** | **array[string]** |  | [optional] [default to null]
 **videoUnderscorelink** | **string** |  | [optional] [default to null]
 

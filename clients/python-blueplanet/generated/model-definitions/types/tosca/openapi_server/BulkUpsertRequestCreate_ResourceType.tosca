@@ -9,11 +9,12 @@ imports {
   Root = tosca.resourceTypes.Root
   AdCreateRequest = openapi_server.resourceTypes.AdCreateRequest
   AdGroupCreateRequest = openapi_server.resourceTypes.AdGroupCreateRequest
+  BulkUpsertRequestCreateCatalogProductGroupsItems = openapi_server.resourceTypes.BulkUpsertRequestCreateCatalogProductGroupsItems
   CampaignCreateRequest = openapi_server.resourceTypes.CampaignCreateRequest
   KeywordsRequest = openapi_server.resourceTypes.KeywordsRequest
-  LabelCreateRequest = openapi_server.resourceTypes.LabelCreateRequest
-  MultipleProductGroupsInner = openapi_server.resourceTypes.MultipleProductGroupsInner
+  LabelBulkCreateRequest = openapi_server.resourceTypes.LabelBulkCreateRequest
   ProductGroupPromotionCreateRequest = openapi_server.resourceTypes.ProductGroupPromotionCreateRequest
+  ScheduleCreateRequest = openapi_server.resourceTypes.ScheduleCreateRequest
 }
 resourceTypes {
 
@@ -42,7 +43,7 @@ resourceTypes {
         }
         catalog_product_groups {
           type = array
-          items.type = MultipleProductGroupsInner
+          items.type = BulkUpsertRequestCreateCatalogProductGroupsItems
           description = ""
           optional = false
         }
@@ -54,13 +55,19 @@ resourceTypes {
         }
         labels {
           type = array
-          items.type = LabelCreateRequest
+          items.type = LabelBulkCreateRequest
           description = ""
           optional = false
         }
         product_groups {
           type = array
           items.type = ProductGroupPromotionCreateRequest
+          description = ""
+          optional = false
+        }
+        schedules {
+          type = array
+          items.type = ScheduleCreateRequest
           description = ""
           optional = false
         }

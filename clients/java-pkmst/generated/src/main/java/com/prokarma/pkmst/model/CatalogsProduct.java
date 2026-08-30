@@ -11,7 +11,6 @@ import com.prokarma.pkmst.model.CatalogsCreativeAssetsProduct;
 import com.prokarma.pkmst.model.CatalogsCreativeAssetsProductMetadata;
 import com.prokarma.pkmst.model.CatalogsHotelProduct;
 import com.prokarma.pkmst.model.CatalogsRetailProduct;
-import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.Pin;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,11 +20,10 @@ import io.swagger.annotations.ApiModelProperty;
  *
  */
 /**
- * Catalogs product for all verticals
+ * CatalogsProduct
  */
-@ApiModel(description = "Catalogs product for all verticals")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsProduct.class, name = "CREATIVE_ASSETS"),
@@ -34,8 +32,37 @@ import io.swagger.annotations.ApiModelProperty;
 })
 
 public class CatalogsProduct   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("metadata")
   private CatalogsCreativeAssetsProductMetadata metadata;
@@ -43,7 +70,7 @@ public class CatalogsProduct   {
   @JsonProperty("pin")
   private Pin pin;
 
-  public CatalogsProduct catalogType(CatalogsType catalogType) {
+  public CatalogsProduct catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -53,11 +80,11 @@ public class CatalogsProduct   {
    * @return catalogType
    */
   @ApiModelProperty(required = true, value = "")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -134,10 +161,7 @@ public class CatalogsProduct   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

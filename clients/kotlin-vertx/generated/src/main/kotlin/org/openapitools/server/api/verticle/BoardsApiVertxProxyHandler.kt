@@ -20,13 +20,14 @@ import org.openapitools.server.api.model.Board
 import org.openapitools.server.api.model.BoardCreate
 import org.openapitools.server.api.model.BoardPrivacyFilter
 import org.openapitools.server.api.model.BoardSection
+import org.openapitools.server.api.model.BoardSectionCreate
+import org.openapitools.server.api.model.BoardSectionUpdateWithRequiredBody
 import org.openapitools.server.api.model.BoardSectionsList200Response
 import org.openapitools.server.api.model.BoardWithUpdatePrivacy
 import org.openapitools.server.api.model.BoardWithUpdatePrivacyUpdate
 import org.openapitools.server.api.model.BoardsList200Response
 import org.openapitools.server.api.model.BoardsListPins200Response
 import org.openapitools.server.api.model.CreativeType
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.PinterestLibError
 
 class BoardsApiVertxProxyHandler(private val vertx: Vertx, private val service: BoardsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
@@ -81,14 +82,14 @@ class BoardsApiVertxProxyHandler(private val vertx: Vertx, private val service: 
                     if(boardId == null){
                         throw IllegalArgumentException("boardId is required")
                     }
-                    val boardSectionParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (boardSectionParam == null) {
-                        throw IllegalArgumentException("boardSection is required")
+                    val boardSectionCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (boardSectionCreateParam == null) {
+                        throw IllegalArgumentException("boardSectionCreate is required")
                     }
-                    val boardSection = Gson().fromJson(boardSectionParam.encode(), BoardSection::class.java)
+                    val boardSectionCreate = Gson().fromJson(boardSectionCreateParam.encode(), BoardSectionCreate::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.boardSectionsCreate(boardId,boardSection,adAccountId,context)
+                        val result = service.boardSectionsCreate(boardId,boardSectionCreate,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -170,14 +171,14 @@ class BoardsApiVertxProxyHandler(private val vertx: Vertx, private val service: 
                     if(sectionId == null){
                         throw IllegalArgumentException("sectionId is required")
                     }
-                    val boardSectionParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (boardSectionParam == null) {
-                        throw IllegalArgumentException("boardSection is required")
+                    val boardSectionUpdateWithRequiredBodyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (boardSectionUpdateWithRequiredBodyParam == null) {
+                        throw IllegalArgumentException("boardSectionUpdateWithRequiredBody is required")
                     }
-                    val boardSection = Gson().fromJson(boardSectionParam.encode(), BoardSection::class.java)
+                    val boardSectionUpdateWithRequiredBody = Gson().fromJson(boardSectionUpdateWithRequiredBodyParam.encode(), BoardSectionUpdateWithRequiredBody::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.boardSectionsUpdate(boardId,sectionId,boardSection,adAccountId,context)
+                        val result = service.boardSectionsUpdate(boardId,sectionId,boardSectionUpdateWithRequiredBody,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -261,16 +262,16 @@ class BoardsApiVertxProxyHandler(private val vertx: Vertx, private val service: 
                     if(boardId == null){
                         throw IllegalArgumentException("boardId is required")
                     }
-                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val creativeTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"creative_types")
                     val creativeTypes:kotlin.Array<CreativeType>? = if(creativeTypesParam == null) null
                             else Gson().fromJson(creativeTypesParam.encode(),
                             , object : TypeToken<kotlin.collections.List<CreativeType>>(){}.type)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     val pinMetrics = ApiHandlerUtils.searchStringInJson(params,"pin_metrics")?.toBoolean()
+                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.boardsListPins(boardId,bookmark,pageSize,creativeTypes,adAccountId,pinMetrics,context)
+                        val result = service.boardsListPins(boardId,creativeTypes,adAccountId,pinMetrics,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

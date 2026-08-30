@@ -9,7 +9,8 @@ case class LeadSubscriptionPostParamsCreate (
     _webhookUrl: String,
     /* Partner access token. Only for clients that requires authentication. We recommend to avoid this param. */
     _partnerAccessToken: Option[String],
-    _partnerMetadata: Option[LeadSubscriptionPostParamsCreateAllOfPartnerMetadata],
+    /* Partner metadata. Only for clients that requires special handling. We recommend to avoid this param. */
+    _partnerMetadata: Option[PartnerMetadata],
     /* Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
     _partnerRefreshToken: Option[String]
 )

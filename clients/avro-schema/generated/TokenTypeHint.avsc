@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The type of token to revoke.",
+  "name": "TokenTypeHint",
+  "symbols": [
+    "access_token",
+    "refresh_token"
+  ]
+}

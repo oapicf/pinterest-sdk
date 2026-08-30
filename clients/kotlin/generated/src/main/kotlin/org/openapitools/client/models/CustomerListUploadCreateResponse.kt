@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -24,16 +32,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param customerListUpload 
- * @param s3MultipartUploadData 
+ * @param customerListUpload The Customer List Upload created.
+ * @param s3MultipartUploadData Pre-signed upload URLs corresponding to each part of the upload.
  */
 
 
 data class CustomerListUploadCreateResponse (
 
+    /* The Customer List Upload created. */
     @Json(name = "customer_list_upload")
     val customerListUpload: CustomerListUpload,
 
+    /* Pre-signed upload URLs corresponding to each part of the upload. */
     @Json(name = "s3_multipart_upload_data")
     val s3MultipartUploadData: S3MultipartUploadData
 

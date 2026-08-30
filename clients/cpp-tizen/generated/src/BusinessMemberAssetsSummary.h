@@ -9,8 +9,7 @@
 
 
 #include <string>
-#include "BusinessMemberAssetsSummary_ad_accounts_inner.h"
-#include "BusinessMemberAssetsSummary_profiles_inner.h"
+#include "AssetIdWithPermissions.h"
 #include <list>
 #include "Object.h"
 
@@ -50,22 +49,22 @@ public:
 
 	/*! \brief Get List of ad account IDs and respective permission levels.
 	 */
-	std::list<BusinessMemberAssetsSummary_ad_accounts_inner> getAdAccounts();
+	std::list<AssetIdWithPermissions> getAdAccounts();
 
 	/*! \brief Set List of ad account IDs and respective permission levels.
 	 */
-	void setAdAccounts(std::list <BusinessMemberAssetsSummary_ad_accounts_inner> ad_accounts);
+	void setAdAccounts(std::list <AssetIdWithPermissions> ad_accounts);
 	/*! \brief Get List of profile IDs and respective permission levels.
 	 */
-	std::list<BusinessMemberAssetsSummary_profiles_inner> getProfiles();
+	std::list<AssetIdWithPermissions> getProfiles();
 
 	/*! \brief Set List of profile IDs and respective permission levels.
 	 */
-	void setProfiles(std::list <BusinessMemberAssetsSummary_profiles_inner> profiles);
+	void setProfiles(std::list <AssetIdWithPermissions> profiles);
 
 private:
-	std::list <BusinessMemberAssetsSummary_ad_accounts_inner>ad_accounts;
-	std::list <BusinessMemberAssetsSummary_profiles_inner>profiles;
+	std::list <AssetIdWithPermissions>ad_accounts;
+	std::list <AssetIdWithPermissions>profiles;
 	void __init();
 	void __cleanup();
 

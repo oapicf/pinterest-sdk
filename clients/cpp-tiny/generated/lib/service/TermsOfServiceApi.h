@@ -8,7 +8,7 @@
 #include "Helpers.h"
 #include <list>
 
-#include "Error.h"
+#include "Pinterest.Lib.Error.h"
 #include "TermsOfService.h"
 
 namespace Tiny {
@@ -22,7 +22,7 @@ class TermsOfServiceApi : public Service {
 public:
     TermsOfServiceApi() = default;
 
-    virtual ~TermsOfServiceApi() = default;
+    virtual ~TermsOfServiceApi();
 
     /**
     * Get terms of service.

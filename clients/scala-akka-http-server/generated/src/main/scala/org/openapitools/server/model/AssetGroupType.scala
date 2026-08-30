@@ -2,7 +2,7 @@ package org.openapitools.server.model
 
 
 /**
- * Asset group type
+ * Asset group type.
  *
 */
 final case class AssetGroupType (

@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdgroupTrackingFeatures",
+  "fields": [
+    {
+      "name": "enabled",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdgroupTrackingFeatureType"
+      }],
+      "doc": "Tracking features. To clear this field, set to null.",
+      "default": null
+    }
+  ]
+
+}

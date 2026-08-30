@@ -12,6 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "FilterOperatorType.h"
 #include <list>
 
 namespace Tiny {
@@ -48,29 +49,29 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getFilterOperatorType();
+	FilterOperatorType getFilterOperatorType();
 
 	/*! \brief Set 
 	 */
-	void setFilterOperatorType(std::string  filter_operator_type);
+	void setFilterOperatorType(FilterOperatorType filter_operator_type);
 	/*! \brief Get 
 	 */
 	bool isNegated();
 
 	/*! \brief Set 
 	 */
-	void setNegated(bool  negated);
+	void setNegated(bool negated);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getValues();
 
 	/*! \brief Set 
 	 */
-	void setValues(std::list <std::string> values);
+	void setValues(std::list<std::string> values);
 
 
     private:
-    std::string filter_operator_type{};
+    FilterOperatorType filter_operator_type;
     bool negated{};
     std::list<std::string> values;
 };

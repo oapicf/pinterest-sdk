@@ -6,6 +6,8 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.ad_shopping_preview_creative_type import AdShoppingPreviewCreativeType  # noqa: F401,E501
+from app.openapi_server.models.base_preferred_media_type import BasePreferredMediaType  # noqa: F401,E501
 from app.openapi_server.models.customizable_cta_type import CustomizableCTAType  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
@@ -17,13 +19,13 @@ class AdPreviewShopping(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, catalog_product_group_id: str=None, creative_type: str=None, customizable_cta_type: CustomizableCTAType=None, hero_image_title: str=None, hero_image_url: str=None, hero_pin_id: str=None, image_tag: str=None, item_id: str=None, preferred_media_type: str=None, video_tag: str=None):  # noqa: E501
+    def __init__(self, catalog_product_group_id: str=None, creative_type: AdShoppingPreviewCreativeType=None, customizable_cta_type: CustomizableCTAType=None, hero_image_title: str=None, hero_image_url: str=None, hero_pin_id: str=None, image_tag: str=None, item_id: str=None, preferred_media_type: BasePreferredMediaType=None, show_promotion: bool=None, video_tag: str=None):  # noqa: E501
         """AdPreviewShopping - a model defined in Swagger
 
         :param catalog_product_group_id: The catalog_product_group_id of this AdPreviewShopping.  # noqa: E501
         :type catalog_product_group_id: str
         :param creative_type: The creative_type of this AdPreviewShopping.  # noqa: E501
-        :type creative_type: str
+        :type creative_type: AdShoppingPreviewCreativeType
         :param customizable_cta_type: The customizable_cta_type of this AdPreviewShopping.  # noqa: E501
         :type customizable_cta_type: CustomizableCTAType
         :param hero_image_title: The hero_image_title of this AdPreviewShopping.  # noqa: E501
@@ -37,20 +39,23 @@ class AdPreviewShopping(Model):
         :param item_id: The item_id of this AdPreviewShopping.  # noqa: E501
         :type item_id: str
         :param preferred_media_type: The preferred_media_type of this AdPreviewShopping.  # noqa: E501
-        :type preferred_media_type: str
+        :type preferred_media_type: BasePreferredMediaType
+        :param show_promotion: The show_promotion of this AdPreviewShopping.  # noqa: E501
+        :type show_promotion: bool
         :param video_tag: The video_tag of this AdPreviewShopping.  # noqa: E501
         :type video_tag: str
         """
         self.swagger_types = {
             'catalog_product_group_id': str,
-            'creative_type': str,
+            'creative_type': AdShoppingPreviewCreativeType,
             'customizable_cta_type': CustomizableCTAType,
             'hero_image_title': str,
             'hero_image_url': str,
             'hero_pin_id': str,
             'image_tag': str,
             'item_id': str,
-            'preferred_media_type': str,
+            'preferred_media_type': BasePreferredMediaType,
+            'show_promotion': bool,
             'video_tag': str
         }
 
@@ -64,6 +69,7 @@ class AdPreviewShopping(Model):
             'image_tag': 'image_tag',
             'item_id': 'item_id',
             'preferred_media_type': 'preferred_media_type',
+            'show_promotion': 'show_promotion',
             'video_tag': 'video_tag'
         }
 
@@ -76,6 +82,7 @@ class AdPreviewShopping(Model):
         self._image_tag = image_tag
         self._item_id = item_id
         self._preferred_media_type = preferred_media_type
+        self._show_promotion = show_promotion
         self._video_tag = video_tag
 
     @classmethod
@@ -117,31 +124,27 @@ class AdPreviewShopping(Model):
         self._catalog_product_group_id = catalog_product_group_id
 
     @property
-    def creative_type(self) -> str:
+    def creative_type(self) -> AdShoppingPreviewCreativeType:
         """Gets the creative_type of this AdPreviewShopping.
 
         Ad format of the shopping ad preview.  # noqa: E501
 
         :return: The creative_type of this AdPreviewShopping.
-        :rtype: str
+        :rtype: AdShoppingPreviewCreativeType
         """
         return self._creative_type
 
     @creative_type.setter
-    def creative_type(self, creative_type: str):
+    def creative_type(self, creative_type: AdShoppingPreviewCreativeType):
         """Sets the creative_type of this AdPreviewShopping.
 
         Ad format of the shopping ad preview.  # noqa: E501
 
         :param creative_type: The creative_type of this AdPreviewShopping.
-        :type creative_type: str
+        :type creative_type: AdShoppingPreviewCreativeType
         """
-        allowed_values = ["SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR"]  # noqa: E501
-        if creative_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `creative_type` ({0}), must be one of {1}"
-                .format(creative_type, allowed_values)
-            )
+        if creative_type is None:
+            raise ValueError("Invalid value for `creative_type`, must not be `None`")  # noqa: E501
 
         self._creative_type = creative_type
 
@@ -286,33 +289,50 @@ class AdPreviewShopping(Model):
         self._item_id = item_id
 
     @property
-    def preferred_media_type(self) -> str:
+    def preferred_media_type(self) -> BasePreferredMediaType:
         """Gets the preferred_media_type of this AdPreviewShopping.
 
         Preferred media type.  # noqa: E501
 
         :return: The preferred_media_type of this AdPreviewShopping.
-        :rtype: str
+        :rtype: BasePreferredMediaType
         """
         return self._preferred_media_type
 
     @preferred_media_type.setter
-    def preferred_media_type(self, preferred_media_type: str):
+    def preferred_media_type(self, preferred_media_type: BasePreferredMediaType):
         """Sets the preferred_media_type of this AdPreviewShopping.
 
         Preferred media type.  # noqa: E501
 
         :param preferred_media_type: The preferred_media_type of this AdPreviewShopping.
-        :type preferred_media_type: str
+        :type preferred_media_type: BasePreferredMediaType
         """
-        allowed_values = ["VIDEO", "IMAGE"]  # noqa: E501
-        if preferred_media_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `preferred_media_type` ({0}), must be one of {1}"
-                .format(preferred_media_type, allowed_values)
-            )
 
         self._preferred_media_type = preferred_media_type
+
+    @property
+    def show_promotion(self) -> bool:
+        """Gets the show_promotion of this AdPreviewShopping.
+
+        Include promotion data in preview when available on catalog item. Defaults to false.  # noqa: E501
+
+        :return: The show_promotion of this AdPreviewShopping.
+        :rtype: bool
+        """
+        return self._show_promotion
+
+    @show_promotion.setter
+    def show_promotion(self, show_promotion: bool):
+        """Sets the show_promotion of this AdPreviewShopping.
+
+        Include promotion data in preview when available on catalog item. Defaults to false.  # noqa: E501
+
+        :param show_promotion: The show_promotion of this AdPreviewShopping.
+        :type show_promotion: bool
+        """
+
+        self._show_promotion = show_promotion
 
     @property
     def video_tag(self) -> str:

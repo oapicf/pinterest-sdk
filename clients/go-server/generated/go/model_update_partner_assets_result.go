@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,19 +18,19 @@ package openapi
 type UpdatePartnerAssetsResult struct {
 
 	// Unique identifier of a business asset.
-	AssetId string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AssetId string `json:"asset_id,omitempty" validate:"regexp=^\\d+$"`
 
-	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-	AssetType string `json:"asset_type,omitempty"`
+	AssetType AssetTypeResponse `json:"asset_type,omitempty"`
 
 	// Unique identifier of a business partner.
-	PartnerId string `json:"partner_id,omitempty" validate:"regexp=^\\\\d+$"`
+	PartnerId string `json:"partner_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Permission levels member or partner has on an asset.
 	Permissions []string `json:"permissions,omitempty"`
 }
 
-// AssertUpdatePartnerAssetsResultRequired checks if the required fields are not zero-ed
+// AssertUpdatePartnerAssetsResultRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertUpdatePartnerAssetsResultRequired(obj UpdatePartnerAssetsResult) error {
 	return nil
 }

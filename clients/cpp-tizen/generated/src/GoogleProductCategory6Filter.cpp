@@ -48,7 +48,7 @@ GoogleProductCategory6Filter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringListCriteria")) {
-			jsonToValue(&gOOGLE_PRODUCT_CATEGORY_6, node, "CatalogsProductGroupMultipleStringListCriteria", "");
+			jsonToValue(&gOOGLE_PRODUCT_CATEGORY_6, node, "CatalogsProductGroupMultipleStringListCriteria", "CatalogsProductGroupMultipleStringListCriteria");
 		} else {
 			
 			CatalogsProductGroupMultipleStringListCriteria* obj = static_cast<CatalogsProductGroupMultipleStringListCriteria*> (&gOOGLE_PRODUCT_CATEGORY_6);

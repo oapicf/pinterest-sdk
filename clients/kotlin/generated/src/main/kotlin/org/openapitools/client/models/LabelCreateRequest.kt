@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.LabelCreateRequestLabelsInner
+import org.openapitools.client.models.LabelCreateItem
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -24,7 +32,6 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param labels Labels that you are applying to the campaign.
- * @param parentId Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
  */
 
 
@@ -32,11 +39,7 @@ data class LabelCreateRequest (
 
     /* Labels that you are applying to the campaign. */
     @Json(name = "labels")
-    val labels: kotlin.collections.List<LabelCreateRequestLabelsInner>,
-
-    /* Unique identifier of the asset you are labelling. Currently, you can only label campaigns. */
-    @Json(name = "parent_id")
-    val parentId: kotlin.String
+    val labels: kotlin.collections.List<LabelCreateItem>
 
 ) {
 

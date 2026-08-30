@@ -11,29 +11,29 @@
 part of openapi.api;
 
 /// Format of generated report
-class DataOutputFormat {
-  /// Instantiate a new enum with the provided [value].
-  const DataOutputFormat._(this.value);
+enum DataOutputFormat {
+  JSON._(r'JSON'),
+  CSV._(r'CSV'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const DataOutputFormat._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const JSON = DataOutputFormat._(r'JSON');
-  static const CSV = DataOutputFormat._(r'CSV');
-
-  /// List of all possible values in this [enum][DataOutputFormat].
-  static const values = <DataOutputFormat>[
-    JSON,
-    CSV,
-  ];
-
+  /// Returns the instance of [DataOutputFormat] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static DataOutputFormat? fromJson(dynamic value) => DataOutputFormatTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [DataOutputFormat]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<DataOutputFormat> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DataOutputFormat>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class DataOutputFormatTypeTransformer {
 
   const DataOutputFormatTypeTransformer._();
 
-  String encode(DataOutputFormat data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(DataOutputFormat data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a DataOutputFormat.
+  /// Returns the instance of [DataOutputFormat] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class DataOutputFormatTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   DataOutputFormat? decode(dynamic data, {bool allowNull = true}) {
+    if (data is DataOutputFormat) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'JSON': return DataOutputFormat.JSON;
@@ -79,7 +84,7 @@ class DataOutputFormatTypeTransformer {
     return null;
   }
 
-  /// Singleton [DataOutputFormatTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static DataOutputFormatTypeTransformer? _instance;
 }
 

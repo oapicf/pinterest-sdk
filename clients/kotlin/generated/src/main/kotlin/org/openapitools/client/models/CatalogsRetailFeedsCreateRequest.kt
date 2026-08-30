@@ -8,19 +8,26 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
-import org.openapitools.client.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFormat
 import org.openapitools.client.models.CatalogsStatus
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.NullableCurrency
 import org.openapitools.client.models.ProductAvailabilityType
@@ -37,7 +44,7 @@ import com.squareup.moshi.JsonClass
  * @param format 
  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @param name A human-friendly name associated to a given feed.
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @param credentials 
  * @param defaultAvailability 
  * @param defaultCurrency 
@@ -49,13 +56,13 @@ import com.squareup.moshi.JsonClass
 data class CatalogsRetailFeedsCreateRequest (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsRetailFeedsCreateRequest.CatalogType,
 
     @Json(name = "default_country")
     val defaultCountry: Country,
 
     @Json(name = "default_locale")
-    val defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+    val defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale,
 
     @Json(name = "format")
     val format: CatalogsFormat,
@@ -68,7 +75,7 @@ data class CatalogsRetailFeedsCreateRequest (
     @Json(name = "name")
     val name: kotlin.String,
 
-    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect. */
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String? = null,
 
@@ -85,10 +92,19 @@ data class CatalogsRetailFeedsCreateRequest (
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
 
     @Json(name = "status")
-    val status: CatalogsStatus? = "ACTIVE"
+    val status: CatalogsStatus? = null
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: RETAIL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "RETAIL") RETAIL("RETAIL");
+    }
 
 }
 

@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Advertisers billing type",
+  "name": "BillingType",
+  "symbols": [
+    "CREDIT_CARD",
+    "INVOICE",
+    "INTERNAL",
+    "RECURRING",
+    "PREPAID"
+  ]
+}

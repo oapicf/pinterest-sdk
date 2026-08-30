@@ -3,6 +3,9 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.FormFactor
+open OpenAPI.Model.NetworkType
+open OpenAPI.Model.OsFamily
 
 module ConversionEventDeviceInfo =
 
@@ -23,7 +26,7 @@ module ConversionEventDeviceInfo =
     [<JsonProperty(PropertyName = "external_storage_size")>]
     ExternalStorageSize : int;
     [<JsonProperty(PropertyName = "form_factor")>]
-    FormFactor : string;
+    FormFactor : FormFactor;
     [<JsonProperty(PropertyName = "kernel_version")>]
     KernelVersion : string;
     [<JsonProperty(PropertyName = "languages")>]
@@ -33,9 +36,9 @@ module ConversionEventDeviceInfo =
     [<JsonProperty(PropertyName = "model")>]
     Model : string;
     [<JsonProperty(PropertyName = "network_type")>]
-    NetworkType : string;
+    NetworkType : NetworkType;
     [<JsonProperty(PropertyName = "os_family")>]
-    OsFamily : string;
+    OsFamily : OsFamily;
     [<JsonProperty(PropertyName = "os_name")>]
     OsName : string;
     [<JsonProperty(PropertyName = "os_release_name")>]

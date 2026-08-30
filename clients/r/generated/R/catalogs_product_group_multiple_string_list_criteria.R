@@ -22,9 +22,9 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
     #' Initialize a new CatalogsProductGroupMultipleStringListCriteria class.
     #'
     #' @param values values
-    #' @param negated negated. Default to FALSE.
+    #' @param negated negated
     #' @param ... Other optional arguments.
-    initialize = function(`values`, `negated` = FALSE, ...) {
+    initialize = function(`values`, `negated` = NULL, ...) {
       if (!missing(`values`)) {
         stopifnot(is.vector(`values`), length(`values`) != 0)
         sapply(`values`, function(x) stopifnot(R6::is.R6(x)))
@@ -75,9 +75,32 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
       }
       if (!is.null(self$`values`)) {
         CatalogsProductGroupMultipleStringListCriteriaObject[["values"]] <-
-          lapply(self$`values`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`values`)
       }
       return(CatalogsProductGroupMultipleStringListCriteriaObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -91,7 +114,7 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
         self$`negated` <- this_object$`negated`
       }
       if (!is.null(this_object$`values`)) {
-        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[array[character]]", loadNamespace("openapi"))
+        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Array]", loadNamespace("openapi"))
       }
       self
     },
@@ -115,7 +138,7 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`negated` <- this_object$`negated`
-      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[array[character]]", loadNamespace("openapi"))
+      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[Array]", loadNamespace("openapi"))
       self
     },
 

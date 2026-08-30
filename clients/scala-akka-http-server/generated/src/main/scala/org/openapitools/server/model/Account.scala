@@ -2,9 +2,11 @@ package org.openapitools.server.model
 
 
 /**
+ * User account model containing properties related to a user's account.
+ *
  * @param about Profile about description. for example: ''null''
  * @param accountType Type of account for example: ''null''
- * @param boardCount User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. for example: ''14''
+ * @param boardCount   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. for example: ''14''
  * @param businessName  for example: ''null''
  * @param followerCount User account follower count. for example: ''10''
  * @param followingCount User account following count. for example: ''347''
@@ -17,7 +19,7 @@ package org.openapitools.server.model
 */
 final case class Account (
   about: Option[String] = None,
-  accountType: Option[String] = None,
+  accountType: Option[UserAccountType] = None,
   boardCount: Option[Int] = None,
   businessName: Option[String] = None,
   followerCount: Option[Int] = None,

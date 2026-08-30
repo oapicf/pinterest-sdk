@@ -15,8 +15,8 @@ case class Account (
   /* Profile about description. */
   about: Option[String],
 /* Type of account */
-  accountType: Option[AccountType],
-/* User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
+  accountType: Option[UserAccountType],
+/*   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
   boardCount: Option[Integer],
 businessName: Option[String],
 /* User account follower count. */
@@ -35,28 +35,6 @@ websiteUrl: Option[String])
 
 object Account {
   import DateTimeCodecs._
-  sealed trait AccountType
-  case object PINNER extends AccountType
-  case object BUSINESS extends AccountType
-
-  object AccountType {
-    def toAccountType(s: String): Option[AccountType] = s match {
-      case "PINNER" => Some(PINNER)
-      case "BUSINESS" => Some(BUSINESS)
-      case _ => None
-    }
-
-    def fromAccountType(x: AccountType): String = x match {
-      case PINNER => "PINNER"
-      case BUSINESS => "BUSINESS"
-    }
-  }
-
-  implicit val AccountTypeEnumEncoder: EncodeJson[AccountType] =
-    EncodeJson[AccountType](is => StringEncodeJson(AccountType.fromAccountType(is)))
-
-  implicit val AccountTypeEnumDecoder: DecodeJson[AccountType] =
-    DecodeJson.optionDecoder[AccountType](n => n.string.flatMap(jStr => AccountType.toAccountType(jStr)), "AccountType failed to de-serialize")
 
   implicit val AccountCodecJson: CodecJson[Account] = CodecJson.derive[Account]
   implicit val AccountDecoder: EntityDecoder[Account] = jsonOf[Account]

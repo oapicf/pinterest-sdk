@@ -2,25 +2,24 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CustomerListStatus
 
 module CustomerList =
 
   //#region CustomerList
 
-  //#region enums
-  type StatusEnum = PROCESSINGEnum of string  |  READYEnum of string  |  TOOSMALLEnum of string  |  UPLOADINGEnum of string  
-  //#endregion
 
   type CustomerList = {
     AdAccountId : string;
     CreatedTime : decimal;
     Exceptions : obj;
     Id : string;
+    IsNca : bool;
     Name : string;
     NumBatches : decimal;
     NumRemovedUserRecords : decimal;
     NumUploadedUserRecords : decimal;
-    Status : StatusEnum;
+    Status : CustomerListStatus;
     Type : string;
     UpdatedTime : decimal;
   }

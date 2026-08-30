@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`cURRENCY` | [CatalogsProductGroupCurrencyCriteria](.md)
+`cURRENCY` | [CatalogsProductGroupCurrencyCriteria](CatalogsProductGroupCurrencyCriteria.md)
 
 ## Example
 

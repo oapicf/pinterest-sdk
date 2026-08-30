@@ -1,10 +1,12 @@
 package controllers;
 
-import apimodels.Audience;
-import apimodels.AudienceCreateRequest;
-import apimodels.AudienceUpdateRequest;
+import apimodels.AdAccountsAudience;
+import apimodels.AdAccountsAudienceCreate;
+import apimodels.AdAccountsAudienceUpdate;
+import apimodels.AudienceOwnershipType;
 import apimodels.AudiencesList200Response;
-import apimodels.Error;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -28,7 +30,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudiencesApiController extends Controller {
     private final AudiencesApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -43,22 +45,22 @@ public class AudiencesApiController extends Controller {
 
     @ApiAction
     public Result audiencesCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeaudienceCreateRequest = request.body().asJson();
-        AudienceCreateRequest audienceCreateRequest;
-        if (nodeaudienceCreateRequest != null) {
-            audienceCreateRequest = mapper.readValue(nodeaudienceCreateRequest.toString(), AudienceCreateRequest.class);
+        JsonNode nodeadAccountsAudienceCreate = request.body().asJson();
+        AdAccountsAudienceCreate adAccountsAudienceCreate;
+        if (nodeadAccountsAudienceCreate != null) {
+            adAccountsAudienceCreate = mapper.readValue(nodeadAccountsAudienceCreate.toString(), AdAccountsAudienceCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(audienceCreateRequest);
+                OpenAPIUtils.validate(adAccountsAudienceCreate);
             }
         } else {
-            throw new IllegalArgumentException("'AudienceCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'AdAccountsAudienceCreate' parameter is required");
         }
-        return imp.audiencesCreateHttp(request, adAccountId, audienceCreateRequest);
+        return imp.audiencesCreateHttp(request, adAccountId, adAccountsAudienceCreate);
     }
 
     @ApiAction
-    public Result audiencesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId) throws Exception {
-        return imp.audiencesGetHttp(request, adAccountId, audienceId);
+    public Result audiencesGet(Http.Request request,  @Pattern(regexp="^\\d+$")String audienceId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        return imp.audiencesGetHttp(request, audienceId, adAccountId);
     }
 
     @ApiAction
@@ -70,13 +72,6 @@ public class AudiencesApiController extends Controller {
         } else {
             bookmark = null;
         }
-        String valueorder = request.getQueryString("order");
-        String order;
-        if (valueorder != null) {
-            order = valueorder;
-        } else {
-            order = null;
-        }
         String valuepageSize = request.getQueryString("page_size");
         Integer pageSize;
         if (valuepageSize != null) {
@@ -84,29 +79,43 @@ public class AudiencesApiController extends Controller {
         } else {
             pageSize = 25;
         }
+        String valueorder = request.getQueryString("order");
+        PinterestLibPaginationOrder order;
+        if (valueorder != null) {
+            order = valueorder;
+        } else {
+            order = null;
+        }
         String valueownershipType = request.getQueryString("ownership_type");
-        String ownershipType;
+        AudienceOwnershipType ownershipType;
         if (valueownershipType != null) {
             ownershipType = valueownershipType;
         } else {
-            ownershipType = "OWNED";
+            ownershipType = null;
         }
-        return imp.audiencesListHttp(request, adAccountId, bookmark, order, pageSize, ownershipType);
+        String valueexcludeNca = request.getQueryString("exclude_nca");
+        Boolean excludeNca;
+        if (valueexcludeNca != null) {
+            excludeNca = Boolean.valueOf(valueexcludeNca);
+        } else {
+            excludeNca = false;
+        }
+        return imp.audiencesListHttp(request, adAccountId, bookmark, pageSize, order, ownershipType, excludeNca);
     }
 
     @ApiAction
-    public Result audiencesUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId) throws Exception {
-        JsonNode nodeaudienceUpdateRequest = request.body().asJson();
-        AudienceUpdateRequest audienceUpdateRequest;
-        if (nodeaudienceUpdateRequest != null) {
-            audienceUpdateRequest = mapper.readValue(nodeaudienceUpdateRequest.toString(), AudienceUpdateRequest.class);
+    public Result audiencesUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String audienceId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        JsonNode nodeadAccountsAudienceUpdate = request.body().asJson();
+        AdAccountsAudienceUpdate adAccountsAudienceUpdate;
+        if (nodeadAccountsAudienceUpdate != null) {
+            adAccountsAudienceUpdate = mapper.readValue(nodeadAccountsAudienceUpdate.toString(), AdAccountsAudienceUpdate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(audienceUpdateRequest);
+                OpenAPIUtils.validate(adAccountsAudienceUpdate);
             }
         } else {
-            throw new IllegalArgumentException("'AudienceUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'AdAccountsAudienceUpdate' parameter is required");
         }
-        return imp.audiencesUpdateHttp(request, adAccountId, audienceId, audienceUpdateRequest);
+        return imp.audiencesUpdateHttp(request, audienceId, adAccountId, adAccountsAudienceUpdate);
     }
 
 }

@@ -1,14 +1,14 @@
 (ns pinterest-rest-api.specs.label-error
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.label :refer :all]
+            [pinterest-rest-api.specs.label-error-data :refer :all]
             )
   (:import (java.io File)))
 
 
 (def label-error-data
   {
-   (ds/opt :data) label-spec
+   (ds/opt :data) label-error-data-spec
    (ds/opt :error_messages) (s/coll-of string?)
    })
 

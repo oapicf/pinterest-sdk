@@ -84,15 +84,17 @@ class _$TopPinsAnalyticsResponseDateAvailabilitySerializer implements PrimitiveS
         case r'is_realtime':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isRealtime = valueDes;
           break;
         case r'latest_available_timestamp':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.latestAvailableTimestamp = valueDes;
           break;
         default:

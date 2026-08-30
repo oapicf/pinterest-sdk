@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AuthRespondInvitesBody_invites_inner.h"
+#include "AuthRespondInvitesBodyItem.h"
 #include <list>
 
 namespace Tiny {
@@ -49,15 +49,15 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<AuthRespondInvitesBody_invites_inner> getInvites();
+	std::list<AuthRespondInvitesBodyItem> getInvites();
 
 	/*! \brief Set 
 	 */
-	void setInvites(std::list <AuthRespondInvitesBody_invites_inner> invites);
+	void setInvites(std::list<AuthRespondInvitesBodyItem> invites);
 
 
     private:
-    std::list<AuthRespondInvitesBody_invites_inner> invites;
+    std::list<AuthRespondInvitesBodyItem> invites;
 };
 }
 

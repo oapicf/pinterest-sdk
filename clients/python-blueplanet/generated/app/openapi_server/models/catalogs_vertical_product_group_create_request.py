@@ -83,7 +83,7 @@ class CatalogsVerticalProductGroupCreateRequest(Model):
     def catalog_id(self) -> str:
         """Gets the catalog_id of this CatalogsVerticalProductGroupCreateRequest.
 
-        Catalog id pertaining to the creative assets product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :return: The catalog_id of this CatalogsVerticalProductGroupCreateRequest.
         :rtype: str
@@ -94,7 +94,7 @@ class CatalogsVerticalProductGroupCreateRequest(Model):
     def catalog_id(self, catalog_id: str):
         """Sets the catalog_id of this CatalogsVerticalProductGroupCreateRequest.
 
-        Catalog id pertaining to the creative assets product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :param catalog_id: The catalog_id of this CatalogsVerticalProductGroupCreateRequest.
         :type catalog_id: str

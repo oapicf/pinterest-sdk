@@ -85,7 +85,7 @@ DeleteMemberAccessResult::getAssetId()
 }
 
 void
-DeleteMemberAccessResult::setAssetId(std::string  asset_id)
+DeleteMemberAccessResult::setAssetId(std::string asset_id)
 {
 	this->asset_id = asset_id;
 }
@@ -97,7 +97,7 @@ DeleteMemberAccessResult::getMemberId()
 }
 
 void
-DeleteMemberAccessResult::setMemberId(std::string  member_id)
+DeleteMemberAccessResult::setMemberId(std::string member_id)
 {
 	this->member_id = member_id;
 }

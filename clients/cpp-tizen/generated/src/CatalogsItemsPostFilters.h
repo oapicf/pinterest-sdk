@@ -12,7 +12,6 @@
 #include "CatalogsCreativeAssetsItemsPostFilter.h"
 #include "CatalogsHotelItemsPostFilter.h"
 #include "CatalogsRetailItemsPostFilter.h"
-#include "CatalogsType.h"
 #include <list>
 #include "Object.h"
 
@@ -50,13 +49,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	CatalogsType getCatalogType();
-
-	/*! \brief Set 
-	 */
-	void setCatalogType(CatalogsType  catalog_type);
 	/*! \brief Get Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
 	std::string getCatalogId();
@@ -64,6 +56,13 @@ public:
 	/*! \brief Set Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
 	void setCatalogId(std::string  catalog_id);
+	/*! \brief Get 
+	 */
+	std::string getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getItemIds();
@@ -87,8 +86,8 @@ public:
 	void setCreativeAssetsIds(std::list <std::string> creative_assets_ids);
 
 private:
-	CatalogsType catalog_type;
 	std::string catalog_id;
+	std::string catalog_type;
 	std::list <std::string>item_ids;
 	std::list <std::string>hotel_ids;
 	std::list <std::string>creative_assets_ids;

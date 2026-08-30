@@ -13,7 +13,7 @@ import AdGroupsList200Response._
 
 case class AdGroupsList200Response (
   bookmark: Option[String],
-items: List[AdGroupResponse])
+items: List[AdGroup])
 
 object AdGroupsList200Response {
   import DateTimeCodecs._

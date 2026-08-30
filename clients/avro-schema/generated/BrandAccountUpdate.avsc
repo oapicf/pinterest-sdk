@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create or update operation model.",
+  "name": "BrandAccountUpdate",
+  "fields": [
+    {
+      "name": "about",
+      "type": ["null", "string"],
+      "doc": "Brand Account about information",
+      "default": null
+    },
+    {
+      "name": "country",
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Brand Account name",
+      "default": null
+    },
+    {
+      "name": "profile_image",
+      "type": ["null", "model.BrandAccountProfileImageUpdate"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "username",
+      "type": ["null", "string"],
+      "doc": "Brand Account username",
+      "default": null
+    },
+    {
+      "name": "website",
+      "type": ["null", "string"],
+      "doc": "Brand Account website",
+      "default": null
+    }
+  ]
+
+}

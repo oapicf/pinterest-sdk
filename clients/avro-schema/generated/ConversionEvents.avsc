@@ -1,16 +1,26 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "A list of events (one or more) encapsulated by a data object.",
+  "doc": "Conversion events.",
   "name": "ConversionEvents",
   "fields": [
     {
-      "name": "data",
+      "name": "events",
       "type": {
         "type": "array",
-        "items": "model.ConversionEventsDataInner"
+        "items": "model.ConversionApiResponseEventsItems"
       },
-      "doc": ""
+      "doc": "Specific messages for each event received. The order will match the order in which the events were received in the request."
+    },
+    {
+      "name": "num_events_processed",
+      "type": "int",
+      "doc": "Number of events that were successfully processed from the events."
+    },
+    {
+      "name": "num_events_received",
+      "type": "int",
+      "doc": "Total number of events received in the request."
     }
   ]
 

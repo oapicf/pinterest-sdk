@@ -15,5 +15,6 @@ module AdAccountCreate =
     Currency : Currency;
     Name : string;
     OwnerUserId : string;
+    TimeZone : string;
   }
   //#endregion

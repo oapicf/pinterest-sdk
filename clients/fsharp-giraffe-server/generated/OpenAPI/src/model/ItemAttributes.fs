@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsAiContentDisclosure
 open OpenAPI.Model.UpdatableItemAttributesGtin
 open OpenAPI.Model.bool option
 open OpenAPI.Model.decimal option
@@ -118,6 +119,7 @@ module ItemAttributes =
     VariantNames : string[];
     VariantValues : string[];
     AdditionalImageLink : string[];
+    AiDisclosures : CatalogsAiContentDisclosure[];
     ImageLink : string[];
     VideoLink : string option;
   }

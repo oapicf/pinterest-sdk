@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,8 +23,7 @@ var _ MappedNullable = &BoardsListPins200Response{}
 // BoardsListPins200Response struct for BoardsListPins200Response
 type BoardsListPins200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	// Pins
-	Items []Pin `json:"items"`
+	Items []PinRead `json:"items"`
 }
 
 type _BoardsListPins200Response BoardsListPins200Response
@@ -33,7 +32,7 @@ type _BoardsListPins200Response BoardsListPins200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBoardsListPins200Response(items []Pin) *BoardsListPins200Response {
+func NewBoardsListPins200Response(items []PinRead) *BoardsListPins200Response {
 	this := BoardsListPins200Response{}
 	this.Items = items
 	return &this
@@ -90,9 +89,9 @@ func (o *BoardsListPins200Response) UnsetBookmark() {
 }
 
 // GetItems returns the Items field value
-func (o *BoardsListPins200Response) GetItems() []Pin {
+func (o *BoardsListPins200Response) GetItems() []PinRead {
 	if o == nil {
-		var ret []Pin
+		var ret []PinRead
 		return ret
 	}
 
@@ -101,7 +100,7 @@ func (o *BoardsListPins200Response) GetItems() []Pin {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *BoardsListPins200Response) GetItemsOk() ([]Pin, bool) {
+func (o *BoardsListPins200Response) GetItemsOk() ([]PinRead, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -109,7 +108,7 @@ func (o *BoardsListPins200Response) GetItemsOk() ([]Pin, bool) {
 }
 
 // SetItems sets field value
-func (o *BoardsListPins200Response) SetItems(v []Pin) {
+func (o *BoardsListPins200Response) SetItems(v []PinRead) {
 	o.Items = v
 }
 

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## BoardsUserFollowsList
 
-> BoardsUserFollowsList200Response BoardsUserFollowsList(ctx).Bookmark(bookmark).PageSize(pageSize).ExplicitFollowing(explicitFollowing).AdAccountId(adAccountId).Execute()
+> BoardsList200Response BoardsUserFollowsList(ctx).AdAccountId(adAccountId).ExplicitFollowing(explicitFollowing).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List following boards
 
@@ -42,19 +42,19 @@ import (
 )
 
 func main() {
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	explicitFollowing := true // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to false)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	explicitFollowing := true // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to false)
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserAccountAPI.BoardsUserFollowsList(context.Background()).Bookmark(bookmark).PageSize(pageSize).ExplicitFollowing(explicitFollowing).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.UserAccountAPI.BoardsUserFollowsList(context.Background()).AdAccountId(adAccountId).ExplicitFollowing(explicitFollowing).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserAccountAPI.BoardsUserFollowsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BoardsUserFollowsList`: BoardsUserFollowsList200Response
+	// response from `BoardsUserFollowsList`: BoardsList200Response
 	fmt.Fprintf(os.Stdout, "Response from `UserAccountAPI.BoardsUserFollowsList`: %v\n", resp)
 }
 ```
@@ -70,14 +70,14 @@ Other parameters are passed through a pointer to a apiBoardsUserFollowsListReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [default to false]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [default to false]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ## FollowUserUpdate
 
-> UserSummary FollowUserUpdate(ctx, username).FollowUserRequest(followUserRequest).Execute()
+> FollowUser FollowUserUpdate(ctx, username).FollowUserCreate(followUserCreate).Execute()
 
 Follow user
 
@@ -114,17 +114,17 @@ import (
 )
 
 func main() {
-	username := "username" // string | A valid username
-	followUserRequest := *openapiclient.NewFollowUserRequest() // FollowUserRequest | Follow a user.
+	username := "username_example" // string | A valid username
+	followUserCreate := *openapiclient.NewFollowUserCreate() // FollowUserCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserAccountAPI.FollowUserUpdate(context.Background(), username).FollowUserRequest(followUserRequest).Execute()
+	resp, r, err := apiClient.UserAccountAPI.FollowUserUpdate(context.Background(), username).FollowUserCreate(followUserCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserAccountAPI.FollowUserUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FollowUserUpdate`: UserSummary
+	// response from `FollowUserUpdate`: FollowUser
 	fmt.Fprintf(os.Stdout, "Response from `UserAccountAPI.FollowUserUpdate`: %v\n", resp)
 }
 ```
@@ -145,11 +145,11 @@ Other parameters are passed through a pointer to a apiFollowUserUpdateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **followUserRequest** | [**FollowUserRequest**](FollowUserRequest.md) | Follow a user. | 
+ **followUserCreate** | [**FollowUserCreate**](FollowUserCreate.md) |  | 
 
 ### Return type
 
-[**UserSummary**](UserSummary.md)
+[**FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -187,7 +187,7 @@ import (
 
 func main() {
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -213,7 +213,7 @@ Other parameters are passed through a pointer to a apiFollowersListRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -296,7 +296,7 @@ Other parameters are passed through a pointer to a apiLinkedBusinessAccountsGetR
 
 ## UnverifyWebsiteDelete
 
-> UnverifyWebsiteDelete(ctx).Website(website).Execute()
+> UserWebsite UnverifyWebsiteDelete(ctx).Website(website).Execute()
 
 Unverify website
 
@@ -315,15 +315,17 @@ import (
 )
 
 func main() {
-	website := "mysite.test" // string | Website with path or domain only
+	website := "website_example" // string | Website with path or domain only
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.UserAccountAPI.UnverifyWebsiteDelete(context.Background()).Website(website).Execute()
+	resp, r, err := apiClient.UserAccountAPI.UnverifyWebsiteDelete(context.Background()).Website(website).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserAccountAPI.UnverifyWebsiteDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UnverifyWebsiteDelete`: UserWebsite
+	fmt.Fprintf(os.Stdout, "Response from `UserAccountAPI.UnverifyWebsiteDelete`: %v\n", resp)
 }
 ```
 
@@ -342,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -387,7 +389,7 @@ func main() {
 	appTypes := "appTypes_example" // string | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 	contentType := "contentType_example" // string | Filter to paid or organic data. Default is all. (optional) (default to "ALL")
 	source := "source_example" // string | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to "ALL")
-	metricTypes := []string{"MetricTypes_example"} // []string | Metric types to get data for, default is all.  (optional)
+	metricTypes := []openapiclient.QuerymetrictypesItems{openapiclient.QuerymetrictypesItems("ENGAGEMENT")} // []QuerymetrictypesItems | Metric types to get data for, default is all. (optional)
 	splitField := "splitField_example" // string | How to split the data into groups. Not including this param means data won't be split. (optional) (default to "NO_SPLIT")
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
@@ -421,7 +423,7 @@ Name | Type | Description  | Notes
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [default to &quot;ALL&quot;]
  **contentType** | **string** | Filter to paid or organic data. Default is all. | [default to &quot;ALL&quot;]
  **source** | **string** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [default to &quot;ALL&quot;]
- **metricTypes** | **[]string** | Metric types to get data for, default is all.  | 
+ **metricTypes** | [**[]QuerymetrictypesItems**](QuerymetrictypesItems.md) | Metric types to get data for, default is all. | 
  **splitField** | **string** | How to split the data into groups. Not including this param means data won&#39;t be split. | [default to &quot;NO_SPLIT&quot;]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
@@ -467,15 +469,15 @@ import (
 func main() {
 	startDate := time.Now() // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 	endDate := time.Now() // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-	sortBy := "sortBy_example" // string | Specify sorting order for metrics
+	sortBy := openapiclient.TopPinsSortBy("ENGAGEMENT") // TopPinsSortBy | Specify sorting order for metrics
 	fromClaimedContent := "fromClaimedContent_example" // string | Filter on Pins that match your claimed domain. (optional) (default to "BOTH")
 	pinFormat := "pinFormat_example" // string | Pin formats to get data for, default is all. (optional) (default to "ALL")
 	appTypes := "appTypes_example" // string | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 	contentType := "contentType_example" // string | Filter to paid or organic data. Default is all. (optional) (default to "ALL")
 	source := "source_example" // string | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to "ALL")
-	metricTypes := []string{"MetricTypes_example"} // []string | Metric types to get data for, default is all.  (optional)
-	numOfPins := int32(25) // int32 | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
-	createdInLastNDays := int32(30) // int32 | Get metrics for pins created in the last \"n\" days. (optional)
+	metricTypes := []openapiclient.QuerymetrictypesItems{openapiclient.QuerymetrictypesItems("ENGAGEMENT")} // []QuerymetrictypesItems | Metric types to get data for, default is all. (optional)
+	numOfPins := int32(56) // int32 | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
+	createdInLastNDays := float32(8.14) // float32 | Get metrics for pins created in the last \"n\" days. (optional)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -503,15 +505,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sortBy** | **string** | Specify sorting order for metrics | 
+ **sortBy** | [**TopPinsSortBy**](TopPinsSortBy.md) | Specify sorting order for metrics | 
  **fromClaimedContent** | **string** | Filter on Pins that match your claimed domain. | [default to &quot;BOTH&quot;]
  **pinFormat** | **string** | Pin formats to get data for, default is all. | [default to &quot;ALL&quot;]
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [default to &quot;ALL&quot;]
  **contentType** | **string** | Filter to paid or organic data. Default is all. | [default to &quot;ALL&quot;]
  **source** | **string** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [default to &quot;ALL&quot;]
- **metricTypes** | **[]string** | Metric types to get data for, default is all.  | 
+ **metricTypes** | [**[]QuerymetrictypesItems**](QuerymetrictypesItems.md) | Metric types to get data for, default is all. | 
  **numOfPins** | **int32** | Number of pins to include, default is 10. Max is 50. | [default to 10]
- **createdInLastNDays** | **int32** | Get metrics for pins created in the last \&quot;n\&quot; days. | 
+ **createdInLastNDays** | **float32** | Get metrics for pins created in the last \&quot;n\&quot; days. | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -556,15 +558,15 @@ import (
 func main() {
 	startDate := time.Now() // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 	endDate := time.Now() // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-	sortBy := "sortBy_example" // string | Specify sorting order for video metrics
+	sortBy := openapiclient.TopVideoPinsSortBy("SAVE") // TopVideoPinsSortBy | Specify sorting order for video metrics
 	fromClaimedContent := "fromClaimedContent_example" // string | Filter on Pins that match your claimed domain. (optional) (default to "BOTH")
 	pinFormat := "pinFormat_example" // string | Pin formats to get data for, default is all. (optional) (default to "ALL")
 	appTypes := "appTypes_example" // string | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 	contentType := "contentType_example" // string | Filter to paid or organic data. Default is all. (optional) (default to "ALL")
 	source := "source_example" // string | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to "ALL")
-	metricTypes := []string{"MetricTypes_example"} // []string | Metric types to get video data for, default is all.  (optional)
-	numOfPins := int32(25) // int32 | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
-	createdInLastNDays := int32(30) // int32 | Get metrics for pins created in the last \"n\" days. (optional)
+	metricTypes := []openapiclient.QueryvideopinmetrictypesItems{openapiclient.QueryvideopinmetrictypesItems("IMPRESSION")} // []QueryvideopinmetrictypesItems | Metric types to get video data for, default is all. (optional)
+	numOfPins := int32(56) // int32 | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
+	createdInLastNDays := float32(8.14) // float32 | Get metrics for pins created in the last \"n\" days. (optional)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -592,15 +594,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sortBy** | **string** | Specify sorting order for video metrics | 
+ **sortBy** | [**TopVideoPinsSortBy**](TopVideoPinsSortBy.md) | Specify sorting order for video metrics | 
  **fromClaimedContent** | **string** | Filter on Pins that match your claimed domain. | [default to &quot;BOTH&quot;]
  **pinFormat** | **string** | Pin formats to get data for, default is all. | [default to &quot;ALL&quot;]
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [default to &quot;ALL&quot;]
  **contentType** | **string** | Filter to paid or organic data. Default is all. | [default to &quot;ALL&quot;]
  **source** | **string** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [default to &quot;ALL&quot;]
- **metricTypes** | **[]string** | Metric types to get video data for, default is all.  | 
+ **metricTypes** | [**[]QueryvideopinmetrictypesItems**](QueryvideopinmetrictypesItems.md) | Metric types to get video data for, default is all. | 
  **numOfPins** | **int32** | Number of pins to include, default is 10. Max is 50. | [default to 10]
- **createdInLastNDays** | **int32** | Get metrics for pins created in the last \&quot;n\&quot; days. | 
+ **createdInLastNDays** | **float32** | Get metrics for pins created in the last \&quot;n\&quot; days. | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -642,9 +644,9 @@ import (
 )
 
 func main() {
-	username := "username" // string | A valid username
+	username := "username_example" // string | A valid username
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -675,7 +677,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -763,7 +765,7 @@ Name | Type | Description  | Notes
 
 ## UserFollowingGet
 
-> UserFollowingGet200Response UserFollowingGet(ctx).Bookmark(bookmark).PageSize(pageSize).FeedType(feedType).ExplicitFollowing(explicitFollowing).AdAccountId(adAccountId).Execute()
+> FollowersList200Response UserFollowingGet(ctx).AdAccountId(adAccountId).ExplicitFollowing(explicitFollowing).FeedType(feedType).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List following
 
@@ -782,20 +784,20 @@ import (
 )
 
 func main() {
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	feedType := "feedType_example" // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional) (default to "ALL")
-	explicitFollowing := true // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to false)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	explicitFollowing := true // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to false)
+	feedType := openapiclient.UserFollowingFeedType("ALL") // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional) (default to "ALL")
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserAccountAPI.UserFollowingGet(context.Background()).Bookmark(bookmark).PageSize(pageSize).FeedType(feedType).ExplicitFollowing(explicitFollowing).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.UserAccountAPI.UserFollowingGet(context.Background()).AdAccountId(adAccountId).ExplicitFollowing(explicitFollowing).FeedType(feedType).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserAccountAPI.UserFollowingGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UserFollowingGet`: UserFollowingGet200Response
+	// response from `UserFollowingGet`: FollowersList200Response
 	fmt.Fprintf(os.Stdout, "Response from `UserAccountAPI.UserFollowingGet`: %v\n", resp)
 }
 ```
@@ -811,15 +813,15 @@ Other parameters are passed through a pointer to a apiUserFollowingGetRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **feedType** | **UserFollowingFeedType** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [default to &quot;ALL&quot;]
- **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [default to false]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [default to false]
+ **feedType** | [**UserFollowingFeedType**](UserFollowingFeedType.md) | Thrift param specifying what type of followees will be kept. Default to include all followees. | [default to &quot;ALL&quot;]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
-[**UserFollowingGet200Response**](UserFollowingGet200Response.md)
+[**FollowersList200Response**](FollowersList200Response.md)
 
 ### Authorization
 
@@ -857,7 +859,7 @@ import (
 
 func main() {
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -883,7 +885,7 @@ Other parameters are passed through a pointer to a apiUserWebsitesGetRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -905,7 +907,7 @@ Name | Type | Description  | Notes
 
 ## VerifyWebsiteUpdate
 
-> UserWebsiteSummary VerifyWebsiteUpdate(ctx).UserWebsiteVerifyRequest(userWebsiteVerifyRequest).AdAccountId(adAccountId).Execute()
+> UserWebsite VerifyWebsiteUpdate(ctx).UserWebsiteCreate(userWebsiteCreate).AdAccountId(adAccountId).Execute()
 
 Verify website
 
@@ -924,17 +926,17 @@ import (
 )
 
 func main() {
-	userWebsiteVerifyRequest := *openapiclient.NewUserWebsiteVerifyRequest() // UserWebsiteVerifyRequest | Verify a website.
+	userWebsiteCreate := *openapiclient.NewUserWebsiteCreate() // UserWebsiteCreate | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserAccountAPI.VerifyWebsiteUpdate(context.Background()).UserWebsiteVerifyRequest(userWebsiteVerifyRequest).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.UserAccountAPI.VerifyWebsiteUpdate(context.Background()).UserWebsiteCreate(userWebsiteCreate).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserAccountAPI.VerifyWebsiteUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `VerifyWebsiteUpdate`: UserWebsiteSummary
+	// response from `VerifyWebsiteUpdate`: UserWebsite
 	fmt.Fprintf(os.Stdout, "Response from `UserAccountAPI.VerifyWebsiteUpdate`: %v\n", resp)
 }
 ```
@@ -950,12 +952,12 @@ Other parameters are passed through a pointer to a apiVerifyWebsiteUpdateRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md) | Verify a website. | 
+ **userWebsiteCreate** | [**UserWebsiteCreate**](UserWebsiteCreate.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -973,7 +975,7 @@ Name | Type | Description  | Notes
 
 ## WebsiteVerificationGet
 
-> UserWebsiteVerificationCode WebsiteVerificationGet(ctx).AdAccountId(adAccountId).Execute()
+> UserWebsiteVerification WebsiteVerificationGet(ctx).AdAccountId(adAccountId).Execute()
 
 Get user verification code for website claiming
 
@@ -1001,7 +1003,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserAccountAPI.WebsiteVerificationGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `WebsiteVerificationGet`: UserWebsiteVerificationCode
+	// response from `WebsiteVerificationGet`: UserWebsiteVerification
 	fmt.Fprintf(os.Stdout, "Response from `UserAccountAPI.WebsiteVerificationGet`: %v\n", resp)
 }
 ```
@@ -1021,7 +1023,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 

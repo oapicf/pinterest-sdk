@@ -3,10 +3,12 @@ package org.openapitools.client.model
 
 
 case class ItemResponse (
-    _catalogType: CatalogsType,
     _attributes: Option[CatalogsCreativeAssetsAttributes],
+    _catalogType: String,
     /* The catalog item id in the merchant namespace */
     _itemId: Option[String],
+    /* Discriminator literal identifying this leaf inside an `ItemResponse` payload. */
+    _itemResponseKind: String,
     /* The pins mapped to the item */
     _pins: Option[List[Pin]],
     /* The catalog hotel id in the merchant namespace */
@@ -17,10 +19,10 @@ case class ItemResponse (
     _errors: List[ItemValidationEvent]
 )
 object ItemResponse {
-    def toStringBody(var_catalogType: Object, var_attributes: Object, var_itemId: Object, var_pins: Object, var_hotelId: Object, var_creativeAssetsId: Object, var_errors: Object) =
+    def toStringBody(var_attributes: Object, var_catalogType: Object, var_itemId: Object, var_itemResponseKind: Object, var_pins: Object, var_hotelId: Object, var_creativeAssetsId: Object, var_errors: Object) =
         s"""
         | {
-        | "catalogType":$var_catalogType,"attributes":$var_attributes,"itemId":$var_itemId,"pins":$var_pins,"hotelId":$var_hotelId,"creativeAssetsId":$var_creativeAssetsId,"errors":$var_errors
+        | "attributes":$var_attributes,"catalogType":$var_catalogType,"itemId":$var_itemId,"itemResponseKind":$var_itemResponseKind,"pins":$var_pins,"hotelId":$var_hotelId,"creativeAssetsId":$var_creativeAssetsId,"errors":$var_errors
         | }
         """.stripMargin
 }

@@ -7,11 +7,12 @@
 #' @title AdvancedAuctionItemsSubmitUpsertRecord
 #' @description AdvancedAuctionItemsSubmitUpsertRecord Class
 #' @format An \code{R6Class} generator object
+#' @field bid_options  \link{AdvancedAuctionBidOptions}
 #' @field country  \link{Country}
+#' @field errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. list(\link{AdvancedAuctionOperationError}) [optional]
 #' @field item_id The catalog retail item id in the merchant namespace character
 #' @field language  \link{Language}
-#' @field bid_options  \link{AdvancedAuctionBidOptions}
-#' @field errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. list(\link{AdvancedAuctionOperationError}) [optional]
+#' @field operation  character
 #' @field update_mask The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`. list(\link{UpdateMaskBidOptionField})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -19,24 +20,30 @@
 AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
   "AdvancedAuctionItemsSubmitUpsertRecord",
   public = list(
+    `bid_options` = NULL,
     `country` = NULL,
+    `errors` = NULL,
     `item_id` = NULL,
     `language` = NULL,
-    `bid_options` = NULL,
-    `errors` = NULL,
+    `operation` = NULL,
     `update_mask` = NULL,
 
     #' @description
     #' Initialize a new AdvancedAuctionItemsSubmitUpsertRecord class.
     #'
+    #' @param bid_options bid_options
     #' @param country country
     #' @param item_id The catalog retail item id in the merchant namespace
     #' @param language language
-    #' @param bid_options bid_options
+    #' @param operation operation
     #' @param update_mask The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
     #' @param errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
     #' @param ... Other optional arguments.
-    initialize = function(`country`, `item_id`, `language`, `bid_options`, `update_mask`, `errors` = NULL, ...) {
+    initialize = function(`bid_options`, `country`, `item_id`, `language`, `operation`, `update_mask`, `errors` = NULL, ...) {
+      if (!missing(`bid_options`)) {
+        stopifnot(R6::is.R6(`bid_options`))
+        self$`bid_options` <- `bid_options`
+      }
       if (!missing(`country`)) {
         if (!(`country` %in% c())) {
           stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
@@ -57,9 +64,14 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
         stopifnot(R6::is.R6(`language`))
         self$`language` <- `language`
       }
-      if (!missing(`bid_options`)) {
-        stopifnot(R6::is.R6(`bid_options`))
-        self$`bid_options` <- `bid_options`
+      if (!missing(`operation`)) {
+        if (!(`operation` %in% c("UPSERT"))) {
+          stop(paste("Error! \"", `operation`, "\" cannot be assigned to `operation`. Must be \"UPSERT\".", sep = ""))
+        }
+        if (!(is.character(`operation`) && length(`operation`) == 1)) {
+          stop(paste("Error! Invalid data for `operation`. Must be a string:", `operation`))
+        }
+        self$`operation` <- `operation`
       }
       if (!missing(`update_mask`)) {
         stopifnot(is.vector(`update_mask`), length(`update_mask`) != 0)
@@ -104,9 +116,17 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdvancedAuctionItemsSubmitUpsertRecordObject <- list()
+      if (!is.null(self$`bid_options`)) {
+        AdvancedAuctionItemsSubmitUpsertRecordObject[["bid_options"]] <-
+          self$extractSimpleType(self$`bid_options`)
+      }
       if (!is.null(self$`country`)) {
         AdvancedAuctionItemsSubmitUpsertRecordObject[["country"]] <-
-          self$`country`$toSimpleType()
+          self$extractSimpleType(self$`country`)
+      }
+      if (!is.null(self$`errors`)) {
+        AdvancedAuctionItemsSubmitUpsertRecordObject[["errors"]] <-
+          self$extractSimpleType(self$`errors`)
       }
       if (!is.null(self$`item_id`)) {
         AdvancedAuctionItemsSubmitUpsertRecordObject[["item_id"]] <-
@@ -114,21 +134,40 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
       }
       if (!is.null(self$`language`)) {
         AdvancedAuctionItemsSubmitUpsertRecordObject[["language"]] <-
-          self$`language`$toSimpleType()
+          self$extractSimpleType(self$`language`)
       }
-      if (!is.null(self$`bid_options`)) {
-        AdvancedAuctionItemsSubmitUpsertRecordObject[["bid_options"]] <-
-          self$`bid_options`$toSimpleType()
-      }
-      if (!is.null(self$`errors`)) {
-        AdvancedAuctionItemsSubmitUpsertRecordObject[["errors"]] <-
-          lapply(self$`errors`, function(x) x$toSimpleType())
+      if (!is.null(self$`operation`)) {
+        AdvancedAuctionItemsSubmitUpsertRecordObject[["operation"]] <-
+          self$`operation`
       }
       if (!is.null(self$`update_mask`)) {
         AdvancedAuctionItemsSubmitUpsertRecordObject[["update_mask"]] <-
-          lapply(self$`update_mask`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`update_mask`)
       }
       return(AdvancedAuctionItemsSubmitUpsertRecordObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -138,10 +177,18 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
     #' @return the instance of AdvancedAuctionItemsSubmitUpsertRecord
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`bid_options`)) {
+        `bid_options_object` <- AdvancedAuctionBidOptions$new()
+        `bid_options_object`$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
+        self$`bid_options` <- `bid_options_object`
+      }
       if (!is.null(this_object$`country`)) {
         `country_object` <- Country$new()
         `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
         self$`country` <- `country_object`
+      }
+      if (!is.null(this_object$`errors`)) {
+        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AdvancedAuctionOperationError]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`item_id`)) {
         self$`item_id` <- this_object$`item_id`
@@ -151,13 +198,11 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
         `language_object`$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
         self$`language` <- `language_object`
       }
-      if (!is.null(this_object$`bid_options`)) {
-        `bid_options_object` <- AdvancedAuctionBidOptions$new()
-        `bid_options_object`$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
-        self$`bid_options` <- `bid_options_object`
-      }
-      if (!is.null(this_object$`errors`)) {
-        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AdvancedAuctionOperationError]", loadNamespace("openapi"))
+      if (!is.null(this_object$`operation`)) {
+        if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("UPSERT"))) {
+          stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"UPSERT\".", sep = ""))
+        }
+        self$`operation` <- this_object$`operation`
       }
       if (!is.null(this_object$`update_mask`)) {
         self$`update_mask` <- ApiClient$new()$deserializeObj(this_object$`update_mask`, "array[UpdateMaskBidOptionField]", loadNamespace("openapi"))
@@ -183,11 +228,15 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
     #' @return the instance of AdvancedAuctionItemsSubmitUpsertRecord
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`bid_options` <- AdvancedAuctionBidOptions$new()$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AdvancedAuctionOperationError]", loadNamespace("openapi"))
       self$`item_id` <- this_object$`item_id`
       self$`language` <- Language$new()$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
-      self$`bid_options` <- AdvancedAuctionBidOptions$new()$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
-      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AdvancedAuctionOperationError]", loadNamespace("openapi"))
+      if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("UPSERT"))) {
+        stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"UPSERT\".", sep = ""))
+      }
+      self$`operation` <- this_object$`operation`
       self$`update_mask` <- ApiClient$new()$deserializeObj(this_object$`update_mask`, "array[UpdateMaskBidOptionField]", loadNamespace("openapi"))
       self
     },
@@ -198,6 +247,12 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `bid_options`
+      if (!is.null(input_json$`bid_options`)) {
+        stopifnot(R6::is.R6(input_json$`bid_options`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AdvancedAuctionItemsSubmitUpsertRecord: the required field `bid_options` is missing."))
+      }
       # check the required field `country`
       if (!is.null(input_json$`country`)) {
         stopifnot(R6::is.R6(input_json$`country`))
@@ -218,11 +273,13 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AdvancedAuctionItemsSubmitUpsertRecord: the required field `language` is missing."))
       }
-      # check the required field `bid_options`
-      if (!is.null(input_json$`bid_options`)) {
-        stopifnot(R6::is.R6(input_json$`bid_options`))
+      # check the required field `operation`
+      if (!is.null(input_json$`operation`)) {
+        if (!(is.character(input_json$`operation`) && length(input_json$`operation`) == 1)) {
+          stop(paste("Error! Invalid data for `operation`. Must be a string:", input_json$`operation`))
+        }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AdvancedAuctionItemsSubmitUpsertRecord: the required field `bid_options` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for AdvancedAuctionItemsSubmitUpsertRecord: the required field `operation` is missing."))
       }
       # check the required field `update_mask`
       if (!is.null(input_json$`update_mask`)) {
@@ -246,6 +303,11 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `bid_options` is null
+      if (is.null(self$`bid_options`)) {
+        return(FALSE)
+      }
+
       # check if the required `country` is null
       if (is.null(self$`country`)) {
         return(FALSE)
@@ -261,8 +323,8 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `bid_options` is null
-      if (is.null(self$`bid_options`)) {
+      # check if the required `operation` is null
+      if (is.null(self$`operation`)) {
         return(FALSE)
       }
 
@@ -275,6 +337,11 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `bid_options` is null
+      if (is.null(self$`bid_options`)) {
+        invalid_fields["bid_options"] <- "Non-nullable required field `bid_options` cannot be null."
+      }
+
       # check if the required `country` is null
       if (is.null(self$`country`)) {
         invalid_fields["country"] <- "Non-nullable required field `country` cannot be null."
@@ -290,9 +357,9 @@ AdvancedAuctionItemsSubmitUpsertRecord <- R6::R6Class(
         invalid_fields["language"] <- "Non-nullable required field `language` cannot be null."
       }
 
-      # check if the required `bid_options` is null
-      if (is.null(self$`bid_options`)) {
-        invalid_fields["bid_options"] <- "Non-nullable required field `bid_options` cannot be null."
+      # check if the required `operation` is null
+      if (is.null(self$`operation`)) {
+        invalid_fields["operation"] <- "Non-nullable required field `operation` cannot be null."
       }
 
       invalid_fields

@@ -12,7 +12,7 @@ API.Client.UserWebsitesGet200Response = function() {}
 API.Client.UserWebsitesGet200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.UserWebsiteSummary>}
+ * @type {!Array<!API.Client.UserWebsite>}
  * @export
  */
 API.Client.UserWebsitesGet200Response.prototype.items;

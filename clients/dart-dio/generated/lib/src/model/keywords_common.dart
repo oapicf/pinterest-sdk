@@ -15,8 +15,8 @@ part 'keywords_common.g.dart';
 /// * [bid] - </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 /// * [matchType] 
 /// * [value] - Keyword value (120 chars max).
-@BuiltValue(instantiable: false)
-abstract class KeywordsCommon  {
+@BuiltValue()
+abstract class KeywordsCommon implements Built<KeywordsCommon, KeywordsCommonBuilder> {
   /// </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
   @BuiltValueField(wireName: r'bid')
   int? get bid;
@@ -29,13 +29,20 @@ abstract class KeywordsCommon  {
   @BuiltValueField(wireName: r'value')
   String get value;
 
+  KeywordsCommon._();
+
+  factory KeywordsCommon([void updates(KeywordsCommonBuilder b)]) = _$KeywordsCommon;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(KeywordsCommonBuilder b) => b;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<KeywordsCommon> get serializer => _$KeywordsCommonSerializer();
 }
 
 class _$KeywordsCommonSerializer implements PrimitiveSerializer<KeywordsCommon> {
   @override
-  final Iterable<Type> types = const [KeywordsCommon];
+  final Iterable<Type> types = const [KeywordsCommon, _$KeywordsCommon];
 
   @override
   final String wireName = r'KeywordsCommon';
@@ -71,46 +78,6 @@ class _$KeywordsCommonSerializer implements PrimitiveSerializer<KeywordsCommon> 
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  @override
-  KeywordsCommon deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($KeywordsCommon)) as $KeywordsCommon;
-  }
-}
-
-/// a concrete implementation of [KeywordsCommon], since [KeywordsCommon] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $KeywordsCommon implements KeywordsCommon, Built<$KeywordsCommon, $KeywordsCommonBuilder> {
-  $KeywordsCommon._();
-
-  factory $KeywordsCommon([void Function($KeywordsCommonBuilder)? updates]) = _$$KeywordsCommon;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($KeywordsCommonBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$KeywordsCommon> get serializer => _$$KeywordsCommonSerializer();
-}
-
-class _$$KeywordsCommonSerializer implements PrimitiveSerializer<$KeywordsCommon> {
-  @override
-  final Iterable<Type> types = const [$KeywordsCommon, _$$KeywordsCommon];
-
-  @override
-  final String wireName = r'$KeywordsCommon';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $KeywordsCommon object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(KeywordsCommon))!;
   }
 
   void _deserializeProperties(
@@ -157,12 +124,12 @@ class _$$KeywordsCommonSerializer implements PrimitiveSerializer<$KeywordsCommon
   }
 
   @override
-  $KeywordsCommon deserialize(
+  KeywordsCommon deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $KeywordsCommonBuilder();
+    final result = KeywordsCommonBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 PromotionArrayElement::PromotionArrayElement()
 {
-	data = PromotionResponse();
+	data = Promotion();
 	exception = Exception();
 }
 
@@ -34,7 +34,7 @@ PromotionArrayElement::fromJson(std::string jsonObj)
 
 
 
-        PromotionResponse* obj = &data;
+        Promotion* obj = &data;
 		obj->fromJson(value.dump());
 
     }
@@ -80,14 +80,14 @@ PromotionArrayElement::toJson()
 
 }
 
-PromotionResponse
+Promotion
 PromotionArrayElement::getData()
 {
 	return data;
 }
 
 void
-PromotionArrayElement::setData(PromotionResponse  data)
+PromotionArrayElement::setData(Promotion data)
 {
 	this->data = data;
 }
@@ -99,7 +99,7 @@ PromotionArrayElement::getException()
 }
 
 void
-PromotionArrayElement::setException(Exception  exception)
+PromotionArrayElement::setException(Exception exception)
 {
 	this->exception = exception;
 }

@@ -12,18 +12,21 @@ static auth_respond_invites_body_t *auth_respond_invites_body_create_internal(
     if (!auth_respond_invites_body_local_var) {
         return NULL;
     }
-    auth_respond_invites_body_local_var->invites = invites;
-
+    memset(auth_respond_invites_body_local_var, 0, sizeof(auth_respond_invites_body_t));
     auth_respond_invites_body_local_var->_library_owned = 1;
+    auth_respond_invites_body_local_var->invites = invites;
     return auth_respond_invites_body_local_var;
 }
 
 __attribute__((deprecated)) auth_respond_invites_body_t *auth_respond_invites_body_create(
     list_t *invites
     ) {
-    return auth_respond_invites_body_create_internal (
+    auth_respond_invites_body_t *result = auth_respond_invites_body_create_internal (
         invites
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void auth_respond_invites_body_free(auth_respond_invites_body_t *auth_respond_invites_body) {
@@ -37,7 +40,7 @@ void auth_respond_invites_body_free(auth_respond_invites_body_t *auth_respond_in
     listEntry_t *listEntry;
     if (auth_respond_invites_body->invites) {
         list_ForEach(listEntry, auth_respond_invites_body->invites) {
-            auth_respond_invites_body_invites_inner_free(listEntry->data);
+            auth_respond_invites_body_item_free(listEntry->data);
         }
         list_freeList(auth_respond_invites_body->invites);
         auth_respond_invites_body->invites = NULL;
@@ -60,7 +63,7 @@ cJSON *auth_respond_invites_body_convertToJSON(auth_respond_invites_body_t *auth
     listEntry_t *invitesListEntry;
     if (auth_respond_invites_body->invites) {
     list_ForEach(invitesListEntry, auth_respond_invites_body->invites) {
-    cJSON *itemLocal = auth_respond_invites_body_invites_inner_convertToJSON(invitesListEntry->data);
+    cJSON *itemLocal = auth_respond_invites_body_item_convertToJSON(invitesListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -105,22 +108,27 @@ auth_respond_invites_body_t *auth_respond_invites_body_parseFromJSON(cJSON *auth
         if(!cJSON_IsObject(invites_local_nonprimitive)){
             goto end;
         }
-        auth_respond_invites_body_invites_inner_t *invitesItem = auth_respond_invites_body_invites_inner_parseFromJSON(invites_local_nonprimitive);
+        auth_respond_invites_body_item_t *invitesItem = auth_respond_invites_body_item_parseFromJSON(invites_local_nonprimitive);
 
         list_addElement(invitesList, invitesItem);
     }
+
 
 
     auth_respond_invites_body_local_var = auth_respond_invites_body_create_internal (
         invitesList
         );
 
+    if (!auth_respond_invites_body_local_var) {
+        goto end;
+    }
+
     return auth_respond_invites_body_local_var;
 end:
     if (invitesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, invitesList) {
-            auth_respond_invites_body_invites_inner_free(listEntry->data);
+            auth_respond_invites_body_item_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(invitesList);

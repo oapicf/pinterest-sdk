@@ -5,9 +5,9 @@ import org.openapitools.model.ConversionEventResponse
 import org.openapitools.model.ConversionTag
 import org.openapitools.model.ConversionTagCreate
 import org.openapitools.model.ConversionTagsList200Response
-import org.openapitools.model.Error
 import org.openapitools.model.PageVisitConversionTagsGet200Response
 import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PinterestLibPaginationOrder
 
 class ConversionTagsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -21,6 +21,7 @@ class ConversionTagsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -38,7 +39,9 @@ class ConversionTagsApi {
         bodyParams = conversionTagCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     ConversionTag.class )
 
@@ -51,6 +54,7 @@ class ConversionTagsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -66,7 +70,9 @@ class ConversionTagsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     ConversionTag.class )
 
@@ -79,6 +85,7 @@ class ConversionTagsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -93,7 +100,9 @@ class ConversionTagsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     ConversionTagsList200Response.class )
 
@@ -106,6 +115,7 @@ class ConversionTagsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -117,19 +127,22 @@ class ConversionTagsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "map",
                     List.class )
 
     }
 
-    def pageVisitConversionTagsGet ( String adAccountId, Integer pageSize, String order, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def pageVisitConversionTagsGet ( String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/conversion_tags/page_visit"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -137,20 +150,22 @@ class ConversionTagsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
 
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
         }
         if (order != null) {
             queryParams.put("order", order)
         }
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     PageVisitConversionTagsGet200Response.class )
 

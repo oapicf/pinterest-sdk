@@ -6,32 +6,47 @@
 
 
 static notification_response_t *notification_response_create_internal(
-    int success,
-    int received_at,
-    char *error_msg
+    char *error_msg,
+    int *received_at,
+    int *success
     ) {
     notification_response_t *notification_response_local_var = malloc(sizeof(notification_response_t));
     if (!notification_response_local_var) {
         return NULL;
     }
-    notification_response_local_var->success = success;
-    notification_response_local_var->received_at = received_at;
-    notification_response_local_var->error_msg = error_msg;
-
+    memset(notification_response_local_var, 0, sizeof(notification_response_t));
     notification_response_local_var->_library_owned = 1;
+    notification_response_local_var->error_msg = error_msg;
+    notification_response_local_var->received_at = received_at;
+    notification_response_local_var->success = success;
     return notification_response_local_var;
 }
 
 __attribute__((deprecated)) notification_response_t *notification_response_create(
-    int success,
-    int received_at,
-    char *error_msg
+    char *error_msg,
+    int *received_at,
+    int *success
     ) {
-    return notification_response_create_internal (
-        success,
-        received_at,
-        error_msg
+    int *received_at_copy = NULL;
+    if (received_at) {
+        received_at_copy = malloc(sizeof(int));
+        if (received_at_copy) *received_at_copy = *received_at;
+    }
+    int *success_copy = NULL;
+    if (success) {
+        success_copy = malloc(sizeof(int));
+        if (success_copy) *success_copy = *success;
+    }
+    notification_response_t *result = notification_response_create_internal (
+        error_msg,
+        received_at_copy,
+        success_copy
         );
+    if (!result) {
+        free(received_at_copy);
+        free(success_copy);
+    }
+    return result;
 }
 
 void notification_response_free(notification_response_t *notification_response) {
@@ -47,32 +62,40 @@ void notification_response_free(notification_response_t *notification_response) 
         free(notification_response->error_msg);
         notification_response->error_msg = NULL;
     }
+    if (notification_response->received_at) {
+        free(notification_response->received_at);
+        notification_response->received_at = NULL;
+    }
+    if (notification_response->success) {
+        free(notification_response->success);
+        notification_response->success = NULL;
+    }
     free(notification_response);
 }
 
 cJSON *notification_response_convertToJSON(notification_response_t *notification_response) {
     cJSON *item = cJSON_CreateObject();
 
-    // notification_response->success
-    if(notification_response->success) {
-    if(cJSON_AddBoolToObject(item, "success", notification_response->success) == NULL) {
-    goto fail; //Bool
+    // notification_response->error_msg
+    if(notification_response->error_msg) {
+    if(cJSON_AddStringToObject(item, "error_msg", notification_response->error_msg) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // notification_response->received_at
     if(notification_response->received_at) {
-    if(cJSON_AddNumberToObject(item, "received_at", notification_response->received_at) == NULL) {
+    if(cJSON_AddNumberToObject(item, "received_at", *notification_response->received_at) == NULL) {
     goto fail; //Numeric
     }
     }
 
 
-    // notification_response->error_msg
-    if(notification_response->error_msg) {
-    if(cJSON_AddStringToObject(item, "error_msg", notification_response->error_msg) == NULL) {
-    goto fail; //String
+    // notification_response->success
+    if(notification_response->success) {
+    if(cJSON_AddBoolToObject(item, "success", *notification_response->success) == NULL) {
+    goto fail; //Bool
     }
     }
 
@@ -88,29 +111,13 @@ notification_response_t *notification_response_parseFromJSON(cJSON *notification
 
     notification_response_t *notification_response_local_var = NULL;
 
-    // notification_response->success
-    cJSON *success = cJSON_GetObjectItemCaseSensitive(notification_responseJSON, "success");
-    if (cJSON_IsNull(success)) {
-        success = NULL;
-    }
-    if (success) { 
-    if(!cJSON_IsBool(success))
-    {
-    goto end; //Bool
-    }
-    }
+    char *error_msg_local_str = NULL;
 
-    // notification_response->received_at
-    cJSON *received_at = cJSON_GetObjectItemCaseSensitive(notification_responseJSON, "received_at");
-    if (cJSON_IsNull(received_at)) {
-        received_at = NULL;
-    }
-    if (received_at) { 
-    if(!cJSON_IsNumber(received_at))
-    {
-    goto end; //Numeric
-    }
-    }
+    // define the local variable for notification_response->received_at
+    int *received_at_local_var = NULL;
+
+    // define the local variable for notification_response->success
+    int *success_local_var = NULL;
 
     // notification_response->error_msg
     cJSON *error_msg = cJSON_GetObjectItemCaseSensitive(notification_responseJSON, "error_msg");
@@ -124,15 +131,69 @@ notification_response_t *notification_response_parseFromJSON(cJSON *notification
     }
     }
 
+    // notification_response->received_at
+    cJSON *received_at = cJSON_GetObjectItemCaseSensitive(notification_responseJSON, "received_at");
+    if (cJSON_IsNull(received_at)) {
+        received_at = NULL;
+    }
+    if (received_at) { 
+    if(!cJSON_IsNumber(received_at))
+    {
+    goto end; //Numeric
+    }
+    received_at_local_var = malloc(sizeof(int));
+    if(!received_at_local_var)
+    {
+        goto end;
+    }
+    *received_at_local_var = received_at->valuedouble;
+    }
+
+    // notification_response->success
+    cJSON *success = cJSON_GetObjectItemCaseSensitive(notification_responseJSON, "success");
+    if (cJSON_IsNull(success)) {
+        success = NULL;
+    }
+    if (success) { 
+    if(!cJSON_IsBool(success))
+    {
+    goto end; //Bool
+    }
+    success_local_var = malloc(sizeof(int));
+    if(!success_local_var)
+    {
+        goto end;
+    }
+    *success_local_var = success->valueint;
+    }
+
+
+    if (error_msg && !cJSON_IsNull(error_msg)) error_msg_local_str = strdup(error_msg->valuestring);
 
     notification_response_local_var = notification_response_create_internal (
-        success ? success->valueint : 0,
-        received_at ? received_at->valuedouble : 0,
-        error_msg && !cJSON_IsNull(error_msg) ? strdup(error_msg->valuestring) : NULL
+        error_msg_local_str,
+        received_at_local_var,
+        success_local_var
         );
+
+    if (!notification_response_local_var) {
+        goto end;
+    }
 
     return notification_response_local_var;
 end:
+    if (error_msg_local_str) {
+        free(error_msg_local_str);
+        error_msg_local_str = NULL;
+    }
+    if (received_at_local_var) {
+        free(received_at_local_var);
+        received_at_local_var = NULL;
+    }
+    if (success_local_var) {
+        free(success_local_var);
+        success_local_var = NULL;
+    }
     return NULL;
 
 }

@@ -10,18 +10,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdResponse;
+import org.openapitools.model.Ad;
 
 /**
  * AdsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdsList200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
-  private List<@Valid AdResponse> items = new ArrayList<>();
+  private List<@Valid Ad> items = new ArrayList<>();
 
   public AdsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -41,12 +41,12 @@ public class AdsList200Response   {
     this.bookmark = bookmark;
   }
 
-  public AdsList200Response items(List<@Valid AdResponse> items) {
+  public AdsList200Response items(List<@Valid Ad> items) {
     this.items = items;
     return this;
   }
 
-  public AdsList200Response addItemsItem(AdResponse itemsItem) {
+  public AdsList200Response addItemsItem(Ad itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -56,11 +56,11 @@ public class AdsList200Response   {
    * @return items
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<@Valid AdResponse> getItems() {
+  public List<@Valid Ad> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid AdResponse> items) {
+  public void setItems(List<@Valid Ad> items) {
     this.items = items;
   }
 
@@ -99,10 +99,7 @@ public class AdsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -15,7 +15,7 @@ class VideoMetadataWithItemType(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, cover_image_url: str=None, duration: float=None, height: int=None, item_type: str=None, video_url: str=None, width: int=None):  # noqa: E501
+    def __init__(self, cover_image_url: str=None, duration: float=None, height: int=None, item_type: str=None, video_url: str=None, video_url_hls: str=None, width: int=None):  # noqa: E501
         """VideoMetadataWithItemType - a model defined in Swagger
 
         :param cover_image_url: The cover_image_url of this VideoMetadataWithItemType.  # noqa: E501
@@ -28,6 +28,8 @@ class VideoMetadataWithItemType(Model):
         :type item_type: str
         :param video_url: The video_url of this VideoMetadataWithItemType.  # noqa: E501
         :type video_url: str
+        :param video_url_hls: The video_url_hls of this VideoMetadataWithItemType.  # noqa: E501
+        :type video_url_hls: str
         :param width: The width of this VideoMetadataWithItemType.  # noqa: E501
         :type width: int
         """
@@ -37,6 +39,7 @@ class VideoMetadataWithItemType(Model):
             'height': int,
             'item_type': str,
             'video_url': str,
+            'video_url_hls': str,
             'width': int
         }
 
@@ -46,6 +49,7 @@ class VideoMetadataWithItemType(Model):
             'height': 'height',
             'item_type': 'item_type',
             'video_url': 'video_url',
+            'video_url_hls': 'video_url_hls',
             'width': 'width'
         }
 
@@ -54,6 +58,7 @@ class VideoMetadataWithItemType(Model):
         self._height = height
         self._item_type = item_type
         self._video_url = video_url
+        self._video_url_hls = video_url_hls
         self._width = width
 
     @classmethod
@@ -138,6 +143,7 @@ class VideoMetadataWithItemType(Model):
     def item_type(self) -> str:
         """Gets the item_type of this VideoMetadataWithItemType.
 
+        Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.  # noqa: E501
 
         :return: The item_type of this VideoMetadataWithItemType.
         :rtype: str
@@ -148,10 +154,17 @@ class VideoMetadataWithItemType(Model):
     def item_type(self, item_type: str):
         """Sets the item_type of this VideoMetadataWithItemType.
 
+        Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.  # noqa: E501
 
         :param item_type: The item_type of this VideoMetadataWithItemType.
         :type item_type: str
         """
+        allowed_values = ["video"]  # noqa: E501
+        if item_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `item_type` ({0}), must be one of {1}"
+                .format(item_type, allowed_values)
+            )
 
         self._item_type = item_type
 
@@ -177,6 +190,29 @@ class VideoMetadataWithItemType(Model):
         """
 
         self._video_url = video_url
+
+    @property
+    def video_url_hls(self) -> str:
+        """Gets the video_url_hls of this VideoMetadataWithItemType.
+
+        Video url (HLS).  **Note:** This field is limited and not available to all apps.  # noqa: E501
+
+        :return: The video_url_hls of this VideoMetadataWithItemType.
+        :rtype: str
+        """
+        return self._video_url_hls
+
+    @video_url_hls.setter
+    def video_url_hls(self, video_url_hls: str):
+        """Sets the video_url_hls of this VideoMetadataWithItemType.
+
+        Video url (HLS).  **Note:** This field is limited and not available to all apps.  # noqa: E501
+
+        :param video_url_hls: The video_url_hls of this VideoMetadataWithItemType.
+        :type video_url_hls: str
+        """
+
+        self._video_url_hls = video_url_hls
 
     @property
     def width(self) -> int:

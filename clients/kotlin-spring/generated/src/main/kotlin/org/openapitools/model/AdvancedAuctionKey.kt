@@ -26,14 +26,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AdvancedAuctionKey(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("country")
     @get:JsonProperty("country", required = true) val country: Country,
 
     @Schema(example = "DS0294-M", required = true, description = "The catalog retail item id in the merchant namespace")
+    @param:JsonProperty("item_id")
     @get:JsonProperty("item_id", required = true) val itemId: kotlin.String,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("language")
     @get:JsonProperty("language", required = true) val language: Language
 ) {
 

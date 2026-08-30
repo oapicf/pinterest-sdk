@@ -16,7 +16,7 @@
         "type": "array",
         "items": "model.CatalogsProduct"
       },
-      "doc": "Pins"
+      "doc": ""
     }
   ]
 

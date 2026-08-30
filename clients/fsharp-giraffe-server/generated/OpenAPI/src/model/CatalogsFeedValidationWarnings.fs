@@ -7,9 +7,6 @@ module CatalogsFeedValidationWarnings =
 
   //#region CatalogsFeedValidationWarnings
 
-  //#region enums
-  type FETCHSAMESIGNATUREEnum = _1Enum of int  
-  //#endregion
 
   type CatalogsFeedValidationWarnings = {
     ADIMAGE0LINKDUPLICATED : int;
@@ -187,7 +184,7 @@ module CatalogsFeedValidationWarnings =
     DESCRIPTION_LENGTH_TOO_LONG : int;
     DUPLICATE_HEADERS : int;
     EXPIRATION_DATE_INVALID : int;
-    FETCH_SAME_SIGNATURE : FETCHSAMESIGNATUREEnum;
+    FETCH_SAME_SIGNATURE : int;
     GENDER_INVALID : int;
     GTIN_INVALID : int;
     IMAGE_LINK_WARNING : int;

@@ -3,7 +3,6 @@ package apimodels;
 import apimodels.CatalogsCreativeAssetsItemsPostFilter;
 import apimodels.CatalogsHotelItemsPostFilter;
 import apimodels.CatalogsRetailItemsPostFilter;
-import apimodels.CatalogsType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -19,19 +18,47 @@ import javax.validation.Valid;
 /**
  * CatalogsItemsPostFilters
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemsPostFilters   {
-  @JsonProperty("catalog_type")
-  @NotNull
-@Valid
-
-  private CatalogsType catalogType;
-
   @JsonProperty("catalog_id")
   @Pattern(regexp="^\\d+$")
 
   private String catalogId;
+
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("catalog_type")
+  @NotNull
+
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("item_ids")
   @NotNull
@@ -51,23 +78,6 @@ public class CatalogsItemsPostFilters   {
 
   private List<String> creativeAssetsIds = new ArrayList<>();
 
-  public CatalogsItemsPostFilters catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Get catalogType
-   * @return catalogType
-  **/
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
   public CatalogsItemsPostFilters catalogId(String catalogId) {
     this.catalogId = catalogId;
     return this;
@@ -83,6 +93,23 @@ public class CatalogsItemsPostFilters   {
 
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+  public CatalogsItemsPostFilters catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+   /**
+   * Get catalogType
+   * @return catalogType
+  **/
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsItemsPostFilters itemIds(List<String> itemIds) {
@@ -170,8 +197,8 @@ public class CatalogsItemsPostFilters   {
       return false;
     }
     CatalogsItemsPostFilters catalogsItemsPostFilters = (CatalogsItemsPostFilters) o;
-    return Objects.equals(catalogType, catalogsItemsPostFilters.catalogType) &&
-        Objects.equals(catalogId, catalogsItemsPostFilters.catalogId) &&
+    return Objects.equals(catalogId, catalogsItemsPostFilters.catalogId) &&
+        Objects.equals(catalogType, catalogsItemsPostFilters.catalogType) &&
         Objects.equals(itemIds, catalogsItemsPostFilters.itemIds) &&
         Objects.equals(hotelIds, catalogsItemsPostFilters.hotelIds) &&
         Objects.equals(creativeAssetsIds, catalogsItemsPostFilters.creativeAssetsIds);
@@ -179,7 +206,7 @@ public class CatalogsItemsPostFilters   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, itemIds, hotelIds, creativeAssetsIds);
+    return Objects.hash(catalogId, catalogType, itemIds, hotelIds, creativeAssetsIds);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -188,8 +215,8 @@ public class CatalogsItemsPostFilters   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsPostFilters {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
@@ -202,10 +229,7 @@ public class CatalogsItemsPostFilters   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

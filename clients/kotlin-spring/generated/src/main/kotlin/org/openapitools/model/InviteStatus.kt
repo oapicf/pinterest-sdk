@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The current status of the invite.
+* The current status of an invite or request.
 * Values: PENDING,ACCEPTED,DECLINED,CANCELLED,EXPIRED
 */
 enum class InviteStatus(@get:JsonValue val value: kotlin.String) {

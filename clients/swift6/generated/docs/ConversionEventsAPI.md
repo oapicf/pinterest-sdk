@@ -1,0 +1,63 @@
+# ConversionEventsAPI
+
+All URIs are relative to *https://api.pinterest.com/v5*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**eventsCreate**](ConversionEventsAPI.md#eventscreate) | **POST** /ad_accounts/{ad_account_id}/events | Send conversions
+
+
+# **eventsCreate**
+```swift
+    open class func eventsCreate(adAccountId: String, conversionEventsCreate: ConversionEventsCreate, test: Bool? = nil, completion: @escaping (_ data: ConversionEvents?, _ error: Error?) -> Void)
+```
+
+Send conversions
+
+The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their `ad_account_id`. The request body should be a JSON object. - This endpoint requires an `access_token` be generated through Ads Manager. Review the [Conversions Guide](/docs/api-features/conversion-overview/) for more details. (Note that the authorization header required is `Authorization: Bearer <access_token>`). - The token's `user_account` must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
+let conversionEventsCreate = ConversionEventsCreate(data: [ConversionEventsDataItems(actionSource: "actionSource_example", appId: "appId_example", appInfo: ConversionEventAppInfo(appId: "appId_example", appName: "appName_example", appPackageName: "appPackageName_example", appStore: "appStore_example", appVersion: "appVersion_example", installTime: 123, userAgent: "userAgent_example", windowHeight: 123, windowWidth: 123), appName: "appName_example", appVersion: "appVersion_example", customData: ConversionEventsDataItemsCustomData(contentBrand: "contentBrand_example", contentCategory: "contentCategory_example", contentIds: ["contentIds_example"], contentName: "contentName_example", contents: [ConversionEventsDataItemsCustomDataContentsItems(id: "id_example", itemBrand: "itemBrand_example", itemBrandId: "itemBrandId_example", itemCategory: "itemCategory_example", itemName: "itemName_example", itemPrice: "itemPrice_example", quantity: 123)], currency: "currency_example", externalMeasurementId: "externalMeasurementId_example", externalMeasurementVendorId: 123, np: "np_example", numItems: 123, optOutType: "optOutType_example", orderId: "orderId_example", predictedLtv: "predictedLtv_example", searchString: "searchString_example", value: "value_example"), deviceBrand: "deviceBrand_example", deviceCarrier: "deviceCarrier_example", deviceInfo: ConversionEventDeviceInfo(batteryLevel: 123, brand: "brand_example", carrier: "carrier_example", cpuCores: 123, externalStorageFreeSpace: 123, externalStorageSize: 123, formFactor: FormFactor(), kernelVersion: "kernelVersion_example", languages: ["languages_example"], locale: "locale_example", model: "model_example", networkType: NetworkType(), osFamily: OsFamily(), osName: "osName_example", osReleaseName: "osReleaseName_example", osVersion: "osVersion_example", screenDensity: 123, screenHeight: 123, screenWidth: 123, storageFreeSpace: 123, storageSize: 123, timezone: "timezone_example", timezoneAbbr: "timezoneAbbr_example", type: "type_example"), deviceModel: "deviceModel_example", deviceType: "deviceType_example", eventId: "eventId_example", eventName: "eventName_example", eventSourceUrl: "eventSourceUrl_example", eventTime: 123, language: "language_example", optOut: false, osVersion: "osVersion_example", partnerName: "partnerName_example", userData: ConversionEventsUserDataProperties(clickId: "clickId_example", clientIpAddress: "clientIpAddress_example", clientUserAgent: "clientUserAgent_example", country: ["country_example"], ct: ["ct_example"], db: ["db_example"], em: ["em_example"], externalId: ["externalId_example"], fn: ["fn_example"], ge: ["ge_example"], hashedMaids: ["hashedMaids_example"], ln: ["ln_example"], partnerId: "partnerId_example", ph: ["ph_example"], st: ["st_example"], zp: ["zp_example"]), wifi: false)]) // ConversionEventsCreate | 
+let test = true // Bool | Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request. (optional)
+
+// Send conversions
+ConversionEventsAPI.eventsCreate(adAccountId: adAccountId, conversionEventsCreate: conversionEventsCreate, test: test) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String** | Unique identifier of an ad account. | 
+ **conversionEventsCreate** | [**ConversionEventsCreate**](ConversionEventsCreate.md) |  | 
+ **test** | **Bool** | Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request. | [optional] 
+
+### Return type
+
+[**ConversionEvents**](ConversionEvents.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2), [conversion_token](../README.md#conversion_token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

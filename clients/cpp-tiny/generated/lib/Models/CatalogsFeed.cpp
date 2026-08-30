@@ -6,20 +6,20 @@ using namespace Tiny;
 
 CatalogsFeed::CatalogsFeed()
 {
+	catalog_type = std::string();
 	created_at = std::string();
-	id = std::string();
-	updated_at = std::string();
-	catalog_type = CatalogsType();
 	credentials = CatalogsFeedCredentials();
 	default_availability = ProductAvailabilityType();
 	default_country = Country();
 	default_currency = NullableCurrency();
 	default_locale = std::string();
 	format = CatalogsFormat();
+	id = std::string();
 	location = std::string();
 	name = std::string();
 	preferred_processing_schedule = CatalogsFeedProcessingSchedule();
 	status = CatalogsStatus();
+	updated_at = std::string();
 	catalog_id = std::string();
 }
 
@@ -38,6 +38,19 @@ CatalogsFeed::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
+    const char *catalog_typeKey = "catalog_type";
+
+    if(object.has_key(catalog_typeKey))
+    {
+        bourne::json value = object[catalog_typeKey];
+
+
+
+        jsonToValue(&catalog_type, value, "std::string");
+
+
+    }
+
     const char *created_atKey = "created_at";
 
     if(object.has_key(created_atKey))
@@ -48,46 +61,6 @@ CatalogsFeed::fromJson(std::string jsonObj)
 
         jsonToValue(&created_at, value, "std::string");
 
-
-    }
-
-    const char *idKey = "id";
-
-    if(object.has_key(idKey))
-    {
-        bourne::json value = object[idKey];
-
-
-
-        jsonToValue(&id, value, "std::string");
-
-
-    }
-
-    const char *updated_atKey = "updated_at";
-
-    if(object.has_key(updated_atKey))
-    {
-        bourne::json value = object[updated_atKey];
-
-
-
-        jsonToValue(&updated_at, value, "std::string");
-
-
-    }
-
-    const char *catalog_typeKey = "catalog_type";
-
-    if(object.has_key(catalog_typeKey))
-    {
-        bourne::json value = object[catalog_typeKey];
-
-
-
-
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -174,6 +147,19 @@ CatalogsFeed::fromJson(std::string jsonObj)
 
     }
 
+    const char *idKey = "id";
+
+    if(object.has_key(idKey))
+    {
+        bourne::json value = object[idKey];
+
+
+
+        jsonToValue(&id, value, "std::string");
+
+
+    }
+
     const char *locationKey = "location";
 
     if(object.has_key(locationKey))
@@ -228,6 +214,19 @@ CatalogsFeed::fromJson(std::string jsonObj)
 
     }
 
+    const char *updated_atKey = "updated_at";
+
+    if(object.has_key(updated_atKey))
+    {
+        bourne::json value = object[updated_atKey];
+
+
+
+        jsonToValue(&updated_at, value, "std::string");
+
+
+    }
+
     const char *catalog_idKey = "catalog_id";
 
     if(object.has_key(catalog_idKey))
@@ -253,29 +252,15 @@ CatalogsFeed::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
+
+
+
+
+
+
     object["created_at"] = getCreatedAt();
 
-
-
-
-
-
-    object["id"] = getId();
-
-
-
-
-
-
-    object["updated_at"] = getUpdatedAt();
-
-
-
-
-
-
-
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -323,6 +308,13 @@ CatalogsFeed::toJson()
 
 
 
+    object["id"] = getId();
+
+
+
+
+
+
     object["location"] = getLocation();
 
 
@@ -351,6 +343,13 @@ CatalogsFeed::toJson()
 
 
 
+    object["updated_at"] = getUpdatedAt();
+
+
+
+
+
+
     object["catalog_id"] = getCatalogId();
 
 
@@ -360,51 +359,27 @@ CatalogsFeed::toJson()
 }
 
 std::string
-CatalogsFeed::getCreatedAt()
-{
-	return created_at;
-}
-
-void
-CatalogsFeed::setCreatedAt(std::string  created_at)
-{
-	this->created_at = created_at;
-}
-
-std::string
-CatalogsFeed::getId()
-{
-	return id;
-}
-
-void
-CatalogsFeed::setId(std::string  id)
-{
-	this->id = id;
-}
-
-std::string
-CatalogsFeed::getUpdatedAt()
-{
-	return updated_at;
-}
-
-void
-CatalogsFeed::setUpdatedAt(std::string  updated_at)
-{
-	this->updated_at = updated_at;
-}
-
-CatalogsType
 CatalogsFeed::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsFeed::setCatalogType(CatalogsType  catalog_type)
+CatalogsFeed::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
+}
+
+std::string
+CatalogsFeed::getCreatedAt()
+{
+	return created_at;
+}
+
+void
+CatalogsFeed::setCreatedAt(std::string created_at)
+{
+	this->created_at = created_at;
 }
 
 CatalogsFeedCredentials
@@ -414,7 +389,7 @@ CatalogsFeed::getCredentials()
 }
 
 void
-CatalogsFeed::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsFeed::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -426,7 +401,7 @@ CatalogsFeed::getDefaultAvailability()
 }
 
 void
-CatalogsFeed::setDefaultAvailability(ProductAvailabilityType  default_availability)
+CatalogsFeed::setDefaultAvailability(ProductAvailabilityType default_availability)
 {
 	this->default_availability = default_availability;
 }
@@ -438,7 +413,7 @@ CatalogsFeed::getDefaultCountry()
 }
 
 void
-CatalogsFeed::setDefaultCountry(Country  default_country)
+CatalogsFeed::setDefaultCountry(Country default_country)
 {
 	this->default_country = default_country;
 }
@@ -450,7 +425,7 @@ CatalogsFeed::getDefaultCurrency()
 }
 
 void
-CatalogsFeed::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsFeed::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
@@ -462,7 +437,7 @@ CatalogsFeed::getDefaultLocale()
 }
 
 void
-CatalogsFeed::setDefaultLocale(std::string  default_locale)
+CatalogsFeed::setDefaultLocale(std::string default_locale)
 {
 	this->default_locale = default_locale;
 }
@@ -474,9 +449,21 @@ CatalogsFeed::getFormat()
 }
 
 void
-CatalogsFeed::setFormat(CatalogsFormat  format)
+CatalogsFeed::setFormat(CatalogsFormat format)
 {
 	this->format = format;
+}
+
+std::string
+CatalogsFeed::getId()
+{
+	return id;
+}
+
+void
+CatalogsFeed::setId(std::string id)
+{
+	this->id = id;
 }
 
 std::string
@@ -486,7 +473,7 @@ CatalogsFeed::getLocation()
 }
 
 void
-CatalogsFeed::setLocation(std::string  location)
+CatalogsFeed::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -498,7 +485,7 @@ CatalogsFeed::getName()
 }
 
 void
-CatalogsFeed::setName(std::string  name)
+CatalogsFeed::setName(std::string name)
 {
 	this->name = name;
 }
@@ -510,7 +497,7 @@ CatalogsFeed::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsFeed::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsFeed::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -522,9 +509,21 @@ CatalogsFeed::getStatus()
 }
 
 void
-CatalogsFeed::setStatus(CatalogsStatus  status)
+CatalogsFeed::setStatus(CatalogsStatus status)
 {
 	this->status = status;
+}
+
+std::string
+CatalogsFeed::getUpdatedAt()
+{
+	return updated_at;
+}
+
+void
+CatalogsFeed::setUpdatedAt(std::string updated_at)
+{
+	this->updated_at = updated_at;
 }
 
 std::string
@@ -534,7 +533,7 @@ CatalogsFeed::getCatalogId()
 }
 
 void
-CatalogsFeed::setCatalogId(std::string  catalog_id)
+CatalogsFeed::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }

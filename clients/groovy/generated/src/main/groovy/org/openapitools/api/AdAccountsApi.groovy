@@ -2,22 +2,24 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.AdAccount
-import org.openapitools.model.AdAccountAnalyticsResponseInner
+import org.openapitools.model.AdAccountAnalyticsItems
 import org.openapitools.model.AdAccountCreate
 import org.openapitools.model.AdAccountsList200Response
+import org.openapitools.model.AdsAnalyticsAccountTargetingType
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse
-import org.openapitools.model.AdsAnalyticsTargetingType
-import org.openapitools.model.ConversionProductReportRequest
+import java.math.BigDecimal
+import org.openapitools.model.ConversionProductReport
+import org.openapitools.model.ConversionProductReportCreate
 import org.openapitools.model.ConversionReportAttributionType
-import org.openapitools.model.CreateMMMReportRequest
-import org.openapitools.model.CreateMMMReportResponse
-import org.openapitools.model.Error
-import org.openapitools.model.GetMMMReportResponse
 import org.openapitools.model.Granularity
+import org.openapitools.model.MMMReport
+import org.openapitools.model.MMMReportCreate
 import org.openapitools.model.MetricsResponse
 import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PinterestLibPaginationOrder
+import org.openapitools.model.ReportingColumnSync
 import org.openapitools.model.ReportingTimeZone
 import org.openapitools.model.TemplateBasedReport
 import org.openapitools.model.TemplatesList200Response
@@ -27,19 +29,16 @@ class AdAccountsApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def adAccountAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
+    def adAccountAnalytics ( Date startDate, Date endDate, List<ReportingColumnSync> columns, Granularity granularity, String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/analytics"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
-        // verify required params are set
-        if (adAccountId == null) {
-            throw new RuntimeException("missing required params adAccountId")
-        }
         // verify required params are set
         if (startDate == null) {
             throw new RuntimeException("missing required params startDate")
@@ -55,6 +54,10 @@ class AdAccountsApi {
         // verify required params are set
         if (granularity == null) {
             throw new RuntimeException("missing required params granularity")
+        }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
         }
 
         if (startDate != null) {
@@ -88,19 +91,22 @@ class AdAccountsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "array",
-                    AdAccountAnalyticsResponseInner.class )
+                    AdAccountAnalyticsItems.class )
 
     }
 
-    def adAccountTargetingAnalyticsGet ( String adAccountId, Date startDate, Date endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
+    def adAccountTargetingAnalyticsGet ( String adAccountId, Date startDate, Date endDate, List<AdsAnalyticsAccountTargetingType> targetingTypes, List<ReportingColumnSync> columns, Granularity granularity, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/targeting_analytics"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -165,7 +171,9 @@ class AdAccountsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     MetricsResponse.class )
 
@@ -178,6 +186,7 @@ class AdAccountsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -191,7 +200,9 @@ class AdAccountsApi {
         bodyParams = adAccountCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     AdAccount.class )
 
@@ -204,6 +215,7 @@ class AdAccountsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -215,7 +227,9 @@ class AdAccountsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     AdAccount.class )
 
@@ -228,6 +242,7 @@ class AdAccountsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
@@ -244,19 +259,22 @@ class AdAccountsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     AdAccountsList200Response.class )
 
     }
 
-    def analyticsCreateConversionProductReport ( String adAccountId, ConversionProductReportRequest conversionProductReportRequest, Closure onSuccess, Closure onFailure)  {
+    def analyticsCreateConversionProductReport ( String adAccountId, ConversionProductReportCreate conversionProductReportCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/reports/brand_category_sku"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -264,29 +282,32 @@ class AdAccountsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (conversionProductReportRequest == null) {
-            throw new RuntimeException("missing required params conversionProductReportRequest")
+        if (conversionProductReportCreate == null) {
+            throw new RuntimeException("missing required params conversionProductReportCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = conversionProductReportRequest
+        bodyParams = conversionProductReportCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    AdsAnalyticsCreateAsyncResponse.class )
+                    ConversionProductReport.class )
 
     }
 
-    def analyticsCreateMmmReport ( String adAccountId, CreateMMMReportRequest createMMMReportRequest, Closure onSuccess, Closure onFailure)  {
+    def analyticsCreateMmmReport ( String adAccountId, MMMReportCreate mmMReportCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/mmm_reports"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -294,19 +315,21 @@ class AdAccountsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (createMMMReportRequest == null) {
-            throw new RuntimeException("missing required params createMMMReportRequest")
+        if (mmMReportCreate == null) {
+            throw new RuntimeException("missing required params mmMReportCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = createMMMReportRequest
+        bodyParams = mmMReportCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    CreateMMMReportResponse.class )
+                    MMMReport.class )
 
     }
 
@@ -317,6 +340,7 @@ class AdAccountsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -334,7 +358,9 @@ class AdAccountsApi {
         bodyParams = adsAnalyticsCreateAsyncRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     AdsAnalyticsCreateAsyncResponse.class )
 
@@ -347,6 +373,7 @@ class AdAccountsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -371,7 +398,9 @@ class AdAccountsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     TemplateBasedReport.class )
 
@@ -384,6 +413,7 @@ class AdAccountsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -402,9 +432,11 @@ class AdAccountsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    AdsAnalyticsGetAsyncResponse.class )
+                    ConversionProductReport.class )
 
     }
 
@@ -415,6 +447,7 @@ class AdAccountsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -433,9 +466,11 @@ class AdAccountsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    GetMMMReportResponse.class )
+                    MMMReport.class )
 
     }
 
@@ -446,6 +481,7 @@ class AdAccountsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -464,7 +500,9 @@ class AdAccountsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     AdsAnalyticsGetAsyncResponse.class )
 
@@ -477,6 +515,7 @@ class AdAccountsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -488,19 +527,22 @@ class AdAccountsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
                     String.class )
 
     }
 
-    def templatesList ( String adAccountId, Integer pageSize, String order, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def templatesList ( String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/templates"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -508,20 +550,22 @@ class AdAccountsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
 
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
         }
         if (order != null) {
             queryParams.put("order", order)
         }
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     TemplatesList200Response.class )
 

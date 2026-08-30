@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria  cOUNTRY);
+	void setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria cOUNTRY);
 
 
     private:

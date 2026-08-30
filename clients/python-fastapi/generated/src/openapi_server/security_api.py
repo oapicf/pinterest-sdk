@@ -78,39 +78,6 @@ def validate_scope_pinterest_oauth2(
     return False
 
 
-bearer_auth = HTTPBearer()
-
-
-def get_token_conversion_token(credentials: HTTPAuthorizationCredentials = Depends(bearer_auth)) -> TokenModel:
-    """
-    Check and retrieve authentication information from custom bearer token.
-
-    :param credentials Credentials provided by Authorization header
-    :type credentials: HTTPAuthorizationCredentials
-    :return: Decoded token information or None if token is invalid
-    :rtype: TokenModel | None
-    """
-
-    ...
-
-
-basic_auth = HTTPBasic()
-
-
-def get_token_basic(
-    credentials: HTTPBasicCredentials = Depends(basic_auth)
-) -> TokenModel:
-    """
-    Check and retrieve authentication information from basic auth.
-
-    :param credentials Credentials provided by Authorization header
-    :type credentials: HTTPBasicCredentials
-    :rtype: TokenModel | None
-    """
-
-    ...
-
-
 
 def get_token_client_credentials(
     security_scopes: SecurityScopes, token: str = Depends(oauth2_)
@@ -142,4 +109,37 @@ def validate_scope_client_credentials(
     """
 
     return False
+
+
+bearer_auth = HTTPBearer()
+
+
+def get_token_conversion_token(credentials: HTTPAuthorizationCredentials = Depends(bearer_auth)) -> TokenModel:
+    """
+    Check and retrieve authentication information from custom bearer token.
+
+    :param credentials Credentials provided by Authorization header
+    :type credentials: HTTPAuthorizationCredentials
+    :return: Decoded token information or None if token is invalid
+    :rtype: TokenModel | None
+    """
+
+    ...
+
+
+basic_auth = HTTPBasic()
+
+
+def get_token_basic(
+    credentials: HTTPBasicCredentials = Depends(basic_auth)
+) -> TokenModel:
+    """
+    Check and retrieve authentication information from basic auth.
+
+    :param credentials Credentials provided by Authorization header
+    :type credentials: HTTPBasicCredentials
+    :rtype: TokenModel | None
+    """
+
+    ...
 

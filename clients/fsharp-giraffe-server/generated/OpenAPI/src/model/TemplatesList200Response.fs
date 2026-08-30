@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.TemplateResponse
+open OpenAPI.Model.AccountTemplate
 open OpenAPI.Model.string option
 
 module TemplatesList200Response =
@@ -12,6 +12,6 @@ module TemplatesList200Response =
 
   type templates_list_200_response = {
     Bookmark : string option;
-    Items : TemplateResponse[];
+    Items : AccountTemplate[];
   }
   //#endregion

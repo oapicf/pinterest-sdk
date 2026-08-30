@@ -7,18 +7,20 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  AdAdsAnalyticsAsyncTargetingTypes = openapi_server.resourceTypes.AdAdsAnalyticsAsyncTargetingTypes
   AdGroupSummaryStatus = openapi_server.resourceTypes.AdGroupSummaryStatus
-  AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics = openapi_server.resourceTypes.AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
   AdsAnalyticsMetricsFilter = openapi_server.resourceTypes.AdsAnalyticsMetricsFilter
+  CampaignObjectiveType = openapi_server.resourceTypes.CampaignObjectiveType
   CampaignSummaryStatus = openapi_server.resourceTypes.CampaignSummaryStatus
   ConversionAttributionWindowDays = openapi_server.resourceTypes.ConversionAttributionWindowDays
   ConversionReportAttributionType = openapi_server.resourceTypes.ConversionReportAttributionType
   ConversionReportTimeType = openapi_server.resourceTypes.ConversionReportTimeType
+  CustomConversionEventMetrics = openapi_server.resourceTypes.CustomConversionEventMetrics
   DataOutputFormat = openapi_server.resourceTypes.DataOutputFormat
   Granularity = openapi_server.resourceTypes.Granularity
   MetricsReportingLevel = openapi_server.resourceTypes.MetricsReportingLevel
-  ObjectiveType = openapi_server.resourceTypes.ObjectiveType
   PinPromotionSummaryStatus = openapi_server.resourceTypes.PinPromotionSummaryStatus
+  PrimarySort = openapi_server.resourceTypes.PrimarySort
   ProductGroupSummaryStatus = openapi_server.resourceTypes.ProductGroupSummaryStatus
   ReportingColumnAsync = openapi_server.resourceTypes.ReportingColumnAsync
   ReportingTimeZone = openapi_server.resourceTypes.ReportingTimeZone
@@ -31,70 +33,6 @@ resourceTypes {
     description = AdsAnalyticsCreateAsyncRequest
     derivedFrom = Root
     properties {
-        attribution_types {
-          type = array
-          items.type = ConversionReportAttributionType
-          description = "List of types of attribution for the conversion report"
-          optional = false
-        }
-        click_window_days {
-          type = ConversionAttributionWindowDays
-          description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days."
-          optional = false
-        }
-        conversion_report_time {
-          type = ConversionReportTimeType
-          description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
-          optional = false
-        }
-        end_date {
-          type =  string
-          description = "Metric report end date (UTC). Format: YYYY-MM-DD"
-          optional = true
-        }
-        engagement_window_days {
-          type = ConversionAttributionWindowDays
-          description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days."
-          optional = false
-        }
-        granularity {
-          type = Granularity
-          description = "TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
-          optional = true
-        }
-        start_date {
-          type =  string
-          description = "Metric report start date (UTC). Format: YYYY-MM-DD"
-          optional = true
-        }
-        view_window_days {
-          type = ConversionAttributionWindowDays
-          description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day."
-          optional = false
-        }
-        campaign_ids {
-          type = array
-          items.type =  string
-          description = "List of campaign ids"
-          optional = false
-        }
-        campaign_statuses {
-          type = array
-          items.type = CampaignSummaryStatus
-          description = "List of status values for filtering"
-          optional = false
-        }
-        campaign_objective_types {
-          type = array
-          items.type = ObjectiveType
-          description = "List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] in BETA."
-          optional = false
-        }
-        campaign_brand_label {
-          type =  string
-          description = "Campaign brand label for filtering."
-          optional = false
-        }
         ad_group_ids {
           type = array
           items.type =  string
@@ -110,13 +48,110 @@ resourceTypes {
         ad_ids {
           type = array
           items.type =  string
-          description = "List of ad ids [This parameter is no supported for Product Item Level Reports]"
+          description = "List of ad ids. This parameter is not supported for Product Item level reports."
           optional = false
         }
         ad_statuses {
           type = array
           items.type = PinPromotionSummaryStatus
-          description = "List of values for filtering [This parameter is not supported for Product Item Level Reports]"
+          description = "List of values for filtering. This parameter is not supported for Product Item level reports."
+          optional = false
+        }
+        attribution_types {
+          type = array
+          items.type = ConversionReportAttributionType
+          description = "List of attribution types for the conversion report."
+          optional = false
+        }
+        campaign_brand_label {
+          type =  string
+          description = "Campaign brand label for filtering."
+          optional = false
+        }
+        campaign_custom_label {
+          type =  string
+          description = "Campaign custom label for filtering."
+          optional = false
+        }
+        campaign_ids {
+          type = array
+          items.type =  string
+          description = "List of campaign ids"
+          optional = false
+        }
+        campaign_objective_types {
+          type = array
+          items.type = CampaignObjectiveType
+          description = "List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] is in BETA."
+          optional = false
+        }
+        campaign_statuses {
+          type = array
+          items.type = CampaignSummaryStatus
+          description = "List of status values for filtering"
+          optional = false
+        }
+        click_window_days {
+          type = ConversionAttributionWindowDays
+          description = "Number of days to use as the conversion attribution window for a pin click action."
+          optional = false
+        }
+        columns {
+          type = array
+          items.type = ReportingColumnAsync
+          description = "Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports."
+          optional = false
+        }
+        combine_targeting_types {
+          type =  boolean
+          description = "Determines if the targeting types included in the request should be consolidated into a single breakdown."
+          optional = false
+        }
+        conversion_report_time {
+          type = ConversionReportTimeType
+          description = "Date dimension for conversion metrics."
+          optional = false
+        }
+        custom_conversion_event_metrics {
+          type = array
+          items.type = CustomConversionEventMetrics
+          description = "List of advertiser-defined custom conversion event metrics to include in the report"
+          optional = false
+        }
+        end_date {
+          type =  string
+          description = "Metric report end date (UTC). Format: YYYY-MM-DD"
+          optional = true
+        }
+        end_hour {
+          type =  integer
+          description = "Which hour of the end date to stop the report (inclusive). Only allowed for hourly reports."
+          optional = false
+        }
+        engagement_window_days {
+          type = ConversionAttributionWindowDays
+          description = "Number of days to use as the conversion attribution window for an engagement action."
+          optional = false
+        }
+        granularity {
+          type = Granularity
+          description = "  TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly."
+          optional = true
+        }
+        level {
+          type = MetricsReportingLevel
+          description = "Level of the report"
+          optional = false
+        }
+        metrics_filters {
+          type = array
+          items.type = AdsAnalyticsMetricsFilter
+          description = "List of metrics filters"
+          optional = false
+        }
+        primary_sort {
+          type = PrimarySort
+          description = ""
           optional = false
         }
         product_group_ids {
@@ -137,65 +172,35 @@ resourceTypes {
           description = "List of product item ids"
           optional = false
         }
-        targeting_types {
-          type = array
-          items.type =  string
-          description = "List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AUDIENCE_MULTIPLIER\&quot;] is only available in CAMPAIGN_TARGETING level. [\&quot;MEDIA_TYPE\&quot;] is only available in PRODUCT_ITEM_TARGETING level. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users."
-          enum = ["KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION", "MEDIA_TYPE", "AGE_BUCKET_AND_GENDER", "AUDIENCE_MULTIPLIER", "CREATIVE_ENHANCEMENTS", "LOCAL_ADS_STORE_CODE"]
-          optional = false
-        }
-        metrics_filters {
-          type = array
-          items.type = AdsAnalyticsMetricsFilter
-          description = "List of metrics filters"
-          optional = false
-        }
-        columns {
-          type = array
-          items.type = ReportingColumnAsync
-          description = "Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports."
-          optional = true
-        }
-        combine_targeting_types {
-          type =  boolean
-          description = "Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&amp;US. This feature is currently in BETA and is not available to all users."
-          optional = false
-        }
-        custom_conversion_event_metrics {
-          type = array
-          items.type = AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
-          description = "List of advertiser-defined custom conversion event metrics to include in the report"
-          optional = false
-        }
-        end_hour {
-          type =  integer
-          description = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports."
-          optional = false
-        }
-        level {
-          type = MetricsReportingLevel
-          description = "Level of the report"
-          optional = true
-        }
-        primary_sort {
-          type =  string
-          description = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests."
-          enum = ["BY_ID", "BY_DATE"]
-          optional = false
-        }
         report_format {
           type = DataOutputFormat
-          description = "Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0."
+          description = ""
           optional = false
         }
         reporting_timezone {
           type = ReportingTimeZone
-          description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
+          description = "Specify the timezone to be applied for the reporting."
           optional = false
+        }
+        start_date {
+          type =  string
+          description = "Metric report start date (UTC). Format: YYYY-MM-DD"
+          optional = true
         }
         start_hour {
           type =  integer
-          description = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports."
+          description = "Which hour of the start date to begin the report. Only allowed for hourly reports."
+          optional = false
+        }
+        targeting_types {
+          type = array
+          items.type = AdAdsAnalyticsAsyncTargetingTypes
+          description = "List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;."
+          optional = false
+        }
+        view_window_days {
+          type = ConversionAttributionWindowDays
+          description = "Number of days to use as the conversion attribution window for a view action."
           optional = false
         }
     }

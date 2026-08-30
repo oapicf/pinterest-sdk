@@ -10,18 +10,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdGroupResponse;
+import org.openapitools.model.AdGroup;
 
 /**
  * AdGroupsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdGroupsList200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
-  private List<@Valid AdGroupResponse> items = new ArrayList<>();
+  private List<@Valid AdGroup> items = new ArrayList<>();
 
   public AdGroupsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -41,12 +41,12 @@ public class AdGroupsList200Response   {
     this.bookmark = bookmark;
   }
 
-  public AdGroupsList200Response items(List<@Valid AdGroupResponse> items) {
+  public AdGroupsList200Response items(List<@Valid AdGroup> items) {
     this.items = items;
     return this;
   }
 
-  public AdGroupsList200Response addItemsItem(AdGroupResponse itemsItem) {
+  public AdGroupsList200Response addItemsItem(AdGroup itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -56,11 +56,11 @@ public class AdGroupsList200Response   {
    * @return items
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<@Valid AdGroupResponse> getItems() {
+  public List<@Valid AdGroup> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid AdGroupResponse> items) {
+  public void setItems(List<@Valid AdGroup> items) {
     this.items = items;
   }
 
@@ -99,10 +99,7 @@ public class AdGroupsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -7,7 +7,6 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.product_categories_engagement_type import ProductCategoriesEngagementType  # noqa: F401,E501
-from app.openapi_server.models.vertical_product_category import VerticalProductCategory  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,7 +16,7 @@ class TrendingProductCategory(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, engagement_type: ProductCategoriesEngagementType=None, pct_change_mom: int=None, percent_relative_volume: int=None, product_category: str=None, verticals: List[VerticalProductCategory]=None):  # noqa: E501
+    def __init__(self, engagement_type: ProductCategoriesEngagementType=None, pct_change_mom: int=None, percent_relative_volume: int=None, pinterest_product_category_id: int=None, product_category: str=None, verticals: List[str]=None):  # noqa: E501
         """TrendingProductCategory - a model defined in Swagger
 
         :param engagement_type: The engagement_type of this TrendingProductCategory.  # noqa: E501
@@ -26,23 +25,27 @@ class TrendingProductCategory(Model):
         :type pct_change_mom: int
         :param percent_relative_volume: The percent_relative_volume of this TrendingProductCategory.  # noqa: E501
         :type percent_relative_volume: int
+        :param pinterest_product_category_id: The pinterest_product_category_id of this TrendingProductCategory.  # noqa: E501
+        :type pinterest_product_category_id: int
         :param product_category: The product_category of this TrendingProductCategory.  # noqa: E501
         :type product_category: str
         :param verticals: The verticals of this TrendingProductCategory.  # noqa: E501
-        :type verticals: List[VerticalProductCategory]
+        :type verticals: List[str]
         """
         self.swagger_types = {
             'engagement_type': ProductCategoriesEngagementType,
             'pct_change_mom': int,
             'percent_relative_volume': int,
+            'pinterest_product_category_id': int,
             'product_category': str,
-            'verticals': List[VerticalProductCategory]
+            'verticals': List[str]
         }
 
         self.attribute_map = {
             'engagement_type': 'engagement_type',
             'pct_change_mom': 'pct_change_mom',
             'percent_relative_volume': 'percent_relative_volume',
+            'pinterest_product_category_id': 'pinterest_product_category_id',
             'product_category': 'product_category',
             'verticals': 'verticals'
         }
@@ -50,6 +53,7 @@ class TrendingProductCategory(Model):
         self._engagement_type = engagement_type
         self._pct_change_mom = pct_change_mom
         self._percent_relative_volume = percent_relative_volume
+        self._pinterest_product_category_id = pinterest_product_category_id
         self._product_category = product_category
         self._verticals = verticals
 
@@ -140,6 +144,31 @@ class TrendingProductCategory(Model):
         self._percent_relative_volume = percent_relative_volume
 
     @property
+    def pinterest_product_category_id(self) -> int:
+        """Gets the pinterest_product_category_id of this TrendingProductCategory.
+
+        Pinterest Product Category Id  # noqa: E501
+
+        :return: The pinterest_product_category_id of this TrendingProductCategory.
+        :rtype: int
+        """
+        return self._pinterest_product_category_id
+
+    @pinterest_product_category_id.setter
+    def pinterest_product_category_id(self, pinterest_product_category_id: int):
+        """Sets the pinterest_product_category_id of this TrendingProductCategory.
+
+        Pinterest Product Category Id  # noqa: E501
+
+        :param pinterest_product_category_id: The pinterest_product_category_id of this TrendingProductCategory.
+        :type pinterest_product_category_id: int
+        """
+        if pinterest_product_category_id is None:
+            raise ValueError("Invalid value for `pinterest_product_category_id`, must not be `None`")  # noqa: E501
+
+        self._pinterest_product_category_id = pinterest_product_category_id
+
+    @property
     def product_category(self) -> str:
         """Gets the product_category of this TrendingProductCategory.
 
@@ -165,24 +194,24 @@ class TrendingProductCategory(Model):
         self._product_category = product_category
 
     @property
-    def verticals(self) -> List[VerticalProductCategory]:
+    def verticals(self) -> List[str]:
         """Gets the verticals of this TrendingProductCategory.
 
         Vertical name associated with the product category  # noqa: E501
 
         :return: The verticals of this TrendingProductCategory.
-        :rtype: List[VerticalProductCategory]
+        :rtype: List[str]
         """
         return self._verticals
 
     @verticals.setter
-    def verticals(self, verticals: List[VerticalProductCategory]):
+    def verticals(self, verticals: List[str]):
         """Sets the verticals of this TrendingProductCategory.
 
         Vertical name associated with the product category  # noqa: E501
 
         :param verticals: The verticals of this TrendingProductCategory.
-        :type verticals: List[VerticalProductCategory]
+        :type verticals: List[str]
         """
 
         self._verticals = verticals

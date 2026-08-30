@@ -2,9 +2,11 @@ package org.openapitools.server.model
 
 
 /**
- * @param accesses  for example: ''null''
+ * An object with a list of partner asset accesses to assign or update.
+ *
+ * @param accesses List of partner asset accesses to assign or update. for example: ''null''
 */
 final case class UpdatePartnerAssetAccessBody (
-  accesses: Seq[UpdatePartnerAssetAccessBodyAccessesInner]
+  accesses: Seq[UpdatePartnerAssetAccessItem]
 )
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | Option<**String**> |  | [optional]
 **images** | Option<[**models::ImageSize**](ImageSize.md)> |  | [optional]
-**item_type** | Option<**String**> |  | [optional]
+**item_type** | **ItemType** | Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload. (enum: image) | 
 **link** | Option<**String**> |  | [optional]
 **title** | Option<**String**> |  | [optional]
 

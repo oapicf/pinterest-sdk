@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -16,37 +16,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.NumericFilterOperatorType;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupUint32Criteria   {
   
-  private Boolean negated = false;
-
-
-  public enum OperatorEnum {
-    GREATER_THAN("GREATER_THAN"),
-    GREATER_THAN_OR_EQUALS("GREATER_THAN_OR_EQUALS"),
-    LESS_THAN("LESS_THAN"),
-    LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
-
-    private String value;
-
-    OperatorEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private OperatorEnum operator;
+  private Boolean negated;
+  private NumericFilterOperatorType operator;
   private Integer value;
 
   /**
@@ -68,7 +48,7 @@ public class CatalogsProductGroupUint32Criteria   {
 
   /**
    */
-  public CatalogsProductGroupUint32Criteria operator(OperatorEnum operator) {
+  public CatalogsProductGroupUint32Criteria operator(NumericFilterOperatorType operator) {
     this.operator = operator;
     return this;
   }
@@ -76,10 +56,10 @@ public class CatalogsProductGroupUint32Criteria   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operator")
-  public OperatorEnum getOperator() {
+  public NumericFilterOperatorType getOperator() {
     return operator;
   }
-  public void setOperator(OperatorEnum operator) {
+  public void setOperator(NumericFilterOperatorType operator) {
     this.operator = operator;
   }
 
@@ -139,10 +119,7 @@ public class CatalogsProductGroupUint32Criteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

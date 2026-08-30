@@ -89,7 +89,7 @@ ItemProcessingRecord <- R6::R6Class(
       ItemProcessingRecordObject <- list()
       if (!is.null(self$`errors`)) {
         ItemProcessingRecordObject[["errors"]] <-
-          lapply(self$`errors`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`errors`)
       }
       if (!is.null(self$`item_id`)) {
         ItemProcessingRecordObject[["item_id"]] <-
@@ -97,13 +97,36 @@ ItemProcessingRecord <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         ItemProcessingRecordObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       if (!is.null(self$`warnings`)) {
         ItemProcessingRecordObject[["warnings"]] <-
-          lapply(self$`warnings`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`warnings`)
       }
       return(ItemProcessingRecordObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

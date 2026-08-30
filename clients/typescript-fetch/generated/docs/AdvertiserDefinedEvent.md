@@ -1,13 +1,14 @@
 
 # AdvertiserDefinedEvent
 
+Advertiser defined event
 
 ## Properties
 
 Name | Type
 ------------ | -------------
+`mappedConversionType` | [ConversionTagTypeOptimal](ConversionTagTypeOptimal.md)
 `name` | string
-`mappedConversionType` | string
 
 ## Example
 
@@ -16,8 +17,8 @@ import type { AdvertiserDefinedEvent } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": download_picture,
-  "mappedConversionType": null,
+  "mappedConversionType": SIGNUP,
+  "name": newsletter_signup,
 } satisfies AdvertiserDefinedEvent
 
 console.log(example)

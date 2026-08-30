@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdeColumnType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdeColumnType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdeColumnType {
+    title = AdeColumnType
+    description = AdeColumnType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdeColumnType {
+    title = AdeColumnType
+    description = AdeColumnType
+    implements = openapi_server.resourceTypes.AdeColumnType
+
+  }
+}

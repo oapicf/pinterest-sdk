@@ -736,7 +736,7 @@ CatalogsFeedValidationErrors::getADULTINVALID()
 }
 
 void
-CatalogsFeedValidationErrors::setADULTINVALID(int  aDULT_INVALID)
+CatalogsFeedValidationErrors::setADULTINVALID(int aDULT_INVALID)
 {
 	this->aDULT_INVALID = aDULT_INVALID;
 }
@@ -748,7 +748,7 @@ CatalogsFeedValidationErrors::getADWORDSFORMATINVALID()
 }
 
 void
-CatalogsFeedValidationErrors::setADWORDSFORMATINVALID(int  aDWORDS_FORMAT_INVALID)
+CatalogsFeedValidationErrors::setADWORDSFORMATINVALID(int aDWORDS_FORMAT_INVALID)
 {
 	this->aDWORDS_FORMAT_INVALID = aDWORDS_FORMAT_INVALID;
 }
@@ -760,7 +760,7 @@ CatalogsFeedValidationErrors::getAVAILABILITYINVALID()
 }
 
 void
-CatalogsFeedValidationErrors::setAVAILABILITYINVALID(int  aVAILABILITY_INVALID)
+CatalogsFeedValidationErrors::setAVAILABILITYINVALID(int aVAILABILITY_INVALID)
 {
 	this->aVAILABILITY_INVALID = aVAILABILITY_INVALID;
 }
@@ -772,7 +772,7 @@ CatalogsFeedValidationErrors::getBLOCKLISTEDIMAGESIGNATURE()
 }
 
 void
-CatalogsFeedValidationErrors::setBLOCKLISTEDIMAGESIGNATURE(int  bLOCKLISTED_IMAGE_SIGNATURE)
+CatalogsFeedValidationErrors::setBLOCKLISTEDIMAGESIGNATURE(int bLOCKLISTED_IMAGE_SIGNATURE)
 {
 	this->bLOCKLISTED_IMAGE_SIGNATURE = bLOCKLISTED_IMAGE_SIGNATURE;
 }
@@ -784,7 +784,7 @@ CatalogsFeedValidationErrors::getDELIMITERERROR()
 }
 
 void
-CatalogsFeedValidationErrors::setDELIMITERERROR(int  dELIMITER_ERROR)
+CatalogsFeedValidationErrors::setDELIMITERERROR(int dELIMITER_ERROR)
 {
 	this->dELIMITER_ERROR = dELIMITER_ERROR;
 }
@@ -796,7 +796,7 @@ CatalogsFeedValidationErrors::getDESCRIPTIONMISSING()
 }
 
 void
-CatalogsFeedValidationErrors::setDESCRIPTIONMISSING(int  dESCRIPTION_MISSING)
+CatalogsFeedValidationErrors::setDESCRIPTIONMISSING(int dESCRIPTION_MISSING)
 {
 	this->dESCRIPTION_MISSING = dESCRIPTION_MISSING;
 }
@@ -808,7 +808,7 @@ CatalogsFeedValidationErrors::getDUPLICATEPRODUCTS()
 }
 
 void
-CatalogsFeedValidationErrors::setDUPLICATEPRODUCTS(int  dUPLICATE_PRODUCTS)
+CatalogsFeedValidationErrors::setDUPLICATEPRODUCTS(int dUPLICATE_PRODUCTS)
 {
 	this->dUPLICATE_PRODUCTS = dUPLICATE_PRODUCTS;
 }
@@ -820,7 +820,7 @@ CatalogsFeedValidationErrors::getENCODINGERROR()
 }
 
 void
-CatalogsFeedValidationErrors::setENCODINGERROR(int  eNCODING_ERROR)
+CatalogsFeedValidationErrors::setENCODINGERROR(int eNCODING_ERROR)
 {
 	this->eNCODING_ERROR = eNCODING_ERROR;
 }
@@ -832,7 +832,7 @@ CatalogsFeedValidationErrors::getFEEDLENGTHTOOLONG()
 }
 
 void
-CatalogsFeedValidationErrors::setFEEDLENGTHTOOLONG(int  fEED_LENGTH_TOO_LONG)
+CatalogsFeedValidationErrors::setFEEDLENGTHTOOLONG(int fEED_LENGTH_TOO_LONG)
 {
 	this->fEED_LENGTH_TOO_LONG = fEED_LENGTH_TOO_LONG;
 }
@@ -844,7 +844,7 @@ CatalogsFeedValidationErrors::getFEEDTOOSMALL()
 }
 
 void
-CatalogsFeedValidationErrors::setFEEDTOOSMALL(int  fEED_TOO_SMALL)
+CatalogsFeedValidationErrors::setFEEDTOOSMALL(int fEED_TOO_SMALL)
 {
 	this->fEED_TOO_SMALL = fEED_TOO_SMALL;
 }
@@ -856,7 +856,7 @@ CatalogsFeedValidationErrors::getFETCHERROR()
 }
 
 void
-CatalogsFeedValidationErrors::setFETCHERROR(int  fETCH_ERROR)
+CatalogsFeedValidationErrors::setFETCHERROR(int fETCH_ERROR)
 {
 	this->fETCH_ERROR = fETCH_ERROR;
 }
@@ -868,7 +868,7 @@ CatalogsFeedValidationErrors::getFETCHINACTIVEFEEDERROR()
 }
 
 void
-CatalogsFeedValidationErrors::setFETCHINACTIVEFEEDERROR(int  fETCH_INACTIVE_FEED_ERROR)
+CatalogsFeedValidationErrors::setFETCHINACTIVEFEEDERROR(int fETCH_INACTIVE_FEED_ERROR)
 {
 	this->fETCH_INACTIVE_FEED_ERROR = fETCH_INACTIVE_FEED_ERROR;
 }
@@ -880,7 +880,7 @@ CatalogsFeedValidationErrors::getIMAGELINKINVALID()
 }
 
 void
-CatalogsFeedValidationErrors::setIMAGELINKINVALID(int  iMAGE_LINK_INVALID)
+CatalogsFeedValidationErrors::setIMAGELINKINVALID(int iMAGE_LINK_INVALID)
 {
 	this->iMAGE_LINK_INVALID = iMAGE_LINK_INVALID;
 }
@@ -892,7 +892,7 @@ CatalogsFeedValidationErrors::getIMAGELINKLENGTHTOOLONG()
 }
 
 void
-CatalogsFeedValidationErrors::setIMAGELINKLENGTHTOOLONG(int  iMAGE_LINK_LENGTH_TOO_LONG)
+CatalogsFeedValidationErrors::setIMAGELINKLENGTHTOOLONG(int iMAGE_LINK_LENGTH_TOO_LONG)
 {
 	this->iMAGE_LINK_LENGTH_TOO_LONG = iMAGE_LINK_LENGTH_TOO_LONG;
 }
@@ -904,7 +904,7 @@ CatalogsFeedValidationErrors::getIMAGELINKMISSING()
 }
 
 void
-CatalogsFeedValidationErrors::setIMAGELINKMISSING(int  iMAGE_LINK_MISSING)
+CatalogsFeedValidationErrors::setIMAGELINKMISSING(int iMAGE_LINK_MISSING)
 {
 	this->iMAGE_LINK_MISSING = iMAGE_LINK_MISSING;
 }
@@ -916,7 +916,7 @@ CatalogsFeedValidationErrors::getINTERNALSERVICEERROR()
 }
 
 void
-CatalogsFeedValidationErrors::setINTERNALSERVICEERROR(int  iNTERNAL_SERVICE_ERROR)
+CatalogsFeedValidationErrors::setINTERNALSERVICEERROR(int iNTERNAL_SERVICE_ERROR)
 {
 	this->iNTERNAL_SERVICE_ERROR = iNTERNAL_SERVICE_ERROR;
 }
@@ -928,7 +928,7 @@ CatalogsFeedValidationErrors::getINVALIDDOMAIN()
 }
 
 void
-CatalogsFeedValidationErrors::setINVALIDDOMAIN(int  iNVALID_DOMAIN)
+CatalogsFeedValidationErrors::setINVALIDDOMAIN(int iNVALID_DOMAIN)
 {
 	this->iNVALID_DOMAIN = iNVALID_DOMAIN;
 }
@@ -940,7 +940,7 @@ CatalogsFeedValidationErrors::getITEMMAINIMAGEDOWNLOADFAILURE()
 }
 
 void
-CatalogsFeedValidationErrors::setITEMMAINIMAGEDOWNLOADFAILURE(int  iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE)
+CatalogsFeedValidationErrors::setITEMMAINIMAGEDOWNLOADFAILURE(int iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE)
 {
 	this->iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 }
@@ -952,7 +952,7 @@ CatalogsFeedValidationErrors::getITEMIDMISSING()
 }
 
 void
-CatalogsFeedValidationErrors::setITEMIDMISSING(int  iTEMID_MISSING)
+CatalogsFeedValidationErrors::setITEMIDMISSING(int iTEMID_MISSING)
 {
 	this->iTEMID_MISSING = iTEMID_MISSING;
 }
@@ -964,7 +964,7 @@ CatalogsFeedValidationErrors::getLINKFORMATINVALID()
 }
 
 void
-CatalogsFeedValidationErrors::setLINKFORMATINVALID(int  lINK_FORMAT_INVALID)
+CatalogsFeedValidationErrors::setLINKFORMATINVALID(int lINK_FORMAT_INVALID)
 {
 	this->lINK_FORMAT_INVALID = lINK_FORMAT_INVALID;
 }
@@ -976,7 +976,7 @@ CatalogsFeedValidationErrors::getLINKLENGTHTOOLONG()
 }
 
 void
-CatalogsFeedValidationErrors::setLINKLENGTHTOOLONG(int  lINK_LENGTH_TOO_LONG)
+CatalogsFeedValidationErrors::setLINKLENGTHTOOLONG(int lINK_LENGTH_TOO_LONG)
 {
 	this->lINK_LENGTH_TOO_LONG = lINK_LENGTH_TOO_LONG;
 }
@@ -988,7 +988,7 @@ CatalogsFeedValidationErrors::getLISTPRICEINVALID()
 }
 
 void
-CatalogsFeedValidationErrors::setLISTPRICEINVALID(int  lIST_PRICE_INVALID)
+CatalogsFeedValidationErrors::setLISTPRICEINVALID(int lIST_PRICE_INVALID)
 {
 	this->lIST_PRICE_INVALID = lIST_PRICE_INVALID;
 }
@@ -1000,7 +1000,7 @@ CatalogsFeedValidationErrors::getMALFORMEDXML()
 }
 
 void
-CatalogsFeedValidationErrors::setMALFORMEDXML(int  mALFORMED_XML)
+CatalogsFeedValidationErrors::setMALFORMEDXML(int mALFORMED_XML)
 {
 	this->mALFORMED_XML = mALFORMED_XML;
 }
@@ -1012,7 +1012,7 @@ CatalogsFeedValidationErrors::getMAXITEMSPERITEMGROUPEXCEEDED()
 }
 
 void
-CatalogsFeedValidationErrors::setMAXITEMSPERITEMGROUPEXCEEDED(int  mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED)
+CatalogsFeedValidationErrors::setMAXITEMSPERITEMGROUPEXCEEDED(int mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED)
 {
 	this->mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 }
@@ -1024,7 +1024,7 @@ CatalogsFeedValidationErrors::getNOVERIFIEDDOMAIN()
 }
 
 void
-CatalogsFeedValidationErrors::setNOVERIFIEDDOMAIN(int  nO_VERIFIED_DOMAIN)
+CatalogsFeedValidationErrors::setNOVERIFIEDDOMAIN(int nO_VERIFIED_DOMAIN)
 {
 	this->nO_VERIFIED_DOMAIN = nO_VERIFIED_DOMAIN;
 }
@@ -1036,7 +1036,7 @@ CatalogsFeedValidationErrors::getPARSELINEERROR()
 }
 
 void
-CatalogsFeedValidationErrors::setPARSELINEERROR(int  pARSE_LINE_ERROR)
+CatalogsFeedValidationErrors::setPARSELINEERROR(int pARSE_LINE_ERROR)
 {
 	this->pARSE_LINE_ERROR = pARSE_LINE_ERROR;
 }
@@ -1048,7 +1048,7 @@ CatalogsFeedValidationErrors::getPINJOINCONTENTUNSAFE()
 }
 
 void
-CatalogsFeedValidationErrors::setPINJOINCONTENTUNSAFE(int  pINJOIN_CONTENT_UNSAFE)
+CatalogsFeedValidationErrors::setPINJOINCONTENTUNSAFE(int pINJOIN_CONTENT_UNSAFE)
 {
 	this->pINJOIN_CONTENT_UNSAFE = pINJOIN_CONTENT_UNSAFE;
 }
@@ -1060,7 +1060,7 @@ CatalogsFeedValidationErrors::getPRICECANNOTBEDETERMINED()
 }
 
 void
-CatalogsFeedValidationErrors::setPRICECANNOTBEDETERMINED(int  pRICE_CANNOT_BE_DETERMINED)
+CatalogsFeedValidationErrors::setPRICECANNOTBEDETERMINED(int pRICE_CANNOT_BE_DETERMINED)
 {
 	this->pRICE_CANNOT_BE_DETERMINED = pRICE_CANNOT_BE_DETERMINED;
 }
@@ -1072,7 +1072,7 @@ CatalogsFeedValidationErrors::getPRICEMISSING()
 }
 
 void
-CatalogsFeedValidationErrors::setPRICEMISSING(int  pRICE_MISSING)
+CatalogsFeedValidationErrors::setPRICEMISSING(int pRICE_MISSING)
 {
 	this->pRICE_MISSING = pRICE_MISSING;
 }
@@ -1084,7 +1084,7 @@ CatalogsFeedValidationErrors::getPRODUCTLINKMISSING()
 }
 
 void
-CatalogsFeedValidationErrors::setPRODUCTLINKMISSING(int  pRODUCT_LINK_MISSING)
+CatalogsFeedValidationErrors::setPRODUCTLINKMISSING(int pRODUCT_LINK_MISSING)
 {
 	this->pRODUCT_LINK_MISSING = pRODUCT_LINK_MISSING;
 }
@@ -1096,7 +1096,7 @@ CatalogsFeedValidationErrors::getPRODUCTPRICEINVALID()
 }
 
 void
-CatalogsFeedValidationErrors::setPRODUCTPRICEINVALID(int  pRODUCT_PRICE_INVALID)
+CatalogsFeedValidationErrors::setPRODUCTPRICEINVALID(int pRODUCT_PRICE_INVALID)
 {
 	this->pRODUCT_PRICE_INVALID = pRODUCT_PRICE_INVALID;
 }
@@ -1108,7 +1108,7 @@ CatalogsFeedValidationErrors::getREQUIREDCOLUMNSMISSING()
 }
 
 void
-CatalogsFeedValidationErrors::setREQUIREDCOLUMNSMISSING(int  rEQUIRED_COLUMNS_MISSING)
+CatalogsFeedValidationErrors::setREQUIREDCOLUMNSMISSING(int rEQUIRED_COLUMNS_MISSING)
 {
 	this->rEQUIRED_COLUMNS_MISSING = rEQUIRED_COLUMNS_MISSING;
 }
@@ -1120,7 +1120,7 @@ CatalogsFeedValidationErrors::getTITLEMISSING()
 }
 
 void
-CatalogsFeedValidationErrors::setTITLEMISSING(int  tITLE_MISSING)
+CatalogsFeedValidationErrors::setTITLEMISSING(int tITLE_MISSING)
 {
 	this->tITLE_MISSING = tITLE_MISSING;
 }

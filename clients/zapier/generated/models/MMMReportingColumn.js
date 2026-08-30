@@ -25,6 +25,12 @@ module.exports = {
                     'TOTAL_IMPRESSION',
                     'ADVERTISER_NAME',
                     'SPEND_ORDER_LINE_PAID_TYPE',
+                    'CAMPAIGN_OBJECTIVE_TYPE',
+                    'PINNER_LIST_NAME',
+                    'ADS_CREDIT_SPEND_IN_DOLLAR',
+                    'ADVERTISER_PAID_SPEND_IN_DOLLAR',
+                    'ADVERTISER_PAID_ECPC_IN_DOLLAR',
+                    'ADVERTISER_PAID_ECPM_IN_DOLLAR',
                 ],
             }
         )

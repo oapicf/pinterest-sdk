@@ -4,13 +4,14 @@ import apimodels.Board;
 import apimodels.BoardCreate;
 import apimodels.BoardPrivacyFilter;
 import apimodels.BoardSection;
+import apimodels.BoardSectionCreate;
+import apimodels.BoardSectionUpdateWithRequiredBody;
 import apimodels.BoardSectionsList200Response;
 import apimodels.BoardWithUpdatePrivacy;
 import apimodels.BoardWithUpdatePrivacyUpdate;
 import apimodels.BoardsList200Response;
 import apimodels.BoardsListPins200Response;
 import apimodels.CreativeType;
-import apimodels.Error;
 import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
@@ -35,7 +36,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BoardsApiController extends Controller {
     private final BoardsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -50,15 +51,15 @@ public class BoardsApiController extends Controller {
 
     @ApiAction
     public Result boardSectionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId) throws Exception {
-        JsonNode nodeboardSection = request.body().asJson();
-        BoardSection boardSection;
-        if (nodeboardSection != null) {
-            boardSection = mapper.readValue(nodeboardSection.toString(), BoardSection.class);
+        JsonNode nodeboardSectionCreate = request.body().asJson();
+        BoardSectionCreate boardSectionCreate;
+        if (nodeboardSectionCreate != null) {
+            boardSectionCreate = mapper.readValue(nodeboardSectionCreate.toString(), BoardSectionCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(boardSection);
+                OpenAPIUtils.validate(boardSectionCreate);
             }
         } else {
-            throw new IllegalArgumentException("'BoardSection' parameter is required");
+            throw new IllegalArgumentException("'BoardSectionCreate' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -67,7 +68,7 @@ public class BoardsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.boardSectionsCreateHttp(request, boardId, boardSection, adAccountId);
+        return imp.boardSectionsCreateHttp(request, boardId, boardSectionCreate, adAccountId);
     }
 
     @ApiAction
@@ -136,15 +137,15 @@ public class BoardsApiController extends Controller {
 
     @ApiAction
     public Result boardSectionsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, @Pattern(regexp="^\\d+$")String sectionId) throws Exception {
-        JsonNode nodeboardSection = request.body().asJson();
-        BoardSection boardSection;
-        if (nodeboardSection != null) {
-            boardSection = mapper.readValue(nodeboardSection.toString(), BoardSection.class);
+        JsonNode nodeboardSectionUpdateWithRequiredBody = request.body().asJson();
+        BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody;
+        if (nodeboardSectionUpdateWithRequiredBody != null) {
+            boardSectionUpdateWithRequiredBody = mapper.readValue(nodeboardSectionUpdateWithRequiredBody.toString(), BoardSectionUpdateWithRequiredBody.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(boardSection);
+                OpenAPIUtils.validate(boardSectionUpdateWithRequiredBody);
             }
         } else {
-            throw new IllegalArgumentException("'BoardSection' parameter is required");
+            throw new IllegalArgumentException("'BoardSectionUpdateWithRequiredBody' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -153,7 +154,7 @@ public class BoardsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.boardSectionsUpdateHttp(request, boardId, sectionId, boardSection, adAccountId);
+        return imp.boardSectionsUpdateHttp(request, boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId);
     }
 
     @ApiAction
@@ -237,20 +238,6 @@ public class BoardsApiController extends Controller {
 
     @ApiAction
     public Result boardsListPins(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId) throws Exception {
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
         String[] creativeTypesArray = request.queryString().get("creative_types");
         List<String> creativeTypesList = OpenAPIUtils.parametersToList("multi", creativeTypesArray);
         List<CreativeType> creativeTypes = new ArrayList<>();
@@ -274,7 +261,21 @@ public class BoardsApiController extends Controller {
         } else {
             pinMetrics = false;
         }
-        return imp.boardsListPinsHttp(request, boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics);
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        return imp.boardsListPinsHttp(request, boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize);
     }
 
     @ApiAction

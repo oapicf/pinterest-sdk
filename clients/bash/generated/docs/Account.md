@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | **string** |  | [optional] [default to null]
-**accountUnderscoretype** | **string** |  | [optional] [default to null]
+**accountUnderscoretype** | [**UserAccountType**](UserAccountType.md) |  | [optional] [default to null]
 **boardUnderscorecount** | **integer** |  | [optional] [readonly] [default to null]
 **businessUnderscorename** | **string** |  | [optional] [default to null]
 **followerUnderscorecount** | **integer** |  | [optional] [readonly] [default to null]

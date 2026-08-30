@@ -12,829 +12,1035 @@ part 'catalogs_item_validation_warnings.g.dart';
 /// CatalogsItemValidationWarnings
 ///
 /// Properties:
-/// * [aDIMAGE0LINKDUPLICATED] 
-/// * [aDIMAGE0LINKLENGTHTOOLONG] 
-/// * [aDIMAGE0LINKREQUIRED] 
-/// * [aDIMAGE0LINKWARNING] 
-/// * [aDIMAGE0TAGDUPLICATED] 
-/// * [aDIMAGE0TAGLENGTHTOOLONG] 
-/// * [aDIMAGE0TAGREQUIRED] 
-/// * [aDIMAGE10LINKDUPLICATED] 
-/// * [aDIMAGE10LINKLENGTHTOOLONG] 
-/// * [aDIMAGE10LINKREQUIRED] 
-/// * [aDIMAGE10LINKWARNING] 
-/// * [aDIMAGE10TAGDUPLICATED] 
-/// * [aDIMAGE10TAGLENGTHTOOLONG] 
-/// * [aDIMAGE10TAGREQUIRED] 
-/// * [aDIMAGE11LINKDUPLICATED] 
-/// * [aDIMAGE11LINKLENGTHTOOLONG] 
-/// * [aDIMAGE11LINKREQUIRED] 
-/// * [aDIMAGE11LINKWARNING] 
-/// * [aDIMAGE11TAGDUPLICATED] 
-/// * [aDIMAGE11TAGLENGTHTOOLONG] 
-/// * [aDIMAGE11TAGREQUIRED] 
-/// * [aDIMAGE12LINKDUPLICATED] 
-/// * [aDIMAGE12LINKLENGTHTOOLONG] 
-/// * [aDIMAGE12LINKREQUIRED] 
-/// * [aDIMAGE12LINKWARNING] 
-/// * [aDIMAGE12TAGDUPLICATED] 
-/// * [aDIMAGE12TAGLENGTHTOOLONG] 
-/// * [aDIMAGE12TAGREQUIRED] 
-/// * [aDIMAGE13LINKDUPLICATED] 
-/// * [aDIMAGE13LINKLENGTHTOOLONG] 
-/// * [aDIMAGE13LINKREQUIRED] 
-/// * [aDIMAGE13LINKWARNING] 
-/// * [aDIMAGE13TAGDUPLICATED] 
-/// * [aDIMAGE13TAGLENGTHTOOLONG] 
-/// * [aDIMAGE13TAGREQUIRED] 
-/// * [aDIMAGE14LINKDUPLICATED] 
-/// * [aDIMAGE14LINKLENGTHTOOLONG] 
-/// * [aDIMAGE14LINKREQUIRED] 
-/// * [aDIMAGE14LINKWARNING] 
-/// * [aDIMAGE14TAGDUPLICATED] 
-/// * [aDIMAGE14TAGLENGTHTOOLONG] 
-/// * [aDIMAGE14TAGREQUIRED] 
-/// * [aDIMAGE15LINKDUPLICATED] 
-/// * [aDIMAGE15LINKLENGTHTOOLONG] 
-/// * [aDIMAGE15LINKREQUIRED] 
-/// * [aDIMAGE15LINKWARNING] 
-/// * [aDIMAGE15TAGDUPLICATED] 
-/// * [aDIMAGE15TAGLENGTHTOOLONG] 
-/// * [aDIMAGE15TAGREQUIRED] 
-/// * [aDIMAGE16LINKDUPLICATED] 
-/// * [aDIMAGE16LINKLENGTHTOOLONG] 
-/// * [aDIMAGE16LINKREQUIRED] 
-/// * [aDIMAGE16LINKWARNING] 
-/// * [aDIMAGE16TAGDUPLICATED] 
-/// * [aDIMAGE16TAGLENGTHTOOLONG] 
-/// * [aDIMAGE16TAGREQUIRED] 
-/// * [aDIMAGE17LINKDUPLICATED] 
-/// * [aDIMAGE17LINKLENGTHTOOLONG] 
-/// * [aDIMAGE17LINKREQUIRED] 
-/// * [aDIMAGE17LINKWARNING] 
-/// * [aDIMAGE17TAGDUPLICATED] 
-/// * [aDIMAGE17TAGLENGTHTOOLONG] 
-/// * [aDIMAGE17TAGREQUIRED] 
-/// * [aDIMAGE18LINKDUPLICATED] 
-/// * [aDIMAGE18LINKLENGTHTOOLONG] 
-/// * [aDIMAGE18LINKREQUIRED] 
-/// * [aDIMAGE18LINKWARNING] 
-/// * [aDIMAGE18TAGDUPLICATED] 
-/// * [aDIMAGE18TAGLENGTHTOOLONG] 
-/// * [aDIMAGE18TAGREQUIRED] 
-/// * [aDIMAGE19LINKDUPLICATED] 
-/// * [aDIMAGE19LINKLENGTHTOOLONG] 
-/// * [aDIMAGE19LINKREQUIRED] 
-/// * [aDIMAGE19LINKWARNING] 
-/// * [aDIMAGE19TAGDUPLICATED] 
-/// * [aDIMAGE19TAGLENGTHTOOLONG] 
-/// * [aDIMAGE19TAGREQUIRED] 
-/// * [aDIMAGE1LINKDUPLICATED] 
-/// * [aDIMAGE1LINKLENGTHTOOLONG] 
-/// * [aDIMAGE1LINKREQUIRED] 
-/// * [aDIMAGE1LINKWARNING] 
-/// * [aDIMAGE1TAGDUPLICATED] 
-/// * [aDIMAGE1TAGLENGTHTOOLONG] 
-/// * [aDIMAGE1TAGREQUIRED] 
-/// * [aDIMAGE2LINKDUPLICATED] 
-/// * [aDIMAGE2LINKLENGTHTOOLONG] 
-/// * [aDIMAGE2LINKREQUIRED] 
-/// * [aDIMAGE2LINKWARNING] 
-/// * [aDIMAGE2TAGDUPLICATED] 
-/// * [aDIMAGE2TAGLENGTHTOOLONG] 
-/// * [aDIMAGE2TAGREQUIRED] 
-/// * [aDIMAGE3LINKDUPLICATED] 
-/// * [aDIMAGE3LINKLENGTHTOOLONG] 
-/// * [aDIMAGE3LINKREQUIRED] 
-/// * [aDIMAGE3LINKWARNING] 
-/// * [aDIMAGE3TAGDUPLICATED] 
-/// * [aDIMAGE3TAGLENGTHTOOLONG] 
-/// * [aDIMAGE3TAGREQUIRED] 
-/// * [aDIMAGE4LINKDUPLICATED] 
-/// * [aDIMAGE4LINKLENGTHTOOLONG] 
-/// * [aDIMAGE4LINKREQUIRED] 
-/// * [aDIMAGE4LINKWARNING] 
-/// * [aDIMAGE4TAGDUPLICATED] 
-/// * [aDIMAGE4TAGLENGTHTOOLONG] 
-/// * [aDIMAGE4TAGREQUIRED] 
-/// * [aDIMAGE5LINKDUPLICATED] 
-/// * [aDIMAGE5LINKLENGTHTOOLONG] 
-/// * [aDIMAGE5LINKREQUIRED] 
-/// * [aDIMAGE5LINKWARNING] 
-/// * [aDIMAGE5TAGDUPLICATED] 
-/// * [aDIMAGE5TAGLENGTHTOOLONG] 
-/// * [aDIMAGE5TAGREQUIRED] 
-/// * [aDIMAGE6LINKDUPLICATED] 
-/// * [aDIMAGE6LINKLENGTHTOOLONG] 
-/// * [aDIMAGE6LINKREQUIRED] 
-/// * [aDIMAGE6LINKWARNING] 
-/// * [aDIMAGE6TAGDUPLICATED] 
-/// * [aDIMAGE6TAGLENGTHTOOLONG] 
-/// * [aDIMAGE6TAGREQUIRED] 
-/// * [aDIMAGE7LINKDUPLICATED] 
-/// * [aDIMAGE7LINKLENGTHTOOLONG] 
-/// * [aDIMAGE7LINKREQUIRED] 
-/// * [aDIMAGE7LINKWARNING] 
-/// * [aDIMAGE7TAGDUPLICATED] 
-/// * [aDIMAGE7TAGLENGTHTOOLONG] 
-/// * [aDIMAGE7TAGREQUIRED] 
-/// * [aDIMAGE8LINKDUPLICATED] 
-/// * [aDIMAGE8LINKLENGTHTOOLONG] 
-/// * [aDIMAGE8LINKREQUIRED] 
-/// * [aDIMAGE8LINKWARNING] 
-/// * [aDIMAGE8TAGDUPLICATED] 
-/// * [aDIMAGE8TAGLENGTHTOOLONG] 
-/// * [aDIMAGE8TAGREQUIRED] 
-/// * [aDIMAGE9LINKDUPLICATED] 
-/// * [aDIMAGE9LINKLENGTHTOOLONG] 
-/// * [aDIMAGE9LINKREQUIRED] 
-/// * [aDIMAGE9LINKWARNING] 
-/// * [aDIMAGE9TAGDUPLICATED] 
-/// * [aDIMAGE9TAGLENGTHTOOLONG] 
-/// * [aDIMAGE9TAGREQUIRED] 
-/// * [AD_LINK_FORMAT_WARNING] 
-/// * [AD_LINK_SAME_AS_LINK] 
-/// * [aDVIDEO0LINKDUPLICATED] 
-/// * [aDVIDEO0LINKLENGTHTOOLONG] 
-/// * [aDVIDEO0LINKREQUIRED] 
-/// * [aDVIDEO0LINKWARNING] 
-/// * [aDVIDEO0TAGDUPLICATED] 
-/// * [aDVIDEO0TAGLENGTHTOOLONG] 
-/// * [aDVIDEO0TAGREQUIRED] 
-/// * [aDVIDEO1LINKDUPLICATED] 
-/// * [aDVIDEO1LINKLENGTHTOOLONG] 
-/// * [aDVIDEO1LINKREQUIRED] 
-/// * [aDVIDEO1LINKWARNING] 
-/// * [aDVIDEO1TAGDUPLICATED] 
-/// * [aDVIDEO1TAGLENGTHTOOLONG] 
-/// * [aDVIDEO1TAGREQUIRED] 
-/// * [aDVIDEO2LINKDUPLICATED] 
-/// * [aDVIDEO2LINKLENGTHTOOLONG] 
-/// * [aDVIDEO2LINKREQUIRED] 
-/// * [aDVIDEO2LINKWARNING] 
-/// * [aDVIDEO2TAGDUPLICATED] 
-/// * [aDVIDEO2TAGLENGTHTOOLONG] 
-/// * [aDVIDEO2TAGREQUIRED] 
-/// * [ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG] 
-/// * [ADDITIONAL_IMAGE_LINK_WARNING] 
-/// * [ADWORDS_FORMAT_WARNING] 
-/// * [ADWORDS_SAME_AS_LINK] 
-/// * [AGE_GROUP_INVALID] 
-/// * [ANDROID_DEEP_LINK_INVALID] 
-/// * [AVAILABILITY_DATE_INVALID] 
-/// * [COUNTRY_DOES_NOT_MAP_TO_CURRENCY] 
-/// * [CUSTOM_LABEL_LENGTH_TOO_LONG] 
-/// * [DESCRIPTION_LENGTH_TOO_LONG] 
-/// * [EXPIRATION_DATE_INVALID] 
-/// * [GENDER_INVALID] 
-/// * [GTIN_INVALID] 
-/// * [IMAGE_LINK_WARNING] 
-/// * [IOS_DEEP_LINK_INVALID] 
-/// * [IS_BUNDLE_INVALID] 
-/// * [ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE] 
-/// * [LINK_FORMAT_WARNING] 
-/// * [MIN_AD_PRICE_INVALID] 
-/// * [MPN_INVALID] 
-/// * [MULTIPACK_INVALID] 
-/// * [OPTIONAL_CONDITION_INVALID] 
-/// * [OPTIONAL_CONDITION_MISSING] 
-/// * [OPTIONAL_PRODUCT_CATEGORY_INVALID] 
-/// * [OPTIONAL_PRODUCT_CATEGORY_MISSING] 
-/// * [PRODUCT_CATEGORY_DEPTH_WARNING] 
-/// * [PRODUCT_TYPE_LENGTH_TOO_LONG] 
-/// * [SALE_DATE_INVALID] 
-/// * [SALES_PRICE_INVALID] 
-/// * [SALES_PRICE_TOO_HIGH] 
-/// * [SALES_PRICE_TOO_LOW] 
-/// * [SHIPPING_HEIGHT_INVALID] 
-/// * [SHIPPING_INVALID] 
-/// * [SHIPPING_WEIGHT_INVALID] 
-/// * [SHIPPING_WIDTH_INVALID] 
-/// * [SIZE_SYSTEM_INVALID] 
-/// * [SIZE_TYPE_INVALID] 
-/// * [TAX_INVALID] 
-/// * [TITLE_LENGTH_TOO_LONG] 
-/// * [TOO_MANY_ADDITIONAL_IMAGE_LINKS] 
-/// * [UTM_SOURCE_AUTO_CORRECTED] 
-/// * [VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED] 
-/// * [WEIGHT_UNIT_INVALID] 
+/// * [AD_IMAGE_0_LINK_DUPLICATED] - ad_image_0_link is duplicated with another ad image link.
+/// * [AD_IMAGE_0_LINK_LENGTH_TOO_LONG] - Ad image link 0 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_0_LINK_REQUIRED] - Ad image link 0 is required because an image tag was provided.
+/// * [AD_IMAGE_0_LINK_WARNING] - Ad image link 0 format is unsupported.
+/// * [AD_IMAGE_0_TAG_DUPLICATED] - ad_image_0_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_0_TAG_LENGTH_TOO_LONG] - Ad image tag 0 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_0_TAG_REQUIRED] - Ad image tag 0 is required because an image link was provided.
+/// * [AD_IMAGE_10_LINK_DUPLICATED] - ad_image_10_link is duplicated with another ad image link.
+/// * [AD_IMAGE_10_LINK_LENGTH_TOO_LONG] - Ad image link 10 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_10_LINK_REQUIRED] - Ad image link 10 is required because an image tag was provided.
+/// * [AD_IMAGE_10_LINK_WARNING] - Ad image link 10 format is unsupported.
+/// * [AD_IMAGE_10_TAG_DUPLICATED] - ad_image_10_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_10_TAG_LENGTH_TOO_LONG] - Ad image tag 10 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_10_TAG_REQUIRED] - Ad image tag 10 is required because an image link was provided.
+/// * [AD_IMAGE_11_LINK_DUPLICATED] - ad_image_11_link is duplicated with another ad image link.
+/// * [AD_IMAGE_11_LINK_LENGTH_TOO_LONG] - Ad image link 11 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_11_LINK_REQUIRED] - Ad image link 11 is required because an image tag was provided.
+/// * [AD_IMAGE_11_LINK_WARNING] - Ad image link 11 format is unsupported.
+/// * [AD_IMAGE_11_TAG_DUPLICATED] - ad_image_11_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_11_TAG_LENGTH_TOO_LONG] - Ad image tag 11 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_11_TAG_REQUIRED] - Ad image tag 11 is required because an image link was provided.
+/// * [AD_IMAGE_12_LINK_DUPLICATED] - ad_image_12_link is duplicated with another ad image link.
+/// * [AD_IMAGE_12_LINK_LENGTH_TOO_LONG] - Ad image link 12 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_12_LINK_REQUIRED] - Ad image link 12 is required because an image tag was provided.
+/// * [AD_IMAGE_12_LINK_WARNING] - Ad image link 12 format is unsupported.
+/// * [AD_IMAGE_12_TAG_DUPLICATED] - ad_image_12_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_12_TAG_LENGTH_TOO_LONG] - Ad image tag 12 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_12_TAG_REQUIRED] - Ad image tag 12 is required because an image link was provided.
+/// * [AD_IMAGE_13_LINK_DUPLICATED] - ad_image_13_link is duplicated with another ad image link.
+/// * [AD_IMAGE_13_LINK_LENGTH_TOO_LONG] - Ad image link 13 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_13_LINK_REQUIRED] - Ad image link 13 is required because an image tag was provided.
+/// * [AD_IMAGE_13_LINK_WARNING] - Ad image link 13 format is unsupported.
+/// * [AD_IMAGE_13_TAG_DUPLICATED] - ad_image_13_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_13_TAG_LENGTH_TOO_LONG] - Ad image tag 13 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_13_TAG_REQUIRED] - Ad image tag 13 is required because an image link was provided.
+/// * [AD_IMAGE_14_LINK_DUPLICATED] - ad_image_14_link is duplicated with another ad image link.
+/// * [AD_IMAGE_14_LINK_LENGTH_TOO_LONG] - Ad image link 14 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_14_LINK_REQUIRED] - Ad image link 14 is required because an image tag was provided.
+/// * [AD_IMAGE_14_LINK_WARNING] - Ad image link 14 format is unsupported.
+/// * [AD_IMAGE_14_TAG_DUPLICATED] - ad_image_14_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_14_TAG_LENGTH_TOO_LONG] - Ad image tag 14 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_14_TAG_REQUIRED] - Ad image tag 14 is required because an image link was provided.
+/// * [AD_IMAGE_15_LINK_DUPLICATED] - ad_image_15_link is duplicated with another ad image link.
+/// * [AD_IMAGE_15_LINK_LENGTH_TOO_LONG] - Ad image link 15 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_15_LINK_REQUIRED] - Ad image link 15 is required because an image tag was provided.
+/// * [AD_IMAGE_15_LINK_WARNING] - Ad image link 15 format is unsupported.
+/// * [AD_IMAGE_15_TAG_DUPLICATED] - ad_image_15_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_15_TAG_LENGTH_TOO_LONG] - Ad image tag 15 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_15_TAG_REQUIRED] - Ad image tag 15 is required because an image link was provided.
+/// * [AD_IMAGE_16_LINK_DUPLICATED] - ad_image_16_link is duplicated with another ad image link.
+/// * [AD_IMAGE_16_LINK_LENGTH_TOO_LONG] - Ad image link 16 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_16_LINK_REQUIRED] - Ad image link 16 is required because an image tag was provided.
+/// * [AD_IMAGE_16_LINK_WARNING] - Ad image link 16 format is unsupported.
+/// * [AD_IMAGE_16_TAG_DUPLICATED] - ad_image_16_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_16_TAG_LENGTH_TOO_LONG] - Ad image tag 16 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_16_TAG_REQUIRED] - Ad image tag 16 is required because an image link was provided.
+/// * [AD_IMAGE_17_LINK_DUPLICATED] - ad_image_17_link is duplicated with another ad image link.
+/// * [AD_IMAGE_17_LINK_LENGTH_TOO_LONG] - Ad image link 17 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_17_LINK_REQUIRED] - Ad image link 17 is required because an image tag was provided.
+/// * [AD_IMAGE_17_LINK_WARNING] - Ad image link 17 format is unsupported.
+/// * [AD_IMAGE_17_TAG_DUPLICATED] - ad_image_17_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_17_TAG_LENGTH_TOO_LONG] - Ad image tag 17 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_17_TAG_REQUIRED] - Ad image tag 17 is required because an image link was provided.
+/// * [AD_IMAGE_18_LINK_DUPLICATED] - ad_image_18_link is duplicated with another ad image link.
+/// * [AD_IMAGE_18_LINK_LENGTH_TOO_LONG] - Ad image link 18 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_18_LINK_REQUIRED] - Ad image link 18 is required because an image tag was provided.
+/// * [AD_IMAGE_18_LINK_WARNING] - Ad image link 18 format is unsupported.
+/// * [AD_IMAGE_18_TAG_DUPLICATED] - ad_image_18_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_18_TAG_LENGTH_TOO_LONG] - Ad image tag 18 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_18_TAG_REQUIRED] - Ad image tag 18 is required because an image link was provided.
+/// * [AD_IMAGE_19_LINK_DUPLICATED] - ad_image_19_link is duplicated with another ad image link.
+/// * [AD_IMAGE_19_LINK_LENGTH_TOO_LONG] - Ad image link 19 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_19_LINK_REQUIRED] - Ad image link 19 is required because an image tag was provided.
+/// * [AD_IMAGE_19_LINK_WARNING] - Ad image link 19 format is unsupported.
+/// * [AD_IMAGE_19_TAG_DUPLICATED] - ad_image_19_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_19_TAG_LENGTH_TOO_LONG] - Ad image tag 19 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_19_TAG_REQUIRED] - Ad image tag 19 is required because an image link was provided.
+/// * [AD_IMAGE_1_LINK_DUPLICATED] - ad_image_1_link is duplicated with another ad image link.
+/// * [AD_IMAGE_1_LINK_LENGTH_TOO_LONG] - Ad image link 1 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_1_LINK_REQUIRED] - Ad image link 1 is required because an image tag was provided.
+/// * [AD_IMAGE_1_LINK_WARNING] - Ad image link 1 format is unsupported.
+/// * [AD_IMAGE_1_TAG_DUPLICATED] - ad_image_1_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_1_TAG_LENGTH_TOO_LONG] - Ad image tag 1 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_1_TAG_REQUIRED] - Ad image tag 1 is required because an image link was provided.
+/// * [AD_IMAGE_2_LINK_DUPLICATED] - ad_image_2_link is duplicated with another ad image link.
+/// * [AD_IMAGE_2_LINK_LENGTH_TOO_LONG] - Ad image link 2 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_2_LINK_REQUIRED] - Ad image link 2 is required because an image tag was provided.
+/// * [AD_IMAGE_2_LINK_WARNING] - Ad image link 2 format is unsupported.
+/// * [AD_IMAGE_2_TAG_DUPLICATED] - ad_image_2_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_2_TAG_LENGTH_TOO_LONG] - Ad image tag 2 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_2_TAG_REQUIRED] - Ad image tag 2 is required because an image link was provided.
+/// * [AD_IMAGE_3_LINK_DUPLICATED] - ad_image_3_link is duplicated with another ad image link.
+/// * [AD_IMAGE_3_LINK_LENGTH_TOO_LONG] - Ad image link 3 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_3_LINK_REQUIRED] - Ad image link 3 is required because an image tag was provided.
+/// * [AD_IMAGE_3_LINK_WARNING] - Ad image link 3 format is unsupported.
+/// * [AD_IMAGE_3_TAG_DUPLICATED] - ad_image_3_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_3_TAG_LENGTH_TOO_LONG] - Ad image tag 3 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_3_TAG_REQUIRED] - Ad image tag 3 is required because an image link was provided.
+/// * [AD_IMAGE_4_LINK_DUPLICATED] - ad_image_4_link is duplicated with another ad image link.
+/// * [AD_IMAGE_4_LINK_LENGTH_TOO_LONG] - Ad image link 4 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_4_LINK_REQUIRED] - Ad image link 4 is required because an image tag was provided.
+/// * [AD_IMAGE_4_LINK_WARNING] - Ad image link 4 format is unsupported.
+/// * [AD_IMAGE_4_TAG_DUPLICATED] - ad_image_4_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_4_TAG_LENGTH_TOO_LONG] - Ad image tag 4 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_4_TAG_REQUIRED] - Ad image tag 4 is required because an image link was provided.
+/// * [AD_IMAGE_5_LINK_DUPLICATED] - ad_image_5_link is duplicated with another ad image link.
+/// * [AD_IMAGE_5_LINK_LENGTH_TOO_LONG] - Ad image link 5 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_5_LINK_REQUIRED] - Ad image link 5 is required because an image tag was provided.
+/// * [AD_IMAGE_5_LINK_WARNING] - Ad image link 5 format is unsupported.
+/// * [AD_IMAGE_5_TAG_DUPLICATED] - ad_image_5_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_5_TAG_LENGTH_TOO_LONG] - Ad image tag 5 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_5_TAG_REQUIRED] - Ad image tag 5 is required because an image link was provided.
+/// * [AD_IMAGE_6_LINK_DUPLICATED] - ad_image_6_link is duplicated with another ad image link.
+/// * [AD_IMAGE_6_LINK_LENGTH_TOO_LONG] - Ad image link 6 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_6_LINK_REQUIRED] - Ad image link 6 is required because an image tag was provided.
+/// * [AD_IMAGE_6_LINK_WARNING] - Ad image link 6 format is unsupported.
+/// * [AD_IMAGE_6_TAG_DUPLICATED] - ad_image_6_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_6_TAG_LENGTH_TOO_LONG] - Ad image tag 6 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_6_TAG_REQUIRED] - Ad image tag 6 is required because an image link was provided.
+/// * [AD_IMAGE_7_LINK_DUPLICATED] - ad_image_7_link is duplicated with another ad image link.
+/// * [AD_IMAGE_7_LINK_LENGTH_TOO_LONG] - Ad image link 7 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_7_LINK_REQUIRED] - Ad image link 7 is required because an image tag was provided.
+/// * [AD_IMAGE_7_LINK_WARNING] - Ad image link 7 format is unsupported.
+/// * [AD_IMAGE_7_TAG_DUPLICATED] - ad_image_7_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_7_TAG_LENGTH_TOO_LONG] - Ad image tag 7 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_7_TAG_REQUIRED] - Ad image tag 7 is required because an image link was provided.
+/// * [AD_IMAGE_8_LINK_DUPLICATED] - ad_image_8_link is duplicated with another ad image link.
+/// * [AD_IMAGE_8_LINK_LENGTH_TOO_LONG] - Ad image link 8 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_8_LINK_REQUIRED] - Ad image link 8 is required because an image tag was provided.
+/// * [AD_IMAGE_8_LINK_WARNING] - Ad image link 8 format is unsupported.
+/// * [AD_IMAGE_8_TAG_DUPLICATED] - ad_image_8_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_8_TAG_LENGTH_TOO_LONG] - Ad image tag 8 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_8_TAG_REQUIRED] - Ad image tag 8 is required because an image link was provided.
+/// * [AD_IMAGE_9_LINK_DUPLICATED] - ad_image_9_link is duplicated with another ad image link.
+/// * [AD_IMAGE_9_LINK_LENGTH_TOO_LONG] - Ad image link 9 length is too long. The maximum length is 2047 characters.
+/// * [AD_IMAGE_9_LINK_REQUIRED] - Ad image link 9 is required because an image tag was provided.
+/// * [AD_IMAGE_9_LINK_WARNING] - Ad image link 9 format is unsupported.
+/// * [AD_IMAGE_9_TAG_DUPLICATED] - ad_image_9_tag is duplicated with another ad image tag.
+/// * [AD_IMAGE_9_TAG_LENGTH_TOO_LONG] - Ad image tag 9 length is too long. The maximum length is 511 characters.
+/// * [AD_IMAGE_9_TAG_REQUIRED] - Ad image tag 9 is required because an image link was provided.
+/// * [AD_LINK_FORMAT_WARNING] - Item has an ad link that is formatted incorrectly.
+/// * [AD_LINK_SAME_AS_LINK] - Item has an ad link URL that is duplicate of the link URL.
+/// * [AD_VIDEO_0_LINK_DUPLICATED] - ad_video_0_link is duplicated with another ad video link.
+/// * [AD_VIDEO_0_LINK_LENGTH_TOO_LONG] - ad_video_0_link length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_0_LINK_REQUIRED] - ad_video_0_link is required for this item because ad_video_0_tag was provided.
+/// * [AD_VIDEO_0_LINK_WARNING] - ad_video_0_link is formatted incorrectly and will not be published with your items.
+/// * [AD_VIDEO_0_TAG_DUPLICATED] - ad_video_0_tag is duplicated with another ad video tag.
+/// * [AD_VIDEO_0_TAG_LENGTH_TOO_LONG] - ad_video_0_tag length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_0_TAG_REQUIRED] - ad_video_0_tag is required because ad_video_0_link was provided.
+/// * [AD_VIDEO_1_LINK_DUPLICATED] - ad_video_1_link is duplicated with another ad video link.
+/// * [AD_VIDEO_1_LINK_LENGTH_TOO_LONG] - ad_video_1_link length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_1_LINK_REQUIRED] - ad_video_1_link is required for this item because ad_video_1_tag was provided.
+/// * [AD_VIDEO_1_LINK_WARNING] - ad_video_1_link is formatted incorrectly and will not be published with your items.
+/// * [AD_VIDEO_1_TAG_DUPLICATED] - ad_video_1_tag is duplicated with another ad video tag.
+/// * [AD_VIDEO_1_TAG_LENGTH_TOO_LONG] - ad_video_1_tag length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_1_TAG_REQUIRED] - ad_video_1_tag is required because ad_video_1_link was provided.
+/// * [AD_VIDEO_2_LINK_DUPLICATED] - ad_video_2_link is duplicated with another ad video link.
+/// * [AD_VIDEO_2_LINK_LENGTH_TOO_LONG] - ad_video_2_link length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_2_LINK_REQUIRED] - ad_video_2_link is required for this item because ad_video_2_tag was provided.
+/// * [AD_VIDEO_2_LINK_WARNING] - ad_video_2_link is formatted incorrectly and will not be published with your items.
+/// * [AD_VIDEO_2_TAG_DUPLICATED] - ad_video_2_tag is duplicated with another ad video tag.
+/// * [AD_VIDEO_2_TAG_LENGTH_TOO_LONG] - ad_video_2_tag length is too long. The maximum length is 511 characters.
+/// * [AD_VIDEO_2_TAG_REQUIRED] - ad_video_2_tag is required because ad_video_2_link was provided.
+/// * [ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG] - Item has an additional_image_link URL that contains too many characters, so the item will not be published.
+/// * [ADDITIONAL_IMAGE_LINK_WARNING] - Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.
+/// * [ADWORDS_FORMAT_WARNING] - Item has an adwords_redirect link that is formatted incorrectly.
+/// * [ADWORDS_SAME_AS_LINK] - Item has an adwords_redirect URL that is duplicate of the link URL.
+/// * [AGE_GROUP_INVALID] - Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+/// * [ANDROID_DEEP_LINK_INVALID] - Item includes an invalid android_deep_link.
+/// * [AVAILABILITY_DATE_INVALID] - Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.
+/// * [COUNTRY_DOES_NOT_MAP_TO_CURRENCY] - Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.
+/// * [CUSTOM_LABEL_LENGTH_TOO_LONG] - Item has a custom_label value that is too long, this item will be published without that custom label.
+/// * [DESCRIPTION_LENGTH_TOO_LONG] - The description for this item was truncated because it contains too many characters.
+/// * [EXPIRATION_DATE_INVALID] - Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.
+/// * [GENDER_INVALID] - Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+/// * [GTIN_INVALID] - Item has a GTIN value that is formatted incorrectly.
+/// * [IMAGE_LINK_WARNING] - Item has an image_link URL that is formatted incorrectly and will not be published.
+/// * [IOS_DEEP_LINK_INVALID] - Item includes an invalid ios_deep_link value.
+/// * [IS_BUNDLE_INVALID] - Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.
+/// * [ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE] - Item includes additional_image_links that can't be found.
+/// * [LINK_FORMAT_WARNING] - Item has an invalid product link which contains invalid UTM tracking paramaters.
+/// * [MIN_AD_PRICE_INVALID] - Item includes a min_ad_price value that is formatted incorrectly.
+/// * [MPN_INVALID] - Item has a MPN value that is formatted incorrectly.
+/// * [MULTIPACK_INVALID] - Item has an invalid multipack value.
+/// * [OPTIONAL_CONDITION_INVALID] - Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+/// * [OPTIONAL_CONDITION_MISSING] - Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.
+/// * [OPTIONAL_PRODUCT_CATEGORY_INVALID] - Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.
+/// * [OPTIONAL_PRODUCT_CATEGORY_MISSING] - Item is missing google_product_category.
+/// * [PRODUCT_CATEGORY_DEPTH_WARNING] - Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.
+/// * [PRODUCT_TYPE_LENGTH_TOO_LONG] - Item has a product_type value that is too long, this item will be published without that product type.
+/// * [SALE_DATE_INVALID] - Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.
+/// * [SALES_PRICE_INVALID] - Item has an incorrectly formatted sales price.
+/// * [SALES_PRICE_TOO_HIGH] - Item has a sale price value that is higher than the original price of the item.
+/// * [SALES_PRICE_TOO_LOW] - Item has a sale price value that is discounted very low compared to the price.
+/// * [SHIPPING_HEIGHT_INVALID] - Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.
+/// * [SHIPPING_INVALID] - Item has a shipping value that is formatted incorrectly.
+/// * [SHIPPING_WEIGHT_INVALID] - Item has an invalid shipping_weight value.
+/// * [SHIPPING_WIDTH_INVALID] - Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.
+/// * [SIZE_SYSTEM_INVALID] - Some items have size system values which are not one of the supported size systems.
+/// * [SIZE_TYPE_INVALID] - Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+/// * [TAX_INVALID] - Item has a tax value that is formatted incorrectly.
+/// * [TITLE_LENGTH_TOO_LONG] - The title for the item was truncated because it contains too many characters.
+/// * [TOO_MANY_ADDITIONAL_IMAGE_LINKS] - Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.
+/// * [UTM_SOURCE_AUTO_CORRECTED] - Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.
+/// * [VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED] - A video is required in the item when ad_video fields are provided.
+/// * [WEIGHT_UNIT_INVALID] - Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.
 @BuiltValue()
 abstract class CatalogsItemValidationWarnings implements Built<CatalogsItemValidationWarnings, CatalogsItemValidationWarningsBuilder> {
+  /// ad_image_0_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_0_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE0LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_0_LINK_DUPLICATED;
 
+  /// Ad image link 0 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE0LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 0 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_0_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE0LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_0_LINK_REQUIRED;
 
+  /// Ad image link 0 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_0_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE0LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_0_LINK_WARNING;
 
+  /// ad_image_0_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_0_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE0TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_0_TAG_DUPLICATED;
 
+  /// Ad image tag 0 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE0TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 0 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_0_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE0TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_0_TAG_REQUIRED;
 
+  /// ad_image_10_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_10_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE10LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_10_LINK_DUPLICATED;
 
+  /// Ad image link 10 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE10LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 10 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_10_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE10LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_10_LINK_REQUIRED;
 
+  /// Ad image link 10 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_10_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE10LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_10_LINK_WARNING;
 
+  /// ad_image_10_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_10_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE10TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_10_TAG_DUPLICATED;
 
+  /// Ad image tag 10 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE10TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 10 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_10_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE10TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_10_TAG_REQUIRED;
 
+  /// ad_image_11_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_11_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE11LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_11_LINK_DUPLICATED;
 
+  /// Ad image link 11 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE11LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 11 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_11_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE11LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_11_LINK_REQUIRED;
 
+  /// Ad image link 11 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_11_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE11LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_11_LINK_WARNING;
 
+  /// ad_image_11_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_11_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE11TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_11_TAG_DUPLICATED;
 
+  /// Ad image tag 11 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE11TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 11 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_11_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE11TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_11_TAG_REQUIRED;
 
+  /// ad_image_12_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_12_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE12LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_12_LINK_DUPLICATED;
 
+  /// Ad image link 12 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE12LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 12 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_12_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE12LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_12_LINK_REQUIRED;
 
+  /// Ad image link 12 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_12_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE12LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_12_LINK_WARNING;
 
+  /// ad_image_12_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_12_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE12TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_12_TAG_DUPLICATED;
 
+  /// Ad image tag 12 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE12TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 12 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_12_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE12TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_12_TAG_REQUIRED;
 
+  /// ad_image_13_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_13_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE13LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_13_LINK_DUPLICATED;
 
+  /// Ad image link 13 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE13LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 13 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_13_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE13LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_13_LINK_REQUIRED;
 
+  /// Ad image link 13 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_13_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE13LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_13_LINK_WARNING;
 
+  /// ad_image_13_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_13_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE13TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_13_TAG_DUPLICATED;
 
+  /// Ad image tag 13 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE13TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 13 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_13_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE13TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_13_TAG_REQUIRED;
 
+  /// ad_image_14_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_14_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE14LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_14_LINK_DUPLICATED;
 
+  /// Ad image link 14 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE14LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 14 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_14_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE14LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_14_LINK_REQUIRED;
 
+  /// Ad image link 14 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_14_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE14LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_14_LINK_WARNING;
 
+  /// ad_image_14_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_14_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE14TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_14_TAG_DUPLICATED;
 
+  /// Ad image tag 14 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE14TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 14 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_14_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE14TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_14_TAG_REQUIRED;
 
+  /// ad_image_15_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_15_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE15LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_15_LINK_DUPLICATED;
 
+  /// Ad image link 15 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE15LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 15 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_15_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE15LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_15_LINK_REQUIRED;
 
+  /// Ad image link 15 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_15_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE15LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_15_LINK_WARNING;
 
+  /// ad_image_15_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_15_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE15TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_15_TAG_DUPLICATED;
 
+  /// Ad image tag 15 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE15TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 15 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_15_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE15TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_15_TAG_REQUIRED;
 
+  /// ad_image_16_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_16_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE16LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_16_LINK_DUPLICATED;
 
+  /// Ad image link 16 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE16LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 16 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_16_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE16LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_16_LINK_REQUIRED;
 
+  /// Ad image link 16 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_16_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE16LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_16_LINK_WARNING;
 
+  /// ad_image_16_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_16_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE16TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_16_TAG_DUPLICATED;
 
+  /// Ad image tag 16 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE16TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 16 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_16_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE16TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_16_TAG_REQUIRED;
 
+  /// ad_image_17_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_17_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE17LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_17_LINK_DUPLICATED;
 
+  /// Ad image link 17 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE17LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 17 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_17_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE17LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_17_LINK_REQUIRED;
 
+  /// Ad image link 17 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_17_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE17LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_17_LINK_WARNING;
 
+  /// ad_image_17_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_17_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE17TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_17_TAG_DUPLICATED;
 
+  /// Ad image tag 17 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE17TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 17 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_17_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE17TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_17_TAG_REQUIRED;
 
+  /// ad_image_18_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_18_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE18LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_18_LINK_DUPLICATED;
 
+  /// Ad image link 18 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE18LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 18 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_18_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE18LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_18_LINK_REQUIRED;
 
+  /// Ad image link 18 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_18_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE18LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_18_LINK_WARNING;
 
+  /// ad_image_18_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_18_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE18TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_18_TAG_DUPLICATED;
 
+  /// Ad image tag 18 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE18TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 18 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_18_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE18TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_18_TAG_REQUIRED;
 
+  /// ad_image_19_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_19_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE19LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_19_LINK_DUPLICATED;
 
+  /// Ad image link 19 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE19LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 19 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_19_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE19LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_19_LINK_REQUIRED;
 
+  /// Ad image link 19 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_19_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE19LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_19_LINK_WARNING;
 
+  /// ad_image_19_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_19_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE19TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_19_TAG_DUPLICATED;
 
+  /// Ad image tag 19 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE19TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 19 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_19_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE19TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_19_TAG_REQUIRED;
 
+  /// ad_image_1_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_1_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE1LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_1_LINK_DUPLICATED;
 
+  /// Ad image link 1 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE1LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 1 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_1_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE1LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_1_LINK_REQUIRED;
 
+  /// Ad image link 1 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_1_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE1LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_1_LINK_WARNING;
 
+  /// ad_image_1_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_1_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE1TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_1_TAG_DUPLICATED;
 
+  /// Ad image tag 1 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE1TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 1 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_1_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE1TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_1_TAG_REQUIRED;
 
+  /// ad_image_2_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_2_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE2LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_2_LINK_DUPLICATED;
 
+  /// Ad image link 2 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE2LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 2 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_2_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE2LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_2_LINK_REQUIRED;
 
+  /// Ad image link 2 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_2_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE2LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_2_LINK_WARNING;
 
+  /// ad_image_2_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_2_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE2TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_2_TAG_DUPLICATED;
 
+  /// Ad image tag 2 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE2TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 2 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_2_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE2TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_2_TAG_REQUIRED;
 
+  /// ad_image_3_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_3_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE3LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_3_LINK_DUPLICATED;
 
+  /// Ad image link 3 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE3LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 3 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_3_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE3LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_3_LINK_REQUIRED;
 
+  /// Ad image link 3 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_3_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE3LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_3_LINK_WARNING;
 
+  /// ad_image_3_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_3_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE3TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_3_TAG_DUPLICATED;
 
+  /// Ad image tag 3 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE3TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 3 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_3_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE3TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_3_TAG_REQUIRED;
 
+  /// ad_image_4_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_4_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE4LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_4_LINK_DUPLICATED;
 
+  /// Ad image link 4 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE4LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 4 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_4_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE4LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_4_LINK_REQUIRED;
 
+  /// Ad image link 4 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_4_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE4LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_4_LINK_WARNING;
 
+  /// ad_image_4_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_4_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE4TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_4_TAG_DUPLICATED;
 
+  /// Ad image tag 4 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE4TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 4 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_4_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE4TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_4_TAG_REQUIRED;
 
+  /// ad_image_5_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_5_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE5LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_5_LINK_DUPLICATED;
 
+  /// Ad image link 5 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE5LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 5 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_5_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE5LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_5_LINK_REQUIRED;
 
+  /// Ad image link 5 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_5_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE5LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_5_LINK_WARNING;
 
+  /// ad_image_5_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_5_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE5TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_5_TAG_DUPLICATED;
 
+  /// Ad image tag 5 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE5TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 5 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_5_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE5TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_5_TAG_REQUIRED;
 
+  /// ad_image_6_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_6_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE6LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_6_LINK_DUPLICATED;
 
+  /// Ad image link 6 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE6LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 6 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_6_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE6LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_6_LINK_REQUIRED;
 
+  /// Ad image link 6 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_6_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE6LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_6_LINK_WARNING;
 
+  /// ad_image_6_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_6_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE6TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_6_TAG_DUPLICATED;
 
+  /// Ad image tag 6 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE6TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 6 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_6_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE6TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_6_TAG_REQUIRED;
 
+  /// ad_image_7_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_7_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE7LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_7_LINK_DUPLICATED;
 
+  /// Ad image link 7 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE7LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 7 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_7_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE7LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_7_LINK_REQUIRED;
 
+  /// Ad image link 7 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_7_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE7LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_7_LINK_WARNING;
 
+  /// ad_image_7_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_7_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE7TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_7_TAG_DUPLICATED;
 
+  /// Ad image tag 7 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE7TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 7 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_7_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE7TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_7_TAG_REQUIRED;
 
+  /// ad_image_8_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_8_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE8LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_8_LINK_DUPLICATED;
 
+  /// Ad image link 8 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE8LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 8 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_8_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE8LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_8_LINK_REQUIRED;
 
+  /// Ad image link 8 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_8_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE8LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_8_LINK_WARNING;
 
+  /// ad_image_8_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_8_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE8TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_8_TAG_DUPLICATED;
 
+  /// Ad image tag 8 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE8TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 8 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_8_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE8TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_8_TAG_REQUIRED;
 
+  /// ad_image_9_link is duplicated with another ad image link.
   @BuiltValueField(wireName: r'AD_IMAGE_9_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE9LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_9_LINK_DUPLICATED;
 
+  /// Ad image link 9 length is too long. The maximum length is 2047 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE9LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 9 is required because an image tag was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_9_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE9LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_9_LINK_REQUIRED;
 
+  /// Ad image link 9 format is unsupported.
   @BuiltValueField(wireName: r'AD_IMAGE_9_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDIMAGE9LINKWARNING;
+  CatalogsItemValidationDetails? get AD_IMAGE_9_LINK_WARNING;
 
+  /// ad_image_9_tag is duplicated with another ad image tag.
   @BuiltValueField(wireName: r'AD_IMAGE_9_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDIMAGE9TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_IMAGE_9_TAG_DUPLICATED;
 
+  /// Ad image tag 9 length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDIMAGE9TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 9 is required because an image link was provided.
   @BuiltValueField(wireName: r'AD_IMAGE_9_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDIMAGE9TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_IMAGE_9_TAG_REQUIRED;
 
+  /// Item has an ad link that is formatted incorrectly.
   @BuiltValueField(wireName: r'AD_LINK_FORMAT_WARNING')
   CatalogsItemValidationDetails? get AD_LINK_FORMAT_WARNING;
 
+  /// Item has an ad link URL that is duplicate of the link URL.
   @BuiltValueField(wireName: r'AD_LINK_SAME_AS_LINK')
   CatalogsItemValidationDetails? get AD_LINK_SAME_AS_LINK;
 
+  /// ad_video_0_link is duplicated with another ad video link.
   @BuiltValueField(wireName: r'AD_VIDEO_0_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDVIDEO0LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_VIDEO_0_LINK_DUPLICATED;
 
+  /// ad_video_0_link length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDVIDEO0LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
 
+  /// ad_video_0_link is required for this item because ad_video_0_tag was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_0_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDVIDEO0LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_VIDEO_0_LINK_REQUIRED;
 
+  /// ad_video_0_link is formatted incorrectly and will not be published with your items.
   @BuiltValueField(wireName: r'AD_VIDEO_0_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDVIDEO0LINKWARNING;
+  CatalogsItemValidationDetails? get AD_VIDEO_0_LINK_WARNING;
 
+  /// ad_video_0_tag is duplicated with another ad video tag.
   @BuiltValueField(wireName: r'AD_VIDEO_0_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDVIDEO0TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_VIDEO_0_TAG_DUPLICATED;
 
+  /// ad_video_0_tag length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDVIDEO0TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
 
+  /// ad_video_0_tag is required because ad_video_0_link was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_0_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDVIDEO0TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_VIDEO_0_TAG_REQUIRED;
 
+  /// ad_video_1_link is duplicated with another ad video link.
   @BuiltValueField(wireName: r'AD_VIDEO_1_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDVIDEO1LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_VIDEO_1_LINK_DUPLICATED;
 
+  /// ad_video_1_link length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDVIDEO1LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
 
+  /// ad_video_1_link is required for this item because ad_video_1_tag was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_1_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDVIDEO1LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_VIDEO_1_LINK_REQUIRED;
 
+  /// ad_video_1_link is formatted incorrectly and will not be published with your items.
   @BuiltValueField(wireName: r'AD_VIDEO_1_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDVIDEO1LINKWARNING;
+  CatalogsItemValidationDetails? get AD_VIDEO_1_LINK_WARNING;
 
+  /// ad_video_1_tag is duplicated with another ad video tag.
   @BuiltValueField(wireName: r'AD_VIDEO_1_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDVIDEO1TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_VIDEO_1_TAG_DUPLICATED;
 
+  /// ad_video_1_tag length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDVIDEO1TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
 
+  /// ad_video_1_tag is required because ad_video_1_link was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_1_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDVIDEO1TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_VIDEO_1_TAG_REQUIRED;
 
+  /// ad_video_2_link is duplicated with another ad video link.
   @BuiltValueField(wireName: r'AD_VIDEO_2_LINK_DUPLICATED')
-  CatalogsItemValidationDetails? get aDVIDEO2LINKDUPLICATED;
+  CatalogsItemValidationDetails? get AD_VIDEO_2_LINK_DUPLICATED;
 
+  /// ad_video_2_link length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDVIDEO2LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
 
+  /// ad_video_2_link is required for this item because ad_video_2_tag was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_2_LINK_REQUIRED')
-  CatalogsItemValidationDetails? get aDVIDEO2LINKREQUIRED;
+  CatalogsItemValidationDetails? get AD_VIDEO_2_LINK_REQUIRED;
 
+  /// ad_video_2_link is formatted incorrectly and will not be published with your items.
   @BuiltValueField(wireName: r'AD_VIDEO_2_LINK_WARNING')
-  CatalogsItemValidationDetails? get aDVIDEO2LINKWARNING;
+  CatalogsItemValidationDetails? get AD_VIDEO_2_LINK_WARNING;
 
+  /// ad_video_2_tag is duplicated with another ad video tag.
   @BuiltValueField(wireName: r'AD_VIDEO_2_TAG_DUPLICATED')
-  CatalogsItemValidationDetails? get aDVIDEO2TAGDUPLICATED;
+  CatalogsItemValidationDetails? get AD_VIDEO_2_TAG_DUPLICATED;
 
+  /// ad_video_2_tag length is too long. The maximum length is 511 characters.
   @BuiltValueField(wireName: r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG')
-  CatalogsItemValidationDetails? get aDVIDEO2TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? get AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
 
+  /// ad_video_2_tag is required because ad_video_2_link was provided.
   @BuiltValueField(wireName: r'AD_VIDEO_2_TAG_REQUIRED')
-  CatalogsItemValidationDetails? get aDVIDEO2TAGREQUIRED;
+  CatalogsItemValidationDetails? get AD_VIDEO_2_TAG_REQUIRED;
 
+  /// Item has an additional_image_link URL that contains too many characters, so the item will not be published.
   @BuiltValueField(wireName: r'ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG')
   CatalogsItemValidationDetails? get ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
+  /// Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.
   @BuiltValueField(wireName: r'ADDITIONAL_IMAGE_LINK_WARNING')
   CatalogsItemValidationDetails? get ADDITIONAL_IMAGE_LINK_WARNING;
 
+  /// Item has an adwords_redirect link that is formatted incorrectly.
   @BuiltValueField(wireName: r'ADWORDS_FORMAT_WARNING')
   CatalogsItemValidationDetails? get ADWORDS_FORMAT_WARNING;
 
+  /// Item has an adwords_redirect URL that is duplicate of the link URL.
   @BuiltValueField(wireName: r'ADWORDS_SAME_AS_LINK')
   CatalogsItemValidationDetails? get ADWORDS_SAME_AS_LINK;
 
+  /// Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
   @BuiltValueField(wireName: r'AGE_GROUP_INVALID')
   CatalogsItemValidationDetails? get AGE_GROUP_INVALID;
 
+  /// Item includes an invalid android_deep_link.
   @BuiltValueField(wireName: r'ANDROID_DEEP_LINK_INVALID')
   CatalogsItemValidationDetails? get ANDROID_DEEP_LINK_INVALID;
 
+  /// Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.
   @BuiltValueField(wireName: r'AVAILABILITY_DATE_INVALID')
   CatalogsItemValidationDetails? get AVAILABILITY_DATE_INVALID;
 
+  /// Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.
   @BuiltValueField(wireName: r'COUNTRY_DOES_NOT_MAP_TO_CURRENCY')
   CatalogsItemValidationDetails? get COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
+  /// Item has a custom_label value that is too long, this item will be published without that custom label.
   @BuiltValueField(wireName: r'CUSTOM_LABEL_LENGTH_TOO_LONG')
   CatalogsItemValidationDetails? get CUSTOM_LABEL_LENGTH_TOO_LONG;
 
+  /// The description for this item was truncated because it contains too many characters.
   @BuiltValueField(wireName: r'DESCRIPTION_LENGTH_TOO_LONG')
   CatalogsItemValidationDetails? get DESCRIPTION_LENGTH_TOO_LONG;
 
+  /// Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.
   @BuiltValueField(wireName: r'EXPIRATION_DATE_INVALID')
   CatalogsItemValidationDetails? get EXPIRATION_DATE_INVALID;
 
+  /// Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
   @BuiltValueField(wireName: r'GENDER_INVALID')
   CatalogsItemValidationDetails? get GENDER_INVALID;
 
+  /// Item has a GTIN value that is formatted incorrectly.
   @BuiltValueField(wireName: r'GTIN_INVALID')
   CatalogsItemValidationDetails? get GTIN_INVALID;
 
+  /// Item has an image_link URL that is formatted incorrectly and will not be published.
   @BuiltValueField(wireName: r'IMAGE_LINK_WARNING')
   CatalogsItemValidationDetails? get IMAGE_LINK_WARNING;
 
+  /// Item includes an invalid ios_deep_link value.
   @BuiltValueField(wireName: r'IOS_DEEP_LINK_INVALID')
   CatalogsItemValidationDetails? get IOS_DEEP_LINK_INVALID;
 
+  /// Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.
   @BuiltValueField(wireName: r'IS_BUNDLE_INVALID')
   CatalogsItemValidationDetails? get IS_BUNDLE_INVALID;
 
+  /// Item includes additional_image_links that can't be found.
   @BuiltValueField(wireName: r'ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE')
   CatalogsItemValidationDetails? get ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
+  /// Item has an invalid product link which contains invalid UTM tracking paramaters.
   @BuiltValueField(wireName: r'LINK_FORMAT_WARNING')
   CatalogsItemValidationDetails? get LINK_FORMAT_WARNING;
 
+  /// Item includes a min_ad_price value that is formatted incorrectly.
   @BuiltValueField(wireName: r'MIN_AD_PRICE_INVALID')
   CatalogsItemValidationDetails? get MIN_AD_PRICE_INVALID;
 
+  /// Item has a MPN value that is formatted incorrectly.
   @BuiltValueField(wireName: r'MPN_INVALID')
   CatalogsItemValidationDetails? get MPN_INVALID;
 
+  /// Item has an invalid multipack value.
   @BuiltValueField(wireName: r'MULTIPACK_INVALID')
   CatalogsItemValidationDetails? get MULTIPACK_INVALID;
 
+  /// Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
   @BuiltValueField(wireName: r'OPTIONAL_CONDITION_INVALID')
   CatalogsItemValidationDetails? get OPTIONAL_CONDITION_INVALID;
 
+  /// Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.
   @BuiltValueField(wireName: r'OPTIONAL_CONDITION_MISSING')
   CatalogsItemValidationDetails? get OPTIONAL_CONDITION_MISSING;
 
+  /// Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.
   @BuiltValueField(wireName: r'OPTIONAL_PRODUCT_CATEGORY_INVALID')
   CatalogsItemValidationDetails? get OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
+  /// Item is missing google_product_category.
   @BuiltValueField(wireName: r'OPTIONAL_PRODUCT_CATEGORY_MISSING')
   CatalogsItemValidationDetails? get OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
+  /// Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.
   @BuiltValueField(wireName: r'PRODUCT_CATEGORY_DEPTH_WARNING')
   CatalogsItemValidationDetails? get PRODUCT_CATEGORY_DEPTH_WARNING;
 
+  /// Item has a product_type value that is too long, this item will be published without that product type.
   @BuiltValueField(wireName: r'PRODUCT_TYPE_LENGTH_TOO_LONG')
   CatalogsItemValidationDetails? get PRODUCT_TYPE_LENGTH_TOO_LONG;
 
+  /// Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.
   @BuiltValueField(wireName: r'SALE_DATE_INVALID')
   CatalogsItemValidationDetails? get SALE_DATE_INVALID;
 
+  /// Item has an incorrectly formatted sales price.
   @BuiltValueField(wireName: r'SALES_PRICE_INVALID')
   CatalogsItemValidationDetails? get SALES_PRICE_INVALID;
 
+  /// Item has a sale price value that is higher than the original price of the item.
   @BuiltValueField(wireName: r'SALES_PRICE_TOO_HIGH')
   CatalogsItemValidationDetails? get SALES_PRICE_TOO_HIGH;
 
+  /// Item has a sale price value that is discounted very low compared to the price.
   @BuiltValueField(wireName: r'SALES_PRICE_TOO_LOW')
   CatalogsItemValidationDetails? get SALES_PRICE_TOO_LOW;
 
+  /// Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.
   @BuiltValueField(wireName: r'SHIPPING_HEIGHT_INVALID')
   CatalogsItemValidationDetails? get SHIPPING_HEIGHT_INVALID;
 
+  /// Item has a shipping value that is formatted incorrectly.
   @BuiltValueField(wireName: r'SHIPPING_INVALID')
   CatalogsItemValidationDetails? get SHIPPING_INVALID;
 
+  /// Item has an invalid shipping_weight value.
   @BuiltValueField(wireName: r'SHIPPING_WEIGHT_INVALID')
   CatalogsItemValidationDetails? get SHIPPING_WEIGHT_INVALID;
 
+  /// Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.
   @BuiltValueField(wireName: r'SHIPPING_WIDTH_INVALID')
   CatalogsItemValidationDetails? get SHIPPING_WIDTH_INVALID;
 
+  /// Some items have size system values which are not one of the supported size systems.
   @BuiltValueField(wireName: r'SIZE_SYSTEM_INVALID')
   CatalogsItemValidationDetails? get SIZE_SYSTEM_INVALID;
 
+  /// Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
   @BuiltValueField(wireName: r'SIZE_TYPE_INVALID')
   CatalogsItemValidationDetails? get SIZE_TYPE_INVALID;
 
+  /// Item has a tax value that is formatted incorrectly.
   @BuiltValueField(wireName: r'TAX_INVALID')
   CatalogsItemValidationDetails? get TAX_INVALID;
 
+  /// The title for the item was truncated because it contains too many characters.
   @BuiltValueField(wireName: r'TITLE_LENGTH_TOO_LONG')
   CatalogsItemValidationDetails? get TITLE_LENGTH_TOO_LONG;
 
+  /// Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.
   @BuiltValueField(wireName: r'TOO_MANY_ADDITIONAL_IMAGE_LINKS')
   CatalogsItemValidationDetails? get TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
+  /// Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.
   @BuiltValueField(wireName: r'UTM_SOURCE_AUTO_CORRECTED')
   CatalogsItemValidationDetails? get UTM_SOURCE_AUTO_CORRECTED;
 
+  /// A video is required in the item when ad_video fields are provided.
   @BuiltValueField(wireName: r'VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED')
   CatalogsItemValidationDetails? get VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
 
+  /// Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.
   @BuiltValueField(wireName: r'WEIGHT_UNIT_INVALID')
   CatalogsItemValidationDetails? get WEIGHT_UNIT_INVALID;
 
@@ -861,983 +1067,983 @@ class _$CatalogsItemValidationWarningsSerializer implements PrimitiveSerializer<
     CatalogsItemValidationWarnings object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.aDIMAGE0LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_0_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_0_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE0LINKDUPLICATED,
+        object.AD_IMAGE_0_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE0LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_0_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE0LINKLENGTHTOOLONG,
+        object.AD_IMAGE_0_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE0LINKREQUIRED != null) {
+    if (object.AD_IMAGE_0_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_0_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE0LINKREQUIRED,
+        object.AD_IMAGE_0_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE0LINKWARNING != null) {
+    if (object.AD_IMAGE_0_LINK_WARNING != null) {
       yield r'AD_IMAGE_0_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE0LINKWARNING,
+        object.AD_IMAGE_0_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE0TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_0_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_0_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE0TAGDUPLICATED,
+        object.AD_IMAGE_0_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE0TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_0_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE0TAGLENGTHTOOLONG,
+        object.AD_IMAGE_0_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE0TAGREQUIRED != null) {
+    if (object.AD_IMAGE_0_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_0_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE0TAGREQUIRED,
+        object.AD_IMAGE_0_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE10LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_10_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_10_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE10LINKDUPLICATED,
+        object.AD_IMAGE_10_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE10LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_10_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE10LINKLENGTHTOOLONG,
+        object.AD_IMAGE_10_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE10LINKREQUIRED != null) {
+    if (object.AD_IMAGE_10_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_10_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE10LINKREQUIRED,
+        object.AD_IMAGE_10_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE10LINKWARNING != null) {
+    if (object.AD_IMAGE_10_LINK_WARNING != null) {
       yield r'AD_IMAGE_10_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE10LINKWARNING,
+        object.AD_IMAGE_10_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE10TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_10_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_10_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE10TAGDUPLICATED,
+        object.AD_IMAGE_10_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE10TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_10_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE10TAGLENGTHTOOLONG,
+        object.AD_IMAGE_10_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE10TAGREQUIRED != null) {
+    if (object.AD_IMAGE_10_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_10_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE10TAGREQUIRED,
+        object.AD_IMAGE_10_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE11LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_11_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_11_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE11LINKDUPLICATED,
+        object.AD_IMAGE_11_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE11LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_11_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE11LINKLENGTHTOOLONG,
+        object.AD_IMAGE_11_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE11LINKREQUIRED != null) {
+    if (object.AD_IMAGE_11_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_11_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE11LINKREQUIRED,
+        object.AD_IMAGE_11_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE11LINKWARNING != null) {
+    if (object.AD_IMAGE_11_LINK_WARNING != null) {
       yield r'AD_IMAGE_11_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE11LINKWARNING,
+        object.AD_IMAGE_11_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE11TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_11_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_11_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE11TAGDUPLICATED,
+        object.AD_IMAGE_11_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE11TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_11_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE11TAGLENGTHTOOLONG,
+        object.AD_IMAGE_11_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE11TAGREQUIRED != null) {
+    if (object.AD_IMAGE_11_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_11_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE11TAGREQUIRED,
+        object.AD_IMAGE_11_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE12LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_12_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_12_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE12LINKDUPLICATED,
+        object.AD_IMAGE_12_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE12LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_12_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE12LINKLENGTHTOOLONG,
+        object.AD_IMAGE_12_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE12LINKREQUIRED != null) {
+    if (object.AD_IMAGE_12_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_12_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE12LINKREQUIRED,
+        object.AD_IMAGE_12_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE12LINKWARNING != null) {
+    if (object.AD_IMAGE_12_LINK_WARNING != null) {
       yield r'AD_IMAGE_12_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE12LINKWARNING,
+        object.AD_IMAGE_12_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE12TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_12_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_12_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE12TAGDUPLICATED,
+        object.AD_IMAGE_12_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE12TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_12_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE12TAGLENGTHTOOLONG,
+        object.AD_IMAGE_12_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE12TAGREQUIRED != null) {
+    if (object.AD_IMAGE_12_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_12_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE12TAGREQUIRED,
+        object.AD_IMAGE_12_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE13LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_13_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_13_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE13LINKDUPLICATED,
+        object.AD_IMAGE_13_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE13LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_13_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE13LINKLENGTHTOOLONG,
+        object.AD_IMAGE_13_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE13LINKREQUIRED != null) {
+    if (object.AD_IMAGE_13_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_13_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE13LINKREQUIRED,
+        object.AD_IMAGE_13_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE13LINKWARNING != null) {
+    if (object.AD_IMAGE_13_LINK_WARNING != null) {
       yield r'AD_IMAGE_13_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE13LINKWARNING,
+        object.AD_IMAGE_13_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE13TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_13_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_13_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE13TAGDUPLICATED,
+        object.AD_IMAGE_13_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE13TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_13_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE13TAGLENGTHTOOLONG,
+        object.AD_IMAGE_13_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE13TAGREQUIRED != null) {
+    if (object.AD_IMAGE_13_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_13_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE13TAGREQUIRED,
+        object.AD_IMAGE_13_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE14LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_14_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_14_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE14LINKDUPLICATED,
+        object.AD_IMAGE_14_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE14LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_14_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE14LINKLENGTHTOOLONG,
+        object.AD_IMAGE_14_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE14LINKREQUIRED != null) {
+    if (object.AD_IMAGE_14_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_14_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE14LINKREQUIRED,
+        object.AD_IMAGE_14_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE14LINKWARNING != null) {
+    if (object.AD_IMAGE_14_LINK_WARNING != null) {
       yield r'AD_IMAGE_14_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE14LINKWARNING,
+        object.AD_IMAGE_14_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE14TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_14_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_14_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE14TAGDUPLICATED,
+        object.AD_IMAGE_14_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE14TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_14_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE14TAGLENGTHTOOLONG,
+        object.AD_IMAGE_14_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE14TAGREQUIRED != null) {
+    if (object.AD_IMAGE_14_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_14_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE14TAGREQUIRED,
+        object.AD_IMAGE_14_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE15LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_15_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_15_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE15LINKDUPLICATED,
+        object.AD_IMAGE_15_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE15LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_15_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE15LINKLENGTHTOOLONG,
+        object.AD_IMAGE_15_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE15LINKREQUIRED != null) {
+    if (object.AD_IMAGE_15_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_15_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE15LINKREQUIRED,
+        object.AD_IMAGE_15_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE15LINKWARNING != null) {
+    if (object.AD_IMAGE_15_LINK_WARNING != null) {
       yield r'AD_IMAGE_15_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE15LINKWARNING,
+        object.AD_IMAGE_15_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE15TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_15_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_15_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE15TAGDUPLICATED,
+        object.AD_IMAGE_15_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE15TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_15_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE15TAGLENGTHTOOLONG,
+        object.AD_IMAGE_15_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE15TAGREQUIRED != null) {
+    if (object.AD_IMAGE_15_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_15_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE15TAGREQUIRED,
+        object.AD_IMAGE_15_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE16LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_16_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_16_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE16LINKDUPLICATED,
+        object.AD_IMAGE_16_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE16LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_16_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE16LINKLENGTHTOOLONG,
+        object.AD_IMAGE_16_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE16LINKREQUIRED != null) {
+    if (object.AD_IMAGE_16_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_16_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE16LINKREQUIRED,
+        object.AD_IMAGE_16_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE16LINKWARNING != null) {
+    if (object.AD_IMAGE_16_LINK_WARNING != null) {
       yield r'AD_IMAGE_16_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE16LINKWARNING,
+        object.AD_IMAGE_16_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE16TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_16_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_16_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE16TAGDUPLICATED,
+        object.AD_IMAGE_16_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE16TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_16_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE16TAGLENGTHTOOLONG,
+        object.AD_IMAGE_16_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE16TAGREQUIRED != null) {
+    if (object.AD_IMAGE_16_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_16_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE16TAGREQUIRED,
+        object.AD_IMAGE_16_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE17LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_17_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_17_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE17LINKDUPLICATED,
+        object.AD_IMAGE_17_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE17LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_17_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE17LINKLENGTHTOOLONG,
+        object.AD_IMAGE_17_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE17LINKREQUIRED != null) {
+    if (object.AD_IMAGE_17_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_17_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE17LINKREQUIRED,
+        object.AD_IMAGE_17_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE17LINKWARNING != null) {
+    if (object.AD_IMAGE_17_LINK_WARNING != null) {
       yield r'AD_IMAGE_17_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE17LINKWARNING,
+        object.AD_IMAGE_17_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE17TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_17_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_17_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE17TAGDUPLICATED,
+        object.AD_IMAGE_17_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE17TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_17_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE17TAGLENGTHTOOLONG,
+        object.AD_IMAGE_17_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE17TAGREQUIRED != null) {
+    if (object.AD_IMAGE_17_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_17_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE17TAGREQUIRED,
+        object.AD_IMAGE_17_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE18LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_18_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_18_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE18LINKDUPLICATED,
+        object.AD_IMAGE_18_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE18LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_18_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE18LINKLENGTHTOOLONG,
+        object.AD_IMAGE_18_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE18LINKREQUIRED != null) {
+    if (object.AD_IMAGE_18_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_18_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE18LINKREQUIRED,
+        object.AD_IMAGE_18_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE18LINKWARNING != null) {
+    if (object.AD_IMAGE_18_LINK_WARNING != null) {
       yield r'AD_IMAGE_18_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE18LINKWARNING,
+        object.AD_IMAGE_18_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE18TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_18_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_18_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE18TAGDUPLICATED,
+        object.AD_IMAGE_18_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE18TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_18_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE18TAGLENGTHTOOLONG,
+        object.AD_IMAGE_18_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE18TAGREQUIRED != null) {
+    if (object.AD_IMAGE_18_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_18_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE18TAGREQUIRED,
+        object.AD_IMAGE_18_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE19LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_19_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_19_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE19LINKDUPLICATED,
+        object.AD_IMAGE_19_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE19LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_19_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE19LINKLENGTHTOOLONG,
+        object.AD_IMAGE_19_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE19LINKREQUIRED != null) {
+    if (object.AD_IMAGE_19_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_19_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE19LINKREQUIRED,
+        object.AD_IMAGE_19_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE19LINKWARNING != null) {
+    if (object.AD_IMAGE_19_LINK_WARNING != null) {
       yield r'AD_IMAGE_19_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE19LINKWARNING,
+        object.AD_IMAGE_19_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE19TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_19_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_19_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE19TAGDUPLICATED,
+        object.AD_IMAGE_19_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE19TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_19_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE19TAGLENGTHTOOLONG,
+        object.AD_IMAGE_19_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE19TAGREQUIRED != null) {
+    if (object.AD_IMAGE_19_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_19_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE19TAGREQUIRED,
+        object.AD_IMAGE_19_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE1LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_1_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_1_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE1LINKDUPLICATED,
+        object.AD_IMAGE_1_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE1LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_1_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE1LINKLENGTHTOOLONG,
+        object.AD_IMAGE_1_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE1LINKREQUIRED != null) {
+    if (object.AD_IMAGE_1_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_1_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE1LINKREQUIRED,
+        object.AD_IMAGE_1_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE1LINKWARNING != null) {
+    if (object.AD_IMAGE_1_LINK_WARNING != null) {
       yield r'AD_IMAGE_1_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE1LINKWARNING,
+        object.AD_IMAGE_1_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE1TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_1_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_1_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE1TAGDUPLICATED,
+        object.AD_IMAGE_1_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE1TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_1_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE1TAGLENGTHTOOLONG,
+        object.AD_IMAGE_1_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE1TAGREQUIRED != null) {
+    if (object.AD_IMAGE_1_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_1_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE1TAGREQUIRED,
+        object.AD_IMAGE_1_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE2LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_2_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_2_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE2LINKDUPLICATED,
+        object.AD_IMAGE_2_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE2LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_2_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE2LINKLENGTHTOOLONG,
+        object.AD_IMAGE_2_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE2LINKREQUIRED != null) {
+    if (object.AD_IMAGE_2_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_2_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE2LINKREQUIRED,
+        object.AD_IMAGE_2_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE2LINKWARNING != null) {
+    if (object.AD_IMAGE_2_LINK_WARNING != null) {
       yield r'AD_IMAGE_2_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE2LINKWARNING,
+        object.AD_IMAGE_2_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE2TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_2_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_2_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE2TAGDUPLICATED,
+        object.AD_IMAGE_2_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE2TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_2_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE2TAGLENGTHTOOLONG,
+        object.AD_IMAGE_2_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE2TAGREQUIRED != null) {
+    if (object.AD_IMAGE_2_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_2_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE2TAGREQUIRED,
+        object.AD_IMAGE_2_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE3LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_3_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_3_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE3LINKDUPLICATED,
+        object.AD_IMAGE_3_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE3LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_3_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE3LINKLENGTHTOOLONG,
+        object.AD_IMAGE_3_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE3LINKREQUIRED != null) {
+    if (object.AD_IMAGE_3_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_3_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE3LINKREQUIRED,
+        object.AD_IMAGE_3_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE3LINKWARNING != null) {
+    if (object.AD_IMAGE_3_LINK_WARNING != null) {
       yield r'AD_IMAGE_3_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE3LINKWARNING,
+        object.AD_IMAGE_3_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE3TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_3_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_3_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE3TAGDUPLICATED,
+        object.AD_IMAGE_3_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE3TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_3_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE3TAGLENGTHTOOLONG,
+        object.AD_IMAGE_3_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE3TAGREQUIRED != null) {
+    if (object.AD_IMAGE_3_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_3_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE3TAGREQUIRED,
+        object.AD_IMAGE_3_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE4LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_4_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_4_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE4LINKDUPLICATED,
+        object.AD_IMAGE_4_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE4LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_4_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE4LINKLENGTHTOOLONG,
+        object.AD_IMAGE_4_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE4LINKREQUIRED != null) {
+    if (object.AD_IMAGE_4_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_4_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE4LINKREQUIRED,
+        object.AD_IMAGE_4_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE4LINKWARNING != null) {
+    if (object.AD_IMAGE_4_LINK_WARNING != null) {
       yield r'AD_IMAGE_4_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE4LINKWARNING,
+        object.AD_IMAGE_4_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE4TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_4_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_4_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE4TAGDUPLICATED,
+        object.AD_IMAGE_4_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE4TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_4_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE4TAGLENGTHTOOLONG,
+        object.AD_IMAGE_4_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE4TAGREQUIRED != null) {
+    if (object.AD_IMAGE_4_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_4_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE4TAGREQUIRED,
+        object.AD_IMAGE_4_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE5LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_5_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_5_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE5LINKDUPLICATED,
+        object.AD_IMAGE_5_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE5LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_5_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE5LINKLENGTHTOOLONG,
+        object.AD_IMAGE_5_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE5LINKREQUIRED != null) {
+    if (object.AD_IMAGE_5_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_5_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE5LINKREQUIRED,
+        object.AD_IMAGE_5_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE5LINKWARNING != null) {
+    if (object.AD_IMAGE_5_LINK_WARNING != null) {
       yield r'AD_IMAGE_5_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE5LINKWARNING,
+        object.AD_IMAGE_5_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE5TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_5_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_5_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE5TAGDUPLICATED,
+        object.AD_IMAGE_5_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE5TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_5_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE5TAGLENGTHTOOLONG,
+        object.AD_IMAGE_5_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE5TAGREQUIRED != null) {
+    if (object.AD_IMAGE_5_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_5_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE5TAGREQUIRED,
+        object.AD_IMAGE_5_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE6LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_6_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_6_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE6LINKDUPLICATED,
+        object.AD_IMAGE_6_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE6LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_6_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE6LINKLENGTHTOOLONG,
+        object.AD_IMAGE_6_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE6LINKREQUIRED != null) {
+    if (object.AD_IMAGE_6_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_6_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE6LINKREQUIRED,
+        object.AD_IMAGE_6_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE6LINKWARNING != null) {
+    if (object.AD_IMAGE_6_LINK_WARNING != null) {
       yield r'AD_IMAGE_6_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE6LINKWARNING,
+        object.AD_IMAGE_6_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE6TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_6_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_6_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE6TAGDUPLICATED,
+        object.AD_IMAGE_6_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE6TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_6_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE6TAGLENGTHTOOLONG,
+        object.AD_IMAGE_6_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE6TAGREQUIRED != null) {
+    if (object.AD_IMAGE_6_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_6_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE6TAGREQUIRED,
+        object.AD_IMAGE_6_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE7LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_7_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_7_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE7LINKDUPLICATED,
+        object.AD_IMAGE_7_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE7LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_7_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE7LINKLENGTHTOOLONG,
+        object.AD_IMAGE_7_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE7LINKREQUIRED != null) {
+    if (object.AD_IMAGE_7_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_7_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE7LINKREQUIRED,
+        object.AD_IMAGE_7_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE7LINKWARNING != null) {
+    if (object.AD_IMAGE_7_LINK_WARNING != null) {
       yield r'AD_IMAGE_7_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE7LINKWARNING,
+        object.AD_IMAGE_7_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE7TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_7_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_7_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE7TAGDUPLICATED,
+        object.AD_IMAGE_7_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE7TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_7_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE7TAGLENGTHTOOLONG,
+        object.AD_IMAGE_7_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE7TAGREQUIRED != null) {
+    if (object.AD_IMAGE_7_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_7_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE7TAGREQUIRED,
+        object.AD_IMAGE_7_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE8LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_8_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_8_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE8LINKDUPLICATED,
+        object.AD_IMAGE_8_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE8LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_8_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE8LINKLENGTHTOOLONG,
+        object.AD_IMAGE_8_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE8LINKREQUIRED != null) {
+    if (object.AD_IMAGE_8_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_8_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE8LINKREQUIRED,
+        object.AD_IMAGE_8_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE8LINKWARNING != null) {
+    if (object.AD_IMAGE_8_LINK_WARNING != null) {
       yield r'AD_IMAGE_8_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE8LINKWARNING,
+        object.AD_IMAGE_8_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE8TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_8_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_8_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE8TAGDUPLICATED,
+        object.AD_IMAGE_8_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE8TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_8_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE8TAGLENGTHTOOLONG,
+        object.AD_IMAGE_8_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE8TAGREQUIRED != null) {
+    if (object.AD_IMAGE_8_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_8_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE8TAGREQUIRED,
+        object.AD_IMAGE_8_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE9LINKDUPLICATED != null) {
+    if (object.AD_IMAGE_9_LINK_DUPLICATED != null) {
       yield r'AD_IMAGE_9_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE9LINKDUPLICATED,
+        object.AD_IMAGE_9_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE9LINKLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_9_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE9LINKLENGTHTOOLONG,
+        object.AD_IMAGE_9_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE9LINKREQUIRED != null) {
+    if (object.AD_IMAGE_9_LINK_REQUIRED != null) {
       yield r'AD_IMAGE_9_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE9LINKREQUIRED,
+        object.AD_IMAGE_9_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE9LINKWARNING != null) {
+    if (object.AD_IMAGE_9_LINK_WARNING != null) {
       yield r'AD_IMAGE_9_LINK_WARNING';
       yield serializers.serialize(
-        object.aDIMAGE9LINKWARNING,
+        object.AD_IMAGE_9_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE9TAGDUPLICATED != null) {
+    if (object.AD_IMAGE_9_TAG_DUPLICATED != null) {
       yield r'AD_IMAGE_9_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDIMAGE9TAGDUPLICATED,
+        object.AD_IMAGE_9_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE9TAGLENGTHTOOLONG != null) {
+    if (object.AD_IMAGE_9_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDIMAGE9TAGLENGTHTOOLONG,
+        object.AD_IMAGE_9_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDIMAGE9TAGREQUIRED != null) {
+    if (object.AD_IMAGE_9_TAG_REQUIRED != null) {
       yield r'AD_IMAGE_9_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDIMAGE9TAGREQUIRED,
+        object.AD_IMAGE_9_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
@@ -1855,150 +2061,150 @@ class _$CatalogsItemValidationWarningsSerializer implements PrimitiveSerializer<
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO0LINKDUPLICATED != null) {
+    if (object.AD_VIDEO_0_LINK_DUPLICATED != null) {
       yield r'AD_VIDEO_0_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO0LINKDUPLICATED,
+        object.AD_VIDEO_0_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO0LINKLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_0_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO0LINKLENGTHTOOLONG,
+        object.AD_VIDEO_0_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO0LINKREQUIRED != null) {
+    if (object.AD_VIDEO_0_LINK_REQUIRED != null) {
       yield r'AD_VIDEO_0_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO0LINKREQUIRED,
+        object.AD_VIDEO_0_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO0LINKWARNING != null) {
+    if (object.AD_VIDEO_0_LINK_WARNING != null) {
       yield r'AD_VIDEO_0_LINK_WARNING';
       yield serializers.serialize(
-        object.aDVIDEO0LINKWARNING,
+        object.AD_VIDEO_0_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO0TAGDUPLICATED != null) {
+    if (object.AD_VIDEO_0_TAG_DUPLICATED != null) {
       yield r'AD_VIDEO_0_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO0TAGDUPLICATED,
+        object.AD_VIDEO_0_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO0TAGLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_0_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO0TAGLENGTHTOOLONG,
+        object.AD_VIDEO_0_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO0TAGREQUIRED != null) {
+    if (object.AD_VIDEO_0_TAG_REQUIRED != null) {
       yield r'AD_VIDEO_0_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO0TAGREQUIRED,
+        object.AD_VIDEO_0_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO1LINKDUPLICATED != null) {
+    if (object.AD_VIDEO_1_LINK_DUPLICATED != null) {
       yield r'AD_VIDEO_1_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO1LINKDUPLICATED,
+        object.AD_VIDEO_1_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO1LINKLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_1_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO1LINKLENGTHTOOLONG,
+        object.AD_VIDEO_1_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO1LINKREQUIRED != null) {
+    if (object.AD_VIDEO_1_LINK_REQUIRED != null) {
       yield r'AD_VIDEO_1_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO1LINKREQUIRED,
+        object.AD_VIDEO_1_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO1LINKWARNING != null) {
+    if (object.AD_VIDEO_1_LINK_WARNING != null) {
       yield r'AD_VIDEO_1_LINK_WARNING';
       yield serializers.serialize(
-        object.aDVIDEO1LINKWARNING,
+        object.AD_VIDEO_1_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO1TAGDUPLICATED != null) {
+    if (object.AD_VIDEO_1_TAG_DUPLICATED != null) {
       yield r'AD_VIDEO_1_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO1TAGDUPLICATED,
+        object.AD_VIDEO_1_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO1TAGLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_1_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO1TAGLENGTHTOOLONG,
+        object.AD_VIDEO_1_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO1TAGREQUIRED != null) {
+    if (object.AD_VIDEO_1_TAG_REQUIRED != null) {
       yield r'AD_VIDEO_1_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO1TAGREQUIRED,
+        object.AD_VIDEO_1_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO2LINKDUPLICATED != null) {
+    if (object.AD_VIDEO_2_LINK_DUPLICATED != null) {
       yield r'AD_VIDEO_2_LINK_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO2LINKDUPLICATED,
+        object.AD_VIDEO_2_LINK_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO2LINKLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_2_LINK_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO2LINKLENGTHTOOLONG,
+        object.AD_VIDEO_2_LINK_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO2LINKREQUIRED != null) {
+    if (object.AD_VIDEO_2_LINK_REQUIRED != null) {
       yield r'AD_VIDEO_2_LINK_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO2LINKREQUIRED,
+        object.AD_VIDEO_2_LINK_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO2LINKWARNING != null) {
+    if (object.AD_VIDEO_2_LINK_WARNING != null) {
       yield r'AD_VIDEO_2_LINK_WARNING';
       yield serializers.serialize(
-        object.aDVIDEO2LINKWARNING,
+        object.AD_VIDEO_2_LINK_WARNING,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO2TAGDUPLICATED != null) {
+    if (object.AD_VIDEO_2_TAG_DUPLICATED != null) {
       yield r'AD_VIDEO_2_TAG_DUPLICATED';
       yield serializers.serialize(
-        object.aDVIDEO2TAGDUPLICATED,
+        object.AD_VIDEO_2_TAG_DUPLICATED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO2TAGLENGTHTOOLONG != null) {
+    if (object.AD_VIDEO_2_TAG_LENGTH_TOO_LONG != null) {
       yield r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG';
       yield serializers.serialize(
-        object.aDVIDEO2TAGLENGTHTOOLONG,
+        object.AD_VIDEO_2_TAG_LENGTH_TOO_LONG,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
-    if (object.aDVIDEO2TAGREQUIRED != null) {
+    if (object.AD_VIDEO_2_TAG_REQUIRED != null) {
       yield r'AD_VIDEO_2_TAG_REQUIRED';
       yield serializers.serialize(
-        object.aDVIDEO2TAGREQUIRED,
+        object.AD_VIDEO_2_TAG_REQUIRED,
         specifiedType: const FullType(CatalogsItemValidationDetails),
       );
     }
@@ -2329,1443 +2535,1649 @@ class _$CatalogsItemValidationWarningsSerializer implements PrimitiveSerializer<
         case r'AD_IMAGE_0_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE0LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE0LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_0_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE0LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_0_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE0LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_0_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE0TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE0TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_0_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE0TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_0_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_10_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE10LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE10LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_10_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE10LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_10_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE10LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_10_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE10TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE10TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_10_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE10TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_10_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_11_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE11LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE11LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_11_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE11LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_11_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE11LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_11_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE11TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE11TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_11_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE11TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_11_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_12_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE12LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE12LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_12_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE12LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_12_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE12LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_12_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE12TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE12TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_12_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE12TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_12_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_13_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE13LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE13LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_13_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE13LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_13_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE13LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_13_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE13TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE13TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_13_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE13TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_13_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_14_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE14LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE14LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_14_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE14LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_14_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE14LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_14_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE14TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE14TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_14_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE14TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_14_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_15_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE15LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE15LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_15_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE15LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_15_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE15LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_15_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE15TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE15TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_15_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE15TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_15_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_16_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE16LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE16LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_16_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE16LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_16_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE16LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_16_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE16TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE16TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_16_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE16TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_16_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_17_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE17LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE17LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_17_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE17LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_17_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE17LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_17_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE17TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE17TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_17_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE17TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_17_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_18_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE18LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE18LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_18_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE18LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_18_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE18LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_18_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE18TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE18TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_18_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE18TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_18_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_19_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE19LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE19LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_19_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE19LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_19_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE19LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_19_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE19TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE19TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_19_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE19TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_19_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_1_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE1LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE1LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_1_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE1LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_1_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE1LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_1_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE1TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE1TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_1_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE1TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_1_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_2_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE2LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE2LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_2_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE2LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_2_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE2LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_2_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE2TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE2TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_2_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE2TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_2_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_3_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE3LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE3LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_3_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE3LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_3_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE3LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_3_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE3TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE3TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_3_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE3TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_3_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_4_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE4LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE4LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_4_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE4LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_4_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE4LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_4_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE4TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE4TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_4_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE4TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_4_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_5_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE5LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE5LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_5_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE5LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_5_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE5LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_5_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE5TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE5TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_5_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE5TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_5_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_6_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE6LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE6LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_6_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE6LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_6_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE6LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_6_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE6TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE6TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_6_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE6TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_6_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_7_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE7LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE7LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_7_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE7LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_7_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE7LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_7_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE7TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE7TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_7_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE7TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_7_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_8_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE8LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE8LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_8_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE8LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_8_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE8LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_8_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE8TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE8TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_8_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE8TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_8_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_9_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE9LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE9LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_9_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE9LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_IMAGE_9_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE9LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_IMAGE_9_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE9TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE9TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_IMAGE_9_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDIMAGE9TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_9_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_LINK_FORMAT_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.AD_LINK_FORMAT_WARNING.replace(valueDes);
           break;
         case r'AD_LINK_SAME_AS_LINK':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.AD_LINK_SAME_AS_LINK.replace(valueDes);
           break;
         case r'AD_VIDEO_0_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO0LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO0LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_VIDEO_0_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO0LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_VIDEO_0_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO0LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_VIDEO_0_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO0TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO0TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_VIDEO_0_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO0TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_0_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_VIDEO_1_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO1LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO1LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_VIDEO_1_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO1LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_VIDEO_1_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO1LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_VIDEO_1_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO1TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO1TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_VIDEO_1_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO1TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_1_TAG_REQUIRED.replace(valueDes);
           break;
         case r'AD_VIDEO_2_LINK_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO2LINKDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_LINK_DUPLICATED.replace(valueDes);
           break;
         case r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO2LINKLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_VIDEO_2_LINK_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO2LINKREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_LINK_REQUIRED.replace(valueDes);
           break;
         case r'AD_VIDEO_2_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO2LINKWARNING.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_LINK_WARNING.replace(valueDes);
           break;
         case r'AD_VIDEO_2_TAG_DUPLICATED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO2TAGDUPLICATED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_TAG_DUPLICATED.replace(valueDes);
           break;
         case r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO2TAGLENGTHTOOLONG.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_TAG_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'AD_VIDEO_2_TAG_REQUIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
-          result.aDVIDEO2TAGREQUIRED.replace(valueDes);
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_2_TAG_REQUIRED.replace(valueDes);
           break;
         case r'ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'ADDITIONAL_IMAGE_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.ADDITIONAL_IMAGE_LINK_WARNING.replace(valueDes);
           break;
         case r'ADWORDS_FORMAT_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.ADWORDS_FORMAT_WARNING.replace(valueDes);
           break;
         case r'ADWORDS_SAME_AS_LINK':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.ADWORDS_SAME_AS_LINK.replace(valueDes);
           break;
         case r'AGE_GROUP_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.AGE_GROUP_INVALID.replace(valueDes);
           break;
         case r'ANDROID_DEEP_LINK_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.ANDROID_DEEP_LINK_INVALID.replace(valueDes);
           break;
         case r'AVAILABILITY_DATE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.AVAILABILITY_DATE_INVALID.replace(valueDes);
           break;
         case r'COUNTRY_DOES_NOT_MAP_TO_CURRENCY':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.COUNTRY_DOES_NOT_MAP_TO_CURRENCY.replace(valueDes);
           break;
         case r'CUSTOM_LABEL_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.CUSTOM_LABEL_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'DESCRIPTION_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.DESCRIPTION_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'EXPIRATION_DATE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.EXPIRATION_DATE_INVALID.replace(valueDes);
           break;
         case r'GENDER_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.GENDER_INVALID.replace(valueDes);
           break;
         case r'GTIN_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.GTIN_INVALID.replace(valueDes);
           break;
         case r'IMAGE_LINK_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.IMAGE_LINK_WARNING.replace(valueDes);
           break;
         case r'IOS_DEEP_LINK_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.IOS_DEEP_LINK_INVALID.replace(valueDes);
           break;
         case r'IS_BUNDLE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.IS_BUNDLE_INVALID.replace(valueDes);
           break;
         case r'ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE.replace(valueDes);
           break;
         case r'LINK_FORMAT_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.LINK_FORMAT_WARNING.replace(valueDes);
           break;
         case r'MIN_AD_PRICE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.MIN_AD_PRICE_INVALID.replace(valueDes);
           break;
         case r'MPN_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.MPN_INVALID.replace(valueDes);
           break;
         case r'MULTIPACK_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.MULTIPACK_INVALID.replace(valueDes);
           break;
         case r'OPTIONAL_CONDITION_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.OPTIONAL_CONDITION_INVALID.replace(valueDes);
           break;
         case r'OPTIONAL_CONDITION_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.OPTIONAL_CONDITION_MISSING.replace(valueDes);
           break;
         case r'OPTIONAL_PRODUCT_CATEGORY_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.OPTIONAL_PRODUCT_CATEGORY_INVALID.replace(valueDes);
           break;
         case r'OPTIONAL_PRODUCT_CATEGORY_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.OPTIONAL_PRODUCT_CATEGORY_MISSING.replace(valueDes);
           break;
         case r'PRODUCT_CATEGORY_DEPTH_WARNING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.PRODUCT_CATEGORY_DEPTH_WARNING.replace(valueDes);
           break;
         case r'PRODUCT_TYPE_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.PRODUCT_TYPE_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'SALE_DATE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SALE_DATE_INVALID.replace(valueDes);
           break;
         case r'SALES_PRICE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SALES_PRICE_INVALID.replace(valueDes);
           break;
         case r'SALES_PRICE_TOO_HIGH':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SALES_PRICE_TOO_HIGH.replace(valueDes);
           break;
         case r'SALES_PRICE_TOO_LOW':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SALES_PRICE_TOO_LOW.replace(valueDes);
           break;
         case r'SHIPPING_HEIGHT_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SHIPPING_HEIGHT_INVALID.replace(valueDes);
           break;
         case r'SHIPPING_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SHIPPING_INVALID.replace(valueDes);
           break;
         case r'SHIPPING_WEIGHT_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SHIPPING_WEIGHT_INVALID.replace(valueDes);
           break;
         case r'SHIPPING_WIDTH_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SHIPPING_WIDTH_INVALID.replace(valueDes);
           break;
         case r'SIZE_SYSTEM_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SIZE_SYSTEM_INVALID.replace(valueDes);
           break;
         case r'SIZE_TYPE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.SIZE_TYPE_INVALID.replace(valueDes);
           break;
         case r'TAX_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.TAX_INVALID.replace(valueDes);
           break;
         case r'TITLE_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.TITLE_LENGTH_TOO_LONG.replace(valueDes);
           break;
         case r'TOO_MANY_ADDITIONAL_IMAGE_LINKS':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.TOO_MANY_ADDITIONAL_IMAGE_LINKS.replace(valueDes);
           break;
         case r'UTM_SOURCE_AUTO_CORRECTED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.UTM_SOURCE_AUTO_CORRECTED.replace(valueDes);
           break;
         case r'VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED.replace(valueDes);
           break;
         case r'WEIGHT_UNIT_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsItemValidationDetails),
-          ) as CatalogsItemValidationDetails;
+            specifiedType: const FullType.nullable(CatalogsItemValidationDetails),
+          ) as CatalogsItemValidationDetails?;
+          if (valueDes == null) continue;
           result.WEIGHT_UNIT_INVALID.replace(valueDes);
           break;
         default:

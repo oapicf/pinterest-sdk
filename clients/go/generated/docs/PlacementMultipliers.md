@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PLACEMENT** | Pointer to **string** |  | [optional] 
+**PLACEMENT** | Pointer to [**PlacementType**](PlacementType.md) | Placement type identifier. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPLACEMENT
 
-`func (o *PlacementMultipliers) GetPLACEMENT() string`
+`func (o *PlacementMultipliers) GetPLACEMENT() PlacementType`
 
 GetPLACEMENT returns the PLACEMENT field if non-nil, zero value otherwise.
 
 ### GetPLACEMENTOk
 
-`func (o *PlacementMultipliers) GetPLACEMENTOk() (*string, bool)`
+`func (o *PlacementMultipliers) GetPLACEMENTOk() (*PlacementType, bool)`
 
 GetPLACEMENTOk returns a tuple with the PLACEMENT field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPLACEMENT
 
-`func (o *PlacementMultipliers) SetPLACEMENT(v string)`
+`func (o *PlacementMultipliers) SetPLACEMENT(v PlacementType)`
 
 SetPLACEMENT sets PLACEMENT field to given value.
 

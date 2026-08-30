@@ -11,37 +11,33 @@
 part of openapi.api;
 
 /// User list type
-class UserListType {
-  /// Instantiate a new enum with the provided [value].
-  const UserListType._(this.value);
+enum UserListType {
+  EMAIL._(r'EMAIL'),
+  IDFA._(r'IDFA'),
+  MAID._(r'MAID'),
+  LR_ID._(r'LR_ID'),
+  DLX_ID._(r'DLX_ID'),
+  HASHED_PINNER_ID._(r'HASHED_PINNER_ID'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const UserListType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const EMAIL = UserListType._(r'EMAIL');
-  static const IDFA = UserListType._(r'IDFA');
-  static const MAID = UserListType._(r'MAID');
-  static const LR_ID = UserListType._(r'LR_ID');
-  static const DLX_ID = UserListType._(r'DLX_ID');
-  static const HASHED_PINNER_ID = UserListType._(r'HASHED_PINNER_ID');
-
-  /// List of all possible values in this [enum][UserListType].
-  static const values = <UserListType>[
-    EMAIL,
-    IDFA,
-    MAID,
-    LR_ID,
-    DLX_ID,
-    HASHED_PINNER_ID,
-  ];
-
+  /// Returns the instance of [UserListType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static UserListType? fromJson(dynamic value) => UserListTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [UserListType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<UserListType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UserListType>[];
     if (json is List && json.isNotEmpty) {
@@ -63,9 +59,11 @@ class UserListTypeTypeTransformer {
 
   const UserListTypeTypeTransformer._();
 
-  String encode(UserListType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(UserListType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a UserListType.
+  /// Returns the instance of [UserListType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -74,6 +72,9 @@ class UserListTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   UserListType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is UserListType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'EMAIL': return UserListType.EMAIL;
@@ -91,7 +92,7 @@ class UserListTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [UserListTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static UserListTypeTypeTransformer? _instance;
 }
 

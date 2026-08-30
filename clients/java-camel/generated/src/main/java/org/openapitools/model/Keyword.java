@@ -2,45 +2,46 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.MatchTypeResponse;
+import org.openapitools.model.MatchType;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Keyword
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Keyword {
-
-  private JsonNullable<Integer> bid = JsonNullable.<Integer>undefined();
-
-  private JsonNullable<MatchTypeResponse> matchType = JsonNullable.<MatchTypeResponse>undefined();
-
-  private String value;
 
   private Boolean archived;
 
+  private JsonNullable<Integer> bid = JsonNullable.<Integer>undefined();
+
   private String id;
+
+  private JsonNullable<MatchType> matchType = JsonNullable.<MatchType>undefined();
 
   private String parentId;
 
   private String parentType;
 
   private String type;
+
+  private String value;
 
   public Keyword() {
     super();
@@ -49,68 +50,10 @@ public class Keyword {
   /**
    * Constructor with only required parameters
    */
-  public Keyword(MatchTypeResponse matchType, String value) {
+  public Keyword(String id, MatchType matchType, String parentId, String value) {
+    this.id = id;
     this.matchType = JsonNullable.of(matchType);
-    this.value = value;
-  }
-
-  public Keyword bid(Integer bid) {
-    this.bid = JsonNullable.of(bid);
-    return this;
-  }
-
-  /**
-   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   * @return bid
-   */
-  
-  @Schema(name = "bid", description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("bid")
-  public JsonNullable<Integer> getBid() {
-    return bid;
-  }
-
-  public void setBid(JsonNullable<Integer> bid) {
-    this.bid = bid;
-  }
-
-  public Keyword matchType(MatchTypeResponse matchType) {
-    this.matchType = JsonNullable.of(matchType);
-    return this;
-  }
-
-  /**
-   * Get matchType
-   * @return matchType
-   */
-  @NotNull @Valid 
-  @Schema(name = "match_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("match_type")
-  public JsonNullable<MatchTypeResponse> getMatchType() {
-    return matchType;
-  }
-
-  public void setMatchType(JsonNullable<MatchTypeResponse> matchType) {
-    this.matchType = matchType;
-  }
-
-  public Keyword value(String value) {
-    this.value = value;
-    return this;
-  }
-
-  /**
-   * Keyword value (120 chars max).
-   * @return value
-   */
-  @NotNull 
-  @Schema(name = "value", description = "Keyword value (120 chars max).", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
-  }
-
-  public void setValue(String value) {
+    this.parentId = parentId;
     this.value = value;
   }
 
@@ -134,6 +77,26 @@ public class Keyword {
     this.archived = archived;
   }
 
+  public Keyword bid(Integer bid) {
+    this.bid = JsonNullable.of(bid);
+    return this;
+  }
+
+  /**
+   * **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+   * @return bid
+   */
+  
+  @Schema(name = "bid", description = "**Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("bid")
+  public JsonNullable<Integer> getBid() {
+    return bid;
+  }
+
+  public void setBid(JsonNullable<Integer> bid) {
+    this.bid = bid;
+  }
+
   public Keyword id(String id) {
     this.id = id;
     return this;
@@ -143,8 +106,8 @@ public class Keyword {
    * Keyword ID .
    * @return id
    */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "383791336903426391", description = "Keyword ID .", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "383791336903426391", description = "Keyword ID .", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -152,6 +115,26 @@ public class Keyword {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public Keyword matchType(MatchType matchType) {
+    this.matchType = JsonNullable.of(matchType);
+    return this;
+  }
+
+  /**
+   * Keyword [match type](/docs/api-features/targeting-overview/)
+   * @return matchType
+   */
+  @NotNull @Valid 
+  @Schema(name = "match_type", description = "Keyword [match type](/docs/api-features/targeting-overview/)", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("match_type")
+  public JsonNullable<MatchType> getMatchType() {
+    return matchType;
+  }
+
+  public void setMatchType(JsonNullable<MatchType> matchType) {
+    this.matchType = matchType;
   }
 
   public Keyword parentId(String parentId) {
@@ -164,7 +147,7 @@ public class Keyword {
    * @return parentId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "parent_id", example = "383791336903426391", description = "Keyword parent entity ID (advertiser, campaign, ad group).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "parent_id", accessMode = Schema.AccessMode.READ_ONLY, example = "383791336903426391", description = "Keyword parent entity ID (advertiser, campaign, ad group).", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("parent_id")
   public String getParentId() {
     return parentId;
@@ -180,11 +163,11 @@ public class Keyword {
   }
 
   /**
-   * Parent entity type
+   * Parent entity type (advertiser, campaign, ad group).
    * @return parentType
    */
   
-  @Schema(name = "parent_type", example = "campaign", description = "Parent entity type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "parent_type", accessMode = Schema.AccessMode.READ_ONLY, example = "campaign", description = "Parent entity type (advertiser, campaign, ad group).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("parent_type")
   public String getParentType() {
     return parentType;
@@ -204,7 +187,7 @@ public class Keyword {
    * @return type
    */
   
-  @Schema(name = "type", example = "keyword", description = "Always keyword", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "type", accessMode = Schema.AccessMode.READ_ONLY, example = "keyword", description = "Always keyword", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
   public String getType() {
     return type;
@@ -212,6 +195,26 @@ public class Keyword {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+  public Keyword value(String value) {
+    this.value = value;
+    return this;
+  }
+
+  /**
+   * Keyword value (120 chars max).
+   * @return value
+   */
+  @NotNull 
+  @Schema(name = "value", description = "Keyword value (120 chars max).", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(String value) {
+    this.value = value;
   }
 
   @Override
@@ -223,14 +226,14 @@ public class Keyword {
       return false;
     }
     Keyword keyword = (Keyword) o;
-    return equalsNullable(this.bid, keyword.bid) &&
-        Objects.equals(this.matchType, keyword.matchType) &&
-        Objects.equals(this.value, keyword.value) &&
-        Objects.equals(this.archived, keyword.archived) &&
+    return Objects.equals(this.archived, keyword.archived) &&
+        equalsNullable(this.bid, keyword.bid) &&
         Objects.equals(this.id, keyword.id) &&
+        Objects.equals(this.matchType, keyword.matchType) &&
         Objects.equals(this.parentId, keyword.parentId) &&
         Objects.equals(this.parentType, keyword.parentType) &&
-        Objects.equals(this.type, keyword.type);
+        Objects.equals(this.type, keyword.type) &&
+        Objects.equals(this.value, keyword.value);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -239,7 +242,7 @@ public class Keyword {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(bid), matchType, value, archived, id, parentId, parentType, type);
+    return Objects.hash(archived, hashCodeNullable(bid), id, matchType, parentId, parentType, type, value);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -253,14 +256,14 @@ public class Keyword {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Keyword {\n");
-    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
+    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -270,10 +273,7 @@ public class Keyword {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

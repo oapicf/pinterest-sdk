@@ -51,14 +51,14 @@ static gpointer __BusinessAccessRelationshipsManagerthreadFunc(gpointer data)
 static bool brandAccountsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Brand_accounts_create_200_response, Error, void* )> (voidHandler);
+	void(* handler)(BrandAccount, Error, void* )
+	= reinterpret_cast<void(*)(BrandAccount, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Brand_accounts_create_200_response out;
+	BrandAccount out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,43 @@ static bool brandAccountsCreateProcessor(MemoryStruct_s p_chunk, long code, char
 
 
 
-		if (isprimitive("Brand_accounts_create_200_response")) {
+		if (isprimitive("BrandAccount")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Brand_accounts_create_200_response", "Brand_accounts_create_200_response");
+			jsonToValue(&out, pJson, "BrandAccount", "BrandAccount");
 			json_node_free(pJson);
 
-			if ("Brand_accounts_create_200_response" == "std::string") {
+			if ("BrandAccount" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -114,8 +139,8 @@ static bool brandAccountsCreateProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool brandAccountsCreateHelper(char * accessToken,
-	std::string businessHierarchyId, std::shared_ptr<Brand_accounts_create_request> brandAccountsCreateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string businessHierarchyId, std::shared_ptr<BrandAccountCreate> brandAccountCreate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -135,11 +160,11 @@ static bool brandAccountsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Brand_accounts_create_request")) {
-		node = converttoJson(&brandAccountsCreateRequest, "Brand_accounts_create_request", "");
+	if (isprimitive("BrandAccountCreate")) {
+		node = converttoJson(&brandAccountCreate, "BrandAccountCreate", "");
 	}
 	
-	char *jsonStr =  brandAccountsCreateRequest.toJson();
+	char *jsonStr =  brandAccountCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -204,36 +229,36 @@ static bool brandAccountsCreateHelper(char * accessToken,
 
 
 bool BusinessAccessRelationshipsManager::brandAccountsCreateAsync(char * accessToken,
-	std::string businessHierarchyId, std::shared_ptr<Brand_accounts_create_request> brandAccountsCreateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string businessHierarchyId, std::shared_ptr<BrandAccountCreate> brandAccountCreate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData)
 {
 	return brandAccountsCreateHelper(accessToken,
-	businessHierarchyId, brandAccountsCreateRequest, 
+	businessHierarchyId, brandAccountCreate, 
 	handler, userData, true);
 }
 
 bool BusinessAccessRelationshipsManager::brandAccountsCreateSync(char * accessToken,
-	std::string businessHierarchyId, std::shared_ptr<Brand_accounts_create_request> brandAccountsCreateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string businessHierarchyId, std::shared_ptr<BrandAccountCreate> brandAccountCreate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData)
 {
 	return brandAccountsCreateHelper(accessToken,
-	businessHierarchyId, brandAccountsCreateRequest, 
+	businessHierarchyId, brandAccountCreate, 
 	handler, userData, false);
 }
 
 static bool brandAccountsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Brand_accounts_create_200_response, Error, void* )> (voidHandler);
+	void(* handler)(BrandAccount, Error, void* )
+	= reinterpret_cast<void(*)(BrandAccount, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Brand_accounts_create_200_response out;
+	BrandAccount out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -241,12 +266,12 @@ static bool brandAccountsUpdateProcessor(MemoryStruct_s p_chunk, long code, char
 
 
 
-		if (isprimitive("Brand_accounts_create_200_response")) {
+		if (isprimitive("BrandAccount")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Brand_accounts_create_200_response", "Brand_accounts_create_200_response");
+			jsonToValue(&out, pJson, "BrandAccount", "BrandAccount");
 			json_node_free(pJson);
 
-			if ("Brand_accounts_create_200_response" == "std::string") {
+			if ("BrandAccount" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -314,8 +339,8 @@ static bool brandAccountsUpdateProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool brandAccountsUpdateHelper(char * accessToken,
-	std::string businessHierarchyId, std::string brandAccountId, std::shared_ptr<Brand_accounts_update_request> brandAccountsUpdateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string brandAccountId, std::string businessHierarchyId, std::shared_ptr<BrandAccountUpdate> brandAccountUpdate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -335,11 +360,11 @@ static bool brandAccountsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Brand_accounts_update_request")) {
-		node = converttoJson(&brandAccountsUpdateRequest, "Brand_accounts_update_request", "");
+	if (isprimitive("BrandAccountUpdate")) {
+		node = converttoJson(&brandAccountUpdate, "BrandAccountUpdate", "");
 	}
 	
-	char *jsonStr =  brandAccountsUpdateRequest.toJson();
+	char *jsonStr =  brandAccountUpdate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -351,18 +376,18 @@ static bool brandAccountsUpdateHelper(char * accessToken,
 	string url("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}");
 	int pos;
 
-	string s_businessHierarchyId("{");
-	s_businessHierarchyId.append("business_hierarchy_id");
-	s_businessHierarchyId.append("}");
-	pos = url.find(s_businessHierarchyId);
-	url.erase(pos, s_businessHierarchyId.length());
-	url.insert(pos, stringify(&businessHierarchyId, "std::string"));
 	string s_brandAccountId("{");
 	s_brandAccountId.append("brand_account_id");
 	s_brandAccountId.append("}");
 	pos = url.find(s_brandAccountId);
 	url.erase(pos, s_brandAccountId.length());
 	url.insert(pos, stringify(&brandAccountId, "std::string"));
+	string s_businessHierarchyId("{");
+	s_businessHierarchyId.append("business_hierarchy_id");
+	s_businessHierarchyId.append("}");
+	pos = url.find(s_businessHierarchyId);
+	url.erase(pos, s_businessHierarchyId.length());
+	url.insert(pos, stringify(&businessHierarchyId, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -410,36 +435,36 @@ static bool brandAccountsUpdateHelper(char * accessToken,
 
 
 bool BusinessAccessRelationshipsManager::brandAccountsUpdateAsync(char * accessToken,
-	std::string businessHierarchyId, std::string brandAccountId, std::shared_ptr<Brand_accounts_update_request> brandAccountsUpdateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string brandAccountId, std::string businessHierarchyId, std::shared_ptr<BrandAccountUpdate> brandAccountUpdate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData)
 {
 	return brandAccountsUpdateHelper(accessToken,
-	businessHierarchyId, brandAccountId, brandAccountsUpdateRequest, 
+	brandAccountId, businessHierarchyId, brandAccountUpdate, 
 	handler, userData, true);
 }
 
 bool BusinessAccessRelationshipsManager::brandAccountsUpdateSync(char * accessToken,
-	std::string businessHierarchyId, std::string brandAccountId, std::shared_ptr<Brand_accounts_update_request> brandAccountsUpdateRequest, 
-	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	std::string brandAccountId, std::string businessHierarchyId, std::shared_ptr<BrandAccountUpdate> brandAccountUpdate, 
+	void(* handler)(BrandAccount, Error, void* )
 	, void* userData)
 {
 	return brandAccountsUpdateHelper(accessToken,
-	businessHierarchyId, brandAccountId, brandAccountsUpdateRequest, 
+	brandAccountId, businessHierarchyId, brandAccountUpdate, 
 	handler, userData, false);
 }
 
 static bool deleteBusinessMembershipProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(DeletedMembersResponse, Error, void* )
-	= reinterpret_cast<void(*)(DeletedMembersResponse, Error, void* )> (voidHandler);
+	void(* handler)(Delete_business_membership_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Delete_business_membership_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	DeletedMembersResponse out;
+	Delete_business_membership_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -447,12 +472,12 @@ static bool deleteBusinessMembershipProcessor(MemoryStruct_s p_chunk, long code,
 
 
 
-		if (isprimitive("DeletedMembersResponse")) {
+		if (isprimitive("Delete_business_membership_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "DeletedMembersResponse", "DeletedMembersResponse");
+			jsonToValue(&out, pJson, "Delete_business_membership_200_response", "Delete_business_membership_200_response");
 			json_node_free(pJson);
 
-			if ("DeletedMembersResponse" == "std::string") {
+			if ("Delete_business_membership_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -490,8 +515,8 @@ static bool deleteBusinessMembershipProcessor(MemoryStruct_s p_chunk, long code,
 }
 
 static bool deleteBusinessMembershipHelper(char * accessToken,
-	std::string businessId, std::shared_ptr<MembersToDeleteBody> membersToDeleteBody, 
-	void(* handler)(DeletedMembersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessMembershipBody> deleteBusinessMembershipBody, 
+	void(* handler)(Delete_business_membership_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -511,11 +536,11 @@ static bool deleteBusinessMembershipHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("MembersToDeleteBody")) {
-		node = converttoJson(&membersToDeleteBody, "MembersToDeleteBody", "");
+	if (isprimitive("DeleteBusinessMembershipBody")) {
+		node = converttoJson(&deleteBusinessMembershipBody, "DeleteBusinessMembershipBody", "");
 	}
 	
-	char *jsonStr =  membersToDeleteBody.toJson();
+	char *jsonStr =  deleteBusinessMembershipBody.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -580,36 +605,36 @@ static bool deleteBusinessMembershipHelper(char * accessToken,
 
 
 bool BusinessAccessRelationshipsManager::deleteBusinessMembershipAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<MembersToDeleteBody> membersToDeleteBody, 
-	void(* handler)(DeletedMembersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessMembershipBody> deleteBusinessMembershipBody, 
+	void(* handler)(Delete_business_membership_200_response, Error, void* )
 	, void* userData)
 {
 	return deleteBusinessMembershipHelper(accessToken,
-	businessId, membersToDeleteBody, 
+	businessId, deleteBusinessMembershipBody, 
 	handler, userData, true);
 }
 
 bool BusinessAccessRelationshipsManager::deleteBusinessMembershipSync(char * accessToken,
-	std::string businessId, std::shared_ptr<MembersToDeleteBody> membersToDeleteBody, 
-	void(* handler)(DeletedMembersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessMembershipBody> deleteBusinessMembershipBody, 
+	void(* handler)(Delete_business_membership_200_response, Error, void* )
 	, void* userData)
 {
 	return deleteBusinessMembershipHelper(accessToken,
-	businessId, membersToDeleteBody, 
+	businessId, deleteBusinessMembershipBody, 
 	handler, userData, false);
 }
 
 static bool deleteBusinessPartnersProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(DeletePartnersResponse, Error, void* )
-	= reinterpret_cast<void(*)(DeletePartnersResponse, Error, void* )> (voidHandler);
+	void(* handler)(DeleteBusinessPartners, Error, void* )
+	= reinterpret_cast<void(*)(DeleteBusinessPartners, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	DeletePartnersResponse out;
+	DeleteBusinessPartners out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -617,12 +642,12 @@ static bool deleteBusinessPartnersProcessor(MemoryStruct_s p_chunk, long code, c
 
 
 
-		if (isprimitive("DeletePartnersResponse")) {
+		if (isprimitive("DeleteBusinessPartners")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "DeletePartnersResponse", "DeletePartnersResponse");
+			jsonToValue(&out, pJson, "DeleteBusinessPartners", "DeleteBusinessPartners");
 			json_node_free(pJson);
 
-			if ("DeletePartnersResponse" == "std::string") {
+			if ("DeleteBusinessPartners" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -665,8 +690,8 @@ static bool deleteBusinessPartnersProcessor(MemoryStruct_s p_chunk, long code, c
 }
 
 static bool deleteBusinessPartnersHelper(char * accessToken,
-	std::string businessId, std::shared_ptr<DeletePartnersRequest> deletePartnersRequest, 
-	void(* handler)(DeletePartnersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessPartnersDelete> deleteBusinessPartnersDelete, 
+	void(* handler)(DeleteBusinessPartners, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -686,11 +711,11 @@ static bool deleteBusinessPartnersHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("DeletePartnersRequest")) {
-		node = converttoJson(&deletePartnersRequest, "DeletePartnersRequest", "");
+	if (isprimitive("DeleteBusinessPartnersDelete")) {
+		node = converttoJson(&deleteBusinessPartnersDelete, "DeleteBusinessPartnersDelete", "");
 	}
 	
-	char *jsonStr =  deletePartnersRequest.toJson();
+	char *jsonStr =  deleteBusinessPartnersDelete.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -755,22 +780,22 @@ static bool deleteBusinessPartnersHelper(char * accessToken,
 
 
 bool BusinessAccessRelationshipsManager::deleteBusinessPartnersAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<DeletePartnersRequest> deletePartnersRequest, 
-	void(* handler)(DeletePartnersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessPartnersDelete> deleteBusinessPartnersDelete, 
+	void(* handler)(DeleteBusinessPartners, Error, void* )
 	, void* userData)
 {
 	return deleteBusinessPartnersHelper(accessToken,
-	businessId, deletePartnersRequest, 
+	businessId, deleteBusinessPartnersDelete, 
 	handler, userData, true);
 }
 
 bool BusinessAccessRelationshipsManager::deleteBusinessPartnersSync(char * accessToken,
-	std::string businessId, std::shared_ptr<DeletePartnersRequest> deletePartnersRequest, 
-	void(* handler)(DeletePartnersResponse, Error, void* )
+	std::string businessId, std::shared_ptr<DeleteBusinessPartnersDelete> deleteBusinessPartnersDelete, 
+	void(* handler)(DeleteBusinessPartners, Error, void* )
 	, void* userData)
 {
 	return deleteBusinessPartnersHelper(accessToken,
-	businessId, deletePartnersRequest, 
+	businessId, deleteBusinessPartnersDelete, 
 	handler, userData, false);
 }
 
@@ -815,6 +840,31 @@ static bool getBusinessEmployersProcessor(MemoryStruct_s p_chunk, long code, cha
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -835,7 +885,7 @@ static bool getBusinessEmployersProcessor(MemoryStruct_s p_chunk, long code, cha
 }
 
 static bool getBusinessEmployersHelper(char * accessToken,
-	int pageSize, std::string bookmark, 
+	bool assetsSummary, std::string bookmark, int pageSize, 
 	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -853,10 +903,10 @@ static bool getBusinessEmployersHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	itemAtq = stringify(&assetsSummary, "bool");
+	queryParams.insert(pair<string, string>("assets_summary", itemAtq));
 	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
+		queryParams.erase("assets_summary");
 	}
 
 
@@ -864,6 +914,13 @@ static bool getBusinessEmployersHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -920,36 +977,36 @@ static bool getBusinessEmployersHelper(char * accessToken,
 
 
 bool BusinessAccessRelationshipsManager::getBusinessEmployersAsync(char * accessToken,
-	int pageSize, std::string bookmark, 
+	bool assetsSummary, std::string bookmark, int pageSize, 
 	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData)
 {
 	return getBusinessEmployersHelper(accessToken,
-	pageSize, bookmark, 
+	assetsSummary, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool BusinessAccessRelationshipsManager::getBusinessEmployersSync(char * accessToken,
-	int pageSize, std::string bookmark, 
+	bool assetsSummary, std::string bookmark, int pageSize, 
 	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData)
 {
 	return getBusinessEmployersHelper(accessToken,
-	pageSize, bookmark, 
+	assetsSummary, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool getBusinessMembersProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Get_business_members_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Get_business_members_200_response, Error, void* )> (voidHandler);
+	void(* handler)(Get_business_employers_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Get_business_employers_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Get_business_members_200_response out;
+	Get_business_employers_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -957,18 +1014,43 @@ static bool getBusinessMembersProcessor(MemoryStruct_s p_chunk, long code, char*
 
 
 
-		if (isprimitive("Get_business_members_200_response")) {
+		if (isprimitive("Get_business_employers_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Get_business_members_200_response", "Get_business_members_200_response");
+			jsonToValue(&out, pJson, "Get_business_employers_200_response", "Get_business_employers_200_response");
 			json_node_free(pJson);
 
-			if ("Get_business_members_200_response" == "std::string") {
+			if ("Get_business_employers_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1001,7 +1083,7 @@ static bool getBusinessMembersProcessor(MemoryStruct_s p_chunk, long code, char*
 
 static bool getBusinessMembersHelper(char * accessToken,
 	std::string businessId, bool fetchSystemUsers, bool assetsSummary, std::list<MemberBusinessRole> businessRoles, std::string memberIds, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Get_business_members_200_response, Error, void* )
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1129,7 +1211,7 @@ static bool getBusinessMembersHelper(char * accessToken,
 
 bool BusinessAccessRelationshipsManager::getBusinessMembersAsync(char * accessToken,
 	std::string businessId, bool fetchSystemUsers, bool assetsSummary, std::list<MemberBusinessRole> businessRoles, std::string memberIds, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Get_business_members_200_response, Error, void* )
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData)
 {
 	return getBusinessMembersHelper(accessToken,
@@ -1139,7 +1221,7 @@ bool BusinessAccessRelationshipsManager::getBusinessMembersAsync(char * accessTo
 
 bool BusinessAccessRelationshipsManager::getBusinessMembersSync(char * accessToken,
 	std::string businessId, bool fetchSystemUsers, bool assetsSummary, std::list<MemberBusinessRole> businessRoles, std::string memberIds, int startIndex, std::string bookmark, int pageSize, 
-	void(* handler)(Get_business_members_200_response, Error, void* )
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData)
 {
 	return getBusinessMembersHelper(accessToken,
@@ -1150,14 +1232,14 @@ bool BusinessAccessRelationshipsManager::getBusinessMembersSync(char * accessTok
 static bool getBusinessPartnersProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Get_business_partners_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Get_business_partners_200_response, Error, void* )> (voidHandler);
+	void(* handler)(Get_business_employers_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Get_business_employers_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Get_business_partners_200_response out;
+	Get_business_employers_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1165,18 +1247,43 @@ static bool getBusinessPartnersProcessor(MemoryStruct_s p_chunk, long code, char
 
 
 
-		if (isprimitive("Get_business_partners_200_response")) {
+		if (isprimitive("Get_business_employers_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Get_business_partners_200_response", "Get_business_partners_200_response");
+			jsonToValue(&out, pJson, "Get_business_employers_200_response", "Get_business_employers_200_response");
 			json_node_free(pJson);
 
-			if ("Get_business_partners_200_response" == "std::string") {
+			if ("Get_business_employers_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1208,8 +1315,8 @@ static bool getBusinessPartnersProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool getBusinessPartnersHelper(char * accessToken,
-	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, int pageSize, std::string bookmark, 
-	void(* handler)(Get_business_partners_200_response, Error, void* )
+	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, bool sortAscending, std::string bookmark, int pageSize, 
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1254,10 +1361,10 @@ static bool getBusinessPartnersHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	itemAtq = stringify(&sortAscending, "bool");
+	queryParams.insert(pair<string, string>("sort_ascending", itemAtq));
 	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
+		queryParams.erase("sort_ascending");
 	}
 
 
@@ -1265,6 +1372,13 @@ static bool getBusinessPartnersHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -1327,22 +1441,22 @@ static bool getBusinessPartnersHelper(char * accessToken,
 
 
 bool BusinessAccessRelationshipsManager::getBusinessPartnersAsync(char * accessToken,
-	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, int pageSize, std::string bookmark, 
-	void(* handler)(Get_business_partners_200_response, Error, void* )
+	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, bool sortAscending, std::string bookmark, int pageSize, 
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData)
 {
 	return getBusinessPartnersHelper(accessToken,
-	businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark, 
+	businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool BusinessAccessRelationshipsManager::getBusinessPartnersSync(char * accessToken,
-	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, int pageSize, std::string bookmark, 
-	void(* handler)(Get_business_partners_200_response, Error, void* )
+	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, bool sortAscending, std::string bookmark, int pageSize, 
+	void(* handler)(Get_business_employers_200_response, Error, void* )
 	, void* userData)
 {
 	return getBusinessPartnersHelper(accessToken,
-	businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark, 
+	businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize, 
 	handler, userData, false);
 }
 
@@ -1380,7 +1494,7 @@ static bool systemUserUpdateProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool systemUserUpdateHelper(char * accessToken,
-	std::string businessId, std::string systemUserId, std::shared_ptr<System_user_update_request> systemUserUpdateRequest, 
+	std::string businessId, std::string systemUserId, std::shared_ptr<SystemUserUpdateWithRequiredBody> systemUserUpdateWithRequiredBody, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -1401,11 +1515,11 @@ static bool systemUserUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("System_user_update_request")) {
-		node = converttoJson(&systemUserUpdateRequest, "System_user_update_request", "");
+	if (isprimitive("SystemUserUpdateWithRequiredBody")) {
+		node = converttoJson(&systemUserUpdateWithRequiredBody, "SystemUserUpdateWithRequiredBody", "");
 	}
 	
-	char *jsonStr =  systemUserUpdateRequest.toJson();
+	char *jsonStr =  systemUserUpdateWithRequiredBody.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1476,36 +1590,36 @@ static bool systemUserUpdateHelper(char * accessToken,
 
 
 bool BusinessAccessRelationshipsManager::systemUserUpdateAsync(char * accessToken,
-	std::string businessId, std::string systemUserId, std::shared_ptr<System_user_update_request> systemUserUpdateRequest, 
+	std::string businessId, std::string systemUserId, std::shared_ptr<SystemUserUpdateWithRequiredBody> systemUserUpdateWithRequiredBody, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return systemUserUpdateHelper(accessToken,
-	businessId, systemUserId, systemUserUpdateRequest, 
+	businessId, systemUserId, systemUserUpdateWithRequiredBody, 
 	handler, userData, true);
 }
 
 bool BusinessAccessRelationshipsManager::systemUserUpdateSync(char * accessToken,
-	std::string businessId, std::string systemUserId, std::shared_ptr<System_user_update_request> systemUserUpdateRequest, 
+	std::string businessId, std::string systemUserId, std::shared_ptr<SystemUserUpdateWithRequiredBody> systemUserUpdateWithRequiredBody, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return systemUserUpdateHelper(accessToken,
-	businessId, systemUserId, systemUserUpdateRequest, 
+	businessId, systemUserId, systemUserUpdateWithRequiredBody, 
 	handler, userData, false);
 }
 
 static bool updateBusinessMembershipsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(UpdateMemberResultsResponseArray, Error, void* )
-	= reinterpret_cast<void(*)(UpdateMemberResultsResponseArray, Error, void* )> (voidHandler);
+	void(* handler)(UpdateBusinessMembershipsResponse, Error, void* )
+	= reinterpret_cast<void(*)(UpdateBusinessMembershipsResponse, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	UpdateMemberResultsResponseArray out;
+	UpdateBusinessMembershipsResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1513,18 +1627,43 @@ static bool updateBusinessMembershipsProcessor(MemoryStruct_s p_chunk, long code
 
 
 
-		if (isprimitive("UpdateMemberResultsResponseArray")) {
+		if (isprimitive("UpdateBusinessMembershipsResponse")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "UpdateMemberResultsResponseArray", "UpdateMemberResultsResponseArray");
+			jsonToValue(&out, pJson, "UpdateBusinessMembershipsResponse", "UpdateBusinessMembershipsResponse");
 			json_node_free(pJson);
 
-			if ("UpdateMemberResultsResponseArray" == "std::string") {
+			if ("UpdateBusinessMembershipsResponse" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1556,8 +1695,8 @@ static bool updateBusinessMembershipsProcessor(MemoryStruct_s p_chunk, long code
 }
 
 static bool updateBusinessMembershipsHelper(char * accessToken,
-	std::string businessId, std::list<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, 
-	void(* handler)(UpdateMemberResultsResponseArray, Error, void* )
+	std::string businessId, std::list<BusinessMembershipMember> businessMembershipMember, 
+	void(* handler)(UpdateBusinessMembershipsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1577,14 +1716,14 @@ static bool updateBusinessMembershipsHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 	//TODO: Map Container
-	if (isprimitive("UpdateMemberBusinessRoleBody")) {
-		node = converttoJson(&updateMemberBusinessRoleBody, "UpdateMemberBusinessRoleBody", "array");
+	if (isprimitive("BusinessMembershipMember")) {
+		node = converttoJson(&businessMembershipMember, "BusinessMembershipMember", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<UpdateMemberBusinessRoleBody>::iterator bodyIter = updateMemberBusinessRoleBody.begin(); bodyIter != updateMemberBusinessRoleBody.end(); ++bodyIter) {
-			UpdateMemberBusinessRoleBody itemAt = (*bodyIter);
+			<BusinessMembershipMember>::iterator bodyIter = businessMembershipMember.begin(); bodyIter != businessMembershipMember.end(); ++bodyIter) {
+			BusinessMembershipMember itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
 			g_free(static_cast<gpointer>(jsonStr));
@@ -1658,22 +1797,22 @@ static bool updateBusinessMembershipsHelper(char * accessToken,
 
 
 bool BusinessAccessRelationshipsManager::updateBusinessMembershipsAsync(char * accessToken,
-	std::string businessId, std::list<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, 
-	void(* handler)(UpdateMemberResultsResponseArray, Error, void* )
+	std::string businessId, std::list<BusinessMembershipMember> businessMembershipMember, 
+	void(* handler)(UpdateBusinessMembershipsResponse, Error, void* )
 	, void* userData)
 {
 	return updateBusinessMembershipsHelper(accessToken,
-	businessId, updateMemberBusinessRoleBody, 
+	businessId, businessMembershipMember, 
 	handler, userData, true);
 }
 
 bool BusinessAccessRelationshipsManager::updateBusinessMembershipsSync(char * accessToken,
-	std::string businessId, std::list<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, 
-	void(* handler)(UpdateMemberResultsResponseArray, Error, void* )
+	std::string businessId, std::list<BusinessMembershipMember> businessMembershipMember, 
+	void(* handler)(UpdateBusinessMembershipsResponse, Error, void* )
 	, void* userData)
 {
 	return updateBusinessMembershipsHelper(accessToken,
-	businessId, updateMemberBusinessRoleBody, 
+	businessId, businessMembershipMember, 
 	handler, userData, false);
 }
 

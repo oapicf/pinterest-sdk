@@ -12,7 +12,7 @@ API.Client.CatalogsRetailAvailableFilterValues = function() {}
 API.Client.CatalogsRetailAvailableFilterValues.prototype.catalogType;
 
 /**
- * @type {!API.Client.catalogs_retail_filter_values_map}
+ * @type {!API.Client.CatalogsRetailFilterValuesMap}
  * @export
  */
 API.Client.CatalogsRetailAvailableFilterValues.prototype.filterValues;

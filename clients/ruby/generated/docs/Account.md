@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **about** | **String** | Profile about description. | [optional] |
-| **account_type** | **String** | Type of account | [optional] |
-| **board_count** | **Integer** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional][readonly] |
+| **account_type** | [**UserAccountType**](UserAccountType.md) | Type of account | [optional] |
+| **board_count** | **Integer** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional][readonly] |
 | **business_name** | **String** |  | [optional] |
 | **follower_count** | **Integer** | User account follower count. | [optional][readonly] |
 | **following_count** | **Integer** | User account following count. | [optional][readonly] |

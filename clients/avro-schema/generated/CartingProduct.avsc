@@ -1,0 +1,41 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CartingProduct",
+  "fields": [
+    {
+      "name": "carting_product_id",
+      "type": "string",
+      "doc": "the internal Pinterest carting product id (different from industry product id)"
+    },
+    {
+      "name": "display_preferred_retailers_only",
+      "type": ["null", "boolean"],
+      "doc": "Whether to display only the preferred retailers for the carting product",
+      "default": null
+    },
+    {
+      "name": "display_product_price",
+      "type": ["null", "boolean"],
+      "doc": "Whether to display the price for the carting product",
+      "default": null
+    },
+    {
+      "name": "preferred_retailers",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CartingRetailer"
+      }],
+      "doc": "A sorted array of preferred retailers for the carting product",
+      "default": null
+    },
+    {
+      "name": "randomize_preferred_retailers",
+      "type": ["null", "boolean"],
+      "doc": "Whether to randomize preferred retailers for the carting product",
+      "default": null
+    }
+  ]
+
+}

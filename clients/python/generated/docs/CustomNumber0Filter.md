@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**custom_number_0** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**custom_number_0** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
 
 ## Example
 

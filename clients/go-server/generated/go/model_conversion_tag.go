@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -41,29 +46,114 @@ type ConversionTag struct {
 
 	Status EntityStatus `json:"status,omitempty"`
 }
-
-// AssertConversionTagRequired checks if the required fields are not zero-ed
-func AssertConversionTagRequired(obj ConversionTag) error {
-	elements := map[string]interface{}{
-		"name": obj.Name,
-		"ad_account_id": obj.AdAccountId,
+// UnmarshalJSON validates required property keys then unmarshals into ConversionTag
+func (o *ConversionTag) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"name",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"name": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"code_snippet": {},
+		"configs": {},
+		"enhanced_match_status": {},
+		"id": {},
+		"last_fired_time_ms": {},
+		"name": {},
+		"version": {},
+		"ad_account_id": {},
+		"status": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
-	if err := AssertConversionTagConfigsRequired(obj.Configs); err != nil {
-		return err
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
 	}
+
+	var decoded ConversionTag
+
+	if value, exists := allProperties["code_snippet"]; exists {
+		if err = json.Unmarshal(value, &decoded.CodeSnippet); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["configs"]; exists {
+		if err = json.Unmarshal(value, &decoded.Configs); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["enhanced_match_status"]; exists {
+		if err = json.Unmarshal(value, &decoded.EnhancedMatchStatus); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["last_fired_time_ms"]; exists {
+		if err = json.Unmarshal(value, &decoded.LastFiredTimeMs); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["version"]; exists {
+		if err = json.Unmarshal(value, &decoded.Version); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["ad_account_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AdAccountId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertConversionTagRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertConversionTagRequired(obj ConversionTag) error {
 	return nil
 }
 
 // AssertConversionTagConstraints checks if the values respects the defined constraints
 func AssertConversionTagConstraints(obj ConversionTag) error {
-	if err := AssertConversionTagConfigsConstraints(obj.Configs); err != nil {
-		return err
-	}
 	return nil
 }

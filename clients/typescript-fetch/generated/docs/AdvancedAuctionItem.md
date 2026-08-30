@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
+`bidOptions` | [AdvancedAuctionBidOptions](AdvancedAuctionBidOptions.md)
 `country` | [Country](Country.md)
 `itemId` | string
 `language` | [Language](Language.md)
-`bidOptions` | [AdvancedAuctionBidOptions](AdvancedAuctionBidOptions.md)
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { AdvancedAuctionItem } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "bidOptions": null,
   "country": null,
   "itemId": DS0294-M,
   "language": null,
-  "bidOptions": null,
 } satisfies AdvancedAuctionItem
 
 console.log(example)

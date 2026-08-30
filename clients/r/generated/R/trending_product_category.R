@@ -10,8 +10,9 @@
 #' @field engagement_type Engagement type \link{ProductCategoriesEngagementType}
 #' @field pct_change_mom Month-over-month change percentage integer
 #' @field percent_relative_volume Relative volume percentage integer
+#' @field pinterest_product_category_id Pinterest Product Category Id integer
 #' @field product_category Product Category Name character
-#' @field verticals Vertical name associated with the product category list(\link{VerticalProductCategory}) [optional]
+#' @field verticals Vertical name associated with the product category list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ TrendingProductCategory <- R6::R6Class(
     `engagement_type` = NULL,
     `pct_change_mom` = NULL,
     `percent_relative_volume` = NULL,
+    `pinterest_product_category_id` = NULL,
     `product_category` = NULL,
     `verticals` = NULL,
 
@@ -30,10 +32,11 @@ TrendingProductCategory <- R6::R6Class(
     #' @param engagement_type Engagement type
     #' @param pct_change_mom Month-over-month change percentage
     #' @param percent_relative_volume Relative volume percentage
+    #' @param pinterest_product_category_id Pinterest Product Category Id
     #' @param product_category Product Category Name
     #' @param verticals Vertical name associated with the product category
     #' @param ... Other optional arguments.
-    initialize = function(`engagement_type`, `pct_change_mom`, `percent_relative_volume`, `product_category`, `verticals` = NULL, ...) {
+    initialize = function(`engagement_type`, `pct_change_mom`, `percent_relative_volume`, `pinterest_product_category_id`, `product_category`, `verticals` = NULL, ...) {
       if (!missing(`engagement_type`)) {
         if (!(`engagement_type` %in% c())) {
           stop(paste("Error! \"", `engagement_type`, "\" cannot be assigned to `engagement_type`. Must be .", sep = ""))
@@ -53,6 +56,12 @@ TrendingProductCategory <- R6::R6Class(
         }
         self$`percent_relative_volume` <- `percent_relative_volume`
       }
+      if (!missing(`pinterest_product_category_id`)) {
+        if (!(is.numeric(`pinterest_product_category_id`) && length(`pinterest_product_category_id`) == 1)) {
+          stop(paste("Error! Invalid data for `pinterest_product_category_id`. Must be an integer:", `pinterest_product_category_id`))
+        }
+        self$`pinterest_product_category_id` <- `pinterest_product_category_id`
+      }
       if (!missing(`product_category`)) {
         if (!(is.character(`product_category`) && length(`product_category`) == 1)) {
           stop(paste("Error! Invalid data for `product_category`. Must be a string:", `product_category`))
@@ -61,7 +70,7 @@ TrendingProductCategory <- R6::R6Class(
       }
       if (!is.null(`verticals`)) {
         stopifnot(is.vector(`verticals`), length(`verticals`) != 0)
-        sapply(`verticals`, function(x) stopifnot(R6::is.R6(x)))
+        sapply(`verticals`, function(x) stopifnot(is.character(x)))
         self$`verticals` <- `verticals`
       }
     },
@@ -99,7 +108,7 @@ TrendingProductCategory <- R6::R6Class(
       TrendingProductCategoryObject <- list()
       if (!is.null(self$`engagement_type`)) {
         TrendingProductCategoryObject[["engagement_type"]] <-
-          self$`engagement_type`$toSimpleType()
+          self$extractSimpleType(self$`engagement_type`)
       }
       if (!is.null(self$`pct_change_mom`)) {
         TrendingProductCategoryObject[["pct_change_mom"]] <-
@@ -109,15 +118,42 @@ TrendingProductCategory <- R6::R6Class(
         TrendingProductCategoryObject[["percent_relative_volume"]] <-
           self$`percent_relative_volume`
       }
+      if (!is.null(self$`pinterest_product_category_id`)) {
+        TrendingProductCategoryObject[["pinterest_product_category_id"]] <-
+          self$`pinterest_product_category_id`
+      }
       if (!is.null(self$`product_category`)) {
         TrendingProductCategoryObject[["product_category"]] <-
           self$`product_category`
       }
       if (!is.null(self$`verticals`)) {
         TrendingProductCategoryObject[["verticals"]] <-
-          lapply(self$`verticals`, function(x) x$toSimpleType())
+          self$`verticals`
       }
       return(TrendingProductCategoryObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -138,11 +174,14 @@ TrendingProductCategory <- R6::R6Class(
       if (!is.null(this_object$`percent_relative_volume`)) {
         self$`percent_relative_volume` <- this_object$`percent_relative_volume`
       }
+      if (!is.null(this_object$`pinterest_product_category_id`)) {
+        self$`pinterest_product_category_id` <- this_object$`pinterest_product_category_id`
+      }
       if (!is.null(this_object$`product_category`)) {
         self$`product_category` <- this_object$`product_category`
       }
       if (!is.null(this_object$`verticals`)) {
-        self$`verticals` <- ApiClient$new()$deserializeObj(this_object$`verticals`, "array[VerticalProductCategory]", loadNamespace("openapi"))
+        self$`verticals` <- ApiClient$new()$deserializeObj(this_object$`verticals`, "array[character]", loadNamespace("openapi"))
       }
       self
     },
@@ -168,8 +207,9 @@ TrendingProductCategory <- R6::R6Class(
       self$`engagement_type` <- ProductCategoriesEngagementType$new()$fromJSON(jsonlite::toJSON(this_object$`engagement_type`, auto_unbox = TRUE, digits = NA))
       self$`pct_change_mom` <- this_object$`pct_change_mom`
       self$`percent_relative_volume` <- this_object$`percent_relative_volume`
+      self$`pinterest_product_category_id` <- this_object$`pinterest_product_category_id`
       self$`product_category` <- this_object$`product_category`
-      self$`verticals` <- ApiClient$new()$deserializeObj(this_object$`verticals`, "array[VerticalProductCategory]", loadNamespace("openapi"))
+      self$`verticals` <- ApiClient$new()$deserializeObj(this_object$`verticals`, "array[character]", loadNamespace("openapi"))
       self
     },
 
@@ -200,6 +240,14 @@ TrendingProductCategory <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TrendingProductCategory: the required field `percent_relative_volume` is missing."))
+      }
+      # check the required field `pinterest_product_category_id`
+      if (!is.null(input_json$`pinterest_product_category_id`)) {
+        if (!(is.numeric(input_json$`pinterest_product_category_id`) && length(input_json$`pinterest_product_category_id`) == 1)) {
+          stop(paste("Error! Invalid data for `pinterest_product_category_id`. Must be an integer:", input_json$`pinterest_product_category_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for TrendingProductCategory: the required field `pinterest_product_category_id` is missing."))
       }
       # check the required field `product_category`
       if (!is.null(input_json$`product_category`)) {
@@ -239,6 +287,11 @@ TrendingProductCategory <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `pinterest_product_category_id` is null
+      if (is.null(self$`pinterest_product_category_id`)) {
+        return(FALSE)
+      }
+
       # check if the required `product_category` is null
       if (is.null(self$`product_category`)) {
         return(FALSE)
@@ -266,6 +319,11 @@ TrendingProductCategory <- R6::R6Class(
       # check if the required `percent_relative_volume` is null
       if (is.null(self$`percent_relative_volume`)) {
         invalid_fields["percent_relative_volume"] <- "Non-nullable required field `percent_relative_volume` cannot be null."
+      }
+
+      # check if the required `pinterest_product_category_id` is null
+      if (is.null(self$`pinterest_product_category_id`)) {
+        invalid_fields["pinterest_product_category_id"] <- "Non-nullable required field `pinterest_product_category_id` cannot be null."
       }
 
       # check if the required `product_category` is null

@@ -15,10 +15,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin with a mix of images and videos.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Pin with a mix of images and videos.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinMediaWithImageAndVideo   {
   
-  private List<PinMediaMetadata> items = new ArrayList<>();
+  private List<@Valid PinMediaMetadata> items = new ArrayList<>();
 
   /**
    * Gets or Sets mediaType
@@ -45,10 +45,10 @@ public class PinMediaWithImageAndVideo   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<PinMediaMetadata> getItems() {
+  public List<@Valid PinMediaMetadata> getItems() {
     return items;
   }
-  public void setItems(List<PinMediaMetadata> items) {
+  public void setItems(List<@Valid PinMediaMetadata> items) {
     this.items = items;
   }
 
@@ -100,10 +100,7 @@ public class PinMediaWithImageAndVideo   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

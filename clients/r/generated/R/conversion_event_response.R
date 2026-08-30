@@ -11,6 +11,7 @@
 #' @field conversion_event  \link{ConversionTagType} [optional]
 #' @field conversion_tag_id Id of the tag. character [optional]
 #' @field created_time Creation date in epoch format. integer [optional]
+#' @field reporting_conversion_event For advertiser-defined events, the reporting event label shown in optimization UIs. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ ConversionEventResponse <- R6::R6Class(
     `conversion_event` = NULL,
     `conversion_tag_id` = NULL,
     `created_time` = NULL,
+    `reporting_conversion_event` = NULL,
 
     #' @description
     #' Initialize a new ConversionEventResponse class.
@@ -29,8 +31,9 @@ ConversionEventResponse <- R6::R6Class(
     #' @param conversion_event conversion_event
     #' @param conversion_tag_id Id of the tag.
     #' @param created_time Creation date in epoch format.
+    #' @param reporting_conversion_event For advertiser-defined events, the reporting event label shown in optimization UIs.
     #' @param ... Other optional arguments.
-    initialize = function(`ad_account_id` = NULL, `conversion_event` = NULL, `conversion_tag_id` = NULL, `created_time` = NULL, ...) {
+    initialize = function(`ad_account_id` = NULL, `conversion_event` = NULL, `conversion_tag_id` = NULL, `created_time` = NULL, `reporting_conversion_event` = NULL, ...) {
       if (!is.null(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
           stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
@@ -40,9 +43,6 @@ ConversionEventResponse <- R6::R6Class(
       if (!is.null(`conversion_event`)) {
         if (!(`conversion_event` %in% c())) {
           stop(paste("Error! \"", `conversion_event`, "\" cannot be assigned to `conversion_event`. Must be .", sep = ""))
-        }
-        if (!(is.character(`conversion_event`) && length(`conversion_event`) == 1)) {
-          stop(paste("Error! Invalid data for `conversion_event`. Must be a string:", `conversion_event`))
         }
         stopifnot(R6::is.R6(`conversion_event`))
         self$`conversion_event` <- `conversion_event`
@@ -58,6 +58,12 @@ ConversionEventResponse <- R6::R6Class(
           stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
         }
         self$`created_time` <- `created_time`
+      }
+      if (!is.null(`reporting_conversion_event`)) {
+        if (!(is.character(`reporting_conversion_event`) && length(`reporting_conversion_event`) == 1)) {
+          stop(paste("Error! Invalid data for `reporting_conversion_event`. Must be a string:", `reporting_conversion_event`))
+        }
+        self$`reporting_conversion_event` <- `reporting_conversion_event`
       }
     },
 
@@ -98,7 +104,7 @@ ConversionEventResponse <- R6::R6Class(
       }
       if (!is.null(self$`conversion_event`)) {
         ConversionEventResponseObject[["conversion_event"]] <-
-          self$`conversion_event`$toSimpleType()
+          self$extractSimpleType(self$`conversion_event`)
       }
       if (!is.null(self$`conversion_tag_id`)) {
         ConversionEventResponseObject[["conversion_tag_id"]] <-
@@ -108,7 +114,34 @@ ConversionEventResponse <- R6::R6Class(
         ConversionEventResponseObject[["created_time"]] <-
           self$`created_time`
       }
+      if (!is.null(self$`reporting_conversion_event`)) {
+        ConversionEventResponseObject[["reporting_conversion_event"]] <-
+          self$`reporting_conversion_event`
+      }
       return(ConversionEventResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -131,6 +164,9 @@ ConversionEventResponse <- R6::R6Class(
       }
       if (!is.null(this_object$`created_time`)) {
         self$`created_time` <- this_object$`created_time`
+      }
+      if (!is.null(this_object$`reporting_conversion_event`)) {
+        self$`reporting_conversion_event` <- this_object$`reporting_conversion_event`
       }
       self
     },
@@ -157,6 +193,7 @@ ConversionEventResponse <- R6::R6Class(
       self$`conversion_event` <- ConversionTagType$new()$fromJSON(jsonlite::toJSON(this_object$`conversion_event`, auto_unbox = TRUE, digits = NA))
       self$`conversion_tag_id` <- this_object$`conversion_tag_id`
       self$`created_time` <- this_object$`created_time`
+      self$`reporting_conversion_event` <- this_object$`reporting_conversion_event`
       self
     },
 

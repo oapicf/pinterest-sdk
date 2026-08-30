@@ -37,6 +37,9 @@ Protected Class IntegrationMetadata
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			External business ID for the integration.
+		#tag EndNote
 		external_business_id As Xoson.O.OptionalString
 	#tag EndProperty
 

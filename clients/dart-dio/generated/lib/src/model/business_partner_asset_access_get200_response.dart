@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/get_partner_assets_response.dart';
+import 'package:openapi/src/model/base_business_assets.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,9 +14,15 @@ part 'business_partner_asset_access_get200_response.g.dart';
 ///
 /// Properties:
 /// * [bookmark] 
-/// * [items] - List assets on which you granted access to your partner or assets on which your partner has granted you access.
+/// * [items] 
 @BuiltValue()
-abstract class BusinessPartnerAssetAccessGet200Response implements Paginated, Built<BusinessPartnerAssetAccessGet200Response, BusinessPartnerAssetAccessGet200ResponseBuilder> {
+abstract class BusinessPartnerAssetAccessGet200Response implements Built<BusinessPartnerAssetAccessGet200Response, BusinessPartnerAssetAccessGet200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<BaseBusinessAssets> get items;
+
   BusinessPartnerAssetAccessGet200Response._();
 
   factory BusinessPartnerAssetAccessGet200Response([void updates(BusinessPartnerAssetAccessGet200ResponseBuilder b)]) = _$BusinessPartnerAssetAccessGet200Response;
@@ -51,7 +56,7 @@ class _$BusinessPartnerAssetAccessGet200ResponseSerializer implements PrimitiveS
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(BaseBusinessAssets)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$BusinessPartnerAssetAccessGet200ResponseSerializer implements PrimitiveS
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(BaseBusinessAssets)]),
+          ) as BuiltList<BaseBusinessAssets>;
           result.items.replace(valueDes);
           break;
         default:

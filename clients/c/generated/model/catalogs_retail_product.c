@@ -31,11 +31,11 @@ static catalogs_retail_product_t *catalogs_retail_product_create_internal(
     if (!catalogs_retail_product_local_var) {
         return NULL;
     }
+    memset(catalogs_retail_product_local_var, 0, sizeof(catalogs_retail_product_t));
+    catalogs_retail_product_local_var->_library_owned = 1;
     catalogs_retail_product_local_var->catalog_type = catalog_type;
     catalogs_retail_product_local_var->metadata = metadata;
     catalogs_retail_product_local_var->pin = pin;
-
-    catalogs_retail_product_local_var->_library_owned = 1;
     return catalogs_retail_product_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) catalogs_retail_product_t *catalogs_retail_product_c
     catalogs_retail_product_metadata_t *metadata,
     pin_t *pin
     ) {
-    return catalogs_retail_product_create_internal (
+    catalogs_retail_product_t *result = catalogs_retail_product_create_internal (
         catalog_type,
         metadata,
         pin
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_retail_product_free(catalogs_retail_product_t *catalogs_retail_product) {
@@ -171,11 +174,16 @@ catalogs_retail_product_t *catalogs_retail_product_parseFromJSON(cJSON *catalogs
     pin_local_nonprim = pin_parseFromJSON(pin); //nonprimitive
 
 
+
     catalogs_retail_product_local_var = catalogs_retail_product_create_internal (
         catalog_typeVariable,
         metadata_local_nonprim,
         pin_local_nonprim
         );
+
+    if (!catalogs_retail_product_local_var) {
+        goto end;
+    }
 
     return catalogs_retail_product_local_var;
 end:

@@ -4,7 +4,6 @@ package org.openapitools.client.model
 
 case class GetBusinessEmployers200Response (
     _bookmark: Option[String],
-    /* List of employers. */
     _items: List[UserBusinessRoleBinding]
 )
 object GetBusinessEmployers200Response {

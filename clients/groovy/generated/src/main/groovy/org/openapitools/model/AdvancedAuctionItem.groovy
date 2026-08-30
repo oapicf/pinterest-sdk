@@ -10,11 +10,11 @@ import org.openapitools.model.Language;
 @Canonical
 class AdvancedAuctionItem {
     
+    AdvancedAuctionBidOptions bidOptions
+    
     Country country
     /* The catalog retail item id in the merchant namespace */
     String itemId
     
     Language language
-    
-    AdvancedAuctionBidOptions bidOptions
 }

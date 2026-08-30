@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.Audience
+open OpenAPI.Model.AdAccountsAudience
 open OpenAPI.Model.string option
 
 module AudiencesList200Response =
@@ -15,7 +15,7 @@ module AudiencesList200Response =
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
     [<JsonProperty(PropertyName = "items")>]
-    Items : Audience[];
+    Items : AdAccountsAudience[];
   }
 
   //#endregion

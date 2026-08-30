@@ -1,0 +1,22 @@
+
+
+export const InterestsEnum = {
+    All: 'ALL',
+    Animals: 'ANIMALS',
+    Architecture: 'ARCHITECTURE',
+    Art: 'ART',
+    Beauty: 'BEAUTY',
+    DiyAndCrafts: 'DIY_AND_CRAFTS',
+    Education: 'EDUCATION',
+    EventPlanning: 'EVENT_PLANNING',
+    Fashion: 'FASHION',
+    FoodAndDrinks: 'FOOD_AND_DRINKS',
+    Gardening: 'GARDENING',
+    Health: 'HEALTH',
+    HomeDecor: 'HOME_DECOR',
+    Parenting: 'PARENTING',
+    Travel: 'TRAVEL',
+    Wedding: 'WEDDING'
+} as const;
+export type InterestsEnum = typeof InterestsEnum[keyof typeof InterestsEnum];
+

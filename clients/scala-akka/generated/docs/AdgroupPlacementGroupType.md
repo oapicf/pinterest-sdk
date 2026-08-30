@@ -1,0 +1,9 @@
+
+
+# AdgroupPlacementGroupType
+
+## Enum
+
+
+
+

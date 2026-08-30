@@ -1,4 +1,4 @@
-# # CatalogsAvailableFilterValues
+# CatalogsAvailableFilterValues
 
 ## Properties
 

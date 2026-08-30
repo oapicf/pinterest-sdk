@@ -9,7 +9,7 @@ use WWW::OpenAPIClient::Object::BoardsListPins200Response;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] 
-**items** | [**ARRAY[Pin]**](Pin.md) | Pins | 
+**items** | [**ARRAY[PinRead]**](PinRead.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

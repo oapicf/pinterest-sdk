@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// InviteStatus The current status of the invite.
+// InviteStatus The current status of an invite or request.
 type InviteStatus string
 
 // List of InviteStatus

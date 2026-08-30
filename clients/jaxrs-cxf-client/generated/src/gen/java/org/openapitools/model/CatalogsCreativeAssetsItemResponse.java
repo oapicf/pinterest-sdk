@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsAttributes;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 
 import io.swagger.annotations.ApiModel;
@@ -14,9 +13,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Object describing a hotel record
+ * Object describing a creative assets item record
  */
-@ApiModel(description="Object describing a hotel record")
+@ApiModel(description="Object describing a creative assets item record")
 
 public class CatalogsCreativeAssetsItemResponse  {
   
@@ -24,9 +23,39 @@ public class CatalogsCreativeAssetsItemResponse  {
 
   private CatalogsCreativeAssetsAttributes attributes;
 
+public enum CatalogTypeEnum {
+
+CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
+
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
   @ApiModelProperty(required = true, value = "")
 
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
  /**
   * The catalog creative assets id in the merchant namespace
@@ -34,6 +63,43 @@ public class CatalogsCreativeAssetsItemResponse  {
   @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
 
   private String creativeAssetsId;
+
+public enum ItemResponseKindEnum {
+
+CREATIVE_ASSETS_ITEM(String.valueOf("creative_assets_item"));
+
+
+    private String value;
+
+    ItemResponseKindEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static ItemResponseKindEnum fromValue(String value) {
+        for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+ /**
+  * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  */
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.")
+
+  private ItemResponseKindEnum itemResponseKind;
 
  /**
   * The pins mapped to the item
@@ -64,15 +130,18 @@ public class CatalogsCreativeAssetsItemResponse  {
    * @return catalogType
   **/
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
+  public String getCatalogType() {
+    if (catalogType == null) {
+      return null;
+    }
+    return catalogType.value();
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
-  public CatalogsCreativeAssetsItemResponse catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -92,6 +161,27 @@ public class CatalogsCreativeAssetsItemResponse  {
 
   public CatalogsCreativeAssetsItemResponse creativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+ /**
+   * Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload.
+   * @return itemResponseKind
+  **/
+  @JsonProperty("item_response_kind")
+  public String getItemResponseKind() {
+    if (itemResponseKind == null) {
+      return null;
+    }
+    return itemResponseKind.value();
+  }
+
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+  }
+
+  public CatalogsCreativeAssetsItemResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
     return this;
   }
 
@@ -130,12 +220,13 @@ public class CatalogsCreativeAssetsItemResponse  {
     return Objects.equals(this.attributes, catalogsCreativeAssetsItemResponse.attributes) &&
         Objects.equals(this.catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
+        Objects.equals(this.itemResponseKind, catalogsCreativeAssetsItemResponse.itemResponseKind) &&
         Objects.equals(this.pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, catalogType, creativeAssetsId, pins);
+    return Objects.hash(attributes, catalogType, creativeAssetsId, itemResponseKind, pins);
   }
 
   @Override
@@ -146,6 +237,7 @@ public class CatalogsCreativeAssetsItemResponse  {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -156,10 +248,7 @@ public class CatalogsCreativeAssetsItemResponse  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

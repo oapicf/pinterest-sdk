@@ -86,15 +86,17 @@ class _$ItemUpsertBatchRecordSerializer implements PrimitiveSerializer<ItemUpser
         case r'attributes':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ItemAttributesRequest),
-          ) as ItemAttributesRequest;
+            specifiedType: const FullType.nullable(ItemAttributesRequest),
+          ) as ItemAttributesRequest?;
+          if (valueDes == null) continue;
           result.attributes.replace(valueDes);
           break;
         case r'item_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.itemId = valueDes;
           break;
         default:

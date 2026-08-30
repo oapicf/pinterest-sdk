@@ -102,7 +102,7 @@ User_account_followed_interests_200_response::getBookmark()
 }
 
 void
-User_account_followed_interests_200_response::setBookmark(std::string  bookmark)
+User_account_followed_interests_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ User_account_followed_interests_200_response::getItems()
 }
 
 void
-User_account_followed_interests_200_response::setItems(std::list <Interest> items)
+User_account_followed_interests_200_response::setItems(std::list<Interest> items)
 {
 	this->items = items;
 }

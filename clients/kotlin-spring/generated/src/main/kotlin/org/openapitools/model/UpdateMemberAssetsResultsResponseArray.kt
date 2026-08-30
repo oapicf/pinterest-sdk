@@ -1,8 +1,11 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.UpdateMemberAssetsResultsResponseArrayItemsInner
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.UpdateMemberAssetResultItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -21,8 +24,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class UpdateMemberAssetsResultsResponseArray(
 
     @field:Valid
-    @Schema(example = "null", description = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.")
-    @get:JsonProperty("items") val items: kotlin.collections.List<UpdateMemberAssetsResultsResponseArrayItemsInner>? = null
+    @Schema(description = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("items")
+    @get:JsonProperty("items") val items: kotlin.collections.List<UpdateMemberAssetResultItem>? = null
 ) {
 
 }

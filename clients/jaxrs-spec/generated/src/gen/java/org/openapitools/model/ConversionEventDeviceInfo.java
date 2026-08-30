@@ -5,6 +5,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FormFactor;
+import org.openapitools.model.NetworkType;
+import org.openapitools.model.OsFamily;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object containing information about the device where event occurred.")
 @JsonTypeName("ConversionEventDeviceInfo")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEventDeviceInfo   {
   private Integer batteryLevel;
   private String brand;
@@ -29,154 +32,13 @@ public class ConversionEventDeviceInfo   {
   private Integer cpuCores;
   private Integer externalStorageFreeSpace;
   private Integer externalStorageSize;
-  public enum FormFactorEnum {
-
-    DESKTOP(String.valueOf("desktop")), LAPTOP(String.valueOf("laptop")), CELLPHONE(String.valueOf("cellphone")), TABLET(String.valueOf("tablet")), SMARTWATCH(String.valueOf("smartwatch")), TV(String.valueOf("tv")), VR(String.valueOf("vr")), CONSOLE(String.valueOf("console")), OTHER(String.valueOf("other"));
-
-
-    private String value;
-
-    FormFactorEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static FormFactorEnum fromString(String s) {
-        for (FormFactorEnum b : FormFactorEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static FormFactorEnum fromValue(String value) {
-        for (FormFactorEnum b : FormFactorEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private FormFactorEnum formFactor;
+  private FormFactor formFactor;
   private String kernelVersion;
   private @Valid List<String> languages = new ArrayList<>();
   private String locale;
   private String model;
-  public enum NetworkTypeEnum {
-
-    WIFI(String.valueOf("wifi")), CELLULAR_2G(String.valueOf("cellular_2g")), CELLULAR_3G(String.valueOf("cellular_3g")), CELLULAR_4G(String.valueOf("cellular_4g")), CELLULAR_5G(String.valueOf("cellular_5g")), CELLULAR_6G(String.valueOf("cellular_6g")), ETHERNET(String.valueOf("ethernet")), UNKNOWN(String.valueOf("unknown"));
-
-
-    private String value;
-
-    NetworkTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static NetworkTypeEnum fromString(String s) {
-        for (NetworkTypeEnum b : NetworkTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static NetworkTypeEnum fromValue(String value) {
-        for (NetworkTypeEnum b : NetworkTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private NetworkTypeEnum networkType;
-  public enum OsFamilyEnum {
-
-    IOS(String.valueOf("ios")), ANDROID(String.valueOf("android")), MACOS(String.valueOf("macos")), WINDOWS(String.valueOf("windows")), LINUX(String.valueOf("linux")), BSD(String.valueOf("bsd")), OTHER(String.valueOf("other"));
-
-
-    private String value;
-
-    OsFamilyEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static OsFamilyEnum fromString(String s) {
-        for (OsFamilyEnum b : OsFamilyEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static OsFamilyEnum fromValue(String value) {
-        for (OsFamilyEnum b : OsFamilyEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private OsFamilyEnum osFamily;
+  private NetworkType networkType;
+  private OsFamily osFamily;
   private String osName;
   private String osReleaseName;
   private String osVersion;
@@ -323,7 +185,7 @@ public class ConversionEventDeviceInfo   {
   /**
    * Device form factor
    **/
-  public ConversionEventDeviceInfo formFactor(FormFactorEnum formFactor) {
+  public ConversionEventDeviceInfo formFactor(FormFactor formFactor) {
     this.formFactor = formFactor;
     return this;
   }
@@ -331,12 +193,12 @@ public class ConversionEventDeviceInfo   {
   
   @ApiModelProperty(example = "cellphone", value = "Device form factor")
   @JsonProperty("form_factor")
-  public FormFactorEnum getFormFactor() {
+  public FormFactor getFormFactor() {
     return formFactor;
   }
 
   @JsonProperty("form_factor")
-  public void setFormFactor(FormFactorEnum formFactor) {
+  public void setFormFactor(FormFactor formFactor) {
     this.formFactor = formFactor;
   }
 
@@ -425,7 +287,7 @@ public class ConversionEventDeviceInfo   {
   }
 
   
-  @ApiModelProperty(example = "16 Pro, Galaxy S25 Ultra", value = "Device model name")
+  @ApiModelProperty(value = "Device model name")
   @JsonProperty("model")
    @Size(max=100)public String getModel() {
     return model;
@@ -439,7 +301,7 @@ public class ConversionEventDeviceInfo   {
   /**
    * Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
    **/
-  public ConversionEventDeviceInfo networkType(NetworkTypeEnum networkType) {
+  public ConversionEventDeviceInfo networkType(NetworkType networkType) {
     this.networkType = networkType;
     return this;
   }
@@ -447,19 +309,19 @@ public class ConversionEventDeviceInfo   {
   
   @ApiModelProperty(example = "wifi", value = "Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()")
   @JsonProperty("network_type")
-  public NetworkTypeEnum getNetworkType() {
+  public NetworkType getNetworkType() {
     return networkType;
   }
 
   @JsonProperty("network_type")
-  public void setNetworkType(NetworkTypeEnum networkType) {
+  public void setNetworkType(NetworkType networkType) {
     this.networkType = networkType;
   }
 
   /**
    * OS Family
    **/
-  public ConversionEventDeviceInfo osFamily(OsFamilyEnum osFamily) {
+  public ConversionEventDeviceInfo osFamily(OsFamily osFamily) {
     this.osFamily = osFamily;
     return this;
   }
@@ -467,12 +329,12 @@ public class ConversionEventDeviceInfo   {
   
   @ApiModelProperty(example = "ios", value = "OS Family")
   @JsonProperty("os_family")
-  public OsFamilyEnum getOsFamily() {
+  public OsFamily getOsFamily() {
     return osFamily;
   }
 
   @JsonProperty("os_family")
-  public void setOsFamily(OsFamilyEnum osFamily) {
+  public void setOsFamily(OsFamily osFamily) {
     this.osFamily = osFamily;
   }
 
@@ -785,12 +647,8 @@ public class ConversionEventDeviceInfo   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

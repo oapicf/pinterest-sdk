@@ -13,7 +13,7 @@ package org.openapitools.server.model
  * @param FEED_LENGTH_TOO_LONG Your feed contains too many items, some items will not be published. for example: ''null''
  * @param FEED_TOO_SMALL Your feed couldn't be validated because the file doesn't contain the minimum number of lines required. for example: ''null''
  * @param FETCH_ERROR Pinterest couldn't download your feed. for example: ''null''
- * @param FETCH_INACTIVE_FEED_ERROR Your feed wasn't ingested because it hasn’t changed in the previous 90 days. for example: ''null''
+ * @param FETCH_INACTIVE_FEED_ERROR Your feed wasn't ingested because it hasn't changed in the previous 90 days. for example: ''null''
  * @param IMAGE_LINK_INVALID Some image links are formatted incorrectly. for example: ''null''
  * @param IMAGE_LINK_LENGTH_TOO_LONG Some items have image_link URLs that contain too many characters, so those items will not be published. for example: ''null''
  * @param IMAGE_LINK_MISSING Some items are missing an image link URL in their product metadata, those items will not be published. for example: ''null''

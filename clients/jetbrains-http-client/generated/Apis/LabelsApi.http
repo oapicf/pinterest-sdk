@@ -1,0 +1,50 @@
+## LabelsApi
+
+### Apply label to entity
+## Apply label to entity
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/labels/{{label_id}}/apply
+Content-Type: application/json
+Accept: application/json
+
+{
+ "entity_ids": "<string>"
+}
+
+
+### Create labels
+## Create labels
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/labels
+Content-Type: application/json
+Accept: application/json
+
+{
+ "labels": "<string>"
+}
+
+
+### List labels
+## List labels
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/labels?campaignIds={{campaignIds}}&labelIds={{labelIds}}&entityStatuses={{entityStatuses}}&labelTypes={{labelTypes}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Remove label from entities
+## Remove label from entities
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/labels/{{label_id}}/remove
+Content-Type: application/json
+Accept: application/json
+
+{
+ "entity_ids": "<string>"
+}
+
+
+### Update labels
+## Update labels
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/labels
+Content-Type: application/json
+Accept: application/json
+
+{
+ "labels": "<string>"
+}
+

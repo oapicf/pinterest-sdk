@@ -23,7 +23,7 @@ typedef struct catalogs_product_group_create_request_t {
     char *description; // string
     char *feed_id; // string
     struct catalogs_product_group_filters_request_t *filters; //model
-    int is_featured; //boolean
+    int *is_featured; //boolean
     char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -33,7 +33,7 @@ __attribute__((deprecated)) catalogs_product_group_create_request_t *catalogs_pr
     char *description,
     char *feed_id,
     catalogs_product_group_filters_request_t *filters,
-    int is_featured,
+    int *is_featured,
     char *name
 );
 

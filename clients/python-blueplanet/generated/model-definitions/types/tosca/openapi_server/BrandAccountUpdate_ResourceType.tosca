@@ -1,0 +1,62 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BrandAccountUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BrandAccountUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BrandAccountProfileImageUpdate = openapi_server.resourceTypes.BrandAccountProfileImageUpdate
+  Country = openapi_server.resourceTypes.Country
+}
+resourceTypes {
+
+  BrandAccountUpdate {
+    title = BrandAccountUpdate
+    description = BrandAccountUpdate
+    derivedFrom = Root
+    properties {
+        about {
+          type =  string
+          description = "Brand Account about information"
+          optional = false
+        }
+        country {
+          type = Country
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Brand Account name"
+          optional = false
+        }
+        profile_image {
+          type = BrandAccountProfileImageUpdate
+          description = ""
+          optional = false
+        }
+        username {
+          type =  string
+          description = "Brand Account username"
+          optional = false
+        }
+        website {
+          type =  string
+          description = "Brand Account website"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BrandAccountUpdate {
+    title = BrandAccountUpdate
+    description = BrandAccountUpdate
+    implements = openapi_server.resourceTypes.BrandAccountUpdate
+
+  }
+}

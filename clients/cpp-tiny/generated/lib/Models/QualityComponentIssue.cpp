@@ -106,7 +106,7 @@ QualityComponentIssue::getId()
 }
 
 void
-QualityComponentIssue::setId(std::string  id)
+QualityComponentIssue::setId(std::string id)
 {
 	this->id = id;
 }
@@ -118,7 +118,7 @@ QualityComponentIssue::getName()
 }
 
 void
-QualityComponentIssue::setName(std::string  name)
+QualityComponentIssue::setName(std::string name)
 {
 	this->name = name;
 }
@@ -130,7 +130,7 @@ QualityComponentIssue::getReason()
 }
 
 void
-QualityComponentIssue::setReason(std::string  reason)
+QualityComponentIssue::setReason(std::string reason)
 {
 	this->reason = reason;
 }

@@ -12,18 +12,21 @@ static time_series_t *time_series_create_internal(
     if (!time_series_local_var) {
         return NULL;
     }
-    time_series_local_var->date = date;
-
+    memset(time_series_local_var, 0, sizeof(time_series_t));
     time_series_local_var->_library_owned = 1;
+    time_series_local_var->date = date;
     return time_series_local_var;
 }
 
 __attribute__((deprecated)) time_series_t *time_series_create(
     char *date
     ) {
-    return time_series_create_internal (
+    time_series_t *result = time_series_create_internal (
         date
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void time_series_free(time_series_t *time_series) {
@@ -64,6 +67,8 @@ time_series_t *time_series_parseFromJSON(cJSON *time_seriesJSON){
 
     time_series_t *time_series_local_var = NULL;
 
+    char *date_local_str = NULL;
+
     // time_series->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(time_seriesJSON, "date");
     if (cJSON_IsNull(date)) {
@@ -77,12 +82,22 @@ time_series_t *time_series_parseFromJSON(cJSON *time_seriesJSON){
     }
 
 
+    if (date) date_local_str = strdup(date->valuestring);
+
     time_series_local_var = time_series_create_internal (
-        date ? strdup(date->valuestring) : NULL
+        date_local_str
         );
+
+    if (!time_series_local_var) {
+        goto end;
+    }
 
     return time_series_local_var;
 end:
+    if (date_local_str) {
+        free(date_local_str);
+        date_local_str = NULL;
+    }
     return NULL;
 
 }

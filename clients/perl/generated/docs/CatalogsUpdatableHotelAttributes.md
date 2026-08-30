@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsUpdatableHotelAttributes;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**CatalogsHotelAddress**](CatalogsHotelAddress.md) |  | [optional] 
+**address** | [**CatalogsHotelAddress**](CatalogsHotelAddress.md) | Hotel address | [optional] 
 **base_price** | **string** | Base price of the hotel room per night followed by the ISO currency code | [optional] 
 **brand** | **string** | The brand to which this hotel belongs to. | [optional] 
 **category** | **string** | The type of property. The category can be any type of internal description desired. | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **custom_label_3** | **string** | Custom grouping of hotels | [optional] 
 **custom_label_4** | **string** | Custom grouping of hotels | [optional] 
 **description** | **string** | Brief description of the hotel. | [optional] 
-**guest_ratings** | [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) |  | [optional] 
+**guest_ratings** | [**CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties | [optional] 
 **latitude** | **double** | Latitude of the hotel. | [optional] 
 **link** | **string** | Link to the product page | [optional] 
 **longitude** | **double** | Longitude of the hotel. | [optional] 

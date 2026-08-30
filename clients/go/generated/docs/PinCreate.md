@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AiDisclosures** | Pointer to [**AiDisclosures**](AiDisclosures.md) | AI disclosure declarations the creator has made about this Pin. | [optional] 
 **AltText** | Pointer to **NullableString** |  | [optional] 
 **BoardId** | Pointer to **string** | The board to which this Pin belongs. | [optional] 
 **BoardSectionId** | Pointer to **NullableString** | The board section to which this Pin belongs. | [optional] 
@@ -33,6 +34,31 @@ will change when the set of required properties is changed
 NewPinCreateWithDefaults instantiates a new PinCreate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAiDisclosures
+
+`func (o *PinCreate) GetAiDisclosures() AiDisclosures`
+
+GetAiDisclosures returns the AiDisclosures field if non-nil, zero value otherwise.
+
+### GetAiDisclosuresOk
+
+`func (o *PinCreate) GetAiDisclosuresOk() (*AiDisclosures, bool)`
+
+GetAiDisclosuresOk returns a tuple with the AiDisclosures field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiDisclosures
+
+`func (o *PinCreate) SetAiDisclosures(v AiDisclosures)`
+
+SetAiDisclosures sets AiDisclosures field to given value.
+
+### HasAiDisclosures
+
+`func (o *PinCreate) HasAiDisclosures() bool`
+
+HasAiDisclosures returns a boolean if a field has been set.
 
 ### GetAltText
 

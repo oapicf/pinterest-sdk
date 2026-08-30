@@ -47,15 +47,13 @@ class HotelIdFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "HotelIdFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "HotelIdFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'HOTEL_ID'), 'Required key "HotelIdFilter[HOTEL_ID]" is missing from JSON.');
+        assert(json[r'HOTEL_ID'] != null, 'Required key "HotelIdFilter[HOTEL_ID]" has a null value in JSON.');
         return true;
       }());
 
       return HotelIdFilter(
-        HOTEL_ID: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'HOTEL_ID')!,
+        HOTEL_ID: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'HOTEL_ID'])!,
       );
     }
     return null;

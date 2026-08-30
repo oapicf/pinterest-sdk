@@ -1,7 +1,7 @@
 /*
  * quiz_pin_option.h
  *
- *  This field contains multiple options to a quiz question.
+ * This field contains multiple options to a quiz question.
  */
 
 #ifndef _quiz_pin_option_H_
@@ -19,14 +19,14 @@ typedef struct quiz_pin_option_t quiz_pin_option_t;
 
 
 typedef struct quiz_pin_option_t {
-    double id; //numeric
+    double *id; //numeric
     char *text; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } quiz_pin_option_t;
 
 __attribute__((deprecated)) quiz_pin_option_t *quiz_pin_option_create(
-    double id,
+    double *id,
     char *text
 );
 

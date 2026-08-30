@@ -5,13 +5,13 @@
   <h2><a name="targetingTemplate/create"></a>targetingTemplate/create</h2>
   <hr>
   <p></p>
-  <p>&lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;</p>
+  <p>Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/targeting_templates</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="TargetingTemplateGetResponseData"><a href="">TargetingTemplateGetResponseData</a></div>
+  <div class="model" data-model="TargetingTemplate"><a href="">TargetingTemplate</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -34,13 +34,13 @@
       <span class="param-name">TargetingTemplateCreate</span>
       <span class="param-type">TargetingTemplateCreate(TargetingTemplateCreate)</span>
       
-      <p class="param-description">targeting template creation entity</p>
+      <p class="param-description"></p>
       </li>
   </ul>
   <h2><a name="targetingTemplate/list"></a>targetingTemplate/list</h2>
   <hr>
   <p></p>
-  <p>Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;</p>
+  <p>Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/targeting_templates</code>
   <h3 class="section">HTTP Method</h3>
@@ -66,10 +66,32 @@
       
       
       
-      <span class="param-name">order</span>
+      <span class="param-name">bookmark</span>
       <span class="param-type">String</span>
       
-      <p class="param-description">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.</p>
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">order</span>
+      <span class="param-type">PinterestLibPaginationOrder</span>
+      
+      <p class="param-description">The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.</p>
       </li>
       <li class="parameter">
       
@@ -91,35 +113,13 @@
       <span class="param-name">search_query</span>
       <span class="param-type">String</span>
       
-      <p class="param-description">Search keyword for targeting templates</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
-      <span class="param-name">page_size</span>
-      <span class="param-type">Integer</span>
-      
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
-      <span class="param-name">bookmark</span>
-      <span class="param-type">String</span>
-      
-      <p class="param-description">Cursor used to fetch the next page of items</p>
+      <p class="param-description">Search query. Can contain pin description keywords or comma-separated pin IDs.</p>
       </li>
   </ul>
   <h2><a name="targetingTemplate/update"></a>targetingTemplate/update</h2>
   <hr>
   <p></p>
-  <p>&lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;</p>
+  <p>Update the targeting template given advertiser ID and targeting template ID</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/targeting_templates</code>
   <h3 class="section">HTTP Method</h3>
@@ -145,10 +145,10 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">TargetingTemplateUpdateRequest</span>
-      <span class="param-type">TargetingTemplateUpdateRequest(TargetingTemplateUpdateRequest)</span>
+      <span class="param-name">TargetingTemplateUpdateRequestReadOrUpdate</span>
+      <span class="param-type">TargetingTemplateUpdateRequestReadOrUpdate(TargetingTemplateUpdateRequestReadOrUpdate)</span>
       
-      <p class="param-description">Operation type and targeting template ID</p>
+      <p class="param-description"></p>
       </li>
   </ul>
 </div>

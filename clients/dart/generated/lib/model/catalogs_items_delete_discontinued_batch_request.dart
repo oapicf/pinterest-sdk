@@ -27,7 +27,7 @@ class CatalogsItemsDeleteDiscontinuedBatchRequest {
   /// We recommend using the CatalogsLocale values.
   LanguageEnum language;
 
-  BatchOperation operation;
+  CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum operation;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsItemsDeleteDiscontinuedBatchRequest &&
@@ -67,10 +67,14 @@ class CatalogsItemsDeleteDiscontinuedBatchRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'country'), 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[country]" has a null value in JSON.');
+        assert(json.containsKey(r'items'), 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[items]" has a null value in JSON.');
+        assert(json.containsKey(r'language'), 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[language]" is missing from JSON.');
+        assert(json[r'language'] != null, 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[language]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsItemsDeleteDiscontinuedBatchRequest[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -78,7 +82,7 @@ class CatalogsItemsDeleteDiscontinuedBatchRequest {
         country: Country.fromJson(json[r'country'])!,
         items: ItemDeleteDiscontinuedBatchRecord.listFromJson(json[r'items']),
         language: LanguageEnum.fromJson(json[r'language'])!,
-        operation: BatchOperation.fromJson(json[r'operation'])!,
+        operation: CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum.fromJson(json[r'operation'])!,
       );
     }
     return null;
@@ -132,4 +136,80 @@ class CatalogsItemsDeleteDiscontinuedBatchRequest {
     'operation',
   };
 }
+
+
+enum CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum {
+  DELETE_DISCONTINUED._(r'DELETE_DISCONTINUED'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum? fromJson(dynamic value) => CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum] to String,
+/// and [decode] dynamic data back to [CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum].
+class CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnumTypeTransformer {
+  factory CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnumTypeTransformer() => _instance ??= const CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnumTypeTransformer._();
+
+  const CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnumTypeTransformer._();
+
+  String encode(CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'DELETE_DISCONTINUED': return CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum.DELETE_DISCONTINUED;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnumTypeTransformer? _instance;
+}
+
 

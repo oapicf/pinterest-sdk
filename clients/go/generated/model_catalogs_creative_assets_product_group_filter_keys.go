@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -32,6 +32,7 @@ type CatalogsCreativeAssetsProductGroupFilterKeys struct {
 	GoogleProductCategory4Filter *GoogleProductCategory4Filter
 	GoogleProductCategory5Filter *GoogleProductCategory5Filter
 	GoogleProductCategory6Filter *GoogleProductCategory6Filter
+	LinkFilter *LinkFilter
 	MediaTypeFilter *MediaTypeFilter
 	TitleKeywordsFilter *TitleKeywordsFilter
 }
@@ -208,6 +209,19 @@ func (dst *CatalogsCreativeAssetsProductGroupFilterKeys) UnmarshalJSON(data []by
 		dst.GoogleProductCategory6Filter = nil
 	}
 
+	// try to unmarshal JSON data into LinkFilter
+	err = json.Unmarshal(data, &dst.LinkFilter);
+	if err == nil {
+		jsonLinkFilter, _ := json.Marshal(dst.LinkFilter)
+		if string(jsonLinkFilter) == "{}" { // empty struct
+			dst.LinkFilter = nil
+		} else {
+			return nil // data stored in dst.LinkFilter, return on the first match
+		}
+	} else {
+		dst.LinkFilter = nil
+	}
+
 	// try to unmarshal JSON data into MediaTypeFilter
 	err = json.Unmarshal(data, &dst.MediaTypeFilter);
 	if err == nil {
@@ -289,6 +303,10 @@ func (src CatalogsCreativeAssetsProductGroupFilterKeys) MarshalJSON() ([]byte, e
 
 	if src.GoogleProductCategory6Filter != nil {
 		return json.Marshal(&src.GoogleProductCategory6Filter)
+	}
+
+	if src.LinkFilter != nil {
+		return json.Marshal(&src.LinkFilter)
 	}
 
 	if src.MediaTypeFilter != nil {

@@ -17,10 +17,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Individual trending topic within an interest category")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Individual trending topic within an interest category")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendingTopic   {
   
   private String description;
+  private String id;
   private Integer percentGrowthMom;
   private List<@Valid TrendingPin> pins = new ArrayList<>();
   private List<String> relatedInterests = new ArrayList<>();
@@ -43,12 +44,25 @@ public class TrendingTopic   {
   }
 
   /**
+   * Unique identifier for the trending topic
+   **/
+  
+  @ApiModelProperty(required = true, value = "Unique identifier for the trending topic")
+  @JsonProperty("id")
+  @NotNull
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
    * Month-over-month growth percentage
    **/
   
-  @ApiModelProperty(required = true, value = "Month-over-month growth percentage")
+  @ApiModelProperty(value = "Month-over-month growth percentage")
   @JsonProperty("percent_growth_mom")
-  @NotNull
   public Integer getPercentGrowthMom() {
     return percentGrowthMom;
   }
@@ -137,6 +151,7 @@ public class TrendingTopic   {
     }
     TrendingTopic trendingTopic = (TrendingTopic) o;
     return Objects.equals(this.description, trendingTopic.description) &&
+        Objects.equals(this.id, trendingTopic.id) &&
         Objects.equals(this.percentGrowthMom, trendingTopic.percentGrowthMom) &&
         Objects.equals(this.pins, trendingTopic.pins) &&
         Objects.equals(this.relatedInterests, trendingTopic.relatedInterests) &&
@@ -147,7 +162,7 @@ public class TrendingTopic   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, percentGrowthMom, pins, relatedInterests, relatedSearches, timeSeries, title);
+    return Objects.hash(description, id, percentGrowthMom, pins, relatedInterests, relatedSearches, timeSeries, title);
   }
 
   @Override
@@ -156,6 +171,7 @@ public class TrendingTopic   {
     sb.append("class TrendingTopic {\n");
     
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    percentGrowthMom: ").append(toIndentedString(percentGrowthMom)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("    relatedInterests: ").append(toIndentedString(relatedInterests)).append("\n");
@@ -171,10 +187,7 @@ public class TrendingTopic   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

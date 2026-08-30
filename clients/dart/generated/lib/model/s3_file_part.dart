@@ -55,10 +55,10 @@ class S3FilePart {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "S3FilePart[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "S3FilePart[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'part_number'), 'Required key "S3FilePart[part_number]" is missing from JSON.');
+        assert(json[r'part_number'] != null, 'Required key "S3FilePart[part_number]" has a null value in JSON.');
+        assert(json.containsKey(r'presigned_url'), 'Required key "S3FilePart[presigned_url]" is missing from JSON.');
+        assert(json[r'presigned_url'] != null, 'Required key "S3FilePart[presigned_url]" has a null value in JSON.');
         return true;
       }());
 

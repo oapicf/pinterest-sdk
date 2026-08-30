@@ -13,26 +13,26 @@ part of openapi.api;
 class CustomLabel1Filter {
   /// Returns a new [CustomLabel1Filter] instance.
   CustomLabel1Filter({
-    required this.cUSTOMLABEL1,
+    required this.CUSTOM_LABEL_1,
   });
 
-  CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL1;
+  CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomLabel1Filter &&
-    other.cUSTOMLABEL1 == cUSTOMLABEL1;
+    other.CUSTOM_LABEL_1 == CUSTOM_LABEL_1;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (cUSTOMLABEL1.hashCode);
+    (CUSTOM_LABEL_1.hashCode);
 
   @override
-  String toString() => 'CustomLabel1Filter[cUSTOMLABEL1=$cUSTOMLABEL1]';
+  String toString() => 'CustomLabel1Filter[CUSTOM_LABEL_1=$CUSTOM_LABEL_1]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'CUSTOM_LABEL_1'] = this.cUSTOMLABEL1;
+      json[r'CUSTOM_LABEL_1'] = this.CUSTOM_LABEL_1;
     return json;
   }
 
@@ -47,15 +47,13 @@ class CustomLabel1Filter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CustomLabel1Filter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CustomLabel1Filter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'CUSTOM_LABEL_1'), 'Required key "CustomLabel1Filter[CUSTOM_LABEL_1]" is missing from JSON.');
+        assert(json[r'CUSTOM_LABEL_1'] != null, 'Required key "CustomLabel1Filter[CUSTOM_LABEL_1]" has a null value in JSON.');
         return true;
       }());
 
       return CustomLabel1Filter(
-        cUSTOMLABEL1: mapValueOfType<CatalogsProductGroupFilterOperatorTypeCriteria>(json, r'CUSTOM_LABEL_1')!,
+        CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria.fromJson(json[r'CUSTOM_LABEL_1'])!,
       );
     }
     return null;

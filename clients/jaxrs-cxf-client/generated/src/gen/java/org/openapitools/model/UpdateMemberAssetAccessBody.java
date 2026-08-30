@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdateMemberAssetAccessBodyAccessesInner;
+import org.openapitools.model.UpdateMemberAssetAccessItem;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,34 +11,37 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  */
-@ApiModel(description="An object with a list of all the new accesses.")
+@ApiModel(description="An object with a list of all the new member asset accesses.")
 
 public class UpdateMemberAssetAccessBody  {
   
-  @ApiModelProperty(required = true, value = "")
-
-  private List<UpdateMemberAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
  /**
-   * Get accesses
+  * List of member asset accesses to assign or update.
+  */
+  @ApiModelProperty(required = true, value = "List of member asset accesses to assign or update.")
+
+  private List<UpdateMemberAssetAccessItem> accesses = new ArrayList<>();
+ /**
+   * List of member asset accesses to assign or update.
    * @return accesses
   **/
   @JsonProperty("accesses")
-  public List<UpdateMemberAssetAccessBodyAccessesInner> getAccesses() {
+  public List<UpdateMemberAssetAccessItem> getAccesses() {
     return accesses;
   }
 
-  public void setAccesses(List<UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
-  public UpdateMemberAssetAccessBody accesses(List<UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public UpdateMemberAssetAccessBody accesses(List<UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
-  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessBodyAccessesInner accessesItem) {
+  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessItem accessesItem) {
     this.accesses.add(accessesItem);
     return this;
   }
@@ -75,10 +78,7 @@ public class UpdateMemberAssetAccessBody  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

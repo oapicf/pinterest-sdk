@@ -2,17 +2,14 @@ package org.openapitools.model;
 
 import java.util.Objects;
 import java.util.ArrayList;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Any valid JSON object")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class NotificationPostRequest extends HashMap<String, Object>  {
+@ApiModel(description="Notification request body. Can be either a batch of notification objects or a single notification object.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class NotificationPostRequest   {
   
 
 
@@ -24,19 +21,19 @@ public class NotificationPostRequest extends HashMap<String, Object>  {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NotificationPostRequest notificationPostRequest = (NotificationPostRequest) o;return super.equals(o);
+    NotificationPostRequest notificationPostRequest = (NotificationPostRequest) o;return true;
   }
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return 1;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationPostRequest {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("}");
     return sb.toString();
   }
@@ -46,10 +43,7 @@ public class NotificationPostRequest extends HashMap<String, Object>  {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

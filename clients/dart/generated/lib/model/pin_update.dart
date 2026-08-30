@@ -13,6 +13,7 @@ part of openapi.api;
 class PinUpdate {
   /// Returns a new [PinUpdate] instance.
   PinUpdate({
+    this.aiDisclosures,
     this.altText,
     this.boardId,
     this.boardSectionId,
@@ -21,6 +22,15 @@ class PinUpdate {
     this.link,
     this.title,
   });
+
+  /// AI disclosure declarations the creator has made about this Pin.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  AiDisclosuresUpdate? aiDisclosures;
 
   String? altText;
 
@@ -47,6 +57,7 @@ class PinUpdate {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PinUpdate &&
+    other.aiDisclosures == aiDisclosures &&
     other.altText == altText &&
     other.boardId == boardId &&
     other.boardSectionId == boardSectionId &&
@@ -58,6 +69,7 @@ class PinUpdate {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (aiDisclosures == null ? 0 : aiDisclosures!.hashCode) +
     (altText == null ? 0 : altText!.hashCode) +
     (boardId == null ? 0 : boardId!.hashCode) +
     (boardSectionId == null ? 0 : boardSectionId!.hashCode) +
@@ -67,10 +79,15 @@ class PinUpdate {
     (title == null ? 0 : title!.hashCode);
 
   @override
-  String toString() => 'PinUpdate[altText=$altText, boardId=$boardId, boardSectionId=$boardSectionId, carouselSlots=$carouselSlots, description=$description, link=$link, title=$title]';
+  String toString() => 'PinUpdate[aiDisclosures=$aiDisclosures, altText=$altText, boardId=$boardId, boardSectionId=$boardSectionId, carouselSlots=$carouselSlots, description=$description, link=$link, title=$title]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.aiDisclosures != null) {
+      json[r'ai_disclosures'] = this.aiDisclosures;
+    } else {
+      json[r'ai_disclosures'] = null;
+    }
     if (this.altText != null) {
       json[r'alt_text'] = this.altText;
     } else {
@@ -116,14 +133,11 @@ class PinUpdate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinUpdate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinUpdate[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return PinUpdate(
+        aiDisclosures: AiDisclosuresUpdate.fromJson(json[r'ai_disclosures']),
         altText: mapValueOfType<String>(json, r'alt_text'),
         boardId: mapValueOfType<String>(json, r'board_id'),
         boardSectionId: mapValueOfType<String>(json, r'board_section_id'),

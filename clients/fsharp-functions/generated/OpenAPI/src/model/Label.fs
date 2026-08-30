@@ -3,9 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.LabelStatus
-open OpenAPI.Model.LabelType
-open OpenAPI.Model.string option
+open OpenAPI.Model.NullableLabelStatus
+open OpenAPI.Model.NullableLabelType
 
 module Label =
 
@@ -16,13 +15,9 @@ module Label =
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "label_type")>]
-    LabelType : LabelType;
-    [<JsonProperty(PropertyName = "parent_id")>]
-    ParentId : string;
-    [<JsonProperty(PropertyName = "parent_type")>]
-    ParentType : string option;
+    LabelType : NullableLabelType;
     [<JsonProperty(PropertyName = "status")>]
-    Status : LabelStatus;
+    Status : NullableLabelStatus;
     [<JsonProperty(PropertyName = "value")>]
     Value : string;
   }

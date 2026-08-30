@@ -8,9 +8,9 @@ The class is defined in **[OptimizationGoalMetadata.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**conversionTagV3GoalMetadata** | [`OptimizationGoalMetadataConversionTagV3GoalMetadata`](OptimizationGoalMetadataConversionTagV3GoalMetadata.md) |  |  [optional property]
-**frequencyGoalMetadata** | [`OptimizationGoalMetadataFrequencyGoalMetadata`](OptimizationGoalMetadataFrequencyGoalMetadata.md) |  |  [optional property]
-**scrollupGoalMetadata** | [`OptimizationGoalMetadataScrollupGoalMetadata`](OptimizationGoalMetadataScrollupGoalMetadata.md) |  |  [optional property]
+**conversionTagV3GoalMetadata** | [`ConversionTagV3GoalMetadata`](ConversionTagV3GoalMetadata.md) |  |  [optional property]
+**frequencyGoalMetadata** | [`FrequencyGoalMetadata`](FrequencyGoalMetadata.md) |  |  [optional property]
+**scrollupGoalMetadata** | [`ScrollupGoalMetadata`](ScrollupGoalMetadata.md) |  |  [optional property]
 
 
 

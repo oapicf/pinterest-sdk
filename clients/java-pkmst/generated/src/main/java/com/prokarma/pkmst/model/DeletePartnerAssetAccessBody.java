@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.DeletePartnerAssetAccessBodyAccessesInner;
+import com.prokarma.pkmst.model.DeletePartnerAssetAccessItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -15,21 +15,22 @@ import java.util.List;
  *
  */
 /**
- * DeletePartnerAssetAccessBody
+ * An object with a list of partner asset accesses to delete.
  */
+@ApiModel(description = "An object with a list of partner asset accesses to delete.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class DeletePartnerAssetAccessBody   {
   @JsonProperty("accesses")
   
-  private List<DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<DeletePartnerAssetAccessItem> accesses = new ArrayList<>();
 
-  public DeletePartnerAssetAccessBody accesses(List<DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public DeletePartnerAssetAccessBody accesses(List<DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
-  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessBodyAccessesInner accessesItem) {
+  public DeletePartnerAssetAccessBody addAccessesItem(DeletePartnerAssetAccessItem accessesItem) {
     if (this.accesses == null) {
       this.accesses = new ArrayList<>();
     }
@@ -38,15 +39,15 @@ public class DeletePartnerAssetAccessBody   {
   }
 
   /**
-   * Get accesses
+   * List of partner asset accesses to delete.
    * @return accesses
    */
-  @ApiModelProperty(required = true, value = "")
-  public List<DeletePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to delete.")
+  public List<DeletePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
 
-  public void setAccesses(List<DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -83,10 +84,7 @@ public class DeletePartnerAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -94,10 +94,10 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .feed(catalogs_product_group_pins/listPATHFeeder)
         .exec(http("catalogsProductGroupPinsList")
         .httpRequest("GET","/catalogs/product_groups/${product_group_id}/products")
+        .queryParam("pin_metrics","${pin_metrics}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("pin_metrics","${pin_metrics}")
 )
 
     // Run scncatalogsProductGroupPinsList with warm up and reach a constant rate for entire duration
@@ -191,11 +191,11 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .exec(http("catalogsProductGroupsList")
         .httpRequest("GET","/catalogs/product_groups")
         .queryParam("catalog_id","${catalog_id}")
-        .queryParam("id","${id}")
+        .queryParam("feed_id","${feed_id}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("id","${id}")
         .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("feed_id","${feed_id}")
 )
 
     // Run scncatalogsProductGroupsList with warm up and reach a constant rate for entire duration
@@ -242,10 +242,10 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .feed(products_by_product_group_filter/listQUERYFeeder)
         .exec(http("productsByProductGroupFilterList")
         .httpRequest("POST","/catalogs/products/get_by_product_group_filters")
+        .queryParam("pin_metrics","${pin_metrics}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("pin_metrics","${pin_metrics}")
 )
 
     // Run scnproductsByProductGroupFilterList with warm up and reach a constant rate for entire duration

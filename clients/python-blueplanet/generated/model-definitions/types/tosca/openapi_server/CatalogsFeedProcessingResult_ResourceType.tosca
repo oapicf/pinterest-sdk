@@ -12,6 +12,7 @@ imports {
   CatalogsFeedProductCounts = openapi_server.resourceTypes.CatalogsFeedProductCounts
   CatalogsFeedValidationDetails = openapi_server.resourceTypes.CatalogsFeedValidationDetails
   CatalogsFeedVideoCounts = openapi_server.resourceTypes.CatalogsFeedVideoCounts
+  import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
 
@@ -27,12 +28,7 @@ resourceTypes {
         }
         id {
           type =  string
-          description = ""
-          optional = true
-        }
-        updated_at {
-          type =  string
-          description = ""
+          description = "ID of the feed processing result."
           optional = true
         }
         ingestion_details {
@@ -47,6 +43,11 @@ resourceTypes {
         }
         status {
           type = CatalogsFeedProcessingStatus
+          description = ""
+          optional = true
+        }
+        updated_at {
+          type =  string
           description = ""
           optional = true
         }

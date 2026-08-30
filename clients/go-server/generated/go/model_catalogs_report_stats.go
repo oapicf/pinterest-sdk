@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,8 +16,6 @@ package openapi
 
 // CatalogsReportStats - Diagnostics aggregated numbers
 type CatalogsReportStats struct {
-
-	ReportType string `json:"report_type"`
 
 	// ID of the catalog entity.
 	CatalogId string `json:"catalog_id,omitempty"`
@@ -34,6 +32,8 @@ type CatalogsReportStats struct {
 	// Number of occurrences of the issue
 	Occurrences int32 `json:"occurrences,omitempty"`
 
+	ReportType string `json:"report_type,omitempty"`
+
 	// An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
 	Severity string `json:"severity,omitempty"`
 
@@ -44,17 +44,9 @@ type CatalogsReportStats struct {
 	IneligibleForOrganic bool `json:"ineligible_for_organic,omitempty"`
 }
 
-// AssertCatalogsReportStatsRequired checks if the required fields are not zero-ed
+// AssertCatalogsReportStatsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsReportStatsRequired(obj CatalogsReportStats) error {
-	elements := map[string]interface{}{
-		"report_type": obj.ReportType,
-	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
-		}
-	}
-
 	return nil
 }
 

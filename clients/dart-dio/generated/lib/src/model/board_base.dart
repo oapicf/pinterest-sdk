@@ -21,7 +21,7 @@ part 'board_base.g.dart';
 /// * [id] 
 /// * [isAdsOnly] - If set to `true`, the board will be ad-only and can store ad-only Pins.
 /// * [media] - Board media.
-/// * [name] -      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+/// * [name] -     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 /// * [owner] 
 /// * [pinCount] - Count of Pins on the board.
 @BuiltValue(instantiable: false)
@@ -56,7 +56,7 @@ abstract class BoardBase  {
   @BuiltValueField(wireName: r'media')
   BoardMedia? get media;
 
-  ///      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+  ///     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
   @BuiltValueField(wireName: r'name')
   String get name;
 
@@ -222,22 +222,25 @@ class _$$BoardBaseSerializer implements PrimitiveSerializer<$BoardBase> {
         case r'board_pins_modified_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
+            specifiedType: const FullType.nullable(DateTime),
+          ) as DateTime?;
+          if (valueDes == null) continue;
           result.boardPinsModifiedAt = valueDes;
           break;
         case r'collaborator_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.collaboratorCount = valueDes;
           break;
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
+            specifiedType: const FullType.nullable(DateTime),
+          ) as DateTime?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'description':
@@ -251,8 +254,9 @@ class _$$BoardBaseSerializer implements PrimitiveSerializer<$BoardBase> {
         case r'follower_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.followerCount = valueDes;
           break;
         case r'id':
@@ -265,15 +269,17 @@ class _$$BoardBaseSerializer implements PrimitiveSerializer<$BoardBase> {
         case r'is_ads_only':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isAdsOnly = valueDes;
           break;
         case r'media':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BoardMedia),
-          ) as BoardMedia;
+            specifiedType: const FullType.nullable(BoardMedia),
+          ) as BoardMedia?;
+          if (valueDes == null) continue;
           result.media.replace(valueDes);
           break;
         case r'name':
@@ -286,15 +292,17 @@ class _$$BoardBaseSerializer implements PrimitiveSerializer<$BoardBase> {
         case r'owner':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BoardOwner),
-          ) as BoardOwner;
+            specifiedType: const FullType.nullable(BoardOwner),
+          ) as BoardOwner?;
+          if (valueDes == null) continue;
           result.owner.replace(valueDes);
           break;
         case r'pin_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.pinCount = valueDes;
           break;
         default:

@@ -21,6 +21,8 @@ images: Option[ImageSize],
 mediaType: MediaType,
 /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
   videoUrl: Option[String],
+/* Video url (HLS).  **Note:** This field is limited and not available to all apps. */
+  videoUrlHls: Option[String],
 /* Width (in pixels). Field maybe null after creation due to video processing time. */
   width: Option[Integer])
 

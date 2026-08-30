@@ -20,29 +20,8 @@ class CatalogsFeedIngestionErrors {
     Integer IMAGE_LEVEL_INTERNAL_ERROR
     /* Image files are unreadable. Please check your link and upload new files to continue. */
     Integer IMAGE_MALFORMED_URL
-
-    enum LARGEPRODUCTCOUNTDECREASEEnum {
-    
-        NUMBER_1(1)
-    
-        private final Integer value
-    
-        LARGEPRODUCTCOUNTDECREASEEnum(Integer value) {
-            this.value = value
-        }
-    
-        Integer getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
     /* The product count has decreased by more than 99% compared to the last successful ingestion. */
-    LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE
+    Integer LARGE_PRODUCT_COUNT_DECREASE
     /* We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. */
     Integer LINE_LEVEL_INTERNAL_ERROR
 }

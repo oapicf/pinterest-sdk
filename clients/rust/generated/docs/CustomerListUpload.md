@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **error_counts** | Option<[**Vec<models::ErrorDetail>**](ErrorDetail.md)> | Error counts by error code | [optional]
 **id** | **String** | Customer List Upload ID. | 
 **operation** | [**models::UserListOperationType**](UserListOperationType.md) |  | 
-**record_counts** | Option<[**models::RecordCounts**](RecordCounts.md)> |  | [optional]
-**state** | **String** | Workload processing state | 
+**record_counts** | Option<[**models::RecordCounts**](RecordCounts.md)> | Record processing counts | [optional]
+**state** | [**models::WorkloadState**](WorkloadState.md) |  | 
 **updated_time** | **i32** | Customer List Upload updated_time. Epoch (seconds). | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

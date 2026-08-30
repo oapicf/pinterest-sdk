@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]AdResponse**](AdResponse.md) |  | 
+**Items** | [**[]Ad**](Ad.md) |  | 
 
 ## Methods
 
 ### NewAdsList200Response
 
-`func NewAdsList200Response(items []AdResponse, ) *AdsList200Response`
+`func NewAdsList200Response(items []Ad, ) *AdsList200Response`
 
 NewAdsList200Response instantiates a new AdsList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *AdsList200Response) GetItems() []AdResponse`
+`func (o *AdsList200Response) GetItems() []Ad`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *AdsList200Response) GetItemsOk() (*[]AdResponse, bool)`
+`func (o *AdsList200Response) GetItemsOk() (*[]Ad, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *AdsList200Response) SetItems(v []AdResponse)`
+`func (o *AdsList200Response) SetItems(v []Ad)`
 
 SetItems sets Items field to given value.
 

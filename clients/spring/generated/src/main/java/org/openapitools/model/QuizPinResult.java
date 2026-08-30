@@ -2,36 +2,42 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * The result, and link out, based on the user’s choice.
  */
 
 @Schema(name = "QuizPinResult", description = "The result, and link out, based on the user’s choice.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class QuizPinResult {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String androidDeepLink;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String destinationUrl;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String iosDeepLink;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String organicPinId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal resultId;
 
   public QuizPinResult androidDeepLink(@Nullable String androidDeepLink) {
@@ -50,6 +56,7 @@ public class QuizPinResult {
     return androidDeepLink;
   }
 
+  @JsonProperty("android_deep_link")
   public void setAndroidDeepLink(@Nullable String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
   }
@@ -70,6 +77,7 @@ public class QuizPinResult {
     return destinationUrl;
   }
 
+  @JsonProperty("destination_url")
   public void setDestinationUrl(@Nullable String destinationUrl) {
     this.destinationUrl = destinationUrl;
   }
@@ -90,6 +98,7 @@ public class QuizPinResult {
     return iosDeepLink;
   }
 
+  @JsonProperty("ios_deep_link")
   public void setIosDeepLink(@Nullable String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
   }
@@ -110,6 +119,7 @@ public class QuizPinResult {
     return organicPinId;
   }
 
+  @JsonProperty("organic_pin_id")
   public void setOrganicPinId(@Nullable String organicPinId) {
     this.organicPinId = organicPinId;
   }
@@ -130,6 +140,7 @@ public class QuizPinResult {
     return resultId;
   }
 
+  @JsonProperty("result_id")
   public void setResultId(@Nullable BigDecimal resultId) {
     this.resultId = resultId;
   }
@@ -173,10 +184,7 @@ public class QuizPinResult {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

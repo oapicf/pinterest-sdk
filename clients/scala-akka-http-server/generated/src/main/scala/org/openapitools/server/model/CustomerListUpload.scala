@@ -10,8 +10,8 @@ package org.openapitools.server.model
  * @param errorCounts Error counts by error code for example: ''[{"error_code":42,"message":"Invalid email","count":20}]''
  * @param id Customer List Upload ID. for example: ''1234567890''
  * @param operation  for example: ''null''
- * @param recordCounts  for example: ''null''
- * @param state Workload processing state for example: ''RUNNING''
+ * @param recordCounts Record processing counts for example: ''null''
+ * @param state  for example: ''RUNNING''
  * @param updatedTime Customer List Upload updated_time. Epoch (seconds). for example: ''1728606435''
 */
 final case class CustomerListUpload (
@@ -22,7 +22,7 @@ final case class CustomerListUpload (
   id: String,
   operation: UserListOperationType,
   recordCounts: Option[RecordCounts] = None,
-  state: String,
+  state: WorkloadState,
   updatedTime: Int
 )
 

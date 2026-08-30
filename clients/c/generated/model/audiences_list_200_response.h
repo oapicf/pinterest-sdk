@@ -15,7 +15,7 @@
 
 typedef struct audiences_list_200_response_t audiences_list_200_response_t;
 
-#include "audience.h"
+#include "ad_accounts_audience.h"
 
 
 

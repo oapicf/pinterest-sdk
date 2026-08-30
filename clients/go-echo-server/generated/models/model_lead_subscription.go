@@ -3,7 +3,7 @@ package models
 type LeadSubscription struct {
 
 	// The Ad Account ID that this lead form belongs to.
-	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// API version.
 	ApiVersion string `json:"api_version,omitempty"`
@@ -18,13 +18,13 @@ type LeadSubscription struct {
 	CryptographicKey *string `json:"cryptographic_key,omitempty"`
 
 	// Subscription ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Lead form ID.
-	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^\\\\d+$"`
+	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// User account used to subscribe lead data.
-	UserAccountId string `json:"user_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	UserAccountId string `json:"user_account_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Standard HTTPS webhook URL.
 	WebhookUrl string `json:"webhook_url,omitempty"`

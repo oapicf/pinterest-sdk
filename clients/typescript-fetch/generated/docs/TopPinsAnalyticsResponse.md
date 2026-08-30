@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `dateAvailability` | [TopPinsAnalyticsResponseDateAvailability](TopPinsAnalyticsResponseDateAvailability.md)
-`pins` | [Array&lt;TopPinsAnalyticsResponsePinsInner&gt;](TopPinsAnalyticsResponsePinsInner.md)
-`sortBy` | string
+`pins` | [Array&lt;TopPinsAnalyticsResponsePinsItems&gt;](TopPinsAnalyticsResponsePinsItems.md)
+`sortBy` | [TopPinsSortBy](TopPinsSortBy.md)
 
 ## Example
 
@@ -19,7 +19,7 @@ import type { TopPinsAnalyticsResponse } from ''
 const example = {
   "dateAvailability": null,
   "pins": null,
-  "sortBy": IMPRESSION,
+  "sortBy": null,
 } satisfies TopPinsAnalyticsResponse
 
 console.log(example)

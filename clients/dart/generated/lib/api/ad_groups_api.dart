@@ -18,14 +18,11 @@ class AdGroupsApi {
 
   /// Get ad group analytics
   ///
-  /// Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+  /// Get analytics for the specified ad groups in the specified `ad_account_id`, filtered by the specified options.  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  ///
-  /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [DateTime] startDate (required):
   ///   Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -36,19 +33,22 @@ class AdGroupsApi {
   /// * [List<String>] adGroupIds (required):
   ///   List of Ad group Ids to use to filter the results.
   ///
-  /// * [List<String>] columns (required):
-  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
+  /// * [List<ReportingColumnSync>] columns (required):
+  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
   ///
   /// * [Granularity] granularity (required):
-  ///   TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  ///     TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
   ///
-  /// * [int] clickWindowDays:
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [num] clickWindowDays:
   ///   Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
   ///
-  /// * [int] engagementWindowDays:
-  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
+  /// * [num] engagementWindowDays:
+  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
   ///
-  /// * [int] viewWindowDays:
+  /// * [num] viewWindowDays:
   ///   Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   ///
   /// * [String] conversionReportTime:
@@ -59,7 +59,7 @@ class AdGroupsApi {
   ///
   /// * [ReportingTimeZone] reportingTimezone:
   ///   Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
-  Future<Response> adGroupsAnalyticsWithHttpInfo(String adAccountId, DateTime startDate, DateTime endDate, List<String> adGroupIds, List<String> columns, Granularity granularity, { int? clickWindowDays, int? engagementWindowDays, int? viewWindowDays, String? conversionReportTime, bool? aggregateReportRows, ReportingTimeZone? reportingTimezone, }) async {
+  Future<Response> adGroupsAnalyticsWithHttpInfo(DateTime startDate, DateTime endDate, List<String> adGroupIds, List<ReportingColumnSync> columns, Granularity granularity, String adAccountId, { num? clickWindowDays, num? engagementWindowDays, num? viewWindowDays, String? conversionReportTime, bool? aggregateReportRows, ReportingTimeZone? reportingTimezone, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/ad_groups/analytics'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -106,17 +106,15 @@ class AdGroupsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get ad group analytics
   ///
-  /// Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+  /// Get analytics for the specified ad groups in the specified `ad_account_id`, filtered by the specified options.  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   ///
   /// Parameters:
-  ///
-  /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [DateTime] startDate (required):
   ///   Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -127,19 +125,22 @@ class AdGroupsApi {
   /// * [List<String>] adGroupIds (required):
   ///   List of Ad group Ids to use to filter the results.
   ///
-  /// * [List<String>] columns (required):
-  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
+  /// * [List<ReportingColumnSync>] columns (required):
+  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
   ///
   /// * [Granularity] granularity (required):
-  ///   TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  ///     TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
   ///
-  /// * [int] clickWindowDays:
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [num] clickWindowDays:
   ///   Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
   ///
-  /// * [int] engagementWindowDays:
-  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
+  /// * [num] engagementWindowDays:
+  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
   ///
-  /// * [int] viewWindowDays:
+  /// * [num] viewWindowDays:
   ///   Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   ///
   /// * [String] conversionReportTime:
@@ -150,8 +151,8 @@ class AdGroupsApi {
   ///
   /// * [ReportingTimeZone] reportingTimezone:
   ///   Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
-  Future<List<AdGroupsAnalyticsResponseInner>?> adGroupsAnalytics(String adAccountId, DateTime startDate, DateTime endDate, List<String> adGroupIds, List<String> columns, Granularity granularity, { int? clickWindowDays, int? engagementWindowDays, int? viewWindowDays, String? conversionReportTime, bool? aggregateReportRows, ReportingTimeZone? reportingTimezone, }) async {
-    final response = await adGroupsAnalyticsWithHttpInfo(adAccountId, startDate, endDate, adGroupIds, columns, granularity,  clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, aggregateReportRows: aggregateReportRows, reportingTimezone: reportingTimezone, );
+  Future<List<AdGroupsAnalyticsMetrics>?> adGroupsAnalytics(DateTime startDate, DateTime endDate, List<String> adGroupIds, List<ReportingColumnSync> columns, Granularity granularity, String adAccountId, { num? clickWindowDays, num? engagementWindowDays, num? viewWindowDays, String? conversionReportTime, bool? aggregateReportRows, ReportingTimeZone? reportingTimezone, Future<void>? abortTrigger, }) async {
+    final response = await adGroupsAnalyticsWithHttpInfo(startDate, endDate, adGroupIds, columns, granularity, adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, aggregateReportRows: aggregateReportRows, reportingTimezone: reportingTimezone, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -160,8 +161,8 @@ class AdGroupsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AdGroupsAnalyticsResponseInner>') as List)
-        .cast<AdGroupsAnalyticsResponseInner>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<AdGroupsAnalyticsMetrics>') as List)
+        .cast<AdGroupsAnalyticsMetrics>()
         .toList(growable: false);
 
     }
@@ -170,7 +171,7 @@ class AdGroupsApi {
 
   /// Get audience sizing
   ///
-  /// Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
+  /// Get potential audience size for an ad group with given targeting criteria. Potential audience size estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -179,14 +180,14 @@ class AdGroupsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [AdGroupAudienceSizingRequest] adGroupAudienceSizingRequest (required):
-  Future<Response> adGroupsAudienceSizingWithHttpInfo(String adAccountId, AdGroupAudienceSizingRequest adGroupAudienceSizingRequest,) async {
+  /// * [AdGroupAudienceSizingCreate] adGroupAudienceSizingCreate (required):
+  Future<Response> adGroupsAudienceSizingWithHttpInfo(String adAccountId, AdGroupAudienceSizingCreate adGroupAudienceSizingCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/ad_groups/audience_sizing'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = adGroupAudienceSizingRequest;
+    Object? postBody = adGroupAudienceSizingCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -203,21 +204,22 @@ class AdGroupsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get audience sizing
   ///
-  /// Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
+  /// Get potential audience size for an ad group with given targeting criteria. Potential audience size estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [AdGroupAudienceSizingRequest] adGroupAudienceSizingRequest (required):
-  Future<AdGroupAudienceSizingResponse?> adGroupsAudienceSizing(String adAccountId, AdGroupAudienceSizingRequest adGroupAudienceSizingRequest,) async {
-    final response = await adGroupsAudienceSizingWithHttpInfo(adAccountId, adGroupAudienceSizingRequest,);
+  /// * [AdGroupAudienceSizingCreate] adGroupAudienceSizingCreate (required):
+  Future<AdGroupAudienceSizing?> adGroupsAudienceSizing(String adAccountId, AdGroupAudienceSizingCreate adGroupAudienceSizingCreate, { Future<void>? abortTrigger, }) async {
+    final response = await adGroupsAudienceSizingWithHttpInfo(adAccountId, adGroupAudienceSizingCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -225,7 +227,7 @@ class AdGroupsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdGroupAudienceSizingResponse',) as AdGroupAudienceSizingResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdGroupAudienceSizing',) as AdGroupAudienceSizing;
     
     }
     return null;
@@ -233,7 +235,7 @@ class AdGroupsApi {
 
   /// Get bid floors
   ///
-  /// List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
+  /// List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification.  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  * $1 = 1,000,000 microdollars * 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  * To convert dollars to microdollars, mutiply dollars by 1,000,000 * To convert microdollars to dollars, divide microdollars by 1,000,000  For more on bid floors see [Set your bid](https://help.pinterest.com/en/business/article/set-your-bid).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -242,15 +244,14 @@ class AdGroupsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [BidFloorRequest] bidFloorRequest (required):
-  ///   Parameters to get bid_floor info
-  Future<Response> adGroupsBidFloorGetWithHttpInfo(String adAccountId, BidFloorRequest bidFloorRequest,) async {
+  /// * [BidFloorCreate] bidFloorCreate (required):
+  Future<Response> adGroupsBidFloorGetWithHttpInfo(String adAccountId, BidFloorCreate bidFloorCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/bid_floor'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = bidFloorRequest;
+    Object? postBody = bidFloorCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -267,22 +268,22 @@ class AdGroupsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get bid floors
   ///
-  /// List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.
+  /// List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification.  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  * $1 = 1,000,000 microdollars * 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  * To convert dollars to microdollars, mutiply dollars by 1,000,000 * To convert microdollars to dollars, divide microdollars by 1,000,000  For more on bid floors see [Set your bid](https://help.pinterest.com/en/business/article/set-your-bid).
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [BidFloorRequest] bidFloorRequest (required):
-  ///   Parameters to get bid_floor info
-  Future<BidFloor?> adGroupsBidFloorGet(String adAccountId, BidFloorRequest bidFloorRequest,) async {
-    final response = await adGroupsBidFloorGetWithHttpInfo(adAccountId, bidFloorRequest,);
+  /// * [BidFloorCreate] bidFloorCreate (required):
+  Future<BidFloor?> adGroupsBidFloorGet(String adAccountId, BidFloorCreate bidFloorCreate, { Future<void>? abortTrigger, }) async {
+    final response = await adGroupsBidFloorGetWithHttpInfo(adAccountId, bidFloorCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -298,7 +299,7 @@ class AdGroupsApi {
 
   /// Create ad groups
   ///
-  /// Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>. <strong>Notes:</strong> - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. 
+  /// Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other).  For more information, [click here](https://help.pinterest.com/en/business/article/campaign-structure).  **Notes:** - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile. A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency: - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency: - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000  - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with [closed beta](/docs/getting-started/using-beta-and-restricted-features/) access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -307,15 +308,14 @@ class AdGroupsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<AdGroupCreateRequest>] adGroupCreateRequest (required):
-  ///   List of ad groups to create, size limit [1, 30].
-  Future<Response> adGroupsCreateWithHttpInfo(String adAccountId, List<AdGroupCreateRequest> adGroupCreateRequest,) async {
+  /// * [List<AdGroupCreateCreate>] adGroupCreateCreate (required):
+  Future<Response> adGroupsCreateWithHttpInfo(String adAccountId, List<AdGroupCreateCreate> adGroupCreateCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/ad_groups'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = adGroupCreateRequest;
+    Object? postBody = adGroupCreateCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -332,22 +332,22 @@ class AdGroupsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Create ad groups
   ///
-  /// Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>. <strong>Notes:</strong> - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. 
+  /// Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other).  For more information, [click here](https://help.pinterest.com/en/business/article/campaign-structure).  **Notes:** - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile. A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency: - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency: - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000  - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with [closed beta](/docs/getting-started/using-beta-and-restricted-features/) access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule.
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<AdGroupCreateRequest>] adGroupCreateRequest (required):
-  ///   List of ad groups to create, size limit [1, 30].
-  Future<AdGroupArrayResponse?> adGroupsCreate(String adAccountId, List<AdGroupCreateRequest> adGroupCreateRequest,) async {
-    final response = await adGroupsCreateWithHttpInfo(adAccountId, adGroupCreateRequest,);
+  /// * [List<AdGroupCreateCreate>] adGroupCreateCreate (required):
+  Future<AdGroupsCreate200Response?> adGroupsCreate(String adAccountId, List<AdGroupCreateCreate> adGroupCreateCreate, { Future<void>? abortTrigger, }) async {
+    final response = await adGroupsCreateWithHttpInfo(adAccountId, adGroupCreateCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -355,15 +355,15 @@ class AdGroupsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdGroupArrayResponse',) as AdGroupArrayResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdGroupsCreate200Response',) as AdGroupsCreate200Response;
     
     }
     return null;
   }
 
-  /// Get ad group
+  /// Get dynamic titles CSV download URL
   ///
-  /// Get a specific ad group given the ad group ID.
+  /// Get a presigned S3 download URL for the dynamic titles review CSV. Returns 400 if titles have not been generated yet.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -373,10 +373,10 @@ class AdGroupsApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [String] adGroupId (required):
-  ///   Unique identifier of an ad group.
-  Future<Response> adGroupsGetWithHttpInfo(String adAccountId, String adGroupId,) async {
+  ///   Ad group ID.
+  Future<Response> adGroupsDynamicTitlesDownloadCsvWithHttpInfo(String adAccountId, String adGroupId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}'
+    final path = r'/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/csv'
       .replaceAll('{ad_account_id}', adAccountId)
       .replaceAll('{ad_group_id}', adGroupId);
 
@@ -398,6 +398,279 @@ class AdGroupsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
+    );
+  }
+
+  /// Get dynamic titles CSV download URL
+  ///
+  /// Get a presigned S3 download URL for the dynamic titles review CSV. Returns 400 if titles have not been generated yet.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [String] adGroupId (required):
+  ///   Ad group ID.
+  Future<DynamicTitlesDownloadCSV?> adGroupsDynamicTitlesDownloadCsv(String adAccountId, String adGroupId, { Future<void>? abortTrigger, }) async {
+    final response = await adGroupsDynamicTitlesDownloadCsvWithHttpInfo(adAccountId, adGroupId, abortTrigger: abortTrigger,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DynamicTitlesDownloadCSV',) as DynamicTitlesDownloadCSV;
+    
+    }
+    return null;
+  }
+
+  /// Get dynamic titles status
+  ///
+  /// Get dynamic titles generation status for an ad group, including whether titles are ready for review and counts of generated and reviewed titles.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [String] adGroupId (required):
+  ///   Ad group ID.
+  Future<Response> adGroupsDynamicTitlesGetStatusWithHttpInfo(String adAccountId, String adGroupId, { Future<void>? abortTrigger, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/status'
+      .replaceAll('{ad_account_id}', adAccountId)
+      .replaceAll('{ad_group_id}', adGroupId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
+    );
+  }
+
+  /// Get dynamic titles status
+  ///
+  /// Get dynamic titles generation status for an ad group, including whether titles are ready for review and counts of generated and reviewed titles.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [String] adGroupId (required):
+  ///   Ad group ID.
+  Future<DynamicTitlesGetStatus?> adGroupsDynamicTitlesGetStatus(String adAccountId, String adGroupId, { Future<void>? abortTrigger, }) async {
+    final response = await adGroupsDynamicTitlesGetStatusWithHttpInfo(adAccountId, adGroupId, abortTrigger: abortTrigger,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DynamicTitlesGetStatus',) as DynamicTitlesGetStatus;
+    
+    }
+    return null;
+  }
+
+  /// Get dynamic titles upload URL
+  ///
+  /// Get a presigned S3 upload URL for the dynamic titles review CSV and a request_id for submission.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [String] adGroupId (required):
+  ///   Ad group ID.
+  Future<Response> adGroupsDynamicTitlesGetUploadUrlWithHttpInfo(String adAccountId, String adGroupId, { Future<void>? abortTrigger, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/uploads'
+      .replaceAll('{ad_account_id}', adAccountId)
+      .replaceAll('{ad_group_id}', adGroupId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
+    );
+  }
+
+  /// Get dynamic titles upload URL
+  ///
+  /// Get a presigned S3 upload URL for the dynamic titles review CSV and a request_id for submission.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [String] adGroupId (required):
+  ///   Ad group ID.
+  Future<DynamicTitlesUploadURL?> adGroupsDynamicTitlesGetUploadUrl(String adAccountId, String adGroupId, { Future<void>? abortTrigger, }) async {
+    final response = await adGroupsDynamicTitlesGetUploadUrlWithHttpInfo(adAccountId, adGroupId, abortTrigger: abortTrigger,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DynamicTitlesUploadURL',) as DynamicTitlesUploadURL;
+    
+    }
+    return null;
+  }
+
+  /// Process dynamic titles CSV
+  ///
+  /// Validate and process the uploaded dynamic titles review CSV. Returns validation errors if the CSV is invalid.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [String] adGroupId (required):
+  ///   Ad group ID.
+  ///
+  /// * [DynamicTitlesProcessCSVCreate] dynamicTitlesProcessCSVCreate (required):
+  Future<Response> adGroupsDynamicTitlesProcessCsvWithHttpInfo(String adAccountId, String adGroupId, DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate, { Future<void>? abortTrigger, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles'
+      .replaceAll('{ad_account_id}', adAccountId)
+      .replaceAll('{ad_group_id}', adGroupId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = dynamicTitlesProcessCSVCreate;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
+    );
+  }
+
+  /// Process dynamic titles CSV
+  ///
+  /// Validate and process the uploaded dynamic titles review CSV. Returns validation errors if the CSV is invalid.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [String] adGroupId (required):
+  ///   Ad group ID.
+  ///
+  /// * [DynamicTitlesProcessCSVCreate] dynamicTitlesProcessCSVCreate (required):
+  Future<DynamicTitlesProcessCSV?> adGroupsDynamicTitlesProcessCsv(String adAccountId, String adGroupId, DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate, { Future<void>? abortTrigger, }) async {
+    final response = await adGroupsDynamicTitlesProcessCsvWithHttpInfo(adAccountId, adGroupId, dynamicTitlesProcessCSVCreate, abortTrigger: abortTrigger,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DynamicTitlesProcessCSV',) as DynamicTitlesProcessCSV;
+    
+    }
+    return null;
+  }
+
+  /// Get ad group
+  ///
+  /// Get a specific ad group given the ad group ID.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adGroupId (required):
+  ///   Ad group ID.
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  Future<Response> adGroupsGetWithHttpInfo(String adGroupId, String adAccountId, { Future<void>? abortTrigger, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}'
+      .replaceAll('{ad_group_id}', adGroupId)
+      .replaceAll('{ad_account_id}', adAccountId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -407,13 +680,13 @@ class AdGroupsApi {
   ///
   /// Parameters:
   ///
+  /// * [String] adGroupId (required):
+  ///   Ad group ID.
+  ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
-  ///
-  /// * [String] adGroupId (required):
-  ///   Unique identifier of an ad group.
-  Future<AdGroupResponse?> adGroupsGet(String adAccountId, String adGroupId,) async {
-    final response = await adGroupsGetWithHttpInfo(adAccountId, adGroupId,);
+  Future<AdGroup?> adGroupsGet(String adGroupId, String adAccountId, { Future<void>? abortTrigger, }) async {
+    final response = await adGroupsGetWithHttpInfo(adGroupId, adAccountId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -421,7 +694,7 @@ class AdGroupsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdGroupResponse',) as AdGroupResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdGroup',) as AdGroup;
     
     }
     return null;
@@ -429,7 +702,7 @@ class AdGroupsApi {
 
   /// List ad groups
   ///
-  /// List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id. Do not provide both.
+  /// List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). **Note:** Provide only campaign_id or ad_group_id. Do not provide both.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -438,27 +711,27 @@ class AdGroupsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
   /// * [List<String>] campaignIds:
   ///   List of Campaign Ids to use to filter the results.
   ///
   /// * [List<String>] adGroupIds:
-  ///   List of Ad group Ids to use to filter the results.
+  ///   List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
   ///
-  /// * [List<String>] entityStatuses:
+  /// * [List<EntityStatus>] entityStatuses:
   ///   Entity status
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
   ///
   /// * [bool] translateInterestsToNames:
   ///   Return interests as text names (if value is true) rather than topic IDs.
-  Future<Response> adGroupsListWithHttpInfo(String adAccountId, { List<String>? campaignIds, List<String>? adGroupIds, List<String>? entityStatuses, int? pageSize, String? order, String? bookmark, bool? translateInterestsToNames, }) async {
+  Future<Response> adGroupsListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, List<String>? campaignIds, List<String>? adGroupIds, List<EntityStatus>? entityStatuses, bool? translateInterestsToNames, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/ad_groups'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -470,6 +743,15 @@ class AdGroupsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
+    }
+    if (order != null) {
+      queryParams.addAll(_queryParams('', 'order', order));
+    }
     if (campaignIds != null) {
       queryParams.addAll(_queryParams('multi', 'campaign_ids', campaignIds));
     }
@@ -478,15 +760,6 @@ class AdGroupsApi {
     }
     if (entityStatuses != null) {
       queryParams.addAll(_queryParams('multi', 'entity_statuses', entityStatuses));
-    }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
-    if (order != null) {
-      queryParams.addAll(_queryParams('', 'order', order));
-    }
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
     }
     if (translateInterestsToNames != null) {
       queryParams.addAll(_queryParams('', 'translate_interests_to_names', translateInterestsToNames));
@@ -503,40 +776,41 @@ class AdGroupsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List ad groups
   ///
-  /// List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id. Do not provide both.
+  /// List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). **Note:** Provide only campaign_id or ad_group_id. Do not provide both.
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
   /// * [List<String>] campaignIds:
   ///   List of Campaign Ids to use to filter the results.
   ///
   /// * [List<String>] adGroupIds:
-  ///   List of Ad group Ids to use to filter the results.
+  ///   List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
   ///
-  /// * [List<String>] entityStatuses:
+  /// * [List<EntityStatus>] entityStatuses:
   ///   Entity status
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  ///
-  /// * [String] bookmark:
-  ///   Cursor used to fetch the next page of items
   ///
   /// * [bool] translateInterestsToNames:
   ///   Return interests as text names (if value is true) rather than topic IDs.
-  Future<AdGroupsList200Response?> adGroupsList(String adAccountId, { List<String>? campaignIds, List<String>? adGroupIds, List<String>? entityStatuses, int? pageSize, String? order, String? bookmark, bool? translateInterestsToNames, }) async {
-    final response = await adGroupsListWithHttpInfo(adAccountId,  campaignIds: campaignIds, adGroupIds: adGroupIds, entityStatuses: entityStatuses, pageSize: pageSize, order: order, bookmark: bookmark, translateInterestsToNames: translateInterestsToNames, );
+  Future<AdGroupsList200Response?> adGroupsList(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, List<String>? campaignIds, List<String>? adGroupIds, List<EntityStatus>? entityStatuses, bool? translateInterestsToNames, Future<void>? abortTrigger, }) async {
+    final response = await adGroupsListWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, campaignIds: campaignIds, adGroupIds: adGroupIds, entityStatuses: entityStatuses, translateInterestsToNames: translateInterestsToNames, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -552,7 +826,7 @@ class AdGroupsApi {
 
   /// Get targeting analytics for ad groups
   ///
-  /// Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+  /// Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -571,21 +845,21 @@ class AdGroupsApi {
   ///   Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   ///
   /// * [List<AdsAnalyticsAdGroupTargetingType>] targetingTypes (required):
-  ///   Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.
+  ///   Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.
   ///
-  /// * [List<String>] columns (required):
-  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
+  /// * [List<ReportingColumnSync>] columns (required):
+  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
   ///
   /// * [Granularity] granularity (required):
-  ///   TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  ///     TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
   ///
-  /// * [int] clickWindowDays:
+  /// * [num] clickWindowDays:
   ///   Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
   ///
-  /// * [int] engagementWindowDays:
-  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
+  /// * [num] engagementWindowDays:
+  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
   ///
-  /// * [int] viewWindowDays:
+  /// * [num] viewWindowDays:
   ///   Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   ///
   /// * [String] conversionReportTime:
@@ -596,7 +870,13 @@ class AdGroupsApi {
   ///
   /// * [ReportingTimeZone] reportingTimezone:
   ///   Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
-  Future<Response> adGroupsTargetingAnalyticsGetWithHttpInfo(String adAccountId, List<String> adGroupIds, DateTime startDate, DateTime endDate, List<AdsAnalyticsAdGroupTargetingType> targetingTypes, List<String> columns, Granularity granularity, { int? clickWindowDays, int? engagementWindowDays, int? viewWindowDays, String? conversionReportTime, List<ConversionReportAttributionType>? attributionTypes, ReportingTimeZone? reportingTimezone, }) async {
+  ///
+  /// * [List<String>] sortColumns:
+  ///   Sort Columns.
+  ///
+  /// * [bool] sortAscending:
+  ///   Sort ascending.
+  Future<Response> adGroupsTargetingAnalyticsGetWithHttpInfo(String adAccountId, List<String> adGroupIds, DateTime startDate, DateTime endDate, List<AdsAnalyticsAdGroupTargetingType> targetingTypes, List<ReportingColumnSync> columns, Granularity granularity, { num? clickWindowDays, num? engagementWindowDays, num? viewWindowDays, String? conversionReportTime, List<ConversionReportAttributionType>? attributionTypes, ReportingTimeZone? reportingTimezone, List<String>? sortColumns, bool? sortAscending, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -632,6 +912,12 @@ class AdGroupsApi {
     if (reportingTimezone != null) {
       queryParams.addAll(_queryParams('', 'reporting_timezone', reportingTimezone));
     }
+    if (sortColumns != null) {
+      queryParams.addAll(_queryParams('multi', 'sort_columns', sortColumns));
+    }
+    if (sortAscending != null) {
+      queryParams.addAll(_queryParams('', 'sort_ascending', sortAscending));
+    }
 
     const contentTypes = <String>[];
 
@@ -644,12 +930,13 @@ class AdGroupsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get targeting analytics for ad groups
   ///
-  /// Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+  /// Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   ///
   /// Parameters:
   ///
@@ -666,21 +953,21 @@ class AdGroupsApi {
   ///   Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   ///
   /// * [List<AdsAnalyticsAdGroupTargetingType>] targetingTypes (required):
-  ///   Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.
+  ///   Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.
   ///
-  /// * [List<String>] columns (required):
-  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
+  /// * [List<ReportingColumnSync>] columns (required):
+  ///   Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
   ///
   /// * [Granularity] granularity (required):
-  ///   TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  ///     TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
   ///
-  /// * [int] clickWindowDays:
+  /// * [num] clickWindowDays:
   ///   Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
   ///
-  /// * [int] engagementWindowDays:
-  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
+  /// * [num] engagementWindowDays:
+  ///   Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
   ///
-  /// * [int] viewWindowDays:
+  /// * [num] viewWindowDays:
   ///   Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
   ///
   /// * [String] conversionReportTime:
@@ -691,8 +978,14 @@ class AdGroupsApi {
   ///
   /// * [ReportingTimeZone] reportingTimezone:
   ///   Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
-  Future<MetricsResponse?> adGroupsTargetingAnalyticsGet(String adAccountId, List<String> adGroupIds, DateTime startDate, DateTime endDate, List<AdsAnalyticsAdGroupTargetingType> targetingTypes, List<String> columns, Granularity granularity, { int? clickWindowDays, int? engagementWindowDays, int? viewWindowDays, String? conversionReportTime, List<ConversionReportAttributionType>? attributionTypes, ReportingTimeZone? reportingTimezone, }) async {
-    final response = await adGroupsTargetingAnalyticsGetWithHttpInfo(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity,  clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone, );
+  ///
+  /// * [List<String>] sortColumns:
+  ///   Sort Columns.
+  ///
+  /// * [bool] sortAscending:
+  ///   Sort ascending.
+  Future<MetricsResponse?> adGroupsTargetingAnalyticsGet(String adAccountId, List<String> adGroupIds, DateTime startDate, DateTime endDate, List<AdsAnalyticsAdGroupTargetingType> targetingTypes, List<ReportingColumnSync> columns, Granularity granularity, { num? clickWindowDays, num? engagementWindowDays, num? viewWindowDays, String? conversionReportTime, List<ConversionReportAttributionType>? attributionTypes, ReportingTimeZone? reportingTimezone, List<String>? sortColumns, bool? sortAscending, Future<void>? abortTrigger, }) async {
+    final response = await adGroupsTargetingAnalyticsGetWithHttpInfo(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone, sortColumns: sortColumns, sortAscending: sortAscending, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -717,15 +1010,14 @@ class AdGroupsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<AdGroupUpdateRequest>] adGroupUpdateRequest (required):
-  ///   List of ad groups to update, size limit [1, 30].
-  Future<Response> adGroupsUpdateWithHttpInfo(String adAccountId, List<AdGroupUpdateRequest> adGroupUpdateRequest,) async {
+  /// * [List<AdGroupUpdateBatchUpdate>] adGroupUpdateBatchUpdate (required):
+  Future<Response> adGroupsUpdateWithHttpInfo(String adAccountId, List<AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/ad_groups'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = adGroupUpdateRequest;
+    Object? postBody = adGroupUpdateBatchUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -742,6 +1034,7 @@ class AdGroupsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -754,10 +1047,9 @@ class AdGroupsApi {
   /// * [String] adAccountId (required):
   ///   Unique identifier of an ad account.
   ///
-  /// * [List<AdGroupUpdateRequest>] adGroupUpdateRequest (required):
-  ///   List of ad groups to update, size limit [1, 30].
-  Future<AdGroupArrayResponse?> adGroupsUpdate(String adAccountId, List<AdGroupUpdateRequest> adGroupUpdateRequest,) async {
-    final response = await adGroupsUpdateWithHttpInfo(adAccountId, adGroupUpdateRequest,);
+  /// * [List<AdGroupUpdateBatchUpdate>] adGroupUpdateBatchUpdate (required):
+  Future<AdGroupsCreate200Response?> adGroupsUpdate(String adAccountId, List<AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate, { Future<void>? abortTrigger, }) async {
+    final response = await adGroupsUpdateWithHttpInfo(adAccountId, adGroupUpdateBatchUpdate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -765,7 +1057,102 @@ class AdGroupsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdGroupArrayResponse',) as AdGroupArrayResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdGroupsCreate200Response',) as AdGroupsCreate200Response;
+    
+    }
+    return null;
+  }
+
+  /// List of ad groups using promotions IDs.
+  ///
+  ///   Get a list of ad groups that are associated with those promotion ids
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [List<String>] promotionIds (required):
+  ///   List of Promotion IDs to use to filter the results.
+  ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<Response> getAdGroupsByPromotionIdsListWithHttpInfo(String adAccountId, List<String> promotionIds, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/ad_accounts/{ad_account_id}/promotion_applied_entities'
+      .replaceAll('{ad_account_id}', adAccountId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
+    }
+    if (order != null) {
+      queryParams.addAll(_queryParams('', 'order', order));
+    }
+      queryParams.addAll(_queryParams('multi', 'promotion_ids', promotionIds));
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
+    );
+  }
+
+  /// List of ad groups using promotions IDs.
+  ///
+  ///   Get a list of ad groups that are associated with those promotion ids
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///   Unique identifier of an ad account.
+  ///
+  /// * [List<String>] promotionIds (required):
+  ///   List of Promotion IDs to use to filter the results.
+  ///
+  /// * [String] bookmark:
+  ///   Cursor used to fetch the next page of items
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  Future<AdGroupsList200Response?> getAdGroupsByPromotionIdsList(String adAccountId, List<String> promotionIds, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, Future<void>? abortTrigger, }) async {
+    final response = await getAdGroupsByPromotionIdsListWithHttpInfo(adAccountId, promotionIds, bookmark: bookmark, pageSize: pageSize, order: order, abortTrigger: abortTrigger,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdGroupsList200Response',) as AdGroupsList200Response;
     
     }
     return null;

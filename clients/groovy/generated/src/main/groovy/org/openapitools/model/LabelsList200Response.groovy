@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.LabelsResponse;
+import org.openapitools.model.Label;
 
 @Canonical
 class LabelsList200Response {
     
     String bookmark
     
-    List<LabelsResponse> items = new ArrayList<>()
+    List<Label> items = new ArrayList<>()
 }

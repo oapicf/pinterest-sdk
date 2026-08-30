@@ -29,9 +29,6 @@ MMMReportingColumn <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing MMMReportingColumn with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize MMMReportingColumn, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },
@@ -92,7 +89,7 @@ MMMReportingColumn <- R6::R6Class(
 
 # add to utils.R
 .parse_MMMReportingColumn <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[SPEND_IN_DOLLAR, SPEND_IN_MICRO_DOLLAR, ECPC_IN_DOLLAR, ECTR, CAMPAIGN_NAME, TOTAL_ENGAGEMENT, EENGAGEMENT_RATE, ECPM_IN_DOLLAR, CAMPAIGN_ID, ADVERTISER_ID, AD_GROUP_ID, AD_GROUP_NAME, CLICKTHROUGH_1, IMPRESSION_1, CLICKTHROUGH_2, IMPRESSION_2, TOTAL_CLICKTHROUGH, TOTAL_IMPRESSION, ADVERTISER_NAME, SPEND_ORDER_LINE_PAID_TYPE]")
+  res <- gsub("^\\[|\\]$", "", "[SPEND_IN_DOLLAR, SPEND_IN_MICRO_DOLLAR, ECPC_IN_DOLLAR, ECTR, CAMPAIGN_NAME, TOTAL_ENGAGEMENT, EENGAGEMENT_RATE, ECPM_IN_DOLLAR, CAMPAIGN_ID, ADVERTISER_ID, AD_GROUP_ID, AD_GROUP_NAME, CLICKTHROUGH_1, IMPRESSION_1, CLICKTHROUGH_2, IMPRESSION_2, TOTAL_CLICKTHROUGH, TOTAL_IMPRESSION, ADVERTISER_NAME, SPEND_ORDER_LINE_PAID_TYPE, CAMPAIGN_OBJECTIVE_TYPE, PINNER_LIST_NAME, ADS_CREDIT_SPEND_IN_DOLLAR, ADVERTISER_PAID_SPEND_IN_DOLLAR, ADVERTISER_PAID_ECPC_IN_DOLLAR, ADVERTISER_PAID_ECPM_IN_DOLLAR]")
   unlist(strsplit(res, ", "))
 }
 

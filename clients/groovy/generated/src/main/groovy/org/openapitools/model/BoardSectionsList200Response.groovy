@@ -12,6 +12,6 @@ import org.openapitools.model.BoardSection;
 class BoardSectionsList200Response {
     
     String bookmark
-    /* Board sections */
+    
     List<BoardSection> items = new ArrayList<>()
 }

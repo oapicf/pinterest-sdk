@@ -1,0 +1,9 @@
+
+
+# PinPromotionSummaryStatus
+
+## Enum
+
+
+
+

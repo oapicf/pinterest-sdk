@@ -6,12 +6,12 @@ using namespace Tiny;
 
 CatalogsCreativeAssetsProductGroup::CatalogsCreativeAssetsProductGroup()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	created_at = int(0);
 	description = std::string();
 	filters = CatalogsCreativeAssetsProductGroupFilters();
-	id = std::string();
+	id = null;
 	name = std::string();
 	updated_at = int(0);
 }
@@ -212,7 +212,7 @@ CatalogsCreativeAssetsProductGroup::getCatalogId()
 }
 
 void
-CatalogsCreativeAssetsProductGroup::setCatalogId(std::string  catalog_id)
+CatalogsCreativeAssetsProductGroup::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -224,7 +224,7 @@ CatalogsCreativeAssetsProductGroup::getCatalogType()
 }
 
 void
-CatalogsCreativeAssetsProductGroup::setCatalogType(std::string  catalog_type)
+CatalogsCreativeAssetsProductGroup::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -236,7 +236,7 @@ CatalogsCreativeAssetsProductGroup::getCreatedAt()
 }
 
 void
-CatalogsCreativeAssetsProductGroup::setCreatedAt(int  created_at)
+CatalogsCreativeAssetsProductGroup::setCreatedAt(int created_at)
 {
 	this->created_at = created_at;
 }
@@ -248,7 +248,7 @@ CatalogsCreativeAssetsProductGroup::getDescription()
 }
 
 void
-CatalogsCreativeAssetsProductGroup::setDescription(std::string  description)
+CatalogsCreativeAssetsProductGroup::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -260,7 +260,7 @@ CatalogsCreativeAssetsProductGroup::getFilters()
 }
 
 void
-CatalogsCreativeAssetsProductGroup::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
+CatalogsCreativeAssetsProductGroup::setFilters(CatalogsCreativeAssetsProductGroupFilters filters)
 {
 	this->filters = filters;
 }
@@ -272,7 +272,7 @@ CatalogsCreativeAssetsProductGroup::getId()
 }
 
 void
-CatalogsCreativeAssetsProductGroup::setId(std::string  id)
+CatalogsCreativeAssetsProductGroup::setId(std::string id)
 {
 	this->id = id;
 }
@@ -284,7 +284,7 @@ CatalogsCreativeAssetsProductGroup::getName()
 }
 
 void
-CatalogsCreativeAssetsProductGroup::setName(std::string  name)
+CatalogsCreativeAssetsProductGroup::setName(std::string name)
 {
 	this->name = name;
 }
@@ -296,7 +296,7 @@ CatalogsCreativeAssetsProductGroup::getUpdatedAt()
 }
 
 void
-CatalogsCreativeAssetsProductGroup::setUpdatedAt(int  updated_at)
+CatalogsCreativeAssetsProductGroup::setUpdatedAt(int updated_at)
 {
 	this->updated_at = updated_at;
 }

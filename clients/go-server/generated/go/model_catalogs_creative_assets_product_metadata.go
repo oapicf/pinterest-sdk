@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -22,19 +27,70 @@ type CatalogsCreativeAssetsProductMetadata struct {
 
 	Visibility CreativeAssetsVisibilityType `json:"visibility"`
 }
-
-// AssertCatalogsCreativeAssetsProductMetadataRequired checks if the required fields are not zero-ed
-func AssertCatalogsCreativeAssetsProductMetadataRequired(obj CatalogsCreativeAssetsProductMetadata) error {
-	elements := map[string]interface{}{
-		"creative_assets_id": obj.CreativeAssetsId,
-		"visibility": obj.Visibility,
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsCreativeAssetsProductMetadata
+func (o *CatalogsCreativeAssetsProductMetadata) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"creative_assets_id",
+		"visibility",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"creative_assets_id": false,
+		"visibility": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"creative_assets_id": {},
+		"visibility": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsCreativeAssetsProductMetadata
+
+	if value, exists := allProperties["creative_assets_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreativeAssetsId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["visibility"]; exists {
+		if err = json.Unmarshal(value, &decoded.Visibility); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsCreativeAssetsProductMetadataRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCatalogsCreativeAssetsProductMetadataRequired(obj CatalogsCreativeAssetsProductMetadata) error {
 	return nil
 }
 

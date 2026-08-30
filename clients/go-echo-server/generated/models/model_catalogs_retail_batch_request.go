@@ -4,14 +4,14 @@ package models
 type CatalogsRetailBatchRequest struct {
 
 	// Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 
 	CatalogType string `json:"catalog_type"`
 
 	Country Country `json:"country"`
 
 	// Array with catalogs item operations
-	Items []CatalogsRetailBatchRequestItemsInner `json:"items"`
+	Items []CatalogsRetailBatchRequestItemsItems `json:"items"`
 
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`

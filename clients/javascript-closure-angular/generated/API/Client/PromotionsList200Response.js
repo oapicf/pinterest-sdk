@@ -12,7 +12,7 @@ API.Client.PromotionsList200Response = function() {}
 API.Client.PromotionsList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.PromotionResponse>}
+ * @type {!Array<!API.Client.Promotion>}
  * @export
  */
 API.Client.PromotionsList200Response.prototype.items;

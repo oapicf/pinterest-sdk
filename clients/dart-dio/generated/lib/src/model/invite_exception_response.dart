@@ -82,7 +82,7 @@ class _$InviteExceptionResponseSerializer implements PrimitiveSerializer<InviteE
       yield r'users_or_partner_ids';
       yield serializers.serialize(
         object.usersOrPartnerIds,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
   }
@@ -111,8 +111,9 @@ class _$InviteExceptionResponseSerializer implements PrimitiveSerializer<InviteE
         case r'code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.code = valueDes;
           break;
         case r'invite_or_request_id':
@@ -126,8 +127,9 @@ class _$InviteExceptionResponseSerializer implements PrimitiveSerializer<InviteE
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.message = valueDes;
           break;
         case r'users_or_partner_ids':

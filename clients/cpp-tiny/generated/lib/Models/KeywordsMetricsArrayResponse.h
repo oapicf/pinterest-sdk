@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setData(std::list <KeywordMetricsResponse> data);
+	void setData(std::list<KeywordMetricsResponse> data);
 
 
     private:

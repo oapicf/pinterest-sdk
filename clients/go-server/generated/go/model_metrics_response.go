@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,15 +16,26 @@ package openapi
 
 type MetricsResponse struct {
 
-	Data []map[string]interface{} `json:"data,omitempty"`
+	Data []MetricsResponseDataItems `json:"data,omitempty"`
 }
 
-// AssertMetricsResponseRequired checks if the required fields are not zero-ed
+// AssertMetricsResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertMetricsResponseRequired(obj MetricsResponse) error {
+	for _, el := range obj.Data {
+		if err := AssertMetricsResponseDataItemsRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertMetricsResponseConstraints checks if the values respects the defined constraints
 func AssertMetricsResponseConstraints(obj MetricsResponse) error {
+	for _, el := range obj.Data {
+		if err := AssertMetricsResponseDataItemsConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { CatalogsAiContentDisclosure } from './catalogsAiContentDisclosure';
 
 
 export interface CatalogsCreativeAssetsAttributes { 
@@ -55,9 +56,13 @@ export interface CatalogsCreativeAssetsAttributes {
      */
     title?: string;
     /**
-     * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+     * Visibility of the creative assets. Must be one of the following values (upper or lowercase): \'visible\', \'hidden\'.
      */
     visibility?: string | null;
+    /**
+     * AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+     */
+    ai_disclosures?: Array<CatalogsAiContentDisclosure>;
     /**
      * The creative assets image.
      */

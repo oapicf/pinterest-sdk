@@ -1,6 +1,7 @@
 
 # BidFloor
 
+Bid floor request and response model.
 
 ## Properties
 

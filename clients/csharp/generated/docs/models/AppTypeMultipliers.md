@@ -5,7 +5,7 @@ This represents a mapping from app type targeting criteria to a bid price adjust
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**APP_TYPE** | **string** |  | [optional] 
+**APP_TYPE** | **TargetingSpecAppType** | App type identifier. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

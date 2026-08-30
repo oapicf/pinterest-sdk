@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.ConversionEventsDataInner;
+import com.prokarma.pkmst.model.ConversionApiResponseEventsItems;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -15,40 +15,82 @@ import java.util.List;
  *
  */
 /**
- * A list of events (one or more) encapsulated by a data object.
+ * Conversion events.
  */
-@ApiModel(description = "A list of events (one or more) encapsulated by a data object.")
+@ApiModel(description = "Conversion events.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEvents   {
-  @JsonProperty("data")
+  @JsonProperty("events")
   
-  private List<ConversionEventsDataInner> data = new ArrayList<>();
+  private List<ConversionApiResponseEventsItems> events = new ArrayList<>();
 
-  public ConversionEvents data(List<ConversionEventsDataInner> data) {
-    this.data = data;
+  @JsonProperty("num_events_processed")
+  private Integer numEventsProcessed;
+
+  @JsonProperty("num_events_received")
+  private Integer numEventsReceived;
+
+  public ConversionEvents events(List<ConversionApiResponseEventsItems> events) {
+    this.events = events;
     return this;
   }
 
-  public ConversionEvents addDataItem(ConversionEventsDataInner dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<>();
+  public ConversionEvents addEventsItem(ConversionApiResponseEventsItems eventsItem) {
+    if (this.events == null) {
+      this.events = new ArrayList<>();
     }
-    this.data.add(dataItem);
+    this.events.add(eventsItem);
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * Specific messages for each event received. The order will match the order in which the events were received in the request.
+   * @return events
    */
-  @ApiModelProperty(required = true, value = "")
-  public List<ConversionEventsDataInner> getData() {
-    return data;
+  @ApiModelProperty(required = true, readOnly = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
+  public List<ConversionApiResponseEventsItems> getEvents() {
+    return events;
   }
 
-  public void setData(List<ConversionEventsDataInner> data) {
-    this.data = data;
+  public void setEvents(List<ConversionApiResponseEventsItems> events) {
+    this.events = events;
+  }
+
+  public ConversionEvents numEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+    return this;
+  }
+
+  /**
+   * Number of events that were successfully processed from the events.
+   * @return numEventsProcessed
+   */
+  @ApiModelProperty(example = "1", required = true, readOnly = true, value = "Number of events that were successfully processed from the events.")
+  public Integer getNumEventsProcessed() {
+    return numEventsProcessed;
+  }
+
+  public void setNumEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+  }
+
+  public ConversionEvents numEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
+    return this;
+  }
+
+  /**
+   * Total number of events received in the request.
+   * @return numEventsReceived
+   */
+  @ApiModelProperty(example = "1", required = true, readOnly = true, value = "Total number of events received in the request.")
+  public Integer getNumEventsReceived() {
+    return numEventsReceived;
+  }
+
+  public void setNumEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
   }
 
 
@@ -61,12 +103,14 @@ public class ConversionEvents   {
       return false;
     }
     ConversionEvents conversionEvents = (ConversionEvents) o;
-    return Objects.equals(this.data, conversionEvents.data);
+    return Objects.equals(this.events, conversionEvents.events) &&
+        Objects.equals(this.numEventsProcessed, conversionEvents.numEventsProcessed) &&
+        Objects.equals(this.numEventsReceived, conversionEvents.numEventsReceived);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(events, numEventsProcessed, numEventsReceived);
   }
 
   @Override
@@ -74,7 +118,9 @@ public class ConversionEvents   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEvents {\n");
     
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    events: ").append(toIndentedString(events)).append("\n");
+    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
+    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -84,10 +130,7 @@ public class ConversionEvents   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

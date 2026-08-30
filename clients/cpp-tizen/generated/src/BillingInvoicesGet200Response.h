@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "BillingInvoiceResponse.h"
+#include "BillingInvoice.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setBookmark(std::string  bookmark);
 	/*! \brief Get 
 	 */
-	std::list<BillingInvoiceResponse> getItems();
+	std::list<BillingInvoice> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <BillingInvoiceResponse> items);
+	void setItems(std::list <BillingInvoice> items);
 
 private:
 	std::string bookmark;
-	std::list <BillingInvoiceResponse>items;
+	std::list <BillingInvoice>items;
 	void __init();
 	void __cleanup();
 

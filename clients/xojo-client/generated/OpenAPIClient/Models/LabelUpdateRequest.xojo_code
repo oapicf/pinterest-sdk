@@ -5,7 +5,7 @@ Protected Class LabelUpdateRequest
 		#tag Note
 			Labels that you are applying to the campaign.
 		#tag EndNote
-		labels() As OpenAPIClient.Models.LabelUpdateRequestLabelsInner
+		labels() As OpenAPIClient.Models.LabelUpdateItem
 	#tag EndProperty
 
 
@@ -50,7 +50,7 @@ Protected Class LabelUpdateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="LabelUpdateRequestLabelsInner"
+			Type="LabelUpdateItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -23,7 +23,8 @@ type AdsAnalyticsGetAsyncResponse struct {
 	Url *string `json:"url,omitempty"`
 }
 
-// AssertAdsAnalyticsGetAsyncResponseRequired checks if the required fields are not zero-ed
+// AssertAdsAnalyticsGetAsyncResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdsAnalyticsGetAsyncResponseRequired(obj AdsAnalyticsGetAsyncResponse) error {
 	return nil
 }

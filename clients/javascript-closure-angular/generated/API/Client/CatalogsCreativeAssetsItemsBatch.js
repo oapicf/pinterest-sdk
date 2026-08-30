@@ -14,7 +14,7 @@ API.Client.CatalogsCreativeAssetsItemsBatch = function() {}
 API.Client.CatalogsCreativeAssetsItemsBatch.prototype.batchId;
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsItemsBatch.prototype.catalogType;
@@ -46,3 +46,7 @@ API.Client.CatalogsCreativeAssetsItemsBatch.prototype.items;
  */
 API.Client.CatalogsCreativeAssetsItemsBatch.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsCreativeAssetsItemsBatch.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}

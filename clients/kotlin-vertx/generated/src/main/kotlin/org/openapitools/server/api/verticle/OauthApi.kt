@@ -1,8 +1,10 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.ConversionAccessTokenResponse
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.OauthAccessTokenResponse
+import org.openapitools.server.api.model.ConversionAccessToken
+import org.openapitools.server.api.model.OauthAccessToken
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.TokenGrantType
+import org.openapitools.server.api.model.TokenTypeHint
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -21,13 +23,13 @@ interface OauthApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* oauthConversionToken
      * Generate OAuth access token for conversion API */
-    suspend fun oauthConversionToken(context:OperationRequest):Response<ConversionAccessTokenResponse>
+    suspend fun oauthConversionToken(context:OperationRequest):Response<ConversionAccessToken>
     /* oauthToken
      * Generate OAuth access token */
-    suspend fun oauthToken(grantType:kotlin.String?,context:OperationRequest):Response<OauthAccessTokenResponse>
+    suspend fun oauthToken(grantType:TokenGrantType?,code:kotlin.String?,continuousRefresh:kotlin.String?,redirectUri:kotlin.String?,refreshToken:kotlin.String?,scope:kotlin.String?,context:OperationRequest):Response<OauthAccessToken>
     /* tokenRevoke
      * Revoke a token */
-    suspend fun tokenRevoke(token:kotlin.String?,tokenTypeHint:kotlin.String?,context:OperationRequest):Response<Void>
+    suspend fun tokenRevoke(token:kotlin.String?,tokenTypeHint:TokenTypeHint?,context:OperationRequest):Response<Void>
     companion object {
         const val address = "OauthApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

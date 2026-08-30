@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,92 +29,137 @@ func NewLeadFormsAPIService() *LeadFormsAPIService {
 }
 
 // LeadFormsList - List lead forms
-func (s *LeadFormsAPIService) LeadFormsList(ctx context.Context, adAccountId string, pageSize int32, order string, bookmark string) (ImplResponse, error) {
+func (s *LeadFormsAPIService) LeadFormsList(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder) (ImplResponse, error) {
 	// TODO - update LeadFormsList with the required logic for this service method.
 	// Add api_lead_forms_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, LeadFormsList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, LeadFormsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LeadFormsList method not implemented")
 }
 
 // LeadFormsCreate - Create lead forms
-func (s *LeadFormsAPIService) LeadFormsCreate(ctx context.Context, adAccountId string, leadFormCreateRequest []LeadFormCreateRequest) (ImplResponse, error) {
+func (s *LeadFormsAPIService) LeadFormsCreate(ctx context.Context, adAccountId string, leadFormCreate []LeadFormCreate) (ImplResponse, error) {
 	// TODO - update LeadFormsCreate with the required logic for this service method.
 	// Add api_lead_forms_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, LeadFormArrayResponse{}) or use other options such as http.Ok ...
-	// return Response(200, LeadFormArrayResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, LeadFormsCreate200Response{}) or use other options such as http.Ok ...
+	// return Response(200, LeadFormsCreate200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LeadFormsCreate method not implemented")
 }
 
 // LeadFormsUpdate - Update lead forms
-func (s *LeadFormsAPIService) LeadFormsUpdate(ctx context.Context, adAccountId string, leadFormUpdateRequest []LeadFormUpdateRequest) (ImplResponse, error) {
+func (s *LeadFormsAPIService) LeadFormsUpdate(ctx context.Context, adAccountId string, leadFormBatchUpdate []LeadFormBatchUpdate) (ImplResponse, error) {
 	// TODO - update LeadFormsUpdate with the required logic for this service method.
 	// Add api_lead_forms_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, LeadFormArrayResponse{}) or use other options such as http.Ok ...
-	// return Response(200, LeadFormArrayResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, LeadFormsCreate200Response{}) or use other options such as http.Ok ...
+	// return Response(200, LeadFormsCreate200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LeadFormsUpdate method not implemented")
 }
 
 // LeadFormGet - Get lead form by id
-func (s *LeadFormsAPIService) LeadFormGet(ctx context.Context, adAccountId string, leadFormId string) (ImplResponse, error) {
+func (s *LeadFormsAPIService) LeadFormGet(ctx context.Context, leadFormId string, adAccountId string) (ImplResponse, error) {
 	// TODO - update LeadFormGet with the required logic for this service method.
 	// Add api_lead_forms_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, LeadFormResponse{}) or use other options such as http.Ok ...
-	// return Response(200, LeadFormResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, LeadForm{}) or use other options such as http.Ok ...
+	// return Response(200, LeadForm{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LeadFormGet method not implemented")
 }
 
 // LeadFormTestCreate - Create lead form test data
-func (s *LeadFormsAPIService) LeadFormTestCreate(ctx context.Context, adAccountId string, leadFormId string, leadFormTestRequest LeadFormTestRequest) (ImplResponse, error) {
+func (s *LeadFormsAPIService) LeadFormTestCreate(ctx context.Context, adAccountId string, leadFormId string, leadFormTestCreate LeadFormTestCreate) (ImplResponse, error) {
 	// TODO - update LeadFormTestCreate with the required logic for this service method.
 	// Add api_lead_forms_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, LeadFormTestResponse{}) or use other options such as http.Ok ...
-	// return Response(200, LeadFormTestResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, LeadFormTest{}) or use other options such as http.Ok ...
+	// return Response(200, LeadFormTest{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("LeadFormTestCreate method not implemented")
 }

@@ -1,0 +1,71 @@
+import { Currency } from './currency';
+import { BillingInvoiceDocumentType } from './billing-invoice-document-type';
+import { BillingInvoiceStatus } from './billing-invoice-status';
+
+
+/**
+ * A billing invoice in the advertiser account.
+ */
+export interface BillingInvoice { 
+  /**
+   * The ID of the ad account this invoice belongs to
+   */
+  ad_account_id?: string;
+  /**
+   * The name of the ad account this invoice belongs to
+   */
+  ad_account_name?: string;
+  /**
+   * The amount billed in this invoice. Denoted in micro currency
+   */
+  amount_billed_micro_currency?: number;
+  /**
+   * The discount in this invoice. Denoted in micro currency
+   */
+  amount_discount_micro_currency?: number | null;
+  /**
+   * The net amount in this invoice. Denoted in micro currency
+   */
+  amount_net_micro_currency?: number | null;
+  /**
+   * The tax in this invoice. Denoted in micro currency
+   */
+  amount_tax_micro_currency?: number | null;
+  /**
+   * The country of the bill to address
+   */
+  bill_to_country?: string;
+  /**
+   * The end date of the billing period. Format: YYYY-MM-DD
+   */
+  billing_period_end_date?: string;
+  /**
+   * The start date of the billing period. Format: YYYY-MM-DD
+   */
+  billing_period_start_date?: string;
+  currency?: Currency;
+  /**
+   * The type of the document
+   */
+  document_type?: BillingInvoiceDocumentType;
+  /**
+   * Unique identifier for the billing invoice
+   */
+  id?: string;
+  /**
+   * The date the invoice is due. Format: YYYY-MM-DD
+   */
+  invoice_due_date?: string;
+  /**
+   * The payment terms of the invoice
+   */
+  payment_terms?: string;
+  /**
+   * The status of the invoice
+   */
+  status?: BillingInvoiceStatus;
+}
+export namespace BillingInvoice {
+}
+
+

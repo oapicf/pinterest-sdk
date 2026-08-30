@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * Refers ads entity type. Schedule enum is only applicable to beta users
+ * Refers ads entity type.
  */
 
 /**
- * Refers ads entity type. Schedule enum is only applicable to beta users
+ * Refers ads entity type.
  */
 public enum BulkEntityType {
     
@@ -37,7 +37,9 @@ public enum BulkEntityType {
         
         LABEL("LABEL"),
         
-        SCHEDULE("SCHEDULE");
+        SCHEDULE("SCHEDULE"),
+        
+        ENTITY_HISTORY("ENTITY_HISTORY");
 
 private String value;
 

@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ConversionTagV3GoalMetadata",
+  "fields": [
+    {
+      "name": "attribution_windows",
+      "type": ["null", "model.AttributionWindows"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "conversion_event",
+      "type": ["null", "model.ConversionEvent"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "conversion_tag_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "cpa_goal_value_in_micro_currency",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_roas_optimized",
+      "type": ["null", "boolean"],
+      "doc": "Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. This parameter is not enabled for all advertisers. [Learn more](https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/).",
+      "default": null
+    },
+    {
+      "name": "reporting_event",
+      "type": ["null", "string"],
+      "doc": "Event name for custom or standard events mapped to an oCPM model",
+      "default": null
+    }
+  ]
+
+}

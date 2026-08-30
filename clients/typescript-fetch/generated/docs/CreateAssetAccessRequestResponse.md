@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`exceptions` | [Array&lt;CreateAssetAccessRequestErrorMessageInner&gt;](CreateAssetAccessRequestErrorMessageInner.md)
+`exceptions` | [Array&lt;AssetAccessRequestError&gt;](AssetAccessRequestError.md)
 `invites` | { [key: string]: string; }
 
 ## Example

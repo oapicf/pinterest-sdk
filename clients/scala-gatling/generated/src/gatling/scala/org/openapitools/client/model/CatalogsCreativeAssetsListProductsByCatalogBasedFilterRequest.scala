@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest (
-    /* Catalog id pertaining to the creative assets product group. */
+    /* Catalog ID pertaining to the product group. */
     _catalogId: String,
     _catalogType: String,
     _filters: CatalogsCreativeAssetsProductGroupFilters

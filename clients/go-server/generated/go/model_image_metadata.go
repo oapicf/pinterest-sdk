@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -20,14 +25,92 @@ type ImageMetadata struct {
 
 	Images ImageSize `json:"images,omitempty"`
 
-	ItemType string `json:"item_type,omitempty"`
+	// Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+	ItemType string `json:"item_type"`
 
 	Link *string `json:"link,omitempty"`
 
 	Title *string `json:"title,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into ImageMetadata
+func (o *ImageMetadata) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"item_type",
+	}
 
-// AssertImageMetadataRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"item_type": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"description": {},
+		"images": {},
+		"item_type": {},
+		"link": {},
+		"title": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded ImageMetadata
+
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["images"]; exists {
+		if err = json.Unmarshal(value, &decoded.Images); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["link"]; exists {
+		if err = json.Unmarshal(value, &decoded.Link); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["title"]; exists {
+		if err = json.Unmarshal(value, &decoded.Title); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertImageMetadataRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertImageMetadataRequired(obj ImageMetadata) error {
 	if err := AssertImageSizeRequired(obj.Images); err != nil {
 		return err

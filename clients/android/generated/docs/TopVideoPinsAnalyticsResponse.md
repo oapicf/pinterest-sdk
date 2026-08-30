@@ -6,15 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dateAvailability** | [**TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponseDateAvailability.md) |  |  [optional]
-**pins** | [**List&lt;TopVideoPinsAnalyticsResponsePinsInner&gt;**](TopVideoPinsAnalyticsResponsePinsInner.md) |  |  [optional]
-**sortBy** | [**SortByEnum**](#SortByEnum) |  |  [optional]
-
-
-## Enum: SortByEnum
-
-Name | Value
----- | -----
+**dateAvailability** | [**TopVideoPinsAnalyticsResponseDateAvailability**](TopVideoPinsAnalyticsResponseDateAvailability.md) |  |  [optional]
+**pins** | [**List&lt;TopVideoPinsAnalyticsResponsePinsItems&gt;**](TopVideoPinsAnalyticsResponsePinsItems.md) |  |  [optional]
+**sortBy** | [**TopVideoPinsSortBy**](TopVideoPinsSortBy.md) |  |  [optional]
 
 
 

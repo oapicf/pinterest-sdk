@@ -1,19 +1,19 @@
 #tag Interface
 Protected Interface LeadFormsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub LeadFormGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormResponse)
+		Sub LeadFormGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadForm)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub LeadFormTestCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormTestResponse)
+		Sub LeadFormTestCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormTest)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub LeadFormsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormArrayResponse)
+		Sub LeadFormsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormsCreate200Response)
 		  
 		End Sub
 	#tag EndMethod
@@ -25,7 +25,7 @@ Protected Interface LeadFormsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub LeadFormsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormArrayResponse)
+		Sub LeadFormsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormsCreate200Response)
 		  
 		End Sub
 	#tag EndMethod

@@ -1,0 +1,9 @@
+
+
+# CampaignObjectiveType
+
+## Enum
+
+
+
+

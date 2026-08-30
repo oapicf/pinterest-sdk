@@ -7,6 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  AudienceAccountType = openapi_server.resourceTypes.AudienceAccountType
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -27,9 +28,8 @@ resourceTypes {
           optional = true
         }
         account_type {
-          type =  string
+          type = AudienceAccountType
           description = "account type"
-          enum = ["AD_ACCOUNT", "BUSINESS_ACCOUNT"]
           optional = true
         }
         shared_on_timestamp {

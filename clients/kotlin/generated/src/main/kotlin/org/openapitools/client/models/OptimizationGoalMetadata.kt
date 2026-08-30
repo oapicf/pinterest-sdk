@@ -8,16 +8,24 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.OptimizationGoalMetadataConversionTagV3GoalMetadata
-import org.openapitools.client.models.OptimizationGoalMetadataFrequencyGoalMetadata
-import org.openapitools.client.models.OptimizationGoalMetadataScrollupGoalMetadata
+import org.openapitools.client.models.ConversionTagV3GoalMetadata
+import org.openapitools.client.models.FrequencyGoalMetadata
+import org.openapitools.client.models.ScrollupGoalMetadata
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -34,13 +42,13 @@ import com.squareup.moshi.JsonClass
 data class OptimizationGoalMetadata (
 
     @Json(name = "conversion_tag_v3_goal_metadata")
-    val conversionTagV3GoalMetadata: OptimizationGoalMetadataConversionTagV3GoalMetadata? = null,
+    val conversionTagV3GoalMetadata: ConversionTagV3GoalMetadata? = null,
 
     @Json(name = "frequency_goal_metadata")
-    val frequencyGoalMetadata: OptimizationGoalMetadataFrequencyGoalMetadata? = null,
+    val frequencyGoalMetadata: FrequencyGoalMetadata? = null,
 
     @Json(name = "scrollup_goal_metadata")
-    val scrollupGoalMetadata: OptimizationGoalMetadataScrollupGoalMetadata? = null
+    val scrollupGoalMetadata: ScrollupGoalMetadata? = null
 
 ) {
 

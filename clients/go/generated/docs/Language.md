@@ -89,7 +89,7 @@
 
 * `NL` (value: `"NL"`)
 
-* `NO` (value: `"NO"`)
+* `FALSE` (value: `"false"`)
 
 * `PL` (value: `"PL"`)
 

@@ -6,6 +6,8 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.customer_list_status import CustomerListStatus  # noqa: F401,E501
+import re  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,7 +17,7 @@ class CustomerList(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_account_id: str=None, created_time: float=None, exceptions: object=None, id: str=None, name: str=None, num_batches: float=None, num_removed_user_records: float=None, num_uploaded_user_records: float=None, status: str=None, type: str=None, updated_time: float=None):  # noqa: E501
+    def __init__(self, ad_account_id: str=None, created_time: float=None, exceptions: object=None, id: str=None, is_nca: bool=None, name: str=None, num_batches: float=None, num_removed_user_records: float=None, num_uploaded_user_records: float=None, status: CustomerListStatus=None, type: str=None, updated_time: float=None):  # noqa: E501
         """CustomerList - a model defined in Swagger
 
         :param ad_account_id: The ad_account_id of this CustomerList.  # noqa: E501
@@ -26,6 +28,8 @@ class CustomerList(Model):
         :type exceptions: object
         :param id: The id of this CustomerList.  # noqa: E501
         :type id: str
+        :param is_nca: The is_nca of this CustomerList.  # noqa: E501
+        :type is_nca: bool
         :param name: The name of this CustomerList.  # noqa: E501
         :type name: str
         :param num_batches: The num_batches of this CustomerList.  # noqa: E501
@@ -35,7 +39,7 @@ class CustomerList(Model):
         :param num_uploaded_user_records: The num_uploaded_user_records of this CustomerList.  # noqa: E501
         :type num_uploaded_user_records: float
         :param status: The status of this CustomerList.  # noqa: E501
-        :type status: str
+        :type status: CustomerListStatus
         :param type: The type of this CustomerList.  # noqa: E501
         :type type: str
         :param updated_time: The updated_time of this CustomerList.  # noqa: E501
@@ -46,11 +50,12 @@ class CustomerList(Model):
             'created_time': float,
             'exceptions': object,
             'id': str,
+            'is_nca': bool,
             'name': str,
             'num_batches': float,
             'num_removed_user_records': float,
             'num_uploaded_user_records': float,
-            'status': str,
+            'status': CustomerListStatus,
             'type': str,
             'updated_time': float
         }
@@ -60,6 +65,7 @@ class CustomerList(Model):
             'created_time': 'created_time',
             'exceptions': 'exceptions',
             'id': 'id',
+            'is_nca': 'is_nca',
             'name': 'name',
             'num_batches': 'num_batches',
             'num_removed_user_records': 'num_removed_user_records',
@@ -73,6 +79,7 @@ class CustomerList(Model):
         self._created_time = created_time
         self._exceptions = exceptions
         self._id = id
+        self._is_nca = is_nca
         self._name = name
         self._num_batches = num_batches
         self._num_removed_user_records = num_removed_user_records
@@ -142,7 +149,7 @@ class CustomerList(Model):
     def exceptions(self) -> object:
         """Gets the exceptions of this CustomerList.
 
-        Customer list errors  # noqa: E501
+        Customer list errors.  # noqa: E501
 
         :return: The exceptions of this CustomerList.
         :rtype: object
@@ -153,7 +160,7 @@ class CustomerList(Model):
     def exceptions(self, exceptions: object):
         """Sets the exceptions of this CustomerList.
 
-        Customer list errors  # noqa: E501
+        Customer list errors.  # noqa: E501
 
         :param exceptions: The exceptions of this CustomerList.
         :type exceptions: object
@@ -181,8 +188,37 @@ class CustomerList(Model):
         :param id: The id of this CustomerList.
         :type id: str
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if id is not None and len(id) > 18:
+            raise ValueError("Invalid value for `id`, length must be less than or equal to `18`")  # noqa: E501
+        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def is_nca(self) -> bool:
+        """Gets the is_nca of this CustomerList.
+
+        Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.  # noqa: E501
+
+        :return: The is_nca of this CustomerList.
+        :rtype: bool
+        """
+        return self._is_nca
+
+    @is_nca.setter
+    def is_nca(self, is_nca: bool):
+        """Sets the is_nca of this CustomerList.
+
+        Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.  # noqa: E501
+
+        :param is_nca: The is_nca of this CustomerList.
+        :type is_nca: bool
+        """
+
+        self._is_nca = is_nca
 
     @property
     def name(self) -> str:
@@ -204,6 +240,8 @@ class CustomerList(Model):
         :param name: The name of this CustomerList.
         :type name: str
         """
+        if name is None:
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -211,7 +249,7 @@ class CustomerList(Model):
     def num_batches(self) -> float:
         """Gets the num_batches of this CustomerList.
 
-        Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.  # noqa: E501
+        Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.  # noqa: E501
 
         :return: The num_batches of this CustomerList.
         :rtype: float
@@ -222,7 +260,7 @@ class CustomerList(Model):
     def num_batches(self, num_batches: float):
         """Sets the num_batches of this CustomerList.
 
-        Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.  # noqa: E501
+        Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.  # noqa: E501
 
         :param num_batches: The num_batches of this CustomerList.
         :type num_batches: float
@@ -234,7 +272,7 @@ class CustomerList(Model):
     def num_removed_user_records(self) -> float:
         """Gets the num_removed_user_records of this CustomerList.
 
-        Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.  # noqa: E501
+        Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.  # noqa: E501
 
         :return: The num_removed_user_records of this CustomerList.
         :rtype: float
@@ -245,7 +283,7 @@ class CustomerList(Model):
     def num_removed_user_records(self, num_removed_user_records: float):
         """Sets the num_removed_user_records of this CustomerList.
 
-        Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.  # noqa: E501
+        Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.  # noqa: E501
 
         :param num_removed_user_records: The num_removed_user_records of this CustomerList.
         :type num_removed_user_records: float
@@ -257,7 +295,7 @@ class CustomerList(Model):
     def num_uploaded_user_records(self) -> float:
         """Gets the num_uploaded_user_records of this CustomerList.
 
-        Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.  # noqa: E501
+        Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.  # noqa: E501
 
         :return: The num_uploaded_user_records of this CustomerList.
         :rtype: float
@@ -268,7 +306,7 @@ class CustomerList(Model):
     def num_uploaded_user_records(self, num_uploaded_user_records: float):
         """Sets the num_uploaded_user_records of this CustomerList.
 
-        Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.  # noqa: E501
+        Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.  # noqa: E501
 
         :param num_uploaded_user_records: The num_uploaded_user_records of this CustomerList.
         :type num_uploaded_user_records: float
@@ -277,31 +315,25 @@ class CustomerList(Model):
         self._num_uploaded_user_records = num_uploaded_user_records
 
     @property
-    def status(self) -> str:
+    def status(self) -> CustomerListStatus:
         """Gets the status of this CustomerList.
 
-        Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.  # noqa: E501
+        Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.  # noqa: E501
 
         :return: The status of this CustomerList.
-        :rtype: str
+        :rtype: CustomerListStatus
         """
         return self._status
 
     @status.setter
-    def status(self, status: str):
+    def status(self, status: CustomerListStatus):
         """Sets the status of this CustomerList.
 
-        Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.  # noqa: E501
+        Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.  # noqa: E501
 
         :param status: The status of this CustomerList.
-        :type status: str
+        :type status: CustomerListStatus
         """
-        allowed_values = ["PROCESSING", "READY", "TOO_SMALL", "UPLOADING"]  # noqa: E501
-        if status not in allowed_values:
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"
-                .format(status, allowed_values)
-            )
 
         self._status = status
 
@@ -309,7 +341,7 @@ class CustomerList(Model):
     def type(self) -> str:
         """Gets the type of this CustomerList.
 
-        Always \"customerlist\".  # noqa: E501
+        Always `customerlist`.  # noqa: E501
 
         :return: The type of this CustomerList.
         :rtype: str
@@ -320,7 +352,7 @@ class CustomerList(Model):
     def type(self, type: str):
         """Sets the type of this CustomerList.
 
-        Always \"customerlist\".  # noqa: E501
+        Always `customerlist`.  # noqa: E501
 
         :param type: The type of this CustomerList.
         :type type: str

@@ -7,7 +7,7 @@
 #' @title PlacementMultipliers
 #' @description PlacementMultipliers Class
 #' @format An \code{R6Class} generator object
-#' @field PLACEMENT  character [optional]
+#' @field PLACEMENT Placement type identifier. \link{PlacementType} [optional]
 #' @field _field_list a list of fields list(character)
 #' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
@@ -24,17 +24,15 @@ PlacementMultipliers <- R6::R6Class(
     #' @description
     #' Initialize a new PlacementMultipliers class.
     #'
-    #' @param PLACEMENT PLACEMENT
+    #' @param PLACEMENT Placement type identifier.
     #' @param additional_properties additional properties (optional)
     #' @param ... Other optional arguments.
     initialize = function(`PLACEMENT` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`PLACEMENT`)) {
-        if (!(`PLACEMENT` %in% c("SEARCH", "BROWSE", "RELATED_PINS"))) {
-          stop(paste("Error! \"", `PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be \"SEARCH\", \"BROWSE\", \"RELATED_PINS\".", sep = ""))
+        if (!(`PLACEMENT` %in% c())) {
+          stop(paste("Error! \"", `PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be .", sep = ""))
         }
-        if (!(is.character(`PLACEMENT`) && length(`PLACEMENT`) == 1)) {
-          stop(paste("Error! Invalid data for `PLACEMENT`. Must be a string:", `PLACEMENT`))
-        }
+        stopifnot(R6::is.R6(`PLACEMENT`))
         self$`PLACEMENT` <- `PLACEMENT`
       }
       if (!is.null(additional_properties)) {
@@ -77,13 +75,36 @@ PlacementMultipliers <- R6::R6Class(
       PlacementMultipliersObject <- list()
       if (!is.null(self$`PLACEMENT`)) {
         PlacementMultipliersObject[["PLACEMENT"]] <-
-          self$`PLACEMENT`
+          self$extractSimpleType(self$`PLACEMENT`)
       }
       for (key in names(self$additional_properties)) {
         PlacementMultipliersObject[[key]] <- self$additional_properties[[key]]
       }
 
       return(PlacementMultipliersObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -94,10 +115,9 @@ PlacementMultipliers <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`PLACEMENT`)) {
-        if (!is.null(this_object$`PLACEMENT`) && !(this_object$`PLACEMENT` %in% c("SEARCH", "BROWSE", "RELATED_PINS"))) {
-          stop(paste("Error! \"", this_object$`PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be \"SEARCH\", \"BROWSE\", \"RELATED_PINS\".", sep = ""))
-        }
-        self$`PLACEMENT` <- this_object$`PLACEMENT`
+        `placement_object` <- PlacementType$new()
+        `placement_object`$fromJSON(jsonlite::toJSON(this_object$`PLACEMENT`, auto_unbox = TRUE, digits = NA))
+        self$`PLACEMENT` <- `placement_object`
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
@@ -130,10 +150,7 @@ PlacementMultipliers <- R6::R6Class(
     #' @return the instance of PlacementMultipliers
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`PLACEMENT`) && !(this_object$`PLACEMENT` %in% c("SEARCH", "BROWSE", "RELATED_PINS"))) {
-        stop(paste("Error! \"", this_object$`PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be \"SEARCH\", \"BROWSE\", \"RELATED_PINS\".", sep = ""))
-      }
-      self$`PLACEMENT` <- this_object$`PLACEMENT`
+      self$`PLACEMENT` <- PlacementType$new()$fromJSON(jsonlite::toJSON(this_object$`PLACEMENT`, auto_unbox = TRUE, digits = NA))
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
         if (!(key %in% self$`_field_list`)) { # json key not in list of fields

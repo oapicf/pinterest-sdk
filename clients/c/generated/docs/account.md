@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | **char \*** | Profile about description. | [optional] 
-**account_type** | **pinterest_rest_api_account_ACCOUNTTYPE_e** | Type of account | [optional] 
-**board_count** | **int** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
+**account_type** | **user_account_type_t \*** | Type of account | [optional] 
+**board_count** | **int** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
 **business_name** | **char \*** |  | [optional] 
 **follower_count** | **int** | User account follower count. | [optional] [readonly] 
 **following_count** | **int** | User account following count. | [optional] [readonly] 

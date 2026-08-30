@@ -64,7 +64,7 @@ CatalogsCreateReportResponse::getToken()
 }
 
 void
-CatalogsCreateReportResponse::setToken(std::string  token)
+CatalogsCreateReportResponse::setToken(std::string token)
 {
 	this->token = token;
 }

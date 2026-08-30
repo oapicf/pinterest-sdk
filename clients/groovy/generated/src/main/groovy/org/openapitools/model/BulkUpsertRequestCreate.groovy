@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.model.AdCreateRequest;
 import org.openapitools.model.AdGroupCreateRequest;
+import org.openapitools.model.BulkUpsertRequestCreateCatalogProductGroupsItems;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.KeywordsRequest;
-import org.openapitools.model.LabelCreateRequest;
-import org.openapitools.model.MultipleProductGroupsInner;
+import org.openapitools.model.LabelBulkCreateRequest;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
+import org.openapitools.model.ScheduleCreateRequest;
 
 @Canonical
 class BulkUpsertRequestCreate {
@@ -22,11 +23,13 @@ class BulkUpsertRequestCreate {
     
     List<CampaignCreateRequest> campaigns = new ArrayList<>()
     
-    List<MultipleProductGroupsInner> catalogProductGroups = new ArrayList<>()
+    List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>()
     
     List<KeywordsRequest> keywords = new ArrayList<>()
     
-    List<LabelCreateRequest> labels = new ArrayList<>()
+    List<LabelBulkCreateRequest> labels = new ArrayList<>()
     
     List<ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>()
+    
+    List<ScheduleCreateRequest> schedules = new ArrayList<>()
 }

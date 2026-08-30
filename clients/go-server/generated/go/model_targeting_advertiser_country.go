@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -43,7 +43,7 @@ const (
 	JP TargetingAdvertiserCountry = "JP"
 	KR TargetingAdvertiserCountry = "KR"
 	SG TargetingAdvertiserCountry = "SG"
-	NO TargetingAdvertiserCountry = "NO"
+	FALSE TargetingAdvertiserCountry = "false"
 	DK TargetingAdvertiserCountry = "DK"
 	FI TargetingAdvertiserCountry = "FI"
 	CY TargetingAdvertiserCountry = "CY"
@@ -85,7 +85,7 @@ var AllowedTargetingAdvertiserCountryEnumValues = []TargetingAdvertiserCountry{
 	"JP",
 	"KR",
 	"SG",
-	"NO",
+	"false",
 	"DK",
 	"FI",
 	"CY",
@@ -127,7 +127,7 @@ var validTargetingAdvertiserCountryEnumValues = map[TargetingAdvertiserCountry]s
 	"JP": {},
 	"KR": {},
 	"SG": {},
-	"NO": {},
+	"false": {},
 	"DK": {},
 	"FI": {},
 	"CY": {},
@@ -164,8 +164,8 @@ func NewTargetingAdvertiserCountryFromValue(v string) (TargetingAdvertiserCountr
 }
 
 
-
-// AssertTargetingAdvertiserCountryRequired checks if the required fields are not zero-ed
+// AssertTargetingAdvertiserCountryRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTargetingAdvertiserCountryRequired(obj TargetingAdvertiserCountry) error {
 	return nil
 }

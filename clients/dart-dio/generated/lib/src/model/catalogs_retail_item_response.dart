@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/pin.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:openapi/src/model/item_attributes.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -18,6 +17,7 @@ part 'catalogs_retail_item_response.g.dart';
 /// * [attributes] 
 /// * [catalogType] 
 /// * [itemId] - The catalog retail item id in the merchant namespace
+/// * [itemResponseKind] - Discriminator literal identifying this leaf inside an `ItemResponse` payload.
 /// * [pins] - The pins mapped to the item
 @BuiltValue()
 abstract class CatalogsRetailItemResponse implements Built<CatalogsRetailItemResponse, CatalogsRetailItemResponseBuilder> {
@@ -25,12 +25,17 @@ abstract class CatalogsRetailItemResponse implements Built<CatalogsRetailItemRes
   ItemAttributes? get attributes;
 
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsRetailItemResponseCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  RETAIL,  };
 
   /// The catalog retail item id in the merchant namespace
   @BuiltValueField(wireName: r'item_id')
   String? get itemId;
+
+  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  @BuiltValueField(wireName: r'item_response_kind')
+  CatalogsRetailItemResponseItemResponseKindEnum get itemResponseKind;
+  // enum itemResponseKindEnum {  retail_item,  };
 
   /// The pins mapped to the item
   @BuiltValueField(wireName: r'pins')
@@ -69,7 +74,7 @@ class _$CatalogsRetailItemResponseSerializer implements PrimitiveSerializer<Cata
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsRetailItemResponseCatalogTypeEnum),
     );
     if (object.itemId != null) {
       yield r'item_id';
@@ -78,6 +83,11 @@ class _$CatalogsRetailItemResponseSerializer implements PrimitiveSerializer<Cata
         specifiedType: const FullType(String),
       );
     }
+    yield r'item_response_kind';
+    yield serializers.serialize(
+      object.itemResponseKind,
+      specifiedType: const FullType(CatalogsRetailItemResponseItemResponseKindEnum),
+    );
     if (object.pins != null) {
       yield r'pins';
       yield serializers.serialize(
@@ -111,23 +121,32 @@ class _$CatalogsRetailItemResponseSerializer implements PrimitiveSerializer<Cata
         case r'attributes':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ItemAttributes),
-          ) as ItemAttributes;
+            specifiedType: const FullType.nullable(ItemAttributes),
+          ) as ItemAttributes?;
+          if (valueDes == null) continue;
           result.attributes.replace(valueDes);
           break;
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsRetailItemResponseCatalogTypeEnum),
+          ) as CatalogsRetailItemResponseCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'item_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.itemId = valueDes;
+          break;
+        case r'item_response_kind':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(CatalogsRetailItemResponseItemResponseKindEnum),
+          ) as CatalogsRetailItemResponseItemResponseKindEnum;
+          result.itemResponseKind = valueDes;
           break;
         case r'pins':
           final valueDes = serializers.deserialize(
@@ -164,5 +183,32 @@ class _$CatalogsRetailItemResponseSerializer implements PrimitiveSerializer<Cata
     );
     return result.build();
   }
+}
+
+class CatalogsRetailItemResponseCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'RETAIL')
+  static const CatalogsRetailItemResponseCatalogTypeEnum RETAIL = _$catalogsRetailItemResponseCatalogTypeEnum_RETAIL;
+
+  static Serializer<CatalogsRetailItemResponseCatalogTypeEnum> get serializer => _$catalogsRetailItemResponseCatalogTypeEnumSerializer;
+
+  const CatalogsRetailItemResponseCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsRetailItemResponseCatalogTypeEnum> get values => _$catalogsRetailItemResponseCatalogTypeEnumValues;
+  static CatalogsRetailItemResponseCatalogTypeEnum valueOf(String name) => _$catalogsRetailItemResponseCatalogTypeEnumValueOf(name);
+}
+
+class CatalogsRetailItemResponseItemResponseKindEnum extends EnumClass {
+
+  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+  @BuiltValueEnumConst(wireName: r'retail_item')
+  static const CatalogsRetailItemResponseItemResponseKindEnum retailItem = _$catalogsRetailItemResponseItemResponseKindEnum_retailItem;
+
+  static Serializer<CatalogsRetailItemResponseItemResponseKindEnum> get serializer => _$catalogsRetailItemResponseItemResponseKindEnumSerializer;
+
+  const CatalogsRetailItemResponseItemResponseKindEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsRetailItemResponseItemResponseKindEnum> get values => _$catalogsRetailItemResponseItemResponseKindEnumValues;
+  static CatalogsRetailItemResponseItemResponseKindEnum valueOf(String name) => _$catalogsRetailItemResponseItemResponseKindEnumValueOf(name);
 }
 

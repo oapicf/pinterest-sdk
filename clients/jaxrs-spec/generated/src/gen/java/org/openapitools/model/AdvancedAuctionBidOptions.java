@@ -21,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing a retail catalog item's bid options (bid price and bid multipliers).")
 @JsonTypeName("AdvancedAuctionBidOptions")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionBidOptions   {
   private AppTypeMultipliers appTypeMultipliers;
   private Long bidInMicroCurrency;
@@ -58,7 +58,7 @@ public class AdvancedAuctionBidOptions   {
   }
 
   
-  @ApiModelProperty(example = "5000000", value = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.")
+  @ApiModelProperty(value = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.")
   @JsonProperty("bid_in_micro_currency")
   public Long getBidInMicroCurrency() {
     return bidInMicroCurrency;
@@ -125,12 +125,8 @@ public class AdvancedAuctionBidOptions   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

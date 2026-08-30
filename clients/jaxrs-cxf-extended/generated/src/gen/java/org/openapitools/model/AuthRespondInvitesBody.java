@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AuthRespondInvitesBodyInvitesInner;
+import org.openapitools.model.AuthRespondInvitesBodyItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,28 +21,28 @@ public class AuthRespondInvitesBody  {
   
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private List<@Valid AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();
+  private List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();
  /**
   * Get invites
   * @return invites
   */
   @JsonProperty("invites")
   @NotNull
- @Size(min=1,max=100)  public List<@Valid AuthRespondInvitesBodyInvitesInner> getInvites() {
+ @Size(min=1,max=100)  public List<@Valid AuthRespondInvitesBodyItem> getInvites() {
     return invites;
   }
 
   /**
    * Sets the <code>invites</code> property.
    */
- public void setInvites(List<@Valid AuthRespondInvitesBodyInvitesInner> invites) {
+ public void setInvites(List<@Valid AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
   }
 
   /**
    * Sets the <code>invites</code> property.
    */
-  public AuthRespondInvitesBody invites(List<@Valid AuthRespondInvitesBodyInvitesInner> invites) {
+  public AuthRespondInvitesBody invites(List<@Valid AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
     return this;
   }
@@ -50,7 +50,7 @@ public class AuthRespondInvitesBody  {
   /**
    * Adds a new item to the <code>invites</code> list.
    */
-  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyInvitesInner invitesItem) {
+  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyItem invitesItem) {
     this.invites.add(invitesItem);
     return this;
   }
@@ -88,10 +88,7 @@ public class AuthRespondInvitesBody  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -10,19 +10,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.LabelsResponse;
+import org.openapitools.model.Label;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelsList200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
-  private List<LabelsResponse> items = new ArrayList<>();
+  private List<Label> items = new ArrayList<>();
 
   /**
    **/
@@ -43,7 +43,7 @@ public class LabelsList200Response   {
 
   /**
    **/
-  public LabelsList200Response items(List<LabelsResponse> items) {
+  public LabelsList200Response items(List<Label> items) {
     this.items = items;
     return this;
   }
@@ -51,10 +51,10 @@ public class LabelsList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<LabelsResponse> getItems() {
+  public List<Label> getItems() {
     return items;
   }
-  public void setItems(List<LabelsResponse> items) {
+  public void setItems(List<Label> items) {
     this.items = items;
   }
 
@@ -93,10 +93,7 @@ public class LabelsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

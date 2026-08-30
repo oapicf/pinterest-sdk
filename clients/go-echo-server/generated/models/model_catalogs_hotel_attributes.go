@@ -2,6 +2,7 @@ package models
 
 type CatalogsHotelAttributes struct {
 
+	// Hotel address
 	Address CatalogsHotelAddress `json:"address,omitempty"`
 
 	// Base price of the hotel room per night followed by the ISO currency code
@@ -31,6 +32,7 @@ type CatalogsHotelAttributes struct {
 	// Brief description of the hotel.
 	Description *string `json:"description,omitempty"`
 
+	// If specified, you must provide all properties
 	GuestRatings CatalogsHotelGuestRatings `json:"guest_ratings,omitempty"`
 
 	// Latitude of the hotel.
@@ -51,8 +53,12 @@ type CatalogsHotelAttributes struct {
 	// Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
 	SalePrice *string `json:"sale_price,omitempty"`
 
-	// <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+	// <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
 	AdditionalImageLink *[]string `json:"additional_image_link,omitempty"`
 
-	MainImage CatalogsHotelAttributesAllOfMainImage `json:"main_image,omitempty"`
+	// AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+	AiDisclosures []CatalogsAiContentDisclosure `json:"ai_disclosures,omitempty"`
+
+	// The main hotel image
+	MainImage CatalogsHotelMainImage `json:"main_image,omitempty"`
 }

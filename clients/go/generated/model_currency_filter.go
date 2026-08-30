@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *CurrencyFilter) GetCURRENCY() CatalogsProductGroupCurrencyCriteria {
 
 // GetCURRENCYOk returns a tuple with the CURRENCY field value
 // and a boolean to check if the value has been set.
-func (o *CurrencyFilter) GetCURRENCYOk() (CatalogsProductGroupCurrencyCriteria, bool) {
+func (o *CurrencyFilter) GetCURRENCYOk() (*CatalogsProductGroupCurrencyCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupCurrencyCriteria{}, false
+		return nil, false
 	}
-	return o.CURRENCY, true
+	return &o.CURRENCY, true
 }
 
 // SetCURRENCY sets field value

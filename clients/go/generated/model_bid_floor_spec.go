@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,13 +20,19 @@ import (
 // checks if the BidFloorSpec type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BidFloorSpec{}
 
-// BidFloorSpec struct for BidFloorSpec
+// BidFloorSpec Bid floor specification for a given campaign configuration.
 type BidFloorSpec struct {
+	// Ad group billable event type.
 	BillableEvent ActionType `json:"billable_event"`
+	// List of ISO 3166-1 alpha-2 country codes.
 	Countries []Country `json:"countries,omitempty"`
+	// Creative type for the bid floor request.
 	CreativeType *CreativeType `json:"creative_type,omitempty"`
+	// Currency for the bid floor value.
 	Currency Currency `json:"currency"`
-	ObjectiveType *ObjectiveType `json:"objective_type,omitempty"`
+	// Campaign objective type.
+	ObjectiveType *BidFloorObjectiveType `json:"objective_type,omitempty"`
+	// Optimization goal metadata.
 	OptimizationGoalMetadata *OptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
 }
 
@@ -164,9 +170,9 @@ func (o *BidFloorSpec) SetCurrency(v Currency) {
 }
 
 // GetObjectiveType returns the ObjectiveType field value if set, zero value otherwise.
-func (o *BidFloorSpec) GetObjectiveType() ObjectiveType {
+func (o *BidFloorSpec) GetObjectiveType() BidFloorObjectiveType {
 	if o == nil || IsNil(o.ObjectiveType) {
-		var ret ObjectiveType
+		var ret BidFloorObjectiveType
 		return ret
 	}
 	return *o.ObjectiveType
@@ -174,7 +180,7 @@ func (o *BidFloorSpec) GetObjectiveType() ObjectiveType {
 
 // GetObjectiveTypeOk returns a tuple with the ObjectiveType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BidFloorSpec) GetObjectiveTypeOk() (*ObjectiveType, bool) {
+func (o *BidFloorSpec) GetObjectiveTypeOk() (*BidFloorObjectiveType, bool) {
 	if o == nil || IsNil(o.ObjectiveType) {
 		return nil, false
 	}
@@ -190,8 +196,8 @@ func (o *BidFloorSpec) HasObjectiveType() bool {
 	return false
 }
 
-// SetObjectiveType gets a reference to the given ObjectiveType and assigns it to the ObjectiveType field.
-func (o *BidFloorSpec) SetObjectiveType(v ObjectiveType) {
+// SetObjectiveType gets a reference to the given BidFloorObjectiveType and assigns it to the ObjectiveType field.
+func (o *BidFloorSpec) SetObjectiveType(v BidFloorObjectiveType) {
 	o.ObjectiveType = &v
 }
 

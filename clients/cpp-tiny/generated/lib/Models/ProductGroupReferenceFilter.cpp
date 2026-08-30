@@ -65,7 +65,7 @@ ProductGroupReferenceFilter::getPRODUCTGROUP()
 }
 
 void
-ProductGroupReferenceFilter::setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria  pRODUCT_GROUP)
+ProductGroupReferenceFilter::setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria pRODUCT_GROUP)
 {
 	this->pRODUCT_GROUP = pRODUCT_GROUP;
 }

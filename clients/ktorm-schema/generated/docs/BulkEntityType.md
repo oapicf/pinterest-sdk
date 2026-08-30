@@ -18,5 +18,7 @@
 
     * `SCHEDULE` (value: `"SCHEDULE"`)
 
+    * `ENTITY_HISTORY` (value: `"ENTITY_HISTORY"`)
+
 
 

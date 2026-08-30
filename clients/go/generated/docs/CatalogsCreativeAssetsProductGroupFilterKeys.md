@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 **GOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 **MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  | 
 **TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**LINK** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
 
 ## Methods
 
 ### NewCatalogsCreativeAssetsProductGroupFilterKeys
 
-`func NewCatalogsCreativeAssetsProductGroupFilterKeys(cREATIVEASSETSID CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria, gOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria, mEDIATYPE CatalogsProductGroupMultipleMediaTypesCriteria, tITLEKEYWORDS CatalogsProductGroupMultipleStringCriteria, ) *CatalogsCreativeAssetsProductGroupFilterKeys`
+`func NewCatalogsCreativeAssetsProductGroupFilterKeys(cREATIVEASSETSID CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria, gOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria, mEDIATYPE CatalogsProductGroupMultipleMediaTypesCriteria, tITLEKEYWORDS CatalogsProductGroupMultipleStringCriteria, lINK CatalogsProductGroupFilterOperatorTypeCriteria, ) *CatalogsCreativeAssetsProductGroupFilterKeys`
 
 NewCatalogsCreativeAssetsProductGroupFilterKeys instantiates a new CatalogsCreativeAssetsProductGroupFilterKeys object
 This constructor will assign default values to properties that have it defined,
@@ -337,6 +338,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsCreativeAssetsProductGroupFilterKeys) SetTITLE_KEYWORDS(v CatalogsProductGroupMultipleStringCriteria)`
 
 SetTITLE_KEYWORDS sets TITLE_KEYWORDS field to given value.
+
+
+### GetLINK
+
+`func (o *CatalogsCreativeAssetsProductGroupFilterKeys) GetLINK() CatalogsProductGroupFilterOperatorTypeCriteria`
+
+GetLINK returns the LINK field if non-nil, zero value otherwise.
+
+### GetLINKOk
+
+`func (o *CatalogsCreativeAssetsProductGroupFilterKeys) GetLINKOk() (*CatalogsProductGroupFilterOperatorTypeCriteria, bool)`
+
+GetLINKOk returns a tuple with the LINK field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLINK
+
+`func (o *CatalogsCreativeAssetsProductGroupFilterKeys) SetLINK(v CatalogsProductGroupFilterOperatorTypeCriteria)`
+
+SetLINK sets LINK field to given value.
 
 
 

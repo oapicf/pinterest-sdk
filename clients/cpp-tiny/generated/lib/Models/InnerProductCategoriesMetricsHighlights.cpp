@@ -64,7 +64,7 @@ InnerProductCategoriesMetricsHighlights::getPctChangeMom()
 }
 
 void
-InnerProductCategoriesMetricsHighlights::setPctChangeMom(long  pct_change_mom)
+InnerProductCategoriesMetricsHighlights::setPctChangeMom(long pct_change_mom)
 {
 	this->pct_change_mom = pct_change_mom;
 }

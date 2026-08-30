@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -25,7 +33,7 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param catalogId Catalog id pertaining to the retail product group.
+ * @param catalogId Catalog ID pertaining to the product group.
  * @param catalogType 
  * @param feedId id of the catalogs feed belonging to this catalog product group
  * @param filters 
@@ -44,7 +52,7 @@ import com.squareup.moshi.JsonClass
 
 data class CatalogsRetailProductGroup (
 
-    /* Catalog id pertaining to the retail product group. */
+    /* Catalog ID pertaining to the product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String,
 

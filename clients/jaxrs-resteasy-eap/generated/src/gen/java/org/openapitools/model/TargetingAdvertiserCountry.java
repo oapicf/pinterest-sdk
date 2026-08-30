@@ -28,7 +28,7 @@ public enum TargetingAdvertiserCountry {
   JP,
   KR,
   SG,
-  NO,
+  FALSE,
   DK,
   FI,
   CY,

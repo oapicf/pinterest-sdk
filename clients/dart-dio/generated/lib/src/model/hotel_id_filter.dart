@@ -74,7 +74,7 @@ class _$HotelIdFilterSerializer implements PrimitiveSerializer<HotelIdFilter> {
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringCriteria),
           ) as CatalogsProductGroupMultipleStringCriteria;
-          result.HOTEL_ID = valueDes;
+          result.HOTEL_ID.replace(valueDes);
           break;
         default:
           unhandled.add(key);

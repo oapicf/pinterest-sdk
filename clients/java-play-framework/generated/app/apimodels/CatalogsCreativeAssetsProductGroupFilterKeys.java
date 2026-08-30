@@ -17,6 +17,7 @@ import apimodels.GoogleProductCategory3Filter;
 import apimodels.GoogleProductCategory4Filter;
 import apimodels.GoogleProductCategory5Filter;
 import apimodels.GoogleProductCategory6Filter;
+import apimodels.LinkFilter;
 import apimodels.MediaTypeFilter;
 import apimodels.TitleKeywordsFilter;
 import com.fasterxml.jackson.annotation.*;
@@ -28,7 +29,7 @@ import javax.validation.Valid;
 /**
  * CatalogsCreativeAssetsProductGroupFilterKeys
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreativeAssetsProductGroupFilterKeys   {
   @JsonProperty("CREATIVE_ASSETS_ID")
@@ -120,6 +121,12 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
 @Valid
 
   private CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS;
+
+  @JsonProperty("LINK")
+  @NotNull
+@Valid
+
+  private CatalogsProductGroupFilterOperatorTypeCriteria LINK;
 
   public CatalogsCreativeAssetsProductGroupFilterKeys CREATIVE_ASSETS_ID(CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID) {
     this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
@@ -376,6 +383,23 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
     this.TITLE_KEYWORDS = TITLE_KEYWORDS;
   }
 
+  public CatalogsCreativeAssetsProductGroupFilterKeys LINK(CatalogsProductGroupFilterOperatorTypeCriteria LINK) {
+    this.LINK = LINK;
+    return this;
+  }
+
+   /**
+   * Get LINK
+   * @return LINK
+  **/
+  public CatalogsProductGroupFilterOperatorTypeCriteria getLINK() {
+    return LINK;
+  }
+
+  public void setLINK(CatalogsProductGroupFilterOperatorTypeCriteria LINK) {
+    this.LINK = LINK;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -400,12 +424,13 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
         Objects.equals(GOOGLE_PRODUCT_CATEGORY_1, catalogsCreativeAssetsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_1) &&
         Objects.equals(GOOGLE_PRODUCT_CATEGORY_0, catalogsCreativeAssetsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_0) &&
         Objects.equals(MEDIA_TYPE, catalogsCreativeAssetsProductGroupFilterKeys.MEDIA_TYPE) &&
-        Objects.equals(TITLE_KEYWORDS, catalogsCreativeAssetsProductGroupFilterKeys.TITLE_KEYWORDS);
+        Objects.equals(TITLE_KEYWORDS, catalogsCreativeAssetsProductGroupFilterKeys.TITLE_KEYWORDS) &&
+        Objects.equals(LINK, catalogsCreativeAssetsProductGroupFilterKeys.LINK);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(CREATIVE_ASSETS_ID, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, MEDIA_TYPE, TITLE_KEYWORDS);
+    return Objects.hash(CREATIVE_ASSETS_ID, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, MEDIA_TYPE, TITLE_KEYWORDS, LINK);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -429,6 +454,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
     sb.append("    GOOGLE_PRODUCT_CATEGORY_0: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_0)).append("\n");
     sb.append("    MEDIA_TYPE: ").append(toIndentedString(MEDIA_TYPE)).append("\n");
     sb.append("    TITLE_KEYWORDS: ").append(toIndentedString(TITLE_KEYWORDS)).append("\n");
+    sb.append("    LINK: ").append(toIndentedString(LINK)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -438,10 +464,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

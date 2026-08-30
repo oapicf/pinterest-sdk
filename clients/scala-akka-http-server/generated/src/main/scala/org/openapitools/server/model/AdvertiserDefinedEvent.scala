@@ -2,13 +2,13 @@ package org.openapitools.server.model
 
 
 /**
- * = AdvertiserDefinedEvent =
+ * Advertiser defined event
  *
- * @param name raw string name of the event, usually logged as raw_event_name in our dataset for example: ''download_picture''
- * @param mappedConversionType standard type mapped to ADE for optimization for example: ''null''
+ * @param mappedConversionType Standard type mapped to ADE for optimization for example: ''SIGNUP''
+ * @param name Raw string name of the event, usually logged as raw_event_name in our dataset for example: ''newsletter_signup''
 */
 final case class AdvertiserDefinedEvent (
-  name: Option[String] = None,
-  mappedConversionType: Option[String] = None
+  mappedConversionType: Option[ConversionTagTypeOptimal] = None,
+  name: Option[String] = None
 )
 

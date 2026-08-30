@@ -6,7 +6,7 @@ goog.provide('API.Client.CatalogsProductGroupFilterOperatorTypeCriteria');
 API.Client.CatalogsProductGroupFilterOperatorTypeCriteria = function() {}
 
 /**
- * @type {!string}
+ * @type {!API.Client.FilterOperatorType}
  * @export
  */
 API.Client.CatalogsProductGroupFilterOperatorTypeCriteria.prototype.filterOperatorType;
@@ -23,8 +23,3 @@ API.Client.CatalogsProductGroupFilterOperatorTypeCriteria.prototype.negated;
  */
 API.Client.CatalogsProductGroupFilterOperatorTypeCriteria.prototype.values;
 
-/** @enum {string} */
-API.Client.CatalogsProductGroupFilterOperatorTypeCriteria.FilterOperatorTypeEnum = { 
-  IS: 'IS',
-  CONTAINS: 'CONTAINS',
-}

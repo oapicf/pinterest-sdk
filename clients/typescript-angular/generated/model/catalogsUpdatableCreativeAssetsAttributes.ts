@@ -55,7 +55,7 @@ export interface CatalogsUpdatableCreativeAssetsAttributes {
      */
     title?: string;
     /**
-     * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+     * Visibility of the creative assets. Must be one of the following values (upper or lowercase): \'visible\', \'hidden\'.
      */
     visibility?: string | null;
 }

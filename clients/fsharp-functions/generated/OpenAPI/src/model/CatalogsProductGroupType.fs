@@ -17,6 +17,7 @@ module CatalogsProductGroupType =
   let NEWARRIVALSEnum = "NEW_ARRIVALS"
   let SHOPIFYCOLLECTIONSEnum = "SHOPIFY_COLLECTIONS"
   let I2PCEnum = "I2PC"
+  let CATALOGEXPANSIONEnum = "CATALOG_EXPANSION"
   type CatalogsProductGroupType = string
 
   //#endregion

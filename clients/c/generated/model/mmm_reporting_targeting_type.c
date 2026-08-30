@@ -5,13 +5,13 @@
 
 
 char* mmm_reporting_targeting_type_mmm_reporting_targeting_type_ToString(pinterest_rest_api_mmm_reporting_targeting_type__e mmm_reporting_targeting_type) {
-    char *mmm_reporting_targeting_typeArray[] =  { "NULL", "APPTYPE", "COUNTRY", "CREATIVE_TYPE", "GENDER", "LOCATION" };
+    char *mmm_reporting_targeting_typeArray[] =  { "NULL", "APPTYPE", "COUNTRY", "CREATIVE_TYPE", "GENDER", "LOCATION", "PLACEMENT", "AUDIENCE_INCLUDE" };
     return mmm_reporting_targeting_typeArray[mmm_reporting_targeting_type];
 }
 
 pinterest_rest_api_mmm_reporting_targeting_type__e mmm_reporting_targeting_type_mmm_reporting_targeting_type_FromString(char* mmm_reporting_targeting_type) {
     int stringToReturn = 0;
-    char *mmm_reporting_targeting_typeArray[] =  { "NULL", "APPTYPE", "COUNTRY", "CREATIVE_TYPE", "GENDER", "LOCATION" };
+    char *mmm_reporting_targeting_typeArray[] =  { "NULL", "APPTYPE", "COUNTRY", "CREATIVE_TYPE", "GENDER", "LOCATION", "PLACEMENT", "AUDIENCE_INCLUDE" };
     size_t sizeofArray = sizeof(mmm_reporting_targeting_typeArray) / sizeof(mmm_reporting_targeting_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(mmm_reporting_targeting_type, mmm_reporting_targeting_typeArray[stringToReturn]) == 0) {

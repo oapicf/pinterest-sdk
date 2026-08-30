@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.LeadFormResponse
+open OpenAPI.Model.LeadForm
 open OpenAPI.Model.string option
 
 module LeadFormsList200Response =
@@ -15,7 +15,7 @@ module LeadFormsList200Response =
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
     [<JsonProperty(PropertyName = "items")>]
-    Items : LeadFormResponse[];
+    Items : LeadForm[];
   }
 
   //#endregion

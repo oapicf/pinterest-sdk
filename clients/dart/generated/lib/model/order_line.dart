@@ -13,43 +13,34 @@ part of openapi.api;
 class OrderLine {
   /// Returns a new [OrderLine] instance.
   OrderLine({
-    this.adAccountId,
+    required this.adAccountId,
     this.budget,
+    this.campaignIds = const [],
     this.endTime,
-    this.id,
+    required this.id,
     this.name,
     this.paidBudget,
     this.paidType,
     this.purchaseOrderId,
     this.startTime,
-    this.status,
-    this.type,
-    this.campaignIds = const [],
+    required this.status,
+    required this.type,
   });
 
   /// Ad account ID.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? adAccountId;
+  String adAccountId;
 
   /// Order line budget in micro currency.
   num? budget;
+
+  /// Associated List of campaign IDs.
+  List<String> campaignIds;
 
   /// End time. Unix timestamp.
   num? endTime;
 
   /// Order line ID.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? id;
+  String id;
 
   /// Order line name.
   String? name;
@@ -73,30 +64,16 @@ class OrderLine {
   num? startTime;
 
   /// Order line status.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  OrderLineStatus? status;
+  OrderLineStatus status;
 
   /// Always \"orderline\".
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? type;
-
-  /// Associated List of campaign IDs.
-  List<String> campaignIds;
+  String type;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderLine &&
     other.adAccountId == adAccountId &&
     other.budget == budget &&
+    _deepEquality.equals(other.campaignIds, campaignIds) &&
     other.endTime == endTime &&
     other.id == id &&
     other.name == name &&
@@ -105,50 +82,42 @@ class OrderLine {
     other.purchaseOrderId == purchaseOrderId &&
     other.startTime == startTime &&
     other.status == status &&
-    other.type == type &&
-    _deepEquality.equals(other.campaignIds, campaignIds);
+    other.type == type;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (adAccountId == null ? 0 : adAccountId!.hashCode) +
+    (adAccountId.hashCode) +
     (budget == null ? 0 : budget!.hashCode) +
+    (campaignIds.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
-    (id == null ? 0 : id!.hashCode) +
+    (id.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (paidBudget == null ? 0 : paidBudget!.hashCode) +
     (paidType == null ? 0 : paidType!.hashCode) +
     (purchaseOrderId == null ? 0 : purchaseOrderId!.hashCode) +
     (startTime == null ? 0 : startTime!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (campaignIds.hashCode);
+    (status.hashCode) +
+    (type.hashCode);
 
   @override
-  String toString() => 'OrderLine[adAccountId=$adAccountId, budget=$budget, endTime=$endTime, id=$id, name=$name, paidBudget=$paidBudget, paidType=$paidType, purchaseOrderId=$purchaseOrderId, startTime=$startTime, status=$status, type=$type, campaignIds=$campaignIds]';
+  String toString() => 'OrderLine[adAccountId=$adAccountId, budget=$budget, campaignIds=$campaignIds, endTime=$endTime, id=$id, name=$name, paidBudget=$paidBudget, paidType=$paidType, purchaseOrderId=$purchaseOrderId, startTime=$startTime, status=$status, type=$type]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.adAccountId != null) {
       json[r'ad_account_id'] = this.adAccountId;
-    } else {
-      json[r'ad_account_id'] = null;
-    }
     if (this.budget != null) {
       json[r'budget'] = this.budget;
     } else {
       json[r'budget'] = null;
     }
+      json[r'campaign_ids'] = this.campaignIds;
     if (this.endTime != null) {
       json[r'end_time'] = this.endTime;
     } else {
       json[r'end_time'] = null;
     }
-    if (this.id != null) {
       json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
     if (this.name != null) {
       json[r'name'] = this.name;
     } else {
@@ -174,17 +143,8 @@ class OrderLine {
     } else {
       json[r'start_time'] = null;
     }
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
-    if (this.type != null) {
       json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
-    }
-      json[r'campaign_ids'] = this.campaignIds;
     return json;
   }
 
@@ -199,22 +159,31 @@ class OrderLine {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "OrderLine[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "OrderLine[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'ad_account_id'), 'Required key "OrderLine[ad_account_id]" is missing from JSON.');
+        assert(json[r'ad_account_id'] != null, 'Required key "OrderLine[ad_account_id]" has a null value in JSON.');
+        assert(json.containsKey(r'campaign_ids'), 'Required key "OrderLine[campaign_ids]" is missing from JSON.');
+        assert(json[r'campaign_ids'] != null, 'Required key "OrderLine[campaign_ids]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "OrderLine[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "OrderLine[id]" has a null value in JSON.');
+        assert(json.containsKey(r'status'), 'Required key "OrderLine[status]" is missing from JSON.');
+        assert(json[r'status'] != null, 'Required key "OrderLine[status]" has a null value in JSON.');
+        assert(json.containsKey(r'type'), 'Required key "OrderLine[type]" is missing from JSON.');
+        assert(json[r'type'] != null, 'Required key "OrderLine[type]" has a null value in JSON.');
         return true;
       }());
 
       return OrderLine(
-        adAccountId: mapValueOfType<String>(json, r'ad_account_id'),
+        adAccountId: mapValueOfType<String>(json, r'ad_account_id')!,
         budget: json[r'budget'] == null
             ? null
             : num.parse('${json[r'budget']}'),
+        campaignIds: json[r'campaign_ids'] is Iterable
+            ? (json[r'campaign_ids'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         endTime: json[r'end_time'] == null
             ? null
             : num.parse('${json[r'end_time']}'),
-        id: mapValueOfType<String>(json, r'id'),
+        id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name'),
         paidBudget: json[r'paid_budget'] == null
             ? null
@@ -222,11 +191,8 @@ class OrderLine {
         paidType: OrderLinePaidType.fromJson(json[r'paid_type']),
         purchaseOrderId: mapValueOfType<String>(json, r'purchase_order_id'),
         startTime: num.parse('${json[r'start_time']}'),
-        status: OrderLineStatus.fromJson(json[r'status']),
-        type: mapValueOfType<String>(json, r'type'),
-        campaignIds: json[r'campaign_ids'] is Iterable
-            ? (json[r'campaign_ids'] as Iterable).cast<String>().toList(growable: false)
-            : const [],
+        status: OrderLineStatus.fromJson(json[r'status'])!,
+        type: mapValueOfType<String>(json, r'type')!,
       );
     }
     return null;
@@ -274,7 +240,11 @@ class OrderLine {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'ad_account_id',
     'campaign_ids',
+    'id',
+    'status',
+    'type',
   };
 }
 

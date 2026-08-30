@@ -68,7 +68,3 @@ API.Client.CatalogsFeedIngestionErrors.prototype.LARGE_PRODUCT_COUNT_DECREASE;
  */
 API.Client.CatalogsFeedIngestionErrors.prototype.LINE_LEVEL_INTERNAL_ERROR;
 
-/** @enum {string} */
-API.Client.CatalogsFeedIngestionErrors.LARGE_PRODUCT_COUNT_DECREASEEnum = { 
-  1: '1',
-}

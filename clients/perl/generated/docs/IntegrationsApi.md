@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **integrations_commerce_del**
-> integrations_commerce_del(external_business_id => $external_business_id)
+> IntegrationMetadata integrations_commerce_del(external_business_id => $external_business_id)
 
 Delete commerce integration
 
@@ -38,7 +38,8 @@ my $api_instance = WWW::OpenAPIClient::IntegrationsApi->new(
 my $external_business_id = "external_business_id_example"; # string | External business ID for the integration.
 
 eval {
-    $api_instance->integrations_commerce_del(external_business_id => $external_business_id);
+    my $result = $api_instance->integrations_commerce_del(external_business_id => $external_business_id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling IntegrationsApi->integrations_commerce_del: $@\n";
@@ -53,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -116,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_commerce_patch**
-> IntegrationMetadata integrations_commerce_patch(external_business_id => $external_business_id, integration_request_patch => $integration_request_patch)
+> IntegrationMetadata integrations_commerce_patch(external_business_id => $external_business_id, integration_metadata_update => $integration_metadata_update)
 
 Update commerce integration
 
@@ -133,10 +134,10 @@ my $api_instance = WWW::OpenAPIClient::IntegrationsApi->new(
 );
 
 my $external_business_id = "external_business_id_example"; # string | External business ID for the integration.
-my $integration_request_patch = WWW::OpenAPIClient::Object::IntegrationRequestPatch->new(); # IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+my $integration_metadata_update = WWW::OpenAPIClient::Object::IntegrationMetadataUpdate->new(); # IntegrationMetadataUpdate | 
 
 eval {
-    my $result = $api_instance->integrations_commerce_patch(external_business_id => $external_business_id, integration_request_patch => $integration_request_patch);
+    my $result = $api_instance->integrations_commerce_patch(external_business_id => $external_business_id, integration_metadata_update => $integration_metadata_update);
     print Dumper($result);
 };
 if ($@) {
@@ -149,7 +150,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **external_business_id** | **string**| External business ID for the integration. | 
- **integration_request_patch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | 
+ **integration_metadata_update** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md)|  | 
 
 ### Return type
 
@@ -167,7 +168,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_commerce_post**
-> IntegrationMetadata integrations_commerce_post(integration_request => $integration_request)
+> IntegrationMetadata integrations_commerce_post(integration_metadata_create => $integration_metadata_create)
 
 Create commerce integration
 
@@ -183,10 +184,10 @@ my $api_instance = WWW::OpenAPIClient::IntegrationsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $integration_request = WWW::OpenAPIClient::Object::IntegrationRequest->new(); # IntegrationRequest | Parameters to get create/update the Integration Metadata
+my $integration_metadata_create = WWW::OpenAPIClient::Object::IntegrationMetadataCreate->new(); # IntegrationMetadataCreate | 
 
 eval {
-    my $result = $api_instance->integrations_commerce_post(integration_request => $integration_request);
+    my $result = $api_instance->integrations_commerce_post(integration_metadata_create => $integration_metadata_create);
     print Dumper($result);
 };
 if ($@) {
@@ -198,7 +199,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_request** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | 
+ **integration_metadata_create** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md)|  | 
 
 ### Return type
 
@@ -232,7 +233,7 @@ my $api_instance = WWW::OpenAPIClient::IntegrationsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $id = "id_example"; # string | Integration ID.
+my $id = "id_example"; # string | Integration record ID.
 
 eval {
     my $result = $api_instance->integrations_get_by_id(id => $id);
@@ -247,7 +248,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| Integration ID. | 
+ **id** | **string**| Integration record ID. | 
 
 ### Return type
 
@@ -282,7 +283,7 @@ my $api_instance = WWW::OpenAPIClient::IntegrationsApi->new(
 );
 
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
     my $result = $api_instance->integrations_get_list(bookmark => $bookmark, page_size => $page_size);
@@ -298,7 +299,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -316,7 +317,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrations_logs_post**
-> IntegrationLogsSuccessResponse integrations_logs_post(integration_logs_request => $integration_logs_request)
+> IntegrationLogsSuccessResponse integrations_logs_post(integration_logs_request_create => $integration_logs_request_create)
 
 Receives batched logs from integration applications.
 
@@ -332,10 +333,10 @@ my $api_instance = WWW::OpenAPIClient::IntegrationsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $integration_logs_request = WWW::OpenAPIClient::Object::IntegrationLogsRequest->new(); # IntegrationLogsRequest | Ingest log information from external integration application.
+my $integration_logs_request_create = WWW::OpenAPIClient::Object::IntegrationLogsRequestCreate->new(); # IntegrationLogsRequestCreate | 
 
 eval {
-    my $result = $api_instance->integrations_logs_post(integration_logs_request => $integration_logs_request);
+    my $result = $api_instance->integrations_logs_post(integration_logs_request_create => $integration_logs_request_create);
     print Dumper($result);
 };
 if ($@) {
@@ -347,7 +348,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_logs_request** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md)| Ingest log information from external integration application. | 
+ **integration_logs_request_create** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md)|  | 
 
 ### Return type
 

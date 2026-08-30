@@ -3,7 +3,7 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapitools.vertxweb.server.model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
+import org.openapitools.vertxweb.server.model.PartnerMetadata;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LeadSubscriptionPostParamsCreate   {
@@ -11,14 +11,14 @@ public class LeadSubscriptionPostParamsCreate   {
   private String leadFormId;
   private String webhookUrl;
   private String partnerAccessToken;
-  private LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata;
+  private PartnerMetadata partnerMetadata;
   private String partnerRefreshToken;
 
   public LeadSubscriptionPostParamsCreate () {
 
   }
 
-  public LeadSubscriptionPostParamsCreate (String leadFormId, String webhookUrl, String partnerAccessToken, LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata, String partnerRefreshToken) {
+  public LeadSubscriptionPostParamsCreate (String leadFormId, String webhookUrl, String partnerAccessToken, PartnerMetadata partnerMetadata, String partnerRefreshToken) {
     this.leadFormId = leadFormId;
     this.webhookUrl = webhookUrl;
     this.partnerAccessToken = partnerAccessToken;
@@ -55,10 +55,10 @@ public class LeadSubscriptionPostParamsCreate   {
 
     
   @JsonProperty("partner_metadata")
-  public LeadSubscriptionPostParamsCreateAllOfPartnerMetadata getPartnerMetadata() {
+  public PartnerMetadata getPartnerMetadata() {
     return partnerMetadata;
   }
-  public void setPartnerMetadata(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public void setPartnerMetadata(PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 
@@ -112,9 +112,6 @@ public class LeadSubscriptionPostParamsCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

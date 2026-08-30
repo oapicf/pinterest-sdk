@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **rejected_logs** | [**Array&lt;IntegrationLogsInvalidLogResponseRejectedLogsInner&gt;**](IntegrationLogsInvalidLogResponseRejectedLogsInner.md) |  | [optional] |
+| **rejected_logs** | [**Array&lt;IntegrationLogsInvalidLogResponseRejectedLogsItems&gt;**](IntegrationLogsInvalidLogResponseRejectedLogsItems.md) |  | [optional] |
 
 ## Example
 

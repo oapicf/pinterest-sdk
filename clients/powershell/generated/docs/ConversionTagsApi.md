@@ -29,7 +29,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$ConversionTagCreate = Initialize-ConversionTagCreate -AemDbEnabled $false -AemEnabled $false -AemExternalIdEnabled $false -AemFnlnEnabled $false -AemGeEnabled $false -AemLocEnabled $false -AemPhEnabled $false -MdFrequency 0.6 -Name "ACME Checkout Test Tag" # ConversionTagCreate | 
+$ConversionTagCreate = Initialize-ConversionTagCreate -AemDbEnabled $false -AemEnabled $false -AemExternalIdEnabled $false -AemFnlnEnabled $false -AemGeEnabled $false -AemLocEnabled $false -AemPhEnabled $false -MdFrequency 0.6 -Name "download_picture" # ConversionTagCreate | 
 
 # Create conversion tag
 try {
@@ -83,7 +83,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$ConversionTagId = "2617998078212" # String | Id of the conversion tag.
+$ConversionTagId = "MyConversionTagId" # String | Id of the conversion tag.
 
 # Get conversion tag
 try {
@@ -225,9 +225,9 @@ Name | Type | Description  | Notes
 # **Invoke-PageVisitConversionTagsGet**
 > PageVisitConversionTagsGet200Response Invoke-PageVisitConversionTagsGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <PSCustomObject><br>
 
 Get page visit conversion tags
 
@@ -244,13 +244,13 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+$Order = "ASCENDING" # PinterestLibPaginationOrder | The order in which to sort the items returned: ""ASCENDING"" or ""DESCENDING"" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 # Get page visit conversion tags
 try {
-    $Result = Invoke-PageVisitConversionTagsGet -AdAccountId $AdAccountId -PageSize $PageSize -Order $Order -Bookmark $Bookmark
+    $Result = Invoke-PageVisitConversionTagsGet -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -Order $Order
 } catch {
     Write-Host ("Exception occurred when calling Invoke-PageVisitConversionTagsGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -262,9 +262,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **Order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)| The order in which to sort the items returned: &quot;&quot;ASCENDING&quot;&quot; or &quot;&quot;DESCENDING&quot;&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 

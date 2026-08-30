@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -14,21 +15,22 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsCreativeAssetsItemsPostFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsItemsPostFilter implements CatalogsItemsPostFilters {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String catalogId;
 
   /**
@@ -66,7 +68,6 @@ public class CatalogsCreativeAssetsItemsPostFilter implements CatalogsItemsPostF
 
   private CatalogTypeEnum catalogType;
 
-  @Valid
   private List<String> creativeAssetsIds = new ArrayList<>();
 
   public CatalogsCreativeAssetsItemsPostFilter() {
@@ -97,6 +98,7 @@ public class CatalogsCreativeAssetsItemsPostFilter implements CatalogsItemsPostF
     return catalogId;
   }
 
+  @JsonProperty("catalog_id")
   public void setCatalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
   }
@@ -117,6 +119,7 @@ public class CatalogsCreativeAssetsItemsPostFilter implements CatalogsItemsPostF
     return catalogType;
   }
 
+  @JsonProperty("catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -145,6 +148,7 @@ public class CatalogsCreativeAssetsItemsPostFilter implements CatalogsItemsPostF
     return creativeAssetsIds;
   }
 
+  @JsonProperty("creative_assets_ids")
   public void setCreativeAssetsIds(List<String> creativeAssetsIds) {
     this.creativeAssetsIds = creativeAssetsIds;
   }
@@ -183,11 +187,8 @@ public class CatalogsCreativeAssetsItemsPostFilter implements CatalogsItemsPostF
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

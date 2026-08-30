@@ -131,7 +131,7 @@ ConversionHealthSelectionItem::getConversionType()
 }
 
 void
-ConversionHealthSelectionItem::setConversionType(Object  conversionType)
+ConversionHealthSelectionItem::setConversionType(Object conversionType)
 {
 	this->conversionType = conversionType;
 }
@@ -143,7 +143,7 @@ ConversionHealthSelectionItem::getCriteria()
 }
 
 void
-ConversionHealthSelectionItem::setCriteria(Object  criteria)
+ConversionHealthSelectionItem::setCriteria(Object criteria)
 {
 	this->criteria = criteria;
 }
@@ -155,7 +155,7 @@ ConversionHealthSelectionItem::getIngestionSource()
 }
 
 void
-ConversionHealthSelectionItem::setIngestionSource(Object  ingestionSource)
+ConversionHealthSelectionItem::setIngestionSource(Object ingestionSource)
 {
 	this->ingestionSource = ingestionSource;
 }
@@ -167,7 +167,7 @@ ConversionHealthSelectionItem::getStatus()
 }
 
 void
-ConversionHealthSelectionItem::setStatus(AnyType  status)
+ConversionHealthSelectionItem::setStatus(AnyType status)
 {
 	this->status = status;
 }

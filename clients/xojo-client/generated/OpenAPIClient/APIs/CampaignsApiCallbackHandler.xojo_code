@@ -1,7 +1,7 @@
 #tag Interface
 Protected Interface CampaignsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AdPinsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As AdPinAnalytics)
+		Sub AdPinsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As OpenAPIClient.Models.AdPinAnalytics)
 		  
 		End Sub
 	#tag EndMethod
@@ -13,19 +13,19 @@ Protected Interface CampaignsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub CampaignsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As CampaignsAnalyticsResponseInner)
+		Sub CampaignsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, data() As OpenAPIClient.Models.CampaignsAnalyticsMetrics)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub CampaignsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CampaignCreateResponse)
+		Sub CampaignsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CampaignBatchWriteResponseModel)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub CampaignsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CampaignResponse)
+		Sub CampaignsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Campaign)
 		  
 		End Sub
 	#tag EndMethod
@@ -37,7 +37,13 @@ Protected Interface CampaignsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub CampaignsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CampaignUpdateResponse)
+		Sub CampaignsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CampaignBatchWriteResponseModel)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub GetCampaignDeliveryEstimatesCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CampaignDeliveryEstimatesResponse)
 		  
 		End Sub
 	#tag EndMethod

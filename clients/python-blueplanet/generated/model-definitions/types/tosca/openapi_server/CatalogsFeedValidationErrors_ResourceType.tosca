@@ -72,7 +72,7 @@ resourceTypes {
         }
         fetch_inactive_feed_error {
           type =  integer
-          description = "Your feed wasn&#39;t ingested because it hasn’t changed in the previous 90 days."
+          description = "Your feed wasn&#39;t ingested because it hasn&#39;t changed in the previous 90 days."
           optional = false
         }
         image_link_invalid {

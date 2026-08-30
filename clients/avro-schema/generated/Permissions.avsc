@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "enum",
-  "doc": "",
+  "doc": "Permission levels available on a business asset.",
   "name": "Permissions",
   "symbols": [
     "ADMIN",
@@ -14,6 +14,7 @@
     "CATALOGS_MANAGER",
     "CATALOGS_VIEWER",
     "PROFILE_PUBLISHER",
-    "CONSUMER_USER"
+    "CONSUMER_USER",
+    "BIZ_PINNER_LIST_SHARER"
   ]
 }

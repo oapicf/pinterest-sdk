@@ -6,10 +6,10 @@
 
 -type openapi_catalogs_hotel_feeds_create_request() ::
     #{ 'catalog_id' => binary(),
-       'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
+       'catalog_type' := binary(),
        'credentials' => openapi_catalogs_feed_credentials:openapi_catalogs_feed_credentials(),
        'default_currency' => openapi_nullable_currency:openapi_nullable_currency(),
-       'default_locale' := openapi_catalogs_feeds_create_request_default_locale:openapi_catalogs_feeds_create_request_default_locale(),
+       'default_locale' := openapi_catalogs_creative_assets_feeds_create_request_default_locale:openapi_catalogs_creative_assets_feeds_create_request_default_locale(),
        'format' := openapi_catalogs_format:openapi_catalogs_format(),
        'location' := binary(),
        'name' := binary(),

@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "AI disclosure declarations the creator has made about the Pin.",
+  "name": "AiDisclosuresUpdate",
+  "fields": [
+    {
+      "name": "values",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AiDisclosureItem"
+      }],
+      "doc": "List of AI disclosure declarations the creator has made about this Pin.",
+      "default": null
+    }
+  ]
+
+}

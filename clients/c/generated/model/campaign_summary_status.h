@@ -1,7 +1,7 @@
 /*
  * campaign_summary_status.h
  *
- * Summary status for campaign
+ * 
  */
 
 #ifndef _campaign_summary_status_H_

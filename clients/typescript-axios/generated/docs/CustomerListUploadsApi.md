@@ -11,7 +11,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 # **customerListUploadsCreate**
 > CustomerListUploadCreateResponse customerListUploadsCreate(customerListUploadCreateRequest)
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 
@@ -25,9 +25,9 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CustomerListUploadsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let customerListId: string; //Unique identifier of a customer list (default to undefined)
-let customerListUploadCreateRequest: CustomerListUploadCreateRequest; //Parameters to create a customer list upload request
+let adAccountId: string; // (default to undefined)
+let customerListId: string; //Customer list ID. (default to undefined)
+let customerListUploadCreateRequest: CustomerListUploadCreateRequest; //
 
 const { status, data } = await apiInstance.customerListUploadsCreate(
     adAccountId,
@@ -40,9 +40,9 @@ const { status, data } = await apiInstance.customerListUploadsCreate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **customerListUploadCreateRequest** | **CustomerListUploadCreateRequest**| Parameters to create a customer list upload request | |
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **customerListId** | [**string**] | Unique identifier of a customer list | defaults to undefined|
+| **customerListUploadCreateRequest** | **CustomerListUploadCreateRequest**|  | |
+| **adAccountId** | [**string**] |  | defaults to undefined|
+| **customerListId** | [**string**] | Customer list ID. | defaults to undefined|
 
 
 ### Return type
@@ -62,15 +62,20 @@ const { status, data } = await apiInstance.customerListUploadsCreate(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customerListUploadsGet**
-> CustomerListUploadResponse customerListUploadsGet()
+> CustomerListUpload customerListUploadsGet()
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+Get the metadata for a given upload by its ID.
 
 ### Example
 
@@ -83,9 +88,9 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CustomerListUploadsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let customerListId: string; //Unique identifier of a customer list (default to undefined)
-let customerListUploadId: string; //Unique identifier of a customer list upload (default to undefined)
+let adAccountId: string; // (default to undefined)
+let customerListId: string; //Customer list ID. (default to undefined)
+let customerListUploadId: string; //Customer List Upload ID. (default to undefined)
 
 const { status, data } = await apiInstance.customerListUploadsGet(
     adAccountId,
@@ -98,14 +103,14 @@ const { status, data } = await apiInstance.customerListUploadsGet(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **customerListId** | [**string**] | Unique identifier of a customer list | defaults to undefined|
-| **customerListUploadId** | [**string**] | Unique identifier of a customer list upload | defaults to undefined|
+| **adAccountId** | [**string**] |  | defaults to undefined|
+| **customerListId** | [**string**] | Customer list ID. | defaults to undefined|
+| **customerListUploadId** | [**string**] | Customer List Upload ID. | defaults to undefined|
 
 
 ### Return type
 
-**CustomerListUploadResponse**
+**CustomerListUpload**
 
 ### Authorization
 
@@ -120,15 +125,20 @@ const { status, data } = await apiInstance.customerListUploadsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customerListUploadsRun**
-> CustomerListUploadResponse customerListUploadsRun()
+> CustomerListUpload customerListUploadsRun()
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
+Begin processing a customer list upload.
 
 ### Example
 
@@ -141,9 +151,9 @@ import {
 const configuration = new Configuration();
 const apiInstance = new CustomerListUploadsApi(configuration);
 
-let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let customerListId: string; //Unique identifier of a customer list (default to undefined)
-let customerListUploadId: string; //Unique identifier of a customer list upload (default to undefined)
+let adAccountId: string; // (default to undefined)
+let customerListId: string; //Customer list ID. (default to undefined)
+let customerListUploadId: string; //Customer List Upload ID. (default to undefined)
 
 const { status, data } = await apiInstance.customerListUploadsRun(
     adAccountId,
@@ -156,14 +166,14 @@ const { status, data } = await apiInstance.customerListUploadsRun(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **customerListId** | [**string**] | Unique identifier of a customer list | defaults to undefined|
-| **customerListUploadId** | [**string**] | Unique identifier of a customer list upload | defaults to undefined|
+| **adAccountId** | [**string**] |  | defaults to undefined|
+| **customerListId** | [**string**] | Customer list ID. | defaults to undefined|
+| **customerListUploadId** | [**string**] | Customer List Upload ID. | defaults to undefined|
 
 
 ### Return type
 
-**CustomerListUploadResponse**
+**CustomerListUpload**
 
 ### Authorization
 
@@ -178,8 +188,13 @@ const { status, data } = await apiInstance.customerListUploadsRun(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

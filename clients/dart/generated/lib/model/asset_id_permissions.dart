@@ -14,11 +14,12 @@ class AssetIdPermissions {
   /// Returns a new [AssetIdPermissions] instance.
   AssetIdPermissions({
     this.assetGroupInfo,
-    this.assetId,
-    this.assetType,
+    required this.assetId,
+    required this.assetType,
     this.permissions = const [],
   });
 
+  /// An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -28,22 +29,9 @@ class AssetIdPermissions {
   AssetGroupBinding? assetGroupInfo;
 
   /// Unique identifier of a business asset.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? assetId;
+  String assetId;
 
-  /// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? assetType;
+  AssetTypeResponse assetType;
 
   /// Permission levels member or partner has on an asset.
   List<String> permissions;
@@ -59,8 +47,8 @@ class AssetIdPermissions {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (assetGroupInfo == null ? 0 : assetGroupInfo!.hashCode) +
-    (assetId == null ? 0 : assetId!.hashCode) +
-    (assetType == null ? 0 : assetType!.hashCode) +
+    (assetId.hashCode) +
+    (assetType.hashCode) +
     (permissions.hashCode);
 
   @override
@@ -73,16 +61,8 @@ class AssetIdPermissions {
     } else {
       json[r'asset_group_info'] = null;
     }
-    if (this.assetId != null) {
       json[r'asset_id'] = this.assetId;
-    } else {
-      json[r'asset_id'] = null;
-    }
-    if (this.assetType != null) {
       json[r'asset_type'] = this.assetType;
-    } else {
-      json[r'asset_type'] = null;
-    }
       json[r'permissions'] = this.permissions;
     return json;
   }
@@ -98,17 +78,19 @@ class AssetIdPermissions {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AssetIdPermissions[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AssetIdPermissions[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'asset_id'), 'Required key "AssetIdPermissions[asset_id]" is missing from JSON.');
+        assert(json[r'asset_id'] != null, 'Required key "AssetIdPermissions[asset_id]" has a null value in JSON.');
+        assert(json.containsKey(r'asset_type'), 'Required key "AssetIdPermissions[asset_type]" is missing from JSON.');
+        assert(json[r'asset_type'] != null, 'Required key "AssetIdPermissions[asset_type]" has a null value in JSON.');
+        assert(json.containsKey(r'permissions'), 'Required key "AssetIdPermissions[permissions]" is missing from JSON.');
+        assert(json[r'permissions'] != null, 'Required key "AssetIdPermissions[permissions]" has a null value in JSON.');
         return true;
       }());
 
       return AssetIdPermissions(
         assetGroupInfo: AssetGroupBinding.fromJson(json[r'asset_group_info']),
-        assetId: mapValueOfType<String>(json, r'asset_id'),
-        assetType: mapValueOfType<String>(json, r'asset_type'),
+        assetId: mapValueOfType<String>(json, r'asset_id')!,
+        assetType: AssetTypeResponse.fromJson(json[r'asset_type'])!,
         permissions: json[r'permissions'] is Iterable
             ? (json[r'permissions'] as Iterable).cast<String>().toList(growable: false)
             : const [],
@@ -159,6 +141,9 @@ class AssetIdPermissions {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'asset_id',
+    'asset_type',
+    'permissions',
   };
 }
 

@@ -2,6 +2,14 @@
 Protected Class PinCreate
 
 	#tag Property, Flags = &h0
+		#tag Note
+			AI disclosure declarations the creator has made about this Pin.
+		#tag EndNote
+		ai_disclosures As OpenAPIClient.Models.AiDisclosures
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		alt_text As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -100,6 +108,14 @@ Protected Class PinCreate
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ai_disclosures"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AiDisclosures"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

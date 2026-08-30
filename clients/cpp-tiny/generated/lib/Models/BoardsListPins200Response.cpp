@@ -7,7 +7,7 @@ using namespace Tiny;
 Boards_list_pins_200_response::Boards_list_pins_200_response()
 {
 	bookmark = std::string();
-	items = std::list<Pin>();
+	items = std::list<PinRead>();
 }
 
 Boards_list_pins_200_response::Boards_list_pins_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Boards_list_pins_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<Pin> items_list;
-        Pin element;
+        std::list<PinRead> items_list;
+        PinRead element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Boards_list_pins_200_response::toJson()
 
 
 
-    std::list<Pin> items_list = getItems();
+    std::list<PinRead> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        Pin obj = var;
+        PinRead obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Boards_list_pins_200_response::getBookmark()
 }
 
 void
-Boards_list_pins_200_response::setBookmark(std::string  bookmark)
+Boards_list_pins_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<Pin>
+std::list<PinRead>
 Boards_list_pins_200_response::getItems()
 {
 	return items;
 }
 
 void
-Boards_list_pins_200_response::setItems(std::list <Pin> items)
+Boards_list_pins_200_response::setItems(std::list<PinRead> items)
 {
 	this->items = items;
 }

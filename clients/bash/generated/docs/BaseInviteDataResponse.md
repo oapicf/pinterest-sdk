@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] [default to null]
-**inviteUnderscoredata** | [**BaseInviteDataResponseInviteData**](BaseInviteDataResponseInviteData.md) |  | [optional] [default to null]
+**inviteUnderscoredata** | [**InviteDataResponse**](InviteDataResponse.md) |  | [optional] [default to null]
 **isUnderscorereceivedUnderscoreinvite** | **boolean** |  | [optional] [default to null]
 **user** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) |  | [optional] [default to null]
 

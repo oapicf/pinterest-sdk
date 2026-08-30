@@ -1,0 +1,77 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "MMMReportCreate",
+  "fields": [
+    {
+      "name": "advertiser_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Advertiser IDs for multi-advertiser report",
+      "default": null
+    },
+    {
+      "name": "columns",
+      "type": {
+        "type": "array",
+        "items": "model.MMMReportingColumn"
+      },
+      "doc": "Metric and entity columns"
+    },
+    {
+      "name": "countries",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.TargetingAdvertiserCountry"
+      }],
+      "doc": "A List of countries for filtering",
+      "default": null
+    },
+    {
+      "name": "custom_column_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of custom column IDs",
+      "default": null
+    },
+    {
+      "name": "end_date",
+      "type": "string",
+      "doc": "Metric report end date (UTC). Format: YYYY-MM-DD"
+    },
+    {
+      "name": "granularity",
+      "type": "model.MMMReportGranularity",
+      "doc": "  DAY - metrics are broken down daily.    WEEK - metrics are broken down weekly."
+    },
+    {
+      "name": "level",
+      "type": "model.MMMReportLevel",
+      "doc": "Level of the report"
+    },
+    {
+      "name": "report_name",
+      "type": "string",
+      "doc": "Name of the Marketing Mix Modeling (MMM) report"
+    },
+    {
+      "name": "start_date",
+      "type": "string",
+      "doc": "Metric report start date (UTC). Format: YYYY-MM-DD"
+    },
+    {
+      "name": "targeting_types",
+      "type": {
+        "type": "array",
+        "items": "model.MMMReportingTargetingType"
+      },
+      "doc": "List of targeting types"
+    }
+  ]
+
+}

@@ -78,7 +78,7 @@ class CatalogsUpdatableCreativeAssetsAttributes {
   ///
   String? title;
 
-  /// Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+  /// Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
   String? visibility;
 
   @override
@@ -191,10 +191,6 @@ class CatalogsUpdatableCreativeAssetsAttributes {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsUpdatableCreativeAssetsAttributes[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsUpdatableCreativeAssetsAttributes[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

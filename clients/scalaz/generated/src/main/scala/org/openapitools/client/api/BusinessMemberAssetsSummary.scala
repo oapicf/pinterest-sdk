@@ -13,9 +13,9 @@ import BusinessMemberAssetsSummary._
 
 case class BusinessMemberAssetsSummary (
   /* List of ad account IDs and respective permission levels. */
-  adAccounts: Option[List[BusinessMemberAssetsSummaryAdAccountsInner]],
+  adAccounts: Option[List[AssetIdWithPermissions]],
 /* List of profile IDs and respective permission levels. */
-  profiles: Option[List[BusinessMemberAssetsSummaryProfilesInner]])
+  profiles: Option[List[AssetIdWithPermissions]])
 
 object BusinessMemberAssetsSummary {
   import DateTimeCodecs._

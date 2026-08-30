@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** | The ID of this ad. | 
+**PinId** | Pointer to **NullableString** | Pin ID. This field may only be updated for draft ads. | [optional] 
 **AdGroupId** | Pointer to **string** | ID of the ad group that contains the ad. | [optional] 
 **AndroidDeepLink** | Pointer to **NullableString** | Deep link URL for Android devices. | [optional] 
 **CarouselAndroidDeepLinks** | Pointer to **[]string** | Comma-separated deep links for the carousel pin on Android. | [optional] 
@@ -17,16 +19,15 @@ Name | Type | Description | Notes
 **DisclosureUrl** | Pointer to **NullableString** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional] 
 **GridClickType** | Pointer to [**NullableGridClickType**](GridClickType.md) |  | [optional] 
 **IosDeepLink** | Pointer to **NullableString** | Deep link URL for iOS devices. | [optional] 
+**IsCarting** | Pointer to **bool** | Is the ad a carting/WTB ad? | [optional] 
 **IsPinDeleted** | Pointer to **bool** | Is original pin deleted? | [optional] 
 **IsRemovable** | Pointer to **bool** | Is pin repinnable? | [optional] 
 **LeadFormId** | Pointer to **NullableString** | Lead form ID for lead ad generation. | [optional] 
 **Name** | Pointer to **NullableString** | Name of the ad - 255 chars max. | [optional] 
-**QuizPinData** | Pointer to [**NullableQuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
+**QuizPinData** | Pointer to **map[string]interface{}** | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
 **Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] 
-**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
+**TrackingUrls** | Pointer to **map[string]interface{}** |  | [optional] 
 **ViewTrackingUrl** | Pointer to **NullableString** | Tracking URL for ad impressions. | [optional] 
-**Id** | **string** | The ID of this ad. | 
-**PinId** | Pointer to **NullableString** | Pin ID. This field may only be updated for draft ads. | [optional] 
 
 ## Methods
 
@@ -47,6 +48,61 @@ NewAdUpdateRequestWithDefaults instantiates a new AdUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetId
+
+`func (o *AdUpdateRequest) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *AdUpdateRequest) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *AdUpdateRequest) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetPinId
+
+`func (o *AdUpdateRequest) GetPinId() string`
+
+GetPinId returns the PinId field if non-nil, zero value otherwise.
+
+### GetPinIdOk
+
+`func (o *AdUpdateRequest) GetPinIdOk() (*string, bool)`
+
+GetPinIdOk returns a tuple with the PinId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPinId
+
+`func (o *AdUpdateRequest) SetPinId(v string)`
+
+SetPinId sets PinId field to given value.
+
+### HasPinId
+
+`func (o *AdUpdateRequest) HasPinId() bool`
+
+HasPinId returns a boolean if a field has been set.
+
+### SetPinIdNil
+
+`func (o *AdUpdateRequest) SetPinIdNil(b bool)`
+
+ SetPinIdNil sets the value for PinId to be an explicit nil
+
+### UnsetPinId
+`func (o *AdUpdateRequest) UnsetPinId()`
+
+UnsetPinId ensures that no value is present for PinId, not even an explicit nil
 ### GetAdGroupId
 
 `func (o *AdUpdateRequest) GetAdGroupId() string`
@@ -482,6 +538,31 @@ HasIosDeepLink returns a boolean if a field has been set.
 `func (o *AdUpdateRequest) UnsetIosDeepLink()`
 
 UnsetIosDeepLink ensures that no value is present for IosDeepLink, not even an explicit nil
+### GetIsCarting
+
+`func (o *AdUpdateRequest) GetIsCarting() bool`
+
+GetIsCarting returns the IsCarting field if non-nil, zero value otherwise.
+
+### GetIsCartingOk
+
+`func (o *AdUpdateRequest) GetIsCartingOk() (*bool, bool)`
+
+GetIsCartingOk returns a tuple with the IsCarting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsCarting
+
+`func (o *AdUpdateRequest) SetIsCarting(v bool)`
+
+SetIsCarting sets IsCarting field to given value.
+
+### HasIsCarting
+
+`func (o *AdUpdateRequest) HasIsCarting() bool`
+
+HasIsCarting returns a boolean if a field has been set.
+
 ### GetIsPinDeleted
 
 `func (o *AdUpdateRequest) GetIsPinDeleted() bool`
@@ -604,20 +685,20 @@ HasName returns a boolean if a field has been set.
 UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetQuizPinData
 
-`func (o *AdUpdateRequest) GetQuizPinData() QuizPinData`
+`func (o *AdUpdateRequest) GetQuizPinData() map[string]interface{}`
 
 GetQuizPinData returns the QuizPinData field if non-nil, zero value otherwise.
 
 ### GetQuizPinDataOk
 
-`func (o *AdUpdateRequest) GetQuizPinDataOk() (*QuizPinData, bool)`
+`func (o *AdUpdateRequest) GetQuizPinDataOk() (*map[string]interface{}, bool)`
 
 GetQuizPinDataOk returns a tuple with the QuizPinData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuizPinData
 
-`func (o *AdUpdateRequest) SetQuizPinData(v QuizPinData)`
+`func (o *AdUpdateRequest) SetQuizPinData(v map[string]interface{})`
 
 SetQuizPinData sets QuizPinData field to given value.
 
@@ -664,20 +745,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetTrackingUrls
 
-`func (o *AdUpdateRequest) GetTrackingUrls() TrackingUrls`
+`func (o *AdUpdateRequest) GetTrackingUrls() map[string]interface{}`
 
 GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
 
 ### GetTrackingUrlsOk
 
-`func (o *AdUpdateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool)`
+`func (o *AdUpdateRequest) GetTrackingUrlsOk() (*map[string]interface{}, bool)`
 
 GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackingUrls
 
-`func (o *AdUpdateRequest) SetTrackingUrls(v TrackingUrls)`
+`func (o *AdUpdateRequest) SetTrackingUrls(v map[string]interface{})`
 
 SetTrackingUrls sets TrackingUrls field to given value.
 
@@ -732,61 +813,6 @@ HasViewTrackingUrl returns a boolean if a field has been set.
 `func (o *AdUpdateRequest) UnsetViewTrackingUrl()`
 
 UnsetViewTrackingUrl ensures that no value is present for ViewTrackingUrl, not even an explicit nil
-### GetId
-
-`func (o *AdUpdateRequest) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *AdUpdateRequest) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *AdUpdateRequest) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetPinId
-
-`func (o *AdUpdateRequest) GetPinId() string`
-
-GetPinId returns the PinId field if non-nil, zero value otherwise.
-
-### GetPinIdOk
-
-`func (o *AdUpdateRequest) GetPinIdOk() (*string, bool)`
-
-GetPinIdOk returns a tuple with the PinId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPinId
-
-`func (o *AdUpdateRequest) SetPinId(v string)`
-
-SetPinId sets PinId field to given value.
-
-### HasPinId
-
-`func (o *AdUpdateRequest) HasPinId() bool`
-
-HasPinId returns a boolean if a field has been set.
-
-### SetPinIdNil
-
-`func (o *AdUpdateRequest) SetPinIdNil(b bool)`
-
- SetPinIdNil sets the value for PinId to be an explicit nil
-
-### UnsetPinId
-`func (o *AdUpdateRequest) UnsetPinId()`
-
-UnsetPinId ensures that no value is present for PinId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,6 +24,12 @@
 | TotalImpression | TOTAL_IMPRESSION |
 | AdvertiserName | ADVERTISER_NAME |
 | SpendOrderLinePaidType | SPEND_ORDER_LINE_PAID_TYPE |
+| CampaignObjectiveType | CAMPAIGN_OBJECTIVE_TYPE |
+| PinnerListName | PINNER_LIST_NAME |
+| AdsCreditSpendInDollar | ADS_CREDIT_SPEND_IN_DOLLAR |
+| AdvertiserPaidSpendInDollar | ADVERTISER_PAID_SPEND_IN_DOLLAR |
+| AdvertiserPaidEcpcInDollar | ADVERTISER_PAID_ECPC_IN_DOLLAR |
+| AdvertiserPaidEcpmInDollar | ADVERTISER_PAID_ECPM_IN_DOLLAR |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

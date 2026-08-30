@@ -6,7 +6,7 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **host** | host | text NOT NULL |  | **kotlin.String** | HTTP request host from host header. | 
-**method** | method | text NOT NULL |  | [**method**](#Method) |  | 
+**method** | method | long NOT NULL |  | [**HttpMethod**](HttpMethod.md) |  |  [foreignkey]
 **path** | path | text NOT NULL |  | **kotlin.String** | HTTP request path. | 
 **requestHeaders** | request_headers | blob |  | **kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt;** | HTTP request headers as key-value pairs. |  [optional]
 **responseHeaders** | response_headers | blob |  | **kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt;** | HTTP response headers as key-value pairs. |  [optional]

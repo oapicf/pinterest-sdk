@@ -12,7 +12,7 @@ API.Client.TargetingSpecOperationAppType = function() {}
 API.Client.TargetingSpecOperationAppType.prototype.field;
 
 /**
- * @type {!string}
+ * @type {!API.Client.TargetingSpecListOperation}
  * @export
  */
 API.Client.TargetingSpecOperationAppType.prototype.operation;
@@ -26,10 +26,4 @@ API.Client.TargetingSpecOperationAppType.prototype.values;
 /** @enum {string} */
 API.Client.TargetingSpecOperationAppType.FieldEnum = { 
   APPTYPE: 'APPTYPE',
-}
-/** @enum {string} */
-API.Client.TargetingSpecOperationAppType.OperationEnum = { 
-  SET: 'SET',
-  ADD: 'ADD',
-  REMOVE: 'REMOVE',
 }

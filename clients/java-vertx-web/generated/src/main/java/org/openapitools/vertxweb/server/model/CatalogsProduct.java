@@ -8,16 +8,30 @@ import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsProduct;
 import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsProductMetadata;
 import org.openapitools.vertxweb.server.model.CatalogsHotelProduct;
 import org.openapitools.vertxweb.server.model.CatalogsRetailProduct;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.Pin;
 
-/**
- * Catalogs product for all verticals
- **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProduct   {
   
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private CatalogsCreativeAssetsProductMetadata metadata;
   private Pin pin;
 
@@ -25,7 +39,7 @@ public class CatalogsProduct   {
 
   }
 
-  public CatalogsProduct (CatalogsType catalogType, CatalogsCreativeAssetsProductMetadata metadata, Pin pin) {
+  public CatalogsProduct (CatalogTypeEnum catalogType, CatalogsCreativeAssetsProductMetadata metadata, Pin pin) {
     this.catalogType = catalogType;
     this.metadata = metadata;
     this.pin = pin;
@@ -33,10 +47,10 @@ public class CatalogsProduct   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -95,9 +109,6 @@ public class CatalogsProduct   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

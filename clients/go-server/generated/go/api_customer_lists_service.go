@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,29 +29,62 @@ func NewCustomerListsAPIService() *CustomerListsAPIService {
 }
 
 // CustomerListsList - Get customer lists
-func (s *CustomerListsAPIService) CustomerListsList(ctx context.Context, adAccountId string, pageSize int32, order string, bookmark string) (ImplResponse, error) {
+func (s *CustomerListsAPIService) CustomerListsList(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder, excludeNca bool) (ImplResponse, error) {
 	// TODO - update CustomerListsList with the required logic for this service method.
 	// Add api_customer_lists_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, CustomerListsList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, CustomerListsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("CustomerListsList method not implemented")
 }
 
 // CustomerListsCreate - Create customer lists
-func (s *CustomerListsAPIService) CustomerListsCreate(ctx context.Context, adAccountId string, customerListRequest CustomerListRequest) (ImplResponse, error) {
+func (s *CustomerListsAPIService) CustomerListsCreate(ctx context.Context, adAccountId string, customerListCreate CustomerListCreate) (ImplResponse, error) {
 	// TODO - update CustomerListsCreate with the required logic for this service method.
 	// Add api_customer_lists_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, CustomerList{}) or use other options such as http.Ok ...
 	// return Response(200, CustomerList{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, CustomerList{}) or use other options such as http.Ok ...
+	// return Response(201, CustomerList{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("CustomerListsCreate method not implemented")
 }
@@ -64,22 +97,52 @@ func (s *CustomerListsAPIService) CustomerListsGet(ctx context.Context, adAccoun
 	// TODO: Uncomment the next line to return response Response(200, CustomerList{}) or use other options such as http.Ok ...
 	// return Response(200, CustomerList{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("CustomerListsGet method not implemented")
 }
 
 // CustomerListsUpdate - Update customer list
-func (s *CustomerListsAPIService) CustomerListsUpdate(ctx context.Context, adAccountId string, customerListId string, customerListUpdateRequest CustomerListUpdateRequest) (ImplResponse, error) {
+func (s *CustomerListsAPIService) CustomerListsUpdate(ctx context.Context, adAccountId string, customerListId string, customerListUpdateWithRequiredBody CustomerListUpdateWithRequiredBody) (ImplResponse, error) {
 	// TODO - update CustomerListsUpdate with the required logic for this service method.
 	// Add api_customer_lists_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, CustomerList{}) or use other options such as http.Ok ...
 	// return Response(200, CustomerList{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("CustomerListsUpdate method not implemented")
 }

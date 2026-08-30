@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CancelInviteResultItem",
+  "fields": [
+    {
+      "name": "exception",
+      "type": ["null", "model.CancelInviteException"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "invite",
+      "type": ["null", "model.CancelInviteResult"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

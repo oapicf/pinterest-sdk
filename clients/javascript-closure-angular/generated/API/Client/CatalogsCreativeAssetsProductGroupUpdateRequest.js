@@ -25,6 +25,7 @@ API.Client.CatalogsCreativeAssetsProductGroupUpdateRequest.prototype.description
 API.Client.CatalogsCreativeAssetsProductGroupUpdateRequest.prototype.filters;
 
 /**
+ * Name of catalog product group
  * @type {!string}
  * @export
  */

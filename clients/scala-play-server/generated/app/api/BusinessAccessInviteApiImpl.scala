@@ -1,15 +1,16 @@
 package api
 
 import model.AuthRespondInvitesBody
-import model.CancelInvitesBody
+import model.CancelInvitesRequest
+import model.CancelInvitesResponse
 import model.CreateAssetAccessRequestBody
 import model.CreateAssetAccessRequestResponse
 import model.CreateAssetInvitesRequest
 import model.CreateInvitesResultsResponseArray
 import model.CreateMembershipOrPartnershipInvitesBody
-import model.DeleteInvitesResultsResponseArray
 import model.Error
 import model.GetInvites200Response
+import model.InviteFilterStatus
 import model.InviteType
 import model.RespondToInvitesResponseArray
 import model.UpdateInvitesResultsResponseArray
@@ -17,7 +18,7 @@ import model.UpdateInvitesResultsResponseArray
 /**
   * Provides a default implementation for [[BusinessAccessInviteApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class BusinessAccessInviteApiImpl extends BusinessAccessInviteApi {
   /**
     * @inheritdoc
@@ -31,10 +32,10 @@ class BusinessAccessInviteApiImpl extends BusinessAccessInviteApi {
   /**
     * @inheritdoc
     */
-  override def cancelInvitesOrRequests(businessId: String, cancelInvitesBody: CancelInvitesBody): DeleteInvitesResultsResponseArray = {
+  override def cancelInvitesOrRequests(businessId: String, cancelInvitesRequest: CancelInvitesRequest): CancelInvitesResponse = {
     // TODO: Implement better logic
 
-    DeleteInvitesResultsResponseArray(None)
+    CancelInvitesResponse(None)
   }
 
   /**
@@ -58,7 +59,7 @@ class BusinessAccessInviteApiImpl extends BusinessAccessInviteApi {
   /**
     * @inheritdoc
     */
-  override def getInvites(businessId: String, isMember: Option[Boolean], inviteStatus: Option[List[String]], inviteType: Option[InviteType], bookmark: Option[String], pageSize: Option[Int]): GetInvites200Response = {
+  override def getInvites(businessId: String, isMember: Option[Boolean], inviteStatus: Option[List[InviteFilterStatus]], inviteType: Option[InviteType], bookmark: Option[String], pageSize: Option[Int]): GetInvites200Response = {
     // TODO: Implement better logic
 
     GetInvites200Response(None, List.empty[InviteResponse])

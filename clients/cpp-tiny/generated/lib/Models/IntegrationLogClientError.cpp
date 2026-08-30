@@ -232,7 +232,7 @@ IntegrationLogClientError::getCause()
 }
 
 void
-IntegrationLogClientError::setCause(std::string  cause)
+IntegrationLogClientError::setCause(std::string cause)
 {
 	this->cause = cause;
 }
@@ -244,7 +244,7 @@ IntegrationLogClientError::getColumnNumber()
 }
 
 void
-IntegrationLogClientError::setColumnNumber(int  column_number)
+IntegrationLogClientError::setColumnNumber(int column_number)
 {
 	this->column_number = column_number;
 }
@@ -256,7 +256,7 @@ IntegrationLogClientError::getFileName()
 }
 
 void
-IntegrationLogClientError::setFileName(std::string  file_name)
+IntegrationLogClientError::setFileName(std::string file_name)
 {
 	this->file_name = file_name;
 }
@@ -268,7 +268,7 @@ IntegrationLogClientError::getLineNumber()
 }
 
 void
-IntegrationLogClientError::setLineNumber(int  line_number)
+IntegrationLogClientError::setLineNumber(int line_number)
 {
 	this->line_number = line_number;
 }
@@ -280,7 +280,7 @@ IntegrationLogClientError::getMessage()
 }
 
 void
-IntegrationLogClientError::setMessage(std::string  message)
+IntegrationLogClientError::setMessage(std::string message)
 {
 	this->message = message;
 }
@@ -292,7 +292,7 @@ IntegrationLogClientError::getMessageDetail()
 }
 
 void
-IntegrationLogClientError::setMessageDetail(std::string  message_detail)
+IntegrationLogClientError::setMessageDetail(std::string message_detail)
 {
 	this->message_detail = message_detail;
 }
@@ -304,7 +304,7 @@ IntegrationLogClientError::getName()
 }
 
 void
-IntegrationLogClientError::setName(std::string  name)
+IntegrationLogClientError::setName(std::string name)
 {
 	this->name = name;
 }
@@ -316,7 +316,7 @@ IntegrationLogClientError::getNumber()
 }
 
 void
-IntegrationLogClientError::setNumber(int  number)
+IntegrationLogClientError::setNumber(int number)
 {
 	this->number = number;
 }
@@ -328,7 +328,7 @@ IntegrationLogClientError::getStackTrace()
 }
 
 void
-IntegrationLogClientError::setStackTrace(std::string  stack_trace)
+IntegrationLogClientError::setStackTrace(std::string stack_trace)
 {
 	this->stack_trace = stack_trace;
 }

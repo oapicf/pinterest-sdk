@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Attribution model used to attribute the conversion event.",
+  "name": "AttributionModel",
+  "symbols": [
+    "first_touch",
+    "last_touch",
+    "multi_touch",
+    "mmm"
+  ]
+}

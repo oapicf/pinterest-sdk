@@ -16,14 +16,7 @@
 | **googleProductCategory4** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional] |
 | **googleProductCategory5** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional] |
 | **googleProductCategory6** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional] |
-| **mediaType** | [**inline**](#kotlin.collections.List&lt;MediaType&gt;) |  |  [optional] |
-
-
-<a id="kotlin.collections.List<MediaType>"></a>
-## Enum: media_type
-| Name | Value |
-| ---- | ----- |
-| mediaType | IMAGE, VIDEO |
+| **mediaType** | [**kotlin.collections.List&lt;MediaType&gt;**](MediaType.md) |  |  [optional] |
 
 
 

@@ -2,6 +2,8 @@ package org.openapitools.server.model
 
 
 /**
+ * = BulkUpsertRequest =
+ *
  * Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.
  *
  * @param create  for example: ''null''

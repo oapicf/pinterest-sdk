@@ -12,8 +12,8 @@
     },
     {
       "name": "audience_type",
-      "type": ["null", "string"],
-      "doc": "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR",
+      "type": ["null", "model.PinnerListType"],
+      "doc": "[Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR",
       "default": null
     },
     {
@@ -41,6 +41,12 @@
       "default": null
     },
     {
+      "name": "is_nca",
+      "type": ["null", "boolean"],
+      "doc": "Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.",
+      "default": null
+    },
+    {
       "name": "name",
       "type": ["null", "string"],
       "doc": "Audience name.",
@@ -60,7 +66,7 @@
     },
     {
       "name": "status",
-      "type": ["null", "string"],
+      "type": ["null", "model.AudienceStatus"],
       "doc": "Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.",
       "default": null
     },

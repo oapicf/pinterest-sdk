@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  UserWebsiteSummary = openapi_server.resourceTypes.UserWebsiteSummary
+  UserWebsite = openapi_server.resourceTypes.UserWebsite
 }
 resourceTypes {
 
@@ -23,7 +23,7 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = UserWebsiteSummary
+          items.type = UserWebsite
           description = ""
           optional = true
         }

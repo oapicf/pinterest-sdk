@@ -5,32 +5,32 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.CatalogsFeed
+import model.CatalogsFeedCreateRequestSchema
 import model.CatalogsFeedIngestion
+import model.CatalogsFeedUpdateRequestSchema
 import model.CatalogsItemValidationIssue
 import model.Error
 import model.FeedProcessingResultsList200Response
-import model.FeedsCreateRequest
 import model.FeedsList200Response
-import model.FeedsUpdateRequest
 import model.ItemsIssuesList200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class CatalogFeedsApiController @Inject()(cc: ControllerComponents, api: CatalogFeedsApi) extends AbstractController(cc) {
   /**
-    * GET /v5/catalogs/feeds/:feedId/processing_results?bookmark=[value]&pageSize=[value]&adAccountId=[value]
-    * @param feedId Unique identifier of a feed
+    * GET /v5/catalogs/feeds/:feedId/processing_results?adAccountId=[value]&bookmark=[value]&pageSize=[value]
+    * @param feedId Unique identifier of a feed.
     */
   def feedProcessingResultsList(feedId: String): Action[AnyContent] = Action { request =>
     def executeApi(): FeedProcessingResultsList200Response = {
+      val adAccountId = request.getQueryString("ad_account_id")
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val adAccountId = request.getQueryString("ad_account_id")
-        
-      api.feedProcessingResultsList(feedId, bookmark, pageSize, adAccountId)
+      api.feedProcessingResultsList(feedId, adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -43,12 +43,12 @@ class CatalogFeedsApiController @Inject()(cc: ControllerComponents, api: Catalog
     */
   def feedsCreate(): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsFeed = {
-      val feedsCreateRequest = request.body.asJson.map(_.as[FeedsCreateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "feedsCreateRequest")
+      val catalogsFeedCreateRequestSchema = request.body.asJson.map(_.as[CatalogsFeedCreateRequestSchema]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogsFeedCreateRequestSchema")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.feedsCreate(feedsCreateRequest, adAccountId)
+      api.feedsCreate(catalogsFeedCreateRequestSchema, adAccountId)
     }
 
     val result = executeApi()
@@ -58,22 +58,23 @@ class CatalogFeedsApiController @Inject()(cc: ControllerComponents, api: Catalog
 
   /**
     * DELETE /v5/catalogs/feeds/:feedId?adAccountId=[value]
-    * @param feedId Unique identifier of a feed
+    * @param feedId Unique identifier of a feed.
     */
   def feedsDelete(feedId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
+    def executeApi(): CatalogsFeed = {
       val adAccountId = request.getQueryString("ad_account_id")
         
       api.feedsDelete(feedId, adAccountId)
     }
 
-    executeApi()
-    Ok
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
   }
 
   /**
     * GET /v5/catalogs/feeds/:feedId?adAccountId=[value]
-    * @param feedId Unique identifier of a feed
+    * @param feedId Unique identifier of a feed.
     */
   def feedsGet(feedId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsFeed = {
@@ -89,7 +90,7 @@ class CatalogFeedsApiController @Inject()(cc: ControllerComponents, api: Catalog
 
   /**
     * POST /v5/catalogs/feeds/:feedId/ingest?adAccountId=[value]
-    * @param feedId Unique identifier of a feed
+    * @param feedId Unique identifier of a feed.
     */
   def feedsIngest(feedId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsFeedIngestion = {
@@ -104,20 +105,20 @@ class CatalogFeedsApiController @Inject()(cc: ControllerComponents, api: Catalog
   }
 
   /**
-    * GET /v5/catalogs/feeds?bookmark=[value]&pageSize=[value]&catalogId=[value]&adAccountId=[value]
+    * GET /v5/catalogs/feeds?catalogId=[value]&adAccountId=[value]&bookmark=[value]&pageSize=[value]
     */
   def feedsList(): Action[AnyContent] = Action { request =>
     def executeApi(): FeedsList200Response = {
+      val catalogId = request.getQueryString("catalog_id")
+        
+      val adAccountId = request.getQueryString("ad_account_id")
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val catalogId = request.getQueryString("catalog_id")
-        
-      val adAccountId = request.getQueryString("ad_account_id")
-        
-      api.feedsList(bookmark, pageSize, catalogId, adAccountId)
+      api.feedsList(catalogId, adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -127,16 +128,16 @@ class CatalogFeedsApiController @Inject()(cc: ControllerComponents, api: Catalog
 
   /**
     * PATCH /v5/catalogs/feeds/:feedId?adAccountId=[value]
-    * @param feedId Unique identifier of a feed
+    * @param feedId Unique identifier of a feed.
     */
   def feedsUpdate(feedId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsFeed = {
-      val feedsUpdateRequest = request.body.asJson.map(_.as[FeedsUpdateRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "feedsUpdateRequest")
+      val catalogsFeedUpdateRequestSchema = request.body.asJson.map(_.as[CatalogsFeedUpdateRequestSchema]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogsFeedUpdateRequestSchema")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.feedsUpdate(feedId, feedsUpdateRequest, adAccountId)
+      api.feedsUpdate(feedId, catalogsFeedUpdateRequestSchema, adAccountId)
     }
 
     val result = executeApi()
@@ -145,16 +146,11 @@ class CatalogFeedsApiController @Inject()(cc: ControllerComponents, api: Catalog
   }
 
   /**
-    * GET /v5/catalogs/processing_results/:processingResultId/item_issues?bookmark=[value]&pageSize=[value]&itemNumbers=[value]&itemValidationIssue=[value]&adAccountId=[value]
+    * GET /v5/catalogs/processing_results/:processingResultId/item_issues?itemNumbers=[value]&itemValidationIssue=[value]&adAccountId=[value]&bookmark=[value]&pageSize=[value]
     * @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
     */
   def itemsIssuesList(processingResultId: String): Action[AnyContent] = Action { request =>
     def executeApi(): ItemsIssuesList200Response = {
-      val bookmark = request.getQueryString("bookmark")
-        
-      val pageSize = request.getQueryString("page_size")
-        .map(value => value.toInt)
-        
       val itemNumbers = request.queryString.get("item_numbers")
         .map(_.toList)
         .map(_.map(value => value.toInt)
@@ -164,7 +160,12 @@ class CatalogFeedsApiController @Inject()(cc: ControllerComponents, api: Catalog
         
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.itemsIssuesList(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId)
+      val bookmark = request.getQueryString("bookmark")
+        
+      val pageSize = request.getQueryString("page_size")
+        .map(value => value.toInt)
+        
+      api.itemsIssuesList(processingResultId, itemNumbers, itemValidationIssue, adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()

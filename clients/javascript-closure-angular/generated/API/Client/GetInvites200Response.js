@@ -12,7 +12,6 @@ API.Client.GetInvites200Response = function() {}
 API.Client.GetInvites200Response.prototype.bookmark;
 
 /**
- * List of invite and request data.
  * @type {!Array<!API.Client.InviteResponse>}
  * @export
  */

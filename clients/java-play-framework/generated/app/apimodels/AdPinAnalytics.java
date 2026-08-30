@@ -1,8 +1,6 @@
 package apimodels;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -12,9 +10,9 @@ import javax.validation.Valid;
 /**
  * AdPinAnalytics
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
-public class AdPinAnalytics extends HashMap<String, Object>  {
+public class AdPinAnalytics   {
   @JsonProperty("DATE")
   @Valid
 
@@ -71,13 +69,12 @@ public class AdPinAnalytics extends HashMap<String, Object>  {
     }
     AdPinAnalytics adPinAnalytics = (AdPinAnalytics) o;
     return Objects.equals(DATE, adPinAnalytics.DATE) &&
-        Objects.equals(PIN_ID, adPinAnalytics.PIN_ID) &&
-        super.equals(o);
+        Objects.equals(PIN_ID, adPinAnalytics.PIN_ID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(DATE, PIN_ID, super.hashCode());
+    return Objects.hash(DATE, PIN_ID);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -85,7 +82,7 @@ public class AdPinAnalytics extends HashMap<String, Object>  {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdPinAnalytics {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    DATE: ").append(toIndentedString(DATE)).append("\n");
     sb.append("    PIN_ID: ").append(toIndentedString(PIN_ID)).append("\n");
     sb.append("}");
@@ -97,10 +94,7 @@ public class AdPinAnalytics extends HashMap<String, Object>  {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

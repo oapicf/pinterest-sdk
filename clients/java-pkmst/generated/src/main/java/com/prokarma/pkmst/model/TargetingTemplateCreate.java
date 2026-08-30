@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.PlacementGroupType;
-import com.prokarma.pkmst.model.TargetingSpec;
+import com.prokarma.pkmst.model.TargetingSpecOptimal;
 import com.prokarma.pkmst.model.TargetingTemplateKeyword;
 import com.prokarma.pkmst.model.TrackingUrls;
 import io.swagger.annotations.ApiModel;
@@ -20,10 +20,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  *
  */
 /**
- * TargetingTemplateCreate
+ * Resource create operation model.
  */
+@ApiModel(description = "Resource create operation model.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingTemplateCreate   {
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled = true;
@@ -39,7 +40,7 @@ public class TargetingTemplateCreate   {
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
   @JsonProperty("targeting_attributes")
-  private TargetingSpec targetingAttributes;
+  private TargetingSpecOptimal targetingAttributes;
 
   @JsonProperty("tracking_urls")
   private TrackingUrls trackingUrls;
@@ -50,10 +51,10 @@ public class TargetingTemplateCreate   {
   }
 
   /**
-   * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+   * Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
    * @return autoTargetingEnabled
    */
-  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).")
   public Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
   }
@@ -79,7 +80,7 @@ public class TargetingTemplateCreate   {
    * Get keywords
    * @return keywords
    */
-  @ApiModelProperty(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", value = "")
+  @ApiModelProperty(value = "")
   public List<TargetingTemplateKeyword> getKeywords() {
     return keywords;
   }
@@ -94,10 +95,10 @@ public class TargetingTemplateCreate   {
   }
 
   /**
-   * Name of targeting template.
+   * targeting template name
    * @return name
    */
-  @ApiModelProperty(example = "Gaming", required = true, value = "Name of targeting template.")
+  @ApiModelProperty(required = true, value = "targeting template name")
   public String getName() {
     return name;
   }
@@ -124,21 +125,21 @@ public class TargetingTemplateCreate   {
     this.placementGroup = placementGroup;
   }
 
-  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateCreate targetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
 
   /**
-   * Get targetingAttributes
+   * targeting profile attributes
    * @return targetingAttributes
    */
-  @ApiModelProperty(required = true, value = "")
-  public TargetingSpec getTargetingAttributes() {
+  @ApiModelProperty(required = true, value = "targeting profile attributes")
+  public TargetingSpecOptimal getTargetingAttributes() {
     return targetingAttributes;
   }
 
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
@@ -203,10 +204,7 @@ public class TargetingTemplateCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

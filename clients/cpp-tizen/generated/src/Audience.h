@@ -10,6 +10,8 @@
 
 #include <string>
 #include "AudienceRule.h"
+#include "AudienceStatus.h"
+#include "PinnerListType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -53,13 +55,13 @@ public:
 	/*! \brief Set Ad account ID.
 	 */
 	void setAdAccountId(std::string  ad_account_id);
-	/*! \brief Get <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+	/*! \brief Get [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
 	 */
-	std::string getAudienceType();
+	PinnerListType getAudienceType();
 
-	/*! \brief Set <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+	/*! \brief Set [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
 	 */
-	void setAudienceType(std::string  audience_type);
+	void setAudienceType(PinnerListType  audience_type);
 	/*! \brief Get The company that created this audience.
 	 */
 	std::string getCreatedByCompanyName();
@@ -88,6 +90,13 @@ public:
 	/*! \brief Set Audience ID.
 	 */
 	void setId(std::string  id);
+	/*! \brief Get Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+	 */
+	bool getIsNca();
+
+	/*! \brief Set Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+	 */
+	void setIsNca(bool  is_nca);
 	/*! \brief Get Audience name.
 	 */
 	std::string getName();
@@ -111,11 +120,11 @@ public:
 	void setSize(int  size);
 	/*! \brief Get Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
 	 */
-	std::string getStatus();
+	AudienceStatus getStatus();
 
 	/*! \brief Set Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
 	 */
-	void setStatus(std::string  status);
+	void setStatus(AudienceStatus  status);
 	/*! \brief Get Always \"audience\".
 	 */
 	std::string getType();
@@ -133,15 +142,16 @@ public:
 
 private:
 	std::string ad_account_id;
-	std::string audience_type;
+	PinnerListType audience_type;
 	std::string created_by_company_name;
 	int created_timestamp;
 	std::string description;
 	std::string id;
+	bool is_nca;
 	std::string name;
 	AudienceRule rule;
 	int size;
-	std::string status;
+	AudienceStatus status;
 	std::string type;
 	int updated_timestamp;
 	void __init();

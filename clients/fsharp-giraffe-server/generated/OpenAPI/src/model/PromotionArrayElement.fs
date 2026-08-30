@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.Exception
-open OpenAPI.Model.PromotionResponse
+open OpenAPI.Model.Promotion
 
 module PromotionArrayElement =
 
@@ -11,7 +11,7 @@ module PromotionArrayElement =
 
 
   type PromotionArrayElement = {
-    Data : PromotionResponse;
+    Data : Promotion;
     Exception : Exception;
   }
   //#endregion

@@ -113,6 +113,7 @@
   | {'variant_names', list(binary()) }
   | {'variant_values', list(binary()) }
   | {'additional_image_link', list(binary()) }
+  | {'ai_disclosures', list(openapi_catalogs_ai_content_disclosure:openapi_catalogs_ai_content_disclosure()) }
   | {'image_link', list(binary()) }
   | {'video_link', binary() }
   ].
@@ -226,6 +227,7 @@ openapi_item_attributes(Fields) ->
             , {'variant_names', list(binary()) }
             , {'variant_values', list(binary()) }
             , {'additional_image_link', list(binary()) }
+            , {'ai_disclosures', list(openapi_catalogs_ai_content_disclosure:openapi_catalogs_ai_content_disclosure()) }
             , {'image_link', list(binary(), 1) }
             , {'video_link', binary() }
             ],

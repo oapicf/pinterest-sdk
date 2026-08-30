@@ -13,28 +13,10 @@ part of openapi.api;
 class NotificationResponse {
   /// Returns a new [NotificationResponse] instance.
   NotificationResponse({
-    this.success,
-    this.receivedAt,
     this.errorMsg,
+    this.receivedAt,
+    this.success,
   });
-
-  /// Returns true if the notification accepted.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? success;
-
-  /// Received time. Unix timestamp in seconds.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? receivedAt;
 
   /// error message when success is false
   ///
@@ -45,38 +27,56 @@ class NotificationResponse {
   ///
   String? errorMsg;
 
+  /// Received time. Unix timestamp in seconds.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? receivedAt;
+
+  /// Returns true if the notification accepted.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? success;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is NotificationResponse &&
-    other.success == success &&
+    other.errorMsg == errorMsg &&
     other.receivedAt == receivedAt &&
-    other.errorMsg == errorMsg;
+    other.success == success;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (success == null ? 0 : success!.hashCode) +
+    (errorMsg == null ? 0 : errorMsg!.hashCode) +
     (receivedAt == null ? 0 : receivedAt!.hashCode) +
-    (errorMsg == null ? 0 : errorMsg!.hashCode);
+    (success == null ? 0 : success!.hashCode);
 
   @override
-  String toString() => 'NotificationResponse[success=$success, receivedAt=$receivedAt, errorMsg=$errorMsg]';
+  String toString() => 'NotificationResponse[errorMsg=$errorMsg, receivedAt=$receivedAt, success=$success]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.success != null) {
-      json[r'success'] = this.success;
+    if (this.errorMsg != null) {
+      json[r'error_msg'] = this.errorMsg;
     } else {
-      json[r'success'] = null;
+      json[r'error_msg'] = null;
     }
     if (this.receivedAt != null) {
       json[r'received_at'] = this.receivedAt;
     } else {
       json[r'received_at'] = null;
     }
-    if (this.errorMsg != null) {
-      json[r'error_msg'] = this.errorMsg;
+    if (this.success != null) {
+      json[r'success'] = this.success;
     } else {
-      json[r'error_msg'] = null;
+      json[r'success'] = null;
     }
     return json;
   }
@@ -92,17 +92,13 @@ class NotificationResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "NotificationResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "NotificationResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return NotificationResponse(
-        success: mapValueOfType<bool>(json, r'success'),
-        receivedAt: mapValueOfType<int>(json, r'received_at'),
         errorMsg: mapValueOfType<String>(json, r'error_msg'),
+        receivedAt: mapValueOfType<int>(json, r'received_at'),
+        success: mapValueOfType<bool>(json, r'success'),
       );
     }
     return null;

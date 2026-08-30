@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **description** | **string** |  | [optional] [default to undefined]
 **filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] [default to undefined]
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] [default to undefined]
-**name** | **string** |  | [optional] [default to undefined]
+**name** | **string** | Name of catalog product group | [optional] [default to undefined]
 
 ## Example
 

@@ -5,7 +5,7 @@
             [pinterest-rest-api.specs.country :refer :all]
             [pinterest-rest-api.specs.creative-type :refer :all]
             [pinterest-rest-api.specs.currency :refer :all]
-            [pinterest-rest-api.specs.objective-type :refer :all]
+            [pinterest-rest-api.specs.bid-floor-objective-type :refer :all]
             [pinterest-rest-api.specs.optimization-goal-metadata :refer :all]
             )
   (:import (java.io File)))
@@ -17,7 +17,7 @@
    (ds/opt :countries) (s/coll-of country-spec)
    (ds/opt :creative_type) creative-type-spec
    (ds/req :currency) currency-spec
-   (ds/opt :objective_type) objective-type-spec
+   (ds/opt :objective_type) bid-floor-objective-type-spec
    (ds/opt :optimization_goal_metadata) optimization-goal-metadata-spec
    })
 

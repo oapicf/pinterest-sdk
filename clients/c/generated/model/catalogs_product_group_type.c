@@ -5,13 +5,13 @@
 
 
 char* catalogs_product_group_type_catalogs_product_group_type_ToString(pinterest_rest_api_catalogs_product_group_type__e catalogs_product_group_type) {
-    char *catalogs_product_group_typeArray[] =  { "NULL", "MERCHANT_CREATED", "ALL_PRODUCTS", "BEST_DEALS", "PINNER_FAVORITES", "TOP_SELLERS", "BACK_IN_STOCK", "NEW_ARRIVALS", "SHOPIFY_COLLECTIONS", "I2PC" };
+    char *catalogs_product_group_typeArray[] =  { "NULL", "MERCHANT_CREATED", "ALL_PRODUCTS", "BEST_DEALS", "PINNER_FAVORITES", "TOP_SELLERS", "BACK_IN_STOCK", "NEW_ARRIVALS", "SHOPIFY_COLLECTIONS", "I2PC", "CATALOG_EXPANSION" };
     return catalogs_product_group_typeArray[catalogs_product_group_type];
 }
 
 pinterest_rest_api_catalogs_product_group_type__e catalogs_product_group_type_catalogs_product_group_type_FromString(char* catalogs_product_group_type) {
     int stringToReturn = 0;
-    char *catalogs_product_group_typeArray[] =  { "NULL", "MERCHANT_CREATED", "ALL_PRODUCTS", "BEST_DEALS", "PINNER_FAVORITES", "TOP_SELLERS", "BACK_IN_STOCK", "NEW_ARRIVALS", "SHOPIFY_COLLECTIONS", "I2PC" };
+    char *catalogs_product_group_typeArray[] =  { "NULL", "MERCHANT_CREATED", "ALL_PRODUCTS", "BEST_DEALS", "PINNER_FAVORITES", "TOP_SELLERS", "BACK_IN_STOCK", "NEW_ARRIVALS", "SHOPIFY_COLLECTIONS", "I2PC", "CATALOG_EXPANSION" };
     size_t sizeofArray = sizeof(catalogs_product_group_typeArray) / sizeof(catalogs_product_group_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalogs_product_group_type, catalogs_product_group_typeArray[stringToReturn]) == 0) {

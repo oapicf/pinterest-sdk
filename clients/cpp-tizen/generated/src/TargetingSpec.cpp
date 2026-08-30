@@ -29,9 +29,11 @@ TargetingSpec::__init()
 	//new std::list()std::list> aUDIENCE_INCLUDE;
 	//new std::list()std::list> gENDER;
 	//new std::list()std::list> gEO;
+	//new std::list()std::list> gEO_EXCLUDE;
 	//new std::list()std::list> iNTEREST;
 	//new std::list()std::list> lOCALE;
 	//new std::list()std::list> lOCATION;
+	//new std::list()std::list> lOCATION_EXCLUDE;
 	//mAXIMUM_AGE = std::string();
 	//mINIMUM_AGE = std::string();
 	//new std::list()std::list> sHOPPING_RETARGETING;
@@ -71,6 +73,11 @@ TargetingSpec::__cleanup()
 	//delete gEO;
 	//gEO = NULL;
 	//}
+	//if(gEO_EXCLUDE != NULL) {
+	//gEO_EXCLUDE.RemoveAll(true);
+	//delete gEO_EXCLUDE;
+	//gEO_EXCLUDE = NULL;
+	//}
 	//if(iNTEREST != NULL) {
 	//iNTEREST.RemoveAll(true);
 	//delete iNTEREST;
@@ -85,6 +92,11 @@ TargetingSpec::__cleanup()
 	//lOCATION.RemoveAll(true);
 	//delete lOCATION;
 	//lOCATION = NULL;
+	//}
+	//if(lOCATION_EXCLUDE != NULL) {
+	//lOCATION_EXCLUDE.RemoveAll(true);
+	//delete lOCATION_EXCLUDE;
+	//lOCATION_EXCLUDE = NULL;
 	//}
 	//if(mAXIMUM_AGE != NULL) {
 	//
@@ -252,6 +264,28 @@ TargetingSpec::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *gEO_EXCLUDEKey = "GEO_EXCLUDE";
+	node = json_object_get_member(pJsonObject, gEO_EXCLUDEKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			gEO_EXCLUDE = new_list;
+		}
+		
+	}
 	const gchar *iNTERESTKey = "INTEREST";
 	node = json_object_get_member(pJsonObject, iNTERESTKey);
 	if (node !=NULL) {
@@ -315,6 +349,28 @@ TargetingSpec::fromJson(char* jsonStr)
 				new_list.push_back(inst);
 			}
 			lOCATION = new_list;
+		}
+		
+	}
+	const gchar *lOCATION_EXCLUDEKey = "LOCATION_EXCLUDE";
+	node = json_object_get_member(pJsonObject, lOCATION_EXCLUDEKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			lOCATION_EXCLUDE = new_list;
 		}
 		
 	}
@@ -519,6 +575,21 @@ TargetingSpec::toJson()
 	const gchar *gEOKey = "GEO";
 	json_object_set_member(pJsonObject, gEOKey, node);
 	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getGEOEXCLUDE());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getGEOEXCLUDE());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *gEO_EXCLUDEKey = "GEO_EXCLUDE";
+	json_object_set_member(pJsonObject, gEO_EXCLUDEKey, node);
+	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getINTEREST());
 		node = converttoJson(&new_list, "std::string", "array");
 	} else {
@@ -563,6 +634,21 @@ TargetingSpec::toJson()
 	
 	const gchar *lOCATIONKey = "LOCATION";
 	json_object_set_member(pJsonObject, lOCATIONKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getLOCATIONEXCLUDE());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getLOCATIONEXCLUDE());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *lOCATION_EXCLUDEKey = "LOCATION_EXCLUDE";
+	json_object_set_member(pJsonObject, lOCATION_EXCLUDEKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getMAXIMUMAGE();
 		node = converttoJson(&obj, "std::string", "");
@@ -702,6 +788,18 @@ TargetingSpec::setGEO(std::list <std::string> gEO)
 }
 
 std::list<std::string>
+TargetingSpec::getGEOEXCLUDE()
+{
+	return gEO_EXCLUDE;
+}
+
+void
+TargetingSpec::setGEOEXCLUDE(std::list <std::string> gEO_EXCLUDE)
+{
+	this->gEO_EXCLUDE = gEO_EXCLUDE;
+}
+
+std::list<std::string>
 TargetingSpec::getINTEREST()
 {
 	return iNTEREST;
@@ -735,6 +833,18 @@ void
 TargetingSpec::setLOCATION(std::list <std::string> lOCATION)
 {
 	this->lOCATION = lOCATION;
+}
+
+std::list<std::string>
+TargetingSpec::getLOCATIONEXCLUDE()
+{
+	return lOCATION_EXCLUDE;
+}
+
+void
+TargetingSpec::setLOCATIONEXCLUDE(std::list <std::string> lOCATION_EXCLUDE)
+{
+	this->lOCATION_EXCLUDE = lOCATION_EXCLUDE;
 }
 
 std::string

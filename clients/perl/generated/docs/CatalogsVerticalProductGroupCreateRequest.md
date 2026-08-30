@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsVerticalProductGroupCreateRequest;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the creative assets product group. | 
+**catalog_id** | **string** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **string** |  | 
 **country** | [**Country**](Country.md) |  | [optional] 
 **description** | **string** |  | [optional] 

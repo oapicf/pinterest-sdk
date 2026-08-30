@@ -21,11 +21,11 @@ services:
 ```
 
 ## **bulkDownloadCreate**
-> OpenAPI\Server\Model\BulkDownloadResponse bulkDownloadCreate($adAccountId, $bulkDownloadRequest)
+> OpenAPI\Server\Model\BulkDownload bulkDownloadCreate($adAccountId, $bulkDownloadCreate)
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example Implementation
 ```php
@@ -52,7 +52,7 @@ class BulkApi implements BulkApiInterface
     /**
      * Implementation of BulkApiInterface#bulkDownloadCreate
      */
-    public function bulkDownloadCreate(string $adAccountId, BulkDownloadRequest $bulkDownloadRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function bulkDownloadCreate(string $adAccountId, BulkDownloadCreate $bulkDownloadCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -66,11 +66,11 @@ class BulkApi implements BulkApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **bulkDownloadRequest** | [**OpenAPI\Server\Model\BulkDownloadRequest**](../Model/BulkDownloadRequest.md)| Parameters to get ad entities in bulk |
+ **bulkDownloadCreate** | [**OpenAPI\Server\Model\BulkDownloadCreate**](../Model/BulkDownloadCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\BulkDownloadResponse**](../Model/BulkDownloadResponse.md)
+[**OpenAPI\Server\Model\BulkDownload**](../Model/BulkDownload.md)
 
 ### Authorization
 
@@ -84,11 +84,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **bulkRequestGet**
-> OpenAPI\Server\Model\BulkUpsertStatusResponse bulkRequestGet($adAccountId, $bulkRequestId, $includeDetails)
+> OpenAPI\Server\Model\BulkJobData bulkRequestGet($adAccountId, $bulkRequestId, $includeDetails)
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example Implementation
 ```php
@@ -137,12 +137,12 @@ class BulkApi implements BulkApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **bulkRequestId** | **string**| Unique identifier of a bulk upsert request. |
- **includeDetails** | **bool**| if set to True then attach the errors/details to all the requests | [optional] [default to false]
+ **bulkRequestId** | **string**| Bulk request ID that is from one of the entities bulk endpoints |
+ **includeDetails** | **bool**| If set to True then attach the errors/details to all the requests | [optional] [default to false]
 
 ### Return type
 
-[**OpenAPI\Server\Model\BulkUpsertStatusResponse**](../Model/BulkUpsertStatusResponse.md)
+[**OpenAPI\Server\Model\BulkJobData**](../Model/BulkJobData.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 
 ### Example Implementation
 ```php

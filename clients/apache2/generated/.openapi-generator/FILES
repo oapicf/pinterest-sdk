@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 AdAccountsApi.conf
 AdGroupsApi.conf
 AdsApi.conf
@@ -17,13 +16,16 @@ CatalogFeedsApi.conf
 CatalogItemsApi.conf
 CatalogProductGroupsApi.conf
 CatalogReportsApi.conf
+CatalogSupplementalApi.conf
 CatalogsApi.conf
+ConversionDeletionRequestsApi.conf
 ConversionEqsApi.conf
 ConversionEventsApi.conf
 ConversionTagsApi.conf
 ConversionsApi.conf
 CustomerListUploadsApi.conf
 CustomerListsApi.conf
+CustomerSegmentApi.conf
 IntegrationsApi.conf
 KeywordsApi.conf
 LabelsApi.conf
@@ -36,12 +38,14 @@ NotificationApi.conf
 OauthApi.conf
 OrderLinesApi.conf
 PinsApi.conf
-ProductCategoriesApi.conf
 ProductGroupPromotionsApi.conf
+ProductTagsApi.conf
 PromotionsApi.conf
 ResourcesApi.conf
+SchedulesApi.conf
 SearchApi.conf
 TargetingTemplateApi.conf
 TermsApi.conf
 TermsOfServiceApi.conf
+TrendsApi.conf
 UserAccountApi.conf

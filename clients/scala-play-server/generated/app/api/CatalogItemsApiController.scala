@@ -4,13 +4,13 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.CatalogsItems
 import model.CatalogsItemsBatch
+import model.CatalogsItemsBatchPostRequest
 import model.CatalogsItemsRequest
 import model.Error
-import model.ItemsBatchPostRequest
+import model.ItemsPost200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class CatalogItemsApiController @Inject()(cc: ControllerComponents, api: CatalogItemsApi) extends AbstractController(cc) {
   /**
@@ -34,12 +34,12 @@ class CatalogItemsApiController @Inject()(cc: ControllerComponents, api: Catalog
     */
   def itemsBatchPost(): Action[AnyContent] = Action { request =>
     def executeApi(): CatalogsItemsBatch = {
-      val itemsBatchPostRequest = request.body.asJson.map(_.as[ItemsBatchPostRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "itemsBatchPostRequest")
+      val catalogsItemsBatchPostRequest = request.body.asJson.map(_.as[CatalogsItemsBatchPostRequest]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogsItemsBatchPostRequest")
       }
       val adAccountId = request.getQueryString("ad_account_id")
         
-      api.itemsBatchPost(itemsBatchPostRequest, adAccountId)
+      api.itemsBatchPost(catalogsItemsBatchPostRequest, adAccountId)
     }
 
     val result = executeApi()
@@ -51,7 +51,7 @@ class CatalogItemsApiController @Inject()(cc: ControllerComponents, api: Catalog
     * POST /v5/catalogs/items?adAccountId=[value]
     */
   def itemsPost(): Action[AnyContent] = Action { request =>
-    def executeApi(): CatalogsItems = {
+    def executeApi(): ItemsPost200Response = {
       val catalogsItemsRequest = request.body.asJson.map(_.as[CatalogsItemsRequest]).getOrElse {
         throw new OpenApiExceptions.MissingRequiredParameterException("body", "catalogsItemsRequest")
       }

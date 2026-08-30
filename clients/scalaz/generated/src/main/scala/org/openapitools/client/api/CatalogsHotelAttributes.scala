@@ -12,6 +12,7 @@ import org.joda.time.DateTime
 import CatalogsHotelAttributes._
 
 case class CatalogsHotelAttributes (
+  /* Hotel address */
   address: Option[CatalogsHotelAddress],
 /* Base price of the hotel room per night followed by the ISO currency code */
   basePrice: Option[String],
@@ -31,7 +32,8 @@ case class CatalogsHotelAttributes (
   customLabel4: Option[String],
 /* Brief description of the hotel. */
   description: Option[String],
-guestRatings: Option[CatalogsHotelGuestRatings],
+/* If specified, you must provide all properties */
+  guestRatings: Option[CatalogsHotelGuestRatings],
 /* Latitude of the hotel. */
   latitude: Option[BigDecimal],
 /* Link to the product page */
@@ -44,9 +46,12 @@ guestRatings: Option[CatalogsHotelGuestRatings],
   neighborhood: Option[List[String]],
 /* Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. */
   salePrice: Option[String],
-/* <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p> */
+/* <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://. */
   additionalImageLink: Option[List[String]],
-mainImage: Option[CatalogsHotelAttributesAllOfMainImage])
+/* AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL. */
+  aiDisclosures: Option[List[CatalogsAiContentDisclosure]],
+/* The main hotel image */
+  mainImage: Option[CatalogsHotelMainImage])
 
 object CatalogsHotelAttributes {
   import DateTimeCodecs._

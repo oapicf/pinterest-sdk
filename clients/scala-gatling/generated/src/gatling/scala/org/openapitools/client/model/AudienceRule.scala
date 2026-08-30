@@ -15,7 +15,7 @@ case class AudienceRule (
     _customerListId: Option[String],
     /* The audience account's verified domain. **Required** for ENGAGEMENT `audience_type`. */
     _engagementDomain: Option[List[String]],
-    /* Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.  */
+    /* Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. */
     _engagementType: Option[String],
     /* Optional for ENGAGEMENT. Engager type value should be 1-2. */
     _engagerType: Option[Integer],
@@ -36,9 +36,9 @@ case class AudienceRule (
     _prefill: Option[Boolean],
     /* Number of days a Pinterest user remains in the audience. Optional for ENGAGEMENT and VISITOR `audience_type`. Accepted range is 1-540. Defaults to 180 if not specified. */
     _retentionDays: Option[Integer],
-    /* Audience ID(s). For ACTALIKE `audience_type`.  */
+    /* Audience ID(s). For ACTALIKE `audience_type`. */
     _seedId: Option[List[String]],
-    /* Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"} */
+    /* Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"} */
     _url: Option[List[String]],
     /* The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`. */
     _visitorSourceId: Option[String]

@@ -1,10 +1,12 @@
 package org.openapitools.api
 
-import org.openapitools.model.AdAccountsCountryResponse
-import org.openapitools.model.BookClosedResponse
-import org.openapitools.model.DeliveryMetricsResponse
-import org.openapitools.model.Error
-import org.openapitools.model.SingleInterestTargetingOptionResponse
+import org.openapitools.model.AdAccountCountriesGet200Response
+import org.openapitools.model.BookClosed
+import org.openapitools.model.DeliveryMetricsGet200Response
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PublicTargetingType
+import org.openapitools.model.ReportType
+import org.openapitools.model.SingleInterestTargetingOption
 import io.swagger.v3.oas.annotations.*
 import io.swagger.v3.oas.annotations.enums.*
 import io.swagger.v3.oas.annotations.media.*
@@ -18,7 +20,6 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
-import org.openapitools.api.ResourcesApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -35,7 +36,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
+@RequestMapping("\${api.base-path:/v5}")
 class ResourcesApiController() {
 
     @Operation(
@@ -43,16 +44,22 @@ class ResourcesApiController() {
         operationId = "adAccountCountriesGet",
         description = """Get Ad Accounts countries""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = AdAccountsCountryResponse::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = AdAccountCountriesGet200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_AD_ACCOUNT_COUNTRIES_GET /* "/resources/ad_account_countries" */],
+        // "/resources/ad_account_countries"
+        value = [PATH_AD_ACCOUNT_COUNTRIES_GET],
         produces = ["application/json"]
     )
-    fun adAccountCountriesGet(): ResponseEntity<AdAccountsCountryResponse> {
+    fun adAccountCountriesGet(): ResponseEntity<AdAccountCountriesGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -61,40 +68,54 @@ class ResourcesApiController() {
         operationId = "deliveryMetricsGet",
         description = """Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints.
 The `display_name` attribute will match how the metric is named in our native tools like Ads Manager.
-See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.""",
+See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = DeliveryMetricsResponse::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = DeliveryMetricsGet200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read", "pins:read", "user_accounts:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "ads:read", "pins:read", "user_accounts:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_DELIVERY_METRICS_GET /* "/resources/delivery_metrics" */],
+        // "/resources/delivery_metrics"
+        value = [PATH_DELIVERY_METRICS_GET],
         produces = ["application/json"]
     )
     fun deliveryMetricsGet(
-        @Parameter(description = "Report type.", schema = Schema(allowableValues = ["SYNC", "ASYNC"])) @Valid @RequestParam(value = "report_type", required = false) reportType: kotlin.String?
-    ): ResponseEntity<DeliveryMetricsResponse> {
+        @Parameter(description = "Report type.", schema = Schema(allowableValues = ["SYNC", "ASYNC"])) @Valid @RequestParam(value = "report_type", required = false) reportType: ReportType?
+    ): ResponseEntity<DeliveryMetricsGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
     @Operation(
         summary = "Get interest details",
         operationId = "interestTargetingOptionsGet",
-        description = """<p>Get details of a specific interest given interest ID.</p> <p>Click <a href="https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875" target="_blank">here</a> for a spreadsheet listing interests and their IDs.</p>""",
+        description = """Get details of a specific interest given interest ID.
+
+Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875) for a spreadsheet listing interests and their IDs.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = SingleInterestTargetingOptionResponse::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = SingleInterestTargetingOption::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_INTEREST_TARGETING_OPTIONS_GET /* "/resources/targeting/interests/{interest_id}" */],
+        // "/resources/targeting/interests/{interest_id}"
+        value = [PATH_INTEREST_TARGETING_OPTIONS_GET],
         produces = ["application/json"]
     )
     fun interestTargetingOptionsGet(
         @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an interest.", required = true) @PathVariable("interest_id") interestId: kotlin.String
-    ): ResponseEntity<SingleInterestTargetingOptionResponse> {
+    ): ResponseEntity<SingleInterestTargetingOption> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -103,15 +124,21 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
         operationId = "leadFormQuestionsGet",
         description = """Get a list of all lead form question type names. Some questions might not be used.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>""",
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success"),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded."),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_LEAD_FORM_QUESTIONS_GET /* "/resources/lead_form_questions" */],
+        // "/resources/lead_form_questions"
+        value = [PATH_LEAD_FORM_QUESTIONS_GET],
         produces = ["application/json"]
     )
     fun leadFormQuestionsGet(): ResponseEntity<Unit> {
@@ -123,42 +150,63 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
         operationId = "metricsReadyStateGet",
         description = """Learn whether conversion or non-conversion metrics are finalized and ready to query.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = BookClosedResponse::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = BookClosed::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_METRICS_READY_STATE_GET /* "/resources/metrics_ready_state" */],
+        // "/resources/metrics_ready_state"
+        value = [PATH_METRICS_READY_STATE_GET],
         produces = ["application/json"]
     )
     fun metricsReadyStateGet(
-        @NotNull @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$") @Parameter(description = "Analytics reports request date (UTC). Format: YYYY-MM-DD", required = true) @Valid @RequestParam(value = "date", required = true) date: kotlin.String
-    ): ResponseEntity<BookClosedResponse> {
+        @NotNull @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$") @Parameter(description = "Analytics reports request date (UTC). Format: YYYY-MM-DD", required = true) @Valid @RequestParam(value = "date", required = true) date: kotlin.String
+    ): ResponseEntity<BookClosed> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
     @Operation(
         summary = "Get targeting options",
         operationId = "targetingOptionsGet",
-        description = """<p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class="reference external" href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>.</p>
-<p><b>Sample return:</b></p> <pre class="literal-block"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>""",
+        description = """    You can use targeting values in ads placement to define your intended audience.
+
+    Targeting metrics are organized around targeting specifications.
+
+    For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).
+
+    **Sample return:**
+
+    ```
+    [{"36313": "Australia: Moreton Bay - North", "124735": "Canada: North Battleford", "36109": "Australia: Murray", "36108": "Australia: Mid North Coast", "36101": "Australia: Capital Region", "811": "U.S.: Reno", "36103": "Australia: Central West", "36102": "Australia: Central Coast", "36105": "Australia: Far West and Orana", "36104": "Australia: Coffs Harbour - Grafton", "36107": "Australia: Illawarra", "36106": "Australia: Hunter Valley Exc Newcastle", "554017": "New Zealand: Wanganui", "554016": "New Zealand: Marlborough", "554015": "New Zealand: Gisborne", "554014": "New Zealand: Tararua", "554013": "New Zealand: Invercargill", "GR": "Greece", "554011": "New Zealand: Whangarei", "554010": "New Zealand: Far North", "717": "U.S.: Quincy-Hannibal-Keokuk", "716": "U.S.: Baton Rouge",...}]
+    ```""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(array = ArraySchema(schema = Schema(implementation = kotlin.Any::class)))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(array = ArraySchema(schema = Schema(implementation = kotlin.Any::class)))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "ads:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_TARGETING_OPTIONS_GET /* "/resources/targeting/{targeting_type}" */],
+        // "/resources/targeting/{targeting_type}"
+        value = [PATH_TARGETING_OPTIONS_GET],
         produces = ["application/json"]
     )
     fun targetingOptionsGet(
-        @Parameter(description = "Public targeting type.", required = true, schema = Schema(allowableValues = ["APPTYPE", "GENDER", "LOCALE", "AGE_BUCKET", "LOCATION", "GEO", "INTEREST", "KEYWORD", "AUDIENCE_INCLUDE", "AUDIENCE_EXCLUDE"])) @PathVariable("targeting_type") targetingType: kotlin.String,
-        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Client ID.") @Valid @RequestParam(value = "client_id", required = false) clientId: kotlin.String?,
+        @Parameter(description = "Public targeting type", required = true, schema = Schema(allowableValues = ["APPTYPE", "GENDER", "LOCALE", "AGE_BUCKET", "LOCATION", "GEO", "INTEREST", "KEYWORD", "AUDIENCE_INCLUDE", "AUDIENCE_EXCLUDE"])) @PathVariable("targeting_type") targetingType: PublicTargetingType,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Client ID") @Valid @RequestParam(value = "client_id", required = false) clientId: kotlin.String?,
         @Parameter(description = "Oauth signature") @Valid @RequestParam(value = "oauth_signature", required = false) oauthSignature: kotlin.String?,
-        @Pattern(regexp="\\d+") @Parameter(description = "Timestamp") @Valid @RequestParam(value = "timestamp", required = false) timestamp: kotlin.String?,
-        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+        @Pattern(regexp="\\d+") @Parameter(description = "Timestamp.") @Valid @RequestParam(value = "timestamp", required = false) timestamp: kotlin.String?
     ): ResponseEntity<List<kotlin.Any>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }

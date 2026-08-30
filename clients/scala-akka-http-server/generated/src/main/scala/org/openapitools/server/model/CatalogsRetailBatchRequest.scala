@@ -14,7 +14,7 @@ final case class CatalogsRetailBatchRequest (
   catalogId: Option[String] = None,
   catalogType: String,
   country: Country,
-  items: Seq[CatalogsRetailBatchRequestItemsInner],
+  items: Seq[CatalogsRetailBatchRequestItemsItems],
   language: String
 )
 

@@ -6,11 +6,9 @@ using namespace Tiny;
 
 Label::Label()
 {
-	id = std::string();
-	label_type = LabelType();
-	parent_id = std::string();
-	parent_type = std::string();
-	status = LabelStatus();
+	id = null;
+	label_type = NullableLabelType();
+	status = NullableLabelStatus();
 	value = std::string();
 }
 
@@ -51,34 +49,8 @@ Label::fromJson(std::string jsonObj)
 
 
 
-        LabelType* obj = &label_type;
+        NullableLabelType* obj = &label_type;
 		obj->fromJson(value.dump());
-
-    }
-
-    const char *parent_idKey = "parent_id";
-
-    if(object.has_key(parent_idKey))
-    {
-        bourne::json value = object[parent_idKey];
-
-
-
-        jsonToValue(&parent_id, value, "std::string");
-
-
-    }
-
-    const char *parent_typeKey = "parent_type";
-
-    if(object.has_key(parent_typeKey))
-    {
-        bourne::json value = object[parent_typeKey];
-
-
-
-        jsonToValue(&parent_type, value, "std::string");
-
 
     }
 
@@ -91,7 +63,7 @@ Label::fromJson(std::string jsonObj)
 
 
 
-        LabelStatus* obj = &status;
+        NullableLabelStatus* obj = &status;
 		obj->fromJson(value.dump());
 
     }
@@ -135,20 +107,6 @@ Label::toJson()
 
 
 
-    object["parent_id"] = getParentId();
-
-
-
-
-
-
-    object["parent_type"] = getParentType();
-
-
-
-
-
-
 
 	object["status"] = getStatus().toJson();
 
@@ -171,55 +129,31 @@ Label::getId()
 }
 
 void
-Label::setId(std::string  id)
+Label::setId(std::string id)
 {
 	this->id = id;
 }
 
-LabelType
+NullableLabelType
 Label::getLabelType()
 {
 	return label_type;
 }
 
 void
-Label::setLabelType(LabelType  label_type)
+Label::setLabelType(NullableLabelType label_type)
 {
 	this->label_type = label_type;
 }
 
-std::string
-Label::getParentId()
-{
-	return parent_id;
-}
-
-void
-Label::setParentId(std::string  parent_id)
-{
-	this->parent_id = parent_id;
-}
-
-std::string
-Label::getParentType()
-{
-	return parent_type;
-}
-
-void
-Label::setParentType(std::string  parent_type)
-{
-	this->parent_type = parent_type;
-}
-
-LabelStatus
+NullableLabelStatus
 Label::getStatus()
 {
 	return status;
 }
 
 void
-Label::setStatus(LabelStatus  status)
+Label::setStatus(NullableLabelStatus status)
 {
 	this->status = status;
 }
@@ -231,7 +165,7 @@ Label::getValue()
 }
 
 void
-Label::setValue(std::string  value)
+Label::setValue(std::string value)
 {
 	this->value = value;
 }

@@ -1,23 +1,24 @@
 package api
 
 import model.CustomerList
-import model.CustomerListRequest
-import model.CustomerListUpdateRequest
+import model.CustomerListCreate
+import model.CustomerListUpdateWithRequiredBody
 import model.CustomerListsList200Response
 import model.Error
+import model.PaginationOrder
 
 /**
   * Provides a default implementation for [[CustomerListsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class CustomerListsApiImpl extends CustomerListsApi {
   /**
     * @inheritdoc
     */
-  override def customerListsCreate(adAccountId: String, customerListRequest: CustomerListRequest): CustomerList = {
+  override def customerListsCreate(adAccountId: String, customerListCreate: CustomerListCreate): CustomerList = {
     // TODO: Implement better logic
 
-    CustomerList(None, None, None, None, None, None, None, None, None, None, None)
+    CustomerList(None, None, None, "", None, "", None, None, None, None, None, None)
   }
 
   /**
@@ -26,13 +27,13 @@ class CustomerListsApiImpl extends CustomerListsApi {
   override def customerListsGet(adAccountId: String, customerListId: String): CustomerList = {
     // TODO: Implement better logic
 
-    CustomerList(None, None, None, None, None, None, None, None, None, None, None)
+    CustomerList(None, None, None, "", None, "", None, None, None, None, None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def customerListsList(adAccountId: String, pageSize: Option[Int], order: Option[String], bookmark: Option[String]): CustomerListsList200Response = {
+  override def customerListsList(adAccountId: String, bookmark: Option[String], pageSize: Option[Int], order: Option[PaginationOrder], excludeNca: Option[Boolean]): CustomerListsList200Response = {
     // TODO: Implement better logic
 
     CustomerListsList200Response(None, List.empty[CustomerList])
@@ -41,9 +42,9 @@ class CustomerListsApiImpl extends CustomerListsApi {
   /**
     * @inheritdoc
     */
-  override def customerListsUpdate(adAccountId: String, customerListId: String, customerListUpdateRequest: CustomerListUpdateRequest): CustomerList = {
+  override def customerListsUpdate(adAccountId: String, customerListId: String, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody): CustomerList = {
     // TODO: Implement better logic
 
-    CustomerList(None, None, None, None, None, None, None, None, None, None, None)
+    CustomerList(None, None, None, "", None, "", None, None, None, None, None, None)
   }
 }

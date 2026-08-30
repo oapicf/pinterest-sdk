@@ -43,6 +43,7 @@ Create a board section on a board owned by the \&quot;operation user_account\&qu
 // Import classes:
 import 
 import 
+import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
 import org.openapitools.client.core.ApiKeyLocations._
@@ -60,11 +61,11 @@ object Example extends App {
     val apiInstance = BoardsApi("https://api.pinterest.com/v5")
     val boardId: String = boardId_example // String | Unique identifier of a board.
 
-    val boardSection: BoardSection =  // BoardSection | Create a board section.
+    val boardSectionCreate: BoardSectionCreate =  // BoardSectionCreate | 
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.boardSectionsCreate(boardId, boardSection, adAccountId)
+    val request = apiInstance.boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -93,7 +94,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. |
- **boardSection** | [**BoardSection**](BoardSection.md)| Create a board section. |
+ **boardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md)|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -113,17 +114,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to create board sections. |  -  |
-| **409** | Could not get exclusive access to the board to create a new section. |  -  |
-| **500** | Could not create a new board section. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardSectionsDelete
 
-> boardSectionsDelete(boardSectionsDeleteRequest): ApiRequest[Unit]
+> boardSectionsDelete(boardSectionsDeleteRequest): ApiRequest[BoardSection]
 
 Delete board section
 
@@ -133,6 +136,7 @@ Delete a board section on a board owned by the \&quot;operation user_account\&qu
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -162,6 +166,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling BoardsApi#boardSectionsDelete")
@@ -188,8 +193,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**BoardSection**](BoardSection.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -203,11 +208,14 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Board section deleted successfully |  -  |
-| **403** | Not authorized to delete board section. |  -  |
-| **404** | Board section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardSectionsList
@@ -245,7 +253,7 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.boardSectionsList(boardId, adAccountId, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -278,7 +286,7 @@ Name | Type | Description  | Notes
  **boardId** | **String**| Unique identifier of a board. |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -297,8 +305,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardSectionsListPins
@@ -338,7 +351,7 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -372,7 +385,7 @@ Name | Type | Description  | Notes
  **sectionId** | **String**| Unique identifier of a board section. |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -391,11 +404,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access Pins on board section. |  -  |
-| **404** | Board or section not found. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardSectionsUpdate
@@ -410,6 +425,7 @@ Update a board section on a board owned by the \&quot;operation user_account\&qu
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -431,11 +447,11 @@ object Example extends App {
 
     val sectionId: String = sectionId_example // String | Unique identifier of a board section.
 
-    val boardSection: BoardSection =  // BoardSection | Update a board section.
+    val boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody =  // BoardSectionUpdateWithRequiredBody | 
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+    val request = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -465,7 +481,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. |
  **sectionId** | **String**| Unique identifier of a board section. |
- **boardSection** | [**BoardSection**](BoardSection.md)| Update a board section. |
+ **boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md)|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -485,11 +501,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **400** | Invalid board section parameters. |  -  |
-| **403** | Not authorized to update board section. |  -  |
-| **409** | Board section conflict. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardsCreate
@@ -586,7 +604,7 @@ No authorization required
 
 ## boardsDelete
 
-> boardsDelete(boardsDeleteRequest): ApiRequest[Unit]
+> boardsDelete(boardsDeleteRequest): ApiRequest[Board]
 
 Delete board
 
@@ -596,6 +614,7 @@ Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Bu
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -623,6 +642,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling BoardsApi#boardsDelete")
@@ -648,8 +668,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**Board**](Board.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -663,6 +683,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
 | **204** | Resource deleted successfully. |  -  |
 | **400** | The request could not be understood by the server due to unexpected data. |  -  |
 | **401** | Authentication is required and has either failed or not been provided. |  -  |
@@ -891,17 +912,17 @@ object Example extends App {
     val apiInstance = BoardsApi("https://api.pinterest.com/v5")
     val boardId: String = boardId_example // String | Unique identifier of a board.
 
-    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
-
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
     val creativeTypes: Seq[CreativeType] =  // Seq[CreativeType] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
     val pinMetrics: Boolean = true // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+
+    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+    val request = apiInstance.boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -930,11 +951,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. |
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
  **creativeTypes** | [**Seq[CreativeType]**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
  **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional]
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -953,9 +974,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **404** | Board not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## boardsUpdate

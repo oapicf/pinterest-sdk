@@ -4,20 +4,21 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/update_partner_asset_access_body_accesses_inner.dart';
+import 'package:openapi/src/model/update_partner_asset_access_item.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'update_partner_asset_access_body.g.dart';
 
-/// UpdatePartnerAssetAccessBody
+/// An object with a list of partner asset accesses to assign or update.
 ///
 /// Properties:
-/// * [accesses] 
+/// * [accesses] - List of partner asset accesses to assign or update.
 @BuiltValue()
 abstract class UpdatePartnerAssetAccessBody implements Built<UpdatePartnerAssetAccessBody, UpdatePartnerAssetAccessBodyBuilder> {
+  /// List of partner asset accesses to assign or update.
   @BuiltValueField(wireName: r'accesses')
-  BuiltList<UpdatePartnerAssetAccessBodyAccessesInner> get accesses;
+  BuiltList<UpdatePartnerAssetAccessItem> get accesses;
 
   UpdatePartnerAssetAccessBody._();
 
@@ -45,7 +46,7 @@ class _$UpdatePartnerAssetAccessBodySerializer implements PrimitiveSerializer<Up
     yield r'accesses';
     yield serializers.serialize(
       object.accesses,
-      specifiedType: const FullType(BuiltList, [FullType(UpdatePartnerAssetAccessBodyAccessesInner)]),
+      specifiedType: const FullType(BuiltList, [FullType(UpdatePartnerAssetAccessItem)]),
     );
   }
 
@@ -73,8 +74,8 @@ class _$UpdatePartnerAssetAccessBodySerializer implements PrimitiveSerializer<Up
         case r'accesses':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UpdatePartnerAssetAccessBodyAccessesInner)]),
-          ) as BuiltList<UpdatePartnerAssetAccessBodyAccessesInner>;
+            specifiedType: const FullType(BuiltList, [FullType(UpdatePartnerAssetAccessItem)]),
+          ) as BuiltList<UpdatePartnerAssetAccessItem>;
           result.accesses.replace(valueDes);
           break;
         default:

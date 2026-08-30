@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type CatalogsProductGroupFiltersAllOf struct {
 
 	AllOf []CatalogsProductGroupFilterKeys `json:"all_of"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsProductGroupFiltersAllOf
+func (o *CatalogsProductGroupFiltersAllOf) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"all_of",
+	}
 
-// AssertCatalogsProductGroupFiltersAllOfRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"all_of": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"all_of": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsProductGroupFiltersAllOf
+
+	if value, exists := allProperties["all_of"]; exists {
+		if err = json.Unmarshal(value, &decoded.AllOf); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsProductGroupFiltersAllOfRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsProductGroupFiltersAllOfRequired(obj CatalogsProductGroupFiltersAllOf) error {
 	elements := map[string]interface{}{
 		"all_of": obj.AllOf,
@@ -30,10 +88,20 @@ func AssertCatalogsProductGroupFiltersAllOfRequired(obj CatalogsProductGroupFilt
 		}
 	}
 
+	for _, el := range obj.AllOf {
+		if err := AssertCatalogsProductGroupFilterKeysRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertCatalogsProductGroupFiltersAllOfConstraints checks if the values respects the defined constraints
 func AssertCatalogsProductGroupFiltersAllOfConstraints(obj CatalogsProductGroupFiltersAllOf) error {
+	for _, el := range obj.AllOf {
+		if err := AssertCatalogsProductGroupFilterKeysConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

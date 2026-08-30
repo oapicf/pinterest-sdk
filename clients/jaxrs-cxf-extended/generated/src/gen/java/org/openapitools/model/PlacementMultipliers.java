@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.PlacementType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,59 +20,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PlacementMultipliers extends HashMap<String, Double> {
   
-public enum PLACEMENTEnum {
-
-    @JsonProperty("SEARCH") SEARCH(String.valueOf("SEARCH")),
-    @JsonProperty("BROWSE") BROWSE(String.valueOf("BROWSE")),
-    @JsonProperty("RELATED_PINS") RELATED_PINS(String.valueOf("RELATED_PINS"));
-
-    private String value;
-
-    PLACEMENTEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static PLACEMENTEnum fromValue(String value) {
-        for (PLACEMENTEnum b : PLACEMENTEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  @ApiModelProperty(value = "")
-  private PLACEMENTEnum PLACEMENT;
  /**
-  * Get PLACEMENT
+  * Placement type identifier.
+  */
+  @ApiModelProperty(value = "Placement type identifier.")
+  @Valid
+  private PlacementType PLACEMENT;
+ /**
+  * Placement type identifier.
   * @return PLACEMENT
   */
   @JsonProperty("PLACEMENT")
-  public String getPLACEMENT() {
-    return PLACEMENT == null ? null : PLACEMENT.value();
+  public PlacementType getPLACEMENT() {
+    return PLACEMENT;
   }
 
   /**
    * Sets the <code>PLACEMENT</code> property.
    */
- public void setPLACEMENT(PLACEMENTEnum PLACEMENT) {
+ public void setPLACEMENT(PlacementType PLACEMENT) {
     this.PLACEMENT = PLACEMENT;
   }
 
   /**
    * Sets the <code>PLACEMENT</code> property.
    */
-  public PlacementMultipliers PLACEMENT(PLACEMENTEnum PLACEMENT) {
+  public PlacementMultipliers PLACEMENT(PlacementType PLACEMENT) {
     this.PLACEMENT = PLACEMENT;
     return this;
   }
@@ -109,10 +83,7 @@ public enum PLACEMENTEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

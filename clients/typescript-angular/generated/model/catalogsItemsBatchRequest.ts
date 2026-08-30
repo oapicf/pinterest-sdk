@@ -12,7 +12,6 @@ import { CatalogsItemsUpsertBatchRequest } from './catalogsItemsUpsertBatchReque
 import { CatalogsItemsCreateBatchRequest } from './catalogsItemsCreateBatchRequest';
 import { CatalogsItemsUpdateBatchRequest } from './catalogsItemsUpdateBatchRequest';
 import { Country } from './country';
-import { BatchOperation } from './batchOperation';
 import { CatalogsItemsDeleteBatchRequest } from './catalogsItemsDeleteBatchRequest';
 import { CatalogsItemsDeleteDiscontinuedBatchRequest } from './catalogsItemsDeleteDiscontinuedBatchRequest';
 

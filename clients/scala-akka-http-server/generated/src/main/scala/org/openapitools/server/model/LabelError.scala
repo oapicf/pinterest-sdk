@@ -6,7 +6,7 @@ package org.openapitools.server.model
  * @param errorMessages  for example: ''null''
 */
 final case class LabelError (
-  data: Option[Label] = None,
+  data: Option[LabelErrorData] = None,
   errorMessages: Option[Seq[String]] = None
 )
 

@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;Audience&gt;](Audience.md)
+`items` | [Array&lt;AdAccountsAudience&gt;](AdAccountsAudience.md)
 
 ## Example
 

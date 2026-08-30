@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,33 +29,36 @@ func NewConversionEventsAPIService() *ConversionEventsAPIService {
 }
 
 // EventsCreate - Send conversions
-func (s *ConversionEventsAPIService) EventsCreate(ctx context.Context, adAccountId string, conversionEvents ConversionEvents, test bool) (ImplResponse, error) {
+func (s *ConversionEventsAPIService) EventsCreate(ctx context.Context, adAccountId string, conversionEventsCreate ConversionEventsCreate, test bool) (ImplResponse, error) {
 	// TODO - update EventsCreate with the required logic for this service method.
 	// Add api_conversion_events_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, ConversionApiResponse{}) or use other options such as http.Ok ...
-	// return Response(200, ConversionApiResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ConversionEvents{}) or use other options such as http.Ok ...
+	// return Response(200, ConversionEvents{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(401, Error{}) or use other options such as http.Ok ...
-	// return Response(401, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
-	// return Response(403, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
 
 	// TODO: Uncomment the next line to return response Response(422, DetailedError{}) or use other options such as http.Ok ...
 	// return Response(422, DetailedError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(429, Error{}) or use other options such as http.Ok ...
-	// return Response(429, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(503, Error{}) or use other options such as http.Ok ...
-	// return Response(503, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(503, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(503, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("EventsCreate method not implemented")
 }

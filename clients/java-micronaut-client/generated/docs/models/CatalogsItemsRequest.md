@@ -109,7 +109,7 @@ MY | `"MY"`
 NB | `"NB"`
 NE | `"NE"`
 NL2 | `"NL"`
-NO | `"NO"`
+FALSE | `"false"`
 PL | `"PL"`
 PT | `"PT"`
 RO | `"RO"`

@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsVerticalProductGroupCreateRequest');
 API.Client.CatalogsVerticalProductGroupCreateRequest = function() {}
 
 /**
- * Catalog id pertaining to the creative assets product group.
+ * Catalog ID pertaining to the product group.
  * @type {!string}
  * @export
  */

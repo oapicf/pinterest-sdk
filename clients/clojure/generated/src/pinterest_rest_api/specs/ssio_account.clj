@@ -1,0 +1,23 @@
+(ns pinterest-rest-api.specs.ssio-account
+  (:require [clojure.spec.alpha :as s]
+            [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.ssio-account-item :refer :all]
+            [pinterest-rest-api.specs.ssio-account-pmp-name :refer :all]
+            )
+  (:import (java.io File)))
+
+
+(def ssio-account-data
+  {
+   (ds/opt :billto_infos) (s/coll-of ssio-account-item-spec)
+   (ds/opt :can_edit) boolean?
+   (ds/opt :currency) string?
+   (ds/opt :eligible) boolean?
+   (ds/opt :error) string?
+   (ds/opt :pmp_names) (s/coll-of ssio-account-pmp-name-spec)
+   })
+
+(def ssio-account-spec
+  (ds/spec
+    {:name ::ssio-account
+     :spec ssio-account-data}))

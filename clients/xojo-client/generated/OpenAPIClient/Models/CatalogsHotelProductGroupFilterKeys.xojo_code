@@ -2,52 +2,52 @@
 Protected Class CatalogsHotelProductGroupFilterKeys
 
 	#tag Property, Flags = &h0
-		PRICE As OpenAPIClient.Models.CatalogsProductGroupPricingCurrencyCriteria
+		PRICE As OpenAPIClient.Models.PriceFilterPrice
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		HOTEL_ID As CatalogsProductGroupMultipleStringCriteria
+		HOTEL_ID As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		BRAND As CatalogsProductGroupMultipleStringCriteria
+		BRAND As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_0 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_0 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_1 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_1 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_2 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_2 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_3 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_3 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_4 As CatalogsProductGroupFilterOperatorTypeCriteria
+		CUSTOM_LABEL_4 As OpenAPIClient.Models.CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		COUNTRY As CatalogsProductGroupMultipleCountriesCriteria
+		COUNTRY As OpenAPIClient.Models.CatalogsProductGroupMultipleCountriesCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		TITLE_KEYWORDS As CatalogsProductGroupMultipleStringCriteria
+		TITLE_KEYWORDS As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
@@ -92,7 +92,7 @@ Protected Class CatalogsHotelProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupPricingCurrencyCriteria"
+			Type="PriceFilterPrice"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

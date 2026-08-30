@@ -7,7 +7,7 @@
 #' @title LabelError
 #' @description LabelError Class
 #' @format An \code{R6Class} generator object
-#' @field data  \link{Label} [optional]
+#' @field data  \link{LabelErrorData} [optional]
 #' @field error_messages  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -69,13 +69,36 @@ LabelError <- R6::R6Class(
       LabelErrorObject <- list()
       if (!is.null(self$`data`)) {
         LabelErrorObject[["data"]] <-
-          self$`data`$toSimpleType()
+          self$extractSimpleType(self$`data`)
       }
       if (!is.null(self$`error_messages`)) {
         LabelErrorObject[["error_messages"]] <-
           self$`error_messages`
       }
       return(LabelErrorObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -86,7 +109,7 @@ LabelError <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`data`)) {
-        `data_object` <- Label$new()
+        `data_object` <- LabelErrorData$new()
         `data_object`$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
         self$`data` <- `data_object`
       }
@@ -114,7 +137,7 @@ LabelError <- R6::R6Class(
     #' @return the instance of LabelError
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`data` <- Label$new()$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
+      self$`data` <- LabelErrorData$new()$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
       self$`error_messages` <- ApiClient$new()$deserializeObj(this_object$`error_messages`, "array[character]", loadNamespace("openapi"))
       self
     },

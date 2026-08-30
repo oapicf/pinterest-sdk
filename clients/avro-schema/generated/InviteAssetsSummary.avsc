@@ -8,7 +8,7 @@
       "name": "ad_accounts",
       "type": ["null", {
         "type": "array",
-        "items": "model.InviteAssetsSummaryAdAccountsInner"
+        "items": "model.InviteAssetsSummaryItem"
       }],
       "doc": "List of ad account IDs and respective permission levels that will be assigned.",
       "default": null
@@ -17,7 +17,7 @@
       "name": "profiles",
       "type": ["null", {
         "type": "array",
-        "items": "model.InviteAssetsSummaryProfilesInner"
+        "items": "model.InviteAssetsSummaryItem"
       }],
       "doc": "List of profile IDs and respective permission levels that will be assigned.",
       "default": null

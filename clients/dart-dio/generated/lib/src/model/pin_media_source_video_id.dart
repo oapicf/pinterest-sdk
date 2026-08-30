@@ -145,36 +145,41 @@ class _$PinMediaSourceVideoIDSerializer implements PrimitiveSerializer<PinMediaS
         case r'cover_image_content_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ContentType),
-          ) as ContentType;
+            specifiedType: const FullType.nullable(ContentType),
+          ) as ContentType?;
+          if (valueDes == null) continue;
           result.coverImageContentType = valueDes;
           break;
         case r'cover_image_data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.coverImageData = valueDes;
           break;
         case r'cover_image_key_frame_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.coverImageKeyFrameTime = valueDes;
           break;
         case r'cover_image_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.coverImageUrl = valueDes;
           break;
         case r'is_standard':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isStandard = valueDes;
           break;
         case r'media_id':

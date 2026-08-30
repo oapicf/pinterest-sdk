@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "TargetingSpecAppType.h"
 #include <map>
 #include "Object.h"
 
@@ -46,16 +47,16 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get App type identifier.
 	 */
-	std::string getAPPTYPE();
+	TargetingSpecAppType getAPPTYPE();
 
-	/*! \brief Set 
+	/*! \brief Set App type identifier.
 	 */
-	void setAPPTYPE(std::string  aPP_TYPE);
+	void setAPPTYPE(TargetingSpecAppType  aPP_TYPE);
 
 private:
-	std::string aPP_TYPE;
+	TargetingSpecAppType aPP_TYPE;
 	void __init();
 	void __cleanup();
 

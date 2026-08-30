@@ -1,9 +1,9 @@
 #import "OAINotificationApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIError.h"
 #import "OAINotificationPostRequest.h"
 #import "OAINotificationResponse.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAINotificationApi ()
@@ -54,7 +54,7 @@ NSInteger kOAINotificationApiMissingParamErrorCode = 234513;
 ///
 /// Receive notifications from external partners.
 /// Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests' systems. This API is gated and you need to request access to this feature.
-///  @param notificationPostRequest notification event. 
+///  @param notificationPostRequest  
 ///
 ///  @returns OAINotificationResponse*
 ///

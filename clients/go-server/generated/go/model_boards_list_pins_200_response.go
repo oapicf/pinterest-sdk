@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,11 +23,69 @@ type BoardsListPins200Response struct {
 
 	Bookmark *string `json:"bookmark,omitempty"`
 
-	// Pins
-	Items []Pin `json:"items"`
+	Items []PinRead `json:"items"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into BoardsListPins200Response
+func (o *BoardsListPins200Response) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"items",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"items": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"bookmark": {},
+		"items": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded BoardsListPins200Response
+
+	if value, exists := allProperties["bookmark"]; exists {
+		if err = json.Unmarshal(value, &decoded.Bookmark); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["items"]; exists {
+		if err = json.Unmarshal(value, &decoded.Items); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertBoardsListPins200ResponseRequired checks if the required fields are not zero-ed
+// AssertBoardsListPins200ResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertBoardsListPins200ResponseRequired(obj BoardsListPins200Response) error {
 	elements := map[string]interface{}{
 		"items": obj.Items,
@@ -34,7 +97,7 @@ func AssertBoardsListPins200ResponseRequired(obj BoardsListPins200Response) erro
 	}
 
 	for _, el := range obj.Items {
-		if err := AssertPinRequired(el); err != nil {
+		if err := AssertPinReadRequired(el); err != nil {
 			return err
 		}
 	}
@@ -44,7 +107,7 @@ func AssertBoardsListPins200ResponseRequired(obj BoardsListPins200Response) erro
 // AssertBoardsListPins200ResponseConstraints checks if the values respects the defined constraints
 func AssertBoardsListPins200ResponseConstraints(obj BoardsListPins200Response) error {
 	for _, el := range obj.Items {
-		if err := AssertPinConstraints(el); err != nil {
+		if err := AssertPinReadConstraints(el); err != nil {
 			return err
 		}
 	}

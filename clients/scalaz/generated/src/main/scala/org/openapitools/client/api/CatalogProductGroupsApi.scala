@@ -24,11 +24,12 @@ import HelperCodecs._
 import org.openapitools.client.api.CatalogsListProductsByFilterRequest
 import org.openapitools.client.api.CatalogsProductGroupPinsList200Response
 import org.openapitools.client.api.CatalogsProductGroupProductCountsVertical
+import org.openapitools.client.api.CatalogsProductGroupsCreateManyRequestItems
+import org.openapitools.client.api.CatalogsProductGroupsCreateRequestSchema
 import org.openapitools.client.api.CatalogsProductGroupsList200Response
-import org.openapitools.client.api.CatalogsProductGroupsUpdateRequest
+import org.openapitools.client.api.CatalogsProductGroupsUpdateRequestSchema
 import org.openapitools.client.api.CatalogsVerticalProductGroup
 import org.openapitools.client.api.Error
-import org.openapitools.client.api.MultipleProductGroupsInner
 
 object CatalogProductGroupsApi {
 
@@ -36,7 +37,7 @@ object CatalogProductGroupsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def catalogsProductGroupPinsList(host: String, productGroupId: String, bookmark: String, pageSize: Integer = 25, adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[CatalogsProductGroupPinsList200Response] = {
+  def catalogsProductGroupPinsList(host: String, productGroupId: String, adAccountId: String, pinMetrics: Boolean = false, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[CatalogsProductGroupPinsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsProductGroupPinsList200Response] = jsonOf[CatalogsProductGroupPinsList200Response]
 
     val path = "/catalogs/product_groups/{product_group_id}/products".replaceAll("\\{" + "product_group_id" + "\\}",escape(productGroupId.toString))
@@ -46,7 +47,7 @@ object CatalogProductGroupsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -57,7 +58,7 @@ object CatalogProductGroupsApi {
     } yield resp
   }
 
-  def catalogsProductGroupsCreate(host: String, multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
+  def catalogsProductGroupsCreate(host: String, catalogsProductGroupsCreateRequestSchema: CatalogsProductGroupsCreateRequestSchema, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsVerticalProductGroup] = jsonOf[CatalogsVerticalProductGroup]
 
     val path = "/catalogs/product_groups"
@@ -72,13 +73,13 @@ object CatalogProductGroupsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(multipleProductGroupsInner)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsProductGroupsCreateRequestSchema)
       resp          <- client.expect[CatalogsVerticalProductGroup](req)
 
     } yield resp
   }
 
-  def catalogsProductGroupsCreateMany(host: String, multipleProductGroupsInner: List[MultipleProductGroupsInner], adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[List[String]] = {
+  def catalogsProductGroupsCreateMany(host: String, catalogsProductGroupsCreateManyRequestItems: List[CatalogsProductGroupsCreateManyRequestItems], adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[List[String]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
 
     val path = "/catalogs/product_groups/multiple"
@@ -93,13 +94,15 @@ object CatalogProductGroupsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(multipleProductGroupsInner)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsProductGroupsCreateManyRequestItems)
       resp          <- client.expect[List[String]](req)
 
     } yield resp
   }
 
-  def catalogsProductGroupsDelete(host: String, productGroupId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Unit] = {
+  def catalogsProductGroupsDelete(host: String, productGroupId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
+    implicit val returnTypeDecoder: EntityDecoder[CatalogsVerticalProductGroup] = jsonOf[CatalogsVerticalProductGroup]
+
     val path = "/catalogs/product_groups/{product_group_id}".replaceAll("\\{" + "product_group_id" + "\\}",escape(productGroupId.toString))
 
     val httpMethod = Method.DELETE
@@ -113,7 +116,7 @@ object CatalogProductGroupsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[CatalogsVerticalProductGroup](req)
 
     } yield resp
   }
@@ -158,7 +161,7 @@ object CatalogProductGroupsApi {
     } yield resp
   }
 
-  def catalogsProductGroupsList(host: String, id: List[Integer] = List.empty[Integer] , feedId: String, catalogId: String, bookmark: String, pageSize: Integer = 25, adAccountId: String)(implicit idQuery: QueryParam[List[Integer]], feedIdQuery: QueryParam[String], catalogIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[CatalogsProductGroupsList200Response] = {
+  def catalogsProductGroupsList(host: String, id: List[Integer] = List.empty[Integer] , feedId: String, catalogId: String, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit idQuery: QueryParam[List[Integer]], feedIdQuery: QueryParam[String], catalogIdQuery: QueryParam[String], adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[CatalogsProductGroupsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsProductGroupsList200Response] = jsonOf[CatalogsProductGroupsList200Response]
 
     val path = "/catalogs/product_groups"
@@ -168,7 +171,7 @@ object CatalogProductGroupsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("id", Some(idQuery.toParamString(id))), ("feedId", Some(feed_idQuery.toParamString(feed_id))), ("catalogId", Some(catalog_idQuery.toParamString(catalog_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("id", Some(idQuery.toParamString(id))), ("feedId", Some(feed_idQuery.toParamString(feed_id))), ("catalogId", Some(catalog_idQuery.toParamString(catalog_id))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -200,7 +203,7 @@ object CatalogProductGroupsApi {
     } yield resp
   }
 
-  def catalogsProductGroupsUpdate(host: String, productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
+  def catalogsProductGroupsUpdate(host: String, productGroupId: String, catalogsProductGroupsUpdateRequestSchema: CatalogsProductGroupsUpdateRequestSchema, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsVerticalProductGroup] = jsonOf[CatalogsVerticalProductGroup]
 
     val path = "/catalogs/product_groups/{product_group_id}".replaceAll("\\{" + "product_group_id" + "\\}",escape(productGroupId.toString))
@@ -215,7 +218,7 @@ object CatalogProductGroupsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsProductGroupsUpdateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsProductGroupsUpdateRequestSchema)
       resp          <- client.expect[CatalogsVerticalProductGroup](req)
 
     } yield resp
@@ -249,7 +252,7 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def catalogsProductGroupPinsList(productGroupId: String, bookmark: String, pageSize: Integer = 25, adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[CatalogsProductGroupPinsList200Response] = {
+  def catalogsProductGroupPinsList(productGroupId: String, adAccountId: String, pinMetrics: Boolean = false, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[CatalogsProductGroupPinsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsProductGroupPinsList200Response] = jsonOf[CatalogsProductGroupPinsList200Response]
 
     val path = "/catalogs/product_groups/{product_group_id}/products".replaceAll("\\{" + "product_group_id" + "\\}",escape(productGroupId.toString))
@@ -259,7 +262,7 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -270,7 +273,7 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
     } yield resp
   }
 
-  def catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
+  def catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema: CatalogsProductGroupsCreateRequestSchema, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsVerticalProductGroup] = jsonOf[CatalogsVerticalProductGroup]
 
     val path = "/catalogs/product_groups"
@@ -285,13 +288,13 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(multipleProductGroupsInner)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsProductGroupsCreateRequestSchema)
       resp          <- client.expect[CatalogsVerticalProductGroup](req)
 
     } yield resp
   }
 
-  def catalogsProductGroupsCreateMany(multipleProductGroupsInner: List[MultipleProductGroupsInner], adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[List[String]] = {
+  def catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems: List[CatalogsProductGroupsCreateManyRequestItems], adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[List[String]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
 
     val path = "/catalogs/product_groups/multiple"
@@ -306,13 +309,15 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(multipleProductGroupsInner)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsProductGroupsCreateManyRequestItems)
       resp          <- client.expect[List[String]](req)
 
     } yield resp
   }
 
-  def catalogsProductGroupsDelete(productGroupId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[Unit] = {
+  def catalogsProductGroupsDelete(productGroupId: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
+    implicit val returnTypeDecoder: EntityDecoder[CatalogsVerticalProductGroup] = jsonOf[CatalogsVerticalProductGroup]
+
     val path = "/catalogs/product_groups/{product_group_id}".replaceAll("\\{" + "product_group_id" + "\\}",escape(productGroupId.toString))
 
     val httpMethod = Method.DELETE
@@ -326,7 +331,7 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[CatalogsVerticalProductGroup](req)
 
     } yield resp
   }
@@ -371,7 +376,7 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
     } yield resp
   }
 
-  def catalogsProductGroupsList(id: List[Integer] = List.empty[Integer] , feedId: String, catalogId: String, bookmark: String, pageSize: Integer = 25, adAccountId: String)(implicit idQuery: QueryParam[List[Integer]], feedIdQuery: QueryParam[String], catalogIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], adAccountIdQuery: QueryParam[String]): Task[CatalogsProductGroupsList200Response] = {
+  def catalogsProductGroupsList(id: List[Integer] = List.empty[Integer] , feedId: String, catalogId: String, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit idQuery: QueryParam[List[Integer]], feedIdQuery: QueryParam[String], catalogIdQuery: QueryParam[String], adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[CatalogsProductGroupsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsProductGroupsList200Response] = jsonOf[CatalogsProductGroupsList200Response]
 
     val path = "/catalogs/product_groups"
@@ -381,7 +386,7 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("id", Some(idQuery.toParamString(id))), ("feedId", Some(feed_idQuery.toParamString(feed_id))), ("catalogId", Some(catalog_idQuery.toParamString(catalog_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("id", Some(idQuery.toParamString(id))), ("feedId", Some(feed_idQuery.toParamString(feed_id))), ("catalogId", Some(catalog_idQuery.toParamString(catalog_id))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -413,7 +418,7 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
     } yield resp
   }
 
-  def catalogsProductGroupsUpdate(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
+  def catalogsProductGroupsUpdate(productGroupId: String, catalogsProductGroupsUpdateRequestSchema: CatalogsProductGroupsUpdateRequestSchema, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsVerticalProductGroup] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsVerticalProductGroup] = jsonOf[CatalogsVerticalProductGroup]
 
     val path = "/catalogs/product_groups/{product_group_id}".replaceAll("\\{" + "product_group_id" + "\\}",escape(productGroupId.toString))
@@ -428,7 +433,7 @@ class HttpServiceCatalogProductGroupsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsProductGroupsUpdateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsProductGroupsUpdateRequestSchema)
       resp          <- client.expect[CatalogsVerticalProductGroup](req)
 
     } yield resp

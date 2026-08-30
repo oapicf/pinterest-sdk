@@ -86,13 +86,36 @@ KeywordsCommon <- R6::R6Class(
       }
       if (!is.null(self$`match_type`)) {
         KeywordsCommonObject[["match_type"]] <-
-          self$`match_type`$toSimpleType()
+          self$extractSimpleType(self$`match_type`)
       }
       if (!is.null(self$`value`)) {
         KeywordsCommonObject[["value"]] <-
           self$`value`
       }
       return(KeywordsCommonObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

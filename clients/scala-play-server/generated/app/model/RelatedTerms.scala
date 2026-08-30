@@ -8,11 +8,11 @@ import play.api.libs.json._
   * @param relatedTermCount Total number of related terms returned
   * @param relatedTermsList The id of the advertiser.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class RelatedTerms(
   id: Option[String],
   relatedTermCount: Option[Int],
-  relatedTermsList: Option[List[RelatedTermsRelatedTermsListInner]]
+  relatedTermsList: Option[List[RelatedTermsRelatedTermsListItems]]
 )
 
 object RelatedTerms {

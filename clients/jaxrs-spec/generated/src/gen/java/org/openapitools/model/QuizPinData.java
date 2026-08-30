@@ -8,6 +8,7 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.QuizPinQuestion;
 import org.openapitools.model.QuizPinResult;
+import org.openapitools.model.TieBreakerType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -24,59 +25,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "This field includes all quiz data including questions, options, and results.")
 @JsonTypeName("QuizPinData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class QuizPinData   {
   private @Valid List<@Valid QuizPinQuestion> questions = new ArrayList<>();
   private @Valid List<@Valid QuizPinResult> results = new ArrayList<>();
   private QuizPinResult tieBreakerCustomResult;
-  public enum TieBreakerTypeEnum {
-
-    RANDOM(String.valueOf("RANDOM")), CUSTOM(String.valueOf("CUSTOM"));
-
-
-    private String value;
-
-    TieBreakerTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static TieBreakerTypeEnum fromString(String s) {
-        for (TieBreakerTypeEnum b : TieBreakerTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static TieBreakerTypeEnum fromValue(String value) {
-        for (TieBreakerTypeEnum b : TieBreakerTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private TieBreakerTypeEnum tieBreakerType;
+  private TieBreakerType tieBreakerType;
 
   public QuizPinData() {
   }
@@ -171,22 +125,21 @@ public class QuizPinData   {
   }
 
   /**
-   * Quiz ad tie breaker type, default is RANDOM
    **/
-  public QuizPinData tieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public QuizPinData tieBreakerType(TieBreakerType tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Quiz ad tie breaker type, default is RANDOM")
+  @ApiModelProperty(value = "")
   @JsonProperty("tie_breaker_type")
-  public TieBreakerTypeEnum getTieBreakerType() {
+  public TieBreakerType getTieBreakerType() {
     return tieBreakerType;
   }
 
   @JsonProperty("tie_breaker_type")
-  public void setTieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public void setTieBreakerType(TieBreakerType tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
   }
 
@@ -229,12 +182,8 @@ public class QuizPinData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

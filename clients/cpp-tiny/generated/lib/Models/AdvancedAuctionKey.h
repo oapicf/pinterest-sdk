@@ -53,21 +53,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCountry(Country  country);
+	void setCountry(Country country);
 	/*! \brief Get The catalog retail item id in the merchant namespace
 	 */
 	std::string getItemId();
 
 	/*! \brief Set The catalog retail item id in the merchant namespace
 	 */
-	void setItemId(std::string  item_id);
+	void setItemId(std::string item_id);
 	/*! \brief Get 
 	 */
 	Language getLanguage();
 
 	/*! \brief Set 
 	 */
-	void setLanguage(Language  language);
+	void setLanguage(Language language);
 
 
     private:

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsItemValidationDetails::CatalogsItemValidationDetails()
 {
-	attribute_name = NullableCatalogsItemFieldType();
+	attribute_name = null;
 	provided_value = std::string();
 }
 
@@ -86,7 +86,7 @@ CatalogsItemValidationDetails::getAttributeName()
 }
 
 void
-CatalogsItemValidationDetails::setAttributeName(NullableCatalogsItemFieldType  attribute_name)
+CatalogsItemValidationDetails::setAttributeName(NullableCatalogsItemFieldType attribute_name)
 {
 	this->attribute_name = attribute_name;
 }
@@ -98,7 +98,7 @@ CatalogsItemValidationDetails::getProvidedValue()
 }
 
 void
-CatalogsItemValidationDetails::setProvidedValue(std::string  provided_value)
+CatalogsItemValidationDetails::setProvidedValue(std::string provided_value)
 {
 	this->provided_value = provided_value;
 }

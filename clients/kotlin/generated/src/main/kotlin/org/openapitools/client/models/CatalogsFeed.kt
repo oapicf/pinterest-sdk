@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,6 @@ import org.openapitools.client.models.CatalogsFormat
 import org.openapitools.client.models.CatalogsHotelFeed
 import org.openapitools.client.models.CatalogsRetailFeed
 import org.openapitools.client.models.CatalogsStatus
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.NullableCurrency
 import org.openapitools.client.models.ProductAvailabilityType
@@ -33,60 +40,70 @@ import com.squareup.moshi.JsonClass
 /**
  * Catalogs Feed object
  *
- * @param createdAt 
- * @param id 
- * @param updatedAt 
  * @param catalogType 
- * @param credentials 
- * @param defaultAvailability 
+ * @param createdAt 
  * @param defaultCountry 
- * @param defaultCurrency 
  * @param defaultLocale The locale used within a feed for product descriptions.
  * @param format 
+ * @param id ID of the feed entity.
  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
- * @param preferredProcessingSchedule 
  * @param status 
+ * @param updatedAt 
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+ * @param credentials 
+ * @param defaultAvailability 
+ * @param defaultCurrency 
+ * @param preferredProcessingSchedule 
  */
 
 
 interface CatalogsFeed {
 
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsFeed.CatalogType
     @Json(name = "created_at")
     val createdAt: java.time.OffsetDateTime
-    @Json(name = "id")
-    val id: kotlin.String
-    @Json(name = "updated_at")
-    val updatedAt: java.time.OffsetDateTime
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsType
-    @Json(name = "credentials")
-    val credentials: CatalogsFeedCredentials?
-    @Json(name = "default_availability")
-    val defaultAvailability: ProductAvailabilityType?
     @Json(name = "default_country")
     val defaultCountry: Country
-    @Json(name = "default_currency")
-    val defaultCurrency: NullableCurrency?
     /* The locale used within a feed for product descriptions. */
     @Json(name = "default_locale")
     val defaultLocale: kotlin.String
     @Json(name = "format")
     val format: CatalogsFormat
+    /* ID of the feed entity. */
+    @Json(name = "id")
+    val id: kotlin.String
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     @Json(name = "location")
     val location: kotlin.String
     /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
     @Json(name = "name")
     val name: kotlin.String?
-    @Json(name = "preferred_processing_schedule")
-    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
     @Json(name = "status")
     val status: CatalogsStatus
+    @Json(name = "updated_at")
+    val updatedAt: java.time.OffsetDateTime
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String
+    @Json(name = "credentials")
+    val credentials: CatalogsFeedCredentials?
+    @Json(name = "default_availability")
+    val defaultAvailability: ProductAvailabilityType?
+    @Json(name = "default_currency")
+    val defaultCurrency: NullableCurrency?
+    @Json(name = "preferred_processing_schedule")
+    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
 
 }
 

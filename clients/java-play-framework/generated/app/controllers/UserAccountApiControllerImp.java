@@ -2,22 +2,26 @@ package controllers;
 
 import apimodels.Account;
 import apimodels.AnalyticsMetricsResponse;
-import apimodels.BoardsUserFollowsList200Response;
-import apimodels.Error;
-import apimodels.FollowUserRequest;
+import java.math.BigDecimal;
+import apimodels.BoardsList200Response;
+import apimodels.FollowUser;
+import apimodels.FollowUserCreate;
 import apimodels.FollowersList200Response;
 import apimodels.LinkedBusiness;
 import java.time.LocalDate;
 import java.util.Map;
+import apimodels.PinterestLibError;
+import apimodels.QuerymetrictypesItems;
+import apimodels.QueryvideopinmetrictypesItems;
 import apimodels.TopPinsAnalyticsResponse;
+import apimodels.TopPinsSortBy;
 import apimodels.TopVideoPinsAnalyticsResponse;
+import apimodels.TopVideoPinsSortBy;
 import apimodels.UserAccountFollowedInterests200Response;
 import apimodels.UserFollowingFeedType;
-import apimodels.UserFollowingGet200Response;
-import apimodels.UserSummary;
-import apimodels.UserWebsiteSummary;
-import apimodels.UserWebsiteVerificationCode;
-import apimodels.UserWebsiteVerifyRequest;
+import apimodels.UserWebsite;
+import apimodels.UserWebsiteCreate;
+import apimodels.UserWebsiteVerification;
 import apimodels.UserWebsitesGet200Response;
 
 import play.mvc.Http;
@@ -29,18 +33,18 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UserAccountApiControllerImp extends UserAccountApiControllerImpInterface {
     @Override
-    public BoardsUserFollowsList200Response boardsUserFollowsList(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, Boolean explicitFollowing,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public BoardsList200Response boardsUserFollowsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean explicitFollowing, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
-        return new BoardsUserFollowsList200Response();
+        return new BoardsList200Response();
     }
 
     @Override
-    public UserSummary followUserUpdate(Http.Request request,  @Pattern(regexp="(?!^\\d+$)^.+$")String username, FollowUserRequest followUserRequest) throws Exception {
+    public FollowUser followUserUpdate(Http.Request request,  @Pattern(regexp="(?!^\\d+$)^.+$")String username, FollowUserCreate followUserCreate) throws Exception {
         //Do your magic!!!
-        return new UserSummary();
+        return new FollowUser();
     }
 
     @Override
@@ -56,24 +60,25 @@ public class UserAccountApiControllerImp extends UserAccountApiControllerImpInte
     }
 
     @Override
-    public void unverifyWebsiteDelete(Http.Request request, @NotNull String website) throws Exception {
+    public UserWebsite unverifyWebsiteDelete(Http.Request request, @NotNull String website) throws Exception {
         //Do your magic!!!
+        return new UserWebsite();
     }
 
     @Override
-    public Map<String, AnalyticsMetricsResponse> userAccountAnalytics(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<String> metricTypes, String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Map<String, AnalyticsMetricsResponse> userAccountAnalytics(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<QuerymetrictypesItems> metricTypes, String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new HashMap<String, AnalyticsMetricsResponse>();
     }
 
     @Override
-    public TopPinsAnalyticsResponse userAccountAnalyticsTopPins(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull String sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<String> metricTypes,  @Min(1) @Max(50)Integer numOfPins, Integer createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public TopPinsAnalyticsResponse userAccountAnalyticsTopPins(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull TopPinsSortBy sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<QuerymetrictypesItems> metricTypes,  @Min(1) @Max(50)Integer numOfPins, BigDecimal createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new TopPinsAnalyticsResponse();
     }
 
     @Override
-    public TopVideoPinsAnalyticsResponse userAccountAnalyticsTopVideoPins(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull String sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<String> metricTypes,  @Min(1) @Max(50)Integer numOfPins, Integer createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public TopVideoPinsAnalyticsResponse userAccountAnalyticsTopVideoPins(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull TopVideoPinsSortBy sortBy, String fromClaimedContent, String pinFormat, String appTypes, String contentType, String source, List<QueryvideopinmetrictypesItems> metricTypes,  @Min(1) @Max(50)Integer numOfPins, BigDecimal createdInLastNDays,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new TopVideoPinsAnalyticsResponse();
     }
@@ -91,9 +96,9 @@ public class UserAccountApiControllerImp extends UserAccountApiControllerImpInte
     }
 
     @Override
-    public UserFollowingGet200Response userFollowingGet(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, UserFollowingFeedType feedType, Boolean explicitFollowing,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public FollowersList200Response userFollowingGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean explicitFollowing, UserFollowingFeedType feedType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
-        return new UserFollowingGet200Response();
+        return new FollowersList200Response();
     }
 
     @Override
@@ -103,15 +108,15 @@ public class UserAccountApiControllerImp extends UserAccountApiControllerImpInte
     }
 
     @Override
-    public UserWebsiteSummary verifyWebsiteUpdate(Http.Request request, UserWebsiteVerifyRequest userWebsiteVerifyRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public UserWebsite verifyWebsiteUpdate(Http.Request request, UserWebsiteCreate userWebsiteCreate,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
-        return new UserWebsiteSummary();
+        return new UserWebsite();
     }
 
     @Override
-    public UserWebsiteVerificationCode websiteVerificationGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public UserWebsiteVerification websiteVerificationGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
-        return new UserWebsiteVerificationCode();
+        return new UserWebsiteVerification();
     }
 
 }

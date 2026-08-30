@@ -4,6 +4,8 @@ package org.openapitools.server.model
 /**
  * = TermsOfService =
  *
+ * The ID of the ad account.
+ *
  * @param adAccountId The ID of the ad account. for example: ''549755885175''
  * @param hasAccepted Whether the ad account has accepted terms of service. for example: ''true''
  * @param html The terms of service content for example: ''example test''

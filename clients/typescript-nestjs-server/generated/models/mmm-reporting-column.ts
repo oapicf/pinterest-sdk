@@ -1,0 +1,35 @@
+
+
+/**
+ * Marketing Mix Modeling (MMM) Reporting Columns
+ */
+export const MMMReportingColumn = {
+    SpendInDollar: 'SPEND_IN_DOLLAR',
+    SpendInMicroDollar: 'SPEND_IN_MICRO_DOLLAR',
+    EcpcInDollar: 'ECPC_IN_DOLLAR',
+    Ectr: 'ECTR',
+    CampaignName: 'CAMPAIGN_NAME',
+    TotalEngagement: 'TOTAL_ENGAGEMENT',
+    EengagementRate: 'EENGAGEMENT_RATE',
+    EcpmInDollar: 'ECPM_IN_DOLLAR',
+    CampaignId: 'CAMPAIGN_ID',
+    AdvertiserId: 'ADVERTISER_ID',
+    AdGroupId: 'AD_GROUP_ID',
+    AdGroupName: 'AD_GROUP_NAME',
+    Clickthrough1: 'CLICKTHROUGH_1',
+    Impression1: 'IMPRESSION_1',
+    Clickthrough2: 'CLICKTHROUGH_2',
+    Impression2: 'IMPRESSION_2',
+    TotalClickthrough: 'TOTAL_CLICKTHROUGH',
+    TotalImpression: 'TOTAL_IMPRESSION',
+    AdvertiserName: 'ADVERTISER_NAME',
+    SpendOrderLinePaidType: 'SPEND_ORDER_LINE_PAID_TYPE',
+    CampaignObjectiveType: 'CAMPAIGN_OBJECTIVE_TYPE',
+    PinnerListName: 'PINNER_LIST_NAME',
+    AdsCreditSpendInDollar: 'ADS_CREDIT_SPEND_IN_DOLLAR',
+    AdvertiserPaidSpendInDollar: 'ADVERTISER_PAID_SPEND_IN_DOLLAR',
+    AdvertiserPaidEcpcInDollar: 'ADVERTISER_PAID_ECPC_IN_DOLLAR',
+    AdvertiserPaidEcpmInDollar: 'ADVERTISER_PAID_ECPM_IN_DOLLAR'
+} as const;
+export type MMMReportingColumn = typeof MMMReportingColumn[keyof typeof MMMReportingColumn];
+

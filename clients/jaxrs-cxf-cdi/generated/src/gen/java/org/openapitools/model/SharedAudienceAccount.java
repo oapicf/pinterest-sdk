@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.AudienceAccountType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,38 +20,7 @@ public class SharedAudienceAccount   {
 
   private String accountName;
 
-
-public enum AccountTypeEnum {
-
-    @JsonProperty("AD_ACCOUNT") AD_ACCOUNT(String.valueOf("AD_ACCOUNT")), @JsonProperty("BUSINESS_ACCOUNT") BUSINESS_ACCOUNT(String.valueOf("BUSINESS_ACCOUNT"));
-
-
-    private String value;
-
-    AccountTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static AccountTypeEnum fromValue(String value) {
-        for (AccountTypeEnum b : AccountTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private AccountTypeEnum accountType;
+  private AudienceAccountType accountType;
 
   private Integer sharedOnTimestamp;
 
@@ -97,7 +67,7 @@ public enum AccountTypeEnum {
   /**
    * account type
    **/
-  public SharedAudienceAccount accountType(AccountTypeEnum accountType) {
+  public SharedAudienceAccount accountType(AudienceAccountType accountType) {
     this.accountType = accountType;
     return this;
   }
@@ -106,10 +76,10 @@ public enum AccountTypeEnum {
   @ApiModelProperty(required = true, value = "account type")
   @JsonProperty("account_type")
   @NotNull
-  public AccountTypeEnum getAccountType() {
+  public AudienceAccountType getAccountType() {
     return accountType;
   }
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(AudienceAccountType accountType) {
     this.accountType = accountType;
   }
 
@@ -173,10 +143,7 @@ public enum AccountTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

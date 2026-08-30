@@ -2,9 +2,9 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
-open OpenAPI.Model.CatalogsFeedsCreateRequestDefaultLocale
 open OpenAPI.Model.CatalogsFormat
 open OpenAPI.Model.CatalogsStatus
 open OpenAPI.Model.Country
@@ -21,7 +21,7 @@ module CatalogsFeedsCreateRequest =
     DefaultAvailability : ProductAvailabilityType;
     DefaultCountry : Country;
     DefaultCurrency : NullableCurrency;
-    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
+    DefaultLocale : CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
     Format : CatalogsFormat;
     Location : string;
     Name : string;

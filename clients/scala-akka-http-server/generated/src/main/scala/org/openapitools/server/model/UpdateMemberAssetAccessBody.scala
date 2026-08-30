@@ -2,11 +2,11 @@ package org.openapitools.server.model
 
 
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  *
- * @param accesses  for example: ''null''
+ * @param accesses List of member asset accesses to assign or update. for example: ''null''
 */
 final case class UpdateMemberAssetAccessBody (
-  accesses: Seq[UpdateMemberAssetAccessBodyAccessesInner]
+  accesses: Seq[UpdateMemberAssetAccessItem]
 )
 

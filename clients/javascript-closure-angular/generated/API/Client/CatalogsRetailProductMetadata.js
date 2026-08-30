@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsRetailProductMetadata');
 API.Client.CatalogsRetailProductMetadata = function() {}
 
 /**
- * @type {!API.Client.NonNullableProductAvailabilityType}
+ * @type {!API.Client.ProductAvailability}
  * @export
  */
 API.Client.CatalogsRetailProductMetadata.prototype.availability;

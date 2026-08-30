@@ -1,23 +1,25 @@
 package controllers;
 
 import apimodels.AdAccount;
-import apimodels.AdAccountAnalyticsResponseInner;
+import apimodels.AdAccountAnalyticsItems;
 import apimodels.AdAccountCreate;
 import apimodels.AdAccountsList200Response;
+import apimodels.AdsAnalyticsAccountTargetingType;
 import apimodels.AdsAnalyticsCreateAsyncRequest;
 import apimodels.AdsAnalyticsCreateAsyncResponse;
 import apimodels.AdsAnalyticsGetAsyncResponse;
-import apimodels.AdsAnalyticsTargetingType;
-import apimodels.ConversionProductReportRequest;
+import java.math.BigDecimal;
+import apimodels.ConversionProductReport;
+import apimodels.ConversionProductReportCreate;
 import apimodels.ConversionReportAttributionType;
-import apimodels.CreateMMMReportRequest;
-import apimodels.CreateMMMReportResponse;
-import apimodels.Error;
-import apimodels.GetMMMReportResponse;
 import apimodels.Granularity;
 import java.time.LocalDate;
+import apimodels.MMMReport;
+import apimodels.MMMReportCreate;
 import apimodels.MetricsResponse;
 import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.ReportingColumnSync;
 import apimodels.ReportingTimeZone;
 import apimodels.TemplateBasedReport;
 import apimodels.TemplatesList200Response;
@@ -31,16 +33,16 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdAccountsApiControllerImp extends AdAccountsApiControllerImpInterface {
     @Override
-    public List<AdAccountAnalyticsResponseInner> adAccountAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception {
+    public List<AdAccountAnalyticsItems> adAccountAnalytics(Http.Request request, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception {
         //Do your magic!!!
-        return new ArrayList<AdAccountAnalyticsResponseInner>();
+        return new ArrayList<AdAccountAnalyticsItems>();
     }
 
     @Override
-    public MetricsResponse adAccountTargetingAnalyticsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=15)List<AdsAnalyticsTargetingType> targetingTypes, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime,    @Size(max=2)List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone) throws Exception {
+    public MetricsResponse adAccountTargetingAnalyticsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=15)List<AdsAnalyticsAccountTargetingType> targetingTypes, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime,    @Size(max=2)List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone) throws Exception {
         //Do your magic!!!
         return new MetricsResponse();
     }
@@ -64,15 +66,15 @@ public class AdAccountsApiControllerImp extends AdAccountsApiControllerImpInterf
     }
 
     @Override
-    public AdsAnalyticsCreateAsyncResponse analyticsCreateConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionProductReportRequest conversionProductReportRequest) throws Exception {
+    public ConversionProductReport analyticsCreateConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionProductReportCreate conversionProductReportCreate) throws Exception {
         //Do your magic!!!
-        return new AdsAnalyticsCreateAsyncResponse();
+        return new ConversionProductReport();
     }
 
     @Override
-    public CreateMMMReportResponse analyticsCreateMmmReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, CreateMMMReportRequest createMMMReportRequest) throws Exception {
+    public MMMReport analyticsCreateMmmReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, MMMReportCreate mmMReportCreate) throws Exception {
         //Do your magic!!!
-        return new CreateMMMReportResponse();
+        return new MMMReport();
     }
 
     @Override
@@ -88,15 +90,15 @@ public class AdAccountsApiControllerImp extends AdAccountsApiControllerImpInterf
     }
 
     @Override
-    public AdsAnalyticsGetAsyncResponse analyticsGetConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception {
+    public ConversionProductReport analyticsGetConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception {
         //Do your magic!!!
-        return new AdsAnalyticsGetAsyncResponse();
+        return new ConversionProductReport();
     }
 
     @Override
-    public GetMMMReportResponse analyticsGetMmmReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception {
+    public MMMReport analyticsGetMmmReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull String token) throws Exception {
         //Do your magic!!!
-        return new GetMMMReportResponse();
+        return new MMMReport();
     }
 
     @Override
@@ -112,7 +114,7 @@ public class AdAccountsApiControllerImp extends AdAccountsApiControllerImpInterf
     }
 
     @Override
-    public TemplatesList200Response templatesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public TemplatesList200Response templatesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception {
         //Do your magic!!!
         return new TemplatesList200Response();
     }

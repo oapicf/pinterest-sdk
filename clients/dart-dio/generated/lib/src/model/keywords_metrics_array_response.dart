@@ -75,8 +75,9 @@ class _$KeywordsMetricsArrayResponseSerializer implements PrimitiveSerializer<Ke
         case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(KeywordMetricsResponse)]),
-          ) as BuiltList<KeywordMetricsResponse>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(KeywordMetricsResponse)]),
+          ) as BuiltList<KeywordMetricsResponse>?;
+          if (valueDes == null) continue;
           result.data.replace(valueDes);
           break;
         default:

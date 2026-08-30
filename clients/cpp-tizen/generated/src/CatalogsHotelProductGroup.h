@@ -47,11 +47,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Catalog id pertaining to the hotel product group.
+	/*! \brief Get Catalog ID pertaining to the product group.
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the hotel product group.
+	/*! \brief Set Catalog ID pertaining to the product group.
 	 */
 	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
@@ -82,18 +82,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setFilters(CatalogsHotelProductGroupFilters  filters);
-	/*! \brief Get ID of the hotel product group.
+	/*! \brief Get ID of the catalog product group.
 	 */
 	std::string getId();
 
-	/*! \brief Set ID of the hotel product group.
+	/*! \brief Set ID of the catalog product group.
 	 */
 	void setId(std::string  id);
-	/*! \brief Get Name of hotel product group
+	/*! \brief Get Name of catalog product group
 	 */
 	std::string getName();
 
-	/*! \brief Set Name of hotel product group
+	/*! \brief Set Name of catalog product group
 	 */
 	void setName(std::string  name);
 	/*! \brief Get 

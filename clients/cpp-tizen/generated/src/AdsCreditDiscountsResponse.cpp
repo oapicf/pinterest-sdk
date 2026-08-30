@@ -27,7 +27,7 @@ AdsCreditDiscountsResponse::__init()
 	//advertiser_id = std::string();
 	//discountCurrency = std::string();
 	//discountInMicroCurrency = double(0);
-	//discountType = std::string();
+	//discountType = null;
 	//remainingDiscountInMicroCurrency = double(0);
 	//title = std::string();
 }
@@ -130,9 +130,12 @@ AdsCreditDiscountsResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&discountType, node, "std::string", "");
+		if (isprimitive("AdsCreditDiscountType")) {
+			jsonToValue(&discountType, node, "AdsCreditDiscountType", "AdsCreditDiscountType");
 		} else {
+			
+			AdsCreditDiscountType* obj = static_cast<AdsCreditDiscountType*> (&discountType);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -214,11 +217,16 @@ AdsCreditDiscountsResponse::toJson()
 	}
 	const gchar *discountInMicroCurrencyKey = "discountInMicroCurrency";
 	json_object_set_member(pJsonObject, discountInMicroCurrencyKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDiscountType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("AdsCreditDiscountType")) {
+		AdsCreditDiscountType obj = getDiscountType();
+		node = converttoJson(&obj, "AdsCreditDiscountType", "");
 	}
 	else {
+		
+		AdsCreditDiscountType obj = static_cast<AdsCreditDiscountType> (getDiscountType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *discountTypeKey = "discountType";
@@ -302,14 +310,14 @@ AdsCreditDiscountsResponse::setDiscountInMicroCurrency(long long  discountInMicr
 	this->discountInMicroCurrency = discountInMicroCurrency;
 }
 
-std::string
+AdsCreditDiscountType
 AdsCreditDiscountsResponse::getDiscountType()
 {
 	return discountType;
 }
 
 void
-AdsCreditDiscountsResponse::setDiscountType(std::string  discountType)
+AdsCreditDiscountsResponse::setDiscountType(AdsCreditDiscountType  discountType)
 {
 	this->discountType = discountType;
 }

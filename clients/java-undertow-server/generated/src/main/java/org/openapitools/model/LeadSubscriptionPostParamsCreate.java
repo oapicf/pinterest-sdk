@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -15,19 +15,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
+import org.openapitools.model.PartnerMetadata;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LeadSubscriptionPostParamsCreate   {
   
   private String leadFormId;
   private String webhookUrl;
   private String partnerAccessToken;
-  private LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata;
+  private PartnerMetadata partnerMetadata;
   private String partnerRefreshToken;
 
   /**
@@ -85,19 +85,20 @@ public class LeadSubscriptionPostParamsCreate   {
   }
 
   /**
+   * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
    */
-  public LeadSubscriptionPostParamsCreate partnerMetadata(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public LeadSubscriptionPostParamsCreate partnerMetadata(PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.")
   @JsonProperty("partner_metadata")
-  public LeadSubscriptionPostParamsCreateAllOfPartnerMetadata getPartnerMetadata() {
+  public PartnerMetadata getPartnerMetadata() {
     return partnerMetadata;
   }
-  public void setPartnerMetadata(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public void setPartnerMetadata(PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 
@@ -160,10 +161,7 @@ public class LeadSubscriptionPostParamsCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

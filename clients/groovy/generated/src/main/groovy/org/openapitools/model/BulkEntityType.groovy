@@ -17,7 +17,9 @@ enum BulkEntityType {
     
     LABEL("LABEL"),
     
-    SCHEDULE("SCHEDULE")
+    SCHEDULE("SCHEDULE"),
+    
+    ENTITY_HISTORY("ENTITY_HISTORY")
 
     private final String value
 

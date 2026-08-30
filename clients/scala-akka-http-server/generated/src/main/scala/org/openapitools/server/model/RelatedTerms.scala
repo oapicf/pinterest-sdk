@@ -9,6 +9,6 @@ package org.openapitools.server.model
 final case class RelatedTerms (
   id: Option[String] = None,
   relatedTermCount: Option[Int] = None,
-  relatedTermsList: Option[Seq[RelatedTermsRelatedTermsListInner]] = None
+  relatedTermsList: Option[Seq[RelatedTermsRelatedTermsListItems]] = None
 )
 

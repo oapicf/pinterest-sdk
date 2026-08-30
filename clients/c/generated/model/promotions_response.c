@@ -12,18 +12,21 @@ static promotions_response_t *promotions_response_create_internal(
     if (!promotions_response_local_var) {
         return NULL;
     }
-    promotions_response_local_var->promotions = promotions;
-
+    memset(promotions_response_local_var, 0, sizeof(promotions_response_t));
     promotions_response_local_var->_library_owned = 1;
+    promotions_response_local_var->promotions = promotions;
     return promotions_response_local_var;
 }
 
 __attribute__((deprecated)) promotions_response_t *promotions_response_create(
     list_t *promotions
     ) {
-    return promotions_response_create_internal (
+    promotions_response_t *result = promotions_response_create_internal (
         promotions
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void promotions_response_free(promotions_response_t *promotions_response) {
@@ -107,9 +110,14 @@ promotions_response_t *promotions_response_parseFromJSON(cJSON *promotions_respo
     }
 
 
+
     promotions_response_local_var = promotions_response_create_internal (
         promotions ? promotionsList : NULL
         );
+
+    if (!promotions_response_local_var) {
+        goto end;
+    }
 
     return promotions_response_local_var;
 end:

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CampaignUpdateRequest`
 --
-SELECT `id`, `ad_account_id`, `daily_spend_cap`, `end_time`, `is_automated_campaign`, `is_flexible_daily_budgets`, `lifetime_spend_cap`, `name`, `order_line_id`, `start_time`, `status`, `tracking_urls`, `default_ad_group_budget_in_micro_currency`, `is_campaign_budget_optimization`, `bid_options`, `is_performance_plus`, `objective_type` FROM `CampaignUpdateRequest` WHERE 1;
+SELECT `bid_options`, `intended_promotion_type`, `is_ltv_optimized`, `is_performance_plus`, `is_top_of_search`, `objective_type`, `ad_account_id`, `daily_spend_cap`, `default_ad_group_budget_in_micro_currency`, `end_time`, `id`, `is_automated_campaign`, `is_campaign_budget_optimization`, `is_flexible_daily_budgets`, `lifetime_spend_cap`, `name`, `order_line_id`, `start_time`, `status`, `tracking_urls` FROM `CampaignUpdateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CampaignUpdateRequest`
 --
-INSERT INTO `CampaignUpdateRequest`(`id`, `ad_account_id`, `daily_spend_cap`, `end_time`, `is_automated_campaign`, `is_flexible_daily_budgets`, `lifetime_spend_cap`, `name`, `order_line_id`, `start_time`, `status`, `tracking_urls`, `default_ad_group_budget_in_micro_currency`, `is_campaign_budget_optimization`, `bid_options`, `is_performance_plus`, `objective_type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CampaignUpdateRequest`(`bid_options`, `intended_promotion_type`, `is_ltv_optimized`, `is_performance_plus`, `is_top_of_search`, `objective_type`, `ad_account_id`, `daily_spend_cap`, `default_ad_group_budget_in_micro_currency`, `end_time`, `id`, `is_automated_campaign`, `is_campaign_budget_optimization`, `is_flexible_daily_budgets`, `lifetime_spend_cap`, `name`, `order_line_id`, `start_time`, `status`, `tracking_urls`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CampaignUpdateRequest`
 --
-UPDATE `CampaignUpdateRequest` SET `id` = ?, `ad_account_id` = ?, `daily_spend_cap` = ?, `end_time` = ?, `is_automated_campaign` = ?, `is_flexible_daily_budgets` = ?, `lifetime_spend_cap` = ?, `name` = ?, `order_line_id` = ?, `start_time` = ?, `status` = ?, `tracking_urls` = ?, `default_ad_group_budget_in_micro_currency` = ?, `is_campaign_budget_optimization` = ?, `bid_options` = ?, `is_performance_plus` = ?, `objective_type` = ? WHERE 1;
+UPDATE `CampaignUpdateRequest` SET `bid_options` = ?, `intended_promotion_type` = ?, `is_ltv_optimized` = ?, `is_performance_plus` = ?, `is_top_of_search` = ?, `objective_type` = ?, `ad_account_id` = ?, `daily_spend_cap` = ?, `default_ad_group_budget_in_micro_currency` = ?, `end_time` = ?, `id` = ?, `is_automated_campaign` = ?, `is_campaign_budget_optimization` = ?, `is_flexible_daily_budgets` = ?, `lifetime_spend_cap` = ?, `name` = ?, `order_line_id` = ?, `start_time` = ?, `status` = ?, `tracking_urls` = ? WHERE 1;
 
 --
 -- DELETE template for table `CampaignUpdateRequest`

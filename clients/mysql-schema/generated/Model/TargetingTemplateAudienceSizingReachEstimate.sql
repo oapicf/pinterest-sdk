@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'TargetingTemplateAudienceSizing_reach_estimate' definition.
+-- Prepared SQL queries for 'TargetingTemplateAudienceSizingReachEstimate' definition.
 --
 
 
 --
--- SELECT template for table `TargetingTemplateAudienceSizing_reach_estimate`
+-- SELECT template for table `TargetingTemplateAudienceSizingReachEstimate`
 --
-SELECT `estimate`, `lower_bound`, `upper_bound` FROM `TargetingTemplateAudienceSizing_reach_estimate` WHERE 1;
+SELECT `estimate`, `lower_bound`, `upper_bound` FROM `TargetingTemplateAudienceSizingReachEstimate` WHERE 1;
 
 --
--- INSERT template for table `TargetingTemplateAudienceSizing_reach_estimate`
+-- INSERT template for table `TargetingTemplateAudienceSizingReachEstimate`
 --
-INSERT INTO `TargetingTemplateAudienceSizing_reach_estimate`(`estimate`, `lower_bound`, `upper_bound`) VALUES (?, ?, ?);
+INSERT INTO `TargetingTemplateAudienceSizingReachEstimate`(`estimate`, `lower_bound`, `upper_bound`) VALUES (?, ?, ?);
 
 --
--- UPDATE template for table `TargetingTemplateAudienceSizing_reach_estimate`
+-- UPDATE template for table `TargetingTemplateAudienceSizingReachEstimate`
 --
-UPDATE `TargetingTemplateAudienceSizing_reach_estimate` SET `estimate` = ?, `lower_bound` = ?, `upper_bound` = ? WHERE 1;
+UPDATE `TargetingTemplateAudienceSizingReachEstimate` SET `estimate` = ?, `lower_bound` = ?, `upper_bound` = ? WHERE 1;
 
 --
--- DELETE template for table `TargetingTemplateAudienceSizing_reach_estimate`
+-- DELETE template for table `TargetingTemplateAudienceSizingReachEstimate`
 --
-DELETE FROM `TargetingTemplateAudienceSizing_reach_estimate` WHERE 0;
+DELETE FROM `TargetingTemplateAudienceSizingReachEstimate` WHERE 0;
 

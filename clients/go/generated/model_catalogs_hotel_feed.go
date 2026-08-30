@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,23 +23,24 @@ var _ MappedNullable = &CatalogsHotelFeed{}
 
 // CatalogsHotelFeed Catalogs Hotel Feed object
 type CatalogsHotelFeed struct {
-	CreatedAt time.Time `json:"created_at"`
-	Id string `json:"id"`
-	UpdatedAt time.Time `json:"updated_at"`
 	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-	CatalogId NullableString `json:"catalog_id" validate:"regexp=^\\\\d+$"`
-	CatalogType CatalogsType `json:"catalog_type"`
-	Credentials NullableCatalogsFeedCredentials `json:"credentials"`
-	DefaultCurrency NullableNullableCurrency `json:"default_currency"`
+	CatalogId NullableString `json:"catalog_id" validate:"regexp=^\\d+$"`
+	CatalogType string `json:"catalog_type"`
+	CreatedAt time.Time `json:"created_at"`
+	Credentials NullableCatalogsFeedCredentials `json:"credentials,omitempty"`
+	DefaultCurrency NullableNullableCurrency `json:"default_currency,omitempty"`
 	// The locale used within a feed for product descriptions.
 	DefaultLocale string `json:"default_locale"`
 	Format CatalogsFormat `json:"format"`
+	// ID of the feed entity.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location"`
+	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp)://"`
 	// A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
 	Name NullableString `json:"name"`
-	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule"`
+	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
 	Status CatalogsStatus `json:"status"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 type _CatalogsHotelFeed CatalogsHotelFeed
@@ -48,21 +49,18 @@ type _CatalogsHotelFeed CatalogsHotelFeed
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsHotelFeed(createdAt time.Time, id string, updatedAt time.Time, catalogId NullableString, catalogType CatalogsType, credentials NullableCatalogsFeedCredentials, defaultCurrency NullableNullableCurrency, defaultLocale string, format CatalogsFormat, location string, name NullableString, preferredProcessingSchedule NullableCatalogsFeedProcessingSchedule, status CatalogsStatus) *CatalogsHotelFeed {
+func NewCatalogsHotelFeed(catalogId NullableString, catalogType string, createdAt time.Time, defaultLocale string, format CatalogsFormat, id string, location string, name NullableString, status CatalogsStatus, updatedAt time.Time) *CatalogsHotelFeed {
 	this := CatalogsHotelFeed{}
-	this.CreatedAt = createdAt
-	this.Id = id
-	this.UpdatedAt = updatedAt
 	this.CatalogId = catalogId
 	this.CatalogType = catalogType
-	this.Credentials = credentials
-	this.DefaultCurrency = defaultCurrency
+	this.CreatedAt = createdAt
 	this.DefaultLocale = defaultLocale
 	this.Format = format
+	this.Id = id
 	this.Location = location
 	this.Name = name
-	this.PreferredProcessingSchedule = preferredProcessingSchedule
 	this.Status = status
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -72,78 +70,6 @@ func NewCatalogsHotelFeed(createdAt time.Time, id string, updatedAt time.Time, c
 func NewCatalogsHotelFeedWithDefaults() *CatalogsHotelFeed {
 	this := CatalogsHotelFeed{}
 	return &this
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *CatalogsHotelFeed) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelFeed) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *CatalogsHotelFeed) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetId returns the Id field value
-func (o *CatalogsHotelFeed) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelFeed) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *CatalogsHotelFeed) SetId(v string) {
-	o.Id = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value
-func (o *CatalogsHotelFeed) GetUpdatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelFeed) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UpdatedAt, true
-}
-
-// SetUpdatedAt sets field value
-func (o *CatalogsHotelFeed) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = v
 }
 
 // GetCatalogId returns the CatalogId field value
@@ -173,9 +99,9 @@ func (o *CatalogsHotelFeed) SetCatalogId(v string) {
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsHotelFeed) GetCatalogType() CatalogsType {
+func (o *CatalogsHotelFeed) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsType
+		var ret string
 		return ret
 	}
 
@@ -184,7 +110,7 @@ func (o *CatalogsHotelFeed) GetCatalogType() CatalogsType {
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsHotelFeed) GetCatalogTypeOk() (*CatalogsType, bool) {
+func (o *CatalogsHotelFeed) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -192,22 +118,44 @@ func (o *CatalogsHotelFeed) GetCatalogTypeOk() (*CatalogsType, bool) {
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsHotelFeed) SetCatalogType(v CatalogsType) {
+func (o *CatalogsHotelFeed) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 
-// GetCredentials returns the Credentials field value
-// If the value is explicit nil, the zero value for CatalogsFeedCredentials will be returned
-func (o *CatalogsHotelFeed) GetCredentials() CatalogsFeedCredentials {
-	if o == nil || o.Credentials.Get() == nil {
-		var ret CatalogsFeedCredentials
+// GetCreatedAt returns the CreatedAt field value
+func (o *CatalogsHotelFeed) GetCreatedAt() time.Time {
+	if o == nil {
+		var ret time.Time
 		return ret
 	}
 
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelFeed) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *CatalogsHotelFeed) SetCreatedAt(v time.Time) {
+	o.CreatedAt = v
+}
+
+// GetCredentials returns the Credentials field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsHotelFeed) GetCredentials() CatalogsFeedCredentials {
+	if o == nil || IsNil(o.Credentials.Get()) {
+		var ret CatalogsFeedCredentials
+		return ret
+	}
 	return *o.Credentials.Get()
 }
 
-// GetCredentialsOk returns a tuple with the Credentials field value
+// GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogsHotelFeed) GetCredentialsOk() (*CatalogsFeedCredentials, bool) {
@@ -217,23 +165,39 @@ func (o *CatalogsHotelFeed) GetCredentialsOk() (*CatalogsFeedCredentials, bool) 
 	return o.Credentials.Get(), o.Credentials.IsSet()
 }
 
-// SetCredentials sets field value
+// HasCredentials returns a boolean if a field has been set.
+func (o *CatalogsHotelFeed) HasCredentials() bool {
+	if o != nil && o.Credentials.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentials gets a reference to the given NullableCatalogsFeedCredentials and assigns it to the Credentials field.
 func (o *CatalogsHotelFeed) SetCredentials(v CatalogsFeedCredentials) {
 	o.Credentials.Set(&v)
 }
+// SetCredentialsNil sets the value for Credentials to be an explicit nil
+func (o *CatalogsHotelFeed) SetCredentialsNil() {
+	o.Credentials.Set(nil)
+}
 
-// GetDefaultCurrency returns the DefaultCurrency field value
-// If the value is explicit nil, the zero value for NullableCurrency will be returned
+// UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
+func (o *CatalogsHotelFeed) UnsetCredentials() {
+	o.Credentials.Unset()
+}
+
+// GetDefaultCurrency returns the DefaultCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogsHotelFeed) GetDefaultCurrency() NullableCurrency {
-	if o == nil || o.DefaultCurrency.Get() == nil {
+	if o == nil || IsNil(o.DefaultCurrency.Get()) {
 		var ret NullableCurrency
 		return ret
 	}
-
 	return *o.DefaultCurrency.Get()
 }
 
-// GetDefaultCurrencyOk returns a tuple with the DefaultCurrency field value
+// GetDefaultCurrencyOk returns a tuple with the DefaultCurrency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogsHotelFeed) GetDefaultCurrencyOk() (*NullableCurrency, bool) {
@@ -243,9 +207,27 @@ func (o *CatalogsHotelFeed) GetDefaultCurrencyOk() (*NullableCurrency, bool) {
 	return o.DefaultCurrency.Get(), o.DefaultCurrency.IsSet()
 }
 
-// SetDefaultCurrency sets field value
+// HasDefaultCurrency returns a boolean if a field has been set.
+func (o *CatalogsHotelFeed) HasDefaultCurrency() bool {
+	if o != nil && o.DefaultCurrency.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultCurrency gets a reference to the given NullableNullableCurrency and assigns it to the DefaultCurrency field.
 func (o *CatalogsHotelFeed) SetDefaultCurrency(v NullableCurrency) {
 	o.DefaultCurrency.Set(&v)
+}
+// SetDefaultCurrencyNil sets the value for DefaultCurrency to be an explicit nil
+func (o *CatalogsHotelFeed) SetDefaultCurrencyNil() {
+	o.DefaultCurrency.Set(nil)
+}
+
+// UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
+func (o *CatalogsHotelFeed) UnsetDefaultCurrency() {
+	o.DefaultCurrency.Unset()
 }
 
 // GetDefaultLocale returns the DefaultLocale field value
@@ -294,6 +276,30 @@ func (o *CatalogsHotelFeed) GetFormatOk() (*CatalogsFormat, bool) {
 // SetFormat sets field value
 func (o *CatalogsHotelFeed) SetFormat(v CatalogsFormat) {
 	o.Format = v
+}
+
+// GetId returns the Id field value
+func (o *CatalogsHotelFeed) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelFeed) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *CatalogsHotelFeed) SetId(v string) {
+	o.Id = v
 }
 
 // GetLocation returns the Location field value
@@ -346,18 +352,16 @@ func (o *CatalogsHotelFeed) SetName(v string) {
 	o.Name.Set(&v)
 }
 
-// GetPreferredProcessingSchedule returns the PreferredProcessingSchedule field value
-// If the value is explicit nil, the zero value for CatalogsFeedProcessingSchedule will be returned
+// GetPreferredProcessingSchedule returns the PreferredProcessingSchedule field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogsHotelFeed) GetPreferredProcessingSchedule() CatalogsFeedProcessingSchedule {
-	if o == nil || o.PreferredProcessingSchedule.Get() == nil {
+	if o == nil || IsNil(o.PreferredProcessingSchedule.Get()) {
 		var ret CatalogsFeedProcessingSchedule
 		return ret
 	}
-
 	return *o.PreferredProcessingSchedule.Get()
 }
 
-// GetPreferredProcessingScheduleOk returns a tuple with the PreferredProcessingSchedule field value
+// GetPreferredProcessingScheduleOk returns a tuple with the PreferredProcessingSchedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogsHotelFeed) GetPreferredProcessingScheduleOk() (*CatalogsFeedProcessingSchedule, bool) {
@@ -367,9 +371,27 @@ func (o *CatalogsHotelFeed) GetPreferredProcessingScheduleOk() (*CatalogsFeedPro
 	return o.PreferredProcessingSchedule.Get(), o.PreferredProcessingSchedule.IsSet()
 }
 
-// SetPreferredProcessingSchedule sets field value
+// HasPreferredProcessingSchedule returns a boolean if a field has been set.
+func (o *CatalogsHotelFeed) HasPreferredProcessingSchedule() bool {
+	if o != nil && o.PreferredProcessingSchedule.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPreferredProcessingSchedule gets a reference to the given NullableCatalogsFeedProcessingSchedule and assigns it to the PreferredProcessingSchedule field.
 func (o *CatalogsHotelFeed) SetPreferredProcessingSchedule(v CatalogsFeedProcessingSchedule) {
 	o.PreferredProcessingSchedule.Set(&v)
+}
+// SetPreferredProcessingScheduleNil sets the value for PreferredProcessingSchedule to be an explicit nil
+func (o *CatalogsHotelFeed) SetPreferredProcessingScheduleNil() {
+	o.PreferredProcessingSchedule.Set(nil)
+}
+
+// UnsetPreferredProcessingSchedule ensures that no value is present for PreferredProcessingSchedule, not even an explicit nil
+func (o *CatalogsHotelFeed) UnsetPreferredProcessingSchedule() {
+	o.PreferredProcessingSchedule.Unset()
 }
 
 // GetStatus returns the Status field value
@@ -396,6 +418,30 @@ func (o *CatalogsHotelFeed) SetStatus(v CatalogsStatus) {
 	o.Status = v
 }
 
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *CatalogsHotelFeed) GetUpdatedAt() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelFeed) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *CatalogsHotelFeed) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = v
+}
+
 func (o CatalogsHotelFeed) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -406,19 +452,25 @@ func (o CatalogsHotelFeed) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsHotelFeed) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["created_at"] = o.CreatedAt
-	toSerialize["id"] = o.Id
-	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["catalog_id"] = o.CatalogId.Get()
 	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["credentials"] = o.Credentials.Get()
-	toSerialize["default_currency"] = o.DefaultCurrency.Get()
+	toSerialize["created_at"] = o.CreatedAt
+	if o.Credentials.IsSet() {
+		toSerialize["credentials"] = o.Credentials.Get()
+	}
+	if o.DefaultCurrency.IsSet() {
+		toSerialize["default_currency"] = o.DefaultCurrency.Get()
+	}
 	toSerialize["default_locale"] = o.DefaultLocale
 	toSerialize["format"] = o.Format
+	toSerialize["id"] = o.Id
 	toSerialize["location"] = o.Location
 	toSerialize["name"] = o.Name.Get()
-	toSerialize["preferred_processing_schedule"] = o.PreferredProcessingSchedule.Get()
+	if o.PreferredProcessingSchedule.IsSet() {
+		toSerialize["preferred_processing_schedule"] = o.PreferredProcessingSchedule.Get()
+	}
 	toSerialize["status"] = o.Status
+	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -427,19 +479,16 @@ func (o *CatalogsHotelFeed) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"created_at",
-		"id",
-		"updated_at",
 		"catalog_id",
 		"catalog_type",
-		"credentials",
-		"default_currency",
+		"created_at",
 		"default_locale",
 		"format",
+		"id",
 		"location",
 		"name",
-		"preferred_processing_schedule",
 		"status",
+		"updated_at",
 	}
 
 	allProperties := make(map[string]interface{})

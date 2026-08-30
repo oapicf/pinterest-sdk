@@ -20,12 +20,13 @@ typedef struct ad_update_request_t ad_update_request_t;
 #include "disclosure_type.h"
 #include "entity_status.h"
 #include "grid_click_type.h"
-#include "quiz_pin_data.h"
-#include "tracking_urls.h"
+#include "object.h"
 
 
 
 typedef struct ad_update_request_t {
+    char *id; // string
+    char *pin_id; // string
     char *ad_group_id; // string
     char *android_deep_link; // string
     list_t *carousel_android_deep_links; //primitive container
@@ -39,21 +40,22 @@ typedef struct ad_update_request_t {
     char *disclosure_url; // string
     pinterest_rest_api_grid_click_type__e grid_click_type; //referenced enum
     char *ios_deep_link; // string
-    int is_pin_deleted; //boolean
-    int is_removable; //boolean
+    int *is_carting; //boolean
+    int *is_pin_deleted; //boolean
+    int *is_removable; //boolean
     char *lead_form_id; // string
     char *name; // string
-    struct quiz_pin_data_t *quiz_pin_data; //model
+    object_t *quiz_pin_data; //object
     pinterest_rest_api_entity_status__e status; //referenced enum
-    struct tracking_urls_t *tracking_urls; //model
+    object_t *tracking_urls; //object
     char *view_tracking_url; // string
-    char *id; // string
-    char *pin_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ad_update_request_t;
 
 __attribute__((deprecated)) ad_update_request_t *ad_update_request_create(
+    char *id,
+    char *pin_id,
     char *ad_group_id,
     char *android_deep_link,
     list_t *carousel_android_deep_links,
@@ -67,16 +69,15 @@ __attribute__((deprecated)) ad_update_request_t *ad_update_request_create(
     char *disclosure_url,
     pinterest_rest_api_grid_click_type__e grid_click_type,
     char *ios_deep_link,
-    int is_pin_deleted,
-    int is_removable,
+    int *is_carting,
+    int *is_pin_deleted,
+    int *is_removable,
     char *lead_form_id,
     char *name,
-    quiz_pin_data_t *quiz_pin_data,
+    object_t *quiz_pin_data,
     pinterest_rest_api_entity_status__e status,
-    tracking_urls_t *tracking_urls,
-    char *view_tracking_url,
-    char *id,
-    char *pin_id
+    object_t *tracking_urls,
+    char *view_tracking_url
 );
 
 void ad_update_request_free(ad_update_request_t *ad_update_request);

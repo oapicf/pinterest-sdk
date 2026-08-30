@@ -8,13 +8,24 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.FormFactor
+import org.openapitools.client.models.NetworkType
+import org.openapitools.client.models.OsFamily
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -77,7 +88,7 @@ data class ConversionEventDeviceInfo (
 
     /* Device form factor */
     @Json(name = "form_factor")
-    val formFactor: ConversionEventDeviceInfo.FormFactor? = null,
+    val formFactor: FormFactor? = null,
 
     /* Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release */
     @Json(name = "kernel_version")
@@ -97,11 +108,11 @@ data class ConversionEventDeviceInfo (
 
     /* Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() */
     @Json(name = "network_type")
-    val networkType: ConversionEventDeviceInfo.NetworkType? = null,
+    val networkType: NetworkType? = null,
 
     /* OS Family */
     @Json(name = "os_family")
-    val osFamily: ConversionEventDeviceInfo.OsFamily? = null,
+    val osFamily: OsFamily? = null,
 
     /* Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch */
     @Json(name = "os_name")
@@ -149,54 +160,6 @@ data class ConversionEventDeviceInfo (
 
 ) {
 
-    /**
-     * Device form factor
-     *
-     * Values: desktop,laptop,cellphone,tablet,smartwatch,tv,vr,console,other
-     */
-    @JsonClass(generateAdapter = false)
-    enum class FormFactor(val value: kotlin.String) {
-        @Json(name = "desktop") desktop("desktop"),
-        @Json(name = "laptop") laptop("laptop"),
-        @Json(name = "cellphone") cellphone("cellphone"),
-        @Json(name = "tablet") tablet("tablet"),
-        @Json(name = "smartwatch") smartwatch("smartwatch"),
-        @Json(name = "tv") tv("tv"),
-        @Json(name = "vr") vr("vr"),
-        @Json(name = "console") console("console"),
-        @Json(name = "other") other("other");
-    }
-    /**
-     * Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-     *
-     * Values: wifi,cellular_2g,cellular_3g,cellular_4g,cellular_5g,cellular_6g,ethernet,unknown
-     */
-    @JsonClass(generateAdapter = false)
-    enum class NetworkType(val value: kotlin.String) {
-        @Json(name = "wifi") wifi("wifi"),
-        @Json(name = "cellular_2g") cellular_2g("cellular_2g"),
-        @Json(name = "cellular_3g") cellular_3g("cellular_3g"),
-        @Json(name = "cellular_4g") cellular_4g("cellular_4g"),
-        @Json(name = "cellular_5g") cellular_5g("cellular_5g"),
-        @Json(name = "cellular_6g") cellular_6g("cellular_6g"),
-        @Json(name = "ethernet") ethernet("ethernet"),
-        @Json(name = "unknown") unknown("unknown");
-    }
-    /**
-     * OS Family
-     *
-     * Values: ios,android,macos,windows,linux,bsd,other
-     */
-    @JsonClass(generateAdapter = false)
-    enum class OsFamily(val value: kotlin.String) {
-        @Json(name = "ios") ios("ios"),
-        @Json(name = "android") android("android"),
-        @Json(name = "macos") macos("macos"),
-        @Json(name = "windows") windows("windows"),
-        @Json(name = "linux") linux("linux"),
-        @Json(name = "bsd") bsd("bsd"),
-        @Json(name = "other") other("other");
-    }
 
 }
 

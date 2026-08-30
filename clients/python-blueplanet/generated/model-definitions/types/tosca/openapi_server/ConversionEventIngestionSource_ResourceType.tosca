@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionEventIngestionSource"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionEventIngestionSource"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionEventIngestionSource {
+    title = ConversionEventIngestionSource
+    description = ConversionEventIngestionSource
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionEventIngestionSource {
+    title = ConversionEventIngestionSource
+    description = ConversionEventIngestionSource
+    implements = openapi_server.resourceTypes.ConversionEventIngestionSource
+
+  }
+}

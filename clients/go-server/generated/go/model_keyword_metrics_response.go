@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -22,7 +22,8 @@ type KeywordMetricsResponse struct {
 	Metrics KeywordMetrics `json:"metrics,omitempty"`
 }
 
-// AssertKeywordMetricsResponseRequired checks if the required fields are not zero-ed
+// AssertKeywordMetricsResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertKeywordMetricsResponseRequired(obj KeywordMetricsResponse) error {
 	if err := AssertKeywordMetricsRequired(obj.Metrics); err != nil {
 		return err

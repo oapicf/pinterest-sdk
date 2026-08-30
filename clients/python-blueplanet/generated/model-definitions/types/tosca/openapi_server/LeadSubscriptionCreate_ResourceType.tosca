@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadSubscriptionCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadSubscriptionCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  LeadSubscriptionCreate {
+    title = LeadSubscriptionCreate
+    description = LeadSubscriptionCreate
+    derivedFrom = Root
+    properties {
+        lead_form_id {
+          type =  string
+          description = "Lead form ID."
+          optional = false
+        }
+        webhook_url {
+          type =  string
+          description = "Standard HTTPS webhook URL."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadSubscriptionCreate {
+    title = LeadSubscriptionCreate
+    description = LeadSubscriptionCreate
+    implements = openapi_server.resourceTypes.LeadSubscriptionCreate
+
+  }
+}

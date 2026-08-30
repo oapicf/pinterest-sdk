@@ -1,7 +1,7 @@
 /*
  * PinMediaMetadata.h
  *
- * 
+ * Per-item entry inside &#x60;PinMedia.items&#x60; for mixed image/video pins. Discriminated by &#x60;item_type&#x60;.
  */
 
 #ifndef _PinMediaMetadata_H_
@@ -23,7 +23,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.
  *
  *  \ingroup Models
  *
@@ -62,11 +62,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setImages(ImageSize  images);
-	/*! \brief Get 
+	/*! \brief Get Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
 	 */
 	std::string getItemType();
 
-	/*! \brief Set 
+	/*! \brief Set Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
 	 */
 	void setItemType(std::string  item_type);
 	/*! \brief Get 
@@ -111,6 +111,13 @@ public:
 	/*! \brief Set Video url (720p).  **Note:** This field is limited and not available to all apps.
 	 */
 	void setVideoUrl(std::string  video_url);
+	/*! \brief Get Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	 */
+	std::string getVideoUrlHls();
+
+	/*! \brief Set Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	 */
+	void setVideoUrlHls(std::string  video_url_hls);
 	/*! \brief Get Width (in pixels). Field maybe null after creation due to video processing time.
 	 */
 	int getWidth();
@@ -129,6 +136,7 @@ private:
 	long long duration;
 	int height;
 	std::string video_url;
+	std::string video_url_hls;
 	int width;
 	void __init();
 	void __cleanup();

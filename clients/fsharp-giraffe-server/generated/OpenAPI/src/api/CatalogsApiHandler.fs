@@ -8,12 +8,12 @@ open CatalogsApiHandlerParams
 open CatalogsApiServiceInterface
 open CatalogsApiServiceImplementation
 open OpenAPI.Model.Catalog
+open OpenAPI.Model.CatalogCreate
 open OpenAPI.Model.CatalogsAvailableFilterValues
-open OpenAPI.Model.CatalogsCreateRequest
 open OpenAPI.Model.CatalogsList200Response
 open OpenAPI.Model.CatalogsLocale
 open OpenAPI.Model.Country
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 
 module CatalogsApiHandler =
 
@@ -43,8 +43,8 @@ module CatalogsApiHandler =
                             setStatusCode 403 >=> json resolved.content
                       | CatalogsAvailableFilterValuesStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | CatalogsAvailableFilterValuesStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsAvailableFilterValuesStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsAvailableFilterValuesDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -67,10 +67,18 @@ module CatalogsApiHandler =
           return! (match result with
                       | CatalogsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CatalogsCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
                       | CatalogsCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
                       | CatalogsCreateStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
+                      | CatalogsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CatalogsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CatalogsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -95,6 +103,12 @@ module CatalogsApiHandler =
                             setStatusCode 400 >=> json resolved.content
                       | CatalogsListStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
+                      | CatalogsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CatalogsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CatalogsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

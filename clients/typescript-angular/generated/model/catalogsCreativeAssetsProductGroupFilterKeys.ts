@@ -20,6 +20,7 @@ import { GoogleProductCategory0Filter } from './googleProductCategory0Filter';
 import { GoogleProductCategory2Filter } from './googleProductCategory2Filter';
 import { GoogleProductCategory5Filter } from './googleProductCategory5Filter';
 import { CustomLabel2Filter } from './customLabel2Filter';
+import { LinkFilter } from './linkFilter';
 import { CatalogsProductGroupMultipleMediaTypesCriteria } from './catalogsProductGroupMultipleMediaTypesCriteria';
 import { MediaTypeFilter } from './mediaTypeFilter';
 import { GoogleProductCategory1Filter } from './googleProductCategory1Filter';
@@ -44,5 +45,6 @@ export interface CatalogsCreativeAssetsProductGroupFilterKeys {
     GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria;
     MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria;
     TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria;
+    LINK: CatalogsProductGroupFilterOperatorTypeCriteria;
 }
 

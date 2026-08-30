@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **String** | Unique identifier of the invite/request. | [optional] 
-**InviteData** | [**BaseInviteDataResponseInviteData**](BaseInviteDataResponseInviteData.md) |  | [optional] 
+**InviteData** | [**InviteDataResponse**](InviteDataResponse.md) |  | [optional] 
 **IsReceivedInvite** | **Boolean** | Indicates whether the invite/request was received. | [optional] 
 **User** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | Metadata for the member/partner that was sent the invite/request. | [optional] 
 

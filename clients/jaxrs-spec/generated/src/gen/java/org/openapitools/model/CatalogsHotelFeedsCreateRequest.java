@@ -3,12 +3,11 @@ package org.openapitools.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
-import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -26,26 +25,73 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
 @JsonTypeName("CatalogsHotelFeedsCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelFeedsCreateRequest   {
   private String catalogId;
-  private CatalogsType catalogType;
+  public enum CatalogTypeEnum {
+
+    HOTEL(String.valueOf("HOTEL"));
+
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static CatalogTypeEnum fromString(String s) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private CatalogTypeEnum catalogType;
   private CatalogsFeedCredentials credentials;
   private NullableCurrency defaultCurrency;
-  private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  private CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
   private CatalogsFormat format;
   private String location;
   private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsStatus status = "ACTIVE";
+  private CatalogsStatus status;
 
   public CatalogsHotelFeedsCreateRequest() {
   }
 
   @JsonCreator
   public CatalogsHotelFeedsCreateRequest(
-    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType,
-    @JsonProperty(required = true, value = "default_locale") CatalogsFeedsCreateRequestDefaultLocale defaultLocale,
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "default_locale") CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale,
     @JsonProperty(required = true, value = "format") CatalogsFormat format,
     @JsonProperty(required = true, value = "location") String location,
     @JsonProperty(required = true, value = "name") String name
@@ -58,7 +104,7 @@ public class CatalogsHotelFeedsCreateRequest   {
   }
 
   /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
    **/
   public CatalogsHotelFeedsCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -66,7 +112,7 @@ public class CatalogsHotelFeedsCreateRequest   {
   }
 
   
-  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.")
+  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
   @JsonProperty("catalog_id")
    @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
@@ -79,7 +125,7 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   /**
    **/
-  public CatalogsHotelFeedsCreateRequest catalogType(CatalogsType catalogType) {
+  public CatalogsHotelFeedsCreateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -87,12 +133,12 @@ public class CatalogsHotelFeedsCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "catalog_type")
-  @NotNull public CatalogsType getCatalogType() {
+  @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
   @JsonProperty(required = true, value = "catalog_type")
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -136,7 +182,7 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   /**
    **/
-  public CatalogsHotelFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsHotelFeedsCreateRequest defaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -144,12 +190,12 @@ public class CatalogsHotelFeedsCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "default_locale")
-  @NotNull @Valid public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  @NotNull @Valid public CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
 
   @JsonProperty(required = true, value = "default_locale")
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -301,12 +347,8 @@ public class CatalogsHotelFeedsCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

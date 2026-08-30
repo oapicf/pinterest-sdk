@@ -48,7 +48,7 @@ CreativeAssetsIdFilter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cREATIVE_ASSETS_ID, node, "CatalogsProductGroupMultipleStringCriteria", "");
+			jsonToValue(&cREATIVE_ASSETS_ID, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cREATIVE_ASSETS_ID);

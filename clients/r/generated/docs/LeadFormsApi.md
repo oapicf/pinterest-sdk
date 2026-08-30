@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 
 # **LeadFormGet**
-> LeadFormResponse LeadFormGet(ad_account_id, lead_form_id)
+> LeadForm LeadFormGet(lead_form_id, ad_account_id)
 
 Get lead form by id
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```R
@@ -25,15 +25,15 @@ library(openapi)
 # Get lead form by id
 #
 # prepare function argument(s)
+var_lead_form_id <- "lead_form_id_example" # character | The ID of this lead form
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_lead_form_id <- "1234567890123" # character | Unique identifier of a lead form.
 
 api_instance <- LeadFormsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$LeadFormGet(var_ad_account_id, var_lead_form_iddata_file = "result.txt")
-result <- api_instance$LeadFormGet(var_ad_account_id, var_lead_form_id)
+# result <- api_instance$LeadFormGet(var_lead_form_id, var_ad_account_iddata_file = "result.txt")
+result <- api_instance$LeadFormGet(var_lead_form_id, var_ad_account_id)
 dput(result)
 ```
 
@@ -41,12 +41,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **lead_form_id** | **character**| The ID of this lead form | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **lead_form_id** | **character**| Unique identifier of a lead form. | 
 
 ### Return type
 
-[**LeadFormResponse**](LeadFormResponse.md)
+[**LeadForm**](LeadForm.md)
 
 ### Authorization
 
@@ -60,13 +60,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **404** | The lead form ID for the given ad account ID does not exist. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **LeadFormTestCreate**
-> LeadFormTestResponse LeadFormTestCreate(ad_account_id, lead_form_id, lead_form_test_request)
+> LeadFormTest LeadFormTestCreate(ad_account_id, lead_form_id, lead_form_test_create)
 
 Create lead form test data
 
@@ -79,16 +82,16 @@ library(openapi)
 # Create lead form test data
 #
 # prepare function argument(s)
-var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_lead_form_id <- "1234567890123" # character | Unique identifier of a lead form.
-var_lead_form_test_request <- LeadFormTestRequest$new(c("answers_example")) # LeadFormTestRequest | Subscription to create.
+var_ad_account_id <- "ad_account_id_example" # character | 
+var_lead_form_id <- "lead_form_id_example" # character | Unique identifier of a lead form.
+var_lead_form_test_create <- LeadFormTestCreate$new(c("answers_example")) # LeadFormTestCreate | 
 
 api_instance <- LeadFormsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$LeadFormTestCreate(var_ad_account_id, var_lead_form_id, var_lead_form_test_requestdata_file = "result.txt")
-result <- api_instance$LeadFormTestCreate(var_ad_account_id, var_lead_form_id, var_lead_form_test_request)
+# result <- api_instance$LeadFormTestCreate(var_ad_account_id, var_lead_form_id, var_lead_form_test_createdata_file = "result.txt")
+result <- api_instance$LeadFormTestCreate(var_ad_account_id, var_lead_form_id, var_lead_form_test_create)
 dput(result)
 ```
 
@@ -96,13 +99,13 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **character**| Unique identifier of an ad account. | 
+ **ad_account_id** | **character**|  | 
  **lead_form_id** | **character**| Unique identifier of a lead form. | 
- **lead_form_test_request** | [**LeadFormTestRequest**](LeadFormTestRequest.md)| Subscription to create. | 
+ **lead_form_test_create** | [**LeadFormTestCreate**](LeadFormTestCreate.md)|  | 
 
 ### Return type
 
-[**LeadFormTestResponse**](LeadFormTestResponse.md)
+[**LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
@@ -116,17 +119,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **404** | Lead not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **LeadFormsCreate**
-> LeadFormArrayResponse LeadFormsCreate(ad_account_id, lead_form_create_request)
+> LeadFormsCreate200Response LeadFormsCreate(ad_account_id, lead_form_create)
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```R
@@ -136,14 +139,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_lead_form_create_request <- c(LeadFormCreateRequest$new("completion_message_example", "disclosure_language_example", "has_accepted_terms_example", "name_example", c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")), "privacy_policy_link_example", c(LeadFormQuestion$new(LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"), LeadFormQuestionType$new())), LeadFormStatus$new())) # array[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
+var_lead_form_create <- c(LeadFormCreate$new("completion_message_example", "has_accepted_terms_example", "name_example", "privacy_policy_link_example", c(LeadFormQuestion$new(LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"), LeadFormQuestionType$new())), "disclosure_language_example", c(LeadFormPolicyLink$new("label_example", "link_example")), LeadFormStatus$new())) # array[LeadFormCreate] | 
 
 api_instance <- LeadFormsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$LeadFormsCreate(var_ad_account_id, var_lead_form_create_requestdata_file = "result.txt")
-result <- api_instance$LeadFormsCreate(var_ad_account_id, var_lead_form_create_request)
+# result <- api_instance$LeadFormsCreate(var_ad_account_id, var_lead_form_createdata_file = "result.txt")
+result <- api_instance$LeadFormsCreate(var_ad_account_id, var_lead_form_create)
 dput(result)
 ```
 
@@ -152,11 +155,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **lead_form_create_request** | list( [**LeadFormCreateRequest**](LeadFormCreateRequest.md) )| List of lead forms to create, size limit [1, 30]. | 
+ **lead_form_create** | list( [**LeadFormCreate**](LeadFormCreate.md) )|  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](lead_forms_create_200_response.md)
 
 ### Authorization
 
@@ -170,16 +173,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **LeadFormsList**
-> LeadFormsList200Response LeadFormsList(ad_account_id, page_size = 25, order = var.order, bookmark = var.bookmark)
+> LeadFormsList200Response LeadFormsList(ad_account_id, bookmark = var.bookmark, page_size = 25, order = var.order)
 
 List lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```R
@@ -189,16 +196,16 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
-var_order <- "ASCENDING" # character | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
+var_order <- Pinterest.Lib.PaginationOrder$new() # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (Optional)
 
 api_instance <- LeadFormsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$LeadFormsList(var_ad_account_id, page_size = var_page_size, order = var_order, bookmark = var_bookmarkdata_file = "result.txt")
-result <- api_instance$LeadFormsList(var_ad_account_id, page_size = var_page_size, order = var_order, bookmark = var_bookmark)
+# result <- api_instance$LeadFormsList(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, order = var_orderdata_file = "result.txt")
+result <- api_instance$LeadFormsList(var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, order = var_order)
 dput(result)
 ```
 
@@ -207,9 +214,9 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | Enum [ASCENDING, DESCENDING] | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -227,16 +234,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **LeadFormsUpdate**
-> LeadFormArrayResponse LeadFormsUpdate(ad_account_id, lead_form_update_request)
+> LeadFormsCreate200Response LeadFormsUpdate(ad_account_id, lead_form_batch_update)
 
 Update lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 ```R
@@ -246,14 +257,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_lead_form_update_request <- c(LeadFormUpdateRequest$new("id_example", "completion_message_example", "disclosure_language_example", "has_accepted_terms_example", "name_example", c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")), "privacy_policy_link_example", c(LeadFormQuestion$new(LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"), LeadFormQuestionType$new())), LeadFormStatus$new())) # array[LeadFormUpdateRequest] | List of lead forms to update, size limit [1, 30].
+var_lead_form_batch_update <- c(LeadFormBatchUpdate$new("id_example", "completion_message_example", "disclosure_language_example", "has_accepted_terms_example", "name_example", c(LeadFormPolicyLink$new("label_example", "link_example")), "privacy_policy_link_example", c(LeadFormQuestion$new(LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"), LeadFormQuestionType$new())), LeadFormStatus$new())) # array[LeadFormBatchUpdate] | 
 
 api_instance <- LeadFormsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$LeadFormsUpdate(var_ad_account_id, var_lead_form_update_requestdata_file = "result.txt")
-result <- api_instance$LeadFormsUpdate(var_ad_account_id, var_lead_form_update_request)
+# result <- api_instance$LeadFormsUpdate(var_ad_account_id, var_lead_form_batch_updatedata_file = "result.txt")
+result <- api_instance$LeadFormsUpdate(var_ad_account_id, var_lead_form_batch_update)
 dput(result)
 ```
 
@@ -262,11 +273,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **lead_form_update_request** | list( [**LeadFormUpdateRequest**](LeadFormUpdateRequest.md) )| List of lead forms to update, size limit [1, 30]. | 
+ **lead_form_batch_update** | list( [**LeadFormBatchUpdate**](LeadFormBatchUpdate.md) )|  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](lead_forms_create_200_response.md)
 
 ### Authorization
 
@@ -280,7 +291,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

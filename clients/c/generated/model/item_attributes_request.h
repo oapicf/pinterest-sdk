@@ -15,7 +15,8 @@
 
 typedef struct item_attributes_request_t item_attributes_request_t;
 
-#include "item_attributes_request_all_of_image_link.h"
+#include "catalogs_ai_content_disclosure.h"
+#include "item_attributes_request_image_link.h"
 #include "updatable_item_attributes_gtin.h"
 
 
@@ -68,13 +69,15 @@ typedef struct item_attributes_request_t {
     char *ad_video_1_tag; // string
     char *ad_video_2_link; // string
     char *ad_video_2_tag; // string
-    int adult; //boolean
+    list_t *additional_image_link; //primitive container
+    int *adult; //boolean
     char *age_group; // string
+    list_t *ai_disclosures; //nonprimitive container
     char *android_deep_link; // string
     char *availability; // string
-    double average_review_rating; //numeric
+    double *average_review_rating; //numeric
     char *brand; // string
-    int checkout_enabled; //boolean
+    int *checkout_enabled; //boolean
     char *color; // string
     char *condition; // string
     char *custom_label_0; // string
@@ -82,35 +85,37 @@ typedef struct item_attributes_request_t {
     char *custom_label_2; // string
     char *custom_label_3; // string
     char *custom_label_4; // string
-    int custom_number_0; //numeric
-    int custom_number_1; //numeric
-    int custom_number_2; //numeric
-    int custom_number_3; //numeric
-    int custom_number_4; //numeric
+    int *custom_number_0; //numeric
+    int *custom_number_1; //numeric
+    int *custom_number_2; //numeric
+    int *custom_number_3; //numeric
+    int *custom_number_4; //numeric
     char *description; // string
-    int free_shipping_label; //boolean
+    int *free_shipping_label; //boolean
     char *free_shipping_limit; // string
     char *gender; // string
     char *google_product_category; // string
     struct updatable_item_attributes_gtin_t *gtin; //model
     char *id; // string
+    struct item_attributes_request_image_link_t *image_link; //model
     char *installment_price; // string
     char *ios_deep_link; // string
     char *item_group_id; // string
-    long last_updated_time; //numeric
+    long *last_updated_time; //numeric
     char *link; // string
     char *material; // string
     char *min_ad_price; // string
     char *mobile_link; // string
     char *mpn; // string
-    int number_of_ratings; //numeric
-    int number_of_reviews; //numeric
+    int *number_of_ratings; //numeric
+    int *number_of_reviews; //numeric
     char *pattern; // string
     char *price; // string
     char *product_type; // string
     char *promotion_id; // string
     char *sale_price; // string
     char *sale_price_effective_date; // string
+    int *save_pin_disabled; //boolean
     char *shipping; // string
     char *shipping_height; // string
     char *shipping_weight; // string
@@ -124,9 +129,6 @@ typedef struct item_attributes_request_t {
     char *unit_pricing_measure; // string
     list_t *variant_names; //primitive container
     list_t *variant_values; //primitive container
-    list_t *additional_image_link; //primitive container
-    struct item_attributes_request_all_of_image_link_t *image_link; //model
-    int save_pin_disabled; //boolean
     char *video_link; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -180,13 +182,15 @@ __attribute__((deprecated)) item_attributes_request_t *item_attributes_request_c
     char *ad_video_1_tag,
     char *ad_video_2_link,
     char *ad_video_2_tag,
-    int adult,
+    list_t *additional_image_link,
+    int *adult,
     char *age_group,
+    list_t *ai_disclosures,
     char *android_deep_link,
     char *availability,
-    double average_review_rating,
+    double *average_review_rating,
     char *brand,
-    int checkout_enabled,
+    int *checkout_enabled,
     char *color,
     char *condition,
     char *custom_label_0,
@@ -194,35 +198,37 @@ __attribute__((deprecated)) item_attributes_request_t *item_attributes_request_c
     char *custom_label_2,
     char *custom_label_3,
     char *custom_label_4,
-    int custom_number_0,
-    int custom_number_1,
-    int custom_number_2,
-    int custom_number_3,
-    int custom_number_4,
+    int *custom_number_0,
+    int *custom_number_1,
+    int *custom_number_2,
+    int *custom_number_3,
+    int *custom_number_4,
     char *description,
-    int free_shipping_label,
+    int *free_shipping_label,
     char *free_shipping_limit,
     char *gender,
     char *google_product_category,
     updatable_item_attributes_gtin_t *gtin,
     char *id,
+    item_attributes_request_image_link_t *image_link,
     char *installment_price,
     char *ios_deep_link,
     char *item_group_id,
-    long last_updated_time,
+    long *last_updated_time,
     char *link,
     char *material,
     char *min_ad_price,
     char *mobile_link,
     char *mpn,
-    int number_of_ratings,
-    int number_of_reviews,
+    int *number_of_ratings,
+    int *number_of_reviews,
     char *pattern,
     char *price,
     char *product_type,
     char *promotion_id,
     char *sale_price,
     char *sale_price_effective_date,
+    int *save_pin_disabled,
     char *shipping,
     char *shipping_height,
     char *shipping_weight,
@@ -236,9 +242,6 @@ __attribute__((deprecated)) item_attributes_request_t *item_attributes_request_c
     char *unit_pricing_measure,
     list_t *variant_names,
     list_t *variant_values,
-    list_t *additional_image_link,
-    item_attributes_request_all_of_image_link_t *image_link,
-    int save_pin_disabled,
     char *video_link
 );
 

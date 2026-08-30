@@ -9,4 +9,6 @@
 
 * `XML` (value: `"XML"`)
 
+* `INTEGRATION` (value: `"INTEGRATION"`)
+
 

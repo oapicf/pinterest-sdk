@@ -4,20 +4,21 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/delete_partner_asset_access_body_accesses_inner.dart';
+import 'package:openapi/src/model/delete_partner_asset_access_item.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'delete_partner_asset_access_body.g.dart';
 
-/// DeletePartnerAssetAccessBody
+/// An object with a list of partner asset accesses to delete.
 ///
 /// Properties:
-/// * [accesses] 
+/// * [accesses] - List of partner asset accesses to delete.
 @BuiltValue()
 abstract class DeletePartnerAssetAccessBody implements Built<DeletePartnerAssetAccessBody, DeletePartnerAssetAccessBodyBuilder> {
+  /// List of partner asset accesses to delete.
   @BuiltValueField(wireName: r'accesses')
-  BuiltList<DeletePartnerAssetAccessBodyAccessesInner> get accesses;
+  BuiltList<DeletePartnerAssetAccessItem> get accesses;
 
   DeletePartnerAssetAccessBody._();
 
@@ -45,7 +46,7 @@ class _$DeletePartnerAssetAccessBodySerializer implements PrimitiveSerializer<De
     yield r'accesses';
     yield serializers.serialize(
       object.accesses,
-      specifiedType: const FullType(BuiltList, [FullType(DeletePartnerAssetAccessBodyAccessesInner)]),
+      specifiedType: const FullType(BuiltList, [FullType(DeletePartnerAssetAccessItem)]),
     );
   }
 
@@ -73,8 +74,8 @@ class _$DeletePartnerAssetAccessBodySerializer implements PrimitiveSerializer<De
         case r'accesses':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(DeletePartnerAssetAccessBodyAccessesInner)]),
-          ) as BuiltList<DeletePartnerAssetAccessBodyAccessesInner>;
+            specifiedType: const FullType(BuiltList, [FullType(DeletePartnerAssetAccessItem)]),
+          ) as BuiltList<DeletePartnerAssetAccessItem>;
           result.accesses.replace(valueDes);
           break;
         default:

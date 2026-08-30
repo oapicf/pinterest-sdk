@@ -10,15 +10,19 @@ The class is defined in **[CatalogsCreativeAssetsProductGroupProductCounts.java]
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**appLinks** | `BigDecimal` |  | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
+**images** | `BigDecimal` |  | 
 **total** | `BigDecimal` |  | 
 **videos** | `BigDecimal` |  | 
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 CREATIVE_ASSETS | `"CREATIVE_ASSETS"`
+
 
 
 

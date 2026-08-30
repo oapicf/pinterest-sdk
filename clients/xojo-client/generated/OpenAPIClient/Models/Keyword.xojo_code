@@ -2,28 +2,15 @@
 Protected Class Keyword
 
 	#tag Property, Flags = &h0
+		archived As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
-			</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+			**Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 		#tag EndNote
 		bid As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		match_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Keyword value (120 chars max).
-		#tag EndNote
-		value As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		archived As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -31,7 +18,15 @@ Protected Class Keyword
 		#tag Note
 			Keyword ID .
 		#tag EndNote
-		id As Xoson.O.OptionalString
+		id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Keyword [match type](/docs/api-features/targeting-overview/)
+		#tag EndNote
+		match_type As String
 	#tag EndProperty
 
 
@@ -39,13 +34,13 @@ Protected Class Keyword
 		#tag Note
 			Keyword parent entity ID (advertiser, campaign, ad group).
 		#tag EndNote
-		parent_id As Xoson.O.OptionalString
+		parent_id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Parent entity type
+			Parent entity type (advertiser, campaign, ad group).
 		#tag EndNote
 		parent_type As Xoson.O.OptionalString
 	#tag EndProperty
@@ -56,6 +51,14 @@ Protected Class Keyword
 			Always keyword
 		#tag EndNote
 		type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Keyword value (120 chars max).
+		#tag EndNote
+		value As String
 	#tag EndProperty
 
 
@@ -96,30 +99,6 @@ Protected Class Keyword
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="bid"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="match_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="MatchTypeResponse"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="value"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="archived"
 			Visible=false
 			Group="Behavior"
@@ -128,11 +107,27 @@ Protected Class Keyword
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="bid"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="match_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="MatchType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -153,6 +148,14 @@ Protected Class Keyword
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="value"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

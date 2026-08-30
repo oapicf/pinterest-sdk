@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.FilterOperatorType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,50 +19,19 @@ import java.util.List;
  * CatalogsProductGroupFilterOperatorTypeCriteria
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupFilterOperatorTypeCriteria   {
-  /**
-   * Gets or Sets filterOperatorType
-   */
-  public enum FilterOperatorTypeEnum {
-    IS("IS"),
-    
-    CONTAINS("CONTAINS");
-
-    private String value;
-
-    FilterOperatorTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FilterOperatorTypeEnum fromValue(String text) {
-      for (FilterOperatorTypeEnum b : FilterOperatorTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("filter_operator_type")
-  private FilterOperatorTypeEnum filterOperatorType = FilterOperatorTypeEnum.IS;
+  private FilterOperatorType filterOperatorType;
 
   @JsonProperty("negated")
-  private Boolean negated = false;
+  private Boolean negated;
 
   @JsonProperty("values")
   
   private List<String> values = new ArrayList<>();
 
-  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
     return this;
   }
@@ -71,11 +41,11 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
    * @return filterOperatorType
    */
   @ApiModelProperty(value = "")
-  public FilterOperatorTypeEnum getFilterOperatorType() {
+  public FilterOperatorType getFilterOperatorType() {
     return filterOperatorType;
   }
 
-  public void setFilterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public void setFilterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
   }
 
@@ -160,10 +130,7 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

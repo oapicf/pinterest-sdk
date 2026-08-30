@@ -1,0 +1,25 @@
+
+
+export interface UserWebsiteVerification { 
+  /**
+   * DNS TXT record to check against for the website to be claimed
+   */
+  dns_txt_record?: string;
+  /**
+   * A full html file to upload to the website in order for it to be claimed
+   */
+  file_content?: string;
+  /**
+   * File expected to find on the website being claimed
+   */
+  filename?: string;
+  /**
+   * Metatag the verification process searchs for the website to be claimed
+   */
+  metatag?: string;
+  /**
+   * Code to check against the user claiming the website
+   */
+  verification_code?: string;
+}
+

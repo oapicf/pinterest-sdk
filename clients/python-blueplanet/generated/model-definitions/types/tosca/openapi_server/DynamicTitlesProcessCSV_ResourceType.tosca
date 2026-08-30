@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DynamicTitlesProcessCSV"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DynamicTitlesProcessCSV"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  DynamicTitlesProcessCSVError = openapi_server.resourceTypes.DynamicTitlesProcessCSVError
+}
+resourceTypes {
+
+  DynamicTitlesProcessCSV {
+    title = DynamicTitlesProcessCSV
+    description = DynamicTitlesProcessCSV
+    derivedFrom = Root
+    properties {
+        errors {
+          type = array
+          items.type = DynamicTitlesProcessCSVError
+          description = "List of validation errors. Empty on success."
+          optional = false
+        }
+        status {
+          type =  string
+          description = "Processing status. Present on success."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DynamicTitlesProcessCSV {
+    title = DynamicTitlesProcessCSV
+    description = DynamicTitlesProcessCSV
+    implements = openapi_server.resourceTypes.DynamicTitlesProcessCSV
+
+  }
+}

@@ -7,7 +7,7 @@ import play.api.libs.json._
   * @param size Size of the report in bytes
   * @param url URL to download the report
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CatalogsReport(
   reportStatus: Option[CatalogsReport.ReportStatus.Value],
   size: Option[BigDecimal],

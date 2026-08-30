@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/ssio_order_line.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,9 +14,15 @@ part 'ssio_order_lines_get_by_ad_account200_response.g.dart';
 ///
 /// Properties:
 /// * [bookmark] 
-/// * [items] - SSIO order lines by ad acount id
+/// * [items] 
 @BuiltValue()
-abstract class SsioOrderLinesGetByAdAccount200Response implements Paginated, Built<SsioOrderLinesGetByAdAccount200Response, SsioOrderLinesGetByAdAccount200ResponseBuilder> {
+abstract class SsioOrderLinesGetByAdAccount200Response implements Built<SsioOrderLinesGetByAdAccount200Response, SsioOrderLinesGetByAdAccount200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<SSIOOrderLine> get items;
+
   SsioOrderLinesGetByAdAccount200Response._();
 
   factory SsioOrderLinesGetByAdAccount200Response([void updates(SsioOrderLinesGetByAdAccount200ResponseBuilder b)]) = _$SsioOrderLinesGetByAdAccount200Response;
@@ -51,7 +56,7 @@ class _$SsioOrderLinesGetByAdAccount200ResponseSerializer implements PrimitiveSe
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(SSIOOrderLine)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$SsioOrderLinesGetByAdAccount200ResponseSerializer implements PrimitiveSe
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(SSIOOrderLine)]),
+          ) as BuiltList<SSIOOrderLine>;
           result.items.replace(valueDes);
           break;
         default:

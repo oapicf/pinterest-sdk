@@ -22,6 +22,7 @@ module PinMediaWithVideo =
     Images : ImageSize;
     MediaType : MediaTypeEnum;
     VideoUrl : string option;
+    VideoUrlHls : string option;
     Width : int option;
   }
   //#endregion

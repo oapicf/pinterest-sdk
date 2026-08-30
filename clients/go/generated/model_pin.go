@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,32 +21,36 @@ import (
 // checks if the Pin type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Pin{}
 
-// Pin Pin model containing properties related to a Pinterest Pin.
+// Pin struct for Pin
 type Pin struct {
-	AltText NullableString `json:"alt_text,omitempty"`
+	// AI disclosure declarations the creator has made about this Pin.
+	AiDisclosures *AiDisclosures `json:"ai_disclosures,omitempty"`
 	// The board to which this Pin belongs.
-	BoardId *string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardId *string `json:"board_id,omitempty" validate:"regexp=^\\d+$"`
 	BoardOwner *BoardOwner `json:"board_owner,omitempty"`
 	// The board section to which this Pin belongs.
-	BoardSectionId NullableString `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardSectionId NullableString `json:"board_section_id,omitempty" validate:"regexp=^\\d+$"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	CreativeType NullableCreativeType `json:"creative_type,omitempty"`
-	Description NullableString `json:"description,omitempty"`
 	// Dominant pin color. Hex number, e.g. `#6E7874`.
 	DominantColor NullableString `json:"dominant_color,omitempty"`
 	// Whether the Pin has been promoted or not.
 	HasBeenPromoted *bool `json:"has_been_promoted,omitempty"`
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 	// Whether the \"operation user_account\" is the Pin owner.
 	IsOwner *bool `json:"is_owner,omitempty"`
+	// Whether the Pin is a product Pin.
+	IsProduct *bool `json:"is_product,omitempty"`
 	// Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
 	IsStandard *bool `json:"is_standard,omitempty"`
-	Link NullableString `json:"link,omitempty"`
 	Media *PinMedia `json:"media,omitempty"`
 	// The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
-	ParentPinId NullableString `json:"parent_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
+	ParentPinId NullableString `json:"parent_pin_id,omitempty" validate:"regexp=^\\d+$"`
 	// Pin metrics with associated time intervals if any.
 	PinMetrics map[string]interface{} `json:"pin_metrics,omitempty"`
+	AltText NullableString `json:"alt_text,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Link NullableString `json:"link,omitempty"`
 	Title NullableString `json:"title,omitempty"`
 }
 
@@ -70,46 +74,36 @@ func NewPinWithDefaults() *Pin {
 	return &this
 }
 
-// GetAltText returns the AltText field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Pin) GetAltText() string {
-	if o == nil || IsNil(o.AltText.Get()) {
-		var ret string
+// GetAiDisclosures returns the AiDisclosures field value if set, zero value otherwise.
+func (o *Pin) GetAiDisclosures() AiDisclosures {
+	if o == nil || IsNil(o.AiDisclosures) {
+		var ret AiDisclosures
 		return ret
 	}
-	return *o.AltText.Get()
+	return *o.AiDisclosures
 }
 
-// GetAltTextOk returns a tuple with the AltText field value if set, nil otherwise
+// GetAiDisclosuresOk returns a tuple with the AiDisclosures field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Pin) GetAltTextOk() (*string, bool) {
-	if o == nil {
+func (o *Pin) GetAiDisclosuresOk() (*AiDisclosures, bool) {
+	if o == nil || IsNil(o.AiDisclosures) {
 		return nil, false
 	}
-	return o.AltText.Get(), o.AltText.IsSet()
+	return o.AiDisclosures, true
 }
 
-// HasAltText returns a boolean if a field has been set.
-func (o *Pin) HasAltText() bool {
-	if o != nil && o.AltText.IsSet() {
+// HasAiDisclosures returns a boolean if a field has been set.
+func (o *Pin) HasAiDisclosures() bool {
+	if o != nil && !IsNil(o.AiDisclosures) {
 		return true
 	}
 
 	return false
 }
 
-// SetAltText gets a reference to the given NullableString and assigns it to the AltText field.
-func (o *Pin) SetAltText(v string) {
-	o.AltText.Set(&v)
-}
-// SetAltTextNil sets the value for AltText to be an explicit nil
-func (o *Pin) SetAltTextNil() {
-	o.AltText.Set(nil)
-}
-
-// UnsetAltText ensures that no value is present for AltText, not even an explicit nil
-func (o *Pin) UnsetAltText() {
-	o.AltText.Unset()
+// SetAiDisclosures gets a reference to the given AiDisclosures and assigns it to the AiDisclosures field.
+func (o *Pin) SetAiDisclosures(v AiDisclosures) {
+	o.AiDisclosures = &v
 }
 
 // GetBoardId returns the BoardId field value if set, zero value otherwise.
@@ -292,48 +286,6 @@ func (o *Pin) UnsetCreativeType() {
 	o.CreativeType.Unset()
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Pin) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Pin) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *Pin) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *Pin) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *Pin) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *Pin) UnsetDescription() {
-	o.Description.Unset()
-}
-
 // GetDominantColor returns the DominantColor field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Pin) GetDominantColor() string {
 	if o == nil || IsNil(o.DominantColor.Get()) {
@@ -464,6 +416,38 @@ func (o *Pin) SetIsOwner(v bool) {
 	o.IsOwner = &v
 }
 
+// GetIsProduct returns the IsProduct field value if set, zero value otherwise.
+func (o *Pin) GetIsProduct() bool {
+	if o == nil || IsNil(o.IsProduct) {
+		var ret bool
+		return ret
+	}
+	return *o.IsProduct
+}
+
+// GetIsProductOk returns a tuple with the IsProduct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Pin) GetIsProductOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsProduct) {
+		return nil, false
+	}
+	return o.IsProduct, true
+}
+
+// HasIsProduct returns a boolean if a field has been set.
+func (o *Pin) HasIsProduct() bool {
+	if o != nil && !IsNil(o.IsProduct) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsProduct gets a reference to the given bool and assigns it to the IsProduct field.
+func (o *Pin) SetIsProduct(v bool) {
+	o.IsProduct = &v
+}
+
 // GetIsStandard returns the IsStandard field value if set, zero value otherwise.
 func (o *Pin) GetIsStandard() bool {
 	if o == nil || IsNil(o.IsStandard) {
@@ -494,48 +478,6 @@ func (o *Pin) HasIsStandard() bool {
 // SetIsStandard gets a reference to the given bool and assigns it to the IsStandard field.
 func (o *Pin) SetIsStandard(v bool) {
 	o.IsStandard = &v
-}
-
-// GetLink returns the Link field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Pin) GetLink() string {
-	if o == nil || IsNil(o.Link.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Link.Get()
-}
-
-// GetLinkOk returns a tuple with the Link field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Pin) GetLinkOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Link.Get(), o.Link.IsSet()
-}
-
-// HasLink returns a boolean if a field has been set.
-func (o *Pin) HasLink() bool {
-	if o != nil && o.Link.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLink gets a reference to the given NullableString and assigns it to the Link field.
-func (o *Pin) SetLink(v string) {
-	o.Link.Set(&v)
-}
-// SetLinkNil sets the value for Link to be an explicit nil
-func (o *Pin) SetLinkNil() {
-	o.Link.Set(nil)
-}
-
-// UnsetLink ensures that no value is present for Link, not even an explicit nil
-func (o *Pin) UnsetLink() {
-	o.Link.Unset()
 }
 
 // GetMedia returns the Media field value if set, zero value otherwise.
@@ -645,6 +587,132 @@ func (o *Pin) SetPinMetrics(v map[string]interface{}) {
 	o.PinMetrics = v
 }
 
+// GetAltText returns the AltText field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Pin) GetAltText() string {
+	if o == nil || IsNil(o.AltText.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AltText.Get()
+}
+
+// GetAltTextOk returns a tuple with the AltText field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Pin) GetAltTextOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AltText.Get(), o.AltText.IsSet()
+}
+
+// HasAltText returns a boolean if a field has been set.
+func (o *Pin) HasAltText() bool {
+	if o != nil && o.AltText.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAltText gets a reference to the given NullableString and assigns it to the AltText field.
+func (o *Pin) SetAltText(v string) {
+	o.AltText.Set(&v)
+}
+// SetAltTextNil sets the value for AltText to be an explicit nil
+func (o *Pin) SetAltTextNil() {
+	o.AltText.Set(nil)
+}
+
+// UnsetAltText ensures that no value is present for AltText, not even an explicit nil
+func (o *Pin) UnsetAltText() {
+	o.AltText.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Pin) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Pin) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *Pin) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *Pin) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *Pin) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *Pin) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetLink returns the Link field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Pin) GetLink() string {
+	if o == nil || IsNil(o.Link.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Link.Get()
+}
+
+// GetLinkOk returns a tuple with the Link field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Pin) GetLinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Link.Get(), o.Link.IsSet()
+}
+
+// HasLink returns a boolean if a field has been set.
+func (o *Pin) HasLink() bool {
+	if o != nil && o.Link.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLink gets a reference to the given NullableString and assigns it to the Link field.
+func (o *Pin) SetLink(v string) {
+	o.Link.Set(&v)
+}
+// SetLinkNil sets the value for Link to be an explicit nil
+func (o *Pin) SetLinkNil() {
+	o.Link.Set(nil)
+}
+
+// UnsetLink ensures that no value is present for Link, not even an explicit nil
+func (o *Pin) UnsetLink() {
+	o.Link.Unset()
+}
+
 // GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Pin) GetTitle() string {
 	if o == nil || IsNil(o.Title.Get()) {
@@ -697,8 +765,8 @@ func (o Pin) MarshalJSON() ([]byte, error) {
 
 func (o Pin) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AltText.IsSet() {
-		toSerialize["alt_text"] = o.AltText.Get()
+	if !IsNil(o.AiDisclosures) {
+		toSerialize["ai_disclosures"] = o.AiDisclosures
 	}
 	if !IsNil(o.BoardId) {
 		toSerialize["board_id"] = o.BoardId
@@ -715,9 +783,6 @@ func (o Pin) ToMap() (map[string]interface{}, error) {
 	if o.CreativeType.IsSet() {
 		toSerialize["creative_type"] = o.CreativeType.Get()
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
 	if o.DominantColor.IsSet() {
 		toSerialize["dominant_color"] = o.DominantColor.Get()
 	}
@@ -728,11 +793,11 @@ func (o Pin) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsOwner) {
 		toSerialize["is_owner"] = o.IsOwner
 	}
+	if !IsNil(o.IsProduct) {
+		toSerialize["is_product"] = o.IsProduct
+	}
 	if !IsNil(o.IsStandard) {
 		toSerialize["is_standard"] = o.IsStandard
-	}
-	if o.Link.IsSet() {
-		toSerialize["link"] = o.Link.Get()
 	}
 	if !IsNil(o.Media) {
 		toSerialize["media"] = o.Media
@@ -742,6 +807,15 @@ func (o Pin) ToMap() (map[string]interface{}, error) {
 	}
 	if o.PinMetrics != nil {
 		toSerialize["pin_metrics"] = o.PinMetrics
+	}
+	if o.AltText.IsSet() {
+		toSerialize["alt_text"] = o.AltText.Get()
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
+	if o.Link.IsSet() {
+		toSerialize["link"] = o.Link.Get()
 	}
 	if o.Title.IsSet() {
 		toSerialize["title"] = o.Title.Get()

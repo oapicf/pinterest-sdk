@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalogType** | **String** |  | 
 **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
 **defaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
 **defaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 
@@ -13,5 +13,14 @@ Name | Type | Description | Notes
 **name** | **String** | A human-friendly name associated to a given feed. | [optional] 
 **preferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+
+
+
+## Enum: CatalogTypeEnum
+
+
+* `CREATIVE_ASSETS` (value: `"CREATIVE_ASSETS"`)
+
+
 
 

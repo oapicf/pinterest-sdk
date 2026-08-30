@@ -1,0 +1,44 @@
+## LeadFormsApi
+
+### Get lead form by id
+## Get lead form by id
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/lead_forms/{{lead_form_id}}
+Accept: application/json
+
+### Create lead form test data
+## Create lead form test data
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/lead_forms/{{lead_form_id}}/test
+Content-Type: application/json
+Accept: application/json
+
+{
+ "answers": "<string>"
+}
+
+
+### Create lead forms
+## Create lead forms
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/lead_forms
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### List lead forms
+## List lead forms
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/lead_forms?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}
+Accept: application/json
+
+### Update lead forms
+## Update lead forms
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/lead_forms
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+

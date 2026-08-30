@@ -1,7 +1,7 @@
 /*
  * SSIOInsertionOrderStatusResponse.h
  *
- * 
+ * SSIO insertion order status response for a single pin order id lookup.
  */
 
 #ifndef _SSIOInsertionOrderStatusResponse_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief SSIO insertion order status response for a single pin order id lookup.
  *
  *  \ingroup Models
  *

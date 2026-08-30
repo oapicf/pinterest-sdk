@@ -111,29 +111,33 @@ class _$PromotionTemplateValueSerializer implements PrimitiveSerializer<Promotio
         case r'amount':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.amount = valueDes;
           break;
         case r'currency_code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Currency),
-          ) as Currency;
+            specifiedType: const FullType.nullable(Currency),
+          ) as Currency?;
+          if (valueDes == null) continue;
           result.currencyCode = valueDes;
           break;
         case r'custom_text':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.customText = valueDes;
           break;
         case r'percent':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.percent = valueDes;
           break;
         default:

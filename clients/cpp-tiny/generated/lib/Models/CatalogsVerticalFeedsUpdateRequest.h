@@ -19,7 +19,6 @@
 #include "CatalogsHotelFeedsUpdateRequest.h"
 #include "CatalogsRetailFeedsUpdateRequest.h"
 #include "CatalogsStatus.h"
-#include "CatalogsType.h"
 #include "NullableCurrency.h"
 #include "ProductAvailabilityType.h"
 
@@ -57,71 +56,71 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	CatalogsFeedCredentials getCredentials();
 
 	/*! \brief Set 
 	 */
-	void setCredentials(CatalogsFeedCredentials  credentials);
+	void setCredentials(CatalogsFeedCredentials credentials);
 	/*! \brief Get 
 	 */
 	ProductAvailabilityType getDefaultAvailability();
 
 	/*! \brief Set 
 	 */
-	void setDefaultAvailability(ProductAvailabilityType  default_availability);
+	void setDefaultAvailability(ProductAvailabilityType default_availability);
 	/*! \brief Get 
 	 */
 	NullableCurrency getDefaultCurrency();
 
 	/*! \brief Set 
 	 */
-	void setDefaultCurrency(NullableCurrency  default_currency);
+	void setDefaultCurrency(NullableCurrency default_currency);
 	/*! \brief Get 
 	 */
 	CatalogsFormat getFormat();
 
 	/*! \brief Set 
 	 */
-	void setFormat(CatalogsFormat  format);
+	void setFormat(CatalogsFormat format);
 	/*! \brief Get The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	 */
 	std::string getLocation();
 
 	/*! \brief Set The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	 */
-	void setLocation(std::string  location);
+	void setLocation(std::string location);
 	/*! \brief Get A human-friendly name associated to a given feed.
 	 */
 	std::string getName();
 
 	/*! \brief Set A human-friendly name associated to a given feed.
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 	/*! \brief Get 
 	 */
 	CatalogsFeedProcessingSchedule getPreferredProcessingSchedule();
 
 	/*! \brief Set 
 	 */
-	void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule);
+	void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule);
 	/*! \brief Get 
 	 */
 	CatalogsStatus getStatus();
 
 	/*! \brief Set 
 	 */
-	void setStatus(CatalogsStatus  status);
+	void setStatus(CatalogsStatus status);
 
 
     private:
-    CatalogsType catalog_type;
+    std::string catalog_type{};
     CatalogsFeedCredentials credentials;
     ProductAvailabilityType default_availability;
     NullableCurrency default_currency;

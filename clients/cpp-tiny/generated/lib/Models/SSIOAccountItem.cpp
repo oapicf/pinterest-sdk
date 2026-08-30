@@ -249,7 +249,7 @@ SSIOAccountItem::getAddresses()
 }
 
 void
-SSIOAccountItem::setAddresses(std::list <SSIOAccountAddress> addresses)
+SSIOAccountItem::setAddresses(std::list<SSIOAccountAddress> addresses)
 {
 	this->addresses = addresses;
 }
@@ -261,7 +261,7 @@ SSIOAccountItem::getId()
 }
 
 void
-SSIOAccountItem::setId(std::string  id)
+SSIOAccountItem::setId(std::string id)
 {
 	this->id = id;
 }
@@ -273,7 +273,7 @@ SSIOAccountItem::getIoTerms()
 }
 
 void
-SSIOAccountItem::setIoTerms(std::string  io_terms)
+SSIOAccountItem::setIoTerms(std::string io_terms)
 {
 	this->io_terms = io_terms;
 }
@@ -285,7 +285,7 @@ SSIOAccountItem::getIoTermsId()
 }
 
 void
-SSIOAccountItem::setIoTermsId(std::string  io_terms_id)
+SSIOAccountItem::setIoTermsId(std::string io_terms_id)
 {
 	this->io_terms_id = io_terms_id;
 }
@@ -297,7 +297,7 @@ SSIOAccountItem::getIoType()
 }
 
 void
-SSIOAccountItem::setIoType(std::string  io_type)
+SSIOAccountItem::setIoType(std::string io_type)
 {
 	this->io_type = io_type;
 }
@@ -309,7 +309,7 @@ SSIOAccountItem::getRowTerms()
 }
 
 void
-SSIOAccountItem::setRowTerms(std::string  row_terms)
+SSIOAccountItem::setRowTerms(std::string row_terms)
 {
 	this->row_terms = row_terms;
 }
@@ -321,7 +321,7 @@ SSIOAccountItem::getRowTermsId()
 }
 
 void
-SSIOAccountItem::setRowTermsId(std::string  row_terms_id)
+SSIOAccountItem::setRowTermsId(std::string row_terms_id)
 {
 	this->row_terms_id = row_terms_id;
 }
@@ -333,7 +333,7 @@ SSIOAccountItem::getUsTerms()
 }
 
 void
-SSIOAccountItem::setUsTerms(std::string  us_terms)
+SSIOAccountItem::setUsTerms(std::string us_terms)
 {
 	this->us_terms = us_terms;
 }
@@ -345,7 +345,7 @@ SSIOAccountItem::getUsTermsId()
 }
 
 void
-SSIOAccountItem::setUsTermsId(std::string  us_terms_id)
+SSIOAccountItem::setUsTermsId(std::string us_terms_id)
 {
 	this->us_terms_id = us_terms_id;
 }

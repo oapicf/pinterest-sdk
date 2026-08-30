@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -28,35 +31,62 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class IntegrationLogClientError(
 
     @get:Size(max=512)
-    @Schema(example = "null", description = "Original cause of the error.")
+    @Schema(description = "Original cause of the error.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("cause")
     @get:JsonProperty("cause") val cause: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Column number in the line of the file that raised the error.")
+    @Schema(description = "Column number in the line of the file that raised the error.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("column_number")
     @get:JsonProperty("column_number") val columnNumber: kotlin.Int? = null,
 
     @get:Size(max=256)
-    @Schema(example = "null", description = "Filename where the error happened.")
+    @Schema(description = "Filename where the error happened.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("file_name")
     @get:JsonProperty("file_name") val fileName: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Line number where the error happened.")
+    @Schema(description = "Line number where the error happened.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("line_number")
     @get:JsonProperty("line_number") val lineNumber: kotlin.Int? = null,
 
     @get:Size(max=8192)
-    @Schema(example = "null", description = "Human-readable description of the error.")
+    @Schema(description = "Human-readable description of the error.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("message")
     @get:JsonProperty("message") val message: kotlin.String? = null,
 
     @get:Size(max=1024)
-    @Schema(example = "null", description = "More detail about the message.")
+    @Schema(description = "More detail about the message.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("message_detail")
     @get:JsonProperty("message_detail") val messageDetail: kotlin.String? = null,
 
     @get:Size(max=256)
-    @Schema(example = "null", description = "Filename where the error happened.")
+    @Schema(description = "Filename where the error happened.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Integer that specifies the error code.")
+    @Schema(description = "Integer that specifies the error code.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("number")
     @get:JsonProperty("number") val number: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Stack trace of where the error happened.")
+    @Schema(description = "Stack trace of where the error happened.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("stack_trace")
     @get:JsonProperty("stack_trace") val stackTrace: kotlin.String? = null
 ) {
 

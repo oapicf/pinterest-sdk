@@ -51,21 +51,73 @@ static gpointer __IntegrationsManagerthreadFunc(gpointer data)
 static bool integrationsCommerceDelProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(IntegrationMetadata, Error, void* )
+	= reinterpret_cast<void(*)(IntegrationMetadata, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	IntegrationMetadata out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("IntegrationMetadata")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "IntegrationMetadata", "IntegrationMetadata");
+			json_node_free(pJson);
+
+			if ("IntegrationMetadata" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -76,15 +128,15 @@ static bool integrationsCommerceDelProcessor(MemoryStruct_s p_chunk, long code, 
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool integrationsCommerceDelHelper(char * accessToken,
 	std::string externalBusinessId, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(IntegrationMetadata, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -160,8 +212,8 @@ static bool integrationsCommerceDelHelper(char * accessToken,
 
 bool IntegrationsManager::integrationsCommerceDelAsync(char * accessToken,
 	std::string externalBusinessId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(IntegrationMetadata, Error, void* )
+	, void* userData)
 {
 	return integrationsCommerceDelHelper(accessToken,
 	externalBusinessId, 
@@ -170,8 +222,8 @@ bool IntegrationsManager::integrationsCommerceDelAsync(char * accessToken,
 
 bool IntegrationsManager::integrationsCommerceDelSync(char * accessToken,
 	std::string externalBusinessId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(IntegrationMetadata, Error, void* )
+	, void* userData)
 {
 	return integrationsCommerceDelHelper(accessToken,
 	externalBusinessId, 
@@ -208,6 +260,21 @@ static bool integrationsCommerceGetProcessor(MemoryStruct_s p_chunk, long code, 
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -396,6 +463,21 @@ static bool integrationsCommercePatchProcessor(MemoryStruct_s p_chunk, long code
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -416,7 +498,7 @@ static bool integrationsCommercePatchProcessor(MemoryStruct_s p_chunk, long code
 }
 
 static bool integrationsCommercePatchHelper(char * accessToken,
-	std::string externalBusinessId, std::shared_ptr<IntegrationRequestPatch> integrationRequestPatch, 
+	std::string externalBusinessId, std::shared_ptr<IntegrationMetadataUpdate> integrationMetadataUpdate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -437,11 +519,11 @@ static bool integrationsCommercePatchHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("IntegrationRequestPatch")) {
-		node = converttoJson(&integrationRequestPatch, "IntegrationRequestPatch", "");
+	if (isprimitive("IntegrationMetadataUpdate")) {
+		node = converttoJson(&integrationMetadataUpdate, "IntegrationMetadataUpdate", "");
 	}
 	
-	char *jsonStr =  integrationRequestPatch.toJson();
+	char *jsonStr =  integrationMetadataUpdate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -506,22 +588,22 @@ static bool integrationsCommercePatchHelper(char * accessToken,
 
 
 bool IntegrationsManager::integrationsCommercePatchAsync(char * accessToken,
-	std::string externalBusinessId, std::shared_ptr<IntegrationRequestPatch> integrationRequestPatch, 
+	std::string externalBusinessId, std::shared_ptr<IntegrationMetadataUpdate> integrationMetadataUpdate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData)
 {
 	return integrationsCommercePatchHelper(accessToken,
-	externalBusinessId, integrationRequestPatch, 
+	externalBusinessId, integrationMetadataUpdate, 
 	handler, userData, true);
 }
 
 bool IntegrationsManager::integrationsCommercePatchSync(char * accessToken,
-	std::string externalBusinessId, std::shared_ptr<IntegrationRequestPatch> integrationRequestPatch, 
+	std::string externalBusinessId, std::shared_ptr<IntegrationMetadataUpdate> integrationMetadataUpdate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData)
 {
 	return integrationsCommercePatchHelper(accessToken,
-	externalBusinessId, integrationRequestPatch, 
+	externalBusinessId, integrationMetadataUpdate, 
 	handler, userData, false);
 }
 
@@ -576,6 +658,26 @@ static bool integrationsCommercePostProcessor(MemoryStruct_s p_chunk, long code,
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -596,7 +698,7 @@ static bool integrationsCommercePostProcessor(MemoryStruct_s p_chunk, long code,
 }
 
 static bool integrationsCommercePostHelper(char * accessToken,
-	std::shared_ptr<IntegrationRequest> integrationRequest, 
+	std::shared_ptr<IntegrationMetadataCreate> integrationMetadataCreate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -617,11 +719,11 @@ static bool integrationsCommercePostHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("IntegrationRequest")) {
-		node = converttoJson(&integrationRequest, "IntegrationRequest", "");
+	if (isprimitive("IntegrationMetadataCreate")) {
+		node = converttoJson(&integrationMetadataCreate, "IntegrationMetadataCreate", "");
 	}
 	
-	char *jsonStr =  integrationRequest.toJson();
+	char *jsonStr =  integrationMetadataCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -680,22 +782,22 @@ static bool integrationsCommercePostHelper(char * accessToken,
 
 
 bool IntegrationsManager::integrationsCommercePostAsync(char * accessToken,
-	std::shared_ptr<IntegrationRequest> integrationRequest, 
+	std::shared_ptr<IntegrationMetadataCreate> integrationMetadataCreate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData)
 {
 	return integrationsCommercePostHelper(accessToken,
-	integrationRequest, 
+	integrationMetadataCreate, 
 	handler, userData, true);
 }
 
 bool IntegrationsManager::integrationsCommercePostSync(char * accessToken,
-	std::shared_ptr<IntegrationRequest> integrationRequest, 
+	std::shared_ptr<IntegrationMetadataCreate> integrationMetadataCreate, 
 	void(* handler)(IntegrationMetadata, Error, void* )
 	, void* userData)
 {
 	return integrationsCommercePostHelper(accessToken,
-	integrationRequest, 
+	integrationMetadataCreate, 
 	handler, userData, false);
 }
 
@@ -729,6 +831,26 @@ static bool integrationsGetByIdProcessor(MemoryStruct_s p_chunk, long code, char
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -891,6 +1013,31 @@ static bool integrationsGetListProcessor(MemoryStruct_s p_chunk, long code, char
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1072,6 +1219,26 @@ static bool integrationsLogsPostProcessor(MemoryStruct_s p_chunk, long code, cha
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1092,7 +1259,7 @@ static bool integrationsLogsPostProcessor(MemoryStruct_s p_chunk, long code, cha
 }
 
 static bool integrationsLogsPostHelper(char * accessToken,
-	std::shared_ptr<IntegrationLogsRequest> integrationLogsRequest, 
+	std::shared_ptr<IntegrationLogsRequestCreate> integrationLogsRequestCreate, 
 	void(* handler)(IntegrationLogsSuccessResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1113,11 +1280,11 @@ static bool integrationsLogsPostHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("IntegrationLogsRequest")) {
-		node = converttoJson(&integrationLogsRequest, "IntegrationLogsRequest", "");
+	if (isprimitive("IntegrationLogsRequestCreate")) {
+		node = converttoJson(&integrationLogsRequestCreate, "IntegrationLogsRequestCreate", "");
 	}
 	
-	char *jsonStr =  integrationLogsRequest.toJson();
+	char *jsonStr =  integrationLogsRequestCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1176,22 +1343,22 @@ static bool integrationsLogsPostHelper(char * accessToken,
 
 
 bool IntegrationsManager::integrationsLogsPostAsync(char * accessToken,
-	std::shared_ptr<IntegrationLogsRequest> integrationLogsRequest, 
+	std::shared_ptr<IntegrationLogsRequestCreate> integrationLogsRequestCreate, 
 	void(* handler)(IntegrationLogsSuccessResponse, Error, void* )
 	, void* userData)
 {
 	return integrationsLogsPostHelper(accessToken,
-	integrationLogsRequest, 
+	integrationLogsRequestCreate, 
 	handler, userData, true);
 }
 
 bool IntegrationsManager::integrationsLogsPostSync(char * accessToken,
-	std::shared_ptr<IntegrationLogsRequest> integrationLogsRequest, 
+	std::shared_ptr<IntegrationLogsRequestCreate> integrationLogsRequestCreate, 
 	void(* handler)(IntegrationLogsSuccessResponse, Error, void* )
 	, void* userData)
 {
 	return integrationsLogsPostHelper(accessToken,
-	integrationLogsRequest, 
+	integrationLogsRequestCreate, 
 	handler, userData, false);
 }
 

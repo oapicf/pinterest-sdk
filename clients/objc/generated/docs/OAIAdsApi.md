@@ -11,6 +11,9 @@ Method | HTTP request | Description
 [**adsGet**](OAIAdsApi.md#adsget) | **GET** /ad_accounts/{ad_account_id}/ads/{ad_id} | Get ad
 [**adsList**](OAIAdsApi.md#adslist) | **GET** /ad_accounts/{ad_account_id}/ads | List ads
 [**adsUpdate**](OAIAdsApi.md#adsupdate) | **PATCH** /ad_accounts/{ad_account_id}/ads | Update ads
+[**campaignAdPreviewCreate**](OAIAdsApi.md#campaignadpreviewcreate) | **POST** /ad_accounts/{ad_account_id}/campaign_ad_preview | Create ad preview records for one or more ad groups
+[**campaignAdPreviewDelete**](OAIAdsApi.md#campaignadpreviewdelete) | **DELETE** /ad_accounts/{ad_account_id}/campaign_ad_preview | Delete ad preview records for one or more ad groups
+[**campaignAdPreviewRead**](OAIAdsApi.md#campaignadpreviewread) | **GET** /ad_accounts/{ad_account_id}/campaign_ad_preview | Fetch ad preview records for one or more ad groups
 
 
 # **adPreviewsCreate**
@@ -22,7 +25,7 @@ Method | HTTP request | Description
 
 Create ad preview with pin or image
 
-Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
+Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad.  If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See [Ads Overview](https://help.pinterest.com/en/business/article/promoted-pins-overview).)  You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
 
 ### Example
 ```objc
@@ -33,7 +36,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIAdPreviewRequest* adPreviewRequest = [[OAIAdPreviewRequest alloc] init]; // Create ad preview with pin or image.
+OAIAdPreviewRequest* adPreviewRequest = [[OAIAdPreviewRequest alloc] init]; // 
 
 OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
@@ -55,7 +58,7 @@ OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **adPreviewRequest** | [**OAIAdPreviewRequest***](OAIAdPreviewRequest.md)| Create ad preview with pin or image. | 
+ **adPreviewRequest** | [**OAIAdPreviewRequest***](OAIAdPreviewRequest.md)|  | 
 
 ### Return type
 
@@ -79,20 +82,22 @@ Name | Type | Description  | Notes
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
     targetingTypes: (NSArray<OAIAdsAnalyticsAdTargetingType>*) targetingTypes
-    columns: (NSArray<NSString*>*) columns
+    columns: (NSArray<OAIReportingColumnSync>*) columns
     granularity: (OAIGranularity) granularity
-    clickWindowDays: (NSNumber*) clickWindowDays
-    engagementWindowDays: (NSNumber*) engagementWindowDays
-    viewWindowDays: (NSNumber*) viewWindowDays
-    conversionReportTime: (NSString*) conversionReportTime
+    clickWindowDays: (OAIConversionAttributionWindowDays) clickWindowDays
+    engagementWindowDays: (OAIConversionAttributionWindowDays) engagementWindowDays
+    viewWindowDays: (OAIConversionAttributionWindowDays) viewWindowDays
+    conversionReportTime: (OAIConversionReportTimeType) conversionReportTime
     attributionTypes: (NSArray<OAIConversionReportAttributionType>*) attributionTypes
     reportingTimezone: (OAIReportingTimeZone) reportingTimezone
+    sortColumns: (NSArray<NSString*>*) sortColumns
+    sortAscending: (NSNumber*) sortAscending
         completionHandler: (void (^)(OAIMetricsResponse* output, NSError* error)) handler;
 ```
 
 Get targeting analytics for ads
 
-Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```objc
@@ -109,15 +114,17 @@ NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad ac
 NSArray<NSString*>* adIds = @[@"adIds_example"]; // List of Ad Ids to use to filter the results.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSArray<OAIAdsAnalyticsAdTargetingType>* targetingTypes = @[[[OAIAdsAnalyticsAdTargetingType alloc] init]]; // Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-NSArray<NSString*>* columns = @[@"columns_example"]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-OAIGranularity granularity = DAY; // TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-NSNumber* clickWindowDays = 1; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
-NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to @30)
-NSNumber* viewWindowDays = @1; // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to @1)
-NSString* conversionReportTime = TIME_OF_AD_ACTION; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
+NSArray<OAIAdsAnalyticsAdTargetingType>* targetingTypes = @[[[OAIAdsAnalyticsAdTargetingType alloc] init]]; // Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+NSArray<OAIReportingColumnSync>* columns = @[[[OAIReportingColumnSync alloc] init]]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+OAIGranularity granularity = [[OAIGranularity alloc] init]; //   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+OAIConversionAttributionWindowDays clickWindowDays = [[OAIConversionAttributionWindowDays alloc] init]; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
+OAIConversionAttributionWindowDays engagementWindowDays = [[OAIConversionAttributionWindowDays alloc] init]; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional)
+OAIConversionAttributionWindowDays viewWindowDays = [[OAIConversionAttributionWindowDays alloc] init]; // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
+OAIConversionReportTimeType conversionReportTime = [[OAIConversionReportTimeType alloc] init]; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
 NSArray<OAIConversionReportAttributionType>* attributionTypes = @[[[OAIConversionReportAttributionType alloc] init]]; // List of types of attribution for the conversion report (optional)
 OAIReportingTimeZone reportingTimezone = [[OAIReportingTimeZone alloc] init]; // Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
+NSArray<NSString*>* sortColumns = @[@"sortColumns_example"]; // Sort Columns. (optional)
+NSNumber* sortAscending = @56; // Sort ascending. (optional)
 
 OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
@@ -135,6 +142,8 @@ OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
               conversionReportTime:conversionReportTime
               attributionTypes:attributionTypes
               reportingTimezone:reportingTimezone
+              sortColumns:sortColumns
+              sortAscending:sortAscending
           completionHandler: ^(OAIMetricsResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -153,15 +162,17 @@ Name | Type | Description  | Notes
  **adIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad Ids to use to filter the results. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **targetingTypes** | [**NSArray&lt;OAIAdsAnalyticsAdTargetingType&gt;***](OAIAdsAnalyticsAdTargetingType*.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
- **columns** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **granularity** | [**OAIGranularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
- **clickWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to @30]
- **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to @30]
- **viewWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to @1]
- **conversionReportTime** | **NSString***| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to @&quot;TIME_OF_AD_ACTION&quot;]
+ **targetingTypes** | [**NSArray&lt;OAIAdsAnalyticsAdTargetingType&gt;***](OAIAdsAnalyticsAdTargetingType*.md)| Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
+ **columns** | [**NSArray&lt;OAIReportingColumnSync&gt;***](OAIReportingColumnSync*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **granularity** | [**OAIGranularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **clickWindowDays** | [**OAIConversionAttributionWindowDays**](.md)| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] 
+ **engagementWindowDays** | [**OAIConversionAttributionWindowDays**](.md)| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] 
+ **viewWindowDays** | [**OAIConversionAttributionWindowDays**](.md)| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] 
+ **conversionReportTime** | [**OAIConversionReportTimeType**](.md)| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] 
  **attributionTypes** | [**NSArray&lt;OAIConversionReportAttributionType&gt;***](OAIConversionReportAttributionType*.md)| List of types of attribution for the conversion report | [optional] 
  **reportingTimezone** | [**OAIReportingTimeZone**](.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
+ **sortColumns** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Sort Columns. | [optional] 
+ **sortAscending** | **NSNumber***| Sort ascending. | [optional] 
 
 ### Return type
 
@@ -180,25 +191,25 @@ Name | Type | Description  | Notes
 
 # **adsAnalytics**
 ```objc
--(NSURLSessionTask*) adsAnalyticsWithAdAccountId: (NSString*) adAccountId
-    startDate: (NSDate*) startDate
+-(NSURLSessionTask*) adsAnalyticsWithStartDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    columns: (NSArray<NSString*>*) columns
+    columns: (NSArray<OAIReportingColumnSync>*) columns
     granularity: (OAIGranularity) granularity
+    adAccountId: (NSString*) adAccountId
+    pinIds: (NSArray<NSString*>*) pinIds
     adIds: (NSArray<NSString*>*) adIds
     clickWindowDays: (NSNumber*) clickWindowDays
     engagementWindowDays: (NSNumber*) engagementWindowDays
     viewWindowDays: (NSNumber*) viewWindowDays
     conversionReportTime: (NSString*) conversionReportTime
-    pinIds: (NSArray<NSString*>*) pinIds
     campaignIds: (NSArray<NSString*>*) campaignIds
     reportingTimezone: (OAIReportingTimeZone) reportingTimezone
-        completionHandler: (void (^)(NSArray<OAIAdsAnalyticsResponseInner>* output, NSError* error)) handler;
+        completionHandler: (void (^)(NSArray<OAIAdsAnalytics>* output, NSError* error)) handler;
 ```
 
 Get ad analytics
 
-Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+    Get analytics for the specified ads in the specified `ad_account_id`, filtered by the specified options.     - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.     - The request must contain either ad_ids or both campaign_ids and pin_ids.     - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.     - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```objc
@@ -211,37 +222,37 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSArray<NSString*>* columns = @[@"columns_example"]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-OAIGranularity granularity = DAY; // TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-NSArray<NSString*>* adIds = @[@"adIds_example"]; // List of Ad Ids to use to filter the results. (optional)
-NSNumber* clickWindowDays = 1; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
-NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to @30)
-NSNumber* viewWindowDays = @1; // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to @1)
-NSString* conversionReportTime = TIME_OF_AD_ACTION; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
+NSArray<OAIReportingColumnSync>* columns = @[[[OAIReportingColumnSync alloc] init]]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+OAIGranularity granularity = [[OAIGranularity alloc] init]; //   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSArray<NSString*>* pinIds = @[@"pinIds_example"]; // List of Pin IDs. (optional)
+NSArray<NSString*>* adIds = @[@"adIds_example"]; // List of Ad Ids to use to filter the results. (optional)
+NSNumber* clickWindowDays = @30; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
+NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional) (default to @30)
+NSNumber* viewWindowDays = @1; // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to @1)
+NSString* conversionReportTime = @"TIME_OF_AD_ACTION"; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
 NSArray<NSString*>* campaignIds = @[@"campaignIds_example"]; // List of Campaign Ids to use to filter the results. (optional)
 OAIReportingTimeZone reportingTimezone = [[OAIReportingTimeZone alloc] init]; // Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
 // Get ad analytics
-[apiInstance adsAnalyticsWithAdAccountId:adAccountId
-              startDate:startDate
+[apiInstance adsAnalyticsWithStartDate:startDate
               endDate:endDate
               columns:columns
               granularity:granularity
+              adAccountId:adAccountId
+              pinIds:pinIds
               adIds:adIds
               clickWindowDays:clickWindowDays
               engagementWindowDays:engagementWindowDays
               viewWindowDays:viewWindowDays
               conversionReportTime:conversionReportTime
-              pinIds:pinIds
               campaignIds:campaignIds
               reportingTimezone:reportingTimezone
-          completionHandler: ^(NSArray<OAIAdsAnalyticsResponseInner>* output, NSError* error) {
+          completionHandler: ^(NSArray<OAIAdsAnalytics>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -255,23 +266,23 @@ OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **columns** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **granularity** | [**OAIGranularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
+ **columns** | [**NSArray&lt;OAIReportingColumnSync&gt;***](OAIReportingColumnSync*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **granularity** | [**OAIGranularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
+ **pinIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Pin IDs. | [optional] 
  **adIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad Ids to use to filter the results. | [optional] 
  **clickWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to @30]
- **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to @30]
+ **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to @30]
  **viewWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to @1]
  **conversionReportTime** | **NSString***| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to @&quot;TIME_OF_AD_ACTION&quot;]
- **pinIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Pin IDs. | [optional] 
  **campaignIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Campaign Ids to use to filter the results. | [optional] 
  **reportingTimezone** | [**OAIReportingTimeZone**](.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
 
 ### Return type
 
-[**NSArray<OAIAdsAnalyticsResponseInner>***](OAIAdsAnalyticsResponseInner.md)
+[**NSArray<OAIAdsAnalytics>***](OAIAdsAnalytics.md)
 
 ### Authorization
 
@@ -287,13 +298,13 @@ Name | Type | Description  | Notes
 # **adsCreate**
 ```objc
 -(NSURLSessionTask*) adsCreateWithAdAccountId: (NSString*) adAccountId
-    adCreateRequest: (NSArray<OAIAdCreateRequest>*) adCreateRequest
-        completionHandler: (void (^)(OAIAdArrayResponse* output, NSError* error)) handler;
+    adCreate: (NSArray<OAIAdCreate>*) adCreate
+        completionHandler: (void (^)(OAIAdBatchWriteResponseModel* output, NSError* error)) handler;
 ```
 
 Create ads
 
-Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.
+Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
 
 ### Example
 ```objc
@@ -304,14 +315,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSArray<OAIAdCreateRequest>* adCreateRequest = @[[[OAIAdCreateRequest alloc] init]]; // List of ads to create, size limit [1, 30].
+NSArray<OAIAdCreate>* adCreate = @[[[OAIAdCreate alloc] init]]; // 
 
 OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
 // Create ads
 [apiInstance adsCreateWithAdAccountId:adAccountId
-              adCreateRequest:adCreateRequest
-          completionHandler: ^(OAIAdArrayResponse* output, NSError* error) {
+              adCreate:adCreate
+          completionHandler: ^(OAIAdBatchWriteResponseModel* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -326,11 +337,11 @@ OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **adCreateRequest** | [**NSArray&lt;OAIAdCreateRequest&gt;***](OAIAdCreateRequest.md)| List of ads to create, size limit [1, 30]. | 
+ **adCreate** | [**NSArray&lt;OAIAdCreate&gt;***](OAIAdCreate.md)|  | 
 
 ### Return type
 
-[**OAIAdArrayResponse***](OAIAdArrayResponse.md)
+[**OAIAdBatchWriteResponseModel***](OAIAdBatchWriteResponseModel.md)
 
 ### Authorization
 
@@ -345,14 +356,14 @@ Name | Type | Description  | Notes
 
 # **adsGet**
 ```objc
--(NSURLSessionTask*) adsGetWithAdAccountId: (NSString*) adAccountId
-    adId: (NSString*) adId
-        completionHandler: (void (^)(OAIAdResponse* output, NSError* error)) handler;
+-(NSURLSessionTask*) adsGetWithAdId: (NSString*) adId
+    adAccountId: (NSString*) adAccountId
+        completionHandler: (void (^)(OAIAd* output, NSError* error)) handler;
 ```
 
 Get ad
 
-Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
+Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the [Pinterest advertising standards](https://www.pinterest.com/_/_/policy/advertising-guidelines/).
 
 ### Example
 ```objc
@@ -365,15 +376,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
+NSString* adId = @"adId_example"; // The ID of this ad.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* adId = @"adId_example"; // Unique identifier of an ad.
 
 OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
 // Get ad
-[apiInstance adsGetWithAdAccountId:adAccountId
-              adId:adId
-          completionHandler: ^(OAIAdResponse* output, NSError* error) {
+[apiInstance adsGetWithAdId:adId
+              adAccountId:adAccountId
+          completionHandler: ^(OAIAd* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -387,12 +398,12 @@ OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **adId** | **NSString***| The ID of this ad. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **adId** | **NSString***| Unique identifier of an ad. | 
 
 ### Return type
 
-[**OAIAdResponse***](OAIAdResponse.md)
+[**OAIAd***](OAIAd.md)
 
 ### Authorization
 
@@ -408,19 +419,19 @@ Name | Type | Description  | Notes
 # **adsList**
 ```objc
 -(NSURLSessionTask*) adsListWithAdAccountId: (NSString*) adAccountId
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
     campaignIds: (NSArray<NSString*>*) campaignIds
     adGroupIds: (NSArray<NSString*>*) adGroupIds
     adIds: (NSArray<NSString*>*) adIds
-    entityStatuses: (NSArray<NSString*>*) entityStatuses
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
-    bookmark: (NSString*) bookmark
+    entityStatuses: (NSArray<OAIEntityStatus>*) entityStatuses
         completionHandler: (void (^)(OAIAdsList200Response* output, NSError* error)) handler;
 ```
 
 List ads
 
-List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses <p/> If no filter is provided, all ads in the ad account are returned. <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. <p/> Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see <a href=\"https://policy.pinterest.com/en/advertising-guidelines\">Pinterest advertising standards</a>.
+List ads that meet the filters provided:     - Listed campaign ids or ad group ids or ad ids     - Listed entity statuses  If no filter is provided, all ads in the ad account are returned.  **Note:** Provide only `campaign_id` or `ad_group_id` or `ad_id`. Do not provide more than one type.  Review status is provided for each ad; if `review_status` is `REJECTED`, the `rejected_reasons` field will contain additional information.  For more, see [Pinterest advertising standards](https://policy.pinterest.com/en/advertising-guidelines).
 
 ### Example
 ```objc
@@ -434,25 +445,25 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSArray<NSString*>* campaignIds = @[@"campaignIds_example"]; // List of Campaign Ids to use to filter the results. (optional)
-NSArray<NSString*>* adGroupIds = @[@"adGroupIds_example"]; // List of Ad group Ids to use to filter the results. (optional)
-NSArray<NSString*>* adIds = @[@"adIds_example"]; // List of Ad Ids to use to filter the results. (optional)
-NSArray<NSString*>* entityStatuses = @[@"entityStatuses_example"]; // Entity status (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+NSArray<NSString*>* campaignIds = @[@"campaignIds_example"]; // List of Campaign Ids to use to filter the results. (optional)
+NSArray<NSString*>* adGroupIds = @[@"adGroupIds_example"]; // List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
+NSArray<NSString*>* adIds = @[@"adIds_example"]; // List of Ad Ids to use to filter the results. (optional)
+NSArray<OAIEntityStatus>* entityStatuses = @[[[OAIEntityStatus alloc] init]]; // Entity status (optional)
 
 OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
 // List ads
 [apiInstance adsListWithAdAccountId:adAccountId
+              bookmark:bookmark
+              pageSize:pageSize
+              order:order
               campaignIds:campaignIds
               adGroupIds:adGroupIds
               adIds:adIds
               entityStatuses:entityStatuses
-              pageSize:pageSize
-              order:order
-              bookmark:bookmark
           completionHandler: ^(OAIAdsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -468,13 +479,13 @@ OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **campaignIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Campaign Ids to use to filter the results. | [optional] 
- **adGroupIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad group Ids to use to filter the results. | [optional] 
- **adIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad Ids to use to filter the results. | [optional] 
- **entityStatuses** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Entity status | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **campaignIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Campaign Ids to use to filter the results. | [optional] 
+ **adGroupIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] 
+ **adIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad Ids to use to filter the results. | [optional] 
+ **entityStatuses** | [**NSArray&lt;OAIEntityStatus&gt;***](OAIEntityStatus*.md)| Entity status | [optional] 
 
 ### Return type
 
@@ -494,8 +505,8 @@ Name | Type | Description  | Notes
 # **adsUpdate**
 ```objc
 -(NSURLSessionTask*) adsUpdateWithAdAccountId: (NSString*) adAccountId
-    adUpdateRequest: (NSArray<OAIAdUpdateRequest>*) adUpdateRequest
-        completionHandler: (void (^)(OAIAdArrayResponse* output, NSError* error)) handler;
+    adBatchUpdate: (NSArray<OAIAdBatchUpdate>*) adBatchUpdate
+        completionHandler: (void (^)(OAIAdBatchWriteResponseModel* output, NSError* error)) handler;
 ```
 
 Update ads
@@ -511,14 +522,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSArray<OAIAdUpdateRequest>* adUpdateRequest = @[[[OAIAdUpdateRequest alloc] init]]; // List of ads to update, size limit [1, 30]
+NSArray<OAIAdBatchUpdate>* adBatchUpdate = @[[[OAIAdBatchUpdate alloc] init]]; // 
 
 OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
 // Update ads
 [apiInstance adsUpdateWithAdAccountId:adAccountId
-              adUpdateRequest:adUpdateRequest
-          completionHandler: ^(OAIAdArrayResponse* output, NSError* error) {
+              adBatchUpdate:adBatchUpdate
+          completionHandler: ^(OAIAdBatchWriteResponseModel* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -533,11 +544,11 @@ OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **adUpdateRequest** | [**NSArray&lt;OAIAdUpdateRequest&gt;***](OAIAdUpdateRequest.md)| List of ads to update, size limit [1, 30] | 
+ **adBatchUpdate** | [**NSArray&lt;OAIAdBatchUpdate&gt;***](OAIAdBatchUpdate.md)|  | 
 
 ### Return type
 
-[**OAIAdArrayResponse***](OAIAdArrayResponse.md)
+[**OAIAdBatchWriteResponseModel***](OAIAdBatchWriteResponseModel.md)
 
 ### Authorization
 
@@ -546,6 +557,183 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **campaignAdPreviewCreate**
+```objc
+-(NSURLSessionTask*) campaignAdPreviewCreateWithAdAccountId: (NSString*) adAccountId
+    campaignAdPreviewCreate: (NSArray<OAICampaignAdPreviewCreate>*) campaignAdPreviewCreate
+        completionHandler: (void (^)(NSArray<OAICampaignAdPreviewCreate200ResponseInner>* output, NSError* error)) handler;
+```
+
+Create ad preview records for one or more ad groups
+
+Create ad preview records for one or more ad groups that can be shared. Each ad group is processed independently; individual failures do not block other previews.
+
+### Example
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
+NSArray<OAICampaignAdPreviewCreate>* campaignAdPreviewCreate = @[[[OAICampaignAdPreviewCreate alloc] init]]; // 
+
+OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
+
+// Create ad preview records for one or more ad groups
+[apiInstance campaignAdPreviewCreateWithAdAccountId:adAccountId
+              campaignAdPreviewCreate:campaignAdPreviewCreate
+          completionHandler: ^(NSArray<OAICampaignAdPreviewCreate200ResponseInner>* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIAdsApi->campaignAdPreviewCreate: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
+ **campaignAdPreviewCreate** | [**NSArray&lt;OAICampaignAdPreviewCreate&gt;***](OAICampaignAdPreviewCreate.md)|  | 
+
+### Return type
+
+[**NSArray<OAICampaignAdPreviewCreate200ResponseInner>***](OAICampaignAdPreviewCreate200ResponseInner.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **campaignAdPreviewDelete**
+```objc
+-(NSURLSessionTask*) campaignAdPreviewDeleteWithAdGroupIds: (NSArray<NSString*>*) adGroupIds
+    adAccountId: (NSString*) adAccountId
+        completionHandler: (void (^)(NSArray<OAICampaignAdPreviewDelete200ResponseInner>* output, NSError* error)) handler;
+```
+
+Delete ad preview records for one or more ad groups
+
+Delete ad preview records for one or more ad groups. All ad groups are validated before deleting any records.
+
+### Example
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+NSArray<NSString*>* adGroupIds = @[@"adGroupIds_example"]; // List of Ad group Ids to use to filter the results.
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
+
+OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
+
+// Delete ad preview records for one or more ad groups
+[apiInstance campaignAdPreviewDeleteWithAdGroupIds:adGroupIds
+              adAccountId:adAccountId
+          completionHandler: ^(NSArray<OAICampaignAdPreviewDelete200ResponseInner>* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIAdsApi->campaignAdPreviewDelete: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adGroupIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad group Ids to use to filter the results. | 
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
+
+### Return type
+
+[**NSArray<OAICampaignAdPreviewDelete200ResponseInner>***](OAICampaignAdPreviewDelete200ResponseInner.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **campaignAdPreviewRead**
+```objc
+-(NSURLSessionTask*) campaignAdPreviewReadWithAdGroupIds: (NSArray<NSString*>*) adGroupIds
+    adAccountId: (NSString*) adAccountId
+        completionHandler: (void (^)(NSArray<OAICampaignAdPreview>* output, NSError* error)) handler;
+```
+
+Fetch ad preview records for one or more ad groups
+
+Fetch ad preview records for one or more ad groups. Returns all active previews associated with the provided ad group IDs.
+
+### Example
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+NSArray<NSString*>* adGroupIds = @[@"adGroupIds_example"]; // List of Ad group Ids to use to filter the results.
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
+
+OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
+
+// Fetch ad preview records for one or more ad groups
+[apiInstance campaignAdPreviewReadWithAdGroupIds:adGroupIds
+              adAccountId:adAccountId
+          completionHandler: ^(NSArray<OAICampaignAdPreview>* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIAdsApi->campaignAdPreviewRead: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adGroupIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad group Ids to use to filter the results. | 
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
+
+### Return type
+
+[**NSArray<OAICampaignAdPreview>***](OAICampaignAdPreview.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

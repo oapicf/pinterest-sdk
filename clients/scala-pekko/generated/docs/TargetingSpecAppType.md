@@ -1,0 +1,9 @@
+
+
+# TargetingSpecAppType
+
+## Enum
+
+
+
+

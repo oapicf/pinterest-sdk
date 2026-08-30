@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,34 +29,32 @@ func NewSearchAPIService() *SearchAPIService {
 }
 
 // SearchUserBoardsGet - Search user&#39;s boards
-func (s *SearchAPIService) SearchUserBoardsGet(ctx context.Context, adAccountId string, bookmark string, pageSize int32, query string) (ImplResponse, error) {
+func (s *SearchAPIService) SearchUserBoardsGet(ctx context.Context, adAccountId string, query string, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update SearchUserBoardsGet with the required logic for this service method.
 	// Add api_search_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, SearchUserBoardsGet200Response{}) or use other options such as http.Ok ...
-	// return Response(200, SearchUserBoardsGet200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, BoardsList200Response{}) or use other options such as http.Ok ...
+	// return Response(200, BoardsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SearchUserBoardsGet method not implemented")
-}
-
-// SearchUserPinsList - Search user&#39;s Pins
-func (s *SearchAPIService) SearchUserPinsList(ctx context.Context, query string, adAccountId string, bookmark string) (ImplResponse, error) {
-	// TODO - update SearchUserPinsList with the required logic for this service method.
-	// Add api_search_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, SearchUserPinsList200Response{}) or use other options such as http.Ok ...
-	// return Response(200, SearchUserPinsList200Response{}), nil
-
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("SearchUserPinsList method not implemented")
 }
 
 // SearchPartnerPins - Search pins by a given search term
@@ -67,11 +65,52 @@ func (s *SearchAPIService) SearchPartnerPins(ctx context.Context, term string, c
 	// TODO: Uncomment the next line to return response Response(200, SearchPartnerPins200Response{}) or use other options such as http.Ok ...
 	// return Response(200, SearchPartnerPins200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SearchPartnerPins method not implemented")
+}
+
+// SearchUserPinsList - Search user&#39;s Pins
+func (s *SearchAPIService) SearchUserPinsList(ctx context.Context, query string, adAccountId string, bookmark string) (ImplResponse, error) {
+	// TODO - update SearchUserPinsList with the required logic for this service method.
+	// Add api_search_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, PinsList200Response{}) or use other options such as http.Ok ...
+	// return Response(200, PinsList200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("SearchUserPinsList method not implemented")
 }

@@ -72,7 +72,7 @@ resourceTypes {
         }
         visibility {
           type =  string
-          description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’."
+          description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): &#39;visible&#39;, &#39;hidden&#39;."
           optional = false
         }
     }

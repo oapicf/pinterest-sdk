@@ -10,30 +10,30 @@
 
 part of openapi.api;
 
-/// Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
-class LabelType {
-  /// Instantiate a new enum with the provided [value].
-  const LabelType._(this.value);
+/// Label type values.
+enum LabelType {
+  BRAND._(r'BRAND'),
+  CUSTOM._(r'CUSTOM'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const LabelType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const BRAND = LabelType._(r'BRAND');
-  static const CUSTOM = LabelType._(r'CUSTOM');
-
-  /// List of all possible values in this [enum][LabelType].
-  static const values = <LabelType>[
-    BRAND,
-    CUSTOM,
-  ];
-
+  /// Returns the instance of [LabelType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static LabelType? fromJson(dynamic value) => LabelTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [LabelType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<LabelType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <LabelType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class LabelTypeTypeTransformer {
 
   const LabelTypeTypeTransformer._();
 
-  String encode(LabelType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(LabelType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a LabelType.
+  /// Returns the instance of [LabelType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class LabelTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   LabelType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is LabelType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'BRAND': return LabelType.BRAND;
@@ -79,7 +84,7 @@ class LabelTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [LabelTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static LabelTypeTypeTransformer? _instance;
 }
 

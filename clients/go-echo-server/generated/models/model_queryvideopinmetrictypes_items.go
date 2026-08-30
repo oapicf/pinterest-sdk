@@ -1,0 +1,16 @@
+package models
+
+type QueryvideopinmetrictypesItems string
+
+// List of QueryvideopinmetrictypesItems
+const (
+	IMPRESSION QueryvideopinmetrictypesItems = "IMPRESSION"
+	SAVE QueryvideopinmetrictypesItems = "SAVE"
+	VIDEO_MRC_VIEW QueryvideopinmetrictypesItems = "VIDEO_MRC_VIEW"
+	VIDEO_AVG_WATCH_TIME QueryvideopinmetrictypesItems = "VIDEO_AVG_WATCH_TIME"
+	VIDEO_V50_WATCH_TIME QueryvideopinmetrictypesItems = "VIDEO_V50_WATCH_TIME"
+	QUARTILE_95_PERCENT_VIEW QueryvideopinmetrictypesItems = "QUARTILE_95_PERCENT_VIEW"
+	VIDEO_10_S_VIEW QueryvideopinmetrictypesItems = "VIDEO_10S_VIEW"
+	VIDEO_START QueryvideopinmetrictypesItems = "VIDEO_START"
+	OUTBOUND_CLICK QueryvideopinmetrictypesItems = "OUTBOUND_CLICK"
+)

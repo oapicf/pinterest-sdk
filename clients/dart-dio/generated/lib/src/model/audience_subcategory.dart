@@ -11,30 +11,25 @@ part 'audience_subcategory.g.dart';
 /// AudienceSubcategory
 ///
 /// Properties:
-/// * [id] - Subinterest ID.
-/// * [index] - Subinterest affinity index.
-/// * [key] - Interest unique key (same as ID).
-/// * [name] - Subinterest name.
-/// * [ratio] - Subinterest's percent of category's total audience.
+/// * [id] 
+/// * [index] 
+/// * [key] 
+/// * [name] 
+/// * [ratio] 
 @BuiltValue()
 abstract class AudienceSubcategory implements Built<AudienceSubcategory, AudienceSubcategoryBuilder> {
-  /// Subinterest ID.
   @BuiltValueField(wireName: r'id')
   String? get id;
 
-  /// Subinterest affinity index.
   @BuiltValueField(wireName: r'index')
   num? get index;
 
-  /// Interest unique key (same as ID).
   @BuiltValueField(wireName: r'key')
   String? get key;
 
-  /// Subinterest name.
   @BuiltValueField(wireName: r'name')
   String? get name;
 
-  /// Subinterest's percent of category's total audience.
   @BuiltValueField(wireName: r'ratio')
   num? get ratio;
 
@@ -122,36 +117,41 @@ class _$AudienceSubcategorySerializer implements PrimitiveSerializer<AudienceSub
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'index':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.index = valueDes;
           break;
         case r'key':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.key = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'ratio':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.ratio = valueDes;
           break;
         default:

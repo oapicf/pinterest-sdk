@@ -1,25 +1,25 @@
 
 
-#include "UpdatableItemAttributes_gtin.h"
+#include "UpdatableItemAttributesGtin.h"
 
 using namespace Tiny;
 
-UpdatableItemAttributes_gtin::UpdatableItemAttributes_gtin()
+UpdatableItemAttributesGtin::UpdatableItemAttributesGtin()
 {
 }
 
-UpdatableItemAttributes_gtin::UpdatableItemAttributes_gtin(std::string jsonString)
+UpdatableItemAttributesGtin::UpdatableItemAttributesGtin(std::string jsonString)
 {
 	this->fromJson(jsonString);
 }
 
-UpdatableItemAttributes_gtin::~UpdatableItemAttributes_gtin()
+UpdatableItemAttributesGtin::~UpdatableItemAttributesGtin()
 {
 
 }
 
 void
-UpdatableItemAttributes_gtin::fromJson(std::string jsonObj)
+UpdatableItemAttributesGtin::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
@@ -27,7 +27,7 @@ UpdatableItemAttributes_gtin::fromJson(std::string jsonObj)
 }
 
 bourne::json
-UpdatableItemAttributes_gtin::toJson()
+UpdatableItemAttributesGtin::toJson()
 {
     bourne::json object = bourne::json::object();
 

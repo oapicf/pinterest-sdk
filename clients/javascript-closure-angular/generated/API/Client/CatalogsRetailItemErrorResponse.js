@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsRetailItemErrorResponse');
 API.Client.CatalogsRetailItemErrorResponse = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsRetailItemErrorResponse.prototype.catalogType;
@@ -26,3 +26,18 @@ API.Client.CatalogsRetailItemErrorResponse.prototype.errors;
  */
 API.Client.CatalogsRetailItemErrorResponse.prototype.itemId;
 
+/**
+ * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailItemErrorResponse.prototype.itemResponseKind;
+
+/** @enum {string} */
+API.Client.CatalogsRetailItemErrorResponse.CatalogTypeEnum = { 
+  RETAIL: 'RETAIL',
+}
+/** @enum {string} */
+API.Client.CatalogsRetailItemErrorResponse.ItemResponseKindEnum = { 
+  retail_item_error: 'retail_item_error',
+}

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,6 +14,8 @@ package openapi
 
 import (
 	"errors"
+	"encoding/json"
+	"fmt"
 )
 
 
@@ -23,21 +25,25 @@ type AdGroupCreateRequest struct {
 	// Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
 	AutoTargetingEnabled bool `json:"auto_targeting_enabled,omitempty"`
 
+	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+	BidMultiplier float32 `json:"bid_multiplier,omitempty"`
+
+	BudgetType BudgetType `json:"budget_type,omitempty"`
+
+	PacingDeliveryType PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
+
 	// Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
 	BidInMicroCurrency *int32 `json:"bid_in_micro_currency,omitempty"`
 
-	// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-	BidStrategyType *string `json:"bid_strategy_type,omitempty"`
+	BidStrategyType *BidStrategyType `json:"bid_strategy_type,omitempty"`
 
 	BillableEvent ActionType `json:"billable_event"`
 
 	// Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
 	BudgetInMicroCurrency *int32 `json:"budget_in_micro_currency,omitempty"`
 
-	BudgetType BudgetType `json:"budget_type,omitempty"`
-
 	// Campaign ID of the ad group.
-	CampaignId string `json:"campaign_id" validate:"regexp=^[C]?\\\\d+$"`
+	CampaignId string `json:"campaign_id" validate:"regexp=^[C]?\\d+$"`
 
 	// Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 	EndTime *int32 `json:"end_time,omitempty"`
@@ -52,9 +58,7 @@ type AdGroupCreateRequest struct {
 	Name string `json:"name"`
 
 	// Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-	OptimizationGoalMetadata *OptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
-
-	PacingDeliveryType PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
+	OptimizationGoalMetadata *map[string]interface{} `json:"optimization_goal_metadata,omitempty"`
 
 	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
 	PlacementGroup PlacementGroupType `json:"placement_group,omitempty"`
@@ -63,7 +67,10 @@ type AdGroupCreateRequest struct {
 	PromotionApplicationLevel *string `json:"promotion_application_level,omitempty"`
 
 	// Promotion ID. To clear this field, set to null.
-	PromotionId *string `json:"promotion_id,omitempty" validate:"regexp=^\\\\d+$"`
+	PromotionId *string `json:"promotion_id,omitempty" validate:"regexp=^\\d+$"`
+
+	// Promotion IDs list. To clear this field, set to an empty array [].
+	PromotionIds []string `json:"promotion_ids,omitempty"`
 
 	// Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 	StartTime *int32 `json:"start_time,omitempty"`
@@ -76,62 +83,217 @@ type AdGroupCreateRequest struct {
 	// Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
 	TargetingTemplateIds *[]string `json:"targeting_template_ids,omitempty"`
 
-	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
-
-	// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-	BidMultiplier float32 `json:"bid_multiplier,omitempty"`
+	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	TrackingUrls *map[string]interface{} `json:"tracking_urls,omitempty"`
 }
-
-// AssertAdGroupCreateRequestRequired checks if the required fields are not zero-ed
-func AssertAdGroupCreateRequestRequired(obj AdGroupCreateRequest) error {
-	elements := map[string]interface{}{
-		"billable_event": obj.BillableEvent,
-		"campaign_id": obj.CampaignId,
-		"name": obj.Name,
-	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
-		}
+// UnmarshalJSON validates required property keys then unmarshals into AdGroupCreateRequest
+func (o *AdGroupCreateRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"billable_event",
+		"campaign_id",
+		"name",
 	}
 
-	if obj.OptimizationGoalMetadata != nil {
-		if err := AssertOptimizationGoalMetadataRequired(*obj.OptimizationGoalMetadata); err != nil {
-			return err
-		}
+	requiredNullableProperties := map[string]bool{
+		"billable_event": false,
+		"campaign_id": false,
+		"name": false,
 	}
-	if err := AssertTargetingSpecRequired(obj.TargetingSpec); err != nil {
+
+	allowedJsonKeys := map[string]struct{}{
+		"auto_targeting_enabled": {},
+		"bid_multiplier": {},
+		"budget_type": {},
+		"pacing_delivery_type": {},
+		"bid_in_micro_currency": {},
+		"bid_strategy_type": {},
+		"billable_event": {},
+		"budget_in_micro_currency": {},
+		"campaign_id": {},
+		"end_time": {},
+		"is_creative_optimization": {},
+		"lifetime_frequency_cap": {},
+		"name": {},
+		"optimization_goal_metadata": {},
+		"placement_group": {},
+		"promotion_application_level": {},
+		"promotion_id": {},
+		"promotion_ids": {},
+		"start_time": {},
+		"status": {},
+		"targeting_spec": {},
+		"targeting_template_ids": {},
+		"tracking_urls": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
 		return err
 	}
-	if obj.TrackingUrls != nil {
-		if err := AssertTrackingUrlsRequired(*obj.TrackingUrls); err != nil {
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AdGroupCreateRequest
+
+	if value, exists := allProperties["auto_targeting_enabled"]; exists {
+		if err = json.Unmarshal(value, &decoded.AutoTargetingEnabled); err != nil {
 			return err
 		}
+	}
+	if value, exists := allProperties["bid_multiplier"]; exists {
+		if err = json.Unmarshal(value, &decoded.BidMultiplier); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["budget_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.BudgetType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pacing_delivery_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.PacingDeliveryType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["bid_in_micro_currency"]; exists {
+		if err = json.Unmarshal(value, &decoded.BidInMicroCurrency); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["bid_strategy_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.BidStrategyType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["billable_event"]; exists {
+		if err = json.Unmarshal(value, &decoded.BillableEvent); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["budget_in_micro_currency"]; exists {
+		if err = json.Unmarshal(value, &decoded.BudgetInMicroCurrency); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["campaign_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CampaignId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["end_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.EndTime); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_creative_optimization"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsCreativeOptimization); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["lifetime_frequency_cap"]; exists {
+		if err = json.Unmarshal(value, &decoded.LifetimeFrequencyCap); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["optimization_goal_metadata"]; exists {
+		if err = json.Unmarshal(value, &decoded.OptimizationGoalMetadata); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["placement_group"]; exists {
+		if err = json.Unmarshal(value, &decoded.PlacementGroup); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["promotion_application_level"]; exists {
+		if err = json.Unmarshal(value, &decoded.PromotionApplicationLevel); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["promotion_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.PromotionId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["promotion_ids"]; exists {
+		if err = json.Unmarshal(value, &decoded.PromotionIds); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["start_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.StartTime); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["targeting_spec"]; exists {
+		if err = json.Unmarshal(value, &decoded.TargetingSpec); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["targeting_template_ids"]; exists {
+		if err = json.Unmarshal(value, &decoded.TargetingTemplateIds); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["tracking_urls"]; exists {
+		if err = json.Unmarshal(value, &decoded.TrackingUrls); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertAdGroupCreateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertAdGroupCreateRequestRequired(obj AdGroupCreateRequest) error {
+	if err := AssertTargetingSpecRequired(obj.TargetingSpec); err != nil {
+		return err
 	}
 	return nil
 }
 
 // AssertAdGroupCreateRequestConstraints checks if the values respects the defined constraints
 func AssertAdGroupCreateRequestConstraints(obj AdGroupCreateRequest) error {
-    if obj.OptimizationGoalMetadata != nil {
-     	if err := AssertOptimizationGoalMetadataConstraints(*obj.OptimizationGoalMetadata); err != nil {
-     		return err
-     	}
-    }
-	if err := AssertTargetingSpecConstraints(obj.TargetingSpec); err != nil {
-		return err
-	}
-    if obj.TrackingUrls != nil {
-     	if err := AssertTrackingUrlsConstraints(*obj.TrackingUrls); err != nil {
-     		return err
-     	}
-    }
 	if obj.BidMultiplier < 0 {
 		return &ParsingError{Param: "BidMultiplier", Err: errors.New(errMsgMinValueConstraint)}
 	}
 	if obj.BidMultiplier > 10 {
 		return &ParsingError{Param: "BidMultiplier", Err: errors.New(errMsgMaxValueConstraint)}
+	}
+	if err := AssertTargetingSpecConstraints(obj.TargetingSpec); err != nil {
+		return err
 	}
 	return nil
 }

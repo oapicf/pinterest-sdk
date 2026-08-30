@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Country** | [**Country**](Country.md) |  | 
 **Items** | [**ItemUpsertBatchRecord[]**](ItemUpsertBatchRecord.md) | Array with catalogs items | 
 **Language** | **String** | We recommend using the CatalogsLocale values. | 
-**Operation** | [**BatchOperation**](BatchOperation.md) |  | 
+**Operation** | **String** |  | 
 
 ## Examples
 

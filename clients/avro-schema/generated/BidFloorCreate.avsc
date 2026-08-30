@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "BidFloorCreate",
+  "fields": [
+    {
+      "name": "bid_floor_specs",
+      "type": {
+        "type": "array",
+        "items": "model.BidFloorSpec"
+      },
+      "doc": "List of bid floor specifications."
+    },
+    {
+      "name": "targeting_spec",
+      "type": ["null", "model.TargetingSpecOptimal"],
+      "doc": "Ad group targeting specification defining the ad group target audience.",
+      "default": null
+    }
+  ]
+
+}

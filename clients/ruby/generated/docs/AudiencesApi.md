@@ -12,11 +12,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## audiences_create
 
-> <Audience> audiences_create(ad_account_id, audience_create_request)
+> <AdAccountsAudience> audiences_create(ad_account_id, ad_accounts_audience_create)
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 ### Examples
 
@@ -31,11 +31,11 @@ end
 
 api_instance = PinterestSdkClient::AudiencesApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-audience_create_request = PinterestSdkClient::AudienceCreateRequest.new({name: 'string', rule: PinterestSdkClient::AudienceRule.new, audience_type: PinterestSdkClient::AudienceType::CUSTOMER_LIST}) # AudienceCreateRequest | List of ads to create, size limit [1, 30]
+ad_accounts_audience_create = PinterestSdkClient::AdAccountsAudienceCreate.new # AdAccountsAudienceCreate | 
 
 begin
   # Create audience
-  result = api_instance.audiences_create(ad_account_id, audience_create_request)
+  result = api_instance.audiences_create(ad_account_id, ad_accounts_audience_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudiencesApi->audiences_create: #{e}"
@@ -46,15 +46,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Audience>, Integer, Hash)> audiences_create_with_http_info(ad_account_id, audience_create_request)
+> <Array(<AdAccountsAudience>, Integer, Hash)> audiences_create_with_http_info(ad_account_id, ad_accounts_audience_create)
 
 ```ruby
 begin
   # Create audience
-  data, status_code, headers = api_instance.audiences_create_with_http_info(ad_account_id, audience_create_request)
+  data, status_code, headers = api_instance.audiences_create_with_http_info(ad_account_id, ad_accounts_audience_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Audience>
+  p data # => <AdAccountsAudience>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudiencesApi->audiences_create_with_http_info: #{e}"
 end
@@ -65,11 +65,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **audience_create_request** | [**AudienceCreateRequest**](AudienceCreateRequest.md) | List of ads to create, size limit [1, 30] |  |
+| **ad_accounts_audience_create** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md) |  |  |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ end
 
 ## audiences_get
 
-> <Audience> audiences_get(ad_account_id, audience_id)
+> <AdAccountsAudience> audiences_get(audience_id, ad_account_id)
 
 Get audience
 
@@ -104,12 +104,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::AudiencesApi.new
+audience_id = 'audience_id_example' # String | Audience ID.
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-audience_id = 'audience_id_example' # String | Unique identifier of an audience
 
 begin
   # Get audience
-  result = api_instance.audiences_get(ad_account_id, audience_id)
+  result = api_instance.audiences_get(audience_id, ad_account_id)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudiencesApi->audiences_get: #{e}"
@@ -120,15 +120,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Audience>, Integer, Hash)> audiences_get_with_http_info(ad_account_id, audience_id)
+> <Array(<AdAccountsAudience>, Integer, Hash)> audiences_get_with_http_info(audience_id, ad_account_id)
 
 ```ruby
 begin
   # Get audience
-  data, status_code, headers = api_instance.audiences_get_with_http_info(ad_account_id, audience_id)
+  data, status_code, headers = api_instance.audiences_get_with_http_info(audience_id, ad_account_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Audience>
+  p data # => <AdAccountsAudience>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudiencesApi->audiences_get_with_http_info: #{e}"
 end
@@ -138,12 +138,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **audience_id** | **String** | Audience ID. |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **audience_id** | **String** | Unique identifier of an audience |  |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -181,9 +181,10 @@ api_instance = PinterestSdkClient::AudiencesApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  order: 'ASCENDING', # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ownership_type: 'OWNED' # String | Filter audiences by ownership type.
+  page_size: 56, # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  order: PinterestSdkClient::PinterestLibPaginationOrder::ASCENDING, # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ownership_type: PinterestSdkClient::AudienceOwnershipType::OWNED, # AudienceOwnershipType | 
+  exclude_nca: true # Boolean | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
 }
 
 begin
@@ -219,9 +220,10 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **ownership_type** | **String** | Filter audiences by ownership type. | [optional][default to &#39;OWNED&#39;] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
+| **ownership_type** | [**AudienceOwnershipType**](.md) |  | [optional] |
+| **exclude_nca** | **Boolean** | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional][default to false] |
 
 ### Return type
 
@@ -239,11 +241,11 @@ end
 
 ## audiences_update
 
-> <Audience> audiences_update(ad_account_id, audience_id, audience_update_request)
+> <AdAccountsAudience> audiences_update(audience_id, ad_account_id, ad_accounts_audience_update)
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Examples
 
@@ -257,13 +259,13 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::AudiencesApi.new
+audience_id = 'audience_id_example' # String | Audience ID.
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-audience_id = 'audience_id_example' # String | Unique identifier of an audience
-audience_update_request = PinterestSdkClient::AudienceUpdateRequest.new # AudienceUpdateRequest | The audience to be updated.
+ad_accounts_audience_update = PinterestSdkClient::AdAccountsAudienceUpdate.new # AdAccountsAudienceUpdate | 
 
 begin
   # Update audience
-  result = api_instance.audiences_update(ad_account_id, audience_id, audience_update_request)
+  result = api_instance.audiences_update(audience_id, ad_account_id, ad_accounts_audience_update)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudiencesApi->audiences_update: #{e}"
@@ -274,15 +276,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Audience>, Integer, Hash)> audiences_update_with_http_info(ad_account_id, audience_id, audience_update_request)
+> <Array(<AdAccountsAudience>, Integer, Hash)> audiences_update_with_http_info(audience_id, ad_account_id, ad_accounts_audience_update)
 
 ```ruby
 begin
   # Update audience
-  data, status_code, headers = api_instance.audiences_update_with_http_info(ad_account_id, audience_id, audience_update_request)
+  data, status_code, headers = api_instance.audiences_update_with_http_info(audience_id, ad_account_id, ad_accounts_audience_update)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Audience>
+  p data # => <AdAccountsAudience>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudiencesApi->audiences_update_with_http_info: #{e}"
 end
@@ -292,13 +294,13 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **audience_id** | **String** | Audience ID. |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **audience_id** | **String** | Unique identifier of an audience |  |
-| **audience_update_request** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md) | The audience to be updated. |  |
+| **ad_accounts_audience_update** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md) |  |  |
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 

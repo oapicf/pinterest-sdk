@@ -30,7 +30,7 @@ public class AdvancedAuctionItems  {
   */
   @ApiModelProperty(value = "Array with item bid options")
   @Valid
-  private List<AdvancedAuctionItem> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionItem> items = new ArrayList<>();
  /**
   * Response object of item bid options
   * @return catalogId
@@ -60,21 +60,21 @@ public class AdvancedAuctionItems  {
   * @return items
   */
   @JsonProperty("items")
-  public List<AdvancedAuctionItem> getItems() {
+  public List<@Valid AdvancedAuctionItem> getItems() {
     return items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
- public void setItems(List<AdvancedAuctionItem> items) {
+ public void setItems(List<@Valid AdvancedAuctionItem> items) {
     this.items = items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
-  public AdvancedAuctionItems items(List<AdvancedAuctionItem> items) {
+  public AdvancedAuctionItems items(List<@Valid AdvancedAuctionItem> items) {
     this.items = items;
     return this;
   }
@@ -122,10 +122,7 @@ public class AdvancedAuctionItems  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

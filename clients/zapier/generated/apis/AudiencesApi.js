@@ -1,8 +1,10 @@
 const samples = require('../samples/AudiencesApi');
-const Audience = require('../models/Audience');
-const AudienceCreateRequest = require('../models/AudienceCreateRequest');
-const AudienceUpdateRequest = require('../models/AudienceUpdateRequest');
-const Error = require('../models/Error');
+const AdAccountsAudience = require('../models/AdAccountsAudience');
+const AdAccountsAudienceCreate = require('../models/AdAccountsAudienceCreate');
+const AdAccountsAudienceUpdate = require('../models/AdAccountsAudienceUpdate');
+const AudienceOwnershipType = require('../models/AudienceOwnershipType');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const Pinterest.Lib.PaginationOrder = require('../models/Pinterest.Lib.PaginationOrder');
 const audiences_list_200_response = require('../models/audiences_list_200_response');
 const utils = require('../utils/utils');
 
@@ -12,7 +14,7 @@ module.exports = {
         noun: 'audiences',
         display: {
             label: 'Create audience',
-            description: 'Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.',
+            description: 'Create a new audience for the ad account.',
             hidden: false,
         },
         operation: {
@@ -23,10 +25,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...AudienceCreateRequest.fields(),
+                ...AdAccountsAudienceCreate.fields(),
             ],
             outputFields: [
-                ...Audience.fields('', false),
+                ...AdAccountsAudience.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -40,7 +42,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...AudienceCreateRequest.mapping(bundle),
+                        ...AdAccountsAudienceCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -49,7 +51,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AudienceSample']
+            sample: samples['AdAccountsAudienceSample']samples['AdAccountsAudienceSample']
         }
     },
     audiences/get: {
@@ -63,20 +65,20 @@ module.exports = {
         operation: {
             inputFields: [
                 {
+                    key: 'audience_id',
+                    label: 'Audience ID.',
+                    type: 'string',
+                    required: true,
+                },
+                {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
                     type: 'string',
                     required: true,
                 },
-                {
-                    key: 'audience_id',
-                    label: 'Unique identifier of an audience',
-                    type: 'string',
-                    required: true,
-                },
             ],
             outputFields: [
-                ...Audience.fields('', false),
+                ...AdAccountsAudience.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -98,7 +100,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AudienceSample']
+            sample: samples['AdAccountsAudienceSample']
         }
     },
     audiences/list: {
@@ -123,27 +125,16 @@ module.exports = {
                     type: 'string',
                 },
                 {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.',
-                    type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
-                },
-                {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
+                ....fields(),
+                ....fields(),
                 {
-                    key: 'ownership_type',
-                    label: 'Filter audiences by ownership type.',
-                    type: 'string',
-                    choices: [
-                        'OWNED',
-                        'RECEIVED',
-                    ],
+                    key: 'exclude_nca',
+                    label: 'When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).',
+                    type: 'boolean',
                 },
             ],
             outputFields: [
@@ -160,9 +151,10 @@ module.exports = {
                     },
                     params: {
                         'bookmark': bundle.inputData?.['bookmark'],
-                        'order': bundle.inputData?.['order'],
                         'page_size': bundle.inputData?.['page_size'],
+                        'order': bundle.inputData?.['order'],
                         'ownership_type': bundle.inputData?.['ownership_type'],
+                        'exclude_nca': bundle.inputData?.['exclude_nca'],
                     },
                     body: {
                     },
@@ -181,27 +173,27 @@ module.exports = {
         noun: 'audiences',
         display: {
             label: 'Update audience',
-            description: 'Update (edit or remove) an existing targeting audience.',
+            description: 'Update an existing audience for the ad account.',
             hidden: false,
         },
         operation: {
             inputFields: [
+                {
+                    key: 'audience_id',
+                    label: 'Audience ID.',
+                    type: 'string',
+                    required: true,
+                },
                 {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
                     type: 'string',
                     required: true,
                 },
-                {
-                    key: 'audience_id',
-                    label: 'Unique identifier of an audience',
-                    type: 'string',
-                    required: true,
-                },
-                ...AudienceUpdateRequest.fields(),
+                ...AdAccountsAudienceUpdate.fields(),
             ],
             outputFields: [
-                ...Audience.fields('', false),
+                ...AdAccountsAudience.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -215,7 +207,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...AudienceUpdateRequest.mapping(bundle),
+                        ...AdAccountsAudienceUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -224,7 +216,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AudienceSample']
+            sample: samples['AdAccountsAudienceSample']
         }
     },
 }

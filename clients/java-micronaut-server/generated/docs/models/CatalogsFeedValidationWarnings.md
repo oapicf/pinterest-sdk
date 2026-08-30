@@ -183,7 +183,7 @@ Name | Type | Description | Notes
 **DESCRIPTION_LENGTH_TOO_LONG** | `Integer` | The description for some items were truncated because they contain too many characters. |  [optional property]
 **DUPLICATE_HEADERS** | `Integer` | Your feed contains duplicate headers. |  [optional property]
 **EXPIRATION_DATE_INVALID** | `Integer` | Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date. |  [optional property]
-**FETCH_SAME_SIGNATURE** | [**FETCHSAMESIGNATUREEnum**](#FETCHSAMESIGNATUREEnum) | Ingestion completed early because there are no changes to your feed since the last successful update. |  [optional property]
+**FETCH_SAME_SIGNATURE** | `Integer` | Ingestion completed early because there are no changes to your feed since the last successful update. |  [optional property]
 **GENDER_INVALID** | `Integer` | Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. |  [optional property]
 **GTIN_INVALID** | `Integer` | Some items include incorrectly formatted GTINs. |  [optional property]
 **IMAGE_LINK_WARNING** | `Integer` | Some items have image_link URLs that are formatted incorrectly and will not be published with those items. |  [optional property]
@@ -395,11 +395,6 @@ Name | Type | Description | Notes
 
 
 
-## FETCHSAMESIGNATUREEnum
-
-Name | Value
----- | -----
-NUMBER_1 | `1`
 
 
 

@@ -7,7 +7,7 @@
 #' @title TrendingKeywordsResponse
 #' @description TrendingKeywordsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field trends The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend. list(\link{TrendingKeyword}) [optional]
+#' @field trends The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend. list(\link{TrendingKeyword}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,7 +19,7 @@ TrendingKeywordsResponse <- R6::R6Class(
     #' @description
     #' Initialize a new TrendingKeywordsResponse class.
     #'
-    #' @param trends The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
+    #' @param trends The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.
     #' @param ... Other optional arguments.
     initialize = function(`trends` = NULL, ...) {
       if (!is.null(`trends`)) {
@@ -62,9 +62,32 @@ TrendingKeywordsResponse <- R6::R6Class(
       TrendingKeywordsResponseObject <- list()
       if (!is.null(self$`trends`)) {
         TrendingKeywordsResponseObject[["trends"]] <-
-          lapply(self$`trends`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`trends`)
       }
       return(TrendingKeywordsResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

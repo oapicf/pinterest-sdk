@@ -1,9 +1,9 @@
 package org.openapitools.server.api.verticle
 
+import org.openapitools.server.api.model.CustomerListUpload
 import org.openapitools.server.api.model.CustomerListUploadCreateRequest
 import org.openapitools.server.api.model.CustomerListUploadCreateResponse
-import org.openapitools.server.api.model.CustomerListUploadResponse
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -25,10 +25,10 @@ interface CustomerListUploadsApi  {
     suspend fun customerListUploadsCreate(adAccountId:kotlin.String?,customerListId:kotlin.String?,customerListUploadCreateRequest:CustomerListUploadCreateRequest?,context:OperationRequest):Response<CustomerListUploadCreateResponse>
     /* customerListUploadsGet
      * Get customer list upload */
-    suspend fun customerListUploadsGet(adAccountId:kotlin.String?,customerListId:kotlin.String?,customerListUploadId:kotlin.String?,context:OperationRequest):Response<CustomerListUploadResponse>
+    suspend fun customerListUploadsGet(adAccountId:kotlin.String?,customerListId:kotlin.String?,customerListUploadId:kotlin.String?,context:OperationRequest):Response<CustomerListUpload>
     /* customerListUploadsRun
      * Run customer list upload */
-    suspend fun customerListUploadsRun(adAccountId:kotlin.String?,customerListId:kotlin.String?,customerListUploadId:kotlin.String?,context:OperationRequest):Response<CustomerListUploadResponse>
+    suspend fun customerListUploadsRun(adAccountId:kotlin.String?,customerListId:kotlin.String?,customerListUploadId:kotlin.String?,context:OperationRequest):Response<CustomerListUpload>
     companion object {
         const val address = "CustomerListUploadsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

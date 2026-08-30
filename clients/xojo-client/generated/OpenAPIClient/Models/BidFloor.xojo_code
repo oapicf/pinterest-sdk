@@ -11,7 +11,7 @@ Protected Class BidFloor
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Always the string 'bidfloor'
+			Always the string 'bidfloor'.
 		#tag EndNote
 		type As Xoson.O.OptionalString
 	#tag EndProperty

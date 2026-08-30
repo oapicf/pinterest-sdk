@@ -8,7 +8,7 @@ package org.openapitools.server.model
  * @param report  for example: ''null''
 */
 final case class CatalogsReportParameters (
-  catalogType: CatalogsType,
+  catalogType: String,
   report: CatalogsHotelReportParametersReport
 )
 

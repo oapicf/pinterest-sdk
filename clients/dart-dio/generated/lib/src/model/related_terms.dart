@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/related_terms_related_terms_list_inner.dart';
+import 'package:openapi/src/model/related_terms_related_terms_list_items.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -28,7 +28,7 @@ abstract class RelatedTerms implements Built<RelatedTerms, RelatedTermsBuilder> 
 
   /// The id of the advertiser.
   @BuiltValueField(wireName: r'related_terms_list')
-  BuiltList<RelatedTermsRelatedTermsListInner>? get relatedTermsList;
+  BuiltList<RelatedTermsRelatedTermsListItems>? get relatedTermsList;
 
   RelatedTerms._();
 
@@ -71,7 +71,7 @@ class _$RelatedTermsSerializer implements PrimitiveSerializer<RelatedTerms> {
       yield r'related_terms_list';
       yield serializers.serialize(
         object.relatedTermsList,
-        specifiedType: const FullType(BuiltList, [FullType(RelatedTermsRelatedTermsListInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(RelatedTermsRelatedTermsListItems)]),
       );
     }
   }
@@ -100,22 +100,25 @@ class _$RelatedTermsSerializer implements PrimitiveSerializer<RelatedTerms> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'related_term_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.relatedTermCount = valueDes;
           break;
         case r'related_terms_list':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(RelatedTermsRelatedTermsListInner)]),
-          ) as BuiltList<RelatedTermsRelatedTermsListInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(RelatedTermsRelatedTermsListItems)]),
+          ) as BuiltList<RelatedTermsRelatedTermsListItems>?;
+          if (valueDes == null) continue;
           result.relatedTermsList.replace(valueDes);
           break;
         default:

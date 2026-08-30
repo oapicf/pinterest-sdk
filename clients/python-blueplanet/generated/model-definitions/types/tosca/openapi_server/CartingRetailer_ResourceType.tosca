@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CartingRetailer"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CartingRetailer"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CartingRetailer {
+    title = CartingRetailer
+    description = CartingRetailer
+    derivedFrom = Root
+    properties {
+        retailer_id {
+          type =  string
+          description = "Unique identifier for the retailer"
+          optional = true
+        }
+        retailer_name {
+          type =  string
+          description = "Name of the retailer"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CartingRetailer {
+    title = CartingRetailer
+    description = CartingRetailer
+    implements = openapi_server.resourceTypes.CartingRetailer
+
+  }
+}

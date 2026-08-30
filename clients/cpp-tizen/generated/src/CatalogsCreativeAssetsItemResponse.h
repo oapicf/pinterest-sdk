@@ -1,7 +1,7 @@
 /*
  * CatalogsCreativeAssetsItemResponse.h
  *
- * Object describing a hotel record
+ * Object describing a creative assets item record
  */
 
 #ifndef _CatalogsCreativeAssetsItemResponse_H_
@@ -10,7 +10,6 @@
 
 #include <string>
 #include "CatalogsCreativeAssetsAttributes.h"
-#include "CatalogsType.h"
 #include "Pin.h"
 #include <list>
 #include "Object.h"
@@ -24,7 +23,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Object describing a hotel record
+/*! \brief Object describing a creative assets item record
  *
  *  \ingroup Models
  *
@@ -58,11 +57,11 @@ public:
 	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get The catalog creative assets id in the merchant namespace
 	 */
 	std::string getCreativeAssetsId();
@@ -70,6 +69,13 @@ public:
 	/*! \brief Set The catalog creative assets id in the merchant namespace
 	 */
 	void setCreativeAssetsId(std::string  creative_assets_id);
+	/*! \brief Get Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	std::string getItemResponseKind();
+
+	/*! \brief Set Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	void setItemResponseKind(std::string  item_response_kind);
 	/*! \brief Get The pins mapped to the item
 	 */
 	std::list<Pin> getPins();
@@ -80,8 +86,9 @@ public:
 
 private:
 	CatalogsCreativeAssetsAttributes attributes;
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	std::string creative_assets_id;
+	std::string item_response_kind;
 	std::list <Pin>pins;
 	void __init();
 	void __cleanup();

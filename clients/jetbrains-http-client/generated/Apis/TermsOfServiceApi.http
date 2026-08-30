@@ -1,0 +1,6 @@
+## TermsOfServiceApi
+
+### Get terms of service
+## Get terms of service
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/terms_of_service?includeHtml={{includeHtml}}&tosType={{tosType}}
+Accept: application/json

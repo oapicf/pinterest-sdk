@@ -7,7 +7,7 @@
     {
       "name": "catalog_id",
       "type": "string",
-      "doc": "Catalog id pertaining to the hotel product group."
+      "doc": "Catalog ID pertaining to the product group."
     },
     {
       "name": "catalog_type",
@@ -40,12 +40,12 @@
     {
       "name": "id",
       "type": "string",
-      "doc": "ID of the hotel product group."
+      "doc": "ID of the catalog product group."
     },
     {
       "name": "name",
       "type": ["null", "string"],
-      "doc": "Name of hotel product group",
+      "doc": "Name of catalog product group",
       "default": null
     },
     {

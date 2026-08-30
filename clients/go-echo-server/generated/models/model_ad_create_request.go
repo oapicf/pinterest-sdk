@@ -3,7 +3,7 @@ package models
 type AdCreateRequest struct {
 
 	// ID of the ad group that contains the ad.
-	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\\\d+$"`
+	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\d+$"`
 
 	// Deep link URL for Android devices.
 	AndroidDeepLink *string `json:"android_deep_link,omitempty"`
@@ -37,6 +37,9 @@ type AdCreateRequest struct {
 	// Deep link URL for iOS devices.
 	IosDeepLink *string `json:"ios_deep_link,omitempty"`
 
+	// Is the ad a carting/WTB ad?
+	IsCarting bool `json:"is_carting,omitempty"`
+
 	// Is original pin deleted?
 	IsPinDeleted bool `json:"is_pin_deleted,omitempty"`
 
@@ -44,21 +47,21 @@ type AdCreateRequest struct {
 	IsRemovable bool `json:"is_removable,omitempty"`
 
 	// Lead form ID for lead ad generation.
-	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
+	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\d+$"`
 
 	// Name of the ad - 255 chars max.
 	Name *string `json:"name,omitempty"`
 
+	// Pin ID.
+	PinId string `json:"pin_id" validate:"regexp=^\\d+$"`
+
 	// Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-	QuizPinData *QuizPinData `json:"quiz_pin_data,omitempty"`
+	QuizPinData *map[string]interface{} `json:"quiz_pin_data,omitempty"`
 
 	Status EntityStatus `json:"status,omitempty"`
 
-	TrackingUrls *TrackingUrls `json:"tracking_urls,omitempty"`
+	TrackingUrls *map[string]interface{} `json:"tracking_urls,omitempty"`
 
 	// Tracking URL for ad impressions.
 	ViewTrackingUrl *string `json:"view_tracking_url,omitempty"`
-
-	// Pin ID.
-	PinId string `json:"pin_id" validate:"regexp=^\\\\d+$"`
 }

@@ -25,7 +25,7 @@ class MediaApi : public Service {
 public:
     MediaApi() = default;
 
-    virtual ~MediaApi() = default;
+    virtual ~MediaApi();
 
     /**
     * Register media upload.

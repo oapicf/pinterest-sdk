@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **boards_user_follows_list**
-> BoardsUserFollowsList200Response boards_user_follows_list(bookmark=bookmark, page_size=page_size, explicit_following=explicit_following, ad_account_id=ad_account_id)
+> BoardsList200Response boards_user_follows_list(ad_account_id=ad_account_id, explicit_following=explicit_following, bookmark=bookmark, page_size=page_size)
 
 List following boards
 
@@ -34,7 +34,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.boards_user_follows_list200_response import BoardsUserFollowsList200Response
+from pinterestsdk.models.boards_list200_response import BoardsList200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -57,14 +57,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.UserAccountApi(api_client)
-    bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-    explicit_following = False # bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to False)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
+    explicit_following = False # bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to False)
+    bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # List following boards
-        api_response = api_instance.boards_user_follows_list(bookmark=bookmark, page_size=page_size, explicit_following=explicit_following, ad_account_id=ad_account_id)
+        api_response = api_instance.boards_user_follows_list(ad_account_id=ad_account_id, explicit_following=explicit_following, bookmark=bookmark, page_size=page_size)
         print("The response of UserAccountApi->boards_user_follows_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -78,14 +78,14 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to False]
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
+ **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to False]
+ **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -100,18 +100,22 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid user id |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **follow_user_update**
-> UserSummary follow_user_update(username, follow_user_request)
+> FollowUser follow_user_update(username, follow_user_create)
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 Use this request, as a signed-in user, to follow another user.
 
@@ -121,8 +125,8 @@ Use this request, as a signed-in user, to follow another user.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.follow_user_request import FollowUserRequest
-from pinterestsdk.models.user_summary import UserSummary
+from pinterestsdk.models.follow_user import FollowUser
+from pinterestsdk.models.follow_user_create import FollowUserCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -143,12 +147,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.UserAccountApi(api_client)
-    username = 'username' # str | A valid username
-    follow_user_request = pinterestsdk.FollowUserRequest() # FollowUserRequest | Follow a user.
+    username = 'username_example' # str | A valid username
+    follow_user_create = pinterestsdk.FollowUserCreate() # FollowUserCreate | 
 
     try:
         # Follow user
-        api_response = api_instance.follow_user_update(username, follow_user_request)
+        api_response = api_instance.follow_user_update(username, follow_user_create)
         print("The response of UserAccountApi->follow_user_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -163,11 +167,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| A valid username | 
- **follow_user_request** | [**FollowUserRequest**](FollowUserRequest.md)| Follow a user. | 
+ **follow_user_create** | [**FollowUserCreate**](FollowUserCreate.md)|  | 
 
 ### Return type
 
-[**UserSummary**](UserSummary.md)
+[**FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -182,9 +186,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | User not found |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -226,7 +235,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.UserAccountApi(api_client)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # List followers
@@ -245,7 +254,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -264,9 +273,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid user id |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -340,17 +353,22 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **unverify_website_delete**
-> unverify_website_delete(website)
+> UserWebsite unverify_website_delete(website)
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 ### Example
 
@@ -358,6 +376,7 @@ Unverifu a website verified by the signed-in user.
 
 ```python
 import pinterestsdk
+from pinterestsdk.models.user_website import UserWebsite
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -378,11 +397,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.UserAccountApi(api_client)
-    website = 'mysite.test' # str | Website with path or domain only
+    website = 'website_example' # str | Website with path or domain only
 
     try:
         # Unverify website
-        api_instance.unverify_website_delete(website)
+        api_response = api_instance.unverify_website_delete(website)
+        print("The response of UserAccountApi->unverify_website_delete:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling UserAccountApi->unverify_website_delete: %s\n" % e)
 ```
@@ -398,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -413,9 +434,14 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Successfully unverified website |  -  |
-**404** | Website not in user list. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**204** | Resource deleted successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -436,6 +462,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 ```python
 import pinterestsdk
 from pinterestsdk.models.analytics_metrics_response import AnalyticsMetricsResponse
+from pinterestsdk.models.querymetrictypes_items import QuerymetrictypesItems
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -458,13 +485,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     api_instance = pinterestsdk.UserAccountApi(api_client)
     start_date = '2013-10-20' # date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     end_date = '2013-10-20' # date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    from_claimed_content = BOTH # str | Filter on Pins that match your claimed domain. (optional) (default to BOTH)
-    pin_format = ALL # str | Pin formats to get data for, default is all. (optional) (default to ALL)
-    app_types = ALL # str | Apps or devices to get data for, default is all. (optional) (default to ALL)
-    content_type = ALL # str | Filter to paid or organic data. Default is all. (optional) (default to ALL)
-    source = ALL # str | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to ALL)
-    metric_types = ['metric_types_example'] # List[str] | Metric types to get data for, default is all.  (optional)
-    split_field = NO_SPLIT # str | How to split the data into groups. Not including this param means data won't be split. (optional) (default to NO_SPLIT)
+    from_claimed_content = 'BOTH' # str | Filter on Pins that match your claimed domain. (optional) (default to 'BOTH')
+    pin_format = 'ALL' # str | Pin formats to get data for, default is all. (optional) (default to 'ALL')
+    app_types = 'ALL' # str | Apps or devices to get data for, default is all. (optional) (default to 'ALL')
+    content_type = 'ALL' # str | Filter to paid or organic data. Default is all. (optional) (default to 'ALL')
+    source = 'ALL' # str | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to 'ALL')
+    metric_types = [pinterestsdk.QuerymetrictypesItems()] # List[QuerymetrictypesItems] | Metric types to get data for, default is all. (optional)
+    split_field = 'NO_SPLIT' # str | How to split the data into groups. Not including this param means data won't be split. (optional) (default to 'NO_SPLIT')
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
 
     try:
@@ -485,13 +512,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **from_claimed_content** | **str**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH]
- **pin_format** | **str**| Pin formats to get data for, default is all. | [optional] [default to ALL]
- **app_types** | **str**| Apps or devices to get data for, default is all. | [optional] [default to ALL]
- **content_type** | **str**| Filter to paid or organic data. Default is all. | [optional] [default to ALL]
- **source** | **str**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL]
- **metric_types** | [**List[str]**](str.md)| Metric types to get data for, default is all.  | [optional] 
- **split_field** | **str**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT]
+ **from_claimed_content** | **str**| Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;]
+ **pin_format** | **str**| Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
+ **app_types** | **str**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
+ **content_type** | **str**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
+ **source** | **str**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
+ **metric_types** | [**List[QuerymetrictypesItems]**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] 
+ **split_field** | **str**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &#39;NO_SPLIT&#39;]
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -511,10 +538,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid user accounts analytics parameters. |  -  |
-**403** | Not authorized to access the user account analytics. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -535,7 +565,9 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 
 ```python
 import pinterestsdk
+from pinterestsdk.models.querymetrictypes_items import QuerymetrictypesItems
 from pinterestsdk.models.top_pins_analytics_response import TopPinsAnalyticsResponse
+from pinterestsdk.models.top_pins_sort_by import TopPinsSortBy
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -560,15 +592,15 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     api_instance = pinterestsdk.UserAccountApi(api_client)
     start_date = '2013-10-20' # date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     end_date = '2013-10-20' # date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    sort_by = 'sort_by_example' # str | Specify sorting order for metrics
-    from_claimed_content = BOTH # str | Filter on Pins that match your claimed domain. (optional) (default to BOTH)
-    pin_format = ALL # str | Pin formats to get data for, default is all. (optional) (default to ALL)
-    app_types = ALL # str | Apps or devices to get data for, default is all. (optional) (default to ALL)
-    content_type = ALL # str | Filter to paid or organic data. Default is all. (optional) (default to ALL)
-    source = ALL # str | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to ALL)
-    metric_types = ['metric_types_example'] # List[str] | Metric types to get data for, default is all.  (optional)
+    sort_by = pinterestsdk.TopPinsSortBy() # TopPinsSortBy | Specify sorting order for metrics
+    from_claimed_content = 'BOTH' # str | Filter on Pins that match your claimed domain. (optional) (default to 'BOTH')
+    pin_format = 'ALL' # str | Pin formats to get data for, default is all. (optional) (default to 'ALL')
+    app_types = 'ALL' # str | Apps or devices to get data for, default is all. (optional) (default to 'ALL')
+    content_type = 'ALL' # str | Filter to paid or organic data. Default is all. (optional) (default to 'ALL')
+    source = 'ALL' # str | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to 'ALL')
+    metric_types = [pinterestsdk.QuerymetrictypesItems()] # List[QuerymetrictypesItems] | Metric types to get data for, default is all. (optional)
     num_of_pins = 10 # int | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
-    created_in_last_n_days = 30 # int | Get metrics for pins created in the last \"n\" days. (optional)
+    created_in_last_n_days = 3.4 # float | Get metrics for pins created in the last \"n\" days. (optional)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
 
     try:
@@ -589,15 +621,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sort_by** | **str**| Specify sorting order for metrics | 
- **from_claimed_content** | **str**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH]
- **pin_format** | **str**| Pin formats to get data for, default is all. | [optional] [default to ALL]
- **app_types** | **str**| Apps or devices to get data for, default is all. | [optional] [default to ALL]
- **content_type** | **str**| Filter to paid or organic data. Default is all. | [optional] [default to ALL]
- **source** | **str**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL]
- **metric_types** | [**List[str]**](str.md)| Metric types to get data for, default is all.  | [optional] 
+ **sort_by** | [**TopPinsSortBy**](.md)| Specify sorting order for metrics | 
+ **from_claimed_content** | **str**| Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;]
+ **pin_format** | **str**| Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
+ **app_types** | **str**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
+ **content_type** | **str**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
+ **source** | **str**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
+ **metric_types** | [**List[QuerymetrictypesItems]**](QuerymetrictypesItems.md)| Metric types to get data for, default is all. | [optional] 
  **num_of_pins** | **int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
- **created_in_last_n_days** | **int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
+ **created_in_last_n_days** | **float**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -617,9 +649,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**403** | Not authorized to access the user account analytics. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -640,7 +676,9 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 
 ```python
 import pinterestsdk
+from pinterestsdk.models.queryvideopinmetrictypes_items import QueryvideopinmetrictypesItems
 from pinterestsdk.models.top_video_pins_analytics_response import TopVideoPinsAnalyticsResponse
+from pinterestsdk.models.top_video_pins_sort_by import TopVideoPinsSortBy
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -665,15 +703,15 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     api_instance = pinterestsdk.UserAccountApi(api_client)
     start_date = '2013-10-20' # date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     end_date = '2013-10-20' # date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    sort_by = 'sort_by_example' # str | Specify sorting order for video metrics
-    from_claimed_content = BOTH # str | Filter on Pins that match your claimed domain. (optional) (default to BOTH)
-    pin_format = ALL # str | Pin formats to get data for, default is all. (optional) (default to ALL)
-    app_types = ALL # str | Apps or devices to get data for, default is all. (optional) (default to ALL)
-    content_type = ALL # str | Filter to paid or organic data. Default is all. (optional) (default to ALL)
-    source = ALL # str | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to ALL)
-    metric_types = ['metric_types_example'] # List[str] | Metric types to get video data for, default is all.  (optional)
+    sort_by = pinterestsdk.TopVideoPinsSortBy() # TopVideoPinsSortBy | Specify sorting order for video metrics
+    from_claimed_content = 'BOTH' # str | Filter on Pins that match your claimed domain. (optional) (default to 'BOTH')
+    pin_format = 'ALL' # str | Pin formats to get data for, default is all. (optional) (default to 'ALL')
+    app_types = 'ALL' # str | Apps or devices to get data for, default is all. (optional) (default to 'ALL')
+    content_type = 'ALL' # str | Filter to paid or organic data. Default is all. (optional) (default to 'ALL')
+    source = 'ALL' # str | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional) (default to 'ALL')
+    metric_types = [pinterestsdk.QueryvideopinmetrictypesItems()] # List[QueryvideopinmetrictypesItems] | Metric types to get video data for, default is all. (optional)
     num_of_pins = 10 # int | Number of pins to include, default is 10. Max is 50. (optional) (default to 10)
-    created_in_last_n_days = 30 # int | Get metrics for pins created in the last \"n\" days. (optional)
+    created_in_last_n_days = 3.4 # float | Get metrics for pins created in the last \"n\" days. (optional)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
 
     try:
@@ -694,15 +732,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **sort_by** | **str**| Specify sorting order for video metrics | 
- **from_claimed_content** | **str**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH]
- **pin_format** | **str**| Pin formats to get data for, default is all. | [optional] [default to ALL]
- **app_types** | **str**| Apps or devices to get data for, default is all. | [optional] [default to ALL]
- **content_type** | **str**| Filter to paid or organic data. Default is all. | [optional] [default to ALL]
- **source** | **str**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL]
- **metric_types** | [**List[str]**](str.md)| Metric types to get video data for, default is all.  | [optional] 
+ **sort_by** | [**TopVideoPinsSortBy**](.md)| Specify sorting order for video metrics | 
+ **from_claimed_content** | **str**| Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;]
+ **pin_format** | **str**| Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
+ **app_types** | **str**| Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
+ **content_type** | **str**| Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
+ **source** | **str**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
+ **metric_types** | [**List[QueryvideopinmetrictypesItems]**](QueryvideopinmetrictypesItems.md)| Metric types to get video data for, default is all. | [optional] 
  **num_of_pins** | **int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
- **created_in_last_n_days** | **int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
+ **created_in_last_n_days** | **float**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -722,9 +760,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**403** | Not authorized to access the user account analytics. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -765,9 +807,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.UserAccountApi(api_client)
-    username = 'username' # str | A valid username
+    username = 'username_example' # str | A valid username
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # List following interests
@@ -787,7 +829,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| A valid username | 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -806,10 +848,10 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid parameters |  -  |
-**401** | Authorization failed |  -  |
-**404** | User not found |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The server could not understand the request due to invalid syntax. |  -  |
+**401** | Access is unauthorized. |  -  |
+**404** | The server cannot find the requested resource. |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -822,7 +864,8 @@ Get user account
 Get account information for the "operation user_account"
 - By default, the "operation user_account" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+[Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ "Understanding Business Access"
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See [Understanding Business Access] for more information.
 
 ### Example
 
@@ -891,14 +934,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | response |  -  |
-**403** | Not authorized to access the user account. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_following_get**
-> UserFollowingGet200Response user_following_get(bookmark=bookmark, page_size=page_size, feed_type=feed_type, explicit_following=explicit_following, ad_account_id=ad_account_id)
+> FollowersList200Response user_following_get(ad_account_id=ad_account_id, explicit_following=explicit_following, feed_type=feed_type, bookmark=bookmark, page_size=page_size)
 
 List following
 
@@ -911,7 +958,8 @@ Get a list of who a certain user follows.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.user_following_get200_response import UserFollowingGet200Response
+from pinterestsdk.models.followers_list200_response import FollowersList200Response
+from pinterestsdk.models.user_following_feed_type import UserFollowingFeedType
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -934,15 +982,15 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.UserAccountApi(api_client)
-    bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-    feed_type = ALL # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional) (default to ALL)
-    explicit_following = False # bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to False)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
+    explicit_following = False # bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to False)
+    feed_type = 'ALL' # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional) (default to 'ALL')
+    bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # List following
-        api_response = api_instance.user_following_get(bookmark=bookmark, page_size=page_size, feed_type=feed_type, explicit_following=explicit_following, ad_account_id=ad_account_id)
+        api_response = api_instance.user_following_get(ad_account_id=ad_account_id, explicit_following=explicit_following, feed_type=feed_type, bookmark=bookmark, page_size=page_size)
         print("The response of UserAccountApi->user_following_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -956,15 +1004,15 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **feed_type** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to ALL]
- **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to False]
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
+ **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to False]
+ **feed_type** | [**UserFollowingFeedType**](.md)| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to &#39;ALL&#39;]
+ **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**UserFollowingGet200Response**](UserFollowingGet200Response.md)
+[**FollowersList200Response**](FollowersList200Response.md)
 
 ### Authorization
 
@@ -979,8 +1027,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | response |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1019,7 +1072,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.UserAccountApi(api_client)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # Get user websites
@@ -1038,7 +1091,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -1057,14 +1110,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**403** | Not authorized to access the user website list. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verify_website_update**
-> UserWebsiteSummary verify_website_update(user_website_verify_request, ad_account_id=ad_account_id)
+> UserWebsite verify_website_update(user_website_create, ad_account_id=ad_account_id)
 
 Verify website
 
@@ -1076,8 +1133,8 @@ Verify a website as a signed-in user.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.user_website_summary import UserWebsiteSummary
-from pinterestsdk.models.user_website_verify_request import UserWebsiteVerifyRequest
+from pinterestsdk.models.user_website import UserWebsite
+from pinterestsdk.models.user_website_create import UserWebsiteCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -1098,12 +1155,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.UserAccountApi(api_client)
-    user_website_verify_request = pinterestsdk.UserWebsiteVerifyRequest() # UserWebsiteVerifyRequest | Verify a website.
+    user_website_create = pinterestsdk.UserWebsiteCreate() # UserWebsiteCreate | 
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account. (optional)
 
     try:
         # Verify website
-        api_response = api_instance.verify_website_update(user_website_verify_request, ad_account_id=ad_account_id)
+        api_response = api_instance.verify_website_update(user_website_create, ad_account_id=ad_account_id)
         print("The response of UserAccountApi->verify_website_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -1117,12 +1174,12 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_website_verify_request** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | 
+ **user_website_create** | [**UserWebsiteCreate**](UserWebsiteCreate.md)|  | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -1137,13 +1194,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **website_verification_get**
-> UserWebsiteVerificationCode website_verification_get(ad_account_id=ad_account_id)
+> UserWebsiteVerification website_verification_get(ad_account_id=ad_account_id)
 
 Get user verification code for website claiming
 
@@ -1156,7 +1219,7 @@ Get verification code for user to install on the website to claim it.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.user_website_verification_code import UserWebsiteVerificationCode
+from pinterestsdk.models.user_website_verification import UserWebsiteVerification
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -1201,7 +1264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 
@@ -1216,9 +1279,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**403** | Not authorized to access the user verification code for website claiming. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

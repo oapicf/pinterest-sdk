@@ -4,7 +4,6 @@ import apimodels.BusinessAccessUserSummary;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -14,54 +13,65 @@ import javax.validation.Valid;
 /**
  * AssetGroupBinding
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AssetGroupBinding   {
   @JsonProperty("ad_accounts_ids")
-  
-  private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = null;
+  @NotNull
+
+  private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = new ArrayList<>();
 
   @JsonProperty("asset_group_description")
-  
+  @NotNull
+
   private String assetGroupDescription;
 
   @JsonProperty("asset_group_name")
-  
+  @NotNull
+
   private String assetGroupName;
 
   @JsonProperty("asset_group_types")
-  
-  private List<String> assetGroupTypes = null;
+  @NotNull
+
+  private List<String> assetGroupTypes = new ArrayList<>();
 
   @JsonProperty("catalogs_ids")
-  
-  private List<@Pattern(regexp = "^\\d+$")String> catalogsIds = null;
+  @NotNull
+
+  private List<@Pattern(regexp = "^\\d+$")String> catalogsIds = new ArrayList<>();
 
   @JsonProperty("created_by")
-  @Valid
+  @NotNull
+@Valid
 
   private BusinessAccessUserSummary createdBy;
 
   @JsonProperty("created_time")
-  
+  @NotNull
+
   private Integer createdTime;
 
   @JsonProperty("id")
-  @Pattern(regexp="^\\d+$")
+  @NotNull
+@Pattern(regexp="^\\d+$")
 
   private String id;
 
   @JsonProperty("owner")
-  @Valid
+  @NotNull
+@Valid
 
   private BusinessAccessUserSummary owner;
 
   @JsonProperty("profiles_ids")
-  
-  private List<@Pattern(regexp = "^\\d+$")String> profilesIds = null;
+  @NotNull
+
+  private List<@Pattern(regexp = "^\\d+$")String> profilesIds = new ArrayList<>();
 
   @JsonProperty("updated_time")
-  
+  @NotNull
+
   private Integer updatedTime;
 
   public AssetGroupBinding adAccountsIds(List<@Pattern(regexp = "^\\d+$")String> adAccountsIds) {
@@ -337,10 +347,7 @@ public class AssetGroupBinding   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

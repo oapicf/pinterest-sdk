@@ -18,7 +18,7 @@ using namespace Tiny;
             
             Date endDate
             , 
-            std::list<std::string> metricTypes
+            std::list<MultiPinsAnalyticsMetricTypesItem> metricTypes
             
             , 
             
@@ -88,7 +88,7 @@ using namespace Tiny;
             
             Date endDate
             , 
-            std::list<std::string> metricTypes
+            std::list<QuerypinanalyticsmetrictypesItems> metricTypes
             
             , 
             
@@ -207,7 +207,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            Pin
         >
         PinsApi::
         pins_delete(
@@ -252,7 +252,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            Pin obj(output_string);
+
+
+            Response<Pin> response(obj, httpCode);
             return response;
         }
 
@@ -321,7 +326,7 @@ using namespace Tiny;
         PinsApi::
         pins_list(
             
-            std::string pinFilter
+            PinFilter pinFilter
             , 
             
             bool pinMetrics
@@ -330,13 +335,22 @@ using namespace Tiny;
             bool includeProtectedPins
             , 
             
-            std::string pinType
+            PinType pinType
             , 
             std::list<CreativeType> creativeTypes
             
             , 
             
             std::string adAccountId
+            , 
+            
+            std::string domain
+            , 
+            std::list<std::string> domains
+            
+            , 
+            
+            bool includeProductTagObj
             , 
             
             std::string bookmark
@@ -351,7 +365,7 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | pinFilter pinMetrics includeProtectedPins pinType creativeTypes adAccountId bookmark pageSize 
+            // Query    | pinFilter pinMetrics includeProtectedPins pinType creativeTypes adAccountId domain domains includeProductTagObj bookmark pageSize 
             addQueryParam("pin_filter",pinFilter);
             addQueryParam("pin_metrics",pinMetrics);
             addQueryParam("include_protected_pins",includeProtectedPins);
@@ -360,6 +374,11 @@ using namespace Tiny;
                 addQueryParam("creative_types", std::string(x));
             }
             addQueryParam("ad_account_id",adAccountId);
+            addQueryParam("domain",domain);
+            for (auto &x : domains){
+                addQueryParam("domains", std::string(x));
+            }
+            addQueryParam("include_product_tag_obj",includeProductTagObj);
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
 
@@ -398,7 +417,7 @@ using namespace Tiny;
             std::string pinId
             , 
             
-            Pins_save_request pinsSaveRequest
+            PinsSaveRequestCreate pinsSaveRequestCreate
             , 
             
             std::string adAccountId
@@ -431,11 +450,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | pinsSaveRequest
+            // Body     | pinsSaveRequestCreate
 
 
 
-            payload = pinsSaveRequest.toJson().dump();
+            payload = pinsSaveRequestCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 

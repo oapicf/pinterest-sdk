@@ -9,10 +9,10 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/error.dart';
-import 'package:openapi/src/model/leads_export_create_request.dart';
-import 'package:openapi/src/model/leads_export_create_response.dart';
 import 'package:openapi/src/model/leads_export_response_data.dart';
+import 'package:openapi/src/model/leads_exports.dart';
+import 'package:openapi/src/model/leads_exports_create.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 
 class LeadsExportApi {
 
@@ -23,11 +23,11 @@ class LeadsExportApi {
   const LeadsExportApi(this._dio, this._serializers);
 
   /// Create a request to export leads collected from a lead ad
-  /// &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+  /// **This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a &#x60;leads_export_id&#x60; token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [leadsExportCreateRequest] 
+  /// * [leadsExportsCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -35,11 +35,11 @@ class LeadsExportApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LeadsExportCreateResponse] as data
+  /// Returns a [Future] containing a [Response] with a [LeadsExports] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LeadsExportCreateResponse>> leadsExportCreate({ 
+  Future<Response<LeadsExports>> leadsExportCreate({ 
     required String adAccountId,
-    required LeadsExportCreateRequest leadsExportCreateRequest,
+    required LeadsExportsCreate leadsExportsCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -69,8 +69,8 @@ class LeadsExportApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(LeadsExportCreateRequest);
-      _bodyData = _serializers.serialize(leadsExportCreateRequest, specifiedType: _type);
+      const _type = FullType(LeadsExportsCreate);
+      _bodyData = _serializers.serialize(leadsExportsCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -93,14 +93,14 @@ class LeadsExportApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LeadsExportCreateResponse? _responseData;
+    LeadsExports? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(LeadsExportCreateResponse),
-      ) as LeadsExportCreateResponse;
+        specifiedType: const FullType(LeadsExports),
+      ) as LeadsExports;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -112,7 +112,7 @@ class LeadsExportApi {
       );
     }
 
-    return Response<LeadsExportCreateResponse>(
+    return Response<LeadsExports>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -125,7 +125,7 @@ class LeadsExportApi {
   }
 
   /// Get the lead export from the lead export create call
-  /// &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+  /// **This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.

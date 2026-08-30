@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.LabelStatusBulkUpdate
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,8 +32,8 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param id Label ID.
- * @param status Set status to `ARCHIVED` to remove the label from the parent entity.
- * @param `value` </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
+ * @param parentId Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+ * @param status 
  */
 
 
@@ -34,25 +43,15 @@ data class LabelBulkUpdateRequest (
     @Json(name = "id")
     val id: kotlin.String,
 
-    /* Set status to `ARCHIVED` to remove the label from the parent entity. */
-    @Json(name = "status")
-    val status: LabelBulkUpdateRequest.Status? = null,
+    /* Unique identifier of the asset you are labelling. Currently, you can only label campaigns. */
+    @Json(name = "parent_id")
+    val parentId: kotlin.String,
 
-    /* </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit. */
-    @Json(name = "value")
-    val `value`: kotlin.String? = null
+    @Json(name = "status")
+    val status: LabelStatusBulkUpdate
 
 ) {
 
-    /**
-     * Set status to `ARCHIVED` to remove the label from the parent entity.
-     *
-     * Values: ARCHIVED
-     */
-    @JsonClass(generateAdapter = false)
-    enum class Status(val value: kotlin.String) {
-        @Json(name = "ARCHIVED") ARCHIVED("ARCHIVED");
-    }
 
 }
 

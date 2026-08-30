@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## adAccountsSubscriptionsDelById
 
-> adAccountsSubscriptionsDelById(adAccountsSubscriptionsDelByIdRequest): ApiRequest[Unit]
+> adAccountsSubscriptionsDelById(adAccountsSubscriptionsDelByIdRequest): ApiRequest[LeadSubscription]
 
 Delete lead ads subscription
 
@@ -27,6 +27,7 @@ Delete an existing lead ads webhook subscription by ID.   - Only requests for th
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -54,6 +55,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling LeadAdsApi#adAccountsSubscriptionsDelById")
@@ -79,8 +81,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**LeadSubscription**](LeadSubscription.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -94,6 +96,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
 | **204** | Resource deleted successfully. |  -  |
 | **400** | The request could not be understood by the server due to unexpected data. |  -  |
 | **401** | Authentication is required and has either failed or not been provided. |  -  |

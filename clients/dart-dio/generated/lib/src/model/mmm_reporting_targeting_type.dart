@@ -26,6 +26,12 @@ class MMMReportingTargetingType extends EnumClass {
   /// Ad targeting types for MMM report
   @BuiltValueEnumConst(wireName: r'LOCATION')
   static const MMMReportingTargetingType LOCATION = _$LOCATION;
+  /// Ad targeting types for MMM report
+  @BuiltValueEnumConst(wireName: r'PLACEMENT')
+  static const MMMReportingTargetingType PLACEMENT = _$PLACEMENT;
+  /// Ad targeting types for MMM report
+  @BuiltValueEnumConst(wireName: r'AUDIENCE_INCLUDE')
+  static const MMMReportingTargetingType AUDIENCE_INCLUDE = _$AUDIENCE_INCLUDE;
 
   static Serializer<MMMReportingTargetingType> get serializer => _$mMMReportingTargetingTypeSerializer;
 

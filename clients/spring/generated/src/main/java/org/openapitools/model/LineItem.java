@@ -2,40 +2,49 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * LineItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LineItem {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String productBrand;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String productCategory;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer productId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String productName;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String productPrice;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer productQuantity;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String productVariant;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String productVariantId;
 
   public LineItem productBrand(@Nullable String productBrand) {
@@ -54,6 +63,7 @@ public class LineItem {
     return productBrand;
   }
 
+  @JsonProperty("product_brand")
   public void setProductBrand(@Nullable String productBrand) {
     this.productBrand = productBrand;
   }
@@ -74,6 +84,7 @@ public class LineItem {
     return productCategory;
   }
 
+  @JsonProperty("product_category")
   public void setProductCategory(@Nullable String productCategory) {
     this.productCategory = productCategory;
   }
@@ -94,6 +105,7 @@ public class LineItem {
     return productId;
   }
 
+  @JsonProperty("product_id")
   public void setProductId(@Nullable Integer productId) {
     this.productId = productId;
   }
@@ -114,6 +126,7 @@ public class LineItem {
     return productName;
   }
 
+  @JsonProperty("product_name")
   public void setProductName(@Nullable String productName) {
     this.productName = productName;
   }
@@ -134,6 +147,7 @@ public class LineItem {
     return productPrice;
   }
 
+  @JsonProperty("product_price")
   public void setProductPrice(@Nullable String productPrice) {
     this.productPrice = productPrice;
   }
@@ -154,6 +168,7 @@ public class LineItem {
     return productQuantity;
   }
 
+  @JsonProperty("product_quantity")
   public void setProductQuantity(@Nullable Integer productQuantity) {
     this.productQuantity = productQuantity;
   }
@@ -174,6 +189,7 @@ public class LineItem {
     return productVariant;
   }
 
+  @JsonProperty("product_variant")
   public void setProductVariant(@Nullable String productVariant) {
     this.productVariant = productVariant;
   }
@@ -194,6 +210,7 @@ public class LineItem {
     return productVariantId;
   }
 
+  @JsonProperty("product_variant_id")
   public void setProductVariantId(@Nullable String productVariantId) {
     this.productVariantId = productVariantId;
   }
@@ -242,11 +259,8 @@ public class LineItem {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

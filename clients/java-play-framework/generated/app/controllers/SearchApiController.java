@@ -1,9 +1,9 @@
 package controllers;
 
-import apimodels.Error;
+import apimodels.BoardsList200Response;
+import apimodels.PinsList200Response;
+import apimodels.PinterestLibError;
 import apimodels.SearchPartnerPins200Response;
-import apimodels.SearchUserBoardsGet200Response;
-import apimodels.SearchUserPinsList200Response;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -27,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SearchApiController extends Controller {
     private final SearchApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -89,6 +89,13 @@ public class SearchApiController extends Controller {
         } else {
             adAccountId = null;
         }
+        String valuequery = request.getQueryString("query");
+        String query;
+        if (valuequery != null) {
+            query = valuequery;
+        } else {
+            query = null;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -103,14 +110,7 @@ public class SearchApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valuequery = request.getQueryString("query");
-        String query;
-        if (valuequery != null) {
-            query = valuequery;
-        } else {
-            query = null;
-        }
-        return imp.searchUserBoardsGetHttp(request, adAccountId, bookmark, pageSize, query);
+        return imp.searchUserBoardsGetHttp(request, adAccountId, query, bookmark, pageSize);
     }
 
     @ApiAction

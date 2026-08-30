@@ -4,26 +4,26 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AcceptedTermsId** | **String** | The SFDC id for the terms | [optional] 
-**AcceptedTermsTime** | **String** | The UTC timestamp (to the nearest sec) of when terms were accepted | [optional] 
-**AdsManagerOrderLineId** | **String** | Ads manager OrderLineId | [optional] 
+**AcceptedTermsTime** | **String** | The UTC timestamp (to the nearest second) when terms were accepted. | [optional] 
+**AdsManagerOrderLineId** | **String** | Ads manager order line id | [optional] 
 **AgencyLink** | **String** | Agency link | [optional] 
-**BillToCompanyName** | **String** | Bill To Company name | [optional] 
+**BillToCompanyName** | **String** | Bill-to company name | [optional] 
 **BillingContactEmail** | **String** | Billing contact email | [optional] 
 **BillingContactFirstname** | **String** | Billing contact first name | [optional] 
 **BillingContactLastname** | **String** | Billing contact last name | [optional] 
-**BudgetAmount** | **Decimal** | If Budget order line, the budget amount. | [optional] 
+**BudgetAmount** | **Decimal** | If budget order line, the budget amount. | [optional] 
 **CurrencyInfo** | [**Currency**](Currency.md) |  | [optional] 
 **EndDate** | **System.DateTime** | End date of the order line. | [optional] 
-**EstimatedMonthlySpend** | **Decimal** | If Ongoing (perpetual) order line, the estimated monthly spend | [optional] 
+**EstimatedMonthlySpend** | **Decimal** | If ongoing (perpetual) order line, the estimated monthly spend. | [optional] 
 **LastModifiedDateTime** | **String** | Last modified date. | [optional] 
 **MediaContactEmail** | **String** | Billing media email | [optional] 
-**MediaContactFirstname** | **String** | Billing contact first name | [optional] 
-**MediaContactLastname** | **String** | Billing contact first name | [optional] 
+**MediaContactFirstname** | **String** | Billing media contact first name | [optional] 
+**MediaContactLastname** | **String** | Billing media contact last name | [optional] 
 **OrderName** | **String** | The order name | [optional] 
 **PinOrderId** | **String** | The pin order id associated with the order line in SFDC | [optional] 
 **PmpName** | **String** | The Pinterest marketing partner name | [optional] 
-**PoNumber** | **String** | The po number | [optional] 
-**SalesforceOrderLineId** | **String** | OrderLineId in SFDC | [optional] 
+**PoNumber** | **String** | The PO number | [optional] 
+**SalesforceOrderLineId** | **String** | Order line id in SFDC | [optional] 
 **StartDate** | **System.DateTime** | Start date of the order line. | [optional] 
 
 ## Examples
@@ -40,7 +40,7 @@ $SSIOOrderLine = Initialize-PSOpenAPIToolsSSIOOrderLine  -AcceptedTermsId null `
  -BillingContactLastname Smith `
  -BudgetAmount 5000000 `
  -CurrencyInfo null `
- -EndDate Mon Oct 05 00:00:00 UTC 2020 `
+ -EndDate null `
  -EstimatedMonthlySpend null `
  -LastModifiedDateTime 2020-10-06T13:07:04.000Z `
  -MediaContactEmail mail@test.com `
@@ -51,7 +51,7 @@ $SSIOOrderLine = Initialize-PSOpenAPIToolsSSIOOrderLine  -AcceptedTermsId null `
  -PmpName null `
  -PoNumber null `
  -SalesforceOrderLineId null `
- -StartDate Thu Mar 01 00:00:00 UTC 2018
+ -StartDate null
 ```
 
 - Convert the resource to JSON

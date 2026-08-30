@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
+**CatalogId** | **string** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **string** |  | 
 **Country** | Pointer to **NullableString** |  | [optional] 
 **CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **FeedId** | **NullableString** | id of the catalogs feed belonging to this catalog product group | 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**Id** | **string** | ID of the creative assets product group. | 
+**Id** | **string** | ID of the catalog product group. | 
 **IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
 **Locale** | Pointer to **NullableString** |  | [optional] 
-**Name** | Pointer to **string** | Name of creative assets product group | [optional] 
+**Name** | Pointer to **string** | Name of catalog product group | [optional] 
 **Status** | Pointer to [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] 
 **Type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | 
 **UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 

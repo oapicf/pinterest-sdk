@@ -20,7 +20,7 @@ class BidFloor {
   /// A list of bid floors in micro currency. For example, [100000, 200000]
   List<int> bidFloors;
 
-  /// Always the string 'bidfloor'
+  /// Always the string 'bidfloor'.
   String type;
 
   @override
@@ -55,10 +55,6 @@ class BidFloor {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BidFloor[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BidFloor[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

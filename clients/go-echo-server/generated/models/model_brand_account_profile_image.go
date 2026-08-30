@@ -1,0 +1,9 @@
+package models
+
+// BrandAccountProfileImage - Base64-encoded image media source
+type BrandAccountProfileImage struct {
+
+	ContentType string `json:"content_type"`
+
+	Data string `json:"data" validate:"regexp=[a-zA-Z0-9+/=]+"`
+}

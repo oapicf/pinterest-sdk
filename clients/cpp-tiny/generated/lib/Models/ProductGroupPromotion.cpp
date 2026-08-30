@@ -10,19 +10,20 @@ ProductGroupPromotion::ProductGroupPromotion()
 	bid_in_micro_currency = int(0);
 	catalog_product_group_id = std::string();
 	catalog_product_group_name = std::string();
-	collections_header_type = std::string();
+	collections_header_type = CollectionsHeaderType();
 	collections_hero_destination_url = std::string();
 	collections_hero_pin_id = std::string();
 	creative_type = CreativeType();
-	customizable_cta_type = std::string();
+	customizable_cta_type = ProductGroupPromotionCustomizableCTAType();
 	definition = std::string();
 	grid_click_type = GridClickType();
 	id = std::string();
 	included = bool(false);
 	is_generate_background = bool(false);
+	is_image_auto_resizing = bool(false);
 	is_mdl = bool(false);
 	parent_id = std::string();
-	preferred_media_type = std::string();
+	preferred_media_type = PreferredMediaType();
 	relative_definition = std::string();
 	selected_image_tag = std::string();
 	selected_video_tag = std::string();
@@ -107,8 +108,9 @@ ProductGroupPromotion::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&collections_header_type, value, "std::string");
 
+        CollectionsHeaderType* obj = &collections_header_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -160,8 +162,9 @@ ProductGroupPromotion::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&customizable_cta_type, value, "std::string");
 
+        ProductGroupPromotionCustomizableCTAType* obj = &customizable_cta_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -231,6 +234,19 @@ ProductGroupPromotion::fromJson(std::string jsonObj)
 
     }
 
+    const char *is_image_auto_resizingKey = "is_image_auto_resizing";
+
+    if(object.has_key(is_image_auto_resizingKey))
+    {
+        bourne::json value = object[is_image_auto_resizingKey];
+
+
+
+        jsonToValue(&is_image_auto_resizing, value, "bool");
+
+
+    }
+
     const char *is_mdlKey = "is_mdl";
 
     if(object.has_key(is_mdlKey))
@@ -265,8 +281,9 @@ ProductGroupPromotion::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&preferred_media_type, value, "std::string");
 
+        PreferredMediaType* obj = &preferred_media_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -402,8 +419,8 @@ ProductGroupPromotion::toJson()
 
 
 
-    object["collections_header_type"] = getCollectionsHeaderType();
 
+	object["collections_header_type"] = getCollectionsHeaderType().toJson();
 
 
 
@@ -430,8 +447,8 @@ ProductGroupPromotion::toJson()
 
 
 
-    object["customizable_cta_type"] = getCustomizableCtaType();
 
+	object["customizable_cta_type"] = getCustomizableCtaType().toJson();
 
 
 
@@ -472,6 +489,13 @@ ProductGroupPromotion::toJson()
 
 
 
+    object["is_image_auto_resizing"] = isIsImageAutoResizing();
+
+
+
+
+
+
     object["is_mdl"] = isIsMdl();
 
 
@@ -486,8 +510,8 @@ ProductGroupPromotion::toJson()
 
 
 
-    object["preferred_media_type"] = getPreferredMediaType();
 
+	object["preferred_media_type"] = getPreferredMediaType().toJson();
 
 
 
@@ -550,7 +574,7 @@ ProductGroupPromotion::getAdGroupId()
 }
 
 void
-ProductGroupPromotion::setAdGroupId(std::string  ad_group_id)
+ProductGroupPromotion::setAdGroupId(std::string ad_group_id)
 {
 	this->ad_group_id = ad_group_id;
 }
@@ -562,7 +586,7 @@ ProductGroupPromotion::getBidInMicroCurrency()
 }
 
 void
-ProductGroupPromotion::setBidInMicroCurrency(int  bid_in_micro_currency)
+ProductGroupPromotion::setBidInMicroCurrency(int bid_in_micro_currency)
 {
 	this->bid_in_micro_currency = bid_in_micro_currency;
 }
@@ -574,7 +598,7 @@ ProductGroupPromotion::getCatalogProductGroupId()
 }
 
 void
-ProductGroupPromotion::setCatalogProductGroupId(std::string  catalog_product_group_id)
+ProductGroupPromotion::setCatalogProductGroupId(std::string catalog_product_group_id)
 {
 	this->catalog_product_group_id = catalog_product_group_id;
 }
@@ -586,19 +610,19 @@ ProductGroupPromotion::getCatalogProductGroupName()
 }
 
 void
-ProductGroupPromotion::setCatalogProductGroupName(std::string  catalog_product_group_name)
+ProductGroupPromotion::setCatalogProductGroupName(std::string catalog_product_group_name)
 {
 	this->catalog_product_group_name = catalog_product_group_name;
 }
 
-std::string
+CollectionsHeaderType
 ProductGroupPromotion::getCollectionsHeaderType()
 {
 	return collections_header_type;
 }
 
 void
-ProductGroupPromotion::setCollectionsHeaderType(std::string  collections_header_type)
+ProductGroupPromotion::setCollectionsHeaderType(CollectionsHeaderType collections_header_type)
 {
 	this->collections_header_type = collections_header_type;
 }
@@ -610,7 +634,7 @@ ProductGroupPromotion::getCollectionsHeroDestinationUrl()
 }
 
 void
-ProductGroupPromotion::setCollectionsHeroDestinationUrl(std::string  collections_hero_destination_url)
+ProductGroupPromotion::setCollectionsHeroDestinationUrl(std::string collections_hero_destination_url)
 {
 	this->collections_hero_destination_url = collections_hero_destination_url;
 }
@@ -622,7 +646,7 @@ ProductGroupPromotion::getCollectionsHeroPinId()
 }
 
 void
-ProductGroupPromotion::setCollectionsHeroPinId(std::string  collections_hero_pin_id)
+ProductGroupPromotion::setCollectionsHeroPinId(std::string collections_hero_pin_id)
 {
 	this->collections_hero_pin_id = collections_hero_pin_id;
 }
@@ -634,19 +658,19 @@ ProductGroupPromotion::getCreativeType()
 }
 
 void
-ProductGroupPromotion::setCreativeType(CreativeType  creative_type)
+ProductGroupPromotion::setCreativeType(CreativeType creative_type)
 {
 	this->creative_type = creative_type;
 }
 
-std::string
+ProductGroupPromotionCustomizableCTAType
 ProductGroupPromotion::getCustomizableCtaType()
 {
 	return customizable_cta_type;
 }
 
 void
-ProductGroupPromotion::setCustomizableCtaType(std::string  customizable_cta_type)
+ProductGroupPromotion::setCustomizableCtaType(ProductGroupPromotionCustomizableCTAType customizable_cta_type)
 {
 	this->customizable_cta_type = customizable_cta_type;
 }
@@ -658,7 +682,7 @@ ProductGroupPromotion::getDefinition()
 }
 
 void
-ProductGroupPromotion::setDefinition(std::string  definition)
+ProductGroupPromotion::setDefinition(std::string definition)
 {
 	this->definition = definition;
 }
@@ -670,7 +694,7 @@ ProductGroupPromotion::getGridClickType()
 }
 
 void
-ProductGroupPromotion::setGridClickType(GridClickType  grid_click_type)
+ProductGroupPromotion::setGridClickType(GridClickType grid_click_type)
 {
 	this->grid_click_type = grid_click_type;
 }
@@ -682,7 +706,7 @@ ProductGroupPromotion::getId()
 }
 
 void
-ProductGroupPromotion::setId(std::string  id)
+ProductGroupPromotion::setId(std::string id)
 {
 	this->id = id;
 }
@@ -694,7 +718,7 @@ ProductGroupPromotion::isIncluded()
 }
 
 void
-ProductGroupPromotion::setIncluded(bool  included)
+ProductGroupPromotion::setIncluded(bool included)
 {
 	this->included = included;
 }
@@ -706,9 +730,21 @@ ProductGroupPromotion::isIsGenerateBackground()
 }
 
 void
-ProductGroupPromotion::setIsGenerateBackground(bool  is_generate_background)
+ProductGroupPromotion::setIsGenerateBackground(bool is_generate_background)
 {
 	this->is_generate_background = is_generate_background;
+}
+
+bool
+ProductGroupPromotion::isIsImageAutoResizing()
+{
+	return is_image_auto_resizing;
+}
+
+void
+ProductGroupPromotion::setIsImageAutoResizing(bool is_image_auto_resizing)
+{
+	this->is_image_auto_resizing = is_image_auto_resizing;
 }
 
 bool
@@ -718,7 +754,7 @@ ProductGroupPromotion::isIsMdl()
 }
 
 void
-ProductGroupPromotion::setIsMdl(bool  is_mdl)
+ProductGroupPromotion::setIsMdl(bool is_mdl)
 {
 	this->is_mdl = is_mdl;
 }
@@ -730,19 +766,19 @@ ProductGroupPromotion::getParentId()
 }
 
 void
-ProductGroupPromotion::setParentId(std::string  parent_id)
+ProductGroupPromotion::setParentId(std::string parent_id)
 {
 	this->parent_id = parent_id;
 }
 
-std::string
+PreferredMediaType
 ProductGroupPromotion::getPreferredMediaType()
 {
 	return preferred_media_type;
 }
 
 void
-ProductGroupPromotion::setPreferredMediaType(std::string  preferred_media_type)
+ProductGroupPromotion::setPreferredMediaType(PreferredMediaType preferred_media_type)
 {
 	this->preferred_media_type = preferred_media_type;
 }
@@ -754,7 +790,7 @@ ProductGroupPromotion::getRelativeDefinition()
 }
 
 void
-ProductGroupPromotion::setRelativeDefinition(std::string  relative_definition)
+ProductGroupPromotion::setRelativeDefinition(std::string relative_definition)
 {
 	this->relative_definition = relative_definition;
 }
@@ -766,7 +802,7 @@ ProductGroupPromotion::getSelectedImageTag()
 }
 
 void
-ProductGroupPromotion::setSelectedImageTag(std::string  selected_image_tag)
+ProductGroupPromotion::setSelectedImageTag(std::string selected_image_tag)
 {
 	this->selected_image_tag = selected_image_tag;
 }
@@ -778,7 +814,7 @@ ProductGroupPromotion::getSelectedVideoTag()
 }
 
 void
-ProductGroupPromotion::setSelectedVideoTag(std::string  selected_video_tag)
+ProductGroupPromotion::setSelectedVideoTag(std::string selected_video_tag)
 {
 	this->selected_video_tag = selected_video_tag;
 }
@@ -790,7 +826,7 @@ ProductGroupPromotion::getSlideshowCollectionsDescription()
 }
 
 void
-ProductGroupPromotion::setSlideshowCollectionsDescription(std::string  slideshow_collections_description)
+ProductGroupPromotion::setSlideshowCollectionsDescription(std::string slideshow_collections_description)
 {
 	this->slideshow_collections_description = slideshow_collections_description;
 }
@@ -802,7 +838,7 @@ ProductGroupPromotion::getSlideshowCollectionsTitle()
 }
 
 void
-ProductGroupPromotion::setSlideshowCollectionsTitle(std::string  slideshow_collections_title)
+ProductGroupPromotion::setSlideshowCollectionsTitle(std::string slideshow_collections_title)
 {
 	this->slideshow_collections_title = slideshow_collections_title;
 }
@@ -814,7 +850,7 @@ ProductGroupPromotion::getStatus()
 }
 
 void
-ProductGroupPromotion::setStatus(EntityStatus  status)
+ProductGroupPromotion::setStatus(EntityStatus status)
 {
 	this->status = status;
 }
@@ -826,7 +862,7 @@ ProductGroupPromotion::getTrackingUrl()
 }
 
 void
-ProductGroupPromotion::setTrackingUrl(std::string  tracking_url)
+ProductGroupPromotion::setTrackingUrl(std::string tracking_url)
 {
 	this->tracking_url = tracking_url;
 }

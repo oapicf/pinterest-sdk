@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.LabelUpdateRequestLabelsInner;
+import com.prokarma.pkmst.model.LabelUpdateItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,18 +18,18 @@ import java.util.List;
  * LabelUpdateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelUpdateRequest   {
   @JsonProperty("labels")
   
-  private List<LabelUpdateRequestLabelsInner> labels = new ArrayList<>();
+  private List<LabelUpdateItem> labels = new ArrayList<>();
 
-  public LabelUpdateRequest labels(List<LabelUpdateRequestLabelsInner> labels) {
+  public LabelUpdateRequest labels(List<LabelUpdateItem> labels) {
     this.labels = labels;
     return this;
   }
 
-  public LabelUpdateRequest addLabelsItem(LabelUpdateRequestLabelsInner labelsItem) {
+  public LabelUpdateRequest addLabelsItem(LabelUpdateItem labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -42,11 +42,11 @@ public class LabelUpdateRequest   {
    * @return labels
    */
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
-  public List<LabelUpdateRequestLabelsInner> getLabels() {
+  public List<LabelUpdateItem> getLabels() {
     return labels;
   }
 
-  public void setLabels(List<LabelUpdateRequestLabelsInner> labels) {
+  public void setLabels(List<LabelUpdateItem> labels) {
     this.labels = labels;
   }
 
@@ -83,10 +83,7 @@ public class LabelUpdateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

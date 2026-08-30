@@ -19,7 +19,7 @@ Protected Interface CatalogProductGroupsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub CatalogsProductGroupsDeleteCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub CatalogsProductGroupsDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CatalogsVerticalProductGroup)
 		  
 		End Sub
 	#tag EndMethod

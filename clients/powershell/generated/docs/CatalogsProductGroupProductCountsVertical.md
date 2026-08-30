@@ -3,12 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **String** |  | 
 **InStock** | **Decimal** |  | 
 **OutOfStock** | **Decimal** |  | 
 **Preorder** | **Decimal** |  | 
 **Total** | **Decimal** |  | 
 **Videos** | **Decimal** |  | 
+**AppLinks** | **Decimal** |  | 
+**Images** | **Decimal** |  | 
 
 ## Examples
 
@@ -19,7 +21,9 @@ $CatalogsProductGroupProductCountsVertical = Initialize-PSOpenAPIToolsCatalogsPr
  -OutOfStock null `
  -Preorder null `
  -Total null `
- -Videos null
+ -Videos null `
+ -AppLinks null `
+ -Images null
 ```
 
 - Convert the resource to JSON

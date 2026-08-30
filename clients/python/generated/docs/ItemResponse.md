@@ -1,14 +1,15 @@
 # ItemResponse
 
-Object describing an item record or error
+Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
 **attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
+**catalog_type** | **str** |  | 
 **item_id** | **str** | The catalog item id in the merchant namespace | [optional] 
+**item_response_kind** | **str** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | 
 **pins** | [**List[Pin]**](Pin.md) | The pins mapped to the item | [optional] 
 **hotel_id** | **str** | The catalog hotel id in the merchant namespace | [optional] 
 **creative_assets_id** | **str** | The catalog creative assets id in the merchant namespace | [optional] 

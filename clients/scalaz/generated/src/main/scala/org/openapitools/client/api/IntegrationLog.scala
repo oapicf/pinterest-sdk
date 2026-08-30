@@ -19,11 +19,11 @@ case class IntegrationLog (
   clientTimestamp: Integer,
 error: Option[IntegrationLogClientError],
 /* Log event type */
-  eventType: EventType,
+  eventType: IntegrationLogEventType,
 externalBusinessId: Option[String],
 feedProfileId: Option[String],
 /* Log level type */
-  logLevel: LogLevel,
+  logLevel: IntegrationLogLevel,
 merchantId: Option[String],
 /* Explanation of the event that occured. */
   message: Option[String],
@@ -34,53 +34,6 @@ tagId: Option[String])
 
 object IntegrationLog {
   import DateTimeCodecs._
-  sealed trait EventType
-  case object APP extends EventType
-  case object API extends EventType
-
-  object EventType {
-    def toEventType(s: String): Option[EventType] = s match {
-      case "APP" => Some(APP)
-      case "API" => Some(API)
-      case _ => None
-    }
-
-    def fromEventType(x: EventType): String = x match {
-      case APP => "APP"
-      case API => "API"
-    }
-  }
-
-  implicit val EventTypeEnumEncoder: EncodeJson[EventType] =
-    EncodeJson[EventType](is => StringEncodeJson(EventType.fromEventType(is)))
-
-  implicit val EventTypeEnumDecoder: DecodeJson[EventType] =
-    DecodeJson.optionDecoder[EventType](n => n.string.flatMap(jStr => EventType.toEventType(jStr)), "EventType failed to de-serialize")
-  sealed trait LogLevel
-  case object INFO extends LogLevel
-  case object WARN extends LogLevel
-  case object ERROR extends LogLevel
-
-  object LogLevel {
-    def toLogLevel(s: String): Option[LogLevel] = s match {
-      case "INFO" => Some(INFO)
-      case "WARN" => Some(WARN)
-      case "ERROR" => Some(ERROR)
-      case _ => None
-    }
-
-    def fromLogLevel(x: LogLevel): String = x match {
-      case INFO => "INFO"
-      case WARN => "WARN"
-      case ERROR => "ERROR"
-    }
-  }
-
-  implicit val LogLevelEnumEncoder: EncodeJson[LogLevel] =
-    EncodeJson[LogLevel](is => StringEncodeJson(LogLevel.fromLogLevel(is)))
-
-  implicit val LogLevelEnumDecoder: DecodeJson[LogLevel] =
-    DecodeJson.optionDecoder[LogLevel](n => n.string.flatMap(jStr => LogLevel.toLogLevel(jStr)), "LogLevel failed to de-serialize")
 
   implicit val IntegrationLogCodecJson: CodecJson[IntegrationLog] = CodecJson.derive[IntegrationLog]
   implicit val IntegrationLogDecoder: EntityDecoder[IntegrationLog] = jsonOf[IntegrationLog]

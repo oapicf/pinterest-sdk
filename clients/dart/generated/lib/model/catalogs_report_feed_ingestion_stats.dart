@@ -147,10 +147,6 @@ class CatalogsReportFeedIngestionStats {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsReportFeedIngestionStats[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsReportFeedIngestionStats[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -213,27 +209,28 @@ class CatalogsReportFeedIngestionStats {
 }
 
 
-class CatalogsReportFeedIngestionStatsReportTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsReportFeedIngestionStatsReportTypeEnum._(this.value);
+enum CatalogsReportFeedIngestionStatsReportTypeEnum {
+  FEED_INGESTION_ISSUES._(r'FEED_INGESTION_ISSUES'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsReportFeedIngestionStatsReportTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const FEED_INGESTION_ISSUES = CatalogsReportFeedIngestionStatsReportTypeEnum._(r'FEED_INGESTION_ISSUES');
-
-  /// List of all possible values in this [enum][CatalogsReportFeedIngestionStatsReportTypeEnum].
-  static const values = <CatalogsReportFeedIngestionStatsReportTypeEnum>[
-    FEED_INGESTION_ISSUES,
-  ];
-
+  /// Returns the instance of [CatalogsReportFeedIngestionStatsReportTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsReportFeedIngestionStatsReportTypeEnum? fromJson(dynamic value) => CatalogsReportFeedIngestionStatsReportTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsReportFeedIngestionStatsReportTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsReportFeedIngestionStatsReportTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsReportFeedIngestionStatsReportTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -255,9 +252,10 @@ class CatalogsReportFeedIngestionStatsReportTypeEnumTypeTransformer {
 
   const CatalogsReportFeedIngestionStatsReportTypeEnumTypeTransformer._();
 
-  String encode(CatalogsReportFeedIngestionStatsReportTypeEnum data) => data.value;
+  String encode(CatalogsReportFeedIngestionStatsReportTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsReportFeedIngestionStatsReportTypeEnum.
+  /// Returns the instance of [CatalogsReportFeedIngestionStatsReportTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -266,6 +264,9 @@ class CatalogsReportFeedIngestionStatsReportTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsReportFeedIngestionStatsReportTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsReportFeedIngestionStatsReportTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'FEED_INGESTION_ISSUES': return CatalogsReportFeedIngestionStatsReportTypeEnum.FEED_INGESTION_ISSUES;
@@ -278,35 +279,35 @@ class CatalogsReportFeedIngestionStatsReportTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsReportFeedIngestionStatsReportTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsReportFeedIngestionStatsReportTypeEnumTypeTransformer? _instance;
 }
 
 
 /// An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
-class CatalogsReportFeedIngestionStatsSeverityEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsReportFeedIngestionStatsSeverityEnum._(this.value);
+enum CatalogsReportFeedIngestionStatsSeverityEnum {
+  WARN._(r'WARN'),
+  ERROR._(r'ERROR'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsReportFeedIngestionStatsSeverityEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const WARN = CatalogsReportFeedIngestionStatsSeverityEnum._(r'WARN');
-  static const ERROR = CatalogsReportFeedIngestionStatsSeverityEnum._(r'ERROR');
-
-  /// List of all possible values in this [enum][CatalogsReportFeedIngestionStatsSeverityEnum].
-  static const values = <CatalogsReportFeedIngestionStatsSeverityEnum>[
-    WARN,
-    ERROR,
-  ];
-
+  /// Returns the instance of [CatalogsReportFeedIngestionStatsSeverityEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsReportFeedIngestionStatsSeverityEnum? fromJson(dynamic value) => CatalogsReportFeedIngestionStatsSeverityEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsReportFeedIngestionStatsSeverityEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsReportFeedIngestionStatsSeverityEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsReportFeedIngestionStatsSeverityEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -328,9 +329,10 @@ class CatalogsReportFeedIngestionStatsSeverityEnumTypeTransformer {
 
   const CatalogsReportFeedIngestionStatsSeverityEnumTypeTransformer._();
 
-  String encode(CatalogsReportFeedIngestionStatsSeverityEnum data) => data.value;
+  String encode(CatalogsReportFeedIngestionStatsSeverityEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsReportFeedIngestionStatsSeverityEnum.
+  /// Returns the instance of [CatalogsReportFeedIngestionStatsSeverityEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -339,6 +341,9 @@ class CatalogsReportFeedIngestionStatsSeverityEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsReportFeedIngestionStatsSeverityEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsReportFeedIngestionStatsSeverityEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'WARN': return CatalogsReportFeedIngestionStatsSeverityEnum.WARN;
@@ -352,7 +357,7 @@ class CatalogsReportFeedIngestionStatsSeverityEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsReportFeedIngestionStatsSeverityEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsReportFeedIngestionStatsSeverityEnumTypeTransformer? _instance;
 }
 

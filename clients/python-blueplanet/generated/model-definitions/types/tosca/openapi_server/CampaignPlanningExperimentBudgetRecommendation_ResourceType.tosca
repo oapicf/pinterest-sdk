@@ -1,0 +1,52 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningExperimentBudgetRecommendation"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningExperimentBudgetRecommendation"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignPlanningBudgetRecommendationPoint = openapi_server.resourceTypes.CampaignPlanningBudgetRecommendationPoint
+}
+resourceTypes {
+
+  CampaignPlanningExperimentBudgetRecommendation {
+    title = CampaignPlanningExperimentBudgetRecommendation
+    description = CampaignPlanningExperimentBudgetRecommendation
+    derivedFrom = Root
+    properties {
+        budget_recommendation {
+          type =  integer
+          description = "Recommended budget for this experiment version."
+          optional = false
+        }
+        lifetime_days_recommendation {
+          type =  integer
+          description = "Recommended lifetime days for this experiment."
+          optional = false
+        }
+        point_estimations {
+          type = array
+          items.type = CampaignPlanningBudgetRecommendationPoint
+          description = "Point estimations for this experiment version."
+          optional = false
+        }
+        version_id {
+          type =  string
+          description = "Version identifier for the experiment."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningExperimentBudgetRecommendation {
+    title = CampaignPlanningExperimentBudgetRecommendation
+    description = CampaignPlanningExperimentBudgetRecommendation
+    implements = openapi_server.resourceTypes.CampaignPlanningExperimentBudgetRecommendation
+
+  }
+}

@@ -5,8 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.BusinessMemberAssetsSummaryAdAccountsInner;
-import org.openapitools.model.BusinessMemberAssetsSummaryProfilesInner;
+import org.openapitools.model.AssetIdWithPermissions;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Ad accounts and profiles the business member/partner has access to.")
 @JsonTypeName("BusinessMemberAssetsSummary")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessMemberAssetsSummary   {
-  private @Valid List<@Valid BusinessMemberAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
-  private @Valid List<@Valid BusinessMemberAssetsSummaryProfilesInner> profiles = new ArrayList<>();
+  private @Valid List<@Valid AssetIdWithPermissions> adAccounts = new ArrayList<>();
+  private @Valid List<@Valid AssetIdWithPermissions> profiles = new ArrayList<>();
 
   public BusinessMemberAssetsSummary() {
   }
@@ -34,7 +33,7 @@ public class BusinessMemberAssetsSummary   {
   /**
    * List of ad account IDs and respective permission levels.
    **/
-  public BusinessMemberAssetsSummary adAccounts(List<@Valid BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
+  public BusinessMemberAssetsSummary adAccounts(List<@Valid AssetIdWithPermissions> adAccounts) {
     this.adAccounts = adAccounts;
     return this;
   }
@@ -42,16 +41,16 @@ public class BusinessMemberAssetsSummary   {
   
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels.")
   @JsonProperty("ad_accounts")
-  @Valid public List<@Valid BusinessMemberAssetsSummaryAdAccountsInner> getAdAccounts() {
+  @Valid public List<@Valid AssetIdWithPermissions> getAdAccounts() {
     return adAccounts;
   }
 
   @JsonProperty("ad_accounts")
-  public void setAdAccounts(List<@Valid BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
+  public void setAdAccounts(List<@Valid AssetIdWithPermissions> adAccounts) {
     this.adAccounts = adAccounts;
   }
 
-  public BusinessMemberAssetsSummary addAdAccountsItem(BusinessMemberAssetsSummaryAdAccountsInner adAccountsItem) {
+  public BusinessMemberAssetsSummary addAdAccountsItem(AssetIdWithPermissions adAccountsItem) {
     if (this.adAccounts == null) {
       this.adAccounts = new ArrayList<>();
     }
@@ -60,7 +59,7 @@ public class BusinessMemberAssetsSummary   {
     return this;
   }
 
-  public BusinessMemberAssetsSummary removeAdAccountsItem(BusinessMemberAssetsSummaryAdAccountsInner adAccountsItem) {
+  public BusinessMemberAssetsSummary removeAdAccountsItem(AssetIdWithPermissions adAccountsItem) {
     if (adAccountsItem != null && this.adAccounts != null) {
       this.adAccounts.remove(adAccountsItem);
     }
@@ -70,7 +69,7 @@ public class BusinessMemberAssetsSummary   {
   /**
    * List of profile IDs and respective permission levels.
    **/
-  public BusinessMemberAssetsSummary profiles(List<@Valid BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public BusinessMemberAssetsSummary profiles(List<@Valid AssetIdWithPermissions> profiles) {
     this.profiles = profiles;
     return this;
   }
@@ -78,16 +77,16 @@ public class BusinessMemberAssetsSummary   {
   
   @ApiModelProperty(value = "List of profile IDs and respective permission levels.")
   @JsonProperty("profiles")
-  @Valid public List<@Valid BusinessMemberAssetsSummaryProfilesInner> getProfiles() {
+  @Valid public List<@Valid AssetIdWithPermissions> getProfiles() {
     return profiles;
   }
 
   @JsonProperty("profiles")
-  public void setProfiles(List<@Valid BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public void setProfiles(List<@Valid AssetIdWithPermissions> profiles) {
     this.profiles = profiles;
   }
 
-  public BusinessMemberAssetsSummary addProfilesItem(BusinessMemberAssetsSummaryProfilesInner profilesItem) {
+  public BusinessMemberAssetsSummary addProfilesItem(AssetIdWithPermissions profilesItem) {
     if (this.profiles == null) {
       this.profiles = new ArrayList<>();
     }
@@ -96,7 +95,7 @@ public class BusinessMemberAssetsSummary   {
     return this;
   }
 
-  public BusinessMemberAssetsSummary removeProfilesItem(BusinessMemberAssetsSummaryProfilesInner profilesItem) {
+  public BusinessMemberAssetsSummary removeProfilesItem(AssetIdWithPermissions profilesItem) {
     if (profilesItem != null && this.profiles != null) {
       this.profiles.remove(profilesItem);
     }
@@ -138,12 +137,8 @@ public class BusinessMemberAssetsSummary   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

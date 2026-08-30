@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DynamicTitlesDownloadCSV"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DynamicTitlesDownloadCSV"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DynamicTitlesDownloadCSV {
+    title = DynamicTitlesDownloadCSV
+    description = DynamicTitlesDownloadCSV
+    derivedFrom = Root
+    properties {
+        download_url {
+          type =  string
+          description = "Pre-signed S3 URL to download the CSV file."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DynamicTitlesDownloadCSV {
+    title = DynamicTitlesDownloadCSV
+    description = DynamicTitlesDownloadCSV
+    implements = openapi_server.resourceTypes.DynamicTitlesDownloadCSV
+
+  }
+}

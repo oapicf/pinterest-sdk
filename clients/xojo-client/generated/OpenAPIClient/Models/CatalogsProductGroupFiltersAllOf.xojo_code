@@ -2,7 +2,7 @@
 Protected Class CatalogsProductGroupFiltersAllOf
 
 	#tag Property, Flags = &h0
-		all_of() As CatalogsProductGroupFilterKeys
+		all_of() As OpenAPIClient.Models.CatalogsProductGroupFilterKeys
 	#tag EndProperty
 
 

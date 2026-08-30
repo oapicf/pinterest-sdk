@@ -6,19 +6,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ErrorDetail
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ErrorDetail {
 
   private Integer count;
@@ -50,7 +50,7 @@ public class ErrorDetail {
    * @return count
    */
   @NotNull 
-  @Schema(name = "count", example = "20", description = "Number of records with this error", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "count", description = "Number of records with this error", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("count")
   public Integer getCount() {
     return count;
@@ -70,7 +70,7 @@ public class ErrorDetail {
    * @return errorCode
    */
   @NotNull 
-  @Schema(name = "error_code", example = "42", description = "Numeric error code", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "error_code", description = "Numeric error code", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("error_code")
   public Integer getErrorCode() {
     return errorCode;
@@ -90,7 +90,7 @@ public class ErrorDetail {
    * @return message
    */
   @NotNull 
-  @Schema(name = "message", example = "Invalid email", description = "Error message description", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "message", description = "Error message description", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("message")
   public String getMessage() {
     return message;
@@ -135,10 +135,7 @@ public class ErrorDetail {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

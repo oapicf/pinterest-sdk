@@ -3,6 +3,8 @@ package org.openapitools.client.model
 
 
 case class PinCreate (
+    /* AI disclosure declarations the creator has made about this Pin. */
+    _aiDisclosures: Option[AiDisclosures],
     _altText: Option[String],
     /* The board to which this Pin belongs. */
     _boardId: Option[String],
@@ -20,10 +22,10 @@ case class PinCreate (
     _title: Option[String]
 )
 object PinCreate {
-    def toStringBody(var_altText: Object, var_boardId: Object, var_boardSectionId: Object, var_description: Object, var_dominantColor: Object, var_link: Object, var_mediaSource: Object, var_parentPinId: Object, var_sponsorId: Object, var_title: Object) =
+    def toStringBody(var_aiDisclosures: Object, var_altText: Object, var_boardId: Object, var_boardSectionId: Object, var_description: Object, var_dominantColor: Object, var_link: Object, var_mediaSource: Object, var_parentPinId: Object, var_sponsorId: Object, var_title: Object) =
         s"""
         | {
-        | "altText":$var_altText,"boardId":$var_boardId,"boardSectionId":$var_boardSectionId,"description":$var_description,"dominantColor":$var_dominantColor,"link":$var_link,"mediaSource":$var_mediaSource,"parentPinId":$var_parentPinId,"sponsorId":$var_sponsorId,"title":$var_title
+        | "aiDisclosures":$var_aiDisclosures,"altText":$var_altText,"boardId":$var_boardId,"boardSectionId":$var_boardSectionId,"description":$var_description,"dominantColor":$var_dominantColor,"link":$var_link,"mediaSource":$var_mediaSource,"parentPinId":$var_parentPinId,"sponsorId":$var_sponsorId,"title":$var_title
         | }
         """.stripMargin
 }

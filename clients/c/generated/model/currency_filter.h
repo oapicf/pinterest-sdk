@@ -20,7 +20,7 @@ typedef struct currency_filter_t currency_filter_t;
 
 
 typedef struct currency_filter_t {
-    catalogs_product_group_currency_criteria_t *currency; //object
+    struct catalogs_product_group_currency_criteria_t *currency; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } currency_filter_t;

@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.pin import Pin  # noqa: F401,E501
+from app.openapi_server.models.pin_read import PinRead  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class BoardsListPins200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[Pin]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[PinRead]=None):  # noqa: E501
         """BoardsListPins200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this BoardsListPins200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this BoardsListPins200Response.  # noqa: E501
-        :type items: List[Pin]
+        :type items: List[PinRead]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[Pin]
+            'items': List[PinRead]
         }
 
         self.attribute_map = {
@@ -70,24 +70,22 @@ class BoardsListPins200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[Pin]:
+    def items(self) -> List[PinRead]:
         """Gets the items of this BoardsListPins200Response.
 
-        Pins  # noqa: E501
 
         :return: The items of this BoardsListPins200Response.
-        :rtype: List[Pin]
+        :rtype: List[PinRead]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[Pin]):
+    def items(self, items: List[PinRead]):
         """Sets the items of this BoardsListPins200Response.
 
-        Pins  # noqa: E501
 
         :param items: The items of this BoardsListPins200Response.
-        :type items: List[Pin]
+        :type items: List[PinRead]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

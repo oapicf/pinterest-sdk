@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server NullableOptimizationGoalMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a NullableOptimizationGoalMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionTagV3GoalMetadata = openapi_server.resourceTypes.ConversionTagV3GoalMetadata
+  FrequencyGoalMetadata = openapi_server.resourceTypes.FrequencyGoalMetadata
+  ScrollupGoalMetadata = openapi_server.resourceTypes.ScrollupGoalMetadata
+}
+resourceTypes {
+
+  NullableOptimizationGoalMetadata {
+    title = NullableOptimizationGoalMetadata
+    description = NullableOptimizationGoalMetadata
+    derivedFrom = Root
+    properties {
+        conversion_tag_v3_goal_metadata {
+          type = ConversionTagV3GoalMetadata
+          description = ""
+          optional = false
+        }
+        frequency_goal_metadata {
+          type = FrequencyGoalMetadata
+          description = ""
+          optional = false
+        }
+        scrollup_goal_metadata {
+          type = ScrollupGoalMetadata
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  NullableOptimizationGoalMetadata {
+    title = NullableOptimizationGoalMetadata
+    description = NullableOptimizationGoalMetadata
+    implements = openapi_server.resourceTypes.NullableOptimizationGoalMetadata
+
+  }
+}

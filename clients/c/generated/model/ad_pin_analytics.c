@@ -13,10 +13,10 @@ static ad_pin_analytics_t *ad_pin_analytics_create_internal(
     if (!ad_pin_analytics_local_var) {
         return NULL;
     }
+    memset(ad_pin_analytics_local_var, 0, sizeof(ad_pin_analytics_t));
+    ad_pin_analytics_local_var->_library_owned = 1;
     ad_pin_analytics_local_var->date = date;
     ad_pin_analytics_local_var->pin_id = pin_id;
-
-    ad_pin_analytics_local_var->_library_owned = 1;
     return ad_pin_analytics_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) ad_pin_analytics_t *ad_pin_analytics_create(
     char *date,
     char *pin_id
     ) {
-    return ad_pin_analytics_create_internal (
+    ad_pin_analytics_t *result = ad_pin_analytics_create_internal (
         date,
         pin_id
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ad_pin_analytics_free(ad_pin_analytics_t *ad_pin_analytics) {
@@ -81,6 +84,10 @@ ad_pin_analytics_t *ad_pin_analytics_parseFromJSON(cJSON *ad_pin_analyticsJSON){
 
     ad_pin_analytics_t *ad_pin_analytics_local_var = NULL;
 
+    char *date_local_str = NULL;
+
+    char *pin_id_local_str = NULL;
+
     // ad_pin_analytics->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(ad_pin_analyticsJSON, "DATE");
     if (cJSON_IsNull(date)) {
@@ -109,13 +116,28 @@ ad_pin_analytics_t *ad_pin_analytics_parseFromJSON(cJSON *ad_pin_analyticsJSON){
     }
 
 
+    if (date) date_local_str = strdup(date->valuestring);
+    if (pin_id && !cJSON_IsNull(pin_id)) pin_id_local_str = strdup(pin_id->valuestring);
+
     ad_pin_analytics_local_var = ad_pin_analytics_create_internal (
-        date ? strdup(date->valuestring) : NULL,
-        strdup(pin_id->valuestring)
+        date_local_str,
+        pin_id_local_str
         );
+
+    if (!ad_pin_analytics_local_var) {
+        goto end;
+    }
 
     return ad_pin_analytics_local_var;
 end:
+    if (date_local_str) {
+        free(date_local_str);
+        date_local_str = NULL;
+    }
+    if (pin_id_local_str) {
+        free(pin_id_local_str);
+        pin_id_local_str = NULL;
+    }
     return NULL;
 
 }

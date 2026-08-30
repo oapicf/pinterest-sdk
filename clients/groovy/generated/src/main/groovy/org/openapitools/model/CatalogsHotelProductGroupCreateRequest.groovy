@@ -8,7 +8,7 @@ import org.openapitools.model.CatalogsHotelProductGroupFilters;
 
 @Canonical
 class CatalogsHotelProductGroupCreateRequest {
-    /* Catalog id pertaining to the hotel product group. */
+    /* Catalog ID pertaining to the product group. */
     String catalogId
 
     enum CatalogTypeEnum {

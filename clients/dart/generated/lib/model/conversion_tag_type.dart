@@ -11,55 +11,55 @@
 part of openapi.api;
 
 /// conversion tag type
-class ConversionTagType {
-  /// Instantiate a new enum with the provided [value].
-  const ConversionTagType._(this.value);
+enum ConversionTagType {
+  PAGE_LOAD._(r'PAGE_LOAD'),
+  UNKNOWN._(r'UNKNOWN'),
+  INITIALIZED._(r'INITIALIZED'),
+  PAGE_VISIT._(r'PAGE_VISIT'),
+  SIGNUP._(r'SIGNUP'),
+  CHECKOUT._(r'CHECKOUT'),
+  CUSTOM._(r'CUSTOM'),
+  VIEW_CATEGORY._(r'VIEW_CATEGORY'),
+  SEARCH._(r'SEARCH'),
+  ADD_TO_CART._(r'ADD_TO_CART'),
+  WATCH_VIDEO._(r'WATCH_VIDEO'),
+  LEAD._(r'LEAD'),
+  APP_INSTALL._(r'APP_INSTALL'),
+  WEB_SESSION._(r'WEB_SESSION'),
+  EXTERNAL_MEASUREMENT._(r'EXTERNAL_MEASUREMENT'),
+  ADD_PAYMENT_INFO._(r'ADD_PAYMENT_INFO'),
+  ADD_TO_WISHLIST._(r'ADD_TO_WISHLIST'),
+  INITIATE_CHECKOUT._(r'INITIATE_CHECKOUT'),
+  SUBSCRIBE._(r'SUBSCRIBE'),
+  VIEW_CONTENT._(r'VIEW_CONTENT'),
+  ADVERTISER_DEFINED_EVENT._(r'ADVERTISER_DEFINED_EVENT'),
+  APP_OPEN._(r'APP_OPEN'),
+  CONTACT._(r'CONTACT'),
+  SCHEDULE._(r'SCHEDULE'),
+  FIND_LOCATION._(r'FIND_LOCATION'),
+  CUSTOMIZE_PRODUCT._(r'CUSTOMIZE_PRODUCT'),
+  SUBMIT_APPLICATION._(r'SUBMIT_APPLICATION'),
+  START_TRIAL._(r'START_TRIAL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ConversionTagType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const PAGE_LOAD = ConversionTagType._(r'PAGE_LOAD');
-  static const UNKNOWN = ConversionTagType._(r'UNKNOWN');
-  static const INITIALIZED = ConversionTagType._(r'INITIALIZED');
-  static const PAGE_VISIT = ConversionTagType._(r'PAGE_VISIT');
-  static const SIGNUP = ConversionTagType._(r'SIGNUP');
-  static const CHECKOUT = ConversionTagType._(r'CHECKOUT');
-  static const CUSTOM = ConversionTagType._(r'CUSTOM');
-  static const VIEW_CATEGORY = ConversionTagType._(r'VIEW_CATEGORY');
-  static const SEARCH = ConversionTagType._(r'SEARCH');
-  static const ADD_TO_CART = ConversionTagType._(r'ADD_TO_CART');
-  static const WATCH_VIDEO = ConversionTagType._(r'WATCH_VIDEO');
-  static const LEAD = ConversionTagType._(r'LEAD');
-  static const APP_INSTALL = ConversionTagType._(r'APP_INSTALL');
-  static const WEB_SESSION = ConversionTagType._(r'WEB_SESSION');
-  static const EXTERNAL_MEASUREMENT = ConversionTagType._(r'EXTERNAL_MEASUREMENT');
-
-  /// List of all possible values in this [enum][ConversionTagType].
-  static const values = <ConversionTagType>[
-    PAGE_LOAD,
-    UNKNOWN,
-    INITIALIZED,
-    PAGE_VISIT,
-    SIGNUP,
-    CHECKOUT,
-    CUSTOM,
-    VIEW_CATEGORY,
-    SEARCH,
-    ADD_TO_CART,
-    WATCH_VIDEO,
-    LEAD,
-    APP_INSTALL,
-    WEB_SESSION,
-    EXTERNAL_MEASUREMENT,
-  ];
-
+  /// Returns the instance of [ConversionTagType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ConversionTagType? fromJson(dynamic value) => ConversionTagTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ConversionTagType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ConversionTagType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ConversionTagType>[];
     if (json is List && json.isNotEmpty) {
@@ -81,9 +81,11 @@ class ConversionTagTypeTypeTransformer {
 
   const ConversionTagTypeTypeTransformer._();
 
-  String encode(ConversionTagType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ConversionTagType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ConversionTagType.
+  /// Returns the instance of [ConversionTagType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -92,6 +94,9 @@ class ConversionTagTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ConversionTagType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ConversionTagType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'PAGE_LOAD': return ConversionTagType.PAGE_LOAD;
@@ -109,6 +114,19 @@ class ConversionTagTypeTypeTransformer {
         case r'APP_INSTALL': return ConversionTagType.APP_INSTALL;
         case r'WEB_SESSION': return ConversionTagType.WEB_SESSION;
         case r'EXTERNAL_MEASUREMENT': return ConversionTagType.EXTERNAL_MEASUREMENT;
+        case r'ADD_PAYMENT_INFO': return ConversionTagType.ADD_PAYMENT_INFO;
+        case r'ADD_TO_WISHLIST': return ConversionTagType.ADD_TO_WISHLIST;
+        case r'INITIATE_CHECKOUT': return ConversionTagType.INITIATE_CHECKOUT;
+        case r'SUBSCRIBE': return ConversionTagType.SUBSCRIBE;
+        case r'VIEW_CONTENT': return ConversionTagType.VIEW_CONTENT;
+        case r'ADVERTISER_DEFINED_EVENT': return ConversionTagType.ADVERTISER_DEFINED_EVENT;
+        case r'APP_OPEN': return ConversionTagType.APP_OPEN;
+        case r'CONTACT': return ConversionTagType.CONTACT;
+        case r'SCHEDULE': return ConversionTagType.SCHEDULE;
+        case r'FIND_LOCATION': return ConversionTagType.FIND_LOCATION;
+        case r'CUSTOMIZE_PRODUCT': return ConversionTagType.CUSTOMIZE_PRODUCT;
+        case r'SUBMIT_APPLICATION': return ConversionTagType.SUBMIT_APPLICATION;
+        case r'START_TRIAL': return ConversionTagType.START_TRIAL;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -118,7 +136,7 @@ class ConversionTagTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [ConversionTagTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ConversionTagTypeTypeTransformer? _instance;
 }
 

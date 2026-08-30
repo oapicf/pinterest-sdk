@@ -6,13 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PLACEMENT** | [**PLACEMENTEnum**](#PLACEMENTEnum) |  |  [optional]
-
-
-## Enum: PLACEMENTEnum
-
-Name | Value
----- | -----
+**PLACEMENT** | [**PlacementType**](PlacementType.md) | Placement type identifier. |  [optional]
 
 
 

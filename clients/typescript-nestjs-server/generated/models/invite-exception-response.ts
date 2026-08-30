@@ -1,0 +1,24 @@
+
+
+/**
+ * An exception object if there is an error performing the action. Will only be provided if there is an error.
+ */
+export interface InviteExceptionResponse { 
+  /**
+   * Error code associated with the error in performing the action on the invite/request.
+   */
+  code?: number;
+  /**
+   * Unique identifier of the invite/request.
+   */
+  invite_or_request_id?: string | null;
+  /**
+   * Error message associated with the error in performing the action on the invite/request.
+   */
+  message?: string;
+  /**
+   * A list of users\' usernames or emails OR a list of partner ids that caused the error.
+   */
+  users_or_partner_ids?: Array<string>;
+}
+

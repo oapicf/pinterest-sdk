@@ -41,17 +41,10 @@ export interface CatalogsFeedIngestionErrors {
     /**
      * The product count has decreased by more than 99% compared to the last successful ingestion.
      */
-    LARGE_PRODUCT_COUNT_DECREASE?: CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASEEnum;
+    LARGE_PRODUCT_COUNT_DECREASE?: number;
     /**
      * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
      */
     LINE_LEVEL_INTERNAL_ERROR?: number;
 }
-export namespace CatalogsFeedIngestionErrors {
-    export const LARGEPRODUCTCOUNTDECREASEEnum = {
-        NUMBER_1: 1
-    } as const;
-    export type LARGEPRODUCTCOUNTDECREASEEnum = typeof LARGEPRODUCTCOUNTDECREASEEnum[keyof typeof LARGEPRODUCTCOUNTDECREASEEnum];
-}
-
 

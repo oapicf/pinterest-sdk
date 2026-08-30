@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.HttpMethod;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,57 +21,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 @JsonTypeName("IntegrationLogClientRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogClientRequest   {
   private String host;
-  public enum MethodEnum {
-
-    GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("POST")), PUT(String.valueOf("PUT")), DELETE(String.valueOf("DELETE")), CONNECT(String.valueOf("CONNECT")), OPTIONS(String.valueOf("OPTIONS")), TRACE(String.valueOf("TRACE")), PATCH(String.valueOf("PATCH"));
-
-
-    private String value;
-
-    MethodEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static MethodEnum fromString(String s) {
-        for (MethodEnum b : MethodEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static MethodEnum fromValue(String value) {
-        for (MethodEnum b : MethodEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private MethodEnum method;
+  private HttpMethod method;
   private String path;
   private @Valid Map<String, String> requestHeaders = new HashMap<>();
   private @Valid Map<String, String> responseHeaders = new HashMap<>();
@@ -82,7 +36,7 @@ public class IntegrationLogClientRequest   {
   @JsonCreator
   public IntegrationLogClientRequest(
     @JsonProperty(required = true, value = "host") String host,
-    @JsonProperty(required = true, value = "method") MethodEnum method,
+    @JsonProperty(required = true, value = "method") HttpMethod method,
     @JsonProperty(required = true, value = "path") String path
   ) {
     this.host = host;
@@ -112,7 +66,7 @@ public class IntegrationLogClientRequest   {
 
   /**
    **/
-  public IntegrationLogClientRequest method(MethodEnum method) {
+  public IntegrationLogClientRequest method(HttpMethod method) {
     this.method = method;
     return this;
   }
@@ -120,12 +74,12 @@ public class IntegrationLogClientRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "method")
-  @NotNull public MethodEnum getMethod() {
+  @NotNull public HttpMethod getMethod() {
     return method;
   }
 
   @JsonProperty(required = true, value = "method")
-  public void setMethod(MethodEnum method) {
+  public void setMethod(HttpMethod method) {
     this.method = method;
   }
 
@@ -283,12 +237,8 @@ public class IntegrationLogClientRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

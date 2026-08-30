@@ -73,7 +73,6 @@ class CatalogsProductGroupPinsList200Response(Model):
     def items(self) -> List[CatalogsProduct]:
         """Gets the items of this CatalogsProductGroupPinsList200Response.
 
-        Pins  # noqa: E501
 
         :return: The items of this CatalogsProductGroupPinsList200Response.
         :rtype: List[CatalogsProduct]
@@ -84,7 +83,6 @@ class CatalogsProductGroupPinsList200Response(Model):
     def items(self, items: List[CatalogsProduct]):
         """Sets the items of this CatalogsProductGroupPinsList200Response.
 
-        Pins  # noqa: E501
 
         :param items: The items of this CatalogsProductGroupPinsList200Response.
         :type items: List[CatalogsProduct]

@@ -1,10 +1,11 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.Error
-import org.openapitools.model.PromotionCreateRequest
-import org.openapitools.model.PromotionResponse
-import org.openapitools.model.PromotionUpdateRequest
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PinterestLibPaginationOrder
+import org.openapitools.model.Promotion
+import org.openapitools.model.PromotionBatchUpdate
+import org.openapitools.model.PromotionCreate
 import org.openapitools.model.PromotionsList200Response
 import org.openapitools.model.PromotionsResponse
 
@@ -13,13 +14,14 @@ class PromotionsApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def promotionsCreate ( String adAccountId, List<PromotionCreateRequest> promotionCreateRequest, Closure onSuccess, Closure onFailure)  {
+    def promotionsCreate ( String adAccountId, List<PromotionCreate> promotionCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/promotions"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -27,85 +29,94 @@ class PromotionsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (promotionCreateRequest == null) {
-            throw new RuntimeException("missing required params promotionCreateRequest")
+        if (promotionCreate == null) {
+            throw new RuntimeException("missing required params promotionCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = promotionCreateRequest
+        bodyParams = promotionCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     PromotionsResponse.class )
 
     }
 
-    def promotionsDelete ( String adAccountId, String promotionId, Closure onSuccess, Closure onFailure)  {
+    def promotionsDelete ( String promotionId, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/promotions/${promotion_id}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
-        // verify required params are set
-        if (adAccountId == null) {
-            throw new RuntimeException("missing required params adAccountId")
-        }
         // verify required params are set
         if (promotionId == null) {
             throw new RuntimeException("missing required params promotionId")
         }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
 
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    null )
+                    Promotion.class )
 
     }
 
-    def promotionsGet ( String adAccountId, String promotionId, Closure onSuccess, Closure onFailure)  {
+    def promotionsGet ( String promotionId, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/promotions/${promotion_id}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
-        // verify required params are set
-        if (adAccountId == null) {
-            throw new RuntimeException("missing required params adAccountId")
-        }
         // verify required params are set
         if (promotionId == null) {
             throw new RuntimeException("missing required params promotionId")
         }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
 
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    PromotionResponse.class )
+                    Promotion.class )
 
     }
 
-    def promotionsList ( String adAccountId, Integer pageSize, String order, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def promotionsList ( String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/promotions"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -113,32 +124,35 @@ class PromotionsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
 
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
         }
         if (order != null) {
             queryParams.put("order", order)
         }
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     PromotionsList200Response.class )
 
     }
 
-    def promotionsUpdate ( String adAccountId, List<PromotionUpdateRequest> promotionUpdateRequest, Closure onSuccess, Closure onFailure)  {
+    def promotionsUpdate ( String adAccountId, List<PromotionBatchUpdate> promotionBatchUpdate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/promotions"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -146,17 +160,19 @@ class PromotionsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (promotionUpdateRequest == null) {
-            throw new RuntimeException("missing required params promotionUpdateRequest")
+        if (promotionBatchUpdate == null) {
+            throw new RuntimeException("missing required params promotionBatchUpdate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = promotionUpdateRequest
+        bodyParams = promotionBatchUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     PromotionsResponse.class )
 

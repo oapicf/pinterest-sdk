@@ -11,31 +11,30 @@
 part of openapi.api;
 
 
-class ProductCategoriesEngagementType {
-  /// Instantiate a new enum with the provided [value].
-  const ProductCategoriesEngagementType._(this.value);
+enum ProductCategoriesEngagementType {
+  ENGAGEMENT._(r'ENGAGEMENT'),
+  OUTBOUND_CLICK._(r'OUTBOUND_CLICK'),
+  SAVE._(r'SAVE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ProductCategoriesEngagementType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ENGAGEMENT = ProductCategoriesEngagementType._(r'ENGAGEMENT');
-  static const OUTBOUND_CLICK = ProductCategoriesEngagementType._(r'OUTBOUND_CLICK');
-  static const SAVE = ProductCategoriesEngagementType._(r'SAVE');
-
-  /// List of all possible values in this [enum][ProductCategoriesEngagementType].
-  static const values = <ProductCategoriesEngagementType>[
-    ENGAGEMENT,
-    OUTBOUND_CLICK,
-    SAVE,
-  ];
-
+  /// Returns the instance of [ProductCategoriesEngagementType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ProductCategoriesEngagementType? fromJson(dynamic value) => ProductCategoriesEngagementTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ProductCategoriesEngagementType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ProductCategoriesEngagementType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ProductCategoriesEngagementType>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class ProductCategoriesEngagementTypeTypeTransformer {
 
   const ProductCategoriesEngagementTypeTypeTransformer._();
 
-  String encode(ProductCategoriesEngagementType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ProductCategoriesEngagementType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ProductCategoriesEngagementType.
+  /// Returns the instance of [ProductCategoriesEngagementType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class ProductCategoriesEngagementTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ProductCategoriesEngagementType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ProductCategoriesEngagementType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ENGAGEMENT': return ProductCategoriesEngagementType.ENGAGEMENT;
@@ -82,7 +86,7 @@ class ProductCategoriesEngagementTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [ProductCategoriesEngagementTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ProductCategoriesEngagementTypeTypeTransformer? _instance;
 }
 

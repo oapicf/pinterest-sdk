@@ -12,7 +12,7 @@ Feature | HTTP request | Description
 
 
 # **promotions_create**
-> promotions_create (ad_account_id: STRING_32 ; promotion_create_request: LIST [PROMOTION_CREATE_REQUEST] ): detachable PROMOTIONS_RESPONSE
+> promotions_create (ad_account_id: STRING_32 ; promotion_create: LIST [PROMOTION_CREATE] ): detachable PROMOTIONS_RESPONSE
 
 
 Create promotions
@@ -25,7 +25,7 @@ Create multiple new promotions.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **promotion_create_request** | [**LIST [PROMOTION_CREATE_REQUEST]**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotion_create** | [**LIST [PROMOTION_CREATE]**](PromotionCreate.md)|  | 
 
 ### Return type
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_delete**
-> promotions_delete (ad_account_id: STRING_32 ; promotion_id: STRING_32 )
+> promotions_delete (promotion_id: STRING_32 ; ad_account_id: STRING_32 ): detachable PROMOTION
 
 
 Delete promotion by id
@@ -55,12 +55,12 @@ Delete a promotion within Pinterest.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotion_id** | **STRING_32**| Promotion ID | [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **promotion_id** | **STRING_32**| Unique identifier of a promotion | [default to null]
 
 ### Return type
 
-{empty response body)
+[**PROMOTION**](Promotion.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_get**
-> promotions_get (ad_account_id: STRING_32 ; promotion_id: STRING_32 ): detachable PROMOTION_RESPONSE
+> promotions_get (promotion_id: STRING_32 ; ad_account_id: STRING_32 ): detachable PROMOTION
 
 
 Get promotion by id
@@ -86,12 +86,12 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotion_id** | **STRING_32**| Promotion ID | [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **promotion_id** | **STRING_32**| Unique identifier of a promotion | [default to null]
 
 ### Return type
 
-[**PROMOTION_RESPONSE**](PromotionResponse.md)
+[**PROMOTION**](Promotion.md)
 
 ### Authorization
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_list**
-> promotions_list (ad_account_id: STRING_32 ; page_size:  detachable INTEGER_32 ; order:  detachable STRING_32 ; bookmark:  detachable STRING_32 ): detachable PROMOTIONS_LIST_200_RESPONSE
+> promotions_list (ad_account_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; order:  detachable PINTEREST_LIB_PAGINATION_ORDER ): detachable PROMOTIONS_LIST_200_RESPONSE
 
 
 Get promotions
@@ -118,9 +118,9 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **STRING_32**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PINTEREST_LIB_PAGINATION_ORDER**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
 
 ### Return type
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_update**
-> promotions_update (ad_account_id: STRING_32 ; promotion_update_request: LIST [PROMOTION_UPDATE_REQUEST] ): detachable PROMOTIONS_RESPONSE
+> promotions_update (ad_account_id: STRING_32 ; promotion_batch_update: LIST [PROMOTION_BATCH_UPDATE] ): detachable PROMOTIONS_RESPONSE
 
 
 Update promotions
@@ -151,7 +151,7 @@ Update multiple promotions.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **promotion_update_request** | [**LIST [PROMOTION_UPDATE_REQUEST]**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotion_batch_update** | [**LIST [PROMOTION_BATCH_UPDATE]**](PromotionBatchUpdate.md)|  | 
 
 ### Return type
 

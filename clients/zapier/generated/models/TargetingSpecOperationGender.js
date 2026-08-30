@@ -1,5 +1,6 @@
 const utils = require('../utils/utils');
 const TargetingSpecGender = require('../models/TargetingSpecGender');
+const TargetingSpecListOperation = require('../models/TargetingSpecListOperation');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -16,14 +17,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}operation`,
-                label: `[${labelPrefix}operation]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'SET',
-                    'ADD',
-                    'REMOVE',
-                ],
+                ...TargetingSpecListOperation.fields(`${keyPrefix}operation`, isInput),
             },
             {
                 key: `${keyPrefix}values`,

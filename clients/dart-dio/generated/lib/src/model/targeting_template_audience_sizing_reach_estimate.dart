@@ -95,22 +95,25 @@ class _$TargetingTemplateAudienceSizingReachEstimateSerializer implements Primit
         case r'estimate':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.estimate = valueDes;
           break;
         case r'lower_bound':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.lowerBound = valueDes;
           break;
         case r'upper_bound':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.upperBound = valueDes;
           break;
         default:

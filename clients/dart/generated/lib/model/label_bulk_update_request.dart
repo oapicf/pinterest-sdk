@@ -14,54 +14,39 @@ class LabelBulkUpdateRequest {
   /// Returns a new [LabelBulkUpdateRequest] instance.
   LabelBulkUpdateRequest({
     required this.id,
-    this.status,
-    this.value,
+    required this.parentId,
+    required this.status,
   });
 
   /// Label ID.
   String id;
 
-  /// Set status to `ARCHIVED` to remove the label from the parent entity.
-  LabelBulkUpdateRequestStatusEnum? status;
+  /// Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+  String parentId;
 
-  /// </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? value;
+  LabelStatusBulkUpdate status;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LabelBulkUpdateRequest &&
     other.id == id &&
-    other.status == status &&
-    other.value == value;
+    other.parentId == parentId &&
+    other.status == status;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
-    (value == null ? 0 : value!.hashCode);
+    (parentId.hashCode) +
+    (status.hashCode);
 
   @override
-  String toString() => 'LabelBulkUpdateRequest[id=$id, status=$status, value=$value]';
+  String toString() => 'LabelBulkUpdateRequest[id=$id, parentId=$parentId, status=$status]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
-    if (this.status != null) {
+      json[r'parent_id'] = this.parentId;
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
-    if (this.value != null) {
-      json[r'value'] = this.value;
-    } else {
-      json[r'value'] = null;
-    }
     return json;
   }
 
@@ -76,17 +61,19 @@ class LabelBulkUpdateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LabelBulkUpdateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LabelBulkUpdateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "LabelBulkUpdateRequest[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "LabelBulkUpdateRequest[id]" has a null value in JSON.');
+        assert(json.containsKey(r'parent_id'), 'Required key "LabelBulkUpdateRequest[parent_id]" is missing from JSON.');
+        assert(json[r'parent_id'] != null, 'Required key "LabelBulkUpdateRequest[parent_id]" has a null value in JSON.');
+        assert(json.containsKey(r'status'), 'Required key "LabelBulkUpdateRequest[status]" is missing from JSON.');
+        assert(json[r'status'] != null, 'Required key "LabelBulkUpdateRequest[status]" has a null value in JSON.');
         return true;
       }());
 
       return LabelBulkUpdateRequest(
         id: mapValueOfType<String>(json, r'id')!,
-        status: LabelBulkUpdateRequestStatusEnum.fromJson(json[r'status']),
-        value: mapValueOfType<String>(json, r'value'),
+        parentId: mapValueOfType<String>(json, r'parent_id')!,
+        status: LabelStatusBulkUpdate.fromJson(json[r'status'])!,
       );
     }
     return null;
@@ -135,77 +122,8 @@ class LabelBulkUpdateRequest {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
+    'parent_id',
+    'status',
   };
 }
-
-/// Set status to `ARCHIVED` to remove the label from the parent entity.
-class LabelBulkUpdateRequestStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const LabelBulkUpdateRequestStatusEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const ARCHIVED = LabelBulkUpdateRequestStatusEnum._(r'ARCHIVED');
-
-  /// List of all possible values in this [enum][LabelBulkUpdateRequestStatusEnum].
-  static const values = <LabelBulkUpdateRequestStatusEnum>[
-    ARCHIVED,
-  ];
-
-  static LabelBulkUpdateRequestStatusEnum? fromJson(dynamic value) => LabelBulkUpdateRequestStatusEnumTypeTransformer().decode(value);
-
-  static List<LabelBulkUpdateRequestStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <LabelBulkUpdateRequestStatusEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = LabelBulkUpdateRequestStatusEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [LabelBulkUpdateRequestStatusEnum] to String,
-/// and [decode] dynamic data back to [LabelBulkUpdateRequestStatusEnum].
-class LabelBulkUpdateRequestStatusEnumTypeTransformer {
-  factory LabelBulkUpdateRequestStatusEnumTypeTransformer() => _instance ??= const LabelBulkUpdateRequestStatusEnumTypeTransformer._();
-
-  const LabelBulkUpdateRequestStatusEnumTypeTransformer._();
-
-  String encode(LabelBulkUpdateRequestStatusEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a LabelBulkUpdateRequestStatusEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  LabelBulkUpdateRequestStatusEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'ARCHIVED': return LabelBulkUpdateRequestStatusEnum.ARCHIVED;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [LabelBulkUpdateRequestStatusEnumTypeTransformer] instance.
-  static LabelBulkUpdateRequestStatusEnumTypeTransformer? _instance;
-}
-
 

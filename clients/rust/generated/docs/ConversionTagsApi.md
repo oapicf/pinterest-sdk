@@ -137,7 +137,7 @@ Name | Type | Description  | Required | Notes
 
 ## page_visit_conversion_tags_slash_get
 
-> models::PageVisitConversionTagsGet200Response page_visit_conversion_tags_slash_get(ad_account_id, page_size, order, bookmark)
+> models::PageVisitConversionTagsGet200Response page_visit_conversion_tags_slash_get(ad_account_id, bookmark, page_size, order)
 Get page visit conversion tags
 
 Get all page visit conversion tag events for an ad account.
@@ -148,9 +148,9 @@ Get all page visit conversion tag events for an ad account.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
-**order** | Option<**String**> | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
+**order** | Option<[**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)> | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. |  |
 
 ### Return type
 

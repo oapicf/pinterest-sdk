@@ -4,28 +4,12 @@
 #include "trending_product_category.h"
 
 
-char* trending_product_category_verticals_ToString(pinterest_rest_api_trending_product_category__e verticals) {
-    char *verticalsArray[] =  { "NULL", "FASHION", "HOME_DECOR", "BEAUTY" };
-    return verticalsArray[verticals - 1];
-}
-
-pinterest_rest_api_trending_product_category__e trending_product_category_verticals_FromString(char* verticals) {
-    int stringToReturn = 0;
-    char *verticalsArray[] =  { "NULL", "FASHION", "HOME_DECOR", "BEAUTY" };
-    size_t sizeofArray = sizeof(verticalsArray) / sizeof(verticalsArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(verticals, verticalsArray[stringToReturn]) == 0) {
-            return stringToReturn + 1;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static trending_product_category_t *trending_product_category_create_internal(
     product_categories_engagement_type_t *engagement_type,
-    int pct_change_mom,
-    int percent_relative_volume,
+    int *pct_change_mom,
+    int *percent_relative_volume,
+    int *pinterest_product_category_id,
     char *product_category,
     list_t *verticals
     ) {
@@ -33,30 +17,54 @@ static trending_product_category_t *trending_product_category_create_internal(
     if (!trending_product_category_local_var) {
         return NULL;
     }
+    memset(trending_product_category_local_var, 0, sizeof(trending_product_category_t));
+    trending_product_category_local_var->_library_owned = 1;
     trending_product_category_local_var->engagement_type = engagement_type;
     trending_product_category_local_var->pct_change_mom = pct_change_mom;
     trending_product_category_local_var->percent_relative_volume = percent_relative_volume;
+    trending_product_category_local_var->pinterest_product_category_id = pinterest_product_category_id;
     trending_product_category_local_var->product_category = product_category;
     trending_product_category_local_var->verticals = verticals;
-
-    trending_product_category_local_var->_library_owned = 1;
     return trending_product_category_local_var;
 }
 
 __attribute__((deprecated)) trending_product_category_t *trending_product_category_create(
     product_categories_engagement_type_t *engagement_type,
-    int pct_change_mom,
-    int percent_relative_volume,
+    int *pct_change_mom,
+    int *percent_relative_volume,
+    int *pinterest_product_category_id,
     char *product_category,
     list_t *verticals
     ) {
-    return trending_product_category_create_internal (
+    int *pct_change_mom_copy = NULL;
+    if (pct_change_mom) {
+        pct_change_mom_copy = malloc(sizeof(int));
+        if (pct_change_mom_copy) *pct_change_mom_copy = *pct_change_mom;
+    }
+    int *percent_relative_volume_copy = NULL;
+    if (percent_relative_volume) {
+        percent_relative_volume_copy = malloc(sizeof(int));
+        if (percent_relative_volume_copy) *percent_relative_volume_copy = *percent_relative_volume;
+    }
+    int *pinterest_product_category_id_copy = NULL;
+    if (pinterest_product_category_id) {
+        pinterest_product_category_id_copy = malloc(sizeof(int));
+        if (pinterest_product_category_id_copy) *pinterest_product_category_id_copy = *pinterest_product_category_id;
+    }
+    trending_product_category_t *result = trending_product_category_create_internal (
         engagement_type,
-        pct_change_mom,
-        percent_relative_volume,
+        pct_change_mom_copy,
+        percent_relative_volume_copy,
+        pinterest_product_category_id_copy,
         product_category,
         verticals
         );
+    if (!result) {
+        free(pct_change_mom_copy);
+        free(percent_relative_volume_copy);
+        free(pinterest_product_category_id_copy);
+    }
+    return result;
 }
 
 void trending_product_category_free(trending_product_category_t *trending_product_category) {
@@ -72,13 +80,25 @@ void trending_product_category_free(trending_product_category_t *trending_produc
         product_categories_engagement_type_free(trending_product_category->engagement_type);
         trending_product_category->engagement_type = NULL;
     }
+    if (trending_product_category->pct_change_mom) {
+        free(trending_product_category->pct_change_mom);
+        trending_product_category->pct_change_mom = NULL;
+    }
+    if (trending_product_category->percent_relative_volume) {
+        free(trending_product_category->percent_relative_volume);
+        trending_product_category->percent_relative_volume = NULL;
+    }
+    if (trending_product_category->pinterest_product_category_id) {
+        free(trending_product_category->pinterest_product_category_id);
+        trending_product_category->pinterest_product_category_id = NULL;
+    }
     if (trending_product_category->product_category) {
         free(trending_product_category->product_category);
         trending_product_category->product_category = NULL;
     }
     if (trending_product_category->verticals) {
         list_ForEach(listEntry, trending_product_category->verticals) {
-            vertical_product_category_free(listEntry->data);
+            free(listEntry->data);
         }
         list_freeList(trending_product_category->verticals);
         trending_product_category->verticals = NULL;
@@ -107,7 +127,7 @@ cJSON *trending_product_category_convertToJSON(trending_product_category_t *tren
     if (!trending_product_category->pct_change_mom) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "pct_change_mom", trending_product_category->pct_change_mom) == NULL) {
+    if(cJSON_AddNumberToObject(item, "pct_change_mom", *trending_product_category->pct_change_mom) == NULL) {
     goto fail; //Numeric
     }
 
@@ -116,7 +136,16 @@ cJSON *trending_product_category_convertToJSON(trending_product_category_t *tren
     if (!trending_product_category->percent_relative_volume) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "percent_relative_volume", trending_product_category->percent_relative_volume) == NULL) {
+    if(cJSON_AddNumberToObject(item, "percent_relative_volume", *trending_product_category->percent_relative_volume) == NULL) {
+    goto fail; //Numeric
+    }
+
+
+    // trending_product_category->pinterest_product_category_id
+    if (!trending_product_category->pinterest_product_category_id) {
+        goto fail;
+    }
+    if(cJSON_AddNumberToObject(item, "pinterest_product_category_id", *trending_product_category->pinterest_product_category_id) == NULL) {
     goto fail; //Numeric
     }
 
@@ -131,20 +160,17 @@ cJSON *trending_product_category_convertToJSON(trending_product_category_t *tren
 
 
     // trending_product_category->verticals
-    if(trending_product_category->verticals != pinterest_rest_api_list_VERTICALS_NULL) {
+    if(trending_product_category->verticals) {
     cJSON *verticals = cJSON_AddArrayToObject(item, "verticals");
     if(verticals == NULL) {
-    goto fail; //nonprimitive container
+        goto fail; //primitive container
     }
 
     listEntry_t *verticalsListEntry;
-    if (trending_product_category->verticals) {
     list_ForEach(verticalsListEntry, trending_product_category->verticals) {
-    cJSON *itemLocal = vertical_product_category_convertToJSON((pinterest_rest_api_trending_product_category__e)verticalsListEntry->data);
-    if(itemLocal == NULL) {
-    goto fail;
-    }
-    cJSON_AddItemToArray(verticals, itemLocal);
+    if(cJSON_AddStringToObject(verticals, "", verticalsListEntry->data) == NULL)
+    {
+        goto fail;
     }
     }
     }
@@ -163,6 +189,17 @@ trending_product_category_t *trending_product_category_parseFromJSON(cJSON *tren
 
     // define the local variable for trending_product_category->engagement_type
     product_categories_engagement_type_t *engagement_type_local_nonprim = NULL;
+
+    // define the local variable for trending_product_category->pct_change_mom
+    int *pct_change_mom_local_var = NULL;
+
+    // define the local variable for trending_product_category->percent_relative_volume
+    int *percent_relative_volume_local_var = NULL;
+
+    // define the local variable for trending_product_category->pinterest_product_category_id
+    int *pinterest_product_category_id_local_var = NULL;
+
+    char *product_category_local_str = NULL;
 
     // define the local list for trending_product_category->verticals
     list_t *verticalsList = NULL;
@@ -193,6 +230,12 @@ trending_product_category_t *trending_product_category_parseFromJSON(cJSON *tren
     {
     goto end; //Numeric
     }
+    pct_change_mom_local_var = malloc(sizeof(int));
+    if(!pct_change_mom_local_var)
+    {
+        goto end;
+    }
+    *pct_change_mom_local_var = pct_change_mom->valuedouble;
 
     // trending_product_category->percent_relative_volume
     cJSON *percent_relative_volume = cJSON_GetObjectItemCaseSensitive(trending_product_categoryJSON, "percent_relative_volume");
@@ -208,6 +251,33 @@ trending_product_category_t *trending_product_category_parseFromJSON(cJSON *tren
     {
     goto end; //Numeric
     }
+    percent_relative_volume_local_var = malloc(sizeof(int));
+    if(!percent_relative_volume_local_var)
+    {
+        goto end;
+    }
+    *percent_relative_volume_local_var = percent_relative_volume->valuedouble;
+
+    // trending_product_category->pinterest_product_category_id
+    cJSON *pinterest_product_category_id = cJSON_GetObjectItemCaseSensitive(trending_product_categoryJSON, "pinterest_product_category_id");
+    if (cJSON_IsNull(pinterest_product_category_id)) {
+        pinterest_product_category_id = NULL;
+    }
+    if (!pinterest_product_category_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsNumber(pinterest_product_category_id))
+    {
+    goto end; //Numeric
+    }
+    pinterest_product_category_id_local_var = malloc(sizeof(int));
+    if(!pinterest_product_category_id_local_var)
+    {
+        goto end;
+    }
+    *pinterest_product_category_id_local_var = pinterest_product_category_id->valuedouble;
 
     // trending_product_category->product_category
     cJSON *product_category = cJSON_GetObjectItemCaseSensitive(trending_product_categoryJSON, "product_category");
@@ -230,32 +300,37 @@ trending_product_category_t *trending_product_category_parseFromJSON(cJSON *tren
         verticals = NULL;
     }
     if (verticals) { 
-    cJSON *verticals_local_nonprimitive = NULL;
-    if(!cJSON_IsArray(verticals)){
-        goto end; //nonprimitive container
+    cJSON *verticals_local = NULL;
+    if(!cJSON_IsArray(verticals)) {
+        goto end;//primitive container
     }
-
     verticalsList = list_createList();
 
-    cJSON_ArrayForEach(verticals_local_nonprimitive,verticals )
+    cJSON_ArrayForEach(verticals_local, verticals)
     {
-        if(!cJSON_IsObject(verticals_local_nonprimitive)){
+        if(!cJSON_IsString(verticals_local))
+        {
             goto end;
         }
-        trending_product_category_vertical_product_category_e verticalsItem = vertical_product_category_parseFromJSON(verticals_local_nonprimitive);
-
-        list_addElement(verticalsList, (void *)verticalsItem);
+        list_addElement(verticalsList , strdup(verticals_local->valuestring));
     }
     }
 
+
+    if (product_category && !cJSON_IsNull(product_category)) product_category_local_str = strdup(product_category->valuestring);
 
     trending_product_category_local_var = trending_product_category_create_internal (
         engagement_type_local_nonprim,
-        pct_change_mom->valuedouble,
-        percent_relative_volume->valuedouble,
-        strdup(product_category->valuestring),
+        pct_change_mom_local_var,
+        percent_relative_volume_local_var,
+        pinterest_product_category_id_local_var,
+        product_category_local_str,
         verticals ? verticalsList : NULL
         );
+
+    if (!trending_product_category_local_var) {
+        goto end;
+    }
 
     return trending_product_category_local_var;
 end:
@@ -263,10 +338,26 @@ end:
         product_categories_engagement_type_free(engagement_type_local_nonprim);
         engagement_type_local_nonprim = NULL;
     }
+    if (pct_change_mom_local_var) {
+        free(pct_change_mom_local_var);
+        pct_change_mom_local_var = NULL;
+    }
+    if (percent_relative_volume_local_var) {
+        free(percent_relative_volume_local_var);
+        percent_relative_volume_local_var = NULL;
+    }
+    if (pinterest_product_category_id_local_var) {
+        free(pinterest_product_category_id_local_var);
+        pinterest_product_category_id_local_var = NULL;
+    }
+    if (product_category_local_str) {
+        free(product_category_local_str);
+        product_category_local_str = NULL;
+    }
     if (verticalsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, verticalsList) {
-            vertical_product_category_free(listEntry->data);
+            free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(verticalsList);

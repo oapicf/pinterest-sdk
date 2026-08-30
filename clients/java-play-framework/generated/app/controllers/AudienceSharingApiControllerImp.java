@@ -1,13 +1,18 @@
 package controllers;
 
+import apimodels.AdAccountToAdAccountSharedAudience;
+import apimodels.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import apimodels.AdAccountToBusinessSharedAudience;
+import apimodels.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 import apimodels.AdAccountsAudiencesSharedAccountsList200Response;
 import apimodels.AudienceAccountType;
-import apimodels.AudiencesList200Response;
-import apimodels.BusinessSharedAudience;
-import apimodels.BusinessSharedAudienceResponse;
-import apimodels.Error;
-import apimodels.SharedAudience;
-import apimodels.SharedAudienceResponse;
+import apimodels.BusinessToAdAccountSharedAudience;
+import apimodels.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
+import apimodels.BusinessToBusinessSharedAudience;
+import apimodels.BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
+import apimodels.Order;
+import apimodels.PinterestLibError;
+import apimodels.SharedAudiencesForBusinessList200Response;
 
 import play.mvc.Http;
 import java.util.List;
@@ -18,48 +23,48 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceSharingApiControllerImp extends AudienceSharingApiControllerImpInterface {
     @Override
-    public AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(Http.Request request, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new AdAccountsAudiencesSharedAccountsList200Response();
     }
 
     @Override
-    public AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, @NotNull AudienceAccountType accountType, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new AdAccountsAudiencesSharedAccountsList200Response();
     }
 
     @Override
-    public AudiencesList200Response sharedAudiencesForBusinessList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, String bookmark, String order,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Order order, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
-        return new AudiencesList200Response();
+        return new SharedAudiencesForBusinessList200Response();
     }
 
     @Override
-    public SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SharedAudience sharedAudience) throws Exception {
+    public AdAccountToAdAccountSharedAudience updateAdAccountToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody) throws Exception {
         //Do your magic!!!
-        return new SharedAudienceResponse();
+        return new AdAccountToAdAccountSharedAudience();
     }
 
     @Override
-    public BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BusinessSharedAudience businessSharedAudience) throws Exception {
+    public AdAccountToBusinessSharedAudience updateAdAccountToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody) throws Exception {
         //Do your magic!!!
-        return new BusinessSharedAudienceResponse();
+        return new AdAccountToBusinessSharedAudience();
     }
 
     @Override
-    public SharedAudienceResponse updateBusinessToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, SharedAudience sharedAudience) throws Exception {
+    public BusinessToAdAccountSharedAudience updateBusinessToAdAccountSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody) throws Exception {
         //Do your magic!!!
-        return new SharedAudienceResponse();
+        return new BusinessToAdAccountSharedAudience();
     }
 
     @Override
-    public BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessSharedAudience businessSharedAudience) throws Exception {
+    public BusinessToBusinessSharedAudience updateBusinessToBusinessSharedAudience(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody) throws Exception {
         //Do your magic!!!
-        return new BusinessSharedAudienceResponse();
+        return new BusinessToBusinessSharedAudience();
     }
 
 }

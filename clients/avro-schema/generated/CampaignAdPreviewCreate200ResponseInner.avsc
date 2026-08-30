@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CampaignAdPreviewCreate200ResponseInner",
+  "fields": [
+    {
+      "name": "data",
+      "type": "model.CampaignAdPreviewCreate200ResponseInnerData",
+      "doc": ""
+    }
+  ]
+
+}

@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;BillingInvoiceResponse&gt;](BillingInvoiceResponse.md)
+`items` | [Array&lt;BillingInvoice&gt;](BillingInvoice.md)
 
 ## Example
 

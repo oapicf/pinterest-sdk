@@ -8,11 +8,15 @@
  * Do not edit the class manually.
  */
 import { CatalogsHotelAddress } from './catalogsHotelAddress';
-import { CatalogsHotelAttributesAllOfMainImage } from './catalogsHotelAttributesAllOfMainImage';
+import { CatalogsAiContentDisclosure } from './catalogsAiContentDisclosure';
+import { CatalogsHotelMainImage } from './catalogsHotelMainImage';
 import { CatalogsHotelGuestRatings } from './catalogsHotelGuestRatings';
 
 
 export interface CatalogsHotelAttributes { 
+    /**
+     * Hotel address
+     */
     address?: CatalogsHotelAddress;
     /**
      * Base price of the hotel room per night followed by the ISO currency code
@@ -50,6 +54,9 @@ export interface CatalogsHotelAttributes {
      * Brief description of the hotel.
      */
     description?: string | null;
+    /**
+     * If specified, you must provide all properties
+     */
     guest_ratings?: CatalogsHotelGuestRatings;
     /**
      * Latitude of the hotel.
@@ -76,9 +83,16 @@ export interface CatalogsHotelAttributes {
      */
     sale_price?: string | null;
     /**
-     * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+     * <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
      */
     additional_image_link?: Array<string> | null;
-    main_image?: CatalogsHotelAttributesAllOfMainImage;
+    /**
+     * AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+     */
+    ai_disclosures?: Array<CatalogsAiContentDisclosure>;
+    /**
+     * The main hotel image
+     */
+    main_image?: CatalogsHotelMainImage;
 }
 

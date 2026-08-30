@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## oauth_slash_conversion_token
 
-> models::ConversionAccessTokenResponse oauth_slash_conversion_token()
+> models::ConversionAccessToken oauth_slash_conversion_token()
 Generate OAuth access token for conversion API
 
 Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
@@ -23,7 +23,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**models::ConversionAccessTokenResponse**](ConversionAccessTokenResponse.md)
+[**models::ConversionAccessToken**](ConversionAccessToken.md)
 
 ### Authorization
 
@@ -39,21 +39,26 @@ This endpoint does not need any parameter.
 
 ## oauth_slash_token
 
-> models::OauthAccessTokenResponse oauth_slash_token(grant_type)
+> models::OauthAccessToken oauth_slash_token(grant_type, code, continuous_refresh, redirect_uri, refresh_token, scope)
 Generate OAuth access token
 
-Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**grant_type** | **String** |  | [required] |
+**grant_type** | [**models::TokenGrantType**](TokenGrantType.md) |  | [required] |
+**code** | Option<**String**> |  |  |
+**continuous_refresh** | Option<**String**> |   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. |  |
+**redirect_uri** | Option<**String**> |  |  |
+**refresh_token** | Option<**String**> |  |  |
+**scope** | Option<**String**> |  |  |
 
 ### Return type
 
-[**models::OauthAccessTokenResponse**](OauthAccessTokenResponse.md)
+[**models::OauthAccessToken**](OauthAccessToken.md)
 
 ### Authorization
 
@@ -80,7 +85,7 @@ Revokes an access or refresh token. Only tokens issued for system users are curr
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **token** | **String** | The token to revoke. | [required] |
-**token_type_hint** | Option<**String**> | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. |  |
+**token_type_hint** | Option<[**models::TokenTypeHint**](TokenTypeHint.md)> | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. |  |
 
 ### Return type
 

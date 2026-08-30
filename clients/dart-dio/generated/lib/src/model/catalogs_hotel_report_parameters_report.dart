@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/catalogs_report_all_items_filter.dart';
 import 'package:openapi/src/model/catalogs_report_distribution_issue_filter.dart';
 import 'package:openapi/src/model/catalogs_report_feed_ingestion_filter.dart';
 import 'package:built_value/built_value.dart';
@@ -16,19 +15,18 @@ part 'catalogs_hotel_report_parameters_report.g.dart';
 /// CatalogsHotelReportParametersReport
 ///
 /// Properties:
-/// * [reportType] 
 /// * [feedId] - ID of the feed entity.
 /// * [processingResultId] - Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
+/// * [reportType] 
 /// * [catalogId] - Unique identifier of a catalog. If not given, oldest catalog will be used
 @BuiltValue()
 abstract class CatalogsHotelReportParametersReport implements Built<CatalogsHotelReportParametersReport, CatalogsHotelReportParametersReportBuilder> {
-  /// One Of [CatalogsReportAllItemsFilter], [CatalogsReportDistributionIssueFilter], [CatalogsReportFeedIngestionFilter]
+  /// One Of [CatalogsReportDistributionIssueFilter], [CatalogsReportFeedIngestionFilter]
   OneOf get oneOf;
 
   static const String discriminatorFieldName = r'report_type';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'ALL_ITEMS': CatalogsReportAllItemsFilter,
     r'DISTRIBUTION_ISSUES': CatalogsReportDistributionIssueFilter,
     r'FEED_INGESTION_ISSUES': CatalogsReportFeedIngestionFilter,
   };
@@ -46,9 +44,6 @@ abstract class CatalogsHotelReportParametersReport implements Built<CatalogsHote
 
 extension CatalogsHotelReportParametersReportDiscriminatorExt on CatalogsHotelReportParametersReport {
     String? get discriminatorValue {
-        if (this is CatalogsReportAllItemsFilter) {
-            return r'ALL_ITEMS';
-        }
         if (this is CatalogsReportDistributionIssueFilter) {
             return r'DISTRIBUTION_ISSUES';
         }
@@ -60,9 +55,6 @@ extension CatalogsHotelReportParametersReportDiscriminatorExt on CatalogsHotelRe
 }
 extension CatalogsHotelReportParametersReportBuilderDiscriminatorExt on CatalogsHotelReportParametersReportBuilder {
     String? get discriminatorValue {
-        if (this is CatalogsReportAllItemsFilterBuilder) {
-            return r'ALL_ITEMS';
-        }
         if (this is CatalogsReportDistributionIssueFilterBuilder) {
             return r'DISTRIBUTION_ISSUES';
         }
@@ -109,17 +101,10 @@ class _$CatalogsHotelReportParametersReportSerializer implements PrimitiveSerial
     final discIndex = serializedList.indexOf(CatalogsHotelReportParametersReport.discriminatorFieldName) + 1;
     final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    final oneOfTypes = [CatalogsReportAllItemsFilter, CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter, ];
+    final oneOfTypes = [CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter, ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
-      case r'ALL_ITEMS':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(CatalogsReportAllItemsFilter),
-        ) as CatalogsReportAllItemsFilter;
-        oneOfType = CatalogsReportAllItemsFilter;
-        break;
       case r'DISTRIBUTION_ISSUES':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
@@ -144,12 +129,8 @@ class _$CatalogsHotelReportParametersReportSerializer implements PrimitiveSerial
 
 class CatalogsHotelReportParametersReportReportTypeEnum extends EnumClass {
 
-  @BuiltValueEnumConst(wireName: r'FEED_INGESTION_ISSUES')
-  static const CatalogsHotelReportParametersReportReportTypeEnum FEED_INGESTION_ISSUES = _$catalogsHotelReportParametersReportReportTypeEnum_FEED_INGESTION_ISSUES;
   @BuiltValueEnumConst(wireName: r'DISTRIBUTION_ISSUES')
   static const CatalogsHotelReportParametersReportReportTypeEnum DISTRIBUTION_ISSUES = _$catalogsHotelReportParametersReportReportTypeEnum_DISTRIBUTION_ISSUES;
-  @BuiltValueEnumConst(wireName: r'ALL_ITEMS')
-  static const CatalogsHotelReportParametersReportReportTypeEnum ALL_ITEMS = _$catalogsHotelReportParametersReportReportTypeEnum_ALL_ITEMS;
 
   static Serializer<CatalogsHotelReportParametersReportReportTypeEnum> get serializer => _$catalogsHotelReportParametersReportReportTypeEnumSerializer;
 

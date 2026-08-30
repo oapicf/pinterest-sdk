@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductTagsBulkAddRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductTagsBulkAddRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ProductTagItem = openapi_server.resourceTypes.ProductTagItem
+}
+resourceTypes {
+
+  ProductTagsBulkAddRequest {
+    title = ProductTagsBulkAddRequest
+    description = ProductTagsBulkAddRequest
+    derivedFrom = Root
+    properties {
+        product_tags {
+          type = array
+          items.type = ProductTagItem
+          description = "List of product tags to add. Maximum 24 items allowed."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductTagsBulkAddRequest {
+    title = ProductTagsBulkAddRequest
+    description = ProductTagsBulkAddRequest
+    implements = openapi_server.resourceTypes.ProductTagsBulkAddRequest
+
+  }
+}

@@ -19,11 +19,12 @@ import com.google.gson.Gson
 import org.openapitools.server.api.model.CatalogsListProductsByFilterRequest
 import org.openapitools.server.api.model.CatalogsProductGroupPinsList200Response
 import org.openapitools.server.api.model.CatalogsProductGroupProductCountsVertical
+import org.openapitools.server.api.model.CatalogsProductGroupsCreateManyRequestItems
+import org.openapitools.server.api.model.CatalogsProductGroupsCreateRequestSchema
 import org.openapitools.server.api.model.CatalogsProductGroupsList200Response
-import org.openapitools.server.api.model.CatalogsProductGroupsUpdateRequest
+import org.openapitools.server.api.model.CatalogsProductGroupsUpdateRequestSchema
 import org.openapitools.server.api.model.CatalogsVerticalProductGroup
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.MultipleProductGroupsInner
+import org.openapitools.server.api.model.PinterestLibError
 
 class CatalogProductGroupsApiVertxProxyHandler(private val vertx: Vertx, private val service: CatalogProductGroupsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -77,12 +78,12 @@ class CatalogProductGroupsApiVertxProxyHandler(private val vertx: Vertx, private
                     if(productGroupId == null){
                         throw IllegalArgumentException("productGroupId is required")
                     }
-                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     val pinMetrics = ApiHandlerUtils.searchStringInJson(params,"pin_metrics")?.toBoolean()
+                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.catalogsProductGroupPinsList(productGroupId,bookmark,pageSize,adAccountId,pinMetrics,context)
+                        val result = service.catalogsProductGroupPinsList(productGroupId,adAccountId,pinMetrics,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -93,14 +94,14 @@ class CatalogProductGroupsApiVertxProxyHandler(private val vertx: Vertx, private
         
                 "catalogsProductGroupsCreate" -> {
                     val params = context.params
-                    val multipleProductGroupsInnerParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (multipleProductGroupsInnerParam == null) {
-                        throw IllegalArgumentException("multipleProductGroupsInner is required")
+                    val catalogsProductGroupsCreateRequestSchemaParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (catalogsProductGroupsCreateRequestSchemaParam == null) {
+                        throw IllegalArgumentException("catalogsProductGroupsCreateRequestSchema is required")
                     }
-                    val multipleProductGroupsInner = Gson().fromJson(multipleProductGroupsInnerParam.encode(), MultipleProductGroupsInner::class.java)
+                    val catalogsProductGroupsCreateRequestSchema = Gson().fromJson(catalogsProductGroupsCreateRequestSchemaParam.encode(), CatalogsProductGroupsCreateRequestSchema::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.catalogsProductGroupsCreate(multipleProductGroupsInner,adAccountId,context)
+                        val result = service.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -111,15 +112,15 @@ class CatalogProductGroupsApiVertxProxyHandler(private val vertx: Vertx, private
         
                 "catalogsProductGroupsCreateMany" -> {
                     val params = context.params
-                    val multipleProductGroupsInnerParam = ApiHandlerUtils.searchJsonArrayInJson(params,"body")
-                    if(multipleProductGroupsInnerParam == null){
-                         throw IllegalArgumentException("multipleProductGroupsInner is required")
+                    val catalogsProductGroupsCreateManyRequestItemsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"body")
+                    if(catalogsProductGroupsCreateManyRequestItemsParam == null){
+                         throw IllegalArgumentException("catalogsProductGroupsCreateManyRequestItems is required")
                     }
-                    val multipleProductGroupsInner:kotlin.Array<MultipleProductGroupsInner> = Gson().fromJson(multipleProductGroupsInnerParam.encode()
-                            , object : TypeToken<kotlin.collections.List<MultipleProductGroupsInner>>(){}.type)
+                    val catalogsProductGroupsCreateManyRequestItems:kotlin.Array<CatalogsProductGroupsCreateManyRequestItems> = Gson().fromJson(catalogsProductGroupsCreateManyRequestItemsParam.encode()
+                            , object : TypeToken<kotlin.collections.List<CatalogsProductGroupsCreateManyRequestItems>>(){}.type)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.catalogsProductGroupsCreateMany(multipleProductGroupsInner,adAccountId,context)
+                        val result = service.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems,adAccountId,context)
                         val payload = JsonArray(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -189,11 +190,11 @@ class CatalogProductGroupsApiVertxProxyHandler(private val vertx: Vertx, private
                             , object : TypeToken<kotlin.collections.List<kotlin.Int>>(){}.type)
                     val feedId = ApiHandlerUtils.searchStringInJson(params,"feed_id")
                     val catalogId = ApiHandlerUtils.searchStringInJson(params,"catalog_id")
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.catalogsProductGroupsList(id,feedId,catalogId,bookmark,pageSize,adAccountId,context)
+                        val result = service.catalogsProductGroupsList(id,feedId,catalogId,adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -225,14 +226,14 @@ class CatalogProductGroupsApiVertxProxyHandler(private val vertx: Vertx, private
                     if(productGroupId == null){
                         throw IllegalArgumentException("productGroupId is required")
                     }
-                    val catalogsProductGroupsUpdateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (catalogsProductGroupsUpdateRequestParam == null) {
-                        throw IllegalArgumentException("catalogsProductGroupsUpdateRequest is required")
+                    val catalogsProductGroupsUpdateRequestSchemaParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (catalogsProductGroupsUpdateRequestSchemaParam == null) {
+                        throw IllegalArgumentException("catalogsProductGroupsUpdateRequestSchema is required")
                     }
-                    val catalogsProductGroupsUpdateRequest = Gson().fromJson(catalogsProductGroupsUpdateRequestParam.encode(), CatalogsProductGroupsUpdateRequest::class.java)
+                    val catalogsProductGroupsUpdateRequestSchema = Gson().fromJson(catalogsProductGroupsUpdateRequestSchemaParam.encode(), CatalogsProductGroupsUpdateRequestSchema::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.catalogsProductGroupsUpdate(productGroupId,catalogsProductGroupsUpdateRequest,adAccountId,context)
+                        val result = service.catalogsProductGroupsUpdate(productGroupId,catalogsProductGroupsUpdateRequestSchema,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

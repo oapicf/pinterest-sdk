@@ -34,8 +34,8 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	createAssetAccessRequestBody := *openapiclient.NewCreateAssetAccessRequestBody([]openapiclient.CreateAssetAccessRequestBodyAssetRequestsInner{*openapiclient.NewCreateAssetAccessRequestBodyAssetRequestsInner(map[string][]openapiclient.Permissions{"key": []openapiclient.Permissions{openapiclient.Permissions("ADMIN")}}, "809944451643622187")}) // CreateAssetAccessRequestBody | 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	createAssetAccessRequestBody := *openapiclient.NewCreateAssetAccessRequestBody([]openapiclient.CreateAssetAccessRequestItem{*openapiclient.NewCreateAssetAccessRequestItem(map[string][]openapiclient.Permissions{"key": []openapiclient.Permissions{openapiclient.Permissions("ADMIN")}}, "PartnerId_example")}) // CreateAssetAccessRequestBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CancelInvitesOrRequests
 
-> DeleteInvitesResultsResponseArray CancelInvitesOrRequests(ctx, businessId).CancelInvitesBody(cancelInvitesBody).Execute()
+> CancelInvitesResponse CancelInvitesOrRequests(ctx, businessId).CancelInvitesRequest(cancelInvitesRequest).Execute()
 
 Cancel invites/requests
 
@@ -106,17 +106,17 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	cancelInvitesBody := *openapiclient.NewCancelInvitesBody([]string{"InviteIds_example"}) // CancelInvitesBody | A list with invite ids
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	cancelInvitesRequest := *openapiclient.NewCancelInvitesRequest([]string{"InviteIds_example"}) // CancelInvitesRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessInviteAPI.CancelInvitesOrRequests(context.Background(), businessId).CancelInvitesBody(cancelInvitesBody).Execute()
+	resp, r, err := apiClient.BusinessAccessInviteAPI.CancelInvitesOrRequests(context.Background(), businessId).CancelInvitesRequest(cancelInvitesRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessInviteAPI.CancelInvitesOrRequests``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CancelInvitesOrRequests`: DeleteInvitesResultsResponseArray
+	// response from `CancelInvitesOrRequests`: CancelInvitesResponse
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessInviteAPI.CancelInvitesOrRequests`: %v\n", resp)
 }
 ```
@@ -137,11 +137,11 @@ Other parameters are passed through a pointer to a apiCancelInvitesOrRequestsReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md) | A list with invite ids | 
+ **cancelInvitesRequest** | [**CancelInvitesRequest**](CancelInvitesRequest.md) |  | 
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -178,8 +178,8 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	createAssetInvitesRequest := *openapiclient.NewCreateAssetInvitesRequest([]openapiclient.CreateAssetInvitesRequestItem{*openapiclient.NewCreateAssetInvitesRequestItem(map[string][]openapiclient.Permissions{"key": []openapiclient.Permissions{openapiclient.Permissions("ADMIN")}}, "1234567890123", openapiclient.InviteType("MEMBER_INVITE"))}) // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	createAssetInvitesRequest := *openapiclient.NewCreateAssetInvitesRequest([]openapiclient.CreateAssetInvitesRequestItem{*openapiclient.NewCreateAssetInvitesRequestItem(map[string][]openapiclient.Permissions{"key": []openapiclient.Permissions{openapiclient.Permissions("ADMIN")}}, "1234567890123", openapiclient.InviteType("MEMBER_INVITE"))}) // CreateAssetInvitesRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -209,7 +209,7 @@ Other parameters are passed through a pointer to a apiCreateAssetInvitesRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) | A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | 
+ **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md) |  | 
 
 ### Return type
 
@@ -250,8 +250,8 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	createMembershipOrPartnershipInvitesBody := *openapiclient.NewCreateMembershipOrPartnershipInvitesBody("BIZ_ADMIN", openapiclient.InviteType("MEMBER_INVITE")) // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	createMembershipOrPartnershipInvitesBody := *openapiclient.NewCreateMembershipOrPartnershipInvitesBody(openapiclient.BusinessRoleForInvite("EMPLOYEE"), openapiclient.InviteType("MEMBER_INVITE")) // CreateMembershipOrPartnershipInvitesBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -281,7 +281,7 @@ Other parameters are passed through a pointer to a apiCreateMembershipOrPartners
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role | 
+ **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) |  | 
 
 ### Return type
 
@@ -322,12 +322,12 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
 	isMember := true // bool | A boolean field to indicate whether the invite is to create a partnership or a membership. (optional) (default to true)
-	inviteStatus := []string{"PENDING"} // []string | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
+	inviteStatus := []openapiclient.InviteFilterStatus{openapiclient.InviteFilterStatus("PENDING")} // []InviteFilterStatus | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
 	inviteType := openapiclient.InviteType("MEMBER_INVITE") // InviteType | Invite type to filter invites by. Only invites of the specified type will be returned. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -358,10 +358,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **isMember** | **bool** | A boolean field to indicate whether the invite is to create a partnership or a membership. | [default to true]
- **inviteStatus** | **[]string** | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | 
+ **inviteStatus** | [**[]InviteFilterStatus**](InviteFilterStatus.md) | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | 
  **inviteType** | [**InviteType**](InviteType.md) | Invite type to filter invites by. Only invites of the specified type will be returned. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -402,7 +402,7 @@ import (
 )
 
 func main() {
-	authRespondInvitesBody := *openapiclient.NewAuthRespondInvitesBody([]openapiclient.AuthRespondInvitesBodyInvitesInner{*openapiclient.NewAuthRespondInvitesBodyInvitesInner(*openapiclient.NewAuthRespondInvitesBodyInvitesInnerAction(false), "InviteId_example")}) // AuthRespondInvitesBody | 
+	authRespondInvitesBody := *openapiclient.NewAuthRespondInvitesBody([]openapiclient.AuthRespondInvitesBodyItem{*openapiclient.NewAuthRespondInvitesBodyItem(*openapiclient.NewAuthRespondInviteAction(false), "InviteId_example")}) // AuthRespondInvitesBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

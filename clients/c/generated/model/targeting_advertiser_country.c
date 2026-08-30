@@ -5,13 +5,13 @@
 
 
 char* targeting_advertiser_country_targeting_advertiser_country_ToString(pinterest_rest_api_targeting_advertiser_country__e targeting_advertiser_country) {
-    char *targeting_advertiser_countryArray[] =  { "NULL", "US", "GB", "CA", "IE", "AU", "NZ", "FR", "SE", "IL", "DE", "AT", "IT", "ES", "NL", "BE", "PT", "CH", "HK", "JP", "KR", "SG", "NO", "DK", "FI", "CY", "LU", "MT", "PL", "RO", "HU", "CZ", "GR", "SK", "BR", "MX", "AR", "CL", "CO" };
+    char *targeting_advertiser_countryArray[] =  { "NULL", "US", "GB", "CA", "IE", "AU", "NZ", "FR", "SE", "IL", "DE", "AT", "IT", "ES", "NL", "BE", "PT", "CH", "HK", "JP", "KR", "SG", "false", "DK", "FI", "CY", "LU", "MT", "PL", "RO", "HU", "CZ", "GR", "SK", "BR", "MX", "AR", "CL", "CO" };
     return targeting_advertiser_countryArray[targeting_advertiser_country];
 }
 
 pinterest_rest_api_targeting_advertiser_country__e targeting_advertiser_country_targeting_advertiser_country_FromString(char* targeting_advertiser_country) {
     int stringToReturn = 0;
-    char *targeting_advertiser_countryArray[] =  { "NULL", "US", "GB", "CA", "IE", "AU", "NZ", "FR", "SE", "IL", "DE", "AT", "IT", "ES", "NL", "BE", "PT", "CH", "HK", "JP", "KR", "SG", "NO", "DK", "FI", "CY", "LU", "MT", "PL", "RO", "HU", "CZ", "GR", "SK", "BR", "MX", "AR", "CL", "CO" };
+    char *targeting_advertiser_countryArray[] =  { "NULL", "US", "GB", "CA", "IE", "AU", "NZ", "FR", "SE", "IL", "DE", "AT", "IT", "ES", "NL", "BE", "PT", "CH", "HK", "JP", "KR", "SG", "false", "DK", "FI", "CY", "LU", "MT", "PL", "RO", "HU", "CZ", "GR", "SK", "BR", "MX", "AR", "CL", "CO" };
     size_t sizeofArray = sizeof(targeting_advertiser_countryArray) / sizeof(targeting_advertiser_countryArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(targeting_advertiser_country, targeting_advertiser_countryArray[stringToReturn]) == 0) {

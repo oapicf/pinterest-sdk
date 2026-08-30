@@ -28,22 +28,6 @@ mediaType: Option[List[MediaType]])
 
 object CatalogsCreativeAssetsFilterValuesMap {
   import DateTimeCodecs._
-  sealed trait List[MediaType]
-
-  object List[MediaType] {
-    def toList[MediaType](s: String): Option[List[MediaType]] = s match {
-      case _ => None
-    }
-
-    def fromList[MediaType](x: List[MediaType]): String = x match {
-    }
-  }
-
-  implicit val List[MediaType]EnumEncoder: EncodeJson[List[MediaType]] =
-    EncodeJson[List[MediaType]](is => StringEncodeJson(List[MediaType].fromList[MediaType](is)))
-
-  implicit val List[MediaType]EnumDecoder: DecodeJson[List[MediaType]] =
-    DecodeJson.optionDecoder[List[MediaType]](n => n.string.flatMap(jStr => List[MediaType].toList[MediaType](jStr)), "List[MediaType] failed to de-serialize")
 
   implicit val CatalogsCreativeAssetsFilterValuesMapCodecJson: CodecJson[CatalogsCreativeAssetsFilterValuesMap] = CodecJson.derive[CatalogsCreativeAssetsFilterValuesMap]
   implicit val CatalogsCreativeAssetsFilterValuesMapDecoder: EntityDecoder[CatalogsCreativeAssetsFilterValuesMap] = jsonOf[CatalogsCreativeAssetsFilterValuesMap]

@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Subinterest ID. | [optional] [default to undefined]
-**index** | **number** | Subinterest affinity index. | [optional] [default to undefined]
-**key** | **string** | Interest unique key (same as ID). | [optional] [default to undefined]
-**name** | **string** | Subinterest name. | [optional] [default to undefined]
-**ratio** | **number** | Subinterest\&#39;s percent of category\&#39;s total audience. | [optional] [default to undefined]
+**id** | **string** |  | [optional] [default to undefined]
+**index** | **number** |  | [optional] [default to undefined]
+**key** | **string** |  | [optional] [default to undefined]
+**name** | **string** |  | [optional] [default to undefined]
+**ratio** | **number** |  | [optional] [default to undefined]
 
 ## Example
 

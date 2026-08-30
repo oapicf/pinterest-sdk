@@ -5,26 +5,14 @@ import play.api.libs.json._
 /**
   * Represents the Swagger definition for TopPinsAnalyticsResponse.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class TopPinsAnalyticsResponse(
   dateAvailability: Option[TopPinsAnalyticsResponseDateAvailability],
-  pins: Option[List[TopPinsAnalyticsResponsePinsInner]],
-  sortBy: Option[TopPinsAnalyticsResponse.SortBy.Value]
+  pins: Option[List[TopPinsAnalyticsResponsePinsItems]],
+  sortBy: Option[TopPinsSortBy]
 )
 
 object TopPinsAnalyticsResponse {
   implicit lazy val topPinsAnalyticsResponseJsonFormat: Format[TopPinsAnalyticsResponse] = Json.format[TopPinsAnalyticsResponse]
-
-  // noinspection TypeAnnotation
-  object SortBy extends Enumeration {
-    val ENGAGEMENT = Value("ENGAGEMENT")
-    val SAVE = Value("SAVE")
-    val IMPRESSION = Value("IMPRESSION")
-    val OUTBOUNDCLICK = Value("OUTBOUND_CLICK")
-    val PINCLICK = Value("PIN_CLICK")
-
-    type SortBy = Value
-    implicit lazy val SortByJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
 }
 

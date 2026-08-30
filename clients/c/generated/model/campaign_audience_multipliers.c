@@ -12,18 +12,21 @@ static campaign_audience_multipliers_t *campaign_audience_multipliers_create_int
     if (!campaign_audience_multipliers_local_var) {
         return NULL;
     }
-    campaign_audience_multipliers_local_var->audience_id = audience_id;
-
+    memset(campaign_audience_multipliers_local_var, 0, sizeof(campaign_audience_multipliers_t));
     campaign_audience_multipliers_local_var->_library_owned = 1;
+    campaign_audience_multipliers_local_var->audience_id = audience_id;
     return campaign_audience_multipliers_local_var;
 }
 
 __attribute__((deprecated)) campaign_audience_multipliers_t *campaign_audience_multipliers_create(
     char *audience_id
     ) {
-    return campaign_audience_multipliers_create_internal (
+    campaign_audience_multipliers_t *result = campaign_audience_multipliers_create_internal (
         audience_id
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void campaign_audience_multipliers_free(campaign_audience_multipliers_t *campaign_audience_multipliers) {
@@ -64,6 +67,8 @@ campaign_audience_multipliers_t *campaign_audience_multipliers_parseFromJSON(cJS
 
     campaign_audience_multipliers_t *campaign_audience_multipliers_local_var = NULL;
 
+    char *audience_id_local_str = NULL;
+
     // campaign_audience_multipliers->audience_id
     cJSON *audience_id = cJSON_GetObjectItemCaseSensitive(campaign_audience_multipliersJSON, "AUDIENCE_ID");
     if (cJSON_IsNull(audience_id)) {
@@ -77,12 +82,22 @@ campaign_audience_multipliers_t *campaign_audience_multipliers_parseFromJSON(cJS
     }
 
 
+    if (audience_id && !cJSON_IsNull(audience_id)) audience_id_local_str = strdup(audience_id->valuestring);
+
     campaign_audience_multipliers_local_var = campaign_audience_multipliers_create_internal (
-        audience_id && !cJSON_IsNull(audience_id) ? strdup(audience_id->valuestring) : NULL
+        audience_id_local_str
         );
+
+    if (!campaign_audience_multipliers_local_var) {
+        goto end;
+    }
 
     return campaign_audience_multipliers_local_var;
 end:
+    if (audience_id_local_str) {
+        free(audience_id_local_str);
+        audience_id_local_str = NULL;
+    }
     return NULL;
 
 }

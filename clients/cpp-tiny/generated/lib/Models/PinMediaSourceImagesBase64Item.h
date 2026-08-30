@@ -52,35 +52,35 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setContentType(ContentType  content_type);
+	void setContentType(ContentType content_type);
 	/*! \brief Get 
 	 */
 	std::string getData();
 
 	/*! \brief Set 
 	 */
-	void setData(std::string  data);
+	void setData(std::string data);
 	/*! \brief Get 
 	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get 
 	 */
 	std::string getLink();
 
 	/*! \brief Set 
 	 */
-	void setLink(std::string  link);
+	void setLink(std::string link);
 	/*! \brief Get 
 	 */
 	std::string getTitle();
 
 	/*! \brief Set 
 	 */
-	void setTitle(std::string  title);
+	void setTitle(std::string title);
 
 
     private:

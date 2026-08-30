@@ -13,7 +13,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a name="promotions/create"></a>
 # **promotions/create**
-> PromotionsResponse promotions/create(ad\_account\_id, PromotionCreateRequest)
+> PromotionsResponse promotions/create(ad\_account\_id, PromotionCreate)
 
 Create promotions
 
@@ -24,7 +24,7 @@ Create promotions
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **PromotionCreateRequest** | [**List**](../Models/PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **PromotionCreate** | [**List**](../Models/PromotionCreate.md)|  | |
 
 ### Return type
 
@@ -41,7 +41,7 @@ Create promotions
 
 <a name="promotions/delete"></a>
 # **promotions/delete**
-> promotions/delete(ad\_account\_id, promotion\_id)
+> Promotion promotions/delete(promotion\_id, ad\_account\_id)
 
 Delete promotion by id
 
@@ -51,12 +51,12 @@ Delete promotion by id
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **promotion\_id** | **String**| Promotion ID | [default to null] |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **promotion\_id** | **String**| Unique identifier of a promotion | [default to null] |
 
 ### Return type
 
-null (empty response body)
+[**Promotion**](../Models/Promotion.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ null (empty response body)
 
 <a name="promotions/get"></a>
 # **promotions/get**
-> PromotionResponse promotions/get(ad\_account\_id, promotion\_id)
+> Promotion promotions/get(promotion\_id, ad\_account\_id)
 
 Get promotion by id
 
@@ -79,12 +79,12 @@ Get promotion by id
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **promotion\_id** | **String**| Promotion ID | [default to null] |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **promotion\_id** | **String**| Unique identifier of a promotion | [default to null] |
 
 ### Return type
 
-[**PromotionResponse**](../Models/PromotionResponse.md)
+[**Promotion**](../Models/Promotion.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ Get promotion by id
 
 <a name="promotions/list"></a>
 # **promotions/list**
-> promotions_list_200_response promotions/list(ad\_account\_id, page\_size, order, bookmark)
+> promotions_list_200_response promotions/list(ad\_account\_id, bookmark, page\_size, order)
 
 Get promotions
 
@@ -108,9 +108,9 @@ Get promotions
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**Pinterest.Lib.PaginationOrder**](../Models/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
 
 ### Return type
 
@@ -127,7 +127,7 @@ Get promotions
 
 <a name="promotions/update"></a>
 # **promotions/update**
-> PromotionsResponse promotions/update(ad\_account\_id, PromotionUpdateRequest)
+> PromotionsResponse promotions/update(ad\_account\_id, PromotionBatchUpdate)
 
 Update promotions
 
@@ -138,7 +138,7 @@ Update promotions
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **PromotionUpdateRequest** | [**List**](../Models/PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **PromotionBatchUpdate** | [**List**](../Models/PromotionBatchUpdate.md)|  | |
 
 ### Return type
 

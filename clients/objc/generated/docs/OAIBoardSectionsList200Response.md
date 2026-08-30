@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **NSString*** |  | [optional] 
-**items** | [**NSArray&lt;OAIBoardSection&gt;***](OAIBoardSection.md) | Board sections | 
+**items** | [**NSArray&lt;OAIBoardSection&gt;***](OAIBoardSection.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

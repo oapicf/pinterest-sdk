@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Duration** | Pointer to **NullableFloat32** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
 **Height** | Pointer to **NullableInt32** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 **VideoUrl** | Pointer to **NullableString** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**VideoUrlHls** | Pointer to **NullableString** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **Width** | Pointer to **NullableInt32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 **Items** | Pointer to [**[]PinMediaMetadata**](PinMediaMetadata.md) |  | [optional] 
 
@@ -207,6 +208,41 @@ HasVideoUrl returns a boolean if a field has been set.
 `func (o *PinMedia) UnsetVideoUrl()`
 
 UnsetVideoUrl ensures that no value is present for VideoUrl, not even an explicit nil
+### GetVideoUrlHls
+
+`func (o *PinMedia) GetVideoUrlHls() string`
+
+GetVideoUrlHls returns the VideoUrlHls field if non-nil, zero value otherwise.
+
+### GetVideoUrlHlsOk
+
+`func (o *PinMedia) GetVideoUrlHlsOk() (*string, bool)`
+
+GetVideoUrlHlsOk returns a tuple with the VideoUrlHls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVideoUrlHls
+
+`func (o *PinMedia) SetVideoUrlHls(v string)`
+
+SetVideoUrlHls sets VideoUrlHls field to given value.
+
+### HasVideoUrlHls
+
+`func (o *PinMedia) HasVideoUrlHls() bool`
+
+HasVideoUrlHls returns a boolean if a field has been set.
+
+### SetVideoUrlHlsNil
+
+`func (o *PinMedia) SetVideoUrlHlsNil(b bool)`
+
+ SetVideoUrlHlsNil sets the value for VideoUrlHls to be an explicit nil
+
+### UnsetVideoUrlHls
+`func (o *PinMedia) UnsetVideoUrlHls()`
+
+UnsetVideoUrlHls ensures that no value is present for VideoUrlHls, not even an explicit nil
 ### GetWidth
 
 `func (o *PinMedia) GetWidth() int32`

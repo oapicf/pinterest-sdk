@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,19 +23,19 @@ var _ MappedNullable = &CustomerListUpload{}
 // CustomerListUpload struct for CustomerListUpload
 type CustomerListUpload struct {
 	// Advertiser ID.
-	AdAccountId string `json:"ad_account_id" validate:"regexp=^\\\\d+$"`
+	AdAccountId string `json:"ad_account_id" validate:"regexp=^\\d+$"`
 	// Customer List Upload creation_time. Epoch (seconds).
 	CreationTime int32 `json:"creation_time"`
 	// ID of the customer list associated with this upload.
-	CustomerListId string `json:"customer_list_id" validate:"regexp=^\\\\d+$"`
+	CustomerListId string `json:"customer_list_id" validate:"regexp=^\\d+$"`
 	// Error counts by error code
 	ErrorCounts []ErrorDetail `json:"error_counts,omitempty"`
 	// Customer List Upload ID.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 	Operation UserListOperationType `json:"operation"`
-	RecordCounts NullableRecordCounts `json:"record_counts,omitempty"`
-	// Workload processing state
-	State string `json:"state"`
+	// Record processing counts
+	RecordCounts *RecordCounts `json:"record_counts,omitempty"`
+	State WorkloadState `json:"state"`
 	// Customer List Upload updated_time. Epoch (seconds).
 	UpdatedTime int32 `json:"updated_time"`
 }
@@ -46,7 +46,7 @@ type _CustomerListUpload CustomerListUpload
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerListUpload(adAccountId string, creationTime int32, customerListId string, id string, operation UserListOperationType, state string, updatedTime int32) *CustomerListUpload {
+func NewCustomerListUpload(adAccountId string, creationTime int32, customerListId string, id string, operation UserListOperationType, state WorkloadState, updatedTime int32) *CustomerListUpload {
 	this := CustomerListUpload{}
 	this.AdAccountId = adAccountId
 	this.CreationTime = creationTime
@@ -219,52 +219,42 @@ func (o *CustomerListUpload) SetOperation(v UserListOperationType) {
 	o.Operation = v
 }
 
-// GetRecordCounts returns the RecordCounts field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRecordCounts returns the RecordCounts field value if set, zero value otherwise.
 func (o *CustomerListUpload) GetRecordCounts() RecordCounts {
-	if o == nil || IsNil(o.RecordCounts.Get()) {
+	if o == nil || IsNil(o.RecordCounts) {
 		var ret RecordCounts
 		return ret
 	}
-	return *o.RecordCounts.Get()
+	return *o.RecordCounts
 }
 
 // GetRecordCountsOk returns a tuple with the RecordCounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerListUpload) GetRecordCountsOk() (*RecordCounts, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RecordCounts) {
 		return nil, false
 	}
-	return o.RecordCounts.Get(), o.RecordCounts.IsSet()
+	return o.RecordCounts, true
 }
 
 // HasRecordCounts returns a boolean if a field has been set.
 func (o *CustomerListUpload) HasRecordCounts() bool {
-	if o != nil && o.RecordCounts.IsSet() {
+	if o != nil && !IsNil(o.RecordCounts) {
 		return true
 	}
 
 	return false
 }
 
-// SetRecordCounts gets a reference to the given NullableRecordCounts and assigns it to the RecordCounts field.
+// SetRecordCounts gets a reference to the given RecordCounts and assigns it to the RecordCounts field.
 func (o *CustomerListUpload) SetRecordCounts(v RecordCounts) {
-	o.RecordCounts.Set(&v)
-}
-// SetRecordCountsNil sets the value for RecordCounts to be an explicit nil
-func (o *CustomerListUpload) SetRecordCountsNil() {
-	o.RecordCounts.Set(nil)
-}
-
-// UnsetRecordCounts ensures that no value is present for RecordCounts, not even an explicit nil
-func (o *CustomerListUpload) UnsetRecordCounts() {
-	o.RecordCounts.Unset()
+	o.RecordCounts = &v
 }
 
 // GetState returns the State field value
-func (o *CustomerListUpload) GetState() string {
+func (o *CustomerListUpload) GetState() WorkloadState {
 	if o == nil {
-		var ret string
+		var ret WorkloadState
 		return ret
 	}
 
@@ -273,7 +263,7 @@ func (o *CustomerListUpload) GetState() string {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *CustomerListUpload) GetStateOk() (*string, bool) {
+func (o *CustomerListUpload) GetStateOk() (*WorkloadState, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -281,7 +271,7 @@ func (o *CustomerListUpload) GetStateOk() (*string, bool) {
 }
 
 // SetState sets field value
-func (o *CustomerListUpload) SetState(v string) {
+func (o *CustomerListUpload) SetState(v WorkloadState) {
 	o.State = v
 }
 
@@ -327,8 +317,8 @@ func (o CustomerListUpload) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["id"] = o.Id
 	toSerialize["operation"] = o.Operation
-	if o.RecordCounts.IsSet() {
-		toSerialize["record_counts"] = o.RecordCounts.Get()
+	if !IsNil(o.RecordCounts) {
+		toSerialize["record_counts"] = o.RecordCounts
 	}
 	toSerialize["state"] = o.State
 	toSerialize["updated_time"] = o.UpdatedTime

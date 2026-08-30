@@ -1,6 +1,8 @@
 package models
 
+// DeletePartnerAssetAccessBody - An object with a list of partner asset accesses to delete.
 type DeletePartnerAssetAccessBody struct {
 
-	Accesses []DeletePartnerAssetAccessBodyAccessesInner `json:"accesses"`
+	// List of partner asset accesses to delete.
+	Accesses []DeletePartnerAssetAccessItem `json:"accesses"`
 }

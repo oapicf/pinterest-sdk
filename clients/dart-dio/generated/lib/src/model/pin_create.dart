@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/ai_disclosures.dart';
 import 'package:openapi/src/model/pin_media_source.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -12,6 +13,7 @@ part 'pin_create.g.dart';
 /// Resource create operation model.
 ///
 /// Properties:
+/// * [aiDisclosures] - AI disclosure declarations the creator has made about this Pin.
 /// * [altText] 
 /// * [boardId] - The board to which this Pin belongs.
 /// * [boardSectionId] - The board section to which this Pin belongs.
@@ -24,6 +26,10 @@ part 'pin_create.g.dart';
 /// * [title] 
 @BuiltValue()
 abstract class PinCreate implements Built<PinCreate, PinCreateBuilder> {
+  /// AI disclosure declarations the creator has made about this Pin.
+  @BuiltValueField(wireName: r'ai_disclosures')
+  AiDisclosures? get aiDisclosures;
+
   @BuiltValueField(wireName: r'alt_text')
   String? get altText;
 
@@ -82,6 +88,13 @@ class _$PinCreateSerializer implements PrimitiveSerializer<PinCreate> {
     PinCreate object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.aiDisclosures != null) {
+      yield r'ai_disclosures';
+      yield serializers.serialize(
+        object.aiDisclosures,
+        specifiedType: const FullType(AiDisclosures),
+      );
+    }
     if (object.altText != null) {
       yield r'alt_text';
       yield serializers.serialize(
@@ -175,6 +188,14 @@ class _$PinCreateSerializer implements PrimitiveSerializer<PinCreate> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'ai_disclosures':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(AiDisclosures),
+          ) as AiDisclosures?;
+          if (valueDes == null) continue;
+          result.aiDisclosures.replace(valueDes);
+          break;
         case r'alt_text':
           final valueDes = serializers.deserialize(
             value,
@@ -186,8 +207,9 @@ class _$PinCreateSerializer implements PrimitiveSerializer<PinCreate> {
         case r'board_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.boardId = valueDes;
           break;
         case r'board_section_id':
@@ -225,8 +247,9 @@ class _$PinCreateSerializer implements PrimitiveSerializer<PinCreate> {
         case r'media_source':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(PinMediaSource),
-          ) as PinMediaSource;
+            specifiedType: const FullType.nullable(PinMediaSource),
+          ) as PinMediaSource?;
+          if (valueDes == null) continue;
           result.mediaSource.replace(valueDes);
           break;
         case r'parent_pin_id':

@@ -12,7 +12,7 @@ package org.openapitools.server.model
  * @param salePrice The discounted price of the product. for example: ''14.99''
 */
 final case class CatalogsRetailProductMetadata (
-  availability: NonNullableProductAvailabilityType,
+  availability: ProductAvailability,
   currency: NonNullableCatalogsCurrency,
   itemGroupId: String,
   itemId: String,

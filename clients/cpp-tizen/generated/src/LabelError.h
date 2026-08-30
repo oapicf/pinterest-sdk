@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Label.h"
+#include "LabelErrorData.h"
 #include <list>
 #include "Object.h"
 
@@ -49,11 +49,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	Label getData();
+	LabelErrorData getData();
 
 	/*! \brief Set 
 	 */
-	void setData(Label  data);
+	void setData(LabelErrorData  data);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getErrorMessages();
@@ -63,7 +63,7 @@ public:
 	void setErrorMessages(std::list <std::string> error_messages);
 
 private:
-	Label data;
+	LabelErrorData data;
 	std::list <std::string>error_messages;
 	void __init();
 	void __cleanup();

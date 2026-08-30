@@ -11,12 +11,12 @@ type CatalogsFeedsCreateRequest struct {
 
 	DefaultCurrency *NullableCurrency `json:"default_currency,omitempty"`
 
-	DefaultLocale CatalogsFeedsCreateRequestDefaultLocale `json:"default_locale,omitempty"`
+	DefaultLocale CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale `json:"default_locale,omitempty"`
 
 	Format CatalogsFormat `json:"format"`
 
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
+	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp)://"`
 
 	// A human-friendly name associated to a given feed.
 	Name string `json:"name"`

@@ -4,7 +4,8 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.TopPinsAnalyticsResponseDateAvailability
-open OpenAPI.Model.TopPinsAnalyticsResponsePinsInner
+open OpenAPI.Model.TopPinsAnalyticsResponsePinsItems
+open OpenAPI.Model.TopPinsSortBy
 
 module TopPinsAnalyticsResponse =
 
@@ -15,9 +16,9 @@ module TopPinsAnalyticsResponse =
     [<JsonProperty(PropertyName = "date_availability")>]
     DateAvailability : TopPinsAnalyticsResponseDateAvailability;
     [<JsonProperty(PropertyName = "pins")>]
-    Pins : TopPinsAnalyticsResponsePinsInner[];
+    Pins : TopPinsAnalyticsResponsePinsItems[];
     [<JsonProperty(PropertyName = "sort_by")>]
-    SortBy : string;
+    SortBy : TopPinsSortBy;
   }
 
   //#endregion

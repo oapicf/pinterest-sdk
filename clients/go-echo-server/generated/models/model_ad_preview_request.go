@@ -5,17 +5,20 @@ type AdPreviewRequest struct {
 	// Image URL.
 	ImageUrl string `json:"image_url"`
 
+	// Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
+	PromotionId string `json:"promotion_id,omitempty"`
+
 	// Title displayed below ad.
 	Title string `json:"title"`
+
+	// Ad format of the shopping ad preview.
+	CreativeType AdShoppingPreviewCreativeType `json:"creative_type"`
 
 	// Pin ID.
 	PinId string `json:"pin_id"`
 
 	// Catalog Product Group Id.
 	CatalogProductGroupId string `json:"catalog_product_group_id"`
-
-	// Ad format of the shopping ad preview.
-	CreativeType string `json:"creative_type"`
 
 	// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
 	CustomizableCtaType *CustomizableCtaType `json:"customizable_cta_type,omitempty"`
@@ -36,7 +39,10 @@ type AdPreviewRequest struct {
 	ItemId string `json:"item_id,omitempty"`
 
 	// Preferred media type.
-	PreferredMediaType string `json:"preferred_media_type,omitempty"`
+	PreferredMediaType BasePreferredMediaType `json:"preferred_media_type,omitempty"`
+
+	// Include promotion data in preview when available on catalog item. Defaults to false.
+	ShowPromotion bool `json:"show_promotion,omitempty"`
 
 	// Multi video template tag, image_tag and video_tag are mutual exclusive.
 	VideoTag string `json:"video_tag,omitempty"`

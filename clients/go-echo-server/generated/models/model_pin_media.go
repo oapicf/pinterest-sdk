@@ -18,6 +18,9 @@ type PinMedia struct {
 	// Video url (720p).  **Note:** This field is limited and not available to all apps.
 	VideoUrl *string `json:"video_url,omitempty"`
 
+	// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	VideoUrlHls *string `json:"video_url_hls,omitempty"`
+
 	// Width (in pixels). Field maybe null after creation due to video processing time.
 	Width *int32 `json:"width,omitempty"`
 

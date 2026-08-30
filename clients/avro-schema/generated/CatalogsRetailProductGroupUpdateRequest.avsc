@@ -43,7 +43,7 @@
     {
       "name": "name",
       "type": ["null", "string"],
-      "doc": "",
+      "doc": "Name of catalog product group",
       "default": null
     }
   ]

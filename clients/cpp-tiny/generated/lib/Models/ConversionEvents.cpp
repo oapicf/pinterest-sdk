@@ -6,7 +6,9 @@ using namespace Tiny;
 
 ConversionEvents::ConversionEvents()
 {
-	data = std::list<ConversionEvents_data_inner>();
+	events = std::list<ConversionApiResponseEventsItems>();
+	num_events_processed = int(0);
+	num_events_received = int(0);
 }
 
 ConversionEvents::ConversionEvents(std::string jsonString)
@@ -24,24 +26,50 @@ ConversionEvents::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
-    const char *dataKey = "data";
+    const char *eventsKey = "events";
 
-    if(object.has_key(dataKey))
+    if(object.has_key(eventsKey))
     {
-        bourne::json value = object[dataKey];
+        bourne::json value = object[eventsKey];
 
 
-        std::list<ConversionEvents_data_inner> data_list;
-        ConversionEvents_data_inner element;
+        std::list<ConversionApiResponseEventsItems> events_list;
+        ConversionApiResponseEventsItems element;
         for(auto& var : value.array_range())
         {
 
 
             element.fromJson(var.dump());
 
-            data_list.push_back(element);
+            events_list.push_back(element);
         }
-        data = data_list;
+        events = events_list;
+
+
+    }
+
+    const char *num_events_processedKey = "num_events_processed";
+
+    if(object.has_key(num_events_processedKey))
+    {
+        bourne::json value = object[num_events_processedKey];
+
+
+
+        jsonToValue(&num_events_processed, value, "int");
+
+
+    }
+
+    const char *num_events_receivedKey = "num_events_received";
+
+    if(object.has_key(num_events_receivedKey))
+    {
+        bourne::json value = object[num_events_receivedKey];
+
+
+
+        jsonToValue(&num_events_received, value, "int");
 
 
     }
@@ -57,16 +85,30 @@ ConversionEvents::toJson()
 
 
 
-    std::list<ConversionEvents_data_inner> data_list = getData();
-    bourne::json data_arr = bourne::json::array();
+    std::list<ConversionApiResponseEventsItems> events_list = getEvents();
+    bourne::json events_arr = bourne::json::array();
 
-    for(auto& var : data_list)
+    for(auto& var : events_list)
     {
-        ConversionEvents_data_inner obj = var;
-        data_arr.append(obj.toJson());
+        ConversionApiResponseEventsItems obj = var;
+        events_arr.append(obj.toJson());
     }
-    object["data"] = data_arr;
+    object["events"] = events_arr;
 
+
+
+
+
+
+
+    object["num_events_processed"] = getNumEventsProcessed();
+
+
+
+
+
+
+    object["num_events_received"] = getNumEventsReceived();
 
 
 
@@ -74,16 +116,40 @@ ConversionEvents::toJson()
 
 }
 
-std::list<ConversionEvents_data_inner>
-ConversionEvents::getData()
+std::list<ConversionApiResponseEventsItems>
+ConversionEvents::getEvents()
 {
-	return data;
+	return events;
 }
 
 void
-ConversionEvents::setData(std::list <ConversionEvents_data_inner> data)
+ConversionEvents::setEvents(std::list<ConversionApiResponseEventsItems> events)
 {
-	this->data = data;
+	this->events = events;
+}
+
+int
+ConversionEvents::getNumEventsProcessed()
+{
+	return num_events_processed;
+}
+
+void
+ConversionEvents::setNumEventsProcessed(int num_events_processed)
+{
+	this->num_events_processed = num_events_processed;
+}
+
+int
+ConversionEvents::getNumEventsReceived()
+{
+	return num_events_received;
+}
+
+void
+ConversionEvents::setNumEventsReceived(int num_events_received)
+{
+	this->num_events_received = num_events_received;
 }
 
 

@@ -13,7 +13,7 @@ import { TargetingSpecAgeBucket } from './targetingSpecAgeBucket';
 export interface TargetingSpecOperationAgeBucket { 
     field: TargetingSpecOperationAgeBucket.FieldEnum;
     operation: TargetingSpecOperationAgeBucket.OperationEnum;
-    values: Array<TargetingSpecAgeBucket> | null;
+    values: Array<TargetingSpecAgeBucket>;
 }
 export namespace TargetingSpecOperationAgeBucket {
     export const FieldEnum = {

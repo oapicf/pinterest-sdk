@@ -31,4 +31,6 @@ type CatalogsCreativeAssetsProductGroupFilterKeys struct {
 	MEDIA_TYPE CatalogsProductGroupMultipleMediaTypesCriteria `json:"MEDIA_TYPE"`
 
 	TITLE_KEYWORDS CatalogsProductGroupMultipleStringCriteria `json:"TITLE_KEYWORDS"`
+
+	LINK CatalogsProductGroupFilterOperatorTypeCriteria `json:"LINK"`
 }

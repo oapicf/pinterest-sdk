@@ -94,6 +94,26 @@ static bool searchPartnerPinsProcessor(MemoryStruct_s p_chunk, long code, char* 
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -236,14 +256,14 @@ bool SearchManager::searchPartnerPinsSync(char * accessToken,
 static bool searchUserBoardsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Search_user_boards_get_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Search_user_boards_get_200_response, Error, void* )> (voidHandler);
+	void(* handler)(Boards_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Boards_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Search_user_boards_get_200_response out;
+	Boards_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -251,18 +271,43 @@ static bool searchUserBoardsGetProcessor(MemoryStruct_s p_chunk, long code, char
 
 
 
-		if (isprimitive("Search_user_boards_get_200_response")) {
+		if (isprimitive("Boards_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Search_user_boards_get_200_response", "Search_user_boards_get_200_response");
+			jsonToValue(&out, pJson, "Boards_list_200_response", "Boards_list_200_response");
 			json_node_free(pJson);
 
-			if ("Search_user_boards_get_200_response" == "std::string") {
+			if ("Boards_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -294,8 +339,8 @@ static bool searchUserBoardsGetProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool searchUserBoardsGetHelper(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string query, 
-	void(* handler)(Search_user_boards_get_200_response, Error, void* )
+	std::string adAccountId, std::string query, std::string bookmark, int pageSize, 
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -319,6 +364,13 @@ static bool searchUserBoardsGetHelper(char * accessToken,
 	}
 
 
+	itemAtq = stringify(&query, "std::string");
+	queryParams.insert(pair<string, string>("query", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("query");
+	}
+
+
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
@@ -330,13 +382,6 @@ static bool searchUserBoardsGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&query, "std::string");
-	queryParams.insert(pair<string, string>("query", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("query");
 	}
 
 	string mBody = "";
@@ -393,36 +438,36 @@ static bool searchUserBoardsGetHelper(char * accessToken,
 
 
 bool SearchManager::searchUserBoardsGetAsync(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string query, 
-	void(* handler)(Search_user_boards_get_200_response, Error, void* )
+	std::string adAccountId, std::string query, std::string bookmark, int pageSize, 
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData)
 {
 	return searchUserBoardsGetHelper(accessToken,
-	adAccountId, bookmark, pageSize, query, 
+	adAccountId, query, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool SearchManager::searchUserBoardsGetSync(char * accessToken,
-	std::string adAccountId, std::string bookmark, int pageSize, std::string query, 
-	void(* handler)(Search_user_boards_get_200_response, Error, void* )
+	std::string adAccountId, std::string query, std::string bookmark, int pageSize, 
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData)
 {
 	return searchUserBoardsGetHelper(accessToken,
-	adAccountId, bookmark, pageSize, query, 
+	adAccountId, query, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool searchUserPinsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Search_user_pins_list_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Search_user_pins_list_200_response, Error, void* )> (voidHandler);
+	void(* handler)(Pins_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Pins_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Search_user_pins_list_200_response out;
+	Pins_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -430,18 +475,38 @@ static bool searchUserPinsListProcessor(MemoryStruct_s p_chunk, long code, char*
 
 
 
-		if (isprimitive("Search_user_pins_list_200_response")) {
+		if (isprimitive("Pins_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Search_user_pins_list_200_response", "Search_user_pins_list_200_response");
+			jsonToValue(&out, pJson, "Pins_list_200_response", "Pins_list_200_response");
 			json_node_free(pJson);
 
-			if ("Search_user_pins_list_200_response" == "std::string") {
+			if ("Pins_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -479,7 +544,7 @@ static bool searchUserPinsListProcessor(MemoryStruct_s p_chunk, long code, char*
 
 static bool searchUserPinsListHelper(char * accessToken,
 	std::string query, std::string adAccountId, std::string bookmark, 
-	void(* handler)(Search_user_pins_list_200_response, Error, void* )
+	void(* handler)(Pins_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -568,7 +633,7 @@ static bool searchUserPinsListHelper(char * accessToken,
 
 bool SearchManager::searchUserPinsListAsync(char * accessToken,
 	std::string query, std::string adAccountId, std::string bookmark, 
-	void(* handler)(Search_user_pins_list_200_response, Error, void* )
+	void(* handler)(Pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return searchUserPinsListHelper(accessToken,
@@ -578,7 +643,7 @@ bool SearchManager::searchUserPinsListAsync(char * accessToken,
 
 bool SearchManager::searchUserPinsListSync(char * accessToken,
 	std::string query, std::string adAccountId, std::string bookmark, 
-	void(* handler)(Search_user_pins_list_200_response, Error, void* )
+	void(* handler)(Pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return searchUserPinsListHelper(accessToken,

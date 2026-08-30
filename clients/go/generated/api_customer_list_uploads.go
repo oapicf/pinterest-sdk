@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -32,7 +32,6 @@ type ApiCustomerListUploadsCreateRequest struct {
 	customerListUploadCreateRequest *CustomerListUploadCreateRequest
 }
 
-// Parameters to create a customer list upload request
 func (r ApiCustomerListUploadsCreateRequest) CustomerListUploadCreateRequest(customerListUploadCreateRequest CustomerListUploadCreateRequest) ApiCustomerListUploadsCreateRequest {
 	r.customerListUploadCreateRequest = &customerListUploadCreateRequest
 	return r
@@ -45,16 +44,16 @@ func (r ApiCustomerListUploadsCreateRequest) Execute() (*CustomerListUploadCreat
 /*
 CustomerListUploadsCreate Create customer list upload
 
-<a href="/docs/getting-started/using-beta-and-restricted-features/" target="_blank">Closed beta</a>
+Create a customer list upload request for multipart S3 upload.
 
-<p>Create a customer list upload request for multipart S3 upload.</p>
-<p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0.
-Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p>
-<p><b>Please review the <u><a href="/docs/api/v5/customer_lists-update/" target="_blank">update customer list endpoint</a></u> documentation for additional information.</b></p>
+Note: Each part must be at least 5mb; however the last part can be any size greater than 0.
+Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.
+
+**Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
- @param customerListId Unique identifier of a customer list
+ @param adAccountId
+ @param customerListId Customer list ID.
  @return ApiCustomerListUploadsCreateRequest
 */
 func (a *CustomerListUploadsAPIService) CustomerListUploadsCreate(ctx context.Context, adAccountId string, customerListId string) ApiCustomerListUploadsCreateRequest {
@@ -139,7 +138,62 @@ func (a *CustomerListUploadsAPIService) CustomerListUploadsCreateExecute(r ApiCu
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -170,20 +224,19 @@ type ApiCustomerListUploadsGetRequest struct {
 	customerListUploadId string
 }
 
-func (r ApiCustomerListUploadsGetRequest) Execute() (*CustomerListUploadResponse, *http.Response, error) {
+func (r ApiCustomerListUploadsGetRequest) Execute() (*CustomerListUpload, *http.Response, error) {
 	return r.ApiService.CustomerListUploadsGetExecute(r)
 }
 
 /*
 CustomerListUploadsGet Get customer list upload
 
-<a href="/docs/getting-started/using-beta-and-restricted-features/" target="_blank">Closed beta</a>
-<p>Get the metadata for a given upload by its ID.</p>
+Get the metadata for a given upload by its ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
- @param customerListId Unique identifier of a customer list
- @param customerListUploadId Unique identifier of a customer list upload
+ @param adAccountId
+ @param customerListId Customer list ID.
+ @param customerListUploadId Customer List Upload ID.
  @return ApiCustomerListUploadsGetRequest
 */
 func (a *CustomerListUploadsAPIService) CustomerListUploadsGet(ctx context.Context, adAccountId string, customerListId string, customerListUploadId string) ApiCustomerListUploadsGetRequest {
@@ -197,13 +250,13 @@ func (a *CustomerListUploadsAPIService) CustomerListUploadsGet(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return CustomerListUploadResponse
-func (a *CustomerListUploadsAPIService) CustomerListUploadsGetExecute(r ApiCustomerListUploadsGetRequest) (*CustomerListUploadResponse, *http.Response, error) {
+//  @return CustomerListUpload
+func (a *CustomerListUploadsAPIService) CustomerListUploadsGetExecute(r ApiCustomerListUploadsGetRequest) (*CustomerListUpload, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CustomerListUploadResponse
+		localVarReturnValue  *CustomerListUpload
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerListUploadsAPIService.CustomerListUploadsGet")
@@ -224,9 +277,6 @@ func (a *CustomerListUploadsAPIService) CustomerListUploadsGetExecute(r ApiCusto
 	}
 	if strlen(r.customerListId) > 18 {
 		return localVarReturnValue, nil, reportError("customerListId must have less than 18 elements")
-	}
-	if strlen(r.customerListUploadId) > 18 {
-		return localVarReturnValue, nil, reportError("customerListUploadId must have less than 18 elements")
 	}
 
 	// to determine the Content-Type header
@@ -268,7 +318,62 @@ func (a *CustomerListUploadsAPIService) CustomerListUploadsGetExecute(r ApiCusto
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -299,20 +404,19 @@ type ApiCustomerListUploadsRunRequest struct {
 	customerListUploadId string
 }
 
-func (r ApiCustomerListUploadsRunRequest) Execute() (*CustomerListUploadResponse, *http.Response, error) {
+func (r ApiCustomerListUploadsRunRequest) Execute() (*CustomerListUpload, *http.Response, error) {
 	return r.ApiService.CustomerListUploadsRunExecute(r)
 }
 
 /*
 CustomerListUploadsRun Run customer list upload
 
-<a href="/docs/getting-started/using-beta-and-restricted-features/" target="_blank">Closed beta</a>
-<p>Begin processing a customer list upload.</p>
+Begin processing a customer list upload.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
- @param customerListId Unique identifier of a customer list
- @param customerListUploadId Unique identifier of a customer list upload
+ @param adAccountId
+ @param customerListId Customer list ID.
+ @param customerListUploadId Customer List Upload ID.
  @return ApiCustomerListUploadsRunRequest
 */
 func (a *CustomerListUploadsAPIService) CustomerListUploadsRun(ctx context.Context, adAccountId string, customerListId string, customerListUploadId string) ApiCustomerListUploadsRunRequest {
@@ -326,13 +430,13 @@ func (a *CustomerListUploadsAPIService) CustomerListUploadsRun(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return CustomerListUploadResponse
-func (a *CustomerListUploadsAPIService) CustomerListUploadsRunExecute(r ApiCustomerListUploadsRunRequest) (*CustomerListUploadResponse, *http.Response, error) {
+//  @return CustomerListUpload
+func (a *CustomerListUploadsAPIService) CustomerListUploadsRunExecute(r ApiCustomerListUploadsRunRequest) (*CustomerListUpload, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CustomerListUploadResponse
+		localVarReturnValue  *CustomerListUpload
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerListUploadsAPIService.CustomerListUploadsRun")
@@ -353,9 +457,6 @@ func (a *CustomerListUploadsAPIService) CustomerListUploadsRunExecute(r ApiCusto
 	}
 	if strlen(r.customerListId) > 18 {
 		return localVarReturnValue, nil, reportError("customerListId must have less than 18 elements")
-	}
-	if strlen(r.customerListUploadId) > 18 {
-		return localVarReturnValue, nil, reportError("customerListUploadId must have less than 18 elements")
 	}
 
 	// to determine the Content-Type header
@@ -397,7 +498,62 @@ func (a *CustomerListUploadsAPIService) CustomerListUploadsRunExecute(r ApiCusto
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

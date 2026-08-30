@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class PriceFilter (
-    _PRICE: CatalogsProductGroupPricingCurrencyCriteria
+    _PRICE: PriceFilterPrice
 )
 object PriceFilter {
     def toStringBody(var_PRICE: Object) =

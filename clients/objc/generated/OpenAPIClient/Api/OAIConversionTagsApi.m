@@ -5,9 +5,9 @@
 #import "OAIConversionTag.h"
 #import "OAIConversionTagCreate.h"
 #import "OAIConversionTagsList200Response.h"
-#import "OAIError.h"
 #import "OAIPageVisitConversionTagsGet200Response.h"
 #import "OAIPinterestLibError.h"
+#import "OAIPinterestLibPaginationOrder.h"
 
 
 @interface OAIConversionTagsApi ()
@@ -370,18 +370,18 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
 /// Get all page visit conversion tag events for an ad account.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
-///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
+///  @param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///
 ///  @returns OAIPageVisitConversionTagsGet200Response*
 ///
 -(NSURLSessionTask*) pageVisitConversionTagsGetWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
     completionHandler: (void (^)(OAIPageVisitConversionTagsGet200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
@@ -402,14 +402,14 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (bookmark != nil) {
+        queryParams[@"bookmark"] = bookmark;
+    }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
     }
     if (order != nil) {
         queryParams[@"order"] = order;
-    }
-    if (bookmark != nil) {
-        queryParams[@"bookmark"] = bookmark;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];

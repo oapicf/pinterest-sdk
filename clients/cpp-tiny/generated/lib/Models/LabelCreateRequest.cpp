@@ -6,8 +6,7 @@ using namespace Tiny;
 
 LabelCreateRequest::LabelCreateRequest()
 {
-	labels = std::list<LabelCreateRequest_labels_inner>();
-	parent_id = std::string();
+	labels = std::list<LabelCreateItem>();
 }
 
 LabelCreateRequest::LabelCreateRequest(std::string jsonString)
@@ -32,8 +31,8 @@ LabelCreateRequest::fromJson(std::string jsonObj)
         bourne::json value = object[labelsKey];
 
 
-        std::list<LabelCreateRequest_labels_inner> labels_list;
-        LabelCreateRequest_labels_inner element;
+        std::list<LabelCreateItem> labels_list;
+        LabelCreateItem element;
         for(auto& var : value.array_range())
         {
 
@@ -43,19 +42,6 @@ LabelCreateRequest::fromJson(std::string jsonObj)
             labels_list.push_back(element);
         }
         labels = labels_list;
-
-
-    }
-
-    const char *parent_idKey = "parent_id";
-
-    if(object.has_key(parent_idKey))
-    {
-        bourne::json value = object[parent_idKey];
-
-
-
-        jsonToValue(&parent_id, value, "std::string");
 
 
     }
@@ -71,12 +57,12 @@ LabelCreateRequest::toJson()
 
 
 
-    std::list<LabelCreateRequest_labels_inner> labels_list = getLabels();
+    std::list<LabelCreateItem> labels_list = getLabels();
     bourne::json labels_arr = bourne::json::array();
 
     for(auto& var : labels_list)
     {
-        LabelCreateRequest_labels_inner obj = var;
+        LabelCreateItem obj = var;
         labels_arr.append(obj.toJson());
     }
     object["labels"] = labels_arr;
@@ -84,39 +70,20 @@ LabelCreateRequest::toJson()
 
 
 
-
-
-
-    object["parent_id"] = getParentId();
-
-
-
     return object;
 
 }
 
-std::list<LabelCreateRequest_labels_inner>
+std::list<LabelCreateItem>
 LabelCreateRequest::getLabels()
 {
 	return labels;
 }
 
 void
-LabelCreateRequest::setLabels(std::list <LabelCreateRequest_labels_inner> labels)
+LabelCreateRequest::setLabels(std::list<LabelCreateItem> labels)
 {
 	this->labels = labels;
-}
-
-std::string
-LabelCreateRequest::getParentId()
-{
-	return parent_id;
-}
-
-void
-LabelCreateRequest::setParentId(std::string  parent_id)
-{
-	this->parent_id = parent_id;
 }
 
 

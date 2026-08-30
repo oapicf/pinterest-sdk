@@ -5,8 +5,8 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**code** | code | int |  | **kotlin.Int** | Exception error code. |  [optional]
-**message** | message | text |  | **kotlin.String** | Exception message. |  [optional]
+**message** | message | text NOT NULL |  | **kotlin.String** |  | 
+**code** | code | int |  | **kotlin.Int** |  |  [optional]
 
 
 

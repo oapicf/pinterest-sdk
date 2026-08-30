@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &BoardWithUpdatePrivacyUpdate{}
 // BoardWithUpdatePrivacyUpdate Resource create or update operation model.
 type BoardWithUpdatePrivacyUpdate struct {
 	Description NullableString `json:"description,omitempty"`
-	//      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	//     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	Name *string `json:"name,omitempty"`
 	Privacy *BoardUpdatePrivacy `json:"privacy,omitempty"`
 }

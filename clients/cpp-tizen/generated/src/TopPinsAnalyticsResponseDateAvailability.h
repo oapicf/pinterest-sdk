@@ -1,11 +1,11 @@
 /*
- * TopPinsAnalyticsResponse_date_availability.h
+ * TopPinsAnalyticsResponseDateAvailability.h
  *
  * 
  */
 
-#ifndef _TopPinsAnalyticsResponse_date_availability_H_
-#define _TopPinsAnalyticsResponse_date_availability_H_
+#ifndef _TopPinsAnalyticsResponseDateAvailability_H_
+#define _TopPinsAnalyticsResponseDateAvailability_H_
 
 
 #include <string>
@@ -26,16 +26,16 @@ namespace ArtikCloud {
  *
  */
 
-class TopPinsAnalyticsResponse_date_availability : public Object {
+class TopPinsAnalyticsResponseDateAvailability : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	TopPinsAnalyticsResponse_date_availability();
-	TopPinsAnalyticsResponse_date_availability(char* str);
+	TopPinsAnalyticsResponseDateAvailability();
+	TopPinsAnalyticsResponseDateAvailability(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~TopPinsAnalyticsResponse_date_availability();
+	virtual ~TopPinsAnalyticsResponseDateAvailability();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -70,4 +70,4 @@ private:
 }
 }
 
-#endif /* _TopPinsAnalyticsResponse_date_availability_H_ */
+#endif /* _TopPinsAnalyticsResponseDateAvailability_H_ */

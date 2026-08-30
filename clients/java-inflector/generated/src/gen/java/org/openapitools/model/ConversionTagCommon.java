@@ -15,7 +15,7 @@ import org.openapitools.model.EnhancedMatchStatusType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionTagCommon   {
   @JsonProperty("code_snippet")
   private String codeSnippet;
@@ -82,7 +82,7 @@ public class ConversionTagCommon   {
   }
 
   
-  @ApiModelProperty(value = "The enhanced match status of the tag")
+  @ApiModelProperty(example = "VALIDATION_COMPLETE", value = "The enhanced match status of the tag")
   @JsonProperty("enhanced_match_status")
   public EnhancedMatchStatusType getEnhancedMatchStatus() {
     return enhancedMatchStatus;
@@ -136,7 +136,7 @@ public class ConversionTagCommon   {
   }
 
   
-  @ApiModelProperty(example = "ACME Checkout Test Tag", required = true, value = "Conversion tag name.")
+  @ApiModelProperty(example = "download_picture", required = true, value = "Conversion tag name.")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -208,10 +208,7 @@ public class ConversionTagCommon   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

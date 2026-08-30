@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reachEstimate** | [***TargetingTemplateAudienceSizingReachEstimate**](TargetingTemplateAudienceSizing_reach_estimate.md) |  | [optional] [default to null]
+**reachEstimate** | [***TargetingTemplateAudienceSizingReachEstimate**](TargetingTemplateAudienceSizingReachEstimate.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

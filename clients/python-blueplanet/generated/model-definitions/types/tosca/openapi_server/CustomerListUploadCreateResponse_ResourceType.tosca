@@ -19,12 +19,12 @@ resourceTypes {
     properties {
         customer_list_upload {
           type = CustomerListUpload
-          description = ""
+          description = "The Customer List Upload created."
           optional = true
         }
         s3_multipart_upload_data {
           type = S3MultipartUploadData
-          description = ""
+          description = "Pre-signed upload URLs corresponding to each part of the upload."
           optional = true
         }
     }

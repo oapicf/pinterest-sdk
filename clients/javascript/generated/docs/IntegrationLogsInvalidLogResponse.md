@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rejectedLogs** | [**[IntegrationLogsInvalidLogResponseRejectedLogsInner]**](IntegrationLogsInvalidLogResponseRejectedLogsInner.md) |  | [optional] 
+**rejectedLogs** | [**[IntegrationLogsInvalidLogResponseRejectedLogsItems]**](IntegrationLogsInvalidLogResponseRejectedLogsItems.md) |  | [optional] 
 
 

@@ -15,22 +15,22 @@ part 'catalogs_feed_ingestion_warnings.g.dart';
 /// * [AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR] - Ad image files are unreadable. Please check your link and upload new files to continue.
 /// * [AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE] - Ad image files are unreadable. Please check your link and upload new files to continue.
 /// * [AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS400] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS403] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS404] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS405] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS410] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS429] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS500] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS502] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS503] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS504] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS507] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS508] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS520] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS521] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS522] - Ad image files are unreadable. Please check your link and upload new files to continue.
-/// * [aDIMAGEDOWNLOADHTTPSTATUS525] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_400] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_403] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_404] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_405] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_410] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_429] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_500] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_502] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_503] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_504] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_507] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_508] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_520] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_521] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_522] - Ad image files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_IMAGE_DOWNLOAD_HTTP_STATUS_525] - Ad image files are unreadable. Please check your link and upload new files to continue.
 /// * [AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR] - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
 /// * [AD_IMAGE_DOWNLOAD_INTERNAL_ERROR] - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
 /// * [AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD] - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
@@ -51,22 +51,22 @@ part 'catalogs_feed_ingestion_warnings.g.dart';
 /// * [AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR] - Ad video files are unreadable. Please check your link and upload new files to continue.
 /// * [AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE] - Ad video files are unreadable. Please check your link and upload new files to continue.
 /// * [AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS400] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS403] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS404] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS405] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS410] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS429] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS500] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS502] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS503] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS504] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS507] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS508] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS520] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS521] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS522] - Ad video files are unreadable. Please check your link and upload new files to continue.
-/// * [aDVIDEODOWNLOADHTTPSTATUS525] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_400] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_403] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_404] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_405] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_410] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_429] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_500] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_502] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_503] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_504] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_507] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_508] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_520] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_521] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_522] - Ad video files are unreadable. Please check your link and upload new files to continue.
+/// * [AD_VIDEO_DOWNLOAD_HTTP_STATUS_525] - Ad video files are unreadable. Please check your link and upload new files to continue.
 /// * [AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR] - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
 /// * [AD_VIDEO_DOWNLOAD_INTERNAL_ERROR] - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
 /// * [AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD] - We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
@@ -117,67 +117,67 @@ abstract class CatalogsFeedIngestionWarnings implements Built<CatalogsFeedIngest
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_400')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS400;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_400;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_403')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS403;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_403;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_404')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS404;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_404;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_405')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS405;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_405;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_410')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS410;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_410;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_429')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS429;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_429;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_500')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS500;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_500;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_502')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS502;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_502;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_503')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS503;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_503;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_504')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS504;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_504;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_507')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS507;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_507;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_508')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS508;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_508;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_520')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS520;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_520;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_521')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS521;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_521;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_522')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS522;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_522;
 
   /// Ad image files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_525')
-  int? get aDIMAGEDOWNLOADHTTPSTATUS525;
+  int? get AD_IMAGE_DOWNLOAD_HTTP_STATUS_525;
 
   /// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
   @BuiltValueField(wireName: r'AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR')
@@ -261,67 +261,67 @@ abstract class CatalogsFeedIngestionWarnings implements Built<CatalogsFeedIngest
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_400')
-  int? get aDVIDEODOWNLOADHTTPSTATUS400;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_400;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_403')
-  int? get aDVIDEODOWNLOADHTTPSTATUS403;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_403;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_404')
-  int? get aDVIDEODOWNLOADHTTPSTATUS404;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_404;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_405')
-  int? get aDVIDEODOWNLOADHTTPSTATUS405;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_405;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_410')
-  int? get aDVIDEODOWNLOADHTTPSTATUS410;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_410;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_429')
-  int? get aDVIDEODOWNLOADHTTPSTATUS429;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_429;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_500')
-  int? get aDVIDEODOWNLOADHTTPSTATUS500;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_500;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_502')
-  int? get aDVIDEODOWNLOADHTTPSTATUS502;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_502;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_503')
-  int? get aDVIDEODOWNLOADHTTPSTATUS503;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_503;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_504')
-  int? get aDVIDEODOWNLOADHTTPSTATUS504;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_504;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_507')
-  int? get aDVIDEODOWNLOADHTTPSTATUS507;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_507;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_508')
-  int? get aDVIDEODOWNLOADHTTPSTATUS508;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_508;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_520')
-  int? get aDVIDEODOWNLOADHTTPSTATUS520;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_520;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_521')
-  int? get aDVIDEODOWNLOADHTTPSTATUS521;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_521;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_522')
-  int? get aDVIDEODOWNLOADHTTPSTATUS522;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_522;
 
   /// Ad video files are unreadable. Please check your link and upload new files to continue.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_525')
-  int? get aDVIDEODOWNLOADHTTPSTATUS525;
+  int? get AD_VIDEO_DOWNLOAD_HTTP_STATUS_525;
 
   /// We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
   @BuiltValueField(wireName: r'AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR')
@@ -494,115 +494,115 @@ class _$CatalogsFeedIngestionWarningsSerializer implements PrimitiveSerializer<C
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS400 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_400 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_400';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS400,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_400,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS403 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_403 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_403';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS403,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_403,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS404 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_404 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_404';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS404,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_404,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS405 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_405 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_405';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS405,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_405,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS410 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_410 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_410';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS410,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_410,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS429 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_429 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_429';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS429,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_429,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS500 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_500 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_500';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS500,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_500,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS502 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_502 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_502';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS502,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_502,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS503 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_503 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_503';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS503,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_503,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS504 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_504 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_504';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS504,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_504,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS507 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_507 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_507';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS507,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_507,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS508 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_508 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_508';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS508,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_508,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS520 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_520 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_520';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS520,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_520,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS521 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_521 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_521';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS521,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_521,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS522 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_522 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_522';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS522,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_522,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDIMAGEDOWNLOADHTTPSTATUS525 != null) {
+    if (object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_525 != null) {
       yield r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_525';
       yield serializers.serialize(
-        object.aDIMAGEDOWNLOADHTTPSTATUS525,
+        object.AD_IMAGE_DOWNLOAD_HTTP_STATUS_525,
         specifiedType: const FullType(int),
       );
     }
@@ -746,115 +746,115 @@ class _$CatalogsFeedIngestionWarningsSerializer implements PrimitiveSerializer<C
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS400 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_400 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_400';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS400,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_400,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS403 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_403 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_403';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS403,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_403,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS404 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_404 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_404';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS404,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_404,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS405 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_405 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_405';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS405,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_405,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS410 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_410 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_410';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS410,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_410,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS429 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_429 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_429';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS429,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_429,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS500 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_500 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_500';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS500,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_500,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS502 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_502 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_502';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS502,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_502,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS503 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_503 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_503';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS503,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_503,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS504 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_504 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_504';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS504,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_504,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS507 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_507 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_507';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS507,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_507,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS508 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_508 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_508';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS508,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_508,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS520 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_520 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_520';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS520,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_520,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS521 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_521 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_521';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS521,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_521,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS522 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_522 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_522';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS522,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_522,
         specifiedType: const FullType(int),
       );
     }
-    if (object.aDVIDEODOWNLOADHTTPSTATUS525 != null) {
+    if (object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_525 != null) {
       yield r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_525';
       yield serializers.serialize(
-        object.aDVIDEODOWNLOADHTTPSTATUS525,
+        object.AD_VIDEO_DOWNLOAD_HTTP_STATUS_525,
         specifiedType: const FullType(int),
       );
     }
@@ -1094,603 +1094,689 @@ class _$CatalogsFeedIngestionWarningsSerializer implements PrimitiveSerializer<C
         case r'AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_400':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS400 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_400 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_403':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS403 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_403 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_404':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS404 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_404 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_405':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS405 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_405 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_410':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS410 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_410 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_429':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS429 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_429 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_500':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS500 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_500 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_502':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS502 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_502 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_503':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS503 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_503 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_504':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS504 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_504 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_507':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS507 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_507 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_508':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS508 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_508 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_520':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS520 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_520 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_521':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS521 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_521 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_522':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS522 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_522 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_HTTP_STATUS_525':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDIMAGEDOWNLOADHTTPSTATUS525 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_IMAGE_DOWNLOAD_HTTP_STATUS_525 = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_INTERNAL_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_INVALID_FILE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_INVALID_FILE = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_SITE_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_SITE_ERROR = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_SITE_TIMEOUT':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_SSL_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_SSL_ERROR = valueDes;
           break;
         case r'AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR = valueDes;
           break;
         case r'AD_IMAGE_PROCESSING_EMPTY_FILE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_PROCESSING_EMPTY_FILE = valueDes;
           break;
         case r'AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL = valueDes;
           break;
         case r'AD_IMAGE_PROCESSING_TOO_MANY_PIXELS':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS = valueDes;
           break;
         case r'AD_IMAGE_PROCESSING_TYPE_MISMATCH':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_PROCESSING_TYPE_MISMATCH = valueDes;
           break;
         case r'AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_400':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS400 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_400 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_403':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS403 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_403 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_404':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS404 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_404 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_405':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS405 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_405 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_410':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS410 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_410 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_429':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS429 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_429 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_500':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS500 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_500 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_502':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS502 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_502 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_503':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS503 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_503 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_504':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS504 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_504 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_507':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS507 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_507 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_508':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS508 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_508 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_520':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS520 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_520 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_521':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS521 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_521 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_522':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS522 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_522 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_HTTP_STATUS_525':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.aDVIDEODOWNLOADHTTPSTATUS525 = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.AD_VIDEO_DOWNLOAD_HTTP_STATUS_525 = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_INTERNAL_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_INVALID_FILE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_INVALID_FILE = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_SITE_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_SITE_ERROR = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_SITE_TIMEOUT':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_SSL_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_SSL_ERROR = valueDes;
           break;
         case r'AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR = valueDes;
           break;
         case r'AD_VIDEO_LENGTH_TOO_SHORT':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_LENGTH_TOO_SHORT = valueDes;
           break;
         case r'AD_VIDEO_PROCESSING_EMPTY_FILE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_PROCESSING_EMPTY_FILE = valueDes;
           break;
         case r'AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL = valueDes;
           break;
         case r'AD_VIDEO_PROCESSING_TOO_MANY_PIXELS':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS = valueDes;
           break;
         case r'AD_VIDEO_PROCESSING_TYPE_MISMATCH':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_PROCESSING_TYPE_MISMATCH = valueDes;
           break;
         case r'AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL = valueDes;
           break;
         case r'ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE = valueDes;
           break;
         case r'ADDITIONAL_IMAGE_FILE_NOT_FOUND':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADDITIONAL_IMAGE_FILE_NOT_FOUND = valueDes;
           break;
         case r'ADDITIONAL_IMAGE_INVALID_FILE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADDITIONAL_IMAGE_INVALID_FILE = valueDes;
           break;
         case r'ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = valueDes;
           break;
         case r'ADDITIONAL_IMAGE_MALFORMED_URL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADDITIONAL_IMAGE_MALFORMED_URL = valueDes;
           break;
         case r'FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT = valueDes;
           break;
         case r'HOTEL_PRICE_HEADER_IS_PRESENT':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.HOTEL_PRICE_HEADER_IS_PRESENT = valueDes;
           break;
         case r'VIDEO_DOWNLOAD_VIDEO_TOO_SHORT':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT = valueDes;
           break;
         case r'VIDEO_FILE_NOT_ACCESSIBLE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.VIDEO_FILE_NOT_ACCESSIBLE = valueDes;
           break;
         case r'VIDEO_FILE_NOT_FOUND':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.VIDEO_FILE_NOT_FOUND = valueDes;
           break;
         case r'VIDEO_INVALID_FILE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.VIDEO_INVALID_FILE = valueDes;
           break;
         case r'VIDEO_LEVEL_INTERNAL_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.VIDEO_LEVEL_INTERNAL_ERROR = valueDes;
           break;
         case r'VIDEO_MALFORMED_URL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.VIDEO_MALFORMED_URL = valueDes;
           break;
         default:

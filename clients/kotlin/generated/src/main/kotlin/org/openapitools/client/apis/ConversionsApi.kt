@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,8 +27,10 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.AdvertiserDefinedEventsResponse
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.AdvertiserDefinedEventsCreate200Response
+import org.openapitools.client.models.AdvertiserDefinedEventsCreateRequest
+import org.openapitools.client.models.AdvertiserDefinedEventsGet200Response
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -42,16 +52,17 @@ open class ConversionsApi(basePath: kotlin.String = defaultBasePath, client: Cal
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
-     * GET /ad_accounts/{ad_account_id}/advertiser_defined_events
-     * Get advertiser defined events
-     * &lt;p&gt;Get advertiser defined events for the given ad account.&lt;/p&gt;
+     * POST /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * Create advertiser defined events
+     * Map advertiser defined events to standard events for the given ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @return AdvertiserDefinedEventsResponse
+     * @param advertiserDefinedEventsCreateRequest 
+     * @return AdvertiserDefinedEventsCreate200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -60,11 +71,166 @@ open class ConversionsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun advertiserDefinedEventsGet(adAccountId: kotlin.String) : AdvertiserDefinedEventsResponse {
+    fun advertiserDefinedEventsCreate(adAccountId: kotlin.String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest) : AdvertiserDefinedEventsCreate200Response {
+        val localVarResponse = advertiserDefinedEventsCreateWithHttpInfo(adAccountId = adAccountId, advertiserDefinedEventsCreateRequest = advertiserDefinedEventsCreateRequest)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdvertiserDefinedEventsCreate200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * Create advertiser defined events
+     * Map advertiser defined events to standard events for the given ad account.
+     * @param adAccountId Unique identifier of an ad account.
+     * @param advertiserDefinedEventsCreateRequest 
+     * @return ApiResponse<AdvertiserDefinedEventsCreate200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun advertiserDefinedEventsCreateWithHttpInfo(adAccountId: kotlin.String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest) : ApiResponse<AdvertiserDefinedEventsCreate200Response?> {
+        val localVariableConfig = advertiserDefinedEventsCreateRequestConfig(adAccountId = adAccountId, advertiserDefinedEventsCreateRequest = advertiserDefinedEventsCreateRequest)
+
+        return request<AdvertiserDefinedEventsCreateRequest, AdvertiserDefinedEventsCreate200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation advertiserDefinedEventsCreate
+     *
+     * @param adAccountId Unique identifier of an ad account.
+     * @param advertiserDefinedEventsCreateRequest 
+     * @return RequestConfig
+     */
+    fun advertiserDefinedEventsCreateRequestConfig(adAccountId: kotlin.String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest) : RequestConfig<AdvertiserDefinedEventsCreateRequest> {
+        val localVariableBody = advertiserDefinedEventsCreateRequest
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * DELETE /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * Delete advertiser defined events
+     * Untrack advertiser defined events for the given ad account.
+     * @param adAccountId Unique identifier of an ad account.
+     * @param eventNames List of event names to delete
+     * @return AdvertiserDefinedEventsCreate200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun advertiserDefinedEventsDelete(adAccountId: kotlin.String, eventNames: kotlin.collections.List<kotlin.String>) : AdvertiserDefinedEventsCreate200Response {
+        val localVarResponse = advertiserDefinedEventsDeleteWithHttpInfo(adAccountId = adAccountId, eventNames = eventNames)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdvertiserDefinedEventsCreate200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * DELETE /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * Delete advertiser defined events
+     * Untrack advertiser defined events for the given ad account.
+     * @param adAccountId Unique identifier of an ad account.
+     * @param eventNames List of event names to delete
+     * @return ApiResponse<AdvertiserDefinedEventsCreate200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun advertiserDefinedEventsDeleteWithHttpInfo(adAccountId: kotlin.String, eventNames: kotlin.collections.List<kotlin.String>) : ApiResponse<AdvertiserDefinedEventsCreate200Response?> {
+        val localVariableConfig = advertiserDefinedEventsDeleteRequestConfig(adAccountId = adAccountId, eventNames = eventNames)
+
+        return request<Unit, AdvertiserDefinedEventsCreate200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation advertiserDefinedEventsDelete
+     *
+     * @param adAccountId Unique identifier of an ad account.
+     * @param eventNames List of event names to delete
+     * @return RequestConfig
+     */
+    fun advertiserDefinedEventsDeleteRequestConfig(adAccountId: kotlin.String, eventNames: kotlin.collections.List<kotlin.String>) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                put("event_names", toMultiValue(eventNames.toList(), "csv"))
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * Get advertiser defined events
+     * Get advertiser defined events for the given ad account.
+     * @param adAccountId Unique identifier of an ad account.
+     * @return AdvertiserDefinedEventsGet200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun advertiserDefinedEventsGet(adAccountId: kotlin.String) : AdvertiserDefinedEventsGet200Response {
         val localVarResponse = advertiserDefinedEventsGetWithHttpInfo(adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as AdvertiserDefinedEventsResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdvertiserDefinedEventsGet200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -81,18 +247,18 @@ open class ConversionsApi(basePath: kotlin.String = defaultBasePath, client: Cal
     /**
      * GET /ad_accounts/{ad_account_id}/advertiser_defined_events
      * Get advertiser defined events
-     * &lt;p&gt;Get advertiser defined events for the given ad account.&lt;/p&gt;
+     * Get advertiser defined events for the given ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @return ApiResponse<AdvertiserDefinedEventsResponse?>
+     * @return ApiResponse<AdvertiserDefinedEventsGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun advertiserDefinedEventsGetWithHttpInfo(adAccountId: kotlin.String) : ApiResponse<AdvertiserDefinedEventsResponse?> {
+    fun advertiserDefinedEventsGetWithHttpInfo(adAccountId: kotlin.String) : ApiResponse<AdvertiserDefinedEventsGet200Response?> {
         val localVariableConfig = advertiserDefinedEventsGetRequestConfig(adAccountId = adAccountId)
 
-        return request<Unit, AdvertiserDefinedEventsResponse>(
+        return request<Unit, AdvertiserDefinedEventsGet200Response>(
             localVariableConfig
         )
     }
@@ -111,6 +277,83 @@ open class ConversionsApi(basePath: kotlin.String = defaultBasePath, client: Cal
 
         return RequestConfig(
             method = RequestMethod.GET,
+            path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * PATCH /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * Update advertiser defined events
+     * Update advertiser defined event names or mappings for the given ad account.
+     * @param adAccountId Unique identifier of an ad account.
+     * @param advertiserDefinedEventsCreateRequest 
+     * @return AdvertiserDefinedEventsCreate200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun advertiserDefinedEventsUpdate(adAccountId: kotlin.String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest) : AdvertiserDefinedEventsCreate200Response {
+        val localVarResponse = advertiserDefinedEventsUpdateWithHttpInfo(adAccountId = adAccountId, advertiserDefinedEventsCreateRequest = advertiserDefinedEventsCreateRequest)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AdvertiserDefinedEventsCreate200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * PATCH /ad_accounts/{ad_account_id}/advertiser_defined_events
+     * Update advertiser defined events
+     * Update advertiser defined event names or mappings for the given ad account.
+     * @param adAccountId Unique identifier of an ad account.
+     * @param advertiserDefinedEventsCreateRequest 
+     * @return ApiResponse<AdvertiserDefinedEventsCreate200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun advertiserDefinedEventsUpdateWithHttpInfo(adAccountId: kotlin.String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest) : ApiResponse<AdvertiserDefinedEventsCreate200Response?> {
+        val localVariableConfig = advertiserDefinedEventsUpdateRequestConfig(adAccountId = adAccountId, advertiserDefinedEventsCreateRequest = advertiserDefinedEventsCreateRequest)
+
+        return request<AdvertiserDefinedEventsCreateRequest, AdvertiserDefinedEventsCreate200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation advertiserDefinedEventsUpdate
+     *
+     * @param adAccountId Unique identifier of an ad account.
+     * @param advertiserDefinedEventsCreateRequest 
+     * @return RequestConfig
+     */
+    fun advertiserDefinedEventsUpdateRequestConfig(adAccountId: kotlin.String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest) : RequestConfig<AdvertiserDefinedEventsCreateRequest> {
+        val localVariableBody = advertiserDefinedEventsCreateRequest
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.PATCH,
             path = "/ad_accounts/{ad_account_id}/advertiser_defined_events".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,

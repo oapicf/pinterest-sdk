@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "KeywordCreateItem",
+  "fields": [
+    {
+      "name": "bid",
+      "type": ["null", "int"],
+      "doc": "**Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.",
+      "default": null
+    },
+    {
+      "name": "match_type",
+      "type": "model.MatchType",
+      "doc": "Keyword [match type](/docs/api-features/targeting-overview/)"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": "Keyword value (120 chars max)."
+    }
+  ]
+
+}

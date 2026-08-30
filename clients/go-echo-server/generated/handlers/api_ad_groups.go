@@ -37,6 +37,38 @@ func (c *Container) AdGroupsCreate(ctx echo.Context) error {
 }
 
 
+// AdGroupsDynamicTitlesDownloadCsv - Get dynamic titles CSV download URL
+func (c *Container) AdGroupsDynamicTitlesDownloadCsv(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// AdGroupsDynamicTitlesGetStatus - Get dynamic titles status
+func (c *Container) AdGroupsDynamicTitlesGetStatus(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// AdGroupsDynamicTitlesGetUploadUrl - Get dynamic titles upload URL
+func (c *Container) AdGroupsDynamicTitlesGetUploadUrl(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// AdGroupsDynamicTitlesProcessCsv - Process dynamic titles CSV
+func (c *Container) AdGroupsDynamicTitlesProcessCsv(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
 // AdGroupsGet - Get ad group
 func (c *Container) AdGroupsGet(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
@@ -63,6 +95,14 @@ func (c *Container) AdGroupsTargetingAnalyticsGet(ctx echo.Context) error {
 
 // AdGroupsUpdate - Update ad groups
 func (c *Container) AdGroupsUpdate(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// GetAdGroupsByPromotionIdsList - List of ad groups using promotions IDs.
+func (c *Container) GetAdGroupsByPromotionIdsList(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
 		Message: "Hello World",
 	})

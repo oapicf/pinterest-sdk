@@ -22,5 +22,5 @@ type AmazonConnectRequest struct {
 	OneTimePasscode string `json:"one_time_passcode,omitempty"`
 
 	// The Pinterest user id for Amazon-initiated linking requests
-	PinterestUserId string `json:"pinterest_user_id,omitempty" validate:"regexp=^\\\\d+$"`
+	PinterestUserId string `json:"pinterest_user_id,omitempty" validate:"regexp=^\\d+$"`
 }

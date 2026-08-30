@@ -13,10 +13,33 @@ import org.openapitools.model.Language;
 class AdvancedAuctionItemsSubmitDeleteRecord {
     
     Country country
+    /* Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
+    List<AdvancedAuctionOperationError> errors = new ArrayList<>()
     /* The catalog retail item id in the merchant namespace */
     String itemId
     
     Language language
-    /* Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
-    List<AdvancedAuctionOperationError> errors = new ArrayList<>()
+
+    enum OperationEnum {
+    
+        DELETE("DELETE")
+    
+        private final String value
+    
+        OperationEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    OperationEnum operation
 }

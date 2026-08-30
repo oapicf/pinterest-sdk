@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **CatalogId** | **String** | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog | [optional] 
 **CatalogType** | **String** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Items** | [**CatalogsRetailBatchRequestItemsInner[]**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+**Items** | [**CatalogsRetailBatchRequestItemsItems[]**](CatalogsRetailBatchRequestItemsItems.md) | Array with catalogs item operations | 
 **Language** | **String** | We recommend using the CatalogsLocale values. | 
 
 ## Examples

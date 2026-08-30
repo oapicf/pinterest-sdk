@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "PlacementType.h"
 #include <map>
 #include "Object.h"
 
@@ -46,16 +47,16 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Placement type identifier.
 	 */
-	std::string getPLACEMENT();
+	PlacementType getPLACEMENT();
 
-	/*! \brief Set 
+	/*! \brief Set Placement type identifier.
 	 */
-	void setPLACEMENT(std::string  pLACEMENT);
+	void setPLACEMENT(PlacementType  pLACEMENT);
 
 private:
-	std::string pLACEMENT;
+	PlacementType pLACEMENT;
 	void __init();
 	void __cleanup();
 

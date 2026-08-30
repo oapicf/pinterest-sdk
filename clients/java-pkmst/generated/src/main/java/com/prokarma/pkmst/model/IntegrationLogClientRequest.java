@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.HttpMethod;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
@@ -18,58 +19,13 @@ import java.util.Map;
  */
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogClientRequest   {
   @JsonProperty("host")
   private String host;
 
-  /**
-   * Gets or Sets method
-   */
-  public enum MethodEnum {
-    GET("GET"),
-    
-    HEAD("HEAD"),
-    
-    POST("POST"),
-    
-    PUT("PUT"),
-    
-    DELETE("DELETE"),
-    
-    CONNECT("CONNECT"),
-    
-    OPTIONS("OPTIONS"),
-    
-    TRACE("TRACE"),
-    
-    PATCH("PATCH");
-
-    private String value;
-
-    MethodEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static MethodEnum fromValue(String text) {
-      for (MethodEnum b : MethodEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("method")
-  private MethodEnum method;
+  private HttpMethod method;
 
   @JsonProperty("path")
   private String path;
@@ -103,7 +59,7 @@ public class IntegrationLogClientRequest   {
     this.host = host;
   }
 
-  public IntegrationLogClientRequest method(MethodEnum method) {
+  public IntegrationLogClientRequest method(HttpMethod method) {
     this.method = method;
     return this;
   }
@@ -113,11 +69,11 @@ public class IntegrationLogClientRequest   {
    * @return method
    */
   @ApiModelProperty(required = true, value = "")
-  public MethodEnum getMethod() {
+  public HttpMethod getMethod() {
     return method;
   }
 
-  public void setMethod(MethodEnum method) {
+  public void setMethod(HttpMethod method) {
     this.method = method;
   }
 
@@ -252,10 +208,7 @@ public class IntegrationLogClientRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

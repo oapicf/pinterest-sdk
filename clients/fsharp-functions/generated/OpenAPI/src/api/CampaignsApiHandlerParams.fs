@@ -2,17 +2,21 @@ namespace OpenAPI
 
 open OpenAPI.Model.AdPinAnalytics
 open OpenAPI.Model.AdsAnalyticsCampaignTargetingType
-open OpenAPI.Model.CampaignCreateRequest
-open OpenAPI.Model.CampaignCreateResponse
-open OpenAPI.Model.CampaignResponse
-open OpenAPI.Model.CampaignUpdateRequest
-open OpenAPI.Model.CampaignUpdateResponse
-open OpenAPI.Model.CampaignsAnalyticsResponseInner
+open OpenAPI.Model.Campaign
+open OpenAPI.Model.CampaignBatchUpdateItem
+open OpenAPI.Model.CampaignBatchWriteResponseModel
+open OpenAPI.Model.CampaignCreateItem
+open OpenAPI.Model.CampaignDeliveryEstimatesCampaign
+open OpenAPI.Model.CampaignDeliveryEstimatesResponse
+open OpenAPI.Model.CampaignsAnalyticsMetrics
 open OpenAPI.Model.CampaignsList200Response
 open OpenAPI.Model.ConversionReportAttributionType
-open OpenAPI.Model.Error
+open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.ReportingColumnSync
 open OpenAPI.Model.ReportingTimeZone
 open System.Collections.Generic
 open System
@@ -41,19 +45,19 @@ module CampaignsApiHandlerParams =
       endDate : DateTime ;
 
 
-      columns : string[] ;
+      columns : ReportingColumnSync[] ;
 
 
       granularity : Granularity ;
 
 
-      clickWindowDays : int option;
+      clickWindowDays : decimal option;
 
 
-      engagementWindowDays : int option;
+      engagementWindowDays : decimal option;
 
 
-      viewWindowDays : int option;
+      viewWindowDays : decimal option;
 
 
       conversionReportTime : string option;
@@ -68,15 +72,35 @@ module CampaignsApiHandlerParams =
     }
 
     type AdPinsAnalyticsStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AdPinsAnalyticsStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdPinsAnalyticsStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdPinsAnalyticsStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdPinsAnalyticsStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AdPinsAnalyticsDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AdPinsAnalyticsResult = AdPinsAnalyticsStatusCode200 of AdPinsAnalyticsStatusCode200Response|AdPinsAnalyticsStatusCode400 of AdPinsAnalyticsStatusCode400Response|AdPinsAnalyticsDefaultStatusCode of AdPinsAnalyticsDefaultStatusCodeResponse
+    type AdPinsAnalyticsResult = AdPinsAnalyticsStatusCode200 of AdPinsAnalyticsStatusCode200Response|AdPinsAnalyticsStatusCode400 of AdPinsAnalyticsStatusCode400Response|AdPinsAnalyticsStatusCode401 of AdPinsAnalyticsStatusCode401Response|AdPinsAnalyticsStatusCode403 of AdPinsAnalyticsStatusCode403Response|AdPinsAnalyticsStatusCode404 of AdPinsAnalyticsStatusCode404Response|AdPinsAnalyticsStatusCode429 of AdPinsAnalyticsStatusCode429Response|AdPinsAnalyticsDefaultStatusCode of AdPinsAnalyticsDefaultStatusCodeResponse
 
     type AdPinsAnalyticsArgs = {
       pathParams:AdPinsAnalyticsPathParams;
@@ -104,19 +128,19 @@ module CampaignsApiHandlerParams =
       targetingTypes : AdsAnalyticsCampaignTargetingType[] ;
 
 
-      columns : string[] ;
+      columns : ReportingColumnSync[] ;
 
 
       granularity : Granularity ;
 
 
-      clickWindowDays : int option;
+      clickWindowDays : decimal option;
 
 
-      engagementWindowDays : int option;
+      engagementWindowDays : decimal option;
 
 
-      viewWindowDays : int option;
+      viewWindowDays : decimal option;
 
 
       conversionReportTime : string option;
@@ -136,11 +160,36 @@ module CampaignsApiHandlerParams =
       
     }
 
-    type CampaignTargetingAnalyticsGetDefaultStatusCodeResponse = {
-      content:Error;
+    type CampaignTargetingAnalyticsGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type CampaignTargetingAnalyticsGetResult = CampaignTargetingAnalyticsGetStatusCode200 of CampaignTargetingAnalyticsGetStatusCode200Response|CampaignTargetingAnalyticsGetDefaultStatusCode of CampaignTargetingAnalyticsGetDefaultStatusCodeResponse
+
+    type CampaignTargetingAnalyticsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignTargetingAnalyticsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignTargetingAnalyticsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignTargetingAnalyticsGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignTargetingAnalyticsGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type CampaignTargetingAnalyticsGetResult = CampaignTargetingAnalyticsGetStatusCode200 of CampaignTargetingAnalyticsGetStatusCode200Response|CampaignTargetingAnalyticsGetStatusCode400 of CampaignTargetingAnalyticsGetStatusCode400Response|CampaignTargetingAnalyticsGetStatusCode401 of CampaignTargetingAnalyticsGetStatusCode401Response|CampaignTargetingAnalyticsGetStatusCode403 of CampaignTargetingAnalyticsGetStatusCode403Response|CampaignTargetingAnalyticsGetStatusCode404 of CampaignTargetingAnalyticsGetStatusCode404Response|CampaignTargetingAnalyticsGetStatusCode429 of CampaignTargetingAnalyticsGetStatusCode429Response|CampaignTargetingAnalyticsGetDefaultStatusCode of CampaignTargetingAnalyticsGetDefaultStatusCodeResponse
 
     type CampaignTargetingAnalyticsGetArgs = {
       pathParams:CampaignTargetingAnalyticsGetPathParams;
@@ -165,19 +214,19 @@ module CampaignsApiHandlerParams =
       campaignIds : string[] ;
 
 
-      columns : string[] ;
+      columns : ReportingColumnSync[] ;
 
 
       granularity : Granularity ;
 
 
-      clickWindowDays : int option;
+      clickWindowDays : decimal option;
 
 
-      engagementWindowDays : int option;
+      engagementWindowDays : decimal option;
 
 
-      viewWindowDays : int option;
+      viewWindowDays : decimal option;
 
 
       conversionReportTime : string option;
@@ -193,20 +242,40 @@ module CampaignsApiHandlerParams =
 
 
     type CampaignsAnalyticsStatusCode200Response = {
-      content:CampaignsAnalyticsResponseInner[];
+      content:CampaignsAnalyticsMetrics[];
       
     }
 
     type CampaignsAnalyticsStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsAnalyticsStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsAnalyticsStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsAnalyticsStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsAnalyticsStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type CampaignsAnalyticsDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type CampaignsAnalyticsResult = CampaignsAnalyticsStatusCode200 of CampaignsAnalyticsStatusCode200Response|CampaignsAnalyticsStatusCode400 of CampaignsAnalyticsStatusCode400Response|CampaignsAnalyticsDefaultStatusCode of CampaignsAnalyticsDefaultStatusCodeResponse
+    type CampaignsAnalyticsResult = CampaignsAnalyticsStatusCode200 of CampaignsAnalyticsStatusCode200Response|CampaignsAnalyticsStatusCode400 of CampaignsAnalyticsStatusCode400Response|CampaignsAnalyticsStatusCode401 of CampaignsAnalyticsStatusCode401Response|CampaignsAnalyticsStatusCode403 of CampaignsAnalyticsStatusCode403Response|CampaignsAnalyticsStatusCode404 of CampaignsAnalyticsStatusCode404Response|CampaignsAnalyticsStatusCode429 of CampaignsAnalyticsStatusCode429Response|CampaignsAnalyticsDefaultStatusCode of CampaignsAnalyticsDefaultStatusCodeResponse
 
     type CampaignsAnalyticsArgs = {
       pathParams:CampaignsAnalyticsPathParams;
@@ -221,20 +290,45 @@ module CampaignsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type CampaignsCreateBodyParams = CampaignCreateRequest[]
+    type CampaignsCreateBodyParams = CampaignCreateItem[]
     //#endregion
 
 
     type CampaignsCreateStatusCode200Response = {
-      content:CampaignCreateResponse;
+      content:CampaignBatchWriteResponseModel;
+      
+    }
+
+    type CampaignsCreateStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type CampaignsCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type CampaignsCreateResult = CampaignsCreateStatusCode200 of CampaignsCreateStatusCode200Response|CampaignsCreateDefaultStatusCode of CampaignsCreateDefaultStatusCodeResponse
+    type CampaignsCreateResult = CampaignsCreateStatusCode200 of CampaignsCreateStatusCode200Response|CampaignsCreateStatusCode400 of CampaignsCreateStatusCode400Response|CampaignsCreateStatusCode401 of CampaignsCreateStatusCode401Response|CampaignsCreateStatusCode403 of CampaignsCreateStatusCode403Response|CampaignsCreateStatusCode404 of CampaignsCreateStatusCode404Response|CampaignsCreateStatusCode429 of CampaignsCreateStatusCode429Response|CampaignsCreateDefaultStatusCode of CampaignsCreateDefaultStatusCodeResponse
 
     type CampaignsCreateArgs = {
       pathParams:CampaignsCreatePathParams;
@@ -243,23 +337,48 @@ module CampaignsApiHandlerParams =
     //#region Path parameters
     [<CLIMutable>]
     type CampaignsGetPathParams = {
-      adAccountId : string ;
-    //#endregion
       campaignId : string ;
+    //#endregion
+      adAccountId : string ;
     }
     //#endregion
 
 
     type CampaignsGetStatusCode200Response = {
-      content:CampaignResponse;
+      content:Campaign;
+      
+    }
+
+    type CampaignsGetStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type CampaignsGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type CampaignsGetResult = CampaignsGetStatusCode200 of CampaignsGetStatusCode200Response|CampaignsGetDefaultStatusCode of CampaignsGetDefaultStatusCodeResponse
+    type CampaignsGetResult = CampaignsGetStatusCode200 of CampaignsGetStatusCode200Response|CampaignsGetStatusCode400 of CampaignsGetStatusCode400Response|CampaignsGetStatusCode401 of CampaignsGetStatusCode401Response|CampaignsGetStatusCode403 of CampaignsGetStatusCode403Response|CampaignsGetStatusCode404 of CampaignsGetStatusCode404Response|CampaignsGetStatusCode429 of CampaignsGetStatusCode429Response|CampaignsGetDefaultStatusCode of CampaignsGetDefaultStatusCodeResponse
 
     type CampaignsGetArgs = {
       pathParams:CampaignsGetPathParams;
@@ -274,19 +393,19 @@ module CampaignsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type CampaignsListQueryParams = {
-      campaignIds : string[] option;
-
-
-      entityStatuses : string[] option;
+      bookmark : string option;
 
 
       pageSize : int option;
 
 
-      order : string option;
+      order : PinterestLibPaginationOrder option;
 
 
-      bookmark : string option;
+      campaignIds : string[] option;
+
+
+      entityStatuses : EntityStatus[] option;
 
     }
     //#endregion
@@ -298,15 +417,35 @@ module CampaignsApiHandlerParams =
     }
 
     type CampaignsListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type CampaignsListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type CampaignsListResult = CampaignsListStatusCode200 of CampaignsListStatusCode200Response|CampaignsListStatusCode400 of CampaignsListStatusCode400Response|CampaignsListDefaultStatusCode of CampaignsListDefaultStatusCodeResponse
+    type CampaignsListResult = CampaignsListStatusCode200 of CampaignsListStatusCode200Response|CampaignsListStatusCode400 of CampaignsListStatusCode400Response|CampaignsListStatusCode401 of CampaignsListStatusCode401Response|CampaignsListStatusCode403 of CampaignsListStatusCode403Response|CampaignsListStatusCode404 of CampaignsListStatusCode404Response|CampaignsListStatusCode429 of CampaignsListStatusCode429Response|CampaignsListDefaultStatusCode of CampaignsListDefaultStatusCodeResponse
 
     type CampaignsListArgs = {
       pathParams:CampaignsListPathParams;
@@ -321,22 +460,105 @@ module CampaignsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type CampaignsUpdateBodyParams = CampaignUpdateRequest[]
+    type CampaignsUpdateBodyParams = CampaignBatchUpdateItem[]
     //#endregion
 
 
     type CampaignsUpdateStatusCode200Response = {
-      content:CampaignUpdateResponse;
+      content:CampaignBatchWriteResponseModel;
+      
+    }
+
+    type CampaignsUpdateStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsUpdateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsUpdateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsUpdateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type CampaignsUpdateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type CampaignsUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type CampaignsUpdateResult = CampaignsUpdateStatusCode200 of CampaignsUpdateStatusCode200Response|CampaignsUpdateDefaultStatusCode of CampaignsUpdateDefaultStatusCodeResponse
+    type CampaignsUpdateResult = CampaignsUpdateStatusCode200 of CampaignsUpdateStatusCode200Response|CampaignsUpdateStatusCode400 of CampaignsUpdateStatusCode400Response|CampaignsUpdateStatusCode401 of CampaignsUpdateStatusCode401Response|CampaignsUpdateStatusCode403 of CampaignsUpdateStatusCode403Response|CampaignsUpdateStatusCode404 of CampaignsUpdateStatusCode404Response|CampaignsUpdateStatusCode429 of CampaignsUpdateStatusCode429Response|CampaignsUpdateDefaultStatusCode of CampaignsUpdateDefaultStatusCodeResponse
 
     type CampaignsUpdateArgs = {
       pathParams:CampaignsUpdatePathParams;
       bodyParams:CampaignsUpdateBodyParams
+    }
+    //#region Path parameters
+    [<CLIMutable>]
+    type GetCampaignDeliveryEstimatesPathParams = {
+      adAccountId : string ;
+    }
+    //#endregion
+
+    //#region Body parameters
+    [<CLIMutable>]
+    type GetCampaignDeliveryEstimatesBodyParams = CampaignDeliveryEstimatesCampaign[]
+    //#endregion
+
+
+    type GetCampaignDeliveryEstimatesStatusCode200Response = {
+      content:CampaignDeliveryEstimatesResponse;
+      
+    }
+
+    type GetCampaignDeliveryEstimatesStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetCampaignDeliveryEstimatesStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetCampaignDeliveryEstimatesStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetCampaignDeliveryEstimatesStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetCampaignDeliveryEstimatesStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetCampaignDeliveryEstimatesStatusCode503Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type GetCampaignDeliveryEstimatesDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type GetCampaignDeliveryEstimatesResult = GetCampaignDeliveryEstimatesStatusCode200 of GetCampaignDeliveryEstimatesStatusCode200Response|GetCampaignDeliveryEstimatesStatusCode400 of GetCampaignDeliveryEstimatesStatusCode400Response|GetCampaignDeliveryEstimatesStatusCode401 of GetCampaignDeliveryEstimatesStatusCode401Response|GetCampaignDeliveryEstimatesStatusCode403 of GetCampaignDeliveryEstimatesStatusCode403Response|GetCampaignDeliveryEstimatesStatusCode404 of GetCampaignDeliveryEstimatesStatusCode404Response|GetCampaignDeliveryEstimatesStatusCode429 of GetCampaignDeliveryEstimatesStatusCode429Response|GetCampaignDeliveryEstimatesStatusCode503 of GetCampaignDeliveryEstimatesStatusCode503Response|GetCampaignDeliveryEstimatesDefaultStatusCode of GetCampaignDeliveryEstimatesDefaultStatusCodeResponse
+
+    type GetCampaignDeliveryEstimatesArgs = {
+      pathParams:GetCampaignDeliveryEstimatesPathParams;
+      bodyParams:GetCampaignDeliveryEstimatesBodyParams
     }

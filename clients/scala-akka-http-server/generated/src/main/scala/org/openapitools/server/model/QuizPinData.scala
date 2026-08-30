@@ -7,12 +7,12 @@ package org.openapitools.server.model
  * @param questions  for example: ''null''
  * @param results  for example: ''null''
  * @param tieBreakerCustomResult  for example: ''null''
- * @param tieBreakerType Quiz ad tie breaker type, default is RANDOM for example: ''null''
+ * @param tieBreakerType  for example: ''null''
 */
 final case class QuizPinData (
   questions: Option[Seq[QuizPinQuestion]] = None,
   results: Option[Seq[QuizPinResult]] = None,
   tieBreakerCustomResult: Option[QuizPinResult] = None,
-  tieBreakerType: Option[String] = None
+  tieBreakerType: Option[TieBreakerType] = None
 )
 

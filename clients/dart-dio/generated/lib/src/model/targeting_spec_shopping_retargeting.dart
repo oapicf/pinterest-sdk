@@ -99,22 +99,25 @@ class _$TargetingSpecShoppingRetargetingSerializer implements PrimitiveSerialize
         case r'exclusion_window':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.exclusionWindow = valueDes;
           break;
         case r'lookback_window':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.lookbackWindow = valueDes;
           break;
         case r'tag_types':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(int)]),
-          ) as BuiltList<int>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(int)]),
+          ) as BuiltList<int>?;
+          if (valueDes == null) continue;
           result.tagTypes.replace(valueDes);
           break;
         default:

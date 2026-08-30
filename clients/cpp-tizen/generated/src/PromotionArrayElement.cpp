@@ -23,7 +23,7 @@ PromotionArrayElement::~PromotionArrayElement()
 void
 PromotionArrayElement::__init()
 {
-	//data = new PromotionResponse();
+	//data = new Promotion();
 	//exception = new Exception();
 }
 
@@ -53,11 +53,11 @@ PromotionArrayElement::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("PromotionResponse")) {
-			jsonToValue(&data, node, "PromotionResponse", "PromotionResponse");
+		if (isprimitive("Promotion")) {
+			jsonToValue(&data, node, "Promotion", "Promotion");
 		} else {
 			
-			PromotionResponse* obj = static_cast<PromotionResponse*> (&data);
+			Promotion* obj = static_cast<Promotion*> (&data);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -88,13 +88,13 @@ PromotionArrayElement::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("PromotionResponse")) {
-		PromotionResponse obj = getData();
-		node = converttoJson(&obj, "PromotionResponse", "");
+	if (isprimitive("Promotion")) {
+		Promotion obj = getData();
+		node = converttoJson(&obj, "Promotion", "");
 	}
 	else {
 		
-		PromotionResponse obj = static_cast<PromotionResponse> (getData());
+		Promotion obj = static_cast<Promotion> (getData());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -124,14 +124,14 @@ PromotionArrayElement::toJson()
 	return ret;
 }
 
-PromotionResponse
+Promotion
 PromotionArrayElement::getData()
 {
 	return data;
 }
 
 void
-PromotionArrayElement::setData(PromotionResponse  data)
+PromotionArrayElement::setData(Promotion  data)
 {
 	this->data = data;
 }

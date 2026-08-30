@@ -263,12 +263,6 @@ class CatalogsFeedIngestionErrors(Model):
         :param large_product_count_decrease: The large_product_count_decrease of this CatalogsFeedIngestionErrors.
         :type large_product_count_decrease: int
         """
-        allowed_values = ["1"]  # noqa: E501
-        if large_product_count_decrease not in allowed_values:
-            raise ValueError(
-                "Invalid value for `large_product_count_decrease` ({0}), must be one of {1}"
-                .format(large_product_count_decrease, allowed_values)
-            )
 
         self._large_product_count_decrease = large_product_count_decrease
 

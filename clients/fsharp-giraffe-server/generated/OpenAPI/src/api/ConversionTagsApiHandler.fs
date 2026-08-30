@@ -11,10 +11,10 @@ open OpenAPI.Model.ConversionEventResponse
 open OpenAPI.Model.ConversionTag
 open OpenAPI.Model.ConversionTagCreate
 open OpenAPI.Model.ConversionTagsList200Response
-open OpenAPI.Model.Error
 open System.Collections.Generic
 open OpenAPI.Model.PageVisitConversionTagsGet200Response
 open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
 
 module ConversionTagsApiHandler =
 
@@ -68,6 +68,16 @@ module ConversionTagsApiHandler =
           return! (match result with
                       | ConversionTagsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | ConversionTagsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | ConversionTagsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | ConversionTagsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | ConversionTagsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | ConversionTagsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ConversionTagsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -117,6 +127,16 @@ module ConversionTagsApiHandler =
           return! (match result with
                       | OcpmEligibleConversionTagsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | OcpmEligibleConversionTagsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | OcpmEligibleConversionTagsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | OcpmEligibleConversionTagsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | OcpmEligibleConversionTagsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | OcpmEligibleConversionTagsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | OcpmEligibleConversionTagsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -137,6 +157,16 @@ module ConversionTagsApiHandler =
           return! (match result with
                       | PageVisitConversionTagsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | PageVisitConversionTagsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | PageVisitConversionTagsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | PageVisitConversionTagsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | PageVisitConversionTagsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | PageVisitConversionTagsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | PageVisitConversionTagsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

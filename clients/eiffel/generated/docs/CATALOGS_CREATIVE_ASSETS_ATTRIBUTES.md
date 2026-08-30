@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **ios_deep_link** | [**STRING_32**](STRING_32.md) | IOS deep link to the creative assets page. | [optional] [default to null]
 **link** | [**STRING_32**](STRING_32.md) | Link to the creative assets page. | [optional] [default to null]
 **title** | [**STRING_32**](STRING_32.md) | The name of the creative assets. | [optional] [default to null]
-**visibility** | [**STRING_32**](STRING_32.md) | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. | [optional] [default to null]
+**visibility** | [**STRING_32**](STRING_32.md) | Visibility of the creative assets. Must be one of the following values (upper or lowercase): &#39;visible&#39;, &#39;hidden&#39;. | [optional] [default to null]
+**ai_disclosures** | [**LIST [CATALOGS_AI_CONTENT_DISCLOSURE]**](CatalogsAiContentDisclosure.md) | AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL. | [optional] [default to null]
 **image_link** | [**STRING_32**](STRING_32.md) | The creative assets image. | [optional] [default to null]
 **video_link** | [**STRING_32**](STRING_32.md) | The creative assets video. | [optional] [default to null]
 

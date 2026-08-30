@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * Intended result of the campaign.  You can only update objectives for draft campaigns. &#x60;WEB_SESSIONS&#x60; and &#x60;VIDEO_VIEW&#x60; objectives are deprecated. We recommend using &#x60;VIDEO_COMPLETION&#x60; as an alternative for the latter. 
+ * Advertiser campaign objective type. You can only update objectives for draft campaigns. &#x60;CTV_CONSIDERATION&#x60; is in BETA. &#x60;WEB_SESSIONS&#x60; and &#x60;VIDEO_VIEW&#x60; objectives are deprecated. We recommend using &#x60;VIDEO_COMPLETION&#x60; as an alternative for the latter.
  */
 public enum ObjectiveType {
   
@@ -15,7 +15,13 @@ public enum ObjectiveType {
   
   CATALOG_SALES("CATALOG_SALES"),
   
-  VIDEO_COMPLETION("VIDEO_COMPLETION");
+  VIDEO_COMPLETION("VIDEO_COMPLETION"),
+  
+  SALES("SALES"),
+  
+  APP_INSTALL("APP_INSTALL"),
+  
+  CTV_CONSIDERATION("CTV_CONSIDERATION");
 
   private String value;
 

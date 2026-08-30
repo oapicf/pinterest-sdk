@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -18,7 +26,6 @@ package org.openapitools.client.models
 import org.openapitools.client.models.AdvancedAuctionBidOptions
 import org.openapitools.client.models.AdvancedAuctionItemsSubmitDeleteRecord
 import org.openapitools.client.models.AdvancedAuctionItemsSubmitUpsertRecord
-import org.openapitools.client.models.AdvancedAuctionOperation
 import org.openapitools.client.models.AdvancedAuctionOperationError
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.Language
@@ -30,10 +37,11 @@ import com.squareup.moshi.JsonClass
 /**
  * Object describing an item bid option operation
  *
+ * @param bidOptions 
  * @param country 
  * @param itemId The catalog retail item id in the merchant namespace
  * @param language 
- * @param bidOptions 
+ * @param operation 
  * @param updateMask The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
  * @param errors Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
  */
@@ -41,8 +49,8 @@ import com.squareup.moshi.JsonClass
 
 interface AdvancedAuctionItemsSubmitRecord {
 
-    @Json(name = "operation")
-    val operation: AdvancedAuctionOperation
+    @Json(name = "bid_options")
+    val bidOptions: AdvancedAuctionBidOptions
     @Json(name = "country")
     val country: Country
     /* The catalog retail item id in the merchant namespace */
@@ -50,14 +58,23 @@ interface AdvancedAuctionItemsSubmitRecord {
     val itemId: kotlin.String
     @Json(name = "language")
     val language: Language
-    @Json(name = "bid_options")
-    val bidOptions: AdvancedAuctionBidOptions
+    @Json(name = "operation")
+    val operation: AdvancedAuctionItemsSubmitRecord.Operation
     /* The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`. */
     @Json(name = "update_mask")
     val updateMask: kotlin.collections.List<UpdateMaskBidOptionField>?
     /* Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
     @Json(name = "errors")
     val errors: kotlin.collections.List<AdvancedAuctionOperationError>?
+    /**
+     * 
+     *
+     * Values: DELETE
+     */
+    @JsonClass(generateAdapter = false)
+    enum class Operation(val value: kotlin.String) {
+        @Json(name = "DELETE") DELETE("DELETE");
+    }
 
 }
 

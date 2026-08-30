@@ -12,21 +12,24 @@ import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/account.dart';
 import 'package:openapi/src/model/analytics_metrics_response.dart';
-import 'package:openapi/src/model/boards_user_follows_list200_response.dart';
+import 'package:openapi/src/model/boards_list200_response.dart';
 import 'package:openapi/src/model/date.dart';
-import 'package:openapi/src/model/error.dart';
-import 'package:openapi/src/model/follow_user_request.dart';
+import 'package:openapi/src/model/follow_user.dart';
+import 'package:openapi/src/model/follow_user_create.dart';
 import 'package:openapi/src/model/followers_list200_response.dart';
 import 'package:openapi/src/model/linked_business.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
+import 'package:openapi/src/model/querymetrictypes_items.dart';
+import 'package:openapi/src/model/queryvideopinmetrictypes_items.dart';
 import 'package:openapi/src/model/top_pins_analytics_response.dart';
+import 'package:openapi/src/model/top_pins_sort_by.dart';
 import 'package:openapi/src/model/top_video_pins_analytics_response.dart';
+import 'package:openapi/src/model/top_video_pins_sort_by.dart';
 import 'package:openapi/src/model/user_account_followed_interests200_response.dart';
 import 'package:openapi/src/model/user_following_feed_type.dart';
-import 'package:openapi/src/model/user_following_get200_response.dart';
-import 'package:openapi/src/model/user_summary.dart';
-import 'package:openapi/src/model/user_website_summary.dart';
-import 'package:openapi/src/model/user_website_verification_code.dart';
-import 'package:openapi/src/model/user_website_verify_request.dart';
+import 'package:openapi/src/model/user_website.dart';
+import 'package:openapi/src/model/user_website_create.dart';
+import 'package:openapi/src/model/user_website_verification.dart';
 import 'package:openapi/src/model/user_websites_get200_response.dart';
 
 class UserAccountApi {
@@ -41,10 +44,10 @@ class UserAccountApi {
   /// Get a list of the boards a user follows. The request returns a board summary object array.
   ///
   /// Parameters:
-  /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  /// * [explicitFollowing] - Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   /// * [adAccountId] - Unique identifier of an ad account.
+  /// * [explicitFollowing] - Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+  /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -52,13 +55,13 @@ class UserAccountApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BoardsUserFollowsList200Response] as data
+  /// Returns a [Future] containing a [Response] with a [BoardsList200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BoardsUserFollowsList200Response>> boardsUserFollowsList({ 
+  Future<Response<BoardsList200Response>> boardsUserFollowsList({ 
+    String? adAccountId,
+    bool? explicitFollowing = false,
     String? bookmark,
     int? pageSize = 25,
-    bool? explicitFollowing = false,
-    String? adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -88,10 +91,10 @@ class UserAccountApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
+      if (explicitFollowing != null) r'explicit_following': encodeQueryParameter(_serializers, explicitFollowing, const FullType(bool)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (explicitFollowing != null) r'explicit_following': encodeQueryParameter(_serializers, explicitFollowing, const FullType(bool)),
-      if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -103,14 +106,14 @@ class UserAccountApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BoardsUserFollowsList200Response? _responseData;
+    BoardsList200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BoardsUserFollowsList200Response),
-      ) as BoardsUserFollowsList200Response;
+        specifiedType: const FullType(BoardsList200Response),
+      ) as BoardsList200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -122,7 +125,7 @@ class UserAccountApi {
       );
     }
 
-    return Response<BoardsUserFollowsList200Response>(
+    return Response<BoardsList200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -135,11 +138,11 @@ class UserAccountApi {
   }
 
   /// Follow user
-  /// &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+  /// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
   ///
   /// Parameters:
   /// * [username] - A valid username
-  /// * [followUserRequest] - Follow a user.
+  /// * [followUserCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -147,11 +150,11 @@ class UserAccountApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UserSummary] as data
+  /// Returns a [Future] containing a [Response] with a [FollowUser] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserSummary>> followUserUpdate({ 
+  Future<Response<FollowUser>> followUserUpdate({ 
     required String username,
-    required FollowUserRequest followUserRequest,
+    required FollowUserCreate followUserCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -181,8 +184,8 @@ class UserAccountApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(FollowUserRequest);
-      _bodyData = _serializers.serialize(followUserRequest, specifiedType: _type);
+      const _type = FullType(FollowUserCreate);
+      _bodyData = _serializers.serialize(followUserCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -205,14 +208,14 @@ class UserAccountApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UserSummary? _responseData;
+    FollowUser? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UserSummary),
-      ) as UserSummary;
+        specifiedType: const FullType(FollowUser),
+      ) as FollowUser;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -224,7 +227,7 @@ class UserAccountApi {
       );
     }
 
-    return Response<UserSummary>(
+    return Response<FollowUser>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -241,7 +244,7 @@ class UserAccountApi {
   ///
   /// Parameters:
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -409,7 +412,7 @@ class UserAccountApi {
   }
 
   /// Unverify website
-  /// Unverifu a website verified by the signed-in user.
+  /// Unverify a website verified by the signed-in user.
   ///
   /// Parameters:
   /// * [website] - Website with path or domain only
@@ -420,9 +423,9 @@ class UserAccountApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [UserWebsite] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> unverifyWebsiteDelete({ 
+  Future<Response<UserWebsite>> unverifyWebsiteDelete({ 
     required String website,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -462,7 +465,35 @@ class UserAccountApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    UserWebsite? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(UserWebsite),
+      ) as UserWebsite;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<UserWebsite>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Get user account analytics
@@ -476,7 +507,7 @@ class UserAccountApi {
   /// * [appTypes] - Apps or devices to get data for, default is all.
   /// * [contentType] - Filter to paid or organic data. Default is all.
   /// * [source_] - Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-  /// * [metricTypes] - Metric types to get data for, default is all. 
+  /// * [metricTypes] - Metric types to get data for, default is all.
   /// * [splitField] - How to split the data into groups. Not including this param means data won't be split.
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -496,7 +527,7 @@ class UserAccountApi {
     String? appTypes = 'ALL',
     String? contentType = 'ALL',
     String? source_ = 'ALL',
-    BuiltList<String>? metricTypes,
+    BuiltList<QuerymetrictypesItems>? metricTypes,
     String? splitField = 'NO_SPLIT',
     String? adAccountId,
     CancelToken? cancelToken,
@@ -532,7 +563,7 @@ class UserAccountApi {
       if (appTypes != null) r'app_types': encodeQueryParameter(_serializers, appTypes, const FullType(String)),
       if (contentType != null) r'content_type': encodeQueryParameter(_serializers, contentType, const FullType(String)),
       if (source_ != null) r'source': encodeQueryParameter(_serializers, source_, const FullType(String)),
-      if (metricTypes != null) r'metric_types': encodeCollectionQueryParameter<String>(_serializers, metricTypes, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
+      if (metricTypes != null) r'metric_types': encodeCollectionQueryParameter<QuerymetrictypesItems>(_serializers, metricTypes, const FullType(BuiltList, [FullType(QuerymetrictypesItems)]), format: ListFormat.csv,),
       if (splitField != null) r'split_field': encodeQueryParameter(_serializers, splitField, const FullType(String)),
       if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
     };
@@ -589,7 +620,7 @@ class UserAccountApi {
   /// * [appTypes] - Apps or devices to get data for, default is all.
   /// * [contentType] - Filter to paid or organic data. Default is all.
   /// * [source_] - Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-  /// * [metricTypes] - Metric types to get data for, default is all. 
+  /// * [metricTypes] - Metric types to get data for, default is all.
   /// * [numOfPins] - Number of pins to include, default is 10. Max is 50.
   /// * [createdInLastNDays] - Get metrics for pins created in the last \"n\" days.
   /// * [adAccountId] - Unique identifier of an ad account.
@@ -605,15 +636,15 @@ class UserAccountApi {
   Future<Response<TopPinsAnalyticsResponse>> userAccountAnalyticsTopPins({ 
     required Date startDate,
     required Date endDate,
-    required String sortBy,
+    required TopPinsSortBy sortBy,
     String? fromClaimedContent = 'BOTH',
     String? pinFormat = 'ALL',
     String? appTypes = 'ALL',
     String? contentType = 'ALL',
     String? source_ = 'ALL',
-    BuiltList<String>? metricTypes,
+    BuiltList<QuerymetrictypesItems>? metricTypes,
     int? numOfPins = 10,
-    int? createdInLastNDays,
+    num? createdInLastNDays,
     String? adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -646,15 +677,15 @@ class UserAccountApi {
     final _queryParameters = <String, dynamic>{
       r'start_date': encodeQueryParameter(_serializers, startDate, const FullType(Date)),
       r'end_date': encodeQueryParameter(_serializers, endDate, const FullType(Date)),
-      r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(String)),
+      r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(TopPinsSortBy)),
       if (fromClaimedContent != null) r'from_claimed_content': encodeQueryParameter(_serializers, fromClaimedContent, const FullType(String)),
       if (pinFormat != null) r'pin_format': encodeQueryParameter(_serializers, pinFormat, const FullType(String)),
       if (appTypes != null) r'app_types': encodeQueryParameter(_serializers, appTypes, const FullType(String)),
       if (contentType != null) r'content_type': encodeQueryParameter(_serializers, contentType, const FullType(String)),
       if (source_ != null) r'source': encodeQueryParameter(_serializers, source_, const FullType(String)),
-      if (metricTypes != null) r'metric_types': encodeCollectionQueryParameter<String>(_serializers, metricTypes, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
+      if (metricTypes != null) r'metric_types': encodeCollectionQueryParameter<QuerymetrictypesItems>(_serializers, metricTypes, const FullType(BuiltList, [FullType(QuerymetrictypesItems)]), format: ListFormat.csv,),
       if (numOfPins != null) r'num_of_pins': encodeQueryParameter(_serializers, numOfPins, const FullType(int)),
-      if (createdInLastNDays != null) r'created_in_last_n_days': encodeQueryParameter(_serializers, createdInLastNDays, const FullType(int)),
+      if (createdInLastNDays != null) r'created_in_last_n_days': encodeQueryParameter(_serializers, createdInLastNDays, const FullType(num)),
       if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
     };
 
@@ -710,7 +741,7 @@ class UserAccountApi {
   /// * [appTypes] - Apps or devices to get data for, default is all.
   /// * [contentType] - Filter to paid or organic data. Default is all.
   /// * [source_] - Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-  /// * [metricTypes] - Metric types to get video data for, default is all. 
+  /// * [metricTypes] - Metric types to get video data for, default is all.
   /// * [numOfPins] - Number of pins to include, default is 10. Max is 50.
   /// * [createdInLastNDays] - Get metrics for pins created in the last \"n\" days.
   /// * [adAccountId] - Unique identifier of an ad account.
@@ -726,15 +757,15 @@ class UserAccountApi {
   Future<Response<TopVideoPinsAnalyticsResponse>> userAccountAnalyticsTopVideoPins({ 
     required Date startDate,
     required Date endDate,
-    required String sortBy,
+    required TopVideoPinsSortBy sortBy,
     String? fromClaimedContent = 'BOTH',
     String? pinFormat = 'ALL',
     String? appTypes = 'ALL',
     String? contentType = 'ALL',
     String? source_ = 'ALL',
-    BuiltList<String>? metricTypes,
+    BuiltList<QueryvideopinmetrictypesItems>? metricTypes,
     int? numOfPins = 10,
-    int? createdInLastNDays,
+    num? createdInLastNDays,
     String? adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -767,15 +798,15 @@ class UserAccountApi {
     final _queryParameters = <String, dynamic>{
       r'start_date': encodeQueryParameter(_serializers, startDate, const FullType(Date)),
       r'end_date': encodeQueryParameter(_serializers, endDate, const FullType(Date)),
-      r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(String)),
+      r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(TopVideoPinsSortBy)),
       if (fromClaimedContent != null) r'from_claimed_content': encodeQueryParameter(_serializers, fromClaimedContent, const FullType(String)),
       if (pinFormat != null) r'pin_format': encodeQueryParameter(_serializers, pinFormat, const FullType(String)),
       if (appTypes != null) r'app_types': encodeQueryParameter(_serializers, appTypes, const FullType(String)),
       if (contentType != null) r'content_type': encodeQueryParameter(_serializers, contentType, const FullType(String)),
       if (source_ != null) r'source': encodeQueryParameter(_serializers, source_, const FullType(String)),
-      if (metricTypes != null) r'metric_types': encodeCollectionQueryParameter<String>(_serializers, metricTypes, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
+      if (metricTypes != null) r'metric_types': encodeCollectionQueryParameter<QueryvideopinmetrictypesItems>(_serializers, metricTypes, const FullType(BuiltList, [FullType(QueryvideopinmetrictypesItems)]), format: ListFormat.csv,),
       if (numOfPins != null) r'num_of_pins': encodeQueryParameter(_serializers, numOfPins, const FullType(int)),
-      if (createdInLastNDays != null) r'created_in_last_n_days': encodeQueryParameter(_serializers, createdInLastNDays, const FullType(int)),
+      if (createdInLastNDays != null) r'created_in_last_n_days': encodeQueryParameter(_serializers, createdInLastNDays, const FullType(num)),
       if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
     };
 
@@ -825,7 +856,7 @@ class UserAccountApi {
   /// Parameters:
   /// * [username] - A valid username
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -835,7 +866,6 @@ class UserAccountApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserAccountFollowedInterests200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  @Deprecated('This operation has been deprecated')
   Future<Response<UserAccountFollowedInterests200Response>> userAccountFollowedInterests({ 
     required String username,
     String? bookmark,
@@ -914,7 +944,7 @@ class UserAccountApi {
   }
 
   /// Get user account
-  /// Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+  /// Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
@@ -1005,11 +1035,11 @@ class UserAccountApi {
   /// Get a list of who a certain user follows.
   ///
   /// Parameters:
-  /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  /// * [feedType] - Thrift param specifying what type of followees will be kept. Default to include all followees.
-  /// * [explicitFollowing] - Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   /// * [adAccountId] - Unique identifier of an ad account.
+  /// * [explicitFollowing] - Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+  /// * [feedType] - Thrift param specifying what type of followees will be kept. Default to include all followees.
+  /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1017,14 +1047,14 @@ class UserAccountApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UserFollowingGet200Response] as data
+  /// Returns a [Future] containing a [Response] with a [FollowersList200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserFollowingGet200Response>> userFollowingGet({ 
+  Future<Response<FollowersList200Response>> userFollowingGet({ 
+    String? adAccountId,
+    bool? explicitFollowing = false,
+    UserFollowingFeedType? feedType,
     String? bookmark,
     int? pageSize = 25,
-    UserFollowingFeedType? feedType,
-    bool? explicitFollowing = false,
-    String? adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1054,11 +1084,11 @@ class UserAccountApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
+      if (explicitFollowing != null) r'explicit_following': encodeQueryParameter(_serializers, explicitFollowing, const FullType(bool)),
+      if (feedType != null) r'feed_type': encodeQueryParameter(_serializers, feedType, const FullType(UserFollowingFeedType)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (feedType != null) r'feed_type': encodeQueryParameter(_serializers, feedType, const FullType(UserFollowingFeedType)),
-      if (explicitFollowing != null) r'explicit_following': encodeQueryParameter(_serializers, explicitFollowing, const FullType(bool)),
-      if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1070,14 +1100,14 @@ class UserAccountApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UserFollowingGet200Response? _responseData;
+    FollowersList200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UserFollowingGet200Response),
-      ) as UserFollowingGet200Response;
+        specifiedType: const FullType(FollowersList200Response),
+      ) as FollowersList200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -1089,7 +1119,7 @@ class UserAccountApi {
       );
     }
 
-    return Response<UserFollowingGet200Response>(
+    return Response<FollowersList200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1106,7 +1136,7 @@ class UserAccountApi {
   ///
   /// Parameters:
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1193,7 +1223,7 @@ class UserAccountApi {
   /// Verify a website as a signed-in user.
   ///
   /// Parameters:
-  /// * [userWebsiteVerifyRequest] - Verify a website.
+  /// * [userWebsiteCreate] 
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -1202,10 +1232,10 @@ class UserAccountApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UserWebsiteSummary] as data
+  /// Returns a [Future] containing a [Response] with a [UserWebsite] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserWebsiteSummary>> verifyWebsiteUpdate({ 
-    required UserWebsiteVerifyRequest userWebsiteVerifyRequest,
+  Future<Response<UserWebsite>> verifyWebsiteUpdate({ 
+    required UserWebsiteCreate userWebsiteCreate,
     String? adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1240,8 +1270,8 @@ class UserAccountApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(UserWebsiteVerifyRequest);
-      _bodyData = _serializers.serialize(userWebsiteVerifyRequest, specifiedType: _type);
+      const _type = FullType(UserWebsiteCreate);
+      _bodyData = _serializers.serialize(userWebsiteCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -1266,14 +1296,14 @@ class UserAccountApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UserWebsiteSummary? _responseData;
+    UserWebsite? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UserWebsiteSummary),
-      ) as UserWebsiteSummary;
+        specifiedType: const FullType(UserWebsite),
+      ) as UserWebsite;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -1285,7 +1315,7 @@ class UserAccountApi {
       );
     }
 
-    return Response<UserWebsiteSummary>(
+    return Response<UserWebsite>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1309,9 +1339,9 @@ class UserAccountApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UserWebsiteVerificationCode] as data
+  /// Returns a [Future] containing a [Response] with a [UserWebsiteVerification] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserWebsiteVerificationCode>> websiteVerificationGet({ 
+  Future<Response<UserWebsiteVerification>> websiteVerificationGet({ 
     String? adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1354,14 +1384,14 @@ class UserAccountApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UserWebsiteVerificationCode? _responseData;
+    UserWebsiteVerification? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UserWebsiteVerificationCode),
-      ) as UserWebsiteVerificationCode;
+        specifiedType: const FullType(UserWebsiteVerification),
+      ) as UserWebsiteVerification;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -1373,7 +1403,7 @@ class UserAccountApi {
       );
     }
 
-    return Response<UserWebsiteVerificationCode>(
+    return Response<UserWebsiteVerification>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

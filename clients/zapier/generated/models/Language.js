@@ -48,7 +48,7 @@ module.exports = {
                     'NB',
                     'NE',
                     'NL',
-                    'NO',
+                    'false',
                     'PL',
                     'PT',
                     'RO',

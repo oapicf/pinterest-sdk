@@ -23,7 +23,7 @@ class IntegrationRecord {
     Integer createdTime
     
     String externalBusinessId
-    
+    /* Integration record ID. */
     String id
     
     String partnerAccessToken

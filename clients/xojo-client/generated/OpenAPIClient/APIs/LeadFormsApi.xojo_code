@@ -1,17 +1,17 @@
 #tag Class
 Protected Class LeadFormsApi
 	#tag Method, Flags = &h0
-		Sub LeadFormGet(, adAccountId As String, leadFormId As String)
+		Sub LeadFormGet(, leadFormId As String, adAccountId As String)
 		  // Operation lead_form/get
 		  // Get lead form by id
 		  // - 
+		  // - parameter leadFormId: (path) The ID of this lead form 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter leadFormId: (path) Unique identifier of a lead form. 
 		  //
-		  // Invokes LeadFormsApiCallbackHandler.LeadFormGetCallback(LeadFormResponse) on completion. 
+		  // Invokes LeadFormsApiCallbackHandler.LeadFormGetCallback(LeadForm) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}
-		  // - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+		  // - **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -29,12 +29,12 @@ Protected Class LeadFormsApi
 
 		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}"
 		  
-		  Dim localVarPathStringadAccountId As String = adAccountId
-		  
-		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  Dim localVarPathStringleadFormId As String = leadFormId
 		  
 		  localVarPath = localVarPath.ReplaceAllB("{lead_form_id}", localVarPathStringleadFormId)
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  
 		  
 		  AddHandler localVarHTTPSocket.PageReceived, addressof me.LeadFormGet_handler
@@ -51,7 +51,7 @@ Protected Class LeadFormsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function LeadFormGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadFormResponse) As Boolean
+		Private Function LeadFormGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadForm) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -59,7 +59,7 @@ Protected Class LeadFormsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.LeadFormResponse
+			  outData = New OpenAPIClient.Models.LeadForm
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -112,7 +112,7 @@ Protected Class LeadFormsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.LeadFormResponse
+		  Dim data As OpenAPIClient.Models.LeadForm
 		  CallbackHandler.LeadFormGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -126,7 +126,7 @@ Protected Class LeadFormsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.LeadFormResponse
+		  Dim data As OpenAPIClient.Models.LeadForm
 		  Call LeadFormGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.LeadFormGetCallback(error, data)
@@ -137,15 +137,15 @@ Protected Class LeadFormsApi
 
 
 	#tag Method, Flags = &h0
-		Sub LeadFormTestCreate(, adAccountId As String, leadFormId As String, leadFormTestRequest As OpenAPIClient.Models.LeadFormTestRequest)
+		Sub LeadFormTestCreate(, adAccountId As String, leadFormId As String, leadFormTestCreate As OpenAPIClient.Models.LeadFormTestCreate)
 		  // Operation lead_form_test/create
 		  // Create lead form test data
 		  // - 
-		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
+		  // - parameter adAccountId: (path)  
 		  // - parameter leadFormId: (path) Unique identifier of a lead form. 
-		  // - parameter leadFormTestRequest: (body) Subscription to create. 
+		  // - parameter leadFormTestCreate: (body)  
 		  //
-		  // Invokes LeadFormsApiCallbackHandler.LeadFormTestCreateCallback(LeadFormTestResponse) on completion. 
+		  // Invokes LeadFormsApiCallbackHandler.LeadFormTestCreateCallback(LeadFormTest) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test
 		  // - Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
@@ -158,7 +158,7 @@ Protected Class LeadFormsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(leadFormTestRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(leadFormTestCreate), "application/json")
 		  
 		  
 		  
@@ -188,7 +188,7 @@ Protected Class LeadFormsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function LeadFormTestCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadFormTestResponse) As Boolean
+		Private Function LeadFormTestCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadFormTest) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -196,7 +196,7 @@ Protected Class LeadFormsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.LeadFormTestResponse
+			  outData = New OpenAPIClient.Models.LeadFormTest
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -249,7 +249,7 @@ Protected Class LeadFormsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.LeadFormTestResponse
+		  Dim data As OpenAPIClient.Models.LeadFormTest
 		  CallbackHandler.LeadFormTestCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -263,7 +263,7 @@ Protected Class LeadFormsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.LeadFormTestResponse
+		  Dim data As OpenAPIClient.Models.LeadFormTest
 		  Call LeadFormTestCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.LeadFormTestCreateCallback(error, data)
@@ -274,17 +274,17 @@ Protected Class LeadFormsApi
 
 
 	#tag Method, Flags = &h0
-		Sub LeadFormsCreate(, adAccountId As String, leadFormCreateRequest() As OpenAPIClient.Models.LeadFormCreateRequest)
+		Sub LeadFormsCreate(, adAccountId As String, leadFormCreate() As OpenAPIClient.Models.LeadFormCreate)
 		  // Operation lead_forms/create
 		  // Create lead forms
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter leadFormCreateRequest: (body) List of lead forms to create, size limit [1, 30]. 
+		  // - parameter leadFormCreate: (body)  
 		  //
-		  // Invokes LeadFormsApiCallbackHandler.LeadFormsCreateCallback(LeadFormArrayResponse) on completion. 
+		  // Invokes LeadFormsApiCallbackHandler.LeadFormsCreateCallback(LeadFormsCreate200Response) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/lead_forms
-		  // - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+		  // - **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -294,7 +294,7 @@ Protected Class LeadFormsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(leadFormCreateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(leadFormCreate), "application/json")
 		  
 		  
 		  
@@ -321,7 +321,7 @@ Protected Class LeadFormsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function LeadFormsCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadFormArrayResponse) As Boolean
+		Private Function LeadFormsCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadFormsCreate200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -329,7 +329,7 @@ Protected Class LeadFormsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.LeadFormArrayResponse
+			  outData = New OpenAPIClient.Models.LeadFormsCreate200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -382,7 +382,7 @@ Protected Class LeadFormsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.LeadFormArrayResponse
+		  Dim data As OpenAPIClient.Models.LeadFormsCreate200Response
 		  CallbackHandler.LeadFormsCreateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -396,7 +396,7 @@ Protected Class LeadFormsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.LeadFormArrayResponse
+		  Dim data As OpenAPIClient.Models.LeadFormsCreate200Response
 		  Call LeadFormsCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.LeadFormsCreateCallback(error, data)
@@ -407,19 +407,19 @@ Protected Class LeadFormsApi
 
 
 	#tag Method, Flags = &h0
-		Sub LeadFormsList(, adAccountId As String, Optional pageSize As Xoson.O.OptionalInteger, order As OrderEnum_LeadFormsList, Optional bookmark As Xoson.O.OptionalString)
+		Sub LeadFormsList(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, order As OpenAPIClient.Models.PinterestLibPaginationOrderOptional)
 		  // Operation lead_forms/list
 		  // List lead forms
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+		  // - parameter order: (query) The order in which to sort the items returned: &quot;ASCENDING&quot; or &quot;DESCENDING&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Nil)
 		  //
 		  // Invokes LeadFormsApiCallbackHandler.LeadFormsListCallback(LeadFormsList200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/lead_forms
-		  // - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+		  // - **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -431,11 +431,11 @@ Protected Class LeadFormsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(OrderEnum_LeadFormsListToString(order))
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If order <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(Xoson.toJSON(order))
 		  
 
 		  
@@ -547,32 +547,19 @@ Protected Class LeadFormsApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function OrderEnum_LeadFormsListToString(value As OrderEnum_LeadFormsList) As String
-		  Select Case value
-		    
-		    Case OrderEnum_LeadFormsList.Ascending
-		      Return "ASCENDING"
-		    Case OrderEnum_LeadFormsList.Descending
-		      Return "DESCENDING"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub LeadFormsUpdate(, adAccountId As String, leadFormUpdateRequest() As OpenAPIClient.Models.LeadFormUpdateRequest)
+		Sub LeadFormsUpdate(, adAccountId As String, leadFormBatchUpdate() As OpenAPIClient.Models.LeadFormBatchUpdate)
 		  // Operation lead_forms/update
 		  // Update lead forms
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter leadFormUpdateRequest: (body) List of lead forms to update, size limit [1, 30]. 
+		  // - parameter leadFormBatchUpdate: (body)  
 		  //
-		  // Invokes LeadFormsApiCallbackHandler.LeadFormsUpdateCallback(LeadFormArrayResponse) on completion. 
+		  // Invokes LeadFormsApiCallbackHandler.LeadFormsUpdateCallback(LeadFormsCreate200Response) on completion. 
 		  //
 		  // - PATCH /ad_accounts/{ad_account_id}/lead_forms
-		  // - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+		  // - **This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -582,7 +569,7 @@ Protected Class LeadFormsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(leadFormUpdateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(leadFormBatchUpdate), "application/json")
 		  
 		  
 		  
@@ -609,7 +596,7 @@ Protected Class LeadFormsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function LeadFormsUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadFormArrayResponse) As Boolean
+		Private Function LeadFormsUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadFormsCreate200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -617,7 +604,7 @@ Protected Class LeadFormsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.LeadFormArrayResponse
+			  outData = New OpenAPIClient.Models.LeadFormsCreate200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -670,7 +657,7 @@ Protected Class LeadFormsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.LeadFormArrayResponse
+		  Dim data As OpenAPIClient.Models.LeadFormsCreate200Response
 		  CallbackHandler.LeadFormsUpdateCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -684,7 +671,7 @@ Protected Class LeadFormsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.LeadFormArrayResponse
+		  Dim data As OpenAPIClient.Models.LeadFormsCreate200Response
 		  Call LeadFormsUpdatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.LeadFormsUpdateCallback(error, data)
@@ -769,13 +756,6 @@ Protected Class LeadFormsApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = OrderEnum_LeadFormsList, Type = Integer, Flags = &h0
-		
-        Ascending
-        Descending
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

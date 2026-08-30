@@ -13,12 +13,12 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `leadsExportCreate()`
 
 ```php
-leadsExportCreate($ad_account_id, $leads_export_create_request): \OpenAPI\Client\Model\LeadsExportCreateResponse
+leadsExportCreate($ad_account_id, $leads_exports_create): \OpenAPI\Client\Model\LeadsExports
 ```
 
 Create a request to export leads collected from a lead ad
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -38,10 +38,10 @@ $apiInstance = new OpenAPI\Client\Api\LeadsExportApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$leads_export_create_request = new \OpenAPI\Client\Model\LeadsExportCreateRequest(); // \OpenAPI\Client\Model\LeadsExportCreateRequest
+$leads_exports_create = new \OpenAPI\Client\Model\LeadsExportsCreate(); // \OpenAPI\Client\Model\LeadsExportsCreate
 
 try {
-    $result = $apiInstance->leadsExportCreate($ad_account_id, $leads_export_create_request);
+    $result = $apiInstance->leadsExportCreate($ad_account_id, $leads_exports_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadsExportApi->leadsExportCreate: ', $e->getMessage(), PHP_EOL;
@@ -53,11 +53,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **leads_export_create_request** | [**\OpenAPI\Client\Model\LeadsExportCreateRequest**](../Model/LeadsExportCreateRequest.md)|  | |
+| **leads_exports_create** | [**\OpenAPI\Client\Model\LeadsExportsCreate**](../Model/LeadsExportsCreate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\LeadsExportCreateResponse**](../Model/LeadsExportCreateResponse.md)
+[**\OpenAPI\Client\Model\LeadsExports**](../Model/LeadsExports.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ leadsExportGet($ad_account_id, $leads_export_id): \OpenAPI\Client\Model\LeadsExp
 
 Get the lead export from the lead export create call
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -100,7 +100,7 @@ $apiInstance = new OpenAPI\Client\Api\LeadsExportApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$leads_export_id = 123755885175; // string | lead_export_id token returned from the create a lead export endpoint
+$leads_export_id = 'leads_export_id_example'; // string | lead_export_id token returned from the create a lead export endpoint
 
 try {
     $result = $apiInstance->leadsExportGet($ad_account_id, $leads_export_id);

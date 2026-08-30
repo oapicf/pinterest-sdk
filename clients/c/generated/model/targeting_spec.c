@@ -80,9 +80,11 @@ static targeting_spec_t *targeting_spec_create_internal(
     list_t *audience_include,
     list_t *gender,
     list_t *geo,
+    list_t *geo_exclude,
     list_t *interest,
     list_t *locale,
     list_t *location,
+    list_t *location_exclude,
     char *maximum_age,
     char *minimum_age,
     list_t *shopping_retargeting,
@@ -92,21 +94,23 @@ static targeting_spec_t *targeting_spec_create_internal(
     if (!targeting_spec_local_var) {
         return NULL;
     }
+    memset(targeting_spec_local_var, 0, sizeof(targeting_spec_t));
+    targeting_spec_local_var->_library_owned = 1;
     targeting_spec_local_var->age_bucket = age_bucket;
     targeting_spec_local_var->apptype = apptype;
     targeting_spec_local_var->audience_exclude = audience_exclude;
     targeting_spec_local_var->audience_include = audience_include;
     targeting_spec_local_var->gender = gender;
     targeting_spec_local_var->geo = geo;
+    targeting_spec_local_var->geo_exclude = geo_exclude;
     targeting_spec_local_var->interest = interest;
     targeting_spec_local_var->locale = locale;
     targeting_spec_local_var->location = location;
+    targeting_spec_local_var->location_exclude = location_exclude;
     targeting_spec_local_var->maximum_age = maximum_age;
     targeting_spec_local_var->minimum_age = minimum_age;
     targeting_spec_local_var->shopping_retargeting = shopping_retargeting;
     targeting_spec_local_var->targeting_strategy = targeting_strategy;
-
-    targeting_spec_local_var->_library_owned = 1;
     return targeting_spec_local_var;
 }
 
@@ -117,29 +121,36 @@ __attribute__((deprecated)) targeting_spec_t *targeting_spec_create(
     list_t *audience_include,
     list_t *gender,
     list_t *geo,
+    list_t *geo_exclude,
     list_t *interest,
     list_t *locale,
     list_t *location,
+    list_t *location_exclude,
     char *maximum_age,
     char *minimum_age,
     list_t *shopping_retargeting,
     list_t *targeting_strategy
     ) {
-    return targeting_spec_create_internal (
+    targeting_spec_t *result = targeting_spec_create_internal (
         age_bucket,
         apptype,
         audience_exclude,
         audience_include,
         gender,
         geo,
+        geo_exclude,
         interest,
         locale,
         location,
+        location_exclude,
         maximum_age,
         minimum_age,
         shopping_retargeting,
         targeting_strategy
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void targeting_spec_free(targeting_spec_t *targeting_spec) {
@@ -193,6 +204,13 @@ void targeting_spec_free(targeting_spec_t *targeting_spec) {
         list_freeList(targeting_spec->geo);
         targeting_spec->geo = NULL;
     }
+    if (targeting_spec->geo_exclude) {
+        list_ForEach(listEntry, targeting_spec->geo_exclude) {
+            free(listEntry->data);
+        }
+        list_freeList(targeting_spec->geo_exclude);
+        targeting_spec->geo_exclude = NULL;
+    }
     if (targeting_spec->interest) {
         list_ForEach(listEntry, targeting_spec->interest) {
             free(listEntry->data);
@@ -213,6 +231,13 @@ void targeting_spec_free(targeting_spec_t *targeting_spec) {
         }
         list_freeList(targeting_spec->location);
         targeting_spec->location = NULL;
+    }
+    if (targeting_spec->location_exclude) {
+        list_ForEach(listEntry, targeting_spec->location_exclude) {
+            free(listEntry->data);
+        }
+        list_freeList(targeting_spec->location_exclude);
+        targeting_spec->location_exclude = NULL;
     }
     if (targeting_spec->maximum_age) {
         free(targeting_spec->maximum_age);
@@ -353,6 +378,23 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
     }
 
 
+    // targeting_spec->geo_exclude
+    if(targeting_spec->geo_exclude) {
+    cJSON *geo_exclude = cJSON_AddArrayToObject(item, "GEO_EXCLUDE");
+    if(geo_exclude == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *geo_excludeListEntry;
+    list_ForEach(geo_excludeListEntry, targeting_spec->geo_exclude) {
+    if(cJSON_AddStringToObject(geo_exclude, "", geo_excludeListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
+
     // targeting_spec->interest
     if(targeting_spec->interest) {
     cJSON *interest = cJSON_AddArrayToObject(item, "INTEREST");
@@ -397,6 +439,23 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
     listEntry_t *locationListEntry;
     list_ForEach(locationListEntry, targeting_spec->location) {
     if(cJSON_AddStringToObject(location, "", locationListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
+
+    // targeting_spec->location_exclude
+    if(targeting_spec->location_exclude) {
+    cJSON *location_exclude = cJSON_AddArrayToObject(item, "LOCATION_EXCLUDE");
+    if(location_exclude == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *location_excludeListEntry;
+    list_ForEach(location_excludeListEntry, targeting_spec->location_exclude) {
+    if(cJSON_AddStringToObject(location_exclude, "", location_excludeListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -486,6 +545,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
     // define the local list for targeting_spec->geo
     list_t *geoList = NULL;
 
+    // define the local list for targeting_spec->geo_exclude
+    list_t *geo_excludeList = NULL;
+
     // define the local list for targeting_spec->interest
     list_t *interestList = NULL;
 
@@ -494,6 +556,13 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
 
     // define the local list for targeting_spec->location
     list_t *locationList = NULL;
+
+    // define the local list for targeting_spec->location_exclude
+    list_t *location_excludeList = NULL;
+
+    char *maximum_age_local_str = NULL;
+
+    char *minimum_age_local_str = NULL;
 
     // define the local list for targeting_spec->shopping_retargeting
     list_t *shopping_retargetingList = NULL;
@@ -639,6 +708,28 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
     }
     }
 
+    // targeting_spec->geo_exclude
+    cJSON *geo_exclude = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "GEO_EXCLUDE");
+    if (cJSON_IsNull(geo_exclude)) {
+        geo_exclude = NULL;
+    }
+    if (geo_exclude) { 
+    cJSON *geo_exclude_local = NULL;
+    if(!cJSON_IsArray(geo_exclude)) {
+        goto end;//primitive container
+    }
+    geo_excludeList = list_createList();
+
+    cJSON_ArrayForEach(geo_exclude_local, geo_exclude)
+    {
+        if(!cJSON_IsString(geo_exclude_local))
+        {
+            goto end;
+        }
+        list_addElement(geo_excludeList , strdup(geo_exclude_local->valuestring));
+    }
+    }
+
     // targeting_spec->interest
     cJSON *interest = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "INTEREST");
     if (cJSON_IsNull(interest)) {
@@ -702,6 +793,28 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
             goto end;
         }
         list_addElement(locationList , strdup(location_local->valuestring));
+    }
+    }
+
+    // targeting_spec->location_exclude
+    cJSON *location_exclude = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "LOCATION_EXCLUDE");
+    if (cJSON_IsNull(location_exclude)) {
+        location_exclude = NULL;
+    }
+    if (location_exclude) { 
+    cJSON *location_exclude_local = NULL;
+    if(!cJSON_IsArray(location_exclude)) {
+        goto end;//primitive container
+    }
+    location_excludeList = list_createList();
+
+    cJSON_ArrayForEach(location_exclude_local, location_exclude)
+    {
+        if(!cJSON_IsString(location_exclude_local))
+        {
+            goto end;
+        }
+        list_addElement(location_excludeList , strdup(location_exclude_local->valuestring));
     }
     }
 
@@ -776,6 +889,9 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
     }
 
 
+    if (maximum_age && !cJSON_IsNull(maximum_age)) maximum_age_local_str = strdup(maximum_age->valuestring);
+    if (minimum_age && !cJSON_IsNull(minimum_age)) minimum_age_local_str = strdup(minimum_age->valuestring);
+
     targeting_spec_local_var = targeting_spec_create_internal (
         age_bucket ? age_bucketList : NULL,
         apptype ? apptypeList : NULL,
@@ -783,14 +899,20 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
         audience_include ? audience_includeList : NULL,
         gender ? genderList : NULL,
         geo ? geoList : NULL,
+        geo_exclude ? geo_excludeList : NULL,
         interest ? interestList : NULL,
         locale ? localeList : NULL,
         location ? locationList : NULL,
-        maximum_age && !cJSON_IsNull(maximum_age) ? strdup(maximum_age->valuestring) : NULL,
-        minimum_age && !cJSON_IsNull(minimum_age) ? strdup(minimum_age->valuestring) : NULL,
+        location_exclude ? location_excludeList : NULL,
+        maximum_age_local_str,
+        minimum_age_local_str,
         shopping_retargeting ? shopping_retargetingList : NULL,
         targeting_strategy ? targeting_strategyList : NULL
         );
+
+    if (!targeting_spec_local_var) {
+        goto end;
+    }
 
     return targeting_spec_local_var;
 end:
@@ -848,6 +970,15 @@ end:
         list_freeList(geoList);
         geoList = NULL;
     }
+    if (geo_excludeList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, geo_excludeList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(geo_excludeList);
+        geo_excludeList = NULL;
+    }
     if (interestList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, interestList) {
@@ -874,6 +1005,23 @@ end:
         }
         list_freeList(locationList);
         locationList = NULL;
+    }
+    if (location_excludeList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, location_excludeList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(location_excludeList);
+        location_excludeList = NULL;
+    }
+    if (maximum_age_local_str) {
+        free(maximum_age_local_str);
+        maximum_age_local_str = NULL;
+    }
+    if (minimum_age_local_str) {
+        free(minimum_age_local_str);
+        minimum_age_local_str = NULL;
     }
     if (shopping_retargetingList) {
         listEntry_t *listEntry = NULL;

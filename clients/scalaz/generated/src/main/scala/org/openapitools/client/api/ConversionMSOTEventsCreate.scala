@@ -1,0 +1,54 @@
+package org.openapitools.client.api
+
+import argonaut._
+import argonaut.EncodeJson._
+import argonaut.DecodeJson._
+
+import org.http4s.{EntityDecoder, EntityEncoder}
+import org.http4s.argonaut._
+import org.joda.time.DateTime
+
+
+import ConversionMSOTEventsCreate._
+
+case class ConversionMSOTEventsCreate (
+  /* Timestamp(s) when the ad action(s) happened. Unix timestamp in seconds. */
+  actionTimestamps: Option[List[Long]],
+/* The ID of the ad group that was attributed to the conversion event. */
+  adGroupId: String,
+/* The attribution model used to attribute the conversion event. */
+  attributionModel: Option[AttributionModel],
+/* Ad event type. */
+  attributionScope: Option[AttributionScope],
+/* Credit given to the attributed ad actions. Allowed values are > 0 and <= 1. */
+  attributionScore: Option[Double],
+/* The ID of the campaign that was attributed to the conversion event. */
+  campaignId: Option[String],
+/* Click window used for attribution (for example, `1d`, `7d`, `30d`, `lifetime`). */
+  clickWindow: Option[String],
+/* Currency code for the `value` field, required if `value` is present. Currency Codes should be in ISO 4217 standard. */
+  currency: Option[Currency],
+/* A unique id string that identifies this event. If you are already sending us events through Conversions API, then this id should match the event_id sent through Conversions API. */
+  eventId: String,
+/* Type of user event. */
+  eventName: MsotEventName,
+/* The time when the event occurred. Unix timestamp in seconds. */
+  eventTimestamp: Long,
+/* Total number of ad events including other non-Pinterest ad platforms. */
+  totalEventTouchpoints: Option[Integer],
+/* Deprecated: use `total_events_fractional` instead to avoid rounding errors. Total number of conversion events that are reported in one API call.  If you are sending one API request for one attributed conversion event then this value should be 1. If you are sending multiple attributed conversion events in one API request then this value should be the total number of attributed conversion events in the request. */
+  totalEvents: Option[Integer],
+/* Total number of conversion events that are reported in one API call. Use this field instead of `total_events` to send precise fractional values.  If you are sending one API request for one attributed conversion event with full credit, this value should be 1.0. For partial attribution, send the exact fractional value (e.g., 0.5 for half credit). */
+  totalEventsFractional: Option[Double],
+/* Order value of the conversion event. Required if `event_name` is `add_to_cart` or `checkout`. */
+  value: Option[Double],
+/* View window used for attribution (for example, `1d`, `7d`, `30d`). */
+  viewWindow: Option[String])
+
+object ConversionMSOTEventsCreate {
+  import DateTimeCodecs._
+
+  implicit val ConversionMSOTEventsCreateCodecJson: CodecJson[ConversionMSOTEventsCreate] = CodecJson.derive[ConversionMSOTEventsCreate]
+  implicit val ConversionMSOTEventsCreateDecoder: EntityDecoder[ConversionMSOTEventsCreate] = jsonOf[ConversionMSOTEventsCreate]
+  implicit val ConversionMSOTEventsCreateEncoder: EntityEncoder[ConversionMSOTEventsCreate] = jsonEncoderOf[ConversionMSOTEventsCreate]
+}

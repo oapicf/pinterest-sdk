@@ -5,8 +5,6 @@ import apimodels.CustomizableCTAType;
 import apimodels.DisclosureType;
 import apimodels.EntityStatus;
 import apimodels.GridClickType;
-import apimodels.QuizPinData;
-import apimodels.TrackingUrls;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +18,7 @@ import javax.validation.Valid;
 /**
  * AdCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdCreateRequest   {
   @JsonProperty("ad_group_id")
@@ -82,6 +80,10 @@ public class AdCreateRequest   {
   
   private String iosDeepLink;
 
+  @JsonProperty("is_carting")
+  
+  private Boolean isCarting;
+
   @JsonProperty("is_pin_deleted")
   
   private Boolean isPinDeleted;
@@ -99,10 +101,15 @@ public class AdCreateRequest   {
   
   private String name;
 
-  @JsonProperty("quiz_pin_data")
-  @Valid
+  @JsonProperty("pin_id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
 
-  private QuizPinData quizPinData;
+  private String pinId;
+
+  @JsonProperty("quiz_pin_data")
+  
+  private Object quizPinData;
 
   @JsonProperty("status")
   @Valid
@@ -110,19 +117,12 @@ public class AdCreateRequest   {
   private EntityStatus status;
 
   @JsonProperty("tracking_urls")
-  @Valid
-
-  private TrackingUrls trackingUrls;
+  
+  private Object trackingUrls;
 
   @JsonProperty("view_tracking_url")
   
   private String viewTrackingUrl;
-
-  @JsonProperty("pin_id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
-
-  private String pinId;
 
   public AdCreateRequest adGroupId(String adGroupId) {
     this.adGroupId = adGroupId;
@@ -369,6 +369,23 @@ public class AdCreateRequest   {
     this.iosDeepLink = iosDeepLink;
   }
 
+  public AdCreateRequest isCarting(Boolean isCarting) {
+    this.isCarting = isCarting;
+    return this;
+  }
+
+   /**
+   * Is the ad a carting/WTB ad?
+   * @return isCarting
+  **/
+  public Boolean getIsCarting() {
+    return isCarting;
+  }
+
+  public void setIsCarting(Boolean isCarting) {
+    this.isCarting = isCarting;
+  }
+
   public AdCreateRequest isPinDeleted(Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
     return this;
@@ -437,7 +454,24 @@ public class AdCreateRequest   {
     this.name = name;
   }
 
-  public AdCreateRequest quizPinData(QuizPinData quizPinData) {
+  public AdCreateRequest pinId(String pinId) {
+    this.pinId = pinId;
+    return this;
+  }
+
+   /**
+   * Pin ID.
+   * @return pinId
+  **/
+  public String getPinId() {
+    return pinId;
+  }
+
+  public void setPinId(String pinId) {
+    this.pinId = pinId;
+  }
+
+  public AdCreateRequest quizPinData(Object quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
@@ -446,11 +480,11 @@ public class AdCreateRequest   {
    * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    * @return quizPinData
   **/
-  public QuizPinData getQuizPinData() {
+  public Object getQuizPinData() {
     return quizPinData;
   }
 
-  public void setQuizPinData(QuizPinData quizPinData) {
+  public void setQuizPinData(Object quizPinData) {
     this.quizPinData = quizPinData;
   }
 
@@ -471,7 +505,7 @@ public class AdCreateRequest   {
     this.status = status;
   }
 
-  public AdCreateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public AdCreateRequest trackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -480,11 +514,11 @@ public class AdCreateRequest   {
    * Get trackingUrls
    * @return trackingUrls
   **/
-  public TrackingUrls getTrackingUrls() {
+  public Object getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -503,23 +537,6 @@ public class AdCreateRequest   {
 
   public void setViewTrackingUrl(String viewTrackingUrl) {
     this.viewTrackingUrl = viewTrackingUrl;
-  }
-
-  public AdCreateRequest pinId(String pinId) {
-    this.pinId = pinId;
-    return this;
-  }
-
-   /**
-   * Pin ID.
-   * @return pinId
-  **/
-  public String getPinId() {
-    return pinId;
-  }
-
-  public void setPinId(String pinId) {
-    this.pinId = pinId;
   }
 
 
@@ -545,20 +562,21 @@ public class AdCreateRequest   {
         Objects.equals(disclosureUrl, adCreateRequest.disclosureUrl) &&
         Objects.equals(gridClickType, adCreateRequest.gridClickType) &&
         Objects.equals(iosDeepLink, adCreateRequest.iosDeepLink) &&
+        Objects.equals(isCarting, adCreateRequest.isCarting) &&
         Objects.equals(isPinDeleted, adCreateRequest.isPinDeleted) &&
         Objects.equals(isRemovable, adCreateRequest.isRemovable) &&
         Objects.equals(leadFormId, adCreateRequest.leadFormId) &&
         Objects.equals(name, adCreateRequest.name) &&
+        Objects.equals(pinId, adCreateRequest.pinId) &&
         Objects.equals(quizPinData, adCreateRequest.quizPinData) &&
         Objects.equals(status, adCreateRequest.status) &&
         Objects.equals(trackingUrls, adCreateRequest.trackingUrls) &&
-        Objects.equals(viewTrackingUrl, adCreateRequest.viewTrackingUrl) &&
-        Objects.equals(pinId, adCreateRequest.pinId);
+        Objects.equals(viewTrackingUrl, adCreateRequest.viewTrackingUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, viewTrackingUrl, pinId);
+    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isCarting, isPinDeleted, isRemovable, leadFormId, name, pinId, quizPinData, status, trackingUrls, viewTrackingUrl);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -580,15 +598,16 @@ public class AdCreateRequest   {
     sb.append("    disclosureUrl: ").append(toIndentedString(disclosureUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    isCarting: ").append(toIndentedString(isCarting)).append("\n");
     sb.append("    isPinDeleted: ").append(toIndentedString(isPinDeleted)).append("\n");
     sb.append("    isRemovable: ").append(toIndentedString(isRemovable)).append("\n");
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    viewTrackingUrl: ").append(toIndentedString(viewTrackingUrl)).append("\n");
-    sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -598,10 +617,7 @@ public class AdCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

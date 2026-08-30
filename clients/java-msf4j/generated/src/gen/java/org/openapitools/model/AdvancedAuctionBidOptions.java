@@ -13,7 +13,7 @@ import org.openapitools.model.PlacementMultipliers;
  * Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).
  */
 @ApiModel(description = "Object describing a retail catalog item's bid options (bid price and bid multipliers).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionBidOptions   {
   @JsonProperty("app_type_multipliers")
   private AppTypeMultipliers appTypeMultipliers;
@@ -51,7 +51,7 @@ public class AdvancedAuctionBidOptions   {
    * Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
    * @return bidInMicroCurrency
   **/
-  @ApiModelProperty(example = "5000000", value = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.")
+  @ApiModelProperty(value = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.")
   public Long getBidInMicroCurrency() {
     return bidInMicroCurrency;
   }
@@ -115,10 +115,7 @@ public class AdvancedAuctionBidOptions   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

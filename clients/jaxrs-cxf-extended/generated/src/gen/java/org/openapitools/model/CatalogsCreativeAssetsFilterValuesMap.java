@@ -1,11 +1,9 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.MediaType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -57,38 +55,9 @@ public class CatalogsCreativeAssetsFilterValuesMap  {
   @ApiModelProperty(value = "")
   private List<String> googleProductCategory6 = new ArrayList<>();
 
-public enum MediaTypeEnum {
-
-    @JsonProperty("IMAGE") IMAGE(String.valueOf("IMAGE")),
-    @JsonProperty("VIDEO") VIDEO(String.valueOf("VIDEO"));
-
-    private String value;
-
-    MediaTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static MediaTypeEnum fromValue(String value) {
-        for (MediaTypeEnum b : MediaTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
   @ApiModelProperty(value = "")
-  private List<MediaTypeEnum> mediaType = new ArrayList<>();
+  @Valid
+  private List<MediaType> mediaType = new ArrayList<>();
  /**
   * Get customLabel0
   * @return customLabel0
@@ -478,21 +447,21 @@ public enum MediaTypeEnum {
   * @return mediaType
   */
   @JsonProperty("media_type")
-  public List<MediaTypeEnum> getMediaType() {
+  public List<MediaType> getMediaType() {
     return mediaType;
   }
 
   /**
    * Sets the <code>mediaType</code> property.
    */
- public void setMediaType(List<MediaTypeEnum> mediaType) {
+ public void setMediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
   }
 
   /**
    * Sets the <code>mediaType</code> property.
    */
-  public CatalogsCreativeAssetsFilterValuesMap mediaType(List<MediaTypeEnum> mediaType) {
+  public CatalogsCreativeAssetsFilterValuesMap mediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -500,7 +469,7 @@ public enum MediaTypeEnum {
   /**
    * Adds a new item to the <code>mediaType</code> list.
    */
-  public CatalogsCreativeAssetsFilterValuesMap addMediaTypeItem(MediaTypeEnum mediaTypeItem) {
+  public CatalogsCreativeAssetsFilterValuesMap addMediaTypeItem(MediaType mediaTypeItem) {
     this.mediaType.add(mediaTypeItem);
     return this;
   }
@@ -562,10 +531,7 @@ public enum MediaTypeEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

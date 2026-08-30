@@ -16,53 +16,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("NotificationResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class NotificationResponse   {
-  private Boolean success;
-  private Integer receivedAt;
   private String errorMsg;
+  private Integer receivedAt;
+  private Boolean success;
 
   public NotificationResponse() {
-  }
-
-  /**
-   * Returns true if the notification accepted.
-   **/
-  public NotificationResponse success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "false", value = "Returns true if the notification accepted.")
-  @JsonProperty("success")
-  public Boolean getSuccess() {
-    return success;
-  }
-
-  @JsonProperty("success")
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  /**
-   * Received time. Unix timestamp in seconds.
-   **/
-  public NotificationResponse receivedAt(Integer receivedAt) {
-    this.receivedAt = receivedAt;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1677003860", value = "Received time. Unix timestamp in seconds.")
-  @JsonProperty("received_at")
-  public Integer getReceivedAt() {
-    return receivedAt;
-  }
-
-  @JsonProperty("received_at")
-  public void setReceivedAt(Integer receivedAt) {
-    this.receivedAt = receivedAt;
   }
 
   /**
@@ -85,6 +45,46 @@ public class NotificationResponse   {
     this.errorMsg = errorMsg;
   }
 
+  /**
+   * Received time. Unix timestamp in seconds.
+   **/
+  public NotificationResponse receivedAt(Integer receivedAt) {
+    this.receivedAt = receivedAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Received time. Unix timestamp in seconds.")
+  @JsonProperty("received_at")
+  public Integer getReceivedAt() {
+    return receivedAt;
+  }
+
+  @JsonProperty("received_at")
+  public void setReceivedAt(Integer receivedAt) {
+    this.receivedAt = receivedAt;
+  }
+
+  /**
+   * Returns true if the notification accepted.
+   **/
+  public NotificationResponse success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Returns true if the notification accepted.")
+  @JsonProperty("success")
+  public Boolean getSuccess() {
+    return success;
+  }
+
+  @JsonProperty("success")
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -95,14 +95,14 @@ public class NotificationResponse   {
       return false;
     }
     NotificationResponse notificationResponse = (NotificationResponse) o;
-    return Objects.equals(this.success, notificationResponse.success) &&
+    return Objects.equals(this.errorMsg, notificationResponse.errorMsg) &&
         Objects.equals(this.receivedAt, notificationResponse.receivedAt) &&
-        Objects.equals(this.errorMsg, notificationResponse.errorMsg);
+        Objects.equals(this.success, notificationResponse.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, receivedAt, errorMsg);
+    return Objects.hash(errorMsg, receivedAt, success);
   }
 
   @Override
@@ -110,9 +110,9 @@ public class NotificationResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationResponse {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
     sb.append("    errorMsg: ").append(toIndentedString(errorMsg)).append("\n");
+    sb.append("    receivedAt: ").append(toIndentedString(receivedAt)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -122,12 +122,8 @@ public class NotificationResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -5,7 +5,7 @@ import org.openapitools.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.UserAccountFollowedInterests200Response;
 
 import java.util.List;
@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-08-30T09:54:04.171825690Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UsersApiServiceImpl implements UsersApiService {
       @Override
       public Response userAccountFollowedInterests(String username, String bookmark, Integer pageSize, SecurityContext securityContext) {

@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.BatchOperationStatus;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.ItemProcessingRecord;
 
 /**
@@ -20,7 +19,25 @@ import org.openapitools.vertxweb.server.model.ItemProcessingRecord;
 public class CatalogsRetailItemsBatch   {
   
   private String batchId;
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private OffsetDateTime completedTime;
   private OffsetDateTime createdTime;
   private List<ItemProcessingRecord> items = new ArrayList<>();
@@ -30,7 +47,7 @@ public class CatalogsRetailItemsBatch   {
 
   }
 
-  public CatalogsRetailItemsBatch (String batchId, CatalogsType catalogType, OffsetDateTime completedTime, OffsetDateTime createdTime, List<ItemProcessingRecord> items, BatchOperationStatus status) {
+  public CatalogsRetailItemsBatch (String batchId, CatalogTypeEnum catalogType, OffsetDateTime completedTime, OffsetDateTime createdTime, List<ItemProcessingRecord> items, BatchOperationStatus status) {
     this.batchId = batchId;
     this.catalogType = catalogType;
     this.completedTime = completedTime;
@@ -50,10 +67,10 @@ public class CatalogsRetailItemsBatch   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -136,9 +153,6 @@ public class CatalogsRetailItemsBatch   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

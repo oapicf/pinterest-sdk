@@ -71,10 +71,13 @@ class CatalogsItemValidationIssues {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsItemValidationIssues[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsItemValidationIssues[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'errors'), 'Required key "CatalogsItemValidationIssues[errors]" is missing from JSON.');
+        assert(json[r'errors'] != null, 'Required key "CatalogsItemValidationIssues[errors]" has a null value in JSON.');
+        assert(json.containsKey(r'item_id'), 'Required key "CatalogsItemValidationIssues[item_id]" is missing from JSON.');
+        assert(json.containsKey(r'item_number'), 'Required key "CatalogsItemValidationIssues[item_number]" is missing from JSON.');
+        assert(json[r'item_number'] != null, 'Required key "CatalogsItemValidationIssues[item_number]" has a null value in JSON.');
+        assert(json.containsKey(r'warnings'), 'Required key "CatalogsItemValidationIssues[warnings]" is missing from JSON.');
+        assert(json[r'warnings'] != null, 'Required key "CatalogsItemValidationIssues[warnings]" has a null value in JSON.');
         return true;
       }());
 

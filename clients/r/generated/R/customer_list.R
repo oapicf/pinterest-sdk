@@ -9,14 +9,15 @@
 #' @format An \code{R6Class} generator object
 #' @field ad_account_id Associated ad account ID. character [optional]
 #' @field created_time Creation time. Unix timestamp in seconds. numeric [optional]
-#' @field exceptions Customer list errors object [optional]
-#' @field id Customer list ID. character [optional]
-#' @field name Customer list name. character [optional]
-#' @field num_batches Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists. numeric [optional]
-#' @field num_removed_user_records Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list. numeric [optional]
-#' @field num_uploaded_user_records Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list. numeric [optional]
-#' @field status Customer list status. TOO_SMALL - the list has less than 100 Pinterest users. character [optional]
-#' @field type Always \"customerlist\". character [optional]
+#' @field exceptions Customer list errors. object [optional]
+#' @field id Customer list ID. character
+#' @field is_nca Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation. character [optional]
+#' @field name Customer list name. character
+#' @field num_batches Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists. numeric [optional]
+#' @field num_removed_user_records Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list. numeric [optional]
+#' @field num_uploaded_user_records Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list. numeric [optional]
+#' @field status Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users. \link{CustomerListStatus} [optional]
+#' @field type Always `customerlist`. character [optional]
 #' @field updated_time Last update time. Unix timestamp in seconds. numeric [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -28,6 +29,7 @@ CustomerList <- R6::R6Class(
     `created_time` = NULL,
     `exceptions` = NULL,
     `id` = NULL,
+    `is_nca` = NULL,
     `name` = NULL,
     `num_batches` = NULL,
     `num_removed_user_records` = NULL,
@@ -39,19 +41,32 @@ CustomerList <- R6::R6Class(
     #' @description
     #' Initialize a new CustomerList class.
     #'
-    #' @param ad_account_id Associated ad account ID.
-    #' @param created_time Creation time. Unix timestamp in seconds.
-    #' @param exceptions Customer list errors
     #' @param id Customer list ID.
     #' @param name Customer list name.
-    #' @param num_batches Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
-    #' @param num_removed_user_records Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
-    #' @param num_uploaded_user_records Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
-    #' @param status Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-    #' @param type Always \"customerlist\".
+    #' @param ad_account_id Associated ad account ID.
+    #' @param created_time Creation time. Unix timestamp in seconds.
+    #' @param exceptions Customer list errors.
+    #' @param is_nca Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+    #' @param num_batches Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
+    #' @param num_removed_user_records Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
+    #' @param num_uploaded_user_records Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
+    #' @param status Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
+    #' @param type Always `customerlist`.
     #' @param updated_time Last update time. Unix timestamp in seconds.
     #' @param ... Other optional arguments.
-    initialize = function(`ad_account_id` = NULL, `created_time` = NULL, `exceptions` = NULL, `id` = NULL, `name` = NULL, `num_batches` = NULL, `num_removed_user_records` = NULL, `num_uploaded_user_records` = NULL, `status` = NULL, `type` = NULL, `updated_time` = NULL, ...) {
+    initialize = function(`id`, `name`, `ad_account_id` = NULL, `created_time` = NULL, `exceptions` = NULL, `is_nca` = NULL, `num_batches` = NULL, `num_removed_user_records` = NULL, `num_uploaded_user_records` = NULL, `status` = NULL, `type` = NULL, `updated_time` = NULL, ...) {
+      if (!missing(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
+      if (!missing(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
+      }
       if (!is.null(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
           stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
@@ -64,17 +79,11 @@ CustomerList <- R6::R6Class(
       if (!is.null(`exceptions`)) {
         self$`exceptions` <- `exceptions`
       }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+      if (!is.null(`is_nca`)) {
+        if (!(is.logical(`is_nca`) && length(`is_nca`) == 1)) {
+          stop(paste("Error! Invalid data for `is_nca`. Must be a boolean:", `is_nca`))
         }
-        self$`id` <- `id`
-      }
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
+        self$`is_nca` <- `is_nca`
       }
       if (!is.null(`num_batches`)) {
         self$`num_batches` <- `num_batches`
@@ -86,12 +95,10 @@ CustomerList <- R6::R6Class(
         self$`num_uploaded_user_records` <- `num_uploaded_user_records`
       }
       if (!is.null(`status`)) {
-        if (!(`status` %in% c("PROCESSING", "READY", "TOO_SMALL", "UPLOADING"))) {
-          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be \"PROCESSING\", \"READY\", \"TOO_SMALL\", \"UPLOADING\".", sep = ""))
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
-        if (!(is.character(`status`) && length(`status`) == 1)) {
-          stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
-        }
+        stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
       }
       if (!is.null(`type`)) {
@@ -152,6 +159,10 @@ CustomerList <- R6::R6Class(
         CustomerListObject[["id"]] <-
           self$`id`
       }
+      if (!is.null(self$`is_nca`)) {
+        CustomerListObject[["is_nca"]] <-
+          self$`is_nca`
+      }
       if (!is.null(self$`name`)) {
         CustomerListObject[["name"]] <-
           self$`name`
@@ -170,7 +181,7 @@ CustomerList <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         CustomerListObject[["status"]] <-
-          self$`status`
+          self$extractSimpleType(self$`status`)
       }
       if (!is.null(self$`type`)) {
         CustomerListObject[["type"]] <-
@@ -181,6 +192,29 @@ CustomerList <- R6::R6Class(
           self$`updated_time`
       }
       return(CustomerListObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -202,6 +236,9 @@ CustomerList <- R6::R6Class(
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
+      if (!is.null(this_object$`is_nca`)) {
+        self$`is_nca` <- this_object$`is_nca`
+      }
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
       }
@@ -215,10 +252,9 @@ CustomerList <- R6::R6Class(
         self$`num_uploaded_user_records` <- this_object$`num_uploaded_user_records`
       }
       if (!is.null(this_object$`status`)) {
-        if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("PROCESSING", "READY", "TOO_SMALL", "UPLOADING"))) {
-          stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"PROCESSING\", \"READY\", \"TOO_SMALL\", \"UPLOADING\".", sep = ""))
-        }
-        self$`status` <- this_object$`status`
+        `status_object` <- CustomerListStatus$new()
+        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+        self$`status` <- `status_object`
       }
       if (!is.null(this_object$`type`)) {
         self$`type` <- this_object$`type`
@@ -251,14 +287,12 @@ CustomerList <- R6::R6Class(
       self$`created_time` <- this_object$`created_time`
       self$`exceptions` <- this_object$`exceptions`
       self$`id` <- this_object$`id`
+      self$`is_nca` <- this_object$`is_nca`
       self$`name` <- this_object$`name`
       self$`num_batches` <- this_object$`num_batches`
       self$`num_removed_user_records` <- this_object$`num_removed_user_records`
       self$`num_uploaded_user_records` <- this_object$`num_uploaded_user_records`
-      if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("PROCESSING", "READY", "TOO_SMALL", "UPLOADING"))) {
-        stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"PROCESSING\", \"READY\", \"TOO_SMALL\", \"UPLOADING\".", sep = ""))
-      }
-      self$`status` <- this_object$`status`
+      self$`status` <- CustomerListStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`type` <- this_object$`type`
       self$`updated_time` <- this_object$`updated_time`
       self
@@ -270,6 +304,22 @@ CustomerList <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CustomerList: the required field `id` is missing."))
+      }
+      # check the required field `name`
+      if (!is.null(input_json$`name`)) {
+        if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CustomerList: the required field `name` is missing."))
+      }
     },
 
     #' @description
@@ -285,6 +335,23 @@ CustomerList <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`id`) > 18) {
+        return(FALSE)
+      }
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      # check if the required `name` is null
+      if (is.null(self$`name`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -294,6 +361,23 @@ CustomerList <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
+      if (nchar(self$`id`) > 18) {
+        invalid_fields["id"] <- "Invalid length for `id`, must be smaller than or equal to 18."
+      }
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
+      }
+
+      # check if the required `name` is null
+      if (is.null(self$`name`)) {
+        invalid_fields["name"] <- "Non-nullable required field `name` cannot be null."
+      }
+
       invalid_fields
     },
 

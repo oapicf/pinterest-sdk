@@ -1,7 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -15,27 +18,42 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param id Subinterest ID.
- * @param index Subinterest affinity index.
- * @param key Interest unique key (same as ID).
- * @param name Subinterest name.
- * @param ratio Subinterest's percent of category's total audience.
+ * @param id 
+ * @param index 
+ * @param key 
+ * @param name 
+ * @param ratio 
  */
 data class AudienceSubcategory(
 
-    @Schema(example = "958862518888", description = "Subinterest ID.")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
-    @Schema(example = "1.2", description = "Subinterest affinity index.")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("index")
     @get:JsonProperty("index") val index: java.math.BigDecimal? = null,
 
-    @Schema(example = "958862518888", description = "Interest unique key (same as ID).")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("key")
     @get:JsonProperty("key") val key: kotlin.String? = null,
 
-    @Schema(example = "travel destinations", description = "Subinterest name.")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
-    @Schema(example = "0.482", description = "Subinterest's percent of category's total audience.")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ratio")
     @get:JsonProperty("ratio") val ratio: java.math.BigDecimal? = null
 ) {
 

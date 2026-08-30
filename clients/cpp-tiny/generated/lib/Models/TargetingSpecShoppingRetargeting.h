@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set Number of days ago to stop lookback timeframe for dynamic retargeting
 	 */
-	void setExclusionWindow(int  exclusion_window);
+	void setExclusionWindow(int exclusion_window);
 	/*! \brief Get Number of days ago to start lookback timeframe for dynamic retargeting
 	 */
 	int getLookbackWindow();
 
 	/*! \brief Set Number of days ago to start lookback timeframe for dynamic retargeting
 	 */
-	void setLookbackWindow(int  lookback_window);
+	void setLookbackWindow(int lookback_window);
 	/*! \brief Get Event types to target for dynamic retargeting
 	 */
 	std::list<int> getTagTypes();
 
 	/*! \brief Set Event types to target for dynamic retargeting
 	 */
-	void setTagTypes(std::list <int> tag_types);
+	void setTagTypes(std::list<int> tag_types);
 
 
     private:

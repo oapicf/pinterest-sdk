@@ -37,10 +37,11 @@ typedef struct pin_media_t {
     struct image_size_t *images; //model
     pinterest_rest_api_pin_media_MEDIATYPE_e media_type; //enum
     char *cover_image_url; // string
-    double duration; //numeric
-    int height; //numeric
+    double *duration; //numeric
+    int *height; //numeric
     char *video_url; // string
-    int width; //numeric
+    char *video_url_hls; // string
+    int *width; //numeric
     list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -50,10 +51,11 @@ __attribute__((deprecated)) pin_media_t *pin_media_create(
     image_size_t *images,
     pinterest_rest_api_pin_media_MEDIATYPE_e media_type,
     char *cover_image_url,
-    double duration,
-    int height,
+    double *duration,
+    int *height,
     char *video_url,
-    int width,
+    char *video_url_hls,
+    int *width,
     list_t *items
 );
 

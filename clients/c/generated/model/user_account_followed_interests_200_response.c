@@ -13,10 +13,10 @@ static user_account_followed_interests_200_response_t *user_account_followed_int
     if (!user_account_followed_interests_200_response_local_var) {
         return NULL;
     }
+    memset(user_account_followed_interests_200_response_local_var, 0, sizeof(user_account_followed_interests_200_response_t));
+    user_account_followed_interests_200_response_local_var->_library_owned = 1;
     user_account_followed_interests_200_response_local_var->bookmark = bookmark;
     user_account_followed_interests_200_response_local_var->items = items;
-
-    user_account_followed_interests_200_response_local_var->_library_owned = 1;
     return user_account_followed_interests_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) user_account_followed_interests_200_response_t *user
     char *bookmark,
     list_t *items
     ) {
-    return user_account_followed_interests_200_response_create_internal (
+    user_account_followed_interests_200_response_t *result = user_account_followed_interests_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void user_account_followed_interests_200_response_free(user_account_followed_interests_200_response_t *user_account_followed_interests_200_response) {
@@ -96,6 +99,8 @@ user_account_followed_interests_200_response_t *user_account_followed_interests_
 
     user_account_followed_interests_200_response_t *user_account_followed_interests_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for user_account_followed_interests_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ user_account_followed_interests_200_response_t *user_account_followed_interests_
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     user_account_followed_interests_200_response_local_var = user_account_followed_interests_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!user_account_followed_interests_200_response_local_var) {
+        goto end;
+    }
+
     return user_account_followed_interests_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

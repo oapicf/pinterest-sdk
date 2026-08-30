@@ -1,0 +1,61 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MMMReport"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MMMReport"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BulkReportingJobStatus = openapi_server.resourceTypes.BulkReportingJobStatus
+}
+resourceTypes {
+
+  MMMReport {
+    title = MMMReport
+    description = MMMReport
+    derivedFrom = Root
+    properties {
+        message {
+          type =  string
+          description = ""
+          optional = false
+        }
+        report_status {
+          type = BulkReportingJobStatus
+          description = ""
+          optional = false
+        }
+        size {
+          type =  
+          description = ""
+          optional = false
+        }
+        status {
+          type =  string
+          description = ""
+          optional = false
+        }
+        token {
+          type =  string
+          description = ""
+          optional = false
+        }
+        url {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  MMMReport {
+    title = MMMReport
+    description = MMMReport
+    implements = openapi_server.resourceTypes.MMMReport
+
+  }
+}

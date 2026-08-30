@@ -31,7 +31,34 @@ Protected Class CatalogsProductGroupProductCountsVertical
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		app_links As Double
+	#tag EndProperty
 
+
+	#tag Property, Flags = &h0
+		images As Double
+	#tag EndProperty
+
+
+    #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
+        
+        CreativeAssets
+        
+    #tag EndEnum
+
+
+	#tag Method, Flags = &h0
+		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
+		  Select Case value
+		    
+		    Case Catalog_typeEnum.CreativeAssets
+		      Return "CREATIVE_ASSETS"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -68,14 +95,6 @@ Protected Class CatalogsProductGroupProductCountsVertical
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="in_stock"
 			Visible=false
 			Group="Behavior"
@@ -109,6 +128,22 @@ Protected Class CatalogsProductGroupProductCountsVertical
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="videos"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="app_links"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="images"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

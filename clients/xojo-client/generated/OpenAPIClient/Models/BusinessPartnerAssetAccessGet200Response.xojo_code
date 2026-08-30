@@ -7,10 +7,7 @@ Protected Class BusinessPartnerAssetAccessGet200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			List assets on which you granted access to your partner or assets on which your partner has granted you access.
-		#tag EndNote
-		items() As OpenAPIClient.Models.GetPartnerAssetsResponse
+		items() As OpenAPIClient.Models.BaseBusinessAssets
 	#tag EndProperty
 
 
@@ -63,7 +60,7 @@ Protected Class BusinessPartnerAssetAccessGet200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="GetPartnerAssetsResponse"
+			Type="BaseBusinessAssets"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

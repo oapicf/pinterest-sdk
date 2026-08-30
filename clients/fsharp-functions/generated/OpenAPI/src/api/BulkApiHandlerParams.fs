@@ -1,11 +1,11 @@
 namespace OpenAPI
 
-open OpenAPI.Model.BulkDownloadRequest
-open OpenAPI.Model.BulkDownloadResponse
+open OpenAPI.Model.BulkDownload
+open OpenAPI.Model.BulkDownloadCreate
+open OpenAPI.Model.BulkJobData
 open OpenAPI.Model.BulkUpsertRequest
 open OpenAPI.Model.BulkUpsertResponse
-open OpenAPI.Model.BulkUpsertStatusResponse
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -20,20 +20,50 @@ module BulkApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type BulkDownloadCreateBodyParams = BulkDownloadRequest
+    type BulkDownloadCreateBodyParams = BulkDownloadCreate
     //#endregion
 
 
     type BulkDownloadCreateStatusCode200Response = {
-      content:BulkDownloadResponse;
+      content:BulkDownload;
+      
+    }
+
+    type BulkDownloadCreateStatusCode201Response = {
+      content:BulkDownload;
+      
+    }
+
+    type BulkDownloadCreateStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BulkDownloadCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BulkDownloadCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BulkDownloadCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BulkDownloadCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type BulkDownloadCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BulkDownloadCreateResult = BulkDownloadCreateStatusCode200 of BulkDownloadCreateStatusCode200Response|BulkDownloadCreateDefaultStatusCode of BulkDownloadCreateDefaultStatusCodeResponse
+    type BulkDownloadCreateResult = BulkDownloadCreateStatusCode200 of BulkDownloadCreateStatusCode200Response|BulkDownloadCreateStatusCode201 of BulkDownloadCreateStatusCode201Response|BulkDownloadCreateStatusCode400 of BulkDownloadCreateStatusCode400Response|BulkDownloadCreateStatusCode401 of BulkDownloadCreateStatusCode401Response|BulkDownloadCreateStatusCode403 of BulkDownloadCreateStatusCode403Response|BulkDownloadCreateStatusCode404 of BulkDownloadCreateStatusCode404Response|BulkDownloadCreateStatusCode429 of BulkDownloadCreateStatusCode429Response|BulkDownloadCreateDefaultStatusCode of BulkDownloadCreateDefaultStatusCodeResponse
 
     type BulkDownloadCreateArgs = {
       pathParams:BulkDownloadCreatePathParams;
@@ -58,15 +88,40 @@ module BulkApiHandlerParams =
 
 
     type BulkRequestGetStatusCode200Response = {
-      content:BulkUpsertStatusResponse;
+      content:BulkJobData;
+      
+    }
+
+    type BulkRequestGetStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BulkRequestGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BulkRequestGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BulkRequestGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BulkRequestGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type BulkRequestGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BulkRequestGetResult = BulkRequestGetStatusCode200 of BulkRequestGetStatusCode200Response|BulkRequestGetDefaultStatusCode of BulkRequestGetDefaultStatusCodeResponse
+    type BulkRequestGetResult = BulkRequestGetStatusCode200 of BulkRequestGetStatusCode200Response|BulkRequestGetStatusCode400 of BulkRequestGetStatusCode400Response|BulkRequestGetStatusCode401 of BulkRequestGetStatusCode401Response|BulkRequestGetStatusCode403 of BulkRequestGetStatusCode403Response|BulkRequestGetStatusCode404 of BulkRequestGetStatusCode404Response|BulkRequestGetStatusCode429 of BulkRequestGetStatusCode429Response|BulkRequestGetDefaultStatusCode of BulkRequestGetDefaultStatusCodeResponse
 
     type BulkRequestGetArgs = {
       pathParams:BulkRequestGetPathParams;
@@ -91,7 +146,7 @@ module BulkApiHandlerParams =
     }
 
     type BulkUpsertCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
     type BulkUpsertCreateResult = BulkUpsertCreateStatusCode200 of BulkUpsertCreateStatusCode200Response|BulkUpsertCreateDefaultStatusCode of BulkUpsertCreateDefaultStatusCodeResponse

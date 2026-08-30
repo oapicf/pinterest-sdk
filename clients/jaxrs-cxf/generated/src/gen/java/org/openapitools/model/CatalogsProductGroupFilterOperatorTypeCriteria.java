@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FilterOperatorType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -15,45 +16,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsProductGroupFilterOperatorTypeCriteria  {
   
-public enum FilterOperatorTypeEnum {
+  @ApiModelProperty(value = "")
 
-IS(String.valueOf("IS")), CONTAINS(String.valueOf("CONTAINS"));
+  @Valid
 
-
-    private String value;
-
-    FilterOperatorTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FilterOperatorTypeEnum fromValue(String value) {
-        for (FilterOperatorTypeEnum b : FilterOperatorTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
+  private FilterOperatorType filterOperatorType;
 
   @ApiModelProperty(value = "")
 
-  private FilterOperatorTypeEnum filterOperatorType = FilterOperatorTypeEnum.IS;
-
-  @ApiModelProperty(value = "")
-
-  private Boolean negated = false;
+  private Boolean negated;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -63,18 +34,15 @@ IS(String.valueOf("IS")), CONTAINS(String.valueOf("CONTAINS"));
    * @return filterOperatorType
   **/
   @JsonProperty("filter_operator_type")
-  public String getFilterOperatorType() {
-    if (filterOperatorType == null) {
-      return null;
-    }
-    return filterOperatorType.value();
+  public FilterOperatorType getFilterOperatorType() {
+    return filterOperatorType;
   }
 
-  public void setFilterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public void setFilterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
   }
 
-  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public CatalogsProductGroupFilterOperatorTypeCriteria filterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
     return this;
   }
@@ -157,10 +125,7 @@ IS(String.valueOf("IS")), CONTAINS(String.valueOf("CONTAINS"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/product_group_promotion.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +16,13 @@ part 'product_group_promotions_list200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class ProductGroupPromotionsList200Response implements Paginated, Built<ProductGroupPromotionsList200Response, ProductGroupPromotionsList200ResponseBuilder> {
+abstract class ProductGroupPromotionsList200Response implements Built<ProductGroupPromotionsList200Response, ProductGroupPromotionsList200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<ProductGroupPromotion> get items;
+
   ProductGroupPromotionsList200Response._();
 
   factory ProductGroupPromotionsList200Response([void updates(ProductGroupPromotionsList200ResponseBuilder b)]) = _$ProductGroupPromotionsList200Response;
@@ -51,7 +56,7 @@ class _$ProductGroupPromotionsList200ResponseSerializer implements PrimitiveSeri
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(ProductGroupPromotion)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$ProductGroupPromotionsList200ResponseSerializer implements PrimitiveSeri
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(ProductGroupPromotion)]),
+          ) as BuiltList<ProductGroupPromotion>;
           result.items.replace(valueDes);
           break;
         default:

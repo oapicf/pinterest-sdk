@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**COUNTRY** | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  | [default to undefined]
+**COUNTRY** | [**CatalogsProductGroupMultipleCountriesCriteria**](CatalogsProductGroupMultipleCountriesCriteria.md) |  | [default to undefined]
 
 ## Example
 

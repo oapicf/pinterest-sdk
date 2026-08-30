@@ -34,7 +34,7 @@ class BaseInviteDataResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  BaseInviteDataResponseInviteData? inviteData;
+  InviteDataResponse? inviteData;
 
   /// Indicates whether the invite/request was received.
   ///
@@ -108,16 +108,12 @@ class BaseInviteDataResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BaseInviteDataResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BaseInviteDataResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return BaseInviteDataResponse(
         id: mapValueOfType<String>(json, r'id'),
-        inviteData: BaseInviteDataResponseInviteData.fromJson(json[r'invite_data']),
+        inviteData: InviteDataResponse.fromJson(json[r'invite_data']),
         isReceivedInvite: mapValueOfType<bool>(json, r'is_received_invite'),
         user: BusinessAccessUserSummary.fromJson(json[r'user']),
       );

@@ -14,12 +14,12 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `targetingTemplateCreate()`
 
 ```php
-targetingTemplateCreate($ad_account_id, $targeting_template_create): \OpenAPI\Client\Model\TargetingTemplateGetResponseData
+targetingTemplateCreate($ad_account_id, $targeting_template_create): \OpenAPI\Client\Model\TargetingTemplate
 ```
 
 Create targeting templates
 
-<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 
@@ -39,7 +39,7 @@ $apiInstance = new OpenAPI\Client\Api\TargetingTemplateApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$targeting_template_create = new \OpenAPI\Client\Model\TargetingTemplateCreate(); // \OpenAPI\Client\Model\TargetingTemplateCreate | targeting template creation entity
+$targeting_template_create = new \OpenAPI\Client\Model\TargetingTemplateCreate(); // \OpenAPI\Client\Model\TargetingTemplateCreate
 
 try {
     $result = $apiInstance->targetingTemplateCreate($ad_account_id, $targeting_template_create);
@@ -54,11 +54,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **targeting_template_create** | [**\OpenAPI\Client\Model\TargetingTemplateCreate**](../Model/TargetingTemplateCreate.md)| targeting template creation entity | |
+| **targeting_template_create** | [**\OpenAPI\Client\Model\TargetingTemplateCreate**](../Model/TargetingTemplateCreate.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TargetingTemplateGetResponseData**](../Model/TargetingTemplateGetResponseData.md)
+[**\OpenAPI\Client\Model\TargetingTemplate**](../Model/TargetingTemplate.md)
 
 ### Authorization
 
@@ -76,12 +76,12 @@ try {
 ## `targetingTemplateList()`
 
 ```php
-targetingTemplateList($ad_account_id, $order, $include_sizing, $search_query, $page_size, $bookmark): \OpenAPI\Client\Model\TargetingTemplateList200Response
+targetingTemplateList($ad_account_id, $bookmark, $page_size, $order, $include_sizing, $search_query): \OpenAPI\Client\Model\TargetingTemplateList200Response
 ```
 
 List targeting templates
 
-Get a list of the targeting templates in the specified <code>ad_account_id</code>
+Get a list of the targeting templates in the specified `ad_account_id`
 
 ### Example
 
@@ -104,14 +104,14 @@ $apiInstance = new OpenAPI\Client\Api\TargetingTemplateApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$order = ASCENDING; // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-$include_sizing = false; // bool | Include audience sizing in result or not
-$search_query = gaming; // string | Search keyword for targeting templates
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+$order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\PinterestLibPaginationOrder(); // \OpenAPI\Client\Model\PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+$include_sizing = false; // bool | Include audience sizing in result or not
+$search_query = 'search_query_example'; // string | Search query. Can contain pin description keywords or comma-separated pin IDs.
 
 try {
-    $result = $apiInstance->targetingTemplateList($ad_account_id, $order, $include_sizing, $search_query, $page_size, $bookmark);
+    $result = $apiInstance->targetingTemplateList($ad_account_id, $bookmark, $page_size, $order, $include_sizing, $search_query);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TargetingTemplateApi->targetingTemplateList: ', $e->getMessage(), PHP_EOL;
@@ -123,11 +123,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
-| **include_sizing** | **bool**| Include audience sizing in result or not | [optional] [default to false] |
-| **search_query** | **string**| Search keyword for targeting templates | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**\OpenAPI\Client\Model\PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
+| **include_sizing** | **bool**| Include audience sizing in result or not | [optional] [default to false] |
+| **search_query** | **string**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
 
 ### Return type
 
@@ -149,12 +149,12 @@ try {
 ## `targetingTemplateUpdate()`
 
 ```php
-targetingTemplateUpdate($ad_account_id, $targeting_template_update_request)
+targetingTemplateUpdate($ad_account_id, $targeting_template_update_request_read_or_update)
 ```
 
 Update targeting templates
 
-<p>Update the targeting template given advertiser ID and targeting template ID</p>
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 
@@ -174,10 +174,10 @@ $apiInstance = new OpenAPI\Client\Api\TargetingTemplateApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$targeting_template_update_request = new \OpenAPI\Client\Model\TargetingTemplateUpdateRequest(); // \OpenAPI\Client\Model\TargetingTemplateUpdateRequest | Operation type and targeting template ID
+$targeting_template_update_request_read_or_update = new \OpenAPI\Client\Model\TargetingTemplateUpdateRequestReadOrUpdate(); // \OpenAPI\Client\Model\TargetingTemplateUpdateRequestReadOrUpdate
 
 try {
-    $apiInstance->targetingTemplateUpdate($ad_account_id, $targeting_template_update_request);
+    $apiInstance->targetingTemplateUpdate($ad_account_id, $targeting_template_update_request_read_or_update);
 } catch (Exception $e) {
     echo 'Exception when calling TargetingTemplateApi->targetingTemplateUpdate: ', $e->getMessage(), PHP_EOL;
 }
@@ -188,7 +188,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **targeting_template_update_request** | [**\OpenAPI\Client\Model\TargetingTemplateUpdateRequest**](../Model/TargetingTemplateUpdateRequest.md)| Operation type and targeting template ID | |
+| **targeting_template_update_request_read_or_update** | [**\OpenAPI\Client\Model\TargetingTemplateUpdateRequestReadOrUpdate**](../Model/TargetingTemplateUpdateRequestReadOrUpdate.md)|  | |
 
 ### Return type
 

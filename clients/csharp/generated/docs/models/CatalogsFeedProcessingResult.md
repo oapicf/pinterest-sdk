@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **DateTime** |  | 
-**Id** | **string** |  | 
-**UpdatedAt** | **DateTime** |  | 
+**CreatedAt** | **DateTime** |  | [readonly] 
+**Id** | **string** | ID of the feed processing result. | 
 **IngestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **Status** | **CatalogsFeedProcessingStatus** |  | 
+**UpdatedAt** | **DateTime** |  | [readonly] 
 **ValidationDetails** | [**CatalogsFeedValidationDetails**](CatalogsFeedValidationDetails.md) |  | 
 **ProductCounts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 
 **VideoCounts** | [**CatalogsFeedVideoCounts**](CatalogsFeedVideoCounts.md) |  | [optional] 

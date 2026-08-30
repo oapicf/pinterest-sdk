@@ -14,11 +14,11 @@ static product_categories_metrics_highlights_t *product_categories_metrics_highl
     if (!product_categories_metrics_highlights_local_var) {
         return NULL;
     }
+    memset(product_categories_metrics_highlights_local_var, 0, sizeof(product_categories_metrics_highlights_t));
+    product_categories_metrics_highlights_local_var->_library_owned = 1;
     product_categories_metrics_highlights_local_var->engagement = engagement;
     product_categories_metrics_highlights_local_var->outbound_clicks = outbound_clicks;
     product_categories_metrics_highlights_local_var->pin_saves = pin_saves;
-
-    product_categories_metrics_highlights_local_var->_library_owned = 1;
     return product_categories_metrics_highlights_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) product_categories_metrics_highlights_t *product_cat
     inner_product_categories_metrics_highlights_t *outbound_clicks,
     inner_product_categories_metrics_highlights_t *pin_saves
     ) {
-    return product_categories_metrics_highlights_create_internal (
+    product_categories_metrics_highlights_t *result = product_categories_metrics_highlights_create_internal (
         engagement,
         outbound_clicks,
         pin_saves
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void product_categories_metrics_highlights_free(product_categories_metrics_highlights_t *product_categories_metrics_highlights) {
@@ -148,11 +151,16 @@ product_categories_metrics_highlights_t *product_categories_metrics_highlights_p
     }
 
 
+
     product_categories_metrics_highlights_local_var = product_categories_metrics_highlights_create_internal (
         engagement ? engagement_local_nonprim : NULL,
         outbound_clicks ? outbound_clicks_local_nonprim : NULL,
         pin_saves ? pin_saves_local_nonprim : NULL
         );
+
+    if (!product_categories_metrics_highlights_local_var) {
+        goto end;
+    }
 
     return product_categories_metrics_highlights_local_var;
 end:

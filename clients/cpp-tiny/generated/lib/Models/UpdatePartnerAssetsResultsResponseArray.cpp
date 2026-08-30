@@ -81,7 +81,7 @@ UpdatePartnerAssetsResultsResponseArray::getItems()
 }
 
 void
-UpdatePartnerAssetsResultsResponseArray::setItems(std::list <UpdatePartnerAssetsResult> items)
+UpdatePartnerAssetsResultsResponseArray::setItems(std::list<UpdatePartnerAssetsResult> items)
 {
 	this->items = items;
 }

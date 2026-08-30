@@ -1,15 +1,15 @@
 #import "OAIIntegrationsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIError.h"
-#import "OAIIntegrationLogsRequest.h"
+#import "OAIIntegrationLogsInvalidLogResponse.h"
+#import "OAIIntegrationLogsRequestCreate.h"
 #import "OAIIntegrationLogsSuccessResponse.h"
 #import "OAIIntegrationMetadata.h"
+#import "OAIIntegrationMetadataCreate.h"
+#import "OAIIntegrationMetadataUpdate.h"
 #import "OAIIntegrationRecord.h"
-#import "OAIIntegrationRequest.h"
-#import "OAIIntegrationRequestPatch.h"
 #import "OAIIntegrationsGetList200Response.h"
-#import "OAIIntegrationsLogsPost400Response.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAIIntegrationsApi ()
@@ -62,17 +62,17 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
 /// Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 ///  @param externalBusinessId External business ID for the integration. 
 ///
-///  @returns void
+///  @returns OAIIntegrationMetadata*
 ///
 -(NSURLSessionTask*) integrationsCommerceDelWithExternalBusinessId: (NSString*) externalBusinessId
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(OAIIntegrationMetadata* output, NSError* error)) handler {
     // verify the required parameter 'externalBusinessId' is set
     if (externalBusinessId == nil) {
         NSParameterAssert(externalBusinessId);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"externalBusinessId"] };
             NSError* error = [NSError errorWithDomain:kOAIIntegrationsApiErrorDomain code:kOAIIntegrationsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -117,10 +117,10 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"OAIIntegrationMetadata*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((OAIIntegrationMetadata*)data, error);
                                 }
                             }];
 }
@@ -198,12 +198,12 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
 /// Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 ///  @param externalBusinessId External business ID for the integration. 
 ///
-///  @param integrationRequestPatch Parameters to get create/update the Integration Metadata 
+///  @param integrationMetadataUpdate  
 ///
 ///  @returns OAIIntegrationMetadata*
 ///
 -(NSURLSessionTask*) integrationsCommercePatchWithExternalBusinessId: (NSString*) externalBusinessId
-    integrationRequestPatch: (OAIIntegrationRequestPatch*) integrationRequestPatch
+    integrationMetadataUpdate: (OAIIntegrationMetadataUpdate*) integrationMetadataUpdate
     completionHandler: (void (^)(OAIIntegrationMetadata* output, NSError* error)) handler {
     // verify the required parameter 'externalBusinessId' is set
     if (externalBusinessId == nil) {
@@ -216,11 +216,11 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'integrationRequestPatch' is set
-    if (integrationRequestPatch == nil) {
-        NSParameterAssert(integrationRequestPatch);
+    // verify the required parameter 'integrationMetadataUpdate' is set
+    if (integrationMetadataUpdate == nil) {
+        NSParameterAssert(integrationMetadataUpdate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"integrationRequestPatch"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"integrationMetadataUpdate"] };
             NSError* error = [NSError errorWithDomain:kOAIIntegrationsApiErrorDomain code:kOAIIntegrationsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -255,7 +255,7 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = integrationRequestPatch;
+    bodyParam = integrationMetadataUpdate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -279,17 +279,17 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
 ///
 /// Create commerce integration
 /// Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
-///  @param integrationRequest Parameters to get create/update the Integration Metadata 
+///  @param integrationMetadataCreate  
 ///
 ///  @returns OAIIntegrationMetadata*
 ///
--(NSURLSessionTask*) integrationsCommercePostWithIntegrationRequest: (OAIIntegrationRequest*) integrationRequest
+-(NSURLSessionTask*) integrationsCommercePostWithIntegrationMetadataCreate: (OAIIntegrationMetadataCreate*) integrationMetadataCreate
     completionHandler: (void (^)(OAIIntegrationMetadata* output, NSError* error)) handler {
-    // verify the required parameter 'integrationRequest' is set
-    if (integrationRequest == nil) {
-        NSParameterAssert(integrationRequest);
+    // verify the required parameter 'integrationMetadataCreate' is set
+    if (integrationMetadataCreate == nil) {
+        NSParameterAssert(integrationMetadataCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"integrationRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"integrationMetadataCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIIntegrationsApiErrorDomain code:kOAIIntegrationsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -321,7 +321,7 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = integrationRequest;
+    bodyParam = integrationMetadataCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -345,7 +345,7 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
 ///
 /// Get integration metadata
 /// Get integration metadata by ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
-///  @param _id Integration ID. 
+///  @param _id Integration record ID. 
 ///
 ///  @returns OAIIntegrationRecord*
 ///
@@ -415,7 +415,7 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
 /// Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIIntegrationsGetList200Response*
 ///
@@ -476,17 +476,17 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
 ///
 /// Receives batched logs from integration applications.
 /// This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
-///  @param integrationLogsRequest Ingest log information from external integration application. 
+///  @param integrationLogsRequestCreate  
 ///
 ///  @returns OAIIntegrationLogsSuccessResponse*
 ///
--(NSURLSessionTask*) integrationsLogsPostWithIntegrationLogsRequest: (OAIIntegrationLogsRequest*) integrationLogsRequest
+-(NSURLSessionTask*) integrationsLogsPostWithIntegrationLogsRequestCreate: (OAIIntegrationLogsRequestCreate*) integrationLogsRequestCreate
     completionHandler: (void (^)(OAIIntegrationLogsSuccessResponse* output, NSError* error)) handler {
-    // verify the required parameter 'integrationLogsRequest' is set
-    if (integrationLogsRequest == nil) {
-        NSParameterAssert(integrationLogsRequest);
+    // verify the required parameter 'integrationLogsRequestCreate' is set
+    if (integrationLogsRequestCreate == nil) {
+        NSParameterAssert(integrationLogsRequestCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"integrationLogsRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"integrationLogsRequestCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIIntegrationsApiErrorDomain code:kOAIIntegrationsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -518,7 +518,7 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = integrationLogsRequest;
+    bodyParam = integrationLogsRequestCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"

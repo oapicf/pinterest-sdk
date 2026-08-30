@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.LabelUpdateRequestLabelsInner
+open OpenAPI.Model.LabelUpdateItem
 
 module LabelUpdateRequest =
 
@@ -12,7 +12,7 @@ module LabelUpdateRequest =
   [<CLIMutable>]
   type LabelUpdateRequest = {
     [<JsonProperty(PropertyName = "labels")>]
-    Labels : LabelUpdateRequestLabelsInner[];
+    Labels : LabelUpdateItem[];
   }
 
   //#endregion

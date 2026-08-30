@@ -5,7 +5,7 @@
 -export_type([openapi_catalogs_product_group_filter_operator_type_criteria/0]).
 
 -type openapi_catalogs_product_group_filter_operator_type_criteria() ::
-    #{ 'filter_operator_type' => binary(),
+    #{ 'filter_operator_type' => openapi_filter_operator_type:openapi_filter_operator_type(),
        'negated' => boolean(),
        'values' := list()
      }.

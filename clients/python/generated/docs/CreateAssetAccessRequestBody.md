@@ -6,7 +6,7 @@ An object containing a list of all the asset access requests
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**asset_requests** | [**List[CreateAssetAccessRequestBodyAssetRequestsInner]**](CreateAssetAccessRequestBodyAssetRequestsInner.md) |  | 
+**asset_requests** | [**List[CreateAssetAccessRequestItem]**](CreateAssetAccessRequestItem.md) |  | 
 
 ## Example
 

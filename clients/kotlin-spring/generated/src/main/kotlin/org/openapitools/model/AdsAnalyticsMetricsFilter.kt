@@ -26,16 +26,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AdsAnalyticsMetricsFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("field")
     @get:JsonProperty("field", required = true) val `field`: AdsAnalyticsFilterColumn,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("operator")
     @get:JsonProperty("operator", required = true) val `operator`: AdsAnalyticsFilterOperator,
 
     @field:Valid
     @get:Size(min=1)
-    @Schema(example = "null", required = true, description = "List of values for filtering")
+    @Schema(required = true, description = "List of values for filtering")
+    @param:JsonProperty("values")
     @get:JsonProperty("values", required = true) val propertyValues: kotlin.collections.List<java.math.BigDecimal>
 ) {
 

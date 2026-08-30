@@ -5,6 +5,12 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
+import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -18,7 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request object for creating a creative assets product group.
- * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogId Catalog ID pertaining to the product group.
  * @param catalogType 
  * @param filters 
  * @param name 
@@ -27,22 +33,27 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsCreativeAssetsProductGroupCreateRequest(
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the creative assets product group.")
+    @Schema(example = "2680059592705", required = true, description = "Catalog ID pertaining to the product group.")
+    @param:JsonProperty("catalog_id")
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsCreativeAssetsProductGroupCreateRequest.CatalogType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("catalog_type")
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsCreativeAssetsProductGroupCreateRequest.CatalogType = kotlin.String.CREATIVE_ASSETS,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("filters")
     @get:JsonProperty("filters", required = true) val filters: CatalogsCreativeAssetsProductGroupFilters,
 
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("name")
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("description")
     @get:JsonProperty("description") val description: kotlin.String? = null
-) {
+) : CatalogsVerticalProductGroupCreateRequest {
 
     /**
     * 
@@ -57,7 +68,7 @@ data class CatalogsCreativeAssetsProductGroupCreateRequest(
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
                 return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsCreativeAssetsProductGroupCreateRequest'")
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }
     }

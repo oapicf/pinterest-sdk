@@ -27,6 +27,7 @@ import org.openapitools.client.api.ConversionTagCreate
 import org.openapitools.client.api.ConversionTagsList200Response
 import org.openapitools.client.api.Error
 import org.openapitools.client.api.PageVisitConversionTagsGet200Response
+import org.openapitools.client.api.PaginationOrder
 
 object ConversionTagsApi {
 
@@ -118,7 +119,7 @@ object ConversionTagsApi {
     } yield resp
   }
 
-  def pageVisitConversionTagsGet(host: String, adAccountId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[PageVisitConversionTagsGet200Response] = {
+  def pageVisitConversionTagsGet(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder]): Task[PageVisitConversionTagsGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[PageVisitConversionTagsGet200Response] = jsonOf[PageVisitConversionTagsGet200Response]
 
     val path = "/ad_accounts/{ad_account_id}/conversion_tags/page_visit".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -128,7 +129,7 @@ object ConversionTagsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -230,7 +231,7 @@ class HttpServiceConversionTagsApi(service: HttpService) {
     } yield resp
   }
 
-  def pageVisitConversionTagsGet(adAccountId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[PageVisitConversionTagsGet200Response] = {
+  def pageVisitConversionTagsGet(adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder]): Task[PageVisitConversionTagsGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[PageVisitConversionTagsGet200Response] = jsonOf[PageVisitConversionTagsGet200Response]
 
     val path = "/ad_accounts/{ad_account_id}/conversion_tags/page_visit".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -240,7 +241,7 @@ class HttpServiceConversionTagsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

@@ -62,9 +62,32 @@ S3MultipartUploadData <- R6::R6Class(
       S3MultipartUploadDataObject <- list()
       if (!is.null(self$`file_parts`)) {
         S3MultipartUploadDataObject[["file_parts"]] <-
-          lapply(self$`file_parts`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`file_parts`)
       }
       return(S3MultipartUploadDataObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

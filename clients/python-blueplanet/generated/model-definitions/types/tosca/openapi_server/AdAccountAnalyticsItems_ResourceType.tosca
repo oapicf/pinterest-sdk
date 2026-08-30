@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdAccountAnalyticsItems"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdAccountAnalyticsItems"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdAccountAnalyticsItems {
+    title = AdAccountAnalyticsItems
+    description = AdAccountAnalyticsItems
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        _date {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdAccountAnalyticsItems {
+    title = AdAccountAnalyticsItems
+    description = AdAccountAnalyticsItems
+    implements = openapi_server.resourceTypes.AdAccountAnalyticsItems
+
+  }
+}

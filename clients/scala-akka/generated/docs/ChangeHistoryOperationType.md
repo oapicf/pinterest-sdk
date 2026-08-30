@@ -1,0 +1,9 @@
+
+
+# ChangeHistoryOperationType
+
+## Enum
+
+
+
+

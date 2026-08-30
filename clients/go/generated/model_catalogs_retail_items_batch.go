@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,8 +24,8 @@ var _ MappedNullable = &CatalogsRetailItemsBatch{}
 // CatalogsRetailItemsBatch Object describing the catalogs retail items batch
 type CatalogsRetailItemsBatch struct {
 	// Id of the catalogs items batch
-	BatchId *string `json:"batch_id,omitempty"`
-	CatalogType CatalogsType `json:"catalog_type"`
+	BatchId *string `json:"batch_id,omitempty" validate:"regexp=^\\d+$"`
+	CatalogType string `json:"catalog_type"`
 	// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	CompletedTime NullableTime `json:"completed_time,omitempty"`
 	// Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
@@ -41,7 +41,7 @@ type _CatalogsRetailItemsBatch CatalogsRetailItemsBatch
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailItemsBatch(catalogType CatalogsType, createdTime NullableTime) *CatalogsRetailItemsBatch {
+func NewCatalogsRetailItemsBatch(catalogType string, createdTime NullableTime) *CatalogsRetailItemsBatch {
 	this := CatalogsRetailItemsBatch{}
 	this.CatalogType = catalogType
 	this.CreatedTime = createdTime
@@ -89,9 +89,9 @@ func (o *CatalogsRetailItemsBatch) SetBatchId(v string) {
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsRetailItemsBatch) GetCatalogType() CatalogsType {
+func (o *CatalogsRetailItemsBatch) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsType
+		var ret string
 		return ret
 	}
 
@@ -100,7 +100,7 @@ func (o *CatalogsRetailItemsBatch) GetCatalogType() CatalogsType {
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool) {
+func (o *CatalogsRetailItemsBatch) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *CatalogsRetailItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool) {
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsRetailItemsBatch) SetCatalogType(v CatalogsType) {
+func (o *CatalogsRetailItemsBatch) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 

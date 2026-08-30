@@ -1,0 +1,57 @@
+
+
+/**
+ * ad disapproval reasons
+ */
+export const AdDisapprovalReasons = {
+    Hashtags: 'HASHTAGS',
+    PromotionsAndPrices: 'PROMOTIONS_AND_PRICES',
+    Targeting: 'TARGETING',
+    LandingPage: 'LANDING_PAGE',
+    CapsAndSymbols: 'CAPS_AND_SYMBOLS',
+    Shocking: 'SHOCKING',
+    WeightLoss: 'WEIGHT_LOSS',
+    ProhibitedProduct: 'PROHIBITED_PRODUCT',
+    Authenticity: 'AUTHENTICITY',
+    Nudity: 'NUDITY',
+    ConfusingDesign: 'CONFUSING_DESIGN',
+    Urgency: 'URGENCY',
+    Ratings: 'RATINGS',
+    App: 'APP',
+    Alcohol: 'ALCOHOL',
+    Contests: 'CONTESTS',
+    Political: 'POLITICAL',
+    Other: 'OTHER',
+    Image: 'IMAGE',
+    Nar: 'NAR',
+    Inconsistent: 'INCONSISTENT',
+    Clickbait: 'CLICKBAIT',
+    NoDescription: 'NO_DESCRIPTION',
+    LowQuality: 'LOW_QUALITY',
+    ExaggeratedClaims: 'EXAGGERATED_CLAIMS',
+    PinterestBrand: 'PINTEREST_BRAND',
+    AlcoholNoSale: 'ALCOHOL_NO_SALE',
+    LandingPageSpeed: 'LANDING_PAGE_SPEED',
+    LandingPageHardwall: 'LANDING_PAGE_HARDWALL',
+    LandingPageBroken: 'LANDING_PAGE_BROKEN',
+    LandingPageQuality: 'LANDING_PAGE_QUALITY',
+    OutOfStock: 'OUT_OF_STOCK',
+    ImageLowQuality: 'IMAGE_LOW_QUALITY',
+    ImageBusy: 'IMAGE_BUSY',
+    ImagePoorlyEdited: 'IMAGE_POORLY_EDITED',
+    ImageBeforeAfter: 'IMAGE_BEFORE_AFTER',
+    Ugc: 'UGC',
+    FakeButtons: 'FAKE_BUTTONS',
+    Weapons: 'WEAPONS',
+    Sensitive: 'SENSITIVE',
+    UnacceptableBusiness: 'UNACCEPTABLE_BUSINESS',
+    SuspiciousClaims: 'SUSPICIOUS_CLAIMS',
+    Pharma: 'PHARMA',
+    SuspiciousSupplements: 'SUSPICIOUS_SUPPLEMENTS',
+    IllegalRecreationalDrug: 'ILLEGAL_RECREATIONAL_DRUG',
+    LowQualityLandingPage: 'LOW_QUALITY_LANDING_PAGE',
+    RestrictedHealthcare: 'RESTRICTED_HEALTHCARE',
+    InconsistentLangFr: 'INCONSISTENT_LANG_FR'
+} as const;
+export type AdDisapprovalReasons = typeof AdDisapprovalReasons[keyof typeof AdDisapprovalReasons];
+

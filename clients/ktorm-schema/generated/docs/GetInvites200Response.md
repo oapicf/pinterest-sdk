@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;InviteResponse&gt;**](InviteResponse.md) | List of invite and request data. | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;InviteResponse&gt;**](InviteResponse.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 

@@ -110,6 +110,7 @@ Name | Type
 `variantNames` | Array&lt;string&gt;
 `variantValues` | Array&lt;string&gt;
 `additionalImageLink` | Array&lt;string&gt;
+`aiDisclosures` | [Array&lt;CatalogsAiContentDisclosure&gt;](CatalogsAiContentDisclosure.md)
 `imageLink` | Array&lt;string&gt;
 `videoLink` | string
 
@@ -172,7 +173,7 @@ const example = {
   "androidDeepLink": pinterest://item/1234567890,
   "availability": in stock,
   "averageReviewRating": 5,
-  "brand": Josie’s Denim,
+  "brand": Josie's Denim,
   "checkoutEnabled": false,
   "color": blue,
   "condition": new,
@@ -206,7 +207,7 @@ const example = {
   "numberOfReviews": 10,
   "pattern": plaid,
   "price": 24.99 USD,
-  "productType": Clothing > Women’s > Shirts > Denim,
+  "productType": Clothing > Women's > Shirts > Denim,
   "promotionId": promotion_1,
   "salePrice": 14.99 USD,
   "salePriceEffectiveDate": 2025-01-01T00:00:00.000000Z/2025-01-07T00:00:00.000000Z,
@@ -218,12 +219,13 @@ const example = {
   "sizeSystem": US,
   "sizeType": regular,
   "tax": US:1025433:6.00:y,
-  "title": Women’s denim shirt, large,
+  "title": Women's denim shirt, large,
   "unitPricingBaseMeasure": 10 ML,
   "unitPricingMeasure": 10 ML,
   "variantNames": [Color, Size],
   "variantValues": [Red, Small],
   "additionalImageLink": ["https://scene.example.com/image/image_v2.jpg","https://scene.example.com/image/image_v3.jpg"],
+  "aiDisclosures": [{"url":"https://scene.example.com/image/image_v3.jpg","disclosure":["ai_modified"]}],
   "imageLink": ["https://scene.example.com/image/image.jpg"],
   "videoLink": https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4,
 } satisfies ItemAttributes

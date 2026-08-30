@@ -14,7 +14,7 @@ API.Client.CatalogsRetailItemsBatch = function() {}
 API.Client.CatalogsRetailItemsBatch.prototype.batchId;
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsRetailItemsBatch.prototype.catalogType;
@@ -46,3 +46,7 @@ API.Client.CatalogsRetailItemsBatch.prototype.items;
  */
 API.Client.CatalogsRetailItemsBatch.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsRetailItemsBatch.CatalogTypeEnum = { 
+  RETAIL: 'RETAIL',
+}

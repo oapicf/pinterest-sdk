@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeletePartnerAssetAccessResultsResponseArray"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeletePartnerAssetAccessResultsResponseArray"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  DeletePartnerAssetAccessResult = openapi_server.resourceTypes.DeletePartnerAssetAccessResult
+}
+resourceTypes {
+
+  DeletePartnerAssetAccessResultsResponseArray {
+    title = DeletePartnerAssetAccessResultsResponseArray
+    description = DeletePartnerAssetAccessResultsResponseArray
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = DeletePartnerAssetAccessResult
+          description = "List of terminated partner asset accesses."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeletePartnerAssetAccessResultsResponseArray {
+    title = DeletePartnerAssetAccessResultsResponseArray
+    description = DeletePartnerAssetAccessResultsResponseArray
+    implements = openapi_server.resourceTypes.DeletePartnerAssetAccessResultsResponseArray
+
+  }
+}

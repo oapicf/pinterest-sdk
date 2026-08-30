@@ -14,7 +14,7 @@ Protected Class SearchApi
 		  // Invokes SearchApiCallbackHandler.SearchPartnerPinsCallback(SearchPartnerPins200Response) on completion. 
 		  //
 		  // - GET /search/partner/pins
-		  // - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+		  // - **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -145,19 +145,19 @@ Protected Class SearchApi
 
 
 	#tag Method, Flags = &h0
-		Sub SearchUserBoardsGet(, Optional adAccountId As Xoson.O.OptionalString, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional query As Xoson.O.OptionalString)
+		Sub SearchUserBoardsGet(, Optional adAccountId As Xoson.O.OptionalString, Optional query As Xoson.O.OptionalString, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation search_user_boards/get
 		  // Search user's boards
 		  // - 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
-		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter query: (query) Search query. Can contain pin description keywords or comma-separated pin IDs. (optional, default to Sample)
+		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
-		  // Invokes SearchApiCallbackHandler.SearchUserBoardsGetCallback(SearchUserBoardsGet200Response) on completion. 
+		  // Invokes SearchApiCallbackHandler.SearchUserBoardsGetCallback(BoardsList200Response) on completion. 
 		  //
 		  // - GET /search/boards
-		  // - Search for boards for the "operation user_account". This includes boards of all board types. - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+		  // - Search for boards for the "operation user_account". This includes boards of all board types. - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -174,11 +174,11 @@ Protected Class SearchApi
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
+		  If query <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("query") + "=" + EncodeURLComponent(query)
+		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
-		  If query <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("query") + "=" + EncodeURLComponent(query)
 		  
 
 		  
@@ -204,7 +204,7 @@ Protected Class SearchApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function SearchUserBoardsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SearchUserBoardsGet200Response) As Boolean
+		Private Function SearchUserBoardsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BoardsList200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -212,7 +212,7 @@ Protected Class SearchApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.SearchUserBoardsGet200Response
+			  outData = New OpenAPIClient.Models.BoardsList200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -265,7 +265,7 @@ Protected Class SearchApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.SearchUserBoardsGet200Response
+		  Dim data As OpenAPIClient.Models.BoardsList200Response
 		  CallbackHandler.SearchUserBoardsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -279,7 +279,7 @@ Protected Class SearchApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.SearchUserBoardsGet200Response
+		  Dim data As OpenAPIClient.Models.BoardsList200Response
 		  Call SearchUserBoardsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.SearchUserBoardsGetCallback(error, data)
@@ -298,10 +298,10 @@ Protected Class SearchApi
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
 		  //
-		  // Invokes SearchApiCallbackHandler.SearchUserPinsListCallback(SearchUserPinsList200Response) on completion. 
+		  // Invokes SearchApiCallbackHandler.SearchUserPinsListCallback(PinsList200Response) on completion. 
 		  //
 		  // - GET /search/pins
-		  // - Search for pins for the "operation user_account". - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+		  // - Search for pins for the "operation user_account". - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -342,7 +342,7 @@ Protected Class SearchApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function SearchUserPinsListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SearchUserPinsList200Response) As Boolean
+		Private Function SearchUserPinsListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.PinsList200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -350,7 +350,7 @@ Protected Class SearchApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.SearchUserPinsList200Response
+			  outData = New OpenAPIClient.Models.PinsList200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -403,7 +403,7 @@ Protected Class SearchApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.SearchUserPinsList200Response
+		  Dim data As OpenAPIClient.Models.PinsList200Response
 		  CallbackHandler.SearchUserPinsListCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -417,7 +417,7 @@ Protected Class SearchApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.SearchUserPinsList200Response
+		  Dim data As OpenAPIClient.Models.PinsList200Response
 		  Call SearchUserPinsListPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.SearchUserPinsListCallback(error, data)

@@ -37,13 +37,16 @@ import org.openapitools.server.apis.CatalogFeedsApi
 import org.openapitools.server.apis.CatalogItemsApi
 import org.openapitools.server.apis.CatalogProductGroupsApi
 import org.openapitools.server.apis.CatalogReportsApi
+import org.openapitools.server.apis.CatalogSupplementalApi
 import org.openapitools.server.apis.CatalogsApi
+import org.openapitools.server.apis.ConversionDeletionRequestsApi
 import org.openapitools.server.apis.ConversionEqsApi
 import org.openapitools.server.apis.ConversionEventsApi
 import org.openapitools.server.apis.ConversionTagsApi
 import org.openapitools.server.apis.ConversionsApi
 import org.openapitools.server.apis.CustomerListUploadsApi
 import org.openapitools.server.apis.CustomerListsApi
+import org.openapitools.server.apis.CustomerSegmentApi
 import org.openapitools.server.apis.IntegrationsApi
 import org.openapitools.server.apis.KeywordsApi
 import org.openapitools.server.apis.LabelsApi
@@ -56,14 +59,16 @@ import org.openapitools.server.apis.NotificationApi
 import org.openapitools.server.apis.OauthApi
 import org.openapitools.server.apis.OrderLinesApi
 import org.openapitools.server.apis.PinsApi
-import org.openapitools.server.apis.ProductCategoriesApi
 import org.openapitools.server.apis.ProductGroupPromotionsApi
+import org.openapitools.server.apis.ProductTagsApi
 import org.openapitools.server.apis.PromotionsApi
 import org.openapitools.server.apis.ResourcesApi
+import org.openapitools.server.apis.SchedulesApi
 import org.openapitools.server.apis.SearchApi
 import org.openapitools.server.apis.TargetingTemplateApi
 import org.openapitools.server.apis.TermsApi
 import org.openapitools.server.apis.TermsOfServiceApi
+import org.openapitools.server.apis.TrendsApi
 import org.openapitools.server.apis.UserAccountApi
 
 
@@ -93,6 +98,14 @@ fun Application.main() {
                 "/"
             }
         }
+        oauth("client_credentials") {
+            client = HttpClient(Apache)
+            providerLookup = { applicationAuthProvider(this@main.environment.config) }
+            urlProvider = { _ ->
+                // TODO: define a callback url here.
+                "/"
+            }
+        }
         basic("basic") {
         validate { credentials ->
             // TODO: "Apply your basic authentication functionality."
@@ -101,14 +114,6 @@ fun Application.main() {
                 UserIdPrincipal(credentials.name)
             } else {
                 null
-            }
-        }
-        oauth("client_credentials") {
-            client = HttpClient(Apache)
-            providerLookup = { applicationAuthProvider(this@main.environment.config) }
-            urlProvider = { _ ->
-                // TODO: define a callback url here.
-                "/"
             }
         }
     }
@@ -131,13 +136,16 @@ fun Application.main() {
         CatalogItemsApi()
         CatalogProductGroupsApi()
         CatalogReportsApi()
+        CatalogSupplementalApi()
         CatalogsApi()
+        ConversionDeletionRequestsApi()
         ConversionEqsApi()
         ConversionEventsApi()
         ConversionTagsApi()
         ConversionsApi()
         CustomerListUploadsApi()
         CustomerListsApi()
+        CustomerSegmentApi()
         IntegrationsApi()
         KeywordsApi()
         LabelsApi()
@@ -150,14 +158,16 @@ fun Application.main() {
         OauthApi()
         OrderLinesApi()
         PinsApi()
-        ProductCategoriesApi()
         ProductGroupPromotionsApi()
+        ProductTagsApi()
         PromotionsApi()
         ResourcesApi()
+        SchedulesApi()
         SearchApi()
         TargetingTemplateApi()
         TermsApi()
         TermsOfServiceApi()
+        TrendsApi()
         UserAccountApi()
     }
 }

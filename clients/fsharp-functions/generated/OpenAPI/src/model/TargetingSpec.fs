@@ -26,12 +26,16 @@ module TargetingSpec =
     GENDER : TargetingSpecGender[];
     [<JsonProperty(PropertyName = "GEO")>]
     GEO : string[];
+    [<JsonProperty(PropertyName = "GEO_EXCLUDE")>]
+    GEO_EXCLUDE : string[];
     [<JsonProperty(PropertyName = "INTEREST")>]
     INTEREST : string[];
     [<JsonProperty(PropertyName = "LOCALE")>]
     LOCALE : string[];
     [<JsonProperty(PropertyName = "LOCATION")>]
     LOCATION : string[];
+    [<JsonProperty(PropertyName = "LOCATION_EXCLUDE")>]
+    LOCATION_EXCLUDE : string[];
     [<JsonProperty(PropertyName = "MAXIMUM_AGE")>]
     MAXIMUM_AGE : string;
     [<JsonProperty(PropertyName = "MINIMUM_AGE")>]

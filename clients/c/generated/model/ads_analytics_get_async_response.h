@@ -20,16 +20,16 @@ typedef struct ads_analytics_get_async_response_t ads_analytics_get_async_respon
 
 
 typedef struct ads_analytics_get_async_response_t {
-    bulk_reporting_job_status_t *report_status; // custom
-    double size; //numeric
+    pinterest_rest_api_bulk_reporting_job_status__e report_status; //referenced enum
+    double *size; //numeric
     char *url; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ads_analytics_get_async_response_t;
 
 __attribute__((deprecated)) ads_analytics_get_async_response_t *ads_analytics_get_async_response_create(
-    bulk_reporting_job_status_t *report_status,
-    double size,
+    pinterest_rest_api_bulk_reporting_job_status__e report_status,
+    double *size,
     char *url
 );
 

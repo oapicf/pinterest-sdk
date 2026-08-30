@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetBusinessAssetsResponse;
+import org.openapitools.model.BusinessAssets;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,7 +23,7 @@ public class BusinessAssetsGet200Response   {
   
   private String bookmark;
 
-  private List<@Valid GetBusinessAssetsResponse> items = new ArrayList<>();
+  private List<@Valid BusinessAssets> items = new ArrayList<>();
 
   /**
    **/
@@ -44,25 +44,24 @@ public class BusinessAssetsGet200Response   {
 
 
   /**
-   * List of assets the requesting business has access to.
    **/
-  public BusinessAssetsGet200Response items(List<@Valid GetBusinessAssetsResponse> items) {
+  public BusinessAssetsGet200Response items(List<@Valid BusinessAssets> items) {
     this.items = items;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "List of assets the requesting business has access to.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
-  public List<@Valid GetBusinessAssetsResponse> getItems() {
+  public List<@Valid BusinessAssets> getItems() {
     return items;
   }
-  public void setItems(List<@Valid GetBusinessAssetsResponse> items) {
+  public void setItems(List<@Valid BusinessAssets> items) {
     this.items = items;
   }
 
-  public BusinessAssetsGet200Response addItemsItem(GetBusinessAssetsResponse itemsItem) {
+  public BusinessAssetsGet200Response addItemsItem(BusinessAssets itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -106,10 +105,7 @@ public class BusinessAssetsGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId,audienceId,accountType,pageSize,bookmark,businessId,audienceId,accountType,pageSize,bookmark,businessId,bookmark,order,pageSize,adAccountId,sharedAudience,adAccountId,businessSharedAudience,businessId,sharedAudience,businessId,businessSharedAudience
+testCase,httpStatusCode,audienceId,accountType,adAccountId,bookmark,pageSize,businessId,audienceId,accountType,bookmark,pageSize,businessId,order,bookmark,pageSize,adAccountId,adAccountToAdAccountSharedAudienceUpdateWithRequiredBody,adAccountId,adAccountToBusinessSharedAudienceUpdateWithRequiredBody,businessId,businessToAdAccountSharedAudienceUpdateWithRequiredBody,businessId,businessToBusinessSharedAudienceUpdateWithRequiredBody
 Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

@@ -23,6 +23,7 @@ PinCreate::~PinCreate()
 void
 PinCreate::__init()
 {
+	//ai_disclosures = null;
 	//alt_text = std::string();
 	//board_id = std::string();
 	//board_section_id = std::string();
@@ -38,6 +39,11 @@ PinCreate::__init()
 void
 PinCreate::__cleanup()
 {
+	//if(ai_disclosures != NULL) {
+	//
+	//delete ai_disclosures;
+	//ai_disclosures = NULL;
+	//}
 	//if(alt_text != NULL) {
 	//
 	//delete alt_text;
@@ -96,6 +102,20 @@ PinCreate::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	node = json_object_get_member(pJsonObject, ai_disclosuresKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AiDisclosures")) {
+			jsonToValue(&ai_disclosures, node, "AiDisclosures", "AiDisclosures");
+		} else {
+			
+			AiDisclosures* obj = static_cast<AiDisclosures*> (&ai_disclosures);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *alt_textKey = "alt_text";
 	node = json_object_get_member(pJsonObject, alt_textKey);
 	if (node !=NULL) {
@@ -221,6 +241,20 @@ PinCreate::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("AiDisclosures")) {
+		AiDisclosures obj = getAiDisclosures();
+		node = converttoJson(&obj, "AiDisclosures", "");
+	}
+	else {
+		
+		AiDisclosures obj = static_cast<AiDisclosures> (getAiDisclosures());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	json_object_set_member(pJsonObject, ai_disclosuresKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getAltText();
 		node = converttoJson(&obj, "std::string", "");
@@ -322,6 +356,18 @@ PinCreate::toJson()
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+AiDisclosures
+PinCreate::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+PinCreate::setAiDisclosures(AiDisclosures  ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
 }
 
 std::string

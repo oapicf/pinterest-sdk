@@ -19,17 +19,17 @@ typedef struct catalogs_feed_video_counts_t catalogs_feed_video_counts_t;
 
 
 typedef struct catalogs_feed_video_counts_t {
-    int ingested_videos; //numeric
-    int not_ingested_videos; //numeric
-    int total_videos; //numeric
+    int *ingested_videos; //numeric
+    int *not_ingested_videos; //numeric
+    int *total_videos; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_video_counts_t;
 
 __attribute__((deprecated)) catalogs_feed_video_counts_t *catalogs_feed_video_counts_create(
-    int ingested_videos,
-    int not_ingested_videos,
-    int total_videos
+    int *ingested_videos,
+    int *not_ingested_videos,
+    int *total_videos
 );
 
 void catalogs_feed_video_counts_free(catalogs_feed_video_counts_t *catalogs_feed_video_counts);

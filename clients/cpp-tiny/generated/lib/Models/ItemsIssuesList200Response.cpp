@@ -102,7 +102,7 @@ Items_issues_list_200_response::getBookmark()
 }
 
 void
-Items_issues_list_200_response::setBookmark(std::string  bookmark)
+Items_issues_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Items_issues_list_200_response::getItems()
 }
 
 void
-Items_issues_list_200_response::setItems(std::list <CatalogsItemValidationIssues> items)
+Items_issues_list_200_response::setItems(std::list<CatalogsItemValidationIssues> items)
 {
 	this->items = items;
 }

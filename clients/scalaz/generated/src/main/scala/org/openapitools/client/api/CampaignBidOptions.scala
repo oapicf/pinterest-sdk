@@ -12,9 +12,20 @@ import org.joda.time.DateTime
 import CampaignBidOptions._
 
 case class CampaignBidOptions (
+  /* Age bucket multipliers for bid adjustments. */
+  ageBucketMultipliers: Option[AgeBucketMultipliers],
+/* App type multipliers for bid adjustments. */
   appTypeMultipliers: Option[AppTypeMultipliers],
-audienceMultipliers: Option[CampaignAudienceMultipliers],
-placementMultipliers: Option[PlacementMultipliers])
+/* Audience multipliers for bid adjustments. */
+  audienceMultipliers: Option[CampaignAudienceMultipliers],
+/* The time window for frequency bid multipliers. */
+  freqBidMultiplierTimeWindow: Option[FreqBidMultiplierTimeWindow],
+/* Frequency multipliers for bid adjustments. */
+  frequencyMultipliers: Option[FrequencyMultipliers],
+/* Gender multipliers for bid adjustments. */
+  genderMultipliers: Option[GenderMultipliers],
+/* Placement multipliers for bid adjustments. */
+  placementMultipliers: Option[PlacementMultipliers])
 
 object CampaignBidOptions {
   import DateTimeCodecs._

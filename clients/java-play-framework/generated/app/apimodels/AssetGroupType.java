@@ -6,7 +6,7 @@ import javax.validation.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Asset group type
+ * Asset group type.
  */
 public enum AssetGroupType {
   

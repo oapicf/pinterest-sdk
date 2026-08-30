@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attribute_name** | [**NullableCatalogsItemFieldType**](NullableCatalogsItemFieldType.md) |  | [default to undefined]
+**attribute_name** | [**NullableCatalogsItemFieldType**](NullableCatalogsItemFieldType.md) | Attribute that has a validation issue. | [default to undefined]
 **provided_value** | **string** | Provided value that caused the validation issue. | [default to undefined]
 
 ## Example

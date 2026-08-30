@@ -123,7 +123,7 @@ TargetingSpecOperationShoppingRetargeting::getField()
 }
 
 void
-TargetingSpecOperationShoppingRetargeting::setField(std::string  field)
+TargetingSpecOperationShoppingRetargeting::setField(std::string field)
 {
 	this->field = field;
 }
@@ -135,7 +135,7 @@ TargetingSpecOperationShoppingRetargeting::getOperation()
 }
 
 void
-TargetingSpecOperationShoppingRetargeting::setOperation(std::string  operation)
+TargetingSpecOperationShoppingRetargeting::setOperation(std::string operation)
 {
 	this->operation = operation;
 }
@@ -147,7 +147,7 @@ TargetingSpecOperationShoppingRetargeting::getValues()
 }
 
 void
-TargetingSpecOperationShoppingRetargeting::setValues(std::list <TargetingSpecShoppingRetargeting> values)
+TargetingSpecOperationShoppingRetargeting::setValues(std::list<TargetingSpecShoppingRetargeting> values)
 {
 	this->values = values;
 }

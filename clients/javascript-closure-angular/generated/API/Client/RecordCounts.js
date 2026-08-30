@@ -1,7 +1,6 @@
 goog.provide('API.Client.RecordCounts');
 
 /**
- * Record processing counts
  * @record
  */
 API.Client.RecordCounts = function() {}

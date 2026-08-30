@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Information about a catalog asset.",
+  "name": "CatalogBinding",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": ["null", "string"],
+      "doc": "Catalog type",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Catalog ID.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Catalog name",
+      "default": null
+    }
+  ]
+
+}

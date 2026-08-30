@@ -23,7 +23,7 @@ CatalogsVerticalBatchRequest::~CatalogsVerticalBatchRequest()
 void
 CatalogsVerticalBatchRequest::__init()
 {
-	//catalog_id = std::string();
+	//catalog_id = null;
 	//catalog_type = std::string();
 	//country = new Country();
 	//new std::list()std::list> items;

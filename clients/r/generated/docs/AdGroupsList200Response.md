@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **character** |  | [optional] 
-**items** | [**array[AdGroupResponse]**](AdGroupResponse.md) |  | 
+**items** | [**array[AdGroup]**](AdGroup.md) |  | 
 
 

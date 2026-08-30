@@ -7,12 +7,12 @@ Diagnostics aggregated numbers
 
 Name | Type
 ------------ | -------------
-`reportType` | string
 `catalogId` | string
 `code` | number
 `codeLabel` | string
 `message` | string
 `occurrences` | number
+`reportType` | string
 `severity` | string
 `ineligibleForAds` | boolean
 `ineligibleForOrganic` | boolean
@@ -24,12 +24,12 @@ import type { CatalogsReportStats } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "reportType": null,
   "catalogId": null,
   "code": null,
   "codeLabel": SPAM,
   "message": null,
   "occurrences": 10,
+  "reportType": null,
   "severity": null,
   "ineligibleForAds": true,
   "ineligibleForOrganic": true,

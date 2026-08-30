@@ -1,7 +1,7 @@
 /*
  * TermsOfService.h
  *
- * 
+ * The ID of the ad account.
  */
 
 #ifndef _TermsOfService_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief The ID of the ad account.
  *
  *  \ingroup Models
  *

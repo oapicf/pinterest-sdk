@@ -10,17 +10,7 @@ The class is defined in **[AppTypeMultipliers.java](../../src/main/java/org/open
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**APP_TYPE** | [**APPTYPEEnum**](#APPTYPEEnum) |  |  [optional property]
+**APP_TYPE** | `TargetingSpecAppType` | App type identifier. |  [optional property]
 
-## APPTYPEEnum
-
-Name | Value
----- | -----
-ANDROID_MOBILE | `"android_mobile"`
-ANDROID_TABLET | `"android_tablet"`
-IPAD | `"ipad"`
-IPHONE | `"iphone"`
-WEB | `"web"`
-WEB_MOBILE | `"web_mobile"`
 
 

@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  DeletePartnerAssetAccessBodyAccessesInner = openapi_server.resourceTypes.DeletePartnerAssetAccessBodyAccessesInner
+  DeletePartnerAssetAccessItem = openapi_server.resourceTypes.DeletePartnerAssetAccessItem
 }
 resourceTypes {
 
@@ -18,8 +18,8 @@ resourceTypes {
     properties {
         accesses {
           type = array
-          items.type = DeletePartnerAssetAccessBodyAccessesInner
-          description = ""
+          items.type = DeletePartnerAssetAccessItem
+          description = "List of partner asset accesses to delete."
           optional = true
         }
     }

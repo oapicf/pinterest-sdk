@@ -2,8 +2,8 @@ package models
 
 type CatalogsRetailProductGroup struct {
 
-	// Catalog id pertaining to the retail product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	// Catalog ID pertaining to the product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 
 	CatalogType string `json:"catalog_type"`
 
@@ -15,12 +15,12 @@ type CatalogsRetailProductGroup struct {
 	Description *string `json:"description,omitempty"`
 
 	// id of the catalogs feed belonging to this catalog product group
-	FeedId *string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+	FeedId *string `json:"feed_id" validate:"regexp=^\\d+$"`
 
 	Filters CatalogsProductGroupFilters `json:"filters"`
 
 	// ID of the catalog product group.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	// boolean indicator of whether the product group is being featured or not
 	// Deprecated

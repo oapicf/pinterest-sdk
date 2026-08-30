@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-
+// Permissions : Permission levels available on a business asset.
 type Permissions string
 
 // List of Permissions
@@ -33,6 +33,7 @@ const (
 	CATALOGS_VIEWER Permissions = "CATALOGS_VIEWER"
 	PROFILE_PUBLISHER Permissions = "PROFILE_PUBLISHER"
 	CONSUMER_USER Permissions = "CONSUMER_USER"
+	BIZ_PINNER_LIST_SHARER Permissions = "BIZ_PINNER_LIST_SHARER"
 )
 
 // AllowedPermissionsEnumValues is all the allowed values of Permissions enum
@@ -48,6 +49,7 @@ var AllowedPermissionsEnumValues = []Permissions{
 	"CATALOGS_VIEWER",
 	"PROFILE_PUBLISHER",
 	"CONSUMER_USER",
+	"BIZ_PINNER_LIST_SHARER",
 }
 
 // validPermissionsEnumValue provides a map of Permissionss for fast verification of use input
@@ -63,6 +65,7 @@ var validPermissionsEnumValues = map[Permissions]struct{}{
 	"CATALOGS_VIEWER": {},
 	"PROFILE_PUBLISHER": {},
 	"CONSUMER_USER": {},
+	"BIZ_PINNER_LIST_SHARER": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -83,8 +86,8 @@ func NewPermissionsFromValue(v string) (Permissions, error) {
 }
 
 
-
-// AssertPermissionsRequired checks if the required fields are not zero-ed
+// AssertPermissionsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertPermissionsRequired(obj Permissions) error {
 	return nil
 }

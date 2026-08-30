@@ -5,11 +5,12 @@ open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.AdCreateRequest
 open OpenAPI.Model.AdGroupCreateRequest
+open OpenAPI.Model.BulkUpsertRequestCreateCatalogProductGroupsItems
 open OpenAPI.Model.CampaignCreateRequest
 open OpenAPI.Model.KeywordsRequest
-open OpenAPI.Model.LabelCreateRequest
-open OpenAPI.Model.MultipleProductGroupsInner
+open OpenAPI.Model.LabelBulkCreateRequest
 open OpenAPI.Model.ProductGroupPromotionCreateRequest
+open OpenAPI.Model.ScheduleCreateRequest
 
 module BulkUpsertRequestCreate =
 
@@ -24,13 +25,15 @@ module BulkUpsertRequestCreate =
     [<JsonProperty(PropertyName = "campaigns")>]
     Campaigns : CampaignCreateRequest[];
     [<JsonProperty(PropertyName = "catalog_product_groups")>]
-    CatalogProductGroups : MultipleProductGroupsInner[];
+    CatalogProductGroups : BulkUpsertRequestCreateCatalogProductGroupsItems[];
     [<JsonProperty(PropertyName = "keywords")>]
     Keywords : KeywordsRequest[];
     [<JsonProperty(PropertyName = "labels")>]
-    Labels : LabelCreateRequest[];
+    Labels : LabelBulkCreateRequest[];
     [<JsonProperty(PropertyName = "product_groups")>]
     ProductGroups : ProductGroupPromotionCreateRequest[];
+    [<JsonProperty(PropertyName = "schedules")>]
+    Schedules : ScheduleCreateRequest[];
   }
 
   //#endregion

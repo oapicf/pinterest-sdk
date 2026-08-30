@@ -74,7 +74,7 @@ class _$CreativeAssetsIdFilterSerializer implements PrimitiveSerializer<Creative
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringCriteria),
           ) as CatalogsProductGroupMultipleStringCriteria;
-          result.CREATIVE_ASSETS_ID = valueDes;
+          result.CREATIVE_ASSETS_ID.replace(valueDes);
           break;
         default:
           unhandled.add(key);

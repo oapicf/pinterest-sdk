@@ -9,7 +9,7 @@ CatalogsItemsDeleteBatchRequest::CatalogsItemsDeleteBatchRequest()
 	country = Country();
 	items = std::list<ItemDeleteBatchRecord>();
 	language = std::string();
-	operation = BatchOperation();
+	operation = std::string();
 }
 
 CatalogsItemsDeleteBatchRequest::CatalogsItemsDeleteBatchRequest(std::string jsonString)
@@ -84,9 +84,8 @@ CatalogsItemsDeleteBatchRequest::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&operation, value, "std::string");
 
-        BatchOperation* obj = &operation;
-		obj->fromJson(value.dump());
 
     }
 
@@ -131,8 +130,8 @@ CatalogsItemsDeleteBatchRequest::toJson()
 
 
 
+    object["operation"] = getOperation();
 
-	object["operation"] = getOperation().toJson();
 
 
     return object;
@@ -146,7 +145,7 @@ CatalogsItemsDeleteBatchRequest::getCountry()
 }
 
 void
-CatalogsItemsDeleteBatchRequest::setCountry(Country  country)
+CatalogsItemsDeleteBatchRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -158,7 +157,7 @@ CatalogsItemsDeleteBatchRequest::getItems()
 }
 
 void
-CatalogsItemsDeleteBatchRequest::setItems(std::list <ItemDeleteBatchRecord> items)
+CatalogsItemsDeleteBatchRequest::setItems(std::list<ItemDeleteBatchRecord> items)
 {
 	this->items = items;
 }
@@ -170,19 +169,19 @@ CatalogsItemsDeleteBatchRequest::getLanguage()
 }
 
 void
-CatalogsItemsDeleteBatchRequest::setLanguage(std::string  language)
+CatalogsItemsDeleteBatchRequest::setLanguage(std::string language)
 {
 	this->language = language;
 }
 
-BatchOperation
+std::string
 CatalogsItemsDeleteBatchRequest::getOperation()
 {
 	return operation;
 }
 
 void
-CatalogsItemsDeleteBatchRequest::setOperation(BatchOperation  operation)
+CatalogsItemsDeleteBatchRequest::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

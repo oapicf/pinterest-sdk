@@ -1,7 +1,7 @@
 /*
  * Permissions.h
  *
- * 
+ * Permission levels available on a business asset.
  */
 
 #ifndef _Permissions_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Permission levels available on a business asset.
  *
  *  \ingroup Models
  *

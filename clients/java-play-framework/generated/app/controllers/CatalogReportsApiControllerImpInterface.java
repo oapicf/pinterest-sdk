@@ -3,9 +3,9 @@ package controllers;
 import apimodels.CatalogsCreateReportResponse;
 import apimodels.CatalogsReport;
 import apimodels.CatalogsReportParameters;
-import apimodels.Error;
+import apimodels.CatalogsReportStatsParameters;
+import apimodels.PinterestLibError;
 import apimodels.ReportsStats200Response;
-import apimodels.ReportsStatsParametersParameter;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -70,12 +70,12 @@ public abstract class CatalogReportsApiControllerImpInterface {
 
     public abstract CatalogsReport reportsGet(Http.Request request, @NotNull String token,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result reportsStatsHttp(Http.Request request, @NotNull ReportsStatsParametersParameter parameters,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public Result reportsStatsHttp(Http.Request request, @NotNull CatalogsReportStatsParameters parameters,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        ReportsStats200Response obj = reportsStats(request, parameters, adAccountId, pageSize, bookmark);
+        ReportsStats200Response obj = reportsStats(request, parameters, adAccountId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -87,6 +87,6 @@ public abstract class CatalogReportsApiControllerImpInterface {
 
     }
 
-    public abstract ReportsStats200Response reportsStats(Http.Request request, @NotNull ReportsStatsParametersParameter parameters,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception;
+    public abstract ReportsStats200Response reportsStats(Http.Request request, @NotNull CatalogsReportStatsParameters parameters,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
 }

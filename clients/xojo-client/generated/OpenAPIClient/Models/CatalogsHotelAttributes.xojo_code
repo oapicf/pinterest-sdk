@@ -2,6 +2,9 @@
 Protected Class CatalogsHotelAttributes
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Hotel address
+		#tag EndNote
 		address As OpenAPIClient.Models.CatalogsHotelAddress
 	#tag EndProperty
 
@@ -79,6 +82,9 @@ Protected Class CatalogsHotelAttributes
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			If specified, you must provide all properties
+		#tag EndNote
 		guest_ratings As OpenAPIClient.Models.CatalogsHotelGuestRatings
 	#tag EndProperty
 
@@ -133,14 +139,25 @@ Protected Class CatalogsHotelAttributes
 
 	#tag Property, Flags = &h0
 		#tag Note
-			<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+			<= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
 		#tag EndNote
 		additional_image_link() As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		main_image As OpenAPIClient.Models.CatalogsHotelAttributesAllOfMainImage
+		#tag Note
+			AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+		#tag EndNote
+		ai_disclosures() As OpenAPIClient.Models.CatalogsAiContentDisclosure
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The main hotel image
+		#tag EndNote
+		main_image As OpenAPIClient.Models.CatalogsHotelMainImage
 	#tag EndProperty
 
 
@@ -325,11 +342,19 @@ Protected Class CatalogsHotelAttributes
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ai_disclosures"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsAiContentDisclosure"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="main_image"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsHotelAttributesAllOfMainImage"
+			Type="CatalogsHotelMainImage"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -8,9 +8,10 @@ Object describing an item bid option deletion operation
 Name | Type
 ------------ | -------------
 `country` | [Country](Country.md)
+`errors` | [Array&lt;AdvancedAuctionOperationError&gt;](AdvancedAuctionOperationError.md)
 `itemId` | string
 `language` | [Language](Language.md)
-`errors` | [Array&lt;AdvancedAuctionOperationError&gt;](AdvancedAuctionOperationError.md)
+`operation` | string
 
 ## Example
 
@@ -20,9 +21,10 @@ import type { AdvancedAuctionItemsSubmitDeleteRecord } from ''
 // TODO: Update the object below with actual values
 const example = {
   "country": null,
+  "errors": null,
   "itemId": DS0294-M,
   "language": null,
-  "errors": null,
+  "operation": null,
 } satisfies AdvancedAuctionItemsSubmitDeleteRecord
 
 console.log(example)

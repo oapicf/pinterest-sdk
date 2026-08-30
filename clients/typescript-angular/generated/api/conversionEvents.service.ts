@@ -17,11 +17,13 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { ConversionApiResponse } from '../model/conversionApiResponse';
-// @ts-ignore
 import { ConversionEvents } from '../model/conversionEvents';
 // @ts-ignore
+import { ConversionEventsCreate } from '../model/conversionEventsCreate';
+// @ts-ignore
 import { DetailedError } from '../model/detailedError';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -41,24 +43,24 @@ export class ConversionEventsService extends BaseService {
 
     /**
      * Send conversions
-     * The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object. - This endpoint requires an &lt;code&gt;access_token&lt;/code&gt; be generated through Ads Manager. Review the &lt;a href&#x3D;\&quot;/docs/api-features/conversion-overview/\&quot;&gt;Conversions Guide&lt;/a&gt; for more details. (Note that the authorization header required is &lt;code&gt;Authorization: Bearer &amp;lt;access_token&amp;gt;&lt;/code&gt;). - The token\&#39;s &lt;code&gt;user_account&lt;/code&gt; must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
+     * The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their &#x60;ad_account_id&#x60;. The request body should be a JSON object. - This endpoint requires an &#x60;access_token&#x60; be generated through Ads Manager. Review the [Conversions Guide](/docs/api-features/conversion-overview/) for more details. (Note that the authorization header required is &#x60;Authorization: Bearer &lt;access_token&gt;&#x60;). - The token\&#39;s &#x60;user_account&#x60; must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
      * @endpoint post /ad_accounts/{ad_account_id}/events
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionEvents Conversion events.
+     * @param conversionEventsCreate 
      * @param test Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public eventsCreate(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionApiResponse>;
-    public eventsCreate(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionApiResponse>>;
-    public eventsCreate(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionApiResponse>>;
-    public eventsCreate(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public eventsCreate(adAccountId: string, conversionEventsCreate: ConversionEventsCreate, test?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionEvents>;
+    public eventsCreate(adAccountId: string, conversionEventsCreate: ConversionEventsCreate, test?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionEvents>>;
+    public eventsCreate(adAccountId: string, conversionEventsCreate: ConversionEventsCreate, test?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionEvents>>;
+    public eventsCreate(adAccountId: string, conversionEventsCreate: ConversionEventsCreate, test?: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling eventsCreate.');
         }
-        if (conversionEvents === null || conversionEvents === undefined) {
-            throw new Error('Required parameter conversionEvents was null or undefined when calling eventsCreate.');
+        if (conversionEventsCreate === null || conversionEventsCreate === undefined) {
+            throw new Error('Required parameter conversionEventsCreate was null or undefined when calling eventsCreate.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
@@ -114,10 +116,10 @@ export class ConversionEventsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/events`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<ConversionApiResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<ConversionEvents>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: conversionEvents,
+                body: conversionEventsCreate,
                 params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),

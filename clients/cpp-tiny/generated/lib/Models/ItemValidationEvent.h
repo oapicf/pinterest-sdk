@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set The attribute that the item validation event references
 	 */
-	void setAttribute(std::string  attribute);
+	void setAttribute(std::string attribute);
 	/*! \brief Get The event code that the item validation event references
 	 */
 	int getCode();
 
 	/*! \brief Set The event code that the item validation event references
 	 */
-	void setCode(int  code);
+	void setCode(int code);
 	/*! \brief Get Title message describing the item validation event
 	 */
 	std::string getMessage();
 
 	/*! \brief Set Title message describing the item validation event
 	 */
-	void setMessage(std::string  message);
+	void setMessage(std::string message);
 
 
     private:

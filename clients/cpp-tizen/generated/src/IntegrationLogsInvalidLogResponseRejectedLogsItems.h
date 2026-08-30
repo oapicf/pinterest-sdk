@@ -1,0 +1,89 @@
+/*
+ * IntegrationLogsInvalidLogResponseRejectedLogsItems.h
+ *
+ * 
+ */
+
+#ifndef _IntegrationLogsInvalidLogResponseRejectedLogsItems_H_
+#define _IntegrationLogsInvalidLogResponseRejectedLogsItems_H_
+
+
+#include <string>
+#include "Object.h"
+
+/** \defgroup Models Data Structures for API
+ *  Classes containing all the Data Structures needed for calling/returned by API endpoints
+ *
+ */
+
+namespace Tizen {
+namespace ArtikCloud {
+
+
+/*! \brief 
+ *
+ *  \ingroup Models
+ *
+ */
+
+class IntegrationLogsInvalidLogResponseRejectedLogsItems : public Object {
+public:
+	/*! \brief Constructor.
+	 */
+	IntegrationLogsInvalidLogResponseRejectedLogsItems();
+	IntegrationLogsInvalidLogResponseRejectedLogsItems(char* str);
+
+	/*! \brief Destructor.
+	 */
+	virtual ~IntegrationLogsInvalidLogResponseRejectedLogsItems();
+
+	/*! \brief Retrieve a string JSON representation of this class.
+	 */
+	char* toJson();
+
+	/*! \brief Fills in members of this class from JSON string representing it.
+	 */
+	void fromJson(char* jsonStr);
+
+	/*! \brief Get The field name containing an invalid value.
+	 */
+	std::string getField();
+
+	/*! \brief Set The field name containing an invalid value.
+	 */
+	void setField(std::string  field);
+	/*! \brief Get Index of the log in the batch.
+	 */
+	int getLogIndex();
+
+	/*! \brief Set Index of the log in the batch.
+	 */
+	void setLogIndex(int  log_index);
+	/*! \brief Get The reason the value is invalid.
+	 */
+	std::string getReason();
+
+	/*! \brief Set The reason the value is invalid.
+	 */
+	void setReason(std::string  reason);
+	/*! \brief Get The value that is invalid.
+	 */
+	std::string getValue();
+
+	/*! \brief Set The value that is invalid.
+	 */
+	void setValue(std::string  value);
+
+private:
+	std::string field;
+	int log_index;
+	std::string reason;
+	std::string value;
+	void __init();
+	void __cleanup();
+
+};
+}
+}
+
+#endif /* _IntegrationLogsInvalidLogResponseRejectedLogsItems_H_ */

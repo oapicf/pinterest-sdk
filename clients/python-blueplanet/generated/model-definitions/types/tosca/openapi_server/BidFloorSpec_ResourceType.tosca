@@ -8,10 +8,10 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   ActionType = openapi_server.resourceTypes.ActionType
+  BidFloorObjectiveType = openapi_server.resourceTypes.BidFloorObjectiveType
   Country = openapi_server.resourceTypes.Country
   CreativeType = openapi_server.resourceTypes.CreativeType
   Currency = openapi_server.resourceTypes.Currency
-  ObjectiveType = openapi_server.resourceTypes.ObjectiveType
   OptimizationGoalMetadata = openapi_server.resourceTypes.OptimizationGoalMetadata
 }
 resourceTypes {
@@ -23,33 +23,33 @@ resourceTypes {
     properties {
         billable_event {
           type = ActionType
-          description = ""
+          description = "Ad group billable event type."
           optional = true
         }
         countries {
           type = array
           items.type = Country
-          description = ""
+          description = "List of ISO 3166-1 alpha-2 country codes."
           optional = false
         }
         creative_type {
           type = CreativeType
-          description = ""
+          description = "Creative type for the bid floor request."
           optional = false
         }
         currency {
           type = Currency
-          description = ""
+          description = "Currency for the bid floor value."
           optional = true
         }
         objective_type {
-          type = ObjectiveType
-          description = ""
+          type = BidFloorObjectiveType
+          description = "Campaign objective type."
           optional = false
         }
         optimization_goal_metadata {
           type = OptimizationGoalMetadata
-          description = ""
+          description = "Optimization goal metadata."
           optional = false
         }
     }

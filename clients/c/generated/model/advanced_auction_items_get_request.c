@@ -13,10 +13,10 @@ static advanced_auction_items_get_request_t *advanced_auction_items_get_request_
     if (!advanced_auction_items_get_request_local_var) {
         return NULL;
     }
+    memset(advanced_auction_items_get_request_local_var, 0, sizeof(advanced_auction_items_get_request_t));
+    advanced_auction_items_get_request_local_var->_library_owned = 1;
     advanced_auction_items_get_request_local_var->catalog_id = catalog_id;
     advanced_auction_items_get_request_local_var->items = items;
-
-    advanced_auction_items_get_request_local_var->_library_owned = 1;
     return advanced_auction_items_get_request_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) advanced_auction_items_get_request_t *advanced_aucti
     char *catalog_id,
     list_t *items
     ) {
-    return advanced_auction_items_get_request_create_internal (
+    advanced_auction_items_get_request_t *result = advanced_auction_items_get_request_create_internal (
         catalog_id,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void advanced_auction_items_get_request_free(advanced_auction_items_get_request_t *advanced_auction_items_get_request) {
@@ -45,7 +48,7 @@ void advanced_auction_items_get_request_free(advanced_auction_items_get_request_
     }
     if (advanced_auction_items_get_request->items) {
         list_ForEach(listEntry, advanced_auction_items_get_request->items) {
-            advanced_auction_items_get_record_free(listEntry->data);
+            advanced_auction_key_free(listEntry->data);
         }
         list_freeList(advanced_auction_items_get_request->items);
         advanced_auction_items_get_request->items = NULL;
@@ -77,7 +80,7 @@ cJSON *advanced_auction_items_get_request_convertToJSON(advanced_auction_items_g
     listEntry_t *itemsListEntry;
     if (advanced_auction_items_get_request->items) {
     list_ForEach(itemsListEntry, advanced_auction_items_get_request->items) {
-    cJSON *itemLocal = advanced_auction_items_get_record_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = advanced_auction_key_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -96,6 +99,8 @@ fail:
 advanced_auction_items_get_request_t *advanced_auction_items_get_request_parseFromJSON(cJSON *advanced_auction_items_get_requestJSON){
 
     advanced_auction_items_get_request_t *advanced_auction_items_get_request_local_var = NULL;
+
+    char *catalog_id_local_str = NULL;
 
     // define the local list for advanced_auction_items_get_request->items
     list_t *itemsList = NULL;
@@ -137,23 +142,33 @@ advanced_auction_items_get_request_t *advanced_auction_items_get_request_parseFr
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        advanced_auction_items_get_record_t *itemsItem = advanced_auction_items_get_record_parseFromJSON(items_local_nonprimitive);
+        advanced_auction_key_t *itemsItem = advanced_auction_key_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+
     advanced_auction_items_get_request_local_var = advanced_auction_items_get_request_create_internal (
-        strdup(catalog_id->valuestring),
+        catalog_id_local_str,
         itemsList
         );
 
+    if (!advanced_auction_items_get_request_local_var) {
+        goto end;
+    }
+
     return advanced_auction_items_get_request_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            advanced_auction_items_get_record_free(listEntry->data);
+            advanced_auction_key_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

@@ -7,7 +7,7 @@ Report parameters
 
 Name | Type
 ------------ | -------------
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `report` | [CatalogsHotelReportParametersReport](CatalogsHotelReportParametersReport.md)
 
 ## Example

@@ -4,11 +4,28 @@
 #include "image_metadata.h"
 
 
+char* image_metadata_item_type_ToString(pinterest_rest_api_image_metadata_ITEMTYPE_e item_type) {
+    char* item_typeArray[] =  { "NULL", "image" };
+    return item_typeArray[item_type];
+}
+
+pinterest_rest_api_image_metadata_ITEMTYPE_e image_metadata_item_type_FromString(char* item_type){
+    int stringToReturn = 0;
+    char *item_typeArray[] =  { "NULL", "image" };
+    size_t sizeofArray = sizeof(item_typeArray) / sizeof(item_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(item_type, item_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 static image_metadata_t *image_metadata_create_internal(
     char *description,
     image_size_t *images,
-    char *item_type,
+    pinterest_rest_api_image_metadata_ITEMTYPE_e item_type,
     char *link,
     char *title
     ) {
@@ -16,30 +33,33 @@ static image_metadata_t *image_metadata_create_internal(
     if (!image_metadata_local_var) {
         return NULL;
     }
+    memset(image_metadata_local_var, 0, sizeof(image_metadata_t));
+    image_metadata_local_var->_library_owned = 1;
     image_metadata_local_var->description = description;
     image_metadata_local_var->images = images;
     image_metadata_local_var->item_type = item_type;
     image_metadata_local_var->link = link;
     image_metadata_local_var->title = title;
-
-    image_metadata_local_var->_library_owned = 1;
     return image_metadata_local_var;
 }
 
 __attribute__((deprecated)) image_metadata_t *image_metadata_create(
     char *description,
     image_size_t *images,
-    char *item_type,
+    pinterest_rest_api_image_metadata_ITEMTYPE_e item_type,
     char *link,
     char *title
     ) {
-    return image_metadata_create_internal (
+    image_metadata_t *result = image_metadata_create_internal (
         description,
         images,
         item_type,
         link,
         title
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void image_metadata_free(image_metadata_t *image_metadata) {
@@ -58,10 +78,6 @@ void image_metadata_free(image_metadata_t *image_metadata) {
     if (image_metadata->images) {
         image_size_free(image_metadata->images);
         image_metadata->images = NULL;
-    }
-    if (image_metadata->item_type) {
-        free(image_metadata->item_type);
-        image_metadata->item_type = NULL;
     }
     if (image_metadata->link) {
         free(image_metadata->link);
@@ -99,10 +115,12 @@ cJSON *image_metadata_convertToJSON(image_metadata_t *image_metadata) {
 
 
     // image_metadata->item_type
-    if(image_metadata->item_type) {
-    if(cJSON_AddStringToObject(item, "item_type", image_metadata->item_type) == NULL) {
-    goto fail; //String
+    if (pinterest_rest_api_image_metadata_ITEMTYPE_NULL == image_metadata->item_type) {
+        goto fail;
     }
+    if(cJSON_AddStringToObject(item, "item_type", image_metadata_item_type_ToString(image_metadata->item_type)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -133,8 +151,14 @@ image_metadata_t *image_metadata_parseFromJSON(cJSON *image_metadataJSON){
 
     image_metadata_t *image_metadata_local_var = NULL;
 
+    char *description_local_str = NULL;
+
     // define the local variable for image_metadata->images
     image_size_t *images_local_nonprim = NULL;
+
+    char *link_local_str = NULL;
+
+    char *title_local_str = NULL;
 
     // image_metadata->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(image_metadataJSON, "description");
@@ -162,12 +186,17 @@ image_metadata_t *image_metadata_parseFromJSON(cJSON *image_metadataJSON){
     if (cJSON_IsNull(item_type)) {
         item_type = NULL;
     }
-    if (item_type) { 
-    if(!cJSON_IsString(item_type) && !cJSON_IsNull(item_type))
+    if (!item_type) {
+        goto end;
+    }
+
+    pinterest_rest_api_image_metadata_ITEMTYPE_e item_typeVariable;
+    
+    if(!cJSON_IsString(item_type))
     {
-    goto end; //String
+    goto end; //Enum
     }
-    }
+    item_typeVariable = image_metadata_item_type_FromString(item_type->valuestring);
 
     // image_metadata->link
     cJSON *link = cJSON_GetObjectItemCaseSensitive(image_metadataJSON, "link");
@@ -194,19 +223,39 @@ image_metadata_t *image_metadata_parseFromJSON(cJSON *image_metadataJSON){
     }
 
 
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     image_metadata_local_var = image_metadata_create_internal (
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        description_local_str,
         images ? images_local_nonprim : NULL,
-        item_type && !cJSON_IsNull(item_type) ? strdup(item_type->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL
+        item_typeVariable,
+        link_local_str,
+        title_local_str
         );
+
+    if (!image_metadata_local_var) {
+        goto end;
+    }
 
     return image_metadata_local_var;
 end:
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
     if (images_local_nonprim) {
         image_size_free(images_local_nonprim);
         images_local_nonprim = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
     }
     return NULL;
 

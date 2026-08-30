@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **CustomerListId** | **string** | ID of the customer list associated with this upload. | 
 **Id** | **string** | Customer List Upload ID. | 
 **Operation** | **UserListOperationType** |  | 
-**State** | **string** | Workload processing state | 
+**State** | **WorkloadState** |  | 
 **UpdatedTime** | **int** | Customer List Upload updated_time. Epoch (seconds). | 
 **ErrorCounts** | [**List&lt;ErrorDetail&gt;**](ErrorDetail.md) | Error counts by error code | [optional] 
-**RecordCounts** | [**RecordCounts**](RecordCounts.md) |  | [optional] 
+**RecordCounts** | [**RecordCounts**](RecordCounts.md) | Record processing counts | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

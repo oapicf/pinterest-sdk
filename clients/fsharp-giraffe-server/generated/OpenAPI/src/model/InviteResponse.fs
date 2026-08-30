@@ -2,9 +2,9 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.BaseInviteDataResponseInviteData
 open OpenAPI.Model.BusinessAccessUserSummary
 open OpenAPI.Model.InviteAssetsSummary
+open OpenAPI.Model.InviteDataResponse
 
 module InviteResponse =
 
@@ -12,14 +12,14 @@ module InviteResponse =
 
 
   type InviteResponse = {
-    Id : string;
-    InviteData : BaseInviteDataResponseInviteData;
-    IsReceivedInvite : bool;
-    User : BusinessAccessUserSummary;
     AssetsSummary : InviteAssetsSummary;
     BusinessRoles : string[];
-    CreatedByBusiness : obj;
-    CreatedByUser : obj;
+    CreatedByBusiness : BusinessAccessUserSummary;
+    CreatedByUser : BusinessAccessUserSummary;
     CreatedTime : int;
+    Id : string;
+    InviteData : InviteDataResponse;
+    IsReceivedInvite : bool;
+    User : BusinessAccessUserSummary;
   }
   //#endregion

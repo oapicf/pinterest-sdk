@@ -41,7 +41,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}external_business_id`,
-                label: `[${labelPrefix}external_business_id]`,
+                label: `External business ID for the integration. - [${labelPrefix}external_business_id]`,
                 type: 'string',
             },
             {

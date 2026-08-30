@@ -23,11 +23,11 @@ services:
 ```
 
 ## **leadFormGet**
-> OpenAPI\Server\Model\LeadFormResponse leadFormGet($adAccountId, $leadFormId)
+> OpenAPI\Server\Model\LeadForm leadFormGet($leadFormId, $adAccountId)
 
 Get lead form by id
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example Implementation
 ```php
@@ -54,7 +54,7 @@ class LeadFormsApi implements LeadFormsApiInterface
     /**
      * Implementation of LeadFormsApiInterface#leadFormGet
      */
-    public function leadFormGet(string $adAccountId, string $leadFormId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function leadFormGet(string $leadFormId, string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -67,12 +67,12 @@ class LeadFormsApi implements LeadFormsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **leadFormId** | **string**| The ID of this lead form |
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **leadFormId** | **string**| Unique identifier of a lead form. |
 
 ### Return type
 
-[**OpenAPI\Server\Model\LeadFormResponse**](../Model/LeadFormResponse.md)
+[**OpenAPI\Server\Model\LeadForm**](../Model/LeadForm.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **leadFormTestCreate**
-> OpenAPI\Server\Model\LeadFormTestResponse leadFormTestCreate($adAccountId, $leadFormId, $leadFormTestRequest)
+> OpenAPI\Server\Model\LeadFormTest leadFormTestCreate($adAccountId, $leadFormId, $leadFormTestCreate)
 
 Create lead form test data
 
@@ -117,7 +117,7 @@ class LeadFormsApi implements LeadFormsApiInterface
     /**
      * Implementation of LeadFormsApiInterface#leadFormTestCreate
      */
-    public function leadFormTestCreate(string $adAccountId, string $leadFormId, LeadFormTestRequest $leadFormTestRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function leadFormTestCreate(string $adAccountId, string $leadFormId, LeadFormTestCreate $leadFormTestCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -130,13 +130,13 @@ class LeadFormsApi implements LeadFormsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string**| Unique identifier of an ad account. |
+ **adAccountId** | **string**|  |
  **leadFormId** | **string**| Unique identifier of a lead form. |
- **leadFormTestRequest** | [**OpenAPI\Server\Model\LeadFormTestRequest**](../Model/LeadFormTestRequest.md)| Subscription to create. |
+ **leadFormTestCreate** | [**OpenAPI\Server\Model\LeadFormTestCreate**](../Model/LeadFormTestCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\LeadFormTestResponse**](../Model/LeadFormTestResponse.md)
+[**OpenAPI\Server\Model\LeadFormTest**](../Model/LeadFormTest.md)
 
 ### Authorization
 
@@ -150,11 +150,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **leadFormsCreate**
-> OpenAPI\Server\Model\LeadFormArrayResponse leadFormsCreate($adAccountId, $leadFormCreateRequest)
+> OpenAPI\Server\Model\LeadFormsCreate200Response leadFormsCreate($adAccountId, $leadFormCreate)
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example Implementation
 ```php
@@ -181,7 +181,7 @@ class LeadFormsApi implements LeadFormsApiInterface
     /**
      * Implementation of LeadFormsApiInterface#leadFormsCreate
      */
-    public function leadFormsCreate(string $adAccountId, array $leadFormCreateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function leadFormsCreate(string $adAccountId, array $leadFormCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -195,11 +195,11 @@ class LeadFormsApi implements LeadFormsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **leadFormCreateRequest** | [**OpenAPI\Server\Model\LeadFormCreateRequest**](../Model/LeadFormCreateRequest.md)| List of lead forms to create, size limit [1, 30]. |
+ **leadFormCreate** | [**OpenAPI\Server\Model\LeadFormCreate**](../Model/LeadFormCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\LeadFormArrayResponse**](../Model/LeadFormArrayResponse.md)
+[**OpenAPI\Server\Model\LeadFormsCreate200Response**](../Model/LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -213,11 +213,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **leadFormsList**
-> OpenAPI\Server\Model\LeadFormsList200Response leadFormsList($adAccountId, $pageSize, $order, $bookmark)
+> OpenAPI\Server\Model\LeadFormsList200Response leadFormsList($adAccountId, $bookmark, $pageSize, $order)
 
 List lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example Implementation
 ```php
@@ -244,7 +244,7 @@ class LeadFormsApi implements LeadFormsApiInterface
     /**
      * Implementation of LeadFormsApiInterface#leadFormsList
      */
-    public function leadFormsList(string $adAccountId, int $pageSize, ?string $order, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function leadFormsList(string $adAccountId, ?string $bookmark, int $pageSize, ?PinterestLibPaginationOrder $order, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -258,9 +258,9 @@ class LeadFormsApi implements LeadFormsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
 
 ### Return type
 
@@ -278,11 +278,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **leadFormsUpdate**
-> OpenAPI\Server\Model\LeadFormArrayResponse leadFormsUpdate($adAccountId, $leadFormUpdateRequest)
+> OpenAPI\Server\Model\LeadFormsCreate200Response leadFormsUpdate($adAccountId, $leadFormBatchUpdate)
 
 Update lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example Implementation
 ```php
@@ -309,7 +309,7 @@ class LeadFormsApi implements LeadFormsApiInterface
     /**
      * Implementation of LeadFormsApiInterface#leadFormsUpdate
      */
-    public function leadFormsUpdate(string $adAccountId, array $leadFormUpdateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function leadFormsUpdate(string $adAccountId, array $leadFormBatchUpdate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -323,11 +323,11 @@ class LeadFormsApi implements LeadFormsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **leadFormUpdateRequest** | [**OpenAPI\Server\Model\LeadFormUpdateRequest**](../Model/LeadFormUpdateRequest.md)| List of lead forms to update, size limit [1, 30]. |
+ **leadFormBatchUpdate** | [**OpenAPI\Server\Model\LeadFormBatchUpdate**](../Model/LeadFormBatchUpdate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\LeadFormArrayResponse**](../Model/LeadFormArrayResponse.md)
+[**OpenAPI\Server\Model\LeadFormsCreate200Response**](../Model/LeadFormsCreate200Response.md)
 
 ### Authorization
 

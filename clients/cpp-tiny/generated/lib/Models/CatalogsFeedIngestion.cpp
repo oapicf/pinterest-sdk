@@ -9,7 +9,7 @@ CatalogsFeedIngestion::CatalogsFeedIngestion()
 	created_at = std::string();
 	feed_id = std::string();
 	id = std::string();
-	status = CatalogsFeedProcessingStatus();
+	status = null;
 }
 
 CatalogsFeedIngestion::CatalogsFeedIngestion(std::string jsonString)
@@ -128,7 +128,7 @@ CatalogsFeedIngestion::getCreatedAt()
 }
 
 void
-CatalogsFeedIngestion::setCreatedAt(std::string  created_at)
+CatalogsFeedIngestion::setCreatedAt(std::string created_at)
 {
 	this->created_at = created_at;
 }
@@ -140,7 +140,7 @@ CatalogsFeedIngestion::getFeedId()
 }
 
 void
-CatalogsFeedIngestion::setFeedId(std::string  feed_id)
+CatalogsFeedIngestion::setFeedId(std::string feed_id)
 {
 	this->feed_id = feed_id;
 }
@@ -152,7 +152,7 @@ CatalogsFeedIngestion::getId()
 }
 
 void
-CatalogsFeedIngestion::setId(std::string  id)
+CatalogsFeedIngestion::setId(std::string id)
 {
 	this->id = id;
 }
@@ -164,7 +164,7 @@ CatalogsFeedIngestion::getStatus()
 }
 
 void
-CatalogsFeedIngestion::setStatus(CatalogsFeedProcessingStatus  status)
+CatalogsFeedIngestion::setStatus(CatalogsFeedProcessingStatus status)
 {
 	this->status = status;
 }

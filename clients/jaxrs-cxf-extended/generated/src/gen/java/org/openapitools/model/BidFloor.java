@@ -11,6 +11,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
+/**
+ * Bid floor request and response model.
+ */
+@ApiModel(description="Bid floor request and response model.")
+
 public class BidFloor  {
   
  /**
@@ -20,9 +25,9 @@ public class BidFloor  {
   private List<Integer> bidFloors = new ArrayList<>();
 
  /**
-  * Always the string 'bidfloor'
+  * Always the string 'bidfloor'.
   */
-  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
+  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'.")
   private String type = "bidfloor";
  /**
   * A list of bid floors in micro currency. For example, [100000, 200000]
@@ -35,6 +40,7 @@ public class BidFloor  {
 
   /**
    * Sets the <code>bidFloors</code> property.
+   * <br><em>N.B. <code>bidFloors</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setBidFloors(List<Integer> bidFloors) {
     this.bidFloors = bidFloors;
@@ -42,6 +48,7 @@ public class BidFloor  {
 
   /**
    * Sets the <code>bidFloors</code> property.
+   * <br><em>N.B. <code>bidFloors</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public BidFloor bidFloors(List<Integer> bidFloors) {
     this.bidFloors = bidFloors;
@@ -50,6 +57,7 @@ public class BidFloor  {
 
   /**
    * Adds a new item to the <code>bidFloors</code> list.
+   * <br><em>N.B. <code>bidFloors</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public BidFloor addBidFloorsItem(Integer bidFloorsItem) {
     this.bidFloors.add(bidFloorsItem);
@@ -57,7 +65,7 @@ public class BidFloor  {
   }
 
  /**
-  * Always the string &#39;bidfloor&#39;
+  * Always the string &#39;bidfloor&#39;.
   * @return type
   */
   @JsonProperty("type")
@@ -67,6 +75,7 @@ public class BidFloor  {
 
   /**
    * Sets the <code>type</code> property.
+   * <br><em>N.B. <code>type</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setType(String type) {
     this.type = type;
@@ -74,6 +83,7 @@ public class BidFloor  {
 
   /**
    * Sets the <code>type</code> property.
+   * <br><em>N.B. <code>type</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public BidFloor type(String type) {
     this.type = type;
@@ -115,10 +125,7 @@ public class BidFloor  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

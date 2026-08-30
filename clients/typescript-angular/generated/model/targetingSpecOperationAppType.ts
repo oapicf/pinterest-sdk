@@ -7,25 +7,20 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { TargetingSpecListOperation } from './targetingSpecListOperation';
 import { TargetingSpecAppType } from './targetingSpecAppType';
 
 
 export interface TargetingSpecOperationAppType { 
     field: TargetingSpecOperationAppType.FieldEnum;
-    operation: TargetingSpecOperationAppType.OperationEnum;
-    values: Array<TargetingSpecAppType> | null;
+    operation: TargetingSpecListOperation;
+    values: Array<TargetingSpecAppType>;
 }
 export namespace TargetingSpecOperationAppType {
     export const FieldEnum = {
         Apptype: 'APPTYPE'
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
-    export const OperationEnum = {
-        Set: 'SET',
-        Add: 'ADD',
-        Remove: 'REMOVE'
-    } as const;
-    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

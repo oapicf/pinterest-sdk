@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
+* Account type filter for audience sharing.
 * Values: AD_ACCOUNT,BUSINESS_ACCOUNT
 */
 enum class AudienceAccountType(@get:JsonValue val value: kotlin.String) {

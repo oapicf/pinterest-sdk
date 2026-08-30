@@ -1,5 +1,6 @@
 # openapi::SSIOInsertionOrderStatus
 
+SSIO insertion order status item in a list response.
 
 ## Properties
 Name | Type | Description | Notes

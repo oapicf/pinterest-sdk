@@ -28,7 +28,7 @@ resourceTypes {
         }
         metrics {
           # TODO
-          description = "The metric name and daily value for each requested metric"
+          description = ""
           optional = false
         }
     }

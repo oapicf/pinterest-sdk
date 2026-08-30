@@ -5,7 +5,7 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
-#include "../model/error.h"
+#include "../model/pinterest_lib_error.h"
 #include "../model/terms_of_service.h"
 
 

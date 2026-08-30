@@ -1,8 +1,9 @@
 package apimodels;
 
+import apimodels.CatalogsAiContentDisclosure;
 import apimodels.CatalogsHotelAddress;
-import apimodels.CatalogsHotelAttributesAllOfMainImage;
 import apimodels.CatalogsHotelGuestRatings;
+import apimodels.CatalogsHotelMainImage;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +18,7 @@ import javax.validation.Valid;
 /**
  * CatalogsHotelAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelAttributes   {
   @JsonProperty("address")
@@ -96,10 +97,15 @@ public class CatalogsHotelAttributes   {
   
   private List<String> additionalImageLink = null;
 
+  @JsonProperty("ai_disclosures")
+  @Valid
+
+  private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = null;
+
   @JsonProperty("main_image")
   @Valid
 
-  private CatalogsHotelAttributesAllOfMainImage mainImage;
+  private CatalogsHotelMainImage mainImage;
 
   public CatalogsHotelAttributes address(CatalogsHotelAddress address) {
     this.address = address;
@@ -107,7 +113,7 @@ public class CatalogsHotelAttributes   {
   }
 
    /**
-   * Get address
+   * Hotel address
    * @return address
   **/
   public CatalogsHotelAddress getAddress() {
@@ -277,7 +283,7 @@ public class CatalogsHotelAttributes   {
   }
 
    /**
-   * Get guestRatings
+   * If specified, you must provide all properties
    * @return guestRatings
   **/
   public CatalogsHotelGuestRatings getGuestRatings() {
@@ -412,7 +418,7 @@ public class CatalogsHotelAttributes   {
   }
 
    /**
-   * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+   * <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
    * @return additionalImageLink
   **/
   public List<String> getAdditionalImageLink() {
@@ -423,20 +429,45 @@ public class CatalogsHotelAttributes   {
     this.additionalImageLink = additionalImageLink;
   }
 
-  public CatalogsHotelAttributes mainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public CatalogsHotelAttributes aiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  public CatalogsHotelAttributes addAiDisclosuresItem(CatalogsAiContentDisclosure aiDisclosuresItem) {
+    if (this.aiDisclosures == null) {
+      this.aiDisclosures = new ArrayList<>();
+    }
+    this.aiDisclosures.add(aiDisclosuresItem);
+    return this;
+  }
+
+   /**
+   * AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+   * @return aiDisclosures
+  **/
+  public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
+
+  public CatalogsHotelAttributes mainImage(CatalogsHotelMainImage mainImage) {
     this.mainImage = mainImage;
     return this;
   }
 
    /**
-   * Get mainImage
+   * The main hotel image
    * @return mainImage
   **/
-  public CatalogsHotelAttributesAllOfMainImage getMainImage() {
+  public CatalogsHotelMainImage getMainImage() {
     return mainImage;
   }
 
-  public void setMainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public void setMainImage(CatalogsHotelMainImage mainImage) {
     this.mainImage = mainImage;
   }
 
@@ -468,12 +499,13 @@ public class CatalogsHotelAttributes   {
         Objects.equals(neighborhood, catalogsHotelAttributes.neighborhood) &&
         Objects.equals(salePrice, catalogsHotelAttributes.salePrice) &&
         Objects.equals(additionalImageLink, catalogsHotelAttributes.additionalImageLink) &&
+        Objects.equals(aiDisclosures, catalogsHotelAttributes.aiDisclosures) &&
         Objects.equals(mainImage, catalogsHotelAttributes.mainImage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice, additionalImageLink, mainImage);
+    return Objects.hash(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice, additionalImageLink, aiDisclosures, mainImage);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -500,6 +532,7 @@ public class CatalogsHotelAttributes   {
     sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    mainImage: ").append(toIndentedString(mainImage)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -510,10 +543,7 @@ public class CatalogsHotelAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

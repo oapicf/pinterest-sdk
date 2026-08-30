@@ -23,7 +23,7 @@ typedef struct catalogs_feed_ingestion_t {
     char *created_at; //date time
     char *feed_id; // string
     char *id; // string
-    pinterest_rest_api_catalogs_feed_processing_status__e status; //referenced enum
+    catalogs_feed_processing_status_t *status; // custom
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_ingestion_t;
@@ -32,7 +32,7 @@ __attribute__((deprecated)) catalogs_feed_ingestion_t *catalogs_feed_ingestion_c
     char *created_at,
     char *feed_id,
     char *id,
-    pinterest_rest_api_catalogs_feed_processing_status__e status
+    catalogs_feed_processing_status_t *status
 );
 
 void catalogs_feed_ingestion_free(catalogs_feed_ingestion_t *catalogs_feed_ingestion);

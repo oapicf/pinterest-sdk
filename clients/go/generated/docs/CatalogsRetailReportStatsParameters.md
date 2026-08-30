@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | **string** |  | 
-**Report** | [**CatalogsHotelReportStatsParametersReport**](CatalogsHotelReportStatsParametersReport.md) |  | 
+**Report** | [**CatalogsRetailReportStatsParametersReport**](CatalogsRetailReportStatsParametersReport.md) |  | 
 
 ## Methods
 
 ### NewCatalogsRetailReportStatsParameters
 
-`func NewCatalogsRetailReportStatsParameters(catalogType string, report CatalogsHotelReportStatsParametersReport, ) *CatalogsRetailReportStatsParameters`
+`func NewCatalogsRetailReportStatsParameters(catalogType string, report CatalogsRetailReportStatsParametersReport, ) *CatalogsRetailReportStatsParameters`
 
 NewCatalogsRetailReportStatsParameters instantiates a new CatalogsRetailReportStatsParameters object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetCatalogType sets CatalogType field to given value.
 
 ### GetReport
 
-`func (o *CatalogsRetailReportStatsParameters) GetReport() CatalogsHotelReportStatsParametersReport`
+`func (o *CatalogsRetailReportStatsParameters) GetReport() CatalogsRetailReportStatsParametersReport`
 
 GetReport returns the Report field if non-nil, zero value otherwise.
 
 ### GetReportOk
 
-`func (o *CatalogsRetailReportStatsParameters) GetReportOk() (*CatalogsHotelReportStatsParametersReport, bool)`
+`func (o *CatalogsRetailReportStatsParameters) GetReportOk() (*CatalogsRetailReportStatsParametersReport, bool)`
 
 GetReportOk returns a tuple with the Report field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReport
 
-`func (o *CatalogsRetailReportStatsParameters) SetReport(v CatalogsHotelReportStatsParametersReport)`
+`func (o *CatalogsRetailReportStatsParameters) SetReport(v CatalogsRetailReportStatsParametersReport)`
 
 SetReport sets Report field to given value.
 

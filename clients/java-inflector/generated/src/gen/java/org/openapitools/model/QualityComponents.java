@@ -16,7 +16,7 @@ import org.openapitools.model.QualityComponentDetails;
  **/
 
 @ApiModel(description = "Set of quality components, with each component containing a event coverage and details.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class QualityComponents   {
   @JsonProperty("advertiser_external_id")
   private Map<String, QualityComponentDetails> advertiserExternalId = null;
@@ -294,10 +294,7 @@ public class QualityComponents   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -8,11 +8,19 @@ import org.openapitools.model.CatalogsReportFeedIngestionStats;
 
 @Canonical
 class CatalogsReportStats {
+    /* ID of the catalog entity. */
+    String catalogId
+    /* The event code that a diagnostics aggregated number references */
+    Integer code
+    /* A human-friendly label for the event code (e.g, 'SPAM') */
+    String codeLabel
+    /* Title message describing the diagnostic issue */
+    String message
+    /* Number of occurrences of the issue */
+    Integer occurrences
 
     enum ReportTypeEnum {
     
-        FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
-        
         DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES")
     
         private final String value
@@ -33,16 +41,6 @@ class CatalogsReportStats {
 
     
     ReportTypeEnum reportType
-    /* ID of the catalog entity. */
-    String catalogId
-    /* The event code that a diagnostics aggregated number references */
-    Integer code
-    /* A human-friendly label for the event code (e.g, 'SPAM') */
-    String codeLabel
-    /* Title message describing the diagnostic issue */
-    String message
-    /* Number of occurrences of the issue */
-    Integer occurrences
 
     enum SeverityEnum {
     

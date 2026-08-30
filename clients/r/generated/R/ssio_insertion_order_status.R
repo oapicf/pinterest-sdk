@@ -1,7 +1,7 @@
 #' Create a new SSIOInsertionOrderStatus
 #'
 #' @description
-#' SSIOInsertionOrderStatus Class
+#' SSIO insertion order status item in a list response.
 #'
 #' @docType class
 #' @title SSIOInsertionOrderStatus

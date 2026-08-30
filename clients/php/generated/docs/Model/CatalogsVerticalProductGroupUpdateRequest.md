@@ -1,4 +1,4 @@
-# # CatalogsVerticalProductGroupUpdateRequest
+# CatalogsVerticalProductGroupUpdateRequest
 
 ## Properties
 
@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **description** | **string** |  | [optional]
 **filters** | [**\OpenAPI\Client\Model\CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional]
 **locale** | [**\OpenAPI\Client\Model\CatalogsLocale**](CatalogsLocale.md) |  | [optional]
-**name** | **string** |  | [optional]
+**name** | **string** | Name of catalog product group | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -85,7 +85,7 @@ AdvancedAuctionOperationError::getCode()
 }
 
 void
-AdvancedAuctionOperationError::setCode(int  code)
+AdvancedAuctionOperationError::setCode(int code)
 {
 	this->code = code;
 }
@@ -97,7 +97,7 @@ AdvancedAuctionOperationError::getMessage()
 }
 
 void
-AdvancedAuctionOperationError::setMessage(std::string  message)
+AdvancedAuctionOperationError::setMessage(std::string message)
 {
 	this->message = message;
 }

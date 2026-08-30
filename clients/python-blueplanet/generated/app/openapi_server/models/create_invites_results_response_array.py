@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.create_invites_results_response_array_items_inner import CreateInvitesResultsResponseArrayItemsInner  # noqa: F401,E501
+from app.openapi_server.models.invite_action_result_item import InviteActionResultItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class CreateInvitesResultsResponseArray(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, items: List[CreateInvitesResultsResponseArrayItemsInner]=None):  # noqa: E501
+    def __init__(self, items: List[InviteActionResultItem]=None):  # noqa: E501
         """CreateInvitesResultsResponseArray - a model defined in Swagger
 
         :param items: The items of this CreateInvitesResultsResponseArray.  # noqa: E501
-        :type items: List[CreateInvitesResultsResponseArrayItemsInner]
+        :type items: List[InviteActionResultItem]
         """
         self.swagger_types = {
-            'items': List[CreateInvitesResultsResponseArrayItemsInner]
+            'items': List[InviteActionResultItem]
         }
 
         self.attribute_map = {
@@ -44,24 +44,24 @@ class CreateInvitesResultsResponseArray(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def items(self) -> List[CreateInvitesResultsResponseArrayItemsInner]:
+    def items(self) -> List[InviteActionResultItem]:
         """Gets the items of this CreateInvitesResultsResponseArray.
 
         List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.  # noqa: E501
 
         :return: The items of this CreateInvitesResultsResponseArray.
-        :rtype: List[CreateInvitesResultsResponseArrayItemsInner]
+        :rtype: List[InviteActionResultItem]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[CreateInvitesResultsResponseArrayItemsInner]):
+    def items(self, items: List[InviteActionResultItem]):
         """Sets the items of this CreateInvitesResultsResponseArray.
 
         List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.  # noqa: E501
 
         :param items: The items of this CreateInvitesResultsResponseArray.
-        :type items: List[CreateInvitesResultsResponseArrayItemsInner]
+        :type items: List[InviteActionResultItem]
         """
 
         self._items = items

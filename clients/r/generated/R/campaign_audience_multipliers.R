@@ -7,7 +7,7 @@
 #' @title CampaignAudienceMultipliers
 #' @description CampaignAudienceMultipliers Class
 #' @format An \code{R6Class} generator object
-#' @field AUDIENCE_ID  character [optional]
+#' @field AUDIENCE_ID Audience ID for the multiplier. character [optional]
 #' @field _field_list a list of fields list(character)
 #' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
@@ -24,7 +24,7 @@ CampaignAudienceMultipliers <- R6::R6Class(
     #' @description
     #' Initialize a new CampaignAudienceMultipliers class.
     #'
-    #' @param AUDIENCE_ID AUDIENCE_ID
+    #' @param AUDIENCE_ID Audience ID for the multiplier.
     #' @param additional_properties additional properties (optional)
     #' @param ... Other optional arguments.
     initialize = function(`AUDIENCE_ID` = NULL, additional_properties = NULL, ...) {

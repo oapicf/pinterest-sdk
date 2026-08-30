@@ -19,14 +19,14 @@ typedef struct exception_t exception_t;
 
 
 typedef struct exception_t {
-    int code; //numeric
+    int *code; //numeric
     char *message; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } exception_t;
 
 __attribute__((deprecated)) exception_t *exception_create(
-    int code,
+    int *code,
     char *message
 );
 

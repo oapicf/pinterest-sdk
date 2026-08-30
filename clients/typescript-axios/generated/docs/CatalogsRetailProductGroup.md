@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the retail product group. | [default to undefined]
+**catalog_id** | **string** | Catalog ID pertaining to the product group. | [default to undefined]
 **catalog_type** | **string** |  | [default to undefined]
 **country** | **string** |  | [optional] [default to undefined]
 **created_at** | **number** | Unix timestamp in seconds of when catalog product group was created. | [optional] [default to undefined]

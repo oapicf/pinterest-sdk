@@ -12,11 +12,11 @@ part 'custom_number3_filter.g.dart';
 /// CustomNumber3Filter
 ///
 /// Properties:
-/// * [cUSTOMNUMBER3] 
+/// * [CUSTOM_NUMBER_3] 
 @BuiltValue()
 abstract class CustomNumber3Filter implements Built<CustomNumber3Filter, CustomNumber3FilterBuilder> {
   @BuiltValueField(wireName: r'CUSTOM_NUMBER_3')
-  CatalogsProductGroupUint32Criteria get cUSTOMNUMBER3;
+  CatalogsProductGroupUint32Criteria get CUSTOM_NUMBER_3;
 
   CustomNumber3Filter._();
 
@@ -43,7 +43,7 @@ class _$CustomNumber3FilterSerializer implements PrimitiveSerializer<CustomNumbe
   }) sync* {
     yield r'CUSTOM_NUMBER_3';
     yield serializers.serialize(
-      object.cUSTOMNUMBER3,
+      object.CUSTOM_NUMBER_3,
       specifiedType: const FullType(CatalogsProductGroupUint32Criteria),
     );
   }
@@ -74,7 +74,7 @@ class _$CustomNumber3FilterSerializer implements PrimitiveSerializer<CustomNumbe
             value,
             specifiedType: const FullType(CatalogsProductGroupUint32Criteria),
           ) as CatalogsProductGroupUint32Criteria;
-          result.cUSTOMNUMBER3 = valueDes;
+          result.CUSTOM_NUMBER_3.replace(valueDes);
           break;
         default:
           unhandled.add(key);

@@ -6,7 +6,7 @@ type IntegrationLogClientRequest struct {
 	// HTTP request host from host header.
 	Host string `json:"host"`
 
-	Method string `json:"method"`
+	Method HttpMethod `json:"method"`
 
 	// HTTP request path.
 	Path string `json:"path"`

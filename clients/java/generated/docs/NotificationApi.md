@@ -39,7 +39,7 @@ public class Example {
     client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     NotificationApi apiInstance = new NotificationApi(defaultClient);
-    NotificationPostRequest notificationPostRequest = new NotificationPostRequest(); // NotificationPostRequest | notification event.
+    NotificationPostRequest notificationPostRequest = new NotificationPostRequest(); // NotificationPostRequest | 
     try {
       NotificationResponse result = apiInstance.notificationPost(notificationPostRequest);
       System.out.println(result);
@@ -58,7 +58,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)| notification event. | |
+| **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)|  | |
 
 ### Return type
 
@@ -76,7 +76,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully received notification |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **0** | An unexpected error response. |  -  |
 

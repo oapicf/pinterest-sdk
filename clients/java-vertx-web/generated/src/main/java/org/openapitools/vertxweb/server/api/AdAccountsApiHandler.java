@@ -1,23 +1,25 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.AdAccount;
-import org.openapitools.vertxweb.server.model.AdAccountAnalyticsResponseInner;
+import org.openapitools.vertxweb.server.model.AdAccountAnalyticsItems;
 import org.openapitools.vertxweb.server.model.AdAccountCreate;
 import org.openapitools.vertxweb.server.model.AdAccountsList200Response;
+import org.openapitools.vertxweb.server.model.AdsAnalyticsAccountTargetingType;
 import org.openapitools.vertxweb.server.model.AdsAnalyticsCreateAsyncRequest;
 import org.openapitools.vertxweb.server.model.AdsAnalyticsCreateAsyncResponse;
 import org.openapitools.vertxweb.server.model.AdsAnalyticsGetAsyncResponse;
-import org.openapitools.vertxweb.server.model.AdsAnalyticsTargetingType;
-import org.openapitools.vertxweb.server.model.ConversionProductReportRequest;
+import java.math.BigDecimal;
+import org.openapitools.vertxweb.server.model.ConversionProductReport;
+import org.openapitools.vertxweb.server.model.ConversionProductReportCreate;
 import org.openapitools.vertxweb.server.model.ConversionReportAttributionType;
-import org.openapitools.vertxweb.server.model.CreateMMMReportRequest;
-import org.openapitools.vertxweb.server.model.CreateMMMReportResponse;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.GetMMMReportResponse;
 import org.openapitools.vertxweb.server.model.Granularity;
 import java.time.LocalDate;
+import org.openapitools.vertxweb.server.model.MMMReport;
+import org.openapitools.vertxweb.server.model.MMMReportCreate;
 import org.openapitools.vertxweb.server.model.MetricsResponse;
 import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
+import org.openapitools.vertxweb.server.model.ReportingColumnSync;
 import org.openapitools.vertxweb.server.model.ReportingTimeZone;
 import org.openapitools.vertxweb.server.model.TemplateBasedReport;
 import org.openapitools.vertxweb.server.model.TemplatesList200Response;
@@ -74,29 +76,29 @@ public class AdAccountsApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<String> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<String>>(){}) : null;
+        List<ReportingColumnSync> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<ReportingColumnSync>>(){}) : null;
         Granularity granularity = requestParameters.queryParameter("granularity") != null ? requestParameters.queryParameter("granularity").getGranularity() : null;
-        Integer clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getInteger() : 30;
-        Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
-        Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
+        BigDecimal clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getBigDecimal() : ;
+        BigDecimal engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getBigDecimal() : ;
+        BigDecimal viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getBigDecimal() : ;
         String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
         ReportingTimeZone reportingTimezone = requestParameters.queryParameter("reporting_timezone") != null ? requestParameters.queryParameter("reporting_timezone").getReportingTimeZone() : null;
 
-        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter startDate is {}", startDate);
         logger.debug("Parameter endDate is {}", endDate);
         logger.debug("Parameter columns is {}", columns);
         logger.debug("Parameter granularity is {}", granularity);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter clickWindowDays is {}", clickWindowDays);
         logger.debug("Parameter engagementWindowDays is {}", engagementWindowDays);
         logger.debug("Parameter viewWindowDays is {}", viewWindowDays);
         logger.debug("Parameter conversionReportTime is {}", conversionReportTime);
         logger.debug("Parameter reportingTimezone is {}", reportingTimezone);
 
-        api.adAccountAnalytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
+        api.adAccountAnalytics(startDate, endDate, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -117,12 +119,12 @@ public class AdAccountsApiHandler {
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<AdsAnalyticsTargetingType> targetingTypes = requestParameters.queryParameter("targeting_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("targeting_types").get(), new TypeReference<List<AdsAnalyticsTargetingType>>(){}) : null;
-        List<String> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<String>>(){}) : null;
+        List<AdsAnalyticsAccountTargetingType> targetingTypes = requestParameters.queryParameter("targeting_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("targeting_types").get(), new TypeReference<List<AdsAnalyticsAccountTargetingType>>(){}) : null;
+        List<ReportingColumnSync> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<ReportingColumnSync>>(){}) : null;
         Granularity granularity = requestParameters.queryParameter("granularity") != null ? requestParameters.queryParameter("granularity").getGranularity() : null;
-        Integer clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getInteger() : 30;
-        Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
-        Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
+        BigDecimal clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getBigDecimal() : ;
+        BigDecimal engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getBigDecimal() : ;
+        BigDecimal viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getBigDecimal() : ;
         String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
         List<ConversionReportAttributionType> attributionTypes = requestParameters.queryParameter("attribution_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("attribution_types").get(), new TypeReference<List<ConversionReportAttributionType>>(){}) : null;
         ReportingTimeZone reportingTimezone = requestParameters.queryParameter("reporting_timezone") != null ? requestParameters.queryParameter("reporting_timezone").getReportingTimeZone() : null;
@@ -231,12 +233,12 @@ public class AdAccountsApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        ConversionProductReportRequest conversionProductReportRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionProductReportRequest>(){}) : null;
+        ConversionProductReportCreate conversionProductReportCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionProductReportCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter conversionProductReportRequest is {}", conversionProductReportRequest);
+        logger.debug("Parameter conversionProductReportCreate is {}", conversionProductReportCreate);
 
-        api.analyticsCreateConversionProductReport(adAccountId, conversionProductReportRequest)
+        api.analyticsCreateConversionProductReport(adAccountId, conversionProductReportCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -256,12 +258,12 @@ public class AdAccountsApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        CreateMMMReportRequest createMMMReportRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CreateMMMReportRequest>(){}) : null;
+        MMMReportCreate mmMReportCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<MMMReportCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter createMMMReportRequest is {}", createMMMReportRequest);
+        logger.debug("Parameter mmMReportCreate is {}", mmMReportCreate);
 
-        api.analyticsCreateMmmReport(adAccountId, createMMMReportRequest)
+        api.analyticsCreateMmmReport(adAccountId, mmMReportCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -429,16 +431,16 @@ public class AdAccountsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        PinterestLibPaginationOrder order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getPinterestLibPaginationOrder() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter order is {}", order);
-        logger.debug("Parameter bookmark is {}", bookmark);
 
-        api.templatesList(adAccountId, pageSize, order, bookmark)
+        api.templatesList(adAccountId, bookmark, pageSize, order)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

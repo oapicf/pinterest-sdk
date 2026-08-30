@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -20,8 +25,11 @@ type TrendingTopic struct {
 	// Description of the trending topic
 	Description string `json:"description"`
 
+	// Unique identifier for the trending topic
+	Id string `json:"id"`
+
 	// Month-over-month growth percentage
-	PercentGrowthMom int32 `json:"percent_growth_mom"`
+	PercentGrowthMom int32 `json:"percent_growth_mom,omitempty"`
 
 	// Array of pin images related to this trend (up to 6)
 	Pins []TrendingPin `json:"pins"`
@@ -38,17 +46,121 @@ type TrendingTopic struct {
 	// Title of the trending topic
 	Title string `json:"title"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into TrendingTopic
+func (o *TrendingTopic) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"description",
+		"id",
+		"pins",
+		"related_interests",
+		"related_searches",
+		"time_series",
+		"title",
+	}
 
-// AssertTrendingTopicRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"description": false,
+		"id": false,
+		"pins": false,
+		"related_interests": false,
+		"related_searches": false,
+		"time_series": false,
+		"title": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"description": {},
+		"id": {},
+		"percent_growth_mom": {},
+		"pins": {},
+		"related_interests": {},
+		"related_searches": {},
+		"time_series": {},
+		"title": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded TrendingTopic
+
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["percent_growth_mom"]; exists {
+		if err = json.Unmarshal(value, &decoded.PercentGrowthMom); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pins"]; exists {
+		if err = json.Unmarshal(value, &decoded.Pins); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["related_interests"]; exists {
+		if err = json.Unmarshal(value, &decoded.RelatedInterests); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["related_searches"]; exists {
+		if err = json.Unmarshal(value, &decoded.RelatedSearches); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["time_series"]; exists {
+		if err = json.Unmarshal(value, &decoded.TimeSeries); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["title"]; exists {
+		if err = json.Unmarshal(value, &decoded.Title); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertTrendingTopicRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTrendingTopicRequired(obj TrendingTopic) error {
 	elements := map[string]interface{}{
-		"description": obj.Description,
-		"percent_growth_mom": obj.PercentGrowthMom,
 		"pins": obj.Pins,
 		"related_interests": obj.RelatedInterests,
 		"related_searches": obj.RelatedSearches,
 		"time_series": obj.TimeSeries,
-		"title": obj.Title,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

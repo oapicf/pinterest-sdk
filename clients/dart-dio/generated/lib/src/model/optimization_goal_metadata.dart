@@ -3,9 +3,9 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/optimization_goal_metadata_frequency_goal_metadata.dart';
-import 'package:openapi/src/model/optimization_goal_metadata_scrollup_goal_metadata.dart';
-import 'package:openapi/src/model/optimization_goal_metadata_conversion_tag_v3_goal_metadata.dart';
+import 'package:openapi/src/model/frequency_goal_metadata.dart';
+import 'package:openapi/src/model/scrollup_goal_metadata.dart';
+import 'package:openapi/src/model/conversion_tag_v3_goal_metadata.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,13 +20,13 @@ part 'optimization_goal_metadata.g.dart';
 @BuiltValue()
 abstract class OptimizationGoalMetadata implements Built<OptimizationGoalMetadata, OptimizationGoalMetadataBuilder> {
   @BuiltValueField(wireName: r'conversion_tag_v3_goal_metadata')
-  OptimizationGoalMetadataConversionTagV3GoalMetadata? get conversionTagV3GoalMetadata;
+  ConversionTagV3GoalMetadata? get conversionTagV3GoalMetadata;
 
   @BuiltValueField(wireName: r'frequency_goal_metadata')
-  OptimizationGoalMetadataFrequencyGoalMetadata? get frequencyGoalMetadata;
+  FrequencyGoalMetadata? get frequencyGoalMetadata;
 
   @BuiltValueField(wireName: r'scrollup_goal_metadata')
-  OptimizationGoalMetadataScrollupGoalMetadata? get scrollupGoalMetadata;
+  ScrollupGoalMetadata? get scrollupGoalMetadata;
 
   OptimizationGoalMetadata._();
 
@@ -55,21 +55,21 @@ class _$OptimizationGoalMetadataSerializer implements PrimitiveSerializer<Optimi
       yield r'conversion_tag_v3_goal_metadata';
       yield serializers.serialize(
         object.conversionTagV3GoalMetadata,
-        specifiedType: const FullType(OptimizationGoalMetadataConversionTagV3GoalMetadata),
+        specifiedType: const FullType(ConversionTagV3GoalMetadata),
       );
     }
     if (object.frequencyGoalMetadata != null) {
       yield r'frequency_goal_metadata';
       yield serializers.serialize(
         object.frequencyGoalMetadata,
-        specifiedType: const FullType(OptimizationGoalMetadataFrequencyGoalMetadata),
+        specifiedType: const FullType(FrequencyGoalMetadata),
       );
     }
     if (object.scrollupGoalMetadata != null) {
       yield r'scrollup_goal_metadata';
       yield serializers.serialize(
         object.scrollupGoalMetadata,
-        specifiedType: const FullType(OptimizationGoalMetadataScrollupGoalMetadata),
+        specifiedType: const FullType(ScrollupGoalMetadata),
       );
     }
   }
@@ -98,22 +98,25 @@ class _$OptimizationGoalMetadataSerializer implements PrimitiveSerializer<Optimi
         case r'conversion_tag_v3_goal_metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OptimizationGoalMetadataConversionTagV3GoalMetadata),
-          ) as OptimizationGoalMetadataConversionTagV3GoalMetadata;
+            specifiedType: const FullType.nullable(ConversionTagV3GoalMetadata),
+          ) as ConversionTagV3GoalMetadata?;
+          if (valueDes == null) continue;
           result.conversionTagV3GoalMetadata.replace(valueDes);
           break;
         case r'frequency_goal_metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OptimizationGoalMetadataFrequencyGoalMetadata),
-          ) as OptimizationGoalMetadataFrequencyGoalMetadata;
+            specifiedType: const FullType.nullable(FrequencyGoalMetadata),
+          ) as FrequencyGoalMetadata?;
+          if (valueDes == null) continue;
           result.frequencyGoalMetadata.replace(valueDes);
           break;
         case r'scrollup_goal_metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OptimizationGoalMetadataScrollupGoalMetadata),
-          ) as OptimizationGoalMetadataScrollupGoalMetadata;
+            specifiedType: const FullType.nullable(ScrollupGoalMetadata),
+          ) as ScrollupGoalMetadata?;
+          if (valueDes == null) continue;
           result.scrollupGoalMetadata.replace(valueDes);
           break;
         default:

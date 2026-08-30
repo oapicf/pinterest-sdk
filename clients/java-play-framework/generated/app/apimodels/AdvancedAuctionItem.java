@@ -12,9 +12,15 @@ import javax.validation.Valid;
 /**
  * AdvancedAuctionItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdvancedAuctionItem   {
+  @JsonProperty("bid_options")
+  @NotNull
+@Valid
+
+  private AdvancedAuctionBidOptions bidOptions;
+
   @JsonProperty("country")
   @NotNull
 @Valid
@@ -32,11 +38,22 @@ public class AdvancedAuctionItem   {
 
   private Language language;
 
-  @JsonProperty("bid_options")
-  @NotNull
-@Valid
+  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
+    return this;
+  }
 
-  private AdvancedAuctionBidOptions bidOptions;
+   /**
+   * Get bidOptions
+   * @return bidOptions
+  **/
+  public AdvancedAuctionBidOptions getBidOptions() {
+    return bidOptions;
+  }
+
+  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
+  }
 
   public AdvancedAuctionItem country(Country country) {
     this.country = country;
@@ -89,23 +106,6 @@ public class AdvancedAuctionItem   {
     this.language = language;
   }
 
-  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-    return this;
-  }
-
-   /**
-   * Get bidOptions
-   * @return bidOptions
-  **/
-  public AdvancedAuctionBidOptions getBidOptions() {
-    return bidOptions;
-  }
-
-  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -116,15 +116,15 @@ public class AdvancedAuctionItem   {
       return false;
     }
     AdvancedAuctionItem advancedAuctionItem = (AdvancedAuctionItem) o;
-    return Objects.equals(country, advancedAuctionItem.country) &&
+    return Objects.equals(bidOptions, advancedAuctionItem.bidOptions) &&
+        Objects.equals(country, advancedAuctionItem.country) &&
         Objects.equals(itemId, advancedAuctionItem.itemId) &&
-        Objects.equals(language, advancedAuctionItem.language) &&
-        Objects.equals(bidOptions, advancedAuctionItem.bidOptions);
+        Objects.equals(language, advancedAuctionItem.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, itemId, language, bidOptions);
+    return Objects.hash(bidOptions, country, itemId, language);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -133,10 +133,10 @@ public class AdvancedAuctionItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItem {\n");
     
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -146,10 +146,7 @@ public class AdvancedAuctionItem   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

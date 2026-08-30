@@ -6,14 +6,14 @@ using namespace Tiny;
 
 Keyword::Keyword()
 {
-	bid = int(0);
-	match_type = MatchTypeResponse();
-	value = std::string();
 	archived = bool(false);
+	bid = int(0);
 	id = std::string();
+	match_type = null;
 	parent_id = std::string();
 	parent_type = std::string();
 	type = std::string();
+	value = std::string();
 }
 
 Keyword::Keyword(std::string jsonString)
@@ -31,46 +31,6 @@ Keyword::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
-    const char *bidKey = "bid";
-
-    if(object.has_key(bidKey))
-    {
-        bourne::json value = object[bidKey];
-
-
-
-        jsonToValue(&bid, value, "int");
-
-
-    }
-
-    const char *match_typeKey = "match_type";
-
-    if(object.has_key(match_typeKey))
-    {
-        bourne::json value = object[match_typeKey];
-
-
-
-
-        MatchTypeResponse* obj = &match_type;
-		obj->fromJson(value.dump());
-
-    }
-
-    const char *valueKey = "value";
-
-    if(object.has_key(valueKey))
-    {
-        bourne::json value = object[valueKey];
-
-
-
-        jsonToValue(&value, value, "std::string");
-
-
-    }
-
     const char *archivedKey = "archived";
 
     if(object.has_key(archivedKey))
@@ -80,6 +40,19 @@ Keyword::fromJson(std::string jsonObj)
 
 
         jsonToValue(&archived, value, "bool");
+
+
+    }
+
+    const char *bidKey = "bid";
+
+    if(object.has_key(bidKey))
+    {
+        bourne::json value = object[bidKey];
+
+
+
+        jsonToValue(&bid, value, "int");
 
 
     }
@@ -94,6 +67,20 @@ Keyword::fromJson(std::string jsonObj)
 
         jsonToValue(&id, value, "std::string");
 
+
+    }
+
+    const char *match_typeKey = "match_type";
+
+    if(object.has_key(match_typeKey))
+    {
+        bourne::json value = object[match_typeKey];
+
+
+
+
+        MatchType* obj = &match_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -136,6 +123,19 @@ Keyword::fromJson(std::string jsonObj)
 
     }
 
+    const char *valueKey = "value";
+
+    if(object.has_key(valueKey))
+    {
+        bourne::json value = object[valueKey];
+
+
+
+        jsonToValue(&value, value, "std::string");
+
+
+    }
+
 
 }
 
@@ -148,28 +148,14 @@ Keyword::toJson()
 
 
 
-    object["bid"] = getBid();
-
-
-
-
-
-
-
-	object["match_type"] = getMatchType().toJson();
-
-
-
-
-
-    object["value"] = getValue();
-
-
-
-
-
-
     object["archived"] = isArchived();
+
+
+
+
+
+
+    object["bid"] = getBid();
 
 
 
@@ -178,6 +164,13 @@ Keyword::toJson()
 
     object["id"] = getId();
 
+
+
+
+
+
+
+	object["match_type"] = getMatchType().toJson();
 
 
 
@@ -201,44 +194,15 @@ Keyword::toJson()
 
 
 
+
+
+
+    object["value"] = getValue();
+
+
+
     return object;
 
-}
-
-int
-Keyword::getBid()
-{
-	return bid;
-}
-
-void
-Keyword::setBid(int  bid)
-{
-	this->bid = bid;
-}
-
-MatchTypeResponse
-Keyword::getMatchType()
-{
-	return match_type;
-}
-
-void
-Keyword::setMatchType(MatchTypeResponse  match_type)
-{
-	this->match_type = match_type;
-}
-
-std::string
-Keyword::getValue()
-{
-	return value;
-}
-
-void
-Keyword::setValue(std::string  value)
-{
-	this->value = value;
 }
 
 bool
@@ -248,9 +212,21 @@ Keyword::isArchived()
 }
 
 void
-Keyword::setArchived(bool  archived)
+Keyword::setArchived(bool archived)
 {
 	this->archived = archived;
+}
+
+int
+Keyword::getBid()
+{
+	return bid;
+}
+
+void
+Keyword::setBid(int bid)
+{
+	this->bid = bid;
 }
 
 std::string
@@ -260,9 +236,21 @@ Keyword::getId()
 }
 
 void
-Keyword::setId(std::string  id)
+Keyword::setId(std::string id)
 {
 	this->id = id;
+}
+
+MatchType
+Keyword::getMatchType()
+{
+	return match_type;
+}
+
+void
+Keyword::setMatchType(MatchType match_type)
+{
+	this->match_type = match_type;
 }
 
 std::string
@@ -272,7 +260,7 @@ Keyword::getParentId()
 }
 
 void
-Keyword::setParentId(std::string  parent_id)
+Keyword::setParentId(std::string parent_id)
 {
 	this->parent_id = parent_id;
 }
@@ -284,7 +272,7 @@ Keyword::getParentType()
 }
 
 void
-Keyword::setParentType(std::string  parent_type)
+Keyword::setParentType(std::string parent_type)
 {
 	this->parent_type = parent_type;
 }
@@ -296,9 +284,21 @@ Keyword::getType()
 }
 
 void
-Keyword::setType(std::string  type)
+Keyword::setType(std::string type)
 {
 	this->type = type;
+}
+
+std::string
+Keyword::getValue()
+{
+	return value;
+}
+
+void
+Keyword::setValue(std::string value)
+{
+	this->value = value;
 }
 
 

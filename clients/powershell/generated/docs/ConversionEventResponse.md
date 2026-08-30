@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ConversionEvent** | [**ConversionTagType**](ConversionTagType.md) |  | [optional] 
 **ConversionTagId** | **String** | Id of the tag. | [optional] 
 **CreatedTime** | **Int32** | Creation date in epoch format. | [optional] 
+**ReportingConversionEvent** | **String** | For advertiser-defined events, the reporting event label shown in optimization UIs. | [optional] 
 
 ## Examples
 
@@ -15,7 +16,8 @@ Name | Type | Description | Notes
 $ConversionEventResponse = Initialize-PSOpenAPIToolsConversionEventResponse  -AdAccountId 549757463328 `
  -ConversionEvent null `
  -ConversionTagId 2614324385652 `
- -CreatedTime 1564768710
+ -CreatedTime 1564768710 `
+ -ReportingConversionEvent GET_QUOTE
 ```
 
 - Convert the resource to JSON

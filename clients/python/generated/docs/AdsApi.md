@@ -11,6 +11,9 @@ Method | HTTP request | Description
 [**ads_get**](AdsApi.md#ads_get) | **GET** /ad_accounts/{ad_account_id}/ads/{ad_id} | Get ad
 [**ads_list**](AdsApi.md#ads_list) | **GET** /ad_accounts/{ad_account_id}/ads | List ads
 [**ads_update**](AdsApi.md#ads_update) | **PATCH** /ad_accounts/{ad_account_id}/ads | Update ads
+[**campaign_ad_preview_create**](AdsApi.md#campaign_ad_preview_create) | **POST** /ad_accounts/{ad_account_id}/campaign_ad_preview | Create ad preview records for one or more ad groups
+[**campaign_ad_preview_delete**](AdsApi.md#campaign_ad_preview_delete) | **DELETE** /ad_accounts/{ad_account_id}/campaign_ad_preview | Delete ad preview records for one or more ad groups
+[**campaign_ad_preview_read**](AdsApi.md#campaign_ad_preview_read) | **GET** /ad_accounts/{ad_account_id}/campaign_ad_preview | Fetch ad preview records for one or more ad groups
 
 
 # **ad_previews_create**
@@ -18,11 +21,11 @@ Method | HTTP request | Description
 
 Create ad preview with pin or image
 
-Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/>
-If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href="https://help.pinterest.com/en/business/article/promoted-pins-overview" target="_blank">Ads Overview</a>.) <p/>
-You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad.
 
-Creating ad preview from catalog product group is currently in BETA and is not available to all users.
+If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See [Ads Overview](https://help.pinterest.com/en/business/article/promoted-pins-overview).)
+
+You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
 
 ### Example
 
@@ -53,7 +56,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AdsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    ad_preview_request = pinterestsdk.AdPreviewRequest() # AdPreviewRequest | Create ad preview with pin or image.
+    ad_preview_request = pinterestsdk.AdPreviewRequest() # AdPreviewRequest | 
 
     try:
         # Create ad preview with pin or image
@@ -72,7 +75,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **ad_preview_request** | [**AdPreviewRequest**](AdPreviewRequest.md)| Create ad preview with pin or image. | 
+ **ad_preview_request** | [**AdPreviewRequest**](AdPreviewRequest.md)|  | 
 
 ### Return type
 
@@ -91,25 +94,27 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful ad preview creation. |  -  |
-**400** | Invalid Pin parameters response |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ad_targeting_analytics_get**
-> MetricsResponse ad_targeting_analytics_get(ad_account_id, ad_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days=click_window_days, engagement_window_days=engagement_window_days, view_window_days=view_window_days, conversion_report_time=conversion_report_time, attribution_types=attribution_types, reporting_timezone=reporting_timezone)
+> MetricsResponse ad_targeting_analytics_get(ad_account_id, ad_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days=click_window_days, engagement_window_days=engagement_window_days, view_window_days=view_window_days, conversion_report_time=conversion_report_time, attribution_types=attribution_types, reporting_timezone=reporting_timezone, sort_columns=sort_columns, sort_ascending=sort_ascending)
 
 Get targeting analytics for ads
 
-Get targeting analytics for one or more ads. For the requested ad(s) and metrics,
-the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type
-(e.g. "age_bucket") for applicable values (e.g. "45-49"). <p/>
-- The token's user_account must either be the Owner of the specified ad account, or have one
-of the necessary roles granted to them via
-<a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
-- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. "age_bucket") for applicable values (e.g. "45-49").
+
+* The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
+* If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+* If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 
@@ -119,9 +124,12 @@ of the necessary roles granted to them via
 ```python
 import pinterestsdk
 from pinterestsdk.models.ads_analytics_ad_targeting_type import AdsAnalyticsAdTargetingType
+from pinterestsdk.models.conversion_attribution_window_days import ConversionAttributionWindowDays
 from pinterestsdk.models.conversion_report_attribution_type import ConversionReportAttributionType
+from pinterestsdk.models.conversion_report_time_type import ConversionReportTimeType
 from pinterestsdk.models.granularity import Granularity
 from pinterestsdk.models.metrics_response import MetricsResponse
+from pinterestsdk.models.reporting_column_sync import ReportingColumnSync
 from pinterestsdk.models.reporting_time_zone import ReportingTimeZone
 from pinterestsdk.rest import ApiException
 from pprint import pprint
@@ -149,19 +157,21 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     ad_ids = ['ad_ids_example'] # List[str] | List of Ad Ids to use to filter the results.
     start_date = '2013-10-20' # date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     end_date = '2013-10-20' # date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    targeting_types = [pinterestsdk.AdsAnalyticsAdTargetingType()] # List[AdsAnalyticsAdTargetingType] | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-    columns = ['columns_example'] # List[str] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-    granularity = pinterestsdk.Granularity() # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-    click_window_days = 30 # int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
-    engagement_window_days = 30 # int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to 30)
-    view_window_days = 1 # int | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
-    conversion_report_time = TIME_OF_AD_ACTION # str | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to TIME_OF_AD_ACTION)
+    targeting_types = [pinterestsdk.AdsAnalyticsAdTargetingType()] # List[AdsAnalyticsAdTargetingType] | Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+    columns = [pinterestsdk.ReportingColumnSync()] # List[ReportingColumnSync] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+    granularity = pinterestsdk.Granularity() # Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+    click_window_days = pinterestsdk.ConversionAttributionWindowDays() # ConversionAttributionWindowDays | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
+    engagement_window_days = pinterestsdk.ConversionAttributionWindowDays() # ConversionAttributionWindowDays | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional)
+    view_window_days = pinterestsdk.ConversionAttributionWindowDays() # ConversionAttributionWindowDays | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
+    conversion_report_time = pinterestsdk.ConversionReportTimeType() # ConversionReportTimeType | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
     attribution_types = [pinterestsdk.ConversionReportAttributionType()] # List[ConversionReportAttributionType] | List of types of attribution for the conversion report (optional)
     reporting_timezone = pinterestsdk.ReportingTimeZone() # ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
+    sort_columns = ['sort_columns_example'] # List[str] | Sort Columns. (optional)
+    sort_ascending = True # bool | Sort ascending. (optional)
 
     try:
         # Get targeting analytics for ads
-        api_response = api_instance.ad_targeting_analytics_get(ad_account_id, ad_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days=click_window_days, engagement_window_days=engagement_window_days, view_window_days=view_window_days, conversion_report_time=conversion_report_time, attribution_types=attribution_types, reporting_timezone=reporting_timezone)
+        api_response = api_instance.ad_targeting_analytics_get(ad_account_id, ad_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days=click_window_days, engagement_window_days=engagement_window_days, view_window_days=view_window_days, conversion_report_time=conversion_report_time, attribution_types=attribution_types, reporting_timezone=reporting_timezone, sort_columns=sort_columns, sort_ascending=sort_ascending)
         print("The response of AdsApi->ad_targeting_analytics_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -179,15 +189,17 @@ Name | Type | Description  | Notes
  **ad_ids** | [**List[str]**](str.md)| List of Ad Ids to use to filter the results. | 
  **start_date** | **date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **targeting_types** | [**List[AdsAnalyticsAdTargetingType]**](AdsAnalyticsAdTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
- **columns** | [**List[str]**](str.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **granularity** | [**Granularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
- **click_window_days** | **int**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
- **engagement_window_days** | **int**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to 30]
- **view_window_days** | **int**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
- **conversion_report_time** | **str**| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to TIME_OF_AD_ACTION]
+ **targeting_types** | [**List[AdsAnalyticsAdTargetingType]**](AdsAnalyticsAdTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
+ **columns** | [**List[ReportingColumnSync]**](ReportingColumnSync.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **granularity** | [**Granularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **click_window_days** | [**ConversionAttributionWindowDays**](.md)| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] 
+ **engagement_window_days** | [**ConversionAttributionWindowDays**](.md)| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] 
+ **view_window_days** | [**ConversionAttributionWindowDays**](.md)| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] 
+ **conversion_report_time** | [**ConversionReportTimeType**](.md)| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] 
  **attribution_types** | [**List[ConversionReportAttributionType]**](ConversionReportAttributionType.md)| List of types of attribution for the conversion report | [optional] 
  **reporting_timezone** | [**ReportingTimeZone**](.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
+ **sort_columns** | [**List[str]**](str.md)| Sort Columns. | [optional] 
+ **sort_ascending** | **bool**| Sort ascending. | [optional] 
 
 ### Return type
 
@@ -206,21 +218,26 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ads_analytics**
-> List[AdsAnalyticsResponseInner] ads_analytics(ad_account_id, start_date, end_date, columns, granularity, ad_ids=ad_ids, click_window_days=click_window_days, engagement_window_days=engagement_window_days, view_window_days=view_window_days, conversion_report_time=conversion_report_time, pin_ids=pin_ids, campaign_ids=campaign_ids, reporting_timezone=reporting_timezone)
+> List[AdsAnalytics] ads_analytics(start_date, end_date, columns, granularity, ad_account_id, pin_ids=pin_ids, ad_ids=ad_ids, click_window_days=click_window_days, engagement_window_days=engagement_window_days, view_window_days=view_window_days, conversion_report_time=conversion_report_time, campaign_ids=campaign_ids, reporting_timezone=reporting_timezone)
 
 Get ad analytics
 
-Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options.
-- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- The request must contain either ad_ids or both campaign_ids and pin_ids.
-- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
-- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+    Get analytics for the specified ads in the specified `ad_account_id`, filtered by the specified options.
+    - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
+    - The request must contain either ad_ids or both campaign_ids and pin_ids.
+    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 
@@ -229,8 +246,9 @@ Get analytics for the specified ads in the specified <code>ad_account_id</code>,
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.ads_analytics_response_inner import AdsAnalyticsResponseInner
+from pinterestsdk.models.ads_analytics import AdsAnalytics
 from pinterestsdk.models.granularity import Granularity
+from pinterestsdk.models.reporting_column_sync import ReportingColumnSync
 from pinterestsdk.models.reporting_time_zone import ReportingTimeZone
 from pinterestsdk.rest import ApiException
 from pprint import pprint
@@ -254,23 +272,23 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AdsApi(api_client)
-    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
     start_date = '2013-10-20' # date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     end_date = '2013-10-20' # date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    columns = ['columns_example'] # List[str] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-    granularity = pinterestsdk.Granularity() # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-    ad_ids = ['ad_ids_example'] # List[str] | List of Ad Ids to use to filter the results. (optional)
-    click_window_days = 30 # int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
-    engagement_window_days = 30 # int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to 30)
-    view_window_days = 1 # int | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
-    conversion_report_time = TIME_OF_AD_ACTION # str | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to TIME_OF_AD_ACTION)
+    columns = [pinterestsdk.ReportingColumnSync()] # List[ReportingColumnSync] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+    granularity = pinterestsdk.Granularity() # Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
     pin_ids = ['pin_ids_example'] # List[str] | List of Pin IDs. (optional)
+    ad_ids = ['ad_ids_example'] # List[str] | List of Ad Ids to use to filter the results. (optional)
+    click_window_days = 30 # float | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
+    engagement_window_days = 30 # float | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional) (default to 30)
+    view_window_days = 1 # float | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
+    conversion_report_time = 'TIME_OF_AD_ACTION' # str | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to 'TIME_OF_AD_ACTION')
     campaign_ids = ['campaign_ids_example'] # List[str] | List of Campaign Ids to use to filter the results. (optional)
     reporting_timezone = pinterestsdk.ReportingTimeZone() # ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
     try:
         # Get ad analytics
-        api_response = api_instance.ads_analytics(ad_account_id, start_date, end_date, columns, granularity, ad_ids=ad_ids, click_window_days=click_window_days, engagement_window_days=engagement_window_days, view_window_days=view_window_days, conversion_report_time=conversion_report_time, pin_ids=pin_ids, campaign_ids=campaign_ids, reporting_timezone=reporting_timezone)
+        api_response = api_instance.ads_analytics(start_date, end_date, columns, granularity, ad_account_id, pin_ids=pin_ids, ad_ids=ad_ids, click_window_days=click_window_days, engagement_window_days=engagement_window_days, view_window_days=view_window_days, conversion_report_time=conversion_report_time, campaign_ids=campaign_ids, reporting_timezone=reporting_timezone)
         print("The response of AdsApi->ads_analytics:\n")
         pprint(api_response)
     except Exception as e:
@@ -284,23 +302,23 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **str**| Unique identifier of an ad account. | 
  **start_date** | **date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **columns** | [**List[str]**](str.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
- **granularity** | [**Granularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
- **ad_ids** | [**List[str]**](str.md)| List of Ad Ids to use to filter the results. | [optional] 
- **click_window_days** | **int**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
- **engagement_window_days** | **int**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to 30]
- **view_window_days** | **int**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
- **conversion_report_time** | **str**| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to TIME_OF_AD_ACTION]
+ **columns** | [**List[ReportingColumnSync]**](ReportingColumnSync.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | 
+ **granularity** | [**Granularity**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | 
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
  **pin_ids** | [**List[str]**](str.md)| List of Pin IDs. | [optional] 
+ **ad_ids** | [**List[str]**](str.md)| List of Ad Ids to use to filter the results. | [optional] 
+ **click_window_days** | **float**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
+ **engagement_window_days** | **float**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to 30]
+ **view_window_days** | **float**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
+ **conversion_report_time** | **str**| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to &#39;TIME_OF_AD_ACTION&#39;]
  **campaign_ids** | [**List[str]**](str.md)| List of Campaign Ids to use to filter the results. | [optional] 
  **reporting_timezone** | [**ReportingTimeZone**](.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
 
 ### Return type
 
-[**List[AdsAnalyticsResponseInner]**](AdsAnalyticsResponseInner.md)
+[**List[AdsAnalytics]**](AdsAnalytics.md)
 
 ### Authorization
 
@@ -315,18 +333,22 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account ads analytics parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ads_create**
-> AdArrayResponse ads_create(ad_account_id, ad_create_request)
+> AdBatchWriteResponseModel ads_create(ad_account_id, ad_create)
 
 Create ads
 
-Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.
+Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
 
 ### Example
 
@@ -334,8 +356,8 @@ Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, an
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.ad_array_response import AdArrayResponse
-from pinterestsdk.models.ad_create_request import AdCreateRequest
+from pinterestsdk.models.ad_batch_write_response_model import AdBatchWriteResponseModel
+from pinterestsdk.models.ad_create import AdCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -357,11 +379,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AdsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    ad_create_request = [pinterestsdk.AdCreateRequest()] # List[AdCreateRequest] | List of ads to create, size limit [1, 30].
+    ad_create = [pinterestsdk.AdCreate()] # List[AdCreate] | 
 
     try:
         # Create ads
-        api_response = api_instance.ads_create(ad_account_id, ad_create_request)
+        api_response = api_instance.ads_create(ad_account_id, ad_create)
         print("The response of AdsApi->ads_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -376,11 +398,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **ad_create_request** | [**List[AdCreateRequest]**](AdCreateRequest.md)| List of ads to create, size limit [1, 30]. | 
+ **ad_create** | [**List[AdCreate]**](AdCreate.md)|  | 
 
 ### Return type
 
-[**AdArrayResponse**](AdArrayResponse.md)
+[**AdBatchWriteResponseModel**](AdBatchWriteResponseModel.md)
 
 ### Authorization
 
@@ -395,19 +417,24 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ads_get**
-> AdResponse ads_get(ad_account_id, ad_id)
+> Ad ads_get(ad_id, ad_account_id)
 
 Get ad
 
 Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will
 contain additional information from the Ad Review process.
-For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/" target="_blank">Pinterest advertising standards</a>.
+For more information about our policies and rejection reasons see the [Pinterest advertising standards](https://www.pinterest.com/_/_/policy/advertising-guidelines/).
 
 ### Example
 
@@ -416,7 +443,7 @@ For more information about our policies and rejection reasons see the <a href="h
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.ad_response import AdResponse
+from pinterestsdk.models.ad import Ad
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -439,12 +466,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AdsApi(api_client)
+    ad_id = 'ad_id_example' # str | The ID of this ad.
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    ad_id = 'ad_id_example' # str | Unique identifier of an ad.
 
     try:
         # Get ad
-        api_response = api_instance.ads_get(ad_account_id, ad_id)
+        api_response = api_instance.ads_get(ad_id, ad_account_id)
         print("The response of AdsApi->ads_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -458,12 +485,12 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **ad_id** | **str**| The ID of this ad. | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **ad_id** | **str**| Unique identifier of an ad. | 
 
 ### Return type
 
-[**AdResponse**](AdResponse.md)
+[**Ad**](Ad.md)
 
 ### Authorization
 
@@ -478,24 +505,33 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ads_list**
-> AdsList200Response ads_list(ad_account_id, campaign_ids=campaign_ids, ad_group_ids=ad_group_ids, ad_ids=ad_ids, entity_statuses=entity_statuses, page_size=page_size, order=order, bookmark=bookmark)
+> AdsList200Response ads_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order, campaign_ids=campaign_ids, ad_group_ids=ad_group_ids, ad_ids=ad_ids, entity_statuses=entity_statuses)
 
 List ads
 
 List ads that meet the filters provided:
-  - Listed campaign ids or ad group ids or ad ids
-  - Listed entity statuses <p/>
-If no filter is provided, all ads in the ad account are returned. <p/>
-<strong>Note:</strong><p/>
-Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. <p/>
-Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information.
-For more, see <a href="https://policy.pinterest.com/en/advertising-guidelines">Pinterest advertising standards</a>.
+    - Listed campaign ids or ad group ids or ad ids
+    - Listed entity statuses
+
+If no filter is provided, all ads in the ad account are returned.
+
+**Note:**
+Provide only `campaign_id` or `ad_group_id` or `ad_id`. Do not provide more than one type.
+
+Review status is provided for each ad; if `review_status` is `REJECTED`, the `rejected_reasons` field will contain additional information.
+
+For more, see [Pinterest advertising standards](https://policy.pinterest.com/en/advertising-guidelines).
 
 ### Example
 
@@ -505,6 +541,8 @@ For more, see <a href="https://policy.pinterest.com/en/advertising-guidelines">P
 ```python
 import pinterestsdk
 from pinterestsdk.models.ads_list200_response import AdsList200Response
+from pinterestsdk.models.entity_status import EntityStatus
+from pinterestsdk.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -528,17 +566,17 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AdsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    campaign_ids = ['campaign_ids_example'] # List[str] | List of Campaign Ids to use to filter the results. (optional)
-    ad_group_ids = ['ad_group_ids_example'] # List[str] | List of Ad group Ids to use to filter the results. (optional)
-    ad_ids = ['ad_ids_example'] # List[str] | List of Ad Ids to use to filter the results. (optional)
-    entity_statuses = ["ACTIVE","PAUSED"] # List[str] | Entity status (optional) (default to ["ACTIVE","PAUSED"])
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-    order = 'ASCENDING' # str | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+    order = pinterestsdk.PinterestLibPaginationOrder() # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+    campaign_ids = ['campaign_ids_example'] # List[str] | List of Campaign Ids to use to filter the results. (optional)
+    ad_group_ids = ['ad_group_ids_example'] # List[str] | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
+    ad_ids = ['ad_ids_example'] # List[str] | List of Ad Ids to use to filter the results. (optional)
+    entity_statuses = ["ACTIVE","PAUSED"] # List[EntityStatus] | Entity status (optional) (default to ["ACTIVE","PAUSED"])
 
     try:
         # List ads
-        api_response = api_instance.ads_list(ad_account_id, campaign_ids=campaign_ids, ad_group_ids=ad_group_ids, ad_ids=ad_ids, entity_statuses=entity_statuses, page_size=page_size, order=order, bookmark=bookmark)
+        api_response = api_instance.ads_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order, campaign_ids=campaign_ids, ad_group_ids=ad_group_ids, ad_ids=ad_ids, entity_statuses=entity_statuses)
         print("The response of AdsApi->ads_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -553,13 +591,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **campaign_ids** | [**List[str]**](str.md)| List of Campaign Ids to use to filter the results. | [optional] 
- **ad_group_ids** | [**List[str]**](str.md)| List of Ad group Ids to use to filter the results. | [optional] 
- **ad_ids** | [**List[str]**](str.md)| List of Ad Ids to use to filter the results. | [optional] 
- **entity_statuses** | [**List[str]**](str.md)| Entity status | [optional] [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **str**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **campaign_ids** | [**List[str]**](str.md)| List of Campaign Ids to use to filter the results. | [optional] 
+ **ad_group_ids** | [**List[str]**](str.md)| List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] 
+ **ad_ids** | [**List[str]**](str.md)| List of Ad Ids to use to filter the results. | [optional] 
+ **entity_statuses** | [**List[EntityStatus]**](EntityStatus.md)| Entity status | [optional] [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
 
 ### Return type
 
@@ -578,14 +616,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account ads parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ads_update**
-> AdArrayResponse ads_update(ad_account_id, ad_update_request)
+> AdBatchWriteResponseModel ads_update(ad_account_id, ad_batch_update)
 
 Update ads
 
@@ -597,8 +639,8 @@ Update multiple existing ads
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.ad_array_response import AdArrayResponse
-from pinterestsdk.models.ad_update_request import AdUpdateRequest
+from pinterestsdk.models.ad_batch_update import AdBatchUpdate
+from pinterestsdk.models.ad_batch_write_response_model import AdBatchWriteResponseModel
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -620,11 +662,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.AdsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    ad_update_request = [pinterestsdk.AdUpdateRequest()] # List[AdUpdateRequest] | List of ads to update, size limit [1, 30]
+    ad_batch_update = [pinterestsdk.AdBatchUpdate()] # List[AdBatchUpdate] | 
 
     try:
         # Update ads
-        api_response = api_instance.ads_update(ad_account_id, ad_update_request)
+        api_response = api_instance.ads_update(ad_account_id, ad_batch_update)
         print("The response of AdsApi->ads_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -639,11 +681,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **ad_update_request** | [**List[AdUpdateRequest]**](AdUpdateRequest.md)| List of ads to update, size limit [1, 30] | 
+ **ad_batch_update** | [**List[AdBatchUpdate]**](AdBatchUpdate.md)|  | 
 
 ### Return type
 
-[**AdArrayResponse**](AdArrayResponse.md)
+[**AdBatchWriteResponseModel**](AdBatchWriteResponseModel.md)
 
 ### Authorization
 
@@ -658,8 +700,268 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **campaign_ad_preview_create**
+> List[CampaignAdPreviewCreate200ResponseInner] campaign_ad_preview_create(ad_account_id, campaign_ad_preview_create)
+
+Create ad preview records for one or more ad groups
+
+Create ad preview records for one or more ad groups that can be shared.
+Each ad group is processed independently; individual failures do not block other previews.
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+
+```python
+import pinterestsdk
+from pinterestsdk.models.campaign_ad_preview_create import CampaignAdPreviewCreate
+from pinterestsdk.models.campaign_ad_preview_create200_response_inner import CampaignAdPreviewCreate200ResponseInner
+from pinterestsdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pinterestsdk.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with pinterestsdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pinterestsdk.AdsApi(api_client)
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+    campaign_ad_preview_create = [pinterestsdk.CampaignAdPreviewCreate()] # List[CampaignAdPreviewCreate] | 
+
+    try:
+        # Create ad preview records for one or more ad groups
+        api_response = api_instance.campaign_ad_preview_create(ad_account_id, campaign_ad_preview_create)
+        print("The response of AdsApi->campaign_ad_preview_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdsApi->campaign_ad_preview_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+ **campaign_ad_preview_create** | [**List[CampaignAdPreviewCreate]**](CampaignAdPreviewCreate.md)|  | 
+
+### Return type
+
+[**List[CampaignAdPreviewCreate200ResponseInner]**](CampaignAdPreviewCreate200ResponseInner.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **campaign_ad_preview_delete**
+> List[CampaignAdPreviewDelete200ResponseInner] campaign_ad_preview_delete(ad_group_ids, ad_account_id)
+
+Delete ad preview records for one or more ad groups
+
+Delete ad preview records for one or more ad groups.
+All ad groups are validated before deleting any records.
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+
+```python
+import pinterestsdk
+from pinterestsdk.models.campaign_ad_preview_delete200_response_inner import CampaignAdPreviewDelete200ResponseInner
+from pinterestsdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pinterestsdk.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with pinterestsdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pinterestsdk.AdsApi(api_client)
+    ad_group_ids = ['ad_group_ids_example'] # List[str] | List of Ad group Ids to use to filter the results.
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+
+    try:
+        # Delete ad preview records for one or more ad groups
+        api_response = api_instance.campaign_ad_preview_delete(ad_group_ids, ad_account_id)
+        print("The response of AdsApi->campaign_ad_preview_delete:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdsApi->campaign_ad_preview_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_group_ids** | [**List[str]**](str.md)| List of Ad group Ids to use to filter the results. | 
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+
+### Return type
+
+[**List[CampaignAdPreviewDelete200ResponseInner]**](CampaignAdPreviewDelete200ResponseInner.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The request has succeeded. |  -  |
+**204** | Resource deleted successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **campaign_ad_preview_read**
+> List[CampaignAdPreview] campaign_ad_preview_read(ad_group_ids, ad_account_id)
+
+Fetch ad preview records for one or more ad groups
+
+Fetch ad preview records for one or more ad groups.
+Returns all active previews associated with the provided ad group IDs.
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+
+```python
+import pinterestsdk
+from pinterestsdk.models.campaign_ad_preview import CampaignAdPreview
+from pinterestsdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pinterestsdk.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with pinterestsdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pinterestsdk.AdsApi(api_client)
+    ad_group_ids = ['ad_group_ids_example'] # List[str] | List of Ad group Ids to use to filter the results.
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+
+    try:
+        # Fetch ad preview records for one or more ad groups
+        api_response = api_instance.campaign_ad_preview_read(ad_group_ids, ad_account_id)
+        print("The response of AdsApi->campaign_ad_preview_read:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdsApi->campaign_ad_preview_read: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_group_ids** | [**List[str]**](str.md)| List of Ad group Ids to use to filter the results. | 
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+
+### Return type
+
+[**List[CampaignAdPreview]**](CampaignAdPreview.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

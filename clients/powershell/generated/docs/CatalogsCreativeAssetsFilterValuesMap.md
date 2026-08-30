@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **GoogleProductCategory4** | **String[]** |  | [optional] 
 **GoogleProductCategory5** | **String[]** |  | [optional] 
 **GoogleProductCategory6** | **String[]** |  | [optional] 
-**MediaType** | **String[]** |  | [optional] 
+**MediaType** | [**MediaType[]**](MediaType.md) |  | [optional] 
 
 ## Examples
 

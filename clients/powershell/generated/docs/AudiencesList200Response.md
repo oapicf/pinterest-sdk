@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**Audience[]**](Audience.md) |  | 
+**Items** | [**AdAccountsAudience[]**](AdAccountsAudience.md) |  | 
 
 ## Examples
 

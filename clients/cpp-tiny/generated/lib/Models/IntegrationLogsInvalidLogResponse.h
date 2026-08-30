@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "IntegrationLogsInvalidLogResponse_rejected_logs_inner.h"
+#include "IntegrationLogsInvalidLogResponseRejectedLogsItems.h"
 #include <list>
 
 namespace Tiny {
@@ -49,15 +49,15 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<IntegrationLogsInvalidLogResponse_rejected_logs_inner> getRejectedLogs();
+	std::list<IntegrationLogsInvalidLogResponseRejectedLogsItems> getRejectedLogs();
 
 	/*! \brief Set 
 	 */
-	void setRejectedLogs(std::list <IntegrationLogsInvalidLogResponse_rejected_logs_inner> rejected_logs);
+	void setRejectedLogs(std::list<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejected_logs);
 
 
     private:
-    std::list<IntegrationLogsInvalidLogResponse_rejected_logs_inner> rejected_logs;
+    std::list<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejected_logs;
 };
 }
 

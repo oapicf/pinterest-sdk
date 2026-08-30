@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.Label;
+import apimodels.LabelErrorData;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,19 +13,19 @@ import javax.validation.Valid;
 /**
  * LabelError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class LabelError   {
   @JsonProperty("data")
   @Valid
 
-  private Label data;
+  private LabelErrorData data;
 
   @JsonProperty("error_messages")
   
   private List<String> errorMessages = null;
 
-  public LabelError data(Label data) {
+  public LabelError data(LabelErrorData data) {
     this.data = data;
     return this;
   }
@@ -34,11 +34,11 @@ public class LabelError   {
    * Get data
    * @return data
   **/
-  public Label getData() {
+  public LabelErrorData getData() {
     return data;
   }
 
-  public void setData(Label data) {
+  public void setData(LabelErrorData data) {
     this.data = data;
   }
 
@@ -103,10 +103,7 @@ public class LabelError   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

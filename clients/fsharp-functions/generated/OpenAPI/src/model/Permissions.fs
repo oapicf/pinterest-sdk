@@ -19,6 +19,7 @@ module Permissions =
   let CATALOGSVIEWEREnum = "CATALOGS_VIEWER"
   let PROFILEPUBLISHEREnum = "PROFILE_PUBLISHER"
   let CONSUMERUSEREnum = "CONSUMER_USER"
+  let BIZPINNERLISTSHAREREnum = "BIZ_PINNER_LIST_SHARER"
   type Permissions = string
 
   //#endregion

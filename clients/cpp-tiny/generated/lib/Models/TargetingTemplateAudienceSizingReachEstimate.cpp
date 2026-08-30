@@ -1,28 +1,28 @@
 
 
-#include "TargetingTemplateAudienceSizing_reach_estimate.h"
+#include "TargetingTemplateAudienceSizingReachEstimate.h"
 
 using namespace Tiny;
 
-TargetingTemplateAudienceSizing_reach_estimate::TargetingTemplateAudienceSizing_reach_estimate()
+TargetingTemplateAudienceSizingReachEstimate::TargetingTemplateAudienceSizingReachEstimate()
 {
 	estimate = long(0);
 	lower_bound = long(0);
 	upper_bound = long(0);
 }
 
-TargetingTemplateAudienceSizing_reach_estimate::TargetingTemplateAudienceSizing_reach_estimate(std::string jsonString)
+TargetingTemplateAudienceSizingReachEstimate::TargetingTemplateAudienceSizingReachEstimate(std::string jsonString)
 {
 	this->fromJson(jsonString);
 }
 
-TargetingTemplateAudienceSizing_reach_estimate::~TargetingTemplateAudienceSizing_reach_estimate()
+TargetingTemplateAudienceSizingReachEstimate::~TargetingTemplateAudienceSizingReachEstimate()
 {
 
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::fromJson(std::string jsonObj)
+TargetingTemplateAudienceSizingReachEstimate::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
@@ -69,7 +69,7 @@ TargetingTemplateAudienceSizing_reach_estimate::fromJson(std::string jsonObj)
 }
 
 bourne::json
-TargetingTemplateAudienceSizing_reach_estimate::toJson()
+TargetingTemplateAudienceSizingReachEstimate::toJson()
 {
     bourne::json object = bourne::json::object();
 
@@ -100,37 +100,37 @@ TargetingTemplateAudienceSizing_reach_estimate::toJson()
 }
 
 long
-TargetingTemplateAudienceSizing_reach_estimate::getEstimate()
+TargetingTemplateAudienceSizingReachEstimate::getEstimate()
 {
 	return estimate;
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::setEstimate(long  estimate)
+TargetingTemplateAudienceSizingReachEstimate::setEstimate(long estimate)
 {
 	this->estimate = estimate;
 }
 
 long
-TargetingTemplateAudienceSizing_reach_estimate::getLowerBound()
+TargetingTemplateAudienceSizingReachEstimate::getLowerBound()
 {
 	return lower_bound;
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::setLowerBound(long  lower_bound)
+TargetingTemplateAudienceSizingReachEstimate::setLowerBound(long lower_bound)
 {
 	this->lower_bound = lower_bound;
 }
 
 long
-TargetingTemplateAudienceSizing_reach_estimate::getUpperBound()
+TargetingTemplateAudienceSizingReachEstimate::getUpperBound()
 {
 	return upper_bound;
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::setUpperBound(long  upper_bound)
+TargetingTemplateAudienceSizingReachEstimate::setUpperBound(long upper_bound)
 {
 	this->upper_bound = upper_bound;
 }

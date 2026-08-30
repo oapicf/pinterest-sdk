@@ -1,13 +1,14 @@
 
 # BaseInviteDataResponse
 
+Common invite/request data returned by the business access endpoints.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
 `id` | string
-`inviteData` | [BaseInviteDataResponseInviteData](BaseInviteDataResponseInviteData.md)
+`inviteData` | [InviteDataResponse](InviteDataResponse.md)
 `isReceivedInvite` | boolean
 `user` | [BusinessAccessUserSummary](BusinessAccessUserSummary.md)
 

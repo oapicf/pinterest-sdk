@@ -4,24 +4,27 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.AdsCreditRedeemRequest
-import model.AdsCreditRedeemResponse
+import model.AdsCreditRedeem
+import model.AdsCreditRedeemCreate
 import model.AdsCreditsDiscountsGet200Response
+import model.BillingInvoiceDocumentType
 import model.BillingInvoiceDownloadResponse
+import model.BillingInvoiceSortField
+import model.BillingInvoiceStatus
 import model.BillingInvoicesGet200Response
 import model.BillingProfilesGet200Response
 import model.Error
 import java.time.LocalDate
-import model.SSIOAccountResponse
-import model.SSIOCreateInsertionOrderRequest
-import model.SSIOCreateInsertionOrderResponse
-import model.SSIOEditInsertionOrderRequest
-import model.SSIOEditInsertionOrderResponse
+import model.PaginationOrder
+import model.SSIOAccount
+import model.SSIOInsertionOrder
+import model.SSIOInsertionOrderCreate
 import model.SSIOInsertionOrderStatusResponse
+import model.SSIOInsertionOrderUpdate
 import model.SsioInsertionOrdersStatusGetByAdAccount200Response
 import model.SsioOrderLinesGetByAdAccount200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) extends AbstractController(cc) {
   /**
@@ -29,11 +32,11 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
     * @param adAccountId Unique identifier of an ad account.
     */
   def adsCreditRedeem(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): AdsCreditRedeemResponse = {
-      val adsCreditRedeemRequest = request.body.asJson.map(_.as[AdsCreditRedeemRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adsCreditRedeemRequest")
+    def executeApi(): AdsCreditRedeem = {
+      val adsCreditRedeemCreate = request.body.asJson.map(_.as[AdsCreditRedeemCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adsCreditRedeemCreate")
       }
-      api.adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+      api.adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
     }
 
     val result = executeApi()
@@ -76,7 +79,7 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/billing_invoices?bookmark=[value]&pageSize=[value]&sort=[value]&order=[value]&status=[value]&documentType=[value]&startDueDate=[value]&endDueDate=[value]
+    * GET /v5/ad_accounts/:adAccountId/billing_invoices?bookmark=[value]&pageSize=[value]&order=[value]&sort=[value]&status=[value]&documentType=[value]&startDueDate=[value]&endDueDate=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def billingInvoicesGet(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -86,13 +89,17 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val sort = request.getQueryString("sort")
-        
       val order = request.getQueryString("order")
+        .map(value => )
+        
+      val sort = request.getQueryString("sort")
+        .map(value => )
         
       val status = request.getQueryString("status")
+        .map(value => )
         
       val documentType = request.getQueryString("document_type")
+        .map(value => )
         
       val startDueDate = request.getQueryString("start_due_date")
         .map(value => LocalDate.parse(value))
@@ -100,7 +107,7 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
       val endDueDate = request.getQueryString("end_due_date")
         .map(value => LocalDate.parse(value))
         
-      api.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+      api.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
     }
 
     val result = executeApi()
@@ -125,7 +132,7 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      api.billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
+      api.billingProfilesGet(isActive, adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -138,7 +145,7 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
     * @param adAccountId Unique identifier of an ad account.
     */
   def ssioAccountsGet(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): SSIOAccountResponse = {
+    def executeApi(): SSIOAccount = {
       api.ssioAccountsGet(adAccountId)
     }
 
@@ -152,11 +159,11 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
     * @param adAccountId Unique identifier of an ad account.
     */
   def ssioInsertionOrderCreate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): SSIOCreateInsertionOrderResponse = {
-      val sSIOCreateInsertionOrderRequest = request.body.asJson.map(_.as[SSIOCreateInsertionOrderRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "sSIOCreateInsertionOrderRequest")
+    def executeApi(): SSIOInsertionOrder = {
+      val sSIOInsertionOrderCreate = request.body.asJson.map(_.as[SSIOInsertionOrderCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "sSIOInsertionOrderCreate")
       }
-      api.ssioInsertionOrderCreate(adAccountId, sSIOCreateInsertionOrderRequest)
+      api.ssioInsertionOrderCreate(adAccountId, sSIOInsertionOrderCreate)
     }
 
     val result = executeApi()
@@ -169,11 +176,11 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
     * @param adAccountId Unique identifier of an ad account.
     */
   def ssioInsertionOrderEdit(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): SSIOEditInsertionOrderResponse = {
-      val sSIOEditInsertionOrderRequest = request.body.asJson.map(_.as[SSIOEditInsertionOrderRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "sSIOEditInsertionOrderRequest")
+    def executeApi(): SSIOInsertionOrder = {
+      val sSIOInsertionOrderUpdate = request.body.asJson.map(_.as[SSIOInsertionOrderUpdate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "sSIOInsertionOrderUpdate")
       }
-      api.ssioInsertionOrderEdit(adAccountId, sSIOEditInsertionOrderRequest)
+      api.ssioInsertionOrderEdit(adAccountId, sSIOInsertionOrderUpdate)
     }
 
     val result = executeApi()
@@ -216,19 +223,19 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/ssio/order_lines?bookmark=[value]&pageSize=[value]&pinOrderId=[value]
+    * GET /v5/ad_accounts/:adAccountId/ssio/order_lines?pinOrderId=[value]&bookmark=[value]&pageSize=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def ssioOrderLinesGetByAdAccount(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): SsioOrderLinesGetByAdAccount200Response = {
+      val pinOrderId = request.getQueryString("pin_order_id")
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val pinOrderId = request.getQueryString("pin_order_id")
-        
-      api.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+      api.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
     }
 
     val result = executeApi()

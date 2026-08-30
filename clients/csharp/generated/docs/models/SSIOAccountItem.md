@@ -1,4 +1,5 @@
 # Org.OpenAPITools.Model.SSIOAccountItem
+Salesforce account item with billing and terms information.
 
 ## Properties
 

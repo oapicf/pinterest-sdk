@@ -1,0 +1,81 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LeadSubscriptionPostParams",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "The Ad Account ID that this lead form belongs to.",
+      "default": null
+    },
+    {
+      "name": "api_version",
+      "type": ["null", "string"],
+      "doc": "API version.",
+      "default": null
+    },
+    {
+      "name": "created_time",
+      "type": ["null", "int"],
+      "doc": "Subscription creation time. Unix timestamp in milliseconds.",
+      "default": null
+    },
+    {
+      "name": "cryptographic_algorithm",
+      "type": ["null", "string"],
+      "doc": "Lead data encryption algorithm.",
+      "default": null
+    },
+    {
+      "name": "cryptographic_key",
+      "type": ["null", "string"],
+      "doc": "Base64 encoded key for client to decrypt lead data.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Subscription ID.",
+      "default": null
+    },
+    {
+      "name": "lead_form_id",
+      "type": ["null", "string"],
+      "doc": "Lead form ID.",
+      "default": null
+    },
+    {
+      "name": "user_account_id",
+      "type": ["null", "string"],
+      "doc": "User account used to subscribe lead data.",
+      "default": null
+    },
+    {
+      "name": "webhook_url",
+      "type": ["null", "string"],
+      "doc": "Standard HTTPS webhook URL.",
+      "default": null
+    },
+    {
+      "name": "partner_access_token",
+      "type": ["null", "string"],
+      "doc": "Partner access token. Only for clients that requires authentication. We recommend to avoid this param.",
+      "default": null
+    },
+    {
+      "name": "partner_metadata",
+      "type": ["null", "model.PartnerMetadata"],
+      "doc": "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.",
+      "default": null
+    },
+    {
+      "name": "partner_refresh_token",
+      "type": ["null", "string"],
+      "doc": "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.",
+      "default": null
+    }
+  ]
+
+}

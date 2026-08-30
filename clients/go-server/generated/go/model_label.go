@@ -5,35 +5,109 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type Label struct {
 
 	// Label ID.
-	Id string `json:"id,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
-	LabelType *LabelType `json:"label_type,omitempty"`
+	LabelType *NullableLabelType `json:"label_type"`
 
-	// Label parent entity ID.
-	ParentId string `json:"parent_id,omitempty"`
+	Status *NullableLabelStatus `json:"status,omitempty"`
 
-	// Label parent entity type.
-	ParentType *string `json:"parent_type,omitempty"`
+	// Label name. 100-character limit.
+	Value string `json:"value"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into Label
+func (o *Label) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"id",
+		"label_type",
+		"value",
+	}
 
-	Status *LabelStatus `json:"status,omitempty"`
+	requiredNullableProperties := map[string]bool{
+		"id": false,
+		"label_type": true,
+		"value": false,
+	}
 
-	// Label name.
-	Value string `json:"value,omitempty"`
+	allowedJsonKeys := map[string]struct{}{
+		"id": {},
+		"label_type": {},
+		"status": {},
+		"value": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded Label
+
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["label_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.LabelType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["value"]; exists {
+		if err = json.Unmarshal(value, &decoded.Value); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertLabelRequired checks if the required fields are not zero-ed
+// AssertLabelRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertLabelRequired(obj Label) error {
 	return nil
 }

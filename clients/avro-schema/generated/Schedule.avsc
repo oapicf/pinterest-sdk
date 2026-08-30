@@ -1,0 +1,67 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Schedule",
+  "fields": [
+    {
+      "name": "delta_value",
+      "type": ["null", "model.ScheduleDeltaValue"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "end_timestamp",
+      "type": ["null", "int"],
+      "doc": "Schedule end time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "entity_id",
+      "type": "string",
+      "doc": "entity ID."
+    },
+    {
+      "name": "entity_type",
+      "type": ["null", "model.AdAccountEntityType"],
+      "doc": "Specify the entity_type to get summary information",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Schedule name.",
+      "default": null
+    },
+    {
+      "name": "schedule_action",
+      "type": ["null", "model.ScheduleAction"],
+      "doc": "The schedule action.",
+      "default": null
+    },
+    {
+      "name": "schedule_id",
+      "type": "string",
+      "doc": "Schedule ID."
+    },
+    {
+      "name": "schedule_status",
+      "type": ["null", "model.ScheduleStatus"],
+      "doc": "Schedule status.",
+      "default": null
+    },
+    {
+      "name": "schedule_type",
+      "type": ["null", "model.ScheduleType"],
+      "doc": "The schedule type.",
+      "default": null
+    },
+    {
+      "name": "start_timestamp",
+      "type": ["null", "int"],
+      "doc": "Schedule start time. Unix timestamp in seconds.",
+      "default": null
+    }
+  ]
+
+}

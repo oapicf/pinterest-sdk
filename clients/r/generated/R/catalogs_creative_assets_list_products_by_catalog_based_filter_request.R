@@ -7,7 +7,7 @@
 #' @title CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
 #' @description CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest Class
 #' @format An \code{R6Class} generator object
-#' @field catalog_id Catalog id pertaining to the creative assets product group. character
+#' @field catalog_id Catalog ID pertaining to the product group. character
 #' @field catalog_type  character
 #' @field filters  \link{CatalogsCreativeAssetsProductGroupFilters}
 #' @importFrom R6 R6Class
@@ -23,7 +23,7 @@ CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest <- R6::R6Class(
     #' @description
     #' Initialize a new CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest class.
     #'
-    #' @param catalog_id Catalog id pertaining to the creative assets product group.
+    #' @param catalog_id Catalog ID pertaining to the product group.
     #' @param catalog_type catalog_type
     #' @param filters filters
     #' @param ... Other optional arguments.
@@ -90,9 +90,32 @@ CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest <- R6::R6Class(
       }
       if (!is.null(self$`filters`)) {
         CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestObject[["filters"]] <-
-          self$`filters`$toSimpleType()
+          self$extractSimpleType(self$`filters`)
       }
       return(CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

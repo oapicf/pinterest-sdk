@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Disclosure label for AI-generated or AI-modified content in a catalog item asset.",
+  "name": "CatalogsAiContentDisclosureLabel",
+  "symbols": [
+    "ai_modified",
+    "synthetic_performer"
+  ]
+}

@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setNegated(bool  negated);
+	void setNegated(bool negated);
 	/*! \brief Get 
 	 */
 	NonNullableCatalogsCurrency getValues();
 
 	/*! \brief Set 
 	 */
-	void setValues(NonNullableCatalogsCurrency  values);
+	void setValues(NonNullableCatalogsCurrency values);
 
 
     private:

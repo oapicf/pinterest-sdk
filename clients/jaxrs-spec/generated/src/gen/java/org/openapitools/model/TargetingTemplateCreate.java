@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.PlacementGroupType;
-import org.openapitools.model.TargetingSpec;
+import org.openapitools.model.TargetingSpecOptimal;
 import org.openapitools.model.TargetingTemplateKeyword;
 import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
@@ -21,16 +21,18 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
-
+/**
+ * Resource create operation model.
+ **/
+@ApiModel(description = "Resource create operation model.")
 @JsonTypeName("TargetingTemplateCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingTemplateCreate   {
   private Boolean autoTargetingEnabled = true;
   private @Valid List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
   private String name;
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
-  private TargetingSpec targetingAttributes;
+  private TargetingSpecOptimal targetingAttributes;
   private TrackingUrls trackingUrls;
 
   public TargetingTemplateCreate() {
@@ -39,14 +41,14 @@ public class TargetingTemplateCreate   {
   @JsonCreator
   public TargetingTemplateCreate(
     @JsonProperty(required = true, value = "name") String name,
-    @JsonProperty(required = true, value = "targeting_attributes") TargetingSpec targetingAttributes
+    @JsonProperty(required = true, value = "targeting_attributes") TargetingSpecOptimal targetingAttributes
   ) {
     this.name = name;
     this.targetingAttributes = targetingAttributes;
   }
 
   /**
-   * Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
+   * Enable auto-targeting for ad group. Also known as [\&quot;expanded targeting\&quot;](https://help.pinterest.com/en/business/article/expanded-targeting).
    **/
   public TargetingTemplateCreate autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
@@ -54,7 +56,7 @@ public class TargetingTemplateCreate   {
   }
 
   
-  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).")
   @JsonProperty("auto_targeting_enabled")
   public Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
@@ -73,7 +75,7 @@ public class TargetingTemplateCreate   {
   }
 
   
-  @ApiModelProperty(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("keywords")
   @Valid public List<@Valid TargetingTemplateKeyword> getKeywords() {
     return keywords;
@@ -101,7 +103,7 @@ public class TargetingTemplateCreate   {
     return this;
   }
   /**
-   * Name of targeting template.
+   * targeting template name
    **/
   public TargetingTemplateCreate name(String name) {
     this.name = name;
@@ -109,7 +111,7 @@ public class TargetingTemplateCreate   {
   }
 
   
-  @ApiModelProperty(example = "Gaming", required = true, value = "Name of targeting template.")
+  @ApiModelProperty(required = true, value = "targeting template name")
   @JsonProperty(required = true, value = "name")
   @NotNull public String getName() {
     return name;
@@ -140,21 +142,22 @@ public class TargetingTemplateCreate   {
   }
 
   /**
+   * targeting profile attributes
    **/
-  public TargetingTemplateCreate targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateCreate targetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "targeting profile attributes")
   @JsonProperty(required = true, value = "targeting_attributes")
-  @NotNull @Valid public TargetingSpec getTargetingAttributes() {
+  @NotNull @Valid public TargetingSpecOptimal getTargetingAttributes() {
     return targetingAttributes;
   }
 
   @JsonProperty(required = true, value = "targeting_attributes")
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
@@ -220,12 +223,8 @@ public class TargetingTemplateCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

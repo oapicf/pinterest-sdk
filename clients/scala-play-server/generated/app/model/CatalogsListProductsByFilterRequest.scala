@@ -5,10 +5,9 @@ import play.api.libs.json._
 /**
   * Request object to list products for a given product group filter.
   * @param feedId Catalog Feed id pertaining to the catalog product group filter.
-  * @param catalogId Catalog id pertaining to the creative assets product group.
-  * @param additionalProperties Any additional properties this model may have.
+  * @param catalogId Catalog ID pertaining to the product group.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CatalogsListProductsByFilterRequest(
   feedId: String,
   filters: CatalogsCreativeAssetsProductGroupFilters,
@@ -16,34 +15,10 @@ case class CatalogsListProductsByFilterRequest(
   catalogType: CatalogsListProductsByFilterRequest.CatalogType.Value,
   country: Country,
   locale: CatalogsLocale
-  additionalProperties: 
 )
 
 object CatalogsListProductsByFilterRequest {
-  implicit lazy val catalogsListProductsByFilterRequestJsonFormat: Format[CatalogsListProductsByFilterRequest] = {
-    val realJsonFormat = Json.format[CatalogsListProductsByFilterRequest]
-    val declaredPropNames = Set("feedId", "filters", "catalogId", "catalogType", "country", "locale")
-    
-    Format(
-      Reads {
-        case JsObject(xs) =>
-          val declaredProps = xs.filterKeys(declaredPropNames)
-          val additionalProps = JsObject(xs -- declaredPropNames)
-          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
-          val newObj = JsObject(restructuredProps)
-          realJsonFormat.reads(newObj)
-        case _ =>
-          JsError("error.expected.jsobject")
-      },
-      Writes { catalogsListProductsByFilterRequest =>
-        val jsObj = realJsonFormat.writes(catalogsListProductsByFilterRequest)
-        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
-        val declaredProps = jsObj - "additionalProperties"
-        val newObj = declaredProps ++ additionalProps
-        newObj
-      }
-    )
-  }
+  implicit lazy val catalogsListProductsByFilterRequestJsonFormat: Format[CatalogsListProductsByFilterRequest] = Json.format[CatalogsListProductsByFilterRequest]
 
   // noinspection TypeAnnotation
   object CatalogType extends Enumeration {

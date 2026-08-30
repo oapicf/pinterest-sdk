@@ -19,13 +19,20 @@ typedef struct catalogs_creative_assets_feeds_update_request_t catalogs_creative
 #include "catalogs_feed_processing_schedule.h"
 #include "catalogs_format.h"
 #include "catalogs_status.h"
-#include "catalogs_type.h"
 #include "nullable_currency.h"
+
+// Enum CATALOGTYPE for catalogs_creative_assets_feeds_update_request
+
+typedef enum  { pinterest_rest_api_catalogs_creative_assets_feeds_update_request_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_creative_assets_feeds_update_request_CATALOGTYPE_CREATIVE_ASSETS } pinterest_rest_api_catalogs_creative_assets_feeds_update_request_CATALOGTYPE_e;
+
+char* catalogs_creative_assets_feeds_update_request_catalog_type_ToString(pinterest_rest_api_catalogs_creative_assets_feeds_update_request_CATALOGTYPE_e catalog_type);
+
+pinterest_rest_api_catalogs_creative_assets_feeds_update_request_CATALOGTYPE_e catalogs_creative_assets_feeds_update_request_catalog_type_FromString(char* catalog_type);
 
 
 
 typedef struct catalogs_creative_assets_feeds_update_request_t {
-    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
+    pinterest_rest_api_catalogs_creative_assets_feeds_update_request_CATALOGTYPE_e catalog_type; //enum
     struct catalogs_feed_credentials_t *credentials; //model
     pinterest_rest_api_nullable_currency__e default_currency; //referenced enum
     pinterest_rest_api_catalogs_format__e format; //referenced enum
@@ -38,7 +45,7 @@ typedef struct catalogs_creative_assets_feeds_update_request_t {
 } catalogs_creative_assets_feeds_update_request_t;
 
 __attribute__((deprecated)) catalogs_creative_assets_feeds_update_request_t *catalogs_creative_assets_feeds_update_request_create(
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_creative_assets_feeds_update_request_CATALOGTYPE_e catalog_type,
     catalogs_feed_credentials_t *credentials,
     pinterest_rest_api_nullable_currency__e default_currency,
     pinterest_rest_api_catalogs_format__e format,

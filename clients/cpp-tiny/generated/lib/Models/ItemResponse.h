@@ -2,7 +2,7 @@
 /*
  * ItemResponse.h
  *
- * Object describing an item record or error
+ * Object describing an item record or error. Discriminated by &#x60;item_response_kind&#x60; (one unique value per leaf).
  */
 
 #ifndef TINY_CPP_CLIENT_ItemResponse_H_
@@ -13,9 +13,12 @@
 #include "bourne/json.hpp"
 #include "Helpers.h"
 #include "CatalogsCreativeAssetsAttributes.h"
-#include "CatalogsType.h"
-#include "ItemResponse_oneOf.h"
-#include "ItemResponse_oneOf_1.h"
+#include "CatalogsCreativeAssetsItemErrorResponse.h"
+#include "CatalogsCreativeAssetsItemResponse.h"
+#include "CatalogsHotelItemErrorResponse.h"
+#include "CatalogsHotelItemResponse.h"
+#include "CatalogsRetailItemErrorResponse.h"
+#include "CatalogsRetailItemResponse.h"
 #include "ItemValidationEvent.h"
 #include "Pin.h"
 #include <list>
@@ -23,7 +26,7 @@
 namespace Tiny {
 
 
-/*! \brief Object describing an item record or error
+/*! \brief Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
  *
  *  \ingroup Models
  *
@@ -54,59 +57,67 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
-
-	/*! \brief Set 
-	 */
-	void setCatalogType(CatalogsType  catalog_type);
-	/*! \brief Get 
-	 */
 	CatalogsCreativeAssetsAttributes getAttributes();
 
 	/*! \brief Set 
 	 */
-	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
+	void setAttributes(CatalogsCreativeAssetsAttributes attributes);
+	/*! \brief Get 
+	 */
+	std::string getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get The catalog item id in the merchant namespace
 	 */
 	std::string getItemId();
 
 	/*! \brief Set The catalog item id in the merchant namespace
 	 */
-	void setItemId(std::string  item_id);
+	void setItemId(std::string item_id);
+	/*! \brief Get Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	std::string getItemResponseKind();
+
+	/*! \brief Set Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	void setItemResponseKind(std::string item_response_kind);
 	/*! \brief Get The pins mapped to the item
 	 */
 	std::list<Pin> getPins();
 
 	/*! \brief Set The pins mapped to the item
 	 */
-	void setPins(std::list <Pin> pins);
+	void setPins(std::list<Pin> pins);
 	/*! \brief Get The catalog hotel id in the merchant namespace
 	 */
 	std::string getHotelId();
 
 	/*! \brief Set The catalog hotel id in the merchant namespace
 	 */
-	void setHotelId(std::string  hotel_id);
+	void setHotelId(std::string hotel_id);
 	/*! \brief Get The catalog creative assets id in the merchant namespace
 	 */
 	std::string getCreativeAssetsId();
 
 	/*! \brief Set The catalog creative assets id in the merchant namespace
 	 */
-	void setCreativeAssetsId(std::string  creative_assets_id);
+	void setCreativeAssetsId(std::string creative_assets_id);
 	/*! \brief Get Array with the errors for the item id requested
 	 */
 	std::list<ItemValidationEvent> getErrors();
 
 	/*! \brief Set Array with the errors for the item id requested
 	 */
-	void setErrors(std::list <ItemValidationEvent> errors);
+	void setErrors(std::list<ItemValidationEvent> errors);
 
 
     private:
-    CatalogsType catalog_type;
     CatalogsCreativeAssetsAttributes attributes;
+    std::string catalog_type{};
     std::string item_id{};
+    std::string item_response_kind{};
     std::list<Pin> pins;
     std::string hotel_id{};
     std::string creative_assets_id{};

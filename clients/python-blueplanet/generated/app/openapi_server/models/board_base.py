@@ -287,7 +287,7 @@ class BoardBase(Model):
     def name(self) -> str:
         """Gets the name of this BoardBase.
 
-             Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".  # noqa: E501
+            Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".  # noqa: E501
 
         :return: The name of this BoardBase.
         :rtype: str
@@ -298,7 +298,7 @@ class BoardBase(Model):
     def name(self, name: str):
         """Sets the name of this BoardBase.
 
-             Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".  # noqa: E501
+            Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".  # noqa: E501
 
         :param name: The name of this BoardBase.
         :type name: str

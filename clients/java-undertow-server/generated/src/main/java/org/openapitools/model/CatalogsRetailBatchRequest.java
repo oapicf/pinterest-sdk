@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsRetailBatchRequestItemsInner;
+import org.openapitools.model.CatalogsRetailBatchRequestItemsItems;
 import org.openapitools.model.Country;
 
 
@@ -29,7 +29,7 @@ import org.openapitools.model.Country;
  */
 
 @ApiModel(description = "A request object that can have multiple operations on a single retail batch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailBatchRequest   {
   
   private String catalogId;
@@ -53,7 +53,7 @@ public class CatalogsRetailBatchRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
+  private List<CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -146,7 +146,7 @@ public class CatalogsRetailBatchRequest   {
     NB("NB"),
     NE("NE"),
     NL2("NL"),
-    NO("NO"),
+    FALSE("false"),
     PL("PL"),
     PT("PT"),
     RO("RO"),
@@ -235,7 +235,7 @@ public class CatalogsRetailBatchRequest   {
   /**
    * Array with catalogs item operations
    */
-  public CatalogsRetailBatchRequest items(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public CatalogsRetailBatchRequest items(List<CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
     return this;
   }
@@ -243,10 +243,10 @@ public class CatalogsRetailBatchRequest   {
   
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
   @JsonProperty("items")
-  public List<CatalogsRetailBatchRequestItemsInner> getItems() {
+  public List<CatalogsRetailBatchRequestItemsItems> getItems() {
     return items;
   }
-  public void setItems(List<CatalogsRetailBatchRequestItemsInner> items) {
+  public void setItems(List<CatalogsRetailBatchRequestItemsItems> items) {
     this.items = items;
   }
 
@@ -309,10 +309,7 @@ public class CatalogsRetailBatchRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

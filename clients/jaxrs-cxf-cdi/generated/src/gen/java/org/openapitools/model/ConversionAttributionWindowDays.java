@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import java.math.BigDecimal;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -9,16 +10,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum ConversionAttributionWindowDays {
 
-    @JsonProperty("0") NUMBER_0(Integer.valueOf(0)), @JsonProperty("1") NUMBER_1(Integer.valueOf(1)), @JsonProperty("7") NUMBER_7(Integer.valueOf(7)), @JsonProperty("14") NUMBER_14(Integer.valueOf(14)), @JsonProperty("30") NUMBER_30(Integer.valueOf(30)), @JsonProperty("60") NUMBER_60(Integer.valueOf(60));
+    @JsonProperty("new BigDecimal("0")") NUMBER_0(BigDecimal.valueOf(new BigDecimal("0"))), @JsonProperty("new BigDecimal("1")") NUMBER_1(BigDecimal.valueOf(new BigDecimal("1"))), @JsonProperty("new BigDecimal("7")") NUMBER_7(BigDecimal.valueOf(new BigDecimal("7"))), @JsonProperty("new BigDecimal("14")") NUMBER_14(BigDecimal.valueOf(new BigDecimal("14"))), @JsonProperty("new BigDecimal("30")") NUMBER_30(BigDecimal.valueOf(new BigDecimal("30"))), @JsonProperty("new BigDecimal("60")") NUMBER_60(BigDecimal.valueOf(new BigDecimal("60")));
 
 
-    private Integer value;
+    private BigDecimal value;
 
-    ConversionAttributionWindowDays(Integer v) {
+    ConversionAttributionWindowDays(BigDecimal v) {
         value = v;
     }
 
-    public Integer value() {
+    public BigDecimal value() {
         return value;
     }
 
@@ -27,7 +28,7 @@ public enum ConversionAttributionWindowDays {
         return String.valueOf(value);
     }
 
-    public static ConversionAttributionWindowDays fromValue(Integer value) {
+    public static ConversionAttributionWindowDays fromValue(BigDecimal value) {
         for (ConversionAttributionWindowDays b : ConversionAttributionWindowDays.values()) {
             if (b.value.equals(value)) {
                 return b;

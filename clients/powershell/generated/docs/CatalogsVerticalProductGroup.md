@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**CatalogId** | **String** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **String** |  | 
 **Country** | **String** |  | [optional] 
 **CreatedAt** | **Int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **Description** | **String** |  | [optional] 
 **FeedId** | **String** | id of the catalogs feed belonging to this catalog product group | 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**Id** | **String** | ID of the creative assets product group. | 
+**Id** | **String** | ID of the catalog product group. | 
 **IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] 
 **Locale** | **String** |  | [optional] 
-**Name** | **String** | Name of creative assets product group | [optional] 
+**Name** | **String** | Name of catalog product group | [optional] 
 **Status** | [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] 
 **Type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | 
 **UpdatedAt** | **Int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogsVerticalProductGroup = Initialize-PSOpenAPIToolsCatalogsVerticalProductGroup  -CatalogId null `
+$CatalogsVerticalProductGroup = Initialize-PSOpenAPIToolsCatalogsVerticalProductGroup  -CatalogId 2680059592705 `
  -CatalogType null `
  -Country null `
  -CreatedAt 1621350033000 `

@@ -1,14 +1,14 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.IntegrationLogsRequest
+import org.openapitools.server.api.model.IntegrationLogsInvalidLogResponse
+import org.openapitools.server.api.model.IntegrationLogsRequestCreate
 import org.openapitools.server.api.model.IntegrationLogsSuccessResponse
 import org.openapitools.server.api.model.IntegrationMetadata
+import org.openapitools.server.api.model.IntegrationMetadataCreate
+import org.openapitools.server.api.model.IntegrationMetadataUpdate
 import org.openapitools.server.api.model.IntegrationRecord
-import org.openapitools.server.api.model.IntegrationRequest
-import org.openapitools.server.api.model.IntegrationRequestPatch
 import org.openapitools.server.api.model.IntegrationsGetList200Response
-import org.openapitools.server.api.model.IntegrationsLogsPost400Response
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -27,16 +27,16 @@ interface IntegrationsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* integrationsCommerceDel
      * Delete commerce integration */
-    suspend fun integrationsCommerceDel(externalBusinessId:kotlin.String?,context:OperationRequest):Response<Void>
+    suspend fun integrationsCommerceDel(externalBusinessId:kotlin.String?,context:OperationRequest):Response<IntegrationMetadata>
     /* integrationsCommerceGet
      * Get commerce integration */
     suspend fun integrationsCommerceGet(externalBusinessId:kotlin.String?,context:OperationRequest):Response<IntegrationMetadata>
     /* integrationsCommercePatch
      * Update commerce integration */
-    suspend fun integrationsCommercePatch(externalBusinessId:kotlin.String?,integrationRequestPatch:IntegrationRequestPatch?,context:OperationRequest):Response<IntegrationMetadata>
+    suspend fun integrationsCommercePatch(externalBusinessId:kotlin.String?,integrationMetadataUpdate:IntegrationMetadataUpdate?,context:OperationRequest):Response<IntegrationMetadata>
     /* integrationsCommercePost
      * Create commerce integration */
-    suspend fun integrationsCommercePost(integrationRequest:IntegrationRequest?,context:OperationRequest):Response<IntegrationMetadata>
+    suspend fun integrationsCommercePost(integrationMetadataCreate:IntegrationMetadataCreate?,context:OperationRequest):Response<IntegrationMetadata>
     /* integrationsGetById
      * Get integration metadata */
     suspend fun integrationsGetById(id:kotlin.String?,context:OperationRequest):Response<IntegrationRecord>
@@ -45,7 +45,7 @@ interface IntegrationsApi  {
     suspend fun integrationsGetList(bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<IntegrationsGetList200Response>
     /* integrationsLogsPost
      * Receives batched logs from integration applications. */
-    suspend fun integrationsLogsPost(integrationLogsRequest:IntegrationLogsRequest?,context:OperationRequest):Response<IntegrationLogsSuccessResponse>
+    suspend fun integrationsLogsPost(integrationLogsRequestCreate:IntegrationLogsRequestCreate?,context:OperationRequest):Response<IntegrationLogsSuccessResponse>
     companion object {
         const val address = "IntegrationsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

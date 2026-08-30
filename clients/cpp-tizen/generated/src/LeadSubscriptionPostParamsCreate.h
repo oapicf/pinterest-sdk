@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "LeadSubscriptionPostParamsCreate_allOf_partner_metadata.h"
+#include "PartnerMetadata.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -67,13 +67,13 @@ public:
 	/*! \brief Set Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
 	 */
 	void setPartnerAccessToken(std::string  partner_access_token);
-	/*! \brief Get 
+	/*! \brief Get Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
 	 */
-	LeadSubscriptionPostParamsCreate_allOf_partner_metadata getPartnerMetadata();
+	PartnerMetadata getPartnerMetadata();
 
-	/*! \brief Set 
+	/*! \brief Set Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
 	 */
-	void setPartnerMetadata(LeadSubscriptionPostParamsCreate_allOf_partner_metadata  partner_metadata);
+	void setPartnerMetadata(PartnerMetadata  partner_metadata);
 	/*! \brief Get Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 	 */
 	std::string getPartnerRefreshToken();
@@ -86,7 +86,7 @@ private:
 	std::string lead_form_id;
 	std::string webhook_url;
 	std::string partner_access_token;
-	LeadSubscriptionPostParamsCreate_allOf_partner_metadata partner_metadata;
+	PartnerMetadata partner_metadata;
 	std::string partner_refresh_token;
 	void __init();
 	void __cleanup();

@@ -13,13 +13,13 @@ Method | HTTP request | Description
 # **audiencesCreate**
 ```objc
 -(NSURLSessionTask*) audiencesCreateWithAdAccountId: (NSString*) adAccountId
-    audienceCreateRequest: (OAIAudienceCreateRequest*) audienceCreateRequest
-        completionHandler: (void (^)(OAIAudience* output, NSError* error)) handler;
+    adAccountsAudienceCreate: (OAIAdAccountsAudienceCreate*) adAccountsAudienceCreate
+        completionHandler: (void (^)(OAIAdAccountsAudience* output, NSError* error)) handler;
 ```
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+Create a new audience for the ad account.
 
 ### Example
 ```objc
@@ -30,14 +30,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIAudienceCreateRequest* audienceCreateRequest = [[OAIAudienceCreateRequest alloc] init]; // List of ads to create, size limit [1, 30]
+OAIAdAccountsAudienceCreate* adAccountsAudienceCreate = [[OAIAdAccountsAudienceCreate alloc] init]; // 
 
 OAIAudiencesApi*apiInstance = [[OAIAudiencesApi alloc] init];
 
 // Create audience
 [apiInstance audiencesCreateWithAdAccountId:adAccountId
-              audienceCreateRequest:audienceCreateRequest
-          completionHandler: ^(OAIAudience* output, NSError* error) {
+              adAccountsAudienceCreate:adAccountsAudienceCreate
+          completionHandler: ^(OAIAdAccountsAudience* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -52,11 +52,11 @@ OAIAudiencesApi*apiInstance = [[OAIAudiencesApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **audienceCreateRequest** | [**OAIAudienceCreateRequest***](OAIAudienceCreateRequest.md)| List of ads to create, size limit [1, 30] | 
+ **adAccountsAudienceCreate** | [**OAIAdAccountsAudienceCreate***](OAIAdAccountsAudienceCreate.md)|  | 
 
 ### Return type
 
-[**OAIAudience***](OAIAudience.md)
+[**OAIAdAccountsAudience***](OAIAdAccountsAudience.md)
 
 ### Authorization
 
@@ -71,9 +71,9 @@ Name | Type | Description  | Notes
 
 # **audiencesGet**
 ```objc
--(NSURLSessionTask*) audiencesGetWithAdAccountId: (NSString*) adAccountId
-    audienceId: (NSString*) audienceId
-        completionHandler: (void (^)(OAIAudience* output, NSError* error)) handler;
+-(NSURLSessionTask*) audiencesGetWithAudienceId: (NSString*) audienceId
+    adAccountId: (NSString*) adAccountId
+        completionHandler: (void (^)(OAIAdAccountsAudience* output, NSError* error)) handler;
 ```
 
 Get audience
@@ -91,15 +91,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
+NSString* audienceId = @"audienceId_example"; // Audience ID.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* audienceId = @"audienceId_example"; // Unique identifier of an audience
 
 OAIAudiencesApi*apiInstance = [[OAIAudiencesApi alloc] init];
 
 // Get audience
-[apiInstance audiencesGetWithAdAccountId:adAccountId
-              audienceId:audienceId
-          completionHandler: ^(OAIAudience* output, NSError* error) {
+[apiInstance audiencesGetWithAudienceId:audienceId
+              adAccountId:adAccountId
+          completionHandler: ^(OAIAdAccountsAudience* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -113,12 +113,12 @@ OAIAudiencesApi*apiInstance = [[OAIAudiencesApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **NSString***| Audience ID. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **audienceId** | **NSString***| Unique identifier of an audience | 
 
 ### Return type
 
-[**OAIAudience***](OAIAudience.md)
+[**OAIAdAccountsAudience***](OAIAdAccountsAudience.md)
 
 ### Authorization
 
@@ -135,9 +135,10 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) audiencesListWithAdAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
-    order: (NSString*) order
     pageSize: (NSNumber*) pageSize
-    ownershipType: (NSString*) ownershipType
+    order: (OAIPinterestLibPaginationOrder) order
+    ownershipType: (OAIAudienceOwnershipType) ownershipType
+    excludeNca: (NSNumber*) excludeNca
         completionHandler: (void (^)(OAIAudiencesList200Response* output, NSError* error)) handler;
 ```
 
@@ -158,18 +159,20 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* ownershipType = OWNED; // Filter audiences by ownership type. (optional) (default to @"OWNED")
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+OAIAudienceOwnershipType ownershipType = [[OAIAudienceOwnershipType alloc] init]; //  (optional)
+NSNumber* excludeNca = @(NO); // When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional) (default to @(NO))
 
 OAIAudiencesApi*apiInstance = [[OAIAudiencesApi alloc] init];
 
 // List audiences
 [apiInstance audiencesListWithAdAccountId:adAccountId
               bookmark:bookmark
-              order:order
               pageSize:pageSize
+              order:order
               ownershipType:ownershipType
+              excludeNca:excludeNca
           completionHandler: ^(OAIAudiencesList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -186,9 +189,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **ownershipType** | **NSString***| Filter audiences by ownership type. | [optional] [default to @&quot;OWNED&quot;]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **ownershipType** | [**OAIAudienceOwnershipType**](.md)|  | [optional] 
+ **excludeNca** | **NSNumber***| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to @(NO)]
 
 ### Return type
 
@@ -207,15 +211,15 @@ Name | Type | Description  | Notes
 
 # **audiencesUpdate**
 ```objc
--(NSURLSessionTask*) audiencesUpdateWithAdAccountId: (NSString*) adAccountId
-    audienceId: (NSString*) audienceId
-    audienceUpdateRequest: (OAIAudienceUpdateRequest*) audienceUpdateRequest
-        completionHandler: (void (^)(OAIAudience* output, NSError* error)) handler;
+-(NSURLSessionTask*) audiencesUpdateWithAudienceId: (NSString*) audienceId
+    adAccountId: (NSString*) adAccountId
+    adAccountsAudienceUpdate: (OAIAdAccountsAudienceUpdate*) adAccountsAudienceUpdate
+        completionHandler: (void (^)(OAIAdAccountsAudience* output, NSError* error)) handler;
 ```
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 ```objc
@@ -225,17 +229,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
+NSString* audienceId = @"audienceId_example"; // Audience ID.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* audienceId = @"audienceId_example"; // Unique identifier of an audience
-OAIAudienceUpdateRequest* audienceUpdateRequest = [[OAIAudienceUpdateRequest alloc] init]; // The audience to be updated.
+OAIAdAccountsAudienceUpdate* adAccountsAudienceUpdate = [[OAIAdAccountsAudienceUpdate alloc] init]; // 
 
 OAIAudiencesApi*apiInstance = [[OAIAudiencesApi alloc] init];
 
 // Update audience
-[apiInstance audiencesUpdateWithAdAccountId:adAccountId
-              audienceId:audienceId
-              audienceUpdateRequest:audienceUpdateRequest
-          completionHandler: ^(OAIAudience* output, NSError* error) {
+[apiInstance audiencesUpdateWithAudienceId:audienceId
+              adAccountId:adAccountId
+              adAccountsAudienceUpdate:adAccountsAudienceUpdate
+          completionHandler: ^(OAIAdAccountsAudience* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -249,13 +253,13 @@ OAIAudiencesApi*apiInstance = [[OAIAudiencesApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **NSString***| Audience ID. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **audienceId** | **NSString***| Unique identifier of an audience | 
- **audienceUpdateRequest** | [**OAIAudienceUpdateRequest***](OAIAudienceUpdateRequest.md)| The audience to be updated. | 
+ **adAccountsAudienceUpdate** | [**OAIAdAccountsAudienceUpdate***](OAIAdAccountsAudienceUpdate.md)|  | 
 
 ### Return type
 
-[**OAIAudience***](OAIAudience.md)
+[**OAIAdAccountsAudience***](OAIAdAccountsAudience.md)
 
 ### Authorization
 

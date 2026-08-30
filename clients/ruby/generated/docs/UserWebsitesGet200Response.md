@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;UserWebsiteSummary&gt;**](UserWebsiteSummary.md) |  |  |
+| **items** | [**Array&lt;UserWebsite&gt;**](UserWebsite.md) |  |  |
 
 ## Example
 

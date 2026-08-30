@@ -26,22 +26,24 @@ static catalogs_retail_product_group_t *catalogs_retail_product_group_create_int
     char *catalog_id,
     pinterest_rest_api_catalogs_retail_product_group_CATALOGTYPE_e catalog_type,
     char *country,
-    int created_at,
+    int *created_at,
     char *description,
     char *feed_id,
     catalogs_product_group_filters_t *filters,
     char *id,
-    int is_featured,
+    int *is_featured,
     char *locale,
     char *name,
     pinterest_rest_api_catalogs_product_group_status__e status,
     pinterest_rest_api_catalogs_product_group_type__e type,
-    int updated_at
+    int *updated_at
     ) {
     catalogs_retail_product_group_t *catalogs_retail_product_group_local_var = malloc(sizeof(catalogs_retail_product_group_t));
     if (!catalogs_retail_product_group_local_var) {
         return NULL;
     }
+    memset(catalogs_retail_product_group_local_var, 0, sizeof(catalogs_retail_product_group_t));
+    catalogs_retail_product_group_local_var->_library_owned = 1;
     catalogs_retail_product_group_local_var->catalog_id = catalog_id;
     catalogs_retail_product_group_local_var->catalog_type = catalog_type;
     catalogs_retail_product_group_local_var->country = country;
@@ -56,8 +58,6 @@ static catalogs_retail_product_group_t *catalogs_retail_product_group_create_int
     catalogs_retail_product_group_local_var->status = status;
     catalogs_retail_product_group_local_var->type = type;
     catalogs_retail_product_group_local_var->updated_at = updated_at;
-
-    catalogs_retail_product_group_local_var->_library_owned = 1;
     return catalogs_retail_product_group_local_var;
 }
 
@@ -65,34 +65,55 @@ __attribute__((deprecated)) catalogs_retail_product_group_t *catalogs_retail_pro
     char *catalog_id,
     pinterest_rest_api_catalogs_retail_product_group_CATALOGTYPE_e catalog_type,
     char *country,
-    int created_at,
+    int *created_at,
     char *description,
     char *feed_id,
     catalogs_product_group_filters_t *filters,
     char *id,
-    int is_featured,
+    int *is_featured,
     char *locale,
     char *name,
     pinterest_rest_api_catalogs_product_group_status__e status,
     pinterest_rest_api_catalogs_product_group_type__e type,
-    int updated_at
+    int *updated_at
     ) {
-    return catalogs_retail_product_group_create_internal (
+    int *created_at_copy = NULL;
+    if (created_at) {
+        created_at_copy = malloc(sizeof(int));
+        if (created_at_copy) *created_at_copy = *created_at;
+    }
+    int *is_featured_copy = NULL;
+    if (is_featured) {
+        is_featured_copy = malloc(sizeof(int));
+        if (is_featured_copy) *is_featured_copy = *is_featured;
+    }
+    int *updated_at_copy = NULL;
+    if (updated_at) {
+        updated_at_copy = malloc(sizeof(int));
+        if (updated_at_copy) *updated_at_copy = *updated_at;
+    }
+    catalogs_retail_product_group_t *result = catalogs_retail_product_group_create_internal (
         catalog_id,
         catalog_type,
         country,
-        created_at,
+        created_at_copy,
         description,
         feed_id,
         filters,
         id,
-        is_featured,
+        is_featured_copy,
         locale,
         name,
         status,
         type,
-        updated_at
+        updated_at_copy
         );
+    if (!result) {
+        free(created_at_copy);
+        free(is_featured_copy);
+        free(updated_at_copy);
+    }
+    return result;
 }
 
 void catalogs_retail_product_group_free(catalogs_retail_product_group_t *catalogs_retail_product_group) {
@@ -112,6 +133,10 @@ void catalogs_retail_product_group_free(catalogs_retail_product_group_t *catalog
         free(catalogs_retail_product_group->country);
         catalogs_retail_product_group->country = NULL;
     }
+    if (catalogs_retail_product_group->created_at) {
+        free(catalogs_retail_product_group->created_at);
+        catalogs_retail_product_group->created_at = NULL;
+    }
     if (catalogs_retail_product_group->description) {
         free(catalogs_retail_product_group->description);
         catalogs_retail_product_group->description = NULL;
@@ -128,6 +153,10 @@ void catalogs_retail_product_group_free(catalogs_retail_product_group_t *catalog
         free(catalogs_retail_product_group->id);
         catalogs_retail_product_group->id = NULL;
     }
+    if (catalogs_retail_product_group->is_featured) {
+        free(catalogs_retail_product_group->is_featured);
+        catalogs_retail_product_group->is_featured = NULL;
+    }
     if (catalogs_retail_product_group->locale) {
         free(catalogs_retail_product_group->locale);
         catalogs_retail_product_group->locale = NULL;
@@ -135,6 +164,10 @@ void catalogs_retail_product_group_free(catalogs_retail_product_group_t *catalog
     if (catalogs_retail_product_group->name) {
         free(catalogs_retail_product_group->name);
         catalogs_retail_product_group->name = NULL;
+    }
+    if (catalogs_retail_product_group->updated_at) {
+        free(catalogs_retail_product_group->updated_at);
+        catalogs_retail_product_group->updated_at = NULL;
     }
     free(catalogs_retail_product_group);
 }
@@ -171,7 +204,7 @@ cJSON *catalogs_retail_product_group_convertToJSON(catalogs_retail_product_group
 
     // catalogs_retail_product_group->created_at
     if(catalogs_retail_product_group->created_at) {
-    if(cJSON_AddNumberToObject(item, "created_at", catalogs_retail_product_group->created_at) == NULL) {
+    if(cJSON_AddNumberToObject(item, "created_at", *catalogs_retail_product_group->created_at) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -219,7 +252,7 @@ cJSON *catalogs_retail_product_group_convertToJSON(catalogs_retail_product_group
 
     // catalogs_retail_product_group->is_featured
     if(catalogs_retail_product_group->is_featured) {
-    if(cJSON_AddBoolToObject(item, "is_featured", catalogs_retail_product_group->is_featured) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_featured", *catalogs_retail_product_group->is_featured) == NULL) {
     goto fail; //Bool
     }
     }
@@ -270,7 +303,7 @@ cJSON *catalogs_retail_product_group_convertToJSON(catalogs_retail_product_group
 
     // catalogs_retail_product_group->updated_at
     if(catalogs_retail_product_group->updated_at) {
-    if(cJSON_AddNumberToObject(item, "updated_at", catalogs_retail_product_group->updated_at) == NULL) {
+    if(cJSON_AddNumberToObject(item, "updated_at", *catalogs_retail_product_group->updated_at) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -287,14 +320,37 @@ catalogs_retail_product_group_t *catalogs_retail_product_group_parseFromJSON(cJS
 
     catalogs_retail_product_group_t *catalogs_retail_product_group_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
+    char *country_local_str = NULL;
+
+    // define the local variable for catalogs_retail_product_group->created_at
+    int *created_at_local_var = NULL;
+
+    char *description_local_str = NULL;
+
+    char *feed_id_local_str = NULL;
+
     // define the local variable for catalogs_retail_product_group->filters
     catalogs_product_group_filters_t *filters_local_nonprim = NULL;
+
+    char *id_local_str = NULL;
+
+    // define the local variable for catalogs_retail_product_group->is_featured
+    int *is_featured_local_var = NULL;
+
+    char *locale_local_str = NULL;
+
+    char *name_local_str = NULL;
 
     // define the local variable for catalogs_retail_product_group->status
     pinterest_rest_api_catalogs_product_group_status__e status_local_nonprim = 0;
 
     // define the local variable for catalogs_retail_product_group->type
     pinterest_rest_api_catalogs_product_group_type__e type_local_nonprim = 0;
+
+    // define the local variable for catalogs_retail_product_group->updated_at
+    int *updated_at_local_var = NULL;
 
     // catalogs_retail_product_group->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_product_groupJSON, "catalog_id");
@@ -350,6 +406,12 @@ catalogs_retail_product_group_t *catalogs_retail_product_group_parseFromJSON(cJS
     {
     goto end; //Numeric
     }
+    created_at_local_var = malloc(sizeof(int));
+    if(!created_at_local_var)
+    {
+        goto end;
+    }
+    *created_at_local_var = created_at->valuedouble;
     }
 
     // catalogs_retail_product_group->description
@@ -416,6 +478,12 @@ catalogs_retail_product_group_t *catalogs_retail_product_group_parseFromJSON(cJS
     {
     goto end; //Bool
     }
+    is_featured_local_var = malloc(sizeof(int));
+    if(!is_featured_local_var)
+    {
+        goto end;
+    }
+    *is_featured_local_var = is_featured->valueint;
     }
 
     // catalogs_retail_product_group->locale
@@ -473,37 +541,95 @@ catalogs_retail_product_group_t *catalogs_retail_product_group_parseFromJSON(cJS
     {
     goto end; //Numeric
     }
+    updated_at_local_var = malloc(sizeof(int));
+    if(!updated_at_local_var)
+    {
+        goto end;
+    }
+    *updated_at_local_var = updated_at->valuedouble;
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+    if (country && !cJSON_IsNull(country)) country_local_str = strdup(country->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (feed_id && !cJSON_IsNull(feed_id)) feed_id_local_str = strdup(feed_id->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (locale && !cJSON_IsNull(locale)) locale_local_str = strdup(locale->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     catalogs_retail_product_group_local_var = catalogs_retail_product_group_create_internal (
-        strdup(catalog_id->valuestring),
+        catalog_id_local_str,
         catalog_typeVariable,
-        country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
-        created_at ? created_at->valuedouble : 0,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        strdup(feed_id->valuestring),
+        country_local_str,
+        created_at_local_var,
+        description_local_str,
+        feed_id_local_str,
         filters_local_nonprim,
-        strdup(id->valuestring),
-        is_featured ? is_featured->valueint : 0,
-        locale && !cJSON_IsNull(locale) ? strdup(locale->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        id_local_str,
+        is_featured_local_var,
+        locale_local_str,
+        name_local_str,
         status ? status_local_nonprim : 0,
         type_local_nonprim,
-        updated_at ? updated_at->valuedouble : 0
+        updated_at_local_var
         );
+
+    if (!catalogs_retail_product_group_local_var) {
+        goto end;
+    }
 
     return catalogs_retail_product_group_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
+    if (country_local_str) {
+        free(country_local_str);
+        country_local_str = NULL;
+    }
+    if (created_at_local_var) {
+        free(created_at_local_var);
+        created_at_local_var = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (feed_id_local_str) {
+        free(feed_id_local_str);
+        feed_id_local_str = NULL;
+    }
     if (filters_local_nonprim) {
         catalogs_product_group_filters_free(filters_local_nonprim);
         filters_local_nonprim = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (is_featured_local_var) {
+        free(is_featured_local_var);
+        is_featured_local_var = NULL;
+    }
+    if (locale_local_str) {
+        free(locale_local_str);
+        locale_local_str = NULL;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
     }
     if (status_local_nonprim) {
         status_local_nonprim = 0;
     }
     if (type_local_nonprim) {
         type_local_nonprim = 0;
+    }
+    if (updated_at_local_var) {
+        free(updated_at_local_var);
+        updated_at_local_var = NULL;
     }
     return NULL;
 

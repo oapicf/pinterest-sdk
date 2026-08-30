@@ -8,7 +8,7 @@ Parameters for retail report
 Name | Type
 ------------ | -------------
 `catalogType` | string
-`report` | [CatalogsHotelReportStatsParametersReport](CatalogsHotelReportStatsParametersReport.md)
+`report` | [CatalogsRetailReportStatsParametersReport](CatalogsRetailReportStatsParametersReport.md)
 
 ## Example
 

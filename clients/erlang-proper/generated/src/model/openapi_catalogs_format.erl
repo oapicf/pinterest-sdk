@@ -10,5 +10,5 @@
   binary().
 
 openapi_catalogs_format() ->
-  elements([<<"TSV">>, <<"CSV">>, <<"XML">>]).
+  elements([<<"TSV">>, <<"CSV">>, <<"XML">>, <<"INTEGRATION">>]).
 

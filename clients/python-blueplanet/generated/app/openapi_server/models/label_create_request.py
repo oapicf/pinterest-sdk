@@ -6,8 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.label_create_request_labels_inner import LabelCreateRequestLabelsInner  # noqa: F401,E501
-import re  # noqa: F401,E501
+from app.openapi_server.models.label_create_item import LabelCreateItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,26 +16,21 @@ class LabelCreateRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, labels: List[LabelCreateRequestLabelsInner]=None, parent_id: str=None):  # noqa: E501
+    def __init__(self, labels: List[LabelCreateItem]=None):  # noqa: E501
         """LabelCreateRequest - a model defined in Swagger
 
         :param labels: The labels of this LabelCreateRequest.  # noqa: E501
-        :type labels: List[LabelCreateRequestLabelsInner]
-        :param parent_id: The parent_id of this LabelCreateRequest.  # noqa: E501
-        :type parent_id: str
+        :type labels: List[LabelCreateItem]
         """
         self.swagger_types = {
-            'labels': List[LabelCreateRequestLabelsInner],
-            'parent_id': str
+            'labels': List[LabelCreateItem]
         }
 
         self.attribute_map = {
-            'labels': 'labels',
-            'parent_id': 'parent_id'
+            'labels': 'labels'
         }
 
         self._labels = labels
-        self._parent_id = parent_id
 
     @classmethod
     def from_dict(cls, dikt) -> 'LabelCreateRequest':
@@ -50,53 +44,26 @@ class LabelCreateRequest(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def labels(self) -> List[LabelCreateRequestLabelsInner]:
+    def labels(self) -> List[LabelCreateItem]:
         """Gets the labels of this LabelCreateRequest.
 
         Labels that you are applying to the campaign.  # noqa: E501
 
         :return: The labels of this LabelCreateRequest.
-        :rtype: List[LabelCreateRequestLabelsInner]
+        :rtype: List[LabelCreateItem]
         """
         return self._labels
 
     @labels.setter
-    def labels(self, labels: List[LabelCreateRequestLabelsInner]):
+    def labels(self, labels: List[LabelCreateItem]):
         """Sets the labels of this LabelCreateRequest.
 
         Labels that you are applying to the campaign.  # noqa: E501
 
         :param labels: The labels of this LabelCreateRequest.
-        :type labels: List[LabelCreateRequestLabelsInner]
+        :type labels: List[LabelCreateItem]
         """
         if labels is None:
             raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
 
         self._labels = labels
-
-    @property
-    def parent_id(self) -> str:
-        """Gets the parent_id of this LabelCreateRequest.
-
-        Unique identifier of the asset you are labelling. Currently, you can only label campaigns.  # noqa: E501
-
-        :return: The parent_id of this LabelCreateRequest.
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id: str):
-        """Sets the parent_id of this LabelCreateRequest.
-
-        Unique identifier of the asset you are labelling. Currently, you can only label campaigns.  # noqa: E501
-
-        :param parent_id: The parent_id of this LabelCreateRequest.
-        :type parent_id: str
-        """
-        if parent_id is None:
-            raise ValueError("Invalid value for `parent_id`, must not be `None`")  # noqa: E501
-        if parent_id is not None and not re.search(r'^[C]?\d+$', parent_id):  # noqa: E501
-            raise ValueError("Invalid value for `parent_id`, must be a follow pattern or equal to `/^[C]?\d+$/`")  # noqa: E501
-
-        self._parent_id = parent_id

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ItemResponse`
 --
-SELECT `catalog_type`, `attributes`, `item_id`, `pins`, `hotel_id`, `creative_assets_id`, `errors` FROM `ItemResponse` WHERE 1;
+SELECT `attributes`, `catalog_type`, `item_id`, `item_response_kind`, `pins`, `hotel_id`, `creative_assets_id`, `errors` FROM `ItemResponse` WHERE 1;
 
 --
 -- INSERT template for table `ItemResponse`
 --
-INSERT INTO `ItemResponse`(`catalog_type`, `attributes`, `item_id`, `pins`, `hotel_id`, `creative_assets_id`, `errors`) VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `ItemResponse`(`attributes`, `catalog_type`, `item_id`, `item_response_kind`, `pins`, `hotel_id`, `creative_assets_id`, `errors`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `ItemResponse`
 --
-UPDATE `ItemResponse` SET `catalog_type` = ?, `attributes` = ?, `item_id` = ?, `pins` = ?, `hotel_id` = ?, `creative_assets_id` = ?, `errors` = ? WHERE 1;
+UPDATE `ItemResponse` SET `attributes` = ?, `catalog_type` = ?, `item_id` = ?, `item_response_kind` = ?, `pins` = ?, `hotel_id` = ?, `creative_assets_id` = ?, `errors` = ? WHERE 1;
 
 --
 -- DELETE template for table `ItemResponse`

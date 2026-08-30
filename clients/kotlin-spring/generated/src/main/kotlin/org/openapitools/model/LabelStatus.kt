@@ -16,7 +16,7 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).
+* Label status values.
 * Values: ACTIVE,ARCHIVED
 */
 enum class LabelStatus(@get:JsonValue val value: kotlin.String) {

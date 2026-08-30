@@ -9,7 +9,7 @@
 -export_type([openapi_metrics_response/0]).
 
 -type openapi_metrics_response() ::
-  [ {'data', list(map()) }
+  [ {'data', list(openapi_metrics_response_data_items:openapi_metrics_response_data_items()) }
   ].
 
 
@@ -17,7 +17,7 @@ openapi_metrics_response() ->
     openapi_metrics_response([]).
 
 openapi_metrics_response(Fields) ->
-  Default = [ {'data', list(map()) }
+  Default = [ {'data', list(openapi_metrics_response_data_items:openapi_metrics_response_data_items()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

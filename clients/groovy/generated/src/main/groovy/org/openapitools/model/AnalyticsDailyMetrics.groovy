@@ -13,6 +13,6 @@ class AnalyticsDailyMetrics {
     DataStatus dataStatus
     /* Metrics date (UTC): YYYY-MM-DD. */
     String date
-    /* The metric name and daily value for each requested metric */
+    
     Map<String, BigDecimal> metrics = new HashMap<>()
 }

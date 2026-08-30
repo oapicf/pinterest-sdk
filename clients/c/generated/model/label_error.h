@@ -15,19 +15,19 @@
 
 typedef struct label_error_t label_error_t;
 
-#include "label.h"
+#include "label_error_data.h"
 
 
 
 typedef struct label_error_t {
-    struct label_t *data; //model
+    struct label_error_data_t *data; //model
     list_t *error_messages; //primitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } label_error_t;
 
 __attribute__((deprecated)) label_error_t *label_error_create(
-    label_t *data,
+    label_error_data_t *data,
     list_t *error_messages
 );
 

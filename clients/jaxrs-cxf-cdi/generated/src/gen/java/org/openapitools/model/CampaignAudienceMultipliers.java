@@ -23,6 +23,7 @@ public class CampaignAudienceMultipliers extends HashMap<String, Double>  {
   private String AUDIENCE_ID;
 
   /**
+   * Audience ID for the multiplier.
    **/
   public CampaignAudienceMultipliers AUDIENCE_ID(String AUDIENCE_ID) {
     this.AUDIENCE_ID = AUDIENCE_ID;
@@ -30,7 +31,7 @@ public class CampaignAudienceMultipliers extends HashMap<String, Double>  {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Audience ID for the multiplier.")
   @JsonProperty("AUDIENCE_ID")
  @Pattern(regexp="^\\d+$")  public String getAUDIENCEID() {
     return AUDIENCE_ID;
@@ -73,10 +74,7 @@ public class CampaignAudienceMultipliers extends HashMap<String, Double>  {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Ad targeting types for MMM report
  */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public enum MMMReportingTargetingType {
   
   APPTYPE("APPTYPE"),
@@ -20,7 +21,11 @@ public enum MMMReportingTargetingType {
   
   GENDER("GENDER"),
   
-  LOCATION("LOCATION");
+  LOCATION("LOCATION"),
+  
+  PLACEMENT("PLACEMENT"),
+  
+  AUDIENCE_INCLUDE("AUDIENCE_INCLUDE");
 
   private String value;
 

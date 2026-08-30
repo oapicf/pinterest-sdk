@@ -12,8 +12,6 @@ imports {
   DisclosureType = openapi_server.resourceTypes.DisclosureType
   EntityStatus = openapi_server.resourceTypes.EntityStatus
   GridClickType = openapi_server.resourceTypes.GridClickType
-  QuizPinData = openapi_server.resourceTypes.QuizPinData
-  TrackingUrls = openapi_server.resourceTypes.TrackingUrls
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -91,6 +89,11 @@ resourceTypes {
           description = "Deep link URL for iOS devices."
           optional = false
         }
+        is_carting {
+          type =  boolean
+          description = "Is the ad a carting/WTB ad?"
+          optional = false
+        }
         is_pin_deleted {
           type =  boolean
           description = "Is original pin deleted?"
@@ -111,8 +114,13 @@ resourceTypes {
           description = "Name of the ad - 255 chars max."
           optional = false
         }
+        pin_id {
+          type =  string
+          description = "Pin ID."
+          optional = true
+        }
         quiz_pin_data {
-          type = QuizPinData
+          type =  
           description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved."
           optional = false
         }
@@ -122,7 +130,7 @@ resourceTypes {
           optional = false
         }
         tracking_urls {
-          type = TrackingUrls
+          type =  
           description = ""
           optional = false
         }
@@ -130,11 +138,6 @@ resourceTypes {
           type =  string
           description = "Tracking URL for ad impressions."
           optional = false
-        }
-        pin_id {
-          type =  string
-          description = "Pin ID."
-          optional = true
         }
     }
   }

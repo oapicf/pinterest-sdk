@@ -18,8 +18,7 @@ Method | HTTP request | Description
 
 Delete commerce integration
 
-Delete commerce integration metadata for the given external business ID.
-Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 
 ### Example
 
@@ -36,7 +35,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -54,8 +53,7 @@ Name | Type | Description  | Notes
 
 Get commerce integration
 
-Get commerce integration metadata associated with the given external business ID.
-Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+Get commerce integration metadata associated with the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 
 ### Example
 
@@ -90,8 +88,7 @@ Name | Type | Description  | Notes
 
 Update commerce integration
 
-Update commerce integration metadata for the given external business ID.
-Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 
 ### Example
 
@@ -105,7 +102,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **string** | External business ID for the integration. | [default to null]
- **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata |
+ **integrationMetadataUpdate** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md) |  |
 
 ### Return type
 
@@ -127,8 +124,7 @@ Name | Type | Description  | Notes
 
 Create commerce integration
 
-Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account.
-Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
+Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 
 ### Example
 
@@ -141,7 +137,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata |
+ **integrationMetadataCreate** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md) |  |
 
 ### Return type
 
@@ -177,7 +173,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string** | Integration ID. | [default to null]
+ **id** | **string** | Integration record ID. | [default to null]
 
 ### Return type
 
@@ -214,7 +210,8 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -250,7 +247,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationLogsRequest** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md) | Ingest log information from external integration application. |
+ **integrationLogsRequestCreate** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md) |  |
 
 ### Return type
 

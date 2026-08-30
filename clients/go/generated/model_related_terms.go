@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,7 @@ type RelatedTerms struct {
 	// Total number of related terms returned
 	RelatedTermCount *int32 `json:"related_term_count,omitempty"`
 	// The id of the advertiser.
-	RelatedTermsList []RelatedTermsRelatedTermsListInner `json:"related_terms_list,omitempty"`
+	RelatedTermsList []RelatedTermsRelatedTermsListItems `json:"related_terms_list,omitempty"`
 }
 
 // NewRelatedTerms instantiates a new RelatedTerms object
@@ -110,9 +110,9 @@ func (o *RelatedTerms) SetRelatedTermCount(v int32) {
 }
 
 // GetRelatedTermsList returns the RelatedTermsList field value if set, zero value otherwise.
-func (o *RelatedTerms) GetRelatedTermsList() []RelatedTermsRelatedTermsListInner {
+func (o *RelatedTerms) GetRelatedTermsList() []RelatedTermsRelatedTermsListItems {
 	if o == nil || IsNil(o.RelatedTermsList) {
-		var ret []RelatedTermsRelatedTermsListInner
+		var ret []RelatedTermsRelatedTermsListItems
 		return ret
 	}
 	return o.RelatedTermsList
@@ -120,7 +120,7 @@ func (o *RelatedTerms) GetRelatedTermsList() []RelatedTermsRelatedTermsListInner
 
 // GetRelatedTermsListOk returns a tuple with the RelatedTermsList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RelatedTerms) GetRelatedTermsListOk() ([]RelatedTermsRelatedTermsListInner, bool) {
+func (o *RelatedTerms) GetRelatedTermsListOk() ([]RelatedTermsRelatedTermsListItems, bool) {
 	if o == nil || IsNil(o.RelatedTermsList) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *RelatedTerms) HasRelatedTermsList() bool {
 	return false
 }
 
-// SetRelatedTermsList gets a reference to the given []RelatedTermsRelatedTermsListInner and assigns it to the RelatedTermsList field.
-func (o *RelatedTerms) SetRelatedTermsList(v []RelatedTermsRelatedTermsListInner) {
+// SetRelatedTermsList gets a reference to the given []RelatedTermsRelatedTermsListItems and assigns it to the RelatedTermsList field.
+func (o *RelatedTerms) SetRelatedTermsList(v []RelatedTermsRelatedTermsListItems) {
 	o.RelatedTermsList = v
 }
 

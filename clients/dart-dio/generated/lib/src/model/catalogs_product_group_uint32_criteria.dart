@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/numeric_filter_operator_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -21,7 +21,7 @@ abstract class CatalogsProductGroupUint32Criteria implements Built<CatalogsProdu
   bool? get negated;
 
   @BuiltValueField(wireName: r'operator')
-  CatalogsProductGroupUint32CriteriaOperator_Enum get operator_;
+  NumericFilterOperatorType get operator_;
   // enum operator_Enum {  GREATER_THAN,  GREATER_THAN_OR_EQUALS,  LESS_THAN,  LESS_THAN_OR_EQUALS,  };
 
   @BuiltValueField(wireName: r'value')
@@ -32,8 +32,7 @@ abstract class CatalogsProductGroupUint32Criteria implements Built<CatalogsProdu
   factory CatalogsProductGroupUint32Criteria([void updates(CatalogsProductGroupUint32CriteriaBuilder b)]) = _$CatalogsProductGroupUint32Criteria;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsProductGroupUint32CriteriaBuilder b) => b
-      ..negated = false;
+  static void _defaults(CatalogsProductGroupUint32CriteriaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsProductGroupUint32Criteria> get serializer => _$CatalogsProductGroupUint32CriteriaSerializer();
@@ -61,7 +60,7 @@ class _$CatalogsProductGroupUint32CriteriaSerializer implements PrimitiveSeriali
     yield r'operator';
     yield serializers.serialize(
       object.operator_,
-      specifiedType: const FullType(CatalogsProductGroupUint32CriteriaOperator_Enum),
+      specifiedType: const FullType(NumericFilterOperatorType),
     );
     yield r'value';
     yield serializers.serialize(
@@ -94,15 +93,16 @@ class _$CatalogsProductGroupUint32CriteriaSerializer implements PrimitiveSeriali
         case r'negated':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.negated = valueDes;
           break;
         case r'operator':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsProductGroupUint32CriteriaOperator_Enum),
-          ) as CatalogsProductGroupUint32CriteriaOperator_Enum;
+            specifiedType: const FullType(NumericFilterOperatorType),
+          ) as NumericFilterOperatorType;
           result.operator_ = valueDes;
           break;
         case r'value':
@@ -139,24 +139,5 @@ class _$CatalogsProductGroupUint32CriteriaSerializer implements PrimitiveSeriali
     );
     return result.build();
   }
-}
-
-class CatalogsProductGroupUint32CriteriaOperator_Enum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'GREATER_THAN')
-  static const CatalogsProductGroupUint32CriteriaOperator_Enum GREATER_THAN = _$catalogsProductGroupUint32CriteriaOperatorEnum_GREATER_THAN;
-  @BuiltValueEnumConst(wireName: r'GREATER_THAN_OR_EQUALS')
-  static const CatalogsProductGroupUint32CriteriaOperator_Enum GREATER_THAN_OR_EQUALS = _$catalogsProductGroupUint32CriteriaOperatorEnum_GREATER_THAN_OR_EQUALS;
-  @BuiltValueEnumConst(wireName: r'LESS_THAN')
-  static const CatalogsProductGroupUint32CriteriaOperator_Enum LESS_THAN = _$catalogsProductGroupUint32CriteriaOperatorEnum_LESS_THAN;
-  @BuiltValueEnumConst(wireName: r'LESS_THAN_OR_EQUALS')
-  static const CatalogsProductGroupUint32CriteriaOperator_Enum LESS_THAN_OR_EQUALS = _$catalogsProductGroupUint32CriteriaOperatorEnum_LESS_THAN_OR_EQUALS;
-
-  static Serializer<CatalogsProductGroupUint32CriteriaOperator_Enum> get serializer => _$catalogsProductGroupUint32CriteriaOperatorEnumSerializer;
-
-  const CatalogsProductGroupUint32CriteriaOperator_Enum._(String name): super(name);
-
-  static BuiltSet<CatalogsProductGroupUint32CriteriaOperator_Enum> get values => _$catalogsProductGroupUint32CriteriaOperatorEnumValues;
-  static CatalogsProductGroupUint32CriteriaOperator_Enum valueOf(String name) => _$catalogsProductGroupUint32CriteriaOperatorEnumValueOf(name);
 }
 

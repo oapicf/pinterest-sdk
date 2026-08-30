@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &CatalogsProductGroupCreateRequest{}
 type CatalogsProductGroupCreateRequest struct {
 	Description NullableString `json:"description,omitempty"`
 	// Catalog Feed id pertaining to the catalog product group.
-	FeedId string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+	FeedId string `json:"feed_id" validate:"regexp=^\\d+$"`
 	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
 	// boolean indicator of whether the product group is being featured or not
 	// Deprecated
@@ -42,8 +42,6 @@ func NewCatalogsProductGroupCreateRequest(feedId string, filters CatalogsProduct
 	this := CatalogsProductGroupCreateRequest{}
 	this.FeedId = feedId
 	this.Filters = filters
-	var isFeatured bool = false
-	this.IsFeatured = &isFeatured
 	this.Name = name
 	return &this
 }
@@ -53,8 +51,6 @@ func NewCatalogsProductGroupCreateRequest(feedId string, filters CatalogsProduct
 // but it doesn't guarantee that properties required by API are set
 func NewCatalogsProductGroupCreateRequestWithDefaults() *CatalogsProductGroupCreateRequest {
 	this := CatalogsProductGroupCreateRequest{}
-	var isFeatured bool = false
-	this.IsFeatured = &isFeatured
 	return &this
 }
 

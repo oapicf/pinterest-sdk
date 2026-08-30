@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -9,23 +10,25 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.IntegrationLogClientError;
 import org.openapitools.model.IntegrationLogClientRequest;
+import org.openapitools.model.IntegrationLogEventType;
+import org.openapitools.model.IntegrationLogLevel;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Schema for log sent from an integration application.
  */
 
 @Schema(name = "IntegrationLog", description = "Schema for log sent from an integration application.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLog {
 
   private JsonNullable<@Size(max = 128) String> advertiserId = JsonNullable.<String>undefined();
@@ -36,85 +39,13 @@ public class IntegrationLog {
 
   private IntegrationLogClientError error;
 
-  /**
-   * Log event type
-   */
-  public enum EventTypeEnum {
-    APP("APP"),
-    
-    API("API");
-
-    private final String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String value) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private EventTypeEnum eventType;
+  private IntegrationLogEventType eventType;
 
   private JsonNullable<@Size(max = 2048) String> externalBusinessId = JsonNullable.<String>undefined();
 
   private JsonNullable<@Size(max = 128) String> feedProfileId = JsonNullable.<String>undefined();
 
-  /**
-   * Log level type
-   */
-  public enum LogLevelEnum {
-    INFO("INFO"),
-    
-    WARN("WARN"),
-    
-    ERROR("ERROR");
-
-    private final String value;
-
-    LogLevelEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static LogLevelEnum fromValue(String value) {
-      for (LogLevelEnum b : LogLevelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private LogLevelEnum logLevel;
+  private IntegrationLogLevel logLevel;
 
   private JsonNullable<@Size(max = 128) String> merchantId = JsonNullable.<String>undefined();
 
@@ -133,7 +64,7 @@ public class IntegrationLog {
   /**
    * Constructor with only required parameters
    */
-  public IntegrationLog(Integer clientTimestamp, EventTypeEnum eventType, LogLevelEnum logLevel) {
+  public IntegrationLog(Integer clientTimestamp, IntegrationLogEventType eventType, IntegrationLogLevel logLevel) {
     this.clientTimestamp = clientTimestamp;
     this.eventType = eventType;
     this.logLevel = logLevel;
@@ -219,7 +150,7 @@ public class IntegrationLog {
     this.error = error;
   }
 
-  public IntegrationLog eventType(EventTypeEnum eventType) {
+  public IntegrationLog eventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -228,14 +159,14 @@ public class IntegrationLog {
    * Log event type
    * @return eventType
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "event_type", description = "Log event type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("event_type")
-  public EventTypeEnum getEventType() {
+  public IntegrationLogEventType getEventType() {
     return eventType;
   }
 
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
   }
 
@@ -279,7 +210,7 @@ public class IntegrationLog {
     this.feedProfileId = feedProfileId;
   }
 
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+  public IntegrationLog logLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
     return this;
   }
@@ -288,14 +219,14 @@ public class IntegrationLog {
    * Log level type
    * @return logLevel
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "log_level", description = "Log level type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("log_level")
-  public LogLevelEnum getLogLevel() {
+  public IntegrationLogLevel getLogLevel() {
     return logLevel;
   }
 
-  public void setLogLevel(LogLevelEnum logLevel) {
+  public void setLogLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
   }
 
@@ -465,10 +396,7 @@ public class IntegrationLog {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

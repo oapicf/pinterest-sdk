@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.conversion_events_data_inner import ConversionEventsDataInner  # noqa: F401,E501
+from app.openapi_server.models.conversion_api_response_events_items import ConversionApiResponseEventsItems  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,21 +16,31 @@ class ConversionEvents(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, data: List[ConversionEventsDataInner]=None):  # noqa: E501
+    def __init__(self, events: List[ConversionApiResponseEventsItems]=None, num_events_processed: int=None, num_events_received: int=None):  # noqa: E501
         """ConversionEvents - a model defined in Swagger
 
-        :param data: The data of this ConversionEvents.  # noqa: E501
-        :type data: List[ConversionEventsDataInner]
+        :param events: The events of this ConversionEvents.  # noqa: E501
+        :type events: List[ConversionApiResponseEventsItems]
+        :param num_events_processed: The num_events_processed of this ConversionEvents.  # noqa: E501
+        :type num_events_processed: int
+        :param num_events_received: The num_events_received of this ConversionEvents.  # noqa: E501
+        :type num_events_received: int
         """
         self.swagger_types = {
-            'data': List[ConversionEventsDataInner]
+            'events': List[ConversionApiResponseEventsItems],
+            'num_events_processed': int,
+            'num_events_received': int
         }
 
         self.attribute_map = {
-            'data': 'data'
+            'events': 'events',
+            'num_events_processed': 'num_events_processed',
+            'num_events_received': 'num_events_received'
         }
 
-        self._data = data
+        self._events = events
+        self._num_events_processed = num_events_processed
+        self._num_events_received = num_events_received
 
     @classmethod
     def from_dict(cls, dikt) -> 'ConversionEvents':
@@ -44,28 +54,76 @@ class ConversionEvents(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def data(self) -> List[ConversionEventsDataInner]:
-        """Gets the data of this ConversionEvents.
+    def events(self) -> List[ConversionApiResponseEventsItems]:
+        """Gets the events of this ConversionEvents.
 
+        Specific messages for each event received. The order will match the order in which the events were received in the request.  # noqa: E501
 
-        :return: The data of this ConversionEvents.
-        :rtype: List[ConversionEventsDataInner]
+        :return: The events of this ConversionEvents.
+        :rtype: List[ConversionApiResponseEventsItems]
         """
-        return self._data
+        return self._events
 
-    @data.setter
-    def data(self, data: List[ConversionEventsDataInner]):
-        """Sets the data of this ConversionEvents.
+    @events.setter
+    def events(self, events: List[ConversionApiResponseEventsItems]):
+        """Sets the events of this ConversionEvents.
 
+        Specific messages for each event received. The order will match the order in which the events were received in the request.  # noqa: E501
 
-        :param data: The data of this ConversionEvents.
-        :type data: List[ConversionEventsDataInner]
+        :param events: The events of this ConversionEvents.
+        :type events: List[ConversionApiResponseEventsItems]
         """
-        if data is None:
-            raise ValueError("Invalid value for `data`, must not be `None`")  # noqa: E501
-        if data is not None and len(data) > 1000:
-            raise ValueError("Invalid value for `data`, number of items must be less than or equal to `1000`")  # noqa: E501
-        if data is not None and len(data) < 1:
-            raise ValueError("Invalid value for `data`, number of items must be greater than or equal to `1`")  # noqa: E501
+        if events is None:
+            raise ValueError("Invalid value for `events`, must not be `None`")  # noqa: E501
 
-        self._data = data
+        self._events = events
+
+    @property
+    def num_events_processed(self) -> int:
+        """Gets the num_events_processed of this ConversionEvents.
+
+        Number of events that were successfully processed from the events.  # noqa: E501
+
+        :return: The num_events_processed of this ConversionEvents.
+        :rtype: int
+        """
+        return self._num_events_processed
+
+    @num_events_processed.setter
+    def num_events_processed(self, num_events_processed: int):
+        """Sets the num_events_processed of this ConversionEvents.
+
+        Number of events that were successfully processed from the events.  # noqa: E501
+
+        :param num_events_processed: The num_events_processed of this ConversionEvents.
+        :type num_events_processed: int
+        """
+        if num_events_processed is None:
+            raise ValueError("Invalid value for `num_events_processed`, must not be `None`")  # noqa: E501
+
+        self._num_events_processed = num_events_processed
+
+    @property
+    def num_events_received(self) -> int:
+        """Gets the num_events_received of this ConversionEvents.
+
+        Total number of events received in the request.  # noqa: E501
+
+        :return: The num_events_received of this ConversionEvents.
+        :rtype: int
+        """
+        return self._num_events_received
+
+    @num_events_received.setter
+    def num_events_received(self, num_events_received: int):
+        """Sets the num_events_received of this ConversionEvents.
+
+        Total number of events received in the request.  # noqa: E501
+
+        :param num_events_received: The num_events_received of this ConversionEvents.
+        :type num_events_received: int
+        """
+        if num_events_received is None:
+            raise ValueError("Invalid value for `num_events_received`, must not be `None`")  # noqa: E501
+
+        self._num_events_received = num_events_received

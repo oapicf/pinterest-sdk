@@ -1,8 +1,14 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AssetGroupBinding
+import org.openapitools.model.AssetTypeResponse
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -16,27 +22,34 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * An object containing the permissions a business member has on the asset.
- * @param assetGroupInfo 
  * @param assetId Unique identifier of a business asset.
- * @param assetType Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * @param assetType 
  * @param permissions Permission levels member or partner has on an asset.
+ * @param assetGroupInfo An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
  */
 data class AssetIdPermissions(
 
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("asset_group_info") val assetGroupInfo: AssetGroupBinding? = null,
-
     @get:Pattern(regexp="^\\d+$")
     @get:Size(min=1,max=20)
-    @Schema(example = "549755885175", description = "Unique identifier of a business asset.")
-    @get:JsonProperty("asset_id") val assetId: kotlin.String? = null,
+    @Schema(example = "549755885175", required = true, description = "Unique identifier of a business asset.")
+    @param:JsonProperty("asset_id")
+    @get:JsonProperty("asset_id", required = true) val assetId: kotlin.String,
 
-    @Schema(example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
-    @get:JsonProperty("asset_type") val assetType: kotlin.String? = null,
+    @field:Valid
+    @Schema(required = true, description = "")
+    @param:JsonProperty("asset_type")
+    @get:JsonProperty("asset_type", required = true) val assetType: AssetTypeResponse,
 
-    @Schema(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", description = "Permission levels member or partner has on an asset.")
-    @get:JsonProperty("permissions") val permissions: kotlin.collections.List<kotlin.String>? = null
+    @Schema(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", required = true, description = "Permission levels member or partner has on an asset.")
+    @param:JsonProperty("permissions")
+    @get:JsonProperty("permissions", required = true) val permissions: kotlin.collections.List<kotlin.String>,
+
+    @field:Valid
+    @Schema(description = "An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("asset_group_info")
+    @get:JsonProperty("asset_group_info") val assetGroupInfo: AssetGroupBinding? = null
 ) {
 
 }

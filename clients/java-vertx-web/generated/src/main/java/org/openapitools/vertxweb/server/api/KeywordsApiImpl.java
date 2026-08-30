@@ -1,14 +1,17 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.KeywordUpdateBody;
+import org.openapitools.vertxweb.server.model.Keywords;
+import org.openapitools.vertxweb.server.model.KeywordsCreate;
 import org.openapitools.vertxweb.server.model.KeywordsGet200Response;
 import org.openapitools.vertxweb.server.model.KeywordsMetricsArrayResponse;
-import org.openapitools.vertxweb.server.model.KeywordsRequest;
-import org.openapitools.vertxweb.server.model.KeywordsResponse;
+import org.openapitools.vertxweb.server.model.KeywordsUpdate;
 import org.openapitools.vertxweb.server.model.MatchType;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 import org.openapitools.vertxweb.server.model.TrendType;
 import org.openapitools.vertxweb.server.model.TrendingKeywordsResponse;
+import org.openapitools.vertxweb.server.model.TrendsAgeBucket;
+import org.openapitools.vertxweb.server.model.TrendsGenderFilter;
+import org.openapitools.vertxweb.server.model.TrendsL1Interest;
 import org.openapitools.vertxweb.server.model.TrendsSupportedRegion;
 
 import org.openapitools.vertxweb.server.ApiResponse;
@@ -27,19 +30,19 @@ public class KeywordsApiImpl implements KeywordsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<KeywordsResponse>> keywordsCreate(String adAccountId, KeywordsRequest keywordsRequest) {
+    public Future<ApiResponse<Keywords>> keywordsCreate(String adAccountId, KeywordsCreate keywordsCreate) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<KeywordsGet200Response>> keywordsGet(String adAccountId, String campaignId, String adGroupId, List<String> adGroupIds, List<MatchType> matchTypes, Integer pageSize, String bookmark) {
+    public Future<ApiResponse<KeywordsGet200Response>> keywordsGet(String adAccountId, String campaignId, String adGroupId, List<String> adGroupIds, List<MatchType> matchTypes, String bookmark, Integer pageSize) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<KeywordsResponse>> keywordsUpdate(String adAccountId, KeywordUpdateBody keywordUpdateBody) {
+    public Future<ApiResponse<Keywords>> keywordsUpdate(String adAccountId, KeywordsUpdate keywordsUpdate) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<TrendingKeywordsResponse>> trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includePrediction, Boolean includeDemographics) {
+    public Future<ApiResponse<TrendingKeywordsResponse>> trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<TrendsL1Interest> interests, List<TrendsGenderFilter> genders, List<TrendsAgeBucket> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includeDemographics) {
         return Future.failedFuture(new HttpException(501));
     }
 

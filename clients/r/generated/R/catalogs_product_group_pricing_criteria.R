@@ -25,9 +25,9 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
     #'
     #' @param values values
     #' @param inclusion inclusion. Default to TRUE.
-    #' @param negated negated. Default to FALSE.
+    #' @param negated negated
     #' @param ... Other optional arguments.
-    initialize = function(`values`, `inclusion` = TRUE, `negated` = FALSE, ...) {
+    initialize = function(`values`, `inclusion` = TRUE, `negated` = NULL, ...) {
       if (!missing(`values`)) {
         self$`values` <- `values`
       }

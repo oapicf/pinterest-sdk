@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.CatalogsRetailBatchRequestItemsInner
+open OpenAPI.Model.CatalogsRetailBatchRequestItemsItems
 open OpenAPI.Model.Country
 
 module CatalogsRetailBatchRequest =
@@ -19,7 +19,7 @@ module CatalogsRetailBatchRequest =
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
     [<JsonProperty(PropertyName = "items")>]
-    Items : CatalogsRetailBatchRequestItemsInner[];
+    Items : CatalogsRetailBatchRequestItemsItems[];
     [<JsonProperty(PropertyName = "language")>]
     Language : string;
   }

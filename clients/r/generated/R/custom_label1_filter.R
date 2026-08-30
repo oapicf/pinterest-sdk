@@ -61,9 +61,32 @@ CustomLabel1Filter <- R6::R6Class(
       CustomLabel1FilterObject <- list()
       if (!is.null(self$`CUSTOM_LABEL_1`)) {
         CustomLabel1FilterObject[["CUSTOM_LABEL_1"]] <-
-          self$`CUSTOM_LABEL_1`$toSimpleType()
+          self$extractSimpleType(self$`CUSTOM_LABEL_1`)
       }
       return(CustomLabel1FilterObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

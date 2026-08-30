@@ -49,95 +49,95 @@ public:
 
 	/*! \brief Get 
 	 */
-	Map<std::string, std::string> getAdvertiserExternalId();
+	std::map<std::string, QualityComponentDetails> getAdvertiserExternalId();
 
 	/*! \brief Set 
 	 */
-	void setAdvertiserExternalId(Map <std::string, std::string> advertiser_external_id);
+	void setAdvertiserExternalId(std::map<std::string, QualityComponentDetails> advertiser_external_id);
 	/*! \brief Get 
 	 */
-	Map<std::string, std::string> getClickIdEpik();
+	std::map<std::string, QualityComponentDetails> getClickIdEpik();
 
 	/*! \brief Set 
 	 */
-	void setClickIdEpik(Map <std::string, std::string> click_id_epik);
+	void setClickIdEpik(std::map<std::string, QualityComponentDetails> click_id_epik);
 	/*! \brief Get Dedup components.
 	 */
-	Map<std::string, std::string> getExternalEventId();
+	std::map<std::string, QualityComponentDetails> getExternalEventId();
 
 	/*! \brief Set Dedup components.
 	 */
-	void setExternalEventId(Map <std::string, std::string> external_event_id);
+	void setExternalEventId(std::map<std::string, QualityComponentDetails> external_event_id);
 	/*! \brief Get User matching identifiers.
 	 */
-	Map<std::string, std::string> getHashedEmail();
+	std::map<std::string, QualityComponentDetails> getHashedEmail();
 
 	/*! \brief Set User matching identifiers.
 	 */
-	void setHashedEmail(Map <std::string, std::string> hashed_email);
+	void setHashedEmail(std::map<std::string, QualityComponentDetails> hashed_email);
 	/*! \brief Get 
 	 */
-	Map<std::string, std::string> getHashedMaid();
+	std::map<std::string, QualityComponentDetails> getHashedMaid();
 
 	/*! \brief Set 
 	 */
-	void setHashedMaid(Map <std::string, std::string> hashed_maid);
+	void setHashedMaid(std::map<std::string, QualityComponentDetails> hashed_maid);
 	/*! \brief Get 
 	 */
-	Map<std::string, std::string> getIpAddress();
+	std::map<std::string, QualityComponentDetails> getIpAddress();
 
 	/*! \brief Set 
 	 */
-	void setIpAddress(Map <std::string, std::string> ip_address);
+	void setIpAddress(std::map<std::string, QualityComponentDetails> ip_address);
 	/*! \brief Get 
 	 */
-	Map<std::string, std::string> getOrderId();
+	std::map<std::string, QualityComponentDetails> getOrderId();
 
 	/*! \brief Set 
 	 */
-	void setOrderId(Map <std::string, std::string> order_id);
+	void setOrderId(std::map<std::string, QualityComponentDetails> order_id);
 	/*! \brief Get 
 	 */
-	Map<std::string, std::string> getOrderValue();
+	std::map<std::string, QualityComponentDetails> getOrderValue();
 
 	/*! \brief Set 
 	 */
-	void setOrderValue(Map <std::string, std::string> order_value);
+	void setOrderValue(std::map<std::string, QualityComponentDetails> order_value);
 	/*! \brief Get Product/event metadata.
 	 */
-	Map<std::string, std::string> getProductId();
+	std::map<std::string, QualityComponentDetails> getProductId();
 
 	/*! \brief Set Product/event metadata.
 	 */
-	void setProductId(Map <std::string, std::string> product_id);
+	void setProductId(std::map<std::string, QualityComponentDetails> product_id);
 	/*! \brief Get 
 	 */
-	Map<std::string, std::string> getSourceUrl();
+	std::map<std::string, QualityComponentDetails> getSourceUrl();
 
 	/*! \brief Set 
 	 */
-	void setSourceUrl(Map <std::string, std::string> source_url);
+	void setSourceUrl(std::map<std::string, QualityComponentDetails> source_url);
 	/*! \brief Get 
 	 */
-	Map<std::string, std::string> getUserAgent();
+	std::map<std::string, QualityComponentDetails> getUserAgent();
 
 	/*! \brief Set 
 	 */
-	void setUserAgent(Map <std::string, std::string> user_agent);
+	void setUserAgent(std::map<std::string, QualityComponentDetails> user_agent);
 
 
     private:
-    Map<std::string, std::string> advertiser_external_id;
-    Map<std::string, std::string> click_id_epik;
-    Map<std::string, std::string> external_event_id;
-    Map<std::string, std::string> hashed_email;
-    Map<std::string, std::string> hashed_maid;
-    Map<std::string, std::string> ip_address;
-    Map<std::string, std::string> order_id;
-    Map<std::string, std::string> order_value;
-    Map<std::string, std::string> product_id;
-    Map<std::string, std::string> source_url;
-    Map<std::string, std::string> user_agent;
+    std::map<std::string, QualityComponentDetails> advertiser_external_id;
+    std::map<std::string, QualityComponentDetails> click_id_epik;
+    std::map<std::string, QualityComponentDetails> external_event_id;
+    std::map<std::string, QualityComponentDetails> hashed_email;
+    std::map<std::string, QualityComponentDetails> hashed_maid;
+    std::map<std::string, QualityComponentDetails> ip_address;
+    std::map<std::string, QualityComponentDetails> order_id;
+    std::map<std::string, QualityComponentDetails> order_value;
+    std::map<std::string, QualityComponentDetails> product_id;
+    std::map<std::string, QualityComponentDetails> source_url;
+    std::map<std::string, QualityComponentDetails> user_agent;
 };
 }
 

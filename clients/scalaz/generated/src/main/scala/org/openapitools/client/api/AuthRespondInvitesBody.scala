@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import AuthRespondInvitesBody._
 
 case class AuthRespondInvitesBody (
-  invites: List[AuthRespondInvitesBodyInvitesInner])
+  invites: List[AuthRespondInvitesBodyItem])
 
 object AuthRespondInvitesBody {
   import DateTimeCodecs._

@@ -8,11 +8,13 @@
 #include "Helpers.h"
 #include <list>
 
-#include "Audience.h"
-#include "AudienceCreateRequest.h"
-#include "AudienceUpdateRequest.h"
+#include "AdAccountsAudience.h"
+#include "AdAccountsAudienceCreate.h"
+#include "AdAccountsAudienceUpdate.h"
+#include "AudienceOwnershipType.h"
 #include "Audiences_list_200_response.h"
-#include "Error.h"
+#include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
 
 namespace Tiny {
 
@@ -25,42 +27,42 @@ class AudiencesApi : public Service {
 public:
     AudiencesApi() = default;
 
-    virtual ~AudiencesApi() = default;
+    virtual ~AudiencesApi();
 
     /**
     * Create audience.
     *
-    * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+    * Create a new audience for the ad account.
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param audienceCreateRequest List of ads to create, size limit [1, 30] *Required*
+    * \param adAccountsAudienceCreate  *Required*
     */
     Response<
-                Audience
+                AdAccountsAudience
         >
     audiences_create(
             
             std::string adAccountId
             , 
             
-            AudienceCreateRequest audienceCreateRequest
+            AdAccountsAudienceCreate adAccountsAudienceCreate
             
     );
     /**
     * Get audience.
     *
     * Get a specific audience given the audience ID.
+    * \param audienceId Audience ID. *Required*
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param audienceId Unique identifier of an audience *Required*
     */
     Response<
-                Audience
+                AdAccountsAudience
         >
     audiences_get(
             
-            std::string adAccountId
+            std::string audienceId
             , 
             
-            std::string audienceId
+            std::string adAccountId
             
     );
     /**
@@ -69,9 +71,10 @@ public:
     * Get list of audiences for the ad account.
     * \param adAccountId Unique identifier of an ad account. *Required*
     * \param bookmark Cursor used to fetch the next page of items
-    * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    * \param ownershipType Filter audiences by ownership type.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+    * \param ownershipType 
+    * \param excludeNca When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
     */
     Response<
                 Audiences_list_200_response
@@ -84,35 +87,38 @@ public:
             std::string bookmark
             , 
             
-            std::string order
-            , 
-            
             int pageSize
             , 
             
-            std::string ownershipType
+            Pinterest.Lib.PaginationOrder order
+            , 
+            
+            AudienceOwnershipType ownershipType
+            , 
+            
+            bool excludeNca
             
     );
     /**
     * Update audience.
     *
-    * Update (edit or remove) an existing targeting audience.
+    * Update an existing audience for the ad account.
+    * \param audienceId Audience ID. *Required*
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param audienceId Unique identifier of an audience *Required*
-    * \param audienceUpdateRequest The audience to be updated. *Required*
+    * \param adAccountsAudienceUpdate  *Required*
     */
     Response<
-                Audience
+                AdAccountsAudience
         >
     audiences_update(
-            
-            std::string adAccountId
-            , 
             
             std::string audienceId
             , 
             
-            AudienceUpdateRequest audienceUpdateRequest
+            std::string adAccountId
+            , 
+            
+            AdAccountsAudienceUpdate adAccountsAudienceUpdate
             
     );
 }; 

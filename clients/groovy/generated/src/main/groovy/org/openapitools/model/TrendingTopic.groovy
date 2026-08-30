@@ -13,6 +13,8 @@ import org.openapitools.model.TrendingPin;
 class TrendingTopic {
     /* Description of the trending topic */
     String description
+    /* Unique identifier for the trending topic */
+    String id
     /* Month-over-month growth percentage */
     Integer percentGrowthMom
     /* Array of pin images related to this trend (up to 6) */

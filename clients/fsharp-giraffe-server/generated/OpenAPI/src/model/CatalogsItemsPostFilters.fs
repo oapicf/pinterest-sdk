@@ -5,16 +5,18 @@ open System.Collections.Generic
 open OpenAPI.Model.CatalogsCreativeAssetsItemsPostFilter
 open OpenAPI.Model.CatalogsHotelItemsPostFilter
 open OpenAPI.Model.CatalogsRetailItemsPostFilter
-open OpenAPI.Model.CatalogsType
 
 module CatalogsItemsPostFilters =
 
   //#region CatalogsItemsPostFilters
 
+  //#region enums
+  type CatalogTypeEnum = CREATIVEASSETSEnum of string  
+  //#endregion
 
   type CatalogsItemsPostFilters = {
-    CatalogType : CatalogsType;
     CatalogId : string;
+    CatalogType : CatalogTypeEnum;
     ItemIds : string[];
     HotelIds : string[];
     CreativeAssetsIds : string[];

@@ -46,11 +46,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Audience ID for the multiplier.
 	 */
 	std::string getAUDIENCEID();
 
-	/*! \brief Set 
+	/*! \brief Set Audience ID for the multiplier.
 	 */
 	void setAUDIENCEID(std::string  aUDIENCE_ID);
 

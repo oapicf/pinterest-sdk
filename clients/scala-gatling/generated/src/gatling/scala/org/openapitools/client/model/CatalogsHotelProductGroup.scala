@@ -3,16 +3,16 @@ package org.openapitools.client.model
 
 
 case class CatalogsHotelProductGroup (
-    /* Catalog id pertaining to the hotel product group. */
+    /* Catalog ID pertaining to the product group. */
     _catalogId: String,
     _catalogType: String,
     /* Unix timestamp in seconds of when catalog product group was created. */
     _createdAt: Option[Integer],
     _description: Option[String],
     _filters: CatalogsHotelProductGroupFilters,
-    /* ID of the hotel product group. */
+    /* ID of the catalog product group. */
     _id: String,
-    /* Name of hotel product group */
+    /* Name of catalog product group */
     _name: Option[String],
     _type: CatalogsHotelProductGroupType,
     /* Unix timestamp in seconds of last time catalog product group was updated. */

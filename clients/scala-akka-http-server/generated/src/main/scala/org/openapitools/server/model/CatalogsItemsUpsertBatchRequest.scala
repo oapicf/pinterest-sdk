@@ -13,6 +13,6 @@ final case class CatalogsItemsUpsertBatchRequest (
   country: Country,
   items: Seq[ItemUpsertBatchRecord],
   language: String,
-  operation: BatchOperation
+  operation: String
 )
 

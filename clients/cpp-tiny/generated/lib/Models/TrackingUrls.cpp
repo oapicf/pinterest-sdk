@@ -238,7 +238,7 @@ TrackingUrls::getAudienceVerification()
 }
 
 void
-TrackingUrls::setAudienceVerification(std::list <std::string> audience_verification)
+TrackingUrls::setAudienceVerification(std::list<std::string> audience_verification)
 {
 	this->audience_verification = audience_verification;
 }
@@ -250,7 +250,7 @@ TrackingUrls::getBuyableButton()
 }
 
 void
-TrackingUrls::setBuyableButton(std::list <std::string> buyable_button)
+TrackingUrls::setBuyableButton(std::list<std::string> buyable_button)
 {
 	this->buyable_button = buyable_button;
 }
@@ -262,7 +262,7 @@ TrackingUrls::getClick()
 }
 
 void
-TrackingUrls::setClick(std::list <std::string> click)
+TrackingUrls::setClick(std::list<std::string> click)
 {
 	this->click = click;
 }
@@ -274,7 +274,7 @@ TrackingUrls::getEngagement()
 }
 
 void
-TrackingUrls::setEngagement(std::list <std::string> engagement)
+TrackingUrls::setEngagement(std::list<std::string> engagement)
 {
 	this->engagement = engagement;
 }
@@ -286,7 +286,7 @@ TrackingUrls::getImpression()
 }
 
 void
-TrackingUrls::setImpression(std::list <std::string> impression)
+TrackingUrls::setImpression(std::list<std::string> impression)
 {
 	this->impression = impression;
 }

@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { MediaType } from './mediaType';
 
 
 /**
@@ -25,14 +26,6 @@ export interface CatalogsCreativeAssetsFilterValuesMap {
     google_product_category_4?: Array<string>;
     google_product_category_5?: Array<string>;
     google_product_category_6?: Array<string>;
-    media_type?: Array<CatalogsCreativeAssetsFilterValuesMap.MediaTypeEnum>;
+    media_type?: Array<MediaType>;
 }
-export namespace CatalogsCreativeAssetsFilterValuesMap {
-    export const MediaTypeEnum = {
-        Image: 'IMAGE',
-        Video: 'VIDEO'
-    } as const;
-    export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
-}
-
 

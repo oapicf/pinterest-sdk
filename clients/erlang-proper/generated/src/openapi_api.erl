@@ -26,19 +26,19 @@ boards_user_follows/list() ->
   Method      = get,
   Host        = application:get_env(openapi, host, "http://localhost:8080"),
   Path        = ["/user_account/following/boards"],
-  QueryString = [<<"bookmark=">>, Bookmark, <<"&">>, <<"page_size=">>, PageSize, <<"&">>, <<"explicit_following=">>, ExplicitFollowing, <<"&">>, <<"ad_account_id=">>, AdAccountId, <<"&">>],
+  QueryString = [<<"ad_account_id=">>, AdAccountId, <<"&">>, <<"explicit_following=">>, ExplicitFollowing, <<"&">>, <<"bookmark=">>, Bookmark, <<"&">>, <<"page_size=">>, PageSize, <<"&">>],
 
   openapi_utils:request(Method, [Host, ?BASE_URL, Path, <<"?">>, QueryString]).
 
 %% @doc Follow user
-%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
--spec follow_user/update(binary(), openapi_follow_user_request:openapi_follow_user_request()) ->
+%% **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
+-spec follow_user/update(binary(), openapi_follow_user_create:openapi_follow_user_create()) ->
   openapi_utils:response().
-follow_user/update(Username, OpenapiFollowUserRequest) ->
+follow_user/update(Username, OpenapiFollowUserCreate) ->
   Method      = post,
   Host        = application:get_env(openapi, host, "http://localhost:8080"),
   Path        = ["/user_account/following/", Username, ""],
-  Body        = OpenapiFollowUserRequest,
+  Body        = OpenapiFollowUserCreate,
   ContentType = hd(["application/json"]),
 
   openapi_utils:request(Method, [Host, ?BASE_URL, Path], jsx:encode(Body), ContentType).
@@ -67,7 +67,7 @@ linked_business_accounts/get() ->
   openapi_utils:request(Method, [Host, ?BASE_URL, Path]).
 
 %% @doc Unverify website
-%% Unverifu a website verified by the signed-in user.
+%% Unverify a website verified by the signed-in user.
 -spec unverify_website/delete(binary()) ->
   openapi_utils:response().
 unverify_website/delete(Website) ->
@@ -92,7 +92,7 @@ user_account/analytics(StartDate, EndDate) ->
 
 %% @doc Get user account top pins analytics
 %% Gets analytics data about a user's top pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
--spec user_account/analytics/top_pins(date(), date(), binary()) ->
+-spec user_account/analytics/top_pins(date(), date(), openapi_top_pins_sort_by) ->
   openapi_utils:response().
 user_account/analytics/top_pins(StartDate, EndDate, SortBy) ->
   Method      = get,
@@ -104,7 +104,7 @@ user_account/analytics/top_pins(StartDate, EndDate, SortBy) ->
 
 %% @doc Get user account top video pins analytics
 %% Gets analytics data about a user's top video pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
--spec user_account/analytics/top_video_pins(date(), date(), binary()) ->
+-spec user_account/analytics/top_video_pins(date(), date(), openapi_top_video_pins_sort_by) ->
   openapi_utils:response().
 user_account/analytics/top_video_pins(StartDate, EndDate, SortBy) ->
   Method      = get,
@@ -127,7 +127,7 @@ user_account/followed_interests(Username) ->
   openapi_utils:request(Method, [Host, ?BASE_URL, Path, <<"?">>, QueryString]).
 
 %% @doc Get user account
-%% Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+%% Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 -spec user_account/get() ->
   openapi_utils:response().
 user_account/get() ->
@@ -146,7 +146,7 @@ user_following/get() ->
   Method      = get,
   Host        = application:get_env(openapi, host, "http://localhost:8080"),
   Path        = ["/user_account/following"],
-  QueryString = [<<"bookmark=">>, Bookmark, <<"&">>, <<"page_size=">>, PageSize, <<"&">>, <<"feed_type=">>, FeedType, <<"&">>, <<"explicit_following=">>, ExplicitFollowing, <<"&">>, <<"ad_account_id=">>, AdAccountId, <<"&">>],
+  QueryString = [<<"ad_account_id=">>, AdAccountId, <<"&">>, <<"explicit_following=">>, ExplicitFollowing, <<"&">>, <<"feed_type=">>, FeedType, <<"&">>, <<"bookmark=">>, Bookmark, <<"&">>, <<"page_size=">>, PageSize, <<"&">>],
 
   openapi_utils:request(Method, [Host, ?BASE_URL, Path, <<"?">>, QueryString]).
 
@@ -164,13 +164,13 @@ user_websites/get() ->
 
 %% @doc Verify website
 %% Verify a website as a signed-in user.
--spec verify_website/update(openapi_user_website_verify_request:openapi_user_website_verify_request()) ->
+-spec verify_website/update(openapi_user_website_create:openapi_user_website_create()) ->
   openapi_utils:response().
-verify_website/update(OpenapiUserWebsiteVerifyRequest) ->
+verify_website/update(OpenapiUserWebsiteCreate) ->
   Method      = post,
   Host        = application:get_env(openapi, host, "http://localhost:8080"),
   Path        = ["/user_account/websites"],
-  Body        = OpenapiUserWebsiteVerifyRequest,
+  Body        = OpenapiUserWebsiteCreate,
   ContentType = hd(["application/json"]),
   QueryString = [<<"ad_account_id=">>, AdAccountId, <<"&">>],
 

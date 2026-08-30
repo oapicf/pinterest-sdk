@@ -71,10 +71,10 @@ class ConversionEqsApi implements ConversionEqsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lookbackPeriod** | [**OpenAPI\Server\Model\LookbackPeriodOptions**](../Model/.md)| Lookback window (number of days). |
+ **lookbackPeriod** | [**LookbackPeriodOptions**](../Model/.md)| Lookback window (number of days). |
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **sourcePlatform** | [**OpenAPI\Server\Model\SourcePlatformOptions**](../Model/.md)| Source platform of event. | [optional]
- **ingestionSource** | [**OpenAPI\Server\Model\IngestionSourceOptions**](../Model/.md)| Ingestion source of event. | [optional]
+ **sourcePlatform** | [**SourcePlatformOptions**](../Model/.md)| Source platform of event. | [optional]
+ **ingestionSource** | [**IngestionSourceOptions**](../Model/.md)| Ingestion source of event. | [optional]
 
 ### Return type
 

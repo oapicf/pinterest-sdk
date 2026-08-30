@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignAdPreviewDelete200ResponseInnerStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignAdPreviewDelete200ResponseInnerStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PinterestLibError = openapi_server.resourceTypes.PinterestLibError
+  PinterestLibStatus204 = openapi_server.resourceTypes.PinterestLibStatus204
+}
+resourceTypes {
+
+  CampaignAdPreviewDelete200ResponseInnerStatus {
+    title = CampaignAdPreviewDelete200ResponseInnerStatus
+    description = CampaignAdPreviewDelete200ResponseInnerStatus
+    derivedFrom = Root
+    properties {
+        status_code {
+          type =  
+          description = ""
+          enum = ["204"]
+          optional = true
+        }
+        code {
+          type =  integer
+          description = ""
+          optional = true
+        }
+        message {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignAdPreviewDelete200ResponseInnerStatus {
+    title = CampaignAdPreviewDelete200ResponseInnerStatus
+    description = CampaignAdPreviewDelete200ResponseInnerStatus
+    implements = openapi_server.resourceTypes.CampaignAdPreviewDelete200ResponseInnerStatus
+
+  }
+}

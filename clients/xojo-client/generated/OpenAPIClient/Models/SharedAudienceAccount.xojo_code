@@ -33,27 +33,7 @@ Protected Class SharedAudienceAccount
 	#tag EndProperty
 
 
-    #tag Enum, Name = Account_typeEnum, Type = Integer, Flags = &h0
-        
-        AdAccount
-        BusinessAccount
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function Account_typeEnumToString(value As Account_typeEnum) As String
-		  Select Case value
-		    
-		    Case Account_typeEnum.AdAccount
-		      Return "AD_ACCOUNT"
-		    Case Account_typeEnum.BusinessAccount
-		      Return "BUSINESS_ACCOUNT"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -103,6 +83,14 @@ Protected Class SharedAudienceAccount
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="account_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AudienceAccountType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

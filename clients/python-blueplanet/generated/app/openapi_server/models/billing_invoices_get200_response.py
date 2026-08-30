@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.billing_invoice_response import BillingInvoiceResponse  # noqa: F401,E501
+from app.openapi_server.models.billing_invoice import BillingInvoice  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class BillingInvoicesGet200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[BillingInvoiceResponse]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[BillingInvoice]=None):  # noqa: E501
         """BillingInvoicesGet200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this BillingInvoicesGet200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this BillingInvoicesGet200Response.  # noqa: E501
-        :type items: List[BillingInvoiceResponse]
+        :type items: List[BillingInvoice]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[BillingInvoiceResponse]
+            'items': List[BillingInvoice]
         }
 
         self.attribute_map = {
@@ -70,22 +70,22 @@ class BillingInvoicesGet200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[BillingInvoiceResponse]:
+    def items(self) -> List[BillingInvoice]:
         """Gets the items of this BillingInvoicesGet200Response.
 
 
         :return: The items of this BillingInvoicesGet200Response.
-        :rtype: List[BillingInvoiceResponse]
+        :rtype: List[BillingInvoice]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[BillingInvoiceResponse]):
+    def items(self, items: List[BillingInvoice]):
         """Sets the items of this BillingInvoicesGet200Response.
 
 
         :param items: The items of this BillingInvoicesGet200Response.
-        :type items: List[BillingInvoiceResponse]
+        :type items: List[BillingInvoice]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

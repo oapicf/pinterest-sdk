@@ -16,7 +16,7 @@ class CreateAssetAccessRequestBody {
     this.assetRequests = const [],
   });
 
-  List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests;
+  List<CreateAssetAccessRequestItem> assetRequests;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateAssetAccessRequestBody &&
@@ -47,15 +47,13 @@ class CreateAssetAccessRequestBody {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateAssetAccessRequestBody[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateAssetAccessRequestBody[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'asset_requests'), 'Required key "CreateAssetAccessRequestBody[asset_requests]" is missing from JSON.');
+        assert(json[r'asset_requests'] != null, 'Required key "CreateAssetAccessRequestBody[asset_requests]" has a null value in JSON.');
         return true;
       }());
 
       return CreateAssetAccessRequestBody(
-        assetRequests: CreateAssetAccessRequestBodyAssetRequestsInner.listFromJson(json[r'asset_requests']),
+        assetRequests: CreateAssetAccessRequestItem.listFromJson(json[r'asset_requests']),
       );
     }
     return null;

@@ -4,6 +4,7 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.AudienceAccountType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -26,36 +27,22 @@ data class SharedAudienceAccount(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", required = true, description = "Account ID (ad account or business ID).")
+    @param:JsonProperty("account_id")
     @get:JsonProperty("account_id", required = true) val accountId: kotlin.String,
 
     @Schema(example = "Home Depot USA", required = true, description = "Account name.")
+    @param:JsonProperty("account_name")
     @get:JsonProperty("account_name", required = true) val accountName: kotlin.String,
 
-    @Schema(example = "null", required = true, description = "account type")
-    @get:JsonProperty("account_type", required = true) val accountType: SharedAudienceAccount.AccountType,
+    @field:Valid
+    @Schema(required = true, description = "account type")
+    @param:JsonProperty("account_type")
+    @get:JsonProperty("account_type", required = true) val accountType: AudienceAccountType,
 
     @Schema(example = "1677003860", required = true, description = "Epoch timestamp in seconds for the shared audience event")
+    @param:JsonProperty("shared_on_timestamp")
     @get:JsonProperty("shared_on_timestamp", required = true) val sharedOnTimestamp: kotlin.Int
 ) {
-
-    /**
-    * account type
-    * Values: AD_ACCOUNT,BUSINESS_ACCOUNT
-    */
-    enum class AccountType(@get:JsonValue val value: kotlin.String) {
-
-        AD_ACCOUNT("AD_ACCOUNT"),
-        BUSINESS_ACCOUNT("BUSINESS_ACCOUNT");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): AccountType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SharedAudienceAccount'")
-            }
-        }
-    }
 
 }
 

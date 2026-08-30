@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -15,25 +16,25 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Multiple URL-based images media source
  */
 
 @Schema(name = "PinMediaSourceImagesURL", description = "Multiple URL-based images media source")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinMediaSourceImagesURL implements PinMediaSource {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer index;
 
-  @Valid
   private List<@Valid PinMediaSourceImagesURLItem> items = new ArrayList<>();
 
   /**
@@ -100,6 +101,7 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
     return index;
   }
 
+  @JsonProperty("index")
   public void setIndex(@Nullable Integer index) {
     this.index = index;
   }
@@ -128,6 +130,7 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
     return items;
   }
 
+  @JsonProperty("items")
   public void setItems(List<@Valid PinMediaSourceImagesURLItem> items) {
     this.items = items;
   }
@@ -148,6 +151,7 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
     return sourceType;
   }
 
+  @JsonProperty("source_type")
   public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
@@ -186,11 +190,8 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

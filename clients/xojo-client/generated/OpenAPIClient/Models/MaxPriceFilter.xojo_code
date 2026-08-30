@@ -2,7 +2,7 @@
 Protected Class MaxPriceFilter
 
 	#tag Property, Flags = &h0
-		MAX_PRICE As CatalogsProductGroupPricingCriteria
+		MAX_PRICE As OpenAPIClient.Models.CatalogsProductGroupPricingCriteria
 	#tag EndProperty
 
 

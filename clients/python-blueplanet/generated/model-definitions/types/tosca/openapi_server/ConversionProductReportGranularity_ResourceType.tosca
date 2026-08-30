@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionProductReportGranularity"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionProductReportGranularity"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionProductReportGranularity {
+    title = ConversionProductReportGranularity
+    description = ConversionProductReportGranularity
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionProductReportGranularity {
+    title = ConversionProductReportGranularity
+    description = ConversionProductReportGranularity
+    implements = openapi_server.resourceTypes.ConversionProductReportGranularity
+
+  }
+}

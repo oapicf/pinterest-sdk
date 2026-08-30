@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            AdsCreditRedeemResponse
+            AdsCreditRedeem
         >
         BillingApi::
         adsCredit_redeem(
@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            AdsCreditRedeemRequest adsCreditRedeemRequest
+            AdsCreditRedeemCreate adsCreditRedeemCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | adsCreditRedeemRequest
+            // Body     | adsCreditRedeemCreate
 
 
 
-            payload = adsCreditRedeemRequest.toJson().dump();
+            payload = adsCreditRedeemCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -57,10 +57,10 @@ using namespace Tiny;
 
 
 
-            AdsCreditRedeemResponse obj(output_string);
+            AdsCreditRedeem obj(output_string);
 
 
-            Response<AdsCreditRedeemResponse> response(obj, httpCode);
+            Response<AdsCreditRedeem> response(obj, httpCode);
             return response;
         }
 
@@ -200,16 +200,16 @@ using namespace Tiny;
             int pageSize
             , 
             
-            std::string sort
+            Pinterest.Lib.PaginationOrder order
             , 
             
-            std::string order
+            BillingInvoiceSortField sort
             , 
             
-            std::string status
+            BillingInvoiceStatus status
             , 
             
-            std::string documentType
+            BillingInvoiceDocumentType documentType
             , 
             
             Date startDueDate
@@ -224,11 +224,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize sort order status documentType startDueDate endDueDate 
+            // Query    | bookmark pageSize order sort status documentType startDueDate endDueDate 
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
-            addQueryParam("sort",sort);
             addQueryParam("order",order);
+            addQueryParam("sort",sort);
             addQueryParam("status",status);
             addQueryParam("document_type",documentType);
             addQueryParam("start_due_date",startDueDate);
@@ -274,10 +274,10 @@ using namespace Tiny;
         BillingApi::
         billingProfiles_get(
             
-            std::string adAccountId
+            bool isActive
             , 
             
-            bool isActive
+            std::string adAccountId
             , 
             
             std::string bookmark
@@ -332,7 +332,7 @@ using namespace Tiny;
         }
 
         Response<
-            SSIOAccountResponse
+            SSIOAccount
         >
         BillingApi::
         ssioAccounts_get(
@@ -375,15 +375,15 @@ using namespace Tiny;
 
 
 
-            SSIOAccountResponse obj(output_string);
+            SSIOAccount obj(output_string);
 
 
-            Response<SSIOAccountResponse> response(obj, httpCode);
+            Response<SSIOAccount> response(obj, httpCode);
             return response;
         }
 
         Response<
-            SSIOCreateInsertionOrderResponse
+            SSIOInsertionOrder
         >
         BillingApi::
         ssioInsertionOrder_create(
@@ -391,7 +391,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            SSIOCreateInsertionOrderRequest sSIOCreateInsertionOrderRequest
+            SSIOInsertionOrderCreate sSIOInsertionOrderCreate
             
         )
         {
@@ -420,11 +420,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | sSIOCreateInsertionOrderRequest
+            // Body     | sSIOInsertionOrderCreate
 
 
 
-            payload = sSIOCreateInsertionOrderRequest.toJson().dump();
+            payload = sSIOInsertionOrderCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -435,15 +435,15 @@ using namespace Tiny;
 
 
 
-            SSIOCreateInsertionOrderResponse obj(output_string);
+            SSIOInsertionOrder obj(output_string);
 
 
-            Response<SSIOCreateInsertionOrderResponse> response(obj, httpCode);
+            Response<SSIOInsertionOrder> response(obj, httpCode);
             return response;
         }
 
         Response<
-            SSIOEditInsertionOrderResponse
+            SSIOInsertionOrder
         >
         BillingApi::
         ssioInsertionOrder_edit(
@@ -451,7 +451,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            SSIOEditInsertionOrderRequest sSIOEditInsertionOrderRequest
+            SSIOInsertionOrderUpdate sSIOInsertionOrderUpdate
             
         )
         {
@@ -480,11 +480,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | sSIOEditInsertionOrderRequest
+            // Body     | sSIOInsertionOrderUpdate
 
 
 
-            payload = sSIOEditInsertionOrderRequest.toJson().dump();
+            payload = sSIOInsertionOrderUpdate.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -495,10 +495,10 @@ using namespace Tiny;
 
 
 
-            SSIOEditInsertionOrderResponse obj(output_string);
+            SSIOInsertionOrder obj(output_string);
 
 
-            Response<SSIOEditInsertionOrderResponse> response(obj, httpCode);
+            Response<SSIOInsertionOrder> response(obj, httpCode);
             return response;
         }
 
@@ -632,13 +632,13 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
+            std::string pinOrderId
+            , 
+            
             std::string bookmark
             , 
             
             int pageSize
-            , 
-            
-            std::string pinOrderId
             
         )
         {
@@ -647,10 +647,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize pinOrderId 
+            // Query    | pinOrderId bookmark pageSize 
+            addQueryParam("pin_order_id",pinOrderId);
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
-            addQueryParam("pin_order_id",pinOrderId);
 
             // Form     | 
 

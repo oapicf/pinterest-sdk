@@ -8,11 +8,11 @@
 #' @description BillingProfilesResponse Class
 #' @format An \code{R6Class} generator object
 #' @field advertiser_id Advertiser ID of the billing. character [optional]
-#' @field billing_type Billing type of the advertiser character [optional]
-#' @field card_type Type of the card. character [optional]
+#' @field billing_type Billing type of the advertiser \link{BillingType} [optional]
+#' @field card_type Type of the card. \link{BillingProfileCardType} [optional]
 #' @field id Billing ID. character [optional]
-#' @field payment_method_brand Brand of the payment method. character [optional]
-#' @field status Status of the billing. character [optional]
+#' @field payment_method_brand Brand of the payment method. \link{BillingProfilePaymentMethodBrand} [optional]
+#' @field status Status of the billing. \link{BillingProfileStatus} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -44,21 +44,17 @@ BillingProfilesResponse <- R6::R6Class(
         self$`advertiser_id` <- `advertiser_id`
       }
       if (!is.null(`billing_type`)) {
-        if (!(`billing_type` %in% c("CREDIT_CARD", "INVOICE", "INTERNAL", "RECURRING", "PREPAID"))) {
-          stop(paste("Error! \"", `billing_type`, "\" cannot be assigned to `billing_type`. Must be \"CREDIT_CARD\", \"INVOICE\", \"INTERNAL\", \"RECURRING\", \"PREPAID\".", sep = ""))
+        if (!(`billing_type` %in% c())) {
+          stop(paste("Error! \"", `billing_type`, "\" cannot be assigned to `billing_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`billing_type`) && length(`billing_type`) == 1)) {
-          stop(paste("Error! Invalid data for `billing_type`. Must be a string:", `billing_type`))
-        }
+        stopifnot(R6::is.R6(`billing_type`))
         self$`billing_type` <- `billing_type`
       }
       if (!is.null(`card_type`)) {
-        if (!(`card_type` %in% c("UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "ELO"))) {
-          stop(paste("Error! \"", `card_type`, "\" cannot be assigned to `card_type`. Must be \"UNKNOWN\", \"VISA\", \"MASTERCARD\", \"AMERICAN_EXPRESS\", \"DISCOVER\", \"ELO\".", sep = ""))
+        if (!(`card_type` %in% c())) {
+          stop(paste("Error! \"", `card_type`, "\" cannot be assigned to `card_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`card_type`) && length(`card_type`) == 1)) {
-          stop(paste("Error! Invalid data for `card_type`. Must be a string:", `card_type`))
-        }
+        stopifnot(R6::is.R6(`card_type`))
         self$`card_type` <- `card_type`
       }
       if (!is.null(`id`)) {
@@ -68,21 +64,17 @@ BillingProfilesResponse <- R6::R6Class(
         self$`id` <- `id`
       }
       if (!is.null(`payment_method_brand`)) {
-        if (!(`payment_method_brand` %in% c("UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "SOFORT", "DINERS_CLUB", "ELO", "CARTE_BANCAIRE"))) {
-          stop(paste("Error! \"", `payment_method_brand`, "\" cannot be assigned to `payment_method_brand`. Must be \"UNKNOWN\", \"VISA\", \"MASTERCARD\", \"AMERICAN_EXPRESS\", \"DISCOVER\", \"SOFORT\", \"DINERS_CLUB\", \"ELO\", \"CARTE_BANCAIRE\".", sep = ""))
+        if (!(`payment_method_brand` %in% c())) {
+          stop(paste("Error! \"", `payment_method_brand`, "\" cannot be assigned to `payment_method_brand`. Must be .", sep = ""))
         }
-        if (!(is.character(`payment_method_brand`) && length(`payment_method_brand`) == 1)) {
-          stop(paste("Error! Invalid data for `payment_method_brand`. Must be a string:", `payment_method_brand`))
-        }
+        stopifnot(R6::is.R6(`payment_method_brand`))
         self$`payment_method_brand` <- `payment_method_brand`
       }
       if (!is.null(`status`)) {
-        if (!(`status` %in% c("UNSPECIFIED", "VALID", "INVALID", "PENDING", "DELETED", "SECONDARY", "PENDING_SECONDARY"))) {
-          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be \"UNSPECIFIED\", \"VALID\", \"INVALID\", \"PENDING\", \"DELETED\", \"SECONDARY\", \"PENDING_SECONDARY\".", sep = ""))
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
-        if (!(is.character(`status`) && length(`status`) == 1)) {
-          stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
-        }
+        stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
       }
     },
@@ -124,11 +116,11 @@ BillingProfilesResponse <- R6::R6Class(
       }
       if (!is.null(self$`billing_type`)) {
         BillingProfilesResponseObject[["billing_type"]] <-
-          self$`billing_type`
+          self$extractSimpleType(self$`billing_type`)
       }
       if (!is.null(self$`card_type`)) {
         BillingProfilesResponseObject[["card_type"]] <-
-          self$`card_type`
+          self$extractSimpleType(self$`card_type`)
       }
       if (!is.null(self$`id`)) {
         BillingProfilesResponseObject[["id"]] <-
@@ -136,13 +128,36 @@ BillingProfilesResponse <- R6::R6Class(
       }
       if (!is.null(self$`payment_method_brand`)) {
         BillingProfilesResponseObject[["payment_method_brand"]] <-
-          self$`payment_method_brand`
+          self$extractSimpleType(self$`payment_method_brand`)
       }
       if (!is.null(self$`status`)) {
         BillingProfilesResponseObject[["status"]] <-
-          self$`status`
+          self$extractSimpleType(self$`status`)
       }
       return(BillingProfilesResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -156,31 +171,27 @@ BillingProfilesResponse <- R6::R6Class(
         self$`advertiser_id` <- this_object$`advertiser_id`
       }
       if (!is.null(this_object$`billing_type`)) {
-        if (!is.null(this_object$`billing_type`) && !(this_object$`billing_type` %in% c("CREDIT_CARD", "INVOICE", "INTERNAL", "RECURRING", "PREPAID"))) {
-          stop(paste("Error! \"", this_object$`billing_type`, "\" cannot be assigned to `billing_type`. Must be \"CREDIT_CARD\", \"INVOICE\", \"INTERNAL\", \"RECURRING\", \"PREPAID\".", sep = ""))
-        }
-        self$`billing_type` <- this_object$`billing_type`
+        `billing_type_object` <- BillingType$new()
+        `billing_type_object`$fromJSON(jsonlite::toJSON(this_object$`billing_type`, auto_unbox = TRUE, digits = NA))
+        self$`billing_type` <- `billing_type_object`
       }
       if (!is.null(this_object$`card_type`)) {
-        if (!is.null(this_object$`card_type`) && !(this_object$`card_type` %in% c("UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "ELO"))) {
-          stop(paste("Error! \"", this_object$`card_type`, "\" cannot be assigned to `card_type`. Must be \"UNKNOWN\", \"VISA\", \"MASTERCARD\", \"AMERICAN_EXPRESS\", \"DISCOVER\", \"ELO\".", sep = ""))
-        }
-        self$`card_type` <- this_object$`card_type`
+        `card_type_object` <- BillingProfileCardType$new()
+        `card_type_object`$fromJSON(jsonlite::toJSON(this_object$`card_type`, auto_unbox = TRUE, digits = NA))
+        self$`card_type` <- `card_type_object`
       }
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`payment_method_brand`)) {
-        if (!is.null(this_object$`payment_method_brand`) && !(this_object$`payment_method_brand` %in% c("UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "SOFORT", "DINERS_CLUB", "ELO", "CARTE_BANCAIRE"))) {
-          stop(paste("Error! \"", this_object$`payment_method_brand`, "\" cannot be assigned to `payment_method_brand`. Must be \"UNKNOWN\", \"VISA\", \"MASTERCARD\", \"AMERICAN_EXPRESS\", \"DISCOVER\", \"SOFORT\", \"DINERS_CLUB\", \"ELO\", \"CARTE_BANCAIRE\".", sep = ""))
-        }
-        self$`payment_method_brand` <- this_object$`payment_method_brand`
+        `payment_method_brand_object` <- BillingProfilePaymentMethodBrand$new()
+        `payment_method_brand_object`$fromJSON(jsonlite::toJSON(this_object$`payment_method_brand`, auto_unbox = TRUE, digits = NA))
+        self$`payment_method_brand` <- `payment_method_brand_object`
       }
       if (!is.null(this_object$`status`)) {
-        if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("UNSPECIFIED", "VALID", "INVALID", "PENDING", "DELETED", "SECONDARY", "PENDING_SECONDARY"))) {
-          stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"UNSPECIFIED\", \"VALID\", \"INVALID\", \"PENDING\", \"DELETED\", \"SECONDARY\", \"PENDING_SECONDARY\".", sep = ""))
-        }
-        self$`status` <- this_object$`status`
+        `status_object` <- BillingProfileStatus$new()
+        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+        self$`status` <- `status_object`
       }
       self
     },
@@ -204,23 +215,11 @@ BillingProfilesResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`advertiser_id` <- this_object$`advertiser_id`
-      if (!is.null(this_object$`billing_type`) && !(this_object$`billing_type` %in% c("CREDIT_CARD", "INVOICE", "INTERNAL", "RECURRING", "PREPAID"))) {
-        stop(paste("Error! \"", this_object$`billing_type`, "\" cannot be assigned to `billing_type`. Must be \"CREDIT_CARD\", \"INVOICE\", \"INTERNAL\", \"RECURRING\", \"PREPAID\".", sep = ""))
-      }
-      self$`billing_type` <- this_object$`billing_type`
-      if (!is.null(this_object$`card_type`) && !(this_object$`card_type` %in% c("UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "ELO"))) {
-        stop(paste("Error! \"", this_object$`card_type`, "\" cannot be assigned to `card_type`. Must be \"UNKNOWN\", \"VISA\", \"MASTERCARD\", \"AMERICAN_EXPRESS\", \"DISCOVER\", \"ELO\".", sep = ""))
-      }
-      self$`card_type` <- this_object$`card_type`
+      self$`billing_type` <- BillingType$new()$fromJSON(jsonlite::toJSON(this_object$`billing_type`, auto_unbox = TRUE, digits = NA))
+      self$`card_type` <- BillingProfileCardType$new()$fromJSON(jsonlite::toJSON(this_object$`card_type`, auto_unbox = TRUE, digits = NA))
       self$`id` <- this_object$`id`
-      if (!is.null(this_object$`payment_method_brand`) && !(this_object$`payment_method_brand` %in% c("UNKNOWN", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "SOFORT", "DINERS_CLUB", "ELO", "CARTE_BANCAIRE"))) {
-        stop(paste("Error! \"", this_object$`payment_method_brand`, "\" cannot be assigned to `payment_method_brand`. Must be \"UNKNOWN\", \"VISA\", \"MASTERCARD\", \"AMERICAN_EXPRESS\", \"DISCOVER\", \"SOFORT\", \"DINERS_CLUB\", \"ELO\", \"CARTE_BANCAIRE\".", sep = ""))
-      }
-      self$`payment_method_brand` <- this_object$`payment_method_brand`
-      if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("UNSPECIFIED", "VALID", "INVALID", "PENDING", "DELETED", "SECONDARY", "PENDING_SECONDARY"))) {
-        stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"UNSPECIFIED\", \"VALID\", \"INVALID\", \"PENDING\", \"DELETED\", \"SECONDARY\", \"PENDING_SECONDARY\".", sep = ""))
-      }
-      self$`status` <- this_object$`status`
+      self$`payment_method_brand` <- BillingProfilePaymentMethodBrand$new()$fromJSON(jsonlite::toJSON(this_object$`payment_method_brand`, auto_unbox = TRUE, digits = NA))
+      self$`status` <- BillingProfileStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self
     },
 

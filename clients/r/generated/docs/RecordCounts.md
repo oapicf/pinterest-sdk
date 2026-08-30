@@ -1,6 +1,5 @@
 # openapi::RecordCounts
 
-Record processing counts
 
 ## Properties
 Name | Type | Description | Notes

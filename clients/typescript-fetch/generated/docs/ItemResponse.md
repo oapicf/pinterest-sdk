@@ -1,15 +1,16 @@
 
 # ItemResponse
 
-Object describing an item record or error
+Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`catalogType` | [CatalogsType](CatalogsType.md)
 `attributes` | [CatalogsCreativeAssetsAttributes](CatalogsCreativeAssetsAttributes.md)
+`catalogType` | string
 `itemId` | string
+`itemResponseKind` | string
 `pins` | [Array&lt;Pin&gt;](Pin.md)
 `hotelId` | string
 `creativeAssetsId` | string
@@ -22,9 +23,10 @@ import type { ItemResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "catalogType": null,
   "attributes": null,
+  "catalogType": null,
   "itemId": DS0294-M,
+  "itemResponseKind": null,
   "pins": null,
   "hotelId": DS0294-M,
   "creativeAssetsId": DS0294-M,

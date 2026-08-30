@@ -4,29 +4,29 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapitools.vertxweb.server.model.Exception;
-import org.openapitools.vertxweb.server.model.PromotionResponse;
+import org.openapitools.vertxweb.server.model.Promotion;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PromotionArrayElement   {
   
-  private PromotionResponse data;
+  private Promotion data;
   private Exception exception;
 
   public PromotionArrayElement () {
 
   }
 
-  public PromotionArrayElement (PromotionResponse data, Exception exception) {
+  public PromotionArrayElement (Promotion data, Exception exception) {
     this.data = data;
     this.exception = exception;
   }
 
     
   @JsonProperty("data")
-  public PromotionResponse getData() {
+  public Promotion getData() {
     return data;
   }
-  public void setData(PromotionResponse data) {
+  public void setData(Promotion data) {
     this.data = data;
   }
 
@@ -74,9 +74,6 @@ public class PromotionArrayElement   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

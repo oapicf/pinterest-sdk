@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionDeletionRequestStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionDeletionRequestStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionDeletionRequestStatus {
+    title = ConversionDeletionRequestStatus
+    description = ConversionDeletionRequestStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionDeletionRequestStatus {
+    title = ConversionDeletionRequestStatus
+    description = ConversionDeletionRequestStatus
+    implements = openapi_server.resourceTypes.ConversionDeletionRequestStatus
+
+  }
+}

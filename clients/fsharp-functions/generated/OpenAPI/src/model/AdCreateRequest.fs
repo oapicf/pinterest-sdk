@@ -8,8 +8,6 @@ open OpenAPI.Model.CustomizableCTAType
 open OpenAPI.Model.DisclosureType
 open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.GridClickType
-open OpenAPI.Model.QuizPinData
-open OpenAPI.Model.TrackingUrls
 open OpenAPI.Model.string option
 
 module AdCreateRequest =
@@ -44,6 +42,8 @@ module AdCreateRequest =
     GridClickType : GridClickType;
     [<JsonProperty(PropertyName = "ios_deep_link")>]
     IosDeepLink : string option;
+    [<JsonProperty(PropertyName = "is_carting")>]
+    IsCarting : bool;
     [<JsonProperty(PropertyName = "is_pin_deleted")>]
     IsPinDeleted : bool;
     [<JsonProperty(PropertyName = "is_removable")>]
@@ -52,16 +52,16 @@ module AdCreateRequest =
     LeadFormId : string option;
     [<JsonProperty(PropertyName = "name")>]
     Name : string option;
+    [<JsonProperty(PropertyName = "pin_id")>]
+    PinId : string;
     [<JsonProperty(PropertyName = "quiz_pin_data")>]
-    QuizPinData : QuizPinData;
+    QuizPinData : obj;
     [<JsonProperty(PropertyName = "status")>]
     Status : EntityStatus;
     [<JsonProperty(PropertyName = "tracking_urls")>]
-    TrackingUrls : TrackingUrls;
+    TrackingUrls : obj;
     [<JsonProperty(PropertyName = "view_tracking_url")>]
     ViewTrackingUrl : string option;
-    [<JsonProperty(PropertyName = "pin_id")>]
-    PinId : string;
   }
 
   //#endregion

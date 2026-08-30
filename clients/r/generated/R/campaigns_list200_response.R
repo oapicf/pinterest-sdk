@@ -8,7 +8,7 @@
 #' @description CampaignsList200Response Class
 #' @format An \code{R6Class} generator object
 #' @field bookmark  character [optional]
-#' @field items  list(\link{CampaignResponse})
+#' @field items  list(\link{Campaign})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -75,9 +75,32 @@ CampaignsList200Response <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         CampaignsList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`items`)
       }
       return(CampaignsList200ResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -91,7 +114,7 @@ CampaignsList200Response <- R6::R6Class(
         self$`bookmark` <- this_object$`bookmark`
       }
       if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CampaignResponse]", loadNamespace("openapi"))
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Campaign]", loadNamespace("openapi"))
       }
       self
     },
@@ -115,7 +138,7 @@ CampaignsList200Response <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`bookmark` <- this_object$`bookmark`
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CampaignResponse]", loadNamespace("openapi"))
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[Campaign]", loadNamespace("openapi"))
       self
     },
 

@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class HotelIdFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("HOTEL_ID")
     @get:JsonProperty("HOTEL_ID", required = true) val HOTEL_ID: CatalogsProductGroupMultipleStringCriteria
 ) {
 

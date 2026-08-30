@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.CreateAssetAccessRequestErrorMessageInner
+open OpenAPI.Model.AssetAccessRequestError
 open System.Collections.Generic
 
 module CreateAssetAccessRequestResponse =
@@ -13,7 +13,7 @@ module CreateAssetAccessRequestResponse =
   [<CLIMutable>]
   type CreateAssetAccessRequestResponse = {
     [<JsonProperty(PropertyName = "exceptions")>]
-    Exceptions : CreateAssetAccessRequestErrorMessageInner[];
+    Exceptions : AssetAccessRequestError[];
     [<JsonProperty(PropertyName = "invites")>]
     Invites : IDictionary<string, string>;
   }

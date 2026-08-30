@@ -29,7 +29,7 @@ import play.api.libs.json._
   * @param timezoneAbbr Timezone abbreviation
   * @param `type` Device type
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class ConversionEventDeviceInfo(
   batteryLevel: Option[Int],
   brand: Option[String],
@@ -37,13 +37,13 @@ case class ConversionEventDeviceInfo(
   cpuCores: Option[Int],
   externalStorageFreeSpace: Option[Int],
   externalStorageSize: Option[Int],
-  formFactor: Option[ConversionEventDeviceInfo.FormFactor.Value],
+  formFactor: Option[FormFactor],
   kernelVersion: Option[String],
   languages: Option[List[String]],
   locale: Option[String],
   model: Option[String],
-  networkType: Option[ConversionEventDeviceInfo.NetworkType.Value],
-  osFamily: Option[ConversionEventDeviceInfo.OsFamily.Value],
+  networkType: Option[NetworkType],
+  osFamily: Option[OsFamily],
   osName: Option[String],
   osReleaseName: Option[String],
   osVersion: Option[String],
@@ -59,50 +59,5 @@ case class ConversionEventDeviceInfo(
 
 object ConversionEventDeviceInfo {
   implicit lazy val conversionEventDeviceInfoJsonFormat: Format[ConversionEventDeviceInfo] = Json.format[ConversionEventDeviceInfo]
-
-  // noinspection TypeAnnotation
-  object FormFactor extends Enumeration {
-    val Desktop = Value("desktop")
-    val Laptop = Value("laptop")
-    val Cellphone = Value("cellphone")
-    val Tablet = Value("tablet")
-    val Smartwatch = Value("smartwatch")
-    val Tv = Value("tv")
-    val Vr = Value("vr")
-    val Console = Value("console")
-    val Other = Value("other")
-
-    type FormFactor = Value
-    implicit lazy val FormFactorJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
-
-  // noinspection TypeAnnotation
-  object NetworkType extends Enumeration {
-    val Wifi = Value("wifi")
-    val Cellular2g = Value("cellular_2g")
-    val Cellular3g = Value("cellular_3g")
-    val Cellular4g = Value("cellular_4g")
-    val Cellular5g = Value("cellular_5g")
-    val Cellular6g = Value("cellular_6g")
-    val Ethernet = Value("ethernet")
-    val Unknown = Value("unknown")
-
-    type NetworkType = Value
-    implicit lazy val NetworkTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
-
-  // noinspection TypeAnnotation
-  object OsFamily extends Enumeration {
-    val Ios = Value("ios")
-    val Android = Value("android")
-    val Macos = Value("macos")
-    val Windows = Value("windows")
-    val Linux = Value("linux")
-    val Bsd = Value("bsd")
-    val Other = Value("other")
-
-    type OsFamily = Value
-    implicit lazy val OsFamilyJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
 }
 

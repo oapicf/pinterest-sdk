@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CreateAssetAccessRequestErrorMessageInner
+import org.openapitools.client.models.AssetAccessRequestError
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -24,7 +32,7 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param exceptions A list of errors associated with the asset access requests. Will be returned if there is an error.
- * @param invites 
+ * @param invites An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
  */
 
 
@@ -32,8 +40,9 @@ data class CreateAssetAccessRequestResponse (
 
     /* A list of errors associated with the asset access requests. Will be returned if there is an error. */
     @Json(name = "exceptions")
-    val exceptions: kotlin.collections.List<CreateAssetAccessRequestErrorMessageInner>? = null,
+    val exceptions: kotlin.collections.List<AssetAccessRequestError>? = null,
 
+    /* An object mapping each partner id to the asset access request id. Only one request id is returned per partner. */
     @Json(name = "invites")
     val invites: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
 

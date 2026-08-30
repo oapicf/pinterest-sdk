@@ -10,50 +10,30 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.ActionType;
+import org.openapitools.vertxweb.server.model.BidStrategyType;
 import org.openapitools.vertxweb.server.model.BudgetType;
 import org.openapitools.vertxweb.server.model.EntityStatus;
-import org.openapitools.vertxweb.server.model.OptimizationGoalMetadata;
 import org.openapitools.vertxweb.server.model.PacingDeliveryType;
 import org.openapitools.vertxweb.server.model.PlacementGroupType;
 import org.openapitools.vertxweb.server.model.TargetingSpec;
-import org.openapitools.vertxweb.server.model.TrackingUrls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdGroupCreateRequest   {
   
   private Boolean autoTargetingEnabled;
+  private BigDecimal bidMultiplier;
+  private BudgetType budgetType;
+  private PacingDeliveryType pacingDeliveryType;
   private Integer bidInMicroCurrency;
-
-
-  public enum BidStrategyTypeEnum {
-    AUTOMATIC_BID("AUTOMATIC_BID"),
-    MAX_BID("MAX_BID"),
-    TARGET_AVG("TARGET_AVG");
-
-    private String value;
-
-    BidStrategyTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private BidStrategyTypeEnum bidStrategyType;
+  private BidStrategyType bidStrategyType;
   private ActionType billableEvent;
   private Integer budgetInMicroCurrency;
-  private BudgetType budgetType = "DAILY";
   private String campaignId;
   private Integer endTime;
   private Boolean isCreativeOptimization;
   private Integer lifetimeFrequencyCap;
   private String name;
-  private OptimizationGoalMetadata optimizationGoalMetadata;
-  private PacingDeliveryType pacingDeliveryType = "STANDARD";
+  private Object optimizationGoalMetadata;
   private PlacementGroupType placementGroup;
 
 
@@ -77,40 +57,41 @@ public class AdGroupCreateRequest   {
 
   private PromotionApplicationLevelEnum promotionApplicationLevel;
   private String promotionId = "0";
+  private List<String> promotionIds = new ArrayList<>();
   private Integer startTime;
   private EntityStatus status;
   private TargetingSpec targetingSpec;
   private List<String> targetingTemplateIds;
-  private TrackingUrls trackingUrls;
-  private BigDecimal bidMultiplier;
+  private Object trackingUrls;
 
   public AdGroupCreateRequest () {
 
   }
 
-  public AdGroupCreateRequest (Boolean autoTargetingEnabled, Integer bidInMicroCurrency, BidStrategyTypeEnum bidStrategyType, ActionType billableEvent, Integer budgetInMicroCurrency, BudgetType budgetType, String campaignId, Integer endTime, Boolean isCreativeOptimization, Integer lifetimeFrequencyCap, String name, OptimizationGoalMetadata optimizationGoalMetadata, PacingDeliveryType pacingDeliveryType, PlacementGroupType placementGroup, PromotionApplicationLevelEnum promotionApplicationLevel, String promotionId, Integer startTime, EntityStatus status, TargetingSpec targetingSpec, List<String> targetingTemplateIds, TrackingUrls trackingUrls, BigDecimal bidMultiplier) {
+  public AdGroupCreateRequest (Boolean autoTargetingEnabled, BigDecimal bidMultiplier, BudgetType budgetType, PacingDeliveryType pacingDeliveryType, Integer bidInMicroCurrency, BidStrategyType bidStrategyType, ActionType billableEvent, Integer budgetInMicroCurrency, String campaignId, Integer endTime, Boolean isCreativeOptimization, Integer lifetimeFrequencyCap, String name, Object optimizationGoalMetadata, PlacementGroupType placementGroup, PromotionApplicationLevelEnum promotionApplicationLevel, String promotionId, List<String> promotionIds, Integer startTime, EntityStatus status, TargetingSpec targetingSpec, List<String> targetingTemplateIds, Object trackingUrls) {
     this.autoTargetingEnabled = autoTargetingEnabled;
+    this.bidMultiplier = bidMultiplier;
+    this.budgetType = budgetType;
+    this.pacingDeliveryType = pacingDeliveryType;
     this.bidInMicroCurrency = bidInMicroCurrency;
     this.bidStrategyType = bidStrategyType;
     this.billableEvent = billableEvent;
     this.budgetInMicroCurrency = budgetInMicroCurrency;
-    this.budgetType = budgetType;
     this.campaignId = campaignId;
     this.endTime = endTime;
     this.isCreativeOptimization = isCreativeOptimization;
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
     this.name = name;
     this.optimizationGoalMetadata = optimizationGoalMetadata;
-    this.pacingDeliveryType = pacingDeliveryType;
     this.placementGroup = placementGroup;
     this.promotionApplicationLevel = promotionApplicationLevel;
     this.promotionId = promotionId;
+    this.promotionIds = promotionIds;
     this.startTime = startTime;
     this.status = status;
     this.targetingSpec = targetingSpec;
     this.targetingTemplateIds = targetingTemplateIds;
     this.trackingUrls = trackingUrls;
-    this.bidMultiplier = bidMultiplier;
   }
 
     
@@ -120,6 +101,33 @@ public class AdGroupCreateRequest   {
   }
   public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
+  }
+
+    
+  @JsonProperty("bid_multiplier")
+  public BigDecimal getBidMultiplier() {
+    return bidMultiplier;
+  }
+  public void setBidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+  }
+
+    
+  @JsonProperty("budget_type")
+  public BudgetType getBudgetType() {
+    return budgetType;
+  }
+  public void setBudgetType(BudgetType budgetType) {
+    this.budgetType = budgetType;
+  }
+
+    
+  @JsonProperty("pacing_delivery_type")
+  public PacingDeliveryType getPacingDeliveryType() {
+    return pacingDeliveryType;
+  }
+  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+    this.pacingDeliveryType = pacingDeliveryType;
   }
 
     
@@ -133,10 +141,10 @@ public class AdGroupCreateRequest   {
 
     
   @JsonProperty("bid_strategy_type")
-  public BidStrategyTypeEnum getBidStrategyType() {
+  public BidStrategyType getBidStrategyType() {
     return bidStrategyType;
   }
-  public void setBidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+  public void setBidStrategyType(BidStrategyType bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
   }
 
@@ -156,15 +164,6 @@ public class AdGroupCreateRequest   {
   }
   public void setBudgetInMicroCurrency(Integer budgetInMicroCurrency) {
     this.budgetInMicroCurrency = budgetInMicroCurrency;
-  }
-
-    
-  @JsonProperty("budget_type")
-  public BudgetType getBudgetType() {
-    return budgetType;
-  }
-  public void setBudgetType(BudgetType budgetType) {
-    this.budgetType = budgetType;
   }
 
     
@@ -214,20 +213,11 @@ public class AdGroupCreateRequest   {
 
     
   @JsonProperty("optimization_goal_metadata")
-  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
+  public Object getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
-  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(Object optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
-  }
-
-    
-  @JsonProperty("pacing_delivery_type")
-  public PacingDeliveryType getPacingDeliveryType() {
-    return pacingDeliveryType;
-  }
-  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
-    this.pacingDeliveryType = pacingDeliveryType;
   }
 
     
@@ -255,6 +245,15 @@ public class AdGroupCreateRequest   {
   }
   public void setPromotionId(String promotionId) {
     this.promotionId = promotionId;
+  }
+
+    
+  @JsonProperty("promotion_ids")
+  public List<String> getPromotionIds() {
+    return promotionIds;
+  }
+  public void setPromotionIds(List<String> promotionIds) {
+    this.promotionIds = promotionIds;
   }
 
     
@@ -295,20 +294,11 @@ public class AdGroupCreateRequest   {
 
     
   @JsonProperty("tracking_urls")
-  public TrackingUrls getTrackingUrls() {
+  public Object getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
-  }
-
-    
-  @JsonProperty("bid_multiplier")
-  public BigDecimal getBidMultiplier() {
-    return bidMultiplier;
-  }
-  public void setBidMultiplier(BigDecimal bidMultiplier) {
-    this.bidMultiplier = bidMultiplier;
   }
 
 
@@ -322,32 +312,33 @@ public class AdGroupCreateRequest   {
     }
     AdGroupCreateRequest adGroupCreateRequest = (AdGroupCreateRequest) o;
     return Objects.equals(autoTargetingEnabled, adGroupCreateRequest.autoTargetingEnabled) &&
+        Objects.equals(bidMultiplier, adGroupCreateRequest.bidMultiplier) &&
+        Objects.equals(budgetType, adGroupCreateRequest.budgetType) &&
+        Objects.equals(pacingDeliveryType, adGroupCreateRequest.pacingDeliveryType) &&
         Objects.equals(bidInMicroCurrency, adGroupCreateRequest.bidInMicroCurrency) &&
         Objects.equals(bidStrategyType, adGroupCreateRequest.bidStrategyType) &&
         Objects.equals(billableEvent, adGroupCreateRequest.billableEvent) &&
         Objects.equals(budgetInMicroCurrency, adGroupCreateRequest.budgetInMicroCurrency) &&
-        Objects.equals(budgetType, adGroupCreateRequest.budgetType) &&
         Objects.equals(campaignId, adGroupCreateRequest.campaignId) &&
         Objects.equals(endTime, adGroupCreateRequest.endTime) &&
         Objects.equals(isCreativeOptimization, adGroupCreateRequest.isCreativeOptimization) &&
         Objects.equals(lifetimeFrequencyCap, adGroupCreateRequest.lifetimeFrequencyCap) &&
         Objects.equals(name, adGroupCreateRequest.name) &&
         Objects.equals(optimizationGoalMetadata, adGroupCreateRequest.optimizationGoalMetadata) &&
-        Objects.equals(pacingDeliveryType, adGroupCreateRequest.pacingDeliveryType) &&
         Objects.equals(placementGroup, adGroupCreateRequest.placementGroup) &&
         Objects.equals(promotionApplicationLevel, adGroupCreateRequest.promotionApplicationLevel) &&
         Objects.equals(promotionId, adGroupCreateRequest.promotionId) &&
+        Objects.equals(promotionIds, adGroupCreateRequest.promotionIds) &&
         Objects.equals(startTime, adGroupCreateRequest.startTime) &&
         Objects.equals(status, adGroupCreateRequest.status) &&
         Objects.equals(targetingSpec, adGroupCreateRequest.targetingSpec) &&
         Objects.equals(targetingTemplateIds, adGroupCreateRequest.targetingTemplateIds) &&
-        Objects.equals(trackingUrls, adGroupCreateRequest.trackingUrls) &&
-        Objects.equals(bidMultiplier, adGroupCreateRequest.bidMultiplier);
+        Objects.equals(trackingUrls, adGroupCreateRequest.trackingUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoTargetingEnabled, bidInMicroCurrency, bidStrategyType, billableEvent, budgetInMicroCurrency, budgetType, campaignId, endTime, isCreativeOptimization, lifetimeFrequencyCap, name, optimizationGoalMetadata, pacingDeliveryType, placementGroup, promotionApplicationLevel, promotionId, startTime, status, targetingSpec, targetingTemplateIds, trackingUrls, bidMultiplier);
+    return Objects.hash(autoTargetingEnabled, bidMultiplier, budgetType, pacingDeliveryType, bidInMicroCurrency, bidStrategyType, billableEvent, budgetInMicroCurrency, campaignId, endTime, isCreativeOptimization, lifetimeFrequencyCap, name, optimizationGoalMetadata, placementGroup, promotionApplicationLevel, promotionId, promotionIds, startTime, status, targetingSpec, targetingTemplateIds, trackingUrls);
   }
 
   @Override
@@ -356,27 +347,28 @@ public class AdGroupCreateRequest   {
     sb.append("class AdGroupCreateRequest {\n");
     
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
+    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
+    sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
+    sb.append("    pacingDeliveryType: ").append(toIndentedString(pacingDeliveryType)).append("\n");
     sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
     sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    budgetInMicroCurrency: ").append(toIndentedString(budgetInMicroCurrency)).append("\n");
-    sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    isCreativeOptimization: ").append(toIndentedString(isCreativeOptimization)).append("\n");
     sb.append("    lifetimeFrequencyCap: ").append(toIndentedString(lifetimeFrequencyCap)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    optimizationGoalMetadata: ").append(toIndentedString(optimizationGoalMetadata)).append("\n");
-    sb.append("    pacingDeliveryType: ").append(toIndentedString(pacingDeliveryType)).append("\n");
     sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    promotionApplicationLevel: ").append(toIndentedString(promotionApplicationLevel)).append("\n");
     sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
+    sb.append("    promotionIds: ").append(toIndentedString(promotionIds)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -386,9 +378,6 @@ public class AdGroupCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

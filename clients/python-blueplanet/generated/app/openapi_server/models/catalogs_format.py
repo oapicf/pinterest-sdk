@@ -21,6 +21,7 @@ class CatalogsFormat(Model):
     TSV = 'TSV'
     CSV = 'CSV'
     XML = 'XML'
+    INTEGRATION = 'INTEGRATION'
 
     def __init__(self):  # noqa: E501
         """CatalogsFormat - a model defined in Swagger

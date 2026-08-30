@@ -45,18 +45,18 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Exception error code.
+	/*! \brief Get 
 	 */
 	int getCode();
 
-	/*! \brief Set Exception error code.
+	/*! \brief Set 
 	 */
 	void setCode(int  code);
-	/*! \brief Get Exception message.
+	/*! \brief Get 
 	 */
 	std::string getMessage();
 
-	/*! \brief Set Exception message.
+	/*! \brief Set 
 	 */
 	void setMessage(std::string  message);
 

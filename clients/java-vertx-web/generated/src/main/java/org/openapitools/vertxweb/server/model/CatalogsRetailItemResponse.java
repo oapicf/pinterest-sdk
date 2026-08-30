@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.ItemAttributes;
 import org.openapitools.vertxweb.server.model.Pin;
 
@@ -19,18 +18,56 @@ import org.openapitools.vertxweb.server.model.Pin;
 public class CatalogsRetailItemResponse   {
   
   private ItemAttributes attributes;
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private String itemId;
+
+
+  public enum ItemResponseKindEnum {
+    RETAIL_ITEM("retail_item");
+
+    private String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private ItemResponseKindEnum itemResponseKind;
   private List<Pin> pins;
 
   public CatalogsRetailItemResponse () {
 
   }
 
-  public CatalogsRetailItemResponse (ItemAttributes attributes, CatalogsType catalogType, String itemId, List<Pin> pins) {
+  public CatalogsRetailItemResponse (ItemAttributes attributes, CatalogTypeEnum catalogType, String itemId, ItemResponseKindEnum itemResponseKind, List<Pin> pins) {
     this.attributes = attributes;
     this.catalogType = catalogType;
     this.itemId = itemId;
+    this.itemResponseKind = itemResponseKind;
     this.pins = pins;
   }
 
@@ -45,10 +82,10 @@ public class CatalogsRetailItemResponse   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -59,6 +96,15 @@ public class CatalogsRetailItemResponse   {
   }
   public void setItemId(String itemId) {
     this.itemId = itemId;
+  }
+
+    
+  @JsonProperty("item_response_kind")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
   }
 
     
@@ -83,12 +129,13 @@ public class CatalogsRetailItemResponse   {
     return Objects.equals(attributes, catalogsRetailItemResponse.attributes) &&
         Objects.equals(catalogType, catalogsRetailItemResponse.catalogType) &&
         Objects.equals(itemId, catalogsRetailItemResponse.itemId) &&
+        Objects.equals(itemResponseKind, catalogsRetailItemResponse.itemResponseKind) &&
         Objects.equals(pins, catalogsRetailItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, catalogType, itemId, pins);
+    return Objects.hash(attributes, catalogType, itemId, itemResponseKind, pins);
   }
 
   @Override
@@ -99,6 +146,7 @@ public class CatalogsRetailItemResponse   {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -109,9 +157,6 @@ public class CatalogsRetailItemResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

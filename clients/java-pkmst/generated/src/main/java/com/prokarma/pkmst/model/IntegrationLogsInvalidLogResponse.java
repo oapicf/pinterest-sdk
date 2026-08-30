@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.IntegrationLogsInvalidLogResponseRejectedLogsInner;
+import com.prokarma.pkmst.model.IntegrationLogsInvalidLogResponseRejectedLogsItems;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -19,18 +19,18 @@ import java.util.List;
  */
 @ApiModel(description = "Schema describing the response when a log has invalid fields.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogsInvalidLogResponse   {
   @JsonProperty("rejected_logs")
   
-  private List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = null;
+  private List<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs = null;
 
-  public IntegrationLogsInvalidLogResponse rejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public IntegrationLogsInvalidLogResponse rejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
     return this;
   }
 
-  public IntegrationLogsInvalidLogResponse addRejectedLogsItem(IntegrationLogsInvalidLogResponseRejectedLogsInner rejectedLogsItem) {
+  public IntegrationLogsInvalidLogResponse addRejectedLogsItem(IntegrationLogsInvalidLogResponseRejectedLogsItems rejectedLogsItem) {
     if (this.rejectedLogs == null) {
       this.rejectedLogs = new ArrayList<>();
     }
@@ -43,11 +43,11 @@ public class IntegrationLogsInvalidLogResponse   {
    * @return rejectedLogs
    */
   @ApiModelProperty(value = "")
-  public List<IntegrationLogsInvalidLogResponseRejectedLogsInner> getRejectedLogs() {
+  public List<IntegrationLogsInvalidLogResponseRejectedLogsItems> getRejectedLogs() {
     return rejectedLogs;
   }
 
-  public void setRejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
+  public void setRejectedLogs(List<IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
   }
 
@@ -84,10 +84,7 @@ public class IntegrationLogsInvalidLogResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

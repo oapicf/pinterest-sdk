@@ -102,7 +102,7 @@ PinMediaWithImageAndVideo::getItems()
 }
 
 void
-PinMediaWithImageAndVideo::setItems(std::list <PinMediaMetadata> items)
+PinMediaWithImageAndVideo::setItems(std::list<PinMediaMetadata> items)
 {
 	this->items = items;
 }
@@ -114,7 +114,7 @@ PinMediaWithImageAndVideo::getMediaType()
 }
 
 void
-PinMediaWithImageAndVideo::setMediaType(std::string  media_type)
+PinMediaWithImageAndVideo::setMediaType(std::string media_type)
 {
 	this->media_type = media_type;
 }

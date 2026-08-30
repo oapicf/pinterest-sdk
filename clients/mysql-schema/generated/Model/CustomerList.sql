@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CustomerList`
 --
-SELECT `ad_account_id`, `created_time`, `exceptions`, `id`, `name`, `num_batches`, `num_removed_user_records`, `num_uploaded_user_records`, `status`, `type`, `updated_time` FROM `CustomerList` WHERE 1;
+SELECT `ad_account_id`, `created_time`, `exceptions`, `id`, `is_nca`, `name`, `num_batches`, `num_removed_user_records`, `num_uploaded_user_records`, `status`, `type`, `updated_time` FROM `CustomerList` WHERE 1;
 
 --
 -- INSERT template for table `CustomerList`
 --
-INSERT INTO `CustomerList`(`ad_account_id`, `created_time`, `exceptions`, `id`, `name`, `num_batches`, `num_removed_user_records`, `num_uploaded_user_records`, `status`, `type`, `updated_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CustomerList`(`ad_account_id`, `created_time`, `exceptions`, `id`, `is_nca`, `name`, `num_batches`, `num_removed_user_records`, `num_uploaded_user_records`, `status`, `type`, `updated_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CustomerList`
 --
-UPDATE `CustomerList` SET `ad_account_id` = ?, `created_time` = ?, `exceptions` = ?, `id` = ?, `name` = ?, `num_batches` = ?, `num_removed_user_records` = ?, `num_uploaded_user_records` = ?, `status` = ?, `type` = ?, `updated_time` = ? WHERE 1;
+UPDATE `CustomerList` SET `ad_account_id` = ?, `created_time` = ?, `exceptions` = ?, `id` = ?, `is_nca` = ?, `name` = ?, `num_batches` = ?, `num_removed_user_records` = ?, `num_uploaded_user_records` = ?, `status` = ?, `type` = ?, `updated_time` = ? WHERE 1;
 
 --
 -- DELETE template for table `CustomerList`

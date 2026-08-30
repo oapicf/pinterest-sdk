@@ -104,7 +104,7 @@ KeywordError::getData()
 }
 
 void
-KeywordError::setData(Keyword  data)
+KeywordError::setData(Keyword data)
 {
 	this->data = data;
 }
@@ -116,7 +116,7 @@ KeywordError::getErrorMessages()
 }
 
 void
-KeywordError::setErrorMessages(std::list <std::string> error_messages)
+KeywordError::setErrorMessages(std::list<std::string> error_messages)
 {
 	this->error_messages = error_messages;
 }

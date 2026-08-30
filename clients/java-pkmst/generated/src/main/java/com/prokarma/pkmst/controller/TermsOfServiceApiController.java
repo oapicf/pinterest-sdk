@@ -1,6 +1,6 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.PinterestLibError;
 import com.prokarma.pkmst.model.TermsOfService;
 
 import io.swagger.annotations.*;
@@ -24,7 +24,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class TermsOfServiceApiController implements TermsOfServiceApi {
     private final ObjectMapper objectMapper;
@@ -38,6 +38,31 @@ public class TermsOfServiceApiController implements TermsOfServiceApi {
         @ApiParam(value = "Request type.")  @RequestParam(value = "tos_type", required = false) String tosType,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<TermsOfService>(objectMapper.readValue("", TermsOfService.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<TermsOfService>(objectMapper.readValue("", TermsOfService.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<TermsOfService>(objectMapper.readValue("", TermsOfService.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<TermsOfService>(objectMapper.readValue("", TermsOfService.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<TermsOfService>(objectMapper.readValue("", TermsOfService.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<TermsOfService>(objectMapper.readValue("", TermsOfService.class), HttpStatus.OK);

@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set Catalog id pertaining to all items
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get Array of item bid option operations
 	 */
 	std::list<AdvancedAuctionItemsSubmitRecord> getItems();
 
 	/*! \brief Set Array of item bid option operations
 	 */
-	void setItems(std::list <AdvancedAuctionItemsSubmitRecord> items);
+	void setItems(std::list<AdvancedAuctionItemsSubmitRecord> items);
 
 
     private:

@@ -3,7 +3,7 @@ package models
 type PinAnalyticsMetricsResponse struct {
 
 	// Array with the requested daily metric records
-	DailyMetrics []PinAnalyticsMetricsResponseDailyMetricsInner `json:"daily_metrics,omitempty"`
+	DailyMetrics []PinAnalyticsDailyMetrics `json:"daily_metrics,omitempty"`
 
 	// The lifetime metric name and value.
 	LifetimeMetrics map[string]int32 `json:"lifetime_metrics,omitempty"`

@@ -7,15 +7,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ProductAvailability } from './productAvailability';
 import { NonNullableCatalogsCurrency } from './nonNullableCatalogsCurrency';
-import { NonNullableProductAvailabilityType } from './nonNullableProductAvailabilityType';
 
 
 /**
  * Retail product metadata entity
  */
 export interface CatalogsRetailProductMetadata { 
-    availability: NonNullableProductAvailabilityType;
+    availability: ProductAvailability;
     currency: NonNullableCatalogsCurrency;
     /**
      * The parent ID of the product.

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.NumericFilterOperatorType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -15,40 +16,9 @@ import java.util.Objects;
 
 public class CatalogsProductGroupUint32Criteria   {
   
-  private Boolean negated = false;
+  private Boolean negated;
 
-
-public enum OperatorEnum {
-
-    @JsonProperty("GREATER_THAN") GREATER_THAN(String.valueOf("GREATER_THAN")), @JsonProperty("GREATER_THAN_OR_EQUALS") GREATER_THAN_OR_EQUALS(String.valueOf("GREATER_THAN_OR_EQUALS")), @JsonProperty("LESS_THAN") LESS_THAN(String.valueOf("LESS_THAN")), @JsonProperty("LESS_THAN_OR_EQUALS") LESS_THAN_OR_EQUALS(String.valueOf("LESS_THAN_OR_EQUALS"));
-
-
-    private String value;
-
-    OperatorEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static OperatorEnum fromValue(String value) {
-        for (OperatorEnum b : OperatorEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private OperatorEnum operator;
+  private NumericFilterOperatorType operator;
 
   private Integer value;
 
@@ -72,7 +42,7 @@ public enum OperatorEnum {
 
   /**
    **/
-  public CatalogsProductGroupUint32Criteria operator(OperatorEnum operator) {
+  public CatalogsProductGroupUint32Criteria operator(NumericFilterOperatorType operator) {
     this.operator = operator;
     return this;
   }
@@ -81,10 +51,10 @@ public enum OperatorEnum {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operator")
   @NotNull
-  public OperatorEnum getOperator() {
+  public NumericFilterOperatorType getOperator() {
     return operator;
   }
-  public void setOperator(OperatorEnum operator) {
+  public void setOperator(NumericFilterOperatorType operator) {
     this.operator = operator;
   }
 
@@ -147,10 +117,7 @@ public enum OperatorEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

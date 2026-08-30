@@ -1,5 +1,5 @@
 
-# Table `TopPinsAnalyticsResponse_date_availability`
+# Table `TopPinsAnalyticsResponseDateAvailability`
 (mapped from: TopPinsAnalyticsResponseDateAvailability)
 
 ## Properties

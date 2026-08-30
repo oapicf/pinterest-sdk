@@ -1,0 +1,74 @@
+/*
+ * RelatedTermsRelatedTermsListItems.h
+ *
+ * 
+ */
+
+#ifndef _RelatedTermsRelatedTermsListItems_H_
+#define _RelatedTermsRelatedTermsListItems_H_
+
+
+#include <string>
+#include <list>
+#include "Object.h"
+
+/** \defgroup Models Data Structures for API
+ *  Classes containing all the Data Structures needed for calling/returned by API endpoints
+ *
+ */
+
+namespace Tizen {
+namespace ArtikCloud {
+
+
+/*! \brief 
+ *
+ *  \ingroup Models
+ *
+ */
+
+class RelatedTermsRelatedTermsListItems : public Object {
+public:
+	/*! \brief Constructor.
+	 */
+	RelatedTermsRelatedTermsListItems();
+	RelatedTermsRelatedTermsListItems(char* str);
+
+	/*! \brief Destructor.
+	 */
+	virtual ~RelatedTermsRelatedTermsListItems();
+
+	/*! \brief Retrieve a string JSON representation of this class.
+	 */
+	char* toJson();
+
+	/*! \brief Fills in members of this class from JSON string representing it.
+	 */
+	void fromJson(char* jsonStr);
+
+	/*! \brief Get 
+	 */
+	std::list<std::string> getRelatedTerms();
+
+	/*! \brief Set 
+	 */
+	void setRelatedTerms(std::list <std::string> related_terms);
+	/*! \brief Get 
+	 */
+	std::string getTerm();
+
+	/*! \brief Set 
+	 */
+	void setTerm(std::string  term);
+
+private:
+	std::list <std::string>related_terms;
+	std::string term;
+	void __init();
+	void __cleanup();
+
+};
+}
+}
+
+#endif /* _RelatedTermsRelatedTermsListItems_H_ */

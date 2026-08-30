@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class UserWebsitesGet200Response (
   bookmark: Option[String] = None,
-  items: Seq[UserWebsiteSummary]
+  items: Seq[UserWebsite]
 )
 

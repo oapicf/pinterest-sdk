@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set List of assigned/updated partner asset access.
 	 */
-	void setItems(std::list <UpdatePartnerAssetsResult> items);
+	void setItems(std::list<UpdatePartnerAssetsResult> items);
 
 
     private:

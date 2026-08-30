@@ -3,9 +3,11 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from openapi_server.models.base_model import Model
+from openapi_server.models.user_account_type import UserAccountType
 import re
 from openapi_server import util
 
+from openapi_server.models.user_account_type import UserAccountType  # noqa: E501
 import re  # noqa: E501
 
 class Account(Model):
@@ -20,7 +22,7 @@ class Account(Model):
         :param about: The about of this Account.  # noqa: E501
         :type about: str
         :param account_type: The account_type of this Account.  # noqa: E501
-        :type account_type: str
+        :type account_type: UserAccountType
         :param board_count: The board_count of this Account.  # noqa: E501
         :type board_count: int
         :param business_name: The business_name of this Account.  # noqa: E501
@@ -44,7 +46,7 @@ class Account(Model):
         """
         self.openapi_types = {
             'about': str,
-            'account_type': str,
+            'account_type': UserAccountType,
             'board_count': int,
             'business_name': str,
             'follower_count': int,
@@ -120,31 +122,25 @@ class Account(Model):
         self._about = about
 
     @property
-    def account_type(self) -> str:
+    def account_type(self) -> UserAccountType:
         """Gets the account_type of this Account.
 
         Type of account  # noqa: E501
 
         :return: The account_type of this Account.
-        :rtype: str
+        :rtype: UserAccountType
         """
         return self._account_type
 
     @account_type.setter
-    def account_type(self, account_type: str):
+    def account_type(self, account_type: UserAccountType):
         """Sets the account_type of this Account.
 
         Type of account  # noqa: E501
 
         :param account_type: The account_type of this Account.
-        :type account_type: str
+        :type account_type: UserAccountType
         """
-        allowed_values = ["PINNER", "BUSINESS"]  # noqa: E501
-        if account_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `account_type` ({0}), must be one of {1}"
-                .format(account_type, allowed_values)
-            )
 
         self._account_type = account_type
 
@@ -152,7 +148,7 @@ class Account(Model):
     def board_count(self) -> int:
         """Gets the board_count of this Account.
 
-        User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.  # noqa: E501
+          User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.  # noqa: E501
 
         :return: The board_count of this Account.
         :rtype: int
@@ -163,7 +159,7 @@ class Account(Model):
     def board_count(self, board_count: int):
         """Sets the board_count of this Account.
 
-        User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.  # noqa: E501
+          User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.  # noqa: E501
 
         :param board_count: The board_count of this Account.
         :type board_count: int

@@ -16,19 +16,19 @@ import play.api.libs.json._
   * @param profilesIds A list of profile IDs under asset group
   * @param updatedTime The last update time of the asset group
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class AssetGroupBinding(
-  adAccountsIds: Option[List[String]],
-  assetGroupDescription: Option[String],
-  assetGroupName: Option[String],
-  assetGroupTypes: Option[List[String]],
-  catalogsIds: Option[List[String]],
-  createdBy: Option[BusinessAccessUserSummary],
-  createdTime: Option[Int],
-  id: Option[String],
-  owner: Option[BusinessAccessUserSummary],
-  profilesIds: Option[List[String]],
-  updatedTime: Option[Int]
+  adAccountsIds: List[String],
+  assetGroupDescription: String,
+  assetGroupName: String,
+  assetGroupTypes: List[String],
+  catalogsIds: List[String],
+  createdBy: BusinessAccessUserSummary,
+  createdTime: Int,
+  id: String,
+  owner: BusinessAccessUserSummary,
+  profilesIds: List[String],
+  updatedTime: Int
 )
 
 object AssetGroupBinding {

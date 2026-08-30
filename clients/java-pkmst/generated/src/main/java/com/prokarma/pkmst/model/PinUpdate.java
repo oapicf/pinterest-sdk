@@ -3,6 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.prokarma.pkmst.model.AiDisclosuresUpdate;
 import com.prokarma.pkmst.model.CarouselSlot;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -20,8 +21,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Resource create or update operation model.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinUpdate   {
+  @JsonProperty("ai_disclosures")
+  private AiDisclosuresUpdate aiDisclosures;
+
   @JsonProperty("alt_text")
   private String altText;
 
@@ -43,6 +47,24 @@ public class PinUpdate   {
 
   @JsonProperty("title")
   private String title;
+
+  public PinUpdate aiDisclosures(AiDisclosuresUpdate aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  /**
+   * AI disclosure declarations the creator has made about this Pin.
+   * @return aiDisclosures
+   */
+  @ApiModelProperty(value = "AI disclosure declarations the creator has made about this Pin.")
+  public AiDisclosuresUpdate getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(AiDisclosuresUpdate aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
 
   public PinUpdate altText(String altText) {
     this.altText = altText;
@@ -188,7 +210,8 @@ public class PinUpdate   {
       return false;
     }
     PinUpdate pinUpdate = (PinUpdate) o;
-    return Objects.equals(this.altText, pinUpdate.altText) &&
+    return Objects.equals(this.aiDisclosures, pinUpdate.aiDisclosures) &&
+        Objects.equals(this.altText, pinUpdate.altText) &&
         Objects.equals(this.boardId, pinUpdate.boardId) &&
         Objects.equals(this.boardSectionId, pinUpdate.boardSectionId) &&
         Objects.equals(this.carouselSlots, pinUpdate.carouselSlots) &&
@@ -199,7 +222,7 @@ public class PinUpdate   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(altText, boardId, boardSectionId, carouselSlots, description, link, title);
+    return Objects.hash(aiDisclosures, altText, boardId, boardSectionId, carouselSlots, description, link, title);
   }
 
   @Override
@@ -207,6 +230,7 @@ public class PinUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinUpdate {\n");
     
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
@@ -223,10 +247,7 @@ public class PinUpdate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

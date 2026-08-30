@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Summarized pin information")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SummaryPin   {
   @JsonProperty("alt_text")
   private String altText;
@@ -82,7 +82,7 @@ public class SummaryPin   {
    * Get id
    * @return id
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public String getId() {
     return id;
   }
@@ -100,7 +100,7 @@ public class SummaryPin   {
    * Get link
    * @return link
    */
-  @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
+  @ApiModelProperty(value = "")
   public String getLink() {
     return link;
   }
@@ -188,10 +188,7 @@ public class SummaryPin   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

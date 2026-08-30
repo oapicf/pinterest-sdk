@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request model for creating an AppsFlyer audience",
+  "name": "AppsflyerAudience",
+  "fields": [
+    {
+      "name": "container_id",
+      "type": "string",
+      "doc": "The ID of the audience container"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "The name of the audience"
+    },
+    {
+      "name": "platform",
+      "type": "model.AppsflyerPlatform",
+      "doc": "The platform of the audience"
+    }
+  ]
+
+}

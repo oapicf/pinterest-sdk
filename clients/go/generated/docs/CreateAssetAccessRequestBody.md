@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetRequests** | [**[]CreateAssetAccessRequestBodyAssetRequestsInner**](CreateAssetAccessRequestBodyAssetRequestsInner.md) |  | 
+**AssetRequests** | [**[]CreateAssetAccessRequestItem**](CreateAssetAccessRequestItem.md) |  | 
 
 ## Methods
 
 ### NewCreateAssetAccessRequestBody
 
-`func NewCreateAssetAccessRequestBody(assetRequests []CreateAssetAccessRequestBodyAssetRequestsInner, ) *CreateAssetAccessRequestBody`
+`func NewCreateAssetAccessRequestBody(assetRequests []CreateAssetAccessRequestItem, ) *CreateAssetAccessRequestBody`
 
 NewCreateAssetAccessRequestBody instantiates a new CreateAssetAccessRequestBody object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAssetRequests
 
-`func (o *CreateAssetAccessRequestBody) GetAssetRequests() []CreateAssetAccessRequestBodyAssetRequestsInner`
+`func (o *CreateAssetAccessRequestBody) GetAssetRequests() []CreateAssetAccessRequestItem`
 
 GetAssetRequests returns the AssetRequests field if non-nil, zero value otherwise.
 
 ### GetAssetRequestsOk
 
-`func (o *CreateAssetAccessRequestBody) GetAssetRequestsOk() (*[]CreateAssetAccessRequestBodyAssetRequestsInner, bool)`
+`func (o *CreateAssetAccessRequestBody) GetAssetRequestsOk() (*[]CreateAssetAccessRequestItem, bool)`
 
 GetAssetRequestsOk returns a tuple with the AssetRequests field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssetRequests
 
-`func (o *CreateAssetAccessRequestBody) SetAssetRequests(v []CreateAssetAccessRequestBodyAssetRequestsInner)`
+`func (o *CreateAssetAccessRequestBody) SetAssetRequests(v []CreateAssetAccessRequestItem)`
 
 SetAssetRequests sets AssetRequests field to given value.
 

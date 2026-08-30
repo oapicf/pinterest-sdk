@@ -27,6 +27,7 @@ AdAccountCreate::__init()
 	//currency = new Currency();
 	//name = std::string();
 	//owner_user_id = std::string();
+	//time_zone = std::string();
 }
 
 void
@@ -51,6 +52,11 @@ AdAccountCreate::__cleanup()
 	//
 	//delete owner_user_id;
 	//owner_user_id = NULL;
+	//}
+	//if(time_zone != NULL) {
+	//
+	//delete time_zone;
+	//time_zone = NULL;
 	//}
 	//
 }
@@ -106,6 +112,17 @@ AdAccountCreate::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&owner_user_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *time_zoneKey = "time_zone";
+	node = json_object_get_member(pJsonObject, time_zoneKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&time_zone, node, "std::string", "");
 		} else {
 			
 		}
@@ -168,6 +185,15 @@ AdAccountCreate::toJson()
 	}
 	const gchar *owner_user_idKey = "owner_user_id";
 	json_object_set_member(pJsonObject, owner_user_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getTimeZone();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *time_zoneKey = "time_zone";
+	json_object_set_member(pJsonObject, time_zoneKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -222,6 +248,18 @@ void
 AdAccountCreate::setOwnerUserId(std::string  owner_user_id)
 {
 	this->owner_user_id = owner_user_id;
+}
+
+std::string
+AdAccountCreate::getTimeZone()
+{
+	return time_zone;
+}
+
+void
+AdAccountCreate::setTimeZone(std::string  time_zone)
+{
+	this->time_zone = time_zone;
 }
 
 

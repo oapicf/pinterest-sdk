@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.BillingInvoiceResponse;
+import org.openapitools.model.BillingInvoice;
 
 @Canonical
 class BillingInvoicesGet200Response {
     
     String bookmark
     
-    List<BillingInvoiceResponse> items = new ArrayList<>()
+    List<BillingInvoice> items = new ArrayList<>()
 }

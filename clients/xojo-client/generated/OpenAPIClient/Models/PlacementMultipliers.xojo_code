@@ -2,34 +2,14 @@
 Protected Class PlacementMultipliers
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Placement type identifier.
+		#tag EndNote
 		PLACEMENT As Xoson.O.OptionalString
 	#tag EndProperty
 
 
-    #tag Enum, Name = PLACEMENTEnum, Type = Integer, Flags = &h0
-        
-        Search
-        Browse
-        RelatedPins
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function PLACEMENTEnumToString(value As PLACEMENTEnum) As String
-		  Select Case value
-		    
-		    Case PLACEMENTEnum.Search
-		      Return "SEARCH"
-		    Case PLACEMENTEnum.Browse
-		      Return "BROWSE"
-		    Case PLACEMENTEnum.RelatedPins
-		      Return "RELATED_PINS"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -63,6 +43,14 @@ Protected Class PlacementMultipliers
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PLACEMENT"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="PlacementType"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

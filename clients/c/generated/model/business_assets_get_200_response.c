@@ -13,10 +13,10 @@ static business_assets_get_200_response_t *business_assets_get_200_response_crea
     if (!business_assets_get_200_response_local_var) {
         return NULL;
     }
+    memset(business_assets_get_200_response_local_var, 0, sizeof(business_assets_get_200_response_t));
+    business_assets_get_200_response_local_var->_library_owned = 1;
     business_assets_get_200_response_local_var->bookmark = bookmark;
     business_assets_get_200_response_local_var->items = items;
-
-    business_assets_get_200_response_local_var->_library_owned = 1;
     return business_assets_get_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) business_assets_get_200_response_t *business_assets_
     char *bookmark,
     list_t *items
     ) {
-    return business_assets_get_200_response_create_internal (
+    business_assets_get_200_response_t *result = business_assets_get_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void business_assets_get_200_response_free(business_assets_get_200_response_t *business_assets_get_200_response) {
@@ -45,7 +48,7 @@ void business_assets_get_200_response_free(business_assets_get_200_response_t *b
     }
     if (business_assets_get_200_response->items) {
         list_ForEach(listEntry, business_assets_get_200_response->items) {
-            get_business_assets_response_free(listEntry->data);
+            business_assets_free(listEntry->data);
         }
         list_freeList(business_assets_get_200_response->items);
         business_assets_get_200_response->items = NULL;
@@ -76,7 +79,7 @@ cJSON *business_assets_get_200_response_convertToJSON(business_assets_get_200_re
     listEntry_t *itemsListEntry;
     if (business_assets_get_200_response->items) {
     list_ForEach(itemsListEntry, business_assets_get_200_response->items) {
-    cJSON *itemLocal = get_business_assets_response_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = business_assets_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -95,6 +98,8 @@ fail:
 business_assets_get_200_response_t *business_assets_get_200_response_parseFromJSON(cJSON *business_assets_get_200_responseJSON){
 
     business_assets_get_200_response_t *business_assets_get_200_response_local_var = NULL;
+
+    char *bookmark_local_str = NULL;
 
     // define the local list for business_assets_get_200_response->items
     list_t *itemsList = NULL;
@@ -133,23 +138,33 @@ business_assets_get_200_response_t *business_assets_get_200_response_parseFromJS
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        get_business_assets_response_t *itemsItem = get_business_assets_response_parseFromJSON(items_local_nonprimitive);
+        business_assets_t *itemsItem = business_assets_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     business_assets_get_200_response_local_var = business_assets_get_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!business_assets_get_200_response_local_var) {
+        goto end;
+    }
+
     return business_assets_get_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            get_business_assets_response_free(listEntry->data);
+            business_assets_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

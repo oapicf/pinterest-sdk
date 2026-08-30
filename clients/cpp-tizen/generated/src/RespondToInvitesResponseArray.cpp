@@ -49,12 +49,12 @@ RespondToInvitesResponseArray::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<RespondToInvitesResponseArray_items_inner> new_list;
-			RespondToInvitesResponseArray_items_inner inst;
+			list<RespondToInviteResultItem> new_list;
+			RespondToInviteResultItem inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("RespondToInvitesResponseArray_items_inner")) {
-					jsonToValue(&inst, temp_json, "RespondToInvitesResponseArray_items_inner", "");
+				if (isprimitive("RespondToInviteResultItem")) {
+					jsonToValue(&inst, temp_json, "RespondToInviteResultItem", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ RespondToInvitesResponseArray::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("RespondToInvitesResponseArray_items_inner")) {
-		list<RespondToInvitesResponseArray_items_inner> new_list = static_cast<list <RespondToInvitesResponseArray_items_inner> > (getItems());
-		node = converttoJson(&new_list, "RespondToInvitesResponseArray_items_inner", "array");
+	if (isprimitive("RespondToInviteResultItem")) {
+		list<RespondToInviteResultItem> new_list = static_cast<list <RespondToInviteResultItem> > (getItems());
+		node = converttoJson(&new_list, "RespondToInviteResultItem", "array");
 	} else {
 		node = json_node_alloc();
-		list<RespondToInvitesResponseArray_items_inner> new_list = static_cast<list <RespondToInvitesResponseArray_items_inner> > (getItems());
+		list<RespondToInviteResultItem> new_list = static_cast<list <RespondToInviteResultItem> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<RespondToInvitesResponseArray_items_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<RespondToInviteResultItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			RespondToInvitesResponseArray_items_inner obj = *it;
+			RespondToInviteResultItem obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ RespondToInvitesResponseArray::toJson()
 	return ret;
 }
 
-std::list<RespondToInvitesResponseArray_items_inner>
+std::list<RespondToInviteResultItem>
 RespondToInvitesResponseArray::getItems()
 {
 	return items;
 }
 
 void
-RespondToInvitesResponseArray::setItems(std::list <RespondToInvitesResponseArray_items_inner> items)
+RespondToInvitesResponseArray::setItems(std::list <RespondToInviteResultItem> items)
 {
 	this->items = items;
 }

@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "GetBusinessAssetsResponse.h"
+#include "BusinessAssets.h"
 #include <list>
 #include "Object.h"
 
@@ -54,17 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
-	/*! \brief Get List of assets the requesting business has access to.
+	/*! \brief Get 
 	 */
-	std::list<GetBusinessAssetsResponse> getItems();
+	std::list<BusinessAssets> getItems();
 
-	/*! \brief Set List of assets the requesting business has access to.
+	/*! \brief Set 
 	 */
-	void setItems(std::list <GetBusinessAssetsResponse> items);
+	void setItems(std::list <BusinessAssets> items);
 
 private:
 	std::string bookmark;
-	std::list <GetBusinessAssetsResponse>items;
+	std::list <BusinessAssets>items;
 	void __init();
 	void __cleanup();
 

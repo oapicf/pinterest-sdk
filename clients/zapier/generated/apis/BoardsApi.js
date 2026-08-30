@@ -3,10 +3,11 @@ const Board = require('../models/Board');
 const BoardCreate = require('../models/BoardCreate');
 const BoardPrivacyFilter = require('../models/BoardPrivacyFilter');
 const BoardSection = require('../models/BoardSection');
+const BoardSectionCreate = require('../models/BoardSectionCreate');
+const BoardSectionUpdateWithRequiredBody = require('../models/BoardSectionUpdateWithRequiredBody');
 const BoardWithUpdatePrivacy = require('../models/BoardWithUpdatePrivacy');
 const BoardWithUpdatePrivacyUpdate = require('../models/BoardWithUpdatePrivacyUpdate');
 const CreativeType = require('../models/CreativeType');
-const Error = require('../models/Error');
 const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const board_sections_list_200_response = require('../models/board_sections_list_200_response');
 const boards_list_200_response = require('../models/boards_list_200_response');
@@ -30,7 +31,7 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...BoardSection.fields(),
+                ...BoardSectionCreate.fields(),
                 {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
@@ -53,7 +54,7 @@ module.exports = {
                         'ad_account_id': bundle.inputData?.['ad_account_id'],
                     },
                     body: {
-                        ...BoardSection.mapping(bundle),
+                        ...BoardSectionCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -62,7 +63,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['BoardSectionSample']
+            sample: samples['BoardSectionSample']samples['BoardSectionSample']
         }
     },
     boardSections/delete: {
@@ -94,6 +95,7 @@ module.exports = {
                 },
             ],
             outputFields: [
+                ...BoardSection.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -116,7 +118,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: { data: {} }
+            sample: samples['BoardSectionSample']
         }
     },
     boardSections/list: {
@@ -147,7 +149,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -214,7 +216,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -269,7 +271,7 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...BoardSection.fields(),
+                ...BoardSectionUpdateWithRequiredBody.fields(),
                 {
                     key: 'ad_account_id',
                     label: 'Unique identifier of an ad account.',
@@ -292,7 +294,7 @@ module.exports = {
                         'ad_account_id': bundle.inputData?.['ad_account_id'],
                     },
                     body: {
-                        ...BoardSection.mapping(bundle),
+                        ...BoardSectionUpdateWithRequiredBody.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -372,6 +374,7 @@ module.exports = {
                 },
             ],
             outputFields: [
+                ...Board.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -394,7 +397,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: { data: {} }
+            sample: samples['BoardSample']
         }
     },
     boards/get: {
@@ -520,16 +523,6 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'bookmark',
-                    label: 'Cursor used to fetch the next page of items',
-                    type: 'string',
-                },
-                {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
                     key: 'creative_types',
                     label: 'Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.',
                     type: 'string',
@@ -543,6 +536,16 @@ module.exports = {
                     key: 'pin_metrics',
                     label: 'Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.',
                     type: 'boolean',
+                },
+                {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
                 },
             ],
             outputFields: [
@@ -558,11 +561,11 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
-                        'bookmark': bundle.inputData?.['bookmark'],
-                        'page_size': bundle.inputData?.['page_size'],
                         'creative_types': bundle.inputData?.['creative_types'],
                         'ad_account_id': bundle.inputData?.['ad_account_id'],
                         'pin_metrics': bundle.inputData?.['pin_metrics'],
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
                     },
                     body: {
                     },

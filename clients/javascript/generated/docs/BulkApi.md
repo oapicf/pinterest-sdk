@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 ## bulkDownloadCreate
 
-> BulkDownloadResponse bulkDownloadCreate(adAccountId, bulkDownloadRequest)
+> BulkDownload bulkDownloadCreate(adAccountId, bulkDownloadCreate)
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 
@@ -29,8 +29,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BulkApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let bulkDownloadRequest = new PinterestSdk.BulkDownloadRequest(); // BulkDownloadRequest | Parameters to get ad entities in bulk
-apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadRequest, (error, data, response) => {
+let bulkDownloadCreate = new PinterestSdk.BulkDownloadCreate(); // BulkDownloadCreate | 
+apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -45,11 +45,11 @@ apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadRequest, (error, data, r
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **bulkDownloadRequest** | [**BulkDownloadRequest**](BulkDownloadRequest.md)| Parameters to get ad entities in bulk | 
+ **bulkDownloadCreate** | [**BulkDownloadCreate**](BulkDownloadCreate.md)|  | 
 
 ### Return type
 
-[**BulkDownloadResponse**](BulkDownloadResponse.md)
+[**BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
@@ -63,11 +63,11 @@ Name | Type | Description  | Notes
 
 ## bulkRequestGet
 
-> BulkUpsertStatusResponse bulkRequestGet(adAccountId, bulkRequestId, opts)
+> BulkJobData bulkRequestGet(adAccountId, bulkRequestId, opts)
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 
@@ -83,9 +83,9 @@ client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BulkApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let bulkRequestId = "bulkRequestId_example"; // String | Unique identifier of a bulk upsert request.
+let bulkRequestId = "bulkRequestId_example"; // String | Bulk request ID that is from one of the entities bulk endpoints
 let opts = {
-  'includeDetails': false // Boolean | if set to True then attach the errors/details to all the requests
+  'includeDetails': false // Boolean | If set to True then attach the errors/details to all the requests
 };
 apiInstance.bulkRequestGet(adAccountId, bulkRequestId, opts, (error, data, response) => {
   if (error) {
@@ -102,12 +102,12 @@ apiInstance.bulkRequestGet(adAccountId, bulkRequestId, opts, (error, data, respo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **bulkRequestId** | **String**| Unique identifier of a bulk upsert request. | 
- **includeDetails** | **Boolean**| if set to True then attach the errors/details to all the requests | [optional] [default to false]
+ **bulkRequestId** | **String**| Bulk request ID that is from one of the entities bulk endpoints | 
+ **includeDetails** | **Boolean**| If set to True then attach the errors/details to all the requests | [optional] [default to false]
 
 ### Return type
 
-[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**BulkJobData**](BulkJobData.md)
 
 ### Authorization
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
 
 ### Example
 

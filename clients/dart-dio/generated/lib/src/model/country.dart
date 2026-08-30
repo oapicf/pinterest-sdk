@@ -507,8 +507,8 @@ class Country extends EnumClass {
   @BuiltValueEnumConst(wireName: r'NL')
   static const Country NL = _$NL;
   /// Country ID from ISO 3166-1 alpha-2.
-  @BuiltValueEnumConst(wireName: r'NO')
-  static const Country NO = _$NO;
+  @BuiltValueEnumConst(wireName: r'false')
+  static const Country false_ = _$false_;
   /// Country ID from ISO 3166-1 alpha-2.
   @BuiltValueEnumConst(wireName: r'NP')
   static const Country NP = _$NP;

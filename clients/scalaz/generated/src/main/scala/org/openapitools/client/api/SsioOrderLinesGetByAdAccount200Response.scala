@@ -13,8 +13,7 @@ import SsioOrderLinesGetByAdAccount200Response._
 
 case class SsioOrderLinesGetByAdAccount200Response (
   bookmark: Option[String],
-/* SSIO order lines by ad acount id */
-  items: List[SSIOOrderLine])
+items: List[SSIOOrderLine])
 
 object SsioOrderLinesGetByAdAccount200Response {
   import DateTimeCodecs._

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,10 @@ import (
 // checks if the UpdateMemberAssetAccessBody type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &UpdateMemberAssetAccessBody{}
 
-// UpdateMemberAssetAccessBody An object with a list of all the new accesses.
+// UpdateMemberAssetAccessBody An object with a list of all the new member asset accesses.
 type UpdateMemberAssetAccessBody struct {
-	Accesses []UpdateMemberAssetAccessBodyAccessesInner `json:"accesses"`
+	// List of member asset accesses to assign or update.
+	Accesses []UpdateMemberAssetAccessItem `json:"accesses"`
 }
 
 type _UpdateMemberAssetAccessBody UpdateMemberAssetAccessBody
@@ -31,7 +32,7 @@ type _UpdateMemberAssetAccessBody UpdateMemberAssetAccessBody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateMemberAssetAccessBody(accesses []UpdateMemberAssetAccessBodyAccessesInner) *UpdateMemberAssetAccessBody {
+func NewUpdateMemberAssetAccessBody(accesses []UpdateMemberAssetAccessItem) *UpdateMemberAssetAccessBody {
 	this := UpdateMemberAssetAccessBody{}
 	this.Accesses = accesses
 	return &this
@@ -46,9 +47,9 @@ func NewUpdateMemberAssetAccessBodyWithDefaults() *UpdateMemberAssetAccessBody {
 }
 
 // GetAccesses returns the Accesses field value
-func (o *UpdateMemberAssetAccessBody) GetAccesses() []UpdateMemberAssetAccessBodyAccessesInner {
+func (o *UpdateMemberAssetAccessBody) GetAccesses() []UpdateMemberAssetAccessItem {
 	if o == nil {
-		var ret []UpdateMemberAssetAccessBodyAccessesInner
+		var ret []UpdateMemberAssetAccessItem
 		return ret
 	}
 
@@ -57,7 +58,7 @@ func (o *UpdateMemberAssetAccessBody) GetAccesses() []UpdateMemberAssetAccessBod
 
 // GetAccessesOk returns a tuple with the Accesses field value
 // and a boolean to check if the value has been set.
-func (o *UpdateMemberAssetAccessBody) GetAccessesOk() ([]UpdateMemberAssetAccessBodyAccessesInner, bool) {
+func (o *UpdateMemberAssetAccessBody) GetAccessesOk() ([]UpdateMemberAssetAccessItem, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +66,7 @@ func (o *UpdateMemberAssetAccessBody) GetAccessesOk() ([]UpdateMemberAssetAccess
 }
 
 // SetAccesses sets field value
-func (o *UpdateMemberAssetAccessBody) SetAccesses(v []UpdateMemberAssetAccessBodyAccessesInner) {
+func (o *UpdateMemberAssetAccessBody) SetAccesses(v []UpdateMemberAssetAccessItem) {
 	o.Accesses = v
 }
 

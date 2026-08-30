@@ -16,13 +16,13 @@ static pin_media_source_images_base64_item_t *pin_media_source_images_base64_ite
     if (!pin_media_source_images_base64_item_local_var) {
         return NULL;
     }
+    memset(pin_media_source_images_base64_item_local_var, 0, sizeof(pin_media_source_images_base64_item_t));
+    pin_media_source_images_base64_item_local_var->_library_owned = 1;
     pin_media_source_images_base64_item_local_var->content_type = content_type;
     pin_media_source_images_base64_item_local_var->data = data;
     pin_media_source_images_base64_item_local_var->description = description;
     pin_media_source_images_base64_item_local_var->link = link;
     pin_media_source_images_base64_item_local_var->title = title;
-
-    pin_media_source_images_base64_item_local_var->_library_owned = 1;
     return pin_media_source_images_base64_item_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) pin_media_source_images_base64_item_t *pin_media_sou
     char *link,
     char *title
     ) {
-    return pin_media_source_images_base64_item_create_internal (
+    pin_media_source_images_base64_item_t *result = pin_media_source_images_base64_item_create_internal (
         content_type,
         data,
         description,
         link,
         title
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void pin_media_source_images_base64_item_free(pin_media_source_images_base64_item_t *pin_media_source_images_base64_item) {
@@ -134,6 +137,14 @@ pin_media_source_images_base64_item_t *pin_media_source_images_base64_item_parse
     // define the local variable for pin_media_source_images_base64_item->content_type
     pinterest_rest_api_content_type__e content_type_local_nonprim = 0;
 
+    char *data_local_str = NULL;
+
+    char *description_local_str = NULL;
+
+    char *link_local_str = NULL;
+
+    char *title_local_str = NULL;
+
     // pin_media_source_images_base64_item->content_type
     cJSON *content_type = cJSON_GetObjectItemCaseSensitive(pin_media_source_images_base64_itemJSON, "content_type");
     if (cJSON_IsNull(content_type)) {
@@ -198,18 +209,43 @@ pin_media_source_images_base64_item_t *pin_media_source_images_base64_item_parse
     }
 
 
+    if (data && !cJSON_IsNull(data)) data_local_str = strdup(data->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     pin_media_source_images_base64_item_local_var = pin_media_source_images_base64_item_create_internal (
         content_type_local_nonprim,
-        strdup(data->valuestring),
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL
+        data_local_str,
+        description_local_str,
+        link_local_str,
+        title_local_str
         );
+
+    if (!pin_media_source_images_base64_item_local_var) {
+        goto end;
+    }
 
     return pin_media_source_images_base64_item_local_var;
 end:
     if (content_type_local_nonprim) {
         content_type_local_nonprim = 0;
+    }
+    if (data_local_str) {
+        free(data_local_str);
+        data_local_str = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
     }
     return NULL;
 

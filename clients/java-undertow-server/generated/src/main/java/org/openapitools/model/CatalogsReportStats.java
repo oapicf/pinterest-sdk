@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -26,13 +26,17 @@ import org.openapitools.model.CatalogsReportFeedIngestionStats;
  */
 
 @ApiModel(description = "Diagnostics aggregated numbers")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsReportStats   {
   
+  private String catalogId;
+  private Integer code;
+  private String codeLabel;
+  private String message;
+  private Integer occurrences;
 
 
   public enum ReportTypeEnum {
-    FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
     DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
 
     private String value;
@@ -49,11 +53,6 @@ public class CatalogsReportStats   {
   }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
-  private Integer code;
-  private String codeLabel;
-  private String message;
-  private Integer occurrences;
 
 
   public enum SeverityEnum {
@@ -76,23 +75,6 @@ public class CatalogsReportStats   {
   private SeverityEnum severity;
   private Boolean ineligibleForAds;
   private Boolean ineligibleForOrganic;
-
-  /**
-   */
-  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   /**
    * ID of the catalog entity.
@@ -185,6 +167,23 @@ public class CatalogsReportStats   {
   }
 
   /**
+   */
+  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
    */
   public CatalogsReportStats severity(SeverityEnum severity) {
@@ -248,12 +247,12 @@ public class CatalogsReportStats   {
       return false;
     }
     CatalogsReportStats catalogsReportStats = (CatalogsReportStats) o;
-    return Objects.equals(reportType, catalogsReportStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportStats.catalogId) &&
         Objects.equals(code, catalogsReportStats.code) &&
         Objects.equals(codeLabel, catalogsReportStats.codeLabel) &&
         Objects.equals(message, catalogsReportStats.message) &&
         Objects.equals(occurrences, catalogsReportStats.occurrences) &&
+        Objects.equals(reportType, catalogsReportStats.reportType) &&
         Objects.equals(severity, catalogsReportStats.severity) &&
         Objects.equals(ineligibleForAds, catalogsReportStats.ineligibleForAds) &&
         Objects.equals(ineligibleForOrganic, catalogsReportStats.ineligibleForOrganic);
@@ -261,7 +260,7 @@ public class CatalogsReportStats   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity, ineligibleForAds, ineligibleForOrganic);
   }
 
   @Override
@@ -269,12 +268,12 @@ public class CatalogsReportStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
@@ -287,10 +286,7 @@ public class CatalogsReportStats   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

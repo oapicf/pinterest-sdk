@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "Integration metadata")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationMetadata   {
   @JsonProperty("additional_id_1")
   private String additionalId1;
@@ -87,7 +87,7 @@ public class IntegrationMetadata   {
    * Get connectedAdvertiserId
    * @return connectedAdvertiserId
    */
-  @ApiModelProperty(readOnly = true, value = "")
+  @ApiModelProperty(value = "")
   public String getConnectedAdvertiserId() {
     return connectedAdvertiserId;
   }
@@ -177,7 +177,7 @@ public class IntegrationMetadata   {
    * Get createdTimestamp
    * @return createdTimestamp
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(readOnly = true, value = "")
   public BigDecimal getCreatedTimestamp() {
     return createdTimestamp;
   }
@@ -192,10 +192,10 @@ public class IntegrationMetadata   {
   }
 
   /**
-   * Get externalBusinessId
+   * External business ID for the integration.
    * @return externalBusinessId
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "External business ID for the integration.")
   public String getExternalBusinessId() {
     return externalBusinessId;
   }
@@ -213,7 +213,7 @@ public class IntegrationMetadata   {
    * Get id
    * @return id
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(readOnly = true, value = "")
   public String getId() {
     return id;
   }
@@ -303,7 +303,7 @@ public class IntegrationMetadata   {
    * Get updatedTimestamp
    * @return updatedTimestamp
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(readOnly = true, value = "")
   public BigDecimal getUpdatedTimestamp() {
     return updatedTimestamp;
   }
@@ -371,10 +371,7 @@ public class IntegrationMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -5,7 +5,7 @@
 -export_type([openapi_catalogs_hotel_product_group_filter_keys/0]).
 
 -type openapi_catalogs_hotel_product_group_filter_keys() ::
-    #{ 'PRICE' := openapi_catalogs_product_group_pricing_currency_criteria:openapi_catalogs_product_group_pricing_currency_criteria(),
+    #{ 'PRICE' := openapi_price_filter_price:openapi_price_filter_price(),
        'HOTEL_ID' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
        'BRAND' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
        'CUSTOM_LABEL_0' := openapi_catalogs_product_group_filter_operator_type_criteria:openapi_catalogs_product_group_filter_operator_type_criteria(),

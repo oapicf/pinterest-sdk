@@ -8,9 +8,12 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   CatalogsCreativeAssetsAttributes = openapi_server.resourceTypes.CatalogsCreativeAssetsAttributes
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
-  ItemResponseOneOf = openapi_server.resourceTypes.ItemResponseOneOf
-  ItemResponseOneOf1 = openapi_server.resourceTypes.ItemResponseOneOf1
+  CatalogsCreativeAssetsItemErrorResponse = openapi_server.resourceTypes.CatalogsCreativeAssetsItemErrorResponse
+  CatalogsCreativeAssetsItemResponse = openapi_server.resourceTypes.CatalogsCreativeAssetsItemResponse
+  CatalogsHotelItemErrorResponse = openapi_server.resourceTypes.CatalogsHotelItemErrorResponse
+  CatalogsHotelItemResponse = openapi_server.resourceTypes.CatalogsHotelItemResponse
+  CatalogsRetailItemErrorResponse = openapi_server.resourceTypes.CatalogsRetailItemErrorResponse
+  CatalogsRetailItemResponse = openapi_server.resourceTypes.CatalogsRetailItemResponse
   ItemValidationEvent = openapi_server.resourceTypes.ItemValidationEvent
   Pin = openapi_server.resourceTypes.Pin
 }
@@ -21,20 +24,27 @@ resourceTypes {
     description = ItemResponse
     derivedFrom = Root
     properties {
-        catalog_type {
-          type = CatalogsType
-          description = ""
-          optional = true
-        }
         attributes {
           type = CatalogsCreativeAssetsAttributes
           description = ""
           optional = false
         }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
         item_id {
           type =  string
           description = "The catalog item id in the merchant namespace"
           optional = false
+        }
+        item_response_kind {
+          type =  string
+          description = "Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload."
+          enum = ["creative_assets_item_error"]
+          optional = true
         }
         pins {
           type = array

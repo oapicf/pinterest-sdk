@@ -20,7 +20,7 @@ class CatalogsRetailListProductsByCatalogBasedFilterRequest {
     required this.locale,
   });
 
-  /// Catalog id pertaining to the retail product group.
+  /// Catalog ID pertaining to the product group.
   String catalogId;
 
   /// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -73,10 +73,16 @@ class CatalogsRetailListProductsByCatalogBasedFilterRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_id'), 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[catalog_id]" is missing from JSON.');
+        assert(json[r'catalog_id'] != null, 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[catalog_id]" has a null value in JSON.');
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'country'), 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[country]" has a null value in JSON.');
+        assert(json.containsKey(r'filters'), 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[filters]" is missing from JSON.');
+        assert(json[r'filters'] != null, 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[filters]" has a null value in JSON.');
+        assert(json.containsKey(r'locale'), 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[locale]" is missing from JSON.');
+        assert(json[r'locale'] != null, 'Required key "CatalogsRetailListProductsByCatalogBasedFilterRequest[locale]" has a null value in JSON.');
         return true;
       }());
 
@@ -142,27 +148,28 @@ class CatalogsRetailListProductsByCatalogBasedFilterRequest {
 }
 
 /// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-class CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum._(this.value);
+enum CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const RETAIL = CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum._(r'RETAIL');
-
-  /// List of all possible values in this [enum][CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum].
-  static const values = <CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum>[
-    RETAIL,
-  ];
-
+  /// Returns the instance of [CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -184,9 +191,10 @@ class CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTr
 
   const CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum data) => data.value;
+  String encode(CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum.
+  /// Returns the instance of [CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -195,6 +203,9 @@ class CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTr
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'RETAIL': return CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum.RETAIL;
@@ -207,7 +218,7 @@ class CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTr
     return null;
   }
 
-  /// Singleton [CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnumTypeTransformer? _instance;
 }
 

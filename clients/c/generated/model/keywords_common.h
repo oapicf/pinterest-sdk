@@ -20,7 +20,7 @@ typedef struct keywords_common_t keywords_common_t;
 
 
 typedef struct keywords_common_t {
-    int bid; //numeric
+    int *bid; //numeric
     pinterest_rest_api_match_type_response__e match_type; //referenced enum
     char *value; // string
 
@@ -28,7 +28,7 @@ typedef struct keywords_common_t {
 } keywords_common_t;
 
 __attribute__((deprecated)) keywords_common_t *keywords_common_create(
-    int bid,
+    int *bid,
     pinterest_rest_api_match_type_response__e match_type,
     char *value
 );

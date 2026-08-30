@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "Pin.h"
+#include "PinRead.h"
 #include <list>
 
 namespace Tiny {
@@ -53,19 +53,19 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBookmark(std::string  bookmark);
-	/*! \brief Get Pins
+	void setBookmark(std::string bookmark);
+	/*! \brief Get 
 	 */
-	std::list<Pin> getItems();
+	std::list<PinRead> getItems();
 
-	/*! \brief Set Pins
+	/*! \brief Set 
 	 */
-	void setItems(std::list <Pin> items);
+	void setItems(std::list<PinRead> items);
 
 
     private:
     std::string bookmark{};
-    std::list<Pin> items;
+    std::list<PinRead> items;
 };
 }
 

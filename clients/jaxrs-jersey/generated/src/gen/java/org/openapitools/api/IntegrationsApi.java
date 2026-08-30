@@ -6,15 +6,15 @@ import org.openapitools.api.factories.IntegrationsApiServiceFactory;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.IntegrationLogsRequest;
+import org.openapitools.model.IntegrationLogsInvalidLogResponse;
+import org.openapitools.model.IntegrationLogsRequestCreate;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
 import org.openapitools.model.IntegrationMetadata;
+import org.openapitools.model.IntegrationMetadataCreate;
+import org.openapitools.model.IntegrationMetadataUpdate;
 import org.openapitools.model.IntegrationRecord;
-import org.openapitools.model.IntegrationRequest;
-import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
-import org.openapitools.model.IntegrationsLogsPost400Response;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.Map;
 import java.util.List;
@@ -37,7 +37,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the integrations API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-31T04:54:42.155723473Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationsApi  {
    private final IntegrationsApiService delegate;
 
@@ -66,14 +66,20 @@ public class IntegrationsApi  {
     @Path("/commerce/{external_business_id}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Delete commerce integration", notes = "Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Delete commerce integration", notes = "Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = IntegrationMetadata.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 204, message = "Commerce Integration deleted successfully", response = Void.class),
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 204, message = "Resource deleted successfully.", response = Void.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
     public Response integrationsCommerceDel(@ApiParam(value = "External business ID for the integration.", required = true) @PathParam("external_business_id") @NotNull  String externalBusinessId,@Context SecurityContext securityContext)
     throws NotFoundException {
@@ -89,10 +95,13 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationMetadata.class),
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
     public Response integrationsCommerceGet(@ApiParam(value = "External business ID for the integration.", required = true) @PathParam("external_business_id") @NotNull  String externalBusinessId,@Context SecurityContext securityContext)
     throws NotFoundException {
@@ -108,14 +117,17 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationMetadata.class),
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsCommercePatch(@ApiParam(value = "External business ID for the integration.", required = true) @PathParam("external_business_id") @NotNull  String externalBusinessId,@ApiParam(value = "Parameters to get create/update the Integration Metadata", required = true) @NotNull @Valid  IntegrationRequestPatch integrationRequestPatch,@Context SecurityContext securityContext)
+    public Response integrationsCommercePatch(@ApiParam(value = "External business ID for the integration.", required = true) @PathParam("external_business_id") @NotNull  String externalBusinessId,@ApiParam(value = "", required = true) @NotNull @Valid  IntegrationMetadataUpdate integrationMetadataUpdate,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.integrationsCommercePatch(externalBusinessId, integrationRequestPatch, securityContext);
+        return delegate.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate, securityContext);
     }
     @javax.ws.rs.POST
     @Path("/commerce")
@@ -127,14 +139,18 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationMetadata.class),
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = IntegrationMetadata.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata", required = true) @NotNull @Valid  IntegrationRequest integrationRequest,@Context SecurityContext securityContext)
+    public Response integrationsCommercePost(@ApiParam(value = "", required = true) @NotNull @Valid  IntegrationMetadataCreate integrationMetadataCreate,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.integrationsCommercePost(integrationRequest, securityContext);
+        return delegate.integrationsCommercePost(integrationMetadataCreate, securityContext);
     }
     @javax.ws.rs.GET
     @Path("/{id}")
@@ -146,11 +162,15 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationRecord.class),
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationRecord.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsGetById(@ApiParam(value = "Integration ID.", required = true) @PathParam("id") @NotNull  String id,@Context SecurityContext securityContext)
+    public Response integrationsGetById(@ApiParam(value = "Integration record ID.", required = true) @PathParam("id") @NotNull  @Pattern(regexp="^\\d+$") String id,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.integrationsGetById(id, securityContext);
     }
@@ -164,10 +184,15 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationsGetList200Response.class),
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationsGetList200Response.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsGetList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@Context SecurityContext securityContext)
+    public Response integrationsGetList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.integrationsGetList(bookmark, pageSize, securityContext);
     }
@@ -181,12 +206,16 @@ public class IntegrationsApi  {
         })
     }, tags={ "integrations", })
     @io.swagger.annotations.ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success.", response = IntegrationLogsSuccessResponse.class),
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad request.", response = IntegrationsLogsPost400Response.class),
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = IntegrationLogsSuccessResponse.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The server could not understand the request due to invalid syntax.", response = IntegrationLogsInvalidLogResponse.class),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsLogsPost(@ApiParam(value = "Ingest log information from external integration application.", required = true) @NotNull @Valid  IntegrationLogsRequest integrationLogsRequest,@Context SecurityContext securityContext)
+    public Response integrationsLogsPost(@ApiParam(value = "", required = true) @NotNull @Valid  IntegrationLogsRequestCreate integrationLogsRequestCreate,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.integrationsLogsPost(integrationLogsRequest, securityContext);
+        return delegate.integrationsLogsPost(integrationLogsRequestCreate, securityContext);
     }
 }

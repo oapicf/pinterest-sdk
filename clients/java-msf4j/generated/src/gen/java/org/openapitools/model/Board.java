@@ -15,7 +15,7 @@ import org.openapitools.model.BoardPrivacy;
 /**
  * Board
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Board   {
   @JsonProperty("board_pins_modified_at")
   private Date boardPinsModifiedAt;
@@ -51,7 +51,7 @@ public class Board   {
   private Integer pinCount;
 
   @JsonProperty("privacy")
-  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
+  private BoardPrivacy privacy;
 
    /**
    * Date and time of last board pins modified.
@@ -151,10 +151,10 @@ public class Board   {
   }
 
    /**
-   *      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+   *     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
    * @return name
   **/
-  @ApiModelProperty(example = "Summer recipes", required = true, value = "     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".")
+  @ApiModelProperty(example = "Summer recipes", required = true, value = "    Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".")
   public String getName() {
     return name;
   }
@@ -255,10 +255,7 @@ public class Board   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

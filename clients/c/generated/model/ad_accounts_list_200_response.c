@@ -13,10 +13,10 @@ static ad_accounts_list_200_response_t *ad_accounts_list_200_response_create_int
     if (!ad_accounts_list_200_response_local_var) {
         return NULL;
     }
+    memset(ad_accounts_list_200_response_local_var, 0, sizeof(ad_accounts_list_200_response_t));
+    ad_accounts_list_200_response_local_var->_library_owned = 1;
     ad_accounts_list_200_response_local_var->bookmark = bookmark;
     ad_accounts_list_200_response_local_var->items = items;
-
-    ad_accounts_list_200_response_local_var->_library_owned = 1;
     return ad_accounts_list_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) ad_accounts_list_200_response_t *ad_accounts_list_20
     char *bookmark,
     list_t *items
     ) {
-    return ad_accounts_list_200_response_create_internal (
+    ad_accounts_list_200_response_t *result = ad_accounts_list_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ad_accounts_list_200_response_free(ad_accounts_list_200_response_t *ad_accounts_list_200_response) {
@@ -96,6 +99,8 @@ ad_accounts_list_200_response_t *ad_accounts_list_200_response_parseFromJSON(cJS
 
     ad_accounts_list_200_response_t *ad_accounts_list_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for ad_accounts_list_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ ad_accounts_list_200_response_t *ad_accounts_list_200_response_parseFromJSON(cJS
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     ad_accounts_list_200_response_local_var = ad_accounts_list_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!ad_accounts_list_200_response_local_var) {
+        goto end;
+    }
+
     return ad_accounts_list_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

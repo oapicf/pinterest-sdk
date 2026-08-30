@@ -2,7 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsHotelReportParametersReport;
+import org.openapitools.model.CatalogsRetailReportParametersReport;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,7 +19,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Parameters for retail report")
 @JsonTypeName("CatalogsRetailReportParameters")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailReportParameters   {
   public enum CatalogTypeEnum {
 
@@ -69,7 +69,7 @@ public class CatalogsRetailReportParameters   {
 }
 
   private CatalogTypeEnum catalogType;
-  private CatalogsHotelReportParametersReport report;
+  private CatalogsRetailReportParametersReport report;
 
   public CatalogsRetailReportParameters() {
   }
@@ -77,7 +77,7 @@ public class CatalogsRetailReportParameters   {
   @JsonCreator
   public CatalogsRetailReportParameters(
     @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
-    @JsonProperty(required = true, value = "report") CatalogsHotelReportParametersReport report
+    @JsonProperty(required = true, value = "report") CatalogsRetailReportParametersReport report
   ) {
     this.catalogType = catalogType;
     this.report = report;
@@ -104,7 +104,7 @@ public class CatalogsRetailReportParameters   {
 
   /**
    **/
-  public CatalogsRetailReportParameters report(CatalogsHotelReportParametersReport report) {
+  public CatalogsRetailReportParameters report(CatalogsRetailReportParametersReport report) {
     this.report = report;
     return this;
   }
@@ -112,12 +112,12 @@ public class CatalogsRetailReportParameters   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "report")
-  @NotNull @Valid public CatalogsHotelReportParametersReport getReport() {
+  @NotNull @Valid public CatalogsRetailReportParametersReport getReport() {
     return report;
   }
 
   @JsonProperty(required = true, value = "report")
-  public void setReport(CatalogsHotelReportParametersReport report) {
+  public void setReport(CatalogsRetailReportParametersReport report) {
     this.report = report;
   }
 
@@ -156,12 +156,8 @@ public class CatalogsRetailReportParameters   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

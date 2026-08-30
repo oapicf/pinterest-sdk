@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "AI content disclosure for a single asset of a catalog item.",
+  "name": "CatalogsAiContentDisclosure",
+  "fields": [
+    {
+      "name": "disclosure",
+      "type": {
+        "type": "array",
+        "items": "model.CatalogsAiContentDisclosureLabel"
+      },
+      "doc": "Disclosure labels that apply to this asset."
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "doc": "URL of the asset. Must match one of image_link, additional_image_link, or video_link."
+    }
+  ]
+
+}

@@ -33,7 +33,7 @@ MyApp.add_route('DELETE', '/v5/businesses/{business_id}/invites', {
   "resourcePath" => "/BusinessAccessInvite",
   "summary" => "Cancel invites/requests",
   "nickname" => "cancel_invites_or_requests",
-  "responseClass" => "DeleteInvitesResultsResponseArray",
+  "responseClass" => "CancelInvitesResponse",
   "endpoint" => "/businesses/{business_id}/invites",
   "notes" => "Cancel membership/partnership invites and/or requests.",
   "parameters" => [
@@ -45,8 +45,8 @@ MyApp.add_route('DELETE', '/v5/businesses/{business_id}/invites', {
     },
     {
       "name" => "body",
-      "description" => "A list with invite ids",
-      "dataType" => "CancelInvitesBody",
+      "description" => "",
+      "dataType" => "CancelInvitesRequest",
       "paramType" => "body",
     }
     ]}) do
@@ -73,7 +73,7 @@ MyApp.add_route('POST', '/v5/businesses/{business_id}/invites/assets/access', {
     },
     {
       "name" => "body",
-      "description" => "A list of invites/requests together with the asset permissions to be assigned to the invite/request. ",
+      "description" => "",
       "dataType" => "CreateAssetInvitesRequest",
       "paramType" => "body",
     }
@@ -101,7 +101,7 @@ MyApp.add_route('POST', '/v5/businesses/{business_id}/invites', {
     },
     {
       "name" => "body",
-      "description" => "An object with the properties: invite_type, partners, members, business_role",
+      "description" => "",
       "dataType" => "CreateMembershipOrPartnershipInvitesBody",
       "paramType" => "body",
     }
@@ -132,7 +132,7 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/invites', {
     {
       "name" => "invite_status",
       "description" => "A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.",
-      "dataType" => "Array<String>",
+      "dataType" => "Array<InviteFilterStatus>",
       "collectionFormat" => "multi",
       "paramType" => "query",
     },
@@ -152,7 +152,7 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/invites', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",

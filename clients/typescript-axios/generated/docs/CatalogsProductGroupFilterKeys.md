@@ -5,40 +5,41 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MIN_PRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | [default to undefined]
-**MAX_PRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | [default to undefined]
-**CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](.md) |  | [default to undefined]
-**ITEM_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**ITEM_GROUP_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  | [default to undefined]
-**MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | [default to undefined]
-**PRODUCT_TYPE_4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**PRODUCT_TYPE_3** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**PRODUCT_TYPE_2** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**PRODUCT_TYPE_1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**PRODUCT_TYPE_0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_6** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_5** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_3** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_2** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**GOOGLE_PRODUCT_CATEGORY_0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
-**PRODUCT_GROUP** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_NUMBER_0** | [**CatalogsProductGroupUint32Criteria**](.md) |  | [default to undefined]
-**CUSTOM_NUMBER_1** | [**CatalogsProductGroupUint32Criteria**](.md) |  | [default to undefined]
-**CUSTOM_NUMBER_2** | [**CatalogsProductGroupUint32Criteria**](.md) |  | [default to undefined]
-**CUSTOM_NUMBER_3** | [**CatalogsProductGroupUint32Criteria**](.md) |  | [default to undefined]
-**CUSTOM_NUMBER_4** | [**CatalogsProductGroupUint32Criteria**](.md) |  | [default to undefined]
-**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**MIN_PRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | [default to undefined]
+**MAX_PRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | [default to undefined]
+**CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](CatalogsProductGroupCurrencyCriteria.md) |  | [default to undefined]
+**ITEM_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**ITEM_GROUP_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](CatalogsProductGroupMultipleGenderCriteria.md) |  | [default to undefined]
+**MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  | [default to undefined]
+**PRODUCT_TYPE_4** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**PRODUCT_TYPE_3** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**PRODUCT_TYPE_2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**PRODUCT_TYPE_1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**PRODUCT_TYPE_0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_6** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_5** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_4** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_3** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
+**CUSTOM_NUMBER_0** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | [default to undefined]
+**CUSTOM_NUMBER_1** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | [default to undefined]
+**CUSTOM_NUMBER_2** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | [default to undefined]
+**CUSTOM_NUMBER_3** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | [default to undefined]
+**CUSTOM_NUMBER_4** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | [default to undefined]
+**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**PINTEREST_PRODUCT_CATEGORIES** | [**CatalogsProductGroupMultiplePinterestProductCategoryCriteria**](CatalogsProductGroupMultiplePinterestProductCategoryCriteria.md) |  | [default to undefined]
+**PRODUCT_GROUP** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
 
 ## Example
 
@@ -73,13 +74,14 @@ const instance: CatalogsProductGroupFilterKeys = {
     GOOGLE_PRODUCT_CATEGORY_2,
     GOOGLE_PRODUCT_CATEGORY_1,
     GOOGLE_PRODUCT_CATEGORY_0,
-    PRODUCT_GROUP,
     CUSTOM_NUMBER_0,
     CUSTOM_NUMBER_1,
     CUSTOM_NUMBER_2,
     CUSTOM_NUMBER_3,
     CUSTOM_NUMBER_4,
     TITLE_KEYWORDS,
+    PINTEREST_PRODUCT_CATEGORIES,
+    PRODUCT_GROUP,
 };
 ```
 

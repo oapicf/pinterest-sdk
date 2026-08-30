@@ -61,9 +61,32 @@ CustomNumber4Filter <- R6::R6Class(
       CustomNumber4FilterObject <- list()
       if (!is.null(self$`CUSTOM_NUMBER_4`)) {
         CustomNumber4FilterObject[["CUSTOM_NUMBER_4"]] <-
-          self$`CUSTOM_NUMBER_4`$toSimpleType()
+          self$extractSimpleType(self$`CUSTOM_NUMBER_4`)
       }
       return(CustomNumber4FilterObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

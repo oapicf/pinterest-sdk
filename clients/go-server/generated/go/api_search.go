@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -55,17 +55,17 @@ func (c *SearchAPIController) Routes() Routes {
 			"/v5/search/boards",
 			c.SearchUserBoardsGet,
 		},
-		"SearchUserPinsList": Route{
-			"SearchUserPinsList",
-			strings.ToUpper("Get"),
-			"/v5/search/pins",
-			c.SearchUserPinsList,
-		},
 		"SearchPartnerPins": Route{
 			"SearchPartnerPins",
 			strings.ToUpper("Get"),
 			"/v5/search/partner/pins",
 			c.SearchPartnerPins,
+		},
+		"SearchUserPinsList": Route{
+			"SearchUserPinsList",
+			strings.ToUpper("Get"),
+			"/v5/search/pins",
+			c.SearchUserPinsList,
 		},
 	}
 }
@@ -80,16 +80,16 @@ func (c *SearchAPIController) OrderedRoutes() []Route {
 			c.SearchUserBoardsGet,
 		},
 		Route{
-			"SearchUserPinsList",
-			strings.ToUpper("Get"),
-			"/v5/search/pins",
-			c.SearchUserPinsList,
-		},
-		Route{
 			"SearchPartnerPins",
 			strings.ToUpper("Get"),
 			"/v5/search/partner/pins",
 			c.SearchPartnerPins,
+		},
+		Route{
+			"SearchUserPinsList",
+			strings.ToUpper("Get"),
+			"/v5/search/pins",
+			c.SearchUserPinsList,
 		},
 	}
 }
@@ -108,6 +108,13 @@ func (c *SearchAPIController) SearchUserBoardsGet(w http.ResponseWriter, r *http
 		param := query.Get("ad_account_id")
 
 		adAccountIdParam = param
+	} else {
+	}
+	var queryParam string
+	if query.Has("query") {
+		param := query.Get("query")
+
+		queryParam = param
 	} else {
 	}
 	var bookmarkParam string
@@ -135,54 +142,7 @@ func (c *SearchAPIController) SearchUserBoardsGet(w http.ResponseWriter, r *http
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var queryParam string
-	if query.Has("query") {
-		param := query.Get("query")
-
-		queryParam = param
-	} else {
-	}
-	result, err := c.service.SearchUserBoardsGet(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, queryParam)
-	// If an error occurred, encode the error with the status code
-	if err != nil {
-		c.errorHandler(w, r, err, &result)
-		return
-	}
-	// If no error, encode the body and the result code
-	_ = EncodeJSONResponse(result.Body, &result.Code, w)
-}
-
-// SearchUserPinsList - Search user's Pins
-func (c *SearchAPIController) SearchUserPinsList(w http.ResponseWriter, r *http.Request) {
-	query, err := parseQuery(r.URL.RawQuery)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	var queryParam string
-	if query.Has("query") {
-		param := query.Get("query")
-
-		queryParam = param
-	} else {
-		c.errorHandler(w, r, &RequiredError{Field: "query"}, nil)
-		return
-	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.SearchUserPinsList(r.Context(), queryParam, adAccountIdParam, bookmarkParam)
+	result, err := c.service.SearchUserBoardsGet(r.Context(), adAccountIdParam, queryParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -250,6 +210,46 @@ func (c *SearchAPIController) SearchPartnerPins(w http.ResponseWriter, r *http.R
 		limitParam = param
 	}
 	result, err := c.service.SearchPartnerPins(r.Context(), termParam, countryCodeParam, bookmarkParam, localeParam, limitParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// SearchUserPinsList - Search user's Pins
+func (c *SearchAPIController) SearchUserPinsList(w http.ResponseWriter, r *http.Request) {
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	var queryParam string
+	if query.Has("query") {
+		param := query.Get("query")
+
+		queryParam = param
+	} else {
+		c.errorHandler(w, r, &RequiredError{Field: "query"}, nil)
+		return
+	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
+	result, err := c.service.SearchUserPinsList(r.Context(), queryParam, adAccountIdParam, bookmarkParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

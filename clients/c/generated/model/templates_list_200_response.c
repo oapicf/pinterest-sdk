@@ -13,10 +13,10 @@ static templates_list_200_response_t *templates_list_200_response_create_interna
     if (!templates_list_200_response_local_var) {
         return NULL;
     }
+    memset(templates_list_200_response_local_var, 0, sizeof(templates_list_200_response_t));
+    templates_list_200_response_local_var->_library_owned = 1;
     templates_list_200_response_local_var->bookmark = bookmark;
     templates_list_200_response_local_var->items = items;
-
-    templates_list_200_response_local_var->_library_owned = 1;
     return templates_list_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) templates_list_200_response_t *templates_list_200_re
     char *bookmark,
     list_t *items
     ) {
-    return templates_list_200_response_create_internal (
+    templates_list_200_response_t *result = templates_list_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void templates_list_200_response_free(templates_list_200_response_t *templates_list_200_response) {
@@ -45,7 +48,7 @@ void templates_list_200_response_free(templates_list_200_response_t *templates_l
     }
     if (templates_list_200_response->items) {
         list_ForEach(listEntry, templates_list_200_response->items) {
-            template_response_free(listEntry->data);
+            account_template_free(listEntry->data);
         }
         list_freeList(templates_list_200_response->items);
         templates_list_200_response->items = NULL;
@@ -76,7 +79,7 @@ cJSON *templates_list_200_response_convertToJSON(templates_list_200_response_t *
     listEntry_t *itemsListEntry;
     if (templates_list_200_response->items) {
     list_ForEach(itemsListEntry, templates_list_200_response->items) {
-    cJSON *itemLocal = template_response_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = account_template_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -95,6 +98,8 @@ fail:
 templates_list_200_response_t *templates_list_200_response_parseFromJSON(cJSON *templates_list_200_responseJSON){
 
     templates_list_200_response_t *templates_list_200_response_local_var = NULL;
+
+    char *bookmark_local_str = NULL;
 
     // define the local list for templates_list_200_response->items
     list_t *itemsList = NULL;
@@ -133,23 +138,33 @@ templates_list_200_response_t *templates_list_200_response_parseFromJSON(cJSON *
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        template_response_t *itemsItem = template_response_parseFromJSON(items_local_nonprimitive);
+        account_template_t *itemsItem = account_template_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     templates_list_200_response_local_var = templates_list_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!templates_list_200_response_local_var) {
+        goto end;
+    }
+
     return templates_list_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            template_response_free(listEntry->data);
+            account_template_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

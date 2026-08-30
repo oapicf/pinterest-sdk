@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "AiDisclosures.h"
 #include "PinMediaSource.h"
 #include "Object.h"
 
@@ -46,6 +47,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get AI disclosure declarations the creator has made about this Pin.
+	 */
+	AiDisclosures getAiDisclosures();
+
+	/*! \brief Set AI disclosure declarations the creator has made about this Pin.
+	 */
+	void setAiDisclosures(AiDisclosures  ai_disclosures);
 	/*! \brief Get 
 	 */
 	std::string getAltText();
@@ -118,6 +126,7 @@ public:
 	void setTitle(std::string  title);
 
 private:
+	AiDisclosures ai_disclosures;
 	std::string alt_text;
 	std::string board_id;
 	std::string board_section_id;

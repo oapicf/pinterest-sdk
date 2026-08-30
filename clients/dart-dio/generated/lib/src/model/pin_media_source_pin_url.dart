@@ -86,8 +86,9 @@ class _$PinMediaSourcePinURLSerializer implements PrimitiveSerializer<PinMediaSo
         case r'is_affiliate_link':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isAffiliateLink = valueDes;
           break;
         case r'source_type':

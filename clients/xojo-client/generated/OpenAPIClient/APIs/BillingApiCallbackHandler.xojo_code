@@ -1,7 +1,7 @@
 #tag Interface
 Protected Interface BillingApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AdsCreditRedeemCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdsCreditRedeemResponse)
+		Sub AdsCreditRedeemCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdsCreditRedeem)
 		  
 		End Sub
 	#tag EndMethod
@@ -31,19 +31,19 @@ Protected Interface BillingApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SsioAccountsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SSIOAccountResponse)
+		Sub SsioAccountsGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SSIOAccount)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SsioInsertionOrderCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SSIOCreateInsertionOrderResponse)
+		Sub SsioInsertionOrderCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SSIOInsertionOrder)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SsioInsertionOrderEditCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SSIOEditInsertionOrderResponse)
+		Sub SsioInsertionOrderEditCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SSIOInsertionOrder)
 		  
 		End Sub
 	#tag EndMethod

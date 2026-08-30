@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::AvailabilityFilter;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**availability** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**availability** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

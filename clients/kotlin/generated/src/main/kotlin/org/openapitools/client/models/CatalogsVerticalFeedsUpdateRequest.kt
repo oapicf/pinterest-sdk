@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,6 @@ import org.openapitools.client.models.CatalogsFormat
 import org.openapitools.client.models.CatalogsHotelFeedsUpdateRequest
 import org.openapitools.client.models.CatalogsRetailFeedsUpdateRequest
 import org.openapitools.client.models.CatalogsStatus
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.NullableCurrency
 import org.openapitools.client.models.ProductAvailabilityType
 
@@ -47,7 +54,7 @@ import com.squareup.moshi.JsonClass
 interface CatalogsVerticalFeedsUpdateRequest {
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType
+    val catalogType: CatalogsVerticalFeedsUpdateRequest.CatalogType
     @Json(name = "credentials")
     val credentials: CatalogsFeedCredentials?
     @Json(name = "default_availability")
@@ -66,6 +73,15 @@ interface CatalogsVerticalFeedsUpdateRequest {
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
     @Json(name = "status")
     val status: CatalogsStatus?
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
 
 }
 

@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.AdvancedAuctionItemsGetRecord;
+import apimodels.AdvancedAuctionKey;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 /**
  * Request object used to get bid options values for a batch of retail catalog items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdvancedAuctionItemsGetRequest   {
   @JsonProperty("catalog_id")
@@ -27,7 +27,7 @@ public class AdvancedAuctionItemsGetRequest   {
 @Size(min=1,max=10000)
 @Valid
 
-  private List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionKey> items = new ArrayList<>();
 
   public AdvancedAuctionItemsGetRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -46,12 +46,12 @@ public class AdvancedAuctionItemsGetRequest   {
     this.catalogId = catalogId;
   }
 
-  public AdvancedAuctionItemsGetRequest items(List<AdvancedAuctionItemsGetRecord> items) {
+  public AdvancedAuctionItemsGetRequest items(List<@Valid AdvancedAuctionKey> items) {
     this.items = items;
     return this;
   }
 
-  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionItemsGetRecord itemsItem) {
+  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionKey itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -63,11 +63,11 @@ public class AdvancedAuctionItemsGetRequest   {
    * A list of retail catalog items to fetch bid options for
    * @return items
   **/
-  public List<AdvancedAuctionItemsGetRecord> getItems() {
+  public List<@Valid AdvancedAuctionKey> getItems() {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionItemsGetRecord> items) {
+  public void setItems(List<@Valid AdvancedAuctionKey> items) {
     this.items = items;
   }
 
@@ -107,10 +107,7 @@ public class AdvancedAuctionItemsGetRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

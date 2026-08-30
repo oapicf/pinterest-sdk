@@ -2,11 +2,16 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.BatchOperationStatus
-import org.openapitools.model.CatalogsType
 import org.openapitools.model.ItemProcessingRecord
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -29,27 +34,57 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsRetailItemsBatch(
 
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("catalog_type")
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsRetailItemsBatch.CatalogType = kotlin.String.RETAIL,
 
-    @Schema(example = "null", required = true, readOnly = true, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.")
+    @Schema(example = "2024-01-01T20:10:40Z", required = true, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.")
+    @param:JsonProperty("created_time")
     @get:JsonProperty("created_time", required = true) val createdTime: java.time.OffsetDateTime?,
 
-    @Schema(example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", description = "Id of the catalogs items batch")
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "595953100599279259", description = "Id of the catalogs items batch")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("batch_id")
     @get:JsonProperty("batch_id") val batchId: kotlin.String? = null,
 
-    @Schema(example = "null", readOnly = true, description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
+    @Schema(example = "2024-01-01T20:20Z", description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
+    @param:JsonProperty("completed_time")
     @get:JsonProperty("completed_time") val completedTime: java.time.OffsetDateTime? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Array with the catalogs items processing records part of the catalogs items batch")
+    @Schema(description = "Array with the catalogs items processing records part of the catalogs items batch")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("items")
     @get:JsonProperty("items") val items: kotlin.collections.List<ItemProcessingRecord>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("status")
     @get:JsonProperty("status") val status: BatchOperationStatus? = null
-) {
+) : CatalogsItemsBatch {
+
+    /**
+    * 
+    * Values: RETAIL
+    */
+    enum class CatalogType(@get:JsonValue val value: kotlin.String) {
+
+        RETAIL("RETAIL");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CatalogType {
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
+            }
+        }
+    }
 
 }
 

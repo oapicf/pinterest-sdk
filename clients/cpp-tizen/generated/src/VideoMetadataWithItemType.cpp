@@ -28,6 +28,7 @@ VideoMetadataWithItemType::__init()
 	//height = int(0);
 	//item_type = std::string();
 	//video_url = std::string();
+	//video_url_hls = std::string();
 	//width = int(0);
 }
 
@@ -58,6 +59,11 @@ VideoMetadataWithItemType::__cleanup()
 	//
 	//delete video_url;
 	//video_url = NULL;
+	//}
+	//if(video_url_hls != NULL) {
+	//
+	//delete video_url_hls;
+	//video_url_hls = NULL;
 	//}
 	//if(width != NULL) {
 	//
@@ -126,6 +132,17 @@ VideoMetadataWithItemType::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&video_url, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *video_url_hlsKey = "video_url_hls";
+	node = json_object_get_member(pJsonObject, video_url_hlsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&video_url_hls, node, "std::string", "");
 		} else {
 			
 		}
@@ -203,6 +220,15 @@ VideoMetadataWithItemType::toJson()
 	}
 	const gchar *video_urlKey = "video_url";
 	json_object_set_member(pJsonObject, video_urlKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getVideoUrlHls();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *video_url_hlsKey = "video_url_hls";
+	json_object_set_member(pJsonObject, video_url_hlsKey, node);
 	if (isprimitive("int")) {
 		int obj = getWidth();
 		node = converttoJson(&obj, "int", "");
@@ -278,6 +304,18 @@ void
 VideoMetadataWithItemType::setVideoUrl(std::string  video_url)
 {
 	this->video_url = video_url;
+}
+
+std::string
+VideoMetadataWithItemType::getVideoUrlHls()
+{
+	return video_url_hls;
+}
+
+void
+VideoMetadataWithItemType::setVideoUrlHls(std::string  video_url_hls)
+{
+	this->video_url_hls = video_url_hls;
 }
 
 int

@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **String** |  |  [optional]
-**items** | [**List&lt;BillingInvoiceResponse&gt;**](BillingInvoiceResponse.md) |  | 
+**items** | [**List&lt;BillingInvoice&gt;**](BillingInvoice.md) |  | 
 
 
 

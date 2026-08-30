@@ -14,6 +14,7 @@ part 'trending_topic.g.dart';
 ///
 /// Properties:
 /// * [description] - Description of the trending topic
+/// * [id] - Unique identifier for the trending topic
 /// * [percentGrowthMom] - Month-over-month growth percentage
 /// * [pins] - Array of pin images related to this trend (up to 6)
 /// * [relatedInterests] - List of related interest categories
@@ -26,9 +27,13 @@ abstract class TrendingTopic implements Built<TrendingTopic, TrendingTopicBuilde
   @BuiltValueField(wireName: r'description')
   String get description;
 
+  /// Unique identifier for the trending topic
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
   /// Month-over-month growth percentage
   @BuiltValueField(wireName: r'percent_growth_mom')
-  int get percentGrowthMom;
+  int? get percentGrowthMom;
 
   /// Array of pin images related to this trend (up to 6)
   @BuiltValueField(wireName: r'pins')
@@ -78,11 +83,18 @@ class _$TrendingTopicSerializer implements PrimitiveSerializer<TrendingTopic> {
       object.description,
       specifiedType: const FullType(String),
     );
-    yield r'percent_growth_mom';
+    yield r'id';
     yield serializers.serialize(
-      object.percentGrowthMom,
-      specifiedType: const FullType(int),
+      object.id,
+      specifiedType: const FullType(String),
     );
+    if (object.percentGrowthMom != null) {
+      yield r'percent_growth_mom';
+      yield serializers.serialize(
+        object.percentGrowthMom,
+        specifiedType: const FullType(int),
+      );
+    }
     yield r'pins';
     yield serializers.serialize(
       object.pins,
@@ -138,11 +150,19 @@ class _$TrendingTopicSerializer implements PrimitiveSerializer<TrendingTopic> {
           ) as String;
           result.description = valueDes;
           break;
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.id = valueDes;
+          break;
         case r'percent_growth_mom':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.percentGrowthMom = valueDes;
           break;
         case r'pins':

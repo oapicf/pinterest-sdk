@@ -18,7 +18,7 @@
 #' @field ios_deep_link IOS deep link to the creative assets page. character [optional]
 #' @field link Link to the creative assets page. character [optional]
 #' @field title The name of the creative assets. character [optional]
-#' @field visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. character [optional]
+#' @field visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -52,7 +52,7 @@ CatalogsUpdatableCreativeAssetsAttributes <- R6::R6Class(
     #' @param ios_deep_link IOS deep link to the creative assets page.
     #' @param link Link to the creative assets page.
     #' @param title The name of the creative assets.
-    #' @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+    #' @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
     #' @param ... Other optional arguments.
     initialize = function(`android_deep_link` = NULL, `custom_label_0` = NULL, `custom_label_1` = NULL, `custom_label_2` = NULL, `custom_label_3` = NULL, `custom_label_4` = NULL, `description` = NULL, `google_product_category` = NULL, `ios_deep_link` = NULL, `link` = NULL, `title` = NULL, `visibility` = NULL, ...) {
       if (!is.null(`android_deep_link`)) {

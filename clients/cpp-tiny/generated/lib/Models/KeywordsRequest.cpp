@@ -102,7 +102,7 @@ KeywordsRequest::getKeywords()
 }
 
 void
-KeywordsRequest::setKeywords(std::list <KeywordsCommon> keywords)
+KeywordsRequest::setKeywords(std::list<KeywordsCommon> keywords)
 {
 	this->keywords = keywords;
 }
@@ -114,7 +114,7 @@ KeywordsRequest::getParentId()
 }
 
 void
-KeywordsRequest::setParentId(std::string  parent_id)
+KeywordsRequest::setParentId(std::string parent_id)
 {
 	this->parent_id = parent_id;
 }

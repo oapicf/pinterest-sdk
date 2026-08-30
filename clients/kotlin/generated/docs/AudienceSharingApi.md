@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="adAccountsAudiencesSharedAccountsList"></a>
 # **adAccountsAudiencesSharedAccountsList**
-> AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, bookmark, pageSize)
 
 List accounts with access to an audience owned by an ad account
 
@@ -31,10 +31,10 @@ val apiInstance = AudienceSharingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val audienceId : kotlin.String = audienceId_example // kotlin.String | Unique identifier of the audience to use to filter the results.
 val accountType : AudienceAccountType =  // AudienceAccountType | Filter accounts by account type.
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    val result : AdAccountsAudiencesSharedAccountsList200Response = apiInstance.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark)
+    val result : AdAccountsAudiencesSharedAccountsList200Response = apiInstance.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, bookmark, pageSize)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudienceSharingApi#adAccountsAudiencesSharedAccountsList")
@@ -48,11 +48,11 @@ try {
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **audienceId** | **kotlin.String**| Unique identifier of the audience to use to filter the results. | |
-| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to AudienceAccountType.AD_ACCOUNT] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -61,10 +61,22 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -73,7 +85,7 @@ Configure client_credentials:
 
 <a id="businessAccountAudiencesSharedAccountsList"></a>
 # **businessAccountAudiencesSharedAccountsList**
-> AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize)
 
 List accounts with access to an audience owned by a business
 
@@ -86,13 +98,13 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 //import org.openapitools.client.models.*
 
 val apiInstance = AudienceSharingApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
 val audienceId : kotlin.String = audienceId_example // kotlin.String | Unique identifier of the audience to use to filter the results.
 val accountType : AudienceAccountType =  // AudienceAccountType | Filter accounts by account type.
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    val result : AdAccountsAudiencesSharedAccountsList200Response = apiInstance.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark)
+    val result : AdAccountsAudiencesSharedAccountsList200Response = apiInstance.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudienceSharingApi#businessAccountAudiencesSharedAccountsList")
@@ -106,11 +118,11 @@ try {
 ### Parameters
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **audienceId** | **kotlin.String**| Unique identifier of the audience to use to filter the results. | |
-| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to AudienceAccountType.AD_ACCOUNT] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -119,8 +131,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -129,7 +147,7 @@ Configure pinterest_oauth2:
 
 <a id="sharedAudiencesForBusinessList"></a>
 # **sharedAudiencesForBusinessList**
-> AudiencesList200Response sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize)
+> SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize)
 
 List received audiences for a business
 
@@ -142,12 +160,12 @@ Get a list of received audiences for the given business.
 //import org.openapitools.client.models.*
 
 val apiInstance = AudienceSharingApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+val order : Order =  // Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    val result : AudiencesList200Response = apiInstance.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize)
+    val result : SharedAudiencesForBusinessList200Response = apiInstance.sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudienceSharingApi#sharedAudiencesForBusinessList")
@@ -160,21 +178,27 @@ try {
 
 ### Parameters
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
+| **order** | [**Order**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| **order** | **kotlin.String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**AudiencesList200Response**](AudiencesList200Response.md)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -183,11 +207,11 @@ Configure pinterest_oauth2:
 
 <a id="updateAdAccountToAdAccountSharedAudience"></a>
 # **updateAdAccountToAdAccountSharedAudience**
-> SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
+> AdAccountToAdAccountSharedAudience updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```kotlin
@@ -197,9 +221,9 @@ From an ad account, share a specific audience with another ad account, or revoke
 
 val apiInstance = AudienceSharingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val sharedAudience : SharedAudience =  // SharedAudience | 
+val adAccountToAdAccountSharedAudienceUpdateWithRequiredBody : AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody =  // AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
 try {
-    val result : SharedAudienceResponse = apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
+    val result : AdAccountToAdAccountSharedAudience = apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudienceSharingApi#updateAdAccountToAdAccountSharedAudience")
@@ -214,17 +238,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  | |
+| **adAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -233,11 +263,11 @@ Configure pinterest_oauth2:
 
 <a id="updateAdAccountToBusinessSharedAudience"></a>
 # **updateAdAccountToBusinessSharedAudience**
-> BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
+> AdAccountToBusinessSharedAudience updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```kotlin
@@ -247,9 +277,9 @@ From an ad account, share a specific audience with a business account, or revoke
 
 val apiInstance = AudienceSharingApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val businessSharedAudience : BusinessSharedAudience =  // BusinessSharedAudience | 
+val adAccountToBusinessSharedAudienceUpdateWithRequiredBody : AdAccountToBusinessSharedAudienceUpdateWithRequiredBody =  // AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
 try {
-    val result : BusinessSharedAudienceResponse = apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
+    val result : AdAccountToBusinessSharedAudience = apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudienceSharingApi#updateAdAccountToBusinessSharedAudience")
@@ -264,17 +294,23 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | |
+| **adAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -283,11 +319,11 @@ Configure pinterest_oauth2:
 
 <a id="updateBusinessToAdAccountSharedAudience"></a>
 # **updateBusinessToAdAccountSharedAudience**
-> SharedAudienceResponse updateBusinessToAdAccountSharedAudience(businessId, sharedAudience)
+> BusinessToAdAccountSharedAudience updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```kotlin
@@ -296,10 +332,10 @@ From a business, share a specific audience with other ad account(s), or revoke a
 //import org.openapitools.client.models.*
 
 val apiInstance = AudienceSharingApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-val sharedAudience : SharedAudience =  // SharedAudience | 
+val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+val businessToAdAccountSharedAudienceUpdateWithRequiredBody : BusinessToAdAccountSharedAudienceUpdateWithRequiredBody =  // BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
 try {
-    val result : SharedAudienceResponse = apiInstance.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience)
+    val result : BusinessToAdAccountSharedAudience = apiInstance.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudienceSharingApi#updateBusinessToAdAccountSharedAudience")
@@ -314,17 +350,23 @@ try {
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  | |
+| **businessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -333,11 +375,11 @@ Configure pinterest_oauth2:
 
 <a id="updateBusinessToBusinessSharedAudience"></a>
 # **updateBusinessToBusinessSharedAudience**
-> BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience)
+> BusinessToBusinessSharedAudience updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```kotlin
@@ -346,10 +388,10 @@ From a business, share a specific audience with another business account, or rev
 //import org.openapitools.client.models.*
 
 val apiInstance = AudienceSharingApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-val businessSharedAudience : BusinessSharedAudience =  // BusinessSharedAudience | 
+val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+val businessToBusinessSharedAudienceUpdateWithRequiredBody : BusinessToBusinessSharedAudienceUpdateWithRequiredBody =  // BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
 try {
-    val result : BusinessSharedAudienceResponse = apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience)
+    val result : BusinessToBusinessSharedAudience = apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudienceSharingApi#updateBusinessToBusinessSharedAudience")
@@ -364,17 +406,23 @@ try {
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | |
+| **businessToBusinessSharedAudienceUpdateWithRequiredBody** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

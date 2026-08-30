@@ -3,9 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogUnderscoretype** | [**CatalogsType**](CatalogsType.md) |  | [default to null]
 **attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] [default to null]
+**catalogUnderscoretype** | **string** |  | [default to null]
 **itemUnderscoreid** | **string** |  | [optional] [default to null]
+**itemUnderscoreresponseUnderscorekind** | **string** |  | [default to null]
 **pins** | [**array[Pin]**](Pin.md) |  | [optional] [default to null]
 **hotelUnderscoreid** | **string** |  | [optional] [default to null]
 **creativeUnderscoreassetsUnderscoreid** | **string** |  | [optional] [default to null]

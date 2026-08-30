@@ -2,43 +2,53 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * System error details included in the log sent by the client.
  */
 
 @Schema(name = "IntegrationLogClientError", description = "System error details included in the log sent by the client.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogClientError {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String cause;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer columnNumber;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String fileName;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer lineNumber;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String message;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String messageDetail;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer number;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String stackTrace;
 
   public IntegrationLogClientError cause(@Nullable String cause) {
@@ -57,6 +67,7 @@ public class IntegrationLogClientError {
     return cause;
   }
 
+  @JsonProperty("cause")
   public void setCause(@Nullable String cause) {
     this.cause = cause;
   }
@@ -77,6 +88,7 @@ public class IntegrationLogClientError {
     return columnNumber;
   }
 
+  @JsonProperty("column_number")
   public void setColumnNumber(@Nullable Integer columnNumber) {
     this.columnNumber = columnNumber;
   }
@@ -97,6 +109,7 @@ public class IntegrationLogClientError {
     return fileName;
   }
 
+  @JsonProperty("file_name")
   public void setFileName(@Nullable String fileName) {
     this.fileName = fileName;
   }
@@ -117,6 +130,7 @@ public class IntegrationLogClientError {
     return lineNumber;
   }
 
+  @JsonProperty("line_number")
   public void setLineNumber(@Nullable Integer lineNumber) {
     this.lineNumber = lineNumber;
   }
@@ -137,6 +151,7 @@ public class IntegrationLogClientError {
     return message;
   }
 
+  @JsonProperty("message")
   public void setMessage(@Nullable String message) {
     this.message = message;
   }
@@ -157,6 +172,7 @@ public class IntegrationLogClientError {
     return messageDetail;
   }
 
+  @JsonProperty("message_detail")
   public void setMessageDetail(@Nullable String messageDetail) {
     this.messageDetail = messageDetail;
   }
@@ -177,6 +193,7 @@ public class IntegrationLogClientError {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
@@ -197,6 +214,7 @@ public class IntegrationLogClientError {
     return number;
   }
 
+  @JsonProperty("number")
   public void setNumber(@Nullable Integer number) {
     this.number = number;
   }
@@ -217,6 +235,7 @@ public class IntegrationLogClientError {
     return stackTrace;
   }
 
+  @JsonProperty("stack_trace")
   public void setStackTrace(@Nullable String stackTrace) {
     this.stackTrace = stackTrace;
   }
@@ -267,11 +286,8 @@ public class IntegrationLogClientError {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

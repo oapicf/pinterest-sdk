@@ -6,28 +6,37 @@
 
 
 static customer_list_upload_create_request_t *customer_list_upload_create_request_create_internal(
-    user_list_operation_type_t *operation,
-    int total_parts
+    pinterest_rest_api_user_list_operation_type__e operation,
+    int *total_parts
     ) {
     customer_list_upload_create_request_t *customer_list_upload_create_request_local_var = malloc(sizeof(customer_list_upload_create_request_t));
     if (!customer_list_upload_create_request_local_var) {
         return NULL;
     }
+    memset(customer_list_upload_create_request_local_var, 0, sizeof(customer_list_upload_create_request_t));
+    customer_list_upload_create_request_local_var->_library_owned = 1;
     customer_list_upload_create_request_local_var->operation = operation;
     customer_list_upload_create_request_local_var->total_parts = total_parts;
-
-    customer_list_upload_create_request_local_var->_library_owned = 1;
     return customer_list_upload_create_request_local_var;
 }
 
 __attribute__((deprecated)) customer_list_upload_create_request_t *customer_list_upload_create_request_create(
-    user_list_operation_type_t *operation,
-    int total_parts
+    pinterest_rest_api_user_list_operation_type__e operation,
+    int *total_parts
     ) {
-    return customer_list_upload_create_request_create_internal (
+    int *total_parts_copy = NULL;
+    if (total_parts) {
+        total_parts_copy = malloc(sizeof(int));
+        if (total_parts_copy) *total_parts_copy = *total_parts;
+    }
+    customer_list_upload_create_request_t *result = customer_list_upload_create_request_create_internal (
         operation,
-        total_parts
+        total_parts_copy
         );
+    if (!result) {
+        free(total_parts_copy);
+    }
+    return result;
 }
 
 void customer_list_upload_create_request_free(customer_list_upload_create_request_t *customer_list_upload_create_request) {
@@ -39,9 +48,9 @@ void customer_list_upload_create_request_free(customer_list_upload_create_reques
         return ;
     }
     listEntry_t *listEntry;
-    if (customer_list_upload_create_request->operation) {
-        user_list_operation_type_free(customer_list_upload_create_request->operation);
-        customer_list_upload_create_request->operation = NULL;
+    if (customer_list_upload_create_request->total_parts) {
+        free(customer_list_upload_create_request->total_parts);
+        customer_list_upload_create_request->total_parts = NULL;
     }
     free(customer_list_upload_create_request);
 }
@@ -50,7 +59,7 @@ cJSON *customer_list_upload_create_request_convertToJSON(customer_list_upload_cr
     cJSON *item = cJSON_CreateObject();
 
     // customer_list_upload_create_request->operation
-    if (!customer_list_upload_create_request->operation) {
+    if (pinterest_rest_api_user_list_operation_type__NULL == customer_list_upload_create_request->operation) {
         goto fail;
     }
     cJSON *operation_local_JSON = user_list_operation_type_convertToJSON(customer_list_upload_create_request->operation);
@@ -67,7 +76,7 @@ cJSON *customer_list_upload_create_request_convertToJSON(customer_list_upload_cr
     if (!customer_list_upload_create_request->total_parts) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "total_parts", customer_list_upload_create_request->total_parts) == NULL) {
+    if(cJSON_AddNumberToObject(item, "total_parts", *customer_list_upload_create_request->total_parts) == NULL) {
     goto fail; //Numeric
     }
 
@@ -84,7 +93,10 @@ customer_list_upload_create_request_t *customer_list_upload_create_request_parse
     customer_list_upload_create_request_t *customer_list_upload_create_request_local_var = NULL;
 
     // define the local variable for customer_list_upload_create_request->operation
-    user_list_operation_type_t *operation_local_nonprim = NULL;
+    pinterest_rest_api_user_list_operation_type__e operation_local_nonprim = 0;
+
+    // define the local variable for customer_list_upload_create_request->total_parts
+    int *total_parts_local_var = NULL;
 
     // customer_list_upload_create_request->operation
     cJSON *operation = cJSON_GetObjectItemCaseSensitive(customer_list_upload_create_requestJSON, "operation");
@@ -112,18 +124,32 @@ customer_list_upload_create_request_t *customer_list_upload_create_request_parse
     {
     goto end; //Numeric
     }
+    total_parts_local_var = malloc(sizeof(int));
+    if(!total_parts_local_var)
+    {
+        goto end;
+    }
+    *total_parts_local_var = total_parts->valuedouble;
+
 
 
     customer_list_upload_create_request_local_var = customer_list_upload_create_request_create_internal (
         operation_local_nonprim,
-        total_parts->valuedouble
+        total_parts_local_var
         );
+
+    if (!customer_list_upload_create_request_local_var) {
+        goto end;
+    }
 
     return customer_list_upload_create_request_local_var;
 end:
     if (operation_local_nonprim) {
-        user_list_operation_type_free(operation_local_nonprim);
-        operation_local_nonprim = NULL;
+        operation_local_nonprim = 0;
+    }
+    if (total_parts_local_var) {
+        free(total_parts_local_var);
+        total_parts_local_var = NULL;
     }
     return NULL;
 

@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccountsIds** | **String[]** | A list of ad account IDs under the asset group | [optional] 
-**AssetGroupDescription** | **String** | Asset group description | [optional] 
-**AssetGroupName** | **String** | Asset Group name | [optional] 
-**AssetGroupTypes** | **String[]** | Asset group types | [optional] 
-**CatalogsIds** | **String[]** | A list of catalog IDs under asset group | [optional] 
-**CreatedBy** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the user that created the asset group. | [optional] 
-**CreatedTime** | **Int32** | The creation time of the asset group | [optional] 
-**Id** | **String** | Asset Group ID. | [optional] 
-**Owner** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | [optional] 
-**ProfilesIds** | **String[]** | A list of profile IDs under asset group | [optional] 
-**UpdatedTime** | **Int32** | The last update time of the asset group | [optional] 
+**AdAccountsIds** | **String[]** | A list of ad account IDs under the asset group | 
+**AssetGroupDescription** | **String** | Asset group description | 
+**AssetGroupName** | **String** | Asset Group name | 
+**AssetGroupTypes** | **String[]** | Asset group types | 
+**CatalogsIds** | **String[]** | A list of catalog IDs under asset group | 
+**CreatedBy** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the user that created the asset group. | 
+**CreatedTime** | **Int32** | The creation time of the asset group | 
+**Id** | **String** | Asset Group ID. | 
+**Owner** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | 
+**ProfilesIds** | **String[]** | A list of profile IDs under asset group | 
+**UpdatedTime** | **Int32** | The last update time of the asset group | 
 
 ## Examples
 

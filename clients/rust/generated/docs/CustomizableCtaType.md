@@ -27,12 +27,14 @@
 | Download | DOWNLOAD |
 | ExploreMore | EXPLORE_MORE |
 | FindALocation | FIND_A_LOCATION |
+| FindRetailers | FIND_RETAILERS |
 | GetDeal | GET_DEAL |
 | GetRecipe | GET_RECIPE |
 | GetShowtimes | GET_SHOWTIMES |
 | OnSale | ON_SALE |
 | PlayGame | PLAY_GAME |
 | TryIt | TRY_IT |
+| TakeAPeek | TAKE_A_PEEK |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

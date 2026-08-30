@@ -12,10 +12,10 @@ Name | Type | Description | Notes
 **app_version_number** | **string** | Version number of the integration application. | [optional] 
 **client_timestamp** | **int** | Timestamp in milliseconds of when the log was executed at the client. | 
 **error** | [**IntegrationLogClientError**](IntegrationLogClientError.md) |  | [optional] 
-**event_type** | **string** | Log event type | 
+**event_type** | [**IntegrationLogEventType**](IntegrationLogEventType.md) | Log event type | 
 **external_business_id** | **string** |  | [optional] 
 **feed_profile_id** | **string** |  | [optional] 
-**log_level** | **string** | Log level type | 
+**log_level** | [**IntegrationLogLevel**](IntegrationLogLevel.md) | Log level type | 
 **merchant_id** | **string** |  | [optional] 
 **message** | **string** | Explanation of the event that occured. | [optional] 
 **platform_version_number** | **string** | Version number of the platform the integration application is running on. | [optional] 

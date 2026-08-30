@@ -54,35 +54,35 @@ public:
 
 	/*! \brief Set Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
 
 	/*! \brief Set 
 	 */
-	void setCountry(Country  country);
+	void setCountry(Country country);
 	/*! \brief Get Array with creative assets item operations
 	 */
 	std::list<CatalogsCreativeAssetsBatchItem> getItems();
 
 	/*! \brief Set Array with creative assets item operations
 	 */
-	void setItems(std::list <CatalogsCreativeAssetsBatchItem> items);
+	void setItems(std::list<CatalogsCreativeAssetsBatchItem> items);
 	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
 	std::string getLanguage();
 
 	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setLanguage(std::string  language);
+	void setLanguage(std::string language);
 
 
     private:

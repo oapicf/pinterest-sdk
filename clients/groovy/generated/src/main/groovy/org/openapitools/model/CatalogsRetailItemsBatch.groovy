@@ -7,15 +7,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BatchOperationStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemProcessingRecord;
 
 @Canonical
 class CatalogsRetailItemsBatch {
     /* Id of the catalogs items batch */
     String batchId
+
+    enum CatalogTypeEnum {
     
-    CatalogsType catalogType
+        RETAIL("RETAIL")
+    
+        private final String value
+    
+        CatalogTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    CatalogTypeEnum catalogType
     /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     Date completedTime
     /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion. */

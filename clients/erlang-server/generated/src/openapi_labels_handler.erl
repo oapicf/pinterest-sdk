@@ -2,17 +2,25 @@
 -moduledoc """
 Exposes the following operation IDs:
 
+- `POST` to `/ad_accounts/:ad_account_id/labels/:label_id/apply`, OperationId: `labels/apply`:
+Apply label to entity.
+  [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+
 - `POST` to `/ad_accounts/:ad_account_id/labels`, OperationId: `labels/create`:
 Create labels.
-&lt;p&gt; &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    &lt;b&gt;Note:&lt;/b&gt; You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  &lt;/p&gt;
+[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
 
 - `GET` to `/ad_accounts/:ad_account_id/labels`, OperationId: `labels/list`:
 List labels.
-&lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   See a list of labels for assets that your account owns, and filter the list by different criteria. &lt;/p&gt;
+[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
+
+- `POST` to `/ad_accounts/:ad_account_id/labels/:label_id/remove`, OperationId: `labels/remove`:
+Remove label from entities.
+  [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
 
 - `PATCH` to `/ad_accounts/:ad_account_id/labels`, OperationId: `labels/update`:
 Update labels.
-&lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Change the properties of one or more labels. &lt;/p&gt;
+[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
 
 """.
 
@@ -37,8 +45,10 @@ Update labels.
 -type class() :: 'labels'.
 
 -type operation_id() ::
-    'labels/create' %% Create labels
+    'labels/apply' %% Apply label to entity
+    | 'labels/create' %% Create labels
     | 'labels/list' %% List labels
+    | 'labels/remove' %% Remove label from entities
     | 'labels/update'. %% Update labels
 
 
@@ -67,10 +77,14 @@ init(Req, {Operations, Module}) ->
 
 -spec allowed_methods(cowboy_req:req(), state()) ->
     {[binary()], cowboy_req:req(), state()}.
+allowed_methods(Req, #state{operation_id = 'labels/apply'} = State) ->
+    {[<<"POST">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'labels/create'} = State) ->
     {[<<"POST">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'labels/list'} = State) ->
     {[<<"GET">>], Req, State};
+allowed_methods(Req, #state{operation_id = 'labels/remove'} = State) ->
+    {[<<"POST">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'labels/update'} = State) ->
     {[<<"PATCH">>], Req, State};
 allowed_methods(Req, State) ->
@@ -78,6 +92,15 @@ allowed_methods(Req, State) ->
 
 -spec is_authorized(cowboy_req:req(), state()) ->
     {true | {false, iodata()}, cowboy_req:req(), state()}.
+is_authorized(Req0,
+              #state{operation_id = 'labels/apply' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
 is_authorized(Req0,
               #state{operation_id = 'labels/create' = OperationID,
                      api_key_callback = Handler} = State) ->
@@ -89,6 +112,15 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'labels/list' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
+is_authorized(Req0,
+              #state{operation_id = 'labels/remove' = OperationID,
                      api_key_callback = Handler} = State) ->
     case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
@@ -110,12 +142,20 @@ is_authorized(Req, State) ->
 
 -spec content_types_accepted(cowboy_req:req(), state()) ->
     {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_accepted(Req, #state{operation_id = 'labels/apply'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
 content_types_accepted(Req, #state{operation_id = 'labels/create'} = State) ->
     {[
       {<<"application/json">>, handle_type_accepted}
      ], Req, State};
 content_types_accepted(Req, #state{operation_id = 'labels/list'} = State) ->
     {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'labels/remove'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
 content_types_accepted(Req, #state{operation_id = 'labels/update'} = State) ->
     {[
       {<<"application/json">>, handle_type_accepted}
@@ -125,9 +165,13 @@ content_types_accepted(Req, State) ->
 
 -spec valid_content_headers(cowboy_req:req(), state()) ->
     {boolean(), cowboy_req:req(), state()}.
+valid_content_headers(Req, #state{operation_id = 'labels/apply'} = State) ->
+    {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'labels/create'} = State) ->
     {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'labels/list'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'labels/remove'} = State) ->
     {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'labels/update'} = State) ->
     {true, Req, State};
@@ -136,11 +180,19 @@ valid_content_headers(Req, State) ->
 
 -spec content_types_provided(cowboy_req:req(), state()) ->
     {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_provided(Req, #state{operation_id = 'labels/apply'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
 content_types_provided(Req, #state{operation_id = 'labels/create'} = State) ->
     {[
       {<<"application/json">>, handle_type_provided}
      ], Req, State};
 content_types_provided(Req, #state{operation_id = 'labels/list'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'labels/remove'} = State) ->
     {[
       {<<"application/json">>, handle_type_provided}
      ], Req, State};

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,13 +17,14 @@ package openapi
 // IntegrationLogsInvalidLogResponse - Schema describing the response when a log has invalid fields.
 type IntegrationLogsInvalidLogResponse struct {
 
-	RejectedLogs []IntegrationLogsInvalidLogResponseRejectedLogsInner `json:"rejected_logs,omitempty"`
+	RejectedLogs []IntegrationLogsInvalidLogResponseRejectedLogsItems `json:"rejected_logs,omitempty"`
 }
 
-// AssertIntegrationLogsInvalidLogResponseRequired checks if the required fields are not zero-ed
+// AssertIntegrationLogsInvalidLogResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertIntegrationLogsInvalidLogResponseRequired(obj IntegrationLogsInvalidLogResponse) error {
 	for _, el := range obj.RejectedLogs {
-		if err := AssertIntegrationLogsInvalidLogResponseRejectedLogsInnerRequired(el); err != nil {
+		if err := AssertIntegrationLogsInvalidLogResponseRejectedLogsItemsRequired(el); err != nil {
 			return err
 		}
 	}
@@ -33,7 +34,7 @@ func AssertIntegrationLogsInvalidLogResponseRequired(obj IntegrationLogsInvalidL
 // AssertIntegrationLogsInvalidLogResponseConstraints checks if the values respects the defined constraints
 func AssertIntegrationLogsInvalidLogResponseConstraints(obj IntegrationLogsInvalidLogResponse) error {
 	for _, el := range obj.RejectedLogs {
-		if err := AssertIntegrationLogsInvalidLogResponseRejectedLogsInnerConstraints(el); err != nil {
+		if err := AssertIntegrationLogsInvalidLogResponseRejectedLogsItemsConstraints(el); err != nil {
 			return err
 		}
 	}

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **String** |  | 
-**id** | **String** | ID of the catalog entity. | 
-**updated_at** | **String** |  | 
 **catalog_type** | [**models::CatalogsType**](CatalogsType.md) |  | 
-**name** | Option<**String**> | A human-friendly name associated to a catalog entity. | 
+**created_at** | **chrono::DateTime<chrono::FixedOffset>** |  | [readonly]
+**id** | **String** | ID of the catalog entity. | 
+**name** | **String** | A human-friendly name associated to a catalog entity. | 
+**updated_at** | **chrono::DateTime<chrono::FixedOffset>** |  | [readonly]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

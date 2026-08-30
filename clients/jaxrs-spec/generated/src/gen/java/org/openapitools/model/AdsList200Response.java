@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdResponse;
+import org.openapitools.model.Ad;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,17 +22,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ads_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdsList200Response   {
   private String bookmark;
-  private @Valid List<@Valid AdResponse> items = new ArrayList<>();
+  private @Valid List<@Valid Ad> items = new ArrayList<>();
 
   public AdsList200Response() {
   }
 
   @JsonCreator
   public AdsList200Response(
-    @JsonProperty(required = true, value = "items") List<@Valid AdResponse> items
+    @JsonProperty(required = true, value = "items") List<@Valid Ad> items
   ) {
     this.items = items;
   }
@@ -58,7 +58,7 @@ public class AdsList200Response   {
 
   /**
    **/
-  public AdsList200Response items(List<@Valid AdResponse> items) {
+  public AdsList200Response items(List<@Valid Ad> items) {
     this.items = items;
     return this;
   }
@@ -66,16 +66,16 @@ public class AdsList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid public List<@Valid AdResponse> getItems() {
+  @NotNull @Valid public List<@Valid Ad> getItems() {
     return items;
   }
 
   @JsonProperty(required = true, value = "items")
-  public void setItems(List<@Valid AdResponse> items) {
+  public void setItems(List<@Valid Ad> items) {
     this.items = items;
   }
 
-  public AdsList200Response addItemsItem(AdResponse itemsItem) {
+  public AdsList200Response addItemsItem(Ad itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -84,7 +84,7 @@ public class AdsList200Response   {
     return this;
   }
 
-  public AdsList200Response removeItemsItem(AdResponse itemsItem) {
+  public AdsList200Response removeItemsItem(Ad itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }
@@ -126,12 +126,8 @@ public class AdsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,8 +21,8 @@ var _ MappedNullable = &TopPinsAnalyticsResponse{}
 // TopPinsAnalyticsResponse struct for TopPinsAnalyticsResponse
 type TopPinsAnalyticsResponse struct {
 	DateAvailability *TopPinsAnalyticsResponseDateAvailability `json:"date_availability,omitempty"`
-	Pins []TopPinsAnalyticsResponsePinsInner `json:"pins,omitempty"`
-	SortBy *string `json:"sort_by,omitempty"`
+	Pins []TopPinsAnalyticsResponsePinsItems `json:"pins,omitempty"`
+	SortBy *TopPinsSortBy `json:"sort_by,omitempty"`
 }
 
 // NewTopPinsAnalyticsResponse instantiates a new TopPinsAnalyticsResponse object
@@ -75,9 +75,9 @@ func (o *TopPinsAnalyticsResponse) SetDateAvailability(v TopPinsAnalyticsRespons
 }
 
 // GetPins returns the Pins field value if set, zero value otherwise.
-func (o *TopPinsAnalyticsResponse) GetPins() []TopPinsAnalyticsResponsePinsInner {
+func (o *TopPinsAnalyticsResponse) GetPins() []TopPinsAnalyticsResponsePinsItems {
 	if o == nil || IsNil(o.Pins) {
-		var ret []TopPinsAnalyticsResponsePinsInner
+		var ret []TopPinsAnalyticsResponsePinsItems
 		return ret
 	}
 	return o.Pins
@@ -85,7 +85,7 @@ func (o *TopPinsAnalyticsResponse) GetPins() []TopPinsAnalyticsResponsePinsInner
 
 // GetPinsOk returns a tuple with the Pins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TopPinsAnalyticsResponse) GetPinsOk() ([]TopPinsAnalyticsResponsePinsInner, bool) {
+func (o *TopPinsAnalyticsResponse) GetPinsOk() ([]TopPinsAnalyticsResponsePinsItems, bool) {
 	if o == nil || IsNil(o.Pins) {
 		return nil, false
 	}
@@ -101,15 +101,15 @@ func (o *TopPinsAnalyticsResponse) HasPins() bool {
 	return false
 }
 
-// SetPins gets a reference to the given []TopPinsAnalyticsResponsePinsInner and assigns it to the Pins field.
-func (o *TopPinsAnalyticsResponse) SetPins(v []TopPinsAnalyticsResponsePinsInner) {
+// SetPins gets a reference to the given []TopPinsAnalyticsResponsePinsItems and assigns it to the Pins field.
+func (o *TopPinsAnalyticsResponse) SetPins(v []TopPinsAnalyticsResponsePinsItems) {
 	o.Pins = v
 }
 
 // GetSortBy returns the SortBy field value if set, zero value otherwise.
-func (o *TopPinsAnalyticsResponse) GetSortBy() string {
+func (o *TopPinsAnalyticsResponse) GetSortBy() TopPinsSortBy {
 	if o == nil || IsNil(o.SortBy) {
-		var ret string
+		var ret TopPinsSortBy
 		return ret
 	}
 	return *o.SortBy
@@ -117,7 +117,7 @@ func (o *TopPinsAnalyticsResponse) GetSortBy() string {
 
 // GetSortByOk returns a tuple with the SortBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TopPinsAnalyticsResponse) GetSortByOk() (*string, bool) {
+func (o *TopPinsAnalyticsResponse) GetSortByOk() (*TopPinsSortBy, bool) {
 	if o == nil || IsNil(o.SortBy) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *TopPinsAnalyticsResponse) HasSortBy() bool {
 	return false
 }
 
-// SetSortBy gets a reference to the given string and assigns it to the SortBy field.
-func (o *TopPinsAnalyticsResponse) SetSortBy(v string) {
+// SetSortBy gets a reference to the given TopPinsSortBy and assigns it to the SortBy field.
+func (o *TopPinsAnalyticsResponse) SetSortBy(v TopPinsSortBy) {
 	o.SortBy = &v
 }
 

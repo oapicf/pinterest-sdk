@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **String** | Catalog id pertaining to the retail product group. | 
+**CatalogId** | **String** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **String** |  | 
 **Country** | **String** |  | [optional] 
 **CreatedAt** | **Int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogsRetailProductGroup = Initialize-PSOpenAPIToolsCatalogsRetailProductGroup  -CatalogId null `
+$CatalogsRetailProductGroup = Initialize-PSOpenAPIToolsCatalogsRetailProductGroup  -CatalogId 2680059592705 `
  -CatalogType null `
  -Country null `
  -CreatedAt 1621350033000 `

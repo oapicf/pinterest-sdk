@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.BatchOperation;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemUpsertBatchRecord;
 import org.springframework.lang.Nullable;
@@ -17,25 +16,24 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request object to upsert catalogs items
  */
 
 @Schema(name = "CatalogsItemsUpsertBatchRequest", description = "Request object to upsert catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchRequest {
 
   private Country country;
 
-  @Valid
   private List<@Valid ItemUpsertBatchRecord> items = new ArrayList<>();
 
   /**
@@ -220,7 +218,7 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
     
     NL2("NL"),
     
-    NO("NO"),
+    FALSE("false"),
     
     PL("PL"),
     
@@ -285,7 +283,40 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
 
   private LanguageEnum language;
 
-  private BatchOperation operation;
+  /**
+   * Gets or Sets operation
+   */
+  public enum OperationEnum {
+    UPSERT("UPSERT");
+
+    private final String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static OperationEnum fromValue(String value) {
+      for (OperationEnum b : OperationEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private OperationEnum operation;
 
   public CatalogsItemsUpsertBatchRequest() {
     super();
@@ -294,7 +325,7 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
   /**
    * Constructor with only required parameters
    */
-  public CatalogsItemsUpsertBatchRequest(Country country, List<@Valid ItemUpsertBatchRecord> items, LanguageEnum language, BatchOperation operation) {
+  public CatalogsItemsUpsertBatchRequest(Country country, List<@Valid ItemUpsertBatchRecord> items, LanguageEnum language, OperationEnum operation) {
     this.country = country;
     this.items = items;
     this.language = language;
@@ -317,6 +348,7 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
     return country;
   }
 
+  @JsonProperty("country")
   public void setCountry(Country country) {
     this.country = country;
   }
@@ -345,6 +377,7 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
     return items;
   }
 
+  @JsonProperty("items")
   public void setItems(List<@Valid ItemUpsertBatchRecord> items) {
     this.items = items;
   }
@@ -365,11 +398,12 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
     return language;
   }
 
+  @JsonProperty("language")
   public void setLanguage(LanguageEnum language) {
     this.language = language;
   }
 
-  public CatalogsItemsUpsertBatchRequest operation(BatchOperation operation) {
+  public CatalogsItemsUpsertBatchRequest operation(OperationEnum operation) {
     this.operation = operation;
     return this;
   }
@@ -378,14 +412,15 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
    * Get operation
    * @return operation
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "operation", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation")
-  public BatchOperation getOperation() {
+  public OperationEnum getOperation() {
     return operation;
   }
 
-  public void setOperation(BatchOperation operation) {
+  @JsonProperty("operation")
+  public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
@@ -425,11 +460,8 @@ public class CatalogsItemsUpsertBatchRequest implements CatalogsItemsBatchReques
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

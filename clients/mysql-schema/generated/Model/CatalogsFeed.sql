@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsFeed`
 --
-SELECT `created_at`, `id`, `updated_at`, `catalog_type`, `credentials`, `default_availability`, `default_country`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status`, `catalog_id` FROM `CatalogsFeed` WHERE 1;
+SELECT `catalog_type`, `created_at`, `credentials`, `default_availability`, `default_country`, `default_currency`, `default_locale`, `format`, `id`, `location`, `name`, `preferred_processing_schedule`, `status`, `updated_at`, `catalog_id` FROM `CatalogsFeed` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsFeed`
 --
-INSERT INTO `CatalogsFeed`(`created_at`, `id`, `updated_at`, `catalog_type`, `credentials`, `default_availability`, `default_country`, `default_currency`, `default_locale`, `format`, `location`, `name`, `preferred_processing_schedule`, `status`, `catalog_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsFeed`(`catalog_type`, `created_at`, `credentials`, `default_availability`, `default_country`, `default_currency`, `default_locale`, `format`, `id`, `location`, `name`, `preferred_processing_schedule`, `status`, `updated_at`, `catalog_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsFeed`
 --
-UPDATE `CatalogsFeed` SET `created_at` = ?, `id` = ?, `updated_at` = ?, `catalog_type` = ?, `credentials` = ?, `default_availability` = ?, `default_country` = ?, `default_currency` = ?, `default_locale` = ?, `format` = ?, `location` = ?, `name` = ?, `preferred_processing_schedule` = ?, `status` = ?, `catalog_id` = ? WHERE 1;
+UPDATE `CatalogsFeed` SET `catalog_type` = ?, `created_at` = ?, `credentials` = ?, `default_availability` = ?, `default_country` = ?, `default_currency` = ?, `default_locale` = ?, `format` = ?, `id` = ?, `location` = ?, `name` = ?, `preferred_processing_schedule` = ?, `status` = ?, `updated_at` = ?, `catalog_id` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsFeed`

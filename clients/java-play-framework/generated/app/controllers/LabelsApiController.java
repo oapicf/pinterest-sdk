@@ -1,10 +1,14 @@
 package controllers;
 
-import apimodels.Error;
 import apimodels.LabelCreateRequest;
 import apimodels.LabelUpdateRequest;
+import apimodels.LabeledEntities;
+import apimodels.LabeledEntitiesCreate;
 import apimodels.LabelsList200Response;
 import apimodels.LabelsResponse;
+import apimodels.PinterestLibError;
+import apimodels.QueryLabelEntityStatusesItems;
+import apimodels.QueryLabelTypesItems;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -28,7 +32,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelsApiController extends Controller {
     private final LabelsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,6 +43,21 @@ public class LabelsApiController extends Controller {
         this.imp = imp;
         mapper = new ObjectMapper();
         this.configuration = configuration;
+    }
+
+    @ApiAction
+    public Result labelsApply(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,String labelId) throws Exception {
+        JsonNode nodelabeledEntitiesCreate = request.body().asJson();
+        LabeledEntitiesCreate labeledEntitiesCreate;
+        if (nodelabeledEntitiesCreate != null) {
+            labeledEntitiesCreate = mapper.readValue(nodelabeledEntitiesCreate.toString(), LabeledEntitiesCreate.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(labeledEntitiesCreate);
+            }
+        } else {
+            throw new IllegalArgumentException("'LabeledEntitiesCreate' parameter is required");
+        }
+        return imp.labelsApplyHttp(request, adAccountId, labelId, labeledEntitiesCreate);
     }
 
     @ApiAction
@@ -78,7 +97,7 @@ public class LabelsApiController extends Controller {
         }
         String[] entityStatusesArray = request.queryString().get("entity_statuses");
         List<String> entityStatusesList = OpenAPIUtils.parametersToList("multi", entityStatusesArray);
-        List<String> entityStatuses = new ArrayList<>();
+        List<QueryLabelEntityStatusesItems> entityStatuses = new ArrayList<>();
         for (String curParam : entityStatusesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -87,19 +106,12 @@ public class LabelsApiController extends Controller {
         }
         String[] labelTypesArray = request.queryString().get("label_types");
         List<String> labelTypesList = OpenAPIUtils.parametersToList("multi", labelTypesArray);
-        List<String> labelTypes = new ArrayList<>();
+        List<QueryLabelTypesItems> labelTypes = new ArrayList<>();
         for (String curParam : labelTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
                 labelTypes.add(curParam);
             }
-        }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
         }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
@@ -108,7 +120,29 @@ public class LabelsApiController extends Controller {
         } else {
             bookmark = null;
         }
-        return imp.labelsListHttp(request, adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, pageSize, bookmark);
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        return imp.labelsListHttp(request, adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, bookmark, pageSize);
+    }
+
+    @ApiAction
+    public Result labelsRemove(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,String labelId) throws Exception {
+        JsonNode nodelabeledEntitiesCreate = request.body().asJson();
+        LabeledEntitiesCreate labeledEntitiesCreate;
+        if (nodelabeledEntitiesCreate != null) {
+            labeledEntitiesCreate = mapper.readValue(nodelabeledEntitiesCreate.toString(), LabeledEntitiesCreate.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(labeledEntitiesCreate);
+            }
+        } else {
+            throw new IllegalArgumentException("'LabeledEntitiesCreate' parameter is required");
+        }
+        return imp.labelsRemoveHttp(request, adAccountId, labelId, labeledEntitiesCreate);
     }
 
     @ApiAction

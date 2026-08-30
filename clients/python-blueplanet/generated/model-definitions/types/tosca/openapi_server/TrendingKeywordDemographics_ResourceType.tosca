@@ -7,8 +7,8 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  TrendingKeywordDemographicsAgeDistribution = openapi_server.resourceTypes.TrendingKeywordDemographicsAgeDistribution
-  TrendingKeywordDemographicsGenderDistribution = openapi_server.resourceTypes.TrendingKeywordDemographicsGenderDistribution
+  TrendsAgeDistribution = openapi_server.resourceTypes.TrendsAgeDistribution
+  TrendsGenderDistribution = openapi_server.resourceTypes.TrendsGenderDistribution
 }
 resourceTypes {
 
@@ -18,12 +18,12 @@ resourceTypes {
     derivedFrom = Root
     properties {
         age_distribution {
-          type = TrendingKeywordDemographicsAgeDistribution
+          type = TrendsAgeDistribution
           description = ""
           optional = false
         }
         gender_distribution {
-          type = TrendingKeywordDemographicsGenderDistribution
+          type = TrendsGenderDistribution
           description = ""
           optional = false
         }

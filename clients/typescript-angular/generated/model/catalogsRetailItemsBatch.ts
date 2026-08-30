@@ -7,7 +7,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CatalogsType } from './catalogsType';
 import { ItemProcessingRecord } from './itemProcessingRecord';
 import { BatchOperationStatus } from './batchOperationStatus';
 
@@ -20,15 +19,15 @@ export interface CatalogsRetailItemsBatch {
      * Id of the catalogs items batch
      */
     batch_id?: string;
-    catalog_type: CatalogsType;
+    catalog_type: CatalogsRetailItemsBatch.CatalogTypeEnum;
     /**
      * Date and time (UTC) of the batch completion: YYYY-MM-DD\'T\'hh:mm:ss
      */
-    readonly completed_time?: string | null;
+    completed_time?: string | null;
     /**
      * Date and time (UTC) of the batch creation: YYYY-MM-DD\'T\'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
      */
-    readonly created_time: string | null;
+    created_time: string | null;
     /**
      * Array with the catalogs items processing records part of the catalogs items batch
      */
@@ -36,6 +35,10 @@ export interface CatalogsRetailItemsBatch {
     status?: BatchOperationStatus;
 }
 export namespace CatalogsRetailItemsBatch {
+    export const CatalogTypeEnum = {
+        Retail: 'RETAIL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

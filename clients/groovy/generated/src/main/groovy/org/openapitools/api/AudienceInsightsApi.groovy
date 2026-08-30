@@ -1,10 +1,10 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.AudienceDefinitionResponse
 import org.openapitools.model.AudienceInsightType
-import org.openapitools.model.AudienceInsightsResponse
-import org.openapitools.model.Error
+import org.openapitools.model.AudienceInsights
+import org.openapitools.model.AudienceInsightsScopeAndTypeGet200Response
+import org.openapitools.model.PinterestLibError
 
 class AudienceInsightsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -18,6 +18,7 @@ class AudienceInsightsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -36,9 +37,11 @@ class AudienceInsightsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    AudienceInsightsResponse.class )
+                    AudienceInsights.class )
 
     }
 
@@ -49,6 +52,7 @@ class AudienceInsightsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -60,9 +64,11 @@ class AudienceInsightsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    AudienceDefinitionResponse.class )
+                    AudienceInsightsScopeAndTypeGet200Response.class )
 
     }
 

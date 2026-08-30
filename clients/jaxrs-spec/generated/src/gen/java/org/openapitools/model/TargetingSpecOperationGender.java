@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TargetingSpecGender;
+import org.openapitools.model.TargetingSpecListOperation;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TargetingSpecOperationGender")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingSpecOperationGender   {
   public enum FieldEnum {
 
@@ -70,55 +71,8 @@ public class TargetingSpecOperationGender   {
 }
 
   private FieldEnum field;
-  public enum OperationEnum {
-
-    SET(String.valueOf("SET")), ADD(String.valueOf("ADD")), REMOVE(String.valueOf("REMOVE"));
-
-
-    private String value;
-
-    OperationEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static OperationEnum fromString(String s) {
-        for (OperationEnum b : OperationEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static OperationEnum fromValue(String value) {
-        for (OperationEnum b : OperationEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private OperationEnum operation;
-  private @Valid List<TargetingSpecGender> values;
+  private TargetingSpecListOperation operation;
+  private @Valid List<TargetingSpecGender> values = new ArrayList<>();
 
   public TargetingSpecOperationGender() {
   }
@@ -126,7 +80,7 @@ public class TargetingSpecOperationGender   {
   @JsonCreator
   public TargetingSpecOperationGender(
     @JsonProperty(required = true, value = "field") FieldEnum field,
-    @JsonProperty(required = true, value = "operation") OperationEnum operation,
+    @JsonProperty(required = true, value = "operation") TargetingSpecListOperation operation,
     @JsonProperty(required = true, value = "values") List<TargetingSpecGender> values
   ) {
     this.field = field;
@@ -155,7 +109,7 @@ public class TargetingSpecOperationGender   {
 
   /**
    **/
-  public TargetingSpecOperationGender operation(OperationEnum operation) {
+  public TargetingSpecOperationGender operation(TargetingSpecListOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -163,12 +117,12 @@ public class TargetingSpecOperationGender   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "operation")
-  @NotNull public OperationEnum getOperation() {
+  @NotNull public TargetingSpecListOperation getOperation() {
     return operation;
   }
 
   @JsonProperty(required = true, value = "operation")
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(TargetingSpecListOperation operation) {
     this.operation = operation;
   }
 
@@ -244,12 +198,8 @@ public class TargetingSpecOperationGender   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

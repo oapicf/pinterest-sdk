@@ -4,9 +4,9 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
-import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.Country;
@@ -24,7 +24,7 @@ class CatalogsFeedsCreateRequest {
     
     NullableCurrency defaultCurrency
     
-    CatalogsFeedsCreateRequestDefaultLocale defaultLocale
+    CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale
     
     CatalogsFormat format
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
@@ -34,5 +34,5 @@ class CatalogsFeedsCreateRequest {
     
     CatalogsFeedProcessingSchedule preferredProcessingSchedule
     
-    CatalogsStatus status = "ACTIVE"
+    CatalogsStatus status
 }

@@ -5,7 +5,7 @@
 -export_type([openapi_catalogs_product/0]).
 
 -type openapi_catalogs_product() ::
-    #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
+    #{ 'catalog_type' := binary(),
        'metadata' := openapi_catalogs_creative_assets_product_metadata:openapi_catalogs_creative_assets_product_metadata(),
        'pin' := openapi_pin:openapi_pin()
      }.

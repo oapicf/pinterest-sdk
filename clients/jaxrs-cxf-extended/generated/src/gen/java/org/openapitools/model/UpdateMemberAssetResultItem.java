@@ -1,0 +1,77 @@
+package org.openapitools.model;
+
+import org.openapitools.model.UsersForIndividualAssetResponse;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class UpdateMemberAssetResultItem  {
+  
+  @ApiModelProperty(value = "")
+  @Valid
+  private UsersForIndividualAssetResponse response;
+ /**
+  * Get response
+  * @return response
+  */
+  @JsonProperty("response")
+  public UsersForIndividualAssetResponse getResponse() {
+    return response;
+  }
+
+  /**
+   * Sets the <code>response</code> property.
+   */
+ public void setResponse(UsersForIndividualAssetResponse response) {
+    this.response = response;
+  }
+
+  /**
+   * Sets the <code>response</code> property.
+   */
+  public UpdateMemberAssetResultItem response(UsersForIndividualAssetResponse response) {
+    this.response = response;
+    return this;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    UpdateMemberAssetResultItem updateMemberAssetResultItem = (UpdateMemberAssetResultItem) o;
+    return Objects.equals(this.response, updateMemberAssetResultItem.response);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(response);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class UpdateMemberAssetResultItem {\n");
+    
+    sb.append("    response: ").append(toIndentedString(response)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

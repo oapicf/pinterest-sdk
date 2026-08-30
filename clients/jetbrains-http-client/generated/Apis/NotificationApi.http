@@ -1,0 +1,12 @@
+## NotificationApi
+
+### Receive notifications from external partners.
+## Receive notifications from external partners.
+POST https://api.pinterest.com/v5/notifications
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+

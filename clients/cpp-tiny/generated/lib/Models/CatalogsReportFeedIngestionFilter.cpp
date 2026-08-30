@@ -106,7 +106,7 @@ CatalogsReportFeedIngestionFilter::getFeedId()
 }
 
 void
-CatalogsReportFeedIngestionFilter::setFeedId(std::string  feed_id)
+CatalogsReportFeedIngestionFilter::setFeedId(std::string feed_id)
 {
 	this->feed_id = feed_id;
 }
@@ -118,7 +118,7 @@ CatalogsReportFeedIngestionFilter::getProcessingResultId()
 }
 
 void
-CatalogsReportFeedIngestionFilter::setProcessingResultId(std::string  processing_result_id)
+CatalogsReportFeedIngestionFilter::setProcessingResultId(std::string processing_result_id)
 {
 	this->processing_result_id = processing_result_id;
 }
@@ -130,7 +130,7 @@ CatalogsReportFeedIngestionFilter::getReportType()
 }
 
 void
-CatalogsReportFeedIngestionFilter::setReportType(std::string  report_type)
+CatalogsReportFeedIngestionFilter::setReportType(std::string report_type)
 {
 	this->report_type = report_type;
 }

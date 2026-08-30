@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import IntegrationLogsInvalidLogResponse._
 
 case class IntegrationLogsInvalidLogResponse (
-  rejectedLogs: Option[List[IntegrationLogsInvalidLogResponseRejectedLogsInner]])
+  rejectedLogs: Option[List[IntegrationLogsInvalidLogResponseRejectedLogsItems]])
 
 object IntegrationLogsInvalidLogResponse {
   import DateTimeCodecs._

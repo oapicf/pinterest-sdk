@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.BusinessRoleForInvite;
 import apimodels.InviteType;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,46 +14,14 @@ import javax.validation.Valid;
 /**
  * Body to be used on path to send Members or Partners Invite or Request
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CreateMembershipOrPartnershipInvitesBody   {
-  /**
-   * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-   */
-  public enum BusinessRoleEnum {
-    EMPLOYEE("EMPLOYEE"),
-    
-    BIZ_ADMIN("BIZ_ADMIN"),
-    
-    PARTNER("PARTNER");
-
-    private final String value;
-
-    BusinessRoleEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BusinessRoleEnum fromValue(String value) {
-      for (BusinessRoleEnum b : BusinessRoleEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("business_role")
   @NotNull
+@Valid
 
-  private BusinessRoleEnum businessRole;
+  private BusinessRoleForInvite businessRole;
 
   @JsonProperty("invite_type")
   @NotNull
@@ -70,20 +39,20 @@ public class CreateMembershipOrPartnershipInvitesBody   {
 
   private List<@Pattern(regexp = "^\\d+$")@Size(max = 25)String> partners = null;
 
-  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleEnum businessRole) {
+  public CreateMembershipOrPartnershipInvitesBody businessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
     return this;
   }
 
    /**
-   * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+   * Get businessRole
    * @return businessRole
   **/
-  public BusinessRoleEnum getBusinessRole() {
+  public BusinessRoleForInvite getBusinessRole() {
     return businessRole;
   }
 
-  public void setBusinessRole(BusinessRoleEnum businessRole) {
+  public void setBusinessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
   }
 
@@ -194,10 +163,7 @@ public class CreateMembershipOrPartnershipInvitesBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

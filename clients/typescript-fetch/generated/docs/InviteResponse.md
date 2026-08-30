@@ -1,20 +1,21 @@
 
 # InviteResponse
 
+A user\'s username or email OR a partner id that caused the error.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`id` | string
-`inviteData` | [BaseInviteDataResponseInviteData](BaseInviteDataResponseInviteData.md)
-`isReceivedInvite` | boolean
-`user` | [BusinessAccessUserSummary](BusinessAccessUserSummary.md)
 `assetsSummary` | [InviteAssetsSummary](InviteAssetsSummary.md)
 `businessRoles` | Array&lt;string&gt;
-`createdByBusiness` | object
-`createdByUser` | object
+`createdByBusiness` | [BusinessAccessUserSummary](BusinessAccessUserSummary.md)
+`createdByUser` | [BusinessAccessUserSummary](BusinessAccessUserSummary.md)
 `createdTime` | number
+`id` | string
+`inviteData` | [InviteDataResponse](InviteDataResponse.md)
+`isReceivedInvite` | boolean
+`user` | [BusinessAccessUserSummary](BusinessAccessUserSummary.md)
 
 ## Example
 
@@ -23,15 +24,15 @@ import type { InviteResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 383791336903426391,
-  "inviteData": null,
-  "isReceivedInvite": null,
-  "user": null,
   "assetsSummary": null,
   "businessRoles": ["BIZ_ADMIN"],
   "createdByBusiness": null,
   "createdByUser": null,
   "createdTime": 1646767577816,
+  "id": 383791336903426391,
+  "inviteData": null,
+  "isReceivedInvite": null,
+  "user": null,
 } satisfies InviteResponse
 
 console.log(example)

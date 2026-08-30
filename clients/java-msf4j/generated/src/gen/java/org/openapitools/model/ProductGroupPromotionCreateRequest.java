@@ -13,7 +13,7 @@ import org.openapitools.model.ProductGroupPromotion;
 /**
  * ProductGroupPromotionCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ProductGroupPromotionCreateRequest   {
   @JsonProperty("ad_group_id")
   private String adGroupId;
@@ -30,7 +30,7 @@ public class ProductGroupPromotionCreateRequest   {
    * ID of the Ad Group the Product Group Promotion belongs to.
    * @return adGroupId
   **/
-  @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the Ad Group the Product Group Promotion belongs to.")
+  @ApiModelProperty(required = true, value = "ID of the Ad Group the Product Group Promotion belongs to.")
   public String getAdGroupId() {
     return adGroupId;
   }
@@ -97,10 +97,7 @@ public class ProductGroupPromotionCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

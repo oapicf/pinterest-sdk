@@ -66,12 +66,12 @@ Billing_invoices_get_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<BillingInvoiceResponse> new_list;
-			BillingInvoiceResponse inst;
+			list<BillingInvoice> new_list;
+			BillingInvoice inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("BillingInvoiceResponse")) {
-					jsonToValue(&inst, temp_json, "BillingInvoiceResponse", "");
+				if (isprimitive("BillingInvoice")) {
+					jsonToValue(&inst, temp_json, "BillingInvoice", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Billing_invoices_get_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("BillingInvoiceResponse")) {
-		list<BillingInvoiceResponse> new_list = static_cast<list <BillingInvoiceResponse> > (getItems());
-		node = converttoJson(&new_list, "BillingInvoiceResponse", "array");
+	if (isprimitive("BillingInvoice")) {
+		list<BillingInvoice> new_list = static_cast<list <BillingInvoice> > (getItems());
+		node = converttoJson(&new_list, "BillingInvoice", "array");
 	} else {
 		node = json_node_alloc();
-		list<BillingInvoiceResponse> new_list = static_cast<list <BillingInvoiceResponse> > (getItems());
+		list<BillingInvoice> new_list = static_cast<list <BillingInvoice> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<BillingInvoiceResponse>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<BillingInvoice>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			BillingInvoiceResponse obj = *it;
+			BillingInvoice obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Billing_invoices_get_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<BillingInvoiceResponse>
+std::list<BillingInvoice>
 Billing_invoices_get_200_response::getItems()
 {
 	return items;
 }
 
 void
-Billing_invoices_get_200_response::setItems(std::list <BillingInvoiceResponse> items)
+Billing_invoices_get_200_response::setItems(std::list <BillingInvoice> items)
 {
 	this->items = items;
 }

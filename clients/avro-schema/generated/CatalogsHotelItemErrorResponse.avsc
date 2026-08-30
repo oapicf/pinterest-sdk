@@ -6,7 +6,13 @@
   "fields": [
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelItemErrorResponse_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
       "doc": ""
     },
     {
@@ -22,6 +28,17 @@
       "type": ["null", "string"],
       "doc": "The catalog hotel id in the merchant namespace",
       "default": null
+    },
+    {
+      "name": "item_response_kind",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelItemErrorResponse_itemUnderscoreresponseUnderscorekind",
+        "symbols": [
+          "hotel_item_error"
+        ]
+      },
+      "doc": "Discriminator literal identifying this leaf inside an `ItemResponse` payload."
     }
   ]
 

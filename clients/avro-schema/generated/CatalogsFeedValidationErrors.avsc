@@ -73,7 +73,7 @@
     {
       "name": "FETCH_INACTIVE_FEED_ERROR",
       "type": ["null", "int"],
-      "doc": "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.",
+      "doc": "Your feed wasn't ingested because it hasn't changed in the previous 90 days.",
       "default": null
     },
     {

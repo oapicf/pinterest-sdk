@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,7 +28,7 @@ type ApiOauthConversionTokenRequest struct {
 	ApiService *OauthAPIService
 }
 
-func (r ApiOauthConversionTokenRequest) Execute() (*ConversionAccessTokenResponse, *http.Response, error) {
+func (r ApiOauthConversionTokenRequest) Execute() (*ConversionAccessToken, *http.Response, error) {
 	return r.ApiService.OauthConversionTokenExecute(r)
 }
 
@@ -48,13 +48,13 @@ func (a *OauthAPIService) OauthConversionToken(ctx context.Context) ApiOauthConv
 }
 
 // Execute executes the request
-//  @return ConversionAccessTokenResponse
-func (a *OauthAPIService) OauthConversionTokenExecute(r ApiOauthConversionTokenRequest) (*ConversionAccessTokenResponse, *http.Response, error) {
+//  @return ConversionAccessToken
+func (a *OauthAPIService) OauthConversionTokenExecute(r ApiOauthConversionTokenRequest) (*ConversionAccessToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ConversionAccessTokenResponse
+		localVarReturnValue  *ConversionAccessToken
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OauthAPIService.OauthConversionToken")
@@ -107,7 +107,62 @@ func (a *OauthAPIService) OauthConversionTokenExecute(r ApiOauthConversionTokenR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -133,15 +188,46 @@ func (a *OauthAPIService) OauthConversionTokenExecute(r ApiOauthConversionTokenR
 type ApiOauthTokenRequest struct {
 	ctx context.Context
 	ApiService *OauthAPIService
-	grantType *string
+	grantType *TokenGrantType
+	code *string
+	continuousRefresh *string
+	redirectUri *string
+	refreshToken *string
+	scope *string
 }
 
-func (r ApiOauthTokenRequest) GrantType(grantType string) ApiOauthTokenRequest {
+func (r ApiOauthTokenRequest) GrantType(grantType TokenGrantType) ApiOauthTokenRequest {
 	r.grantType = &grantType
 	return r
 }
 
-func (r ApiOauthTokenRequest) Execute() (*OauthAccessTokenResponse, *http.Response, error) {
+func (r ApiOauthTokenRequest) Code(code string) ApiOauthTokenRequest {
+	r.code = &code
+	return r
+}
+
+//   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+func (r ApiOauthTokenRequest) ContinuousRefresh(continuousRefresh string) ApiOauthTokenRequest {
+	r.continuousRefresh = &continuousRefresh
+	return r
+}
+
+func (r ApiOauthTokenRequest) RedirectUri(redirectUri string) ApiOauthTokenRequest {
+	r.redirectUri = &redirectUri
+	return r
+}
+
+func (r ApiOauthTokenRequest) RefreshToken(refreshToken string) ApiOauthTokenRequest {
+	r.refreshToken = &refreshToken
+	return r
+}
+
+func (r ApiOauthTokenRequest) Scope(scope string) ApiOauthTokenRequest {
+	r.scope = &scope
+	return r
+}
+
+func (r ApiOauthTokenRequest) Execute() (*OauthAccessToken, *http.Response, error) {
 	return r.ApiService.OauthTokenExecute(r)
 }
 
@@ -150,13 +236,14 @@ OauthToken Generate OAuth access token
 
 Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.
 
-Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.
+Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).
 
-<strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).
+**Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).
 
 Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.
 
-Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiOauthTokenRequest
@@ -169,13 +256,13 @@ func (a *OauthAPIService) OauthToken(ctx context.Context) ApiOauthTokenRequest {
 }
 
 // Execute executes the request
-//  @return OauthAccessTokenResponse
-func (a *OauthAPIService) OauthTokenExecute(r ApiOauthTokenRequest) (*OauthAccessTokenResponse, *http.Response, error) {
+//  @return OauthAccessToken
+func (a *OauthAPIService) OauthTokenExecute(r ApiOauthTokenRequest) (*OauthAccessToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OauthAccessTokenResponse
+		localVarReturnValue  *OauthAccessToken
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OauthAPIService.OauthToken")
@@ -209,7 +296,22 @@ func (a *OauthAPIService) OauthTokenExecute(r ApiOauthTokenRequest) (*OauthAcces
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.code != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "code", r.code, "", "")
+	}
+	if r.continuousRefresh != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "continuous_refresh", r.continuousRefresh, "", "")
+	}
 	parameterAddToHeaderOrQuery(localVarFormParams, "grant_type", r.grantType, "", "")
+	if r.redirectUri != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "redirect_uri", r.redirectUri, "", "")
+	}
+	if r.refreshToken != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "refresh_token", r.refreshToken, "", "")
+	}
+	if r.scope != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "scope", r.scope, "", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -232,7 +334,62 @@ func (a *OauthAPIService) OauthTokenExecute(r ApiOauthTokenRequest) (*OauthAcces
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -259,7 +416,7 @@ type ApiTokenRevokeRequest struct {
 	ctx context.Context
 	ApiService *OauthAPIService
 	token *string
-	tokenTypeHint *string
+	tokenTypeHint *TokenTypeHint
 }
 
 // The token to revoke.
@@ -269,7 +426,7 @@ func (r ApiTokenRevokeRequest) Token(token string) ApiTokenRevokeRequest {
 }
 
 // The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
-func (r ApiTokenRevokeRequest) TokenTypeHint(tokenTypeHint string) ApiTokenRevokeRequest {
+func (r ApiTokenRevokeRequest) TokenTypeHint(tokenTypeHint TokenTypeHint) ApiTokenRevokeRequest {
 	r.tokenTypeHint = &tokenTypeHint
 	return r
 }
@@ -359,7 +516,7 @@ func (a *OauthAPIService) TokenRevokeExecute(r ApiTokenRevokeRequest) (*http.Res
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -370,7 +527,7 @@ func (a *OauthAPIService) TokenRevokeExecute(r ApiTokenRevokeRequest) (*http.Res
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -380,7 +537,7 @@ func (a *OauthAPIService) TokenRevokeExecute(r ApiTokenRevokeRequest) (*http.Res
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

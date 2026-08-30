@@ -13,13 +13,15 @@ import OrderLine._
 
 case class OrderLine (
   /* Ad account ID. */
-  adAccountId: Option[String],
+  adAccountId: String,
 /* Order line budget in micro currency. */
   budget: Option[BigDecimal],
+/* Associated List of campaign IDs. */
+  campaignIds: List[String],
 /* End time. Unix timestamp. */
   endTime: Option[BigDecimal],
 /* Order line ID. */
-  id: Option[String],
+  id: String,
 /* Order line name. */
   name: Option[String],
 /* Order line paid budget in micro currency. */
@@ -31,11 +33,9 @@ case class OrderLine (
 /* Start time. Unix timestamp. */
   startTime: Option[BigDecimal],
 /* Order line status. */
-  status: Option[OrderLineStatus],
+  status: OrderLineStatus,
 /* Always \"orderline\". */
-  `type`: Option[String],
-/* Associated List of campaign IDs. */
-  campaignIds: List[String])
+  `type`: String)
 
 object OrderLine {
   import DateTimeCodecs._

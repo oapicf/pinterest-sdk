@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **String** | Catalog id pertaining to the retail product group. | 
+**catalogId** | **String** | Catalog ID pertaining to the product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | **String** |  |  [optional]
 **createdAt** | **Integer** | Unix timestamp in seconds of when catalog product group was created. |  [optional]

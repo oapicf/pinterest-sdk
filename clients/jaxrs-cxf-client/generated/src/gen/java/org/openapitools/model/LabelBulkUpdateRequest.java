@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.model.LabelStatusBulkUpdate;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -11,53 +12,20 @@ public class LabelBulkUpdateRequest  {
  /**
   * Label ID.
   */
-  @ApiModelProperty(example = "1106385754497", required = true, value = "Label ID.")
+  @ApiModelProperty(required = true, value = "Label ID.")
 
   private String id;
 
-public enum StatusEnum {
-
-ARCHIVED(String.valueOf("ARCHIVED"));
-
-
-    private String value;
-
-    StatusEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
-  * Set status to `ARCHIVED` to remove the label from the parent entity.
+  * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
   */
-  @ApiModelProperty(example = "ARCHIVED", value = "Set status to `ARCHIVED` to remove the label from the parent entity.")
+  @ApiModelProperty(required = true, value = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
 
-  private StatusEnum status;
+  private String parentId;
 
- /**
-  * </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
-  */
-  @ApiModelProperty(value = "</p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.")
+  @ApiModelProperty(required = true, value = "")
 
-  private String value;
+  private LabelStatusBulkUpdate status;
  /**
    * Label ID.
    * @return id
@@ -77,41 +45,38 @@ ARCHIVED(String.valueOf("ARCHIVED"));
   }
 
  /**
-   * Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity.
-   * @return status
+   * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+   * @return parentId
   **/
-  @JsonProperty("status")
-  public String getStatus() {
-    if (status == null) {
-      return null;
-    }
-    return status.value();
+  @JsonProperty("parent_id")
+  public String getParentId() {
+    return parentId;
   }
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
   }
 
-  public LabelBulkUpdateRequest status(StatusEnum status) {
-    this.status = status;
+  public LabelBulkUpdateRequest parentId(String parentId) {
+    this.parentId = parentId;
     return this;
   }
 
  /**
-   * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit.
-   * @return value
+   * Get status
+   * @return status
   **/
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
+  @JsonProperty("status")
+  public LabelStatusBulkUpdate getStatus() {
+    return status;
   }
 
-  public void setValue(String value) {
-    this.value = value;
+  public void setStatus(LabelStatusBulkUpdate status) {
+    this.status = status;
   }
 
-  public LabelBulkUpdateRequest value(String value) {
-    this.value = value;
+  public LabelBulkUpdateRequest status(LabelStatusBulkUpdate status) {
+    this.status = status;
     return this;
   }
 
@@ -125,13 +90,13 @@ ARCHIVED(String.valueOf("ARCHIVED"));
     }
     LabelBulkUpdateRequest labelBulkUpdateRequest = (LabelBulkUpdateRequest) o;
     return Objects.equals(this.id, labelBulkUpdateRequest.id) &&
-        Objects.equals(this.status, labelBulkUpdateRequest.status) &&
-        Objects.equals(this.value, labelBulkUpdateRequest.value);
+        Objects.equals(this.parentId, labelBulkUpdateRequest.parentId) &&
+        Objects.equals(this.status, labelBulkUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, value);
+    return Objects.hash(id, parentId, status);
   }
 
   @Override
@@ -140,8 +105,8 @@ ARCHIVED(String.valueOf("ARCHIVED"));
     sb.append("class LabelBulkUpdateRequest {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -151,10 +116,7 @@ ARCHIVED(String.valueOf("ARCHIVED"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

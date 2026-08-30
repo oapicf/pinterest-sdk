@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## promotionsCreate
 
-> PromotionsResponse promotionsCreate(adAccountId, promotionCreateRequest)
+> PromotionsResponse promotionsCreate(adAccountId, promotionCreate)
 
 Create promotions
 
@@ -31,8 +31,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.PromotionsApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let promotionCreateRequest = [new PinterestSdk.PromotionCreateRequest()]; // [PromotionCreateRequest] | List of promotions to create, size limit [1, 30].
-apiInstance.promotionsCreate(adAccountId, promotionCreateRequest, (error, data, response) => {
+let promotionCreate = [new PinterestSdk.PromotionCreate()]; // [PromotionCreate] | 
+apiInstance.promotionsCreate(adAccountId, promotionCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -47,7 +47,7 @@ apiInstance.promotionsCreate(adAccountId, promotionCreateRequest, (error, data, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **promotionCreateRequest** | [**[PromotionCreateRequest]**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotionCreate** | [**[PromotionCreate]**](PromotionCreate.md)|  | 
 
 ### Return type
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ## promotionsDelete
 
-> promotionsDelete(adAccountId, promotionId)
+> Promotion promotionsDelete(promotionId, adAccountId)
 
 Delete promotion by id
 
@@ -81,13 +81,13 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.PromotionsApi();
+let promotionId = "promotionId_example"; // String | Promotion ID
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let promotionId = "promotionId_example"; // String | Unique identifier of a promotion
-apiInstance.promotionsDelete(adAccountId, promotionId, (error, data, response) => {
+apiInstance.promotionsDelete(promotionId, adAccountId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -97,12 +97,12 @@ apiInstance.promotionsDelete(adAccountId, promotionId, (error, data, response) =
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **String**| Promotion ID | 
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **promotionId** | **String**| Unique identifier of a promotion | 
 
 ### Return type
 
-null (empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -116,7 +116,7 @@ null (empty response body)
 
 ## promotionsGet
 
-> PromotionResponse promotionsGet(adAccountId, promotionId)
+> Promotion promotionsGet(promotionId, adAccountId)
 
 Get promotion by id
 
@@ -132,9 +132,9 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.PromotionsApi();
+let promotionId = "promotionId_example"; // String | Promotion ID
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let promotionId = "promotionId_example"; // String | Unique identifier of a promotion
-apiInstance.promotionsGet(adAccountId, promotionId, (error, data, response) => {
+apiInstance.promotionsGet(promotionId, adAccountId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -148,12 +148,12 @@ apiInstance.promotionsGet(adAccountId, promotionId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotionId** | **String**| Promotion ID | 
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **promotionId** | **String**| Unique identifier of a promotion | 
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -185,9 +185,9 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.PromotionsApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'order': "ASCENDING", // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  'bookmark': "bookmark_example" // String | Cursor used to fetch the next page of items
+  'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
+  'pageSize': 25, // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  'order': new PinterestSdk.PinterestLibPaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 };
 apiInstance.promotionsList(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -204,9 +204,9 @@ apiInstance.promotionsList(adAccountId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## promotionsUpdate
 
-> PromotionsResponse promotionsUpdate(adAccountId, promotionUpdateRequest)
+> PromotionsResponse promotionsUpdate(adAccountId, promotionBatchUpdate)
 
 Update promotions
 
@@ -241,8 +241,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.PromotionsApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let promotionUpdateRequest = [new PinterestSdk.PromotionUpdateRequest()]; // [PromotionUpdateRequest] | List of promotions to create, size limit [1, 30].
-apiInstance.promotionsUpdate(adAccountId, promotionUpdateRequest, (error, data, response) => {
+let promotionBatchUpdate = [new PinterestSdk.PromotionBatchUpdate()]; // [PromotionBatchUpdate] | 
+apiInstance.promotionsUpdate(adAccountId, promotionBatchUpdate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -257,7 +257,7 @@ apiInstance.promotionsUpdate(adAccountId, promotionUpdateRequest, (error, data, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **promotionUpdateRequest** | [**[PromotionUpdateRequest]**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotionBatchUpdate** | [**[PromotionBatchUpdate]**](PromotionBatchUpdate.md)|  | 
 
 ### Return type
 

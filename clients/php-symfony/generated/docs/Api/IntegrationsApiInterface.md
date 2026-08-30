@@ -25,7 +25,7 @@ services:
 ```
 
 ## **integrationsCommerceDel**
-> integrationsCommerceDel($externalBusinessId)
+> OpenAPI\Server\Model\IntegrationMetadata integrationsCommerceDel($externalBusinessId)
 
 Delete commerce integration
 
@@ -56,7 +56,7 @@ class IntegrationsApi implements IntegrationsApiInterface
     /**
      * Implementation of IntegrationsApiInterface#integrationsCommerceDel
      */
-    public function integrationsCommerceDel(string $externalBusinessId, int &$responseCode, array &$responseHeaders): void
+    public function integrationsCommerceDel(string $externalBusinessId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OpenAPI\Server\Model\IntegrationMetadata**](../Model/IntegrationMetadata.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **integrationsCommercePatch**
-> OpenAPI\Server\Model\IntegrationMetadata integrationsCommercePatch($externalBusinessId, $integrationRequestPatch)
+> OpenAPI\Server\Model\IntegrationMetadata integrationsCommercePatch($externalBusinessId, $integrationMetadataUpdate)
 
 Update commerce integration
 
@@ -180,7 +180,7 @@ class IntegrationsApi implements IntegrationsApiInterface
     /**
      * Implementation of IntegrationsApiInterface#integrationsCommercePatch
      */
-    public function integrationsCommercePatch(string $externalBusinessId, IntegrationRequestPatch $integrationRequestPatch, int &$responseCode, array &$responseHeaders): array|object|null
+    public function integrationsCommercePatch(string $externalBusinessId, IntegrationMetadataUpdate $integrationMetadataUpdate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -194,7 +194,7 @@ class IntegrationsApi implements IntegrationsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **string**| External business ID for the integration. |
- **integrationRequestPatch** | [**OpenAPI\Server\Model\IntegrationRequestPatch**](../Model/IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata |
+ **integrationMetadataUpdate** | [**OpenAPI\Server\Model\IntegrationMetadataUpdate**](../Model/IntegrationMetadataUpdate.md)|  |
 
 ### Return type
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **integrationsCommercePost**
-> OpenAPI\Server\Model\IntegrationMetadata integrationsCommercePost($integrationRequest)
+> OpenAPI\Server\Model\IntegrationMetadata integrationsCommercePost($integrationMetadataCreate)
 
 Create commerce integration
 
@@ -243,7 +243,7 @@ class IntegrationsApi implements IntegrationsApiInterface
     /**
      * Implementation of IntegrationsApiInterface#integrationsCommercePost
      */
-    public function integrationsCommercePost(IntegrationRequest $integrationRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function integrationsCommercePost(IntegrationMetadataCreate $integrationMetadataCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -256,7 +256,7 @@ class IntegrationsApi implements IntegrationsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**OpenAPI\Server\Model\IntegrationRequest**](../Model/IntegrationRequest.md)| Parameters to get create/update the Integration Metadata |
+ **integrationMetadataCreate** | [**OpenAPI\Server\Model\IntegrationMetadataCreate**](../Model/IntegrationMetadataCreate.md)|  |
 
 ### Return type
 
@@ -318,7 +318,7 @@ class IntegrationsApi implements IntegrationsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| Integration ID. |
+ **id** | **string**| Integration record ID. |
 
 ### Return type
 
@@ -381,7 +381,7 @@ class IntegrationsApi implements IntegrationsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -399,7 +399,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **integrationsLogsPost**
-> OpenAPI\Server\Model\IntegrationLogsSuccessResponse integrationsLogsPost($integrationLogsRequest)
+> OpenAPI\Server\Model\IntegrationLogsSuccessResponse integrationsLogsPost($integrationLogsRequestCreate)
 
 Receives batched logs from integration applications.
 
@@ -430,7 +430,7 @@ class IntegrationsApi implements IntegrationsApiInterface
     /**
      * Implementation of IntegrationsApiInterface#integrationsLogsPost
      */
-    public function integrationsLogsPost(IntegrationLogsRequest $integrationLogsRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function integrationsLogsPost(IntegrationLogsRequestCreate $integrationLogsRequestCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -443,7 +443,7 @@ class IntegrationsApi implements IntegrationsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationLogsRequest** | [**OpenAPI\Server\Model\IntegrationLogsRequest**](../Model/IntegrationLogsRequest.md)| Ingest log information from external integration application. |
+ **integrationLogsRequestCreate** | [**OpenAPI\Server\Model\IntegrationLogsRequestCreate**](../Model/IntegrationLogsRequestCreate.md)|  |
 
 ### Return type
 

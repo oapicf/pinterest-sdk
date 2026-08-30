@@ -46,167 +46,167 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get 
+	/*! \brief Get Item has an invalid adult value.
 	 */
 	CatalogsItemValidationDetails getADULTINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Item has an invalid adult value.
 	 */
-	void setADULTINVALID(CatalogsItemValidationDetails  aDULT_INVALID);
-	/*! \brief Get 
+	void setADULTINVALID(CatalogsItemValidationDetails aDULT_INVALID);
+	/*! \brief Get Adword link contains too many characters.
 	 */
 	CatalogsItemValidationDetails getADWORDSFORMATINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Adword link contains too many characters.
 	 */
-	void setADWORDSFORMATINVALID(CatalogsItemValidationDetails  aDWORDS_FORMAT_INVALID);
-	/*! \brief Get 
+	void setADWORDSFORMATINVALID(CatalogsItemValidationDetails aDWORDS_FORMAT_INVALID);
+	/*! \brief Get Item is missing availability value in its product metadata, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getAVAILABILITYINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Item is missing availability value in its product metadata, this item will not be published.
 	 */
-	void setAVAILABILITYINVALID(CatalogsItemValidationDetails  aVAILABILITY_INVALID);
-	/*! \brief Get 
+	void setAVAILABILITYINVALID(CatalogsItemValidationDetails aVAILABILITY_INVALID);
+	/*! \brief Get Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
 	 */
 	CatalogsItemValidationDetails getBLOCKLISTEDIMAGESIGNATURE();
 
-	/*! \brief Set 
+	/*! \brief Set Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
 	 */
-	void setBLOCKLISTEDIMAGESIGNATURE(CatalogsItemValidationDetails  bLOCKLISTED_IMAGE_SIGNATURE);
-	/*! \brief Get 
+	void setBLOCKLISTEDIMAGESIGNATURE(CatalogsItemValidationDetails bLOCKLISTED_IMAGE_SIGNATURE);
+	/*! \brief Get Item is missing description in its product metadata, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getDESCRIPTIONMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Item is missing description in its product metadata, this item will not be published.
 	 */
-	void setDESCRIPTIONMISSING(CatalogsItemValidationDetails  dESCRIPTION_MISSING);
-	/*! \brief Get 
+	void setDESCRIPTIONMISSING(CatalogsItemValidationDetails dESCRIPTION_MISSING);
+	/*! \brief Get This product is duplicated. The duplicate entry will not be published.
 	 */
 	CatalogsItemValidationDetails getDUPLICATEPRODUCTS();
 
-	/*! \brief Set 
+	/*! \brief Set This product is duplicated. The duplicate entry will not be published.
 	 */
-	void setDUPLICATEPRODUCTS(CatalogsItemValidationDetails  dUPLICATE_PRODUCTS);
-	/*! \brief Get 
+	void setDUPLICATEPRODUCTS(CatalogsItemValidationDetails dUPLICATE_PRODUCTS);
+	/*! \brief Get Image link is invalid.
 	 */
 	CatalogsItemValidationDetails getIMAGELINKINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Image link is invalid.
 	 */
-	void setIMAGELINKINVALID(CatalogsItemValidationDetails  iMAGE_LINK_INVALID);
-	/*! \brief Get 
+	void setIMAGELINKINVALID(CatalogsItemValidationDetails iMAGE_LINK_INVALID);
+	/*! \brief Get Item has image_link URL that contains too many characters, so the item will not be published.
 	 */
 	CatalogsItemValidationDetails getIMAGELINKLENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set Item has image_link URL that contains too many characters, so the item will not be published.
 	 */
-	void setIMAGELINKLENGTHTOOLONG(CatalogsItemValidationDetails  iMAGE_LINK_LENGTH_TOO_LONG);
-	/*! \brief Get 
+	void setIMAGELINKLENGTHTOOLONG(CatalogsItemValidationDetails iMAGE_LINK_LENGTH_TOO_LONG);
+	/*! \brief Get Item is missing an image link URL in its product metadata, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getIMAGELINKMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Item is missing an image link URL in its product metadata, this item will not be published.
 	 */
-	void setIMAGELINKMISSING(CatalogsItemValidationDetails  iMAGE_LINK_MISSING);
-	/*! \brief Get 
+	void setIMAGELINKMISSING(CatalogsItemValidationDetails iMAGE_LINK_MISSING);
+	/*! \brief Get Product link value doesn't match the verified domain associated with this account.
 	 */
 	CatalogsItemValidationDetails getINVALIDDOMAIN();
 
-	/*! \brief Set 
+	/*! \brief Set Product link value doesn't match the verified domain associated with this account.
 	 */
-	void setINVALIDDOMAIN(CatalogsItemValidationDetails  iNVALID_DOMAIN);
-	/*! \brief Get 
+	void setINVALIDDOMAIN(CatalogsItemValidationDetails iNVALID_DOMAIN);
+	/*! \brief Get Main image can't be found.
 	 */
 	CatalogsItemValidationDetails getITEMMAINIMAGEDOWNLOADFAILURE();
 
-	/*! \brief Set 
+	/*! \brief Set Main image can't be found.
 	 */
-	void setITEMMAINIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails  iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE);
-	/*! \brief Get 
+	void setITEMMAINIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE);
+	/*! \brief Get Item is missing item id in its product metadata, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getITEMIDMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Item is missing item id in its product metadata, this item will not be published.
 	 */
-	void setITEMIDMISSING(CatalogsItemValidationDetails  iTEMID_MISSING);
-	/*! \brief Get 
+	void setITEMIDMISSING(CatalogsItemValidationDetails iTEMID_MISSING);
+	/*! \brief Get Link is invalid.
 	 */
 	CatalogsItemValidationDetails getLINKFORMATINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Link is invalid.
 	 */
-	void setLINKFORMATINVALID(CatalogsItemValidationDetails  lINK_FORMAT_INVALID);
-	/*! \brief Get 
+	void setLINKFORMATINVALID(CatalogsItemValidationDetails lINK_FORMAT_INVALID);
+	/*! \brief Get Product link contains too many characters, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getLINKLENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set Product link contains too many characters, this item will not be published.
 	 */
-	void setLINKLENGTHTOOLONG(CatalogsItemValidationDetails  lINK_LENGTH_TOO_LONG);
-	/*! \brief Get 
+	void setLINKLENGTHTOOLONG(CatalogsItemValidationDetails lINK_LENGTH_TOO_LONG);
+	/*! \brief Get Item has a list price formatting error, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getLISTPRICEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Item has a list price formatting error, this item will not be published.
 	 */
-	void setLISTPRICEINVALID(CatalogsItemValidationDetails  lIST_PRICE_INVALID);
-	/*! \brief Get 
+	void setLISTPRICEINVALID(CatalogsItemValidationDetails lIST_PRICE_INVALID);
+	/*! \brief Get Item exceed the maximum number of items per item group, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getMAXITEMSPERITEMGROUPEXCEEDED();
 
-	/*! \brief Set 
+	/*! \brief Set Item exceed the maximum number of items per item group, this item will not be published.
 	 */
-	void setMAXITEMSPERITEMGROUPEXCEEDED(CatalogsItemValidationDetails  mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED);
-	/*! \brief Get 
+	void setMAXITEMSPERITEMGROUPEXCEEDED(CatalogsItemValidationDetails mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED);
+	/*! \brief Get Item contains formating errors.
 	 */
 	CatalogsItemValidationDetails getPARSELINEERROR();
 
-	/*! \brief Set 
+	/*! \brief Set Item contains formating errors.
 	 */
-	void setPARSELINEERROR(CatalogsItemValidationDetails  pARSE_LINE_ERROR);
-	/*! \brief Get 
+	void setPARSELINEERROR(CatalogsItemValidationDetails pARSE_LINE_ERROR);
+	/*! \brief Get Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
 	 */
 	CatalogsItemValidationDetails getPINJOINCONTENTUNSAFE();
 
-	/*! \brief Set 
+	/*! \brief Set Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
 	 */
-	void setPINJOINCONTENTUNSAFE(CatalogsItemValidationDetails  pINJOIN_CONTENT_UNSAFE);
-	/*! \brief Get 
+	void setPINJOINCONTENTUNSAFE(CatalogsItemValidationDetails pINJOIN_CONTENT_UNSAFE);
+	/*! \brief Get Item price cannot be determined because the price, list price, and sale price are all different.
 	 */
 	CatalogsItemValidationDetails getPRICECANNOTBEDETERMINED();
 
-	/*! \brief Set 
+	/*! \brief Set Item price cannot be determined because the price, list price, and sale price are all different.
 	 */
-	void setPRICECANNOTBEDETERMINED(CatalogsItemValidationDetails  pRICE_CANNOT_BE_DETERMINED);
-	/*! \brief Get 
+	void setPRICECANNOTBEDETERMINED(CatalogsItemValidationDetails pRICE_CANNOT_BE_DETERMINED);
+	/*! \brief Get Product is missing a price, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getPRICEMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Product is missing a price, this item will not be published.
 	 */
-	void setPRICEMISSING(CatalogsItemValidationDetails  pRICE_MISSING);
-	/*! \brief Get 
+	void setPRICEMISSING(CatalogsItemValidationDetails pRICE_MISSING);
+	/*! \brief Get Item is missing a link URL in its product metadata, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getPRODUCTLINKMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Item is missing a link URL in its product metadata, this item will not be published.
 	 */
-	void setPRODUCTLINKMISSING(CatalogsItemValidationDetails  pRODUCT_LINK_MISSING);
-	/*! \brief Get 
+	void setPRODUCTLINKMISSING(CatalogsItemValidationDetails pRODUCT_LINK_MISSING);
+	/*! \brief Get Item has a price formatting error in its product metadata, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getPRODUCTPRICEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Item has a price formatting error in its product metadata, this item will not be published.
 	 */
-	void setPRODUCTPRICEINVALID(CatalogsItemValidationDetails  pRODUCT_PRICE_INVALID);
-	/*! \brief Get 
+	void setPRODUCTPRICEINVALID(CatalogsItemValidationDetails pRODUCT_PRICE_INVALID);
+	/*! \brief Get Item is missing title in its product metadata, this item will not be published.
 	 */
 	CatalogsItemValidationDetails getTITLEMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Item is missing title in its product metadata, this item will not be published.
 	 */
-	void setTITLEMISSING(CatalogsItemValidationDetails  tITLE_MISSING);
+	void setTITLEMISSING(CatalogsItemValidationDetails tITLE_MISSING);
 
 
     private:

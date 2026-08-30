@@ -11,29 +11,29 @@
 part of openapi.api;
 
 
-class PartnerType {
-  /// Instantiate a new enum with the provided [value].
-  const PartnerType._(this.value);
+enum PartnerType {
+  INTERNAL._(r'INTERNAL'),
+  EXTERNAL._(r'EXTERNAL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PartnerType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const INTERNAL = PartnerType._(r'INTERNAL');
-  static const EXTERNAL = PartnerType._(r'EXTERNAL');
-
-  /// List of all possible values in this [enum][PartnerType].
-  static const values = <PartnerType>[
-    INTERNAL,
-    EXTERNAL,
-  ];
-
+  /// Returns the instance of [PartnerType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PartnerType? fromJson(dynamic value) => PartnerTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PartnerType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PartnerType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PartnerType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class PartnerTypeTypeTransformer {
 
   const PartnerTypeTypeTransformer._();
 
-  String encode(PartnerType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(PartnerType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PartnerType.
+  /// Returns the instance of [PartnerType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class PartnerTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PartnerType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PartnerType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'INTERNAL': return PartnerType.INTERNAL;
@@ -79,7 +84,7 @@ class PartnerTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [PartnerTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PartnerTypeTypeTransformer? _instance;
 }
 

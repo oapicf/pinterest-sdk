@@ -4,43 +4,29 @@
 #include "placement_multipliers.h"
 
 
-char* placement_multipliers_placement_ToString(pinterest_rest_api_placement_multipliers_PLACEMENT_e placement) {
-    char* placementArray[] =  { "NULL", "SEARCH", "BROWSE", "RELATED_PINS" };
-    return placementArray[placement];
-}
-
-pinterest_rest_api_placement_multipliers_PLACEMENT_e placement_multipliers_placement_FromString(char* placement){
-    int stringToReturn = 0;
-    char *placementArray[] =  { "NULL", "SEARCH", "BROWSE", "RELATED_PINS" };
-    size_t sizeofArray = sizeof(placementArray) / sizeof(placementArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(placement, placementArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static placement_multipliers_t *placement_multipliers_create_internal(
-    pinterest_rest_api_placement_multipliers_PLACEMENT_e placement
+    placement_type_t *placement
     ) {
     placement_multipliers_t *placement_multipliers_local_var = malloc(sizeof(placement_multipliers_t));
     if (!placement_multipliers_local_var) {
         return NULL;
     }
-    placement_multipliers_local_var->placement = placement;
-
+    memset(placement_multipliers_local_var, 0, sizeof(placement_multipliers_t));
     placement_multipliers_local_var->_library_owned = 1;
+    placement_multipliers_local_var->placement = placement;
     return placement_multipliers_local_var;
 }
 
 __attribute__((deprecated)) placement_multipliers_t *placement_multipliers_create(
-    pinterest_rest_api_placement_multipliers_PLACEMENT_e placement
+    placement_type_t *placement
     ) {
-    return placement_multipliers_create_internal (
+    placement_multipliers_t *result = placement_multipliers_create_internal (
         placement
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void placement_multipliers_free(placement_multipliers_t *placement_multipliers) {
@@ -52,6 +38,10 @@ void placement_multipliers_free(placement_multipliers_t *placement_multipliers) 
         return ;
     }
     listEntry_t *listEntry;
+    if (placement_multipliers->placement) {
+        placement_type_free(placement_multipliers->placement);
+        placement_multipliers->placement = NULL;
+    }
     free(placement_multipliers);
 }
 
@@ -59,10 +49,14 @@ cJSON *placement_multipliers_convertToJSON(placement_multipliers_t *placement_mu
     cJSON *item = cJSON_CreateObject();
 
     // placement_multipliers->placement
-    if(placement_multipliers->placement != pinterest_rest_api_placement_multipliers_PLACEMENT_NULL) {
-    if(cJSON_AddStringToObject(item, "PLACEMENT", placement_multipliers_placement_ToString(placement_multipliers->placement)) == NULL)
-    {
-    goto fail; //Enum
+    if(placement_multipliers->placement) {
+    cJSON *placement_local_JSON = placement_type_convertToJSON(placement_multipliers->placement);
+    if(placement_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "PLACEMENT", placement_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -78,27 +72,34 @@ placement_multipliers_t *placement_multipliers_parseFromJSON(cJSON *placement_mu
 
     placement_multipliers_t *placement_multipliers_local_var = NULL;
 
+    // define the local variable for placement_multipliers->placement
+    placement_type_t *placement_local_nonprim = NULL;
+
     // placement_multipliers->placement
     cJSON *placement = cJSON_GetObjectItemCaseSensitive(placement_multipliersJSON, "PLACEMENT");
     if (cJSON_IsNull(placement)) {
         placement = NULL;
     }
-    pinterest_rest_api_placement_multipliers_PLACEMENT_e placementVariable;
     if (placement) { 
-    if(!cJSON_IsString(placement))
-    {
-    goto end; //Enum
+    placement_local_nonprim = placement_type_parseFromJSON(placement); //custom
     }
-    placementVariable = placement_multipliers_placement_FromString(placement->valuestring);
-    }
+
 
 
     placement_multipliers_local_var = placement_multipliers_create_internal (
-        placement ? placementVariable : pinterest_rest_api_placement_multipliers_PLACEMENT_NULL
+        placement ? placement_local_nonprim : NULL
         );
+
+    if (!placement_multipliers_local_var) {
+        goto end;
+    }
 
     return placement_multipliers_local_var;
 end:
+    if (placement_local_nonprim) {
+        placement_type_free(placement_local_nonprim);
+        placement_local_nonprim = NULL;
+    }
     return NULL;
 
 }

@@ -10,9 +10,9 @@
 import { CatalogsFeedProcessingSchedule } from './catalogsFeedProcessingSchedule';
 import { ProductAvailabilityType } from './productAvailabilityType';
 import { CatalogsStatus } from './catalogsStatus';
-import { CatalogsFeedsCreateRequestDefaultLocale } from './catalogsFeedsCreateRequestDefaultLocale';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
 import { Country } from './country';
+import { CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale } from './catalogsCreativeAssetsFeedsCreateRequestDefaultLocale';
 import { CatalogsFormat } from './catalogsFormat';
 import { NullableCurrency } from './nullableCurrency';
 
@@ -25,7 +25,7 @@ export interface CatalogsFeedsCreateRequest {
     default_availability?: ProductAvailabilityType | null;
     default_country?: Country;
     default_currency?: NullableCurrency | null;
-    default_locale?: CatalogsFeedsCreateRequestDefaultLocale;
+    default_locale?: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
     format: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.

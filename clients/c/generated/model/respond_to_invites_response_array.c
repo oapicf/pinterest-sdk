@@ -12,18 +12,21 @@ static respond_to_invites_response_array_t *respond_to_invites_response_array_cr
     if (!respond_to_invites_response_array_local_var) {
         return NULL;
     }
-    respond_to_invites_response_array_local_var->items = items;
-
+    memset(respond_to_invites_response_array_local_var, 0, sizeof(respond_to_invites_response_array_t));
     respond_to_invites_response_array_local_var->_library_owned = 1;
+    respond_to_invites_response_array_local_var->items = items;
     return respond_to_invites_response_array_local_var;
 }
 
 __attribute__((deprecated)) respond_to_invites_response_array_t *respond_to_invites_response_array_create(
     list_t *items
     ) {
-    return respond_to_invites_response_array_create_internal (
+    respond_to_invites_response_array_t *result = respond_to_invites_response_array_create_internal (
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void respond_to_invites_response_array_free(respond_to_invites_response_array_t *respond_to_invites_response_array) {
@@ -37,7 +40,7 @@ void respond_to_invites_response_array_free(respond_to_invites_response_array_t 
     listEntry_t *listEntry;
     if (respond_to_invites_response_array->items) {
         list_ForEach(listEntry, respond_to_invites_response_array->items) {
-            respond_to_invites_response_array_items_inner_free(listEntry->data);
+            respond_to_invite_result_item_free(listEntry->data);
         }
         list_freeList(respond_to_invites_response_array->items);
         respond_to_invites_response_array->items = NULL;
@@ -58,7 +61,7 @@ cJSON *respond_to_invites_response_array_convertToJSON(respond_to_invites_respon
     listEntry_t *itemsListEntry;
     if (respond_to_invites_response_array->items) {
     list_ForEach(itemsListEntry, respond_to_invites_response_array->items) {
-    cJSON *itemLocal = respond_to_invites_response_array_items_inner_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = respond_to_invite_result_item_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -100,23 +103,28 @@ respond_to_invites_response_array_t *respond_to_invites_response_array_parseFrom
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        respond_to_invites_response_array_items_inner_t *itemsItem = respond_to_invites_response_array_items_inner_parseFromJSON(items_local_nonprimitive);
+        respond_to_invite_result_item_t *itemsItem = respond_to_invite_result_item_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
     }
 
 
+
     respond_to_invites_response_array_local_var = respond_to_invites_response_array_create_internal (
         items ? itemsList : NULL
         );
+
+    if (!respond_to_invites_response_array_local_var) {
+        goto end;
+    }
 
     return respond_to_invites_response_array_local_var;
 end:
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            respond_to_invites_response_array_items_inner_free(listEntry->data);
+            respond_to_invite_result_item_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

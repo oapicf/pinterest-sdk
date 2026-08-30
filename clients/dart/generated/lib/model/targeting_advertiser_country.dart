@@ -11,101 +11,65 @@
 part of openapi.api;
 
 /// Advertiser's ISO two character country code.
-class TargetingAdvertiserCountry {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingAdvertiserCountry._(this.value);
+enum TargetingAdvertiserCountry {
+  US._(r'US'),
+  GB._(r'GB'),
+  CA._(r'CA'),
+  IE._(r'IE'),
+  AU._(r'AU'),
+  NZ._(r'NZ'),
+  FR._(r'FR'),
+  SE._(r'SE'),
+  IL._(r'IL'),
+  DE._(r'DE'),
+  AT._(r'AT'),
+  IT._(r'IT'),
+  ES._(r'ES'),
+  NL._(r'NL'),
+  BE._(r'BE'),
+  PT._(r'PT'),
+  CH._(r'CH'),
+  HK._(r'HK'),
+  JP._(r'JP'),
+  KR._(r'KR'),
+  SG._(r'SG'),
+  false_._(r'false'),
+  DK._(r'DK'),
+  FI._(r'FI'),
+  CY._(r'CY'),
+  LU._(r'LU'),
+  MT._(r'MT'),
+  PL._(r'PL'),
+  RO._(r'RO'),
+  HU._(r'HU'),
+  CZ._(r'CZ'),
+  GR._(r'GR'),
+  SK._(r'SK'),
+  BR._(r'BR'),
+  MX._(r'MX'),
+  AR._(r'AR'),
+  CL._(r'CL'),
+  CO._(r'CO'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingAdvertiserCountry._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const US = TargetingAdvertiserCountry._(r'US');
-  static const GB = TargetingAdvertiserCountry._(r'GB');
-  static const CA = TargetingAdvertiserCountry._(r'CA');
-  static const IE = TargetingAdvertiserCountry._(r'IE');
-  static const AU = TargetingAdvertiserCountry._(r'AU');
-  static const NZ = TargetingAdvertiserCountry._(r'NZ');
-  static const FR = TargetingAdvertiserCountry._(r'FR');
-  static const SE = TargetingAdvertiserCountry._(r'SE');
-  static const IL = TargetingAdvertiserCountry._(r'IL');
-  static const DE = TargetingAdvertiserCountry._(r'DE');
-  static const AT = TargetingAdvertiserCountry._(r'AT');
-  static const IT = TargetingAdvertiserCountry._(r'IT');
-  static const ES = TargetingAdvertiserCountry._(r'ES');
-  static const NL = TargetingAdvertiserCountry._(r'NL');
-  static const BE = TargetingAdvertiserCountry._(r'BE');
-  static const PT = TargetingAdvertiserCountry._(r'PT');
-  static const CH = TargetingAdvertiserCountry._(r'CH');
-  static const HK = TargetingAdvertiserCountry._(r'HK');
-  static const JP = TargetingAdvertiserCountry._(r'JP');
-  static const KR = TargetingAdvertiserCountry._(r'KR');
-  static const SG = TargetingAdvertiserCountry._(r'SG');
-  static const NO = TargetingAdvertiserCountry._(r'NO');
-  static const DK = TargetingAdvertiserCountry._(r'DK');
-  static const FI = TargetingAdvertiserCountry._(r'FI');
-  static const CY = TargetingAdvertiserCountry._(r'CY');
-  static const LU = TargetingAdvertiserCountry._(r'LU');
-  static const MT = TargetingAdvertiserCountry._(r'MT');
-  static const PL = TargetingAdvertiserCountry._(r'PL');
-  static const RO = TargetingAdvertiserCountry._(r'RO');
-  static const HU = TargetingAdvertiserCountry._(r'HU');
-  static const CZ = TargetingAdvertiserCountry._(r'CZ');
-  static const GR = TargetingAdvertiserCountry._(r'GR');
-  static const SK = TargetingAdvertiserCountry._(r'SK');
-  static const BR = TargetingAdvertiserCountry._(r'BR');
-  static const MX = TargetingAdvertiserCountry._(r'MX');
-  static const AR = TargetingAdvertiserCountry._(r'AR');
-  static const CL = TargetingAdvertiserCountry._(r'CL');
-  static const CO = TargetingAdvertiserCountry._(r'CO');
-
-  /// List of all possible values in this [enum][TargetingAdvertiserCountry].
-  static const values = <TargetingAdvertiserCountry>[
-    US,
-    GB,
-    CA,
-    IE,
-    AU,
-    NZ,
-    FR,
-    SE,
-    IL,
-    DE,
-    AT,
-    IT,
-    ES,
-    NL,
-    BE,
-    PT,
-    CH,
-    HK,
-    JP,
-    KR,
-    SG,
-    NO,
-    DK,
-    FI,
-    CY,
-    LU,
-    MT,
-    PL,
-    RO,
-    HU,
-    CZ,
-    GR,
-    SK,
-    BR,
-    MX,
-    AR,
-    CL,
-    CO,
-  ];
-
+  /// Returns the instance of [TargetingAdvertiserCountry] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingAdvertiserCountry? fromJson(dynamic value) => TargetingAdvertiserCountryTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingAdvertiserCountry]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingAdvertiserCountry> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingAdvertiserCountry>[];
     if (json is List && json.isNotEmpty) {
@@ -127,9 +91,11 @@ class TargetingAdvertiserCountryTypeTransformer {
 
   const TargetingAdvertiserCountryTypeTransformer._();
 
-  String encode(TargetingAdvertiserCountry data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(TargetingAdvertiserCountry data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingAdvertiserCountry.
+  /// Returns the instance of [TargetingAdvertiserCountry] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -138,6 +104,9 @@ class TargetingAdvertiserCountryTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingAdvertiserCountry? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingAdvertiserCountry) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'US': return TargetingAdvertiserCountry.US;
@@ -161,7 +130,7 @@ class TargetingAdvertiserCountryTypeTransformer {
         case r'JP': return TargetingAdvertiserCountry.JP;
         case r'KR': return TargetingAdvertiserCountry.KR;
         case r'SG': return TargetingAdvertiserCountry.SG;
-        case r'NO': return TargetingAdvertiserCountry.NO;
+        case r'false': return TargetingAdvertiserCountry.false_;
         case r'DK': return TargetingAdvertiserCountry.DK;
         case r'FI': return TargetingAdvertiserCountry.FI;
         case r'CY': return TargetingAdvertiserCountry.CY;
@@ -187,7 +156,7 @@ class TargetingAdvertiserCountryTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingAdvertiserCountryTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingAdvertiserCountryTypeTransformer? _instance;
 }
 

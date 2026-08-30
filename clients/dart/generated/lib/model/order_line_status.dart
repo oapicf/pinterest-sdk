@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// Order Line Status
-class OrderLineStatus {
-  /// Instantiate a new enum with the provided [value].
-  const OrderLineStatus._(this.value);
+enum OrderLineStatus {
+  ACTIVE._(r'ACTIVE'),
+  PAUSED._(r'PAUSED'),
+  DELETED._(r'DELETED'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const OrderLineStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const ACTIVE = OrderLineStatus._(r'ACTIVE');
-  static const PAUSED = OrderLineStatus._(r'PAUSED');
-  static const DELETED = OrderLineStatus._(r'DELETED');
-
-  /// List of all possible values in this [enum][OrderLineStatus].
-  static const values = <OrderLineStatus>[
-    ACTIVE,
-    PAUSED,
-    DELETED,
-  ];
-
+  /// Returns the instance of [OrderLineStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static OrderLineStatus? fromJson(dynamic value) => OrderLineStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [OrderLineStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<OrderLineStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <OrderLineStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class OrderLineStatusTypeTransformer {
 
   const OrderLineStatusTypeTransformer._();
 
-  String encode(OrderLineStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(OrderLineStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a OrderLineStatus.
+  /// Returns the instance of [OrderLineStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class OrderLineStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   OrderLineStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is OrderLineStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'ACTIVE': return OrderLineStatus.ACTIVE;
@@ -82,7 +86,7 @@ class OrderLineStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [OrderLineStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static OrderLineStatusTypeTransformer? _instance;
 }
 

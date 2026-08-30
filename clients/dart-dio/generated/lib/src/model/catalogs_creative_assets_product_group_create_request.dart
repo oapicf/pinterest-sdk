@@ -13,14 +13,14 @@ part 'catalogs_creative_assets_product_group_create_request.g.dart';
 /// Request object for creating a creative assets product group.
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the creative assets product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [description] 
 /// * [filters] 
 /// * [name] 
 @BuiltValue()
 abstract class CatalogsCreativeAssetsProductGroupCreateRequest implements Built<CatalogsCreativeAssetsProductGroupCreateRequest, CatalogsCreativeAssetsProductGroupCreateRequestBuilder> {
-  /// Catalog id pertaining to the creative assets product group.
+  /// Catalog ID pertaining to the product group.
   @BuiltValueField(wireName: r'catalog_id')
   String get catalogId;
 

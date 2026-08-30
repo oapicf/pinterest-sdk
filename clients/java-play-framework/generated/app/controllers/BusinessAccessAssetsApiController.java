@@ -1,23 +1,25 @@
 package controllers;
 
+import apimodels.AssetGroupDeletion;
+import apimodels.AssetGroupDeletionDelete;
+import apimodels.AssetGroupInput;
+import apimodels.AssetGroupInputCreate;
+import apimodels.AssetGroupModification;
+import apimodels.AssetGroupModificationReadOrUpdate;
+import apimodels.AssetPermissionType;
+import apimodels.AssetSearchBy;
+import apimodels.AssetSortBy;
 import apimodels.BusinessAssetMembersGet200Response;
-import apimodels.BusinessAssetPartnersGet200Response;
 import apimodels.BusinessAssetsGet200Response;
-import apimodels.BusinessMemberAssetsGet200Response;
-import apimodels.BusinessMembersAssetAccessDeleteRequest;
+import apimodels.BusinessMemberAssetsGetResponse;
+import apimodels.BusinessMembersAssetAccessDeleteBody;
 import apimodels.BusinessPartnerAssetAccessGet200Response;
-import apimodels.CreateAssetGroupBody;
-import apimodels.CreateAssetGroupResponse;
-import apimodels.DeleteAssetGroupBody;
-import apimodels.DeleteAssetGroupResponse;
 import apimodels.DeleteMemberAccessResultsResponseArray;
 import apimodels.DeletePartnerAssetAccessBody;
-import apimodels.DeletePartnerAssetsResultsResponseArray;
-import apimodels.Error;
-import apimodels.PartnerType;
+import apimodels.DeletePartnerAssetAccessResultsResponseArray;
+import apimodels.NonDraftEntityStatus;
 import apimodels.PermissionsWithOwner;
-import apimodels.UpdateAssetGroupBody;
-import apimodels.UpdateAssetGroupResponse;
+import apimodels.PinterestLibError;
 import apimodels.UpdateMemberAssetAccessBody;
 import apimodels.UpdateMemberAssetsResultsResponseArray;
 import apimodels.UpdatePartnerAssetAccessBody;
@@ -45,7 +47,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAccessAssetsApiController extends Controller {
     private final BusinessAccessAssetsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -60,51 +62,58 @@ public class BusinessAccessAssetsApiController extends Controller {
 
     @ApiAction
     public Result assetGroupCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
-        JsonNode nodecreateAssetGroupBody = request.body().asJson();
-        CreateAssetGroupBody createAssetGroupBody;
-        if (nodecreateAssetGroupBody != null) {
-            createAssetGroupBody = mapper.readValue(nodecreateAssetGroupBody.toString(), CreateAssetGroupBody.class);
+        JsonNode nodeassetGroupInputCreate = request.body().asJson();
+        AssetGroupInputCreate assetGroupInputCreate;
+        if (nodeassetGroupInputCreate != null) {
+            assetGroupInputCreate = mapper.readValue(nodeassetGroupInputCreate.toString(), AssetGroupInputCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(createAssetGroupBody);
+                OpenAPIUtils.validate(assetGroupInputCreate);
             }
         } else {
-            throw new IllegalArgumentException("'CreateAssetGroupBody' parameter is required");
+            throw new IllegalArgumentException("'AssetGroupInputCreate' parameter is required");
         }
-        return imp.assetGroupCreateHttp(request, businessId, createAssetGroupBody);
+        return imp.assetGroupCreateHttp(request, businessId, assetGroupInputCreate);
     }
 
     @ApiAction
     public Result assetGroupDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
-        JsonNode nodedeleteAssetGroupBody = request.body().asJson();
-        DeleteAssetGroupBody deleteAssetGroupBody;
-        if (nodedeleteAssetGroupBody != null) {
-            deleteAssetGroupBody = mapper.readValue(nodedeleteAssetGroupBody.toString(), DeleteAssetGroupBody.class);
+        JsonNode nodeassetGroupDeletionDelete = request.body().asJson();
+        AssetGroupDeletionDelete assetGroupDeletionDelete;
+        if (nodeassetGroupDeletionDelete != null) {
+            assetGroupDeletionDelete = mapper.readValue(nodeassetGroupDeletionDelete.toString(), AssetGroupDeletionDelete.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(deleteAssetGroupBody);
+                OpenAPIUtils.validate(assetGroupDeletionDelete);
             }
         } else {
-            throw new IllegalArgumentException("'DeleteAssetGroupBody' parameter is required");
+            throw new IllegalArgumentException("'AssetGroupDeletionDelete' parameter is required");
         }
-        return imp.assetGroupDeleteHttp(request, businessId, deleteAssetGroupBody);
+        return imp.assetGroupDeleteHttp(request, businessId, assetGroupDeletionDelete);
     }
 
     @ApiAction
     public Result assetGroupUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
-        JsonNode nodeupdateAssetGroupBody = request.body().asJson();
-        UpdateAssetGroupBody updateAssetGroupBody;
-        if (nodeupdateAssetGroupBody != null) {
-            updateAssetGroupBody = mapper.readValue(nodeupdateAssetGroupBody.toString(), UpdateAssetGroupBody.class);
+        JsonNode nodeassetGroupModificationReadOrUpdate = request.body().asJson();
+        AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate;
+        if (nodeassetGroupModificationReadOrUpdate != null) {
+            assetGroupModificationReadOrUpdate = mapper.readValue(nodeassetGroupModificationReadOrUpdate.toString(), AssetGroupModificationReadOrUpdate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(updateAssetGroupBody);
+                OpenAPIUtils.validate(assetGroupModificationReadOrUpdate);
             }
         } else {
-            throw new IllegalArgumentException("'UpdateAssetGroupBody' parameter is required");
+            throw new IllegalArgumentException("'AssetGroupModificationReadOrUpdate' parameter is required");
         }
-        return imp.assetGroupUpdateHttp(request, businessId, updateAssetGroupBody);
+        return imp.assetGroupUpdateHttp(request, businessId, assetGroupModificationReadOrUpdate);
     }
 
     @ApiAction
     public Result businessAssetMembersGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId) throws Exception {
+        String valuestartIndex = request.getQueryString("start_index");
+        Integer startIndex;
+        if (valuestartIndex != null) {
+            startIndex = Integer.parseInt(valuestartIndex);
+        } else {
+            startIndex = 0;
+        }
         String valuefetchSystemUsers = request.getQueryString("fetch_system_users");
         Boolean fetchSystemUsers;
         if (valuefetchSystemUsers != null) {
@@ -126,14 +135,7 @@ public class BusinessAccessAssetsApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valuestartIndex = request.getQueryString("start_index");
-        Integer startIndex;
-        if (valuestartIndex != null) {
-            startIndex = Integer.parseInt(valuestartIndex);
-        } else {
-            startIndex = 0;
-        }
-        return imp.businessAssetMembersGetHttp(request, businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex);
+        return imp.businessAssetMembersGetHttp(request, businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize);
     }
 
     @ApiAction
@@ -234,6 +236,50 @@ public class BusinessAccessAssetsApiController extends Controller {
         } else {
             startIndex = 0;
         }
+        String valuesortBy = request.getQueryString("sort_by");
+        AssetSortBy sortBy;
+        if (valuesortBy != null) {
+            sortBy = valuesortBy;
+        } else {
+            sortBy = null;
+        }
+        String valuesortAscending = request.getQueryString("sort_ascending");
+        Boolean sortAscending;
+        if (valuesortAscending != null) {
+            sortAscending = Boolean.valueOf(valuesortAscending);
+        } else {
+            sortAscending = true;
+        }
+        String valuesearchBy = request.getQueryString("search_by");
+        AssetSearchBy searchBy;
+        if (valuesearchBy != null) {
+            searchBy = valuesearchBy;
+        } else {
+            searchBy = null;
+        }
+        String valuesearchValue = request.getQueryString("search_value");
+        String searchValue;
+        if (valuesearchValue != null) {
+            searchValue = valuesearchValue;
+        } else {
+            searchValue = null;
+        }
+        String valueassetPermissionType = request.getQueryString("asset_permission_type");
+        AssetPermissionType assetPermissionType;
+        if (valueassetPermissionType != null) {
+            assetPermissionType = valueassetPermissionType;
+        } else {
+            assetPermissionType = null;
+        }
+        String[] adAccountStatusesArray = request.queryString().get("ad_account_statuses");
+        List<String> adAccountStatusesList = OpenAPIUtils.parametersToList("multi", adAccountStatusesArray);
+        List<NonDraftEntityStatus> adAccountStatuses = new ArrayList<>();
+        for (String curParam : adAccountStatusesList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                adAccountStatuses.add(curParam);
+            }
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -248,22 +294,22 @@ public class BusinessAccessAssetsApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        return imp.businessMemberAssetsGetHttp(request, businessId, memberId, assetType, startIndex, bookmark, pageSize);
+        return imp.businessMemberAssetsGetHttp(request, businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize);
     }
 
     @ApiAction
     public Result businessMembersAssetAccessDelete(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
-        JsonNode nodebusinessMembersAssetAccessDeleteRequest = request.body().asJson();
-        BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest;
-        if (nodebusinessMembersAssetAccessDeleteRequest != null) {
-            businessMembersAssetAccessDeleteRequest = mapper.readValue(nodebusinessMembersAssetAccessDeleteRequest.toString(), BusinessMembersAssetAccessDeleteRequest.class);
+        JsonNode nodebusinessMembersAssetAccessDeleteBody = request.body().asJson();
+        BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody;
+        if (nodebusinessMembersAssetAccessDeleteBody != null) {
+            businessMembersAssetAccessDeleteBody = mapper.readValue(nodebusinessMembersAssetAccessDeleteBody.toString(), BusinessMembersAssetAccessDeleteBody.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(businessMembersAssetAccessDeleteRequest);
+                OpenAPIUtils.validate(businessMembersAssetAccessDeleteBody);
             }
         } else {
-            throw new IllegalArgumentException("'BusinessMembersAssetAccessDeleteRequest' parameter is required");
+            throw new IllegalArgumentException("'BusinessMembersAssetAccessDeleteBody' parameter is required");
         }
-        return imp.businessMembersAssetAccessDeleteHttp(request, businessId, businessMembersAssetAccessDeleteRequest);
+        return imp.businessMembersAssetAccessDeleteHttp(request, businessId, businessMembersAssetAccessDeleteBody);
     }
 
     @ApiAction
@@ -284,11 +330,11 @@ public class BusinessAccessAssetsApiController extends Controller {
     @ApiAction
     public Result businessPartnerAssetAccessGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String partnerId) throws Exception {
         String valuepartnerType = request.getQueryString("partner_type");
-        PartnerType partnerType;
+        String partnerType;
         if (valuepartnerType != null) {
             partnerType = valuepartnerType;
         } else {
-            partnerType = INTERNAL;
+            partnerType = "INTERNAL";
         }
         String valueassetType = request.getQueryString("asset_type");
         String assetType;
@@ -304,12 +350,33 @@ public class BusinessAccessAssetsApiController extends Controller {
         } else {
             startIndex = 0;
         }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
+        String valuesortBy = request.getQueryString("sort_by");
+        AssetSortBy sortBy;
+        if (valuesortBy != null) {
+            sortBy = valuesortBy;
         } else {
-            pageSize = 25;
+            sortBy = null;
+        }
+        String valuesortAscending = request.getQueryString("sort_ascending");
+        Boolean sortAscending;
+        if (valuesortAscending != null) {
+            sortAscending = Boolean.valueOf(valuesortAscending);
+        } else {
+            sortAscending = true;
+        }
+        String valuesearchBy = request.getQueryString("search_by");
+        AssetSearchBy searchBy;
+        if (valuesearchBy != null) {
+            searchBy = valuesearchBy;
+        } else {
+            searchBy = null;
+        }
+        String valuesearchValue = request.getQueryString("search_value");
+        String searchValue;
+        if (valuesearchValue != null) {
+            searchValue = valuesearchValue;
+        } else {
+            searchValue = null;
         }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
@@ -318,7 +385,14 @@ public class BusinessAccessAssetsApiController extends Controller {
         } else {
             bookmark = null;
         }
-        return imp.businessPartnerAssetAccessGetHttp(request, businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark);
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        return imp.businessPartnerAssetAccessGetHttp(request, businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize);
     }
 
     @ApiAction

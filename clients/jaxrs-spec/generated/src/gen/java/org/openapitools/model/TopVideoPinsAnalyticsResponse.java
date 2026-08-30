@@ -5,8 +5,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.model.TopVideoPinsAnalyticsResponsePinsInner;
+import org.openapitools.model.TopVideoPinsAnalyticsResponseDateAvailability;
+import org.openapitools.model.TopVideoPinsAnalyticsResponsePinsItems;
+import org.openapitools.model.TopVideoPinsSortBy;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,65 +22,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TopVideoPinsAnalyticsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopVideoPinsAnalyticsResponse   {
-  private TopPinsAnalyticsResponseDateAvailability dateAvailability;
-  private @Valid List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
-  public enum SortByEnum {
-
-    SAVE(String.valueOf("SAVE")), IMPRESSION(String.valueOf("IMPRESSION")), OUTBOUND_CLICK(String.valueOf("OUTBOUND_CLICK")), VIDEO_MRC_VIEW(String.valueOf("VIDEO_MRC_VIEW")), VIDEO_AVG_WATCH_TIME(String.valueOf("VIDEO_AVG_WATCH_TIME")), VIDEO_V50_WATCH_TIME(String.valueOf("VIDEO_V50_WATCH_TIME")), QUARTILE_95_PERCENT_VIEW(String.valueOf("QUARTILE_95_PERCENT_VIEW")), VIDEO_10_S_VIEW(String.valueOf("VIDEO_10S_VIEW")), VIDEO_START(String.valueOf("VIDEO_START"));
-
-
-    private String value;
-
-    SortByEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static SortByEnum fromString(String s) {
-        for (SortByEnum b : SortByEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static SortByEnum fromValue(String value) {
-        for (SortByEnum b : SortByEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private SortByEnum sortBy;
+  private TopVideoPinsAnalyticsResponseDateAvailability dateAvailability;
+  private @Valid List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
+  private TopVideoPinsSortBy sortBy;
 
   public TopVideoPinsAnalyticsResponse() {
   }
 
   /**
    **/
-  public TopVideoPinsAnalyticsResponse dateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public TopVideoPinsAnalyticsResponse dateAvailability(TopVideoPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
     return this;
   }
@@ -87,18 +41,18 @@ public class TopVideoPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("date_availability")
-  @Valid public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
+  @Valid public TopVideoPinsAnalyticsResponseDateAvailability getDateAvailability() {
     return dateAvailability;
   }
 
   @JsonProperty("date_availability")
-  public void setDateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public void setDateAvailability(TopVideoPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
   }
 
   /**
    **/
-  public TopVideoPinsAnalyticsResponse pins(List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins) {
+  public TopVideoPinsAnalyticsResponse pins(List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
     return this;
   }
@@ -106,16 +60,16 @@ public class TopVideoPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pins")
-  @Valid public List<@Valid TopVideoPinsAnalyticsResponsePinsInner> getPins() {
+  @Valid public List<@Valid TopVideoPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
 
   @JsonProperty("pins")
-  public void setPins(List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins) {
+  public void setPins(List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
-  public TopVideoPinsAnalyticsResponse addPinsItem(TopVideoPinsAnalyticsResponsePinsInner pinsItem) {
+  public TopVideoPinsAnalyticsResponse addPinsItem(TopVideoPinsAnalyticsResponsePinsItems pinsItem) {
     if (this.pins == null) {
       this.pins = new ArrayList<>();
     }
@@ -124,7 +78,7 @@ public class TopVideoPinsAnalyticsResponse   {
     return this;
   }
 
-  public TopVideoPinsAnalyticsResponse removePinsItem(TopVideoPinsAnalyticsResponsePinsInner pinsItem) {
+  public TopVideoPinsAnalyticsResponse removePinsItem(TopVideoPinsAnalyticsResponsePinsItems pinsItem) {
     if (pinsItem != null && this.pins != null) {
       this.pins.remove(pinsItem);
     }
@@ -133,20 +87,20 @@ public class TopVideoPinsAnalyticsResponse   {
   }
   /**
    **/
-  public TopVideoPinsAnalyticsResponse sortBy(SortByEnum sortBy) {
+  public TopVideoPinsAnalyticsResponse sortBy(TopVideoPinsSortBy sortBy) {
     this.sortBy = sortBy;
     return this;
   }
 
   
-  @ApiModelProperty(example = "IMPRESSION", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("sort_by")
-  public SortByEnum getSortBy() {
+  public TopVideoPinsSortBy getSortBy() {
     return sortBy;
   }
 
   @JsonProperty("sort_by")
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(TopVideoPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -187,12 +141,8 @@ public class TopVideoPinsAnalyticsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

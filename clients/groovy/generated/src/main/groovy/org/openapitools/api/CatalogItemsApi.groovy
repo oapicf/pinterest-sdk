@@ -1,11 +1,11 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.CatalogsItems
 import org.openapitools.model.CatalogsItemsBatch
+import org.openapitools.model.CatalogsItemsBatchPostRequest
 import org.openapitools.model.CatalogsItemsRequest
-import org.openapitools.model.Error
-import org.openapitools.model.ItemsBatchPostRequest
+import org.openapitools.model.ItemsPost200Response
+import org.openapitools.model.PinterestLibError
 
 class CatalogItemsApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -19,6 +19,7 @@ class CatalogItemsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -33,24 +34,27 @@ class CatalogItemsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     CatalogsItemsBatch.class )
 
     }
 
-    def itemsBatchPost ( ItemsBatchPostRequest itemsBatchPostRequest, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def itemsBatchPost ( CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/catalogs/items/batch"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
-        if (itemsBatchPostRequest == null) {
-            throw new RuntimeException("missing required params itemsBatchPostRequest")
+        if (catalogsItemsBatchPostRequest == null) {
+            throw new RuntimeException("missing required params catalogsItemsBatchPostRequest")
         }
 
         if (adAccountId != null) {
@@ -59,10 +63,12 @@ class CatalogItemsApi {
 
 
         contentType = 'application/json';
-        bodyParams = itemsBatchPostRequest
+        bodyParams = catalogsItemsBatchPostRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     CatalogsItemsBatch.class )
 
@@ -75,6 +81,7 @@ class CatalogItemsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -91,9 +98,11 @@ class CatalogItemsApi {
         bodyParams = catalogsItemsRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    CatalogsItems.class )
+                    ItemsPost200Response.class )
 
     }
 

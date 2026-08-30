@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## TargetingTemplateCreate
 
-> TargetingTemplateGetResponseData TargetingTemplateCreate(ctx, adAccountId).TargetingTemplateCreate(targetingTemplateCreate).Execute()
+> TargetingTemplate TargetingTemplateCreate(ctx, adAccountId).TargetingTemplateCreate(targetingTemplateCreate).Execute()
 
 Create targeting templates
 
@@ -32,7 +32,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	targetingTemplateCreate := *openapiclient.NewTargetingTemplateCreate("Gaming", *openapiclient.NewTargetingSpec()) // TargetingTemplateCreate | targeting template creation entity
+	targetingTemplateCreate := *openapiclient.NewTargetingTemplateCreate("Name_example", *openapiclient.NewTargetingSpecOptimal()) // TargetingTemplateCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TargetingTemplateAPI.TargetingTemplateCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `TargetingTemplateCreate`: TargetingTemplateGetResponseData
+	// response from `TargetingTemplateCreate`: TargetingTemplate
 	fmt.Fprintf(os.Stdout, "Response from `TargetingTemplateAPI.TargetingTemplateCreate`: %v\n", resp)
 }
 ```
@@ -62,11 +62,11 @@ Other parameters are passed through a pointer to a apiTargetingTemplateCreateReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md) | targeting template creation entity | 
+ **targetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md) |  | 
 
 ### Return type
 
-[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md)
+[**TargetingTemplate**](TargetingTemplate.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## TargetingTemplateList
 
-> TargetingTemplateList200Response TargetingTemplateList(ctx, adAccountId).Order(order).IncludeSizing(includeSizing).SearchQuery(searchQuery).PageSize(pageSize).Bookmark(bookmark).Execute()
+> TargetingTemplateList200Response TargetingTemplateList(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).IncludeSizing(includeSizing).SearchQuery(searchQuery).Execute()
 
 List targeting templates
 
@@ -104,15 +104,15 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-	includeSizing := true // bool | Include audience sizing in result or not (optional) (default to false)
-	searchQuery := "gaming" // string | Search keyword for targeting templates (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+	order := openapiclient.Pinterest.Lib.PaginationOrder("ASCENDING") // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+	includeSizing := true // bool | Include audience sizing in result or not (optional) (default to false)
+	searchQuery := "searchQuery_example" // string | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TargetingTemplateAPI.TargetingTemplateList(context.Background(), adAccountId).Order(order).IncludeSizing(includeSizing).SearchQuery(searchQuery).PageSize(pageSize).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.TargetingTemplateAPI.TargetingTemplateList(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).IncludeSizing(includeSizing).SearchQuery(searchQuery).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TargetingTemplateAPI.TargetingTemplateList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -138,11 +138,11 @@ Other parameters are passed through a pointer to a apiTargetingTemplateListReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
- **includeSizing** | **bool** | Include audience sizing in result or not | [default to false]
- **searchQuery** | **string** | Search keyword for targeting templates | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | 
+ **includeSizing** | **bool** | Include audience sizing in result or not | [default to false]
+ **searchQuery** | **string** | Search query. Can contain pin description keywords or comma-separated pin IDs. | 
 
 ### Return type
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ## TargetingTemplateUpdate
 
-> TargetingTemplateUpdate(ctx, adAccountId).TargetingTemplateUpdateRequest(targetingTemplateUpdateRequest).Execute()
+> TargetingTemplateUpdate(ctx, adAccountId).TargetingTemplateUpdateRequestReadOrUpdate(targetingTemplateUpdateRequestReadOrUpdate).Execute()
 
 Update targeting templates
 
@@ -184,11 +184,11 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	targetingTemplateUpdateRequest := *openapiclient.NewTargetingTemplateUpdateRequest("643", "OperationType_example") // TargetingTemplateUpdateRequest | Operation type and targeting template ID
+	targetingTemplateUpdateRequestReadOrUpdate := *openapiclient.NewTargetingTemplateUpdateRequestReadOrUpdate("643", openapiclient.AudienceUpdateOperationType("UPDATE")) // TargetingTemplateUpdateRequestReadOrUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TargetingTemplateAPI.TargetingTemplateUpdate(context.Background(), adAccountId).TargetingTemplateUpdateRequest(targetingTemplateUpdateRequest).Execute()
+	r, err := apiClient.TargetingTemplateAPI.TargetingTemplateUpdate(context.Background(), adAccountId).TargetingTemplateUpdateRequestReadOrUpdate(targetingTemplateUpdateRequestReadOrUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TargetingTemplateAPI.TargetingTemplateUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,7 +212,7 @@ Other parameters are passed through a pointer to a apiTargetingTemplateUpdateReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **targetingTemplateUpdateRequest** | [**TargetingTemplateUpdateRequest**](TargetingTemplateUpdateRequest.md) | Operation type and targeting template ID | 
+ **targetingTemplateUpdateRequestReadOrUpdate** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md) |  | 
 
 ### Return type
 

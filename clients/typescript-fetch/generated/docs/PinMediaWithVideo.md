@@ -13,6 +13,7 @@ Name | Type
 `images` | [ImageSize](ImageSize.md)
 `mediaType` | string
 `videoUrl` | string
+`videoUrlHls` | string
 `width` | number
 
 ## Example
@@ -28,6 +29,7 @@ const example = {
   "images": null,
   "mediaType": null,
   "videoUrl": null,
+  "videoUrlHls": null,
   "width": null,
 } satisfies PinMediaWithVideo
 

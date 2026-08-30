@@ -1,0 +1,32 @@
+/*
+ * targeting_spec_targeting_strategy_items.h
+ *
+ * 
+ */
+
+#ifndef _targeting_spec_targeting_strategy_items_H_
+#define _targeting_spec_targeting_strategy_items_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct targeting_spec_targeting_strategy_items_t targeting_spec_targeting_strategy_items_t;
+
+
+// Enum  for targeting_spec_targeting_strategy_items
+
+typedef enum { pinterest_rest_api_targeting_spec_targeting_strategy_items__NULL = 0, pinterest_rest_api_targeting_spec_targeting_strategy_items__CHOOSE_YOUR_OWN, pinterest_rest_api_targeting_spec_targeting_strategy_items__FIND_NEW_CUSTOMERS, pinterest_rest_api_targeting_spec_targeting_strategy_items__RECONNECT_WITH_USERS } pinterest_rest_api_targeting_spec_targeting_strategy_items__e;
+
+char* targeting_spec_targeting_strategy_items_targeting_spec_targeting_strategy_items_ToString(pinterest_rest_api_targeting_spec_targeting_strategy_items__e targeting_spec_targeting_strategy_items);
+
+pinterest_rest_api_targeting_spec_targeting_strategy_items__e targeting_spec_targeting_strategy_items_targeting_spec_targeting_strategy_items_FromString(char* targeting_spec_targeting_strategy_items);
+
+cJSON *targeting_spec_targeting_strategy_items_convertToJSON(pinterest_rest_api_targeting_spec_targeting_strategy_items__e targeting_spec_targeting_strategy_items);
+
+pinterest_rest_api_targeting_spec_targeting_strategy_items__e targeting_spec_targeting_strategy_items_parseFromJSON(cJSON *targeting_spec_targeting_strategy_itemsJSON);
+
+#endif /* _targeting_spec_targeting_strategy_items_H_ */
+

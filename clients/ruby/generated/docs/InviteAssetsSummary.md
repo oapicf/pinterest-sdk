@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ad_accounts** | [**Array&lt;InviteAssetsSummaryAdAccountsInner&gt;**](InviteAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels that will be assigned. | [optional] |
-| **profiles** | [**Array&lt;InviteAssetsSummaryProfilesInner&gt;**](InviteAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels that will be assigned. | [optional] |
+| **ad_accounts** | [**Array&lt;InviteAssetsSummaryItem&gt;**](InviteAssetsSummaryItem.md) | List of ad account IDs and respective permission levels that will be assigned. | [optional] |
+| **profiles** | [**Array&lt;InviteAssetsSummaryItem&gt;**](InviteAssetsSummaryItem.md) | List of profile IDs and respective permission levels that will be assigned. | [optional] |
 
 ## Example
 

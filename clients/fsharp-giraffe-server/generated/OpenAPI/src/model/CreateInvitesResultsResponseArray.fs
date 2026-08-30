@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.CreateInvitesResultsResponseArrayItemsInner
+open OpenAPI.Model.InviteActionResultItem
 
 module CreateInvitesResultsResponseArray =
 
@@ -10,6 +10,6 @@ module CreateInvitesResultsResponseArray =
 
 
   type CreateInvitesResultsResponseArray = {
-    Items : CreateInvitesResultsResponseArrayItemsInner[];
+    Items : InviteActionResultItem[];
   }
   //#endregion

@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **PRODUCT_TYPE_3** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  |
+| **PRODUCT_TYPE_3** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |  |
 
 
 

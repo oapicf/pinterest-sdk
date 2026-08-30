@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BidOptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 **Country** | [**Country**](Country.md) |  | 
 **ItemId** | **string** | The catalog retail item id in the merchant namespace | 
 **Language** | [**Language**](Language.md) |  | 
-**BidOptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 
 ## Methods
 
 ### NewAdvancedAuctionItem
 
-`func NewAdvancedAuctionItem(country Country, itemId string, language Language, bidOptions AdvancedAuctionBidOptions, ) *AdvancedAuctionItem`
+`func NewAdvancedAuctionItem(bidOptions AdvancedAuctionBidOptions, country Country, itemId string, language Language, ) *AdvancedAuctionItem`
 
 NewAdvancedAuctionItem instantiates a new AdvancedAuctionItem object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +27,26 @@ will change when the set of required properties is changed
 NewAdvancedAuctionItemWithDefaults instantiates a new AdvancedAuctionItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBidOptions
+
+`func (o *AdvancedAuctionItem) GetBidOptions() AdvancedAuctionBidOptions`
+
+GetBidOptions returns the BidOptions field if non-nil, zero value otherwise.
+
+### GetBidOptionsOk
+
+`func (o *AdvancedAuctionItem) GetBidOptionsOk() (*AdvancedAuctionBidOptions, bool)`
+
+GetBidOptionsOk returns a tuple with the BidOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBidOptions
+
+`func (o *AdvancedAuctionItem) SetBidOptions(v AdvancedAuctionBidOptions)`
+
+SetBidOptions sets BidOptions field to given value.
+
 
 ### GetCountry
 
@@ -86,26 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *AdvancedAuctionItem) SetLanguage(v Language)`
 
 SetLanguage sets Language field to given value.
-
-
-### GetBidOptions
-
-`func (o *AdvancedAuctionItem) GetBidOptions() AdvancedAuctionBidOptions`
-
-GetBidOptions returns the BidOptions field if non-nil, zero value otherwise.
-
-### GetBidOptionsOk
-
-`func (o *AdvancedAuctionItem) GetBidOptionsOk() (*AdvancedAuctionBidOptions, bool)`
-
-GetBidOptionsOk returns a tuple with the BidOptions field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBidOptions
-
-`func (o *AdvancedAuctionItem) SetBidOptions(v AdvancedAuctionBidOptions)`
-
-SetBidOptions sets BidOptions field to given value.
 
 
 

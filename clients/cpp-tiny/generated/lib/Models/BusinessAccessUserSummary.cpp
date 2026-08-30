@@ -106,7 +106,7 @@ BusinessAccessUserSummary::getEmail()
 }
 
 void
-BusinessAccessUserSummary::setEmail(std::string  email)
+BusinessAccessUserSummary::setEmail(std::string email)
 {
 	this->email = email;
 }
@@ -118,7 +118,7 @@ BusinessAccessUserSummary::getId()
 }
 
 void
-BusinessAccessUserSummary::setId(std::string  id)
+BusinessAccessUserSummary::setId(std::string id)
 {
 	this->id = id;
 }
@@ -130,7 +130,7 @@ BusinessAccessUserSummary::getUsername()
 }
 
 void
-BusinessAccessUserSummary::setUsername(std::string  username)
+BusinessAccessUserSummary::setUsername(std::string username)
 {
 	this->username = username;
 }

@@ -7,11 +7,11 @@
 #' @title AudienceSubcategory
 #' @description AudienceSubcategory Class
 #' @format An \code{R6Class} generator object
-#' @field id Subinterest ID. character [optional]
-#' @field index Subinterest affinity index. numeric [optional]
-#' @field key Interest unique key (same as ID). character [optional]
-#' @field name Subinterest name. character [optional]
-#' @field ratio Subinterest's percent of category's total audience. numeric [optional]
+#' @field id  character [optional]
+#' @field index  numeric [optional]
+#' @field key  character [optional]
+#' @field name  character [optional]
+#' @field ratio  numeric [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -27,11 +27,11 @@ AudienceSubcategory <- R6::R6Class(
     #' @description
     #' Initialize a new AudienceSubcategory class.
     #'
-    #' @param id Subinterest ID.
-    #' @param index Subinterest affinity index.
-    #' @param key Interest unique key (same as ID).
-    #' @param name Subinterest name.
-    #' @param ratio Subinterest's percent of category's total audience.
+    #' @param id id
+    #' @param index index
+    #' @param key key
+    #' @param name name
+    #' @param ratio ratio
     #' @param ... Other optional arguments.
     initialize = function(`id` = NULL, `index` = NULL, `key` = NULL, `name` = NULL, `ratio` = NULL, ...) {
       if (!is.null(`id`)) {

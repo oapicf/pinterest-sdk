@@ -22,11 +22,13 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ProductCategoriesDemographic(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "Age demographic distribution")
+    @Schema(required = true, description = "Age demographic distribution")
+    @param:JsonProperty("age")
     @get:JsonProperty("age", required = true) val age: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("gender")
     @get:JsonProperty("gender", required = true) val gender: GenderDemographics
 ) {
 

@@ -1,5 +1,6 @@
 const utils = require('../utils/utils');
 const AssetGroupBinding = require('../models/AssetGroupBinding');
+const AssetTypeResponse = require('../models/AssetTypeResponse');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -9,16 +10,17 @@ module.exports = {
             {
                 key: `${keyPrefix}asset_id`,
                 label: `Unique identifier of a business asset. - [${labelPrefix}asset_id]`,
+                required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}asset_type`,
-                label: `Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. - [${labelPrefix}asset_type]`,
-                type: 'string',
+                ...AssetTypeResponse.fields(`${keyPrefix}asset_type`, isInput),
             },
             {
                 key: `${keyPrefix}permissions`,
                 label: `Permission levels member or partner has on an asset. - [${labelPrefix}permissions]`,
+                required: true,
                 list: true,
                 type: 'string',
             },

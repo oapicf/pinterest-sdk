@@ -17,12 +17,12 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.Catalog
+import org.openapitools.server.api.model.CatalogCreate
 import org.openapitools.server.api.model.CatalogsAvailableFilterValues
-import org.openapitools.server.api.model.CatalogsCreateRequest
 import org.openapitools.server.api.model.CatalogsList200Response
 import org.openapitools.server.api.model.CatalogsLocale
 import org.openapitools.server.api.model.Country
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 
 class CatalogsApiVertxProxyHandler(private val vertx: Vertx, private val service: CatalogsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -94,14 +94,14 @@ class CatalogsApiVertxProxyHandler(private val vertx: Vertx, private val service
         
                 "catalogsCreate" -> {
                     val params = context.params
-                    val catalogsCreateRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (catalogsCreateRequestParam == null) {
-                        throw IllegalArgumentException("catalogsCreateRequest is required")
+                    val catalogCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (catalogCreateParam == null) {
+                        throw IllegalArgumentException("catalogCreate is required")
                     }
-                    val catalogsCreateRequest = Gson().fromJson(catalogsCreateRequestParam.encode(), CatalogsCreateRequest::class.java)
+                    val catalogCreate = Gson().fromJson(catalogCreateParam.encode(), CatalogCreate::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.catalogsCreate(catalogsCreateRequest,adAccountId,context)
+                        val result = service.catalogsCreate(catalogCreate,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -112,11 +112,11 @@ class CatalogsApiVertxProxyHandler(private val vertx: Vertx, private val service
         
                 "catalogsList" -> {
                     val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.catalogsList(bookmark,pageSize,adAccountId,context)
+                        val result = service.catalogsList(adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

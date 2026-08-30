@@ -13,7 +13,7 @@ Protected Class AssetGroupBinding
 		#tag Note
 			Asset group description
 		#tag EndNote
-		asset_group_description As Xoson.O.OptionalString
+		asset_group_description As String
 	#tag EndProperty
 
 
@@ -21,7 +21,7 @@ Protected Class AssetGroupBinding
 		#tag Note
 			Asset Group name
 		#tag EndNote
-		asset_group_name As Xoson.O.OptionalString
+		asset_group_name As String
 	#tag EndProperty
 
 
@@ -53,7 +53,7 @@ Protected Class AssetGroupBinding
 		#tag Note
 			The creation time of the asset group
 		#tag EndNote
-		created_time As Xoson.O.OptionalInteger
+		created_time As Integer
 	#tag EndProperty
 
 
@@ -61,7 +61,7 @@ Protected Class AssetGroupBinding
 		#tag Note
 			Asset Group ID.
 		#tag EndNote
-		id As Xoson.O.OptionalString
+		id As String
 	#tag EndProperty
 
 
@@ -85,7 +85,7 @@ Protected Class AssetGroupBinding
 		#tag Note
 			The last update time of the asset group
 		#tag EndNote
-		updated_time As Xoson.O.OptionalInteger
+		updated_time As Integer
 	#tag EndProperty
 
 

@@ -1,10 +1,12 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Audience;
-import org.openapitools.model.AudienceCreateRequest;
-import org.openapitools.model.AudienceUpdateRequest;
+import org.openapitools.model.AdAccountsAudience;
+import org.openapitools.model.AdAccountsAudienceCreate;
+import org.openapitools.model.AdAccountsAudienceUpdate;
+import org.openapitools.model.AudienceOwnershipType;
 import org.openapitools.model.AudiencesList200Response;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 
 import java.util.List;
 import java.util.Map;
@@ -30,7 +32,7 @@ public interface AudiencesApi  {
     /**
      * Create audience
      *
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+     * Create a new audience for the ad account.
      *
      */
     @POST
@@ -39,9 +41,15 @@ public interface AudiencesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create audience", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = Audience.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Audience audiencesCreate(@PathParam("ad_account_id") String adAccountId, AudienceCreateRequest audienceCreateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsAudience.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = AdAccountsAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AdAccountsAudience audiencesCreate(@PathParam("ad_account_id") String adAccountId, AdAccountsAudienceCreate adAccountsAudienceCreate);
 
     /**
      * Get audience
@@ -54,10 +62,14 @@ public interface AudiencesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get audience", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = Audience.class),
-        @ApiResponse(code = 404, message = "Audience not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Audience audiencesGet(@PathParam("ad_account_id") String adAccountId, @PathParam("audience_id") String audienceId);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AdAccountsAudience audiencesGet(@PathParam("audience_id") String audienceId, @PathParam("ad_account_id") String adAccountId);
 
     /**
      * List audiences
@@ -70,15 +82,19 @@ public interface AudiencesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List audiences", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AudiencesList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account audience parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public AudiencesList200Response audiencesList(@PathParam("ad_account_id") String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("order") String order, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("ownership_type") @DefaultValue("OWNED")String ownershipType);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AudiencesList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AudiencesList200Response audiencesList(@PathParam("ad_account_id") String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("order") PinterestLibPaginationOrder order, @QueryParam("ownership_type") AudienceOwnershipType ownershipType, @QueryParam("exclude_nca") @DefaultValue("false")Boolean excludeNca);
 
     /**
      * Update audience
      *
-     * Update (edit or remove) an existing targeting audience.
+     * Update an existing audience for the ad account.
      *
      */
     @PATCH
@@ -87,7 +103,12 @@ public interface AudiencesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update audience", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = Audience.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Audience audiencesUpdate(@PathParam("ad_account_id") String adAccountId, @PathParam("audience_id") String audienceId, AudienceUpdateRequest audienceUpdateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AdAccountsAudience audiencesUpdate(@PathParam("audience_id") String audienceId, @PathParam("ad_account_id") String adAccountId, AdAccountsAudienceUpdate adAccountsAudienceUpdate);
 }

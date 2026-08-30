@@ -64,7 +64,7 @@ BulkUpsertResponse::getRequestId()
 }
 
 void
-BulkUpsertResponse::setRequestId(std::string  request_id)
+BulkUpsertResponse::setRequestId(std::string request_id)
 {
 	this->request_id = request_id;
 }

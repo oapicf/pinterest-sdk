@@ -22,7 +22,7 @@ public class KeywordsRequest  {
  /**
   * Keyword parent entity ID (advertiser, campaign, ad group).
   */
-  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
+  @ApiModelProperty(required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
 
   private String parentId;
  /**
@@ -100,10 +100,7 @@ public class KeywordsRequest  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

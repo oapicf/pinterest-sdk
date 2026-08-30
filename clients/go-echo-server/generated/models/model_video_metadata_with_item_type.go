@@ -10,10 +10,14 @@ type VideoMetadataWithItemType struct {
 	// Height (in pixels). Field maybe null after creation due to video processing time.
 	Height *int32 `json:"height,omitempty"`
 
-	ItemType string `json:"item_type,omitempty"`
+	// Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+	ItemType string `json:"item_type"`
 
 	// Video url (720p).  **Note:** This field is limited and not available to all apps.
 	VideoUrl *string `json:"video_url,omitempty"`
+
+	// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	VideoUrlHls *string `json:"video_url_hls,omitempty"`
 
 	// Width (in pixels). Field maybe null after creation due to video processing time.
 	Width *int32 `json:"width,omitempty"`

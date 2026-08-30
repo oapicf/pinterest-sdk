@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import PriceFilter._
 
 case class PriceFilter (
-  PRICE: CatalogsProductGroupPricingCurrencyCriteria)
+  PRICE: PriceFilterPrice)
 
 object PriceFilter {
   import DateTimeCodecs._

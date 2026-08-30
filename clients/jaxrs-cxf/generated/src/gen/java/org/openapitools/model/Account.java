@@ -3,13 +3,19 @@ package org.openapitools.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.UserAccountType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * User account model containing properties related to a user's account.
+ */
+@ApiModel(description="User account model containing properties related to a user's account.")
 
 public class Account  {
   
@@ -20,49 +26,19 @@ public class Account  {
 
   private String about;
 
-public enum AccountTypeEnum {
-
-PINNER(String.valueOf("PINNER")), BUSINESS(String.valueOf("BUSINESS"));
-
-
-    private String value;
-
-    AccountTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AccountTypeEnum fromValue(String value) {
-        for (AccountTypeEnum b : AccountTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * Type of account
   */
   @ApiModelProperty(value = "Type of account")
 
-  private AccountTypeEnum accountType;
+  @Valid
+
+  private UserAccountType accountType;
 
  /**
-  * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+  *   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
   */
-  @ApiModelProperty(example = "14", value = "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
+  @ApiModelProperty(example = "14", value = "  User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
 
   private Integer boardCount;
 
@@ -139,24 +115,21 @@ PINNER(String.valueOf("PINNER")), BUSINESS(String.valueOf("BUSINESS"));
    * @return accountType
   **/
   @JsonProperty("account_type")
-  public String getAccountType() {
-    if (accountType == null) {
-      return null;
-    }
-    return accountType.value();
+  public UserAccountType getAccountType() {
+    return accountType;
   }
 
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(UserAccountType accountType) {
     this.accountType = accountType;
   }
 
-  public Account accountType(AccountTypeEnum accountType) {
+  public Account accountType(UserAccountType accountType) {
     this.accountType = accountType;
     return this;
   }
 
  /**
-   * User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+   *   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
    * @return boardCount
   **/
   @JsonProperty("board_count")
@@ -349,10 +322,7 @@ PINNER(String.valueOf("PINNER")), BUSINESS(String.valueOf("BUSINESS"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

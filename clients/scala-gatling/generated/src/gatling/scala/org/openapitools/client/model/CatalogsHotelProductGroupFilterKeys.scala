@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsHotelProductGroupFilterKeys (
-    _PRICE: CatalogsProductGroupPricingCurrencyCriteria,
+    _PRICE: PriceFilterPrice,
     _HOTEL_ID: CatalogsProductGroupMultipleStringCriteria,
     _BRAND: CatalogsProductGroupMultipleStringCriteria,
     _CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,

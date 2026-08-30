@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BatchId** | **String** | Id of the catalogs items batch | [optional] 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**CompletedTime** | **System.DateTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**CreatedTime** | **System.DateTime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
+**CatalogType** | **String** |  | 
+**CompletedTime** | **System.DateTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
+**CreatedTime** | **System.DateTime** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
 **Items** | [**HotelProcessingRecord[]**](HotelProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 **Status** | [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 
@@ -14,10 +14,10 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelItemsBatch = Initialize-PSOpenAPIToolsCatalogsHotelItemsBatch  -BatchId 595953100599279259-66753b9bb65c46c49bd8503b27fecf9e `
+$CatalogsHotelItemsBatch = Initialize-PSOpenAPIToolsCatalogsHotelItemsBatch  -BatchId 595953100599279259 `
  -CatalogType null `
- -CompletedTime null `
- -CreatedTime null `
+ -CompletedTime 2024-01-01T20:20Z `
+ -CreatedTime 2024-01-01T20:10:40Z `
  -Items null `
  -Status null
 ```

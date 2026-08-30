@@ -13,11 +13,11 @@ Method | HTTP request | Description
 
 ## audiencesCreate
 
-> Audience audiencesCreate(adAccountId, audienceCreateRequest)
+> AdAccountsAudience audiencesCreate(adAccountId, adAccountsAudienceCreate)
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+Create a new audience for the ad account.
 
 ### Example
 
@@ -30,8 +30,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudiencesApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let audienceCreateRequest = new PinterestSdk.AudienceCreateRequest(); // AudienceCreateRequest | List of ads to create, size limit [1, 30]
-apiInstance.audiencesCreate(adAccountId, audienceCreateRequest, (error, data, response) => {
+let adAccountsAudienceCreate = new PinterestSdk.AdAccountsAudienceCreate(); // AdAccountsAudienceCreate | 
+apiInstance.audiencesCreate(adAccountId, adAccountsAudienceCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -46,11 +46,11 @@ apiInstance.audiencesCreate(adAccountId, audienceCreateRequest, (error, data, re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **audienceCreateRequest** | [**AudienceCreateRequest**](AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] | 
+ **adAccountsAudienceCreate** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md)|  | 
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ## audiencesGet
 
-> Audience audiencesGet(adAccountId, audienceId)
+> AdAccountsAudience audiencesGet(audienceId, adAccountId)
 
 Get audience
 
@@ -83,9 +83,9 @@ let client_credentials = defaultClient.authentications['client_credentials'];
 client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudiencesApi();
+let audienceId = "audienceId_example"; // String | Audience ID.
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let audienceId = "audienceId_example"; // String | Unique identifier of an audience
-apiInstance.audiencesGet(adAccountId, audienceId, (error, data, response) => {
+apiInstance.audiencesGet(audienceId, adAccountId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -99,12 +99,12 @@ apiInstance.audiencesGet(adAccountId, audienceId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **String**| Audience ID. | 
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **audienceId** | **String**| Unique identifier of an audience | 
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 
@@ -140,9 +140,10 @@ let apiInstance = new PinterestSdk.AudiencesApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'order': "ASCENDING", // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'ownershipType': "OWNED" // String | Filter audiences by ownership type.
+  'pageSize': 25, // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  'order': new PinterestSdk.PinterestLibPaginationOrder(), // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  'ownershipType': new PinterestSdk.AudienceOwnershipType(), // AudienceOwnershipType | 
+  'excludeNca': false // Boolean | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
 };
 apiInstance.audiencesList(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -160,9 +161,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **ownershipType** | **String**| Filter audiences by ownership type. | [optional] [default to &#39;OWNED&#39;]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **ownershipType** | [**AudienceOwnershipType**](.md)|  | [optional] 
+ **excludeNca** | **Boolean**| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional] [default to false]
 
 ### Return type
 
@@ -180,11 +182,11 @@ Name | Type | Description  | Notes
 
 ## audiencesUpdate
 
-> Audience audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
+> AdAccountsAudience audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate)
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 
@@ -196,10 +198,10 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.AudiencesApi();
+let audienceId = "audienceId_example"; // String | Audience ID.
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let audienceId = "audienceId_example"; // String | Unique identifier of an audience
-let audienceUpdateRequest = new PinterestSdk.AudienceUpdateRequest(); // AudienceUpdateRequest | The audience to be updated.
-apiInstance.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest, (error, data, response) => {
+let adAccountsAudienceUpdate = new PinterestSdk.AdAccountsAudienceUpdate(); // AdAccountsAudienceUpdate | 
+apiInstance.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -213,13 +215,13 @@ apiInstance.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest, (err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **String**| Audience ID. | 
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **audienceId** | **String**| Unique identifier of an audience | 
- **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md)| The audience to be updated. | 
+ **adAccountsAudienceUpdate** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md)|  | 
 
 ### Return type
 
-[**Audience**](Audience.md)
+[**AdAccountsAudience**](AdAccountsAudience.md)
 
 ### Authorization
 

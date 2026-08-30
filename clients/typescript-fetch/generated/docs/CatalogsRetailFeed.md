@@ -7,20 +7,20 @@ Catalogs Retail Feed object
 
 Name | Type
 ------------ | -------------
+`catalogType` | string
 `createdAt` | Date
-`id` | string
-`updatedAt` | Date
-`catalogType` | [CatalogsType](CatalogsType.md)
 `credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
 `defaultAvailability` | [ProductAvailabilityType](ProductAvailabilityType.md)
 `defaultCountry` | [Country](Country.md)
 `defaultCurrency` | [NullableCurrency](NullableCurrency.md)
 `defaultLocale` | string
 `format` | [CatalogsFormat](CatalogsFormat.md)
+`id` | string
 `location` | string
 `name` | string
 `preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
 `status` | [CatalogsStatus](CatalogsStatus.md)
+`updatedAt` | Date
 
 ## Example
 
@@ -29,20 +29,20 @@ import type { CatalogsRetailFeed } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "createdAt": 2022-03-14T15:15:22Z,
-  "id": null,
-  "updatedAt": 2022-03-14T15:16:34Z,
   "catalogType": null,
+  "createdAt": null,
   "credentials": null,
   "defaultAvailability": null,
   "defaultCountry": null,
   "defaultCurrency": null,
-  "defaultLocale": en-US,
+  "defaultLocale": null,
   "format": null,
+  "id": 864344156814050986,
   "location": null,
   "name": null,
   "preferredProcessingSchedule": null,
   "status": null,
+  "updatedAt": null,
 } satisfies CatalogsRetailFeed
 
 console.log(example)

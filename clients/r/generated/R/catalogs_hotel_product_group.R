@@ -7,13 +7,13 @@
 #' @title CatalogsHotelProductGroup
 #' @description CatalogsHotelProductGroup Class
 #' @format An \code{R6Class} generator object
-#' @field catalog_id Catalog id pertaining to the hotel product group. character
+#' @field catalog_id Catalog ID pertaining to the product group. character
 #' @field catalog_type  character
 #' @field created_at Unix timestamp in seconds of when catalog product group was created. integer [optional]
 #' @field description  character [optional]
 #' @field filters  \link{CatalogsHotelProductGroupFilters}
-#' @field id ID of the hotel product group. character
-#' @field name Name of hotel product group character [optional]
+#' @field id ID of the catalog product group. character
+#' @field name Name of catalog product group character [optional]
 #' @field type  \link{CatalogsHotelProductGroupType}
 #' @field updated_at Unix timestamp in seconds of last time catalog product group was updated. integer [optional]
 #' @importFrom R6 R6Class
@@ -35,14 +35,14 @@ CatalogsHotelProductGroup <- R6::R6Class(
     #' @description
     #' Initialize a new CatalogsHotelProductGroup class.
     #'
-    #' @param catalog_id Catalog id pertaining to the hotel product group.
+    #' @param catalog_id Catalog ID pertaining to the product group.
     #' @param catalog_type catalog_type
     #' @param filters filters
-    #' @param id ID of the hotel product group.
+    #' @param id ID of the catalog product group.
     #' @param type type
     #' @param created_at Unix timestamp in seconds of when catalog product group was created.
     #' @param description description
-    #' @param name Name of hotel product group
+    #' @param name Name of catalog product group
     #' @param updated_at Unix timestamp in seconds of last time catalog product group was updated.
     #' @param ... Other optional arguments.
     initialize = function(`catalog_id`, `catalog_type`, `filters`, `id`, `type`, `created_at` = NULL, `description` = NULL, `name` = NULL, `updated_at` = NULL, ...) {
@@ -153,7 +153,7 @@ CatalogsHotelProductGroup <- R6::R6Class(
       }
       if (!is.null(self$`filters`)) {
         CatalogsHotelProductGroupObject[["filters"]] <-
-          self$`filters`$toSimpleType()
+          self$extractSimpleType(self$`filters`)
       }
       if (!is.null(self$`id`)) {
         CatalogsHotelProductGroupObject[["id"]] <-
@@ -165,13 +165,36 @@ CatalogsHotelProductGroup <- R6::R6Class(
       }
       if (!is.null(self$`type`)) {
         CatalogsHotelProductGroupObject[["type"]] <-
-          self$`type`$toSimpleType()
+          self$extractSimpleType(self$`type`)
       }
       if (!is.null(self$`updated_at`)) {
         CatalogsHotelProductGroupObject[["updated_at"]] <-
           self$`updated_at`
       }
       return(CatalogsHotelProductGroupObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

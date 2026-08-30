@@ -295,7 +295,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getAndroidDeepLink()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setAndroidDeepLink(std::string  android_deep_link)
+CatalogsUpdatableCreativeAssetsAttributes::setAndroidDeepLink(std::string android_deep_link)
 {
 	this->android_deep_link = android_deep_link;
 }
@@ -307,7 +307,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getCustomLabel0()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel0(std::string  custom_label_0)
+CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel0(std::string custom_label_0)
 {
 	this->custom_label_0 = custom_label_0;
 }
@@ -319,7 +319,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getCustomLabel1()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel1(std::string  custom_label_1)
+CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel1(std::string custom_label_1)
 {
 	this->custom_label_1 = custom_label_1;
 }
@@ -331,7 +331,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getCustomLabel2()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel2(std::string  custom_label_2)
+CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel2(std::string custom_label_2)
 {
 	this->custom_label_2 = custom_label_2;
 }
@@ -343,7 +343,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getCustomLabel3()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel3(std::string  custom_label_3)
+CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel3(std::string custom_label_3)
 {
 	this->custom_label_3 = custom_label_3;
 }
@@ -355,7 +355,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getCustomLabel4()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel4(std::string  custom_label_4)
+CatalogsUpdatableCreativeAssetsAttributes::setCustomLabel4(std::string custom_label_4)
 {
 	this->custom_label_4 = custom_label_4;
 }
@@ -367,7 +367,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getDescription()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setDescription(std::string  description)
+CatalogsUpdatableCreativeAssetsAttributes::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -379,7 +379,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getGoogleProductCategory()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setGoogleProductCategory(std::string  google_product_category)
+CatalogsUpdatableCreativeAssetsAttributes::setGoogleProductCategory(std::string google_product_category)
 {
 	this->google_product_category = google_product_category;
 }
@@ -391,7 +391,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getIosDeepLink()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setIosDeepLink(std::string  ios_deep_link)
+CatalogsUpdatableCreativeAssetsAttributes::setIosDeepLink(std::string ios_deep_link)
 {
 	this->ios_deep_link = ios_deep_link;
 }
@@ -403,7 +403,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getLink()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setLink(std::string  link)
+CatalogsUpdatableCreativeAssetsAttributes::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -415,7 +415,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getTitle()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setTitle(std::string  title)
+CatalogsUpdatableCreativeAssetsAttributes::setTitle(std::string title)
 {
 	this->title = title;
 }
@@ -427,7 +427,7 @@ CatalogsUpdatableCreativeAssetsAttributes::getVisibility()
 }
 
 void
-CatalogsUpdatableCreativeAssetsAttributes::setVisibility(std::string  visibility)
+CatalogsUpdatableCreativeAssetsAttributes::setVisibility(std::string visibility)
 {
 	this->visibility = visibility;
 }

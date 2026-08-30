@@ -12,7 +12,13 @@
     },
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelItemResponse_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
       "doc": ""
     },
     {
@@ -20,6 +26,17 @@
       "type": ["null", "string"],
       "doc": "The catalog hotel id in the merchant namespace",
       "default": null
+    },
+    {
+      "name": "item_response_kind",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelItemResponse_itemUnderscoreresponseUnderscorekind",
+        "symbols": [
+          "hotel_item"
+        ]
+      },
+      "doc": "Discriminator literal identifying this leaf inside an `ItemResponse` payload."
     },
     {
       "name": "pins",

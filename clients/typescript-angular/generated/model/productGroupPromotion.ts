@@ -7,9 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ProductGroupPromotionCustomizableCTAType } from './productGroupPromotionCustomizableCTAType';
+import { PreferredMediaType } from './preferredMediaType';
 import { EntityStatus } from './entityStatus';
 import { GridClickType } from './gridClickType';
 import { CreativeType } from './creativeType';
+import { CollectionsHeaderType } from './collectionsHeaderType';
 
 
 export interface ProductGroupPromotion { 
@@ -20,19 +23,16 @@ export interface ProductGroupPromotion {
     /**
      * The bid in micro currency.
      */
-    bid_in_micro_currency?: number | null;
+    bid_in_micro_currency?: number;
     /**
-     * ID of the catalogs product group that this product group promotion references
+     * ID of the catalogs product group that this product group promotion references (required for create operations)
      */
-    catalog_product_group_id?: string | null;
+    catalog_product_group_id?: string;
     /**
      * Catalogs product group name
      */
-    catalog_product_group_name?: string | null;
-    /**
-     * Collections ad header type
-     */
-    collections_header_type?: ProductGroupPromotion.CollectionsHeaderTypeEnum | null;
+    catalog_product_group_name?: string;
+    collections_header_type?: CollectionsHeaderType | null;
     /**
      * Collections Hero Destination Url
      */
@@ -42,43 +42,41 @@ export interface ProductGroupPromotion {
      */
     collections_hero_pin_id?: string | null;
     creative_type?: CreativeType;
-    /**
-     * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-     */
-    customizable_cta_type?: ProductGroupPromotion.CustomizableCtaTypeEnum | null;
+    customizable_cta_type?: ProductGroupPromotionCustomizableCTAType;
     /**
      * The full product group definition path
      */
-    definition?: string | null;
+    definition?: string;
     grid_click_type?: GridClickType | null;
     /**
-     * ID of the product group promotion.
+     * ID of the product group promotion (required for update operations).
      */
     id?: string;
     /**
      * True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
      */
-    included?: boolean | null;
+    included?: boolean;
     /**
      * Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.
      */
     is_generate_background?: boolean | null;
     /**
+     * Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+     */
+    is_image_auto_resizing?: boolean | null;
+    /**
      * If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
      */
-    is_mdl?: boolean | null;
+    is_mdl?: boolean;
     /**
      * The parent Product Group ID of this Product Group
      */
-    parent_id?: string | null;
-    /**
-     * Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-     */
-    preferred_media_type?: ProductGroupPromotion.PreferredMediaTypeEnum | null;
+    parent_id?: string;
+    preferred_media_type?: PreferredMediaType | null;
     /**
      * The definition of the product group, relative to its parent - an attribute name/value pair
      */
-    relative_definition?: string | null;
+    relative_definition?: string;
     /**
      * The ad image tag selected for the product group promotion.
      */
@@ -99,30 +97,9 @@ export interface ProductGroupPromotion {
     /**
      * Tracking template for proudct group promotions. 4000 limit
      */
-    tracking_url?: string | null;
+    tracking_url?: string;
 }
 export namespace ProductGroupPromotion {
-    export const CollectionsHeaderTypeEnum = {
-        ShopThisCollection: 'SHOP_THIS_COLLECTION',
-        ExploreThisCollection: 'EXPLORE_THIS_COLLECTION',
-        NoHeader: 'NO_HEADER',
-        OnSale: 'ON_SALE',
-        GetDeal: 'GET_DEAL'
-    } as const;
-    export type CollectionsHeaderTypeEnum = typeof CollectionsHeaderTypeEnum[keyof typeof CollectionsHeaderTypeEnum];
-    export const CustomizableCtaTypeEnum = {
-        ShopNow: 'SHOP_NOW',
-        BookNow: 'BOOK_NOW',
-        OnSale: 'ON_SALE',
-        GetDeal: 'GET_DEAL',
-        BuyOnlinePickupInStore: 'BUY_ONLINE_PICKUP_IN_STORE'
-    } as const;
-    export type CustomizableCtaTypeEnum = typeof CustomizableCtaTypeEnum[keyof typeof CustomizableCtaTypeEnum];
-    export const PreferredMediaTypeEnum = {
-        Video: 'VIDEO',
-        Image: 'IMAGE'
-    } as const;
-    export type PreferredMediaTypeEnum = typeof PreferredMediaTypeEnum[keyof typeof PreferredMediaTypeEnum];
 }
 
 

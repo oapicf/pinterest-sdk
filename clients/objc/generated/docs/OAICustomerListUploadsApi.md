@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Create customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 ```objc
@@ -29,9 +29,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* customerListId = @"customerListId_example"; // Unique identifier of a customer list
-OAICustomerListUploadCreateRequest* customerListUploadCreateRequest = [[OAICustomerListUploadCreateRequest alloc] init]; // Parameters to create a customer list upload request
+NSString* adAccountId = @"adAccountId_example"; // 
+NSString* customerListId = @"customerListId_example"; // Customer list ID.
+OAICustomerListUploadCreateRequest* customerListUploadCreateRequest = [[OAICustomerListUploadCreateRequest alloc] init]; // 
 
 OAICustomerListUploadsApi*apiInstance = [[OAICustomerListUploadsApi alloc] init];
 
@@ -53,9 +53,9 @@ OAICustomerListUploadsApi*apiInstance = [[OAICustomerListUploadsApi alloc] init]
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **customerListId** | **NSString***| Unique identifier of a customer list | 
- **customerListUploadCreateRequest** | [**OAICustomerListUploadCreateRequest***](OAICustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request | 
+ **adAccountId** | **NSString***|  | 
+ **customerListId** | **NSString***| Customer list ID. | 
+ **customerListUploadCreateRequest** | [**OAICustomerListUploadCreateRequest***](OAICustomerListUploadCreateRequest.md)|  | 
 
 ### Return type
 
@@ -77,12 +77,12 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) customerListUploadsGetWithAdAccountId: (NSString*) adAccountId
     customerListId: (NSString*) customerListId
     customerListUploadId: (NSString*) customerListUploadId
-        completionHandler: (void (^)(OAICustomerListUploadResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAICustomerListUpload* output, NSError* error)) handler;
 ```
 
 Get customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+Get the metadata for a given upload by its ID.
 
 ### Example
 ```objc
@@ -92,9 +92,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* customerListId = @"customerListId_example"; // Unique identifier of a customer list
-NSString* customerListUploadId = @"customerListUploadId_example"; // Unique identifier of a customer list upload
+NSString* adAccountId = @"adAccountId_example"; // 
+NSString* customerListId = @"customerListId_example"; // Customer list ID.
+NSString* customerListUploadId = @"customerListUploadId_example"; // Customer List Upload ID.
 
 OAICustomerListUploadsApi*apiInstance = [[OAICustomerListUploadsApi alloc] init];
 
@@ -102,7 +102,7 @@ OAICustomerListUploadsApi*apiInstance = [[OAICustomerListUploadsApi alloc] init]
 [apiInstance customerListUploadsGetWithAdAccountId:adAccountId
               customerListId:customerListId
               customerListUploadId:customerListUploadId
-          completionHandler: ^(OAICustomerListUploadResponse* output, NSError* error) {
+          completionHandler: ^(OAICustomerListUpload* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -116,13 +116,13 @@ OAICustomerListUploadsApi*apiInstance = [[OAICustomerListUploadsApi alloc] init]
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **customerListId** | **NSString***| Unique identifier of a customer list | 
- **customerListUploadId** | **NSString***| Unique identifier of a customer list upload | 
+ **adAccountId** | **NSString***|  | 
+ **customerListId** | **NSString***| Customer list ID. | 
+ **customerListUploadId** | **NSString***| Customer List Upload ID. | 
 
 ### Return type
 
-[**OAICustomerListUploadResponse***](OAICustomerListUploadResponse.md)
+[**OAICustomerListUpload***](OAICustomerListUpload.md)
 
 ### Authorization
 
@@ -140,12 +140,12 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) customerListUploadsRunWithAdAccountId: (NSString*) adAccountId
     customerListId: (NSString*) customerListId
     customerListUploadId: (NSString*) customerListUploadId
-        completionHandler: (void (^)(OAICustomerListUploadResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAICustomerListUpload* output, NSError* error)) handler;
 ```
 
 Run customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
+Begin processing a customer list upload.
 
 ### Example
 ```objc
@@ -155,9 +155,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* customerListId = @"customerListId_example"; // Unique identifier of a customer list
-NSString* customerListUploadId = @"customerListUploadId_example"; // Unique identifier of a customer list upload
+NSString* adAccountId = @"adAccountId_example"; // 
+NSString* customerListId = @"customerListId_example"; // Customer list ID.
+NSString* customerListUploadId = @"customerListUploadId_example"; // Customer List Upload ID.
 
 OAICustomerListUploadsApi*apiInstance = [[OAICustomerListUploadsApi alloc] init];
 
@@ -165,7 +165,7 @@ OAICustomerListUploadsApi*apiInstance = [[OAICustomerListUploadsApi alloc] init]
 [apiInstance customerListUploadsRunWithAdAccountId:adAccountId
               customerListId:customerListId
               customerListUploadId:customerListUploadId
-          completionHandler: ^(OAICustomerListUploadResponse* output, NSError* error) {
+          completionHandler: ^(OAICustomerListUpload* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -179,13 +179,13 @@ OAICustomerListUploadsApi*apiInstance = [[OAICustomerListUploadsApi alloc] init]
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **customerListId** | **NSString***| Unique identifier of a customer list | 
- **customerListUploadId** | **NSString***| Unique identifier of a customer list upload | 
+ **adAccountId** | **NSString***|  | 
+ **customerListId** | **NSString***| Customer list ID. | 
+ **customerListUploadId** | **NSString***| Customer List Upload ID. | 
 
 ### Return type
 
-[**OAICustomerListUploadResponse***](OAICustomerListUploadResponse.md)
+[**OAICustomerListUpload***](OAICustomerListUpload.md)
 
 ### Authorization
 

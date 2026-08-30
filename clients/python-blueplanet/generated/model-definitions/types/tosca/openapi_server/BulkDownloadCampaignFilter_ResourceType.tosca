@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkDownloadCampaignFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkDownloadCampaignFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionObjectiveType = openapi_server.resourceTypes.ConversionObjectiveType
+  SummaryStatus = openapi_server.resourceTypes.SummaryStatus
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BulkDownloadCampaignFilter {
+    title = BulkDownloadCampaignFilter
+    description = BulkDownloadCampaignFilter
+    derivedFrom = Root
+    properties {
+        campaign_status {
+          type = array
+          items.type = SummaryStatus
+          description = ""
+          optional = false
+        }
+        end_time {
+          type =  string
+          description = "Unix UTC timestamp."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Campaign name"
+          optional = false
+        }
+        objective_type {
+          type = array
+          items.type = ConversionObjectiveType
+          description = ""
+          optional = false
+        }
+        start_time {
+          type =  string
+          description = "Unix UTC timestamp."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkDownloadCampaignFilter {
+    title = BulkDownloadCampaignFilter
+    description = BulkDownloadCampaignFilter
+    implements = openapi_server.resourceTypes.BulkDownloadCampaignFilter
+
+  }
+}

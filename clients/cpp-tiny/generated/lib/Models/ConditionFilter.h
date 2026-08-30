@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCONDITION(CatalogsProductGroupMultipleStringCriteria  cONDITION);
+	void setCONDITION(CatalogsProductGroupMultipleStringCriteria cONDITION);
 
 
     private:

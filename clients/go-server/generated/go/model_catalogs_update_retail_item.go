@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -27,13 +32,86 @@ type CatalogsUpdateRetailItem struct {
 	// The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	UpdateMask *[]UpdateMaskFieldType `json:"update_mask,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsUpdateRetailItem
+func (o *CatalogsUpdateRetailItem) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"attributes",
+		"item_id",
+		"operation",
+	}
 
-// AssertCatalogsUpdateRetailItemRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"attributes": false,
+		"item_id": false,
+		"operation": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"attributes": {},
+		"item_id": {},
+		"operation": {},
+		"update_mask": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsUpdateRetailItem
+
+	if value, exists := allProperties["attributes"]; exists {
+		if err = json.Unmarshal(value, &decoded.Attributes); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["operation"]; exists {
+		if err = json.Unmarshal(value, &decoded.Operation); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["update_mask"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdateMask); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsUpdateRetailItemRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsUpdateRetailItemRequired(obj CatalogsUpdateRetailItem) error {
 	elements := map[string]interface{}{
 		"attributes": obj.Attributes,
-		"item_id": obj.ItemId,
-		"operation": obj.Operation,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

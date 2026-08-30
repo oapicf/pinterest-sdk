@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **catalog_type** | **character** |  | [optional] [Enum: [HOTEL]] 
 **description** | **character** |  | [optional] 
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | [optional] 
-**name** | **character** |  | [optional] 
+**name** | **character** | Name of catalog product group | [optional] 
 
 

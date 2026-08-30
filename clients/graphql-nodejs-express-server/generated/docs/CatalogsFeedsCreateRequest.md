@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **defaultAvailability** | [***ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [default to null]
 **defaultCountry** | [***Country**](Country.md) |  | [optional] [default to null]
 **defaultCurrency** | [***NullableCurrency**](NullableCurrency.md) |  | [optional] [default to null]
-**defaultLocale** | [***CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequest_default_locale.md) |  | [optional] [default to null]
+**defaultLocale** | [***CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequest_default_locale.md) |  | [optional] [default to null]
 **format** | [***CatalogsFormat**](CatalogsFormat.md) |  | [default to null]
 **location** | **String!** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [default to null]
 **name** | **String!** | A human-friendly name associated to a given feed. | [default to null]

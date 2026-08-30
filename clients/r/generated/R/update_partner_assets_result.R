@@ -8,7 +8,7 @@
 #' @description UpdatePartnerAssetsResult Class
 #' @format An \code{R6Class} generator object
 #' @field asset_id Unique identifier of a business asset. character [optional]
-#' @field asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. character [optional]
+#' @field asset_type  \link{AssetTypeResponse} [optional]
 #' @field partner_id Unique identifier of a business partner. character [optional]
 #' @field permissions Permission levels member or partner has on an asset. list(character) [optional]
 #' @importFrom R6 R6Class
@@ -26,7 +26,7 @@ UpdatePartnerAssetsResult <- R6::R6Class(
     #' Initialize a new UpdatePartnerAssetsResult class.
     #'
     #' @param asset_id Unique identifier of a business asset.
-    #' @param asset_type Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+    #' @param asset_type asset_type
     #' @param partner_id Unique identifier of a business partner.
     #' @param permissions Permission levels member or partner has on an asset.
     #' @param ... Other optional arguments.
@@ -38,9 +38,10 @@ UpdatePartnerAssetsResult <- R6::R6Class(
         self$`asset_id` <- `asset_id`
       }
       if (!is.null(`asset_type`)) {
-        if (!(is.character(`asset_type`) && length(`asset_type`) == 1)) {
-          stop(paste("Error! Invalid data for `asset_type`. Must be a string:", `asset_type`))
+        if (!(`asset_type` %in% c())) {
+          stop(paste("Error! \"", `asset_type`, "\" cannot be assigned to `asset_type`. Must be .", sep = ""))
         }
+        stopifnot(R6::is.R6(`asset_type`))
         self$`asset_type` <- `asset_type`
       }
       if (!is.null(`partner_id`)) {
@@ -93,7 +94,7 @@ UpdatePartnerAssetsResult <- R6::R6Class(
       }
       if (!is.null(self$`asset_type`)) {
         UpdatePartnerAssetsResultObject[["asset_type"]] <-
-          self$`asset_type`
+          self$extractSimpleType(self$`asset_type`)
       }
       if (!is.null(self$`partner_id`)) {
         UpdatePartnerAssetsResultObject[["partner_id"]] <-
@@ -104,6 +105,29 @@ UpdatePartnerAssetsResult <- R6::R6Class(
           self$`permissions`
       }
       return(UpdatePartnerAssetsResultObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -117,7 +141,9 @@ UpdatePartnerAssetsResult <- R6::R6Class(
         self$`asset_id` <- this_object$`asset_id`
       }
       if (!is.null(this_object$`asset_type`)) {
-        self$`asset_type` <- this_object$`asset_type`
+        `asset_type_object` <- AssetTypeResponse$new()
+        `asset_type_object`$fromJSON(jsonlite::toJSON(this_object$`asset_type`, auto_unbox = TRUE, digits = NA))
+        self$`asset_type` <- `asset_type_object`
       }
       if (!is.null(this_object$`partner_id`)) {
         self$`partner_id` <- this_object$`partner_id`
@@ -147,7 +173,7 @@ UpdatePartnerAssetsResult <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`asset_id` <- this_object$`asset_id`
-      self$`asset_type` <- this_object$`asset_type`
+      self$`asset_type` <- AssetTypeResponse$new()$fromJSON(jsonlite::toJSON(this_object$`asset_type`, auto_unbox = TRUE, digits = NA))
       self$`partner_id` <- this_object$`partner_id`
       self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[character]", loadNamespace("openapi"))
       self

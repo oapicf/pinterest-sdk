@@ -3,8 +3,8 @@ package org.openapitools.client.model
 
 
 case class TrendingKeywordDemographics (
-    _ageDistribution: Option[TrendingKeywordDemographicsAgeDistribution],
-    _genderDistribution: Option[TrendingKeywordDemographicsGenderDistribution]
+    _ageDistribution: Option[TrendsAgeDistribution],
+    _genderDistribution: Option[TrendsGenderDistribution]
 )
 object TrendingKeywordDemographics {
     def toStringBody(var_ageDistribution: Object, var_genderDistribution: Object) =

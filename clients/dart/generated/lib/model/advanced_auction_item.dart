@@ -13,11 +13,13 @@ part of openapi.api;
 class AdvancedAuctionItem {
   /// Returns a new [AdvancedAuctionItem] instance.
   AdvancedAuctionItem({
+    required this.bidOptions,
     required this.country,
     required this.itemId,
     required this.language,
-    required this.bidOptions,
   });
+
+  AdvancedAuctionBidOptions bidOptions;
 
   Country country;
 
@@ -26,32 +28,30 @@ class AdvancedAuctionItem {
 
   Language language;
 
-  AdvancedAuctionBidOptions bidOptions;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is AdvancedAuctionItem &&
+    other.bidOptions == bidOptions &&
     other.country == country &&
     other.itemId == itemId &&
-    other.language == language &&
-    other.bidOptions == bidOptions;
+    other.language == language;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (bidOptions.hashCode) +
     (country.hashCode) +
     (itemId.hashCode) +
-    (language.hashCode) +
-    (bidOptions.hashCode);
+    (language.hashCode);
 
   @override
-  String toString() => 'AdvancedAuctionItem[country=$country, itemId=$itemId, language=$language, bidOptions=$bidOptions]';
+  String toString() => 'AdvancedAuctionItem[bidOptions=$bidOptions, country=$country, itemId=$itemId, language=$language]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'bid_options'] = this.bidOptions;
       json[r'country'] = this.country;
       json[r'item_id'] = this.itemId;
       json[r'language'] = this.language;
-      json[r'bid_options'] = this.bidOptions;
     return json;
   }
 
@@ -66,18 +66,22 @@ class AdvancedAuctionItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdvancedAuctionItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdvancedAuctionItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'bid_options'), 'Required key "AdvancedAuctionItem[bid_options]" is missing from JSON.');
+        assert(json[r'bid_options'] != null, 'Required key "AdvancedAuctionItem[bid_options]" has a null value in JSON.');
+        assert(json.containsKey(r'country'), 'Required key "AdvancedAuctionItem[country]" is missing from JSON.');
+        assert(json[r'country'] != null, 'Required key "AdvancedAuctionItem[country]" has a null value in JSON.');
+        assert(json.containsKey(r'item_id'), 'Required key "AdvancedAuctionItem[item_id]" is missing from JSON.');
+        assert(json[r'item_id'] != null, 'Required key "AdvancedAuctionItem[item_id]" has a null value in JSON.');
+        assert(json.containsKey(r'language'), 'Required key "AdvancedAuctionItem[language]" is missing from JSON.');
+        assert(json[r'language'] != null, 'Required key "AdvancedAuctionItem[language]" has a null value in JSON.');
         return true;
       }());
 
       return AdvancedAuctionItem(
+        bidOptions: AdvancedAuctionBidOptions.fromJson(json[r'bid_options'])!,
         country: Country.fromJson(json[r'country'])!,
         itemId: mapValueOfType<String>(json, r'item_id')!,
         language: Language.fromJson(json[r'language'])!,
-        bidOptions: AdvancedAuctionBidOptions.fromJson(json[r'bid_options'])!,
       );
     }
     return null;
@@ -125,10 +129,10 @@ class AdvancedAuctionItem {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'bid_options',
     'country',
     'item_id',
     'language',
-    'bid_options',
   };
 }
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.Pin;
+import org.openapitools.model.PinRead;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,7 +23,7 @@ public class BoardsListPins200Response   {
   
   private String bookmark;
 
-  private List<@Valid Pin> items = new ArrayList<>();
+  private List<@Valid PinRead> items = new ArrayList<>();
 
   /**
    **/
@@ -44,25 +44,24 @@ public class BoardsListPins200Response   {
 
 
   /**
-   * Pins
    **/
-  public BoardsListPins200Response items(List<@Valid Pin> items) {
+  public BoardsListPins200Response items(List<@Valid PinRead> items) {
     this.items = items;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "Pins")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
-  public List<@Valid Pin> getItems() {
+  public List<@Valid PinRead> getItems() {
     return items;
   }
-  public void setItems(List<@Valid Pin> items) {
+  public void setItems(List<@Valid PinRead> items) {
     this.items = items;
   }
 
-  public BoardsListPins200Response addItemsItem(Pin itemsItem) {
+  public BoardsListPins200Response addItemsItem(PinRead itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -106,10 +105,7 @@ public class BoardsListPins200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.IntegrationLogsInvalidLogResponseRejectedLogsInner
+open OpenAPI.Model.IntegrationLogsInvalidLogResponseRejectedLogsItems
 
 module IntegrationLogsInvalidLogResponse =
 
@@ -12,7 +12,7 @@ module IntegrationLogsInvalidLogResponse =
   [<CLIMutable>]
   type IntegrationLogsInvalidLogResponse = {
     [<JsonProperty(PropertyName = "rejected_logs")>]
-    RejectedLogs : IntegrationLogsInvalidLogResponseRejectedLogsInner[];
+    RejectedLogs : IntegrationLogsInvalidLogResponseRejectedLogsItems[];
   }
 
   //#endregion

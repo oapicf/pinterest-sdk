@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,7 @@ import com.squareup.moshi.JsonClass
 /**
  * conversion tag type
  *
- * Values: PAGE_LOAD,UNKNOWN,INITIALIZED,PAGE_VISIT,SIGNUP,CHECKOUT,CUSTOM,VIEW_CATEGORY,SEARCH,ADD_TO_CART,WATCH_VIDEO,LEAD,APP_INSTALL,WEB_SESSION,EXTERNAL_MEASUREMENT
+ * Values: PAGE_LOAD,UNKNOWN,INITIALIZED,PAGE_VISIT,SIGNUP,CHECKOUT,CUSTOM,VIEW_CATEGORY,SEARCH,ADD_TO_CART,WATCH_VIDEO,LEAD,APP_INSTALL,WEB_SESSION,EXTERNAL_MEASUREMENT,ADD_PAYMENT_INFO,ADD_TO_WISHLIST,INITIATE_CHECKOUT,SUBSCRIBE,VIEW_CONTENT,ADVERTISER_DEFINED_EVENT,APP_OPEN,CONTACT,SCHEDULE,FIND_LOCATION,CUSTOMIZE_PRODUCT,SUBMIT_APPLICATION,START_TRIAL
  */
 
 @JsonClass(generateAdapter = false)
@@ -71,7 +79,46 @@ enum class ConversionTagType(val value: kotlin.String) {
     WEB_SESSION("WEB_SESSION"),
 
     @Json(name = "EXTERNAL_MEASUREMENT")
-    EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT");
+    EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT"),
+
+    @Json(name = "ADD_PAYMENT_INFO")
+    ADD_PAYMENT_INFO("ADD_PAYMENT_INFO"),
+
+    @Json(name = "ADD_TO_WISHLIST")
+    ADD_TO_WISHLIST("ADD_TO_WISHLIST"),
+
+    @Json(name = "INITIATE_CHECKOUT")
+    INITIATE_CHECKOUT("INITIATE_CHECKOUT"),
+
+    @Json(name = "SUBSCRIBE")
+    SUBSCRIBE("SUBSCRIBE"),
+
+    @Json(name = "VIEW_CONTENT")
+    VIEW_CONTENT("VIEW_CONTENT"),
+
+    @Json(name = "ADVERTISER_DEFINED_EVENT")
+    ADVERTISER_DEFINED_EVENT("ADVERTISER_DEFINED_EVENT"),
+
+    @Json(name = "APP_OPEN")
+    APP_OPEN("APP_OPEN"),
+
+    @Json(name = "CONTACT")
+    CONTACT("CONTACT"),
+
+    @Json(name = "SCHEDULE")
+    SCHEDULE("SCHEDULE"),
+
+    @Json(name = "FIND_LOCATION")
+    FIND_LOCATION("FIND_LOCATION"),
+
+    @Json(name = "CUSTOMIZE_PRODUCT")
+    CUSTOMIZE_PRODUCT("CUSTOMIZE_PRODUCT"),
+
+    @Json(name = "SUBMIT_APPLICATION")
+    SUBMIT_APPLICATION("SUBMIT_APPLICATION"),
+
+    @Json(name = "START_TRIAL")
+    START_TRIAL("START_TRIAL");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -93,7 +140,7 @@ enum class ConversionTagType(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): ConversionTagType? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

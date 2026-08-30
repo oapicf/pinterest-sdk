@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Availability** | [**NonNullableProductAvailabilityType**](NonNullableProductAvailabilityType.md) |  | 
+**Availability** | [**ProductAvailability**](ProductAvailability.md) |  | 
 **Currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | 
 **ItemGroupId** | **String** | The parent ID of the product. | 
 **ItemId** | **String** | The user-created unique ID that represents the product. | 

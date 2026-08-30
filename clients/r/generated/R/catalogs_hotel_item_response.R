@@ -8,8 +8,9 @@
 #' @description CatalogsHotelItemResponse Class
 #' @format An \code{R6Class} generator object
 #' @field attributes  \link{CatalogsHotelAttributes} [optional]
-#' @field catalog_type  \link{CatalogsType}
+#' @field catalog_type  character
 #' @field hotel_id The catalog hotel id in the merchant namespace character [optional]
+#' @field item_response_kind Discriminator literal identifying this leaf inside an `ItemResponse` payload. character
 #' @field pins The pins mapped to the item list(\link{Pin}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,23 +21,36 @@ CatalogsHotelItemResponse <- R6::R6Class(
     `attributes` = NULL,
     `catalog_type` = NULL,
     `hotel_id` = NULL,
+    `item_response_kind` = NULL,
     `pins` = NULL,
 
     #' @description
     #' Initialize a new CatalogsHotelItemResponse class.
     #'
     #' @param catalog_type catalog_type
+    #' @param item_response_kind Discriminator literal identifying this leaf inside an `ItemResponse` payload.
     #' @param attributes attributes
     #' @param hotel_id The catalog hotel id in the merchant namespace
     #' @param pins The pins mapped to the item
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type`, `attributes` = NULL, `hotel_id` = NULL, `pins` = NULL, ...) {
+    initialize = function(`catalog_type`, `item_response_kind`, `attributes` = NULL, `hotel_id` = NULL, `pins` = NULL, ...) {
       if (!missing(`catalog_type`)) {
-        if (!(`catalog_type` %in% c())) {
-          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
+        if (!(`catalog_type` %in% c("HOTEL"))) {
+          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
         }
-        stopifnot(R6::is.R6(`catalog_type`))
+        if (!(is.character(`catalog_type`) && length(`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", `catalog_type`))
+        }
         self$`catalog_type` <- `catalog_type`
+      }
+      if (!missing(`item_response_kind`)) {
+        if (!(`item_response_kind` %in% c("hotel_item"))) {
+          stop(paste("Error! \"", `item_response_kind`, "\" cannot be assigned to `item_response_kind`. Must be \"hotel_item\".", sep = ""))
+        }
+        if (!(is.character(`item_response_kind`) && length(`item_response_kind`) == 1)) {
+          stop(paste("Error! Invalid data for `item_response_kind`. Must be a string:", `item_response_kind`))
+        }
+        self$`item_response_kind` <- `item_response_kind`
       }
       if (!is.null(`attributes`)) {
         stopifnot(R6::is.R6(`attributes`))
@@ -88,21 +102,48 @@ CatalogsHotelItemResponse <- R6::R6Class(
       CatalogsHotelItemResponseObject <- list()
       if (!is.null(self$`attributes`)) {
         CatalogsHotelItemResponseObject[["attributes"]] <-
-          self$`attributes`$toSimpleType()
+          self$extractSimpleType(self$`attributes`)
       }
       if (!is.null(self$`catalog_type`)) {
         CatalogsHotelItemResponseObject[["catalog_type"]] <-
-          self$`catalog_type`$toSimpleType()
+          self$`catalog_type`
       }
       if (!is.null(self$`hotel_id`)) {
         CatalogsHotelItemResponseObject[["hotel_id"]] <-
           self$`hotel_id`
       }
+      if (!is.null(self$`item_response_kind`)) {
+        CatalogsHotelItemResponseObject[["item_response_kind"]] <-
+          self$`item_response_kind`
+      }
       if (!is.null(self$`pins`)) {
         CatalogsHotelItemResponseObject[["pins"]] <-
-          lapply(self$`pins`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`pins`)
       }
       return(CatalogsHotelItemResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -118,12 +159,19 @@ CatalogsHotelItemResponse <- R6::R6Class(
         self$`attributes` <- `attributes_object`
       }
       if (!is.null(this_object$`catalog_type`)) {
-        `catalog_type_object` <- CatalogsType$new()
-        `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
-        self$`catalog_type` <- `catalog_type_object`
+        if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
+          stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
+        }
+        self$`catalog_type` <- this_object$`catalog_type`
       }
       if (!is.null(this_object$`hotel_id`)) {
         self$`hotel_id` <- this_object$`hotel_id`
+      }
+      if (!is.null(this_object$`item_response_kind`)) {
+        if (!is.null(this_object$`item_response_kind`) && !(this_object$`item_response_kind` %in% c("hotel_item"))) {
+          stop(paste("Error! \"", this_object$`item_response_kind`, "\" cannot be assigned to `item_response_kind`. Must be \"hotel_item\".", sep = ""))
+        }
+        self$`item_response_kind` <- this_object$`item_response_kind`
       }
       if (!is.null(this_object$`pins`)) {
         self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[Pin]", loadNamespace("openapi"))
@@ -150,8 +198,15 @@ CatalogsHotelItemResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`attributes` <- CatalogsHotelAttributes$new()$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
-      self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
+        stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"HOTEL\".", sep = ""))
+      }
+      self$`catalog_type` <- this_object$`catalog_type`
       self$`hotel_id` <- this_object$`hotel_id`
+      if (!is.null(this_object$`item_response_kind`) && !(this_object$`item_response_kind` %in% c("hotel_item"))) {
+        stop(paste("Error! \"", this_object$`item_response_kind`, "\" cannot be assigned to `item_response_kind`. Must be \"hotel_item\".", sep = ""))
+      }
+      self$`item_response_kind` <- this_object$`item_response_kind`
       self$`pins` <- ApiClient$new()$deserializeObj(this_object$`pins`, "array[Pin]", loadNamespace("openapi"))
       self
     },
@@ -164,9 +219,19 @@ CatalogsHotelItemResponse <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
       if (!is.null(input_json$`catalog_type`)) {
-        stopifnot(R6::is.R6(input_json$`catalog_type`))
+        if (!(is.character(input_json$`catalog_type`) && length(input_json$`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", input_json$`catalog_type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelItemResponse: the required field `catalog_type` is missing."))
+      }
+      # check the required field `item_response_kind`
+      if (!is.null(input_json$`item_response_kind`)) {
+        if (!(is.character(input_json$`item_response_kind`) && length(input_json$`item_response_kind`) == 1)) {
+          stop(paste("Error! Invalid data for `item_response_kind`. Must be a string:", input_json$`item_response_kind`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelItemResponse: the required field `item_response_kind` is missing."))
       }
     },
 
@@ -188,6 +253,11 @@ CatalogsHotelItemResponse <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `item_response_kind` is null
+      if (is.null(self$`item_response_kind`)) {
+        return(FALSE)
+      }
+
       if (length(self$`pins`) > 11) {
         return(FALSE)
       }
@@ -204,6 +274,11 @@ CatalogsHotelItemResponse <- R6::R6Class(
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
+      }
+
+      # check if the required `item_response_kind` is null
+      if (is.null(self$`item_response_kind`)) {
+        invalid_fields["item_response_kind"] <- "Non-nullable required field `item_response_kind` cannot be null."
       }
 
       if (length(self$`pins`) > 11) {

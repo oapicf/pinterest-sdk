@@ -1,10 +1,12 @@
 const utils = require('../utils/utils');
+const AiDisclosures = require('../models/AiDisclosures');
 const PinMediaSource = require('../models/PinMediaSource');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...AiDisclosures.fields(`${keyPrefix}ai_disclosures`, isInput),
             {
                 key: `${keyPrefix}alt_text`,
                 label: `[${labelPrefix}alt_text]`,
@@ -56,6 +58,7 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'ai_disclosures': utils.removeIfEmpty(AiDisclosures.mapping(bundle, `${keyPrefix}ai_disclosures`)),
             'alt_text': bundle.inputData?.[`${keyPrefix}alt_text`],
             'board_id': bundle.inputData?.[`${keyPrefix}board_id`],
             'board_section_id': bundle.inputData?.[`${keyPrefix}board_section_id`],

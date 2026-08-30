@@ -8,7 +8,7 @@ The class is defined in **[CountryFilter.java](../../src/main/java/org/openapito
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**COUNTRY** | `CatalogsProductGroupMultipleCountriesCriteria` |  | 
+**COUNTRY** | [`CatalogsProductGroupMultipleCountriesCriteria`](CatalogsProductGroupMultipleCountriesCriteria.md) |  | 
 
 
 

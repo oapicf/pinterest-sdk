@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set Permission levels member or partner has on an asset.
 	 */
-	void setPermissions(std::list <std::string> permissions);
+	void setPermissions(std::list<std::string> permissions);
 	/*! \brief Get 
 	 */
 	BusinessAccessUserSummary getUser();
 
 	/*! \brief Set 
 	 */
-	void setUser(BusinessAccessUserSummary  user);
+	void setUser(BusinessAccessUserSummary user);
 
 
     private:

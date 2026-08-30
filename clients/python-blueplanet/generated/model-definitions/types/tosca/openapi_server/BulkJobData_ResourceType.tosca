@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkJobData"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkJobData"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BulkRequestStatus = openapi_server.resourceTypes.BulkRequestStatus
+}
+resourceTypes {
+
+  BulkJobData {
+    title = BulkJobData
+    description = BulkJobData
+    derivedFrom = Root
+    properties {
+        result_url {
+          type =  string
+          description = "Presigned s3 file url for the bulk request result."
+          optional = false
+        }
+        status {
+          type = BulkRequestStatus
+          description = ""
+          optional = true
+        }
+        workload_id {
+          type =  integer
+          description = "Bulk Workload Id."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkJobData {
+    title = BulkJobData
+    description = BulkJobData
+    implements = openapi_server.resourceTypes.BulkJobData
+
+  }
+}

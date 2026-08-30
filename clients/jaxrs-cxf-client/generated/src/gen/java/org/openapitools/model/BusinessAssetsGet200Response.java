@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetBusinessAssetsResponse;
+import org.openapitools.model.BusinessAssets;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -17,12 +17,9 @@ public class BusinessAssetsGet200Response  {
 
   private String bookmark;
 
- /**
-  * List of assets the requesting business has access to.
-  */
-  @ApiModelProperty(required = true, value = "List of assets the requesting business has access to.")
+  @ApiModelProperty(required = true, value = "")
 
-  private List<GetBusinessAssetsResponse> items = new ArrayList<>();
+  private List<BusinessAssets> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -42,24 +39,24 @@ public class BusinessAssetsGet200Response  {
   }
 
  /**
-   * List of assets the requesting business has access to.
+   * Get items
    * @return items
   **/
   @JsonProperty("items")
-  public List<GetBusinessAssetsResponse> getItems() {
+  public List<BusinessAssets> getItems() {
     return items;
   }
 
-  public void setItems(List<GetBusinessAssetsResponse> items) {
+  public void setItems(List<BusinessAssets> items) {
     this.items = items;
   }
 
-  public BusinessAssetsGet200Response items(List<GetBusinessAssetsResponse> items) {
+  public BusinessAssetsGet200Response items(List<BusinessAssets> items) {
     this.items = items;
     return this;
   }
 
-  public BusinessAssetsGet200Response addItemsItem(GetBusinessAssetsResponse itemsItem) {
+  public BusinessAssetsGet200Response addItemsItem(BusinessAssets itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -98,10 +95,7 @@ public class BusinessAssetsGet200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

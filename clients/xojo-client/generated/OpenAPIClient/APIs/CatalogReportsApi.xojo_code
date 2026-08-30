@@ -5,13 +5,13 @@ Protected Class CatalogReportsApi
 		  // Operation reports/create
 		  // Build catalogs report
 		  // - 
-		  // - parameter catalogsReportParameters: (body) Request object to asynchronously create a report. 
+		  // - parameter catalogsReportParameters: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes CatalogReportsApiCallbackHandler.ReportsCreateCallback(CatalogsCreateReportResponse) on completion. 
 		  //
 		  // - POST /catalogs/reports
-		  // - Async request to create a report of the catalog owned by the "operation user_account". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+		  // - Async request to create a report of the catalog owned by the "operation user_account". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -138,13 +138,13 @@ Protected Class CatalogReportsApi
 		  // Operation reports/get
 		  // Get catalogs report
 		  // - 
-		  // - parameter token: (query) Token returned from async build report call 
+		  // - parameter token: (query) Token returned from the post request creation call 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes CatalogReportsApiCallbackHandler.ReportsGetCallback(CatalogsReport) on completion. 
 		  //
 		  // - GET /catalogs/reports
-		  // - This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+		  // - This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -269,19 +269,19 @@ Protected Class CatalogReportsApi
 
 
 	#tag Method, Flags = &h0
-		Sub ReportsStats(, parameters As OpenAPIClient.Models.ReportsStatsParametersParameter, Optional adAccountId As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub ReportsStats(, parameters As OpenAPIClient.Models.CatalogsReportStatsParameters, Optional adAccountId As Xoson.O.OptionalString, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation reports/stats
 		  // List report stats
 		  // - 
 		  // - parameter parameters: (query) Contains the parameters for report identification. 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes CatalogReportsApiCallbackHandler.ReportsStatsCallback(ReportsStats200Response) on completion. 
 		  //
 		  // - GET /catalogs/reports/stats
-		  // - List aggregated numbers of issues for a catalog owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+		  // - List aggregated numbers of issues for a catalog owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -295,11 +295,11 @@ Protected Class CatalogReportsApi
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("parameters") + "=" + EncodeURLComponent(Xoson.toJSON(parameters))
 		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("parameters") + "=" + EncodeURLComponent(Xoson.toJSON(parameters))
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
 		  

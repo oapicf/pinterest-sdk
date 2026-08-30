@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CancelInvitesResponse",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CancelInviteResultItem"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

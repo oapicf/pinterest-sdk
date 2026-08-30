@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.Pin
+import org.openapitools.model.PinRead
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -16,16 +16,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param items Pins
+ * @param items 
  * @param bookmark 
  */
 data class BoardsListPins200Response(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "Pins")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<Pin>,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("items")
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<PinRead>,
 
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("bookmark")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null
 ) {
 

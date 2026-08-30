@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsHotelFeedsUpdateRequest::CatalogsHotelFeedsUpdateRequest()
 {
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	credentials = CatalogsFeedCredentials();
 	default_currency = NullableCurrency();
 	format = CatalogsFormat();
@@ -39,9 +39,8 @@ CatalogsHotelFeedsUpdateRequest::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -153,8 +152,8 @@ CatalogsHotelFeedsUpdateRequest::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -210,14 +209,14 @@ CatalogsHotelFeedsUpdateRequest::toJson()
 
 }
 
-CatalogsType
+std::string
 CatalogsHotelFeedsUpdateRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsHotelFeedsUpdateRequest::setCatalogType(CatalogsType  catalog_type)
+CatalogsHotelFeedsUpdateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -229,7 +228,7 @@ CatalogsHotelFeedsUpdateRequest::getCredentials()
 }
 
 void
-CatalogsHotelFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsHotelFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -241,7 +240,7 @@ CatalogsHotelFeedsUpdateRequest::getDefaultCurrency()
 }
 
 void
-CatalogsHotelFeedsUpdateRequest::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsHotelFeedsUpdateRequest::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
@@ -253,7 +252,7 @@ CatalogsHotelFeedsUpdateRequest::getFormat()
 }
 
 void
-CatalogsHotelFeedsUpdateRequest::setFormat(CatalogsFormat  format)
+CatalogsHotelFeedsUpdateRequest::setFormat(CatalogsFormat format)
 {
 	this->format = format;
 }
@@ -265,7 +264,7 @@ CatalogsHotelFeedsUpdateRequest::getLocation()
 }
 
 void
-CatalogsHotelFeedsUpdateRequest::setLocation(std::string  location)
+CatalogsHotelFeedsUpdateRequest::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -277,7 +276,7 @@ CatalogsHotelFeedsUpdateRequest::getName()
 }
 
 void
-CatalogsHotelFeedsUpdateRequest::setName(std::string  name)
+CatalogsHotelFeedsUpdateRequest::setName(std::string name)
 {
 	this->name = name;
 }
@@ -289,7 +288,7 @@ CatalogsHotelFeedsUpdateRequest::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsHotelFeedsUpdateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsHotelFeedsUpdateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -301,7 +300,7 @@ CatalogsHotelFeedsUpdateRequest::getStatus()
 }
 
 void
-CatalogsHotelFeedsUpdateRequest::setStatus(CatalogsStatus  status)
+CatalogsHotelFeedsUpdateRequest::setStatus(CatalogsStatus status)
 {
 	this->status = status;
 }

@@ -11,10 +11,10 @@
 
 // List products by product group
 //
-// Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+// Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 //
 catalogs_product_group_pins_list_200_response_t*
-CatalogProductGroupsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_group_id, char *bookmark, int *page_size, char *ad_account_id, int *pin_metrics)
+CatalogProductGroupsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_group_id, char *ad_account_id, int *pin_metrics, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -47,31 +47,6 @@ CatalogProductGroupsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, cha
 
 
     // query parameters
-    char *keyQuery_bookmark = NULL;
-    char * valueQuery_bookmark = NULL;
-    keyValuePair_t *keyPairQuery_bookmark = 0;
-    if (bookmark)
-    {
-        keyQuery_bookmark = strdup("bookmark");
-        valueQuery_bookmark = strdup((bookmark));
-        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
-        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
-    }
-
-    // query parameters
-    char *keyQuery_page_size = NULL;
-    char * valueQuery_page_size = NULL;
-    keyValuePair_t *keyPairQuery_page_size = 0;
-    if (page_size)
-    {
-        keyQuery_page_size = strdup("page_size");
-        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
-        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
-        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
-    }
-
-    // query parameters
     char *keyQuery_ad_account_id = NULL;
     char * valueQuery_ad_account_id = NULL;
     keyValuePair_t *keyPairQuery_ad_account_id = 0;
@@ -95,6 +70,31 @@ CatalogProductGroupsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, cha
         keyPairQuery_pin_metrics = keyValuePair_create(keyQuery_pin_metrics, valueQuery_pin_metrics);
         list_addElement(localVarQueryParameters,keyPairQuery_pin_metrics);
     }
+
+    // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
+    char *keyQuery_page_size = NULL;
+    char * valueQuery_page_size = NULL;
+    keyValuePair_t *keyPairQuery_page_size = 0;
+    if (page_size)
+    {
+        keyQuery_page_size = strdup("page_size");
+        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
+        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
+        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -109,23 +109,31 @@ CatalogProductGroupsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, cha
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Catalogs product group not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_product_group_pins_list_200_response_t *elementToReturn = NULL;
@@ -151,30 +159,6 @@ CatalogProductGroupsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, cha
     
     free(localVarPath);
     free(localVarToReplace_product_group_id);
-    if(keyQuery_bookmark){
-        free(keyQuery_bookmark);
-        keyQuery_bookmark = NULL;
-    }
-    if(valueQuery_bookmark){
-        free(valueQuery_bookmark);
-        valueQuery_bookmark = NULL;
-    }
-    if(keyPairQuery_bookmark){
-        keyValuePair_free(keyPairQuery_bookmark);
-        keyPairQuery_bookmark = NULL;
-    }
-    if(keyQuery_page_size){
-        free(keyQuery_page_size);
-        keyQuery_page_size = NULL;
-    }
-    if(valueQuery_page_size){
-        free(valueQuery_page_size);
-        valueQuery_page_size = NULL;
-    }
-    if(keyPairQuery_page_size){
-        keyValuePair_free(keyPairQuery_page_size);
-        keyPairQuery_page_size = NULL;
-    }
     if(keyQuery_ad_account_id){
         free(keyQuery_ad_account_id);
         keyQuery_ad_account_id = NULL;
@@ -199,6 +183,30 @@ CatalogProductGroupsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, cha
         keyValuePair_free(keyPairQuery_pin_metrics);
         keyPairQuery_pin_metrics = NULL;
     }
+    if(keyQuery_bookmark){
+        free(keyQuery_bookmark);
+        keyQuery_bookmark = NULL;
+    }
+    if(valueQuery_bookmark){
+        free(valueQuery_bookmark);
+        valueQuery_bookmark = NULL;
+    }
+    if(keyPairQuery_bookmark){
+        keyValuePair_free(keyPairQuery_bookmark);
+        keyPairQuery_bookmark = NULL;
+    }
+    if(keyQuery_page_size){
+        free(keyQuery_page_size);
+        keyQuery_page_size = NULL;
+    }
+    if(valueQuery_page_size){
+        free(valueQuery_page_size);
+        valueQuery_page_size = NULL;
+    }
+    if(keyPairQuery_page_size){
+        keyValuePair_free(keyPairQuery_page_size);
+        keyPairQuery_page_size = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -208,10 +216,10 @@ end:
 
 // Create product group
 //
-// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
 catalogs_vertical_product_group_t*
-CatalogProductGroupsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, multiple_product_groups_inner_t *multiple_product_groups_inner, char *ad_account_id)
+CatalogProductGroupsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, catalogs_product_groups_create_request_schema_t *catalogs_product_groups_create_request_schema, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -244,12 +252,12 @@ CatalogProductGroupsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, mult
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_multiple_product_groups_inner = NULL;
-    if (multiple_product_groups_inner != NULL)
+    cJSON *localVarSingleItemJSON_catalogs_product_groups_create_request_schema = NULL;
+    if (catalogs_product_groups_create_request_schema != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_multiple_product_groups_inner = multiple_product_groups_inner_convertToJSON(multiple_product_groups_inner);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_multiple_product_groups_inner);
+        localVarSingleItemJSON_catalogs_product_groups_create_request_schema = catalogs_product_groups_create_request_schema_convertToJSON(catalogs_product_groups_create_request_schema);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_product_groups_create_request_schema);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -266,28 +274,36 @@ CatalogProductGroupsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, mult
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 201) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","Resource create operation completed successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid body.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for catalog product group mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Conflict. Can&#39;t create this catalogs product group with this value.");
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_vertical_product_group_t *elementToReturn = NULL;
@@ -312,9 +328,9 @@ CatalogProductGroupsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, mult
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarSingleItemJSON_multiple_product_groups_inner) {
-        cJSON_Delete(localVarSingleItemJSON_multiple_product_groups_inner);
-        localVarSingleItemJSON_multiple_product_groups_inner = NULL;
+    if (localVarSingleItemJSON_catalogs_product_groups_create_request_schema) {
+        cJSON_Delete(localVarSingleItemJSON_catalogs_product_groups_create_request_schema);
+        localVarSingleItemJSON_catalogs_product_groups_create_request_schema = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){
@@ -338,10 +354,10 @@ end:
 
 // Create product groups
 //
-// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
 list_t*
-CatalogProductGroupsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, list_t *multiple_product_groups_inner, char *ad_account_id)
+CatalogProductGroupsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, list_t *catalogs_product_groups_create_many_request_items, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -375,14 +391,14 @@ CatalogProductGroupsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, 
 
     // Body Param
     //notstring
-    cJSON *localVar_multiple_product_groups_inner = NULL;
-    cJSON *localVarItemJSON_multiple_product_groups_inner = NULL;
-    cJSON *localVarSingleItemJSON_multiple_product_groups_inner = NULL;
-    if (multiple_product_groups_inner != NULL)
+    cJSON *localVar_catalogs_product_groups_create_many_request_items = NULL;
+    cJSON *localVarItemJSON_catalogs_product_groups_create_many_request_items = NULL;
+    cJSON *localVarSingleItemJSON_catalogs_product_groups_create_many_request_items = NULL;
+    if (catalogs_product_groups_create_many_request_items != NULL)
     {
-        localVarItemJSON_multiple_product_groups_inner = cJSON_CreateObject();
-        localVarSingleItemJSON_multiple_product_groups_inner = cJSON_AddArrayToObject(localVarItemJSON_multiple_product_groups_inner, "multiple_product_groups_inner");
-        if (localVarSingleItemJSON_multiple_product_groups_inner == NULL)
+        localVarItemJSON_catalogs_product_groups_create_many_request_items = cJSON_CreateObject();
+        localVarSingleItemJSON_catalogs_product_groups_create_many_request_items = cJSON_AddArrayToObject(localVarItemJSON_catalogs_product_groups_create_many_request_items, "catalogs_product_groups_create_many_request_items");
+        if (localVarSingleItemJSON_catalogs_product_groups_create_many_request_items == NULL)
         {
             // nonprimitive container
 
@@ -390,16 +406,16 @@ CatalogProductGroupsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, 
         }
     }
 
-    listEntry_t *multiple_product_groups_innerBodyListEntry;
-    list_ForEach(multiple_product_groups_innerBodyListEntry, multiple_product_groups_inner)
+    listEntry_t *catalogs_product_groups_create_many_request_itemsBodyListEntry;
+    list_ForEach(catalogs_product_groups_create_many_request_itemsBodyListEntry, catalogs_product_groups_create_many_request_items)
     {
-        localVar_multiple_product_groups_inner = multiple_product_groups_inner_convertToJSON(multiple_product_groups_innerBodyListEntry->data);
-        if(localVar_multiple_product_groups_inner == NULL)
+        localVar_catalogs_product_groups_create_many_request_items = catalogs_product_groups_create_many_request_items_convertToJSON(catalogs_product_groups_create_many_request_itemsBodyListEntry->data);
+        if(localVar_catalogs_product_groups_create_many_request_items == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_multiple_product_groups_inner, localVar_multiple_product_groups_inner);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_multiple_product_groups_inner);
+        cJSON_AddItemToArray(localVarSingleItemJSON_catalogs_product_groups_create_many_request_items, localVar_catalogs_product_groups_create_many_request_items);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_catalogs_product_groups_create_many_request_items);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -417,27 +433,31 @@ CatalogProductGroupsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 201) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded and a new resource has been created as a result.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid body.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for catalog product group mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Conflict. Can&#39;t create this catalogs product group with this value.");
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //primitive return type not simple
     list_t *elementToReturn = NULL;
@@ -463,17 +483,17 @@ CatalogProductGroupsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, 
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarItemJSON_multiple_product_groups_inner) {
-        cJSON_Delete(localVarItemJSON_multiple_product_groups_inner);
-        localVarItemJSON_multiple_product_groups_inner = NULL;
+    if (localVarItemJSON_catalogs_product_groups_create_many_request_items) {
+        cJSON_Delete(localVarItemJSON_catalogs_product_groups_create_many_request_items);
+        localVarItemJSON_catalogs_product_groups_create_many_request_items = NULL;
     }
-    if (localVarSingleItemJSON_multiple_product_groups_inner) {
-        cJSON_Delete(localVarSingleItemJSON_multiple_product_groups_inner);
-        localVarSingleItemJSON_multiple_product_groups_inner = NULL;
+    if (localVarSingleItemJSON_catalogs_product_groups_create_many_request_items) {
+        cJSON_Delete(localVarSingleItemJSON_catalogs_product_groups_create_many_request_items);
+        localVarSingleItemJSON_catalogs_product_groups_create_many_request_items = NULL;
     }
-    if (localVar_multiple_product_groups_inner) {
-        cJSON_Delete(localVar_multiple_product_groups_inner);
-        localVar_multiple_product_groups_inner = NULL;
+    if (localVar_catalogs_product_groups_create_many_request_items) {
+        cJSON_Delete(localVar_catalogs_product_groups_create_many_request_items);
+        localVar_catalogs_product_groups_create_many_request_items = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){
@@ -497,9 +517,9 @@ end:
 
 // Delete product group
 //
-// Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+// Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 //
-void
+catalogs_vertical_product_group_t*
 CatalogProductGroupsAPI_catalogsProductGroupsDelete(apiClient_t *apiClient, char *product_group_id, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -556,35 +576,49 @@ CatalogProductGroupsAPI_catalogsProductGroupsDelete(apiClient_t *apiClient, char
                     "DELETE");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 204) {
-    //    printf("%s\n","Catalogs Product Group deleted successfully.");
+    //    printf("%s\n","Resource deleted successfully.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid catalogs product group id parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for catalog product group mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Catalogs product group not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Conflict. Can&#39;t delete this catalogs product group.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
-    //No return type
-end:
+    //nonprimitive not container
+    catalogs_vertical_product_group_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *CatalogProductGroupsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogProductGroupsAPIlocalVarJSON);
+        cJSON_Delete(CatalogProductGroupsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -609,20 +643,16 @@ end:
         keyValuePair_free(keyPairQuery_ad_account_id);
         keyPairQuery_ad_account_id = NULL;
     }
-    if(keyQuery_ad_account_id){
-        free(keyQuery_ad_account_id);
-        keyQuery_ad_account_id = NULL;
-    }
-    if(keyPairQuery_ad_account_id){
-        keyValuePair_free(keyPairQuery_ad_account_id);
-        keyPairQuery_ad_account_id = NULL;
-    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
 // Delete product groups
 //
-// Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+// Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 //
 void
 CatalogProductGroupsAPI_catalogsProductGroupsDeleteMany(apiClient_t *apiClient, list_t *id, char *ad_account_id)
@@ -676,27 +706,31 @@ CatalogProductGroupsAPI_catalogsProductGroupsDeleteMany(apiClient_t *apiClient, 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 204) {
-    //    printf("%s\n","Catalogs Product Groups deleted successfully.");
+    //    printf("%s\n","Resource deleted successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for catalog product group mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Catalogs product group not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Conflict. Can&#39;t delete this catalogs product group.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //No return type
 end:
@@ -736,7 +770,7 @@ end:
 
 // Get product group
 //
-// Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+// Get a single product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 //
 catalogs_vertical_product_group_t*
 CatalogProductGroupsAPI_catalogsProductGroupsGet(apiClient_t *apiClient, char *product_group_id, char *ad_account_id)
@@ -796,31 +830,31 @@ CatalogProductGroupsAPI_catalogsProductGroupsGet(apiClient_t *apiClient, char *p
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid catalogs product group id parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for catalog product group mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Catalogs product group not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Conflict. Can&#39;t get a catalogs product group without an existing catalog.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_vertical_product_group_t *elementToReturn = NULL;
@@ -867,10 +901,10 @@ end:
 
 // List product groups
 //
-// Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+// Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 //
 catalogs_product_groups_list_200_response_t*
-CatalogProductGroupsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t *id, char *feed_id, char *catalog_id, char *bookmark, int *page_size, char *ad_account_id)
+CatalogProductGroupsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t *id, char *feed_id, char *catalog_id, char *ad_account_id, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -921,6 +955,18 @@ CatalogProductGroupsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t
     }
 
     // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // query parameters
     char *keyQuery_bookmark = NULL;
     char * valueQuery_bookmark = NULL;
     keyValuePair_t *keyPairQuery_bookmark = 0;
@@ -944,18 +990,6 @@ CatalogProductGroupsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
-
-    // query parameters
-    char *keyQuery_ad_account_id = NULL;
-    char * valueQuery_ad_account_id = NULL;
-    keyValuePair_t *keyPairQuery_ad_account_id = 0;
-    if (ad_account_id)
-    {
-        keyQuery_ad_account_id = strdup("ad_account_id");
-        valueQuery_ad_account_id = strdup((ad_account_id));
-        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
-        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -970,31 +1004,31 @@ CatalogProductGroupsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid feed parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for catalog product group mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Data feed not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Conflict. Can&#39;t create this catalogs product group with this value.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_product_groups_list_200_response_t *elementToReturn = NULL;
@@ -1043,6 +1077,18 @@ CatalogProductGroupsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t
         keyValuePair_free(keyPairQuery_catalog_id);
         keyPairQuery_catalog_id = NULL;
     }
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -1067,18 +1113,6 @@ CatalogProductGroupsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t
         keyValuePair_free(keyPairQuery_page_size);
         keyPairQuery_page_size = NULL;
     }
-    if(keyQuery_ad_account_id){
-        free(keyQuery_ad_account_id);
-        keyQuery_ad_account_id = NULL;
-    }
-    if(valueQuery_ad_account_id){
-        free(valueQuery_ad_account_id);
-        valueQuery_ad_account_id = NULL;
-    }
-    if(keyPairQuery_ad_account_id){
-        keyValuePair_free(keyPairQuery_ad_account_id);
-        keyPairQuery_ad_account_id = NULL;
-    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1088,7 +1122,7 @@ end:
 
 // Get product counts
 //
-// Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+// Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 //
 catalogs_product_group_product_counts_vertical_t*
 CatalogProductGroupsAPI_catalogsProductGroupsProductCountsGet(apiClient_t *apiClient, char *product_group_id, char *ad_account_id)
@@ -1148,19 +1182,31 @@ CatalogProductGroupsAPI_catalogsProductGroupsProductCountsGet(apiClient_t *apiCl
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Product Group Not Found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Can&#39;t access this feature without an existing catalog.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_product_group_product_counts_vertical_t *elementToReturn = NULL;
@@ -1207,10 +1253,10 @@ end:
 
 // Update single product group
 //
-// Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+// Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
 catalogs_vertical_product_group_t*
-CatalogProductGroupsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char *product_group_id, catalogs_product_groups_update_request_t *catalogs_product_groups_update_request, char *ad_account_id)
+CatalogProductGroupsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char *product_group_id, catalogs_product_groups_update_request_schema_t *catalogs_product_groups_update_request_schema, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1255,12 +1301,12 @@ CatalogProductGroupsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_catalogs_product_groups_update_request = NULL;
-    if (catalogs_product_groups_update_request != NULL)
+    cJSON *localVarSingleItemJSON_catalogs_product_groups_update_request_schema = NULL;
+    if (catalogs_product_groups_update_request_schema != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_catalogs_product_groups_update_request = catalogs_product_groups_update_request_convertToJSON(catalogs_product_groups_update_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_product_groups_update_request);
+        localVarSingleItemJSON_catalogs_product_groups_update_request_schema = catalogs_product_groups_update_request_schema_convertToJSON(catalogs_product_groups_update_request_schema);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_product_groups_update_request_schema);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -1278,31 +1324,31 @@ CatalogProductGroupsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid parameters.");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden. Account not approved for catalog product group mutations yet.");
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Catalogs product group not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Conflict. Can&#39;t update this catalogs product group to this value.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_vertical_product_group_t *elementToReturn = NULL;
@@ -1328,9 +1374,9 @@ CatalogProductGroupsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_product_group_id);
-    if (localVarSingleItemJSON_catalogs_product_groups_update_request) {
-        cJSON_Delete(localVarSingleItemJSON_catalogs_product_groups_update_request);
-        localVarSingleItemJSON_catalogs_product_groups_update_request = NULL;
+    if (localVarSingleItemJSON_catalogs_product_groups_update_request_schema) {
+        cJSON_Delete(localVarSingleItemJSON_catalogs_product_groups_update_request_schema);
+        localVarSingleItemJSON_catalogs_product_groups_update_request_schema = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){
@@ -1354,7 +1400,7 @@ end:
 
 // List products by filter
 //
-// List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+// List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  [Learn more](/docs/api-features/shopping-overview/)
 //
 catalogs_product_group_pins_list_200_response_t*
 CatalogProductGroupsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_request, char *bookmark, int *page_size, char *ad_account_id, int *pin_metrics)
@@ -1451,19 +1497,31 @@ CatalogProductGroupsAPI_productsByProductGroupFilterList(apiClient_t *apiClient,
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized access.");
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Conflict. Can&#39;t get products.");
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     catalogs_product_group_pins_list_200_response_t *elementToReturn = NULL;

@@ -15,18 +15,18 @@
 
 typedef struct price_filter_t price_filter_t;
 
-#include "catalogs_product_group_pricing_currency_criteria.h"
+#include "price_filter_price.h"
 
 
 
 typedef struct price_filter_t {
-    struct catalogs_product_group_pricing_currency_criteria_t *price; //model
+    struct price_filter_price_t *price; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } price_filter_t;
 
 __attribute__((deprecated)) price_filter_t *price_filter_create(
-    catalogs_product_group_pricing_currency_criteria_t *price
+    price_filter_price_t *price
 );
 
 void price_filter_free(price_filter_t *price_filter);

@@ -9,7 +9,7 @@
 -export_type([openapi_delete_partner_asset_access_body/0]).
 
 -type openapi_delete_partner_asset_access_body() ::
-  [ {'accesses', list(openapi_delete_partner_asset_access_body_accesses_inner:openapi_delete_partner_asset_access_body_accesses_inner()) }
+  [ {'accesses', list(openapi_delete_partner_asset_access_item:openapi_delete_partner_asset_access_item()) }
   ].
 
 
@@ -17,7 +17,7 @@ openapi_delete_partner_asset_access_body() ->
     openapi_delete_partner_asset_access_body([]).
 
 openapi_delete_partner_asset_access_body(Fields) ->
-  Default = [ {'accesses', list(openapi_delete_partner_asset_access_body_accesses_inner:openapi_delete_partner_asset_access_body_accesses_inner(), 1, 50) }
+  Default = [ {'accesses', list(openapi_delete_partner_asset_access_item:openapi_delete_partner_asset_access_item(), 1, 50) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

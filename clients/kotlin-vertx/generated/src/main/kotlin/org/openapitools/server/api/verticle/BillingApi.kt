@@ -1,18 +1,21 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.AdsCreditRedeemRequest
-import org.openapitools.server.api.model.AdsCreditRedeemResponse
+import org.openapitools.server.api.model.AdsCreditRedeem
+import org.openapitools.server.api.model.AdsCreditRedeemCreate
 import org.openapitools.server.api.model.AdsCreditsDiscountsGet200Response
+import org.openapitools.server.api.model.BillingInvoiceDocumentType
 import org.openapitools.server.api.model.BillingInvoiceDownloadResponse
+import org.openapitools.server.api.model.BillingInvoiceSortField
+import org.openapitools.server.api.model.BillingInvoiceStatus
 import org.openapitools.server.api.model.BillingInvoicesGet200Response
 import org.openapitools.server.api.model.BillingProfilesGet200Response
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.SSIOAccountResponse
-import org.openapitools.server.api.model.SSIOCreateInsertionOrderRequest
-import org.openapitools.server.api.model.SSIOCreateInsertionOrderResponse
-import org.openapitools.server.api.model.SSIOEditInsertionOrderRequest
-import org.openapitools.server.api.model.SSIOEditInsertionOrderResponse
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
+import org.openapitools.server.api.model.SSIOAccount
+import org.openapitools.server.api.model.SSIOInsertionOrder
+import org.openapitools.server.api.model.SSIOInsertionOrderCreate
 import org.openapitools.server.api.model.SSIOInsertionOrderStatusResponse
+import org.openapitools.server.api.model.SSIOInsertionOrderUpdate
 import org.openapitools.server.api.model.SsioInsertionOrdersStatusGetByAdAccount200Response
 import org.openapitools.server.api.model.SsioOrderLinesGetByAdAccount200Response
 import io.vertx.core.Vertx
@@ -33,7 +36,7 @@ interface BillingApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* adsCreditRedeem
      * Redeem ad credits */
-    suspend fun adsCreditRedeem(adAccountId:kotlin.String?,adsCreditRedeemRequest:AdsCreditRedeemRequest?,context:OperationRequest):Response<AdsCreditRedeemResponse>
+    suspend fun adsCreditRedeem(adAccountId:kotlin.String?,adsCreditRedeemCreate:AdsCreditRedeemCreate?,context:OperationRequest):Response<AdsCreditRedeem>
     /* adsCreditsDiscountsGet
      * Get ads credit discounts */
     suspend fun adsCreditsDiscountsGet(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<AdsCreditsDiscountsGet200Response>
@@ -42,19 +45,19 @@ interface BillingApi  {
     suspend fun billingInvoiceDownloadGet(adAccountId:kotlin.String?,billingInvoiceId:kotlin.String?,context:OperationRequest):Response<BillingInvoiceDownloadResponse>
     /* billingInvoicesGet
      * Get billing invoices */
-    suspend fun billingInvoicesGet(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,sort:kotlin.String?,order:kotlin.String?,status:kotlin.String?,documentType:kotlin.String?,startDueDate:java.time.LocalDate?,endDueDate:java.time.LocalDate?,context:OperationRequest):Response<BillingInvoicesGet200Response>
+    suspend fun billingInvoicesGet(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,order:PinterestLibPaginationOrder?,sort:BillingInvoiceSortField?,status:BillingInvoiceStatus?,documentType:BillingInvoiceDocumentType?,startDueDate:java.time.LocalDate?,endDueDate:java.time.LocalDate?,context:OperationRequest):Response<BillingInvoicesGet200Response>
     /* billingProfilesGet
      * Get billing profiles */
-    suspend fun billingProfilesGet(adAccountId:kotlin.String?,isActive:kotlin.Boolean?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<BillingProfilesGet200Response>
+    suspend fun billingProfilesGet(isActive:kotlin.Boolean?,adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<BillingProfilesGet200Response>
     /* ssioAccountsGet
      * Get Salesforce account details including bill-to information. */
-    suspend fun ssioAccountsGet(adAccountId:kotlin.String?,context:OperationRequest):Response<SSIOAccountResponse>
+    suspend fun ssioAccountsGet(adAccountId:kotlin.String?,context:OperationRequest):Response<SSIOAccount>
     /* ssioInsertionOrderCreate
      * Create insertion order through SSIO. */
-    suspend fun ssioInsertionOrderCreate(adAccountId:kotlin.String?,ssIOCreateInsertionOrderRequest:SSIOCreateInsertionOrderRequest?,context:OperationRequest):Response<SSIOCreateInsertionOrderResponse>
+    suspend fun ssioInsertionOrderCreate(adAccountId:kotlin.String?,ssIOInsertionOrderCreate:SSIOInsertionOrderCreate?,context:OperationRequest):Response<SSIOInsertionOrder>
     /* ssioInsertionOrderEdit
      * Edit insertion order through SSIO. */
-    suspend fun ssioInsertionOrderEdit(adAccountId:kotlin.String?,ssIOEditInsertionOrderRequest:SSIOEditInsertionOrderRequest?,context:OperationRequest):Response<SSIOEditInsertionOrderResponse>
+    suspend fun ssioInsertionOrderEdit(adAccountId:kotlin.String?,ssIOInsertionOrderUpdate:SSIOInsertionOrderUpdate?,context:OperationRequest):Response<SSIOInsertionOrder>
     /* ssioInsertionOrdersStatusGetByAdAccount
      * Get insertion order status by ad account id. */
     suspend fun ssioInsertionOrdersStatusGetByAdAccount(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<SsioInsertionOrdersStatusGetByAdAccount200Response>
@@ -63,7 +66,7 @@ interface BillingApi  {
     suspend fun ssioInsertionOrdersStatusGetByPinOrderId(adAccountId:kotlin.String?,pinOrderId:kotlin.String?,context:OperationRequest):Response<SSIOInsertionOrderStatusResponse>
     /* ssioOrderLinesGetByAdAccount
      * Get Salesforce order lines by ad account id. */
-    suspend fun ssioOrderLinesGetByAdAccount(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,pinOrderId:kotlin.String?,context:OperationRequest):Response<SsioOrderLinesGetByAdAccount200Response>
+    suspend fun ssioOrderLinesGetByAdAccount(adAccountId:kotlin.String?,pinOrderId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<SsioOrderLinesGetByAdAccount200Response>
     companion object {
         const val address = "BillingApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

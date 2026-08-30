@@ -15,10 +15,20 @@ resourceTypes {
     description = CatalogsCreativeAssetsProductGroupProductCounts
     derivedFrom = Root
     properties {
+        app_links {
+          type =  
+          description = ""
+          optional = true
+        }
         catalog_type {
           type =  string
           description = ""
           enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        images {
+          type =  
+          description = ""
           optional = true
         }
         total {

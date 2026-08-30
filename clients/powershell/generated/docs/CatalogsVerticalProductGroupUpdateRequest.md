@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
 **Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
-**Name** | **String** |  | [optional] 
+**Name** | **String** | Name of catalog product group | [optional] 
 
 ## Examples
 
@@ -19,7 +19,7 @@ $CatalogsVerticalProductGroupUpdateRequest = Initialize-PSOpenAPIToolsCatalogsVe
  -Description null `
  -Filters null `
  -Locale null `
- -Name null
+ -Name Most Popular
 ```
 
 - Convert the resource to JSON

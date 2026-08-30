@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**Pin[]**](Pin.md) | Pins | 
+**Items** | [**PinRead[]**](PinRead.md) |  | 
 
 ## Examples
 

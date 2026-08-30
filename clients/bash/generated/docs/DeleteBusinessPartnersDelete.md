@@ -1,0 +1,11 @@
+# DeleteBusinessPartnersDelete
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**partnerUnderscoreids** | **array[string]** |  | [default to null]
+**partnerUnderscoretype** | [**NullablePartnerType**](NullablePartnerType.md) |  | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

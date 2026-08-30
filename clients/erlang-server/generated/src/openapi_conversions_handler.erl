@@ -2,9 +2,21 @@
 -moduledoc """
 Exposes the following operation IDs:
 
+- `POST` to `/ad_accounts/:ad_account_id/advertiser_defined_events`, OperationId: `advertiser_defined_events/create`:
+Create advertiser defined events.
+Map advertiser defined events to standard events for the given ad account.
+
+- `DELETE` to `/ad_accounts/:ad_account_id/advertiser_defined_events`, OperationId: `advertiser_defined_events/delete`:
+Delete advertiser defined events.
+Untrack advertiser defined events for the given ad account.
+
 - `GET` to `/ad_accounts/:ad_account_id/advertiser_defined_events`, OperationId: `advertiser_defined_events/get`:
 Get advertiser defined events.
-&lt;p&gt;Get advertiser defined events for the given ad account.&lt;/p&gt;
+Get advertiser defined events for the given ad account.
+
+- `PATCH` to `/ad_accounts/:ad_account_id/advertiser_defined_events`, OperationId: `advertiser_defined_events/update`:
+Update advertiser defined events.
+Update advertiser defined event names or mappings for the given ad account.
 
 """.
 
@@ -29,7 +41,10 @@ Get advertiser defined events.
 -type class() :: 'conversions'.
 
 -type operation_id() ::
-    'advertiser_defined_events/get'. %% Get advertiser defined events
+    'advertiser_defined_events/create' %% Create advertiser defined events
+    | 'advertiser_defined_events/delete' %% Delete advertiser defined events
+    | 'advertiser_defined_events/get' %% Get advertiser defined events
+    | 'advertiser_defined_events/update'. %% Update advertiser defined events
 
 
 -record(state,
@@ -57,15 +72,48 @@ init(Req, {Operations, Module}) ->
 
 -spec allowed_methods(cowboy_req:req(), state()) ->
     {[binary()], cowboy_req:req(), state()}.
+allowed_methods(Req, #state{operation_id = 'advertiser_defined_events/create'} = State) ->
+    {[<<"POST">>], Req, State};
+allowed_methods(Req, #state{operation_id = 'advertiser_defined_events/delete'} = State) ->
+    {[<<"DELETE">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'advertiser_defined_events/get'} = State) ->
     {[<<"GET">>], Req, State};
+allowed_methods(Req, #state{operation_id = 'advertiser_defined_events/update'} = State) ->
+    {[<<"PATCH">>], Req, State};
 allowed_methods(Req, State) ->
     {[], Req, State}.
 
 -spec is_authorized(cowboy_req:req(), state()) ->
     {true | {false, iodata()}, cowboy_req:req(), state()}.
 is_authorized(Req0,
+              #state{operation_id = 'advertiser_defined_events/create' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
+is_authorized(Req0,
+              #state{operation_id = 'advertiser_defined_events/delete' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
+is_authorized(Req0,
               #state{operation_id = 'advertiser_defined_events/get' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
+is_authorized(Req0,
+              #state{operation_id = 'advertiser_defined_events/update' = OperationID,
                      api_key_callback = Handler} = State) ->
     case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
@@ -78,21 +126,49 @@ is_authorized(Req, State) ->
 
 -spec content_types_accepted(cowboy_req:req(), state()) ->
     {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_accepted(Req, #state{operation_id = 'advertiser_defined_events/create'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'advertiser_defined_events/delete'} = State) ->
+    {[], Req, State};
 content_types_accepted(Req, #state{operation_id = 'advertiser_defined_events/get'} = State) ->
     {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'advertiser_defined_events/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
 content_types_accepted(Req, State) ->
     {[], Req, State}.
 
 -spec valid_content_headers(cowboy_req:req(), state()) ->
     {boolean(), cowboy_req:req(), state()}.
+valid_content_headers(Req, #state{operation_id = 'advertiser_defined_events/create'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'advertiser_defined_events/delete'} = State) ->
+    {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'advertiser_defined_events/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'advertiser_defined_events/update'} = State) ->
     {true, Req, State};
 valid_content_headers(Req, State) ->
     {false, Req, State}.
 
 -spec content_types_provided(cowboy_req:req(), state()) ->
     {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_provided(Req, #state{operation_id = 'advertiser_defined_events/create'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'advertiser_defined_events/delete'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
 content_types_provided(Req, #state{operation_id = 'advertiser_defined_events/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'advertiser_defined_events/update'} = State) ->
     {[
       {<<"application/json">>, handle_type_provided}
      ], Req, State};

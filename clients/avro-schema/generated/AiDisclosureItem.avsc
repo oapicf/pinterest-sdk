@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "AI disclosure declaration the creator has made about the Pin.",
+  "name": "AiDisclosureItem",
+  "symbols": [
+    "AI_MODIFIED",
+    "SYNTHETIC_PERFORMER"
+  ]
+}

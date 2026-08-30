@@ -2,18 +2,23 @@ package controllers;
 
 import apimodels.AdPinAnalytics;
 import apimodels.AdsAnalyticsCampaignTargetingType;
-import apimodels.CampaignCreateRequest;
-import apimodels.CampaignCreateResponse;
-import apimodels.CampaignResponse;
-import apimodels.CampaignUpdateRequest;
-import apimodels.CampaignUpdateResponse;
-import apimodels.CampaignsAnalyticsResponseInner;
+import java.math.BigDecimal;
+import apimodels.Campaign;
+import apimodels.CampaignBatchUpdateItem;
+import apimodels.CampaignBatchWriteResponseModel;
+import apimodels.CampaignCreateItem;
+import apimodels.CampaignDeliveryEstimatesCampaign;
+import apimodels.CampaignDeliveryEstimatesResponse;
+import apimodels.CampaignsAnalyticsMetrics;
 import apimodels.CampaignsList200Response;
 import apimodels.ConversionReportAttributionType;
-import apimodels.Error;
+import apimodels.EntityStatus;
 import apimodels.Granularity;
 import java.time.LocalDate;
 import apimodels.MetricsResponse;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
+import apimodels.ReportingColumnSync;
 import apimodels.ReportingTimeZone;
 
 import com.typesafe.config.Config;
@@ -38,7 +43,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CampaignsApiController extends Controller {
     private final CampaignsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -91,7 +96,7 @@ public class CampaignsApiController extends Controller {
             throw new IllegalArgumentException("'columns' parameter is required");
         }
         List<String> columnsList = OpenAPIUtils.parametersToList("csv", columnsArray);
-        List<String> columns = new ArrayList<>();
+        List<ReportingColumnSync> columns = new ArrayList<>();
         for (String curParam : columnsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -106,23 +111,23 @@ public class CampaignsApiController extends Controller {
             throw new IllegalArgumentException("'granularity' parameter is required");
         }
         String valueclickWindowDays = request.getQueryString("click_window_days");
-        Integer clickWindowDays;
+        BigDecimal clickWindowDays;
         if (valueclickWindowDays != null) {
-            clickWindowDays = Integer.parseInt(valueclickWindowDays);
+            clickWindowDays = new BigDecimal(valueclickWindowDays);
         } else {
             clickWindowDays = 30;
         }
         String valueengagementWindowDays = request.getQueryString("engagement_window_days");
-        Integer engagementWindowDays;
+        BigDecimal engagementWindowDays;
         if (valueengagementWindowDays != null) {
-            engagementWindowDays = Integer.parseInt(valueengagementWindowDays);
+            engagementWindowDays = new BigDecimal(valueengagementWindowDays);
         } else {
             engagementWindowDays = 30;
         }
         String valueviewWindowDays = request.getQueryString("view_window_days");
-        Integer viewWindowDays;
+        BigDecimal viewWindowDays;
         if (valueviewWindowDays != null) {
-            viewWindowDays = Integer.parseInt(valueviewWindowDays);
+            viewWindowDays = new BigDecimal(valueviewWindowDays);
         } else {
             viewWindowDays = 1;
         }
@@ -133,7 +138,7 @@ public class CampaignsApiController extends Controller {
         } else {
             conversionReportTime = "TIME_OF_AD_ACTION";
         }
-        return imp.adPinsAnalyticsHttp(request, adAccountId, campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime);
+        return imp.adPinsAnalyticsHttp(request, campaignId, pinIds, startDate, endDate, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime);
     }
 
     @ApiAction
@@ -181,7 +186,7 @@ public class CampaignsApiController extends Controller {
             throw new IllegalArgumentException("'columns' parameter is required");
         }
         List<String> columnsList = OpenAPIUtils.parametersToList("csv", columnsArray);
-        List<String> columns = new ArrayList<>();
+        List<ReportingColumnSync> columns = new ArrayList<>();
         for (String curParam : columnsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -196,23 +201,23 @@ public class CampaignsApiController extends Controller {
             throw new IllegalArgumentException("'granularity' parameter is required");
         }
         String valueclickWindowDays = request.getQueryString("click_window_days");
-        Integer clickWindowDays;
+        BigDecimal clickWindowDays;
         if (valueclickWindowDays != null) {
-            clickWindowDays = Integer.parseInt(valueclickWindowDays);
+            clickWindowDays = new BigDecimal(valueclickWindowDays);
         } else {
             clickWindowDays = 30;
         }
         String valueengagementWindowDays = request.getQueryString("engagement_window_days");
-        Integer engagementWindowDays;
+        BigDecimal engagementWindowDays;
         if (valueengagementWindowDays != null) {
-            engagementWindowDays = Integer.parseInt(valueengagementWindowDays);
+            engagementWindowDays = new BigDecimal(valueengagementWindowDays);
         } else {
             engagementWindowDays = 30;
         }
         String valueviewWindowDays = request.getQueryString("view_window_days");
-        Integer viewWindowDays;
+        BigDecimal viewWindowDays;
         if (valueviewWindowDays != null) {
-            viewWindowDays = Integer.parseInt(valueviewWindowDays);
+            viewWindowDays = new BigDecimal(valueviewWindowDays);
         } else {
             viewWindowDays = 1;
         }
@@ -275,7 +280,7 @@ public class CampaignsApiController extends Controller {
             throw new IllegalArgumentException("'columns' parameter is required");
         }
         List<String> columnsList = OpenAPIUtils.parametersToList("csv", columnsArray);
-        List<String> columns = new ArrayList<>();
+        List<ReportingColumnSync> columns = new ArrayList<>();
         for (String curParam : columnsList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -290,23 +295,23 @@ public class CampaignsApiController extends Controller {
             throw new IllegalArgumentException("'granularity' parameter is required");
         }
         String valueclickWindowDays = request.getQueryString("click_window_days");
-        Integer clickWindowDays;
+        BigDecimal clickWindowDays;
         if (valueclickWindowDays != null) {
-            clickWindowDays = Integer.parseInt(valueclickWindowDays);
+            clickWindowDays = new BigDecimal(valueclickWindowDays);
         } else {
             clickWindowDays = 30;
         }
         String valueengagementWindowDays = request.getQueryString("engagement_window_days");
-        Integer engagementWindowDays;
+        BigDecimal engagementWindowDays;
         if (valueengagementWindowDays != null) {
-            engagementWindowDays = Integer.parseInt(valueengagementWindowDays);
+            engagementWindowDays = new BigDecimal(valueengagementWindowDays);
         } else {
             engagementWindowDays = 30;
         }
         String valueviewWindowDays = request.getQueryString("view_window_days");
-        Integer viewWindowDays;
+        BigDecimal viewWindowDays;
         if (valueviewWindowDays != null) {
-            viewWindowDays = Integer.parseInt(valueviewWindowDays);
+            viewWindowDays = new BigDecimal(valueviewWindowDays);
         } else {
             viewWindowDays = 1;
         }
@@ -331,33 +336,54 @@ public class CampaignsApiController extends Controller {
         } else {
             reportingTimezone = null;
         }
-        return imp.campaignsAnalyticsHttp(request, adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone);
+        return imp.campaignsAnalyticsHttp(request, startDate, endDate, campaignIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone);
     }
 
     @ApiAction
     public Result campaignsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodecampaignCreateRequest = request.body().asJson();
-        List<@Valid CampaignCreateRequest> campaignCreateRequest;
-        if (nodecampaignCreateRequest != null) {
-            campaignCreateRequest = mapper.readValue(nodecampaignCreateRequest.toString(), new TypeReference<List<@Valid CampaignCreateRequest>>(){});
+        JsonNode nodecampaignCreateItem = request.body().asJson();
+        List<@Valid CampaignCreateItem> campaignCreateItem;
+        if (nodecampaignCreateItem != null) {
+            campaignCreateItem = mapper.readValue(nodecampaignCreateItem.toString(), new TypeReference<List<@Valid CampaignCreateItem>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (CampaignCreateRequest curItem : campaignCreateRequest) {
+                for (CampaignCreateItem curItem : campaignCreateItem) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'CampaignCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'CampaignCreateItem' parameter is required");
         }
-        return imp.campaignsCreateHttp(request, adAccountId, campaignCreateRequest);
+        return imp.campaignsCreateHttp(request, adAccountId, campaignCreateItem);
     }
 
     @ApiAction
-    public Result campaignsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId) throws Exception {
-        return imp.campaignsGetHttp(request, adAccountId, campaignId);
+    public Result campaignsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String campaignId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        return imp.campaignsGetHttp(request, campaignId, adAccountId);
     }
 
     @ApiAction
     public Result campaignsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        String valueorder = request.getQueryString("order");
+        PinterestLibPaginationOrder order;
+        if (valueorder != null) {
+            order = valueorder;
+        } else {
+            order = null;
+        }
         String[] campaignIdsArray = request.queryString().get("campaign_ids");
         List<String> campaignIdsList = OpenAPIUtils.parametersToList("multi", campaignIdsArray);
         List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds = new ArrayList<>();
@@ -369,52 +395,48 @@ public class CampaignsApiController extends Controller {
         }
         String[] entityStatusesArray = request.queryString().get("entity_statuses");
         List<String> entityStatusesList = OpenAPIUtils.parametersToList("multi", entityStatusesArray);
-        List<String> entityStatuses = new ArrayList<>();
+        List<EntityStatus> entityStatuses = new ArrayList<>();
         for (String curParam : entityStatusesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
                 entityStatuses.add(curParam);
             }
         }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
-        String valueorder = request.getQueryString("order");
-        String order;
-        if (valueorder != null) {
-            order = valueorder;
-        } else {
-            order = null;
-        }
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        return imp.campaignsListHttp(request, adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark);
+        return imp.campaignsListHttp(request, adAccountId, bookmark, pageSize, order, campaignIds, entityStatuses);
     }
 
     @ApiAction
     public Result campaignsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodecampaignUpdateRequest = request.body().asJson();
-        List<@Valid CampaignUpdateRequest> campaignUpdateRequest;
-        if (nodecampaignUpdateRequest != null) {
-            campaignUpdateRequest = mapper.readValue(nodecampaignUpdateRequest.toString(), new TypeReference<List<@Valid CampaignUpdateRequest>>(){});
+        JsonNode nodecampaignBatchUpdateItem = request.body().asJson();
+        List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem;
+        if (nodecampaignBatchUpdateItem != null) {
+            campaignBatchUpdateItem = mapper.readValue(nodecampaignBatchUpdateItem.toString(), new TypeReference<List<@Valid CampaignBatchUpdateItem>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
-                for (CampaignUpdateRequest curItem : campaignUpdateRequest) {
+                for (CampaignBatchUpdateItem curItem : campaignBatchUpdateItem) {
                     OpenAPIUtils.validate(curItem);
                 }
             }
         } else {
-            throw new IllegalArgumentException("'CampaignUpdateRequest' parameter is required");
+            throw new IllegalArgumentException("'CampaignBatchUpdateItem' parameter is required");
         }
-        return imp.campaignsUpdateHttp(request, adAccountId, campaignUpdateRequest);
+        return imp.campaignsUpdateHttp(request, adAccountId, campaignBatchUpdateItem);
+    }
+
+    @ApiAction
+    public Result getCampaignDeliveryEstimates(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        JsonNode nodecampaignDeliveryEstimatesCampaign = request.body().asJson();
+        List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign;
+        if (nodecampaignDeliveryEstimatesCampaign != null) {
+            campaignDeliveryEstimatesCampaign = mapper.readValue(nodecampaignDeliveryEstimatesCampaign.toString(), new TypeReference<List<@Valid CampaignDeliveryEstimatesCampaign>>(){});
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                for (CampaignDeliveryEstimatesCampaign curItem : campaignDeliveryEstimatesCampaign) {
+                    OpenAPIUtils.validate(curItem);
+                }
+            }
+        } else {
+            throw new IllegalArgumentException("'CampaignDeliveryEstimatesCampaign' parameter is required");
+        }
+        return imp.getCampaignDeliveryEstimatesHttp(request, adAccountId, campaignDeliveryEstimatesCampaign);
     }
 
 }

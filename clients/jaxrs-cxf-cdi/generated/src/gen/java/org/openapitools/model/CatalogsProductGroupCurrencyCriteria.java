@@ -19,7 +19,7 @@ import java.util.Objects;
 @ApiModel(description = "A currency filter. This filter cannot be negated")
 public class CatalogsProductGroupCurrencyCriteria   {
   
-  private Boolean negated = false;
+  private Boolean negated;
 
   private NonNullableCatalogsCurrency values;
 
@@ -95,10 +95,7 @@ public class CatalogsProductGroupCurrencyCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

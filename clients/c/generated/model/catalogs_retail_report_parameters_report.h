@@ -1,0 +1,57 @@
+/*
+ * catalogs_retail_report_parameters_report.h
+ *
+ * 
+ */
+
+#ifndef _catalogs_retail_report_parameters_report_H_
+#define _catalogs_retail_report_parameters_report_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct catalogs_retail_report_parameters_report_t catalogs_retail_report_parameters_report_t;
+
+#include "catalogs_report_distribution_issue_filter.h"
+#include "catalogs_report_feed_ingestion_filter.h"
+#include "catalogs_retail_report_all_items_filter.h"
+
+// Enum REPORTTYPE for catalogs_retail_report_parameters_report
+
+typedef enum  { pinterest_rest_api_catalogs_retail_report_parameters_report_REPORTTYPE_NULL = 0, pinterest_rest_api_catalogs_retail_report_parameters_report_REPORTTYPE_ALL_ITEMS } pinterest_rest_api_catalogs_retail_report_parameters_report_REPORTTYPE_e;
+
+char* catalogs_retail_report_parameters_report_report_type_ToString(pinterest_rest_api_catalogs_retail_report_parameters_report_REPORTTYPE_e report_type);
+
+pinterest_rest_api_catalogs_retail_report_parameters_report_REPORTTYPE_e catalogs_retail_report_parameters_report_report_type_FromString(char* report_type);
+
+
+
+typedef struct catalogs_retail_report_parameters_report_t {
+    char *feed_id; // string
+    char *processing_result_id; // string
+    pinterest_rest_api_catalogs_retail_report_parameters_report_REPORTTYPE_e report_type; //enum
+    char *catalog_id; // string
+    char *product_group_id; // string
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} catalogs_retail_report_parameters_report_t;
+
+__attribute__((deprecated)) catalogs_retail_report_parameters_report_t *catalogs_retail_report_parameters_report_create(
+    char *feed_id,
+    char *processing_result_id,
+    pinterest_rest_api_catalogs_retail_report_parameters_report_REPORTTYPE_e report_type,
+    char *catalog_id,
+    char *product_group_id
+);
+
+void catalogs_retail_report_parameters_report_free(catalogs_retail_report_parameters_report_t *catalogs_retail_report_parameters_report);
+
+catalogs_retail_report_parameters_report_t *catalogs_retail_report_parameters_report_parseFromJSON(cJSON *catalogs_retail_report_parameters_reportJSON);
+
+cJSON *catalogs_retail_report_parameters_report_convertToJSON(catalogs_retail_report_parameters_report_t *catalogs_retail_report_parameters_report);
+
+#endif /* _catalogs_retail_report_parameters_report_H_ */
+

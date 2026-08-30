@@ -1,0 +1,13 @@
+package models
+
+type KeywordUpdateGenerated struct {
+
+	// Is keyword archived?
+	Archived bool `json:"archived,omitempty"`
+
+	// </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+	Bid *int32 `json:"bid,omitempty"`
+
+	// Keyword ID.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+}

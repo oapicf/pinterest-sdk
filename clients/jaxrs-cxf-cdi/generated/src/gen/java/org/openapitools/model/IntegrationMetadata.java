@@ -174,6 +174,7 @@ public class IntegrationMetadata   {
 
 
   /**
+   * External business ID for the integration.
    **/
   public IntegrationMetadata externalBusinessId(String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
@@ -181,7 +182,7 @@ public class IntegrationMetadata   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "External business ID for the integration.")
   @JsonProperty("external_business_id")
   public String getExternalBusinessId() {
     return externalBusinessId;
@@ -358,10 +359,7 @@ public class IntegrationMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

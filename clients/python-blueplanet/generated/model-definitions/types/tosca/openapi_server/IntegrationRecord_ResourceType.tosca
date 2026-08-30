@@ -58,8 +58,8 @@ resourceTypes {
         }
         id {
           type =  string
-          description = ""
-          optional = false
+          description = "Integration record ID."
+          optional = true
         }
         partner_access_token {
           type =  string

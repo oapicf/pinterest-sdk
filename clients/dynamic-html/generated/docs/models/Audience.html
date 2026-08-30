@@ -6,8 +6,8 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">audienceUnderscoretype : String
-    <br/>&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+  <li class="param-required-false">audienceUnderscoretype : PinnerListType
+    <br/>[Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
   </li>
 </ul>
 <ul class="parameter">
@@ -31,6 +31,11 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-false">isUnderscorenca : Boolean
+    <br/>Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">name : String
     <br/>Audience name.
   </li>
@@ -46,7 +51,7 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">status : String
+  <li class="param-required-false">status : AudienceStatus
     <br/>Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
   </li>
 </ul>

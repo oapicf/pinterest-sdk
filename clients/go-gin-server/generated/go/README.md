@@ -12,9 +12,9 @@ To see how to make this your own, look here:
 
 [README](https://openapi-generator.tech)
 
-- API version: 5.23.0
-- Build date: 2026-01-31T04:49:09.651925588Z[Etc/UTC]
-- Generator version: 7.18.0
+- API version: 5.28.0
+- Build date: 2026-08-30T09:48:53.804902480Z[Etc/UTC]
+- Generator version: 7.24.0
 For more information, please visit [https://github.com/oapicf/pinterest-sdk](https://github.com/oapicf/pinterest-sdk)
 
 ### Running the server

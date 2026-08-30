@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const UpdatePartnerAssetAccessBody_accesses_inner = require('../models/UpdatePartnerAssetAccessBody_accesses_inner');
+const UpdatePartnerAssetAccessItem = require('../models/UpdatePartnerAssetAccessItem');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -8,14 +8,14 @@ module.exports = {
             {
                 key: `${keyPrefix}accesses`,
                 label: `[${labelPrefix}accesses]`,
-                children: UpdatePartnerAssetAccessBody_accesses_inner.fields(`${keyPrefix}accesses${!isInput ? '[]' : ''}`, isInput, true), 
+                children: UpdatePartnerAssetAccessItem.fields(`${keyPrefix}accesses${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'accesses': utils.childMapping(bundle.inputData?.[`${keyPrefix}accesses`], `${keyPrefix}accesses`, UpdatePartnerAssetAccessBody_accesses_inner),
+            'accesses': utils.childMapping(bundle.inputData?.[`${keyPrefix}accesses`], `${keyPrefix}accesses`, UpdatePartnerAssetAccessItem),
         }
     },
 }

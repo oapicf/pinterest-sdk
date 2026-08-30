@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An item representing the result of an invite/request action. Contains either an exception (on error) or an invite binding (on success).",
+  "name": "InviteActionResultItem",
+  "fields": [
+    {
+      "name": "exception",
+      "type": ["null", "model.InviteExceptionResponse"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "invite",
+      "type": ["null", "model.InviteBusinessRoleBinding"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -1,17 +1,18 @@
 
 # InviteBusinessRoleBinding
 
+An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`id` | string
-`inviteData` | [BaseInviteDataResponseInviteData](BaseInviteDataResponseInviteData.md)
-`isReceivedInvite` | boolean
-`user` | object
 `createdByBusinessId` | string
 `createdByUserId` | string
+`id` | string
+`inviteData` | [InviteDataResponse](InviteDataResponse.md)
+`isReceivedInvite` | boolean
+`user` | [BusinessAccessUserSummary](BusinessAccessUserSummary.md)
 
 ## Example
 
@@ -20,12 +21,12 @@ import type { InviteBusinessRoleBinding } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "createdByBusinessId": 1234567890123,
+  "createdByUserId": 1234567890123,
   "id": 383791336903426391,
   "inviteData": null,
   "isReceivedInvite": null,
   "user": null,
-  "createdByBusinessId": 1234567890123,
-  "createdByUserId": 1234567890123,
 } satisfies InviteBusinessRoleBinding
 
 console.log(example)

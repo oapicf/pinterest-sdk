@@ -51,14 +51,14 @@ static gpointer __LeadFormsManagerthreadFunc(gpointer data)
 static bool leadFormGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(LeadFormResponse, Error, void* )
-	= reinterpret_cast<void(*)(LeadFormResponse, Error, void* )> (voidHandler);
+	void(* handler)(LeadForm, Error, void* )
+	= reinterpret_cast<void(*)(LeadForm, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	LeadFormResponse out;
+	LeadForm out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,33 @@ static bool leadFormGetProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 
 
 
-		if (isprimitive("LeadFormResponse")) {
+		if (isprimitive("LeadForm")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "LeadFormResponse", "LeadFormResponse");
+			jsonToValue(&out, pJson, "LeadForm", "LeadForm");
 			json_node_free(pJson);
 
-			if ("LeadFormResponse" == "std::string") {
+			if ("LeadForm" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -119,8 +134,8 @@ static bool leadFormGetProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool leadFormGetHelper(char * accessToken,
-	std::string adAccountId, std::string leadFormId, 
-	void(* handler)(LeadFormResponse, Error, void* )
+	std::string leadFormId, std::string adAccountId, 
+	void(* handler)(LeadForm, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -143,18 +158,18 @@ static bool leadFormGetHelper(char * accessToken,
 	string url("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}");
 	int pos;
 
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
 	string s_leadFormId("{");
 	s_leadFormId.append("lead_form_id");
 	s_leadFormId.append("}");
 	pos = url.find(s_leadFormId);
 	url.erase(pos, s_leadFormId.length());
 	url.insert(pos, stringify(&leadFormId, "std::string"));
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -202,36 +217,36 @@ static bool leadFormGetHelper(char * accessToken,
 
 
 bool LeadFormsManager::leadFormGetAsync(char * accessToken,
-	std::string adAccountId, std::string leadFormId, 
-	void(* handler)(LeadFormResponse, Error, void* )
+	std::string leadFormId, std::string adAccountId, 
+	void(* handler)(LeadForm, Error, void* )
 	, void* userData)
 {
 	return leadFormGetHelper(accessToken,
-	adAccountId, leadFormId, 
+	leadFormId, adAccountId, 
 	handler, userData, true);
 }
 
 bool LeadFormsManager::leadFormGetSync(char * accessToken,
-	std::string adAccountId, std::string leadFormId, 
-	void(* handler)(LeadFormResponse, Error, void* )
+	std::string leadFormId, std::string adAccountId, 
+	void(* handler)(LeadForm, Error, void* )
 	, void* userData)
 {
 	return leadFormGetHelper(accessToken,
-	adAccountId, leadFormId, 
+	leadFormId, adAccountId, 
 	handler, userData, false);
 }
 
 static bool leadFormTestCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(LeadFormTestResponse, Error, void* )
-	= reinterpret_cast<void(*)(LeadFormTestResponse, Error, void* )> (voidHandler);
+	void(* handler)(LeadFormTest, Error, void* )
+	= reinterpret_cast<void(*)(LeadFormTest, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	LeadFormTestResponse out;
+	LeadFormTest out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -239,12 +254,12 @@ static bool leadFormTestCreateProcessor(MemoryStruct_s p_chunk, long code, char*
 
 
 
-		if (isprimitive("LeadFormTestResponse")) {
+		if (isprimitive("LeadFormTest")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "LeadFormTestResponse", "LeadFormTestResponse");
+			jsonToValue(&out, pJson, "LeadFormTest", "LeadFormTest");
 			json_node_free(pJson);
 
-			if ("LeadFormTestResponse" == "std::string") {
+			if ("LeadFormTest" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -292,8 +307,8 @@ static bool leadFormTestCreateProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool leadFormTestCreateHelper(char * accessToken,
-	std::string adAccountId, std::string leadFormId, std::shared_ptr<LeadFormTestRequest> leadFormTestRequest, 
-	void(* handler)(LeadFormTestResponse, Error, void* )
+	std::string adAccountId, std::string leadFormId, std::shared_ptr<LeadFormTestCreate> leadFormTestCreate, 
+	void(* handler)(LeadFormTest, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -313,11 +328,11 @@ static bool leadFormTestCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("LeadFormTestRequest")) {
-		node = converttoJson(&leadFormTestRequest, "LeadFormTestRequest", "");
+	if (isprimitive("LeadFormTestCreate")) {
+		node = converttoJson(&leadFormTestCreate, "LeadFormTestCreate", "");
 	}
 	
-	char *jsonStr =  leadFormTestRequest.toJson();
+	char *jsonStr =  leadFormTestCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -388,36 +403,36 @@ static bool leadFormTestCreateHelper(char * accessToken,
 
 
 bool LeadFormsManager::leadFormTestCreateAsync(char * accessToken,
-	std::string adAccountId, std::string leadFormId, std::shared_ptr<LeadFormTestRequest> leadFormTestRequest, 
-	void(* handler)(LeadFormTestResponse, Error, void* )
+	std::string adAccountId, std::string leadFormId, std::shared_ptr<LeadFormTestCreate> leadFormTestCreate, 
+	void(* handler)(LeadFormTest, Error, void* )
 	, void* userData)
 {
 	return leadFormTestCreateHelper(accessToken,
-	adAccountId, leadFormId, leadFormTestRequest, 
+	adAccountId, leadFormId, leadFormTestCreate, 
 	handler, userData, true);
 }
 
 bool LeadFormsManager::leadFormTestCreateSync(char * accessToken,
-	std::string adAccountId, std::string leadFormId, std::shared_ptr<LeadFormTestRequest> leadFormTestRequest, 
-	void(* handler)(LeadFormTestResponse, Error, void* )
+	std::string adAccountId, std::string leadFormId, std::shared_ptr<LeadFormTestCreate> leadFormTestCreate, 
+	void(* handler)(LeadFormTest, Error, void* )
 	, void* userData)
 {
 	return leadFormTestCreateHelper(accessToken,
-	adAccountId, leadFormId, leadFormTestRequest, 
+	adAccountId, leadFormId, leadFormTestCreate, 
 	handler, userData, false);
 }
 
 static bool leadFormsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(LeadFormArrayResponse, Error, void* )
-	= reinterpret_cast<void(*)(LeadFormArrayResponse, Error, void* )> (voidHandler);
+	void(* handler)(Lead_forms_create_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Lead_forms_create_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	LeadFormArrayResponse out;
+	Lead_forms_create_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -425,18 +440,38 @@ static bool leadFormsCreateProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("LeadFormArrayResponse")) {
+		if (isprimitive("Lead_forms_create_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "LeadFormArrayResponse", "LeadFormArrayResponse");
+			jsonToValue(&out, pJson, "Lead_forms_create_200_response", "Lead_forms_create_200_response");
 			json_node_free(pJson);
 
-			if ("LeadFormArrayResponse" == "std::string") {
+			if ("Lead_forms_create_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -473,8 +508,8 @@ static bool leadFormsCreateProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool leadFormsCreateHelper(char * accessToken,
-	std::string adAccountId, std::list<LeadFormCreateRequest> leadFormCreateRequest, 
-	void(* handler)(LeadFormArrayResponse, Error, void* )
+	std::string adAccountId, std::list<LeadFormCreate> leadFormCreate, 
+	void(* handler)(Lead_forms_create_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -494,14 +529,14 @@ static bool leadFormsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 	//TODO: Map Container
-	if (isprimitive("LeadFormCreateRequest")) {
-		node = converttoJson(&leadFormCreateRequest, "LeadFormCreateRequest", "array");
+	if (isprimitive("LeadFormCreate")) {
+		node = converttoJson(&leadFormCreate, "LeadFormCreate", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<LeadFormCreateRequest>::iterator bodyIter = leadFormCreateRequest.begin(); bodyIter != leadFormCreateRequest.end(); ++bodyIter) {
-			LeadFormCreateRequest itemAt = (*bodyIter);
+			<LeadFormCreate>::iterator bodyIter = leadFormCreate.begin(); bodyIter != leadFormCreate.end(); ++bodyIter) {
+			LeadFormCreate itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
 			g_free(static_cast<gpointer>(jsonStr));
@@ -575,22 +610,22 @@ static bool leadFormsCreateHelper(char * accessToken,
 
 
 bool LeadFormsManager::leadFormsCreateAsync(char * accessToken,
-	std::string adAccountId, std::list<LeadFormCreateRequest> leadFormCreateRequest, 
-	void(* handler)(LeadFormArrayResponse, Error, void* )
+	std::string adAccountId, std::list<LeadFormCreate> leadFormCreate, 
+	void(* handler)(Lead_forms_create_200_response, Error, void* )
 	, void* userData)
 {
 	return leadFormsCreateHelper(accessToken,
-	adAccountId, leadFormCreateRequest, 
+	adAccountId, leadFormCreate, 
 	handler, userData, true);
 }
 
 bool LeadFormsManager::leadFormsCreateSync(char * accessToken,
-	std::string adAccountId, std::list<LeadFormCreateRequest> leadFormCreateRequest, 
-	void(* handler)(LeadFormArrayResponse, Error, void* )
+	std::string adAccountId, std::list<LeadFormCreate> leadFormCreate, 
+	void(* handler)(Lead_forms_create_200_response, Error, void* )
 	, void* userData)
 {
 	return leadFormsCreateHelper(accessToken,
-	adAccountId, leadFormCreateRequest, 
+	adAccountId, leadFormCreate, 
 	handler, userData, false);
 }
 
@@ -640,6 +675,26 @@ static bool leadFormsListProcessor(MemoryStruct_s p_chunk, long code, char* erro
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -660,7 +715,7 @@ static bool leadFormsListProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool leadFormsListHelper(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Lead_forms_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -678,6 +733,13 @@ static bool leadFormsListHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
 	itemAtq = stringify(&pageSize, "int");
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
@@ -685,17 +747,10 @@ static bool leadFormsListHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&order, "std::string");
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
 	queryParams.insert(pair<string, string>("order", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("order");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
 	}
 
 	string mBody = "";
@@ -758,36 +813,36 @@ static bool leadFormsListHelper(char * accessToken,
 
 
 bool LeadFormsManager::leadFormsListAsync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Lead_forms_list_200_response, Error, void* )
 	, void* userData)
 {
 	return leadFormsListHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, 
 	handler, userData, true);
 }
 
 bool LeadFormsManager::leadFormsListSync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Lead_forms_list_200_response, Error, void* )
 	, void* userData)
 {
 	return leadFormsListHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, 
 	handler, userData, false);
 }
 
 static bool leadFormsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(LeadFormArrayResponse, Error, void* )
-	= reinterpret_cast<void(*)(LeadFormArrayResponse, Error, void* )> (voidHandler);
+	void(* handler)(Lead_forms_create_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Lead_forms_create_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	LeadFormArrayResponse out;
+	Lead_forms_create_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -795,18 +850,38 @@ static bool leadFormsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("LeadFormArrayResponse")) {
+		if (isprimitive("Lead_forms_create_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "LeadFormArrayResponse", "LeadFormArrayResponse");
+			jsonToValue(&out, pJson, "Lead_forms_create_200_response", "Lead_forms_create_200_response");
 			json_node_free(pJson);
 
-			if ("LeadFormArrayResponse" == "std::string") {
+			if ("Lead_forms_create_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -843,8 +918,8 @@ static bool leadFormsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool leadFormsUpdateHelper(char * accessToken,
-	std::string adAccountId, std::list<LeadFormUpdateRequest> leadFormUpdateRequest, 
-	void(* handler)(LeadFormArrayResponse, Error, void* )
+	std::string adAccountId, std::list<LeadFormBatchUpdate> leadFormBatchUpdate, 
+	void(* handler)(Lead_forms_create_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -864,14 +939,14 @@ static bool leadFormsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 	//TODO: Map Container
-	if (isprimitive("LeadFormUpdateRequest")) {
-		node = converttoJson(&leadFormUpdateRequest, "LeadFormUpdateRequest", "array");
+	if (isprimitive("LeadFormBatchUpdate")) {
+		node = converttoJson(&leadFormBatchUpdate, "LeadFormBatchUpdate", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<LeadFormUpdateRequest>::iterator bodyIter = leadFormUpdateRequest.begin(); bodyIter != leadFormUpdateRequest.end(); ++bodyIter) {
-			LeadFormUpdateRequest itemAt = (*bodyIter);
+			<LeadFormBatchUpdate>::iterator bodyIter = leadFormBatchUpdate.begin(); bodyIter != leadFormBatchUpdate.end(); ++bodyIter) {
+			LeadFormBatchUpdate itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
 			g_free(static_cast<gpointer>(jsonStr));
@@ -945,22 +1020,22 @@ static bool leadFormsUpdateHelper(char * accessToken,
 
 
 bool LeadFormsManager::leadFormsUpdateAsync(char * accessToken,
-	std::string adAccountId, std::list<LeadFormUpdateRequest> leadFormUpdateRequest, 
-	void(* handler)(LeadFormArrayResponse, Error, void* )
+	std::string adAccountId, std::list<LeadFormBatchUpdate> leadFormBatchUpdate, 
+	void(* handler)(Lead_forms_create_200_response, Error, void* )
 	, void* userData)
 {
 	return leadFormsUpdateHelper(accessToken,
-	adAccountId, leadFormUpdateRequest, 
+	adAccountId, leadFormBatchUpdate, 
 	handler, userData, true);
 }
 
 bool LeadFormsManager::leadFormsUpdateSync(char * accessToken,
-	std::string adAccountId, std::list<LeadFormUpdateRequest> leadFormUpdateRequest, 
-	void(* handler)(LeadFormArrayResponse, Error, void* )
+	std::string adAccountId, std::list<LeadFormBatchUpdate> leadFormBatchUpdate, 
+	void(* handler)(Lead_forms_create_200_response, Error, void* )
 	, void* userData)
 {
 	return leadFormsUpdateHelper(accessToken,
-	adAccountId, leadFormUpdateRequest, 
+	adAccountId, leadFormBatchUpdate, 
 	handler, userData, false);
 }
 

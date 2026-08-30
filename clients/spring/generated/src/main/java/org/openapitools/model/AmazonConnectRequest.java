@@ -2,39 +2,44 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request containing OTP and Amazon storefront info called by Amazon
  */
 
 @Schema(name = "AmazonConnectRequest", description = "Request containing OTP and Amazon storefront info called by Amazon")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AmazonConnectRequest {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String amazonStorefrontId;
 
   private String amazonStorefrontName;
 
   private String amazonStorefrontUrl;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String amazonUserId;
 
   private Boolean isAmazonAccountLinked;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String oneTimePasscode;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String pinterestUserId;
 
   public AmazonConnectRequest() {
@@ -66,6 +71,7 @@ public class AmazonConnectRequest {
     return amazonStorefrontId;
   }
 
+  @JsonProperty("amazon_storefront_id")
   public void setAmazonStorefrontId(@Nullable String amazonStorefrontId) {
     this.amazonStorefrontId = amazonStorefrontId;
   }
@@ -86,6 +92,7 @@ public class AmazonConnectRequest {
     return amazonStorefrontName;
   }
 
+  @JsonProperty("amazon_storefront_name")
   public void setAmazonStorefrontName(String amazonStorefrontName) {
     this.amazonStorefrontName = amazonStorefrontName;
   }
@@ -106,6 +113,7 @@ public class AmazonConnectRequest {
     return amazonStorefrontUrl;
   }
 
+  @JsonProperty("amazon_storefront_url")
   public void setAmazonStorefrontUrl(String amazonStorefrontUrl) {
     this.amazonStorefrontUrl = amazonStorefrontUrl;
   }
@@ -126,6 +134,7 @@ public class AmazonConnectRequest {
     return amazonUserId;
   }
 
+  @JsonProperty("amazon_user_id")
   public void setAmazonUserId(@Nullable String amazonUserId) {
     this.amazonUserId = amazonUserId;
   }
@@ -146,6 +155,7 @@ public class AmazonConnectRequest {
     return isAmazonAccountLinked;
   }
 
+  @JsonProperty("is_amazon_account_linked")
   public void setIsAmazonAccountLinked(Boolean isAmazonAccountLinked) {
     this.isAmazonAccountLinked = isAmazonAccountLinked;
   }
@@ -166,6 +176,7 @@ public class AmazonConnectRequest {
     return oneTimePasscode;
   }
 
+  @JsonProperty("one_time_passcode")
   public void setOneTimePasscode(@Nullable String oneTimePasscode) {
     this.oneTimePasscode = oneTimePasscode;
   }
@@ -186,6 +197,7 @@ public class AmazonConnectRequest {
     return pinterestUserId;
   }
 
+  @JsonProperty("pinterest_user_id")
   public void setPinterestUserId(@Nullable String pinterestUserId) {
     this.pinterestUserId = pinterestUserId;
   }
@@ -232,11 +244,8 @@ public class AmazonConnectRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

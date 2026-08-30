@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;UserBusinessRoleBinding&gt;**](UserBusinessRoleBinding.md) | List of employers. | [default to undefined]
+**items** | [**Array&lt;UserBusinessRoleBinding&gt;**](UserBusinessRoleBinding.md) |  | [default to undefined]
 
 ## Example
 

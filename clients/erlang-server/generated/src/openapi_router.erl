@@ -173,6 +173,34 @@ get_operations() ->
             method => <<"POST">>,
             handler => 'openapi_ad_groups_handler'
         },
+       'ad_groups_dynamic_titles/download_csv' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/ad_groups/:ad_group_id/dynamic_titles/csv",
+            method => <<"GET">>,
+            handler => 'openapi_ad_groups_handler'
+        },
+       'ad_groups_dynamic_titles/get_status' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/ad_groups/:ad_group_id/dynamic_titles/status",
+            method => <<"GET">>,
+            handler => 'openapi_ad_groups_handler'
+        },
+       'ad_groups_dynamic_titles/get_upload_url' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/ad_groups/:ad_group_id/dynamic_titles/uploads",
+            method => <<"GET">>,
+            handler => 'openapi_ad_groups_handler'
+        },
+       'ad_groups_dynamic_titles/process_csv' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/ad_groups/:ad_group_id/dynamic_titles",
+            method => <<"POST">>,
+            handler => 'openapi_ad_groups_handler'
+        },
        'ad_groups/get' => #{
             servers => [],
             base_path => "/v5",
@@ -199,6 +227,13 @@ get_operations() ->
             base_path => "/v5",
             path => "/ad_accounts/:ad_account_id/ad_groups",
             method => <<"PATCH">>,
+            handler => 'openapi_ad_groups_handler'
+        },
+       'get_ad_groups_by_promotion_ids/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/promotion_applied_entities",
+            method => <<"GET">>,
             handler => 'openapi_ad_groups_handler'
         },
        'ad_previews/create' => #{
@@ -248,6 +283,27 @@ get_operations() ->
             base_path => "/v5",
             path => "/ad_accounts/:ad_account_id/ads",
             method => <<"PATCH">>,
+            handler => 'openapi_ads_handler'
+        },
+       'campaign_ad_preview/create' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/campaign_ad_preview",
+            method => <<"POST">>,
+            handler => 'openapi_ads_handler'
+        },
+       'campaign_ad_preview/delete' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/campaign_ad_preview",
+            method => <<"DELETE">>,
+            handler => 'openapi_ads_handler'
+        },
+       'campaign_ad_preview/read' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/campaign_ad_preview",
+            method => <<"GET">>,
             handler => 'openapi_ads_handler'
         },
        'advanced_auction_items_get/post' => #{
@@ -768,6 +824,13 @@ get_operations() ->
             method => <<"PATCH">>,
             handler => 'openapi_campaigns_handler'
         },
+       'get_campaign_delivery_estimates' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/campaigns/delivery_estimates",
+            method => <<"POST">>,
+            handler => 'openapi_campaigns_handler'
+        },
        'feed_processing_results/list' => #{
             servers => [],
             base_path => "/v5",
@@ -936,6 +999,55 @@ get_operations() ->
             method => <<"GET">>,
             handler => 'openapi_catalog_reports_handler'
         },
+       'catalogs_local_inventory_items_batch/operate' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/catalogs/:catalog_id/local_inventory_items/batch",
+            method => <<"POST">>,
+            handler => 'openapi_catalog_supplemental_handler'
+        },
+       'catalogs_local_inventory_items/post' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/catalogs/:catalog_id/local_inventory_items/query",
+            method => <<"POST">>,
+            handler => 'openapi_catalog_supplemental_handler'
+        },
+       'catalogs_local_stores/create' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/catalogs/:catalog_id/local_stores",
+            method => <<"POST">>,
+            handler => 'openapi_catalog_supplemental_handler'
+        },
+       'catalogs_local_stores/delete' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/catalogs/:catalog_id/local_stores",
+            method => <<"DELETE">>,
+            handler => 'openapi_catalog_supplemental_handler'
+        },
+       'catalogs_local_stores/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/catalogs/:catalog_id/local_stores",
+            method => <<"GET">>,
+            handler => 'openapi_catalog_supplemental_handler'
+        },
+       'catalogs_local_stores/update' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/catalogs/:catalog_id/local_stores",
+            method => <<"PATCH">>,
+            handler => 'openapi_catalog_supplemental_handler'
+        },
+       'catalogs_supplemental_items_batch/get' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/catalogs/:catalog_id/supplemental_items/batch/:batch_id",
+            method => <<"GET">>,
+            handler => 'openapi_catalog_supplemental_handler'
+        },
        'catalogs/available_filter_values' => #{
             servers => [],
             base_path => "/v5",
@@ -956,6 +1068,34 @@ get_operations() ->
             path => "/catalogs",
             method => <<"GET">>,
             handler => 'openapi_catalogs_handler'
+        },
+       'conversion_deletion_request/create' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/conversion_deletion_requests",
+            method => <<"POST">>,
+            handler => 'openapi_conversion_deletion_requests_handler'
+        },
+       'conversion_deletion_request/delete' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/conversion_deletion_requests/:request_id",
+            method => <<"DELETE">>,
+            handler => 'openapi_conversion_deletion_requests_handler'
+        },
+       'conversion_deletion_request/get' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/conversion_deletion_requests/:request_id",
+            method => <<"GET">>,
+            handler => 'openapi_conversion_deletion_requests_handler'
+        },
+       'conversion_deletion_request/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/conversion_deletion_requests",
+            method => <<"GET">>,
+            handler => 'openapi_conversion_deletion_requests_handler'
         },
        'conversion_eqs/list' => #{
             servers => [],
@@ -1006,11 +1146,32 @@ get_operations() ->
             method => <<"GET">>,
             handler => 'openapi_conversion_tags_handler'
         },
+       'advertiser_defined_events/create' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/advertiser_defined_events",
+            method => <<"POST">>,
+            handler => 'openapi_conversions_handler'
+        },
+       'advertiser_defined_events/delete' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/advertiser_defined_events",
+            method => <<"DELETE">>,
+            handler => 'openapi_conversions_handler'
+        },
        'advertiser_defined_events/get' => #{
             servers => [],
             base_path => "/v5",
             path => "/ad_accounts/:ad_account_id/advertiser_defined_events",
             method => <<"GET">>,
+            handler => 'openapi_conversions_handler'
+        },
+       'advertiser_defined_events/update' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/advertiser_defined_events",
+            method => <<"PATCH">>,
             handler => 'openapi_conversions_handler'
         },
        'customer_list_uploads/create' => #{
@@ -1061,6 +1222,27 @@ get_operations() ->
             path => "/ad_accounts/:ad_account_id/customer_lists/:customer_list_id",
             method => <<"PATCH">>,
             handler => 'openapi_customer_lists_handler'
+        },
+       'customer_segment/create' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/customer_segments",
+            method => <<"POST">>,
+            handler => 'openapi_customer_segment_handler'
+        },
+       'customer_segment/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/customer_segments",
+            method => <<"GET">>,
+            handler => 'openapi_customer_segment_handler'
+        },
+       'customer_segment/update' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/customer_segments",
+            method => <<"PATCH">>,
+            handler => 'openapi_customer_segment_handler'
         },
        'integrations_commerce/del' => #{
             servers => [],
@@ -1146,6 +1328,13 @@ get_operations() ->
             method => <<"GET">>,
             handler => 'openapi_keywords_handler'
         },
+       'labels/apply' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/labels/:label_id/apply",
+            method => <<"POST">>,
+            handler => 'openapi_labels_handler'
+        },
        'labels/create' => #{
             servers => [],
             base_path => "/v5",
@@ -1158,6 +1347,13 @@ get_operations() ->
             base_path => "/v5",
             path => "/ad_accounts/:ad_account_id/labels",
             method => <<"GET">>,
+            handler => 'openapi_labels_handler'
+        },
+       'labels/remove' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/labels/:label_id/remove",
+            method => <<"POST">>,
             handler => 'openapi_labels_handler'
         },
        'labels/update' => #{
@@ -1370,27 +1566,6 @@ get_operations() ->
             method => <<"PATCH">>,
             handler => 'openapi_pins_handler'
         },
-       'trends_featured_topics/list' => #{
-            servers => [],
-            base_path => "/v5",
-            path => "/trends/topics/featured",
-            method => <<"GET">>,
-            handler => 'openapi_product_categories_handler'
-        },
-       'trends_product_categories_details/list' => #{
-            servers => [],
-            base_path => "/v5",
-            path => "/trends/product_categories/details",
-            method => <<"GET">>,
-            handler => 'openapi_product_categories_handler'
-        },
-       'trends_product_categories_trending/list' => #{
-            servers => [],
-            base_path => "/v5",
-            path => "/trends/product_categories/trending",
-            method => <<"GET">>,
-            handler => 'openapi_product_categories_handler'
-        },
        'product_group_promotions/create' => #{
             servers => [],
             base_path => "/v5",
@@ -1425,6 +1600,27 @@ get_operations() ->
             path => "/ad_accounts/:ad_account_id/product_groups/analytics",
             method => <<"GET">>,
             handler => 'openapi_product_group_promotions_handler'
+        },
+       'product_tags/bulk_add' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/pins/:pin_id/product_tags",
+            method => <<"POST">>,
+            handler => 'openapi_product_tags_handler'
+        },
+       'product_tags/bulk_delete' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/pins/:pin_id/product_tags/bulk-delete",
+            method => <<"POST">>,
+            handler => 'openapi_product_tags_handler'
+        },
+       'product_tags/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/pins/:pin_id/product_tags",
+            method => <<"GET">>,
+            handler => 'openapi_product_tags_handler'
         },
        'promotions/create' => #{
             servers => [],
@@ -1503,6 +1699,27 @@ get_operations() ->
             method => <<"GET">>,
             handler => 'openapi_resources_handler'
         },
+       'schedules/create' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/schedules",
+            method => <<"POST">>,
+            handler => 'openapi_schedules_handler'
+        },
+       'schedules/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/schedules",
+            method => <<"GET">>,
+            handler => 'openapi_schedules_handler'
+        },
+       'schedules/update' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/ad_accounts/:ad_account_id/schedules",
+            method => <<"PATCH">>,
+            handler => 'openapi_schedules_handler'
+        },
        'search_partner_pins' => #{
             servers => [],
             base_path => "/v5",
@@ -1565,6 +1782,34 @@ get_operations() ->
             path => "/ad_accounts/:ad_account_id/terms_of_service",
             method => <<"GET">>,
             handler => 'openapi_terms_of_service_handler'
+        },
+       'trends_editorial_articles/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/trends/editorial_articles",
+            method => <<"GET">>,
+            handler => 'openapi_trends_handler'
+        },
+       'trends_featured_topics/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/trends/topics/featured",
+            method => <<"GET">>,
+            handler => 'openapi_trends_handler'
+        },
+       'trends_product_categories_details/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/trends/product_categories/details",
+            method => <<"GET">>,
+            handler => 'openapi_trends_handler'
+        },
+       'trends_product_categories_trending/list' => #{
+            servers => [],
+            base_path => "/v5",
+            path => "/trends/product_categories/trending",
+            method => <<"GET">>,
+            handler => 'openapi_trends_handler'
         },
        'boards_user_follows/list' => #{
             servers => [],

@@ -6,28 +6,27 @@
 
 
 static label_create_request_t *label_create_request_create_internal(
-    list_t *labels,
-    char *parent_id
+    list_t *labels
     ) {
     label_create_request_t *label_create_request_local_var = malloc(sizeof(label_create_request_t));
     if (!label_create_request_local_var) {
         return NULL;
     }
-    label_create_request_local_var->labels = labels;
-    label_create_request_local_var->parent_id = parent_id;
-
+    memset(label_create_request_local_var, 0, sizeof(label_create_request_t));
     label_create_request_local_var->_library_owned = 1;
+    label_create_request_local_var->labels = labels;
     return label_create_request_local_var;
 }
 
 __attribute__((deprecated)) label_create_request_t *label_create_request_create(
-    list_t *labels,
-    char *parent_id
+    list_t *labels
     ) {
-    return label_create_request_create_internal (
-        labels,
-        parent_id
+    label_create_request_t *result = label_create_request_create_internal (
+        labels
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void label_create_request_free(label_create_request_t *label_create_request) {
@@ -41,14 +40,10 @@ void label_create_request_free(label_create_request_t *label_create_request) {
     listEntry_t *listEntry;
     if (label_create_request->labels) {
         list_ForEach(listEntry, label_create_request->labels) {
-            label_create_request_labels_inner_free(listEntry->data);
+            label_create_item_free(listEntry->data);
         }
         list_freeList(label_create_request->labels);
         label_create_request->labels = NULL;
-    }
-    if (label_create_request->parent_id) {
-        free(label_create_request->parent_id);
-        label_create_request->parent_id = NULL;
     }
     free(label_create_request);
 }
@@ -68,21 +63,12 @@ cJSON *label_create_request_convertToJSON(label_create_request_t *label_create_r
     listEntry_t *labelsListEntry;
     if (label_create_request->labels) {
     list_ForEach(labelsListEntry, label_create_request->labels) {
-    cJSON *itemLocal = label_create_request_labels_inner_convertToJSON(labelsListEntry->data);
+    cJSON *itemLocal = label_create_item_convertToJSON(labelsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
     cJSON_AddItemToArray(labels, itemLocal);
     }
-    }
-
-
-    // label_create_request->parent_id
-    if (!label_create_request->parent_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "parent_id", label_create_request->parent_id) == NULL) {
-    goto fail; //String
     }
 
     return item;
@@ -122,38 +108,27 @@ label_create_request_t *label_create_request_parseFromJSON(cJSON *label_create_r
         if(!cJSON_IsObject(labels_local_nonprimitive)){
             goto end;
         }
-        label_create_request_labels_inner_t *labelsItem = label_create_request_labels_inner_parseFromJSON(labels_local_nonprimitive);
+        label_create_item_t *labelsItem = label_create_item_parseFromJSON(labels_local_nonprimitive);
 
         list_addElement(labelsList, labelsItem);
     }
 
-    // label_create_request->parent_id
-    cJSON *parent_id = cJSON_GetObjectItemCaseSensitive(label_create_requestJSON, "parent_id");
-    if (cJSON_IsNull(parent_id)) {
-        parent_id = NULL;
-    }
-    if (!parent_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(parent_id))
-    {
-    goto end; //String
-    }
 
 
     label_create_request_local_var = label_create_request_create_internal (
-        labelsList,
-        strdup(parent_id->valuestring)
+        labelsList
         );
+
+    if (!label_create_request_local_var) {
+        goto end;
+    }
 
     return label_create_request_local_var;
 end:
     if (labelsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, labelsList) {
-            label_create_request_labels_inner_free(listEntry->data);
+            label_create_item_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(labelsList);

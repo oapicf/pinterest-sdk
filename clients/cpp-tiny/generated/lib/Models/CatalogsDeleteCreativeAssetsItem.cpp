@@ -85,7 +85,7 @@ CatalogsDeleteCreativeAssetsItem::getCreativeAssetsId()
 }
 
 void
-CatalogsDeleteCreativeAssetsItem::setCreativeAssetsId(std::string  creative_assets_id)
+CatalogsDeleteCreativeAssetsItem::setCreativeAssetsId(std::string creative_assets_id)
 {
 	this->creative_assets_id = creative_assets_id;
 }
@@ -97,7 +97,7 @@ CatalogsDeleteCreativeAssetsItem::getOperation()
 }
 
 void
-CatalogsDeleteCreativeAssetsItem::setOperation(std::string  operation)
+CatalogsDeleteCreativeAssetsItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

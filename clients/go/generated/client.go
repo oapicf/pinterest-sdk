@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -43,7 +43,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Pinterest REST API API v5.23.0
+// APIClient manages communication with the Pinterest REST API API v5.28.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -87,7 +87,11 @@ type APIClient struct {
 
 	CatalogReportsAPI *CatalogReportsAPIService
 
+	CatalogSupplementalAPI *CatalogSupplementalAPIService
+
 	CatalogsAPI *CatalogsAPIService
+
+	ConversionDeletionRequestsAPI *ConversionDeletionRequestsAPIService
 
 	ConversionEqsAPI *ConversionEqsAPIService
 
@@ -100,6 +104,8 @@ type APIClient struct {
 	CustomerListUploadsAPI *CustomerListUploadsAPIService
 
 	CustomerListsAPI *CustomerListsAPIService
+
+	CustomerSegmentAPI *CustomerSegmentAPIService
 
 	IntegrationsAPI *IntegrationsAPIService
 
@@ -125,13 +131,15 @@ type APIClient struct {
 
 	PinsAPI *PinsAPIService
 
-	ProductCategoriesAPI *ProductCategoriesAPIService
-
 	ProductGroupPromotionsAPI *ProductGroupPromotionsAPIService
+
+	ProductTagsAPI *ProductTagsAPIService
 
 	PromotionsAPI *PromotionsAPIService
 
 	ResourcesAPI *ResourcesAPIService
+
+	SchedulesAPI *SchedulesAPIService
 
 	SearchAPI *SearchAPIService
 
@@ -140,6 +148,8 @@ type APIClient struct {
 	TermsAPI *TermsAPIService
 
 	TermsOfServiceAPI *TermsOfServiceAPIService
+
+	TrendsAPI *TrendsAPIService
 
 	UserAccountAPI *UserAccountAPIService
 }
@@ -178,13 +188,16 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CatalogItemsAPI = (*CatalogItemsAPIService)(&c.common)
 	c.CatalogProductGroupsAPI = (*CatalogProductGroupsAPIService)(&c.common)
 	c.CatalogReportsAPI = (*CatalogReportsAPIService)(&c.common)
+	c.CatalogSupplementalAPI = (*CatalogSupplementalAPIService)(&c.common)
 	c.CatalogsAPI = (*CatalogsAPIService)(&c.common)
+	c.ConversionDeletionRequestsAPI = (*ConversionDeletionRequestsAPIService)(&c.common)
 	c.ConversionEqsAPI = (*ConversionEqsAPIService)(&c.common)
 	c.ConversionEventsAPI = (*ConversionEventsAPIService)(&c.common)
 	c.ConversionTagsAPI = (*ConversionTagsAPIService)(&c.common)
 	c.ConversionsAPI = (*ConversionsAPIService)(&c.common)
 	c.CustomerListUploadsAPI = (*CustomerListUploadsAPIService)(&c.common)
 	c.CustomerListsAPI = (*CustomerListsAPIService)(&c.common)
+	c.CustomerSegmentAPI = (*CustomerSegmentAPIService)(&c.common)
 	c.IntegrationsAPI = (*IntegrationsAPIService)(&c.common)
 	c.KeywordsAPI = (*KeywordsAPIService)(&c.common)
 	c.LabelsAPI = (*LabelsAPIService)(&c.common)
@@ -197,14 +210,16 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OauthAPI = (*OauthAPIService)(&c.common)
 	c.OrderLinesAPI = (*OrderLinesAPIService)(&c.common)
 	c.PinsAPI = (*PinsAPIService)(&c.common)
-	c.ProductCategoriesAPI = (*ProductCategoriesAPIService)(&c.common)
 	c.ProductGroupPromotionsAPI = (*ProductGroupPromotionsAPIService)(&c.common)
+	c.ProductTagsAPI = (*ProductTagsAPIService)(&c.common)
 	c.PromotionsAPI = (*PromotionsAPIService)(&c.common)
 	c.ResourcesAPI = (*ResourcesAPIService)(&c.common)
+	c.SchedulesAPI = (*SchedulesAPIService)(&c.common)
 	c.SearchAPI = (*SearchAPIService)(&c.common)
 	c.TargetingTemplateAPI = (*TargetingTemplateAPIService)(&c.common)
 	c.TermsAPI = (*TermsAPIService)(&c.common)
 	c.TermsOfServiceAPI = (*TermsOfServiceAPIService)(&c.common)
+	c.TrendsAPI = (*TrendsAPIService)(&c.common)
 	c.UserAccountAPI = (*UserAccountAPIService)(&c.common)
 
 	return c
@@ -592,6 +607,15 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		*s = string(b)
 		return nil
 	}
+	if r, ok := v.(*io.Reader); ok {
+		*r = bytes.NewReader(b)
+		return nil
+	}
+	// Must stay before the JSON branch: json.Unmarshal would base64-decode into *[]byte.
+	if p, ok := v.(*[]byte); ok {
+		*p = b
+		return nil
+	}
 	if f, ok := v.(*os.File); ok {
 		f, err = os.CreateTemp("", "HttpClientFile")
 		if err != nil {
@@ -645,10 +669,7 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 	if err != nil {
 		return err
 	}
-	err = file.Close()
-	if err != nil {
-		return err
-	}
+	defer file.Close()
 
 	part, err := w.CreateFormFile(fieldName, filepath.Base(path))
 	if err != nil {

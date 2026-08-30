@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.GetPartnerAssetsResponse;
+import org.openapitools.model.BaseBusinessAssets;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessPartnerAssetAccessGet200Response   {
   
   private String bookmark;
-  private List<@Valid GetPartnerAssetsResponse> items = new ArrayList<>();
+  private List<@Valid BaseBusinessAssets> items = new ArrayList<>();
 
   /**
    **/
@@ -35,17 +35,16 @@ public class BusinessPartnerAssetAccessGet200Response   {
   }
 
   /**
-   * List assets on which you granted access to your partner or assets on which your partner has granted you access.
    **/
   
-  @ApiModelProperty(required = true, value = "List assets on which you granted access to your partner or assets on which your partner has granted you access.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
   @Valid
-  public List<@Valid GetPartnerAssetsResponse> getItems() {
+  public List<@Valid BaseBusinessAssets> getItems() {
     return items;
   }
-  public void setItems(List<@Valid GetPartnerAssetsResponse> items) {
+  public void setItems(List<@Valid BaseBusinessAssets> items) {
     this.items = items;
   }
 
@@ -84,10 +83,7 @@ public class BusinessPartnerAssetAccessGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

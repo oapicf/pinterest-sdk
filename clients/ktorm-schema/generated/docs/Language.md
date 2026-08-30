@@ -90,7 +90,7 @@
 
     * `NL` (value: `"NL"`)
 
-    * `NO` (value: `"NO"`)
+    * `false` (value: `"false"`)
 
     * `PL` (value: `"PL"`)
 

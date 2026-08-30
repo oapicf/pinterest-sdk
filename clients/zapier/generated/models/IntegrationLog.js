@@ -1,6 +1,8 @@
 const utils = require('../utils/utils');
 const IntegrationLogClientError = require('../models/IntegrationLogClientError');
 const IntegrationLogClientRequest = require('../models/IntegrationLogClientRequest');
+const IntegrationLogEventType = require('../models/IntegrationLogEventType');
+const IntegrationLogLevel = require('../models/IntegrationLogLevel');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -25,13 +27,7 @@ module.exports = {
             ...IntegrationLogClientError.fields(`${keyPrefix}error`, isInput),
             {
                 key: `${keyPrefix}event_type`,
-                label: `Log event type - [${labelPrefix}event_type]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'APP',
-                    'API',
-                ],
+                ...IntegrationLogEventType.fields(`${keyPrefix}event_type`, isInput),
             },
             {
                 key: `${keyPrefix}external_business_id`,
@@ -45,14 +41,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}log_level`,
-                label: `Log level type - [${labelPrefix}log_level]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'INFO',
-                    'WARN',
-                    'ERROR',
-                ],
+                ...IntegrationLogLevel.fields(`${keyPrefix}log_level`, isInput),
             },
             {
                 key: `${keyPrefix}merchant_id`,

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **duration** | **REAL_32** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] [default to null]
 **height** | **INTEGER_32** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] [default to null]
 **video_url** | [**STRING_32**](STRING_32.md) | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] [default to null]
+**video_url_hls** | [**STRING_32**](STRING_32.md) | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] [default to null]
 **width** | **INTEGER_32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] [default to null]
 **items** | [**LIST [PIN_MEDIA_METADATA]**](PinMediaMetadata.md) |  | [optional] [default to null]
 

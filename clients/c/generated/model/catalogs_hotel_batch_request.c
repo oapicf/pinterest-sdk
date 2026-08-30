@@ -33,13 +33,13 @@ static catalogs_hotel_batch_request_t *catalogs_hotel_batch_request_create_inter
     if (!catalogs_hotel_batch_request_local_var) {
         return NULL;
     }
+    memset(catalogs_hotel_batch_request_local_var, 0, sizeof(catalogs_hotel_batch_request_t));
+    catalogs_hotel_batch_request_local_var->_library_owned = 1;
     catalogs_hotel_batch_request_local_var->catalog_id = catalog_id;
     catalogs_hotel_batch_request_local_var->catalog_type = catalog_type;
     catalogs_hotel_batch_request_local_var->country = country;
     catalogs_hotel_batch_request_local_var->items = items;
     catalogs_hotel_batch_request_local_var->language = language;
-
-    catalogs_hotel_batch_request_local_var->_library_owned = 1;
     return catalogs_hotel_batch_request_local_var;
 }
 
@@ -50,13 +50,16 @@ __attribute__((deprecated)) catalogs_hotel_batch_request_t *catalogs_hotel_batch
     list_t *items,
     pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_e language
     ) {
-    return catalogs_hotel_batch_request_create_internal (
+    catalogs_hotel_batch_request_t *result = catalogs_hotel_batch_request_create_internal (
         catalog_id,
         catalog_type,
         country,
         items,
         language
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_hotel_batch_request_free(catalogs_hotel_batch_request_t *catalogs_hotel_batch_request) {
@@ -159,6 +162,8 @@ catalogs_hotel_batch_request_t *catalogs_hotel_batch_request_parseFromJSON(cJSON
 
     catalogs_hotel_batch_request_t *catalogs_hotel_batch_request_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
     // define the local variable for catalogs_hotel_batch_request->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
 
@@ -251,16 +256,26 @@ catalogs_hotel_batch_request_t *catalogs_hotel_batch_request_parseFromJSON(cJSON
     languageVariable = catalogs_hotel_batch_request_language_FromString(language->valuestring);
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+
     catalogs_hotel_batch_request_local_var = catalogs_hotel_batch_request_create_internal (
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        catalog_id_local_str,
         catalog_typeVariable,
         country_local_nonprim,
         itemsList,
         languageVariable
         );
 
+    if (!catalogs_hotel_batch_request_local_var) {
+        goto end;
+    }
+
     return catalogs_hotel_batch_request_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
     if (country_local_nonprim) {
         country_local_nonprim = 0;
     }

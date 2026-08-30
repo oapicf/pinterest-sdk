@@ -1,6 +1,5 @@
 # openapi::CatalogsHotelGuestRatings
 
-If specified, you must provide all properties
 
 ## Properties
 Name | Type | Description | Notes

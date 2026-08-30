@@ -1,15 +1,9 @@
-goog.provide('API.Client.CatalogsHotelReportStatsParameters_report');
+goog.provide('API.Client.CatalogsHotelReportStatsParametersReport');
 
 /**
  * @record
  */
 API.Client.CatalogsHotelReportStatsParametersReport = function() {}
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelReportStatsParametersReport.prototype.reportType;
 
 /**
  * ID of the feed entity.
@@ -26,6 +20,12 @@ API.Client.CatalogsHotelReportStatsParametersReport.prototype.feedId;
 API.Client.CatalogsHotelReportStatsParametersReport.prototype.processingResultId;
 
 /**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelReportStatsParametersReport.prototype.reportType;
+
+/**
  * Unique identifier of a catalog. If not given, oldest catalog will be used
  * @type {!string}
  * @export
@@ -34,6 +34,5 @@ API.Client.CatalogsHotelReportStatsParametersReport.prototype.catalogId;
 
 /** @enum {string} */
 API.Client.CatalogsHotelReportStatsParametersReport.ReportTypeEnum = { 
-  FEED_INGESTION_ISSUES: 'FEED_INGESTION_ISSUES',
   DISTRIBUTION_ISSUES: 'DISTRIBUTION_ISSUES',
 }

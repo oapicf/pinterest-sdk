@@ -13,10 +13,10 @@ static business_member_assets_summary_t *business_member_assets_summary_create_i
     if (!business_member_assets_summary_local_var) {
         return NULL;
     }
+    memset(business_member_assets_summary_local_var, 0, sizeof(business_member_assets_summary_t));
+    business_member_assets_summary_local_var->_library_owned = 1;
     business_member_assets_summary_local_var->ad_accounts = ad_accounts;
     business_member_assets_summary_local_var->profiles = profiles;
-
-    business_member_assets_summary_local_var->_library_owned = 1;
     return business_member_assets_summary_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) business_member_assets_summary_t *business_member_as
     list_t *ad_accounts,
     list_t *profiles
     ) {
-    return business_member_assets_summary_create_internal (
+    business_member_assets_summary_t *result = business_member_assets_summary_create_internal (
         ad_accounts,
         profiles
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void business_member_assets_summary_free(business_member_assets_summary_t *business_member_assets_summary) {
@@ -41,14 +44,14 @@ void business_member_assets_summary_free(business_member_assets_summary_t *busin
     listEntry_t *listEntry;
     if (business_member_assets_summary->ad_accounts) {
         list_ForEach(listEntry, business_member_assets_summary->ad_accounts) {
-            business_member_assets_summary_ad_accounts_inner_free(listEntry->data);
+            asset_id_with_permissions_free(listEntry->data);
         }
         list_freeList(business_member_assets_summary->ad_accounts);
         business_member_assets_summary->ad_accounts = NULL;
     }
     if (business_member_assets_summary->profiles) {
         list_ForEach(listEntry, business_member_assets_summary->profiles) {
-            business_member_assets_summary_profiles_inner_free(listEntry->data);
+            asset_id_with_permissions_free(listEntry->data);
         }
         list_freeList(business_member_assets_summary->profiles);
         business_member_assets_summary->profiles = NULL;
@@ -69,7 +72,7 @@ cJSON *business_member_assets_summary_convertToJSON(business_member_assets_summa
     listEntry_t *ad_accountsListEntry;
     if (business_member_assets_summary->ad_accounts) {
     list_ForEach(ad_accountsListEntry, business_member_assets_summary->ad_accounts) {
-    cJSON *itemLocal = business_member_assets_summary_ad_accounts_inner_convertToJSON(ad_accountsListEntry->data);
+    cJSON *itemLocal = asset_id_with_permissions_convertToJSON(ad_accountsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -89,7 +92,7 @@ cJSON *business_member_assets_summary_convertToJSON(business_member_assets_summa
     listEntry_t *profilesListEntry;
     if (business_member_assets_summary->profiles) {
     list_ForEach(profilesListEntry, business_member_assets_summary->profiles) {
-    cJSON *itemLocal = business_member_assets_summary_profiles_inner_convertToJSON(profilesListEntry->data);
+    cJSON *itemLocal = asset_id_with_permissions_convertToJSON(profilesListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -134,7 +137,7 @@ business_member_assets_summary_t *business_member_assets_summary_parseFromJSON(c
         if(!cJSON_IsObject(ad_accounts_local_nonprimitive)){
             goto end;
         }
-        business_member_assets_summary_ad_accounts_inner_t *ad_accountsItem = business_member_assets_summary_ad_accounts_inner_parseFromJSON(ad_accounts_local_nonprimitive);
+        asset_id_with_permissions_t *ad_accountsItem = asset_id_with_permissions_parseFromJSON(ad_accounts_local_nonprimitive);
 
         list_addElement(ad_accountsList, ad_accountsItem);
     }
@@ -158,11 +161,12 @@ business_member_assets_summary_t *business_member_assets_summary_parseFromJSON(c
         if(!cJSON_IsObject(profiles_local_nonprimitive)){
             goto end;
         }
-        business_member_assets_summary_profiles_inner_t *profilesItem = business_member_assets_summary_profiles_inner_parseFromJSON(profiles_local_nonprimitive);
+        asset_id_with_permissions_t *profilesItem = asset_id_with_permissions_parseFromJSON(profiles_local_nonprimitive);
 
         list_addElement(profilesList, profilesItem);
     }
     }
+
 
 
     business_member_assets_summary_local_var = business_member_assets_summary_create_internal (
@@ -170,12 +174,16 @@ business_member_assets_summary_t *business_member_assets_summary_parseFromJSON(c
         profiles ? profilesList : NULL
         );
 
+    if (!business_member_assets_summary_local_var) {
+        goto end;
+    }
+
     return business_member_assets_summary_local_var;
 end:
     if (ad_accountsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, ad_accountsList) {
-            business_member_assets_summary_ad_accounts_inner_free(listEntry->data);
+            asset_id_with_permissions_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(ad_accountsList);
@@ -184,7 +192,7 @@ end:
     if (profilesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, profilesList) {
-            business_member_assets_summary_profiles_inner_free(listEntry->data);
+            asset_id_with_permissions_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(profilesList);

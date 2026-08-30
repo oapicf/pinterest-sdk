@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
+import org.openapitools.model.PartnerMetadata;
 
 /**
  * LeadSubscriptionPostParamsCreate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LeadSubscriptionPostParamsCreate   {
   @JsonProperty("lead_form_id")
   private String leadFormId;
@@ -22,7 +22,7 @@ public class LeadSubscriptionPostParamsCreate   {
   private String partnerAccessToken;
 
   @JsonProperty("partner_metadata")
-  private LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata;
+  private PartnerMetadata partnerMetadata;
 
   @JsonProperty("partner_refresh_token")
   private String partnerRefreshToken;
@@ -81,21 +81,21 @@ public class LeadSubscriptionPostParamsCreate   {
     this.partnerAccessToken = partnerAccessToken;
   }
 
-  public LeadSubscriptionPostParamsCreate partnerMetadata(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public LeadSubscriptionPostParamsCreate partnerMetadata(PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
 
    /**
-   * Get partnerMetadata
+   * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
    * @return partnerMetadata
   **/
-  @ApiModelProperty(value = "")
-  public LeadSubscriptionPostParamsCreateAllOfPartnerMetadata getPartnerMetadata() {
+  @ApiModelProperty(value = "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.")
+  public PartnerMetadata getPartnerMetadata() {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public void setPartnerMetadata(PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 
@@ -158,10 +158,7 @@ public class LeadSubscriptionPostParamsCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

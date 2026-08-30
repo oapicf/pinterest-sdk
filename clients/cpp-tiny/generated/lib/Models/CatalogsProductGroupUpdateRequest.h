@@ -52,28 +52,28 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupFiltersRequest getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFiltersRequest  filters);
+	void setFilters(CatalogsProductGroupFiltersRequest filters);
 	/*! \brief Get boolean indicator of whether the product group is being featured or not
 	 */
 	bool isIsFeatured();
 
 	/*! \brief Set boolean indicator of whether the product group is being featured or not
 	 */
-	void setIsFeatured(bool  is_featured);
+	void setIsFeatured(bool is_featured);
 	/*! \brief Get 
 	 */
 	std::string getName();
 
 	/*! \brief Set 
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 
 
     private:

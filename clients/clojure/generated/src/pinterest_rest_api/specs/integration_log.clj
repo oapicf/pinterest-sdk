@@ -2,6 +2,8 @@
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.integration-log-client-error :refer :all]
+            [pinterest-rest-api.specs.integration-log-event-type :refer :all]
+            [pinterest-rest-api.specs.integration-log-level :refer :all]
             [pinterest-rest-api.specs.integration-log-client-request :refer :all]
             )
   (:import (java.io File)))
@@ -13,10 +15,10 @@
    (ds/opt :app_version_number) string?
    (ds/req :client_timestamp) int?
    (ds/opt :error) integration-log-client-error-spec
-   (ds/req :event_type) string?
+   (ds/req :event_type) integration-log-event-type-spec
    (ds/opt :external_business_id) string?
    (ds/opt :feed_profile_id) string?
-   (ds/req :log_level) string?
+   (ds/req :log_level) integration-log-level-spec
    (ds/opt :merchant_id) string?
    (ds/opt :message) string?
    (ds/opt :platform_version_number) string?

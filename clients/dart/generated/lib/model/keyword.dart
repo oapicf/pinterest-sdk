@@ -13,23 +13,15 @@ part of openapi.api;
 class Keyword {
   /// Returns a new [Keyword] instance.
   Keyword({
-    this.bid,
-    required this.matchType,
-    required this.value,
     this.archived,
-    this.id,
-    this.parentId,
+    this.bid,
+    required this.id,
+    required this.matchType,
+    required this.parentId,
     this.parentType,
     this.type,
+    required this.value,
   });
-
-  /// </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-  int? bid;
-
-  MatchTypeResponse? matchType;
-
-  /// Keyword value (120 chars max).
-  String value;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -39,25 +31,19 @@ class Keyword {
   ///
   bool? archived;
 
+  /// **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  int? bid;
+
   /// Keyword ID .
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? id;
+  String id;
+
+  /// Keyword [match type](/docs/api-features/targeting-overview/)
+  MatchType? matchType;
 
   /// Keyword parent entity ID (advertiser, campaign, ad group).
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? parentId;
+  String parentId;
 
-  /// Parent entity type
+  /// Parent entity type (advertiser, campaign, ad group).
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -75,60 +61,54 @@ class Keyword {
   ///
   String? type;
 
+  /// Keyword value (120 chars max).
+  String value;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Keyword &&
-    other.bid == bid &&
-    other.matchType == matchType &&
-    other.value == value &&
     other.archived == archived &&
+    other.bid == bid &&
     other.id == id &&
+    other.matchType == matchType &&
     other.parentId == parentId &&
     other.parentType == parentType &&
-    other.type == type;
+    other.type == type &&
+    other.value == value;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (bid == null ? 0 : bid!.hashCode) +
-    (matchType == null ? 0 : matchType!.hashCode) +
-    (value.hashCode) +
     (archived == null ? 0 : archived!.hashCode) +
-    (id == null ? 0 : id!.hashCode) +
-    (parentId == null ? 0 : parentId!.hashCode) +
+    (bid == null ? 0 : bid!.hashCode) +
+    (id.hashCode) +
+    (matchType == null ? 0 : matchType!.hashCode) +
+    (parentId.hashCode) +
     (parentType == null ? 0 : parentType!.hashCode) +
-    (type == null ? 0 : type!.hashCode);
+    (type == null ? 0 : type!.hashCode) +
+    (value.hashCode);
 
   @override
-  String toString() => 'Keyword[bid=$bid, matchType=$matchType, value=$value, archived=$archived, id=$id, parentId=$parentId, parentType=$parentType, type=$type]';
+  String toString() => 'Keyword[archived=$archived, bid=$bid, id=$id, matchType=$matchType, parentId=$parentId, parentType=$parentType, type=$type, value=$value]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.bid != null) {
-      json[r'bid'] = this.bid;
-    } else {
-      json[r'bid'] = null;
-    }
-    if (this.matchType != null) {
-      json[r'match_type'] = this.matchType;
-    } else {
-      json[r'match_type'] = null;
-    }
-      json[r'value'] = this.value;
     if (this.archived != null) {
       json[r'archived'] = this.archived;
     } else {
       json[r'archived'] = null;
     }
-    if (this.id != null) {
+    if (this.bid != null) {
+      json[r'bid'] = this.bid;
+    } else {
+      json[r'bid'] = null;
+    }
       json[r'id'] = this.id;
+    if (this.matchType != null) {
+      json[r'match_type'] = this.matchType;
     } else {
-      json[r'id'] = null;
+      json[r'match_type'] = null;
     }
-    if (this.parentId != null) {
       json[r'parent_id'] = this.parentId;
-    } else {
-      json[r'parent_id'] = null;
-    }
     if (this.parentType != null) {
       json[r'parent_type'] = this.parentType;
     } else {
@@ -139,6 +119,7 @@ class Keyword {
     } else {
       json[r'type'] = null;
     }
+      json[r'value'] = this.value;
     return json;
   }
 
@@ -153,22 +134,25 @@ class Keyword {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Keyword[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Keyword[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'id'), 'Required key "Keyword[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "Keyword[id]" has a null value in JSON.');
+        assert(json.containsKey(r'match_type'), 'Required key "Keyword[match_type]" is missing from JSON.');
+        assert(json.containsKey(r'parent_id'), 'Required key "Keyword[parent_id]" is missing from JSON.');
+        assert(json[r'parent_id'] != null, 'Required key "Keyword[parent_id]" has a null value in JSON.');
+        assert(json.containsKey(r'value'), 'Required key "Keyword[value]" is missing from JSON.');
+        assert(json[r'value'] != null, 'Required key "Keyword[value]" has a null value in JSON.');
         return true;
       }());
 
       return Keyword(
-        bid: mapValueOfType<int>(json, r'bid'),
-        matchType: MatchTypeResponse.fromJson(json[r'match_type']),
-        value: mapValueOfType<String>(json, r'value')!,
         archived: mapValueOfType<bool>(json, r'archived'),
-        id: mapValueOfType<String>(json, r'id'),
-        parentId: mapValueOfType<String>(json, r'parent_id'),
+        bid: mapValueOfType<int>(json, r'bid'),
+        id: mapValueOfType<String>(json, r'id')!,
+        matchType: MatchType.fromJson(json[r'match_type']),
+        parentId: mapValueOfType<String>(json, r'parent_id')!,
         parentType: mapValueOfType<String>(json, r'parent_type'),
         type: mapValueOfType<String>(json, r'type'),
+        value: mapValueOfType<String>(json, r'value')!,
       );
     }
     return null;
@@ -216,7 +200,9 @@ class Keyword {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
     'match_type',
+    'parent_id',
     'value',
   };
 }

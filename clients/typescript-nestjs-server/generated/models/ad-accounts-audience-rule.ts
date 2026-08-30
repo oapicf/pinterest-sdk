@@ -1,0 +1,87 @@
+import { AudienceObjectiveType } from './audience-objective-type';
+import { EventData } from './event-data';
+
+
+/**
+ * JSON object defining targeted audience users. Example rule formats per audience type: CUSTOMER_LIST: { \"customer_list_id\": \"<customer list ID>\"} ACTALIKE: { \"seed_id\": [\"<audience ID>\"], \"country\": \"US\", \"percentage\": \"10\" } (Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10. The targeted audience should be this % size across Pinterest.) VISITOR: { \"visitor_source_id\": [\"<conversion tag ID>\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}} (Retention days should be 1-540. Retention applies to specific customers.) ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).
+ */
+export interface AdAccountsAudienceRule { 
+  /**
+   * Ad account ID.
+   */
+  ad_account_id?: string;
+  /**
+   * Ad ID for engagement audience filter.
+   */
+  ad_id?: Array<string>;
+  /**
+   * Campaign ID for engagement audience filter.
+   */
+  campaign_id?: Array<string>;
+  /**
+   * Valid countries include: \"US\", \"CA\", and \"GB\".
+   */
+  country?: string;
+  /**
+   * Customer list ID. For CUSTOMER_LIST `audience_type`.
+   */
+  customer_list_id?: string;
+  /**
+   * The audience account\'s verified domain. **Required** for ENGAGEMENT `audience_type`.
+   */
+  engagement_domain?: Array<string>;
+  /**
+   * Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.
+   */
+  engagement_type?: string;
+  /**
+   * Optional for ENGAGEMENT. Engager type value should be 1-2.
+   */
+  engager_type?: number;
+  /**
+   * A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.
+   */
+  event?: string;
+  event_data?: EventData;
+  /**
+   * Optional for VISITOR. You can use it as a {\'=\': [value]}. Supported values are: web, mobile, offline
+   */
+  event_source?: object;
+  /**
+   * Optional for VISITOR. You can use it as a {\'=\': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
+   */
+  ingestion_source?: object;
+  /**
+   * Objective for engagement audience filter.
+   */
+  objective_type?: Array<AudienceObjectiveType>;
+  /**
+   * Percentage should be 1-10. The targeted audience should be this % size across Pinterest.
+   */
+  percentage?: number;
+  /**
+   * IDs of engaged organic pins. Optional for ENGAGEMENT `audience_type`. For example, \"pin_id:\": [\"34567\"]
+   */
+  pin_id?: Array<string>;
+  /**
+   * Optional for VISITOR `audience_type`. If `true`, the specified rule on existing engagement data is applied to pre-populate the audience. If `false`, the audience is empty at creation time. The default is `true`.
+   */
+  prefill?: boolean;
+  /**
+   * Number of days a Pinterest user remains in the audience. Optional for ENGAGEMENT and VISITOR `audience_type`. Accepted range is 1-540. Defaults to 180 if not specified.
+   */
+  retention_days?: number;
+  /**
+   * Audience ID(s). For ACTALIKE `audience_type`.
+   */
+  seed_id?: Array<string>;
+  /**
+   * Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin\'s URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}
+   */
+  url?: Array<string>;
+  /**
+   * The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.
+   */
+  visitor_source_id?: string;
+}
+

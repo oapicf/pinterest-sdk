@@ -1,5 +1,5 @@
 
-# Table `TargetingTemplateAudienceSizing_reach_estimate`
+# Table `TargetingTemplateAudienceSizingReachEstimate`
 (mapped from: TargetingTemplateAudienceSizingReachEstimate)
 
 ## Properties

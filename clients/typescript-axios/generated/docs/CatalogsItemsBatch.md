@@ -6,10 +6,10 @@ Object describing the catalogs items batch
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
 **batch_id** | **string** | Id of the catalogs items batch | [optional] [default to undefined]
-**completed_time** | **string** | Date and time (UTC) of the batch completion: YYYY-MM-DD\&#39;T\&#39;hh:mm:ss | [optional] [readonly] [default to undefined]
-**created_time** | **string** | Date and time (UTC) of the batch creation: YYYY-MM-DD\&#39;T\&#39;hh:mm:ss | [readonly] [default to undefined]
+**catalog_type** | **string** |  | [default to undefined]
+**completed_time** | **string** | Date and time (UTC) of the batch completion: YYYY-MM-DD\&#39;T\&#39;hh:mm:ss | [optional] [default to undefined]
+**created_time** | **string** | Date and time (UTC) of the batch creation: YYYY-MM-DD\&#39;T\&#39;hh:mm:ss | [default to undefined]
 **items** | [**Array&lt;CreativeAssetsProcessingRecord&gt;**](CreativeAssetsProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] [default to undefined]
 **status** | [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] [default to undefined]
 
@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 import { CatalogsItemsBatch } from './api';
 
 const instance: CatalogsItemsBatch = {
-    catalog_type,
     batch_id,
+    catalog_type,
     completed_time,
     created_time,
     items,

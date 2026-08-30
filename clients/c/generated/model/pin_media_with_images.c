@@ -30,10 +30,10 @@ static pin_media_with_images_t *pin_media_with_images_create_internal(
     if (!pin_media_with_images_local_var) {
         return NULL;
     }
+    memset(pin_media_with_images_local_var, 0, sizeof(pin_media_with_images_t));
+    pin_media_with_images_local_var->_library_owned = 1;
     pin_media_with_images_local_var->items = items;
     pin_media_with_images_local_var->media_type = media_type;
-
-    pin_media_with_images_local_var->_library_owned = 1;
     return pin_media_with_images_local_var;
 }
 
@@ -41,10 +41,13 @@ __attribute__((deprecated)) pin_media_with_images_t *pin_media_with_images_creat
     list_t *items,
     pinterest_rest_api_pin_media_with_images_MEDIATYPE_e media_type
     ) {
-    return pin_media_with_images_create_internal (
+    pin_media_with_images_t *result = pin_media_with_images_create_internal (
         items,
         media_type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void pin_media_with_images_free(pin_media_with_images_t *pin_media_with_images) {
@@ -155,10 +158,15 @@ pin_media_with_images_t *pin_media_with_images_parseFromJSON(cJSON *pin_media_wi
     media_typeVariable = pin_media_with_images_media_type_FromString(media_type->valuestring);
 
 
+
     pin_media_with_images_local_var = pin_media_with_images_create_internal (
         items ? itemsList : NULL,
         media_typeVariable
         );
+
+    if (!pin_media_with_images_local_var) {
+        goto end;
+    }
 
     return pin_media_with_images_local_var;
 end:

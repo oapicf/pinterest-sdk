@@ -6,6 +6,6 @@ Parameters for retail report
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **character** |  | [Enum: [RETAIL]] 
-**report** | [**CatalogsHotelReportStatsParametersReport**](CatalogsHotelReportStatsParameters_report.md) |  | 
+**report** | [**CatalogsRetailReportStatsParametersReport**](CatalogsRetailReportStatsParametersReport.md) |  | 
 
 

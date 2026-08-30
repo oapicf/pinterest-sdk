@@ -26,7 +26,10 @@ Protected Class LeadSubscriptionPostParamsCreate
 
 
 	#tag Property, Flags = &h0
-		partner_metadata As OpenAPIClient.Models.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+		#tag Note
+			Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+		#tag EndNote
+		partner_metadata As OpenAPIClient.Models.PartnerMetadata
 	#tag EndProperty
 
 
@@ -103,7 +106,7 @@ Protected Class LeadSubscriptionPostParamsCreate
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="LeadSubscriptionPostParamsCreateAllOfPartnerMetadata"
+			Type="PartnerMetadata"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

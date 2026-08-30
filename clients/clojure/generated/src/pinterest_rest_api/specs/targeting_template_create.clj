@@ -3,7 +3,7 @@
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.targeting-template-keyword :refer :all]
             [pinterest-rest-api.specs.placement-group-type :refer :all]
-            [pinterest-rest-api.specs.targeting-spec :refer :all]
+            [pinterest-rest-api.specs.targeting-spec-optimal :refer :all]
             [pinterest-rest-api.specs.tracking-urls :refer :all]
             )
   (:import (java.io File)))
@@ -15,7 +15,7 @@
    (ds/opt :keywords) (s/coll-of targeting-template-keyword-spec)
    (ds/req :name) string?
    (ds/opt :placement_group) placement-group-type-spec
-   (ds/req :targeting_attributes) targeting-spec-spec
+   (ds/req :targeting_attributes) targeting-spec-optimal-spec
    (ds/opt :tracking_urls) tracking-urls-spec
    })
 

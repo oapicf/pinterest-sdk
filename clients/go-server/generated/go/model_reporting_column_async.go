@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -51,6 +51,7 @@ const (
 	ECPM_IN_MICRO_DOLLAR ReportingColumnAsync = "ECPM_IN_MICRO_DOLLAR"
 	REPIN_RATE ReportingColumnAsync = "REPIN_RATE"
 	CTR_2 ReportingColumnAsync = "CTR_2"
+	CAMPAIGN ReportingColumnAsync = "CAMPAIGN"
 	CAMPAIGN_ID ReportingColumnAsync = "CAMPAIGN_ID"
 	ADVERTISER_ID ReportingColumnAsync = "ADVERTISER_ID"
 	AD_ACCOUNT_ID ReportingColumnAsync = "AD_ACCOUNT_ID"
@@ -95,6 +96,12 @@ const (
 	REPIN_2 ReportingColumnAsync = "REPIN_2"
 	IMPRESSION_2 ReportingColumnAsync = "IMPRESSION_2"
 	OUTBOUND_CLICK_2 ReportingColumnAsync = "OUTBOUND_CLICK_2"
+	COLLECTION_PIN_ITEM_IMPRESSION_1 ReportingColumnAsync = "COLLECTION_PIN_ITEM_IMPRESSION_1"
+	COLLECTION_PIN_ITEM_IMPRESSION_2 ReportingColumnAsync = "COLLECTION_PIN_ITEM_IMPRESSION_2"
+	TOTAL_COLLECTION_PIN_ITEM_IMPRESSION ReportingColumnAsync = "TOTAL_COLLECTION_PIN_ITEM_IMPRESSION"
+	COLLECTION_PIN_ITEM_CLICKTHROUGH_1 ReportingColumnAsync = "COLLECTION_PIN_ITEM_CLICKTHROUGH_1"
+	COLLECTION_PIN_ITEM_CLICKTHROUGH_2 ReportingColumnAsync = "COLLECTION_PIN_ITEM_CLICKTHROUGH_2"
+	TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH ReportingColumnAsync = "TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH"
 	TOTAL_CLICKTHROUGH ReportingColumnAsync = "TOTAL_CLICKTHROUGH"
 	TOTAL_IMPRESSION ReportingColumnAsync = "TOTAL_IMPRESSION"
 	TOTAL_IMPRESSION_USER ReportingColumnAsync = "TOTAL_IMPRESSION_USER"
@@ -210,6 +217,7 @@ const (
 	AD_GROUP_OPTIMIZATION ReportingColumnAsync = "AD_GROUP_OPTIMIZATION"
 	CAMPAIGN_DAILY_SPEND_CAP ReportingColumnAsync = "CAMPAIGN_DAILY_SPEND_CAP"
 	CAMPAIGN_BUDGET_OPTIMIZATION ReportingColumnAsync = "CAMPAIGN_BUDGET_OPTIMIZATION"
+	IS_CATALOG_CREATIVE_CAMPAIGN ReportingColumnAsync = "IS_CATALOG_CREATIVE_CAMPAIGN"
 	IS_PREMIERE_CAMPAIGN ReportingColumnAsync = "IS_PREMIERE_CAMPAIGN"
 	TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION ReportingColumnAsync = "TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION"
 	TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_MOBILE_CONVERSION ReportingColumnAsync = "TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_MOBILE_CONVERSION"
@@ -635,6 +643,11 @@ const (
 	TOTAL_UNKNOWN_CONVERSION_RATE ReportingColumnAsync = "TOTAL_UNKNOWN_CONVERSION_RATE"
 	TOTAL_CUSTOM_CONVERSION_RATE ReportingColumnAsync = "TOTAL_CUSTOM_CONVERSION_RATE"
 	STANDARD_AD_FEED_ITEM_ID ReportingColumnAsync = "STANDARD_AD_FEED_ITEM_ID"
+	SPEND_ORDER_LINE_ID ReportingColumnAsync = "SPEND_ORDER_LINE_ID"
+	INAPP_SKAN_APP_INSTALL ReportingColumnAsync = "INAPP_SKAN_APP_INSTALL"
+	INAPP_SKAN_ASSISTED_APP_INSTALL ReportingColumnAsync = "INAPP_SKAN_ASSISTED_APP_INSTALL"
+	INAPP_SKAN_APP_INSTALL_COST_PER_ACTION ReportingColumnAsync = "INAPP_SKAN_APP_INSTALL_COST_PER_ACTION"
+	INAPP_SKAN_APP_INSTALL_CONVERSION_RATE ReportingColumnAsync = "INAPP_SKAN_APP_INSTALL_CONVERSION_RATE"
 )
 
 // AllowedReportingColumnAsyncEnumValues is all the allowed values of ReportingColumnAsync enum
@@ -668,6 +681,7 @@ var AllowedReportingColumnAsyncEnumValues = []ReportingColumnAsync{
 	"ECPM_IN_MICRO_DOLLAR",
 	"REPIN_RATE",
 	"CTR_2",
+	"CAMPAIGN",
 	"CAMPAIGN_ID",
 	"ADVERTISER_ID",
 	"AD_ACCOUNT_ID",
@@ -712,6 +726,12 @@ var AllowedReportingColumnAsyncEnumValues = []ReportingColumnAsync{
 	"REPIN_2",
 	"IMPRESSION_2",
 	"OUTBOUND_CLICK_2",
+	"COLLECTION_PIN_ITEM_IMPRESSION_1",
+	"COLLECTION_PIN_ITEM_IMPRESSION_2",
+	"TOTAL_COLLECTION_PIN_ITEM_IMPRESSION",
+	"COLLECTION_PIN_ITEM_CLICKTHROUGH_1",
+	"COLLECTION_PIN_ITEM_CLICKTHROUGH_2",
+	"TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH",
 	"TOTAL_CLICKTHROUGH",
 	"TOTAL_IMPRESSION",
 	"TOTAL_IMPRESSION_USER",
@@ -827,6 +847,7 @@ var AllowedReportingColumnAsyncEnumValues = []ReportingColumnAsync{
 	"AD_GROUP_OPTIMIZATION",
 	"CAMPAIGN_DAILY_SPEND_CAP",
 	"CAMPAIGN_BUDGET_OPTIMIZATION",
+	"IS_CATALOG_CREATIVE_CAMPAIGN",
 	"IS_PREMIERE_CAMPAIGN",
 	"TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION",
 	"TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_MOBILE_CONVERSION",
@@ -1252,6 +1273,11 @@ var AllowedReportingColumnAsyncEnumValues = []ReportingColumnAsync{
 	"TOTAL_UNKNOWN_CONVERSION_RATE",
 	"TOTAL_CUSTOM_CONVERSION_RATE",
 	"STANDARD_AD_FEED_ITEM_ID",
+	"SPEND_ORDER_LINE_ID",
+	"INAPP_SKAN_APP_INSTALL",
+	"INAPP_SKAN_ASSISTED_APP_INSTALL",
+	"INAPP_SKAN_APP_INSTALL_COST_PER_ACTION",
+	"INAPP_SKAN_APP_INSTALL_CONVERSION_RATE",
 }
 
 // validReportingColumnAsyncEnumValue provides a map of ReportingColumnAsyncs for fast verification of use input
@@ -1285,6 +1311,7 @@ var validReportingColumnAsyncEnumValues = map[ReportingColumnAsync]struct{}{
 	"ECPM_IN_MICRO_DOLLAR": {},
 	"REPIN_RATE": {},
 	"CTR_2": {},
+	"CAMPAIGN": {},
 	"CAMPAIGN_ID": {},
 	"ADVERTISER_ID": {},
 	"AD_ACCOUNT_ID": {},
@@ -1329,6 +1356,12 @@ var validReportingColumnAsyncEnumValues = map[ReportingColumnAsync]struct{}{
 	"REPIN_2": {},
 	"IMPRESSION_2": {},
 	"OUTBOUND_CLICK_2": {},
+	"COLLECTION_PIN_ITEM_IMPRESSION_1": {},
+	"COLLECTION_PIN_ITEM_IMPRESSION_2": {},
+	"TOTAL_COLLECTION_PIN_ITEM_IMPRESSION": {},
+	"COLLECTION_PIN_ITEM_CLICKTHROUGH_1": {},
+	"COLLECTION_PIN_ITEM_CLICKTHROUGH_2": {},
+	"TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH": {},
 	"TOTAL_CLICKTHROUGH": {},
 	"TOTAL_IMPRESSION": {},
 	"TOTAL_IMPRESSION_USER": {},
@@ -1444,6 +1477,7 @@ var validReportingColumnAsyncEnumValues = map[ReportingColumnAsync]struct{}{
 	"AD_GROUP_OPTIMIZATION": {},
 	"CAMPAIGN_DAILY_SPEND_CAP": {},
 	"CAMPAIGN_BUDGET_OPTIMIZATION": {},
+	"IS_CATALOG_CREATIVE_CAMPAIGN": {},
 	"IS_PREMIERE_CAMPAIGN": {},
 	"TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION": {},
 	"TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_MOBILE_CONVERSION": {},
@@ -1869,6 +1903,11 @@ var validReportingColumnAsyncEnumValues = map[ReportingColumnAsync]struct{}{
 	"TOTAL_UNKNOWN_CONVERSION_RATE": {},
 	"TOTAL_CUSTOM_CONVERSION_RATE": {},
 	"STANDARD_AD_FEED_ITEM_ID": {},
+	"SPEND_ORDER_LINE_ID": {},
+	"INAPP_SKAN_APP_INSTALL": {},
+	"INAPP_SKAN_ASSISTED_APP_INSTALL": {},
+	"INAPP_SKAN_APP_INSTALL_COST_PER_ACTION": {},
+	"INAPP_SKAN_APP_INSTALL_CONVERSION_RATE": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -1889,8 +1928,8 @@ func NewReportingColumnAsyncFromValue(v string) (ReportingColumnAsync, error) {
 }
 
 
-
-// AssertReportingColumnAsyncRequired checks if the required fields are not zero-ed
+// AssertReportingColumnAsyncRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertReportingColumnAsyncRequired(obj ReportingColumnAsync) error {
 	return nil
 }

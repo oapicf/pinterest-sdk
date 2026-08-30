@@ -12,18 +12,21 @@ static targeting_template_audience_sizing_t *targeting_template_audience_sizing_
     if (!targeting_template_audience_sizing_local_var) {
         return NULL;
     }
-    targeting_template_audience_sizing_local_var->reach_estimate = reach_estimate;
-
+    memset(targeting_template_audience_sizing_local_var, 0, sizeof(targeting_template_audience_sizing_t));
     targeting_template_audience_sizing_local_var->_library_owned = 1;
+    targeting_template_audience_sizing_local_var->reach_estimate = reach_estimate;
     return targeting_template_audience_sizing_local_var;
 }
 
 __attribute__((deprecated)) targeting_template_audience_sizing_t *targeting_template_audience_sizing_create(
     targeting_template_audience_sizing_reach_estimate_t *reach_estimate
     ) {
-    return targeting_template_audience_sizing_create_internal (
+    targeting_template_audience_sizing_t *result = targeting_template_audience_sizing_create_internal (
         reach_estimate
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void targeting_template_audience_sizing_free(targeting_template_audience_sizing_t *targeting_template_audience_sizing) {
@@ -82,9 +85,14 @@ targeting_template_audience_sizing_t *targeting_template_audience_sizing_parseFr
     }
 
 
+
     targeting_template_audience_sizing_local_var = targeting_template_audience_sizing_create_internal (
         reach_estimate ? reach_estimate_local_nonprim : NULL
         );
+
+    if (!targeting_template_audience_sizing_local_var) {
+        goto end;
+    }
 
     return targeting_template_audience_sizing_local_var;
 end:

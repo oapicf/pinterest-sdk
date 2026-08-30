@@ -22,7 +22,7 @@ part 'catalogs_feed_validation_errors.g.dart';
 /// * [FEED_LENGTH_TOO_LONG] - Your feed contains too many items, some items will not be published.
 /// * [FEED_TOO_SMALL] - Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
 /// * [FETCH_ERROR] - Pinterest couldn't download your feed.
-/// * [FETCH_INACTIVE_FEED_ERROR] - Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+/// * [FETCH_INACTIVE_FEED_ERROR] - Your feed wasn't ingested because it hasn't changed in the previous 90 days.
 /// * [IMAGE_LINK_INVALID] - Some image links are formatted incorrectly.
 /// * [IMAGE_LINK_LENGTH_TOO_LONG] - Some items have image_link URLs that contain too many characters, so those items will not be published.
 /// * [IMAGE_LINK_MISSING] - Some items are missing an image link URL in their product metadata, those items will not be published.
@@ -90,7 +90,7 @@ abstract class CatalogsFeedValidationErrors implements Built<CatalogsFeedValidat
   @BuiltValueField(wireName: r'FETCH_ERROR')
   int? get FETCH_ERROR;
 
-  /// Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+  /// Your feed wasn't ingested because it hasn't changed in the previous 90 days.
   @BuiltValueField(wireName: r'FETCH_INACTIVE_FEED_ERROR')
   int? get FETCH_INACTIVE_FEED_ERROR;
 
@@ -458,232 +458,265 @@ class _$CatalogsFeedValidationErrorsSerializer implements PrimitiveSerializer<Ca
         case r'ADULT_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADULT_INVALID = valueDes;
           break;
         case r'ADWORDS_FORMAT_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ADWORDS_FORMAT_INVALID = valueDes;
           break;
         case r'AVAILABILITY_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.AVAILABILITY_INVALID = valueDes;
           break;
         case r'BLOCKLISTED_IMAGE_SIGNATURE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.BLOCKLISTED_IMAGE_SIGNATURE = valueDes;
           break;
         case r'DELIMITER_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.DELIMITER_ERROR = valueDes;
           break;
         case r'DESCRIPTION_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.DESCRIPTION_MISSING = valueDes;
           break;
         case r'DUPLICATE_PRODUCTS':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.DUPLICATE_PRODUCTS = valueDes;
           break;
         case r'ENCODING_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ENCODING_ERROR = valueDes;
           break;
         case r'FEED_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.FEED_LENGTH_TOO_LONG = valueDes;
           break;
         case r'FEED_TOO_SMALL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.FEED_TOO_SMALL = valueDes;
           break;
         case r'FETCH_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.FETCH_ERROR = valueDes;
           break;
         case r'FETCH_INACTIVE_FEED_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.FETCH_INACTIVE_FEED_ERROR = valueDes;
           break;
         case r'IMAGE_LINK_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IMAGE_LINK_INVALID = valueDes;
           break;
         case r'IMAGE_LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IMAGE_LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'IMAGE_LINK_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IMAGE_LINK_MISSING = valueDes;
           break;
         case r'INTERNAL_SERVICE_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.INTERNAL_SERVICE_ERROR = valueDes;
           break;
         case r'INVALID_DOMAIN':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.INVALID_DOMAIN = valueDes;
           break;
         case r'ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = valueDes;
           break;
         case r'ITEMID_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ITEMID_MISSING = valueDes;
           break;
         case r'LINK_FORMAT_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.LINK_FORMAT_INVALID = valueDes;
           break;
         case r'LINK_LENGTH_TOO_LONG':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.LINK_LENGTH_TOO_LONG = valueDes;
           break;
         case r'LIST_PRICE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.LIST_PRICE_INVALID = valueDes;
           break;
         case r'MALFORMED_XML':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.MALFORMED_XML = valueDes;
           break;
         case r'MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = valueDes;
           break;
         case r'NO_VERIFIED_DOMAIN':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.NO_VERIFIED_DOMAIN = valueDes;
           break;
         case r'PARSE_LINE_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.PARSE_LINE_ERROR = valueDes;
           break;
         case r'PINJOIN_CONTENT_UNSAFE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.PINJOIN_CONTENT_UNSAFE = valueDes;
           break;
         case r'PRICE_CANNOT_BE_DETERMINED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.PRICE_CANNOT_BE_DETERMINED = valueDes;
           break;
         case r'PRICE_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.PRICE_MISSING = valueDes;
           break;
         case r'PRODUCT_LINK_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.PRODUCT_LINK_MISSING = valueDes;
           break;
         case r'PRODUCT_PRICE_INVALID':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.PRODUCT_PRICE_INVALID = valueDes;
           break;
         case r'REQUIRED_COLUMNS_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.REQUIRED_COLUMNS_MISSING = valueDes;
           break;
         case r'TITLE_MISSING':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.TITLE_MISSING = valueDes;
           break;
         default:

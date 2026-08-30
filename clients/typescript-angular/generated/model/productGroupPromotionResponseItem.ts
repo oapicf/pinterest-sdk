@@ -13,6 +13,6 @@ import { Exception } from './exception';
 
 export interface ProductGroupPromotionResponseItem { 
     data?: ProductGroupPromotion;
-    exceptions?: Array<Exception> | null;
+    exceptions?: Array<Exception>;
 }
 

@@ -54,42 +54,42 @@ public:
 
 	/*! \brief Set Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
 
 	/*! \brief Set 
 	 */
-	void setCountry(Country  country);
+	void setCountry(Country country);
 	/*! \brief Get 
 	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupFiltersRequest getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFiltersRequest  filters);
+	void setFilters(CatalogsProductGroupFiltersRequest filters);
 	/*! \brief Get 
 	 */
 	CatalogsLocale getLocale();
 
 	/*! \brief Set 
 	 */
-	void setLocale(CatalogsLocale  locale);
-	/*! \brief Get 
+	void setLocale(CatalogsLocale locale);
+	/*! \brief Get Name of catalog product group
 	 */
 	std::string getName();
 
-	/*! \brief Set 
+	/*! \brief Set Name of catalog product group
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 
 
     private:

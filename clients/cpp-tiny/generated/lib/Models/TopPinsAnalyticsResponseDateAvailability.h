@@ -1,12 +1,12 @@
 
 /*
- * TopPinsAnalyticsResponse_date_availability.h
+ * TopPinsAnalyticsResponseDateAvailability.h
  *
  * 
  */
 
-#ifndef TINY_CPP_CLIENT_TopPinsAnalyticsResponse_date_availability_H_
-#define TINY_CPP_CLIENT_TopPinsAnalyticsResponse_date_availability_H_
+#ifndef TINY_CPP_CLIENT_TopPinsAnalyticsResponseDateAvailability_H_
+#define TINY_CPP_CLIENT_TopPinsAnalyticsResponseDateAvailability_H_
 
 
 #include <string>
@@ -22,18 +22,18 @@ namespace Tiny {
  *
  */
 
-class TopPinsAnalyticsResponse_date_availability{
+class TopPinsAnalyticsResponseDateAvailability{
 public:
 
     /*! \brief Constructor.
 	 */
-    TopPinsAnalyticsResponse_date_availability();
-    TopPinsAnalyticsResponse_date_availability(std::string jsonString);
+    TopPinsAnalyticsResponseDateAvailability();
+    TopPinsAnalyticsResponseDateAvailability(std::string jsonString);
 
 
     /*! \brief Destructor.
 	 */
-    virtual ~TopPinsAnalyticsResponse_date_availability();
+    virtual ~TopPinsAnalyticsResponseDateAvailability();
 
 
     /*! \brief Retrieve a bourne JSON representation of this class.
@@ -51,14 +51,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setIsRealtime(bool  is_realtime);
+	void setIsRealtime(bool is_realtime);
 	/*! \brief Get 
 	 */
 	long getLatestAvailableTimestamp();
 
 	/*! \brief Set 
 	 */
-	void setLatestAvailableTimestamp(long  latest_available_timestamp);
+	void setLatestAvailableTimestamp(long latest_available_timestamp);
 
 
     private:
@@ -67,4 +67,4 @@ public:
 };
 }
 
-#endif /* TINY_CPP_CLIENT_TopPinsAnalyticsResponse_date_availability_H_ */
+#endif /* TINY_CPP_CLIENT_TopPinsAnalyticsResponseDateAvailability_H_ */

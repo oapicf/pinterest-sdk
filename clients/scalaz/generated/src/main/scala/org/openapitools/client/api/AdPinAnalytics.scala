@@ -9,7 +9,6 @@ import org.http4s.argonaut._
 import org.joda.time.DateTime
 
 import java.time.LocalDate
-import java.util.HashMap
 
 import AdPinAnalytics._
 

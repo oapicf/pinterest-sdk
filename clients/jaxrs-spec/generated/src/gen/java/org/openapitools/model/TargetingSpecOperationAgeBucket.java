@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TargetingSpecOperationAgeBucket")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingSpecOperationAgeBucket   {
   public enum FieldEnum {
 
@@ -118,7 +118,7 @@ public class TargetingSpecOperationAgeBucket   {
 }
 
   private OperationEnum operation;
-  private @Valid List<TargetingSpecAgeBucket> values;
+  private @Valid List<TargetingSpecAgeBucket> values = new ArrayList<>();
 
   public TargetingSpecOperationAgeBucket() {
   }
@@ -244,12 +244,8 @@ public class TargetingSpecOperationAgeBucket   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

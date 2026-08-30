@@ -1,0 +1,243 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsBaseFilterKeys"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsBaseFilterKeys"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AvailabilityFilter = openapi_server.resourceTypes.AvailabilityFilter
+  BrandFilter = openapi_server.resourceTypes.BrandFilter
+  CatalogsProductGroupCurrencyCriteria = openapi_server.resourceTypes.CatalogsProductGroupCurrencyCriteria
+  CatalogsProductGroupFilterOperatorTypeCriteria = openapi_server.resourceTypes.CatalogsProductGroupFilterOperatorTypeCriteria
+  CatalogsProductGroupMultipleGenderCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleGenderCriteria
+  CatalogsProductGroupMultipleMediaTypesCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleMediaTypesCriteria
+  CatalogsProductGroupMultiplePinterestProductCategoryCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+  CatalogsProductGroupMultipleStringCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringCriteria
+  CatalogsProductGroupMultipleStringListCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringListCriteria
+  CatalogsProductGroupPricingCriteria = openapi_server.resourceTypes.CatalogsProductGroupPricingCriteria
+  CatalogsProductGroupUint32Criteria = openapi_server.resourceTypes.CatalogsProductGroupUint32Criteria
+  ConditionFilter = openapi_server.resourceTypes.ConditionFilter
+  CurrencyFilter = openapi_server.resourceTypes.CurrencyFilter
+  CustomLabel0Filter = openapi_server.resourceTypes.CustomLabel0Filter
+  CustomLabel1Filter = openapi_server.resourceTypes.CustomLabel1Filter
+  CustomLabel2Filter = openapi_server.resourceTypes.CustomLabel2Filter
+  CustomLabel3Filter = openapi_server.resourceTypes.CustomLabel3Filter
+  CustomLabel4Filter = openapi_server.resourceTypes.CustomLabel4Filter
+  CustomNumber0Filter = openapi_server.resourceTypes.CustomNumber0Filter
+  CustomNumber1Filter = openapi_server.resourceTypes.CustomNumber1Filter
+  CustomNumber2Filter = openapi_server.resourceTypes.CustomNumber2Filter
+  CustomNumber3Filter = openapi_server.resourceTypes.CustomNumber3Filter
+  CustomNumber4Filter = openapi_server.resourceTypes.CustomNumber4Filter
+  GenderFilter = openapi_server.resourceTypes.GenderFilter
+  GoogleProductCategory0Filter = openapi_server.resourceTypes.GoogleProductCategory0Filter
+  GoogleProductCategory1Filter = openapi_server.resourceTypes.GoogleProductCategory1Filter
+  GoogleProductCategory2Filter = openapi_server.resourceTypes.GoogleProductCategory2Filter
+  GoogleProductCategory3Filter = openapi_server.resourceTypes.GoogleProductCategory3Filter
+  GoogleProductCategory4Filter = openapi_server.resourceTypes.GoogleProductCategory4Filter
+  GoogleProductCategory5Filter = openapi_server.resourceTypes.GoogleProductCategory5Filter
+  GoogleProductCategory6Filter = openapi_server.resourceTypes.GoogleProductCategory6Filter
+  ItemGroupIdFilter = openapi_server.resourceTypes.ItemGroupIdFilter
+  ItemIdFilter = openapi_server.resourceTypes.ItemIdFilter
+  MaxPriceFilter = openapi_server.resourceTypes.MaxPriceFilter
+  MediaTypeFilter = openapi_server.resourceTypes.MediaTypeFilter
+  MinPriceFilter = openapi_server.resourceTypes.MinPriceFilter
+  PinterestProductCategoriesFilter = openapi_server.resourceTypes.PinterestProductCategoriesFilter
+  ProductType0Filter = openapi_server.resourceTypes.ProductType0Filter
+  ProductType1Filter = openapi_server.resourceTypes.ProductType1Filter
+  ProductType2Filter = openapi_server.resourceTypes.ProductType2Filter
+  ProductType3Filter = openapi_server.resourceTypes.ProductType3Filter
+  ProductType4Filter = openapi_server.resourceTypes.ProductType4Filter
+  TitleKeywordsFilter = openapi_server.resourceTypes.TitleKeywordsFilter
+}
+resourceTypes {
+
+  CatalogsBaseFilterKeys {
+    title = CatalogsBaseFilterKeys
+    description = CatalogsBaseFilterKeys
+    derivedFrom = Root
+    properties {
+        min_price {
+          type = CatalogsProductGroupPricingCriteria
+          description = ""
+          optional = true
+        }
+        max_price {
+          type = CatalogsProductGroupPricingCriteria
+          description = ""
+          optional = true
+        }
+        currency {
+          type = CatalogsProductGroupCurrencyCriteria
+          description = ""
+          optional = true
+        }
+        item_id {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        availability {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        brand {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        condition {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_0 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_1 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_2 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_3 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_4 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        item_group_id {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        gender {
+          type = CatalogsProductGroupMultipleGenderCriteria
+          description = ""
+          optional = true
+        }
+        media_type {
+          type = CatalogsProductGroupMultipleMediaTypesCriteria
+          description = ""
+          optional = true
+        }
+        product_type_4 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        product_type_3 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        product_type_2 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        product_type_1 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        product_type_0 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        google_product_category_6 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        google_product_category_5 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        google_product_category_4 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        google_product_category_3 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        google_product_category_2 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        google_product_category_1 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        google_product_category_0 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+        custom_number_0 {
+          type = CatalogsProductGroupUint32Criteria
+          description = ""
+          optional = true
+        }
+        custom_number_1 {
+          type = CatalogsProductGroupUint32Criteria
+          description = ""
+          optional = true
+        }
+        custom_number_2 {
+          type = CatalogsProductGroupUint32Criteria
+          description = ""
+          optional = true
+        }
+        custom_number_3 {
+          type = CatalogsProductGroupUint32Criteria
+          description = ""
+          optional = true
+        }
+        custom_number_4 {
+          type = CatalogsProductGroupUint32Criteria
+          description = ""
+          optional = true
+        }
+        title_keywords {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        pinterest_product_categories {
+          type = CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsBaseFilterKeys {
+    title = CatalogsBaseFilterKeys
+    description = CatalogsBaseFilterKeys
+    implements = openapi_server.resourceTypes.CatalogsBaseFilterKeys
+
+  }
+}

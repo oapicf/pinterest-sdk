@@ -9,11 +9,11 @@
 
 %% @doc Delete lead ads subscription
 %% Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
--spec ad_accounts_subscriptions/del_by_id(ctx:ctx(), binary(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec ad_accounts_subscriptions/del_by_id(ctx:ctx(), binary(), binary()) -> {ok, openapi_lead_subscription:openapi_lead_subscription(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 ad_accounts_subscriptions/del_by_id(Ctx, AdAccountId, SubscriptionId) ->
     ad_accounts_subscriptions/del_by_id(Ctx, AdAccountId, SubscriptionId, #{}).
 
--spec ad_accounts_subscriptions/del_by_id(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec ad_accounts_subscriptions/del_by_id(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_lead_subscription:openapi_lead_subscription(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 ad_accounts_subscriptions/del_by_id(Ctx, AdAccountId, SubscriptionId, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),

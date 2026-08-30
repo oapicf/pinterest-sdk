@@ -74,7 +74,7 @@ class _$CurrencyFilterSerializer implements PrimitiveSerializer<CurrencyFilter> 
             value,
             specifiedType: const FullType(CatalogsProductGroupCurrencyCriteria),
           ) as CatalogsProductGroupCurrencyCriteria;
-          result.CURRENCY = valueDes;
+          result.CURRENCY.replace(valueDes);
           break;
         default:
           unhandled.add(key);

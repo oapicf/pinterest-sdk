@@ -14,10 +14,33 @@ class VideoMetadataWithItemType {
     BigDecimal duration
     /* Height (in pixels). Field maybe null after creation due to video processing time. */
     Integer height
+
+    enum ItemTypeEnum {
     
-    String itemType
+        VIDEO("video")
+    
+        private final String value
+    
+        ItemTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    /* Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload. */
+    ItemTypeEnum itemType
     /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
     String videoUrl
+    /* Video url (HLS).  **Note:** This field is limited and not available to all apps. */
+    String videoUrlHls
     /* Width (in pixels). Field maybe null after creation due to video processing time. */
     Integer width
 }

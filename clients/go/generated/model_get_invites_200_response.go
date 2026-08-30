@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,6 @@ var _ MappedNullable = &GetInvites200Response{}
 // GetInvites200Response struct for GetInvites200Response
 type GetInvites200Response struct {
 	Bookmark NullableString `json:"bookmark,omitempty"`
-	// List of invite and request data.
 	Items []InviteResponse `json:"items"`
 }
 

@@ -1,7 +1,7 @@
 /*
  * account.h
  *
- * 
+ * User account model containing properties related to a user&#39;s account.
  */
 
 #ifndef _account_H_
@@ -15,27 +15,20 @@
 
 typedef struct account_t account_t;
 
-
-// Enum ACCOUNTTYPE for account
-
-typedef enum  { pinterest_rest_api_account_ACCOUNTTYPE_NULL = 0, pinterest_rest_api_account_ACCOUNTTYPE_PINNER, pinterest_rest_api_account_ACCOUNTTYPE_BUSINESS } pinterest_rest_api_account_ACCOUNTTYPE_e;
-
-char* account_account_type_ToString(pinterest_rest_api_account_ACCOUNTTYPE_e account_type);
-
-pinterest_rest_api_account_ACCOUNTTYPE_e account_account_type_FromString(char* account_type);
+#include "user_account_type.h"
 
 
 
 typedef struct account_t {
     char *about; // string
-    pinterest_rest_api_account_ACCOUNTTYPE_e account_type; //enum
-    int board_count; //numeric
+    user_account_type_t *account_type; // custom
+    int *board_count; //numeric
     char *business_name; // string
-    int follower_count; //numeric
-    int following_count; //numeric
+    int *follower_count; //numeric
+    int *following_count; //numeric
     char *id; // string
-    int monthly_views; //numeric
-    int pin_count; //numeric
+    int *monthly_views; //numeric
+    int *pin_count; //numeric
     char *profile_image; // string
     char *username; // string
     char *website_url; // string
@@ -45,14 +38,14 @@ typedef struct account_t {
 
 __attribute__((deprecated)) account_t *account_create(
     char *about,
-    pinterest_rest_api_account_ACCOUNTTYPE_e account_type,
-    int board_count,
+    user_account_type_t *account_type,
+    int *board_count,
     char *business_name,
-    int follower_count,
-    int following_count,
+    int *follower_count,
+    int *following_count,
     char *id,
-    int monthly_views,
-    int pin_count,
+    int *monthly_views,
+    int *pin_count,
     char *profile_image,
     char *username,
     char *website_url

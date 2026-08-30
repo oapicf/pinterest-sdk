@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Get item batch status
 
-Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+Get a single catalogs items batch owned by the \"operating user_account\". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 
 ### Example
 ```perl
@@ -33,7 +33,7 @@ my $api_instance = WWW::OpenAPIClient::CatalogItemsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $batch_id = 66753b9bb65c46c49bd8503b27fecf9e; # string | Id of a catalogs items batch to fetch
+my $batch_id = "batch_id_example"; # string | Id of a catalogs items batch to fetch
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
@@ -68,11 +68,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **items_batch_post**
-> CatalogsItemsBatch items_batch_post(items_batch_post_request => $items_batch_post_request, ad_account_id => $ad_account_id)
+> CatalogsItemsBatch items_batch_post(catalogs_items_batch_post_request => $catalogs_items_batch_post_request, ad_account_id => $ad_account_id)
 
 Operate on item batch
 
-This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
 
 ### Example
 ```perl
@@ -86,11 +86,11 @@ my $api_instance = WWW::OpenAPIClient::CatalogItemsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $items_batch_post_request = WWW::OpenAPIClient::Object::ItemsBatchPostRequest->new(); # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+my $catalogs_items_batch_post_request = WWW::OpenAPIClient::Object::CatalogsItemsBatchPostRequest->new(); # CatalogsItemsBatchPostRequest | 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    my $result = $api_instance->items_batch_post(items_batch_post_request => $items_batch_post_request, ad_account_id => $ad_account_id);
+    my $result = $api_instance->items_batch_post(catalogs_items_batch_post_request => $catalogs_items_batch_post_request, ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -102,7 +102,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **items_batch_post_request** | [**ItemsBatchPostRequest**](ItemsBatchPostRequest.md)| Request object used to create catalogs items in a batch | 
+ **catalogs_items_batch_post_request** | [**CatalogsItemsBatchPostRequest**](CatalogsItemsBatchPostRequest.md)|  | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -121,11 +121,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **items_post**
-> CatalogsItems items_post(catalogs_items_request => $catalogs_items_request, ad_account_id => $ad_account_id)
+> ItemsPost200Response items_post(catalogs_items_request => $catalogs_items_request, ad_account_id => $ad_account_id)
 
 Get catalogs items (POST)
 
-Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Get the items of the catalog owned by the \"operation user_account\". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example
 ```perl
@@ -137,7 +137,7 @@ my $api_instance = WWW::OpenAPIClient::CatalogItemsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $catalogs_items_request = WWW::OpenAPIClient::Object::CatalogsItemsRequest->new(); # CatalogsItemsRequest | Request object used to get catalogs items
+my $catalogs_items_request = WWW::OpenAPIClient::Object::CatalogsItemsRequest->new(); # CatalogsItemsRequest | 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
@@ -153,12 +153,12 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogs_items_request** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md)| Request object used to get catalogs items | 
+ **catalogs_items_request** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md)|  | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**CatalogsItems**](CatalogsItems.md)
+[**ItemsPost200Response**](ItemsPost200Response.md)
 
 ### Authorization
 

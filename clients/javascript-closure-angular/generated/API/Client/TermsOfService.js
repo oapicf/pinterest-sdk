@@ -1,6 +1,7 @@
 goog.provide('API.Client.TermsOfService');
 
 /**
+ * The ID of the ad account.
  * @record
  */
 API.Client.TermsOfService = function() {}

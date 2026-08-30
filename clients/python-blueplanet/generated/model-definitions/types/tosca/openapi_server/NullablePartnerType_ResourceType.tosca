@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server NullablePartnerType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a NullablePartnerType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  NullablePartnerType {
+    title = NullablePartnerType
+    description = NullablePartnerType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  NullablePartnerType {
+    title = NullablePartnerType
+    description = NullablePartnerType
+    implements = openapi_server.resourceTypes.NullablePartnerType
+
+  }
+}

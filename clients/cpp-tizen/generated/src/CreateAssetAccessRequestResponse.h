@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "CreateAssetAccessRequestErrorMessage_inner.h"
+#include "AssetAccessRequestError.h"
 #include <list>
 #include <map>
 #include "Object.h"
@@ -50,21 +50,21 @@ public:
 
 	/*! \brief Get A list of errors associated with the asset access requests. Will be returned if there is an error.
 	 */
-	std::list<CreateAssetAccessRequestErrorMessage_inner> getExceptions();
+	std::list<AssetAccessRequestError> getExceptions();
 
 	/*! \brief Set A list of errors associated with the asset access requests. Will be returned if there is an error.
 	 */
-	void setExceptions(std::list <CreateAssetAccessRequestErrorMessage_inner> exceptions);
-	/*! \brief Get 
+	void setExceptions(std::list <AssetAccessRequestError> exceptions);
+	/*! \brief Get An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
 	 */
 	std::map<std::string, std::string> getInvites();
 
-	/*! \brief Set 
+	/*! \brief Set An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
 	 */
 	void setInvites(std::map <std::string, std::string> invites);
 
 private:
-	std::list <CreateAssetAccessRequestErrorMessage_inner>exceptions;
+	std::list <AssetAccessRequestError>exceptions;
 	std::map <std::string, std::string>invites;
 	void __init();
 	void __cleanup();

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GOOGLE_PRODUCT_CATEGORY_2** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | [default to undefined]
+**GOOGLE_PRODUCT_CATEGORY_2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | [default to undefined]
 
 ## Example
 

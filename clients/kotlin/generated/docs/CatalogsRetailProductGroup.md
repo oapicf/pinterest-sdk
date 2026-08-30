@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **catalogId** | **kotlin.String** | Catalog id pertaining to the retail product group. |  |
+| **catalogId** | **kotlin.String** | Catalog ID pertaining to the product group. |  |
 | **catalogType** | [**inline**](#CatalogType) |  |  |
 | **feedId** | **kotlin.String** | id of the catalogs feed belonging to this catalog product group |  |
 | **filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  |  |

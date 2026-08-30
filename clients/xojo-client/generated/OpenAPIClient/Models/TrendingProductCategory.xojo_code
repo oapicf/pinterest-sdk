@@ -27,6 +27,14 @@ Protected Class TrendingProductCategory
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Pinterest Product Category Id
+		#tag EndNote
+		pinterest_product_category_id As Integer
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Product Category Name
 		#tag EndNote
 		product_category As String
@@ -37,7 +45,7 @@ Protected Class TrendingProductCategory
 		#tag Note
 			Vertical name associated with the product category
 		#tag EndNote
-		verticals() As VerticalProductCategory
+		verticals() As String
 	#tag EndProperty
 
 
@@ -102,6 +110,14 @@ Protected Class TrendingProductCategory
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="pinterest_product_category_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="product_category"
 			Visible=false
 			Group="Behavior"
@@ -114,7 +130,7 @@ Protected Class TrendingProductCategory
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="VerticalProductCategory"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

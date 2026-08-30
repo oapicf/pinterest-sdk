@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &IntegrationLogsInvalidLogResponse{}
 
 // IntegrationLogsInvalidLogResponse Schema describing the response when a log has invalid fields.
 type IntegrationLogsInvalidLogResponse struct {
-	RejectedLogs []IntegrationLogsInvalidLogResponseRejectedLogsInner `json:"rejected_logs,omitempty"`
+	RejectedLogs []IntegrationLogsInvalidLogResponseRejectedLogsItems `json:"rejected_logs,omitempty"`
 }
 
 // NewIntegrationLogsInvalidLogResponse instantiates a new IntegrationLogsInvalidLogResponse object
@@ -41,9 +41,9 @@ func NewIntegrationLogsInvalidLogResponseWithDefaults() *IntegrationLogsInvalidL
 }
 
 // GetRejectedLogs returns the RejectedLogs field value if set, zero value otherwise.
-func (o *IntegrationLogsInvalidLogResponse) GetRejectedLogs() []IntegrationLogsInvalidLogResponseRejectedLogsInner {
+func (o *IntegrationLogsInvalidLogResponse) GetRejectedLogs() []IntegrationLogsInvalidLogResponseRejectedLogsItems {
 	if o == nil || IsNil(o.RejectedLogs) {
-		var ret []IntegrationLogsInvalidLogResponseRejectedLogsInner
+		var ret []IntegrationLogsInvalidLogResponseRejectedLogsItems
 		return ret
 	}
 	return o.RejectedLogs
@@ -51,7 +51,7 @@ func (o *IntegrationLogsInvalidLogResponse) GetRejectedLogs() []IntegrationLogsI
 
 // GetRejectedLogsOk returns a tuple with the RejectedLogs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IntegrationLogsInvalidLogResponse) GetRejectedLogsOk() ([]IntegrationLogsInvalidLogResponseRejectedLogsInner, bool) {
+func (o *IntegrationLogsInvalidLogResponse) GetRejectedLogsOk() ([]IntegrationLogsInvalidLogResponseRejectedLogsItems, bool) {
 	if o == nil || IsNil(o.RejectedLogs) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *IntegrationLogsInvalidLogResponse) HasRejectedLogs() bool {
 	return false
 }
 
-// SetRejectedLogs gets a reference to the given []IntegrationLogsInvalidLogResponseRejectedLogsInner and assigns it to the RejectedLogs field.
-func (o *IntegrationLogsInvalidLogResponse) SetRejectedLogs(v []IntegrationLogsInvalidLogResponseRejectedLogsInner) {
+// SetRejectedLogs gets a reference to the given []IntegrationLogsInvalidLogResponseRejectedLogsItems and assigns it to the RejectedLogs field.
+func (o *IntegrationLogsInvalidLogResponse) SetRejectedLogs(v []IntegrationLogsInvalidLogResponseRejectedLogsItems) {
 	o.RejectedLogs = v
 }
 

@@ -7,14 +7,18 @@ goog.provide('API.Client.CatalogsReportParameters');
 API.Client.CatalogsReportParameters = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsReportParameters.prototype.catalogType;
 
 /**
- * @type {!API.Client.CatalogsHotelReportParameters_report}
+ * @type {!API.Client.CatalogsHotelReportParametersReport}
  * @export
  */
 API.Client.CatalogsReportParameters.prototype.report;
 
+/** @enum {string} */
+API.Client.CatalogsReportParameters.CatalogTypeEnum = { 
+  HOTEL: 'HOTEL',
+}

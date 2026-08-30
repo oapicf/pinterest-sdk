@@ -1,0 +1,9 @@
+
+
+# NullablePartnerType
+
+## Enum
+
+
+
+

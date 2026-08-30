@@ -48,7 +48,7 @@ CountryFilter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleCountriesCriteria")) {
-			jsonToValue(&cOUNTRY, node, "CatalogsProductGroupMultipleCountriesCriteria", "");
+			jsonToValue(&cOUNTRY, node, "CatalogsProductGroupMultipleCountriesCriteria", "CatalogsProductGroupMultipleCountriesCriteria");
 		} else {
 			
 			CatalogsProductGroupMultipleCountriesCriteria* obj = static_cast<CatalogsProductGroupMultipleCountriesCriteria*> (&cOUNTRY);

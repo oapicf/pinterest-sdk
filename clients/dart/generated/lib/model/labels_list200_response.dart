@@ -19,7 +19,7 @@ class LabelsList200Response {
 
   String? bookmark;
 
-  List<LabelsResponse> items;
+  List<Label> items;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LabelsList200Response &&
@@ -57,16 +57,14 @@ class LabelsList200Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LabelsList200Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LabelsList200Response[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'items'), 'Required key "LabelsList200Response[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "LabelsList200Response[items]" has a null value in JSON.');
         return true;
       }());
 
       return LabelsList200Response(
         bookmark: mapValueOfType<String>(json, r'bookmark'),
-        items: LabelsResponse.listFromJson(json[r'items']),
+        items: Label.listFromJson(json[r'items']),
       );
     }
     return null;

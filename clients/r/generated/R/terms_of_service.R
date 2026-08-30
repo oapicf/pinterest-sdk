@@ -1,7 +1,7 @@
 #' Create a new TermsOfService
 #'
 #' @description
-#' TermsOfService Class
+#' The ID of the ad account.
 #'
 #' @docType class
 #' @title TermsOfService

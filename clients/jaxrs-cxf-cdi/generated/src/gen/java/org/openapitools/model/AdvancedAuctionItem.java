@@ -18,13 +18,32 @@ import java.util.Objects;
 
 public class AdvancedAuctionItem   {
   
+  private AdvancedAuctionBidOptions bidOptions;
+
   private Country country;
 
   private String itemId;
 
   private Language language;
 
-  private AdvancedAuctionBidOptions bidOptions;
+  /**
+   **/
+  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("bid_options")
+  @NotNull
+  public AdvancedAuctionBidOptions getBidOptions() {
+    return bidOptions;
+  }
+  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
+    this.bidOptions = bidOptions;
+  }
+
 
   /**
    **/
@@ -84,25 +103,6 @@ public class AdvancedAuctionItem   {
   }
 
 
-  /**
-   **/
-  public AdvancedAuctionItem bidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("bid_options")
-  @NotNull
-  public AdvancedAuctionBidOptions getBidOptions() {
-    return bidOptions;
-  }
-  public void setBidOptions(AdvancedAuctionBidOptions bidOptions) {
-    this.bidOptions = bidOptions;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -113,15 +113,15 @@ public class AdvancedAuctionItem   {
       return false;
     }
     AdvancedAuctionItem advancedAuctionItem = (AdvancedAuctionItem) o;
-    return Objects.equals(this.country, advancedAuctionItem.country) &&
+    return Objects.equals(this.bidOptions, advancedAuctionItem.bidOptions) &&
+        Objects.equals(this.country, advancedAuctionItem.country) &&
         Objects.equals(this.itemId, advancedAuctionItem.itemId) &&
-        Objects.equals(this.language, advancedAuctionItem.language) &&
-        Objects.equals(this.bidOptions, advancedAuctionItem.bidOptions);
+        Objects.equals(this.language, advancedAuctionItem.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, itemId, language, bidOptions);
+    return Objects.hash(bidOptions, country, itemId, language);
   }
 
   @Override
@@ -129,10 +129,10 @@ public class AdvancedAuctionItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItem {\n");
     
+    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -142,10 +142,7 @@ public class AdvancedAuctionItem   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

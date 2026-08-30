@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.AuthRespondInvitesBodyInvitesInner
+open OpenAPI.Model.AuthRespondInvitesBodyItem
 
 module AuthRespondInvitesBody =
 
@@ -12,7 +12,7 @@ module AuthRespondInvitesBody =
   [<CLIMutable>]
   type AuthRespondInvitesBody = {
     [<JsonProperty(PropertyName = "invites")>]
-    Invites : AuthRespondInvitesBodyInvitesInner[];
+    Invites : AuthRespondInvitesBodyItem[];
   }
 
   //#endregion

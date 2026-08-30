@@ -46,7 +46,7 @@ class AdPreviewURLResponse(Model):
     def url(self) -> str:
         """Gets the url of this AdPreviewURLResponse.
 
-        'Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19'  # noqa: E501
+        Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19  # noqa: E501
 
         :return: The url of this AdPreviewURLResponse.
         :rtype: str
@@ -57,7 +57,7 @@ class AdPreviewURLResponse(Model):
     def url(self, url: str):
         """Sets the url of this AdPreviewURLResponse.
 
-        'Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19'  # noqa: E501
+        Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19  # noqa: E501
 
         :param url: The url of this AdPreviewURLResponse.
         :type url: str

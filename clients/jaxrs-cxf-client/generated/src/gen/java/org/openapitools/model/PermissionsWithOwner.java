@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * Gets or Sets PermissionsWithOwner
+ * Permission levels including the OWNER role.
  */
 public enum PermissionsWithOwner {
   

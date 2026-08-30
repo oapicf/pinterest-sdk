@@ -9,7 +9,6 @@
  */
 import { CatalogsHotelReportParameters } from './catalogsHotelReportParameters';
 import { CatalogsRetailReportParameters } from './catalogsRetailReportParameters';
-import { CatalogsType } from './catalogsType';
 import { CatalogsHotelReportParametersReport } from './catalogsHotelReportParametersReport';
 
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -42,7 +42,7 @@ type CatalogsUpdatableCreativeAssetsAttributes struct {
 	Link *string `json:"link,omitempty"`
 	// The name of the creative assets.
 	Title *string `json:"title,omitempty"`
-	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	Visibility NullableString `json:"visibility,omitempty"`
 }
 

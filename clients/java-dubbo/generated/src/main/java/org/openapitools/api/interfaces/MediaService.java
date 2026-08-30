@@ -1,0 +1,55 @@
+package org.openapitools.api.interfaces;
+
+import org.openapitools.model.Media;
+import org.openapitools.model.MediaList200Response;
+import org.openapitools.model.MediaUpload;
+import org.openapitools.model.MediaUploadCreate;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.*;
+import java.util.List;
+import java.util.Map;
+import java.time.OffsetDateTime;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import javax.annotation.Generated;
+
+
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+
+public interface MediaService {
+
+    /**
+     * Register media upload
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file&#39;s contents as the request&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+     *
+     * @param mediaUploadCreate  (required)
+     * @return MediaUpload
+     */
+    MediaUpload mediaCreate(
+        MediaUploadCreate mediaUploadCreate
+    );
+
+    /**
+     * Get media upload details
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+     *
+     * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation. (required)
+     * @return Media
+     */
+    Media mediaGet(
+        String mediaId
+    );
+
+    /**
+     * List media uploads
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+     *
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return MediaList200Response
+     */
+    MediaList200Response mediaList(
+        String bookmark,
+        Integer pageSize
+    );
+}

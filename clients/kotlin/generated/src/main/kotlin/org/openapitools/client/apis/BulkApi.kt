@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,12 +27,12 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.BulkDownloadRequest
-import org.openapitools.client.models.BulkDownloadResponse
+import org.openapitools.client.models.BulkDownload
+import org.openapitools.client.models.BulkDownloadCreate
+import org.openapitools.client.models.BulkJobData
 import org.openapitools.client.models.BulkUpsertRequest
 import org.openapitools.client.models.BulkUpsertResponse
-import org.openapitools.client.models.BulkUpsertStatusResponse
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -46,17 +54,17 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /ad_accounts/{ad_account_id}/bulk/download
      * Get advertiser entities in bulk
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      * @param adAccountId Unique identifier of an ad account.
-     * @param bulkDownloadRequest Parameters to get ad entities in bulk
-     * @return BulkDownloadResponse
+     * @param bulkDownloadCreate 
+     * @return BulkDownload
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -65,11 +73,11 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun bulkDownloadCreate(adAccountId: kotlin.String, bulkDownloadRequest: BulkDownloadRequest) : BulkDownloadResponse {
-        val localVarResponse = bulkDownloadCreateWithHttpInfo(adAccountId = adAccountId, bulkDownloadRequest = bulkDownloadRequest)
+    fun bulkDownloadCreate(adAccountId: kotlin.String, bulkDownloadCreate: BulkDownloadCreate) : BulkDownload {
+        val localVarResponse = bulkDownloadCreateWithHttpInfo(adAccountId = adAccountId, bulkDownloadCreate = bulkDownloadCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as BulkDownloadResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BulkDownload
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -86,19 +94,19 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * POST /ad_accounts/{ad_account_id}/bulk/download
      * Get advertiser entities in bulk
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      * @param adAccountId Unique identifier of an ad account.
-     * @param bulkDownloadRequest Parameters to get ad entities in bulk
-     * @return ApiResponse<BulkDownloadResponse?>
+     * @param bulkDownloadCreate 
+     * @return ApiResponse<BulkDownload?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun bulkDownloadCreateWithHttpInfo(adAccountId: kotlin.String, bulkDownloadRequest: BulkDownloadRequest) : ApiResponse<BulkDownloadResponse?> {
-        val localVariableConfig = bulkDownloadCreateRequestConfig(adAccountId = adAccountId, bulkDownloadRequest = bulkDownloadRequest)
+    fun bulkDownloadCreateWithHttpInfo(adAccountId: kotlin.String, bulkDownloadCreate: BulkDownloadCreate) : ApiResponse<BulkDownload?> {
+        val localVariableConfig = bulkDownloadCreateRequestConfig(adAccountId = adAccountId, bulkDownloadCreate = bulkDownloadCreate)
 
-        return request<BulkDownloadRequest, BulkDownloadResponse>(
+        return request<BulkDownloadCreate, BulkDownload>(
             localVariableConfig
         )
     }
@@ -107,11 +115,11 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * To obtain the request config of the operation bulkDownloadCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param bulkDownloadRequest Parameters to get ad entities in bulk
+     * @param bulkDownloadCreate 
      * @return RequestConfig
      */
-    fun bulkDownloadCreateRequestConfig(adAccountId: kotlin.String, bulkDownloadRequest: BulkDownloadRequest) : RequestConfig<BulkDownloadRequest> {
-        val localVariableBody = bulkDownloadRequest
+    fun bulkDownloadCreateRequestConfig(adAccountId: kotlin.String, bulkDownloadCreate: BulkDownloadCreate) : RequestConfig<BulkDownloadCreate> {
+        val localVariableBody = bulkDownloadCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -130,11 +138,11 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /ad_accounts/{ad_account_id}/bulk/{bulk_request_id}
      * Download advertiser entities in bulk
-     * Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+     * Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
      * @param adAccountId Unique identifier of an ad account.
-     * @param bulkRequestId Unique identifier of a bulk upsert request.
-     * @param includeDetails if set to True then attach the errors/details to all the requests (optional, default to false)
-     * @return BulkUpsertStatusResponse
+     * @param bulkRequestId Bulk request ID that is from one of the entities bulk endpoints
+     * @param includeDetails If set to True then attach the errors/details to all the requests (optional, default to false)
+     * @return BulkJobData
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -143,11 +151,11 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun bulkRequestGet(adAccountId: kotlin.String, bulkRequestId: kotlin.String, includeDetails: kotlin.Boolean? = false) : BulkUpsertStatusResponse {
+    fun bulkRequestGet(adAccountId: kotlin.String, bulkRequestId: kotlin.String, includeDetails: kotlin.Boolean? = false) : BulkJobData {
         val localVarResponse = bulkRequestGetWithHttpInfo(adAccountId = adAccountId, bulkRequestId = bulkRequestId, includeDetails = includeDetails)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as BulkUpsertStatusResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BulkJobData
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -164,20 +172,20 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * GET /ad_accounts/{ad_account_id}/bulk/{bulk_request_id}
      * Download advertiser entities in bulk
-     * Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+     * Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
      * @param adAccountId Unique identifier of an ad account.
-     * @param bulkRequestId Unique identifier of a bulk upsert request.
-     * @param includeDetails if set to True then attach the errors/details to all the requests (optional, default to false)
-     * @return ApiResponse<BulkUpsertStatusResponse?>
+     * @param bulkRequestId Bulk request ID that is from one of the entities bulk endpoints
+     * @param includeDetails If set to True then attach the errors/details to all the requests (optional, default to false)
+     * @return ApiResponse<BulkJobData?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun bulkRequestGetWithHttpInfo(adAccountId: kotlin.String, bulkRequestId: kotlin.String, includeDetails: kotlin.Boolean?) : ApiResponse<BulkUpsertStatusResponse?> {
+    fun bulkRequestGetWithHttpInfo(adAccountId: kotlin.String, bulkRequestId: kotlin.String, includeDetails: kotlin.Boolean?) : ApiResponse<BulkJobData?> {
         val localVariableConfig = bulkRequestGetRequestConfig(adAccountId = adAccountId, bulkRequestId = bulkRequestId, includeDetails = includeDetails)
 
-        return request<Unit, BulkUpsertStatusResponse>(
+        return request<Unit, BulkJobData>(
             localVariableConfig
         )
     }
@@ -186,8 +194,8 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * To obtain the request config of the operation bulkRequestGet
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param bulkRequestId Unique identifier of a bulk upsert request.
-     * @param includeDetails if set to True then attach the errors/details to all the requests (optional, default to false)
+     * @param bulkRequestId Bulk request ID that is from one of the entities bulk endpoints
+     * @param includeDetails If set to True then attach the errors/details to all the requests (optional, default to false)
      * @return RequestConfig
      */
     fun bulkRequestGetRequestConfig(adAccountId: kotlin.String, bulkRequestId: kotlin.String, includeDetails: kotlin.Boolean?) : RequestConfig<Unit> {
@@ -214,7 +222,7 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * POST /ad_accounts/{ad_account_id}/bulk/upsert
      * Create/update ad entities in bulk
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk
      * @return BulkUpsertResponse
@@ -247,7 +255,7 @@ open class BulkApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     /**
      * POST /ad_accounts/{ad_account_id}/bulk/upsert
      * Create/update ad entities in bulk
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk
      * @return ApiResponse<BulkUpsertResponse?>

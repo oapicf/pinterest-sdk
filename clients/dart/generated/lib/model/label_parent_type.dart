@@ -11,27 +11,28 @@
 part of openapi.api;
 
 /// Label parent entity type.
-class LabelParentType {
-  /// Instantiate a new enum with the provided [value].
-  const LabelParentType._(this.value);
+enum LabelParentType {
+  CAMPAIGN._(r'CAMPAIGN'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const LabelParentType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CAMPAIGN = LabelParentType._(r'CAMPAIGN');
-
-  /// List of all possible values in this [enum][LabelParentType].
-  static const values = <LabelParentType>[
-    CAMPAIGN,
-  ];
-
+  /// Returns the instance of [LabelParentType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static LabelParentType? fromJson(dynamic value) => LabelParentTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [LabelParentType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<LabelParentType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <LabelParentType>[];
     if (json is List && json.isNotEmpty) {
@@ -53,9 +54,11 @@ class LabelParentTypeTypeTransformer {
 
   const LabelParentTypeTypeTransformer._();
 
-  String encode(LabelParentType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(LabelParentType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a LabelParentType.
+  /// Returns the instance of [LabelParentType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -64,6 +67,9 @@ class LabelParentTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   LabelParentType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is LabelParentType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CAMPAIGN': return LabelParentType.CAMPAIGN;
@@ -76,7 +82,7 @@ class LabelParentTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [LabelParentTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static LabelParentTypeTypeTransformer? _instance;
 }
 

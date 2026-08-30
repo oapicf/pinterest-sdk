@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **IMAGE_INVALID_FILE** | `Integer` | Image files are unreadable. Please upload new files to continue. |  [optional property]
 **IMAGE_LEVEL_INTERNAL_ERROR** | `Integer` | We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours. |  [optional property]
 **IMAGE_MALFORMED_URL** | `Integer` | Image files are unreadable. Please check your link and upload new files to continue. |  [optional property]
-**LARGE_PRODUCT_COUNT_DECREASE** | [**LARGEPRODUCTCOUNTDECREASEEnum**](#LARGEPRODUCTCOUNTDECREASEEnum) | The product count has decreased by more than 99% compared to the last successful ingestion. |  [optional property]
+**LARGE_PRODUCT_COUNT_DECREASE** | `Integer` | The product count has decreased by more than 99% compared to the last successful ingestion. |  [optional property]
 **LINE_LEVEL_INTERNAL_ERROR** | `Integer` | We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. |  [optional property]
 
 
@@ -25,11 +25,6 @@ Name | Type | Description | Notes
 
 
 
-## LARGEPRODUCTCOUNTDECREASEEnum
-
-Name | Value
----- | -----
-NUMBER_1 | `1`
 
 
 

@@ -7,12 +7,33 @@ import play.api.mvc._
 import model.Error
 import model.LabelCreateRequest
 import model.LabelUpdateRequest
+import model.LabeledEntities
+import model.LabeledEntitiesCreate
 import model.LabelsList200Response
 import model.LabelsResponse
+import model.QueryLabelEntityStatusesItems
+import model.QueryLabelTypesItems
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class LabelsApiController @Inject()(cc: ControllerComponents, api: LabelsApi) extends AbstractController(cc) {
+  /**
+    * POST /v5/ad_accounts/:adAccountId/labels/:labelId/apply
+    * @param labelId Label ID.
+    */
+  def labelsApply(adAccountId: String, labelId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): LabeledEntities = {
+      val labeledEntitiesCreate = request.body.asJson.map(_.as[LabeledEntitiesCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "labeledEntitiesCreate")
+      }
+      api.labelsApply(adAccountId, labelId, labeledEntitiesCreate)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
   /**
     * POST /v5/ad_accounts/:adAccountId/labels
     * @param adAccountId Unique identifier of an ad account.
@@ -31,7 +52,7 @@ class LabelsApiController @Inject()(cc: ControllerComponents, api: LabelsApi) ex
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/labels?campaignIds=[value]&labelIds=[value]&entityStatuses=[value]&labelTypes=[value]&pageSize=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/labels?campaignIds=[value]&labelIds=[value]&entityStatuses=[value]&labelTypes=[value]&bookmark=[value]&pageSize=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def labelsList(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -44,16 +65,35 @@ class LabelsApiController @Inject()(cc: ControllerComponents, api: LabelsApi) ex
         
       val entityStatuses = request.queryString.get("entity_statuses")
         .map(_.toList)
+        .map(_.map(value => )
         
       val labelTypes = request.queryString.get("label_types")
         .map(_.toList)
+        .map(_.map(value => )
+        
+      val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val bookmark = request.getQueryString("bookmark")
-        
-      api.labelsList(adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, pageSize, bookmark)
+      api.labelsList(adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, bookmark, pageSize)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
+  /**
+    * POST /v5/ad_accounts/:adAccountId/labels/:labelId/remove
+    * @param labelId Label ID.
+    */
+  def labelsRemove(adAccountId: String, labelId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): LabeledEntities = {
+      val labeledEntitiesCreate = request.body.asJson.map(_.as[LabeledEntitiesCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "labeledEntitiesCreate")
+      }
+      api.labelsRemove(adAccountId, labelId, labeledEntitiesCreate)
     }
 
     val result = executeApi()

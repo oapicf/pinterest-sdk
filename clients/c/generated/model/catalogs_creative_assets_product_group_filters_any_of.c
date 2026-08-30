@@ -12,18 +12,21 @@ static catalogs_creative_assets_product_group_filters_any_of_t *catalogs_creativ
     if (!catalogs_creative_assets_product_group_filters_any_of_local_var) {
         return NULL;
     }
-    catalogs_creative_assets_product_group_filters_any_of_local_var->any_of = any_of;
-
+    memset(catalogs_creative_assets_product_group_filters_any_of_local_var, 0, sizeof(catalogs_creative_assets_product_group_filters_any_of_t));
     catalogs_creative_assets_product_group_filters_any_of_local_var->_library_owned = 1;
+    catalogs_creative_assets_product_group_filters_any_of_local_var->any_of = any_of;
     return catalogs_creative_assets_product_group_filters_any_of_local_var;
 }
 
 __attribute__((deprecated)) catalogs_creative_assets_product_group_filters_any_of_t *catalogs_creative_assets_product_group_filters_any_of_create(
     list_t *any_of
     ) {
-    return catalogs_creative_assets_product_group_filters_any_of_create_internal (
+    catalogs_creative_assets_product_group_filters_any_of_t *result = catalogs_creative_assets_product_group_filters_any_of_create_internal (
         any_of
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_creative_assets_product_group_filters_any_of_free(catalogs_creative_assets_product_group_filters_any_of_t *catalogs_creative_assets_product_group_filters_any_of) {
@@ -111,9 +114,14 @@ catalogs_creative_assets_product_group_filters_any_of_t *catalogs_creative_asset
     }
 
 
+
     catalogs_creative_assets_product_group_filters_any_of_local_var = catalogs_creative_assets_product_group_filters_any_of_create_internal (
         any_ofList
         );
+
+    if (!catalogs_creative_assets_product_group_filters_any_of_local_var) {
+        goto end;
+    }
 
     return catalogs_creative_assets_product_group_filters_any_of_local_var;
 end:

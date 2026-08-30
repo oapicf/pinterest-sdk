@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**CatalogsProduct[]**](CatalogsProduct.md) | Pins | 
+**Items** | [**CatalogsProduct[]**](CatalogsProduct.md) |  | 
 
 ## Examples
 

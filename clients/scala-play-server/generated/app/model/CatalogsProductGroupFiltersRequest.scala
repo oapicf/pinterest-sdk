@@ -3,40 +3,15 @@ package model
 import play.api.libs.json._
 
 /**
-  * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
-  * @param additionalProperties Any additional properties this model may have.
+  * Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CatalogsProductGroupFiltersRequest(
   anyOf: List[CatalogsProductGroupFilterKeys],
   allOf: List[CatalogsProductGroupFilterKeys]
-  additionalProperties: 
 )
 
 object CatalogsProductGroupFiltersRequest {
-  implicit lazy val catalogsProductGroupFiltersRequestJsonFormat: Format[CatalogsProductGroupFiltersRequest] = {
-    val realJsonFormat = Json.format[CatalogsProductGroupFiltersRequest]
-    val declaredPropNames = Set("anyOf", "allOf")
-    
-    Format(
-      Reads {
-        case JsObject(xs) =>
-          val declaredProps = xs.filterKeys(declaredPropNames)
-          val additionalProps = JsObject(xs -- declaredPropNames)
-          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
-          val newObj = JsObject(restructuredProps)
-          realJsonFormat.reads(newObj)
-        case _ =>
-          JsError("error.expected.jsobject")
-      },
-      Writes { catalogsProductGroupFiltersRequest =>
-        val jsObj = realJsonFormat.writes(catalogsProductGroupFiltersRequest)
-        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
-        val declaredProps = jsObj - "additionalProperties"
-        val newObj = declaredProps ++ additionalProps
-        newObj
-      }
-    )
-  }
+  implicit lazy val catalogsProductGroupFiltersRequestJsonFormat: Format[CatalogsProductGroupFiltersRequest] = Json.format[CatalogsProductGroupFiltersRequest]
 }
 

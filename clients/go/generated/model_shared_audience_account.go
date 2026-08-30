@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,11 +23,11 @@ var _ MappedNullable = &SharedAudienceAccount{}
 // SharedAudienceAccount struct for SharedAudienceAccount
 type SharedAudienceAccount struct {
 	// Account ID (ad account or business ID).
-	AccountId string `json:"account_id" validate:"regexp=^\\\\d+$"`
+	AccountId string `json:"account_id" validate:"regexp=^\\d+$"`
 	// Account name.
 	AccountName string `json:"account_name"`
 	// account type
-	AccountType string `json:"account_type"`
+	AccountType AudienceAccountType `json:"account_type"`
 	// Epoch timestamp in seconds for the shared audience event
 	SharedOnTimestamp int32 `json:"shared_on_timestamp"`
 }
@@ -38,7 +38,7 @@ type _SharedAudienceAccount SharedAudienceAccount
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSharedAudienceAccount(accountId string, accountName string, accountType string, sharedOnTimestamp int32) *SharedAudienceAccount {
+func NewSharedAudienceAccount(accountId string, accountName string, accountType AudienceAccountType, sharedOnTimestamp int32) *SharedAudienceAccount {
 	this := SharedAudienceAccount{}
 	this.AccountId = accountId
 	this.AccountName = accountName
@@ -104,9 +104,9 @@ func (o *SharedAudienceAccount) SetAccountName(v string) {
 }
 
 // GetAccountType returns the AccountType field value
-func (o *SharedAudienceAccount) GetAccountType() string {
+func (o *SharedAudienceAccount) GetAccountType() AudienceAccountType {
 	if o == nil {
-		var ret string
+		var ret AudienceAccountType
 		return ret
 	}
 
@@ -115,7 +115,7 @@ func (o *SharedAudienceAccount) GetAccountType() string {
 
 // GetAccountTypeOk returns a tuple with the AccountType field value
 // and a boolean to check if the value has been set.
-func (o *SharedAudienceAccount) GetAccountTypeOk() (*string, bool) {
+func (o *SharedAudienceAccount) GetAccountTypeOk() (*AudienceAccountType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *SharedAudienceAccount) GetAccountTypeOk() (*string, bool) {
 }
 
 // SetAccountType sets field value
-func (o *SharedAudienceAccount) SetAccountType(v string) {
+func (o *SharedAudienceAccount) SetAccountType(v AudienceAccountType) {
 	o.AccountType = v
 }
 

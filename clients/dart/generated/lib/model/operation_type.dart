@@ -11,29 +11,29 @@
 part of openapi.api;
 
 /// Operation type to share a specific audience or revoke access to a previously shared audience
-class OperationType {
-  /// Instantiate a new enum with the provided [value].
-  const OperationType._(this.value);
+enum OperationType {
+  SHARE._(r'SHARE'),
+  REVOKE._(r'REVOKE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const OperationType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const SHARE = OperationType._(r'SHARE');
-  static const REVOKE = OperationType._(r'REVOKE');
-
-  /// List of all possible values in this [enum][OperationType].
-  static const values = <OperationType>[
-    SHARE,
-    REVOKE,
-  ];
-
+  /// Returns the instance of [OperationType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static OperationType? fromJson(dynamic value) => OperationTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [OperationType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<OperationType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <OperationType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class OperationTypeTypeTransformer {
 
   const OperationTypeTypeTransformer._();
 
-  String encode(OperationType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(OperationType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a OperationType.
+  /// Returns the instance of [OperationType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class OperationTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   OperationType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is OperationType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'SHARE': return OperationType.SHARE;
@@ -79,7 +84,7 @@ class OperationTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [OperationTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static OperationTypeTypeTransformer? _instance;
 }
 

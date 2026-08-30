@@ -12,7 +12,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**targetingOptionsGet**](#targetingoptionsget) | **GET** /resources/targeting/{targeting_type} | Get targeting options|
 
 # **adAccountCountriesGet**
-> AdAccountsCountryResponse adAccountCountriesGet()
+> AdAccountCountriesGet200Response adAccountCountriesGet()
 
 Get Ad Accounts countries
 
@@ -36,7 +36,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-**AdAccountsCountryResponse**
+**AdAccountCountriesGet200Response**
 
 ### Authorization
 
@@ -51,15 +51,20 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deliveryMetricsGet**
-> DeliveryMetricsResponse deliveryMetricsGet()
+> DeliveryMetricsGet200Response deliveryMetricsGet()
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href=\'/docs/api-features/analytics-overview/\'>Organic Analytics</a> and <a href=\'/docs/api-features/ads-reporting/\'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
 
 ### Example
 
@@ -72,7 +77,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ResourcesApi(configuration);
 
-let reportType: 'SYNC' | 'ASYNC'; //Report type. (optional) (default to undefined)
+let reportType: ReportType; //Report type. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.deliveryMetricsGet(
     reportType
@@ -83,12 +88,12 @@ const { status, data } = await apiInstance.deliveryMetricsGet(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **reportType** | [**&#39;SYNC&#39; | &#39;ASYNC&#39;**]**Array<&#39;SYNC&#39; &#124; &#39;ASYNC&#39;>** | Report type. | (optional) defaults to undefined|
+| **reportType** | **ReportType** | Report type. | (optional) defaults to undefined|
 
 
 ### Return type
 
-**DeliveryMetricsResponse**
+**DeliveryMetricsGet200Response**
 
 ### Authorization
 
@@ -103,15 +108,20 @@ const { status, data } = await apiInstance.deliveryMetricsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **interestTargetingOptionsGet**
-> SingleInterestTargetingOptionResponse interestTargetingOptionsGet()
+> SingleInterestTargetingOption interestTargetingOptionsGet()
 
-<p>Get details of a specific interest given interest ID.</p> <p>Click <a href=\"https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875\" target=\"_blank\">here</a> for a spreadsheet listing interests and their IDs.</p>
+Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875) for a spreadsheet listing interests and their IDs.
 
 ### Example
 
@@ -140,7 +150,7 @@ const { status, data } = await apiInstance.interestTargetingOptionsGet(
 
 ### Return type
 
-**SingleInterestTargetingOptionResponse**
+**SingleInterestTargetingOption**
 
 ### Authorization
 
@@ -155,15 +165,20 @@ const { status, data } = await apiInstance.interestTargetingOptionsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **leadFormQuestionsGet**
 > leadFormQuestionsGet()
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -200,13 +215,18 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **metricsReadyStateGet**
-> BookClosedResponse metricsReadyStateGet()
+> BookClosed metricsReadyStateGet()
 
 Learn whether conversion or non-conversion metrics are finalized and ready to query.
 
@@ -237,7 +257,7 @@ const { status, data } = await apiInstance.metricsReadyStateGet(
 
 ### Return type
 
-**BookClosedResponse**
+**BookClosed**
 
 ### Authorization
 
@@ -252,15 +272,20 @@ const { status, data } = await apiInstance.metricsReadyStateGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **targetingOptionsGet**
 > Array<object> targetingOptionsGet()
 
-<p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class=\"literal-block\"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>
+    You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      ```     [{\"36313\": \"Australia: Moreton Bay - North\", \"124735\": \"Canada: North Battleford\", \"36109\": \"Australia: Murray\", \"36108\": \"Australia: Mid North Coast\", \"36101\": \"Australia: Capital Region\", \"811\": \"U.S.: Reno\", \"36103\": \"Australia: Central West\", \"36102\": \"Australia: Central Coast\", \"36105\": \"Australia: Far West and Orana\", \"36104\": \"Australia: Coffs Harbour - Grafton\", \"36107\": \"Australia: Illawarra\", \"36106\": \"Australia: Hunter Valley Exc Newcastle\", \"554017\": \"New Zealand: Wanganui\", \"554016\": \"New Zealand: Marlborough\", \"554015\": \"New Zealand: Gisborne\", \"554014\": \"New Zealand: Tararua\", \"554013\": \"New Zealand: Invercargill\", \"GR\": \"Greece\", \"554011\": \"New Zealand: Whangarei\", \"554010\": \"New Zealand: Far North\", \"717\": \"U.S.: Quincy-Hannibal-Keokuk\", \"716\": \"U.S.: Baton Rouge\",...}]     ```
 
 ### Example
 
@@ -273,18 +298,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ResourcesApi(configuration);
 
-let targetingType: 'APPTYPE' | 'GENDER' | 'LOCALE' | 'AGE_BUCKET' | 'LOCATION' | 'GEO' | 'INTEREST' | 'KEYWORD' | 'AUDIENCE_INCLUDE' | 'AUDIENCE_EXCLUDE'; //Public targeting type. (default to undefined)
-let clientId: string; //Client ID. (optional) (default to undefined)
-let oauthSignature: string; //Oauth signature (optional) (default to undefined)
-let timestamp: string; //Timestamp (optional) (default to undefined)
+let targetingType: PublicTargetingType; //Public targeting type (default to undefined)
 let adAccountId: string; //Unique identifier of an ad account. (optional) (default to undefined)
+let clientId: string; //Client ID (optional) (default to undefined)
+let oauthSignature: string; //Oauth signature (optional) (default to undefined)
+let timestamp: string; //Timestamp. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.targetingOptionsGet(
     targetingType,
+    adAccountId,
     clientId,
     oauthSignature,
-    timestamp,
-    adAccountId
+    timestamp
 );
 ```
 
@@ -292,11 +317,11 @@ const { status, data } = await apiInstance.targetingOptionsGet(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **targetingType** | [**&#39;APPTYPE&#39; | &#39;GENDER&#39; | &#39;LOCALE&#39; | &#39;AGE_BUCKET&#39; | &#39;LOCATION&#39; | &#39;GEO&#39; | &#39;INTEREST&#39; | &#39;KEYWORD&#39; | &#39;AUDIENCE_INCLUDE&#39; | &#39;AUDIENCE_EXCLUDE&#39;**]**Array<&#39;APPTYPE&#39; &#124; &#39;GENDER&#39; &#124; &#39;LOCALE&#39; &#124; &#39;AGE_BUCKET&#39; &#124; &#39;LOCATION&#39; &#124; &#39;GEO&#39; &#124; &#39;INTEREST&#39; &#124; &#39;KEYWORD&#39; &#124; &#39;AUDIENCE_INCLUDE&#39; &#124; &#39;AUDIENCE_EXCLUDE&#39;>** | Public targeting type. | defaults to undefined|
-| **clientId** | [**string**] | Client ID. | (optional) defaults to undefined|
-| **oauthSignature** | [**string**] | Oauth signature | (optional) defaults to undefined|
-| **timestamp** | [**string**] | Timestamp | (optional) defaults to undefined|
+| **targetingType** | **PublicTargetingType** | Public targeting type | defaults to undefined|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined|
+| **clientId** | [**string**] | Client ID | (optional) defaults to undefined|
+| **oauthSignature** | [**string**] | Oauth signature | (optional) defaults to undefined|
+| **timestamp** | [**string**] | Timestamp. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -316,8 +341,13 @@ const { status, data } = await apiInstance.targetingOptionsGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

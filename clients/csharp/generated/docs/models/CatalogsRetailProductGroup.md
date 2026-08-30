@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogId** | **string** | Catalog id pertaining to the retail product group. | 
+**CatalogId** | **string** | Catalog ID pertaining to the product group. | 
 **CatalogType** | **string** |  | 
 **Filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | 
 **Id** | **string** | ID of the catalog product group. | 

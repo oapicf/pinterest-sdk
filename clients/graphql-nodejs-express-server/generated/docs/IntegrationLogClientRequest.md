@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **String!** | HTTP request host from host header. | [default to null]
-**method** | **String!** |  | [default to null]
+**method** | [***HttpMethod**](HttpMethod.md) |  | [default to null]
 **path** | **String!** | HTTP request path. | [default to null]
 **requestHeaders** | **String!** | HTTP request headers as key-value pairs. | [optional] [default to null]
 **responseHeaders** | **String!** | HTTP response headers as key-value pairs. | [optional] [default to null]

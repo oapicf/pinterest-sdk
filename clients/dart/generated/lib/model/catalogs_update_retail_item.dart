@@ -71,10 +71,12 @@ class CatalogsUpdateRetailItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsUpdateRetailItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsUpdateRetailItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'attributes'), 'Required key "CatalogsUpdateRetailItem[attributes]" is missing from JSON.');
+        assert(json[r'attributes'] != null, 'Required key "CatalogsUpdateRetailItem[attributes]" has a null value in JSON.');
+        assert(json.containsKey(r'item_id'), 'Required key "CatalogsUpdateRetailItem[item_id]" is missing from JSON.');
+        assert(json[r'item_id'] != null, 'Required key "CatalogsUpdateRetailItem[item_id]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsUpdateRetailItem[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsUpdateRetailItem[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -137,27 +139,28 @@ class CatalogsUpdateRetailItem {
 }
 
 
-class CatalogsUpdateRetailItemOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsUpdateRetailItemOperationEnum._(this.value);
+enum CatalogsUpdateRetailItemOperationEnum {
+  UPDATE._(r'UPDATE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsUpdateRetailItemOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const UPDATE = CatalogsUpdateRetailItemOperationEnum._(r'UPDATE');
-
-  /// List of all possible values in this [enum][CatalogsUpdateRetailItemOperationEnum].
-  static const values = <CatalogsUpdateRetailItemOperationEnum>[
-    UPDATE,
-  ];
-
+  /// Returns the instance of [CatalogsUpdateRetailItemOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsUpdateRetailItemOperationEnum? fromJson(dynamic value) => CatalogsUpdateRetailItemOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsUpdateRetailItemOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsUpdateRetailItemOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsUpdateRetailItemOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -179,9 +182,10 @@ class CatalogsUpdateRetailItemOperationEnumTypeTransformer {
 
   const CatalogsUpdateRetailItemOperationEnumTypeTransformer._();
 
-  String encode(CatalogsUpdateRetailItemOperationEnum data) => data.value;
+  String encode(CatalogsUpdateRetailItemOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsUpdateRetailItemOperationEnum.
+  /// Returns the instance of [CatalogsUpdateRetailItemOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -190,6 +194,9 @@ class CatalogsUpdateRetailItemOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsUpdateRetailItemOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsUpdateRetailItemOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'UPDATE': return CatalogsUpdateRetailItemOperationEnum.UPDATE;
@@ -202,7 +209,7 @@ class CatalogsUpdateRetailItemOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsUpdateRetailItemOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsUpdateRetailItemOperationEnumTypeTransformer? _instance;
 }
 

@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.conversion_tag_type_optimal import ConversionTagTypeOptimal  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,26 +16,26 @@ class AdvertiserDefinedEvent(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, name: str=None, mapped_conversion_type: str=None):  # noqa: E501
+    def __init__(self, mapped_conversion_type: ConversionTagTypeOptimal=None, name: str=None):  # noqa: E501
         """AdvertiserDefinedEvent - a model defined in Swagger
 
+        :param mapped_conversion_type: The mapped_conversion_type of this AdvertiserDefinedEvent.  # noqa: E501
+        :type mapped_conversion_type: ConversionTagTypeOptimal
         :param name: The name of this AdvertiserDefinedEvent.  # noqa: E501
         :type name: str
-        :param mapped_conversion_type: The mapped_conversion_type of this AdvertiserDefinedEvent.  # noqa: E501
-        :type mapped_conversion_type: str
         """
         self.swagger_types = {
-            'name': str,
-            'mapped_conversion_type': str
+            'mapped_conversion_type': ConversionTagTypeOptimal,
+            'name': str
         }
 
         self.attribute_map = {
-            'name': 'name',
-            'mapped_conversion_type': 'mapped_conversion_type'
+            'mapped_conversion_type': 'mapped_conversion_type',
+            'name': 'name'
         }
 
-        self._name = name
         self._mapped_conversion_type = mapped_conversion_type
+        self._name = name
 
     @classmethod
     def from_dict(cls, dikt) -> 'AdvertiserDefinedEvent':
@@ -48,10 +49,33 @@ class AdvertiserDefinedEvent(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
+    def mapped_conversion_type(self) -> ConversionTagTypeOptimal:
+        """Gets the mapped_conversion_type of this AdvertiserDefinedEvent.
+
+        Standard type mapped to ADE for optimization  # noqa: E501
+
+        :return: The mapped_conversion_type of this AdvertiserDefinedEvent.
+        :rtype: ConversionTagTypeOptimal
+        """
+        return self._mapped_conversion_type
+
+    @mapped_conversion_type.setter
+    def mapped_conversion_type(self, mapped_conversion_type: ConversionTagTypeOptimal):
+        """Sets the mapped_conversion_type of this AdvertiserDefinedEvent.
+
+        Standard type mapped to ADE for optimization  # noqa: E501
+
+        :param mapped_conversion_type: The mapped_conversion_type of this AdvertiserDefinedEvent.
+        :type mapped_conversion_type: ConversionTagTypeOptimal
+        """
+
+        self._mapped_conversion_type = mapped_conversion_type
+
+    @property
     def name(self) -> str:
         """Gets the name of this AdvertiserDefinedEvent.
 
-        raw string name of the event, usually logged as raw_event_name in our dataset  # noqa: E501
+        Raw string name of the event, usually logged as raw_event_name in our dataset  # noqa: E501
 
         :return: The name of this AdvertiserDefinedEvent.
         :rtype: str
@@ -62,39 +86,10 @@ class AdvertiserDefinedEvent(Model):
     def name(self, name: str):
         """Sets the name of this AdvertiserDefinedEvent.
 
-        raw string name of the event, usually logged as raw_event_name in our dataset  # noqa: E501
+        Raw string name of the event, usually logged as raw_event_name in our dataset  # noqa: E501
 
         :param name: The name of this AdvertiserDefinedEvent.
         :type name: str
         """
 
         self._name = name
-
-    @property
-    def mapped_conversion_type(self) -> str:
-        """Gets the mapped_conversion_type of this AdvertiserDefinedEvent.
-
-        standard type mapped to ADE for optimization  # noqa: E501
-
-        :return: The mapped_conversion_type of this AdvertiserDefinedEvent.
-        :rtype: str
-        """
-        return self._mapped_conversion_type
-
-    @mapped_conversion_type.setter
-    def mapped_conversion_type(self, mapped_conversion_type: str):
-        """Sets the mapped_conversion_type of this AdvertiserDefinedEvent.
-
-        standard type mapped to ADE for optimization  # noqa: E501
-
-        :param mapped_conversion_type: The mapped_conversion_type of this AdvertiserDefinedEvent.
-        :type mapped_conversion_type: str
-        """
-        allowed_values = ["PAGE_LOAD", "UNKNOWN", "INITIALIZED", "PAGE_VISIT", "SIGNUP", "CHECKOUT", "CUSTOM", "VIEW_CATEGORY", "SEARCH", "ADD_TO_CART", "WATCH_VIDEO", "LEAD", "APP_INSTALL", "WEB_SESSION", "EXTERNAL_MEASUREMENT", "ADD_PAYMENT_INFO", "ADD_TO_WISHLIST", "INITIATE_CHECKOUT", "SUBSCRIBE", "VIEW_CONTENT", "ADVERTISER_DEFINED_EVENT", "APP_OPEN", "CONTACT", "SCHEDULE", "FIND_LOCATION", "CUSTOMIZE_PRODUCT", "SUBMIT_APPLICATION", "START_TRIAL", ""]  # noqa: E501
-        if mapped_conversion_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `mapped_conversion_type` ({0}), must be one of {1}"
-                .format(mapped_conversion_type, allowed_values)
-            )
-
-        self._mapped_conversion_type = mapped_conversion_type

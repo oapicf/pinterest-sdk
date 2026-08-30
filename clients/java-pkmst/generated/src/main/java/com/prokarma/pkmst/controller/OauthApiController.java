@@ -1,8 +1,10 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.ConversionAccessTokenResponse;
-import com.prokarma.pkmst.model.Error;
-import com.prokarma.pkmst.model.OauthAccessTokenResponse;
+import com.prokarma.pkmst.model.ConversionAccessToken;
+import com.prokarma.pkmst.model.OauthAccessToken;
+import com.prokarma.pkmst.model.PinterestLibError;
+import com.prokarma.pkmst.model.TokenGrantType;
+import com.prokarma.pkmst.model.TokenTypeHint;
 
 import io.swagger.annotations.*;
 
@@ -25,7 +27,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class OauthApiController implements OauthApi {
     private final ObjectMapper objectMapper;
@@ -34,39 +36,99 @@ public class OauthApiController implements OauthApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<ConversionAccessTokenResponse> oauthConversionToken(@RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+    public ResponseEntity<ConversionAccessToken> oauthConversionToken(@RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<ConversionAccessTokenResponse>(objectMapper.readValue("", ConversionAccessTokenResponse.class), HttpStatus.OK);
+            return new ResponseEntity<ConversionAccessToken>(objectMapper.readValue("", ConversionAccessToken.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<ConversionAccessTokenResponse>(objectMapper.readValue("", ConversionAccessTokenResponse.class), HttpStatus.OK);
+            return new ResponseEntity<ConversionAccessToken>(objectMapper.readValue("", ConversionAccessToken.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<ConversionAccessTokenResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionAccessToken>(objectMapper.readValue("", ConversionAccessToken.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionAccessToken>(objectMapper.readValue("", ConversionAccessToken.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionAccessToken>(objectMapper.readValue("", ConversionAccessToken.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionAccessToken>(objectMapper.readValue("", ConversionAccessToken.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionAccessToken>(objectMapper.readValue("", ConversionAccessToken.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<ConversionAccessToken>(HttpStatus.OK);
     }
 
-    public ResponseEntity<OauthAccessTokenResponse> oauthToken(@ApiParam(value = "", required=true, allowableValues="authorization_code, refresh_token, client_credentials") @RequestPart(value="grant_type", required=true)  String grantType,
+    public ResponseEntity<OauthAccessToken> oauthToken(@ApiParam(value = "", required=true, allowableValues="authorization_code, refresh_token, client_credentials") @RequestPart(value="grant_type", required=true)  TokenGrantType grantType,
+        @ApiParam(value = "") @RequestPart(value="code", required=false)  String code,
+        @ApiParam(value = "  If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.") @RequestPart(value="continuous_refresh", required=false)  String continuousRefresh,
+        @ApiParam(value = "") @RequestPart(value="redirect_uri", required=false)  String redirectUri,
+        @ApiParam(value = "") @RequestPart(value="refresh_token", required=false)  String refreshToken,
+        @ApiParam(value = "") @RequestPart(value="scope", required=false)  String scope,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<OauthAccessTokenResponse>(objectMapper.readValue("", OauthAccessTokenResponse.class), HttpStatus.OK);
+            return new ResponseEntity<OauthAccessToken>(objectMapper.readValue("", OauthAccessToken.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<OauthAccessTokenResponse>(objectMapper.readValue("", OauthAccessTokenResponse.class), HttpStatus.OK);
+            return new ResponseEntity<OauthAccessToken>(objectMapper.readValue("", OauthAccessToken.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<OauthAccessTokenResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OauthAccessToken>(objectMapper.readValue("", OauthAccessToken.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OauthAccessToken>(objectMapper.readValue("", OauthAccessToken.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OauthAccessToken>(objectMapper.readValue("", OauthAccessToken.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OauthAccessToken>(objectMapper.readValue("", OauthAccessToken.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OauthAccessToken>(objectMapper.readValue("", OauthAccessToken.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OauthAccessToken>(objectMapper.readValue("", OauthAccessToken.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<OauthAccessToken>(HttpStatus.OK);
     }
 
     public ResponseEntity<Void> tokenRevoke(@ApiParam(value = "The token to revoke.", required=true) @RequestPart(value="token", required=true)  String token,
-        @ApiParam(value = "The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.", allowableValues="access_token, refresh_token") @RequestPart(value="token_type_hint", required=false)  String tokenTypeHint,
+        @ApiParam(value = "The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.", allowableValues="access_token, refresh_token") @RequestPart(value="token_type_hint", required=false)  TokenTypeHint tokenTypeHint,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 

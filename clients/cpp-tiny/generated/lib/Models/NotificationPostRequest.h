@@ -1,41 +1,40 @@
 
 /*
- * Notification_post_request.h
+ * NotificationPostRequest.h
  *
- * Any valid JSON object
+ * Notification request body. Can be either a batch of notification objects or a single notification object.
  */
 
-#ifndef TINY_CPP_CLIENT_Notification_post_request_H_
-#define TINY_CPP_CLIENT_Notification_post_request_H_
+#ifndef TINY_CPP_CLIENT_NotificationPostRequest_H_
+#define TINY_CPP_CLIENT_NotificationPostRequest_H_
 
 
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "AnyType.h"
-#include <map>
+#include "Object.h"
 
 namespace Tiny {
 
 
-/*! \brief Any valid JSON object
+/*! \brief Notification request body. Can be either a batch of notification objects or a single notification object.
  *
  *  \ingroup Models
  *
  */
 
-class Notification_post_request{
+class NotificationPostRequest{
 public:
 
     /*! \brief Constructor.
 	 */
-    Notification_post_request();
-    Notification_post_request(std::string jsonString);
+    NotificationPostRequest();
+    NotificationPostRequest(std::string jsonString);
 
 
     /*! \brief Destructor.
 	 */
-    virtual ~Notification_post_request();
+    virtual ~NotificationPostRequest();
 
 
     /*! \brief Retrieve a bourne JSON representation of this class.
@@ -53,4 +52,4 @@ public:
 };
 }
 
-#endif /* TINY_CPP_CLIENT_Notification_post_request_H_ */
+#endif /* TINY_CPP_CLIENT_NotificationPostRequest_H_ */

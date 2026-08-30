@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AssetTypeResponse } from './assetTypeResponse';
 
 
 /**
@@ -17,10 +18,7 @@ export interface UpdatePartnerAssetsResult {
      * Unique identifier of a business asset.
      */
     asset_id?: string;
-    /**
-     * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-     */
-    asset_type?: string;
+    asset_type?: AssetTypeResponse;
     /**
      * Unique identifier of a business partner.
      */
@@ -30,4 +28,7 @@ export interface UpdatePartnerAssetsResult {
      */
     permissions?: Array<string>;
 }
+export namespace UpdatePartnerAssetsResult {
+}
+
 

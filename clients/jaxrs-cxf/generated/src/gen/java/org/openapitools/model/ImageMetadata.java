@@ -1,5 +1,7 @@
 package org.openapitools.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ImageSize;
 import javax.validation.constraints.*;
@@ -22,9 +24,44 @@ public class ImageMetadata  {
 
   private ImageSize images;
 
-  @ApiModelProperty(value = "")
+public enum ItemTypeEnum {
 
-  private String itemType;
+IMAGE(String.valueOf("image"));
+
+
+    private String value;
+
+    ItemTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemTypeEnum fromValue(String value) {
+        for (ItemTypeEnum b : ItemTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+ /**
+  * Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+  */
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.")
+
+  private ItemTypeEnum itemType;
 
   @ApiModelProperty(value = "")
 
@@ -70,19 +107,23 @@ public class ImageMetadata  {
   }
 
  /**
-   * Get itemType
+   * Discriminator literal identifying this as image metadata inside a &#x60;PinMediaMetadata&#x60; payload.
    * @return itemType
   **/
   @JsonProperty("item_type")
+  @NotNull
   public String getItemType() {
-    return itemType;
+    if (itemType == null) {
+      return null;
+    }
+    return itemType.value();
   }
 
-  public void setItemType(String itemType) {
+  public void setItemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
   }
 
-  public ImageMetadata itemType(String itemType) {
+  public ImageMetadata itemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
     return this;
   }
@@ -163,10 +204,7 @@ public class ImageMetadata  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

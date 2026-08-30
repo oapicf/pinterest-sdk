@@ -1,7 +1,7 @@
 /*
  * asset_group_type.h
  *
- * Asset group type
+ * Asset group type.
  */
 
 #ifndef _asset_group_type_H_

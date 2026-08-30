@@ -2,14 +2,17 @@
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
 #import "OAICreativeType.h"
-#import "OAIError.h"
+#import "OAIMultiPinsAnalyticsMetricTypesItem.h"
 #import "OAIPin.h"
 #import "OAIPinAnalyticsMetricsResponse.h"
 #import "OAIPinCreate.h"
+#import "OAIPinFilter.h"
+#import "OAIPinType.h"
 #import "OAIPinUpdate.h"
 #import "OAIPinsList200Response.h"
-#import "OAIPinsSaveRequest.h"
+#import "OAIPinsSaveRequestCreate.h"
 #import "OAIPinterestLibError.h"
+#import "OAIQuerypinanalyticsmetrictypesItems.h"
 
 
 @interface OAIPinsApi ()
@@ -59,7 +62,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get multiple Pin analytics
-/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+/// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 ///  @param pinIds List of Pin IDs. 
 ///
 ///  @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
@@ -77,7 +80,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 -(NSURLSessionTask*) multiPinsAnalyticsWithPinIds: (NSArray<NSString*>*) pinIds
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    metricTypes: (NSArray<NSString*>*) metricTypes
+    metricTypes: (NSArray<OAIMultiPinsAnalyticsMetricTypesItem>*) metricTypes
     appTypes: (NSString*) appTypes
     adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(NSDictionary<NSString*, NSDictionary*>* output, NSError* error)) handler {
@@ -190,14 +193,14 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get Pin analytics
-/// Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+/// Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 ///  @param pinId Unique identifier of a Pin. 
 ///
 ///  @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
 ///
 ///  @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
 ///
-///  @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. 
+///  @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before `2023-03-20`, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than `NO_SPLIT`. 
 ///
 ///  @param appTypes Apps or devices to get data for, default is all. (optional, default to @"ALL")
 ///
@@ -210,7 +213,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 -(NSURLSessionTask*) pinsAnalyticsWithPinId: (NSString*) pinId
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    metricTypes: (NSArray<NSString*>*) metricTypes
+    metricTypes: (NSArray<OAIQuerypinanalyticsmetrictypesItems>*) metricTypes
     appTypes: (NSString*) appTypes
     splitField: (NSString*) splitField
     adAccountId: (NSString*) adAccountId
@@ -327,7 +330,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create Pin
-///   Create a Pin on a board or board section owned by the \"operation user_account\".   Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
+///  Create a Pin on a board or board section owned by the \"operation user_account\".   Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
 ///  @param pinCreate  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -399,23 +402,23 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 
 ///
 /// Delete Pin
-///    Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
+///   Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
 ///  @param pinId  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns void
+///  @returns OAIPin*
 ///
 -(NSURLSessionTask*) pinsDeleteWithPinId: (NSString*) pinId
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(OAIPin* output, NSError* error)) handler {
     // verify the required parameter 'pinId' is set
     if (pinId == nil) {
         NSParameterAssert(pinId);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pinId"] };
             NSError* error = [NSError errorWithDomain:kOAIPinsApiErrorDomain code:kOAIPinsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -463,17 +466,17 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"OAIPin*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((OAIPin*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Get Pin
-///    Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
+///   Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
 ///  @param pinId  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -553,7 +556,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 
 ///
 /// List Pins
-///      Get a list of the Pins owned by the \"operation user_account\".     - By default, the \"operation user_account\" is the token user_account.     - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an `ad_account_id` to use the owner of that ad_account as the \"operation user_account\".      Disclaimer: There are known performance issues when filtering by field `creative_type` and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
+///     Get a list of the Pins owned by the \"operation user_account\".     - By default, the \"operation user_account\" is the token user_account.     - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an `ad_account_id` to use the owner of that ad_account as the \"operation user_account\".      Disclaimer: There are known performance issues when filtering by field `creative_type` and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
 ///  @param pinFilter The filter to apply to the pins (optional)
 ///
 ///  @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to @(NO))
@@ -566,18 +569,27 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
+///  @param domain Only return pins with links that match the exact domain. Domain should not include 'www.' prefix. For example, 'pinterest.com' is a valid domain, but 'www.pinterest.com' is not (will not match any pins). (optional)
+///
+///  @param domains Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. `?domains=instagram.com,jcpenney.com`). (optional)
+///
+///  @param includeProductTagObj Include product tag objects in the response with their associated links. (optional)
+///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
 ///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIPinsList200Response*
 ///
--(NSURLSessionTask*) pinsListWithPinFilter: (NSString*) pinFilter
+-(NSURLSessionTask*) pinsListWithPinFilter: (OAIPinFilter) pinFilter
     pinMetrics: (NSNumber*) pinMetrics
     includeProtectedPins: (NSNumber*) includeProtectedPins
-    pinType: (NSString*) pinType
+    pinType: (OAIPinType) pinType
     creativeTypes: (NSArray<OAICreativeType>*) creativeTypes
     adAccountId: (NSString*) adAccountId
+    domain: (NSString*) domain
+    domains: (NSArray<NSString*>*) domains
+    includeProductTagObj: (NSNumber*) includeProductTagObj
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
     completionHandler: (void (^)(OAIPinsList200Response* output, NSError* error)) handler {
@@ -603,6 +615,15 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
     }
     if (adAccountId != nil) {
         queryParams[@"ad_account_id"] = adAccountId;
+    }
+    if (domain != nil) {
+        queryParams[@"domain"] = domain;
+    }
+    if (domains != nil) {
+        queryParams[@"domains"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: domains format: @"multi"];
+    }
+    if (includeProductTagObj != nil) {
+        queryParams[@"include_product_tag_obj"] = [includeProductTagObj isEqual:@(YES)] ? @"true" : @"false";
     }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
@@ -652,17 +673,17 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 
 ///
 /// Save Pin
-/// Save a Pin on a board or board section owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  - Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc. - Any public Pin can be saved given a pin ID.
+/// Save a Pin on a board or board section owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  - Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc. - Any public Pin can be saved given a pin ID.
 ///  @param pinId Unique identifier of a Pin. 
 ///
-///  @param pinsSaveRequest Request object used to save an existing pin 
+///  @param pinsSaveRequestCreate  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @returns OAIPin*
 ///
 -(NSURLSessionTask*) pinsSaveWithPinId: (NSString*) pinId
-    pinsSaveRequest: (OAIPinsSaveRequest*) pinsSaveRequest
+    pinsSaveRequestCreate: (OAIPinsSaveRequestCreate*) pinsSaveRequestCreate
     adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(OAIPin* output, NSError* error)) handler {
     // verify the required parameter 'pinId' is set
@@ -676,11 +697,11 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'pinsSaveRequest' is set
-    if (pinsSaveRequest == nil) {
-        NSParameterAssert(pinsSaveRequest);
+    // verify the required parameter 'pinsSaveRequestCreate' is set
+    if (pinsSaveRequestCreate == nil) {
+        NSParameterAssert(pinsSaveRequestCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pinsSaveRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pinsSaveRequestCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIPinsApiErrorDomain code:kOAIPinsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -718,7 +739,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = pinsSaveRequest;
+    bodyParam = pinsSaveRequestCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"

@@ -66,12 +66,12 @@ Templates_list_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<TemplateResponse> new_list;
-			TemplateResponse inst;
+			list<AccountTemplate> new_list;
+			AccountTemplate inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("TemplateResponse")) {
-					jsonToValue(&inst, temp_json, "TemplateResponse", "");
+				if (isprimitive("AccountTemplate")) {
+					jsonToValue(&inst, temp_json, "AccountTemplate", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Templates_list_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("TemplateResponse")) {
-		list<TemplateResponse> new_list = static_cast<list <TemplateResponse> > (getItems());
-		node = converttoJson(&new_list, "TemplateResponse", "array");
+	if (isprimitive("AccountTemplate")) {
+		list<AccountTemplate> new_list = static_cast<list <AccountTemplate> > (getItems());
+		node = converttoJson(&new_list, "AccountTemplate", "array");
 	} else {
 		node = json_node_alloc();
-		list<TemplateResponse> new_list = static_cast<list <TemplateResponse> > (getItems());
+		list<AccountTemplate> new_list = static_cast<list <AccountTemplate> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<TemplateResponse>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<AccountTemplate>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			TemplateResponse obj = *it;
+			AccountTemplate obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Templates_list_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<TemplateResponse>
+std::list<AccountTemplate>
 Templates_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Templates_list_200_response::setItems(std::list <TemplateResponse> items)
+Templates_list_200_response::setItems(std::list <AccountTemplate> items)
 {
 	this->items = items;
 }

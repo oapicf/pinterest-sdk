@@ -17,7 +17,7 @@ class ConversionEventResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_account_id: str=None, conversion_event: ConversionTagType=None, conversion_tag_id: str=None, created_time: int=None):  # noqa: E501
+    def __init__(self, ad_account_id: str=None, conversion_event: ConversionTagType=None, conversion_tag_id: str=None, created_time: int=None, reporting_conversion_event: str=None):  # noqa: E501
         """ConversionEventResponse - a model defined in Swagger
 
         :param ad_account_id: The ad_account_id of this ConversionEventResponse.  # noqa: E501
@@ -28,25 +28,30 @@ class ConversionEventResponse(Model):
         :type conversion_tag_id: str
         :param created_time: The created_time of this ConversionEventResponse.  # noqa: E501
         :type created_time: int
+        :param reporting_conversion_event: The reporting_conversion_event of this ConversionEventResponse.  # noqa: E501
+        :type reporting_conversion_event: str
         """
         self.swagger_types = {
             'ad_account_id': str,
             'conversion_event': ConversionTagType,
             'conversion_tag_id': str,
-            'created_time': int
+            'created_time': int,
+            'reporting_conversion_event': str
         }
 
         self.attribute_map = {
             'ad_account_id': 'ad_account_id',
             'conversion_event': 'conversion_event',
             'conversion_tag_id': 'conversion_tag_id',
-            'created_time': 'created_time'
+            'created_time': 'created_time',
+            'reporting_conversion_event': 'reporting_conversion_event'
         }
 
         self._ad_account_id = ad_account_id
         self._conversion_event = conversion_event
         self._conversion_tag_id = conversion_tag_id
         self._created_time = created_time
+        self._reporting_conversion_event = reporting_conversion_event
 
     @classmethod
     def from_dict(cls, dikt) -> 'ConversionEventResponse':
@@ -152,3 +157,26 @@ class ConversionEventResponse(Model):
         """
 
         self._created_time = created_time
+
+    @property
+    def reporting_conversion_event(self) -> str:
+        """Gets the reporting_conversion_event of this ConversionEventResponse.
+
+        For advertiser-defined events, the reporting event label shown in optimization UIs.  # noqa: E501
+
+        :return: The reporting_conversion_event of this ConversionEventResponse.
+        :rtype: str
+        """
+        return self._reporting_conversion_event
+
+    @reporting_conversion_event.setter
+    def reporting_conversion_event(self, reporting_conversion_event: str):
+        """Sets the reporting_conversion_event of this ConversionEventResponse.
+
+        For advertiser-defined events, the reporting event label shown in optimization UIs.  # noqa: E501
+
+        :param reporting_conversion_event: The reporting_conversion_event of this ConversionEventResponse.
+        :type reporting_conversion_event: str
+        """
+
+        self._reporting_conversion_event = reporting_conversion_event

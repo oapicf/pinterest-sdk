@@ -6,7 +6,8 @@ type ImageMetadata struct {
 
 	Images ImageSize `json:"images,omitempty"`
 
-	ItemType string `json:"item_type,omitempty"`
+	// Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
+	ItemType string `json:"item_type"`
 
 	Link *string `json:"link,omitempty"`
 

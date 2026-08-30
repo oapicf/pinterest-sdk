@@ -16,7 +16,7 @@ class TrendingKeywordsResponse {
     this.trends = const [],
   });
 
-  /// The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
+  /// The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.
   List<TrendingKeyword> trends;
 
   @override
@@ -48,10 +48,6 @@ class TrendingKeywordsResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TrendingKeywordsResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TrendingKeywordsResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

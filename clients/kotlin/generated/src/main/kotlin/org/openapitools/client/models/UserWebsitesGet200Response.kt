@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.UserWebsiteSummary
+import org.openapitools.client.models.UserWebsite
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,7 +39,7 @@ import com.squareup.moshi.JsonClass
 data class UserWebsitesGet200Response (
 
     @Json(name = "items")
-    val items: kotlin.collections.List<UserWebsiteSummary>,
+    val items: kotlin.collections.List<UserWebsite>,
 
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null

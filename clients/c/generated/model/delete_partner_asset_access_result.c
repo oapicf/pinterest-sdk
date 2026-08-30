@@ -1,0 +1,286 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include "delete_partner_asset_access_result.h"
+
+
+
+static delete_partner_asset_access_result_t *delete_partner_asset_access_result_create_internal(
+    char *asset_id,
+    char *asset_type,
+    int *is_shared_partner,
+    char *partner_id,
+    list_t *permissions
+    ) {
+    delete_partner_asset_access_result_t *delete_partner_asset_access_result_local_var = malloc(sizeof(delete_partner_asset_access_result_t));
+    if (!delete_partner_asset_access_result_local_var) {
+        return NULL;
+    }
+    memset(delete_partner_asset_access_result_local_var, 0, sizeof(delete_partner_asset_access_result_t));
+    delete_partner_asset_access_result_local_var->_library_owned = 1;
+    delete_partner_asset_access_result_local_var->asset_id = asset_id;
+    delete_partner_asset_access_result_local_var->asset_type = asset_type;
+    delete_partner_asset_access_result_local_var->is_shared_partner = is_shared_partner;
+    delete_partner_asset_access_result_local_var->partner_id = partner_id;
+    delete_partner_asset_access_result_local_var->permissions = permissions;
+    return delete_partner_asset_access_result_local_var;
+}
+
+__attribute__((deprecated)) delete_partner_asset_access_result_t *delete_partner_asset_access_result_create(
+    char *asset_id,
+    char *asset_type,
+    int *is_shared_partner,
+    char *partner_id,
+    list_t *permissions
+    ) {
+    int *is_shared_partner_copy = NULL;
+    if (is_shared_partner) {
+        is_shared_partner_copy = malloc(sizeof(int));
+        if (is_shared_partner_copy) *is_shared_partner_copy = *is_shared_partner;
+    }
+    delete_partner_asset_access_result_t *result = delete_partner_asset_access_result_create_internal (
+        asset_id,
+        asset_type,
+        is_shared_partner_copy,
+        partner_id,
+        permissions
+        );
+    if (!result) {
+        free(is_shared_partner_copy);
+    }
+    return result;
+}
+
+void delete_partner_asset_access_result_free(delete_partner_asset_access_result_t *delete_partner_asset_access_result) {
+    if(NULL == delete_partner_asset_access_result){
+        return ;
+    }
+    if(delete_partner_asset_access_result->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "delete_partner_asset_access_result_free");
+        return ;
+    }
+    listEntry_t *listEntry;
+    if (delete_partner_asset_access_result->asset_id) {
+        free(delete_partner_asset_access_result->asset_id);
+        delete_partner_asset_access_result->asset_id = NULL;
+    }
+    if (delete_partner_asset_access_result->asset_type) {
+        free(delete_partner_asset_access_result->asset_type);
+        delete_partner_asset_access_result->asset_type = NULL;
+    }
+    if (delete_partner_asset_access_result->is_shared_partner) {
+        free(delete_partner_asset_access_result->is_shared_partner);
+        delete_partner_asset_access_result->is_shared_partner = NULL;
+    }
+    if (delete_partner_asset_access_result->partner_id) {
+        free(delete_partner_asset_access_result->partner_id);
+        delete_partner_asset_access_result->partner_id = NULL;
+    }
+    if (delete_partner_asset_access_result->permissions) {
+        list_ForEach(listEntry, delete_partner_asset_access_result->permissions) {
+            free(listEntry->data);
+        }
+        list_freeList(delete_partner_asset_access_result->permissions);
+        delete_partner_asset_access_result->permissions = NULL;
+    }
+    free(delete_partner_asset_access_result);
+}
+
+cJSON *delete_partner_asset_access_result_convertToJSON(delete_partner_asset_access_result_t *delete_partner_asset_access_result) {
+    cJSON *item = cJSON_CreateObject();
+
+    // delete_partner_asset_access_result->asset_id
+    if(delete_partner_asset_access_result->asset_id) {
+    if(cJSON_AddStringToObject(item, "asset_id", delete_partner_asset_access_result->asset_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // delete_partner_asset_access_result->asset_type
+    if(delete_partner_asset_access_result->asset_type) {
+    if(cJSON_AddStringToObject(item, "asset_type", delete_partner_asset_access_result->asset_type) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // delete_partner_asset_access_result->is_shared_partner
+    if(delete_partner_asset_access_result->is_shared_partner) {
+    if(cJSON_AddBoolToObject(item, "is_shared_partner", *delete_partner_asset_access_result->is_shared_partner) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // delete_partner_asset_access_result->partner_id
+    if(delete_partner_asset_access_result->partner_id) {
+    if(cJSON_AddStringToObject(item, "partner_id", delete_partner_asset_access_result->partner_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // delete_partner_asset_access_result->permissions
+    if(delete_partner_asset_access_result->permissions) {
+    cJSON *permissions = cJSON_AddArrayToObject(item, "permissions");
+    if(permissions == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *permissionsListEntry;
+    list_ForEach(permissionsListEntry, delete_partner_asset_access_result->permissions) {
+    if(cJSON_AddStringToObject(permissions, "", permissionsListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
+    return item;
+fail:
+    if (item) {
+        cJSON_Delete(item);
+    }
+    return NULL;
+}
+
+delete_partner_asset_access_result_t *delete_partner_asset_access_result_parseFromJSON(cJSON *delete_partner_asset_access_resultJSON){
+
+    delete_partner_asset_access_result_t *delete_partner_asset_access_result_local_var = NULL;
+
+    char *asset_id_local_str = NULL;
+
+    char *asset_type_local_str = NULL;
+
+    // define the local variable for delete_partner_asset_access_result->is_shared_partner
+    int *is_shared_partner_local_var = NULL;
+
+    char *partner_id_local_str = NULL;
+
+    // define the local list for delete_partner_asset_access_result->permissions
+    list_t *permissionsList = NULL;
+
+    // delete_partner_asset_access_result->asset_id
+    cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(delete_partner_asset_access_resultJSON, "asset_id");
+    if (cJSON_IsNull(asset_id)) {
+        asset_id = NULL;
+    }
+    if (asset_id) { 
+    if(!cJSON_IsString(asset_id) && !cJSON_IsNull(asset_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // delete_partner_asset_access_result->asset_type
+    cJSON *asset_type = cJSON_GetObjectItemCaseSensitive(delete_partner_asset_access_resultJSON, "asset_type");
+    if (cJSON_IsNull(asset_type)) {
+        asset_type = NULL;
+    }
+    if (asset_type) { 
+    if(!cJSON_IsString(asset_type) && !cJSON_IsNull(asset_type))
+    {
+    goto end; //String
+    }
+    }
+
+    // delete_partner_asset_access_result->is_shared_partner
+    cJSON *is_shared_partner = cJSON_GetObjectItemCaseSensitive(delete_partner_asset_access_resultJSON, "is_shared_partner");
+    if (cJSON_IsNull(is_shared_partner)) {
+        is_shared_partner = NULL;
+    }
+    if (is_shared_partner) { 
+    if(!cJSON_IsBool(is_shared_partner))
+    {
+    goto end; //Bool
+    }
+    is_shared_partner_local_var = malloc(sizeof(int));
+    if(!is_shared_partner_local_var)
+    {
+        goto end;
+    }
+    *is_shared_partner_local_var = is_shared_partner->valueint;
+    }
+
+    // delete_partner_asset_access_result->partner_id
+    cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(delete_partner_asset_access_resultJSON, "partner_id");
+    if (cJSON_IsNull(partner_id)) {
+        partner_id = NULL;
+    }
+    if (partner_id) { 
+    if(!cJSON_IsString(partner_id) && !cJSON_IsNull(partner_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // delete_partner_asset_access_result->permissions
+    cJSON *permissions = cJSON_GetObjectItemCaseSensitive(delete_partner_asset_access_resultJSON, "permissions");
+    if (cJSON_IsNull(permissions)) {
+        permissions = NULL;
+    }
+    if (permissions) { 
+    cJSON *permissions_local = NULL;
+    if(!cJSON_IsArray(permissions)) {
+        goto end;//primitive container
+    }
+    permissionsList = list_createList();
+
+    cJSON_ArrayForEach(permissions_local, permissions)
+    {
+        if(!cJSON_IsString(permissions_local))
+        {
+            goto end;
+        }
+        list_addElement(permissionsList , strdup(permissions_local->valuestring));
+    }
+    }
+
+
+    if (asset_id && !cJSON_IsNull(asset_id)) asset_id_local_str = strdup(asset_id->valuestring);
+    if (asset_type && !cJSON_IsNull(asset_type)) asset_type_local_str = strdup(asset_type->valuestring);
+    if (partner_id && !cJSON_IsNull(partner_id)) partner_id_local_str = strdup(partner_id->valuestring);
+
+    delete_partner_asset_access_result_local_var = delete_partner_asset_access_result_create_internal (
+        asset_id_local_str,
+        asset_type_local_str,
+        is_shared_partner_local_var,
+        partner_id_local_str,
+        permissions ? permissionsList : NULL
+        );
+
+    if (!delete_partner_asset_access_result_local_var) {
+        goto end;
+    }
+
+    return delete_partner_asset_access_result_local_var;
+end:
+    if (asset_id_local_str) {
+        free(asset_id_local_str);
+        asset_id_local_str = NULL;
+    }
+    if (asset_type_local_str) {
+        free(asset_type_local_str);
+        asset_type_local_str = NULL;
+    }
+    if (is_shared_partner_local_var) {
+        free(is_shared_partner_local_var);
+        is_shared_partner_local_var = NULL;
+    }
+    if (partner_id_local_str) {
+        free(partner_id_local_str);
+        partner_id_local_str = NULL;
+    }
+    if (permissionsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, permissionsList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(permissionsList);
+        permissionsList = NULL;
+    }
+    return NULL;
+
+}

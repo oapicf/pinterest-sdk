@@ -7,6 +7,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { FormFactor } from './formFactor';
+import { NetworkType } from './networkType';
+import { OsFamily } from './osFamily';
 
 
 /**
@@ -40,7 +43,7 @@ export interface ConversionEventDeviceInfo {
     /**
      * Device form factor
      */
-    form_factor?: ConversionEventDeviceInfo.FormFactorEnum;
+    form_factor?: FormFactor;
     /**
      * Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release
      */
@@ -60,11 +63,11 @@ export interface ConversionEventDeviceInfo {
     /**
      * Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
      */
-    network_type?: ConversionEventDeviceInfo.NetworkTypeEnum;
+    network_type?: NetworkType;
     /**
      * OS Family
      */
-    os_family?: ConversionEventDeviceInfo.OsFamilyEnum;
+    os_family?: OsFamily;
     /**
      * Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch
      */
@@ -111,39 +114,6 @@ export interface ConversionEventDeviceInfo {
     type?: string;
 }
 export namespace ConversionEventDeviceInfo {
-    export const FormFactorEnum = {
-        Desktop: 'desktop',
-        Laptop: 'laptop',
-        Cellphone: 'cellphone',
-        Tablet: 'tablet',
-        Smartwatch: 'smartwatch',
-        Tv: 'tv',
-        Vr: 'vr',
-        Console: 'console',
-        Other: 'other'
-    } as const;
-    export type FormFactorEnum = typeof FormFactorEnum[keyof typeof FormFactorEnum];
-    export const NetworkTypeEnum = {
-        Wifi: 'wifi',
-        Cellular2g: 'cellular_2g',
-        Cellular3g: 'cellular_3g',
-        Cellular4g: 'cellular_4g',
-        Cellular5g: 'cellular_5g',
-        Cellular6g: 'cellular_6g',
-        Ethernet: 'ethernet',
-        Unknown: 'unknown'
-    } as const;
-    export type NetworkTypeEnum = typeof NetworkTypeEnum[keyof typeof NetworkTypeEnum];
-    export const OsFamilyEnum = {
-        Ios: 'ios',
-        Android: 'android',
-        Macos: 'macos',
-        Windows: 'windows',
-        Linux: 'linux',
-        Bsd: 'bsd',
-        Other: 'other'
-    } as const;
-    export type OsFamilyEnum = typeof OsFamilyEnum[keyof typeof OsFamilyEnum];
 }
 
 

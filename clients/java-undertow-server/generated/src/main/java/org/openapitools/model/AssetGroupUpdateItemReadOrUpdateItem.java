@@ -1,0 +1,191 @@
+/*
+ * Pinterest REST API
+ *
+ * Pinterest's REST API
+ *
+ * OpenAPI document version: 5.28.0
+ * Maintained by: blah+oapicf@cliffano.com
+ *
+ * AUTO-GENERATED FILE, DO NOT MODIFY!
+ */
+package org.openapitools.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.model.AssetGroupType;
+
+
+
+
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class AssetGroupUpdateItemReadOrUpdateItem   {
+  
+  private String assetGroupId;
+  private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
+  private List<String> assetsToAdd = new ArrayList<>();
+  private List<String> assetsToRemove = new ArrayList<>();
+  private String description;
+  private String name;
+
+  /**
+   * Unique identifier of the asset group to update.
+   */
+  public AssetGroupUpdateItemReadOrUpdateItem assetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Unique identifier of the asset group to update.")
+  @JsonProperty("asset_group_id")
+  public String getAssetGroupId() {
+    return assetGroupId;
+  }
+  public void setAssetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+  }
+
+  /**
+   * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
+   */
+  public AssetGroupUpdateItemReadOrUpdateItem assetGroupTypes(List<AssetGroupType> assetGroupTypes) {
+    this.assetGroupTypes = assetGroupTypes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", value = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")
+  @JsonProperty("asset_group_types")
+  public List<AssetGroupType> getAssetGroupTypes() {
+    return assetGroupTypes;
+  }
+  public void setAssetGroupTypes(List<AssetGroupType> assetGroupTypes) {
+    this.assetGroupTypes = assetGroupTypes;
+  }
+
+  /**
+   * A list of asset ids to add to the asset group.
+   */
+  public AssetGroupUpdateItemReadOrUpdateItem assetsToAdd(List<String> assetsToAdd) {
+    this.assetsToAdd = assetsToAdd;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A list of asset ids to add to the asset group.")
+  @JsonProperty("assets_to_add")
+  public List<String> getAssetsToAdd() {
+    return assetsToAdd;
+  }
+  public void setAssetsToAdd(List<String> assetsToAdd) {
+    this.assetsToAdd = assetsToAdd;
+  }
+
+  /**
+   * A list of asset ids to remove from the asset group.
+   */
+  public AssetGroupUpdateItemReadOrUpdateItem assetsToRemove(List<String> assetsToRemove) {
+    this.assetsToRemove = assetsToRemove;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A list of asset ids to remove from the asset group.")
+  @JsonProperty("assets_to_remove")
+  public List<String> getAssetsToRemove() {
+    return assetsToRemove;
+  }
+  public void setAssetsToRemove(List<String> assetsToRemove) {
+    this.assetsToRemove = assetsToRemove;
+  }
+
+  /**
+   * Asset group description.
+   */
+  public AssetGroupUpdateItemReadOrUpdateItem description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Asset group description.")
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  /**
+   * Asset Group name.
+   */
+  public AssetGroupUpdateItemReadOrUpdateItem name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Asset Group name.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AssetGroupUpdateItemReadOrUpdateItem assetGroupUpdateItemReadOrUpdateItem = (AssetGroupUpdateItemReadOrUpdateItem) o;
+    return Objects.equals(assetGroupId, assetGroupUpdateItemReadOrUpdateItem.assetGroupId) &&
+        Objects.equals(assetGroupTypes, assetGroupUpdateItemReadOrUpdateItem.assetGroupTypes) &&
+        Objects.equals(assetsToAdd, assetGroupUpdateItemReadOrUpdateItem.assetsToAdd) &&
+        Objects.equals(assetsToRemove, assetGroupUpdateItemReadOrUpdateItem.assetsToRemove) &&
+        Objects.equals(description, assetGroupUpdateItemReadOrUpdateItem.description) &&
+        Objects.equals(name, assetGroupUpdateItemReadOrUpdateItem.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(assetGroupId, assetGroupTypes, assetsToAdd, assetsToRemove, description, name);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AssetGroupUpdateItemReadOrUpdateItem {\n");
+    
+    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
+    sb.append("    assetGroupTypes: ").append(toIndentedString(assetGroupTypes)).append("\n");
+    sb.append("    assetsToAdd: ").append(toIndentedString(assetsToAdd)).append("\n");
+    sb.append("    assetsToRemove: ").append(toIndentedString(assetsToRemove)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

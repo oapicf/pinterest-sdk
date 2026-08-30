@@ -15,7 +15,7 @@ part 'catalogs_retail_product_group.g.dart';
 /// CatalogsRetailProductGroup
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the retail product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [country] 
 /// * [createdAt] - Unix timestamp in seconds of when catalog product group was created.
@@ -31,7 +31,7 @@ part 'catalogs_retail_product_group.g.dart';
 /// * [updatedAt] - Unix timestamp in seconds of last time catalog product group was updated.
 @BuiltValue()
 abstract class CatalogsRetailProductGroup implements Built<CatalogsRetailProductGroup, CatalogsRetailProductGroupBuilder> {
-  /// Catalog id pertaining to the retail product group.
+  /// Catalog ID pertaining to the product group.
   @BuiltValueField(wireName: r'catalog_id')
   String get catalogId;
 
@@ -78,7 +78,7 @@ abstract class CatalogsRetailProductGroup implements Built<CatalogsRetailProduct
 
   @BuiltValueField(wireName: r'type')
   CatalogsProductGroupType get type;
-  // enum typeEnum {  MERCHANT_CREATED,  ALL_PRODUCTS,  BEST_DEALS,  PINNER_FAVORITES,  TOP_SELLERS,  BACK_IN_STOCK,  NEW_ARRIVALS,  SHOPIFY_COLLECTIONS,  I2PC,  };
+  // enum typeEnum {  MERCHANT_CREATED,  ALL_PRODUCTS,  BEST_DEALS,  PINNER_FAVORITES,  TOP_SELLERS,  BACK_IN_STOCK,  NEW_ARRIVALS,  SHOPIFY_COLLECTIONS,  I2PC,  CATALOG_EXPANSION,  };
 
   /// Unix timestamp in seconds of last time catalog product group was updated.
   @BuiltValueField(wireName: r'updated_at')
@@ -241,8 +241,9 @@ class _$CatalogsRetailProductGroupSerializer implements PrimitiveSerializer<Cata
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'description':
@@ -278,8 +279,9 @@ class _$CatalogsRetailProductGroupSerializer implements PrimitiveSerializer<Cata
         case r'is_featured':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isFeatured = valueDes;
           break;
         case r'locale':
@@ -293,15 +295,17 @@ class _$CatalogsRetailProductGroupSerializer implements PrimitiveSerializer<Cata
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsProductGroupStatus),
-          ) as CatalogsProductGroupStatus;
+            specifiedType: const FullType.nullable(CatalogsProductGroupStatus),
+          ) as CatalogsProductGroupStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         case r'type':
@@ -314,8 +318,9 @@ class _$CatalogsRetailProductGroupSerializer implements PrimitiveSerializer<Cata
         case r'updated_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.updatedAt = valueDes;
           break;
         default:

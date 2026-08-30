@@ -3,20 +3,23 @@
 #import "OAIApiClient.h"
 #import "OAIAccount.h"
 #import "OAIAnalyticsMetricsResponse.h"
-#import "OAIBoardsUserFollowsList200Response.h"
-#import "OAIError.h"
-#import "OAIFollowUserRequest.h"
+#import "OAIBoardsList200Response.h"
+#import "OAIFollowUser.h"
+#import "OAIFollowUserCreate.h"
 #import "OAIFollowersList200Response.h"
 #import "OAILinkedBusiness.h"
+#import "OAIPinterestLibError.h"
+#import "OAIQuerymetrictypesItems.h"
+#import "OAIQueryvideopinmetrictypesItems.h"
 #import "OAITopPinsAnalyticsResponse.h"
+#import "OAITopPinsSortBy.h"
 #import "OAITopVideoPinsAnalyticsResponse.h"
+#import "OAITopVideoPinsSortBy.h"
 #import "OAIUserAccountFollowedInterests200Response.h"
 #import "OAIUserFollowingFeedType.h"
-#import "OAIUserFollowingGet200Response.h"
-#import "OAIUserSummary.h"
-#import "OAIUserWebsiteSummary.h"
-#import "OAIUserWebsiteVerificationCode.h"
-#import "OAIUserWebsiteVerifyRequest.h"
+#import "OAIUserWebsite.h"
+#import "OAIUserWebsiteCreate.h"
+#import "OAIUserWebsiteVerification.h"
 #import "OAIUserWebsitesGet200Response.h"
 
 
@@ -68,37 +71,37 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 /// List following boards
 /// Get a list of the boards a user follows. The request returns a board summary object array.
-///  @param bookmark Cursor used to fetch the next page of items (optional)
-///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to @(NO))
 ///
-///  @param adAccountId Unique identifier of an ad account. (optional)
+///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @returns OAIBoardsUserFollowsList200Response*
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
--(NSURLSessionTask*) boardsUserFollowsListWithBookmark: (NSString*) bookmark
-    pageSize: (NSNumber*) pageSize
+///  @returns OAIBoardsList200Response*
+///
+-(NSURLSessionTask*) boardsUserFollowsListWithAdAccountId: (NSString*) adAccountId
     explicitFollowing: (NSNumber*) explicitFollowing
-    adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAIBoardsUserFollowsList200Response* output, NSError* error)) handler {
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    completionHandler: (void (^)(OAIBoardsList200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user_account/following/boards"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    if (explicitFollowing != nil) {
+        queryParams[@"explicit_following"] = [explicitFollowing isEqual:@(YES)] ? @"true" : @"false";
+    }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
     }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
-    }
-    if (explicitFollowing != nil) {
-        queryParams[@"explicit_following"] = [explicitFollowing isEqual:@(YES)] ? @"true" : @"false";
-    }
-    if (adAccountId != nil) {
-        queryParams[@"ad_account_id"] = adAccountId;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -132,26 +135,26 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBoardsUserFollowsList200Response*"
+                              responseType: @"OAIBoardsList200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBoardsUserFollowsList200Response*)data, error);
+                                    handler((OAIBoardsList200Response*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Follow user
-/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+/// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 ///  @param username A valid username 
 ///
-///  @param followUserRequest Follow a user. 
+///  @param followUserCreate  
 ///
-///  @returns OAIUserSummary*
+///  @returns OAIFollowUser*
 ///
 -(NSURLSessionTask*) followUserUpdateWithUsername: (NSString*) username
-    followUserRequest: (OAIFollowUserRequest*) followUserRequest
-    completionHandler: (void (^)(OAIUserSummary* output, NSError* error)) handler {
+    followUserCreate: (OAIFollowUserCreate*) followUserCreate
+    completionHandler: (void (^)(OAIFollowUser* output, NSError* error)) handler {
     // verify the required parameter 'username' is set
     if (username == nil) {
         NSParameterAssert(username);
@@ -163,11 +166,11 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'followUserRequest' is set
-    if (followUserRequest == nil) {
-        NSParameterAssert(followUserRequest);
+    // verify the required parameter 'followUserCreate' is set
+    if (followUserCreate == nil) {
+        NSParameterAssert(followUserCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"followUserRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"followUserCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIUserAccountApiErrorDomain code:kOAIUserAccountApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -202,7 +205,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = followUserRequest;
+    bodyParam = followUserCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -215,10 +218,10 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIUserSummary*"
+                              responseType: @"OAIFollowUser*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIUserSummary*)data, error);
+                                    handler((OAIFollowUser*)data, error);
                                 }
                             }];
 }
@@ -228,7 +231,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 /// Get a list of your followers.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIFollowersList200Response*
 ///
@@ -340,20 +343,20 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 
 ///
 /// Unverify website
-/// Unverifu a website verified by the signed-in user.
+/// Unverify a website verified by the signed-in user.
 ///  @param website Website with path or domain only 
 ///
-///  @returns void
+///  @returns OAIUserWebsite*
 ///
 -(NSURLSessionTask*) unverifyWebsiteDeleteWithWebsite: (NSString*) website
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(OAIUserWebsite* output, NSError* error)) handler {
     // verify the required parameter 'website' is set
     if (website == nil) {
         NSParameterAssert(website);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"website"] };
             NSError* error = [NSError errorWithDomain:kOAIUserAccountApiErrorDomain code:kOAIUserAccountApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -398,10 +401,10 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"OAIUserWebsite*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((OAIUserWebsite*)data, error);
                                 }
                             }];
 }
@@ -423,7 +426,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 ///  @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to @"ALL")
 ///
-///  @param metricTypes Metric types to get data for, default is all.  (optional)
+///  @param metricTypes Metric types to get data for, default is all. (optional)
 ///
 ///  @param splitField How to split the data into groups. Not including this param means data won't be split. (optional, default to @"NO_SPLIT")
 ///
@@ -438,7 +441,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     appTypes: (NSString*) appTypes
     contentType: (NSString*) contentType
     source: (NSString*) source
-    metricTypes: (NSArray<NSString*>*) metricTypes
+    metricTypes: (NSArray<OAIQuerymetrictypesItems>*) metricTypes
     splitField: (NSString*) splitField
     adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(NSDictionary<OAIAnalyticsMetricsResponse>* output, NSError* error)) handler {
@@ -558,7 +561,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 ///  @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to @"ALL")
 ///
-///  @param metricTypes Metric types to get data for, default is all.  (optional)
+///  @param metricTypes Metric types to get data for, default is all. (optional)
 ///
 ///  @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to @10)
 ///
@@ -570,13 +573,13 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 -(NSURLSessionTask*) userAccountAnalyticsTopPinsWithStartDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    sortBy: (NSString*) sortBy
+    sortBy: (OAITopPinsSortBy) sortBy
     fromClaimedContent: (NSString*) fromClaimedContent
     pinFormat: (NSString*) pinFormat
     appTypes: (NSString*) appTypes
     contentType: (NSString*) contentType
     source: (NSString*) source
-    metricTypes: (NSArray<NSString*>*) metricTypes
+    metricTypes: (NSArray<OAIQuerymetrictypesItems>*) metricTypes
     numOfPins: (NSNumber*) numOfPins
     createdInLastNDays: (NSNumber*) createdInLastNDays
     adAccountId: (NSString*) adAccountId
@@ -714,7 +717,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 ///  @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to @"ALL")
 ///
-///  @param metricTypes Metric types to get video data for, default is all.  (optional)
+///  @param metricTypes Metric types to get video data for, default is all. (optional)
 ///
 ///  @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to @10)
 ///
@@ -726,13 +729,13 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 -(NSURLSessionTask*) userAccountAnalyticsTopVideoPinsWithStartDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    sortBy: (NSString*) sortBy
+    sortBy: (OAITopVideoPinsSortBy) sortBy
     fromClaimedContent: (NSString*) fromClaimedContent
     pinFormat: (NSString*) pinFormat
     appTypes: (NSString*) appTypes
     contentType: (NSString*) contentType
     source: (NSString*) source
-    metricTypes: (NSArray<NSString*>*) metricTypes
+    metricTypes: (NSArray<OAIQueryvideopinmetrictypesItems>*) metricTypes
     numOfPins: (NSNumber*) numOfPins
     createdInLastNDays: (NSNumber*) createdInLastNDays
     adAccountId: (NSString*) adAccountId
@@ -858,7 +861,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIUserAccountFollowedInterests200Response*
 ///
@@ -933,7 +936,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 
 ///
 /// Get user account
-/// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+/// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @returns OAIAccount*
@@ -991,43 +994,43 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 /// List following
 /// Get a list of who a certain user follows.
-///  @param bookmark Cursor used to fetch the next page of items (optional)
-///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
-///
-///  @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
+///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to @(NO))
 ///
-///  @param adAccountId Unique identifier of an ad account. (optional)
+///  @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
 ///
-///  @returns OAIUserFollowingGet200Response*
+///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
--(NSURLSessionTask*) userFollowingGetWithBookmark: (NSString*) bookmark
-    pageSize: (NSNumber*) pageSize
-    feedType: (OAIUserFollowingFeedType) feedType
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
+///  @returns OAIFollowersList200Response*
+///
+-(NSURLSessionTask*) userFollowingGetWithAdAccountId: (NSString*) adAccountId
     explicitFollowing: (NSNumber*) explicitFollowing
-    adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAIUserFollowingGet200Response* output, NSError* error)) handler {
+    feedType: (OAIUserFollowingFeedType) feedType
+    bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    completionHandler: (void (^)(OAIFollowersList200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user_account/following"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    if (explicitFollowing != nil) {
+        queryParams[@"explicit_following"] = [explicitFollowing isEqual:@(YES)] ? @"true" : @"false";
+    }
+    if (feedType != nil) {
+        queryParams[@"feed_type"] = feedType;
+    }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
     }
     if (pageSize != nil) {
         queryParams[@"page_size"] = pageSize;
-    }
-    if (feedType != nil) {
-        queryParams[@"feed_type"] = feedType;
-    }
-    if (explicitFollowing != nil) {
-        queryParams[@"explicit_following"] = [explicitFollowing isEqual:@(YES)] ? @"true" : @"false";
-    }
-    if (adAccountId != nil) {
-        queryParams[@"ad_account_id"] = adAccountId;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -1061,10 +1064,10 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIUserFollowingGet200Response*"
+                              responseType: @"OAIFollowersList200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIUserFollowingGet200Response*)data, error);
+                                    handler((OAIFollowersList200Response*)data, error);
                                 }
                             }];
 }
@@ -1074,7 +1077,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 /// Get user websites, claimed or not
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIUserWebsitesGet200Response*
 ///
@@ -1135,20 +1138,20 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 /// Verify website
 /// Verify a website as a signed-in user.
-///  @param userWebsiteVerifyRequest Verify a website. 
+///  @param userWebsiteCreate  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns OAIUserWebsiteSummary*
+///  @returns OAIUserWebsite*
 ///
--(NSURLSessionTask*) verifyWebsiteUpdateWithUserWebsiteVerifyRequest: (OAIUserWebsiteVerifyRequest*) userWebsiteVerifyRequest
+-(NSURLSessionTask*) verifyWebsiteUpdateWithUserWebsiteCreate: (OAIUserWebsiteCreate*) userWebsiteCreate
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAIUserWebsiteSummary* output, NSError* error)) handler {
-    // verify the required parameter 'userWebsiteVerifyRequest' is set
-    if (userWebsiteVerifyRequest == nil) {
-        NSParameterAssert(userWebsiteVerifyRequest);
+    completionHandler: (void (^)(OAIUserWebsite* output, NSError* error)) handler {
+    // verify the required parameter 'userWebsiteCreate' is set
+    if (userWebsiteCreate == nil) {
+        NSParameterAssert(userWebsiteCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"userWebsiteVerifyRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"userWebsiteCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIUserAccountApiErrorDomain code:kOAIUserAccountApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -1183,7 +1186,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = userWebsiteVerifyRequest;
+    bodyParam = userWebsiteCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -1196,10 +1199,10 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIUserWebsiteSummary*"
+                              responseType: @"OAIUserWebsite*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIUserWebsiteSummary*)data, error);
+                                    handler((OAIUserWebsite*)data, error);
                                 }
                             }];
 }
@@ -1209,10 +1212,10 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 /// Get verification code for user to install on the website to claim it.
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns OAIUserWebsiteVerificationCode*
+///  @returns OAIUserWebsiteVerification*
 ///
 -(NSURLSessionTask*) websiteVerificationGetWithAdAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAIUserWebsiteVerificationCode* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIUserWebsiteVerification* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user_account/websites/verification"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -1253,10 +1256,10 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIUserWebsiteVerificationCode*"
+                              responseType: @"OAIUserWebsiteVerification*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIUserWebsiteVerificationCode*)data, error);
+                                    handler((OAIUserWebsiteVerification*)data, error);
                                 }
                             }];
 }

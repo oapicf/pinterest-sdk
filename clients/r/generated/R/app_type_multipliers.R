@@ -7,7 +7,7 @@
 #' @title AppTypeMultipliers
 #' @description AppTypeMultipliers Class
 #' @format An \code{R6Class} generator object
-#' @field APP_TYPE  character [optional]
+#' @field APP_TYPE App type identifier. \link{TargetingSpecAppType} [optional]
 #' @field _field_list a list of fields list(character)
 #' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
@@ -24,17 +24,15 @@ AppTypeMultipliers <- R6::R6Class(
     #' @description
     #' Initialize a new AppTypeMultipliers class.
     #'
-    #' @param APP_TYPE APP_TYPE
+    #' @param APP_TYPE App type identifier.
     #' @param additional_properties additional properties (optional)
     #' @param ... Other optional arguments.
     initialize = function(`APP_TYPE` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`APP_TYPE`)) {
-        if (!(`APP_TYPE` %in% c("android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile"))) {
-          stop(paste("Error! \"", `APP_TYPE`, "\" cannot be assigned to `APP_TYPE`. Must be \"android_mobile\", \"android_tablet\", \"ipad\", \"iphone\", \"web\", \"web_mobile\".", sep = ""))
+        if (!(`APP_TYPE` %in% c())) {
+          stop(paste("Error! \"", `APP_TYPE`, "\" cannot be assigned to `APP_TYPE`. Must be .", sep = ""))
         }
-        if (!(is.character(`APP_TYPE`) && length(`APP_TYPE`) == 1)) {
-          stop(paste("Error! Invalid data for `APP_TYPE`. Must be a string:", `APP_TYPE`))
-        }
+        stopifnot(R6::is.R6(`APP_TYPE`))
         self$`APP_TYPE` <- `APP_TYPE`
       }
       if (!is.null(additional_properties)) {
@@ -77,13 +75,36 @@ AppTypeMultipliers <- R6::R6Class(
       AppTypeMultipliersObject <- list()
       if (!is.null(self$`APP_TYPE`)) {
         AppTypeMultipliersObject[["APP_TYPE"]] <-
-          self$`APP_TYPE`
+          self$extractSimpleType(self$`APP_TYPE`)
       }
       for (key in names(self$additional_properties)) {
         AppTypeMultipliersObject[[key]] <- self$additional_properties[[key]]
       }
 
       return(AppTypeMultipliersObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -94,10 +115,9 @@ AppTypeMultipliers <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`APP_TYPE`)) {
-        if (!is.null(this_object$`APP_TYPE`) && !(this_object$`APP_TYPE` %in% c("android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile"))) {
-          stop(paste("Error! \"", this_object$`APP_TYPE`, "\" cannot be assigned to `APP_TYPE`. Must be \"android_mobile\", \"android_tablet\", \"ipad\", \"iphone\", \"web\", \"web_mobile\".", sep = ""))
-        }
-        self$`APP_TYPE` <- this_object$`APP_TYPE`
+        `app_type_object` <- TargetingSpecAppType$new()
+        `app_type_object`$fromJSON(jsonlite::toJSON(this_object$`APP_TYPE`, auto_unbox = TRUE, digits = NA))
+        self$`APP_TYPE` <- `app_type_object`
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
@@ -130,10 +150,7 @@ AppTypeMultipliers <- R6::R6Class(
     #' @return the instance of AppTypeMultipliers
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`APP_TYPE`) && !(this_object$`APP_TYPE` %in% c("android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile"))) {
-        stop(paste("Error! \"", this_object$`APP_TYPE`, "\" cannot be assigned to `APP_TYPE`. Must be \"android_mobile\", \"android_tablet\", \"ipad\", \"iphone\", \"web\", \"web_mobile\".", sep = ""))
-      }
-      self$`APP_TYPE` <- this_object$`APP_TYPE`
+      self$`APP_TYPE` <- TargetingSpecAppType$new()$fromJSON(jsonlite::toJSON(this_object$`APP_TYPE`, auto_unbox = TRUE, digits = NA))
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
         if (!(key %in% self$`_field_list`)) { # json key not in list of fields

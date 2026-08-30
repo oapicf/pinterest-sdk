@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.UserSummary;
+import org.openapitools.model.FollowUser;
 
 @Canonical
 class FollowersList200Response {
     
     String bookmark
     
-    List<UserSummary> items = new ArrayList<>()
+    List<FollowUser> items = new ArrayList<>()
 }

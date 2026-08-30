@@ -23,10 +23,7 @@ public class AnalyticsDailyMetrics  {
 
   private String date;
 
- /**
-  * The metric name and daily value for each requested metric
-  */
-  @ApiModelProperty(example = "{\"CLOSEUP\":1,\"CLOSEUP_RATE\":0,\"ENGAGEMENT\":1,\"ENGAGEMENT_RATE\":0,\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"OUTBOUND_CLICK_RATE\":0.08,\"PIN_CLICK\":37,\"PIN_CLICK_RATE\":0.15,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", value = "The metric name and daily value for each requested metric")
+  @ApiModelProperty(value = "")
 
   private Map<String, BigDecimal> metrics = new HashMap<>();
  /**
@@ -66,7 +63,7 @@ public class AnalyticsDailyMetrics  {
   }
 
  /**
-   * The metric name and daily value for each requested metric
+   * Get metrics
    * @return metrics
   **/
   @JsonProperty("metrics")
@@ -124,10 +121,7 @@ public class AnalyticsDailyMetrics  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

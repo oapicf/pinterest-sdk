@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -11,6 +11,7 @@
 package org.openapitools.model;
 
 import java.util.Objects;
+import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 
@@ -21,21 +22,21 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum ConversionAttributionWindowDays {
     
-        NUMBER_0(0),
+        NUMBER_0(new BigDecimal("0")),
         
-        NUMBER_1(1),
+        NUMBER_1(new BigDecimal("1")),
         
-        NUMBER_7(7),
+        NUMBER_7(new BigDecimal("7")),
         
-        NUMBER_14(14),
+        NUMBER_14(new BigDecimal("14")),
         
-        NUMBER_30(30),
+        NUMBER_30(new BigDecimal("30")),
         
-        NUMBER_60(60);
+        NUMBER_60(new BigDecimal("60"));
 
-private Integer value;
+private BigDecimal value;
 
-ConversionAttributionWindowDays(Integer value) {
+ConversionAttributionWindowDays(BigDecimal value) {
 this.value = value;
 }
 

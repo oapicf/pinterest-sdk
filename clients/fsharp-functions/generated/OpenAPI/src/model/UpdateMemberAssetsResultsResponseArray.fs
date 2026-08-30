@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.UpdateMemberAssetsResultsResponseArrayItemsInner
+open OpenAPI.Model.UpdateMemberAssetResultItem
 
 module UpdateMemberAssetsResultsResponseArray =
 
@@ -12,7 +12,7 @@ module UpdateMemberAssetsResultsResponseArray =
   [<CLIMutable>]
   type UpdateMemberAssetsResultsResponseArray = {
     [<JsonProperty(PropertyName = "items")>]
-    Items : UpdateMemberAssetsResultsResponseArrayItemsInner[];
+    Items : UpdateMemberAssetResultItem[];
   }
 
   //#endregion

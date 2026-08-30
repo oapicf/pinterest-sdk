@@ -16,13 +16,23 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">itemUnderscoretype : String
-    <br/>
+  <li class="param-required-true">itemUnderscoretype : String
+    <br/>Discriminator literal identifying this as video metadata inside a &#x60;PinMediaMetadata&#x60; payload.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>video</dd>
+        </dt>
+      </dl>
   </li>
 </ul>
 <ul class="parameter">
   <li class="param-required-false">videoUnderscoreurl : String
     <br/>Video url (720p).  **Note:** This field is limited and not available to all apps.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">videoUnderscoreurlUnderscorehls : String
+    <br/>Video url (HLS).  **Note:** This field is limited and not available to all apps.
   </li>
 </ul>
 <ul class="parameter">

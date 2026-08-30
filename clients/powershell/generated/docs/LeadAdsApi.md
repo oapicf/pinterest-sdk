@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a id="Invoke-AdAccountsSubscriptionsDelById"></a>
 # **Invoke-AdAccountsSubscriptionsDelById**
-> void Invoke-AdAccountsSubscriptionsDelById<br>
+> LeadSubscription Invoke-AdAccountsSubscriptionsDelById<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SubscriptionId] <String><br>
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**LeadSubscription**](LeadSubscription.md) (PSCustomObject)
 
 ### Authorization
 
@@ -187,8 +187,8 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$LeadSubscriptionPostParamsCreateAllOfPartnerMetadata = Initialize-LeadSubscriptionPostParamsCreateAllOfPartnerMetadata -SubscriberKey "MySubscriberKey"
-$LeadSubscriptionPostParamsCreate = Initialize-LeadSubscriptionPostParamsCreate -LeadFormId "MyLeadFormId" -WebhookUrl "MyWebhookUrl" -PartnerAccessToken "MyPartnerAccessToken" -PartnerMetadata $LeadSubscriptionPostParamsCreateAllOfPartnerMetadata -PartnerRefreshToken "MyPartnerRefreshToken" # LeadSubscriptionPostParamsCreate | 
+$PartnerMetadata = Initialize-PartnerMetadata -SubscriberKey "MySubscriberKey"
+$LeadSubscriptionPostParamsCreate = Initialize-LeadSubscriptionPostParamsCreate -LeadFormId "MyLeadFormId" -WebhookUrl "MyWebhookUrl" -PartnerAccessToken "MyPartnerAccessToken" -PartnerMetadata $PartnerMetadata -PartnerRefreshToken "MyPartnerRefreshToken" # LeadSubscriptionPostParamsCreate | 
 
 # Create lead ads subscription
 try {

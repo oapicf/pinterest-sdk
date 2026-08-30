@@ -9,10 +9,10 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/boards_list200_response.dart';
+import 'package:openapi/src/model/pins_list200_response.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 import 'package:openapi/src/model/search_partner_pins200_response.dart';
-import 'package:openapi/src/model/search_user_boards_get200_response.dart';
-import 'package:openapi/src/model/search_user_pins_list200_response.dart';
 
 class SearchApi {
 
@@ -23,7 +23,7 @@ class SearchApi {
   const SearchApi(this._dio, this._serializers);
 
   /// Search pins by a given search term
-  /// &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+  /// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
   ///
   /// Parameters:
   /// * [term] - Search term to look up pins.
@@ -120,13 +120,13 @@ class SearchApi {
   }
 
   /// Search user&#39;s boards
-  /// Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+  /// Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   /// * [query] - Search query. Can contain pin description keywords or comma-separated pin IDs.
+  /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -134,13 +134,13 @@ class SearchApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SearchUserBoardsGet200Response] as data
+  /// Returns a [Future] containing a [Response] with a [BoardsList200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SearchUserBoardsGet200Response>> searchUserBoardsGet({ 
+  Future<Response<BoardsList200Response>> searchUserBoardsGet({ 
     String? adAccountId,
+    String? query,
     String? bookmark,
     int? pageSize = 25,
-    String? query,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -171,9 +171,9 @@ class SearchApi {
 
     final _queryParameters = <String, dynamic>{
       if (adAccountId != null) r'ad_account_id': encodeQueryParameter(_serializers, adAccountId, const FullType(String)),
+      if (query != null) r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (query != null) r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -185,14 +185,14 @@ class SearchApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SearchUserBoardsGet200Response? _responseData;
+    BoardsList200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SearchUserBoardsGet200Response),
-      ) as SearchUserBoardsGet200Response;
+        specifiedType: const FullType(BoardsList200Response),
+      ) as BoardsList200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -204,7 +204,7 @@ class SearchApi {
       );
     }
 
-    return Response<SearchUserBoardsGet200Response>(
+    return Response<BoardsList200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -217,7 +217,7 @@ class SearchApi {
   }
 
   /// Search user&#39;s Pins
-  /// Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+  /// Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
   ///
   /// Parameters:
   /// * [query] - Search query. Can contain pin description keywords or comma-separated pin IDs.
@@ -230,9 +230,9 @@ class SearchApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SearchUserPinsList200Response] as data
+  /// Returns a [Future] containing a [Response] with a [PinsList200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SearchUserPinsList200Response>> searchUserPinsList({ 
+  Future<Response<PinsList200Response>> searchUserPinsList({ 
     required String query,
     String? adAccountId,
     String? bookmark,
@@ -276,14 +276,14 @@ class SearchApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SearchUserPinsList200Response? _responseData;
+    PinsList200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SearchUserPinsList200Response),
-      ) as SearchUserPinsList200Response;
+        specifiedType: const FullType(PinsList200Response),
+      ) as PinsList200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -295,7 +295,7 @@ class SearchApi {
       );
     }
 
-    return Response<SearchUserPinsList200Response>(
+    return Response<PinsList200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

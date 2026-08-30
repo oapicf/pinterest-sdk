@@ -82,7 +82,7 @@ public enum OperationEnum {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private List<@Valid TargetingSpecShoppingRetargeting> values;
+  private List<@Valid TargetingSpecShoppingRetargeting> values = new ArrayList<>();
  /**
   * Get field
   * @return field
@@ -203,10 +203,7 @@ public enum OperationEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

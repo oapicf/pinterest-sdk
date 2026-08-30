@@ -3,18 +3,18 @@ const Service = require('./Service');
 
 /**
 * Create a new asset group.
-* Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+* Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
-* createAssetGroupBody CreateAssetGroupBody 
-* returns CreateAssetGroupResponse
+* assetGroupInputCreate AssetGroupInputCreate 
+* returns AssetGroupInput
 * */
-const asset_group/create = ({ businessUnderscoreid, createAssetGroupBody }) => new Promise(
+const asset_group/create = ({ businessUnderscoreid, assetGroupInputCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
-        createAssetGroupBody,
+        assetGroupInputCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -29,15 +29,15 @@ const asset_group/create = ({ businessUnderscoreid, createAssetGroupBody }) => n
 * Delete a batch of asset groups.
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
-* deleteAssetGroupBody DeleteAssetGroupBody 
-* returns DeleteAssetGroupResponse
+* assetGroupDeletionDelete AssetGroupDeletionDelete 
+* returns AssetGroupDeletion
 * */
-const asset_group/delete = ({ businessUnderscoreid, deleteAssetGroupBody }) => new Promise(
+const asset_group/delete = ({ businessUnderscoreid, assetGroupDeletionDelete }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
-        deleteAssetGroupBody,
+        assetGroupDeletionDelete,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -52,15 +52,15 @@ const asset_group/delete = ({ businessUnderscoreid, deleteAssetGroupBody }) => n
 * Update a batch of asset groups with the specified parameters.
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
-* updateAssetGroupBody UpdateAssetGroupBody 
-* returns UpdateAssetGroupResponse
+* assetGroupModificationReadOrUpdate AssetGroupModificationReadOrUpdate 
+* returns AssetGroupModification
 * */
-const asset_group/update = ({ businessUnderscoreid, updateAssetGroupBody }) => new Promise(
+const asset_group/update = ({ businessUnderscoreid, assetGroupModificationReadOrUpdate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
-        updateAssetGroupBody,
+        assetGroupModificationReadOrUpdate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -76,22 +76,22 @@ const asset_group/update = ({ businessUnderscoreid, updateAssetGroupBody }) => n
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
 * assetUnderscoreid String Unique identifier of a business asset.
+* startUnderscoreindex Integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
 * fetchUnderscoresystemUnderscoreusers Boolean Fetches system users if True. Fetches regular user employees if False. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* startUnderscoreindex Integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns business_asset_members_get_200_response
 * */
-const business_asset_members/get = ({ businessUnderscoreid, assetUnderscoreid, fetchUnderscoresystemUnderscoreusers, bookmark, pageUnderscoresize, startUnderscoreindex }) => new Promise(
+const business_asset_members/get = ({ businessUnderscoreid, assetUnderscoreid, startUnderscoreindex, fetchUnderscoresystemUnderscoreusers, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
         assetUnderscoreid,
+        startUnderscoreindex,
         fetchUnderscoresystemUnderscoreusers,
         bookmark,
         pageUnderscoresize,
-        startUnderscoreindex,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -109,8 +109,8 @@ const business_asset_members/get = ({ businessUnderscoreid, assetUnderscoreid, f
 * assetUnderscoreid String Unique identifier of a business asset.
 * startUnderscoreindex Integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* returns business_asset_partners_get_200_response
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* returns business_asset_members_get_200_response
 * */
 const business_asset_partners/get = ({ businessUnderscoreid, assetUnderscoreid, startUnderscoreindex, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
@@ -141,7 +141,7 @@ const business_asset_partners/get = ({ businessUnderscoreid, assetUnderscoreid, 
 * assetUnderscoretype String A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
 * startUnderscoreindex Integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns business_assets_get_200_response
 * */
 const business_assets/get = ({ businessUnderscoreid, permissions, childUnderscoreassetUnderscoreid, assetUnderscoregroupUnderscoreid, assetUnderscoretype, startUnderscoreindex, bookmark, pageUnderscoresize }) => new Promise(
@@ -173,11 +173,17 @@ const business_assets/get = ({ businessUnderscoreid, permissions, childUnderscor
 * memberUnderscoreid String The member id to fetch assets for.
 * assetUnderscoretype String A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
 * startUnderscoreindex Integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
+* sortUnderscoreby AssetSortBy The field to sort member assets by (optional)
+* sortUnderscoreascending Boolean Sort assets in ascending order (optional)
+* searchUnderscoreby AssetSearchBy The field to search member assets by (optional)
+* searchUnderscorevalue String The value to search for (optional)
+* assetUnderscorepermissionUnderscoretype AssetPermissionType The type of asset permission to filter by (optional)
+* adUnderscoreaccountUnderscorestatuses List A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* returns business_member_assets_get_200_response
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* returns BusinessMemberAssetsGetResponse
 * */
-const business_member_assets/get = ({ businessUnderscoreid, memberUnderscoreid, assetUnderscoretype, startUnderscoreindex, bookmark, pageUnderscoresize }) => new Promise(
+const business_member_assets/get = ({ businessUnderscoreid, memberUnderscoreid, assetUnderscoretype, startUnderscoreindex, sortUnderscoreby, sortUnderscoreascending, searchUnderscoreby, searchUnderscorevalue, assetUnderscorepermissionUnderscoretype, adUnderscoreaccountUnderscorestatuses, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
@@ -185,6 +191,12 @@ const business_member_assets/get = ({ businessUnderscoreid, memberUnderscoreid, 
         memberUnderscoreid,
         assetUnderscoretype,
         startUnderscoreindex,
+        sortUnderscoreby,
+        sortUnderscoreascending,
+        searchUnderscoreby,
+        searchUnderscorevalue,
+        assetUnderscorepermissionUnderscoretype,
+        adUnderscoreaccountUnderscorestatuses,
         bookmark,
         pageUnderscoresize,
       }));
@@ -201,15 +213,15 @@ const business_member_assets/get = ({ businessUnderscoreid, memberUnderscoreid, 
 * Terminate multiple members' access to an asset.
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
-* businessMembersAssetAccessDeleteRequest BusinessMembersAssetAccessDeleteRequest List member assset permissions to delete.
+* businessMembersAssetAccessDeleteBody BusinessMembersAssetAccessDeleteBody 
 * returns DeleteMemberAccessResultsResponseArray
 * */
-const business_members_asset_access/delete = ({ businessUnderscoreid, businessMembersAssetAccessDeleteRequest }) => new Promise(
+const business_members_asset_access/delete = ({ businessUnderscoreid, businessMembersAssetAccessDeleteBody }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         businessUnderscoreid,
-        businessMembersAssetAccessDeleteRequest,
+        businessMembersAssetAccessDeleteBody,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -221,10 +233,10 @@ const business_members_asset_access/delete = ({ businessUnderscoreid, businessMe
 );
 /**
 * Assign/Update member asset permissions
-* Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+* Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
-* updateMemberAssetAccessBody UpdateMemberAssetAccessBody List of member asset permissions to create or update.
+* updateMemberAssetAccessBody UpdateMemberAssetAccessBody 
 * returns UpdateMemberAssetsResultsResponseArray
 * */
 const business_members_asset_access/update = ({ businessUnderscoreid, updateMemberAssetAccessBody }) => new Promise(
@@ -248,14 +260,18 @@ const business_members_asset_access/update = ({ businessUnderscoreid, updateMemb
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
 * partnerUnderscoreid String The partner id to be bound to the Business
-* partnerUnderscoretype PartnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+* partnerUnderscoretype String Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
 * assetUnderscoretype String A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
 * startUnderscoreindex Integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* sortUnderscoreby AssetSortBy The field to sort member assets by (optional)
+* sortUnderscoreascending Boolean Sort assets in ascending order (optional)
+* searchUnderscoreby AssetSearchBy The field to search member assets by (optional)
+* searchUnderscorevalue String The value to search for (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns business_partner_asset_access_get_200_response
 * */
-const business_partner_asset_access/get = ({ businessUnderscoreid, partnerUnderscoreid, partnerUnderscoretype, assetUnderscoretype, startUnderscoreindex, pageUnderscoresize, bookmark }) => new Promise(
+const business_partner_asset_access/get = ({ businessUnderscoreid, partnerUnderscoreid, partnerUnderscoretype, assetUnderscoretype, startUnderscoreindex, sortUnderscoreby, sortUnderscoreascending, searchUnderscoreby, searchUnderscorevalue, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
@@ -264,8 +280,12 @@ const business_partner_asset_access/get = ({ businessUnderscoreid, partnerUnders
         partnerUnderscoretype,
         assetUnderscoretype,
         startUnderscoreindex,
-        pageUnderscoresize,
+        sortUnderscoreby,
+        sortUnderscoreascending,
+        searchUnderscoreby,
+        searchUnderscorevalue,
         bookmark,
+        pageUnderscoresize,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -281,7 +301,7 @@ const business_partner_asset_access/get = ({ businessUnderscoreid, partnerUnders
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
 * deletePartnerAssetAccessBody DeletePartnerAssetAccessBody 
-* returns DeletePartnerAssetsResultsResponseArray
+* returns DeletePartnerAssetAccessResultsResponseArray
 * */
 const delete_partner_asset_access_handler_impl = ({ businessUnderscoreid, deletePartnerAssetAccessBody }) => new Promise(
   async (resolve, reject) => {
@@ -303,7 +323,7 @@ const delete_partner_asset_access_handler_impl = ({ businessUnderscoreid, delete
 * Grant multiple partners access to assets and/or update multiple partner's exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 *
 * businessUnderscoreid String Unique identifier of the requesting business.
-* updatePartnerAssetAccessBody UpdatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
+* updatePartnerAssetAccessBody UpdatePartnerAssetAccessBody 
 * returns UpdatePartnerAssetsResultsResponseArray
 * */
 const update_partner_asset_access_handler_impl = ({ businessUnderscoreid, updatePartnerAssetAccessBody }) => new Promise(

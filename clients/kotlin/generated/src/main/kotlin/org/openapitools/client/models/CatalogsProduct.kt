@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -19,14 +27,13 @@ import org.openapitools.client.models.CatalogsCreativeAssetsProduct
 import org.openapitools.client.models.CatalogsCreativeAssetsProductMetadata
 import org.openapitools.client.models.CatalogsHotelProduct
 import org.openapitools.client.models.CatalogsRetailProduct
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Pin
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Catalogs product for all verticals
+ * 
  *
  * @param catalogType 
  * @param metadata 
@@ -37,11 +44,20 @@ import com.squareup.moshi.JsonClass
 interface CatalogsProduct {
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType
+    val catalogType: CatalogsProduct.CatalogType
     @Json(name = "metadata")
     val metadata: CatalogsCreativeAssetsProductMetadata
     @Json(name = "pin")
     val pin: Pin
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
 
 }
 

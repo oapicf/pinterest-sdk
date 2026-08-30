@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsProductGroupMultipleCountriesCriteria;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**negated** | **boolean** |  | [optional] [default to false]
+**negated** | **boolean** |  | [optional] 
 **values** | [**ARRAY[Country]**](Country.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

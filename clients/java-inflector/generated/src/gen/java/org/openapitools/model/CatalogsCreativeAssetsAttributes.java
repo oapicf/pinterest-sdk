@@ -5,13 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsAiContentDisclosure;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsAttributes   {
   @JsonProperty("android_deep_link")
   private String androidDeepLink;
@@ -48,6 +52,9 @@ public class CatalogsCreativeAssetsAttributes   {
 
   @JsonProperty("visibility")
   private String visibility;
+
+  @JsonProperty("ai_disclosures")
+  private List<CatalogsAiContentDisclosure> aiDisclosures = null;
 
   @JsonProperty("image_link")
   private String imageLink;
@@ -254,7 +261,7 @@ public class CatalogsCreativeAssetsAttributes   {
   }
 
   /**
-   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
    **/
   public CatalogsCreativeAssetsAttributes visibility(String visibility) {
     this.visibility = visibility;
@@ -262,13 +269,31 @@ public class CatalogsCreativeAssetsAttributes   {
   }
 
   
-  @ApiModelProperty(value = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.")
+  @ApiModelProperty(value = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.")
   @JsonProperty("visibility")
   public String getVisibility() {
     return visibility;
   }
   public void setVisibility(String visibility) {
     this.visibility = visibility;
+  }
+
+  /**
+   * AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+   **/
+  public CatalogsCreativeAssetsAttributes aiDisclosures(List<CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v2.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.")
+  @JsonProperty("ai_disclosures")
+  public List<CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+  public void setAiDisclosures(List<CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
   }
 
   /**
@@ -329,13 +354,14 @@ public class CatalogsCreativeAssetsAttributes   {
         Objects.equals(link, catalogsCreativeAssetsAttributes.link) &&
         Objects.equals(title, catalogsCreativeAssetsAttributes.title) &&
         Objects.equals(visibility, catalogsCreativeAssetsAttributes.visibility) &&
+        Objects.equals(aiDisclosures, catalogsCreativeAssetsAttributes.aiDisclosures) &&
         Objects.equals(imageLink, catalogsCreativeAssetsAttributes.imageLink) &&
         Objects.equals(videoLink, catalogsCreativeAssetsAttributes.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(androidDeepLink, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, googleProductCategory, iosDeepLink, link, title, visibility, imageLink, videoLink);
+    return Objects.hash(androidDeepLink, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, googleProductCategory, iosDeepLink, link, title, visibility, aiDisclosures, imageLink, videoLink);
   }
 
   @Override
@@ -355,6 +381,7 @@ public class CatalogsCreativeAssetsAttributes   {
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
@@ -366,10 +393,7 @@ public class CatalogsCreativeAssetsAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

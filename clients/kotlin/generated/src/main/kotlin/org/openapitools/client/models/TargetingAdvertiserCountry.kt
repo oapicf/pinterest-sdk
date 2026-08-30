@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Advertiser's ISO two character country code.
  *
- * Values: US,GB,CA,IE,AU,NZ,FR,SE,IL,DE,AT,IT,ES,NL,BE,PT,CH,HK,JP,KR,SG,NO,DK,FI,CY,LU,MT,PL,RO,HU,CZ,GR,SK,BR,MX,AR,CL,CO
+ * Values: US,GB,CA,IE,AU,NZ,FR,SE,IL,DE,AT,IT,ES,NL,BE,PT,CH,HK,JP,KR,SG,`false`,DK,FI,CY,LU,MT,PL,RO,HU,CZ,GR,SK,BR,MX,AR,CL,CO
  */
 
 @JsonClass(generateAdapter = false)
@@ -91,8 +99,8 @@ enum class TargetingAdvertiserCountry(val value: kotlin.String) {
     @Json(name = "SG")
     SG("SG"),
 
-    @Json(name = "NO")
-    NO("NO"),
+    @Json(name = "false")
+    `false`("false"),
 
     @Json(name = "DK")
     DK("DK"),
@@ -162,7 +170,7 @@ enum class TargetingAdvertiserCountry(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): TargetingAdvertiserCountry? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

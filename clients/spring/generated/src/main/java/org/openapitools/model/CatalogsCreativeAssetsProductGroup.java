@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -15,19 +16,19 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsCreativeAssetsProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProductGroup {
 
   private String catalogId;
@@ -67,16 +68,20 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
 
   private CatalogTypeEnum catalogType;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer createdAt;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
   private String id;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer updatedAt;
 
   public CatalogsCreativeAssetsProductGroup() {
@@ -99,16 +104,17 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
   }
 
   /**
-   * Catalog id pertaining to the creative assets product group.
+   * Catalog ID pertaining to the product group.
    * @return catalogId
    */
   @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the creative assets product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog ID pertaining to the product group.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_id")
   public String getCatalogId() {
     return catalogId;
   }
 
+  @JsonProperty("catalog_id")
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
@@ -129,6 +135,7 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
     return catalogType;
   }
 
+  @JsonProperty("catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
@@ -149,6 +156,7 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
     return createdAt;
   }
 
+  @JsonProperty("created_at")
   public void setCreatedAt(@Nullable Integer createdAt) {
     this.createdAt = createdAt;
   }
@@ -189,6 +197,7 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
     return filters;
   }
 
+  @JsonProperty("filters")
   public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
   }
@@ -199,16 +208,17 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
   }
 
   /**
-   * ID of the creative assets product group.
+   * ID of the catalog product group.
    * @return id
    */
   @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "443727193917", description = "ID of the creative assets product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "id", example = "443727193917", description = "ID of the catalog product group.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
   }
@@ -219,16 +229,17 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
   }
 
   /**
-   * Name of creative assets product group
+   * Name of catalog product group
    * @return name
    */
   
-  @Schema(name = "name", example = "Most Popular", description = "Name of creative assets product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "name", example = "Most Popular", description = "Name of catalog product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
   public @Nullable String getName() {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
@@ -249,6 +260,7 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
     return updatedAt;
   }
 
+  @JsonProperty("updated_at")
   public void setUpdatedAt(@Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
   }
@@ -308,11 +320,8 @@ public class CatalogsCreativeAssetsProductGroup implements CatalogsVerticalProdu
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

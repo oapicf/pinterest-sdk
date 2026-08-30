@@ -7,35 +7,44 @@
 
 static base_invite_data_response_t *base_invite_data_response_create_internal(
     char *id,
-    base_invite_data_response_invite_data_t *invite_data,
-    int is_received_invite,
+    invite_data_response_t *invite_data,
+    int *is_received_invite,
     business_access_user_summary_t *user
     ) {
     base_invite_data_response_t *base_invite_data_response_local_var = malloc(sizeof(base_invite_data_response_t));
     if (!base_invite_data_response_local_var) {
         return NULL;
     }
+    memset(base_invite_data_response_local_var, 0, sizeof(base_invite_data_response_t));
+    base_invite_data_response_local_var->_library_owned = 1;
     base_invite_data_response_local_var->id = id;
     base_invite_data_response_local_var->invite_data = invite_data;
     base_invite_data_response_local_var->is_received_invite = is_received_invite;
     base_invite_data_response_local_var->user = user;
-
-    base_invite_data_response_local_var->_library_owned = 1;
     return base_invite_data_response_local_var;
 }
 
 __attribute__((deprecated)) base_invite_data_response_t *base_invite_data_response_create(
     char *id,
-    base_invite_data_response_invite_data_t *invite_data,
-    int is_received_invite,
+    invite_data_response_t *invite_data,
+    int *is_received_invite,
     business_access_user_summary_t *user
     ) {
-    return base_invite_data_response_create_internal (
+    int *is_received_invite_copy = NULL;
+    if (is_received_invite) {
+        is_received_invite_copy = malloc(sizeof(int));
+        if (is_received_invite_copy) *is_received_invite_copy = *is_received_invite;
+    }
+    base_invite_data_response_t *result = base_invite_data_response_create_internal (
         id,
         invite_data,
-        is_received_invite,
+        is_received_invite_copy,
         user
         );
+    if (!result) {
+        free(is_received_invite_copy);
+    }
+    return result;
 }
 
 void base_invite_data_response_free(base_invite_data_response_t *base_invite_data_response) {
@@ -52,8 +61,12 @@ void base_invite_data_response_free(base_invite_data_response_t *base_invite_dat
         base_invite_data_response->id = NULL;
     }
     if (base_invite_data_response->invite_data) {
-        base_invite_data_response_invite_data_free(base_invite_data_response->invite_data);
+        invite_data_response_free(base_invite_data_response->invite_data);
         base_invite_data_response->invite_data = NULL;
+    }
+    if (base_invite_data_response->is_received_invite) {
+        free(base_invite_data_response->is_received_invite);
+        base_invite_data_response->is_received_invite = NULL;
     }
     if (base_invite_data_response->user) {
         business_access_user_summary_free(base_invite_data_response->user);
@@ -75,7 +88,7 @@ cJSON *base_invite_data_response_convertToJSON(base_invite_data_response_t *base
 
     // base_invite_data_response->invite_data
     if(base_invite_data_response->invite_data) {
-    cJSON *invite_data_local_JSON = base_invite_data_response_invite_data_convertToJSON(base_invite_data_response->invite_data);
+    cJSON *invite_data_local_JSON = invite_data_response_convertToJSON(base_invite_data_response->invite_data);
     if(invite_data_local_JSON == NULL) {
     goto fail; //model
     }
@@ -88,7 +101,7 @@ cJSON *base_invite_data_response_convertToJSON(base_invite_data_response_t *base
 
     // base_invite_data_response->is_received_invite
     if(base_invite_data_response->is_received_invite) {
-    if(cJSON_AddBoolToObject(item, "is_received_invite", base_invite_data_response->is_received_invite) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_received_invite", *base_invite_data_response->is_received_invite) == NULL) {
     goto fail; //Bool
     }
     }
@@ -118,8 +131,13 @@ base_invite_data_response_t *base_invite_data_response_parseFromJSON(cJSON *base
 
     base_invite_data_response_t *base_invite_data_response_local_var = NULL;
 
+    char *id_local_str = NULL;
+
     // define the local variable for base_invite_data_response->invite_data
-    base_invite_data_response_invite_data_t *invite_data_local_nonprim = NULL;
+    invite_data_response_t *invite_data_local_nonprim = NULL;
+
+    // define the local variable for base_invite_data_response->is_received_invite
+    int *is_received_invite_local_var = NULL;
 
     // define the local variable for base_invite_data_response->user
     business_access_user_summary_t *user_local_nonprim = NULL;
@@ -142,7 +160,7 @@ base_invite_data_response_t *base_invite_data_response_parseFromJSON(cJSON *base
         invite_data = NULL;
     }
     if (invite_data) { 
-    invite_data_local_nonprim = base_invite_data_response_invite_data_parseFromJSON(invite_data); //nonprimitive
+    invite_data_local_nonprim = invite_data_response_parseFromJSON(invite_data); //nonprimitive
     }
 
     // base_invite_data_response->is_received_invite
@@ -155,6 +173,12 @@ base_invite_data_response_t *base_invite_data_response_parseFromJSON(cJSON *base
     {
     goto end; //Bool
     }
+    is_received_invite_local_var = malloc(sizeof(int));
+    if(!is_received_invite_local_var)
+    {
+        goto end;
+    }
+    *is_received_invite_local_var = is_received_invite->valueint;
     }
 
     // base_invite_data_response->user
@@ -167,18 +191,32 @@ base_invite_data_response_t *base_invite_data_response_parseFromJSON(cJSON *base
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+
     base_invite_data_response_local_var = base_invite_data_response_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        id_local_str,
         invite_data ? invite_data_local_nonprim : NULL,
-        is_received_invite ? is_received_invite->valueint : 0,
+        is_received_invite_local_var,
         user ? user_local_nonprim : NULL
         );
 
+    if (!base_invite_data_response_local_var) {
+        goto end;
+    }
+
     return base_invite_data_response_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
     if (invite_data_local_nonprim) {
-        base_invite_data_response_invite_data_free(invite_data_local_nonprim);
+        invite_data_response_free(invite_data_local_nonprim);
         invite_data_local_nonprim = NULL;
+    }
+    if (is_received_invite_local_var) {
+        free(is_received_invite_local_var);
+        is_received_invite_local_var = NULL;
     }
     if (user_local_nonprim) {
         business_access_user_summary_free(user_local_nonprim);

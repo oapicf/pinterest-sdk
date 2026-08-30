@@ -2,7 +2,7 @@
 /*
  * CatalogsProduct.h
  *
- * Catalogs product for all verticals
+ * 
  */
 
 #ifndef TINY_CPP_CLIENT_CatalogsProduct_H_
@@ -16,13 +16,12 @@
 #include "CatalogsCreativeAssetsProductMetadata.h"
 #include "CatalogsHotelProduct.h"
 #include "CatalogsRetailProduct.h"
-#include "CatalogsType.h"
 #include "Pin.h"
 
 namespace Tiny {
 
 
-/*! \brief Catalogs product for all verticals
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -53,29 +52,29 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	CatalogsCreativeAssetsProductMetadata getMetadata();
 
 	/*! \brief Set 
 	 */
-	void setMetadata(CatalogsCreativeAssetsProductMetadata  metadata);
+	void setMetadata(CatalogsCreativeAssetsProductMetadata metadata);
 	/*! \brief Get 
 	 */
 	Pin getPin();
 
 	/*! \brief Set 
 	 */
-	void setPin(Pin  pin);
+	void setPin(Pin pin);
 
 
     private:
-    CatalogsType catalog_type;
+    std::string catalog_type{};
     CatalogsCreativeAssetsProductMetadata metadata;
     Pin pin;
 };

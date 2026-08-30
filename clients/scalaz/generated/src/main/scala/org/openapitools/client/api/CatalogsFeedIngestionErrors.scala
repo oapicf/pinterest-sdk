@@ -27,31 +27,12 @@ case class CatalogsFeedIngestionErrors (
 /* Image files are unreadable. Please check your link and upload new files to continue. */
   IMAGE_MALFORMED_URL: Option[Integer],
 /* The product count has decreased by more than 99% compared to the last successful ingestion. */
-  LARGE_PRODUCT_COUNT_DECREASE: Option[LARGEPRODUCTCOUNTDECREASE],
+  LARGE_PRODUCT_COUNT_DECREASE: Option[Integer],
 /* We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. */
   LINE_LEVEL_INTERNAL_ERROR: Option[Integer])
 
 object CatalogsFeedIngestionErrors {
   import DateTimeCodecs._
-  sealed trait LARGEPRODUCTCOUNTDECREASE
-  case object `1` extends LARGEPRODUCTCOUNTDECREASE
-
-  object LARGEPRODUCTCOUNTDECREASE {
-    def toLARGEPRODUCTCOUNTDECREASE(s: String): Option[LARGEPRODUCTCOUNTDECREASE] = s match {
-      case "`1`" => Some(`1`)
-      case _ => None
-    }
-
-    def fromLARGEPRODUCTCOUNTDECREASE(x: LARGEPRODUCTCOUNTDECREASE): String = x match {
-      case `1` => "`1`"
-    }
-  }
-
-  implicit val LARGEPRODUCTCOUNTDECREASEEnumEncoder: EncodeJson[LARGEPRODUCTCOUNTDECREASE] =
-    EncodeJson[LARGEPRODUCTCOUNTDECREASE](is => StringEncodeJson(LARGEPRODUCTCOUNTDECREASE.fromLARGEPRODUCTCOUNTDECREASE(is)))
-
-  implicit val LARGEPRODUCTCOUNTDECREASEEnumDecoder: DecodeJson[LARGEPRODUCTCOUNTDECREASE] =
-    DecodeJson.optionDecoder[LARGEPRODUCTCOUNTDECREASE](n => n.string.flatMap(jStr => LARGEPRODUCTCOUNTDECREASE.toLARGEPRODUCTCOUNTDECREASE(jStr)), "LARGEPRODUCTCOUNTDECREASE failed to de-serialize")
 
   implicit val CatalogsFeedIngestionErrorsCodecJson: CodecJson[CatalogsFeedIngestionErrors] = CodecJson.derive[CatalogsFeedIngestionErrors]
   implicit val CatalogsFeedIngestionErrorsDecoder: EntityDecoder[CatalogsFeedIngestionErrors] = jsonOf[CatalogsFeedIngestionErrors]

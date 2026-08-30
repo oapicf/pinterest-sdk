@@ -7,8 +7,8 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  BaseInviteDataResponseInviteData = openapi_server.resourceTypes.BaseInviteDataResponseInviteData
   BusinessAccessUserSummary = openapi_server.resourceTypes.BusinessAccessUserSummary
+  InviteDataResponse = openapi_server.resourceTypes.InviteDataResponse
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -24,7 +24,7 @@ resourceTypes {
           optional = false
         }
         invite_data {
-          type = BaseInviteDataResponseInviteData
+          type = InviteDataResponse
           description = ""
           optional = false
         }

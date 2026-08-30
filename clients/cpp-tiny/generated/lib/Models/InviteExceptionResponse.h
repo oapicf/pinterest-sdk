@@ -52,28 +52,28 @@ public:
 
 	/*! \brief Set Error code associated with the error in performing the action on the invite/request.
 	 */
-	void setCode(int  code);
+	void setCode(int code);
 	/*! \brief Get Unique identifier of the invite/request.
 	 */
 	std::string getInviteOrRequestId();
 
 	/*! \brief Set Unique identifier of the invite/request.
 	 */
-	void setInviteOrRequestId(std::string  invite_or_request_id);
+	void setInviteOrRequestId(std::string invite_or_request_id);
 	/*! \brief Get Error message associated with the error in performing the action on the invite/request.
 	 */
 	std::string getMessage();
 
 	/*! \brief Set Error message associated with the error in performing the action on the invite/request.
 	 */
-	void setMessage(std::string  message);
+	void setMessage(std::string message);
 	/*! \brief Get A list of users' usernames or emails OR a list of partner ids that caused the error.
 	 */
 	std::list<std::string> getUsersOrPartnerIds();
 
 	/*! \brief Set A list of users' usernames or emails OR a list of partner ids that caused the error.
 	 */
-	void setUsersOrPartnerIds(std::list <std::string> users_or_partner_ids);
+	void setUsersOrPartnerIds(std::list<std::string> users_or_partner_ids);
 
 
     private:

@@ -8,8 +8,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.AgeBucketMultipliers;
 import org.openapitools.vertxweb.server.model.AppTypeMultipliers;
 import org.openapitools.vertxweb.server.model.CampaignAudienceMultipliers;
+import org.openapitools.vertxweb.server.model.CampaignBidOptionsUpdateMaskItems;
+import org.openapitools.vertxweb.server.model.FreqBidMultiplierTimeWindow;
+import org.openapitools.vertxweb.server.model.FrequencyMultipliers;
+import org.openapitools.vertxweb.server.model.GenderMultipliers;
 import org.openapitools.vertxweb.server.model.PlacementMultipliers;
 
 /**
@@ -18,42 +23,37 @@ import org.openapitools.vertxweb.server.model.PlacementMultipliers;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CampaignBidOptionsUpdate   {
   
+  private AgeBucketMultipliers ageBucketMultipliers;
   private AppTypeMultipliers appTypeMultipliers;
   private CampaignAudienceMultipliers audienceMultipliers;
+  private FreqBidMultiplierTimeWindow freqBidMultiplierTimeWindow;
+  private FrequencyMultipliers frequencyMultipliers;
+  private GenderMultipliers genderMultipliers;
   private PlacementMultipliers placementMultipliers;
-
-
-  public enum UpdateMaskEnum {
-    AUDIENCE("AUDIENCE"),
-    APP_TYPE("APP_TYPE"),
-    PLACEMENT("PLACEMENT"),
-    GENDER("GENDER"),
-    AGE_BUCKET("AGE_BUCKET");
-
-    private String value;
-
-    UpdateMaskEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private List<UpdateMaskEnum> updateMask = new ArrayList<>();
+  private List<CampaignBidOptionsUpdateMaskItems> updateMask = new ArrayList<>();
 
   public CampaignBidOptionsUpdate () {
 
   }
 
-  public CampaignBidOptionsUpdate (AppTypeMultipliers appTypeMultipliers, CampaignAudienceMultipliers audienceMultipliers, PlacementMultipliers placementMultipliers, List<UpdateMaskEnum> updateMask) {
+  public CampaignBidOptionsUpdate (AgeBucketMultipliers ageBucketMultipliers, AppTypeMultipliers appTypeMultipliers, CampaignAudienceMultipliers audienceMultipliers, FreqBidMultiplierTimeWindow freqBidMultiplierTimeWindow, FrequencyMultipliers frequencyMultipliers, GenderMultipliers genderMultipliers, PlacementMultipliers placementMultipliers, List<CampaignBidOptionsUpdateMaskItems> updateMask) {
+    this.ageBucketMultipliers = ageBucketMultipliers;
     this.appTypeMultipliers = appTypeMultipliers;
     this.audienceMultipliers = audienceMultipliers;
+    this.freqBidMultiplierTimeWindow = freqBidMultiplierTimeWindow;
+    this.frequencyMultipliers = frequencyMultipliers;
+    this.genderMultipliers = genderMultipliers;
     this.placementMultipliers = placementMultipliers;
     this.updateMask = updateMask;
+  }
+
+    
+  @JsonProperty("age_bucket_multipliers")
+  public AgeBucketMultipliers getAgeBucketMultipliers() {
+    return ageBucketMultipliers;
+  }
+  public void setAgeBucketMultipliers(AgeBucketMultipliers ageBucketMultipliers) {
+    this.ageBucketMultipliers = ageBucketMultipliers;
   }
 
     
@@ -75,6 +75,33 @@ public class CampaignBidOptionsUpdate   {
   }
 
     
+  @JsonProperty("freq_bid_multiplier_time_window")
+  public FreqBidMultiplierTimeWindow getFreqBidMultiplierTimeWindow() {
+    return freqBidMultiplierTimeWindow;
+  }
+  public void setFreqBidMultiplierTimeWindow(FreqBidMultiplierTimeWindow freqBidMultiplierTimeWindow) {
+    this.freqBidMultiplierTimeWindow = freqBidMultiplierTimeWindow;
+  }
+
+    
+  @JsonProperty("frequency_multipliers")
+  public FrequencyMultipliers getFrequencyMultipliers() {
+    return frequencyMultipliers;
+  }
+  public void setFrequencyMultipliers(FrequencyMultipliers frequencyMultipliers) {
+    this.frequencyMultipliers = frequencyMultipliers;
+  }
+
+    
+  @JsonProperty("gender_multipliers")
+  public GenderMultipliers getGenderMultipliers() {
+    return genderMultipliers;
+  }
+  public void setGenderMultipliers(GenderMultipliers genderMultipliers) {
+    this.genderMultipliers = genderMultipliers;
+  }
+
+    
   @JsonProperty("placement_multipliers")
   public PlacementMultipliers getPlacementMultipliers() {
     return placementMultipliers;
@@ -85,10 +112,10 @@ public class CampaignBidOptionsUpdate   {
 
     
   @JsonProperty("update_mask")
-  public List<UpdateMaskEnum> getUpdateMask() {
+  public List<CampaignBidOptionsUpdateMaskItems> getUpdateMask() {
     return updateMask;
   }
-  public void setUpdateMask(List<UpdateMaskEnum> updateMask) {
+  public void setUpdateMask(List<CampaignBidOptionsUpdateMaskItems> updateMask) {
     this.updateMask = updateMask;
   }
 
@@ -102,15 +129,19 @@ public class CampaignBidOptionsUpdate   {
       return false;
     }
     CampaignBidOptionsUpdate campaignBidOptionsUpdate = (CampaignBidOptionsUpdate) o;
-    return Objects.equals(appTypeMultipliers, campaignBidOptionsUpdate.appTypeMultipliers) &&
+    return Objects.equals(ageBucketMultipliers, campaignBidOptionsUpdate.ageBucketMultipliers) &&
+        Objects.equals(appTypeMultipliers, campaignBidOptionsUpdate.appTypeMultipliers) &&
         Objects.equals(audienceMultipliers, campaignBidOptionsUpdate.audienceMultipliers) &&
+        Objects.equals(freqBidMultiplierTimeWindow, campaignBidOptionsUpdate.freqBidMultiplierTimeWindow) &&
+        Objects.equals(frequencyMultipliers, campaignBidOptionsUpdate.frequencyMultipliers) &&
+        Objects.equals(genderMultipliers, campaignBidOptionsUpdate.genderMultipliers) &&
         Objects.equals(placementMultipliers, campaignBidOptionsUpdate.placementMultipliers) &&
         Objects.equals(updateMask, campaignBidOptionsUpdate.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appTypeMultipliers, audienceMultipliers, placementMultipliers, updateMask);
+    return Objects.hash(ageBucketMultipliers, appTypeMultipliers, audienceMultipliers, freqBidMultiplierTimeWindow, frequencyMultipliers, genderMultipliers, placementMultipliers, updateMask);
   }
 
   @Override
@@ -118,8 +149,12 @@ public class CampaignBidOptionsUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignBidOptionsUpdate {\n");
     
+    sb.append("    ageBucketMultipliers: ").append(toIndentedString(ageBucketMultipliers)).append("\n");
     sb.append("    appTypeMultipliers: ").append(toIndentedString(appTypeMultipliers)).append("\n");
     sb.append("    audienceMultipliers: ").append(toIndentedString(audienceMultipliers)).append("\n");
+    sb.append("    freqBidMultiplierTimeWindow: ").append(toIndentedString(freqBidMultiplierTimeWindow)).append("\n");
+    sb.append("    frequencyMultipliers: ").append(toIndentedString(frequencyMultipliers)).append("\n");
+    sb.append("    genderMultipliers: ").append(toIndentedString(genderMultipliers)).append("\n");
     sb.append("    placementMultipliers: ").append(toIndentedString(placementMultipliers)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
@@ -131,9 +166,6 @@ public class CampaignBidOptionsUpdate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

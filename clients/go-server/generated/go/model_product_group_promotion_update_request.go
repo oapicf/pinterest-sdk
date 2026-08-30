@@ -5,27 +5,92 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type ProductGroupPromotionUpdateRequest struct {
 
 	// ID of the ad group the product group belongs to.
-	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\\\d+$"`
+	AdGroupId string `json:"ad_group_id" validate:"regexp=^(AG)?\\d+$"`
 
 	ProductGroupPromotion []ProductGroupPromotion `json:"product_group_promotion"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into ProductGroupPromotionUpdateRequest
+func (o *ProductGroupPromotionUpdateRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"ad_group_id",
+		"product_group_promotion",
+	}
 
-// AssertProductGroupPromotionUpdateRequestRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"ad_group_id": false,
+		"product_group_promotion": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"ad_group_id": {},
+		"product_group_promotion": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded ProductGroupPromotionUpdateRequest
+
+	if value, exists := allProperties["ad_group_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AdGroupId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["product_group_promotion"]; exists {
+		if err = json.Unmarshal(value, &decoded.ProductGroupPromotion); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertProductGroupPromotionUpdateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertProductGroupPromotionUpdateRequestRequired(obj ProductGroupPromotionUpdateRequest) error {
 	elements := map[string]interface{}{
-		"ad_group_id": obj.AdGroupId,
 		"product_group_promotion": obj.ProductGroupPromotion,
 	}
 	for name, el := range elements {

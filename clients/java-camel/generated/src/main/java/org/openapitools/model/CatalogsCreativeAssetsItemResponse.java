@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -10,36 +11,102 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsAttributes;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * Object describing a hotel record
+ * Object describing a creative assets item record
  */
 
-@Schema(name = "CatalogsCreativeAssetsItemResponse", description = "Object describing a hotel record")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
+@Schema(name = "CatalogsCreativeAssetsItemResponse", description = "Object describing a creative assets item record")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class CatalogsCreativeAssetsItemResponse implements ItemResponse {
 
   private CatalogsCreativeAssetsAttributes attributes;
 
-  private CatalogsType catalogType;
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
 
   private String creativeAssetsId;
+
+  /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   */
+  public enum ItemResponseKindEnum {
+    CREATIVE_ASSETS_ITEM("creative_assets_item");
+
+    private final String value;
+
+    ItemResponseKindEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemResponseKindEnum fromValue(String value) {
+      for (ItemResponseKindEnum b : ItemResponseKindEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private ItemResponseKindEnum itemResponseKind;
 
   @Valid
   private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
@@ -51,8 +118,9 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreativeAssetsItemResponse(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemResponse(CatalogTypeEnum catalogType, ItemResponseKindEnum itemResponseKind) {
     this.catalogType = catalogType;
+    this.itemResponseKind = itemResponseKind;
   }
 
   public CatalogsCreativeAssetsItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
@@ -75,7 +143,7 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
     this.attributes = attributes;
   }
 
-  public CatalogsCreativeAssetsItemResponse catalogType(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemResponse catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -84,14 +152,14 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
    * Get catalogType
    * @return catalogType
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -113,6 +181,26 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
 
   public void setCreativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
+  }
+
+  public CatalogsCreativeAssetsItemResponse itemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
+    return this;
+  }
+
+  /**
+   * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+   * @return itemResponseKind
+   */
+  @NotNull 
+  @Schema(name = "item_response_kind", description = "Discriminator literal identifying this leaf inside an `ItemResponse` payload.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("item_response_kind")
+  public ItemResponseKindEnum getItemResponseKind() {
+    return itemResponseKind;
+  }
+
+  public void setItemResponseKind(ItemResponseKindEnum itemResponseKind) {
+    this.itemResponseKind = itemResponseKind;
   }
 
   public CatalogsCreativeAssetsItemResponse pins(List<@Valid Pin> pins) {
@@ -155,6 +243,7 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
     return Objects.equals(this.attributes, catalogsCreativeAssetsItemResponse.attributes) &&
         Objects.equals(this.catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(this.creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
+        Objects.equals(this.itemResponseKind, catalogsCreativeAssetsItemResponse.itemResponseKind) &&
         equalsNullable(this.pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
@@ -164,7 +253,7 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, catalogType, creativeAssetsId, hashCodeNullable(pins));
+    return Objects.hash(attributes, catalogType, creativeAssetsId, itemResponseKind, hashCodeNullable(pins));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -181,6 +270,7 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    itemResponseKind: ").append(toIndentedString(itemResponseKind)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -191,10 +281,7 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseOneOf {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

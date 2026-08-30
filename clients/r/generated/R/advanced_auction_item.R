@@ -7,30 +7,34 @@
 #' @title AdvancedAuctionItem
 #' @description AdvancedAuctionItem Class
 #' @format An \code{R6Class} generator object
+#' @field bid_options  \link{AdvancedAuctionBidOptions}
 #' @field country  \link{Country}
 #' @field item_id The catalog retail item id in the merchant namespace character
 #' @field language  \link{Language}
-#' @field bid_options  \link{AdvancedAuctionBidOptions}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdvancedAuctionItem <- R6::R6Class(
   "AdvancedAuctionItem",
   public = list(
+    `bid_options` = NULL,
     `country` = NULL,
     `item_id` = NULL,
     `language` = NULL,
-    `bid_options` = NULL,
 
     #' @description
     #' Initialize a new AdvancedAuctionItem class.
     #'
+    #' @param bid_options bid_options
     #' @param country country
     #' @param item_id The catalog retail item id in the merchant namespace
     #' @param language language
-    #' @param bid_options bid_options
     #' @param ... Other optional arguments.
-    initialize = function(`country`, `item_id`, `language`, `bid_options`, ...) {
+    initialize = function(`bid_options`, `country`, `item_id`, `language`, ...) {
+      if (!missing(`bid_options`)) {
+        stopifnot(R6::is.R6(`bid_options`))
+        self$`bid_options` <- `bid_options`
+      }
       if (!missing(`country`)) {
         if (!(`country` %in% c())) {
           stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
@@ -50,10 +54,6 @@ AdvancedAuctionItem <- R6::R6Class(
         }
         stopifnot(R6::is.R6(`language`))
         self$`language` <- `language`
-      }
-      if (!missing(`bid_options`)) {
-        stopifnot(R6::is.R6(`bid_options`))
-        self$`bid_options` <- `bid_options`
       }
     },
 
@@ -88,9 +88,13 @@ AdvancedAuctionItem <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdvancedAuctionItemObject <- list()
+      if (!is.null(self$`bid_options`)) {
+        AdvancedAuctionItemObject[["bid_options"]] <-
+          self$extractSimpleType(self$`bid_options`)
+      }
       if (!is.null(self$`country`)) {
         AdvancedAuctionItemObject[["country"]] <-
-          self$`country`$toSimpleType()
+          self$extractSimpleType(self$`country`)
       }
       if (!is.null(self$`item_id`)) {
         AdvancedAuctionItemObject[["item_id"]] <-
@@ -98,13 +102,32 @@ AdvancedAuctionItem <- R6::R6Class(
       }
       if (!is.null(self$`language`)) {
         AdvancedAuctionItemObject[["language"]] <-
-          self$`language`$toSimpleType()
-      }
-      if (!is.null(self$`bid_options`)) {
-        AdvancedAuctionItemObject[["bid_options"]] <-
-          self$`bid_options`$toSimpleType()
+          self$extractSimpleType(self$`language`)
       }
       return(AdvancedAuctionItemObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -114,6 +137,11 @@ AdvancedAuctionItem <- R6::R6Class(
     #' @return the instance of AdvancedAuctionItem
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`bid_options`)) {
+        `bid_options_object` <- AdvancedAuctionBidOptions$new()
+        `bid_options_object`$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
+        self$`bid_options` <- `bid_options_object`
+      }
       if (!is.null(this_object$`country`)) {
         `country_object` <- Country$new()
         `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
@@ -126,11 +154,6 @@ AdvancedAuctionItem <- R6::R6Class(
         `language_object` <- Language$new()
         `language_object`$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
         self$`language` <- `language_object`
-      }
-      if (!is.null(this_object$`bid_options`)) {
-        `bid_options_object` <- AdvancedAuctionBidOptions$new()
-        `bid_options_object`$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
-        self$`bid_options` <- `bid_options_object`
       }
       self
     },
@@ -153,10 +176,10 @@ AdvancedAuctionItem <- R6::R6Class(
     #' @return the instance of AdvancedAuctionItem
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`bid_options` <- AdvancedAuctionBidOptions$new()$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
       self$`item_id` <- this_object$`item_id`
       self$`language` <- Language$new()$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
-      self$`bid_options` <- AdvancedAuctionBidOptions$new()$fromJSON(jsonlite::toJSON(this_object$`bid_options`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -166,6 +189,12 @@ AdvancedAuctionItem <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `bid_options`
+      if (!is.null(input_json$`bid_options`)) {
+        stopifnot(R6::is.R6(input_json$`bid_options`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AdvancedAuctionItem: the required field `bid_options` is missing."))
+      }
       # check the required field `country`
       if (!is.null(input_json$`country`)) {
         stopifnot(R6::is.R6(input_json$`country`))
@@ -186,12 +215,6 @@ AdvancedAuctionItem <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AdvancedAuctionItem: the required field `language` is missing."))
       }
-      # check the required field `bid_options`
-      if (!is.null(input_json$`bid_options`)) {
-        stopifnot(R6::is.R6(input_json$`bid_options`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for AdvancedAuctionItem: the required field `bid_options` is missing."))
-      }
     },
 
     #' @description
@@ -207,6 +230,11 @@ AdvancedAuctionItem <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `bid_options` is null
+      if (is.null(self$`bid_options`)) {
+        return(FALSE)
+      }
+
       # check if the required `country` is null
       if (is.null(self$`country`)) {
         return(FALSE)
@@ -222,11 +250,6 @@ AdvancedAuctionItem <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `bid_options` is null
-      if (is.null(self$`bid_options`)) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -236,6 +259,11 @@ AdvancedAuctionItem <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `bid_options` is null
+      if (is.null(self$`bid_options`)) {
+        invalid_fields["bid_options"] <- "Non-nullable required field `bid_options` cannot be null."
+      }
+
       # check if the required `country` is null
       if (is.null(self$`country`)) {
         invalid_fields["country"] <- "Non-nullable required field `country` cannot be null."
@@ -249,11 +277,6 @@ AdvancedAuctionItem <- R6::R6Class(
       # check if the required `language` is null
       if (is.null(self$`language`)) {
         invalid_fields["language"] <- "Non-nullable required field `language` cannot be null."
-      }
-
-      # check if the required `bid_options` is null
-      if (is.null(self$`bid_options`)) {
-        invalid_fields["bid_options"] <- "Non-nullable required field `bid_options` cannot be null."
       }
 
       invalid_fields

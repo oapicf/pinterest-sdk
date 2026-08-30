@@ -24,27 +24,30 @@ pinterest_rest_api_catalogs_retail_report_parameters_CATALOGTYPE_e catalogs_reta
 
 static catalogs_retail_report_parameters_t *catalogs_retail_report_parameters_create_internal(
     pinterest_rest_api_catalogs_retail_report_parameters_CATALOGTYPE_e catalog_type,
-    catalogs_hotel_report_parameters_report_t *report
+    catalogs_retail_report_parameters_report_t *report
     ) {
     catalogs_retail_report_parameters_t *catalogs_retail_report_parameters_local_var = malloc(sizeof(catalogs_retail_report_parameters_t));
     if (!catalogs_retail_report_parameters_local_var) {
         return NULL;
     }
+    memset(catalogs_retail_report_parameters_local_var, 0, sizeof(catalogs_retail_report_parameters_t));
+    catalogs_retail_report_parameters_local_var->_library_owned = 1;
     catalogs_retail_report_parameters_local_var->catalog_type = catalog_type;
     catalogs_retail_report_parameters_local_var->report = report;
-
-    catalogs_retail_report_parameters_local_var->_library_owned = 1;
     return catalogs_retail_report_parameters_local_var;
 }
 
 __attribute__((deprecated)) catalogs_retail_report_parameters_t *catalogs_retail_report_parameters_create(
     pinterest_rest_api_catalogs_retail_report_parameters_CATALOGTYPE_e catalog_type,
-    catalogs_hotel_report_parameters_report_t *report
+    catalogs_retail_report_parameters_report_t *report
     ) {
-    return catalogs_retail_report_parameters_create_internal (
+    catalogs_retail_report_parameters_t *result = catalogs_retail_report_parameters_create_internal (
         catalog_type,
         report
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_retail_report_parameters_free(catalogs_retail_report_parameters_t *catalogs_retail_report_parameters) {
@@ -57,7 +60,7 @@ void catalogs_retail_report_parameters_free(catalogs_retail_report_parameters_t 
     }
     listEntry_t *listEntry;
     if (catalogs_retail_report_parameters->report) {
-        catalogs_hotel_report_parameters_report_free(catalogs_retail_report_parameters->report);
+        catalogs_retail_report_parameters_report_free(catalogs_retail_report_parameters->report);
         catalogs_retail_report_parameters->report = NULL;
     }
     free(catalogs_retail_report_parameters);
@@ -80,7 +83,7 @@ cJSON *catalogs_retail_report_parameters_convertToJSON(catalogs_retail_report_pa
     if (!catalogs_retail_report_parameters->report) {
         goto fail;
     }
-    cJSON *report_local_JSON = catalogs_hotel_report_parameters_report_convertToJSON(catalogs_retail_report_parameters->report);
+    cJSON *report_local_JSON = catalogs_retail_report_parameters_report_convertToJSON(catalogs_retail_report_parameters->report);
     if(report_local_JSON == NULL) {
     goto fail; //model
     }
@@ -102,7 +105,7 @@ catalogs_retail_report_parameters_t *catalogs_retail_report_parameters_parseFrom
     catalogs_retail_report_parameters_t *catalogs_retail_report_parameters_local_var = NULL;
 
     // define the local variable for catalogs_retail_report_parameters->report
-    catalogs_hotel_report_parameters_report_t *report_local_nonprim = NULL;
+    catalogs_retail_report_parameters_report_t *report_local_nonprim = NULL;
 
     // catalogs_retail_report_parameters->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_retail_report_parametersJSON, "catalog_type");
@@ -131,7 +134,8 @@ catalogs_retail_report_parameters_t *catalogs_retail_report_parameters_parseFrom
     }
 
     
-    report_local_nonprim = catalogs_hotel_report_parameters_report_parseFromJSON(report); //nonprimitive
+    report_local_nonprim = catalogs_retail_report_parameters_report_parseFromJSON(report); //nonprimitive
+
 
 
     catalogs_retail_report_parameters_local_var = catalogs_retail_report_parameters_create_internal (
@@ -139,10 +143,14 @@ catalogs_retail_report_parameters_t *catalogs_retail_report_parameters_parseFrom
         report_local_nonprim
         );
 
+    if (!catalogs_retail_report_parameters_local_var) {
+        goto end;
+    }
+
     return catalogs_retail_report_parameters_local_var;
 end:
     if (report_local_nonprim) {
-        catalogs_hotel_report_parameters_report_free(report_local_nonprim);
+        catalogs_retail_report_parameters_report_free(report_local_nonprim);
         report_local_nonprim = NULL;
     }
     return NULL;

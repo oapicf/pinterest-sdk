@@ -2,35 +2,41 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AudienceSubcategory
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceSubcategory {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal index;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String key;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal ratio;
 
   public AudienceSubcategory id(@Nullable String id) {
@@ -39,16 +45,17 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Subinterest ID.
+   * Get id
    * @return id
    */
   
-  @Schema(name = "id", example = "958862518888", description = "Subinterest ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
   public @Nullable String getId() {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(@Nullable String id) {
     this.id = id;
   }
@@ -59,16 +66,17 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Subinterest affinity index.
+   * Get index
    * @return index
    */
   @Valid 
-  @Schema(name = "index", example = "1.2", description = "Subinterest affinity index.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "index", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")
   public @Nullable BigDecimal getIndex() {
     return index;
   }
 
+  @JsonProperty("index")
   public void setIndex(@Nullable BigDecimal index) {
     this.index = index;
   }
@@ -79,16 +87,17 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Interest unique key (same as ID).
+   * Get key
    * @return key
    */
   
-  @Schema(name = "key", example = "958862518888", description = "Interest unique key (same as ID).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
   public @Nullable String getKey() {
     return key;
   }
 
+  @JsonProperty("key")
   public void setKey(@Nullable String key) {
     this.key = key;
   }
@@ -99,16 +108,17 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Subinterest name.
+   * Get name
    * @return name
    */
   
-  @Schema(name = "name", example = "travel destinations", description = "Subinterest name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
   public @Nullable String getName() {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
@@ -119,16 +129,17 @@ public class AudienceSubcategory {
   }
 
   /**
-   * Subinterest's percent of category's total audience.
+   * Get ratio
    * @return ratio
    */
   @Valid 
-  @Schema(name = "ratio", example = "0.482", description = "Subinterest's percent of category's total audience.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ratio", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ratio")
   public @Nullable BigDecimal getRatio() {
     return ratio;
   }
 
+  @JsonProperty("ratio")
   public void setRatio(@Nullable BigDecimal ratio) {
     this.ratio = ratio;
   }
@@ -171,11 +182,8 @@ public class AudienceSubcategory {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -16,7 +16,8 @@ class UpdatePartnerAssetAccessBody {
     this.accesses = const [],
   });
 
-  List<UpdatePartnerAssetAccessBodyAccessesInner> accesses;
+  /// List of partner asset accesses to assign or update.
+  List<UpdatePartnerAssetAccessItem> accesses;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdatePartnerAssetAccessBody &&
@@ -47,15 +48,13 @@ class UpdatePartnerAssetAccessBody {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UpdatePartnerAssetAccessBody[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UpdatePartnerAssetAccessBody[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'accesses'), 'Required key "UpdatePartnerAssetAccessBody[accesses]" is missing from JSON.');
+        assert(json[r'accesses'] != null, 'Required key "UpdatePartnerAssetAccessBody[accesses]" has a null value in JSON.');
         return true;
       }());
 
       return UpdatePartnerAssetAccessBody(
-        accesses: UpdatePartnerAssetAccessBodyAccessesInner.listFromJson(json[r'accesses']),
+        accesses: UpdatePartnerAssetAccessItem.listFromJson(json[r'accesses']),
       );
     }
     return null;

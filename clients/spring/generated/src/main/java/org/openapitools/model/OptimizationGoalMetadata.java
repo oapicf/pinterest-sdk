@@ -2,36 +2,40 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadata;
-import org.openapitools.model.OptimizationGoalMetadataFrequencyGoalMetadata;
-import org.openapitools.model.OptimizationGoalMetadataScrollupGoalMetadata;
+import org.openapitools.model.ConversionTagV3GoalMetadata;
+import org.openapitools.model.FrequencyGoalMetadata;
+import org.openapitools.model.ScrollupGoalMetadata;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * OptimizationGoalMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class OptimizationGoalMetadata {
 
-  private @Nullable OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable ConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
 
-  private @Nullable OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable FrequencyGoalMetadata frequencyGoalMetadata;
 
-  private @Nullable OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable ScrollupGoalMetadata scrollupGoalMetadata;
 
-  public OptimizationGoalMetadata conversionTagV3GoalMetadata(@Nullable OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
+  public OptimizationGoalMetadata conversionTagV3GoalMetadata(@Nullable ConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;
     return this;
   }
@@ -43,15 +47,16 @@ public class OptimizationGoalMetadata {
   @Valid 
   @Schema(name = "conversion_tag_v3_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_tag_v3_goal_metadata")
-  public @Nullable OptimizationGoalMetadataConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
+  public @Nullable ConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
     return conversionTagV3GoalMetadata;
   }
 
-  public void setConversionTagV3GoalMetadata(@Nullable OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
+  @JsonProperty("conversion_tag_v3_goal_metadata")
+  public void setConversionTagV3GoalMetadata(@Nullable ConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;
   }
 
-  public OptimizationGoalMetadata frequencyGoalMetadata(@Nullable OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
+  public OptimizationGoalMetadata frequencyGoalMetadata(@Nullable FrequencyGoalMetadata frequencyGoalMetadata) {
     this.frequencyGoalMetadata = frequencyGoalMetadata;
     return this;
   }
@@ -63,15 +68,16 @@ public class OptimizationGoalMetadata {
   @Valid 
   @Schema(name = "frequency_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("frequency_goal_metadata")
-  public @Nullable OptimizationGoalMetadataFrequencyGoalMetadata getFrequencyGoalMetadata() {
+  public @Nullable FrequencyGoalMetadata getFrequencyGoalMetadata() {
     return frequencyGoalMetadata;
   }
 
-  public void setFrequencyGoalMetadata(@Nullable OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
+  @JsonProperty("frequency_goal_metadata")
+  public void setFrequencyGoalMetadata(@Nullable FrequencyGoalMetadata frequencyGoalMetadata) {
     this.frequencyGoalMetadata = frequencyGoalMetadata;
   }
 
-  public OptimizationGoalMetadata scrollupGoalMetadata(@Nullable OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
+  public OptimizationGoalMetadata scrollupGoalMetadata(@Nullable ScrollupGoalMetadata scrollupGoalMetadata) {
     this.scrollupGoalMetadata = scrollupGoalMetadata;
     return this;
   }
@@ -83,11 +89,12 @@ public class OptimizationGoalMetadata {
   @Valid 
   @Schema(name = "scrollup_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scrollup_goal_metadata")
-  public @Nullable OptimizationGoalMetadataScrollupGoalMetadata getScrollupGoalMetadata() {
+  public @Nullable ScrollupGoalMetadata getScrollupGoalMetadata() {
     return scrollupGoalMetadata;
   }
 
-  public void setScrollupGoalMetadata(@Nullable OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
+  @JsonProperty("scrollup_goal_metadata")
+  public void setScrollupGoalMetadata(@Nullable ScrollupGoalMetadata scrollupGoalMetadata) {
     this.scrollupGoalMetadata = scrollupGoalMetadata;
   }
 
@@ -125,11 +132,8 @@ public class OptimizationGoalMetadata {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

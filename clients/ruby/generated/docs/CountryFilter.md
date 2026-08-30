@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **country** | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  |  |
+| **country** | [**CatalogsProductGroupMultipleCountriesCriteria**](CatalogsProductGroupMultipleCountriesCriteria.md) |  |  |
 
 ## Example
 

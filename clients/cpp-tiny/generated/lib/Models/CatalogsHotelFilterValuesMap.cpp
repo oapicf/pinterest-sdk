@@ -1,10 +1,10 @@
 
 
-#include "Catalogs_hotel_filter_values_map.h"
+#include "CatalogsHotelFilterValuesMap.h"
 
 using namespace Tiny;
 
-Catalogs_hotel_filter_values_map::Catalogs_hotel_filter_values_map()
+CatalogsHotelFilterValuesMap::CatalogsHotelFilterValuesMap()
 {
 	brand = std::list<std::string>();
 	custom_label_0 = std::list<std::string>();
@@ -14,18 +14,18 @@ Catalogs_hotel_filter_values_map::Catalogs_hotel_filter_values_map()
 	custom_label_4 = std::list<std::string>();
 }
 
-Catalogs_hotel_filter_values_map::Catalogs_hotel_filter_values_map(std::string jsonString)
+CatalogsHotelFilterValuesMap::CatalogsHotelFilterValuesMap(std::string jsonString)
 {
 	this->fromJson(jsonString);
 }
 
-Catalogs_hotel_filter_values_map::~Catalogs_hotel_filter_values_map()
+CatalogsHotelFilterValuesMap::~CatalogsHotelFilterValuesMap()
 {
 
 }
 
 void
-Catalogs_hotel_filter_values_map::fromJson(std::string jsonObj)
+CatalogsHotelFilterValuesMap::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
@@ -165,7 +165,7 @@ Catalogs_hotel_filter_values_map::fromJson(std::string jsonObj)
 }
 
 bourne::json
-Catalogs_hotel_filter_values_map::toJson()
+CatalogsHotelFilterValuesMap::toJson()
 {
     bourne::json object = bourne::json::object();
 
@@ -271,73 +271,73 @@ Catalogs_hotel_filter_values_map::toJson()
 }
 
 std::list<std::string>
-Catalogs_hotel_filter_values_map::getBrand()
+CatalogsHotelFilterValuesMap::getBrand()
 {
 	return brand;
 }
 
 void
-Catalogs_hotel_filter_values_map::setBrand(std::list <std::string> brand)
+CatalogsHotelFilterValuesMap::setBrand(std::list<std::string> brand)
 {
 	this->brand = brand;
 }
 
 std::list<std::string>
-Catalogs_hotel_filter_values_map::getCustomLabel0()
+CatalogsHotelFilterValuesMap::getCustomLabel0()
 {
 	return custom_label_0;
 }
 
 void
-Catalogs_hotel_filter_values_map::setCustomLabel0(std::list <std::string> custom_label_0)
+CatalogsHotelFilterValuesMap::setCustomLabel0(std::list<std::string> custom_label_0)
 {
 	this->custom_label_0 = custom_label_0;
 }
 
 std::list<std::string>
-Catalogs_hotel_filter_values_map::getCustomLabel1()
+CatalogsHotelFilterValuesMap::getCustomLabel1()
 {
 	return custom_label_1;
 }
 
 void
-Catalogs_hotel_filter_values_map::setCustomLabel1(std::list <std::string> custom_label_1)
+CatalogsHotelFilterValuesMap::setCustomLabel1(std::list<std::string> custom_label_1)
 {
 	this->custom_label_1 = custom_label_1;
 }
 
 std::list<std::string>
-Catalogs_hotel_filter_values_map::getCustomLabel2()
+CatalogsHotelFilterValuesMap::getCustomLabel2()
 {
 	return custom_label_2;
 }
 
 void
-Catalogs_hotel_filter_values_map::setCustomLabel2(std::list <std::string> custom_label_2)
+CatalogsHotelFilterValuesMap::setCustomLabel2(std::list<std::string> custom_label_2)
 {
 	this->custom_label_2 = custom_label_2;
 }
 
 std::list<std::string>
-Catalogs_hotel_filter_values_map::getCustomLabel3()
+CatalogsHotelFilterValuesMap::getCustomLabel3()
 {
 	return custom_label_3;
 }
 
 void
-Catalogs_hotel_filter_values_map::setCustomLabel3(std::list <std::string> custom_label_3)
+CatalogsHotelFilterValuesMap::setCustomLabel3(std::list<std::string> custom_label_3)
 {
 	this->custom_label_3 = custom_label_3;
 }
 
 std::list<std::string>
-Catalogs_hotel_filter_values_map::getCustomLabel4()
+CatalogsHotelFilterValuesMap::getCustomLabel4()
 {
 	return custom_label_4;
 }
 
 void
-Catalogs_hotel_filter_values_map::setCustomLabel4(std::list <std::string> custom_label_4)
+CatalogsHotelFilterValuesMap::setCustomLabel4(std::list<std::string> custom_label_4)
 {
 	this->custom_label_4 = custom_label_4;
 }

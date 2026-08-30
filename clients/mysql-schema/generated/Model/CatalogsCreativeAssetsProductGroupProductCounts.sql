@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsCreativeAssetsProductGroupProductCounts`
 --
-SELECT `catalog_type`, `total`, `videos` FROM `CatalogsCreativeAssetsProductGroupProductCounts` WHERE 1;
+SELECT `app_links`, `catalog_type`, `images`, `total`, `videos` FROM `CatalogsCreativeAssetsProductGroupProductCounts` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsCreativeAssetsProductGroupProductCounts`
 --
-INSERT INTO `CatalogsCreativeAssetsProductGroupProductCounts`(`catalog_type`, `total`, `videos`) VALUES (?, ?, ?);
+INSERT INTO `CatalogsCreativeAssetsProductGroupProductCounts`(`app_links`, `catalog_type`, `images`, `total`, `videos`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsCreativeAssetsProductGroupProductCounts`
 --
-UPDATE `CatalogsCreativeAssetsProductGroupProductCounts` SET `catalog_type` = ?, `total` = ?, `videos` = ? WHERE 1;
+UPDATE `CatalogsCreativeAssetsProductGroupProductCounts` SET `app_links` = ?, `catalog_type` = ?, `images` = ?, `total` = ?, `videos` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsCreativeAssetsProductGroupProductCounts`

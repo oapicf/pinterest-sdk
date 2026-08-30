@@ -13,38 +13,18 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.QuizPinQuestion;
 import org.openapitools.model.QuizPinResult;
+import org.openapitools.model.TieBreakerType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="This field includes all quiz data including questions, options, and results.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="This field includes all quiz data including questions, options, and results.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class QuizPinData   {
   
   private List<@Valid QuizPinQuestion> questions = new ArrayList<>();
   private List<@Valid QuizPinResult> results = new ArrayList<>();
   private QuizPinResult tieBreakerCustomResult;
-
-  /**
-   * Quiz ad tie breaker type, default is RANDOM
-   */
-  public enum TieBreakerTypeEnum {
-    RANDOM("RANDOM"),
-
-        CUSTOM("CUSTOM");
-    private String value;
-
-    TieBreakerTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private TieBreakerTypeEnum tieBreakerType;
+  private TieBreakerType tieBreakerType;
 
   /**
    **/
@@ -83,15 +63,14 @@ public class QuizPinData   {
   }
 
   /**
-   * Quiz ad tie breaker type, default is RANDOM
    **/
   
-  @ApiModelProperty(value = "Quiz ad tie breaker type, default is RANDOM")
+  @ApiModelProperty(value = "")
   @JsonProperty("tie_breaker_type")
-  public TieBreakerTypeEnum getTieBreakerType() {
+  public TieBreakerType getTieBreakerType() {
     return tieBreakerType;
   }
-  public void setTieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public void setTieBreakerType(TieBreakerType tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
   }
 
@@ -134,10 +113,7 @@ public class QuizPinData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

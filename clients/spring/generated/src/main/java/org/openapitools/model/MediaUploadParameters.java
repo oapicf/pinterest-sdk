@@ -2,40 +2,49 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * MediaUploadParameters
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class MediaUploadParameters {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String contentType;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String key;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String policy;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String xAmzAlgorithm;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String xAmzCredential;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String xAmzDate;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String xAmzSecurityToken;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String xAmzSignature;
 
   public MediaUploadParameters contentType(@Nullable String contentType) {
@@ -54,6 +63,7 @@ public class MediaUploadParameters {
     return contentType;
   }
 
+  @JsonProperty("Content-Type")
   public void setContentType(@Nullable String contentType) {
     this.contentType = contentType;
   }
@@ -74,6 +84,7 @@ public class MediaUploadParameters {
     return key;
   }
 
+  @JsonProperty("key")
   public void setKey(@Nullable String key) {
     this.key = key;
   }
@@ -94,6 +105,7 @@ public class MediaUploadParameters {
     return policy;
   }
 
+  @JsonProperty("policy")
   public void setPolicy(@Nullable String policy) {
     this.policy = policy;
   }
@@ -114,6 +126,7 @@ public class MediaUploadParameters {
     return xAmzAlgorithm;
   }
 
+  @JsonProperty("x-amz-algorithm")
   public void setxAmzAlgorithm(@Nullable String xAmzAlgorithm) {
     this.xAmzAlgorithm = xAmzAlgorithm;
   }
@@ -134,6 +147,7 @@ public class MediaUploadParameters {
     return xAmzCredential;
   }
 
+  @JsonProperty("x-amz-credential")
   public void setxAmzCredential(@Nullable String xAmzCredential) {
     this.xAmzCredential = xAmzCredential;
   }
@@ -154,6 +168,7 @@ public class MediaUploadParameters {
     return xAmzDate;
   }
 
+  @JsonProperty("x-amz-date")
   public void setxAmzDate(@Nullable String xAmzDate) {
     this.xAmzDate = xAmzDate;
   }
@@ -174,6 +189,7 @@ public class MediaUploadParameters {
     return xAmzSecurityToken;
   }
 
+  @JsonProperty("x-amz-security-token")
   public void setxAmzSecurityToken(@Nullable String xAmzSecurityToken) {
     this.xAmzSecurityToken = xAmzSecurityToken;
   }
@@ -194,6 +210,7 @@ public class MediaUploadParameters {
     return xAmzSignature;
   }
 
+  @JsonProperty("x-amz-signature")
   public void setxAmzSignature(@Nullable String xAmzSignature) {
     this.xAmzSignature = xAmzSignature;
   }
@@ -242,11 +259,8 @@ public class MediaUploadParameters {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

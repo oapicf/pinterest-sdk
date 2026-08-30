@@ -78,7 +78,7 @@ class BoardWithUpdatePrivacyUpdate(Model):
     def name(self) -> str:
         """Gets the name of this BoardWithUpdatePrivacyUpdate.
 
-             Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".  # noqa: E501
+            Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".  # noqa: E501
 
         :return: The name of this BoardWithUpdatePrivacyUpdate.
         :rtype: str
@@ -89,7 +89,7 @@ class BoardWithUpdatePrivacyUpdate(Model):
     def name(self, name: str):
         """Sets the name of this BoardWithUpdatePrivacyUpdate.
 
-             Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".  # noqa: E501
+            Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".  # noqa: E501
 
         :param name: The name of this BoardWithUpdatePrivacyUpdate.
         :type name: str

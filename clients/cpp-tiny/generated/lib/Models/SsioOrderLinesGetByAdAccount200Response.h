@@ -53,14 +53,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setBookmark(std::string  bookmark);
-	/*! \brief Get SSIO order lines by ad acount id
+	void setBookmark(std::string bookmark);
+	/*! \brief Get 
 	 */
 	std::list<SSIOOrderLine> getItems();
 
-	/*! \brief Set SSIO order lines by ad acount id
+	/*! \brief Set 
 	 */
-	void setItems(std::list <SSIOOrderLine> items);
+	void setItems(std::list<SSIOOrderLine> items);
 
 
     private:

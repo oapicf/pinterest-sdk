@@ -3,9 +3,10 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/top_video_pins_analytics_response_pins_inner.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/top_pins_analytics_response_date_availability.dart';
+import 'package:openapi/src/model/top_video_pins_analytics_response_date_availability.dart';
+import 'package:openapi/src/model/top_video_pins_sort_by.dart';
+import 'package:openapi/src/model/top_video_pins_analytics_response_pins_items.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,13 +21,13 @@ part 'top_video_pins_analytics_response.g.dart';
 @BuiltValue()
 abstract class TopVideoPinsAnalyticsResponse implements Built<TopVideoPinsAnalyticsResponse, TopVideoPinsAnalyticsResponseBuilder> {
   @BuiltValueField(wireName: r'date_availability')
-  TopPinsAnalyticsResponseDateAvailability? get dateAvailability;
+  TopVideoPinsAnalyticsResponseDateAvailability? get dateAvailability;
 
   @BuiltValueField(wireName: r'pins')
-  BuiltList<TopVideoPinsAnalyticsResponsePinsInner>? get pins;
+  BuiltList<TopVideoPinsAnalyticsResponsePinsItems>? get pins;
 
   @BuiltValueField(wireName: r'sort_by')
-  TopVideoPinsAnalyticsResponseSortByEnum? get sortBy;
+  TopVideoPinsSortBy? get sortBy;
   // enum sortByEnum {  SAVE,  IMPRESSION,  OUTBOUND_CLICK,  VIDEO_MRC_VIEW,  VIDEO_AVG_WATCH_TIME,  VIDEO_V50_WATCH_TIME,  QUARTILE_95_PERCENT_VIEW,  VIDEO_10S_VIEW,  VIDEO_START,  };
 
   TopVideoPinsAnalyticsResponse._();
@@ -56,21 +57,21 @@ class _$TopVideoPinsAnalyticsResponseSerializer implements PrimitiveSerializer<T
       yield r'date_availability';
       yield serializers.serialize(
         object.dateAvailability,
-        specifiedType: const FullType(TopPinsAnalyticsResponseDateAvailability),
+        specifiedType: const FullType(TopVideoPinsAnalyticsResponseDateAvailability),
       );
     }
     if (object.pins != null) {
       yield r'pins';
       yield serializers.serialize(
         object.pins,
-        specifiedType: const FullType(BuiltList, [FullType(TopVideoPinsAnalyticsResponsePinsInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(TopVideoPinsAnalyticsResponsePinsItems)]),
       );
     }
     if (object.sortBy != null) {
       yield r'sort_by';
       yield serializers.serialize(
         object.sortBy,
-        specifiedType: const FullType(TopVideoPinsAnalyticsResponseSortByEnum),
+        specifiedType: const FullType(TopVideoPinsSortBy),
       );
     }
   }
@@ -99,22 +100,25 @@ class _$TopVideoPinsAnalyticsResponseSerializer implements PrimitiveSerializer<T
         case r'date_availability':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TopPinsAnalyticsResponseDateAvailability),
-          ) as TopPinsAnalyticsResponseDateAvailability;
+            specifiedType: const FullType.nullable(TopVideoPinsAnalyticsResponseDateAvailability),
+          ) as TopVideoPinsAnalyticsResponseDateAvailability?;
+          if (valueDes == null) continue;
           result.dateAvailability.replace(valueDes);
           break;
         case r'pins':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(TopVideoPinsAnalyticsResponsePinsInner)]),
-          ) as BuiltList<TopVideoPinsAnalyticsResponsePinsInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(TopVideoPinsAnalyticsResponsePinsItems)]),
+          ) as BuiltList<TopVideoPinsAnalyticsResponsePinsItems>?;
+          if (valueDes == null) continue;
           result.pins.replace(valueDes);
           break;
         case r'sort_by':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TopVideoPinsAnalyticsResponseSortByEnum),
-          ) as TopVideoPinsAnalyticsResponseSortByEnum;
+            specifiedType: const FullType.nullable(TopVideoPinsSortBy),
+          ) as TopVideoPinsSortBy?;
+          if (valueDes == null) continue;
           result.sortBy = valueDes;
           break;
         default:
@@ -144,34 +148,5 @@ class _$TopVideoPinsAnalyticsResponseSerializer implements PrimitiveSerializer<T
     );
     return result.build();
   }
-}
-
-class TopVideoPinsAnalyticsResponseSortByEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'SAVE')
-  static const TopVideoPinsAnalyticsResponseSortByEnum SAVE = _$topVideoPinsAnalyticsResponseSortByEnum_SAVE;
-  @BuiltValueEnumConst(wireName: r'IMPRESSION')
-  static const TopVideoPinsAnalyticsResponseSortByEnum IMPRESSION = _$topVideoPinsAnalyticsResponseSortByEnum_IMPRESSION;
-  @BuiltValueEnumConst(wireName: r'OUTBOUND_CLICK')
-  static const TopVideoPinsAnalyticsResponseSortByEnum OUTBOUND_CLICK = _$topVideoPinsAnalyticsResponseSortByEnum_OUTBOUND_CLICK;
-  @BuiltValueEnumConst(wireName: r'VIDEO_MRC_VIEW')
-  static const TopVideoPinsAnalyticsResponseSortByEnum VIDEO_MRC_VIEW = _$topVideoPinsAnalyticsResponseSortByEnum_VIDEO_MRC_VIEW;
-  @BuiltValueEnumConst(wireName: r'VIDEO_AVG_WATCH_TIME')
-  static const TopVideoPinsAnalyticsResponseSortByEnum VIDEO_AVG_WATCH_TIME = _$topVideoPinsAnalyticsResponseSortByEnum_VIDEO_AVG_WATCH_TIME;
-  @BuiltValueEnumConst(wireName: r'VIDEO_V50_WATCH_TIME')
-  static const TopVideoPinsAnalyticsResponseSortByEnum vIDEOV50WATCHTIME = _$topVideoPinsAnalyticsResponseSortByEnum_vIDEOV50WATCHTIME;
-  @BuiltValueEnumConst(wireName: r'QUARTILE_95_PERCENT_VIEW')
-  static const TopVideoPinsAnalyticsResponseSortByEnum qUARTILE95PERCENTVIEW = _$topVideoPinsAnalyticsResponseSortByEnum_qUARTILE95PERCENTVIEW;
-  @BuiltValueEnumConst(wireName: r'VIDEO_10S_VIEW')
-  static const TopVideoPinsAnalyticsResponseSortByEnum vIDEO10SVIEW = _$topVideoPinsAnalyticsResponseSortByEnum_vIDEO10SVIEW;
-  @BuiltValueEnumConst(wireName: r'VIDEO_START')
-  static const TopVideoPinsAnalyticsResponseSortByEnum VIDEO_START = _$topVideoPinsAnalyticsResponseSortByEnum_VIDEO_START;
-
-  static Serializer<TopVideoPinsAnalyticsResponseSortByEnum> get serializer => _$topVideoPinsAnalyticsResponseSortByEnumSerializer;
-
-  const TopVideoPinsAnalyticsResponseSortByEnum._(String name): super(name);
-
-  static BuiltSet<TopVideoPinsAnalyticsResponseSortByEnum> get values => _$topVideoPinsAnalyticsResponseSortByEnumValues;
-  static TopVideoPinsAnalyticsResponseSortByEnum valueOf(String name) => _$topVideoPinsAnalyticsResponseSortByEnumValueOf(name);
 }
 

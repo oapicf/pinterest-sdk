@@ -9,7 +9,6 @@
  */
 import { Country } from './country';
 import { ItemCreateBatchRecord } from './itemCreateBatchRecord';
-import { BatchOperation } from './batchOperation';
 
 
 /**
@@ -25,7 +24,7 @@ export interface CatalogsItemsCreateBatchRequest {
      * We recommend using the CatalogsLocale values.
      */
     language: CatalogsItemsCreateBatchRequest.LanguageEnum;
-    operation: BatchOperation;
+    operation: CatalogsItemsCreateBatchRequest.OperationEnum;
 }
 export namespace CatalogsItemsCreateBatchRequest {
     export const LanguageEnum = {
@@ -118,7 +117,7 @@ export namespace CatalogsItemsCreateBatchRequest {
         Nb: 'NB',
         Ne: 'NE',
         Nl2: 'NL',
-        No: 'NO',
+        False: 'false',
         Pl: 'PL',
         Pt: 'PT',
         Ro: 'RO',
@@ -138,6 +137,10 @@ export namespace CatalogsItemsCreateBatchRequest {
         Zh: 'ZH'
     } as const;
     export type LanguageEnum = typeof LanguageEnum[keyof typeof LanguageEnum];
+    export const OperationEnum = {
+        Create: 'CREATE'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

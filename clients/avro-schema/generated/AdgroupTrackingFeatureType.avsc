@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "AdgroupTrackingFeatureType",
+  "symbols": [
+    "TRENDS",
+    "CLONE_META",
+    "BULK_EDITOR",
+    "AD_ROTATION"
+  ]
+}

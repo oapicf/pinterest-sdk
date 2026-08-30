@@ -25,4 +25,6 @@
 
 * `CONSUMER_USER` (value: `"CONSUMER_USER"`)
 
+* `BIZ_PINNER_LIST_SHARER` (value: `"BIZ_PINNER_LIST_SHARER"`)
+
 

@@ -18,7 +18,7 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `adAccountsAudiencesSharedAccountsList()`
 
 ```php
-adAccountsAudiencesSharedAccountsList($ad_account_id, $audience_id, $account_type, $page_size, $bookmark): \OpenAPI\Client\Model\AdAccountsAudiencesSharedAccountsList200Response
+adAccountsAudiencesSharedAccountsList($audience_id, $account_type, $ad_account_id, $bookmark, $page_size): \OpenAPI\Client\Model\AdAccountsAudiencesSharedAccountsList200Response
 ```
 
 List accounts with access to an audience owned by an ad account
@@ -45,14 +45,14 @@ $apiInstance = new OpenAPI\Client\Api\AudienceSharingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $audience_id = 'audience_id_example'; // string | Unique identifier of the audience to use to filter the results.
 $account_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AudienceAccountType(); // \OpenAPI\Client\Model\AudienceAccountType | Filter accounts by account type.
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->adAccountsAudiencesSharedAccountsList($ad_account_id, $audience_id, $account_type, $page_size, $bookmark);
+    $result = $apiInstance->adAccountsAudiencesSharedAccountsList($audience_id, $account_type, $ad_account_id, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceSharingApi->adAccountsAudiencesSharedAccountsList: ', $e->getMessage(), PHP_EOL;
@@ -63,11 +63,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ad_account_id** | **string**| Unique identifier of an ad account. | |
 | **audience_id** | **string**| Unique identifier of the audience to use to filter the results. | |
 | **account_type** | [**\OpenAPI\Client\Model\AudienceAccountType**](../Model/.md)| Filter accounts by account type. | |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **ad_account_id** | **string**| Unique identifier of an ad account. | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -89,7 +89,7 @@ try {
 ## `businessAccountAudiencesSharedAccountsList()`
 
 ```php
-businessAccountAudiencesSharedAccountsList($business_id, $audience_id, $account_type, $page_size, $bookmark): \OpenAPI\Client\Model\AdAccountsAudiencesSharedAccountsList200Response
+businessAccountAudiencesSharedAccountsList($business_id, $audience_id, $account_type, $bookmark, $page_size): \OpenAPI\Client\Model\AdAccountsAudiencesSharedAccountsList200Response
 ```
 
 List accounts with access to an audience owned by a business
@@ -113,14 +113,14 @@ $apiInstance = new OpenAPI\Client\Api\AudienceSharingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
 $audience_id = 'audience_id_example'; // string | Unique identifier of the audience to use to filter the results.
 $account_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AudienceAccountType(); // \OpenAPI\Client\Model\AudienceAccountType | Filter accounts by account type.
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->businessAccountAudiencesSharedAccountsList($business_id, $audience_id, $account_type, $page_size, $bookmark);
+    $result = $apiInstance->businessAccountAudiencesSharedAccountsList($business_id, $audience_id, $account_type, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceSharingApi->businessAccountAudiencesSharedAccountsList: ', $e->getMessage(), PHP_EOL;
@@ -134,8 +134,8 @@ try {
 | **business_id** | **string**| Unique identifier of the requesting business. | |
 | **audience_id** | **string**| Unique identifier of the audience to use to filter the results. | |
 | **account_type** | [**\OpenAPI\Client\Model\AudienceAccountType**](../Model/.md)| Filter accounts by account type. | |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -157,7 +157,7 @@ try {
 ## `sharedAudiencesForBusinessList()`
 
 ```php
-sharedAudiencesForBusinessList($business_id, $bookmark, $order, $page_size): \OpenAPI\Client\Model\AudiencesList200Response
+sharedAudiencesForBusinessList($business_id, $order, $bookmark, $page_size): \OpenAPI\Client\Model\SharedAudiencesForBusinessList200Response
 ```
 
 List received audiences for a business
@@ -181,13 +181,13 @@ $apiInstance = new OpenAPI\Client\Api\AudienceSharingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Order(); // \OpenAPI\Client\Model\Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$order = ASCENDING; // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->sharedAudiencesForBusinessList($business_id, $bookmark, $order, $page_size);
+    $result = $apiInstance->sharedAudiencesForBusinessList($business_id, $order, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceSharingApi->sharedAudiencesForBusinessList: ', $e->getMessage(), PHP_EOL;
@@ -199,13 +199,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
+| **order** | [**\OpenAPI\Client\Model\Order**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AudiencesList200Response**](../Model/AudiencesList200Response.md)
+[**\OpenAPI\Client\Model\SharedAudiencesForBusinessList200Response**](../Model/SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -223,12 +223,12 @@ try {
 ## `updateAdAccountToAdAccountSharedAudience()`
 
 ```php
-updateAdAccountToAdAccountSharedAudience($ad_account_id, $shared_audience): \OpenAPI\Client\Model\SharedAudienceResponse
+updateAdAccountToAdAccountSharedAudience($ad_account_id, $ad_account_to_ad_account_shared_audience_update_with_required_body): \OpenAPI\Client\Model\AdAccountToAdAccountSharedAudience
 ```
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -248,10 +248,10 @@ $apiInstance = new OpenAPI\Client\Api\AudienceSharingApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$shared_audience = new \OpenAPI\Client\Model\SharedAudience(); // \OpenAPI\Client\Model\SharedAudience
+$ad_account_to_ad_account_shared_audience_update_with_required_body = new \OpenAPI\Client\Model\AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody(); // \OpenAPI\Client\Model\AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
 
 try {
-    $result = $apiInstance->updateAdAccountToAdAccountSharedAudience($ad_account_id, $shared_audience);
+    $result = $apiInstance->updateAdAccountToAdAccountSharedAudience($ad_account_id, $ad_account_to_ad_account_shared_audience_update_with_required_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceSharingApi->updateAdAccountToAdAccountSharedAudience: ', $e->getMessage(), PHP_EOL;
@@ -263,11 +263,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **shared_audience** | [**\OpenAPI\Client\Model\SharedAudience**](../Model/SharedAudience.md)|  | |
+| **ad_account_to_ad_account_shared_audience_update_with_required_body** | [**\OpenAPI\Client\Model\AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](../Model/AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SharedAudienceResponse**](../Model/SharedAudienceResponse.md)
+[**\OpenAPI\Client\Model\AdAccountToAdAccountSharedAudience**](../Model/AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -285,12 +285,12 @@ try {
 ## `updateAdAccountToBusinessSharedAudience()`
 
 ```php
-updateAdAccountToBusinessSharedAudience($ad_account_id, $business_shared_audience): \OpenAPI\Client\Model\BusinessSharedAudienceResponse
+updateAdAccountToBusinessSharedAudience($ad_account_id, $ad_account_to_business_shared_audience_update_with_required_body): \OpenAPI\Client\Model\AdAccountToBusinessSharedAudience
 ```
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -310,10 +310,10 @@ $apiInstance = new OpenAPI\Client\Api\AudienceSharingApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$business_shared_audience = new \OpenAPI\Client\Model\BusinessSharedAudience(); // \OpenAPI\Client\Model\BusinessSharedAudience
+$ad_account_to_business_shared_audience_update_with_required_body = new \OpenAPI\Client\Model\AdAccountToBusinessSharedAudienceUpdateWithRequiredBody(); // \OpenAPI\Client\Model\AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 
 try {
-    $result = $apiInstance->updateAdAccountToBusinessSharedAudience($ad_account_id, $business_shared_audience);
+    $result = $apiInstance->updateAdAccountToBusinessSharedAudience($ad_account_id, $ad_account_to_business_shared_audience_update_with_required_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceSharingApi->updateAdAccountToBusinessSharedAudience: ', $e->getMessage(), PHP_EOL;
@@ -325,11 +325,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **business_shared_audience** | [**\OpenAPI\Client\Model\BusinessSharedAudience**](../Model/BusinessSharedAudience.md)|  | |
+| **ad_account_to_business_shared_audience_update_with_required_body** | [**\OpenAPI\Client\Model\AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](../Model/AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BusinessSharedAudienceResponse**](../Model/BusinessSharedAudienceResponse.md)
+[**\OpenAPI\Client\Model\AdAccountToBusinessSharedAudience**](../Model/AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -347,12 +347,12 @@ try {
 ## `updateBusinessToAdAccountSharedAudience()`
 
 ```php
-updateBusinessToAdAccountSharedAudience($business_id, $shared_audience): \OpenAPI\Client\Model\SharedAudienceResponse
+updateBusinessToAdAccountSharedAudience($business_id, $business_to_ad_account_shared_audience_update_with_required_body): \OpenAPI\Client\Model\BusinessToAdAccountSharedAudience
 ```
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -371,11 +371,11 @@ $apiInstance = new OpenAPI\Client\Api\AudienceSharingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$shared_audience = new \OpenAPI\Client\Model\SharedAudience(); // \OpenAPI\Client\Model\SharedAudience
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$business_to_ad_account_shared_audience_update_with_required_body = new \OpenAPI\Client\Model\BusinessToAdAccountSharedAudienceUpdateWithRequiredBody(); // \OpenAPI\Client\Model\BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
 
 try {
-    $result = $apiInstance->updateBusinessToAdAccountSharedAudience($business_id, $shared_audience);
+    $result = $apiInstance->updateBusinessToAdAccountSharedAudience($business_id, $business_to_ad_account_shared_audience_update_with_required_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceSharingApi->updateBusinessToAdAccountSharedAudience: ', $e->getMessage(), PHP_EOL;
@@ -387,11 +387,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **shared_audience** | [**\OpenAPI\Client\Model\SharedAudience**](../Model/SharedAudience.md)|  | |
+| **business_to_ad_account_shared_audience_update_with_required_body** | [**\OpenAPI\Client\Model\BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](../Model/BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SharedAudienceResponse**](../Model/SharedAudienceResponse.md)
+[**\OpenAPI\Client\Model\BusinessToAdAccountSharedAudience**](../Model/BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -409,12 +409,12 @@ try {
 ## `updateBusinessToBusinessSharedAudience()`
 
 ```php
-updateBusinessToBusinessSharedAudience($business_id, $business_shared_audience): \OpenAPI\Client\Model\BusinessSharedAudienceResponse
+updateBusinessToBusinessSharedAudience($business_id, $business_to_business_shared_audience_update_with_required_body): \OpenAPI\Client\Model\BusinessToBusinessSharedAudience
 ```
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -433,11 +433,11 @@ $apiInstance = new OpenAPI\Client\Api\AudienceSharingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$business_shared_audience = new \OpenAPI\Client\Model\BusinessSharedAudience(); // \OpenAPI\Client\Model\BusinessSharedAudience
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$business_to_business_shared_audience_update_with_required_body = new \OpenAPI\Client\Model\BusinessToBusinessSharedAudienceUpdateWithRequiredBody(); // \OpenAPI\Client\Model\BusinessToBusinessSharedAudienceUpdateWithRequiredBody
 
 try {
-    $result = $apiInstance->updateBusinessToBusinessSharedAudience($business_id, $business_shared_audience);
+    $result = $apiInstance->updateBusinessToBusinessSharedAudience($business_id, $business_to_business_shared_audience_update_with_required_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceSharingApi->updateBusinessToBusinessSharedAudience: ', $e->getMessage(), PHP_EOL;
@@ -449,11 +449,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **business_shared_audience** | [**\OpenAPI\Client\Model\BusinessSharedAudience**](../Model/BusinessSharedAudience.md)|  | |
+| **business_to_business_shared_audience_update_with_required_body** | [**\OpenAPI\Client\Model\BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](../Model/BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BusinessSharedAudienceResponse**](../Model/BusinessSharedAudienceResponse.md)
+[**\OpenAPI\Client\Model\BusinessToBusinessSharedAudience**](../Model/BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

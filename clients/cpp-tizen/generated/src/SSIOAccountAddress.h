@@ -1,7 +1,7 @@
 /*
  * SSIOAccountAddress.h
  *
- * 
+ * Salesforce address information.
  */
 
 #ifndef _SSIOAccountAddress_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Salesforce address information.
  *
  *  \ingroup Models
  *

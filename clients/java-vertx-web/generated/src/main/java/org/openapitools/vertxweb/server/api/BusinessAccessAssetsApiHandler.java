@@ -1,23 +1,25 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.AssetGroupDeletion;
+import org.openapitools.vertxweb.server.model.AssetGroupDeletionDelete;
+import org.openapitools.vertxweb.server.model.AssetGroupInput;
+import org.openapitools.vertxweb.server.model.AssetGroupInputCreate;
+import org.openapitools.vertxweb.server.model.AssetGroupModification;
+import org.openapitools.vertxweb.server.model.AssetGroupModificationReadOrUpdate;
+import org.openapitools.vertxweb.server.model.AssetPermissionType;
+import org.openapitools.vertxweb.server.model.AssetSearchBy;
+import org.openapitools.vertxweb.server.model.AssetSortBy;
 import org.openapitools.vertxweb.server.model.BusinessAssetMembersGet200Response;
-import org.openapitools.vertxweb.server.model.BusinessAssetPartnersGet200Response;
 import org.openapitools.vertxweb.server.model.BusinessAssetsGet200Response;
-import org.openapitools.vertxweb.server.model.BusinessMemberAssetsGet200Response;
-import org.openapitools.vertxweb.server.model.BusinessMembersAssetAccessDeleteRequest;
+import org.openapitools.vertxweb.server.model.BusinessMemberAssetsGetResponse;
+import org.openapitools.vertxweb.server.model.BusinessMembersAssetAccessDeleteBody;
 import org.openapitools.vertxweb.server.model.BusinessPartnerAssetAccessGet200Response;
-import org.openapitools.vertxweb.server.model.CreateAssetGroupBody;
-import org.openapitools.vertxweb.server.model.CreateAssetGroupResponse;
-import org.openapitools.vertxweb.server.model.DeleteAssetGroupBody;
-import org.openapitools.vertxweb.server.model.DeleteAssetGroupResponse;
 import org.openapitools.vertxweb.server.model.DeleteMemberAccessResultsResponseArray;
 import org.openapitools.vertxweb.server.model.DeletePartnerAssetAccessBody;
-import org.openapitools.vertxweb.server.model.DeletePartnerAssetsResultsResponseArray;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.PartnerType;
+import org.openapitools.vertxweb.server.model.DeletePartnerAssetAccessResultsResponseArray;
+import org.openapitools.vertxweb.server.model.NonDraftEntityStatus;
 import org.openapitools.vertxweb.server.model.PermissionsWithOwner;
-import org.openapitools.vertxweb.server.model.UpdateAssetGroupBody;
-import org.openapitools.vertxweb.server.model.UpdateAssetGroupResponse;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 import org.openapitools.vertxweb.server.model.UpdateMemberAssetAccessBody;
 import org.openapitools.vertxweb.server.model.UpdateMemberAssetsResultsResponseArray;
 import org.openapitools.vertxweb.server.model.UpdatePartnerAssetAccessBody;
@@ -75,12 +77,12 @@ public class BusinessAccessAssetsApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        CreateAssetGroupBody createAssetGroupBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CreateAssetGroupBody>(){}) : null;
+        AssetGroupInputCreate assetGroupInputCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AssetGroupInputCreate>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter createAssetGroupBody is {}", createAssetGroupBody);
+        logger.debug("Parameter assetGroupInputCreate is {}", assetGroupInputCreate);
 
-        api.assetGroupCreate(businessId, createAssetGroupBody)
+        api.assetGroupCreate(businessId, assetGroupInputCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -100,12 +102,12 @@ public class BusinessAccessAssetsApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        DeleteAssetGroupBody deleteAssetGroupBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<DeleteAssetGroupBody>(){}) : null;
+        AssetGroupDeletionDelete assetGroupDeletionDelete = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AssetGroupDeletionDelete>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter deleteAssetGroupBody is {}", deleteAssetGroupBody);
+        logger.debug("Parameter assetGroupDeletionDelete is {}", assetGroupDeletionDelete);
 
-        api.assetGroupDelete(businessId, deleteAssetGroupBody)
+        api.assetGroupDelete(businessId, assetGroupDeletionDelete)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -125,12 +127,12 @@ public class BusinessAccessAssetsApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        UpdateAssetGroupBody updateAssetGroupBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<UpdateAssetGroupBody>(){}) : null;
+        AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AssetGroupModificationReadOrUpdate>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter updateAssetGroupBody is {}", updateAssetGroupBody);
+        logger.debug("Parameter assetGroupModificationReadOrUpdate is {}", assetGroupModificationReadOrUpdate);
 
-        api.assetGroupUpdate(businessId, updateAssetGroupBody)
+        api.assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -150,19 +152,19 @@ public class BusinessAccessAssetsApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         String assetId = requestParameters.pathParameter("asset_id") != null ? requestParameters.pathParameter("asset_id").getString() : null;
+        Integer startIndex = requestParameters.queryParameter("start_index") != null ? requestParameters.queryParameter("start_index").getInteger() : 0;
         Boolean fetchSystemUsers = requestParameters.queryParameter("fetch_system_users") != null ? requestParameters.queryParameter("fetch_system_users").getBoolean() : false;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        Integer startIndex = requestParameters.queryParameter("start_index") != null ? requestParameters.queryParameter("start_index").getInteger() : 0;
 
         logger.debug("Parameter businessId is {}", businessId);
         logger.debug("Parameter assetId is {}", assetId);
+        logger.debug("Parameter startIndex is {}", startIndex);
         logger.debug("Parameter fetchSystemUsers is {}", fetchSystemUsers);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter startIndex is {}", startIndex);
 
-        api.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
+        api.businessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -250,6 +252,12 @@ public class BusinessAccessAssetsApiHandler {
         String memberId = requestParameters.pathParameter("member_id") != null ? requestParameters.pathParameter("member_id").getString() : null;
         String assetType = requestParameters.queryParameter("asset_type") != null ? requestParameters.queryParameter("asset_type").getString() : "AD_ACCOUNT";
         Integer startIndex = requestParameters.queryParameter("start_index") != null ? requestParameters.queryParameter("start_index").getInteger() : 0;
+        AssetSortBy sortBy = requestParameters.queryParameter("sort_by") != null ? requestParameters.queryParameter("sort_by").getAssetSortBy() : null;
+        Boolean sortAscending = requestParameters.queryParameter("sort_ascending") != null ? requestParameters.queryParameter("sort_ascending").getBoolean() : true;
+        AssetSearchBy searchBy = requestParameters.queryParameter("search_by") != null ? requestParameters.queryParameter("search_by").getAssetSearchBy() : null;
+        String searchValue = requestParameters.queryParameter("search_value") != null ? requestParameters.queryParameter("search_value").getString() : null;
+        AssetPermissionType assetPermissionType = requestParameters.queryParameter("asset_permission_type") != null ? requestParameters.queryParameter("asset_permission_type").getAssetPermissionType() : null;
+        List<NonDraftEntityStatus> adAccountStatuses = requestParameters.queryParameter("ad_account_statuses") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("ad_account_statuses").get(), new TypeReference<List<NonDraftEntityStatus>>(){}) : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
@@ -257,10 +265,16 @@ public class BusinessAccessAssetsApiHandler {
         logger.debug("Parameter memberId is {}", memberId);
         logger.debug("Parameter assetType is {}", assetType);
         logger.debug("Parameter startIndex is {}", startIndex);
+        logger.debug("Parameter sortBy is {}", sortBy);
+        logger.debug("Parameter sortAscending is {}", sortAscending);
+        logger.debug("Parameter searchBy is {}", searchBy);
+        logger.debug("Parameter searchValue is {}", searchValue);
+        logger.debug("Parameter assetPermissionType is {}", assetPermissionType);
+        logger.debug("Parameter adAccountStatuses is {}", adAccountStatuses);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize)
+        api.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -280,12 +294,12 @@ public class BusinessAccessAssetsApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BusinessMembersAssetAccessDeleteRequest>(){}) : null;
+        BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BusinessMembersAssetAccessDeleteBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter businessMembersAssetAccessDeleteRequest is {}", businessMembersAssetAccessDeleteRequest);
+        logger.debug("Parameter businessMembersAssetAccessDeleteBody is {}", businessMembersAssetAccessDeleteBody);
 
-        api.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest)
+        api.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -330,21 +344,29 @@ public class BusinessAccessAssetsApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         String partnerId = requestParameters.pathParameter("partner_id") != null ? requestParameters.pathParameter("partner_id").getString() : null;
-        PartnerType partnerType = requestParameters.queryParameter("partner_type") != null ? requestParameters.queryParameter("partner_type").getPartnerType() : ;
+        String partnerType = requestParameters.queryParameter("partner_type") != null ? requestParameters.queryParameter("partner_type").getString() : "INTERNAL";
         String assetType = requestParameters.queryParameter("asset_type") != null ? requestParameters.queryParameter("asset_type").getString() : "AD_ACCOUNT";
         Integer startIndex = requestParameters.queryParameter("start_index") != null ? requestParameters.queryParameter("start_index").getInteger() : 0;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        AssetSortBy sortBy = requestParameters.queryParameter("sort_by") != null ? requestParameters.queryParameter("sort_by").getAssetSortBy() : null;
+        Boolean sortAscending = requestParameters.queryParameter("sort_ascending") != null ? requestParameters.queryParameter("sort_ascending").getBoolean() : true;
+        AssetSearchBy searchBy = requestParameters.queryParameter("search_by") != null ? requestParameters.queryParameter("search_by").getAssetSearchBy() : null;
+        String searchValue = requestParameters.queryParameter("search_value") != null ? requestParameters.queryParameter("search_value").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
         logger.debug("Parameter businessId is {}", businessId);
         logger.debug("Parameter partnerId is {}", partnerId);
         logger.debug("Parameter partnerType is {}", partnerType);
         logger.debug("Parameter assetType is {}", assetType);
         logger.debug("Parameter startIndex is {}", startIndex);
-        logger.debug("Parameter pageSize is {}", pageSize);
+        logger.debug("Parameter sortBy is {}", sortBy);
+        logger.debug("Parameter sortAscending is {}", sortAscending);
+        logger.debug("Parameter searchBy is {}", searchBy);
+        logger.debug("Parameter searchValue is {}", searchValue);
         logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark)
+        api.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

@@ -93,7 +93,7 @@ The class is defined in **[Language.java](../../src/main/java/org/openapitools/m
 
 * `NL` (value: `"NL"`)
 
-* `NO` (value: `"NO"`)
+* `FALSE` (value: `"false"`)
 
 * `PL` (value: `"PL"`)
 

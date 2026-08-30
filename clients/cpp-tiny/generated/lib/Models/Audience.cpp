@@ -7,15 +7,16 @@ using namespace Tiny;
 Audience::Audience()
 {
 	ad_account_id = std::string();
-	audience_type = std::string();
+	audience_type = null;
 	created_by_company_name = std::string();
 	created_timestamp = int(0);
 	description = std::string();
 	id = std::string();
+	is_nca = bool(false);
 	name = std::string();
 	rule = AudienceRule();
 	size = int(0);
-	status = std::string();
+	status = null;
 	type = std::string();
 	updated_timestamp = int(0);
 }
@@ -56,8 +57,9 @@ Audience::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&audience_type, value, "std::string");
 
+        PinnerListType* obj = &audience_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -113,6 +115,19 @@ Audience::fromJson(std::string jsonObj)
 
     }
 
+    const char *is_ncaKey = "is_nca";
+
+    if(object.has_key(is_ncaKey))
+    {
+        bourne::json value = object[is_ncaKey];
+
+
+
+        jsonToValue(&is_nca, value, "bool");
+
+
+    }
+
     const char *nameKey = "name";
 
     if(object.has_key(nameKey))
@@ -161,8 +176,9 @@ Audience::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&status, value, "std::string");
 
+        AudienceStatus* obj = &status;
+		obj->fromJson(value.dump());
 
     }
 
@@ -211,8 +227,8 @@ Audience::toJson()
 
 
 
-    object["audience_type"] = getAudienceType();
 
+	object["audience_type"] = getAudienceType().toJson();
 
 
 
@@ -246,6 +262,13 @@ Audience::toJson()
 
 
 
+    object["is_nca"] = isIsNca();
+
+
+
+
+
+
     object["name"] = getName();
 
 
@@ -267,8 +290,8 @@ Audience::toJson()
 
 
 
-    object["status"] = getStatus();
 
+	object["status"] = getStatus().toJson();
 
 
 
@@ -296,19 +319,19 @@ Audience::getAdAccountId()
 }
 
 void
-Audience::setAdAccountId(std::string  ad_account_id)
+Audience::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
 
-std::string
+PinnerListType
 Audience::getAudienceType()
 {
 	return audience_type;
 }
 
 void
-Audience::setAudienceType(std::string  audience_type)
+Audience::setAudienceType(PinnerListType audience_type)
 {
 	this->audience_type = audience_type;
 }
@@ -320,7 +343,7 @@ Audience::getCreatedByCompanyName()
 }
 
 void
-Audience::setCreatedByCompanyName(std::string  created_by_company_name)
+Audience::setCreatedByCompanyName(std::string created_by_company_name)
 {
 	this->created_by_company_name = created_by_company_name;
 }
@@ -332,7 +355,7 @@ Audience::getCreatedTimestamp()
 }
 
 void
-Audience::setCreatedTimestamp(int  created_timestamp)
+Audience::setCreatedTimestamp(int created_timestamp)
 {
 	this->created_timestamp = created_timestamp;
 }
@@ -344,7 +367,7 @@ Audience::getDescription()
 }
 
 void
-Audience::setDescription(std::string  description)
+Audience::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -356,9 +379,21 @@ Audience::getId()
 }
 
 void
-Audience::setId(std::string  id)
+Audience::setId(std::string id)
 {
 	this->id = id;
+}
+
+bool
+Audience::isIsNca()
+{
+	return is_nca;
+}
+
+void
+Audience::setIsNca(bool is_nca)
+{
+	this->is_nca = is_nca;
 }
 
 std::string
@@ -368,7 +403,7 @@ Audience::getName()
 }
 
 void
-Audience::setName(std::string  name)
+Audience::setName(std::string name)
 {
 	this->name = name;
 }
@@ -380,7 +415,7 @@ Audience::getRule()
 }
 
 void
-Audience::setRule(AudienceRule  rule)
+Audience::setRule(AudienceRule rule)
 {
 	this->rule = rule;
 }
@@ -392,19 +427,19 @@ Audience::getSize()
 }
 
 void
-Audience::setSize(int  size)
+Audience::setSize(int size)
 {
 	this->size = size;
 }
 
-std::string
+AudienceStatus
 Audience::getStatus()
 {
 	return status;
 }
 
 void
-Audience::setStatus(std::string  status)
+Audience::setStatus(AudienceStatus status)
 {
 	this->status = status;
 }
@@ -416,7 +451,7 @@ Audience::getType()
 }
 
 void
-Audience::setType(std::string  type)
+Audience::setType(std::string type)
 {
 	this->type = type;
 }
@@ -428,7 +463,7 @@ Audience::getUpdatedTimestamp()
 }
 
 void
-Audience::setUpdatedTimestamp(int  updated_timestamp)
+Audience::setUpdatedTimestamp(int updated_timestamp)
 {
 	this->updated_timestamp = updated_timestamp;
 }

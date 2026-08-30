@@ -25,6 +25,7 @@ class CatalogsCreativeAssetsAttributes {
     this.link,
     this.title,
     this.visibility,
+    this.aiDisclosures = const [],
     this.imageLink,
     this.videoLink,
   });
@@ -80,8 +81,11 @@ class CatalogsCreativeAssetsAttributes {
   ///
   String? title;
 
-  /// Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+  /// Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
   String? visibility;
+
+  /// AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+  List<CatalogsAiContentDisclosure> aiDisclosures;
 
   /// The creative assets image.
   ///
@@ -115,6 +119,7 @@ class CatalogsCreativeAssetsAttributes {
     other.link == link &&
     other.title == title &&
     other.visibility == visibility &&
+    _deepEquality.equals(other.aiDisclosures, aiDisclosures) &&
     other.imageLink == imageLink &&
     other.videoLink == videoLink;
 
@@ -133,11 +138,12 @@ class CatalogsCreativeAssetsAttributes {
     (link == null ? 0 : link!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (visibility == null ? 0 : visibility!.hashCode) +
+    (aiDisclosures.hashCode) +
     (imageLink == null ? 0 : imageLink!.hashCode) +
     (videoLink == null ? 0 : videoLink!.hashCode);
 
   @override
-  String toString() => 'CatalogsCreativeAssetsAttributes[androidDeepLink=$androidDeepLink, customLabel0=$customLabel0, customLabel1=$customLabel1, customLabel2=$customLabel2, customLabel3=$customLabel3, customLabel4=$customLabel4, description=$description, googleProductCategory=$googleProductCategory, iosDeepLink=$iosDeepLink, link=$link, title=$title, visibility=$visibility, imageLink=$imageLink, videoLink=$videoLink]';
+  String toString() => 'CatalogsCreativeAssetsAttributes[androidDeepLink=$androidDeepLink, customLabel0=$customLabel0, customLabel1=$customLabel1, customLabel2=$customLabel2, customLabel3=$customLabel3, customLabel4=$customLabel4, description=$description, googleProductCategory=$googleProductCategory, iosDeepLink=$iosDeepLink, link=$link, title=$title, visibility=$visibility, aiDisclosures=$aiDisclosures, imageLink=$imageLink, videoLink=$videoLink]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -201,6 +207,7 @@ class CatalogsCreativeAssetsAttributes {
     } else {
       json[r'visibility'] = null;
     }
+      json[r'ai_disclosures'] = this.aiDisclosures;
     if (this.imageLink != null) {
       json[r'image_link'] = this.imageLink;
     } else {
@@ -225,10 +232,6 @@ class CatalogsCreativeAssetsAttributes {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreativeAssetsAttributes[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreativeAssetsAttributes[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -245,6 +248,7 @@ class CatalogsCreativeAssetsAttributes {
         link: mapValueOfType<String>(json, r'link'),
         title: mapValueOfType<String>(json, r'title'),
         visibility: mapValueOfType<String>(json, r'visibility'),
+        aiDisclosures: CatalogsAiContentDisclosure.listFromJson(json[r'ai_disclosures']),
         imageLink: mapValueOfType<String>(json, r'image_link'),
         videoLink: mapValueOfType<String>(json, r'video_link'),
       );

@@ -89,6 +89,36 @@ static bool customerListsCreateProcessor(MemoryStruct_s p_chunk, long code, char
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -109,7 +139,7 @@ static bool customerListsCreateProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool customerListsCreateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<CustomerListRequest> customerListRequest, 
+	std::string adAccountId, std::shared_ptr<CustomerListCreate> customerListCreate, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -130,11 +160,11 @@ static bool customerListsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("CustomerListRequest")) {
-		node = converttoJson(&customerListRequest, "CustomerListRequest", "");
+	if (isprimitive("CustomerListCreate")) {
+		node = converttoJson(&customerListCreate, "CustomerListCreate", "");
 	}
 	
-	char *jsonStr =  customerListRequest.toJson();
+	char *jsonStr =  customerListCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -199,22 +229,22 @@ static bool customerListsCreateHelper(char * accessToken,
 
 
 bool CustomerListsManager::customerListsCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<CustomerListRequest> customerListRequest, 
+	std::string adAccountId, std::shared_ptr<CustomerListCreate> customerListCreate, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData)
 {
 	return customerListsCreateHelper(accessToken,
-	adAccountId, customerListRequest, 
+	adAccountId, customerListCreate, 
 	handler, userData, true);
 }
 
 bool CustomerListsManager::customerListsCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<CustomerListRequest> customerListRequest, 
+	std::string adAccountId, std::shared_ptr<CustomerListCreate> customerListCreate, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData)
 {
 	return customerListsCreateHelper(accessToken,
-	adAccountId, customerListRequest, 
+	adAccountId, customerListCreate, 
 	handler, userData, false);
 }
 
@@ -248,6 +278,31 @@ static bool customerListsGetProcessor(MemoryStruct_s p_chunk, long code, char* e
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -422,6 +477,31 @@ static bool customerListsListProcessor(MemoryStruct_s p_chunk, long code, char* 
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -442,7 +522,7 @@ static bool customerListsListProcessor(MemoryStruct_s p_chunk, long code, char* 
 }
 
 static bool customerListsListHelper(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, bool excludeNca, 
 	void(* handler)(Customer_lists_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -460,6 +540,13 @@ static bool customerListsListHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
 	itemAtq = stringify(&pageSize, "int");
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
@@ -467,17 +554,17 @@ static bool customerListsListHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&order, "std::string");
+	itemAtq = stringify(&order, "Pinterest.Lib.PaginationOrder");
 	queryParams.insert(pair<string, string>("order", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("order");
 	}
 
 
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	itemAtq = stringify(&excludeNca, "bool");
+	queryParams.insert(pair<string, string>("exclude_nca", itemAtq));
 	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
+		queryParams.erase("exclude_nca");
 	}
 
 	string mBody = "";
@@ -540,22 +627,22 @@ static bool customerListsListHelper(char * accessToken,
 
 
 bool CustomerListsManager::customerListsListAsync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, bool excludeNca, 
 	void(* handler)(Customer_lists_list_200_response, Error, void* )
 	, void* userData)
 {
 	return customerListsListHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, excludeNca, 
 	handler, userData, true);
 }
 
 bool CustomerListsManager::customerListsListSync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, bool excludeNca, 
 	void(* handler)(Customer_lists_list_200_response, Error, void* )
 	, void* userData)
 {
 	return customerListsListHelper(accessToken,
-	adAccountId, pageSize, order, bookmark, 
+	adAccountId, bookmark, pageSize, order, excludeNca, 
 	handler, userData, false);
 }
 
@@ -600,6 +687,31 @@ static bool customerListsUpdateProcessor(MemoryStruct_s p_chunk, long code, char
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -620,7 +732,7 @@ static bool customerListsUpdateProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool customerListsUpdateHelper(char * accessToken,
-	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateRequest> customerListUpdateRequest, 
+	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateWithRequiredBody> customerListUpdateWithRequiredBody, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -641,11 +753,11 @@ static bool customerListsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("CustomerListUpdateRequest")) {
-		node = converttoJson(&customerListUpdateRequest, "CustomerListUpdateRequest", "");
+	if (isprimitive("CustomerListUpdateWithRequiredBody")) {
+		node = converttoJson(&customerListUpdateWithRequiredBody, "CustomerListUpdateWithRequiredBody", "");
 	}
 	
-	char *jsonStr =  customerListUpdateRequest.toJson();
+	char *jsonStr =  customerListUpdateWithRequiredBody.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -716,22 +828,22 @@ static bool customerListsUpdateHelper(char * accessToken,
 
 
 bool CustomerListsManager::customerListsUpdateAsync(char * accessToken,
-	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateRequest> customerListUpdateRequest, 
+	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateWithRequiredBody> customerListUpdateWithRequiredBody, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData)
 {
 	return customerListsUpdateHelper(accessToken,
-	adAccountId, customerListId, customerListUpdateRequest, 
+	adAccountId, customerListId, customerListUpdateWithRequiredBody, 
 	handler, userData, true);
 }
 
 bool CustomerListsManager::customerListsUpdateSync(char * accessToken,
-	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateRequest> customerListUpdateRequest, 
+	std::string adAccountId, std::string customerListId, std::shared_ptr<CustomerListUpdateWithRequiredBody> customerListUpdateWithRequiredBody, 
 	void(* handler)(CustomerList, Error, void* )
 	, void* userData)
 {
 	return customerListsUpdateHelper(accessToken,
-	adAccountId, customerListId, customerListUpdateRequest, 
+	adAccountId, customerListId, customerListUpdateWithRequiredBody, 
 	handler, userData, false);
 }
 

@@ -19,7 +19,7 @@ searchPartnerPins($term, $country_code, $bookmark, $locale, $limit): \OpenAPI\Cl
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Example
 
@@ -39,10 +39,10 @@ $apiInstance = new OpenAPI\Client\Api\SearchApi(
     $config
 );
 $term = 'term_example'; // string | Search term to look up pins.
-$country_code = US; // string | Two letter country code (ISO 3166-1 alpha-2)
+$country_code = 'country_code_example'; // string | Two letter country code (ISO 3166-1 alpha-2)
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
 $locale = 'locale_example'; // string | Search locale.
-$limit = 4; // int | Max search result size
+$limit = 10; // int | Max search result size
 
 try {
     $result = $apiInstance->searchPartnerPins($term, $country_code, $bookmark, $locale, $limit);
@@ -82,12 +82,12 @@ try {
 ## `searchUserBoardsGet()`
 
 ```php
-searchUserBoardsGet($ad_account_id, $bookmark, $page_size, $query): \OpenAPI\Client\Model\SearchUserBoardsGet200Response
+searchUserBoardsGet($ad_account_id, $query, $bookmark, $page_size): \OpenAPI\Client\Model\BoardsList200Response
 ```
 
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -110,12 +110,12 @@ $apiInstance = new OpenAPI\Client\Api\SearchApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $query = 'query_example'; // string | Search query. Can contain pin description keywords or comma-separated pin IDs.
+$bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
-    $result = $apiInstance->searchUserBoardsGet($ad_account_id, $bookmark, $page_size, $query);
+    $result = $apiInstance->searchUserBoardsGet($ad_account_id, $query, $bookmark, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SearchApi->searchUserBoardsGet: ', $e->getMessage(), PHP_EOL;
@@ -127,13 +127,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
-| **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **query** | **string**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
+| **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SearchUserBoardsGet200Response**](../Model/SearchUserBoardsGet200Response.md)
+[**\OpenAPI\Client\Model\BoardsList200Response**](../Model/BoardsList200Response.md)
 
 ### Authorization
 
@@ -151,12 +151,12 @@ try {
 ## `searchUserPinsList()`
 
 ```php
-searchUserPinsList($query, $ad_account_id, $bookmark): \OpenAPI\Client\Model\SearchUserPinsList200Response
+searchUserPinsList($query, $ad_account_id, $bookmark): \OpenAPI\Client\Model\PinsList200Response
 ```
 
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Example
 
@@ -175,7 +175,7 @@ $apiInstance = new OpenAPI\Client\Api\SearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$query = Plants; // string | Search query. Can contain pin description keywords or comma-separated pin IDs.
+$query = 'query_example'; // string | Search query. Can contain pin description keywords or comma-separated pin IDs.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
 
@@ -197,7 +197,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SearchUserPinsList200Response**](../Model/SearchUserPinsList200Response.md)
+[**\OpenAPI\Client\Model\PinsList200Response**](../Model/PinsList200Response.md)
 
 ### Authorization
 

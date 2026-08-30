@@ -4,9 +4,13 @@
 
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/app_type_multipliers.dart';
-import 'package:openapi/src/model/campaign_bid_options.dart';
+import 'package:openapi/src/model/frequency_multipliers.dart';
+import 'package:openapi/src/model/gender_multipliers.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/age_bucket_multipliers.dart';
+import 'package:openapi/src/model/campaign_bid_options_update_mask_items.dart';
 import 'package:openapi/src/model/campaign_audience_multipliers.dart';
+import 'package:openapi/src/model/freq_bid_multiplier_time_window.dart';
 import 'package:openapi/src/model/placement_multipliers.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -16,16 +20,48 @@ part 'campaign_bid_options_update.g.dart';
 /// Object describing an update to the campaign level bid multipliers.
 ///
 /// Properties:
-/// * [appTypeMultipliers] 
-/// * [audienceMultipliers] 
-/// * [placementMultipliers] 
-/// * [updateMask] - List of fields to update, only the fields in the list will be updated.
+/// * [ageBucketMultipliers] - Age bucket multipliers for bid adjustments.
+/// * [appTypeMultipliers] - App type multipliers for bid adjustments.
+/// * [audienceMultipliers] - Audience multipliers for bid adjustments.
+/// * [freqBidMultiplierTimeWindow] - The time window for frequency bid multipliers.
+/// * [frequencyMultipliers] - Frequency multipliers for bid adjustments.
+/// * [genderMultipliers] - Gender multipliers for bid adjustments.
+/// * [placementMultipliers] - Placement multipliers for bid adjustments.
+/// * [updateMask] - List of fields to update. Only the fields in the list will be updated.
 @BuiltValue()
-abstract class CampaignBidOptionsUpdate implements CampaignBidOptions, Built<CampaignBidOptionsUpdate, CampaignBidOptionsUpdateBuilder> {
-  /// List of fields to update, only the fields in the list will be updated.
+abstract class CampaignBidOptionsUpdate implements Built<CampaignBidOptionsUpdate, CampaignBidOptionsUpdateBuilder> {
+  /// Age bucket multipliers for bid adjustments.
+  @BuiltValueField(wireName: r'age_bucket_multipliers')
+  AgeBucketMultipliers? get ageBucketMultipliers;
+
+  /// App type multipliers for bid adjustments.
+  @BuiltValueField(wireName: r'app_type_multipliers')
+  AppTypeMultipliers? get appTypeMultipliers;
+
+  /// Audience multipliers for bid adjustments.
+  @BuiltValueField(wireName: r'audience_multipliers')
+  CampaignAudienceMultipliers? get audienceMultipliers;
+
+  /// The time window for frequency bid multipliers.
+  @BuiltValueField(wireName: r'freq_bid_multiplier_time_window')
+  FreqBidMultiplierTimeWindow? get freqBidMultiplierTimeWindow;
+  // enum freqBidMultiplierTimeWindowEnum {  WEEK,  MONTH,  ,  };
+
+  /// Frequency multipliers for bid adjustments.
+  @BuiltValueField(wireName: r'frequency_multipliers')
+  FrequencyMultipliers? get frequencyMultipliers;
+
+  /// Gender multipliers for bid adjustments.
+  @BuiltValueField(wireName: r'gender_multipliers')
+  GenderMultipliers? get genderMultipliers;
+
+  /// Placement multipliers for bid adjustments.
+  @BuiltValueField(wireName: r'placement_multipliers')
+  PlacementMultipliers? get placementMultipliers;
+
+  /// List of fields to update. Only the fields in the list will be updated.
   @BuiltValueField(wireName: r'update_mask')
-  BuiltList<CampaignBidOptionsUpdateUpdateMaskEnum> get updateMask;
-  // enum updateMaskEnum {  AUDIENCE,  APP_TYPE,  PLACEMENT,  GENDER,  AGE_BUCKET,  };
+  BuiltList<CampaignBidOptionsUpdateMaskItems> get updateMask;
 
   CampaignBidOptionsUpdate._();
 
@@ -50,11 +86,46 @@ class _$CampaignBidOptionsUpdateSerializer implements PrimitiveSerializer<Campai
     CampaignBidOptionsUpdate object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.ageBucketMultipliers != null) {
+      yield r'age_bucket_multipliers';
+      yield serializers.serialize(
+        object.ageBucketMultipliers,
+        specifiedType: const FullType.nullable(AgeBucketMultipliers),
+      );
+    }
     if (object.appTypeMultipliers != null) {
       yield r'app_type_multipliers';
       yield serializers.serialize(
         object.appTypeMultipliers,
         specifiedType: const FullType.nullable(AppTypeMultipliers),
+      );
+    }
+    if (object.audienceMultipliers != null) {
+      yield r'audience_multipliers';
+      yield serializers.serialize(
+        object.audienceMultipliers,
+        specifiedType: const FullType(CampaignAudienceMultipliers),
+      );
+    }
+    if (object.freqBidMultiplierTimeWindow != null) {
+      yield r'freq_bid_multiplier_time_window';
+      yield serializers.serialize(
+        object.freqBidMultiplierTimeWindow,
+        specifiedType: const FullType.nullable(FreqBidMultiplierTimeWindow),
+      );
+    }
+    if (object.frequencyMultipliers != null) {
+      yield r'frequency_multipliers';
+      yield serializers.serialize(
+        object.frequencyMultipliers,
+        specifiedType: const FullType.nullable(FrequencyMultipliers),
+      );
+    }
+    if (object.genderMultipliers != null) {
+      yield r'gender_multipliers';
+      yield serializers.serialize(
+        object.genderMultipliers,
+        specifiedType: const FullType.nullable(GenderMultipliers),
       );
     }
     if (object.placementMultipliers != null) {
@@ -67,15 +138,8 @@ class _$CampaignBidOptionsUpdateSerializer implements PrimitiveSerializer<Campai
     yield r'update_mask';
     yield serializers.serialize(
       object.updateMask,
-      specifiedType: const FullType(BuiltList, [FullType(CampaignBidOptionsUpdateUpdateMaskEnum)]),
+      specifiedType: const FullType(BuiltList, [FullType(CampaignBidOptionsUpdateMaskItems)]),
     );
-    if (object.audienceMultipliers != null) {
-      yield r'audience_multipliers';
-      yield serializers.serialize(
-        object.audienceMultipliers,
-        specifiedType: const FullType(CampaignAudienceMultipliers),
-      );
-    }
   }
 
   @override
@@ -99,6 +163,14 @@ class _$CampaignBidOptionsUpdateSerializer implements PrimitiveSerializer<Campai
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'age_bucket_multipliers':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(AgeBucketMultipliers),
+          ) as AgeBucketMultipliers?;
+          if (valueDes == null) continue;
+          result.ageBucketMultipliers = valueDes;
+          break;
         case r'app_type_multipliers':
           final valueDes = serializers.deserialize(
             value,
@@ -106,6 +178,38 @@ class _$CampaignBidOptionsUpdateSerializer implements PrimitiveSerializer<Campai
           ) as AppTypeMultipliers?;
           if (valueDes == null) continue;
           result.appTypeMultipliers = valueDes;
+          break;
+        case r'audience_multipliers':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(CampaignAudienceMultipliers),
+          ) as CampaignAudienceMultipliers?;
+          if (valueDes == null) continue;
+          result.audienceMultipliers = valueDes;
+          break;
+        case r'freq_bid_multiplier_time_window':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(FreqBidMultiplierTimeWindow),
+          ) as FreqBidMultiplierTimeWindow?;
+          if (valueDes == null) continue;
+          result.freqBidMultiplierTimeWindow = valueDes;
+          break;
+        case r'frequency_multipliers':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(FrequencyMultipliers),
+          ) as FrequencyMultipliers?;
+          if (valueDes == null) continue;
+          result.frequencyMultipliers = valueDes;
+          break;
+        case r'gender_multipliers':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(GenderMultipliers),
+          ) as GenderMultipliers?;
+          if (valueDes == null) continue;
+          result.genderMultipliers = valueDes;
           break;
         case r'placement_multipliers':
           final valueDes = serializers.deserialize(
@@ -118,16 +222,9 @@ class _$CampaignBidOptionsUpdateSerializer implements PrimitiveSerializer<Campai
         case r'update_mask':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CampaignBidOptionsUpdateUpdateMaskEnum)]),
-          ) as BuiltList<CampaignBidOptionsUpdateUpdateMaskEnum>;
+            specifiedType: const FullType(BuiltList, [FullType(CampaignBidOptionsUpdateMaskItems)]),
+          ) as BuiltList<CampaignBidOptionsUpdateMaskItems>;
           result.updateMask.replace(valueDes);
-          break;
-        case r'audience_multipliers':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(CampaignAudienceMultipliers),
-          ) as CampaignAudienceMultipliers;
-          result.audienceMultipliers = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -156,26 +253,5 @@ class _$CampaignBidOptionsUpdateSerializer implements PrimitiveSerializer<Campai
     );
     return result.build();
   }
-}
-
-class CampaignBidOptionsUpdateUpdateMaskEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'AUDIENCE')
-  static const CampaignBidOptionsUpdateUpdateMaskEnum AUDIENCE = _$campaignBidOptionsUpdateUpdateMaskEnum_AUDIENCE;
-  @BuiltValueEnumConst(wireName: r'APP_TYPE')
-  static const CampaignBidOptionsUpdateUpdateMaskEnum APP_TYPE = _$campaignBidOptionsUpdateUpdateMaskEnum_APP_TYPE;
-  @BuiltValueEnumConst(wireName: r'PLACEMENT')
-  static const CampaignBidOptionsUpdateUpdateMaskEnum PLACEMENT = _$campaignBidOptionsUpdateUpdateMaskEnum_PLACEMENT;
-  @BuiltValueEnumConst(wireName: r'GENDER')
-  static const CampaignBidOptionsUpdateUpdateMaskEnum GENDER = _$campaignBidOptionsUpdateUpdateMaskEnum_GENDER;
-  @BuiltValueEnumConst(wireName: r'AGE_BUCKET')
-  static const CampaignBidOptionsUpdateUpdateMaskEnum AGE_BUCKET = _$campaignBidOptionsUpdateUpdateMaskEnum_AGE_BUCKET;
-
-  static Serializer<CampaignBidOptionsUpdateUpdateMaskEnum> get serializer => _$campaignBidOptionsUpdateUpdateMaskEnumSerializer;
-
-  const CampaignBidOptionsUpdateUpdateMaskEnum._(String name): super(name);
-
-  static BuiltSet<CampaignBidOptionsUpdateUpdateMaskEnum> get values => _$campaignBidOptionsUpdateUpdateMaskEnumValues;
-  static CampaignBidOptionsUpdateUpdateMaskEnum valueOf(String name) => _$campaignBidOptionsUpdateUpdateMaskEnumValueOf(name);
 }
 

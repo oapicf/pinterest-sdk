@@ -15,7 +15,7 @@
 #' @field connected_user_id  character [optional]
 #' @field created_time  integer [optional]
 #' @field external_business_id  character [optional]
-#' @field id  character [optional]
+#' @field id Integration record ID. character
 #' @field partner_access_token  character [optional]
 #' @field partner_access_token_expiry  integer [optional]
 #' @field partner_metadata  character [optional]
@@ -51,6 +51,7 @@ IntegrationRecord <- R6::R6Class(
     #' @description
     #' Initialize a new IntegrationRecord class.
     #'
+    #' @param id Integration record ID.
     #' @param additional_id_1 additional_id_1
     #' @param connected_advertiser_id connected_advertiser_id
     #' @param connected_lba_id connected_lba_id
@@ -59,7 +60,6 @@ IntegrationRecord <- R6::R6Class(
     #' @param connected_user_id connected_user_id
     #' @param created_time created_time
     #' @param external_business_id external_business_id
-    #' @param id id
     #' @param partner_access_token partner_access_token
     #' @param partner_access_token_expiry partner_access_token_expiry
     #' @param partner_metadata partner_metadata
@@ -69,7 +69,13 @@ IntegrationRecord <- R6::R6Class(
     #' @param scopes scopes
     #' @param updated_time updated_time
     #' @param ... Other optional arguments.
-    initialize = function(`additional_id_1` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_merchant_id` = NULL, `connected_tag_id` = NULL, `connected_user_id` = NULL, `created_time` = NULL, `external_business_id` = NULL, `id` = NULL, `partner_access_token` = NULL, `partner_access_token_expiry` = NULL, `partner_metadata` = NULL, `partner_primary_email` = NULL, `partner_refresh_token` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, `updated_time` = NULL, ...) {
+    initialize = function(`id`, `additional_id_1` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_merchant_id` = NULL, `connected_tag_id` = NULL, `connected_user_id` = NULL, `created_time` = NULL, `external_business_id` = NULL, `partner_access_token` = NULL, `partner_access_token_expiry` = NULL, `partner_metadata` = NULL, `partner_primary_email` = NULL, `partner_refresh_token` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, `updated_time` = NULL, ...) {
+      if (!missing(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
       if (!is.null(`additional_id_1`)) {
         if (!(is.character(`additional_id_1`) && length(`additional_id_1`) == 1)) {
           stop(paste("Error! Invalid data for `additional_id_1`. Must be a string:", `additional_id_1`))
@@ -117,12 +123,6 @@ IntegrationRecord <- R6::R6Class(
           stop(paste("Error! Invalid data for `external_business_id`. Must be a string:", `external_business_id`))
         }
         self$`external_business_id` <- `external_business_id`
-      }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
       }
       if (!is.null(`partner_access_token`)) {
         if (!(is.character(`partner_access_token`) && length(`partner_access_token`) == 1)) {
@@ -381,6 +381,14 @@ IntegrationRecord <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for IntegrationRecord: the required field `id` is missing."))
+      }
     },
 
     #' @description
@@ -396,6 +404,11 @@ IntegrationRecord <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
       }
@@ -409,6 +422,11 @@ IntegrationRecord <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
       if (!str_detect(self$`id`, "^\\d+$")) {
         invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
       }

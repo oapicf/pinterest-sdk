@@ -10,6 +10,7 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.QuizPinQuestion;
 import org.openapitools.vertxweb.server.model.QuizPinResult;
+import org.openapitools.vertxweb.server.model.TieBreakerType;
 
 /**
  * This field includes all quiz data including questions, options, and results.
@@ -20,32 +21,13 @@ public class QuizPinData   {
   private List<QuizPinQuestion> questions = new ArrayList<>();
   private List<QuizPinResult> results = new ArrayList<>();
   private QuizPinResult tieBreakerCustomResult;
-
-
-  public enum TieBreakerTypeEnum {
-    RANDOM("RANDOM"),
-    CUSTOM("CUSTOM");
-
-    private String value;
-
-    TieBreakerTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private TieBreakerTypeEnum tieBreakerType;
+  private TieBreakerType tieBreakerType;
 
   public QuizPinData () {
 
   }
 
-  public QuizPinData (List<QuizPinQuestion> questions, List<QuizPinResult> results, QuizPinResult tieBreakerCustomResult, TieBreakerTypeEnum tieBreakerType) {
+  public QuizPinData (List<QuizPinQuestion> questions, List<QuizPinResult> results, QuizPinResult tieBreakerCustomResult, TieBreakerType tieBreakerType) {
     this.questions = questions;
     this.results = results;
     this.tieBreakerCustomResult = tieBreakerCustomResult;
@@ -81,10 +63,10 @@ public class QuizPinData   {
 
     
   @JsonProperty("tie_breaker_type")
-  public TieBreakerTypeEnum getTieBreakerType() {
+  public TieBreakerType getTieBreakerType() {
     return tieBreakerType;
   }
-  public void setTieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public void setTieBreakerType(TieBreakerType tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
   }
 
@@ -127,9 +109,6 @@ public class QuizPinData   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -13,8 +13,12 @@ module.exports = {
             ...ImageSize.fields(`${keyPrefix}images`, isInput),
             {
                 key: `${keyPrefix}item_type`,
-                label: `[${labelPrefix}item_type]`,
+                label: `Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload. - [${labelPrefix}item_type]`,
+                required: true,
                 type: 'string',
+                choices: [
+                    'image',
+                ],
             },
             {
                 key: `${keyPrefix}link`,

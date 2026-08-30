@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## AdAccountCountriesGet
 
-> AdAccountsCountryResponse AdAccountCountriesGet(ctx).Execute()
+> AdAccountCountriesGet200Response AdAccountCountriesGet(ctx).Execute()
 
 Get ad accounts countries
 
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcesAPI.AdAccountCountriesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AdAccountCountriesGet`: AdAccountsCountryResponse
+	// response from `AdAccountCountriesGet`: AdAccountCountriesGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `ResourcesAPI.AdAccountCountriesGet`: %v\n", resp)
 }
 ```
@@ -58,7 +58,7 @@ Other parameters are passed through a pointer to a apiAdAccountCountriesGetReque
 
 ### Return type
 
-[**AdAccountsCountryResponse**](AdAccountsCountryResponse.md)
+[**AdAccountCountriesGet200Response**](AdAccountCountriesGet200Response.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Other parameters are passed through a pointer to a apiAdAccountCountriesGetReque
 
 ## DeliveryMetricsGet
 
-> DeliveryMetricsResponse DeliveryMetricsGet(ctx).ReportType(reportType).Execute()
+> DeliveryMetricsGet200Response DeliveryMetricsGet(ctx).ReportType(reportType).Execute()
 
 Get available metrics' definitions
 
@@ -95,7 +95,7 @@ import (
 )
 
 func main() {
-	reportType := "reportType_example" // string | Report type. (optional)
+	reportType := openapiclient.ReportType("SYNC") // ReportType | Report type. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -104,7 +104,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcesAPI.DeliveryMetricsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeliveryMetricsGet`: DeliveryMetricsResponse
+	// response from `DeliveryMetricsGet`: DeliveryMetricsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `ResourcesAPI.DeliveryMetricsGet`: %v\n", resp)
 }
 ```
@@ -120,11 +120,11 @@ Other parameters are passed through a pointer to a apiDeliveryMetricsGetRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reportType** | **string** | Report type. | 
+ **reportType** | [**ReportType**](ReportType.md) | Report type. | 
 
 ### Return type
 
-[**DeliveryMetricsResponse**](DeliveryMetricsResponse.md)
+[**DeliveryMetricsGet200Response**](DeliveryMetricsGet200Response.md)
 
 ### Authorization
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ## InterestTargetingOptionsGet
 
-> SingleInterestTargetingOptionResponse InterestTargetingOptionsGet(ctx, interestId).Execute()
+> SingleInterestTargetingOption InterestTargetingOptionsGet(ctx, interestId).Execute()
 
 Get interest details
 
@@ -170,7 +170,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcesAPI.InterestTargetingOptionsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InterestTargetingOptionsGet`: SingleInterestTargetingOptionResponse
+	// response from `InterestTargetingOptionsGet`: SingleInterestTargetingOption
 	fmt.Fprintf(os.Stdout, "Response from `ResourcesAPI.InterestTargetingOptionsGet`: %v\n", resp)
 }
 ```
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleInterestTargetingOptionResponse**](SingleInterestTargetingOptionResponse.md)
+[**SingleInterestTargetingOption**](SingleInterestTargetingOption.md)
 
 ### Authorization
 
@@ -271,7 +271,7 @@ Other parameters are passed through a pointer to a apiLeadFormQuestionsGetReques
 
 ## MetricsReadyStateGet
 
-> BookClosedResponse MetricsReadyStateGet(ctx).Date(date).Execute()
+> BookClosed MetricsReadyStateGet(ctx).Date(date).Execute()
 
 Get metrics ready state
 
@@ -290,7 +290,7 @@ import (
 )
 
 func main() {
-	date := "2022-07-13" // string | Analytics reports request date (UTC). Format: YYYY-MM-DD
+	date := "date_example" // string | Analytics reports request date (UTC). Format: YYYY-MM-DD
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -299,7 +299,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcesAPI.MetricsReadyStateGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MetricsReadyStateGet`: BookClosedResponse
+	// response from `MetricsReadyStateGet`: BookClosed
 	fmt.Fprintf(os.Stdout, "Response from `ResourcesAPI.MetricsReadyStateGet`: %v\n", resp)
 }
 ```
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BookClosedResponse**](BookClosedResponse.md)
+[**BookClosed**](BookClosed.md)
 
 ### Authorization
 
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ## TargetingOptionsGet
 
-> []map[string]interface{} TargetingOptionsGet(ctx, targetingType).ClientId(clientId).OauthSignature(oauthSignature).Timestamp(timestamp).AdAccountId(adAccountId).Execute()
+> []map[string]interface{} TargetingOptionsGet(ctx, targetingType).AdAccountId(adAccountId).ClientId(clientId).OauthSignature(oauthSignature).Timestamp(timestamp).Execute()
 
 Get targeting options
 
@@ -356,15 +356,15 @@ import (
 )
 
 func main() {
-	targetingType := "APPTYPE" // string | Public targeting type.
-	clientId := "1094834" // string | Client ID. (optional)
-	oauthSignature := "8209f" // string | Oauth signature (optional)
-	timestamp := "1618338184277" // string | Timestamp (optional)
+	targetingType := openapiclient.PublicTargetingType("APPTYPE") // PublicTargetingType | Public targeting type
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	clientId := "clientId_example" // string | Client ID (optional)
+	oauthSignature := "oauthSignature_example" // string | Oauth signature (optional)
+	timestamp := "timestamp_example" // string | Timestamp. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ResourcesAPI.TargetingOptionsGet(context.Background(), targetingType).ClientId(clientId).OauthSignature(oauthSignature).Timestamp(timestamp).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.ResourcesAPI.TargetingOptionsGet(context.Background(), targetingType).AdAccountId(adAccountId).ClientId(clientId).OauthSignature(oauthSignature).Timestamp(timestamp).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcesAPI.TargetingOptionsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -380,7 +380,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**targetingType** | **string** | Public targeting type. | 
+**targetingType** | [**PublicTargetingType**](.md) | Public targeting type | 
 
 ### Other Parameters
 
@@ -390,10 +390,10 @@ Other parameters are passed through a pointer to a apiTargetingOptionsGetRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **clientId** | **string** | Client ID. | 
- **oauthSignature** | **string** | Oauth signature | 
- **timestamp** | **string** | Timestamp | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **clientId** | **string** | Client ID | 
+ **oauthSignature** | **string** | Oauth signature | 
+ **timestamp** | **string** | Timestamp. | 
 
 ### Return type
 

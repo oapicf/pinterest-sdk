@@ -56,5 +56,5 @@ class TargetingSpecOperationAgeBucket {
     
     OperationEnum operation
     
-    List<TargetingSpecAgeBucket> values
+    List<TargetingSpecAgeBucket> values = new ArrayList<>()
 }

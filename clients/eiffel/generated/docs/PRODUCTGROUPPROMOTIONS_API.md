@@ -12,7 +12,7 @@ Feature | HTTP request | Description
 
 
 # **product_group_promotions_create**
-> product_group_promotions_create (ad_account_id: STRING_32 ; product_group_promotion_create_request: PRODUCT_GROUP_PROMOTION_CREATE_REQUEST ): detachable PRODUCT_GROUP_PROMOTION_RESPONSE
+> product_group_promotions_create (ad_account_id: STRING_32 ; product_group_promotions_create: PRODUCT_GROUP_PROMOTIONS_CREATE ): detachable PRODUCT_GROUP_PROMOTIONS
 
 
 Create product group promotions
@@ -25,11 +25,11 @@ Add one or more product groups from your catalog to an existing ad group. (Produ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **product_group_promotion_create_request** | [**PRODUCT_GROUP_PROMOTION_CREATE_REQUEST**](PRODUCT_GROUP_PROMOTION_CREATE_REQUEST.md)| List of Product Group Promotions to create, size limit [1, 30]. | 
+ **product_group_promotions_create** | [**PRODUCT_GROUP_PROMOTIONS_CREATE**](PRODUCT_GROUP_PROMOTIONS_CREATE.md)|  | 
 
 ### Return type
 
-[**PRODUCT_GROUP_PROMOTION_RESPONSE**](ProductGroupPromotionResponse.md)
+[**PRODUCT_GROUP_PROMOTIONS**](ProductGroupPromotions.md)
 
 ### Authorization
 
@@ -74,12 +74,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **product_group_promotions_list**
-> product_group_promotions_list (ad_account_id: STRING_32 ; product_group_promotion_ids:  detachable LIST [STRING_32] ; entity_statuses:  detachable LIST [STRING_32] ; ad_group_id:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; order:  detachable STRING_32 ; bookmark:  detachable STRING_32 ): detachable PRODUCT_GROUP_PROMOTIONS_LIST_200_RESPONSE
+> product_group_promotions_list (ad_account_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; order:  detachable PINTEREST_LIB_PAGINATION_ORDER ; product_group_promotion_ids:  detachable LIST [STRING_32] ; entity_statuses:  detachable LIST [ENTITY_STATUS] ; ad_group_id:  detachable STRING_32 ): detachable PRODUCT_GROUP_PROMOTIONS_LIST_200_RESPONSE
 
 
 Get product group promotions
 
-List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
 
 
 ### Parameters
@@ -87,12 +87,12 @@ List existing product group promotions associated with an ad account.  Include e
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **product_group_promotion_ids** | [**LIST [STRING_32]**](STRING_32.md)| List of Product group promotion Ids. | [optional] [default to null]
- **entity_statuses** | [**LIST [STRING_32]**](STRING_32.md)| Entity status | [optional] [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
- **ad_group_id** | **STRING_32**| Ad group Id. | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **STRING_32**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PINTEREST_LIB_PAGINATION_ORDER**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
+ **product_group_promotion_ids** | [**LIST [STRING_32]**](STRING_32.md)| List of Product group promotion Ids. | [optional] [default to null]
+ **entity_statuses** | [**LIST [ENTITY_STATUS]**](ENTITY_STATUS.md)| Entity status | [optional] [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
+ **ad_group_id** | **STRING_32**| Ad group Id. | [optional] [default to null]
 
 ### Return type
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **product_group_promotions_update**
-> product_group_promotions_update (ad_account_id: STRING_32 ; product_group_promotion_update_request: PRODUCT_GROUP_PROMOTION_UPDATE_REQUEST ): detachable PRODUCT_GROUP_PROMOTION_RESPONSE
+> product_group_promotions_update (ad_account_id: STRING_32 ; product_group_promotions_update_with_required_body: PRODUCT_GROUP_PROMOTIONS_UPDATE_WITH_REQUIRED_BODY ): detachable PRODUCT_GROUP_PROMOTIONS
 
 
 Update product group promotions
@@ -123,11 +123,11 @@ Update multiple existing Product Group Promotions (by product_group_id)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
- **product_group_promotion_update_request** | [**PRODUCT_GROUP_PROMOTION_UPDATE_REQUEST**](PRODUCT_GROUP_PROMOTION_UPDATE_REQUEST.md)| Parameters to update Product group promotions | 
+ **product_group_promotions_update_with_required_body** | [**PRODUCT_GROUP_PROMOTIONS_UPDATE_WITH_REQUIRED_BODY**](PRODUCT_GROUP_PROMOTIONS_UPDATE_WITH_REQUIRED_BODY.md)|  | 
 
 ### Return type
 
-[**PRODUCT_GROUP_PROMOTION_RESPONSE**](ProductGroupPromotionResponse.md)
+[**PRODUCT_GROUP_PROMOTIONS**](ProductGroupPromotions.md)
 
 ### Authorization
 
@@ -141,33 +141,33 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **product_groups_analytics**
-> product_groups_analytics (ad_account_id: STRING_32 ; start_date: DATE ; end_date: DATE ; product_group_ids: LIST [STRING_32] ; columns: LIST [STRING_32] ; granularity: GRANULARITY ; click_window_days:  detachable INTEGER_32 ; engagement_window_days:  detachable INTEGER_32 ; view_window_days:  detachable INTEGER_32 ; conversion_report_time:  detachable STRING_32 ; reporting_timezone:  detachable REPORTING_TIME_ZONE ): detachable LIST [PRODUCT_GROUP_ANALYTICS_RESPONSE_INNER]
+> product_groups_analytics (start_date: DATE ; end_date: DATE ; product_group_ids: LIST [STRING_32] ; columns: LIST [REPORTING_COLUMN_SYNC] ; granularity: GRANULARITY ; ad_account_id: STRING_32 ; click_window_days:  detachable REAL_32 ; engagement_window_days:  detachable REAL_32 ; view_window_days:  detachable REAL_32 ; conversion_report_time:  detachable STRING_32 ; reporting_timezone:  detachable REPORTING_TIME_ZONE ): detachable LIST [PRODUCT_GROUP_ANALYTICS_ITEMS]
 
 
 Get product group analytics
 
-Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+Get analytics for the specified product groups in the specified `ad_account_id`, filtered by the specified options.  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
  **start_date** | **DATE**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **end_date** | **DATE**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
  **product_group_ids** | [**LIST [STRING_32]**](STRING_32.md)| List of Product group Ids to use to filter the results. | [default to null]
- **columns** | [**LIST [STRING_32]**](STRING_32.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | [default to null]
- **granularity** | [**GRANULARITY**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | [default to null]
- **click_window_days** | **INTEGER_32**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
- **engagement_window_days** | **INTEGER_32**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to 30]
- **view_window_days** | **INTEGER_32**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
+ **columns** | [**LIST [REPORTING_COLUMN_SYNC]**](REPORTING_COLUMN_SYNC.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned. | [default to null]
+ **granularity** | [**GRANULARITY**](.md)|   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly | [default to null]
+ **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [default to null]
+ **click_window_days** | **REAL_32**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
+ **engagement_window_days** | **REAL_32**| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. | [optional] [default to 30]
+ **view_window_days** | **REAL_32**| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to 1]
  **conversion_report_time** | **STRING_32**| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to TIME_OF_AD_ACTION]
  **reporting_timezone** | [**REPORTING_TIME_ZONE**](.md)| Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] [default to null]
 
 ### Return type
 
-[**LIST [PRODUCT_GROUP_ANALYTICS_RESPONSE_INNER]**](ProductGroupAnalyticsResponse_inner.md)
+[**LIST [PRODUCT_GROUP_ANALYTICS_ITEMS]**](ProductGroupAnalyticsItems.md)
 
 ### Authorization
 

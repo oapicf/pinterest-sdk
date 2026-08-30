@@ -1,0 +1,57 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BulkUpsertRequestUpdateCatalogProductGroupsItems",
+  "fields": [
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": ["null", "model.CatalogsCreativeAssetsProductGroupFilters"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_featured",
+      "type": ["null", "boolean"],
+      "doc": "boolean indicator of whether the product group is being featured or not",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Name of catalog product group",
+      "default": null
+    },
+    {
+      "name": "catalog_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "BulkUpsertRequestUpdateCatalogProductGroupsItems_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "country",
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "locale",
+      "type": ["null", "model.CatalogsLocale"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

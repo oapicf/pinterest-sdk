@@ -57,20 +57,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCreatedAt(std::string  created_at);
-	/*! \brief Get 
+	/*! \brief Get ID of the feed processing result.
 	 */
 	std::string getId();
 
-	/*! \brief Set 
+	/*! \brief Set ID of the feed processing result.
 	 */
 	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getUpdatedAt();
-
-	/*! \brief Set 
-	 */
-	void setUpdatedAt(std::string  updated_at);
 	/*! \brief Get 
 	 */
 	CatalogsFeedIngestionDetails getIngestionDetails();
@@ -94,6 +87,13 @@ public:
 	void setStatus(CatalogsFeedProcessingStatus  status);
 	/*! \brief Get 
 	 */
+	std::string getUpdatedAt();
+
+	/*! \brief Set 
+	 */
+	void setUpdatedAt(std::string  updated_at);
+	/*! \brief Get 
+	 */
 	CatalogsFeedValidationDetails getValidationDetails();
 
 	/*! \brief Set 
@@ -110,10 +110,10 @@ public:
 private:
 	std::string created_at;
 	std::string id;
-	std::string updated_at;
 	CatalogsFeedIngestionDetails ingestion_details;
 	CatalogsFeedProductCounts product_counts;
 	CatalogsFeedProcessingStatus status;
+	std::string updated_at;
 	CatalogsFeedValidationDetails validation_details;
 	CatalogsFeedVideoCounts video_counts;
 	void __init();

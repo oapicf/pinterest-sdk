@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AuthRespondInvitesBodyItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AuthRespondInvitesBodyItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AuthRespondInviteAction = openapi_server.resourceTypes.AuthRespondInviteAction
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AuthRespondInvitesBodyItem {
+    title = AuthRespondInvitesBodyItem
+    description = AuthRespondInvitesBodyItem
+    derivedFrom = Root
+    properties {
+        action {
+          type = AuthRespondInviteAction
+          description = ""
+          optional = true
+        }
+        invite_id {
+          type =  string
+          description = "Unique identifier of an invite."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AuthRespondInvitesBodyItem {
+    title = AuthRespondInvitesBodyItem
+    description = AuthRespondInvitesBodyItem
+    implements = openapi_server.resourceTypes.AuthRespondInvitesBodyItem
+
+  }
+}

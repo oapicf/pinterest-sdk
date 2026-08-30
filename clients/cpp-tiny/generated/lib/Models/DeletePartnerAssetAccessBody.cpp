@@ -6,7 +6,7 @@ using namespace Tiny;
 
 DeletePartnerAssetAccessBody::DeletePartnerAssetAccessBody()
 {
-	accesses = std::list<DeletePartnerAssetAccessBody_accesses_inner>();
+	accesses = std::list<DeletePartnerAssetAccessItem>();
 }
 
 DeletePartnerAssetAccessBody::DeletePartnerAssetAccessBody(std::string jsonString)
@@ -31,8 +31,8 @@ DeletePartnerAssetAccessBody::fromJson(std::string jsonObj)
         bourne::json value = object[accessesKey];
 
 
-        std::list<DeletePartnerAssetAccessBody_accesses_inner> accesses_list;
-        DeletePartnerAssetAccessBody_accesses_inner element;
+        std::list<DeletePartnerAssetAccessItem> accesses_list;
+        DeletePartnerAssetAccessItem element;
         for(auto& var : value.array_range())
         {
 
@@ -57,12 +57,12 @@ DeletePartnerAssetAccessBody::toJson()
 
 
 
-    std::list<DeletePartnerAssetAccessBody_accesses_inner> accesses_list = getAccesses();
+    std::list<DeletePartnerAssetAccessItem> accesses_list = getAccesses();
     bourne::json accesses_arr = bourne::json::array();
 
     for(auto& var : accesses_list)
     {
-        DeletePartnerAssetAccessBody_accesses_inner obj = var;
+        DeletePartnerAssetAccessItem obj = var;
         accesses_arr.append(obj.toJson());
     }
     object["accesses"] = accesses_arr;
@@ -74,14 +74,14 @@ DeletePartnerAssetAccessBody::toJson()
 
 }
 
-std::list<DeletePartnerAssetAccessBody_accesses_inner>
+std::list<DeletePartnerAssetAccessItem>
 DeletePartnerAssetAccessBody::getAccesses()
 {
 	return accesses;
 }
 
 void
-DeletePartnerAssetAccessBody::setAccesses(std::list <DeletePartnerAssetAccessBody_accesses_inner> accesses)
+DeletePartnerAssetAccessBody::setAccesses(std::list<DeletePartnerAssetAccessItem> accesses)
 {
 	this->accesses = accesses;
 }

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BudgetDurationType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BudgetDurationType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BudgetDurationType {
+    title = BudgetDurationType
+    description = BudgetDurationType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BudgetDurationType {
+    title = BudgetDurationType
+    description = BudgetDurationType
+    implements = openapi_server.resourceTypes.BudgetDurationType
+
+  }
+}

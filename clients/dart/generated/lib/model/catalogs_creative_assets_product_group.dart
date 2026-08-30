@@ -23,7 +23,7 @@ class CatalogsCreativeAssetsProductGroup {
     this.updatedAt,
   });
 
-  /// Catalog id pertaining to the creative assets product group.
+  /// Catalog ID pertaining to the product group.
   String catalogId;
 
   CatalogsCreativeAssetsProductGroupCatalogTypeEnum catalogType;
@@ -41,10 +41,10 @@ class CatalogsCreativeAssetsProductGroup {
 
   CatalogsCreativeAssetsProductGroupFilters filters;
 
-  /// ID of the creative assets product group.
+  /// ID of the catalog product group.
   String id;
 
-  /// Name of creative assets product group
+  /// Name of catalog product group
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -128,10 +128,14 @@ class CatalogsCreativeAssetsProductGroup {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreativeAssetsProductGroup[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreativeAssetsProductGroup[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_id'), 'Required key "CatalogsCreativeAssetsProductGroup[catalog_id]" is missing from JSON.');
+        assert(json[r'catalog_id'] != null, 'Required key "CatalogsCreativeAssetsProductGroup[catalog_id]" has a null value in JSON.');
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsCreativeAssetsProductGroup[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsCreativeAssetsProductGroup[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'filters'), 'Required key "CatalogsCreativeAssetsProductGroup[filters]" is missing from JSON.');
+        assert(json[r'filters'] != null, 'Required key "CatalogsCreativeAssetsProductGroup[filters]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "CatalogsCreativeAssetsProductGroup[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "CatalogsCreativeAssetsProductGroup[id]" has a null value in JSON.');
         return true;
       }());
 
@@ -199,27 +203,28 @@ class CatalogsCreativeAssetsProductGroup {
 }
 
 
-class CatalogsCreativeAssetsProductGroupCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsCreativeAssetsProductGroupCatalogTypeEnum._(this.value);
+enum CatalogsCreativeAssetsProductGroupCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsCreativeAssetsProductGroupCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const CREATIVE_ASSETS = CatalogsCreativeAssetsProductGroupCatalogTypeEnum._(r'CREATIVE_ASSETS');
-
-  /// List of all possible values in this [enum][CatalogsCreativeAssetsProductGroupCatalogTypeEnum].
-  static const values = <CatalogsCreativeAssetsProductGroupCatalogTypeEnum>[
-    CREATIVE_ASSETS,
-  ];
-
+  /// Returns the instance of [CatalogsCreativeAssetsProductGroupCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsCreativeAssetsProductGroupCatalogTypeEnum? fromJson(dynamic value) => CatalogsCreativeAssetsProductGroupCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsCreativeAssetsProductGroupCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsCreativeAssetsProductGroupCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsCreativeAssetsProductGroupCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -241,9 +246,10 @@ class CatalogsCreativeAssetsProductGroupCatalogTypeEnumTypeTransformer {
 
   const CatalogsCreativeAssetsProductGroupCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsCreativeAssetsProductGroupCatalogTypeEnum data) => data.value;
+  String encode(CatalogsCreativeAssetsProductGroupCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsCreativeAssetsProductGroupCatalogTypeEnum.
+  /// Returns the instance of [CatalogsCreativeAssetsProductGroupCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -252,6 +258,9 @@ class CatalogsCreativeAssetsProductGroupCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsCreativeAssetsProductGroupCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsCreativeAssetsProductGroupCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'CREATIVE_ASSETS': return CatalogsCreativeAssetsProductGroupCatalogTypeEnum.CREATIVE_ASSETS;
@@ -264,7 +273,7 @@ class CatalogsCreativeAssetsProductGroupCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsCreativeAssetsProductGroupCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsCreativeAssetsProductGroupCatalogTypeEnumTypeTransformer? _instance;
 }
 

@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            AdAccountsCountryResponse
+            Ad_account_countries_get_200_response
         >
         ResourcesApi::
         adAccountCountries_get(
@@ -37,20 +37,20 @@ using namespace Tiny;
 
 
 
-            AdAccountsCountryResponse obj(output_string);
+            Ad_account_countries_get_200_response obj(output_string);
 
 
-            Response<AdAccountsCountryResponse> response(obj, httpCode);
+            Response<Ad_account_countries_get_200_response> response(obj, httpCode);
             return response;
         }
 
         Response<
-            DeliveryMetricsResponse
+            Delivery_metrics_get_200_response
         >
         ResourcesApi::
         deliveryMetrics_get(
             
-            std::string reportType
+            ReportType reportType
             
         )
         {
@@ -81,15 +81,15 @@ using namespace Tiny;
 
 
 
-            DeliveryMetricsResponse obj(output_string);
+            Delivery_metrics_get_200_response obj(output_string);
 
 
-            Response<DeliveryMetricsResponse> response(obj, httpCode);
+            Response<Delivery_metrics_get_200_response> response(obj, httpCode);
             return response;
         }
 
         Response<
-            SingleInterestTargetingOptionResponse
+            SingleInterestTargetingOption
         >
         ResourcesApi::
         interestTargetingOptions_get(
@@ -132,10 +132,10 @@ using namespace Tiny;
 
 
 
-            SingleInterestTargetingOptionResponse obj(output_string);
+            SingleInterestTargetingOption obj(output_string);
 
 
-            Response<SingleInterestTargetingOptionResponse> response(obj, httpCode);
+            Response<SingleInterestTargetingOption> response(obj, httpCode);
             return response;
         }
 
@@ -175,7 +175,7 @@ using namespace Tiny;
         }
 
         Response<
-            BookClosedResponse
+            BookClosed
         >
         ResourcesApi::
         metricsReadyState_get(
@@ -211,10 +211,10 @@ using namespace Tiny;
 
 
 
-            BookClosedResponse obj(output_string);
+            BookClosed obj(output_string);
 
 
-            Response<BookClosedResponse> response(obj, httpCode);
+            Response<BookClosed> response(obj, httpCode);
             return response;
         }
 
@@ -224,7 +224,10 @@ using namespace Tiny;
         ResourcesApi::
         targetingOptions_get(
             
-            std::string targetingType
+            PublicTargetingType targetingType
+            , 
+            
+            std::string adAccountId
             , 
             
             std::string clientId
@@ -234,9 +237,6 @@ using namespace Tiny;
             , 
             
             std::string timestamp
-            , 
-            
-            std::string adAccountId
             
         )
         {
@@ -245,11 +245,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | clientId oauthSignature timestamp adAccountId 
+            // Query    | adAccountId clientId oauthSignature timestamp 
+            addQueryParam("ad_account_id",adAccountId);
             addQueryParam("client_id",clientId);
             addQueryParam("oauth_signature",oauthSignature);
             addQueryParam("timestamp",timestamp);
-            addQueryParam("ad_account_id",adAccountId);
 
             // Form     | 
 

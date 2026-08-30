@@ -1,6 +1,7 @@
 goog.provide('API.Client.SSIOOrderLine');
 
 /**
+ * A Salesforce SSIO order line.
  * @record
  */
 API.Client.SSIOOrderLine = function() {}
@@ -13,14 +14,14 @@ API.Client.SSIOOrderLine = function() {}
 API.Client.SSIOOrderLine.prototype.acceptedTermsId;
 
 /**
- * The UTC timestamp (to the nearest sec) of when terms were accepted
+ * The UTC timestamp (to the nearest second) when terms were accepted.
  * @type {!string}
  * @export
  */
 API.Client.SSIOOrderLine.prototype.acceptedTermsTime;
 
 /**
- * Ads manager OrderLineId
+ * Ads manager order line id
  * @type {!string}
  * @export
  */
@@ -34,7 +35,7 @@ API.Client.SSIOOrderLine.prototype.adsManagerOrderLineId;
 API.Client.SSIOOrderLine.prototype.agencyLink;
 
 /**
- * Bill To Company name
+ * Bill-to company name
  * @type {!string}
  * @export
  */
@@ -62,7 +63,7 @@ API.Client.SSIOOrderLine.prototype.billingContactFirstname;
 API.Client.SSIOOrderLine.prototype.billingContactLastname;
 
 /**
- * If Budget order line, the budget amount.
+ * If budget order line, the budget amount.
  * @type {!number}
  * @export
  */
@@ -82,7 +83,7 @@ API.Client.SSIOOrderLine.prototype.currencyInfo;
 API.Client.SSIOOrderLine.prototype.endDate;
 
 /**
- * If Ongoing (perpetual) order line, the estimated monthly spend
+ * If ongoing (perpetual) order line, the estimated monthly spend.
  * @type {!number}
  * @export
  */
@@ -103,14 +104,14 @@ API.Client.SSIOOrderLine.prototype.lastModifiedDateTime;
 API.Client.SSIOOrderLine.prototype.mediaContactEmail;
 
 /**
- * Billing contact first name
+ * Billing media contact first name
  * @type {!string}
  * @export
  */
 API.Client.SSIOOrderLine.prototype.mediaContactFirstname;
 
 /**
- * Billing contact first name
+ * Billing media contact last name
  * @type {!string}
  * @export
  */
@@ -138,14 +139,14 @@ API.Client.SSIOOrderLine.prototype.pinOrderId;
 API.Client.SSIOOrderLine.prototype.pmpName;
 
 /**
- * The po number
+ * The PO number
  * @type {!string}
  * @export
  */
 API.Client.SSIOOrderLine.prototype.poNumber;
 
 /**
- * OrderLineId in SFDC
+ * Order line id in SFDC
  * @type {!string}
  * @export
  */

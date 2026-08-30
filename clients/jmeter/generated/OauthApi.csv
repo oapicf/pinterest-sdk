@@ -1,2 +1,2 @@
-testCase,httpStatusCode,grantType,token,tokenTypeHint
-Success,200,0,0,0
+testCase,httpStatusCode,grantType,code,continuousRefresh,redirectUri,refreshToken,scope,token,tokenTypeHint
+Success,200,0,0,0,0,0,0,0,0

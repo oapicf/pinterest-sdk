@@ -2,7 +2,7 @@
 <h2>CatalogsHotelAttributes</h2>
 <ul class="parameter">
   <li class="param-required-false">address : CatalogsHotelAddress
-    <br/>
+    <br/>Hotel address
   </li>
 </ul>
 <ul class="parameter">
@@ -52,7 +52,7 @@
 </ul>
 <ul class="parameter">
   <li class="param-required-false">guestUnderscoreratings : CatalogsHotelGuestRatings
-    <br/>
+    <br/>If specified, you must provide all properties
   </li>
 </ul>
 <ul class="parameter">
@@ -87,11 +87,16 @@
 </ul>
 <ul class="parameter">
   <li class="param-required-false">additionalUnderscoreimageUnderscorelink : List
-    <br/>&lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.&lt;/p&gt;
+    <br/>&lt;&#x3D; 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">mainUnderscoreimage : CatalogsHotelAttributes_allOf_main_image
-    <br/>
+  <li class="param-required-false">aiUnderscoredisclosures : List
+    <br/>AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">mainUnderscoreimage : CatalogsHotelMainImage
+    <br/>The main hotel image
   </li>
 </ul>

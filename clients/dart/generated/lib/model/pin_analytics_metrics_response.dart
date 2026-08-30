@@ -19,7 +19,7 @@ class PinAnalyticsMetricsResponse {
   });
 
   /// Array with the requested daily metric records
-  List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics;
+  List<PinAnalyticsDailyMetrics> dailyMetrics;
 
   /// The lifetime metric name and value.
   Map<String, int> lifetimeMetrics;
@@ -62,15 +62,11 @@ class PinAnalyticsMetricsResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinAnalyticsMetricsResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinAnalyticsMetricsResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return PinAnalyticsMetricsResponse(
-        dailyMetrics: PinAnalyticsMetricsResponseDailyMetricsInner.listFromJson(json[r'daily_metrics']),
+        dailyMetrics: PinAnalyticsDailyMetrics.listFromJson(json[r'daily_metrics']),
         lifetimeMetrics: mapCastOfType<String, int>(json, r'lifetime_metrics') ?? const {},
         summaryMetrics: mapCastOfType<String, num>(json, r'summary_metrics') ?? const {},
       );

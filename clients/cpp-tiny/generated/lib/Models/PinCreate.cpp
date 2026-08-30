@@ -6,6 +6,7 @@ using namespace Tiny;
 
 PinCreate::PinCreate()
 {
+	ai_disclosures = null;
 	alt_text = std::string();
 	board_id = std::string();
 	board_section_id = std::string();
@@ -32,6 +33,20 @@ void
 PinCreate::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
+
+    const char *ai_disclosuresKey = "ai_disclosures";
+
+    if(object.has_key(ai_disclosuresKey))
+    {
+        bourne::json value = object[ai_disclosuresKey];
+
+
+
+
+        AiDisclosures* obj = &ai_disclosures;
+		obj->fromJson(value.dump());
+
+    }
 
     const char *alt_textKey = "alt_text";
 
@@ -176,6 +191,13 @@ PinCreate::toJson()
 
 
 
+
+	object["ai_disclosures"] = getAiDisclosures().toJson();
+
+
+
+
+
     object["alt_text"] = getAltText();
 
 
@@ -247,6 +269,18 @@ PinCreate::toJson()
 
 }
 
+AiDisclosures
+PinCreate::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+PinCreate::setAiDisclosures(AiDisclosures ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
+}
+
 std::string
 PinCreate::getAltText()
 {
@@ -254,7 +288,7 @@ PinCreate::getAltText()
 }
 
 void
-PinCreate::setAltText(std::string  alt_text)
+PinCreate::setAltText(std::string alt_text)
 {
 	this->alt_text = alt_text;
 }
@@ -266,7 +300,7 @@ PinCreate::getBoardId()
 }
 
 void
-PinCreate::setBoardId(std::string  board_id)
+PinCreate::setBoardId(std::string board_id)
 {
 	this->board_id = board_id;
 }
@@ -278,7 +312,7 @@ PinCreate::getBoardSectionId()
 }
 
 void
-PinCreate::setBoardSectionId(std::string  board_section_id)
+PinCreate::setBoardSectionId(std::string board_section_id)
 {
 	this->board_section_id = board_section_id;
 }
@@ -290,7 +324,7 @@ PinCreate::getDescription()
 }
 
 void
-PinCreate::setDescription(std::string  description)
+PinCreate::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -302,7 +336,7 @@ PinCreate::getDominantColor()
 }
 
 void
-PinCreate::setDominantColor(std::string  dominant_color)
+PinCreate::setDominantColor(std::string dominant_color)
 {
 	this->dominant_color = dominant_color;
 }
@@ -314,7 +348,7 @@ PinCreate::getLink()
 }
 
 void
-PinCreate::setLink(std::string  link)
+PinCreate::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -326,7 +360,7 @@ PinCreate::getMediaSource()
 }
 
 void
-PinCreate::setMediaSource(PinMediaSource  media_source)
+PinCreate::setMediaSource(PinMediaSource media_source)
 {
 	this->media_source = media_source;
 }
@@ -338,7 +372,7 @@ PinCreate::getParentPinId()
 }
 
 void
-PinCreate::setParentPinId(std::string  parent_pin_id)
+PinCreate::setParentPinId(std::string parent_pin_id)
 {
 	this->parent_pin_id = parent_pin_id;
 }
@@ -350,7 +384,7 @@ PinCreate::getSponsorId()
 }
 
 void
-PinCreate::setSponsorId(std::string  sponsor_id)
+PinCreate::setSponsorId(std::string sponsor_id)
 {
 	this->sponsor_id = sponsor_id;
 }
@@ -362,7 +396,7 @@ PinCreate::getTitle()
 }
 
 void
-PinCreate::setTitle(std::string  title)
+PinCreate::setTitle(std::string title)
 {
 	this->title = title;
 }

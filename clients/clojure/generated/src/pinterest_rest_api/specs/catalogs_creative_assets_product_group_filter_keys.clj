@@ -1,21 +1,22 @@
 (ns pinterest-rest-api.specs.catalogs-creative-assets-product-group-filter-keys
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
-            [pinterest-rest-api.specs. :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-media-types-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-operator-type-criteria :refer :all]
             )
   (:import (java.io File)))
 
@@ -37,6 +38,7 @@
    (ds/req :GOOGLE_PRODUCT_CATEGORY_0) catalogs-product-group-multiple-string-list-criteria-spec
    (ds/req :MEDIA_TYPE) catalogs-product-group-multiple-media-types-criteria-spec
    (ds/req :TITLE_KEYWORDS) catalogs-product-group-multiple-string-criteria-spec
+   (ds/req :LINK) catalogs-product-group-filter-operator-type-criteria-spec
    })
 
 (def catalogs-creative-assets-product-group-filter-keys-spec

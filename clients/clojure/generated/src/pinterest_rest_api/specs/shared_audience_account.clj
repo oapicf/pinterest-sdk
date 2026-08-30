@@ -1,6 +1,7 @@
 (ns pinterest-rest-api.specs.shared-audience-account
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.audience-account-type :refer :all]
             )
   (:import (java.io File)))
 
@@ -9,7 +10,7 @@
   {
    (ds/req :account_id) string?
    (ds/req :account_name) string?
-   (ds/req :account_type) string?
+   (ds/req :account_type) audience-account-type-spec
    (ds/req :shared_on_timestamp) int?
    })
 

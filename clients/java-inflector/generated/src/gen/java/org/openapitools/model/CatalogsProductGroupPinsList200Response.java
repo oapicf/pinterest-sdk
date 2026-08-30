@@ -16,7 +16,7 @@ import org.openapitools.model.CatalogsProduct;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsProductGroupPinsList200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
@@ -42,7 +42,6 @@ public class CatalogsProductGroupPinsList200Response   {
   }
 
   /**
-   * Pins
    **/
   public CatalogsProductGroupPinsList200Response items(List<CatalogsProduct> items) {
     this.items = items;
@@ -50,7 +49,7 @@ public class CatalogsProductGroupPinsList200Response   {
   }
 
   
-  @ApiModelProperty(required = true, value = "Pins")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   public List<CatalogsProduct> getItems() {
     return items;
@@ -94,10 +93,7 @@ public class CatalogsProductGroupPinsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

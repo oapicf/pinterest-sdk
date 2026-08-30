@@ -21,7 +21,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="boardsuserfollowslist"></a>
 # **BoardsUserFollowsList**
-> BoardsUserFollowsList200Response BoardsUserFollowsList (string bookmark = null, int pageSize = null, bool explicitFollowing = null, string adAccountId = null)
+> BoardsList200Response BoardsUserFollowsList (string adAccountId = null, bool explicitFollowing = null, string bookmark = null, int pageSize = null)
 
 List following boards
 
@@ -32,14 +32,14 @@ Get a list of the boards a user follows. The request returns a board summary obj
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
+| **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
+| **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**BoardsUserFollowsList200Response**](BoardsUserFollowsList200Response.md)
+[**BoardsList200Response**](BoardsList200Response.md)
 
 ### Authorization
 
@@ -54,19 +54,23 @@ Get a list of the boards a user follows. The request returns a board summary obj
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="followuserupdate"></a>
 # **FollowUserUpdate**
-> UserSummary FollowUserUpdate (string username, FollowUserRequest followUserRequest)
+> FollowUser FollowUserUpdate (string username, FollowUserCreate followUserCreate)
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 
 
 ### Parameters
@@ -74,11 +78,11 @@ Follow user
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **username** | **string** | A valid username |  |
-| **followUserRequest** | [**FollowUserRequest**](FollowUserRequest.md) | Follow a user. |  |
+| **followUserCreate** | [**FollowUserCreate**](FollowUserCreate.md) |  |  |
 
 ### Return type
 
-[**UserSummary**](UserSummary.md)
+[**FollowUser**](FollowUser.md)
 
 ### Authorization
 
@@ -93,9 +97,14 @@ Follow user
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | User not found |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -113,7 +122,7 @@ Get a list of your followers.
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -132,9 +141,13 @@ Get a list of your followers.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user id |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -166,18 +179,23 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="unverifywebsitedelete"></a>
 # **UnverifyWebsiteDelete**
-> void UnverifyWebsiteDelete (string website)
+> UserWebsite UnverifyWebsiteDelete (string website)
 
 Unverify website
 
-Unverifu a website verified by the signed-in user.
+Unverify a website verified by the signed-in user.
 
 
 ### Parameters
@@ -188,7 +206,7 @@ Unverifu a website verified by the signed-in user.
 
 ### Return type
 
-void (empty response body)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -203,15 +221,20 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Successfully unverified website |  -  |
-| **404** | Website not in user list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="useraccountanalytics"></a>
 # **UserAccountAnalytics**
-> Dictionary&lt;string, AnalyticsMetricsResponse&gt; UserAccountAnalytics (DateOnly startDate, DateOnly endDate, string fromClaimedContent = null, string pinFormat = null, string appTypes = null, string contentType = null, string source = null, List<string> metricTypes = null, string splitField = null, string adAccountId = null)
+> Dictionary&lt;string, AnalyticsMetricsResponse&gt; UserAccountAnalytics (DateOnly startDate, DateOnly endDate, string fromClaimedContent = null, string pinFormat = null, string appTypes = null, string contentType = null, string source = null, List<QuerymetrictypesItems> metricTypes = null, string splitField = null, string adAccountId = null)
 
 Get user account analytics
 
@@ -229,7 +252,7 @@ Get analytics for the \"operation user_account\" - By default, the \"operation u
 | **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL] |
 | **contentType** | **string** | Filter to paid or organic data. Default is all. | [optional] [default to ALL] |
 | **source** | **string** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] |
-| **metricTypes** | [**List&lt;string&gt;**](string.md) | Metric types to get data for, default is all.  | [optional]  |
+| **metricTypes** | [**List&lt;QuerymetrictypesItems&gt;**](QuerymetrictypesItems.md) | Metric types to get data for, default is all. | [optional]  |
 | **splitField** | **string** | How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT] |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
 
@@ -250,16 +273,19 @@ Get analytics for the \"operation user_account\" - By default, the \"operation u
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid user accounts analytics parameters. |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="useraccountanalyticstoppins"></a>
 # **UserAccountAnalyticsTopPins**
-> TopPinsAnalyticsResponse UserAccountAnalyticsTopPins (DateOnly startDate, DateOnly endDate, string sortBy, string fromClaimedContent = null, string pinFormat = null, string appTypes = null, string contentType = null, string source = null, List<string> metricTypes = null, int numOfPins = null, int createdInLastNDays = null, string adAccountId = null)
+> TopPinsAnalyticsResponse UserAccountAnalyticsTopPins (DateOnly startDate, DateOnly endDate, TopPinsSortBy sortBy, string fromClaimedContent = null, string pinFormat = null, string appTypes = null, string contentType = null, string source = null, List<QuerymetrictypesItems> metricTypes = null, int numOfPins = null, decimal createdInLastNDays = null, string adAccountId = null)
 
 Get user account top pins analytics
 
@@ -272,15 +298,15 @@ Gets analytics data about a user's top pins (limited to the top 50). - By defaul
 |------|------|-------------|-------|
 | **startDate** | **DateOnly** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |  |
 | **endDate** | **DateOnly** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |  |
-| **sortBy** | **string** | Specify sorting order for metrics |  |
+| **sortBy** | **TopPinsSortBy** | Specify sorting order for metrics |  |
 | **fromClaimedContent** | **string** | Filter on Pins that match your claimed domain. | [optional] [default to BOTH] |
 | **pinFormat** | **string** | Pin formats to get data for, default is all. | [optional] [default to ALL] |
 | **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL] |
 | **contentType** | **string** | Filter to paid or organic data. Default is all. | [optional] [default to ALL] |
 | **source** | **string** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] |
-| **metricTypes** | [**List&lt;string&gt;**](string.md) | Metric types to get data for, default is all.  | [optional]  |
+| **metricTypes** | [**List&lt;QuerymetrictypesItems&gt;**](QuerymetrictypesItems.md) | Metric types to get data for, default is all. | [optional]  |
 | **numOfPins** | **int** | Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
-| **createdInLastNDays** | **int** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional]  |
+| **createdInLastNDays** | **decimal** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional]  |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
 
 ### Return type
@@ -300,15 +326,19 @@ Gets analytics data about a user's top pins (limited to the top 50). - By defaul
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="useraccountanalyticstopvideopins"></a>
 # **UserAccountAnalyticsTopVideoPins**
-> TopVideoPinsAnalyticsResponse UserAccountAnalyticsTopVideoPins (DateOnly startDate, DateOnly endDate, string sortBy, string fromClaimedContent = null, string pinFormat = null, string appTypes = null, string contentType = null, string source = null, List<string> metricTypes = null, int numOfPins = null, int createdInLastNDays = null, string adAccountId = null)
+> TopVideoPinsAnalyticsResponse UserAccountAnalyticsTopVideoPins (DateOnly startDate, DateOnly endDate, TopVideoPinsSortBy sortBy, string fromClaimedContent = null, string pinFormat = null, string appTypes = null, string contentType = null, string source = null, List<QueryvideopinmetrictypesItems> metricTypes = null, int numOfPins = null, decimal createdInLastNDays = null, string adAccountId = null)
 
 Get user account top video pins analytics
 
@@ -321,15 +351,15 @@ Gets analytics data about a user's top video pins (limited to the top 50). - By 
 |------|------|-------------|-------|
 | **startDate** | **DateOnly** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |  |
 | **endDate** | **DateOnly** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |  |
-| **sortBy** | **string** | Specify sorting order for video metrics |  |
+| **sortBy** | **TopVideoPinsSortBy** | Specify sorting order for video metrics |  |
 | **fromClaimedContent** | **string** | Filter on Pins that match your claimed domain. | [optional] [default to BOTH] |
 | **pinFormat** | **string** | Pin formats to get data for, default is all. | [optional] [default to ALL] |
 | **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL] |
 | **contentType** | **string** | Filter to paid or organic data. Default is all. | [optional] [default to ALL] |
 | **source** | **string** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] |
-| **metricTypes** | [**List&lt;string&gt;**](string.md) | Metric types to get video data for, default is all.  | [optional]  |
+| **metricTypes** | [**List&lt;QueryvideopinmetrictypesItems&gt;**](QueryvideopinmetrictypesItems.md) | Metric types to get video data for, default is all. | [optional]  |
 | **numOfPins** | **int** | Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
-| **createdInLastNDays** | **int** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional]  |
+| **createdInLastNDays** | **decimal** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional]  |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
 
 ### Return type
@@ -349,9 +379,13 @@ Gets analytics data about a user's top video pins (limited to the top 50). - By 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user account analytics. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -370,7 +404,7 @@ Get a list of a user's following interests in one place.
 |------|------|-------------|-------|
 | **username** | **string** | A valid username |  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -389,10 +423,10 @@ Get a list of a user's following interests in one place.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters |  -  |
-| **401** | Authorization failed |  -  |
-| **404** | User not found |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The server could not understand the request due to invalid syntax. |  -  |
+| **401** | Access is unauthorized. |  -  |
+| **404** | The server cannot find the requested resource. |  -  |
 | **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -403,7 +437,7 @@ Get a list of a user's following interests in one place.
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 
 
 ### Parameters
@@ -429,15 +463,19 @@ Get account information for the \"operation user_account\" - By default, the \"o
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **403** | Not authorized to access the user account. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="userfollowingget"></a>
 # **UserFollowingGet**
-> UserFollowingGet200Response UserFollowingGet (string bookmark = null, int pageSize = null, UserFollowingFeedType feedType = null, bool explicitFollowing = null, string adAccountId = null)
+> FollowersList200Response UserFollowingGet (string adAccountId = null, bool explicitFollowing = null, UserFollowingFeedType feedType = null, string bookmark = null, int pageSize = null)
 
 List following
 
@@ -448,15 +486,15 @@ Get a list of who a certain user follows.
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **feedType** | **UserFollowingFeedType** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional]  |
-| **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
+| **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
+| **feedType** | **UserFollowingFeedType** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional]  |
+| **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**UserFollowingGet200Response**](UserFollowingGet200Response.md)
+[**FollowersList200Response**](FollowersList200Response.md)
 
 ### Authorization
 
@@ -471,8 +509,13 @@ Get a list of who a certain user follows.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -490,7 +533,7 @@ Get user websites, claimed or not
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -509,15 +552,19 @@ Get user websites, claimed or not
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user website list. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="verifywebsiteupdate"></a>
 # **VerifyWebsiteUpdate**
-> UserWebsiteSummary VerifyWebsiteUpdate (UserWebsiteVerifyRequest userWebsiteVerifyRequest, string adAccountId = null)
+> UserWebsite VerifyWebsiteUpdate (UserWebsiteCreate userWebsiteCreate, string adAccountId = null)
 
 Verify website
 
@@ -528,12 +575,12 @@ Verify a website as a signed-in user.
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md) | Verify a website. |  |
+| **userWebsiteCreate** | [**UserWebsiteCreate**](UserWebsiteCreate.md) |  |  |
 | **adAccountId** | **string** | Unique identifier of an ad account. | [optional]  |
 
 ### Return type
 
-[**UserWebsiteSummary**](UserWebsiteSummary.md)
+[**UserWebsite**](UserWebsite.md)
 
 ### Authorization
 
@@ -548,14 +595,20 @@ Verify a website as a signed-in user.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="websiteverificationget"></a>
 # **WebsiteVerificationGet**
-> UserWebsiteVerificationCode WebsiteVerificationGet (string adAccountId = null)
+> UserWebsiteVerification WebsiteVerificationGet (string adAccountId = null)
 
 Get user verification code for website claiming
 
@@ -570,7 +623,7 @@ Get verification code for user to install on the website to claim it.
 
 ### Return type
 
-[**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
+[**UserWebsiteVerification**](UserWebsiteVerification.md)
 
 ### Authorization
 
@@ -585,9 +638,13 @@ Get verification code for user to install on the website to claim it.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **403** | Not authorized to access the user verification code for website claiming. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

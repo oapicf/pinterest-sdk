@@ -5,13 +5,14 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.Error
-import model.PromotionCreateRequest
-import model.PromotionResponse
-import model.PromotionUpdateRequest
+import model.PaginationOrder
+import model.Promotion
+import model.PromotionBatchUpdate
+import model.PromotionCreate
 import model.PromotionsList200Response
 import model.PromotionsResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class PromotionsApiController @Inject()(cc: ControllerComponents, api: PromotionsApi) extends AbstractController(cc) {
   /**
@@ -20,10 +21,10 @@ class PromotionsApiController @Inject()(cc: ControllerComponents, api: Promotion
     */
   def promotionsCreate(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): PromotionsResponse = {
-      val promotionCreateRequest = request.body.asJson.map(_.as[List[PromotionCreateRequest]]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "promotionCreateRequest")
+      val promotionCreate = request.body.asJson.map(_.as[List[PromotionCreate]]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "promotionCreate")
       }
-      api.promotionsCreate(adAccountId, promotionCreateRequest)
+      api.promotionsCreate(adAccountId, promotionCreate)
     }
 
     val result = executeApi()
@@ -33,26 +34,12 @@ class PromotionsApiController @Inject()(cc: ControllerComponents, api: Promotion
 
   /**
     * DELETE /v5/ad_accounts/:adAccountId/promotions/:promotionId
+    * @param promotionId Promotion ID
     * @param adAccountId Unique identifier of an ad account.
-    * @param promotionId Unique identifier of a promotion
     */
-  def promotionsDelete(adAccountId: String, promotionId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
-      api.promotionsDelete(adAccountId, promotionId)
-    }
-
-    executeApi()
-    Ok
-  }
-
-  /**
-    * GET /v5/ad_accounts/:adAccountId/promotions/:promotionId
-    * @param adAccountId Unique identifier of an ad account.
-    * @param promotionId Unique identifier of a promotion
-    */
-  def promotionsGet(adAccountId: String, promotionId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): PromotionResponse = {
-      api.promotionsGet(adAccountId, promotionId)
+  def promotionsDelete(promotionId: String, adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): Promotion = {
+      api.promotionsDelete(promotionId, adAccountId)
     }
 
     val result = executeApi()
@@ -61,19 +48,35 @@ class PromotionsApiController @Inject()(cc: ControllerComponents, api: Promotion
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/promotions?pageSize=[value]&order=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/promotions/:promotionId
+    * @param promotionId Promotion ID
+    * @param adAccountId Unique identifier of an ad account.
+    */
+  def promotionsGet(promotionId: String, adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): Promotion = {
+      api.promotionsGet(promotionId, adAccountId)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
+  /**
+    * GET /v5/ad_accounts/:adAccountId/promotions?bookmark=[value]&pageSize=[value]&order=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def promotionsList(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): PromotionsList200Response = {
+      val bookmark = request.getQueryString("bookmark")
+        
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
       val order = request.getQueryString("order")
+        .map(value => )
         
-      val bookmark = request.getQueryString("bookmark")
-        
-      api.promotionsList(adAccountId, pageSize, order, bookmark)
+      api.promotionsList(adAccountId, bookmark, pageSize, order)
     }
 
     val result = executeApi()
@@ -87,10 +90,10 @@ class PromotionsApiController @Inject()(cc: ControllerComponents, api: Promotion
     */
   def promotionsUpdate(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): PromotionsResponse = {
-      val promotionUpdateRequest = request.body.asJson.map(_.as[List[PromotionUpdateRequest]]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "promotionUpdateRequest")
+      val promotionBatchUpdate = request.body.asJson.map(_.as[List[PromotionBatchUpdate]]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "promotionBatchUpdate")
       }
-      api.promotionsUpdate(adAccountId, promotionUpdateRequest)
+      api.promotionsUpdate(adAccountId, promotionBatchUpdate)
     }
 
     val result = executeApi()

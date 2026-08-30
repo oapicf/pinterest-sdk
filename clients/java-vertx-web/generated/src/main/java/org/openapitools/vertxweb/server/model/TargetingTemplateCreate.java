@@ -9,10 +9,13 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.PlacementGroupType;
-import org.openapitools.vertxweb.server.model.TargetingSpec;
+import org.openapitools.vertxweb.server.model.TargetingSpecOptimal;
 import org.openapitools.vertxweb.server.model.TargetingTemplateKeyword;
 import org.openapitools.vertxweb.server.model.TrackingUrls;
 
+/**
+ * Resource create operation model.
+ **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TargetingTemplateCreate   {
   
@@ -20,14 +23,14 @@ public class TargetingTemplateCreate   {
   private List<TargetingTemplateKeyword> keywords = new ArrayList<>();
   private String name;
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
-  private TargetingSpec targetingAttributes;
+  private TargetingSpecOptimal targetingAttributes;
   private TrackingUrls trackingUrls;
 
   public TargetingTemplateCreate () {
 
   }
 
-  public TargetingTemplateCreate (Boolean autoTargetingEnabled, List<TargetingTemplateKeyword> keywords, String name, PlacementGroupType placementGroup, TargetingSpec targetingAttributes, TrackingUrls trackingUrls) {
+  public TargetingTemplateCreate (Boolean autoTargetingEnabled, List<TargetingTemplateKeyword> keywords, String name, PlacementGroupType placementGroup, TargetingSpecOptimal targetingAttributes, TrackingUrls trackingUrls) {
     this.autoTargetingEnabled = autoTargetingEnabled;
     this.keywords = keywords;
     this.name = name;
@@ -74,10 +77,10 @@ public class TargetingTemplateCreate   {
 
     
   @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
+  public TargetingSpecOptimal getTargetingAttributes() {
     return targetingAttributes;
   }
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(TargetingSpecOptimal targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
@@ -133,9 +136,6 @@ public class TargetingTemplateCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

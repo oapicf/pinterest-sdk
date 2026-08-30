@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -20,7 +20,8 @@ type S3MultipartUploadData struct {
 	FileParts []S3FilePart `json:"file_parts,omitempty"`
 }
 
-// AssertS3MultipartUploadDataRequired checks if the required fields are not zero-ed
+// AssertS3MultipartUploadDataRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertS3MultipartUploadDataRequired(obj S3MultipartUploadData) error {
 	for _, el := range obj.FileParts {
 		if err := AssertS3FilePartRequired(el); err != nil {

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **audience_id** | **String** |  | [optional] |
+| **audience_id** | **String** | Audience ID for the multiplier. | [optional] |
 
 ## Example
 

@@ -4,13 +4,14 @@
 
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/customizable_cta_type.dart';
-import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/ad_shopping_preview_creative_type.dart';
+import 'package:openapi/src/model/base_preferred_media_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'ad_preview_shopping.g.dart';
 
-/// AdPreviewShopping
+/// Ad preview from a catalog product group (shopping).
 ///
 /// Properties:
 /// * [catalogProductGroupId] - Catalog Product Group Id.
@@ -22,6 +23,7 @@ part 'ad_preview_shopping.g.dart';
 /// * [imageTag] - Multi image template tag.
 /// * [itemId] - Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.
 /// * [preferredMediaType] - Preferred media type.
+/// * [showPromotion] - Include promotion data in preview when available on catalog item. Defaults to false.
 /// * [videoTag] - Multi video template tag, image_tag and video_tag are mutual exclusive.
 @BuiltValue()
 abstract class AdPreviewShopping implements Built<AdPreviewShopping, AdPreviewShoppingBuilder> {
@@ -31,13 +33,13 @@ abstract class AdPreviewShopping implements Built<AdPreviewShopping, AdPreviewSh
 
   /// Ad format of the shopping ad preview.
   @BuiltValueField(wireName: r'creative_type')
-  AdPreviewShoppingCreativeTypeEnum get creativeType;
-  // enum creativeTypeEnum {  SHOPPING,  CAROUSEL,  COLLECTION,  REGULAR,  };
+  AdShoppingPreviewCreativeType get creativeType;
+  // enum creativeTypeEnum {  SHOPPING,  COLLECTION,  CAROUSEL,  MAX_WIDTH_COLLECTION,  };
 
   /// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
   @BuiltValueField(wireName: r'customizable_cta_type')
   CustomizableCTAType? get customizableCtaType;
-  // enum customizableCtaTypeEnum {  GET_OFFER,  LEARN_MORE,  ORDER_NOW,  SHOP_NOW,  SIGN_UP,  SUBSCRIBE,  BUY_NOW,  CONTACT_US,  GET_QUOTE,  VISIT_SITE,  APPLY_NOW,  BOOK_NOW,  REQUEST_DEMO,  REGISTER_NOW,  FIND_A_DEALER,  ADD_TO_CART,  WATCH_NOW,  READ_MORE,  BUY_TICKETS,  DONATE_NOW,  DOWNLOAD,  EXPLORE_MORE,  FIND_A_LOCATION,  GET_DEAL,  GET_RECIPE,  GET_SHOWTIMES,  ON_SALE,  PLAY_GAME,  TRY_IT,  ,  };
+  // enum customizableCtaTypeEnum {  GET_OFFER,  LEARN_MORE,  ORDER_NOW,  SHOP_NOW,  SIGN_UP,  SUBSCRIBE,  BUY_NOW,  CONTACT_US,  GET_QUOTE,  VISIT_SITE,  APPLY_NOW,  BOOK_NOW,  REQUEST_DEMO,  REGISTER_NOW,  FIND_A_DEALER,  ADD_TO_CART,  WATCH_NOW,  READ_MORE,  BUY_TICKETS,  DONATE_NOW,  DOWNLOAD,  EXPLORE_MORE,  FIND_A_LOCATION,  FIND_RETAILERS,  GET_DEAL,  GET_RECIPE,  GET_SHOWTIMES,  ON_SALE,  PLAY_GAME,  TRY_IT,  TAKE_A_PEEK,  ,  };
 
   /// Title displayed below ad.
   @BuiltValueField(wireName: r'hero_image_title')
@@ -61,8 +63,12 @@ abstract class AdPreviewShopping implements Built<AdPreviewShopping, AdPreviewSh
 
   /// Preferred media type.
   @BuiltValueField(wireName: r'preferred_media_type')
-  AdPreviewShoppingPreferredMediaTypeEnum? get preferredMediaType;
+  BasePreferredMediaType? get preferredMediaType;
   // enum preferredMediaTypeEnum {  VIDEO,  IMAGE,  };
+
+  /// Include promotion data in preview when available on catalog item. Defaults to false.
+  @BuiltValueField(wireName: r'show_promotion')
+  bool? get showPromotion;
 
   /// Multi video template tag, image_tag and video_tag are mutual exclusive.
   @BuiltValueField(wireName: r'video_tag')
@@ -99,7 +105,7 @@ class _$AdPreviewShoppingSerializer implements PrimitiveSerializer<AdPreviewShop
     yield r'creative_type';
     yield serializers.serialize(
       object.creativeType,
-      specifiedType: const FullType(AdPreviewShoppingCreativeTypeEnum),
+      specifiedType: const FullType(AdShoppingPreviewCreativeType),
     );
     if (object.customizableCtaType != null) {
       yield r'customizable_cta_type';
@@ -147,7 +153,14 @@ class _$AdPreviewShoppingSerializer implements PrimitiveSerializer<AdPreviewShop
       yield r'preferred_media_type';
       yield serializers.serialize(
         object.preferredMediaType,
-        specifiedType: const FullType(AdPreviewShoppingPreferredMediaTypeEnum),
+        specifiedType: const FullType(BasePreferredMediaType),
+      );
+    }
+    if (object.showPromotion != null) {
+      yield r'show_promotion';
+      yield serializers.serialize(
+        object.showPromotion,
+        specifiedType: const FullType(bool),
       );
     }
     if (object.videoTag != null) {
@@ -190,8 +203,8 @@ class _$AdPreviewShoppingSerializer implements PrimitiveSerializer<AdPreviewShop
         case r'creative_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(AdPreviewShoppingCreativeTypeEnum),
-          ) as AdPreviewShoppingCreativeTypeEnum;
+            specifiedType: const FullType(AdShoppingPreviewCreativeType),
+          ) as AdShoppingPreviewCreativeType;
           result.creativeType = valueDes;
           break;
         case r'customizable_cta_type':
@@ -205,50 +218,65 @@ class _$AdPreviewShoppingSerializer implements PrimitiveSerializer<AdPreviewShop
         case r'hero_image_title':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.heroImageTitle = valueDes;
           break;
         case r'hero_image_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.heroImageUrl = valueDes;
           break;
         case r'hero_pin_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.heroPinId = valueDes;
           break;
         case r'image_tag':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.imageTag = valueDes;
           break;
         case r'item_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.itemId = valueDes;
           break;
         case r'preferred_media_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(AdPreviewShoppingPreferredMediaTypeEnum),
-          ) as AdPreviewShoppingPreferredMediaTypeEnum;
+            specifiedType: const FullType.nullable(BasePreferredMediaType),
+          ) as BasePreferredMediaType?;
+          if (valueDes == null) continue;
           result.preferredMediaType = valueDes;
+          break;
+        case r'show_promotion':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.showPromotion = valueDes;
           break;
         case r'video_tag':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.videoTag = valueDes;
           break;
         default:
@@ -278,45 +306,5 @@ class _$AdPreviewShoppingSerializer implements PrimitiveSerializer<AdPreviewShop
     );
     return result.build();
   }
-}
-
-class AdPreviewShoppingCreativeTypeEnum extends EnumClass {
-
-  /// Ad format of the shopping ad preview.
-  @BuiltValueEnumConst(wireName: r'SHOPPING')
-  static const AdPreviewShoppingCreativeTypeEnum SHOPPING = _$adPreviewShoppingCreativeTypeEnum_SHOPPING;
-  /// Ad format of the shopping ad preview.
-  @BuiltValueEnumConst(wireName: r'CAROUSEL')
-  static const AdPreviewShoppingCreativeTypeEnum CAROUSEL = _$adPreviewShoppingCreativeTypeEnum_CAROUSEL;
-  /// Ad format of the shopping ad preview.
-  @BuiltValueEnumConst(wireName: r'COLLECTION')
-  static const AdPreviewShoppingCreativeTypeEnum COLLECTION = _$adPreviewShoppingCreativeTypeEnum_COLLECTION;
-  /// Ad format of the shopping ad preview.
-  @BuiltValueEnumConst(wireName: r'REGULAR')
-  static const AdPreviewShoppingCreativeTypeEnum REGULAR = _$adPreviewShoppingCreativeTypeEnum_REGULAR;
-
-  static Serializer<AdPreviewShoppingCreativeTypeEnum> get serializer => _$adPreviewShoppingCreativeTypeEnumSerializer;
-
-  const AdPreviewShoppingCreativeTypeEnum._(String name): super(name);
-
-  static BuiltSet<AdPreviewShoppingCreativeTypeEnum> get values => _$adPreviewShoppingCreativeTypeEnumValues;
-  static AdPreviewShoppingCreativeTypeEnum valueOf(String name) => _$adPreviewShoppingCreativeTypeEnumValueOf(name);
-}
-
-class AdPreviewShoppingPreferredMediaTypeEnum extends EnumClass {
-
-  /// Preferred media type.
-  @BuiltValueEnumConst(wireName: r'VIDEO')
-  static const AdPreviewShoppingPreferredMediaTypeEnum VIDEO = _$adPreviewShoppingPreferredMediaTypeEnum_VIDEO;
-  /// Preferred media type.
-  @BuiltValueEnumConst(wireName: r'IMAGE')
-  static const AdPreviewShoppingPreferredMediaTypeEnum IMAGE = _$adPreviewShoppingPreferredMediaTypeEnum_IMAGE;
-
-  static Serializer<AdPreviewShoppingPreferredMediaTypeEnum> get serializer => _$adPreviewShoppingPreferredMediaTypeEnumSerializer;
-
-  const AdPreviewShoppingPreferredMediaTypeEnum._(String name): super(name);
-
-  static BuiltSet<AdPreviewShoppingPreferredMediaTypeEnum> get values => _$adPreviewShoppingPreferredMediaTypeEnumValues;
-  static AdPreviewShoppingPreferredMediaTypeEnum valueOf(String name) => _$adPreviewShoppingPreferredMediaTypeEnumValueOf(name);
 }
 

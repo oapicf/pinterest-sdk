@@ -1,55 +1,58 @@
 package org.openapitools.api
 
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response
+import org.openapitools.model.AssetGroupDeletion
+import org.openapitools.model.AssetGroupDeletionDelete
+import org.openapitools.model.AssetGroupInput
+import org.openapitools.model.AssetGroupInputCreate
+import org.openapitools.model.AssetGroupModification
+import org.openapitools.model.AssetGroupModificationReadOrUpdate
+import org.openapitools.model.AssetPermissionType
+import org.openapitools.model.AssetSearchBy
+import org.openapitools.model.AssetSortBy
 import org.openapitools.model.AudienceAccountType
-import org.openapitools.model.AudiencesList200Response
 import org.openapitools.model.AuthRespondInvitesBody
 import org.openapitools.model.BusinessAssetMembersGet200Response
-import org.openapitools.model.BusinessAssetPartnersGet200Response
 import org.openapitools.model.BusinessAssetsGet200Response
-import org.openapitools.model.BusinessMemberAssetsGet200Response
-import org.openapitools.model.BusinessMembersAssetAccessDeleteRequest
+import org.openapitools.model.BusinessMemberAssetsGetResponse
+import org.openapitools.model.BusinessMembersAssetAccessDeleteBody
+import org.openapitools.model.BusinessMembershipMember
 import org.openapitools.model.BusinessPartnerAssetAccessGet200Response
-import org.openapitools.model.BusinessSharedAudience
-import org.openapitools.model.BusinessSharedAudienceResponse
-import org.openapitools.model.CancelInvitesBody
+import org.openapitools.model.BusinessToAdAccountSharedAudience
+import org.openapitools.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.model.BusinessToBusinessSharedAudience
+import org.openapitools.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+import org.openapitools.model.CancelInvitesRequest
+import org.openapitools.model.CancelInvitesResponse
 import org.openapitools.model.CreateAssetAccessRequestBody
 import org.openapitools.model.CreateAssetAccessRequestResponse
-import org.openapitools.model.CreateAssetGroupBody
-import org.openapitools.model.CreateAssetGroupResponse
 import org.openapitools.model.CreateAssetInvitesRequest
 import org.openapitools.model.CreateInvitesResultsResponseArray
 import org.openapitools.model.CreateMembershipOrPartnershipInvitesBody
-import org.openapitools.model.DeleteAssetGroupBody
-import org.openapitools.model.DeleteAssetGroupResponse
-import org.openapitools.model.DeleteInvitesResultsResponseArray
+import org.openapitools.model.DeleteBusinessMembership200Response
+import org.openapitools.model.DeleteBusinessMembershipBody
+import org.openapitools.model.DeleteBusinessPartners
+import org.openapitools.model.DeleteBusinessPartnersDelete
 import org.openapitools.model.DeleteMemberAccessResultsResponseArray
 import org.openapitools.model.DeletePartnerAssetAccessBody
-import org.openapitools.model.DeletePartnerAssetsResultsResponseArray
-import org.openapitools.model.DeletePartnersRequest
-import org.openapitools.model.DeletePartnersResponse
-import org.openapitools.model.DeletedMembersResponse
-import org.openapitools.model.Error
+import org.openapitools.model.DeletePartnerAssetAccessResultsResponseArray
 import org.openapitools.model.GetBusinessEmployers200Response
-import org.openapitools.model.GetBusinessMembers200Response
-import org.openapitools.model.GetBusinessPartners200Response
 import org.openapitools.model.GetInvites200Response
+import org.openapitools.model.InviteFilterStatus
 import org.openapitools.model.InviteType
 import org.openapitools.model.MemberBusinessRole
-import org.openapitools.model.MembersToDeleteBody
+import org.openapitools.model.NonDraftEntityStatus
+import org.openapitools.model.Order
 import org.openapitools.model.PartnerType
 import org.openapitools.model.PermissionsWithOwner
+import org.openapitools.model.PinterestLibError
 import org.openapitools.model.RespondToInvitesResponseArray
-import org.openapitools.model.SharedAudience
-import org.openapitools.model.SharedAudienceResponse
-import org.openapitools.model.SystemUserUpdateRequest
-import org.openapitools.model.UpdateAssetGroupBody
-import org.openapitools.model.UpdateAssetGroupResponse
+import org.openapitools.model.SharedAudiencesForBusinessList200Response
+import org.openapitools.model.SystemUserUpdateWithRequiredBody
+import org.openapitools.model.UpdateBusinessMembershipsResponse
 import org.openapitools.model.UpdateInvitesResultsResponseArray
 import org.openapitools.model.UpdateMemberAssetAccessBody
 import org.openapitools.model.UpdateMemberAssetsResultsResponseArray
-import org.openapitools.model.UpdateMemberBusinessRoleBody
-import org.openapitools.model.UpdateMemberResultsResponseArray
 import org.openapitools.model.UpdatePartnerAssetAccessBody
 import org.openapitools.model.UpdatePartnerAssetsResultsResponseArray
 import io.swagger.v3.oas.annotations.*
@@ -65,7 +68,6 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
-import org.openapitools.api.BusinessesApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -82,7 +84,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
+@RequestMapping("\${api.base-path:/v5}")
 class BusinessesApiController() {
 
     @Operation(
@@ -90,13 +92,20 @@ class BusinessesApiController() {
         operationId = "assetAccessRequestsCreate",
         description = """Create a request to access an existing partner's assets with the specified permissions. The request will be sent to the partner for approval. The assets that can be requested are ad accounts and profiles.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = CreateAssetAccessRequestResponse::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = CreateAssetAccessRequestResponse::class))]),
+            ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = [Content(schema = Schema(implementation = CreateAssetAccessRequestResponse::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read", "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = [PATH_ASSET_ACCESS_REQUESTS_CREATE /* "/businesses/{business_id}/requests/assets/access" */],
+        // "/businesses/{business_id}/requests/assets/access"
+        value = [PATH_ASSET_ACCESS_REQUESTS_CREATE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
@@ -111,23 +120,29 @@ class BusinessesApiController() {
         summary = "Create a new asset group.",
         operationId = "assetGroupCreate",
         description = """Create a new asset group with the specified parameters.
-- An <a href="https://help.pinterest.com/en/business/article/asset-groups">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.""",
+- An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = CreateAssetGroupResponse::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = AssetGroupInput::class))]),
+            ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = [Content(schema = Schema(implementation = AssetGroupInput::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read", "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = [PATH_ASSET_GROUP_CREATE /* "/businesses/{business_id}/asset_groups" */],
+        // "/businesses/{business_id}/asset_groups"
+        value = [PATH_ASSET_GROUP_CREATE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun assetGroupCreate(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "", required = true) @Valid @RequestBody createAssetGroupBody: CreateAssetGroupBody
-    ): ResponseEntity<CreateAssetGroupResponse> {
+        @Parameter(description = "", required = true) @Valid @RequestBody assetGroupInputCreate: AssetGroupInputCreate
+    ): ResponseEntity<AssetGroupInput> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -136,21 +151,21 @@ class BusinessesApiController() {
         operationId = "assetGroupDelete",
         description = """Delete a batch of asset groups.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = DeleteAssetGroupResponse::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = AssetGroupDeletion::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read", "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = [PATH_ASSET_GROUP_DELETE /* "/businesses/{business_id}/asset_groups" */],
+        // "/businesses/{business_id}/asset_groups"
+        value = [PATH_ASSET_GROUP_DELETE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun assetGroupDelete(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "", required = true) @Valid @RequestBody deleteAssetGroupBody: DeleteAssetGroupBody
-    ): ResponseEntity<DeleteAssetGroupResponse> {
+        @Parameter(description = "", required = true) @Valid @RequestBody assetGroupDeletionDelete: AssetGroupDeletionDelete
+    ): ResponseEntity<AssetGroupDeletion> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -159,48 +174,55 @@ class BusinessesApiController() {
         operationId = "assetGroupUpdate",
         description = """Update a batch of asset groups with the specified parameters.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = UpdateAssetGroupResponse::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = AssetGroupModification::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read", "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = [PATH_ASSET_GROUP_UPDATE /* "/businesses/{business_id}/asset_groups" */],
+        // "/businesses/{business_id}/asset_groups"
+        value = [PATH_ASSET_GROUP_UPDATE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun assetGroupUpdate(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "", required = true) @Valid @RequestBody updateAssetGroupBody: UpdateAssetGroupBody
-    ): ResponseEntity<UpdateAssetGroupResponse> {
+        @Parameter(description = "", required = true) @Valid @RequestBody assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate
+    ): ResponseEntity<AssetGroupModification> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
     @Operation(
         summary = "List accounts with access to an audience owned by a business",
         operationId = "businessAccountAudiencesSharedAccountsList",
-        description = """List all ad accounts and/or businesses that have access to a specific audience.
-The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business.
-If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.""",
+        description = """List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = AdAccountsAudiencesSharedAccountsList200Response::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid business audiences shared accounts parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "404", description = "Shared accounts not found.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error.", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = AdAccountsAudiencesSharedAccountsList200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_BUSINESS_ACCOUNT_AUDIENCES_SHARED_ACCOUNTS_LIST /* "/businesses/{business_id}/audiences/shared/accounts" */],
+        // "/businesses/{business_id}/audiences/shared/accounts"
+        value = [PATH_BUSINESS_ACCOUNT_AUDIENCES_SHARED_ACCOUNTS_LIST],
         produces = ["application/json"]
     )
     fun businessAccountAudiencesSharedAccountsList(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @NotNull @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of the audience to use to filter the results.", required = true) @Valid @RequestParam(value = "audience_id", required = true) audienceId: kotlin.String,
-        @NotNull @Parameter(description = "Filter accounts by account type.", required = true, schema = Schema(allowableValues = ["AD_ACCOUNT", "BUSINESS_ACCOUNT"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "account_type", required = true, defaultValue = "AD_ACCOUNT") accountType: AudienceAccountType,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
-        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+        @NotNull @Parameter(description = "Filter accounts by account type.", required = true, schema = Schema(allowableValues = ["AD_ACCOUNT", "BUSINESS_ACCOUNT"])) @Valid @RequestParam(value = "account_type", required = true) accountType: AudienceAccountType,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
     ): ResponseEntity<AdAccountsAudiencesSharedAccountsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -210,22 +232,28 @@ If the requesting business is not the owner of the audience, only ad accounts ow
         operationId = "businessAssetMembersGet",
         description = """Get all the members the requesting business has granted access to on the given asset.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Sucess", content = [Content(schema = Schema(implementation = BusinessAssetMembersGet200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = BusinessAssetMembersGet200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_BUSINESS_ASSET_MEMBERS_GET /* "/businesses/{business_id}/assets/{asset_id}/members" */],
+        // "/businesses/{business_id}/assets/{asset_id}/members"
+        value = [PATH_BUSINESS_ASSET_MEMBERS_GET],
         produces = ["application/json"]
     )
     fun businessAssetMembersGet(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of a business asset.", required = true) @PathVariable("asset_id") assetId: kotlin.String,
+        @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
         @Parameter(description = "Fetches system users if True. Fetches regular user employees if False.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "fetch_system_users", required = false, defaultValue = "false") fetchSystemUsers: kotlin.Boolean,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
-        @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
     ): ResponseEntity<BusinessAssetMembersGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -237,13 +265,19 @@ If the requesting business is not the owner of the audience, only ad accounts ow
 Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with
 you cannot be shared with a different partner.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Sucess", content = [Content(schema = Schema(implementation = BusinessAssetPartnersGet200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = BusinessAssetMembersGet200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_BUSINESS_ASSET_PARTNERS_GET /* "/businesses/{business_id}/assets/{asset_id}/partners" */],
+        // "/businesses/{business_id}/assets/{asset_id}/partners"
+        value = [PATH_BUSINESS_ASSET_PARTNERS_GET],
         produces = ["application/json"]
     )
     fun businessAssetPartnersGet(
@@ -251,8 +285,8 @@ you cannot be shared with a different partner.""",
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of a business asset.", required = true) @PathVariable("asset_id") assetId: kotlin.String,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
-    ): ResponseEntity<BusinessAssetPartnersGet200Response> {
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<BusinessAssetMembersGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -261,13 +295,19 @@ you cannot be shared with a different partner.""",
         operationId = "businessAssetsGet",
         description = """Get all the assets the requesting business has access to. This includes assets the business owns and assets the business has access to through partnerships.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = BusinessAssetsGet200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = BusinessAssetsGet200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_BUSINESS_ASSETS_GET /* "/businesses/{business_id}/assets" */],
+        // "/businesses/{business_id}/assets"
+        value = [PATH_BUSINESS_ASSETS_GET],
         produces = ["application/json"]
     )
     fun businessAssetsGet(
@@ -278,7 +318,7 @@ you cannot be shared with a different partner.""",
         @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
     ): ResponseEntity<BusinessAssetsGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -291,23 +331,35 @@ you cannot be shared with a different partner.""",
 - get assets of one asset type by using the asset_type query.
 The return response will include the permissions the member has to that asset and the asset type.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = BusinessMemberAssetsGet200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = BusinessMemberAssetsGetResponse::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_BUSINESS_MEMBER_ASSETS_GET /* "/businesses/{business_id}/members/{member_id}/assets" */],
+        // "/businesses/{business_id}/members/{member_id}/assets"
+        value = [PATH_BUSINESS_MEMBER_ASSETS_GET],
         produces = ["application/json"]
     )
     fun businessMemberAssetsGet(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "The member id to fetch assets for.", required = true) @PathVariable("member_id") memberId: kotlin.String,
-        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
+        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER", "CONVERSION_TAG"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
+        @Parameter(description = "The field to sort member assets by", schema = Schema(allowableValues = ["NAME", "ID", "PERMISSIONS"])) @Valid @RequestParam(value = "sort_by", required = false) sortBy: AssetSortBy?,
+        @Parameter(description = "Sort assets in ascending order", schema = Schema(defaultValue = "true")) @Valid @RequestParam(value = "sort_ascending", required = false, defaultValue = "true") sortAscending: kotlin.Boolean,
+        @Parameter(description = "The field to search member assets by", schema = Schema(allowableValues = ["NAME", "ID", "NAME_OR_ID", "OWNER_NAME", "NAME_OR_OWNER"])) @Valid @RequestParam(value = "search_by", required = false) searchBy: AssetSearchBy?,
+        @Parameter(description = "The value to search for") @Valid @RequestParam(value = "search_value", required = false) searchValue: kotlin.String?,
+        @Parameter(description = "The type of asset permission to filter by", schema = Schema(allowableValues = ["AGGREGATED_PERMISSION", "DIRECT_PERMISSION"])) @Valid @RequestParam(value = "asset_permission_type", required = false) assetPermissionType: AssetPermissionType?,
+        @Parameter(description = "A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.") @Valid @RequestParam(value = "ad_account_statuses", required = false) adAccountStatuses: kotlin.collections.List<NonDraftEntityStatus>?,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
-    ): ResponseEntity<BusinessMemberAssetsGet200Response> {
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<BusinessMemberAssetsGetResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -316,19 +368,20 @@ The return response will include the permissions the member has to that asset an
         operationId = "businessMembersAssetAccessDelete",
         description = """Terminate multiple members' access to an asset.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = DeleteMemberAccessResultsResponseArray::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = DeleteMemberAccessResultsResponseArray::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = [PATH_BUSINESS_MEMBERS_ASSET_ACCESS_DELETE /* "/businesses/{business_id}/members/assets/access" */],
+        // "/businesses/{business_id}/members/assets/access"
+        value = [PATH_BUSINESS_MEMBERS_ASSET_ACCESS_DELETE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun businessMembersAssetAccessDelete(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "List member assset permissions to delete.", required = true) @Valid @RequestBody businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest
+        @Parameter(description = "", required = true) @Valid @RequestBody businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody
     ): ResponseEntity<DeleteMemberAccessResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -337,22 +390,27 @@ The return response will include the permissions the member has to that asset an
         summary = "Assign/Update member asset permissions",
         operationId = "businessMembersAssetAccessUpdate",
         description = """Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset.
-Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
-""",
+Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = UpdateMemberAssetsResultsResponseArray::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = UpdateMemberAssetsResultsResponseArray::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = [PATH_BUSINESS_MEMBERS_ASSET_ACCESS_UPDATE /* "/businesses/{business_id}/members/assets/access" */],
+        // "/businesses/{business_id}/members/assets/access"
+        value = [PATH_BUSINESS_MEMBERS_ASSET_ACCESS_UPDATE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun businessMembersAssetAccessUpdate(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "List of member asset permissions to create or update.", required = true) @Valid @RequestBody updateMemberAssetAccessBody: UpdateMemberAssetAccessBody
+        @Parameter(description = "", required = true) @Valid @RequestBody updateMemberAssetAccessBody: UpdateMemberAssetAccessBody
     ): ResponseEntity<UpdateMemberAssetsResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -365,23 +423,33 @@ granted your partner access to. If you specify:
 - partner_type=INTERNAL, you will retrieve your business assets that the partner has access to.
 - partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = BusinessPartnerAssetAccessGet200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = BusinessPartnerAssetAccessGet200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_BUSINESS_PARTNER_ASSET_ACCESS_GET /* "/businesses/{business_id}/partners/{partner_id}/assets" */],
+        // "/businesses/{business_id}/partners/{partner_id}/assets"
+        value = [PATH_BUSINESS_PARTNER_ASSET_ACCESS_GET],
         produces = ["application/json"]
     )
     fun businessPartnerAssetAccessGet(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "The partner id to be bound to the Business", required = true) @PathVariable("partner_id") partnerId: kotlin.String,
-        @Parameter(description = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", schema = Schema(allowableValues = ["INTERNAL", "EXTERNAL"])) @Valid @RequestParam(value = "partner_type", required = false) partnerType: PartnerType?,
-        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
+        @Parameter(description = "Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", schema = Schema(allowableValues = ["INTERNAL", "EXTERNAL"], defaultValue = "INTERNAL")) @Valid @RequestParam(value = "partner_type", required = false, defaultValue = "INTERNAL") partnerType: kotlin.String,
+        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "PINNER_LIST", "CONVERSION_TAG", "CATALOG", "CONSUMER", "CONVERSION_SEGMENT"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
-        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+        @Parameter(description = "The field to sort member assets by", schema = Schema(allowableValues = ["NAME", "ID", "PERMISSIONS"])) @Valid @RequestParam(value = "sort_by", required = false) sortBy: AssetSortBy?,
+        @Parameter(description = "Sort assets in ascending order", schema = Schema(defaultValue = "true")) @Valid @RequestParam(value = "sort_ascending", required = false, defaultValue = "true") sortAscending: kotlin.Boolean,
+        @Parameter(description = "The field to search member assets by", schema = Schema(allowableValues = ["NAME", "ID", "NAME_OR_ID", "OWNER_NAME", "NAME_OR_OWNER"])) @Valid @RequestParam(value = "search_by", required = false) searchBy: AssetSearchBy?,
+        @Parameter(description = "The value to search for") @Valid @RequestParam(value = "search_value", required = false) searchValue: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
     ): ResponseEntity<BusinessPartnerAssetAccessGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -391,20 +459,21 @@ granted your partner access to. If you specify:
         operationId = "cancelInvitesOrRequests",
         description = """Cancel membership/partnership invites and/or requests.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = DeleteInvitesResultsResponseArray::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = CancelInvitesResponse::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = [PATH_CANCEL_INVITES_OR_REQUESTS /* "/businesses/{business_id}/invites" */],
+        // "/businesses/{business_id}/invites"
+        value = [PATH_CANCEL_INVITES_OR_REQUESTS],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun cancelInvitesOrRequests(
         @Pattern(regexp="^\\d+$") @Size(min=1) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "A list with invite ids", required = true) @Valid @RequestBody cancelInvitesBody: CancelInvitesBody
-    ): ResponseEntity<DeleteInvitesResultsResponseArray> {
+        @Parameter(description = "", required = true) @Valid @RequestBody cancelInvitesRequest: CancelInvitesRequest
+    ): ResponseEntity<CancelInvitesResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -427,19 +496,26 @@ granted your partner access to. If you specify:
 
 To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = UpdateInvitesResultsResponseArray::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = UpdateInvitesResultsResponseArray::class))]),
+            ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = [Content(schema = Schema(implementation = UpdateInvitesResultsResponseArray::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read", "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = [PATH_CREATE_ASSET_INVITES /* "/businesses/{business_id}/invites/assets/access" */],
+        // "/businesses/{business_id}/invites/assets/access"
+        value = [PATH_CREATE_ASSET_INVITES],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun createAssetInvites(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "A list of invites/requests together with the asset permissions to be assigned to the invite/request. ", required = true) @Valid @RequestBody createAssetInvitesRequest: CreateAssetInvitesRequest
+        @Parameter(description = "", required = true) @Valid @RequestBody createAssetInvitesRequest: CreateAssetInvitesRequest
     ): ResponseEntity<UpdateInvitesResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -462,19 +538,26 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
     - business_role="PARTNER"
     - partners""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = CreateInvitesResultsResponseArray::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = CreateInvitesResultsResponseArray::class))]),
+            ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = [Content(schema = Schema(implementation = CreateInvitesResultsResponseArray::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = [PATH_CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES /* "/businesses/{business_id}/invites" */],
+        // "/businesses/{business_id}/invites"
+        value = [PATH_CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun createMembershipOrPartnershipInvites(
         @Pattern(regexp="^\\d+$") @Size(min=1) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "An object with the properties: invite_type, partners, members, business_role", required = true) @Valid @RequestBody createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody
+        @Parameter(description = "", required = true) @Valid @RequestBody createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody
     ): ResponseEntity<CreateInvitesResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -484,20 +567,21 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
         operationId = "deleteBusinessMembership",
         description = """Terminate memberships between the specified members and your business.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = DeletedMembersResponse::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = DeleteBusinessMembership200Response::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read", "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = [PATH_DELETE_BUSINESS_MEMBERSHIP /* "/businesses/{business_id}/members" */],
+        // "/businesses/{business_id}/members"
+        value = [PATH_DELETE_BUSINESS_MEMBERSHIP],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun deleteBusinessMembership(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "List of members with role to delete.", required = true) @Valid @RequestBody membersToDeleteBody: MembersToDeleteBody
-    ): ResponseEntity<DeletedMembersResponse> {
+        @Parameter(description = "", required = true) @Valid @RequestBody deleteBusinessMembershipBody: DeleteBusinessMembershipBody
+    ): ResponseEntity<DeleteBusinessMembership200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -507,21 +591,22 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
         description = """Terminate partnerships between the specified partners and your business.
 Note: You may only batch terminate partners of the same partner type.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = DeletePartnersResponse::class))]),
-            ApiResponse(responseCode = "404", description = "A supplied partner id doesn't exist", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = DeleteBusinessPartners::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = [PATH_DELETE_BUSINESS_PARTNERS /* "/businesses/{business_id}/partners" */],
+        // "/businesses/{business_id}/partners"
+        value = [PATH_DELETE_BUSINESS_PARTNERS],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun deleteBusinessPartners(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. ", required = true) @Valid @RequestBody deletePartnersRequest: DeletePartnersRequest
-    ): ResponseEntity<DeletePartnersResponse> {
+        @Parameter(description = "", required = true) @Valid @RequestBody deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete
+    ): ResponseEntity<DeleteBusinessPartners> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -532,20 +617,21 @@ Note: You may only batch terminate partners of the same partner type.""",
 - partner_type=INTERNAL: You will terminate a partner's asset access to your business assets.
 - partner_type=EXTERNAL: You will terminate your own access to your partner's business assets.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = DeletePartnerAssetsResultsResponseArray::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = DeletePartnerAssetAccessResultsResponseArray::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = [PATH_DELETE_PARTNER_ASSET_ACCESS_HANDLER_IMPL /* "/businesses/{business_id}/partners/assets" */],
+        // "/businesses/{business_id}/partners/assets"
+        value = [PATH_DELETE_PARTNER_ASSET_ACCESS_HANDLER_IMPL],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun deletePartnerAssetAccessHandlerImpl(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Parameter(description = "", required = true) @Valid @RequestBody deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody
-    ): ResponseEntity<DeletePartnerAssetsResultsResponseArray> {
+    ): ResponseEntity<DeletePartnerAssetAccessResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -554,18 +640,25 @@ Note: You may only batch terminate partners of the same partner type.""",
         operationId = "getBusinessEmployers",
         description = """Get all of the viewing user's business employers.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = GetBusinessEmployers200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = GetBusinessEmployers200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_GET_BUSINESS_EMPLOYERS /* "/businesses/employers" */],
+        // "/businesses/employers"
+        value = [PATH_GET_BUSINESS_EMPLOYERS],
         produces = ["application/json"]
     )
     fun getBusinessEmployers(
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
-        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+        @Parameter(description = "Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", schema = Schema(defaultValue = "true")) @Valid @RequestParam(value = "assets_summary", required = false, defaultValue = "true") assetsSummary: kotlin.Boolean,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
     ): ResponseEntity<GetBusinessEmployers200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -573,16 +666,21 @@ Note: You may only batch terminate partners of the same partner type.""",
     @Operation(
         summary = "Get business members",
         operationId = "getBusinessMembers",
-        description = """Get all members of the specified business.
-The return response will include the member's business_role and assets they have access to if assets_summary=TRUE""",
+        description = """Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = GetBusinessMembers200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = GetBusinessEmployers200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_GET_BUSINESS_MEMBERS /* "/businesses/{business_id}/members" */],
+        // "/businesses/{business_id}/members"
+        value = [PATH_GET_BUSINESS_MEMBERS],
         produces = ["application/json"]
     )
     fun getBusinessMembers(
@@ -593,8 +691,8 @@ The return response will include the member's business_role and assets they have
         @Size(max=500) @Parameter(description = "A list of business members ids separated by comma.") @Valid @RequestParam(value = "member_ids", required = false) memberIds: kotlin.String?,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
-    ): ResponseEntity<GetBusinessMembers200Response> {
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<GetBusinessEmployers200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -608,24 +706,31 @@ If the assets_summary=TRUE and:
 - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you
   access to.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = GetBusinessPartners200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = GetBusinessEmployers200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_GET_BUSINESS_PARTNERS /* "/businesses/{business_id}/partners" */],
+        // "/businesses/{business_id}/partners"
+        value = [PATH_GET_BUSINESS_PARTNERS],
         produces = ["application/json"]
     )
     fun getBusinessPartners(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Parameter(description = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "assets_summary", required = false, defaultValue = "false") assetsSummary: kotlin.Boolean,
-        @Parameter(description = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", schema = Schema(allowableValues = ["INTERNAL", "EXTERNAL"])) @Valid @RequestParam(value = "partner_type", required = false) partnerType: PartnerType?,
+        @Parameter(description = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", schema = Schema(allowableValues = ["INTERNAL", "EXTERNAL"])) @Valid @RequestParam(value = "partner_type", required = false) partnerType: PartnerType?,
         @Size(max=500) @Parameter(description = "A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.") @Valid @RequestParam(value = "partner_ids", required = false) partnerIds: kotlin.String?,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
-        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
-    ): ResponseEntity<GetBusinessPartners200Response> {
+        @Parameter(description = "Sort ascending.") @Valid @RequestParam(value = "sort_ascending", required = false) sortAscending: kotlin.Boolean?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<GetBusinessEmployers200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -634,22 +739,28 @@ If the assets_summary=TRUE and:
         operationId = "getInvites",
         description = """Get the membership/partnership invites and/or requests for the authorized user.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = GetInvites200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = GetInvites200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_GET_INVITES /* "/businesses/{business_id}/invites" */],
+        // "/businesses/{business_id}/invites"
+        value = [PATH_GET_INVITES],
         produces = ["application/json"]
     )
     fun getInvites(
         @Pattern(regexp="^\\d+$") @Size(min=1) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Parameter(description = "A boolean field to indicate whether the invite is to create a partnership or a membership.", schema = Schema(defaultValue = "true")) @Valid @RequestParam(value = "is_member", required = false, defaultValue = "true") isMember: kotlin.Boolean,
-        @Size(min=1) @Parameter(description = "A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.", schema = Schema(allowableValues = ["PENDING", "EXPIRED"])) @Valid @RequestParam(value = "invite_status", required = false) inviteStatus: kotlin.collections.List<kotlin.String>?,
+        @Size(min=1) @Parameter(description = "A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.") @Valid @RequestParam(value = "invite_status", required = false) inviteStatus: kotlin.collections.List<InviteFilterStatus>?,
         @Parameter(description = "Invite type to filter invites by. Only invites of the specified type will be returned.", schema = Schema(allowableValues = ["MEMBER_INVITE", "PARTNER_INVITE", "PARTNER_REQUEST"])) @Valid @RequestParam(value = "invite_type", required = false) inviteType: InviteType?,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
     ): ResponseEntity<GetInvites200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -659,13 +770,19 @@ If the assets_summary=TRUE and:
         operationId = "respondBusinessAccessInvites",
         description = """Accept or decline invites or requests.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = RespondToInvitesResponseArray::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = RespondToInvitesResponseArray::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read", "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = [PATH_RESPOND_BUSINESS_ACCESS_INVITES /* "/businesses/invites" */],
+        // "/businesses/invites"
+        value = [PATH_RESPOND_BUSINESS_ACCESS_INVITES],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
@@ -680,22 +797,27 @@ If the assets_summary=TRUE and:
         operationId = "sharedAudiencesForBusinessList",
         description = """Get a list of received audiences for the given business.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = AudiencesList200Response::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = SharedAudiencesForBusinessList200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_SHARED_AUDIENCES_FOR_BUSINESS_LIST /* "/businesses/{business_id}/audiences" */],
+        // "/businesses/{business_id}/audiences"
+        value = [PATH_SHARED_AUDIENCES_FOR_BUSINESS_LIST],
         produces = ["application/json"]
     )
     fun sharedAudiencesForBusinessList(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: Order?,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
-        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
-    ): ResponseEntity<AudiencesList200Response> {
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<SharedAudiencesForBusinessList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -704,21 +826,26 @@ If the assets_summary=TRUE and:
         operationId = "systemUserUpdate",
         description = """Update a system user information such as name.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "System user updated successfully."),
-            ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded."),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read", "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = [PATH_SYSTEM_USER_UPDATE /* "/businesses/{business_id}/system_users/{system_user_id}" */],
+        // "/businesses/{business_id}/system_users/{system_user_id}"
+        value = [PATH_SYSTEM_USER_UPDATE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun systemUserUpdate(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of a system user.", required = true) @PathVariable("system_user_id") systemUserId: kotlin.String,
-        @Parameter(description = "", required = true) @Valid @RequestBody systemUserUpdateRequest: SystemUserUpdateRequest
+        @Parameter(description = "", required = true) @Valid @RequestBody systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody
     ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -728,66 +855,89 @@ If the assets_summary=TRUE and:
         operationId = "updateBusinessMemberships",
         description = """Update a member's business role within the business.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = UpdateMemberResultsResponseArray::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = UpdateBusinessMembershipsResponse::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = [PATH_UPDATE_BUSINESS_MEMBERSHIPS /* "/businesses/{business_id}/members" */],
+        // "/businesses/{business_id}/members"
+        value = [PATH_UPDATE_BUSINESS_MEMBERSHIPS],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun updateBusinessMemberships(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "List of objects with the member id and the business_role.", required = true) @Valid@Size(min=1)  @RequestBody updateMemberBusinessRoleBody: kotlin.collections.List<UpdateMemberBusinessRoleBody>
-    ): ResponseEntity<UpdateMemberResultsResponseArray> {
+        @Parameter(description = "", required = true) @Valid@Size(min=1)  @RequestBody businessMembershipMember: kotlin.collections.List<BusinessMembershipMember>
+    ): ResponseEntity<UpdateBusinessMembershipsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
     @Operation(
         summary = "Update audience sharing from a business to ad accounts",
         operationId = "updateBusinessToAdAccountSharedAudience",
-        description = """From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.""",
+        description = """From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.
+
+- If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.
+- If the business is the recipient of the audience, it can share with any of its owned ad accounts.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = SharedAudienceResponse::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = BusinessToAdAccountSharedAudience::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = [PATH_UPDATE_BUSINESS_TO_AD_ACCOUNT_SHARED_AUDIENCE /* "/businesses/{business_id}/audiences/ad_accounts/shared" */],
+        // "/businesses/{business_id}/audiences/ad_accounts/shared"
+        value = [PATH_UPDATE_BUSINESS_TO_AD_ACCOUNT_SHARED_AUDIENCE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun updateBusinessToAdAccountSharedAudience(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "", required = true) @Valid @RequestBody sharedAudience: SharedAudience
-    ): ResponseEntity<SharedAudienceResponse> {
+        @Parameter(description = "", required = true) @Valid @RequestBody businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+    ): ResponseEntity<BusinessToAdAccountSharedAudience> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
     @Operation(
         summary = "Update audience sharing between businesses",
         operationId = "updateBusinessToBusinessSharedAudience",
-        description = """From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.""",
+        description = """From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = BusinessSharedAudienceResponse::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = BusinessToBusinessSharedAudience::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = [PATH_UPDATE_BUSINESS_TO_BUSINESS_SHARED_AUDIENCE /* "/businesses/{business_id}/audiences/businesses/shared" */],
+        // "/businesses/{business_id}/audiences/businesses/shared"
+        value = [PATH_UPDATE_BUSINESS_TO_BUSINESS_SHARED_AUDIENCE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun updateBusinessToBusinessSharedAudience(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "", required = true) @Valid @RequestBody businessSharedAudience: BusinessSharedAudience
-    ): ResponseEntity<BusinessSharedAudienceResponse> {
+        @Parameter(description = "", required = true) @Valid @RequestBody businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+    ): ResponseEntity<BusinessToBusinessSharedAudience> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -802,19 +952,25 @@ Note: Not all listed permissions are applicable to each asset type. For example,
 applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of
 the type PROFILE.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = UpdatePartnerAssetsResultsResponseArray::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = UpdatePartnerAssetsResultsResponseArray::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = [PATH_UPDATE_PARTNER_ASSET_ACCESS_HANDLER_IMPL /* "/businesses/{business_id}/partners/assets" */],
+        // "/businesses/{business_id}/partners/assets"
+        value = [PATH_UPDATE_PARTNER_ASSET_ACCESS_HANDLER_IMPL],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
     fun updatePartnerAssetAccessHandlerImpl(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
-        @Parameter(description = "A list of assets and permissions to assign to your partners.", required = true) @Valid @RequestBody updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody
+        @Parameter(description = "", required = true) @Valid @RequestBody updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody
     ): ResponseEntity<UpdatePartnerAssetsResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }

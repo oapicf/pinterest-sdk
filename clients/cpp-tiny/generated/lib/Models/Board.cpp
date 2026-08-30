@@ -298,7 +298,7 @@ Board::getBoardPinsModifiedAt()
 }
 
 void
-Board::setBoardPinsModifiedAt(std::string  board_pins_modified_at)
+Board::setBoardPinsModifiedAt(std::string board_pins_modified_at)
 {
 	this->board_pins_modified_at = board_pins_modified_at;
 }
@@ -310,7 +310,7 @@ Board::getCollaboratorCount()
 }
 
 void
-Board::setCollaboratorCount(int  collaborator_count)
+Board::setCollaboratorCount(int collaborator_count)
 {
 	this->collaborator_count = collaborator_count;
 }
@@ -322,7 +322,7 @@ Board::getCreatedAt()
 }
 
 void
-Board::setCreatedAt(std::string  created_at)
+Board::setCreatedAt(std::string created_at)
 {
 	this->created_at = created_at;
 }
@@ -334,7 +334,7 @@ Board::getDescription()
 }
 
 void
-Board::setDescription(std::string  description)
+Board::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -346,7 +346,7 @@ Board::getFollowerCount()
 }
 
 void
-Board::setFollowerCount(int  follower_count)
+Board::setFollowerCount(int follower_count)
 {
 	this->follower_count = follower_count;
 }
@@ -358,7 +358,7 @@ Board::getId()
 }
 
 void
-Board::setId(std::string  id)
+Board::setId(std::string id)
 {
 	this->id = id;
 }
@@ -370,7 +370,7 @@ Board::isIsAdsOnly()
 }
 
 void
-Board::setIsAdsOnly(bool  is_ads_only)
+Board::setIsAdsOnly(bool is_ads_only)
 {
 	this->is_ads_only = is_ads_only;
 }
@@ -382,7 +382,7 @@ Board::getMedia()
 }
 
 void
-Board::setMedia(BoardMedia  media)
+Board::setMedia(BoardMedia media)
 {
 	this->media = media;
 }
@@ -394,7 +394,7 @@ Board::getName()
 }
 
 void
-Board::setName(std::string  name)
+Board::setName(std::string name)
 {
 	this->name = name;
 }
@@ -406,7 +406,7 @@ Board::getOwner()
 }
 
 void
-Board::setOwner(BoardOwner  owner)
+Board::setOwner(BoardOwner owner)
 {
 	this->owner = owner;
 }
@@ -418,7 +418,7 @@ Board::getPinCount()
 }
 
 void
-Board::setPinCount(int  pin_count)
+Board::setPinCount(int pin_count)
 {
 	this->pin_count = pin_count;
 }
@@ -430,7 +430,7 @@ Board::getPrivacy()
 }
 
 void
-Board::setPrivacy(BoardPrivacy  privacy)
+Board::setPrivacy(BoardPrivacy privacy)
 {
 	this->privacy = privacy;
 }

@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **altText** | **NSString*** |  | [optional] 
 **_description** | **NSString*** |  | [optional] 
-**_id** | **NSString*** |  | [optional] 
+**_id** | **NSString*** |  | 
 **link** | **NSString*** |  | [optional] 
 **media** | [**OAIPinMedia***](OAIPinMedia.md) |  | [optional] [readonly] 
 **title** | **NSString*** |  | [optional] 

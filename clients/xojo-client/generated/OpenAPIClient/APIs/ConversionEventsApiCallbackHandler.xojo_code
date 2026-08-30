@@ -1,7 +1,7 @@
 #tag Interface
 Protected Interface ConversionEventsApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub EventsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionApiResponse)
+		Sub EventsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ConversionEvents)
 		  
 		End Sub
 	#tag EndMethod

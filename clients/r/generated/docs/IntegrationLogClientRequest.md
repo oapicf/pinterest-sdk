@@ -6,7 +6,7 @@ HTTP request details included in the log sent by the client.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **character** | HTTP request host from host header. | 
-**method** | **character** |  | [Enum: [GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH]] 
+**method** | [**HttpMethod**](HttpMethod.md) |  | [Enum: ] 
 **path** | **character** | HTTP request path. | 
 **request_headers** | **map(character)** | HTTP request headers as key-value pairs. | [optional] 
 **response_headers** | **map(character)** | HTTP response headers as key-value pairs. | [optional] 

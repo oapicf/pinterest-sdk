@@ -50,6 +50,13 @@ public:
 
 	/*! \brief Get 
 	 */
+	AdvancedAuctionBidOptions getBidOptions();
+
+	/*! \brief Set 
+	 */
+	void setBidOptions(AdvancedAuctionBidOptions  bid_options);
+	/*! \brief Get 
+	 */
 	Country getCountry();
 
 	/*! \brief Set 
@@ -69,19 +76,12 @@ public:
 	/*! \brief Set 
 	 */
 	void setLanguage(Language  language);
-	/*! \brief Get 
-	 */
-	AdvancedAuctionBidOptions getBidOptions();
-
-	/*! \brief Set 
-	 */
-	void setBidOptions(AdvancedAuctionBidOptions  bid_options);
 
 private:
+	AdvancedAuctionBidOptions bid_options;
 	Country country;
 	std::string item_id;
 	Language language;
-	AdvancedAuctionBidOptions bid_options;
 	void __init();
 	void __cleanup();
 

@@ -10,5 +10,5 @@
   binary().
 
 openapi_catalogs_product_group_type() ->
-  elements([<<"MERCHANT_CREATED">>, <<"ALL_PRODUCTS">>, <<"BEST_DEALS">>, <<"PINNER_FAVORITES">>, <<"TOP_SELLERS">>, <<"BACK_IN_STOCK">>, <<"NEW_ARRIVALS">>, <<"SHOPIFY_COLLECTIONS">>, <<"I2PC">>]).
+  elements([<<"MERCHANT_CREATED">>, <<"ALL_PRODUCTS">>, <<"BEST_DEALS">>, <<"PINNER_FAVORITES">>, <<"TOP_SELLERS">>, <<"BACK_IN_STOCK">>, <<"NEW_ARRIVALS">>, <<"SHOPIFY_COLLECTIONS">>, <<"I2PC">>, <<"CATALOG_EXPANSION">>]).
 

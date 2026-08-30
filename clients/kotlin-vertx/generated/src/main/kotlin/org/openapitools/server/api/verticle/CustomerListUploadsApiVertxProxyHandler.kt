@@ -16,10 +16,10 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
+import org.openapitools.server.api.model.CustomerListUpload
 import org.openapitools.server.api.model.CustomerListUploadCreateRequest
 import org.openapitools.server.api.model.CustomerListUploadCreateResponse
-import org.openapitools.server.api.model.CustomerListUploadResponse
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 
 class CustomerListUploadsApiVertxProxyHandler(private val vertx: Vertx, private val service: CustomerListUploadsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long

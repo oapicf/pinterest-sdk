@@ -25,7 +25,7 @@ services:
 ```
 
 ## **adAccountsAudiencesSharedAccountsList**
-> OpenAPI\Server\Model\AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList($adAccountId, $audienceId, $accountType, $pageSize, $bookmark)
+> OpenAPI\Server\Model\AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList($audienceId, $accountType, $adAccountId, $bookmark, $pageSize)
 
 List accounts with access to an audience owned by an ad account
 
@@ -64,7 +64,7 @@ class AudienceSharingApi implements AudienceSharingApiInterface
     /**
      * Implementation of AudienceSharingApiInterface#adAccountsAudiencesSharedAccountsList
      */
-    public function adAccountsAudiencesSharedAccountsList(string $adAccountId, string $audienceId, AudienceAccountType $accountType, int $pageSize, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function adAccountsAudiencesSharedAccountsList(string $audienceId, AudienceAccountType $accountType, string $adAccountId, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -77,11 +77,11 @@ class AudienceSharingApi implements AudienceSharingApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string**| Unique identifier of an ad account. |
  **audienceId** | **string**| Unique identifier of the audience to use to filter the results. |
- **accountType** | [**OpenAPI\Server\Model\AudienceAccountType**](../Model/.md)| Filter accounts by account type. |
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **accountType** | [**AudienceAccountType**](../Model/.md)| Filter accounts by account type. |
+ **adAccountId** | **string**| Unique identifier of an ad account. |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **businessAccountAudiencesSharedAccountsList**
-> OpenAPI\Server\Model\AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList($businessId, $audienceId, $accountType, $pageSize, $bookmark)
+> OpenAPI\Server\Model\AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList($businessId, $audienceId, $accountType, $bookmark, $pageSize)
 
 List accounts with access to an audience owned by a business
 
@@ -130,7 +130,7 @@ class AudienceSharingApi implements AudienceSharingApiInterface
     /**
      * Implementation of AudienceSharingApiInterface#businessAccountAudiencesSharedAccountsList
      */
-    public function businessAccountAudiencesSharedAccountsList(string $businessId, string $audienceId, AudienceAccountType $accountType, int $pageSize, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function businessAccountAudiencesSharedAccountsList(string $businessId, string $audienceId, AudienceAccountType $accountType, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -145,9 +145,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
  **audienceId** | **string**| Unique identifier of the audience to use to filter the results. |
- **accountType** | [**OpenAPI\Server\Model\AudienceAccountType**](../Model/.md)| Filter accounts by account type. |
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **accountType** | [**AudienceAccountType**](../Model/.md)| Filter accounts by account type. |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **sharedAudiencesForBusinessList**
-> OpenAPI\Server\Model\AudiencesList200Response sharedAudiencesForBusinessList($businessId, $bookmark, $order, $pageSize)
+> OpenAPI\Server\Model\SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList($businessId, $order, $bookmark, $pageSize)
 
 List received audiences for a business
 
@@ -196,7 +196,7 @@ class AudienceSharingApi implements AudienceSharingApiInterface
     /**
      * Implementation of AudienceSharingApiInterface#sharedAudiencesForBusinessList
      */
-    public function sharedAudiencesForBusinessList(string $businessId, ?string $bookmark, ?string $order, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
+    public function sharedAudiencesForBusinessList(string $businessId, ?Order $order, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -210,13 +210,13 @@ class AudienceSharingApi implements AudienceSharingApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
+ **order** | [**Order**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**OpenAPI\Server\Model\AudiencesList200Response**](../Model/AudiencesList200Response.md)
+[**OpenAPI\Server\Model\SharedAudiencesForBusinessList200Response**](../Model/SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -230,11 +230,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **updateAdAccountToAdAccountSharedAudience**
-> OpenAPI\Server\Model\SharedAudienceResponse updateAdAccountToAdAccountSharedAudience($adAccountId, $sharedAudience)
+> OpenAPI\Server\Model\AdAccountToAdAccountSharedAudience updateAdAccountToAdAccountSharedAudience($adAccountId, $adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example Implementation
 ```php
@@ -261,7 +261,7 @@ class AudienceSharingApi implements AudienceSharingApiInterface
     /**
      * Implementation of AudienceSharingApiInterface#updateAdAccountToAdAccountSharedAudience
      */
-    public function updateAdAccountToAdAccountSharedAudience(string $adAccountId, SharedAudience $sharedAudience, int &$responseCode, array &$responseHeaders): array|object|null
+    public function updateAdAccountToAdAccountSharedAudience(string $adAccountId, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody $adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -275,11 +275,11 @@ class AudienceSharingApi implements AudienceSharingApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **sharedAudience** | [**OpenAPI\Server\Model\SharedAudience**](../Model/SharedAudience.md)|  |
+ **adAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**OpenAPI\Server\Model\AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](../Model/AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\SharedAudienceResponse**](../Model/SharedAudienceResponse.md)
+[**OpenAPI\Server\Model\AdAccountToAdAccountSharedAudience**](../Model/AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -293,11 +293,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **updateAdAccountToBusinessSharedAudience**
-> OpenAPI\Server\Model\BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience($adAccountId, $businessSharedAudience)
+> OpenAPI\Server\Model\AdAccountToBusinessSharedAudience updateAdAccountToBusinessSharedAudience($adAccountId, $adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example Implementation
 ```php
@@ -324,7 +324,7 @@ class AudienceSharingApi implements AudienceSharingApiInterface
     /**
      * Implementation of AudienceSharingApiInterface#updateAdAccountToBusinessSharedAudience
      */
-    public function updateAdAccountToBusinessSharedAudience(string $adAccountId, BusinessSharedAudience $businessSharedAudience, int &$responseCode, array &$responseHeaders): array|object|null
+    public function updateAdAccountToBusinessSharedAudience(string $adAccountId, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody $adAccountToBusinessSharedAudienceUpdateWithRequiredBody, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -338,11 +338,11 @@ class AudienceSharingApi implements AudienceSharingApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **businessSharedAudience** | [**OpenAPI\Server\Model\BusinessSharedAudience**](../Model/BusinessSharedAudience.md)|  |
+ **adAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**OpenAPI\Server\Model\AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](../Model/AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\BusinessSharedAudienceResponse**](../Model/BusinessSharedAudienceResponse.md)
+[**OpenAPI\Server\Model\AdAccountToBusinessSharedAudience**](../Model/AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -356,11 +356,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **updateBusinessToAdAccountSharedAudience**
-> OpenAPI\Server\Model\SharedAudienceResponse updateBusinessToAdAccountSharedAudience($businessId, $sharedAudience)
+> OpenAPI\Server\Model\BusinessToAdAccountSharedAudience updateBusinessToAdAccountSharedAudience($businessId, $businessToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example Implementation
 ```php
@@ -387,7 +387,7 @@ class AudienceSharingApi implements AudienceSharingApiInterface
     /**
      * Implementation of AudienceSharingApiInterface#updateBusinessToAdAccountSharedAudience
      */
-    public function updateBusinessToAdAccountSharedAudience(string $businessId, SharedAudience $sharedAudience, int &$responseCode, array &$responseHeaders): array|object|null
+    public function updateBusinessToAdAccountSharedAudience(string $businessId, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody $businessToAdAccountSharedAudienceUpdateWithRequiredBody, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -401,11 +401,11 @@ class AudienceSharingApi implements AudienceSharingApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **sharedAudience** | [**OpenAPI\Server\Model\SharedAudience**](../Model/SharedAudience.md)|  |
+ **businessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**OpenAPI\Server\Model\BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](../Model/BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\SharedAudienceResponse**](../Model/SharedAudienceResponse.md)
+[**OpenAPI\Server\Model\BusinessToAdAccountSharedAudience**](../Model/BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -419,11 +419,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **updateBusinessToBusinessSharedAudience**
-> OpenAPI\Server\Model\BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience($businessId, $businessSharedAudience)
+> OpenAPI\Server\Model\BusinessToBusinessSharedAudience updateBusinessToBusinessSharedAudience($businessId, $businessToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example Implementation
 ```php
@@ -450,7 +450,7 @@ class AudienceSharingApi implements AudienceSharingApiInterface
     /**
      * Implementation of AudienceSharingApiInterface#updateBusinessToBusinessSharedAudience
      */
-    public function updateBusinessToBusinessSharedAudience(string $businessId, BusinessSharedAudience $businessSharedAudience, int &$responseCode, array &$responseHeaders): array|object|null
+    public function updateBusinessToBusinessSharedAudience(string $businessId, BusinessToBusinessSharedAudienceUpdateWithRequiredBody $businessToBusinessSharedAudienceUpdateWithRequiredBody, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -464,11 +464,11 @@ class AudienceSharingApi implements AudienceSharingApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **businessSharedAudience** | [**OpenAPI\Server\Model\BusinessSharedAudience**](../Model/BusinessSharedAudience.md)|  |
+ **businessToBusinessSharedAudienceUpdateWithRequiredBody** | [**OpenAPI\Server\Model\BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](../Model/BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\BusinessSharedAudienceResponse**](../Model/BusinessSharedAudienceResponse.md)
+[**OpenAPI\Server\Model\BusinessToBusinessSharedAudience**](../Model/BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

@@ -1,5 +1,6 @@
 package models
 
+// TermsOfService - The ID of the ad account.
 type TermsOfService struct {
 
 	// The ID of the ad account.

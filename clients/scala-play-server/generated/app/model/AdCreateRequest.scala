@@ -13,16 +13,17 @@ import play.api.libs.json._
   * @param destinationUrl Destination URL.
   * @param disclosureUrl URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
   * @param iosDeepLink Deep link URL for iOS devices.
+  * @param isCarting Is the ad a carting/WTB ad?
   * @param isPinDeleted Is original pin deleted?
   * @param isRemovable Is pin repinnable?
   * @param leadFormId Lead form ID for lead ad generation.
   * @param name Name of the ad - 255 chars max.
+  * @param pinId Pin ID.
   * @param quizPinData Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   * @param viewTrackingUrl Tracking URL for ad impressions.
-  * @param pinId Pin ID.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class AdCreateRequest(
   adGroupId: String,
   androidDeepLink: Option[String],
@@ -37,22 +38,23 @@ case class AdCreateRequest(
   disclosureUrl: Option[String],
   gridClickType: Option[GridClickType],
   iosDeepLink: Option[String],
+  isCarting: Option[Boolean],
   isPinDeleted: Option[Boolean],
   isRemovable: Option[Boolean],
   leadFormId: Option[String],
   name: Option[String],
-  quizPinData: Option[QuizPinData],
+  pinId: String,
+  quizPinData: Option[JsObject],
   status: Option[EntityStatus],
-  trackingUrls: Option[TrackingUrls],
-  viewTrackingUrl: Option[String],
-  pinId: String
+  trackingUrls: Option[JsObject],
+  viewTrackingUrl: Option[String]
   additionalProperties: 
 )
 
 object AdCreateRequest {
   implicit lazy val adCreateRequestJsonFormat: Format[AdCreateRequest] = {
     val realJsonFormat = Json.format[AdCreateRequest]
-    val declaredPropNames = Set("adGroupId", "androidDeepLink", "carouselAndroidDeepLinks", "carouselDestinationUrls", "carouselIosDeepLinks", "clickTrackingUrl", "creativeType", "customizableCtaType", "destinationUrl", "disclosureType", "disclosureUrl", "gridClickType", "iosDeepLink", "isPinDeleted", "isRemovable", "leadFormId", "name", "quizPinData", "status", "trackingUrls", "viewTrackingUrl", "pinId")
+    val declaredPropNames = Set("adGroupId", "androidDeepLink", "carouselAndroidDeepLinks", "carouselDestinationUrls", "carouselIosDeepLinks", "clickTrackingUrl", "creativeType", "customizableCtaType", "destinationUrl", "disclosureType", "disclosureUrl", "gridClickType", "iosDeepLink", "isCarting", "isPinDeleted", "isRemovable", "leadFormId", "name", "pinId", "quizPinData", "status", "trackingUrls", "viewTrackingUrl")
     
     Format(
       Reads {

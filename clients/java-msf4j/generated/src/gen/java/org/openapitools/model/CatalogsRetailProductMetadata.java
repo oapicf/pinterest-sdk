@@ -8,16 +8,16 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.model.NonNullableCatalogsCurrency;
-import org.openapitools.model.NonNullableProductAvailabilityType;
+import org.openapitools.model.ProductAvailability;
 
 /**
  * Retail product metadata entity
  */
 @ApiModel(description = "Retail product metadata entity")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailProductMetadata   {
   @JsonProperty("availability")
-  private NonNullableProductAvailabilityType availability;
+  private ProductAvailability availability;
 
   @JsonProperty("currency")
   private NonNullableCatalogsCurrency currency;
@@ -34,7 +34,7 @@ public class CatalogsRetailProductMetadata   {
   @JsonProperty("sale_price")
   private BigDecimal salePrice;
 
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+  public CatalogsRetailProductMetadata availability(ProductAvailability availability) {
     this.availability = availability;
     return this;
   }
@@ -44,11 +44,11 @@ public class CatalogsRetailProductMetadata   {
    * @return availability
   **/
   @ApiModelProperty(required = true, value = "")
-  public NonNullableProductAvailabilityType getAvailability() {
+  public ProductAvailability getAvailability() {
     return availability;
   }
 
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
+  public void setAvailability(ProductAvailability availability) {
     this.availability = availability;
   }
 
@@ -185,10 +185,7 @@ public class CatalogsRetailProductMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

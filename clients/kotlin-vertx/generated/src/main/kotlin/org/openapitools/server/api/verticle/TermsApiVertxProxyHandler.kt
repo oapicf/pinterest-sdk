@@ -16,7 +16,7 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 import org.openapitools.server.api.model.RelatedTerms
 
 class TermsApiVertxProxyHandler(private val vertx: Vertx, private val service: TermsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {

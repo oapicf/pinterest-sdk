@@ -9,20 +9,23 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/ads_credit_redeem_request.dart';
-import 'package:openapi/src/model/ads_credit_redeem_response.dart';
+import 'package:openapi/src/model/ads_credit_redeem.dart';
+import 'package:openapi/src/model/ads_credit_redeem_create.dart';
 import 'package:openapi/src/model/ads_credits_discounts_get200_response.dart';
+import 'package:openapi/src/model/billing_invoice_document_type.dart';
 import 'package:openapi/src/model/billing_invoice_download_response.dart';
+import 'package:openapi/src/model/billing_invoice_sort_field.dart';
+import 'package:openapi/src/model/billing_invoice_status.dart';
 import 'package:openapi/src/model/billing_invoices_get200_response.dart';
 import 'package:openapi/src/model/billing_profiles_get200_response.dart';
 import 'package:openapi/src/model/date.dart';
-import 'package:openapi/src/model/error.dart';
-import 'package:openapi/src/model/ssio_account_response.dart';
-import 'package:openapi/src/model/ssio_create_insertion_order_request.dart';
-import 'package:openapi/src/model/ssio_create_insertion_order_response.dart';
-import 'package:openapi/src/model/ssio_edit_insertion_order_request.dart';
-import 'package:openapi/src/model/ssio_edit_insertion_order_response.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
+import 'package:openapi/src/model/pinterest_lib_pagination_order.dart';
+import 'package:openapi/src/model/ssio_account.dart';
+import 'package:openapi/src/model/ssio_insertion_order.dart';
+import 'package:openapi/src/model/ssio_insertion_order_create.dart';
 import 'package:openapi/src/model/ssio_insertion_order_status_response.dart';
+import 'package:openapi/src/model/ssio_insertion_order_update.dart';
 import 'package:openapi/src/model/ssio_insertion_orders_status_get_by_ad_account200_response.dart';
 import 'package:openapi/src/model/ssio_order_lines_get_by_ad_account200_response.dart';
 
@@ -35,11 +38,11 @@ class BillingApi {
   const BillingApi(this._dio, this._serializers);
 
   /// Redeem ad credits
-  /// Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  /// Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [adsCreditRedeemRequest] - Redeem ad credits request.
+  /// * [adsCreditRedeemCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -47,11 +50,11 @@ class BillingApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AdsCreditRedeemResponse] as data
+  /// Returns a [Future] containing a [Response] with a [AdsCreditRedeem] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AdsCreditRedeemResponse>> adsCreditRedeem({ 
+  Future<Response<AdsCreditRedeem>> adsCreditRedeem({ 
     required String adAccountId,
-    required AdsCreditRedeemRequest adsCreditRedeemRequest,
+    required AdsCreditRedeemCreate adsCreditRedeemCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -81,8 +84,8 @@ class BillingApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(AdsCreditRedeemRequest);
-      _bodyData = _serializers.serialize(adsCreditRedeemRequest, specifiedType: _type);
+      const _type = FullType(AdsCreditRedeemCreate);
+      _bodyData = _serializers.serialize(adsCreditRedeemCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -105,14 +108,14 @@ class BillingApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AdsCreditRedeemResponse? _responseData;
+    AdsCreditRedeem? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AdsCreditRedeemResponse),
-      ) as AdsCreditRedeemResponse;
+        specifiedType: const FullType(AdsCreditRedeem),
+      ) as AdsCreditRedeem;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -124,7 +127,7 @@ class BillingApi {
       );
     }
 
-    return Response<AdsCreditRedeemResponse>(
+    return Response<AdsCreditRedeem>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -137,12 +140,12 @@ class BillingApi {
   }
 
   /// Get ads credit discounts
-  /// Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  /// Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -314,9 +317,9 @@ class BillingApi {
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  /// * [order] - The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   /// * [sort] - Field of which to sort billing invoices
-  /// * [order] - The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
   /// * [status] - Status of billing invoices to filter by
   /// * [documentType] - Document type of billing invoices to filter by
   /// * [startDueDate] - Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
@@ -334,10 +337,10 @@ class BillingApi {
     required String adAccountId,
     String? bookmark,
     int? pageSize = 25,
-    String? sort = 'DUE_DATE',
-    String? order,
-    String? status,
-    String? documentType,
+    PinterestLibPaginationOrder? order,
+    BillingInvoiceSortField? sort,
+    BillingInvoiceStatus? status,
+    BillingInvoiceDocumentType? documentType,
     Date? startDueDate,
     Date? endDueDate,
     CancelToken? cancelToken,
@@ -368,10 +371,10 @@ class BillingApi {
     final _queryParameters = <String, dynamic>{
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (sort != null) r'sort': encodeQueryParameter(_serializers, sort, const FullType(String)),
-      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(String)),
-      if (status != null) r'status': encodeQueryParameter(_serializers, status, const FullType(String)),
-      if (documentType != null) r'document_type': encodeQueryParameter(_serializers, documentType, const FullType(String)),
+      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(PinterestLibPaginationOrder)),
+      if (sort != null) r'sort': encodeQueryParameter(_serializers, sort, const FullType(BillingInvoiceSortField)),
+      if (status != null) r'status': encodeQueryParameter(_serializers, status, const FullType(BillingInvoiceStatus)),
+      if (documentType != null) r'document_type': encodeQueryParameter(_serializers, documentType, const FullType(BillingInvoiceDocumentType)),
       if (startDueDate != null) r'start_due_date': encodeQueryParameter(_serializers, startDueDate, const FullType(Date)),
       if (endDueDate != null) r'end_due_date': encodeQueryParameter(_serializers, endDueDate, const FullType(Date)),
     };
@@ -417,13 +420,13 @@ class BillingApi {
   }
 
   /// Get billing profiles
-  /// Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  /// Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
   ///
   /// Parameters:
-  /// * [adAccountId] - Unique identifier of an ad account.
   /// * [isActive] - Return active billing profiles, if false return all billing profiles.
+  /// * [adAccountId] - Unique identifier of an ad account.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -434,8 +437,8 @@ class BillingApi {
   /// Returns a [Future] containing a [Response] with a [BillingProfilesGet200Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BillingProfilesGet200Response>> billingProfilesGet({ 
-    required String adAccountId,
     required bool isActive,
+    required String adAccountId,
     String? bookmark,
     int? pageSize = 25,
     CancelToken? cancelToken,
@@ -510,7 +513,7 @@ class BillingApi {
   }
 
   /// Get Salesforce account details including bill-to information.
-  /// Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  ///   Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
@@ -521,9 +524,9 @@ class BillingApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SSIOAccountResponse] as data
+  /// Returns a [Future] containing a [Response] with a [SSIOAccount] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SSIOAccountResponse>> ssioAccountsGet({ 
+  Future<Response<SSIOAccount>> ssioAccountsGet({ 
     required String adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -558,14 +561,14 @@ class BillingApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SSIOAccountResponse? _responseData;
+    SSIOAccount? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SSIOAccountResponse),
-      ) as SSIOAccountResponse;
+        specifiedType: const FullType(SSIOAccount),
+      ) as SSIOAccount;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -577,7 +580,7 @@ class BillingApi {
       );
     }
 
-    return Response<SSIOAccountResponse>(
+    return Response<SSIOAccount>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -590,11 +593,11 @@ class BillingApi {
   }
 
   /// Create insertion order through SSIO.
-  /// Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  ///   Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [sSIOCreateInsertionOrderRequest] - Order line to create.
+  /// * [sSIOInsertionOrderCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -602,11 +605,11 @@ class BillingApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SSIOCreateInsertionOrderResponse] as data
+  /// Returns a [Future] containing a [Response] with a [SSIOInsertionOrder] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SSIOCreateInsertionOrderResponse>> ssioInsertionOrderCreate({ 
+  Future<Response<SSIOInsertionOrder>> ssioInsertionOrderCreate({ 
     required String adAccountId,
-    required SSIOCreateInsertionOrderRequest sSIOCreateInsertionOrderRequest,
+    required SSIOInsertionOrderCreate sSIOInsertionOrderCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -636,8 +639,8 @@ class BillingApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(SSIOCreateInsertionOrderRequest);
-      _bodyData = _serializers.serialize(sSIOCreateInsertionOrderRequest, specifiedType: _type);
+      const _type = FullType(SSIOInsertionOrderCreate);
+      _bodyData = _serializers.serialize(sSIOInsertionOrderCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -660,14 +663,14 @@ class BillingApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SSIOCreateInsertionOrderResponse? _responseData;
+    SSIOInsertionOrder? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SSIOCreateInsertionOrderResponse),
-      ) as SSIOCreateInsertionOrderResponse;
+        specifiedType: const FullType(SSIOInsertionOrder),
+      ) as SSIOInsertionOrder;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -679,7 +682,7 @@ class BillingApi {
       );
     }
 
-    return Response<SSIOCreateInsertionOrderResponse>(
+    return Response<SSIOInsertionOrder>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -692,11 +695,11 @@ class BillingApi {
   }
 
   /// Edit insertion order through SSIO.
-  /// Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  ///   Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [sSIOEditInsertionOrderRequest] - Order line to create.
+  /// * [sSIOInsertionOrderUpdate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -704,11 +707,11 @@ class BillingApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SSIOEditInsertionOrderResponse] as data
+  /// Returns a [Future] containing a [Response] with a [SSIOInsertionOrder] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SSIOEditInsertionOrderResponse>> ssioInsertionOrderEdit({ 
+  Future<Response<SSIOInsertionOrder>> ssioInsertionOrderEdit({ 
     required String adAccountId,
-    required SSIOEditInsertionOrderRequest sSIOEditInsertionOrderRequest,
+    required SSIOInsertionOrderUpdate sSIOInsertionOrderUpdate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -738,8 +741,8 @@ class BillingApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(SSIOEditInsertionOrderRequest);
-      _bodyData = _serializers.serialize(sSIOEditInsertionOrderRequest, specifiedType: _type);
+      const _type = FullType(SSIOInsertionOrderUpdate);
+      _bodyData = _serializers.serialize(sSIOInsertionOrderUpdate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -762,14 +765,14 @@ class BillingApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SSIOEditInsertionOrderResponse? _responseData;
+    SSIOInsertionOrder? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SSIOEditInsertionOrderResponse),
-      ) as SSIOEditInsertionOrderResponse;
+        specifiedType: const FullType(SSIOInsertionOrder),
+      ) as SSIOInsertionOrder;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -781,7 +784,7 @@ class BillingApi {
       );
     }
 
-    return Response<SSIOEditInsertionOrderResponse>(
+    return Response<SSIOInsertionOrder>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -794,12 +797,12 @@ class BillingApi {
   }
 
   /// Get insertion order status by ad account id.
-  /// Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  ///   Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -884,7 +887,7 @@ class BillingApi {
   }
 
   /// Get insertion order status by pin order id.
-  /// Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  ///   Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
@@ -966,13 +969,13 @@ class BillingApi {
   }
 
   /// Get Salesforce order lines by ad account id.
-  /// Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  ///   Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
+  /// * [pinOrderId] - The pin order id associated with the SSIO insertion order
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  /// * [pinOrderId] - The pin order id associated with the ssio insertino order
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -984,9 +987,9 @@ class BillingApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<SsioOrderLinesGetByAdAccount200Response>> ssioOrderLinesGetByAdAccount({ 
     required String adAccountId,
+    String? pinOrderId,
     String? bookmark,
     int? pageSize = 25,
-    String? pinOrderId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1013,9 +1016,9 @@ class BillingApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      if (pinOrderId != null) r'pin_order_id': encodeQueryParameter(_serializers, pinOrderId, const FullType(String)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (pinOrderId != null) r'pin_order_id': encodeQueryParameter(_serializers, pinOrderId, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

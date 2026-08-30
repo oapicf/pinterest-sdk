@@ -1,11 +1,11 @@
 package controllers;
 
-import apimodels.BulkDownloadRequest;
-import apimodels.BulkDownloadResponse;
+import apimodels.BulkDownload;
+import apimodels.BulkDownloadCreate;
+import apimodels.BulkJobData;
 import apimodels.BulkUpsertRequest;
 import apimodels.BulkUpsertResponse;
-import apimodels.BulkUpsertStatusResponse;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -32,12 +32,12 @@ public abstract class BulkApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result bulkDownloadCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BulkDownloadRequest bulkDownloadRequest) throws Exception {
+    public Result bulkDownloadCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BulkDownloadCreate bulkDownloadCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BulkDownloadResponse obj = bulkDownloadCreate(request, adAccountId, bulkDownloadRequest);
+        BulkDownload obj = bulkDownloadCreate(request, adAccountId, bulkDownloadCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -49,14 +49,14 @@ public abstract class BulkApiControllerImpInterface {
 
     }
 
-    public abstract BulkDownloadResponse bulkDownloadCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BulkDownloadRequest bulkDownloadRequest) throws Exception;
+    public abstract BulkDownload bulkDownloadCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BulkDownloadCreate bulkDownloadCreate) throws Exception;
 
     public Result bulkRequestGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bulkRequestId, Boolean includeDetails) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BulkUpsertStatusResponse obj = bulkRequestGet(request, adAccountId, bulkRequestId, includeDetails);
+        BulkJobData obj = bulkRequestGet(request, adAccountId, bulkRequestId, includeDetails);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -68,7 +68,7 @@ public abstract class BulkApiControllerImpInterface {
 
     }
 
-    public abstract BulkUpsertStatusResponse bulkRequestGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bulkRequestId, Boolean includeDetails) throws Exception;
+    public abstract BulkJobData bulkRequestGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bulkRequestId, Boolean includeDetails) throws Exception;
 
     public Result bulkUpsertCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BulkUpsertRequest bulkUpsertRequest) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

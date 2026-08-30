@@ -34,6 +34,8 @@ static catalogs_item_validation_errors_t *catalogs_item_validation_errors_create
     if (!catalogs_item_validation_errors_local_var) {
         return NULL;
     }
+    memset(catalogs_item_validation_errors_local_var, 0, sizeof(catalogs_item_validation_errors_t));
+    catalogs_item_validation_errors_local_var->_library_owned = 1;
     catalogs_item_validation_errors_local_var->adult_invalid = adult_invalid;
     catalogs_item_validation_errors_local_var->adwords_format_invalid = adwords_format_invalid;
     catalogs_item_validation_errors_local_var->availability_invalid = availability_invalid;
@@ -57,8 +59,6 @@ static catalogs_item_validation_errors_t *catalogs_item_validation_errors_create
     catalogs_item_validation_errors_local_var->product_link_missing = product_link_missing;
     catalogs_item_validation_errors_local_var->product_price_invalid = product_price_invalid;
     catalogs_item_validation_errors_local_var->title_missing = title_missing;
-
-    catalogs_item_validation_errors_local_var->_library_owned = 1;
     return catalogs_item_validation_errors_local_var;
 }
 
@@ -87,7 +87,7 @@ __attribute__((deprecated)) catalogs_item_validation_errors_t *catalogs_item_val
     catalogs_item_validation_details_t *product_price_invalid,
     catalogs_item_validation_details_t *title_missing
     ) {
-    return catalogs_item_validation_errors_create_internal (
+    catalogs_item_validation_errors_t *result = catalogs_item_validation_errors_create_internal (
         adult_invalid,
         adwords_format_invalid,
         availability_invalid,
@@ -112,6 +112,9 @@ __attribute__((deprecated)) catalogs_item_validation_errors_t *catalogs_item_val
         product_price_invalid,
         title_missing
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_item_validation_errors_free(catalogs_item_validation_errors_t *catalogs_item_validation_errors) {
@@ -808,6 +811,7 @@ catalogs_item_validation_errors_t *catalogs_item_validation_errors_parseFromJSON
     }
 
 
+
     catalogs_item_validation_errors_local_var = catalogs_item_validation_errors_create_internal (
         adult_invalid ? adult_invalid_local_nonprim : NULL,
         adwords_format_invalid ? adwords_format_invalid_local_nonprim : NULL,
@@ -833,6 +837,10 @@ catalogs_item_validation_errors_t *catalogs_item_validation_errors_parseFromJSON
         product_price_invalid ? product_price_invalid_local_nonprim : NULL,
         title_missing ? title_missing_local_nonprim : NULL
         );
+
+    if (!catalogs_item_validation_errors_local_var) {
+        goto end;
+    }
 
     return catalogs_item_validation_errors_local_var;
 end:

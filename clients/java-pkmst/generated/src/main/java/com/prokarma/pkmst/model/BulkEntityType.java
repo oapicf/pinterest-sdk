@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Refers ads entity type. Schedule enum is only applicable to beta users
+ * Refers ads entity type.
  */
 public enum BulkEntityType {
   
@@ -27,7 +27,9 @@ public enum BulkEntityType {
   
   LABEL("LABEL"),
   
-  SCHEDULE("SCHEDULE");
+  SCHEDULE("SCHEDULE"),
+  
+  ENTITY_HISTORY("ENTITY_HISTORY");
 
   private String value;
 

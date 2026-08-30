@@ -4,15 +4,13 @@ package org.openapitools.client.model
 
 case class LabelCreateRequest (
     /* Labels that you are applying to the campaign. */
-    _labels: List[LabelCreateRequestLabelsInner],
-    /* Unique identifier of the asset you are labelling. Currently, you can only label campaigns. */
-    _parentId: String
+    _labels: List[LabelCreateItem]
 )
 object LabelCreateRequest {
-    def toStringBody(var_labels: Object, var_parentId: Object) =
+    def toStringBody(var_labels: Object) =
         s"""
         | {
-        | "labels":$var_labels,"parentId":$var_parentId
+        | "labels":$var_labels
         | }
         """.stripMargin
 }

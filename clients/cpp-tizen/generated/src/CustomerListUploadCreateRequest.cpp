@@ -23,7 +23,7 @@ CustomerListUploadCreateRequest::~CustomerListUploadCreateRequest()
 void
 CustomerListUploadCreateRequest::__init()
 {
-	//operation = std::string();
+	//operation = new UserListOperationType();
 	//total_parts = int(0);
 }
 

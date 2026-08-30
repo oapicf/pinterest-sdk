@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;InviteResponse&gt;**](InviteResponse.md) | List of invite and request data. | [default to undefined]
+**items** | [**Array&lt;InviteResponse&gt;**](InviteResponse.md) |  | [default to undefined]
 
 ## Example
 

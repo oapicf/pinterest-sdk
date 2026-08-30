@@ -9,7 +9,7 @@
 -export_type([openapi_price_filter/0]).
 
 -type openapi_price_filter() ::
-  [ {'PRICE', openapi_catalogs_product_group_pricing_currency_criteria:openapi_catalogs_product_group_pricing_currency_criteria() }
+  [ {'PRICE', openapi_price_filter_price:openapi_price_filter_price() }
   ].
 
 
@@ -17,7 +17,7 @@ openapi_price_filter() ->
     openapi_price_filter([]).
 
 openapi_price_filter(Fields) ->
-  Default = [ {'PRICE', openapi_catalogs_product_group_pricing_currency_criteria:openapi_catalogs_product_group_pricing_currency_criteria() }
+  Default = [ {'PRICE', openapi_price_filter_price:openapi_price_filter_price() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

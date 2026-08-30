@@ -107,7 +107,7 @@ KeywordsCommon::getBid()
 }
 
 void
-KeywordsCommon::setBid(int  bid)
+KeywordsCommon::setBid(int bid)
 {
 	this->bid = bid;
 }
@@ -119,7 +119,7 @@ KeywordsCommon::getMatchType()
 }
 
 void
-KeywordsCommon::setMatchType(MatchTypeResponse  match_type)
+KeywordsCommon::setMatchType(MatchTypeResponse match_type)
 {
 	this->match_type = match_type;
 }
@@ -131,7 +131,7 @@ KeywordsCommon::getValue()
 }
 
 void
-KeywordsCommon::setValue(std::string  value)
+KeywordsCommon::setValue(std::string value)
 {
 	this->value = value;
 }

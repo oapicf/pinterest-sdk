@@ -4,9 +4,11 @@
 
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/grid_click_type.dart';
-import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/preferred_media_type.dart';
+import 'package:openapi/src/model/product_group_promotion_customizable_cta_type.dart';
 import 'package:openapi/src/model/entity_status.dart';
 import 'package:openapi/src/model/creative_type.dart';
+import 'package:openapi/src/model/collections_header_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,21 +19,22 @@ part 'product_group_promotion.g.dart';
 /// Properties:
 /// * [adGroupId] - ID of the ad group the product group belongs to.
 /// * [bidInMicroCurrency] - The bid in micro currency.
-/// * [catalogProductGroupId] - ID of the catalogs product group that this product group promotion references
+/// * [catalogProductGroupId] - ID of the catalogs product group that this product group promotion references (required for create operations)
 /// * [catalogProductGroupName] - Catalogs product group name
-/// * [collectionsHeaderType] - Collections ad header type
+/// * [collectionsHeaderType] 
 /// * [collectionsHeroDestinationUrl] - Collections Hero Destination Url
 /// * [collectionsHeroPinId] - Hero Pin ID if this PG is promoted as a Collection
 /// * [creativeType] 
-/// * [customizableCtaType] - Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
+/// * [customizableCtaType] 
 /// * [definition] - The full product group definition path
 /// * [gridClickType] 
-/// * [id] - ID of the product group promotion.
+/// * [id] - ID of the product group promotion (required for update operations).
 /// * [included] - True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
 /// * [isGenerateBackground] - Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.
+/// * [isImageAutoResizing] - Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
 /// * [isMdl] - If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
 /// * [parentId] - The parent Product Group ID of this Product Group
-/// * [preferredMediaType] - Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
+/// * [preferredMediaType] 
 /// * [relativeDefinition] - The definition of the product group, relative to its parent - an attribute name/value pair
 /// * [selectedImageTag] - The ad image tag selected for the product group promotion.
 /// * [selectedVideoTag] - The ad video tag selected for the product group promotion.
@@ -49,7 +52,7 @@ abstract class ProductGroupPromotion implements Built<ProductGroupPromotion, Pro
   @BuiltValueField(wireName: r'bid_in_micro_currency')
   int? get bidInMicroCurrency;
 
-  /// ID of the catalogs product group that this product group promotion references
+  /// ID of the catalogs product group that this product group promotion references (required for create operations)
   @BuiltValueField(wireName: r'catalog_product_group_id')
   String? get catalogProductGroupId;
 
@@ -57,9 +60,8 @@ abstract class ProductGroupPromotion implements Built<ProductGroupPromotion, Pro
   @BuiltValueField(wireName: r'catalog_product_group_name')
   String? get catalogProductGroupName;
 
-  /// Collections ad header type
   @BuiltValueField(wireName: r'collections_header_type')
-  ProductGroupPromotionCollectionsHeaderTypeEnum? get collectionsHeaderType;
+  CollectionsHeaderType? get collectionsHeaderType;
   // enum collectionsHeaderTypeEnum {  SHOP_THIS_COLLECTION,  EXPLORE_THIS_COLLECTION,  NO_HEADER,  ON_SALE,  GET_DEAL,  ,  };
 
   /// Collections Hero Destination Url
@@ -72,12 +74,11 @@ abstract class ProductGroupPromotion implements Built<ProductGroupPromotion, Pro
 
   @BuiltValueField(wireName: r'creative_type')
   CreativeType? get creativeType;
-  // enum creativeTypeEnum {  REGULAR,  VIDEO,  SHOPPING,  CAROUSEL,  MAX_VIDEO,  SHOP_THE_PIN,  COLLECTION,  IDEA,  SHOWCASE,  QUIZ,  COLLAGE,  MAX_WIDTH_REGULAR_COLLECTION,  MAX_WIDTH_VIDEO_COLLECTION,  };
+  // enum creativeTypeEnum {  REGULAR,  VIDEO,  SHOPPING,  CAROUSEL,  MAX_VIDEO,  SHOP_THE_PIN,  COLLECTION,  IDEA,  SHOWCASE,  QUIZ,  COLLAGE,  MAX_WIDTH_REGULAR_COLLECTION,  MAX_WIDTH_VIDEO_COLLECTION,  APP,  };
 
-  /// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
   @BuiltValueField(wireName: r'customizable_cta_type')
-  ProductGroupPromotionCustomizableCtaTypeEnum? get customizableCtaType;
-  // enum customizableCtaTypeEnum {  SHOP_NOW,  BOOK_NOW,  ON_SALE,  GET_DEAL,  BUY_ONLINE_PICKUP_IN_STORE,  ,  };
+  ProductGroupPromotionCustomizableCTAType? get customizableCtaType;
+  // enum customizableCtaTypeEnum {  GET_OFFER,  LEARN_MORE,  ORDER_NOW,  SHOP_NOW,  SIGN_UP,  SUBSCRIBE,  BUY_NOW,  CONTACT_US,  GET_QUOTE,  VISIT_SITE,  APPLY_NOW,  BOOK_NOW,  REGISTER_NOW,  FIND_A_DEALER,  WATCH_NOW,  READ_MORE,  BUY_TICKETS,  DONATE_NOW,  DOWNLOAD,  EXPLORE_MORE,  FIND_A_LOCATION,  GET_DEAL,  GET_RECIPE,  GET_SHOWTIMES,  ON_SALE,  PLAY_GAME,  TRY_IT,  BUY_ONLINE_PICKUP_IN_STORE,  SHOP_ON_ADVERTISER,  SHOP_THE_COLLECTION,  GET_IT_NOW,  TAKE_A_PEEK,  TAKE_A_CLOSER_LOOK,  };
 
   /// The full product group definition path
   @BuiltValueField(wireName: r'definition')
@@ -87,7 +88,7 @@ abstract class ProductGroupPromotion implements Built<ProductGroupPromotion, Pro
   GridClickType? get gridClickType;
   // enum gridClickTypeEnum {  CLOSEUP,  DIRECT_TO_DESTINATION,  };
 
-  /// ID of the product group promotion.
+  /// ID of the product group promotion (required for update operations).
   @BuiltValueField(wireName: r'id')
   String? get id;
 
@@ -99,6 +100,10 @@ abstract class ProductGroupPromotion implements Built<ProductGroupPromotion, Pro
   @BuiltValueField(wireName: r'is_generate_background')
   bool? get isGenerateBackground;
 
+  /// Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+  @BuiltValueField(wireName: r'is_image_auto_resizing')
+  bool? get isImageAutoResizing;
+
   /// If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
   @BuiltValueField(wireName: r'is_mdl')
   bool? get isMdl;
@@ -107,9 +112,8 @@ abstract class ProductGroupPromotion implements Built<ProductGroupPromotion, Pro
   @BuiltValueField(wireName: r'parent_id')
   String? get parentId;
 
-  /// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
   @BuiltValueField(wireName: r'preferred_media_type')
-  ProductGroupPromotionPreferredMediaTypeEnum? get preferredMediaType;
+  PreferredMediaType? get preferredMediaType;
   // enum preferredMediaTypeEnum {  VIDEO,  IMAGE,  ,  };
 
   /// The definition of the product group, relative to its parent - an attribute name/value pair
@@ -174,28 +178,28 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
       yield r'bid_in_micro_currency';
       yield serializers.serialize(
         object.bidInMicroCurrency,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.catalogProductGroupId != null) {
       yield r'catalog_product_group_id';
       yield serializers.serialize(
         object.catalogProductGroupId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.catalogProductGroupName != null) {
       yield r'catalog_product_group_name';
       yield serializers.serialize(
         object.catalogProductGroupName,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.collectionsHeaderType != null) {
       yield r'collections_header_type';
       yield serializers.serialize(
         object.collectionsHeaderType,
-        specifiedType: const FullType.nullable(ProductGroupPromotionCollectionsHeaderTypeEnum),
+        specifiedType: const FullType.nullable(CollectionsHeaderType),
       );
     }
     if (object.collectionsHeroDestinationUrl != null) {
@@ -223,14 +227,14 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
       yield r'customizable_cta_type';
       yield serializers.serialize(
         object.customizableCtaType,
-        specifiedType: const FullType.nullable(ProductGroupPromotionCustomizableCtaTypeEnum),
+        specifiedType: const FullType(ProductGroupPromotionCustomizableCTAType),
       );
     }
     if (object.definition != null) {
       yield r'definition';
       yield serializers.serialize(
         object.definition,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.gridClickType != null) {
@@ -251,7 +255,7 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
       yield r'included';
       yield serializers.serialize(
         object.included,
-        specifiedType: const FullType.nullable(bool),
+        specifiedType: const FullType(bool),
       );
     }
     if (object.isGenerateBackground != null) {
@@ -261,32 +265,39 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
         specifiedType: const FullType.nullable(bool),
       );
     }
+    if (object.isImageAutoResizing != null) {
+      yield r'is_image_auto_resizing';
+      yield serializers.serialize(
+        object.isImageAutoResizing,
+        specifiedType: const FullType.nullable(bool),
+      );
+    }
     if (object.isMdl != null) {
       yield r'is_mdl';
       yield serializers.serialize(
         object.isMdl,
-        specifiedType: const FullType.nullable(bool),
+        specifiedType: const FullType(bool),
       );
     }
     if (object.parentId != null) {
       yield r'parent_id';
       yield serializers.serialize(
         object.parentId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.preferredMediaType != null) {
       yield r'preferred_media_type';
       yield serializers.serialize(
         object.preferredMediaType,
-        specifiedType: const FullType.nullable(ProductGroupPromotionPreferredMediaTypeEnum),
+        specifiedType: const FullType.nullable(PreferredMediaType),
       );
     }
     if (object.relativeDefinition != null) {
       yield r'relative_definition';
       yield serializers.serialize(
         object.relativeDefinition,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.selectedImageTag != null) {
@@ -328,7 +339,7 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
       yield r'tracking_url';
       yield serializers.serialize(
         object.trackingUrl,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -357,8 +368,9 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
         case r'ad_group_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.adGroupId = valueDes;
           break;
         case r'bid_in_micro_currency':
@@ -388,8 +400,8 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
         case r'collections_header_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(ProductGroupPromotionCollectionsHeaderTypeEnum),
-          ) as ProductGroupPromotionCollectionsHeaderTypeEnum?;
+            specifiedType: const FullType.nullable(CollectionsHeaderType),
+          ) as CollectionsHeaderType?;
           if (valueDes == null) continue;
           result.collectionsHeaderType = valueDes;
           break;
@@ -412,15 +424,16 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
         case r'creative_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CreativeType),
-          ) as CreativeType;
+            specifiedType: const FullType.nullable(CreativeType),
+          ) as CreativeType?;
+          if (valueDes == null) continue;
           result.creativeType = valueDes;
           break;
         case r'customizable_cta_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(ProductGroupPromotionCustomizableCtaTypeEnum),
-          ) as ProductGroupPromotionCustomizableCtaTypeEnum?;
+            specifiedType: const FullType.nullable(ProductGroupPromotionCustomizableCTAType),
+          ) as ProductGroupPromotionCustomizableCTAType?;
           if (valueDes == null) continue;
           result.customizableCtaType = valueDes;
           break;
@@ -443,8 +456,9 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'included':
@@ -462,6 +476,14 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
           ) as bool?;
           if (valueDes == null) continue;
           result.isGenerateBackground = valueDes;
+          break;
+        case r'is_image_auto_resizing':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.isImageAutoResizing = valueDes;
           break;
         case r'is_mdl':
           final valueDes = serializers.deserialize(
@@ -482,8 +504,8 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
         case r'preferred_media_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(ProductGroupPromotionPreferredMediaTypeEnum),
-          ) as ProductGroupPromotionPreferredMediaTypeEnum?;
+            specifiedType: const FullType.nullable(PreferredMediaType),
+          ) as PreferredMediaType?;
           if (valueDes == null) continue;
           result.preferredMediaType = valueDes;
           break;
@@ -530,8 +552,9 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(EntityStatus),
-          ) as EntityStatus;
+            specifiedType: const FullType.nullable(EntityStatus),
+          ) as EntityStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         case r'tracking_url':
@@ -569,74 +592,5 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
     );
     return result.build();
   }
-}
-
-class ProductGroupPromotionCollectionsHeaderTypeEnum extends EnumClass {
-
-  /// Collections ad header type
-  @BuiltValueEnumConst(wireName: r'SHOP_THIS_COLLECTION')
-  static const ProductGroupPromotionCollectionsHeaderTypeEnum SHOP_THIS_COLLECTION = _$productGroupPromotionCollectionsHeaderTypeEnum_SHOP_THIS_COLLECTION;
-  /// Collections ad header type
-  @BuiltValueEnumConst(wireName: r'EXPLORE_THIS_COLLECTION')
-  static const ProductGroupPromotionCollectionsHeaderTypeEnum EXPLORE_THIS_COLLECTION = _$productGroupPromotionCollectionsHeaderTypeEnum_EXPLORE_THIS_COLLECTION;
-  /// Collections ad header type
-  @BuiltValueEnumConst(wireName: r'NO_HEADER')
-  static const ProductGroupPromotionCollectionsHeaderTypeEnum NO_HEADER = _$productGroupPromotionCollectionsHeaderTypeEnum_NO_HEADER;
-  /// Collections ad header type
-  @BuiltValueEnumConst(wireName: r'ON_SALE')
-  static const ProductGroupPromotionCollectionsHeaderTypeEnum ON_SALE = _$productGroupPromotionCollectionsHeaderTypeEnum_ON_SALE;
-  /// Collections ad header type
-  @BuiltValueEnumConst(wireName: r'GET_DEAL')
-  static const ProductGroupPromotionCollectionsHeaderTypeEnum GET_DEAL = _$productGroupPromotionCollectionsHeaderTypeEnum_GET_DEAL;
-
-  static Serializer<ProductGroupPromotionCollectionsHeaderTypeEnum> get serializer => _$productGroupPromotionCollectionsHeaderTypeEnumSerializer;
-
-  const ProductGroupPromotionCollectionsHeaderTypeEnum._(String name): super(name);
-
-  static BuiltSet<ProductGroupPromotionCollectionsHeaderTypeEnum> get values => _$productGroupPromotionCollectionsHeaderTypeEnumValues;
-  static ProductGroupPromotionCollectionsHeaderTypeEnum valueOf(String name) => _$productGroupPromotionCollectionsHeaderTypeEnumValueOf(name);
-}
-
-class ProductGroupPromotionCustomizableCtaTypeEnum extends EnumClass {
-
-  /// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-  @BuiltValueEnumConst(wireName: r'SHOP_NOW')
-  static const ProductGroupPromotionCustomizableCtaTypeEnum SHOP_NOW = _$productGroupPromotionCustomizableCtaTypeEnum_SHOP_NOW;
-  /// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-  @BuiltValueEnumConst(wireName: r'BOOK_NOW')
-  static const ProductGroupPromotionCustomizableCtaTypeEnum BOOK_NOW = _$productGroupPromotionCustomizableCtaTypeEnum_BOOK_NOW;
-  /// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-  @BuiltValueEnumConst(wireName: r'ON_SALE')
-  static const ProductGroupPromotionCustomizableCtaTypeEnum ON_SALE = _$productGroupPromotionCustomizableCtaTypeEnum_ON_SALE;
-  /// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-  @BuiltValueEnumConst(wireName: r'GET_DEAL')
-  static const ProductGroupPromotionCustomizableCtaTypeEnum GET_DEAL = _$productGroupPromotionCustomizableCtaTypeEnum_GET_DEAL;
-  /// Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-  @BuiltValueEnumConst(wireName: r'BUY_ONLINE_PICKUP_IN_STORE')
-  static const ProductGroupPromotionCustomizableCtaTypeEnum BUY_ONLINE_PICKUP_IN_STORE = _$productGroupPromotionCustomizableCtaTypeEnum_BUY_ONLINE_PICKUP_IN_STORE;
-
-  static Serializer<ProductGroupPromotionCustomizableCtaTypeEnum> get serializer => _$productGroupPromotionCustomizableCtaTypeEnumSerializer;
-
-  const ProductGroupPromotionCustomizableCtaTypeEnum._(String name): super(name);
-
-  static BuiltSet<ProductGroupPromotionCustomizableCtaTypeEnum> get values => _$productGroupPromotionCustomizableCtaTypeEnumValues;
-  static ProductGroupPromotionCustomizableCtaTypeEnum valueOf(String name) => _$productGroupPromotionCustomizableCtaTypeEnumValueOf(name);
-}
-
-class ProductGroupPromotionPreferredMediaTypeEnum extends EnumClass {
-
-  /// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-  @BuiltValueEnumConst(wireName: r'VIDEO')
-  static const ProductGroupPromotionPreferredMediaTypeEnum VIDEO = _$productGroupPromotionPreferredMediaTypeEnum_VIDEO;
-  /// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
-  @BuiltValueEnumConst(wireName: r'IMAGE')
-  static const ProductGroupPromotionPreferredMediaTypeEnum IMAGE = _$productGroupPromotionPreferredMediaTypeEnum_IMAGE;
-
-  static Serializer<ProductGroupPromotionPreferredMediaTypeEnum> get serializer => _$productGroupPromotionPreferredMediaTypeEnumSerializer;
-
-  const ProductGroupPromotionPreferredMediaTypeEnum._(String name): super(name);
-
-  static BuiltSet<ProductGroupPromotionPreferredMediaTypeEnum> get values => _$productGroupPromotionPreferredMediaTypeEnumValues;
-  static ProductGroupPromotionPreferredMediaTypeEnum valueOf(String name) => _$productGroupPromotionPreferredMediaTypeEnumValueOf(name);
 }
 

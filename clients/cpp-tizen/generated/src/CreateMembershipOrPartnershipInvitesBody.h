@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "BusinessRoleForInvite.h"
 #include "InviteType.h"
 #include <list>
 #include "Object.h"
@@ -47,13 +48,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+	/*! \brief Get 
 	 */
-	std::string getBusinessRole();
+	BusinessRoleForInvite getBusinessRole();
 
-	/*! \brief Set The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+	/*! \brief Set 
 	 */
-	void setBusinessRole(std::string  business_role);
+	void setBusinessRole(BusinessRoleForInvite  business_role);
 	/*! \brief Get 
 	 */
 	InviteType getInviteType();
@@ -77,7 +78,7 @@ public:
 	void setPartners(std::list <std::string> partners);
 
 private:
-	std::string business_role;
+	BusinessRoleForInvite business_role;
 	InviteType invite_type;
 	std::list <std::string>members;
 	std::list <std::string>partners;

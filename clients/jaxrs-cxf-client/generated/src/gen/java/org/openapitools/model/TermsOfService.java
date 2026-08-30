@@ -2,10 +2,15 @@ package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * The ID of the ad account.
+ */
+@ApiModel(description="The ID of the ad account.")
 
 public class TermsOfService  {
   
@@ -146,10 +151,7 @@ public class TermsOfService  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

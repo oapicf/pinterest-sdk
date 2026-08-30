@@ -6,15 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filterOperatorType** | [**FilterOperatorTypeEnum**](#FilterOperatorTypeEnum) |  |  [optional]
+**filterOperatorType** | [**FilterOperatorType**](FilterOperatorType.md) |  |  [optional]
 **negated** | **Boolean** |  |  [optional]
 **values** | **List&lt;String&gt;** |  | 
-
-
-## Enum: FilterOperatorTypeEnum
-
-Name | Value
----- | -----
 
 
 

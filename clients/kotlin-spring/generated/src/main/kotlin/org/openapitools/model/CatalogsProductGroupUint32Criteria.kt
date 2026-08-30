@@ -2,8 +2,12 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.NumericFilterOperatorType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,38 +27,23 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsProductGroupUint32Criteria(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operator", required = true) val `operator`: CatalogsProductGroupUint32Criteria.`Operator`,
+    @field:Valid
+    @Schema(required = true, description = "")
+    @param:JsonProperty("operator")
+    @get:JsonProperty("operator", required = true) val `operator`: NumericFilterOperatorType,
 
     @get:Min(value=0)
     @get:Max(value=4294967295)
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("value")
     @get:JsonProperty("value", required = true) val `value`: kotlin.Int,
 
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("negated") val negated: kotlin.Boolean? = false
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("negated")
+    @get:JsonProperty("negated") val negated: kotlin.Boolean? = null
 ) {
-
-    /**
-    * 
-    * Values: GREATER_THAN,GREATER_THAN_OR_EQUALS,LESS_THAN,LESS_THAN_OR_EQUALS
-    */
-    enum class `Operator`(@get:JsonValue val value: kotlin.String) {
-
-        GREATER_THAN("GREATER_THAN"),
-        GREATER_THAN_OR_EQUALS("GREATER_THAN_OR_EQUALS"),
-        LESS_THAN("LESS_THAN"),
-        LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): `Operator` {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsProductGroupUint32Criteria'")
-            }
-        }
-    }
 
 }
 

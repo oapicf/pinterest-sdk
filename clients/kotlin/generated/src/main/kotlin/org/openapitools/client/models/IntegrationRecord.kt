@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,6 +30,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Integration record
  *
+ * @param id Integration record ID.
  * @param additionalId1 
  * @param connectedAdvertiserId 
  * @param connectedLbaId 
@@ -30,7 +39,6 @@ import com.squareup.moshi.JsonClass
  * @param connectedUserId 
  * @param createdTime 
  * @param externalBusinessId 
- * @param id 
  * @param partnerAccessToken 
  * @param partnerAccessTokenExpiry 
  * @param partnerMetadata 
@@ -43,6 +51,10 @@ import com.squareup.moshi.JsonClass
 
 
 data class IntegrationRecord (
+
+    /* Integration record ID. */
+    @Json(name = "id")
+    val id: kotlin.String,
 
     @Json(name = "additional_id_1")
     val additionalId1: kotlin.String? = null,
@@ -67,9 +79,6 @@ data class IntegrationRecord (
 
     @Json(name = "external_business_id")
     val externalBusinessId: kotlin.String? = null,
-
-    @Json(name = "id")
-    val id: kotlin.String? = null,
 
     @Json(name = "partner_access_token")
     val partnerAccessToken: kotlin.String? = null,

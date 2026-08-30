@@ -10,7 +10,7 @@
 
 -type openapi_ads_list_200_response() ::
   [ {'bookmark', binary() }
-  | {'items', list(openapi_ad_response:openapi_ad_response()) }
+  | {'items', list(openapi_ad:openapi_ad()) }
   ].
 
 
@@ -19,7 +19,7 @@ openapi_ads_list_200_response() ->
 
 openapi_ads_list_200_response(Fields) ->
   Default = [ {'bookmark', binary() }
-            , {'items', list(openapi_ad_response:openapi_ad_response()) }
+            , {'items', list(openapi_ad:openapi_ad()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

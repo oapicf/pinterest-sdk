@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AgeDistribution** | [**TrendingKeywordDemographicsAgeDistribution**](TrendingKeywordDemographicsAgeDistribution.md) |  | [optional] 
-**GenderDistribution** | [**TrendingKeywordDemographicsGenderDistribution**](TrendingKeywordDemographicsGenderDistribution.md) |  | [optional] 
+**AgeDistribution** | [**TrendsAgeDistribution**](TrendsAgeDistribution.md) |  | [optional] 
+**GenderDistribution** | [**TrendsGenderDistribution**](TrendsGenderDistribution.md) |  | [optional] 
 
 ## Examples
 

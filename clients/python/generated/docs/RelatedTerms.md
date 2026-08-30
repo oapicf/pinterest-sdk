@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot; | [optional] 
 **related_term_count** | **int** | Total number of related terms returned | [optional] 
-**related_terms_list** | [**List[RelatedTermsRelatedTermsListInner]**](RelatedTermsRelatedTermsListInner.md) | The id of the advertiser. | [optional] 
+**related_terms_list** | [**List[RelatedTermsRelatedTermsListItems]**](RelatedTermsRelatedTermsListItems.md) | The id of the advertiser. | [optional] 
 
 ## Example
 

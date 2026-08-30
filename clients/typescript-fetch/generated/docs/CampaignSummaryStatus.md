@@ -1,7 +1,6 @@
 
 # CampaignSummaryStatus
 
-Summary status for campaign
 
 ## Properties
 

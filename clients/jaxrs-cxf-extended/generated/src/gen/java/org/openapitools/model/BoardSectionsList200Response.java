@@ -19,10 +19,7 @@ public class BoardSectionsList200Response  {
   @ApiModelProperty(value = "")
   private String bookmark;
 
- /**
-  * Board sections
-  */
-  @ApiModelProperty(required = true, value = "Board sections")
+  @ApiModelProperty(required = true, value = "")
   @Valid
   private List<@Valid BoardSection> items = new ArrayList<>();
  /**
@@ -50,7 +47,7 @@ public class BoardSectionsList200Response  {
   }
 
  /**
-  * Board sections
+  * Get items
   * @return items
   */
   @JsonProperty("items")
@@ -117,10 +114,7 @@ public class BoardSectionsList200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

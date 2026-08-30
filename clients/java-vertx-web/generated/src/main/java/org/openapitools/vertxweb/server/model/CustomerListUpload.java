@@ -11,6 +11,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.ErrorDetail;
 import org.openapitools.vertxweb.server.model.RecordCounts;
 import org.openapitools.vertxweb.server.model.UserListOperationType;
+import org.openapitools.vertxweb.server.model.WorkloadState;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerListUpload   {
@@ -22,36 +23,14 @@ public class CustomerListUpload   {
   private String id;
   private UserListOperationType operation;
   private RecordCounts recordCounts;
-
-
-  public enum StateEnum {
-    NOT_STARTED("NOT_STARTED"),
-    RUNNING("RUNNING"),
-    PAUSED("PAUSED"),
-    SUCCEEDED("SUCCEEDED"),
-    FAILED("FAILED");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private StateEnum state;
+  private WorkloadState state;
   private Integer updatedTime;
 
   public CustomerListUpload () {
 
   }
 
-  public CustomerListUpload (String adAccountId, Integer creationTime, String customerListId, List<ErrorDetail> errorCounts, String id, UserListOperationType operation, RecordCounts recordCounts, StateEnum state, Integer updatedTime) {
+  public CustomerListUpload (String adAccountId, Integer creationTime, String customerListId, List<ErrorDetail> errorCounts, String id, UserListOperationType operation, RecordCounts recordCounts, WorkloadState state, Integer updatedTime) {
     this.adAccountId = adAccountId;
     this.creationTime = creationTime;
     this.customerListId = customerListId;
@@ -128,10 +107,10 @@ public class CustomerListUpload   {
 
     
   @JsonProperty("state")
-  public StateEnum getState() {
+  public WorkloadState getState() {
     return state;
   }
-  public void setState(StateEnum state) {
+  public void setState(WorkloadState state) {
     this.state = state;
   }
 
@@ -193,9 +172,6 @@ public class CustomerListUpload   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

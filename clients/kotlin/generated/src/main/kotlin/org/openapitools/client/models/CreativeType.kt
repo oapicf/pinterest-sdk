@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
  *
- * Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ,COLLAGE,MAX_WIDTH_REGULAR_COLLECTION,MAX_WIDTH_VIDEO_COLLECTION
+ * Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ,COLLAGE,MAX_WIDTH_REGULAR_COLLECTION,MAX_WIDTH_VIDEO_COLLECTION,APP
  */
 
 @JsonClass(generateAdapter = false)
@@ -65,7 +73,10 @@ enum class CreativeType(val value: kotlin.String) {
     MAX_WIDTH_REGULAR_COLLECTION("MAX_WIDTH_REGULAR_COLLECTION"),
 
     @Json(name = "MAX_WIDTH_VIDEO_COLLECTION")
-    MAX_WIDTH_VIDEO_COLLECTION("MAX_WIDTH_VIDEO_COLLECTION");
+    MAX_WIDTH_VIDEO_COLLECTION("MAX_WIDTH_VIDEO_COLLECTION"),
+
+    @Json(name = "APP")
+    APP("APP");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -87,7 +98,7 @@ enum class CreativeType(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): CreativeType? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

@@ -1,8 +1,11 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.RelatedTermsRelatedTermsListInner
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.RelatedTermsRelatedTermsListItems
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,14 +26,23 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class RelatedTerms(
 
     @Schema(example = "clothes", description = "First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
     @Schema(example = "2", description = "Total number of related terms returned")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("related_term_count")
     @get:JsonProperty("related_term_count") val relatedTermCount: kotlin.Int? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "The id of the advertiser.")
-    @get:JsonProperty("related_terms_list") val relatedTermsList: kotlin.collections.List<RelatedTermsRelatedTermsListInner>? = null
+    @Schema(description = "The id of the advertiser.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("related_terms_list")
+    @get:JsonProperty("related_terms_list") val relatedTermsList: kotlin.collections.List<RelatedTermsRelatedTermsListItems>? = null
 ) {
 
 }

@@ -18,36 +18,41 @@ class AdvancedAuctionItemsSubmitDeleteRecord(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, country: Country=None, item_id: str=None, language: Language=None, errors: List[AdvancedAuctionOperationError]=None):  # noqa: E501
+    def __init__(self, country: Country=None, errors: List[AdvancedAuctionOperationError]=None, item_id: str=None, language: Language=None, operation: str=None):  # noqa: E501
         """AdvancedAuctionItemsSubmitDeleteRecord - a model defined in Swagger
 
         :param country: The country of this AdvancedAuctionItemsSubmitDeleteRecord.  # noqa: E501
         :type country: Country
+        :param errors: The errors of this AdvancedAuctionItemsSubmitDeleteRecord.  # noqa: E501
+        :type errors: List[AdvancedAuctionOperationError]
         :param item_id: The item_id of this AdvancedAuctionItemsSubmitDeleteRecord.  # noqa: E501
         :type item_id: str
         :param language: The language of this AdvancedAuctionItemsSubmitDeleteRecord.  # noqa: E501
         :type language: Language
-        :param errors: The errors of this AdvancedAuctionItemsSubmitDeleteRecord.  # noqa: E501
-        :type errors: List[AdvancedAuctionOperationError]
+        :param operation: The operation of this AdvancedAuctionItemsSubmitDeleteRecord.  # noqa: E501
+        :type operation: str
         """
         self.swagger_types = {
             'country': Country,
+            'errors': List[AdvancedAuctionOperationError],
             'item_id': str,
             'language': Language,
-            'errors': List[AdvancedAuctionOperationError]
+            'operation': str
         }
 
         self.attribute_map = {
             'country': 'country',
+            'errors': 'errors',
             'item_id': 'item_id',
             'language': 'language',
-            'errors': 'errors'
+            'operation': 'operation'
         }
 
         self._country = country
+        self._errors = errors
         self._item_id = item_id
         self._language = language
-        self._errors = errors
+        self._operation = operation
 
     @classmethod
     def from_dict(cls, dikt) -> 'AdvancedAuctionItemsSubmitDeleteRecord':
@@ -82,6 +87,29 @@ class AdvancedAuctionItemsSubmitDeleteRecord(Model):
             raise ValueError("Invalid value for `country`, must not be `None`")  # noqa: E501
 
         self._country = country
+
+    @property
+    def errors(self) -> List[AdvancedAuctionOperationError]:
+        """Gets the errors of this AdvancedAuctionItemsSubmitDeleteRecord.
+
+        Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.  # noqa: E501
+
+        :return: The errors of this AdvancedAuctionItemsSubmitDeleteRecord.
+        :rtype: List[AdvancedAuctionOperationError]
+        """
+        return self._errors
+
+    @errors.setter
+    def errors(self, errors: List[AdvancedAuctionOperationError]):
+        """Sets the errors of this AdvancedAuctionItemsSubmitDeleteRecord.
+
+        Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.  # noqa: E501
+
+        :param errors: The errors of this AdvancedAuctionItemsSubmitDeleteRecord.
+        :type errors: List[AdvancedAuctionOperationError]
+        """
+
+        self._errors = errors
 
     @property
     def item_id(self) -> str:
@@ -132,24 +160,28 @@ class AdvancedAuctionItemsSubmitDeleteRecord(Model):
         self._language = language
 
     @property
-    def errors(self) -> List[AdvancedAuctionOperationError]:
-        """Gets the errors of this AdvancedAuctionItemsSubmitDeleteRecord.
+    def operation(self) -> str:
+        """Gets the operation of this AdvancedAuctionItemsSubmitDeleteRecord.
 
-        Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.  # noqa: E501
 
-        :return: The errors of this AdvancedAuctionItemsSubmitDeleteRecord.
-        :rtype: List[AdvancedAuctionOperationError]
+        :return: The operation of this AdvancedAuctionItemsSubmitDeleteRecord.
+        :rtype: str
         """
-        return self._errors
+        return self._operation
 
-    @errors.setter
-    def errors(self, errors: List[AdvancedAuctionOperationError]):
-        """Sets the errors of this AdvancedAuctionItemsSubmitDeleteRecord.
+    @operation.setter
+    def operation(self, operation: str):
+        """Sets the operation of this AdvancedAuctionItemsSubmitDeleteRecord.
 
-        Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.  # noqa: E501
 
-        :param errors: The errors of this AdvancedAuctionItemsSubmitDeleteRecord.
-        :type errors: List[AdvancedAuctionOperationError]
+        :param operation: The operation of this AdvancedAuctionItemsSubmitDeleteRecord.
+        :type operation: str
         """
+        allowed_values = ["DELETE"]  # noqa: E501
+        if operation not in allowed_values:
+            raise ValueError(
+                "Invalid value for `operation` ({0}), must be one of {1}"
+                .format(operation, allowed_values)
+            )
 
-        self._errors = errors
+        self._operation = operation

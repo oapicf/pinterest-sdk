@@ -1,16 +1,17 @@
 import connexion
 
 from app.openapi_server.models.auth_respond_invites_body import AuthRespondInvitesBody  # noqa: E501
-from app.openapi_server.models.cancel_invites_body import CancelInvitesBody  # noqa: E501
+from app.openapi_server.models.cancel_invites_request import CancelInvitesRequest  # noqa: E501
+from app.openapi_server.models.cancel_invites_response import CancelInvitesResponse  # noqa: E501
 from app.openapi_server.models.create_asset_access_request_body import CreateAssetAccessRequestBody  # noqa: E501
 from app.openapi_server.models.create_asset_access_request_response import CreateAssetAccessRequestResponse  # noqa: E501
 from app.openapi_server.models.create_asset_invites_request import CreateAssetInvitesRequest  # noqa: E501
 from app.openapi_server.models.create_invites_results_response_array import CreateInvitesResultsResponseArray  # noqa: E501
 from app.openapi_server.models.create_membership_or_partnership_invites_body import CreateMembershipOrPartnershipInvitesBody  # noqa: E501
-from app.openapi_server.models.delete_invites_results_response_array import DeleteInvitesResultsResponseArray  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
 from app.openapi_server.models.get_invites200_response import GetInvites200Response  # noqa: E501
+from app.openapi_server.models.invite_filter_status import InviteFilterStatus  # noqa: E501
 from app.openapi_server.models.invite_type import InviteType  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from app.openapi_server.models.respond_to_invites_response_array import RespondToInvitesResponseArray  # noqa: E501
 from app.openapi_server.models.update_invites_results_response_array import UpdateInvitesResultsResponseArray  # noqa: E501
 from openapi_server import util
@@ -40,13 +41,13 @@ def cancel_invites_or_requests(business_id, body):  # noqa: E501
 
     :param business_id: Unique identifier of the requesting business.
     :type business_id: str
-    :param body: A list with invite ids
+    :param body: 
     :type body: dict | bytes
 
-    :rtype: DeleteInvitesResultsResponseArray
+    :rtype: CancelInvitesResponse
     """
     if connexion.request.is_json:
-        body = CancelInvitesBody.from_dict(connexion.request.get_json())  # noqa: E501
+        body = CancelInvitesRequest.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
@@ -57,7 +58,7 @@ def create_asset_invites(business_id, body):  # noqa: E501
 
     :param business_id: Unique identifier of the requesting business.
     :type business_id: str
-    :param body: A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+    :param body: 
     :type body: dict | bytes
 
     :rtype: UpdateInvitesResultsResponseArray
@@ -74,7 +75,7 @@ def create_membership_or_partnership_invites(business_id, body):  # noqa: E501
 
     :param business_id: Unique identifier of the requesting business.
     :type business_id: str
-    :param body: An object with the properties: invite_type, partners, members, business_role
+    :param body: 
     :type body: dict | bytes
 
     :rtype: CreateInvitesResultsResponseArray
@@ -94,16 +95,18 @@ def get_invites(business_id, is_member=None, invite_status=None, invite_type=Non
     :param is_member: A boolean field to indicate whether the invite is to create a partnership or a membership.
     :type is_member: bool
     :param invite_status: A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
-    :type invite_status: List[str]
+    :type invite_status: list | bytes
     :param invite_type: Invite type to filter invites by. Only invites of the specified type will be returned.
     :type invite_type: dict | bytes
     :param bookmark: Cursor used to fetch the next page of items
     :type bookmark: str
-    :param page_size: Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+    :param page_size: Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     :type page_size: int
 
     :rtype: GetInvites200Response
     """
+    if connexion.request.is_json:
+        invite_status = [InviteFilterStatus.from_dict(d) for d in connexion.request.get_json()]  # noqa: E501
     if connexion.request.is_json:
         invite_type = .from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'

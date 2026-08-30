@@ -4,16 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Color** | **string** | Dominant color of the pin image in hex format | 
 **Height** | **int32** | Height of the pin image in pixels | 
 **Id** | **string** | Unique identifier for the pin | 
 **Src** | **string** | URL of the pin image | 
+**VerticalOffset** | Pointer to **float64** | The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom. | [optional] 
 **Width** | **int32** | Width of the pin image in pixels | 
 
 ## Methods
 
 ### NewTrendingPin
 
-`func NewTrendingPin(height int32, id string, src string, width int32, ) *TrendingPin`
+`func NewTrendingPin(color string, height int32, id string, src string, width int32, ) *TrendingPin`
 
 NewTrendingPin instantiates a new TrendingPin object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +29,26 @@ will change when the set of required properties is changed
 NewTrendingPinWithDefaults instantiates a new TrendingPin object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetColor
+
+`func (o *TrendingPin) GetColor() string`
+
+GetColor returns the Color field if non-nil, zero value otherwise.
+
+### GetColorOk
+
+`func (o *TrendingPin) GetColorOk() (*string, bool)`
+
+GetColorOk returns a tuple with the Color field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetColor
+
+`func (o *TrendingPin) SetColor(v string)`
+
+SetColor sets Color field to given value.
+
 
 ### GetHeight
 
@@ -87,6 +109,31 @@ and a boolean to check if the value has been set.
 
 SetSrc sets Src field to given value.
 
+
+### GetVerticalOffset
+
+`func (o *TrendingPin) GetVerticalOffset() float64`
+
+GetVerticalOffset returns the VerticalOffset field if non-nil, zero value otherwise.
+
+### GetVerticalOffsetOk
+
+`func (o *TrendingPin) GetVerticalOffsetOk() (*float64, bool)`
+
+GetVerticalOffsetOk returns a tuple with the VerticalOffset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerticalOffset
+
+`func (o *TrendingPin) SetVerticalOffset(v float64)`
+
+SetVerticalOffset sets VerticalOffset field to given value.
+
+### HasVerticalOffset
+
+`func (o *TrendingPin) HasVerticalOffset() bool`
+
+HasVerticalOffset returns a boolean if a field has been set.
 
 ### GetWidth
 

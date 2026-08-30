@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum BulkEntityType {
-    CAMPAIGN, AD_GROUP, PRODUCT_GROUP, AD, KEYWORD, LABEL, SCHEDULE
+    CAMPAIGN, AD_GROUP, PRODUCT_GROUP, AD, KEYWORD, LABEL, SCHEDULE, ENTITY_HISTORY
 }

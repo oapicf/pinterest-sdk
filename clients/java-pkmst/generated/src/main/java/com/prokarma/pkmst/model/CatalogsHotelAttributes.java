@@ -3,9 +3,10 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.prokarma.pkmst.model.CatalogsAiContentDisclosure;
 import com.prokarma.pkmst.model.CatalogsHotelAddress;
-import com.prokarma.pkmst.model.CatalogsHotelAttributesAllOfMainImage;
 import com.prokarma.pkmst.model.CatalogsHotelGuestRatings;
+import com.prokarma.pkmst.model.CatalogsHotelMainImage;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -22,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CatalogsHotelAttributes
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsHotelAttributes   {
   @JsonProperty("address")
   private CatalogsHotelAddress address;
@@ -80,8 +81,12 @@ public class CatalogsHotelAttributes   {
   
   private List<String> additionalImageLink = null;
 
+  @JsonProperty("ai_disclosures")
+  
+  private List<CatalogsAiContentDisclosure> aiDisclosures = null;
+
   @JsonProperty("main_image")
-  private CatalogsHotelAttributesAllOfMainImage mainImage;
+  private CatalogsHotelMainImage mainImage;
 
   public CatalogsHotelAttributes address(CatalogsHotelAddress address) {
     this.address = address;
@@ -89,10 +94,10 @@ public class CatalogsHotelAttributes   {
   }
 
   /**
-   * Get address
+   * Hotel address
    * @return address
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Hotel address")
   public CatalogsHotelAddress getAddress() {
     return address;
   }
@@ -269,10 +274,10 @@ public class CatalogsHotelAttributes   {
   }
 
   /**
-   * Get guestRatings
+   * If specified, you must provide all properties
    * @return guestRatings
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "If specified, you must provide all properties")
   public CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
   }
@@ -411,10 +416,10 @@ public class CatalogsHotelAttributes   {
   }
 
   /**
-   * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+   * <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
    * @return additionalImageLink
    */
-  @ApiModelProperty(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", value = "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>")
+  @ApiModelProperty(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", value = "<= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.")
   public List<String> getAdditionalImageLink() {
     return additionalImageLink;
   }
@@ -423,21 +428,47 @@ public class CatalogsHotelAttributes   {
     this.additionalImageLink = additionalImageLink;
   }
 
-  public CatalogsHotelAttributes mainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public CatalogsHotelAttributes aiDisclosures(List<CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  public CatalogsHotelAttributes addAiDisclosuresItem(CatalogsAiContentDisclosure aiDisclosuresItem) {
+    if (this.aiDisclosures == null) {
+      this.aiDisclosures = new ArrayList<>();
+    }
+    this.aiDisclosures.add(aiDisclosuresItem);
+    return this;
+  }
+
+  /**
+   * AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+   * @return aiDisclosures
+   */
+  @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.")
+  public List<CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(List<CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
+
+  public CatalogsHotelAttributes mainImage(CatalogsHotelMainImage mainImage) {
     this.mainImage = mainImage;
     return this;
   }
 
   /**
-   * Get mainImage
+   * The main hotel image
    * @return mainImage
    */
-  @ApiModelProperty(value = "")
-  public CatalogsHotelAttributesAllOfMainImage getMainImage() {
+  @ApiModelProperty(value = "The main hotel image")
+  public CatalogsHotelMainImage getMainImage() {
     return mainImage;
   }
 
-  public void setMainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public void setMainImage(CatalogsHotelMainImage mainImage) {
     this.mainImage = mainImage;
   }
 
@@ -469,12 +500,13 @@ public class CatalogsHotelAttributes   {
         Objects.equals(this.neighborhood, catalogsHotelAttributes.neighborhood) &&
         Objects.equals(this.salePrice, catalogsHotelAttributes.salePrice) &&
         Objects.equals(this.additionalImageLink, catalogsHotelAttributes.additionalImageLink) &&
+        Objects.equals(this.aiDisclosures, catalogsHotelAttributes.aiDisclosures) &&
         Objects.equals(this.mainImage, catalogsHotelAttributes.mainImage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice, additionalImageLink, mainImage);
+    return Objects.hash(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice, additionalImageLink, aiDisclosures, mainImage);
   }
 
   @Override
@@ -500,6 +532,7 @@ public class CatalogsHotelAttributes   {
     sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    mainImage: ").append(toIndentedString(mainImage)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -510,10 +543,7 @@ public class CatalogsHotelAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

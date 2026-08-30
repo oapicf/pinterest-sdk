@@ -1,7 +1,7 @@
 #' Create a new TargetingTemplateAudienceSizing
 #'
 #' @description
-#' Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+#' Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.
 #'
 #' @docType class
 #' @title TargetingTemplateAudienceSizing
@@ -61,9 +61,32 @@ TargetingTemplateAudienceSizing <- R6::R6Class(
       TargetingTemplateAudienceSizingObject <- list()
       if (!is.null(self$`reach_estimate`)) {
         TargetingTemplateAudienceSizingObject[["reach_estimate"]] <-
-          self$`reach_estimate`$toSimpleType()
+          self$extractSimpleType(self$`reach_estimate`)
       }
       return(TargetingTemplateAudienceSizingObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

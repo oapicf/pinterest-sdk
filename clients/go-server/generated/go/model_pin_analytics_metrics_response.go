@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ package openapi
 type PinAnalyticsMetricsResponse struct {
 
 	// Array with the requested daily metric records
-	DailyMetrics []PinAnalyticsMetricsResponseDailyMetricsInner `json:"daily_metrics,omitempty"`
+	DailyMetrics []PinAnalyticsDailyMetrics `json:"daily_metrics,omitempty"`
 
 	// The lifetime metric name and value.
 	LifetimeMetrics map[string]int32 `json:"lifetime_metrics,omitempty"`
@@ -26,10 +26,11 @@ type PinAnalyticsMetricsResponse struct {
 	SummaryMetrics map[string]float32 `json:"summary_metrics,omitempty"`
 }
 
-// AssertPinAnalyticsMetricsResponseRequired checks if the required fields are not zero-ed
+// AssertPinAnalyticsMetricsResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertPinAnalyticsMetricsResponseRequired(obj PinAnalyticsMetricsResponse) error {
 	for _, el := range obj.DailyMetrics {
-		if err := AssertPinAnalyticsMetricsResponseDailyMetricsInnerRequired(el); err != nil {
+		if err := AssertPinAnalyticsDailyMetricsRequired(el); err != nil {
 			return err
 		}
 	}
@@ -39,7 +40,7 @@ func AssertPinAnalyticsMetricsResponseRequired(obj PinAnalyticsMetricsResponse) 
 // AssertPinAnalyticsMetricsResponseConstraints checks if the values respects the defined constraints
 func AssertPinAnalyticsMetricsResponseConstraints(obj PinAnalyticsMetricsResponse) error {
 	for _, el := range obj.DailyMetrics {
-		if err := AssertPinAnalyticsMetricsResponseDailyMetricsInnerConstraints(el); err != nil {
+		if err := AssertPinAnalyticsDailyMetricsConstraints(el); err != nil {
 			return err
 		}
 	}

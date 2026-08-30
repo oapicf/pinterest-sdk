@@ -46,32 +46,32 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Timestamp of the feed ingestion.
 	 */
 	std::string getCreatedAt();
 
-	/*! \brief Set 
+	/*! \brief Set Timestamp of the feed ingestion.
 	 */
 	void setCreatedAt(std::string  created_at);
-	/*! \brief Get 
+	/*! \brief Get Catalog Feed id pertaining to the feed ingestion.
 	 */
 	std::string getFeedId();
 
-	/*! \brief Set 
+	/*! \brief Set Catalog Feed id pertaining to the feed ingestion.
 	 */
 	void setFeedId(std::string  feed_id);
-	/*! \brief Get 
+	/*! \brief Get Unique identifier of a feed ingestion.
 	 */
 	std::string getId();
 
-	/*! \brief Set 
+	/*! \brief Set Unique identifier of a feed ingestion.
 	 */
 	void setId(std::string  id);
-	/*! \brief Get 
+	/*! \brief Get Status of the feed ingestion.
 	 */
 	CatalogsFeedProcessingStatus getStatus();
 
-	/*! \brief Set 
+	/*! \brief Set Status of the feed ingestion.
 	 */
 	void setStatus(CatalogsFeedProcessingStatus  status);
 

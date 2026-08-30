@@ -10,20 +10,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TrendingPin   {
   
+  private String color;
   private Integer height;
   private String id;
   private String src;
+  private Double verticalOffset;
   private Integer width;
 
   public TrendingPin () {
 
   }
 
-  public TrendingPin (Integer height, String id, String src, Integer width) {
+  public TrendingPin (String color, Integer height, String id, String src, Double verticalOffset, Integer width) {
+    this.color = color;
     this.height = height;
     this.id = id;
     this.src = src;
+    this.verticalOffset = verticalOffset;
     this.width = width;
+  }
+
+    
+  @JsonProperty("color")
+  public String getColor() {
+    return color;
+  }
+  public void setColor(String color) {
+    this.color = color;
   }
 
     
@@ -54,6 +67,15 @@ public class TrendingPin   {
   }
 
     
+  @JsonProperty("vertical_offset")
+  public Double getVerticalOffset() {
+    return verticalOffset;
+  }
+  public void setVerticalOffset(Double verticalOffset) {
+    this.verticalOffset = verticalOffset;
+  }
+
+    
   @JsonProperty("width")
   public Integer getWidth() {
     return width;
@@ -72,15 +94,17 @@ public class TrendingPin   {
       return false;
     }
     TrendingPin trendingPin = (TrendingPin) o;
-    return Objects.equals(height, trendingPin.height) &&
+    return Objects.equals(color, trendingPin.color) &&
+        Objects.equals(height, trendingPin.height) &&
         Objects.equals(id, trendingPin.id) &&
         Objects.equals(src, trendingPin.src) &&
+        Objects.equals(verticalOffset, trendingPin.verticalOffset) &&
         Objects.equals(width, trendingPin.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(height, id, src, width);
+    return Objects.hash(color, height, id, src, verticalOffset, width);
   }
 
   @Override
@@ -88,9 +112,11 @@ public class TrendingPin   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TrendingPin {\n");
     
+    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    src: ").append(toIndentedString(src)).append("\n");
+    sb.append("    verticalOffset: ").append(toIndentedString(verticalOffset)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -101,9 +127,6 @@ public class TrendingPin   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

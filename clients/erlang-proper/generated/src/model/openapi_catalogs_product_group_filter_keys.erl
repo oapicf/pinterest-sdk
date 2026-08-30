@@ -36,13 +36,14 @@
   | {'GOOGLE_PRODUCT_CATEGORY_2', openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria() }
   | {'GOOGLE_PRODUCT_CATEGORY_1', openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria() }
   | {'GOOGLE_PRODUCT_CATEGORY_0', openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria() }
-  | {'PRODUCT_GROUP', openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria() }
   | {'CUSTOM_NUMBER_0', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
   | {'CUSTOM_NUMBER_1', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
   | {'CUSTOM_NUMBER_2', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
   | {'CUSTOM_NUMBER_3', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
   | {'CUSTOM_NUMBER_4', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
   | {'TITLE_KEYWORDS', openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria() }
+  | {'PINTEREST_PRODUCT_CATEGORIES', openapi_catalogs_product_group_multiple_pinterest_product_category_criteria:openapi_catalogs_product_group_multiple_pinterest_product_category_criteria() }
+  | {'PRODUCT_GROUP', openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria() }
   ].
 
 
@@ -77,13 +78,14 @@ openapi_catalogs_product_group_filter_keys(Fields) ->
             , {'GOOGLE_PRODUCT_CATEGORY_2', openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria() }
             , {'GOOGLE_PRODUCT_CATEGORY_1', openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria() }
             , {'GOOGLE_PRODUCT_CATEGORY_0', openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria() }
-            , {'PRODUCT_GROUP', openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria() }
             , {'CUSTOM_NUMBER_0', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
             , {'CUSTOM_NUMBER_1', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
             , {'CUSTOM_NUMBER_2', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
             , {'CUSTOM_NUMBER_3', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
             , {'CUSTOM_NUMBER_4', openapi_catalogs_product_group_uint32_criteria:openapi_catalogs_product_group_uint32_criteria() }
             , {'TITLE_KEYWORDS', openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria() }
+            , {'PINTEREST_PRODUCT_CATEGORIES', openapi_catalogs_product_group_multiple_pinterest_product_category_criteria:openapi_catalogs_product_group_multiple_pinterest_product_category_criteria() }
+            , {'PRODUCT_GROUP', openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

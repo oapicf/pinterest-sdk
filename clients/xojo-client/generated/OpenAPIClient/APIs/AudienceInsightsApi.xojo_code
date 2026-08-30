@@ -8,10 +8,10 @@ Protected Class AudienceInsightsApi
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter audienceInsightType: (query) Type of audience insights. 
 		  //
-		  // Invokes AudienceInsightsApiCallbackHandler.AudienceInsightsGetCallback(AudienceInsightsResponse) on completion. 
+		  // Invokes AudienceInsightsApiCallbackHandler.AudienceInsightsGetCallback(AudienceInsights) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/audience_insights
-		  // - Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href="https://help.pinterest.com/en/business/article/audience-insights" target="_blank">Learn more about Audience Insights</a>.
+		  // - Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -55,7 +55,7 @@ Protected Class AudienceInsightsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AudienceInsightsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AudienceInsightsResponse) As Boolean
+		Private Function AudienceInsightsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AudienceInsights) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -63,7 +63,7 @@ Protected Class AudienceInsightsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.AudienceInsightsResponse
+			  outData = New OpenAPIClient.Models.AudienceInsights
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -116,7 +116,7 @@ Protected Class AudienceInsightsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.AudienceInsightsResponse
+		  Dim data As OpenAPIClient.Models.AudienceInsights
 		  CallbackHandler.AudienceInsightsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -130,7 +130,7 @@ Protected Class AudienceInsightsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.AudienceInsightsResponse
+		  Dim data As OpenAPIClient.Models.AudienceInsights
 		  Call AudienceInsightsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AudienceInsightsGetCallback(error, data)
@@ -147,7 +147,7 @@ Protected Class AudienceInsightsApi
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  //
-		  // Invokes AudienceInsightsApiCallbackHandler.AudienceInsightsScopeAndTypeGetCallback(AudienceDefinitionResponse) on completion. 
+		  // Invokes AudienceInsightsApiCallbackHandler.AudienceInsightsScopeAndTypeGetCallback(AudienceInsightsScopeAndTypeGet200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/insights/audiences
 		  // - Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.
@@ -191,7 +191,7 @@ Protected Class AudienceInsightsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function AudienceInsightsScopeAndTypeGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AudienceDefinitionResponse) As Boolean
+		Private Function AudienceInsightsScopeAndTypeGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.AudienceInsightsScopeAndTypeGet200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -199,7 +199,7 @@ Protected Class AudienceInsightsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.AudienceDefinitionResponse
+			  outData = New OpenAPIClient.Models.AudienceInsightsScopeAndTypeGet200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -252,7 +252,7 @@ Protected Class AudienceInsightsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.AudienceDefinitionResponse
+		  Dim data As OpenAPIClient.Models.AudienceInsightsScopeAndTypeGet200Response
 		  CallbackHandler.AudienceInsightsScopeAndTypeGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -266,7 +266,7 @@ Protected Class AudienceInsightsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.AudienceDefinitionResponse
+		  Dim data As OpenAPIClient.Models.AudienceInsightsScopeAndTypeGet200Response
 		  Call AudienceInsightsScopeAndTypeGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.AudienceInsightsScopeAndTypeGetCallback(error, data)

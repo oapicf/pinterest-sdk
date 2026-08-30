@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,6 +14,8 @@ package openapi
 
 import (
 	"time"
+	"encoding/json"
+	"fmt"
 )
 
 
@@ -22,9 +24,8 @@ type CatalogsFeedProcessingResult struct {
 
 	CreatedAt time.Time `json:"created_at"`
 
-	Id string `json:"id"`
-
-	UpdatedAt time.Time `json:"updated_at"`
+	// ID of the feed processing result.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
 	IngestionDetails CatalogsFeedIngestionDetails `json:"ingestion_details"`
 
@@ -32,20 +33,120 @@ type CatalogsFeedProcessingResult struct {
 
 	Status CatalogsFeedProcessingStatus `json:"status"`
 
+	UpdatedAt time.Time `json:"updated_at"`
+
 	ValidationDetails CatalogsFeedValidationDetails `json:"validation_details"`
 
 	VideoCounts CatalogsFeedVideoCounts `json:"video_counts,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsFeedProcessingResult
+func (o *CatalogsFeedProcessingResult) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"id",
+		"ingestion_details",
+		"product_counts",
+		"status",
+		"validation_details",
+	}
 
-// AssertCatalogsFeedProcessingResultRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"id": false,
+		"ingestion_details": false,
+		"product_counts": true,
+		"status": false,
+		"validation_details": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"created_at": {},
+		"id": {},
+		"ingestion_details": {},
+		"product_counts": {},
+		"status": {},
+		"updated_at": {},
+		"validation_details": {},
+		"video_counts": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsFeedProcessingResult
+
+	if value, exists := allProperties["created_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreatedAt); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["ingestion_details"]; exists {
+		if err = json.Unmarshal(value, &decoded.IngestionDetails); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["product_counts"]; exists {
+		if err = json.Unmarshal(value, &decoded.ProductCounts); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["updated_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdatedAt); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["validation_details"]; exists {
+		if err = json.Unmarshal(value, &decoded.ValidationDetails); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["video_counts"]; exists {
+		if err = json.Unmarshal(value, &decoded.VideoCounts); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsFeedProcessingResultRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsFeedProcessingResultRequired(obj CatalogsFeedProcessingResult) error {
 	elements := map[string]interface{}{
-		"created_at": obj.CreatedAt,
-		"id": obj.Id,
-		"updated_at": obj.UpdatedAt,
 		"ingestion_details": obj.IngestionDetails,
-		"product_counts": obj.ProductCounts,
-		"status": obj.Status,
 		"validation_details": obj.ValidationDetails,
 	}
 	for name, el := range elements {

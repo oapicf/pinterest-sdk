@@ -6,9 +6,11 @@ Pin image data for trending topics
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**color** | **str** | Dominant color of the pin image in hex format | 
 **height** | **int** | Height of the pin image in pixels | 
 **id** | **str** | Unique identifier for the pin | 
 **src** | **str** | URL of the pin image | 
+**vertical_offset** | **float** | The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom. | [optional] 
 **width** | **int** | Width of the pin image in pixels | 
 
 ## Example

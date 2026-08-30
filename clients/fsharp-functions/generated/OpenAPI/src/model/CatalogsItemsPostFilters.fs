@@ -6,7 +6,6 @@ open Newtonsoft.Json
 open OpenAPI.Model.CatalogsCreativeAssetsItemsPostFilter
 open OpenAPI.Model.CatalogsHotelItemsPostFilter
 open OpenAPI.Model.CatalogsRetailItemsPostFilter
-open OpenAPI.Model.CatalogsType
 
 module CatalogsItemsPostFilters =
 
@@ -14,10 +13,10 @@ module CatalogsItemsPostFilters =
 
   [<CLIMutable>]
   type CatalogsItemsPostFilters = {
-    [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
+    [<JsonProperty(PropertyName = "catalog_type")>]
+    CatalogType : string;
     [<JsonProperty(PropertyName = "item_ids")>]
     ItemIds : string[];
     [<JsonProperty(PropertyName = "hotel_ids")>]

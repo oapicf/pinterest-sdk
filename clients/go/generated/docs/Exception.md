@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to **int32** | Exception error code. | [optional] 
-**Message** | Pointer to **string** | Exception message. | [optional] 
+**Code** | Pointer to **int32** |  | [optional] 
+**Message** | **string** |  | 
 
 ## Methods
 
 ### NewException
 
-`func NewException() *Exception`
+`func NewException(message string, ) *Exception`
 
 NewException instantiates a new Exception object
 This constructor will assign default values to properties that have it defined,
@@ -70,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetMessage sets Message field to given value.
 
-### HasMessage
-
-`func (o *Exception) HasMessage() bool`
-
-HasMessage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

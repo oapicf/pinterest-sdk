@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **String** |  | 
+**catalog_type** | **CatalogType** |  (enum: RETAIL) | 
 **metadata** | [**models::CatalogsRetailProductMetadata**](CatalogsRetailProductMetadata.md) |  | 
 **pin** | [**models::Pin**](Pin.md) |  | 
 

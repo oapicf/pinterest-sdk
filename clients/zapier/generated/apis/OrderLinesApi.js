@@ -1,6 +1,7 @@
 const samples = require('../samples/OrderLinesApi');
-const Error = require('../models/Error');
 const OrderLine = require('../models/OrderLine');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const Pinterest.Lib.PaginationOrder = require('../models/Pinterest.Lib.PaginationOrder');
 const order_lines_list_200_response = require('../models/order_lines_list_200_response');
 const utils = require('../utils/utils');
 
@@ -16,14 +17,14 @@ module.exports = {
         operation: {
             inputFields: [
                 {
-                    key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
+                    key: 'order_line_id',
+                    label: 'Order line ID.',
                     type: 'string',
                     required: true,
                 },
                 {
-                    key: 'order_line_id',
-                    label: 'Unique identifier of an order line.',
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
                     type: 'string',
                     required: true,
                 },
@@ -58,7 +59,7 @@ module.exports = {
         key: 'orderLines/list',
         noun: 'order_lines',
         display: {
-            label: 'Get order lines',
+            label: 'Get order lines.',
             description: 'List existing order lines associated with an ad account.',
             hidden: false,
         },
@@ -71,24 +72,16 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
-                    type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
-                },
-                {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
                 },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
+                },
+                ....fields(),
             ],
             outputFields: [
                 ...order_lines_list_200_response.fields('', false),
@@ -103,9 +96,9 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
                         'order': bundle.inputData?.['order'],
-                        'bookmark': bundle.inputData?.['bookmark'],
                     },
                     body: {
                     },

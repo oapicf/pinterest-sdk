@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -23,11 +23,11 @@ type QuizPinData struct {
 
 	TieBreakerCustomResult *QuizPinResult `json:"tie_breaker_custom_result,omitempty"`
 
-	// Quiz ad tie breaker type, default is RANDOM
-	TieBreakerType string `json:"tie_breaker_type,omitempty"`
+	TieBreakerType TieBreakerType `json:"tie_breaker_type,omitempty"`
 }
 
-// AssertQuizPinDataRequired checks if the required fields are not zero-ed
+// AssertQuizPinDataRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertQuizPinDataRequired(obj QuizPinData) error {
 	for _, el := range obj.Questions {
 		if err := AssertQuizPinQuestionRequired(el); err != nil {

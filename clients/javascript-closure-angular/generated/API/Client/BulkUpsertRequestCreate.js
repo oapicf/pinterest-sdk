@@ -25,7 +25,7 @@ API.Client.BulkUpsertRequestCreate.prototype.ads;
 API.Client.BulkUpsertRequestCreate.prototype.campaigns;
 
 /**
- * @type {!Array<!API.Client.multiple_product_groups_inner>}
+ * @type {!Array<!API.Client.BulkUpsertRequestCreateCatalogProductGroupsItems>}
  * @export
  */
 API.Client.BulkUpsertRequestCreate.prototype.catalogProductGroups;
@@ -37,7 +37,7 @@ API.Client.BulkUpsertRequestCreate.prototype.catalogProductGroups;
 API.Client.BulkUpsertRequestCreate.prototype.keywords;
 
 /**
- * @type {!Array<!API.Client.LabelCreateRequest>}
+ * @type {!Array<!API.Client.LabelBulkCreateRequest>}
  * @export
  */
 API.Client.BulkUpsertRequestCreate.prototype.labels;
@@ -47,4 +47,10 @@ API.Client.BulkUpsertRequestCreate.prototype.labels;
  * @export
  */
 API.Client.BulkUpsertRequestCreate.prototype.productGroups;
+
+/**
+ * @type {!Array<!API.Client.ScheduleCreateRequest>}
+ * @export
+ */
+API.Client.BulkUpsertRequestCreate.prototype.schedules;
 

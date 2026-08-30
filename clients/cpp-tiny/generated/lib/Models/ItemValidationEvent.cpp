@@ -106,7 +106,7 @@ ItemValidationEvent::getAttribute()
 }
 
 void
-ItemValidationEvent::setAttribute(std::string  attribute)
+ItemValidationEvent::setAttribute(std::string attribute)
 {
 	this->attribute = attribute;
 }
@@ -118,7 +118,7 @@ ItemValidationEvent::getCode()
 }
 
 void
-ItemValidationEvent::setCode(int  code)
+ItemValidationEvent::setCode(int code)
 {
 	this->code = code;
 }
@@ -130,7 +130,7 @@ ItemValidationEvent::getMessage()
 }
 
 void
-ItemValidationEvent::setMessage(std::string  message)
+ItemValidationEvent::setMessage(std::string message)
 {
 	this->message = message;
 }

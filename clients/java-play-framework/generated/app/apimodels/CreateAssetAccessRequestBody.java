@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.CreateAssetAccessRequestBodyAssetRequestsInner;
+import apimodels.CreateAssetAccessRequestItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 /**
  * An object containing a list of all the asset access requests
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CreateAssetAccessRequestBody   {
   @JsonProperty("asset_requests")
@@ -21,14 +21,14 @@ public class CreateAssetAccessRequestBody   {
 @Size(min=1,max=100)
 @Valid
 
-  private List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests = new ArrayList<>();
+  private List<@Valid CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();
 
-  public CreateAssetAccessRequestBody assetRequests(List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public CreateAssetAccessRequestBody assetRequests(List<@Valid CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
     return this;
   }
 
-  public CreateAssetAccessRequestBody addAssetRequestsItem(CreateAssetAccessRequestBodyAssetRequestsInner assetRequestsItem) {
+  public CreateAssetAccessRequestBody addAssetRequestsItem(CreateAssetAccessRequestItem assetRequestsItem) {
     if (this.assetRequests == null) {
       this.assetRequests = new ArrayList<>();
     }
@@ -40,11 +40,11 @@ public class CreateAssetAccessRequestBody   {
    * Get assetRequests
    * @return assetRequests
   **/
-  public List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> getAssetRequests() {
+  public List<@Valid CreateAssetAccessRequestItem> getAssetRequests() {
     return assetRequests;
   }
 
-  public void setAssetRequests(List<@Valid CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public void setAssetRequests(List<@Valid CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
   }
 
@@ -82,10 +82,7 @@ public class CreateAssetAccessRequestBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

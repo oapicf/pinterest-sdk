@@ -11,31 +11,30 @@
 part of openapi.api;
 
 /// Default availability for products in a feed.
-class ProductAvailabilityType {
-  /// Instantiate a new enum with the provided [value].
-  const ProductAvailabilityType._(this.value);
+enum ProductAvailabilityType {
+  IN_STOCK._(r'IN_STOCK'),
+  OUT_OF_STOCK._(r'OUT_OF_STOCK'),
+  PREORDER._(r'PREORDER'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ProductAvailabilityType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const IN_STOCK = ProductAvailabilityType._(r'IN_STOCK');
-  static const OUT_OF_STOCK = ProductAvailabilityType._(r'OUT_OF_STOCK');
-  static const PREORDER = ProductAvailabilityType._(r'PREORDER');
-
-  /// List of all possible values in this [enum][ProductAvailabilityType].
-  static const values = <ProductAvailabilityType>[
-    IN_STOCK,
-    OUT_OF_STOCK,
-    PREORDER,
-  ];
-
+  /// Returns the instance of [ProductAvailabilityType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ProductAvailabilityType? fromJson(dynamic value) => ProductAvailabilityTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ProductAvailabilityType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ProductAvailabilityType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ProductAvailabilityType>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class ProductAvailabilityTypeTypeTransformer {
 
   const ProductAvailabilityTypeTypeTransformer._();
 
-  String encode(ProductAvailabilityType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(ProductAvailabilityType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ProductAvailabilityType.
+  /// Returns the instance of [ProductAvailabilityType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class ProductAvailabilityTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ProductAvailabilityType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ProductAvailabilityType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'IN_STOCK': return ProductAvailabilityType.IN_STOCK;
@@ -82,7 +86,7 @@ class ProductAvailabilityTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [ProductAvailabilityTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ProductAvailabilityTypeTypeTransformer? _instance;
 }
 

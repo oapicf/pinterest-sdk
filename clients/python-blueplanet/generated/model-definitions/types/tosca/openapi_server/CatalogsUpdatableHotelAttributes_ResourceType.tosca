@@ -19,7 +19,7 @@ resourceTypes {
     properties {
         address {
           type = CatalogsHotelAddress
-          description = ""
+          description = "Hotel address"
           optional = false
         }
         base_price {
@@ -69,7 +69,7 @@ resourceTypes {
         }
         guest_ratings {
           type = CatalogsHotelGuestRatings
-          description = ""
+          description = "If specified, you must provide all properties"
           optional = false
         }
         latitude {

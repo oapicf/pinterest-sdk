@@ -21,7 +21,9 @@ enum CatalogsProductGroupType {
     
     SHOPIFY_COLLECTIONS("SHOPIFY_COLLECTIONS"),
     
-    I2_PC("I2PC")
+    I2_PC("I2PC"),
+    
+    CATALOG_EXPANSION("CATALOG_EXPANSION")
 
     private final String value
 

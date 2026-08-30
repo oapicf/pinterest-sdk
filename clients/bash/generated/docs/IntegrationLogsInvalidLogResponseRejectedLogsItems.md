@@ -1,0 +1,13 @@
+# IntegrationLogsInvalidLogResponseRejectedLogsItems
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**field** | **string** |  | [default to null]
+**logUnderscoreindex** | **integer** |  | [optional] [default to null]
+**reason** | **string** |  | [default to null]
+**value** | **string** |  | [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

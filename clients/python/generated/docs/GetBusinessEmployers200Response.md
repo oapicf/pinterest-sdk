@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[UserBusinessRoleBinding]**](UserBusinessRoleBinding.md) | List of employers. | 
+**items** | [**List[UserBusinessRoleBinding]**](UserBusinessRoleBinding.md) |  | 
 
 ## Example
 

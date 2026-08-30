@@ -4,18 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **string** |  | 
 **InStock** | **float32** |  | 
 **OutOfStock** | **float32** |  | 
 **Preorder** | **float32** |  | 
 **Total** | **float32** |  | 
 **Videos** | **float32** |  | 
+**AppLinks** | **float32** |  | 
+**Images** | **float32** |  | 
 
 ## Methods
 
 ### NewCatalogsProductGroupProductCountsVertical
 
-`func NewCatalogsProductGroupProductCountsVertical(catalogType CatalogsType, inStock float32, outOfStock float32, preorder float32, total float32, videos float32, ) *CatalogsProductGroupProductCountsVertical`
+`func NewCatalogsProductGroupProductCountsVertical(catalogType string, inStock float32, outOfStock float32, preorder float32, total float32, videos float32, appLinks float32, images float32, ) *CatalogsProductGroupProductCountsVertical`
 
 NewCatalogsProductGroupProductCountsVertical instantiates a new CatalogsProductGroupProductCountsVertical object
 This constructor will assign default values to properties that have it defined,
@@ -32,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCatalogType
 
-`func (o *CatalogsProductGroupProductCountsVertical) GetCatalogType() CatalogsType`
+`func (o *CatalogsProductGroupProductCountsVertical) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsProductGroupProductCountsVertical) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsProductGroupProductCountsVertical) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsProductGroupProductCountsVertical) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsProductGroupProductCountsVertical) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 
@@ -148,6 +150,46 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsProductGroupProductCountsVertical) SetVideos(v float32)`
 
 SetVideos sets Videos field to given value.
+
+
+### GetAppLinks
+
+`func (o *CatalogsProductGroupProductCountsVertical) GetAppLinks() float32`
+
+GetAppLinks returns the AppLinks field if non-nil, zero value otherwise.
+
+### GetAppLinksOk
+
+`func (o *CatalogsProductGroupProductCountsVertical) GetAppLinksOk() (*float32, bool)`
+
+GetAppLinksOk returns a tuple with the AppLinks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppLinks
+
+`func (o *CatalogsProductGroupProductCountsVertical) SetAppLinks(v float32)`
+
+SetAppLinks sets AppLinks field to given value.
+
+
+### GetImages
+
+`func (o *CatalogsProductGroupProductCountsVertical) GetImages() float32`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *CatalogsProductGroupProductCountsVertical) GetImagesOk() (*float32, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *CatalogsProductGroupProductCountsVertical) SetImages(v float32)`
+
+SetImages sets Images field to given value.
 
 
 

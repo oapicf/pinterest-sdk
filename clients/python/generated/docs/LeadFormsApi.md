@@ -12,15 +12,15 @@ Method | HTTP request | Description
 
 
 # **lead_form_get**
-> LeadFormResponse lead_form_get(ad_account_id, lead_form_id)
+> LeadForm lead_form_get(lead_form_id, ad_account_id)
 
 Get lead form by id
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 Gets a lead form given it's ID. It must also be associated with the provided ad account ID.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -28,7 +28,7 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.lead_form_response import LeadFormResponse
+from pinterestsdk.models.lead_form import LeadForm
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -49,12 +49,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.LeadFormsApi(api_client)
+    lead_form_id = 'lead_form_id_example' # str | The ID of this lead form
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    lead_form_id = '1234567890123' # str | Unique identifier of a lead form.
 
     try:
         # Get lead form by id
-        api_response = api_instance.lead_form_get(ad_account_id, lead_form_id)
+        api_response = api_instance.lead_form_get(lead_form_id, ad_account_id)
         print("The response of LeadFormsApi->lead_form_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -68,12 +68,12 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **lead_form_id** | **str**| The ID of this lead form | 
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **lead_form_id** | **str**| Unique identifier of a lead form. | 
 
 ### Return type
 
-[**LeadFormResponse**](LeadFormResponse.md)
+[**LeadForm**](LeadForm.md)
 
 ### Authorization
 
@@ -88,15 +88,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account lead forms parameters. |  -  |
-**404** | The lead form ID for the given ad account ID does not exist. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lead_form_test_create**
-> LeadFormTestResponse lead_form_test_create(ad_account_id, lead_form_id, lead_form_test_request)
+> LeadFormTest lead_form_test_create(ad_account_id, lead_form_id, lead_form_test_create)
 
 Create lead form test data
 
@@ -109,8 +112,8 @@ Create lead form test data based on the list of answers provided as part of the 
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.lead_form_test_request import LeadFormTestRequest
-from pinterestsdk.models.lead_form_test_response import LeadFormTestResponse
+from pinterestsdk.models.lead_form_test import LeadFormTest
+from pinterestsdk.models.lead_form_test_create import LeadFormTestCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -131,13 +134,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.LeadFormsApi(api_client)
-    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    lead_form_id = '1234567890123' # str | Unique identifier of a lead form.
-    lead_form_test_request = pinterestsdk.LeadFormTestRequest() # LeadFormTestRequest | Subscription to create.
+    ad_account_id = 'ad_account_id_example' # str | 
+    lead_form_id = 'lead_form_id_example' # str | Unique identifier of a lead form.
+    lead_form_test_create = pinterestsdk.LeadFormTestCreate() # LeadFormTestCreate | 
 
     try:
         # Create lead form test data
-        api_response = api_instance.lead_form_test_create(ad_account_id, lead_form_id, lead_form_test_request)
+        api_response = api_instance.lead_form_test_create(ad_account_id, lead_form_id, lead_form_test_create)
         print("The response of LeadFormsApi->lead_form_test_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -151,13 +154,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ad_account_id** | **str**| Unique identifier of an ad account. | 
+ **ad_account_id** | **str**|  | 
  **lead_form_id** | **str**| Unique identifier of a lead form. | 
- **lead_form_test_request** | [**LeadFormTestRequest**](LeadFormTestRequest.md)| Subscription to create. | 
+ **lead_form_test_create** | [**LeadFormTestCreate**](LeadFormTestCreate.md)|  | 
 
 ### Return type
 
-[**LeadFormTestResponse**](LeadFormTestResponse.md)
+[**LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
@@ -172,23 +175,23 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid parameters. |  -  |
-**404** | Lead not found. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lead_forms_create**
-> LeadFormArrayResponse lead_forms_create(ad_account_id, lead_form_create_request)
+> LeadFormsCreate200Response lead_forms_create(ad_account_id, lead_form_create)
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
-Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.
+Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -196,8 +199,8 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.lead_form_array_response import LeadFormArrayResponse
-from pinterestsdk.models.lead_form_create_request import LeadFormCreateRequest
+from pinterestsdk.models.lead_form_create import LeadFormCreate
+from pinterestsdk.models.lead_forms_create200_response import LeadFormsCreate200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -219,11 +222,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.LeadFormsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    lead_form_create_request = [pinterestsdk.LeadFormCreateRequest()] # List[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
+    lead_form_create = [pinterestsdk.LeadFormCreate()] # List[LeadFormCreate] | 
 
     try:
         # Create lead forms
-        api_response = api_instance.lead_forms_create(ad_account_id, lead_form_create_request)
+        api_response = api_instance.lead_forms_create(ad_account_id, lead_form_create)
         print("The response of LeadFormsApi->lead_forms_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -238,11 +241,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **lead_form_create_request** | [**List[LeadFormCreateRequest]**](LeadFormCreateRequest.md)| List of lead forms to create, size limit [1, 30]. | 
+ **lead_form_create** | [**List[LeadFormCreate]**](LeadFormCreate.md)|  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -257,22 +260,26 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account lead forms parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lead_forms_list**
-> LeadFormsList200Response lead_forms_list(ad_account_id, page_size=page_size, order=order, bookmark=bookmark)
+> LeadFormsList200Response lead_forms_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order)
 
 List lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 List lead forms associated with an ad account ID.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -281,6 +288,7 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
 ```python
 import pinterestsdk
 from pinterestsdk.models.lead_forms_list200_response import LeadFormsList200Response
+from pinterestsdk.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -302,13 +310,13 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.LeadFormsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-    order = 'ASCENDING' # str | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+    order = pinterestsdk.PinterestLibPaginationOrder() # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
     try:
         # List lead forms
-        api_response = api_instance.lead_forms_list(ad_account_id, page_size=page_size, order=order, bookmark=bookmark)
+        api_response = api_instance.lead_forms_list(ad_account_id, bookmark=bookmark, page_size=page_size, order=order)
         print("The response of LeadFormsApi->lead_forms_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -323,9 +331,9 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **str**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -344,22 +352,26 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account lead forms parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lead_forms_update**
-> LeadFormArrayResponse lead_forms_update(ad_account_id, lead_form_update_request)
+> LeadFormsCreate200Response lead_forms_update(ad_account_id, lead_form_batch_update)
 
 Update lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -367,8 +379,8 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.lead_form_array_response import LeadFormArrayResponse
-from pinterestsdk.models.lead_form_update_request import LeadFormUpdateRequest
+from pinterestsdk.models.lead_form_batch_update import LeadFormBatchUpdate
+from pinterestsdk.models.lead_forms_create200_response import LeadFormsCreate200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -390,11 +402,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.LeadFormsApi(api_client)
     ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
-    lead_form_update_request = [pinterestsdk.LeadFormUpdateRequest()] # List[LeadFormUpdateRequest] | List of lead forms to update, size limit [1, 30].
+    lead_form_batch_update = [pinterestsdk.LeadFormBatchUpdate()] # List[LeadFormBatchUpdate] | 
 
     try:
         # Update lead forms
-        api_response = api_instance.lead_forms_update(ad_account_id, lead_form_update_request)
+        api_response = api_instance.lead_forms_update(ad_account_id, lead_form_batch_update)
         print("The response of LeadFormsApi->lead_forms_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -409,11 +421,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **str**| Unique identifier of an ad account. | 
- **lead_form_update_request** | [**List[LeadFormUpdateRequest]**](LeadFormUpdateRequest.md)| List of lead forms to update, size limit [1, 30]. | 
+ **lead_form_batch_update** | [**List[LeadFormBatchUpdate]**](LeadFormBatchUpdate.md)|  | 
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -428,9 +440,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid ad account lead forms parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

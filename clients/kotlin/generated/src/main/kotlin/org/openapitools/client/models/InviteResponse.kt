@@ -8,51 +8,44 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.BaseInviteDataResponseInviteData
 import org.openapitools.client.models.BusinessAccessUserSummary
 import org.openapitools.client.models.InviteAssetsSummary
+import org.openapitools.client.models.InviteDataResponse
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * A user's username or email OR a partner id that caused the error.
  *
- * @param id Unique identifier of the invite/request.
- * @param inviteData 
- * @param isReceivedInvite Indicates whether the invite/request was received.
- * @param user Metadata for the member/partner that was sent the invite/request.
  * @param assetsSummary 
  * @param businessRoles The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
  * @param createdByBusiness Metadata for the business that created the invite/request.
  * @param createdByUser Metadata for the user that created the invite/request.
  * @param createdTime The time the invite/request was created. Returned in milliseconds.
+ * @param id Unique identifier of the invite/request.
+ * @param inviteData 
+ * @param isReceivedInvite Indicates whether the invite/request was received.
+ * @param user Metadata for the member/partner that was sent the invite/request.
  */
 
 
 data class InviteResponse (
-
-    /* Unique identifier of the invite/request. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    @Json(name = "invite_data")
-    val inviteData: BaseInviteDataResponseInviteData? = null,
-
-    /* Indicates whether the invite/request was received. */
-    @Json(name = "is_received_invite")
-    val isReceivedInvite: kotlin.Boolean? = null,
-
-    /* Metadata for the member/partner that was sent the invite/request. */
-    @Json(name = "user")
-    val user: BusinessAccessUserSummary? = null,
 
     @Json(name = "assets_summary")
     val assetsSummary: InviteAssetsSummary? = null,
@@ -63,15 +56,30 @@ data class InviteResponse (
 
     /* Metadata for the business that created the invite/request. */
     @Json(name = "created_by_business")
-    val createdByBusiness: kotlin.Any? = null,
+    val createdByBusiness: BusinessAccessUserSummary? = null,
 
     /* Metadata for the user that created the invite/request. */
     @Json(name = "created_by_user")
-    val createdByUser: kotlin.Any? = null,
+    val createdByUser: BusinessAccessUserSummary? = null,
 
     /* The time the invite/request was created. Returned in milliseconds. */
     @Json(name = "created_time")
-    val createdTime: kotlin.Int? = null
+    val createdTime: kotlin.Int? = null,
+
+    /* Unique identifier of the invite/request. */
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
+    @Json(name = "invite_data")
+    val inviteData: InviteDataResponse? = null,
+
+    /* Indicates whether the invite/request was received. */
+    @Json(name = "is_received_invite")
+    val isReceivedInvite: kotlin.Boolean? = null,
+
+    /* Metadata for the member/partner that was sent the invite/request. */
+    @Json(name = "user")
+    val user: BusinessAccessUserSummary? = null
 
 ) {
 

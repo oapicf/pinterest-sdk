@@ -13,16 +13,10 @@ Name | Type | Description | Notes
 **questions** | [`List&lt;QuizPinQuestion&gt;`](QuizPinQuestion.md) |  |  [optional property]
 **results** | [`List&lt;QuizPinResult&gt;`](QuizPinResult.md) |  |  [optional property]
 **tieBreakerCustomResult** | [`QuizPinResult`](QuizPinResult.md) |  |  [optional property]
-**tieBreakerType** | [**TieBreakerTypeEnum**](#TieBreakerTypeEnum) | Quiz ad tie breaker type, default is RANDOM |  [optional property]
+**tieBreakerType** | `TieBreakerType` |  |  [optional property]
 
 
 
 
-## TieBreakerTypeEnum
-
-Name | Value
----- | -----
-RANDOM | `"RANDOM"`
-CUSTOM | `"CUSTOM"`
 
 

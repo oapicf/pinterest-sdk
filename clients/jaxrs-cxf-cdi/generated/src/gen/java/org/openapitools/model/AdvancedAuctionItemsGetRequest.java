@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionItemsGetRecord;
+import org.openapitools.model.AdvancedAuctionKey;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -24,7 +24,7 @@ public class AdvancedAuctionItemsGetRequest   {
   
   private String catalogId;
 
-  private List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionKey> items = new ArrayList<>();
 
   /**
    * Catalog id pertaining to the retail item
@@ -49,7 +49,7 @@ public class AdvancedAuctionItemsGetRequest   {
   /**
    * A list of retail catalog items to fetch bid options for
    **/
-  public AdvancedAuctionItemsGetRequest items(List<AdvancedAuctionItemsGetRecord> items) {
+  public AdvancedAuctionItemsGetRequest items(List<@Valid AdvancedAuctionKey> items) {
     this.items = items;
     return this;
   }
@@ -58,14 +58,14 @@ public class AdvancedAuctionItemsGetRequest   {
   @ApiModelProperty(required = true, value = "A list of retail catalog items to fetch bid options for")
   @JsonProperty("items")
   @NotNull
- @Size(min=1,max=10000)  public List<AdvancedAuctionItemsGetRecord> getItems() {
+ @Size(min=1,max=10000)  public List<@Valid AdvancedAuctionKey> getItems() {
     return items;
   }
-  public void setItems(List<AdvancedAuctionItemsGetRecord> items) {
+  public void setItems(List<@Valid AdvancedAuctionKey> items) {
     this.items = items;
   }
 
-  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionItemsGetRecord itemsItem) {
+  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionKey itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -109,10 +109,7 @@ public class AdvancedAuctionItemsGetRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

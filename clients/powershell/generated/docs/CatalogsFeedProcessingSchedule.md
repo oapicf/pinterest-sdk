@@ -4,13 +4,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Time** | **String** | A time in format HH:MM with leading 0 (zero) | 
-**Timezone** | **String** | The timezone considered for the processing schedule time. | 
+**Timezone** | [**CatalogsFeedProcessingScheduleTimezone**](CatalogsFeedProcessingScheduleTimezone.md) | The timezone considered for the processing schedule time. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsFeedProcessingSchedule = Initialize-PSOpenAPIToolsCatalogsFeedProcessingSchedule  -Time 02:59 `
+$CatalogsFeedProcessingSchedule = Initialize-PSOpenAPIToolsCatalogsFeedProcessingSchedule  -Time null `
  -Timezone null
 ```
 

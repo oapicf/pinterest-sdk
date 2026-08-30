@@ -7,7 +7,7 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.exception import Exception  # noqa: F401,E501
-from app.openapi_server.models.promotion_response import PromotionResponse  # noqa: F401,E501
+from app.openapi_server.models.promotion import Promotion  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,16 +17,16 @@ class PromotionArrayElement(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, data: PromotionResponse=None, exception: Exception=None):  # noqa: E501
+    def __init__(self, data: Promotion=None, exception: Exception=None):  # noqa: E501
         """PromotionArrayElement - a model defined in Swagger
 
         :param data: The data of this PromotionArrayElement.  # noqa: E501
-        :type data: PromotionResponse
+        :type data: Promotion
         :param exception: The exception of this PromotionArrayElement.  # noqa: E501
         :type exception: Exception
         """
         self.swagger_types = {
-            'data': PromotionResponse,
+            'data': Promotion,
             'exception': Exception
         }
 
@@ -50,22 +50,22 @@ class PromotionArrayElement(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def data(self) -> PromotionResponse:
+    def data(self) -> Promotion:
         """Gets the data of this PromotionArrayElement.
 
 
         :return: The data of this PromotionArrayElement.
-        :rtype: PromotionResponse
+        :rtype: Promotion
         """
         return self._data
 
     @data.setter
-    def data(self, data: PromotionResponse):
+    def data(self, data: Promotion):
         """Sets the data of this PromotionArrayElement.
 
 
         :param data: The data of this PromotionArrayElement.
-        :type data: PromotionResponse
+        :type data: Promotion
         """
 
         self._data = data

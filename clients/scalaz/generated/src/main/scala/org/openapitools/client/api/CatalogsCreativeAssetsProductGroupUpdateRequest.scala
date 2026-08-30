@@ -15,7 +15,8 @@ case class CatalogsCreativeAssetsProductGroupUpdateRequest (
   catalogType: Option[CatalogType],
 description: Option[String],
 filters: Option[CatalogsCreativeAssetsProductGroupFilters],
-name: Option[String])
+/* Name of catalog product group */
+  name: Option[String])
 
 object CatalogsCreativeAssetsProductGroupUpdateRequest {
   import DateTimeCodecs._

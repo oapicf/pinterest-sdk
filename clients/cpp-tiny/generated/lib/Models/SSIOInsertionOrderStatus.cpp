@@ -106,7 +106,7 @@ SSIOInsertionOrderStatus::getCreationTime()
 }
 
 void
-SSIOInsertionOrderStatus::setCreationTime(std::string  creation_time)
+SSIOInsertionOrderStatus::setCreationTime(std::string creation_time)
 {
 	this->creation_time = creation_time;
 }
@@ -118,7 +118,7 @@ SSIOInsertionOrderStatus::getPinOrderId()
 }
 
 void
-SSIOInsertionOrderStatus::setPinOrderId(std::string  pin_order_id)
+SSIOInsertionOrderStatus::setPinOrderId(std::string pin_order_id)
 {
 	this->pin_order_id = pin_order_id;
 }
@@ -130,7 +130,7 @@ SSIOInsertionOrderStatus::getStatus()
 }
 
 void
-SSIOInsertionOrderStatus::setStatus(std::string  status)
+SSIOInsertionOrderStatus::setStatus(std::string status)
 {
 	this->status = status;
 }

@@ -13,10 +13,10 @@ static invite_assets_summary_t *invite_assets_summary_create_internal(
     if (!invite_assets_summary_local_var) {
         return NULL;
     }
+    memset(invite_assets_summary_local_var, 0, sizeof(invite_assets_summary_t));
+    invite_assets_summary_local_var->_library_owned = 1;
     invite_assets_summary_local_var->ad_accounts = ad_accounts;
     invite_assets_summary_local_var->profiles = profiles;
-
-    invite_assets_summary_local_var->_library_owned = 1;
     return invite_assets_summary_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) invite_assets_summary_t *invite_assets_summary_creat
     list_t *ad_accounts,
     list_t *profiles
     ) {
-    return invite_assets_summary_create_internal (
+    invite_assets_summary_t *result = invite_assets_summary_create_internal (
         ad_accounts,
         profiles
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void invite_assets_summary_free(invite_assets_summary_t *invite_assets_summary) {
@@ -41,14 +44,14 @@ void invite_assets_summary_free(invite_assets_summary_t *invite_assets_summary) 
     listEntry_t *listEntry;
     if (invite_assets_summary->ad_accounts) {
         list_ForEach(listEntry, invite_assets_summary->ad_accounts) {
-            invite_assets_summary_ad_accounts_inner_free(listEntry->data);
+            invite_assets_summary_item_free(listEntry->data);
         }
         list_freeList(invite_assets_summary->ad_accounts);
         invite_assets_summary->ad_accounts = NULL;
     }
     if (invite_assets_summary->profiles) {
         list_ForEach(listEntry, invite_assets_summary->profiles) {
-            invite_assets_summary_profiles_inner_free(listEntry->data);
+            invite_assets_summary_item_free(listEntry->data);
         }
         list_freeList(invite_assets_summary->profiles);
         invite_assets_summary->profiles = NULL;
@@ -69,7 +72,7 @@ cJSON *invite_assets_summary_convertToJSON(invite_assets_summary_t *invite_asset
     listEntry_t *ad_accountsListEntry;
     if (invite_assets_summary->ad_accounts) {
     list_ForEach(ad_accountsListEntry, invite_assets_summary->ad_accounts) {
-    cJSON *itemLocal = invite_assets_summary_ad_accounts_inner_convertToJSON(ad_accountsListEntry->data);
+    cJSON *itemLocal = invite_assets_summary_item_convertToJSON(ad_accountsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -89,7 +92,7 @@ cJSON *invite_assets_summary_convertToJSON(invite_assets_summary_t *invite_asset
     listEntry_t *profilesListEntry;
     if (invite_assets_summary->profiles) {
     list_ForEach(profilesListEntry, invite_assets_summary->profiles) {
-    cJSON *itemLocal = invite_assets_summary_profiles_inner_convertToJSON(profilesListEntry->data);
+    cJSON *itemLocal = invite_assets_summary_item_convertToJSON(profilesListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -134,7 +137,7 @@ invite_assets_summary_t *invite_assets_summary_parseFromJSON(cJSON *invite_asset
         if(!cJSON_IsObject(ad_accounts_local_nonprimitive)){
             goto end;
         }
-        invite_assets_summary_ad_accounts_inner_t *ad_accountsItem = invite_assets_summary_ad_accounts_inner_parseFromJSON(ad_accounts_local_nonprimitive);
+        invite_assets_summary_item_t *ad_accountsItem = invite_assets_summary_item_parseFromJSON(ad_accounts_local_nonprimitive);
 
         list_addElement(ad_accountsList, ad_accountsItem);
     }
@@ -158,11 +161,12 @@ invite_assets_summary_t *invite_assets_summary_parseFromJSON(cJSON *invite_asset
         if(!cJSON_IsObject(profiles_local_nonprimitive)){
             goto end;
         }
-        invite_assets_summary_profiles_inner_t *profilesItem = invite_assets_summary_profiles_inner_parseFromJSON(profiles_local_nonprimitive);
+        invite_assets_summary_item_t *profilesItem = invite_assets_summary_item_parseFromJSON(profiles_local_nonprimitive);
 
         list_addElement(profilesList, profilesItem);
     }
     }
+
 
 
     invite_assets_summary_local_var = invite_assets_summary_create_internal (
@@ -170,12 +174,16 @@ invite_assets_summary_t *invite_assets_summary_parseFromJSON(cJSON *invite_asset
         profiles ? profilesList : NULL
         );
 
+    if (!invite_assets_summary_local_var) {
+        goto end;
+    }
+
     return invite_assets_summary_local_var;
 end:
     if (ad_accountsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, ad_accountsList) {
-            invite_assets_summary_ad_accounts_inner_free(listEntry->data);
+            invite_assets_summary_item_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(ad_accountsList);
@@ -184,7 +192,7 @@ end:
     if (profilesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, profilesList) {
-            invite_assets_summary_profiles_inner_free(listEntry->data);
+            invite_assets_summary_item_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(profilesList);

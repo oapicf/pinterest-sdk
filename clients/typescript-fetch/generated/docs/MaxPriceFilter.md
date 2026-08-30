@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`mAXPRICE` | [CatalogsProductGroupPricingCriteria](.md)
+`mAXPRICE` | [CatalogsProductGroupPricingCriteria](CatalogsProductGroupPricingCriteria.md)
 
 ## Example
 

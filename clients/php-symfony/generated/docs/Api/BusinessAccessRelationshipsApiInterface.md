@@ -27,7 +27,7 @@ services:
 ```
 
 ## **brandAccountsCreate**
-> OpenAPI\Server\Model\BrandAccountsCreate200Response brandAccountsCreate($businessHierarchyId, $brandAccountsCreateRequest)
+> OpenAPI\Server\Model\BrandAccount brandAccountsCreate($businessHierarchyId, $brandAccountCreate)
 
 Create a Brand Account
 
@@ -58,7 +58,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
     /**
      * Implementation of BusinessAccessRelationshipsApiInterface#brandAccountsCreate
      */
-    public function brandAccountsCreate(string $businessHierarchyId, BrandAccountsCreateRequest $brandAccountsCreateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function brandAccountsCreate(string $businessHierarchyId, BrandAccountCreate $brandAccountCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -72,11 +72,11 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessHierarchyId** | **string**| business hierarchy node id |
- **brandAccountsCreateRequest** | [**OpenAPI\Server\Model\BrandAccountsCreateRequest**](../Model/BrandAccountsCreateRequest.md)|  |
+ **brandAccountCreate** | [**OpenAPI\Server\Model\BrandAccountCreate**](../Model/BrandAccountCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\BrandAccountsCreate200Response**](../Model/BrandAccountsCreate200Response.md)
+[**OpenAPI\Server\Model\BrandAccount**](../Model/BrandAccount.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **brandAccountsUpdate**
-> OpenAPI\Server\Model\BrandAccountsCreate200Response brandAccountsUpdate($businessHierarchyId, $brandAccountId, $brandAccountsUpdateRequest)
+> OpenAPI\Server\Model\BrandAccount brandAccountsUpdate($brandAccountId, $businessHierarchyId, $brandAccountUpdate)
 
 Update a Brand Account
 
@@ -121,7 +121,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
     /**
      * Implementation of BusinessAccessRelationshipsApiInterface#brandAccountsUpdate
      */
-    public function brandAccountsUpdate(string $businessHierarchyId, string $brandAccountId, BrandAccountsUpdateRequest $brandAccountsUpdateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function brandAccountsUpdate(string $brandAccountId, string $businessHierarchyId, BrandAccountUpdate $brandAccountUpdate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -134,13 +134,13 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **brandAccountId** | **string**|  |
  **businessHierarchyId** | **string**| business hierarchy node id |
- **brandAccountId** | **string**| Unique identifier of a brand account. |
- **brandAccountsUpdateRequest** | [**OpenAPI\Server\Model\BrandAccountsUpdateRequest**](../Model/BrandAccountsUpdateRequest.md)|  |
+ **brandAccountUpdate** | [**OpenAPI\Server\Model\BrandAccountUpdate**](../Model/BrandAccountUpdate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\BrandAccountsCreate200Response**](../Model/BrandAccountsCreate200Response.md)
+[**OpenAPI\Server\Model\BrandAccount**](../Model/BrandAccount.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **deleteBusinessMembership**
-> OpenAPI\Server\Model\DeletedMembersResponse deleteBusinessMembership($businessId, $membersToDeleteBody)
+> OpenAPI\Server\Model\DeleteBusinessMembership200Response deleteBusinessMembership($businessId, $deleteBusinessMembershipBody)
 
 Terminate business memberships
 
@@ -185,7 +185,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
     /**
      * Implementation of BusinessAccessRelationshipsApiInterface#deleteBusinessMembership
      */
-    public function deleteBusinessMembership(string $businessId, MembersToDeleteBody $membersToDeleteBody, int &$responseCode, array &$responseHeaders): array|object|null
+    public function deleteBusinessMembership(string $businessId, DeleteBusinessMembershipBody $deleteBusinessMembershipBody, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -199,11 +199,11 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Business id |
- **membersToDeleteBody** | [**OpenAPI\Server\Model\MembersToDeleteBody**](../Model/MembersToDeleteBody.md)| List of members with role to delete. |
+ **deleteBusinessMembershipBody** | [**OpenAPI\Server\Model\DeleteBusinessMembershipBody**](../Model/DeleteBusinessMembershipBody.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\DeletedMembersResponse**](../Model/DeletedMembersResponse.md)
+[**OpenAPI\Server\Model\DeleteBusinessMembership200Response**](../Model/DeleteBusinessMembership200Response.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **deleteBusinessPartners**
-> OpenAPI\Server\Model\DeletePartnersResponse deleteBusinessPartners($businessId, $deletePartnersRequest)
+> OpenAPI\Server\Model\DeleteBusinessPartners deleteBusinessPartners($businessId, $deleteBusinessPartnersDelete)
 
 Terminate business partnerships
 
@@ -248,7 +248,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
     /**
      * Implementation of BusinessAccessRelationshipsApiInterface#deleteBusinessPartners
      */
-    public function deleteBusinessPartners(string $businessId, DeletePartnersRequest $deletePartnersRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function deleteBusinessPartners(string $businessId, DeleteBusinessPartnersDelete $deleteBusinessPartnersDelete, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -262,11 +262,11 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **deletePartnersRequest** | [**OpenAPI\Server\Model\DeletePartnersRequest**](../Model/DeletePartnersRequest.md)| An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. |
+ **deleteBusinessPartnersDelete** | [**OpenAPI\Server\Model\DeleteBusinessPartnersDelete**](../Model/DeleteBusinessPartnersDelete.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\DeletePartnersResponse**](../Model/DeletePartnersResponse.md)
+[**OpenAPI\Server\Model\DeleteBusinessPartners**](../Model/DeleteBusinessPartners.md)
 
 ### Authorization
 
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **getBusinessEmployers**
-> OpenAPI\Server\Model\GetBusinessEmployers200Response getBusinessEmployers($pageSize, $bookmark)
+> OpenAPI\Server\Model\GetBusinessEmployers200Response getBusinessEmployers($assetsSummary, $bookmark, $pageSize)
 
 List business employers for user
 
@@ -311,7 +311,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
     /**
      * Implementation of BusinessAccessRelationshipsApiInterface#getBusinessEmployers
      */
-    public function getBusinessEmployers(int $pageSize, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function getBusinessEmployers(bool $assetsSummary, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -324,8 +324,9 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **assetsSummary** | **bool**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -343,7 +344,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **getBusinessMembers**
-> OpenAPI\Server\Model\GetBusinessMembers200Response getBusinessMembers($businessId, $fetchSystemUsers, $assetsSummary, $businessRoles, $memberIds, $startIndex, $bookmark, $pageSize)
+> OpenAPI\Server\Model\GetBusinessEmployers200Response getBusinessMembers($businessId, $fetchSystemUsers, $assetsSummary, $businessRoles, $memberIds, $startIndex, $bookmark, $pageSize)
 
 Get business members
 
@@ -394,11 +395,11 @@ Name | Type | Description  | Notes
  **memberIds** | **string**| A list of business members ids separated by comma. | [optional]
  **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**OpenAPI\Server\Model\GetBusinessMembers200Response**](../Model/GetBusinessMembers200Response.md)
+[**OpenAPI\Server\Model\GetBusinessEmployers200Response**](../Model/GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -412,7 +413,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **getBusinessPartners**
-> OpenAPI\Server\Model\GetBusinessPartners200Response getBusinessPartners($businessId, $assetsSummary, $partnerType, $partnerIds, $startIndex, $pageSize, $bookmark)
+> OpenAPI\Server\Model\GetBusinessEmployers200Response getBusinessPartners($businessId, $assetsSummary, $partnerType, $partnerIds, $startIndex, $sortAscending, $bookmark, $pageSize)
 
 Get business partners
 
@@ -443,7 +444,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
     /**
      * Implementation of BusinessAccessRelationshipsApiInterface#getBusinessPartners
      */
-    public function getBusinessPartners(string $businessId, bool $assetsSummary, ?PartnerType $partnerType, ?string $partnerIds, int $startIndex, int $pageSize, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function getBusinessPartners(string $businessId, bool $assetsSummary, ?PartnerType $partnerType, ?string $partnerIds, int $startIndex, ?bool $sortAscending, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -458,15 +459,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
  **assetsSummary** | **bool**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
- **partnerType** | [**OpenAPI\Server\Model\PartnerType**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional]
+ **partnerType** | [**PartnerType**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional]
  **partnerIds** | **string**| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional]
  **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sortAscending** | **bool**| Sort ascending. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**OpenAPI\Server\Model\GetBusinessPartners200Response**](../Model/GetBusinessPartners200Response.md)
+[**OpenAPI\Server\Model\GetBusinessEmployers200Response**](../Model/GetBusinessEmployers200Response.md)
 
 ### Authorization
 
@@ -480,7 +482,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **systemUserUpdate**
-> systemUserUpdate($businessId, $systemUserId, $systemUserUpdateRequest)
+> systemUserUpdate($businessId, $systemUserId, $systemUserUpdateWithRequiredBody)
 
 Update a system user information.
 
@@ -511,7 +513,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
     /**
      * Implementation of BusinessAccessRelationshipsApiInterface#systemUserUpdate
      */
-    public function systemUserUpdate(string $businessId, string $systemUserId, SystemUserUpdateRequest $systemUserUpdateRequest, int &$responseCode, array &$responseHeaders): void
+    public function systemUserUpdate(string $businessId, string $systemUserId, SystemUserUpdateWithRequiredBody $systemUserUpdateWithRequiredBody, int &$responseCode, array &$responseHeaders): void
     {
         // Implement the operation ...
     }
@@ -526,7 +528,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
  **systemUserId** | **string**| Unique identifier of a system user. |
- **systemUserUpdateRequest** | [**OpenAPI\Server\Model\SystemUserUpdateRequest**](../Model/SystemUserUpdateRequest.md)|  |
+ **systemUserUpdateWithRequiredBody** | [**OpenAPI\Server\Model\SystemUserUpdateWithRequiredBody**](../Model/SystemUserUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
@@ -544,7 +546,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **updateBusinessMemberships**
-> OpenAPI\Server\Model\UpdateMemberResultsResponseArray updateBusinessMemberships($businessId, $updateMemberBusinessRoleBody)
+> OpenAPI\Server\Model\UpdateBusinessMembershipsResponse updateBusinessMemberships($businessId, $businessMembershipMember)
 
 Update member's business role
 
@@ -575,7 +577,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
     /**
      * Implementation of BusinessAccessRelationshipsApiInterface#updateBusinessMemberships
      */
-    public function updateBusinessMemberships(string $businessId, array $updateMemberBusinessRoleBody, int &$responseCode, array &$responseHeaders): array|object|null
+    public function updateBusinessMemberships(string $businessId, array $businessMembershipMember, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -589,11 +591,11 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Business id |
- **updateMemberBusinessRoleBody** | [**OpenAPI\Server\Model\UpdateMemberBusinessRoleBody**](../Model/UpdateMemberBusinessRoleBody.md)| List of objects with the member id and the business_role. |
+ **businessMembershipMember** | [**OpenAPI\Server\Model\BusinessMembershipMember**](../Model/BusinessMembershipMember.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\UpdateMemberResultsResponseArray**](../Model/UpdateMemberResultsResponseArray.md)
+[**OpenAPI\Server\Model\UpdateBusinessMembershipsResponse**](../Model/UpdateBusinessMembershipsResponse.md)
 
 ### Authorization
 

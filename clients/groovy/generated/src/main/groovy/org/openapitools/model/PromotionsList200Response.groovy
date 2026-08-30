@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.Promotion;
 
 @Canonical
 class PromotionsList200Response {
     
     String bookmark
     
-    List<PromotionResponse> items = new ArrayList<>()
+    List<Promotion> items = new ArrayList<>()
 }

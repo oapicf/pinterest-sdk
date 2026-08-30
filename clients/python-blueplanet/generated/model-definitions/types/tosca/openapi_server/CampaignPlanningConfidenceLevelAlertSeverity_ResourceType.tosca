@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningConfidenceLevelAlertSeverity"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningConfidenceLevelAlertSeverity"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CampaignPlanningConfidenceLevelAlertSeverity {
+    title = CampaignPlanningConfidenceLevelAlertSeverity
+    description = CampaignPlanningConfidenceLevelAlertSeverity
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningConfidenceLevelAlertSeverity {
+    title = CampaignPlanningConfidenceLevelAlertSeverity
+    description = CampaignPlanningConfidenceLevelAlertSeverity
+    implements = openapi_server.resourceTypes.CampaignPlanningConfidenceLevelAlertSeverity
+
+  }
+}

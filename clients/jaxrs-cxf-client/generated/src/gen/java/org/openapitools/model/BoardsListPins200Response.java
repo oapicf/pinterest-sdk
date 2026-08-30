@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.Pin;
+import org.openapitools.model.PinRead;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -17,12 +17,9 @@ public class BoardsListPins200Response  {
 
   private String bookmark;
 
- /**
-  * Pins
-  */
-  @ApiModelProperty(required = true, value = "Pins")
+  @ApiModelProperty(required = true, value = "")
 
-  private List<Pin> items = new ArrayList<>();
+  private List<PinRead> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -42,24 +39,24 @@ public class BoardsListPins200Response  {
   }
 
  /**
-   * Pins
+   * Get items
    * @return items
   **/
   @JsonProperty("items")
-  public List<Pin> getItems() {
+  public List<PinRead> getItems() {
     return items;
   }
 
-  public void setItems(List<Pin> items) {
+  public void setItems(List<PinRead> items) {
     this.items = items;
   }
 
-  public BoardsListPins200Response items(List<Pin> items) {
+  public BoardsListPins200Response items(List<PinRead> items) {
     this.items = items;
     return this;
   }
 
-  public BoardsListPins200Response addItemsItem(Pin itemsItem) {
+  public BoardsListPins200Response addItemsItem(PinRead itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -98,10 +95,7 @@ public class BoardsListPins200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

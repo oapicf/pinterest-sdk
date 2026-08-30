@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -42,6 +42,12 @@ const (
 	TOTAL_IMPRESSION MmmReportingColumn = "TOTAL_IMPRESSION"
 	ADVERTISER_NAME MmmReportingColumn = "ADVERTISER_NAME"
 	SPEND_ORDER_LINE_PAID_TYPE MmmReportingColumn = "SPEND_ORDER_LINE_PAID_TYPE"
+	CAMPAIGN_OBJECTIVE_TYPE MmmReportingColumn = "CAMPAIGN_OBJECTIVE_TYPE"
+	PINNER_LIST_NAME MmmReportingColumn = "PINNER_LIST_NAME"
+	ADS_CREDIT_SPEND_IN_DOLLAR MmmReportingColumn = "ADS_CREDIT_SPEND_IN_DOLLAR"
+	ADVERTISER_PAID_SPEND_IN_DOLLAR MmmReportingColumn = "ADVERTISER_PAID_SPEND_IN_DOLLAR"
+	ADVERTISER_PAID_ECPC_IN_DOLLAR MmmReportingColumn = "ADVERTISER_PAID_ECPC_IN_DOLLAR"
+	ADVERTISER_PAID_ECPM_IN_DOLLAR MmmReportingColumn = "ADVERTISER_PAID_ECPM_IN_DOLLAR"
 )
 
 // AllowedMmmReportingColumnEnumValues is all the allowed values of MmmReportingColumn enum
@@ -66,6 +72,12 @@ var AllowedMmmReportingColumnEnumValues = []MmmReportingColumn{
 	"TOTAL_IMPRESSION",
 	"ADVERTISER_NAME",
 	"SPEND_ORDER_LINE_PAID_TYPE",
+	"CAMPAIGN_OBJECTIVE_TYPE",
+	"PINNER_LIST_NAME",
+	"ADS_CREDIT_SPEND_IN_DOLLAR",
+	"ADVERTISER_PAID_SPEND_IN_DOLLAR",
+	"ADVERTISER_PAID_ECPC_IN_DOLLAR",
+	"ADVERTISER_PAID_ECPM_IN_DOLLAR",
 }
 
 // validMmmReportingColumnEnumValue provides a map of MmmReportingColumns for fast verification of use input
@@ -90,6 +102,12 @@ var validMmmReportingColumnEnumValues = map[MmmReportingColumn]struct{}{
 	"TOTAL_IMPRESSION": {},
 	"ADVERTISER_NAME": {},
 	"SPEND_ORDER_LINE_PAID_TYPE": {},
+	"CAMPAIGN_OBJECTIVE_TYPE": {},
+	"PINNER_LIST_NAME": {},
+	"ADS_CREDIT_SPEND_IN_DOLLAR": {},
+	"ADVERTISER_PAID_SPEND_IN_DOLLAR": {},
+	"ADVERTISER_PAID_ECPC_IN_DOLLAR": {},
+	"ADVERTISER_PAID_ECPM_IN_DOLLAR": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -110,8 +128,8 @@ func NewMmmReportingColumnFromValue(v string) (MmmReportingColumn, error) {
 }
 
 
-
-// AssertMmmReportingColumnRequired checks if the required fields are not zero-ed
+// AssertMmmReportingColumnRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertMmmReportingColumnRequired(obj MmmReportingColumn) error {
 	return nil
 }

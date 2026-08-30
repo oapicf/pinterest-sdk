@@ -1,0 +1,111 @@
+package org.openapitools.model;
+
+import java.net.URI;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.math.BigDecimal;
+import org.springframework.lang.Nullable;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import jakarta.annotation.Generated;
+
+/**
+ * AdGroupAudienceSizing
+ */
+
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class AdGroupAudienceSizing {
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BigDecimal audienceSizeLowerBound;
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BigDecimal audienceSizeUpperBound;
+
+  public AdGroupAudienceSizing audienceSizeLowerBound(@Nullable BigDecimal audienceSizeLowerBound) {
+    this.audienceSizeLowerBound = audienceSizeLowerBound;
+    return this;
+  }
+
+  /**
+   * The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
+   * @return audienceSizeLowerBound
+   */
+  @Valid 
+  @Schema(name = "audience_size_lower_bound", accessMode = Schema.AccessMode.READ_ONLY, description = "The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("audience_size_lower_bound")
+  public @Nullable BigDecimal getAudienceSizeLowerBound() {
+    return audienceSizeLowerBound;
+  }
+
+  @JsonProperty("audience_size_lower_bound")
+  public void setAudienceSizeLowerBound(@Nullable BigDecimal audienceSizeLowerBound) {
+    this.audienceSizeLowerBound = audienceSizeLowerBound;
+  }
+
+  public AdGroupAudienceSizing audienceSizeUpperBound(@Nullable BigDecimal audienceSizeUpperBound) {
+    this.audienceSizeUpperBound = audienceSizeUpperBound;
+    return this;
+  }
+
+  /**
+   * The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
+   * @return audienceSizeUpperBound
+   */
+  @Valid 
+  @Schema(name = "audience_size_upper_bound", accessMode = Schema.AccessMode.READ_ONLY, description = "The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("audience_size_upper_bound")
+  public @Nullable BigDecimal getAudienceSizeUpperBound() {
+    return audienceSizeUpperBound;
+  }
+
+  @JsonProperty("audience_size_upper_bound")
+  public void setAudienceSizeUpperBound(@Nullable BigDecimal audienceSizeUpperBound) {
+    this.audienceSizeUpperBound = audienceSizeUpperBound;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AdGroupAudienceSizing adGroupAudienceSizing = (AdGroupAudienceSizing) o;
+    return Objects.equals(this.audienceSizeLowerBound, adGroupAudienceSizing.audienceSizeLowerBound) &&
+        Objects.equals(this.audienceSizeUpperBound, adGroupAudienceSizing.audienceSizeUpperBound);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(audienceSizeLowerBound, audienceSizeUpperBound);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AdGroupAudienceSizing {\n");
+    sb.append("    audienceSizeLowerBound: ").append(toIndentedString(audienceSizeLowerBound)).append("\n");
+    sb.append("    audienceSizeUpperBound: ").append(toIndentedString(audienceSizeUpperBound)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

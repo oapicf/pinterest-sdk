@@ -22,7 +22,7 @@ class TargetingSpecOperationAgeBucket {
 
   TargetingSpecOperationAgeBucketOperationEnum operation;
 
-  List<TargetingSpecAgeBucket>? values;
+  List<TargetingSpecAgeBucket> values;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TargetingSpecOperationAgeBucket &&
@@ -35,7 +35,7 @@ class TargetingSpecOperationAgeBucket {
     // ignore: unnecessary_parenthesis
     (field.hashCode) +
     (operation.hashCode) +
-    (values == null ? 0 : values!.hashCode);
+    (values.hashCode);
 
   @override
   String toString() => 'TargetingSpecOperationAgeBucket[field=$field, operation=$operation, values=$values]';
@@ -44,11 +44,7 @@ class TargetingSpecOperationAgeBucket {
     final json = <String, dynamic>{};
       json[r'field'] = this.field;
       json[r'operation'] = this.operation;
-    if (this.values != null) {
       json[r'values'] = this.values;
-    } else {
-      json[r'values'] = null;
-    }
     return json;
   }
 
@@ -63,10 +59,12 @@ class TargetingSpecOperationAgeBucket {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TargetingSpecOperationAgeBucket[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TargetingSpecOperationAgeBucket[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'field'), 'Required key "TargetingSpecOperationAgeBucket[field]" is missing from JSON.');
+        assert(json[r'field'] != null, 'Required key "TargetingSpecOperationAgeBucket[field]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "TargetingSpecOperationAgeBucket[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "TargetingSpecOperationAgeBucket[operation]" has a null value in JSON.');
+        assert(json.containsKey(r'values'), 'Required key "TargetingSpecOperationAgeBucket[values]" is missing from JSON.');
+        assert(json[r'values'] != null, 'Required key "TargetingSpecOperationAgeBucket[values]" has a null value in JSON.');
         return true;
       }());
 
@@ -128,27 +126,28 @@ class TargetingSpecOperationAgeBucket {
 }
 
 
-class TargetingSpecOperationAgeBucketFieldEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecOperationAgeBucketFieldEnum._(this.value);
+enum TargetingSpecOperationAgeBucketFieldEnum {
+  AGE_BUCKET._(r'AGE_BUCKET'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingSpecOperationAgeBucketFieldEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const AGE_BUCKET = TargetingSpecOperationAgeBucketFieldEnum._(r'AGE_BUCKET');
-
-  /// List of all possible values in this [enum][TargetingSpecOperationAgeBucketFieldEnum].
-  static const values = <TargetingSpecOperationAgeBucketFieldEnum>[
-    AGE_BUCKET,
-  ];
-
+  /// Returns the instance of [TargetingSpecOperationAgeBucketFieldEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingSpecOperationAgeBucketFieldEnum? fromJson(dynamic value) => TargetingSpecOperationAgeBucketFieldEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingSpecOperationAgeBucketFieldEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingSpecOperationAgeBucketFieldEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingSpecOperationAgeBucketFieldEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -170,9 +169,10 @@ class TargetingSpecOperationAgeBucketFieldEnumTypeTransformer {
 
   const TargetingSpecOperationAgeBucketFieldEnumTypeTransformer._();
 
-  String encode(TargetingSpecOperationAgeBucketFieldEnum data) => data.value;
+  String encode(TargetingSpecOperationAgeBucketFieldEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingSpecOperationAgeBucketFieldEnum.
+  /// Returns the instance of [TargetingSpecOperationAgeBucketFieldEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -181,6 +181,9 @@ class TargetingSpecOperationAgeBucketFieldEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingSpecOperationAgeBucketFieldEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingSpecOperationAgeBucketFieldEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'AGE_BUCKET': return TargetingSpecOperationAgeBucketFieldEnum.AGE_BUCKET;
@@ -193,33 +196,34 @@ class TargetingSpecOperationAgeBucketFieldEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingSpecOperationAgeBucketFieldEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingSpecOperationAgeBucketFieldEnumTypeTransformer? _instance;
 }
 
 
 
-class TargetingSpecOperationAgeBucketOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TargetingSpecOperationAgeBucketOperationEnum._(this.value);
+enum TargetingSpecOperationAgeBucketOperationEnum {
+  SET._(r'SET'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TargetingSpecOperationAgeBucketOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const SET = TargetingSpecOperationAgeBucketOperationEnum._(r'SET');
-
-  /// List of all possible values in this [enum][TargetingSpecOperationAgeBucketOperationEnum].
-  static const values = <TargetingSpecOperationAgeBucketOperationEnum>[
-    SET,
-  ];
-
+  /// Returns the instance of [TargetingSpecOperationAgeBucketOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TargetingSpecOperationAgeBucketOperationEnum? fromJson(dynamic value) => TargetingSpecOperationAgeBucketOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TargetingSpecOperationAgeBucketOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TargetingSpecOperationAgeBucketOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TargetingSpecOperationAgeBucketOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -241,9 +245,10 @@ class TargetingSpecOperationAgeBucketOperationEnumTypeTransformer {
 
   const TargetingSpecOperationAgeBucketOperationEnumTypeTransformer._();
 
-  String encode(TargetingSpecOperationAgeBucketOperationEnum data) => data.value;
+  String encode(TargetingSpecOperationAgeBucketOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TargetingSpecOperationAgeBucketOperationEnum.
+  /// Returns the instance of [TargetingSpecOperationAgeBucketOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -252,6 +257,9 @@ class TargetingSpecOperationAgeBucketOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TargetingSpecOperationAgeBucketOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TargetingSpecOperationAgeBucketOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'SET': return TargetingSpecOperationAgeBucketOperationEnum.SET;
@@ -264,7 +272,7 @@ class TargetingSpecOperationAgeBucketOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [TargetingSpecOperationAgeBucketOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TargetingSpecOperationAgeBucketOperationEnumTypeTransformer? _instance;
 }
 

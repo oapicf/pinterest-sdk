@@ -1,7 +1,7 @@
 /*
  * AudienceAccountType.h
  *
- * 
+ * Account type filter for audience sharing.
  */
 
 #ifndef _AudienceAccountType_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Account type filter for audience sharing.
  *
  *  \ingroup Models
  *

@@ -7,9 +7,11 @@
 
 (def trending-pin-data
   {
+   (ds/req :color) string?
    (ds/req :height) int?
    (ds/req :id) string?
    (ds/req :src) string?
+   (ds/opt :vertical_offset) float?
    (ds/req :width) int?
    })
 

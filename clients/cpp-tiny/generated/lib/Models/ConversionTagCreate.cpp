@@ -232,7 +232,7 @@ ConversionTagCreate::isAemDbEnabled()
 }
 
 void
-ConversionTagCreate::setAemDbEnabled(bool  aem_db_enabled)
+ConversionTagCreate::setAemDbEnabled(bool aem_db_enabled)
 {
 	this->aem_db_enabled = aem_db_enabled;
 }
@@ -244,7 +244,7 @@ ConversionTagCreate::isAemEnabled()
 }
 
 void
-ConversionTagCreate::setAemEnabled(bool  aem_enabled)
+ConversionTagCreate::setAemEnabled(bool aem_enabled)
 {
 	this->aem_enabled = aem_enabled;
 }
@@ -256,7 +256,7 @@ ConversionTagCreate::isAemExternalIdEnabled()
 }
 
 void
-ConversionTagCreate::setAemExternalIdEnabled(bool  aem_external_id_enabled)
+ConversionTagCreate::setAemExternalIdEnabled(bool aem_external_id_enabled)
 {
 	this->aem_external_id_enabled = aem_external_id_enabled;
 }
@@ -268,7 +268,7 @@ ConversionTagCreate::isAemFnlnEnabled()
 }
 
 void
-ConversionTagCreate::setAemFnlnEnabled(bool  aem_fnln_enabled)
+ConversionTagCreate::setAemFnlnEnabled(bool aem_fnln_enabled)
 {
 	this->aem_fnln_enabled = aem_fnln_enabled;
 }
@@ -280,7 +280,7 @@ ConversionTagCreate::isAemGeEnabled()
 }
 
 void
-ConversionTagCreate::setAemGeEnabled(bool  aem_ge_enabled)
+ConversionTagCreate::setAemGeEnabled(bool aem_ge_enabled)
 {
 	this->aem_ge_enabled = aem_ge_enabled;
 }
@@ -292,7 +292,7 @@ ConversionTagCreate::isAemLocEnabled()
 }
 
 void
-ConversionTagCreate::setAemLocEnabled(bool  aem_loc_enabled)
+ConversionTagCreate::setAemLocEnabled(bool aem_loc_enabled)
 {
 	this->aem_loc_enabled = aem_loc_enabled;
 }
@@ -304,7 +304,7 @@ ConversionTagCreate::isAemPhEnabled()
 }
 
 void
-ConversionTagCreate::setAemPhEnabled(bool  aem_ph_enabled)
+ConversionTagCreate::setAemPhEnabled(bool aem_ph_enabled)
 {
 	this->aem_ph_enabled = aem_ph_enabled;
 }
@@ -316,7 +316,7 @@ ConversionTagCreate::getMdFrequency()
 }
 
 void
-ConversionTagCreate::setMdFrequency(long  md_frequency)
+ConversionTagCreate::setMdFrequency(long md_frequency)
 {
 	this->md_frequency = md_frequency;
 }
@@ -328,7 +328,7 @@ ConversionTagCreate::getName()
 }
 
 void
-ConversionTagCreate::setName(std::string  name)
+ConversionTagCreate::setName(std::string name)
 {
 	this->name = name;
 }

@@ -71,6 +71,18 @@ func main() {
 	// AdGroupsCreate - Create ad groups
 	e.POST("/v5/ad_accounts/:ad_account_id/ad_groups", c.AdGroupsCreate)
 
+	// AdGroupsDynamicTitlesDownloadCsv - Get dynamic titles CSV download URL
+	e.GET("/v5/ad_accounts/:ad_account_id/ad_groups/:ad_group_id/dynamic_titles/csv", c.AdGroupsDynamicTitlesDownloadCsv)
+
+	// AdGroupsDynamicTitlesGetStatus - Get dynamic titles status
+	e.GET("/v5/ad_accounts/:ad_account_id/ad_groups/:ad_group_id/dynamic_titles/status", c.AdGroupsDynamicTitlesGetStatus)
+
+	// AdGroupsDynamicTitlesGetUploadUrl - Get dynamic titles upload URL
+	e.GET("/v5/ad_accounts/:ad_account_id/ad_groups/:ad_group_id/dynamic_titles/uploads", c.AdGroupsDynamicTitlesGetUploadUrl)
+
+	// AdGroupsDynamicTitlesProcessCsv - Process dynamic titles CSV
+	e.POST("/v5/ad_accounts/:ad_account_id/ad_groups/:ad_group_id/dynamic_titles", c.AdGroupsDynamicTitlesProcessCsv)
+
 	// AdGroupsGet - Get ad group
 	e.GET("/v5/ad_accounts/:ad_account_id/ad_groups/:ad_group_id", c.AdGroupsGet)
 
@@ -82,6 +94,9 @@ func main() {
 
 	// AdGroupsUpdate - Update ad groups
 	e.PATCH("/v5/ad_accounts/:ad_account_id/ad_groups", c.AdGroupsUpdate)
+
+	// GetAdGroupsByPromotionIdsList - List of ad groups using promotions IDs.
+	e.GET("/v5/ad_accounts/:ad_account_id/promotion_applied_entities", c.GetAdGroupsByPromotionIdsList)
 
 	// AdPreviewsCreate - Create ad preview with pin or image
 	e.POST("/v5/ad_accounts/:ad_account_id/ad_previews", c.AdPreviewsCreate)
@@ -103,6 +118,15 @@ func main() {
 
 	// AdsUpdate - Update ads
 	e.PATCH("/v5/ad_accounts/:ad_account_id/ads", c.AdsUpdate)
+
+	// CampaignAdPreviewCreate - Create ad preview records for one or more ad groups
+	e.POST("/v5/ad_accounts/:ad_account_id/campaign_ad_preview", c.CampaignAdPreviewCreate)
+
+	// CampaignAdPreviewDelete - Delete ad preview records for one or more ad groups
+	e.DELETE("/v5/ad_accounts/:ad_account_id/campaign_ad_preview", c.CampaignAdPreviewDelete)
+
+	// CampaignAdPreviewRead - Fetch ad preview records for one or more ad groups
+	e.GET("/v5/ad_accounts/:ad_account_id/campaign_ad_preview", c.CampaignAdPreviewRead)
 
 	// AdvancedAuctionItemsGetPost - Get item bid options (POST)
 	e.POST("/v5/advanced_auction/items/get", c.AdvancedAuctionItemsGetPost)
@@ -326,6 +350,9 @@ func main() {
 	// CampaignsUpdate - Update campaigns
 	e.PATCH("/v5/ad_accounts/:ad_account_id/campaigns", c.CampaignsUpdate)
 
+	// GetCampaignDeliveryEstimates - Get campaign delivery estimates
+	e.POST("/v5/ad_accounts/:ad_account_id/campaigns/delivery_estimates", c.GetCampaignDeliveryEstimates)
+
 	// FeedProcessingResultsList - List feed processing results
 	e.GET("/v5/catalogs/feeds/:feed_id/processing_results", c.FeedProcessingResultsList)
 
@@ -398,6 +425,27 @@ func main() {
 	// ReportsStats - List report stats
 	e.GET("/v5/catalogs/reports/stats", c.ReportsStats)
 
+	// CatalogsLocalInventoryItemsBatchOperate - Operate on local inventory item batch
+	e.POST("/v5/catalogs/:catalog_id/local_inventory_items/batch", c.CatalogsLocalInventoryItemsBatchOperate)
+
+	// CatalogsLocalInventoryItemsPost - Get local inventory items (POST)
+	e.POST("/v5/catalogs/:catalog_id/local_inventory_items/query", c.CatalogsLocalInventoryItemsPost)
+
+	// CatalogsLocalStoresCreate - Create local stores
+	e.POST("/v5/catalogs/:catalog_id/local_stores", c.CatalogsLocalStoresCreate)
+
+	// CatalogsLocalStoresDelete - Delete local stores
+	e.DELETE("/v5/catalogs/:catalog_id/local_stores", c.CatalogsLocalStoresDelete)
+
+	// CatalogsLocalStoresList - List local stores
+	e.GET("/v5/catalogs/:catalog_id/local_stores", c.CatalogsLocalStoresList)
+
+	// CatalogsLocalStoresUpdate - Update local stores
+	e.PATCH("/v5/catalogs/:catalog_id/local_stores", c.CatalogsLocalStoresUpdate)
+
+	// CatalogsSupplementalItemsBatchGet - Get supplemental items batch status
+	e.GET("/v5/catalogs/:catalog_id/supplemental_items/batch/:batch_id", c.CatalogsSupplementalItemsBatchGet)
+
 	// CatalogsAvailableFilterValues - List available filter values
 	e.GET("/v5/catalogs/available_filter_values", c.CatalogsAvailableFilterValues)
 
@@ -406,6 +454,18 @@ func main() {
 
 	// CatalogsList - List catalogs
 	e.GET("/v5/catalogs", c.CatalogsList)
+
+	// ConversionDeletionRequestCreate - Create a conversion deletion request
+	e.POST("/v5/ad_accounts/:ad_account_id/conversion_deletion_requests", c.ConversionDeletionRequestCreate)
+
+	// ConversionDeletionRequestDelete - Delete a conversion deletion request
+	e.DELETE("/v5/ad_accounts/:ad_account_id/conversion_deletion_requests/:request_id", c.ConversionDeletionRequestDelete)
+
+	// ConversionDeletionRequestGet - Get a single conversion deletion request
+	e.GET("/v5/ad_accounts/:ad_account_id/conversion_deletion_requests/:request_id", c.ConversionDeletionRequestGet)
+
+	// ConversionDeletionRequestList - List conversion deletion requests
+	e.GET("/v5/ad_accounts/:ad_account_id/conversion_deletion_requests", c.ConversionDeletionRequestList)
 
 	// ConversionEqsList - Get event quality score (EQS)
 	e.GET("/v5/ad_accounts/:ad_account_id/conversion_eqs", c.ConversionEqsList)
@@ -428,8 +488,17 @@ func main() {
 	// PageVisitConversionTagsGet - Get page visit conversion tags
 	e.GET("/v5/ad_accounts/:ad_account_id/conversion_tags/page_visit", c.PageVisitConversionTagsGet)
 
+	// AdvertiserDefinedEventsCreate - Create advertiser defined events
+	e.POST("/v5/ad_accounts/:ad_account_id/advertiser_defined_events", c.AdvertiserDefinedEventsCreate)
+
+	// AdvertiserDefinedEventsDelete - Delete advertiser defined events
+	e.DELETE("/v5/ad_accounts/:ad_account_id/advertiser_defined_events", c.AdvertiserDefinedEventsDelete)
+
 	// AdvertiserDefinedEventsGet - Get advertiser defined events
 	e.GET("/v5/ad_accounts/:ad_account_id/advertiser_defined_events", c.AdvertiserDefinedEventsGet)
+
+	// AdvertiserDefinedEventsUpdate - Update advertiser defined events
+	e.PATCH("/v5/ad_accounts/:ad_account_id/advertiser_defined_events", c.AdvertiserDefinedEventsUpdate)
 
 	// CustomerListUploadsCreate - Create customer list upload
 	e.POST("/v5/ad_accounts/:ad_account_id/customer_lists/:customer_list_id/uploads", c.CustomerListUploadsCreate)
@@ -451,6 +520,15 @@ func main() {
 
 	// CustomerListsUpdate - Update customer list
 	e.PATCH("/v5/ad_accounts/:ad_account_id/customer_lists/:customer_list_id", c.CustomerListsUpdate)
+
+	// CustomerSegmentCreate - Create customer segments
+	e.POST("/v5/ad_accounts/:ad_account_id/customer_segments", c.CustomerSegmentCreate)
+
+	// CustomerSegmentList - List customer segments
+	e.GET("/v5/ad_accounts/:ad_account_id/customer_segments", c.CustomerSegmentList)
+
+	// CustomerSegmentUpdate - Update customer segments
+	e.PATCH("/v5/ad_accounts/:ad_account_id/customer_segments", c.CustomerSegmentUpdate)
 
 	// IntegrationsCommerceDel - Delete commerce integration
 	e.DELETE("/v5/integrations/commerce/:external_business_id", c.IntegrationsCommerceDel)
@@ -488,11 +566,17 @@ func main() {
 	// TrendingKeywordsList - List trending keywords
 	e.GET("/v5/trends/keywords/:region/top/:trend_type", c.TrendingKeywordsList)
 
+	// LabelsApply - Apply label to entity
+	e.POST("/v5/ad_accounts/:ad_account_id/labels/:label_id/apply", c.LabelsApply)
+
 	// LabelsCreate - Create labels
 	e.POST("/v5/ad_accounts/:ad_account_id/labels", c.LabelsCreate)
 
 	// LabelsList - List labels
 	e.GET("/v5/ad_accounts/:ad_account_id/labels", c.LabelsList)
+
+	// LabelsRemove - Remove label from entities
+	e.POST("/v5/ad_accounts/:ad_account_id/labels/:label_id/remove", c.LabelsRemove)
 
 	// LabelsUpdate - Update labels
 	e.PATCH("/v5/ad_accounts/:ad_account_id/labels", c.LabelsUpdate)
@@ -557,7 +641,7 @@ func main() {
 	// OrderLinesGet - Get order line
 	e.GET("/v5/ad_accounts/:ad_account_id/order_lines/:order_line_id", c.OrderLinesGet)
 
-	// OrderLinesList - Get order lines
+	// OrderLinesList - Get order lines.
 	e.GET("/v5/ad_accounts/:ad_account_id/order_lines", c.OrderLinesList)
 
 	// MultiPinsAnalytics - Get multiple Pin analytics
@@ -584,15 +668,6 @@ func main() {
 	// PinsUpdate - Update Pin
 	e.PATCH("/v5/pins/:pin_id", c.PinsUpdate)
 
-	// TrendsFeaturedTopicsList - Get featured topics
-	e.GET("/v5/trends/topics/featured", c.TrendsFeaturedTopicsList)
-
-	// TrendsProductCategoriesDetailsList - Get product category details
-	e.GET("/v5/trends/product_categories/details", c.TrendsProductCategoriesDetailsList)
-
-	// TrendsProductCategoriesTrendingList - Get a list of growing Shopping Product Categories
-	e.GET("/v5/trends/product_categories/trending", c.TrendsProductCategoriesTrendingList)
-
 	// ProductGroupPromotionsCreate - Create product group promotions
 	e.POST("/v5/ad_accounts/:ad_account_id/product_group_promotions", c.ProductGroupPromotionsCreate)
 
@@ -607,6 +682,15 @@ func main() {
 
 	// ProductGroupsAnalytics - Get product group analytics
 	e.GET("/v5/ad_accounts/:ad_account_id/product_groups/analytics", c.ProductGroupsAnalytics)
+
+	// ProductTagsBulkAdd - Add product tags to pin
+	e.POST("/v5/pins/:pin_id/product_tags", c.ProductTagsBulkAdd)
+
+	// ProductTagsBulkDelete - Delete product tags from pin
+	e.POST("/v5/pins/:pin_id/product_tags/bulk-delete", c.ProductTagsBulkDelete)
+
+	// ProductTagsList - Get product tags for pin
+	e.GET("/v5/pins/:pin_id/product_tags", c.ProductTagsList)
 
 	// PromotionsCreate - Create promotions
 	e.POST("/v5/ad_accounts/:ad_account_id/promotions", c.PromotionsCreate)
@@ -641,6 +725,15 @@ func main() {
 	// TargetingOptionsGet - Get targeting options
 	e.GET("/v5/resources/targeting/:targeting_type", c.TargetingOptionsGet)
 
+	// SchedulesCreate - Create schedules
+	e.POST("/v5/ad_accounts/:ad_account_id/schedules", c.SchedulesCreate)
+
+	// SchedulesList - Get Schedules
+	e.GET("/v5/ad_accounts/:ad_account_id/schedules", c.SchedulesList)
+
+	// SchedulesUpdate - Update schedules
+	e.PATCH("/v5/ad_accounts/:ad_account_id/schedules", c.SchedulesUpdate)
+
 	// SearchPartnerPins - Search pins by a given search term
 	e.GET("/v5/search/partner/pins", c.SearchPartnerPins)
 
@@ -668,6 +761,18 @@ func main() {
 	// TermsOfServiceGet - Get terms of service
 	e.GET("/v5/ad_accounts/:ad_account_id/terms_of_service", c.TermsOfServiceGet)
 
+	// TrendsEditorialArticlesList - Returns editorial articles for a given region
+	e.GET("/v5/trends/editorial_articles", c.TrendsEditorialArticlesList)
+
+	// TrendsFeaturedTopicsList - Get featured topics
+	e.GET("/v5/trends/topics/featured", c.TrendsFeaturedTopicsList)
+
+	// TrendsProductCategoriesDetailsList - Get product category details
+	e.GET("/v5/trends/product_categories/details", c.TrendsProductCategoriesDetailsList)
+
+	// TrendsProductCategoriesTrendingList - Get a list of growing Shopping Product Categories
+	e.GET("/v5/trends/product_categories/trending", c.TrendsProductCategoriesTrendingList)
+
 	// BoardsUserFollowsList - List following boards
 	e.GET("/v5/user_account/following/boards", c.BoardsUserFollowsList)
 
@@ -692,7 +797,7 @@ func main() {
 	// UserAccountAnalyticsTopVideoPins - Get user account top video pins analytics
 	e.GET("/v5/user_account/analytics/top_video_pins", c.UserAccountAnalyticsTopVideoPins)
 
-	// UserAccountFollowedInterests - List following interests (deprecated)
+	// UserAccountFollowedInterests - List following interests
 	e.GET("/v5/users/:username/interests/follow", c.UserAccountFollowedInterests)
 
 	// UserAccountGet - Get user account

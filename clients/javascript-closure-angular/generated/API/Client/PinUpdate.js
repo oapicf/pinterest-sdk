@@ -7,6 +7,13 @@ goog.provide('API.Client.PinUpdate');
 API.Client.PinUpdate = function() {}
 
 /**
+ * AI disclosure declarations the creator has made about this Pin.
+ * @type {!API.Client.AiDisclosuresUpdate}
+ * @export
+ */
+API.Client.PinUpdate.prototype.aiDisclosures;
+
+/**
  * @type {!string}
  * @export
  */

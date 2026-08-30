@@ -9,7 +9,7 @@ The class is defined in **[AudiencesList200Response.java](../../src/main/java/or
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;Audience&gt;`](Audience.md) |  | 
+**items** | [`List&lt;AdAccountsAudience&gt;`](AdAccountsAudience.md) |  | 
 
 
 

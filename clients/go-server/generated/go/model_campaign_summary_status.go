@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// CampaignSummaryStatus : Summary status for campaign
+
 type CampaignSummaryStatus string
 
 // List of CampaignSummaryStatus
@@ -74,8 +74,8 @@ func NewCampaignSummaryStatusFromValue(v string) (CampaignSummaryStatus, error) 
 }
 
 
-
-// AssertCampaignSummaryStatusRequired checks if the required fields are not zero-ed
+// AssertCampaignSummaryStatusRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCampaignSummaryStatusRequired(obj CampaignSummaryStatus) error {
 	return nil
 }

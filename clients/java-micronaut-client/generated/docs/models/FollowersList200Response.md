@@ -9,7 +9,7 @@ The class is defined in **[FollowersList200Response.java](../../src/main/java/or
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | `String` |  |  [optional property]
-**items** | [`List&lt;UserSummary&gt;`](UserSummary.md) |  | 
+**items** | [`List&lt;FollowUser&gt;`](FollowUser.md) |  | 
 
 
 

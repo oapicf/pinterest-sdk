@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -24,7 +32,7 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param address 
+ * @param address Hotel address
  * @param basePrice Base price of the hotel room per night followed by the ISO currency code
  * @param brand The brand to which this hotel belongs to.
  * @param category The type of property. The category can be any type of internal description desired.
@@ -34,7 +42,7 @@ import com.squareup.moshi.JsonClass
  * @param customLabel3 Custom grouping of hotels
  * @param customLabel4 Custom grouping of hotels
  * @param description Brief description of the hotel.
- * @param guestRatings 
+ * @param guestRatings If specified, you must provide all properties
  * @param latitude Latitude of the hotel.
  * @param link Link to the product page
  * @param longitude Longitude of the hotel.
@@ -46,6 +54,7 @@ import com.squareup.moshi.JsonClass
 
 data class CatalogsUpdatableHotelAttributes (
 
+    /* Hotel address */
     @Json(name = "address")
     val address: CatalogsHotelAddress? = null,
 
@@ -85,6 +94,7 @@ data class CatalogsUpdatableHotelAttributes (
     @Json(name = "description")
     val description: kotlin.String? = null,
 
+    /* If specified, you must provide all properties */
     @Json(name = "guest_ratings")
     val guestRatings: CatalogsHotelGuestRatings? = null,
 

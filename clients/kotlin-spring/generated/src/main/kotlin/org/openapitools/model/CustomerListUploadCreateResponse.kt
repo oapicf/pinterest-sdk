@@ -17,17 +17,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param customerListUpload 
- * @param s3MultipartUploadData 
+ * @param customerListUpload The Customer List Upload created.
+ * @param s3MultipartUploadData Pre-signed upload URLs corresponding to each part of the upload.
  */
 data class CustomerListUploadCreateResponse(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "The Customer List Upload created.")
+    @param:JsonProperty("customer_list_upload")
     @get:JsonProperty("customer_list_upload", required = true) val customerListUpload: CustomerListUpload,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "Pre-signed upload URLs corresponding to each part of the upload.")
+    @param:JsonProperty("s3_multipart_upload_data")
     @get:JsonProperty("s3_multipart_upload_data", required = true) val s3MultipartUploadData: S3MultipartUploadData
 ) {
 

@@ -1,16 +1,16 @@
 #tag Class
 Protected Class MsotEventsApi
 	#tag Method, Flags = &h0
-		Sub MsotEventsCreate(, adAccountId As String, conversionMSOTEvents As OpenAPIClient.Models.ConversionMSOTEvents)
+		Sub MsotEventsCreate(, adAccountId As String, conversionMSOTEventsCreate As OpenAPIClient.Models.ConversionMSOTEventsCreate)
 		  // Operation msot_events/create
 		  // Send Measurement Source Of Truth (MSOT) attributed conversion events
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter conversionMSOTEvents: (body) Attributed MSOT conversion events 
+		  // - parameter conversionMSOTEventsCreate: (body)  
 		  //
-		  // Invokes MsotEventsApiCallbackHandler.MsotEventsCreateCallback() on completion. 
+		  // Invokes MsotEventsApiCallbackHandler.MsotEventsCreateCallback() on completion. Note that the response is optional. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/msot/events
-		  // - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+		  // - **This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their `ad_account_id`. The request body should be a JSON object.  - These events will not be used in Reporting.
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -19,7 +19,7 @@ Protected Class MsotEventsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(conversionMSOTEvents), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(conversionMSOTEventsCreate), "application/json")
 		  
 		  
 		  

@@ -19,12 +19,12 @@ Method | HTTP request | Description
 
 
 # **asset_group_create**
-> CreateAssetGroupResponse asset_group_create(business_id, create_asset_group_body)
+> AssetGroupInput asset_group_create(business_id, asset_group_input_create)
 
 Create a new asset group.
 
 Create a new asset group with the specified parameters.
-- An <a href="https://help.pinterest.com/en/business/article/asset-groups">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+- An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 
@@ -32,8 +32,8 @@ Create a new asset group with the specified parameters.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.create_asset_group_body import CreateAssetGroupBody
-from pinterestsdk.models.create_asset_group_response import CreateAssetGroupResponse
+from pinterestsdk.models.asset_group_input import AssetGroupInput
+from pinterestsdk.models.asset_group_input_create import AssetGroupInputCreate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -54,12 +54,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    create_asset_group_body = pinterestsdk.CreateAssetGroupBody() # CreateAssetGroupBody | 
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    asset_group_input_create = pinterestsdk.AssetGroupInputCreate() # AssetGroupInputCreate | 
 
     try:
         # Create a new asset group.
-        api_response = api_instance.asset_group_create(business_id, create_asset_group_body)
+        api_response = api_instance.asset_group_create(business_id, asset_group_input_create)
         print("The response of BusinessAccessAssetsApi->asset_group_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -74,11 +74,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **create_asset_group_body** | [**CreateAssetGroupBody**](CreateAssetGroupBody.md)|  | 
+ **asset_group_input_create** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md)|  | 
 
 ### Return type
 
-[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md)
+[**AssetGroupInput**](AssetGroupInput.md)
 
 ### Authorization
 
@@ -93,14 +93,19 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**201** | Resource create operation completed successfully. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **asset_group_delete**
-> DeleteAssetGroupResponse asset_group_delete(business_id, delete_asset_group_body)
+> AssetGroupDeletion asset_group_delete(business_id, asset_group_deletion_delete)
 
 Delete asset groups.
 
@@ -112,8 +117,8 @@ Delete a batch of asset groups.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.delete_asset_group_body import DeleteAssetGroupBody
-from pinterestsdk.models.delete_asset_group_response import DeleteAssetGroupResponse
+from pinterestsdk.models.asset_group_deletion import AssetGroupDeletion
+from pinterestsdk.models.asset_group_deletion_delete import AssetGroupDeletionDelete
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -134,12 +139,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    delete_asset_group_body = pinterestsdk.DeleteAssetGroupBody() # DeleteAssetGroupBody | 
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    asset_group_deletion_delete = pinterestsdk.AssetGroupDeletionDelete() # AssetGroupDeletionDelete | 
 
     try:
         # Delete asset groups.
-        api_response = api_instance.asset_group_delete(business_id, delete_asset_group_body)
+        api_response = api_instance.asset_group_delete(business_id, asset_group_deletion_delete)
         print("The response of BusinessAccessAssetsApi->asset_group_delete:\n")
         pprint(api_response)
     except Exception as e:
@@ -154,11 +159,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **delete_asset_group_body** | [**DeleteAssetGroupBody**](DeleteAssetGroupBody.md)|  | 
+ **asset_group_deletion_delete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md)|  | 
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md)
+[**AssetGroupDeletion**](AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -173,14 +178,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **asset_group_update**
-> UpdateAssetGroupResponse asset_group_update(business_id, update_asset_group_body)
+> AssetGroupModification asset_group_update(business_id, asset_group_modification_read_or_update)
 
 Update asset groups.
 
@@ -192,8 +196,8 @@ Update a batch of asset groups with the specified parameters.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.update_asset_group_body import UpdateAssetGroupBody
-from pinterestsdk.models.update_asset_group_response import UpdateAssetGroupResponse
+from pinterestsdk.models.asset_group_modification import AssetGroupModification
+from pinterestsdk.models.asset_group_modification_read_or_update import AssetGroupModificationReadOrUpdate
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -214,12 +218,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    update_asset_group_body = pinterestsdk.UpdateAssetGroupBody() # UpdateAssetGroupBody | 
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    asset_group_modification_read_or_update = pinterestsdk.AssetGroupModificationReadOrUpdate() # AssetGroupModificationReadOrUpdate | 
 
     try:
         # Update asset groups.
-        api_response = api_instance.asset_group_update(business_id, update_asset_group_body)
+        api_response = api_instance.asset_group_update(business_id, asset_group_modification_read_or_update)
         print("The response of BusinessAccessAssetsApi->asset_group_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -234,11 +238,11 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **update_asset_group_body** | [**UpdateAssetGroupBody**](UpdateAssetGroupBody.md)|  | 
+ **asset_group_modification_read_or_update** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md)|  | 
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md)
+[**AssetGroupModification**](AssetGroupModification.md)
 
 ### Authorization
 
@@ -253,14 +257,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Invalid parameters. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_asset_members_get**
-> BusinessAssetMembersGet200Response business_asset_members_get(business_id, asset_id, fetch_system_users=fetch_system_users, bookmark=bookmark, page_size=page_size, start_index=start_index)
+> BusinessAssetMembersGet200Response business_asset_members_get(business_id, asset_id, start_index=start_index, fetch_system_users=fetch_system_users, bookmark=bookmark, page_size=page_size)
 
 Get members with access to asset
 
@@ -293,16 +301,16 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    asset_id = '729090764583391194' # str | Unique identifier of a business asset.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    asset_id = 'asset_id_example' # str | Unique identifier of a business asset.
+    start_index = 0 # int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
     fetch_system_users = False # bool | Fetches system users if True. Fetches regular user employees if False. (optional) (default to False)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-    start_index = 0 # int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # Get members with access to asset
-        api_response = api_instance.business_asset_members_get(business_id, asset_id, fetch_system_users=fetch_system_users, bookmark=bookmark, page_size=page_size, start_index=start_index)
+        api_response = api_instance.business_asset_members_get(business_id, asset_id, start_index=start_index, fetch_system_users=fetch_system_users, bookmark=bookmark, page_size=page_size)
         print("The response of BusinessAccessAssetsApi->business_asset_members_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -318,10 +326,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
  **asset_id** | **str**| Unique identifier of a business asset. | 
+ **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **fetch_system_users** | **bool**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to False]
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -340,13 +348,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Sucess |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_asset_partners_get**
-> BusinessAssetPartnersGet200Response business_asset_partners_get(business_id, asset_id, start_index=start_index, bookmark=bookmark, page_size=page_size)
+> BusinessAssetMembersGet200Response business_asset_partners_get(business_id, asset_id, start_index=start_index, bookmark=bookmark, page_size=page_size)
 
 Get partners with access to asset
 
@@ -360,7 +373,7 @@ you cannot be shared with a different partner.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.business_asset_partners_get200_response import BusinessAssetPartnersGet200Response
+from pinterestsdk.models.business_asset_members_get200_response import BusinessAssetMembersGet200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -381,11 +394,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    asset_id = '729090764583391194' # str | Unique identifier of a business asset.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    asset_id = 'asset_id_example' # str | Unique identifier of a business asset.
     start_index = 0 # int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # Get partners with access to asset
@@ -407,11 +420,11 @@ Name | Type | Description  | Notes
  **asset_id** | **str**| Unique identifier of a business asset. | 
  **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessAssetPartnersGet200Response**](BusinessAssetPartnersGet200Response.md)
+[**BusinessAssetMembersGet200Response**](BusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -426,8 +439,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Sucess |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -466,14 +484,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
     permissions = [pinterestsdk.PermissionsWithOwner()] # List[PermissionsWithOwner] | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional)
-    child_asset_id = '549764894835' # str | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
-    asset_group_id = '7078106104032' # str | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
-    asset_type = AD_ACCOUNT # str | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to AD_ACCOUNT)
+    child_asset_id = 'child_asset_id_example' # str | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
+    asset_group_id = 'asset_group_id_example' # str | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
+    asset_type = 'AD_ACCOUNT' # str | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to 'AD_ACCOUNT')
     start_index = 0 # int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # List business assets
@@ -495,10 +513,10 @@ Name | Type | Description  | Notes
  **permissions** | [**List[PermissionsWithOwner]**](PermissionsWithOwner.md)| A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. | [optional] 
  **child_asset_id** | **str**| A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. | [optional] 
  **asset_group_id** | **str**| An asset group unique identifier. Used to fetch assets contained within the specified asset group. | [optional] 
- **asset_type** | **str**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT]
+ **asset_type** | **str**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -517,13 +535,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_member_assets_get**
-> BusinessMemberAssetsGet200Response business_member_assets_get(business_id, member_id, asset_type=asset_type, start_index=start_index, bookmark=bookmark, page_size=page_size)
+> BusinessMemberAssetsGetResponse business_member_assets_get(business_id, member_id, asset_type=asset_type, start_index=start_index, sort_by=sort_by, sort_ascending=sort_ascending, search_by=search_by, search_value=search_value, asset_permission_type=asset_permission_type, ad_account_statuses=ad_account_statuses, bookmark=bookmark, page_size=page_size)
 
 Get assets assigned to a member
 
@@ -538,7 +561,11 @@ The return response will include the permissions the member has to that asset an
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.business_member_assets_get200_response import BusinessMemberAssetsGet200Response
+from pinterestsdk.models.asset_permission_type import AssetPermissionType
+from pinterestsdk.models.asset_search_by import AssetSearchBy
+from pinterestsdk.models.asset_sort_by import AssetSortBy
+from pinterestsdk.models.business_member_assets_get_response import BusinessMemberAssetsGetResponse
+from pinterestsdk.models.non_draft_entity_status import NonDraftEntityStatus
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -559,16 +586,22 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    member_id = '729090764583391194' # str | The member id to fetch assets for.
-    asset_type = AD_ACCOUNT # str | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to AD_ACCOUNT)
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    member_id = 'member_id_example' # str | The member id to fetch assets for.
+    asset_type = 'AD_ACCOUNT' # str | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to 'AD_ACCOUNT')
     start_index = 0 # int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+    sort_by = pinterestsdk.AssetSortBy() # AssetSortBy | The field to sort member assets by (optional)
+    sort_ascending = True # bool | Sort assets in ascending order (optional) (default to True)
+    search_by = pinterestsdk.AssetSearchBy() # AssetSearchBy | The field to search member assets by (optional)
+    search_value = 'search_value_example' # str | The value to search for (optional)
+    asset_permission_type = pinterestsdk.AssetPermissionType() # AssetPermissionType | The type of asset permission to filter by (optional)
+    ad_account_statuses = [pinterestsdk.NonDraftEntityStatus()] # List[NonDraftEntityStatus] | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # Get assets assigned to a member
-        api_response = api_instance.business_member_assets_get(business_id, member_id, asset_type=asset_type, start_index=start_index, bookmark=bookmark, page_size=page_size)
+        api_response = api_instance.business_member_assets_get(business_id, member_id, asset_type=asset_type, start_index=start_index, sort_by=sort_by, sort_ascending=sort_ascending, search_by=search_by, search_value=search_value, asset_permission_type=asset_permission_type, ad_account_statuses=ad_account_statuses, bookmark=bookmark, page_size=page_size)
         print("The response of BusinessAccessAssetsApi->business_member_assets_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -584,14 +617,20 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
  **member_id** | **str**| The member id to fetch assets for. | 
- **asset_type** | **str**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT]
+ **asset_type** | **str**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **sort_by** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] 
+ **sort_ascending** | **bool**| Sort assets in ascending order | [optional] [default to True]
+ **search_by** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] 
+ **search_value** | **str**| The value to search for | [optional] 
+ **asset_permission_type** | [**AssetPermissionType**](.md)| The type of asset permission to filter by | [optional] 
+ **ad_account_statuses** | [**List[NonDraftEntityStatus]**](NonDraftEntityStatus.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessMemberAssetsGet200Response**](BusinessMemberAssetsGet200Response.md)
+[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -606,13 +645,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_members_asset_access_delete**
-> DeleteMemberAccessResultsResponseArray business_members_asset_access_delete(business_id, business_members_asset_access_delete_request)
+> DeleteMemberAccessResultsResponseArray business_members_asset_access_delete(business_id, business_members_asset_access_delete_body)
 
 Delete member access to asset
 
@@ -624,7 +668,7 @@ Terminate multiple members' access to an asset.
 
 ```python
 import pinterestsdk
-from pinterestsdk.models.business_members_asset_access_delete_request import BusinessMembersAssetAccessDeleteRequest
+from pinterestsdk.models.business_members_asset_access_delete_body import BusinessMembersAssetAccessDeleteBody
 from pinterestsdk.models.delete_member_access_results_response_array import DeleteMemberAccessResultsResponseArray
 from pinterestsdk.rest import ApiException
 from pprint import pprint
@@ -646,12 +690,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    business_members_asset_access_delete_request = pinterestsdk.BusinessMembersAssetAccessDeleteRequest() # BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    business_members_asset_access_delete_body = pinterestsdk.BusinessMembersAssetAccessDeleteBody() # BusinessMembersAssetAccessDeleteBody | 
 
     try:
         # Delete member access to asset
-        api_response = api_instance.business_members_asset_access_delete(business_id, business_members_asset_access_delete_request)
+        api_response = api_instance.business_members_asset_access_delete(business_id, business_members_asset_access_delete_body)
         print("The response of BusinessAccessAssetsApi->business_members_asset_access_delete:\n")
         pprint(api_response)
     except Exception as e:
@@ -666,7 +710,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **business_members_asset_access_delete_request** | [**BusinessMembersAssetAccessDeleteRequest**](BusinessMembersAssetAccessDeleteRequest.md)| List member assset permissions to delete. | 
+ **business_members_asset_access_delete_body** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md)|  | 
 
 ### Return type
 
@@ -685,8 +729,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | response |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -697,7 +741,6 @@ Assign/Update member asset permissions
 
 Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset.
 Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
-
 
 ### Example
 
@@ -727,8 +770,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    update_member_asset_access_body = pinterestsdk.UpdateMemberAssetAccessBody() # UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    update_member_asset_access_body = pinterestsdk.UpdateMemberAssetAccessBody() # UpdateMemberAssetAccessBody | 
 
     try:
         # Assign/Update member asset permissions
@@ -747,7 +790,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **update_member_asset_access_body** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. | 
+ **update_member_asset_access_body** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)|  | 
 
 ### Return type
 
@@ -766,13 +809,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | response |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_partner_asset_access_get**
-> BusinessPartnerAssetAccessGet200Response business_partner_asset_access_get(business_id, partner_id, partner_type=partner_type, asset_type=asset_type, start_index=start_index, page_size=page_size, bookmark=bookmark)
+> BusinessPartnerAssetAccessGet200Response business_partner_asset_access_get(business_id, partner_id, partner_type=partner_type, asset_type=asset_type, start_index=start_index, sort_by=sort_by, sort_ascending=sort_ascending, search_by=search_by, search_value=search_value, bookmark=bookmark, page_size=page_size)
 
 Get assets assigned to a partner or assets assigned by a partner
 
@@ -787,6 +835,8 @@ granted your partner access to. If you specify:
 
 ```python
 import pinterestsdk
+from pinterestsdk.models.asset_search_by import AssetSearchBy
+from pinterestsdk.models.asset_sort_by import AssetSortBy
 from pinterestsdk.models.business_partner_asset_access_get200_response import BusinessPartnerAssetAccessGet200Response
 from pinterestsdk.rest import ApiException
 from pprint import pprint
@@ -808,17 +858,21 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    partner_id = '729090764583391194' # str | The partner id to be bound to the Business
-    partner_type = pinterestsdk.PartnerType() # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
-    asset_type = AD_ACCOUNT # str | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to AD_ACCOUNT)
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    partner_id = 'partner_id_example' # str | The partner id to be bound to the Business
+    partner_type = 'INTERNAL' # str | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) (default to 'INTERNAL')
+    asset_type = 'AD_ACCOUNT' # str | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to 'AD_ACCOUNT')
     start_index = 0 # int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
-    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    sort_by = pinterestsdk.AssetSortBy() # AssetSortBy | The field to sort member assets by (optional)
+    sort_ascending = True # bool | Sort assets in ascending order (optional) (default to True)
+    search_by = pinterestsdk.AssetSearchBy() # AssetSearchBy | The field to search member assets by (optional)
+    search_value = 'search_value_example' # str | The value to search for (optional)
     bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
     try:
         # Get assets assigned to a partner or assets assigned by a partner
-        api_response = api_instance.business_partner_asset_access_get(business_id, partner_id, partner_type=partner_type, asset_type=asset_type, start_index=start_index, page_size=page_size, bookmark=bookmark)
+        api_response = api_instance.business_partner_asset_access_get(business_id, partner_id, partner_type=partner_type, asset_type=asset_type, start_index=start_index, sort_by=sort_by, sort_ascending=sort_ascending, search_by=search_by, search_value=search_value, bookmark=bookmark, page_size=page_size)
         print("The response of BusinessAccessAssetsApi->business_partner_asset_access_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -834,11 +888,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
  **partner_id** | **str**| The partner id to be bound to the Business | 
- **partner_type** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
- **asset_type** | **str**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT]
+ **partner_type** | **str**| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to &#39;INTERNAL&#39;]
+ **asset_type** | **str**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sort_by** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] 
+ **sort_ascending** | **bool**| Sort assets in ascending order | [optional] [default to True]
+ **search_by** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] 
+ **search_value** | **str**| The value to search for | [optional] 
  **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -857,13 +915,18 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_partner_asset_access_handler_impl**
-> DeletePartnerAssetsResultsResponseArray delete_partner_asset_access_handler_impl(business_id, delete_partner_asset_access_body)
+> DeletePartnerAssetAccessResultsResponseArray delete_partner_asset_access_handler_impl(business_id, delete_partner_asset_access_body)
 
 Delete partner access to asset
 
@@ -878,7 +941,7 @@ Terminate multiple partners' access to an asset. If
 ```python
 import pinterestsdk
 from pinterestsdk.models.delete_partner_asset_access_body import DeletePartnerAssetAccessBody
-from pinterestsdk.models.delete_partner_assets_results_response_array import DeletePartnerAssetsResultsResponseArray
+from pinterestsdk.models.delete_partner_asset_access_results_response_array import DeletePartnerAssetAccessResultsResponseArray
 from pinterestsdk.rest import ApiException
 from pprint import pprint
 
@@ -899,7 +962,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
     delete_partner_asset_access_body = pinterestsdk.DeletePartnerAssetAccessBody() # DeletePartnerAssetAccessBody | 
 
     try:
@@ -923,7 +986,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md)
+[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -938,8 +1001,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -984,8 +1047,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.BusinessAccessAssetsApi(api_client)
-    business_id = '729090764583391194' # str | Unique identifier of the requesting business.
-    update_partner_asset_access_body = pinterestsdk.UpdatePartnerAssetAccessBody() # UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+    business_id = 'business_id_example' # str | Unique identifier of the requesting business.
+    update_partner_asset_access_body = pinterestsdk.UpdatePartnerAssetAccessBody() # UpdatePartnerAssetAccessBody | 
 
     try:
         # Assign/Update partner asset permissions
@@ -1004,7 +1067,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **str**| Unique identifier of the requesting business. | 
- **update_partner_asset_access_body** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. | 
+ **update_partner_asset_access_body** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)|  | 
 
 ### Return type
 
@@ -1023,8 +1086,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**401** | Authentication is required and has either failed or not been provided. |  -  |
+**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+**404** | The requested resource could not be found on this server. |  -  |
+**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

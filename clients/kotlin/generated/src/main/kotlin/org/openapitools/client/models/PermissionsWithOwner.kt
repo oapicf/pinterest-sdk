@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -20,7 +28,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Permission levels including the OWNER role.
  *
  * Values: ADMIN,ANALYST,FINANCE_MANAGER,FINANCE_EDIT,FINANCE_VIEW,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,CATALOGS_VIEWER,PROFILE_PUBLISHER,OWNER
  */
@@ -81,7 +89,7 @@ enum class PermissionsWithOwner(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): PermissionsWithOwner? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

@@ -1,7 +1,7 @@
 /*
  * conversion_events.h
  *
- * A list of events (one or more) encapsulated by a data object.
+ * Conversion events.
  */
 
 #ifndef _conversion_events_H_
@@ -15,18 +15,22 @@
 
 typedef struct conversion_events_t conversion_events_t;
 
-#include "conversion_events_data_inner.h"
+#include "conversion_api_response_events_items.h"
 
 
 
 typedef struct conversion_events_t {
-    list_t *data; //nonprimitive container
+    list_t *events; //nonprimitive container
+    int *num_events_processed; //numeric
+    int *num_events_received; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } conversion_events_t;
 
 __attribute__((deprecated)) conversion_events_t *conversion_events_create(
-    list_t *data
+    list_t *events,
+    int *num_events_processed,
+    int *num_events_received
 );
 
 void conversion_events_free(conversion_events_t *conversion_events);

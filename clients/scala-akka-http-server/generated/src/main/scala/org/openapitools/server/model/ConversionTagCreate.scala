@@ -12,7 +12,7 @@ package org.openapitools.server.model
  * @param aemLocEnabled Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. for example: ''null''
  * @param aemPhEnabled Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information. for example: ''null''
  * @param mdFrequency Metadata ingestion frequency. for example: ''0.6''
- * @param name Conversion tag name. for example: ''ACME Checkout Test Tag''
+ * @param name Conversion tag name. for example: ''download_picture''
 */
 final case class ConversionTagCreate (
   aemDbEnabled: Option[Boolean] = None,

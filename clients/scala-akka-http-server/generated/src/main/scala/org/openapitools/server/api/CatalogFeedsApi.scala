@@ -9,13 +9,13 @@ import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
 import org.openapitools.server.model.CatalogsFeed
+import org.openapitools.server.model.CatalogsFeedCreateRequestSchema
 import org.openapitools.server.model.CatalogsFeedIngestion
+import org.openapitools.server.model.CatalogsFeedUpdateRequestSchema
 import org.openapitools.server.model.CatalogsItemValidationIssue
 import org.openapitools.server.model.Error
 import org.openapitools.server.model.FeedProcessingResultsList200Response
-import org.openapitools.server.model.FeedsCreateRequest
 import org.openapitools.server.model.FeedsList200Response
-import org.openapitools.server.model.FeedsUpdateRequest
 import org.openapitools.server.model.ItemsIssuesList200Response
 
 
@@ -32,16 +32,16 @@ import CatalogFeedsApiPatterns.feedIdPattern
   lazy val route: Route =
     path("catalogs" / "feeds" / feedIdPattern / "processing_results") { (feedId) => 
       get { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "ad_account_id".as[String].?) { (bookmark, pageSize, adAccountId) => 
-            catalogFeedsService.feedProcessingResultsList(feedId = feedId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
+        parameters("ad_account_id".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (adAccountId, bookmark, pageSize) => 
+            catalogFeedsService.feedProcessingResultsList(feedId = feedId, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
     path("catalogs" / "feeds") { 
       post { 
         parameters("ad_account_id".as[String].?) { (adAccountId) => 
-            entity(as[FeedsCreateRequest]){ feedsCreateRequest =>
-              catalogFeedsService.feedsCreate(feedsCreateRequest = feedsCreateRequest, adAccountId = adAccountId)
+            entity(as[CatalogsFeedCreateRequestSchema]){ catalogsFeedCreateRequestSchema =>
+              catalogFeedsService.feedsCreate(catalogsFeedCreateRequestSchema = catalogsFeedCreateRequestSchema, adAccountId = adAccountId)
             }
         }
       }
@@ -69,24 +69,24 @@ import CatalogFeedsApiPatterns.feedIdPattern
     } ~
     path("catalogs" / "feeds") { 
       get { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "catalog_id".as[String].?, "ad_account_id".as[String].?) { (bookmark, pageSize, catalogId, adAccountId) => 
-            catalogFeedsService.feedsList(bookmark = bookmark, pageSize = pageSize, catalogId = catalogId, adAccountId = adAccountId)
+        parameters("catalog_id".as[String].?, "ad_account_id".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (catalogId, adAccountId, bookmark, pageSize) => 
+            catalogFeedsService.feedsList(catalogId = catalogId, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
     path("catalogs" / "feeds" / feedIdPattern) { (feedId) => 
       patch { 
         parameters("ad_account_id".as[String].?) { (adAccountId) => 
-            entity(as[FeedsUpdateRequest]){ feedsUpdateRequest =>
-              catalogFeedsService.feedsUpdate(feedId = feedId, feedsUpdateRequest = feedsUpdateRequest, adAccountId = adAccountId)
+            entity(as[CatalogsFeedUpdateRequestSchema]){ catalogsFeedUpdateRequestSchema =>
+              catalogFeedsService.feedsUpdate(feedId = feedId, catalogsFeedUpdateRequestSchema = catalogsFeedUpdateRequestSchema, adAccountId = adAccountId)
             }
         }
       }
     } ~
     path("catalogs" / "processing_results" / processingResultIdPattern / "item_issues") { (processingResultId) => 
       get { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "item_numbers".as[String].?, "item_validation_issue".as[String].?, "ad_account_id".as[String].?) { (bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId) => 
-            catalogFeedsService.itemsIssuesList(processingResultId = processingResultId, bookmark = bookmark, pageSize = pageSize, itemNumbers = itemNumbers, itemValidationIssue = itemValidationIssue, adAccountId = adAccountId)
+        parameters("item_numbers".as[String].?, "item_validation_issue".as[String].?, "ad_account_id".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (itemNumbers, itemValidationIssue, adAccountId, bookmark, pageSize) => 
+            catalogFeedsService.itemsIssuesList(processingResultId = processingResultId, itemNumbers = itemNumbers, itemValidationIssue = itemValidationIssue, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
         }
       }
     }
@@ -94,8 +94,8 @@ import CatalogFeedsApiPatterns.feedIdPattern
 
 object CatalogFeedsApiPatterns {
 
-    val processingResultIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
-val feedIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val processingResultIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
+val feedIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait CatalogFeedsApiService {
@@ -106,20 +106,28 @@ trait CatalogFeedsApiService {
     complete((400, responseError))
   def feedProcessingResultsList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((401, responseError))
+  def feedProcessingResultsList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
   def feedProcessingResultsList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def feedProcessingResultsList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def feedProcessingResultsListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: FeedProcessingResultsList200Response
-   * Code: 400, Message: Invalid parameters., DataType: Error
-   * Code: 401, Message: Unauthorized access., DataType: Error
-   * Code: 404, Message: Feed not found., DataType: Error
-   * Code: 0, Message: Unexpected error., DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: FeedProcessingResultsList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def feedProcessingResultsList(feedId: String, bookmark: Option[String], pageSize: Int, adAccountId: Option[String])
+  def feedProcessingResultsList(feedId: String, adAccountId: Option[String], bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerFeedProcessingResultsList200Response: ToEntityMarshaller[FeedProcessingResultsList200Response]): Route
 
+  def feedsCreate200(responseCatalogsFeed: CatalogsFeed)(implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed]): Route =
+    complete((200, responseCatalogsFeed))
   def feedsCreate201(responseCatalogsFeed: CatalogsFeed)(implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed]): Route =
     complete((201, responseCatalogsFeed))
   def feedsCreate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -128,49 +136,53 @@ trait CatalogFeedsApiService {
     complete((401, responseError))
   def feedsCreate403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
-  def feedsCreate409(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
-    complete((409, responseError))
-  def feedsCreate422(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
-    complete((422, responseError))
-  def feedsCreate501(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
-    complete((501, responseError))
+  def feedsCreate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def feedsCreate429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def feedsCreateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 201, Message: Success, DataType: CatalogsFeed
-   * Code: 400, Message: Invalid feed parameters., DataType: Error
-   * Code: 401, Message: Unauthorized access., DataType: Error
-   * Code: 403, Message: Business account required., DataType: Error
-   * Code: 409, Message: User website required., DataType: Error
-   * Code: 422, Message: Unique feed name is required., DataType: Error
-   * Code: 501, Message: Not implemented (absent \&quot;default_country\&quot; or \&quot;default_locale\&quot;)., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: CatalogsFeed
+   * Code: 201, Message: Resource create operation completed successfully., DataType: CatalogsFeed
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId: Option[String])
+  def feedsCreate(catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema, adAccountId: Option[String])
       (implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
+  def feedsDelete200(responseCatalogsFeed: CatalogsFeed)(implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed]): Route =
+    complete((200, responseCatalogsFeed))
   def feedsDelete204: Route =
-    complete((204, "Feed deleted successfully."))
+    complete((204, "Resource deleted successfully."))
   def feedsDelete400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def feedsDelete401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def feedsDelete403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
   def feedsDelete404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
-  def feedsDelete409(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
-    complete((409, responseError))
+  def feedsDelete429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def feedsDeleteDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 204, Message: Feed deleted successfully.
-   * Code: 400, Message: Invalid feed parameters., DataType: Error
-   * Code: 403, Message: Forbidden. Account not approved for feed mutations yet., DataType: Error
-   * Code: 404, Message: Data feed not found., DataType: Error
-   * Code: 409, Message: Conflict. Can&#39;t delete a feed with active promotions., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: CatalogsFeed
+   * Code: 204, Message: Resource deleted successfully.
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def feedsDelete(feedId: String, adAccountId: Option[String])
-      (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def feedsGet200(responseCatalogsFeed: CatalogsFeed)(implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed]): Route =
     complete((200, responseCatalogsFeed))
@@ -178,16 +190,22 @@ trait CatalogFeedsApiService {
     complete((400, responseError))
   def feedsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((401, responseError))
+  def feedsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
   def feedsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def feedsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def feedsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: CatalogsFeed
-   * Code: 400, Message: Invalid feed parameters., DataType: Error
-   * Code: 401, Message: Unauthorized access., DataType: Error
-   * Code: 404, Message: Data feed not found., DataType: Error
-   * Code: 0, Message: Unexpected error., DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: CatalogsFeed
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def feedsGet(feedId: String, adAccountId: Option[String])
       (implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
@@ -196,18 +214,24 @@ trait CatalogFeedsApiService {
     complete((200, responseCatalogsFeedIngestion))
   def feedsIngest400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def feedsIngest401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def feedsIngest403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
   def feedsIngest404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def feedsIngest429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def feedsIngestDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: The ingestion process was successfully started., DataType: CatalogsFeedIngestion
-   * Code: 400, Message: Invalid feed parameters., DataType: Error
-   * Code: 403, Message: Forbidden. Account not approved for feed mutations yet., DataType: Error
-   * Code: 404, Message: Data feed not found., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: CatalogsFeedIngestion
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def feedsIngest(feedId: String, adAccountId: Option[String])
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerCatalogsFeedIngestion: ToEntityMarshaller[CatalogsFeedIngestion]): Route
@@ -218,63 +242,84 @@ trait CatalogFeedsApiService {
     complete((400, responseError))
   def feedsList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((401, responseError))
+  def feedsList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def feedsList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def feedsList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def feedsListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: FeedsList200Response
-   * Code: 400, Message: Invalid parameters., DataType: Error
-   * Code: 401, Message: Unauthorized access., DataType: Error
-   * Code: 0, Message: Unexpected error., DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: FeedsList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def feedsList(bookmark: Option[String], pageSize: Int, catalogId: Option[String], adAccountId: Option[String])
+  def feedsList(catalogId: Option[String], adAccountId: Option[String], bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerFeedsList200Response: ToEntityMarshaller[FeedsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def feedsUpdate200(responseCatalogsFeed: CatalogsFeed)(implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed]): Route =
     complete((200, responseCatalogsFeed))
   def feedsUpdate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def feedsUpdate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def feedsUpdate403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
   def feedsUpdate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def feedsUpdate429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def feedsUpdateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: CatalogsFeed
-   * Code: 400, Message: Invalid feed parameters., DataType: Error
-   * Code: 403, Message: Forbidden. Account not approved for feed mutations yet., DataType: Error
-   * Code: 404, Message: Data feed not found., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: CatalogsFeed
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def feedsUpdate(feedId: String, feedsUpdateRequest: FeedsUpdateRequest, adAccountId: Option[String])
+  def feedsUpdate(feedId: String, catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema, adAccountId: Option[String])
       (implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def itemsIssuesList200(responseItemsIssuesList200Response: ItemsIssuesList200Response)(implicit toEntityMarshallerItemsIssuesList200Response: ToEntityMarshaller[ItemsIssuesList200Response]): Route =
     complete((200, responseItemsIssuesList200Response))
+  def itemsIssuesList400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
   def itemsIssuesList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((401, responseError))
+  def itemsIssuesList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
   def itemsIssuesList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
-  def itemsIssuesList501(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
-    complete((501, responseError))
+  def itemsIssuesList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def itemsIssuesListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: ItemsIssuesList200Response
-   * Code: 401, Message: Unauthorized access., DataType: Error
-   * Code: 404, Message: Processing Result not found., DataType: Error
-   * Code: 501, Message: Not implemented., DataType: Error
-   * Code: 0, Message: Unexpected error., DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: ItemsIssuesList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def itemsIssuesList(processingResultId: String, bookmark: Option[String], pageSize: Int, itemNumbers: Option[String], itemValidationIssue: Option[String], adAccountId: Option[String])
+  def itemsIssuesList(processingResultId: String, itemNumbers: Option[String], itemValidationIssue: Option[String], adAccountId: Option[String], bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerItemsIssuesList200Response: ToEntityMarshaller[ItemsIssuesList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
 
 trait CatalogFeedsApiMarshaller {
-  implicit def fromEntityUnmarshallerFeedsCreateRequest: FromEntityUnmarshaller[FeedsCreateRequest]
+  implicit def fromEntityUnmarshallerCatalogsFeedCreateRequestSchema: FromEntityUnmarshaller[CatalogsFeedCreateRequestSchema]
 
-  implicit def fromEntityUnmarshallerFeedsUpdateRequest: FromEntityUnmarshaller[FeedsUpdateRequest]
+  implicit def fromEntityUnmarshallerCatalogsFeedUpdateRequestSchema: FromEntityUnmarshaller[CatalogsFeedUpdateRequestSchema]
 
 
 

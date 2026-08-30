@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.LabelCreateRequestLabelsInner
+open OpenAPI.Model.LabelCreateItem
 
 module LabelCreateRequest =
 
@@ -10,7 +10,6 @@ module LabelCreateRequest =
 
 
   type LabelCreateRequest = {
-    Labels : LabelCreateRequestLabelsInner[];
-    ParentId : string;
+    Labels : LabelCreateItem[];
   }
   //#endregion

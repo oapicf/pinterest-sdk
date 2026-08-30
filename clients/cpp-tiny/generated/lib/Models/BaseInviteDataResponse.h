@@ -2,7 +2,7 @@
 /*
  * BaseInviteDataResponse.h
  *
- * 
+ * Common invite/request data returned by the business access endpoints.
  */
 
 #ifndef TINY_CPP_CLIENT_BaseInviteDataResponse_H_
@@ -12,13 +12,13 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "BaseInviteDataResponse_invite_data.h"
 #include "BusinessAccessUserSummary.h"
+#include "InviteDataResponse.h"
 
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief Common invite/request data returned by the business access endpoints.
  *
  *  \ingroup Models
  *
@@ -53,33 +53,33 @@ public:
 
 	/*! \brief Set Unique identifier of the invite/request.
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get 
 	 */
-	BaseInviteDataResponse_invite_data getInviteData();
+	InviteDataResponse getInviteData();
 
 	/*! \brief Set 
 	 */
-	void setInviteData(BaseInviteDataResponse_invite_data  invite_data);
+	void setInviteData(InviteDataResponse invite_data);
 	/*! \brief Get Indicates whether the invite/request was received.
 	 */
 	bool isIsReceivedInvite();
 
 	/*! \brief Set Indicates whether the invite/request was received.
 	 */
-	void setIsReceivedInvite(bool  is_received_invite);
+	void setIsReceivedInvite(bool is_received_invite);
 	/*! \brief Get Metadata for the member/partner that was sent the invite/request.
 	 */
 	BusinessAccessUserSummary getUser();
 
 	/*! \brief Set Metadata for the member/partner that was sent the invite/request.
 	 */
-	void setUser(BusinessAccessUserSummary  user);
+	void setUser(BusinessAccessUserSummary user);
 
 
     private:
     std::string id{};
-    BaseInviteDataResponse_invite_data invite_data;
+    InviteDataResponse invite_data;
     bool is_received_invite{};
     BusinessAccessUserSummary user;
 };

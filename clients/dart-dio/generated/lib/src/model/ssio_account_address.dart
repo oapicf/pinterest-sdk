@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'ssio_account_address.g.dart';
 
-/// SSIOAccountAddress
+/// Salesforce address information.
 ///
 /// Properties:
 /// * [addressId] - Salesforce id for address
@@ -110,29 +110,33 @@ class _$SSIOAccountAddressSerializer implements PrimitiveSerializer<SSIOAccountA
         case r'address_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.addressId = valueDes;
           break;
         case r'display':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.display = valueDes;
           break;
         case r'order_legal_entity':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.orderLegalEntity = valueDes;
           break;
         case r'purpose':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.purpose = valueDes;
           break;
         default:

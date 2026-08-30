@@ -15,7 +15,7 @@ class CatalogsProductGroupCreateRequest {
     
     CatalogsProductGroupFiltersRequest filters
     /* boolean indicator of whether the product group is being featured or not */
-    Boolean isFeatured = false
+    Boolean isFeatured
     
     String name
 }

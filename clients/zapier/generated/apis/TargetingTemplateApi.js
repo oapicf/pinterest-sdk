@@ -1,8 +1,9 @@
 const samples = require('../samples/TargetingTemplateApi');
-const Error = require('../models/Error');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const Pinterest.Lib.PaginationOrder = require('../models/Pinterest.Lib.PaginationOrder');
+const TargetingTemplate = require('../models/TargetingTemplate');
 const TargetingTemplateCreate = require('../models/TargetingTemplateCreate');
-const TargetingTemplateGetResponseData = require('../models/TargetingTemplateGetResponseData');
-const TargetingTemplateUpdateRequest = require('../models/TargetingTemplateUpdateRequest');
+const TargetingTemplateUpdateRequestReadOrUpdate = require('../models/TargetingTemplateUpdateRequestReadOrUpdate');
 const targeting_template_list_200_response = require('../models/targeting_template_list_200_response');
 const utils = require('../utils/utils');
 
@@ -12,7 +13,7 @@ module.exports = {
         noun: 'targeting_template',
         display: {
             label: 'Create targeting templates',
-            description: '&lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;',
+            description: 'Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.',
             hidden: false,
         },
         operation: {
@@ -26,7 +27,7 @@ module.exports = {
                 ...TargetingTemplateCreate.fields(),
             ],
             outputFields: [
-                ...TargetingTemplateGetResponseData.fields('', false),
+                ...TargetingTemplate.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -49,7 +50,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['TargetingTemplateGetResponseDataSample']
+            sample: samples['TargetingTemplateSample']samples['TargetingTemplateSample']
         }
     },
     targetingTemplate/list: {
@@ -57,7 +58,7 @@ module.exports = {
         noun: 'targeting_template',
         display: {
             label: 'List targeting templates',
-            description: 'Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;',
+            description: 'Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;',
             hidden: false,
         },
         operation: {
@@ -69,14 +70,16 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
                     type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
                 },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
+                    type: 'integer',
+                },
+                ....fields(),
                 {
                     key: 'include_sizing',
                     label: 'Include audience sizing in result or not',
@@ -84,17 +87,7 @@ module.exports = {
                 },
                 {
                     key: 'search_query',
-                    label: 'Search keyword for targeting templates',
-                    type: 'string',
-                },
-                {
-                    key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
-                    type: 'integer',
-                },
-                {
-                    key: 'bookmark',
-                    label: 'Cursor used to fetch the next page of items',
+                    label: 'Search query. Can contain pin description keywords or comma-separated pin IDs.',
                     type: 'string',
                 },
             ],
@@ -111,11 +104,11 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
                         'order': bundle.inputData?.['order'],
                         'include_sizing': bundle.inputData?.['include_sizing'],
                         'search_query': bundle.inputData?.['search_query'],
-                        'page_size': bundle.inputData?.['page_size'],
-                        'bookmark': bundle.inputData?.['bookmark'],
                     },
                     body: {
                     },
@@ -134,7 +127,7 @@ module.exports = {
         noun: 'targeting_template',
         display: {
             label: 'Update targeting templates',
-            description: '&lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;',
+            description: 'Update the targeting template given advertiser ID and targeting template ID',
             hidden: false,
         },
         operation: {
@@ -145,7 +138,7 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...TargetingTemplateUpdateRequest.fields(),
+                ...TargetingTemplateUpdateRequestReadOrUpdate.fields(),
             ],
             outputFields: [
             ],
@@ -161,7 +154,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...TargetingTemplateUpdateRequest.mapping(bundle),
+                        ...TargetingTemplateUpdateRequestReadOrUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {

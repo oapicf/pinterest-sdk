@@ -4,10 +4,10 @@ open OpenAPI.Model.ConversionEventResponse
 open OpenAPI.Model.ConversionTag
 open OpenAPI.Model.ConversionTagCreate
 open OpenAPI.Model.ConversionTagsList200Response
-open OpenAPI.Model.Error
 open System.Collections.Generic
 open OpenAPI.Model.PageVisitConversionTagsGet200Response
 open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
 open System.Collections.Generic
 open System
 
@@ -86,11 +86,36 @@ module ConversionTagsApiHandlerParams =
       
     }
 
-    type ConversionTagsGetDefaultStatusCodeResponse = {
-      content:Error;
+    type ConversionTagsGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type ConversionTagsGetResult = ConversionTagsGetStatusCode200 of ConversionTagsGetStatusCode200Response|ConversionTagsGetDefaultStatusCode of ConversionTagsGetDefaultStatusCodeResponse
+
+    type ConversionTagsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type ConversionTagsGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type ConversionTagsGetResult = ConversionTagsGetStatusCode200 of ConversionTagsGetStatusCode200Response|ConversionTagsGetStatusCode400 of ConversionTagsGetStatusCode400Response|ConversionTagsGetStatusCode401 of ConversionTagsGetStatusCode401Response|ConversionTagsGetStatusCode403 of ConversionTagsGetStatusCode403Response|ConversionTagsGetStatusCode404 of ConversionTagsGetStatusCode404Response|ConversionTagsGetStatusCode429 of ConversionTagsGetStatusCode429Response|ConversionTagsGetDefaultStatusCode of ConversionTagsGetDefaultStatusCodeResponse
 
     type ConversionTagsGetArgs = {
       pathParams:ConversionTagsGetPathParams;
@@ -164,11 +189,36 @@ module ConversionTagsApiHandlerParams =
       
     }
 
-    type OcpmEligibleConversionTagsGetDefaultStatusCodeResponse = {
-      content:Error;
+    type OcpmEligibleConversionTagsGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type OcpmEligibleConversionTagsGetResult = OcpmEligibleConversionTagsGetStatusCode200 of OcpmEligibleConversionTagsGetStatusCode200Response|OcpmEligibleConversionTagsGetDefaultStatusCode of OcpmEligibleConversionTagsGetDefaultStatusCodeResponse
+
+    type OcpmEligibleConversionTagsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type OcpmEligibleConversionTagsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type OcpmEligibleConversionTagsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type OcpmEligibleConversionTagsGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type OcpmEligibleConversionTagsGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type OcpmEligibleConversionTagsGetResult = OcpmEligibleConversionTagsGetStatusCode200 of OcpmEligibleConversionTagsGetStatusCode200Response|OcpmEligibleConversionTagsGetStatusCode400 of OcpmEligibleConversionTagsGetStatusCode400Response|OcpmEligibleConversionTagsGetStatusCode401 of OcpmEligibleConversionTagsGetStatusCode401Response|OcpmEligibleConversionTagsGetStatusCode403 of OcpmEligibleConversionTagsGetStatusCode403Response|OcpmEligibleConversionTagsGetStatusCode404 of OcpmEligibleConversionTagsGetStatusCode404Response|OcpmEligibleConversionTagsGetStatusCode429 of OcpmEligibleConversionTagsGetStatusCode429Response|OcpmEligibleConversionTagsGetDefaultStatusCode of OcpmEligibleConversionTagsGetDefaultStatusCodeResponse
 
     type OcpmEligibleConversionTagsGetArgs = {
       pathParams:OcpmEligibleConversionTagsGetPathParams;
@@ -183,13 +233,13 @@ module ConversionTagsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type PageVisitConversionTagsGetQueryParams = {
+      bookmark : string option;
+
+
       pageSize : int option;
 
 
-      order : string option;
-
-
-      bookmark : string option;
+      order : PinterestLibPaginationOrder option;
 
     }
     //#endregion
@@ -200,11 +250,36 @@ module ConversionTagsApiHandlerParams =
       
     }
 
-    type PageVisitConversionTagsGetDefaultStatusCodeResponse = {
-      content:Error;
+    type PageVisitConversionTagsGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type PageVisitConversionTagsGetResult = PageVisitConversionTagsGetStatusCode200 of PageVisitConversionTagsGetStatusCode200Response|PageVisitConversionTagsGetDefaultStatusCode of PageVisitConversionTagsGetDefaultStatusCodeResponse
+
+    type PageVisitConversionTagsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PageVisitConversionTagsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PageVisitConversionTagsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PageVisitConversionTagsGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PageVisitConversionTagsGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type PageVisitConversionTagsGetResult = PageVisitConversionTagsGetStatusCode200 of PageVisitConversionTagsGetStatusCode200Response|PageVisitConversionTagsGetStatusCode400 of PageVisitConversionTagsGetStatusCode400Response|PageVisitConversionTagsGetStatusCode401 of PageVisitConversionTagsGetStatusCode401Response|PageVisitConversionTagsGetStatusCode403 of PageVisitConversionTagsGetStatusCode403Response|PageVisitConversionTagsGetStatusCode404 of PageVisitConversionTagsGetStatusCode404Response|PageVisitConversionTagsGetStatusCode429 of PageVisitConversionTagsGetStatusCode429Response|PageVisitConversionTagsGetDefaultStatusCode of PageVisitConversionTagsGetDefaultStatusCodeResponse
 
     type PageVisitConversionTagsGetArgs = {
       pathParams:PageVisitConversionTagsGetPathParams;

@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/create_asset_access_request_item.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/create_asset_access_request_body_asset_requests_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +17,7 @@ part 'create_asset_access_request_body.g.dart';
 @BuiltValue()
 abstract class CreateAssetAccessRequestBody implements Built<CreateAssetAccessRequestBody, CreateAssetAccessRequestBodyBuilder> {
   @BuiltValueField(wireName: r'asset_requests')
-  BuiltList<CreateAssetAccessRequestBodyAssetRequestsInner> get assetRequests;
+  BuiltList<CreateAssetAccessRequestItem> get assetRequests;
 
   CreateAssetAccessRequestBody._();
 
@@ -45,7 +45,7 @@ class _$CreateAssetAccessRequestBodySerializer implements PrimitiveSerializer<Cr
     yield r'asset_requests';
     yield serializers.serialize(
       object.assetRequests,
-      specifiedType: const FullType(BuiltList, [FullType(CreateAssetAccessRequestBodyAssetRequestsInner)]),
+      specifiedType: const FullType(BuiltList, [FullType(CreateAssetAccessRequestItem)]),
     );
   }
 
@@ -73,8 +73,8 @@ class _$CreateAssetAccessRequestBodySerializer implements PrimitiveSerializer<Cr
         case r'asset_requests':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CreateAssetAccessRequestBodyAssetRequestsInner)]),
-          ) as BuiltList<CreateAssetAccessRequestBodyAssetRequestsInner>;
+            specifiedType: const FullType(BuiltList, [FullType(CreateAssetAccessRequestItem)]),
+          ) as BuiltList<CreateAssetAccessRequestItem>;
           result.assetRequests.replace(valueDes);
           break;
         default:

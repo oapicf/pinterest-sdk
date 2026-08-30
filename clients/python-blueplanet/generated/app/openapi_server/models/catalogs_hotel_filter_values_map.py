@@ -62,7 +62,7 @@ class CatalogsHotelFilterValuesMap(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The catalogs_hotel_filter_values_map of this CatalogsHotelFilterValuesMap.  # noqa: E501
+        :return: The CatalogsHotelFilterValuesMap of this CatalogsHotelFilterValuesMap.  # noqa: E501
         :rtype: CatalogsHotelFilterValuesMap
         """
         return util.deserialize_model(dikt, cls)

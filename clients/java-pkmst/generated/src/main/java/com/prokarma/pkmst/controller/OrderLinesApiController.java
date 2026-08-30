@@ -1,8 +1,9 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.Error;
 import com.prokarma.pkmst.model.OrderLine;
 import com.prokarma.pkmst.model.OrderLinesList200Response;
+import com.prokarma.pkmst.model.PinterestLibError;
+import com.prokarma.pkmst.model.PinterestLibPaginationOrder;
 
 import io.swagger.annotations.*;
 
@@ -25,7 +26,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class OrderLinesApiController implements OrderLinesApi {
     private final ObjectMapper objectMapper;
@@ -34,10 +35,35 @@ public class OrderLinesApiController implements OrderLinesApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<OrderLine> orderLinesGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Unique identifier of an order line.",required=true ) @PathVariable("order_line_id") String orderLineId,
+    public ResponseEntity<OrderLine> orderLinesGet(@ApiParam(value = "Order line ID.",required=true ) @PathVariable("order_line_id") String orderLineId,
+        @ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLine>(objectMapper.readValue("", OrderLine.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLine>(objectMapper.readValue("", OrderLine.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLine>(objectMapper.readValue("", OrderLine.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLine>(objectMapper.readValue("", OrderLine.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLine>(objectMapper.readValue("", OrderLine.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<OrderLine>(objectMapper.readValue("", OrderLine.class), HttpStatus.OK);
@@ -52,11 +78,36 @@ public class OrderLinesApiController implements OrderLinesApi {
     }
 
     public ResponseEntity<OrderLinesList200Response> orderLinesList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
-        @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues = "ASCENDING, DESCENDING")  @RequestParam(value = "order", required = false) String order,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
+        @ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
+        @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues = "ASCENDING, DESCENDING")  @RequestParam(value = "order", required = false) PinterestLibPaginationOrder order,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLinesList200Response>(objectMapper.readValue("", OrderLinesList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLinesList200Response>(objectMapper.readValue("", OrderLinesList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLinesList200Response>(objectMapper.readValue("", OrderLinesList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLinesList200Response>(objectMapper.readValue("", OrderLinesList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<OrderLinesList200Response>(objectMapper.readValue("", OrderLinesList200Response.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<OrderLinesList200Response>(objectMapper.readValue("", OrderLinesList200Response.class), HttpStatus.OK);

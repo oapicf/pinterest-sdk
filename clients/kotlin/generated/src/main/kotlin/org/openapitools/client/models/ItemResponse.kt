@@ -8,17 +8,28 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.CatalogsCreativeAssetsAttributes
-import org.openapitools.client.models.CatalogsType
-import org.openapitools.client.models.ItemResponseOneOf
-import org.openapitools.client.models.ItemResponseOneOf1
+import org.openapitools.client.models.CatalogsCreativeAssetsItemErrorResponse
+import org.openapitools.client.models.CatalogsCreativeAssetsItemResponse
+import org.openapitools.client.models.CatalogsHotelItemErrorResponse
+import org.openapitools.client.models.CatalogsHotelItemResponse
+import org.openapitools.client.models.CatalogsRetailItemErrorResponse
+import org.openapitools.client.models.CatalogsRetailItemResponse
 import org.openapitools.client.models.ItemValidationEvent
 import org.openapitools.client.models.Pin
 
@@ -26,9 +37,10 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Object describing an item record or error
+ * Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
  *
  * @param catalogType 
+ * @param itemResponseKind Discriminator literal identifying this leaf inside an `ItemResponse` payload.
  * @param errors Array with the errors for the item id requested
  * @param attributes 
  * @param itemId The catalog item id in the merchant namespace
@@ -38,36 +50,48 @@ import com.squareup.moshi.JsonClass
  */
 
 
-data class ItemResponse (
+interface ItemResponse {
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
-
+    val catalogType: ItemResponse.CatalogType
+    /* Discriminator literal identifying this leaf inside an `ItemResponse` payload. */
+    @Json(name = "item_response_kind")
+    val itemResponseKind: ItemResponse.ItemResponseKind
     /* Array with the errors for the item id requested */
     @Json(name = "errors")
-    val errors: kotlin.collections.List<ItemValidationEvent>,
-
+    val errors: kotlin.collections.List<ItemValidationEvent>
     @Json(name = "attributes")
-    val attributes: CatalogsCreativeAssetsAttributes? = null,
-
+    val attributes: CatalogsCreativeAssetsAttributes?
     /* The catalog item id in the merchant namespace */
     @Json(name = "item_id")
-    val itemId: kotlin.String? = null,
-
+    val itemId: kotlin.String?
     /* The pins mapped to the item */
     @Json(name = "pins")
-    val pins: kotlin.collections.List<Pin>? = null,
-
+    val pins: kotlin.collections.List<Pin>?
     /* The catalog hotel id in the merchant namespace */
     @Json(name = "hotel_id")
-    val hotelId: kotlin.String? = null,
-
+    val hotelId: kotlin.String?
     /* The catalog creative assets id in the merchant namespace */
     @Json(name = "creative_assets_id")
-    val creativeAssetsId: kotlin.String? = null
-
-) {
-
+    val creativeAssetsId: kotlin.String?
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
+    /**
+     * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+     *
+     * Values: creative_assets_item_error
+     */
+    @JsonClass(generateAdapter = false)
+    enum class ItemResponseKind(val value: kotlin.String) {
+        @Json(name = "creative_assets_item_error") creative_assets_item_error("creative_assets_item_error");
+    }
 
 }
 

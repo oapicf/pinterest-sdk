@@ -12,13 +12,13 @@ ConversionEventDeviceInfo::ConversionEventDeviceInfo()
 	cpu_cores = int(0);
 	external_storage_free_space = int(0);
 	external_storage_size = int(0);
-	form_factor = std::string();
+	form_factor = null;
 	kernel_version = std::string();
 	languages = std::list<std::string>();
 	locale = std::string();
 	model = std::string();
-	network_type = std::string();
-	os_family = std::string();
+	network_type = null;
+	os_family = null;
 	os_name = std::string();
 	os_release_name = std::string();
 	os_version = std::string();
@@ -133,8 +133,9 @@ ConversionEventDeviceInfo::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&form_factor, value, "std::string");
 
+        FormFactor* obj = &form_factor;
+		obj->fromJson(value.dump());
 
     }
 
@@ -207,8 +208,9 @@ ConversionEventDeviceInfo::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&network_type, value, "std::string");
 
+        NetworkType* obj = &network_type;
+		obj->fromJson(value.dump());
 
     }
 
@@ -220,8 +222,9 @@ ConversionEventDeviceInfo::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&os_family, value, "std::string");
 
+        OsFamily* obj = &os_family;
+		obj->fromJson(value.dump());
 
     }
 
@@ -422,8 +425,8 @@ ConversionEventDeviceInfo::toJson()
 
 
 
-    object["form_factor"] = getFormFactor();
 
+	object["form_factor"] = getFormFactor().toJson();
 
 
 
@@ -466,15 +469,15 @@ ConversionEventDeviceInfo::toJson()
 
 
 
-    object["network_type"] = getNetworkType();
+
+	object["network_type"] = getNetworkType().toJson();
 
 
 
 
 
 
-    object["os_family"] = getOsFamily();
-
+	object["os_family"] = getOsFamily().toJson();
 
 
 
@@ -565,7 +568,7 @@ ConversionEventDeviceInfo::getBatteryLevel()
 }
 
 void
-ConversionEventDeviceInfo::setBatteryLevel(int  battery_level)
+ConversionEventDeviceInfo::setBatteryLevel(int battery_level)
 {
 	this->battery_level = battery_level;
 }
@@ -577,7 +580,7 @@ ConversionEventDeviceInfo::getBrand()
 }
 
 void
-ConversionEventDeviceInfo::setBrand(std::string  brand)
+ConversionEventDeviceInfo::setBrand(std::string brand)
 {
 	this->brand = brand;
 }
@@ -589,7 +592,7 @@ ConversionEventDeviceInfo::getCarrier()
 }
 
 void
-ConversionEventDeviceInfo::setCarrier(std::string  carrier)
+ConversionEventDeviceInfo::setCarrier(std::string carrier)
 {
 	this->carrier = carrier;
 }
@@ -601,7 +604,7 @@ ConversionEventDeviceInfo::getCpuCores()
 }
 
 void
-ConversionEventDeviceInfo::setCpuCores(int  cpu_cores)
+ConversionEventDeviceInfo::setCpuCores(int cpu_cores)
 {
 	this->cpu_cores = cpu_cores;
 }
@@ -613,7 +616,7 @@ ConversionEventDeviceInfo::getExternalStorageFreeSpace()
 }
 
 void
-ConversionEventDeviceInfo::setExternalStorageFreeSpace(int  external_storage_free_space)
+ConversionEventDeviceInfo::setExternalStorageFreeSpace(int external_storage_free_space)
 {
 	this->external_storage_free_space = external_storage_free_space;
 }
@@ -625,19 +628,19 @@ ConversionEventDeviceInfo::getExternalStorageSize()
 }
 
 void
-ConversionEventDeviceInfo::setExternalStorageSize(int  external_storage_size)
+ConversionEventDeviceInfo::setExternalStorageSize(int external_storage_size)
 {
 	this->external_storage_size = external_storage_size;
 }
 
-std::string
+FormFactor
 ConversionEventDeviceInfo::getFormFactor()
 {
 	return form_factor;
 }
 
 void
-ConversionEventDeviceInfo::setFormFactor(std::string  form_factor)
+ConversionEventDeviceInfo::setFormFactor(FormFactor form_factor)
 {
 	this->form_factor = form_factor;
 }
@@ -649,7 +652,7 @@ ConversionEventDeviceInfo::getKernelVersion()
 }
 
 void
-ConversionEventDeviceInfo::setKernelVersion(std::string  kernel_version)
+ConversionEventDeviceInfo::setKernelVersion(std::string kernel_version)
 {
 	this->kernel_version = kernel_version;
 }
@@ -661,7 +664,7 @@ ConversionEventDeviceInfo::getLanguages()
 }
 
 void
-ConversionEventDeviceInfo::setLanguages(std::list <std::string> languages)
+ConversionEventDeviceInfo::setLanguages(std::list<std::string> languages)
 {
 	this->languages = languages;
 }
@@ -673,7 +676,7 @@ ConversionEventDeviceInfo::getLocale()
 }
 
 void
-ConversionEventDeviceInfo::setLocale(std::string  locale)
+ConversionEventDeviceInfo::setLocale(std::string locale)
 {
 	this->locale = locale;
 }
@@ -685,31 +688,31 @@ ConversionEventDeviceInfo::getModel()
 }
 
 void
-ConversionEventDeviceInfo::setModel(std::string  model)
+ConversionEventDeviceInfo::setModel(std::string model)
 {
 	this->model = model;
 }
 
-std::string
+NetworkType
 ConversionEventDeviceInfo::getNetworkType()
 {
 	return network_type;
 }
 
 void
-ConversionEventDeviceInfo::setNetworkType(std::string  network_type)
+ConversionEventDeviceInfo::setNetworkType(NetworkType network_type)
 {
 	this->network_type = network_type;
 }
 
-std::string
+OsFamily
 ConversionEventDeviceInfo::getOsFamily()
 {
 	return os_family;
 }
 
 void
-ConversionEventDeviceInfo::setOsFamily(std::string  os_family)
+ConversionEventDeviceInfo::setOsFamily(OsFamily os_family)
 {
 	this->os_family = os_family;
 }
@@ -721,7 +724,7 @@ ConversionEventDeviceInfo::getOsName()
 }
 
 void
-ConversionEventDeviceInfo::setOsName(std::string  os_name)
+ConversionEventDeviceInfo::setOsName(std::string os_name)
 {
 	this->os_name = os_name;
 }
@@ -733,7 +736,7 @@ ConversionEventDeviceInfo::getOsReleaseName()
 }
 
 void
-ConversionEventDeviceInfo::setOsReleaseName(std::string  os_release_name)
+ConversionEventDeviceInfo::setOsReleaseName(std::string os_release_name)
 {
 	this->os_release_name = os_release_name;
 }
@@ -745,7 +748,7 @@ ConversionEventDeviceInfo::getOsVersion()
 }
 
 void
-ConversionEventDeviceInfo::setOsVersion(std::string  os_version)
+ConversionEventDeviceInfo::setOsVersion(std::string os_version)
 {
 	this->os_version = os_version;
 }
@@ -757,7 +760,7 @@ ConversionEventDeviceInfo::getScreenDensity()
 }
 
 void
-ConversionEventDeviceInfo::setScreenDensity(int  screen_density)
+ConversionEventDeviceInfo::setScreenDensity(int screen_density)
 {
 	this->screen_density = screen_density;
 }
@@ -769,7 +772,7 @@ ConversionEventDeviceInfo::getScreenHeight()
 }
 
 void
-ConversionEventDeviceInfo::setScreenHeight(int  screen_height)
+ConversionEventDeviceInfo::setScreenHeight(int screen_height)
 {
 	this->screen_height = screen_height;
 }
@@ -781,7 +784,7 @@ ConversionEventDeviceInfo::getScreenWidth()
 }
 
 void
-ConversionEventDeviceInfo::setScreenWidth(int  screen_width)
+ConversionEventDeviceInfo::setScreenWidth(int screen_width)
 {
 	this->screen_width = screen_width;
 }
@@ -793,7 +796,7 @@ ConversionEventDeviceInfo::getStorageFreeSpace()
 }
 
 void
-ConversionEventDeviceInfo::setStorageFreeSpace(int  storage_free_space)
+ConversionEventDeviceInfo::setStorageFreeSpace(int storage_free_space)
 {
 	this->storage_free_space = storage_free_space;
 }
@@ -805,7 +808,7 @@ ConversionEventDeviceInfo::getStorageSize()
 }
 
 void
-ConversionEventDeviceInfo::setStorageSize(int  storage_size)
+ConversionEventDeviceInfo::setStorageSize(int storage_size)
 {
 	this->storage_size = storage_size;
 }
@@ -817,7 +820,7 @@ ConversionEventDeviceInfo::getTimezone()
 }
 
 void
-ConversionEventDeviceInfo::setTimezone(std::string  timezone)
+ConversionEventDeviceInfo::setTimezone(std::string timezone)
 {
 	this->timezone = timezone;
 }
@@ -829,7 +832,7 @@ ConversionEventDeviceInfo::getTimezoneAbbr()
 }
 
 void
-ConversionEventDeviceInfo::setTimezoneAbbr(std::string  timezone_abbr)
+ConversionEventDeviceInfo::setTimezoneAbbr(std::string timezone_abbr)
 {
 	this->timezone_abbr = timezone_abbr;
 }
@@ -841,7 +844,7 @@ ConversionEventDeviceInfo::getType()
 }
 
 void
-ConversionEventDeviceInfo::setType(std::string  type)
+ConversionEventDeviceInfo::setType(std::string type)
 {
 	this->type = type;
 }

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -29,7 +28,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
   }
 
   
-  @ApiModelProperty(example = "false", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("is_realtime")
   public Boolean getIsRealtime() {
     return isRealtime;
@@ -47,7 +46,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
   }
 
   
-  @ApiModelProperty(example = "1649116799000", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("latest_available_timestamp")
   public BigDecimal getLatestAvailableTimestamp() {
     return latestAvailableTimestamp;
@@ -92,10 +91,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

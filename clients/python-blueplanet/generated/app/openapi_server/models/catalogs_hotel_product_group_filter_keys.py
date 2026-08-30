@@ -10,7 +10,6 @@ from app.openapi_server.models.brand_filter import BrandFilter  # noqa: F401,E50
 from app.openapi_server.models.catalogs_product_group_filter_operator_type_criteria import CatalogsProductGroupFilterOperatorTypeCriteria  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_multiple_countries_criteria import CatalogsProductGroupMultipleCountriesCriteria  # noqa: F401,E501
 from app.openapi_server.models.catalogs_product_group_multiple_string_criteria import CatalogsProductGroupMultipleStringCriteria  # noqa: F401,E501
-from app.openapi_server.models.catalogs_product_group_pricing_currency_criteria import CatalogsProductGroupPricingCurrencyCriteria  # noqa: F401,E501
 from app.openapi_server.models.country_filter import CountryFilter  # noqa: F401,E501
 from app.openapi_server.models.custom_label0_filter import CustomLabel0Filter  # noqa: F401,E501
 from app.openapi_server.models.custom_label1_filter import CustomLabel1Filter  # noqa: F401,E501
@@ -19,6 +18,7 @@ from app.openapi_server.models.custom_label3_filter import CustomLabel3Filter  #
 from app.openapi_server.models.custom_label4_filter import CustomLabel4Filter  # noqa: F401,E501
 from app.openapi_server.models.hotel_id_filter import HotelIdFilter  # noqa: F401,E501
 from app.openapi_server.models.price_filter import PriceFilter  # noqa: F401,E501
+from app.openapi_server.models.price_filter_price import PriceFilterPrice  # noqa: F401,E501
 from app.openapi_server.models.title_keywords_filter import TitleKeywordsFilter  # noqa: F401,E501
 from openapi_server import util
 
@@ -29,11 +29,11 @@ class CatalogsHotelProductGroupFilterKeys(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, price: CatalogsProductGroupPricingCurrencyCriteria=None, hotel_id: CatalogsProductGroupMultipleStringCriteria=None, brand: CatalogsProductGroupMultipleStringCriteria=None, custom_label_0: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_1: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_2: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_3: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_4: CatalogsProductGroupFilterOperatorTypeCriteria=None, country: CatalogsProductGroupMultipleCountriesCriteria=None, title_keywords: CatalogsProductGroupMultipleStringCriteria=None):  # noqa: E501
+    def __init__(self, price: PriceFilterPrice=None, hotel_id: CatalogsProductGroupMultipleStringCriteria=None, brand: CatalogsProductGroupMultipleStringCriteria=None, custom_label_0: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_1: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_2: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_3: CatalogsProductGroupFilterOperatorTypeCriteria=None, custom_label_4: CatalogsProductGroupFilterOperatorTypeCriteria=None, country: CatalogsProductGroupMultipleCountriesCriteria=None, title_keywords: CatalogsProductGroupMultipleStringCriteria=None):  # noqa: E501
         """CatalogsHotelProductGroupFilterKeys - a model defined in Swagger
 
         :param price: The price of this CatalogsHotelProductGroupFilterKeys.  # noqa: E501
-        :type price: CatalogsProductGroupPricingCurrencyCriteria
+        :type price: PriceFilterPrice
         :param hotel_id: The hotel_id of this CatalogsHotelProductGroupFilterKeys.  # noqa: E501
         :type hotel_id: CatalogsProductGroupMultipleStringCriteria
         :param brand: The brand of this CatalogsHotelProductGroupFilterKeys.  # noqa: E501
@@ -54,7 +54,7 @@ class CatalogsHotelProductGroupFilterKeys(Model):
         :type title_keywords: CatalogsProductGroupMultipleStringCriteria
         """
         self.swagger_types = {
-            'price': CatalogsProductGroupPricingCurrencyCriteria,
+            'price': PriceFilterPrice,
             'hotel_id': CatalogsProductGroupMultipleStringCriteria,
             'brand': CatalogsProductGroupMultipleStringCriteria,
             'custom_label_0': CatalogsProductGroupFilterOperatorTypeCriteria,
@@ -102,22 +102,22 @@ class CatalogsHotelProductGroupFilterKeys(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def price(self) -> CatalogsProductGroupPricingCurrencyCriteria:
+    def price(self) -> PriceFilterPrice:
         """Gets the price of this CatalogsHotelProductGroupFilterKeys.
 
 
         :return: The price of this CatalogsHotelProductGroupFilterKeys.
-        :rtype: CatalogsProductGroupPricingCurrencyCriteria
+        :rtype: PriceFilterPrice
         """
         return self._price
 
     @price.setter
-    def price(self, price: CatalogsProductGroupPricingCurrencyCriteria):
+    def price(self, price: PriceFilterPrice):
         """Sets the price of this CatalogsHotelProductGroupFilterKeys.
 
 
         :param price: The price of this CatalogsHotelProductGroupFilterKeys.
-        :type price: CatalogsProductGroupPricingCurrencyCriteria
+        :type price: PriceFilterPrice
         """
         if price is None:
             raise ValueError("Invalid value for `price`, must not be `None`")  # noqa: E501

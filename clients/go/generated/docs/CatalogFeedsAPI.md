@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## FeedProcessingResultsList
 
-> FeedProcessingResultsList200Response FeedProcessingResultsList(ctx, feedId).Bookmark(bookmark).PageSize(pageSize).AdAccountId(adAccountId).Execute()
+> FeedProcessingResultsList200Response FeedProcessingResultsList(ctx, feedId).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List feed processing results
 
@@ -36,14 +36,14 @@ import (
 )
 
 func main() {
-	feedId := "feedId_example" // string | Unique identifier of a feed
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	feedId := "feedId_example" // string | Unique identifier of a feed.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CatalogFeedsAPI.FeedProcessingResultsList(context.Background(), feedId).Bookmark(bookmark).PageSize(pageSize).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.CatalogFeedsAPI.FeedProcessingResultsList(context.Background(), feedId).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogFeedsAPI.FeedProcessingResultsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +59,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**feedId** | **string** | Unique identifier of a feed | 
+**feedId** | **string** | Unique identifier of a feed. | 
 
 ### Other Parameters
 
@@ -69,9 +69,9 @@ Other parameters are passed through a pointer to a apiFeedProcessingResultsListR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## FeedsCreate
 
-> CatalogsFeed FeedsCreate(ctx).FeedsCreateRequest(feedsCreateRequest).AdAccountId(adAccountId).Execute()
+> CatalogsFeed FeedsCreate(ctx).CatalogsFeedCreateRequestSchema(catalogsFeedCreateRequestSchema).AdAccountId(adAccountId).Execute()
 
 Create feed
 
@@ -112,12 +112,12 @@ import (
 )
 
 func main() {
-	feedsCreateRequest := openapiclient.feeds_create_request{CatalogsFeedsCreateRequest: openapiclient.NewCatalogsFeedsCreateRequest(openapiclient.CatalogsFormat("TSV"), "Location_example", "Name_example")} // FeedsCreateRequest | Request object used to created a feed.
+	catalogsFeedCreateRequestSchema := openapiclient.CatalogsFeedCreateRequestSchema{CatalogsFeedsCreateRequest: openapiclient.NewCatalogsFeedsCreateRequest(openapiclient.CatalogsFormat("TSV"), "Location_example", "Name_example")} // CatalogsFeedCreateRequestSchema | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CatalogFeedsAPI.FeedsCreate(context.Background()).FeedsCreateRequest(feedsCreateRequest).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.CatalogFeedsAPI.FeedsCreate(context.Background()).CatalogsFeedCreateRequestSchema(catalogsFeedCreateRequestSchema).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogFeedsAPI.FeedsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -138,7 +138,7 @@ Other parameters are passed through a pointer to a apiFeedsCreateRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feedsCreateRequest** | [**FeedsCreateRequest**](FeedsCreateRequest.md) | Request object used to created a feed. | 
+ **catalogsFeedCreateRequestSchema** | [**CatalogsFeedCreateRequestSchema**](CatalogsFeedCreateRequestSchema.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## FeedsDelete
 
-> FeedsDelete(ctx, feedId).AdAccountId(adAccountId).Execute()
+> CatalogsFeed FeedsDelete(ctx, feedId).AdAccountId(adAccountId).Execute()
 
 Delete feed
 
@@ -180,16 +180,18 @@ import (
 )
 
 func main() {
-	feedId := "feedId_example" // string | Unique identifier of a feed
+	feedId := "feedId_example" // string | Unique identifier of a feed.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.CatalogFeedsAPI.FeedsDelete(context.Background(), feedId).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.CatalogFeedsAPI.FeedsDelete(context.Background(), feedId).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogFeedsAPI.FeedsDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `FeedsDelete`: CatalogsFeed
+	fmt.Fprintf(os.Stdout, "Response from `CatalogFeedsAPI.FeedsDelete`: %v\n", resp)
 }
 ```
 
@@ -199,7 +201,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**feedId** | **string** | Unique identifier of a feed | 
+**feedId** | **string** | Unique identifier of a feed. | 
 
 ### Other Parameters
 
@@ -213,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**CatalogsFeed**](CatalogsFeed.md)
 
 ### Authorization
 
@@ -250,7 +252,7 @@ import (
 )
 
 func main() {
-	feedId := "feedId_example" // string | Unique identifier of a feed
+	feedId := "feedId_example" // string | Unique identifier of a feed.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -271,7 +273,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**feedId** | **string** | Unique identifier of a feed | 
+**feedId** | **string** | Unique identifier of a feed. | 
 
 ### Other Parameters
 
@@ -322,7 +324,7 @@ import (
 )
 
 func main() {
-	feedId := "feedId_example" // string | Unique identifier of a feed
+	feedId := "feedId_example" // string | Unique identifier of a feed.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -343,7 +345,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**feedId** | **string** | Unique identifier of a feed | 
+**feedId** | **string** | Unique identifier of a feed. | 
 
 ### Other Parameters
 
@@ -375,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## FeedsList
 
-> FeedsList200Response FeedsList(ctx).Bookmark(bookmark).PageSize(pageSize).CatalogId(catalogId).AdAccountId(adAccountId).Execute()
+> FeedsList200Response FeedsList(ctx).CatalogId(catalogId).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List feeds
 
@@ -394,14 +396,14 @@ import (
 )
 
 func main() {
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	catalogId := "catalogId_example" // string | Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CatalogFeedsAPI.FeedsList(context.Background()).Bookmark(bookmark).PageSize(pageSize).CatalogId(catalogId).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.CatalogFeedsAPI.FeedsList(context.Background()).CatalogId(catalogId).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogFeedsAPI.FeedsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -422,10 +424,10 @@ Other parameters are passed through a pointer to a apiFeedsListRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **catalogId** | **string** | Filter entities for a given catalog_id. If not given, all catalogs are considered. | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -447,7 +449,7 @@ Name | Type | Description  | Notes
 
 ## FeedsUpdate
 
-> CatalogsFeed FeedsUpdate(ctx, feedId).FeedsUpdateRequest(feedsUpdateRequest).AdAccountId(adAccountId).Execute()
+> CatalogsFeed FeedsUpdate(ctx, feedId).CatalogsFeedUpdateRequestSchema(catalogsFeedUpdateRequestSchema).AdAccountId(adAccountId).Execute()
 
 Update feed
 
@@ -466,13 +468,13 @@ import (
 )
 
 func main() {
-	feedId := "feedId_example" // string | Unique identifier of a feed
-	feedsUpdateRequest := openapiclient.feeds_update_request{CatalogsFeedsUpdateRequest: openapiclient.NewCatalogsFeedsUpdateRequest()} // FeedsUpdateRequest | Request object used to update a feed.
+	feedId := "feedId_example" // string | Unique identifier of a feed.
+	catalogsFeedUpdateRequestSchema := openapiclient.CatalogsFeedUpdateRequestSchema{CatalogsFeedsUpdateRequest: openapiclient.NewCatalogsFeedsUpdateRequest()} // CatalogsFeedUpdateRequestSchema | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CatalogFeedsAPI.FeedsUpdate(context.Background(), feedId).FeedsUpdateRequest(feedsUpdateRequest).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.CatalogFeedsAPI.FeedsUpdate(context.Background(), feedId).CatalogsFeedUpdateRequestSchema(catalogsFeedUpdateRequestSchema).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogFeedsAPI.FeedsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -488,7 +490,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**feedId** | **string** | Unique identifier of a feed | 
+**feedId** | **string** | Unique identifier of a feed. | 
 
 ### Other Parameters
 
@@ -498,7 +500,7 @@ Other parameters are passed through a pointer to a apiFeedsUpdateRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **feedsUpdateRequest** | [**FeedsUpdateRequest**](FeedsUpdateRequest.md) | Request object used to update a feed. | 
+ **catalogsFeedUpdateRequestSchema** | [**CatalogsFeedUpdateRequestSchema**](CatalogsFeedUpdateRequestSchema.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -521,7 +523,7 @@ Name | Type | Description  | Notes
 
 ## ItemsIssuesList
 
-> ItemsIssuesList200Response ItemsIssuesList(ctx, processingResultId).Bookmark(bookmark).PageSize(pageSize).ItemNumbers(itemNumbers).ItemValidationIssue(itemValidationIssue).AdAccountId(adAccountId).Execute()
+> ItemsIssuesList200Response ItemsIssuesList(ctx, processingResultId).ItemNumbers(itemNumbers).ItemValidationIssue(itemValidationIssue).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List item issues
 
@@ -540,16 +542,16 @@ import (
 )
 
 func main() {
-	processingResultId := "5224831246441439241" // string | Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	processingResultId := "processingResultId_example" // string | Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
 	itemNumbers := []int32{int32(123)} // []int32 | Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. (optional)
 	itemValidationIssue := openapiclient.CatalogsItemValidationIssue("AD_IMAGE_0_LINK_LENGTH_TOO_LONG") // CatalogsItemValidationIssue | Filter item validation issues that have a given type of item validation issue. (optional)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CatalogFeedsAPI.ItemsIssuesList(context.Background(), processingResultId).Bookmark(bookmark).PageSize(pageSize).ItemNumbers(itemNumbers).ItemValidationIssue(itemValidationIssue).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.CatalogFeedsAPI.ItemsIssuesList(context.Background(), processingResultId).ItemNumbers(itemNumbers).ItemValidationIssue(itemValidationIssue).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogFeedsAPI.ItemsIssuesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -575,11 +577,11 @@ Other parameters are passed through a pointer to a apiItemsIssuesListRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **itemNumbers** | **[]int32** | Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. | 
  **itemValidationIssue** | [**CatalogsItemValidationIssue**](CatalogsItemValidationIssue.md) | Filter item validation issues that have a given type of item validation issue. | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 

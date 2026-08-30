@@ -11,12 +11,15 @@ import org.openapitools.model.SSIOAccountAddress;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+/**
+ * Salesforce account item with billing and terms information.
+ **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-
+@ApiModel(description = "Salesforce account item with billing and terms information.")
 public class SSIOAccountItem   {
   
   private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
@@ -149,7 +152,7 @@ public class SSIOAccountItem   {
   }
 
   
-  @ApiModelProperty(example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
+  @ApiModelProperty(example = "  The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
   @JsonProperty("row_terms")
   public String getRowTerms() {
     return rowTerms;
@@ -265,10 +268,7 @@ public class SSIOAccountItem   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CancelInviteException"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CancelInviteException"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CancelInviteException {
+    title = CancelInviteException
+    description = CancelInviteException
+    derivedFrom = Root
+    properties {
+        invite_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        message {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CancelInviteException {
+    title = CancelInviteException
+    description = CancelInviteException
+    implements = openapi_server.resourceTypes.CancelInviteException
+
+  }
+}

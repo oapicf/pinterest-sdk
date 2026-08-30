@@ -11,14 +11,34 @@ import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsHotelFeedsUpdateRequest;
 import org.openapitools.model.CatalogsRetailFeedsUpdateRequest;
 import org.openapitools.model.CatalogsStatus;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
 
 @Canonical
 class CatalogsVerticalFeedsUpdateRequest {
+
+    enum CatalogTypeEnum {
     
-    CatalogsType catalogType
+        CREATIVE_ASSETS("CREATIVE_ASSETS")
+    
+        private final String value
+    
+        CatalogTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    CatalogTypeEnum catalogType
     
     CatalogsFeedCredentials credentials
     

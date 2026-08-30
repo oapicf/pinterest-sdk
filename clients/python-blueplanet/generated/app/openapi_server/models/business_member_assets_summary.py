@@ -6,8 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.business_member_assets_summary_ad_accounts_inner import BusinessMemberAssetsSummaryAdAccountsInner  # noqa: F401,E501
-from app.openapi_server.models.business_member_assets_summary_profiles_inner import BusinessMemberAssetsSummaryProfilesInner  # noqa: F401,E501
+from app.openapi_server.models.asset_id_with_permissions import AssetIdWithPermissions  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,17 +16,17 @@ class BusinessMemberAssetsSummary(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_accounts: List[BusinessMemberAssetsSummaryAdAccountsInner]=None, profiles: List[BusinessMemberAssetsSummaryProfilesInner]=None):  # noqa: E501
+    def __init__(self, ad_accounts: List[AssetIdWithPermissions]=None, profiles: List[AssetIdWithPermissions]=None):  # noqa: E501
         """BusinessMemberAssetsSummary - a model defined in Swagger
 
         :param ad_accounts: The ad_accounts of this BusinessMemberAssetsSummary.  # noqa: E501
-        :type ad_accounts: List[BusinessMemberAssetsSummaryAdAccountsInner]
+        :type ad_accounts: List[AssetIdWithPermissions]
         :param profiles: The profiles of this BusinessMemberAssetsSummary.  # noqa: E501
-        :type profiles: List[BusinessMemberAssetsSummaryProfilesInner]
+        :type profiles: List[AssetIdWithPermissions]
         """
         self.swagger_types = {
-            'ad_accounts': List[BusinessMemberAssetsSummaryAdAccountsInner],
-            'profiles': List[BusinessMemberAssetsSummaryProfilesInner]
+            'ad_accounts': List[AssetIdWithPermissions],
+            'profiles': List[AssetIdWithPermissions]
         }
 
         self.attribute_map = {
@@ -50,47 +49,47 @@ class BusinessMemberAssetsSummary(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def ad_accounts(self) -> List[BusinessMemberAssetsSummaryAdAccountsInner]:
+    def ad_accounts(self) -> List[AssetIdWithPermissions]:
         """Gets the ad_accounts of this BusinessMemberAssetsSummary.
 
         List of ad account IDs and respective permission levels.  # noqa: E501
 
         :return: The ad_accounts of this BusinessMemberAssetsSummary.
-        :rtype: List[BusinessMemberAssetsSummaryAdAccountsInner]
+        :rtype: List[AssetIdWithPermissions]
         """
         return self._ad_accounts
 
     @ad_accounts.setter
-    def ad_accounts(self, ad_accounts: List[BusinessMemberAssetsSummaryAdAccountsInner]):
+    def ad_accounts(self, ad_accounts: List[AssetIdWithPermissions]):
         """Sets the ad_accounts of this BusinessMemberAssetsSummary.
 
         List of ad account IDs and respective permission levels.  # noqa: E501
 
         :param ad_accounts: The ad_accounts of this BusinessMemberAssetsSummary.
-        :type ad_accounts: List[BusinessMemberAssetsSummaryAdAccountsInner]
+        :type ad_accounts: List[AssetIdWithPermissions]
         """
 
         self._ad_accounts = ad_accounts
 
     @property
-    def profiles(self) -> List[BusinessMemberAssetsSummaryProfilesInner]:
+    def profiles(self) -> List[AssetIdWithPermissions]:
         """Gets the profiles of this BusinessMemberAssetsSummary.
 
         List of profile IDs and respective permission levels.  # noqa: E501
 
         :return: The profiles of this BusinessMemberAssetsSummary.
-        :rtype: List[BusinessMemberAssetsSummaryProfilesInner]
+        :rtype: List[AssetIdWithPermissions]
         """
         return self._profiles
 
     @profiles.setter
-    def profiles(self, profiles: List[BusinessMemberAssetsSummaryProfilesInner]):
+    def profiles(self, profiles: List[AssetIdWithPermissions]):
         """Sets the profiles of this BusinessMemberAssetsSummary.
 
         List of profile IDs and respective permission levels.  # noqa: E501
 
         :param profiles: The profiles of this BusinessMemberAssetsSummary.
-        :type profiles: List[BusinessMemberAssetsSummaryProfilesInner]
+        :type profiles: List[AssetIdWithPermissions]
         """
 
         self._profiles = profiles

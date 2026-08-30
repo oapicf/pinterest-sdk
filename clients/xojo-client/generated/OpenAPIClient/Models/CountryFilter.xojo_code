@@ -2,7 +2,7 @@
 Protected Class CountryFilter
 
 	#tag Property, Flags = &h0
-		COUNTRY As CatalogsProductGroupMultipleCountriesCriteria
+		COUNTRY As OpenAPIClient.Models.CatalogsProductGroupMultipleCountriesCriteria
 	#tag EndProperty
 
 

@@ -7,7 +7,7 @@ Schema describing the response when a log has invalid fields.
 
 Name | Type
 ------------ | -------------
-`rejectedLogs` | [Array&lt;IntegrationLogsInvalidLogResponseRejectedLogsInner&gt;](IntegrationLogsInvalidLogResponseRejectedLogsInner.md)
+`rejectedLogs` | [Array&lt;IntegrationLogsInvalidLogResponseRejectedLogsItems&gt;](IntegrationLogsInvalidLogResponseRejectedLogsItems.md)
 
 ## Example
 

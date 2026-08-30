@@ -15,12 +15,12 @@ static item_processing_record_t *item_processing_record_create_internal(
     if (!item_processing_record_local_var) {
         return NULL;
     }
+    memset(item_processing_record_local_var, 0, sizeof(item_processing_record_t));
+    item_processing_record_local_var->_library_owned = 1;
     item_processing_record_local_var->errors = errors;
     item_processing_record_local_var->item_id = item_id;
     item_processing_record_local_var->status = status;
     item_processing_record_local_var->warnings = warnings;
-
-    item_processing_record_local_var->_library_owned = 1;
     return item_processing_record_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) item_processing_record_t *item_processing_record_cre
     pinterest_rest_api_item_processing_status__e status,
     list_t *warnings
     ) {
-    return item_processing_record_create_internal (
+    item_processing_record_t *result = item_processing_record_create_internal (
         errors,
         item_id,
         status,
         warnings
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void item_processing_record_free(item_processing_record_t *item_processing_record) {
@@ -146,6 +149,8 @@ item_processing_record_t *item_processing_record_parseFromJSON(cJSON *item_proce
     // define the local list for item_processing_record->errors
     list_t *errorsList = NULL;
 
+    char *item_id_local_str = NULL;
+
     // define the local variable for item_processing_record->status
     pinterest_rest_api_item_processing_status__e status_local_nonprim = 0;
 
@@ -222,12 +227,18 @@ item_processing_record_t *item_processing_record_parseFromJSON(cJSON *item_proce
     }
 
 
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
     item_processing_record_local_var = item_processing_record_create_internal (
         errors ? errorsList : NULL,
-        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
+        item_id_local_str,
         status ? status_local_nonprim : 0,
         warnings ? warningsList : NULL
         );
+
+    if (!item_processing_record_local_var) {
+        goto end;
+    }
 
     return item_processing_record_local_var;
 end:
@@ -239,6 +250,10 @@ end:
         }
         list_freeList(errorsList);
         errorsList = NULL;
+    }
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
     }
     if (status_local_nonprim) {
         status_local_nonprim = 0;

@@ -24,7 +24,7 @@ void
 CatalogsFeedProcessingSchedule::__init()
 {
 	//time = std::string();
-	//timezone = std::string();
+	//timezone = null;
 }
 
 void
@@ -64,9 +64,12 @@ CatalogsFeedProcessingSchedule::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&timezone, node, "std::string", "");
+		if (isprimitive("CatalogsFeedProcessingScheduleTimezone")) {
+			jsonToValue(&timezone, node, "CatalogsFeedProcessingScheduleTimezone", "CatalogsFeedProcessingScheduleTimezone");
 		} else {
+			
+			CatalogsFeedProcessingScheduleTimezone* obj = static_cast<CatalogsFeedProcessingScheduleTimezone*> (&timezone);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -91,11 +94,16 @@ CatalogsFeedProcessingSchedule::toJson()
 	}
 	const gchar *timeKey = "time";
 	json_object_set_member(pJsonObject, timeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getTimezone();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("CatalogsFeedProcessingScheduleTimezone")) {
+		CatalogsFeedProcessingScheduleTimezone obj = getTimezone();
+		node = converttoJson(&obj, "CatalogsFeedProcessingScheduleTimezone", "");
 	}
 	else {
+		
+		CatalogsFeedProcessingScheduleTimezone obj = static_cast<CatalogsFeedProcessingScheduleTimezone> (getTimezone());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *timezoneKey = "timezone";
@@ -120,14 +128,14 @@ CatalogsFeedProcessingSchedule::setTime(std::string  time)
 	this->time = time;
 }
 
-std::string
+CatalogsFeedProcessingScheduleTimezone
 CatalogsFeedProcessingSchedule::getTimezone()
 {
 	return timezone;
 }
 
 void
-CatalogsFeedProcessingSchedule::setTimezone(std::string  timezone)
+CatalogsFeedProcessingSchedule::setTimezone(CatalogsFeedProcessingScheduleTimezone  timezone)
 {
 	this->timezone = timezone;
 }

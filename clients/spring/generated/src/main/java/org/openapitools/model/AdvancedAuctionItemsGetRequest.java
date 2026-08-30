@@ -7,30 +7,29 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionItemsGetRecord;
+import org.openapitools.model.AdvancedAuctionKey;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request object used to get bid options values for a batch of retail catalog items
  */
 
 @Schema(name = "AdvancedAuctionItemsGetRequest", description = "Request object used to get bid options values for a batch of retail catalog items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItemsGetRequest {
 
   private String catalogId;
 
-  @Valid
-  private List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionKey> items = new ArrayList<>();
 
   public AdvancedAuctionItemsGetRequest() {
     super();
@@ -39,7 +38,7 @@ public class AdvancedAuctionItemsGetRequest {
   /**
    * Constructor with only required parameters
    */
-  public AdvancedAuctionItemsGetRequest(String catalogId, List<AdvancedAuctionItemsGetRecord> items) {
+  public AdvancedAuctionItemsGetRequest(String catalogId, List<@Valid AdvancedAuctionKey> items) {
     this.catalogId = catalogId;
     this.items = items;
   }
@@ -60,16 +59,17 @@ public class AdvancedAuctionItemsGetRequest {
     return catalogId;
   }
 
+  @JsonProperty("catalog_id")
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
-  public AdvancedAuctionItemsGetRequest items(List<AdvancedAuctionItemsGetRecord> items) {
+  public AdvancedAuctionItemsGetRequest items(List<@Valid AdvancedAuctionKey> items) {
     this.items = items;
     return this;
   }
 
-  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionItemsGetRecord itemsItem) {
+  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionKey itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -84,11 +84,12 @@ public class AdvancedAuctionItemsGetRequest {
   @NotNull @Valid @Size(min = 1, max = 10000) 
   @Schema(name = "items", description = "A list of retail catalog items to fetch bid options for", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
-  public List<AdvancedAuctionItemsGetRecord> getItems() {
+  public List<@Valid AdvancedAuctionKey> getItems() {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionItemsGetRecord> items) {
+  @JsonProperty("items")
+  public void setItems(List<@Valid AdvancedAuctionKey> items) {
     this.items = items;
   }
 
@@ -124,11 +125,8 @@ public class AdvancedAuctionItemsGetRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

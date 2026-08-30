@@ -10,8 +10,9 @@ Name | Type
 `engagementType` | [ProductCategoriesEngagementType](ProductCategoriesEngagementType.md)
 `pctChangeMom` | number
 `percentRelativeVolume` | number
+`pinterestProductCategoryId` | number
 `productCategory` | string
-`verticals` | [Array&lt;VerticalProductCategory&gt;](VerticalProductCategory.md)
+`verticals` | Array&lt;string&gt;
 
 ## Example
 
@@ -23,6 +24,7 @@ const example = {
   "engagementType": null,
   "pctChangeMom": null,
   "percentRelativeVolume": null,
+  "pinterestProductCategoryId": null,
   "productCategory": null,
   "verticals": null,
 } satisfies TrendingProductCategory

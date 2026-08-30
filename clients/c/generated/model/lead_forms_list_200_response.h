@@ -15,7 +15,7 @@
 
 typedef struct lead_forms_list_200_response_t lead_forms_list_200_response_t;
 
-#include "lead_form_response.h"
+#include "lead_form.h"
 
 
 

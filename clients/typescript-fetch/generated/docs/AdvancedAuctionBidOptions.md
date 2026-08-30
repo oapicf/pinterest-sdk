@@ -19,7 +19,7 @@ import type { AdvancedAuctionBidOptions } from ''
 // TODO: Update the object below with actual values
 const example = {
   "appTypeMultipliers": null,
-  "bidInMicroCurrency": 5000000,
+  "bidInMicroCurrency": null,
   "placementMultipliers": null,
 } satisfies AdvancedAuctionBidOptions
 

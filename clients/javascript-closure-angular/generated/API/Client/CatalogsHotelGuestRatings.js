@@ -1,7 +1,6 @@
 goog.provide('API.Client.CatalogsHotelGuestRatings');
 
 /**
- * If specified, you must provide all properties
  * @record
  */
 API.Client.CatalogsHotelGuestRatings = function() {}

@@ -21,9 +21,11 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
-import org.openapitools.client.api.ConversionAccessTokenResponse
+import org.openapitools.client.api.ConversionAccessToken
 import org.openapitools.client.api.Error
-import org.openapitools.client.api.OauthAccessTokenResponse
+import org.openapitools.client.api.OauthAccessToken
+import org.openapitools.client.api.TokenGrantType
+import org.openapitools.client.api.TokenTypeHint
 
 object OauthApi {
 
@@ -31,8 +33,8 @@ object OauthApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def oauthConversionToken(host: String): Task[ConversionAccessTokenResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionAccessTokenResponse] = jsonOf[ConversionAccessTokenResponse]
+  def oauthConversionToken(host: String): Task[ConversionAccessToken] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionAccessToken] = jsonOf[ConversionAccessToken]
 
     val path = "/oauth/conversion_token"
 
@@ -47,13 +49,13 @@ object OauthApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[ConversionAccessTokenResponse](req)
+      resp          <- client.expect[ConversionAccessToken](req)
 
     } yield resp
   }
 
-  def oauthToken(host: String, grantType: String): Task[OauthAccessTokenResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[OauthAccessTokenResponse] = jsonOf[OauthAccessTokenResponse]
+  def oauthToken(host: String, grantType: TokenGrantType, code: String, continuousRefresh: String, redirectUri: String, refreshToken: String, scope: String): Task[OauthAccessToken] = {
+    implicit val returnTypeDecoder: EntityDecoder[OauthAccessToken] = jsonOf[OauthAccessToken]
 
     val path = "/oauth/token"
 
@@ -68,12 +70,12 @@ object OauthApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[OauthAccessTokenResponse](req)
+      resp          <- client.expect[OauthAccessToken](req)
 
     } yield resp
   }
 
-  def tokenRevoke(host: String, token: String, tokenTypeHint: String): Task[Unit] = {
+  def tokenRevoke(host: String, token: String, tokenTypeHint: TokenTypeHint): Task[Unit] = {
     val path = "/oauth/token/revoke"
 
     val httpMethod = Method.POST
@@ -99,8 +101,8 @@ class HttpServiceOauthApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def oauthConversionToken(): Task[ConversionAccessTokenResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[ConversionAccessTokenResponse] = jsonOf[ConversionAccessTokenResponse]
+  def oauthConversionToken(): Task[ConversionAccessToken] = {
+    implicit val returnTypeDecoder: EntityDecoder[ConversionAccessToken] = jsonOf[ConversionAccessToken]
 
     val path = "/oauth/conversion_token"
 
@@ -115,13 +117,13 @@ class HttpServiceOauthApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[ConversionAccessTokenResponse](req)
+      resp          <- client.expect[ConversionAccessToken](req)
 
     } yield resp
   }
 
-  def oauthToken(grantType: String): Task[OauthAccessTokenResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[OauthAccessTokenResponse] = jsonOf[OauthAccessTokenResponse]
+  def oauthToken(grantType: TokenGrantType, code: String, continuousRefresh: String, redirectUri: String, refreshToken: String, scope: String): Task[OauthAccessToken] = {
+    implicit val returnTypeDecoder: EntityDecoder[OauthAccessToken] = jsonOf[OauthAccessToken]
 
     val path = "/oauth/token"
 
@@ -136,12 +138,12 @@ class HttpServiceOauthApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[OauthAccessTokenResponse](req)
+      resp          <- client.expect[OauthAccessToken](req)
 
     } yield resp
   }
 
-  def tokenRevoke(token: String, tokenTypeHint: String): Task[Unit] = {
+  def tokenRevoke(token: String, tokenTypeHint: TokenTypeHint): Task[Unit] = {
     val path = "/oauth/token/revoke"
 
     val httpMethod = Method.POST

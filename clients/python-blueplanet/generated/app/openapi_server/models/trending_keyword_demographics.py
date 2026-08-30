@@ -6,8 +6,8 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.trending_keyword_demographics_age_distribution import TrendingKeywordDemographicsAgeDistribution  # noqa: F401,E501
-from app.openapi_server.models.trending_keyword_demographics_gender_distribution import TrendingKeywordDemographicsGenderDistribution  # noqa: F401,E501
+from app.openapi_server.models.trends_age_distribution import TrendsAgeDistribution  # noqa: F401,E501
+from app.openapi_server.models.trends_gender_distribution import TrendsGenderDistribution  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,17 +17,17 @@ class TrendingKeywordDemographics(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, age_distribution: TrendingKeywordDemographicsAgeDistribution=None, gender_distribution: TrendingKeywordDemographicsGenderDistribution=None):  # noqa: E501
+    def __init__(self, age_distribution: TrendsAgeDistribution=None, gender_distribution: TrendsGenderDistribution=None):  # noqa: E501
         """TrendingKeywordDemographics - a model defined in Swagger
 
         :param age_distribution: The age_distribution of this TrendingKeywordDemographics.  # noqa: E501
-        :type age_distribution: TrendingKeywordDemographicsAgeDistribution
+        :type age_distribution: TrendsAgeDistribution
         :param gender_distribution: The gender_distribution of this TrendingKeywordDemographics.  # noqa: E501
-        :type gender_distribution: TrendingKeywordDemographicsGenderDistribution
+        :type gender_distribution: TrendsGenderDistribution
         """
         self.swagger_types = {
-            'age_distribution': TrendingKeywordDemographicsAgeDistribution,
-            'gender_distribution': TrendingKeywordDemographicsGenderDistribution
+            'age_distribution': TrendsAgeDistribution,
+            'gender_distribution': TrendsGenderDistribution
         }
 
         self.attribute_map = {
@@ -44,49 +44,49 @@ class TrendingKeywordDemographics(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The TrendingKeyword_demographics of this TrendingKeywordDemographics.  # noqa: E501
+        :return: The TrendingKeywordDemographics of this TrendingKeywordDemographics.  # noqa: E501
         :rtype: TrendingKeywordDemographics
         """
         return util.deserialize_model(dikt, cls)
 
     @property
-    def age_distribution(self) -> TrendingKeywordDemographicsAgeDistribution:
+    def age_distribution(self) -> TrendsAgeDistribution:
         """Gets the age_distribution of this TrendingKeywordDemographics.
 
 
         :return: The age_distribution of this TrendingKeywordDemographics.
-        :rtype: TrendingKeywordDemographicsAgeDistribution
+        :rtype: TrendsAgeDistribution
         """
         return self._age_distribution
 
     @age_distribution.setter
-    def age_distribution(self, age_distribution: TrendingKeywordDemographicsAgeDistribution):
+    def age_distribution(self, age_distribution: TrendsAgeDistribution):
         """Sets the age_distribution of this TrendingKeywordDemographics.
 
 
         :param age_distribution: The age_distribution of this TrendingKeywordDemographics.
-        :type age_distribution: TrendingKeywordDemographicsAgeDistribution
+        :type age_distribution: TrendsAgeDistribution
         """
 
         self._age_distribution = age_distribution
 
     @property
-    def gender_distribution(self) -> TrendingKeywordDemographicsGenderDistribution:
+    def gender_distribution(self) -> TrendsGenderDistribution:
         """Gets the gender_distribution of this TrendingKeywordDemographics.
 
 
         :return: The gender_distribution of this TrendingKeywordDemographics.
-        :rtype: TrendingKeywordDemographicsGenderDistribution
+        :rtype: TrendsGenderDistribution
         """
         return self._gender_distribution
 
     @gender_distribution.setter
-    def gender_distribution(self, gender_distribution: TrendingKeywordDemographicsGenderDistribution):
+    def gender_distribution(self, gender_distribution: TrendsGenderDistribution):
         """Sets the gender_distribution of this TrendingKeywordDemographics.
 
 
         :param gender_distribution: The gender_distribution of this TrendingKeywordDemographics.
-        :type gender_distribution: TrendingKeywordDemographicsGenderDistribution
+        :type gender_distribution: TrendsGenderDistribution
         """
 
         self._gender_distribution = gender_distribution

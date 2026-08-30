@@ -8,6 +8,7 @@ Individual trending topic within an interest category
 Name | Type
 ------------ | -------------
 `description` | string
+`id` | string
 `percentGrowthMom` | number
 `pins` | [Array&lt;TrendingPin&gt;](TrendingPin.md)
 `relatedInterests` | Array&lt;string&gt;
@@ -23,6 +24,7 @@ import type { TrendingTopic } from ''
 // TODO: Update the object below with actual values
 const example = {
   "description": null,
+  "id": null,
   "percentGrowthMom": null,
   "pins": null,
   "relatedInterests": null,

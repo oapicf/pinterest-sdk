@@ -2,8 +2,8 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.BaseInviteDataResponseInviteData;
 import org.openapitools.model.BusinessAccessUserSummary;
+import org.openapitools.model.InviteDataResponse;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -15,13 +15,15 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
-
+/**
+ * Common invite/request data returned by the business access endpoints.
+ **/
+@ApiModel(description = "Common invite/request data returned by the business access endpoints.")
 @JsonTypeName("BaseInviteDataResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BaseInviteDataResponse   {
   private String id;
-  private BaseInviteDataResponseInviteData inviteData;
+  private InviteDataResponse inviteData;
   private Boolean isReceivedInvite;
   private BusinessAccessUserSummary user;
 
@@ -50,7 +52,7 @@ public class BaseInviteDataResponse   {
 
   /**
    **/
-  public BaseInviteDataResponse inviteData(BaseInviteDataResponseInviteData inviteData) {
+  public BaseInviteDataResponse inviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
     return this;
   }
@@ -58,12 +60,12 @@ public class BaseInviteDataResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("invite_data")
-  @Valid public BaseInviteDataResponseInviteData getInviteData() {
+  @Valid public InviteDataResponse getInviteData() {
     return inviteData;
   }
 
   @JsonProperty("invite_data")
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
+  public void setInviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
   }
 
@@ -146,12 +148,8 @@ public class BaseInviteDataResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

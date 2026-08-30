@@ -13,12 +13,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ErrorDetail;
 import org.openapitools.model.RecordCounts;
 import org.openapitools.model.UserListOperationType;
+import org.openapitools.model.WorkloadState;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListUpload   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -41,45 +42,8 @@ public class CustomerListUpload   {
   @JsonProperty("record_counts")
   private RecordCounts recordCounts;
 
-  /**
-   * Workload processing state
-   */
-  public enum StateEnum {
-    NOT_STARTED("NOT_STARTED"),
-    
-    RUNNING("RUNNING"),
-    
-    PAUSED("PAUSED"),
-    
-    SUCCEEDED("SUCCEEDED"),
-    
-    FAILED("FAILED");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String text) {
-      for (StateEnum b : StateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("state")
-  private StateEnum state;
+  private WorkloadState state;
 
   @JsonProperty("updated_time")
   private Integer updatedTime;
@@ -192,6 +156,7 @@ public class CustomerListUpload   {
   }
 
   /**
+   * Record processing counts
    **/
   public CustomerListUpload recordCounts(RecordCounts recordCounts) {
     this.recordCounts = recordCounts;
@@ -199,7 +164,7 @@ public class CustomerListUpload   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Record processing counts")
   @JsonProperty("record_counts")
   public RecordCounts getRecordCounts() {
     return recordCounts;
@@ -209,20 +174,19 @@ public class CustomerListUpload   {
   }
 
   /**
-   * Workload processing state
    **/
-  public CustomerListUpload state(StateEnum state) {
+  public CustomerListUpload state(WorkloadState state) {
     this.state = state;
     return this;
   }
 
   
-  @ApiModelProperty(example = "RUNNING", required = true, value = "Workload processing state")
+  @ApiModelProperty(example = "RUNNING", required = true, value = "")
   @JsonProperty("state")
-  public StateEnum getState() {
+  public WorkloadState getState() {
     return state;
   }
-  public void setState(StateEnum state) {
+  public void setState(WorkloadState state) {
     this.state = state;
   }
 
@@ -293,10 +257,7 @@ public class CustomerListUpload   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

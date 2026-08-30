@@ -10,7 +10,7 @@ import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 import 'package:openapi/src/model/related_terms.dart';
 
 class TermsApi {
@@ -22,7 +22,7 @@ class TermsApi {
   const TermsApi(this._dio, this._serializers);
 
   /// List related terms
-  /// Get a list of terms logically related to each input term. &lt;p/&gt; Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
+  /// Get a list of terms logically related to each input term.  Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
   ///
   /// Parameters:
   /// * [terms] - List of input terms.
@@ -107,7 +107,7 @@ class TermsApi {
   }
 
   /// List suggested terms
-  /// Get popular search terms that begin with your input term. &lt;p/&gt; Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
+  /// Get popular search terms that begin with your input term.  Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
   ///
   /// Parameters:
   /// * [term] - Input term.

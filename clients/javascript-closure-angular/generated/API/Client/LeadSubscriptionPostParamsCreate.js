@@ -27,7 +27,8 @@ API.Client.LeadSubscriptionPostParamsCreate.prototype.webhookUrl;
 API.Client.LeadSubscriptionPostParamsCreate.prototype.partnerAccessToken;
 
 /**
- * @type {!API.Client.LeadSubscriptionPostParamsCreate_allOf_partner_metadata}
+ * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+ * @type {!API.Client.PartnerMetadata}
  * @export
  */
 API.Client.LeadSubscriptionPostParamsCreate.prototype.partnerMetadata;

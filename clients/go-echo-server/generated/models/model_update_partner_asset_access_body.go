@@ -1,6 +1,8 @@
 package models
 
+// UpdatePartnerAssetAccessBody - An object with a list of partner asset accesses to assign or update.
 type UpdatePartnerAssetAccessBody struct {
 
-	Accesses []UpdatePartnerAssetAccessBodyAccessesInner `json:"accesses"`
+	// List of partner asset accesses to assign or update.
+	Accesses []UpdatePartnerAssetAccessItem `json:"accesses"`
 }

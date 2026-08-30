@@ -1,0 +1,57 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupUpdateManyRequestItemsOneOfItems0"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupUpdateManyRequestItemsOneOfItems0"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupFiltersRequest = openapi_server.resourceTypes.CatalogsProductGroupFiltersRequest
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsProductGroupUpdateManyRequestItemsOneOfItems0 {
+    title = CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
+    description = CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        filters {
+          type = CatalogsProductGroupFiltersRequest
+          description = ""
+          optional = false
+        }
+        is_featured {
+          type =  boolean
+          description = "boolean indicator of whether the product group is being featured or not"
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = false
+        }
+        id {
+          type =  string
+          description = "ID of the product group."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupUpdateManyRequestItemsOneOfItems0 {
+    title = CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
+    description = CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
+    implements = openapi_server.resourceTypes.CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
+
+  }
+}

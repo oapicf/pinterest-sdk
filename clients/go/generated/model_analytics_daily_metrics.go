@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,6 @@ type AnalyticsDailyMetrics struct {
 	DataStatus *DataStatus `json:"data_status,omitempty"`
 	// Metrics date (UTC): YYYY-MM-DD.
 	Date *string `json:"date,omitempty"`
-	// The metric name and daily value for each requested metric
 	Metrics *map[string]float32 `json:"metrics,omitempty"`
 }
 

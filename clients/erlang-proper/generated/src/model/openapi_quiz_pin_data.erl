@@ -12,7 +12,7 @@
   [ {'questions', list(openapi_quiz_pin_question:openapi_quiz_pin_question()) }
   | {'results', list(openapi_quiz_pin_result:openapi_quiz_pin_result()) }
   | {'tie_breaker_custom_result', openapi_quiz_pin_result:openapi_quiz_pin_result() }
-  | {'tie_breaker_type', binary() }
+  | {'tie_breaker_type', openapi_tie_breaker_type:openapi_tie_breaker_type() }
   ].
 
 
@@ -23,7 +23,7 @@ openapi_quiz_pin_data(Fields) ->
   Default = [ {'questions', list(openapi_quiz_pin_question:openapi_quiz_pin_question()) }
             , {'results', list(openapi_quiz_pin_result:openapi_quiz_pin_result()) }
             , {'tie_breaker_custom_result', openapi_quiz_pin_result:openapi_quiz_pin_result() }
-            , {'tie_breaker_type', elements([<<"RANDOM">>, <<"CUSTOM">>]) }
+            , {'tie_breaker_type', openapi_tie_breaker_type:openapi_tie_breaker_type() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

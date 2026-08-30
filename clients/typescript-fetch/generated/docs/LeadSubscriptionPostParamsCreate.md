@@ -9,7 +9,7 @@ Name | Type
 `leadFormId` | string
 `webhookUrl` | string
 `partnerAccessToken` | string
-`partnerMetadata` | [LeadSubscriptionPostParamsCreateAllOfPartnerMetadata](LeadSubscriptionPostParamsCreateAllOfPartnerMetadata.md)
+`partnerMetadata` | [PartnerMetadata](PartnerMetadata.md)
 `partnerRefreshToken` | string
 
 ## Example

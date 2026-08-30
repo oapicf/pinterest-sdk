@@ -20,7 +20,7 @@ API.Client.ProductGroupPromotion.prototype.adGroupId;
 API.Client.ProductGroupPromotion.prototype.bidInMicroCurrency;
 
 /**
- * ID of the catalogs product group that this product group promotion references
+ * ID of the catalogs product group that this product group promotion references (required for create operations)
  * @type {!string}
  * @export
  */
@@ -34,8 +34,7 @@ API.Client.ProductGroupPromotion.prototype.catalogProductGroupId;
 API.Client.ProductGroupPromotion.prototype.catalogProductGroupName;
 
 /**
- * Collections ad header type
- * @type {!string}
+ * @type {!API.Client.CollectionsHeaderType}
  * @export
  */
 API.Client.ProductGroupPromotion.prototype.collectionsHeaderType;
@@ -61,8 +60,7 @@ API.Client.ProductGroupPromotion.prototype.collectionsHeroPinId;
 API.Client.ProductGroupPromotion.prototype.creativeType;
 
 /**
- * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
- * @type {!string}
+ * @type {!API.Client.ProductGroupPromotionCustomizableCTAType}
  * @export
  */
 API.Client.ProductGroupPromotion.prototype.customizableCtaType;
@@ -81,7 +79,7 @@ API.Client.ProductGroupPromotion.prototype.definition;
 API.Client.ProductGroupPromotion.prototype.gridClickType;
 
 /**
- * ID of the product group promotion.
+ * ID of the product group promotion (required for update operations).
  * @type {!string}
  * @export
  */
@@ -102,6 +100,13 @@ API.Client.ProductGroupPromotion.prototype.included;
 API.Client.ProductGroupPromotion.prototype.isGenerateBackground;
 
 /**
+ * Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
+ * @type {!boolean}
+ * @export
+ */
+API.Client.ProductGroupPromotion.prototype.isImageAutoResizing;
+
+/**
  * If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
  * @type {!boolean}
  * @export
@@ -116,8 +121,7 @@ API.Client.ProductGroupPromotion.prototype.isMdl;
 API.Client.ProductGroupPromotion.prototype.parentId;
 
 /**
- * Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
- * @type {!string}
+ * @type {!API.Client.PreferredMediaType}
  * @export
  */
 API.Client.ProductGroupPromotion.prototype.preferredMediaType;
@@ -170,27 +174,3 @@ API.Client.ProductGroupPromotion.prototype.status;
  */
 API.Client.ProductGroupPromotion.prototype.trackingUrl;
 
-/** @enum {string} */
-API.Client.ProductGroupPromotion.CollectionsHeaderTypeEnum = { 
-  SHOP_THIS_COLLECTION: 'SHOP_THIS_COLLECTION',
-  EXPLORE_THIS_COLLECTION: 'EXPLORE_THIS_COLLECTION',
-  NO_HEADER: 'NO_HEADER',
-  ON_SALE: 'ON_SALE',
-  GET_DEAL: 'GET_DEAL',
-  : '',
-}
-/** @enum {string} */
-API.Client.ProductGroupPromotion.CustomizableCtaTypeEnum = { 
-  SHOP_NOW: 'SHOP_NOW',
-  BOOK_NOW: 'BOOK_NOW',
-  ON_SALE: 'ON_SALE',
-  GET_DEAL: 'GET_DEAL',
-  BUY_ONLINE_PICKUP_IN_STORE: 'BUY_ONLINE_PICKUP_IN_STORE',
-  : '',
-}
-/** @enum {string} */
-API.Client.ProductGroupPromotion.PreferredMediaTypeEnum = { 
-  VIDEO: 'VIDEO',
-  IMAGE: 'IMAGE',
-  : '',
-}

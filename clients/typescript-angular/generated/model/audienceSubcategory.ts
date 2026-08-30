@@ -10,25 +10,10 @@
 
 
 export interface AudienceSubcategory { 
-    /**
-     * Subinterest ID.
-     */
     id?: string;
-    /**
-     * Subinterest affinity index.
-     */
     index?: number;
-    /**
-     * Interest unique key (same as ID).
-     */
     key?: string;
-    /**
-     * Subinterest name.
-     */
     name?: string;
-    /**
-     * Subinterest\'s percent of category\'s total audience.
-     */
     ratio?: number;
 }
 

@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/customer_list_status.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -15,14 +15,15 @@ part 'customer_list.g.dart';
 /// Properties:
 /// * [adAccountId] - Associated ad account ID.
 /// * [createdTime] - Creation time. Unix timestamp in seconds.
-/// * [exceptions] - Customer list errors
+/// * [exceptions] - Customer list errors.
 /// * [id] - Customer list ID.
+/// * [isNca] - Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
 /// * [name] - Customer list name.
-/// * [numBatches] - Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
-/// * [numRemovedUserRecords] - Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
-/// * [numUploadedUserRecords] - Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
-/// * [status] - Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-/// * [type] - Always \"customerlist\".
+/// * [numBatches] - Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
+/// * [numRemovedUserRecords] - Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
+/// * [numUploadedUserRecords] - Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
+/// * [status] - Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
+/// * [type] - Always `customerlist`.
 /// * [updatedTime] - Last update time. Unix timestamp in seconds.
 @BuiltValue()
 abstract class CustomerList implements Built<CustomerList, CustomerListBuilder> {
@@ -34,36 +35,40 @@ abstract class CustomerList implements Built<CustomerList, CustomerListBuilder> 
   @BuiltValueField(wireName: r'created_time')
   num? get createdTime;
 
-  /// Customer list errors
+  /// Customer list errors.
   @BuiltValueField(wireName: r'exceptions')
   JsonObject? get exceptions;
 
   /// Customer list ID.
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
+
+  /// Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+  @BuiltValueField(wireName: r'is_nca')
+  bool? get isNca;
 
   /// Customer list name.
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
-  /// Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+  /// Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
   @BuiltValueField(wireName: r'num_batches')
   num? get numBatches;
 
-  /// Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
+  /// Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
   @BuiltValueField(wireName: r'num_removed_user_records')
   num? get numRemovedUserRecords;
 
-  /// Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
+  /// Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
   @BuiltValueField(wireName: r'num_uploaded_user_records')
   num? get numUploadedUserRecords;
 
-  /// Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
+  /// Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
   @BuiltValueField(wireName: r'status')
-  CustomerListStatusEnum? get status;
+  CustomerListStatus? get status;
   // enum statusEnum {  PROCESSING,  READY,  TOO_SMALL,  UPLOADING,  };
 
-  /// Always \"customerlist\".
+  /// Always `customerlist`.
   @BuiltValueField(wireName: r'type')
   String? get type;
 
@@ -115,20 +120,23 @@ class _$CustomerListSerializer implements PrimitiveSerializer<CustomerList> {
         specifiedType: const FullType(JsonObject),
       );
     }
-    if (object.id != null) {
-      yield r'id';
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
+    if (object.isNca != null) {
+      yield r'is_nca';
       yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
+        object.isNca,
+        specifiedType: const FullType(bool),
       );
     }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
     if (object.numBatches != null) {
       yield r'num_batches';
       yield serializers.serialize(
@@ -154,7 +162,7 @@ class _$CustomerListSerializer implements PrimitiveSerializer<CustomerList> {
       yield r'status';
       yield serializers.serialize(
         object.status,
-        specifiedType: const FullType(CustomerListStatusEnum),
+        specifiedType: const FullType(CustomerListStatus),
       );
     }
     if (object.type != null) {
@@ -197,22 +205,25 @@ class _$CustomerListSerializer implements PrimitiveSerializer<CustomerList> {
         case r'ad_account_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.adAccountId = valueDes;
           break;
         case r'created_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.createdTime = valueDes;
           break;
         case r'exceptions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
+            specifiedType: const FullType.nullable(JsonObject),
+          ) as JsonObject?;
+          if (valueDes == null) continue;
           result.exceptions = valueDes;
           break;
         case r'id':
@@ -221,6 +232,14 @@ class _$CustomerListSerializer implements PrimitiveSerializer<CustomerList> {
             specifiedType: const FullType(String),
           ) as String;
           result.id = valueDes;
+          break;
+        case r'is_nca':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.isNca = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
@@ -232,43 +251,49 @@ class _$CustomerListSerializer implements PrimitiveSerializer<CustomerList> {
         case r'num_batches':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.numBatches = valueDes;
           break;
         case r'num_removed_user_records':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.numRemovedUserRecords = valueDes;
           break;
         case r'num_uploaded_user_records':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.numUploadedUserRecords = valueDes;
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerListStatusEnum),
-          ) as CustomerListStatusEnum;
+            specifiedType: const FullType.nullable(CustomerListStatus),
+          ) as CustomerListStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.type = valueDes;
           break;
         case r'updated_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
+            specifiedType: const FullType.nullable(num),
+          ) as num?;
+          if (valueDes == null) continue;
           result.updatedTime = valueDes;
           break;
         default:
@@ -298,28 +323,5 @@ class _$CustomerListSerializer implements PrimitiveSerializer<CustomerList> {
     );
     return result.build();
   }
-}
-
-class CustomerListStatusEnum extends EnumClass {
-
-  /// Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-  @BuiltValueEnumConst(wireName: r'PROCESSING')
-  static const CustomerListStatusEnum PROCESSING = _$customerListStatusEnum_PROCESSING;
-  /// Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-  @BuiltValueEnumConst(wireName: r'READY')
-  static const CustomerListStatusEnum READY = _$customerListStatusEnum_READY;
-  /// Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-  @BuiltValueEnumConst(wireName: r'TOO_SMALL')
-  static const CustomerListStatusEnum TOO_SMALL = _$customerListStatusEnum_TOO_SMALL;
-  /// Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-  @BuiltValueEnumConst(wireName: r'UPLOADING')
-  static const CustomerListStatusEnum UPLOADING = _$customerListStatusEnum_UPLOADING;
-
-  static Serializer<CustomerListStatusEnum> get serializer => _$customerListStatusEnumSerializer;
-
-  const CustomerListStatusEnum._(String name): super(name);
-
-  static BuiltSet<CustomerListStatusEnum> get values => _$customerListStatusEnumValues;
-  static CustomerListStatusEnum valueOf(String name) => _$customerListStatusEnumValueOf(name);
 }
 

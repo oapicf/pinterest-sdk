@@ -17,13 +17,33 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing an item bid option deletion operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Object describing an item bid option deletion operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItemsSubmitDeleteRecord   {
   
   private Country country;
+  private List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
   private String itemId;
   private Language language;
-  private List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
+
+  /**
+   * Gets or Sets operation
+   */
+  public enum OperationEnum {
+    DELETE("DELETE");
+    private String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+  }
+
+  private OperationEnum operation;
 
   /**
    **/
@@ -36,6 +56,19 @@ public class AdvancedAuctionItemsSubmitDeleteRecord   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  /**
+   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+   **/
+  
+  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
+  @JsonProperty("errors")
+  public List<@Valid AdvancedAuctionOperationError> getErrors() {
+    return errors;
+  }
+  public void setErrors(List<@Valid AdvancedAuctionOperationError> errors) {
+    this.errors = errors;
   }
 
   /**
@@ -66,16 +99,16 @@ public class AdvancedAuctionItemsSubmitDeleteRecord   {
   }
 
   /**
-   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
    **/
   
-  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
-  @JsonProperty("errors")
-  public List<@Valid AdvancedAuctionOperationError> getErrors() {
-    return errors;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("operation")
+  @NotNull
+  public OperationEnum getOperation() {
+    return operation;
   }
-  public void setErrors(List<@Valid AdvancedAuctionOperationError> errors) {
-    this.errors = errors;
+  public void setOperation(OperationEnum operation) {
+    this.operation = operation;
   }
 
 
@@ -89,14 +122,15 @@ public class AdvancedAuctionItemsSubmitDeleteRecord   {
     }
     AdvancedAuctionItemsSubmitDeleteRecord advancedAuctionItemsSubmitDeleteRecord = (AdvancedAuctionItemsSubmitDeleteRecord) o;
     return Objects.equals(this.country, advancedAuctionItemsSubmitDeleteRecord.country) &&
+        Objects.equals(this.errors, advancedAuctionItemsSubmitDeleteRecord.errors) &&
         Objects.equals(this.itemId, advancedAuctionItemsSubmitDeleteRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsSubmitDeleteRecord.language) &&
-        Objects.equals(this.errors, advancedAuctionItemsSubmitDeleteRecord.errors);
+        Objects.equals(this.operation, advancedAuctionItemsSubmitDeleteRecord.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, itemId, language, errors);
+    return Objects.hash(country, errors, itemId, language, operation);
   }
 
   @Override
@@ -105,9 +139,10 @@ public class AdvancedAuctionItemsSubmitDeleteRecord   {
     sb.append("class AdvancedAuctionItemsSubmitDeleteRecord {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -117,10 +152,7 @@ public class AdvancedAuctionItemsSubmitDeleteRecord   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

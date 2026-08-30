@@ -1,12 +1,12 @@
 package controllers;
 
 import apimodels.Catalog;
+import apimodels.CatalogCreate;
 import apimodels.CatalogsAvailableFilterValues;
-import apimodels.CatalogsCreateRequest;
 import apimodels.CatalogsList200Response;
 import apimodels.CatalogsLocale;
 import apimodels.Country;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -30,7 +30,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsApiController extends Controller {
     private final CatalogsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -85,15 +85,15 @@ public class CatalogsApiController extends Controller {
 
     @ApiAction
     public Result catalogsCreate(Http.Request request) throws Exception {
-        JsonNode nodecatalogsCreateRequest = request.body().asJson();
-        CatalogsCreateRequest catalogsCreateRequest;
-        if (nodecatalogsCreateRequest != null) {
-            catalogsCreateRequest = mapper.readValue(nodecatalogsCreateRequest.toString(), CatalogsCreateRequest.class);
+        JsonNode nodecatalogCreate = request.body().asJson();
+        CatalogCreate catalogCreate;
+        if (nodecatalogCreate != null) {
+            catalogCreate = mapper.readValue(nodecatalogCreate.toString(), CatalogCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(catalogsCreateRequest);
+                OpenAPIUtils.validate(catalogCreate);
             }
         } else {
-            throw new IllegalArgumentException("'CatalogsCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'CatalogCreate' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -102,11 +102,18 @@ public class CatalogsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.catalogsCreateHttp(request, catalogsCreateRequest, adAccountId);
+        return imp.catalogsCreateHttp(request, catalogCreate, adAccountId);
     }
 
     @ApiAction
     public Result catalogsList(Http.Request request) throws Exception {
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -121,14 +128,7 @@ public class CatalogsApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valueadAccountId = request.getQueryString("ad_account_id");
-        String adAccountId;
-        if (valueadAccountId != null) {
-            adAccountId = valueadAccountId;
-        } else {
-            adAccountId = null;
-        }
-        return imp.catalogsListHttp(request, bookmark, pageSize, adAccountId);
+        return imp.catalogsListHttp(request, adAccountId, bookmark, pageSize);
     }
 
 }

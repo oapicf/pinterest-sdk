@@ -20,13 +20,13 @@ Method | HTTP request | Description
 # **adsCreditRedeem**
 ```objc
 -(NSURLSessionTask*) adsCreditRedeemWithAdAccountId: (NSString*) adAccountId
-    adsCreditRedeemRequest: (OAIAdsCreditRedeemRequest*) adsCreditRedeemRequest
-        completionHandler: (void (^)(OAIAdsCreditRedeemResponse* output, NSError* error)) handler;
+    adsCreditRedeemCreate: (OAIAdsCreditRedeemCreate*) adsCreditRedeemCreate
+        completionHandler: (void (^)(OAIAdsCreditRedeem* output, NSError* error)) handler;
 ```
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```objc
@@ -37,14 +37,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAIAdsCreditRedeemRequest* adsCreditRedeemRequest = [[OAIAdsCreditRedeemRequest alloc] init]; // Redeem ad credits request.
+OAIAdsCreditRedeemCreate* adsCreditRedeemCreate = [[OAIAdsCreditRedeemCreate alloc] init]; // 
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
 // Redeem ad credits
 [apiInstance adsCreditRedeemWithAdAccountId:adAccountId
-              adsCreditRedeemRequest:adsCreditRedeemRequest
-          completionHandler: ^(OAIAdsCreditRedeemResponse* output, NSError* error) {
+              adsCreditRedeemCreate:adsCreditRedeemCreate
+          completionHandler: ^(OAIAdsCreditRedeem* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -59,11 +59,11 @@ OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **adsCreditRedeemRequest** | [**OAIAdsCreditRedeemRequest***](OAIAdsCreditRedeemRequest.md)| Redeem ad credits request. | 
+ **adsCreditRedeemCreate** | [**OAIAdsCreditRedeemCreate***](OAIAdsCreditRedeemCreate.md)|  | 
 
 ### Return type
 
-[**OAIAdsCreditRedeemResponse***](OAIAdsCreditRedeemResponse.md)
+[**OAIAdsCreditRedeem***](OAIAdsCreditRedeem.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```objc
@@ -98,7 +98,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -203,10 +203,10 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) billingInvoicesGetWithAdAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    sort: (NSString*) sort
-    order: (NSString*) order
-    status: (NSString*) status
-    documentType: (NSString*) documentType
+    order: (OAIPinterestLibPaginationOrder) order
+    sort: (OAIBillingInvoiceSortField) sort
+    status: (OAIBillingInvoiceStatus) status
+    documentType: (OAIBillingInvoiceDocumentType) documentType
     startDueDate: (NSDate*) startDueDate
     endDueDate: (NSDate*) endDueDate
         completionHandler: (void (^)(OAIBillingInvoicesGet200Response* output, NSError* error)) handler;
@@ -226,13 +226,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* sort = DUE_DATE; // Field of which to sort billing invoices (optional) (default to @"DUE_DATE")
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-NSString* status = OPEN; // Status of billing invoices to filter by (optional)
-NSString* documentType = INVOICE; // Document type of billing invoices to filter by (optional)
-NSDate* startDueDate = Sun Jan 01 00:00:00 UTC 2023; // Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
-NSDate* endDueDate = Mon Jan 01 00:00:00 UTC 2024; // Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+OAIBillingInvoiceSortField sort = [[OAIBillingInvoiceSortField alloc] init]; // Field of which to sort billing invoices (optional)
+OAIBillingInvoiceStatus status = [[OAIBillingInvoiceStatus alloc] init]; // Status of billing invoices to filter by (optional)
+OAIBillingInvoiceDocumentType documentType = [[OAIBillingInvoiceDocumentType alloc] init]; // Document type of billing invoices to filter by (optional)
+NSDate* startDueDate = @"2013-10-20T19:20:30+01:00"; // Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+NSDate* endDueDate = @"2013-10-20T19:20:30+01:00"; // Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
@@ -240,8 +240,8 @@ OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 [apiInstance billingInvoicesGetWithAdAccountId:adAccountId
               bookmark:bookmark
               pageSize:pageSize
-              sort:sort
               order:order
+              sort:sort
               status:status
               documentType:documentType
               startDueDate:startDueDate
@@ -262,11 +262,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **sort** | **NSString***| Field of which to sort billing invoices | [optional] [default to @&quot;DUE_DATE&quot;]
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **status** | **NSString***| Status of billing invoices to filter by | [optional] 
- **documentType** | **NSString***| Document type of billing invoices to filter by | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **sort** | [**OAIBillingInvoiceSortField**](.md)| Field of which to sort billing invoices | [optional] 
+ **status** | [**OAIBillingInvoiceStatus**](.md)| Status of billing invoices to filter by | [optional] 
+ **documentType** | [**OAIBillingInvoiceDocumentType**](.md)| Document type of billing invoices to filter by | [optional] 
  **startDueDate** | **NSDate***| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
  **endDueDate** | **NSDate***| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
 
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
 # **billingProfilesGet**
 ```objc
--(NSURLSessionTask*) billingProfilesGetWithAdAccountId: (NSString*) adAccountId
-    isActive: (NSNumber*) isActive
+-(NSURLSessionTask*) billingProfilesGetWithIsActive: (NSNumber*) isActive
+    adAccountId: (NSString*) adAccountId
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
         completionHandler: (void (^)(OAIBillingProfilesGet200Response* output, NSError* error)) handler;
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```objc
@@ -306,16 +306,16 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSNumber* isActive = @56; // Return active billing profiles, if false return all billing profiles.
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
 // Get billing profiles
-[apiInstance billingProfilesGetWithAdAccountId:adAccountId
-              isActive:isActive
+[apiInstance billingProfilesGetWithIsActive:isActive
+              adAccountId:adAccountId
               bookmark:bookmark
               pageSize:pageSize
           completionHandler: ^(OAIBillingProfilesGet200Response* output, NSError* error) {
@@ -332,10 +332,10 @@ OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **isActive** | **NSNumber***| Return active billing profiles, if false return all billing profiles. | 
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -355,12 +355,12 @@ Name | Type | Description  | Notes
 # **ssioAccountsGet**
 ```objc
 -(NSURLSessionTask*) ssioAccountsGetWithAdAccountId: (NSString*) adAccountId
-        completionHandler: (void (^)(OAISSIOAccountResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAISSIOAccount* output, NSError* error)) handler;
 ```
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```objc
@@ -376,7 +376,7 @@ OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
 // Get Salesforce account details including bill-to information.
 [apiInstance ssioAccountsGetWithAdAccountId:adAccountId
-          completionHandler: ^(OAISSIOAccountResponse* output, NSError* error) {
+          completionHandler: ^(OAISSIOAccount* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAISSIOAccountResponse***](OAISSIOAccountResponse.md)
+[**OAISSIOAccount***](OAISSIOAccount.md)
 
 ### Authorization
 
@@ -410,13 +410,13 @@ Name | Type | Description  | Notes
 # **ssioInsertionOrderCreate**
 ```objc
 -(NSURLSessionTask*) ssioInsertionOrderCreateWithAdAccountId: (NSString*) adAccountId
-    sSIOCreateInsertionOrderRequest: (OAISSIOCreateInsertionOrderRequest*) sSIOCreateInsertionOrderRequest
-        completionHandler: (void (^)(OAISSIOCreateInsertionOrderResponse* output, NSError* error)) handler;
+    sSIOInsertionOrderCreate: (OAISSIOInsertionOrderCreate*) sSIOInsertionOrderCreate
+        completionHandler: (void (^)(OAISSIOInsertionOrder* output, NSError* error)) handler;
 ```
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```objc
@@ -427,14 +427,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAISSIOCreateInsertionOrderRequest* sSIOCreateInsertionOrderRequest = [[OAISSIOCreateInsertionOrderRequest alloc] init]; // Order line to create.
+OAISSIOInsertionOrderCreate* sSIOInsertionOrderCreate = [[OAISSIOInsertionOrderCreate alloc] init]; // 
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
 // Create insertion order through SSIO.
 [apiInstance ssioInsertionOrderCreateWithAdAccountId:adAccountId
-              sSIOCreateInsertionOrderRequest:sSIOCreateInsertionOrderRequest
-          completionHandler: ^(OAISSIOCreateInsertionOrderResponse* output, NSError* error) {
+              sSIOInsertionOrderCreate:sSIOInsertionOrderCreate
+          completionHandler: ^(OAISSIOInsertionOrder* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -449,11 +449,11 @@ OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **sSIOCreateInsertionOrderRequest** | [**OAISSIOCreateInsertionOrderRequest***](OAISSIOCreateInsertionOrderRequest.md)| Order line to create. | 
+ **sSIOInsertionOrderCreate** | [**OAISSIOInsertionOrderCreate***](OAISSIOInsertionOrderCreate.md)|  | 
 
 ### Return type
 
-[**OAISSIOCreateInsertionOrderResponse***](OAISSIOCreateInsertionOrderResponse.md)
+[**OAISSIOInsertionOrder***](OAISSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -469,13 +469,13 @@ Name | Type | Description  | Notes
 # **ssioInsertionOrderEdit**
 ```objc
 -(NSURLSessionTask*) ssioInsertionOrderEditWithAdAccountId: (NSString*) adAccountId
-    sSIOEditInsertionOrderRequest: (OAISSIOEditInsertionOrderRequest*) sSIOEditInsertionOrderRequest
-        completionHandler: (void (^)(OAISSIOEditInsertionOrderResponse* output, NSError* error)) handler;
+    sSIOInsertionOrderUpdate: (OAISSIOInsertionOrderUpdate*) sSIOInsertionOrderUpdate
+        completionHandler: (void (^)(OAISSIOInsertionOrder* output, NSError* error)) handler;
 ```
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```objc
@@ -486,14 +486,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-OAISSIOEditInsertionOrderRequest* sSIOEditInsertionOrderRequest = [[OAISSIOEditInsertionOrderRequest alloc] init]; // Order line to create.
+OAISSIOInsertionOrderUpdate* sSIOInsertionOrderUpdate = [[OAISSIOInsertionOrderUpdate alloc] init]; // 
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
 // Edit insertion order through SSIO.
 [apiInstance ssioInsertionOrderEditWithAdAccountId:adAccountId
-              sSIOEditInsertionOrderRequest:sSIOEditInsertionOrderRequest
-          completionHandler: ^(OAISSIOEditInsertionOrderResponse* output, NSError* error) {
+              sSIOInsertionOrderUpdate:sSIOInsertionOrderUpdate
+          completionHandler: ^(OAISSIOInsertionOrder* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -508,11 +508,11 @@ OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **sSIOEditInsertionOrderRequest** | [**OAISSIOEditInsertionOrderRequest***](OAISSIOEditInsertionOrderRequest.md)| Order line to create. | 
+ **sSIOInsertionOrderUpdate** | [**OAISSIOInsertionOrderUpdate***](OAISSIOInsertionOrderUpdate.md)|  | 
 
 ### Return type
 
-[**OAISSIOEditInsertionOrderResponse***](OAISSIOEditInsertionOrderResponse.md)
+[**OAISSIOInsertionOrder***](OAISSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -535,7 +535,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```objc
@@ -547,7 +547,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -597,7 +597,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```objc
@@ -608,7 +608,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* pinOrderId = 0Q01N0000015hekSVDFDC; // The pin order id associated with the ssio insertion order
+NSString* pinOrderId = @"pinOrderId_example"; // The pin order id associated with the ssio insertion order
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
@@ -650,15 +650,15 @@ Name | Type | Description  | Notes
 # **ssioOrderLinesGetByAdAccount**
 ```objc
 -(NSURLSessionTask*) ssioOrderLinesGetByAdAccountWithAdAccountId: (NSString*) adAccountId
+    pinOrderId: (NSString*) pinOrderId
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    pinOrderId: (NSString*) pinOrderId
         completionHandler: (void (^)(OAISsioOrderLinesGetByAdAccount200Response* output, NSError* error)) handler;
 ```
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```objc
@@ -669,17 +669,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
+NSString* pinOrderId = @"pinOrderId_example"; // The pin order id associated with the SSIO insertion order (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* pinOrderId = 0Q01N0000015hekSVDFDC; // The pin order id associated with the ssio insertino order (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
 // Get Salesforce order lines by ad account id.
 [apiInstance ssioOrderLinesGetByAdAccountWithAdAccountId:adAccountId
+              pinOrderId:pinOrderId
               bookmark:bookmark
               pageSize:pageSize
-              pinOrderId:pinOrderId
           completionHandler: ^(OAISsioOrderLinesGetByAdAccount200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -695,9 +695,9 @@ OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
+ **pinOrderId** | **NSString***| The pin order id associated with the SSIO insertion order | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **pinOrderId** | **NSString***| The pin order id associated with the ssio insertino order | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 

@@ -6,6 +6,8 @@ using namespace Tiny;
 
 AdUpdateRequest::AdUpdateRequest()
 {
+	id = std::string();
+	pin_id = std::string();
 	ad_group_id = std::string();
 	android_deep_link = std::string();
 	carousel_android_deep_links = std::list<std::string>();
@@ -19,6 +21,7 @@ AdUpdateRequest::AdUpdateRequest()
 	disclosure_url = std::string();
 	grid_click_type = GridClickType();
 	ios_deep_link = std::string();
+	is_carting = bool(false);
 	is_pin_deleted = bool(false);
 	is_removable = bool(false);
 	lead_form_id = std::string();
@@ -27,8 +30,6 @@ AdUpdateRequest::AdUpdateRequest()
 	status = EntityStatus();
 	tracking_urls = null;
 	view_tracking_url = std::string();
-	id = std::string();
-	pin_id = std::string();
 }
 
 AdUpdateRequest::AdUpdateRequest(std::string jsonString)
@@ -45,6 +46,32 @@ void
 AdUpdateRequest::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
+
+    const char *idKey = "id";
+
+    if(object.has_key(idKey))
+    {
+        bourne::json value = object[idKey];
+
+
+
+        jsonToValue(&id, value, "std::string");
+
+
+    }
+
+    const char *pin_idKey = "pin_id";
+
+    if(object.has_key(pin_idKey))
+    {
+        bourne::json value = object[pin_idKey];
+
+
+
+        jsonToValue(&pin_id, value, "std::string");
+
+
+    }
 
     const char *ad_group_idKey = "ad_group_id";
 
@@ -246,6 +273,19 @@ AdUpdateRequest::fromJson(std::string jsonObj)
 
     }
 
+    const char *is_cartingKey = "is_carting";
+
+    if(object.has_key(is_cartingKey))
+    {
+        bourne::json value = object[is_cartingKey];
+
+
+
+        jsonToValue(&is_carting, value, "bool");
+
+
+    }
+
     const char *is_pin_deletedKey = "is_pin_deleted";
 
     if(object.has_key(is_pin_deletedKey))
@@ -307,7 +347,7 @@ AdUpdateRequest::fromJson(std::string jsonObj)
 
 
 
-        QuizPinData* obj = &quiz_pin_data;
+        Object* obj = &quiz_pin_data;
 		obj->fromJson(value.dump());
 
     }
@@ -335,7 +375,7 @@ AdUpdateRequest::fromJson(std::string jsonObj)
 
 
 
-        TrackingUrls* obj = &tracking_urls;
+        Object* obj = &tracking_urls;
 		obj->fromJson(value.dump());
 
     }
@@ -353,32 +393,6 @@ AdUpdateRequest::fromJson(std::string jsonObj)
 
     }
 
-    const char *idKey = "id";
-
-    if(object.has_key(idKey))
-    {
-        bourne::json value = object[idKey];
-
-
-
-        jsonToValue(&id, value, "std::string");
-
-
-    }
-
-    const char *pin_idKey = "pin_id";
-
-    if(object.has_key(pin_idKey))
-    {
-        bourne::json value = object[pin_idKey];
-
-
-
-        jsonToValue(&pin_id, value, "std::string");
-
-
-    }
-
 
 }
 
@@ -386,6 +400,20 @@ bourne::json
 AdUpdateRequest::toJson()
 {
     bourne::json object = bourne::json::object();
+
+
+
+
+
+    object["id"] = getId();
+
+
+
+
+
+
+    object["pin_id"] = getPinId();
+
 
 
 
@@ -509,6 +537,13 @@ AdUpdateRequest::toJson()
 
 
 
+    object["is_carting"] = isIsCarting();
+
+
+
+
+
+
     object["is_pin_deleted"] = isIsPinDeleted();
 
 
@@ -562,274 +597,8 @@ AdUpdateRequest::toJson()
 
 
 
-
-
-
-    object["id"] = getId();
-
-
-
-
-
-
-    object["pin_id"] = getPinId();
-
-
-
     return object;
 
-}
-
-std::string
-AdUpdateRequest::getAdGroupId()
-{
-	return ad_group_id;
-}
-
-void
-AdUpdateRequest::setAdGroupId(std::string  ad_group_id)
-{
-	this->ad_group_id = ad_group_id;
-}
-
-std::string
-AdUpdateRequest::getAndroidDeepLink()
-{
-	return android_deep_link;
-}
-
-void
-AdUpdateRequest::setAndroidDeepLink(std::string  android_deep_link)
-{
-	this->android_deep_link = android_deep_link;
-}
-
-std::list<std::string>
-AdUpdateRequest::getCarouselAndroidDeepLinks()
-{
-	return carousel_android_deep_links;
-}
-
-void
-AdUpdateRequest::setCarouselAndroidDeepLinks(std::list <std::string> carousel_android_deep_links)
-{
-	this->carousel_android_deep_links = carousel_android_deep_links;
-}
-
-std::list<std::string>
-AdUpdateRequest::getCarouselDestinationUrls()
-{
-	return carousel_destination_urls;
-}
-
-void
-AdUpdateRequest::setCarouselDestinationUrls(std::list <std::string> carousel_destination_urls)
-{
-	this->carousel_destination_urls = carousel_destination_urls;
-}
-
-std::list<std::string>
-AdUpdateRequest::getCarouselIosDeepLinks()
-{
-	return carousel_ios_deep_links;
-}
-
-void
-AdUpdateRequest::setCarouselIosDeepLinks(std::list <std::string> carousel_ios_deep_links)
-{
-	this->carousel_ios_deep_links = carousel_ios_deep_links;
-}
-
-std::string
-AdUpdateRequest::getClickTrackingUrl()
-{
-	return click_tracking_url;
-}
-
-void
-AdUpdateRequest::setClickTrackingUrl(std::string  click_tracking_url)
-{
-	this->click_tracking_url = click_tracking_url;
-}
-
-CreativeType
-AdUpdateRequest::getCreativeType()
-{
-	return creative_type;
-}
-
-void
-AdUpdateRequest::setCreativeType(CreativeType  creative_type)
-{
-	this->creative_type = creative_type;
-}
-
-CustomizableCTAType
-AdUpdateRequest::getCustomizableCtaType()
-{
-	return customizable_cta_type;
-}
-
-void
-AdUpdateRequest::setCustomizableCtaType(CustomizableCTAType  customizable_cta_type)
-{
-	this->customizable_cta_type = customizable_cta_type;
-}
-
-std::string
-AdUpdateRequest::getDestinationUrl()
-{
-	return destination_url;
-}
-
-void
-AdUpdateRequest::setDestinationUrl(std::string  destination_url)
-{
-	this->destination_url = destination_url;
-}
-
-DisclosureType
-AdUpdateRequest::getDisclosureType()
-{
-	return disclosure_type;
-}
-
-void
-AdUpdateRequest::setDisclosureType(DisclosureType  disclosure_type)
-{
-	this->disclosure_type = disclosure_type;
-}
-
-std::string
-AdUpdateRequest::getDisclosureUrl()
-{
-	return disclosure_url;
-}
-
-void
-AdUpdateRequest::setDisclosureUrl(std::string  disclosure_url)
-{
-	this->disclosure_url = disclosure_url;
-}
-
-GridClickType
-AdUpdateRequest::getGridClickType()
-{
-	return grid_click_type;
-}
-
-void
-AdUpdateRequest::setGridClickType(GridClickType  grid_click_type)
-{
-	this->grid_click_type = grid_click_type;
-}
-
-std::string
-AdUpdateRequest::getIosDeepLink()
-{
-	return ios_deep_link;
-}
-
-void
-AdUpdateRequest::setIosDeepLink(std::string  ios_deep_link)
-{
-	this->ios_deep_link = ios_deep_link;
-}
-
-bool
-AdUpdateRequest::isIsPinDeleted()
-{
-	return is_pin_deleted;
-}
-
-void
-AdUpdateRequest::setIsPinDeleted(bool  is_pin_deleted)
-{
-	this->is_pin_deleted = is_pin_deleted;
-}
-
-bool
-AdUpdateRequest::isIsRemovable()
-{
-	return is_removable;
-}
-
-void
-AdUpdateRequest::setIsRemovable(bool  is_removable)
-{
-	this->is_removable = is_removable;
-}
-
-std::string
-AdUpdateRequest::getLeadFormId()
-{
-	return lead_form_id;
-}
-
-void
-AdUpdateRequest::setLeadFormId(std::string  lead_form_id)
-{
-	this->lead_form_id = lead_form_id;
-}
-
-std::string
-AdUpdateRequest::getName()
-{
-	return name;
-}
-
-void
-AdUpdateRequest::setName(std::string  name)
-{
-	this->name = name;
-}
-
-QuizPinData
-AdUpdateRequest::getQuizPinData()
-{
-	return quiz_pin_data;
-}
-
-void
-AdUpdateRequest::setQuizPinData(QuizPinData  quiz_pin_data)
-{
-	this->quiz_pin_data = quiz_pin_data;
-}
-
-EntityStatus
-AdUpdateRequest::getStatus()
-{
-	return status;
-}
-
-void
-AdUpdateRequest::setStatus(EntityStatus  status)
-{
-	this->status = status;
-}
-
-TrackingUrls
-AdUpdateRequest::getTrackingUrls()
-{
-	return tracking_urls;
-}
-
-void
-AdUpdateRequest::setTrackingUrls(TrackingUrls  tracking_urls)
-{
-	this->tracking_urls = tracking_urls;
-}
-
-std::string
-AdUpdateRequest::getViewTrackingUrl()
-{
-	return view_tracking_url;
-}
-
-void
-AdUpdateRequest::setViewTrackingUrl(std::string  view_tracking_url)
-{
-	this->view_tracking_url = view_tracking_url;
 }
 
 std::string
@@ -839,7 +608,7 @@ AdUpdateRequest::getId()
 }
 
 void
-AdUpdateRequest::setId(std::string  id)
+AdUpdateRequest::setId(std::string id)
 {
 	this->id = id;
 }
@@ -851,9 +620,273 @@ AdUpdateRequest::getPinId()
 }
 
 void
-AdUpdateRequest::setPinId(std::string  pin_id)
+AdUpdateRequest::setPinId(std::string pin_id)
 {
 	this->pin_id = pin_id;
+}
+
+std::string
+AdUpdateRequest::getAdGroupId()
+{
+	return ad_group_id;
+}
+
+void
+AdUpdateRequest::setAdGroupId(std::string ad_group_id)
+{
+	this->ad_group_id = ad_group_id;
+}
+
+std::string
+AdUpdateRequest::getAndroidDeepLink()
+{
+	return android_deep_link;
+}
+
+void
+AdUpdateRequest::setAndroidDeepLink(std::string android_deep_link)
+{
+	this->android_deep_link = android_deep_link;
+}
+
+std::list<std::string>
+AdUpdateRequest::getCarouselAndroidDeepLinks()
+{
+	return carousel_android_deep_links;
+}
+
+void
+AdUpdateRequest::setCarouselAndroidDeepLinks(std::list<std::string> carousel_android_deep_links)
+{
+	this->carousel_android_deep_links = carousel_android_deep_links;
+}
+
+std::list<std::string>
+AdUpdateRequest::getCarouselDestinationUrls()
+{
+	return carousel_destination_urls;
+}
+
+void
+AdUpdateRequest::setCarouselDestinationUrls(std::list<std::string> carousel_destination_urls)
+{
+	this->carousel_destination_urls = carousel_destination_urls;
+}
+
+std::list<std::string>
+AdUpdateRequest::getCarouselIosDeepLinks()
+{
+	return carousel_ios_deep_links;
+}
+
+void
+AdUpdateRequest::setCarouselIosDeepLinks(std::list<std::string> carousel_ios_deep_links)
+{
+	this->carousel_ios_deep_links = carousel_ios_deep_links;
+}
+
+std::string
+AdUpdateRequest::getClickTrackingUrl()
+{
+	return click_tracking_url;
+}
+
+void
+AdUpdateRequest::setClickTrackingUrl(std::string click_tracking_url)
+{
+	this->click_tracking_url = click_tracking_url;
+}
+
+CreativeType
+AdUpdateRequest::getCreativeType()
+{
+	return creative_type;
+}
+
+void
+AdUpdateRequest::setCreativeType(CreativeType creative_type)
+{
+	this->creative_type = creative_type;
+}
+
+CustomizableCTAType
+AdUpdateRequest::getCustomizableCtaType()
+{
+	return customizable_cta_type;
+}
+
+void
+AdUpdateRequest::setCustomizableCtaType(CustomizableCTAType customizable_cta_type)
+{
+	this->customizable_cta_type = customizable_cta_type;
+}
+
+std::string
+AdUpdateRequest::getDestinationUrl()
+{
+	return destination_url;
+}
+
+void
+AdUpdateRequest::setDestinationUrl(std::string destination_url)
+{
+	this->destination_url = destination_url;
+}
+
+DisclosureType
+AdUpdateRequest::getDisclosureType()
+{
+	return disclosure_type;
+}
+
+void
+AdUpdateRequest::setDisclosureType(DisclosureType disclosure_type)
+{
+	this->disclosure_type = disclosure_type;
+}
+
+std::string
+AdUpdateRequest::getDisclosureUrl()
+{
+	return disclosure_url;
+}
+
+void
+AdUpdateRequest::setDisclosureUrl(std::string disclosure_url)
+{
+	this->disclosure_url = disclosure_url;
+}
+
+GridClickType
+AdUpdateRequest::getGridClickType()
+{
+	return grid_click_type;
+}
+
+void
+AdUpdateRequest::setGridClickType(GridClickType grid_click_type)
+{
+	this->grid_click_type = grid_click_type;
+}
+
+std::string
+AdUpdateRequest::getIosDeepLink()
+{
+	return ios_deep_link;
+}
+
+void
+AdUpdateRequest::setIosDeepLink(std::string ios_deep_link)
+{
+	this->ios_deep_link = ios_deep_link;
+}
+
+bool
+AdUpdateRequest::isIsCarting()
+{
+	return is_carting;
+}
+
+void
+AdUpdateRequest::setIsCarting(bool is_carting)
+{
+	this->is_carting = is_carting;
+}
+
+bool
+AdUpdateRequest::isIsPinDeleted()
+{
+	return is_pin_deleted;
+}
+
+void
+AdUpdateRequest::setIsPinDeleted(bool is_pin_deleted)
+{
+	this->is_pin_deleted = is_pin_deleted;
+}
+
+bool
+AdUpdateRequest::isIsRemovable()
+{
+	return is_removable;
+}
+
+void
+AdUpdateRequest::setIsRemovable(bool is_removable)
+{
+	this->is_removable = is_removable;
+}
+
+std::string
+AdUpdateRequest::getLeadFormId()
+{
+	return lead_form_id;
+}
+
+void
+AdUpdateRequest::setLeadFormId(std::string lead_form_id)
+{
+	this->lead_form_id = lead_form_id;
+}
+
+std::string
+AdUpdateRequest::getName()
+{
+	return name;
+}
+
+void
+AdUpdateRequest::setName(std::string name)
+{
+	this->name = name;
+}
+
+Object
+AdUpdateRequest::getQuizPinData()
+{
+	return quiz_pin_data;
+}
+
+void
+AdUpdateRequest::setQuizPinData(Object quiz_pin_data)
+{
+	this->quiz_pin_data = quiz_pin_data;
+}
+
+EntityStatus
+AdUpdateRequest::getStatus()
+{
+	return status;
+}
+
+void
+AdUpdateRequest::setStatus(EntityStatus status)
+{
+	this->status = status;
+}
+
+Object
+AdUpdateRequest::getTrackingUrls()
+{
+	return tracking_urls;
+}
+
+void
+AdUpdateRequest::setTrackingUrls(Object tracking_urls)
+{
+	this->tracking_urls = tracking_urls;
+}
+
+std::string
+AdUpdateRequest::getViewTrackingUrl()
+{
+	return view_tracking_url;
+}
+
+void
+AdUpdateRequest::setViewTrackingUrl(std::string view_tracking_url)
+{
+	this->view_tracking_url = view_tracking_url;
 }
 
 

@@ -1,0 +1,64 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProductGroupsCreateManyRequestItems",
+  "fields": [
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "feed_id",
+      "type": "string",
+      "doc": "Catalog Feed id pertaining to the catalog product group."
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
+      "doc": ""
+    },
+    {
+      "name": "is_featured",
+      "type": ["null", "boolean"],
+      "doc": "boolean indicator of whether the product group is being featured or not",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog ID pertaining to the product group."
+    },
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsProductGroupsCreateManyRequestItems_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "country",
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "locale",
+      "type": ["null", "model.CatalogsLocale"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

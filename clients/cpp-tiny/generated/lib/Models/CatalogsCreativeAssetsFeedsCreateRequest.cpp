@@ -7,16 +7,16 @@ using namespace Tiny;
 CatalogsCreativeAssetsFeedsCreateRequest::CatalogsCreativeAssetsFeedsCreateRequest()
 {
 	catalog_id = std::string();
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	credentials = CatalogsFeedCredentials();
 	default_country = Country();
 	default_currency = NullableCurrency();
-	default_locale = CatalogsFeedsCreateRequest_default_locale();
+	default_locale = CatalogsCreativeAssetsFeedsCreateRequest_default_locale();
 	format = CatalogsFormat();
 	location = std::string();
 	name = std::string();
 	preferred_processing_schedule = CatalogsFeedProcessingSchedule();
-	status = std::string();
+	status = null;
 }
 
 CatalogsCreativeAssetsFeedsCreateRequest::CatalogsCreativeAssetsFeedsCreateRequest(std::string jsonString)
@@ -55,9 +55,8 @@ CatalogsCreativeAssetsFeedsCreateRequest::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -112,7 +111,7 @@ CatalogsCreativeAssetsFeedsCreateRequest::fromJson(std::string jsonObj)
 
 
 
-        CatalogsFeedsCreateRequest_default_locale* obj = &default_locale;
+        CatalogsCreativeAssetsFeedsCreateRequest_default_locale* obj = &default_locale;
 		obj->fromJson(value.dump());
 
     }
@@ -204,8 +203,8 @@ CatalogsCreativeAssetsFeedsCreateRequest::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -282,19 +281,19 @@ CatalogsCreativeAssetsFeedsCreateRequest::getCatalogId()
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setCatalogId(std::string  catalog_id)
+CatalogsCreativeAssetsFeedsCreateRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
 
-CatalogsType
+std::string
 CatalogsCreativeAssetsFeedsCreateRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setCatalogType(CatalogsType  catalog_type)
+CatalogsCreativeAssetsFeedsCreateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -306,7 +305,7 @@ CatalogsCreativeAssetsFeedsCreateRequest::getCredentials()
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsCreativeAssetsFeedsCreateRequest::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -318,7 +317,7 @@ CatalogsCreativeAssetsFeedsCreateRequest::getDefaultCountry()
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setDefaultCountry(Country  default_country)
+CatalogsCreativeAssetsFeedsCreateRequest::setDefaultCountry(Country default_country)
 {
 	this->default_country = default_country;
 }
@@ -330,19 +329,19 @@ CatalogsCreativeAssetsFeedsCreateRequest::getDefaultCurrency()
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsCreativeAssetsFeedsCreateRequest::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
 
-CatalogsFeedsCreateRequest_default_locale
+CatalogsCreativeAssetsFeedsCreateRequest_default_locale
 CatalogsCreativeAssetsFeedsCreateRequest::getDefaultLocale()
 {
 	return default_locale;
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale)
+CatalogsCreativeAssetsFeedsCreateRequest::setDefaultLocale(CatalogsCreativeAssetsFeedsCreateRequest_default_locale default_locale)
 {
 	this->default_locale = default_locale;
 }
@@ -354,7 +353,7 @@ CatalogsCreativeAssetsFeedsCreateRequest::getFormat()
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setFormat(CatalogsFormat  format)
+CatalogsCreativeAssetsFeedsCreateRequest::setFormat(CatalogsFormat format)
 {
 	this->format = format;
 }
@@ -366,7 +365,7 @@ CatalogsCreativeAssetsFeedsCreateRequest::getLocation()
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setLocation(std::string  location)
+CatalogsCreativeAssetsFeedsCreateRequest::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -378,7 +377,7 @@ CatalogsCreativeAssetsFeedsCreateRequest::getName()
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setName(std::string  name)
+CatalogsCreativeAssetsFeedsCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }
@@ -390,7 +389,7 @@ CatalogsCreativeAssetsFeedsCreateRequest::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsCreativeAssetsFeedsCreateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -402,7 +401,7 @@ CatalogsCreativeAssetsFeedsCreateRequest::getStatus()
 }
 
 void
-CatalogsCreativeAssetsFeedsCreateRequest::setStatus(CatalogsStatus  status)
+CatalogsCreativeAssetsFeedsCreateRequest::setStatus(CatalogsStatus status)
 {
 	this->status = status;
 }

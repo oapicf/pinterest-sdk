@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionItemsGetRecord;
+import org.openapitools.model.AdvancedAuctionKey;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -33,7 +33,7 @@ public class AdvancedAuctionItemsGetRequest  {
 
   @Valid
 
-  private List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionKey> items = new ArrayList<>();
  /**
    * Catalog id pertaining to the retail item
    * @return catalogId
@@ -59,20 +59,20 @@ public class AdvancedAuctionItemsGetRequest  {
   **/
   @JsonProperty("items")
   @NotNull
- @Size(min=1,max=10000)  public List<AdvancedAuctionItemsGetRecord> getItems() {
+ @Size(min=1,max=10000)  public List<@Valid AdvancedAuctionKey> getItems() {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionItemsGetRecord> items) {
+  public void setItems(List<@Valid AdvancedAuctionKey> items) {
     this.items = items;
   }
 
-  public AdvancedAuctionItemsGetRequest items(List<AdvancedAuctionItemsGetRecord> items) {
+  public AdvancedAuctionItemsGetRequest items(List<@Valid AdvancedAuctionKey> items) {
     this.items = items;
     return this;
   }
 
-  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionItemsGetRecord itemsItem) {
+  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionKey itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -111,10 +111,7 @@ public class AdvancedAuctionItemsGetRequest  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,11 +1,11 @@
 #import "OAICatalogItemsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAICatalogsItems.h"
 #import "OAICatalogsItemsBatch.h"
+#import "OAICatalogsItemsBatchPostRequest.h"
 #import "OAICatalogsItemsRequest.h"
-#import "OAIError.h"
-#import "OAIItemsBatchPostRequest.h"
+#import "OAIItemsPost200Response.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAICatalogItemsApi ()
@@ -55,7 +55,7 @@ NSInteger kOAICatalogItemsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get item batch status
-/// Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+/// Get a single catalogs items batch owned by the \"operating user_account\". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
 ///  @param batchId Id of a catalogs items batch to fetch 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -129,21 +129,21 @@ NSInteger kOAICatalogItemsApiMissingParamErrorCode = 234513;
 
 ///
 /// Operate on item batch
-/// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
-///  @param itemsBatchPostRequest Request object used to create catalogs items in a batch 
+/// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+///  @param catalogsItemsBatchPostRequest  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @returns OAICatalogsItemsBatch*
 ///
--(NSURLSessionTask*) itemsBatchPostWithItemsBatchPostRequest: (OAIItemsBatchPostRequest*) itemsBatchPostRequest
+-(NSURLSessionTask*) itemsBatchPostWithCatalogsItemsBatchPostRequest: (OAICatalogsItemsBatchPostRequest*) catalogsItemsBatchPostRequest
     adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(OAICatalogsItemsBatch* output, NSError* error)) handler {
-    // verify the required parameter 'itemsBatchPostRequest' is set
-    if (itemsBatchPostRequest == nil) {
-        NSParameterAssert(itemsBatchPostRequest);
+    // verify the required parameter 'catalogsItemsBatchPostRequest' is set
+    if (catalogsItemsBatchPostRequest == nil) {
+        NSParameterAssert(catalogsItemsBatchPostRequest);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"itemsBatchPostRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"catalogsItemsBatchPostRequest"] };
             NSError* error = [NSError errorWithDomain:kOAICatalogItemsApiErrorDomain code:kOAICatalogItemsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -178,7 +178,7 @@ NSInteger kOAICatalogItemsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = itemsBatchPostRequest;
+    bodyParam = catalogsItemsBatchPostRequest;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -201,16 +201,16 @@ NSInteger kOAICatalogItemsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get catalogs items (POST)
-/// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-///  @param catalogsItemsRequest Request object used to get catalogs items 
+/// Get the items of the catalog owned by the \"operation user_account\". [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+///  @param catalogsItemsRequest  
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns OAICatalogsItems*
+///  @returns OAIItemsPost200Response*
 ///
 -(NSURLSessionTask*) itemsPostWithCatalogsItemsRequest: (OAICatalogsItemsRequest*) catalogsItemsRequest
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAICatalogsItems* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIItemsPost200Response* output, NSError* error)) handler {
     // verify the required parameter 'catalogsItemsRequest' is set
     if (catalogsItemsRequest == nil) {
         NSParameterAssert(catalogsItemsRequest);
@@ -263,10 +263,10 @@ NSInteger kOAICatalogItemsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICatalogsItems*"
+                              responseType: @"OAIItemsPost200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICatalogsItems*)data, error);
+                                    handler((OAIItemsPost200Response*)data, error);
                                 }
                             }];
 }

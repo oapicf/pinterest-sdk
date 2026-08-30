@@ -1703,9 +1703,6 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
         self$`EXPIRATION_DATE_INVALID` <- `EXPIRATION_DATE_INVALID`
       }
       if (!is.null(`FETCH_SAME_SIGNATURE`)) {
-        if (!(`FETCH_SAME_SIGNATURE` %in% c("1"))) {
-          stop(paste("Error! \"", `FETCH_SAME_SIGNATURE`, "\" cannot be assigned to `FETCH_SAME_SIGNATURE`. Must be \"1\".", sep = ""))
-        }
         if (!(is.numeric(`FETCH_SAME_SIGNATURE`) && length(`FETCH_SAME_SIGNATURE`) == 1)) {
           stop(paste("Error! Invalid data for `FETCH_SAME_SIGNATURE`. Must be an integer:", `FETCH_SAME_SIGNATURE`))
         }
@@ -3334,9 +3331,6 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
         self$`EXPIRATION_DATE_INVALID` <- this_object$`EXPIRATION_DATE_INVALID`
       }
       if (!is.null(this_object$`FETCH_SAME_SIGNATURE`)) {
-        if (!is.null(this_object$`FETCH_SAME_SIGNATURE`) && !(this_object$`FETCH_SAME_SIGNATURE` %in% c("1"))) {
-          stop(paste("Error! \"", this_object$`FETCH_SAME_SIGNATURE`, "\" cannot be assigned to `FETCH_SAME_SIGNATURE`. Must be \"1\".", sep = ""))
-        }
         self$`FETCH_SAME_SIGNATURE` <- this_object$`FETCH_SAME_SIGNATURE`
       }
       if (!is.null(this_object$`GENDER_INVALID`)) {
@@ -3640,9 +3634,6 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
       self$`DESCRIPTION_LENGTH_TOO_LONG` <- this_object$`DESCRIPTION_LENGTH_TOO_LONG`
       self$`DUPLICATE_HEADERS` <- this_object$`DUPLICATE_HEADERS`
       self$`EXPIRATION_DATE_INVALID` <- this_object$`EXPIRATION_DATE_INVALID`
-      if (!is.null(this_object$`FETCH_SAME_SIGNATURE`) && !(this_object$`FETCH_SAME_SIGNATURE` %in% c("1"))) {
-        stop(paste("Error! \"", this_object$`FETCH_SAME_SIGNATURE`, "\" cannot be assigned to `FETCH_SAME_SIGNATURE`. Must be \"1\".", sep = ""))
-      }
       self$`FETCH_SAME_SIGNATURE` <- this_object$`FETCH_SAME_SIGNATURE`
       self$`GENDER_INVALID` <- this_object$`GENDER_INVALID`
       self$`GTIN_INVALID` <- this_object$`GTIN_INVALID`

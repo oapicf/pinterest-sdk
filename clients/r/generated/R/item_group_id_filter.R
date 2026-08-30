@@ -61,9 +61,32 @@ ItemGroupIdFilter <- R6::R6Class(
       ItemGroupIdFilterObject <- list()
       if (!is.null(self$`ITEM_GROUP_ID`)) {
         ItemGroupIdFilterObject[["ITEM_GROUP_ID"]] <-
-          self$`ITEM_GROUP_ID`$toSimpleType()
+          self$extractSimpleType(self$`ITEM_GROUP_ID`)
       }
       return(ItemGroupIdFilterObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// AudienceAccountType the model 'AudienceAccountType'
+// AudienceAccountType Account type filter for audience sharing.
 type AudienceAccountType string
 
 // List of AudienceAccountType

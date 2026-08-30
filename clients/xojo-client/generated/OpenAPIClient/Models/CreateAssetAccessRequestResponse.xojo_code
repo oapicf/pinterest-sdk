@@ -5,11 +5,14 @@ Protected Class CreateAssetAccessRequestResponse
 		#tag Note
 			A list of errors associated with the asset access requests. Will be returned if there is an error.
 		#tag EndNote
-		exceptions() As OpenAPIClient.Models.CreateAssetAccessRequestErrorMessageInner
+		exceptions() As OpenAPIClient.Models.AssetAccessRequestError
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
+		#tag EndNote
 		invites As Dictionary
 	#tag EndProperty
 
@@ -55,7 +58,7 @@ Protected Class CreateAssetAccessRequestResponse
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CreateAssetAccessRequestErrorMessageInner"
+			Type="AssetAccessRequestError"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

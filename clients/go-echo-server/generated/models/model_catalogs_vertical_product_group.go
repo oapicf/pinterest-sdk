@@ -2,7 +2,7 @@ package models
 
 type CatalogsVerticalProductGroup struct {
 
-	// Catalog id pertaining to the creative assets product group.
+	// Catalog ID pertaining to the product group.
 	CatalogId string `json:"catalog_id"`
 
 	CatalogType string `json:"catalog_type"`
@@ -19,7 +19,7 @@ type CatalogsVerticalProductGroup struct {
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 
-	// ID of the creative assets product group.
+	// ID of the catalog product group.
 	Id string `json:"id"`
 
 	// boolean indicator of whether the product group is being featured or not
@@ -28,7 +28,7 @@ type CatalogsVerticalProductGroup struct {
 
 	Locale *string `json:"locale,omitempty"`
 
-	// Name of creative assets product group
+	// Name of catalog product group
 	Name string `json:"name,omitempty"`
 
 	Status CatalogsProductGroupStatus `json:"status,omitempty"`

@@ -3,15 +3,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Labels** | [**LabelCreateRequestLabelsInner[]**](LabelCreateRequestLabelsInner.md) | Labels that you are applying to the campaign. | 
-**ParentId** | **String** | Unique identifier of the asset you are labelling. Currently, you can only label campaigns. | 
+**Labels** | [**LabelCreateItem[]**](LabelCreateItem.md) | Labels that you are applying to the campaign. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$LabelCreateRequest = Initialize-PSOpenAPIToolsLabelCreateRequest  -Labels null `
- -ParentId 626753052072
+$LabelCreateRequest = Initialize-PSOpenAPIToolsLabelCreateRequest  -Labels null
 ```
 
 - Convert the resource to JSON

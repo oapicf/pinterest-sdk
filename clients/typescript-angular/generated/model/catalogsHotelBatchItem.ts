@@ -17,19 +17,10 @@ import { CatalogsDeleteHotelItem } from './catalogsDeleteHotelItem';
 /**
  * Hotel batch item
  */
-export interface CatalogsHotelBatchItem { 
-    attributes: CatalogsUpdatableHotelAttributes;
-    /**
-     * The catalog hotel id in the merchant namespace
-     */
-    hotel_id: string;
-    operation: CatalogsHotelBatchItem.OperationEnum;
-}
-export namespace CatalogsHotelBatchItem {
-    export const OperationEnum = {
-        Delete: 'DELETE'
-    } as const;
-    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
-}
-
+/**
+ * @type CatalogsHotelBatchItem
+ * Hotel batch item
+ * @export
+ */
+export type CatalogsHotelBatchItem = CatalogsCreateHotelItem | CatalogsDeleteHotelItem | CatalogsUpdateHotelItem | CatalogsUpsertHotelItem;
 

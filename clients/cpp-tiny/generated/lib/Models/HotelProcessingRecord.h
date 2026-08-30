@@ -54,28 +54,28 @@ public:
 
 	/*! \brief Set Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
 	 */
-	void setErrors(std::list <ItemValidationEvent> errors);
+	void setErrors(std::list<ItemValidationEvent> errors);
 	/*! \brief Get The catalog hotel id in the merchant namespace
 	 */
 	std::string getHotelId();
 
 	/*! \brief Set The catalog hotel id in the merchant namespace
 	 */
-	void setHotelId(std::string  hotel_id);
+	void setHotelId(std::string hotel_id);
 	/*! \brief Get 
 	 */
 	ItemProcessingStatus getStatus();
 
 	/*! \brief Set 
 	 */
-	void setStatus(ItemProcessingStatus  status);
+	void setStatus(ItemProcessingStatus status);
 	/*! \brief Get Array with the validation warnings for the item processing record
 	 */
 	std::list<ItemValidationEvent> getWarnings();
 
 	/*! \brief Set Array with the validation warnings for the item processing record
 	 */
-	void setWarnings(std::list <ItemValidationEvent> warnings);
+	void setWarnings(std::list<ItemValidationEvent> warnings);
 
 
     private:

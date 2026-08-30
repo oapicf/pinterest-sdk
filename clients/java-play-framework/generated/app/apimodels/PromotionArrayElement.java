@@ -1,7 +1,7 @@
 package apimodels;
 
 import apimodels.Exception;
-import apimodels.PromotionResponse;
+import apimodels.Promotion;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -11,20 +11,20 @@ import javax.validation.Valid;
 /**
  * PromotionArrayElement
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PromotionArrayElement   {
   @JsonProperty("data")
   @Valid
 
-  private PromotionResponse data;
+  private Promotion data;
 
   @JsonProperty("exception")
   @Valid
 
   private Exception exception;
 
-  public PromotionArrayElement data(PromotionResponse data) {
+  public PromotionArrayElement data(Promotion data) {
     this.data = data;
     return this;
   }
@@ -33,11 +33,11 @@ public class PromotionArrayElement   {
    * Get data
    * @return data
   **/
-  public PromotionResponse getData() {
+  public Promotion getData() {
     return data;
   }
 
-  public void setData(PromotionResponse data) {
+  public void setData(Promotion data) {
     this.data = data;
   }
 
@@ -94,10 +94,7 @@ public class PromotionArrayElement   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

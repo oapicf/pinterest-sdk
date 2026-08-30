@@ -18,6 +18,7 @@ Name | Type
 `link` | string
 `title` | string
 `visibility` | string
+`aiDisclosures` | [Array&lt;CatalogsAiContentDisclosure&gt;](CatalogsAiContentDisclosure.md)
 `imageLink` | string
 `videoLink` | string
 
@@ -40,6 +41,7 @@ const example = {
   "link": null,
   "title": null,
   "visibility": null,
+  "aiDisclosures": [{"url":"https://scene.example.com/image/image_v2.jpg","disclosure":["ai_modified"]}],
   "imageLink": https://scene.example.com/image/image_v2.jpg,
   "videoLink": https://scene.example.com/image/image_v2.mp4,
 } satisfies CatalogsCreativeAssetsAttributes

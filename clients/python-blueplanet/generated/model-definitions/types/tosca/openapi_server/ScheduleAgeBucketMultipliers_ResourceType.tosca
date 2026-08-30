@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleAgeBucketMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleAgeBucketMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ScheduleAgeBucketMultipliers {
+    title = ScheduleAgeBucketMultipliers
+    description = ScheduleAgeBucketMultipliers
+    derivedFrom = Root
+    properties {
+        age_bucket {
+          type =  string
+          description = ""
+          enum = ["18-24", "25-34", "35-44", "45-49", "50-54", "55-64", "65+"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleAgeBucketMultipliers {
+    title = ScheduleAgeBucketMultipliers
+    description = ScheduleAgeBucketMultipliers
+    implements = openapi_server.resourceTypes.ScheduleAgeBucketMultipliers
+
+  }
+}

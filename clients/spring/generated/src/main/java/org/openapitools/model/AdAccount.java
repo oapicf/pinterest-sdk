@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -17,36 +18,45 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * AdAccount
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdAccount {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Country country;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> createdTime = JsonNullable.<Integer>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Currency currency;
 
   private String id;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AdAccountOwner owner;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<BusinessAccessRole> permissions = new ArrayList<>();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable String timeZone;
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> updatedTime = JsonNullable.<Integer>undefined();
 
   public AdAccount() {
@@ -76,6 +86,7 @@ public class AdAccount {
     return country;
   }
 
+  @JsonProperty("country")
   public void setCountry(@Nullable Country country) {
     this.country = country;
   }
@@ -116,6 +127,7 @@ public class AdAccount {
     return currency;
   }
 
+  @JsonProperty("currency")
   public void setCurrency(@Nullable Currency currency) {
     this.currency = currency;
   }
@@ -136,6 +148,7 @@ public class AdAccount {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
   }
@@ -156,6 +169,7 @@ public class AdAccount {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
@@ -176,6 +190,7 @@ public class AdAccount {
     return owner;
   }
 
+  @JsonProperty("owner")
   public void setOwner(@Nullable AdAccountOwner owner) {
     this.owner = owner;
   }
@@ -204,8 +219,30 @@ public class AdAccount {
     return permissions;
   }
 
+  @JsonProperty("permissions")
   public void setPermissions(List<BusinessAccessRole> permissions) {
     this.permissions = permissions;
+  }
+
+  public AdAccount timeZone(@Nullable String timeZone) {
+    this.timeZone = timeZone;
+    return this;
+  }
+
+  /**
+   * The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+   * @return timeZone
+   */
+  
+  @Schema(name = "time_zone", example = "America/Los_Angeles", description = "The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("time_zone")
+  public @Nullable String getTimeZone() {
+    return timeZone;
+  }
+
+  @JsonProperty("time_zone")
+  public void setTimeZone(@Nullable String timeZone) {
+    this.timeZone = timeZone;
   }
 
   public AdAccount updatedTime(Integer updatedTime) {
@@ -244,6 +281,7 @@ public class AdAccount {
         Objects.equals(this.name, adAccount.name) &&
         Objects.equals(this.owner, adAccount.owner) &&
         Objects.equals(this.permissions, adAccount.permissions) &&
+        Objects.equals(this.timeZone, adAccount.timeZone) &&
         equalsNullable(this.updatedTime, adAccount.updatedTime);
   }
 
@@ -253,7 +291,7 @@ public class AdAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, hashCodeNullable(createdTime), currency, id, name, owner, permissions, hashCodeNullable(updatedTime));
+    return Objects.hash(country, hashCodeNullable(createdTime), currency, id, name, owner, permissions, timeZone, hashCodeNullable(updatedTime));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -274,6 +312,7 @@ public class AdAccount {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
+    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -283,11 +322,8 @@ public class AdAccount {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

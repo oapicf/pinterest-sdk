@@ -7,7 +7,7 @@ API.Client.PinAnalyticsMetricsResponse = function() {}
 
 /**
  * Array with the requested daily metric records
- * @type {!Array<!API.Client.PinAnalyticsMetricsResponse_daily_metrics_inner>}
+ * @type {!Array<!API.Client.PinAnalyticsDailyMetrics>}
  * @export
  */
 API.Client.PinAnalyticsMetricsResponse.prototype.dailyMetrics;

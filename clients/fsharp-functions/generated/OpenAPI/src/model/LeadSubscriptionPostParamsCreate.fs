@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+open OpenAPI.Model.PartnerMetadata
 
 module LeadSubscriptionPostParamsCreate =
 
@@ -18,7 +18,7 @@ module LeadSubscriptionPostParamsCreate =
     [<JsonProperty(PropertyName = "partner_access_token")>]
     PartnerAccessToken : string;
     [<JsonProperty(PropertyName = "partner_metadata")>]
-    PartnerMetadata : LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
+    PartnerMetadata : PartnerMetadata;
     [<JsonProperty(PropertyName = "partner_refresh_token")>]
     PartnerRefreshToken : string;
   }

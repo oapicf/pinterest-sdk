@@ -30,7 +30,7 @@ class CatalogsRetailItemsBatch {
   ///
   String? batchId;
 
-  CatalogsType catalogType;
+  CatalogsRetailItemsBatchCatalogTypeEnum catalogType;
 
   /// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   DateTime? completedTime;
@@ -109,16 +109,15 @@ class CatalogsRetailItemsBatch {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailItemsBatch[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailItemsBatch[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsRetailItemsBatch[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsRetailItemsBatch[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'created_time'), 'Required key "CatalogsRetailItemsBatch[created_time]" is missing from JSON.');
         return true;
       }());
 
       return CatalogsRetailItemsBatch(
         batchId: mapValueOfType<String>(json, r'batch_id'),
-        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
+        catalogType: CatalogsRetailItemsBatchCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
         completedTime: mapDateTime(json, r'completed_time', r''),
         createdTime: mapDateTime(json, r'created_time', r''),
         items: ItemProcessingRecord.listFromJson(json[r'items']),
@@ -174,4 +173,80 @@ class CatalogsRetailItemsBatch {
     'created_time',
   };
 }
+
+
+enum CatalogsRetailItemsBatchCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailItemsBatchCatalogTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsRetailItemsBatchCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsRetailItemsBatchCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailItemsBatchCatalogTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsRetailItemsBatchCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsRetailItemsBatchCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsRetailItemsBatchCatalogTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsRetailItemsBatchCatalogTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsRetailItemsBatchCatalogTypeEnum] to String,
+/// and [decode] dynamic data back to [CatalogsRetailItemsBatchCatalogTypeEnum].
+class CatalogsRetailItemsBatchCatalogTypeEnumTypeTransformer {
+  factory CatalogsRetailItemsBatchCatalogTypeEnumTypeTransformer() => _instance ??= const CatalogsRetailItemsBatchCatalogTypeEnumTypeTransformer._();
+
+  const CatalogsRetailItemsBatchCatalogTypeEnumTypeTransformer._();
+
+  String encode(CatalogsRetailItemsBatchCatalogTypeEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsRetailItemsBatchCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsRetailItemsBatchCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailItemsBatchCatalogTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'RETAIL': return CatalogsRetailItemsBatchCatalogTypeEnum.RETAIL;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsRetailItemsBatchCatalogTypeEnumTypeTransformer? _instance;
+}
+
 

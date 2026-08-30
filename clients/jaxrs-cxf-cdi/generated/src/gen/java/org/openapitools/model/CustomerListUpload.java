@@ -11,6 +11,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ErrorDetail;
 import org.openapitools.model.RecordCounts;
 import org.openapitools.model.UserListOperationType;
+import org.openapitools.model.WorkloadState;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -36,38 +37,7 @@ public class CustomerListUpload   {
 
   private RecordCounts recordCounts;
 
-
-public enum StateEnum {
-
-    @JsonProperty("NOT_STARTED") NOT_STARTED(String.valueOf("NOT_STARTED")), @JsonProperty("RUNNING") RUNNING(String.valueOf("RUNNING")), @JsonProperty("PAUSED") PAUSED(String.valueOf("PAUSED")), @JsonProperty("SUCCEEDED") SUCCEEDED(String.valueOf("SUCCEEDED")), @JsonProperty("FAILED") FAILED(String.valueOf("FAILED"));
-
-
-    private String value;
-
-    StateEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static StateEnum fromValue(String value) {
-        for (StateEnum b : StateEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private StateEnum state;
+  private WorkloadState state;
 
   private Integer updatedTime;
 
@@ -170,7 +140,7 @@ public enum StateEnum {
   @ApiModelProperty(example = "1234567890", required = true, value = "Customer List Upload ID.")
   @JsonProperty("id")
   @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
+ @Pattern(regexp="^\\d+$") @Size(max=18)  public String getId() {
     return id;
   }
   public void setId(String id) {
@@ -198,6 +168,7 @@ public enum StateEnum {
 
 
   /**
+   * Record processing counts
    **/
   public CustomerListUpload recordCounts(RecordCounts recordCounts) {
     this.recordCounts = recordCounts;
@@ -205,7 +176,7 @@ public enum StateEnum {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Record processing counts")
   @JsonProperty("record_counts")
   public RecordCounts getRecordCounts() {
     return recordCounts;
@@ -216,21 +187,20 @@ public enum StateEnum {
 
 
   /**
-   * Workload processing state
    **/
-  public CustomerListUpload state(StateEnum state) {
+  public CustomerListUpload state(WorkloadState state) {
     this.state = state;
     return this;
   }
 
   
-  @ApiModelProperty(example = "RUNNING", required = true, value = "Workload processing state")
+  @ApiModelProperty(example = "RUNNING", required = true, value = "")
   @JsonProperty("state")
   @NotNull
-  public StateEnum getState() {
+  public WorkloadState getState() {
     return state;
   }
-  public void setState(StateEnum state) {
+  public void setState(WorkloadState state) {
     this.state = state;
   }
 
@@ -304,10 +274,7 @@ public enum StateEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

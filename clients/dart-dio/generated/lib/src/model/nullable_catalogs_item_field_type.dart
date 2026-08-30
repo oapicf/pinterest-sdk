@@ -106,19 +106,19 @@ class NullableCatalogsItemFieldType extends EnumClass {
   static const NullableCatalogsItemFieldType PRODUCT_TYPE = _$PRODUCT_TYPE;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'CUSTOM_LABEL_0')
-  static const NullableCatalogsItemFieldType cUSTOMLABEL0 = _$cUSTOMLABEL0;
+  static const NullableCatalogsItemFieldType CUSTOM_LABEL_0 = _$CUSTOM_LABEL_0;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'CUSTOM_LABEL_1')
-  static const NullableCatalogsItemFieldType cUSTOMLABEL1 = _$cUSTOMLABEL1;
+  static const NullableCatalogsItemFieldType CUSTOM_LABEL_1 = _$CUSTOM_LABEL_1;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'CUSTOM_LABEL_2')
-  static const NullableCatalogsItemFieldType cUSTOMLABEL2 = _$cUSTOMLABEL2;
+  static const NullableCatalogsItemFieldType CUSTOM_LABEL_2 = _$CUSTOM_LABEL_2;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'CUSTOM_LABEL_3')
-  static const NullableCatalogsItemFieldType cUSTOMLABEL3 = _$cUSTOMLABEL3;
+  static const NullableCatalogsItemFieldType CUSTOM_LABEL_3 = _$CUSTOM_LABEL_3;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'CUSTOM_LABEL_4')
-  static const NullableCatalogsItemFieldType cUSTOMLABEL4 = _$cUSTOMLABEL4;
+  static const NullableCatalogsItemFieldType CUSTOM_LABEL_4 = _$CUSTOM_LABEL_4;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'MATERIAL')
   static const NullableCatalogsItemFieldType MATERIAL = _$MATERIAL;
@@ -178,142 +178,142 @@ class NullableCatalogsItemFieldType extends EnumClass {
   static const NullableCatalogsItemFieldType SHIPPING_HEIGHT = _$SHIPPING_HEIGHT;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_0_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE0LINK = _$aDIMAGE0LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_0_LINK = _$AD_IMAGE_0_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_1_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE1LINK = _$aDIMAGE1LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_1_LINK = _$AD_IMAGE_1_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_2_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE2LINK = _$aDIMAGE2LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_2_LINK = _$AD_IMAGE_2_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_3_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE3LINK = _$aDIMAGE3LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_3_LINK = _$AD_IMAGE_3_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_4_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE4LINK = _$aDIMAGE4LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_4_LINK = _$AD_IMAGE_4_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_5_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE5LINK = _$aDIMAGE5LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_5_LINK = _$AD_IMAGE_5_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_6_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE6LINK = _$aDIMAGE6LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_6_LINK = _$AD_IMAGE_6_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_7_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE7LINK = _$aDIMAGE7LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_7_LINK = _$AD_IMAGE_7_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_8_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE8LINK = _$aDIMAGE8LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_8_LINK = _$AD_IMAGE_8_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_9_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE9LINK = _$aDIMAGE9LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_9_LINK = _$AD_IMAGE_9_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_10_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE10LINK = _$aDIMAGE10LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_10_LINK = _$AD_IMAGE_10_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_11_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE11LINK = _$aDIMAGE11LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_11_LINK = _$AD_IMAGE_11_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_12_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE12LINK = _$aDIMAGE12LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_12_LINK = _$AD_IMAGE_12_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_13_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE13LINK = _$aDIMAGE13LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_13_LINK = _$AD_IMAGE_13_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_14_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE14LINK = _$aDIMAGE14LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_14_LINK = _$AD_IMAGE_14_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_15_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE15LINK = _$aDIMAGE15LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_15_LINK = _$AD_IMAGE_15_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_16_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE16LINK = _$aDIMAGE16LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_16_LINK = _$AD_IMAGE_16_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_17_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE17LINK = _$aDIMAGE17LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_17_LINK = _$AD_IMAGE_17_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_18_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE18LINK = _$aDIMAGE18LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_18_LINK = _$AD_IMAGE_18_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_19_LINK')
-  static const NullableCatalogsItemFieldType aDIMAGE19LINK = _$aDIMAGE19LINK;
+  static const NullableCatalogsItemFieldType AD_IMAGE_19_LINK = _$AD_IMAGE_19_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_0_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE0TAG = _$aDIMAGE0TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_0_TAG = _$AD_IMAGE_0_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_1_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE1TAG = _$aDIMAGE1TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_1_TAG = _$AD_IMAGE_1_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_2_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE2TAG = _$aDIMAGE2TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_2_TAG = _$AD_IMAGE_2_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_3_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE3TAG = _$aDIMAGE3TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_3_TAG = _$AD_IMAGE_3_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_4_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE4TAG = _$aDIMAGE4TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_4_TAG = _$AD_IMAGE_4_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_5_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE5TAG = _$aDIMAGE5TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_5_TAG = _$AD_IMAGE_5_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_6_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE6TAG = _$aDIMAGE6TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_6_TAG = _$AD_IMAGE_6_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_7_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE7TAG = _$aDIMAGE7TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_7_TAG = _$AD_IMAGE_7_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_8_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE8TAG = _$aDIMAGE8TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_8_TAG = _$AD_IMAGE_8_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_9_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE9TAG = _$aDIMAGE9TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_9_TAG = _$AD_IMAGE_9_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_10_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE10TAG = _$aDIMAGE10TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_10_TAG = _$AD_IMAGE_10_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_11_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE11TAG = _$aDIMAGE11TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_11_TAG = _$AD_IMAGE_11_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_12_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE12TAG = _$aDIMAGE12TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_12_TAG = _$AD_IMAGE_12_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_13_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE13TAG = _$aDIMAGE13TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_13_TAG = _$AD_IMAGE_13_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_14_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE14TAG = _$aDIMAGE14TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_14_TAG = _$AD_IMAGE_14_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_15_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE15TAG = _$aDIMAGE15TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_15_TAG = _$AD_IMAGE_15_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_16_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE16TAG = _$aDIMAGE16TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_16_TAG = _$AD_IMAGE_16_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_17_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE17TAG = _$aDIMAGE17TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_17_TAG = _$AD_IMAGE_17_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_18_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE18TAG = _$aDIMAGE18TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_18_TAG = _$AD_IMAGE_18_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_19_TAG')
-  static const NullableCatalogsItemFieldType aDIMAGE19TAG = _$aDIMAGE19TAG;
+  static const NullableCatalogsItemFieldType AD_IMAGE_19_TAG = _$AD_IMAGE_19_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_0_LINK')
-  static const NullableCatalogsItemFieldType aDVIDEO0LINK = _$aDVIDEO0LINK;
+  static const NullableCatalogsItemFieldType AD_VIDEO_0_LINK = _$AD_VIDEO_0_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_1_LINK')
-  static const NullableCatalogsItemFieldType aDVIDEO1LINK = _$aDVIDEO1LINK;
+  static const NullableCatalogsItemFieldType AD_VIDEO_1_LINK = _$AD_VIDEO_1_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_2_LINK')
-  static const NullableCatalogsItemFieldType aDVIDEO2LINK = _$aDVIDEO2LINK;
+  static const NullableCatalogsItemFieldType AD_VIDEO_2_LINK = _$AD_VIDEO_2_LINK;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_0_TAG')
-  static const NullableCatalogsItemFieldType aDVIDEO0TAG = _$aDVIDEO0TAG;
+  static const NullableCatalogsItemFieldType AD_VIDEO_0_TAG = _$AD_VIDEO_0_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_1_TAG')
-  static const NullableCatalogsItemFieldType aDVIDEO1TAG = _$aDVIDEO1TAG;
+  static const NullableCatalogsItemFieldType AD_VIDEO_1_TAG = _$AD_VIDEO_1_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_2_TAG')
-  static const NullableCatalogsItemFieldType aDVIDEO2TAG = _$aDVIDEO2TAG;
+  static const NullableCatalogsItemFieldType AD_VIDEO_2_TAG = _$AD_VIDEO_2_TAG;
   /// Product item fields
   @BuiltValueEnumConst(wireName: r'INSTALLMENT_PRICE')
   static const NullableCatalogsItemFieldType INSTALLMENT_PRICE = _$INSTALLMENT_PRICE;

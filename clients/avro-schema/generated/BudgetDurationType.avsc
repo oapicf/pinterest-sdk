@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Budget duration type for delivery estimates.",
+  "name": "BudgetDurationType",
+  "symbols": [
+    "FIXED_DAILY",
+    "FLEXIBLE_DAILY",
+    "LIFETIME"
+  ]
+}

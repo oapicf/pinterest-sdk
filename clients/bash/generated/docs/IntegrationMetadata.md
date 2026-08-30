@@ -4,19 +4,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additionalUnderscoreidUnderscore1** | **string** |  | [optional] [default to null]
-**connectedUnderscoreadvertiserUnderscoreid** | **string** |  | [optional] [readonly] [default to null]
+**connectedUnderscoreadvertiserUnderscoreid** | **string** |  | [optional] [default to null]
 **connectedUnderscorelbaUnderscoreid** | **string** |  | [optional] [default to null]
 **connectedUnderscoremerchantUnderscoreid** | **string** |  | [optional] [default to null]
 **connectedUnderscoretagUnderscoreid** | **string** |  | [optional] [default to null]
 **connectedUnderscoreuserUnderscoreid** | **string** |  | [optional] [readonly] [default to null]
-**createdUnderscoretimestamp** | **integer** |  | [optional] [default to null]
+**createdUnderscoretimestamp** | **integer** |  | [optional] [readonly] [default to null]
 **externalUnderscorebusinessUnderscoreid** | **string** |  | [optional] [default to null]
-**id** | **string** |  | [optional] [default to null]
+**id** | **string** |  | [optional] [readonly] [default to null]
 **partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry** | **integer** |  | [optional] [default to null]
 **partnerUnderscoremetadata** | **string** |  | [optional] [default to null]
 **partnerUnderscorerefreshUnderscoretokenUnderscoreexpiry** | **integer** |  | [optional] [default to null]
 **scopes** | **string** |  | [optional] [default to null]
-**updatedUnderscoretimestamp** | **integer** |  | [optional] [default to null]
+**updatedUnderscoretimestamp** | **integer** |  | [optional] [readonly] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

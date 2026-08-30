@@ -14,6 +14,6 @@ module ConversionAttributionWindowDays =
   let _14Enum = "14"
   let _30Enum = "30"
   let _60Enum = "60"
-  type ConversionAttributionWindowDays = int
+  type ConversionAttributionWindowDays = 
 
   //#endregion

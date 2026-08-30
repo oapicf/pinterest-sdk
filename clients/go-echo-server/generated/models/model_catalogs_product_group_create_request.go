@@ -6,7 +6,7 @@ type CatalogsProductGroupCreateRequest struct {
 	Description *string `json:"description,omitempty"`
 
 	// Catalog Feed id pertaining to the catalog product group.
-	FeedId string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+	FeedId string `json:"feed_id" validate:"regexp=^\\d+$"`
 
 	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
 

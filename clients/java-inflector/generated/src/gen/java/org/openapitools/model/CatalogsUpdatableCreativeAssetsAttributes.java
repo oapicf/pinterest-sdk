@@ -11,7 +11,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsUpdatableCreativeAssetsAttributes   {
   @JsonProperty("android_deep_link")
   private String androidDeepLink;
@@ -248,7 +248,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes   {
   }
 
   /**
-   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
    **/
   public CatalogsUpdatableCreativeAssetsAttributes visibility(String visibility) {
     this.visibility = visibility;
@@ -256,7 +256,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes   {
   }
 
   
-  @ApiModelProperty(value = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.")
+  @ApiModelProperty(value = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.")
   @JsonProperty("visibility")
   public String getVisibility() {
     return visibility;
@@ -320,10 +320,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

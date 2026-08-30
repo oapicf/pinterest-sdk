@@ -1,0 +1,12 @@
+# CatalogsRetailProduct
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**catalog_type** | [***models::CatalogsRetailAvailableFilterValuesCatalogType**](CatalogsRetailAvailableFilterValues_catalog_type.md) |  | 
+**metadata** | [***models::CatalogsRetailProductMetadata**](CatalogsRetailProductMetadata.md) |  | 
+**pin** | [***models::Pin**](Pin.md) |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

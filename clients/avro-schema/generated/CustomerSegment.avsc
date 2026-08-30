@@ -1,0 +1,52 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomerSegment",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "The ID of the ad account that this customer segment belongs to.",
+      "default": null
+    },
+    {
+      "name": "audience_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Audience IDs included in the customer segment."
+    },
+    {
+      "name": "created_time",
+      "type": ["null", "int"],
+      "doc": "Customer segment created time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Customer segment ID.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Customer segment name."
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.TargetingTemplateStatus"],
+      "doc": "Indicates whether the customer segment is active or deleted.",
+      "default": null
+    },
+    {
+      "name": "updated_time",
+      "type": ["null", "int"],
+      "doc": "Customer segment updated time. Unix timestamp in seconds.",
+      "default": null
+    }
+  ]
+
+}

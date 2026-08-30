@@ -5,6 +5,11 @@
   "name": "TrendingPin",
   "fields": [
     {
+      "name": "color",
+      "type": "string",
+      "doc": "Dominant color of the pin image in hex format"
+    },
+    {
       "name": "height",
       "type": "int",
       "doc": "Height of the pin image in pixels"
@@ -18,6 +23,12 @@
       "name": "src",
       "type": "string",
       "doc": "URL of the pin image"
+    },
+    {
+      "name": "vertical_offset",
+      "type": ["null", "double"],
+      "doc": "The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.",
+      "default": null
     },
     {
       "name": "width",

@@ -7,7 +7,7 @@ This represents a mapping from placement to a bid price adjustment.  Multiplier 
 
 Name | Type
 ------------ | -------------
-`pLACEMENT` | string
+`pLACEMENT` | [PlacementType](PlacementType.md)
 
 ## Example
 

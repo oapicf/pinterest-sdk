@@ -7,7 +7,7 @@
 #' @title CatalogsRetailProductMetadata
 #' @description CatalogsRetailProductMetadata Class
 #' @format An \code{R6Class} generator object
-#' @field availability  \link{NonNullableProductAvailabilityType}
+#' @field availability  \link{ProductAvailability}
 #' @field currency  \link{NonNullableCatalogsCurrency}
 #' @field item_group_id The parent ID of the product. character
 #' @field item_id The user-created unique ID that represents the product. character
@@ -104,11 +104,11 @@ CatalogsRetailProductMetadata <- R6::R6Class(
       CatalogsRetailProductMetadataObject <- list()
       if (!is.null(self$`availability`)) {
         CatalogsRetailProductMetadataObject[["availability"]] <-
-          self$`availability`$toSimpleType()
+          self$extractSimpleType(self$`availability`)
       }
       if (!is.null(self$`currency`)) {
         CatalogsRetailProductMetadataObject[["currency"]] <-
-          self$`currency`$toSimpleType()
+          self$extractSimpleType(self$`currency`)
       }
       if (!is.null(self$`item_group_id`)) {
         CatalogsRetailProductMetadataObject[["item_group_id"]] <-
@@ -129,6 +129,29 @@ CatalogsRetailProductMetadata <- R6::R6Class(
       return(CatalogsRetailProductMetadataObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailProductMetadata
     #'
@@ -137,7 +160,7 @@ CatalogsRetailProductMetadata <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`availability`)) {
-        `availability_object` <- NonNullableProductAvailabilityType$new()
+        `availability_object` <- ProductAvailability$new()
         `availability_object`$fromJSON(jsonlite::toJSON(this_object$`availability`, auto_unbox = TRUE, digits = NA))
         self$`availability` <- `availability_object`
       }
@@ -179,7 +202,7 @@ CatalogsRetailProductMetadata <- R6::R6Class(
     #' @return the instance of CatalogsRetailProductMetadata
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`availability` <- NonNullableProductAvailabilityType$new()$fromJSON(jsonlite::toJSON(this_object$`availability`, auto_unbox = TRUE, digits = NA))
+      self$`availability` <- ProductAvailability$new()$fromJSON(jsonlite::toJSON(this_object$`availability`, auto_unbox = TRUE, digits = NA))
       self$`currency` <- NonNullableCatalogsCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
       self$`item_group_id` <- this_object$`item_group_id`
       self$`item_id` <- this_object$`item_id`

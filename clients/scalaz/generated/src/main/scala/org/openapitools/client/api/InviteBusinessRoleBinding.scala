@@ -12,17 +12,17 @@ import org.joda.time.DateTime
 import InviteBusinessRoleBinding._
 
 case class InviteBusinessRoleBinding (
-  /* Unique identifier of the invite/request. */
-  id: Option[String],
-inviteData: Option[BaseInviteDataResponseInviteData],
-/* Indicates whether the invite/request was received. */
-  isReceivedInvite: Option[Boolean],
-/* Metadata for the user that updated the invite/request. */
-  user: Option[Any],
-/* Unique identifier for the business that created the invite/request. */
+  /* Unique identifier for the business that created the invite/request. */
   createdByBusinessId: Option[String],
 /* Unique identifier for the user that created the invite/request. */
-  createdByUserId: Option[String])
+  createdByUserId: Option[String],
+/* Unique identifier of the invite/request. */
+  id: Option[String],
+inviteData: Option[InviteDataResponse],
+/* Indicates whether the invite/request was received. */
+  isReceivedInvite: Option[Boolean],
+/* Metadata for the member/partner that was sent the invite/request. */
+  user: Option[BusinessAccessUserSummary])
 
 object InviteBusinessRoleBinding {
   import DateTimeCodecs._

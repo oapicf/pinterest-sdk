@@ -114,6 +114,7 @@ public enum CatalogTypeEnum {
 
 
   /**
+   * Name of catalog product group
    **/
   public CatalogsHotelProductGroupUpdateRequest name(String name) {
     this.name = name;
@@ -121,7 +122,7 @@ public enum CatalogTypeEnum {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -170,10 +171,7 @@ public enum CatalogTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

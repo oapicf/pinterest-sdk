@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  LeadSubscriptionPostParamsCreateAllOfPartnerMetadata = openapi_server.resourceTypes.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+  PartnerMetadata = openapi_server.resourceTypes.PartnerMetadata
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -33,8 +33,8 @@ resourceTypes {
           optional = false
         }
         partner_metadata {
-          type = LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
-          description = ""
+          type = PartnerMetadata
+          description = "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param."
           optional = false
         }
         partner_refresh_token {

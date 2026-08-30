@@ -20,11 +20,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## asset_group_create
 
-> <CreateAssetGroupResponse> asset_group_create(business_id, create_asset_group_body)
+> <AssetGroupInput> asset_group_create(business_id, asset_group_input_create)
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Examples
 
@@ -38,12 +38,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-create_asset_group_body = PinterestSdkClient::CreateAssetGroupBody.new({asset_group_description: 'Asset groups that has ad accounts shared in Canada', asset_group_name: 'Canada Ad Accounts', asset_group_types: ["BRAND", "LOCATION_OR_LANGUAGE", "PRODUCT_LINE", "OTHER"]}) # CreateAssetGroupBody | 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+asset_group_input_create = PinterestSdkClient::AssetGroupInputCreate.new({asset_group_description: 'Asset groups that has ad accounts shared in Canada', asset_group_name: 'Canada Ad Accounts', asset_group_types: ["BRAND", "LOCATION_OR_LANGUAGE", "PRODUCT_LINE", "OTHER"]}) # AssetGroupInputCreate | 
 
 begin
   # Create a new asset group.
-  result = api_instance.asset_group_create(business_id, create_asset_group_body)
+  result = api_instance.asset_group_create(business_id, asset_group_input_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->asset_group_create: #{e}"
@@ -54,15 +54,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CreateAssetGroupResponse>, Integer, Hash)> asset_group_create_with_http_info(business_id, create_asset_group_body)
+> <Array(<AssetGroupInput>, Integer, Hash)> asset_group_create_with_http_info(business_id, asset_group_input_create)
 
 ```ruby
 begin
   # Create a new asset group.
-  data, status_code, headers = api_instance.asset_group_create_with_http_info(business_id, create_asset_group_body)
+  data, status_code, headers = api_instance.asset_group_create_with_http_info(business_id, asset_group_input_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CreateAssetGroupResponse>
+  p data # => <AssetGroupInput>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->asset_group_create_with_http_info: #{e}"
 end
@@ -73,11 +73,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **create_asset_group_body** | [**CreateAssetGroupBody**](CreateAssetGroupBody.md) |  |  |
+| **asset_group_input_create** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md) |  |  |
 
 ### Return type
 
-[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md)
+[**AssetGroupInput**](AssetGroupInput.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ end
 
 ## asset_group_delete
 
-> <DeleteAssetGroupResponse> asset_group_delete(business_id, delete_asset_group_body)
+> <AssetGroupDeletion> asset_group_delete(business_id, asset_group_deletion_delete)
 
 Delete asset groups.
 
@@ -109,12 +109,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-delete_asset_group_body = PinterestSdkClient::DeleteAssetGroupBody.new({asset_groups_to_delete: ["666791336903426391", "666791336903426392"]}) # DeleteAssetGroupBody | 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+asset_group_deletion_delete = PinterestSdkClient::AssetGroupDeletionDelete.new({asset_groups_to_delete: ['asset_groups_to_delete_example']}) # AssetGroupDeletionDelete | 
 
 begin
   # Delete asset groups.
-  result = api_instance.asset_group_delete(business_id, delete_asset_group_body)
+  result = api_instance.asset_group_delete(business_id, asset_group_deletion_delete)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->asset_group_delete: #{e}"
@@ -125,15 +125,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteAssetGroupResponse>, Integer, Hash)> asset_group_delete_with_http_info(business_id, delete_asset_group_body)
+> <Array(<AssetGroupDeletion>, Integer, Hash)> asset_group_delete_with_http_info(business_id, asset_group_deletion_delete)
 
 ```ruby
 begin
   # Delete asset groups.
-  data, status_code, headers = api_instance.asset_group_delete_with_http_info(business_id, delete_asset_group_body)
+  data, status_code, headers = api_instance.asset_group_delete_with_http_info(business_id, asset_group_deletion_delete)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeleteAssetGroupResponse>
+  p data # => <AssetGroupDeletion>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->asset_group_delete_with_http_info: #{e}"
 end
@@ -144,11 +144,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **delete_asset_group_body** | [**DeleteAssetGroupBody**](DeleteAssetGroupBody.md) |  |  |
+| **asset_group_deletion_delete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md) |  |  |
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md)
+[**AssetGroupDeletion**](AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ end
 
 ## asset_group_update
 
-> <UpdateAssetGroupResponse> asset_group_update(business_id, update_asset_group_body)
+> <AssetGroupModification> asset_group_update(business_id, asset_group_modification_read_or_update)
 
 Update asset groups.
 
@@ -180,12 +180,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-update_asset_group_body = PinterestSdkClient::UpdateAssetGroupBody.new # UpdateAssetGroupBody | 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+asset_group_modification_read_or_update = PinterestSdkClient::AssetGroupModificationReadOrUpdate.new # AssetGroupModificationReadOrUpdate | 
 
 begin
   # Update asset groups.
-  result = api_instance.asset_group_update(business_id, update_asset_group_body)
+  result = api_instance.asset_group_update(business_id, asset_group_modification_read_or_update)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->asset_group_update: #{e}"
@@ -196,15 +196,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UpdateAssetGroupResponse>, Integer, Hash)> asset_group_update_with_http_info(business_id, update_asset_group_body)
+> <Array(<AssetGroupModification>, Integer, Hash)> asset_group_update_with_http_info(business_id, asset_group_modification_read_or_update)
 
 ```ruby
 begin
   # Update asset groups.
-  data, status_code, headers = api_instance.asset_group_update_with_http_info(business_id, update_asset_group_body)
+  data, status_code, headers = api_instance.asset_group_update_with_http_info(business_id, asset_group_modification_read_or_update)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UpdateAssetGroupResponse>
+  p data # => <AssetGroupModification>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->asset_group_update_with_http_info: #{e}"
 end
@@ -215,11 +215,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **update_asset_group_body** | [**UpdateAssetGroupBody**](UpdateAssetGroupBody.md) |  |  |
+| **asset_group_modification_read_or_update** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md) |  |  |
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md)
+[**AssetGroupModification**](AssetGroupModification.md)
 
 ### Authorization
 
@@ -251,13 +251,13 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-asset_id = '729090764583391194' # String | Unique identifier of a business asset.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+asset_id = 'asset_id_example' # String | Unique identifier of a business asset.
 opts = {
+  start_index: 56, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
   fetch_system_users: true, # Boolean | Fetches system users if True. Fetches regular user employees if False.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  start_index: 0 # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -293,10 +293,10 @@ end
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
 | **asset_id** | **String** | Unique identifier of a business asset. |  |
+| **start_index** | **Integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional][default to 0] |
 | **fetch_system_users** | **Boolean** | Fetches system users if True. Fetches regular user employees if False. | [optional][default to false] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
-| **start_index** | **Integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional][default to 0] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -314,7 +314,7 @@ end
 
 ## business_asset_partners_get
 
-> <BusinessAssetPartnersGet200Response> business_asset_partners_get(business_id, asset_id, opts)
+> <BusinessAssetMembersGet200Response> business_asset_partners_get(business_id, asset_id, opts)
 
 Get partners with access to asset
 
@@ -332,12 +332,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-asset_id = '729090764583391194' # String | Unique identifier of a business asset.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+asset_id = 'asset_id_example' # String | Unique identifier of a business asset.
 opts = {
-  start_index: 0, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+  start_index: 56, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -353,7 +353,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BusinessAssetPartnersGet200Response>, Integer, Hash)> business_asset_partners_get_with_http_info(business_id, asset_id, opts)
+> <Array(<BusinessAssetMembersGet200Response>, Integer, Hash)> business_asset_partners_get_with_http_info(business_id, asset_id, opts)
 
 ```ruby
 begin
@@ -361,7 +361,7 @@ begin
   data, status_code, headers = api_instance.business_asset_partners_get_with_http_info(business_id, asset_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BusinessAssetPartnersGet200Response>
+  p data # => <BusinessAssetMembersGet200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->business_asset_partners_get_with_http_info: #{e}"
 end
@@ -375,11 +375,11 @@ end
 | **asset_id** | **String** | Unique identifier of a business asset. |  |
 | **start_index** | **Integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional][default to 0] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
-[**BusinessAssetPartnersGet200Response**](BusinessAssetPartnersGet200Response.md)
+[**BusinessAssetMembersGet200Response**](BusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -411,15 +411,15 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
 opts = {
   permissions: [PinterestSdkClient::PermissionsWithOwner::ADMIN], # Array<PermissionsWithOwner> | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.
-  child_asset_id: '549764894835', # String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
-  asset_group_id: '7078106104032', # String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
+  child_asset_id: 'child_asset_id_example', # String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
+  asset_group_id: 'asset_group_id_example', # String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
   asset_type: 'AD_ACCOUNT', # String | A resource type to filter the assets by. Only assets of the specified type will be returned.
-  start_index: 0, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+  start_index: 56, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -460,7 +460,7 @@ end
 | **asset_type** | **String** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional][default to &#39;AD_ACCOUNT&#39;] |
 | **start_index** | **Integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional][default to 0] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -478,7 +478,7 @@ end
 
 ## business_member_assets_get
 
-> <BusinessMemberAssetsGet200Response> business_member_assets_get(business_id, member_id, opts)
+> <BusinessMemberAssetsGetResponse> business_member_assets_get(business_id, member_id, opts)
 
 Get assets assigned to a member
 
@@ -496,13 +496,19 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-member_id = '729090764583391194' # String | The member id to fetch assets for.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+member_id = 'member_id_example' # String | The member id to fetch assets for.
 opts = {
   asset_type: 'AD_ACCOUNT', # String | A resource type to filter the assets by. Only assets of the specified type will be returned.
-  start_index: 0, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+  start_index: 56, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+  sort_by: PinterestSdkClient::AssetSortBy::NAME, # AssetSortBy | The field to sort member assets by
+  sort_ascending: true, # Boolean | Sort assets in ascending order
+  search_by: PinterestSdkClient::AssetSearchBy::NAME, # AssetSearchBy | The field to search member assets by
+  search_value: 'search_value_example', # String | The value to search for
+  asset_permission_type: PinterestSdkClient::AssetPermissionType::AGGREGATED_PERMISSION, # AssetPermissionType | The type of asset permission to filter by
+  ad_account_statuses: [PinterestSdkClient::NonDraftEntityStatus::ACTIVE], # Array<NonDraftEntityStatus> | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -518,7 +524,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BusinessMemberAssetsGet200Response>, Integer, Hash)> business_member_assets_get_with_http_info(business_id, member_id, opts)
+> <Array(<BusinessMemberAssetsGetResponse>, Integer, Hash)> business_member_assets_get_with_http_info(business_id, member_id, opts)
 
 ```ruby
 begin
@@ -526,7 +532,7 @@ begin
   data, status_code, headers = api_instance.business_member_assets_get_with_http_info(business_id, member_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <BusinessMemberAssetsGet200Response>
+  p data # => <BusinessMemberAssetsGetResponse>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->business_member_assets_get_with_http_info: #{e}"
 end
@@ -540,12 +546,18 @@ end
 | **member_id** | **String** | The member id to fetch assets for. |  |
 | **asset_type** | **String** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional][default to &#39;AD_ACCOUNT&#39;] |
 | **start_index** | **Integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional][default to 0] |
+| **sort_by** | [**AssetSortBy**](.md) | The field to sort member assets by | [optional] |
+| **sort_ascending** | **Boolean** | Sort assets in ascending order | [optional][default to true] |
+| **search_by** | [**AssetSearchBy**](.md) | The field to search member assets by | [optional] |
+| **search_value** | **String** | The value to search for | [optional] |
+| **asset_permission_type** | [**AssetPermissionType**](.md) | The type of asset permission to filter by | [optional] |
+| **ad_account_statuses** | [**Array&lt;NonDraftEntityStatus&gt;**](NonDraftEntityStatus.md) | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
-[**BusinessMemberAssetsGet200Response**](BusinessMemberAssetsGet200Response.md)
+[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -559,7 +571,7 @@ end
 
 ## business_members_asset_access_delete
 
-> <DeleteMemberAccessResultsResponseArray> business_members_asset_access_delete(business_id, business_members_asset_access_delete_request)
+> <DeleteMemberAccessResultsResponseArray> business_members_asset_access_delete(business_id, business_members_asset_access_delete_body)
 
 Delete member access to asset
 
@@ -577,12 +589,12 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-business_members_asset_access_delete_request = PinterestSdkClient::BusinessMembersAssetAccessDeleteRequest.new({accesses: [PinterestSdkClient::BusinessMembersAssetAccessDeleteRequestAccessesInner.new({asset_id: '549755885175', member_id: '140943737684417'})]}) # BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+business_members_asset_access_delete_body = PinterestSdkClient::BusinessMembersAssetAccessDeleteBody.new({accesses: [PinterestSdkClient::DeleteMemberAssetAccessItem.new({asset_id: 'asset_id_example', member_id: 'member_id_example'})]}) # BusinessMembersAssetAccessDeleteBody | 
 
 begin
   # Delete member access to asset
-  result = api_instance.business_members_asset_access_delete(business_id, business_members_asset_access_delete_request)
+  result = api_instance.business_members_asset_access_delete(business_id, business_members_asset_access_delete_body)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->business_members_asset_access_delete: #{e}"
@@ -593,12 +605,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteMemberAccessResultsResponseArray>, Integer, Hash)> business_members_asset_access_delete_with_http_info(business_id, business_members_asset_access_delete_request)
+> <Array(<DeleteMemberAccessResultsResponseArray>, Integer, Hash)> business_members_asset_access_delete_with_http_info(business_id, business_members_asset_access_delete_body)
 
 ```ruby
 begin
   # Delete member access to asset
-  data, status_code, headers = api_instance.business_members_asset_access_delete_with_http_info(business_id, business_members_asset_access_delete_request)
+  data, status_code, headers = api_instance.business_members_asset_access_delete_with_http_info(business_id, business_members_asset_access_delete_body)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <DeleteMemberAccessResultsResponseArray>
@@ -612,7 +624,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **business_members_asset_access_delete_request** | [**BusinessMembersAssetAccessDeleteRequest**](BusinessMembersAssetAccessDeleteRequest.md) | List member assset permissions to delete. |  |
+| **business_members_asset_access_delete_body** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md) |  |  |
 
 ### Return type
 
@@ -634,7 +646,7 @@ end
 
 Assign/Update member asset permissions
 
-Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
 ### Examples
 
@@ -648,8 +660,8 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-update_member_asset_access_body = PinterestSdkClient::UpdateMemberAssetAccessBody.new({accesses: [PinterestSdkClient::UpdateMemberAssetAccessBodyAccessesInner.new({asset_id: '549755885175', member_id: '140943737684417', permissions: ["ANALYST", "ADMIN"]})]}) # UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+update_member_asset_access_body = PinterestSdkClient::UpdateMemberAssetAccessBody.new({accesses: [PinterestSdkClient::UpdateMemberAssetAccessItem.new({asset_id: 'asset_id_example', member_id: 'member_id_example', permissions: [PinterestSdkClient::Permissions::ADMIN]})]}) # UpdateMemberAssetAccessBody | 
 
 begin
   # Assign/Update member asset permissions
@@ -683,7 +695,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **update_member_asset_access_body** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md) | List of member asset permissions to create or update. |  |
+| **update_member_asset_access_body** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md) |  |  |
 
 ### Return type
 
@@ -719,14 +731,18 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-partner_id = '729090764583391194' # String | The partner id to be bound to the Business
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+partner_id = 'partner_id_example' # String | The partner id to be bound to the Business
 opts = {
-  partner_type: PinterestSdkClient::PartnerType::INTERNAL, # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  partner_type: 'INTERNAL', # String | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
   asset_type: 'AD_ACCOUNT', # String | A resource type to filter the assets by. Only assets of the specified type will be returned.
-  start_index: 0, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  bookmark: 'bookmark_example' # String | Cursor used to fetch the next page of items
+  start_index: 56, # Integer | An index to start fetching the results from. Only the results starting from this index will be returned.
+  sort_by: PinterestSdkClient::AssetSortBy::NAME, # AssetSortBy | The field to sort member assets by
+  sort_ascending: true, # Boolean | Sort assets in ascending order
+  search_by: PinterestSdkClient::AssetSearchBy::NAME, # AssetSearchBy | The field to search member assets by
+  search_value: 'search_value_example', # String | The value to search for
+  bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -762,11 +778,15 @@ end
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
 | **partner_id** | **String** | The partner id to be bound to the Business |  |
-| **partner_type** | [**PartnerType**](.md) | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] |
+| **partner_type** | **String** | Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional][default to &#39;INTERNAL&#39;] |
 | **asset_type** | **String** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional][default to &#39;AD_ACCOUNT&#39;] |
 | **start_index** | **Integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional][default to 0] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **sort_by** | [**AssetSortBy**](.md) | The field to sort member assets by | [optional] |
+| **sort_ascending** | **Boolean** | Sort assets in ascending order | [optional][default to true] |
+| **search_by** | [**AssetSearchBy**](.md) | The field to search member assets by | [optional] |
+| **search_value** | **String** | The value to search for | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -784,7 +804,7 @@ end
 
 ## delete_partner_asset_access_handler_impl
 
-> <DeletePartnerAssetsResultsResponseArray> delete_partner_asset_access_handler_impl(business_id, delete_partner_asset_access_body)
+> <DeletePartnerAssetAccessResultsResponseArray> delete_partner_asset_access_handler_impl(business_id, delete_partner_asset_access_body)
 
 Delete partner access to asset
 
@@ -802,8 +822,8 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-delete_partner_asset_access_body = PinterestSdkClient::DeletePartnerAssetAccessBody.new({accesses: [PinterestSdkClient::DeletePartnerAssetAccessBodyAccessesInner.new({asset_id: '549755885175', partner_id: '1234567890123'})]}) # DeletePartnerAssetAccessBody | 
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+delete_partner_asset_access_body = PinterestSdkClient::DeletePartnerAssetAccessBody.new({accesses: [PinterestSdkClient::DeletePartnerAssetAccessItem.new({asset_id: 'asset_id_example', partner_id: 'partner_id_example'})]}) # DeletePartnerAssetAccessBody | 
 
 begin
   # Delete partner access to asset
@@ -818,7 +838,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeletePartnerAssetsResultsResponseArray>, Integer, Hash)> delete_partner_asset_access_handler_impl_with_http_info(business_id, delete_partner_asset_access_body)
+> <Array(<DeletePartnerAssetAccessResultsResponseArray>, Integer, Hash)> delete_partner_asset_access_handler_impl_with_http_info(business_id, delete_partner_asset_access_body)
 
 ```ruby
 begin
@@ -826,7 +846,7 @@ begin
   data, status_code, headers = api_instance.delete_partner_asset_access_handler_impl_with_http_info(business_id, delete_partner_asset_access_body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeletePartnerAssetsResultsResponseArray>
+  p data # => <DeletePartnerAssetAccessResultsResponseArray>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling BusinessAccessAssetsApi->delete_partner_asset_access_handler_impl_with_http_info: #{e}"
 end
@@ -841,7 +861,7 @@ end
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md)
+[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -873,8 +893,8 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::BusinessAccessAssetsApi.new
-business_id = '729090764583391194' # String | Unique identifier of the requesting business.
-update_partner_asset_access_body = PinterestSdkClient::UpdatePartnerAssetAccessBody.new({accesses: [PinterestSdkClient::UpdatePartnerAssetAccessBodyAccessesInner.new({asset_id: '549755885175', partner_id: '1234567890123', permissions: ["ANALYST", "ADMIN"]})]}) # UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+business_id = 'business_id_example' # String | Unique identifier of the requesting business.
+update_partner_asset_access_body = PinterestSdkClient::UpdatePartnerAssetAccessBody.new({accesses: [PinterestSdkClient::UpdatePartnerAssetAccessItem.new({asset_id: 'asset_id_example', partner_id: 'partner_id_example', permissions: [PinterestSdkClient::Permissions::ADMIN]})]}) # UpdatePartnerAssetAccessBody | 
 
 begin
   # Assign/Update partner asset permissions
@@ -908,7 +928,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
-| **update_partner_asset_access_body** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md) | A list of assets and permissions to assign to your partners. |  |
+| **update_partner_asset_access_body** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md) |  |  |
 
 ### Return type
 

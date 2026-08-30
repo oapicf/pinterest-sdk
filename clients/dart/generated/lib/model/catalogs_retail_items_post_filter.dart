@@ -70,10 +70,10 @@ class CatalogsRetailItemsPostFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailItemsPostFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailItemsPostFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsRetailItemsPostFilter[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsRetailItemsPostFilter[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'item_ids'), 'Required key "CatalogsRetailItemsPostFilter[item_ids]" is missing from JSON.');
+        assert(json[r'item_ids'] != null, 'Required key "CatalogsRetailItemsPostFilter[item_ids]" has a null value in JSON.');
         return true;
       }());
 
@@ -136,27 +136,28 @@ class CatalogsRetailItemsPostFilter {
 }
 
 
-class CatalogsRetailItemsPostFilterCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailItemsPostFilterCatalogTypeEnum._(this.value);
+enum CatalogsRetailItemsPostFilterCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailItemsPostFilterCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const RETAIL = CatalogsRetailItemsPostFilterCatalogTypeEnum._(r'RETAIL');
-
-  /// List of all possible values in this [enum][CatalogsRetailItemsPostFilterCatalogTypeEnum].
-  static const values = <CatalogsRetailItemsPostFilterCatalogTypeEnum>[
-    RETAIL,
-  ];
-
+  /// Returns the instance of [CatalogsRetailItemsPostFilterCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsRetailItemsPostFilterCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailItemsPostFilterCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsRetailItemsPostFilterCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsRetailItemsPostFilterCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsRetailItemsPostFilterCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -178,9 +179,10 @@ class CatalogsRetailItemsPostFilterCatalogTypeEnumTypeTransformer {
 
   const CatalogsRetailItemsPostFilterCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsRetailItemsPostFilterCatalogTypeEnum data) => data.value;
+  String encode(CatalogsRetailItemsPostFilterCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsRetailItemsPostFilterCatalogTypeEnum.
+  /// Returns the instance of [CatalogsRetailItemsPostFilterCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -189,6 +191,9 @@ class CatalogsRetailItemsPostFilterCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsRetailItemsPostFilterCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailItemsPostFilterCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'RETAIL': return CatalogsRetailItemsPostFilterCatalogTypeEnum.RETAIL;
@@ -201,7 +206,7 @@ class CatalogsRetailItemsPostFilterCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsRetailItemsPostFilterCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsRetailItemsPostFilterCatalogTypeEnumTypeTransformer? _instance;
 }
 

@@ -48,11 +48,11 @@ static targeting_spec_operation_shopping_retargeting_t *targeting_spec_operation
     if (!targeting_spec_operation_shopping_retargeting_local_var) {
         return NULL;
     }
+    memset(targeting_spec_operation_shopping_retargeting_local_var, 0, sizeof(targeting_spec_operation_shopping_retargeting_t));
+    targeting_spec_operation_shopping_retargeting_local_var->_library_owned = 1;
     targeting_spec_operation_shopping_retargeting_local_var->field = field;
     targeting_spec_operation_shopping_retargeting_local_var->operation = operation;
     targeting_spec_operation_shopping_retargeting_local_var->values = values;
-
-    targeting_spec_operation_shopping_retargeting_local_var->_library_owned = 1;
     return targeting_spec_operation_shopping_retargeting_local_var;
 }
 
@@ -61,11 +61,14 @@ __attribute__((deprecated)) targeting_spec_operation_shopping_retargeting_t *tar
     pinterest_rest_api_targeting_spec_operation_shopping_retargeting_OPERATION_e operation,
     list_t *values
     ) {
-    return targeting_spec_operation_shopping_retargeting_create_internal (
+    targeting_spec_operation_shopping_retargeting_t *result = targeting_spec_operation_shopping_retargeting_create_internal (
         field,
         operation,
         values
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void targeting_spec_operation_shopping_retargeting_free(targeting_spec_operation_shopping_retargeting_t *targeting_spec_operation_shopping_retargeting) {
@@ -207,11 +210,16 @@ targeting_spec_operation_shopping_retargeting_t *targeting_spec_operation_shoppi
     }
 
 
+
     targeting_spec_operation_shopping_retargeting_local_var = targeting_spec_operation_shopping_retargeting_create_internal (
         fieldVariable,
         operationVariable,
         valuesList
         );
+
+    if (!targeting_spec_operation_shopping_retargeting_local_var) {
+        goto end;
+    }
 
     return targeting_spec_operation_shopping_retargeting_local_var;
 end:

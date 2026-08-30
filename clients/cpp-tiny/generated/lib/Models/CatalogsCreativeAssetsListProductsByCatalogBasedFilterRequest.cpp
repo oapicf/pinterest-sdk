@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	filters = CatalogsCreativeAssetsProductGroupFilters();
 }
@@ -107,7 +107,7 @@ CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::getCatalogId()
 }
 
 void
-CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::setCatalogId(std::string  catalog_id)
+CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -119,7 +119,7 @@ CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::getCatalogType()
 }
 
 void
-CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::setCatalogType(std::string  catalog_type)
+CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -131,7 +131,7 @@ CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::getFilters()
 }
 
 void
-CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
+CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters filters)
 {
 	this->filters = filters;
 }

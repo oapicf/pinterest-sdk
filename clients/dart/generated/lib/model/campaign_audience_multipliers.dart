@@ -16,6 +16,7 @@ class CampaignAudienceMultipliers {
     this.AUDIENCE_ID,
   });
 
+  /// Audience ID for the multiplier.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -57,10 +58,6 @@ class CampaignAudienceMultipliers {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CampaignAudienceMultipliers[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CampaignAudienceMultipliers[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

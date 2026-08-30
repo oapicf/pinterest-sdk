@@ -17,11 +17,13 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { LeadsExportCreateRequest } from '../model/leadsExportCreateRequest';
-// @ts-ignore
-import { LeadsExportCreateResponse } from '../model/leadsExportCreateResponse';
-// @ts-ignore
 import { LeadsExportResponseData } from '../model/leadsExportResponseData';
+// @ts-ignore
+import { LeadsExports } from '../model/leadsExports';
+// @ts-ignore
+import { LeadsExportsCreate } from '../model/leadsExportsCreate';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -41,23 +43,23 @@ export class LeadsExportService extends BaseService {
 
     /**
      * Create a request to export leads collected from a lead ad
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps. If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a &#x60;leads_export_id&#x60; token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @endpoint post /ad_accounts/{ad_account_id}/leads_export
      * @param adAccountId Unique identifier of an ad account.
-     * @param leadsExportCreateRequest 
+     * @param leadsExportsCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public leadsExportCreate(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LeadsExportCreateResponse>;
-    public leadsExportCreate(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LeadsExportCreateResponse>>;
-    public leadsExportCreate(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LeadsExportCreateResponse>>;
-    public leadsExportCreate(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public leadsExportCreate(adAccountId: string, leadsExportsCreate: LeadsExportsCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LeadsExports>;
+    public leadsExportCreate(adAccountId: string, leadsExportsCreate: LeadsExportsCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LeadsExports>>;
+    public leadsExportCreate(adAccountId: string, leadsExportsCreate: LeadsExportsCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LeadsExports>>;
+    public leadsExportCreate(adAccountId: string, leadsExportsCreate: LeadsExportsCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling leadsExportCreate.');
         }
-        if (leadsExportCreateRequest === null || leadsExportCreateRequest === undefined) {
-            throw new Error('Required parameter leadsExportCreateRequest was null or undefined when calling leadsExportCreate.');
+        if (leadsExportsCreate === null || leadsExportsCreate === undefined) {
+            throw new Error('Required parameter leadsExportsCreate was null or undefined when calling leadsExportCreate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -99,10 +101,10 @@ export class LeadsExportService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/leads_export`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<LeadsExportCreateResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<LeadsExports>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: leadsExportCreateRequest,
+                body: leadsExportsCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -115,7 +117,7 @@ export class LeadsExportService extends BaseService {
 
     /**
      * Get the lead export from the lead export create call
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps. If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      * @endpoint get /ad_accounts/{ad_account_id}/leads_export/{leads_export_id}
      * @param adAccountId Unique identifier of an ad account.
      * @param leadsExportId lead_export_id token returned from the create a lead export endpoint

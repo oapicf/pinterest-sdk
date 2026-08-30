@@ -1,0 +1,91 @@
+package org.openapitools.vertxweb.server.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class KeywordUpdateItem   {
+  
+  private Boolean archived;
+  private Integer bid;
+  private String id;
+
+  public KeywordUpdateItem () {
+
+  }
+
+  public KeywordUpdateItem (Boolean archived, Integer bid, String id) {
+    this.archived = archived;
+    this.bid = bid;
+    this.id = id;
+  }
+
+    
+  @JsonProperty("archived")
+  public Boolean getArchived() {
+    return archived;
+  }
+  public void setArchived(Boolean archived) {
+    this.archived = archived;
+  }
+
+    
+  @JsonProperty("bid")
+  public Integer getBid() {
+    return bid;
+  }
+  public void setBid(Integer bid) {
+    this.bid = bid;
+  }
+
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    KeywordUpdateItem keywordUpdateItem = (KeywordUpdateItem) o;
+    return Objects.equals(archived, keywordUpdateItem.archived) &&
+        Objects.equals(bid, keywordUpdateItem.bid) &&
+        Objects.equals(id, keywordUpdateItem.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(archived, bid, id);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class KeywordUpdateItem {\n");
+    
+    sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
+    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}

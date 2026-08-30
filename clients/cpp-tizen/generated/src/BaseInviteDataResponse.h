@@ -1,7 +1,7 @@
 /*
  * BaseInviteDataResponse.h
  *
- * 
+ * Common invite/request data returned by the business access endpoints.
  */
 
 #ifndef _BaseInviteDataResponse_H_
@@ -9,8 +9,8 @@
 
 
 #include <string>
-#include "BaseInviteDataResponse_invite_data.h"
 #include "BusinessAccessUserSummary.h"
+#include "InviteDataResponse.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -22,7 +22,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Common invite/request data returned by the business access endpoints.
  *
  *  \ingroup Models
  *
@@ -56,11 +56,11 @@ public:
 	void setId(std::string  id);
 	/*! \brief Get 
 	 */
-	BaseInviteDataResponse_invite_data getInviteData();
+	InviteDataResponse getInviteData();
 
 	/*! \brief Set 
 	 */
-	void setInviteData(BaseInviteDataResponse_invite_data  invite_data);
+	void setInviteData(InviteDataResponse  invite_data);
 	/*! \brief Get Indicates whether the invite/request was received.
 	 */
 	bool getIsReceivedInvite();
@@ -78,7 +78,7 @@ public:
 
 private:
 	std::string id;
-	BaseInviteDataResponse_invite_data invite_data;
+	InviteDataResponse invite_data;
 	bool is_received_invite;
 	BusinessAccessUserSummary user;
 	void __init();

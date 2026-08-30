@@ -1,7 +1,7 @@
 package controllers;
 
-import apimodels.ConversionMSOTEvents;
-import apimodels.Error;
+import apimodels.ConversionMSOTEventsCreate;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -25,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class MsotEventsApiController extends Controller {
     private final MsotEventsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,17 +40,17 @@ public class MsotEventsApiController extends Controller {
 
     @ApiAction
     public Result msotEventsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeconversionMSOTEvents = request.body().asJson();
-        ConversionMSOTEvents conversionMSOTEvents;
-        if (nodeconversionMSOTEvents != null) {
-            conversionMSOTEvents = mapper.readValue(nodeconversionMSOTEvents.toString(), ConversionMSOTEvents.class);
+        JsonNode nodeconversionMSOTEventsCreate = request.body().asJson();
+        ConversionMSOTEventsCreate conversionMSOTEventsCreate;
+        if (nodeconversionMSOTEventsCreate != null) {
+            conversionMSOTEventsCreate = mapper.readValue(nodeconversionMSOTEventsCreate.toString(), ConversionMSOTEventsCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(conversionMSOTEvents);
+                OpenAPIUtils.validate(conversionMSOTEventsCreate);
             }
         } else {
-            throw new IllegalArgumentException("'ConversionMSOTEvents' parameter is required");
+            throw new IllegalArgumentException("'ConversionMSOTEventsCreate' parameter is required");
         }
-        return imp.msotEventsCreateHttp(request, adAccountId, conversionMSOTEvents);
+        return imp.msotEventsCreateHttp(request, adAccountId, conversionMSOTEventsCreate);
     }
 
 }

@@ -14,5 +14,6 @@ type CatalogsRetailProductGroupUpdateRequest struct {
 
 	Locale CatalogsLocale `json:"locale,omitempty"`
 
+	// Name of catalog product group
 	Name string `json:"name,omitempty"`
 }

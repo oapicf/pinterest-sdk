@@ -15,7 +15,7 @@
 
 typedef struct create_asset_access_request_response_t create_asset_access_request_response_t;
 
-#include "create_asset_access_request_error_message_inner.h"
+#include "asset_access_request_error.h"
 
 
 

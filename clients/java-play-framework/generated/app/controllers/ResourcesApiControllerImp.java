@@ -1,10 +1,12 @@
 package controllers;
 
-import apimodels.AdAccountsCountryResponse;
-import apimodels.BookClosedResponse;
-import apimodels.DeliveryMetricsResponse;
-import apimodels.Error;
-import apimodels.SingleInterestTargetingOptionResponse;
+import apimodels.AdAccountCountriesGet200Response;
+import apimodels.BookClosed;
+import apimodels.DeliveryMetricsGet200Response;
+import apimodels.PinterestLibError;
+import apimodels.PublicTargetingType;
+import apimodels.ReportType;
+import apimodels.SingleInterestTargetingOption;
 
 import play.mvc.Http;
 import java.util.List;
@@ -15,24 +17,24 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ResourcesApiControllerImp extends ResourcesApiControllerImpInterface {
     @Override
-    public AdAccountsCountryResponse adAccountCountriesGet(Http.Request request) throws Exception {
+    public AdAccountCountriesGet200Response adAccountCountriesGet(Http.Request request) throws Exception {
         //Do your magic!!!
-        return new AdAccountsCountryResponse();
+        return new AdAccountCountriesGet200Response();
     }
 
     @Override
-    public DeliveryMetricsResponse deliveryMetricsGet(Http.Request request, String reportType) throws Exception {
+    public DeliveryMetricsGet200Response deliveryMetricsGet(Http.Request request, ReportType reportType) throws Exception {
         //Do your magic!!!
-        return new DeliveryMetricsResponse();
+        return new DeliveryMetricsGet200Response();
     }
 
     @Override
-    public SingleInterestTargetingOptionResponse interestTargetingOptionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String interestId) throws Exception {
+    public SingleInterestTargetingOption interestTargetingOptionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String interestId) throws Exception {
         //Do your magic!!!
-        return new SingleInterestTargetingOptionResponse();
+        return new SingleInterestTargetingOption();
     }
 
     @Override
@@ -41,13 +43,13 @@ public class ResourcesApiControllerImp extends ResourcesApiControllerImpInterfac
     }
 
     @Override
-    public BookClosedResponse metricsReadyStateGet(Http.Request request, @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")String date) throws Exception {
+    public BookClosed metricsReadyStateGet(Http.Request request, @NotNull  @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")String date) throws Exception {
         //Do your magic!!!
-        return new BookClosedResponse();
+        return new BookClosed();
     }
 
     @Override
-    public List<Object> targetingOptionsGet(Http.Request request, String targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public List<Object> targetingOptionsGet(Http.Request request, PublicTargetingType targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp) throws Exception {
         //Do your magic!!!
         return new ArrayList<Object>();
     }

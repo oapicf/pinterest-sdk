@@ -76,16 +76,6 @@ SetExceptions sets Exceptions field to given value.
 
 HasExceptions returns a boolean if a field has been set.
 
-### SetExceptionsNil
-
-`func (o *ProductGroupPromotionResponseItem) SetExceptionsNil(b bool)`
-
- SetExceptionsNil sets the value for Exceptions to be an explicit nil
-
-### UnsetExceptions
-`func (o *ProductGroupPromotionResponseItem) UnsetExceptions()`
-
-UnsetExceptions ensures that no value is present for Exceptions, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

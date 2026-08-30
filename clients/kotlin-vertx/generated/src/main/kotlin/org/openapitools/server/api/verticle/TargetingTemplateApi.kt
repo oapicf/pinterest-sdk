@@ -1,10 +1,11 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
+import org.openapitools.server.api.model.TargetingTemplate
 import org.openapitools.server.api.model.TargetingTemplateCreate
-import org.openapitools.server.api.model.TargetingTemplateGetResponseData
 import org.openapitools.server.api.model.TargetingTemplateList200Response
-import org.openapitools.server.api.model.TargetingTemplateUpdateRequest
+import org.openapitools.server.api.model.TargetingTemplateUpdateRequestReadOrUpdate
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -23,13 +24,13 @@ interface TargetingTemplateApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* targetingTemplateCreate
      * Create targeting templates */
-    suspend fun targetingTemplateCreate(adAccountId:kotlin.String?,targetingTemplateCreate:TargetingTemplateCreate?,context:OperationRequest):Response<TargetingTemplateGetResponseData>
+    suspend fun targetingTemplateCreate(adAccountId:kotlin.String?,targetingTemplateCreate:TargetingTemplateCreate?,context:OperationRequest):Response<TargetingTemplate>
     /* targetingTemplateList
      * List targeting templates */
-    suspend fun targetingTemplateList(adAccountId:kotlin.String?,order:kotlin.String?,includeSizing:kotlin.Boolean?,searchQuery:kotlin.String?,pageSize:kotlin.Int?,bookmark:kotlin.String?,context:OperationRequest):Response<TargetingTemplateList200Response>
+    suspend fun targetingTemplateList(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,order:PinterestLibPaginationOrder?,includeSizing:kotlin.Boolean?,searchQuery:kotlin.String?,context:OperationRequest):Response<TargetingTemplateList200Response>
     /* targetingTemplateUpdate
      * Update targeting templates */
-    suspend fun targetingTemplateUpdate(adAccountId:kotlin.String?,targetingTemplateUpdateRequest:TargetingTemplateUpdateRequest?,context:OperationRequest):Response<Void>
+    suspend fun targetingTemplateUpdate(adAccountId:kotlin.String?,targetingTemplateUpdateRequestReadOrUpdate:TargetingTemplateUpdateRequestReadOrUpdate?,context:OperationRequest):Response<Void>
     companion object {
         const val address = "TargetingTemplateApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

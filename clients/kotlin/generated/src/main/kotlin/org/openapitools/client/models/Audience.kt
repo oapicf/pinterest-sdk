@@ -8,14 +8,24 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.AudienceRule
+import org.openapitools.client.models.AudienceStatus
+import org.openapitools.client.models.PinnerListType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -24,11 +34,12 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param adAccountId Ad account ID.
- * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+ * @param audienceType [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
  * @param createdByCompanyName The company that created this audience.
  * @param createdTimestamp Creation time. Unix timestamp in seconds.
  * @param description Audience description.
  * @param id Audience ID.
+ * @param isNca Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
  * @param name Audience name.
  * @param rule 
  * @param propertySize Audience size.
@@ -44,9 +55,9 @@ data class Audience (
     @Json(name = "ad_account_id")
     val adAccountId: kotlin.String? = null,
 
-    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR */
+    /* [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR */
     @Json(name = "audience_type")
-    val audienceType: kotlin.String? = null,
+    val audienceType: PinnerListType? = null,
 
     /* The company that created this audience. */
     @Json(name = "created_by_company_name")
@@ -64,6 +75,10 @@ data class Audience (
     @Json(name = "id")
     val id: kotlin.String? = null,
 
+    /* Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only. */
+    @Json(name = "is_nca")
+    val isNca: kotlin.Boolean? = null,
+
     /* Audience name. */
     @Json(name = "name")
     val name: kotlin.String? = null,
@@ -77,7 +92,7 @@ data class Audience (
 
     /* Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. */
     @Json(name = "status")
-    val status: kotlin.String? = null,
+    val status: AudienceStatus? = null,
 
     /* Always \"audience\". */
     @Json(name = "type")

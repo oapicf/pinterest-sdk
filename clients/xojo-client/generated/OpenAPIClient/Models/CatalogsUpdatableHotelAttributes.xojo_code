@@ -2,6 +2,9 @@
 Protected Class CatalogsUpdatableHotelAttributes
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Hotel address
+		#tag EndNote
 		address As OpenAPIClient.Models.CatalogsHotelAddress
 	#tag EndProperty
 
@@ -79,6 +82,9 @@ Protected Class CatalogsUpdatableHotelAttributes
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			If specified, you must provide all properties
+		#tag EndNote
 		guest_ratings As OpenAPIClient.Models.CatalogsHotelGuestRatings
 	#tag EndProperty
 

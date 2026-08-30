@@ -82,21 +82,44 @@ ImageSize <- R6::R6Class(
       ImageSizeObject <- list()
       if (!is.null(self$`1200x`)) {
         ImageSizeObject[["1200x"]] <-
-          self$`1200x`$toSimpleType()
+          self$extractSimpleType(self$`1200x`)
       }
       if (!is.null(self$`150x150`)) {
         ImageSizeObject[["150x150"]] <-
-          self$`150x150`$toSimpleType()
+          self$extractSimpleType(self$`150x150`)
       }
       if (!is.null(self$`400x300`)) {
         ImageSizeObject[["400x300"]] <-
-          self$`400x300`$toSimpleType()
+          self$extractSimpleType(self$`400x300`)
       }
       if (!is.null(self$`600x`)) {
         ImageSizeObject[["600x"]] <-
-          self$`600x`$toSimpleType()
+          self$extractSimpleType(self$`600x`)
       }
       return(ImageSizeObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

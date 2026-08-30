@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,8 +25,7 @@ type AdPinAnalytics struct {
 	// Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	DATE *string `json:"DATE,omitempty"`
 	// The ID of the pin that the metric belongs to.
-	PIN_ID string `json:"PIN_ID" validate:"regexp=^\\\\d+$"`
-	AdditionalProperties map[string]interface{}
+	PIN_ID string `json:"PIN_ID" validate:"regexp=^\\d+$"`
 }
 
 type _AdPinAnalytics AdPinAnalytics
@@ -118,11 +118,6 @@ func (o AdPinAnalytics) ToMap() (map[string]interface{}, error) {
 		toSerialize["DATE"] = o.DATE
 	}
 	toSerialize["PIN_ID"] = o.PIN_ID
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -150,21 +145,15 @@ func (o *AdPinAnalytics) UnmarshalJSON(data []byte) (err error) {
 
 	varAdPinAnalytics := _AdPinAnalytics{}
 
-	err = json.Unmarshal(data, &varAdPinAnalytics)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAdPinAnalytics)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AdPinAnalytics(varAdPinAnalytics)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "DATE")
-		delete(additionalProperties, "PIN_ID")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

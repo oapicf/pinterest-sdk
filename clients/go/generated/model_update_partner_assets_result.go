@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,11 +21,10 @@ var _ MappedNullable = &UpdatePartnerAssetsResult{}
 // UpdatePartnerAssetsResult An object containing the permissions a business partner has on the asset.
 type UpdatePartnerAssetsResult struct {
 	// Unique identifier of a business asset.
-	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-	AssetType *string `json:"asset_type,omitempty"`
+	AssetId *string `json:"asset_id,omitempty" validate:"regexp=^\\d+$"`
+	AssetType *AssetTypeResponse `json:"asset_type,omitempty"`
 	// Unique identifier of a business partner.
-	PartnerId *string `json:"partner_id,omitempty" validate:"regexp=^\\\\d+$"`
+	PartnerId *string `json:"partner_id,omitempty" validate:"regexp=^\\d+$"`
 	// Permission levels member or partner has on an asset.
 	Permissions []string `json:"permissions,omitempty"`
 }
@@ -80,9 +79,9 @@ func (o *UpdatePartnerAssetsResult) SetAssetId(v string) {
 }
 
 // GetAssetType returns the AssetType field value if set, zero value otherwise.
-func (o *UpdatePartnerAssetsResult) GetAssetType() string {
+func (o *UpdatePartnerAssetsResult) GetAssetType() AssetTypeResponse {
 	if o == nil || IsNil(o.AssetType) {
-		var ret string
+		var ret AssetTypeResponse
 		return ret
 	}
 	return *o.AssetType
@@ -90,7 +89,7 @@ func (o *UpdatePartnerAssetsResult) GetAssetType() string {
 
 // GetAssetTypeOk returns a tuple with the AssetType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdatePartnerAssetsResult) GetAssetTypeOk() (*string, bool) {
+func (o *UpdatePartnerAssetsResult) GetAssetTypeOk() (*AssetTypeResponse, bool) {
 	if o == nil || IsNil(o.AssetType) {
 		return nil, false
 	}
@@ -106,8 +105,8 @@ func (o *UpdatePartnerAssetsResult) HasAssetType() bool {
 	return false
 }
 
-// SetAssetType gets a reference to the given string and assigns it to the AssetType field.
-func (o *UpdatePartnerAssetsResult) SetAssetType(v string) {
+// SetAssetType gets a reference to the given AssetTypeResponse and assigns it to the AssetType field.
+func (o *UpdatePartnerAssetsResult) SetAssetType(v AssetTypeResponse) {
 	o.AssetType = &v
 }
 

@@ -3,7 +3,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **catalog\_id** | **String** | Catalog id pertaining to the retail product group. | [default to null] |
+| **catalog\_id** | **String** | Catalog ID pertaining to the product group. | [default to null] |
 | **catalog\_type** | **String** |  | [default to null] |
 | **country** | **String** |  | [optional] [default to null] |
 | **created\_at** | **Integer** | Unix timestamp in seconds of when catalog product group was created. | [optional] [default to null] |

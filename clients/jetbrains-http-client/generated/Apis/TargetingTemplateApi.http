@@ -1,0 +1,35 @@
+## TargetingTemplateApi
+
+### Create targeting templates
+## Create targeting templates
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/targeting_templates
+Content-Type: application/json
+Accept: application/json
+
+{
+ "auto_targeting_enabled": "<string>",
+ "keywords": "<string>",
+ "name": "<string>",
+ "placement_group": "<string>",
+ "targeting_attributes": "<string>",
+ "tracking_urls": "<string>"
+}
+
+
+### List targeting templates
+## List targeting templates
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/targeting_templates?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&includeSizing={{includeSizing}}&searchQuery={{searchQuery}}
+Accept: application/json
+
+### Update targeting templates
+## Update targeting templates
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/targeting_templates
+Content-Type: application/json
+Accept: application/json
+
+{
+ "id": "<string>",
+ "operation_type": "<string>",
+ "targeting_attributes": "<string>"
+}
+

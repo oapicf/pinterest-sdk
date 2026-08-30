@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **promotions_create**
-> PromotionsResponse promotions_create(ad_account_id => $ad_account_id, promotion_create_request => $promotion_create_request)
+> PromotionsResponse promotions_create(ad_account_id => $ad_account_id, promotion_create => $promotion_create)
 
 Create promotions
 
@@ -34,10 +34,10 @@ my $api_instance = WWW::OpenAPIClient::PromotionsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $promotion_create_request = [WWW::OpenAPIClient::Object::ARRAY[PromotionCreateRequest]->new()]; # ARRAY[PromotionCreateRequest] | List of promotions to create, size limit [1, 30].
+my $promotion_create = [WWW::OpenAPIClient::Object::ARRAY[PromotionCreate]->new()]; # ARRAY[PromotionCreate] | 
 
 eval {
-    my $result = $api_instance->promotions_create(ad_account_id => $ad_account_id, promotion_create_request => $promotion_create_request);
+    my $result = $api_instance->promotions_create(ad_account_id => $ad_account_id, promotion_create => $promotion_create);
     print Dumper($result);
 };
 if ($@) {
@@ -50,7 +50,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **promotion_create_request** | [**ARRAY[PromotionCreateRequest]**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotion_create** | [**ARRAY[PromotionCreate]**](PromotionCreate.md)|  | 
 
 ### Return type
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_delete**
-> promotions_delete(ad_account_id => $ad_account_id, promotion_id => $promotion_id)
+> Promotion promotions_delete(promotion_id => $promotion_id, ad_account_id => $ad_account_id)
 
 Delete promotion by id
 
@@ -84,11 +84,12 @@ my $api_instance = WWW::OpenAPIClient::PromotionsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
+my $promotion_id = "promotion_id_example"; # string | Promotion ID
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $promotion_id = "promotion_id_example"; # string | Unique identifier of a promotion
 
 eval {
-    $api_instance->promotions_delete(ad_account_id => $ad_account_id, promotion_id => $promotion_id);
+    my $result = $api_instance->promotions_delete(promotion_id => $promotion_id, ad_account_id => $ad_account_id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PromotionsApi->promotions_delete: $@\n";
@@ -99,12 +100,12 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotion_id** | **string**| Promotion ID | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **promotion_id** | **string**| Unique identifier of a promotion | 
 
 ### Return type
 
-void (empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -118,7 +119,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_get**
-> PromotionResponse promotions_get(ad_account_id => $ad_account_id, promotion_id => $promotion_id)
+> Promotion promotions_get(promotion_id => $promotion_id, ad_account_id => $ad_account_id)
 
 Get promotion by id
 
@@ -134,11 +135,11 @@ my $api_instance = WWW::OpenAPIClient::PromotionsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
+my $promotion_id = "promotion_id_example"; # string | Promotion ID
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $promotion_id = "promotion_id_example"; # string | Unique identifier of a promotion
 
 eval {
-    my $result = $api_instance->promotions_get(ad_account_id => $ad_account_id, promotion_id => $promotion_id);
+    my $result = $api_instance->promotions_get(promotion_id => $promotion_id, ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -150,12 +151,12 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **promotion_id** | **string**| Promotion ID | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **promotion_id** | **string**| Unique identifier of a promotion | 
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -169,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_list**
-> PromotionsList200Response promotions_list(ad_account_id => $ad_account_id, page_size => $page_size, order => $order, bookmark => $bookmark)
+> PromotionsList200Response promotions_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order)
 
 Get promotions
 
@@ -186,12 +187,12 @@ my $api_instance = WWW::OpenAPIClient::PromotionsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-my $order = ASCENDING; # string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+my $order = new WWW::OpenAPIClient.PinterestLibPaginationOrder(); # PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
 eval {
-    my $result = $api_instance->promotions_list(ad_account_id => $ad_account_id, page_size => $page_size, order => $order, bookmark => $bookmark);
+    my $result = $api_instance->promotions_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, order => $order);
     print Dumper($result);
 };
 if ($@) {
@@ -204,9 +205,9 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 
@@ -224,7 +225,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **promotions_update**
-> PromotionsResponse promotions_update(ad_account_id => $ad_account_id, promotion_update_request => $promotion_update_request)
+> PromotionsResponse promotions_update(ad_account_id => $ad_account_id, promotion_batch_update => $promotion_batch_update)
 
 Update promotions
 
@@ -241,10 +242,10 @@ my $api_instance = WWW::OpenAPIClient::PromotionsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $promotion_update_request = [WWW::OpenAPIClient::Object::ARRAY[PromotionUpdateRequest]->new()]; # ARRAY[PromotionUpdateRequest] | List of promotions to create, size limit [1, 30].
+my $promotion_batch_update = [WWW::OpenAPIClient::Object::ARRAY[PromotionBatchUpdate]->new()]; # ARRAY[PromotionBatchUpdate] | 
 
 eval {
-    my $result = $api_instance->promotions_update(ad_account_id => $ad_account_id, promotion_update_request => $promotion_update_request);
+    my $result = $api_instance->promotions_update(ad_account_id => $ad_account_id, promotion_batch_update => $promotion_batch_update);
     print Dumper($result);
 };
 if ($@) {
@@ -257,7 +258,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **promotion_update_request** | [**ARRAY[PromotionUpdateRequest]**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | 
+ **promotion_batch_update** | [**ARRAY[PromotionBatchUpdate]**](PromotionBatchUpdate.md)|  | 
 
 ### Return type
 

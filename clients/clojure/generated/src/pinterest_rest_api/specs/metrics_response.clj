@@ -1,13 +1,14 @@
 (ns pinterest-rest-api.specs.metrics-response
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.metrics-response-data-items :refer :all]
             )
   (:import (java.io File)))
 
 
 (def metrics-response-data
   {
-   (ds/opt :data) (s/coll-of any?)
+   (ds/opt :data) (s/coll-of metrics-response-data-items-spec)
    })
 
 (def metrics-response-spec

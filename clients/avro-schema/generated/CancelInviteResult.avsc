@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CancelInviteResult",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "invite_data",
+      "type": ["null", "model.InviteDataResponse"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_received_invite",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "user",
+      "type": ["null", "model.CancelInviteResultUser"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

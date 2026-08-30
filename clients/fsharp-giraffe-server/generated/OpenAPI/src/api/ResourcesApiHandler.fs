@@ -7,11 +7,13 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open ResourcesApiHandlerParams
 open ResourcesApiServiceInterface
 open ResourcesApiServiceImplementation
-open OpenAPI.Model.AdAccountsCountryResponse
-open OpenAPI.Model.BookClosedResponse
-open OpenAPI.Model.DeliveryMetricsResponse
-open OpenAPI.Model.Error
-open OpenAPI.Model.SingleInterestTargetingOptionResponse
+open OpenAPI.Model.AdAccountCountriesGet200Response
+open OpenAPI.Model.BookClosed
+open OpenAPI.Model.DeliveryMetricsGet200Response
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PublicTargetingType
+open OpenAPI.Model.ReportType
+open OpenAPI.Model.SingleInterestTargetingOption
 
 module ResourcesApiHandler =
 
@@ -31,6 +33,16 @@ module ResourcesApiHandler =
           return! (match result with
                       | AdAccountCountriesGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AdAccountCountriesGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AdAccountCountriesGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdAccountCountriesGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AdAccountCountriesGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdAccountCountriesGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountCountriesGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -51,6 +63,16 @@ module ResourcesApiHandler =
           return! (match result with
                       | DeliveryMetricsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | DeliveryMetricsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | DeliveryMetricsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | DeliveryMetricsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | DeliveryMetricsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | DeliveryMetricsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | DeliveryMetricsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -70,6 +92,16 @@ module ResourcesApiHandler =
           return! (match result with
                       | InterestTargetingOptionsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | InterestTargetingOptionsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | InterestTargetingOptionsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | InterestTargetingOptionsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | InterestTargetingOptionsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | InterestTargetingOptionsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | InterestTargetingOptionsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -88,6 +120,16 @@ module ResourcesApiHandler =
           return! (match result with
                       | LeadFormQuestionsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> text resolved.content
+                      | LeadFormQuestionsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | LeadFormQuestionsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | LeadFormQuestionsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | LeadFormQuestionsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | LeadFormQuestionsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | LeadFormQuestionsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -108,6 +150,16 @@ module ResourcesApiHandler =
           return! (match result with
                       | MetricsReadyStateGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | MetricsReadyStateGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | MetricsReadyStateGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | MetricsReadyStateGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | MetricsReadyStateGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | MetricsReadyStateGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | MetricsReadyStateGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -128,6 +180,16 @@ module ResourcesApiHandler =
           return! (match result with
                       | TargetingOptionsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> text resolved.content
+                      | TargetingOptionsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | TargetingOptionsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | TargetingOptionsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | TargetingOptionsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | TargetingOptionsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | TargetingOptionsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type ItemGroupIdFilter struct {
 
 	ITEM_GROUP_ID CatalogsProductGroupMultipleStringCriteria `json:"ITEM_GROUP_ID"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into ItemGroupIdFilter
+func (o *ItemGroupIdFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"ITEM_GROUP_ID",
+	}
 
-// AssertItemGroupIdFilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"ITEM_GROUP_ID": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"ITEM_GROUP_ID": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded ItemGroupIdFilter
+
+	if value, exists := allProperties["ITEM_GROUP_ID"]; exists {
+		if err = json.Unmarshal(value, &decoded.ITEM_GROUP_ID); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertItemGroupIdFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertItemGroupIdFilterRequired(obj ItemGroupIdFilter) error {
 	elements := map[string]interface{}{
 		"ITEM_GROUP_ID": obj.ITEM_GROUP_ID,
@@ -30,10 +88,16 @@ func AssertItemGroupIdFilterRequired(obj ItemGroupIdFilter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.ITEM_GROUP_ID); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertItemGroupIdFilterConstraints checks if the values respects the defined constraints
 func AssertItemGroupIdFilterConstraints(obj ItemGroupIdFilter) error {
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.ITEM_GROUP_ID); err != nil {
+		return err
+	}
 	return nil
 }

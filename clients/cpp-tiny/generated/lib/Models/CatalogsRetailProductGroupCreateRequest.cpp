@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsRetailProductGroupCreateRequest::CatalogsRetailProductGroupCreateRequest()
 {
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	country = Country();
 	description = std::string();
@@ -193,7 +193,7 @@ CatalogsRetailProductGroupCreateRequest::getCatalogId()
 }
 
 void
-CatalogsRetailProductGroupCreateRequest::setCatalogId(std::string  catalog_id)
+CatalogsRetailProductGroupCreateRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -205,7 +205,7 @@ CatalogsRetailProductGroupCreateRequest::getCatalogType()
 }
 
 void
-CatalogsRetailProductGroupCreateRequest::setCatalogType(std::string  catalog_type)
+CatalogsRetailProductGroupCreateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -217,7 +217,7 @@ CatalogsRetailProductGroupCreateRequest::getCountry()
 }
 
 void
-CatalogsRetailProductGroupCreateRequest::setCountry(Country  country)
+CatalogsRetailProductGroupCreateRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -229,7 +229,7 @@ CatalogsRetailProductGroupCreateRequest::getDescription()
 }
 
 void
-CatalogsRetailProductGroupCreateRequest::setDescription(std::string  description)
+CatalogsRetailProductGroupCreateRequest::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -241,7 +241,7 @@ CatalogsRetailProductGroupCreateRequest::getFilters()
 }
 
 void
-CatalogsRetailProductGroupCreateRequest::setFilters(CatalogsProductGroupFiltersRequest  filters)
+CatalogsRetailProductGroupCreateRequest::setFilters(CatalogsProductGroupFiltersRequest filters)
 {
 	this->filters = filters;
 }
@@ -253,7 +253,7 @@ CatalogsRetailProductGroupCreateRequest::getLocale()
 }
 
 void
-CatalogsRetailProductGroupCreateRequest::setLocale(CatalogsLocale  locale)
+CatalogsRetailProductGroupCreateRequest::setLocale(CatalogsLocale locale)
 {
 	this->locale = locale;
 }
@@ -265,7 +265,7 @@ CatalogsRetailProductGroupCreateRequest::getName()
 }
 
 void
-CatalogsRetailProductGroupCreateRequest::setName(std::string  name)
+CatalogsRetailProductGroupCreateRequest::setName(std::string name)
 {
 	this->name = name;
 }

@@ -6,27 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.UpdateMemberAssetsResultsResponseArrayItemsInner;
+import org.openapitools.vertxweb.server.model.UpdateMemberAssetResultItem;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdateMemberAssetsResultsResponseArray   {
   
-  private List<UpdateMemberAssetsResultsResponseArrayItemsInner> items = new ArrayList<>();
+  private List<UpdateMemberAssetResultItem> items = new ArrayList<>();
 
   public UpdateMemberAssetsResultsResponseArray () {
 
   }
 
-  public UpdateMemberAssetsResultsResponseArray (List<UpdateMemberAssetsResultsResponseArrayItemsInner> items) {
+  public UpdateMemberAssetsResultsResponseArray (List<UpdateMemberAssetResultItem> items) {
     this.items = items;
   }
 
     
   @JsonProperty("items")
-  public List<UpdateMemberAssetsResultsResponseArrayItemsInner> getItems() {
+  public List<UpdateMemberAssetResultItem> getItems() {
     return items;
   }
-  public void setItems(List<UpdateMemberAssetsResultsResponseArrayItemsInner> items) {
+  public void setItems(List<UpdateMemberAssetResultItem> items) {
     this.items = items;
   }
 
@@ -63,9 +63,6 @@ public class UpdateMemberAssetsResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

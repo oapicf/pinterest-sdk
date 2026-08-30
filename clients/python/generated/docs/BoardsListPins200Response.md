@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[Pin]**](Pin.md) | Pins | 
+**items** | [**List[PinRead]**](PinRead.md) |  | 
 
 ## Example
 

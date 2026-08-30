@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;GetPartnerAssetsResponse&gt;**](GetPartnerAssetsResponse.md) | List assets on which you granted access to your partner or assets on which your partner has granted you access. | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BaseBusinessAssets&gt;**](BaseBusinessAssets.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `BusinessPartnerAssetAccessGet200ResponseGetPartnerAssetsResponse`**
-(mapped from: BusinessPartnerAssetAccessGet200ResponseGetPartnerAssetsResponse)
+# **Table `BusinessPartnerAssetAccessGet200ResponseBaseBusinessAssets`**
+(mapped from: BusinessPartnerAssetAccessGet200ResponseBaseBusinessAssets)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 businessPartnerAssetAccessGet200Response | businessPartnerAssetAccessGet200Response | long | | kotlin.Long | Primary Key | *one*
-getPartnerAssetsResponse | getPartnerAssetsResponse | long | | kotlin.Long | Foreign Key | *many*
+baseBusinessAssets | baseBusinessAssets | long | | kotlin.Long | Foreign Key | *many*
 
 
 

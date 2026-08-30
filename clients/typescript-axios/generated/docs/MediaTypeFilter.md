@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | [default to undefined]
+**MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  | [default to undefined]
 
 ## Example
 

@@ -6,36 +6,39 @@
 
 
 static advanced_auction_item_t *advanced_auction_item_create_internal(
+    advanced_auction_bid_options_t *bid_options,
     pinterest_rest_api_country__e country,
     char *item_id,
-    pinterest_rest_api_language__e language,
-    advanced_auction_bid_options_t *bid_options
+    pinterest_rest_api_language__e language
     ) {
     advanced_auction_item_t *advanced_auction_item_local_var = malloc(sizeof(advanced_auction_item_t));
     if (!advanced_auction_item_local_var) {
         return NULL;
     }
+    memset(advanced_auction_item_local_var, 0, sizeof(advanced_auction_item_t));
+    advanced_auction_item_local_var->_library_owned = 1;
+    advanced_auction_item_local_var->bid_options = bid_options;
     advanced_auction_item_local_var->country = country;
     advanced_auction_item_local_var->item_id = item_id;
     advanced_auction_item_local_var->language = language;
-    advanced_auction_item_local_var->bid_options = bid_options;
-
-    advanced_auction_item_local_var->_library_owned = 1;
     return advanced_auction_item_local_var;
 }
 
 __attribute__((deprecated)) advanced_auction_item_t *advanced_auction_item_create(
+    advanced_auction_bid_options_t *bid_options,
     pinterest_rest_api_country__e country,
     char *item_id,
-    pinterest_rest_api_language__e language,
-    advanced_auction_bid_options_t *bid_options
+    pinterest_rest_api_language__e language
     ) {
-    return advanced_auction_item_create_internal (
+    advanced_auction_item_t *result = advanced_auction_item_create_internal (
+        bid_options,
         country,
         item_id,
-        language,
-        bid_options
+        language
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void advanced_auction_item_free(advanced_auction_item_t *advanced_auction_item) {
@@ -47,19 +50,33 @@ void advanced_auction_item_free(advanced_auction_item_t *advanced_auction_item) 
         return ;
     }
     listEntry_t *listEntry;
-    if (advanced_auction_item->item_id) {
-        free(advanced_auction_item->item_id);
-        advanced_auction_item->item_id = NULL;
-    }
     if (advanced_auction_item->bid_options) {
         advanced_auction_bid_options_free(advanced_auction_item->bid_options);
         advanced_auction_item->bid_options = NULL;
+    }
+    if (advanced_auction_item->item_id) {
+        free(advanced_auction_item->item_id);
+        advanced_auction_item->item_id = NULL;
     }
     free(advanced_auction_item);
 }
 
 cJSON *advanced_auction_item_convertToJSON(advanced_auction_item_t *advanced_auction_item) {
     cJSON *item = cJSON_CreateObject();
+
+    // advanced_auction_item->bid_options
+    if (!advanced_auction_item->bid_options) {
+        goto fail;
+    }
+    cJSON *bid_options_local_JSON = advanced_auction_bid_options_convertToJSON(advanced_auction_item->bid_options);
+    if(bid_options_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "bid_options", bid_options_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+
 
     // advanced_auction_item->country
     if (pinterest_rest_api_country__NULL == advanced_auction_item->country) {
@@ -97,20 +114,6 @@ cJSON *advanced_auction_item_convertToJSON(advanced_auction_item_t *advanced_auc
         goto fail;
     }
 
-
-    // advanced_auction_item->bid_options
-    if (!advanced_auction_item->bid_options) {
-        goto fail;
-    }
-    cJSON *bid_options_local_JSON = advanced_auction_bid_options_convertToJSON(advanced_auction_item->bid_options);
-    if(bid_options_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "bid_options", bid_options_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-
     return item;
 fail:
     if (item) {
@@ -123,14 +126,28 @@ advanced_auction_item_t *advanced_auction_item_parseFromJSON(cJSON *advanced_auc
 
     advanced_auction_item_t *advanced_auction_item_local_var = NULL;
 
+    // define the local variable for advanced_auction_item->bid_options
+    advanced_auction_bid_options_t *bid_options_local_nonprim = NULL;
+
     // define the local variable for advanced_auction_item->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
+
+    char *item_id_local_str = NULL;
 
     // define the local variable for advanced_auction_item->language
     pinterest_rest_api_language__e language_local_nonprim = 0;
 
-    // define the local variable for advanced_auction_item->bid_options
-    advanced_auction_bid_options_t *bid_options_local_nonprim = NULL;
+    // advanced_auction_item->bid_options
+    cJSON *bid_options = cJSON_GetObjectItemCaseSensitive(advanced_auction_itemJSON, "bid_options");
+    if (cJSON_IsNull(bid_options)) {
+        bid_options = NULL;
+    }
+    if (!bid_options) {
+        goto end;
+    }
+
+    
+    bid_options_local_nonprim = advanced_auction_bid_options_parseFromJSON(bid_options); //nonprimitive
 
     // advanced_auction_item->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(advanced_auction_itemJSON, "country");
@@ -171,37 +188,35 @@ advanced_auction_item_t *advanced_auction_item_parseFromJSON(cJSON *advanced_auc
     
     language_local_nonprim = language_parseFromJSON(language); //custom
 
-    // advanced_auction_item->bid_options
-    cJSON *bid_options = cJSON_GetObjectItemCaseSensitive(advanced_auction_itemJSON, "bid_options");
-    if (cJSON_IsNull(bid_options)) {
-        bid_options = NULL;
-    }
-    if (!bid_options) {
+
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
+    advanced_auction_item_local_var = advanced_auction_item_create_internal (
+        bid_options_local_nonprim,
+        country_local_nonprim,
+        item_id_local_str,
+        language_local_nonprim
+        );
+
+    if (!advanced_auction_item_local_var) {
         goto end;
     }
 
-    
-    bid_options_local_nonprim = advanced_auction_bid_options_parseFromJSON(bid_options); //nonprimitive
-
-
-    advanced_auction_item_local_var = advanced_auction_item_create_internal (
-        country_local_nonprim,
-        strdup(item_id->valuestring),
-        language_local_nonprim,
-        bid_options_local_nonprim
-        );
-
     return advanced_auction_item_local_var;
 end:
-    if (country_local_nonprim) {
-        country_local_nonprim = 0;
-    }
-    if (language_local_nonprim) {
-        language_local_nonprim = 0;
-    }
     if (bid_options_local_nonprim) {
         advanced_auction_bid_options_free(bid_options_local_nonprim);
         bid_options_local_nonprim = NULL;
+    }
+    if (country_local_nonprim) {
+        country_local_nonprim = 0;
+    }
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
+    }
+    if (language_local_nonprim) {
+        language_local_nonprim = 0;
     }
     return NULL;
 

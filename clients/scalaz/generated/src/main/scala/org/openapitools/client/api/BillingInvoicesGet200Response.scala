@@ -13,7 +13,7 @@ import BillingInvoicesGet200Response._
 
 case class BillingInvoicesGet200Response (
   bookmark: Option[String],
-items: List[BillingInvoiceResponse])
+items: List[BillingInvoice])
 
 object BillingInvoicesGet200Response {
   import DateTimeCodecs._

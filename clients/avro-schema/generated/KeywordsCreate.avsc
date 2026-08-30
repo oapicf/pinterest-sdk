@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "KeywordsCreate",
+  "fields": [
+    {
+      "name": "keywords",
+      "type": {
+        "type": "array",
+        "items": "model.KeywordCreateItem"
+      },
+      "doc": "Keywords"
+    },
+    {
+      "name": "parent_id",
+      "type": "string",
+      "doc": "Keyword data"
+    }
+  ]
+
+}

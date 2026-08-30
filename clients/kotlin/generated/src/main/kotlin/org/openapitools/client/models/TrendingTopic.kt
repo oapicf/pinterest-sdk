@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -24,12 +32,13 @@ import com.squareup.moshi.JsonClass
  * Individual trending topic within an interest category
  *
  * @param description Description of the trending topic
- * @param percentGrowthMom Month-over-month growth percentage
+ * @param id Unique identifier for the trending topic
  * @param pins Array of pin images related to this trend (up to 6)
  * @param relatedInterests List of related interest categories
  * @param relatedSearches List of related search terms
  * @param timeSeries Time series data showing trend values over time, with dates as keys and values as numeric
  * @param title Title of the trending topic
+ * @param percentGrowthMom Month-over-month growth percentage
  */
 
 
@@ -39,9 +48,9 @@ data class TrendingTopic (
     @Json(name = "description")
     val description: kotlin.String,
 
-    /* Month-over-month growth percentage */
-    @Json(name = "percent_growth_mom")
-    val percentGrowthMom: kotlin.Int,
+    /* Unique identifier for the trending topic */
+    @Json(name = "id")
+    val id: kotlin.String,
 
     /* Array of pin images related to this trend (up to 6) */
     @Json(name = "pins")
@@ -61,7 +70,11 @@ data class TrendingTopic (
 
     /* Title of the trending topic */
     @Json(name = "title")
-    val title: kotlin.String
+    val title: kotlin.String,
+
+    /* Month-over-month growth percentage */
+    @Json(name = "percent_growth_mom")
+    val percentGrowthMom: kotlin.Int? = null
 
 ) {
 

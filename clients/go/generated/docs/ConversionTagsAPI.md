@@ -34,7 +34,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	conversionTagCreate := *openapiclient.NewConversionTagCreate("ACME Checkout Test Tag") // ConversionTagCreate | 
+	conversionTagCreate := *openapiclient.NewConversionTagCreate("download_picture") // ConversionTagCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -106,7 +106,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	conversionTagId := "2617998078212" // string | Id of the conversion tag.
+	conversionTagId := "conversionTagId_example" // string | Id of the conversion tag.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## PageVisitConversionTagsGet
 
-> PageVisitConversionTagsGet200Response PageVisitConversionTagsGet(ctx, adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+> PageVisitConversionTagsGet200Response PageVisitConversionTagsGet(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Execute()
 
 Get page visit conversion tags
 
@@ -321,13 +321,13 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+	order := openapiclient.Pinterest.Lib.PaginationOrder("ASCENDING") // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConversionTagsAPI.PageVisitConversionTagsGet(context.Background(), adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.ConversionTagsAPI.PageVisitConversionTagsGet(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConversionTagsAPI.PageVisitConversionTagsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -353,9 +353,9 @@ Other parameters are passed through a pointer to a apiPageVisitConversionTagsGet
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | 
 
 ### Return type
 

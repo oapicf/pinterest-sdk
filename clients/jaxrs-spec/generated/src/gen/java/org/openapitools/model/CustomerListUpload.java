@@ -9,6 +9,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ErrorDetail;
 import org.openapitools.model.RecordCounts;
 import org.openapitools.model.UserListOperationType;
+import org.openapitools.model.WorkloadState;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CustomerListUpload")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListUpload   {
   private String adAccountId;
   private Integer creationTime;
@@ -32,54 +33,7 @@ public class CustomerListUpload   {
   private String id;
   private UserListOperationType operation;
   private RecordCounts recordCounts;
-  public enum StateEnum {
-
-    NOT_STARTED(String.valueOf("NOT_STARTED")), RUNNING(String.valueOf("RUNNING")), PAUSED(String.valueOf("PAUSED")), SUCCEEDED(String.valueOf("SUCCEEDED")), FAILED(String.valueOf("FAILED"));
-
-
-    private String value;
-
-    StateEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static StateEnum fromString(String s) {
-        for (StateEnum b : StateEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String value) {
-        for (StateEnum b : StateEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private StateEnum state;
+  private WorkloadState state;
   private Integer updatedTime;
 
   public CustomerListUpload() {
@@ -92,7 +46,7 @@ public class CustomerListUpload   {
     @JsonProperty(required = true, value = "customer_list_id") String customerListId,
     @JsonProperty(required = true, value = "id") String id,
     @JsonProperty(required = true, value = "operation") UserListOperationType operation,
-    @JsonProperty(required = true, value = "state") StateEnum state,
+    @JsonProperty(required = true, value = "state") WorkloadState state,
     @JsonProperty(required = true, value = "updated_time") Integer updatedTime
   ) {
     this.adAccountId = adAccountId;
@@ -211,7 +165,7 @@ public class CustomerListUpload   {
   
   @ApiModelProperty(example = "1234567890", required = true, value = "Customer List Upload ID.")
   @JsonProperty(required = true, value = "id")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
+  @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)public String getId() {
     return id;
   }
 
@@ -240,6 +194,7 @@ public class CustomerListUpload   {
   }
 
   /**
+   * Record processing counts
    **/
   public CustomerListUpload recordCounts(RecordCounts recordCounts) {
     this.recordCounts = recordCounts;
@@ -247,7 +202,7 @@ public class CustomerListUpload   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Record processing counts")
   @JsonProperty("record_counts")
   @Valid public RecordCounts getRecordCounts() {
     return recordCounts;
@@ -259,22 +214,21 @@ public class CustomerListUpload   {
   }
 
   /**
-   * Workload processing state
    **/
-  public CustomerListUpload state(StateEnum state) {
+  public CustomerListUpload state(WorkloadState state) {
     this.state = state;
     return this;
   }
 
   
-  @ApiModelProperty(example = "RUNNING", required = true, value = "Workload processing state")
+  @ApiModelProperty(example = "RUNNING", required = true, value = "")
   @JsonProperty(required = true, value = "state")
-  @NotNull public StateEnum getState() {
+  @NotNull public WorkloadState getState() {
     return state;
   }
 
   @JsonProperty(required = true, value = "state")
-  public void setState(StateEnum state) {
+  public void setState(WorkloadState state) {
     this.state = state;
   }
 
@@ -347,12 +301,8 @@ public class CustomerListUpload   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

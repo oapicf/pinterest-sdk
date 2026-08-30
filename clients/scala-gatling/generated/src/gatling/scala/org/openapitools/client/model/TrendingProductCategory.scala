@@ -9,16 +9,18 @@ case class TrendingProductCategory (
     _pctChangeMom: Integer,
     /* Relative volume percentage */
     _percentRelativeVolume: Integer,
+    /* Pinterest Product Category Id */
+    _pinterestProductCategoryId: Integer,
     /* Product Category Name */
     _productCategory: String,
     /* Vertical name associated with the product category */
-    _verticals: Option[List[VerticalProductCategory]]
+    _verticals: Option[List[String]]
 )
 object TrendingProductCategory {
-    def toStringBody(var_engagementType: Object, var_pctChangeMom: Object, var_percentRelativeVolume: Object, var_productCategory: Object, var_verticals: Object) =
+    def toStringBody(var_engagementType: Object, var_pctChangeMom: Object, var_percentRelativeVolume: Object, var_pinterestProductCategoryId: Object, var_productCategory: Object, var_verticals: Object) =
         s"""
         | {
-        | "engagementType":$var_engagementType,"pctChangeMom":$var_pctChangeMom,"percentRelativeVolume":$var_percentRelativeVolume,"productCategory":$var_productCategory,"verticals":$var_verticals
+        | "engagementType":$var_engagementType,"pctChangeMom":$var_pctChangeMom,"percentRelativeVolume":$var_percentRelativeVolume,"pinterestProductCategoryId":$var_pinterestProductCategoryId,"productCategory":$var_productCategory,"verticals":$var_verticals
         | }
         """.stripMargin
 }

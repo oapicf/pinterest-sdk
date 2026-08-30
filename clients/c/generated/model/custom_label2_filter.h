@@ -20,7 +20,7 @@ typedef struct custom_label2_filter_t custom_label2_filter_t;
 
 
 typedef struct custom_label2_filter_t {
-    catalogs_product_group_filter_operator_type_criteria_t *custom_label_2; //object
+    struct catalogs_product_group_filter_operator_type_criteria_t *custom_label_2; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } custom_label2_filter_t;

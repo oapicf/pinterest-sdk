@@ -4,7 +4,7 @@ type TopPinsAnalyticsResponse struct {
 
 	DateAvailability TopPinsAnalyticsResponseDateAvailability `json:"date_availability,omitempty"`
 
-	Pins []TopPinsAnalyticsResponsePinsInner `json:"pins,omitempty"`
+	Pins []TopPinsAnalyticsResponsePinsItems `json:"pins,omitempty"`
 
-	SortBy string `json:"sort_by,omitempty"`
+	SortBy TopPinsSortBy `json:"sort_by,omitempty"`
 }

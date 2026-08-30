@@ -6,8 +6,8 @@ using namespace Tiny;
 
 CatalogsItemsBatch::CatalogsItemsBatch()
 {
-	catalog_type = CatalogsType();
-	batch_id = std::string();
+	batch_id = null;
+	catalog_type = std::string();
 	completed_time = std::string();
 	created_time = std::string();
 	items = std::list<CreativeAssetsProcessingRecord>();
@@ -29,20 +29,6 @@ CatalogsItemsBatch::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
-    const char *catalog_typeKey = "catalog_type";
-
-    if(object.has_key(catalog_typeKey))
-    {
-        bourne::json value = object[catalog_typeKey];
-
-
-
-
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
-
-    }
-
     const char *batch_idKey = "batch_id";
 
     if(object.has_key(batch_idKey))
@@ -52,6 +38,19 @@ CatalogsItemsBatch::fromJson(std::string jsonObj)
 
 
         jsonToValue(&batch_id, value, "std::string");
+
+
+    }
+
+    const char *catalog_typeKey = "catalog_type";
+
+    if(object.has_key(catalog_typeKey))
+    {
+        bourne::json value = object[catalog_typeKey];
+
+
+
+        jsonToValue(&catalog_type, value, "std::string");
 
 
     }
@@ -130,14 +129,14 @@ CatalogsItemsBatch::toJson()
 
 
 
-
-	object["catalog_type"] = getCatalogType().toJson();
-
-
-
-
-
     object["batch_id"] = getBatchId();
+
+
+
+
+
+
+    object["catalog_type"] = getCatalogType();
 
 
 
@@ -181,18 +180,6 @@ CatalogsItemsBatch::toJson()
 
 }
 
-CatalogsType
-CatalogsItemsBatch::getCatalogType()
-{
-	return catalog_type;
-}
-
-void
-CatalogsItemsBatch::setCatalogType(CatalogsType  catalog_type)
-{
-	this->catalog_type = catalog_type;
-}
-
 std::string
 CatalogsItemsBatch::getBatchId()
 {
@@ -200,9 +187,21 @@ CatalogsItemsBatch::getBatchId()
 }
 
 void
-CatalogsItemsBatch::setBatchId(std::string  batch_id)
+CatalogsItemsBatch::setBatchId(std::string batch_id)
 {
 	this->batch_id = batch_id;
+}
+
+std::string
+CatalogsItemsBatch::getCatalogType()
+{
+	return catalog_type;
+}
+
+void
+CatalogsItemsBatch::setCatalogType(std::string catalog_type)
+{
+	this->catalog_type = catalog_type;
 }
 
 std::string
@@ -212,7 +211,7 @@ CatalogsItemsBatch::getCompletedTime()
 }
 
 void
-CatalogsItemsBatch::setCompletedTime(std::string  completed_time)
+CatalogsItemsBatch::setCompletedTime(std::string completed_time)
 {
 	this->completed_time = completed_time;
 }
@@ -224,7 +223,7 @@ CatalogsItemsBatch::getCreatedTime()
 }
 
 void
-CatalogsItemsBatch::setCreatedTime(std::string  created_time)
+CatalogsItemsBatch::setCreatedTime(std::string created_time)
 {
 	this->created_time = created_time;
 }
@@ -236,7 +235,7 @@ CatalogsItemsBatch::getItems()
 }
 
 void
-CatalogsItemsBatch::setItems(std::list <CreativeAssetsProcessingRecord> items)
+CatalogsItemsBatch::setItems(std::list<CreativeAssetsProcessingRecord> items)
 {
 	this->items = items;
 }
@@ -248,7 +247,7 @@ CatalogsItemsBatch::getStatus()
 }
 
 void
-CatalogsItemsBatch::setStatus(BatchOperationStatus  status)
+CatalogsItemsBatch::setStatus(BatchOperationStatus status)
 {
 	this->status = status;
 }

@@ -1,0 +1,66 @@
+<?php
+declare(strict_types=1);
+
+namespace App\DTO;
+
+use Articus\DataTransfer\Annotation as DTA;
+
+class CatalogsReportDistributionStats
+{
+    /**
+     * ID of the catalog entity.
+     * @DTA\Data(field="catalog_id", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"string"})
+     * @DTA\Validator(name="Match", options={"pattern":"/^\d+$/"})
+     */
+    public ?string $catalog_id = null;
+
+    /**
+     * The event code that a diagnostics aggregated number references
+     * @DTA\Data(field="code", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"int"})
+     */
+    public ?int $code = null;
+
+    /**
+     * A human-friendly label for the event code (e.g, &#39;SPAM&#39;)
+     * @DTA\Data(field="code_label", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"string"})
+     */
+    public ?string $code_label = null;
+
+    /**
+     * Indicates if issue makes items ineligible for ads distribution
+     * @DTA\Data(field="ineligible_for_ads", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"bool"})
+     */
+    public ?bool $ineligible_for_ads = null;
+
+    /**
+     * Indicates if issue makes items ineligible for organic distribution
+     * @DTA\Data(field="ineligible_for_organic", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"bool"})
+     */
+    public ?bool $ineligible_for_organic = null;
+
+    /**
+     * Title message describing the diagnostic issue
+     * @DTA\Data(field="message", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"string"})
+     */
+    public ?string $message = null;
+
+    /**
+     * Number of occurrences of the issue
+     * @DTA\Data(field="occurrences", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"int"})
+     */
+    public ?int $occurrences = null;
+
+    /**
+     * @DTA\Data(field="report_type", nullable=true)
+     * @DTA\Validator(name="Scalar", options={"type":"string"})
+     */
+    public ?string $report_type = null;
+
+}

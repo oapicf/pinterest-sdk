@@ -1,0 +1,22 @@
+## MediaApi
+
+### Register media upload
+## Register media upload
+POST https://api.pinterest.com/v5/media
+Content-Type: application/json
+Accept: application/json
+
+{
+ "media_type": "<string>"
+}
+
+
+### Get media upload details
+## Get media upload details
+GET https://api.pinterest.com/v5/media/{{media_id}}
+Accept: application/json
+
+### List media uploads
+## List media uploads
+GET https://api.pinterest.com/v5/media?bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json

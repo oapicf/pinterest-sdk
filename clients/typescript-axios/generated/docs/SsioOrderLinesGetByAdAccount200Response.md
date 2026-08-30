@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;SSIOOrderLine&gt;**](SSIOOrderLine.md) | SSIO order lines by ad acount id | [default to undefined]
+**items** | [**Array&lt;SSIOOrderLine&gt;**](SSIOOrderLine.md) |  | [default to undefined]
 
 ## Example
 

@@ -1,5 +1,6 @@
 package models
 
+// SsioInsertionOrderStatusResponse - SSIO insertion order status response for a single pin order id lookup.
 type SsioInsertionOrderStatusResponse struct {
 
 	// Salesforce insertion order creation time

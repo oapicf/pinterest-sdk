@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	catalogsReportParameters := openapiclient.CatalogsReportParameters{CatalogsHotelReportParameters: openapiclient.NewCatalogsHotelReportParameters("CatalogType_example", openapiclient.CatalogsHotelReportParameters_report{CatalogsReportAllItemsFilter: openapiclient.NewCatalogsReportAllItemsFilter("ReportType_example")})} // CatalogsReportParameters | Request object to asynchronously create a report.
+	catalogsReportParameters := openapiclient.CatalogsReportParameters{CatalogsHotelReportParameters: openapiclient.NewCatalogsHotelReportParameters("CatalogType_example", openapiclient.CatalogsHotelReportParametersReport{CatalogsReportDistributionIssueFilter: openapiclient.NewCatalogsReportDistributionIssueFilter("ReportType_example")})} // CatalogsReportParameters | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -57,7 +57,7 @@ Other parameters are passed through a pointer to a apiReportsCreateRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogsReportParameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md) | Request object to asynchronously create a report. | 
+ **catalogsReportParameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-	token := "token_example" // string | Token returned from async build report call
+	token := "token_example" // string | Token returned from the post request creation call
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -125,7 +125,7 @@ Other parameters are passed through a pointer to a apiReportsGetRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **string** | Token returned from async build report call | 
+ **token** | **string** | Token returned from the post request creation call | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## ReportsStats
 
-> ReportsStats200Response ReportsStats(ctx).Parameters(parameters).AdAccountId(adAccountId).PageSize(pageSize).Bookmark(bookmark).Execute()
+> ReportsStats200Response ReportsStats(ctx).Parameters(parameters).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List report stats
 
@@ -167,14 +167,14 @@ import (
 )
 
 func main() {
-	parameters := openapiclient.reports_stats_parameters_parameter{CatalogsHotelReportStatsParameters: openapiclient.NewCatalogsHotelReportStatsParameters("CatalogType_example", openapiclient.CatalogsHotelReportStatsParameters_report{CatalogsReportDistributionIssueFilter: openapiclient.NewCatalogsReportDistributionIssueFilter("ReportType_example")})} // ReportsStatsParametersParameter | Contains the parameters for report identification.
+	parameters := map[string][]openapiclient.CatalogsReportStatsParameters{ ... } // CatalogsReportStatsParameters | Contains the parameters for report identification.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CatalogReportsAPI.ReportsStats(context.Background()).Parameters(parameters).AdAccountId(adAccountId).PageSize(pageSize).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.CatalogReportsAPI.ReportsStats(context.Background()).Parameters(parameters).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CatalogReportsAPI.ReportsStats``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,10 +195,10 @@ Other parameters are passed through a pointer to a apiReportsStatsRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**ReportsStatsParametersParameter**](ReportsStatsParametersParameter.md) | Contains the parameters for report identification. | 
+ **parameters** | [**CatalogsReportStatsParameters**](CatalogsReportStatsParameters.md) | Contains the parameters for report identification. | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 

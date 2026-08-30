@@ -7,9 +7,9 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  BaseInviteDataResponseInviteData = openapi_server.resourceTypes.BaseInviteDataResponseInviteData
   BusinessAccessUserSummary = openapi_server.resourceTypes.BusinessAccessUserSummary
   InviteAssetsSummary = openapi_server.resourceTypes.InviteAssetsSummary
+  InviteDataResponse = openapi_server.resourceTypes.InviteDataResponse
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -19,26 +19,6 @@ resourceTypes {
     description = InviteResponse
     derivedFrom = Root
     properties {
-        id {
-          type =  string
-          description = "Unique identifier of the invite/request."
-          optional = false
-        }
-        invite_data {
-          type = BaseInviteDataResponseInviteData
-          description = ""
-          optional = false
-        }
-        is_received_invite {
-          type =  boolean
-          description = "Indicates whether the invite/request was received."
-          optional = false
-        }
-        user {
-          type = BusinessAccessUserSummary
-          description = "Metadata for the member/partner that was sent the invite/request."
-          optional = false
-        }
         assets_summary {
           type = InviteAssetsSummary
           description = ""
@@ -51,18 +31,38 @@ resourceTypes {
           optional = false
         }
         created_by_business {
-          type =  
+          type = BusinessAccessUserSummary
           description = "Metadata for the business that created the invite/request."
           optional = false
         }
         created_by_user {
-          type =  
+          type = BusinessAccessUserSummary
           description = "Metadata for the user that created the invite/request."
           optional = false
         }
         created_time {
           type =  integer
           description = "The time the invite/request was created. Returned in milliseconds."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Unique identifier of the invite/request."
+          optional = false
+        }
+        invite_data {
+          type = InviteDataResponse
+          description = ""
+          optional = false
+        }
+        is_received_invite {
+          type =  boolean
+          description = "Indicates whether the invite/request was received."
+          optional = false
+        }
+        user {
+          type = BusinessAccessUserSummary
+          description = "Metadata for the member/partner that was sent the invite/request."
           optional = false
         }
     }

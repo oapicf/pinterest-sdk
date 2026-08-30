@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assetRequests** | [**List&lt;CreateAssetAccessRequestBodyAssetRequestsInner&gt;**](CreateAssetAccessRequestBodyAssetRequestsInner.md) |  | 
+**assetRequests** | [**List&lt;CreateAssetAccessRequestItem&gt;**](CreateAssetAccessRequestItem.md) |  | 
 
 
 

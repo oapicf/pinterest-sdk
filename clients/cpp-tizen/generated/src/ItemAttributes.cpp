@@ -94,7 +94,7 @@ ItemAttributes::__init()
 	//free_shipping_limit = std::string();
 	//gender = std::string();
 	//google_product_category = std::string();
-	//gtin = new UpdatableItemAttributes_gtin();
+	//gtin = new UpdatableItemAttributesGtin();
 	//id = std::string();
 	//installment_price = std::string();
 	//ios_deep_link = std::string();
@@ -127,6 +127,7 @@ ItemAttributes::__init()
 	//new std::list()std::list> variant_names;
 	//new std::list()std::list> variant_values;
 	//new std::list()std::list> additional_image_link;
+	//new std::list()std::list> ai_disclosures;
 	//new std::list()std::list> image_link;
 	//video_link = std::string();
 }
@@ -653,6 +654,11 @@ ItemAttributes::__cleanup()
 	//additional_image_link.RemoveAll(true);
 	//delete additional_image_link;
 	//additional_image_link = NULL;
+	//}
+	//if(ai_disclosures != NULL) {
+	//ai_disclosures.RemoveAll(true);
+	//delete ai_disclosures;
+	//ai_disclosures = NULL;
 	//}
 	//if(image_link != NULL) {
 	//image_link.RemoveAll(true);
@@ -1461,11 +1467,11 @@ ItemAttributes::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("UpdatableItemAttributes_gtin")) {
-			jsonToValue(&gtin, node, "UpdatableItemAttributes_gtin", "UpdatableItemAttributes_gtin");
+		if (isprimitive("UpdatableItemAttributesGtin")) {
+			jsonToValue(&gtin, node, "UpdatableItemAttributesGtin", "UpdatableItemAttributesGtin");
 		} else {
 			
-			UpdatableItemAttributes_gtin* obj = static_cast<UpdatableItemAttributes_gtin*> (&gtin);
+			UpdatableItemAttributesGtin* obj = static_cast<UpdatableItemAttributesGtin*> (&gtin);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -1852,6 +1858,30 @@ ItemAttributes::fromJson(char* jsonStr)
 				new_list.push_back(inst);
 			}
 			additional_image_link = new_list;
+		}
+		
+	}
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	node = json_object_get_member(pJsonObject, ai_disclosuresKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<CatalogsAiContentDisclosure> new_list;
+			CatalogsAiContentDisclosure inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("CatalogsAiContentDisclosure")) {
+					jsonToValue(&inst, temp_json, "CatalogsAiContentDisclosure", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			ai_disclosures = new_list;
 		}
 		
 	}
@@ -2544,13 +2574,13 @@ ItemAttributes::toJson()
 	}
 	const gchar *google_product_categoryKey = "google_product_category";
 	json_object_set_member(pJsonObject, google_product_categoryKey, node);
-	if (isprimitive("UpdatableItemAttributes_gtin")) {
-		UpdatableItemAttributes_gtin obj = getGtin();
-		node = converttoJson(&obj, "UpdatableItemAttributes_gtin", "");
+	if (isprimitive("UpdatableItemAttributesGtin")) {
+		UpdatableItemAttributesGtin obj = getGtin();
+		node = converttoJson(&obj, "UpdatableItemAttributesGtin", "");
 	}
 	else {
 		
-		UpdatableItemAttributes_gtin obj = static_cast<UpdatableItemAttributes_gtin> (getGtin());
+		UpdatableItemAttributesGtin obj = static_cast<UpdatableItemAttributesGtin> (getGtin());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -2864,6 +2894,31 @@ ItemAttributes::toJson()
 	
 	const gchar *additional_image_linkKey = "additional_image_link";
 	json_object_set_member(pJsonObject, additional_image_linkKey, node);
+	if (isprimitive("CatalogsAiContentDisclosure")) {
+		list<CatalogsAiContentDisclosure> new_list = static_cast<list <CatalogsAiContentDisclosure> > (getAiDisclosures());
+		node = converttoJson(&new_list, "CatalogsAiContentDisclosure", "array");
+	} else {
+		node = json_node_alloc();
+		list<CatalogsAiContentDisclosure> new_list = static_cast<list <CatalogsAiContentDisclosure> > (getAiDisclosures());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<CatalogsAiContentDisclosure>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			CatalogsAiContentDisclosure obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *ai_disclosuresKey = "ai_disclosures";
+	json_object_set_member(pJsonObject, ai_disclosuresKey, node);
 	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getImageLink());
 		node = converttoJson(&new_list, "std::string", "array");
@@ -3748,14 +3803,14 @@ ItemAttributes::setGoogleProductCategory(std::string  google_product_category)
 	this->google_product_category = google_product_category;
 }
 
-UpdatableItemAttributes_gtin
+UpdatableItemAttributesGtin
 ItemAttributes::getGtin()
 {
 	return gtin;
 }
 
 void
-ItemAttributes::setGtin(UpdatableItemAttributes_gtin  gtin)
+ItemAttributes::setGtin(UpdatableItemAttributesGtin  gtin)
 {
 	this->gtin = gtin;
 }
@@ -4142,6 +4197,18 @@ void
 ItemAttributes::setAdditionalImageLink(std::list <std::string> additional_image_link)
 {
 	this->additional_image_link = additional_image_link;
+}
+
+std::list<CatalogsAiContentDisclosure>
+ItemAttributes::getAiDisclosures()
+{
+	return ai_disclosures;
+}
+
+void
+ItemAttributes::setAiDisclosures(std::list <CatalogsAiContentDisclosure> ai_disclosures)
+{
+	this->ai_disclosures = ai_disclosures;
 }
 
 std::list<std::string>

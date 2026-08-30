@@ -1,5 +1,4 @@
 # Org.OpenAPITools.Model.CatalogsHotelGuestRatings
-If specified, you must provide all properties
 
 ## Properties
 

@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            ProductGroupPromotionResponse
+            ProductGroupPromotions
         >
         ProductGroupPromotionsApi::
         productGroupPromotions_create(
@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest
+            ProductGroupPromotionsCreate productGroupPromotionsCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | productGroupPromotionCreateRequest
+            // Body     | productGroupPromotionsCreate
 
 
 
-            payload = productGroupPromotionCreateRequest.toJson().dump();
+            payload = productGroupPromotionsCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -57,10 +57,10 @@ using namespace Tiny;
 
 
 
-            ProductGroupPromotionResponse obj(output_string);
+            ProductGroupPromotions obj(output_string);
 
 
-            Response<ProductGroupPromotionResponse> response(obj, httpCode);
+            Response<ProductGroupPromotions> response(obj, httpCode);
             return response;
         }
 
@@ -134,23 +134,23 @@ using namespace Tiny;
             
             std::string adAccountId
             , 
-            std::list<std::string> productGroupPromotionIds
             
-            , 
-            std::list<std::string> entityStatuses
-            
-            , 
-            
-            std::string adGroupId
+            std::string bookmark
             , 
             
             int pageSize
             , 
             
-            std::string order
+            Pinterest.Lib.PaginationOrder order
+            , 
+            std::list<std::string> productGroupPromotionIds
+            
+            , 
+            std::list<EntityStatus> entityStatuses
+            
             , 
             
-            std::string bookmark
+            std::string adGroupId
             
         )
         {
@@ -159,7 +159,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | productGroupPromotionIds entityStatuses adGroupId pageSize order bookmark 
+            // Query    | bookmark pageSize order productGroupPromotionIds entityStatuses adGroupId 
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
+            addQueryParam("order",order);
             for (auto &x : productGroupPromotionIds){
                 addQueryParam("product_group_promotion_ids", std::string(x));
             }
@@ -167,9 +170,6 @@ using namespace Tiny;
                 addQueryParam("entity_statuses", std::string(x));
             }
             addQueryParam("ad_group_id",adGroupId);
-            addQueryParam("page_size",pageSize);
-            addQueryParam("order",order);
-            addQueryParam("bookmark",bookmark);
 
             // Form     | 
 
@@ -206,7 +206,7 @@ using namespace Tiny;
         }
 
         Response<
-            ProductGroupPromotionResponse
+            ProductGroupPromotions
         >
         ProductGroupPromotionsApi::
         productGroupPromotions_update(
@@ -214,7 +214,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest
+            ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody
             
         )
         {
@@ -243,11 +243,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | productGroupPromotionUpdateRequest
+            // Body     | productGroupPromotionsUpdateWithRequiredBody
 
 
 
-            payload = productGroupPromotionUpdateRequest.toJson().dump();
+            payload = productGroupPromotionsUpdateWithRequiredBody.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -258,21 +258,18 @@ using namespace Tiny;
 
 
 
-            ProductGroupPromotionResponse obj(output_string);
+            ProductGroupPromotions obj(output_string);
 
 
-            Response<ProductGroupPromotionResponse> response(obj, httpCode);
+            Response<ProductGroupPromotions> response(obj, httpCode);
             return response;
         }
 
         Response<
-            std::list<ProductGroupAnalyticsResponse_inner>
+            std::list<ProductGroupAnalyticsItems>
         >
         ProductGroupPromotionsApi::
         productGroups_analytics(
-            
-            std::string adAccountId
-            , 
             
             Date startDate
             , 
@@ -282,20 +279,23 @@ using namespace Tiny;
             std::list<std::string> productGroupIds
             
             , 
-            std::list<std::string> columns
+            std::list<ReportingColumnSync> columns
             
             , 
             
             Granularity granularity
             , 
             
-            int clickWindowDays
+            std::string adAccountId
             , 
             
-            int engagementWindowDays
+            long clickWindowDays
             , 
             
-            int viewWindowDays
+            long engagementWindowDays
+            , 
+            
+            long viewWindowDays
             , 
             
             std::string conversionReportTime
@@ -352,7 +352,7 @@ using namespace Tiny;
 
 
 
-            std::list<ProductGroupAnalyticsResponse_inner> obj = std::list<ProductGroupAnalyticsResponse_inner>();
+            std::list<ProductGroupAnalyticsItems> obj = std::list<ProductGroupAnalyticsItems>();
             bourne::json jsonPayload(output_string);
 
 
@@ -365,7 +365,7 @@ using namespace Tiny;
             
             for(auto& var : jsonPayload.array_range())
             {
-                ProductGroupAnalyticsResponse_inner tmp(var.dump());
+                ProductGroupAnalyticsItems tmp(var.dump());
                 obj.push_back(tmp);
             }
             
@@ -376,7 +376,7 @@ using namespace Tiny;
 
 
 
-            Response<std::list<ProductGroupAnalyticsResponse_inner>> response(obj, httpCode);
+            Response<std::list<ProductGroupAnalyticsItems>> response(obj, httpCode);
             return response;
         }
 

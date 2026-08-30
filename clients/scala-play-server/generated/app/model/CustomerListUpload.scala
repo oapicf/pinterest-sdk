@@ -9,10 +9,10 @@ import play.api.libs.json._
   * @param customerListId ID of the customer list associated with this upload.
   * @param errorCounts Error counts by error code
   * @param id Customer List Upload ID.
-  * @param state Workload processing state
+  * @param recordCounts Record processing counts
   * @param updatedTime Customer List Upload updated_time. Epoch (seconds).
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CustomerListUpload(
   adAccountId: String,
   creationTime: Int,
@@ -21,23 +21,11 @@ case class CustomerListUpload(
   id: String,
   operation: UserListOperationType,
   recordCounts: Option[RecordCounts],
-  state: CustomerListUpload.State.Value,
+  state: WorkloadState,
   updatedTime: Int
 )
 
 object CustomerListUpload {
   implicit lazy val customerListUploadJsonFormat: Format[CustomerListUpload] = Json.format[CustomerListUpload]
-
-  // noinspection TypeAnnotation
-  object State extends Enumeration {
-    val NOTSTARTED = Value("NOT_STARTED")
-    val RUNNING = Value("RUNNING")
-    val PAUSED = Value("PAUSED")
-    val SUCCEEDED = Value("SUCCEEDED")
-    val FAILED = Value("FAILED")
-
-    type State = Value
-    implicit lazy val StateJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
 }
 

@@ -14,7 +14,7 @@
 | **FEED\_LENGTH\_TOO\_LONG** | **Integer** | Your feed contains too many items, some items will not be published. | [optional] [default to null] |
 | **FEED\_TOO\_SMALL** | **Integer** | Your feed couldn&#39;t be validated because the file doesn&#39;t contain the minimum number of lines required. | [optional] [default to null] |
 | **FETCH\_ERROR** | **Integer** | Pinterest couldn&#39;t download your feed. | [optional] [default to null] |
-| **FETCH\_INACTIVE\_FEED\_ERROR** | **Integer** | Your feed wasn&#39;t ingested because it hasn’t changed in the previous 90 days. | [optional] [default to null] |
+| **FETCH\_INACTIVE\_FEED\_ERROR** | **Integer** | Your feed wasn&#39;t ingested because it hasn&#39;t changed in the previous 90 days. | [optional] [default to null] |
 | **IMAGE\_LINK\_INVALID** | **Integer** | Some image links are formatted incorrectly. | [optional] [default to null] |
 | **IMAGE\_LINK\_LENGTH\_TOO\_LONG** | **Integer** | Some items have image_link URLs that contain too many characters, so those items will not be published. | [optional] [default to null] |
 | **IMAGE\_LINK\_MISSING** | **Integer** | Some items are missing an image link URL in their product metadata, those items will not be published. | [optional] [default to null] |

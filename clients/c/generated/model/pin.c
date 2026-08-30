@@ -6,88 +6,123 @@
 
 
 static pin_t *pin_create_internal(
-    char *alt_text,
+    ai_disclosures_t *ai_disclosures,
     char *board_id,
     board_owner_t *board_owner,
     char *board_section_id,
     char *created_at,
     creative_type_t *creative_type,
-    char *description,
     char *dominant_color,
-    int has_been_promoted,
+    int *has_been_promoted,
     char *id,
-    int is_owner,
-    int is_standard,
-    char *link,
+    int *is_owner,
+    int *is_product,
+    int *is_standard,
     pin_media_t *media,
     char *parent_pin_id,
     object_t *pin_metrics,
+    char *alt_text,
+    char *description,
+    char *link,
     char *title
     ) {
     pin_t *pin_local_var = malloc(sizeof(pin_t));
     if (!pin_local_var) {
         return NULL;
     }
-    pin_local_var->alt_text = alt_text;
+    memset(pin_local_var, 0, sizeof(pin_t));
+    pin_local_var->_library_owned = 1;
+    pin_local_var->ai_disclosures = ai_disclosures;
     pin_local_var->board_id = board_id;
     pin_local_var->board_owner = board_owner;
     pin_local_var->board_section_id = board_section_id;
     pin_local_var->created_at = created_at;
     pin_local_var->creative_type = creative_type;
-    pin_local_var->description = description;
     pin_local_var->dominant_color = dominant_color;
     pin_local_var->has_been_promoted = has_been_promoted;
     pin_local_var->id = id;
     pin_local_var->is_owner = is_owner;
+    pin_local_var->is_product = is_product;
     pin_local_var->is_standard = is_standard;
-    pin_local_var->link = link;
     pin_local_var->media = media;
     pin_local_var->parent_pin_id = parent_pin_id;
     pin_local_var->pin_metrics = pin_metrics;
+    pin_local_var->alt_text = alt_text;
+    pin_local_var->description = description;
+    pin_local_var->link = link;
     pin_local_var->title = title;
-
-    pin_local_var->_library_owned = 1;
     return pin_local_var;
 }
 
 __attribute__((deprecated)) pin_t *pin_create(
-    char *alt_text,
+    ai_disclosures_t *ai_disclosures,
     char *board_id,
     board_owner_t *board_owner,
     char *board_section_id,
     char *created_at,
     creative_type_t *creative_type,
-    char *description,
     char *dominant_color,
-    int has_been_promoted,
+    int *has_been_promoted,
     char *id,
-    int is_owner,
-    int is_standard,
-    char *link,
+    int *is_owner,
+    int *is_product,
+    int *is_standard,
     pin_media_t *media,
     char *parent_pin_id,
     object_t *pin_metrics,
+    char *alt_text,
+    char *description,
+    char *link,
     char *title
     ) {
-    return pin_create_internal (
-        alt_text,
+    int *has_been_promoted_copy = NULL;
+    if (has_been_promoted) {
+        has_been_promoted_copy = malloc(sizeof(int));
+        if (has_been_promoted_copy) *has_been_promoted_copy = *has_been_promoted;
+    }
+    int *is_owner_copy = NULL;
+    if (is_owner) {
+        is_owner_copy = malloc(sizeof(int));
+        if (is_owner_copy) *is_owner_copy = *is_owner;
+    }
+    int *is_product_copy = NULL;
+    if (is_product) {
+        is_product_copy = malloc(sizeof(int));
+        if (is_product_copy) *is_product_copy = *is_product;
+    }
+    int *is_standard_copy = NULL;
+    if (is_standard) {
+        is_standard_copy = malloc(sizeof(int));
+        if (is_standard_copy) *is_standard_copy = *is_standard;
+    }
+    pin_t *result = pin_create_internal (
+        ai_disclosures,
         board_id,
         board_owner,
         board_section_id,
         created_at,
         creative_type,
-        description,
         dominant_color,
-        has_been_promoted,
+        has_been_promoted_copy,
         id,
-        is_owner,
-        is_standard,
-        link,
+        is_owner_copy,
+        is_product_copy,
+        is_standard_copy,
         media,
         parent_pin_id,
         pin_metrics,
+        alt_text,
+        description,
+        link,
         title
         );
+    if (!result) {
+        free(has_been_promoted_copy);
+        free(is_owner_copy);
+        free(is_product_copy);
+        free(is_standard_copy);
+    }
+    return result;
 }
 
 void pin_free(pin_t *pin) {
@@ -99,9 +134,9 @@ void pin_free(pin_t *pin) {
         return ;
     }
     listEntry_t *listEntry;
-    if (pin->alt_text) {
-        free(pin->alt_text);
-        pin->alt_text = NULL;
+    if (pin->ai_disclosures) {
+        ai_disclosures_free(pin->ai_disclosures);
+        pin->ai_disclosures = NULL;
     }
     if (pin->board_id) {
         free(pin->board_id);
@@ -123,21 +158,29 @@ void pin_free(pin_t *pin) {
         creative_type_free(pin->creative_type);
         pin->creative_type = NULL;
     }
-    if (pin->description) {
-        free(pin->description);
-        pin->description = NULL;
-    }
     if (pin->dominant_color) {
         free(pin->dominant_color);
         pin->dominant_color = NULL;
+    }
+    if (pin->has_been_promoted) {
+        free(pin->has_been_promoted);
+        pin->has_been_promoted = NULL;
     }
     if (pin->id) {
         free(pin->id);
         pin->id = NULL;
     }
-    if (pin->link) {
-        free(pin->link);
-        pin->link = NULL;
+    if (pin->is_owner) {
+        free(pin->is_owner);
+        pin->is_owner = NULL;
+    }
+    if (pin->is_product) {
+        free(pin->is_product);
+        pin->is_product = NULL;
+    }
+    if (pin->is_standard) {
+        free(pin->is_standard);
+        pin->is_standard = NULL;
     }
     if (pin->media) {
         pin_media_free(pin->media);
@@ -151,6 +194,18 @@ void pin_free(pin_t *pin) {
         object_free(pin->pin_metrics);
         pin->pin_metrics = NULL;
     }
+    if (pin->alt_text) {
+        free(pin->alt_text);
+        pin->alt_text = NULL;
+    }
+    if (pin->description) {
+        free(pin->description);
+        pin->description = NULL;
+    }
+    if (pin->link) {
+        free(pin->link);
+        pin->link = NULL;
+    }
     if (pin->title) {
         free(pin->title);
         pin->title = NULL;
@@ -161,10 +216,15 @@ void pin_free(pin_t *pin) {
 cJSON *pin_convertToJSON(pin_t *pin) {
     cJSON *item = cJSON_CreateObject();
 
-    // pin->alt_text
-    if(pin->alt_text) {
-    if(cJSON_AddStringToObject(item, "alt_text", pin->alt_text) == NULL) {
-    goto fail; //String
+    // pin->ai_disclosures
+    if(pin->ai_disclosures) {
+    cJSON *ai_disclosures_local_JSON = ai_disclosures_convertToJSON(pin->ai_disclosures);
+    if(ai_disclosures_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "ai_disclosures", ai_disclosures_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -219,14 +279,6 @@ cJSON *pin_convertToJSON(pin_t *pin) {
     }
 
 
-    // pin->description
-    if(pin->description) {
-    if(cJSON_AddStringToObject(item, "description", pin->description) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // pin->dominant_color
     if(pin->dominant_color) {
     if(cJSON_AddStringToObject(item, "dominant_color", pin->dominant_color) == NULL) {
@@ -237,7 +289,7 @@ cJSON *pin_convertToJSON(pin_t *pin) {
 
     // pin->has_been_promoted
     if(pin->has_been_promoted) {
-    if(cJSON_AddBoolToObject(item, "has_been_promoted", pin->has_been_promoted) == NULL) {
+    if(cJSON_AddBoolToObject(item, "has_been_promoted", *pin->has_been_promoted) == NULL) {
     goto fail; //Bool
     }
     }
@@ -254,7 +306,15 @@ cJSON *pin_convertToJSON(pin_t *pin) {
 
     // pin->is_owner
     if(pin->is_owner) {
-    if(cJSON_AddBoolToObject(item, "is_owner", pin->is_owner) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_owner", *pin->is_owner) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // pin->is_product
+    if(pin->is_product) {
+    if(cJSON_AddBoolToObject(item, "is_product", *pin->is_product) == NULL) {
     goto fail; //Bool
     }
     }
@@ -262,16 +322,8 @@ cJSON *pin_convertToJSON(pin_t *pin) {
 
     // pin->is_standard
     if(pin->is_standard) {
-    if(cJSON_AddBoolToObject(item, "is_standard", pin->is_standard) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_standard", *pin->is_standard) == NULL) {
     goto fail; //Bool
-    }
-    }
-
-
-    // pin->link
-    if(pin->link) {
-    if(cJSON_AddStringToObject(item, "link", pin->link) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -310,6 +362,30 @@ cJSON *pin_convertToJSON(pin_t *pin) {
     }
 
 
+    // pin->alt_text
+    if(pin->alt_text) {
+    if(cJSON_AddStringToObject(item, "alt_text", pin->alt_text) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // pin->description
+    if(pin->description) {
+    if(cJSON_AddStringToObject(item, "description", pin->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // pin->link
+    if(pin->link) {
+    if(cJSON_AddStringToObject(item, "link", pin->link) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // pin->title
     if(pin->title) {
     if(cJSON_AddStringToObject(item, "title", pin->title) == NULL) {
@@ -329,25 +405,57 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
 
     pin_t *pin_local_var = NULL;
 
+    // define the local variable for pin->ai_disclosures
+    ai_disclosures_t *ai_disclosures_local_nonprim = NULL;
+
+    char *board_id_local_str = NULL;
+
     // define the local variable for pin->board_owner
     board_owner_t *board_owner_local_nonprim = NULL;
+
+    char *board_section_id_local_str = NULL;
+
+    char *created_at_local_str = NULL;
 
     // define the local variable for pin->creative_type
     creative_type_t *creative_type_local_nonprim = NULL;
 
+    char *dominant_color_local_str = NULL;
+
+    // define the local variable for pin->has_been_promoted
+    int *has_been_promoted_local_var = NULL;
+
+    char *id_local_str = NULL;
+
+    // define the local variable for pin->is_owner
+    int *is_owner_local_var = NULL;
+
+    // define the local variable for pin->is_product
+    int *is_product_local_var = NULL;
+
+    // define the local variable for pin->is_standard
+    int *is_standard_local_var = NULL;
+
     // define the local variable for pin->media
     pin_media_t *media_local_nonprim = NULL;
 
-    // pin->alt_text
-    cJSON *alt_text = cJSON_GetObjectItemCaseSensitive(pinJSON, "alt_text");
-    if (cJSON_IsNull(alt_text)) {
-        alt_text = NULL;
+    char *parent_pin_id_local_str = NULL;
+
+    char *alt_text_local_str = NULL;
+
+    char *description_local_str = NULL;
+
+    char *link_local_str = NULL;
+
+    char *title_local_str = NULL;
+
+    // pin->ai_disclosures
+    cJSON *ai_disclosures = cJSON_GetObjectItemCaseSensitive(pinJSON, "ai_disclosures");
+    if (cJSON_IsNull(ai_disclosures)) {
+        ai_disclosures = NULL;
     }
-    if (alt_text) { 
-    if(!cJSON_IsString(alt_text) && !cJSON_IsNull(alt_text))
-    {
-    goto end; //String
-    }
+    if (ai_disclosures) { 
+    ai_disclosures_local_nonprim = ai_disclosures_parseFromJSON(ai_disclosures); //nonprimitive
     }
 
     // pin->board_id
@@ -404,18 +512,6 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
     creative_type_local_nonprim = creative_type_parseFromJSON(creative_type); //custom
     }
 
-    // pin->description
-    cJSON *description = cJSON_GetObjectItemCaseSensitive(pinJSON, "description");
-    if (cJSON_IsNull(description)) {
-        description = NULL;
-    }
-    if (description) { 
-    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
-    {
-    goto end; //String
-    }
-    }
-
     // pin->dominant_color
     cJSON *dominant_color = cJSON_GetObjectItemCaseSensitive(pinJSON, "dominant_color");
     if (cJSON_IsNull(dominant_color)) {
@@ -438,6 +534,12 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
     {
     goto end; //Bool
     }
+    has_been_promoted_local_var = malloc(sizeof(int));
+    if(!has_been_promoted_local_var)
+    {
+        goto end;
+    }
+    *has_been_promoted_local_var = has_been_promoted->valueint;
     }
 
     // pin->id
@@ -465,6 +567,30 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
     {
     goto end; //Bool
     }
+    is_owner_local_var = malloc(sizeof(int));
+    if(!is_owner_local_var)
+    {
+        goto end;
+    }
+    *is_owner_local_var = is_owner->valueint;
+    }
+
+    // pin->is_product
+    cJSON *is_product = cJSON_GetObjectItemCaseSensitive(pinJSON, "is_product");
+    if (cJSON_IsNull(is_product)) {
+        is_product = NULL;
+    }
+    if (is_product) { 
+    if(!cJSON_IsBool(is_product))
+    {
+    goto end; //Bool
+    }
+    is_product_local_var = malloc(sizeof(int));
+    if(!is_product_local_var)
+    {
+        goto end;
+    }
+    *is_product_local_var = is_product->valueint;
     }
 
     // pin->is_standard
@@ -477,18 +603,12 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
     {
     goto end; //Bool
     }
-    }
-
-    // pin->link
-    cJSON *link = cJSON_GetObjectItemCaseSensitive(pinJSON, "link");
-    if (cJSON_IsNull(link)) {
-        link = NULL;
-    }
-    if (link) { 
-    if(!cJSON_IsString(link) && !cJSON_IsNull(link))
+    is_standard_local_var = malloc(sizeof(int));
+    if(!is_standard_local_var)
     {
-    goto end; //String
+        goto end;
     }
+    *is_standard_local_var = is_standard->valueint;
     }
 
     // pin->media
@@ -522,6 +642,42 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
     pin_metrics_local_object = object_parseFromJSON(pin_metrics); //object
     }
 
+    // pin->alt_text
+    cJSON *alt_text = cJSON_GetObjectItemCaseSensitive(pinJSON, "alt_text");
+    if (cJSON_IsNull(alt_text)) {
+        alt_text = NULL;
+    }
+    if (alt_text) { 
+    if(!cJSON_IsString(alt_text) && !cJSON_IsNull(alt_text))
+    {
+    goto end; //String
+    }
+    }
+
+    // pin->description
+    cJSON *description = cJSON_GetObjectItemCaseSensitive(pinJSON, "description");
+    if (cJSON_IsNull(description)) {
+        description = NULL;
+    }
+    if (description) { 
+    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
+    {
+    goto end; //String
+    }
+    }
+
+    // pin->link
+    cJSON *link = cJSON_GetObjectItemCaseSensitive(pinJSON, "link");
+    if (cJSON_IsNull(link)) {
+        link = NULL;
+    }
+    if (link) { 
+    if(!cJSON_IsString(link) && !cJSON_IsNull(link))
+    {
+    goto end; //String
+    }
+    }
+
     // pin->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(pinJSON, "title");
     if (cJSON_IsNull(title)) {
@@ -535,39 +691,116 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
     }
 
 
+    if (board_id && !cJSON_IsNull(board_id)) board_id_local_str = strdup(board_id->valuestring);
+    if (board_section_id && !cJSON_IsNull(board_section_id)) board_section_id_local_str = strdup(board_section_id->valuestring);
+    if (created_at && !cJSON_IsNull(created_at)) created_at_local_str = strdup(created_at->valuestring);
+    if (dominant_color && !cJSON_IsNull(dominant_color)) dominant_color_local_str = strdup(dominant_color->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (parent_pin_id && !cJSON_IsNull(parent_pin_id)) parent_pin_id_local_str = strdup(parent_pin_id->valuestring);
+    if (alt_text && !cJSON_IsNull(alt_text)) alt_text_local_str = strdup(alt_text->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     pin_local_var = pin_create_internal (
-        alt_text && !cJSON_IsNull(alt_text) ? strdup(alt_text->valuestring) : NULL,
-        board_id && !cJSON_IsNull(board_id) ? strdup(board_id->valuestring) : NULL,
+        ai_disclosures ? ai_disclosures_local_nonprim : NULL,
+        board_id_local_str,
         board_owner ? board_owner_local_nonprim : NULL,
-        board_section_id && !cJSON_IsNull(board_section_id) ? strdup(board_section_id->valuestring) : NULL,
-        created_at && !cJSON_IsNull(created_at) ? strdup(created_at->valuestring) : NULL,
+        board_section_id_local_str,
+        created_at_local_str,
         creative_type ? creative_type_local_nonprim : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        dominant_color && !cJSON_IsNull(dominant_color) ? strdup(dominant_color->valuestring) : NULL,
-        has_been_promoted ? has_been_promoted->valueint : 0,
-        strdup(id->valuestring),
-        is_owner ? is_owner->valueint : 0,
-        is_standard ? is_standard->valueint : 0,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
+        dominant_color_local_str,
+        has_been_promoted_local_var,
+        id_local_str,
+        is_owner_local_var,
+        is_product_local_var,
+        is_standard_local_var,
         media ? media_local_nonprim : NULL,
-        parent_pin_id && !cJSON_IsNull(parent_pin_id) ? strdup(parent_pin_id->valuestring) : NULL,
+        parent_pin_id_local_str,
         pin_metrics ? pin_metrics_local_object : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL
+        alt_text_local_str,
+        description_local_str,
+        link_local_str,
+        title_local_str
         );
+
+    if (!pin_local_var) {
+        goto end;
+    }
 
     return pin_local_var;
 end:
+    if (ai_disclosures_local_nonprim) {
+        ai_disclosures_free(ai_disclosures_local_nonprim);
+        ai_disclosures_local_nonprim = NULL;
+    }
+    if (board_id_local_str) {
+        free(board_id_local_str);
+        board_id_local_str = NULL;
+    }
     if (board_owner_local_nonprim) {
         board_owner_free(board_owner_local_nonprim);
         board_owner_local_nonprim = NULL;
+    }
+    if (board_section_id_local_str) {
+        free(board_section_id_local_str);
+        board_section_id_local_str = NULL;
+    }
+    if (created_at_local_str) {
+        free(created_at_local_str);
+        created_at_local_str = NULL;
     }
     if (creative_type_local_nonprim) {
         creative_type_free(creative_type_local_nonprim);
         creative_type_local_nonprim = NULL;
     }
+    if (dominant_color_local_str) {
+        free(dominant_color_local_str);
+        dominant_color_local_str = NULL;
+    }
+    if (has_been_promoted_local_var) {
+        free(has_been_promoted_local_var);
+        has_been_promoted_local_var = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (is_owner_local_var) {
+        free(is_owner_local_var);
+        is_owner_local_var = NULL;
+    }
+    if (is_product_local_var) {
+        free(is_product_local_var);
+        is_product_local_var = NULL;
+    }
+    if (is_standard_local_var) {
+        free(is_standard_local_var);
+        is_standard_local_var = NULL;
+    }
     if (media_local_nonprim) {
         pin_media_free(media_local_nonprim);
         media_local_nonprim = NULL;
+    }
+    if (parent_pin_id_local_str) {
+        free(parent_pin_id_local_str);
+        parent_pin_id_local_str = NULL;
+    }
+    if (alt_text_local_str) {
+        free(alt_text_local_str);
+        alt_text_local_str = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
     }
     return NULL;
 

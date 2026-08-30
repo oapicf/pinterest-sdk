@@ -27,7 +27,7 @@ API.Client.CatalogsItemsUpsertBatchRequest.prototype.items;
 API.Client.CatalogsItemsUpsertBatchRequest.prototype.language;
 
 /**
- * @type {!API.Client.BatchOperation}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsItemsUpsertBatchRequest.prototype.operation;
@@ -123,7 +123,7 @@ API.Client.CatalogsItemsUpsertBatchRequest.LanguageEnum = {
   NB: 'NB',
   NE: 'NE',
   NL: 'NL',
-  NO: 'NO',
+  false: 'false',
   PL: 'PL',
   PT: 'PT',
   RO: 'RO',
@@ -141,4 +141,8 @@ API.Client.CatalogsItemsUpsertBatchRequest.LanguageEnum = {
   TR: 'TR',
   XX: 'XX',
   ZH: 'ZH',
+}
+/** @enum {string} */
+API.Client.CatalogsItemsUpsertBatchRequest.OperationEnum = { 
+  UPSERT: 'UPSERT',
 }

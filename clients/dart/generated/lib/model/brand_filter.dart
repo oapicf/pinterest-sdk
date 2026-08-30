@@ -47,15 +47,13 @@ class BrandFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BrandFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BrandFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'BRAND'), 'Required key "BrandFilter[BRAND]" is missing from JSON.');
+        assert(json[r'BRAND'] != null, 'Required key "BrandFilter[BRAND]" has a null value in JSON.');
         return true;
       }());
 
       return BrandFilter(
-        BRAND: mapValueOfType<CatalogsProductGroupMultipleStringCriteria>(json, r'BRAND')!,
+        BRAND: CatalogsProductGroupMultipleStringCriteria.fromJson(json[r'BRAND'])!,
       );
     }
     return null;

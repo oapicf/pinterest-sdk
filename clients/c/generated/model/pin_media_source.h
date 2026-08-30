@@ -37,17 +37,17 @@ pinterest_rest_api_pin_media_source_SOURCETYPE_e pin_media_source_source_type_Fr
 typedef struct pin_media_source_t {
     pinterest_rest_api_content_type__e content_type; //referenced enum
     char *data; // string
-    int is_standard; //boolean
+    int *is_standard; //boolean
     pinterest_rest_api_pin_media_source_SOURCETYPE_e source_type; //enum
     char *url; // string
     content_type_t *cover_image_content_type; // custom
     char *cover_image_data; // string
-    int cover_image_key_frame_time; //numeric
+    int *cover_image_key_frame_time; //numeric
     char *cover_image_url; // string
     char *media_id; // string
-    int index; //numeric
+    int *index; //numeric
     list_t *items; //nonprimitive container
-    int is_affiliate_link; //boolean
+    int *is_affiliate_link; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_t;
@@ -55,17 +55,17 @@ typedef struct pin_media_source_t {
 __attribute__((deprecated)) pin_media_source_t *pin_media_source_create(
     pinterest_rest_api_content_type__e content_type,
     char *data,
-    int is_standard,
+    int *is_standard,
     pinterest_rest_api_pin_media_source_SOURCETYPE_e source_type,
     char *url,
     content_type_t *cover_image_content_type,
     char *cover_image_data,
-    int cover_image_key_frame_time,
+    int *cover_image_key_frame_time,
     char *cover_image_url,
     char *media_id,
-    int index,
+    int *index,
     list_t *items,
-    int is_affiliate_link
+    int *is_affiliate_link
 );
 
 void pin_media_source_free(pin_media_source_t *pin_media_source);

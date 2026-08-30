@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **catalogId** | `String` | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog |  [optional property]
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | `Country` |  | 
-**items** | [`List&lt;CatalogsRetailBatchRequestItemsInner&gt;`](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+**items** | [`List&lt;CatalogsRetailBatchRequestItemsItems&gt;`](CatalogsRetailBatchRequestItemsItems.md) | Array with catalogs item operations | 
 **language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. | 
 
 
@@ -118,7 +118,7 @@ MY | `"MY"`
 NB | `"NB"`
 NE | `"NE"`
 NL2 | `"NL"`
-NO | `"NO"`
+FALSE | `"false"`
 PL | `"PL"`
 PT | `"PT"`
 RO | `"RO"`

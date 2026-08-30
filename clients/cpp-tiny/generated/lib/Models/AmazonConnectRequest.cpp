@@ -190,7 +190,7 @@ AmazonConnectRequest::getAmazonStorefrontId()
 }
 
 void
-AmazonConnectRequest::setAmazonStorefrontId(std::string  amazon_storefront_id)
+AmazonConnectRequest::setAmazonStorefrontId(std::string amazon_storefront_id)
 {
 	this->amazon_storefront_id = amazon_storefront_id;
 }
@@ -202,7 +202,7 @@ AmazonConnectRequest::getAmazonStorefrontName()
 }
 
 void
-AmazonConnectRequest::setAmazonStorefrontName(std::string  amazon_storefront_name)
+AmazonConnectRequest::setAmazonStorefrontName(std::string amazon_storefront_name)
 {
 	this->amazon_storefront_name = amazon_storefront_name;
 }
@@ -214,7 +214,7 @@ AmazonConnectRequest::getAmazonStorefrontUrl()
 }
 
 void
-AmazonConnectRequest::setAmazonStorefrontUrl(std::string  amazon_storefront_url)
+AmazonConnectRequest::setAmazonStorefrontUrl(std::string amazon_storefront_url)
 {
 	this->amazon_storefront_url = amazon_storefront_url;
 }
@@ -226,7 +226,7 @@ AmazonConnectRequest::getAmazonUserId()
 }
 
 void
-AmazonConnectRequest::setAmazonUserId(std::string  amazon_user_id)
+AmazonConnectRequest::setAmazonUserId(std::string amazon_user_id)
 {
 	this->amazon_user_id = amazon_user_id;
 }
@@ -238,7 +238,7 @@ AmazonConnectRequest::isIsAmazonAccountLinked()
 }
 
 void
-AmazonConnectRequest::setIsAmazonAccountLinked(bool  is_amazon_account_linked)
+AmazonConnectRequest::setIsAmazonAccountLinked(bool is_amazon_account_linked)
 {
 	this->is_amazon_account_linked = is_amazon_account_linked;
 }
@@ -250,7 +250,7 @@ AmazonConnectRequest::getOneTimePasscode()
 }
 
 void
-AmazonConnectRequest::setOneTimePasscode(std::string  one_time_passcode)
+AmazonConnectRequest::setOneTimePasscode(std::string one_time_passcode)
 {
 	this->one_time_passcode = one_time_passcode;
 }
@@ -262,7 +262,7 @@ AmazonConnectRequest::getPinterestUserId()
 }
 
 void
-AmazonConnectRequest::setPinterestUserId(std::string  pinterest_user_id)
+AmazonConnectRequest::setPinterestUserId(std::string pinterest_user_id)
 {
 	this->pinterest_user_id = pinterest_user_id;
 }

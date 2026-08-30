@@ -23,7 +23,7 @@ part 'board_with_update_privacy.g.dart';
 /// * [id] 
 /// * [isAdsOnly] - If set to `true`, the board will be ad-only and can store ad-only Pins.
 /// * [media] - Board media.
-/// * [name] -      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+/// * [name] -     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 /// * [owner] 
 /// * [pinCount] - Count of Pins on the board.
 /// * [privacy] 
@@ -163,29 +163,33 @@ class _$BoardWithUpdatePrivacySerializer implements PrimitiveSerializer<BoardWit
         case r'owner':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BoardOwner),
-          ) as BoardOwner;
+            specifiedType: const FullType.nullable(BoardOwner),
+          ) as BoardOwner?;
+          if (valueDes == null) continue;
           result.owner.replace(valueDes);
           break;
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
+            specifiedType: const FullType.nullable(DateTime),
+          ) as DateTime?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'pin_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.pinCount = valueDes;
           break;
         case r'collaborator_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.collaboratorCount = valueDes;
           break;
         case r'name':
@@ -198,8 +202,9 @@ class _$BoardWithUpdatePrivacySerializer implements PrimitiveSerializer<BoardWit
         case r'privacy':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BoardUpdatePrivacy),
-          ) as BoardUpdatePrivacy;
+            specifiedType: const FullType.nullable(BoardUpdatePrivacy),
+          ) as BoardUpdatePrivacy?;
+          if (valueDes == null) continue;
           result.privacy = valueDes;
           break;
         case r'description':
@@ -220,29 +225,33 @@ class _$BoardWithUpdatePrivacySerializer implements PrimitiveSerializer<BoardWit
         case r'media':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BoardMedia),
-          ) as BoardMedia;
+            specifiedType: const FullType.nullable(BoardMedia),
+          ) as BoardMedia?;
+          if (valueDes == null) continue;
           result.media.replace(valueDes);
           break;
         case r'board_pins_modified_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
+            specifiedType: const FullType.nullable(DateTime),
+          ) as DateTime?;
+          if (valueDes == null) continue;
           result.boardPinsModifiedAt = valueDes;
           break;
         case r'follower_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.followerCount = valueDes;
           break;
         case r'is_ads_only':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isAdsOnly = valueDes;
           break;
         default:

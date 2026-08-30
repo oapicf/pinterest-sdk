@@ -1,0 +1,49 @@
+/*
+ * auth_respond_invite_action.h
+ *
+ * 
+ */
+
+#ifndef _auth_respond_invite_action_H_
+#define _auth_respond_invite_action_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct auth_respond_invite_action_t auth_respond_invite_action_t;
+
+#include "permissions.h"
+
+// Enum INNER for auth_respond_invite_action
+
+typedef enum  { pinterest_rest_api_auth_respond_invite_action_INNER_NULL = 0, pinterest_rest_api_auth_respond_invite_action_INNER_ADMIN, pinterest_rest_api_auth_respond_invite_action_INNER_ANALYST, pinterest_rest_api_auth_respond_invite_action_INNER_FINANCE_MANAGER, pinterest_rest_api_auth_respond_invite_action_INNER_FINANCE_EDIT, pinterest_rest_api_auth_respond_invite_action_INNER_FINANCE_VIEW, pinterest_rest_api_auth_respond_invite_action_INNER_AUDIENCE_MANAGER, pinterest_rest_api_auth_respond_invite_action_INNER_CAMPAIGN_MANAGER, pinterest_rest_api_auth_respond_invite_action_INNER_CATALOGS_MANAGER, pinterest_rest_api_auth_respond_invite_action_INNER_CATALOGS_VIEWER, pinterest_rest_api_auth_respond_invite_action_INNER_PROFILE_PUBLISHER, pinterest_rest_api_auth_respond_invite_action_INNER_CONSUMER_USER, pinterest_rest_api_auth_respond_invite_action_INNER_BIZ_PINNER_LIST_SHARER } pinterest_rest_api_auth_respond_invite_action_INNER_e;
+
+char* auth_respond_invite_action_inner_ToString(pinterest_rest_api_auth_respond_invite_action_INNER_e inner);
+
+pinterest_rest_api_auth_respond_invite_action_INNER_e auth_respond_invite_action_inner_FromString(char* inner);
+
+
+
+typedef struct auth_respond_invite_action_t {
+    int *accept_invite; //boolean
+    list_t* asset_id_to_permissions; //map
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} auth_respond_invite_action_t;
+
+__attribute__((deprecated)) auth_respond_invite_action_t *auth_respond_invite_action_create(
+    int *accept_invite,
+    list_t* asset_id_to_permissions
+);
+
+void auth_respond_invite_action_free(auth_respond_invite_action_t *auth_respond_invite_action);
+
+auth_respond_invite_action_t *auth_respond_invite_action_parseFromJSON(cJSON *auth_respond_invite_actionJSON);
+
+cJSON *auth_respond_invite_action_convertToJSON(auth_respond_invite_action_t *auth_respond_invite_action);
+
+#endif /* _auth_respond_invite_action_H_ */
+

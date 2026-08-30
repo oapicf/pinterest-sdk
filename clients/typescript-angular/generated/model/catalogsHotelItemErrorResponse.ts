@@ -8,14 +8,13 @@
  * Do not edit the class manually.
  */
 import { ItemValidationEvent } from './itemValidationEvent';
-import { CatalogsType } from './catalogsType';
 
 
 /**
  * Object describing a hotel item error
  */
 export interface CatalogsHotelItemErrorResponse { 
-    catalog_type: CatalogsType;
+    catalog_type: CatalogsHotelItemErrorResponse.CatalogTypeEnum;
     /**
      * Array with the errors for the item id requested
      */
@@ -24,8 +23,20 @@ export interface CatalogsHotelItemErrorResponse {
      * The catalog hotel id in the merchant namespace
      */
     hotel_id?: string;
+    /**
+     * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+     */
+    item_response_kind: CatalogsHotelItemErrorResponse.ItemResponseKindEnum;
 }
 export namespace CatalogsHotelItemErrorResponse {
+    export const CatalogTypeEnum = {
+        Hotel: 'HOTEL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
+    export const ItemResponseKindEnum = {
+        HotelItemError: 'hotel_item_error'
+    } as const;
+    export type ItemResponseKindEnum = typeof ItemResponseKindEnum[keyof typeof ItemResponseKindEnum];
 }
 
 

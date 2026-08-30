@@ -3,13 +3,16 @@ package models
 // PinUpdate - Resource create or update operation model.
 type PinUpdate struct {
 
+	// AI disclosure declarations the creator has made about this Pin.
+	AiDisclosures AiDisclosuresUpdate `json:"ai_disclosures,omitempty"`
+
 	AltText *string `json:"alt_text,omitempty"`
 
 	// The board to which this Pin belongs.
-	BoardId string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardId string `json:"board_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// The board section to which this Pin belongs.
-	BoardSectionId *string `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
+	BoardSectionId *string `json:"board_section_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Carousel Pin slots data.
 	CarouselSlots []CarouselSlot `json:"carousel_slots,omitempty"`

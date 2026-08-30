@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,15 +29,33 @@ func NewBulkAPIService() *BulkAPIService {
 }
 
 // BulkDownloadCreate - Get advertiser entities in bulk
-func (s *BulkAPIService) BulkDownloadCreate(ctx context.Context, adAccountId string, bulkDownloadRequest BulkDownloadRequest) (ImplResponse, error) {
+func (s *BulkAPIService) BulkDownloadCreate(ctx context.Context, adAccountId string, bulkDownloadCreate BulkDownloadCreate) (ImplResponse, error) {
 	// TODO - update BulkDownloadCreate with the required logic for this service method.
 	// Add api_bulk_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, BulkDownloadResponse{}) or use other options such as http.Ok ...
-	// return Response(200, BulkDownloadResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, BulkDownload{}) or use other options such as http.Ok ...
+	// return Response(200, BulkDownload{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, BulkDownload{}) or use other options such as http.Ok ...
+	// return Response(201, BulkDownload{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BulkDownloadCreate method not implemented")
 }
@@ -50,8 +68,8 @@ func (s *BulkAPIService) BulkUpsertCreate(ctx context.Context, adAccountId strin
 	// TODO: Uncomment the next line to return response Response(200, BulkUpsertResponse{}) or use other options such as http.Ok ...
 	// return Response(200, BulkUpsertResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BulkUpsertCreate method not implemented")
 }
@@ -61,11 +79,26 @@ func (s *BulkAPIService) BulkRequestGet(ctx context.Context, adAccountId string,
 	// TODO - update BulkRequestGet with the required logic for this service method.
 	// Add api_bulk_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, BulkUpsertStatusResponse{}) or use other options such as http.Ok ...
-	// return Response(200, BulkUpsertStatusResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, BulkJobData{}) or use other options such as http.Ok ...
+	// return Response(200, BulkJobData{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BulkRequestGet method not implemented")
 }

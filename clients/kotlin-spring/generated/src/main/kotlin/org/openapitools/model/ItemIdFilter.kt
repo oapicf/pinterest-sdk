@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ItemIdFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("ITEM_ID")
     @get:JsonProperty("ITEM_ID", required = true) val ITEM_ID: CatalogsProductGroupMultipleStringCriteria
 ) {
 

@@ -10,21 +10,24 @@ import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
 import org.openapitools.server.model.Account
 import org.openapitools.server.model.AnalyticsMetricsResponse
-import org.openapitools.server.model.BoardsUserFollowsList200Response
+import org.openapitools.server.model.BoardsList200Response
 import org.openapitools.server.model.Error
-import org.openapitools.server.model.FollowUserRequest
+import org.openapitools.server.model.FollowUser
+import org.openapitools.server.model.FollowUserCreate
 import org.openapitools.server.model.FollowersList200Response
 import org.openapitools.server.model.LinkedBusiness
 import java.time.LocalDate
+import org.openapitools.server.model.QuerymetrictypesItems
+import org.openapitools.server.model.QueryvideopinmetrictypesItems
 import org.openapitools.server.model.TopPinsAnalyticsResponse
+import org.openapitools.server.model.TopPinsSortBy
 import org.openapitools.server.model.TopVideoPinsAnalyticsResponse
+import org.openapitools.server.model.TopVideoPinsSortBy
 import org.openapitools.server.model.UserAccountFollowedInterests200Response
 import org.openapitools.server.model.UserFollowingFeedType
-import org.openapitools.server.model.UserFollowingGet200Response
-import org.openapitools.server.model.UserSummary
-import org.openapitools.server.model.UserWebsiteSummary
-import org.openapitools.server.model.UserWebsiteVerificationCode
-import org.openapitools.server.model.UserWebsiteVerifyRequest
+import org.openapitools.server.model.UserWebsite
+import org.openapitools.server.model.UserWebsiteCreate
+import org.openapitools.server.model.UserWebsiteVerification
 import org.openapitools.server.model.UserWebsitesGet200Response
 
 
@@ -40,15 +43,15 @@ class UserAccountApi(
   lazy val route: Route =
     path("user_account" / "following" / "boards") { 
       get { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "explicit_following".as[Boolean].?(false), "ad_account_id".as[String].?) { (bookmark, pageSize, explicitFollowing, adAccountId) => 
-            userAccountService.boardsUserFollowsList(bookmark = bookmark, pageSize = pageSize, explicitFollowing = explicitFollowing, adAccountId = adAccountId)
+        parameters("ad_account_id".as[String].?, "explicit_following".as[Boolean].?(false), "bookmark".as[String].?, "page_size".as[Int].?(25)) { (adAccountId, explicitFollowing, bookmark, pageSize) => 
+            userAccountService.boardsUserFollowsList(adAccountId = adAccountId, explicitFollowing = explicitFollowing, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
     path("user_account" / "following" / usernamePattern) { (username) => 
       post {  
-            entity(as[FollowUserRequest]){ followUserRequest =>
-              userAccountService.followUserUpdate(username = username, followUserRequest = followUserRequest)
+            entity(as[FollowUserCreate]){ followUserCreate =>
+              userAccountService.followUserUpdate(username = username, followUserCreate = followUserCreate)
             }
       }
     } ~
@@ -80,14 +83,14 @@ class UserAccountApi(
     } ~
     path("user_account" / "analytics" / "top_pins") { 
       get { 
-        parameters("start_date".as[String], "end_date".as[String], "sort_by".as[String], "from_claimed_content".as[String].?("BOTH"), "pin_format".as[String].?("ALL"), "app_types".as[String].?("ALL"), "content_type".as[String].?("ALL"), "source".as[String].?("ALL"), "metric_types".as[String].?, "num_of_pins".as[Int].?(10), "created_in_last_n_days".as[Int].?, "ad_account_id".as[String].?) { (startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId) => 
+        parameters("start_date".as[String], "end_date".as[String], "sort_by".as[String], "from_claimed_content".as[String].?("BOTH"), "pin_format".as[String].?("ALL"), "app_types".as[String].?("ALL"), "content_type".as[String].?("ALL"), "source".as[String].?("ALL"), "metric_types".as[String].?, "num_of_pins".as[Int].?(10), "created_in_last_n_days".as[Double].?, "ad_account_id".as[String].?) { (startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId) => 
             userAccountService.userAccountAnalyticsTopPins(startDate = startDate, endDate = endDate, sortBy = sortBy, fromClaimedContent = fromClaimedContent, pinFormat = pinFormat, appTypes = appTypes, contentType = contentType, source = source, metricTypes = metricTypes, numOfPins = numOfPins, createdInLastNDays = createdInLastNDays, adAccountId = adAccountId)
         }
       }
     } ~
     path("user_account" / "analytics" / "top_video_pins") { 
       get { 
-        parameters("start_date".as[String], "end_date".as[String], "sort_by".as[String], "from_claimed_content".as[String].?("BOTH"), "pin_format".as[String].?("ALL"), "app_types".as[String].?("ALL"), "content_type".as[String].?("ALL"), "source".as[String].?("ALL"), "metric_types".as[String].?, "num_of_pins".as[Int].?(10), "created_in_last_n_days".as[Int].?, "ad_account_id".as[String].?) { (startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId) => 
+        parameters("start_date".as[String], "end_date".as[String], "sort_by".as[String], "from_claimed_content".as[String].?("BOTH"), "pin_format".as[String].?("ALL"), "app_types".as[String].?("ALL"), "content_type".as[String].?("ALL"), "source".as[String].?("ALL"), "metric_types".as[String].?, "num_of_pins".as[Int].?(10), "created_in_last_n_days".as[Double].?, "ad_account_id".as[String].?) { (startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId) => 
             userAccountService.userAccountAnalyticsTopVideoPins(startDate = startDate, endDate = endDate, sortBy = sortBy, fromClaimedContent = fromClaimedContent, pinFormat = pinFormat, appTypes = appTypes, contentType = contentType, source = source, metricTypes = metricTypes, numOfPins = numOfPins, createdInLastNDays = createdInLastNDays, adAccountId = adAccountId)
         }
       }
@@ -108,8 +111,8 @@ class UserAccountApi(
     } ~
     path("user_account" / "following") { 
       get { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "feed_type".as[String].?, "explicit_following".as[Boolean].?(false), "ad_account_id".as[String].?) { (bookmark, pageSize, feedType, explicitFollowing, adAccountId) => 
-            userAccountService.userFollowingGet(bookmark = bookmark, pageSize = pageSize, feedType = feedType, explicitFollowing = explicitFollowing, adAccountId = adAccountId)
+        parameters("ad_account_id".as[String].?, "explicit_following".as[Boolean].?(false), "feed_type".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (adAccountId, explicitFollowing, feedType, bookmark, pageSize) => 
+            userAccountService.userFollowingGet(adAccountId = adAccountId, explicitFollowing = explicitFollowing, feedType = feedType, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
@@ -123,8 +126,8 @@ class UserAccountApi(
     path("user_account" / "websites") { 
       post { 
         parameters("ad_account_id".as[String].?) { (adAccountId) => 
-            entity(as[UserWebsiteVerifyRequest]){ userWebsiteVerifyRequest =>
-              userAccountService.verifyWebsiteUpdate(userWebsiteVerifyRequest = userWebsiteVerifyRequest, adAccountId = adAccountId)
+            entity(as[UserWebsiteCreate]){ userWebsiteCreate =>
+              userAccountService.verifyWebsiteUpdate(userWebsiteCreate = userWebsiteCreate, adAccountId = adAccountId)
             }
         }
       }
@@ -140,121 +143,223 @@ class UserAccountApi(
 
 object UserAccountApiPatterns {
 
-    val usernamePattern: PathMatcher1[String] = PathMatcher("(?!^\\d+$)^.+$".r)
+    val usernamePattern: PathMatcher1[String] = PathMatcher("""(?!^\\d+$)^.+$""".r)
 }
 
 trait UserAccountApiService {
 
-  def boardsUserFollowsList200(responseBoardsUserFollowsList200Response: BoardsUserFollowsList200Response)(implicit toEntityMarshallerBoardsUserFollowsList200Response: ToEntityMarshaller[BoardsUserFollowsList200Response]): Route =
-    complete((200, responseBoardsUserFollowsList200Response))
+  def boardsUserFollowsList200(responseBoardsList200Response: BoardsList200Response)(implicit toEntityMarshallerBoardsList200Response: ToEntityMarshaller[BoardsList200Response]): Route =
+    complete((200, responseBoardsList200Response))
   def boardsUserFollowsList400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def boardsUserFollowsList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def boardsUserFollowsList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def boardsUserFollowsList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def boardsUserFollowsList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def boardsUserFollowsListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: BoardsUserFollowsList200Response
-   * Code: 400, Message: Invalid user id, DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BoardsList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def boardsUserFollowsList(bookmark: Option[String], pageSize: Int, explicitFollowing: Boolean, adAccountId: Option[String])
-      (implicit toEntityMarshallerBoardsUserFollowsList200Response: ToEntityMarshaller[BoardsUserFollowsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def boardsUserFollowsList(adAccountId: Option[String], explicitFollowing: Boolean, bookmark: Option[String], pageSize: Int)
+      (implicit toEntityMarshallerBoardsList200Response: ToEntityMarshaller[BoardsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def followUserUpdate200(responseUserSummary: UserSummary)(implicit toEntityMarshallerUserSummary: ToEntityMarshaller[UserSummary]): Route =
-    complete((200, responseUserSummary))
+  def followUserUpdate200(responseFollowUser: FollowUser)(implicit toEntityMarshallerFollowUser: ToEntityMarshaller[FollowUser]): Route =
+    complete((200, responseFollowUser))
+  def followUserUpdate201(responseFollowUser: FollowUser)(implicit toEntityMarshallerFollowUser: ToEntityMarshaller[FollowUser]): Route =
+    complete((201, responseFollowUser))
+  def followUserUpdate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def followUserUpdate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def followUserUpdate403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
   def followUserUpdate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def followUserUpdate429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def followUserUpdateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: UserSummary
-   * Code: 404, Message: User not found, DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: FollowUser
+   * Code: 201, Message: Resource create operation completed successfully., DataType: FollowUser
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def followUserUpdate(username: String, followUserRequest: FollowUserRequest)
-      (implicit toEntityMarshallerUserSummary: ToEntityMarshaller[UserSummary], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def followUserUpdate(username: String, followUserCreate: FollowUserCreate)
+      (implicit toEntityMarshallerFollowUser: ToEntityMarshaller[FollowUser], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def followersList200(responseFollowersList200Response: FollowersList200Response)(implicit toEntityMarshallerFollowersList200Response: ToEntityMarshaller[FollowersList200Response]): Route =
     complete((200, responseFollowersList200Response))
   def followersList400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def followersList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def followersList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def followersList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def followersList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def followersListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: FollowersList200Response
-   * Code: 400, Message: Invalid user id, DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: FollowersList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def followersList(bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerFollowersList200Response: ToEntityMarshaller[FollowersList200Response]): Route
 
   def linkedBusinessAccountsGet200(responseLinkedBusinessarray: Seq[LinkedBusiness])(implicit toEntityMarshallerLinkedBusinessarray: ToEntityMarshaller[Seq[LinkedBusiness]]): Route =
     complete((200, responseLinkedBusinessarray))
+  def linkedBusinessAccountsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def linkedBusinessAccountsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def linkedBusinessAccountsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def linkedBusinessAccountsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def linkedBusinessAccountsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def linkedBusinessAccountsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: Seq[LinkedBusiness]
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: Seq[LinkedBusiness]
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def linkedBusinessAccountsGet()
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerLinkedBusinessarray: ToEntityMarshaller[Seq[LinkedBusiness]]): Route
 
+  def unverifyWebsiteDelete200(responseUserWebsite: UserWebsite)(implicit toEntityMarshallerUserWebsite: ToEntityMarshaller[UserWebsite]): Route =
+    complete((200, responseUserWebsite))
   def unverifyWebsiteDelete204: Route =
-    complete((204, "Successfully unverified website"))
+    complete((204, "Resource deleted successfully."))
+  def unverifyWebsiteDelete400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def unverifyWebsiteDelete401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def unverifyWebsiteDelete403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
   def unverifyWebsiteDelete404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def unverifyWebsiteDelete429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def unverifyWebsiteDeleteDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 204, Message: Successfully unverified website
-   * Code: 404, Message: Website not in user list., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: UserWebsite
+   * Code: 204, Message: Resource deleted successfully.
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def unverifyWebsiteDelete(website: String)
-      (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerUserWebsite: ToEntityMarshaller[UserWebsite], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def userAccountAnalytics200(responseAnalyticsMetricsResponsemap: Map[String, AnalyticsMetricsResponse])(implicit toEntityMarshallerAnalyticsMetricsResponsemap: ToEntityMarshaller[Map[String, AnalyticsMetricsResponse]]): Route =
     complete((200, responseAnalyticsMetricsResponsemap))
   def userAccountAnalytics400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def userAccountAnalytics401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def userAccountAnalytics403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
+  def userAccountAnalytics404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def userAccountAnalytics429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def userAccountAnalyticsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: Map[String, AnalyticsMetricsResponse]
-   * Code: 400, Message: Invalid user accounts analytics parameters., DataType: Error
-   * Code: 403, Message: Not authorized to access the user account analytics., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: Map[String, AnalyticsMetricsResponse]
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def userAccountAnalytics(startDate: String, endDate: String, fromClaimedContent: String, pinFormat: String, appTypes: String, contentType: String, source: String, metricTypes: Option[String], splitField: String, adAccountId: Option[String])
       (implicit toEntityMarshallerAnalyticsMetricsResponsemap: ToEntityMarshaller[Map[String, AnalyticsMetricsResponse]], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def userAccountAnalyticsTopPins200(responseTopPinsAnalyticsResponse: TopPinsAnalyticsResponse)(implicit toEntityMarshallerTopPinsAnalyticsResponse: ToEntityMarshaller[TopPinsAnalyticsResponse]): Route =
     complete((200, responseTopPinsAnalyticsResponse))
+  def userAccountAnalyticsTopPins400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def userAccountAnalyticsTopPins401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def userAccountAnalyticsTopPins403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
+  def userAccountAnalyticsTopPins404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def userAccountAnalyticsTopPins429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def userAccountAnalyticsTopPinsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: TopPinsAnalyticsResponse
-   * Code: 403, Message: Not authorized to access the user account analytics., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: TopPinsAnalyticsResponse
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def userAccountAnalyticsTopPins(startDate: String, endDate: String, sortBy: String, fromClaimedContent: String, pinFormat: String, appTypes: String, contentType: String, source: String, metricTypes: Option[String], numOfPins: Int, createdInLastNDays: Option[Int], adAccountId: Option[String])
+  def userAccountAnalyticsTopPins(startDate: String, endDate: String, sortBy: String, fromClaimedContent: String, pinFormat: String, appTypes: String, contentType: String, source: String, metricTypes: Option[String], numOfPins: Int, createdInLastNDays: Option[Double], adAccountId: Option[String])
       (implicit toEntityMarshallerTopPinsAnalyticsResponse: ToEntityMarshaller[TopPinsAnalyticsResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def userAccountAnalyticsTopVideoPins200(responseTopVideoPinsAnalyticsResponse: TopVideoPinsAnalyticsResponse)(implicit toEntityMarshallerTopVideoPinsAnalyticsResponse: ToEntityMarshaller[TopVideoPinsAnalyticsResponse]): Route =
     complete((200, responseTopVideoPinsAnalyticsResponse))
+  def userAccountAnalyticsTopVideoPins400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def userAccountAnalyticsTopVideoPins401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def userAccountAnalyticsTopVideoPins403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
+  def userAccountAnalyticsTopVideoPins404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def userAccountAnalyticsTopVideoPins429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def userAccountAnalyticsTopVideoPinsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: TopVideoPinsAnalyticsResponse
-   * Code: 403, Message: Not authorized to access the user account analytics., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: TopVideoPinsAnalyticsResponse
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def userAccountAnalyticsTopVideoPins(startDate: String, endDate: String, sortBy: String, fromClaimedContent: String, pinFormat: String, appTypes: String, contentType: String, source: String, metricTypes: Option[String], numOfPins: Int, createdInLastNDays: Option[Int], adAccountId: Option[String])
+  def userAccountAnalyticsTopVideoPins(startDate: String, endDate: String, sortBy: String, fromClaimedContent: String, pinFormat: String, appTypes: String, contentType: String, source: String, metricTypes: Option[String], numOfPins: Int, createdInLastNDays: Option[Double], adAccountId: Option[String])
       (implicit toEntityMarshallerTopVideoPinsAnalyticsResponse: ToEntityMarshaller[TopVideoPinsAnalyticsResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def userAccountFollowedInterests200(responseUserAccountFollowedInterests200Response: UserAccountFollowedInterests200Response)(implicit toEntityMarshallerUserAccountFollowedInterests200Response: ToEntityMarshaller[UserAccountFollowedInterests200Response]): Route =
@@ -268,10 +373,10 @@ trait UserAccountApiService {
   def userAccountFollowedInterestsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: UserAccountFollowedInterests200Response
-   * Code: 400, Message: Invalid parameters, DataType: Error
-   * Code: 401, Message: Authorization failed, DataType: Error
-   * Code: 404, Message: User not found, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: UserAccountFollowedInterests200Response
+   * Code: 400, Message: The server could not understand the request due to invalid syntax., DataType: Error
+   * Code: 401, Message: Access is unauthorized., DataType: Error
+   * Code: 404, Message: The server cannot find the requested resource., DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
   def userAccountFollowedInterests(username: String, bookmark: Option[String], pageSize: Int)
@@ -279,84 +384,153 @@ trait UserAccountApiService {
 
   def userAccountGet200(responseAccount: Account)(implicit toEntityMarshallerAccount: ToEntityMarshaller[Account]): Route =
     complete((200, responseAccount))
+  def userAccountGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def userAccountGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def userAccountGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
+  def userAccountGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def userAccountGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def userAccountGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: response, DataType: Account
-   * Code: 403, Message: Not authorized to access the user account., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: Account
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def userAccountGet(adAccountId: Option[String])
       (implicit toEntityMarshallerAccount: ToEntityMarshaller[Account], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def userFollowingGet200(responseUserFollowingGet200Response: UserFollowingGet200Response)(implicit toEntityMarshallerUserFollowingGet200Response: ToEntityMarshaller[UserFollowingGet200Response]): Route =
-    complete((200, responseUserFollowingGet200Response))
+  def userFollowingGet200(responseFollowersList200Response: FollowersList200Response)(implicit toEntityMarshallerFollowersList200Response: ToEntityMarshaller[FollowersList200Response]): Route =
+    complete((200, responseFollowersList200Response))
+  def userFollowingGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def userFollowingGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def userFollowingGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def userFollowingGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def userFollowingGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def userFollowingGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: response, DataType: UserFollowingGet200Response
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: FollowersList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def userFollowingGet(bookmark: Option[String], pageSize: Int, feedType: Option[String], explicitFollowing: Boolean, adAccountId: Option[String])
-      (implicit toEntityMarshallerUserFollowingGet200Response: ToEntityMarshaller[UserFollowingGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def userFollowingGet(adAccountId: Option[String], explicitFollowing: Boolean, feedType: Option[String], bookmark: Option[String], pageSize: Int)
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerFollowersList200Response: ToEntityMarshaller[FollowersList200Response]): Route
 
   def userWebsitesGet200(responseUserWebsitesGet200Response: UserWebsitesGet200Response)(implicit toEntityMarshallerUserWebsitesGet200Response: ToEntityMarshaller[UserWebsitesGet200Response]): Route =
     complete((200, responseUserWebsitesGet200Response))
+  def userWebsitesGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def userWebsitesGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def userWebsitesGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
+  def userWebsitesGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def userWebsitesGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def userWebsitesGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: UserWebsitesGet200Response
-   * Code: 403, Message: Not authorized to access the user website list., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: UserWebsitesGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def userWebsitesGet(bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerUserWebsitesGet200Response: ToEntityMarshaller[UserWebsitesGet200Response]): Route
 
-  def verifyWebsiteUpdate200(responseUserWebsiteSummary: UserWebsiteSummary)(implicit toEntityMarshallerUserWebsiteSummary: ToEntityMarshaller[UserWebsiteSummary]): Route =
-    complete((200, responseUserWebsiteSummary))
+  def verifyWebsiteUpdate200(responseUserWebsite: UserWebsite)(implicit toEntityMarshallerUserWebsite: ToEntityMarshaller[UserWebsite]): Route =
+    complete((200, responseUserWebsite))
+  def verifyWebsiteUpdate201(responseUserWebsite: UserWebsite)(implicit toEntityMarshallerUserWebsite: ToEntityMarshaller[UserWebsite]): Route =
+    complete((201, responseUserWebsite))
+  def verifyWebsiteUpdate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def verifyWebsiteUpdate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def verifyWebsiteUpdate403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def verifyWebsiteUpdate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def verifyWebsiteUpdate429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def verifyWebsiteUpdateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: UserWebsiteSummary
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: UserWebsite
+   * Code: 201, Message: Resource create operation completed successfully., DataType: UserWebsite
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: Option[String])
-      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerUserWebsiteSummary: ToEntityMarshaller[UserWebsiteSummary]): Route
+  def verifyWebsiteUpdate(userWebsiteCreate: UserWebsiteCreate, adAccountId: Option[String])
+      (implicit toEntityMarshallerUserWebsite: ToEntityMarshaller[UserWebsite], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def websiteVerificationGet200(responseUserWebsiteVerificationCode: UserWebsiteVerificationCode)(implicit toEntityMarshallerUserWebsiteVerificationCode: ToEntityMarshaller[UserWebsiteVerificationCode]): Route =
-    complete((200, responseUserWebsiteVerificationCode))
+  def websiteVerificationGet200(responseUserWebsiteVerification: UserWebsiteVerification)(implicit toEntityMarshallerUserWebsiteVerification: ToEntityMarshaller[UserWebsiteVerification]): Route =
+    complete((200, responseUserWebsiteVerification))
+  def websiteVerificationGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def websiteVerificationGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
   def websiteVerificationGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((403, responseError))
+  def websiteVerificationGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def websiteVerificationGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def websiteVerificationGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: UserWebsiteVerificationCode
-   * Code: 403, Message: Not authorized to access the user verification code for website claiming., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: UserWebsiteVerification
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def websiteVerificationGet(adAccountId: Option[String])
-      (implicit toEntityMarshallerUserWebsiteVerificationCode: ToEntityMarshaller[UserWebsiteVerificationCode], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerUserWebsiteVerification: ToEntityMarshaller[UserWebsiteVerification], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
 
 trait UserAccountApiMarshaller {
-  implicit def fromEntityUnmarshallerUserWebsiteVerifyRequest: FromEntityUnmarshaller[UserWebsiteVerifyRequest]
+  implicit def fromEntityUnmarshallerUserWebsiteCreate: FromEntityUnmarshaller[UserWebsiteCreate]
 
-  implicit def fromEntityUnmarshallerFollowUserRequest: FromEntityUnmarshaller[FollowUserRequest]
+  implicit def fromEntityUnmarshallerFollowUserCreate: FromEntityUnmarshaller[FollowUserCreate]
 
 
 
   implicit def toEntityMarshallerAccount: ToEntityMarshaller[Account]
 
-  implicit def toEntityMarshallerUserSummary: ToEntityMarshaller[UserSummary]
-
-  implicit def toEntityMarshallerUserFollowingGet200Response: ToEntityMarshaller[UserFollowingGet200Response]
+  implicit def toEntityMarshallerFollowUser: ToEntityMarshaller[FollowUser]
 
   implicit def toEntityMarshallerAnalyticsMetricsResponsemap: ToEntityMarshaller[Map[String, AnalyticsMetricsResponse]]
+
+  implicit def toEntityMarshallerUserWebsite: ToEntityMarshaller[UserWebsite]
 
   implicit def toEntityMarshallerUserAccountFollowedInterests200Response: ToEntityMarshaller[UserAccountFollowedInterests200Response]
 
@@ -368,15 +542,13 @@ trait UserAccountApiMarshaller {
 
   implicit def toEntityMarshallerTopPinsAnalyticsResponse: ToEntityMarshaller[TopPinsAnalyticsResponse]
 
-  implicit def toEntityMarshallerUserWebsiteVerificationCode: ToEntityMarshaller[UserWebsiteVerificationCode]
+  implicit def toEntityMarshallerUserWebsiteVerification: ToEntityMarshaller[UserWebsiteVerification]
 
-  implicit def toEntityMarshallerBoardsUserFollowsList200Response: ToEntityMarshaller[BoardsUserFollowsList200Response]
+  implicit def toEntityMarshallerBoardsList200Response: ToEntityMarshaller[BoardsList200Response]
 
   implicit def toEntityMarshallerTopVideoPinsAnalyticsResponse: ToEntityMarshaller[TopVideoPinsAnalyticsResponse]
 
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
-
-  implicit def toEntityMarshallerUserWebsiteSummary: ToEntityMarshaller[UserWebsiteSummary]
 
 }
 

@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.AdvancedAuctionItemsGetRecord
+import org.openapitools.model.AdvancedAuctionKey
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,12 +23,14 @@ data class AdvancedAuctionItemsGetRequest(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the retail item")
+    @param:JsonProperty("catalog_id")
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
     @field:Valid
     @get:Size(min=1,max=10000) 
-    @Schema(example = "null", required = true, description = "A list of retail catalog items to fetch bid options for")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<AdvancedAuctionItemsGetRecord>
+    @Schema(required = true, description = "A list of retail catalog items to fetch bid options for")
+    @param:JsonProperty("items")
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<AdvancedAuctionKey>
 ) {
 
 }

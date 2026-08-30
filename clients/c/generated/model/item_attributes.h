@@ -15,6 +15,7 @@
 
 typedef struct item_attributes_t item_attributes_t;
 
+#include "catalogs_ai_content_disclosure.h"
 #include "updatable_item_attributes_gtin.h"
 
 
@@ -67,13 +68,13 @@ typedef struct item_attributes_t {
     char *ad_video_1_tag; // string
     char *ad_video_2_link; // string
     char *ad_video_2_tag; // string
-    int adult; //boolean
+    int *adult; //boolean
     char *age_group; // string
     char *android_deep_link; // string
     char *availability; // string
-    double average_review_rating; //numeric
+    double *average_review_rating; //numeric
     char *brand; // string
-    int checkout_enabled; //boolean
+    int *checkout_enabled; //boolean
     char *color; // string
     char *condition; // string
     char *custom_label_0; // string
@@ -81,13 +82,13 @@ typedef struct item_attributes_t {
     char *custom_label_2; // string
     char *custom_label_3; // string
     char *custom_label_4; // string
-    int custom_number_0; //numeric
-    int custom_number_1; //numeric
-    int custom_number_2; //numeric
-    int custom_number_3; //numeric
-    int custom_number_4; //numeric
+    int *custom_number_0; //numeric
+    int *custom_number_1; //numeric
+    int *custom_number_2; //numeric
+    int *custom_number_3; //numeric
+    int *custom_number_4; //numeric
     char *description; // string
-    int free_shipping_label; //boolean
+    int *free_shipping_label; //boolean
     char *free_shipping_limit; // string
     char *gender; // string
     char *google_product_category; // string
@@ -96,14 +97,14 @@ typedef struct item_attributes_t {
     char *installment_price; // string
     char *ios_deep_link; // string
     char *item_group_id; // string
-    long last_updated_time; //numeric
+    long *last_updated_time; //numeric
     char *link; // string
     char *material; // string
     char *min_ad_price; // string
     char *mobile_link; // string
     char *mpn; // string
-    int number_of_ratings; //numeric
-    int number_of_reviews; //numeric
+    int *number_of_ratings; //numeric
+    int *number_of_reviews; //numeric
     char *pattern; // string
     char *price; // string
     char *product_type; // string
@@ -124,6 +125,7 @@ typedef struct item_attributes_t {
     list_t *variant_names; //primitive container
     list_t *variant_values; //primitive container
     list_t *additional_image_link; //primitive container
+    list_t *ai_disclosures; //nonprimitive container
     list_t *image_link; //primitive container
     char *video_link; // string
 
@@ -178,13 +180,13 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
     char *ad_video_1_tag,
     char *ad_video_2_link,
     char *ad_video_2_tag,
-    int adult,
+    int *adult,
     char *age_group,
     char *android_deep_link,
     char *availability,
-    double average_review_rating,
+    double *average_review_rating,
     char *brand,
-    int checkout_enabled,
+    int *checkout_enabled,
     char *color,
     char *condition,
     char *custom_label_0,
@@ -192,13 +194,13 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
     char *custom_label_2,
     char *custom_label_3,
     char *custom_label_4,
-    int custom_number_0,
-    int custom_number_1,
-    int custom_number_2,
-    int custom_number_3,
-    int custom_number_4,
+    int *custom_number_0,
+    int *custom_number_1,
+    int *custom_number_2,
+    int *custom_number_3,
+    int *custom_number_4,
     char *description,
-    int free_shipping_label,
+    int *free_shipping_label,
     char *free_shipping_limit,
     char *gender,
     char *google_product_category,
@@ -207,14 +209,14 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
     char *installment_price,
     char *ios_deep_link,
     char *item_group_id,
-    long last_updated_time,
+    long *last_updated_time,
     char *link,
     char *material,
     char *min_ad_price,
     char *mobile_link,
     char *mpn,
-    int number_of_ratings,
-    int number_of_reviews,
+    int *number_of_ratings,
+    int *number_of_reviews,
     char *pattern,
     char *price,
     char *product_type,
@@ -235,6 +237,7 @@ __attribute__((deprecated)) item_attributes_t *item_attributes_create(
     list_t *variant_names,
     list_t *variant_values,
     list_t *additional_image_link,
+    list_t *ai_disclosures,
     list_t *image_link,
     char *video_link
 );

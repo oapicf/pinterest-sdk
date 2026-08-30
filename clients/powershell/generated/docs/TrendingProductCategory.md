@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 **EngagementType** | [**ProductCategoriesEngagementType**](ProductCategoriesEngagementType.md) | Engagement type | 
 **PctChangeMom** | **Int32** | Month-over-month change percentage | 
 **PercentRelativeVolume** | **Int32** | Relative volume percentage | 
+**PinterestProductCategoryId** | **Int32** | Pinterest Product Category Id | 
 **ProductCategory** | **String** | Product Category Name | 
-**Verticals** | [**VerticalProductCategory[]**](VerticalProductCategory.md) | Vertical name associated with the product category | [optional] 
+**Verticals** | **String[]** | Vertical name associated with the product category | [optional] 
 
 ## Examples
 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 $TrendingProductCategory = Initialize-PSOpenAPIToolsTrendingProductCategory  -EngagementType null `
  -PctChangeMom null `
  -PercentRelativeVolume null `
+ -PinterestProductCategoryId null `
  -ProductCategory null `
  -Verticals null
 ```

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Create customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 
@@ -43,11 +43,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = CustomerListUploadsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val adAccountId: String = adAccountId_example // String | 
 
-    val customerListId: String = customerListId_example // String | Unique identifier of a customer list
+    val customerListId: String = customerListId_example // String | Customer list ID.
 
-    val customerListUploadCreateRequest: CustomerListUploadCreateRequest =  // CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+    val customerListUploadCreateRequest: CustomerListUploadCreateRequest =  // CustomerListUploadCreateRequest | 
     
     val request = apiInstance.customerListUploadsCreate(adAccountId, customerListId, customerListUploadCreateRequest)
     val response = apiInvoker.execute(request)
@@ -77,9 +77,9 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
- **customerListId** | **String**| Unique identifier of a customer list |
- **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request |
+ **adAccountId** | **String**|  |
+ **customerListId** | **String**| Customer list ID. |
+ **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)|  |
 
 ### Return type
 
@@ -98,17 +98,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## customerListUploadsGet
 
-> customerListUploadsGet(customerListUploadsGetRequest): ApiRequest[CustomerListUploadResponse]
+> customerListUploadsGet(customerListUploadsGetRequest): ApiRequest[CustomerListUpload]
 
 Get customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
+Get the metadata for a given upload by its ID.
 
 ### Example
 
@@ -131,11 +136,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = CustomerListUploadsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val adAccountId: String = adAccountId_example // String | 
 
-    val customerListId: String = customerListId_example // String | Unique identifier of a customer list
+    val customerListId: String = customerListId_example // String | Customer list ID.
 
-    val customerListUploadId: String = customerListUploadId_example // String | Unique identifier of a customer list upload
+    val customerListUploadId: String = customerListUploadId_example // String | Customer List Upload ID.
     
     val request = apiInstance.customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
     val response = apiInvoker.execute(request)
@@ -165,13 +170,13 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
- **customerListId** | **String**| Unique identifier of a customer list |
- **customerListUploadId** | **String**| Unique identifier of a customer list upload |
+ **adAccountId** | **String**|  |
+ **customerListId** | **String**| Customer list ID. |
+ **customerListUploadId** | **String**| Customer List Upload ID. |
 
 ### Return type
 
-ApiRequest[[**CustomerListUploadResponse**](CustomerListUploadResponse.md)]
+ApiRequest[[**CustomerListUpload**](CustomerListUpload.md)]
 
 
 ### Authorization
@@ -186,17 +191,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## customerListUploadsRun
 
-> customerListUploadsRun(customerListUploadsRunRequest): ApiRequest[CustomerListUploadResponse]
+> customerListUploadsRun(customerListUploadsRunRequest): ApiRequest[CustomerListUpload]
 
 Run customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
+Begin processing a customer list upload.
 
 ### Example
 
@@ -219,11 +229,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = CustomerListUploadsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val adAccountId: String = adAccountId_example // String | 
 
-    val customerListId: String = customerListId_example // String | Unique identifier of a customer list
+    val customerListId: String = customerListId_example // String | Customer list ID.
 
-    val customerListUploadId: String = customerListUploadId_example // String | Unique identifier of a customer list upload
+    val customerListUploadId: String = customerListUploadId_example // String | Customer List Upload ID.
     
     val request = apiInstance.customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
     val response = apiInvoker.execute(request)
@@ -253,13 +263,13 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
- **customerListId** | **String**| Unique identifier of a customer list |
- **customerListUploadId** | **String**| Unique identifier of a customer list upload |
+ **adAccountId** | **String**|  |
+ **customerListId** | **String**| Customer list ID. |
+ **customerListUploadId** | **String**| Customer List Upload ID. |
 
 ### Return type
 
-ApiRequest[[**CustomerListUploadResponse**](CustomerListUploadResponse.md)]
+ApiRequest[[**CustomerListUpload**](CustomerListUpload.md)]
 
 
 ### Authorization
@@ -274,6 +284,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

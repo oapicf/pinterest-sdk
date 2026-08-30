@@ -13,7 +13,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |[**integrationsLogsPost**](#integrationslogspost) | **POST** /integrations/logs | Receives batched logs from integration applications.|
 
 # **integrationsCommerceDel**
-> integrationsCommerceDel()
+> IntegrationMetadata integrationsCommerceDel()
 
 Delete commerce integration metadata for the given external business ID. Note: If you\'re interested in joining the beta, please reach out to your Pinterest account manager.
 
@@ -44,7 +44,7 @@ const { status, data } = await apiInstance.integrationsCommerceDel(
 
 ### Return type
 
-void (empty response body)
+**IntegrationMetadata**
 
 ### Authorization
 
@@ -59,8 +59,14 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | Commerce Integration deleted successfully |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**204** | Resource deleted successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -111,15 +117,18 @@ const { status, data } = await apiInstance.integrationsCommerceGet(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | Integration not found. |  -  |
-|**409** | Can\&#39;t access this integration metadata. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrationsCommercePatch**
-> IntegrationMetadata integrationsCommercePatch(integrationRequestPatch)
+> IntegrationMetadata integrationsCommercePatch(integrationMetadataUpdate)
 
 Update commerce integration metadata for the given external business ID. Note: If you\'re interested in joining the beta, please reach out to your Pinterest account manager.
 
@@ -129,18 +138,18 @@ Update commerce integration metadata for the given external business ID. Note: I
 import {
     IntegrationsApi,
     Configuration,
-    IntegrationRequestPatch
+    IntegrationMetadataUpdate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new IntegrationsApi(configuration);
 
 let externalBusinessId: string; //External business ID for the integration. (default to undefined)
-let integrationRequestPatch: IntegrationRequestPatch; //Parameters to get create/update the Integration Metadata
+let integrationMetadataUpdate: IntegrationMetadataUpdate; //
 
 const { status, data } = await apiInstance.integrationsCommercePatch(
     externalBusinessId,
-    integrationRequestPatch
+    integrationMetadataUpdate
 );
 ```
 
@@ -148,7 +157,7 @@ const { status, data } = await apiInstance.integrationsCommercePatch(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **integrationRequestPatch** | **IntegrationRequestPatch**| Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataUpdate** | **IntegrationMetadataUpdate**|  | |
 | **externalBusinessId** | [**string**] | External business ID for the integration. | defaults to undefined|
 
 
@@ -169,15 +178,18 @@ const { status, data } = await apiInstance.integrationsCommercePatch(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | Integration not found. |  -  |
-|**409** | Can\&#39;t access this integration metadata. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrationsCommercePost**
-> IntegrationMetadata integrationsCommercePost(integrationRequest)
+> IntegrationMetadata integrationsCommercePost(integrationMetadataCreate)
 
 Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you\'re interested in joining the beta, please reach out to your Pinterest account manager.
 
@@ -187,16 +199,16 @@ Create commerce integration metadata to link an external business ID with a Pint
 import {
     IntegrationsApi,
     Configuration,
-    IntegrationRequest
+    IntegrationMetadataCreate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new IntegrationsApi(configuration);
 
-let integrationRequest: IntegrationRequest; //Parameters to get create/update the Integration Metadata
+let integrationMetadataCreate: IntegrationMetadataCreate; //
 
 const { status, data } = await apiInstance.integrationsCommercePost(
-    integrationRequest
+    integrationMetadataCreate
 );
 ```
 
@@ -204,7 +216,7 @@ const { status, data } = await apiInstance.integrationsCommercePost(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **integrationRequest** | **IntegrationRequest**| Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataCreate** | **IntegrationMetadataCreate**|  | |
 
 
 ### Return type
@@ -224,10 +236,14 @@ const { status, data } = await apiInstance.integrationsCommercePost(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | Integration not found. |  -  |
-|**409** | Can\&#39;t access this integration metadata. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**201** | Resource create operation completed successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -247,7 +263,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new IntegrationsApi(configuration);
 
-let id: string; //Integration ID. (default to undefined)
+let id: string; //Integration record ID. (default to undefined)
 
 const { status, data } = await apiInstance.integrationsGetById(
     id
@@ -258,7 +274,7 @@ const { status, data } = await apiInstance.integrationsGetById(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **id** | [**string**] | Integration ID. | defaults to undefined|
+| **id** | [**string**] | Integration record ID. | defaults to undefined|
 
 
 ### Return type
@@ -278,9 +294,13 @@ const { status, data } = await apiInstance.integrationsGetById(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | Integration not found. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -301,7 +321,7 @@ const configuration = new Configuration();
 const apiInstance = new IntegrationsApi(configuration);
 
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 const { status, data } = await apiInstance.integrationsGetList(
     bookmark,
@@ -314,7 +334,7 @@ const { status, data } = await apiInstance.integrationsGetList(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
 
 
 ### Return type
@@ -334,13 +354,18 @@ const { status, data } = await apiInstance.integrationsGetList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **integrationsLogsPost**
-> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequest)
+> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequestCreate)
 
 This endpoint receives batched logs from integration applications on partner platforms. Note: If you\'re interested in joining the beta, please reach out to your Pinterest account manager.
 
@@ -350,16 +375,16 @@ This endpoint receives batched logs from integration applications on partner pla
 import {
     IntegrationsApi,
     Configuration,
-    IntegrationLogsRequest
+    IntegrationLogsRequestCreate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new IntegrationsApi(configuration);
 
-let integrationLogsRequest: IntegrationLogsRequest; //Ingest log information from external integration application.
+let integrationLogsRequestCreate: IntegrationLogsRequestCreate; //
 
 const { status, data } = await apiInstance.integrationsLogsPost(
-    integrationLogsRequest
+    integrationLogsRequestCreate
 );
 ```
 
@@ -367,7 +392,7 @@ const { status, data } = await apiInstance.integrationsLogsPost(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **integrationLogsRequest** | **IntegrationLogsRequest**| Ingest log information from external integration application. | |
+| **integrationLogsRequestCreate** | **IntegrationLogsRequestCreate**|  | |
 
 
 ### Return type
@@ -387,9 +412,13 @@ const { status, data } = await apiInstance.integrationsLogsPost(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success. |  -  |
-|**400** | Bad request. |  -  |
-|**0** | Unexpected error |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The server could not understand the request due to invalid syntax. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

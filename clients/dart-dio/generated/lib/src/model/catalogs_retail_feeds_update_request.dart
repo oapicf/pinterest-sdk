@@ -6,10 +6,10 @@
 import 'package:openapi/src/model/catalogs_feed_credentials.dart';
 import 'package:openapi/src/model/catalogs_feed_processing_schedule.dart';
 import 'package:openapi/src/model/nullable_currency.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/product_availability_type.dart';
 import 'package:openapi/src/model/catalogs_status.dart';
 import 'package:openapi/src/model/catalogs_format.dart';
-import 'package:openapi/src/model/catalogs_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -30,8 +30,8 @@ part 'catalogs_retail_feeds_update_request.g.dart';
 @BuiltValue()
 abstract class CatalogsRetailFeedsUpdateRequest implements Built<CatalogsRetailFeedsUpdateRequest, CatalogsRetailFeedsUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'catalog_type')
-  CatalogsType get catalogType;
-  // enum catalogTypeEnum {  RETAIL,  HOTEL,  CREATIVE_ASSETS,  };
+  CatalogsRetailFeedsUpdateRequestCatalogTypeEnum get catalogType;
+  // enum catalogTypeEnum {  RETAIL,  };
 
   @BuiltValueField(wireName: r'credentials')
   CatalogsFeedCredentials? get credentials;
@@ -46,7 +46,7 @@ abstract class CatalogsRetailFeedsUpdateRequest implements Built<CatalogsRetailF
 
   @BuiltValueField(wireName: r'format')
   CatalogsFormat? get format;
-  // enum formatEnum {  TSV,  CSV,  XML,  };
+  // enum formatEnum {  TSV,  CSV,  XML,  INTEGRATION,  };
 
   /// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   @BuiltValueField(wireName: r'location')
@@ -89,7 +89,7 @@ class _$CatalogsRetailFeedsUpdateRequestSerializer implements PrimitiveSerialize
     yield r'catalog_type';
     yield serializers.serialize(
       object.catalogType,
-      specifiedType: const FullType(CatalogsType),
+      specifiedType: const FullType(CatalogsRetailFeedsUpdateRequestCatalogTypeEnum),
     );
     if (object.credentials != null) {
       yield r'credentials';
@@ -173,8 +173,8 @@ class _$CatalogsRetailFeedsUpdateRequestSerializer implements PrimitiveSerialize
         case r'catalog_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsType),
-          ) as CatalogsType;
+            specifiedType: const FullType(CatalogsRetailFeedsUpdateRequestCatalogTypeEnum),
+          ) as CatalogsRetailFeedsUpdateRequestCatalogTypeEnum;
           result.catalogType = valueDes;
           break;
         case r'credentials':
@@ -204,22 +204,25 @@ class _$CatalogsRetailFeedsUpdateRequestSerializer implements PrimitiveSerialize
         case r'format':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsFormat),
-          ) as CatalogsFormat;
+            specifiedType: const FullType.nullable(CatalogsFormat),
+          ) as CatalogsFormat?;
+          if (valueDes == null) continue;
           result.format = valueDes;
           break;
         case r'location':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.location = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'preferred_processing_schedule':
@@ -233,8 +236,9 @@ class _$CatalogsRetailFeedsUpdateRequestSerializer implements PrimitiveSerialize
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsStatus),
-          ) as CatalogsStatus;
+            specifiedType: const FullType.nullable(CatalogsStatus),
+          ) as CatalogsStatus?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:
@@ -264,5 +268,18 @@ class _$CatalogsRetailFeedsUpdateRequestSerializer implements PrimitiveSerialize
     );
     return result.build();
   }
+}
+
+class CatalogsRetailFeedsUpdateRequestCatalogTypeEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'RETAIL')
+  static const CatalogsRetailFeedsUpdateRequestCatalogTypeEnum RETAIL = _$catalogsRetailFeedsUpdateRequestCatalogTypeEnum_RETAIL;
+
+  static Serializer<CatalogsRetailFeedsUpdateRequestCatalogTypeEnum> get serializer => _$catalogsRetailFeedsUpdateRequestCatalogTypeEnumSerializer;
+
+  const CatalogsRetailFeedsUpdateRequestCatalogTypeEnum._(String name): super(name);
+
+  static BuiltSet<CatalogsRetailFeedsUpdateRequestCatalogTypeEnum> get values => _$catalogsRetailFeedsUpdateRequestCatalogTypeEnumValues;
+  static CatalogsRetailFeedsUpdateRequestCatalogTypeEnum valueOf(String name) => _$catalogsRetailFeedsUpdateRequestCatalogTypeEnumValueOf(name);
 }
 

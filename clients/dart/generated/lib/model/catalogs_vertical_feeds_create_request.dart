@@ -24,10 +24,10 @@ class CatalogsVerticalFeedsCreateRequest {
     required this.location,
     required this.name,
     this.preferredProcessingSchedule,
-    this.status = 'ACTIVE',
+    this.status = CatalogsStatus.ACTIVE,
   });
 
-  /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+  /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,7 +36,7 @@ class CatalogsVerticalFeedsCreateRequest {
   ///
   String? catalogId;
 
-  CatalogsType catalogType;
+  CatalogsVerticalFeedsCreateRequestCatalogTypeEnum catalogType;
 
   CatalogsFeedCredentials? credentials;
 
@@ -46,7 +46,7 @@ class CatalogsVerticalFeedsCreateRequest {
 
   NullableCurrency? defaultCurrency;
 
-  CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
+  CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale;
 
   CatalogsFormat format;
 
@@ -142,26 +142,34 @@ class CatalogsVerticalFeedsCreateRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsVerticalFeedsCreateRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsVerticalFeedsCreateRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsVerticalFeedsCreateRequest[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsVerticalFeedsCreateRequest[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'default_country'), 'Required key "CatalogsVerticalFeedsCreateRequest[default_country]" is missing from JSON.');
+        assert(json[r'default_country'] != null, 'Required key "CatalogsVerticalFeedsCreateRequest[default_country]" has a null value in JSON.');
+        assert(json.containsKey(r'default_locale'), 'Required key "CatalogsVerticalFeedsCreateRequest[default_locale]" is missing from JSON.');
+        assert(json[r'default_locale'] != null, 'Required key "CatalogsVerticalFeedsCreateRequest[default_locale]" has a null value in JSON.');
+        assert(json.containsKey(r'format'), 'Required key "CatalogsVerticalFeedsCreateRequest[format]" is missing from JSON.');
+        assert(json[r'format'] != null, 'Required key "CatalogsVerticalFeedsCreateRequest[format]" has a null value in JSON.');
+        assert(json.containsKey(r'location'), 'Required key "CatalogsVerticalFeedsCreateRequest[location]" is missing from JSON.');
+        assert(json[r'location'] != null, 'Required key "CatalogsVerticalFeedsCreateRequest[location]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "CatalogsVerticalFeedsCreateRequest[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "CatalogsVerticalFeedsCreateRequest[name]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsVerticalFeedsCreateRequest(
         catalogId: mapValueOfType<String>(json, r'catalog_id'),
-        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
+        catalogType: CatalogsVerticalFeedsCreateRequestCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
         credentials: CatalogsFeedCredentials.fromJson(json[r'credentials']),
         defaultAvailability: ProductAvailabilityType.fromJson(json[r'default_availability']),
         defaultCountry: Country.fromJson(json[r'default_country'])!,
         defaultCurrency: NullableCurrency.fromJson(json[r'default_currency']),
-        defaultLocale: CatalogsFeedsCreateRequestDefaultLocale.fromJson(json[r'default_locale'])!,
+        defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.fromJson(json[r'default_locale'])!,
         format: CatalogsFormat.fromJson(json[r'format'])!,
         location: mapValueOfType<String>(json, r'location')!,
         name: mapValueOfType<String>(json, r'name')!,
         preferredProcessingSchedule: CatalogsFeedProcessingSchedule.fromJson(json[r'preferred_processing_schedule']),
-        status: CatalogsStatus.fromJson(json[r'status']) ?? 'ACTIVE',
+        status: CatalogsStatus.fromJson(json[r'status']) ?? CatalogsStatus.ACTIVE,
       );
     }
     return null;
@@ -217,4 +225,80 @@ class CatalogsVerticalFeedsCreateRequest {
     'name',
   };
 }
+
+
+enum CatalogsVerticalFeedsCreateRequestCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsVerticalFeedsCreateRequestCatalogTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsVerticalFeedsCreateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsVerticalFeedsCreateRequestCatalogTypeEnum? fromJson(dynamic value) => CatalogsVerticalFeedsCreateRequestCatalogTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsVerticalFeedsCreateRequestCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsVerticalFeedsCreateRequestCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsVerticalFeedsCreateRequestCatalogTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsVerticalFeedsCreateRequestCatalogTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsVerticalFeedsCreateRequestCatalogTypeEnum] to String,
+/// and [decode] dynamic data back to [CatalogsVerticalFeedsCreateRequestCatalogTypeEnum].
+class CatalogsVerticalFeedsCreateRequestCatalogTypeEnumTypeTransformer {
+  factory CatalogsVerticalFeedsCreateRequestCatalogTypeEnumTypeTransformer() => _instance ??= const CatalogsVerticalFeedsCreateRequestCatalogTypeEnumTypeTransformer._();
+
+  const CatalogsVerticalFeedsCreateRequestCatalogTypeEnumTypeTransformer._();
+
+  String encode(CatalogsVerticalFeedsCreateRequestCatalogTypeEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsVerticalFeedsCreateRequestCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsVerticalFeedsCreateRequestCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsVerticalFeedsCreateRequestCatalogTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'CREATIVE_ASSETS': return CatalogsVerticalFeedsCreateRequestCatalogTypeEnum.CREATIVE_ASSETS;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsVerticalFeedsCreateRequestCatalogTypeEnumTypeTransformer? _instance;
+}
+
 

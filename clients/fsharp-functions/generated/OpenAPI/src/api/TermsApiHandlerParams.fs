@@ -1,6 +1,6 @@
 namespace OpenAPI
 
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 open OpenAPI.Model.RelatedTerms
 open System.Collections.Generic
 open System
@@ -23,15 +23,35 @@ module TermsApiHandlerParams =
     }
 
     type TermsRelatedListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type TermsRelatedListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TermsRelatedListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TermsRelatedListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TermsRelatedListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type TermsRelatedListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type TermsRelatedListResult = TermsRelatedListStatusCode200 of TermsRelatedListStatusCode200Response|TermsRelatedListStatusCode400 of TermsRelatedListStatusCode400Response|TermsRelatedListDefaultStatusCode of TermsRelatedListDefaultStatusCodeResponse
+    type TermsRelatedListResult = TermsRelatedListStatusCode200 of TermsRelatedListStatusCode200Response|TermsRelatedListStatusCode400 of TermsRelatedListStatusCode400Response|TermsRelatedListStatusCode401 of TermsRelatedListStatusCode401Response|TermsRelatedListStatusCode403 of TermsRelatedListStatusCode403Response|TermsRelatedListStatusCode404 of TermsRelatedListStatusCode404Response|TermsRelatedListStatusCode429 of TermsRelatedListStatusCode429Response|TermsRelatedListDefaultStatusCode of TermsRelatedListDefaultStatusCodeResponse
 
     type TermsRelatedListArgs = {
       queryParams:Result<TermsRelatedListQueryParams,string>;
@@ -55,15 +75,35 @@ module TermsApiHandlerParams =
     }
 
     type TermsSuggestedListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type TermsSuggestedListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TermsSuggestedListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TermsSuggestedListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TermsSuggestedListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type TermsSuggestedListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type TermsSuggestedListResult = TermsSuggestedListStatusCode200 of TermsSuggestedListStatusCode200Response|TermsSuggestedListStatusCode400 of TermsSuggestedListStatusCode400Response|TermsSuggestedListDefaultStatusCode of TermsSuggestedListDefaultStatusCodeResponse
+    type TermsSuggestedListResult = TermsSuggestedListStatusCode200 of TermsSuggestedListStatusCode200Response|TermsSuggestedListStatusCode400 of TermsSuggestedListStatusCode400Response|TermsSuggestedListStatusCode401 of TermsSuggestedListStatusCode401Response|TermsSuggestedListStatusCode403 of TermsSuggestedListStatusCode403Response|TermsSuggestedListStatusCode404 of TermsSuggestedListStatusCode404Response|TermsSuggestedListStatusCode429 of TermsSuggestedListStatusCode429Response|TermsSuggestedListDefaultStatusCode of TermsSuggestedListDefaultStatusCodeResponse
 
     type TermsSuggestedListArgs = {
       queryParams:Result<TermsSuggestedListQueryParams,string>;

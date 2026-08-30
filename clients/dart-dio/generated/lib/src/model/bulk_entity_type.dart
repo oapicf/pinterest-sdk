@@ -11,27 +11,30 @@ part 'bulk_entity_type.g.dart';
 
 class BulkEntityType extends EnumClass {
 
-  /// Refers ads entity type. Schedule enum is only applicable to beta users
+  /// Refers ads entity type.
   @BuiltValueEnumConst(wireName: r'CAMPAIGN')
   static const BulkEntityType CAMPAIGN = _$CAMPAIGN;
-  /// Refers ads entity type. Schedule enum is only applicable to beta users
+  /// Refers ads entity type.
   @BuiltValueEnumConst(wireName: r'AD_GROUP')
   static const BulkEntityType AD_GROUP = _$AD_GROUP;
-  /// Refers ads entity type. Schedule enum is only applicable to beta users
+  /// Refers ads entity type.
   @BuiltValueEnumConst(wireName: r'PRODUCT_GROUP')
   static const BulkEntityType PRODUCT_GROUP = _$PRODUCT_GROUP;
-  /// Refers ads entity type. Schedule enum is only applicable to beta users
+  /// Refers ads entity type.
   @BuiltValueEnumConst(wireName: r'AD')
   static const BulkEntityType AD = _$AD;
-  /// Refers ads entity type. Schedule enum is only applicable to beta users
+  /// Refers ads entity type.
   @BuiltValueEnumConst(wireName: r'KEYWORD')
   static const BulkEntityType KEYWORD = _$KEYWORD;
-  /// Refers ads entity type. Schedule enum is only applicable to beta users
+  /// Refers ads entity type.
   @BuiltValueEnumConst(wireName: r'LABEL')
   static const BulkEntityType LABEL = _$LABEL;
-  /// Refers ads entity type. Schedule enum is only applicable to beta users
+  /// Refers ads entity type.
   @BuiltValueEnumConst(wireName: r'SCHEDULE')
   static const BulkEntityType SCHEDULE = _$SCHEDULE;
+  /// Refers ads entity type.
+  @BuiltValueEnumConst(wireName: r'ENTITY_HISTORY')
+  static const BulkEntityType ENTITY_HISTORY = _$ENTITY_HISTORY;
 
   static Serializer<BulkEntityType> get serializer => _$bulkEntityTypeSerializer;
 

@@ -4,10 +4,10 @@ import org.openapitools.model.ConversionEventResponse;
 import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
 import org.openapitools.model.ConversionTagsList200Response;
-import org.openapitools.model.Error;
 import java.util.Map;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
 import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 
 import java.util.List;
 import java.util.Map;
@@ -65,8 +65,13 @@ public interface ConversionTagsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get conversion tag", tags={ "conversion_tags" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionTag.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionTag.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public ConversionTag conversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @PathParam("conversion_tag_id") @Pattern(regexp="^\\d+$") @Size(max=18) String conversionTagId);
 
     /**
@@ -100,8 +105,13 @@ public interface ConversionTagsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get Ocpm eligible conversion tags", tags={ "conversion_tags" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionEventResponse.class, responseContainer = "Map"),
-        @ApiResponse(code = 200, message = "Unexpected errors", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionEventResponse.class, responseContainer = "Map"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Map<String, List<ConversionEventResponse>> ocpmEligibleConversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
 
     /**
@@ -115,7 +125,12 @@ public interface ConversionTagsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get page visit conversion tags", tags={ "conversion_tags" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PageVisitConversionTagsGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize, @QueryParam("order") String order, @QueryParam("bookmark") String bookmark);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = PageVisitConversionTagsGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize, @QueryParam("order") PinterestLibPaginationOrder order);
 }

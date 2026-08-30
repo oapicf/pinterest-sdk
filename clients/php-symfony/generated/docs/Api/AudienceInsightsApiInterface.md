@@ -20,11 +20,11 @@ services:
 ```
 
 ## **audienceInsightsGet**
-> OpenAPI\Server\Model\AudienceInsightsResponse audienceInsightsGet($adAccountId, $audienceInsightType)
+> OpenAPI\Server\Model\AudienceInsights audienceInsightsGet($adAccountId, $audienceInsightType)
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Example Implementation
 ```php
@@ -73,11 +73,11 @@ class AudienceInsightsApi implements AudienceInsightsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **audienceInsightType** | [**OpenAPI\Server\Model\AudienceInsightType**](../Model/.md)| Type of audience insights. |
+ **audienceInsightType** | [**AudienceInsightType**](../Model/.md)| Type of audience insights. |
 
 ### Return type
 
-[**OpenAPI\Server\Model\AudienceInsightsResponse**](../Model/AudienceInsightsResponse.md)
+[**OpenAPI\Server\Model\AudienceInsights**](../Model/AudienceInsights.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **audienceInsightsScopeAndTypeGet**
-> OpenAPI\Server\Model\AudienceDefinitionResponse audienceInsightsScopeAndTypeGet($adAccountId)
+> OpenAPI\Server\Model\AudienceInsightsScopeAndTypeGet200Response audienceInsightsScopeAndTypeGet($adAccountId)
 
 Get audience insights scope and type
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OpenAPI\Server\Model\AudienceDefinitionResponse**](../Model/AudienceDefinitionResponse.md)
+[**OpenAPI\Server\Model\AudienceInsightsScopeAndTypeGet200Response**](../Model/AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 

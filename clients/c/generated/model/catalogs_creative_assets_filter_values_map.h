@@ -15,14 +15,15 @@
 
 typedef struct catalogs_creative_assets_filter_values_map_t catalogs_creative_assets_filter_values_map_t;
 
+#include "media_type.h"
 
-// Enum MEDIATYPE for catalogs_creative_assets_filter_values_map
+// Enum  for catalogs_creative_assets_filter_values_map
 
-typedef enum  { pinterest_rest_api_catalogs_creative_assets_filter_values_map_MEDIATYPE_NULL = 0, pinterest_rest_api_catalogs_creative_assets_filter_values_map_MEDIATYPE_IMAGE, pinterest_rest_api_catalogs_creative_assets_filter_values_map_MEDIATYPE_VIDEO } pinterest_rest_api_catalogs_creative_assets_filter_values_map_MEDIATYPE_e;
+typedef enum  { pinterest_rest_api_catalogs_creative_assets_filter_values_map__NULL = 0, pinterest_rest_api_catalogs_creative_assets_filter_values_map__IMAGE, pinterest_rest_api_catalogs_creative_assets_filter_values_map__VIDEO } pinterest_rest_api_catalogs_creative_assets_filter_values_map__e;
 
-char* catalogs_creative_assets_filter_values_map_media_type_ToString(pinterest_rest_api_catalogs_creative_assets_filter_values_map_MEDIATYPE_e media_type);
+char* catalogs_creative_assets_filter_values_map_media_type_ToString(pinterest_rest_api_catalogs_creative_assets_filter_values_map__e media_type);
 
-pinterest_rest_api_catalogs_creative_assets_filter_values_map_MEDIATYPE_e catalogs_creative_assets_filter_values_map_media_type_FromString(char* media_type);
+pinterest_rest_api_catalogs_creative_assets_filter_values_map__e catalogs_creative_assets_filter_values_map_media_type_FromString(char* media_type);
 
 
 
@@ -39,7 +40,7 @@ typedef struct catalogs_creative_assets_filter_values_map_t {
     list_t *google_product_category_4; //primitive container
     list_t *google_product_category_5; //primitive container
     list_t *google_product_category_6; //primitive container
-    list_t *media_type; //primitive container
+    list_t *media_type; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_filter_values_map_t;

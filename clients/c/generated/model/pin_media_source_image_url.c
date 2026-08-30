@@ -23,7 +23,7 @@ pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e pin_media_source_imag
 }
 
 static pin_media_source_image_url_t *pin_media_source_image_url_create_internal(
-    int is_standard,
+    int *is_standard,
     pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e source_type,
     char *url
     ) {
@@ -31,24 +31,33 @@ static pin_media_source_image_url_t *pin_media_source_image_url_create_internal(
     if (!pin_media_source_image_url_local_var) {
         return NULL;
     }
+    memset(pin_media_source_image_url_local_var, 0, sizeof(pin_media_source_image_url_t));
+    pin_media_source_image_url_local_var->_library_owned = 1;
     pin_media_source_image_url_local_var->is_standard = is_standard;
     pin_media_source_image_url_local_var->source_type = source_type;
     pin_media_source_image_url_local_var->url = url;
-
-    pin_media_source_image_url_local_var->_library_owned = 1;
     return pin_media_source_image_url_local_var;
 }
 
 __attribute__((deprecated)) pin_media_source_image_url_t *pin_media_source_image_url_create(
-    int is_standard,
+    int *is_standard,
     pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e source_type,
     char *url
     ) {
-    return pin_media_source_image_url_create_internal (
-        is_standard,
+    int *is_standard_copy = NULL;
+    if (is_standard) {
+        is_standard_copy = malloc(sizeof(int));
+        if (is_standard_copy) *is_standard_copy = *is_standard;
+    }
+    pin_media_source_image_url_t *result = pin_media_source_image_url_create_internal (
+        is_standard_copy,
         source_type,
         url
         );
+    if (!result) {
+        free(is_standard_copy);
+    }
+    return result;
 }
 
 void pin_media_source_image_url_free(pin_media_source_image_url_t *pin_media_source_image_url) {
@@ -60,6 +69,10 @@ void pin_media_source_image_url_free(pin_media_source_image_url_t *pin_media_sou
         return ;
     }
     listEntry_t *listEntry;
+    if (pin_media_source_image_url->is_standard) {
+        free(pin_media_source_image_url->is_standard);
+        pin_media_source_image_url->is_standard = NULL;
+    }
     if (pin_media_source_image_url->url) {
         free(pin_media_source_image_url->url);
         pin_media_source_image_url->url = NULL;
@@ -72,7 +85,7 @@ cJSON *pin_media_source_image_url_convertToJSON(pin_media_source_image_url_t *pi
 
     // pin_media_source_image_url->is_standard
     if(pin_media_source_image_url->is_standard) {
-    if(cJSON_AddBoolToObject(item, "is_standard", pin_media_source_image_url->is_standard) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_standard", *pin_media_source_image_url->is_standard) == NULL) {
     goto fail; //Bool
     }
     }
@@ -108,6 +121,11 @@ pin_media_source_image_url_t *pin_media_source_image_url_parseFromJSON(cJSON *pi
 
     pin_media_source_image_url_t *pin_media_source_image_url_local_var = NULL;
 
+    // define the local variable for pin_media_source_image_url->is_standard
+    int *is_standard_local_var = NULL;
+
+    char *url_local_str = NULL;
+
     // pin_media_source_image_url->is_standard
     cJSON *is_standard = cJSON_GetObjectItemCaseSensitive(pin_media_source_image_urlJSON, "is_standard");
     if (cJSON_IsNull(is_standard)) {
@@ -118,6 +136,12 @@ pin_media_source_image_url_t *pin_media_source_image_url_parseFromJSON(cJSON *pi
     {
     goto end; //Bool
     }
+    is_standard_local_var = malloc(sizeof(int));
+    if(!is_standard_local_var)
+    {
+        goto end;
+    }
+    *is_standard_local_var = is_standard->valueint;
     }
 
     // pin_media_source_image_url->source_type
@@ -153,14 +177,28 @@ pin_media_source_image_url_t *pin_media_source_image_url_parseFromJSON(cJSON *pi
     }
 
 
+    if (url && !cJSON_IsNull(url)) url_local_str = strdup(url->valuestring);
+
     pin_media_source_image_url_local_var = pin_media_source_image_url_create_internal (
-        is_standard ? is_standard->valueint : 0,
+        is_standard_local_var,
         source_typeVariable,
-        strdup(url->valuestring)
+        url_local_str
         );
+
+    if (!pin_media_source_image_url_local_var) {
+        goto end;
+    }
 
     return pin_media_source_image_url_local_var;
 end:
+    if (is_standard_local_var) {
+        free(is_standard_local_var);
+        is_standard_local_var = NULL;
+    }
+    if (url_local_str) {
+        free(url_local_str);
+        url_local_str = NULL;
+    }
     return NULL;
 
 }

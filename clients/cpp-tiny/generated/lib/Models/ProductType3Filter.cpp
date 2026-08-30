@@ -65,7 +65,7 @@ ProductType3Filter::getPRODUCTTYPE3()
 }
 
 void
-ProductType3Filter::setPRODUCTTYPE3(CatalogsProductGroupMultipleStringListCriteria  pRODUCT_TYPE_3)
+ProductType3Filter::setPRODUCTTYPE3(CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_3)
 {
 	this->pRODUCT_TYPE_3 = pRODUCT_TYPE_3;
 }

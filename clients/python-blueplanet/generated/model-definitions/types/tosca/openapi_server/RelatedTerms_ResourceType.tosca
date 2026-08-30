@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  RelatedTermsRelatedTermsListInner = openapi_server.resourceTypes.RelatedTermsRelatedTermsListInner
+  RelatedTermsRelatedTermsListItems = openapi_server.resourceTypes.RelatedTermsRelatedTermsListItems
 }
 resourceTypes {
 
@@ -28,7 +28,7 @@ resourceTypes {
         }
         related_terms_list {
           type = array
-          items.type = RelatedTermsRelatedTermsListInner
+          items.type = RelatedTermsRelatedTermsListItems
           description = "The id of the advertiser."
           optional = false
         }

@@ -1,0 +1,59 @@
+package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonValue;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+import com.fasterxml.jackson.annotation.JsonCreator;
+
+/**
+ * Gets or Sets ChangeHistoryDataType
+ */
+public enum ChangeHistoryDataType {
+  
+  STRING("STRING"),
+  
+  NUMERIC("NUMERIC"),
+  
+  MICROCURRENCY("MICROCURRENCY"),
+  
+  DATE("DATE"),
+  
+  BOOL("BOOL"),
+  
+  GENDER_LIST("GENDER_LIST"),
+  
+  AGE_BUCKET_LIST("AGE_BUCKET_LIST"),
+  
+  APPTYPE_LIST("APPTYPE_LIST"),
+  
+  COUNTRY_LIST("COUNTRY_LIST"),
+  
+  LOCALE_LIST("LOCALE_LIST");
+
+  private String value;
+
+  ChangeHistoryDataType(String value) {
+    this.value = value;
+  }
+
+  @Override
+  @JsonValue
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  @JsonCreator
+  public static ChangeHistoryDataType fromValue(String text) {
+    for (ChangeHistoryDataType b : ChangeHistoryDataType.values()) {
+      if (String.valueOf(b.value).equals(text)) {
+        return b;
+      }
+    }
+    throw new IllegalArgumentException("Unexpected value '" + text + "'");
+  }
+}
+

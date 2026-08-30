@@ -14,14 +14,14 @@ type IntegrationLog struct {
 	Error IntegrationLogClientError `json:"error,omitempty"`
 
 	// Log event type
-	EventType string `json:"event_type"`
+	EventType IntegrationLogEventType `json:"event_type"`
 
 	ExternalBusinessId *string `json:"external_business_id,omitempty"`
 
 	FeedProfileId *string `json:"feed_profile_id,omitempty"`
 
 	// Log level type
-	LogLevel string `json:"log_level"`
+	LogLevel IntegrationLogLevel `json:"log_level"`
 
 	MerchantId *string `json:"merchant_id,omitempty"`
 

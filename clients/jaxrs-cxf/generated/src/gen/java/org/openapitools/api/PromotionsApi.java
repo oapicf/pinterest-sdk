@@ -1,9 +1,10 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.PromotionCreateRequest;
-import org.openapitools.model.PromotionResponse;
-import org.openapitools.model.PromotionUpdateRequest;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.Promotion;
+import org.openapitools.model.PromotionBatchUpdate;
+import org.openapitools.model.PromotionCreate;
 import org.openapitools.model.PromotionsList200Response;
 import org.openapitools.model.PromotionsResponse;
 
@@ -42,10 +43,14 @@ public interface PromotionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create promotions", tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PromotionsResponse.class),
-        @ApiResponse(code = 400, message = "Invalid create promotions request parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public PromotionsResponse promotionsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid PromotionCreateRequest> promotionCreateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = PromotionsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public PromotionsResponse promotionsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid PromotionCreate> promotionCreate);
 
     /**
      * Delete promotion by id
@@ -58,9 +63,15 @@ public interface PromotionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Delete promotion by id", tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 204, message = "Promotion deleted successfully"),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public void promotionsDelete(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @PathParam("promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) String promotionId);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Promotion.class),
+        @ApiResponse(code = 204, message = "Resource deleted successfully."),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Promotion promotionsDelete(@PathParam("promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) String promotionId, @PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
 
     /**
      * Get promotion by id
@@ -73,10 +84,14 @@ public interface PromotionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get promotion by id", tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PromotionResponse.class),
-        @ApiResponse(code = 404, message = "The promotion ID for the given ad account ID was not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public PromotionResponse promotionsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @PathParam("promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) String promotionId);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Promotion.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Promotion promotionsGet(@PathParam("promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) String promotionId, @PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
 
     /**
      * Get promotions
@@ -89,10 +104,14 @@ public interface PromotionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get promotions", tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PromotionsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account promotions parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public PromotionsList200Response promotionsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize, @QueryParam("order") String order, @QueryParam("bookmark") String bookmark);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = PromotionsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public PromotionsList200Response promotionsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize, @QueryParam("order") PinterestLibPaginationOrder order);
 
     /**
      * Update promotions
@@ -106,8 +125,12 @@ public interface PromotionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update promotions", tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PromotionsResponse.class),
-        @ApiResponse(code = 400, message = "Invalid create promotions request parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public PromotionsResponse promotionsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid PromotionUpdateRequest> promotionUpdateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = PromotionsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public PromotionsResponse promotionsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid PromotionBatchUpdate> promotionBatchUpdate);
 }

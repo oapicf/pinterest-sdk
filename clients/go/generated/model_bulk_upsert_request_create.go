@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,10 +23,11 @@ type BulkUpsertRequestCreate struct {
 	AdGroups []AdGroupCreateRequest `json:"ad_groups,omitempty"`
 	Ads []AdCreateRequest `json:"ads,omitempty"`
 	Campaigns []CampaignCreateRequest `json:"campaigns,omitempty"`
-	CatalogProductGroups []MultipleProductGroupsInner `json:"catalog_product_groups,omitempty"`
+	CatalogProductGroups []BulkUpsertRequestCreateCatalogProductGroupsItems `json:"catalog_product_groups,omitempty"`
 	Keywords []KeywordsRequest `json:"keywords,omitempty"`
-	Labels []LabelCreateRequest `json:"labels,omitempty"`
+	Labels []LabelBulkCreateRequest `json:"labels,omitempty"`
 	ProductGroups []ProductGroupPromotionCreateRequest `json:"product_groups,omitempty"`
+	Schedules []ScheduleCreateRequest `json:"schedules,omitempty"`
 }
 
 // NewBulkUpsertRequestCreate instantiates a new BulkUpsertRequestCreate object
@@ -143,9 +144,9 @@ func (o *BulkUpsertRequestCreate) SetCampaigns(v []CampaignCreateRequest) {
 }
 
 // GetCatalogProductGroups returns the CatalogProductGroups field value if set, zero value otherwise.
-func (o *BulkUpsertRequestCreate) GetCatalogProductGroups() []MultipleProductGroupsInner {
+func (o *BulkUpsertRequestCreate) GetCatalogProductGroups() []BulkUpsertRequestCreateCatalogProductGroupsItems {
 	if o == nil || IsNil(o.CatalogProductGroups) {
-		var ret []MultipleProductGroupsInner
+		var ret []BulkUpsertRequestCreateCatalogProductGroupsItems
 		return ret
 	}
 	return o.CatalogProductGroups
@@ -153,7 +154,7 @@ func (o *BulkUpsertRequestCreate) GetCatalogProductGroups() []MultipleProductGro
 
 // GetCatalogProductGroupsOk returns a tuple with the CatalogProductGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkUpsertRequestCreate) GetCatalogProductGroupsOk() ([]MultipleProductGroupsInner, bool) {
+func (o *BulkUpsertRequestCreate) GetCatalogProductGroupsOk() ([]BulkUpsertRequestCreateCatalogProductGroupsItems, bool) {
 	if o == nil || IsNil(o.CatalogProductGroups) {
 		return nil, false
 	}
@@ -169,8 +170,8 @@ func (o *BulkUpsertRequestCreate) HasCatalogProductGroups() bool {
 	return false
 }
 
-// SetCatalogProductGroups gets a reference to the given []MultipleProductGroupsInner and assigns it to the CatalogProductGroups field.
-func (o *BulkUpsertRequestCreate) SetCatalogProductGroups(v []MultipleProductGroupsInner) {
+// SetCatalogProductGroups gets a reference to the given []BulkUpsertRequestCreateCatalogProductGroupsItems and assigns it to the CatalogProductGroups field.
+func (o *BulkUpsertRequestCreate) SetCatalogProductGroups(v []BulkUpsertRequestCreateCatalogProductGroupsItems) {
 	o.CatalogProductGroups = v
 }
 
@@ -207,9 +208,9 @@ func (o *BulkUpsertRequestCreate) SetKeywords(v []KeywordsRequest) {
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise.
-func (o *BulkUpsertRequestCreate) GetLabels() []LabelCreateRequest {
+func (o *BulkUpsertRequestCreate) GetLabels() []LabelBulkCreateRequest {
 	if o == nil || IsNil(o.Labels) {
-		var ret []LabelCreateRequest
+		var ret []LabelBulkCreateRequest
 		return ret
 	}
 	return o.Labels
@@ -217,7 +218,7 @@ func (o *BulkUpsertRequestCreate) GetLabels() []LabelCreateRequest {
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkUpsertRequestCreate) GetLabelsOk() ([]LabelCreateRequest, bool) {
+func (o *BulkUpsertRequestCreate) GetLabelsOk() ([]LabelBulkCreateRequest, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -233,8 +234,8 @@ func (o *BulkUpsertRequestCreate) HasLabels() bool {
 	return false
 }
 
-// SetLabels gets a reference to the given []LabelCreateRequest and assigns it to the Labels field.
-func (o *BulkUpsertRequestCreate) SetLabels(v []LabelCreateRequest) {
+// SetLabels gets a reference to the given []LabelBulkCreateRequest and assigns it to the Labels field.
+func (o *BulkUpsertRequestCreate) SetLabels(v []LabelBulkCreateRequest) {
 	o.Labels = v
 }
 
@@ -270,6 +271,38 @@ func (o *BulkUpsertRequestCreate) SetProductGroups(v []ProductGroupPromotionCrea
 	o.ProductGroups = v
 }
 
+// GetSchedules returns the Schedules field value if set, zero value otherwise.
+func (o *BulkUpsertRequestCreate) GetSchedules() []ScheduleCreateRequest {
+	if o == nil || IsNil(o.Schedules) {
+		var ret []ScheduleCreateRequest
+		return ret
+	}
+	return o.Schedules
+}
+
+// GetSchedulesOk returns a tuple with the Schedules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BulkUpsertRequestCreate) GetSchedulesOk() ([]ScheduleCreateRequest, bool) {
+	if o == nil || IsNil(o.Schedules) {
+		return nil, false
+	}
+	return o.Schedules, true
+}
+
+// HasSchedules returns a boolean if a field has been set.
+func (o *BulkUpsertRequestCreate) HasSchedules() bool {
+	if o != nil && !IsNil(o.Schedules) {
+		return true
+	}
+
+	return false
+}
+
+// SetSchedules gets a reference to the given []ScheduleCreateRequest and assigns it to the Schedules field.
+func (o *BulkUpsertRequestCreate) SetSchedules(v []ScheduleCreateRequest) {
+	o.Schedules = v
+}
+
 func (o BulkUpsertRequestCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -300,6 +333,9 @@ func (o BulkUpsertRequestCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProductGroups) {
 		toSerialize["product_groups"] = o.ProductGroups
+	}
+	if !IsNil(o.Schedules) {
+		toSerialize["schedules"] = o.Schedules
 	}
 	return toSerialize, nil
 }

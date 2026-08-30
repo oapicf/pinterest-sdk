@@ -16,21 +16,22 @@ Name | Type | Description | Notes
 **DisclosureUrl** | **String** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional] 
 **GridClickType** | [**GridClickType**](GridClickType.md) |  | [optional] 
 **IosDeepLink** | **String** | Deep link URL for iOS devices. | [optional] 
+**IsCarting** | **Boolean** | Is the ad a carting/WTB ad? | [optional] 
 **IsPinDeleted** | **Boolean** | Is original pin deleted? | [optional] 
 **IsRemovable** | **Boolean** | Is pin repinnable? | [optional] 
 **LeadFormId** | **String** | Lead form ID for lead ad generation. | [optional] 
 **Name** | **String** | Name of the ad - 255 chars max. | [optional] 
-**QuizPinData** | [**QuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
-**Status** | [**EntityStatus**](EntityStatus.md) |  | [optional] 
-**TrackingUrls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] 
-**ViewTrackingUrl** | **String** | Tracking URL for ad impressions. | [optional] 
 **PinId** | **String** | Pin ID. | 
+**QuizPinData** | [**SystemCollectionsHashtable**](.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
+**Status** | [**EntityStatus**](EntityStatus.md) |  | [optional] 
+**TrackingUrls** | [**SystemCollectionsHashtable**](.md) |  | [optional] 
+**ViewTrackingUrl** | **String** | Tracking URL for ad impressions. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdCreateRequest = Initialize-PSOpenAPIToolsAdCreateRequest  -AdGroupId 2680059592705 `
+$AdCreateRequest = Initialize-PSOpenAPIToolsAdCreateRequest  -AdGroupId null `
  -AndroidDeepLink null `
  -CarouselAndroidDeepLinks null `
  -CarouselDestinationUrls null `
@@ -43,15 +44,16 @@ $AdCreateRequest = Initialize-PSOpenAPIToolsAdCreateRequest  -AdGroupId 26800595
  -DisclosureUrl null `
  -GridClickType null `
  -IosDeepLink null `
+ -IsCarting null `
  -IsPinDeleted false `
  -IsRemovable false `
  -LeadFormId null `
  -Name null `
+ -PinId 394205773611545468 `
  -QuizPinData null `
  -Status null `
  -TrackingUrls null `
- -ViewTrackingUrl null `
- -PinId 394205773611545468
+ -ViewTrackingUrl null
 ```
 
 - Convert the resource to JSON

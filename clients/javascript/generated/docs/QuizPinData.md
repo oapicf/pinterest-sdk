@@ -7,17 +7,6 @@ Name | Type | Description | Notes
 **questions** | [**[QuizPinQuestion]**](QuizPinQuestion.md) |  | [optional] 
 **results** | [**[QuizPinResult]**](QuizPinResult.md) |  | [optional] 
 **tieBreakerCustomResult** | [**QuizPinResult**](QuizPinResult.md) |  | [optional] 
-**tieBreakerType** | **String** | Quiz ad tie breaker type, default is RANDOM | [optional] 
-
-
-
-## Enum: TieBreakerTypeEnum
-
-
-* `RANDOM` (value: `"RANDOM"`)
-
-* `CUSTOM` (value: `"CUSTOM"`)
-
-
+**tieBreakerType** | [**TieBreakerType**](TieBreakerType.md) |  | [optional] 
 
 

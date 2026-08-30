@@ -10,7 +10,7 @@ static event_data_t *event_data_create_internal(
     char *lead_type,
     line_item_t *line_items,
     char *order_id,
-    int order_quantity,
+    int *order_quantity,
     char *page_name,
     char *promo_code,
     char *property,
@@ -22,6 +22,8 @@ static event_data_t *event_data_create_internal(
     if (!event_data_local_var) {
         return NULL;
     }
+    memset(event_data_local_var, 0, sizeof(event_data_t));
+    event_data_local_var->_library_owned = 1;
     event_data_local_var->currency = currency;
     event_data_local_var->lead_type = lead_type;
     event_data_local_var->line_items = line_items;
@@ -33,8 +35,6 @@ static event_data_t *event_data_create_internal(
     event_data_local_var->search_query = search_query;
     event_data_local_var->value = value;
     event_data_local_var->video_title = video_title;
-
-    event_data_local_var->_library_owned = 1;
     return event_data_local_var;
 }
 
@@ -43,7 +43,7 @@ __attribute__((deprecated)) event_data_t *event_data_create(
     char *lead_type,
     line_item_t *line_items,
     char *order_id,
-    int order_quantity,
+    int *order_quantity,
     char *page_name,
     char *promo_code,
     char *property,
@@ -51,12 +51,17 @@ __attribute__((deprecated)) event_data_t *event_data_create(
     char *value,
     char *video_title
     ) {
-    return event_data_create_internal (
+    int *order_quantity_copy = NULL;
+    if (order_quantity) {
+        order_quantity_copy = malloc(sizeof(int));
+        if (order_quantity_copy) *order_quantity_copy = *order_quantity;
+    }
+    event_data_t *result = event_data_create_internal (
         currency,
         lead_type,
         line_items,
         order_id,
-        order_quantity,
+        order_quantity_copy,
         page_name,
         promo_code,
         property,
@@ -64,6 +69,10 @@ __attribute__((deprecated)) event_data_t *event_data_create(
         value,
         video_title
         );
+    if (!result) {
+        free(order_quantity_copy);
+    }
+    return result;
 }
 
 void event_data_free(event_data_t *event_data) {
@@ -90,6 +99,10 @@ void event_data_free(event_data_t *event_data) {
     if (event_data->order_id) {
         free(event_data->order_id);
         event_data->order_id = NULL;
+    }
+    if (event_data->order_quantity) {
+        free(event_data->order_quantity);
+        event_data->order_quantity = NULL;
     }
     if (event_data->page_name) {
         free(event_data->page_name);
@@ -165,7 +178,7 @@ cJSON *event_data_convertToJSON(event_data_t *event_data) {
 
     // event_data->order_quantity
     if(event_data->order_quantity) {
-    if(cJSON_AddNumberToObject(item, "order_quantity", event_data->order_quantity) == NULL) {
+    if(cJSON_AddNumberToObject(item, "order_quantity", *event_data->order_quantity) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -233,8 +246,27 @@ event_data_t *event_data_parseFromJSON(cJSON *event_dataJSON){
     // define the local variable for event_data->currency
     currency_t *currency_local_nonprim = NULL;
 
+    char *lead_type_local_str = NULL;
+
     // define the local variable for event_data->line_items
     line_item_t *line_items_local_nonprim = NULL;
+
+    char *order_id_local_str = NULL;
+
+    // define the local variable for event_data->order_quantity
+    int *order_quantity_local_var = NULL;
+
+    char *page_name_local_str = NULL;
+
+    char *promo_code_local_str = NULL;
+
+    char *property_local_str = NULL;
+
+    char *search_query_local_str = NULL;
+
+    char *value_local_str = NULL;
+
+    char *video_title_local_str = NULL;
 
     // event_data->currency
     cJSON *currency = cJSON_GetObjectItemCaseSensitive(event_dataJSON, "currency");
@@ -288,6 +320,12 @@ event_data_t *event_data_parseFromJSON(cJSON *event_dataJSON){
     {
     goto end; //Numeric
     }
+    order_quantity_local_var = malloc(sizeof(int));
+    if(!order_quantity_local_var)
+    {
+        goto end;
+    }
+    *order_quantity_local_var = order_quantity->valuedouble;
     }
 
     // event_data->page_name
@@ -363,19 +401,32 @@ event_data_t *event_data_parseFromJSON(cJSON *event_dataJSON){
     }
 
 
+    if (lead_type && !cJSON_IsNull(lead_type)) lead_type_local_str = strdup(lead_type->valuestring);
+    if (order_id && !cJSON_IsNull(order_id)) order_id_local_str = strdup(order_id->valuestring);
+    if (page_name && !cJSON_IsNull(page_name)) page_name_local_str = strdup(page_name->valuestring);
+    if (promo_code && !cJSON_IsNull(promo_code)) promo_code_local_str = strdup(promo_code->valuestring);
+    if (property && !cJSON_IsNull(property)) property_local_str = strdup(property->valuestring);
+    if (search_query && !cJSON_IsNull(search_query)) search_query_local_str = strdup(search_query->valuestring);
+    if (value && !cJSON_IsNull(value)) value_local_str = strdup(value->valuestring);
+    if (video_title && !cJSON_IsNull(video_title)) video_title_local_str = strdup(video_title->valuestring);
+
     event_data_local_var = event_data_create_internal (
         currency ? currency_local_nonprim : NULL,
-        lead_type && !cJSON_IsNull(lead_type) ? strdup(lead_type->valuestring) : NULL,
+        lead_type_local_str,
         line_items ? line_items_local_nonprim : NULL,
-        order_id && !cJSON_IsNull(order_id) ? strdup(order_id->valuestring) : NULL,
-        order_quantity ? order_quantity->valuedouble : 0,
-        page_name && !cJSON_IsNull(page_name) ? strdup(page_name->valuestring) : NULL,
-        promo_code && !cJSON_IsNull(promo_code) ? strdup(promo_code->valuestring) : NULL,
-        property && !cJSON_IsNull(property) ? strdup(property->valuestring) : NULL,
-        search_query && !cJSON_IsNull(search_query) ? strdup(search_query->valuestring) : NULL,
-        value && !cJSON_IsNull(value) ? strdup(value->valuestring) : NULL,
-        video_title && !cJSON_IsNull(video_title) ? strdup(video_title->valuestring) : NULL
+        order_id_local_str,
+        order_quantity_local_var,
+        page_name_local_str,
+        promo_code_local_str,
+        property_local_str,
+        search_query_local_str,
+        value_local_str,
+        video_title_local_str
         );
+
+    if (!event_data_local_var) {
+        goto end;
+    }
 
     return event_data_local_var;
 end:
@@ -383,9 +434,45 @@ end:
         currency_free(currency_local_nonprim);
         currency_local_nonprim = NULL;
     }
+    if (lead_type_local_str) {
+        free(lead_type_local_str);
+        lead_type_local_str = NULL;
+    }
     if (line_items_local_nonprim) {
         line_item_free(line_items_local_nonprim);
         line_items_local_nonprim = NULL;
+    }
+    if (order_id_local_str) {
+        free(order_id_local_str);
+        order_id_local_str = NULL;
+    }
+    if (order_quantity_local_var) {
+        free(order_quantity_local_var);
+        order_quantity_local_var = NULL;
+    }
+    if (page_name_local_str) {
+        free(page_name_local_str);
+        page_name_local_str = NULL;
+    }
+    if (promo_code_local_str) {
+        free(promo_code_local_str);
+        promo_code_local_str = NULL;
+    }
+    if (property_local_str) {
+        free(property_local_str);
+        property_local_str = NULL;
+    }
+    if (search_query_local_str) {
+        free(search_query_local_str);
+        search_query_local_str = NULL;
+    }
+    if (value_local_str) {
+        free(value_local_str);
+        value_local_str = NULL;
+    }
+    if (video_title_local_str) {
+        free(video_title_local_str);
+        video_title_local_str = NULL;
     }
     return NULL;
 

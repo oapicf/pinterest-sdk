@@ -1,0 +1,108 @@
+/*
+ * Pinterest REST API
+ *
+ * Pinterest's REST API
+ *
+ * OpenAPI document version: 5.28.0
+ * Maintained by: blah+oapicf@cliffano.com
+ *
+ * AUTO-GENERATED FILE, DO NOT MODIFY!
+ */
+package org.openapitools.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.model.AssetGroupBinding;
+import org.openapitools.model.AssetGroupUpdateError;
+
+
+
+
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class AssetGroupModification   {
+  
+  private List<AssetGroupUpdateError> exceptions = new ArrayList<>();
+  private List<AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
+
+  /**
+   * A list of errors associated with the asset groups. Will be returned if there is an error.
+   */
+  public AssetGroupModification exceptions(List<AssetGroupUpdateError> exceptions) {
+    this.exceptions = exceptions;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A list of errors associated with the asset groups. Will be returned if there is an error.")
+  @JsonProperty("exceptions")
+  public List<AssetGroupUpdateError> getExceptions() {
+    return exceptions;
+  }
+  public void setExceptions(List<AssetGroupUpdateError> exceptions) {
+    this.exceptions = exceptions;
+  }
+
+  /**
+   * A list of successfully edited asset groups.
+   */
+  public AssetGroupModification updatedAssetGroups(List<AssetGroupBinding> updatedAssetGroups) {
+    this.updatedAssetGroups = updatedAssetGroups;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A list of successfully edited asset groups.")
+  @JsonProperty("updated_asset_groups")
+  public List<AssetGroupBinding> getUpdatedAssetGroups() {
+    return updatedAssetGroups;
+  }
+  public void setUpdatedAssetGroups(List<AssetGroupBinding> updatedAssetGroups) {
+    this.updatedAssetGroups = updatedAssetGroups;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AssetGroupModification assetGroupModification = (AssetGroupModification) o;
+    return Objects.equals(exceptions, assetGroupModification.exceptions) &&
+        Objects.equals(updatedAssetGroups, assetGroupModification.updatedAssetGroups);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(exceptions, updatedAssetGroups);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AssetGroupModification {\n");
+    
+    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
+    sb.append("    updatedAssetGroups: ").append(toIndentedString(updatedAssetGroups)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

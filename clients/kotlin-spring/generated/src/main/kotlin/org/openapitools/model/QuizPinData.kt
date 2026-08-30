@@ -2,10 +2,14 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.QuizPinQuestion
 import org.openapitools.model.QuizPinResult
+import org.openapitools.model.TieBreakerType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,44 +26,36 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param questions 
  * @param results 
  * @param tieBreakerCustomResult 
- * @param tieBreakerType Quiz ad tie breaker type, default is RANDOM
+ * @param tieBreakerType 
  */
 data class QuizPinData(
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("questions")
     @get:JsonProperty("questions") val questions: kotlin.collections.List<QuizPinQuestion>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("results")
     @get:JsonProperty("results") val results: kotlin.collections.List<QuizPinResult>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "")
+    @param:JsonProperty("tie_breaker_custom_result")
     @get:JsonProperty("tie_breaker_custom_result") val tieBreakerCustomResult: QuizPinResult? = null,
 
-    @Schema(example = "null", description = "Quiz ad tie breaker type, default is RANDOM")
-    @get:JsonProperty("tie_breaker_type") val tieBreakerType: QuizPinData.TieBreakerType? = null
+    @field:Valid
+    @Schema(description = "")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("tie_breaker_type")
+    @get:JsonProperty("tie_breaker_type") val tieBreakerType: TieBreakerType? = null
 ) {
-
-    /**
-    * Quiz ad tie breaker type, default is RANDOM
-    * Values: RANDOM,CUSTOM
-    */
-    enum class TieBreakerType(@get:JsonValue val value: kotlin.String) {
-
-        RANDOM("RANDOM"),
-        CUSTOM("CUSTOM");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): TieBreakerType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'QuizPinData'")
-            }
-        }
-    }
 
 }
 

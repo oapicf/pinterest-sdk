@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "Salesforce account item with billing and terms information.",
   "name": "SSIOAccountItem",
   "fields": [
     {

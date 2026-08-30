@@ -4,7 +4,7 @@ Exposes the following operation IDs:
 
 - `POST` to `/ad_accounts/:ad_account_id/audiences`, OperationId: `audiences/create`:
 Create audience.
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+Create a new audience for the ad account.
 
 - `GET` to `/ad_accounts/:ad_account_id/audiences/:audience_id`, OperationId: `audiences/get`:
 Get audience.
@@ -16,7 +16,7 @@ Get list of audiences for the ad account.
 
 - `PATCH` to `/ad_accounts/:ad_account_id/audiences/:audience_id`, OperationId: `audiences/update`:
 Update audience.
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 """.
 

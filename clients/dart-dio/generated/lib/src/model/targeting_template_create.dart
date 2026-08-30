@@ -6,25 +6,46 @@
 import 'package:openapi/src/model/targeting_template_keyword.dart';
 import 'package:openapi/src/model/tracking_urls.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/targeting_spec.dart';
-import 'package:openapi/src/model/targeting_template_common.dart';
+import 'package:openapi/src/model/targeting_spec_optimal.dart';
 import 'package:openapi/src/model/placement_group_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'targeting_template_create.g.dart';
 
-/// TargetingTemplateCreate
+/// Resource create operation model.
 ///
 /// Properties:
-/// * [autoTargetingEnabled] - Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+/// * [autoTargetingEnabled] - Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
 /// * [keywords] 
-/// * [name] - Name of targeting template.
+/// * [name] - targeting template name
 /// * [placementGroup] 
-/// * [targetingAttributes] 
+/// * [targetingAttributes] - targeting profile attributes
 /// * [trackingUrls] 
 @BuiltValue()
-abstract class TargetingTemplateCreate implements TargetingTemplateCommon, Built<TargetingTemplateCreate, TargetingTemplateCreateBuilder> {
+abstract class TargetingTemplateCreate implements Built<TargetingTemplateCreate, TargetingTemplateCreateBuilder> {
+  /// Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).
+  @BuiltValueField(wireName: r'auto_targeting_enabled')
+  bool? get autoTargetingEnabled;
+
+  @BuiltValueField(wireName: r'keywords')
+  BuiltList<TargetingTemplateKeyword>? get keywords;
+
+  /// targeting template name
+  @BuiltValueField(wireName: r'name')
+  String get name;
+
+  @BuiltValueField(wireName: r'placement_group')
+  PlacementGroupType? get placementGroup;
+  // enum placementGroupEnum {  ALL,  SEARCH,  BROWSE,  OTHER,  };
+
+  /// targeting profile attributes
+  @BuiltValueField(wireName: r'targeting_attributes')
+  TargetingSpecOptimal get targetingAttributes;
+
+  @BuiltValueField(wireName: r'tracking_urls')
+  TrackingUrls? get trackingUrls;
+
   TargetingTemplateCreate._();
 
   factory TargetingTemplateCreate([void updates(TargetingTemplateCreateBuilder b)]) = _$TargetingTemplateCreate;
@@ -63,13 +84,11 @@ class _$TargetingTemplateCreateSerializer implements PrimitiveSerializer<Targeti
         specifiedType: const FullType(BuiltList, [FullType(TargetingTemplateKeyword)]),
       );
     }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
     if (object.placementGroup != null) {
       yield r'placement_group';
       yield serializers.serialize(
@@ -77,18 +96,16 @@ class _$TargetingTemplateCreateSerializer implements PrimitiveSerializer<Targeti
         specifiedType: const FullType(PlacementGroupType),
       );
     }
+    yield r'targeting_attributes';
+    yield serializers.serialize(
+      object.targetingAttributes,
+      specifiedType: const FullType(TargetingSpecOptimal),
+    );
     if (object.trackingUrls != null) {
       yield r'tracking_urls';
       yield serializers.serialize(
         object.trackingUrls,
         specifiedType: const FullType.nullable(TrackingUrls),
-      );
-    }
-    if (object.targetingAttributes != null) {
-      yield r'targeting_attributes';
-      yield serializers.serialize(
-        object.targetingAttributes,
-        specifiedType: const FullType(TargetingSpec),
       );
     }
   }
@@ -117,15 +134,17 @@ class _$TargetingTemplateCreateSerializer implements PrimitiveSerializer<Targeti
         case r'auto_targeting_enabled':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.autoTargetingEnabled = valueDes;
           break;
         case r'keywords':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(TargetingTemplateKeyword)]),
-          ) as BuiltList<TargetingTemplateKeyword>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(TargetingTemplateKeyword)]),
+          ) as BuiltList<TargetingTemplateKeyword>?;
+          if (valueDes == null) continue;
           result.keywords.replace(valueDes);
           break;
         case r'name':
@@ -138,9 +157,17 @@ class _$TargetingTemplateCreateSerializer implements PrimitiveSerializer<Targeti
         case r'placement_group':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(PlacementGroupType),
-          ) as PlacementGroupType;
+            specifiedType: const FullType.nullable(PlacementGroupType),
+          ) as PlacementGroupType?;
+          if (valueDes == null) continue;
           result.placementGroup = valueDes;
+          break;
+        case r'targeting_attributes':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(TargetingSpecOptimal),
+          ) as TargetingSpecOptimal;
+          result.targetingAttributes.replace(valueDes);
           break;
         case r'tracking_urls':
           final valueDes = serializers.deserialize(
@@ -149,13 +176,6 @@ class _$TargetingTemplateCreateSerializer implements PrimitiveSerializer<Targeti
           ) as TrackingUrls?;
           if (valueDes == null) continue;
           result.trackingUrls.replace(valueDes);
-          break;
-        case r'targeting_attributes':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(TargetingSpec),
-          ) as TargetingSpec;
-          result.targetingAttributes.replace(valueDes);
           break;
         default:
           unhandled.add(key);

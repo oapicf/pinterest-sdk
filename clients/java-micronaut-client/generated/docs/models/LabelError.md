@@ -8,7 +8,7 @@ The class is defined in **[LabelError.java](../../src/main/java/org/openapitools
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [`Label`](Label.md) |  |  [optional property]
+**data** | [`LabelErrorData`](LabelErrorData.md) |  |  [optional property]
 **errorMessages** | `List&lt;String&gt;` |  |  [optional property]
 
 

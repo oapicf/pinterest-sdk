@@ -1,0 +1,28 @@
+--
+-- "Pinterest REST API"
+-- Prepared SQL queries for 'AdCreateRequest' definition.
+-- Created using 'openapi-generator' ('postgresql-schema' generator)
+-- (https://openapi-generator.tech/docs/generators/postgresql-schema)
+--
+
+
+--
+-- SELECT template for table 'ad_create_request'
+--
+SELECT ad_group_id, android_deep_link, carousel_android_deep_links, carousel_destination_urls, carousel_ios_deep_links, click_tracking_url, creative_type, customizable_cta_type, destination_url, disclosure_type, disclosure_url, grid_click_type, ios_deep_link, is_carting, is_pin_deleted, is_removable, lead_form_id, "name", pin_id, quiz_pin_data, status, tracking_urls, view_tracking_url FROM ad_create_request WHERE 1=1;
+
+--
+-- INSERT template for table 'ad_create_request'
+--
+INSERT INTO ad_create_request (ad_group_id, android_deep_link, carousel_android_deep_links, carousel_destination_urls, carousel_ios_deep_links, click_tracking_url, creative_type, customizable_cta_type, destination_url, disclosure_type, disclosure_url, grid_click_type, ios_deep_link, is_carting, is_pin_deleted, is_removable, lead_form_id, "name", pin_id, quiz_pin_data, status, tracking_urls, view_tracking_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+--
+-- UPDATE template for table 'ad_create_request'
+--
+UPDATE ad_create_request SET ad_group_id = ?, android_deep_link = ?, carousel_android_deep_links = ?, carousel_destination_urls = ?, carousel_ios_deep_links = ?, click_tracking_url = ?, creative_type = ?, customizable_cta_type = ?, destination_url = ?, disclosure_type = ?, disclosure_url = ?, grid_click_type = ?, ios_deep_link = ?, is_carting = ?, is_pin_deleted = ?, is_removable = ?, lead_form_id = ?, "name" = ?, pin_id = ?, quiz_pin_data = ?, status = ?, tracking_urls = ?, view_tracking_url = ? WHERE 1=2;
+
+--
+-- DELETE template for table 'ad_create_request'
+--
+DELETE FROM ad_create_request WHERE 1=2;
+

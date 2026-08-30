@@ -8,6 +8,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 imports {
   Root = tosca.resourceTypes.Root
   AssetGroupBinding = openapi_server.resourceTypes.AssetGroupBinding
+  AssetTypeResponse = openapi_server.resourceTypes.AssetTypeResponse
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -19,24 +20,24 @@ resourceTypes {
     properties {
         asset_group_info {
           type = AssetGroupBinding
-          description = ""
+          description = "An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals &#39;ASSET_GROUP&#39;."
           optional = false
         }
         asset_id {
           type =  string
           description = "Unique identifier of a business asset."
-          optional = false
+          optional = true
         }
         asset_type {
-          type =  string
-          description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG."
-          optional = false
+          type = AssetTypeResponse
+          description = ""
+          optional = true
         }
         permissions {
           type = array
           items.type =  string
           description = "Permission levels member or partner has on an asset."
-          optional = false
+          optional = true
         }
     }
   }

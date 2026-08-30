@@ -1,0 +1,10 @@
+
+
+# IntendedPromotionType
+
+## Enum
+
+
+
+
+

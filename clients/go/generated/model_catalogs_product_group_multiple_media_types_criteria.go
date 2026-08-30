@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -34,8 +34,6 @@ type _CatalogsProductGroupMultipleMediaTypesCriteria CatalogsProductGroupMultipl
 // will change when the set of required properties is changed
 func NewCatalogsProductGroupMultipleMediaTypesCriteria(values []MediaType) *CatalogsProductGroupMultipleMediaTypesCriteria {
 	this := CatalogsProductGroupMultipleMediaTypesCriteria{}
-	var negated bool = false
-	this.Negated = &negated
 	this.Values = values
 	return &this
 }
@@ -45,8 +43,6 @@ func NewCatalogsProductGroupMultipleMediaTypesCriteria(values []MediaType) *Cata
 // but it doesn't guarantee that properties required by API are set
 func NewCatalogsProductGroupMultipleMediaTypesCriteriaWithDefaults() *CatalogsProductGroupMultipleMediaTypesCriteria {
 	this := CatalogsProductGroupMultipleMediaTypesCriteria{}
-	var negated bool = false
-	this.Negated = &negated
 	return &this
 }
 

@@ -45,7 +45,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with pinterestsdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pinterestsdk.NotificationApi(api_client)
-    notification_post_request = pinterestsdk.NotificationPostRequest() # NotificationPostRequest | notification event.
+    notification_post_request = pinterestsdk.NotificationPostRequest() # NotificationPostRequest | 
 
     try:
         # Receive notifications from external partners.
@@ -63,7 +63,7 @@ with pinterestsdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notification_post_request** | [**NotificationPostRequest**](NotificationPostRequest.md)| notification event. | 
+ **notification_post_request** | [**NotificationPostRequest**](NotificationPostRequest.md)|  | 
 
 ### Return type
 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successfully received notification |  -  |
-**400** | Invalid request parameter. |  -  |
-**0** | Unexpected error |  -  |
+**200** | The request has succeeded. |  -  |
+**400** | The request could not be understood by the server due to unexpected data. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -1,6 +1,7 @@
 package org.openapitools.model;
 
 import java.math.BigDecimal;
+import org.openapitools.model.CustomerListStatus;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -24,88 +25,65 @@ public class CustomerList  {
   private BigDecimal createdTime;
 
  /**
-  * Customer list errors
+  * Customer list errors.
   */
-  @ApiModelProperty(value = "Customer list errors")
+  @ApiModelProperty(value = "Customer list errors.")
 
   private Object exceptions;
 
  /**
   * Customer list ID.
   */
-  @ApiModelProperty(example = "643", value = "Customer list ID.")
+  @ApiModelProperty(example = "643", required = true, value = "Customer list ID.")
 
   private String id;
 
  /**
+  * Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+  */
+  @ApiModelProperty(value = "Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.")
+
+  private Boolean isNca;
+
+ /**
   * Customer list name.
   */
-  @ApiModelProperty(example = "The Glengarry Glen Ross leads", value = "Customer list name.")
+  @ApiModelProperty(example = "The Glengarry Glen Ross leads", required = true, value = "Customer list name.")
 
   private String name;
 
  /**
-  * Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+  * Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
   */
-  @ApiModelProperty(example = "2", value = "Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.")
+  @ApiModelProperty(example = "2", value = "Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.")
 
   private BigDecimal numBatches;
 
  /**
-  * Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
+  * Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
   */
-  @ApiModelProperty(example = "0", value = "Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.")
+  @ApiModelProperty(example = "0", value = "Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.")
 
   private BigDecimal numRemovedUserRecords;
 
  /**
-  * Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
+  * Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
   */
-  @ApiModelProperty(example = "11", value = "Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.")
+  @ApiModelProperty(example = "11", value = "Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.")
 
   private BigDecimal numUploadedUserRecords;
 
-public enum StatusEnum {
+ /**
+  * Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
+  */
+  @ApiModelProperty(example = "PROCESSING", value = "Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.")
 
-PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SMALL(String.valueOf("TOO_SMALL")), UPLOADING(String.valueOf("UPLOADING"));
-
-
-    private String value;
-
-    StatusEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
+  private CustomerListStatus status;
 
  /**
-  * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
+  * Always `customerlist`.
   */
-  @ApiModelProperty(example = "PROCESSING", value = "Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.")
-
-  private StatusEnum status;
-
- /**
-  * Always \"customerlist\".
-  */
-  @ApiModelProperty(example = "customerlist", value = "Always \"customerlist\".")
+  @ApiModelProperty(example = "customerlist", value = "Always `customerlist`.")
 
   private String type;
 
@@ -124,14 +102,6 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
-
-  public CustomerList adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
-  }
 
  /**
    * Creation time. Unix timestamp in seconds.
@@ -142,17 +112,9 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     return createdTime;
   }
 
-  public void setCreatedTime(BigDecimal createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  public CustomerList createdTime(BigDecimal createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
 
  /**
-   * Customer list errors
+   * Customer list errors.
    * @return exceptions
   **/
   @JsonProperty("exceptions")
@@ -160,14 +122,6 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     return exceptions;
   }
 
-  public void setExceptions(Object exceptions) {
-    this.exceptions = exceptions;
-  }
-
-  public CustomerList exceptions(Object exceptions) {
-    this.exceptions = exceptions;
-    return this;
-  }
 
  /**
    * Customer list ID.
@@ -178,12 +132,22 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
+
+ /**
+   * Whether the list was uploaded for new customer acquisition (expanded matching). Immutable after creation.
+   * @return isNca
+  **/
+  @JsonProperty("is_nca")
+  public Boolean getIsNca() {
+    return isNca;
   }
 
-  public CustomerList id(String id) {
-    this.id = id;
+  public void setIsNca(Boolean isNca) {
+    this.isNca = isNca;
+  }
+
+  public CustomerList isNca(Boolean isNca) {
+    this.isNca = isNca;
     return this;
   }
 
@@ -206,7 +170,7 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
   }
 
  /**
-   * Total number of list updates.  List creation counts as one batch. Each &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+   * Total number of list updates. List creation counts as one batch. Each [Append](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) or [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call counts as another. List creation via the **Ads Manager** UI could result in more than one batch since the UI breaks up large lists.
    * @return numBatches
   **/
   @JsonProperty("num_batches")
@@ -214,17 +178,9 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     return numBatches;
   }
 
-  public void setNumBatches(BigDecimal numBatches) {
-    this.numBatches = numBatches;
-  }
-
-  public CustomerList numBatches(BigDecimal numBatches) {
-    this.numBatches = numBatches;
-    return this;
-  }
 
  /**
-   * Number of removed user records. In a &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call, this counter increases even if the user is not found in the list.
+   * Number of removed user records. In a [Remove API](/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT) call, this counter increases even if the user is not found in the list.
    * @return numRemovedUserRecords
   **/
   @JsonProperty("num_removed_user_records")
@@ -232,17 +188,9 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     return numRemovedUserRecords;
   }
 
-  public void setNumRemovedUserRecords(BigDecimal numRemovedUserRecords) {
-    this.numRemovedUserRecords = numRemovedUserRecords;
-  }
-
-  public CustomerList numRemovedUserRecords(BigDecimal numRemovedUserRecords) {
-    this.numRemovedUserRecords = numRemovedUserRecords;
-    return this;
-  }
 
  /**
-   * Number of uploaded user records. In an &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append API&lt;/a&gt; call, this counter increases even if the uploaded user is already in the list.
+   * Number of uploaded user records. In an [Append API](/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT) call, this counter increases even if the uploaded user is already in the list.
    * @return numUploadedUserRecords
   **/
   @JsonProperty("num_uploaded_user_records")
@@ -250,38 +198,19 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     return numUploadedUserRecords;
   }
 
-  public void setNumUploadedUserRecords(BigDecimal numUploadedUserRecords) {
-    this.numUploadedUserRecords = numUploadedUserRecords;
-  }
-
-  public CustomerList numUploadedUserRecords(BigDecimal numUploadedUserRecords) {
-    this.numUploadedUserRecords = numUploadedUserRecords;
-    return this;
-  }
 
  /**
-   * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
+   * Customer list status. &#x60;TOO_SMALL&#x60; means the list has fewer than 100 Pinterest users.
    * @return status
   **/
   @JsonProperty("status")
-  public String getStatus() {
-    if (status == null) {
-      return null;
-    }
-    return status.value();
+  public CustomerListStatus getStatus() {
+    return status;
   }
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-  public CustomerList status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
 
  /**
-   * Always \&quot;customerlist\&quot;.
+   * Always &#x60;customerlist&#x60;.
    * @return type
   **/
   @JsonProperty("type")
@@ -289,14 +218,6 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     return type;
   }
 
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public CustomerList type(String type) {
-    this.type = type;
-    return this;
-  }
 
  /**
    * Last update time. Unix timestamp in seconds.
@@ -307,14 +228,6 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     return updatedTime;
   }
 
-  public void setUpdatedTime(BigDecimal updatedTime) {
-    this.updatedTime = updatedTime;
-  }
-
-  public CustomerList updatedTime(BigDecimal updatedTime) {
-    this.updatedTime = updatedTime;
-    return this;
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -329,6 +242,7 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
         Objects.equals(this.createdTime, customerList.createdTime) &&
         Objects.equals(this.exceptions, customerList.exceptions) &&
         Objects.equals(this.id, customerList.id) &&
+        Objects.equals(this.isNca, customerList.isNca) &&
         Objects.equals(this.name, customerList.name) &&
         Objects.equals(this.numBatches, customerList.numBatches) &&
         Objects.equals(this.numRemovedUserRecords, customerList.numRemovedUserRecords) &&
@@ -340,7 +254,7 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, createdTime, exceptions, id, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
+    return Objects.hash(adAccountId, createdTime, exceptions, id, isNca, name, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
   }
 
   @Override
@@ -352,6 +266,7 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isNca: ").append(toIndentedString(isNca)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    numBatches: ").append(toIndentedString(numBatches)).append("\n");
     sb.append("    numRemovedUserRecords: ").append(toIndentedString(numRemovedUserRecords)).append("\n");
@@ -368,10 +283,7 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

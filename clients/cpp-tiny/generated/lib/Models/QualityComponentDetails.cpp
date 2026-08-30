@@ -123,7 +123,7 @@ QualityComponentDetails::getCoverage()
 }
 
 void
-QualityComponentDetails::setCoverage(long  coverage)
+QualityComponentDetails::setCoverage(long coverage)
 {
 	this->coverage = coverage;
 }
@@ -135,7 +135,7 @@ QualityComponentDetails::getIssues()
 }
 
 void
-QualityComponentDetails::setIssues(std::list <QualityComponentIssue> issues)
+QualityComponentDetails::setIssues(std::list<QualityComponentIssue> issues)
 {
 	this->issues = issues;
 }
@@ -147,7 +147,7 @@ QualityComponentDetails::getOverlap()
 }
 
 void
-QualityComponentDetails::setOverlap(long  overlap)
+QualityComponentDetails::setOverlap(long overlap)
 {
 	this->overlap = overlap;
 }

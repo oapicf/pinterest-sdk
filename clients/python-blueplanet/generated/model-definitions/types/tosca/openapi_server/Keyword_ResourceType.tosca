@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  MatchTypeResponse = openapi_server.resourceTypes.MatchTypeResponse
+  MatchType = openapi_server.resourceTypes.MatchType
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -17,45 +17,45 @@ resourceTypes {
     description = Keyword
     derivedFrom = Root
     properties {
-        bid {
-          type =  integer
-          description = "&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group."
-          optional = false
-        }
-        match_type {
-          type = MatchTypeResponse
-          description = ""
-          optional = true
-        }
-        value {
-          type =  string
-          description = "Keyword value (120 chars max)."
-          optional = true
-        }
         archived {
           type =  boolean
           description = ""
           optional = false
         }
+        bid {
+          type =  integer
+          description = "**Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group."
+          optional = false
+        }
         id {
           type =  string
           description = "Keyword ID ."
-          optional = false
+          optional = true
+        }
+        match_type {
+          type = MatchType
+          description = "Keyword [match type](/docs/api-features/targeting-overview/)"
+          optional = true
         }
         parent_id {
           type =  string
           description = "Keyword parent entity ID (advertiser, campaign, ad group)."
-          optional = false
+          optional = true
         }
         parent_type {
           type =  string
-          description = "Parent entity type"
+          description = "Parent entity type (advertiser, campaign, ad group)."
           optional = false
         }
         type {
           type =  string
           description = "Always keyword"
           optional = false
+        }
+        value {
+          type =  string
+          description = "Keyword value (120 chars max)."
+          optional = true
         }
     }
   }

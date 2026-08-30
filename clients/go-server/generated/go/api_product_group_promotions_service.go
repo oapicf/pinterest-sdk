@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -30,43 +30,91 @@ func NewProductGroupPromotionsAPIService() *ProductGroupPromotionsAPIService {
 }
 
 // ProductGroupPromotionsList - Get product group promotions
-func (s *ProductGroupPromotionsAPIService) ProductGroupPromotionsList(ctx context.Context, adAccountId string, productGroupPromotionIds []string, entityStatuses []string, adGroupId string, pageSize int32, order string, bookmark string) (ImplResponse, error) {
+func (s *ProductGroupPromotionsAPIService) ProductGroupPromotionsList(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder, productGroupPromotionIds []string, entityStatuses []EntityStatus, adGroupId string) (ImplResponse, error) {
 	// TODO - update ProductGroupPromotionsList with the required logic for this service method.
 	// Add api_product_group_promotions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, ProductGroupPromotionsList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, ProductGroupPromotionsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("ProductGroupPromotionsList method not implemented")
 }
 
 // ProductGroupPromotionsCreate - Create product group promotions
-func (s *ProductGroupPromotionsAPIService) ProductGroupPromotionsCreate(ctx context.Context, adAccountId string, productGroupPromotionCreateRequest ProductGroupPromotionCreateRequest) (ImplResponse, error) {
+func (s *ProductGroupPromotionsAPIService) ProductGroupPromotionsCreate(ctx context.Context, adAccountId string, productGroupPromotionsCreate ProductGroupPromotionsCreate) (ImplResponse, error) {
 	// TODO - update ProductGroupPromotionsCreate with the required logic for this service method.
 	// Add api_product_group_promotions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, ProductGroupPromotionResponse{}) or use other options such as http.Ok ...
-	// return Response(200, ProductGroupPromotionResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ProductGroupPromotions{}) or use other options such as http.Ok ...
+	// return Response(200, ProductGroupPromotions{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, ProductGroupPromotions{}) or use other options such as http.Ok ...
+	// return Response(201, ProductGroupPromotions{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("ProductGroupPromotionsCreate method not implemented")
 }
 
 // ProductGroupPromotionsUpdate - Update product group promotions
-func (s *ProductGroupPromotionsAPIService) ProductGroupPromotionsUpdate(ctx context.Context, adAccountId string, productGroupPromotionUpdateRequest ProductGroupPromotionUpdateRequest) (ImplResponse, error) {
+func (s *ProductGroupPromotionsAPIService) ProductGroupPromotionsUpdate(ctx context.Context, adAccountId string, productGroupPromotionsUpdateWithRequiredBody ProductGroupPromotionsUpdateWithRequiredBody) (ImplResponse, error) {
 	// TODO - update ProductGroupPromotionsUpdate with the required logic for this service method.
 	// Add api_product_group_promotions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, ProductGroupPromotionResponse{}) or use other options such as http.Ok ...
-	// return Response(200, ProductGroupPromotionResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ProductGroupPromotions{}) or use other options such as http.Ok ...
+	// return Response(200, ProductGroupPromotions{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("ProductGroupPromotionsUpdate method not implemented")
 }
@@ -79,25 +127,52 @@ func (s *ProductGroupPromotionsAPIService) ProductGroupPromotionsGet(ctx context
 	// TODO: Uncomment the next line to return response Response(200, ProductGroupPromotion{}) or use other options such as http.Ok ...
 	// return Response(200, ProductGroupPromotion{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("ProductGroupPromotionsGet method not implemented")
 }
 
 // ProductGroupsAnalytics - Get product group analytics
-func (s *ProductGroupPromotionsAPIService) ProductGroupsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, productGroupIds []string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
+func (s *ProductGroupPromotionsAPIService) ProductGroupsAnalytics(ctx context.Context, startDate string, endDate string, productGroupIds []string, columns []ReportingColumnSync, granularity Granularity, adAccountId string, clickWindowDays float32, engagementWindowDays float32, viewWindowDays float32, conversionReportTime string, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update ProductGroupsAnalytics with the required logic for this service method.
 	// Add api_product_group_promotions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, []ProductGroupAnalyticsResponseInner{}) or use other options such as http.Ok ...
-	// return Response(200, []ProductGroupAnalyticsResponseInner{}), nil
+	// TODO: Uncomment the next line to return response Response(200, []ProductGroupAnalyticsItems{}) or use other options such as http.Ok ...
+	// return Response(200, []ProductGroupAnalyticsItems{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("ProductGroupsAnalytics method not implemented")
 }

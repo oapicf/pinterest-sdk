@@ -2,89 +2,44 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability;
-import org.openapitools.model.TopVideoPinsAnalyticsResponsePinsInner;
+import org.openapitools.model.TopVideoPinsAnalyticsResponseDateAvailability;
+import org.openapitools.model.TopVideoPinsAnalyticsResponsePinsItems;
+import org.openapitools.model.TopVideoPinsSortBy;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * TopVideoPinsAnalyticsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopVideoPinsAnalyticsResponse {
 
-  private @Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable TopVideoPinsAnalyticsResponseDateAvailability dateAvailability;
 
-  @Valid
-  private List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
 
-  /**
-   * Gets or Sets sortBy
-   */
-  public enum SortByEnum {
-    SAVE("SAVE"),
-    
-    IMPRESSION("IMPRESSION"),
-    
-    OUTBOUND_CLICK("OUTBOUND_CLICK"),
-    
-    VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
-    
-    VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME"),
-    
-    VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
-    
-    QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-    
-    VIDEO_10_S_VIEW("VIDEO_10S_VIEW"),
-    
-    VIDEO_START("VIDEO_START");
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable TopVideoPinsSortBy sortBy;
 
-    private final String value;
-
-    SortByEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SortByEnum fromValue(String value) {
-      for (SortByEnum b : SortByEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable SortByEnum sortBy;
-
-  public TopVideoPinsAnalyticsResponse dateAvailability(@Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public TopVideoPinsAnalyticsResponse dateAvailability(@Nullable TopVideoPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
     return this;
   }
@@ -96,20 +51,21 @@ public class TopVideoPinsAnalyticsResponse {
   @Valid 
   @Schema(name = "date_availability", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("date_availability")
-  public @Nullable TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
+  public @Nullable TopVideoPinsAnalyticsResponseDateAvailability getDateAvailability() {
     return dateAvailability;
   }
 
-  public void setDateAvailability(@Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  @JsonProperty("date_availability")
+  public void setDateAvailability(@Nullable TopVideoPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
   }
 
-  public TopVideoPinsAnalyticsResponse pins(List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins) {
+  public TopVideoPinsAnalyticsResponse pins(List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
     return this;
   }
 
-  public TopVideoPinsAnalyticsResponse addPinsItem(TopVideoPinsAnalyticsResponsePinsInner pinsItem) {
+  public TopVideoPinsAnalyticsResponse addPinsItem(TopVideoPinsAnalyticsResponsePinsItems pinsItem) {
     if (this.pins == null) {
       this.pins = new ArrayList<>();
     }
@@ -124,15 +80,16 @@ public class TopVideoPinsAnalyticsResponse {
   @Valid 
   @Schema(name = "pins", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pins")
-  public List<@Valid TopVideoPinsAnalyticsResponsePinsInner> getPins() {
+  public List<@Valid TopVideoPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
 
-  public void setPins(List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins) {
+  @JsonProperty("pins")
+  public void setPins(List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins) {
     this.pins = pins;
   }
 
-  public TopVideoPinsAnalyticsResponse sortBy(@Nullable SortByEnum sortBy) {
+  public TopVideoPinsAnalyticsResponse sortBy(@Nullable TopVideoPinsSortBy sortBy) {
     this.sortBy = sortBy;
     return this;
   }
@@ -141,14 +98,15 @@ public class TopVideoPinsAnalyticsResponse {
    * Get sortBy
    * @return sortBy
    */
-  
-  @Schema(name = "sort_by", example = "IMPRESSION", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "sort_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("sort_by")
-  public @Nullable SortByEnum getSortBy() {
+  public @Nullable TopVideoPinsSortBy getSortBy() {
     return sortBy;
   }
 
-  public void setSortBy(@Nullable SortByEnum sortBy) {
+  @JsonProperty("sort_by")
+  public void setSortBy(@Nullable TopVideoPinsSortBy sortBy) {
     this.sortBy = sortBy;
   }
 
@@ -186,11 +144,8 @@ public class TopVideoPinsAnalyticsResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

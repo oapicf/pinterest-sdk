@@ -8,16 +8,25 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsAiContentDisclosure
 import org.openapitools.client.models.CatalogsHotelAddress
-import org.openapitools.client.models.CatalogsHotelAttributesAllOfMainImage
 import org.openapitools.client.models.CatalogsHotelGuestRatings
+import org.openapitools.client.models.CatalogsHotelMainImage
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -25,7 +34,7 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param address 
+ * @param address Hotel address
  * @param basePrice Base price of the hotel room per night followed by the ISO currency code
  * @param brand The brand to which this hotel belongs to.
  * @param category The type of property. The category can be any type of internal description desired.
@@ -35,20 +44,22 @@ import com.squareup.moshi.JsonClass
  * @param customLabel3 Custom grouping of hotels
  * @param customLabel4 Custom grouping of hotels
  * @param description Brief description of the hotel.
- * @param guestRatings 
+ * @param guestRatings If specified, you must provide all properties
  * @param latitude Latitude of the hotel.
  * @param link Link to the product page
  * @param longitude Longitude of the hotel.
  * @param name The hotel's name.
  * @param neighborhood A list of neighborhoods where the hotel is located
  * @param salePrice Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
- * @param additionalImageLink <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
- * @param mainImage 
+ * @param additionalImageLink <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.
+ * @param aiDisclosures AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
+ * @param mainImage The main hotel image
  */
 
 
 data class CatalogsHotelAttributes (
 
+    /* Hotel address */
     @Json(name = "address")
     val address: CatalogsHotelAddress? = null,
 
@@ -88,6 +99,7 @@ data class CatalogsHotelAttributes (
     @Json(name = "description")
     val description: kotlin.String? = null,
 
+    /* If specified, you must provide all properties */
     @Json(name = "guest_ratings")
     val guestRatings: CatalogsHotelGuestRatings? = null,
 
@@ -115,12 +127,17 @@ data class CatalogsHotelAttributes (
     @Json(name = "sale_price")
     val salePrice: kotlin.String? = null,
 
-    /* <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p> */
+    /* <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://. */
     @Json(name = "additional_image_link")
     val additionalImageLink: kotlin.collections.List<kotlin.String>? = null,
 
+    /* AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL. */
+    @Json(name = "ai_disclosures")
+    val aiDisclosures: kotlin.collections.List<CatalogsAiContentDisclosure>? = null,
+
+    /* The main hotel image */
     @Json(name = "main_image")
-    val mainImage: CatalogsHotelAttributesAllOfMainImage? = null
+    val mainImage: CatalogsHotelMainImage? = null
 
 ) {
 

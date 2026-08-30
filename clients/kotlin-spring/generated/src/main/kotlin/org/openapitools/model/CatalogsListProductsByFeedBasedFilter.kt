@@ -3,6 +3,8 @@ package org.openapitools.model
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.openapitools.model.CatalogsProductGroupFilters
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,12 +25,14 @@ data class CatalogsListProductsByFeedBasedFilter(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog Feed id pertaining to the catalog product group filter.")
+    @param:JsonProperty("feed_id")
     @get:JsonProperty("feed_id", required = true) val feedId: kotlin.String,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("filters")
     @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters
-) {
+) : CatalogsListProductsByFilterRequest {
 
 }
 

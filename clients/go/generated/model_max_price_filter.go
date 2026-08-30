@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *MaxPriceFilter) GetMAX_PRICE() CatalogsProductGroupPricingCriteria {
 
 // GetMAX_PRICEOk returns a tuple with the MAX_PRICE field value
 // and a boolean to check if the value has been set.
-func (o *MaxPriceFilter) GetMAX_PRICEOk() (CatalogsProductGroupPricingCriteria, bool) {
+func (o *MaxPriceFilter) GetMAX_PRICEOk() (*CatalogsProductGroupPricingCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupPricingCriteria{}, false
+		return nil, false
 	}
-	return o.MAX_PRICE, true
+	return &o.MAX_PRICE, true
 }
 
 // SetMAX_PRICE sets field value

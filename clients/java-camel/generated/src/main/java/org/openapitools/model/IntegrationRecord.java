@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -9,20 +10,20 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Integration record
  */
 
 @Schema(name = "IntegrationRecord", description = "Integration record")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationRecord {
 
   private JsonNullable<String> additionalId1 = JsonNullable.<String>undefined();
@@ -59,6 +60,17 @@ public class IntegrationRecord {
 
   private Integer updatedTime;
 
+  public IntegrationRecord() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public IntegrationRecord(String id) {
+    this.id = id;
+  }
+
   public IntegrationRecord additionalId1(String additionalId1) {
     this.additionalId1 = JsonNullable.of(additionalId1);
     return this;
@@ -89,7 +101,7 @@ public class IntegrationRecord {
    * @return connectedAdvertiserId
    */
   
-  @Schema(name = "connected_advertiser_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "connected_advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_advertiser_id")
   public JsonNullable<String> getConnectedAdvertiserId() {
     return connectedAdvertiserId;
@@ -169,7 +181,7 @@ public class IntegrationRecord {
    * @return connectedUserId
    */
   
-  @Schema(name = "connected_user_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "connected_user_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_user_id")
   public String getConnectedUserId() {
     return connectedUserId;
@@ -225,11 +237,11 @@ public class IntegrationRecord {
   }
 
   /**
-   * Get id
+   * Integration record ID.
    * @return id
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, description = "Integration record ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -473,10 +485,7 @@ public class IntegrationRecord {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

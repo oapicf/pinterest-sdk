@@ -23,8 +23,8 @@ CustomerListUploadCreateResponse::~CustomerListUploadCreateResponse()
 void
 CustomerListUploadCreateResponse::__init()
 {
-	//customer_list_upload = new CustomerListUpload();
-	//s3_multipart_upload_data = new S3MultipartUploadData();
+	//customer_list_upload = null;
+	//s3_multipart_upload_data = null;
 }
 
 void

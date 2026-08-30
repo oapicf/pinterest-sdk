@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CREATIVE_ASSETS_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**CREATIVE_ASSETS_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
 
 ## Example
 

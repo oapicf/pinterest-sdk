@@ -1,4 +1,4 @@
-# # CatalogsHotelBatchItem
+# CatalogsHotelBatchItem
 
 ## Properties
 

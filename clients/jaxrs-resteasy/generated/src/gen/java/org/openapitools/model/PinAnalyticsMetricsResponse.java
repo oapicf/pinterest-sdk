@@ -12,15 +12,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.model.PinAnalyticsMetricsResponseDailyMetricsInner;
+import org.openapitools.model.PinAnalyticsDailyMetrics;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PinAnalyticsMetricsResponse   {
   
-  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
+  private List<@Valid PinAnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
   private Map<String, Integer> lifetimeMetrics = new HashMap<>();
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
@@ -31,10 +31,10 @@ public class PinAnalyticsMetricsResponse   {
   @ApiModelProperty(value = "Array with the requested daily metric records")
   @JsonProperty("daily_metrics")
   @Valid
-  public List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> getDailyMetrics() {
+  public List<@Valid PinAnalyticsDailyMetrics> getDailyMetrics() {
     return dailyMetrics;
   }
-  public void setDailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public void setDailyMetrics(List<@Valid PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
 
@@ -102,10 +102,7 @@ public class PinAnalyticsMetricsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

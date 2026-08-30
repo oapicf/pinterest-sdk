@@ -51,14 +51,14 @@ static gpointer __ConversionEventsManagerthreadFunc(gpointer data)
 static bool eventsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(ConversionApiResponse, Error, void* )
-	= reinterpret_cast<void(*)(ConversionApiResponse, Error, void* )> (voidHandler);
+	void(* handler)(ConversionEvents, Error, void* )
+	= reinterpret_cast<void(*)(ConversionEvents, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	ConversionApiResponse out;
+	ConversionEvents out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,23 @@ static bool eventsCreateProcessor(MemoryStruct_s p_chunk, long code, char* error
 
 
 
-		if (isprimitive("ConversionApiResponse")) {
+		if (isprimitive("ConversionEvents")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "ConversionApiResponse", "ConversionApiResponse");
+			jsonToValue(&out, pJson, "ConversionEvents", "ConversionEvents");
 			json_node_free(pJson);
 
-			if ("ConversionApiResponse" == "std::string") {
+			if ("ConversionEvents" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -139,8 +144,8 @@ static bool eventsCreateProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool eventsCreateHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ConversionEvents> conversionEvents, bool test, 
-	void(* handler)(ConversionApiResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<ConversionEventsCreate> conversionEventsCreate, bool test, 
+	void(* handler)(ConversionEvents, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -167,11 +172,11 @@ static bool eventsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("ConversionEvents")) {
-		node = converttoJson(&conversionEvents, "ConversionEvents", "");
+	if (isprimitive("ConversionEventsCreate")) {
+		node = converttoJson(&conversionEventsCreate, "ConversionEventsCreate", "");
 	}
 	
-	char *jsonStr =  conversionEvents.toJson();
+	char *jsonStr =  conversionEventsCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -236,22 +241,22 @@ static bool eventsCreateHelper(char * accessToken,
 
 
 bool ConversionEventsManager::eventsCreateAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ConversionEvents> conversionEvents, bool test, 
-	void(* handler)(ConversionApiResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<ConversionEventsCreate> conversionEventsCreate, bool test, 
+	void(* handler)(ConversionEvents, Error, void* )
 	, void* userData)
 {
 	return eventsCreateHelper(accessToken,
-	adAccountId, conversionEvents, test, 
+	adAccountId, conversionEventsCreate, test, 
 	handler, userData, true);
 }
 
 bool ConversionEventsManager::eventsCreateSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<ConversionEvents> conversionEvents, bool test, 
-	void(* handler)(ConversionApiResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<ConversionEventsCreate> conversionEventsCreate, bool test, 
+	void(* handler)(ConversionEvents, Error, void* )
 	, void* userData)
 {
 	return eventsCreateHelper(accessToken,
-	adAccountId, conversionEvents, test, 
+	adAccountId, conversionEventsCreate, test, 
 	handler, userData, false);
 }
 

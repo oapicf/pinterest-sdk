@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## board_sections_slash_create
 
-> models::BoardSection board_sections_slash_create(board_id, board_section, ad_account_id)
+> models::BoardSection board_sections_slash_create(board_id, board_section_create, ad_account_id)
 Create board section
 
 Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
@@ -31,7 +31,7 @@ Create a board section on a board owned by the \"operation user_account\" - or o
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **board_id** | **String** | Unique identifier of a board. | [required] |
-**board_section** | [**BoardSection**](BoardSection.md) | Create a board section. | [required] |
+**board_section_create** | [**BoardSectionCreate**](BoardSectionCreate.md) |  | [required] |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
 ### Return type
@@ -52,7 +52,7 @@ Name | Type | Description  | Required | Notes
 
 ## board_sections_slash_delete
 
-> board_sections_slash_delete(board_id, section_id, ad_account_id)
+> models::BoardSection board_sections_slash_delete(board_id, section_id, ad_account_id)
 Delete board section
 
 Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
@@ -68,7 +68,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Required | Notes
 **board_id** | **String** | Unique identifier of a board. | [required] |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Required | Notes
 **section_id** | **String** | Unique identifier of a board section. | [required] |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Required | Notes
 
 ## board_sections_slash_update
 
-> models::BoardSection board_sections_slash_update(board_id, section_id, board_section, ad_account_id)
+> models::BoardSection board_sections_slash_update(board_id, section_id, board_section_update_with_required_body, ad_account_id)
 Update board section
 
 Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
@@ -163,7 +163,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **board_id** | **String** | Unique identifier of a board. | [required] |
 **section_id** | **String** | Unique identifier of a board section. | [required] |
-**board_section** | [**BoardSection**](BoardSection.md) | Update a board section. | [required] |
+**board_section_update_with_required_body** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md) |  | [required] |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
 ### Return type
@@ -215,7 +215,7 @@ Name | Type | Description  | Required | Notes
 
 ## boards_slash_delete
 
-> boards_slash_delete(board_id, ad_account_id)
+> models::Board boards_slash_delete(board_id, ad_account_id)
 Delete board
 
 Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
@@ -230,7 +230,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::Board**](Board.md)
 
 ### Authorization
 
@@ -288,7 +288,7 @@ Get a list of the boards owned by the \"operation user_account\" + group boards 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
-**privacy** | Option<[**BoardPrivacyFilter**](.md)> | The privacy level of the board |  |
+**privacy** | Option<[**BoardPrivacyFilter**](BoardPrivacyFilter.md)> | The privacy level of the board |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
 **page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
@@ -310,7 +310,7 @@ Name | Type | Description  | Required | Notes
 
 ## boards_slash_list_pins
 
-> models::BoardsListPins200Response boards_slash_list_pins(board_id, bookmark, page_size, creative_types, ad_account_id, pin_metrics)
+> models::BoardsListPins200Response boards_slash_list_pins(board_id, creative_types, ad_account_id, pin_metrics, bookmark, page_size)
 List Pins on board
 
 Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
@@ -321,11 +321,11 @@ Get a list of the Pins on a board owned by the \"operation user_account\" - or o
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **board_id** | **String** | Unique identifier of a board. | [required] |
-**bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
-**creative_types** | Option<[**Vec<models::CreativeType>**](models::CreativeType.md)> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. |  |
+**creative_types** | Option<[**Vec<models::CreativeType>**](Models__CreativeType.md)> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. |  |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 **pin_metrics** | Option<**bool**> | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. |  |[default to false]
+**bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 

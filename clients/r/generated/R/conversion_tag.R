@@ -136,11 +136,11 @@ ConversionTag <- R6::R6Class(
       }
       if (!is.null(self$`configs`)) {
         ConversionTagObject[["configs"]] <-
-          self$`configs`$toSimpleType()
+          self$extractSimpleType(self$`configs`)
       }
       if (!is.null(self$`enhanced_match_status`)) {
         ConversionTagObject[["enhanced_match_status"]] <-
-          self$`enhanced_match_status`$toSimpleType()
+          self$extractSimpleType(self$`enhanced_match_status`)
       }
       if (!is.null(self$`id`)) {
         ConversionTagObject[["id"]] <-
@@ -164,9 +164,32 @@ ConversionTag <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         ConversionTagObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       return(ConversionTagObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

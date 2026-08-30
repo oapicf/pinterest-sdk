@@ -14,11 +14,12 @@ import CatalogsFeedProcessingResult._
 
 case class CatalogsFeedProcessingResult (
   createdAt: OffsetDateTime,
-id: String,
-updatedAt: OffsetDateTime,
+/* ID of the feed processing result. */
+  id: String,
 ingestionDetails: CatalogsFeedIngestionDetails,
 productCounts: CatalogsFeedProductCounts,
 status: CatalogsFeedProcessingStatus,
+updatedAt: OffsetDateTime,
 validationDetails: CatalogsFeedValidationDetails,
 videoCounts: Option[CatalogsFeedVideoCounts])
 

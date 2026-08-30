@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionItemsGetRecord;
+import org.openapitools.model.AdvancedAuctionKey;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -29,7 +29,7 @@ public class AdvancedAuctionItemsGetRequest  {
   */
   @ApiModelProperty(required = true, value = "A list of retail catalog items to fetch bid options for")
 
-  private List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
+  private List<AdvancedAuctionKey> items = new ArrayList<>();
  /**
    * Catalog id pertaining to the retail item
    * @return catalogId
@@ -53,20 +53,20 @@ public class AdvancedAuctionItemsGetRequest  {
    * @return items
   **/
   @JsonProperty("items")
-  public List<AdvancedAuctionItemsGetRecord> getItems() {
+  public List<AdvancedAuctionKey> getItems() {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionItemsGetRecord> items) {
+  public void setItems(List<AdvancedAuctionKey> items) {
     this.items = items;
   }
 
-  public AdvancedAuctionItemsGetRequest items(List<AdvancedAuctionItemsGetRecord> items) {
+  public AdvancedAuctionItemsGetRequest items(List<AdvancedAuctionKey> items) {
     this.items = items;
     return this;
   }
 
-  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionItemsGetRecord itemsItem) {
+  public AdvancedAuctionItemsGetRequest addItemsItem(AdvancedAuctionKey itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -105,10 +105,7 @@ public class AdvancedAuctionItemsGetRequest  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

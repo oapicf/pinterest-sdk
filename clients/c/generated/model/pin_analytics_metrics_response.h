@@ -15,7 +15,7 @@
 
 typedef struct pin_analytics_metrics_response_t pin_analytics_metrics_response_t;
 
-#include "pin_analytics_metrics_response_daily_metrics_inner.h"
+#include "pin_analytics_daily_metrics.h"
 
 
 

@@ -14,7 +14,7 @@ package org.openapitools.server.model
  * @param connectedUserId  for example: ''null''
  * @param createdTime  for example: ''null''
  * @param externalBusinessId  for example: ''null''
- * @param id  for example: ''null''
+ * @param id Integration record ID. for example: ''null''
  * @param partnerAccessToken  for example: ''null''
  * @param partnerAccessTokenExpiry  for example: ''null''
  * @param partnerMetadata  for example: ''null''
@@ -33,7 +33,7 @@ final case class IntegrationRecord (
   connectedUserId: Option[String] = None,
   createdTime: Option[Int] = None,
   externalBusinessId: Option[String] = None,
-  id: Option[String] = None,
+  id: String,
   partnerAccessToken: Option[String] = None,
   partnerAccessTokenExpiry: Option[Int] = None,
   partnerMetadata: Option[String] = None,

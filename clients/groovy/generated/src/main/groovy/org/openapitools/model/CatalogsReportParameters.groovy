@@ -6,12 +6,32 @@ import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.model.CatalogsHotelReportParameters;
 import org.openapitools.model.CatalogsHotelReportParametersReport;
 import org.openapitools.model.CatalogsRetailReportParameters;
-import org.openapitools.model.CatalogsType;
 
 @Canonical
 class CatalogsReportParameters {
+
+    enum CatalogTypeEnum {
     
-    CatalogsType catalogType
+        HOTEL("HOTEL")
+    
+        private final String value
+    
+        CatalogTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    CatalogTypeEnum catalogType
     
     CatalogsHotelReportParametersReport report
 }

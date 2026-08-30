@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server KeywordCreateItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a KeywordCreateItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  MatchType = openapi_server.resourceTypes.MatchType
+}
+resourceTypes {
+
+  KeywordCreateItem {
+    title = KeywordCreateItem
+    description = KeywordCreateItem
+    derivedFrom = Root
+    properties {
+        bid {
+          type =  integer
+          description = "**Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group."
+          optional = false
+        }
+        match_type {
+          type = MatchType
+          description = "Keyword [match type](/docs/api-features/targeting-overview/)"
+          optional = true
+        }
+        value {
+          type =  string
+          description = "Keyword value (120 chars max)."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  KeywordCreateItem {
+    title = KeywordCreateItem
+    description = KeywordCreateItem
+    implements = openapi_server.resourceTypes.KeywordCreateItem
+
+  }
+}

@@ -5,7 +5,7 @@ from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from openapi_server.models.error import Error
+from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.terms_of_service import TermsOfService
 from openapi_server.security_api import get_token_pinterest_oauth2
 

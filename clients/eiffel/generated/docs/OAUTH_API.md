@@ -10,7 +10,7 @@ Feature | HTTP request | Description
 
 
 # **oauth_conversion_token**
-> oauth_conversion_token : detachable CONVERSION_ACCESS_TOKEN_RESPONSE
+> oauth_conversion_token : detachable CONVERSION_ACCESS_TOKEN
 
 
 Generate OAuth access token for conversion API
@@ -23,7 +23,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**CONVERSION_ACCESS_TOKEN_RESPONSE**](ConversionAccessTokenResponse.md)
+[**CONVERSION_ACCESS_TOKEN**](ConversionAccessToken.md)
 
 ### Authorization
 
@@ -37,23 +37,28 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **oauth_token**
-> oauth_token (grant_type: STRING_32 ): detachable OAUTH_ACCESS_TOKEN_RESPONSE
+> oauth_token (grant_type: TOKEN_GRANT_TYPE ; code:  detachable STRING_32 ; continuous_refresh:  detachable STRING_32 ; redirect_uri:  detachable STRING_32 ; refresh_token:  detachable STRING_32 ; scope:  detachable STRING_32 ): detachable OAUTH_ACCESS_TOKEN
 
 
 Generate OAuth access token
 
-Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **grant_type** | **STRING_32**|  | [default to null]
+ **grant_type** | [**TOKEN_GRANT_TYPE**](TokenGrantType.md)|  | [default to null]
+ **code** | **STRING_32**|  | [optional] [default to null]
+ **continuous_refresh** | **STRING_32**|   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | [optional] [default to null]
+ **redirect_uri** | **STRING_32**|  | [optional] [default to null]
+ **refresh_token** | **STRING_32**|  | [optional] [default to null]
+ **scope** | **STRING_32**|  | [optional] [default to null]
 
 ### Return type
 
-[**OAUTH_ACCESS_TOKEN_RESPONSE**](OauthAccessTokenResponse.md)
+[**OAUTH_ACCESS_TOKEN**](OauthAccessToken.md)
 
 ### Authorization
 
@@ -67,7 +72,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **token_revoke**
-> token_revoke (token: STRING_32 ; token_type_hint:  detachable STRING_32 )
+> token_revoke (token: STRING_32 ; token_type_hint:  detachable TOKEN_TYPE_HINT )
 
 
 Revoke a token
@@ -80,7 +85,7 @@ Revokes an access or refresh token. Only tokens issued for system users are curr
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **STRING_32**| The token to revoke. | [default to null]
- **token_type_hint** | **STRING_32**| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] [default to null]
+ **token_type_hint** | [**TOKEN_TYPE_HINT**](TokenTypeHint.md)| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] [default to null]
 
 ### Return type
 

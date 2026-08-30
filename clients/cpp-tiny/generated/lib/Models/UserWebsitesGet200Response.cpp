@@ -7,7 +7,7 @@ using namespace Tiny;
 User_websites_get_200_response::User_websites_get_200_response()
 {
 	bookmark = std::string();
-	items = std::list<UserWebsiteSummary>();
+	items = std::list<UserWebsite>();
 }
 
 User_websites_get_200_response::User_websites_get_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ User_websites_get_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<UserWebsiteSummary> items_list;
-        UserWebsiteSummary element;
+        std::list<UserWebsite> items_list;
+        UserWebsite element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ User_websites_get_200_response::toJson()
 
 
 
-    std::list<UserWebsiteSummary> items_list = getItems();
+    std::list<UserWebsite> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        UserWebsiteSummary obj = var;
+        UserWebsite obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ User_websites_get_200_response::getBookmark()
 }
 
 void
-User_websites_get_200_response::setBookmark(std::string  bookmark)
+User_websites_get_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<UserWebsiteSummary>
+std::list<UserWebsite>
 User_websites_get_200_response::getItems()
 {
 	return items;
 }
 
 void
-User_websites_get_200_response::setItems(std::list <UserWebsiteSummary> items)
+User_websites_get_200_response::setItems(std::list<UserWebsite> items)
 {
 	this->items = items;
 }

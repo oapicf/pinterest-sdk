@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class MaxPriceFilter(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("MAX_PRICE")
     @get:JsonProperty("MAX_PRICE", required = true) val MAX_PRICE: CatalogsProductGroupPricingCriteria
 ) {
 

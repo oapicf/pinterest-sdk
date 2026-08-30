@@ -8,14 +8,16 @@
  * Do not edit the class manually.
  */
 import { AdPreviewShopping } from './adPreviewShopping';
-import { AdPreviewCreateFromPin } from './adPreviewCreateFromPin';
-import { AdPreviewCreateFromImage } from './adPreviewCreateFromImage';
+import { AdPreviewSourcePinId } from './adPreviewSourcePinId';
+import { BasePreferredMediaType } from './basePreferredMediaType';
+import { AdPreviewSourceImage } from './adPreviewSourceImage';
 import { CustomizableCTAType } from './customizableCTAType';
+import { AdShoppingPreviewCreativeType } from './adShoppingPreviewCreativeType';
 
 
 /**
  * @type AdPreviewRequest
  * @export
  */
-export type AdPreviewRequest = AdPreviewCreateFromImage | AdPreviewCreateFromPin | AdPreviewShopping;
+export type AdPreviewRequest = AdPreviewShopping | AdPreviewSourceImage | AdPreviewSourcePinId;
 

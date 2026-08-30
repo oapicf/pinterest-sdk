@@ -22,13 +22,13 @@ pinterest_rest_api_catalogs_vertical_batch_request_CATALOGTYPE_e catalogs_vertic
     return 0;
 }
 char* catalogs_vertical_batch_request_language_ToString(pinterest_rest_api_catalogs_vertical_batch_request_LANGUAGE_e language) {
-    char* languageArray[] =  { "NULL", "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" };
+    char* languageArray[] =  { "NULL", "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "false", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" };
     return languageArray[language];
 }
 
 pinterest_rest_api_catalogs_vertical_batch_request_LANGUAGE_e catalogs_vertical_batch_request_language_FromString(char* language){
     int stringToReturn = 0;
-    char *languageArray[] =  { "NULL", "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" };
+    char *languageArray[] =  { "NULL", "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "false", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" };
     size_t sizeofArray = sizeof(languageArray) / sizeof(languageArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(language, languageArray[stringToReturn]) == 0) {
@@ -50,13 +50,13 @@ static catalogs_vertical_batch_request_t *catalogs_vertical_batch_request_create
     if (!catalogs_vertical_batch_request_local_var) {
         return NULL;
     }
+    memset(catalogs_vertical_batch_request_local_var, 0, sizeof(catalogs_vertical_batch_request_t));
+    catalogs_vertical_batch_request_local_var->_library_owned = 1;
     catalogs_vertical_batch_request_local_var->catalog_id = catalog_id;
     catalogs_vertical_batch_request_local_var->catalog_type = catalog_type;
     catalogs_vertical_batch_request_local_var->country = country;
     catalogs_vertical_batch_request_local_var->items = items;
     catalogs_vertical_batch_request_local_var->language = language;
-
-    catalogs_vertical_batch_request_local_var->_library_owned = 1;
     return catalogs_vertical_batch_request_local_var;
 }
 
@@ -67,13 +67,16 @@ __attribute__((deprecated)) catalogs_vertical_batch_request_t *catalogs_vertical
     list_t *items,
     pinterest_rest_api_catalogs_vertical_batch_request_LANGUAGE_e language
     ) {
-    return catalogs_vertical_batch_request_create_internal (
+    catalogs_vertical_batch_request_t *result = catalogs_vertical_batch_request_create_internal (
         catalog_id,
         catalog_type,
         country,
         items,
         language
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_vertical_batch_request_free(catalogs_vertical_batch_request_t *catalogs_vertical_batch_request) {
@@ -176,6 +179,8 @@ catalogs_vertical_batch_request_t *catalogs_vertical_batch_request_parseFromJSON
 
     catalogs_vertical_batch_request_t *catalogs_vertical_batch_request_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
     // define the local variable for catalogs_vertical_batch_request->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
 
@@ -268,16 +273,26 @@ catalogs_vertical_batch_request_t *catalogs_vertical_batch_request_parseFromJSON
     languageVariable = catalogs_vertical_batch_request_language_FromString(language->valuestring);
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+
     catalogs_vertical_batch_request_local_var = catalogs_vertical_batch_request_create_internal (
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        catalog_id_local_str,
         catalog_typeVariable,
         country_local_nonprim,
         itemsList,
         languageVariable
         );
 
+    if (!catalogs_vertical_batch_request_local_var) {
+        goto end;
+    }
+
     return catalogs_vertical_batch_request_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
     if (country_local_nonprim) {
         country_local_nonprim = 0;
     }

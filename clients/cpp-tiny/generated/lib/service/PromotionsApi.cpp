@@ -12,7 +12,7 @@ using namespace Tiny;
             
             std::string adAccountId
             , 
-            std::list<PromotionCreateRequest> promotionCreateRequest
+            std::list<PromotionCreate> promotionCreate
             
             
         )
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | promotionCreateRequest
+            // Body     | promotionCreate
 
 
             bourne::json tmp_arr = bourne::json::array();
-            for(auto& var : promotionCreateRequest)
+            for(auto& var : promotionCreate)
             {
                 auto tmp = var.toJson();
                 tmp_arr.append(tmp);
@@ -72,19 +72,19 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            Promotion
         >
         PromotionsApi::
         promotions_delete(
             
-            std::string adAccountId
+            std::string promotionId
             , 
             
-            std::string promotionId
+            std::string adAccountId
             
         )
         {
-            std::string url = basepath + "/ad_accounts/{ad_account_id}/promotions/{promotion_id}"; //adAccountId promotionId 
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/promotions/{promotion_id}"; //promotionId adAccountId 
 
 
             // Headers  | 
@@ -95,14 +95,6 @@ using namespace Tiny;
 
 
 
-                std::string s_adAccountId("{");
-                s_adAccountId.append("ad_account_id");
-                s_adAccountId.append("}");
-
-                int pos = url.find(s_adAccountId);
-
-                url.erase(pos, s_adAccountId.length());
-                url.insert(pos, stringify(adAccountId));
                 std::string s_promotionId("{");
                 s_promotionId.append("promotion_id");
                 s_promotionId.append("}");
@@ -111,6 +103,14 @@ using namespace Tiny;
 
                 url.erase(pos, s_promotionId.length());
                 url.insert(pos, stringify(promotionId));
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
 
 
             std::string payload = "";
@@ -124,24 +124,29 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            Promotion obj(output_string);
+
+
+            Response<Promotion> response(obj, httpCode);
             return response;
         }
 
         Response<
-            PromotionResponse
+            Promotion
         >
         PromotionsApi::
         promotions_get(
             
-            std::string adAccountId
+            std::string promotionId
             , 
             
-            std::string promotionId
+            std::string adAccountId
             
         )
         {
-            std::string url = basepath + "/ad_accounts/{ad_account_id}/promotions/{promotion_id}"; //adAccountId promotionId 
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/promotions/{promotion_id}"; //promotionId adAccountId 
 
 
             // Headers  | 
@@ -152,14 +157,6 @@ using namespace Tiny;
 
 
 
-                std::string s_adAccountId("{");
-                s_adAccountId.append("ad_account_id");
-                s_adAccountId.append("}");
-
-                int pos = url.find(s_adAccountId);
-
-                url.erase(pos, s_adAccountId.length());
-                url.insert(pos, stringify(adAccountId));
                 std::string s_promotionId("{");
                 s_promotionId.append("promotion_id");
                 s_promotionId.append("}");
@@ -168,6 +165,14 @@ using namespace Tiny;
 
                 url.erase(pos, s_promotionId.length());
                 url.insert(pos, stringify(promotionId));
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
 
 
             std::string payload = "";
@@ -183,10 +188,10 @@ using namespace Tiny;
 
 
 
-            PromotionResponse obj(output_string);
+            Promotion obj(output_string);
 
 
-            Response<PromotionResponse> response(obj, httpCode);
+            Response<Promotion> response(obj, httpCode);
             return response;
         }
 
@@ -199,13 +204,13 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
+            std::string bookmark
+            , 
+            
             int pageSize
             , 
             
-            std::string order
-            , 
-            
-            std::string bookmark
+            Pinterest.Lib.PaginationOrder order
             
         )
         {
@@ -214,10 +219,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | pageSize order bookmark 
+            // Query    | bookmark pageSize order 
+            addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
             addQueryParam("order",order);
-            addQueryParam("bookmark",bookmark);
 
             // Form     | 
 
@@ -261,7 +266,7 @@ using namespace Tiny;
             
             std::string adAccountId
             , 
-            std::list<PromotionUpdateRequest> promotionUpdateRequest
+            std::list<PromotionBatchUpdate> promotionBatchUpdate
             
             
         )
@@ -291,11 +296,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | promotionUpdateRequest
+            // Body     | promotionBatchUpdate
 
 
             bourne::json tmp_arr = bourne::json::array();
-            for(auto& var : promotionUpdateRequest)
+            for(auto& var : promotionBatchUpdate)
             {
                 auto tmp = var.toJson();
                 tmp_arr.append(tmp);

@@ -1,0 +1,16 @@
+## SearchApi
+
+### Search pins by a given search term
+## Search pins by a given search term
+GET https://api.pinterest.com/v5/search/partner/pins?term={{term}}&countryCode={{countryCode}}&bookmark={{bookmark}}&locale={{locale}}&limit={{limit}}
+Accept: application/json
+
+### Search user&#39;s boards
+## Search user&#39;s boards
+GET https://api.pinterest.com/v5/search/boards?adAccountId={{adAccountId}}&query={{query}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Search user&#39;s Pins
+## Search user&#39;s Pins
+GET https://api.pinterest.com/v5/search/pins?adAccountId={{adAccountId}}&query={{query}}&bookmark={{bookmark}}
+Accept: application/json

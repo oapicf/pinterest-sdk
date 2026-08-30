@@ -8,15 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.CatalogsHotelAttributes
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Pin
 
 import com.squareup.moshi.Json
@@ -26,6 +33,7 @@ import com.squareup.moshi.JsonClass
  * Object describing a hotel record
  *
  * @param catalogType 
+ * @param itemResponseKind Discriminator literal identifying this leaf inside an `ItemResponse` payload.
  * @param attributes 
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param pins The pins mapped to the item
@@ -35,7 +43,11 @@ import com.squareup.moshi.JsonClass
 data class CatalogsHotelItemResponse (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsHotelItemResponse.CatalogType,
+
+    /* Discriminator literal identifying this leaf inside an `ItemResponse` payload. */
+    @Json(name = "item_response_kind")
+    val itemResponseKind: CatalogsHotelItemResponse.ItemResponseKind,
 
     @Json(name = "attributes")
     val attributes: CatalogsHotelAttributes? = null,
@@ -50,6 +62,24 @@ data class CatalogsHotelItemResponse (
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: HOTEL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "HOTEL") HOTEL("HOTEL");
+    }
+    /**
+     * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+     *
+     * Values: hotel_item
+     */
+    @JsonClass(generateAdapter = false)
+    enum class ItemResponseKind(val value: kotlin.String) {
+        @Json(name = "hotel_item") hotel_item("hotel_item");
+    }
 
 }
 

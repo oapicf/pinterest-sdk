@@ -17,7 +17,7 @@ import java.util.Map;
 // Implement this class
 
 public class LeadAdsApiImpl implements LeadAdsApi {
-    public Future<ApiResponse<Void>> adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId) {
+    public Future<ApiResponse<LeadSubscription>> adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId) {
         return Future.failedFuture(new HttpException(501));
     }
 

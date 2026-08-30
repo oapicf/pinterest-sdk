@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **accesses** | [**Array&lt;UpdatePartnerAssetAccessBodyAccessesInner&gt;**](UpdatePartnerAssetAccessBodyAccessesInner.md) |  |  |
+| **accesses** | [**Array&lt;UpdatePartnerAssetAccessItem&gt;**](UpdatePartnerAssetAccessItem.md) | List of partner asset accesses to assign or update. |  |
 
 ## Example
 

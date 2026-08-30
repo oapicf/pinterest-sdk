@@ -9,7 +9,7 @@
 -export_type([openapi_create_invites_results_response_array/0]).
 
 -type openapi_create_invites_results_response_array() ::
-  [ {'items', list(openapi_create_invites_results_response_array_items_inner:openapi_create_invites_results_response_array_items_inner()) }
+  [ {'items', list(openapi_invite_action_result_item:openapi_invite_action_result_item()) }
   ].
 
 
@@ -17,7 +17,7 @@ openapi_create_invites_results_response_array() ->
     openapi_create_invites_results_response_array([]).
 
 openapi_create_invites_results_response_array(Fields) ->
-  Default = [ {'items', list(openapi_create_invites_results_response_array_items_inner:openapi_create_invites_results_response_array_items_inner()) }
+  Default = [ {'items', list(openapi_invite_action_result_item:openapi_invite_action_result_item()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

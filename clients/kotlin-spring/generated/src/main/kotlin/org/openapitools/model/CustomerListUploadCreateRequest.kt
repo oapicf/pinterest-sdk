@@ -24,12 +24,14 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CustomerListUploadCreateRequest(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("operation")
     @get:JsonProperty("operation", required = true) val operation: UserListOperationType,
 
     @get:Min(value=1)
     @get:Max(value=10)
     @Schema(example = "2", required = true, description = "Number of parts to upload the file in.")
+    @param:JsonProperty("total_parts")
     @get:JsonProperty("total_parts", required = true) val totalParts: kotlin.Int
 ) {
 

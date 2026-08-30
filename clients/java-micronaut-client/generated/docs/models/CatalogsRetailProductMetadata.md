@@ -10,7 +10,7 @@ The class is defined in **[CatalogsRetailProductMetadata.java](../../src/main/ja
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**availability** | `NonNullableProductAvailabilityType` |  | 
+**availability** | `ProductAvailability` |  | 
 **currency** | `NonNullableCatalogsCurrency` |  | 
 **itemGroupId** | `String` | The parent ID of the product. | 
 **itemId** | `String` | The user-created unique ID that represents the product. | 

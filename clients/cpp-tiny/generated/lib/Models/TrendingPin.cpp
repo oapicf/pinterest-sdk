@@ -6,9 +6,11 @@ using namespace Tiny;
 
 TrendingPin::TrendingPin()
 {
+	color = std::string();
 	height = int(0);
 	id = std::string();
 	src = std::string();
+	vertical_offset = float(0);
 	width = int(0);
 }
 
@@ -26,6 +28,19 @@ void
 TrendingPin::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
+
+    const char *colorKey = "color";
+
+    if(object.has_key(colorKey))
+    {
+        bourne::json value = object[colorKey];
+
+
+
+        jsonToValue(&color, value, "std::string");
+
+
+    }
 
     const char *heightKey = "height";
 
@@ -66,6 +81,19 @@ TrendingPin::fromJson(std::string jsonObj)
 
     }
 
+    const char *vertical_offsetKey = "vertical_offset";
+
+    if(object.has_key(vertical_offsetKey))
+    {
+        bourne::json value = object[vertical_offsetKey];
+
+
+
+        jsonToValue(&vertical_offset, value, "double");
+
+
+    }
+
     const char *widthKey = "width";
 
     if(object.has_key(widthKey))
@@ -86,6 +114,13 @@ bourne::json
 TrendingPin::toJson()
 {
     bourne::json object = bourne::json::object();
+
+
+
+
+
+    object["color"] = getColor();
+
 
 
 
@@ -112,12 +147,31 @@ TrendingPin::toJson()
 
 
 
+    object["vertical_offset"] = getVerticalOffset();
+
+
+
+
+
+
     object["width"] = getWidth();
 
 
 
     return object;
 
+}
+
+std::string
+TrendingPin::getColor()
+{
+	return color;
+}
+
+void
+TrendingPin::setColor(std::string color)
+{
+	this->color = color;
 }
 
 int
@@ -127,7 +181,7 @@ TrendingPin::getHeight()
 }
 
 void
-TrendingPin::setHeight(int  height)
+TrendingPin::setHeight(int height)
 {
 	this->height = height;
 }
@@ -139,7 +193,7 @@ TrendingPin::getId()
 }
 
 void
-TrendingPin::setId(std::string  id)
+TrendingPin::setId(std::string id)
 {
 	this->id = id;
 }
@@ -151,9 +205,21 @@ TrendingPin::getSrc()
 }
 
 void
-TrendingPin::setSrc(std::string  src)
+TrendingPin::setSrc(std::string src)
 {
 	this->src = src;
+}
+
+double
+TrendingPin::getVerticalOffset()
+{
+	return vertical_offset;
+}
+
+void
+TrendingPin::setVerticalOffset(double vertical_offset)
+{
+	this->vertical_offset = vertical_offset;
 }
 
 int
@@ -163,7 +229,7 @@ TrendingPin::getWidth()
 }
 
 void
-TrendingPin::setWidth(int  width)
+TrendingPin::setWidth(int width)
 {
 	this->width = width;
 }

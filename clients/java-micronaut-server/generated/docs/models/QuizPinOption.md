@@ -2,7 +2,7 @@
 
 # QuizPinOption
 
- This field contains multiple options to a quiz question.
+This field contains multiple options to a quiz question.
 
 The class is defined in **[QuizPinOption.java](../../src/main/java/org/openapitools/model/QuizPinOption.java)**
 

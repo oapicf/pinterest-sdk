@@ -1,35 +1,34 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.BrandAccountsCreate200Response
-import org.openapitools.model.BrandAccountsCreateRequest
-import org.openapitools.model.BrandAccountsUpdateRequest
-import org.openapitools.model.DeletePartnersRequest
-import org.openapitools.model.DeletePartnersResponse
-import org.openapitools.model.DeletedMembersResponse
-import org.openapitools.model.Error
+import org.openapitools.model.BrandAccount
+import org.openapitools.model.BrandAccountCreate
+import org.openapitools.model.BrandAccountUpdate
+import org.openapitools.model.BusinessMembershipMember
+import org.openapitools.model.DeleteBusinessMembership200Response
+import org.openapitools.model.DeleteBusinessMembershipBody
+import org.openapitools.model.DeleteBusinessPartners
+import org.openapitools.model.DeleteBusinessPartnersDelete
 import org.openapitools.model.GetBusinessEmployers200Response
-import org.openapitools.model.GetBusinessMembers200Response
-import org.openapitools.model.GetBusinessPartners200Response
 import org.openapitools.model.MemberBusinessRole
-import org.openapitools.model.MembersToDeleteBody
 import org.openapitools.model.PartnerType
-import org.openapitools.model.SystemUserUpdateRequest
-import org.openapitools.model.UpdateMemberBusinessRoleBody
-import org.openapitools.model.UpdateMemberResultsResponseArray
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.SystemUserUpdateWithRequiredBody
+import org.openapitools.model.UpdateBusinessMembershipsResponse
 
 class BusinessAccessRelationshipsApi {
     String basePath = "https://api.pinterest.com/v5"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def brandAccountsCreate ( String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest, Closure onSuccess, Closure onFailure)  {
+    def brandAccountsCreate ( String businessHierarchyId, BrandAccountCreate brandAccountCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/business_access/business_hierarchy/${business_hierarchy_id}/brand_accounts"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -37,63 +36,69 @@ class BusinessAccessRelationshipsApi {
             throw new RuntimeException("missing required params businessHierarchyId")
         }
         // verify required params are set
-        if (brandAccountsCreateRequest == null) {
-            throw new RuntimeException("missing required params brandAccountsCreateRequest")
+        if (brandAccountCreate == null) {
+            throw new RuntimeException("missing required params brandAccountCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = brandAccountsCreateRequest
+        bodyParams = brandAccountCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    BrandAccountsCreate200Response.class )
+                    BrandAccount.class )
 
     }
 
-    def brandAccountsUpdate ( String businessHierarchyId, String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest, Closure onSuccess, Closure onFailure)  {
+    def brandAccountsUpdate ( String brandAccountId, String businessHierarchyId, BrandAccountUpdate brandAccountUpdate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/business_access/business_hierarchy/${business_hierarchy_id}/brand_accounts/${brand_account_id}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
-        // verify required params are set
-        if (businessHierarchyId == null) {
-            throw new RuntimeException("missing required params businessHierarchyId")
-        }
         // verify required params are set
         if (brandAccountId == null) {
             throw new RuntimeException("missing required params brandAccountId")
         }
         // verify required params are set
-        if (brandAccountsUpdateRequest == null) {
-            throw new RuntimeException("missing required params brandAccountsUpdateRequest")
+        if (businessHierarchyId == null) {
+            throw new RuntimeException("missing required params businessHierarchyId")
+        }
+        // verify required params are set
+        if (brandAccountUpdate == null) {
+            throw new RuntimeException("missing required params brandAccountUpdate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = brandAccountsUpdateRequest
+        bodyParams = brandAccountUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    BrandAccountsCreate200Response.class )
+                    BrandAccount.class )
 
     }
 
-    def deleteBusinessMembership ( String businessId, MembersToDeleteBody membersToDeleteBody, Closure onSuccess, Closure onFailure)  {
+    def deleteBusinessMembership ( String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/members"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -101,29 +106,32 @@ class BusinessAccessRelationshipsApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (membersToDeleteBody == null) {
-            throw new RuntimeException("missing required params membersToDeleteBody")
+        if (deleteBusinessMembershipBody == null) {
+            throw new RuntimeException("missing required params deleteBusinessMembershipBody")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = membersToDeleteBody
+        bodyParams = deleteBusinessMembershipBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    DeletedMembersResponse.class )
+                    DeleteBusinessMembership200Response.class )
 
     }
 
-    def deleteBusinessPartners ( String businessId, DeletePartnersRequest deletePartnersRequest, Closure onSuccess, Closure onFailure)  {
+    def deleteBusinessPartners ( String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/partners"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -131,43 +139,51 @@ class BusinessAccessRelationshipsApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (deletePartnersRequest == null) {
-            throw new RuntimeException("missing required params deletePartnersRequest")
+        if (deleteBusinessPartnersDelete == null) {
+            throw new RuntimeException("missing required params deleteBusinessPartnersDelete")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = deletePartnersRequest
+        bodyParams = deleteBusinessPartnersDelete
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    DeletePartnersResponse.class )
+                    DeleteBusinessPartners.class )
 
     }
 
-    def getBusinessEmployers ( Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def getBusinessEmployers ( Boolean assetsSummary, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/employers"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
+        if (assetsSummary != null) {
+            queryParams.put("assets_summary", assetsSummary)
         }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     GetBusinessEmployers200Response.class )
 
@@ -180,6 +196,7 @@ class BusinessAccessRelationshipsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -212,19 +229,22 @@ class BusinessAccessRelationshipsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    GetBusinessMembers200Response.class )
+                    GetBusinessEmployers200Response.class )
 
     }
 
-    def getBusinessPartners ( String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def getBusinessPartners ( String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Boolean sortAscending, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/partners"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -244,29 +264,35 @@ class BusinessAccessRelationshipsApi {
         if (startIndex != null) {
             queryParams.put("start_index", startIndex)
         }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
+        if (sortAscending != null) {
+            queryParams.put("sort_ascending", sortAscending)
         }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    GetBusinessPartners200Response.class )
+                    GetBusinessEmployers200Response.class )
 
     }
 
-    def systemUserUpdate ( String businessId, String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest, Closure onSuccess, Closure onFailure)  {
+    def systemUserUpdate ( String businessId, String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/system_users/${system_user_id}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -278,29 +304,32 @@ class BusinessAccessRelationshipsApi {
             throw new RuntimeException("missing required params systemUserId")
         }
         // verify required params are set
-        if (systemUserUpdateRequest == null) {
-            throw new RuntimeException("missing required params systemUserUpdateRequest")
+        if (systemUserUpdateWithRequiredBody == null) {
+            throw new RuntimeException("missing required params systemUserUpdateWithRequiredBody")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = systemUserUpdateRequest
+        bodyParams = systemUserUpdateWithRequiredBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     null )
 
     }
 
-    def updateBusinessMemberships ( String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, Closure onSuccess, Closure onFailure)  {
+    def updateBusinessMemberships ( String businessId, List<BusinessMembershipMember> businessMembershipMember, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/members"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -308,19 +337,21 @@ class BusinessAccessRelationshipsApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (updateMemberBusinessRoleBody == null) {
-            throw new RuntimeException("missing required params updateMemberBusinessRoleBody")
+        if (businessMembershipMember == null) {
+            throw new RuntimeException("missing required params businessMembershipMember")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = updateMemberBusinessRoleBody
+        bodyParams = businessMembershipMember
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    UpdateMemberResultsResponseArray.class )
+                    UpdateBusinessMembershipsResponse.class )
 
     }
 

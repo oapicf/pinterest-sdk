@@ -12,327 +12,327 @@ part 'catalogs_item_validation_issue.g.dart';
 class CatalogsItemValidationIssue extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE0LINKLENGTHTOOLONG = _$aDIMAGE0LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_0_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE1LINKLENGTHTOOLONG = _$aDIMAGE1LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_1_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE2LINKLENGTHTOOLONG = _$aDIMAGE2LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_2_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE3LINKLENGTHTOOLONG = _$aDIMAGE3LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_3_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE4LINKLENGTHTOOLONG = _$aDIMAGE4LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_4_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE5LINKLENGTHTOOLONG = _$aDIMAGE5LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_5_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE6LINKLENGTHTOOLONG = _$aDIMAGE6LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_6_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE7LINKLENGTHTOOLONG = _$aDIMAGE7LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_7_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE8LINKLENGTHTOOLONG = _$aDIMAGE8LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_8_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE9LINKLENGTHTOOLONG = _$aDIMAGE9LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_9_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE10LINKLENGTHTOOLONG = _$aDIMAGE10LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_10_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE11LINKLENGTHTOOLONG = _$aDIMAGE11LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_11_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE12LINKLENGTHTOOLONG = _$aDIMAGE12LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_12_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE13LINKLENGTHTOOLONG = _$aDIMAGE13LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_13_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE14LINKLENGTHTOOLONG = _$aDIMAGE14LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_14_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE15LINKLENGTHTOOLONG = _$aDIMAGE15LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_15_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE16LINKLENGTHTOOLONG = _$aDIMAGE16LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_16_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE17LINKLENGTHTOOLONG = _$aDIMAGE17LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_17_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE18LINKLENGTHTOOLONG = _$aDIMAGE18LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_18_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE19LINKLENGTHTOOLONG = _$aDIMAGE19LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_19_LINK_LENGTH_TOO_LONG = _$AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_0_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE0LINKWARNING = _$aDIMAGE0LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_0_LINK_WARNING = _$AD_IMAGE_0_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_1_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE1LINKWARNING = _$aDIMAGE1LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_1_LINK_WARNING = _$AD_IMAGE_1_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_2_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE2LINKWARNING = _$aDIMAGE2LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_2_LINK_WARNING = _$AD_IMAGE_2_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_3_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE3LINKWARNING = _$aDIMAGE3LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_3_LINK_WARNING = _$AD_IMAGE_3_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_4_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE4LINKWARNING = _$aDIMAGE4LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_4_LINK_WARNING = _$AD_IMAGE_4_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_5_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE5LINKWARNING = _$aDIMAGE5LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_5_LINK_WARNING = _$AD_IMAGE_5_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_6_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE6LINKWARNING = _$aDIMAGE6LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_6_LINK_WARNING = _$AD_IMAGE_6_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_7_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE7LINKWARNING = _$aDIMAGE7LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_7_LINK_WARNING = _$AD_IMAGE_7_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_8_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE8LINKWARNING = _$aDIMAGE8LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_8_LINK_WARNING = _$AD_IMAGE_8_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_9_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE9LINKWARNING = _$aDIMAGE9LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_9_LINK_WARNING = _$AD_IMAGE_9_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_10_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE10LINKWARNING = _$aDIMAGE10LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_10_LINK_WARNING = _$AD_IMAGE_10_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_11_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE11LINKWARNING = _$aDIMAGE11LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_11_LINK_WARNING = _$AD_IMAGE_11_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_12_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE12LINKWARNING = _$aDIMAGE12LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_12_LINK_WARNING = _$AD_IMAGE_12_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_13_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE13LINKWARNING = _$aDIMAGE13LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_13_LINK_WARNING = _$AD_IMAGE_13_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_14_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE14LINKWARNING = _$aDIMAGE14LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_14_LINK_WARNING = _$AD_IMAGE_14_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_15_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE15LINKWARNING = _$aDIMAGE15LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_15_LINK_WARNING = _$AD_IMAGE_15_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_16_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE16LINKWARNING = _$aDIMAGE16LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_16_LINK_WARNING = _$AD_IMAGE_16_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_17_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE17LINKWARNING = _$aDIMAGE17LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_17_LINK_WARNING = _$AD_IMAGE_17_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_18_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE18LINKWARNING = _$aDIMAGE18LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_18_LINK_WARNING = _$AD_IMAGE_18_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_19_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDIMAGE19LINKWARNING = _$aDIMAGE19LINKWARNING;
+  static const CatalogsItemValidationIssue AD_IMAGE_19_LINK_WARNING = _$AD_IMAGE_19_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_0_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE0LINKREQUIRED = _$aDIMAGE0LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_0_LINK_REQUIRED = _$AD_IMAGE_0_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_1_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE1LINKREQUIRED = _$aDIMAGE1LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_1_LINK_REQUIRED = _$AD_IMAGE_1_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_2_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE2LINKREQUIRED = _$aDIMAGE2LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_2_LINK_REQUIRED = _$AD_IMAGE_2_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_3_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE3LINKREQUIRED = _$aDIMAGE3LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_3_LINK_REQUIRED = _$AD_IMAGE_3_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_4_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE4LINKREQUIRED = _$aDIMAGE4LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_4_LINK_REQUIRED = _$AD_IMAGE_4_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_5_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE5LINKREQUIRED = _$aDIMAGE5LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_5_LINK_REQUIRED = _$AD_IMAGE_5_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_6_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE6LINKREQUIRED = _$aDIMAGE6LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_6_LINK_REQUIRED = _$AD_IMAGE_6_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_7_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE7LINKREQUIRED = _$aDIMAGE7LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_7_LINK_REQUIRED = _$AD_IMAGE_7_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_8_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE8LINKREQUIRED = _$aDIMAGE8LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_8_LINK_REQUIRED = _$AD_IMAGE_8_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_9_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE9LINKREQUIRED = _$aDIMAGE9LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_9_LINK_REQUIRED = _$AD_IMAGE_9_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_10_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE10LINKREQUIRED = _$aDIMAGE10LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_10_LINK_REQUIRED = _$AD_IMAGE_10_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_11_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE11LINKREQUIRED = _$aDIMAGE11LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_11_LINK_REQUIRED = _$AD_IMAGE_11_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_12_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE12LINKREQUIRED = _$aDIMAGE12LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_12_LINK_REQUIRED = _$AD_IMAGE_12_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_13_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE13LINKREQUIRED = _$aDIMAGE13LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_13_LINK_REQUIRED = _$AD_IMAGE_13_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_14_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE14LINKREQUIRED = _$aDIMAGE14LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_14_LINK_REQUIRED = _$AD_IMAGE_14_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_15_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE15LINKREQUIRED = _$aDIMAGE15LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_15_LINK_REQUIRED = _$AD_IMAGE_15_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_16_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE16LINKREQUIRED = _$aDIMAGE16LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_16_LINK_REQUIRED = _$AD_IMAGE_16_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_17_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE17LINKREQUIRED = _$aDIMAGE17LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_17_LINK_REQUIRED = _$AD_IMAGE_17_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_18_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE18LINKREQUIRED = _$aDIMAGE18LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_18_LINK_REQUIRED = _$AD_IMAGE_18_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_19_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE19LINKREQUIRED = _$aDIMAGE19LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_19_LINK_REQUIRED = _$AD_IMAGE_19_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE0TAGLENGTHTOOLONG = _$aDIMAGE0TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_0_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE1TAGLENGTHTOOLONG = _$aDIMAGE1TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_1_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE2TAGLENGTHTOOLONG = _$aDIMAGE2TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_2_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE3TAGLENGTHTOOLONG = _$aDIMAGE3TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_3_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE4TAGLENGTHTOOLONG = _$aDIMAGE4TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_4_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE5TAGLENGTHTOOLONG = _$aDIMAGE5TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_5_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE6TAGLENGTHTOOLONG = _$aDIMAGE6TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_6_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE7TAGLENGTHTOOLONG = _$aDIMAGE7TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_7_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE8TAGLENGTHTOOLONG = _$aDIMAGE8TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_8_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE9TAGLENGTHTOOLONG = _$aDIMAGE9TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_9_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE10TAGLENGTHTOOLONG = _$aDIMAGE10TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_10_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE11TAGLENGTHTOOLONG = _$aDIMAGE11TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_11_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE12TAGLENGTHTOOLONG = _$aDIMAGE12TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_12_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE13TAGLENGTHTOOLONG = _$aDIMAGE13TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_13_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE14TAGLENGTHTOOLONG = _$aDIMAGE14TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_14_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE15TAGLENGTHTOOLONG = _$aDIMAGE15TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_15_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE16TAGLENGTHTOOLONG = _$aDIMAGE16TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_16_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE17TAGLENGTHTOOLONG = _$aDIMAGE17TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_17_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE18TAGLENGTHTOOLONG = _$aDIMAGE18TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_18_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDIMAGE19TAGLENGTHTOOLONG = _$aDIMAGE19TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_IMAGE_19_TAG_LENGTH_TOO_LONG = _$AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_0_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE0TAGREQUIRED = _$aDIMAGE0TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_0_TAG_REQUIRED = _$AD_IMAGE_0_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_1_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE1TAGREQUIRED = _$aDIMAGE1TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_1_TAG_REQUIRED = _$AD_IMAGE_1_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_2_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE2TAGREQUIRED = _$aDIMAGE2TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_2_TAG_REQUIRED = _$AD_IMAGE_2_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_3_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE3TAGREQUIRED = _$aDIMAGE3TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_3_TAG_REQUIRED = _$AD_IMAGE_3_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_4_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE4TAGREQUIRED = _$aDIMAGE4TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_4_TAG_REQUIRED = _$AD_IMAGE_4_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_5_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE5TAGREQUIRED = _$aDIMAGE5TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_5_TAG_REQUIRED = _$AD_IMAGE_5_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_6_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE6TAGREQUIRED = _$aDIMAGE6TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_6_TAG_REQUIRED = _$AD_IMAGE_6_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_7_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE7TAGREQUIRED = _$aDIMAGE7TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_7_TAG_REQUIRED = _$AD_IMAGE_7_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_8_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE8TAGREQUIRED = _$aDIMAGE8TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_8_TAG_REQUIRED = _$AD_IMAGE_8_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_9_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE9TAGREQUIRED = _$aDIMAGE9TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_9_TAG_REQUIRED = _$AD_IMAGE_9_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_10_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE10TAGREQUIRED = _$aDIMAGE10TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_10_TAG_REQUIRED = _$AD_IMAGE_10_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_11_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE11TAGREQUIRED = _$aDIMAGE11TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_11_TAG_REQUIRED = _$AD_IMAGE_11_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_12_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE12TAGREQUIRED = _$aDIMAGE12TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_12_TAG_REQUIRED = _$AD_IMAGE_12_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_13_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE13TAGREQUIRED = _$aDIMAGE13TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_13_TAG_REQUIRED = _$AD_IMAGE_13_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_14_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE14TAGREQUIRED = _$aDIMAGE14TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_14_TAG_REQUIRED = _$AD_IMAGE_14_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_15_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE15TAGREQUIRED = _$aDIMAGE15TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_15_TAG_REQUIRED = _$AD_IMAGE_15_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_16_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE16TAGREQUIRED = _$aDIMAGE16TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_16_TAG_REQUIRED = _$AD_IMAGE_16_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_17_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE17TAGREQUIRED = _$aDIMAGE17TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_17_TAG_REQUIRED = _$AD_IMAGE_17_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_18_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE18TAGREQUIRED = _$aDIMAGE18TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_18_TAG_REQUIRED = _$AD_IMAGE_18_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_19_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDIMAGE19TAGREQUIRED = _$aDIMAGE19TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_IMAGE_19_TAG_REQUIRED = _$AD_IMAGE_19_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_0_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE0LINKDUPLICATED = _$aDIMAGE0LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_0_LINK_DUPLICATED = _$AD_IMAGE_0_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_1_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE1LINKDUPLICATED = _$aDIMAGE1LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_1_LINK_DUPLICATED = _$AD_IMAGE_1_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_2_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE2LINKDUPLICATED = _$aDIMAGE2LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_2_LINK_DUPLICATED = _$AD_IMAGE_2_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_3_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE3LINKDUPLICATED = _$aDIMAGE3LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_3_LINK_DUPLICATED = _$AD_IMAGE_3_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_4_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE4LINKDUPLICATED = _$aDIMAGE4LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_4_LINK_DUPLICATED = _$AD_IMAGE_4_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_5_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE5LINKDUPLICATED = _$aDIMAGE5LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_5_LINK_DUPLICATED = _$AD_IMAGE_5_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_6_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE6LINKDUPLICATED = _$aDIMAGE6LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_6_LINK_DUPLICATED = _$AD_IMAGE_6_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_7_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE7LINKDUPLICATED = _$aDIMAGE7LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_7_LINK_DUPLICATED = _$AD_IMAGE_7_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_8_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE8LINKDUPLICATED = _$aDIMAGE8LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_8_LINK_DUPLICATED = _$AD_IMAGE_8_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_9_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE9LINKDUPLICATED = _$aDIMAGE9LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_9_LINK_DUPLICATED = _$AD_IMAGE_9_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_10_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE10LINKDUPLICATED = _$aDIMAGE10LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_10_LINK_DUPLICATED = _$AD_IMAGE_10_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_11_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE11LINKDUPLICATED = _$aDIMAGE11LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_11_LINK_DUPLICATED = _$AD_IMAGE_11_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_12_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE12LINKDUPLICATED = _$aDIMAGE12LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_12_LINK_DUPLICATED = _$AD_IMAGE_12_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_13_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE13LINKDUPLICATED = _$aDIMAGE13LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_13_LINK_DUPLICATED = _$AD_IMAGE_13_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_14_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE14LINKDUPLICATED = _$aDIMAGE14LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_14_LINK_DUPLICATED = _$AD_IMAGE_14_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_15_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE15LINKDUPLICATED = _$aDIMAGE15LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_15_LINK_DUPLICATED = _$AD_IMAGE_15_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_16_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE16LINKDUPLICATED = _$aDIMAGE16LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_16_LINK_DUPLICATED = _$AD_IMAGE_16_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_17_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE17LINKDUPLICATED = _$aDIMAGE17LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_17_LINK_DUPLICATED = _$AD_IMAGE_17_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_18_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE18LINKDUPLICATED = _$aDIMAGE18LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_18_LINK_DUPLICATED = _$AD_IMAGE_18_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_19_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE19LINKDUPLICATED = _$aDIMAGE19LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_19_LINK_DUPLICATED = _$AD_IMAGE_19_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_0_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE0TAGDUPLICATED = _$aDIMAGE0TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_0_TAG_DUPLICATED = _$AD_IMAGE_0_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_1_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE1TAGDUPLICATED = _$aDIMAGE1TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_1_TAG_DUPLICATED = _$AD_IMAGE_1_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_2_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE2TAGDUPLICATED = _$aDIMAGE2TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_2_TAG_DUPLICATED = _$AD_IMAGE_2_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_3_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE3TAGDUPLICATED = _$aDIMAGE3TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_3_TAG_DUPLICATED = _$AD_IMAGE_3_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_4_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE4TAGDUPLICATED = _$aDIMAGE4TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_4_TAG_DUPLICATED = _$AD_IMAGE_4_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_5_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE5TAGDUPLICATED = _$aDIMAGE5TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_5_TAG_DUPLICATED = _$AD_IMAGE_5_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_6_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE6TAGDUPLICATED = _$aDIMAGE6TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_6_TAG_DUPLICATED = _$AD_IMAGE_6_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_7_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE7TAGDUPLICATED = _$aDIMAGE7TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_7_TAG_DUPLICATED = _$AD_IMAGE_7_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_8_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE8TAGDUPLICATED = _$aDIMAGE8TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_8_TAG_DUPLICATED = _$AD_IMAGE_8_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_9_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE9TAGDUPLICATED = _$aDIMAGE9TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_9_TAG_DUPLICATED = _$AD_IMAGE_9_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_10_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE10TAGDUPLICATED = _$aDIMAGE10TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_10_TAG_DUPLICATED = _$AD_IMAGE_10_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_11_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE11TAGDUPLICATED = _$aDIMAGE11TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_11_TAG_DUPLICATED = _$AD_IMAGE_11_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_12_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE12TAGDUPLICATED = _$aDIMAGE12TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_12_TAG_DUPLICATED = _$AD_IMAGE_12_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_13_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE13TAGDUPLICATED = _$aDIMAGE13TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_13_TAG_DUPLICATED = _$AD_IMAGE_13_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_14_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE14TAGDUPLICATED = _$aDIMAGE14TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_14_TAG_DUPLICATED = _$AD_IMAGE_14_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_15_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE15TAGDUPLICATED = _$aDIMAGE15TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_15_TAG_DUPLICATED = _$AD_IMAGE_15_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_16_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE16TAGDUPLICATED = _$aDIMAGE16TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_16_TAG_DUPLICATED = _$AD_IMAGE_16_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_17_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE17TAGDUPLICATED = _$aDIMAGE17TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_17_TAG_DUPLICATED = _$AD_IMAGE_17_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_18_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE18TAGDUPLICATED = _$aDIMAGE18TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_18_TAG_DUPLICATED = _$AD_IMAGE_18_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_IMAGE_19_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDIMAGE19TAGDUPLICATED = _$aDIMAGE19TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_IMAGE_19_TAG_DUPLICATED = _$AD_IMAGE_19_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDVIDEO0LINKLENGTHTOOLONG = _$aDVIDEO0LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_VIDEO_0_LINK_LENGTH_TOO_LONG = _$AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDVIDEO1LINKLENGTHTOOLONG = _$aDVIDEO1LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_VIDEO_1_LINK_LENGTH_TOO_LONG = _$AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDVIDEO2LINKLENGTHTOOLONG = _$aDVIDEO2LINKLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_VIDEO_2_LINK_LENGTH_TOO_LONG = _$AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_0_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDVIDEO0LINKWARNING = _$aDVIDEO0LINKWARNING;
+  static const CatalogsItemValidationIssue AD_VIDEO_0_LINK_WARNING = _$AD_VIDEO_0_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_1_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDVIDEO1LINKWARNING = _$aDVIDEO1LINKWARNING;
+  static const CatalogsItemValidationIssue AD_VIDEO_1_LINK_WARNING = _$AD_VIDEO_1_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_2_LINK_WARNING')
-  static const CatalogsItemValidationIssue aDVIDEO2LINKWARNING = _$aDVIDEO2LINKWARNING;
+  static const CatalogsItemValidationIssue AD_VIDEO_2_LINK_WARNING = _$AD_VIDEO_2_LINK_WARNING;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_0_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDVIDEO0LINKREQUIRED = _$aDVIDEO0LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_VIDEO_0_LINK_REQUIRED = _$AD_VIDEO_0_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_1_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDVIDEO1LINKREQUIRED = _$aDVIDEO1LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_VIDEO_1_LINK_REQUIRED = _$AD_VIDEO_1_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_2_LINK_REQUIRED')
-  static const CatalogsItemValidationIssue aDVIDEO2LINKREQUIRED = _$aDVIDEO2LINKREQUIRED;
+  static const CatalogsItemValidationIssue AD_VIDEO_2_LINK_REQUIRED = _$AD_VIDEO_2_LINK_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_0_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDVIDEO0LINKDUPLICATED = _$aDVIDEO0LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_VIDEO_0_LINK_DUPLICATED = _$AD_VIDEO_0_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_1_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDVIDEO1LINKDUPLICATED = _$aDVIDEO1LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_VIDEO_1_LINK_DUPLICATED = _$AD_VIDEO_1_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_2_LINK_DUPLICATED')
-  static const CatalogsItemValidationIssue aDVIDEO2LINKDUPLICATED = _$aDVIDEO2LINKDUPLICATED;
+  static const CatalogsItemValidationIssue AD_VIDEO_2_LINK_DUPLICATED = _$AD_VIDEO_2_LINK_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDVIDEO0TAGLENGTHTOOLONG = _$aDVIDEO0TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_VIDEO_0_TAG_LENGTH_TOO_LONG = _$AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDVIDEO1TAGLENGTHTOOLONG = _$aDVIDEO1TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_VIDEO_1_TAG_LENGTH_TOO_LONG = _$AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG')
-  static const CatalogsItemValidationIssue aDVIDEO2TAGLENGTHTOOLONG = _$aDVIDEO2TAGLENGTHTOOLONG;
+  static const CatalogsItemValidationIssue AD_VIDEO_2_TAG_LENGTH_TOO_LONG = _$AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_0_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDVIDEO0TAGREQUIRED = _$aDVIDEO0TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_VIDEO_0_TAG_REQUIRED = _$AD_VIDEO_0_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_1_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDVIDEO1TAGREQUIRED = _$aDVIDEO1TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_VIDEO_1_TAG_REQUIRED = _$AD_VIDEO_1_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_2_TAG_REQUIRED')
-  static const CatalogsItemValidationIssue aDVIDEO2TAGREQUIRED = _$aDVIDEO2TAGREQUIRED;
+  static const CatalogsItemValidationIssue AD_VIDEO_2_TAG_REQUIRED = _$AD_VIDEO_2_TAG_REQUIRED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_0_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDVIDEO0TAGDUPLICATED = _$aDVIDEO0TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_VIDEO_0_TAG_DUPLICATED = _$AD_VIDEO_0_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_1_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDVIDEO1TAGDUPLICATED = _$aDVIDEO1TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_VIDEO_1_TAG_DUPLICATED = _$AD_VIDEO_1_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'AD_VIDEO_2_TAG_DUPLICATED')
-  static const CatalogsItemValidationIssue aDVIDEO2TAGDUPLICATED = _$aDVIDEO2TAGDUPLICATED;
+  static const CatalogsItemValidationIssue AD_VIDEO_2_TAG_DUPLICATED = _$AD_VIDEO_2_TAG_DUPLICATED;
   @BuiltValueEnumConst(wireName: r'VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED')
   static const CatalogsItemValidationIssue VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = _$VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
   @BuiltValueEnumConst(wireName: r'AD_LINK_FORMAT_WARNING')

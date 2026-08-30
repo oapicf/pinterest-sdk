@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:openapi/src/model/user_business_role_binding.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -15,9 +14,15 @@ part 'get_business_employers200_response.g.dart';
 ///
 /// Properties:
 /// * [bookmark] 
-/// * [items] - List of employers.
+/// * [items] 
 @BuiltValue()
-abstract class GetBusinessEmployers200Response implements Paginated, Built<GetBusinessEmployers200Response, GetBusinessEmployers200ResponseBuilder> {
+abstract class GetBusinessEmployers200Response implements Built<GetBusinessEmployers200Response, GetBusinessEmployers200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<UserBusinessRoleBinding> get items;
+
   GetBusinessEmployers200Response._();
 
   factory GetBusinessEmployers200Response([void updates(GetBusinessEmployers200ResponseBuilder b)]) = _$GetBusinessEmployers200Response;
@@ -51,7 +56,7 @@ class _$GetBusinessEmployers200ResponseSerializer implements PrimitiveSerializer
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(UserBusinessRoleBinding)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$GetBusinessEmployers200ResponseSerializer implements PrimitiveSerializer
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(UserBusinessRoleBinding)]),
+          ) as BuiltList<UserBusinessRoleBinding>;
           result.items.replace(valueDes);
           break;
         default:

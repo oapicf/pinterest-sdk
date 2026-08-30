@@ -1,12 +1,13 @@
 package org.openapitools.model;
 
 import java.util.Objects;
+import io.swagger.annotations.ApiModel;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Gets or Sets PermissionsWithOwner
+ * Permission levels including the OWNER role.
  */
 public enum PermissionsWithOwner {
   

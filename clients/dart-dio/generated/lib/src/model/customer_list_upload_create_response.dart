@@ -13,13 +13,15 @@ part 'customer_list_upload_create_response.g.dart';
 /// CustomerListUploadCreateResponse
 ///
 /// Properties:
-/// * [customerListUpload] 
-/// * [s3MultipartUploadData] 
+/// * [customerListUpload] - The Customer List Upload created.
+/// * [s3MultipartUploadData] - Pre-signed upload URLs corresponding to each part of the upload.
 @BuiltValue()
 abstract class CustomerListUploadCreateResponse implements Built<CustomerListUploadCreateResponse, CustomerListUploadCreateResponseBuilder> {
+  /// The Customer List Upload created.
   @BuiltValueField(wireName: r'customer_list_upload')
   CustomerListUpload get customerListUpload;
 
+  /// Pre-signed upload URLs corresponding to each part of the upload.
   @BuiltValueField(wireName: r's3_multipart_upload_data')
   S3MultipartUploadData get s3MultipartUploadData;
 

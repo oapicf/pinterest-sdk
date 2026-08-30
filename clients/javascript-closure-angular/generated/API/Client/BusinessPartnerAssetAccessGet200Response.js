@@ -12,8 +12,7 @@ API.Client.BusinessPartnerAssetAccessGet200Response = function() {}
 API.Client.BusinessPartnerAssetAccessGet200Response.prototype.bookmark;
 
 /**
- * List assets on which you granted access to your partner or assets on which your partner has granted you access.
- * @type {!Array<!API.Client.GetPartnerAssetsResponse>}
+ * @type {!Array<!API.Client.BaseBusinessAssets>}
  * @export
  */
 API.Client.BusinessPartnerAssetAccessGet200Response.prototype.items;

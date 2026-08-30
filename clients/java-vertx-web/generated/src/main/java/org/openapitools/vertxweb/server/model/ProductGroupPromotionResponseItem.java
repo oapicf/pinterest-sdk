@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.Exception;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotion;
 
@@ -14,7 +13,7 @@ import org.openapitools.vertxweb.server.model.ProductGroupPromotion;
 public class ProductGroupPromotionResponseItem   {
   
   private ProductGroupPromotion data;
-  private List<Exception> exceptions;
+  private List<Exception> exceptions = new ArrayList<>();
 
   public ProductGroupPromotionResponseItem () {
 
@@ -78,9 +77,6 @@ public class ProductGroupPromotionResponseItem   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

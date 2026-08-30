@@ -5,15 +5,8 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **propertyValues** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  |
-| **filterOperatorType** | [**inline**](#FilterOperatorType) |  |  [optional] |
+| **filterOperatorType** | [**FilterOperatorType**](FilterOperatorType.md) |  |  [optional] |
 | **negated** | **kotlin.Boolean** |  |  [optional] |
-
-
-<a id="FilterOperatorType"></a>
-## Enum: filter_operator_type
-| Name | Value |
-| ---- | ----- |
-| filterOperatorType | IS, CONTAINS |
 
 
 

@@ -4,51 +4,37 @@
 #include "label_bulk_update_request.h"
 
 
-char* label_bulk_update_request_status_ToString(pinterest_rest_api_label_bulk_update_request_STATUS_e status) {
-    char* statusArray[] =  { "NULL", "ARCHIVED" };
-    return statusArray[status];
-}
-
-pinterest_rest_api_label_bulk_update_request_STATUS_e label_bulk_update_request_status_FromString(char* status){
-    int stringToReturn = 0;
-    char *statusArray[] =  { "NULL", "ARCHIVED" };
-    size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(status, statusArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static label_bulk_update_request_t *label_bulk_update_request_create_internal(
     char *id,
-    pinterest_rest_api_label_bulk_update_request_STATUS_e status,
-    char *value
+    char *parent_id,
+    pinterest_rest_api_label_status_bulk_update__e status
     ) {
     label_bulk_update_request_t *label_bulk_update_request_local_var = malloc(sizeof(label_bulk_update_request_t));
     if (!label_bulk_update_request_local_var) {
         return NULL;
     }
-    label_bulk_update_request_local_var->id = id;
-    label_bulk_update_request_local_var->status = status;
-    label_bulk_update_request_local_var->value = value;
-
+    memset(label_bulk_update_request_local_var, 0, sizeof(label_bulk_update_request_t));
     label_bulk_update_request_local_var->_library_owned = 1;
+    label_bulk_update_request_local_var->id = id;
+    label_bulk_update_request_local_var->parent_id = parent_id;
+    label_bulk_update_request_local_var->status = status;
     return label_bulk_update_request_local_var;
 }
 
 __attribute__((deprecated)) label_bulk_update_request_t *label_bulk_update_request_create(
     char *id,
-    pinterest_rest_api_label_bulk_update_request_STATUS_e status,
-    char *value
+    char *parent_id,
+    pinterest_rest_api_label_status_bulk_update__e status
     ) {
-    return label_bulk_update_request_create_internal (
+    label_bulk_update_request_t *result = label_bulk_update_request_create_internal (
         id,
-        status,
-        value
+        parent_id,
+        status
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void label_bulk_update_request_free(label_bulk_update_request_t *label_bulk_update_request) {
@@ -64,9 +50,9 @@ void label_bulk_update_request_free(label_bulk_update_request_t *label_bulk_upda
         free(label_bulk_update_request->id);
         label_bulk_update_request->id = NULL;
     }
-    if (label_bulk_update_request->value) {
-        free(label_bulk_update_request->value);
-        label_bulk_update_request->value = NULL;
+    if (label_bulk_update_request->parent_id) {
+        free(label_bulk_update_request->parent_id);
+        label_bulk_update_request->parent_id = NULL;
     }
     free(label_bulk_update_request);
 }
@@ -83,20 +69,26 @@ cJSON *label_bulk_update_request_convertToJSON(label_bulk_update_request_t *labe
     }
 
 
-    // label_bulk_update_request->status
-    if(label_bulk_update_request->status != pinterest_rest_api_label_bulk_update_request_STATUS_NULL) {
-    if(cJSON_AddStringToObject(item, "status", label_bulk_update_request_status_ToString(label_bulk_update_request->status)) == NULL)
-    {
-    goto fail; //Enum
+    // label_bulk_update_request->parent_id
+    if (!label_bulk_update_request->parent_id) {
+        goto fail;
     }
-    }
-
-
-    // label_bulk_update_request->value
-    if(label_bulk_update_request->value) {
-    if(cJSON_AddStringToObject(item, "value", label_bulk_update_request->value) == NULL) {
+    if(cJSON_AddStringToObject(item, "parent_id", label_bulk_update_request->parent_id) == NULL) {
     goto fail; //String
     }
+
+
+    // label_bulk_update_request->status
+    if (pinterest_rest_api_label_status_bulk_update__NULL == label_bulk_update_request->status) {
+        goto fail;
+    }
+    cJSON *status_local_JSON = label_status_bulk_update_convertToJSON(label_bulk_update_request->status);
+    if(status_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
     return item;
@@ -110,6 +102,13 @@ fail:
 label_bulk_update_request_t *label_bulk_update_request_parseFromJSON(cJSON *label_bulk_update_requestJSON){
 
     label_bulk_update_request_t *label_bulk_update_request_local_var = NULL;
+
+    char *id_local_str = NULL;
+
+    char *parent_id_local_str = NULL;
+
+    // define the local variable for label_bulk_update_request->status
+    pinterest_rest_api_label_status_bulk_update__e status_local_nonprim = 0;
 
     // label_bulk_update_request->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(label_bulk_update_requestJSON, "id");
@@ -126,41 +125,60 @@ label_bulk_update_request_t *label_bulk_update_request_parseFromJSON(cJSON *labe
     goto end; //String
     }
 
+    // label_bulk_update_request->parent_id
+    cJSON *parent_id = cJSON_GetObjectItemCaseSensitive(label_bulk_update_requestJSON, "parent_id");
+    if (cJSON_IsNull(parent_id)) {
+        parent_id = NULL;
+    }
+    if (!parent_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(parent_id))
+    {
+    goto end; //String
+    }
+
     // label_bulk_update_request->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(label_bulk_update_requestJSON, "status");
     if (cJSON_IsNull(status)) {
         status = NULL;
     }
-    pinterest_rest_api_label_bulk_update_request_STATUS_e statusVariable;
-    if (status) { 
-    if(!cJSON_IsString(status))
-    {
-    goto end; //Enum
-    }
-    statusVariable = label_bulk_update_request_status_FromString(status->valuestring);
+    if (!status) {
+        goto end;
     }
 
-    // label_bulk_update_request->value
-    cJSON *value = cJSON_GetObjectItemCaseSensitive(label_bulk_update_requestJSON, "value");
-    if (cJSON_IsNull(value)) {
-        value = NULL;
-    }
-    if (value) { 
-    if(!cJSON_IsString(value) && !cJSON_IsNull(value))
-    {
-    goto end; //String
-    }
-    }
+    
+    status_local_nonprim = label_status_bulk_update_parseFromJSON(status); //custom
 
+
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (parent_id && !cJSON_IsNull(parent_id)) parent_id_local_str = strdup(parent_id->valuestring);
 
     label_bulk_update_request_local_var = label_bulk_update_request_create_internal (
-        strdup(id->valuestring),
-        status ? statusVariable : pinterest_rest_api_label_bulk_update_request_STATUS_NULL,
-        value && !cJSON_IsNull(value) ? strdup(value->valuestring) : NULL
+        id_local_str,
+        parent_id_local_str,
+        status_local_nonprim
         );
+
+    if (!label_bulk_update_request_local_var) {
+        goto end;
+    }
 
     return label_bulk_update_request_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (parent_id_local_str) {
+        free(parent_id_local_str);
+        parent_id_local_str = NULL;
+    }
+    if (status_local_nonprim) {
+        status_local_nonprim = 0;
+    }
     return NULL;
 
 }

@@ -6,7 +6,9 @@ using namespace Tiny;
 
 CatalogsCreativeAssetsProductGroupProductCounts::CatalogsCreativeAssetsProductGroupProductCounts()
 {
+	app_links = float(0);
 	catalog_type = std::string();
+	images = float(0);
 	total = float(0);
 	videos = float(0);
 }
@@ -26,6 +28,19 @@ CatalogsCreativeAssetsProductGroupProductCounts::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
+    const char *app_linksKey = "app_links";
+
+    if(object.has_key(app_linksKey))
+    {
+        bourne::json value = object[app_linksKey];
+
+
+
+        jsonToValue(&app_links, value, "long");
+
+
+    }
+
     const char *catalog_typeKey = "catalog_type";
 
     if(object.has_key(catalog_typeKey))
@@ -35,6 +50,19 @@ CatalogsCreativeAssetsProductGroupProductCounts::fromJson(std::string jsonObj)
 
 
         jsonToValue(&catalog_type, value, "std::string");
+
+
+    }
+
+    const char *imagesKey = "images";
+
+    if(object.has_key(imagesKey))
+    {
+        bourne::json value = object[imagesKey];
+
+
+
+        jsonToValue(&images, value, "long");
 
 
     }
@@ -77,7 +105,21 @@ CatalogsCreativeAssetsProductGroupProductCounts::toJson()
 
 
 
+    object["app_links"] = getAppLinks();
+
+
+
+
+
+
     object["catalog_type"] = getCatalogType();
+
+
+
+
+
+
+    object["images"] = getImages();
 
 
 
@@ -99,6 +141,18 @@ CatalogsCreativeAssetsProductGroupProductCounts::toJson()
 
 }
 
+long
+CatalogsCreativeAssetsProductGroupProductCounts::getAppLinks()
+{
+	return app_links;
+}
+
+void
+CatalogsCreativeAssetsProductGroupProductCounts::setAppLinks(long app_links)
+{
+	this->app_links = app_links;
+}
+
 std::string
 CatalogsCreativeAssetsProductGroupProductCounts::getCatalogType()
 {
@@ -106,9 +160,21 @@ CatalogsCreativeAssetsProductGroupProductCounts::getCatalogType()
 }
 
 void
-CatalogsCreativeAssetsProductGroupProductCounts::setCatalogType(std::string  catalog_type)
+CatalogsCreativeAssetsProductGroupProductCounts::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
+}
+
+long
+CatalogsCreativeAssetsProductGroupProductCounts::getImages()
+{
+	return images;
+}
+
+void
+CatalogsCreativeAssetsProductGroupProductCounts::setImages(long images)
+{
+	this->images = images;
 }
 
 long
@@ -118,7 +184,7 @@ CatalogsCreativeAssetsProductGroupProductCounts::getTotal()
 }
 
 void
-CatalogsCreativeAssetsProductGroupProductCounts::setTotal(long  total)
+CatalogsCreativeAssetsProductGroupProductCounts::setTotal(long total)
 {
 	this->total = total;
 }
@@ -130,7 +196,7 @@ CatalogsCreativeAssetsProductGroupProductCounts::getVideos()
 }
 
 void
-CatalogsCreativeAssetsProductGroupProductCounts::setVideos(long  videos)
+CatalogsCreativeAssetsProductGroupProductCounts::setVideos(long videos)
 {
 	this->videos = videos;
 }

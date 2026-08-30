@@ -3,7 +3,11 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.CatalogsAiContentDisclosure;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsAttributes   {
@@ -20,6 +24,7 @@ public class CatalogsCreativeAssetsAttributes   {
   private String link;
   private String title;
   private String visibility;
+  private List<CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
   private String imageLink;
   private String videoLink;
 
@@ -27,7 +32,7 @@ public class CatalogsCreativeAssetsAttributes   {
 
   }
 
-  public CatalogsCreativeAssetsAttributes (String androidDeepLink, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, String description, String googleProductCategory, String iosDeepLink, String link, String title, String visibility, String imageLink, String videoLink) {
+  public CatalogsCreativeAssetsAttributes (String androidDeepLink, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, String description, String googleProductCategory, String iosDeepLink, String link, String title, String visibility, List<CatalogsAiContentDisclosure> aiDisclosures, String imageLink, String videoLink) {
     this.androidDeepLink = androidDeepLink;
     this.customLabel0 = customLabel0;
     this.customLabel1 = customLabel1;
@@ -40,6 +45,7 @@ public class CatalogsCreativeAssetsAttributes   {
     this.link = link;
     this.title = title;
     this.visibility = visibility;
+    this.aiDisclosures = aiDisclosures;
     this.imageLink = imageLink;
     this.videoLink = videoLink;
   }
@@ -153,6 +159,15 @@ public class CatalogsCreativeAssetsAttributes   {
   }
 
     
+  @JsonProperty("ai_disclosures")
+  public List<CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+  public void setAiDisclosures(List<CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+  }
+
+    
   @JsonProperty("image_link")
   public String getImageLink() {
     return imageLink;
@@ -192,13 +207,14 @@ public class CatalogsCreativeAssetsAttributes   {
         Objects.equals(link, catalogsCreativeAssetsAttributes.link) &&
         Objects.equals(title, catalogsCreativeAssetsAttributes.title) &&
         Objects.equals(visibility, catalogsCreativeAssetsAttributes.visibility) &&
+        Objects.equals(aiDisclosures, catalogsCreativeAssetsAttributes.aiDisclosures) &&
         Objects.equals(imageLink, catalogsCreativeAssetsAttributes.imageLink) &&
         Objects.equals(videoLink, catalogsCreativeAssetsAttributes.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(androidDeepLink, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, googleProductCategory, iosDeepLink, link, title, visibility, imageLink, videoLink);
+    return Objects.hash(androidDeepLink, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, googleProductCategory, iosDeepLink, link, title, visibility, aiDisclosures, imageLink, videoLink);
   }
 
   @Override
@@ -218,6 +234,7 @@ public class CatalogsCreativeAssetsAttributes   {
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
@@ -229,9 +246,6 @@ public class CatalogsCreativeAssetsAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Integration record")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationRecord   {
   @JsonProperty("additional_id_1")
   private String additionalId1;
@@ -96,7 +96,7 @@ public class IntegrationRecord   {
    * Get connectedAdvertiserId
    * @return connectedAdvertiserId
    */
-  @ApiModelProperty(readOnly = true, value = "")
+  @ApiModelProperty(value = "")
   public String getConnectedAdvertiserId() {
     return connectedAdvertiserId;
   }
@@ -168,7 +168,7 @@ public class IntegrationRecord   {
    * Get connectedUserId
    * @return connectedUserId
    */
-  @ApiModelProperty(readOnly = true, value = "")
+  @ApiModelProperty(value = "")
   public String getConnectedUserId() {
     return connectedUserId;
   }
@@ -219,10 +219,10 @@ public class IntegrationRecord   {
   }
 
   /**
-   * Get id
+   * Integration record ID.
    * @return id
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, readOnly = true, value = "Integration record ID.")
   public String getId() {
     return id;
   }
@@ -440,10 +440,7 @@ public class IntegrationRecord   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

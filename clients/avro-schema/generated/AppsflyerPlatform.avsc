@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Platform options for AppsFlyer audience",
+  "name": "AppsflyerPlatform",
+  "symbols": [
+    "android",
+    "ios"
+  ]
+}

@@ -1,14 +1,15 @@
 /*
- * Catalogs_creative_assets_filter_values_map.h
+ * CatalogsCreativeAssetsFilterValuesMap.h
  *
  * A map of filter attributes to their available values.
  */
 
-#ifndef _Catalogs_creative_assets_filter_values_map_H_
-#define _Catalogs_creative_assets_filter_values_map_H_
+#ifndef _CatalogsCreativeAssetsFilterValuesMap_H_
+#define _CatalogsCreativeAssetsFilterValuesMap_H_
 
 
 #include <string>
+#include "MediaType.h"
 #include <list>
 #include "Object.h"
 
@@ -27,16 +28,16 @@ namespace ArtikCloud {
  *
  */
 
-class Catalogs_creative_assets_filter_values_map : public Object {
+class CatalogsCreativeAssetsFilterValuesMap : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	Catalogs_creative_assets_filter_values_map();
-	Catalogs_creative_assets_filter_values_map(char* str);
+	CatalogsCreativeAssetsFilterValuesMap();
+	CatalogsCreativeAssetsFilterValuesMap(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~Catalogs_creative_assets_filter_values_map();
+	virtual ~CatalogsCreativeAssetsFilterValuesMap();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -132,11 +133,11 @@ public:
 	void setGoogleProductCategory6(std::list <std::string> google_product_category_6);
 	/*! \brief Get 
 	 */
-	std::list<std::string> getMediaType();
+	std::list<MediaType> getMediaType();
 
 	/*! \brief Set 
 	 */
-	void setMediaType(std::list <std::string> media_type);
+	void setMediaType(std::list <MediaType> media_type);
 
 private:
 	std::list <std::string>custom_label_0;
@@ -151,7 +152,7 @@ private:
 	std::list <std::string>google_product_category_4;
 	std::list <std::string>google_product_category_5;
 	std::list <std::string>google_product_category_6;
-	std::list <std::string>media_type;
+	std::list <MediaType>media_type;
 	void __init();
 	void __cleanup();
 
@@ -159,4 +160,4 @@ private:
 }
 }
 
-#endif /* _Catalogs_creative_assets_filter_values_map_H_ */
+#endif /* _CatalogsCreativeAssetsFilterValuesMap_H_ */

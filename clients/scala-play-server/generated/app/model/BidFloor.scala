@@ -3,11 +3,11 @@ package model
 import play.api.libs.json._
 
 /**
-  * Represents the Swagger definition for BidFloor.
+  * Bid floor request and response model.
   * @param bidFloors A list of bid floors in micro currency. For example, [100000, 200000]
-  * @param `type` Always the string 'bidfloor'
+  * @param `type` Always the string 'bidfloor'.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class BidFloor(
   bidFloors: Option[List[Int]],
   `type`: Option[String]

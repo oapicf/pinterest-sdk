@@ -15,13 +15,13 @@
 
 typedef struct related_terms_t related_terms_t;
 
-#include "related_terms_related_terms_list_inner.h"
+#include "related_terms_related_terms_list_items.h"
 
 
 
 typedef struct related_terms_t {
     char *id; // string
-    int related_term_count; //numeric
+    int *related_term_count; //numeric
     list_t *related_terms_list; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -29,7 +29,7 @@ typedef struct related_terms_t {
 
 __attribute__((deprecated)) related_terms_t *related_terms_create(
     char *id,
-    int related_term_count,
+    int *related_term_count,
     list_t *related_terms_list
 );
 

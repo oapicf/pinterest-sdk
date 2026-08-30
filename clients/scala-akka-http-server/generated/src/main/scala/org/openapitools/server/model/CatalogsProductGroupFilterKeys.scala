@@ -31,13 +31,14 @@ package org.openapitools.server.model
  * @param GOOGLE_PRODUCT_CATEGORY_2  for example: ''null''
  * @param GOOGLE_PRODUCT_CATEGORY_1  for example: ''null''
  * @param GOOGLE_PRODUCT_CATEGORY_0  for example: ''null''
- * @param PRODUCT_GROUP  for example: ''null''
  * @param CUSTOM_NUMBER_0  for example: ''null''
  * @param CUSTOM_NUMBER_1  for example: ''null''
  * @param CUSTOM_NUMBER_2  for example: ''null''
  * @param CUSTOM_NUMBER_3  for example: ''null''
  * @param CUSTOM_NUMBER_4  for example: ''null''
  * @param TITLE_KEYWORDS  for example: ''null''
+ * @param PINTEREST_PRODUCT_CATEGORIES  for example: ''null''
+ * @param PRODUCT_GROUP  for example: ''null''
 */
 final case class CatalogsProductGroupFilterKeys (
   MIN_PRICE: CatalogsProductGroupPricingCriteria,
@@ -67,12 +68,13 @@ final case class CatalogsProductGroupFilterKeys (
   GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
-  PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria,
   CUSTOM_NUMBER_0: CatalogsProductGroupUint32Criteria,
   CUSTOM_NUMBER_1: CatalogsProductGroupUint32Criteria,
   CUSTOM_NUMBER_2: CatalogsProductGroupUint32Criteria,
   CUSTOM_NUMBER_3: CatalogsProductGroupUint32Criteria,
   CUSTOM_NUMBER_4: CatalogsProductGroupUint32Criteria,
-  TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
+  TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria,
+  PINTEREST_PRODUCT_CATEGORIES: CatalogsProductGroupMultiplePinterestProductCategoryCriteria,
+  PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
 )
 

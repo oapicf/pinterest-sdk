@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -71,6 +72,18 @@ func (c *LabelsAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/labels",
 			c.LabelsUpdate,
 		},
+		"LabelsApply": Route{
+			"LabelsApply",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/labels/{label_id}/apply",
+			c.LabelsApply,
+		},
+		"LabelsRemove": Route{
+			"LabelsRemove",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/labels/{label_id}/remove",
+			c.LabelsRemove,
+		},
 	}
 }
 
@@ -94,6 +107,18 @@ func (c *LabelsAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/labels",
 			c.LabelsUpdate,
+		},
+		Route{
+			"LabelsApply",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/labels/{label_id}/apply",
+			c.LabelsApply,
+		},
+		Route{
+			"LabelsRemove",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/labels/{label_id}/remove",
+			c.LabelsRemove,
 		},
 	}
 }
@@ -121,13 +146,38 @@ func (c *LabelsAPIController) LabelsList(w http.ResponseWriter, r *http.Request)
 	if query.Has("label_ids") {
 		labelIdsParam = strings.Split(query.Get("label_ids"), ",")
 	}
-	var entityStatusesParam []string
+	var entityStatusesParam []QueryLabelEntityStatusesItems
 	if query.Has("entity_statuses") {
-		entityStatusesParam = strings.Split(query.Get("entity_statuses"), ",")
+		paramSplits := strings.Split(query.Get("entity_statuses"), ",")
+		entityStatusesParam = make([]QueryLabelEntityStatusesItems, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewQueryLabelEntityStatusesItemsFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "entity_statuses", Err: err}, nil)
+				return
+			}
+			entityStatusesParam = append(entityStatusesParam, paramEnum)
+		}
 	}
-	var labelTypesParam []string
+	var labelTypesParam []QueryLabelTypesItems
 	if query.Has("label_types") {
-		labelTypesParam = strings.Split(query.Get("label_types"), ",")
+		paramSplits := strings.Split(query.Get("label_types"), ",")
+		labelTypesParam = make([]QueryLabelTypesItems, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewQueryLabelTypesItemsFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "label_types", Err: err}, nil)
+				return
+			}
+			labelTypesParam = append(labelTypesParam, paramEnum)
+		}
+	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
 	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
@@ -147,14 +197,7 @@ func (c *LabelsAPIController) LabelsList(w http.ResponseWriter, r *http.Request)
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
-
-		bookmarkParam = param
-	} else {
-	}
-	result, err := c.service.LabelsList(r.Context(), adAccountIdParam, campaignIdsParam, labelIdsParam, entityStatusesParam, labelTypesParam, pageSizeParam, bookmarkParam)
+	result, err := c.service.LabelsList(r.Context(), adAccountIdParam, campaignIdsParam, labelIdsParam, entityStatusesParam, labelTypesParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -176,6 +219,11 @@ func (c *LabelsAPIController) LabelsCreate(w http.ResponseWriter, r *http.Reques
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&labelCreateRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -209,6 +257,11 @@ func (c *LabelsAPIController) LabelsUpdate(w http.ResponseWriter, r *http.Reques
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&labelUpdateRequestParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
@@ -221,6 +274,92 @@ func (c *LabelsAPIController) LabelsUpdate(w http.ResponseWriter, r *http.Reques
 		return
 	}
 	result, err := c.service.LabelsUpdate(r.Context(), adAccountIdParam, labelUpdateRequestParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// LabelsApply - Apply label to entity
+func (c *LabelsAPIController) LabelsApply(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	labelIdParam := params["label_id"]
+	if labelIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"label_id"}, nil)
+		return
+	}
+	var labeledEntitiesCreateParam LabeledEntitiesCreate
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&labeledEntitiesCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertLabeledEntitiesCreateRequired(labeledEntitiesCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertLabeledEntitiesCreateConstraints(labeledEntitiesCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.LabelsApply(r.Context(), adAccountIdParam, labelIdParam, labeledEntitiesCreateParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// LabelsRemove - Remove label from entities
+func (c *LabelsAPIController) LabelsRemove(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	labelIdParam := params["label_id"]
+	if labelIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"label_id"}, nil)
+		return
+	}
+	var labeledEntitiesCreateParam LabeledEntitiesCreate
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&labeledEntitiesCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertLabeledEntitiesCreateRequired(labeledEntitiesCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertLabeledEntitiesCreateConstraints(labeledEntitiesCreateParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.LabelsRemove(r.Context(), adAccountIdParam, labelIdParam, labeledEntitiesCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

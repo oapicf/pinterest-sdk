@@ -286,7 +286,7 @@ class AudienceRule(Model):
     def engagement_type(self) -> str:
         """Gets the engagement_type of this AudienceRule.
 
-        Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.   # noqa: E501
+        Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.  # noqa: E501
 
         :return: The engagement_type of this AudienceRule.
         :rtype: str
@@ -297,7 +297,7 @@ class AudienceRule(Model):
     def engagement_type(self, engagement_type: str):
         """Sets the engagement_type of this AudienceRule.
 
-        Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.   # noqa: E501
+        Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.  # noqa: E501
 
         :param engagement_type: The engagement_type of this AudienceRule.
         :type engagement_type: str
@@ -537,7 +537,7 @@ class AudienceRule(Model):
     def seed_id(self) -> List[str]:
         """Gets the seed_id of this AudienceRule.
 
-        Audience ID(s). For ACTALIKE `audience_type`.   # noqa: E501
+        Audience ID(s). For ACTALIKE `audience_type`.  # noqa: E501
 
         :return: The seed_id of this AudienceRule.
         :rtype: List[str]
@@ -548,7 +548,7 @@ class AudienceRule(Model):
     def seed_id(self, seed_id: List[str]):
         """Sets the seed_id of this AudienceRule.
 
-        Audience ID(s). For ACTALIKE `audience_type`.   # noqa: E501
+        Audience ID(s). For ACTALIKE `audience_type`.  # noqa: E501
 
         :param seed_id: The seed_id of this AudienceRule.
         :type seed_id: List[str]
@@ -560,7 +560,7 @@ class AudienceRule(Model):
     def url(self) -> List[str]:
         """Gets the url of this AudienceRule.
 
-        Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}  # noqa: E501
+        Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}  # noqa: E501
 
         :return: The url of this AudienceRule.
         :rtype: List[str]
@@ -571,7 +571,7 @@ class AudienceRule(Model):
     def url(self, url: List[str]):
         """Sets the url of this AudienceRule.
 
-        Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}  # noqa: E501
+        Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains]. Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\" Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}  # noqa: E501
 
         :param url: The url of this AudienceRule.
         :type url: List[str]

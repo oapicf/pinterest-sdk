@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            BidFloorRequest bidFloorRequest
+            BidFloorCreate bidFloorCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | bidFloorRequest
+            // Body     | bidFloorCreate
 
 
 
-            payload = bidFloorRequest.toJson().dump();
+            payload = bidFloorCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -61,6 +61,263 @@ using namespace Tiny;
 
 
             Response<BidFloor> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            DynamicTitlesDownloadCSV
+        >
+        AdGroupsApi::
+        adGroupsDynamicTitles_downloadCsv(
+            
+            std::string adAccountId
+            , 
+            
+            std::string adGroupId
+            
+        )
+        {
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/csv"; //adAccountId adGroupId 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
+                std::string s_adGroupId("{");
+                s_adGroupId.append("ad_group_id");
+                s_adGroupId.append("}");
+
+                int pos = url.find(s_adGroupId);
+
+                url.erase(pos, s_adGroupId.length());
+                url.insert(pos, stringify(adGroupId));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            DynamicTitlesDownloadCSV obj(output_string);
+
+
+            Response<DynamicTitlesDownloadCSV> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            DynamicTitlesGetStatus
+        >
+        AdGroupsApi::
+        adGroupsDynamicTitles_getStatus(
+            
+            std::string adAccountId
+            , 
+            
+            std::string adGroupId
+            
+        )
+        {
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/status"; //adAccountId adGroupId 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
+                std::string s_adGroupId("{");
+                s_adGroupId.append("ad_group_id");
+                s_adGroupId.append("}");
+
+                int pos = url.find(s_adGroupId);
+
+                url.erase(pos, s_adGroupId.length());
+                url.insert(pos, stringify(adGroupId));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            DynamicTitlesGetStatus obj(output_string);
+
+
+            Response<DynamicTitlesGetStatus> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            DynamicTitlesUploadURL
+        >
+        AdGroupsApi::
+        adGroupsDynamicTitles_getUploadUrl(
+            
+            std::string adAccountId
+            , 
+            
+            std::string adGroupId
+            
+        )
+        {
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/uploads"; //adAccountId adGroupId 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
+                std::string s_adGroupId("{");
+                s_adGroupId.append("ad_group_id");
+                s_adGroupId.append("}");
+
+                int pos = url.find(s_adGroupId);
+
+                url.erase(pos, s_adGroupId.length());
+                url.insert(pos, stringify(adGroupId));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            DynamicTitlesUploadURL obj(output_string);
+
+
+            Response<DynamicTitlesUploadURL> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            DynamicTitlesProcessCSV
+        >
+        AdGroupsApi::
+        adGroupsDynamicTitles_processCsv(
+            
+            std::string adAccountId
+            , 
+            
+            std::string adGroupId
+            , 
+            
+            DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate
+            
+        )
+        {
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles"; //adAccountId adGroupId 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+            addHeader("Content-Type", "application/json");
+
+
+
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
+                std::string s_adGroupId("{");
+                s_adGroupId.append("ad_group_id");
+                s_adGroupId.append("}");
+
+                int pos = url.find(s_adGroupId);
+
+                url.erase(pos, s_adGroupId.length());
+                url.insert(pos, stringify(adGroupId));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | POST
+            // Body     | dynamicTitlesProcessCSVCreate
+
+
+
+            payload = dynamicTitlesProcessCSVCreate.toJson().dump();
+
+            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            DynamicTitlesProcessCSV obj(output_string);
+
+
+            Response<DynamicTitlesProcessCSV> response(obj, httpCode);
             return response;
         }
 
@@ -84,20 +341,20 @@ using namespace Tiny;
             std::list<AdsAnalyticsAdGroupTargetingType> targetingTypes
             
             , 
-            std::list<std::string> columns
+            std::list<ReportingColumnSync> columns
             
             , 
             
             Granularity granularity
             , 
             
-            int clickWindowDays
+            long clickWindowDays
             , 
             
-            int engagementWindowDays
+            long engagementWindowDays
             , 
             
-            int viewWindowDays
+            long viewWindowDays
             , 
             
             std::string conversionReportTime
@@ -107,6 +364,12 @@ using namespace Tiny;
             , 
             
             ReportingTimeZone reportingTimezone
+            , 
+            std::list<std::string> sortColumns
+            
+            , 
+            
+            bool sortAscending
             
         )
         {
@@ -115,7 +378,7 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | adGroupIds startDate endDate targetingTypes columns granularity clickWindowDays engagementWindowDays viewWindowDays conversionReportTime attributionTypes reportingTimezone 
+            // Query    | adGroupIds startDate endDate targetingTypes columns granularity clickWindowDays engagementWindowDays viewWindowDays conversionReportTime attributionTypes reportingTimezone sortColumns sortAscending 
             for (auto &x : adGroupIds){
                 addQueryParam("ad_group_ids", std::string(x));
             }
@@ -136,6 +399,10 @@ using namespace Tiny;
                 addQueryParam("attribution_types", std::string(x));
             }
             addQueryParam("reporting_timezone",reportingTimezone);
+            for (auto &x : sortColumns){
+                addQueryParam("sort_columns", std::string(x));
+            }
+            addQueryParam("sort_ascending",sortAscending);
 
             // Form     | 
 
@@ -172,13 +439,10 @@ using namespace Tiny;
         }
 
         Response<
-            std::list<AdGroupsAnalyticsResponse_inner>
+            std::list<AdGroupsAnalyticsMetrics>
         >
         AdGroupsApi::
         adGroups_analytics(
-            
-            std::string adAccountId
-            , 
             
             Date startDate
             , 
@@ -188,20 +452,23 @@ using namespace Tiny;
             std::list<std::string> adGroupIds
             
             , 
-            std::list<std::string> columns
+            std::list<ReportingColumnSync> columns
             
             , 
             
             Granularity granularity
             , 
             
-            int clickWindowDays
+            std::string adAccountId
             , 
             
-            int engagementWindowDays
+            long clickWindowDays
             , 
             
-            int viewWindowDays
+            long engagementWindowDays
+            , 
+            
+            long viewWindowDays
             , 
             
             std::string conversionReportTime
@@ -262,7 +529,7 @@ using namespace Tiny;
 
 
 
-            std::list<AdGroupsAnalyticsResponse_inner> obj = std::list<AdGroupsAnalyticsResponse_inner>();
+            std::list<AdGroupsAnalyticsMetrics> obj = std::list<AdGroupsAnalyticsMetrics>();
             bourne::json jsonPayload(output_string);
 
 
@@ -275,7 +542,7 @@ using namespace Tiny;
             
             for(auto& var : jsonPayload.array_range())
             {
-                AdGroupsAnalyticsResponse_inner tmp(var.dump());
+                AdGroupsAnalyticsMetrics tmp(var.dump());
                 obj.push_back(tmp);
             }
             
@@ -286,12 +553,12 @@ using namespace Tiny;
 
 
 
-            Response<std::list<AdGroupsAnalyticsResponse_inner>> response(obj, httpCode);
+            Response<std::list<AdGroupsAnalyticsMetrics>> response(obj, httpCode);
             return response;
         }
 
         Response<
-            AdGroupAudienceSizingResponse
+            AdGroupAudienceSizing
         >
         AdGroupsApi::
         adGroups_audienceSizing(
@@ -299,7 +566,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            AdGroupAudienceSizingRequest adGroupAudienceSizingRequest
+            AdGroupAudienceSizingCreate adGroupAudienceSizingCreate
             
         )
         {
@@ -328,11 +595,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | adGroupAudienceSizingRequest
+            // Body     | adGroupAudienceSizingCreate
 
 
 
-            payload = adGroupAudienceSizingRequest.toJson().dump();
+            payload = adGroupAudienceSizingCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -343,22 +610,22 @@ using namespace Tiny;
 
 
 
-            AdGroupAudienceSizingResponse obj(output_string);
+            AdGroupAudienceSizing obj(output_string);
 
 
-            Response<AdGroupAudienceSizingResponse> response(obj, httpCode);
+            Response<AdGroupAudienceSizing> response(obj, httpCode);
             return response;
         }
 
         Response<
-            AdGroupArrayResponse
+            Ad_groups_create_200_response
         >
         AdGroupsApi::
         adGroups_create(
             
             std::string adAccountId
             , 
-            std::list<AdGroupCreateRequest> adGroupCreateRequest
+            std::list<AdGroupCreateCreate> adGroupCreateCreate
             
             
         )
@@ -388,11 +655,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | adGroupCreateRequest
+            // Body     | adGroupCreateCreate
 
 
             bourne::json tmp_arr = bourne::json::array();
-            for(auto& var : adGroupCreateRequest)
+            for(auto& var : adGroupCreateCreate)
             {
                 auto tmp = var.toJson();
                 tmp_arr.append(tmp);
@@ -410,27 +677,27 @@ using namespace Tiny;
 
 
 
-            AdGroupArrayResponse obj(output_string);
+            Ad_groups_create_200_response obj(output_string);
 
 
-            Response<AdGroupArrayResponse> response(obj, httpCode);
+            Response<Ad_groups_create_200_response> response(obj, httpCode);
             return response;
         }
 
         Response<
-            AdGroupResponse
+            AdGroup
         >
         AdGroupsApi::
         adGroups_get(
             
-            std::string adAccountId
+            std::string adGroupId
             , 
             
-            std::string adGroupId
+            std::string adAccountId
             
         )
         {
-            std::string url = basepath + "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}"; //adAccountId adGroupId 
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}"; //adGroupId adAccountId 
 
 
             // Headers  | 
@@ -441,14 +708,6 @@ using namespace Tiny;
 
 
 
-                std::string s_adAccountId("{");
-                s_adAccountId.append("ad_account_id");
-                s_adAccountId.append("}");
-
-                int pos = url.find(s_adAccountId);
-
-                url.erase(pos, s_adAccountId.length());
-                url.insert(pos, stringify(adAccountId));
                 std::string s_adGroupId("{");
                 s_adGroupId.append("ad_group_id");
                 s_adGroupId.append("}");
@@ -457,6 +716,14 @@ using namespace Tiny;
 
                 url.erase(pos, s_adGroupId.length());
                 url.insert(pos, stringify(adGroupId));
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
 
 
             std::string payload = "";
@@ -472,10 +739,10 @@ using namespace Tiny;
 
 
 
-            AdGroupResponse obj(output_string);
+            AdGroup obj(output_string);
 
 
-            Response<AdGroupResponse> response(obj, httpCode);
+            Response<AdGroup> response(obj, httpCode);
             return response;
         }
 
@@ -487,23 +754,23 @@ using namespace Tiny;
             
             std::string adAccountId
             , 
+            
+            std::string bookmark
+            , 
+            
+            int pageSize
+            , 
+            
+            Pinterest.Lib.PaginationOrder order
+            , 
             std::list<std::string> campaignIds
             
             , 
             std::list<std::string> adGroupIds
             
             , 
-            std::list<std::string> entityStatuses
+            std::list<EntityStatus> entityStatuses
             
-            , 
-            
-            int pageSize
-            , 
-            
-            std::string order
-            , 
-            
-            std::string bookmark
             , 
             
             bool translateInterestsToNames
@@ -515,7 +782,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | campaignIds adGroupIds entityStatuses pageSize order bookmark translateInterestsToNames 
+            // Query    | bookmark pageSize order campaignIds adGroupIds entityStatuses translateInterestsToNames 
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
+            addQueryParam("order",order);
             for (auto &x : campaignIds){
                 addQueryParam("campaign_ids", std::string(x));
             }
@@ -525,9 +795,6 @@ using namespace Tiny;
             for (auto &x : entityStatuses){
                 addQueryParam("entity_statuses", std::string(x));
             }
-            addQueryParam("page_size",pageSize);
-            addQueryParam("order",order);
-            addQueryParam("bookmark",bookmark);
             addQueryParam("translate_interests_to_names",translateInterestsToNames);
 
             // Form     | 
@@ -565,14 +832,14 @@ using namespace Tiny;
         }
 
         Response<
-            AdGroupArrayResponse
+            Ad_groups_create_200_response
         >
         AdGroupsApi::
         adGroups_update(
             
             std::string adAccountId
             , 
-            std::list<AdGroupUpdateRequest> adGroupUpdateRequest
+            std::list<AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate
             
             
         )
@@ -602,11 +869,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | adGroupUpdateRequest
+            // Body     | adGroupUpdateBatchUpdate
 
 
             bourne::json tmp_arr = bourne::json::array();
-            for(auto& var : adGroupUpdateRequest)
+            for(auto& var : adGroupUpdateBatchUpdate)
             {
                 auto tmp = var.toJson();
                 tmp_arr.append(tmp);
@@ -624,10 +891,79 @@ using namespace Tiny;
 
 
 
-            AdGroupArrayResponse obj(output_string);
+            Ad_groups_create_200_response obj(output_string);
 
 
-            Response<AdGroupArrayResponse> response(obj, httpCode);
+            Response<Ad_groups_create_200_response> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            Ad_groups_list_200_response
+        >
+        AdGroupsApi::
+        getAdGroupsByPromotionIds_list(
+            
+            std::string adAccountId
+            , 
+            std::list<std::string> promotionIds
+            
+            , 
+            
+            std::string bookmark
+            , 
+            
+            int pageSize
+            , 
+            
+            Pinterest.Lib.PaginationOrder order
+            
+        )
+        {
+            std::string url = basepath + "/ad_accounts/{ad_account_id}/promotion_applied_entities"; //adAccountId 
+
+
+            // Headers  | 
+
+            // Query    | bookmark pageSize order promotionIds 
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
+            addQueryParam("order",order);
+            for (auto &x : promotionIds){
+                addQueryParam("promotion_ids", std::string(x));
+            }
+
+            // Form     | 
+
+
+
+                std::string s_adAccountId("{");
+                s_adAccountId.append("ad_account_id");
+                s_adAccountId.append("}");
+
+                int pos = url.find(s_adAccountId);
+
+                url.erase(pos, s_adAccountId.length());
+                url.insert(pos, stringify(adAccountId));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            Ad_groups_list_200_response obj(output_string);
+
+
+            Response<Ad_groups_list_200_response> response(obj, httpCode);
             return response;
         }
 

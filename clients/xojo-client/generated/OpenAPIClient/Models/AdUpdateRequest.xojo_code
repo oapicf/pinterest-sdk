@@ -3,6 +3,22 @@ Protected Class AdUpdateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
+			The ID of this ad.
+		#tag EndNote
+		id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Pin ID. This field may only be updated for draft ads.
+		#tag EndNote
+		pin_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			ID of the ad group that contains the ad.
 		#tag EndNote
 		ad_group_id As Xoson.O.OptionalString
@@ -95,6 +111,14 @@ Protected Class AdUpdateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Is the ad a carting/WTB ad?
+		#tag EndNote
+		is_carting As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Is original pin deleted?
 		#tag EndNote
 		is_pin_deleted As Xoson.O.OptionalBoolean
@@ -129,7 +153,7 @@ Protected Class AdUpdateRequest
 		#tag Note
 			Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
 		#tag EndNote
-		quiz_pin_data As OpenAPIClient.Models.QuizPinData
+		quiz_pin_data As Object
 	#tag EndProperty
 
 
@@ -139,7 +163,7 @@ Protected Class AdUpdateRequest
 
 
 	#tag Property, Flags = &h0
-		tracking_urls As OpenAPIClient.Models.TrackingUrls
+		tracking_urls As Object
 	#tag EndProperty
 
 
@@ -148,22 +172,6 @@ Protected Class AdUpdateRequest
 			Tracking URL for ad impressions.
 		#tag EndNote
 		view_tracking_url As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The ID of this ad.
-		#tag EndNote
-		id As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Pin ID. This field may only be updated for draft ads.
-		#tag EndNote
-		pin_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -201,6 +209,22 @@ Protected Class AdUpdateRequest
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="pin_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -308,6 +332,14 @@ Protected Class AdUpdateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="is_carting"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="is_pin_deleted"
 			Visible=false
 			Group="Behavior"
@@ -344,7 +376,7 @@ Protected Class AdUpdateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="QuizPinData"
+			Type="Object"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -360,27 +392,11 @@ Protected Class AdUpdateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TrackingUrls"
+			Type="Object"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="view_tracking_url"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="pin_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

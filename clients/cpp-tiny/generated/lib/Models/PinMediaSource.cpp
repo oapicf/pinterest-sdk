@@ -335,7 +335,7 @@ PinMediaSource::getContentType()
 }
 
 void
-PinMediaSource::setContentType(ContentType  content_type)
+PinMediaSource::setContentType(ContentType content_type)
 {
 	this->content_type = content_type;
 }
@@ -347,7 +347,7 @@ PinMediaSource::getData()
 }
 
 void
-PinMediaSource::setData(std::string  data)
+PinMediaSource::setData(std::string data)
 {
 	this->data = data;
 }
@@ -359,7 +359,7 @@ PinMediaSource::isIsStandard()
 }
 
 void
-PinMediaSource::setIsStandard(bool  is_standard)
+PinMediaSource::setIsStandard(bool is_standard)
 {
 	this->is_standard = is_standard;
 }
@@ -371,7 +371,7 @@ PinMediaSource::getSourceType()
 }
 
 void
-PinMediaSource::setSourceType(std::string  source_type)
+PinMediaSource::setSourceType(std::string source_type)
 {
 	this->source_type = source_type;
 }
@@ -383,7 +383,7 @@ PinMediaSource::getUrl()
 }
 
 void
-PinMediaSource::setUrl(std::string  url)
+PinMediaSource::setUrl(std::string url)
 {
 	this->url = url;
 }
@@ -395,7 +395,7 @@ PinMediaSource::getCoverImageContentType()
 }
 
 void
-PinMediaSource::setCoverImageContentType(ContentType  cover_image_content_type)
+PinMediaSource::setCoverImageContentType(ContentType cover_image_content_type)
 {
 	this->cover_image_content_type = cover_image_content_type;
 }
@@ -407,7 +407,7 @@ PinMediaSource::getCoverImageData()
 }
 
 void
-PinMediaSource::setCoverImageData(std::string  cover_image_data)
+PinMediaSource::setCoverImageData(std::string cover_image_data)
 {
 	this->cover_image_data = cover_image_data;
 }
@@ -419,7 +419,7 @@ PinMediaSource::getCoverImageKeyFrameTime()
 }
 
 void
-PinMediaSource::setCoverImageKeyFrameTime(int  cover_image_key_frame_time)
+PinMediaSource::setCoverImageKeyFrameTime(int cover_image_key_frame_time)
 {
 	this->cover_image_key_frame_time = cover_image_key_frame_time;
 }
@@ -431,7 +431,7 @@ PinMediaSource::getCoverImageUrl()
 }
 
 void
-PinMediaSource::setCoverImageUrl(std::string  cover_image_url)
+PinMediaSource::setCoverImageUrl(std::string cover_image_url)
 {
 	this->cover_image_url = cover_image_url;
 }
@@ -443,7 +443,7 @@ PinMediaSource::getMediaId()
 }
 
 void
-PinMediaSource::setMediaId(std::string  media_id)
+PinMediaSource::setMediaId(std::string media_id)
 {
 	this->media_id = media_id;
 }
@@ -455,7 +455,7 @@ PinMediaSource::getIndex()
 }
 
 void
-PinMediaSource::setIndex(int  index)
+PinMediaSource::setIndex(int index)
 {
 	this->index = index;
 }
@@ -467,7 +467,7 @@ PinMediaSource::getItems()
 }
 
 void
-PinMediaSource::setItems(std::list <PinMediaSourceImagesURLItem> items)
+PinMediaSource::setItems(std::list<PinMediaSourceImagesURLItem> items)
 {
 	this->items = items;
 }
@@ -479,7 +479,7 @@ PinMediaSource::isIsAffiliateLink()
 }
 
 void
-PinMediaSource::setIsAffiliateLink(bool  is_affiliate_link)
+PinMediaSource::setIsAffiliateLink(bool is_affiliate_link)
 {
 	this->is_affiliate_link = is_affiliate_link;
 }

@@ -66,12 +66,12 @@ Promotions_list_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<PromotionResponse> new_list;
-			PromotionResponse inst;
+			list<Promotion> new_list;
+			Promotion inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("PromotionResponse")) {
-					jsonToValue(&inst, temp_json, "PromotionResponse", "");
+				if (isprimitive("Promotion")) {
+					jsonToValue(&inst, temp_json, "Promotion", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Promotions_list_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("PromotionResponse")) {
-		list<PromotionResponse> new_list = static_cast<list <PromotionResponse> > (getItems());
-		node = converttoJson(&new_list, "PromotionResponse", "array");
+	if (isprimitive("Promotion")) {
+		list<Promotion> new_list = static_cast<list <Promotion> > (getItems());
+		node = converttoJson(&new_list, "Promotion", "array");
 	} else {
 		node = json_node_alloc();
-		list<PromotionResponse> new_list = static_cast<list <PromotionResponse> > (getItems());
+		list<Promotion> new_list = static_cast<list <Promotion> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<PromotionResponse>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<Promotion>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			PromotionResponse obj = *it;
+			Promotion obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Promotions_list_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<PromotionResponse>
+std::list<Promotion>
 Promotions_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Promotions_list_200_response::setItems(std::list <PromotionResponse> items)
+Promotions_list_200_response::setItems(std::list <Promotion> items)
 {
 	this->items = items;
 }

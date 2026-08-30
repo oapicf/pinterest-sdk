@@ -2,12 +2,14 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AiDisclosures;
 import org.openapitools.model.BoardOwner;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.PinMedia;
@@ -16,55 +18,76 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * Pin model containing properties related to a Pinterest Pin.
+ * Pin
  */
 
-@Schema(name = "Pin", description = "Pin model containing properties related to a Pinterest Pin.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Pin {
 
-  private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable AiDisclosures aiDisclosures;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String boardId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BoardOwner boardOwner;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardSectionId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime createdAt;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CreativeType> creativeType = JsonNullable.<CreativeType>undefined();
 
-  private JsonNullable<@Size(max = 800) String> description = JsonNullable.<String>undefined();
-
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> dominantColor = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean hasBeenPromoted;
 
   private String id;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isOwner;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable Boolean isProduct;
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isStandard;
 
-  private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
-
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable PinMedia media;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> parentPinId = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Object> pinMetrics = JsonNullable.<Object>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<@Size(max = 800) String> description = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
+  private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 100) String> title = JsonNullable.<String>undefined();
 
   public Pin() {
@@ -78,24 +101,25 @@ public class Pin {
     this.id = id;
   }
 
-  public Pin altText(String altText) {
-    this.altText = JsonNullable.of(altText);
+  public Pin aiDisclosures(@Nullable AiDisclosures aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
     return this;
   }
 
   /**
-   * Get altText
-   * @return altText
+   * AI disclosure declarations the creator has made about this Pin.
+   * @return aiDisclosures
    */
-  @Size(max = 500) 
-  @Schema(name = "alt_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("alt_text")
-  public JsonNullable<@Size(max = 500) String> getAltText() {
-    return altText;
+  @Valid 
+  @Schema(name = "ai_disclosures", description = "AI disclosure declarations the creator has made about this Pin.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ai_disclosures")
+  public @Nullable AiDisclosures getAiDisclosures() {
+    return aiDisclosures;
   }
 
-  public void setAltText(JsonNullable<String> altText) {
-    this.altText = altText;
+  @JsonProperty("ai_disclosures")
+  public void setAiDisclosures(@Nullable AiDisclosures aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
   }
 
   public Pin boardId(@Nullable String boardId) {
@@ -114,6 +138,7 @@ public class Pin {
     return boardId;
   }
 
+  @JsonProperty("board_id")
   public void setBoardId(@Nullable String boardId) {
     this.boardId = boardId;
   }
@@ -134,6 +159,7 @@ public class Pin {
     return boardOwner;
   }
 
+  @JsonProperty("board_owner")
   public void setBoardOwner(@Nullable BoardOwner boardOwner) {
     this.boardOwner = boardOwner;
   }
@@ -174,6 +200,7 @@ public class Pin {
     return createdAt;
   }
 
+  @JsonProperty("created_at")
   public void setCreatedAt(@Nullable OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
@@ -196,26 +223,6 @@ public class Pin {
 
   public void setCreativeType(JsonNullable<CreativeType> creativeType) {
     this.creativeType = creativeType;
-  }
-
-  public Pin description(String description) {
-    this.description = JsonNullable.of(description);
-    return this;
-  }
-
-  /**
-   * Get description
-   * @return description
-   */
-  @Size(max = 800) 
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("description")
-  public JsonNullable<@Size(max = 800) String> getDescription() {
-    return description;
-  }
-
-  public void setDescription(JsonNullable<String> description) {
-    this.description = description;
   }
 
   public Pin dominantColor(String dominantColor) {
@@ -254,6 +261,7 @@ public class Pin {
     return hasBeenPromoted;
   }
 
+  @JsonProperty("has_been_promoted")
   public void setHasBeenPromoted(@Nullable Boolean hasBeenPromoted) {
     this.hasBeenPromoted = hasBeenPromoted;
   }
@@ -274,6 +282,7 @@ public class Pin {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
   }
@@ -294,8 +303,30 @@ public class Pin {
     return isOwner;
   }
 
+  @JsonProperty("is_owner")
   public void setIsOwner(@Nullable Boolean isOwner) {
     this.isOwner = isOwner;
+  }
+
+  public Pin isProduct(@Nullable Boolean isProduct) {
+    this.isProduct = isProduct;
+    return this;
+  }
+
+  /**
+   * Whether the Pin is a product Pin.
+   * @return isProduct
+   */
+  
+  @Schema(name = "is_product", accessMode = Schema.AccessMode.READ_ONLY, description = "Whether the Pin is a product Pin.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("is_product")
+  public @Nullable Boolean getIsProduct() {
+    return isProduct;
+  }
+
+  @JsonProperty("is_product")
+  public void setIsProduct(@Nullable Boolean isProduct) {
+    this.isProduct = isProduct;
   }
 
   public Pin isStandard(@Nullable Boolean isStandard) {
@@ -314,28 +345,9 @@ public class Pin {
     return isStandard;
   }
 
+  @JsonProperty("is_standard")
   public void setIsStandard(@Nullable Boolean isStandard) {
     this.isStandard = isStandard;
-  }
-
-  public Pin link(String link) {
-    this.link = JsonNullable.of(link);
-    return this;
-  }
-
-  /**
-   * Get link
-   * @return link
-   */
-  @Size(max = 2048) 
-  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("link")
-  public JsonNullable<@Size(max = 2048) String> getLink() {
-    return link;
-  }
-
-  public void setLink(JsonNullable<String> link) {
-    this.link = link;
   }
 
   public Pin media(@Nullable PinMedia media) {
@@ -354,6 +366,7 @@ public class Pin {
     return media;
   }
 
+  @JsonProperty("media")
   public void setMedia(@Nullable PinMedia media) {
     this.media = media;
   }
@@ -388,7 +401,7 @@ public class Pin {
    * @return pinMetrics
    */
   
-  @Schema(name = "pin_metrics", accessMode = Schema.AccessMode.READ_ONLY, example = "{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"lifetime_metrics\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}}", description = "Pin metrics with associated time intervals if any.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "pin_metrics", accessMode = Schema.AccessMode.READ_ONLY, example = "{90d={pin_click=7, impression=2, clickthrough=3}, lifetime_metrics={pin_click=7, impression=2, clickthrough=3, reaction=10, comment=2}}", description = "Pin metrics with associated time intervals if any.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_metrics")
   public JsonNullable<Object> getPinMetrics() {
     return pinMetrics;
@@ -396,6 +409,66 @@ public class Pin {
 
   public void setPinMetrics(JsonNullable<Object> pinMetrics) {
     this.pinMetrics = pinMetrics;
+  }
+
+  public Pin altText(String altText) {
+    this.altText = JsonNullable.of(altText);
+    return this;
+  }
+
+  /**
+   * Get altText
+   * @return altText
+   */
+  @Size(max = 500) 
+  @Schema(name = "alt_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("alt_text")
+  public JsonNullable<@Size(max = 500) String> getAltText() {
+    return altText;
+  }
+
+  public void setAltText(JsonNullable<String> altText) {
+    this.altText = altText;
+  }
+
+  public Pin description(String description) {
+    this.description = JsonNullable.of(description);
+    return this;
+  }
+
+  /**
+   * Get description
+   * @return description
+   */
+  @Size(max = 800) 
+  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
+  public JsonNullable<@Size(max = 800) String> getDescription() {
+    return description;
+  }
+
+  public void setDescription(JsonNullable<String> description) {
+    this.description = description;
+  }
+
+  public Pin link(String link) {
+    this.link = JsonNullable.of(link);
+    return this;
+  }
+
+  /**
+   * Get link
+   * @return link
+   */
+  @Size(max = 2048) 
+  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("link")
+  public JsonNullable<@Size(max = 2048) String> getLink() {
+    return link;
+  }
+
+  public void setLink(JsonNullable<String> link) {
+    this.link = link;
   }
 
   public Pin title(String title) {
@@ -427,22 +500,24 @@ public class Pin {
       return false;
     }
     Pin pin = (Pin) o;
-    return equalsNullable(this.altText, pin.altText) &&
+    return Objects.equals(this.aiDisclosures, pin.aiDisclosures) &&
         Objects.equals(this.boardId, pin.boardId) &&
         Objects.equals(this.boardOwner, pin.boardOwner) &&
         equalsNullable(this.boardSectionId, pin.boardSectionId) &&
         Objects.equals(this.createdAt, pin.createdAt) &&
         equalsNullable(this.creativeType, pin.creativeType) &&
-        equalsNullable(this.description, pin.description) &&
         equalsNullable(this.dominantColor, pin.dominantColor) &&
         Objects.equals(this.hasBeenPromoted, pin.hasBeenPromoted) &&
         Objects.equals(this.id, pin.id) &&
         Objects.equals(this.isOwner, pin.isOwner) &&
+        Objects.equals(this.isProduct, pin.isProduct) &&
         Objects.equals(this.isStandard, pin.isStandard) &&
-        equalsNullable(this.link, pin.link) &&
         Objects.equals(this.media, pin.media) &&
         equalsNullable(this.parentPinId, pin.parentPinId) &&
         equalsNullable(this.pinMetrics, pin.pinMetrics) &&
+        equalsNullable(this.altText, pin.altText) &&
+        equalsNullable(this.description, pin.description) &&
+        equalsNullable(this.link, pin.link) &&
         equalsNullable(this.title, pin.title);
   }
 
@@ -452,7 +527,7 @@ public class Pin {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(altText), boardId, boardOwner, hashCodeNullable(boardSectionId), createdAt, hashCodeNullable(creativeType), hashCodeNullable(description), hashCodeNullable(dominantColor), hasBeenPromoted, id, isOwner, isStandard, hashCodeNullable(link), media, hashCodeNullable(parentPinId), hashCodeNullable(pinMetrics), hashCodeNullable(title));
+    return Objects.hash(aiDisclosures, boardId, boardOwner, hashCodeNullable(boardSectionId), createdAt, hashCodeNullable(creativeType), hashCodeNullable(dominantColor), hasBeenPromoted, id, isOwner, isProduct, isStandard, media, hashCodeNullable(parentPinId), hashCodeNullable(pinMetrics), hashCodeNullable(altText), hashCodeNullable(description), hashCodeNullable(link), hashCodeNullable(title));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -466,22 +541,24 @@ public class Pin {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Pin {\n");
-    sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardOwner: ").append(toIndentedString(boardOwner)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    dominantColor: ").append(toIndentedString(dominantColor)).append("\n");
     sb.append("    hasBeenPromoted: ").append(toIndentedString(hasBeenPromoted)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    isOwner: ").append(toIndentedString(isOwner)).append("\n");
+    sb.append("    isProduct: ").append(toIndentedString(isProduct)).append("\n");
     sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    parentPinId: ").append(toIndentedString(parentPinId)).append("\n");
     sb.append("    pinMetrics: ").append(toIndentedString(pinMetrics)).append("\n");
+    sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -491,11 +568,8 @@ public class Pin {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -10,14 +10,14 @@ Method | HTTP request | Description
 
 <a name="AudienceInsightsGet"></a>
 # **AudienceInsightsGet**
-> AudienceInsightsResponse AudienceInsightsGet(adAccountId, audienceInsightType)
+> AudienceInsights AudienceInsightsGet(adAccountId, audienceInsightType)
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 <a name="AudienceInsightsScopeAndTypeGet"></a>
 # **AudienceInsightsScopeAndTypeGet**
-> AudienceDefinitionResponse AudienceInsightsScopeAndTypeGet(adAccountId)
+> AudienceInsightsScopeAndTypeGet200Response AudienceInsightsScopeAndTypeGet(adAccountId)
 
 Get audience insights scope and type
 

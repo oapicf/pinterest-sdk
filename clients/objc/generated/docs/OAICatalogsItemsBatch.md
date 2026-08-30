@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**OAICatalogsType***](OAICatalogsType.md) |  | 
 **batchId** | **NSString*** | Id of the catalogs items batch | [optional] 
-**completedTime** | **NSDate*** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**createdTime** | **NSDate*** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [readonly] 
+**catalogType** | **NSString*** |  | 
+**completedTime** | **NSDate*** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
+**createdTime** | **NSDate*** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | 
 **items** | [**NSArray&lt;OAICreativeAssetsProcessingRecord&gt;***](OAICreativeAssetsProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 **status** | [**OAIBatchOperationStatus***](OAIBatchOperationStatus.md) |  | [optional] 
 

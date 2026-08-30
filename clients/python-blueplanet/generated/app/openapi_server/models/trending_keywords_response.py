@@ -47,7 +47,7 @@ class TrendingKeywordsResponse(Model):
     def trends(self) -> List[TrendingKeyword]:
         """Gets the trends of this TrendingKeywordsResponse.
 
-        The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.  # noqa: E501
+        The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.  # noqa: E501
 
         :return: The trends of this TrendingKeywordsResponse.
         :rtype: List[TrendingKeyword]
@@ -58,7 +58,7 @@ class TrendingKeywordsResponse(Model):
     def trends(self, trends: List[TrendingKeyword]):
         """Sets the trends of this TrendingKeywordsResponse.
 
-        The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.  # noqa: E501
+        The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.  # noqa: E501
 
         :param trends: The trends of this TrendingKeywordsResponse.
         :type trends: List[TrendingKeyword]

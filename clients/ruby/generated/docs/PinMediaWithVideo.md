@@ -10,6 +10,7 @@
 | **images** | [**ImageSize**](ImageSize.md) |  | [optional] |
 | **media_type** | **String** |  |  |
 | **video_url** | **String** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] |
+| **video_url_hls** | **String** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] |
 | **width** | **Integer** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] |
 
 ## Example
@@ -24,6 +25,7 @@ instance = PinterestSdkClient::PinMediaWithVideo.new(
   images: null,
   media_type: null,
   video_url: null,
+  video_url_hls: null,
   width: null
 )
 ```

@@ -12,7 +12,7 @@ API.Client.TargetingTemplateList200Response = function() {}
 API.Client.TargetingTemplateList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.TargetingTemplateGetResponseData>}
+ * @type {!Array<!API.Client.TargetingTemplate>}
  * @export
  */
 API.Client.TargetingTemplateList200Response.prototype.items;

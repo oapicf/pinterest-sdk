@@ -17,22 +17,23 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.AdAccount
-import org.openapitools.server.api.model.AdAccountAnalyticsResponseInner
+import org.openapitools.server.api.model.AdAccountAnalyticsItems
 import org.openapitools.server.api.model.AdAccountCreate
 import org.openapitools.server.api.model.AdAccountsList200Response
+import org.openapitools.server.api.model.AdsAnalyticsAccountTargetingType
 import org.openapitools.server.api.model.AdsAnalyticsCreateAsyncRequest
 import org.openapitools.server.api.model.AdsAnalyticsCreateAsyncResponse
 import org.openapitools.server.api.model.AdsAnalyticsGetAsyncResponse
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType
-import org.openapitools.server.api.model.ConversionProductReportRequest
+import org.openapitools.server.api.model.ConversionProductReport
+import org.openapitools.server.api.model.ConversionProductReportCreate
 import org.openapitools.server.api.model.ConversionReportAttributionType
-import org.openapitools.server.api.model.CreateMMMReportRequest
-import org.openapitools.server.api.model.CreateMMMReportResponse
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.GetMMMReportResponse
 import org.openapitools.server.api.model.Granularity
+import org.openapitools.server.api.model.MMMReport
+import org.openapitools.server.api.model.MMMReportCreate
 import org.openapitools.server.api.model.MetricsResponse
 import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
+import org.openapitools.server.api.model.ReportingColumnSync
 import org.openapitools.server.api.model.ReportingTimeZone
 import org.openapitools.server.api.model.TemplateBasedReport
 import org.openapitools.server.api.model.TemplatesList200Response
@@ -85,10 +86,6 @@ class AdAccountsApiVertxProxyHandler(private val vertx: Vertx, private val servi
         
                 "adAccountAnalytics" -> {
                     val params = context.params
-                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
-                    if(adAccountId == null){
-                        throw IllegalArgumentException("adAccountId is required")
-                    }
                     val startDate = java.time.LocalDate.parse(ApiHandlerUtils.searchStringInJson(params,"start_date"))
                     if(startDate == null){
                         throw IllegalArgumentException("startDate is required")
@@ -101,21 +98,25 @@ class AdAccountsApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(columnsParam == null){
                          throw IllegalArgumentException("columns is required")
                     }
-                    val columns:kotlin.Array<kotlin.String> = Gson().fromJson(columnsParam.encode()
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val columns:kotlin.Array<ReportingColumnSync> = Gson().fromJson(columnsParam.encode()
+                            , object : TypeToken<kotlin.collections.List<ReportingColumnSync>>(){}.type)
                     val granularityParam = ApiHandlerUtils.searchJsonObjectInJson(params,"granularity")
                     if (granularityParam == null) {
                         throw IllegalArgumentException("granularity is required")
                     }
                     val granularity = Gson().fromJson(granularityParam.encode(), Granularity::class.java)
-                    val clickWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"click_window_days")
-                    val engagementWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"engagement_window_days")
-                    val viewWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"view_window_days")
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val clickWindowDays = ApiHandlerUtils.searchDoubleInJson(params,"click_window_days")
+                    val engagementWindowDays = ApiHandlerUtils.searchDoubleInJson(params,"engagement_window_days")
+                    val viewWindowDays = ApiHandlerUtils.searchDoubleInJson(params,"view_window_days")
                     val conversionReportTime = ApiHandlerUtils.searchStringInJson(params,"conversion_report_time")
                     val reportingTimezoneParam = ApiHandlerUtils.searchJsonObjectInJson(params,"reporting_timezone")
                     val reportingTimezone = if(reportingTimezoneParam ==null) null else Gson().fromJson(reportingTimezoneParam.encode(), ReportingTimeZone::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adAccountAnalytics(adAccountId,startDate,endDate,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,reportingTimezone,context)
+                        val result = service.adAccountAnalytics(startDate,endDate,columns,granularity,adAccountId,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,reportingTimezone,context)
                         val payload = JsonArray(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -142,22 +143,22 @@ class AdAccountsApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(targetingTypesParam == null){
                          throw IllegalArgumentException("targetingTypes is required")
                     }
-                    val targetingTypes:kotlin.Array<AdsAnalyticsTargetingType> = Gson().fromJson(targetingTypesParam.encode()
-                            , object : TypeToken<kotlin.collections.List<AdsAnalyticsTargetingType>>(){}.type)
+                    val targetingTypes:kotlin.Array<AdsAnalyticsAccountTargetingType> = Gson().fromJson(targetingTypesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<AdsAnalyticsAccountTargetingType>>(){}.type)
                     val columnsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"columns")
                     if(columnsParam == null){
                          throw IllegalArgumentException("columns is required")
                     }
-                    val columns:kotlin.Array<kotlin.String> = Gson().fromJson(columnsParam.encode()
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val columns:kotlin.Array<ReportingColumnSync> = Gson().fromJson(columnsParam.encode()
+                            , object : TypeToken<kotlin.collections.List<ReportingColumnSync>>(){}.type)
                     val granularityParam = ApiHandlerUtils.searchJsonObjectInJson(params,"granularity")
                     if (granularityParam == null) {
                         throw IllegalArgumentException("granularity is required")
                     }
                     val granularity = Gson().fromJson(granularityParam.encode(), Granularity::class.java)
-                    val clickWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"click_window_days")
-                    val engagementWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"engagement_window_days")
-                    val viewWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"view_window_days")
+                    val clickWindowDays = ApiHandlerUtils.searchDoubleInJson(params,"click_window_days")
+                    val engagementWindowDays = ApiHandlerUtils.searchDoubleInJson(params,"engagement_window_days")
+                    val viewWindowDays = ApiHandlerUtils.searchDoubleInJson(params,"view_window_days")
                     val conversionReportTime = ApiHandlerUtils.searchStringInJson(params,"conversion_report_time")
                     val attributionTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"attribution_types")
                     val attributionTypes:kotlin.Array<ConversionReportAttributionType>? = if(attributionTypesParam == null) null
@@ -229,13 +230,13 @@ class AdAccountsApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val conversionProductReportRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (conversionProductReportRequestParam == null) {
-                        throw IllegalArgumentException("conversionProductReportRequest is required")
+                    val conversionProductReportCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (conversionProductReportCreateParam == null) {
+                        throw IllegalArgumentException("conversionProductReportCreate is required")
                     }
-                    val conversionProductReportRequest = Gson().fromJson(conversionProductReportRequestParam.encode(), ConversionProductReportRequest::class.java)
+                    val conversionProductReportCreate = Gson().fromJson(conversionProductReportCreateParam.encode(), ConversionProductReportCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.analyticsCreateConversionProductReport(adAccountId,conversionProductReportRequest,context)
+                        val result = service.analyticsCreateConversionProductReport(adAccountId,conversionProductReportCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -250,13 +251,13 @@ class AdAccountsApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val createMMMReportRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (createMMMReportRequestParam == null) {
-                        throw IllegalArgumentException("createMMMReportRequest is required")
+                    val mmMReportCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (mmMReportCreateParam == null) {
+                        throw IllegalArgumentException("mmMReportCreate is required")
                     }
-                    val createMMMReportRequest = Gson().fromJson(createMMMReportRequestParam.encode(), CreateMMMReportRequest::class.java)
+                    val mmMReportCreate = Gson().fromJson(mmMReportCreateParam.encode(), MMMReportCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.analyticsCreateMmmReport(adAccountId,createMMMReportRequest,context)
+                        val result = service.analyticsCreateMmmReport(adAccountId,mmMReportCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -392,11 +393,12 @@ class AdAccountsApiVertxProxyHandler(private val vertx: Vertx, private val servi
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val order = ApiHandlerUtils.searchStringInJson(params,"order")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
+                    val orderParam = ApiHandlerUtils.searchJsonObjectInJson(params,"order")
+                    val order = if(orderParam ==null) null else Gson().fromJson(orderParam.encode(), PinterestLibPaginationOrder::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.templatesList(adAccountId,pageSize,order,bookmark,context)
+                        val result = service.templatesList(adAccountId,bookmark,pageSize,order,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

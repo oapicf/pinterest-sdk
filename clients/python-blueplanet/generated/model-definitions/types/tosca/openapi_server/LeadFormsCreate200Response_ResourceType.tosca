@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadFormsCreate200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadFormsCreate200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LeadFormsCreate200ResponseItemsInner = openapi_server.resourceTypes.LeadFormsCreate200ResponseItemsInner
+}
+resourceTypes {
+
+  LeadFormsCreate200Response {
+    title = LeadFormsCreate200Response
+    description = LeadFormsCreate200Response
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = LeadFormsCreate200ResponseItemsInner
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadFormsCreate200Response {
+    title = LeadFormsCreate200Response
+    description = LeadFormsCreate200Response
+    implements = openapi_server.resourceTypes.LeadFormsCreate200Response
+
+  }
+}

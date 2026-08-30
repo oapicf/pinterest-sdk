@@ -1,0 +1,26 @@
+--
+-- Pinterest REST API.
+-- Prepared SQL queries for 'lead_forms_create_200_response' definition.
+--
+
+
+--
+-- SELECT template for table `lead_forms_create_200_response`
+--
+SELECT `items` FROM `lead_forms_create_200_response` WHERE 1;
+
+--
+-- INSERT template for table `lead_forms_create_200_response`
+--
+INSERT INTO `lead_forms_create_200_response`(`items`) VALUES (?);
+
+--
+-- UPDATE template for table `lead_forms_create_200_response`
+--
+UPDATE `lead_forms_create_200_response` SET `items` = ? WHERE 1;
+
+--
+-- DELETE template for table `lead_forms_create_200_response`
+--
+DELETE FROM `lead_forms_create_200_response` WHERE 0;
+

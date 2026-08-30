@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,10 +24,9 @@ var _ MappedNullable = &LabelBulkUpdateRequest{}
 type LabelBulkUpdateRequest struct {
 	// Label ID.
 	Id string `json:"id"`
-	// Set status to `ARCHIVED` to remove the label from the parent entity.
-	Status *string `json:"status,omitempty"`
-	// </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
-	Value *string `json:"value,omitempty"`
+	// Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+	ParentId string `json:"parent_id"`
+	Status LabelStatusBulkUpdate `json:"status"`
 }
 
 type _LabelBulkUpdateRequest LabelBulkUpdateRequest
@@ -36,9 +35,11 @@ type _LabelBulkUpdateRequest LabelBulkUpdateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLabelBulkUpdateRequest(id string) *LabelBulkUpdateRequest {
+func NewLabelBulkUpdateRequest(id string, parentId string, status LabelStatusBulkUpdate) *LabelBulkUpdateRequest {
 	this := LabelBulkUpdateRequest{}
 	this.Id = id
+	this.ParentId = parentId
+	this.Status = status
 	return &this
 }
 
@@ -74,68 +75,52 @@ func (o *LabelBulkUpdateRequest) SetId(v string) {
 	o.Id = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *LabelBulkUpdateRequest) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+// GetParentId returns the ParentId field value
+func (o *LabelBulkUpdateRequest) GetParentId() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Status
+
+	return o.ParentId
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetParentIdOk returns a tuple with the ParentId field value
 // and a boolean to check if the value has been set.
-func (o *LabelBulkUpdateRequest) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+func (o *LabelBulkUpdateRequest) GetParentIdOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.ParentId, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *LabelBulkUpdateRequest) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
+// SetParentId sets field value
+func (o *LabelBulkUpdateRequest) SetParentId(v string) {
+	o.ParentId = v
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *LabelBulkUpdateRequest) SetStatus(v string) {
-	o.Status = &v
-}
-
-// GetValue returns the Value field value if set, zero value otherwise.
-func (o *LabelBulkUpdateRequest) GetValue() string {
-	if o == nil || IsNil(o.Value) {
-		var ret string
+// GetStatus returns the Status field value
+func (o *LabelBulkUpdateRequest) GetStatus() LabelStatusBulkUpdate {
+	if o == nil {
+		var ret LabelStatusBulkUpdate
 		return ret
 	}
-	return *o.Value
+
+	return o.Status
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *LabelBulkUpdateRequest) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+func (o *LabelBulkUpdateRequest) GetStatusOk() (*LabelStatusBulkUpdate, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return &o.Status, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *LabelBulkUpdateRequest) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
-func (o *LabelBulkUpdateRequest) SetValue(v string) {
-	o.Value = &v
+// SetStatus sets field value
+func (o *LabelBulkUpdateRequest) SetStatus(v LabelStatusBulkUpdate) {
+	o.Status = v
 }
 
 func (o LabelBulkUpdateRequest) MarshalJSON() ([]byte, error) {
@@ -149,12 +134,8 @@ func (o LabelBulkUpdateRequest) MarshalJSON() ([]byte, error) {
 func (o LabelBulkUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
+	toSerialize["parent_id"] = o.ParentId
+	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
 
@@ -164,6 +145,8 @@ func (o *LabelBulkUpdateRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
+		"parent_id",
+		"status",
 	}
 
 	allProperties := make(map[string]interface{})

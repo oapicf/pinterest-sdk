@@ -8,7 +8,7 @@
       "name": "rejected_logs",
       "type": ["null", {
         "type": "array",
-        "items": "model.IntegrationLogsInvalidLogResponseRejectedLogsInner"
+        "items": "model.IntegrationLogsInvalidLogResponseRejectedLogsItems"
       }],
       "doc": "",
       "default": null

@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS);
+	void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria tITLE_KEYWORDS);
 
 
     private:

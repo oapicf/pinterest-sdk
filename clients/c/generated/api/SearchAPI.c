@@ -11,7 +11,7 @@
 
 // Search pins by a given search term
 //
-// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 //
 search_partner_pins_200_response_t*
 SearchAPI_searchPartnerPins(apiClient_t *apiClient, char *term, char *country_code, char *bookmark, char *locale, int *limit)
@@ -108,15 +108,31 @@ SearchAPI_searchPartnerPins(apiClient_t *apiClient, char *term, char *country_co
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Invalid pins");
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     search_partner_pins_200_response_t *elementToReturn = NULL;
@@ -210,10 +226,10 @@ end:
 
 // Search user's boards
 //
-// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 //
-search_user_boards_get_200_response_t*
-SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, char *query)
+boards_list_200_response_t*
+SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char *query, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -246,6 +262,18 @@ SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char 
     }
 
     // query parameters
+    char *keyQuery_query = NULL;
+    char * valueQuery_query = NULL;
+    keyValuePair_t *keyPairQuery_query = 0;
+    if (query)
+    {
+        keyQuery_query = strdup("query");
+        valueQuery_query = strdup((query));
+        keyPairQuery_query = keyValuePair_create(keyQuery_query, valueQuery_query);
+        list_addElement(localVarQueryParameters,keyPairQuery_query);
+    }
+
+    // query parameters
     char *keyQuery_bookmark = NULL;
     char * valueQuery_bookmark = NULL;
     keyValuePair_t *keyPairQuery_bookmark = 0;
@@ -269,18 +297,6 @@ SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char 
         keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
         list_addElement(localVarQueryParameters,keyPairQuery_page_size);
     }
-
-    // query parameters
-    char *keyQuery_query = NULL;
-    char * valueQuery_query = NULL;
-    keyValuePair_t *keyPairQuery_query = 0;
-    if (query)
-    {
-        keyQuery_query = strdup("query");
-        valueQuery_query = strdup((query));
-        keyPairQuery_query = keyValuePair_create(keyQuery_query, valueQuery_query);
-        list_addElement(localVarQueryParameters,keyPairQuery_query);
-    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -295,17 +311,37 @@ SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    search_user_boards_get_200_response_t *elementToReturn = NULL;
+    boards_list_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *SearchAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = search_user_boards_get_200_response_parseFromJSON(SearchAPIlocalVarJSON);
+        elementToReturn = boards_list_200_response_parseFromJSON(SearchAPIlocalVarJSON);
         cJSON_Delete(SearchAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -336,6 +372,18 @@ SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char 
         keyValuePair_free(keyPairQuery_ad_account_id);
         keyPairQuery_ad_account_id = NULL;
     }
+    if(keyQuery_query){
+        free(keyQuery_query);
+        keyQuery_query = NULL;
+    }
+    if(valueQuery_query){
+        free(valueQuery_query);
+        valueQuery_query = NULL;
+    }
+    if(keyPairQuery_query){
+        keyValuePair_free(keyPairQuery_query);
+        keyPairQuery_query = NULL;
+    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;
@@ -360,18 +408,6 @@ SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char 
         keyValuePair_free(keyPairQuery_page_size);
         keyPairQuery_page_size = NULL;
     }
-    if(keyQuery_query){
-        free(keyQuery_query);
-        keyQuery_query = NULL;
-    }
-    if(valueQuery_query){
-        free(valueQuery_query);
-        valueQuery_query = NULL;
-    }
-    if(keyPairQuery_query){
-        keyValuePair_free(keyPairQuery_query);
-        keyPairQuery_query = NULL;
-    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -381,9 +417,9 @@ end:
 
 // Search user's Pins
 //
-// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 //
-search_user_pins_list_200_response_t*
+pins_list_200_response_t*
 SearchAPI_searchUserPinsList(apiClient_t *apiClient, char *query, char *ad_account_id, char *bookmark)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -453,21 +489,37 @@ SearchAPI_searchUserPinsList(apiClient_t *apiClient, char *query, char *ad_accou
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","User not found");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    search_user_pins_list_200_response_t *elementToReturn = NULL;
+    pins_list_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *SearchAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = search_user_pins_list_200_response_parseFromJSON(SearchAPIlocalVarJSON);
+        elementToReturn = pins_list_200_response_parseFromJSON(SearchAPIlocalVarJSON);
         cJSON_Delete(SearchAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;

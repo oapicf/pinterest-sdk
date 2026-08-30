@@ -1,7 +1,7 @@
 package apimodels;
 
 import apimodels.NonNullableCatalogsCurrency;
-import apimodels.NonNullableProductAvailabilityType;
+import apimodels.ProductAvailability;
 import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -12,14 +12,14 @@ import javax.validation.Valid;
 /**
  * Retail product metadata entity
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailProductMetadata   {
   @JsonProperty("availability")
   @NotNull
 @Valid
 
-  private NonNullableProductAvailabilityType availability;
+  private ProductAvailability availability;
 
   @JsonProperty("currency")
   @NotNull
@@ -49,7 +49,7 @@ public class CatalogsRetailProductMetadata   {
 
   private BigDecimal salePrice;
 
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+  public CatalogsRetailProductMetadata availability(ProductAvailability availability) {
     this.availability = availability;
     return this;
   }
@@ -58,11 +58,11 @@ public class CatalogsRetailProductMetadata   {
    * Get availability
    * @return availability
   **/
-  public NonNullableProductAvailabilityType getAvailability() {
+  public ProductAvailability getAvailability() {
     return availability;
   }
 
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
+  public void setAvailability(ProductAvailability availability) {
     this.availability = availability;
   }
 
@@ -195,10 +195,7 @@ public class CatalogsRetailProductMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -9,16 +9,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionItemsGetRecord;
+import org.openapitools.model.AdvancedAuctionKey;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object used to get bid options values for a batch of retail catalog items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object used to get bid options values for a batch of retail catalog items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItemsGetRequest   {
   
   private String catalogId;
-  private List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionKey> items = new ArrayList<>();
 
   /**
    * Catalog id pertaining to the retail item
@@ -41,10 +41,10 @@ public class AdvancedAuctionItemsGetRequest   {
   @ApiModelProperty(required = true, value = "A list of retail catalog items to fetch bid options for")
   @JsonProperty("items")
   @NotNull
- @Size(min=1,max=10000)  public List<AdvancedAuctionItemsGetRecord> getItems() {
+ @Size(min=1,max=10000)  public List<@Valid AdvancedAuctionKey> getItems() {
     return items;
   }
-  public void setItems(List<AdvancedAuctionItemsGetRecord> items) {
+  public void setItems(List<@Valid AdvancedAuctionKey> items) {
     this.items = items;
   }
 
@@ -83,10 +83,7 @@ public class AdvancedAuctionItemsGetRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

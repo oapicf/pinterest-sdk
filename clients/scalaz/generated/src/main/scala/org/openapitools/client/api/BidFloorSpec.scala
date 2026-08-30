@@ -12,12 +12,18 @@ import org.joda.time.DateTime
 import BidFloorSpec._
 
 case class BidFloorSpec (
+  /* Ad group billable event type. */
   billableEvent: ActionType,
-countries: Option[List[Country]],
-creativeType: Option[CreativeType],
-currency: Currency,
-objectiveType: Option[ObjectiveType],
-optimizationGoalMetadata: Option[OptimizationGoalMetadata])
+/* List of ISO 3166-1 alpha-2 country codes. */
+  countries: Option[List[Country]],
+/* Creative type for the bid floor request. */
+  creativeType: Option[CreativeType],
+/* Currency for the bid floor value. */
+  currency: Currency,
+/* Campaign objective type. */
+  objectiveType: Option[BidFloorObjectiveType],
+/* Optimization goal metadata. */
+  optimizationGoalMetadata: Option[OptimizationGoalMetadata])
 
 object BidFloorSpec {
   import DateTimeCodecs._

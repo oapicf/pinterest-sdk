@@ -12,18 +12,21 @@ static board_owner_t *board_owner_create_internal(
     if (!board_owner_local_var) {
         return NULL;
     }
-    board_owner_local_var->username = username;
-
+    memset(board_owner_local_var, 0, sizeof(board_owner_t));
     board_owner_local_var->_library_owned = 1;
+    board_owner_local_var->username = username;
     return board_owner_local_var;
 }
 
 __attribute__((deprecated)) board_owner_t *board_owner_create(
     char *username
     ) {
-    return board_owner_create_internal (
+    board_owner_t *result = board_owner_create_internal (
         username
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void board_owner_free(board_owner_t *board_owner) {
@@ -64,6 +67,8 @@ board_owner_t *board_owner_parseFromJSON(cJSON *board_ownerJSON){
 
     board_owner_t *board_owner_local_var = NULL;
 
+    char *username_local_str = NULL;
+
     // board_owner->username
     cJSON *username = cJSON_GetObjectItemCaseSensitive(board_ownerJSON, "username");
     if (cJSON_IsNull(username)) {
@@ -77,12 +82,22 @@ board_owner_t *board_owner_parseFromJSON(cJSON *board_ownerJSON){
     }
 
 
+    if (username && !cJSON_IsNull(username)) username_local_str = strdup(username->valuestring);
+
     board_owner_local_var = board_owner_create_internal (
-        username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL
+        username_local_str
         );
+
+    if (!board_owner_local_var) {
+        goto end;
+    }
 
     return board_owner_local_var;
 end:
+    if (username_local_str) {
+        free(username_local_str);
+        username_local_str = NULL;
+    }
     return NULL;
 
 }

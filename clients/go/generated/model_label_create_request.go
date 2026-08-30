@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,9 +23,7 @@ var _ MappedNullable = &LabelCreateRequest{}
 // LabelCreateRequest struct for LabelCreateRequest
 type LabelCreateRequest struct {
 	// Labels that you are applying to the campaign.
-	Labels []LabelCreateRequestLabelsInner `json:"labels"`
-	// Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-	ParentId string `json:"parent_id" validate:"regexp=^[C]?\\\\d+$"`
+	Labels []LabelCreateItem `json:"labels"`
 }
 
 type _LabelCreateRequest LabelCreateRequest
@@ -34,10 +32,9 @@ type _LabelCreateRequest LabelCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLabelCreateRequest(labels []LabelCreateRequestLabelsInner, parentId string) *LabelCreateRequest {
+func NewLabelCreateRequest(labels []LabelCreateItem) *LabelCreateRequest {
 	this := LabelCreateRequest{}
 	this.Labels = labels
-	this.ParentId = parentId
 	return &this
 }
 
@@ -50,9 +47,9 @@ func NewLabelCreateRequestWithDefaults() *LabelCreateRequest {
 }
 
 // GetLabels returns the Labels field value
-func (o *LabelCreateRequest) GetLabels() []LabelCreateRequestLabelsInner {
+func (o *LabelCreateRequest) GetLabels() []LabelCreateItem {
 	if o == nil {
-		var ret []LabelCreateRequestLabelsInner
+		var ret []LabelCreateItem
 		return ret
 	}
 
@@ -61,7 +58,7 @@ func (o *LabelCreateRequest) GetLabels() []LabelCreateRequestLabelsInner {
 
 // GetLabelsOk returns a tuple with the Labels field value
 // and a boolean to check if the value has been set.
-func (o *LabelCreateRequest) GetLabelsOk() ([]LabelCreateRequestLabelsInner, bool) {
+func (o *LabelCreateRequest) GetLabelsOk() ([]LabelCreateItem, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,32 +66,8 @@ func (o *LabelCreateRequest) GetLabelsOk() ([]LabelCreateRequestLabelsInner, boo
 }
 
 // SetLabels sets field value
-func (o *LabelCreateRequest) SetLabels(v []LabelCreateRequestLabelsInner) {
+func (o *LabelCreateRequest) SetLabels(v []LabelCreateItem) {
 	o.Labels = v
-}
-
-// GetParentId returns the ParentId field value
-func (o *LabelCreateRequest) GetParentId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ParentId
-}
-
-// GetParentIdOk returns a tuple with the ParentId field value
-// and a boolean to check if the value has been set.
-func (o *LabelCreateRequest) GetParentIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ParentId, true
-}
-
-// SetParentId sets field value
-func (o *LabelCreateRequest) SetParentId(v string) {
-	o.ParentId = v
 }
 
 func (o LabelCreateRequest) MarshalJSON() ([]byte, error) {
@@ -108,7 +81,6 @@ func (o LabelCreateRequest) MarshalJSON() ([]byte, error) {
 func (o LabelCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["labels"] = o.Labels
-	toSerialize["parent_id"] = o.ParentId
 	return toSerialize, nil
 }
 
@@ -118,7 +90,6 @@ func (o *LabelCreateRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"labels",
-		"parent_id",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -29,24 +29,26 @@ pinterest_rest_api_pin_media_with_video_MEDIATYPE_e pin_media_with_video_media_t
 
 typedef struct pin_media_with_video_t {
     char *cover_image_url; // string
-    double duration; //numeric
-    int height; //numeric
+    double *duration; //numeric
+    int *height; //numeric
     struct image_size_t *images; //model
     pinterest_rest_api_pin_media_with_video_MEDIATYPE_e media_type; //enum
     char *video_url; // string
-    int width; //numeric
+    char *video_url_hls; // string
+    int *width; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_with_video_t;
 
 __attribute__((deprecated)) pin_media_with_video_t *pin_media_with_video_create(
     char *cover_image_url,
-    double duration,
-    int height,
+    double *duration,
+    int *height,
     image_size_t *images,
     pinterest_rest_api_pin_media_with_video_MEDIATYPE_e media_type,
     char *video_url,
-    int width
+    char *video_url_hls,
+    int *width
 );
 
 void pin_media_with_video_free(pin_media_with_video_t *pin_media_with_video);

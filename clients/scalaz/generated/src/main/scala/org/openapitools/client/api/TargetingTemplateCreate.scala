@@ -12,13 +12,14 @@ import org.joda.time.DateTime
 import TargetingTemplateCreate._
 
 case class TargetingTemplateCreate (
-  /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
+  /* Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting). */
   autoTargetingEnabled: Option[Boolean],
 keywords: Option[List[TargetingTemplateKeyword]],
-/* Name of targeting template. */
+/* targeting template name */
   name: String,
 placementGroup: Option[PlacementGroupType],
-targetingAttributes: TargetingSpec,
+/* targeting profile attributes */
+  targetingAttributes: TargetingSpecOptimal,
 trackingUrls: Option[TrackingUrls])
 
 object TargetingTemplateCreate {

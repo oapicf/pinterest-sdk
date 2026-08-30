@@ -1,4 +1,4 @@
-goog.provide('API.Client.catalogs_creative_assets_filter_values_map');
+goog.provide('API.Client.CatalogsCreativeAssetsFilterValuesMap');
 
 /**
  * A map of filter attributes to their available values.
@@ -79,13 +79,8 @@ API.Client.CatalogsCreativeAssetsFilterValuesMap.prototype.googleProductCategory
 API.Client.CatalogsCreativeAssetsFilterValuesMap.prototype.googleProductCategory6;
 
 /**
- * @type {!Array<!string>}
+ * @type {!Array<!API.Client.MediaType>}
  * @export
  */
 API.Client.CatalogsCreativeAssetsFilterValuesMap.prototype.mediaType;
 
-/** @enum {string} */
-API.Client.CatalogsCreativeAssetsFilterValuesMap.Array&lt;!MediaTypeEnum&gt; = { 
-  IMAGE: 'IMAGE',
-  VIDEO: 'VIDEO',
-}

@@ -2,16 +2,17 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.AuthRespondInvitesBody
-import org.openapitools.model.CancelInvitesBody
+import org.openapitools.model.CancelInvitesRequest
+import org.openapitools.model.CancelInvitesResponse
 import org.openapitools.model.CreateAssetAccessRequestBody
 import org.openapitools.model.CreateAssetAccessRequestResponse
 import org.openapitools.model.CreateAssetInvitesRequest
 import org.openapitools.model.CreateInvitesResultsResponseArray
 import org.openapitools.model.CreateMembershipOrPartnershipInvitesBody
-import org.openapitools.model.DeleteInvitesResultsResponseArray
-import org.openapitools.model.Error
 import org.openapitools.model.GetInvites200Response
+import org.openapitools.model.InviteFilterStatus
 import org.openapitools.model.InviteType
+import org.openapitools.model.PinterestLibError
 import org.openapitools.model.RespondToInvitesResponseArray
 import org.openapitools.model.UpdateInvitesResultsResponseArray
 
@@ -27,6 +28,7 @@ class BusinessAccessInviteApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -44,19 +46,22 @@ class BusinessAccessInviteApi {
         bodyParams = createAssetAccessRequestBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     CreateAssetAccessRequestResponse.class )
 
     }
 
-    def cancelInvitesOrRequests ( String businessId, CancelInvitesBody cancelInvitesBody, Closure onSuccess, Closure onFailure)  {
+    def cancelInvitesOrRequests ( String businessId, CancelInvitesRequest cancelInvitesRequest, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/invites"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -64,19 +69,21 @@ class BusinessAccessInviteApi {
             throw new RuntimeException("missing required params businessId")
         }
         // verify required params are set
-        if (cancelInvitesBody == null) {
-            throw new RuntimeException("missing required params cancelInvitesBody")
+        if (cancelInvitesRequest == null) {
+            throw new RuntimeException("missing required params cancelInvitesRequest")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = cancelInvitesBody
+        bodyParams = cancelInvitesRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    DeleteInvitesResultsResponseArray.class )
+                    CancelInvitesResponse.class )
 
     }
 
@@ -87,6 +94,7 @@ class BusinessAccessInviteApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -104,7 +112,9 @@ class BusinessAccessInviteApi {
         bodyParams = createAssetInvitesRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     UpdateInvitesResultsResponseArray.class )
 
@@ -117,6 +127,7 @@ class BusinessAccessInviteApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -134,19 +145,22 @@ class BusinessAccessInviteApi {
         bodyParams = createMembershipOrPartnershipInvitesBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     CreateInvitesResultsResponseArray.class )
 
     }
 
-    def getInvites ( String businessId, Boolean isMember, List<String> inviteStatus, InviteType inviteType, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
+    def getInvites ( String businessId, Boolean isMember, List<InviteFilterStatus> inviteStatus, InviteType inviteType, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/businesses/${business_id}/invites"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -173,7 +187,9 @@ class BusinessAccessInviteApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     GetInvites200Response.class )
 
@@ -186,6 +202,7 @@ class BusinessAccessInviteApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -199,7 +216,9 @@ class BusinessAccessInviteApi {
         bodyParams = authRespondInvitesBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     RespondToInvitesResponseArray.class )
 

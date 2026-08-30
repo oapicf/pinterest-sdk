@@ -16,7 +16,7 @@
         "type": "array",
         "items": "model.UserBusinessRoleBinding"
       },
-      "doc": "List of employers."
+      "doc": ""
     }
   ]
 

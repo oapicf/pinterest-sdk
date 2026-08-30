@@ -18,24 +18,22 @@ class CustomerListsApi {
 
   /// Create customer lists
   ///
-  /// <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
+  /// Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
-  /// * [CustomerListRequest] customerListRequest (required):
-  ///   Parameters to get Customer lists info
-  Future<Response> customerListsCreateWithHttpInfo(String adAccountId, CustomerListRequest customerListRequest,) async {
+  /// * [CustomerListCreate] customerListCreate (required):
+  Future<Response> customerListsCreateWithHttpInfo(String adAccountId, CustomerListCreate customerListCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/customer_lists'
       .replaceAll('{ad_account_id}', adAccountId);
 
     // ignore: prefer_final_locals
-    Object? postBody = customerListRequest;
+    Object? postBody = customerListCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -52,22 +50,21 @@ class CustomerListsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Create customer lists
   ///
-  /// <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
+  /// Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
-  /// * [CustomerListRequest] customerListRequest (required):
-  ///   Parameters to get Customer lists info
-  Future<CustomerList?> customerListsCreate(String adAccountId, CustomerListRequest customerListRequest,) async {
-    final response = await customerListsCreateWithHttpInfo(adAccountId, customerListRequest,);
+  /// * [CustomerListCreate] customerListCreate (required):
+  Future<CustomerList?> customerListsCreate(String adAccountId, CustomerListCreate customerListCreate, { Future<void>? abortTrigger, }) async {
+    final response = await customerListsCreateWithHttpInfo(adAccountId, customerListCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -90,11 +87,10 @@ class CustomerListsApi {
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [String] customerListId (required):
-  ///   Unique identifier of a customer list
-  Future<Response> customerListsGetWithHttpInfo(String adAccountId, String customerListId,) async {
+  ///   Customer list ID.
+  Future<Response> customerListsGetWithHttpInfo(String adAccountId, String customerListId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}'
       .replaceAll('{ad_account_id}', adAccountId)
@@ -118,6 +114,7 @@ class CustomerListsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -128,12 +125,11 @@ class CustomerListsApi {
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [String] customerListId (required):
-  ///   Unique identifier of a customer list
-  Future<CustomerList?> customerListsGet(String adAccountId, String customerListId,) async {
-    final response = await customerListsGetWithHttpInfo(adAccountId, customerListId,);
+  ///   Customer list ID.
+  Future<CustomerList?> customerListsGet(String adAccountId, String customerListId, { Future<void>? abortTrigger, }) async {
+    final response = await customerListsGetWithHttpInfo(adAccountId, customerListId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -149,24 +145,26 @@ class CustomerListsApi {
 
   /// Get customer lists
   ///
-  /// <p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+  /// Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> customerListsListWithHttpInfo(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
+  /// * [bool] excludeNca:
+  ///   When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
+  Future<Response> customerListsListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, bool? excludeNca, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/customer_lists'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -178,14 +176,17 @@ class CustomerListsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (bookmark != null) {
+      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
     if (pageSize != null) {
       queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
     if (order != null) {
       queryParams.addAll(_queryParams('', 'order', order));
     }
-    if (bookmark != null) {
-      queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    if (excludeNca != null) {
+      queryParams.addAll(_queryParams('', 'exclude_nca', excludeNca));
     }
 
     const contentTypes = <String>[];
@@ -199,28 +200,31 @@ class CustomerListsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get customer lists
   ///
-  /// <p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+  /// Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ///
-  /// * [String] order:
-  ///   The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<CustomerListsList200Response?> customerListsList(String adAccountId, { int? pageSize, String? order, String? bookmark, }) async {
-    final response = await customerListsListWithHttpInfo(adAccountId,  pageSize: pageSize, order: order, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  ///
+  /// * [PinterestLibPaginationOrder] order:
+  ///   The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  ///
+  /// * [bool] excludeNca:
+  ///   When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
+  Future<CustomerListsList200Response?> customerListsList(String adAccountId, { String? bookmark, int? pageSize, PinterestLibPaginationOrder? order, bool? excludeNca, Future<void>? abortTrigger, }) async {
+    final response = await customerListsListWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, excludeNca: excludeNca, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -236,27 +240,26 @@ class CustomerListsApi {
 
   /// Update customer list
   ///
-  /// <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+  /// Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [String] customerListId (required):
-  ///   Unique identifier of a customer list
+  ///   Customer list ID.
   ///
-  /// * [CustomerListUpdateRequest] customerListUpdateRequest (required):
-  Future<Response> customerListsUpdateWithHttpInfo(String adAccountId, String customerListId, CustomerListUpdateRequest customerListUpdateRequest,) async {
+  /// * [CustomerListUpdateWithRequiredBody] customerListUpdateWithRequiredBody (required):
+  Future<Response> customerListsUpdateWithHttpInfo(String adAccountId, String customerListId, CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}'
       .replaceAll('{ad_account_id}', adAccountId)
       .replaceAll('{customer_list_id}', customerListId);
 
     // ignore: prefer_final_locals
-    Object? postBody = customerListUpdateRequest;
+    Object? postBody = customerListUpdateWithRequiredBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -273,24 +276,24 @@ class CustomerListsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Update customer list
   ///
-  /// <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+  /// Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
   ///
   /// Parameters:
   ///
   /// * [String] adAccountId (required):
-  ///   Unique identifier of an ad account.
   ///
   /// * [String] customerListId (required):
-  ///   Unique identifier of a customer list
+  ///   Customer list ID.
   ///
-  /// * [CustomerListUpdateRequest] customerListUpdateRequest (required):
-  Future<CustomerList?> customerListsUpdate(String adAccountId, String customerListId, CustomerListUpdateRequest customerListUpdateRequest,) async {
-    final response = await customerListsUpdateWithHttpInfo(adAccountId, customerListId, customerListUpdateRequest,);
+  /// * [CustomerListUpdateWithRequiredBody] customerListUpdateWithRequiredBody (required):
+  Future<CustomerList?> customerListsUpdate(String adAccountId, String customerListId, CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody, { Future<void>? abortTrigger, }) async {
+    final response = await customerListsUpdateWithHttpInfo(adAccountId, customerListId, customerListUpdateWithRequiredBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

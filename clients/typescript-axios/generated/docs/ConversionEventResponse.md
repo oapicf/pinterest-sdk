@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **conversion_event** | [**ConversionTagType**](ConversionTagType.md) |  | [optional] [default to undefined]
 **conversion_tag_id** | **string** | Id of the tag. | [optional] [default to undefined]
 **created_time** | **number** | Creation date in epoch format. | [optional] [default to undefined]
+**reporting_conversion_event** | **string** | For advertiser-defined events, the reporting event label shown in optimization UIs. | [optional] [default to undefined]
 
 ## Example
 
@@ -20,6 +21,7 @@ const instance: ConversionEventResponse = {
     conversion_event,
     conversion_tag_id,
     created_time,
+    reporting_conversion_event,
 };
 ```
 

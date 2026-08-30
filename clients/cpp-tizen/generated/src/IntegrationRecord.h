@@ -101,11 +101,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setExternalBusinessId(std::string  external_business_id);
-	/*! \brief Get 
+	/*! \brief Get Integration record ID.
 	 */
 	std::string getId();
 
-	/*! \brief Set 
+	/*! \brief Set Integration record ID.
 	 */
 	void setId(std::string  id);
 	/*! \brief Get 

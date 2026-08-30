@@ -36,8 +36,28 @@ const ad_groups_bid_floor/get = async (request, response) => {
   await Controller.handleRequest(request, response, service.ad_groups_bid_floor/get);
 };
 
+const ad_groups_dynamic_titles/download_csv = async (request, response) => {
+  await Controller.handleRequest(request, response, service.ad_groups_dynamic_titles/download_csv);
+};
+
+const ad_groups_dynamic_titles/get_status = async (request, response) => {
+  await Controller.handleRequest(request, response, service.ad_groups_dynamic_titles/get_status);
+};
+
+const ad_groups_dynamic_titles/get_upload_url = async (request, response) => {
+  await Controller.handleRequest(request, response, service.ad_groups_dynamic_titles/get_upload_url);
+};
+
+const ad_groups_dynamic_titles/process_csv = async (request, response) => {
+  await Controller.handleRequest(request, response, service.ad_groups_dynamic_titles/process_csv);
+};
+
 const ad_groups_targeting_analytics/get = async (request, response) => {
   await Controller.handleRequest(request, response, service.ad_groups_targeting_analytics/get);
+};
+
+const get_ad_groups_by_promotion_ids/list = async (request, response) => {
+  await Controller.handleRequest(request, response, service.get_ad_groups_by_promotion_ids/list);
 };
 
 
@@ -49,5 +69,10 @@ module.exports = {
   ad_groups/list,
   ad_groups/update,
   ad_groups_bid_floor/get,
+  ad_groups_dynamic_titles/download_csv,
+  ad_groups_dynamic_titles/get_status,
+  ad_groups_dynamic_titles/get_upload_url,
+  ad_groups_dynamic_titles/process_csv,
   ad_groups_targeting_analytics/get,
+  get_ad_groups_by_promotion_ids/list,
 };

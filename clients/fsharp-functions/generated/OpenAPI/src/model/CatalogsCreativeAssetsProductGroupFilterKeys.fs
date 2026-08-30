@@ -20,6 +20,7 @@ open OpenAPI.Model.GoogleProductCategory3Filter
 open OpenAPI.Model.GoogleProductCategory4Filter
 open OpenAPI.Model.GoogleProductCategory5Filter
 open OpenAPI.Model.GoogleProductCategory6Filter
+open OpenAPI.Model.LinkFilter
 open OpenAPI.Model.MediaTypeFilter
 open OpenAPI.Model.TitleKeywordsFilter
 
@@ -59,6 +60,8 @@ module CatalogsCreativeAssetsProductGroupFilterKeys =
     MEDIA_TYPE : CatalogsProductGroupMultipleMediaTypesCriteria;
     [<JsonProperty(PropertyName = "TITLE_KEYWORDS")>]
     TITLE_KEYWORDS : CatalogsProductGroupMultipleStringCriteria;
+    [<JsonProperty(PropertyName = "LINK")>]
+    LINK : CatalogsProductGroupFilterOperatorTypeCriteria;
   }
 
   //#endregion

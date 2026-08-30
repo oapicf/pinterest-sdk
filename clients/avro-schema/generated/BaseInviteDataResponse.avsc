@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "Common invite/request data returned by the business access endpoints.",
   "name": "BaseInviteDataResponse",
   "fields": [
     {
@@ -12,7 +12,7 @@
     },
     {
       "name": "invite_data",
-      "type": ["null", "model.BaseInviteDataResponseInviteData"],
+      "type": ["null", "model.InviteDataResponse"],
       "doc": "",
       "default": null
     },

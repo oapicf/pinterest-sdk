@@ -35,7 +35,7 @@ type CatalogsFeedValidationErrors struct {
 	// Pinterest couldn't download your feed.
 	FETCH_ERROR int32 `json:"FETCH_ERROR,omitempty"`
 
-	// Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+	// Your feed wasn't ingested because it hasn't changed in the previous 90 days.
 	FETCH_INACTIVE_FEED_ERROR int32 `json:"FETCH_INACTIVE_FEED_ERROR,omitempty"`
 
 	// Some image links are formatted incorrectly.

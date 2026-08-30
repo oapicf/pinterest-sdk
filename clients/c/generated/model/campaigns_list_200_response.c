@@ -13,10 +13,10 @@ static campaigns_list_200_response_t *campaigns_list_200_response_create_interna
     if (!campaigns_list_200_response_local_var) {
         return NULL;
     }
+    memset(campaigns_list_200_response_local_var, 0, sizeof(campaigns_list_200_response_t));
+    campaigns_list_200_response_local_var->_library_owned = 1;
     campaigns_list_200_response_local_var->bookmark = bookmark;
     campaigns_list_200_response_local_var->items = items;
-
-    campaigns_list_200_response_local_var->_library_owned = 1;
     return campaigns_list_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) campaigns_list_200_response_t *campaigns_list_200_re
     char *bookmark,
     list_t *items
     ) {
-    return campaigns_list_200_response_create_internal (
+    campaigns_list_200_response_t *result = campaigns_list_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void campaigns_list_200_response_free(campaigns_list_200_response_t *campaigns_list_200_response) {
@@ -45,7 +48,7 @@ void campaigns_list_200_response_free(campaigns_list_200_response_t *campaigns_l
     }
     if (campaigns_list_200_response->items) {
         list_ForEach(listEntry, campaigns_list_200_response->items) {
-            campaign_response_free(listEntry->data);
+            campaign_free(listEntry->data);
         }
         list_freeList(campaigns_list_200_response->items);
         campaigns_list_200_response->items = NULL;
@@ -76,7 +79,7 @@ cJSON *campaigns_list_200_response_convertToJSON(campaigns_list_200_response_t *
     listEntry_t *itemsListEntry;
     if (campaigns_list_200_response->items) {
     list_ForEach(itemsListEntry, campaigns_list_200_response->items) {
-    cJSON *itemLocal = campaign_response_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = campaign_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -95,6 +98,8 @@ fail:
 campaigns_list_200_response_t *campaigns_list_200_response_parseFromJSON(cJSON *campaigns_list_200_responseJSON){
 
     campaigns_list_200_response_t *campaigns_list_200_response_local_var = NULL;
+
+    char *bookmark_local_str = NULL;
 
     // define the local list for campaigns_list_200_response->items
     list_t *itemsList = NULL;
@@ -133,23 +138,33 @@ campaigns_list_200_response_t *campaigns_list_200_response_parseFromJSON(cJSON *
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        campaign_response_t *itemsItem = campaign_response_parseFromJSON(items_local_nonprimitive);
+        campaign_t *itemsItem = campaign_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     campaigns_list_200_response_local_var = campaigns_list_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!campaigns_list_200_response_local_var) {
+        goto end;
+    }
+
     return campaigns_list_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            campaign_response_free(listEntry->data);
+            campaign_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

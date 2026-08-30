@@ -16,10 +16,10 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.BoardsList200Response
+import org.openapitools.server.api.model.PinsList200Response
+import org.openapitools.server.api.model.PinterestLibError
 import org.openapitools.server.api.model.SearchPartnerPins200Response
-import org.openapitools.server.api.model.SearchUserBoardsGet200Response
-import org.openapitools.server.api.model.SearchUserPinsList200Response
 
 class SearchApiVertxProxyHandler(private val vertx: Vertx, private val service: SearchApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -93,11 +93,11 @@ class SearchApiVertxProxyHandler(private val vertx: Vertx, private val service: 
                 "searchUserBoardsGet" -> {
                     val params = context.params
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    val query = ApiHandlerUtils.searchStringInJson(params,"query")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val query = ApiHandlerUtils.searchStringInJson(params,"query")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.searchUserBoardsGet(adAccountId,bookmark,pageSize,query,context)
+                        val result = service.searchUserBoardsGet(adAccountId,query,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

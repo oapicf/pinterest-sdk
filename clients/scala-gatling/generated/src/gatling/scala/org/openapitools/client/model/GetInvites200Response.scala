@@ -4,7 +4,6 @@ package org.openapitools.client.model
 
 case class GetInvites200Response (
     _bookmark: Option[String],
-    /* List of invite and request data. */
     _items: List[InviteResponse]
 )
 object GetInvites200Response {

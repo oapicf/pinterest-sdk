@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.GetPartnerAssetsResponse;
+import org.openapitools.vertxweb.server.model.BaseBusinessAssets;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BusinessPartnerAssetAccessGet200Response   {
   
   private String bookmark;
-  private List<GetPartnerAssetsResponse> items = new ArrayList<>();
+  private List<BaseBusinessAssets> items = new ArrayList<>();
 
   public BusinessPartnerAssetAccessGet200Response () {
 
   }
 
-  public BusinessPartnerAssetAccessGet200Response (String bookmark, List<GetPartnerAssetsResponse> items) {
+  public BusinessPartnerAssetAccessGet200Response (String bookmark, List<BaseBusinessAssets> items) {
     this.bookmark = bookmark;
     this.items = items;
   }
@@ -35,10 +35,10 @@ public class BusinessPartnerAssetAccessGet200Response   {
 
     
   @JsonProperty("items")
-  public List<GetPartnerAssetsResponse> getItems() {
+  public List<BaseBusinessAssets> getItems() {
     return items;
   }
-  public void setItems(List<GetPartnerAssetsResponse> items) {
+  public void setItems(List<BaseBusinessAssets> items) {
     this.items = items;
   }
 
@@ -77,9 +77,6 @@ public class BusinessPartnerAssetAccessGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

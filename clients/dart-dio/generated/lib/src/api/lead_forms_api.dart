@@ -10,14 +10,15 @@ import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/error.dart';
-import 'package:openapi/src/model/lead_form_array_response.dart';
-import 'package:openapi/src/model/lead_form_create_request.dart';
-import 'package:openapi/src/model/lead_form_response.dart';
-import 'package:openapi/src/model/lead_form_test_request.dart';
-import 'package:openapi/src/model/lead_form_test_response.dart';
-import 'package:openapi/src/model/lead_form_update_request.dart';
+import 'package:openapi/src/model/lead_form.dart';
+import 'package:openapi/src/model/lead_form_batch_update.dart';
+import 'package:openapi/src/model/lead_form_create.dart';
+import 'package:openapi/src/model/lead_form_test.dart';
+import 'package:openapi/src/model/lead_form_test_create.dart';
+import 'package:openapi/src/model/lead_forms_create200_response.dart';
 import 'package:openapi/src/model/lead_forms_list200_response.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
+import 'package:openapi/src/model/pinterest_lib_pagination_order.dart';
 
 class LeadFormsApi {
 
@@ -28,11 +29,11 @@ class LeadFormsApi {
   const LeadFormsApi(this._dio, this._serializers);
 
   /// Get lead form by id
-  /// &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+  /// **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
+  /// * [leadFormId] - The ID of this lead form
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [leadFormId] - Unique identifier of a lead form.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -40,11 +41,11 @@ class LeadFormsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LeadFormResponse] as data
+  /// Returns a [Future] containing a [Response] with a [LeadForm] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LeadFormResponse>> leadFormGet({ 
-    required String adAccountId,
+  Future<Response<LeadForm>> leadFormGet({ 
     required String leadFormId,
+    required String adAccountId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -52,7 +53,7 @@ class LeadFormsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}'.replaceAll('{' r'ad_account_id' '}', encodeQueryParameter(_serializers, adAccountId, const FullType(String)).toString()).replaceAll('{' r'lead_form_id' '}', encodeQueryParameter(_serializers, leadFormId, const FullType(String)).toString());
+    final _path = r'/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}'.replaceAll('{' r'lead_form_id' '}', encodeQueryParameter(_serializers, leadFormId, const FullType(String)).toString()).replaceAll('{' r'ad_account_id' '}', encodeQueryParameter(_serializers, adAccountId, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -78,14 +79,14 @@ class LeadFormsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LeadFormResponse? _responseData;
+    LeadForm? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(LeadFormResponse),
-      ) as LeadFormResponse;
+        specifiedType: const FullType(LeadForm),
+      ) as LeadForm;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -97,7 +98,7 @@ class LeadFormsApi {
       );
     }
 
-    return Response<LeadFormResponse>(
+    return Response<LeadForm>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -113,9 +114,9 @@ class LeadFormsApi {
   /// Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
   ///
   /// Parameters:
-  /// * [adAccountId] - Unique identifier of an ad account.
+  /// * [adAccountId] 
   /// * [leadFormId] - Unique identifier of a lead form.
-  /// * [leadFormTestRequest] - Subscription to create.
+  /// * [leadFormTestCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -123,12 +124,12 @@ class LeadFormsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LeadFormTestResponse] as data
+  /// Returns a [Future] containing a [Response] with a [LeadFormTest] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LeadFormTestResponse>> leadFormTestCreate({ 
+  Future<Response<LeadFormTest>> leadFormTestCreate({ 
     required String adAccountId,
     required String leadFormId,
-    required LeadFormTestRequest leadFormTestRequest,
+    required LeadFormTestCreate leadFormTestCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -158,8 +159,8 @@ class LeadFormsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(LeadFormTestRequest);
-      _bodyData = _serializers.serialize(leadFormTestRequest, specifiedType: _type);
+      const _type = FullType(LeadFormTestCreate);
+      _bodyData = _serializers.serialize(leadFormTestCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -182,14 +183,14 @@ class LeadFormsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LeadFormTestResponse? _responseData;
+    LeadFormTest? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(LeadFormTestResponse),
-      ) as LeadFormTestResponse;
+        specifiedType: const FullType(LeadFormTest),
+      ) as LeadFormTest;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -201,7 +202,7 @@ class LeadFormsApi {
       );
     }
 
-    return Response<LeadFormTestResponse>(
+    return Response<LeadFormTest>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -214,11 +215,11 @@ class LeadFormsApi {
   }
 
   /// Create lead forms
-  /// &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+  /// **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [leadFormCreateRequest] - List of lead forms to create, size limit [1, 30].
+  /// * [leadFormCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -226,11 +227,11 @@ class LeadFormsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LeadFormArrayResponse] as data
+  /// Returns a [Future] containing a [Response] with a [LeadFormsCreate200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LeadFormArrayResponse>> leadFormsCreate({ 
+  Future<Response<LeadFormsCreate200Response>> leadFormsCreate({ 
     required String adAccountId,
-    required BuiltList<LeadFormCreateRequest> leadFormCreateRequest,
+    required BuiltList<LeadFormCreate> leadFormCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -260,8 +261,8 @@ class LeadFormsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BuiltList, [FullType(LeadFormCreateRequest)]);
-      _bodyData = _serializers.serialize(leadFormCreateRequest, specifiedType: _type);
+      const _type = FullType(BuiltList, [FullType(LeadFormCreate)]);
+      _bodyData = _serializers.serialize(leadFormCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -284,14 +285,14 @@ class LeadFormsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LeadFormArrayResponse? _responseData;
+    LeadFormsCreate200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(LeadFormArrayResponse),
-      ) as LeadFormArrayResponse;
+        specifiedType: const FullType(LeadFormsCreate200Response),
+      ) as LeadFormsCreate200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -303,7 +304,7 @@ class LeadFormsApi {
       );
     }
 
-    return Response<LeadFormArrayResponse>(
+    return Response<LeadFormsCreate200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -316,13 +317,13 @@ class LeadFormsApi {
   }
 
   /// List lead forms
-  /// &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+  /// **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  /// * [order] - The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
   /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  /// * [order] - The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -334,9 +335,9 @@ class LeadFormsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<LeadFormsList200Response>> leadFormsList({ 
     required String adAccountId,
-    int? pageSize = 25,
-    String? order,
     String? bookmark,
+    int? pageSize = 25,
+    PinterestLibPaginationOrder? order,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -363,9 +364,9 @@ class LeadFormsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(String)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(PinterestLibPaginationOrder)),
     };
 
     final _response = await _dio.request<Object>(
@@ -409,11 +410,11 @@ class LeadFormsApi {
   }
 
   /// Update lead forms
-  /// &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+  /// **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [leadFormUpdateRequest] - List of lead forms to update, size limit [1, 30].
+  /// * [leadFormBatchUpdate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -421,11 +422,11 @@ class LeadFormsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LeadFormArrayResponse] as data
+  /// Returns a [Future] containing a [Response] with a [LeadFormsCreate200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LeadFormArrayResponse>> leadFormsUpdate({ 
+  Future<Response<LeadFormsCreate200Response>> leadFormsUpdate({ 
     required String adAccountId,
-    required BuiltList<LeadFormUpdateRequest> leadFormUpdateRequest,
+    required BuiltList<LeadFormBatchUpdate> leadFormBatchUpdate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -455,8 +456,8 @@ class LeadFormsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BuiltList, [FullType(LeadFormUpdateRequest)]);
-      _bodyData = _serializers.serialize(leadFormUpdateRequest, specifiedType: _type);
+      const _type = FullType(BuiltList, [FullType(LeadFormBatchUpdate)]);
+      _bodyData = _serializers.serialize(leadFormBatchUpdate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -479,14 +480,14 @@ class LeadFormsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LeadFormArrayResponse? _responseData;
+    LeadFormsCreate200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(LeadFormArrayResponse),
-      ) as LeadFormArrayResponse;
+        specifiedType: const FullType(LeadFormsCreate200Response),
+      ) as LeadFormsCreate200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -498,7 +499,7 @@ class LeadFormsApi {
       );
     }
 
-    return Response<LeadFormArrayResponse>(
+    return Response<LeadFormsCreate200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

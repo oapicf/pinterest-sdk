@@ -1,4 +1,4 @@
-# # CatalogsListProductsByFilterRequest
+# CatalogsListProductsByFilterRequest
 
 ## Properties
 

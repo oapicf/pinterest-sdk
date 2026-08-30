@@ -12,18 +12,21 @@ static create_asset_invites_request_t *create_asset_invites_request_create_inter
     if (!create_asset_invites_request_local_var) {
         return NULL;
     }
-    create_asset_invites_request_local_var->invites = invites;
-
+    memset(create_asset_invites_request_local_var, 0, sizeof(create_asset_invites_request_t));
     create_asset_invites_request_local_var->_library_owned = 1;
+    create_asset_invites_request_local_var->invites = invites;
     return create_asset_invites_request_local_var;
 }
 
 __attribute__((deprecated)) create_asset_invites_request_t *create_asset_invites_request_create(
     list_t *invites
     ) {
-    return create_asset_invites_request_create_internal (
+    create_asset_invites_request_t *result = create_asset_invites_request_create_internal (
         invites
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void create_asset_invites_request_free(create_asset_invites_request_t *create_asset_invites_request) {
@@ -111,9 +114,14 @@ create_asset_invites_request_t *create_asset_invites_request_parseFromJSON(cJSON
     }
 
 
+
     create_asset_invites_request_local_var = create_asset_invites_request_create_internal (
         invitesList
         );
+
+    if (!create_asset_invites_request_local_var) {
+        goto end;
+    }
 
     return create_asset_invites_request_local_var;
 end:

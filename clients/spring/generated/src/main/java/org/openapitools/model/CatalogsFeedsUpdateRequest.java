@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -15,39 +16,46 @@ import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Request object for updating a feed.
  */
 
 @Schema(name = "CatalogsFeedsUpdateRequest", description = "Request object for updating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class CatalogsFeedsUpdateRequest implements CatalogsFeedUpdateRequestSchema {
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsFormat format;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String location;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsStatus status;
 
   public CatalogsFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
@@ -126,6 +134,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
     return format;
   }
 
+  @JsonProperty("format")
   public void setFormat(@Nullable CatalogsFormat format) {
     this.format = format;
   }
@@ -146,6 +155,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
     return location;
   }
 
+  @JsonProperty("location")
   public void setLocation(@Nullable String location) {
     this.location = location;
   }
@@ -166,6 +176,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
@@ -206,6 +217,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
     return status;
   }
 
+  @JsonProperty("status")
   public void setStatus(@Nullable CatalogsStatus status) {
     this.status = status;
   }
@@ -265,11 +277,8 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

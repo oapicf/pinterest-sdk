@@ -1,7 +1,7 @@
 /*
  * ssio_account_pmp_name.h
  *
- * 
+ * Pinterest marketing partner name.
  */
 
 #ifndef _ssio_account_pmp_name_H_

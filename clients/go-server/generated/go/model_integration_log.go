@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -28,14 +33,14 @@ type IntegrationLog struct {
 	Error IntegrationLogClientError `json:"error,omitempty"`
 
 	// Log event type
-	EventType string `json:"event_type"`
+	EventType IntegrationLogEventType `json:"event_type"`
 
 	ExternalBusinessId *string `json:"external_business_id,omitempty"`
 
 	FeedProfileId *string `json:"feed_profile_id,omitempty"`
 
 	// Log level type
-	LogLevel string `json:"log_level"`
+	LogLevel IntegrationLogLevel `json:"log_level"`
 
 	MerchantId *string `json:"merchant_id,omitempty"`
 
@@ -49,20 +54,138 @@ type IntegrationLog struct {
 
 	TagId *string `json:"tag_id,omitempty"`
 }
-
-// AssertIntegrationLogRequired checks if the required fields are not zero-ed
-func AssertIntegrationLogRequired(obj IntegrationLog) error {
-	elements := map[string]interface{}{
-		"client_timestamp": obj.ClientTimestamp,
-		"event_type": obj.EventType,
-		"log_level": obj.LogLevel,
+// UnmarshalJSON validates required property keys then unmarshals into IntegrationLog
+func (o *IntegrationLog) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"client_timestamp",
+		"event_type",
+		"log_level",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"client_timestamp": false,
+		"event_type": false,
+		"log_level": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"advertiser_id": {},
+		"app_version_number": {},
+		"client_timestamp": {},
+		"error": {},
+		"event_type": {},
+		"external_business_id": {},
+		"feed_profile_id": {},
+		"log_level": {},
+		"merchant_id": {},
+		"message": {},
+		"platform_version_number": {},
+		"request": {},
+		"tag_id": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded IntegrationLog
+
+	if value, exists := allProperties["advertiser_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AdvertiserId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["app_version_number"]; exists {
+		if err = json.Unmarshal(value, &decoded.AppVersionNumber); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["client_timestamp"]; exists {
+		if err = json.Unmarshal(value, &decoded.ClientTimestamp); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["error"]; exists {
+		if err = json.Unmarshal(value, &decoded.Error); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["event_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.EventType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["external_business_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ExternalBusinessId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["feed_profile_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.FeedProfileId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["log_level"]; exists {
+		if err = json.Unmarshal(value, &decoded.LogLevel); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["merchant_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.MerchantId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["message"]; exists {
+		if err = json.Unmarshal(value, &decoded.Message); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["platform_version_number"]; exists {
+		if err = json.Unmarshal(value, &decoded.PlatformVersionNumber); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["request"]; exists {
+		if err = json.Unmarshal(value, &decoded.Request); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["tag_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.TagId); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertIntegrationLogRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertIntegrationLogRequired(obj IntegrationLog) error {
 	if err := AssertIntegrationLogClientErrorRequired(obj.Error); err != nil {
 		return err
 	}

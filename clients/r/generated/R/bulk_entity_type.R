@@ -29,9 +29,6 @@ BulkEntityType <- R6::R6Class(
           stop("Use one of the valid values: ",
             paste0(enumvec, collapse = ", "))
         }
-        warning("Initializing BulkEntityType with DUMMY_ENUM. Use one of the valid values: ",
-          paste0(enumvec, collapse = ", "),
-          ". If you did not manually initialize BulkEntityType, this may already be overwritten by an enum loaded from a JSON config.")
       }
       private$value <- val
     },
@@ -92,7 +89,7 @@ BulkEntityType <- R6::R6Class(
 
 # add to utils.R
 .parse_BulkEntityType <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[CAMPAIGN, AD_GROUP, PRODUCT_GROUP, AD, KEYWORD, LABEL, SCHEDULE]")
+  res <- gsub("^\\[|\\]$", "", "[CAMPAIGN, AD_GROUP, PRODUCT_GROUP, AD, KEYWORD, LABEL, SCHEDULE, ENTITY_HISTORY]")
   unlist(strsplit(res, ", "))
 }
 

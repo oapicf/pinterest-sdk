@@ -23,8 +23,8 @@ CatalogsItemsPostFilters::~CatalogsItemsPostFilters()
 void
 CatalogsItemsPostFilters::__init()
 {
-	//catalog_type = new CatalogsType();
 	//catalog_id = std::string();
+	//catalog_type = std::string();
 	//new std::list()std::list> item_ids;
 	//new std::list()std::list> hotel_ids;
 	//new std::list()std::list> creative_assets_ids;
@@ -33,15 +33,15 @@ CatalogsItemsPostFilters::__init()
 void
 CatalogsItemsPostFilters::__cleanup()
 {
-	//if(catalog_type != NULL) {
-	//
-	//delete catalog_type;
-	//catalog_type = NULL;
-	//}
 	//if(catalog_id != NULL) {
 	//
 	//delete catalog_id;
 	//catalog_id = NULL;
+	//}
+	//if(catalog_type != NULL) {
+	//
+	//delete catalog_type;
+	//catalog_type = NULL;
 	//}
 	//if(item_ids != NULL) {
 	//item_ids.RemoveAll(true);
@@ -66,20 +66,6 @@ CatalogsItemsPostFilters::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *catalog_typeKey = "catalog_type";
-	node = json_object_get_member(pJsonObject, catalog_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
-		} else {
-			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *catalog_idKey = "catalog_id";
 	node = json_object_get_member(pJsonObject, catalog_idKey);
 	if (node !=NULL) {
@@ -87,6 +73,17 @@ CatalogsItemsPostFilters::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *catalog_typeKey = "catalog_type";
+	node = json_object_get_member(pJsonObject, catalog_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
 			
 		}
@@ -169,20 +166,6 @@ CatalogsItemsPostFilters::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsType")) {
-		CatalogsType obj = getCatalogType();
-		node = converttoJson(&obj, "CatalogsType", "");
-	}
-	else {
-		
-		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *catalog_typeKey = "catalog_type";
-	json_object_set_member(pJsonObject, catalog_typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCatalogId();
 		node = converttoJson(&obj, "std::string", "");
@@ -192,6 +175,15 @@ CatalogsItemsPostFilters::toJson()
 	}
 	const gchar *catalog_idKey = "catalog_id";
 	json_object_set_member(pJsonObject, catalog_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_typeKey = "catalog_type";
+	json_object_set_member(pJsonObject, catalog_typeKey, node);
 	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getItemIds());
 		node = converttoJson(&new_list, "std::string", "array");
@@ -245,18 +237,6 @@ CatalogsItemsPostFilters::toJson()
 	return ret;
 }
 
-CatalogsType
-CatalogsItemsPostFilters::getCatalogType()
-{
-	return catalog_type;
-}
-
-void
-CatalogsItemsPostFilters::setCatalogType(CatalogsType  catalog_type)
-{
-	this->catalog_type = catalog_type;
-}
-
 std::string
 CatalogsItemsPostFilters::getCatalogId()
 {
@@ -267,6 +247,18 @@ void
 CatalogsItemsPostFilters::setCatalogId(std::string  catalog_id)
 {
 	this->catalog_id = catalog_id;
+}
+
+std::string
+CatalogsItemsPostFilters::getCatalogType()
+{
+	return catalog_type;
+}
+
+void
+CatalogsItemsPostFilters::setCatalogType(std::string  catalog_type)
+{
+	this->catalog_type = catalog_type;
 }
 
 std::list<std::string>

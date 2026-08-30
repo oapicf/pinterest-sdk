@@ -7,7 +7,7 @@
 #' @title CatalogsRetailFeedsUpdateRequest
 #' @description CatalogsRetailFeedsUpdateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field catalog_type  \link{CatalogsType}
+#' @field catalog_type  character
 #' @field credentials  \link{CatalogsFeedCredentials} [optional]
 #' @field default_availability  \link{ProductAvailabilityType} [optional]
 #' @field default_currency  \link{NullableCurrency} [optional]
@@ -47,10 +47,12 @@ CatalogsRetailFeedsUpdateRequest <- R6::R6Class(
     #' @param ... Other optional arguments.
     initialize = function(`catalog_type`, `credentials` = NULL, `default_availability` = NULL, `default_currency` = NULL, `format` = NULL, `location` = NULL, `name` = NULL, `preferred_processing_schedule` = NULL, `status` = NULL, ...) {
       if (!missing(`catalog_type`)) {
-        if (!(`catalog_type` %in% c())) {
-          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
+        if (!(`catalog_type` %in% c("RETAIL"))) {
+          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
         }
-        stopifnot(R6::is.R6(`catalog_type`))
+        if (!(is.character(`catalog_type`) && length(`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", `catalog_type`))
+        }
         self$`catalog_type` <- `catalog_type`
       }
       if (!is.null(`credentials`)) {
@@ -136,23 +138,23 @@ CatalogsRetailFeedsUpdateRequest <- R6::R6Class(
       CatalogsRetailFeedsUpdateRequestObject <- list()
       if (!is.null(self$`catalog_type`)) {
         CatalogsRetailFeedsUpdateRequestObject[["catalog_type"]] <-
-          self$`catalog_type`$toSimpleType()
+          self$`catalog_type`
       }
       if (!is.null(self$`credentials`)) {
         CatalogsRetailFeedsUpdateRequestObject[["credentials"]] <-
-          self$`credentials`$toSimpleType()
+          self$extractSimpleType(self$`credentials`)
       }
       if (!is.null(self$`default_availability`)) {
         CatalogsRetailFeedsUpdateRequestObject[["default_availability"]] <-
-          self$`default_availability`$toSimpleType()
+          self$extractSimpleType(self$`default_availability`)
       }
       if (!is.null(self$`default_currency`)) {
         CatalogsRetailFeedsUpdateRequestObject[["default_currency"]] <-
-          self$`default_currency`$toSimpleType()
+          self$extractSimpleType(self$`default_currency`)
       }
       if (!is.null(self$`format`)) {
         CatalogsRetailFeedsUpdateRequestObject[["format"]] <-
-          self$`format`$toSimpleType()
+          self$extractSimpleType(self$`format`)
       }
       if (!is.null(self$`location`)) {
         CatalogsRetailFeedsUpdateRequestObject[["location"]] <-
@@ -164,13 +166,36 @@ CatalogsRetailFeedsUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`preferred_processing_schedule`)) {
         CatalogsRetailFeedsUpdateRequestObject[["preferred_processing_schedule"]] <-
-          self$`preferred_processing_schedule`$toSimpleType()
+          self$extractSimpleType(self$`preferred_processing_schedule`)
       }
       if (!is.null(self$`status`)) {
         CatalogsRetailFeedsUpdateRequestObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       return(CatalogsRetailFeedsUpdateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -181,9 +206,10 @@ CatalogsRetailFeedsUpdateRequest <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`)) {
-        `catalog_type_object` <- CatalogsType$new()
-        `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
-        self$`catalog_type` <- `catalog_type_object`
+        if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("RETAIL"))) {
+          stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
+        }
+        self$`catalog_type` <- this_object$`catalog_type`
       }
       if (!is.null(this_object$`credentials`)) {
         `credentials_object` <- CatalogsFeedCredentials$new()
@@ -242,7 +268,10 @@ CatalogsRetailFeedsUpdateRequest <- R6::R6Class(
     #' @return the instance of CatalogsRetailFeedsUpdateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("RETAIL"))) {
+        stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
+      }
+      self$`catalog_type` <- this_object$`catalog_type`
       self$`credentials` <- CatalogsFeedCredentials$new()$fromJSON(jsonlite::toJSON(this_object$`credentials`, auto_unbox = TRUE, digits = NA))
       self$`default_availability` <- ProductAvailabilityType$new()$fromJSON(jsonlite::toJSON(this_object$`default_availability`, auto_unbox = TRUE, digits = NA))
       self$`default_currency` <- NullableCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`default_currency`, auto_unbox = TRUE, digits = NA))
@@ -262,7 +291,9 @@ CatalogsRetailFeedsUpdateRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
       if (!is.null(input_json$`catalog_type`)) {
-        stopifnot(R6::is.R6(input_json$`catalog_type`))
+        if (!(is.character(input_json$`catalog_type`) && length(input_json$`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", input_json$`catalog_type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailFeedsUpdateRequest: the required field `catalog_type` is missing."))
       }

@@ -85,8 +85,9 @@ class _$CatalogsReportDistributionIssueFilterSerializer implements PrimitiveSeri
         case r'catalog_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.catalogId = valueDes;
           break;
         case r'report_type':

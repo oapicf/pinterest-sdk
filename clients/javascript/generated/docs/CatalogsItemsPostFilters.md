@@ -4,10 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **catalogId** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**catalogType** | **String** |  | 
 **itemIds** | **[String]** |  | 
 **hotelIds** | **[String]** |  | 
 **creativeAssetsIds** | **[String]** |  | 
+
+
+
+## Enum: CatalogTypeEnum
+
+
+* `CREATIVE_ASSETS` (value: `"CREATIVE_ASSETS"`)
+
+
 
 

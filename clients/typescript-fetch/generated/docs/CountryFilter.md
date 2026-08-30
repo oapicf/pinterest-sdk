@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`cOUNTRY` | [CatalogsProductGroupMultipleCountriesCriteria](.md)
+`cOUNTRY` | [CatalogsProductGroupMultipleCountriesCriteria](CatalogsProductGroupMultipleCountriesCriteria.md)
 
 ## Example
 

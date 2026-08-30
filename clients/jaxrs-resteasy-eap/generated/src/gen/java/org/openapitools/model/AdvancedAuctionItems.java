@@ -14,11 +14,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Response object containing item bid options")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Response object containing item bid options")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItems   {
   
   private String catalogId;
-  private List<AdvancedAuctionItem> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionItem> items = new ArrayList<>();
 
   /**
    * Response object of item bid options
@@ -39,10 +39,10 @@ public class AdvancedAuctionItems   {
   
   @ApiModelProperty(value = "Array with item bid options")
   @JsonProperty("items")
-  public List<AdvancedAuctionItem> getItems() {
+  public List<@Valid AdvancedAuctionItem> getItems() {
     return items;
   }
-  public void setItems(List<AdvancedAuctionItem> items) {
+  public void setItems(List<@Valid AdvancedAuctionItem> items) {
     this.items = items;
   }
 
@@ -81,10 +81,7 @@ public class AdvancedAuctionItems   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

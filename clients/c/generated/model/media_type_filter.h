@@ -20,7 +20,7 @@ typedef struct media_type_filter_t media_type_filter_t;
 
 
 typedef struct media_type_filter_t {
-    catalogs_product_group_multiple_media_types_criteria_t *media_type; //object
+    struct catalogs_product_group_multiple_media_types_criteria_t *media_type; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } media_type_filter_t;

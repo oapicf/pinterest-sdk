@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **string** |  | 
 **CreativeAssetsId** | Pointer to **string** | The catalog creative assets id in the merchant namespace | [optional] 
 **Errors** | [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the errors for the item id requested | 
+**ItemResponseKind** | **string** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | 
 
 ## Methods
 
 ### NewCatalogsCreativeAssetsItemErrorResponse
 
-`func NewCatalogsCreativeAssetsItemErrorResponse(catalogType CatalogsType, errors []ItemValidationEvent, ) *CatalogsCreativeAssetsItemErrorResponse`
+`func NewCatalogsCreativeAssetsItemErrorResponse(catalogType string, errors []ItemValidationEvent, itemResponseKind string, ) *CatalogsCreativeAssetsItemErrorResponse`
 
 NewCatalogsCreativeAssetsItemErrorResponse instantiates a new CatalogsCreativeAssetsItemErrorResponse object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCatalogType
 
-`func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogType() CatalogsType`
+`func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsCreativeAssetsItemErrorResponse) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsCreativeAssetsItemErrorResponse) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsCreativeAssetsItemErrorResponse) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 
@@ -90,6 +91,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsCreativeAssetsItemErrorResponse) SetErrors(v []ItemValidationEvent)`
 
 SetErrors sets Errors field to given value.
+
+
+### GetItemResponseKind
+
+`func (o *CatalogsCreativeAssetsItemErrorResponse) GetItemResponseKind() string`
+
+GetItemResponseKind returns the ItemResponseKind field if non-nil, zero value otherwise.
+
+### GetItemResponseKindOk
+
+`func (o *CatalogsCreativeAssetsItemErrorResponse) GetItemResponseKindOk() (*string, bool)`
+
+GetItemResponseKindOk returns a tuple with the ItemResponseKind field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemResponseKind
+
+`func (o *CatalogsCreativeAssetsItemErrorResponse) SetItemResponseKind(v string)`
+
+SetItemResponseKind sets ItemResponseKind field to given value.
 
 
 

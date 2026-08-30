@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.IntegrationLogClientError;
 import org.openapitools.model.IntegrationLogClientRequest;
+import org.openapitools.model.IntegrationLogEventType;
+import org.openapitools.model.IntegrationLogLevel;
 
 @Canonical
 class IntegrationLog {
@@ -17,62 +19,14 @@ class IntegrationLog {
     Integer clientTimestamp
     
     IntegrationLogClientError error
-
-    enum EventTypeEnum {
-    
-        APP("APP"),
-        
-        API("API")
-    
-        private final String value
-    
-        EventTypeEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
     /* Log event type */
-    EventTypeEnum eventType
+    IntegrationLogEventType eventType
     
     String externalBusinessId
     
     String feedProfileId
-
-    enum LogLevelEnum {
-    
-        INFO("INFO"),
-        
-        WARN("WARN"),
-        
-        ERROR("ERROR")
-    
-        private final String value
-    
-        LogLevelEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
     /* Log level type */
-    LogLevelEnum logLevel
+    IntegrationLogLevel logLevel
     
     String merchantId
     /* Explanation of the event that occured. */

@@ -13,7 +13,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="promotionsCreate"></a>
 # **promotionsCreate**
-> PromotionsResponse promotionsCreate(adAccountId, promotionCreateRequest)
+> PromotionsResponse promotionsCreate(adAccountId, promotionCreate)
 
 Create promotions
 
@@ -40,9 +40,9 @@ public class Example {
 
     PromotionsApi apiInstance = new PromotionsApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    List<PromotionCreateRequest> promotionCreateRequest = Arrays.asList(); // List<PromotionCreateRequest> | List of promotions to create, size limit [1, 30].
+    List<PromotionCreate> promotionCreate = Arrays.asList(); // List<PromotionCreate> | 
     try {
-      PromotionsResponse result = apiInstance.promotionsCreate(adAccountId, promotionCreateRequest);
+      PromotionsResponse result = apiInstance.promotionsCreate(adAccountId, promotionCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PromotionsApi#promotionsCreate");
@@ -60,7 +60,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **promotionCreateRequest** | [**List&lt;PromotionCreateRequest&gt;**](PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **promotionCreate** | [**List&lt;PromotionCreate&gt;**](PromotionCreate.md)|  | |
 
 ### Return type
 
@@ -78,13 +78,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid create promotions request parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="promotionsDelete"></a>
 # **promotionsDelete**
-> promotionsDelete(adAccountId, promotionId)
+> Promotion promotionsDelete(promotionId, adAccountId)
 
 Delete promotion by id
 
@@ -110,10 +114,11 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PromotionsApi apiInstance = new PromotionsApi(defaultClient);
+    String promotionId = "promotionId_example"; // String | Promotion ID
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String promotionId = "promotionId_example"; // String | Unique identifier of a promotion
     try {
-      apiInstance.promotionsDelete(adAccountId, promotionId);
+      Promotion result = apiInstance.promotionsDelete(promotionId, adAccountId);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PromotionsApi#promotionsDelete");
       System.err.println("Status code: " + e.getCode());
@@ -129,12 +134,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **promotionId** | **String**| Promotion ID | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **promotionId** | **String**| Unique identifier of a promotion | |
 
 ### Return type
 
-null (empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -148,12 +153,18 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Promotion deleted successfully |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="promotionsGet"></a>
 # **promotionsGet**
-> PromotionResponse promotionsGet(adAccountId, promotionId)
+> Promotion promotionsGet(promotionId, adAccountId)
 
 Get promotion by id
 
@@ -179,10 +190,10 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PromotionsApi apiInstance = new PromotionsApi(defaultClient);
+    String promotionId = "promotionId_example"; // String | Promotion ID
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String promotionId = "promotionId_example"; // String | Unique identifier of a promotion
     try {
-      PromotionResponse result = apiInstance.promotionsGet(adAccountId, promotionId);
+      Promotion result = apiInstance.promotionsGet(promotionId, adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PromotionsApi#promotionsGet");
@@ -199,12 +210,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **promotionId** | **String**| Promotion ID | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **promotionId** | **String**| Unique identifier of a promotion | |
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -218,13 +229,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | The promotion ID for the given ad account ID was not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="promotionsList"></a>
 # **promotionsList**
-> PromotionsList200Response promotionsList(adAccountId, pageSize, order, bookmark)
+> PromotionsList200Response promotionsList(adAccountId, bookmark, pageSize, order)
 
 Get promotions
 
@@ -251,11 +266,11 @@ public class Example {
 
     PromotionsApi apiInstance = new PromotionsApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    String order = "ASCENDING"; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING"); // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
     try {
-      PromotionsList200Response result = apiInstance.promotionsList(adAccountId, pageSize, order, bookmark);
+      PromotionsList200Response result = apiInstance.promotionsList(adAccountId, bookmark, pageSize, order);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PromotionsApi#promotionsList");
@@ -273,9 +288,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 
 ### Return type
 
@@ -293,13 +308,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account promotions parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="promotionsUpdate"></a>
 # **promotionsUpdate**
-> PromotionsResponse promotionsUpdate(adAccountId, promotionUpdateRequest)
+> PromotionsResponse promotionsUpdate(adAccountId, promotionBatchUpdate)
 
 Update promotions
 
@@ -326,9 +345,9 @@ public class Example {
 
     PromotionsApi apiInstance = new PromotionsApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    List<PromotionUpdateRequest> promotionUpdateRequest = Arrays.asList(); // List<PromotionUpdateRequest> | List of promotions to create, size limit [1, 30].
+    List<PromotionBatchUpdate> promotionBatchUpdate = Arrays.asList(); // List<PromotionBatchUpdate> | 
     try {
-      PromotionsResponse result = apiInstance.promotionsUpdate(adAccountId, promotionUpdateRequest);
+      PromotionsResponse result = apiInstance.promotionsUpdate(adAccountId, promotionBatchUpdate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PromotionsApi#promotionsUpdate");
@@ -346,7 +365,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **promotionUpdateRequest** | [**List&lt;PromotionUpdateRequest&gt;**](PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **promotionBatchUpdate** | [**List&lt;PromotionBatchUpdate&gt;**](PromotionBatchUpdate.md)|  | |
 
 ### Return type
 
@@ -364,7 +383,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid create promotions request parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

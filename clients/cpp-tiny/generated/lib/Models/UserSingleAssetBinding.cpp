@@ -104,7 +104,7 @@ UserSingleAssetBinding::getPermissions()
 }
 
 void
-UserSingleAssetBinding::setPermissions(std::list <std::string> permissions)
+UserSingleAssetBinding::setPermissions(std::list<std::string> permissions)
 {
 	this->permissions = permissions;
 }
@@ -116,7 +116,7 @@ UserSingleAssetBinding::getUser()
 }
 
 void
-UserSingleAssetBinding::setUser(BusinessAccessUserSummary  user)
+UserSingleAssetBinding::setUser(BusinessAccessUserSummary user)
 {
 	this->user = user;
 }

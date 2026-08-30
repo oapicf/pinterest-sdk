@@ -13,30 +13,26 @@ part of openapi.api;
 class CatalogsFeed {
   /// Returns a new [CatalogsFeed] instance.
   CatalogsFeed({
-    required this.createdAt,
-    required this.id,
-    required this.updatedAt,
     required this.catalogType,
-    required this.credentials,
-    required this.defaultAvailability,
+    required this.createdAt,
+    this.credentials,
+    this.defaultAvailability,
     required this.defaultCountry,
-    required this.defaultCurrency,
+    this.defaultCurrency,
     required this.defaultLocale,
     required this.format,
+    required this.id,
     required this.location,
     required this.name,
-    required this.preferredProcessingSchedule,
+    this.preferredProcessingSchedule,
     required this.status,
+    required this.updatedAt,
     required this.catalogId,
   });
 
+  CatalogsFeedCatalogTypeEnum catalogType;
+
   DateTime createdAt;
-
-  String id;
-
-  DateTime updatedAt;
-
-  CatalogsType catalogType;
 
   CatalogsFeedCredentials? credentials;
 
@@ -51,6 +47,9 @@ class CatalogsFeed {
 
   CatalogsFormat format;
 
+  /// ID of the feed entity.
+  String id;
+
   /// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   String location;
 
@@ -61,55 +60,55 @@ class CatalogsFeed {
 
   CatalogsStatus status;
 
+  DateTime updatedAt;
+
   /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
   String catalogId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsFeed &&
-    other.createdAt == createdAt &&
-    other.id == id &&
-    other.updatedAt == updatedAt &&
     other.catalogType == catalogType &&
+    other.createdAt == createdAt &&
     other.credentials == credentials &&
     other.defaultAvailability == defaultAvailability &&
     other.defaultCountry == defaultCountry &&
     other.defaultCurrency == defaultCurrency &&
     other.defaultLocale == defaultLocale &&
     other.format == format &&
+    other.id == id &&
     other.location == location &&
     other.name == name &&
     other.preferredProcessingSchedule == preferredProcessingSchedule &&
     other.status == status &&
+    other.updatedAt == updatedAt &&
     other.catalogId == catalogId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (createdAt.hashCode) +
-    (id.hashCode) +
-    (updatedAt.hashCode) +
     (catalogType.hashCode) +
+    (createdAt.hashCode) +
     (credentials == null ? 0 : credentials!.hashCode) +
     (defaultAvailability == null ? 0 : defaultAvailability!.hashCode) +
     (defaultCountry.hashCode) +
     (defaultCurrency == null ? 0 : defaultCurrency!.hashCode) +
     (defaultLocale.hashCode) +
     (format.hashCode) +
+    (id.hashCode) +
     (location.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (preferredProcessingSchedule == null ? 0 : preferredProcessingSchedule!.hashCode) +
     (status.hashCode) +
+    (updatedAt.hashCode) +
     (catalogId.hashCode);
 
   @override
-  String toString() => 'CatalogsFeed[createdAt=$createdAt, id=$id, updatedAt=$updatedAt, catalogType=$catalogType, credentials=$credentials, defaultAvailability=$defaultAvailability, defaultCountry=$defaultCountry, defaultCurrency=$defaultCurrency, defaultLocale=$defaultLocale, format=$format, location=$location, name=$name, preferredProcessingSchedule=$preferredProcessingSchedule, status=$status, catalogId=$catalogId]';
+  String toString() => 'CatalogsFeed[catalogType=$catalogType, createdAt=$createdAt, credentials=$credentials, defaultAvailability=$defaultAvailability, defaultCountry=$defaultCountry, defaultCurrency=$defaultCurrency, defaultLocale=$defaultLocale, format=$format, id=$id, location=$location, name=$name, preferredProcessingSchedule=$preferredProcessingSchedule, status=$status, updatedAt=$updatedAt, catalogId=$catalogId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
-      json[r'id'] = this.id;
-      json[r'updated_at'] = this.updatedAt.toUtc().toIso8601String();
       json[r'catalog_type'] = this.catalogType;
+      json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
     if (this.credentials != null) {
       json[r'credentials'] = this.credentials;
     } else {
@@ -128,6 +127,7 @@ class CatalogsFeed {
     }
       json[r'default_locale'] = this.defaultLocale;
       json[r'format'] = this.format;
+      json[r'id'] = this.id;
       json[r'location'] = this.location;
     if (this.name != null) {
       json[r'name'] = this.name;
@@ -140,6 +140,7 @@ class CatalogsFeed {
       json[r'preferred_processing_schedule'] = null;
     }
       json[r'status'] = this.status;
+      json[r'updated_at'] = this.updatedAt.toUtc().toIso8601String();
       json[r'catalog_id'] = this.catalogId;
     return json;
   }
@@ -155,28 +156,45 @@ class CatalogsFeed {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsFeed[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsFeed[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsFeed[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsFeed[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'created_at'), 'Required key "CatalogsFeed[created_at]" is missing from JSON.');
+        assert(json[r'created_at'] != null, 'Required key "CatalogsFeed[created_at]" has a null value in JSON.');
+        assert(json.containsKey(r'default_country'), 'Required key "CatalogsFeed[default_country]" is missing from JSON.');
+        assert(json[r'default_country'] != null, 'Required key "CatalogsFeed[default_country]" has a null value in JSON.');
+        assert(json.containsKey(r'default_locale'), 'Required key "CatalogsFeed[default_locale]" is missing from JSON.');
+        assert(json[r'default_locale'] != null, 'Required key "CatalogsFeed[default_locale]" has a null value in JSON.');
+        assert(json.containsKey(r'format'), 'Required key "CatalogsFeed[format]" is missing from JSON.');
+        assert(json[r'format'] != null, 'Required key "CatalogsFeed[format]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "CatalogsFeed[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "CatalogsFeed[id]" has a null value in JSON.');
+        assert(json.containsKey(r'location'), 'Required key "CatalogsFeed[location]" is missing from JSON.');
+        assert(json[r'location'] != null, 'Required key "CatalogsFeed[location]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "CatalogsFeed[name]" is missing from JSON.');
+        assert(json.containsKey(r'status'), 'Required key "CatalogsFeed[status]" is missing from JSON.');
+        assert(json[r'status'] != null, 'Required key "CatalogsFeed[status]" has a null value in JSON.');
+        assert(json.containsKey(r'updated_at'), 'Required key "CatalogsFeed[updated_at]" is missing from JSON.');
+        assert(json[r'updated_at'] != null, 'Required key "CatalogsFeed[updated_at]" has a null value in JSON.');
+        assert(json.containsKey(r'catalog_id'), 'Required key "CatalogsFeed[catalog_id]" is missing from JSON.');
+        assert(json[r'catalog_id'] != null, 'Required key "CatalogsFeed[catalog_id]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsFeed(
+        catalogType: CatalogsFeedCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
         createdAt: mapDateTime(json, r'created_at', r'')!,
-        id: mapValueOfType<String>(json, r'id')!,
-        updatedAt: mapDateTime(json, r'updated_at', r'')!,
-        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
         credentials: CatalogsFeedCredentials.fromJson(json[r'credentials']),
         defaultAvailability: ProductAvailabilityType.fromJson(json[r'default_availability']),
         defaultCountry: Country.fromJson(json[r'default_country'])!,
         defaultCurrency: NullableCurrency.fromJson(json[r'default_currency']),
         defaultLocale: mapValueOfType<String>(json, r'default_locale')!,
         format: CatalogsFormat.fromJson(json[r'format'])!,
+        id: mapValueOfType<String>(json, r'id')!,
         location: mapValueOfType<String>(json, r'location')!,
         name: mapValueOfType<String>(json, r'name'),
         preferredProcessingSchedule: CatalogsFeedProcessingSchedule.fromJson(json[r'preferred_processing_schedule']),
         status: CatalogsStatus.fromJson(json[r'status'])!,
+        updatedAt: mapDateTime(json, r'updated_at', r'')!,
         catalogId: mapValueOfType<String>(json, r'catalog_id')!,
       );
     }
@@ -225,21 +243,93 @@ class CatalogsFeed {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'created_at',
-    'id',
-    'updated_at',
     'catalog_type',
-    'credentials',
-    'default_availability',
+    'created_at',
     'default_country',
-    'default_currency',
     'default_locale',
     'format',
+    'id',
     'location',
     'name',
-    'preferred_processing_schedule',
     'status',
+    'updated_at',
     'catalog_id',
   };
 }
+
+
+enum CatalogsFeedCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsFeedCatalogTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsFeedCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsFeedCatalogTypeEnum? fromJson(dynamic value) => CatalogsFeedCatalogTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsFeedCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsFeedCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsFeedCatalogTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsFeedCatalogTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsFeedCatalogTypeEnum] to String,
+/// and [decode] dynamic data back to [CatalogsFeedCatalogTypeEnum].
+class CatalogsFeedCatalogTypeEnumTypeTransformer {
+  factory CatalogsFeedCatalogTypeEnumTypeTransformer() => _instance ??= const CatalogsFeedCatalogTypeEnumTypeTransformer._();
+
+  const CatalogsFeedCatalogTypeEnumTypeTransformer._();
+
+  String encode(CatalogsFeedCatalogTypeEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsFeedCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsFeedCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsFeedCatalogTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'CREATIVE_ASSETS': return CatalogsFeedCatalogTypeEnum.CREATIVE_ASSETS;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsFeedCatalogTypeEnumTypeTransformer? _instance;
+}
+
 

@@ -1,2 +1,2 @@
-testCase,httpStatusCode,feedId,bookmark,pageSize,adAccountId,feedsCreateRequest,adAccountId,feedId,adAccountId,feedId,adAccountId,feedId,adAccountId,bookmark,pageSize,catalogId,adAccountId,feedId,feedsUpdateRequest,adAccountId,processingResultId,bookmark,pageSize,itemNumbers,itemValidationIssue,adAccountId
+testCase,httpStatusCode,feedId,adAccountId,bookmark,pageSize,catalogsFeedCreateRequestSchema,adAccountId,feedId,adAccountId,feedId,adAccountId,feedId,adAccountId,catalogId,adAccountId,bookmark,pageSize,feedId,catalogsFeedUpdateRequestSchema,adAccountId,processingResultId,itemNumbers,itemValidationIssue,adAccountId,bookmark,pageSize
 Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

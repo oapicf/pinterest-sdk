@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsAiContentDisclosure
 open OpenAPI.Model.string option
 
 module CatalogsCreativeAssetsAttributes =
@@ -22,6 +23,7 @@ module CatalogsCreativeAssetsAttributes =
     Link : string;
     Title : string;
     Visibility : string option;
+    AiDisclosures : CatalogsAiContentDisclosure[];
     ImageLink : string;
     VideoLink : string;
   }

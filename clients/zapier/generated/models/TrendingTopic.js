@@ -12,9 +12,14 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}id`,
+                label: `Unique identifier for the trending topic - [${labelPrefix}id]`,
+                required: true,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}percent_growth_mom`,
                 label: `Month-over-month growth percentage - [${labelPrefix}percent_growth_mom]`,
-                required: true,
                 type: 'integer',
             },
             {
@@ -54,6 +59,7 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'description': bundle.inputData?.[`${keyPrefix}description`],
+            'id': bundle.inputData?.[`${keyPrefix}id`],
             'percent_growth_mom': bundle.inputData?.[`${keyPrefix}percent_growth_mom`],
             'pins': utils.childMapping(bundle.inputData?.[`${keyPrefix}pins`], `${keyPrefix}pins`, TrendingPin),
             'related_interests': bundle.inputData?.[`${keyPrefix}related_interests`],

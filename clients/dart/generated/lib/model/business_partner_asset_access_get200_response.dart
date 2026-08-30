@@ -19,8 +19,7 @@ class BusinessPartnerAssetAccessGet200Response {
 
   String? bookmark;
 
-  /// List assets on which you granted access to your partner or assets on which your partner has granted you access.
-  List<GetPartnerAssetsResponse> items;
+  List<BaseBusinessAssets> items;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BusinessPartnerAssetAccessGet200Response &&
@@ -58,16 +57,14 @@ class BusinessPartnerAssetAccessGet200Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "BusinessPartnerAssetAccessGet200Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "BusinessPartnerAssetAccessGet200Response[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'items'), 'Required key "BusinessPartnerAssetAccessGet200Response[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "BusinessPartnerAssetAccessGet200Response[items]" has a null value in JSON.');
         return true;
       }());
 
       return BusinessPartnerAssetAccessGet200Response(
         bookmark: mapValueOfType<String>(json, r'bookmark'),
-        items: GetPartnerAssetsResponse.listFromJson(json[r'items']),
+        items: BaseBusinessAssets.listFromJson(json[r'items']),
       );
     }
     return null;

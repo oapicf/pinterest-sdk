@@ -1,0 +1,108 @@
+## BusinessAccessAssetsApi
+
+### Create a new asset group.
+## Create a new asset group.
+POST https://api.pinterest.com/v5/businesses/{{business_id}}/asset_groups
+Content-Type: application/json
+Accept: application/json
+
+{
+ "asset_group": "<string>",
+ "asset_group_description": "<string>",
+ "asset_group_name": "<string>",
+ "asset_group_types": "<string>"
+}
+
+
+### Delete asset groups.
+## Delete asset groups.
+DELETE https://api.pinterest.com/v5/businesses/{{business_id}}/asset_groups
+Content-Type: application/json
+Accept: application/json
+
+{
+ "asset_groups_to_delete": "<string>"
+}
+
+
+### Update asset groups.
+## Update asset groups.
+PATCH https://api.pinterest.com/v5/businesses/{{business_id}}/asset_groups
+Content-Type: application/json
+Accept: application/json
+
+{
+ "asset_groups_to_update": "<string>",
+ "exceptions": "<string>",
+ "updated_asset_groups": "<string>"
+}
+
+
+### Get members with access to asset
+## Get members with access to asset
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/assets/{{asset_id}}/members?startIndex={{startIndex}}&fetchSystemUsers={{fetchSystemUsers}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get partners with access to asset
+## Get partners with access to asset
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/assets/{{asset_id}}/partners?startIndex={{startIndex}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### List business assets
+## List business assets
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/assets?permissions={{permissions}}&childAssetId={{childAssetId}}&assetGroupId={{assetGroupId}}&assetType={{assetType}}&startIndex={{startIndex}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get assets assigned to a member
+## Get assets assigned to a member
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/members/{{member_id}}/assets?assetType={{assetType}}&startIndex={{startIndex}}&sortBy={{sortBy}}&sortAscending={{sortAscending}}&searchBy={{searchBy}}&searchValue={{searchValue}}&assetPermissionType={{assetPermissionType}}&adAccountStatuses={{adAccountStatuses}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Delete member access to asset
+## Delete member access to asset
+DELETE https://api.pinterest.com/v5/businesses/{{business_id}}/members/assets/access
+Content-Type: application/json
+Accept: application/json
+
+{
+ "accesses": "<string>"
+}
+
+
+### Assign/Update member asset permissions
+## Assign/Update member asset permissions
+PATCH https://api.pinterest.com/v5/businesses/{{business_id}}/members/assets/access
+Content-Type: application/json
+Accept: application/json
+
+{
+ "accesses": "<string>"
+}
+
+
+### Get assets assigned to a partner or assets assigned by a partner
+## Get assets assigned to a partner or assets assigned by a partner
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/partners/{{partner_id}}/assets?partnerType={{partnerType}}&assetType={{assetType}}&startIndex={{startIndex}}&sortBy={{sortBy}}&sortAscending={{sortAscending}}&searchBy={{searchBy}}&searchValue={{searchValue}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Delete partner access to asset
+## Delete partner access to asset
+DELETE https://api.pinterest.com/v5/businesses/{{business_id}}/partners/assets
+Content-Type: application/json
+Accept: application/json
+
+{
+ "accesses": "<string>"
+}
+
+
+### Assign/Update partner asset permissions
+## Assign/Update partner asset permissions
+PATCH https://api.pinterest.com/v5/businesses/{{business_id}}/partners/assets
+Content-Type: application/json
+Accept: application/json
+
+{
+ "accesses": "<string>"
+}
+

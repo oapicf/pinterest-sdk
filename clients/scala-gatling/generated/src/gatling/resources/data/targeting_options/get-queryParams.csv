@@ -1,1 +1,1 @@
-oauth_signature,client_id,timestamp,ad_account_id
+timestamp,client_id,ad_account_id,oauth_signature

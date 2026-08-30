@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SupplementalItemValidationEvent"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SupplementalItemValidationEvent"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  SupplementalItemValidationEvent {
+    title = SupplementalItemValidationEvent
+    description = SupplementalItemValidationEvent
+    derivedFrom = Root
+    properties {
+        attribute {
+          type =  string
+          description = "The item attribute referenced by the validation event eg. price, availability, ad_link"
+          optional = true
+        }
+        code {
+          type =  integer
+          description = "The event code that the item validation event references"
+          optional = true
+        }
+        message {
+          type =  string
+          description = "Title message describing the item validation event"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SupplementalItemValidationEvent {
+    title = SupplementalItemValidationEvent
+    description = SupplementalItemValidationEvent
+    implements = openapi_server.resourceTypes.SupplementalItemValidationEvent
+
+  }
+}

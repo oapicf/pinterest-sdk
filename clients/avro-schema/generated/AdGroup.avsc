@@ -1,0 +1,235 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdGroup",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "Advertiser ID.",
+      "default": null
+    },
+    {
+      "name": "bid_in_micro_currency",
+      "type": ["null", "int"],
+      "doc": "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.",
+      "default": null
+    },
+    {
+      "name": "bid_strategy_type",
+      "type": ["null", "model.BidStrategyType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "billable_event",
+      "type": "model.ActionType",
+      "doc": ""
+    },
+    {
+      "name": "budget_in_micro_currency",
+      "type": ["null", "int"],
+      "doc": "Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.",
+      "default": null
+    },
+    {
+      "name": "campaign_id",
+      "type": "string",
+      "doc": "Campaign ID of the ad group."
+    },
+    {
+      "name": "conversion_learning_mode_type",
+      "type": "model.ConversionLearningModeType",
+      "doc": "oCPM learn mode"
+    },
+    {
+      "name": "created_time",
+      "type": "int",
+      "doc": "Ad group creation time. Unix timestamp in seconds."
+    },
+    {
+      "name": "customer_segment_id",
+      "type": ["null", "string"],
+      "doc": "Customer segment ID applied to the ad group. We currently only support 1 customer segment per ad group. To use customer segments, do not set the `targeting_template_ids` field as well as the `AUDIENCE_INCLUDE` field of the `targeting_spec`. To clear the customer segment ID, set this field to '0'.",
+      "default": null
+    },
+    {
+      "name": "dca_assets",
+      "type": ["null", "model.AnyType"],
+      "doc": "[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.",
+      "default": null
+    },
+    {
+      "name": "end_time",
+      "type": ["null", "int"],
+      "doc": "Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about [scheduling ads](https://help.pinterest.com/en/business/article/ads-manager-schedule-ads).  For certain organizations ([Closed beta](https://help.pinterest.com/en/business/article/beta-features)): Supported for campaigns with Campaign Budget Optimization (CBO).  For all organizations: Supported for campaigns without CBO.",
+      "default": null
+    },
+    {
+      "name": "ext_features",
+      "type": ["null", "model.AdgroupTrackingFeatures"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "feed_profile_id",
+      "type": ["null", "string"],
+      "doc": "Feed Profile ID associated to the adgroup.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Ad group ID."
+    },
+    {
+      "name": "is_creative_optimization",
+      "type": ["null", "boolean"],
+      "doc": "Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.",
+      "default": null
+    },
+    {
+      "name": "is_local_inventory",
+      "type": ["null", "boolean"],
+      "doc": "Indicates whether the ad group should use the local inventory.",
+      "default": null
+    },
+    {
+      "name": "lifetime_frequency_cap",
+      "type": ["null", "int"],
+      "doc": "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION [billable_event](https://help.pinterest.com/en/business/article/billable-events) value. This field **REQUIRES** the `end_time` field.",
+      "default": null
+    },
+    {
+      "name": "local_inventory_radius_in_miles",
+      "type": ["null", "double"],
+      "doc": "The targeting radius of the local inventory ads in miles.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Ad group name."
+    },
+    {
+      "name": "optimization_goal_metadata",
+      "type": ["null", "model.NullableOptimizationGoalMetadata"],
+      "doc": "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.",
+      "default": null
+    },
+    {
+      "name": "performance_plus_campaign_settings",
+      "type": ["null", "model.PerformancePlusCampaignSettings"],
+      "doc": "Pinterest Performance+ campaign settings.",
+      "default": null
+    },
+    {
+      "name": "placement_group",
+      "type": ["null", "model.PlacementGroupType"],
+      "doc": "[Placement group](https://help.pinterest.com/en/business/article/placement-groups).",
+      "default": null
+    },
+    {
+      "name": "placement_traffic_type",
+      "type": ["null", "model.PlacementTrafficType"],
+      "doc": "A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both",
+      "default": null
+    },
+    {
+      "name": "promotion_application_level",
+      "type": ["null", "model.PromotionApplicationLevel"],
+      "doc": "Specify if the promotion is applied at ad group or item level",
+      "default": null
+    },
+    {
+      "name": "promotion_id",
+      "type": ["string", "null"],
+      "doc": "Promotion ID. To clear this field, set to null.",
+      "default": "0"
+    },
+    {
+      "name": "promotion_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Promotion IDs list. To clear this field, set to an empty array [].",
+      "default": null
+    },
+    {
+      "name": "start_time",
+      "type": ["null", "int"],
+      "doc": "Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about [scheduling ads](/docs/api-features/managing-ads/#step-2-create-an-ad-group). For certain organizations ([Closed beta](/docs/getting-started/using-beta-and-restricted-features/)): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.EntityStatus"],
+      "doc": "Ad group/entity status.",
+      "default": null
+    },
+    {
+      "name": "summary_status",
+      "type": "model.SummaryStatus",
+      "doc": ""
+    },
+    {
+      "name": "targeting_spec",
+      "type": ["null", "model.TargetingSpecOptimal"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "targeting_template_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].",
+      "default": null
+    },
+    {
+      "name": "tracking_urls",
+      "type": ["null", "model.AdGroupTrackingURLs"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "doc": "Always \"adgroup\".",
+      "default": "adgroup"
+    },
+    {
+      "name": "updated_time",
+      "type": "int",
+      "doc": "Ad group last update time. Unix timestamp in seconds."
+    },
+    {
+      "name": "auto_targeting_enabled",
+      "type": ["null", "boolean"],
+      "doc": "Enable auto-targeting for ad group. Default value is True. Also known as [\"Performance+ targeting\"](https://help.pinterest.com/en/business/article/performance-plus-targeting).",
+      "default": null
+    },
+    {
+      "name": "bid_multiplier",
+      "type": ["null", "double"],
+      "doc": "[Open beta](https://help.pinterest.com/en/business/article/beta-features) Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Not currently supported for [Performance+ campaigns](https://help.pinterest.com/en/business/article/performance-plus-campaigns).",
+      "default": null
+    },
+    {
+      "name": "budget_type",
+      "type": ["null", "model.BudgetType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "pacing_delivery_type",
+      "type": ["null", "model.PacingDeliveryType"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

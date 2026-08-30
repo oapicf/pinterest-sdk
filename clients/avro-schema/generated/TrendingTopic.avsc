@@ -10,9 +10,15 @@
       "doc": "Description of the trending topic"
     },
     {
+      "name": "id",
+      "type": "string",
+      "doc": "Unique identifier for the trending topic"
+    },
+    {
       "name": "percent_growth_mom",
-      "type": "int",
-      "doc": "Month-over-month growth percentage"
+      "type": ["null", "int"],
+      "doc": "Month-over-month growth percentage",
+      "default": null
     },
     {
       "name": "pins",

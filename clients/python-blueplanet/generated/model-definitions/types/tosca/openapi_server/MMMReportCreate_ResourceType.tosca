@@ -1,0 +1,91 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MMMReportCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MMMReportCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  MMMReportGranularity = openapi_server.resourceTypes.MMMReportGranularity
+  MMMReportLevel = openapi_server.resourceTypes.MMMReportLevel
+  MMMReportingColumn = openapi_server.resourceTypes.MMMReportingColumn
+  MMMReportingTargetingType = openapi_server.resourceTypes.MMMReportingTargetingType
+  TargetingAdvertiserCountry = openapi_server.resourceTypes.TargetingAdvertiserCountry
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  MMMReportCreate {
+    title = MMMReportCreate
+    description = MMMReportCreate
+    derivedFrom = Root
+    properties {
+        advertiser_ids {
+          type = array
+          items.type =  string
+          description = "Advertiser IDs for multi-advertiser report"
+          optional = false
+        }
+        columns {
+          type = array
+          items.type = MMMReportingColumn
+          description = "Metric and entity columns"
+          optional = true
+        }
+        countries {
+          type = array
+          items.type = TargetingAdvertiserCountry
+          description = "A List of countries for filtering"
+          optional = false
+        }
+        custom_column_ids {
+          type = array
+          items.type =  string
+          description = "List of custom column IDs"
+          optional = false
+        }
+        end_date {
+          type =  string
+          description = "Metric report end date (UTC). Format: YYYY-MM-DD"
+          optional = true
+        }
+        granularity {
+          type = MMMReportGranularity
+          description = "  DAY - metrics are broken down daily.    WEEK - metrics are broken down weekly."
+          optional = true
+        }
+        level {
+          type = MMMReportLevel
+          description = "Level of the report"
+          optional = true
+        }
+        report_name {
+          type =  string
+          description = "Name of the Marketing Mix Modeling (MMM) report"
+          optional = true
+        }
+        start_date {
+          type =  string
+          description = "Metric report start date (UTC). Format: YYYY-MM-DD"
+          optional = true
+        }
+        targeting_types {
+          type = array
+          items.type = MMMReportingTargetingType
+          description = "List of targeting types"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  MMMReportCreate {
+    title = MMMReportCreate
+    description = MMMReportCreate
+    implements = openapi_server.resourceTypes.MMMReportCreate
+
+  }
+}

@@ -102,7 +102,7 @@ Feeds_list_200_response::getBookmark()
 }
 
 void
-Feeds_list_200_response::setBookmark(std::string  bookmark)
+Feeds_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Feeds_list_200_response::getItems()
 }
 
 void
-Feeds_list_200_response::setItems(std::list <CatalogsFeed> items)
+Feeds_list_200_response::setItems(std::list<CatalogsFeed> items)
 {
 	this->items = items;
 }

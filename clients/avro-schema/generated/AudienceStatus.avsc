@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Audience processing status",
+  "name": "AudienceStatus",
+  "symbols": [
+    "INITIALIZING",
+    "READY",
+    "TOO_SMALL",
+    "ELIGIBLE",
+    "PERSONAS_INELIGIBLE_SIZE",
+    "PERSONAS_INITIALIZING"
+  ]
+}

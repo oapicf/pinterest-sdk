@@ -23,28 +23,28 @@ NotificationResponse::~NotificationResponse()
 void
 NotificationResponse::__init()
 {
-	//success = bool(false);
-	//received_at = int(0);
 	//error_msg = std::string();
+	//received_at = int(0);
+	//success = bool(false);
 }
 
 void
 NotificationResponse::__cleanup()
 {
-	//if(success != NULL) {
+	//if(error_msg != NULL) {
 	//
-	//delete success;
-	//success = NULL;
+	//delete error_msg;
+	//error_msg = NULL;
 	//}
 	//if(received_at != NULL) {
 	//
 	//delete received_at;
 	//received_at = NULL;
 	//}
-	//if(error_msg != NULL) {
+	//if(success != NULL) {
 	//
-	//delete error_msg;
-	//error_msg = NULL;
+	//delete success;
+	//success = NULL;
 	//}
 	//
 }
@@ -54,13 +54,13 @@ NotificationResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *successKey = "success";
-	node = json_object_get_member(pJsonObject, successKey);
+	const gchar *error_msgKey = "error_msg";
+	node = json_object_get_member(pJsonObject, error_msgKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("bool")) {
-			jsonToValue(&success, node, "bool", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&error_msg, node, "std::string", "");
 		} else {
 			
 		}
@@ -76,13 +76,13 @@ NotificationResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *error_msgKey = "error_msg";
-	node = json_object_get_member(pJsonObject, error_msgKey);
+	const gchar *successKey = "success";
+	node = json_object_get_member(pJsonObject, successKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&error_msg, node, "std::string", "");
+		if (isprimitive("bool")) {
+			jsonToValue(&success, node, "bool", "");
 		} else {
 			
 		}
@@ -99,24 +99,6 @@ NotificationResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("bool")) {
-		bool obj = getSuccess();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *successKey = "success";
-	json_object_set_member(pJsonObject, successKey, node);
-	if (isprimitive("int")) {
-		int obj = getReceivedAt();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *received_atKey = "received_at";
-	json_object_set_member(pJsonObject, received_atKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getErrorMsg();
 		node = converttoJson(&obj, "std::string", "");
@@ -126,6 +108,24 @@ NotificationResponse::toJson()
 	}
 	const gchar *error_msgKey = "error_msg";
 	json_object_set_member(pJsonObject, error_msgKey, node);
+	if (isprimitive("int")) {
+		int obj = getReceivedAt();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *received_atKey = "received_at";
+	json_object_set_member(pJsonObject, received_atKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getSuccess();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *successKey = "success";
+	json_object_set_member(pJsonObject, successKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -134,16 +134,16 @@ NotificationResponse::toJson()
 	return ret;
 }
 
-bool
-NotificationResponse::getSuccess()
+std::string
+NotificationResponse::getErrorMsg()
 {
-	return success;
+	return error_msg;
 }
 
 void
-NotificationResponse::setSuccess(bool  success)
+NotificationResponse::setErrorMsg(std::string  error_msg)
 {
-	this->success = success;
+	this->error_msg = error_msg;
 }
 
 int
@@ -158,16 +158,16 @@ NotificationResponse::setReceivedAt(int  received_at)
 	this->received_at = received_at;
 }
 
-std::string
-NotificationResponse::getErrorMsg()
+bool
+NotificationResponse::getSuccess()
 {
-	return error_msg;
+	return success;
 }
 
 void
-NotificationResponse::setErrorMsg(std::string  error_msg)
+NotificationResponse::setSuccess(bool  success)
 {
-	this->error_msg = error_msg;
+	this->success = success;
 }
 
 

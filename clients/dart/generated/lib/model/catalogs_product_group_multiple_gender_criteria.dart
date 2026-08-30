@@ -13,11 +13,17 @@ part of openapi.api;
 class CatalogsProductGroupMultipleGenderCriteria {
   /// Returns a new [CatalogsProductGroupMultipleGenderCriteria] instance.
   CatalogsProductGroupMultipleGenderCriteria({
-    this.negated = false,
+    this.negated,
     this.values = const [],
   });
 
-  bool negated;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? negated;
 
   List<Gender> values;
 
@@ -29,7 +35,7 @@ class CatalogsProductGroupMultipleGenderCriteria {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (negated.hashCode) +
+    (negated == null ? 0 : negated!.hashCode) +
     (values.hashCode);
 
   @override
@@ -37,7 +43,11 @@ class CatalogsProductGroupMultipleGenderCriteria {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.negated != null) {
       json[r'negated'] = this.negated;
+    } else {
+      json[r'negated'] = null;
+    }
       json[r'values'] = this.values;
     return json;
   }
@@ -53,15 +63,13 @@ class CatalogsProductGroupMultipleGenderCriteria {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsProductGroupMultipleGenderCriteria[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsProductGroupMultipleGenderCriteria[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'values'), 'Required key "CatalogsProductGroupMultipleGenderCriteria[values]" is missing from JSON.');
+        assert(json[r'values'] != null, 'Required key "CatalogsProductGroupMultipleGenderCriteria[values]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsProductGroupMultipleGenderCriteria(
-        negated: mapValueOfType<bool>(json, r'negated') ?? false,
+        negated: mapValueOfType<bool>(json, r'negated'),
         values: Gender.listFromJson(json[r'values']),
       );
     }

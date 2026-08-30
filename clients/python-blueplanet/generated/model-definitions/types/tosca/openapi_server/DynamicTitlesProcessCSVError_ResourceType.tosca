@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DynamicTitlesProcessCSVError"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DynamicTitlesProcessCSVError"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DynamicTitlesProcessCSVError {
+    title = DynamicTitlesProcessCSVError
+    description = DynamicTitlesProcessCSVError
+    derivedFrom = Root
+    properties {
+        error_type {
+          type =  string
+          description = "The type of validation error: INVALID_FILE or ROW_VALIDATION_FAILED."
+          optional = false
+        }
+        row_number {
+          type =  integer
+          description = "The row number with a validation error. -1 indicates a file-level error."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DynamicTitlesProcessCSVError {
+    title = DynamicTitlesProcessCSVError
+    description = DynamicTitlesProcessCSVError
+    implements = openapi_server.resourceTypes.DynamicTitlesProcessCSVError
+
+  }
+}

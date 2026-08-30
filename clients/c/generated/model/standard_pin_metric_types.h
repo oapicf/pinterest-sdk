@@ -1,0 +1,32 @@
+/*
+ * standard_pin_metric_types.h
+ *
+ * Standard Pin metric types
+ */
+
+#ifndef _standard_pin_metric_types_H_
+#define _standard_pin_metric_types_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct standard_pin_metric_types_t standard_pin_metric_types_t;
+
+
+// Enum  for standard_pin_metric_types
+
+typedef enum { pinterest_rest_api_standard_pin_metric_types__NULL = 0, pinterest_rest_api_standard_pin_metric_types__IMPRESSION, pinterest_rest_api_standard_pin_metric_types__OUTBOUND_CLICK, pinterest_rest_api_standard_pin_metric_types__PIN_CLICK, pinterest_rest_api_standard_pin_metric_types__SAVE, pinterest_rest_api_standard_pin_metric_types__SAVE_RATE, pinterest_rest_api_standard_pin_metric_types__TOTAL_COMMENTS, pinterest_rest_api_standard_pin_metric_types__TOTAL_REACTIONS, pinterest_rest_api_standard_pin_metric_types__USER_FOLLOW, pinterest_rest_api_standard_pin_metric_types__PROFILE_VISIT } pinterest_rest_api_standard_pin_metric_types__e;
+
+char* standard_pin_metric_types_standard_pin_metric_types_ToString(pinterest_rest_api_standard_pin_metric_types__e standard_pin_metric_types);
+
+pinterest_rest_api_standard_pin_metric_types__e standard_pin_metric_types_standard_pin_metric_types_FromString(char* standard_pin_metric_types);
+
+cJSON *standard_pin_metric_types_convertToJSON(pinterest_rest_api_standard_pin_metric_types__e standard_pin_metric_types);
+
+pinterest_rest_api_standard_pin_metric_types__e standard_pin_metric_types_parseFromJSON(cJSON *standard_pin_metric_typesJSON);
+
+#endif /* _standard_pin_metric_types_H_ */
+

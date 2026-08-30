@@ -1,8 +1,8 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
 import org.openapitools.model.NotificationPostRequest;
 import org.openapitools.model.NotificationResponse;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import java.util.Map;
@@ -39,8 +39,8 @@ public interface NotificationApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Receive notifications from external partners.", tags={ "notification" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successfully received notification", response = NotificationResponse.class),
-        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public NotificationResponse notificationPost(@Valid @NotNull NotificationPostRequest notificationPostRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = NotificationResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public NotificationResponse notificationPost(@Valid NotificationPostRequest notificationPostRequest);
 }

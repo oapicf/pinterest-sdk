@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Severity of a confidence level alert on delivery estimates.",
+  "name": "CampaignPlanningConfidenceLevelAlertSeverity",
+  "symbols": [
+    "UNKNOWN",
+    "LOW_MILD",
+    "LOW_MODERATE",
+    "LOW_SEVERE"
+  ]
+}

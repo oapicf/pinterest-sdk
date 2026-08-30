@@ -11,6 +11,10 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **preorder** | preorder | decimal NOT NULL |  | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
 **total** | total | decimal NOT NULL |  | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
 **videos** | videos | decimal NOT NULL |  | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
+**appLinks** | app_links | decimal NOT NULL |  | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
+**images** | images | decimal NOT NULL |  | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  | 
+
+
 
 
 

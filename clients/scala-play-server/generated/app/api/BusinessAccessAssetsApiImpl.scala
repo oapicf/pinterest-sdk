@@ -1,23 +1,25 @@
 package api
 
+import model.AssetGroupDeletion
+import model.AssetGroupDeletionDelete
+import model.AssetGroupInput
+import model.AssetGroupInputCreate
+import model.AssetGroupModification
+import model.AssetGroupModificationReadOrUpdate
+import model.AssetPermissionType
+import model.AssetSearchBy
+import model.AssetSortBy
 import model.BusinessAssetMembersGet200Response
-import model.BusinessAssetPartnersGet200Response
 import model.BusinessAssetsGet200Response
-import model.BusinessMemberAssetsGet200Response
-import model.BusinessMembersAssetAccessDeleteRequest
+import model.BusinessMemberAssetsGetResponse
+import model.BusinessMembersAssetAccessDeleteBody
 import model.BusinessPartnerAssetAccessGet200Response
-import model.CreateAssetGroupBody
-import model.CreateAssetGroupResponse
-import model.DeleteAssetGroupBody
-import model.DeleteAssetGroupResponse
 import model.DeleteMemberAccessResultsResponseArray
 import model.DeletePartnerAssetAccessBody
-import model.DeletePartnerAssetsResultsResponseArray
+import model.DeletePartnerAssetAccessResultsResponseArray
 import model.Error
-import model.PartnerType
+import model.NonDraftEntityStatus
 import model.PermissionsWithOwner
-import model.UpdateAssetGroupBody
-import model.UpdateAssetGroupResponse
 import model.UpdateMemberAssetAccessBody
 import model.UpdateMemberAssetsResultsResponseArray
 import model.UpdatePartnerAssetAccessBody
@@ -26,39 +28,39 @@ import model.UpdatePartnerAssetsResultsResponseArray
 /**
   * Provides a default implementation for [[BusinessAccessAssetsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class BusinessAccessAssetsApiImpl extends BusinessAccessAssetsApi {
   /**
     * @inheritdoc
     */
-  override def assetGroupCreate(businessId: String, createAssetGroupBody: CreateAssetGroupBody): CreateAssetGroupResponse = {
+  override def assetGroupCreate(businessId: String, assetGroupInputCreate: AssetGroupInputCreate): AssetGroupInput = {
     // TODO: Implement better logic
 
-    CreateAssetGroupResponse(None)
+    AssetGroupInput(None)
   }
 
   /**
     * @inheritdoc
     */
-  override def assetGroupDelete(businessId: String, deleteAssetGroupBody: DeleteAssetGroupBody): DeleteAssetGroupResponse = {
+  override def assetGroupDelete(businessId: String, assetGroupDeletionDelete: AssetGroupDeletionDelete): AssetGroupDeletion = {
     // TODO: Implement better logic
 
-    DeleteAssetGroupResponse(None, None)
+    AssetGroupDeletion(None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def assetGroupUpdate(businessId: String, updateAssetGroupBody: UpdateAssetGroupBody): UpdateAssetGroupResponse = {
+  override def assetGroupUpdate(businessId: String, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate): AssetGroupModification = {
     // TODO: Implement better logic
 
-    UpdateAssetGroupResponse(None, None)
+    AssetGroupModification(None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def businessAssetMembersGet(businessId: String, assetId: String, fetchSystemUsers: Option[Boolean], bookmark: Option[String], pageSize: Option[Int], startIndex: Option[Int]): BusinessAssetMembersGet200Response = {
+  override def businessAssetMembersGet(businessId: String, assetId: String, startIndex: Option[Int], fetchSystemUsers: Option[Boolean], bookmark: Option[String], pageSize: Option[Int]): BusinessAssetMembersGet200Response = {
     // TODO: Implement better logic
 
     BusinessAssetMembersGet200Response(None, List.empty[UserSingleAssetBinding])
@@ -67,10 +69,10 @@ class BusinessAccessAssetsApiImpl extends BusinessAccessAssetsApi {
   /**
     * @inheritdoc
     */
-  override def businessAssetPartnersGet(businessId: String, assetId: String, startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): BusinessAssetPartnersGet200Response = {
+  override def businessAssetPartnersGet(businessId: String, assetId: String, startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): BusinessAssetMembersGet200Response = {
     // TODO: Implement better logic
 
-    BusinessAssetPartnersGet200Response(None, List.empty[UserSingleAssetBinding])
+    BusinessAssetMembersGet200Response(None, List.empty[UserSingleAssetBinding])
   }
 
   /**
@@ -79,22 +81,22 @@ class BusinessAccessAssetsApiImpl extends BusinessAccessAssetsApi {
   override def businessAssetsGet(businessId: String, permissions: Option[List[PermissionsWithOwner]], childAssetId: Option[String], assetGroupId: Option[String], assetType: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): BusinessAssetsGet200Response = {
     // TODO: Implement better logic
 
-    BusinessAssetsGet200Response(None, List.empty[GetBusinessAssetsResponse])
+    BusinessAssetsGet200Response(None, List.empty[BusinessAssets])
   }
 
   /**
     * @inheritdoc
     */
-  override def businessMemberAssetsGet(businessId: String, memberId: String, assetType: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): BusinessMemberAssetsGet200Response = {
+  override def businessMemberAssetsGet(businessId: String, memberId: String, assetType: Option[String], startIndex: Option[Int], sortBy: Option[AssetSortBy], sortAscending: Option[Boolean], searchBy: Option[AssetSearchBy], searchValue: Option[String], assetPermissionType: Option[AssetPermissionType], adAccountStatuses: Option[List[NonDraftEntityStatus]], bookmark: Option[String], pageSize: Option[Int]): BusinessMemberAssetsGetResponse = {
     // TODO: Implement better logic
 
-    BusinessMemberAssetsGet200Response(None, List.empty[AssetIdPermissions])
+    BusinessMemberAssetsGetResponse(None, List.empty[AssetIdPermissions], 0, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def businessMembersAssetAccessDelete(businessId: String, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest): DeleteMemberAccessResultsResponseArray = {
+  override def businessMembersAssetAccessDelete(businessId: String, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody): DeleteMemberAccessResultsResponseArray = {
     // TODO: Implement better logic
 
     DeleteMemberAccessResultsResponseArray(None)
@@ -112,19 +114,19 @@ class BusinessAccessAssetsApiImpl extends BusinessAccessAssetsApi {
   /**
     * @inheritdoc
     */
-  override def businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: Option[PartnerType], assetType: Option[String], startIndex: Option[Int], pageSize: Option[Int], bookmark: Option[String]): BusinessPartnerAssetAccessGet200Response = {
+  override def businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: Option[String], assetType: Option[String], startIndex: Option[Int], sortBy: Option[AssetSortBy], sortAscending: Option[Boolean], searchBy: Option[AssetSearchBy], searchValue: Option[String], bookmark: Option[String], pageSize: Option[Int]): BusinessPartnerAssetAccessGet200Response = {
     // TODO: Implement better logic
 
-    BusinessPartnerAssetAccessGet200Response(None, List.empty[GetPartnerAssetsResponse])
+    BusinessPartnerAssetAccessGet200Response(None, List.empty[BaseBusinessAssets])
   }
 
   /**
     * @inheritdoc
     */
-  override def deletePartnerAssetAccessHandlerImpl(businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody): DeletePartnerAssetsResultsResponseArray = {
+  override def deletePartnerAssetAccessHandlerImpl(businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody): DeletePartnerAssetAccessResultsResponseArray = {
     // TODO: Implement better logic
 
-    DeletePartnerAssetsResultsResponseArray(None)
+    DeletePartnerAssetAccessResultsResponseArray(None)
   }
 
   /**

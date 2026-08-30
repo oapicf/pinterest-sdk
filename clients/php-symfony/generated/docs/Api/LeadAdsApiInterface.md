@@ -22,7 +22,7 @@ services:
 ```
 
 ## **adAccountsSubscriptionsDelById**
-> adAccountsSubscriptionsDelById($adAccountId, $subscriptionId)
+> OpenAPI\Server\Model\LeadSubscription adAccountsSubscriptionsDelById($adAccountId, $subscriptionId)
 
 Delete lead ads subscription
 
@@ -53,7 +53,7 @@ class LeadAdsApi implements LeadAdsApiInterface
     /**
      * Implementation of LeadAdsApiInterface#adAccountsSubscriptionsDelById
      */
-    public function adAccountsSubscriptionsDelById(string $adAccountId, string $subscriptionId, int &$responseCode, array &$responseHeaders): void
+    public function adAccountsSubscriptionsDelById(string $adAccountId, string $subscriptionId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OpenAPI\Server\Model\LeadSubscription**](../Model/LeadSubscription.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -49,8 +49,11 @@ type CatalogsCreativeAssetsAttributes struct {
 	// The name of the creative assets.
 	Title string `json:"title,omitempty"`
 
-	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+	// Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
 	Visibility *string `json:"visibility,omitempty"`
+
+	// AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+	AiDisclosures []CatalogsAiContentDisclosure `json:"ai_disclosures,omitempty"`
 
 	// The creative assets image.
 	ImageLink string `json:"image_link,omitempty"`
@@ -59,12 +62,23 @@ type CatalogsCreativeAssetsAttributes struct {
 	VideoLink string `json:"video_link,omitempty"`
 }
 
-// AssertCatalogsCreativeAssetsAttributesRequired checks if the required fields are not zero-ed
+// AssertCatalogsCreativeAssetsAttributesRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsCreativeAssetsAttributesRequired(obj CatalogsCreativeAssetsAttributes) error {
+	for _, el := range obj.AiDisclosures {
+		if err := AssertCatalogsAiContentDisclosureRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertCatalogsCreativeAssetsAttributesConstraints checks if the values respects the defined constraints
 func AssertCatalogsCreativeAssetsAttributesConstraints(obj CatalogsCreativeAssetsAttributes) error {
+	for _, el := range obj.AiDisclosures {
+		if err := AssertCatalogsAiContentDisclosureConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

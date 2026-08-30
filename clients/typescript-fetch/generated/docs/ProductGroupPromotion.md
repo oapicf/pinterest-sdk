@@ -10,19 +10,20 @@ Name | Type
 `bidInMicroCurrency` | number
 `catalogProductGroupId` | string
 `catalogProductGroupName` | string
-`collectionsHeaderType` | string
+`collectionsHeaderType` | [CollectionsHeaderType](CollectionsHeaderType.md)
 `collectionsHeroDestinationUrl` | string
 `collectionsHeroPinId` | string
 `creativeType` | [CreativeType](CreativeType.md)
-`customizableCtaType` | string
+`customizableCtaType` | [ProductGroupPromotionCustomizableCTAType](ProductGroupPromotionCustomizableCTAType.md)
 `definition` | string
 `gridClickType` | [GridClickType](GridClickType.md)
 `id` | string
 `included` | boolean
 `isGenerateBackground` | boolean
+`isImageAutoResizing` | boolean
 `isMdl` | boolean
 `parentId` | string
-`preferredMediaType` | string
+`preferredMediaType` | [PreferredMediaType](PreferredMediaType.md)
 `relativeDefinition` | string
 `selectedImageTag` | string
 `selectedVideoTag` | string
@@ -42,19 +43,20 @@ const example = {
   "bidInMicroCurrency": 14000000,
   "catalogProductGroupId": 1231235,
   "catalogProductGroupName": catalogProductGroupName,
-  "collectionsHeaderType": SHOP_THIS_COLLECTION,
+  "collectionsHeaderType": null,
   "collectionsHeroDestinationUrl": http://www.pinterest.com,
   "collectionsHeroPinId": 123123,
   "creativeType": null,
-  "customizableCtaType": SHOP_NOW,
+  "customizableCtaType": null,
   "definition": */product_type_0='kitchen'/product_type_1='beverage appliances',
   "gridClickType": null,
   "id": 2680059592705,
   "included": true,
   "isGenerateBackground": true,
+  "isImageAutoResizing": true,
   "isMdl": true,
   "parentId": 1231234,
-  "preferredMediaType": VIDEO,
+  "preferredMediaType": null,
   "relativeDefinition": product_type_1='beverage appliances',
   "selectedImageTag": holiday_sale,
   "selectedVideoTag": holiday_sale,

@@ -84,7 +84,7 @@ Protected Class CatalogsRetailProductMetadata
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="NonNullableProductAvailabilityType"
+			Type="ProductAvailability"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

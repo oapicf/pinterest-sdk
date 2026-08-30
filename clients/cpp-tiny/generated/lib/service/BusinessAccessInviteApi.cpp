@@ -65,7 +65,7 @@ using namespace Tiny;
         }
 
         Response<
-            DeleteInvitesResultsResponseArray
+            CancelInvitesResponse
         >
         BusinessAccessInviteApi::
         cancelInvitesOrRequests(
@@ -73,7 +73,7 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            CancelInvitesBody cancelInvitesBody
+            CancelInvitesRequest cancelInvitesRequest
             
         )
         {
@@ -102,11 +102,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | DELETE
-            // Body     | cancelInvitesBody
+            // Body     | cancelInvitesRequest
 
 
 
-            payload = cancelInvitesBody.toJson().dump();
+            payload = cancelInvitesRequest.toJson().dump();
 
             int httpCode = sendRequest(url, "DELETE", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -117,10 +117,10 @@ using namespace Tiny;
 
 
 
-            DeleteInvitesResultsResponseArray obj(output_string);
+            CancelInvitesResponse obj(output_string);
 
 
-            Response<DeleteInvitesResultsResponseArray> response(obj, httpCode);
+            Response<CancelInvitesResponse> response(obj, httpCode);
             return response;
         }
 
@@ -255,7 +255,7 @@ using namespace Tiny;
             
             bool isMember
             , 
-            std::list<std::string> inviteStatus
+            std::list<InviteFilterStatus> inviteStatus
             
             , 
             

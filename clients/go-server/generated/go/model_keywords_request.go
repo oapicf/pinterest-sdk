@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -20,14 +25,74 @@ type KeywordsRequest struct {
 	Keywords []KeywordsCommon `json:"keywords"`
 
 	// Keyword parent entity ID (advertiser, campaign, ad group).
-	ParentId string `json:"parent_id" validate:"regexp=^((AG)|C)?\\\\d+$"`
+	ParentId string `json:"parent_id" validate:"regexp=^((AG)|C)?\\d+$"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into KeywordsRequest
+func (o *KeywordsRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"keywords",
+		"parent_id",
+	}
+
+	requiredNullableProperties := map[string]bool{
+		"keywords": false,
+		"parent_id": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"keywords": {},
+		"parent_id": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded KeywordsRequest
+
+	if value, exists := allProperties["keywords"]; exists {
+		if err = json.Unmarshal(value, &decoded.Keywords); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["parent_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ParentId); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
 }
 
-// AssertKeywordsRequestRequired checks if the required fields are not zero-ed
+// AssertKeywordsRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertKeywordsRequestRequired(obj KeywordsRequest) error {
 	elements := map[string]interface{}{
 		"keywords": obj.Keywords,
-		"parent_id": obj.ParentId,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

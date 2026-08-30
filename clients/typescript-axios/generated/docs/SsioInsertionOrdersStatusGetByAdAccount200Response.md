@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;SSIOInsertionOrderStatus&gt;**](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | [default to undefined]
+**items** | [**Array&lt;SSIOInsertionOrderStatus&gt;**](SSIOInsertionOrderStatus.md) |  | [default to undefined]
 
 ## Example
 

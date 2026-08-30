@@ -3,7 +3,6 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.ProductCategoriesEngagementType
-open OpenAPI.Model.VerticalProductCategory
 
 module TrendingProductCategory =
 
@@ -14,7 +13,8 @@ module TrendingProductCategory =
     EngagementType : ProductCategoriesEngagementType;
     PctChangeMom : int;
     PercentRelativeVolume : int;
+    PinterestProductCategoryId : int;
     ProductCategory : string;
-    Verticals : VerticalProductCategory[];
+    Verticals : string[];
   }
   //#endregion

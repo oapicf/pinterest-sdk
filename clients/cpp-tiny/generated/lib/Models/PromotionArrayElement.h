@@ -13,7 +13,7 @@
 #include "bourne/json.hpp"
 #include "Helpers.h"
 #include "Exception.h"
-#include "PromotionResponse.h"
+#include "Promotion.h"
 
 namespace Tiny {
 
@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	PromotionResponse getData();
+	Promotion getData();
 
 	/*! \brief Set 
 	 */
-	void setData(PromotionResponse  data);
+	void setData(Promotion data);
 	/*! \brief Get 
 	 */
 	Exception getException();
 
 	/*! \brief Set 
 	 */
-	void setException(Exception  exception);
+	void setException(Exception exception);
 
 
     private:
-    PromotionResponse data;
+    Promotion data;
     Exception exception;
 };
 }

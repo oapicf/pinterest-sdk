@@ -85,7 +85,7 @@ PinMediaSourcePinURL::isIsAffiliateLink()
 }
 
 void
-PinMediaSourcePinURL::setIsAffiliateLink(bool  is_affiliate_link)
+PinMediaSourcePinURL::setIsAffiliateLink(bool is_affiliate_link)
 {
 	this->is_affiliate_link = is_affiliate_link;
 }
@@ -97,7 +97,7 @@ PinMediaSourcePinURL::getSourceType()
 }
 
 void
-PinMediaSourcePinURL::setSourceType(std::string  source_type)
+PinMediaSourcePinURL::setSourceType(std::string source_type)
 {
 	this->source_type = source_type;
 }

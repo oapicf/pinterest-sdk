@@ -5,20 +5,20 @@ const Service = require('./Service');
 * List following boards
 * Get a list of the boards a user follows. The request returns a board summary object array.
 *
-* bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* explicitUnderscorefollowing Boolean Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
-* returns boards_user_follows_list_200_response
+* explicitUnderscorefollowing Boolean Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
+* bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* returns boards_list_200_response
 * */
-const boards_user_follows/list = ({ bookmark, pageUnderscoresize, explicitUnderscorefollowing, adUnderscoreaccountUnderscoreid }) => new Promise(
+const boards_user_follows/list = ({ adUnderscoreaccountUnderscoreid, explicitUnderscorefollowing, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
+        adUnderscoreaccountUnderscoreid,
+        explicitUnderscorefollowing,
         bookmark,
         pageUnderscoresize,
-        explicitUnderscorefollowing,
-        adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -30,18 +30,18 @@ const boards_user_follows/list = ({ bookmark, pageUnderscoresize, explicitUnders
 );
 /**
 * Follow user
-* <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+* **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 *
 * username String A valid username
-* followUserRequest FollowUserRequest Follow a user.
-* returns UserSummary
+* followUserCreate FollowUserCreate 
+* returns FollowUser
 * */
-const follow_user/update = ({ username, followUserRequest }) => new Promise(
+const follow_user/update = ({ username, followUserCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         username,
-        followUserRequest,
+        followUserCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -56,7 +56,7 @@ const follow_user/update = ({ username, followUserRequest }) => new Promise(
 * Get a list of your followers.
 *
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns followers_list_200_response
 * */
 const followers/list = ({ bookmark, pageUnderscoresize }) => new Promise(
@@ -95,10 +95,10 @@ const linked_business_accounts/get = () => new Promise(
 );
 /**
 * Unverify website
-* Unverifu a website verified by the signed-in user.
+* Unverify a website verified by the signed-in user.
 *
 * website String Website with path or domain only
-* no response value expected for this operation
+* returns UserWebsite
 * */
 const unverify_website/delete = ({ website }) => new Promise(
   async (resolve, reject) => {
@@ -125,7 +125,7 @@ const unverify_website/delete = ({ website }) => new Promise(
 * appUnderscoretypes String Apps or devices to get data for, default is all. (optional)
 * contentUnderscoretype String Filter to paid or organic data. Default is all. (optional)
 * source String Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
-* metricUnderscoretypes List Metric types to get data for, default is all.  (optional)
+* metricUnderscoretypes List Metric types to get data for, default is all. (optional)
 * splitUnderscorefield String How to split the data into groups. Not including this param means data won't be split. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns Map
@@ -159,15 +159,15 @@ const user_account/analytics = ({ startUnderscoredate, endUnderscoredate, fromUn
 *
 * startUnderscoredate date Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 * endUnderscoredate date Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-* sortUnderscoreby String Specify sorting order for metrics
+* sortUnderscoreby TopPinsSortBy Specify sorting order for metrics
 * fromUnderscoreclaimedUnderscorecontent String Filter on Pins that match your claimed domain. (optional)
 * pinUnderscoreformat String Pin formats to get data for, default is all. (optional)
 * appUnderscoretypes String Apps or devices to get data for, default is all. (optional)
 * contentUnderscoretype String Filter to paid or organic data. Default is all. (optional)
 * source String Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
-* metricUnderscoretypes List Metric types to get data for, default is all.  (optional)
+* metricUnderscoretypes List Metric types to get data for, default is all. (optional)
 * numUnderscoreofUnderscorepins Integer Number of pins to include, default is 10. Max is 50. (optional)
-* createdUnderscoreinUnderscorelastUnderscorenUnderscoredays Integer Get metrics for pins created in the last \"n\" days. (optional)
+* createdUnderscoreinUnderscorelastUnderscorenUnderscoredays BigDecimal Get metrics for pins created in the last \"n\" days. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns TopPinsAnalyticsResponse
 * */
@@ -202,15 +202,15 @@ const user_account/analytics/top_pins = ({ startUnderscoredate, endUnderscoredat
 *
 * startUnderscoredate date Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 * endUnderscoredate date Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-* sortUnderscoreby String Specify sorting order for video metrics
+* sortUnderscoreby TopVideoPinsSortBy Specify sorting order for video metrics
 * fromUnderscoreclaimedUnderscorecontent String Filter on Pins that match your claimed domain. (optional)
 * pinUnderscoreformat String Pin formats to get data for, default is all. (optional)
 * appUnderscoretypes String Apps or devices to get data for, default is all. (optional)
 * contentUnderscoretype String Filter to paid or organic data. Default is all. (optional)
 * source String Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
-* metricUnderscoretypes List Metric types to get video data for, default is all.  (optional)
+* metricUnderscoretypes List Metric types to get video data for, default is all. (optional)
 * numUnderscoreofUnderscorepins Integer Number of pins to include, default is 10. Max is 50. (optional)
-* createdUnderscoreinUnderscorelastUnderscorenUnderscoredays Integer Get metrics for pins created in the last \"n\" days. (optional)
+* createdUnderscoreinUnderscorelastUnderscorenUnderscoredays BigDecimal Get metrics for pins created in the last \"n\" days. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns TopVideoPinsAnalyticsResponse
 * */
@@ -245,7 +245,7 @@ const user_account/analytics/top_video_pins = ({ startUnderscoredate, endUndersc
 *
 * username String A valid username
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns user_account_followed_interests_200_response
 * */
 const user_account/followed_interests = ({ username, bookmark, pageUnderscoresize }) => new Promise(
@@ -266,7 +266,7 @@ const user_account/followed_interests = ({ username, bookmark, pageUnderscoresiz
 );
 /**
 * Get user account
-* Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+* Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns Account
@@ -289,22 +289,22 @@ const user_account/get = ({ adUnderscoreaccountUnderscoreid }) => new Promise(
 * List following
 * Get a list of who a certain user follows.
 *
-* bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* feedUnderscoretype UserFollowingFeedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
-* explicitUnderscorefollowing Boolean Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
-* returns user_following_get_200_response
+* explicitUnderscorefollowing Boolean Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
+* feedUnderscoretype UserFollowingFeedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
+* bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* returns followers_list_200_response
 * */
-const user_following/get = ({ bookmark, pageUnderscoresize, feedUnderscoretype, explicitUnderscorefollowing, adUnderscoreaccountUnderscoreid }) => new Promise(
+const user_following/get = ({ adUnderscoreaccountUnderscoreid, explicitUnderscorefollowing, feedUnderscoretype, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
+        adUnderscoreaccountUnderscoreid,
+        explicitUnderscorefollowing,
+        feedUnderscoretype,
         bookmark,
         pageUnderscoresize,
-        feedUnderscoretype,
-        explicitUnderscorefollowing,
-        adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -319,7 +319,7 @@ const user_following/get = ({ bookmark, pageUnderscoresize, feedUnderscoretype, 
 * Get user websites, claimed or not
 *
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns user_websites_get_200_response
 * */
 const user_websites/get = ({ bookmark, pageUnderscoresize }) => new Promise(
@@ -341,15 +341,15 @@ const user_websites/get = ({ bookmark, pageUnderscoresize }) => new Promise(
 * Verify website
 * Verify a website as a signed-in user.
 *
-* userWebsiteVerifyRequest UserWebsiteVerifyRequest Verify a website.
+* userWebsiteCreate UserWebsiteCreate 
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
-* returns UserWebsiteSummary
+* returns UserWebsite
 * */
-const verify_website/update = ({ userWebsiteVerifyRequest, adUnderscoreaccountUnderscoreid }) => new Promise(
+const verify_website/update = ({ userWebsiteCreate, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        userWebsiteVerifyRequest,
+        userWebsiteCreate,
         adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
@@ -365,7 +365,7 @@ const verify_website/update = ({ userWebsiteVerifyRequest, adUnderscoreaccountUn
 * Get verification code for user to install on the website to claim it.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
-* returns UserWebsiteVerificationCode
+* returns UserWebsiteVerification
 * */
 const website_verification/get = ({ adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {

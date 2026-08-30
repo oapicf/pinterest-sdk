@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Conversion event for which a conversion rate estimate is computed.",
+  "name": "CampaignPlanningConversionEvent",
+  "symbols": [
+    "SIGNUP",
+    "CHECKOUT",
+    "ADD_TO_CART",
+    "LEAD"
+  ]
+}

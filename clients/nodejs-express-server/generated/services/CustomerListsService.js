@@ -3,18 +3,18 @@ const Service = require('./Service');
 
 /**
 * Create customer lists
-* <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>
+* Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
 *
-* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* customerListRequest CustomerListRequest Parameters to get Customer lists info
+* adUnderscoreaccountUnderscoreid String 
+* customerListCreate CustomerListCreate 
 * returns CustomerList
 * */
-const customer_lists/create = ({ adUnderscoreaccountUnderscoreid, customerListRequest }) => new Promise(
+const customer_lists/create = ({ adUnderscoreaccountUnderscoreid, customerListCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
-        customerListRequest,
+        customerListCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -28,8 +28,8 @@ const customer_lists/create = ({ adUnderscoreaccountUnderscoreid, customerListRe
 * Get customer list
 * Gets a specific customer list given the customer list ID.
 *
-* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* customerUnderscorelistUnderscoreid String Unique identifier of a customer list
+* adUnderscoreaccountUnderscoreid String 
+* customerUnderscorelistUnderscoreid String Customer list ID.
 * returns CustomerList
 * */
 const customer_lists/get = ({ adUnderscoreaccountUnderscoreid, customerUnderscorelistUnderscoreid }) => new Promise(
@@ -49,22 +49,24 @@ const customer_lists/get = ({ adUnderscoreaccountUnderscoreid, customerUnderscor
 );
 /**
 * Get customer lists
-* <p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+* Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 *
-* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* order String The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+* adUnderscoreaccountUnderscoreid String 
 * bookmark String Cursor used to fetch the next page of items (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* order PinterestLibPaginationOrder The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+* excludeUnderscorenca Boolean When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). (optional)
 * returns customer_lists_list_200_response
 * */
-const customer_lists/list = ({ adUnderscoreaccountUnderscoreid, pageUnderscoresize, order, bookmark }) => new Promise(
+const customer_lists/list = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize, order, excludeUnderscorenca }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
+        bookmark,
         pageUnderscoresize,
         order,
-        bookmark,
+        excludeUnderscorenca,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -76,20 +78,20 @@ const customer_lists/list = ({ adUnderscoreaccountUnderscoreid, pageUnderscoresi
 );
 /**
 * Update customer list
-* <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
+* Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
 *
-* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* customerUnderscorelistUnderscoreid String Unique identifier of a customer list
-* customerListUpdateRequest CustomerListUpdateRequest 
+* adUnderscoreaccountUnderscoreid String 
+* customerUnderscorelistUnderscoreid String Customer list ID.
+* customerListUpdateWithRequiredBody CustomerListUpdateWithRequiredBody 
 * returns CustomerList
 * */
-const customer_lists/update = ({ adUnderscoreaccountUnderscoreid, customerUnderscorelistUnderscoreid, customerListUpdateRequest }) => new Promise(
+const customer_lists/update = ({ adUnderscoreaccountUnderscoreid, customerUnderscorelistUnderscoreid, customerListUpdateWithRequiredBody }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
         customerUnderscorelistUnderscoreid,
-        customerListUpdateRequest,
+        customerListUpdateWithRequiredBody,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

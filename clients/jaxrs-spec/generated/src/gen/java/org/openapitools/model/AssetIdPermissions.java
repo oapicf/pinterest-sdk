@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AssetGroupBinding;
+import org.openapitools.model.AssetTypeResponse;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,17 +23,29 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An object containing the permissions a business member has on the asset.")
 @JsonTypeName("AssetIdPermissions")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AssetIdPermissions   {
   private AssetGroupBinding assetGroupInfo;
   private String assetId;
-  private String assetType;
+  private AssetTypeResponse assetType;
   private @Valid List<String> permissions = new ArrayList<>();
 
   public AssetIdPermissions() {
   }
 
+  @JsonCreator
+  public AssetIdPermissions(
+    @JsonProperty(required = true, value = "asset_id") String assetId,
+    @JsonProperty(required = true, value = "asset_type") AssetTypeResponse assetType,
+    @JsonProperty(required = true, value = "permissions") List<String> permissions
+  ) {
+    this.assetId = assetId;
+    this.assetType = assetType;
+    this.permissions = permissions;
+  }
+
   /**
+   * An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals &#39;ASSET_GROUP&#39;.
    **/
   public AssetIdPermissions assetGroupInfo(AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
@@ -40,7 +53,7 @@ public class AssetIdPermissions   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.")
   @JsonProperty("asset_group_info")
   @Valid public AssetGroupBinding getAssetGroupInfo() {
     return assetGroupInfo;
@@ -60,34 +73,33 @@ public class AssetIdPermissions   {
   }
 
   
-  @ApiModelProperty(example = "549755885175", value = "Unique identifier of a business asset.")
-  @JsonProperty("asset_id")
-   @Pattern(regexp="^\\d+$") @Size(min=1,max=20)public String getAssetId() {
+  @ApiModelProperty(example = "549755885175", required = true, value = "Unique identifier of a business asset.")
+  @JsonProperty(required = true, value = "asset_id")
+  @NotNull  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)public String getAssetId() {
     return assetId;
   }
 
-  @JsonProperty("asset_id")
+  @JsonProperty(required = true, value = "asset_id")
   public void setAssetId(String assetId) {
     this.assetId = assetId;
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
-  public AssetIdPermissions assetType(String assetType) {
+  public AssetIdPermissions assetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
     return this;
   }
 
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
-  @JsonProperty("asset_type")
-  public String getAssetType() {
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "asset_type")
+  @NotNull public AssetTypeResponse getAssetType() {
     return assetType;
   }
 
-  @JsonProperty("asset_type")
-  public void setAssetType(String assetType) {
+  @JsonProperty(required = true, value = "asset_type")
+  public void setAssetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
@@ -100,13 +112,13 @@ public class AssetIdPermissions   {
   }
 
   
-  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
-  @JsonProperty("permissions")
-  public List<String> getPermissions() {
+  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", required = true, value = "Permission levels member or partner has on an asset.")
+  @JsonProperty(required = true, value = "permissions")
+  @NotNull public List<String> getPermissions() {
     return permissions;
   }
 
-  @JsonProperty("permissions")
+  @JsonProperty(required = true, value = "permissions")
   public void setPermissions(List<String> permissions) {
     this.permissions = permissions;
   }
@@ -166,12 +178,8 @@ public class AssetIdPermissions   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

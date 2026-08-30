@@ -1,0 +1,41 @@
+
+
+export interface ConversionTagConfigs { 
+  /**
+   * Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   */
+  aem_db_enabled?: boolean | null;
+  /**
+   * Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   */
+  aem_enabled?: boolean | null;
+  /**
+   * Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   */
+  aem_external_id_enabled?: boolean | null;
+  /**
+   * Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   */
+  aem_fnln_enabled?: boolean | null;
+  /**
+   * Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   */
+  aem_ge_enabled?: boolean | null;
+  /**
+   * Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   */
+  aem_loc_enabled?: boolean | null;
+  /**
+   * Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+   */
+  aem_ph_enabled?: boolean | null;
+  /**
+   * Metadata ingestion frequency.
+   */
+  md_frequency?: number | null;
+  /**
+   * List of advertiser subdomains configured for NoCodeCAPI calls.
+   */
+  no_code_capi_domains?: Array<string>;
+}
+

@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.CreateAssetAccessRequestBodyAssetRequestsInner
+open OpenAPI.Model.CreateAssetAccessRequestItem
 
 module CreateAssetAccessRequestBody =
 
@@ -12,7 +12,7 @@ module CreateAssetAccessRequestBody =
   [<CLIMutable>]
   type CreateAssetAccessRequestBody = {
     [<JsonProperty(PropertyName = "asset_requests")>]
-    AssetRequests : CreateAssetAccessRequestBodyAssetRequestsInner[];
+    AssetRequests : CreateAssetAccessRequestItem[];
   }
 
   //#endregion

@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  CreateAssetAccessRequestErrorMessageInner = openapi_server.resourceTypes.CreateAssetAccessRequestErrorMessageInner
+  AssetAccessRequestError = openapi_server.resourceTypes.AssetAccessRequestError
 }
 resourceTypes {
 
@@ -18,13 +18,13 @@ resourceTypes {
     properties {
         exceptions {
           type = array
-          items.type = CreateAssetAccessRequestErrorMessageInner
+          items.type = AssetAccessRequestError
           description = "A list of errors associated with the asset access requests. Will be returned if there is an error."
           optional = false
         }
         invites {
           # TODO
-          description = ""
+          description = "An object mapping each partner id to the asset access request id. Only one request id is returned per partner."
           optional = false
         }
     }

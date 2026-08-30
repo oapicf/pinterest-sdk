@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsVerticalProductGroup (
-    /* Catalog id pertaining to the creative assets product group. */
+    /* Catalog ID pertaining to the product group. */
     _catalogId: String,
     _catalogType: String,
     _country: Option[String],
@@ -13,12 +13,12 @@ case class CatalogsVerticalProductGroup (
     /* id of the catalogs feed belonging to this catalog product group */
     _feedId: String,
     _filters: CatalogsCreativeAssetsProductGroupFilters,
-    /* ID of the creative assets product group. */
+    /* ID of the catalog product group. */
     _id: String,
     /* boolean indicator of whether the product group is being featured or not */
     _isFeatured: Option[Boolean],
     _locale: Option[String],
-    /* Name of creative assets product group */
+    /* Name of catalog product group */
     _name: Option[String],
     _status: Option[CatalogsProductGroupStatus],
     _type: CatalogsHotelProductGroupType,

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**Label**](Label.md) |  | [optional] 
+**Data** | Pointer to [**LabelErrorData**](LabelErrorData.md) |  | [optional] 
 **ErrorMessages** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *LabelError) GetData() Label`
+`func (o *LabelError) GetData() LabelErrorData`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *LabelError) GetDataOk() (*Label, bool)`
+`func (o *LabelError) GetDataOk() (*LabelErrorData, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *LabelError) SetData(v Label)`
+`func (o *LabelError) SetData(v LabelErrorData)`
 
 SetData sets Data field to given value.
 

@@ -13,7 +13,6 @@ import org.openapitools.vertxweb.server.model.BatchOperationStatus;
 import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsItemsBatch;
 import org.openapitools.vertxweb.server.model.CatalogsHotelItemsBatch;
 import org.openapitools.vertxweb.server.model.CatalogsRetailItemsBatch;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.CreativeAssetsProcessingRecord;
 
 /**
@@ -22,8 +21,26 @@ import org.openapitools.vertxweb.server.model.CreativeAssetsProcessingRecord;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsItemsBatch   {
   
-  private CatalogsType catalogType;
   private String batchId;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private OffsetDateTime completedTime;
   private OffsetDateTime createdTime;
   private List<CreativeAssetsProcessingRecord> items = new ArrayList<>();
@@ -33,22 +50,13 @@ public class CatalogsItemsBatch   {
 
   }
 
-  public CatalogsItemsBatch (CatalogsType catalogType, String batchId, OffsetDateTime completedTime, OffsetDateTime createdTime, List<CreativeAssetsProcessingRecord> items, BatchOperationStatus status) {
-    this.catalogType = catalogType;
+  public CatalogsItemsBatch (String batchId, CatalogTypeEnum catalogType, OffsetDateTime completedTime, OffsetDateTime createdTime, List<CreativeAssetsProcessingRecord> items, BatchOperationStatus status) {
     this.batchId = batchId;
+    this.catalogType = catalogType;
     this.completedTime = completedTime;
     this.createdTime = createdTime;
     this.items = items;
     this.status = status;
-  }
-
-    
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
   }
 
     
@@ -58,6 +66,15 @@ public class CatalogsItemsBatch   {
   }
   public void setBatchId(String batchId) {
     this.batchId = batchId;
+  }
+
+    
+  @JsonProperty("catalog_type")
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
     
@@ -106,8 +123,8 @@ public class CatalogsItemsBatch   {
       return false;
     }
     CatalogsItemsBatch catalogsItemsBatch = (CatalogsItemsBatch) o;
-    return Objects.equals(catalogType, catalogsItemsBatch.catalogType) &&
-        Objects.equals(batchId, catalogsItemsBatch.batchId) &&
+    return Objects.equals(batchId, catalogsItemsBatch.batchId) &&
+        Objects.equals(catalogType, catalogsItemsBatch.catalogType) &&
         Objects.equals(completedTime, catalogsItemsBatch.completedTime) &&
         Objects.equals(createdTime, catalogsItemsBatch.createdTime) &&
         Objects.equals(items, catalogsItemsBatch.items) &&
@@ -116,7 +133,7 @@ public class CatalogsItemsBatch   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, batchId, completedTime, createdTime, items, status);
+    return Objects.hash(batchId, catalogType, completedTime, createdTime, items, status);
   }
 
   @Override
@@ -124,8 +141,8 @@ public class CatalogsItemsBatch   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsBatch {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
@@ -139,9 +156,6 @@ public class CatalogsItemsBatch   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

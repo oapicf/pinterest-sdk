@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -14,19 +15,19 @@ import org.openapitools.model.CatalogsFeedVideoCounts;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedProcessingResult
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedProcessingResult {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -34,14 +35,14 @@ public class CatalogsFeedProcessingResult {
 
   private String id;
 
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private Date updatedAt;
-
   private CatalogsFeedIngestionDetails ingestionDetails;
 
   private JsonNullable<CatalogsFeedProductCounts> productCounts = JsonNullable.<CatalogsFeedProductCounts>undefined();
 
   private CatalogsFeedProcessingStatus status;
+
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private Date updatedAt;
 
   private CatalogsFeedValidationDetails validationDetails;
 
@@ -54,13 +55,13 @@ public class CatalogsFeedProcessingResult {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsFeedProcessingResult(Date createdAt, String id, Date updatedAt, CatalogsFeedIngestionDetails ingestionDetails, CatalogsFeedProductCounts productCounts, CatalogsFeedProcessingStatus status, CatalogsFeedValidationDetails validationDetails) {
+  public CatalogsFeedProcessingResult(Date createdAt, String id, CatalogsFeedIngestionDetails ingestionDetails, CatalogsFeedProductCounts productCounts, CatalogsFeedProcessingStatus status, Date updatedAt, CatalogsFeedValidationDetails validationDetails) {
     this.createdAt = createdAt;
     this.id = id;
-    this.updatedAt = updatedAt;
     this.ingestionDetails = ingestionDetails;
     this.productCounts = JsonNullable.of(productCounts);
     this.status = status;
+    this.updatedAt = updatedAt;
     this.validationDetails = validationDetails;
   }
 
@@ -73,8 +74,8 @@ public class CatalogsFeedProcessingResult {
    * Get createdAt
    * @return createdAt
    */
-  @NotNull @Valid 
-  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Valid 
+  @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -90,11 +91,11 @@ public class CatalogsFeedProcessingResult {
   }
 
   /**
-   * Get id
+   * ID of the feed processing result.
    * @return id
    */
-  @NotNull 
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "864344156814050986", description = "ID of the feed processing result.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -102,26 +103,6 @@ public class CatalogsFeedProcessingResult {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  public CatalogsFeedProcessingResult updatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-  /**
-   * Get updatedAt
-   * @return updatedAt
-   */
-  @NotNull @Valid 
-  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
   }
 
   public CatalogsFeedProcessingResult ingestionDetails(CatalogsFeedIngestionDetails ingestionDetails) {
@@ -184,6 +165,26 @@ public class CatalogsFeedProcessingResult {
     this.status = status;
   }
 
+  public CatalogsFeedProcessingResult updatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+  /**
+   * Get updatedAt
+   * @return updatedAt
+   */
+  @Valid 
+  @Schema(name = "updated_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("updated_at")
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
   public CatalogsFeedProcessingResult validationDetails(CatalogsFeedValidationDetails validationDetails) {
     this.validationDetails = validationDetails;
     return this;
@@ -235,17 +236,17 @@ public class CatalogsFeedProcessingResult {
     CatalogsFeedProcessingResult catalogsFeedProcessingResult = (CatalogsFeedProcessingResult) o;
     return Objects.equals(this.createdAt, catalogsFeedProcessingResult.createdAt) &&
         Objects.equals(this.id, catalogsFeedProcessingResult.id) &&
-        Objects.equals(this.updatedAt, catalogsFeedProcessingResult.updatedAt) &&
         Objects.equals(this.ingestionDetails, catalogsFeedProcessingResult.ingestionDetails) &&
         Objects.equals(this.productCounts, catalogsFeedProcessingResult.productCounts) &&
         Objects.equals(this.status, catalogsFeedProcessingResult.status) &&
+        Objects.equals(this.updatedAt, catalogsFeedProcessingResult.updatedAt) &&
         Objects.equals(this.validationDetails, catalogsFeedProcessingResult.validationDetails) &&
         Objects.equals(this.videoCounts, catalogsFeedProcessingResult.videoCounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, ingestionDetails, productCounts, status, validationDetails, videoCounts);
+    return Objects.hash(createdAt, id, ingestionDetails, productCounts, status, updatedAt, validationDetails, videoCounts);
   }
 
   @Override
@@ -254,10 +255,10 @@ public class CatalogsFeedProcessingResult {
     sb.append("class CatalogsFeedProcessingResult {\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    ingestionDetails: ").append(toIndentedString(ingestionDetails)).append("\n");
     sb.append("    productCounts: ").append(toIndentedString(productCounts)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    validationDetails: ").append(toIndentedString(validationDetails)).append("\n");
     sb.append("    videoCounts: ").append(toIndentedString(videoCounts)).append("\n");
     sb.append("}");
@@ -269,10 +270,7 @@ public class CatalogsFeedProcessingResult {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **NSString*** |  | [optional] 
-**items** | [**NSArray&lt;OAIAudience&gt;***](OAIAudience.md) |  | 
+**items** | [**NSArray&lt;OAIAdAccountsAudience&gt;***](OAIAdAccountsAudience.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

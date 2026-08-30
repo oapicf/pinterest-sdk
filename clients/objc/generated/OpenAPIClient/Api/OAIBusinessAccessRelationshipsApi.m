@@ -1,22 +1,20 @@
 #import "OAIBusinessAccessRelationshipsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIBrandAccountsCreate200Response.h"
-#import "OAIBrandAccountsCreateRequest.h"
-#import "OAIBrandAccountsUpdateRequest.h"
-#import "OAIDeletePartnersRequest.h"
-#import "OAIDeletePartnersResponse.h"
-#import "OAIDeletedMembersResponse.h"
-#import "OAIError.h"
+#import "OAIBrandAccount.h"
+#import "OAIBrandAccountCreate.h"
+#import "OAIBrandAccountUpdate.h"
+#import "OAIBusinessMembershipMember.h"
+#import "OAIDeleteBusinessMembership200Response.h"
+#import "OAIDeleteBusinessMembershipBody.h"
+#import "OAIDeleteBusinessPartners.h"
+#import "OAIDeleteBusinessPartnersDelete.h"
 #import "OAIGetBusinessEmployers200Response.h"
-#import "OAIGetBusinessMembers200Response.h"
-#import "OAIGetBusinessPartners200Response.h"
 #import "OAIMemberBusinessRole.h"
-#import "OAIMembersToDeleteBody.h"
 #import "OAIPartnerType.h"
-#import "OAISystemUserUpdateRequest.h"
-#import "OAIUpdateMemberBusinessRoleBody.h"
-#import "OAIUpdateMemberResultsResponseArray.h"
+#import "OAIPinterestLibError.h"
+#import "OAISystemUserUpdateWithRequiredBody.h"
+#import "OAIUpdateBusinessMembershipsResponse.h"
 
 
 @interface OAIBusinessAccessRelationshipsApi ()
@@ -69,13 +67,13 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 /// Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
 ///  @param businessHierarchyId business hierarchy node id 
 ///
-///  @param brandAccountsCreateRequest  
+///  @param brandAccountCreate  
 ///
-///  @returns OAIBrandAccountsCreate200Response*
+///  @returns OAIBrandAccount*
 ///
 -(NSURLSessionTask*) brandAccountsCreateWithBusinessHierarchyId: (NSString*) businessHierarchyId
-    brandAccountsCreateRequest: (OAIBrandAccountsCreateRequest*) brandAccountsCreateRequest
-    completionHandler: (void (^)(OAIBrandAccountsCreate200Response* output, NSError* error)) handler {
+    brandAccountCreate: (OAIBrandAccountCreate*) brandAccountCreate
+    completionHandler: (void (^)(OAIBrandAccount* output, NSError* error)) handler {
     // verify the required parameter 'businessHierarchyId' is set
     if (businessHierarchyId == nil) {
         NSParameterAssert(businessHierarchyId);
@@ -87,11 +85,11 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'brandAccountsCreateRequest' is set
-    if (brandAccountsCreateRequest == nil) {
-        NSParameterAssert(brandAccountsCreateRequest);
+    // verify the required parameter 'brandAccountCreate' is set
+    if (brandAccountCreate == nil) {
+        NSParameterAssert(brandAccountCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"brandAccountsCreateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"brandAccountCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -126,7 +124,7 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = brandAccountsCreateRequest;
+    bodyParam = brandAccountCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -139,10 +137,10 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBrandAccountsCreate200Response*"
+                              responseType: @"OAIBrandAccount*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBrandAccountsCreate200Response*)data, error);
+                                    handler((OAIBrandAccount*)data, error);
                                 }
                             }];
 }
@@ -150,29 +148,18 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 ///
 /// Update a Brand Account
 /// Update an existing Brand Account
+///  @param brandAccountId  
+///
 ///  @param businessHierarchyId business hierarchy node id 
 ///
-///  @param brandAccountId Unique identifier of a brand account. 
+///  @param brandAccountUpdate  
 ///
-///  @param brandAccountsUpdateRequest  
+///  @returns OAIBrandAccount*
 ///
-///  @returns OAIBrandAccountsCreate200Response*
-///
--(NSURLSessionTask*) brandAccountsUpdateWithBusinessHierarchyId: (NSString*) businessHierarchyId
-    brandAccountId: (NSString*) brandAccountId
-    brandAccountsUpdateRequest: (OAIBrandAccountsUpdateRequest*) brandAccountsUpdateRequest
-    completionHandler: (void (^)(OAIBrandAccountsCreate200Response* output, NSError* error)) handler {
-    // verify the required parameter 'businessHierarchyId' is set
-    if (businessHierarchyId == nil) {
-        NSParameterAssert(businessHierarchyId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessHierarchyId"] };
-            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
+-(NSURLSessionTask*) brandAccountsUpdateWithBrandAccountId: (NSString*) brandAccountId
+    businessHierarchyId: (NSString*) businessHierarchyId
+    brandAccountUpdate: (OAIBrandAccountUpdate*) brandAccountUpdate
+    completionHandler: (void (^)(OAIBrandAccount* output, NSError* error)) handler {
     // verify the required parameter 'brandAccountId' is set
     if (brandAccountId == nil) {
         NSParameterAssert(brandAccountId);
@@ -184,11 +171,22 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'brandAccountsUpdateRequest' is set
-    if (brandAccountsUpdateRequest == nil) {
-        NSParameterAssert(brandAccountsUpdateRequest);
+    // verify the required parameter 'businessHierarchyId' is set
+    if (businessHierarchyId == nil) {
+        NSParameterAssert(businessHierarchyId);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"brandAccountsUpdateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessHierarchyId"] };
+            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'brandAccountUpdate' is set
+    if (brandAccountUpdate == nil) {
+        NSParameterAssert(brandAccountUpdate);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"brandAccountUpdate"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -198,11 +196,11 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (businessHierarchyId != nil) {
-        pathParams[@"business_hierarchy_id"] = businessHierarchyId;
-    }
     if (brandAccountId != nil) {
         pathParams[@"brand_account_id"] = brandAccountId;
+    }
+    if (businessHierarchyId != nil) {
+        pathParams[@"business_hierarchy_id"] = businessHierarchyId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -226,7 +224,7 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = brandAccountsUpdateRequest;
+    bodyParam = brandAccountUpdate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -239,10 +237,10 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIBrandAccountsCreate200Response*"
+                              responseType: @"OAIBrandAccount*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIBrandAccountsCreate200Response*)data, error);
+                                    handler((OAIBrandAccount*)data, error);
                                 }
                             }];
 }
@@ -252,13 +250,13 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 /// Terminate memberships between the specified members and your business.
 ///  @param businessId Business id 
 ///
-///  @param membersToDeleteBody List of members with role to delete. 
+///  @param deleteBusinessMembershipBody  
 ///
-///  @returns OAIDeletedMembersResponse*
+///  @returns OAIDeleteBusinessMembership200Response*
 ///
 -(NSURLSessionTask*) deleteBusinessMembershipWithBusinessId: (NSString*) businessId
-    membersToDeleteBody: (OAIMembersToDeleteBody*) membersToDeleteBody
-    completionHandler: (void (^)(OAIDeletedMembersResponse* output, NSError* error)) handler {
+    deleteBusinessMembershipBody: (OAIDeleteBusinessMembershipBody*) deleteBusinessMembershipBody
+    completionHandler: (void (^)(OAIDeleteBusinessMembership200Response* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -270,11 +268,11 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'membersToDeleteBody' is set
-    if (membersToDeleteBody == nil) {
-        NSParameterAssert(membersToDeleteBody);
+    // verify the required parameter 'deleteBusinessMembershipBody' is set
+    if (deleteBusinessMembershipBody == nil) {
+        NSParameterAssert(deleteBusinessMembershipBody);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"membersToDeleteBody"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"deleteBusinessMembershipBody"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -309,7 +307,7 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = membersToDeleteBody;
+    bodyParam = deleteBusinessMembershipBody;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"DELETE"
@@ -322,10 +320,10 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIDeletedMembersResponse*"
+                              responseType: @"OAIDeleteBusinessMembership200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIDeletedMembersResponse*)data, error);
+                                    handler((OAIDeleteBusinessMembership200Response*)data, error);
                                 }
                             }];
 }
@@ -335,13 +333,13 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 /// Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
 ///  @param businessId Unique identifier of the requesting business. 
 ///
-///  @param deletePartnersRequest An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete.  
+///  @param deleteBusinessPartnersDelete  
 ///
-///  @returns OAIDeletePartnersResponse*
+///  @returns OAIDeleteBusinessPartners*
 ///
 -(NSURLSessionTask*) deleteBusinessPartnersWithBusinessId: (NSString*) businessId
-    deletePartnersRequest: (OAIDeletePartnersRequest*) deletePartnersRequest
-    completionHandler: (void (^)(OAIDeletePartnersResponse* output, NSError* error)) handler {
+    deleteBusinessPartnersDelete: (OAIDeleteBusinessPartnersDelete*) deleteBusinessPartnersDelete
+    completionHandler: (void (^)(OAIDeleteBusinessPartners* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -353,11 +351,11 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'deletePartnersRequest' is set
-    if (deletePartnersRequest == nil) {
-        NSParameterAssert(deletePartnersRequest);
+    // verify the required parameter 'deleteBusinessPartnersDelete' is set
+    if (deleteBusinessPartnersDelete == nil) {
+        NSParameterAssert(deleteBusinessPartnersDelete);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"deletePartnersRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"deleteBusinessPartnersDelete"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -392,7 +390,7 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = deletePartnersRequest;
+    bodyParam = deleteBusinessPartnersDelete;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"DELETE"
@@ -405,10 +403,10 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIDeletePartnersResponse*"
+                              responseType: @"OAIDeleteBusinessPartners*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIDeletePartnersResponse*)data, error);
+                                    handler((OAIDeleteBusinessPartners*)data, error);
                                 }
                             }];
 }
@@ -416,25 +414,31 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 ///
 /// List business employers for user
 /// Get all of the viewing user's business employers.
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param assetsSummary Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to @(YES))
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
 ///  @returns OAIGetBusinessEmployers200Response*
 ///
--(NSURLSessionTask*) getBusinessEmployersWithPageSize: (NSNumber*) pageSize
+-(NSURLSessionTask*) getBusinessEmployersWithAssetsSummary: (NSNumber*) assetsSummary
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
     completionHandler: (void (^)(OAIGetBusinessEmployers200Response* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/businesses/employers"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    if (pageSize != nil) {
-        queryParams[@"page_size"] = pageSize;
+    if (assetsSummary != nil) {
+        queryParams[@"assets_summary"] = [assetsSummary isEqual:@(YES)] ? @"true" : @"false";
     }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -493,9 +497,9 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
-///  @returns OAIGetBusinessMembers200Response*
+///  @returns OAIGetBusinessEmployers200Response*
 ///
 -(NSURLSessionTask*) getBusinessMembersWithBusinessId: (NSString*) businessId
     fetchSystemUsers: (NSNumber*) fetchSystemUsers
@@ -505,7 +509,7 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     startIndex: (NSNumber*) startIndex
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    completionHandler: (void (^)(OAIGetBusinessMembers200Response* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIGetBusinessEmployers200Response* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -578,10 +582,10 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIGetBusinessMembers200Response*"
+                              responseType: @"OAIGetBusinessEmployers200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIGetBusinessMembers200Response*)data, error);
+                                    handler((OAIGetBusinessEmployers200Response*)data, error);
                                 }
                             }];
 }
@@ -593,26 +597,29 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 ///
 ///  @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to @(NO))
 ///
-///  @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+///  @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
 ///
 ///  @param partnerIds A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
 ///
 ///  @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to @0)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param sortAscending Sort ascending. (optional)
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @returns OAIGetBusinessPartners200Response*
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
+///
+///  @returns OAIGetBusinessEmployers200Response*
 ///
 -(NSURLSessionTask*) getBusinessPartnersWithBusinessId: (NSString*) businessId
     assetsSummary: (NSNumber*) assetsSummary
     partnerType: (OAIPartnerType) partnerType
     partnerIds: (NSString*) partnerIds
     startIndex: (NSNumber*) startIndex
-    pageSize: (NSNumber*) pageSize
+    sortAscending: (NSNumber*) sortAscending
     bookmark: (NSString*) bookmark
-    completionHandler: (void (^)(OAIGetBusinessPartners200Response* output, NSError* error)) handler {
+    pageSize: (NSNumber*) pageSize
+    completionHandler: (void (^)(OAIGetBusinessEmployers200Response* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -644,11 +651,14 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     if (startIndex != nil) {
         queryParams[@"start_index"] = startIndex;
     }
-    if (pageSize != nil) {
-        queryParams[@"page_size"] = pageSize;
+    if (sortAscending != nil) {
+        queryParams[@"sort_ascending"] = [sortAscending isEqual:@(YES)] ? @"true" : @"false";
     }
     if (bookmark != nil) {
         queryParams[@"bookmark"] = bookmark;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -682,10 +692,10 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIGetBusinessPartners200Response*"
+                              responseType: @"OAIGetBusinessEmployers200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIGetBusinessPartners200Response*)data, error);
+                                    handler((OAIGetBusinessEmployers200Response*)data, error);
                                 }
                             }];
 }
@@ -697,13 +707,13 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 ///
 ///  @param systemUserId Unique identifier of a system user. 
 ///
-///  @param systemUserUpdateRequest  
+///  @param systemUserUpdateWithRequiredBody  
 ///
 ///  @returns void
 ///
 -(NSURLSessionTask*) systemUserUpdateWithBusinessId: (NSString*) businessId
     systemUserId: (NSString*) systemUserId
-    systemUserUpdateRequest: (OAISystemUserUpdateRequest*) systemUserUpdateRequest
+    systemUserUpdateWithRequiredBody: (OAISystemUserUpdateWithRequiredBody*) systemUserUpdateWithRequiredBody
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
@@ -727,11 +737,11 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'systemUserUpdateRequest' is set
-    if (systemUserUpdateRequest == nil) {
-        NSParameterAssert(systemUserUpdateRequest);
+    // verify the required parameter 'systemUserUpdateWithRequiredBody' is set
+    if (systemUserUpdateWithRequiredBody == nil) {
+        NSParameterAssert(systemUserUpdateWithRequiredBody);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"systemUserUpdateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"systemUserUpdateWithRequiredBody"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
             handler(error);
         }
@@ -769,7 +779,7 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = systemUserUpdateRequest;
+    bodyParam = systemUserUpdateWithRequiredBody;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -795,13 +805,13 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 /// Update a member's business role within the business.
 ///  @param businessId Business id 
 ///
-///  @param updateMemberBusinessRoleBody List of objects with the member id and the business_role. 
+///  @param businessMembershipMember  
 ///
-///  @returns OAIUpdateMemberResultsResponseArray*
+///  @returns OAIUpdateBusinessMembershipsResponse*
 ///
 -(NSURLSessionTask*) updateBusinessMembershipsWithBusinessId: (NSString*) businessId
-    updateMemberBusinessRoleBody: (NSArray<OAIUpdateMemberBusinessRoleBody>*) updateMemberBusinessRoleBody
-    completionHandler: (void (^)(OAIUpdateMemberResultsResponseArray* output, NSError* error)) handler {
+    businessMembershipMember: (NSArray<OAIBusinessMembershipMember>*) businessMembershipMember
+    completionHandler: (void (^)(OAIUpdateBusinessMembershipsResponse* output, NSError* error)) handler {
     // verify the required parameter 'businessId' is set
     if (businessId == nil) {
         NSParameterAssert(businessId);
@@ -813,11 +823,11 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'updateMemberBusinessRoleBody' is set
-    if (updateMemberBusinessRoleBody == nil) {
-        NSParameterAssert(updateMemberBusinessRoleBody);
+    // verify the required parameter 'businessMembershipMember' is set
+    if (businessMembershipMember == nil) {
+        NSParameterAssert(businessMembershipMember);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"updateMemberBusinessRoleBody"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessMembershipMember"] };
             NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -852,7 +862,7 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = updateMemberBusinessRoleBody;
+    bodyParam = businessMembershipMember;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PATCH"
@@ -865,10 +875,10 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIUpdateMemberResultsResponseArray*"
+                              responseType: @"OAIUpdateBusinessMembershipsResponse*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIUpdateMemberResultsResponseArray*)data, error);
+                                    handler((OAIUpdateBusinessMembershipsResponse*)data, error);
                                 }
                             }];
 }

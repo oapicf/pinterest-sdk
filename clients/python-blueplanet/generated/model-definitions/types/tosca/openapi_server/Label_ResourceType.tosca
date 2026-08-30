@@ -7,8 +7,9 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  LabelStatus = openapi_server.resourceTypes.LabelStatus
-  LabelType = openapi_server.resourceTypes.LabelType
+  NullableLabelStatus = openapi_server.resourceTypes.NullableLabelStatus
+  NullableLabelType = openapi_server.resourceTypes.NullableLabelType
+  import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
 
@@ -20,33 +21,22 @@ resourceTypes {
         id {
           type =  string
           description = "Label ID."
-          optional = false
+          optional = true
         }
         label_type {
-          type = LabelType
+          type = NullableLabelType
           description = ""
-          optional = false
-        }
-        parent_id {
-          type =  string
-          description = "Label parent entity ID."
-          optional = false
-        }
-        parent_type {
-          type =  string
-          description = "Label parent entity type."
-          enum = ["CAMPAIGN", ""]
-          optional = false
+          optional = true
         }
         status {
-          type = LabelStatus
+          type = NullableLabelStatus
           description = ""
           optional = false
         }
         value {
           type =  string
-          description = "Label name."
-          optional = false
+          description = "Label name. 100-character limit."
+          optional = true
         }
     }
   }

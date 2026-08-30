@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Create customer list upload
 
-<a href=""/docs/getting-started/using-beta-and-restricted-features/"" target=""_blank"">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=""/docs/api/v5/customer_lists-update/"" target=""_blank"">update customer list endpoint</a></u> documentation for additional information.</b></p>
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 ```powershell
@@ -27,9 +27,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$CustomerListId = "MyCustomerListId" # String | Unique identifier of a customer list
-$CustomerListUploadCreateRequest = Initialize-CustomerListUploadCreateRequest -Operation "ADD" -TotalParts 2 # CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+$AdAccountId = "MyAdAccountId" # String | 
+$CustomerListId = "MyCustomerListId" # String | Customer list ID.
+$CustomerListUploadCreateRequest = Initialize-CustomerListUploadCreateRequest -Operation "ADD" -TotalParts 2 # CustomerListUploadCreateRequest | 
 
 # Create customer list upload
 try {
@@ -44,9 +44,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **CustomerListId** | **String**| Unique identifier of a customer list | 
- **CustomerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request | 
+ **AdAccountId** | **String**|  | 
+ **CustomerListId** | **String**| Customer list ID. | 
+ **CustomerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)|  | 
 
 ### Return type
 
@@ -65,14 +65,14 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-CustomerListUploadsGet"></a>
 # **Invoke-CustomerListUploadsGet**
-> CustomerListUploadResponse Invoke-CustomerListUploadsGet<br>
+> CustomerListUpload Invoke-CustomerListUploadsGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomerListId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomerListUploadId] <String><br>
 
 Get customer list upload
 
-<a href=""/docs/getting-started/using-beta-and-restricted-features/"" target=""_blank"">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+Get the metadata for a given upload by its ID.
 
 ### Example
 ```powershell
@@ -81,9 +81,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$CustomerListId = "MyCustomerListId" # String | Unique identifier of a customer list
-$CustomerListUploadId = "MyCustomerListUploadId" # String | Unique identifier of a customer list upload
+$AdAccountId = "MyAdAccountId" # String | 
+$CustomerListId = "MyCustomerListId" # String | Customer list ID.
+$CustomerListUploadId = "MyCustomerListUploadId" # String | Customer List Upload ID.
 
 # Get customer list upload
 try {
@@ -98,13 +98,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **CustomerListId** | **String**| Unique identifier of a customer list | 
- **CustomerListUploadId** | **String**| Unique identifier of a customer list upload | 
+ **AdAccountId** | **String**|  | 
+ **CustomerListId** | **String**| Customer list ID. | 
+ **CustomerListUploadId** | **String**| Customer List Upload ID. | 
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md) (PSCustomObject)
+[**CustomerListUpload**](CustomerListUpload.md) (PSCustomObject)
 
 ### Authorization
 
@@ -119,14 +119,14 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-CustomerListUploadsRun"></a>
 # **Invoke-CustomerListUploadsRun**
-> CustomerListUploadResponse Invoke-CustomerListUploadsRun<br>
+> CustomerListUpload Invoke-CustomerListUploadsRun<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomerListId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomerListUploadId] <String><br>
 
 Run customer list upload
 
-<a href=""/docs/getting-started/using-beta-and-restricted-features/"" target=""_blank"">Closed beta</a> <p>Begin processing a customer list upload.</p>
+Begin processing a customer list upload.
 
 ### Example
 ```powershell
@@ -135,9 +135,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$CustomerListId = "MyCustomerListId" # String | Unique identifier of a customer list
-$CustomerListUploadId = "MyCustomerListUploadId" # String | Unique identifier of a customer list upload
+$AdAccountId = "MyAdAccountId" # String | 
+$CustomerListId = "MyCustomerListId" # String | Customer list ID.
+$CustomerListUploadId = "MyCustomerListUploadId" # String | Customer List Upload ID.
 
 # Run customer list upload
 try {
@@ -152,13 +152,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **CustomerListId** | **String**| Unique identifier of a customer list | 
- **CustomerListUploadId** | **String**| Unique identifier of a customer list upload | 
+ **AdAccountId** | **String**|  | 
+ **CustomerListId** | **String**| Customer list ID. | 
+ **CustomerListUploadId** | **String**| Customer List Upload ID. | 
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md) (PSCustomObject)
+[**CustomerListUpload**](CustomerListUpload.md) (PSCustomObject)
 
 ### Authorization
 

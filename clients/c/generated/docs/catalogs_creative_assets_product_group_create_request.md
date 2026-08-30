@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **char \*** | Catalog id pertaining to the creative assets product group. | 
+**catalog_id** | **char \*** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **pinterest_rest_api_catalogs_creative_assets_product_group_create_request_CATALOGTYPE_e** |  | 
 **description** | **char \*** |  | [optional] 
 **filters** | [**catalogs_creative_assets_product_group_filters_t**](catalogs_creative_assets_product_group_filters.md) \* |  | 

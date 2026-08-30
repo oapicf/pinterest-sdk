@@ -7,8 +7,8 @@
 #' @title CustomerListUploadCreateResponse
 #' @description CustomerListUploadCreateResponse Class
 #' @format An \code{R6Class} generator object
-#' @field customer_list_upload  \link{CustomerListUpload}
-#' @field s3_multipart_upload_data  \link{S3MultipartUploadData}
+#' @field customer_list_upload The Customer List Upload created. \link{CustomerListUpload}
+#' @field s3_multipart_upload_data Pre-signed upload URLs corresponding to each part of the upload. \link{S3MultipartUploadData}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,8 +21,8 @@ CustomerListUploadCreateResponse <- R6::R6Class(
     #' @description
     #' Initialize a new CustomerListUploadCreateResponse class.
     #'
-    #' @param customer_list_upload customer_list_upload
-    #' @param s3_multipart_upload_data s3_multipart_upload_data
+    #' @param customer_list_upload The Customer List Upload created.
+    #' @param s3_multipart_upload_data Pre-signed upload URLs corresponding to each part of the upload.
     #' @param ... Other optional arguments.
     initialize = function(`customer_list_upload`, `s3_multipart_upload_data`, ...) {
       if (!missing(`customer_list_upload`)) {
@@ -68,13 +68,36 @@ CustomerListUploadCreateResponse <- R6::R6Class(
       CustomerListUploadCreateResponseObject <- list()
       if (!is.null(self$`customer_list_upload`)) {
         CustomerListUploadCreateResponseObject[["customer_list_upload"]] <-
-          self$`customer_list_upload`$toSimpleType()
+          self$extractSimpleType(self$`customer_list_upload`)
       }
       if (!is.null(self$`s3_multipart_upload_data`)) {
         CustomerListUploadCreateResponseObject[["s3_multipart_upload_data"]] <-
-          self$`s3_multipart_upload_data`$toSimpleType()
+          self$extractSimpleType(self$`s3_multipart_upload_data`)
       }
       return(CustomerListUploadCreateResponseObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

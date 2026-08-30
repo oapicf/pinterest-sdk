@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **labels** | [**Array&lt;LabelUpdateRequestLabelsInner&gt;**](LabelUpdateRequestLabelsInner.md) | Labels that you are applying to the campaign. |  |
+| **labels** | [**Array&lt;LabelUpdateItem&gt;**](LabelUpdateItem.md) | Labels that you are applying to the campaign. |  |
 
 ## Example
 

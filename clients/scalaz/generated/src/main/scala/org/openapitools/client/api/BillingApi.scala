@@ -21,20 +21,23 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
-import org.openapitools.client.api.AdsCreditRedeemRequest
-import org.openapitools.client.api.AdsCreditRedeemResponse
+import org.openapitools.client.api.AdsCreditRedeem
+import org.openapitools.client.api.AdsCreditRedeemCreate
 import org.openapitools.client.api.AdsCreditsDiscountsGet200Response
+import org.openapitools.client.api.BillingInvoiceDocumentType
 import org.openapitools.client.api.BillingInvoiceDownloadResponse
+import org.openapitools.client.api.BillingInvoiceSortField
+import org.openapitools.client.api.BillingInvoiceStatus
 import org.openapitools.client.api.BillingInvoicesGet200Response
 import org.openapitools.client.api.BillingProfilesGet200Response
 import org.openapitools.client.api.Error
 import java.time.LocalDate
-import org.openapitools.client.api.SSIOAccountResponse
-import org.openapitools.client.api.SSIOCreateInsertionOrderRequest
-import org.openapitools.client.api.SSIOCreateInsertionOrderResponse
-import org.openapitools.client.api.SSIOEditInsertionOrderRequest
-import org.openapitools.client.api.SSIOEditInsertionOrderResponse
+import org.openapitools.client.api.PaginationOrder
+import org.openapitools.client.api.SSIOAccount
+import org.openapitools.client.api.SSIOInsertionOrder
+import org.openapitools.client.api.SSIOInsertionOrderCreate
 import org.openapitools.client.api.SSIOInsertionOrderStatusResponse
+import org.openapitools.client.api.SSIOInsertionOrderUpdate
 import org.openapitools.client.api.SsioInsertionOrdersStatusGetByAdAccount200Response
 import org.openapitools.client.api.SsioOrderLinesGetByAdAccount200Response
 
@@ -44,8 +47,8 @@ object BillingApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adsCreditRedeem(host: String, adAccountId: String, adsCreditRedeemRequest: AdsCreditRedeemRequest): Task[AdsCreditRedeemResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdsCreditRedeemResponse] = jsonOf[AdsCreditRedeemResponse]
+  def adsCreditRedeem(host: String, adAccountId: String, adsCreditRedeemCreate: AdsCreditRedeemCreate): Task[AdsCreditRedeem] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdsCreditRedeem] = jsonOf[AdsCreditRedeem]
 
     val path = "/ad_accounts/{ad_account_id}/ads_credit/redeem".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -59,8 +62,8 @@ object BillingApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adsCreditRedeemRequest)
-      resp          <- client.expect[AdsCreditRedeemResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adsCreditRedeemCreate)
+      resp          <- client.expect[AdsCreditRedeem](req)
 
     } yield resp
   }
@@ -107,7 +110,7 @@ object BillingApi {
     } yield resp
   }
 
-  def billingInvoicesGet(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, sort: String = DUE_DATE, order: String, status: String, documentType: String, startDueDate: LocalDate, endDueDate: LocalDate)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], sortQuery: QueryParam[String], orderQuery: QueryParam[String], statusQuery: QueryParam[String], documentTypeQuery: QueryParam[String], startDueDateQuery: QueryParam[LocalDate], endDueDateQuery: QueryParam[LocalDate]): Task[BillingInvoicesGet200Response] = {
+  def billingInvoicesGet(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder, sort: BillingInvoiceSortField, status: BillingInvoiceStatus, documentType: BillingInvoiceDocumentType, startDueDate: LocalDate, endDueDate: LocalDate)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder], sortQuery: QueryParam[BillingInvoiceSortField], statusQuery: QueryParam[BillingInvoiceStatus], documentTypeQuery: QueryParam[BillingInvoiceDocumentType], startDueDateQuery: QueryParam[LocalDate], endDueDateQuery: QueryParam[LocalDate]): Task[BillingInvoicesGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BillingInvoicesGet200Response] = jsonOf[BillingInvoicesGet200Response]
 
     val path = "/ad_accounts/{ad_account_id}/billing_invoices".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -117,7 +120,7 @@ object BillingApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("sort", Some(sortQuery.toParamString(sort))), ("order", Some(orderQuery.toParamString(order))), ("status", Some(statusQuery.toParamString(status))), ("documentType", Some(document_typeQuery.toParamString(document_type))), ("startDueDate", Some(start_due_dateQuery.toParamString(start_due_date))), ("endDueDate", Some(end_due_dateQuery.toParamString(end_due_date))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("sort", Some(sortQuery.toParamString(sort))), ("status", Some(statusQuery.toParamString(status))), ("documentType", Some(document_typeQuery.toParamString(document_type))), ("startDueDate", Some(start_due_dateQuery.toParamString(start_due_date))), ("endDueDate", Some(end_due_dateQuery.toParamString(end_due_date))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -128,7 +131,7 @@ object BillingApi {
     } yield resp
   }
 
-  def billingProfilesGet(host: String, adAccountId: String, isActive: Boolean, bookmark: String, pageSize: Integer = 25)(implicit isActiveQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BillingProfilesGet200Response] = {
+  def billingProfilesGet(host: String, isActive: Boolean, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit isActiveQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BillingProfilesGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BillingProfilesGet200Response] = jsonOf[BillingProfilesGet200Response]
 
     val path = "/ad_accounts/{ad_account_id}/billing_profiles".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -149,8 +152,8 @@ object BillingApi {
     } yield resp
   }
 
-  def ssioAccountsGet(host: String, adAccountId: String): Task[SSIOAccountResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SSIOAccountResponse] = jsonOf[SSIOAccountResponse]
+  def ssioAccountsGet(host: String, adAccountId: String): Task[SSIOAccount] = {
+    implicit val returnTypeDecoder: EntityDecoder[SSIOAccount] = jsonOf[SSIOAccount]
 
     val path = "/ad_accounts/{ad_account_id}/ssio/accounts".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -165,13 +168,13 @@ object BillingApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SSIOAccountResponse](req)
+      resp          <- client.expect[SSIOAccount](req)
 
     } yield resp
   }
 
-  def ssioInsertionOrderCreate(host: String, adAccountId: String, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest): Task[SSIOCreateInsertionOrderResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SSIOCreateInsertionOrderResponse] = jsonOf[SSIOCreateInsertionOrderResponse]
+  def ssioInsertionOrderCreate(host: String, adAccountId: String, sSIOInsertionOrderCreate: SSIOInsertionOrderCreate): Task[SSIOInsertionOrder] = {
+    implicit val returnTypeDecoder: EntityDecoder[SSIOInsertionOrder] = jsonOf[SSIOInsertionOrder]
 
     val path = "/ad_accounts/{ad_account_id}/ssio/insertion_orders".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -185,14 +188,14 @@ object BillingApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sSIOCreateInsertionOrderRequest)
-      resp          <- client.expect[SSIOCreateInsertionOrderResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sSIOInsertionOrderCreate)
+      resp          <- client.expect[SSIOInsertionOrder](req)
 
     } yield resp
   }
 
-  def ssioInsertionOrderEdit(host: String, adAccountId: String, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest): Task[SSIOEditInsertionOrderResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SSIOEditInsertionOrderResponse] = jsonOf[SSIOEditInsertionOrderResponse]
+  def ssioInsertionOrderEdit(host: String, adAccountId: String, sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate): Task[SSIOInsertionOrder] = {
+    implicit val returnTypeDecoder: EntityDecoder[SSIOInsertionOrder] = jsonOf[SSIOInsertionOrder]
 
     val path = "/ad_accounts/{ad_account_id}/ssio/insertion_orders".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -206,8 +209,8 @@ object BillingApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sSIOEditInsertionOrderRequest)
-      resp          <- client.expect[SSIOEditInsertionOrderResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sSIOInsertionOrderUpdate)
+      resp          <- client.expect[SSIOInsertionOrder](req)
 
     } yield resp
   }
@@ -254,7 +257,7 @@ object BillingApi {
     } yield resp
   }
 
-  def ssioOrderLinesGetByAdAccount(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, pinOrderId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], pinOrderIdQuery: QueryParam[String]): Task[SsioOrderLinesGetByAdAccount200Response] = {
+  def ssioOrderLinesGetByAdAccount(host: String, adAccountId: String, pinOrderId: String, bookmark: String, pageSize: Integer = 25)(implicit pinOrderIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[SsioOrderLinesGetByAdAccount200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[SsioOrderLinesGetByAdAccount200Response] = jsonOf[SsioOrderLinesGetByAdAccount200Response]
 
     val path = "/ad_accounts/{ad_account_id}/ssio/order_lines".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -264,7 +267,7 @@ object BillingApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("pinOrderId", Some(pin_order_idQuery.toParamString(pin_order_id))))
+      ("pinOrderId", Some(pin_order_idQuery.toParamString(pin_order_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -282,8 +285,8 @@ class HttpServiceBillingApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adsCreditRedeem(adAccountId: String, adsCreditRedeemRequest: AdsCreditRedeemRequest): Task[AdsCreditRedeemResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdsCreditRedeemResponse] = jsonOf[AdsCreditRedeemResponse]
+  def adsCreditRedeem(adAccountId: String, adsCreditRedeemCreate: AdsCreditRedeemCreate): Task[AdsCreditRedeem] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdsCreditRedeem] = jsonOf[AdsCreditRedeem]
 
     val path = "/ad_accounts/{ad_account_id}/ads_credit/redeem".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -297,8 +300,8 @@ class HttpServiceBillingApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adsCreditRedeemRequest)
-      resp          <- client.expect[AdsCreditRedeemResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adsCreditRedeemCreate)
+      resp          <- client.expect[AdsCreditRedeem](req)
 
     } yield resp
   }
@@ -345,7 +348,7 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def billingInvoicesGet(adAccountId: String, bookmark: String, pageSize: Integer = 25, sort: String = DUE_DATE, order: String, status: String, documentType: String, startDueDate: LocalDate, endDueDate: LocalDate)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], sortQuery: QueryParam[String], orderQuery: QueryParam[String], statusQuery: QueryParam[String], documentTypeQuery: QueryParam[String], startDueDateQuery: QueryParam[LocalDate], endDueDateQuery: QueryParam[LocalDate]): Task[BillingInvoicesGet200Response] = {
+  def billingInvoicesGet(adAccountId: String, bookmark: String, pageSize: Integer = 25, order: PaginationOrder, sort: BillingInvoiceSortField, status: BillingInvoiceStatus, documentType: BillingInvoiceDocumentType, startDueDate: LocalDate, endDueDate: LocalDate)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[PaginationOrder], sortQuery: QueryParam[BillingInvoiceSortField], statusQuery: QueryParam[BillingInvoiceStatus], documentTypeQuery: QueryParam[BillingInvoiceDocumentType], startDueDateQuery: QueryParam[LocalDate], endDueDateQuery: QueryParam[LocalDate]): Task[BillingInvoicesGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BillingInvoicesGet200Response] = jsonOf[BillingInvoicesGet200Response]
 
     val path = "/ad_accounts/{ad_account_id}/billing_invoices".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -355,7 +358,7 @@ class HttpServiceBillingApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("sort", Some(sortQuery.toParamString(sort))), ("order", Some(orderQuery.toParamString(order))), ("status", Some(statusQuery.toParamString(status))), ("documentType", Some(document_typeQuery.toParamString(document_type))), ("startDueDate", Some(start_due_dateQuery.toParamString(start_due_date))), ("endDueDate", Some(end_due_dateQuery.toParamString(end_due_date))))
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("order", Some(orderQuery.toParamString(order))), ("sort", Some(sortQuery.toParamString(sort))), ("status", Some(statusQuery.toParamString(status))), ("documentType", Some(document_typeQuery.toParamString(document_type))), ("startDueDate", Some(start_due_dateQuery.toParamString(start_due_date))), ("endDueDate", Some(end_due_dateQuery.toParamString(end_due_date))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -366,7 +369,7 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def billingProfilesGet(adAccountId: String, isActive: Boolean, bookmark: String, pageSize: Integer = 25)(implicit isActiveQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BillingProfilesGet200Response] = {
+  def billingProfilesGet(isActive: Boolean, adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit isActiveQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BillingProfilesGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BillingProfilesGet200Response] = jsonOf[BillingProfilesGet200Response]
 
     val path = "/ad_accounts/{ad_account_id}/billing_profiles".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -387,8 +390,8 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def ssioAccountsGet(adAccountId: String): Task[SSIOAccountResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SSIOAccountResponse] = jsonOf[SSIOAccountResponse]
+  def ssioAccountsGet(adAccountId: String): Task[SSIOAccount] = {
+    implicit val returnTypeDecoder: EntityDecoder[SSIOAccount] = jsonOf[SSIOAccount]
 
     val path = "/ad_accounts/{ad_account_id}/ssio/accounts".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -403,13 +406,13 @@ class HttpServiceBillingApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SSIOAccountResponse](req)
+      resp          <- client.expect[SSIOAccount](req)
 
     } yield resp
   }
 
-  def ssioInsertionOrderCreate(adAccountId: String, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest): Task[SSIOCreateInsertionOrderResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SSIOCreateInsertionOrderResponse] = jsonOf[SSIOCreateInsertionOrderResponse]
+  def ssioInsertionOrderCreate(adAccountId: String, sSIOInsertionOrderCreate: SSIOInsertionOrderCreate): Task[SSIOInsertionOrder] = {
+    implicit val returnTypeDecoder: EntityDecoder[SSIOInsertionOrder] = jsonOf[SSIOInsertionOrder]
 
     val path = "/ad_accounts/{ad_account_id}/ssio/insertion_orders".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -423,14 +426,14 @@ class HttpServiceBillingApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sSIOCreateInsertionOrderRequest)
-      resp          <- client.expect[SSIOCreateInsertionOrderResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sSIOInsertionOrderCreate)
+      resp          <- client.expect[SSIOInsertionOrder](req)
 
     } yield resp
   }
 
-  def ssioInsertionOrderEdit(adAccountId: String, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest): Task[SSIOEditInsertionOrderResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SSIOEditInsertionOrderResponse] = jsonOf[SSIOEditInsertionOrderResponse]
+  def ssioInsertionOrderEdit(adAccountId: String, sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate): Task[SSIOInsertionOrder] = {
+    implicit val returnTypeDecoder: EntityDecoder[SSIOInsertionOrder] = jsonOf[SSIOInsertionOrder]
 
     val path = "/ad_accounts/{ad_account_id}/ssio/insertion_orders".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
@@ -444,8 +447,8 @@ class HttpServiceBillingApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sSIOEditInsertionOrderRequest)
-      resp          <- client.expect[SSIOEditInsertionOrderResponse](req)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(sSIOInsertionOrderUpdate)
+      resp          <- client.expect[SSIOInsertionOrder](req)
 
     } yield resp
   }
@@ -492,7 +495,7 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def ssioOrderLinesGetByAdAccount(adAccountId: String, bookmark: String, pageSize: Integer = 25, pinOrderId: String)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], pinOrderIdQuery: QueryParam[String]): Task[SsioOrderLinesGetByAdAccount200Response] = {
+  def ssioOrderLinesGetByAdAccount(adAccountId: String, pinOrderId: String, bookmark: String, pageSize: Integer = 25)(implicit pinOrderIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[SsioOrderLinesGetByAdAccount200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[SsioOrderLinesGetByAdAccount200Response] = jsonOf[SsioOrderLinesGetByAdAccount200Response]
 
     val path = "/ad_accounts/{ad_account_id}/ssio/order_lines".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -502,7 +505,7 @@ class HttpServiceBillingApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("pinOrderId", Some(pin_order_idQuery.toParamString(pin_order_id))))
+      ("pinOrderId", Some(pin_order_idQuery.toParamString(pin_order_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

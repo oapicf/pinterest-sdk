@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingTemplateUpdateRequestReadOrUpdate",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Targeting template ID"
+    },
+    {
+      "name": "operation_type",
+      "type": "model.AudienceUpdateOperationType",
+      "doc": ""
+    },
+    {
+      "name": "targeting_attributes",
+      "type": ["null", "model.TargetingSpecOptimal"],
+      "doc": "targeting profile attributes",
+      "default": null
+    }
+  ]
+
+}

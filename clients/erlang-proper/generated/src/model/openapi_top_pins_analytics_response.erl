@@ -10,8 +10,8 @@
 
 -type openapi_top_pins_analytics_response() ::
   [ {'date_availability', openapi_top_pins_analytics_response_date_availability:openapi_top_pins_analytics_response_date_availability() }
-  | {'pins', list(openapi_top_pins_analytics_response_pins_inner:openapi_top_pins_analytics_response_pins_inner()) }
-  | {'sort_by', binary() }
+  | {'pins', list(openapi_top_pins_analytics_response_pins_items:openapi_top_pins_analytics_response_pins_items()) }
+  | {'sort_by', openapi_top_pins_sort_by:openapi_top_pins_sort_by() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_top_pins_analytics_response() ->
 
 openapi_top_pins_analytics_response(Fields) ->
   Default = [ {'date_availability', openapi_top_pins_analytics_response_date_availability:openapi_top_pins_analytics_response_date_availability() }
-            , {'pins', list(openapi_top_pins_analytics_response_pins_inner:openapi_top_pins_analytics_response_pins_inner()) }
-            , {'sort_by', elements([<<"ENGAGEMENT">>, <<"SAVE">>, <<"IMPRESSION">>, <<"OUTBOUND_CLICK">>, <<"PIN_CLICK">>]) }
+            , {'pins', list(openapi_top_pins_analytics_response_pins_items:openapi_top_pins_analytics_response_pins_items()) }
+            , {'sort_by', openapi_top_pins_sort_by:openapi_top_pins_sort_by() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

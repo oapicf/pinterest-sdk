@@ -54,11 +54,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
-	/*! \brief Get Insertion orders status by ad acount id
+	/*! \brief Get 
 	 */
 	std::list<SSIOInsertionOrderStatus> getItems();
 
-	/*! \brief Set Insertion orders status by ad acount id
+	/*! \brief Set 
 	 */
 	void setItems(std::list <SSIOInsertionOrderStatus> items);
 

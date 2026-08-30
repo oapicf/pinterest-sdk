@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAllOf(std::list <CatalogsHotelProductGroupFilterKeys> all_of);
+	void setAllOf(std::list<CatalogsHotelProductGroupFilterKeys> all_of);
 
 
     private:

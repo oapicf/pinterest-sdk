@@ -6,8 +6,8 @@ using namespace Tiny;
 
 BusinessMemberAssetsSummary::BusinessMemberAssetsSummary()
 {
-	ad_accounts = std::list<BusinessMemberAssetsSummary_ad_accounts_inner>();
-	profiles = std::list<BusinessMemberAssetsSummary_profiles_inner>();
+	ad_accounts = std::list<AssetIdWithPermissions>();
+	profiles = std::list<AssetIdWithPermissions>();
 }
 
 BusinessMemberAssetsSummary::BusinessMemberAssetsSummary(std::string jsonString)
@@ -32,8 +32,8 @@ BusinessMemberAssetsSummary::fromJson(std::string jsonObj)
         bourne::json value = object[ad_accountsKey];
 
 
-        std::list<BusinessMemberAssetsSummary_ad_accounts_inner> ad_accounts_list;
-        BusinessMemberAssetsSummary_ad_accounts_inner element;
+        std::list<AssetIdWithPermissions> ad_accounts_list;
+        AssetIdWithPermissions element;
         for(auto& var : value.array_range())
         {
 
@@ -54,8 +54,8 @@ BusinessMemberAssetsSummary::fromJson(std::string jsonObj)
         bourne::json value = object[profilesKey];
 
 
-        std::list<BusinessMemberAssetsSummary_profiles_inner> profiles_list;
-        BusinessMemberAssetsSummary_profiles_inner element;
+        std::list<AssetIdWithPermissions> profiles_list;
+        AssetIdWithPermissions element;
         for(auto& var : value.array_range())
         {
 
@@ -80,12 +80,12 @@ BusinessMemberAssetsSummary::toJson()
 
 
 
-    std::list<BusinessMemberAssetsSummary_ad_accounts_inner> ad_accounts_list = getAdAccounts();
+    std::list<AssetIdWithPermissions> ad_accounts_list = getAdAccounts();
     bourne::json ad_accounts_arr = bourne::json::array();
 
     for(auto& var : ad_accounts_list)
     {
-        BusinessMemberAssetsSummary_ad_accounts_inner obj = var;
+        AssetIdWithPermissions obj = var;
         ad_accounts_arr.append(obj.toJson());
     }
     object["ad_accounts"] = ad_accounts_arr;
@@ -95,12 +95,12 @@ BusinessMemberAssetsSummary::toJson()
 
 
 
-    std::list<BusinessMemberAssetsSummary_profiles_inner> profiles_list = getProfiles();
+    std::list<AssetIdWithPermissions> profiles_list = getProfiles();
     bourne::json profiles_arr = bourne::json::array();
 
     for(auto& var : profiles_list)
     {
-        BusinessMemberAssetsSummary_profiles_inner obj = var;
+        AssetIdWithPermissions obj = var;
         profiles_arr.append(obj.toJson());
     }
     object["profiles"] = profiles_arr;
@@ -112,26 +112,26 @@ BusinessMemberAssetsSummary::toJson()
 
 }
 
-std::list<BusinessMemberAssetsSummary_ad_accounts_inner>
+std::list<AssetIdWithPermissions>
 BusinessMemberAssetsSummary::getAdAccounts()
 {
 	return ad_accounts;
 }
 
 void
-BusinessMemberAssetsSummary::setAdAccounts(std::list <BusinessMemberAssetsSummary_ad_accounts_inner> ad_accounts)
+BusinessMemberAssetsSummary::setAdAccounts(std::list<AssetIdWithPermissions> ad_accounts)
 {
 	this->ad_accounts = ad_accounts;
 }
 
-std::list<BusinessMemberAssetsSummary_profiles_inner>
+std::list<AssetIdWithPermissions>
 BusinessMemberAssetsSummary::getProfiles()
 {
 	return profiles;
 }
 
 void
-BusinessMemberAssetsSummary::setProfiles(std::list <BusinessMemberAssetsSummary_profiles_inner> profiles)
+BusinessMemberAssetsSummary::setProfiles(std::list<AssetIdWithPermissions> profiles)
 {
 	this->profiles = profiles;
 }

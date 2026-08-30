@@ -48,7 +48,7 @@ ProductGroupReferenceFilter::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&pRODUCT_GROUP, node, "CatalogsProductGroupMultipleStringCriteria", "");
+			jsonToValue(&pRODUCT_GROUP, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&pRODUCT_GROUP);

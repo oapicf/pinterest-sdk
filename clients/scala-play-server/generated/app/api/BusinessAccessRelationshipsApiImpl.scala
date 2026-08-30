@@ -1,67 +1,65 @@
 package api
 
-import model.BrandAccountsCreate200Response
-import model.BrandAccountsCreateRequest
-import model.BrandAccountsUpdateRequest
-import model.DeletePartnersRequest
-import model.DeletePartnersResponse
-import model.DeletedMembersResponse
+import model.BrandAccount
+import model.BrandAccountCreate
+import model.BrandAccountUpdate
+import model.BusinessMembershipMember
+import model.DeleteBusinessMembership200Response
+import model.DeleteBusinessMembershipBody
+import model.DeleteBusinessPartners
+import model.DeleteBusinessPartnersDelete
 import model.Error
 import model.GetBusinessEmployers200Response
-import model.GetBusinessMembers200Response
-import model.GetBusinessPartners200Response
 import model.MemberBusinessRole
-import model.MembersToDeleteBody
 import model.PartnerType
-import model.SystemUserUpdateRequest
-import model.UpdateMemberBusinessRoleBody
-import model.UpdateMemberResultsResponseArray
+import model.SystemUserUpdateWithRequiredBody
+import model.UpdateBusinessMembershipsResponse
 
 /**
   * Provides a default implementation for [[BusinessAccessRelationshipsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class BusinessAccessRelationshipsApiImpl extends BusinessAccessRelationshipsApi {
   /**
     * @inheritdoc
     */
-  override def brandAccountsCreate(businessHierarchyId: String, brandAccountsCreateRequest: BrandAccountsCreateRequest): BrandAccountsCreate200Response = {
+  override def brandAccountsCreate(businessHierarchyId: String, brandAccountCreate: BrandAccountCreate): BrandAccount = {
     // TODO: Implement better logic
 
-    BrandAccountsCreate200Response(None)
+    BrandAccount("")
   }
 
   /**
     * @inheritdoc
     */
-  override def brandAccountsUpdate(businessHierarchyId: String, brandAccountId: String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest): BrandAccountsCreate200Response = {
+  override def brandAccountsUpdate(brandAccountId: String, businessHierarchyId: String, brandAccountUpdate: BrandAccountUpdate): BrandAccount = {
     // TODO: Implement better logic
 
-    BrandAccountsCreate200Response(None)
+    BrandAccount("")
   }
 
   /**
     * @inheritdoc
     */
-  override def deleteBusinessMembership(businessId: String, membersToDeleteBody: MembersToDeleteBody): DeletedMembersResponse = {
+  override def deleteBusinessMembership(businessId: String, deleteBusinessMembershipBody: DeleteBusinessMembershipBody): DeleteBusinessMembership200Response = {
     // TODO: Implement better logic
 
-    DeletedMembersResponse(None)
+    DeleteBusinessMembership200Response(None)
   }
 
   /**
     * @inheritdoc
     */
-  override def deleteBusinessPartners(businessId: String, deletePartnersRequest: DeletePartnersRequest): DeletePartnersResponse = {
+  override def deleteBusinessPartners(businessId: String, deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete): DeleteBusinessPartners = {
     // TODO: Implement better logic
 
-    DeletePartnersResponse(None)
+    DeleteBusinessPartners(None)
   }
 
   /**
     * @inheritdoc
     */
-  override def getBusinessEmployers(pageSize: Option[Int], bookmark: Option[String]): GetBusinessEmployers200Response = {
+  override def getBusinessEmployers(assetsSummary: Option[Boolean], bookmark: Option[String], pageSize: Option[Int]): GetBusinessEmployers200Response = {
     // TODO: Implement better logic
 
     GetBusinessEmployers200Response(None, List.empty[UserBusinessRoleBinding])
@@ -70,25 +68,25 @@ class BusinessAccessRelationshipsApiImpl extends BusinessAccessRelationshipsApi 
   /**
     * @inheritdoc
     */
-  override def getBusinessMembers(businessId: String, fetchSystemUsers: Option[Boolean], assetsSummary: Option[Boolean], businessRoles: Option[List[MemberBusinessRole]], memberIds: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): GetBusinessMembers200Response = {
+  override def getBusinessMembers(businessId: String, fetchSystemUsers: Option[Boolean], assetsSummary: Option[Boolean], businessRoles: Option[List[MemberBusinessRole]], memberIds: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): GetBusinessEmployers200Response = {
     // TODO: Implement better logic
 
-    GetBusinessMembers200Response(None, List.empty[UserBusinessRoleBinding])
+    GetBusinessEmployers200Response(None, List.empty[UserBusinessRoleBinding])
   }
 
   /**
     * @inheritdoc
     */
-  override def getBusinessPartners(businessId: String, assetsSummary: Option[Boolean], partnerType: Option[PartnerType], partnerIds: Option[String], startIndex: Option[Int], pageSize: Option[Int], bookmark: Option[String]): GetBusinessPartners200Response = {
+  override def getBusinessPartners(businessId: String, assetsSummary: Option[Boolean], partnerType: Option[PartnerType], partnerIds: Option[String], startIndex: Option[Int], sortAscending: Option[Boolean], bookmark: Option[String], pageSize: Option[Int]): GetBusinessEmployers200Response = {
     // TODO: Implement better logic
 
-    GetBusinessPartners200Response(None, List.empty[UserBusinessRoleBinding])
+    GetBusinessEmployers200Response(None, List.empty[UserBusinessRoleBinding])
   }
 
   /**
     * @inheritdoc
     */
-  override def systemUserUpdate(businessId: String, systemUserId: String, systemUserUpdateRequest: SystemUserUpdateRequest): Unit = {
+  override def systemUserUpdate(businessId: String, systemUserId: String, systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody): Unit = {
     // TODO: Implement better logic
 
     
@@ -97,9 +95,9 @@ class BusinessAccessRelationshipsApiImpl extends BusinessAccessRelationshipsApi 
   /**
     * @inheritdoc
     */
-  override def updateBusinessMemberships(businessId: String, updateMemberBusinessRoleBody: List[UpdateMemberBusinessRoleBody]): UpdateMemberResultsResponseArray = {
+  override def updateBusinessMemberships(businessId: String, businessMembershipMember: List[BusinessMembershipMember]): UpdateBusinessMembershipsResponse = {
     // TODO: Implement better logic
 
-    UpdateMemberResultsResponseArray(None)
+    UpdateBusinessMembershipsResponse(None)
   }
 }

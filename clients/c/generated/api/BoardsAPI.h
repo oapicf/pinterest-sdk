@@ -9,20 +9,21 @@
 #include "../model/board_create.h"
 #include "../model/board_privacy_filter.h"
 #include "../model/board_section.h"
+#include "../model/board_section_create.h"
+#include "../model/board_section_update_with_required_body.h"
 #include "../model/board_sections_list_200_response.h"
 #include "../model/board_with_update_privacy.h"
 #include "../model/board_with_update_privacy_update.h"
 #include "../model/boards_list_200_response.h"
 #include "../model/boards_list_pins_200_response.h"
 #include "../model/creative_type.h"
-#include "../model/error.h"
 #include "../model/pinterest_lib_error.h"
 
 // Enum  for BoardsAPI_boardsList
 typedef enum  { pinterest_rest_api_boardsList__NULL = 0, pinterest_rest_api_boardsList__ALL, pinterest_rest_api_boardsList___PUBLIC, pinterest_rest_api_boardsList___PROTECTED, pinterest_rest_api_boardsList__SECRET, pinterest_rest_api_boardsList__PUBLIC_AND_SECRET } pinterest_rest_api_boardsList_privacy_e;
 
 // Enum CREATIVETYPES for BoardsAPI_boardsListPins
-typedef enum  { pinterest_rest_api_boardsListPins_CREATIVETYPES_NULL = 0, pinterest_rest_api_boardsListPins_CREATIVETYPES_REGULAR, pinterest_rest_api_boardsListPins_CREATIVETYPES_VIDEO, pinterest_rest_api_boardsListPins_CREATIVETYPES_SHOPPING, pinterest_rest_api_boardsListPins_CREATIVETYPES_CAROUSEL, pinterest_rest_api_boardsListPins_CREATIVETYPES_MAX_VIDEO, pinterest_rest_api_boardsListPins_CREATIVETYPES_SHOP_THE_PIN, pinterest_rest_api_boardsListPins_CREATIVETYPES_COLLECTION, pinterest_rest_api_boardsListPins_CREATIVETYPES_IDEA, pinterest_rest_api_boardsListPins_CREATIVETYPES_SHOWCASE, pinterest_rest_api_boardsListPins_CREATIVETYPES_QUIZ, pinterest_rest_api_boardsListPins_CREATIVETYPES_COLLAGE, pinterest_rest_api_boardsListPins_CREATIVETYPES_MAX_WIDTH_REGULAR_COLLECTION, pinterest_rest_api_boardsListPins_CREATIVETYPES_MAX_WIDTH_VIDEO_COLLECTION } pinterest_rest_api_boardsListPins_creative_types_e;
+typedef enum  { pinterest_rest_api_boardsListPins_CREATIVETYPES_NULL = 0, pinterest_rest_api_boardsListPins_CREATIVETYPES_REGULAR, pinterest_rest_api_boardsListPins_CREATIVETYPES_VIDEO, pinterest_rest_api_boardsListPins_CREATIVETYPES_SHOPPING, pinterest_rest_api_boardsListPins_CREATIVETYPES_CAROUSEL, pinterest_rest_api_boardsListPins_CREATIVETYPES_MAX_VIDEO, pinterest_rest_api_boardsListPins_CREATIVETYPES_SHOP_THE_PIN, pinterest_rest_api_boardsListPins_CREATIVETYPES_COLLECTION, pinterest_rest_api_boardsListPins_CREATIVETYPES_IDEA, pinterest_rest_api_boardsListPins_CREATIVETYPES_SHOWCASE, pinterest_rest_api_boardsListPins_CREATIVETYPES_QUIZ, pinterest_rest_api_boardsListPins_CREATIVETYPES_COLLAGE, pinterest_rest_api_boardsListPins_CREATIVETYPES_MAX_WIDTH_REGULAR_COLLECTION, pinterest_rest_api_boardsListPins_CREATIVETYPES_MAX_WIDTH_VIDEO_COLLECTION, pinterest_rest_api_boardsListPins_CREATIVETYPES_APP } pinterest_rest_api_boardsListPins_creative_types_e;
 
 
 // Create board section
@@ -30,14 +31,14 @@ typedef enum  { pinterest_rest_api_boardsListPins_CREATIVETYPES_NULL = 0, pinter
 // Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 //
 board_section_t*
-BoardsAPI_boardSectionsCreate(apiClient_t *apiClient, char *board_id, board_section_t *board_section, char *ad_account_id);
+BoardsAPI_boardSectionsCreate(apiClient_t *apiClient, char *board_id, board_section_create_t *board_section_create, char *ad_account_id);
 
 
 // Delete board section
 //
 // Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 //
-void
+board_section_t*
 BoardsAPI_boardSectionsDelete(apiClient_t *apiClient, char *board_id, char *section_id, char *ad_account_id);
 
 
@@ -62,7 +63,7 @@ BoardsAPI_boardSectionsListPins(apiClient_t *apiClient, char *board_id, char *se
 // Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 //
 board_section_t*
-BoardsAPI_boardSectionsUpdate(apiClient_t *apiClient, char *board_id, char *section_id, board_section_t *board_section, char *ad_account_id);
+BoardsAPI_boardSectionsUpdate(apiClient_t *apiClient, char *board_id, char *section_id, board_section_update_with_required_body_t *board_section_update_with_required_body, char *ad_account_id);
 
 
 // Create board
@@ -77,7 +78,7 @@ BoardsAPI_boardsCreate(apiClient_t *apiClient, board_create_t *board_create, cha
 //
 // Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
-void
+board_t*
 BoardsAPI_boardsDelete(apiClient_t *apiClient, char *board_id, char *ad_account_id);
 
 
@@ -102,7 +103,7 @@ BoardsAPI_boardsList(apiClient_t *apiClient, char *ad_account_id, board_privacy_
 // Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 //
 boards_list_pins_200_response_t*
-BoardsAPI_boardsListPins(apiClient_t *apiClient, char *board_id, char *bookmark, int *page_size, list_t *creative_types, char *ad_account_id, int *pin_metrics);
+BoardsAPI_boardsListPins(apiClient_t *apiClient, char *board_id, list_t *creative_types, char *ad_account_id, int *pin_metrics, char *bookmark, int *page_size);
 
 
 // Update board

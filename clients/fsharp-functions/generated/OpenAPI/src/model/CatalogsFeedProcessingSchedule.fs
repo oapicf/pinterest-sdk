@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.string option
+open OpenAPI.Model.CatalogsFeedProcessingScheduleTimezone
 
 module CatalogsFeedProcessingSchedule =
 
@@ -14,7 +14,7 @@ module CatalogsFeedProcessingSchedule =
     [<JsonProperty(PropertyName = "time")>]
     Time : string;
     [<JsonProperty(PropertyName = "timezone")>]
-    Timezone : string option;
+    Timezone : CatalogsFeedProcessingScheduleTimezone;
   }
 
   //#endregion

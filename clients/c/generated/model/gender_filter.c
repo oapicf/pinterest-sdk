@@ -12,18 +12,21 @@ static gender_filter_t *gender_filter_create_internal(
     if (!gender_filter_local_var) {
         return NULL;
     }
-    gender_filter_local_var->gender = gender;
-
+    memset(gender_filter_local_var, 0, sizeof(gender_filter_t));
     gender_filter_local_var->_library_owned = 1;
+    gender_filter_local_var->gender = gender;
     return gender_filter_local_var;
 }
 
 __attribute__((deprecated)) gender_filter_t *gender_filter_create(
     catalogs_product_group_multiple_gender_criteria_t *gender
     ) {
-    return gender_filter_create_internal (
+    gender_filter_t *result = gender_filter_create_internal (
         gender
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void gender_filter_free(gender_filter_t *gender_filter) {
@@ -36,7 +39,7 @@ void gender_filter_free(gender_filter_t *gender_filter) {
     }
     listEntry_t *listEntry;
     if (gender_filter->gender) {
-        object_free(gender_filter->gender);
+        catalogs_product_group_multiple_gender_criteria_free(gender_filter->gender);
         gender_filter->gender = NULL;
     }
     free(gender_filter);
@@ -49,11 +52,11 @@ cJSON *gender_filter_convertToJSON(gender_filter_t *gender_filter) {
     if (!gender_filter->gender) {
         goto fail;
     }
-    cJSON *gender_object = object_convertToJSON(gender_filter->gender);
-    if(gender_object == NULL) {
+    cJSON *gender_local_JSON = catalogs_product_group_multiple_gender_criteria_convertToJSON(gender_filter->gender);
+    if(gender_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "GENDER", gender_object);
+    cJSON_AddItemToObject(item, "GENDER", gender_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ gender_filter_t *gender_filter_parseFromJSON(cJSON *gender_filterJSON){
 
     gender_filter_t *gender_filter_local_var = NULL;
 
+    // define the local variable for gender_filter->gender
+    catalogs_product_group_multiple_gender_criteria_t *gender_local_nonprim = NULL;
+
     // gender_filter->gender
     cJSON *gender = cJSON_GetObjectItemCaseSensitive(gender_filterJSON, "GENDER");
     if (cJSON_IsNull(gender)) {
@@ -79,17 +85,25 @@ gender_filter_t *gender_filter_parseFromJSON(cJSON *gender_filterJSON){
         goto end;
     }
 
-    object_t *gender_local_object = NULL;
     
-    gender_local_object = object_parseFromJSON(gender); //object
+    gender_local_nonprim = catalogs_product_group_multiple_gender_criteria_parseFromJSON(gender); //nonprimitive
+
 
 
     gender_filter_local_var = gender_filter_create_internal (
-        gender_local_object
+        gender_local_nonprim
         );
+
+    if (!gender_filter_local_var) {
+        goto end;
+    }
 
     return gender_filter_local_var;
 end:
+    if (gender_local_nonprim) {
+        catalogs_product_group_multiple_gender_criteria_free(gender_local_nonprim);
+        gender_local_nonprim = NULL;
+    }
     return NULL;
 
 }

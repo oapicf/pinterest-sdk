@@ -3,9 +3,11 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.vertxweb.server.model.AssetTypeResponse;
 
 /**
  * An object containing the permissions a business partner has on the asset.
@@ -14,7 +16,7 @@ import java.util.List;
 public class UpdatePartnerAssetsResult   {
   
   private String assetId;
-  private String assetType;
+  private AssetTypeResponse assetType;
   private String partnerId;
   private List<String> permissions = new ArrayList<>();
 
@@ -22,7 +24,7 @@ public class UpdatePartnerAssetsResult   {
 
   }
 
-  public UpdatePartnerAssetsResult (String assetId, String assetType, String partnerId, List<String> permissions) {
+  public UpdatePartnerAssetsResult (String assetId, AssetTypeResponse assetType, String partnerId, List<String> permissions) {
     this.assetId = assetId;
     this.assetType = assetType;
     this.partnerId = partnerId;
@@ -40,10 +42,10 @@ public class UpdatePartnerAssetsResult   {
 
     
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public AssetTypeResponse getAssetType() {
     return assetType;
   }
-  public void setAssetType(String assetType) {
+  public void setAssetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
@@ -104,9 +106,6 @@ public class UpdatePartnerAssetsResult   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -4,7 +4,6 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.BatchOperationStatus
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.CreativeAssetsProcessingRecord
 
 module CatalogsCreativeAssetsItemsBatch =
@@ -16,7 +15,7 @@ module CatalogsCreativeAssetsItemsBatch =
     [<JsonProperty(PropertyName = "batch_id")>]
     BatchId : string;
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "completed_time")>]
     CompletedTime : Nullable<DateTime>;
     [<JsonProperty(PropertyName = "created_time")>]

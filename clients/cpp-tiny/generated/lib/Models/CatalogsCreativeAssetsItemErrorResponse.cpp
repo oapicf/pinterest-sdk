@@ -6,9 +6,10 @@ using namespace Tiny;
 
 CatalogsCreativeAssetsItemErrorResponse::CatalogsCreativeAssetsItemErrorResponse()
 {
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	creative_assets_id = std::string();
 	errors = std::list<ItemValidationEvent>();
+	item_response_kind = std::string();
 }
 
 CatalogsCreativeAssetsItemErrorResponse::CatalogsCreativeAssetsItemErrorResponse(std::string jsonString)
@@ -34,9 +35,8 @@ CatalogsCreativeAssetsItemErrorResponse::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -75,6 +75,19 @@ CatalogsCreativeAssetsItemErrorResponse::fromJson(std::string jsonObj)
 
     }
 
+    const char *item_response_kindKey = "item_response_kind";
+
+    if(object.has_key(item_response_kindKey))
+    {
+        bourne::json value = object[item_response_kindKey];
+
+
+
+        jsonToValue(&item_response_kind, value, "std::string");
+
+
+    }
+
 
 }
 
@@ -87,8 +100,8 @@ CatalogsCreativeAssetsItemErrorResponse::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -113,18 +126,25 @@ CatalogsCreativeAssetsItemErrorResponse::toJson()
 
 
 
+
+
+
+    object["item_response_kind"] = getItemResponseKind();
+
+
+
     return object;
 
 }
 
-CatalogsType
+std::string
 CatalogsCreativeAssetsItemErrorResponse::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsCreativeAssetsItemErrorResponse::setCatalogType(CatalogsType  catalog_type)
+CatalogsCreativeAssetsItemErrorResponse::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -136,7 +156,7 @@ CatalogsCreativeAssetsItemErrorResponse::getCreativeAssetsId()
 }
 
 void
-CatalogsCreativeAssetsItemErrorResponse::setCreativeAssetsId(std::string  creative_assets_id)
+CatalogsCreativeAssetsItemErrorResponse::setCreativeAssetsId(std::string creative_assets_id)
 {
 	this->creative_assets_id = creative_assets_id;
 }
@@ -148,9 +168,21 @@ CatalogsCreativeAssetsItemErrorResponse::getErrors()
 }
 
 void
-CatalogsCreativeAssetsItemErrorResponse::setErrors(std::list <ItemValidationEvent> errors)
+CatalogsCreativeAssetsItemErrorResponse::setErrors(std::list<ItemValidationEvent> errors)
 {
 	this->errors = errors;
+}
+
+std::string
+CatalogsCreativeAssetsItemErrorResponse::getItemResponseKind()
+{
+	return item_response_kind;
+}
+
+void
+CatalogsCreativeAssetsItemErrorResponse::setItemResponseKind(std::string item_response_kind)
+{
+	this->item_response_kind = item_response_kind;
 }
 
 

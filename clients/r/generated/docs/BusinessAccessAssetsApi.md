@@ -19,11 +19,11 @@ Method | HTTP request | Description
 
 
 # **AssetGroupCreate**
-> CreateAssetGroupResponse AssetGroupCreate(business_id, create_asset_group_body)
+> AssetGroupInput AssetGroupCreate(business_id, asset_group_input_create)
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 ```R
@@ -32,15 +32,15 @@ library(openapi)
 # Create a new asset group.
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_create_asset_group_body <- CreateAssetGroupBody$new("asset_group_description_example", "asset_group_name_example", c(AssetGroupType$new())) # CreateAssetGroupBody | 
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_asset_group_input_create <- AssetGroupInputCreate$new("asset_group_description_example", "asset_group_name_example", c(AssetGroupType$new()), AssetGroupBinding$new(c("ad_accounts_ids_example"), "asset_group_description_example", "asset_group_name_example", c("asset_group_types_example"), c("catalogs_ids_example"), BusinessAccessUserSummary$new("email_example", "id_example", "username_example"), 123, "id_example", BusinessAccessUserSummary$new("email_example", "id_example", "username_example"), c("profiles_ids_example"), 123)) # AssetGroupInputCreate | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AssetGroupCreate(var_business_id, var_create_asset_group_bodydata_file = "result.txt")
-result <- api_instance$AssetGroupCreate(var_business_id, var_create_asset_group_body)
+# result <- api_instance$AssetGroupCreate(var_business_id, var_asset_group_input_createdata_file = "result.txt")
+result <- api_instance$AssetGroupCreate(var_business_id, var_asset_group_input_create)
 dput(result)
 ```
 
@@ -49,11 +49,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
- **create_asset_group_body** | [**CreateAssetGroupBody**](CreateAssetGroupBody.md)|  | 
+ **asset_group_input_create** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md)|  | 
 
 ### Return type
 
-[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md)
+[**AssetGroupInput**](AssetGroupInput.md)
 
 ### Authorization
 
@@ -67,12 +67,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AssetGroupDelete**
-> DeleteAssetGroupResponse AssetGroupDelete(business_id, delete_asset_group_body)
+> AssetGroupDeletion AssetGroupDelete(business_id, asset_group_deletion_delete)
 
 Delete asset groups.
 
@@ -85,15 +90,15 @@ library(openapi)
 # Delete asset groups.
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_delete_asset_group_body <- DeleteAssetGroupBody$new(c("asset_groups_to_delete_example")) # DeleteAssetGroupBody | 
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_asset_group_deletion_delete <- AssetGroupDeletionDelete$new(c("asset_groups_to_delete_example")) # AssetGroupDeletionDelete | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AssetGroupDelete(var_business_id, var_delete_asset_group_bodydata_file = "result.txt")
-result <- api_instance$AssetGroupDelete(var_business_id, var_delete_asset_group_body)
+# result <- api_instance$AssetGroupDelete(var_business_id, var_asset_group_deletion_deletedata_file = "result.txt")
+result <- api_instance$AssetGroupDelete(var_business_id, var_asset_group_deletion_delete)
 dput(result)
 ```
 
@@ -102,11 +107,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
- **delete_asset_group_body** | [**DeleteAssetGroupBody**](DeleteAssetGroupBody.md)|  | 
+ **asset_group_deletion_delete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md)|  | 
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md)
+[**AssetGroupDeletion**](AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -120,12 +125,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **AssetGroupUpdate**
-> UpdateAssetGroupResponse AssetGroupUpdate(business_id, update_asset_group_body)
+> AssetGroupModification AssetGroupUpdate(business_id, asset_group_modification_read_or_update)
 
 Update asset groups.
 
@@ -138,15 +142,15 @@ library(openapi)
 # Update asset groups.
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_update_asset_group_body <- UpdateAssetGroupBody$new(c(UpdateAssetGroupBody_asset_groups_to_update_inner$new("asset_group_id_example", c(AssetGroupType$new()), c("assets_to_add_example"), c("assets_to_remove_example"), "description_example", "name_example"))) # UpdateAssetGroupBody | 
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_asset_group_modification_read_or_update <- AssetGroupModificationReadOrUpdate$new(c(AssetGroupUpdateItemReadOrUpdateItem$new("asset_group_id_example", c(AssetGroupType$new()), c("assets_to_add_example"), c("assets_to_remove_example"), "description_example", "name_example")), c(AssetGroupUpdateError$new("asset_group_id_example", 123, "message_example")), c(AssetGroupBinding$new(c("ad_accounts_ids_example"), "asset_group_description_example", "asset_group_name_example", c("asset_group_types_example"), c("catalogs_ids_example"), BusinessAccessUserSummary$new("email_example", "id_example", "username_example"), 123, "id_example", BusinessAccessUserSummary$new("email_example", "id_example", "username_example"), c("profiles_ids_example"), 123))) # AssetGroupModificationReadOrUpdate | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$AssetGroupUpdate(var_business_id, var_update_asset_group_bodydata_file = "result.txt")
-result <- api_instance$AssetGroupUpdate(var_business_id, var_update_asset_group_body)
+# result <- api_instance$AssetGroupUpdate(var_business_id, var_asset_group_modification_read_or_updatedata_file = "result.txt")
+result <- api_instance$AssetGroupUpdate(var_business_id, var_asset_group_modification_read_or_update)
 dput(result)
 ```
 
@@ -155,11 +159,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
- **update_asset_group_body** | [**UpdateAssetGroupBody**](UpdateAssetGroupBody.md)|  | 
+ **asset_group_modification_read_or_update** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md)|  | 
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md)
+[**AssetGroupModification**](AssetGroupModification.md)
 
 ### Authorization
 
@@ -173,12 +177,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BusinessAssetMembersGet**
-> BusinessAssetMembersGet200Response BusinessAssetMembersGet(business_id, asset_id, fetch_system_users = FALSE, bookmark = var.bookmark, page_size = 25, start_index = 0)
+> BusinessAssetMembersGet200Response BusinessAssetMembersGet(business_id, asset_id, start_index = 0, fetch_system_users = FALSE, bookmark = var.bookmark, page_size = 25)
 
 Get members with access to asset
 
@@ -191,19 +199,19 @@ library(openapi)
 # Get members with access to asset
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_asset_id <- "729090764583391194" # character | Unique identifier of a business asset.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_asset_id <- "asset_id_example" # character | Unique identifier of a business asset.
+var_start_index <- 0 # integer | An index to start fetching the results from. Only the results starting from this index will be returned. (Optional)
 var_fetch_system_users <- FALSE # character | Fetches system users if True. Fetches regular user employees if False. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
-var_start_index <- 0 # integer | An index to start fetching the results from. Only the results starting from this index will be returned. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BusinessAssetMembersGet(var_business_id, var_asset_id, fetch_system_users = var_fetch_system_users, bookmark = var_bookmark, page_size = var_page_size, start_index = var_start_indexdata_file = "result.txt")
-result <- api_instance$BusinessAssetMembersGet(var_business_id, var_asset_id, fetch_system_users = var_fetch_system_users, bookmark = var_bookmark, page_size = var_page_size, start_index = var_start_index)
+# result <- api_instance$BusinessAssetMembersGet(var_business_id, var_asset_id, start_index = var_start_index, fetch_system_users = var_fetch_system_users, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$BusinessAssetMembersGet(var_business_id, var_asset_id, start_index = var_start_index, fetch_system_users = var_fetch_system_users, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -213,10 +221,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
  **asset_id** | **character**| Unique identifier of a business asset. | 
+ **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **fetch_system_users** | **character**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to FALSE]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -234,11 +242,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Sucess |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BusinessAssetPartnersGet**
-> BusinessAssetPartnersGet200Response BusinessAssetPartnersGet(business_id, asset_id, start_index = 0, bookmark = var.bookmark, page_size = 25)
+> BusinessAssetMembersGet200Response BusinessAssetPartnersGet(business_id, asset_id, start_index = 0, bookmark = var.bookmark, page_size = 25)
 
 Get partners with access to asset
 
@@ -251,11 +264,11 @@ library(openapi)
 # Get partners with access to asset
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_asset_id <- "729090764583391194" # character | Unique identifier of a business asset.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_asset_id <- "asset_id_example" # character | Unique identifier of a business asset.
 var_start_index <- 0 # integer | An index to start fetching the results from. Only the results starting from this index will be returned. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -274,11 +287,11 @@ Name | Type | Description  | Notes
  **asset_id** | **character**| Unique identifier of a business asset. | 
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessAssetPartnersGet200Response**](business_asset_partners_get_200_response.md)
+[**BusinessAssetMembersGet200Response**](business_asset_members_get_200_response.md)
 
 ### Authorization
 
@@ -292,8 +305,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Sucess |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BusinessAssetsGet**
 > BusinessAssetsGet200Response BusinessAssetsGet(business_id, permissions = var.permissions, child_asset_id = var.child_asset_id, asset_group_id = var.asset_group_id, asset_type = "AD_ACCOUNT", start_index = 0, bookmark = var.bookmark, page_size = 25)
@@ -309,14 +327,14 @@ library(openapi)
 # List business assets
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
 var_permissions <- c(PermissionsWithOwner$new()) # array[PermissionsWithOwner] | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (Optional)
-var_child_asset_id <- "549764894835" # character | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (Optional)
-var_asset_group_id <- "7078106104032" # character | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (Optional)
+var_child_asset_id <- "child_asset_id_example" # character | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (Optional)
+var_asset_group_id <- "asset_group_id_example" # character | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (Optional)
 var_asset_type <- "AD_ACCOUNT" # character | A resource type to filter the assets by. Only assets of the specified type will be returned. (Optional)
 var_start_index <- 0 # integer | An index to start fetching the results from. Only the results starting from this index will be returned. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -338,7 +356,7 @@ Name | Type | Description  | Notes
  **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -356,11 +374,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BusinessMemberAssetsGet**
-> BusinessMemberAssetsGet200Response BusinessMemberAssetsGet(business_id, member_id, asset_type = "AD_ACCOUNT", start_index = 0, bookmark = var.bookmark, page_size = 25)
+> BusinessMemberAssetsGetResponse BusinessMemberAssetsGet(business_id, member_id, asset_type = "AD_ACCOUNT", start_index = 0, sort_by = var.sort_by, sort_ascending = TRUE, search_by = var.search_by, search_value = var.search_value, asset_permission_type = var.asset_permission_type, ad_account_statuses = var.ad_account_statuses, bookmark = var.bookmark, page_size = 25)
 
 Get assets assigned to a member
 
@@ -373,19 +396,25 @@ library(openapi)
 # Get assets assigned to a member
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_member_id <- "729090764583391194" # character | The member id to fetch assets for.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_member_id <- "member_id_example" # character | The member id to fetch assets for.
 var_asset_type <- "AD_ACCOUNT" # character | A resource type to filter the assets by. Only assets of the specified type will be returned. (Optional)
 var_start_index <- 0 # integer | An index to start fetching the results from. Only the results starting from this index will be returned. (Optional)
+var_sort_by <- AssetSortBy$new() # AssetSortBy | The field to sort member assets by (Optional)
+var_sort_ascending <- TRUE # character | Sort assets in ascending order (Optional)
+var_search_by <- AssetSearchBy$new() # AssetSearchBy | The field to search member assets by (Optional)
+var_search_value <- "search_value_example" # character | The value to search for (Optional)
+var_asset_permission_type <- AssetPermissionType$new() # AssetPermissionType | The type of asset permission to filter by (Optional)
+var_ad_account_statuses <- c(NonDraftEntityStatus$new()) # array[NonDraftEntityStatus] | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BusinessMemberAssetsGet(var_business_id, var_member_id, asset_type = var_asset_type, start_index = var_start_index, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
-result <- api_instance$BusinessMemberAssetsGet(var_business_id, var_member_id, asset_type = var_asset_type, start_index = var_start_index, bookmark = var_bookmark, page_size = var_page_size)
+# result <- api_instance$BusinessMemberAssetsGet(var_business_id, var_member_id, asset_type = var_asset_type, start_index = var_start_index, sort_by = var_sort_by, sort_ascending = var_sort_ascending, search_by = var_search_by, search_value = var_search_value, asset_permission_type = var_asset_permission_type, ad_account_statuses = var_ad_account_statuses, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$BusinessMemberAssetsGet(var_business_id, var_member_id, asset_type = var_asset_type, start_index = var_start_index, sort_by = var_sort_by, sort_ascending = var_sort_ascending, search_by = var_search_by, search_value = var_search_value, asset_permission_type = var_asset_permission_type, ad_account_statuses = var_ad_account_statuses, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -395,14 +424,20 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
  **member_id** | **character**| The member id to fetch assets for. | 
- **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
+ **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER, CONVERSION_TAG] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **sort_by** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] 
+ **sort_ascending** | **character**| Sort assets in ascending order | [optional] [default to TRUE]
+ **search_by** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] 
+ **search_value** | **character**| The value to search for | [optional] 
+ **asset_permission_type** | [**AssetPermissionType**](.md)| The type of asset permission to filter by | [optional] 
+ **ad_account_statuses** | list( [**NonDraftEntityStatus**](NonDraftEntityStatus.md) )| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessMemberAssetsGet200Response**](business_member_assets_get_200_response.md)
+[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -416,11 +451,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BusinessMembersAssetAccessDelete**
-> DeleteMemberAccessResultsResponseArray BusinessMembersAssetAccessDelete(business_id, business_members_asset_access_delete_request)
+> DeleteMemberAccessResultsResponseArray BusinessMembersAssetAccessDelete(business_id, business_members_asset_access_delete_body)
 
 Delete member access to asset
 
@@ -433,15 +473,15 @@ library(openapi)
 # Delete member access to asset
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_business_members_asset_access_delete_request <- business_members_asset_access_delete_request$new(c(business_members_asset_access_delete_request_accesses_inner$new("asset_id_example", "member_id_example"))) # BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_business_members_asset_access_delete_body <- BusinessMembersAssetAccessDeleteBody$new(c(DeleteMemberAssetAccessItem$new("asset_id_example", "member_id_example"))) # BusinessMembersAssetAccessDeleteBody | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BusinessMembersAssetAccessDelete(var_business_id, var_business_members_asset_access_delete_requestdata_file = "result.txt")
-result <- api_instance$BusinessMembersAssetAccessDelete(var_business_id, var_business_members_asset_access_delete_request)
+# result <- api_instance$BusinessMembersAssetAccessDelete(var_business_id, var_business_members_asset_access_delete_bodydata_file = "result.txt")
+result <- api_instance$BusinessMembersAssetAccessDelete(var_business_id, var_business_members_asset_access_delete_body)
 dput(result)
 ```
 
@@ -450,7 +490,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
- **business_members_asset_access_delete_request** | [**BusinessMembersAssetAccessDeleteRequest**](BusinessMembersAssetAccessDeleteRequest.md)| List member assset permissions to delete. | 
+ **business_members_asset_access_delete_body** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md)|  | 
 
 ### Return type
 
@@ -468,15 +508,15 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BusinessMembersAssetAccessUpdate**
 > UpdateMemberAssetsResultsResponseArray BusinessMembersAssetAccessUpdate(business_id, update_member_asset_access_body)
 
 Assign/Update member asset permissions
 
-Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
 ### Example
 ```R
@@ -485,8 +525,8 @@ library(openapi)
 # Assign/Update member asset permissions
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_update_member_asset_access_body <- UpdateMemberAssetAccessBody$new(c(UpdateMemberAssetAccessBody_accesses_inner$new("asset_id_example", "member_id_example", c(Permissions$new())))) # UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_update_member_asset_access_body <- UpdateMemberAssetAccessBody$new(c(UpdateMemberAssetAccessItem$new("asset_id_example", "member_id_example", c(Permissions$new())))) # UpdateMemberAssetAccessBody | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -502,7 +542,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
- **update_member_asset_access_body** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. | 
+ **update_member_asset_access_body** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)|  | 
 
 ### Return type
 
@@ -520,11 +560,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **BusinessPartnerAssetAccessGet**
-> BusinessPartnerAssetAccessGet200Response BusinessPartnerAssetAccessGet(business_id, partner_id, partner_type = var.partner_type, asset_type = "AD_ACCOUNT", start_index = 0, page_size = 25, bookmark = var.bookmark)
+> BusinessPartnerAssetAccessGet200Response BusinessPartnerAssetAccessGet(business_id, partner_id, partner_type = "INTERNAL", asset_type = "AD_ACCOUNT", start_index = 0, sort_by = var.sort_by, sort_ascending = TRUE, search_by = var.search_by, search_value = var.search_value, bookmark = var.bookmark, page_size = 25)
 
 Get assets assigned to a partner or assets assigned by a partner
 
@@ -537,20 +582,24 @@ library(openapi)
 # Get assets assigned to a partner or assets assigned by a partner
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_partner_id <- "729090764583391194" # character | The partner id to be bound to the Business
-var_partner_type <- PartnerType$new() # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (Optional)
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_partner_id <- "partner_id_example" # character | The partner id to be bound to the Business
+var_partner_type <- "INTERNAL" # character | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (Optional)
 var_asset_type <- "AD_ACCOUNT" # character | A resource type to filter the assets by. Only assets of the specified type will be returned. (Optional)
 var_start_index <- 0 # integer | An index to start fetching the results from. Only the results starting from this index will be returned. (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_sort_by <- AssetSortBy$new() # AssetSortBy | The field to sort member assets by (Optional)
+var_sort_ascending <- TRUE # character | Sort assets in ascending order (Optional)
+var_search_by <- AssetSearchBy$new() # AssetSearchBy | The field to search member assets by (Optional)
+var_search_value <- "search_value_example" # character | The value to search for (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (Optional)
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BusinessPartnerAssetAccessGet(var_business_id, var_partner_id, partner_type = var_partner_type, asset_type = var_asset_type, start_index = var_start_index, page_size = var_page_size, bookmark = var_bookmarkdata_file = "result.txt")
-result <- api_instance$BusinessPartnerAssetAccessGet(var_business_id, var_partner_id, partner_type = var_partner_type, asset_type = var_asset_type, start_index = var_start_index, page_size = var_page_size, bookmark = var_bookmark)
+# result <- api_instance$BusinessPartnerAssetAccessGet(var_business_id, var_partner_id, partner_type = var_partner_type, asset_type = var_asset_type, start_index = var_start_index, sort_by = var_sort_by, sort_ascending = var_sort_ascending, search_by = var_search_by, search_value = var_search_value, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$BusinessPartnerAssetAccessGet(var_business_id, var_partner_id, partner_type = var_partner_type, asset_type = var_asset_type, start_index = var_start_index, sort_by = var_sort_by, sort_ascending = var_sort_ascending, search_by = var_search_by, search_value = var_search_value, bookmark = var_bookmark, page_size = var_page_size)
 dput(result)
 ```
 
@@ -560,11 +609,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
  **partner_id** | **character**| The partner id to be bound to the Business | 
- **partner_type** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
- **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
+ **partner_type** | Enum [INTERNAL, EXTERNAL] | Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to &quot;INTERNAL&quot;]
+ **asset_type** | Enum [AD_ACCOUNT, PROFILE, ASSET_GROUP, PINNER_LIST, CONVERSION_TAG, CATALOG, CONSUMER, CONVERSION_SEGMENT] | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
  **start_index** | **integer**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sort_by** | [**AssetSortBy**](.md)| The field to sort member assets by | [optional] 
+ **sort_ascending** | **character**| Sort assets in ascending order | [optional] [default to TRUE]
+ **search_by** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] 
+ **search_value** | **character**| The value to search for | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
+ **page_size** | **integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -582,11 +635,16 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **DeletePartnerAssetAccessHandlerImpl**
-> DeletePartnerAssetsResultsResponseArray DeletePartnerAssetAccessHandlerImpl(business_id, delete_partner_asset_access_body)
+> DeletePartnerAssetAccessResultsResponseArray DeletePartnerAssetAccessHandlerImpl(business_id, delete_partner_asset_access_body)
 
 Delete partner access to asset
 
@@ -599,8 +657,8 @@ library(openapi)
 # Delete partner access to asset
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_delete_partner_asset_access_body <- DeletePartnerAssetAccessBody$new(c(DeletePartnerAssetAccessBody_accesses_inner$new("asset_id_example", "partner_id_example", "INTERNAL"))) # DeletePartnerAssetAccessBody | 
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_delete_partner_asset_access_body <- DeletePartnerAssetAccessBody$new(c(DeletePartnerAssetAccessItem$new("asset_id_example", "partner_id_example", "INTERNAL"))) # DeletePartnerAssetAccessBody | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -620,7 +678,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md)
+[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -634,8 +692,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 # **UpdatePartnerAssetAccessHandlerImpl**
 > UpdatePartnerAssetsResultsResponseArray UpdatePartnerAssetAccessHandlerImpl(business_id, update_partner_asset_access_body)
@@ -651,8 +709,8 @@ library(openapi)
 # Assign/Update partner asset permissions
 #
 # prepare function argument(s)
-var_business_id <- "729090764583391194" # character | Unique identifier of the requesting business.
-var_update_partner_asset_access_body <- UpdatePartnerAssetAccessBody$new(c(UpdatePartnerAssetAccessBody_accesses_inner$new("asset_id_example", "partner_id_example", c(Permissions$new())))) # UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+var_business_id <- "business_id_example" # character | Unique identifier of the requesting business.
+var_update_partner_asset_access_body <- UpdatePartnerAssetAccessBody$new(c(UpdatePartnerAssetAccessItem$new("asset_id_example", "partner_id_example", c(Permissions$new())))) # UpdatePartnerAssetAccessBody | 
 
 api_instance <- BusinessAccessAssetsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -668,7 +726,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **character**| Unique identifier of the requesting business. | 
- **update_partner_asset_access_body** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. | 
+ **update_partner_asset_access_body** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)|  | 
 
 ### Return type
 
@@ -686,6 +744,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

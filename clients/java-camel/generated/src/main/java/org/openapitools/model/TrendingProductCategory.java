@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -9,23 +10,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ProductCategoriesEngagementType;
-import org.openapitools.model.VerticalProductCategory;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Trending shopping product category
  */
 
 @Schema(name = "TrendingProductCategory", description = "Trending shopping product category")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TrendingProductCategory {
 
   private ProductCategoriesEngagementType engagementType;
@@ -34,10 +34,12 @@ public class TrendingProductCategory {
 
   private Integer percentRelativeVolume;
 
+  private Integer pinterestProductCategoryId;
+
   private String productCategory;
 
   @Valid
-  private List<VerticalProductCategory> verticals = new ArrayList<>();
+  private List<String> verticals = new ArrayList<>();
 
   public TrendingProductCategory() {
     super();
@@ -46,10 +48,11 @@ public class TrendingProductCategory {
   /**
    * Constructor with only required parameters
    */
-  public TrendingProductCategory(ProductCategoriesEngagementType engagementType, Integer pctChangeMom, Integer percentRelativeVolume, String productCategory) {
+  public TrendingProductCategory(ProductCategoriesEngagementType engagementType, Integer pctChangeMom, Integer percentRelativeVolume, Integer pinterestProductCategoryId, String productCategory) {
     this.engagementType = engagementType;
     this.pctChangeMom = pctChangeMom;
     this.percentRelativeVolume = percentRelativeVolume;
+    this.pinterestProductCategoryId = pinterestProductCategoryId;
     this.productCategory = productCategory;
   }
 
@@ -113,6 +116,26 @@ public class TrendingProductCategory {
     this.percentRelativeVolume = percentRelativeVolume;
   }
 
+  public TrendingProductCategory pinterestProductCategoryId(Integer pinterestProductCategoryId) {
+    this.pinterestProductCategoryId = pinterestProductCategoryId;
+    return this;
+  }
+
+  /**
+   * Pinterest Product Category Id
+   * @return pinterestProductCategoryId
+   */
+  @NotNull 
+  @Schema(name = "pinterest_product_category_id", description = "Pinterest Product Category Id", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("pinterest_product_category_id")
+  public Integer getPinterestProductCategoryId() {
+    return pinterestProductCategoryId;
+  }
+
+  public void setPinterestProductCategoryId(Integer pinterestProductCategoryId) {
+    this.pinterestProductCategoryId = pinterestProductCategoryId;
+  }
+
   public TrendingProductCategory productCategory(String productCategory) {
     this.productCategory = productCategory;
     return this;
@@ -133,12 +156,12 @@ public class TrendingProductCategory {
     this.productCategory = productCategory;
   }
 
-  public TrendingProductCategory verticals(List<VerticalProductCategory> verticals) {
+  public TrendingProductCategory verticals(List<String> verticals) {
     this.verticals = verticals;
     return this;
   }
 
-  public TrendingProductCategory addVerticalsItem(VerticalProductCategory verticalsItem) {
+  public TrendingProductCategory addVerticalsItem(String verticalsItem) {
     if (this.verticals == null) {
       this.verticals = new ArrayList<>();
     }
@@ -150,14 +173,14 @@ public class TrendingProductCategory {
    * Vertical name associated with the product category
    * @return verticals
    */
-  @Valid 
+  
   @Schema(name = "verticals", description = "Vertical name associated with the product category", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("verticals")
-  public List<VerticalProductCategory> getVerticals() {
+  public List<String> getVerticals() {
     return verticals;
   }
 
-  public void setVerticals(List<VerticalProductCategory> verticals) {
+  public void setVerticals(List<String> verticals) {
     this.verticals = verticals;
   }
 
@@ -173,13 +196,14 @@ public class TrendingProductCategory {
     return Objects.equals(this.engagementType, trendingProductCategory.engagementType) &&
         Objects.equals(this.pctChangeMom, trendingProductCategory.pctChangeMom) &&
         Objects.equals(this.percentRelativeVolume, trendingProductCategory.percentRelativeVolume) &&
+        Objects.equals(this.pinterestProductCategoryId, trendingProductCategory.pinterestProductCategoryId) &&
         Objects.equals(this.productCategory, trendingProductCategory.productCategory) &&
         Objects.equals(this.verticals, trendingProductCategory.verticals);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(engagementType, pctChangeMom, percentRelativeVolume, productCategory, verticals);
+    return Objects.hash(engagementType, pctChangeMom, percentRelativeVolume, pinterestProductCategoryId, productCategory, verticals);
   }
 
   @Override
@@ -189,6 +213,7 @@ public class TrendingProductCategory {
     sb.append("    engagementType: ").append(toIndentedString(engagementType)).append("\n");
     sb.append("    pctChangeMom: ").append(toIndentedString(pctChangeMom)).append("\n");
     sb.append("    percentRelativeVolume: ").append(toIndentedString(percentRelativeVolume)).append("\n");
+    sb.append("    pinterestProductCategoryId: ").append(toIndentedString(pinterestProductCategoryId)).append("\n");
     sb.append("    productCategory: ").append(toIndentedString(productCategory)).append("\n");
     sb.append("    verticals: ").append(toIndentedString(verticals)).append("\n");
     sb.append("}");
@@ -200,10 +225,7 @@ public class TrendingProductCategory {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

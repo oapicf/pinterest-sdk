@@ -16,11 +16,11 @@ Method | HTTP request | Description
 <a id="Invoke-AdAccountsAudiencesSharedAccountsList"></a>
 # **Invoke-AdAccountsAudiencesSharedAccountsList**
 > AdAccountsAudiencesSharedAccountsList200Response Invoke-AdAccountsAudiencesSharedAccountsList<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AudienceId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AccountType] <PSCustomObject><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 List accounts with access to an audience owned by an ad account
 
@@ -36,15 +36,15 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $AudienceId = "MyAudienceId" # String | Unique identifier of the audience to use to filter the results.
 $AccountType = "AD_ACCOUNT" # AudienceAccountType | Filter accounts by account type.
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List accounts with access to an audience owned by an ad account
 try {
-    $Result = Invoke-AdAccountsAudiencesSharedAccountsList -AdAccountId $AdAccountId -AudienceId $AudienceId -AccountType $AccountType -PageSize $PageSize -Bookmark $Bookmark
+    $Result = Invoke-AdAccountsAudiencesSharedAccountsList -AudienceId $AudienceId -AccountType $AccountType -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdAccountsAudiencesSharedAccountsList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -55,11 +55,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **AudienceId** | **String**| Unique identifier of the audience to use to filter the results. | 
  **AccountType** | [**AudienceAccountType**](AudienceAccountType.md)| Filter accounts by account type. | 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -82,8 +82,8 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AudienceId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AccountType] <PSCustomObject><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 List accounts with access to an audience owned by a business
 
@@ -96,15 +96,15 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
 $AudienceId = "MyAudienceId" # String | Unique identifier of the audience to use to filter the results.
 $AccountType = "AD_ACCOUNT" # AudienceAccountType | Filter accounts by account type.
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List accounts with access to an audience owned by a business
 try {
-    $Result = Invoke-BusinessAccountAudiencesSharedAccountsList -BusinessId $BusinessId -AudienceId $AudienceId -AccountType $AccountType -PageSize $PageSize -Bookmark $Bookmark
+    $Result = Invoke-BusinessAccountAudiencesSharedAccountsList -BusinessId $BusinessId -AudienceId $AudienceId -AccountType $AccountType -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BusinessAccountAudiencesSharedAccountsList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -118,8 +118,8 @@ Name | Type | Description  | Notes
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
  **AudienceId** | **String**| Unique identifier of the audience to use to filter the results. | 
  **AccountType** | [**AudienceAccountType**](AudienceAccountType.md)| Filter accounts by account type. | 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -138,10 +138,10 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-SharedAudiencesForBusinessList"></a>
 # **Invoke-SharedAudiencesForBusinessList**
-> AudiencesList200Response Invoke-SharedAudiencesForBusinessList<br>
+> SharedAudiencesForBusinessList200Response Invoke-SharedAudiencesForBusinessList<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 List received audiences for a business
@@ -155,14 +155,14 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$Order = "ASCENDING" # Order | The order in which to sort the items returned: ""ASCENDING"" or ""DESCENDING"" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List received audiences for a business
 try {
-    $Result = Invoke-SharedAudiencesForBusinessList -BusinessId $BusinessId -Bookmark $Bookmark -Order $Order -PageSize $PageSize
+    $Result = Invoke-SharedAudiencesForBusinessList -BusinessId $BusinessId -Order $Order -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-SharedAudiencesForBusinessList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -174,13 +174,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
+ **Order** | [**Order**](Order.md)| The order in which to sort the items returned: &quot;&quot;ASCENDING&quot;&quot; or &quot;&quot;DESCENDING&quot;&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**AudiencesList200Response**](AudiencesList200Response.md) (PSCustomObject)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -195,13 +195,13 @@ Name | Type | Description  | Notes
 
 <a id="Update-AdAccountToAdAccountSharedAudience"></a>
 # **Update-AdAccountToAdAccountSharedAudience**
-> SharedAudienceResponse Update-AdAccountToAdAccountSharedAudience<br>
+> AdAccountToAdAccountSharedAudience Update-AdAccountToAdAccountSharedAudience<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SharedAudience] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody] <PSCustomObject><br>
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```powershell
@@ -211,11 +211,11 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$SharedAudience = Initialize-SharedAudience -AudienceId "2542621871096" -OperationType "SHARE" -RecipientAccountIds "MyRecipientAccountIds" # SharedAudience | 
+$AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody = Initialize-AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody -AudienceId "2542621871096" -OperationType "SHARE" -RecipientAccountIds "MyRecipientAccountIds" # AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 # Update audience sharing between ad accounts
 try {
-    $Result = Update-AdAccountToAdAccountSharedAudience -AdAccountId $AdAccountId -SharedAudience $SharedAudience
+    $Result = Update-AdAccountToAdAccountSharedAudience -AdAccountId $AdAccountId -AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody $AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
 } catch {
     Write-Host ("Exception occurred when calling Update-AdAccountToAdAccountSharedAudience: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -227,11 +227,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **SharedAudience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md) (PSCustomObject)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md) (PSCustomObject)
 
 ### Authorization
 
@@ -246,13 +246,13 @@ Name | Type | Description  | Notes
 
 <a id="Update-AdAccountToBusinessSharedAudience"></a>
 # **Update-AdAccountToBusinessSharedAudience**
-> BusinessSharedAudienceResponse Update-AdAccountToBusinessSharedAudience<br>
+> AdAccountToBusinessSharedAudience Update-AdAccountToBusinessSharedAudience<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessSharedAudience] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountToBusinessSharedAudienceUpdateWithRequiredBody] <PSCustomObject><br>
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```powershell
@@ -262,11 +262,11 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$BusinessSharedAudience = Initialize-BusinessSharedAudience -AudienceId "2542621871096" -OperationType "SHARE" -RecipientBusinessIds "MyRecipientBusinessIds" # BusinessSharedAudience | 
+$AdAccountToBusinessSharedAudienceUpdateWithRequiredBody = Initialize-AdAccountToBusinessSharedAudienceUpdateWithRequiredBody -AudienceId "2542621871096" -OperationType "SHARE" -RecipientBusinessIds "MyRecipientBusinessIds" # AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 # Update audience sharing from an ad account to businesses
 try {
-    $Result = Update-AdAccountToBusinessSharedAudience -AdAccountId $AdAccountId -BusinessSharedAudience $BusinessSharedAudience
+    $Result = Update-AdAccountToBusinessSharedAudience -AdAccountId $AdAccountId -AdAccountToBusinessSharedAudienceUpdateWithRequiredBody $AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 } catch {
     Write-Host ("Exception occurred when calling Update-AdAccountToBusinessSharedAudience: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -278,11 +278,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **BusinessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **AdAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md) (PSCustomObject)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md) (PSCustomObject)
 
 ### Authorization
 
@@ -297,13 +297,13 @@ Name | Type | Description  | Notes
 
 <a id="Update-BusinessToAdAccountSharedAudience"></a>
 # **Update-BusinessToAdAccountSharedAudience**
-> SharedAudienceResponse Update-BusinessToAdAccountSharedAudience<br>
+> BusinessToAdAccountSharedAudience Update-BusinessToAdAccountSharedAudience<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SharedAudience] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessToAdAccountSharedAudienceUpdateWithRequiredBody] <PSCustomObject><br>
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```powershell
@@ -312,12 +312,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$SharedAudience = Initialize-SharedAudience -AudienceId "2542621871096" -OperationType "SHARE" -RecipientAccountIds "MyRecipientAccountIds" # SharedAudience | 
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$BusinessToAdAccountSharedAudienceUpdateWithRequiredBody = Initialize-BusinessToAdAccountSharedAudienceUpdateWithRequiredBody -AudienceId "2542621871096" -OperationType "SHARE" -RecipientAccountIds "MyRecipientAccountIds" # BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 # Update audience sharing from a business to ad accounts
 try {
-    $Result = Update-BusinessToAdAccountSharedAudience -BusinessId $BusinessId -SharedAudience $SharedAudience
+    $Result = Update-BusinessToAdAccountSharedAudience -BusinessId $BusinessId -BusinessToAdAccountSharedAudienceUpdateWithRequiredBody $BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
 } catch {
     Write-Host ("Exception occurred when calling Update-BusinessToAdAccountSharedAudience: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -329,11 +329,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **SharedAudience** | [**SharedAudience**](SharedAudience.md)|  | 
+ **BusinessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md) (PSCustomObject)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md) (PSCustomObject)
 
 ### Authorization
 
@@ -348,13 +348,13 @@ Name | Type | Description  | Notes
 
 <a id="Update-BusinessToBusinessSharedAudience"></a>
 # **Update-BusinessToBusinessSharedAudience**
-> BusinessSharedAudienceResponse Update-BusinessToBusinessSharedAudience<br>
+> BusinessToBusinessSharedAudience Update-BusinessToBusinessSharedAudience<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessSharedAudience] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessToBusinessSharedAudienceUpdateWithRequiredBody] <PSCustomObject><br>
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 ```powershell
@@ -363,12 +363,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$BusinessSharedAudience = Initialize-BusinessSharedAudience -AudienceId "2542621871096" -OperationType "SHARE" -RecipientBusinessIds "MyRecipientBusinessIds" # BusinessSharedAudience | 
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$BusinessToBusinessSharedAudienceUpdateWithRequiredBody = Initialize-BusinessToBusinessSharedAudienceUpdateWithRequiredBody -AudienceId "2542621871096" -OperationType "SHARE" -RecipientBusinessIds "MyRecipientBusinessIds" # BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 # Update audience sharing between businesses
 try {
-    $Result = Update-BusinessToBusinessSharedAudience -BusinessId $BusinessId -BusinessSharedAudience $BusinessSharedAudience
+    $Result = Update-BusinessToBusinessSharedAudience -BusinessId $BusinessId -BusinessToBusinessSharedAudienceUpdateWithRequiredBody $BusinessToBusinessSharedAudienceUpdateWithRequiredBody
 } catch {
     Write-Host ("Exception occurred when calling Update-BusinessToBusinessSharedAudience: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -380,11 +380,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **BusinessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  | 
+ **BusinessToBusinessSharedAudienceUpdateWithRequiredBody** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  | 
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md) (PSCustomObject)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md) (PSCustomObject)
 
 ### Authorization
 

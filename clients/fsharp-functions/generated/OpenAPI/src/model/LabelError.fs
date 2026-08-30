@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.Label
+open OpenAPI.Model.LabelErrorData
 
 module LabelError =
 
@@ -12,7 +12,7 @@ module LabelError =
   [<CLIMutable>]
   type LabelError = {
     [<JsonProperty(PropertyName = "data")>]
-    Data : Label;
+    Data : LabelErrorData;
     [<JsonProperty(PropertyName = "error_messages")>]
     ErrorMessages : string[];
   }

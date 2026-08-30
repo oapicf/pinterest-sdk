@@ -51,7 +51,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setMessage(std::string  message);
+	void setMessage(std::string message);
 
 
     private:

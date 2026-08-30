@@ -1,7 +1,7 @@
 /*
  * BulkEntityType.h
  *
- * Refers ads entity type. Schedule enum is only applicable to beta users
+ * Refers ads entity type.
  */
 
 #ifndef _BulkEntityType_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Refers ads entity type. Schedule enum is only applicable to beta users
+/*! \brief Refers ads entity type.
  *
  *  \ingroup Models
  *

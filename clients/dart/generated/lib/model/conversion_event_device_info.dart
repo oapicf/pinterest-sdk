@@ -106,7 +106,13 @@ class ConversionEventDeviceInfo {
   int? externalStorageSize;
 
   /// Device form factor
-  ConversionEventDeviceInfoFormFactorEnum? formFactor;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  FormFactor? formFactor;
 
   /// Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release
   ///
@@ -139,10 +145,22 @@ class ConversionEventDeviceInfo {
   String? model;
 
   /// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-  ConversionEventDeviceInfoNetworkTypeEnum? networkType;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  NetworkType? networkType;
 
   /// OS Family
-  ConversionEventDeviceInfoOsFamilyEnum? osFamily;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  OsFamily? osFamily;
 
   /// Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch
   ///
@@ -448,10 +466,6 @@ class ConversionEventDeviceInfo {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConversionEventDeviceInfo[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConversionEventDeviceInfo[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -462,15 +476,15 @@ class ConversionEventDeviceInfo {
         cpuCores: mapValueOfType<int>(json, r'cpu_cores'),
         externalStorageFreeSpace: mapValueOfType<int>(json, r'external_storage_free_space'),
         externalStorageSize: mapValueOfType<int>(json, r'external_storage_size'),
-        formFactor: ConversionEventDeviceInfoFormFactorEnum.fromJson(json[r'form_factor']),
+        formFactor: FormFactor.fromJson(json[r'form_factor']),
         kernelVersion: mapValueOfType<String>(json, r'kernel_version'),
         languages: json[r'languages'] is Iterable
             ? (json[r'languages'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         locale: mapValueOfType<String>(json, r'locale'),
         model: mapValueOfType<String>(json, r'model'),
-        networkType: ConversionEventDeviceInfoNetworkTypeEnum.fromJson(json[r'network_type']),
-        osFamily: ConversionEventDeviceInfoOsFamilyEnum.fromJson(json[r'os_family']),
+        networkType: NetworkType.fromJson(json[r'network_type']),
+        osFamily: OsFamily.fromJson(json[r'os_family']),
         osName: mapValueOfType<String>(json, r'os_name'),
         osReleaseName: mapValueOfType<String>(json, r'os_release_name'),
         osVersion: mapValueOfType<String>(json, r'os_version'),
@@ -531,280 +545,4 @@ class ConversionEventDeviceInfo {
   static const requiredKeys = <String>{
   };
 }
-
-/// Device form factor
-class ConversionEventDeviceInfoFormFactorEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ConversionEventDeviceInfoFormFactorEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const desktop = ConversionEventDeviceInfoFormFactorEnum._(r'desktop');
-  static const laptop = ConversionEventDeviceInfoFormFactorEnum._(r'laptop');
-  static const cellphone = ConversionEventDeviceInfoFormFactorEnum._(r'cellphone');
-  static const tablet = ConversionEventDeviceInfoFormFactorEnum._(r'tablet');
-  static const smartwatch = ConversionEventDeviceInfoFormFactorEnum._(r'smartwatch');
-  static const tv = ConversionEventDeviceInfoFormFactorEnum._(r'tv');
-  static const vr = ConversionEventDeviceInfoFormFactorEnum._(r'vr');
-  static const console = ConversionEventDeviceInfoFormFactorEnum._(r'console');
-  static const other = ConversionEventDeviceInfoFormFactorEnum._(r'other');
-
-  /// List of all possible values in this [enum][ConversionEventDeviceInfoFormFactorEnum].
-  static const values = <ConversionEventDeviceInfoFormFactorEnum>[
-    desktop,
-    laptop,
-    cellphone,
-    tablet,
-    smartwatch,
-    tv,
-    vr,
-    console,
-    other,
-  ];
-
-  static ConversionEventDeviceInfoFormFactorEnum? fromJson(dynamic value) => ConversionEventDeviceInfoFormFactorEnumTypeTransformer().decode(value);
-
-  static List<ConversionEventDeviceInfoFormFactorEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ConversionEventDeviceInfoFormFactorEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ConversionEventDeviceInfoFormFactorEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ConversionEventDeviceInfoFormFactorEnum] to String,
-/// and [decode] dynamic data back to [ConversionEventDeviceInfoFormFactorEnum].
-class ConversionEventDeviceInfoFormFactorEnumTypeTransformer {
-  factory ConversionEventDeviceInfoFormFactorEnumTypeTransformer() => _instance ??= const ConversionEventDeviceInfoFormFactorEnumTypeTransformer._();
-
-  const ConversionEventDeviceInfoFormFactorEnumTypeTransformer._();
-
-  String encode(ConversionEventDeviceInfoFormFactorEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ConversionEventDeviceInfoFormFactorEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ConversionEventDeviceInfoFormFactorEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'desktop': return ConversionEventDeviceInfoFormFactorEnum.desktop;
-        case r'laptop': return ConversionEventDeviceInfoFormFactorEnum.laptop;
-        case r'cellphone': return ConversionEventDeviceInfoFormFactorEnum.cellphone;
-        case r'tablet': return ConversionEventDeviceInfoFormFactorEnum.tablet;
-        case r'smartwatch': return ConversionEventDeviceInfoFormFactorEnum.smartwatch;
-        case r'tv': return ConversionEventDeviceInfoFormFactorEnum.tv;
-        case r'vr': return ConversionEventDeviceInfoFormFactorEnum.vr;
-        case r'console': return ConversionEventDeviceInfoFormFactorEnum.console;
-        case r'other': return ConversionEventDeviceInfoFormFactorEnum.other;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ConversionEventDeviceInfoFormFactorEnumTypeTransformer] instance.
-  static ConversionEventDeviceInfoFormFactorEnumTypeTransformer? _instance;
-}
-
-
-/// Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-class ConversionEventDeviceInfoNetworkTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ConversionEventDeviceInfoNetworkTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const wifi = ConversionEventDeviceInfoNetworkTypeEnum._(r'wifi');
-  static const cellular2g = ConversionEventDeviceInfoNetworkTypeEnum._(r'cellular_2g');
-  static const cellular3g = ConversionEventDeviceInfoNetworkTypeEnum._(r'cellular_3g');
-  static const cellular4g = ConversionEventDeviceInfoNetworkTypeEnum._(r'cellular_4g');
-  static const cellular5g = ConversionEventDeviceInfoNetworkTypeEnum._(r'cellular_5g');
-  static const cellular6g = ConversionEventDeviceInfoNetworkTypeEnum._(r'cellular_6g');
-  static const ethernet = ConversionEventDeviceInfoNetworkTypeEnum._(r'ethernet');
-  static const unknown = ConversionEventDeviceInfoNetworkTypeEnum._(r'unknown');
-
-  /// List of all possible values in this [enum][ConversionEventDeviceInfoNetworkTypeEnum].
-  static const values = <ConversionEventDeviceInfoNetworkTypeEnum>[
-    wifi,
-    cellular2g,
-    cellular3g,
-    cellular4g,
-    cellular5g,
-    cellular6g,
-    ethernet,
-    unknown,
-  ];
-
-  static ConversionEventDeviceInfoNetworkTypeEnum? fromJson(dynamic value) => ConversionEventDeviceInfoNetworkTypeEnumTypeTransformer().decode(value);
-
-  static List<ConversionEventDeviceInfoNetworkTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ConversionEventDeviceInfoNetworkTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ConversionEventDeviceInfoNetworkTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ConversionEventDeviceInfoNetworkTypeEnum] to String,
-/// and [decode] dynamic data back to [ConversionEventDeviceInfoNetworkTypeEnum].
-class ConversionEventDeviceInfoNetworkTypeEnumTypeTransformer {
-  factory ConversionEventDeviceInfoNetworkTypeEnumTypeTransformer() => _instance ??= const ConversionEventDeviceInfoNetworkTypeEnumTypeTransformer._();
-
-  const ConversionEventDeviceInfoNetworkTypeEnumTypeTransformer._();
-
-  String encode(ConversionEventDeviceInfoNetworkTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ConversionEventDeviceInfoNetworkTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ConversionEventDeviceInfoNetworkTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'wifi': return ConversionEventDeviceInfoNetworkTypeEnum.wifi;
-        case r'cellular_2g': return ConversionEventDeviceInfoNetworkTypeEnum.cellular2g;
-        case r'cellular_3g': return ConversionEventDeviceInfoNetworkTypeEnum.cellular3g;
-        case r'cellular_4g': return ConversionEventDeviceInfoNetworkTypeEnum.cellular4g;
-        case r'cellular_5g': return ConversionEventDeviceInfoNetworkTypeEnum.cellular5g;
-        case r'cellular_6g': return ConversionEventDeviceInfoNetworkTypeEnum.cellular6g;
-        case r'ethernet': return ConversionEventDeviceInfoNetworkTypeEnum.ethernet;
-        case r'unknown': return ConversionEventDeviceInfoNetworkTypeEnum.unknown;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ConversionEventDeviceInfoNetworkTypeEnumTypeTransformer] instance.
-  static ConversionEventDeviceInfoNetworkTypeEnumTypeTransformer? _instance;
-}
-
-
-/// OS Family
-class ConversionEventDeviceInfoOsFamilyEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ConversionEventDeviceInfoOsFamilyEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const ios = ConversionEventDeviceInfoOsFamilyEnum._(r'ios');
-  static const android = ConversionEventDeviceInfoOsFamilyEnum._(r'android');
-  static const macos = ConversionEventDeviceInfoOsFamilyEnum._(r'macos');
-  static const windows = ConversionEventDeviceInfoOsFamilyEnum._(r'windows');
-  static const linux = ConversionEventDeviceInfoOsFamilyEnum._(r'linux');
-  static const bsd = ConversionEventDeviceInfoOsFamilyEnum._(r'bsd');
-  static const other = ConversionEventDeviceInfoOsFamilyEnum._(r'other');
-
-  /// List of all possible values in this [enum][ConversionEventDeviceInfoOsFamilyEnum].
-  static const values = <ConversionEventDeviceInfoOsFamilyEnum>[
-    ios,
-    android,
-    macos,
-    windows,
-    linux,
-    bsd,
-    other,
-  ];
-
-  static ConversionEventDeviceInfoOsFamilyEnum? fromJson(dynamic value) => ConversionEventDeviceInfoOsFamilyEnumTypeTransformer().decode(value);
-
-  static List<ConversionEventDeviceInfoOsFamilyEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ConversionEventDeviceInfoOsFamilyEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ConversionEventDeviceInfoOsFamilyEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ConversionEventDeviceInfoOsFamilyEnum] to String,
-/// and [decode] dynamic data back to [ConversionEventDeviceInfoOsFamilyEnum].
-class ConversionEventDeviceInfoOsFamilyEnumTypeTransformer {
-  factory ConversionEventDeviceInfoOsFamilyEnumTypeTransformer() => _instance ??= const ConversionEventDeviceInfoOsFamilyEnumTypeTransformer._();
-
-  const ConversionEventDeviceInfoOsFamilyEnumTypeTransformer._();
-
-  String encode(ConversionEventDeviceInfoOsFamilyEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ConversionEventDeviceInfoOsFamilyEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ConversionEventDeviceInfoOsFamilyEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'ios': return ConversionEventDeviceInfoOsFamilyEnum.ios;
-        case r'android': return ConversionEventDeviceInfoOsFamilyEnum.android;
-        case r'macos': return ConversionEventDeviceInfoOsFamilyEnum.macos;
-        case r'windows': return ConversionEventDeviceInfoOsFamilyEnum.windows;
-        case r'linux': return ConversionEventDeviceInfoOsFamilyEnum.linux;
-        case r'bsd': return ConversionEventDeviceInfoOsFamilyEnum.bsd;
-        case r'other': return ConversionEventDeviceInfoOsFamilyEnum.other;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ConversionEventDeviceInfoOsFamilyEnumTypeTransformer] instance.
-  static ConversionEventDeviceInfoOsFamilyEnumTypeTransformer? _instance;
-}
-
 

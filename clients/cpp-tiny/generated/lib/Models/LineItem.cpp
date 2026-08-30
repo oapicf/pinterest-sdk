@@ -211,7 +211,7 @@ LineItem::getProductBrand()
 }
 
 void
-LineItem::setProductBrand(std::string  product_brand)
+LineItem::setProductBrand(std::string product_brand)
 {
 	this->product_brand = product_brand;
 }
@@ -223,7 +223,7 @@ LineItem::getProductCategory()
 }
 
 void
-LineItem::setProductCategory(std::string  product_category)
+LineItem::setProductCategory(std::string product_category)
 {
 	this->product_category = product_category;
 }
@@ -235,7 +235,7 @@ LineItem::getProductId()
 }
 
 void
-LineItem::setProductId(int  product_id)
+LineItem::setProductId(int product_id)
 {
 	this->product_id = product_id;
 }
@@ -247,7 +247,7 @@ LineItem::getProductName()
 }
 
 void
-LineItem::setProductName(std::string  product_name)
+LineItem::setProductName(std::string product_name)
 {
 	this->product_name = product_name;
 }
@@ -259,7 +259,7 @@ LineItem::getProductPrice()
 }
 
 void
-LineItem::setProductPrice(std::string  product_price)
+LineItem::setProductPrice(std::string product_price)
 {
 	this->product_price = product_price;
 }
@@ -271,7 +271,7 @@ LineItem::getProductQuantity()
 }
 
 void
-LineItem::setProductQuantity(int  product_quantity)
+LineItem::setProductQuantity(int product_quantity)
 {
 	this->product_quantity = product_quantity;
 }
@@ -283,7 +283,7 @@ LineItem::getProductVariant()
 }
 
 void
-LineItem::setProductVariant(std::string  product_variant)
+LineItem::setProductVariant(std::string product_variant)
 {
 	this->product_variant = product_variant;
 }
@@ -295,7 +295,7 @@ LineItem::getProductVariantId()
 }
 
 void
-LineItem::setProductVariantId(std::string  product_variant_id)
+LineItem::setProductVariantId(std::string product_variant_id)
 {
 	this->product_variant_id = product_variant_id;
 }

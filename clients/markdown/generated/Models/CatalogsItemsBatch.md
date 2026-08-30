@@ -3,8 +3,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **catalog\_type** | [**CatalogsType**](CatalogsType.md) |  | [default to null] |
 | **batch\_id** | **String** | Id of the catalogs items batch | [optional] [default to null] |
+| **catalog\_type** | **String** |  | [default to null] |
 | **completed\_time** | **Date** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [default to null] |
 | **created\_time** | **Date** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [default to null] |
 | **items** | [**List**](CreativeAssetsProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] [default to null] |

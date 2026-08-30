@@ -5,7 +5,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**orderLinesGet**](OrderLinesApi.md#orderLinesGet) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line |
-| [**orderLinesList**](OrderLinesApi.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines |
+| [**orderLinesList**](OrderLinesApi.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines. |
 
 
 ## Creating OrderLinesApi
@@ -39,7 +39,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="orderLinesGet"></a>
 # **orderLinesGet**
 ```java
-Mono<OrderLine> OrderLinesApi.orderLinesGet(adAccountIdorderLineId)
+Mono<OrderLine> OrderLinesApi.orderLinesGet(orderLineIdadAccountId)
 ```
 
 Get order line
@@ -49,8 +49,8 @@ Get a specific existing order line associated with an ad account.
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **orderLineId** | `String`| Order line ID. | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **orderLineId** | `String`| Unique identifier of an order line. | |
 
 
 ### Return type
@@ -66,10 +66,10 @@ Get a specific existing order line associated with an ad account.
 <a id="orderLinesList"></a>
 # **orderLinesList**
 ```java
-Mono<OrderLinesList200Response> OrderLinesApi.orderLinesList(adAccountIdpageSizeorderbookmark)
+Mono<OrderLinesList200Response> OrderLinesApi.orderLinesList(adAccountIdbookmarkpageSizeorder)
 ```
 
-Get order lines
+Get order lines.
 
 List existing order lines associated with an ad account.
 
@@ -77,9 +77,9 @@ List existing order lines associated with an ad account.
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
-| **order** | `String`| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`] |
 
 
 ### Return type

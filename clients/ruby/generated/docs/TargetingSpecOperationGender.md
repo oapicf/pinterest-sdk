@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **field** | **String** |  |  |
-| **operation** | **String** |  |  |
+| **operation** | [**TargetingSpecListOperation**](TargetingSpecListOperation.md) |  |  |
 | **values** | [**Array&lt;TargetingSpecGender&gt;**](TargetingSpecGender.md) |  |  |
 
 ## Example

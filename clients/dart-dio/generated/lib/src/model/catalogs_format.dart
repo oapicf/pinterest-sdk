@@ -20,6 +20,9 @@ class CatalogsFormat extends EnumClass {
   /// The file format of a feed.
   @BuiltValueEnumConst(wireName: r'XML')
   static const CatalogsFormat XML = _$XML;
+  /// The file format of a feed.
+  @BuiltValueEnumConst(wireName: r'INTEGRATION')
+  static const CatalogsFormat INTEGRATION = _$INTEGRATION;
 
   static Serializer<CatalogsFormat> get serializer => _$catalogsFormatSerializer;
 

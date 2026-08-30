@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filter_operator_type** | **string** |  | [optional] [default to FilterOperatorTypeEnum_Is]
-**negated** | **boolean** |  | [optional] [default to false]
+**filter_operator_type** | [**FilterOperatorType**](FilterOperatorType.md) |  | [optional] [default to undefined]
+**negated** | **boolean** |  | [optional] [default to undefined]
 **values** | **Array&lt;string&gt;** |  | [default to undefined]
 
 ## Example

@@ -20,8 +20,8 @@ part 'lead_subscription.g.dart';
 /// * [leadFormId] - Lead form ID.
 /// * [userAccountId] - User account used to subscribe lead data.
 /// * [webhookUrl] - Standard HTTPS webhook URL.
-@BuiltValue()
-abstract class LeadSubscription implements Built<LeadSubscription, LeadSubscriptionBuilder> {
+@BuiltValue(instantiable: false)
+abstract class LeadSubscription  {
   /// The Ad Account ID that this lead form belongs to.
   @BuiltValueField(wireName: r'ad_account_id')
   String? get adAccountId;
@@ -58,20 +58,13 @@ abstract class LeadSubscription implements Built<LeadSubscription, LeadSubscript
   @BuiltValueField(wireName: r'webhook_url')
   String? get webhookUrl;
 
-  LeadSubscription._();
-
-  factory LeadSubscription([void updates(LeadSubscriptionBuilder b)]) = _$LeadSubscription;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LeadSubscriptionBuilder b) => b;
-
   @BuiltValueSerializer(custom: true)
   static Serializer<LeadSubscription> get serializer => _$LeadSubscriptionSerializer();
 }
 
 class _$LeadSubscriptionSerializer implements PrimitiveSerializer<LeadSubscription> {
   @override
-  final Iterable<Type> types = const [LeadSubscription, _$LeadSubscription];
+  final Iterable<Type> types = const [LeadSubscription];
 
   @override
   final String wireName = r'LeadSubscription';
@@ -155,6 +148,46 @@ class _$LeadSubscriptionSerializer implements PrimitiveSerializer<LeadSubscripti
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
+  @override
+  LeadSubscription deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.deserialize(serialized, specifiedType: FullType($LeadSubscription)) as $LeadSubscription;
+  }
+}
+
+/// a concrete implementation of [LeadSubscription], since [LeadSubscription] is not instantiable
+@BuiltValue(instantiable: true)
+abstract class $LeadSubscription implements LeadSubscription, Built<$LeadSubscription, $LeadSubscriptionBuilder> {
+  $LeadSubscription._();
+
+  factory $LeadSubscription([void Function($LeadSubscriptionBuilder)? updates]) = _$$LeadSubscription;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults($LeadSubscriptionBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<$LeadSubscription> get serializer => _$$LeadSubscriptionSerializer();
+}
+
+class _$$LeadSubscriptionSerializer implements PrimitiveSerializer<$LeadSubscription> {
+  @override
+  final Iterable<Type> types = const [$LeadSubscription, _$$LeadSubscription];
+
+  @override
+  final String wireName = r'$LeadSubscription';
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    $LeadSubscription object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.serialize(object, specifiedType: FullType(LeadSubscription))!;
+  }
+
   void _deserializeProperties(
     Serializers serializers,
     Object serialized, {
@@ -170,22 +203,25 @@ class _$LeadSubscriptionSerializer implements PrimitiveSerializer<LeadSubscripti
         case r'ad_account_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.adAccountId = valueDes;
           break;
         case r'api_version':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.apiVersion = valueDes;
           break;
         case r'created_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdTime = valueDes;
           break;
         case r'cryptographic_algorithm':
@@ -207,8 +243,9 @@ class _$LeadSubscriptionSerializer implements PrimitiveSerializer<LeadSubscripti
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'lead_form_id':
@@ -222,15 +259,17 @@ class _$LeadSubscriptionSerializer implements PrimitiveSerializer<LeadSubscripti
         case r'user_account_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.userAccountId = valueDes;
           break;
         case r'webhook_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.webhookUrl = valueDes;
           break;
         default:
@@ -242,12 +281,12 @@ class _$LeadSubscriptionSerializer implements PrimitiveSerializer<LeadSubscripti
   }
 
   @override
-  LeadSubscription deserialize(
+  $LeadSubscription deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = LeadSubscriptionBuilder();
+    final result = $LeadSubscriptionBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

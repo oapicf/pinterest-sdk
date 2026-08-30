@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.UpdateMemberAssetAccessBodyAccessesInner
+import org.openapitools.model.UpdateMemberAssetAccessItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -15,15 +15,16 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * An object with a list of all the new accesses.
- * @param accesses 
+ * An object with a list of all the new member asset accesses.
+ * @param accesses List of member asset accesses to assign or update.
  */
 data class UpdateMemberAssetAccessBody(
 
     @field:Valid
     @get:Size(min=1,max=50) 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("accesses", required = true) val accesses: kotlin.collections.List<UpdateMemberAssetAccessBodyAccessesInner>
+    @Schema(required = true, description = "List of member asset accesses to assign or update.")
+    @param:JsonProperty("accesses")
+    @get:JsonProperty("accesses", required = true) val accesses: kotlin.collections.List<UpdateMemberAssetAccessItem>
 ) {
 
 }

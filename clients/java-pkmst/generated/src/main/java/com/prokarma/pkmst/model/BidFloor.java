@@ -14,10 +14,11 @@ import java.util.List;
  *
  */
 /**
- * BidFloor
+ * Bid floor request and response model.
  */
+@ApiModel(description = "Bid floor request and response model.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BidFloor   {
   @JsonProperty("bid_floors")
   
@@ -43,7 +44,7 @@ public class BidFloor   {
    * A list of bid floors in micro currency. For example, [100000, 200000]
    * @return bidFloors
    */
-  @ApiModelProperty(example = "[100000,200000]", value = "A list of bid floors in micro currency. For example, [100000, 200000]")
+  @ApiModelProperty(example = "[100000,200000]", readOnly = true, value = "A list of bid floors in micro currency. For example, [100000, 200000]")
   public List<Integer> getBidFloors() {
     return bidFloors;
   }
@@ -58,10 +59,10 @@ public class BidFloor   {
   }
 
   /**
-   * Always the string 'bidfloor'
+   * Always the string 'bidfloor'.
    * @return type
    */
-  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
+  @ApiModelProperty(example = "bidfloor", readOnly = true, value = "Always the string 'bidfloor'.")
   public String getType() {
     return type;
   }
@@ -105,10 +106,7 @@ public class BidFloor   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

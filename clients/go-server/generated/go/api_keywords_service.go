@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -30,43 +30,91 @@ func NewKeywordsAPIService() *KeywordsAPIService {
 }
 
 // KeywordsGet - Get keywords
-func (s *KeywordsAPIService) KeywordsGet(ctx context.Context, adAccountId string, campaignId string, adGroupId string, adGroupIds []string, matchTypes []MatchType, pageSize int32, bookmark string) (ImplResponse, error) {
+func (s *KeywordsAPIService) KeywordsGet(ctx context.Context, adAccountId string, campaignId string, adGroupId string, adGroupIds []string, matchTypes []MatchType, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update KeywordsGet with the required logic for this service method.
 	// Add api_keywords_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, KeywordsGet200Response{}) or use other options such as http.Ok ...
 	// return Response(200, KeywordsGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("KeywordsGet method not implemented")
 }
 
 // KeywordsCreate - Create keywords
-func (s *KeywordsAPIService) KeywordsCreate(ctx context.Context, adAccountId string, keywordsRequest KeywordsRequest) (ImplResponse, error) {
+func (s *KeywordsAPIService) KeywordsCreate(ctx context.Context, adAccountId string, keywordsCreate KeywordsCreate) (ImplResponse, error) {
 	// TODO - update KeywordsCreate with the required logic for this service method.
 	// Add api_keywords_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, KeywordsResponse{}) or use other options such as http.Ok ...
-	// return Response(200, KeywordsResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, Keywords{}) or use other options such as http.Ok ...
+	// return Response(200, Keywords{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, Keywords{}) or use other options such as http.Ok ...
+	// return Response(201, Keywords{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("KeywordsCreate method not implemented")
 }
 
 // KeywordsUpdate - Update keywords
-func (s *KeywordsAPIService) KeywordsUpdate(ctx context.Context, adAccountId string, keywordUpdateBody KeywordUpdateBody) (ImplResponse, error) {
+func (s *KeywordsAPIService) KeywordsUpdate(ctx context.Context, adAccountId string, keywordsUpdate KeywordsUpdate) (ImplResponse, error) {
 	// TODO - update KeywordsUpdate with the required logic for this service method.
 	// Add api_keywords_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, KeywordsResponse{}) or use other options such as http.Ok ...
-	// return Response(200, KeywordsResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, Keywords{}) or use other options such as http.Ok ...
+	// return Response(200, Keywords{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("KeywordsUpdate method not implemented")
 }
@@ -79,25 +127,52 @@ func (s *KeywordsAPIService) CountryKeywordsMetricsGet(ctx context.Context, adAc
 	// TODO: Uncomment the next line to return response Response(200, KeywordsMetricsArrayResponse{}) or use other options such as http.Ok ...
 	// return Response(200, KeywordsMetricsArrayResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("CountryKeywordsMetricsGet method not implemented")
 }
 
 // TrendingKeywordsList - List trending keywords
-func (s *KeywordsAPIService) TrendingKeywordsList(ctx context.Context, region TrendsSupportedRegion, trendType TrendType, interests []string, genders []string, ages []string, includeKeywords []string, normalizeAgainstGroup bool, limit int32, includePrediction bool, includeDemographics bool) (ImplResponse, error) {
+func (s *KeywordsAPIService) TrendingKeywordsList(ctx context.Context, region TrendsSupportedRegion, trendType TrendType, interests []TrendsL1Interest, genders []TrendsGenderFilter, ages []TrendsAgeBucket, includeKeywords []string, normalizeAgainstGroup bool, limit int32, includeDemographics bool) (ImplResponse, error) {
 	// TODO - update TrendingKeywordsList with the required logic for this service method.
 	// Add api_keywords_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, TrendingKeywordsResponse{}) or use other options such as http.Ok ...
 	// return Response(200, TrendingKeywordsResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("TrendingKeywordsList method not implemented")
 }

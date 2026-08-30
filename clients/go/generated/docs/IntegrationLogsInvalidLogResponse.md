@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RejectedLogs** | Pointer to [**[]IntegrationLogsInvalidLogResponseRejectedLogsInner**](IntegrationLogsInvalidLogResponseRejectedLogsInner.md) |  | [optional] 
+**RejectedLogs** | Pointer to [**[]IntegrationLogsInvalidLogResponseRejectedLogsItems**](IntegrationLogsInvalidLogResponseRejectedLogsItems.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetRejectedLogs
 
-`func (o *IntegrationLogsInvalidLogResponse) GetRejectedLogs() []IntegrationLogsInvalidLogResponseRejectedLogsInner`
+`func (o *IntegrationLogsInvalidLogResponse) GetRejectedLogs() []IntegrationLogsInvalidLogResponseRejectedLogsItems`
 
 GetRejectedLogs returns the RejectedLogs field if non-nil, zero value otherwise.
 
 ### GetRejectedLogsOk
 
-`func (o *IntegrationLogsInvalidLogResponse) GetRejectedLogsOk() (*[]IntegrationLogsInvalidLogResponseRejectedLogsInner, bool)`
+`func (o *IntegrationLogsInvalidLogResponse) GetRejectedLogsOk() (*[]IntegrationLogsInvalidLogResponseRejectedLogsItems, bool)`
 
 GetRejectedLogsOk returns a tuple with the RejectedLogs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRejectedLogs
 
-`func (o *IntegrationLogsInvalidLogResponse) SetRejectedLogs(v []IntegrationLogsInvalidLogResponseRejectedLogsInner)`
+`func (o *IntegrationLogsInvalidLogResponse) SetRejectedLogs(v []IntegrationLogsInvalidLogResponseRejectedLogsItems)`
 
 SetRejectedLogs sets RejectedLogs field to given value.
 

@@ -1,0 +1,43 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsRetailReportParametersReport",
+  "fields": [
+    {
+      "name": "feed_id",
+      "type": "string",
+      "doc": "ID of the feed entity."
+    },
+    {
+      "name": "processing_result_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.",
+      "default": null
+    },
+    {
+      "name": "report_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailReportParametersReport_reportUnderscoretype",
+        "symbols": [
+          "ALL_ITEMS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a catalog. If not given, oldest catalog will be used",
+      "default": null
+    },
+    {
+      "name": "product_group_id",
+      "type": ["null", "string"],
+      "doc": "Optional product group ID. If omitted, all items are included. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.",
+      "default": null
+    }
+  ]
+
+}

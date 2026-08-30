@@ -14,7 +14,7 @@ import org.openapitools.model.ItemAttributesRequest;
  **/
 
 @ApiModel(description = "Object describing an item batch record to upsert items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ItemUpsertBatchRecord   {
   @JsonProperty("attributes")
   private ItemAttributesRequest attributes;
@@ -92,10 +92,7 @@ public class ItemUpsertBatchRecord   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

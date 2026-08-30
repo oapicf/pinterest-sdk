@@ -5,19 +5,24 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type CatalogsCreativeAssetsProductGroup struct {
 
-	// Catalog id pertaining to the creative assets product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	// Catalog ID pertaining to the product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\d+$"`
 
 	CatalogType string `json:"catalog_type"`
 
@@ -28,23 +33,121 @@ type CatalogsCreativeAssetsProductGroup struct {
 
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 
-	// ID of the creative assets product group.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	// ID of the catalog product group.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 
-	// Name of creative assets product group
+	// Name of catalog product group
 	Name string `json:"name,omitempty"`
 
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt int32 `json:"updated_at,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsCreativeAssetsProductGroup
+func (o *CatalogsCreativeAssetsProductGroup) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_id",
+		"catalog_type",
+		"filters",
+		"id",
+	}
 
-// AssertCatalogsCreativeAssetsProductGroupRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"catalog_id": false,
+		"catalog_type": false,
+		"filters": false,
+		"id": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_id": {},
+		"catalog_type": {},
+		"created_at": {},
+		"description": {},
+		"filters": {},
+		"id": {},
+		"name": {},
+		"updated_at": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsCreativeAssetsProductGroup
+
+	if value, exists := allProperties["catalog_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["created_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreatedAt); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["filters"]; exists {
+		if err = json.Unmarshal(value, &decoded.Filters); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["updated_at"]; exists {
+		if err = json.Unmarshal(value, &decoded.UpdatedAt); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsCreativeAssetsProductGroupRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsCreativeAssetsProductGroupRequired(obj CatalogsCreativeAssetsProductGroup) error {
 	elements := map[string]interface{}{
-		"catalog_id": obj.CatalogId,
-		"catalog_type": obj.CatalogType,
 		"filters": obj.Filters,
-		"id": obj.Id,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

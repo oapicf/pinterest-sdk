@@ -7,22 +7,24 @@
 
 static board_t *board_create_internal(
     char *board_pins_modified_at,
-    int collaborator_count,
+    int *collaborator_count,
     char *created_at,
     char *description,
-    int follower_count,
+    int *follower_count,
     char *id,
-    int is_ads_only,
+    int *is_ads_only,
     board_media_t *media,
     char *name,
     board_owner_t *owner,
-    int pin_count,
+    int *pin_count,
     board_privacy_t *privacy
     ) {
     board_t *board_local_var = malloc(sizeof(board_t));
     if (!board_local_var) {
         return NULL;
     }
+    memset(board_local_var, 0, sizeof(board_t));
+    board_local_var->_library_owned = 1;
     board_local_var->board_pins_modified_at = board_pins_modified_at;
     board_local_var->collaborator_count = collaborator_count;
     board_local_var->created_at = created_at;
@@ -35,39 +37,64 @@ static board_t *board_create_internal(
     board_local_var->owner = owner;
     board_local_var->pin_count = pin_count;
     board_local_var->privacy = privacy;
-
-    board_local_var->_library_owned = 1;
     return board_local_var;
 }
 
 __attribute__((deprecated)) board_t *board_create(
     char *board_pins_modified_at,
-    int collaborator_count,
+    int *collaborator_count,
     char *created_at,
     char *description,
-    int follower_count,
+    int *follower_count,
     char *id,
-    int is_ads_only,
+    int *is_ads_only,
     board_media_t *media,
     char *name,
     board_owner_t *owner,
-    int pin_count,
+    int *pin_count,
     board_privacy_t *privacy
     ) {
-    return board_create_internal (
+    int *collaborator_count_copy = NULL;
+    if (collaborator_count) {
+        collaborator_count_copy = malloc(sizeof(int));
+        if (collaborator_count_copy) *collaborator_count_copy = *collaborator_count;
+    }
+    int *follower_count_copy = NULL;
+    if (follower_count) {
+        follower_count_copy = malloc(sizeof(int));
+        if (follower_count_copy) *follower_count_copy = *follower_count;
+    }
+    int *is_ads_only_copy = NULL;
+    if (is_ads_only) {
+        is_ads_only_copy = malloc(sizeof(int));
+        if (is_ads_only_copy) *is_ads_only_copy = *is_ads_only;
+    }
+    int *pin_count_copy = NULL;
+    if (pin_count) {
+        pin_count_copy = malloc(sizeof(int));
+        if (pin_count_copy) *pin_count_copy = *pin_count;
+    }
+    board_t *result = board_create_internal (
         board_pins_modified_at,
-        collaborator_count,
+        collaborator_count_copy,
         created_at,
         description,
-        follower_count,
+        follower_count_copy,
         id,
-        is_ads_only,
+        is_ads_only_copy,
         media,
         name,
         owner,
-        pin_count,
+        pin_count_copy,
         privacy
         );
+    if (!result) {
+        free(collaborator_count_copy);
+        free(follower_count_copy);
+        free(is_ads_only_copy);
+        free(pin_count_copy);
+    }
+    return result;
 }
 
 void board_free(board_t *board) {
@@ -83,6 +110,10 @@ void board_free(board_t *board) {
         free(board->board_pins_modified_at);
         board->board_pins_modified_at = NULL;
     }
+    if (board->collaborator_count) {
+        free(board->collaborator_count);
+        board->collaborator_count = NULL;
+    }
     if (board->created_at) {
         free(board->created_at);
         board->created_at = NULL;
@@ -91,9 +122,17 @@ void board_free(board_t *board) {
         free(board->description);
         board->description = NULL;
     }
+    if (board->follower_count) {
+        free(board->follower_count);
+        board->follower_count = NULL;
+    }
     if (board->id) {
         free(board->id);
         board->id = NULL;
+    }
+    if (board->is_ads_only) {
+        free(board->is_ads_only);
+        board->is_ads_only = NULL;
     }
     if (board->media) {
         board_media_free(board->media);
@@ -106,6 +145,10 @@ void board_free(board_t *board) {
     if (board->owner) {
         board_owner_free(board->owner);
         board->owner = NULL;
+    }
+    if (board->pin_count) {
+        free(board->pin_count);
+        board->pin_count = NULL;
     }
     if (board->privacy) {
         board_privacy_free(board->privacy);
@@ -127,7 +170,7 @@ cJSON *board_convertToJSON(board_t *board) {
 
     // board->collaborator_count
     if(board->collaborator_count) {
-    if(cJSON_AddNumberToObject(item, "collaborator_count", board->collaborator_count) == NULL) {
+    if(cJSON_AddNumberToObject(item, "collaborator_count", *board->collaborator_count) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -151,7 +194,7 @@ cJSON *board_convertToJSON(board_t *board) {
 
     // board->follower_count
     if(board->follower_count) {
-    if(cJSON_AddNumberToObject(item, "follower_count", board->follower_count) == NULL) {
+    if(cJSON_AddNumberToObject(item, "follower_count", *board->follower_count) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -168,7 +211,7 @@ cJSON *board_convertToJSON(board_t *board) {
 
     // board->is_ads_only
     if(board->is_ads_only) {
-    if(cJSON_AddBoolToObject(item, "is_ads_only", board->is_ads_only) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_ads_only", *board->is_ads_only) == NULL) {
     goto fail; //Bool
     }
     }
@@ -211,7 +254,7 @@ cJSON *board_convertToJSON(board_t *board) {
 
     // board->pin_count
     if(board->pin_count) {
-    if(cJSON_AddNumberToObject(item, "pin_count", board->pin_count) == NULL) {
+    if(cJSON_AddNumberToObject(item, "pin_count", *board->pin_count) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -241,11 +284,33 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
 
     board_t *board_local_var = NULL;
 
+    char *board_pins_modified_at_local_str = NULL;
+
+    // define the local variable for board->collaborator_count
+    int *collaborator_count_local_var = NULL;
+
+    char *created_at_local_str = NULL;
+
+    char *description_local_str = NULL;
+
+    // define the local variable for board->follower_count
+    int *follower_count_local_var = NULL;
+
+    char *id_local_str = NULL;
+
+    // define the local variable for board->is_ads_only
+    int *is_ads_only_local_var = NULL;
+
     // define the local variable for board->media
     board_media_t *media_local_nonprim = NULL;
 
+    char *name_local_str = NULL;
+
     // define the local variable for board->owner
     board_owner_t *owner_local_nonprim = NULL;
+
+    // define the local variable for board->pin_count
+    int *pin_count_local_var = NULL;
 
     // define the local variable for board->privacy
     board_privacy_t *privacy_local_nonprim = NULL;
@@ -272,6 +337,12 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
     {
     goto end; //Numeric
     }
+    collaborator_count_local_var = malloc(sizeof(int));
+    if(!collaborator_count_local_var)
+    {
+        goto end;
+    }
+    *collaborator_count_local_var = collaborator_count->valuedouble;
     }
 
     // board->created_at
@@ -308,6 +379,12 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
     {
     goto end; //Numeric
     }
+    follower_count_local_var = malloc(sizeof(int));
+    if(!follower_count_local_var)
+    {
+        goto end;
+    }
+    *follower_count_local_var = follower_count->valuedouble;
     }
 
     // board->id
@@ -335,6 +412,12 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
     {
     goto end; //Bool
     }
+    is_ads_only_local_var = malloc(sizeof(int));
+    if(!is_ads_only_local_var)
+    {
+        goto end;
+    }
+    *is_ads_only_local_var = is_ads_only->valueint;
     }
 
     // board->media
@@ -380,6 +463,12 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
     {
     goto end; //Numeric
     }
+    pin_count_local_var = malloc(sizeof(int));
+    if(!pin_count_local_var)
+    {
+        goto end;
+    }
+    *pin_count_local_var = pin_count->valuedouble;
     }
 
     // board->privacy
@@ -392,30 +481,76 @@ board_t *board_parseFromJSON(cJSON *boardJSON){
     }
 
 
+    if (board_pins_modified_at && !cJSON_IsNull(board_pins_modified_at)) board_pins_modified_at_local_str = strdup(board_pins_modified_at->valuestring);
+    if (created_at && !cJSON_IsNull(created_at)) created_at_local_str = strdup(created_at->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     board_local_var = board_create_internal (
-        board_pins_modified_at && !cJSON_IsNull(board_pins_modified_at) ? strdup(board_pins_modified_at->valuestring) : NULL,
-        collaborator_count ? collaborator_count->valuedouble : 0,
-        created_at && !cJSON_IsNull(created_at) ? strdup(created_at->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        follower_count ? follower_count->valuedouble : 0,
-        strdup(id->valuestring),
-        is_ads_only ? is_ads_only->valueint : 0,
+        board_pins_modified_at_local_str,
+        collaborator_count_local_var,
+        created_at_local_str,
+        description_local_str,
+        follower_count_local_var,
+        id_local_str,
+        is_ads_only_local_var,
         media ? media_local_nonprim : NULL,
-        strdup(name->valuestring),
+        name_local_str,
         owner ? owner_local_nonprim : NULL,
-        pin_count ? pin_count->valuedouble : 0,
+        pin_count_local_var,
         privacy ? privacy_local_nonprim : NULL
         );
 
+    if (!board_local_var) {
+        goto end;
+    }
+
     return board_local_var;
 end:
+    if (board_pins_modified_at_local_str) {
+        free(board_pins_modified_at_local_str);
+        board_pins_modified_at_local_str = NULL;
+    }
+    if (collaborator_count_local_var) {
+        free(collaborator_count_local_var);
+        collaborator_count_local_var = NULL;
+    }
+    if (created_at_local_str) {
+        free(created_at_local_str);
+        created_at_local_str = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (follower_count_local_var) {
+        free(follower_count_local_var);
+        follower_count_local_var = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (is_ads_only_local_var) {
+        free(is_ads_only_local_var);
+        is_ads_only_local_var = NULL;
+    }
     if (media_local_nonprim) {
         board_media_free(media_local_nonprim);
         media_local_nonprim = NULL;
     }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
+    }
     if (owner_local_nonprim) {
         board_owner_free(owner_local_nonprim);
         owner_local_nonprim = NULL;
+    }
+    if (pin_count_local_var) {
+        free(pin_count_local_var);
+        pin_count_local_var = NULL;
     }
     if (privacy_local_nonprim) {
         board_privacy_free(privacy_local_nonprim);

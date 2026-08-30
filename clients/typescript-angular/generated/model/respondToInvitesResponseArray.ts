@@ -7,13 +7,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { RespondToInvitesResponseArrayItemsInner } from './respondToInvitesResponseArrayItemsInner';
+import { RespondToInviteResultItem } from './respondToInviteResultItem';
 
 
 export interface RespondToInvitesResponseArray { 
     /**
      * List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
      */
-    items?: Array<RespondToInvitesResponseArrayItemsInner>;
+    items?: Array<RespondToInviteResultItem>;
 }
 

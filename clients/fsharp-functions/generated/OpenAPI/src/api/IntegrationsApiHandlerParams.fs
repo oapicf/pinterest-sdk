@@ -1,14 +1,14 @@
 namespace OpenAPI
 
-open OpenAPI.Model.Error
-open OpenAPI.Model.IntegrationLogsRequest
+open OpenAPI.Model.IntegrationLogsInvalidLogResponse
+open OpenAPI.Model.IntegrationLogsRequestCreate
 open OpenAPI.Model.IntegrationLogsSuccessResponse
 open OpenAPI.Model.IntegrationMetadata
+open OpenAPI.Model.IntegrationMetadataCreate
+open OpenAPI.Model.IntegrationMetadataUpdate
 open OpenAPI.Model.IntegrationRecord
-open OpenAPI.Model.IntegrationRequest
-open OpenAPI.Model.IntegrationRequestPatch
 open OpenAPI.Model.IntegrationsGetList200Response
-open OpenAPI.Model.IntegrationsLogsPost400Response
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -22,16 +22,46 @@ module IntegrationsApiHandlerParams =
     //#endregion
 
 
+    type IntegrationsCommerceDelStatusCode200Response = {
+      content:IntegrationMetadata;
+      
+    }
+
     type IntegrationsCommerceDelStatusCode204Response = {
       content:string;
       
     }
 
-    type IntegrationsCommerceDelDefaultStatusCodeResponse = {
-      content:Error;
+    type IntegrationsCommerceDelStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type IntegrationsCommerceDelResult = IntegrationsCommerceDelStatusCode204 of IntegrationsCommerceDelStatusCode204Response|IntegrationsCommerceDelDefaultStatusCode of IntegrationsCommerceDelDefaultStatusCodeResponse
+
+    type IntegrationsCommerceDelStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommerceDelStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommerceDelStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommerceDelStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommerceDelDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type IntegrationsCommerceDelResult = IntegrationsCommerceDelStatusCode200 of IntegrationsCommerceDelStatusCode200Response|IntegrationsCommerceDelStatusCode204 of IntegrationsCommerceDelStatusCode204Response|IntegrationsCommerceDelStatusCode400 of IntegrationsCommerceDelStatusCode400Response|IntegrationsCommerceDelStatusCode401 of IntegrationsCommerceDelStatusCode401Response|IntegrationsCommerceDelStatusCode403 of IntegrationsCommerceDelStatusCode403Response|IntegrationsCommerceDelStatusCode404 of IntegrationsCommerceDelStatusCode404Response|IntegrationsCommerceDelStatusCode429 of IntegrationsCommerceDelStatusCode429Response|IntegrationsCommerceDelDefaultStatusCode of IntegrationsCommerceDelDefaultStatusCodeResponse
 
     type IntegrationsCommerceDelArgs = {
       pathParams:IntegrationsCommerceDelPathParams;
@@ -49,21 +79,36 @@ module IntegrationsApiHandlerParams =
       
     }
 
-    type IntegrationsCommerceGetStatusCode404Response = {
-      content:Error;
+    type IntegrationsCommerceGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
 
-    type IntegrationsCommerceGetStatusCode409Response = {
-      content:Error;
+    type IntegrationsCommerceGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommerceGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommerceGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommerceGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type IntegrationsCommerceGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type IntegrationsCommerceGetResult = IntegrationsCommerceGetStatusCode200 of IntegrationsCommerceGetStatusCode200Response|IntegrationsCommerceGetStatusCode404 of IntegrationsCommerceGetStatusCode404Response|IntegrationsCommerceGetStatusCode409 of IntegrationsCommerceGetStatusCode409Response|IntegrationsCommerceGetDefaultStatusCode of IntegrationsCommerceGetDefaultStatusCodeResponse
+    type IntegrationsCommerceGetResult = IntegrationsCommerceGetStatusCode200 of IntegrationsCommerceGetStatusCode200Response|IntegrationsCommerceGetStatusCode400 of IntegrationsCommerceGetStatusCode400Response|IntegrationsCommerceGetStatusCode401 of IntegrationsCommerceGetStatusCode401Response|IntegrationsCommerceGetStatusCode403 of IntegrationsCommerceGetStatusCode403Response|IntegrationsCommerceGetStatusCode404 of IntegrationsCommerceGetStatusCode404Response|IntegrationsCommerceGetStatusCode429 of IntegrationsCommerceGetStatusCode429Response|IntegrationsCommerceGetDefaultStatusCode of IntegrationsCommerceGetDefaultStatusCodeResponse
 
     type IntegrationsCommerceGetArgs = {
       pathParams:IntegrationsCommerceGetPathParams;
@@ -77,7 +122,7 @@ module IntegrationsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type IntegrationsCommercePatchBodyParams = IntegrationRequestPatch
+    type IntegrationsCommercePatchBodyParams = IntegrationMetadataUpdate
     //#endregion
 
 
@@ -86,21 +131,36 @@ module IntegrationsApiHandlerParams =
       
     }
 
-    type IntegrationsCommercePatchStatusCode404Response = {
-      content:Error;
+    type IntegrationsCommercePatchStatusCode400Response = {
+      content:PinterestLibError;
       
     }
 
-    type IntegrationsCommercePatchStatusCode409Response = {
-      content:Error;
+    type IntegrationsCommercePatchStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommercePatchStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommercePatchStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommercePatchStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type IntegrationsCommercePatchDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type IntegrationsCommercePatchResult = IntegrationsCommercePatchStatusCode200 of IntegrationsCommercePatchStatusCode200Response|IntegrationsCommercePatchStatusCode404 of IntegrationsCommercePatchStatusCode404Response|IntegrationsCommercePatchStatusCode409 of IntegrationsCommercePatchStatusCode409Response|IntegrationsCommercePatchDefaultStatusCode of IntegrationsCommercePatchDefaultStatusCodeResponse
+    type IntegrationsCommercePatchResult = IntegrationsCommercePatchStatusCode200 of IntegrationsCommercePatchStatusCode200Response|IntegrationsCommercePatchStatusCode400 of IntegrationsCommercePatchStatusCode400Response|IntegrationsCommercePatchStatusCode401 of IntegrationsCommercePatchStatusCode401Response|IntegrationsCommercePatchStatusCode403 of IntegrationsCommercePatchStatusCode403Response|IntegrationsCommercePatchStatusCode404 of IntegrationsCommercePatchStatusCode404Response|IntegrationsCommercePatchStatusCode429 of IntegrationsCommercePatchStatusCode429Response|IntegrationsCommercePatchDefaultStatusCode of IntegrationsCommercePatchDefaultStatusCodeResponse
 
     type IntegrationsCommercePatchArgs = {
       pathParams:IntegrationsCommercePatchPathParams;
@@ -109,7 +169,7 @@ module IntegrationsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type IntegrationsCommercePostBodyParams = IntegrationRequest
+    type IntegrationsCommercePostBodyParams = IntegrationMetadataCreate
     //#endregion
 
 
@@ -118,21 +178,41 @@ module IntegrationsApiHandlerParams =
       
     }
 
-    type IntegrationsCommercePostStatusCode404Response = {
-      content:Error;
+    type IntegrationsCommercePostStatusCode201Response = {
+      content:IntegrationMetadata;
       
     }
 
-    type IntegrationsCommercePostStatusCode409Response = {
-      content:Error;
+    type IntegrationsCommercePostStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommercePostStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommercePostStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommercePostStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsCommercePostStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type IntegrationsCommercePostDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type IntegrationsCommercePostResult = IntegrationsCommercePostStatusCode200 of IntegrationsCommercePostStatusCode200Response|IntegrationsCommercePostStatusCode404 of IntegrationsCommercePostStatusCode404Response|IntegrationsCommercePostStatusCode409 of IntegrationsCommercePostStatusCode409Response|IntegrationsCommercePostDefaultStatusCode of IntegrationsCommercePostDefaultStatusCodeResponse
+    type IntegrationsCommercePostResult = IntegrationsCommercePostStatusCode200 of IntegrationsCommercePostStatusCode200Response|IntegrationsCommercePostStatusCode201 of IntegrationsCommercePostStatusCode201Response|IntegrationsCommercePostStatusCode400 of IntegrationsCommercePostStatusCode400Response|IntegrationsCommercePostStatusCode401 of IntegrationsCommercePostStatusCode401Response|IntegrationsCommercePostStatusCode403 of IntegrationsCommercePostStatusCode403Response|IntegrationsCommercePostStatusCode404 of IntegrationsCommercePostStatusCode404Response|IntegrationsCommercePostStatusCode429 of IntegrationsCommercePostStatusCode429Response|IntegrationsCommercePostDefaultStatusCode of IntegrationsCommercePostDefaultStatusCodeResponse
 
     type IntegrationsCommercePostArgs = {
       bodyParams:IntegrationsCommercePostBodyParams
@@ -150,16 +230,36 @@ module IntegrationsApiHandlerParams =
       
     }
 
+    type IntegrationsGetByIdStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsGetByIdStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsGetByIdStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
     type IntegrationsGetByIdStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsGetByIdStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type IntegrationsGetByIdDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type IntegrationsGetByIdResult = IntegrationsGetByIdStatusCode200 of IntegrationsGetByIdStatusCode200Response|IntegrationsGetByIdStatusCode404 of IntegrationsGetByIdStatusCode404Response|IntegrationsGetByIdDefaultStatusCode of IntegrationsGetByIdDefaultStatusCodeResponse
+    type IntegrationsGetByIdResult = IntegrationsGetByIdStatusCode200 of IntegrationsGetByIdStatusCode200Response|IntegrationsGetByIdStatusCode400 of IntegrationsGetByIdStatusCode400Response|IntegrationsGetByIdStatusCode401 of IntegrationsGetByIdStatusCode401Response|IntegrationsGetByIdStatusCode403 of IntegrationsGetByIdStatusCode403Response|IntegrationsGetByIdStatusCode404 of IntegrationsGetByIdStatusCode404Response|IntegrationsGetByIdStatusCode429 of IntegrationsGetByIdStatusCode429Response|IntegrationsGetByIdDefaultStatusCode of IntegrationsGetByIdDefaultStatusCodeResponse
 
     type IntegrationsGetByIdArgs = {
       pathParams:IntegrationsGetByIdPathParams;
@@ -182,11 +282,36 @@ module IntegrationsApiHandlerParams =
       
     }
 
-    type IntegrationsGetListDefaultStatusCodeResponse = {
-      content:Error;
+    type IntegrationsGetListStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type IntegrationsGetListResult = IntegrationsGetListStatusCode200 of IntegrationsGetListStatusCode200Response|IntegrationsGetListDefaultStatusCode of IntegrationsGetListDefaultStatusCodeResponse
+
+    type IntegrationsGetListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsGetListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsGetListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsGetListStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsGetListDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type IntegrationsGetListResult = IntegrationsGetListStatusCode200 of IntegrationsGetListStatusCode200Response|IntegrationsGetListStatusCode400 of IntegrationsGetListStatusCode400Response|IntegrationsGetListStatusCode401 of IntegrationsGetListStatusCode401Response|IntegrationsGetListStatusCode403 of IntegrationsGetListStatusCode403Response|IntegrationsGetListStatusCode404 of IntegrationsGetListStatusCode404Response|IntegrationsGetListStatusCode429 of IntegrationsGetListStatusCode429Response|IntegrationsGetListDefaultStatusCode of IntegrationsGetListDefaultStatusCodeResponse
 
     type IntegrationsGetListArgs = {
       queryParams:Result<IntegrationsGetListQueryParams,string>;
@@ -194,7 +319,7 @@ module IntegrationsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type IntegrationsLogsPostBodyParams = IntegrationLogsRequest
+    type IntegrationsLogsPostBodyParams = IntegrationLogsRequestCreate
     //#endregion
 
 
@@ -204,15 +329,35 @@ module IntegrationsApiHandlerParams =
     }
 
     type IntegrationsLogsPostStatusCode400Response = {
-      content:IntegrationsLogsPost400Response;
+      content:IntegrationLogsInvalidLogResponse;
+      
+    }
+
+    type IntegrationsLogsPostStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsLogsPostStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsLogsPostStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type IntegrationsLogsPostStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type IntegrationsLogsPostDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type IntegrationsLogsPostResult = IntegrationsLogsPostStatusCode200 of IntegrationsLogsPostStatusCode200Response|IntegrationsLogsPostStatusCode400 of IntegrationsLogsPostStatusCode400Response|IntegrationsLogsPostDefaultStatusCode of IntegrationsLogsPostDefaultStatusCodeResponse
+    type IntegrationsLogsPostResult = IntegrationsLogsPostStatusCode200 of IntegrationsLogsPostStatusCode200Response|IntegrationsLogsPostStatusCode400 of IntegrationsLogsPostStatusCode400Response|IntegrationsLogsPostStatusCode401 of IntegrationsLogsPostStatusCode401Response|IntegrationsLogsPostStatusCode403 of IntegrationsLogsPostStatusCode403Response|IntegrationsLogsPostStatusCode404 of IntegrationsLogsPostStatusCode404Response|IntegrationsLogsPostStatusCode429 of IntegrationsLogsPostStatusCode429Response|IntegrationsLogsPostDefaultStatusCode of IntegrationsLogsPostDefaultStatusCodeResponse
 
     type IntegrationsLogsPostArgs = {
       bodyParams:IntegrationsLogsPostBodyParams

@@ -7,6 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  AssetTypeResponse = openapi_server.resourceTypes.AssetTypeResponse
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -22,8 +23,8 @@ resourceTypes {
           optional = false
         }
         asset_type {
-          type =  string
-          description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG."
+          type = AssetTypeResponse
+          description = ""
           optional = false
         }
         partner_id {

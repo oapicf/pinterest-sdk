@@ -3,7 +3,7 @@ require './lib/openapiing'
 # only need to extend if you want special configuration!
 class MyApp < OpenAPIing
   self.configure do |config|
-    config.api_version = '5.23.0'
+    config.api_version = '5.28.0'
   end
 end
 

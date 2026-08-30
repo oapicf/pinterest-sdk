@@ -4,37 +4,22 @@
 #include "ads_credit_discounts_response.h"
 
 
-char* ads_credit_discounts_response_discount_type_ToString(pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type) {
-    char* discount_typeArray[] =  { "NULL", "COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND", "" };
-    return discount_typeArray[discount_type];
-}
-
-pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e ads_credit_discounts_response_discount_type_FromString(char* discount_type){
-    int stringToReturn = 0;
-    char *discount_typeArray[] =  { "NULL", "COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND", "" };
-    size_t sizeofArray = sizeof(discount_typeArray) / sizeof(discount_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(discount_type, discount_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static ads_credit_discounts_response_t *ads_credit_discounts_response_create_internal(
-    int active,
+    int *active,
     char *advertiser_id,
     char *discount_currency,
-    double discount_in_micro_currency,
-    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type,
-    double remaining_discount_in_micro_currency,
+    double *discount_in_micro_currency,
+    ads_credit_discount_type_t *discount_type,
+    double *remaining_discount_in_micro_currency,
     char *title
     ) {
     ads_credit_discounts_response_t *ads_credit_discounts_response_local_var = malloc(sizeof(ads_credit_discounts_response_t));
     if (!ads_credit_discounts_response_local_var) {
         return NULL;
     }
+    memset(ads_credit_discounts_response_local_var, 0, sizeof(ads_credit_discounts_response_t));
+    ads_credit_discounts_response_local_var->_library_owned = 1;
     ads_credit_discounts_response_local_var->active = active;
     ads_credit_discounts_response_local_var->advertiser_id = advertiser_id;
     ads_credit_discounts_response_local_var->discount_currency = discount_currency;
@@ -42,29 +27,48 @@ static ads_credit_discounts_response_t *ads_credit_discounts_response_create_int
     ads_credit_discounts_response_local_var->discount_type = discount_type;
     ads_credit_discounts_response_local_var->remaining_discount_in_micro_currency = remaining_discount_in_micro_currency;
     ads_credit_discounts_response_local_var->title = title;
-
-    ads_credit_discounts_response_local_var->_library_owned = 1;
     return ads_credit_discounts_response_local_var;
 }
 
 __attribute__((deprecated)) ads_credit_discounts_response_t *ads_credit_discounts_response_create(
-    int active,
+    int *active,
     char *advertiser_id,
     char *discount_currency,
-    double discount_in_micro_currency,
-    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_type,
-    double remaining_discount_in_micro_currency,
+    double *discount_in_micro_currency,
+    ads_credit_discount_type_t *discount_type,
+    double *remaining_discount_in_micro_currency,
     char *title
     ) {
-    return ads_credit_discounts_response_create_internal (
-        active,
+    int *active_copy = NULL;
+    if (active) {
+        active_copy = malloc(sizeof(int));
+        if (active_copy) *active_copy = *active;
+    }
+    double *discount_in_micro_currency_copy = NULL;
+    if (discount_in_micro_currency) {
+        discount_in_micro_currency_copy = malloc(sizeof(double));
+        if (discount_in_micro_currency_copy) *discount_in_micro_currency_copy = *discount_in_micro_currency;
+    }
+    double *remaining_discount_in_micro_currency_copy = NULL;
+    if (remaining_discount_in_micro_currency) {
+        remaining_discount_in_micro_currency_copy = malloc(sizeof(double));
+        if (remaining_discount_in_micro_currency_copy) *remaining_discount_in_micro_currency_copy = *remaining_discount_in_micro_currency;
+    }
+    ads_credit_discounts_response_t *result = ads_credit_discounts_response_create_internal (
+        active_copy,
         advertiser_id,
         discount_currency,
-        discount_in_micro_currency,
+        discount_in_micro_currency_copy,
         discount_type,
-        remaining_discount_in_micro_currency,
+        remaining_discount_in_micro_currency_copy,
         title
         );
+    if (!result) {
+        free(active_copy);
+        free(discount_in_micro_currency_copy);
+        free(remaining_discount_in_micro_currency_copy);
+    }
+    return result;
 }
 
 void ads_credit_discounts_response_free(ads_credit_discounts_response_t *ads_credit_discounts_response) {
@@ -76,6 +80,10 @@ void ads_credit_discounts_response_free(ads_credit_discounts_response_t *ads_cre
         return ;
     }
     listEntry_t *listEntry;
+    if (ads_credit_discounts_response->active) {
+        free(ads_credit_discounts_response->active);
+        ads_credit_discounts_response->active = NULL;
+    }
     if (ads_credit_discounts_response->advertiser_id) {
         free(ads_credit_discounts_response->advertiser_id);
         ads_credit_discounts_response->advertiser_id = NULL;
@@ -83,6 +91,18 @@ void ads_credit_discounts_response_free(ads_credit_discounts_response_t *ads_cre
     if (ads_credit_discounts_response->discount_currency) {
         free(ads_credit_discounts_response->discount_currency);
         ads_credit_discounts_response->discount_currency = NULL;
+    }
+    if (ads_credit_discounts_response->discount_in_micro_currency) {
+        free(ads_credit_discounts_response->discount_in_micro_currency);
+        ads_credit_discounts_response->discount_in_micro_currency = NULL;
+    }
+    if (ads_credit_discounts_response->discount_type) {
+        ads_credit_discount_type_free(ads_credit_discounts_response->discount_type);
+        ads_credit_discounts_response->discount_type = NULL;
+    }
+    if (ads_credit_discounts_response->remaining_discount_in_micro_currency) {
+        free(ads_credit_discounts_response->remaining_discount_in_micro_currency);
+        ads_credit_discounts_response->remaining_discount_in_micro_currency = NULL;
     }
     if (ads_credit_discounts_response->title) {
         free(ads_credit_discounts_response->title);
@@ -96,7 +116,7 @@ cJSON *ads_credit_discounts_response_convertToJSON(ads_credit_discounts_response
 
     // ads_credit_discounts_response->active
     if(ads_credit_discounts_response->active) {
-    if(cJSON_AddBoolToObject(item, "active", ads_credit_discounts_response->active) == NULL) {
+    if(cJSON_AddBoolToObject(item, "active", *ads_credit_discounts_response->active) == NULL) {
     goto fail; //Bool
     }
     }
@@ -120,24 +140,28 @@ cJSON *ads_credit_discounts_response_convertToJSON(ads_credit_discounts_response
 
     // ads_credit_discounts_response->discount_in_micro_currency
     if(ads_credit_discounts_response->discount_in_micro_currency) {
-    if(cJSON_AddNumberToObject(item, "discountInMicroCurrency", ads_credit_discounts_response->discount_in_micro_currency) == NULL) {
+    if(cJSON_AddNumberToObject(item, "discountInMicroCurrency", *ads_credit_discounts_response->discount_in_micro_currency) == NULL) {
     goto fail; //Numeric
     }
     }
 
 
     // ads_credit_discounts_response->discount_type
-    if(ads_credit_discounts_response->discount_type != pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "discountType", ads_credit_discounts_response_discount_type_ToString(ads_credit_discounts_response->discount_type)) == NULL)
-    {
-    goto fail; //Enum
+    if(ads_credit_discounts_response->discount_type) {
+    cJSON *discount_type_local_JSON = ads_credit_discount_type_convertToJSON(ads_credit_discounts_response->discount_type);
+    if(discount_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "discountType", discount_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
 
     // ads_credit_discounts_response->remaining_discount_in_micro_currency
     if(ads_credit_discounts_response->remaining_discount_in_micro_currency) {
-    if(cJSON_AddNumberToObject(item, "remainingDiscountInMicroCurrency", ads_credit_discounts_response->remaining_discount_in_micro_currency) == NULL) {
+    if(cJSON_AddNumberToObject(item, "remainingDiscountInMicroCurrency", *ads_credit_discounts_response->remaining_discount_in_micro_currency) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -162,6 +186,24 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
 
     ads_credit_discounts_response_t *ads_credit_discounts_response_local_var = NULL;
 
+    // define the local variable for ads_credit_discounts_response->active
+    int *active_local_var = NULL;
+
+    char *advertiser_id_local_str = NULL;
+
+    char *discount_currency_local_str = NULL;
+
+    // define the local variable for ads_credit_discounts_response->discount_in_micro_currency
+    double *discount_in_micro_currency_local_var = NULL;
+
+    // define the local variable for ads_credit_discounts_response->discount_type
+    ads_credit_discount_type_t *discount_type_local_nonprim = NULL;
+
+    // define the local variable for ads_credit_discounts_response->remaining_discount_in_micro_currency
+    double *remaining_discount_in_micro_currency_local_var = NULL;
+
+    char *title_local_str = NULL;
+
     // ads_credit_discounts_response->active
     cJSON *active = cJSON_GetObjectItemCaseSensitive(ads_credit_discounts_responseJSON, "active");
     if (cJSON_IsNull(active)) {
@@ -172,6 +214,12 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
     {
     goto end; //Bool
     }
+    active_local_var = malloc(sizeof(int));
+    if(!active_local_var)
+    {
+        goto end;
+    }
+    *active_local_var = active->valueint;
     }
 
     // ads_credit_discounts_response->advertiser_id
@@ -208,6 +256,12 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
     {
     goto end; //Numeric
     }
+    discount_in_micro_currency_local_var = malloc(sizeof(double));
+    if(!discount_in_micro_currency_local_var)
+    {
+        goto end;
+    }
+    *discount_in_micro_currency_local_var = discount_in_micro_currency->valuedouble;
     }
 
     // ads_credit_discounts_response->discount_type
@@ -215,13 +269,8 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
     if (cJSON_IsNull(discount_type)) {
         discount_type = NULL;
     }
-    pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e discount_typeVariable;
     if (discount_type) { 
-    if(!cJSON_IsString(discount_type))
-    {
-    goto end; //Enum
-    }
-    discount_typeVariable = ads_credit_discounts_response_discount_type_FromString(discount_type->valuestring);
+    discount_type_local_nonprim = ads_credit_discount_type_parseFromJSON(discount_type); //custom
     }
 
     // ads_credit_discounts_response->remaining_discount_in_micro_currency
@@ -234,6 +283,12 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
     {
     goto end; //Numeric
     }
+    remaining_discount_in_micro_currency_local_var = malloc(sizeof(double));
+    if(!remaining_discount_in_micro_currency_local_var)
+    {
+        goto end;
+    }
+    *remaining_discount_in_micro_currency_local_var = remaining_discount_in_micro_currency->valuedouble;
     }
 
     // ads_credit_discounts_response->title
@@ -249,18 +304,54 @@ ads_credit_discounts_response_t *ads_credit_discounts_response_parseFromJSON(cJS
     }
 
 
+    if (advertiser_id && !cJSON_IsNull(advertiser_id)) advertiser_id_local_str = strdup(advertiser_id->valuestring);
+    if (discount_currency && !cJSON_IsNull(discount_currency)) discount_currency_local_str = strdup(discount_currency->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     ads_credit_discounts_response_local_var = ads_credit_discounts_response_create_internal (
-        active ? active->valueint : 0,
-        advertiser_id && !cJSON_IsNull(advertiser_id) ? strdup(advertiser_id->valuestring) : NULL,
-        discount_currency && !cJSON_IsNull(discount_currency) ? strdup(discount_currency->valuestring) : NULL,
-        discount_in_micro_currency ? discount_in_micro_currency->valuedouble : 0,
-        discount_type ? discount_typeVariable : pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_NULL,
-        remaining_discount_in_micro_currency ? remaining_discount_in_micro_currency->valuedouble : 0,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL
+        active_local_var,
+        advertiser_id_local_str,
+        discount_currency_local_str,
+        discount_in_micro_currency_local_var,
+        discount_type ? discount_type_local_nonprim : NULL,
+        remaining_discount_in_micro_currency_local_var,
+        title_local_str
         );
+
+    if (!ads_credit_discounts_response_local_var) {
+        goto end;
+    }
 
     return ads_credit_discounts_response_local_var;
 end:
+    if (active_local_var) {
+        free(active_local_var);
+        active_local_var = NULL;
+    }
+    if (advertiser_id_local_str) {
+        free(advertiser_id_local_str);
+        advertiser_id_local_str = NULL;
+    }
+    if (discount_currency_local_str) {
+        free(discount_currency_local_str);
+        discount_currency_local_str = NULL;
+    }
+    if (discount_in_micro_currency_local_var) {
+        free(discount_in_micro_currency_local_var);
+        discount_in_micro_currency_local_var = NULL;
+    }
+    if (discount_type_local_nonprim) {
+        ads_credit_discount_type_free(discount_type_local_nonprim);
+        discount_type_local_nonprim = NULL;
+    }
+    if (remaining_discount_in_micro_currency_local_var) {
+        free(remaining_discount_in_micro_currency_local_var);
+        remaining_discount_in_micro_currency_local_var = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
     return NULL;
 
 }

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**Label**](Label.md) |  | [optional] |
+| **data** | [**LabelErrorData**](LabelErrorData.md) |  | [optional] |
 | **error_messages** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example

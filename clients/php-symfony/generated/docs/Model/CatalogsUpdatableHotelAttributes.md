@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**OpenAPI\Server\Model\CatalogsHotelAddress**](CatalogsHotelAddress.md) |  | [optional] 
+**address** | [**OpenAPI\Server\Model\CatalogsHotelAddress**](CatalogsHotelAddress.md) | Hotel address | [optional] 
 **basePrice** | **string** | Base price of the hotel room per night followed by the ISO currency code | [optional] 
 **brand** | **string** | The brand to which this hotel belongs to. | [optional] 
 **category** | **string** | The type of property. The category can be any type of internal description desired. | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **customLabel3** | **string** | Custom grouping of hotels | [optional] 
 **customLabel4** | **string** | Custom grouping of hotels | [optional] 
 **description** | **string** | Brief description of the hotel. | [optional] 
-**guestRatings** | [**OpenAPI\Server\Model\CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) |  | [optional] 
+**guestRatings** | [**OpenAPI\Server\Model\CatalogsHotelGuestRatings**](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties | [optional] 
 **latitude** | **float** | Latitude of the hotel. | [optional] 
 **link** | **string** | Link to the product page | [optional] 
 **longitude** | **float** | Longitude of the hotel. | [optional] 

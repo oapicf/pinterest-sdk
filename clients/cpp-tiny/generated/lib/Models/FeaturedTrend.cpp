@@ -125,7 +125,7 @@ FeaturedTrend::getInterest()
 }
 
 void
-FeaturedTrend::setInterest(InterestsEnum  interest)
+FeaturedTrend::setInterest(InterestsEnum interest)
 {
 	this->interest = interest;
 }
@@ -137,7 +137,7 @@ FeaturedTrend::getMarket()
 }
 
 void
-FeaturedTrend::setMarket(ProductCategoryRegion  market)
+FeaturedTrend::setMarket(ProductCategoryRegion market)
 {
 	this->market = market;
 }
@@ -149,7 +149,7 @@ FeaturedTrend::getTrends()
 }
 
 void
-FeaturedTrend::setTrends(std::list <TrendingTopic> trends)
+FeaturedTrend::setTrends(std::list<TrendingTopic> trends)
 {
 	this->trends = trends;
 }

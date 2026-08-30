@@ -8,24 +8,26 @@
 #include "Helpers.h"
 #include <list>
 
+#include "AssetGroupDeletion.h"
+#include "AssetGroupDeletionDelete.h"
+#include "AssetGroupInput.h"
+#include "AssetGroupInputCreate.h"
+#include "AssetGroupModification.h"
+#include "AssetGroupModificationReadOrUpdate.h"
+#include "AssetPermissionType.h"
+#include "AssetSearchBy.h"
+#include "AssetSortBy.h"
+#include "BusinessMemberAssetsGetResponse.h"
+#include "BusinessMembersAssetAccessDeleteBody.h"
 #include "Business_asset_members_get_200_response.h"
-#include "Business_asset_partners_get_200_response.h"
 #include "Business_assets_get_200_response.h"
-#include "Business_member_assets_get_200_response.h"
-#include "Business_members_asset_access_delete_request.h"
 #include "Business_partner_asset_access_get_200_response.h"
-#include "CreateAssetGroupBody.h"
-#include "CreateAssetGroupResponse.h"
-#include "DeleteAssetGroupBody.h"
-#include "DeleteAssetGroupResponse.h"
 #include "DeleteMemberAccessResultsResponseArray.h"
 #include "DeletePartnerAssetAccessBody.h"
-#include "DeletePartnerAssetsResultsResponseArray.h"
-#include "Error.h"
-#include "PartnerType.h"
+#include "DeletePartnerAssetAccessResultsResponseArray.h"
+#include "NonDraftEntityStatus.h"
 #include "PermissionsWithOwner.h"
-#include "UpdateAssetGroupBody.h"
-#include "UpdateAssetGroupResponse.h"
+#include "Pinterest.Lib.Error.h"
 #include "UpdateMemberAssetAccessBody.h"
 #include "UpdateMemberAssetsResultsResponseArray.h"
 #include "UpdatePartnerAssetAccessBody.h"
@@ -42,24 +44,24 @@ class BusinessAccessAssetsApi : public Service {
 public:
     BusinessAccessAssetsApi() = default;
 
-    virtual ~BusinessAccessAssetsApi() = default;
+    virtual ~BusinessAccessAssetsApi();
 
     /**
     * Create a new asset group..
     *
-    * Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+    * Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
     * \param businessId Unique identifier of the requesting business. *Required*
-    * \param createAssetGroupBody  *Required*
+    * \param assetGroupInputCreate  *Required*
     */
     Response<
-                CreateAssetGroupResponse
+                AssetGroupInput
         >
     assetGroup_create(
             
             std::string businessId
             , 
             
-            CreateAssetGroupBody createAssetGroupBody
+            AssetGroupInputCreate assetGroupInputCreate
             
     );
     /**
@@ -67,17 +69,17 @@ public:
     *
     * Delete a batch of asset groups.
     * \param businessId Unique identifier of the requesting business. *Required*
-    * \param deleteAssetGroupBody  *Required*
+    * \param assetGroupDeletionDelete  *Required*
     */
     Response<
-                DeleteAssetGroupResponse
+                AssetGroupDeletion
         >
     assetGroup_delete(
             
             std::string businessId
             , 
             
-            DeleteAssetGroupBody deleteAssetGroupBody
+            AssetGroupDeletionDelete assetGroupDeletionDelete
             
     );
     /**
@@ -85,17 +87,17 @@ public:
     *
     * Update a batch of asset groups with the specified parameters.
     * \param businessId Unique identifier of the requesting business. *Required*
-    * \param updateAssetGroupBody  *Required*
+    * \param assetGroupModificationReadOrUpdate  *Required*
     */
     Response<
-                UpdateAssetGroupResponse
+                AssetGroupModification
         >
     assetGroup_update(
             
             std::string businessId
             , 
             
-            UpdateAssetGroupBody updateAssetGroupBody
+            AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate
             
     );
     /**
@@ -104,10 +106,10 @@ public:
     * Get all the members the requesting business has granted access to on the given asset.
     * \param businessId Unique identifier of the requesting business. *Required*
     * \param assetId Unique identifier of a business asset. *Required*
+    * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
     * \param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Business_asset_members_get_200_response
@@ -120,6 +122,9 @@ public:
             std::string assetId
             , 
             
+            int startIndex
+            , 
+            
             bool fetchSystemUsers
             , 
             
@@ -127,9 +132,6 @@ public:
             , 
             
             int pageSize
-            , 
-            
-            int startIndex
             
     );
     /**
@@ -140,10 +142,10 @@ public:
     * \param assetId Unique identifier of a business asset. *Required*
     * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
-                Business_asset_partners_get_200_response
+                Business_asset_members_get_200_response
         >
     businessAssetPartners_get(
             
@@ -173,7 +175,7 @@ public:
     * \param assetType A resource type to filter the assets by. Only assets of the specified type will be returned.
     * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Business_assets_get_200_response
@@ -212,11 +214,17 @@ public:
     * \param memberId The member id to fetch assets for. *Required*
     * \param assetType A resource type to filter the assets by. Only assets of the specified type will be returned.
     * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
+    * \param sortBy The field to sort member assets by
+    * \param sortAscending Sort assets in ascending order
+    * \param searchBy The field to search member assets by
+    * \param searchValue The value to search for
+    * \param assetPermissionType The type of asset permission to filter by
+    * \param adAccountStatuses A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
-                Business_member_assets_get_200_response
+                BusinessMemberAssetsGetResponse
         >
     businessMemberAssets_get(
             
@@ -232,6 +240,24 @@ public:
             int startIndex
             , 
             
+            AssetSortBy sortBy
+            , 
+            
+            bool sortAscending
+            , 
+            
+            AssetSearchBy searchBy
+            , 
+            
+            std::string searchValue
+            , 
+            
+            AssetPermissionType assetPermissionType
+            , 
+            std::list<NonDraftEntityStatus> adAccountStatuses
+            
+            , 
+            
             std::string bookmark
             , 
             
@@ -243,7 +269,7 @@ public:
     *
     * Terminate multiple members' access to an asset.
     * \param businessId Unique identifier of the requesting business. *Required*
-    * \param businessMembersAssetAccessDeleteRequest List member assset permissions to delete. *Required*
+    * \param businessMembersAssetAccessDeleteBody  *Required*
     */
     Response<
                 DeleteMemberAccessResultsResponseArray
@@ -253,15 +279,15 @@ public:
             std::string businessId
             , 
             
-            Business_members_asset_access_delete_request businessMembersAssetAccessDeleteRequest
+            BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody
             
     );
     /**
     * Assign/Update member asset permissions.
     *
-    * Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+    * Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
     * \param businessId Unique identifier of the requesting business. *Required*
-    * \param updateMemberAssetAccessBody List of member asset permissions to create or update. *Required*
+    * \param updateMemberAssetAccessBody  *Required*
     */
     Response<
                 UpdateMemberAssetsResultsResponseArray
@@ -280,11 +306,15 @@ public:
     * Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type=INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to.
     * \param businessId Unique identifier of the requesting business. *Required*
     * \param partnerId The partner id to be bound to the Business *Required*
-    * \param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+    * \param partnerType Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
     * \param assetType A resource type to filter the assets by. Only assets of the specified type will be returned.
     * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param sortBy The field to sort member assets by
+    * \param sortAscending Sort assets in ascending order
+    * \param searchBy The field to search member assets by
+    * \param searchValue The value to search for
     * \param bookmark Cursor used to fetch the next page of items
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Business_partner_asset_access_get_200_response
@@ -297,7 +327,7 @@ public:
             std::string partnerId
             , 
             
-            PartnerType partnerType
+            std::string partnerType
             , 
             
             std::string assetType
@@ -306,10 +336,22 @@ public:
             int startIndex
             , 
             
-            int pageSize
+            AssetSortBy sortBy
+            , 
+            
+            bool sortAscending
+            , 
+            
+            AssetSearchBy searchBy
+            , 
+            
+            std::string searchValue
             , 
             
             std::string bookmark
+            , 
+            
+            int pageSize
             
     );
     /**
@@ -320,7 +362,7 @@ public:
     * \param deletePartnerAssetAccessBody  *Required*
     */
     Response<
-                DeletePartnerAssetsResultsResponseArray
+                DeletePartnerAssetAccessResultsResponseArray
         >
     deletePartnerAssetAccessHandlerImpl(
             
@@ -335,7 +377,7 @@ public:
     *
     * Grant multiple partners access to assets and/or update multiple partner's exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
     * \param businessId Unique identifier of the requesting business. *Required*
-    * \param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners. *Required*
+    * \param updatePartnerAssetAccessBody  *Required*
     */
     Response<
                 UpdatePartnerAssetsResultsResponseArray

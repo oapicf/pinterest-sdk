@@ -5,7 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "Error.h"
+#include "Pinterest.Lib.Error.h"
 #include "TermsOfService.h"
 #include "Error.h"
 

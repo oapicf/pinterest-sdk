@@ -7,6 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  MetricsResponseDataItems = openapi_server.resourceTypes.MetricsResponseDataItems
 }
 resourceTypes {
 
@@ -17,7 +18,7 @@ resourceTypes {
     properties {
         data {
           type = array
-          items.type =  
+          items.type = MetricsResponseDataItems
           description = ""
           optional = false
         }

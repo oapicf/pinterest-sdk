@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -36,6 +36,19 @@ const (
 	APP_INSTALL ConversionTagType = "APP_INSTALL"
 	WEB_SESSION ConversionTagType = "WEB_SESSION"
 	EXTERNAL_MEASUREMENT ConversionTagType = "EXTERNAL_MEASUREMENT"
+	ADD_PAYMENT_INFO ConversionTagType = "ADD_PAYMENT_INFO"
+	ADD_TO_WISHLIST ConversionTagType = "ADD_TO_WISHLIST"
+	INITIATE_CHECKOUT ConversionTagType = "INITIATE_CHECKOUT"
+	SUBSCRIBE ConversionTagType = "SUBSCRIBE"
+	VIEW_CONTENT ConversionTagType = "VIEW_CONTENT"
+	ADVERTISER_DEFINED_EVENT ConversionTagType = "ADVERTISER_DEFINED_EVENT"
+	APP_OPEN ConversionTagType = "APP_OPEN"
+	CONTACT ConversionTagType = "CONTACT"
+	SCHEDULE ConversionTagType = "SCHEDULE"
+	FIND_LOCATION ConversionTagType = "FIND_LOCATION"
+	CUSTOMIZE_PRODUCT ConversionTagType = "CUSTOMIZE_PRODUCT"
+	SUBMIT_APPLICATION ConversionTagType = "SUBMIT_APPLICATION"
+	START_TRIAL ConversionTagType = "START_TRIAL"
 )
 
 // All allowed values of ConversionTagType enum
@@ -55,6 +68,19 @@ var AllowedConversionTagTypeEnumValues = []ConversionTagType{
 	"APP_INSTALL",
 	"WEB_SESSION",
 	"EXTERNAL_MEASUREMENT",
+	"ADD_PAYMENT_INFO",
+	"ADD_TO_WISHLIST",
+	"INITIATE_CHECKOUT",
+	"SUBSCRIBE",
+	"VIEW_CONTENT",
+	"ADVERTISER_DEFINED_EVENT",
+	"APP_OPEN",
+	"CONTACT",
+	"SCHEDULE",
+	"FIND_LOCATION",
+	"CUSTOMIZE_PRODUCT",
+	"SUBMIT_APPLICATION",
+	"START_TRIAL",
 }
 
 func (v *ConversionTagType) UnmarshalJSON(src []byte) error {

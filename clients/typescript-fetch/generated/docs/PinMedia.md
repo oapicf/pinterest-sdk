@@ -13,6 +13,7 @@ Name | Type
 `duration` | number
 `height` | number
 `videoUrl` | string
+`videoUrlHls` | string
 `width` | number
 `items` | [Array&lt;PinMediaMetadata&gt;](PinMediaMetadata.md)
 
@@ -29,6 +30,7 @@ const example = {
   "duration": null,
   "height": null,
   "videoUrl": null,
+  "videoUrlHls": null,
   "width": null,
   "items": null,
 } satisfies PinMedia

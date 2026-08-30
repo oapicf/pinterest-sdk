@@ -47,10 +47,8 @@ class CatalogsHotelProductGroupFiltersAllOf {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsHotelProductGroupFiltersAllOf[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsHotelProductGroupFiltersAllOf[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'all_of'), 'Required key "CatalogsHotelProductGroupFiltersAllOf[all_of]" is missing from JSON.');
+        assert(json[r'all_of'] != null, 'Required key "CatalogsHotelProductGroupFiltersAllOf[all_of]" has a null value in JSON.');
         return true;
       }());
 

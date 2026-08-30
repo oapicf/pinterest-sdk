@@ -1,0 +1,10 @@
+# Org.OpenAPITools.Model.PartnerMetadata
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SubscriberKey** | **string** | Text field value that uniquely identifies a subscriber. | [optional] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+

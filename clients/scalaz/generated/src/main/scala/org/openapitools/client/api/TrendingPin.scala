@@ -12,12 +12,16 @@ import org.joda.time.DateTime
 import TrendingPin._
 
 case class TrendingPin (
-  /* Height of the pin image in pixels */
+  /* Dominant color of the pin image in hex format */
+  color: String,
+/* Height of the pin image in pixels */
   height: Integer,
 /* Unique identifier for the pin */
   id: String,
 /* URL of the pin image */
   src: String,
+/* The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom. */
+  verticalOffset: Option[Double],
 /* Width of the pin image in pixels */
   width: Integer)
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BidFloors** | Pointer to **[]int32** | A list of bid floors in micro currency. For example, [100000, 200000] | [optional] 
-**Type** | Pointer to **string** | Always the string &#39;bidfloor&#39; | [optional] [default to "bidfloor"]
+**BidFloors** | Pointer to **[]int32** | A list of bid floors in micro currency. For example, [100000, 200000] | [optional] [readonly] 
+**Type** | Pointer to **string** | Always the string &#39;bidfloor&#39;. | [optional] [readonly] [default to "bidfloor"]
 
 ## Methods
 

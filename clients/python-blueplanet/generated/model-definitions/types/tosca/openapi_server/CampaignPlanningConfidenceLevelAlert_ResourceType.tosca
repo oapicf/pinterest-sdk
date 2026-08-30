@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningConfidenceLevelAlert"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningConfidenceLevelAlert"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignPlanningConfidenceLevelAlertReason = openapi_server.resourceTypes.CampaignPlanningConfidenceLevelAlertReason
+  CampaignPlanningConfidenceLevelAlertSeverity = openapi_server.resourceTypes.CampaignPlanningConfidenceLevelAlertSeverity
+}
+resourceTypes {
+
+  CampaignPlanningConfidenceLevelAlert {
+    title = CampaignPlanningConfidenceLevelAlert
+    description = CampaignPlanningConfidenceLevelAlert
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = "Human-readable context for debugging. Not intended for display to end users."
+          optional = false
+        }
+        reason {
+          type = CampaignPlanningConfidenceLevelAlertReason
+          description = "Reason for the confidence level alert."
+          optional = false
+        }
+        severity {
+          type = CampaignPlanningConfidenceLevelAlertSeverity
+          description = "Severity of the confidence level alert."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningConfidenceLevelAlert {
+    title = CampaignPlanningConfidenceLevelAlert
+    description = CampaignPlanningConfidenceLevelAlert
+    implements = openapi_server.resourceTypes.CampaignPlanningConfidenceLevelAlert
+
+  }
+}

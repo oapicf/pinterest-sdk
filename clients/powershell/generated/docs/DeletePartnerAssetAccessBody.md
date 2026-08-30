@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Accesses** | [**DeletePartnerAssetAccessBodyAccessesInner[]**](DeletePartnerAssetAccessBodyAccessesInner.md) |  | 
+**Accesses** | [**DeletePartnerAssetAccessItem[]**](DeletePartnerAssetAccessItem.md) | List of partner asset accesses to delete. | 
 
 ## Examples
 

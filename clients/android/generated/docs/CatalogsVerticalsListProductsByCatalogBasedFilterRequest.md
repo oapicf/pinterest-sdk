@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**catalogId** | **String** | Catalog ID pertaining to the product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | [**Country**](Country.md) |  | 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 

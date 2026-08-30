@@ -3,6 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.AssetTypeResponse;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -23,12 +24,9 @@ public class UpdatePartnerAssetsResult  {
 
   private String assetId;
 
- /**
-  * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-  */
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
+  @ApiModelProperty(value = "")
 
-  private String assetType;
+  private AssetTypeResponse assetType;
 
  /**
   * Unique identifier of a business partner.
@@ -62,19 +60,19 @@ public class UpdatePartnerAssetsResult  {
   }
 
  /**
-   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+   * Get assetType
    * @return assetType
   **/
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public AssetTypeResponse getAssetType() {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
-  public UpdatePartnerAssetsResult assetType(String assetType) {
+  public UpdatePartnerAssetsResult assetType(AssetTypeResponse assetType) {
     this.assetType = assetType;
     return this;
   }
@@ -158,10 +156,7 @@ public class UpdatePartnerAssetsResult  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

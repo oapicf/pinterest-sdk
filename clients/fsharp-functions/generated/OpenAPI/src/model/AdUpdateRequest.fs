@@ -8,8 +8,6 @@ open OpenAPI.Model.CustomizableCTAType
 open OpenAPI.Model.DisclosureType
 open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.GridClickType
-open OpenAPI.Model.QuizPinData
-open OpenAPI.Model.TrackingUrls
 open OpenAPI.Model.string option
 
 module AdUpdateRequest =
@@ -18,6 +16,10 @@ module AdUpdateRequest =
 
   [<CLIMutable>]
   type AdUpdateRequest = {
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
+    [<JsonProperty(PropertyName = "pin_id")>]
+    PinId : string option;
     [<JsonProperty(PropertyName = "ad_group_id")>]
     AdGroupId : string;
     [<JsonProperty(PropertyName = "android_deep_link")>]
@@ -44,6 +46,8 @@ module AdUpdateRequest =
     GridClickType : GridClickType;
     [<JsonProperty(PropertyName = "ios_deep_link")>]
     IosDeepLink : string option;
+    [<JsonProperty(PropertyName = "is_carting")>]
+    IsCarting : bool;
     [<JsonProperty(PropertyName = "is_pin_deleted")>]
     IsPinDeleted : bool;
     [<JsonProperty(PropertyName = "is_removable")>]
@@ -53,17 +57,13 @@ module AdUpdateRequest =
     [<JsonProperty(PropertyName = "name")>]
     Name : string option;
     [<JsonProperty(PropertyName = "quiz_pin_data")>]
-    QuizPinData : QuizPinData;
+    QuizPinData : obj;
     [<JsonProperty(PropertyName = "status")>]
     Status : EntityStatus;
     [<JsonProperty(PropertyName = "tracking_urls")>]
-    TrackingUrls : TrackingUrls;
+    TrackingUrls : obj;
     [<JsonProperty(PropertyName = "view_tracking_url")>]
     ViewTrackingUrl : string option;
-    [<JsonProperty(PropertyName = "id")>]
-    Id : string;
-    [<JsonProperty(PropertyName = "pin_id")>]
-    PinId : string option;
   }
 
   //#endregion

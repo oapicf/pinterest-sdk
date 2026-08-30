@@ -2,8 +2,8 @@ package org.openapitools.server.model
 
 
 /**
- * @param isRealtime  for example: ''false''
- * @param latestAvailableTimestamp  for example: ''1649116799000''
+ * @param isRealtime  for example: ''null''
+ * @param latestAvailableTimestamp  for example: ''null''
 */
 final case class TopPinsAnalyticsResponseDateAvailability (
   isRealtime: Option[Boolean] = None,

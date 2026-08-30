@@ -52,28 +52,28 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get If set to `true`, the board will be ad-only and can store ad-only Pins.
 	 */
 	bool isIsAdsOnly();
 
 	/*! \brief Set If set to `true`, the board will be ad-only and can store ad-only Pins.
 	 */
-	void setIsAdsOnly(bool  is_ads_only);
-	/*! \brief Get      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	void setIsAdsOnly(bool is_ads_only);
+	/*! \brief Get     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	 */
 	std::string getName();
 
-	/*! \brief Set      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+	/*! \brief Set     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 	/*! \brief Get     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
 	 */
 	BoardPrivacy getPrivacy();
 
 	/*! \brief Set     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
 	 */
-	void setPrivacy(BoardPrivacy  privacy);
+	void setPrivacy(BoardPrivacy privacy);
 
 
     private:

@@ -102,7 +102,7 @@ CatalogsProductGroupMultipleMediaTypesCriteria::isNegated()
 }
 
 void
-CatalogsProductGroupMultipleMediaTypesCriteria::setNegated(bool  negated)
+CatalogsProductGroupMultipleMediaTypesCriteria::setNegated(bool negated)
 {
 	this->negated = negated;
 }
@@ -114,7 +114,7 @@ CatalogsProductGroupMultipleMediaTypesCriteria::getValues()
 }
 
 void
-CatalogsProductGroupMultipleMediaTypesCriteria::setValues(std::list <MediaType> values)
+CatalogsProductGroupMultipleMediaTypesCriteria::setValues(std::list<MediaType> values)
 {
 	this->values = values;
 }

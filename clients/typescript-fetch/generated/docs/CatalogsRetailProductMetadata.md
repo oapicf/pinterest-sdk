@@ -7,7 +7,7 @@ Retail product metadata entity
 
 Name | Type
 ------------ | -------------
-`availability` | [NonNullableProductAvailabilityType](NonNullableProductAvailabilityType.md)
+`availability` | [ProductAvailability](ProductAvailability.md)
 `currency` | [NonNullableCatalogsCurrency](NonNullableCatalogsCurrency.md)
 `itemGroupId` | string
 `itemId` | string

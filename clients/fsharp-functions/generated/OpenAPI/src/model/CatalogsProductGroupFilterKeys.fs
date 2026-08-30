@@ -3,48 +3,17 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.AvailabilityFilter
-open OpenAPI.Model.BrandFilter
+open OpenAPI.Model.CatalogsBaseFilterKeys
 open OpenAPI.Model.CatalogsProductGroupCurrencyCriteria
 open OpenAPI.Model.CatalogsProductGroupFilterOperatorTypeCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleGenderCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleMediaTypesCriteria
+open OpenAPI.Model.CatalogsProductGroupMultiplePinterestProductCategoryCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringListCriteria
 open OpenAPI.Model.CatalogsProductGroupPricingCriteria
 open OpenAPI.Model.CatalogsProductGroupUint32Criteria
-open OpenAPI.Model.ConditionFilter
-open OpenAPI.Model.CurrencyFilter
-open OpenAPI.Model.CustomLabel0Filter
-open OpenAPI.Model.CustomLabel1Filter
-open OpenAPI.Model.CustomLabel2Filter
-open OpenAPI.Model.CustomLabel3Filter
-open OpenAPI.Model.CustomLabel4Filter
-open OpenAPI.Model.CustomNumber0Filter
-open OpenAPI.Model.CustomNumber1Filter
-open OpenAPI.Model.CustomNumber2Filter
-open OpenAPI.Model.CustomNumber3Filter
-open OpenAPI.Model.CustomNumber4Filter
-open OpenAPI.Model.GenderFilter
-open OpenAPI.Model.GoogleProductCategory0Filter
-open OpenAPI.Model.GoogleProductCategory1Filter
-open OpenAPI.Model.GoogleProductCategory2Filter
-open OpenAPI.Model.GoogleProductCategory3Filter
-open OpenAPI.Model.GoogleProductCategory4Filter
-open OpenAPI.Model.GoogleProductCategory5Filter
-open OpenAPI.Model.GoogleProductCategory6Filter
-open OpenAPI.Model.ItemGroupIdFilter
-open OpenAPI.Model.ItemIdFilter
-open OpenAPI.Model.MaxPriceFilter
-open OpenAPI.Model.MediaTypeFilter
-open OpenAPI.Model.MinPriceFilter
 open OpenAPI.Model.ProductGroupReferenceFilter
-open OpenAPI.Model.ProductType0Filter
-open OpenAPI.Model.ProductType1Filter
-open OpenAPI.Model.ProductType2Filter
-open OpenAPI.Model.ProductType3Filter
-open OpenAPI.Model.ProductType4Filter
-open OpenAPI.Model.TitleKeywordsFilter
 
 module CatalogsProductGroupFilterKeys =
 
@@ -106,8 +75,6 @@ module CatalogsProductGroupFilterKeys =
     GOOGLEPRODUCTCATEGORY1 : CatalogsProductGroupMultipleStringListCriteria;
     [<JsonProperty(PropertyName = "GOOGLE_PRODUCT_CATEGORY_0")>]
     GOOGLEPRODUCTCATEGORY0 : CatalogsProductGroupMultipleStringListCriteria;
-    [<JsonProperty(PropertyName = "PRODUCT_GROUP")>]
-    PRODUCT_GROUP : CatalogsProductGroupMultipleStringCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_NUMBER_0")>]
     CUSTOMNUMBER0 : CatalogsProductGroupUint32Criteria;
     [<JsonProperty(PropertyName = "CUSTOM_NUMBER_1")>]
@@ -120,6 +87,10 @@ module CatalogsProductGroupFilterKeys =
     CUSTOMNUMBER4 : CatalogsProductGroupUint32Criteria;
     [<JsonProperty(PropertyName = "TITLE_KEYWORDS")>]
     TITLE_KEYWORDS : CatalogsProductGroupMultipleStringCriteria;
+    [<JsonProperty(PropertyName = "PINTEREST_PRODUCT_CATEGORIES")>]
+    PINTEREST_PRODUCT_CATEGORIES : CatalogsProductGroupMultiplePinterestProductCategoryCriteria;
+    [<JsonProperty(PropertyName = "PRODUCT_GROUP")>]
+    PRODUCT_GROUP : CatalogsProductGroupMultipleStringCriteria;
   }
 
   //#endregion

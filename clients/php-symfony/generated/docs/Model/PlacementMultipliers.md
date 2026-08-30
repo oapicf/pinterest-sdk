@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pLACEMENT** | **string** |  | [optional] 
+**pLACEMENT** | [**OpenAPI\Server\Model\PlacementType**](PlacementType.md) | Placement type identifier. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

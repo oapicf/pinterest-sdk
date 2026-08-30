@@ -4,7 +4,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **description** | **String** | Description of the trending topic | [default to null] |
-| **percent\_growth\_mom** | **Integer** | Month-over-month growth percentage | [default to null] |
+| **id** | **String** | Unique identifier for the trending topic | [default to null] |
+| **percent\_growth\_mom** | **Integer** | Month-over-month growth percentage | [optional] [default to null] |
 | **pins** | [**List**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | [default to null] |
 | **related\_interests** | **List** | List of related interest categories | [default to null] |
 | **related\_searches** | **List** | List of related search terms | [default to null] |

@@ -17,15 +17,16 @@ Name | Type | Description | Notes
 **DisclosureUrl** | Pointer to **NullableString** | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. | [optional] 
 **GridClickType** | Pointer to [**NullableGridClickType**](GridClickType.md) |  | [optional] 
 **IosDeepLink** | Pointer to **NullableString** | Deep link URL for iOS devices. | [optional] 
+**IsCarting** | Pointer to **bool** | Is the ad a carting/WTB ad? | [optional] 
 **IsPinDeleted** | Pointer to **bool** | Is original pin deleted? | [optional] 
 **IsRemovable** | Pointer to **bool** | Is pin repinnable? | [optional] 
 **LeadFormId** | Pointer to **NullableString** | Lead form ID for lead ad generation. | [optional] 
 **Name** | Pointer to **NullableString** | Name of the ad - 255 chars max. | [optional] 
-**QuizPinData** | Pointer to [**NullableQuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
-**Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] 
-**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
-**ViewTrackingUrl** | Pointer to **NullableString** | Tracking URL for ad impressions. | [optional] 
 **PinId** | **string** | Pin ID. | 
+**QuizPinData** | Pointer to **map[string]interface{}** | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
+**Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] 
+**TrackingUrls** | Pointer to **map[string]interface{}** |  | [optional] 
+**ViewTrackingUrl** | Pointer to **NullableString** | Tracking URL for ad impressions. | [optional] 
 
 ## Methods
 
@@ -471,6 +472,31 @@ HasIosDeepLink returns a boolean if a field has been set.
 `func (o *AdCreateRequest) UnsetIosDeepLink()`
 
 UnsetIosDeepLink ensures that no value is present for IosDeepLink, not even an explicit nil
+### GetIsCarting
+
+`func (o *AdCreateRequest) GetIsCarting() bool`
+
+GetIsCarting returns the IsCarting field if non-nil, zero value otherwise.
+
+### GetIsCartingOk
+
+`func (o *AdCreateRequest) GetIsCartingOk() (*bool, bool)`
+
+GetIsCartingOk returns a tuple with the IsCarting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsCarting
+
+`func (o *AdCreateRequest) SetIsCarting(v bool)`
+
+SetIsCarting sets IsCarting field to given value.
+
+### HasIsCarting
+
+`func (o *AdCreateRequest) HasIsCarting() bool`
+
+HasIsCarting returns a boolean if a field has been set.
+
 ### GetIsPinDeleted
 
 `func (o *AdCreateRequest) GetIsPinDeleted() bool`
@@ -591,22 +617,42 @@ HasName returns a boolean if a field has been set.
 `func (o *AdCreateRequest) UnsetName()`
 
 UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetPinId
+
+`func (o *AdCreateRequest) GetPinId() string`
+
+GetPinId returns the PinId field if non-nil, zero value otherwise.
+
+### GetPinIdOk
+
+`func (o *AdCreateRequest) GetPinIdOk() (*string, bool)`
+
+GetPinIdOk returns a tuple with the PinId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPinId
+
+`func (o *AdCreateRequest) SetPinId(v string)`
+
+SetPinId sets PinId field to given value.
+
+
 ### GetQuizPinData
 
-`func (o *AdCreateRequest) GetQuizPinData() QuizPinData`
+`func (o *AdCreateRequest) GetQuizPinData() map[string]interface{}`
 
 GetQuizPinData returns the QuizPinData field if non-nil, zero value otherwise.
 
 ### GetQuizPinDataOk
 
-`func (o *AdCreateRequest) GetQuizPinDataOk() (*QuizPinData, bool)`
+`func (o *AdCreateRequest) GetQuizPinDataOk() (*map[string]interface{}, bool)`
 
 GetQuizPinDataOk returns a tuple with the QuizPinData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuizPinData
 
-`func (o *AdCreateRequest) SetQuizPinData(v QuizPinData)`
+`func (o *AdCreateRequest) SetQuizPinData(v map[string]interface{})`
 
 SetQuizPinData sets QuizPinData field to given value.
 
@@ -653,20 +699,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetTrackingUrls
 
-`func (o *AdCreateRequest) GetTrackingUrls() TrackingUrls`
+`func (o *AdCreateRequest) GetTrackingUrls() map[string]interface{}`
 
 GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
 
 ### GetTrackingUrlsOk
 
-`func (o *AdCreateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool)`
+`func (o *AdCreateRequest) GetTrackingUrlsOk() (*map[string]interface{}, bool)`
 
 GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackingUrls
 
-`func (o *AdCreateRequest) SetTrackingUrls(v TrackingUrls)`
+`func (o *AdCreateRequest) SetTrackingUrls(v map[string]interface{})`
 
 SetTrackingUrls sets TrackingUrls field to given value.
 
@@ -721,26 +767,6 @@ HasViewTrackingUrl returns a boolean if a field has been set.
 `func (o *AdCreateRequest) UnsetViewTrackingUrl()`
 
 UnsetViewTrackingUrl ensures that no value is present for ViewTrackingUrl, not even an explicit nil
-### GetPinId
-
-`func (o *AdCreateRequest) GetPinId() string`
-
-GetPinId returns the PinId field if non-nil, zero value otherwise.
-
-### GetPinIdOk
-
-`func (o *AdCreateRequest) GetPinIdOk() (*string, bool)`
-
-GetPinIdOk returns a tuple with the PinId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPinId
-
-`func (o *AdCreateRequest) SetPinId(v string)`
-
-SetPinId sets PinId field to given value.
-
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -11,7 +11,7 @@ package org.openapitools.server.model
  * @param description  for example: ''null''
  * @param filters  for example: ''null''
  * @param locale  for example: ''null''
- * @param name  for example: ''null''
+ * @param name Name of catalog product group for example: ''Most Popular''
 */
 final case class CatalogsVerticalProductGroupUpdateRequest (
   catalogType: Option[String] = None,

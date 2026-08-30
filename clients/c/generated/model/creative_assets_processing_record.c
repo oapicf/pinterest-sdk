@@ -15,12 +15,12 @@ static creative_assets_processing_record_t *creative_assets_processing_record_cr
     if (!creative_assets_processing_record_local_var) {
         return NULL;
     }
+    memset(creative_assets_processing_record_local_var, 0, sizeof(creative_assets_processing_record_t));
+    creative_assets_processing_record_local_var->_library_owned = 1;
     creative_assets_processing_record_local_var->creative_assets_id = creative_assets_id;
     creative_assets_processing_record_local_var->errors = errors;
     creative_assets_processing_record_local_var->status = status;
     creative_assets_processing_record_local_var->warnings = warnings;
-
-    creative_assets_processing_record_local_var->_library_owned = 1;
     return creative_assets_processing_record_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) creative_assets_processing_record_t *creative_assets
     pinterest_rest_api_item_processing_status__e status,
     list_t *warnings
     ) {
-    return creative_assets_processing_record_create_internal (
+    creative_assets_processing_record_t *result = creative_assets_processing_record_create_internal (
         creative_assets_id,
         errors,
         status,
         warnings
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void creative_assets_processing_record_free(creative_assets_processing_record_t *creative_assets_processing_record) {
@@ -143,6 +146,8 @@ creative_assets_processing_record_t *creative_assets_processing_record_parseFrom
 
     creative_assets_processing_record_t *creative_assets_processing_record_local_var = NULL;
 
+    char *creative_assets_id_local_str = NULL;
+
     // define the local list for creative_assets_processing_record->errors
     list_t *errorsList = NULL;
 
@@ -222,15 +227,25 @@ creative_assets_processing_record_t *creative_assets_processing_record_parseFrom
     }
 
 
+    if (creative_assets_id && !cJSON_IsNull(creative_assets_id)) creative_assets_id_local_str = strdup(creative_assets_id->valuestring);
+
     creative_assets_processing_record_local_var = creative_assets_processing_record_create_internal (
-        creative_assets_id && !cJSON_IsNull(creative_assets_id) ? strdup(creative_assets_id->valuestring) : NULL,
+        creative_assets_id_local_str,
         errors ? errorsList : NULL,
         status ? status_local_nonprim : 0,
         warnings ? warningsList : NULL
         );
 
+    if (!creative_assets_processing_record_local_var) {
+        goto end;
+    }
+
     return creative_assets_processing_record_local_var;
 end:
+    if (creative_assets_id_local_str) {
+        free(creative_assets_id_local_str);
+        creative_assets_id_local_str = NULL;
+    }
     if (errorsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, errorsList) {

@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "Ad preview from a catalog product group (shopping).",
   "name": "AdPreviewShopping",
   "fields": [
     {
@@ -11,16 +11,7 @@
     },
     {
       "name": "creative_type",
-      "type": {
-        "type": "enum",
-        "name": "AdPreviewShopping_creativeUnderscoretype",
-        "symbols": [
-          "SHOPPING",
-          "CAROUSEL",
-          "COLLECTION",
-          "REGULAR"
-        ]
-      },
+      "type": "model.AdShoppingPreviewCreativeType",
       "doc": "Ad format of the shopping ad preview."
     },
     {
@@ -61,15 +52,14 @@
     },
     {
       "name": "preferred_media_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "AdPreviewShopping_preferredUnderscoremediaUnderscoretype",
-        "symbols": [
-          "VIDEO",
-          "IMAGE"
-        ]
-      }],
+      "type": ["null", "model.BasePreferredMediaType"],
       "doc": "Preferred media type.",
+      "default": null
+    },
+    {
+      "name": "show_promotion",
+      "type": ["null", "boolean"],
+      "doc": "Include promotion data in preview when available on catalog item. Defaults to false.",
       "default": null
     },
     {

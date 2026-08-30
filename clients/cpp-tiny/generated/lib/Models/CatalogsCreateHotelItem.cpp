@@ -107,7 +107,7 @@ CatalogsCreateHotelItem::getAttributes()
 }
 
 void
-CatalogsCreateHotelItem::setAttributes(CatalogsHotelAttributes  attributes)
+CatalogsCreateHotelItem::setAttributes(CatalogsHotelAttributes attributes)
 {
 	this->attributes = attributes;
 }
@@ -119,7 +119,7 @@ CatalogsCreateHotelItem::getHotelId()
 }
 
 void
-CatalogsCreateHotelItem::setHotelId(std::string  hotel_id)
+CatalogsCreateHotelItem::setHotelId(std::string hotel_id)
 {
 	this->hotel_id = hotel_id;
 }
@@ -131,7 +131,7 @@ CatalogsCreateHotelItem::getOperation()
 }
 
 void
-CatalogsCreateHotelItem::setOperation(std::string  operation)
+CatalogsCreateHotelItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

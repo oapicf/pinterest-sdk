@@ -11,20 +11,20 @@
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="ConversionAccessTokenResponse"><a href="">ConversionAccessTokenResponse</a></div>
+  <div class="model" data-model="ConversionAccessToken"><a href="">ConversionAccessToken</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
   </ul>
   <h2><a name="oauth/token"></a>oauth/token</h2>
   <hr>
   <p></p>
-  <p>Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.</p>
+  <p>Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the &#x60;continuous_refresh&#x60; parameter to &#x60;true&#x60; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. </p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/oauth/token</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="OauthAccessTokenResponse"><a href="">OauthAccessTokenResponse</a></div>
+  <div class="model" data-model="OauthAccessToken"><a href="">OauthAccessToken</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -34,6 +34,61 @@
       
       
       <span class="param-name">grant_type</span>
+      <span class="param-type">TokenGrantType(TokenGrantType)</span>
+      
+      <p class="param-description"></p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">code</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description"></p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">continuous_refresh</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description">  If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.</p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">redirect_uri</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description"></p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">refresh_token</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description"></p>
+      </li>
+      <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">scope</span>
       <span class="param-type">String(string)</span>
       
       <p class="param-description"></p>
@@ -69,7 +124,7 @@
       
       
       <span class="param-name">token_type_hint</span>
-      <span class="param-type">String(string)</span>
+      <span class="param-type">TokenTypeHint(TokenTypeHint)</span>
       
       <p class="param-description">The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.</p>
       </li>

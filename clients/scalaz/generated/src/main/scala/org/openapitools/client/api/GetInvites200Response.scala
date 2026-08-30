@@ -13,8 +13,7 @@ import GetInvites200Response._
 
 case class GetInvites200Response (
   bookmark: Option[String],
-/* List of invite and request data. */
-  items: List[InviteResponse])
+items: List[InviteResponse])
 
 object GetInvites200Response {
   import DateTimeCodecs._

@@ -6,8 +6,9 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.top_pins_analytics_response_date_availability import TopPinsAnalyticsResponseDateAvailability  # noqa: F401,E501
-from app.openapi_server.models.top_video_pins_analytics_response_pins_inner import TopVideoPinsAnalyticsResponsePinsInner  # noqa: F401,E501
+from app.openapi_server.models.top_video_pins_analytics_response_date_availability import TopVideoPinsAnalyticsResponseDateAvailability  # noqa: F401,E501
+from app.openapi_server.models.top_video_pins_analytics_response_pins_items import TopVideoPinsAnalyticsResponsePinsItems  # noqa: F401,E501
+from app.openapi_server.models.top_video_pins_sort_by import TopVideoPinsSortBy  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -17,20 +18,20 @@ class TopVideoPinsAnalyticsResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, date_availability: TopPinsAnalyticsResponseDateAvailability=None, pins: List[TopVideoPinsAnalyticsResponsePinsInner]=None, sort_by: str=None):  # noqa: E501
+    def __init__(self, date_availability: TopVideoPinsAnalyticsResponseDateAvailability=None, pins: List[TopVideoPinsAnalyticsResponsePinsItems]=None, sort_by: TopVideoPinsSortBy=None):  # noqa: E501
         """TopVideoPinsAnalyticsResponse - a model defined in Swagger
 
         :param date_availability: The date_availability of this TopVideoPinsAnalyticsResponse.  # noqa: E501
-        :type date_availability: TopPinsAnalyticsResponseDateAvailability
+        :type date_availability: TopVideoPinsAnalyticsResponseDateAvailability
         :param pins: The pins of this TopVideoPinsAnalyticsResponse.  # noqa: E501
-        :type pins: List[TopVideoPinsAnalyticsResponsePinsInner]
+        :type pins: List[TopVideoPinsAnalyticsResponsePinsItems]
         :param sort_by: The sort_by of this TopVideoPinsAnalyticsResponse.  # noqa: E501
-        :type sort_by: str
+        :type sort_by: TopVideoPinsSortBy
         """
         self.swagger_types = {
-            'date_availability': TopPinsAnalyticsResponseDateAvailability,
-            'pins': List[TopVideoPinsAnalyticsResponsePinsInner],
-            'sort_by': str
+            'date_availability': TopVideoPinsAnalyticsResponseDateAvailability,
+            'pins': List[TopVideoPinsAnalyticsResponsePinsItems],
+            'sort_by': TopVideoPinsSortBy
         }
 
         self.attribute_map = {
@@ -55,70 +56,64 @@ class TopVideoPinsAnalyticsResponse(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def date_availability(self) -> TopPinsAnalyticsResponseDateAvailability:
+    def date_availability(self) -> TopVideoPinsAnalyticsResponseDateAvailability:
         """Gets the date_availability of this TopVideoPinsAnalyticsResponse.
 
 
         :return: The date_availability of this TopVideoPinsAnalyticsResponse.
-        :rtype: TopPinsAnalyticsResponseDateAvailability
+        :rtype: TopVideoPinsAnalyticsResponseDateAvailability
         """
         return self._date_availability
 
     @date_availability.setter
-    def date_availability(self, date_availability: TopPinsAnalyticsResponseDateAvailability):
+    def date_availability(self, date_availability: TopVideoPinsAnalyticsResponseDateAvailability):
         """Sets the date_availability of this TopVideoPinsAnalyticsResponse.
 
 
         :param date_availability: The date_availability of this TopVideoPinsAnalyticsResponse.
-        :type date_availability: TopPinsAnalyticsResponseDateAvailability
+        :type date_availability: TopVideoPinsAnalyticsResponseDateAvailability
         """
 
         self._date_availability = date_availability
 
     @property
-    def pins(self) -> List[TopVideoPinsAnalyticsResponsePinsInner]:
+    def pins(self) -> List[TopVideoPinsAnalyticsResponsePinsItems]:
         """Gets the pins of this TopVideoPinsAnalyticsResponse.
 
 
         :return: The pins of this TopVideoPinsAnalyticsResponse.
-        :rtype: List[TopVideoPinsAnalyticsResponsePinsInner]
+        :rtype: List[TopVideoPinsAnalyticsResponsePinsItems]
         """
         return self._pins
 
     @pins.setter
-    def pins(self, pins: List[TopVideoPinsAnalyticsResponsePinsInner]):
+    def pins(self, pins: List[TopVideoPinsAnalyticsResponsePinsItems]):
         """Sets the pins of this TopVideoPinsAnalyticsResponse.
 
 
         :param pins: The pins of this TopVideoPinsAnalyticsResponse.
-        :type pins: List[TopVideoPinsAnalyticsResponsePinsInner]
+        :type pins: List[TopVideoPinsAnalyticsResponsePinsItems]
         """
 
         self._pins = pins
 
     @property
-    def sort_by(self) -> str:
+    def sort_by(self) -> TopVideoPinsSortBy:
         """Gets the sort_by of this TopVideoPinsAnalyticsResponse.
 
 
         :return: The sort_by of this TopVideoPinsAnalyticsResponse.
-        :rtype: str
+        :rtype: TopVideoPinsSortBy
         """
         return self._sort_by
 
     @sort_by.setter
-    def sort_by(self, sort_by: str):
+    def sort_by(self, sort_by: TopVideoPinsSortBy):
         """Sets the sort_by of this TopVideoPinsAnalyticsResponse.
 
 
         :param sort_by: The sort_by of this TopVideoPinsAnalyticsResponse.
-        :type sort_by: str
+        :type sort_by: TopVideoPinsSortBy
         """
-        allowed_values = ["SAVE", "IMPRESSION", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START"]  # noqa: E501
-        if sort_by not in allowed_values:
-            raise ValueError(
-                "Invalid value for `sort_by` ({0}), must be one of {1}"
-                .format(sort_by, allowed_values)
-            )
 
         self._sort_by = sort_by

@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -22,16 +27,104 @@ type CatalogsListProductsByFilterRequest struct {
 
 	Filters CatalogsProductGroupFilters `json:"filters"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsListProductsByFilterRequest
+func (o *CatalogsListProductsByFilterRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"feed_id",
+		"filters",
+		"catalog_id",
+		"catalog_type",
+		"country",
+		"locale",
+	}
 
-// AssertCatalogsListProductsByFilterRequestRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"feed_id": false,
+		"filters": false,
+		"catalog_id": false,
+		"catalog_type": false,
+		"country": false,
+		"locale": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"feed_id": {},
+		"filters": {},
+		"catalog_id": {},
+		"catalog_type": {},
+		"country": {},
+		"locale": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsListProductsByFilterRequest
+
+	if value, exists := allProperties["feed_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.FeedId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["filters"]; exists {
+		if err = json.Unmarshal(value, &decoded.Filters); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["country"]; exists {
+		if err = json.Unmarshal(value, &decoded.Country); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["locale"]; exists {
+		if err = json.Unmarshal(value, &decoded.Locale); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsListProductsByFilterRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsListProductsByFilterRequestRequired(obj CatalogsListProductsByFilterRequest) error {
 	elements := map[string]interface{}{
-		"feed_id": obj.FeedId,
 		"filters": obj.Filters,
-		"catalog_id": obj.CatalogId,
-		"catalog_type": obj.CatalogType,
-		"country": obj.Country,
-		"locale": obj.Locale,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

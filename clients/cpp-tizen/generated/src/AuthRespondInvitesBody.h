@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "AuthRespondInvitesBody_invites_inner.h"
+#include "AuthRespondInvitesBodyItem.h"
 #include <list>
 #include "Object.h"
 
@@ -49,14 +49,14 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<AuthRespondInvitesBody_invites_inner> getInvites();
+	std::list<AuthRespondInvitesBodyItem> getInvites();
 
 	/*! \brief Set 
 	 */
-	void setInvites(std::list <AuthRespondInvitesBody_invites_inner> invites);
+	void setInvites(std::list <AuthRespondInvitesBodyItem> invites);
 
 private:
-	std::list <AuthRespondInvitesBody_invites_inner>invites;
+	std::list <AuthRespondInvitesBodyItem>invites;
 	void __init();
 	void __cleanup();
 

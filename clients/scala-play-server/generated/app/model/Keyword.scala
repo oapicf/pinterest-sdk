@@ -4,51 +4,27 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for Keyword.
-  * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-  * @param value Keyword value (120 chars max).
+  * @param bid **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
   * @param id Keyword ID .
+  * @param matchType Keyword [match type](/docs/api-features/targeting-overview/)
   * @param parentId Keyword parent entity ID (advertiser, campaign, ad group).
-  * @param parentType Parent entity type
+  * @param parentType Parent entity type (advertiser, campaign, ad group).
   * @param `type` Always keyword
-  * @param additionalProperties Any additional properties this model may have.
+  * @param value Keyword value (120 chars max).
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class Keyword(
-  bid: Option[Int],
-  matchType: MatchTypeResponse,
-  value: String,
   archived: Option[Boolean],
-  id: Option[String],
-  parentId: Option[String],
+  bid: Option[Int],
+  id: String,
+  matchType: MatchType,
+  parentId: String,
   parentType: Option[String],
-  `type`: Option[String]
-  additionalProperties: 
+  `type`: Option[String],
+  value: String
 )
 
 object Keyword {
-  implicit lazy val keywordJsonFormat: Format[Keyword] = {
-    val realJsonFormat = Json.format[Keyword]
-    val declaredPropNames = Set("bid", "matchType", "value", "archived", "id", "parentId", "parentType", "`type`")
-    
-    Format(
-      Reads {
-        case JsObject(xs) =>
-          val declaredProps = xs.filterKeys(declaredPropNames)
-          val additionalProps = JsObject(xs -- declaredPropNames)
-          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
-          val newObj = JsObject(restructuredProps)
-          realJsonFormat.reads(newObj)
-        case _ =>
-          JsError("error.expected.jsobject")
-      },
-      Writes { keyword =>
-        val jsObj = realJsonFormat.writes(keyword)
-        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
-        val declaredProps = jsObj - "additionalProperties"
-        val newObj = declaredProps ++ additionalProps
-        newObj
-      }
-    )
-  }
+  implicit lazy val keywordJsonFormat: Format[Keyword] = Json.format[Keyword]
 }
 

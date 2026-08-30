@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkCampaignDeliveryEstimatesResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkCampaignDeliveryEstimatesResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BulkCampaignDeliveryEstimatesItem = openapi_server.resourceTypes.BulkCampaignDeliveryEstimatesItem
+}
+resourceTypes {
+
+  BulkCampaignDeliveryEstimatesResponse {
+    title = BulkCampaignDeliveryEstimatesResponse
+    description = BulkCampaignDeliveryEstimatesResponse
+    derivedFrom = Root
+    properties {
+        data {
+          type = array
+          items.type = BulkCampaignDeliveryEstimatesItem
+          description = "Per-campaign delivery estimate results, in the same order as the request."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkCampaignDeliveryEstimatesResponse {
+    title = BulkCampaignDeliveryEstimatesResponse
+    description = BulkCampaignDeliveryEstimatesResponse
+    implements = openapi_server.resourceTypes.BulkCampaignDeliveryEstimatesResponse
+
+  }
+}

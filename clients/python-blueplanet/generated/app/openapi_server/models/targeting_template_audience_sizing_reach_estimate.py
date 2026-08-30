@@ -47,7 +47,7 @@ class TargetingTemplateAudienceSizingReachEstimate(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The TargetingTemplateAudienceSizing_reach_estimate of this TargetingTemplateAudienceSizingReachEstimate.  # noqa: E501
+        :return: The TargetingTemplateAudienceSizingReachEstimate of this TargetingTemplateAudienceSizingReachEstimate.  # noqa: E501
         :rtype: TargetingTemplateAudienceSizingReachEstimate
         """
         return util.deserialize_model(dikt, cls)

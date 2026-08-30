@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -10,27 +11,32 @@ import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * TermsOfService
+ * The ID of the ad account.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "TermsOfService", description = "The ID of the ad account.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TermsOfService {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean hasAccepted;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> html = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
   public TermsOfService adAccountId(@Nullable String adAccountId) {
@@ -49,6 +55,7 @@ public class TermsOfService {
     return adAccountId;
   }
 
+  @JsonProperty("ad_account_id")
   public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
@@ -69,6 +76,7 @@ public class TermsOfService {
     return hasAccepted;
   }
 
+  @JsonProperty("has_accepted")
   public void setHasAccepted(@Nullable Boolean hasAccepted) {
     this.hasAccepted = hasAccepted;
   }
@@ -109,6 +117,7 @@ public class TermsOfService {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(@Nullable String id) {
     this.id = id;
   }
@@ -160,11 +169,8 @@ public class TermsOfService {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

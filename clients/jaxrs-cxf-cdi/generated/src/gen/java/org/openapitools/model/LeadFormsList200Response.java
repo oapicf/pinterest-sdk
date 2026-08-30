@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.LeadFormResponse;
+import org.openapitools.model.LeadForm;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,7 +23,7 @@ public class LeadFormsList200Response   {
   
   private String bookmark;
 
-  private List<@Valid LeadFormResponse> items = new ArrayList<>();
+  private List<@Valid LeadForm> items = new ArrayList<>();
 
   /**
    **/
@@ -45,7 +45,7 @@ public class LeadFormsList200Response   {
 
   /**
    **/
-  public LeadFormsList200Response items(List<@Valid LeadFormResponse> items) {
+  public LeadFormsList200Response items(List<@Valid LeadForm> items) {
     this.items = items;
     return this;
   }
@@ -54,14 +54,14 @@ public class LeadFormsList200Response   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
-  public List<@Valid LeadFormResponse> getItems() {
+  public List<@Valid LeadForm> getItems() {
     return items;
   }
-  public void setItems(List<@Valid LeadFormResponse> items) {
+  public void setItems(List<@Valid LeadForm> items) {
     this.items = items;
   }
 
-  public LeadFormsList200Response addItemsItem(LeadFormResponse itemsItem) {
+  public LeadFormsList200Response addItemsItem(LeadForm itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -105,10 +105,7 @@ public class LeadFormsList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

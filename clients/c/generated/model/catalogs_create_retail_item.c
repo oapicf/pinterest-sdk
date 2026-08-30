@@ -31,11 +31,11 @@ static catalogs_create_retail_item_t *catalogs_create_retail_item_create_interna
     if (!catalogs_create_retail_item_local_var) {
         return NULL;
     }
+    memset(catalogs_create_retail_item_local_var, 0, sizeof(catalogs_create_retail_item_t));
+    catalogs_create_retail_item_local_var->_library_owned = 1;
     catalogs_create_retail_item_local_var->attributes = attributes;
     catalogs_create_retail_item_local_var->item_id = item_id;
     catalogs_create_retail_item_local_var->operation = operation;
-
-    catalogs_create_retail_item_local_var->_library_owned = 1;
     return catalogs_create_retail_item_local_var;
 }
 
@@ -44,11 +44,14 @@ __attribute__((deprecated)) catalogs_create_retail_item_t *catalogs_create_retai
     char *item_id,
     pinterest_rest_api_catalogs_create_retail_item_OPERATION_e operation
     ) {
-    return catalogs_create_retail_item_create_internal (
+    catalogs_create_retail_item_t *result = catalogs_create_retail_item_create_internal (
         attributes,
         item_id,
         operation
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_create_retail_item_free(catalogs_create_retail_item_t *catalogs_create_retail_item) {
@@ -121,6 +124,8 @@ catalogs_create_retail_item_t *catalogs_create_retail_item_parseFromJSON(cJSON *
     // define the local variable for catalogs_create_retail_item->attributes
     item_attributes_request_t *attributes_local_nonprim = NULL;
 
+    char *item_id_local_str = NULL;
+
     // catalogs_create_retail_item->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_create_retail_itemJSON, "attributes");
     if (cJSON_IsNull(attributes)) {
@@ -166,17 +171,27 @@ catalogs_create_retail_item_t *catalogs_create_retail_item_parseFromJSON(cJSON *
     operationVariable = catalogs_create_retail_item_operation_FromString(operation->valuestring);
 
 
+    if (item_id && !cJSON_IsNull(item_id)) item_id_local_str = strdup(item_id->valuestring);
+
     catalogs_create_retail_item_local_var = catalogs_create_retail_item_create_internal (
         attributes_local_nonprim,
-        strdup(item_id->valuestring),
+        item_id_local_str,
         operationVariable
         );
+
+    if (!catalogs_create_retail_item_local_var) {
+        goto end;
+    }
 
     return catalogs_create_retail_item_local_var;
 end:
     if (attributes_local_nonprim) {
         item_attributes_request_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
+    }
+    if (item_id_local_str) {
+        free(item_id_local_str);
+        item_id_local_str = NULL;
     }
     return NULL;
 

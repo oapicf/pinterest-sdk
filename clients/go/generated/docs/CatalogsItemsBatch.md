@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **BatchId** | Pointer to **string** | Id of the catalogs items batch | [optional] 
-**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**CreatedTime** | **time.Time** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [readonly] 
+**CatalogType** | **string** |  | 
+**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] 
+**CreatedTime** | **time.Time** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | 
 **Items** | Pointer to [**[]CreativeAssetsProcessingRecord**](CreativeAssetsProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 **Status** | Pointer to [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsItemsBatch
 
-`func NewCatalogsItemsBatch(catalogType CatalogsType, createdTime time.Time, ) *CatalogsItemsBatch`
+`func NewCatalogsItemsBatch(catalogType string, createdTime time.Time, ) *CatalogsItemsBatch`
 
 NewCatalogsItemsBatch instantiates a new CatalogsItemsBatch object
 This constructor will assign default values to properties that have it defined,
@@ -29,26 +29,6 @@ will change when the set of required properties is changed
 NewCatalogsItemsBatchWithDefaults instantiates a new CatalogsItemsBatch object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCatalogType
-
-`func (o *CatalogsItemsBatch) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsItemsBatch) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
-
 
 ### GetBatchId
 
@@ -74,6 +54,26 @@ SetBatchId sets BatchId field to given value.
 `func (o *CatalogsItemsBatch) HasBatchId() bool`
 
 HasBatchId returns a boolean if a field has been set.
+
+### GetCatalogType
+
+`func (o *CatalogsItemsBatch) GetCatalogType() string`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *CatalogsItemsBatch) GetCatalogTypeOk() (*string, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *CatalogsItemsBatch) SetCatalogType(v string)`
+
+SetCatalogType sets CatalogType field to given value.
+
 
 ### GetCompletedTime
 

@@ -6,7 +6,13 @@
   "fields": [
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreativeAssetsItemErrorResponse_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
       "doc": ""
     },
     {
@@ -22,6 +28,17 @@
         "items": "model.ItemValidationEvent"
       },
       "doc": "Array with the errors for the item id requested"
+    },
+    {
+      "name": "item_response_kind",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreativeAssetsItemErrorResponse_itemUnderscoreresponseUnderscorekind",
+        "symbols": [
+          "creative_assets_item_error"
+        ]
+      },
+      "doc": "Discriminator literal identifying this leaf inside an `ItemResponse` payload."
     }
   ]
 

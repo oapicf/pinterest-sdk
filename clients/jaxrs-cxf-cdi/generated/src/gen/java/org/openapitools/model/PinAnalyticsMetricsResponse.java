@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.model.PinAnalyticsMetricsResponseDailyMetricsInner;
+import org.openapitools.model.PinAnalyticsDailyMetrics;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class PinAnalyticsMetricsResponse   {
   
-  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
+  private List<@Valid PinAnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
   private Map<String, Integer> lifetimeMetrics = new HashMap<>();
 
@@ -31,7 +31,7 @@ public class PinAnalyticsMetricsResponse   {
   /**
    * Array with the requested daily metric records
    **/
-  public PinAnalyticsMetricsResponse dailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public PinAnalyticsMetricsResponse dailyMetrics(List<@Valid PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
     return this;
   }
@@ -39,14 +39,14 @@ public class PinAnalyticsMetricsResponse   {
   
   @ApiModelProperty(value = "Array with the requested daily metric records")
   @JsonProperty("daily_metrics")
-  public List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> getDailyMetrics() {
+  public List<@Valid PinAnalyticsDailyMetrics> getDailyMetrics() {
     return dailyMetrics;
   }
-  public void setDailyMetrics(List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics) {
+  public void setDailyMetrics(List<@Valid PinAnalyticsDailyMetrics> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
   }
 
-  public PinAnalyticsMetricsResponse addDailyMetricsItem(PinAnalyticsMetricsResponseDailyMetricsInner dailyMetricsItem) {
+  public PinAnalyticsMetricsResponse addDailyMetricsItem(PinAnalyticsDailyMetrics dailyMetricsItem) {
     if (this.dailyMetrics == null) {
       this.dailyMetrics = new ArrayList<>();
     }
@@ -146,10 +146,7 @@ public class PinAnalyticsMetricsResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

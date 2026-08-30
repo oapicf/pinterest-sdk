@@ -1,0 +1,64 @@
+## BusinessAccessInviteApi
+
+### Create a request to access an existing partner&#39;s assets.
+## Create a request to access an existing partner&#39;s assets.
+POST https://api.pinterest.com/v5/businesses/{{business_id}}/requests/assets/access
+Content-Type: application/json
+Accept: application/json
+
+{
+ "asset_requests": "<string>"
+}
+
+
+### Cancel invites/requests
+## Cancel invites/requests
+DELETE https://api.pinterest.com/v5/businesses/{{business_id}}/invites
+Content-Type: application/json
+Accept: application/json
+
+{
+ "invite_ids": "<string>"
+}
+
+
+### Update invite/request with an asset permission
+## Update invite/request with an asset permission
+POST https://api.pinterest.com/v5/businesses/{{business_id}}/invites/assets/access
+Content-Type: application/json
+Accept: application/json
+
+{
+ "invites": "<string>"
+}
+
+
+### Create invites or requests
+## Create invites or requests
+POST https://api.pinterest.com/v5/businesses/{{business_id}}/invites
+Content-Type: application/json
+Accept: application/json
+
+{
+ "business_role": "<string>",
+ "invite_type": "<string>",
+ "members": "<string>",
+ "partners": "<string>"
+}
+
+
+### Get invites/requests
+## Get invites/requests
+GET https://api.pinterest.com/v5/businesses/{{business_id}}/invites?isMember={{isMember}}&inviteStatus={{inviteStatus}}&inviteType={{inviteType}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Accept or decline an invite/request
+## Accept or decline an invite/request
+PATCH https://api.pinterest.com/v5/businesses/invites
+Content-Type: application/json
+Accept: application/json
+
+{
+ "invites": "<string>"
+}
+

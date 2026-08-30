@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdateMemberAssetResultItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdateMemberAssetResultItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UsersForIndividualAssetResponse = openapi_server.resourceTypes.UsersForIndividualAssetResponse
+}
+resourceTypes {
+
+  UpdateMemberAssetResultItem {
+    title = UpdateMemberAssetResultItem
+    description = UpdateMemberAssetResultItem
+    derivedFrom = Root
+    properties {
+        response {
+          type = UsersForIndividualAssetResponse
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdateMemberAssetResultItem {
+    title = UpdateMemberAssetResultItem
+    description = UpdateMemberAssetResultItem
+    implements = openapi_server.resourceTypes.UpdateMemberAssetResultItem
+
+  }
+}

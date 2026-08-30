@@ -4,27 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **time.Time** |  | 
-**Id** | **string** |  | 
-**UpdatedAt** | **time.Time** |  | 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**Credentials** | [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | 
-**DefaultAvailability** | [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | 
+**CatalogType** | **string** |  | 
+**CreatedAt** | **time.Time** |  | [readonly] 
+**Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
+**DefaultAvailability** | Pointer to [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
 **DefaultCountry** | [**Country**](Country.md) |  | 
-**DefaultCurrency** | [**NullableNullableCurrency**](NullableCurrency.md) |  | 
+**DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
 **DefaultLocale** | **string** | The locale used within a feed for product descriptions. | 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
+**Id** | **string** | ID of the feed entity. | [readonly] 
 **Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **Name** | **NullableString** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
-**PreferredProcessingSchedule** | [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | 
+**PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | 
+**UpdatedAt** | **time.Time** |  | [readonly] 
 **CatalogId** | **string** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | 
 
 ## Methods
 
 ### NewCatalogsFeed
 
-`func NewCatalogsFeed(createdAt time.Time, id string, updatedAt time.Time, catalogType CatalogsType, credentials NullableCatalogsFeedCredentials, defaultAvailability NullableProductAvailabilityType, defaultCountry Country, defaultCurrency NullableNullableCurrency, defaultLocale string, format CatalogsFormat, location string, name NullableString, preferredProcessingSchedule NullableCatalogsFeedProcessingSchedule, status CatalogsStatus, catalogId string, ) *CatalogsFeed`
+`func NewCatalogsFeed(catalogType string, createdAt time.Time, defaultCountry Country, defaultLocale string, format CatalogsFormat, id string, location string, name NullableString, status CatalogsStatus, updatedAt time.Time, catalogId string, ) *CatalogsFeed`
 
 NewCatalogsFeed instantiates a new CatalogsFeed object
 This constructor will assign default values to properties that have it defined,
@@ -38,6 +38,26 @@ will change when the set of required properties is changed
 NewCatalogsFeedWithDefaults instantiates a new CatalogsFeed object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogType
+
+`func (o *CatalogsFeed) GetCatalogType() string`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *CatalogsFeed) GetCatalogTypeOk() (*string, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *CatalogsFeed) SetCatalogType(v string)`
+
+SetCatalogType sets CatalogType field to given value.
+
 
 ### GetCreatedAt
 
@@ -59,66 +79,6 @@ and a boolean to check if the value has been set.
 SetCreatedAt sets CreatedAt field to given value.
 
 
-### GetId
-
-`func (o *CatalogsFeed) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *CatalogsFeed) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *CatalogsFeed) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetUpdatedAt
-
-`func (o *CatalogsFeed) GetUpdatedAt() time.Time`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *CatalogsFeed) GetUpdatedAtOk() (*time.Time, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *CatalogsFeed) SetUpdatedAt(v time.Time)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
-
-
-### GetCatalogType
-
-`func (o *CatalogsFeed) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsFeed) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsFeed) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
-
-
 ### GetCredentials
 
 `func (o *CatalogsFeed) GetCredentials() CatalogsFeedCredentials`
@@ -138,6 +98,11 @@ and a boolean to check if the value has been set.
 
 SetCredentials sets Credentials field to given value.
 
+### HasCredentials
+
+`func (o *CatalogsFeed) HasCredentials() bool`
+
+HasCredentials returns a boolean if a field has been set.
 
 ### SetCredentialsNil
 
@@ -168,6 +133,11 @@ and a boolean to check if the value has been set.
 
 SetDefaultAvailability sets DefaultAvailability field to given value.
 
+### HasDefaultAvailability
+
+`func (o *CatalogsFeed) HasDefaultAvailability() bool`
+
+HasDefaultAvailability returns a boolean if a field has been set.
 
 ### SetDefaultAvailabilityNil
 
@@ -218,6 +188,11 @@ and a boolean to check if the value has been set.
 
 SetDefaultCurrency sets DefaultCurrency field to given value.
 
+### HasDefaultCurrency
+
+`func (o *CatalogsFeed) HasDefaultCurrency() bool`
+
+HasDefaultCurrency returns a boolean if a field has been set.
 
 ### SetDefaultCurrencyNil
 
@@ -267,6 +242,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsFeed) SetFormat(v CatalogsFormat)`
 
 SetFormat sets Format field to given value.
+
+
+### GetId
+
+`func (o *CatalogsFeed) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CatalogsFeed) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CatalogsFeed) SetId(v string)`
+
+SetId sets Id field to given value.
 
 
 ### GetLocation
@@ -338,6 +333,11 @@ and a boolean to check if the value has been set.
 
 SetPreferredProcessingSchedule sets PreferredProcessingSchedule field to given value.
 
+### HasPreferredProcessingSchedule
+
+`func (o *CatalogsFeed) HasPreferredProcessingSchedule() bool`
+
+HasPreferredProcessingSchedule returns a boolean if a field has been set.
 
 ### SetPreferredProcessingScheduleNil
 
@@ -367,6 +367,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsFeed) SetStatus(v CatalogsStatus)`
 
 SetStatus sets Status field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *CatalogsFeed) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *CatalogsFeed) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *CatalogsFeed) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
 
 
 ### GetCatalogId

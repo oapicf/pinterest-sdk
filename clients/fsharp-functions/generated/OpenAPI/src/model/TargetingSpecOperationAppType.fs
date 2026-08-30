@@ -4,6 +4,7 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.TargetingSpecAppType
+open OpenAPI.Model.TargetingSpecListOperation
 
 module TargetingSpecOperationAppType =
 
@@ -14,7 +15,7 @@ module TargetingSpecOperationAppType =
     [<JsonProperty(PropertyName = "field")>]
     Field : string;
     [<JsonProperty(PropertyName = "operation")>]
-    Operation : string;
+    Operation : TargetingSpecListOperation;
     [<JsonProperty(PropertyName = "values")>]
     Values : TargetingSpecAppType[];
   }

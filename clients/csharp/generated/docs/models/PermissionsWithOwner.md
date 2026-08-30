@@ -1,4 +1,5 @@
 # Org.OpenAPITools.Model.PermissionsWithOwner
+Permission levels including the OWNER role.
 
 ## Properties
 

@@ -1,10 +1,12 @@
 # openapi::ConversionEvents
 
-A list of events (one or more) encapsulated by a data object.
+Conversion events.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**array[ConversionEventsDataInner]**](ConversionEvents_data_inner.md) |  | [Max. items: 1000] [Min. items: 1] 
+**events** | [**array[ConversionApiResponseEventsItems]**](ConversionApiResponseEventsItems.md) | Specific messages for each event received. The order will match the order in which the events were received in the request. | [readonly] 
+**num_events_processed** | **integer** | Number of events that were successfully processed from the events. | [readonly] 
+**num_events_received** | **integer** | Total number of events received in the request. | [readonly] 
 
 

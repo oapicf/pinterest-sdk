@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server KeywordInfo"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a KeywordInfo"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  KeywordInfo {
+    title = KeywordInfo
+    description = KeywordInfo
+    derivedFrom = Root
+    properties {
+        name {
+          type =  string
+          description = "Keyword Name"
+          optional = true
+        }
+        pct_growth_mom {
+          type =  
+          description = "MoM growth as a percentage, if there is no growth rate, this field is not present"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  KeywordInfo {
+    title = KeywordInfo
+    description = KeywordInfo
+    implements = openapi_server.resourceTypes.KeywordInfo
+
+  }
+}

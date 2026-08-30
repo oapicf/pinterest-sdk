@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The schedule action",
+  "name": "ScheduleAction",
+  "symbols": [
+    "INCREASE_BY_VALUE",
+    "INCREASE_BY_PERCENT"
+  ]
+}

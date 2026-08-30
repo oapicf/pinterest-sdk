@@ -8,7 +8,7 @@ case class RelatedTerms (
     /* Total number of related terms returned */
     _relatedTermCount: Option[Integer],
     /* The id of the advertiser. */
-    _relatedTermsList: Option[List[RelatedTermsRelatedTermsListInner]]
+    _relatedTermsList: Option[List[RelatedTermsRelatedTermsListItems]]
 )
 object RelatedTerms {
     def toStringBody(var_id: Object, var_relatedTermCount: Object, var_relatedTermsList: Object) =

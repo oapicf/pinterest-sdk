@@ -1,11 +1,11 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.BulkDownloadRequest;
-import org.openapitools.vertxweb.server.model.BulkDownloadResponse;
+import org.openapitools.vertxweb.server.model.BulkDownload;
+import org.openapitools.vertxweb.server.model.BulkDownloadCreate;
+import org.openapitools.vertxweb.server.model.BulkJobData;
 import org.openapitools.vertxweb.server.model.BulkUpsertRequest;
 import org.openapitools.vertxweb.server.model.BulkUpsertResponse;
-import org.openapitools.vertxweb.server.model.BulkUpsertStatusResponse;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -50,12 +50,12 @@ public class BulkApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        BulkDownloadRequest bulkDownloadRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BulkDownloadRequest>(){}) : null;
+        BulkDownloadCreate bulkDownloadCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BulkDownloadCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter bulkDownloadRequest is {}", bulkDownloadRequest);
+        logger.debug("Parameter bulkDownloadCreate is {}", bulkDownloadCreate);
 
-        api.bulkDownloadCreate(adAccountId, bulkDownloadRequest)
+        api.bulkDownloadCreate(adAccountId, bulkDownloadCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

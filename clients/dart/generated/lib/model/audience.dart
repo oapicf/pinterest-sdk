@@ -19,6 +19,7 @@ class Audience {
     this.createdTimestamp,
     this.description,
     this.id,
+    this.isNca,
     this.name,
     this.rule,
     this.size,
@@ -36,14 +37,14 @@ class Audience {
   ///
   String? adAccountId;
 
-  /// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+  /// [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? audienceType;
+  PinnerListType? audienceType;
 
   /// The company that created this audience.
   String? createdByCompanyName;
@@ -62,6 +63,15 @@ class Audience {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? id;
+
+  /// Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isNca;
 
   /// Audience name.
   ///
@@ -90,7 +100,7 @@ class Audience {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? status;
+  AudienceStatus? status;
 
   /// Always \"audience\".
   ///
@@ -112,6 +122,7 @@ class Audience {
     other.createdTimestamp == createdTimestamp &&
     other.description == description &&
     other.id == id &&
+    other.isNca == isNca &&
     other.name == name &&
     other.rule == rule &&
     other.size == size &&
@@ -128,6 +139,7 @@ class Audience {
     (createdTimestamp == null ? 0 : createdTimestamp!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (id == null ? 0 : id!.hashCode) +
+    (isNca == null ? 0 : isNca!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (rule == null ? 0 : rule!.hashCode) +
     (size == null ? 0 : size!.hashCode) +
@@ -136,7 +148,7 @@ class Audience {
     (updatedTimestamp == null ? 0 : updatedTimestamp!.hashCode);
 
   @override
-  String toString() => 'Audience[adAccountId=$adAccountId, audienceType=$audienceType, createdByCompanyName=$createdByCompanyName, createdTimestamp=$createdTimestamp, description=$description, id=$id, name=$name, rule=$rule, size=$size, status=$status, type=$type, updatedTimestamp=$updatedTimestamp]';
+  String toString() => 'Audience[adAccountId=$adAccountId, audienceType=$audienceType, createdByCompanyName=$createdByCompanyName, createdTimestamp=$createdTimestamp, description=$description, id=$id, isNca=$isNca, name=$name, rule=$rule, size=$size, status=$status, type=$type, updatedTimestamp=$updatedTimestamp]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -169,6 +181,11 @@ class Audience {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
+    }
+    if (this.isNca != null) {
+      json[r'is_nca'] = this.isNca;
+    } else {
+      json[r'is_nca'] = null;
     }
     if (this.name != null) {
       json[r'name'] = this.name;
@@ -214,24 +231,21 @@ class Audience {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Audience[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Audience[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return Audience(
         adAccountId: mapValueOfType<String>(json, r'ad_account_id'),
-        audienceType: mapValueOfType<String>(json, r'audience_type'),
+        audienceType: PinnerListType.fromJson(json[r'audience_type']),
         createdByCompanyName: mapValueOfType<String>(json, r'created_by_company_name'),
         createdTimestamp: mapValueOfType<int>(json, r'created_timestamp'),
         description: mapValueOfType<String>(json, r'description'),
         id: mapValueOfType<String>(json, r'id'),
+        isNca: mapValueOfType<bool>(json, r'is_nca'),
         name: mapValueOfType<String>(json, r'name'),
         rule: AudienceRule.fromJson(json[r'rule']),
         size: mapValueOfType<int>(json, r'size'),
-        status: mapValueOfType<String>(json, r'status'),
+        status: AudienceStatus.fromJson(json[r'status']),
         type: mapValueOfType<String>(json, r'type'),
         updatedTimestamp: mapValueOfType<int>(json, r'updated_timestamp'),
       );

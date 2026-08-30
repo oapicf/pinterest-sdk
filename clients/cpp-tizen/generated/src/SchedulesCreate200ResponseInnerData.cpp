@@ -1,0 +1,563 @@
+#include <map>
+#include <cstdlib>
+#include <glib-object.h>
+#include <json-glib/json-glib.h>
+#include "Helpers.h"
+
+
+#include "Schedules_create_200_response_inner_data.h"
+
+using namespace std;
+using namespace Tizen::ArtikCloud;
+
+Schedules_create_200_response_inner_data::Schedules_create_200_response_inner_data()
+{
+	//__init();
+}
+
+Schedules_create_200_response_inner_data::~Schedules_create_200_response_inner_data()
+{
+	//__cleanup();
+}
+
+void
+Schedules_create_200_response_inner_data::__init()
+{
+	//delta_value = new Schedule_delta_value();
+	//end_timestamp = int(0);
+	//entity_id = null;
+	//entity_type = null;
+	//name = std::string();
+	//schedule_action = null;
+	//schedule_id = std::string();
+	//schedule_status = null;
+	//schedule_type = null;
+	//start_timestamp = int(0);
+	//id = std::string();
+	//exceptions = new Pinterest.Lib.Error();
+}
+
+void
+Schedules_create_200_response_inner_data::__cleanup()
+{
+	//if(delta_value != NULL) {
+	//
+	//delete delta_value;
+	//delta_value = NULL;
+	//}
+	//if(end_timestamp != NULL) {
+	//
+	//delete end_timestamp;
+	//end_timestamp = NULL;
+	//}
+	//if(entity_id != NULL) {
+	//
+	//delete entity_id;
+	//entity_id = NULL;
+	//}
+	//if(entity_type != NULL) {
+	//
+	//delete entity_type;
+	//entity_type = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
+	//if(schedule_action != NULL) {
+	//
+	//delete schedule_action;
+	//schedule_action = NULL;
+	//}
+	//if(schedule_id != NULL) {
+	//
+	//delete schedule_id;
+	//schedule_id = NULL;
+	//}
+	//if(schedule_status != NULL) {
+	//
+	//delete schedule_status;
+	//schedule_status = NULL;
+	//}
+	//if(schedule_type != NULL) {
+	//
+	//delete schedule_type;
+	//schedule_type = NULL;
+	//}
+	//if(start_timestamp != NULL) {
+	//
+	//delete start_timestamp;
+	//start_timestamp = NULL;
+	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
+	//}
+	//if(exceptions != NULL) {
+	//
+	//delete exceptions;
+	//exceptions = NULL;
+	//}
+	//
+}
+
+void
+Schedules_create_200_response_inner_data::fromJson(char* jsonStr)
+{
+	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
+	JsonNode *node;
+	const gchar *delta_valueKey = "delta_value";
+	node = json_object_get_member(pJsonObject, delta_valueKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Schedule_delta_value")) {
+			jsonToValue(&delta_value, node, "Schedule_delta_value", "Schedule_delta_value");
+		} else {
+			
+			Schedule_delta_value* obj = static_cast<Schedule_delta_value*> (&delta_value);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *end_timestampKey = "end_timestamp";
+	node = json_object_get_member(pJsonObject, end_timestampKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&end_timestamp, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *entity_idKey = "entity_id";
+	node = json_object_get_member(pJsonObject, entity_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&entity_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *entity_typeKey = "entity_type";
+	node = json_object_get_member(pJsonObject, entity_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AdAccountEntityType")) {
+			jsonToValue(&entity_type, node, "AdAccountEntityType", "AdAccountEntityType");
+		} else {
+			
+			AdAccountEntityType* obj = static_cast<AdAccountEntityType*> (&entity_type);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *schedule_actionKey = "schedule_action";
+	node = json_object_get_member(pJsonObject, schedule_actionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ScheduleAction")) {
+			jsonToValue(&schedule_action, node, "ScheduleAction", "ScheduleAction");
+		} else {
+			
+			ScheduleAction* obj = static_cast<ScheduleAction*> (&schedule_action);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *schedule_idKey = "schedule_id";
+	node = json_object_get_member(pJsonObject, schedule_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&schedule_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *schedule_statusKey = "schedule_status";
+	node = json_object_get_member(pJsonObject, schedule_statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ScheduleStatus")) {
+			jsonToValue(&schedule_status, node, "ScheduleStatus", "ScheduleStatus");
+		} else {
+			
+			ScheduleStatus* obj = static_cast<ScheduleStatus*> (&schedule_status);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *schedule_typeKey = "schedule_type";
+	node = json_object_get_member(pJsonObject, schedule_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ScheduleType")) {
+			jsonToValue(&schedule_type, node, "ScheduleType", "ScheduleType");
+		} else {
+			
+			ScheduleType* obj = static_cast<ScheduleType*> (&schedule_type);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *start_timestampKey = "start_timestamp";
+	node = json_object_get_member(pJsonObject, start_timestampKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&start_timestamp, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *exceptionsKey = "exceptions";
+	node = json_object_get_member(pJsonObject, exceptionsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Pinterest.Lib.Error")) {
+			jsonToValue(&exceptions, node, "Pinterest.Lib.Error", "Pinterest.Lib.Error");
+		} else {
+			
+			Pinterest.Lib.Error* obj = static_cast<Pinterest.Lib.Error*> (&exceptions);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+}
+
+Schedules_create_200_response_inner_data::Schedules_create_200_response_inner_data(char* json)
+{
+	this->fromJson(json);
+}
+
+char*
+Schedules_create_200_response_inner_data::toJson()
+{
+	JsonObject *pJsonObject = json_object_new();
+	JsonNode *node;
+	if (isprimitive("Schedule_delta_value")) {
+		Schedule_delta_value obj = getDeltaValue();
+		node = converttoJson(&obj, "Schedule_delta_value", "");
+	}
+	else {
+		
+		Schedule_delta_value obj = static_cast<Schedule_delta_value> (getDeltaValue());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *delta_valueKey = "delta_value";
+	json_object_set_member(pJsonObject, delta_valueKey, node);
+	if (isprimitive("int")) {
+		int obj = getEndTimestamp();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *end_timestampKey = "end_timestamp";
+	json_object_set_member(pJsonObject, end_timestampKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getEntityId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *entity_idKey = "entity_id";
+	json_object_set_member(pJsonObject, entity_idKey, node);
+	if (isprimitive("AdAccountEntityType")) {
+		AdAccountEntityType obj = getEntityType();
+		node = converttoJson(&obj, "AdAccountEntityType", "");
+	}
+	else {
+		
+		AdAccountEntityType obj = static_cast<AdAccountEntityType> (getEntityType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *entity_typeKey = "entity_type";
+	json_object_set_member(pJsonObject, entity_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("ScheduleAction")) {
+		ScheduleAction obj = getScheduleAction();
+		node = converttoJson(&obj, "ScheduleAction", "");
+	}
+	else {
+		
+		ScheduleAction obj = static_cast<ScheduleAction> (getScheduleAction());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *schedule_actionKey = "schedule_action";
+	json_object_set_member(pJsonObject, schedule_actionKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getScheduleId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *schedule_idKey = "schedule_id";
+	json_object_set_member(pJsonObject, schedule_idKey, node);
+	if (isprimitive("ScheduleStatus")) {
+		ScheduleStatus obj = getScheduleStatus();
+		node = converttoJson(&obj, "ScheduleStatus", "");
+	}
+	else {
+		
+		ScheduleStatus obj = static_cast<ScheduleStatus> (getScheduleStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *schedule_statusKey = "schedule_status";
+	json_object_set_member(pJsonObject, schedule_statusKey, node);
+	if (isprimitive("ScheduleType")) {
+		ScheduleType obj = getScheduleType();
+		node = converttoJson(&obj, "ScheduleType", "");
+	}
+	else {
+		
+		ScheduleType obj = static_cast<ScheduleType> (getScheduleType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *schedule_typeKey = "schedule_type";
+	json_object_set_member(pJsonObject, schedule_typeKey, node);
+	if (isprimitive("int")) {
+		int obj = getStartTimestamp();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *start_timestampKey = "start_timestamp";
+	json_object_set_member(pJsonObject, start_timestampKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("Pinterest.Lib.Error")) {
+		Pinterest.Lib.Error obj = getExceptions();
+		node = converttoJson(&obj, "Pinterest.Lib.Error", "");
+	}
+	else {
+		
+		Pinterest.Lib.Error obj = static_cast<Pinterest.Lib.Error> (getExceptions());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *exceptionsKey = "exceptions";
+	json_object_set_member(pJsonObject, exceptionsKey, node);
+	node = json_node_alloc();
+	json_node_init(node, JSON_NODE_OBJECT);
+	json_node_take_object(node, pJsonObject);
+	char * ret = json_to_string(node, false);
+	json_node_free(node);
+	return ret;
+}
+
+Schedule_delta_value
+Schedules_create_200_response_inner_data::getDeltaValue()
+{
+	return delta_value;
+}
+
+void
+Schedules_create_200_response_inner_data::setDeltaValue(Schedule_delta_value  delta_value)
+{
+	this->delta_value = delta_value;
+}
+
+int
+Schedules_create_200_response_inner_data::getEndTimestamp()
+{
+	return end_timestamp;
+}
+
+void
+Schedules_create_200_response_inner_data::setEndTimestamp(int  end_timestamp)
+{
+	this->end_timestamp = end_timestamp;
+}
+
+std::string
+Schedules_create_200_response_inner_data::getEntityId()
+{
+	return entity_id;
+}
+
+void
+Schedules_create_200_response_inner_data::setEntityId(std::string  entity_id)
+{
+	this->entity_id = entity_id;
+}
+
+AdAccountEntityType
+Schedules_create_200_response_inner_data::getEntityType()
+{
+	return entity_type;
+}
+
+void
+Schedules_create_200_response_inner_data::setEntityType(AdAccountEntityType  entity_type)
+{
+	this->entity_type = entity_type;
+}
+
+std::string
+Schedules_create_200_response_inner_data::getName()
+{
+	return name;
+}
+
+void
+Schedules_create_200_response_inner_data::setName(std::string  name)
+{
+	this->name = name;
+}
+
+ScheduleAction
+Schedules_create_200_response_inner_data::getScheduleAction()
+{
+	return schedule_action;
+}
+
+void
+Schedules_create_200_response_inner_data::setScheduleAction(ScheduleAction  schedule_action)
+{
+	this->schedule_action = schedule_action;
+}
+
+std::string
+Schedules_create_200_response_inner_data::getScheduleId()
+{
+	return schedule_id;
+}
+
+void
+Schedules_create_200_response_inner_data::setScheduleId(std::string  schedule_id)
+{
+	this->schedule_id = schedule_id;
+}
+
+ScheduleStatus
+Schedules_create_200_response_inner_data::getScheduleStatus()
+{
+	return schedule_status;
+}
+
+void
+Schedules_create_200_response_inner_data::setScheduleStatus(ScheduleStatus  schedule_status)
+{
+	this->schedule_status = schedule_status;
+}
+
+ScheduleType
+Schedules_create_200_response_inner_data::getScheduleType()
+{
+	return schedule_type;
+}
+
+void
+Schedules_create_200_response_inner_data::setScheduleType(ScheduleType  schedule_type)
+{
+	this->schedule_type = schedule_type;
+}
+
+int
+Schedules_create_200_response_inner_data::getStartTimestamp()
+{
+	return start_timestamp;
+}
+
+void
+Schedules_create_200_response_inner_data::setStartTimestamp(int  start_timestamp)
+{
+	this->start_timestamp = start_timestamp;
+}
+
+std::string
+Schedules_create_200_response_inner_data::getId()
+{
+	return id;
+}
+
+void
+Schedules_create_200_response_inner_data::setId(std::string  id)
+{
+	this->id = id;
+}
+
+Pinterest.Lib.Error
+Schedules_create_200_response_inner_data::getExceptions()
+{
+	return exceptions;
+}
+
+void
+Schedules_create_200_response_inner_data::setExceptions(Pinterest.Lib.Error  exceptions)
+{
+	this->exceptions = exceptions;
+}
+
+

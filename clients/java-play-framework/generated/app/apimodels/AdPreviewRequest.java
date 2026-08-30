@@ -1,8 +1,10 @@
 package apimodels;
 
-import apimodels.AdPreviewCreateFromImage;
-import apimodels.AdPreviewCreateFromPin;
 import apimodels.AdPreviewShopping;
+import apimodels.AdPreviewSourceImage;
+import apimodels.AdPreviewSourcePinId;
+import apimodels.AdShoppingPreviewCreativeType;
+import apimodels.BasePreferredMediaType;
 import apimodels.CustomizableCTAType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
@@ -14,7 +16,7 @@ import javax.validation.Valid;
 /**
  * AdPreviewRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdPreviewRequest   {
   @JsonProperty("image_url")
@@ -22,10 +24,21 @@ public class AdPreviewRequest   {
 
   private String imageUrl;
 
+  @JsonProperty("promotion_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String promotionId;
+
   @JsonProperty("title")
   @NotNull
 
   private String title;
+
+  @JsonProperty("creative_type")
+  @NotNull
+@Valid
+
+  private AdShoppingPreviewCreativeType creativeType;
 
   @JsonProperty("pin_id")
   @NotNull
@@ -37,46 +50,6 @@ public class AdPreviewRequest   {
 @Pattern(regexp="^\\d+$")
 
   private String catalogProductGroupId;
-
-  /**
-   * Ad format of the shopping ad preview.
-   */
-  public enum CreativeTypeEnum {
-    SHOPPING("SHOPPING"),
-    
-    CAROUSEL("CAROUSEL"),
-    
-    COLLECTION("COLLECTION"),
-    
-    REGULAR("REGULAR");
-
-    private final String value;
-
-    CreativeTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CreativeTypeEnum fromValue(String value) {
-      for (CreativeTypeEnum b : CreativeTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  @JsonProperty("creative_type")
-  @NotNull
-
-  private CreativeTypeEnum creativeType;
 
   @JsonProperty("customizable_cta_type")
   @Valid
@@ -104,40 +77,14 @@ public class AdPreviewRequest   {
   
   private String itemId;
 
-  /**
-   * Preferred media type.
-   */
-  public enum PreferredMediaTypeEnum {
-    VIDEO("VIDEO"),
-    
-    IMAGE("IMAGE");
-
-    private final String value;
-
-    PreferredMediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PreferredMediaTypeEnum fromValue(String value) {
-      for (PreferredMediaTypeEnum b : PreferredMediaTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("preferred_media_type")
+  @Valid
+
+  private BasePreferredMediaType preferredMediaType;
+
+  @JsonProperty("show_promotion")
   
-  private PreferredMediaTypeEnum preferredMediaType;
+  private Boolean showPromotion;
 
   @JsonProperty("video_tag")
   
@@ -160,6 +107,23 @@ public class AdPreviewRequest   {
     this.imageUrl = imageUrl;
   }
 
+  public AdPreviewRequest promotionId(String promotionId) {
+    this.promotionId = promotionId;
+    return this;
+  }
+
+   /**
+   * Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
+   * @return promotionId
+  **/
+  public String getPromotionId() {
+    return promotionId;
+  }
+
+  public void setPromotionId(String promotionId) {
+    this.promotionId = promotionId;
+  }
+
   public AdPreviewRequest title(String title) {
     this.title = title;
     return this;
@@ -175,6 +139,23 @@ public class AdPreviewRequest   {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  public AdPreviewRequest creativeType(AdShoppingPreviewCreativeType creativeType) {
+    this.creativeType = creativeType;
+    return this;
+  }
+
+   /**
+   * Ad format of the shopping ad preview.
+   * @return creativeType
+  **/
+  public AdShoppingPreviewCreativeType getCreativeType() {
+    return creativeType;
+  }
+
+  public void setCreativeType(AdShoppingPreviewCreativeType creativeType) {
+    this.creativeType = creativeType;
   }
 
   public AdPreviewRequest pinId(String pinId) {
@@ -209,23 +190,6 @@ public class AdPreviewRequest   {
 
   public void setCatalogProductGroupId(String catalogProductGroupId) {
     this.catalogProductGroupId = catalogProductGroupId;
-  }
-
-  public AdPreviewRequest creativeType(CreativeTypeEnum creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
-   /**
-   * Ad format of the shopping ad preview.
-   * @return creativeType
-  **/
-  public CreativeTypeEnum getCreativeType() {
-    return creativeType;
-  }
-
-  public void setCreativeType(CreativeTypeEnum creativeType) {
-    this.creativeType = creativeType;
   }
 
   public AdPreviewRequest customizableCtaType(CustomizableCTAType customizableCtaType) {
@@ -330,7 +294,7 @@ public class AdPreviewRequest   {
     this.itemId = itemId;
   }
 
-  public AdPreviewRequest preferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public AdPreviewRequest preferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
     return this;
   }
@@ -339,12 +303,29 @@ public class AdPreviewRequest   {
    * Preferred media type.
    * @return preferredMediaType
   **/
-  public PreferredMediaTypeEnum getPreferredMediaType() {
+  public BasePreferredMediaType getPreferredMediaType() {
     return preferredMediaType;
   }
 
-  public void setPreferredMediaType(PreferredMediaTypeEnum preferredMediaType) {
+  public void setPreferredMediaType(BasePreferredMediaType preferredMediaType) {
     this.preferredMediaType = preferredMediaType;
+  }
+
+  public AdPreviewRequest showPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
+    return this;
+  }
+
+   /**
+   * Include promotion data in preview when available on catalog item. Defaults to false.
+   * @return showPromotion
+  **/
+  public Boolean getShowPromotion() {
+    return showPromotion;
+  }
+
+  public void setShowPromotion(Boolean showPromotion) {
+    this.showPromotion = showPromotion;
   }
 
   public AdPreviewRequest videoTag(String videoTag) {
@@ -375,10 +356,11 @@ public class AdPreviewRequest   {
     }
     AdPreviewRequest adPreviewRequest = (AdPreviewRequest) o;
     return Objects.equals(imageUrl, adPreviewRequest.imageUrl) &&
+        Objects.equals(promotionId, adPreviewRequest.promotionId) &&
         Objects.equals(title, adPreviewRequest.title) &&
+        Objects.equals(creativeType, adPreviewRequest.creativeType) &&
         Objects.equals(pinId, adPreviewRequest.pinId) &&
         Objects.equals(catalogProductGroupId, adPreviewRequest.catalogProductGroupId) &&
-        Objects.equals(creativeType, adPreviewRequest.creativeType) &&
         Objects.equals(customizableCtaType, adPreviewRequest.customizableCtaType) &&
         Objects.equals(heroImageTitle, adPreviewRequest.heroImageTitle) &&
         Objects.equals(heroImageUrl, adPreviewRequest.heroImageUrl) &&
@@ -386,12 +368,13 @@ public class AdPreviewRequest   {
         Objects.equals(imageTag, adPreviewRequest.imageTag) &&
         Objects.equals(itemId, adPreviewRequest.itemId) &&
         Objects.equals(preferredMediaType, adPreviewRequest.preferredMediaType) &&
+        Objects.equals(showPromotion, adPreviewRequest.showPromotion) &&
         Objects.equals(videoTag, adPreviewRequest.videoTag);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(imageUrl, title, pinId, catalogProductGroupId, creativeType, customizableCtaType, heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, videoTag);
+    return Objects.hash(imageUrl, promotionId, title, creativeType, pinId, catalogProductGroupId, customizableCtaType, heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, showPromotion, videoTag);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -401,10 +384,11 @@ public class AdPreviewRequest   {
     sb.append("class AdPreviewRequest {\n");
     
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("    catalogProductGroupId: ").append(toIndentedString(catalogProductGroupId)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    customizableCtaType: ").append(toIndentedString(customizableCtaType)).append("\n");
     sb.append("    heroImageTitle: ").append(toIndentedString(heroImageTitle)).append("\n");
     sb.append("    heroImageUrl: ").append(toIndentedString(heroImageUrl)).append("\n");
@@ -412,6 +396,7 @@ public class AdPreviewRequest   {
     sb.append("    imageTag: ").append(toIndentedString(imageTag)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    preferredMediaType: ").append(toIndentedString(preferredMediaType)).append("\n");
+    sb.append("    showPromotion: ").append(toIndentedString(showPromotion)).append("\n");
     sb.append("    videoTag: ").append(toIndentedString(videoTag)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -422,10 +407,7 @@ public class AdPreviewRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

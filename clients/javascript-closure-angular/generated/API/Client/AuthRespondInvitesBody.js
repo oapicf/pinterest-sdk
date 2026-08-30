@@ -7,7 +7,7 @@ goog.provide('API.Client.AuthRespondInvitesBody');
 API.Client.AuthRespondInvitesBody = function() {}
 
 /**
- * @type {!Array<!API.Client.AuthRespondInvitesBody_invites_inner>}
+ * @type {!Array<!API.Client.AuthRespondInvitesBodyItem>}
  * @export
  */
 API.Client.AuthRespondInvitesBody.prototype.invites;

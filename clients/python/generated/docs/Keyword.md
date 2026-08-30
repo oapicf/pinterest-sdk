@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bid** | **int** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
-**match_type** | [**MatchTypeResponse**](MatchTypeResponse.md) |  | 
-**value** | **str** | Keyword value (120 chars max). | 
 **archived** | **bool** |  | [optional] 
-**id** | **str** | Keyword ID . | [optional] 
-**parent_id** | **str** | Keyword parent entity ID (advertiser, campaign, ad group). | [optional] 
-**parent_type** | **str** | Parent entity type | [optional] 
-**type** | **str** | Always keyword | [optional] 
+**bid** | **int** | **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
+**id** | **str** | Keyword ID . | 
+**match_type** | [**MatchType**](MatchType.md) | Keyword [match type](/docs/api-features/targeting-overview/) | 
+**parent_id** | **str** | Keyword parent entity ID (advertiser, campaign, ad group). | [readonly] 
+**parent_type** | **str** | Parent entity type (advertiser, campaign, ad group). | [optional] [readonly] 
+**type** | **str** | Always keyword | [optional] [readonly] 
+**value** | **str** | Keyword value (120 chars max). | 
 
 ## Example
 

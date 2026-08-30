@@ -54,11 +54,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
-	/*! \brief Get List of employers.
+	/*! \brief Get 
 	 */
 	std::list<UserBusinessRoleBinding> getItems();
 
-	/*! \brief Set List of employers.
+	/*! \brief Set 
 	 */
 	void setItems(std::list <UserBusinessRoleBinding> items);
 

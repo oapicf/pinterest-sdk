@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdAccountCountriesGet200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdAccountCountriesGet200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdAccountsCountry = openapi_server.resourceTypes.AdAccountsCountry
+}
+resourceTypes {
+
+  AdAccountCountriesGet200Response {
+    title = AdAccountCountriesGet200Response
+    description = AdAccountCountriesGet200Response
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = AdAccountsCountry
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdAccountCountriesGet200Response {
+    title = AdAccountCountriesGet200Response
+    description = AdAccountCountriesGet200Response
+    implements = openapi_server.resourceTypes.AdAccountCountriesGet200Response
+
+  }
+}

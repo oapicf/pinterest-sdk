@@ -27,6 +27,8 @@ static conversion_events_user_data_properties_t *conversion_events_user_data_pro
     if (!conversion_events_user_data_properties_local_var) {
         return NULL;
     }
+    memset(conversion_events_user_data_properties_local_var, 0, sizeof(conversion_events_user_data_properties_t));
+    conversion_events_user_data_properties_local_var->_library_owned = 1;
     conversion_events_user_data_properties_local_var->click_id = click_id;
     conversion_events_user_data_properties_local_var->client_ip_address = client_ip_address;
     conversion_events_user_data_properties_local_var->client_user_agent = client_user_agent;
@@ -43,8 +45,6 @@ static conversion_events_user_data_properties_t *conversion_events_user_data_pro
     conversion_events_user_data_properties_local_var->ph = ph;
     conversion_events_user_data_properties_local_var->st = st;
     conversion_events_user_data_properties_local_var->zp = zp;
-
-    conversion_events_user_data_properties_local_var->_library_owned = 1;
     return conversion_events_user_data_properties_local_var;
 }
 
@@ -66,7 +66,7 @@ __attribute__((deprecated)) conversion_events_user_data_properties_t *conversion
     list_t *st,
     list_t *zp
     ) {
-    return conversion_events_user_data_properties_create_internal (
+    conversion_events_user_data_properties_t *result = conversion_events_user_data_properties_create_internal (
         click_id,
         client_ip_address,
         client_user_agent,
@@ -84,6 +84,9 @@ __attribute__((deprecated)) conversion_events_user_data_properties_t *conversion
         st,
         zp
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void conversion_events_user_data_properties_free(conversion_events_user_data_properties_t *conversion_events_user_data_properties) {
@@ -448,6 +451,12 @@ conversion_events_user_data_properties_t *conversion_events_user_data_properties
 
     conversion_events_user_data_properties_t *conversion_events_user_data_properties_local_var = NULL;
 
+    char *click_id_local_str = NULL;
+
+    char *client_ip_address_local_str = NULL;
+
+    char *client_user_agent_local_str = NULL;
+
     // define the local list for conversion_events_user_data_properties->country
     list_t *countryList = NULL;
 
@@ -474,6 +483,8 @@ conversion_events_user_data_properties_t *conversion_events_user_data_properties
 
     // define the local list for conversion_events_user_data_properties->ln
     list_t *lnList = NULL;
+
+    char *partner_id_local_str = NULL;
 
     // define the local list for conversion_events_user_data_properties->ph
     list_t *phList = NULL;
@@ -797,10 +808,15 @@ conversion_events_user_data_properties_t *conversion_events_user_data_properties
     }
 
 
+    if (click_id && !cJSON_IsNull(click_id)) click_id_local_str = strdup(click_id->valuestring);
+    if (client_ip_address && !cJSON_IsNull(client_ip_address)) client_ip_address_local_str = strdup(client_ip_address->valuestring);
+    if (client_user_agent && !cJSON_IsNull(client_user_agent)) client_user_agent_local_str = strdup(client_user_agent->valuestring);
+    if (partner_id && !cJSON_IsNull(partner_id)) partner_id_local_str = strdup(partner_id->valuestring);
+
     conversion_events_user_data_properties_local_var = conversion_events_user_data_properties_create_internal (
-        click_id && !cJSON_IsNull(click_id) ? strdup(click_id->valuestring) : NULL,
-        client_ip_address && !cJSON_IsNull(client_ip_address) ? strdup(client_ip_address->valuestring) : NULL,
-        client_user_agent && !cJSON_IsNull(client_user_agent) ? strdup(client_user_agent->valuestring) : NULL,
+        click_id_local_str,
+        client_ip_address_local_str,
+        client_user_agent_local_str,
         country ? countryList : NULL,
         ct ? ctList : NULL,
         db ? dbList : NULL,
@@ -810,14 +826,30 @@ conversion_events_user_data_properties_t *conversion_events_user_data_properties
         ge ? geList : NULL,
         hashed_maids ? hashed_maidsList : NULL,
         ln ? lnList : NULL,
-        partner_id && !cJSON_IsNull(partner_id) ? strdup(partner_id->valuestring) : NULL,
+        partner_id_local_str,
         ph ? phList : NULL,
         st ? stList : NULL,
         zp ? zpList : NULL
         );
 
+    if (!conversion_events_user_data_properties_local_var) {
+        goto end;
+    }
+
     return conversion_events_user_data_properties_local_var;
 end:
+    if (click_id_local_str) {
+        free(click_id_local_str);
+        click_id_local_str = NULL;
+    }
+    if (client_ip_address_local_str) {
+        free(client_ip_address_local_str);
+        client_ip_address_local_str = NULL;
+    }
+    if (client_user_agent_local_str) {
+        free(client_user_agent_local_str);
+        client_user_agent_local_str = NULL;
+    }
     if (countryList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, countryList) {
@@ -898,6 +930,10 @@ end:
         }
         list_freeList(lnList);
         lnList = NULL;
+    }
+    if (partner_id_local_str) {
+        free(partner_id_local_str);
+        partner_id_local_str = NULL;
     }
     if (phList) {
         listEntry_t *listEntry = NULL;

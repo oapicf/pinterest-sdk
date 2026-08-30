@@ -23,7 +23,7 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 ### Example
 
 ```bash
- adAccountsAudiencesSharedAccountsList ad_account_id=value  audience_id=value  account_type=value  page_size=value  bookmark=value
+ adAccountsAudiencesSharedAccountsList  audience_id=value  account_type=value ad_account_id=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -31,11 +31,12 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **audienceId** | **string** | Unique identifier of the audience to use to filter the results. | [default to null]
  **accountType** | [**AudienceAccountType**](.md) | Filter accounts by account type. | [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -57,14 +58,12 @@ Name | Type | Description  | Notes
 
 List accounts with access to an audience owned by a business
 
-List all ad accounts and/or businesses that have access to a specific audience.
-The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business.
-If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
+List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
 
 ### Example
 
 ```bash
- businessAccountAudiencesSharedAccountsList business_id=value  audience_id=value  account_type=value  page_size=value  bookmark=value
+ businessAccountAudiencesSharedAccountsList business_id=value  audience_id=value  account_type=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -75,8 +74,9 @@ Name | Type | Description  | Notes
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
  **audienceId** | **string** | Unique identifier of the audience to use to filter the results. | [default to null]
  **accountType** | [**AudienceAccountType**](.md) | Filter accounts by account type. | [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -103,7 +103,7 @@ Get a list of received audiences for the given business.
 ### Example
 
 ```bash
- sharedAudiencesForBusinessList business_id=value  bookmark=value  order=value  page_size=value
+ sharedAudiencesForBusinessList business_id=value  order=value  bookmark=value  page_size=value
 ```
 
 ### Parameters
@@ -112,15 +112,14 @@ Get a list of received audiences for the given business.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
+ **order** | [**Order**](.md) | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
-by ID. Note that higher-value IDs are associated with more-recently added
-items. | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**AudiencesList200Response**](AudiencesList200Response.md)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -138,7 +137,9 @@ items. | [optional] [default to null]
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -152,11 +153,11 @@ From an ad account, share a specific audience with another ad account, or revoke
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **sharedAudience** | [**SharedAudience**](SharedAudience.md) |  |
+ **adAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md) |  |
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -174,7 +175,9 @@ Name | Type | Description  | Notes
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -188,11 +191,11 @@ From an ad account, share a specific audience with a business account, or revoke
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md) |  |
+ **adAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md) |  |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -210,7 +213,12 @@ Name | Type | Description  | Notes
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.
+
+- If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.
+- If the business is the recipient of the audience, it can share with any of its owned ad accounts.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -224,11 +232,11 @@ From a business, share a specific audience with other ad account(s), or revoke a
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **sharedAudience** | [**SharedAudience**](SharedAudience.md) |  |
+ **businessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md) |  |
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -246,7 +254,9 @@ Name | Type | Description  | Notes
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -260,11 +270,11 @@ From a business, share a specific audience with another business account, or rev
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string** | Unique identifier of the requesting business. | [default to null]
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md) |  |
+ **businessToBusinessSharedAudienceUpdateWithRequiredBody** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md) |  |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

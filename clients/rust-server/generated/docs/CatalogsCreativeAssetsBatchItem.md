@@ -1,0 +1,12 @@
+# CatalogsCreativeAssetsBatchItem
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**attributes** | [***models::CatalogsUpdatableCreativeAssetsAttributes**](CatalogsUpdatableCreativeAssetsAttributes.md) |  | 
+**creative_assets_id** | **String** | The catalog creative assets id in the merchant namespace | 
+**operation** | [***models::AdvancedAuctionItemsSubmitDeleteRecordOperation**](AdvancedAuctionItemsSubmitDeleteRecord_operation.md) |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

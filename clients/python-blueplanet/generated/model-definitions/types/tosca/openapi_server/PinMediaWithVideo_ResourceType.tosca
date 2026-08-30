@@ -47,6 +47,11 @@ resourceTypes {
           description = "Video url (720p).  **Note:** This field is limited and not available to all apps."
           optional = false
         }
+        video_url_hls {
+          type =  string
+          description = "Video url (HLS).  **Note:** This field is limited and not available to all apps."
+          optional = false
+        }
         width {
           type =  integer
           description = "Width (in pixels). Field maybe null after creation due to video processing time."

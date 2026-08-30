@@ -18,15 +18,7 @@ Name | Type | Description | Notes
 **googleProductCategory4** | **List&lt;String&gt;** |  |  [optional]
 **googleProductCategory5** | **List&lt;String&gt;** |  |  [optional]
 **googleProductCategory6** | **List&lt;String&gt;** |  |  [optional]
-**mediaType** | [**List&lt;MediaTypeEnum&gt;**](#List&lt;MediaTypeEnum&gt;) |  |  [optional]
-
-
-## Enum: List&lt;MediaTypeEnum&gt;
-
-Name | Value
----- | -----
-IMAGE | &quot;IMAGE&quot;
-VIDEO | &quot;VIDEO&quot;
+**mediaType** | [**List&lt;MediaType&gt;**](MediaType.md) |  |  [optional]
 
 
 

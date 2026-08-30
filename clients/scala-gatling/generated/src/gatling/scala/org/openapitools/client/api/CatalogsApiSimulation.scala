@@ -74,11 +74,11 @@ class CatalogsApiSimulation extends Simulation {
         .feed(catalogs/available_filter_valuesQUERYFeeder)
         .exec(http("catalogsAvailableFilterValues")
         .httpRequest("GET","/catalogs/available_filter_values")
-        .queryParam("country","${country}")
-        .queryParam("catalog_id","${catalog_id}")
         .queryParam("language","${language}")
-        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("feed_id","${feed_id}")
+        .queryParam("country","${country}")
+        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("catalog_id","${catalog_id}")
 )
 
     // Run scncatalogsAvailableFilterValues with warm up and reach a constant rate for entire duration

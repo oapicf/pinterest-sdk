@@ -12,9 +12,6 @@ import { BoardSection } from './boardSection';
 
 export interface BoardSectionsList200Response { 
     bookmark?: string | null;
-    /**
-     * Board sections
-     */
     items: Array<BoardSection>;
 }
 

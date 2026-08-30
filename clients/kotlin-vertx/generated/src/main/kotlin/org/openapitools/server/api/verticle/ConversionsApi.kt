@@ -1,7 +1,9 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.AdvertiserDefinedEventsResponse
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.AdvertiserDefinedEventsCreate200Response
+import org.openapitools.server.api.model.AdvertiserDefinedEventsCreateRequest
+import org.openapitools.server.api.model.AdvertiserDefinedEventsGet200Response
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -18,9 +20,18 @@ import java.util.Map
 
 interface ConversionsApi  {
     fun init(vertx:Vertx,config:JsonObject)
+    /* advertiserDefinedEventsCreate
+     * Create advertiser defined events */
+    suspend fun advertiserDefinedEventsCreate(adAccountId:kotlin.String?,advertiserDefinedEventsCreateRequest:AdvertiserDefinedEventsCreateRequest?,context:OperationRequest):Response<AdvertiserDefinedEventsCreate200Response>
+    /* advertiserDefinedEventsDelete
+     * Delete advertiser defined events */
+    suspend fun advertiserDefinedEventsDelete(adAccountId:kotlin.String?,eventNames:kotlin.Array<kotlin.String>?,context:OperationRequest):Response<AdvertiserDefinedEventsCreate200Response>
     /* advertiserDefinedEventsGet
      * Get advertiser defined events */
-    suspend fun advertiserDefinedEventsGet(adAccountId:kotlin.String?,context:OperationRequest):Response<AdvertiserDefinedEventsResponse>
+    suspend fun advertiserDefinedEventsGet(adAccountId:kotlin.String?,context:OperationRequest):Response<AdvertiserDefinedEventsGet200Response>
+    /* advertiserDefinedEventsUpdate
+     * Update advertiser defined events */
+    suspend fun advertiserDefinedEventsUpdate(adAccountId:kotlin.String?,advertiserDefinedEventsCreateRequest:AdvertiserDefinedEventsCreateRequest?,context:OperationRequest):Response<AdvertiserDefinedEventsCreate200Response>
     companion object {
         const val address = "ConversionsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

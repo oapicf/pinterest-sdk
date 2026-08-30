@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,13 +23,13 @@ type AdsCreditDiscountsResponse struct {
 	// True if the offer code is currently active.
 	Active *bool `json:"active,omitempty"`
 	// Advertiser ID the offer was applied to.
-	AdvertiserId *string `json:"advertiser_id,omitempty" validate:"regexp=^\\\\d+$"`
+	AdvertiserId *string `json:"advertiser_id,omitempty" validate:"regexp=^\\d+$"`
 	// Currency value for the discount.
 	DiscountCurrency NullableString `json:"discountCurrency,omitempty"`
-	// The discount applied in the offer’s currency value.
+	// The discount applied in the offer's currency value.
 	DiscountInMicroCurrency NullableFloat32 `json:"discountInMicroCurrency,omitempty"`
 	// The type of discount of this credit
-	DiscountType NullableString `json:"discountType,omitempty"`
+	DiscountType NullableAdsCreditDiscountType `json:"discountType,omitempty"`
 	// The credits left to spend.
 	RemainingDiscountInMicroCurrency NullableFloat32 `json:"remainingDiscountInMicroCurrency,omitempty"`
 	// Human readable title of the offer code.
@@ -202,9 +202,9 @@ func (o *AdsCreditDiscountsResponse) UnsetDiscountInMicroCurrency() {
 }
 
 // GetDiscountType returns the DiscountType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdsCreditDiscountsResponse) GetDiscountType() string {
+func (o *AdsCreditDiscountsResponse) GetDiscountType() AdsCreditDiscountType {
 	if o == nil || IsNil(o.DiscountType.Get()) {
-		var ret string
+		var ret AdsCreditDiscountType
 		return ret
 	}
 	return *o.DiscountType.Get()
@@ -213,7 +213,7 @@ func (o *AdsCreditDiscountsResponse) GetDiscountType() string {
 // GetDiscountTypeOk returns a tuple with the DiscountType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdsCreditDiscountsResponse) GetDiscountTypeOk() (*string, bool) {
+func (o *AdsCreditDiscountsResponse) GetDiscountTypeOk() (*AdsCreditDiscountType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -229,8 +229,8 @@ func (o *AdsCreditDiscountsResponse) HasDiscountType() bool {
 	return false
 }
 
-// SetDiscountType gets a reference to the given NullableString and assigns it to the DiscountType field.
-func (o *AdsCreditDiscountsResponse) SetDiscountType(v string) {
+// SetDiscountType gets a reference to the given NullableAdsCreditDiscountType and assigns it to the DiscountType field.
+func (o *AdsCreditDiscountsResponse) SetDiscountType(v AdsCreditDiscountType) {
 	o.DiscountType.Set(&v)
 }
 // SetDiscountTypeNil sets the value for DiscountType to be an explicit nil

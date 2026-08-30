@@ -117,155 +117,156 @@ class ItemAttributes {
     this.variantNames = const [],
     this.variantValues = const [],
     this.additionalImageLink = const [],
+    this.aiDisclosures = const [],
     this.imageLink = const [],
     this.videoLink,
   });
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage0Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage0Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage10Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage10Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage11Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage11Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage12Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage12Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage13Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage13Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage14Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage14Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage15Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage15Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage16Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage16Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage17Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage17Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage18Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage18Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage19Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage19Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage1Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage1Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage2Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage2Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage3Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage3Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage4Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage4Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage5Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage5Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage6Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage6Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage7Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage7Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage8Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage8Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adImage9Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+  /// Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
   String? adImage9Tag;
 
-  /// Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
+  /// Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.
   String? adLink;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adVideo0Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+  /// Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
   String? adVideo0Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adVideo1Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+  /// Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
   String? adVideo1Tag;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+  /// Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
   String? adVideo2Link;
 
-  /// <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+  /// Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
   String? adVideo2Tag;
 
-  /// Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
+  /// Set this attribute to TRUE if you're submitting items that are considered \"adult\". These will not be shown on Pinterest.
   bool? adult;
 
-  /// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+  /// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'.
   String? ageGroup;
 
   /// The deep link to the product on the Android app.
@@ -277,7 +278,7 @@ class ItemAttributes {
   ///
   String? androidDeepLink;
 
-  /// The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+  /// The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -298,40 +299,40 @@ class ItemAttributes {
   /// The primary color of the product.
   String? color;
 
-  /// The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
+  /// The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'.
   String? condition;
 
-  /// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+  /// <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
   String? customLabel0;
 
-  /// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+  /// <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
   String? customLabel1;
 
-  /// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+  /// <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
   String? customLabel2;
 
-  /// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+  /// <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
   String? customLabel3;
 
-  /// <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+  /// <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
   String? customLabel4;
 
-  /// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+  /// An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
   int? customNumber0;
 
-  /// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+  /// An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
   int? customNumber1;
 
-  /// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+  /// An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
   int? customNumber2;
 
-  /// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+  /// An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
   int? customNumber3;
 
-  /// an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+  /// An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
   int? customNumber4;
 
-  /// <p><= 10000 characters</p> <p>The description of the product.</p>
+  /// <= 10000 characters. The description of the product.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -346,7 +347,7 @@ class ItemAttributes {
   /// The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
   String? freeShippingLimit;
 
-  /// The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+  /// The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'.
   String? gender;
 
   /// The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
@@ -354,7 +355,7 @@ class ItemAttributes {
 
   UpdatableItemAttributesGtin? gtin;
 
-  /// <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
+  /// <= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -363,7 +364,7 @@ class ItemAttributes {
   ///
   String? id;
 
-  /// Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>
+  /// Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>
   String? installmentPrice;
 
   /// The deep link to the product on the iOS app.
@@ -375,13 +376,13 @@ class ItemAttributes {
   ///
   String? iosDeepLink;
 
-  /// <p><= 127 characters</p> <p>The parent ID of the product.</p>
+  /// <= 127 characters. The parent ID of the product.
   String? itemGroupId;
 
   /// The millisecond timestamp when the item was lastly modified by the merchant.
   int? lastUpdatedTime;
 
-  /// <p><= 511 characters</p> <p>The landing page for the product.</p>
+  /// <= 511 characters. The landing page for the product.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -393,7 +394,7 @@ class ItemAttributes {
   /// The material used to make the product.
   String? material;
 
-  /// The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
+  /// The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
   String? minAdPrice;
 
   /// The mobile-optimized version of your landing page. Must begin with http:// or https://.
@@ -411,7 +412,7 @@ class ItemAttributes {
   /// The description of the pattern used for the product.
   String? pattern;
 
-  /// The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
+  /// The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -420,13 +421,13 @@ class ItemAttributes {
   ///
   String? price;
 
-  /// <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
+  /// <= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \".
   String? productType;
 
   /// A unique identifier referencing the promotion associated with this catalog item.
   String? promotionId;
 
-  /// The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
+  /// The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\".
   String? salePrice;
 
   /// Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)
@@ -447,16 +448,16 @@ class ItemAttributes {
   /// The size of the product.
   String? size;
 
-  /// Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+  /// Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'.
   String? sizeSystem;
 
-  /// Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+  /// Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'.
   String? sizeType;
 
   /// Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
   String? tax;
 
-  /// <p><= 500 characters</p> <p>The name of the product.</p>
+  /// <= 500 characters. The name of the product.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -465,10 +466,10 @@ class ItemAttributes {
   ///
   String? title;
 
-  /// Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>
+  /// Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>
   String? unitPricingBaseMeasure;
 
-  /// Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>
+  /// Unit pricing total measure of the product. Expected format: <total_units> <unit_type>
   String? unitPricingMeasure;
 
   /// Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
@@ -477,13 +478,16 @@ class ItemAttributes {
   /// Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
   List<String>? variantValues;
 
-  /// <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>
+  /// <= 2000 characters. The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.
   List<String>? additionalImageLink;
 
-  /// <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p>
+  /// AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.
+  List<CatalogsAiContentDisclosure> aiDisclosures;
+
+  /// <= 2000 characters. The links to the main product images. Images should be at least 75x75 pixels to avoid errors. Must start with http:// or https://.
   List<String> imageLink;
 
-  /// <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+  /// <= 2,000 characters. Hosted link to the product video. File types must be .mp4, .mov or .m4v. File size cannot exceed 2GB.
   String? videoLink;
 
   @override
@@ -592,6 +596,7 @@ class ItemAttributes {
     _deepEquality.equals(other.variantNames, variantNames) &&
     _deepEquality.equals(other.variantValues, variantValues) &&
     _deepEquality.equals(other.additionalImageLink, additionalImageLink) &&
+    _deepEquality.equals(other.aiDisclosures, aiDisclosures) &&
     _deepEquality.equals(other.imageLink, imageLink) &&
     other.videoLink == videoLink;
 
@@ -702,11 +707,12 @@ class ItemAttributes {
     (variantNames == null ? 0 : variantNames!.hashCode) +
     (variantValues == null ? 0 : variantValues!.hashCode) +
     (additionalImageLink == null ? 0 : additionalImageLink!.hashCode) +
+    (aiDisclosures.hashCode) +
     (imageLink.hashCode) +
     (videoLink == null ? 0 : videoLink!.hashCode);
 
   @override
-  String toString() => 'ItemAttributes[adImage0Link=$adImage0Link, adImage0Tag=$adImage0Tag, adImage10Link=$adImage10Link, adImage10Tag=$adImage10Tag, adImage11Link=$adImage11Link, adImage11Tag=$adImage11Tag, adImage12Link=$adImage12Link, adImage12Tag=$adImage12Tag, adImage13Link=$adImage13Link, adImage13Tag=$adImage13Tag, adImage14Link=$adImage14Link, adImage14Tag=$adImage14Tag, adImage15Link=$adImage15Link, adImage15Tag=$adImage15Tag, adImage16Link=$adImage16Link, adImage16Tag=$adImage16Tag, adImage17Link=$adImage17Link, adImage17Tag=$adImage17Tag, adImage18Link=$adImage18Link, adImage18Tag=$adImage18Tag, adImage19Link=$adImage19Link, adImage19Tag=$adImage19Tag, adImage1Link=$adImage1Link, adImage1Tag=$adImage1Tag, adImage2Link=$adImage2Link, adImage2Tag=$adImage2Tag, adImage3Link=$adImage3Link, adImage3Tag=$adImage3Tag, adImage4Link=$adImage4Link, adImage4Tag=$adImage4Tag, adImage5Link=$adImage5Link, adImage5Tag=$adImage5Tag, adImage6Link=$adImage6Link, adImage6Tag=$adImage6Tag, adImage7Link=$adImage7Link, adImage7Tag=$adImage7Tag, adImage8Link=$adImage8Link, adImage8Tag=$adImage8Tag, adImage9Link=$adImage9Link, adImage9Tag=$adImage9Tag, adLink=$adLink, adVideo0Link=$adVideo0Link, adVideo0Tag=$adVideo0Tag, adVideo1Link=$adVideo1Link, adVideo1Tag=$adVideo1Tag, adVideo2Link=$adVideo2Link, adVideo2Tag=$adVideo2Tag, adult=$adult, ageGroup=$ageGroup, androidDeepLink=$androidDeepLink, availability=$availability, averageReviewRating=$averageReviewRating, brand=$brand, checkoutEnabled=$checkoutEnabled, color=$color, condition=$condition, customLabel0=$customLabel0, customLabel1=$customLabel1, customLabel2=$customLabel2, customLabel3=$customLabel3, customLabel4=$customLabel4, customNumber0=$customNumber0, customNumber1=$customNumber1, customNumber2=$customNumber2, customNumber3=$customNumber3, customNumber4=$customNumber4, description=$description, freeShippingLabel=$freeShippingLabel, freeShippingLimit=$freeShippingLimit, gender=$gender, googleProductCategory=$googleProductCategory, gtin=$gtin, id=$id, installmentPrice=$installmentPrice, iosDeepLink=$iosDeepLink, itemGroupId=$itemGroupId, lastUpdatedTime=$lastUpdatedTime, link=$link, material=$material, minAdPrice=$minAdPrice, mobileLink=$mobileLink, mpn=$mpn, numberOfRatings=$numberOfRatings, numberOfReviews=$numberOfReviews, pattern=$pattern, price=$price, productType=$productType, promotionId=$promotionId, salePrice=$salePrice, salePriceEffectiveDate=$salePriceEffectiveDate, shipping=$shipping, shippingHeight=$shippingHeight, shippingWeight=$shippingWeight, shippingWidth=$shippingWidth, size=$size, sizeSystem=$sizeSystem, sizeType=$sizeType, tax=$tax, title=$title, unitPricingBaseMeasure=$unitPricingBaseMeasure, unitPricingMeasure=$unitPricingMeasure, variantNames=$variantNames, variantValues=$variantValues, additionalImageLink=$additionalImageLink, imageLink=$imageLink, videoLink=$videoLink]';
+  String toString() => 'ItemAttributes[adImage0Link=$adImage0Link, adImage0Tag=$adImage0Tag, adImage10Link=$adImage10Link, adImage10Tag=$adImage10Tag, adImage11Link=$adImage11Link, adImage11Tag=$adImage11Tag, adImage12Link=$adImage12Link, adImage12Tag=$adImage12Tag, adImage13Link=$adImage13Link, adImage13Tag=$adImage13Tag, adImage14Link=$adImage14Link, adImage14Tag=$adImage14Tag, adImage15Link=$adImage15Link, adImage15Tag=$adImage15Tag, adImage16Link=$adImage16Link, adImage16Tag=$adImage16Tag, adImage17Link=$adImage17Link, adImage17Tag=$adImage17Tag, adImage18Link=$adImage18Link, adImage18Tag=$adImage18Tag, adImage19Link=$adImage19Link, adImage19Tag=$adImage19Tag, adImage1Link=$adImage1Link, adImage1Tag=$adImage1Tag, adImage2Link=$adImage2Link, adImage2Tag=$adImage2Tag, adImage3Link=$adImage3Link, adImage3Tag=$adImage3Tag, adImage4Link=$adImage4Link, adImage4Tag=$adImage4Tag, adImage5Link=$adImage5Link, adImage5Tag=$adImage5Tag, adImage6Link=$adImage6Link, adImage6Tag=$adImage6Tag, adImage7Link=$adImage7Link, adImage7Tag=$adImage7Tag, adImage8Link=$adImage8Link, adImage8Tag=$adImage8Tag, adImage9Link=$adImage9Link, adImage9Tag=$adImage9Tag, adLink=$adLink, adVideo0Link=$adVideo0Link, adVideo0Tag=$adVideo0Tag, adVideo1Link=$adVideo1Link, adVideo1Tag=$adVideo1Tag, adVideo2Link=$adVideo2Link, adVideo2Tag=$adVideo2Tag, adult=$adult, ageGroup=$ageGroup, androidDeepLink=$androidDeepLink, availability=$availability, averageReviewRating=$averageReviewRating, brand=$brand, checkoutEnabled=$checkoutEnabled, color=$color, condition=$condition, customLabel0=$customLabel0, customLabel1=$customLabel1, customLabel2=$customLabel2, customLabel3=$customLabel3, customLabel4=$customLabel4, customNumber0=$customNumber0, customNumber1=$customNumber1, customNumber2=$customNumber2, customNumber3=$customNumber3, customNumber4=$customNumber4, description=$description, freeShippingLabel=$freeShippingLabel, freeShippingLimit=$freeShippingLimit, gender=$gender, googleProductCategory=$googleProductCategory, gtin=$gtin, id=$id, installmentPrice=$installmentPrice, iosDeepLink=$iosDeepLink, itemGroupId=$itemGroupId, lastUpdatedTime=$lastUpdatedTime, link=$link, material=$material, minAdPrice=$minAdPrice, mobileLink=$mobileLink, mpn=$mpn, numberOfRatings=$numberOfRatings, numberOfReviews=$numberOfReviews, pattern=$pattern, price=$price, productType=$productType, promotionId=$promotionId, salePrice=$salePrice, salePriceEffectiveDate=$salePriceEffectiveDate, shipping=$shipping, shippingHeight=$shippingHeight, shippingWeight=$shippingWeight, shippingWidth=$shippingWidth, size=$size, sizeSystem=$sizeSystem, sizeType=$sizeType, tax=$tax, title=$title, unitPricingBaseMeasure=$unitPricingBaseMeasure, unitPricingMeasure=$unitPricingMeasure, variantNames=$variantNames, variantValues=$variantValues, additionalImageLink=$additionalImageLink, aiDisclosures=$aiDisclosures, imageLink=$imageLink, videoLink=$videoLink]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -1230,6 +1236,7 @@ class ItemAttributes {
     } else {
       json[r'additional_image_link'] = null;
     }
+      json[r'ai_disclosures'] = this.aiDisclosures;
       json[r'image_link'] = this.imageLink;
     if (this.videoLink != null) {
       json[r'video_link'] = this.videoLink;
@@ -1250,10 +1257,6 @@ class ItemAttributes {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ItemAttributes[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ItemAttributes[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -1370,6 +1373,7 @@ class ItemAttributes {
         additionalImageLink: json[r'additional_image_link'] is Iterable
             ? (json[r'additional_image_link'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        aiDisclosures: CatalogsAiContentDisclosure.listFromJson(json[r'ai_disclosures']),
         imageLink: json[r'image_link'] is Iterable
             ? (json[r'image_link'] as Iterable).cast<String>().toList(growable: false)
             : const [],

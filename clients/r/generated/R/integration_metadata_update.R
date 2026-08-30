@@ -1,0 +1,340 @@
+#' Create a new IntegrationMetadataUpdate
+#'
+#' @description
+#' Resource create or update operation model.
+#'
+#' @docType class
+#' @title IntegrationMetadataUpdate
+#' @description IntegrationMetadataUpdate Class
+#' @format An \code{R6Class} generator object
+#' @field additional_id_1  character [optional]
+#' @field connected_advertiser_id  character [optional]
+#' @field connected_lba_id  character [optional]
+#' @field connected_merchant_id  character [optional]
+#' @field connected_tag_id  character [optional]
+#' @field partner_access_token  character [optional]
+#' @field partner_access_token_expiry  numeric [optional]
+#' @field partner_metadata  character [optional]
+#' @field partner_primary_email  character [optional]
+#' @field partner_refresh_token  character [optional]
+#' @field partner_refresh_token_expiry  numeric [optional]
+#' @field scopes  character [optional]
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+IntegrationMetadataUpdate <- R6::R6Class(
+  "IntegrationMetadataUpdate",
+  public = list(
+    `additional_id_1` = NULL,
+    `connected_advertiser_id` = NULL,
+    `connected_lba_id` = NULL,
+    `connected_merchant_id` = NULL,
+    `connected_tag_id` = NULL,
+    `partner_access_token` = NULL,
+    `partner_access_token_expiry` = NULL,
+    `partner_metadata` = NULL,
+    `partner_primary_email` = NULL,
+    `partner_refresh_token` = NULL,
+    `partner_refresh_token_expiry` = NULL,
+    `scopes` = NULL,
+
+    #' @description
+    #' Initialize a new IntegrationMetadataUpdate class.
+    #'
+    #' @param additional_id_1 additional_id_1
+    #' @param connected_advertiser_id connected_advertiser_id
+    #' @param connected_lba_id connected_lba_id
+    #' @param connected_merchant_id connected_merchant_id
+    #' @param connected_tag_id connected_tag_id
+    #' @param partner_access_token partner_access_token
+    #' @param partner_access_token_expiry partner_access_token_expiry
+    #' @param partner_metadata partner_metadata
+    #' @param partner_primary_email partner_primary_email
+    #' @param partner_refresh_token partner_refresh_token
+    #' @param partner_refresh_token_expiry partner_refresh_token_expiry
+    #' @param scopes scopes
+    #' @param ... Other optional arguments.
+    initialize = function(`additional_id_1` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_merchant_id` = NULL, `connected_tag_id` = NULL, `partner_access_token` = NULL, `partner_access_token_expiry` = NULL, `partner_metadata` = NULL, `partner_primary_email` = NULL, `partner_refresh_token` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, ...) {
+      if (!is.null(`additional_id_1`)) {
+        if (!(is.character(`additional_id_1`) && length(`additional_id_1`) == 1)) {
+          stop(paste("Error! Invalid data for `additional_id_1`. Must be a string:", `additional_id_1`))
+        }
+        self$`additional_id_1` <- `additional_id_1`
+      }
+      if (!is.null(`connected_advertiser_id`)) {
+        if (!(is.character(`connected_advertiser_id`) && length(`connected_advertiser_id`) == 1)) {
+          stop(paste("Error! Invalid data for `connected_advertiser_id`. Must be a string:", `connected_advertiser_id`))
+        }
+        self$`connected_advertiser_id` <- `connected_advertiser_id`
+      }
+      if (!is.null(`connected_lba_id`)) {
+        if (!(is.character(`connected_lba_id`) && length(`connected_lba_id`) == 1)) {
+          stop(paste("Error! Invalid data for `connected_lba_id`. Must be a string:", `connected_lba_id`))
+        }
+        self$`connected_lba_id` <- `connected_lba_id`
+      }
+      if (!is.null(`connected_merchant_id`)) {
+        if (!(is.character(`connected_merchant_id`) && length(`connected_merchant_id`) == 1)) {
+          stop(paste("Error! Invalid data for `connected_merchant_id`. Must be a string:", `connected_merchant_id`))
+        }
+        self$`connected_merchant_id` <- `connected_merchant_id`
+      }
+      if (!is.null(`connected_tag_id`)) {
+        if (!(is.character(`connected_tag_id`) && length(`connected_tag_id`) == 1)) {
+          stop(paste("Error! Invalid data for `connected_tag_id`. Must be a string:", `connected_tag_id`))
+        }
+        self$`connected_tag_id` <- `connected_tag_id`
+      }
+      if (!is.null(`partner_access_token`)) {
+        if (!(is.character(`partner_access_token`) && length(`partner_access_token`) == 1)) {
+          stop(paste("Error! Invalid data for `partner_access_token`. Must be a string:", `partner_access_token`))
+        }
+        self$`partner_access_token` <- `partner_access_token`
+      }
+      if (!is.null(`partner_access_token_expiry`)) {
+        self$`partner_access_token_expiry` <- `partner_access_token_expiry`
+      }
+      if (!is.null(`partner_metadata`)) {
+        if (!(is.character(`partner_metadata`) && length(`partner_metadata`) == 1)) {
+          stop(paste("Error! Invalid data for `partner_metadata`. Must be a string:", `partner_metadata`))
+        }
+        self$`partner_metadata` <- `partner_metadata`
+      }
+      if (!is.null(`partner_primary_email`)) {
+        if (!(is.character(`partner_primary_email`) && length(`partner_primary_email`) == 1)) {
+          stop(paste("Error! Invalid data for `partner_primary_email`. Must be a string:", `partner_primary_email`))
+        }
+        self$`partner_primary_email` <- `partner_primary_email`
+      }
+      if (!is.null(`partner_refresh_token`)) {
+        if (!(is.character(`partner_refresh_token`) && length(`partner_refresh_token`) == 1)) {
+          stop(paste("Error! Invalid data for `partner_refresh_token`. Must be a string:", `partner_refresh_token`))
+        }
+        self$`partner_refresh_token` <- `partner_refresh_token`
+      }
+      if (!is.null(`partner_refresh_token_expiry`)) {
+        self$`partner_refresh_token_expiry` <- `partner_refresh_token_expiry`
+      }
+      if (!is.null(`scopes`)) {
+        if (!(is.character(`scopes`) && length(`scopes`) == 1)) {
+          stop(paste("Error! Invalid data for `scopes`. Must be a string:", `scopes`))
+        }
+        self$`scopes` <- `scopes`
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return IntegrationMetadataUpdate as a base R list.
+    #' @examples
+    #' # convert array of IntegrationMetadataUpdate (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert IntegrationMetadataUpdate to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      IntegrationMetadataUpdateObject <- list()
+      if (!is.null(self$`additional_id_1`)) {
+        IntegrationMetadataUpdateObject[["additional_id_1"]] <-
+          self$`additional_id_1`
+      }
+      if (!is.null(self$`connected_advertiser_id`)) {
+        IntegrationMetadataUpdateObject[["connected_advertiser_id"]] <-
+          self$`connected_advertiser_id`
+      }
+      if (!is.null(self$`connected_lba_id`)) {
+        IntegrationMetadataUpdateObject[["connected_lba_id"]] <-
+          self$`connected_lba_id`
+      }
+      if (!is.null(self$`connected_merchant_id`)) {
+        IntegrationMetadataUpdateObject[["connected_merchant_id"]] <-
+          self$`connected_merchant_id`
+      }
+      if (!is.null(self$`connected_tag_id`)) {
+        IntegrationMetadataUpdateObject[["connected_tag_id"]] <-
+          self$`connected_tag_id`
+      }
+      if (!is.null(self$`partner_access_token`)) {
+        IntegrationMetadataUpdateObject[["partner_access_token"]] <-
+          self$`partner_access_token`
+      }
+      if (!is.null(self$`partner_access_token_expiry`)) {
+        IntegrationMetadataUpdateObject[["partner_access_token_expiry"]] <-
+          self$`partner_access_token_expiry`
+      }
+      if (!is.null(self$`partner_metadata`)) {
+        IntegrationMetadataUpdateObject[["partner_metadata"]] <-
+          self$`partner_metadata`
+      }
+      if (!is.null(self$`partner_primary_email`)) {
+        IntegrationMetadataUpdateObject[["partner_primary_email"]] <-
+          self$`partner_primary_email`
+      }
+      if (!is.null(self$`partner_refresh_token`)) {
+        IntegrationMetadataUpdateObject[["partner_refresh_token"]] <-
+          self$`partner_refresh_token`
+      }
+      if (!is.null(self$`partner_refresh_token_expiry`)) {
+        IntegrationMetadataUpdateObject[["partner_refresh_token_expiry"]] <-
+          self$`partner_refresh_token_expiry`
+      }
+      if (!is.null(self$`scopes`)) {
+        IntegrationMetadataUpdateObject[["scopes"]] <-
+          self$`scopes`
+      }
+      return(IntegrationMetadataUpdateObject)
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of IntegrationMetadataUpdate
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of IntegrationMetadataUpdate
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`additional_id_1`)) {
+        self$`additional_id_1` <- this_object$`additional_id_1`
+      }
+      if (!is.null(this_object$`connected_advertiser_id`)) {
+        self$`connected_advertiser_id` <- this_object$`connected_advertiser_id`
+      }
+      if (!is.null(this_object$`connected_lba_id`)) {
+        self$`connected_lba_id` <- this_object$`connected_lba_id`
+      }
+      if (!is.null(this_object$`connected_merchant_id`)) {
+        self$`connected_merchant_id` <- this_object$`connected_merchant_id`
+      }
+      if (!is.null(this_object$`connected_tag_id`)) {
+        self$`connected_tag_id` <- this_object$`connected_tag_id`
+      }
+      if (!is.null(this_object$`partner_access_token`)) {
+        self$`partner_access_token` <- this_object$`partner_access_token`
+      }
+      if (!is.null(this_object$`partner_access_token_expiry`)) {
+        self$`partner_access_token_expiry` <- this_object$`partner_access_token_expiry`
+      }
+      if (!is.null(this_object$`partner_metadata`)) {
+        self$`partner_metadata` <- this_object$`partner_metadata`
+      }
+      if (!is.null(this_object$`partner_primary_email`)) {
+        self$`partner_primary_email` <- this_object$`partner_primary_email`
+      }
+      if (!is.null(this_object$`partner_refresh_token`)) {
+        self$`partner_refresh_token` <- this_object$`partner_refresh_token`
+      }
+      if (!is.null(this_object$`partner_refresh_token_expiry`)) {
+        self$`partner_refresh_token_expiry` <- this_object$`partner_refresh_token_expiry`
+      }
+      if (!is.null(this_object$`scopes`)) {
+        self$`scopes` <- this_object$`scopes`
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return IntegrationMetadataUpdate in JSON format
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of IntegrationMetadataUpdate
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of IntegrationMetadataUpdate
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      self$`additional_id_1` <- this_object$`additional_id_1`
+      self$`connected_advertiser_id` <- this_object$`connected_advertiser_id`
+      self$`connected_lba_id` <- this_object$`connected_lba_id`
+      self$`connected_merchant_id` <- this_object$`connected_merchant_id`
+      self$`connected_tag_id` <- this_object$`connected_tag_id`
+      self$`partner_access_token` <- this_object$`partner_access_token`
+      self$`partner_access_token_expiry` <- this_object$`partner_access_token_expiry`
+      self$`partner_metadata` <- this_object$`partner_metadata`
+      self$`partner_primary_email` <- this_object$`partner_primary_email`
+      self$`partner_refresh_token` <- this_object$`partner_refresh_token`
+      self$`partner_refresh_token_expiry` <- this_object$`partner_refresh_token_expiry`
+      self$`scopes` <- this_object$`scopes`
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to IntegrationMetadataUpdate and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of IntegrationMetadataUpdate
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# IntegrationMetadataUpdate$unlock()
+#
+## Below is an example to define the print function
+# IntegrationMetadataUpdate$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# IntegrationMetadataUpdate$lock()
+

@@ -126,7 +126,7 @@ AdsAnalyticsMetricsFilter::getField()
 }
 
 void
-AdsAnalyticsMetricsFilter::setField(AdsAnalyticsFilterColumn  field)
+AdsAnalyticsMetricsFilter::setField(AdsAnalyticsFilterColumn field)
 {
 	this->field = field;
 }
@@ -138,7 +138,7 @@ AdsAnalyticsMetricsFilter::getROperator()
 }
 
 void
-AdsAnalyticsMetricsFilter::setROperator(AdsAnalyticsFilterOperator  r_operator)
+AdsAnalyticsMetricsFilter::setROperator(AdsAnalyticsFilterOperator r_operator)
 {
 	this->r_operator = r_operator;
 }
@@ -150,7 +150,7 @@ AdsAnalyticsMetricsFilter::getValues()
 }
 
 void
-AdsAnalyticsMetricsFilter::setValues(std::list <long> values)
+AdsAnalyticsMetricsFilter::setValues(std::list<long> values)
 {
 	this->values = values;
 }

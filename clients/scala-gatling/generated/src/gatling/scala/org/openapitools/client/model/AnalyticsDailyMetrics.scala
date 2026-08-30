@@ -6,7 +6,6 @@ case class AnalyticsDailyMetrics (
     _dataStatus: Option[DataStatus],
     /* Metrics date (UTC): YYYY-MM-DD. */
     _date: Option[String],
-    /* The metric name and daily value for each requested metric */
     _metrics: Option[Map[String, Number]]
 )
 object AnalyticsDailyMetrics {

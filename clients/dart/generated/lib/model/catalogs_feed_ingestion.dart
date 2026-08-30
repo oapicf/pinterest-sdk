@@ -19,12 +19,16 @@ class CatalogsFeedIngestion {
     required this.status,
   });
 
+  /// Timestamp of the feed ingestion.
   DateTime createdAt;
 
+  /// Catalog Feed id pertaining to the feed ingestion.
   String feedId;
 
+  /// Unique identifier of a feed ingestion.
   String id;
 
+  /// Status of the feed ingestion.
   CatalogsFeedProcessingStatus status;
 
   @override
@@ -65,10 +69,14 @@ class CatalogsFeedIngestion {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsFeedIngestion[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsFeedIngestion[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'created_at'), 'Required key "CatalogsFeedIngestion[created_at]" is missing from JSON.');
+        assert(json[r'created_at'] != null, 'Required key "CatalogsFeedIngestion[created_at]" has a null value in JSON.');
+        assert(json.containsKey(r'feed_id'), 'Required key "CatalogsFeedIngestion[feed_id]" is missing from JSON.');
+        assert(json[r'feed_id'] != null, 'Required key "CatalogsFeedIngestion[feed_id]" has a null value in JSON.');
+        assert(json.containsKey(r'id'), 'Required key "CatalogsFeedIngestion[id]" is missing from JSON.');
+        assert(json[r'id'] != null, 'Required key "CatalogsFeedIngestion[id]" has a null value in JSON.');
+        assert(json.containsKey(r'status'), 'Required key "CatalogsFeedIngestion[status]" is missing from JSON.');
+        assert(json[r'status'] != null, 'Required key "CatalogsFeedIngestion[status]" has a null value in JSON.');
         return true;
       }());
 

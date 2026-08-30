@@ -7,9 +7,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { MetricsResponseDataItems } from './metricsResponseDataItems';
 
 
 export interface MetricsResponse { 
-    data?: Array<object>;
+    data?: Array<MetricsResponseDataItems>;
 }
 

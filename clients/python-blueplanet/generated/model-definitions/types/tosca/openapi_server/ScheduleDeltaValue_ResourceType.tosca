@@ -1,0 +1,62 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleDeltaValue"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleDeltaValue"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BidOptionsAgeBucketMultipliers = openapi_server.resourceTypes.BidOptionsAgeBucketMultipliers
+  BidOptionsAppTypeMultipliers = openapi_server.resourceTypes.BidOptionsAppTypeMultipliers
+  BidOptionsAudienceMultipliers = openapi_server.resourceTypes.BidOptionsAudienceMultipliers
+  BidOptionsGenderMultipliers = openapi_server.resourceTypes.BidOptionsGenderMultipliers
+  BidOptionsPlacementMultipliers = openapi_server.resourceTypes.BidOptionsPlacementMultipliers
+  ScheduleBidMultipliers = openapi_server.resourceTypes.ScheduleBidMultipliers
+}
+resourceTypes {
+
+  ScheduleDeltaValue {
+    title = ScheduleDeltaValue
+    description = ScheduleDeltaValue
+    derivedFrom = Root
+    properties {
+        age_bucket_multipliers {
+          type = BidOptionsAgeBucketMultipliers
+          description = ""
+          optional = false
+        }
+        app_type_multipliers {
+          type = BidOptionsAppTypeMultipliers
+          description = ""
+          optional = false
+        }
+        audience_multipliers {
+          type = array
+          items.type = BidOptionsAudienceMultipliers
+          description = ""
+          optional = false
+        }
+        gender_multipliers {
+          type = BidOptionsGenderMultipliers
+          description = ""
+          optional = false
+        }
+        placement_multipliers {
+          type = BidOptionsPlacementMultipliers
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleDeltaValue {
+    title = ScheduleDeltaValue
+    description = ScheduleDeltaValue
+    implements = openapi_server.resourceTypes.ScheduleDeltaValue
+
+  }
+}

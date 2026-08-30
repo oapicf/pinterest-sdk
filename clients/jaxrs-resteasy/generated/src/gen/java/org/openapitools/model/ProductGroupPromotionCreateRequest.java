@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ProductGroupPromotionCreateRequest   {
   
   private String adGroupId;
@@ -24,7 +24,7 @@ public class ProductGroupPromotionCreateRequest   {
    * ID of the Ad Group the Product Group Promotion belongs to.
    **/
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the Ad Group the Product Group Promotion belongs to.")
+  @ApiModelProperty(required = true, value = "ID of the Ad Group the Product Group Promotion belongs to.")
   @JsonProperty("ad_group_id")
   @NotNull
  @Pattern(regexp="^(AG)?\\d+$")  public String getAdGroupId() {
@@ -83,10 +83,7 @@ public class ProductGroupPromotionCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

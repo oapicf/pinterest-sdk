@@ -5,9 +5,9 @@ Summarized pin information
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** |  | 
 **AltText** | **string** |  | [optional] 
 **Description** | **string** |  | [optional] 
-**Id** | **string** |  | [optional] 
 **Link** | **string** |  | [optional] 
 **Media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **Title** | **string** |  | [optional] 

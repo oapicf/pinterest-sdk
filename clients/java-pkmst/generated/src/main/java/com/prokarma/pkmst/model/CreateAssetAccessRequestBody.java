@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.CreateAssetAccessRequestBodyAssetRequestsInner;
+import com.prokarma.pkmst.model.CreateAssetAccessRequestItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -19,18 +19,18 @@ import java.util.List;
  */
 @ApiModel(description = "An object containing a list of all the asset access requests")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateAssetAccessRequestBody   {
   @JsonProperty("asset_requests")
   
-  private List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests = new ArrayList<>();
+  private List<CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();
 
-  public CreateAssetAccessRequestBody assetRequests(List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public CreateAssetAccessRequestBody assetRequests(List<CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
     return this;
   }
 
-  public CreateAssetAccessRequestBody addAssetRequestsItem(CreateAssetAccessRequestBodyAssetRequestsInner assetRequestsItem) {
+  public CreateAssetAccessRequestBody addAssetRequestsItem(CreateAssetAccessRequestItem assetRequestsItem) {
     if (this.assetRequests == null) {
       this.assetRequests = new ArrayList<>();
     }
@@ -43,11 +43,11 @@ public class CreateAssetAccessRequestBody   {
    * @return assetRequests
    */
   @ApiModelProperty(required = true, value = "")
-  public List<CreateAssetAccessRequestBodyAssetRequestsInner> getAssetRequests() {
+  public List<CreateAssetAccessRequestItem> getAssetRequests() {
     return assetRequests;
   }
 
-  public void setAssetRequests(List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests) {
+  public void setAssetRequests(List<CreateAssetAccessRequestItem> assetRequests) {
     this.assetRequests = assetRequests;
   }
 
@@ -84,10 +84,7 @@ public class CreateAssetAccessRequestBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

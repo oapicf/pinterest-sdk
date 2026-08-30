@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemValidationErrors   {
   
   private CatalogsItemValidationDetails ADULT_INVALID;
@@ -39,9 +39,10 @@ public class CatalogsItemValidationErrors   {
   private CatalogsItemValidationDetails TITLE_MISSING;
 
   /**
+   * Item has an invalid adult value.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has an invalid adult value.")
   @JsonProperty("ADULT_INVALID")
   @Valid
   public CatalogsItemValidationDetails getADULTINVALID() {
@@ -52,9 +53,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Adword link contains too many characters.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Adword link contains too many characters.")
   @JsonProperty("ADWORDS_FORMAT_INVALID")
   @Valid
   public CatalogsItemValidationDetails getADWORDSFORMATINVALID() {
@@ -65,9 +67,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item is missing availability value in its product metadata, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item is missing availability value in its product metadata, this item will not be published.")
   @JsonProperty("AVAILABILITY_INVALID")
   @Valid
   public CatalogsItemValidationDetails getAVAILABILITYINVALID() {
@@ -78,9 +81,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item will not be published because it doesn&#39;t meet Pinterest&#39;s Merchant Guidelines.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.")
   @JsonProperty("BLOCKLISTED_IMAGE_SIGNATURE")
   @Valid
   public CatalogsItemValidationDetails getBLOCKLISTEDIMAGESIGNATURE() {
@@ -91,9 +95,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item is missing description in its product metadata, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item is missing description in its product metadata, this item will not be published.")
   @JsonProperty("DESCRIPTION_MISSING")
   @Valid
   public CatalogsItemValidationDetails getDESCRIPTIONMISSING() {
@@ -104,9 +109,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * This product is duplicated. The duplicate entry will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "This product is duplicated. The duplicate entry will not be published.")
   @JsonProperty("DUPLICATE_PRODUCTS")
   @Valid
   public CatalogsItemValidationDetails getDUPLICATEPRODUCTS() {
@@ -117,9 +123,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Image link is invalid.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Image link is invalid.")
   @JsonProperty("IMAGE_LINK_INVALID")
   @Valid
   public CatalogsItemValidationDetails getIMAGELINKINVALID() {
@@ -130,9 +137,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item has image_link URL that contains too many characters, so the item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has image_link URL that contains too many characters, so the item will not be published.")
   @JsonProperty("IMAGE_LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getIMAGELINKLENGTHTOOLONG() {
@@ -143,9 +151,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item is missing an image link URL in its product metadata, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item is missing an image link URL in its product metadata, this item will not be published.")
   @JsonProperty("IMAGE_LINK_MISSING")
   @Valid
   public CatalogsItemValidationDetails getIMAGELINKMISSING() {
@@ -156,9 +165,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Product link value doesn&#39;t match the verified domain associated with this account.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Product link value doesn't match the verified domain associated with this account.")
   @JsonProperty("INVALID_DOMAIN")
   @Valid
   public CatalogsItemValidationDetails getINVALIDDOMAIN() {
@@ -169,9 +179,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Main image can&#39;t be found.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Main image can't be found.")
   @JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
   @Valid
   public CatalogsItemValidationDetails getITEMMAINIMAGEDOWNLOADFAILURE() {
@@ -182,9 +193,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item is missing item id in its product metadata, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item is missing item id in its product metadata, this item will not be published.")
   @JsonProperty("ITEMID_MISSING")
   @Valid
   public CatalogsItemValidationDetails getITEMIDMISSING() {
@@ -195,9 +207,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Link is invalid.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Link is invalid.")
   @JsonProperty("LINK_FORMAT_INVALID")
   @Valid
   public CatalogsItemValidationDetails getLINKFORMATINVALID() {
@@ -208,9 +221,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Product link contains too many characters, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Product link contains too many characters, this item will not be published.")
   @JsonProperty("LINK_LENGTH_TOO_LONG")
   @Valid
   public CatalogsItemValidationDetails getLINKLENGTHTOOLONG() {
@@ -221,9 +235,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item has a list price formatting error, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a list price formatting error, this item will not be published.")
   @JsonProperty("LIST_PRICE_INVALID")
   @Valid
   public CatalogsItemValidationDetails getLISTPRICEINVALID() {
@@ -234,9 +249,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item exceed the maximum number of items per item group, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item exceed the maximum number of items per item group, this item will not be published.")
   @JsonProperty("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED")
   @Valid
   public CatalogsItemValidationDetails getMAXITEMSPERITEMGROUPEXCEEDED() {
@@ -247,9 +263,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item contains formating errors.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item contains formating errors.")
   @JsonProperty("PARSE_LINE_ERROR")
   @Valid
   public CatalogsItemValidationDetails getPARSELINEERROR() {
@@ -260,9 +277,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item will not be published because it doesn&#39;t meet Pinterest&#39;s Merchant Guidelines.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.")
   @JsonProperty("PINJOIN_CONTENT_UNSAFE")
   @Valid
   public CatalogsItemValidationDetails getPINJOINCONTENTUNSAFE() {
@@ -273,9 +291,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item price cannot be determined because the price, list price, and sale price are all different.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item price cannot be determined because the price, list price, and sale price are all different.")
   @JsonProperty("PRICE_CANNOT_BE_DETERMINED")
   @Valid
   public CatalogsItemValidationDetails getPRICECANNOTBEDETERMINED() {
@@ -286,9 +305,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Product is missing a price, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Product is missing a price, this item will not be published.")
   @JsonProperty("PRICE_MISSING")
   @Valid
   public CatalogsItemValidationDetails getPRICEMISSING() {
@@ -299,9 +319,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item is missing a link URL in its product metadata, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item is missing a link URL in its product metadata, this item will not be published.")
   @JsonProperty("PRODUCT_LINK_MISSING")
   @Valid
   public CatalogsItemValidationDetails getPRODUCTLINKMISSING() {
@@ -312,9 +333,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item has a price formatting error in its product metadata, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item has a price formatting error in its product metadata, this item will not be published.")
   @JsonProperty("PRODUCT_PRICE_INVALID")
   @Valid
   public CatalogsItemValidationDetails getPRODUCTPRICEINVALID() {
@@ -325,9 +347,10 @@ public class CatalogsItemValidationErrors   {
   }
 
   /**
+   * Item is missing title in its product metadata, this item will not be published.
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Item is missing title in its product metadata, this item will not be published.")
   @JsonProperty("TITLE_MISSING")
   @Valid
   public CatalogsItemValidationDetails getTITLEMISSING() {
@@ -414,10 +437,7 @@ public class CatalogsItemValidationErrors   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

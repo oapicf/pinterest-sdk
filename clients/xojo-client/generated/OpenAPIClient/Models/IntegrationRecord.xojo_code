@@ -42,7 +42,10 @@ Protected Class IntegrationRecord
 
 
 	#tag Property, Flags = &h0
-		id As Xoson.O.OptionalString
+		#tag Note
+			Integration record ID.
+		#tag EndNote
+		id As String
 	#tag EndProperty
 
 

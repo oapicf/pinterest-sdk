@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            CreateAssetGroupResponse
+            AssetGroupInput
         >
         BusinessAccessAssetsApi::
         assetGroup_create(
@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            CreateAssetGroupBody createAssetGroupBody
+            AssetGroupInputCreate assetGroupInputCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | createAssetGroupBody
+            // Body     | assetGroupInputCreate
 
 
 
-            payload = createAssetGroupBody.toJson().dump();
+            payload = assetGroupInputCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -57,15 +57,15 @@ using namespace Tiny;
 
 
 
-            CreateAssetGroupResponse obj(output_string);
+            AssetGroupInput obj(output_string);
 
 
-            Response<CreateAssetGroupResponse> response(obj, httpCode);
+            Response<AssetGroupInput> response(obj, httpCode);
             return response;
         }
 
         Response<
-            DeleteAssetGroupResponse
+            AssetGroupDeletion
         >
         BusinessAccessAssetsApi::
         assetGroup_delete(
@@ -73,7 +73,7 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            DeleteAssetGroupBody deleteAssetGroupBody
+            AssetGroupDeletionDelete assetGroupDeletionDelete
             
         )
         {
@@ -102,11 +102,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | DELETE
-            // Body     | deleteAssetGroupBody
+            // Body     | assetGroupDeletionDelete
 
 
 
-            payload = deleteAssetGroupBody.toJson().dump();
+            payload = assetGroupDeletionDelete.toJson().dump();
 
             int httpCode = sendRequest(url, "DELETE", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -117,15 +117,15 @@ using namespace Tiny;
 
 
 
-            DeleteAssetGroupResponse obj(output_string);
+            AssetGroupDeletion obj(output_string);
 
 
-            Response<DeleteAssetGroupResponse> response(obj, httpCode);
+            Response<AssetGroupDeletion> response(obj, httpCode);
             return response;
         }
 
         Response<
-            UpdateAssetGroupResponse
+            AssetGroupModification
         >
         BusinessAccessAssetsApi::
         assetGroup_update(
@@ -133,7 +133,7 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            UpdateAssetGroupBody updateAssetGroupBody
+            AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate
             
         )
         {
@@ -162,11 +162,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | updateAssetGroupBody
+            // Body     | assetGroupModificationReadOrUpdate
 
 
 
-            payload = updateAssetGroupBody.toJson().dump();
+            payload = assetGroupModificationReadOrUpdate.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -177,10 +177,10 @@ using namespace Tiny;
 
 
 
-            UpdateAssetGroupResponse obj(output_string);
+            AssetGroupModification obj(output_string);
 
 
-            Response<UpdateAssetGroupResponse> response(obj, httpCode);
+            Response<AssetGroupModification> response(obj, httpCode);
             return response;
         }
 
@@ -196,6 +196,9 @@ using namespace Tiny;
             std::string assetId
             , 
             
+            int startIndex
+            , 
+            
             bool fetchSystemUsers
             , 
             
@@ -203,9 +206,6 @@ using namespace Tiny;
             , 
             
             int pageSize
-            , 
-            
-            int startIndex
             
         )
         {
@@ -214,11 +214,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | fetchSystemUsers bookmark pageSize startIndex 
+            // Query    | startIndex fetchSystemUsers bookmark pageSize 
+            addQueryParam("start_index",startIndex);
             addQueryParam("fetch_system_users",fetchSystemUsers);
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
-            addQueryParam("start_index",startIndex);
 
             // Form     | 
 
@@ -263,7 +263,7 @@ using namespace Tiny;
         }
 
         Response<
-            Business_asset_partners_get_200_response
+            Business_asset_members_get_200_response
         >
         BusinessAccessAssetsApi::
         businessAssetPartners_get(
@@ -329,10 +329,10 @@ using namespace Tiny;
 
 
 
-            Business_asset_partners_get_200_response obj(output_string);
+            Business_asset_members_get_200_response obj(output_string);
 
 
-            Response<Business_asset_partners_get_200_response> response(obj, httpCode);
+            Response<Business_asset_members_get_200_response> response(obj, httpCode);
             return response;
         }
 
@@ -418,7 +418,7 @@ using namespace Tiny;
         }
 
         Response<
-            Business_member_assets_get_200_response
+            BusinessMemberAssetsGetResponse
         >
         BusinessAccessAssetsApi::
         businessMemberAssets_get(
@@ -435,6 +435,24 @@ using namespace Tiny;
             int startIndex
             , 
             
+            AssetSortBy sortBy
+            , 
+            
+            bool sortAscending
+            , 
+            
+            AssetSearchBy searchBy
+            , 
+            
+            std::string searchValue
+            , 
+            
+            AssetPermissionType assetPermissionType
+            , 
+            std::list<NonDraftEntityStatus> adAccountStatuses
+            
+            , 
+            
             std::string bookmark
             , 
             
@@ -447,9 +465,17 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | assetType startIndex bookmark pageSize 
+            // Query    | assetType startIndex sortBy sortAscending searchBy searchValue assetPermissionType adAccountStatuses bookmark pageSize 
             addQueryParam("asset_type",assetType);
             addQueryParam("start_index",startIndex);
+            addQueryParam("sort_by",sortBy);
+            addQueryParam("sort_ascending",sortAscending);
+            addQueryParam("search_by",searchBy);
+            addQueryParam("search_value",searchValue);
+            addQueryParam("asset_permission_type",assetPermissionType);
+            for (auto &x : adAccountStatuses){
+                addQueryParam("ad_account_statuses", std::string(x));
+            }
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
 
@@ -488,10 +514,10 @@ using namespace Tiny;
 
 
 
-            Business_member_assets_get_200_response obj(output_string);
+            BusinessMemberAssetsGetResponse obj(output_string);
 
 
-            Response<Business_member_assets_get_200_response> response(obj, httpCode);
+            Response<BusinessMemberAssetsGetResponse> response(obj, httpCode);
             return response;
         }
 
@@ -504,7 +530,7 @@ using namespace Tiny;
             std::string businessId
             , 
             
-            Business_members_asset_access_delete_request businessMembersAssetAccessDeleteRequest
+            BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody
             
         )
         {
@@ -533,11 +559,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | DELETE
-            // Body     | businessMembersAssetAccessDeleteRequest
+            // Body     | businessMembersAssetAccessDeleteBody
 
 
 
-            payload = businessMembersAssetAccessDeleteRequest.toJson().dump();
+            payload = businessMembersAssetAccessDeleteBody.toJson().dump();
 
             int httpCode = sendRequest(url, "DELETE", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -627,7 +653,7 @@ using namespace Tiny;
             std::string partnerId
             , 
             
-            PartnerType partnerType
+            std::string partnerType
             , 
             
             std::string assetType
@@ -636,10 +662,22 @@ using namespace Tiny;
             int startIndex
             , 
             
-            int pageSize
+            AssetSortBy sortBy
+            , 
+            
+            bool sortAscending
+            , 
+            
+            AssetSearchBy searchBy
+            , 
+            
+            std::string searchValue
             , 
             
             std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -648,12 +686,16 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | partnerType assetType startIndex pageSize bookmark 
+            // Query    | partnerType assetType startIndex sortBy sortAscending searchBy searchValue bookmark pageSize 
             addQueryParam("partner_type",partnerType);
             addQueryParam("asset_type",assetType);
             addQueryParam("start_index",startIndex);
-            addQueryParam("page_size",pageSize);
+            addQueryParam("sort_by",sortBy);
+            addQueryParam("sort_ascending",sortAscending);
+            addQueryParam("search_by",searchBy);
+            addQueryParam("search_value",searchValue);
             addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 
@@ -698,7 +740,7 @@ using namespace Tiny;
         }
 
         Response<
-            DeletePartnerAssetsResultsResponseArray
+            DeletePartnerAssetAccessResultsResponseArray
         >
         BusinessAccessAssetsApi::
         deletePartnerAssetAccessHandlerImpl(
@@ -750,10 +792,10 @@ using namespace Tiny;
 
 
 
-            DeletePartnerAssetsResultsResponseArray obj(output_string);
+            DeletePartnerAssetAccessResultsResponseArray obj(output_string);
 
 
-            Response<DeletePartnerAssetsResultsResponseArray> response(obj, httpCode);
+            Response<DeletePartnerAssetAccessResultsResponseArray> response(obj, httpCode);
             return response;
         }
 

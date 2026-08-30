@@ -54,19 +54,19 @@ public:
 
 	/*! \brief Set Array with the requested daily metric records
 	 */
-	void setDailyMetrics(std::list <AnalyticsDailyMetrics> daily_metrics);
+	void setDailyMetrics(std::list<AnalyticsDailyMetrics> daily_metrics);
 	/*! \brief Get The metric name and value over the requested period for each requested metric
 	 */
-	Map<std::string, std::string> getSummaryMetrics();
+	std::map<std::string, long> getSummaryMetrics();
 
 	/*! \brief Set The metric name and value over the requested period for each requested metric
 	 */
-	void setSummaryMetrics(Map <std::string, std::string> summary_metrics);
+	void setSummaryMetrics(std::map<std::string, long> summary_metrics);
 
 
     private:
     std::list<AnalyticsDailyMetrics> daily_metrics;
-    Map<std::string, std::string> summary_metrics;
+    std::map<std::string, long> summary_metrics;
 };
 }
 

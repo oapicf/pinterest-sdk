@@ -6,10 +6,10 @@ using namespace Tiny;
 
 AdvancedAuctionItem::AdvancedAuctionItem()
 {
+	bid_options = AdvancedAuctionBidOptions();
 	country = Country();
 	item_id = std::string();
 	language = Language();
-	bid_options = AdvancedAuctionBidOptions();
 }
 
 AdvancedAuctionItem::AdvancedAuctionItem(std::string jsonString)
@@ -26,6 +26,20 @@ void
 AdvancedAuctionItem::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
+
+    const char *bid_optionsKey = "bid_options";
+
+    if(object.has_key(bid_optionsKey))
+    {
+        bourne::json value = object[bid_optionsKey];
+
+
+
+
+        AdvancedAuctionBidOptions* obj = &bid_options;
+		obj->fromJson(value.dump());
+
+    }
 
     const char *countryKey = "country";
 
@@ -68,20 +82,6 @@ AdvancedAuctionItem::fromJson(std::string jsonObj)
 
     }
 
-    const char *bid_optionsKey = "bid_options";
-
-    if(object.has_key(bid_optionsKey))
-    {
-        bourne::json value = object[bid_optionsKey];
-
-
-
-
-        AdvancedAuctionBidOptions* obj = &bid_options;
-		obj->fromJson(value.dump());
-
-    }
-
 
 }
 
@@ -89,6 +89,13 @@ bourne::json
 AdvancedAuctionItem::toJson()
 {
     bourne::json object = bourne::json::object();
+
+
+
+
+
+
+	object["bid_options"] = getBidOptions().toJson();
 
 
 
@@ -112,15 +119,20 @@ AdvancedAuctionItem::toJson()
 	object["language"] = getLanguage().toJson();
 
 
-
-
-
-
-	object["bid_options"] = getBidOptions().toJson();
-
-
     return object;
 
+}
+
+AdvancedAuctionBidOptions
+AdvancedAuctionItem::getBidOptions()
+{
+	return bid_options;
+}
+
+void
+AdvancedAuctionItem::setBidOptions(AdvancedAuctionBidOptions bid_options)
+{
+	this->bid_options = bid_options;
 }
 
 Country
@@ -130,7 +142,7 @@ AdvancedAuctionItem::getCountry()
 }
 
 void
-AdvancedAuctionItem::setCountry(Country  country)
+AdvancedAuctionItem::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -142,7 +154,7 @@ AdvancedAuctionItem::getItemId()
 }
 
 void
-AdvancedAuctionItem::setItemId(std::string  item_id)
+AdvancedAuctionItem::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -154,21 +166,9 @@ AdvancedAuctionItem::getLanguage()
 }
 
 void
-AdvancedAuctionItem::setLanguage(Language  language)
+AdvancedAuctionItem::setLanguage(Language language)
 {
 	this->language = language;
-}
-
-AdvancedAuctionBidOptions
-AdvancedAuctionItem::getBidOptions()
-{
-	return bid_options;
-}
-
-void
-AdvancedAuctionItem::setBidOptions(AdvancedAuctionBidOptions  bid_options)
-{
-	this->bid_options = bid_options;
 }
 
 

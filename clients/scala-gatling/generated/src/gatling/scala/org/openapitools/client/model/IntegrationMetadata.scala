@@ -10,6 +10,7 @@ case class IntegrationMetadata (
     _connectedTagId: Option[String],
     _connectedUserId: Option[String],
     _createdTimestamp: Option[Number],
+    /* External business ID for the integration. */
     _externalBusinessId: Option[String],
     _id: Option[String],
     _partnerAccessTokenExpiry: Option[Number],

@@ -12,8 +12,10 @@ import org.joda.time.DateTime
 import CustomerListUploadCreateResponse._
 
 case class CustomerListUploadCreateResponse (
+  /* The Customer List Upload created. */
   customerListUpload: CustomerListUpload,
-s3MultipartUploadData: S3MultipartUploadData)
+/* Pre-signed upload URLs corresponding to each part of the upload. */
+  s3MultipartUploadData: S3MultipartUploadData)
 
 object CustomerListUploadCreateResponse {
   import DateTimeCodecs._

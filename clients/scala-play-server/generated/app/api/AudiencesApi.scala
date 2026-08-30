@@ -1,47 +1,47 @@
 package api
 
 import play.api.libs.json._
-import model.Audience
-import model.AudienceCreateRequest
-import model.AudienceUpdateRequest
+import model.AdAccountsAudience
+import model.AdAccountsAudienceCreate
+import model.AdAccountsAudienceUpdate
+import model.AudienceOwnershipType
 import model.AudiencesList200Response
 import model.Error
+import model.PaginationOrder
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 trait AudiencesApi {
   /**
     * Create audience
-    * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+    * Create a new audience for the ad account.
     * @param adAccountId Unique identifier of an ad account.
-    * @param audienceCreateRequest List of ads to create, size limit [1, 30]
     */
-  def audiencesCreate(adAccountId: String, audienceCreateRequest: AudienceCreateRequest): Audience
+  def audiencesCreate(adAccountId: String, adAccountsAudienceCreate: AdAccountsAudienceCreate): AdAccountsAudience
 
   /**
     * Get audience
     * Get a specific audience given the audience ID.
+    * @param audienceId Audience ID.
     * @param adAccountId Unique identifier of an ad account.
-    * @param audienceId Unique identifier of an audience
     */
-  def audiencesGet(adAccountId: String, audienceId: String): Audience
+  def audiencesGet(audienceId: String, adAccountId: String): AdAccountsAudience
 
   /**
     * List audiences
     * Get list of audiences for the ad account.
     * @param adAccountId Unique identifier of an ad account.
     * @param bookmark Cursor used to fetch the next page of items
-    * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-    * @param ownershipType Filter audiences by ownership type.
+    * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+    * @param excludeNca When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
     */
-  def audiencesList(adAccountId: String, bookmark: Option[String], order: Option[String], pageSize: Option[Int], ownershipType: Option[String]): AudiencesList200Response
+  def audiencesList(adAccountId: String, bookmark: Option[String], pageSize: Option[Int], order: Option[PaginationOrder], ownershipType: Option[AudienceOwnershipType], excludeNca: Option[Boolean]): AudiencesList200Response
 
   /**
     * Update audience
-    * Update (edit or remove) an existing targeting audience.
+    * Update an existing audience for the ad account.
+    * @param audienceId Audience ID.
     * @param adAccountId Unique identifier of an ad account.
-    * @param audienceId Unique identifier of an audience
-    * @param audienceUpdateRequest The audience to be updated.
     */
-  def audiencesUpdate(adAccountId: String, audienceId: String, audienceUpdateRequest: AudienceUpdateRequest): Audience
+  def audiencesUpdate(audienceId: String, adAccountId: String, adAccountsAudienceUpdate: AdAccountsAudienceUpdate): AdAccountsAudience
 }

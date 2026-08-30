@@ -1,14 +1,18 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.Error
+import java.math.BigDecimal
+import org.openapitools.model.EntityStatus
 import org.openapitools.model.Granularity
-import org.openapitools.model.ProductGroupAnalyticsResponseInner
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PinterestLibPaginationOrder
+import org.openapitools.model.ProductGroupAnalyticsItems
 import org.openapitools.model.ProductGroupPromotion
-import org.openapitools.model.ProductGroupPromotionCreateRequest
-import org.openapitools.model.ProductGroupPromotionResponse
-import org.openapitools.model.ProductGroupPromotionUpdateRequest
+import org.openapitools.model.ProductGroupPromotions
+import org.openapitools.model.ProductGroupPromotionsCreate
 import org.openapitools.model.ProductGroupPromotionsList200Response
+import org.openapitools.model.ProductGroupPromotionsUpdateWithRequiredBody
+import org.openapitools.model.ReportingColumnSync
 import org.openapitools.model.ReportingTimeZone
 
 class ProductGroupPromotionsApi {
@@ -16,13 +20,14 @@ class ProductGroupPromotionsApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def productGroupPromotionsCreate ( String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest, Closure onSuccess, Closure onFailure)  {
+    def productGroupPromotionsCreate ( String adAccountId, ProductGroupPromotionsCreate productGroupPromotionsCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/product_group_promotions"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -30,19 +35,21 @@ class ProductGroupPromotionsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (productGroupPromotionCreateRequest == null) {
-            throw new RuntimeException("missing required params productGroupPromotionCreateRequest")
+        if (productGroupPromotionsCreate == null) {
+            throw new RuntimeException("missing required params productGroupPromotionsCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = productGroupPromotionCreateRequest
+        bodyParams = productGroupPromotionsCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    ProductGroupPromotionResponse.class )
+                    ProductGroupPromotions.class )
 
     }
 
@@ -53,6 +60,7 @@ class ProductGroupPromotionsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -68,19 +76,22 @@ class ProductGroupPromotionsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     ProductGroupPromotion.class )
 
     }
 
-    def productGroupPromotionsList ( String adAccountId, List<String> productGroupPromotionIds, List<String> entityStatuses, String adGroupId, Integer pageSize, String order, String bookmark, Closure onSuccess, Closure onFailure)  {
+    def productGroupPromotionsList ( String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, List<String> productGroupPromotionIds, List<EntityStatus> entityStatuses, String adGroupId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/product_group_promotions"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -88,6 +99,15 @@ class ProductGroupPromotionsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
 
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
+        if (order != null) {
+            queryParams.put("order", order)
+        }
         if (productGroupPromotionIds != null) {
             queryParams.put("product_group_promotion_ids", productGroupPromotionIds)
         }
@@ -97,32 +117,26 @@ class ProductGroupPromotionsApi {
         if (adGroupId != null) {
             queryParams.put("ad_group_id", adGroupId)
         }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
-        if (order != null) {
-            queryParams.put("order", order)
-        }
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     ProductGroupPromotionsList200Response.class )
 
     }
 
-    def productGroupPromotionsUpdate ( String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest, Closure onSuccess, Closure onFailure)  {
+    def productGroupPromotionsUpdate ( String adAccountId, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/product_group_promotions"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -130,35 +144,34 @@ class ProductGroupPromotionsApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (productGroupPromotionUpdateRequest == null) {
-            throw new RuntimeException("missing required params productGroupPromotionUpdateRequest")
+        if (productGroupPromotionsUpdateWithRequiredBody == null) {
+            throw new RuntimeException("missing required params productGroupPromotionsUpdateWithRequiredBody")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = productGroupPromotionUpdateRequest
+        bodyParams = productGroupPromotionsUpdateWithRequiredBody
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    ProductGroupPromotionResponse.class )
+                    ProductGroupPromotions.class )
 
     }
 
-    def productGroupsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
+    def productGroupsAnalytics ( Date startDate, Date endDate, List<String> productGroupIds, List<ReportingColumnSync> columns, Granularity granularity, String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/product_groups/analytics"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
-        // verify required params are set
-        if (adAccountId == null) {
-            throw new RuntimeException("missing required params adAccountId")
-        }
         // verify required params are set
         if (startDate == null) {
             throw new RuntimeException("missing required params startDate")
@@ -178,6 +191,10 @@ class ProductGroupPromotionsApi {
         // verify required params are set
         if (granularity == null) {
             throw new RuntimeException("missing required params granularity")
+        }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
         }
 
         if (startDate != null) {
@@ -214,9 +231,11 @@ class ProductGroupPromotionsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "array",
-                    ProductGroupAnalyticsResponseInner.class )
+                    ProductGroupAnalyticsItems.class )
 
     }
 

@@ -65,7 +65,7 @@ GoogleProductCategory5Filter::getGOOGLEPRODUCTCATEGORY5()
 }
 
 void
-GoogleProductCategory5Filter::setGOOGLEPRODUCTCATEGORY5(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_5)
+GoogleProductCategory5Filter::setGOOGLEPRODUCTCATEGORY5(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_5)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_5 = gOOGLE_PRODUCT_CATEGORY_5;
 }

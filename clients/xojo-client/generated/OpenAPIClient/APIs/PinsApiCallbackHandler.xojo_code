@@ -19,7 +19,7 @@ Protected Interface PinsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub PinsDeleteCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub PinsDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Pin)
 		  
 		End Sub
 	#tag EndMethod

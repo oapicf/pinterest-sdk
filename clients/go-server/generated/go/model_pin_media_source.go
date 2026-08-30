@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,6 +14,8 @@ package openapi
 
 import (
 	"errors"
+	"encoding/json"
+	"fmt"
 )
 
 
@@ -54,15 +56,145 @@ type PinMediaSource struct {
 	// This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
 	IsAffiliateLink bool `json:"is_affiliate_link,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into PinMediaSource
+func (o *PinMediaSource) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"content_type",
+		"data",
+		"source_type",
+		"url",
+		"media_id",
+		"items",
+	}
 
-// AssertPinMediaSourceRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"content_type": false,
+		"data": false,
+		"source_type": false,
+		"url": false,
+		"media_id": false,
+		"items": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"content_type": {},
+		"data": {},
+		"is_standard": {},
+		"source_type": {},
+		"url": {},
+		"cover_image_content_type": {},
+		"cover_image_data": {},
+		"cover_image_key_frame_time": {},
+		"cover_image_url": {},
+		"media_id": {},
+		"index": {},
+		"items": {},
+		"is_affiliate_link": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded PinMediaSource
+
+	if value, exists := allProperties["content_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.ContentType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["data"]; exists {
+		if err = json.Unmarshal(value, &decoded.Data); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_standard"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsStandard); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["source_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.SourceType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["url"]; exists {
+		if err = json.Unmarshal(value, &decoded.Url); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["cover_image_content_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CoverImageContentType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["cover_image_data"]; exists {
+		if err = json.Unmarshal(value, &decoded.CoverImageData); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["cover_image_key_frame_time"]; exists {
+		if err = json.Unmarshal(value, &decoded.CoverImageKeyFrameTime); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["cover_image_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.CoverImageUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["media_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.MediaId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["index"]; exists {
+		if err = json.Unmarshal(value, &decoded.Index); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["items"]; exists {
+		if err = json.Unmarshal(value, &decoded.Items); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["is_affiliate_link"]; exists {
+		if err = json.Unmarshal(value, &decoded.IsAffiliateLink); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertPinMediaSourceRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertPinMediaSourceRequired(obj PinMediaSource) error {
 	elements := map[string]interface{}{
-		"content_type": obj.ContentType,
-		"data": obj.Data,
-		"source_type": obj.SourceType,
-		"url": obj.Url,
-		"media_id": obj.MediaId,
 		"items": obj.Items,
 	}
 	for name, el := range elements {

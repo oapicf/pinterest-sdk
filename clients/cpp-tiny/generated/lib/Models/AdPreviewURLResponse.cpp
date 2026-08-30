@@ -64,7 +64,7 @@ AdPreviewURLResponse::getUrl()
 }
 
 void
-AdPreviewURLResponse::setUrl(std::string  url)
+AdPreviewURLResponse::setUrl(std::string url)
 {
 	this->url = url;
 }

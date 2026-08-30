@@ -85,7 +85,7 @@ CatalogsReportDistributionIssueFilter::getCatalogId()
 }
 
 void
-CatalogsReportDistributionIssueFilter::setCatalogId(std::string  catalog_id)
+CatalogsReportDistributionIssueFilter::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -97,7 +97,7 @@ CatalogsReportDistributionIssueFilter::getReportType()
 }
 
 void
-CatalogsReportDistributionIssueFilter::setReportType(std::string  report_type)
+CatalogsReportDistributionIssueFilter::setReportType(std::string report_type)
 {
 	this->report_type = report_type;
 }

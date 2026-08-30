@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// Permissions the model 'Permissions'
+// Permissions Permission levels available on a business asset.
 type Permissions string
 
 // List of Permissions
@@ -32,6 +32,7 @@ const (
 	CATALOGS_VIEWER Permissions = "CATALOGS_VIEWER"
 	PROFILE_PUBLISHER Permissions = "PROFILE_PUBLISHER"
 	CONSUMER_USER Permissions = "CONSUMER_USER"
+	BIZ_PINNER_LIST_SHARER Permissions = "BIZ_PINNER_LIST_SHARER"
 )
 
 // All allowed values of Permissions enum
@@ -47,6 +48,7 @@ var AllowedPermissionsEnumValues = []Permissions{
 	"CATALOGS_VIEWER",
 	"PROFILE_PUBLISHER",
 	"CONSUMER_USER",
+	"BIZ_PINNER_LIST_SHARER",
 }
 
 func (v *Permissions) UnmarshalJSON(src []byte) error {

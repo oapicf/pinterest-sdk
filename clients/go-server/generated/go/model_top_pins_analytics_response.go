@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,18 +18,19 @@ type TopPinsAnalyticsResponse struct {
 
 	DateAvailability TopPinsAnalyticsResponseDateAvailability `json:"date_availability,omitempty"`
 
-	Pins []TopPinsAnalyticsResponsePinsInner `json:"pins,omitempty"`
+	Pins []TopPinsAnalyticsResponsePinsItems `json:"pins,omitempty"`
 
-	SortBy string `json:"sort_by,omitempty"`
+	SortBy TopPinsSortBy `json:"sort_by,omitempty"`
 }
 
-// AssertTopPinsAnalyticsResponseRequired checks if the required fields are not zero-ed
+// AssertTopPinsAnalyticsResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTopPinsAnalyticsResponseRequired(obj TopPinsAnalyticsResponse) error {
 	if err := AssertTopPinsAnalyticsResponseDateAvailabilityRequired(obj.DateAvailability); err != nil {
 		return err
 	}
 	for _, el := range obj.Pins {
-		if err := AssertTopPinsAnalyticsResponsePinsInnerRequired(el); err != nil {
+		if err := AssertTopPinsAnalyticsResponsePinsItemsRequired(el); err != nil {
 			return err
 		}
 	}
@@ -42,7 +43,7 @@ func AssertTopPinsAnalyticsResponseConstraints(obj TopPinsAnalyticsResponse) err
 		return err
 	}
 	for _, el := range obj.Pins {
-		if err := AssertTopPinsAnalyticsResponsePinsInnerConstraints(el); err != nil {
+		if err := AssertTopPinsAnalyticsResponsePinsItemsConstraints(el); err != nil {
 			return err
 		}
 	}

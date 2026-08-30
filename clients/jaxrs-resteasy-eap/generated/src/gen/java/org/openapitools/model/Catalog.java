@@ -13,14 +13,27 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Catalog entity")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Catalog entity")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Catalog   {
   
+  private CatalogsType catalogType;
   private Date createdAt;
   private String id;
-  private Date updatedAt;
-  private CatalogsType catalogType;
   private String name;
+  private Date updatedAt;
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  @NotNull
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
 
   /**
    **/
@@ -50,32 +63,6 @@ public class Catalog   {
   }
 
   /**
-   **/
-  
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
-  @JsonProperty("updated_at")
-  @NotNull
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
    * A human-friendly name associated to a catalog entity.
    **/
   
@@ -89,6 +76,19 @@ public class Catalog   {
     this.name = name;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+  @JsonProperty("updated_at")
+  @NotNull
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -99,16 +99,16 @@ public class Catalog   {
       return false;
     }
     Catalog catalog = (Catalog) o;
-    return Objects.equals(this.createdAt, catalog.createdAt) &&
+    return Objects.equals(this.catalogType, catalog.catalogType) &&
+        Objects.equals(this.createdAt, catalog.createdAt) &&
         Objects.equals(this.id, catalog.id) &&
-        Objects.equals(this.updatedAt, catalog.updatedAt) &&
-        Objects.equals(this.catalogType, catalog.catalogType) &&
-        Objects.equals(this.name, catalog.name);
+        Objects.equals(this.name, catalog.name) &&
+        Objects.equals(this.updatedAt, catalog.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
+    return Objects.hash(catalogType, createdAt, id, name, updatedAt);
   }
 
   @Override
@@ -116,11 +116,11 @@ public class Catalog   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Catalog {\n");
     
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -130,10 +130,7 @@ public class Catalog   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

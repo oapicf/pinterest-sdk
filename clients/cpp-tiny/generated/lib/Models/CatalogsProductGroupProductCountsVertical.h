@@ -15,7 +15,6 @@
 #include "CatalogsCreativeAssetsProductGroupProductCounts.h"
 #include "CatalogsHotelProductGroupProductCounts.h"
 #include "CatalogsRetailProductGroupProductCounts.h"
-#include "CatalogsType.h"
 
 namespace Tiny {
 
@@ -51,55 +50,71 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	long getInStock();
 
 	/*! \brief Set 
 	 */
-	void setInStock(long  in_stock);
+	void setInStock(long in_stock);
 	/*! \brief Get 
 	 */
 	long getOutOfStock();
 
 	/*! \brief Set 
 	 */
-	void setOutOfStock(long  out_of_stock);
+	void setOutOfStock(long out_of_stock);
 	/*! \brief Get 
 	 */
 	long getPreorder();
 
 	/*! \brief Set 
 	 */
-	void setPreorder(long  preorder);
+	void setPreorder(long preorder);
 	/*! \brief Get 
 	 */
 	long getTotal();
 
 	/*! \brief Set 
 	 */
-	void setTotal(long  total);
+	void setTotal(long total);
 	/*! \brief Get 
 	 */
 	long getVideos();
 
 	/*! \brief Set 
 	 */
-	void setVideos(long  videos);
+	void setVideos(long videos);
+	/*! \brief Get 
+	 */
+	long getAppLinks();
+
+	/*! \brief Set 
+	 */
+	void setAppLinks(long app_links);
+	/*! \brief Get 
+	 */
+	long getImages();
+
+	/*! \brief Set 
+	 */
+	void setImages(long images);
 
 
     private:
-    CatalogsType catalog_type;
+    std::string catalog_type{};
     long in_stock{};
     long out_of_stock{};
     long preorder{};
     long total{};
     long videos{};
+    long app_links{};
+    long images{};
 };
 }
 

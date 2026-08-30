@@ -18,7 +18,7 @@ typedef struct catalogs_format_t catalogs_format_t;
 
 // Enum  for catalogs_format
 
-typedef enum { pinterest_rest_api_catalogs_format__NULL = 0, pinterest_rest_api_catalogs_format__TSV, pinterest_rest_api_catalogs_format__CSV, pinterest_rest_api_catalogs_format__XML } pinterest_rest_api_catalogs_format__e;
+typedef enum { pinterest_rest_api_catalogs_format__NULL = 0, pinterest_rest_api_catalogs_format__TSV, pinterest_rest_api_catalogs_format__CSV, pinterest_rest_api_catalogs_format__XML, pinterest_rest_api_catalogs_format__INTEGRATION } pinterest_rest_api_catalogs_format__e;
 
 char* catalogs_format_catalogs_format_ToString(pinterest_rest_api_catalogs_format__e catalogs_format);
 

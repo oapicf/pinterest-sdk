@@ -52,14 +52,14 @@ public:
 
 	/*! \brief Set The user-created unique ID that represents the creative assets item.
 	 */
-	void setCreativeAssetsId(std::string  creative_assets_id);
+	void setCreativeAssetsId(std::string creative_assets_id);
 	/*! \brief Get 
 	 */
 	CreativeAssetsVisibilityType getVisibility();
 
 	/*! \brief Set 
 	 */
-	void setVisibility(CreativeAssetsVisibilityType  visibility);
+	void setVisibility(CreativeAssetsVisibilityType visibility);
 
 
     private:

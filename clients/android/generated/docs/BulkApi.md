@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 ## bulkDownloadCreate
 
-> BulkDownloadResponse bulkDownloadCreate(adAccountId, bulkDownloadRequest)
+> BulkDownload bulkDownloadCreate(adAccountId, bulkDownloadCreate)
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 
@@ -26,9 +26,9 @@ Create an asynchronous report that may include information on campaigns, ad grou
 
 BulkApi apiInstance = new BulkApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-BulkDownloadRequest bulkDownloadRequest = new BulkDownloadRequest(); // BulkDownloadRequest | Parameters to get ad entities in bulk
+BulkDownloadCreate bulkDownloadCreate = new BulkDownloadCreate(); // BulkDownloadCreate | 
 try {
-    BulkDownloadResponse result = apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadRequest);
+    BulkDownload result = apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BulkApi#bulkDownloadCreate");
@@ -42,11 +42,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **bulkDownloadRequest** | [**BulkDownloadRequest**](BulkDownloadRequest.md)| Parameters to get ad entities in bulk |
+ **bulkDownloadCreate** | [**BulkDownloadCreate**](BulkDownloadCreate.md)|  |
 
 ### Return type
 
-[**BulkDownloadResponse**](BulkDownloadResponse.md)
+[**BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
@@ -60,11 +60,11 @@ Name | Type | Description  | Notes
 
 ## bulkRequestGet
 
-> BulkUpsertStatusResponse bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
+> BulkJobData bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 
@@ -74,10 +74,10 @@ Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along w
 
 BulkApi apiInstance = new BulkApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-String bulkRequestId = null; // String | Unique identifier of a bulk upsert request.
-Boolean includeDetails = false; // Boolean | if set to True then attach the errors/details to all the requests
+String bulkRequestId = null; // String | Bulk request ID that is from one of the entities bulk endpoints
+Boolean includeDetails = false; // Boolean | If set to True then attach the errors/details to all the requests
 try {
-    BulkUpsertStatusResponse result = apiInstance.bulkRequestGet(adAccountId, bulkRequestId, includeDetails);
+    BulkJobData result = apiInstance.bulkRequestGet(adAccountId, bulkRequestId, includeDetails);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BulkApi#bulkRequestGet");
@@ -91,12 +91,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **bulkRequestId** | **String**| Unique identifier of a bulk upsert request. | [default to null]
- **includeDetails** | **Boolean**| if set to True then attach the errors/details to all the requests | [optional] [default to false]
+ **bulkRequestId** | **String**| Bulk request ID that is from one of the entities bulk endpoints | [default to null]
+ **includeDetails** | **Boolean**| If set to True then attach the errors/details to all the requests | [optional] [default to false]
 
 ### Return type
 
-[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**BulkJobData**](BulkJobData.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
 
 ### Example
 

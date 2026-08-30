@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,8 @@ var _ MappedNullable = &AppTypeMultipliers{}
 
 // AppTypeMultipliers This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
 type AppTypeMultipliers struct {
-	APP_TYPE *string `json:"APP_TYPE,omitempty"`
+	// App type identifier.
+	APP_TYPE *TargetingSpecAppType `json:"APP_TYPE,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,9 +45,9 @@ func NewAppTypeMultipliersWithDefaults() *AppTypeMultipliers {
 }
 
 // GetAPP_TYPE returns the APP_TYPE field value if set, zero value otherwise.
-func (o *AppTypeMultipliers) GetAPP_TYPE() string {
+func (o *AppTypeMultipliers) GetAPP_TYPE() TargetingSpecAppType {
 	if o == nil || IsNil(o.APP_TYPE) {
-		var ret string
+		var ret TargetingSpecAppType
 		return ret
 	}
 	return *o.APP_TYPE
@@ -54,7 +55,7 @@ func (o *AppTypeMultipliers) GetAPP_TYPE() string {
 
 // GetAPP_TYPEOk returns a tuple with the APP_TYPE field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AppTypeMultipliers) GetAPP_TYPEOk() (*string, bool) {
+func (o *AppTypeMultipliers) GetAPP_TYPEOk() (*TargetingSpecAppType, bool) {
 	if o == nil || IsNil(o.APP_TYPE) {
 		return nil, false
 	}
@@ -70,8 +71,8 @@ func (o *AppTypeMultipliers) HasAPP_TYPE() bool {
 	return false
 }
 
-// SetAPP_TYPE gets a reference to the given string and assigns it to the APP_TYPE field.
-func (o *AppTypeMultipliers) SetAPP_TYPE(v string) {
+// SetAPP_TYPE gets a reference to the given TargetingSpecAppType and assigns it to the APP_TYPE field.
+func (o *AppTypeMultipliers) SetAPP_TYPE(v TargetingSpecAppType) {
 	o.APP_TYPE = &v
 }
 

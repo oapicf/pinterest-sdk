@@ -1,0 +1,32 @@
+/*
+ * supplemental_item_batch_operation_status.h
+ *
+ * The status of the batch operation
+ */
+
+#ifndef _supplemental_item_batch_operation_status_H_
+#define _supplemental_item_batch_operation_status_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct supplemental_item_batch_operation_status_t supplemental_item_batch_operation_status_t;
+
+
+// Enum  for supplemental_item_batch_operation_status
+
+typedef enum { pinterest_rest_api_supplemental_item_batch_operation_status__NULL = 0, pinterest_rest_api_supplemental_item_batch_operation_status__PROCESSING, pinterest_rest_api_supplemental_item_batch_operation_status__COMPLETED, pinterest_rest_api_supplemental_item_batch_operation_status__FAILED } pinterest_rest_api_supplemental_item_batch_operation_status__e;
+
+char* supplemental_item_batch_operation_status_supplemental_item_batch_operation_status_ToString(pinterest_rest_api_supplemental_item_batch_operation_status__e supplemental_item_batch_operation_status);
+
+pinterest_rest_api_supplemental_item_batch_operation_status__e supplemental_item_batch_operation_status_supplemental_item_batch_operation_status_FromString(char* supplemental_item_batch_operation_status);
+
+cJSON *supplemental_item_batch_operation_status_convertToJSON(pinterest_rest_api_supplemental_item_batch_operation_status__e supplemental_item_batch_operation_status);
+
+pinterest_rest_api_supplemental_item_batch_operation_status__e supplemental_item_batch_operation_status_parseFromJSON(cJSON *supplemental_item_batch_operation_statusJSON);
+
+#endif /* _supplemental_item_batch_operation_status_H_ */
+

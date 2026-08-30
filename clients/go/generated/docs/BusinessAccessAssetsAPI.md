@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## AssetGroupCreate
 
-> CreateAssetGroupResponse AssetGroupCreate(ctx, businessId).CreateAssetGroupBody(createAssetGroupBody).Execute()
+> AssetGroupInput AssetGroupCreate(ctx, businessId).AssetGroupInputCreate(assetGroupInputCreate).Execute()
 
 Create a new asset group.
 
@@ -40,17 +40,17 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	createAssetGroupBody := *openapiclient.NewCreateAssetGroupBody("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", []openapiclient.AssetGroupType{openapiclient.AssetGroupType("BRAND")}) // CreateAssetGroupBody | 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	assetGroupInputCreate := *openapiclient.NewAssetGroupInputCreate("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", []openapiclient.AssetGroupType{openapiclient.AssetGroupType("BRAND")}) // AssetGroupInputCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessAssetsAPI.AssetGroupCreate(context.Background(), businessId).CreateAssetGroupBody(createAssetGroupBody).Execute()
+	resp, r, err := apiClient.BusinessAccessAssetsAPI.AssetGroupCreate(context.Background(), businessId).AssetGroupInputCreate(assetGroupInputCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.AssetGroupCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AssetGroupCreate`: CreateAssetGroupResponse
+	// response from `AssetGroupCreate`: AssetGroupInput
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessAssetsAPI.AssetGroupCreate`: %v\n", resp)
 }
 ```
@@ -71,11 +71,11 @@ Other parameters are passed through a pointer to a apiAssetGroupCreateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createAssetGroupBody** | [**CreateAssetGroupBody**](CreateAssetGroupBody.md) |  | 
+ **assetGroupInputCreate** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md) |  | 
 
 ### Return type
 
-[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md)
+[**AssetGroupInput**](AssetGroupInput.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## AssetGroupDelete
 
-> DeleteAssetGroupResponse AssetGroupDelete(ctx, businessId).DeleteAssetGroupBody(deleteAssetGroupBody).Execute()
+> AssetGroupDeletion AssetGroupDelete(ctx, businessId).AssetGroupDeletionDelete(assetGroupDeletionDelete).Execute()
 
 Delete asset groups.
 
@@ -112,17 +112,17 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	deleteAssetGroupBody := *openapiclient.NewDeleteAssetGroupBody([]string{"AssetGroupsToDelete_example"}) // DeleteAssetGroupBody | 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	assetGroupDeletionDelete := *openapiclient.NewAssetGroupDeletionDelete([]string{"AssetGroupsToDelete_example"}) // AssetGroupDeletionDelete | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessAssetsAPI.AssetGroupDelete(context.Background(), businessId).DeleteAssetGroupBody(deleteAssetGroupBody).Execute()
+	resp, r, err := apiClient.BusinessAccessAssetsAPI.AssetGroupDelete(context.Background(), businessId).AssetGroupDeletionDelete(assetGroupDeletionDelete).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.AssetGroupDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AssetGroupDelete`: DeleteAssetGroupResponse
+	// response from `AssetGroupDelete`: AssetGroupDeletion
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessAssetsAPI.AssetGroupDelete`: %v\n", resp)
 }
 ```
@@ -143,11 +143,11 @@ Other parameters are passed through a pointer to a apiAssetGroupDeleteRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **deleteAssetGroupBody** | [**DeleteAssetGroupBody**](DeleteAssetGroupBody.md) |  | 
+ **assetGroupDeletionDelete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md) |  | 
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md)
+[**AssetGroupDeletion**](AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## AssetGroupUpdate
 
-> UpdateAssetGroupResponse AssetGroupUpdate(ctx, businessId).UpdateAssetGroupBody(updateAssetGroupBody).Execute()
+> AssetGroupModification AssetGroupUpdate(ctx, businessId).AssetGroupModificationReadOrUpdate(assetGroupModificationReadOrUpdate).Execute()
 
 Update asset groups.
 
@@ -184,17 +184,17 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	updateAssetGroupBody := *openapiclient.NewUpdateAssetGroupBody() // UpdateAssetGroupBody | 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	assetGroupModificationReadOrUpdate := *openapiclient.NewAssetGroupModificationReadOrUpdate() // AssetGroupModificationReadOrUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessAssetsAPI.AssetGroupUpdate(context.Background(), businessId).UpdateAssetGroupBody(updateAssetGroupBody).Execute()
+	resp, r, err := apiClient.BusinessAccessAssetsAPI.AssetGroupUpdate(context.Background(), businessId).AssetGroupModificationReadOrUpdate(assetGroupModificationReadOrUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.AssetGroupUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AssetGroupUpdate`: UpdateAssetGroupResponse
+	// response from `AssetGroupUpdate`: AssetGroupModification
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessAssetsAPI.AssetGroupUpdate`: %v\n", resp)
 }
 ```
@@ -215,11 +215,11 @@ Other parameters are passed through a pointer to a apiAssetGroupUpdateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateAssetGroupBody** | [**UpdateAssetGroupBody**](UpdateAssetGroupBody.md) |  | 
+ **assetGroupModificationReadOrUpdate** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md) |  | 
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md)
+[**AssetGroupModification**](AssetGroupModification.md)
 
 ### Authorization
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## BusinessAssetMembersGet
 
-> BusinessAssetMembersGet200Response BusinessAssetMembersGet(ctx, businessId, assetId).FetchSystemUsers(fetchSystemUsers).Bookmark(bookmark).PageSize(pageSize).StartIndex(startIndex).Execute()
+> BusinessAssetMembersGet200Response BusinessAssetMembersGet(ctx, businessId, assetId).StartIndex(startIndex).FetchSystemUsers(fetchSystemUsers).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Get members with access to asset
 
@@ -256,16 +256,16 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	assetId := "729090764583391194" // string | Unique identifier of a business asset.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	assetId := "assetId_example" // string | Unique identifier of a business asset.
+	startIndex := int32(56) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 	fetchSystemUsers := true // bool | Fetches system users if True. Fetches regular user employees if False. (optional) (default to false)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	startIndex := int32(0) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessAssetMembersGet(context.Background(), businessId, assetId).FetchSystemUsers(fetchSystemUsers).Bookmark(bookmark).PageSize(pageSize).StartIndex(startIndex).Execute()
+	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessAssetMembersGet(context.Background(), businessId, assetId).StartIndex(startIndex).FetchSystemUsers(fetchSystemUsers).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.BusinessAssetMembersGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -293,10 +293,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **startIndex** | **int32** | An index to start fetching the results from. Only the results starting from this index will be returned. | [default to 0]
  **fetchSystemUsers** | **bool** | Fetches system users if True. Fetches regular user employees if False. | [default to false]
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **startIndex** | **int32** | An index to start fetching the results from. Only the results starting from this index will be returned. | [default to 0]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ## BusinessAssetPartnersGet
 
-> BusinessAssetPartnersGet200Response BusinessAssetPartnersGet(ctx, businessId, assetId).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
+> BusinessAssetMembersGet200Response BusinessAssetPartnersGet(ctx, businessId, assetId).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Get partners with access to asset
 
@@ -337,11 +337,11 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	assetId := "729090764583391194" // string | Unique identifier of a business asset.
-	startIndex := int32(0) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	assetId := "assetId_example" // string | Unique identifier of a business asset.
+	startIndex := int32(56) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -350,7 +350,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.BusinessAssetPartnersGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BusinessAssetPartnersGet`: BusinessAssetPartnersGet200Response
+	// response from `BusinessAssetPartnersGet`: BusinessAssetMembersGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessAssetsAPI.BusinessAssetPartnersGet`: %v\n", resp)
 }
 ```
@@ -375,11 +375,11 @@ Name | Type | Description  | Notes
 
  **startIndex** | **int32** | An index to start fetching the results from. Only the results starting from this index will be returned. | [default to 0]
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
-[**BusinessAssetPartnersGet200Response**](BusinessAssetPartnersGet200Response.md)
+[**BusinessAssetMembersGet200Response**](BusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -416,14 +416,14 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
 	permissions := []openapiclient.PermissionsWithOwner{openapiclient.PermissionsWithOwner("ADMIN")} // []PermissionsWithOwner | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional)
-	childAssetId := "549764894835" // string | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
-	assetGroupId := "7078106104032" // string | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
-	assetType := "AD_ACCOUNT" // string | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
-	startIndex := int32(0) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+	childAssetId := "childAssetId_example" // string | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
+	assetGroupId := "assetGroupId_example" // string | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
+	assetType := "assetType_example" // string | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
+	startIndex := int32(56) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
  **assetType** | **string** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [default to &quot;AD_ACCOUNT&quot;]
  **startIndex** | **int32** | An index to start fetching the results from. Only the results starting from this index will be returned. | [default to 0]
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -481,7 +481,7 @@ Name | Type | Description  | Notes
 
 ## BusinessMemberAssetsGet
 
-> BusinessMemberAssetsGet200Response BusinessMemberAssetsGet(ctx, businessId, memberId).AssetType(assetType).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
+> BusinessMemberAssetsGetResponse BusinessMemberAssetsGet(ctx, businessId, memberId).AssetType(assetType).StartIndex(startIndex).SortBy(sortBy).SortAscending(sortAscending).SearchBy(searchBy).SearchValue(searchValue).AssetPermissionType(assetPermissionType).AdAccountStatuses(adAccountStatuses).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Get assets assigned to a member
 
@@ -500,21 +500,27 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	memberId := "729090764583391194" // string | The member id to fetch assets for.
-	assetType := "AD_ACCOUNT" // string | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
-	startIndex := int32(0) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	memberId := "memberId_example" // string | The member id to fetch assets for.
+	assetType := "assetType_example" // string | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
+	startIndex := int32(56) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+	sortBy := openapiclient.AssetSortBy("NAME") // AssetSortBy | The field to sort member assets by (optional)
+	sortAscending := true // bool | Sort assets in ascending order (optional) (default to true)
+	searchBy := openapiclient.AssetSearchBy("NAME") // AssetSearchBy | The field to search member assets by (optional)
+	searchValue := "searchValue_example" // string | The value to search for (optional)
+	assetPermissionType := openapiclient.AssetPermissionType("AGGREGATED_PERMISSION") // AssetPermissionType | The type of asset permission to filter by (optional)
+	adAccountStatuses := []openapiclient.NonDraftEntityStatus{openapiclient.NonDraftEntityStatus("ACTIVE")} // []NonDraftEntityStatus | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessMemberAssetsGet(context.Background(), businessId, memberId).AssetType(assetType).StartIndex(startIndex).Bookmark(bookmark).PageSize(pageSize).Execute()
+	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessMemberAssetsGet(context.Background(), businessId, memberId).AssetType(assetType).StartIndex(startIndex).SortBy(sortBy).SortAscending(sortAscending).SearchBy(searchBy).SearchValue(searchValue).AssetPermissionType(assetPermissionType).AdAccountStatuses(adAccountStatuses).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.BusinessMemberAssetsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BusinessMemberAssetsGet`: BusinessMemberAssetsGet200Response
+	// response from `BusinessMemberAssetsGet`: BusinessMemberAssetsGetResponse
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessAssetsAPI.BusinessMemberAssetsGet`: %v\n", resp)
 }
 ```
@@ -539,12 +545,18 @@ Name | Type | Description  | Notes
 
  **assetType** | **string** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [default to &quot;AD_ACCOUNT&quot;]
  **startIndex** | **int32** | An index to start fetching the results from. Only the results starting from this index will be returned. | [default to 0]
+ **sortBy** | [**AssetSortBy**](AssetSortBy.md) | The field to sort member assets by | 
+ **sortAscending** | **bool** | Sort assets in ascending order | [default to true]
+ **searchBy** | [**AssetSearchBy**](AssetSearchBy.md) | The field to search member assets by | 
+ **searchValue** | **string** | The value to search for | 
+ **assetPermissionType** | [**AssetPermissionType**](AssetPermissionType.md) | The type of asset permission to filter by | 
+ **adAccountStatuses** | [**[]NonDraftEntityStatus**](NonDraftEntityStatus.md) | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
-[**BusinessMemberAssetsGet200Response**](BusinessMemberAssetsGet200Response.md)
+[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -562,7 +574,7 @@ Name | Type | Description  | Notes
 
 ## BusinessMembersAssetAccessDelete
 
-> DeleteMemberAccessResultsResponseArray BusinessMembersAssetAccessDelete(ctx, businessId).BusinessMembersAssetAccessDeleteRequest(businessMembersAssetAccessDeleteRequest).Execute()
+> DeleteMemberAccessResultsResponseArray BusinessMembersAssetAccessDelete(ctx, businessId).BusinessMembersAssetAccessDeleteBody(businessMembersAssetAccessDeleteBody).Execute()
 
 Delete member access to asset
 
@@ -581,12 +593,12 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	businessMembersAssetAccessDeleteRequest := *openapiclient.NewBusinessMembersAssetAccessDeleteRequest([]openapiclient.BusinessMembersAssetAccessDeleteRequestAccessesInner{*openapiclient.NewBusinessMembersAssetAccessDeleteRequestAccessesInner("549755885175", "140943737684417")}) // BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	businessMembersAssetAccessDeleteBody := *openapiclient.NewBusinessMembersAssetAccessDeleteBody([]openapiclient.DeleteMemberAssetAccessItem{*openapiclient.NewDeleteMemberAssetAccessItem("AssetId_example", "MemberId_example")}) // BusinessMembersAssetAccessDeleteBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessMembersAssetAccessDelete(context.Background(), businessId).BusinessMembersAssetAccessDeleteRequest(businessMembersAssetAccessDeleteRequest).Execute()
+	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessMembersAssetAccessDelete(context.Background(), businessId).BusinessMembersAssetAccessDeleteBody(businessMembersAssetAccessDeleteBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.BusinessMembersAssetAccessDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -612,7 +624,7 @@ Other parameters are passed through a pointer to a apiBusinessMembersAssetAccess
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **businessMembersAssetAccessDeleteRequest** | [**BusinessMembersAssetAccessDeleteRequest**](BusinessMembersAssetAccessDeleteRequest.md) | List member assset permissions to delete. | 
+ **businessMembersAssetAccessDeleteBody** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md) |  | 
 
 ### Return type
 
@@ -653,8 +665,8 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	updateMemberAssetAccessBody := *openapiclient.NewUpdateMemberAssetAccessBody([]openapiclient.UpdateMemberAssetAccessBodyAccessesInner{*openapiclient.NewUpdateMemberAssetAccessBodyAccessesInner("549755885175", "140943737684417", []openapiclient.Permissions{openapiclient.Permissions("ADMIN")})}) // UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	updateMemberAssetAccessBody := *openapiclient.NewUpdateMemberAssetAccessBody([]openapiclient.UpdateMemberAssetAccessItem{*openapiclient.NewUpdateMemberAssetAccessItem("AssetId_example", "MemberId_example", []openapiclient.Permissions{openapiclient.Permissions("ADMIN")})}) // UpdateMemberAssetAccessBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -684,7 +696,7 @@ Other parameters are passed through a pointer to a apiBusinessMembersAssetAccess
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md) | List of member asset permissions to create or update. | 
+ **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md) |  | 
 
 ### Return type
 
@@ -706,7 +718,7 @@ Name | Type | Description  | Notes
 
 ## BusinessPartnerAssetAccessGet
 
-> BusinessPartnerAssetAccessGet200Response BusinessPartnerAssetAccessGet(ctx, businessId, partnerId).PartnerType(partnerType).AssetType(assetType).StartIndex(startIndex).PageSize(pageSize).Bookmark(bookmark).Execute()
+> BusinessPartnerAssetAccessGet200Response BusinessPartnerAssetAccessGet(ctx, businessId, partnerId).PartnerType(partnerType).AssetType(assetType).StartIndex(startIndex).SortBy(sortBy).SortAscending(sortAscending).SearchBy(searchBy).SearchValue(searchValue).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 Get assets assigned to a partner or assets assigned by a partner
 
@@ -725,17 +737,21 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	partnerId := "729090764583391194" // string | The partner id to be bound to the Business
-	partnerType := openapiclient.PartnerType("INTERNAL") // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) (default to "INTERNAL")
-	assetType := "AD_ACCOUNT" // string | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
-	startIndex := int32(0) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	partnerId := "partnerId_example" // string | The partner id to be bound to the Business
+	partnerType := "partnerType_example" // string | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) (default to "INTERNAL")
+	assetType := "assetType_example" // string | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
+	startIndex := int32(56) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+	sortBy := openapiclient.AssetSortBy("NAME") // AssetSortBy | The field to sort member assets by (optional)
+	sortAscending := true // bool | Sort assets in ascending order (optional) (default to true)
+	searchBy := openapiclient.AssetSearchBy("NAME") // AssetSearchBy | The field to search member assets by (optional)
+	searchValue := "searchValue_example" // string | The value to search for (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessPartnerAssetAccessGet(context.Background(), businessId, partnerId).PartnerType(partnerType).AssetType(assetType).StartIndex(startIndex).PageSize(pageSize).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessPartnerAssetAccessGet(context.Background(), businessId, partnerId).PartnerType(partnerType).AssetType(assetType).StartIndex(startIndex).SortBy(sortBy).SortAscending(sortAscending).SearchBy(searchBy).SearchValue(searchValue).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.BusinessPartnerAssetAccessGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -763,11 +779,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **partnerType** | [**PartnerType**](PartnerType.md) | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [default to &quot;INTERNAL&quot;]
+ **partnerType** | **string** | Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [default to &quot;INTERNAL&quot;]
  **assetType** | **string** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [default to &quot;AD_ACCOUNT&quot;]
  **startIndex** | **int32** | An index to start fetching the results from. Only the results starting from this index will be returned. | [default to 0]
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **sortBy** | [**AssetSortBy**](AssetSortBy.md) | The field to sort member assets by | 
+ **sortAscending** | **bool** | Sort assets in ascending order | [default to true]
+ **searchBy** | [**AssetSearchBy**](AssetSearchBy.md) | The field to search member assets by | 
+ **searchValue** | **string** | The value to search for | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -789,7 +809,7 @@ Name | Type | Description  | Notes
 
 ## DeletePartnerAssetAccessHandlerImpl
 
-> DeletePartnerAssetsResultsResponseArray DeletePartnerAssetAccessHandlerImpl(ctx, businessId).DeletePartnerAssetAccessBody(deletePartnerAssetAccessBody).Execute()
+> DeletePartnerAssetAccessResultsResponseArray DeletePartnerAssetAccessHandlerImpl(ctx, businessId).DeletePartnerAssetAccessBody(deletePartnerAssetAccessBody).Execute()
 
 Delete partner access to asset
 
@@ -808,8 +828,8 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	deletePartnerAssetAccessBody := *openapiclient.NewDeletePartnerAssetAccessBody([]openapiclient.DeletePartnerAssetAccessBodyAccessesInner{*openapiclient.NewDeletePartnerAssetAccessBodyAccessesInner("549755885175", "1234567890123")}) // DeletePartnerAssetAccessBody | 
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	deletePartnerAssetAccessBody := *openapiclient.NewDeletePartnerAssetAccessBody([]openapiclient.DeletePartnerAssetAccessItem{*openapiclient.NewDeletePartnerAssetAccessItem("AssetId_example", "PartnerId_example")}) // DeletePartnerAssetAccessBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -818,7 +838,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.DeletePartnerAssetAccessHandlerImpl``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeletePartnerAssetAccessHandlerImpl`: DeletePartnerAssetsResultsResponseArray
+	// response from `DeletePartnerAssetAccessHandlerImpl`: DeletePartnerAssetAccessResultsResponseArray
 	fmt.Fprintf(os.Stdout, "Response from `BusinessAccessAssetsAPI.DeletePartnerAssetAccessHandlerImpl`: %v\n", resp)
 }
 ```
@@ -843,7 +863,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md)
+[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -880,8 +900,8 @@ import (
 )
 
 func main() {
-	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	updatePartnerAssetAccessBody := *openapiclient.NewUpdatePartnerAssetAccessBody([]openapiclient.UpdatePartnerAssetAccessBodyAccessesInner{*openapiclient.NewUpdatePartnerAssetAccessBodyAccessesInner("549755885175", "1234567890123", []openapiclient.Permissions{openapiclient.Permissions("ADMIN")})}) // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+	businessId := "businessId_example" // string | Unique identifier of the requesting business.
+	updatePartnerAssetAccessBody := *openapiclient.NewUpdatePartnerAssetAccessBody([]openapiclient.UpdatePartnerAssetAccessItem{*openapiclient.NewUpdatePartnerAssetAccessItem("AssetId_example", "PartnerId_example", []openapiclient.Permissions{openapiclient.Permissions("ADMIN")})}) // UpdatePartnerAssetAccessBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -911,7 +931,7 @@ Other parameters are passed through a pointer to a apiUpdatePartnerAssetAccessHa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md) | A list of assets and permissions to assign to your partners. | 
+ **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md) |  | 
 
 ### Return type
 

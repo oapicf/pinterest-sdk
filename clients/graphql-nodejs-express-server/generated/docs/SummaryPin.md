@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **altText** | **String** |  | [optional] [default to null]
 **description** | **String** |  | [optional] [default to null]
-**Id_** | **String!** |  | [optional] [default to null]
+**Id_** | **String!** |  | [default to null]
 **link** | **String** |  | [optional] [default to null]
 **media** | [***PinMedia**](PinMedia.md) |  | [optional] [readonly] [default to null]
 **title** | **String** |  | [optional] [default to null]

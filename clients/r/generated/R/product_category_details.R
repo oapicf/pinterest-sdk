@@ -111,7 +111,7 @@ ProductCategoryDetails <- R6::R6Class(
       ProductCategoryDetailsObject <- list()
       if (!is.null(self$`demographics`)) {
         ProductCategoryDetailsObject[["demographics"]] <-
-          self$`demographics`$toSimpleType()
+          self$extractSimpleType(self$`demographics`)
       }
       if (!is.null(self$`has_prediction`)) {
         ProductCategoryDetailsObject[["has_prediction"]] <-
@@ -119,7 +119,7 @@ ProductCategoryDetails <- R6::R6Class(
       }
       if (!is.null(self$`metrics_highlights`)) {
         ProductCategoryDetailsObject[["metrics_highlights"]] <-
-          self$`metrics_highlights`$toSimpleType()
+          self$extractSimpleType(self$`metrics_highlights`)
       }
       if (!is.null(self$`predicted_time_series`)) {
         ProductCategoryDetailsObject[["predicted_time_series"]] <-
@@ -127,7 +127,7 @@ ProductCategoryDetails <- R6::R6Class(
       }
       if (!is.null(self$`product_category`)) {
         ProductCategoryDetailsObject[["product_category"]] <-
-          self$`product_category`$toSimpleType()
+          self$extractSimpleType(self$`product_category`)
       }
       if (!is.null(self$`related_searches`)) {
         ProductCategoryDetailsObject[["related_searches"]] <-
@@ -138,6 +138,29 @@ ProductCategoryDetails <- R6::R6Class(
           self$`time_series`
       }
       return(ProductCategoryDetailsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

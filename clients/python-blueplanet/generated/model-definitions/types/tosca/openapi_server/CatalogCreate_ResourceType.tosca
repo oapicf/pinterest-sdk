@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+}
+resourceTypes {
+
+  CatalogCreate {
+    title = CatalogCreate
+    description = CatalogCreate
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        name {
+          type =  string
+          description = "A human-friendly name associated to a catalog entity."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogCreate {
+    title = CatalogCreate
+    description = CatalogCreate
+    implements = openapi_server.resourceTypes.CatalogCreate
+
+  }
+}

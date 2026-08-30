@@ -9,7 +9,8 @@
 (def trending-topic-data
   {
    (ds/req :description) string?
-   (ds/req :percent_growth_mom) int?
+   (ds/req :id) string?
+   (ds/opt :percent_growth_mom) int?
    (ds/req :pins) (s/coll-of trending-pin-spec)
    (ds/req :related_interests) (s/coll-of string?)
    (ds/req :related_searches) (s/coll-of string?)

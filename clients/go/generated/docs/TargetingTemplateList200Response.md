@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md) |  | 
+**Items** | [**[]TargetingTemplate**](TargetingTemplate.md) |  | 
 
 ## Methods
 
 ### NewTargetingTemplateList200Response
 
-`func NewTargetingTemplateList200Response(items []TargetingTemplateGetResponseData, ) *TargetingTemplateList200Response`
+`func NewTargetingTemplateList200Response(items []TargetingTemplate, ) *TargetingTemplateList200Response`
 
 NewTargetingTemplateList200Response instantiates a new TargetingTemplateList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *TargetingTemplateList200Response) GetItems() []TargetingTemplateGetResponseData`
+`func (o *TargetingTemplateList200Response) GetItems() []TargetingTemplate`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *TargetingTemplateList200Response) GetItemsOk() (*[]TargetingTemplateGetResponseData, bool)`
+`func (o *TargetingTemplateList200Response) GetItemsOk() (*[]TargetingTemplate, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *TargetingTemplateList200Response) SetItems(v []TargetingTemplateGetResponseData)`
+`func (o *TargetingTemplateList200Response) SetItems(v []TargetingTemplate)`
 
 SetItems sets Items field to given value.
 

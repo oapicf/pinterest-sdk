@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"appTypeMultipliers": @"app_type_multipliers", @"audienceMultipliers": @"audience_multipliers", @"placementMultipliers": @"placement_multipliers" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"ageBucketMultipliers": @"age_bucket_multipliers", @"appTypeMultipliers": @"app_type_multipliers", @"audienceMultipliers": @"audience_multipliers", @"freqBidMultiplierTimeWindow": @"freq_bid_multiplier_time_window", @"frequencyMultipliers": @"frequency_multipliers", @"genderMultipliers": @"gender_multipliers", @"placementMultipliers": @"placement_multipliers" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"appTypeMultipliers", @"audienceMultipliers", @"placementMultipliers"];
+  NSArray *optionalProperties = @[@"ageBucketMultipliers", @"appTypeMultipliers", @"audienceMultipliers", @"freqBidMultiplierTimeWindow", @"frequencyMultipliers", @"genderMultipliers", @"placementMultipliers"];
   return [optionalProperties containsObject:propertyName];
 }
 

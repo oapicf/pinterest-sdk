@@ -9,7 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field alt_text  character [optional]
 #' @field description  character [optional]
-#' @field id  character [optional]
+#' @field id  character
 #' @field link  character [optional]
 #' @field media  \link{PinMedia} [optional]
 #' @field title  character [optional]
@@ -29,14 +29,20 @@ SummaryPin <- R6::R6Class(
     #' @description
     #' Initialize a new SummaryPin class.
     #'
+    #' @param id id
     #' @param alt_text alt_text
     #' @param description description
-    #' @param id id
     #' @param link link
     #' @param media media
     #' @param title title
     #' @param ... Other optional arguments.
-    initialize = function(`alt_text` = NULL, `description` = NULL, `id` = NULL, `link` = NULL, `media` = NULL, `title` = NULL, ...) {
+    initialize = function(`id`, `alt_text` = NULL, `description` = NULL, `link` = NULL, `media` = NULL, `title` = NULL, ...) {
+      if (!missing(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
       if (!is.null(`alt_text`)) {
         if (!(is.character(`alt_text`) && length(`alt_text`) == 1)) {
           stop(paste("Error! Invalid data for `alt_text`. Must be a string:", `alt_text`))
@@ -48,12 +54,6 @@ SummaryPin <- R6::R6Class(
           stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
         }
         self$`description` <- `description`
-      }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
       }
       if (!is.null(`link`)) {
         if (!(is.character(`link`) && length(`link`) == 1)) {
@@ -122,13 +122,36 @@ SummaryPin <- R6::R6Class(
       }
       if (!is.null(self$`media`)) {
         SummaryPinObject[["media"]] <-
-          self$`media`$toSimpleType()
+          self$extractSimpleType(self$`media`)
       }
       if (!is.null(self$`title`)) {
         SummaryPinObject[["title"]] <-
           self$`title`
       }
       return(SummaryPinObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -194,6 +217,14 @@ SummaryPin <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for SummaryPin: the required field `id` is missing."))
+      }
     },
 
     #' @description
@@ -213,7 +244,24 @@ SummaryPin <- R6::R6Class(
         return(FALSE)
       }
 
+      if (nchar(self$`description`) > 800) {
+        return(FALSE)
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       if (nchar(self$`link`) > 2048) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`title`) > 100) {
         return(FALSE)
       }
 
@@ -230,8 +278,25 @@ SummaryPin <- R6::R6Class(
         invalid_fields["alt_text"] <- "Invalid length for `alt_text`, must be smaller than or equal to 500."
       }
 
+      if (nchar(self$`description`) > 800) {
+        invalid_fields["description"] <- "Invalid length for `description`, must be smaller than or equal to 800."
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
+      }
+
       if (nchar(self$`link`) > 2048) {
         invalid_fields["link"] <- "Invalid length for `link`, must be smaller than or equal to 2048."
+      }
+
+      if (nchar(self$`title`) > 100) {
+        invalid_fields["title"] <- "Invalid length for `title`, must be smaller than or equal to 100."
       }
 
       invalid_fields

@@ -5,21 +5,45 @@
   "name": "CampaignBidOptions",
   "fields": [
     {
+      "name": "age_bucket_multipliers",
+      "type": ["null", "model.AgeBucketMultipliers"],
+      "doc": "Age bucket multipliers for bid adjustments.",
+      "default": null
+    },
+    {
       "name": "app_type_multipliers",
       "type": ["null", "model.AppTypeMultipliers"],
-      "doc": "",
+      "doc": "App type multipliers for bid adjustments.",
       "default": null
     },
     {
       "name": "audience_multipliers",
       "type": ["null", "model.CampaignAudienceMultipliers"],
-      "doc": "",
+      "doc": "Audience multipliers for bid adjustments.",
+      "default": null
+    },
+    {
+      "name": "freq_bid_multiplier_time_window",
+      "type": ["null", "model.FreqBidMultiplierTimeWindow"],
+      "doc": "The time window for frequency bid multipliers.",
+      "default": null
+    },
+    {
+      "name": "frequency_multipliers",
+      "type": ["null", "model.FrequencyMultipliers"],
+      "doc": "Frequency multipliers for bid adjustments.",
+      "default": null
+    },
+    {
+      "name": "gender_multipliers",
+      "type": ["null", "model.GenderMultipliers"],
+      "doc": "Gender multipliers for bid adjustments.",
       "default": null
     },
     {
       "name": "placement_multipliers",
       "type": ["null", "model.PlacementMultipliers"],
-      "doc": "",
+      "doc": "Placement multipliers for bid adjustments.",
       "default": null
     }
   ]

@@ -2,196 +2,283 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedIngestionWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestionWarnings {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_400;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_403;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_404;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_405;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_410;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_429;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_500;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_502;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_503;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_504;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_507;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_508;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_520;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_521;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_522;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_525;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INVALID_FILE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_SITE_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_SITE_TIMEOUT;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_SSL_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_EMPTY_FILE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_TOO_MANY_PIXELS;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_TYPE_MISMATCH;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_400;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_403;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_404;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_405;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_410;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_429;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_500;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_502;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_503;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_504;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_507;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_508;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_520;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_521;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_522;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_525;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INVALID_FILE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_SITE_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_SITE_TIMEOUT;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_SSL_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_LENGTH_TOO_SHORT;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_EMPTY_FILE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_TOO_MANY_PIXELS;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_TYPE_MISMATCH;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_INVALID_FILE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_MALFORMED_URL;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer HOTEL_PRICE_HEADER_IS_PRESENT;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_DOWNLOAD_VIDEO_TOO_SHORT;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_FILE_NOT_ACCESSIBLE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_FILE_NOT_FOUND;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_INVALID_FILE;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_LEVEL_INTERNAL_ERROR;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_MALFORMED_URL;
 
   public CatalogsFeedIngestionWarnings AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR(@Nullable Integer AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR) {
@@ -210,6 +297,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR")
   public void setADIMAGEDOWNLOADCONTENTREADERROR(@Nullable Integer AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR) {
     this.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR = AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR;
   }
@@ -230,6 +318,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR")
   public void setADIMAGEDOWNLOADDNSLOOKUPERROR(@Nullable Integer AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR) {
     this.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR = AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR;
   }
@@ -250,6 +339,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE")
   public void setADIMAGEDOWNLOADFILENOTACCESSIBLE(@Nullable Integer AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
     this.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE = AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE;
   }
@@ -270,6 +360,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND")
   public void setADIMAGEDOWNLOADFILENOTFOUND(@Nullable Integer AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND) {
     this.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND = AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND;
   }
@@ -290,6 +381,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_400;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_400")
   public void setADIMAGEDOWNLOADHTTPSTATUS400(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_400) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_400 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_400;
   }
@@ -310,6 +402,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_403;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_403")
   public void setADIMAGEDOWNLOADHTTPSTATUS403(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_403) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_403 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_403;
   }
@@ -330,6 +423,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_404;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_404")
   public void setADIMAGEDOWNLOADHTTPSTATUS404(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_404) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_404 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_404;
   }
@@ -350,6 +444,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_405;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_405")
   public void setADIMAGEDOWNLOADHTTPSTATUS405(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_405) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_405 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_405;
   }
@@ -370,6 +465,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_410;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_410")
   public void setADIMAGEDOWNLOADHTTPSTATUS410(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_410) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_410 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_410;
   }
@@ -390,6 +486,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_429;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_429")
   public void setADIMAGEDOWNLOADHTTPSTATUS429(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_429) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_429 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_429;
   }
@@ -410,6 +507,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_500;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_500")
   public void setADIMAGEDOWNLOADHTTPSTATUS500(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_500) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_500 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_500;
   }
@@ -430,6 +528,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_502;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_502")
   public void setADIMAGEDOWNLOADHTTPSTATUS502(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_502) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_502 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_502;
   }
@@ -450,6 +549,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_503;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_503")
   public void setADIMAGEDOWNLOADHTTPSTATUS503(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_503) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_503 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_503;
   }
@@ -470,6 +570,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_504;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_504")
   public void setADIMAGEDOWNLOADHTTPSTATUS504(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_504) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_504 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_504;
   }
@@ -490,6 +591,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_507;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_507")
   public void setADIMAGEDOWNLOADHTTPSTATUS507(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_507) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_507 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_507;
   }
@@ -510,6 +612,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_508;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_508")
   public void setADIMAGEDOWNLOADHTTPSTATUS508(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_508) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_508 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_508;
   }
@@ -530,6 +633,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_520;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_520")
   public void setADIMAGEDOWNLOADHTTPSTATUS520(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_520) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_520 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_520;
   }
@@ -550,6 +654,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_521;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_521")
   public void setADIMAGEDOWNLOADHTTPSTATUS521(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_521) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_521 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_521;
   }
@@ -570,6 +675,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_522;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_522")
   public void setADIMAGEDOWNLOADHTTPSTATUS522(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_522) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_522 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_522;
   }
@@ -590,6 +696,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_HTTP_STATUS_525;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_HTTP_STATUS_525")
   public void setADIMAGEDOWNLOADHTTPSTATUS525(@Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_525) {
     this.AD_IMAGE_DOWNLOAD_HTTP_STATUS_525 = AD_IMAGE_DOWNLOAD_HTTP_STATUS_525;
   }
@@ -610,6 +717,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR")
   public void setADIMAGEDOWNLOADINTERNALCONFIGURATIONERROR(@Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
     this.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR = AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR;
   }
@@ -630,6 +738,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_INTERNAL_ERROR;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_ERROR")
   public void setADIMAGEDOWNLOADINTERNALERROR(@Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_ERROR) {
     this.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR = AD_IMAGE_DOWNLOAD_INTERNAL_ERROR;
   }
@@ -650,6 +759,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD")
   public void setADIMAGEDOWNLOADINTERNALFAILEDTODOWNLOAD(@Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
     this.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD = AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD;
   }
@@ -670,6 +780,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL")
   public void setADIMAGEDOWNLOADINTERNALMALFORMEDURL(@Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL) {
     this.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL = AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL;
   }
@@ -690,6 +801,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED")
   public void setADIMAGEDOWNLOADINTERNALRATELIMITED(@Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED) {
     this.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED = AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED;
   }
@@ -710,6 +822,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED")
   public void setADIMAGEDOWNLOADINTERNALREQUESTEXPIRED(@Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
     this.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED = AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED;
   }
@@ -730,6 +843,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_INVALID_FILE;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_INVALID_FILE")
   public void setADIMAGEDOWNLOADINVALIDFILE(@Nullable Integer AD_IMAGE_DOWNLOAD_INVALID_FILE) {
     this.AD_IMAGE_DOWNLOAD_INVALID_FILE = AD_IMAGE_DOWNLOAD_INVALID_FILE;
   }
@@ -750,6 +864,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_SITE_ERROR;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_SITE_ERROR")
   public void setADIMAGEDOWNLOADSITEERROR(@Nullable Integer AD_IMAGE_DOWNLOAD_SITE_ERROR) {
     this.AD_IMAGE_DOWNLOAD_SITE_ERROR = AD_IMAGE_DOWNLOAD_SITE_ERROR;
   }
@@ -770,6 +885,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_SITE_TIMEOUT;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_SITE_TIMEOUT")
   public void setADIMAGEDOWNLOADSITETIMEOUT(@Nullable Integer AD_IMAGE_DOWNLOAD_SITE_TIMEOUT) {
     this.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT = AD_IMAGE_DOWNLOAD_SITE_TIMEOUT;
   }
@@ -790,6 +906,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_SSL_ERROR;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_SSL_ERROR")
   public void setADIMAGEDOWNLOADSSLERROR(@Nullable Integer AD_IMAGE_DOWNLOAD_SSL_ERROR) {
     this.AD_IMAGE_DOWNLOAD_SSL_ERROR = AD_IMAGE_DOWNLOAD_SSL_ERROR;
   }
@@ -810,6 +927,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR;
   }
 
+  @JsonProperty("AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR")
   public void setADIMAGEDOWNLOADSSLHANDSHAKEERROR(@Nullable Integer AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
     this.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR = AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR;
   }
@@ -830,6 +948,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_PROCESSING_EMPTY_FILE;
   }
 
+  @JsonProperty("AD_IMAGE_PROCESSING_EMPTY_FILE")
   public void setADIMAGEPROCESSINGEMPTYFILE(@Nullable Integer AD_IMAGE_PROCESSING_EMPTY_FILE) {
     this.AD_IMAGE_PROCESSING_EMPTY_FILE = AD_IMAGE_PROCESSING_EMPTY_FILE;
   }
@@ -850,6 +969,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL;
   }
 
+  @JsonProperty("AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL")
   public void setADIMAGEPROCESSINGHEIGHTTOOSMALL(@Nullable Integer AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL) {
     this.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL = AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL;
   }
@@ -870,6 +990,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_PROCESSING_TOO_MANY_PIXELS;
   }
 
+  @JsonProperty("AD_IMAGE_PROCESSING_TOO_MANY_PIXELS")
   public void setADIMAGEPROCESSINGTOOMANYPIXELS(@Nullable Integer AD_IMAGE_PROCESSING_TOO_MANY_PIXELS) {
     this.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS = AD_IMAGE_PROCESSING_TOO_MANY_PIXELS;
   }
@@ -890,6 +1011,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_PROCESSING_TYPE_MISMATCH;
   }
 
+  @JsonProperty("AD_IMAGE_PROCESSING_TYPE_MISMATCH")
   public void setADIMAGEPROCESSINGTYPEMISMATCH(@Nullable Integer AD_IMAGE_PROCESSING_TYPE_MISMATCH) {
     this.AD_IMAGE_PROCESSING_TYPE_MISMATCH = AD_IMAGE_PROCESSING_TYPE_MISMATCH;
   }
@@ -910,6 +1032,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL;
   }
 
+  @JsonProperty("AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL")
   public void setADIMAGEPROCESSINGWIDTHTOOSMALL(@Nullable Integer AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL) {
     this.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL = AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL;
   }
@@ -930,6 +1053,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR")
   public void setADVIDEODOWNLOADCONTENTREADERROR(@Nullable Integer AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR) {
     this.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR = AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR;
   }
@@ -950,6 +1074,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR")
   public void setADVIDEODOWNLOADDNSLOOKUPERROR(@Nullable Integer AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR) {
     this.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR = AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR;
   }
@@ -970,6 +1095,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE")
   public void setADVIDEODOWNLOADFILENOTACCESSIBLE(@Nullable Integer AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE) {
     this.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE = AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE;
   }
@@ -990,6 +1116,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND")
   public void setADVIDEODOWNLOADFILENOTFOUND(@Nullable Integer AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND) {
     this.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND = AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND;
   }
@@ -1010,6 +1137,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_400;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_400")
   public void setADVIDEODOWNLOADHTTPSTATUS400(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_400) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_400 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_400;
   }
@@ -1030,6 +1158,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_403;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_403")
   public void setADVIDEODOWNLOADHTTPSTATUS403(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_403) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_403 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_403;
   }
@@ -1050,6 +1179,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_404;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_404")
   public void setADVIDEODOWNLOADHTTPSTATUS404(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_404) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_404 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_404;
   }
@@ -1070,6 +1200,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_405;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_405")
   public void setADVIDEODOWNLOADHTTPSTATUS405(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_405) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_405 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_405;
   }
@@ -1090,6 +1221,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_410;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_410")
   public void setADVIDEODOWNLOADHTTPSTATUS410(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_410) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_410 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_410;
   }
@@ -1110,6 +1242,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_429;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_429")
   public void setADVIDEODOWNLOADHTTPSTATUS429(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_429) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_429 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_429;
   }
@@ -1130,6 +1263,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_500;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_500")
   public void setADVIDEODOWNLOADHTTPSTATUS500(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_500) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_500 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_500;
   }
@@ -1150,6 +1284,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_502;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_502")
   public void setADVIDEODOWNLOADHTTPSTATUS502(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_502) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_502 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_502;
   }
@@ -1170,6 +1305,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_503;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_503")
   public void setADVIDEODOWNLOADHTTPSTATUS503(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_503) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_503 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_503;
   }
@@ -1190,6 +1326,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_504;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_504")
   public void setADVIDEODOWNLOADHTTPSTATUS504(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_504) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_504 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_504;
   }
@@ -1210,6 +1347,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_507;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_507")
   public void setADVIDEODOWNLOADHTTPSTATUS507(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_507) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_507 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_507;
   }
@@ -1230,6 +1368,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_508;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_508")
   public void setADVIDEODOWNLOADHTTPSTATUS508(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_508) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_508 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_508;
   }
@@ -1250,6 +1389,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_520;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_520")
   public void setADVIDEODOWNLOADHTTPSTATUS520(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_520) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_520 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_520;
   }
@@ -1270,6 +1410,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_521;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_521")
   public void setADVIDEODOWNLOADHTTPSTATUS521(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_521) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_521 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_521;
   }
@@ -1290,6 +1431,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_522;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_522")
   public void setADVIDEODOWNLOADHTTPSTATUS522(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_522) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_522 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_522;
   }
@@ -1310,6 +1452,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_HTTP_STATUS_525;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_HTTP_STATUS_525")
   public void setADVIDEODOWNLOADHTTPSTATUS525(@Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_525) {
     this.AD_VIDEO_DOWNLOAD_HTTP_STATUS_525 = AD_VIDEO_DOWNLOAD_HTTP_STATUS_525;
   }
@@ -1330,6 +1473,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR")
   public void setADVIDEODOWNLOADINTERNALCONFIGURATIONERROR(@Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR) {
     this.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR = AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR;
   }
@@ -1350,6 +1494,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_INTERNAL_ERROR;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_ERROR")
   public void setADVIDEODOWNLOADINTERNALERROR(@Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_ERROR) {
     this.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR = AD_VIDEO_DOWNLOAD_INTERNAL_ERROR;
   }
@@ -1370,6 +1515,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD")
   public void setADVIDEODOWNLOADINTERNALFAILEDTODOWNLOAD(@Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD) {
     this.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD = AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD;
   }
@@ -1390,6 +1536,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL")
   public void setADVIDEODOWNLOADINTERNALMALFORMEDURL(@Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL) {
     this.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL = AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL;
   }
@@ -1410,6 +1557,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED")
   public void setADVIDEODOWNLOADINTERNALRATELIMITED(@Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED) {
     this.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED = AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED;
   }
@@ -1430,6 +1578,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED")
   public void setADVIDEODOWNLOADINTERNALREQUESTEXPIRED(@Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED) {
     this.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED = AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED;
   }
@@ -1450,6 +1599,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_INVALID_FILE;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_INVALID_FILE")
   public void setADVIDEODOWNLOADINVALIDFILE(@Nullable Integer AD_VIDEO_DOWNLOAD_INVALID_FILE) {
     this.AD_VIDEO_DOWNLOAD_INVALID_FILE = AD_VIDEO_DOWNLOAD_INVALID_FILE;
   }
@@ -1470,6 +1620,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_SITE_ERROR;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_SITE_ERROR")
   public void setADVIDEODOWNLOADSITEERROR(@Nullable Integer AD_VIDEO_DOWNLOAD_SITE_ERROR) {
     this.AD_VIDEO_DOWNLOAD_SITE_ERROR = AD_VIDEO_DOWNLOAD_SITE_ERROR;
   }
@@ -1490,6 +1641,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_SITE_TIMEOUT;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_SITE_TIMEOUT")
   public void setADVIDEODOWNLOADSITETIMEOUT(@Nullable Integer AD_VIDEO_DOWNLOAD_SITE_TIMEOUT) {
     this.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT = AD_VIDEO_DOWNLOAD_SITE_TIMEOUT;
   }
@@ -1510,6 +1662,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_SSL_ERROR;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_SSL_ERROR")
   public void setADVIDEODOWNLOADSSLERROR(@Nullable Integer AD_VIDEO_DOWNLOAD_SSL_ERROR) {
     this.AD_VIDEO_DOWNLOAD_SSL_ERROR = AD_VIDEO_DOWNLOAD_SSL_ERROR;
   }
@@ -1530,6 +1683,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR;
   }
 
+  @JsonProperty("AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR")
   public void setADVIDEODOWNLOADSSLHANDSHAKEERROR(@Nullable Integer AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR) {
     this.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR = AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR;
   }
@@ -1550,6 +1704,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_LENGTH_TOO_SHORT;
   }
 
+  @JsonProperty("AD_VIDEO_LENGTH_TOO_SHORT")
   public void setADVIDEOLENGTHTOOSHORT(@Nullable Integer AD_VIDEO_LENGTH_TOO_SHORT) {
     this.AD_VIDEO_LENGTH_TOO_SHORT = AD_VIDEO_LENGTH_TOO_SHORT;
   }
@@ -1570,6 +1725,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_PROCESSING_EMPTY_FILE;
   }
 
+  @JsonProperty("AD_VIDEO_PROCESSING_EMPTY_FILE")
   public void setADVIDEOPROCESSINGEMPTYFILE(@Nullable Integer AD_VIDEO_PROCESSING_EMPTY_FILE) {
     this.AD_VIDEO_PROCESSING_EMPTY_FILE = AD_VIDEO_PROCESSING_EMPTY_FILE;
   }
@@ -1590,6 +1746,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL;
   }
 
+  @JsonProperty("AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL")
   public void setADVIDEOPROCESSINGHEIGHTTOOSMALL(@Nullable Integer AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL) {
     this.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL = AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL;
   }
@@ -1610,6 +1767,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_PROCESSING_TOO_MANY_PIXELS;
   }
 
+  @JsonProperty("AD_VIDEO_PROCESSING_TOO_MANY_PIXELS")
   public void setADVIDEOPROCESSINGTOOMANYPIXELS(@Nullable Integer AD_VIDEO_PROCESSING_TOO_MANY_PIXELS) {
     this.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS = AD_VIDEO_PROCESSING_TOO_MANY_PIXELS;
   }
@@ -1630,6 +1788,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_PROCESSING_TYPE_MISMATCH;
   }
 
+  @JsonProperty("AD_VIDEO_PROCESSING_TYPE_MISMATCH")
   public void setADVIDEOPROCESSINGTYPEMISMATCH(@Nullable Integer AD_VIDEO_PROCESSING_TYPE_MISMATCH) {
     this.AD_VIDEO_PROCESSING_TYPE_MISMATCH = AD_VIDEO_PROCESSING_TYPE_MISMATCH;
   }
@@ -1650,6 +1809,7 @@ public class CatalogsFeedIngestionWarnings {
     return AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL;
   }
 
+  @JsonProperty("AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL")
   public void setADVIDEOPROCESSINGWIDTHTOOSMALL(@Nullable Integer AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL) {
     this.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL = AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL;
   }
@@ -1670,6 +1830,7 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
+  @JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE")
   public void setADDITIONALIMAGEFILENOTACCESSIBLE(@Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
     this.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE = ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
   }
@@ -1690,6 +1851,7 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_FILE_NOT_FOUND;
   }
 
+  @JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_FOUND")
   public void setADDITIONALIMAGEFILENOTFOUND(@Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
     this.ADDITIONAL_IMAGE_FILE_NOT_FOUND = ADDITIONAL_IMAGE_FILE_NOT_FOUND;
   }
@@ -1710,6 +1872,7 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_INVALID_FILE;
   }
 
+  @JsonProperty("ADDITIONAL_IMAGE_INVALID_FILE")
   public void setADDITIONALIMAGEINVALIDFILE(@Nullable Integer ADDITIONAL_IMAGE_INVALID_FILE) {
     this.ADDITIONAL_IMAGE_INVALID_FILE = ADDITIONAL_IMAGE_INVALID_FILE;
   }
@@ -1730,6 +1893,7 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
+  @JsonProperty("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR")
   public void setADDITIONALIMAGELEVELINTERNALERROR(@Nullable Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
     this.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
   }
@@ -1750,6 +1914,7 @@ public class CatalogsFeedIngestionWarnings {
     return ADDITIONAL_IMAGE_MALFORMED_URL;
   }
 
+  @JsonProperty("ADDITIONAL_IMAGE_MALFORMED_URL")
   public void setADDITIONALIMAGEMALFORMEDURL(@Nullable Integer ADDITIONAL_IMAGE_MALFORMED_URL) {
     this.ADDITIONAL_IMAGE_MALFORMED_URL = ADDITIONAL_IMAGE_MALFORMED_URL;
   }
@@ -1770,6 +1935,7 @@ public class CatalogsFeedIngestionWarnings {
     return FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT;
   }
 
+  @JsonProperty("FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT")
   public void setFETCHGOOGLESHEETPUBLICCANEDIT(@Nullable Integer FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT) {
     this.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT = FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT;
   }
@@ -1790,6 +1956,7 @@ public class CatalogsFeedIngestionWarnings {
     return HOTEL_PRICE_HEADER_IS_PRESENT;
   }
 
+  @JsonProperty("HOTEL_PRICE_HEADER_IS_PRESENT")
   public void setHOTELPRICEHEADERISPRESENT(@Nullable Integer HOTEL_PRICE_HEADER_IS_PRESENT) {
     this.HOTEL_PRICE_HEADER_IS_PRESENT = HOTEL_PRICE_HEADER_IS_PRESENT;
   }
@@ -1810,6 +1977,7 @@ public class CatalogsFeedIngestionWarnings {
     return VIDEO_DOWNLOAD_VIDEO_TOO_SHORT;
   }
 
+  @JsonProperty("VIDEO_DOWNLOAD_VIDEO_TOO_SHORT")
   public void setVIDEODOWNLOADVIDEOTOOSHORT(@Nullable Integer VIDEO_DOWNLOAD_VIDEO_TOO_SHORT) {
     this.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT = VIDEO_DOWNLOAD_VIDEO_TOO_SHORT;
   }
@@ -1830,6 +1998,7 @@ public class CatalogsFeedIngestionWarnings {
     return VIDEO_FILE_NOT_ACCESSIBLE;
   }
 
+  @JsonProperty("VIDEO_FILE_NOT_ACCESSIBLE")
   public void setVIDEOFILENOTACCESSIBLE(@Nullable Integer VIDEO_FILE_NOT_ACCESSIBLE) {
     this.VIDEO_FILE_NOT_ACCESSIBLE = VIDEO_FILE_NOT_ACCESSIBLE;
   }
@@ -1850,6 +2019,7 @@ public class CatalogsFeedIngestionWarnings {
     return VIDEO_FILE_NOT_FOUND;
   }
 
+  @JsonProperty("VIDEO_FILE_NOT_FOUND")
   public void setVIDEOFILENOTFOUND(@Nullable Integer VIDEO_FILE_NOT_FOUND) {
     this.VIDEO_FILE_NOT_FOUND = VIDEO_FILE_NOT_FOUND;
   }
@@ -1870,6 +2040,7 @@ public class CatalogsFeedIngestionWarnings {
     return VIDEO_INVALID_FILE;
   }
 
+  @JsonProperty("VIDEO_INVALID_FILE")
   public void setVIDEOINVALIDFILE(@Nullable Integer VIDEO_INVALID_FILE) {
     this.VIDEO_INVALID_FILE = VIDEO_INVALID_FILE;
   }
@@ -1890,6 +2061,7 @@ public class CatalogsFeedIngestionWarnings {
     return VIDEO_LEVEL_INTERNAL_ERROR;
   }
 
+  @JsonProperty("VIDEO_LEVEL_INTERNAL_ERROR")
   public void setVIDEOLEVELINTERNALERROR(@Nullable Integer VIDEO_LEVEL_INTERNAL_ERROR) {
     this.VIDEO_LEVEL_INTERNAL_ERROR = VIDEO_LEVEL_INTERNAL_ERROR;
   }
@@ -1910,6 +2082,7 @@ public class CatalogsFeedIngestionWarnings {
     return VIDEO_MALFORMED_URL;
   }
 
+  @JsonProperty("VIDEO_MALFORMED_URL")
   public void setVIDEOMALFORMEDURL(@Nullable Integer VIDEO_MALFORMED_URL) {
     this.VIDEO_MALFORMED_URL = VIDEO_MALFORMED_URL;
   }
@@ -2114,11 +2287,8 @@ public class CatalogsFeedIngestionWarnings {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

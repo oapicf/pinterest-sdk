@@ -28,6 +28,7 @@ module PinMedia =
     Duration : decimal option;
     Height : int option;
     VideoUrl : string option;
+    VideoUrlHls : string option;
     Width : int option;
     Items : PinMediaMetadata[];
   }

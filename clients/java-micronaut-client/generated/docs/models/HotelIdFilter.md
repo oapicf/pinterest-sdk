@@ -8,7 +8,7 @@ The class is defined in **[HotelIdFilter.java](../../src/main/java/org/openapito
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HOTEL_ID** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**HOTEL_ID** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 
 

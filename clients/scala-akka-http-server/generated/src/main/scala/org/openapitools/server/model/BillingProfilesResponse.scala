@@ -11,10 +11,10 @@ package org.openapitools.server.model
 */
 final case class BillingProfilesResponse (
   advertiserId: Option[String] = None,
-  billingType: Option[String] = None,
-  cardType: Option[String] = None,
+  billingType: Option[BillingType] = None,
+  cardType: Option[BillingProfileCardType] = None,
   id: Option[String] = None,
-  paymentMethodBrand: Option[String] = None,
-  status: Option[String] = None
+  paymentMethodBrand: Option[BillingProfilePaymentMethodBrand] = None,
+  status: Option[BillingProfileStatus] = None
 )
 

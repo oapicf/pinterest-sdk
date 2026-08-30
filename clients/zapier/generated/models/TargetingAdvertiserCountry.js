@@ -26,7 +26,7 @@ module.exports = {
                     'JP',
                     'KR',
                     'SG',
-                    'NO',
+                    'false',
                     'DK',
                     'FI',
                     'CY',

@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.AuthRespondInvitesBodyInvitesInner
+open OpenAPI.Model.AuthRespondInvitesBodyItem
 
 module AuthRespondInvitesBody =
 
@@ -10,6 +10,6 @@ module AuthRespondInvitesBody =
 
 
   type AuthRespondInvitesBody = {
-    Invites : AuthRespondInvitesBodyInvitesInner[];
+    Invites : AuthRespondInvitesBodyItem[];
   }
   //#endregion

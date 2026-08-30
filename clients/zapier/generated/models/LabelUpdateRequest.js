@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const LabelUpdateRequest_labels_inner = require('../models/LabelUpdateRequest_labels_inner');
+const LabelUpdateItem = require('../models/LabelUpdateItem');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -8,14 +8,14 @@ module.exports = {
             {
                 key: `${keyPrefix}labels`,
                 label: `[${labelPrefix}labels]`,
-                children: LabelUpdateRequest_labels_inner.fields(`${keyPrefix}labels${!isInput ? '[]' : ''}`, isInput, true), 
+                children: LabelUpdateItem.fields(`${keyPrefix}labels${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'labels': utils.childMapping(bundle.inputData?.[`${keyPrefix}labels`], `${keyPrefix}labels`, LabelUpdateRequest_labels_inner),
+            'labels': utils.childMapping(bundle.inputData?.[`${keyPrefix}labels`], `${keyPrefix}labels`, LabelUpdateItem),
         }
     },
 }

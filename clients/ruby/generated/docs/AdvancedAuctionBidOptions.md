@@ -15,7 +15,7 @@ require 'pinterest_sdk'
 
 instance = PinterestSdkClient::AdvancedAuctionBidOptions.new(
   app_type_multipliers: null,
-  bid_in_micro_currency: 5000000,
+  bid_in_micro_currency: null,
   placement_multipliers: null
 )
 ```

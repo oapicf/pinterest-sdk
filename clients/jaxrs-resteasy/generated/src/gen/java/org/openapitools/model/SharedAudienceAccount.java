@@ -7,37 +7,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.AudienceAccountType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SharedAudienceAccount   {
   
   private String accountId;
   private String accountName;
-
-  /**
-   * account type
-   */
-  public enum AccountTypeEnum {
-    AD_ACCOUNT("AD_ACCOUNT"),
-
-        BUSINESS_ACCOUNT("BUSINESS_ACCOUNT");
-    private String value;
-
-    AccountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private AccountTypeEnum accountType;
+  private AudienceAccountType accountType;
   private Integer sharedOnTimestamp;
 
   /**
@@ -75,10 +55,11 @@ public class SharedAudienceAccount   {
   @ApiModelProperty(required = true, value = "account type")
   @JsonProperty("account_type")
   @NotNull
-  public AccountTypeEnum getAccountType() {
+  @Valid
+  public AudienceAccountType getAccountType() {
     return accountType;
   }
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(AudienceAccountType accountType) {
     this.accountType = accountType;
   }
 
@@ -135,10 +116,7 @@ public class SharedAudienceAccount   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

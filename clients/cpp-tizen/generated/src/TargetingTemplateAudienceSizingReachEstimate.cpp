@@ -5,23 +5,23 @@
 #include "Helpers.h"
 
 
-#include "TargetingTemplateAudienceSizing_reach_estimate.h"
+#include "TargetingTemplateAudienceSizingReachEstimate.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-TargetingTemplateAudienceSizing_reach_estimate::TargetingTemplateAudienceSizing_reach_estimate()
+TargetingTemplateAudienceSizingReachEstimate::TargetingTemplateAudienceSizingReachEstimate()
 {
 	//__init();
 }
 
-TargetingTemplateAudienceSizing_reach_estimate::~TargetingTemplateAudienceSizing_reach_estimate()
+TargetingTemplateAudienceSizingReachEstimate::~TargetingTemplateAudienceSizingReachEstimate()
 {
 	//__cleanup();
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::__init()
+TargetingTemplateAudienceSizingReachEstimate::__init()
 {
 	//estimate = long(0);
 	//lower_bound = long(0);
@@ -29,7 +29,7 @@ TargetingTemplateAudienceSizing_reach_estimate::__init()
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::__cleanup()
+TargetingTemplateAudienceSizingReachEstimate::__cleanup()
 {
 	//if(estimate != NULL) {
 	//
@@ -50,7 +50,7 @@ TargetingTemplateAudienceSizing_reach_estimate::__cleanup()
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::fromJson(char* jsonStr)
+TargetingTemplateAudienceSizingReachEstimate::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
@@ -89,13 +89,13 @@ TargetingTemplateAudienceSizing_reach_estimate::fromJson(char* jsonStr)
 	}
 }
 
-TargetingTemplateAudienceSizing_reach_estimate::TargetingTemplateAudienceSizing_reach_estimate(char* json)
+TargetingTemplateAudienceSizingReachEstimate::TargetingTemplateAudienceSizingReachEstimate(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-TargetingTemplateAudienceSizing_reach_estimate::toJson()
+TargetingTemplateAudienceSizingReachEstimate::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
@@ -135,37 +135,37 @@ TargetingTemplateAudienceSizing_reach_estimate::toJson()
 }
 
 long long
-TargetingTemplateAudienceSizing_reach_estimate::getEstimate()
+TargetingTemplateAudienceSizingReachEstimate::getEstimate()
 {
 	return estimate;
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::setEstimate(long long  estimate)
+TargetingTemplateAudienceSizingReachEstimate::setEstimate(long long  estimate)
 {
 	this->estimate = estimate;
 }
 
 long long
-TargetingTemplateAudienceSizing_reach_estimate::getLowerBound()
+TargetingTemplateAudienceSizingReachEstimate::getLowerBound()
 {
 	return lower_bound;
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::setLowerBound(long long  lower_bound)
+TargetingTemplateAudienceSizingReachEstimate::setLowerBound(long long  lower_bound)
 {
 	this->lower_bound = lower_bound;
 }
 
 long long
-TargetingTemplateAudienceSizing_reach_estimate::getUpperBound()
+TargetingTemplateAudienceSizingReachEstimate::getUpperBound()
 {
 	return upper_bound;
 }
 
 void
-TargetingTemplateAudienceSizing_reach_estimate::setUpperBound(long long  upper_bound)
+TargetingTemplateAudienceSizingReachEstimate::setUpperBound(long long  upper_bound)
 {
 	this->upper_bound = upper_bound;
 }

@@ -1,0 +1,18 @@
+package models
+
+type BusinessAssets struct {
+
+	// An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
+	AssetGroupInfo AssetGroupBinding `json:"asset_group_info,omitempty"`
+
+	// Unique identifier of a business asset.
+	AssetId string `json:"asset_id,omitempty" validate:"regexp=^\\d+$"`
+
+	AssetType AssetTypeResponse `json:"asset_type,omitempty"`
+
+	// Permission levels the requesting business has on an asset.
+	Permissions []string `json:"permissions,omitempty"`
+
+	// An object containing all the information specific to the provided catalog. This field will be populated only if asset_type equals 'CATALOG'.
+	CatalogInfo CatalogBinding `json:"catalog_info,omitempty"`
+}

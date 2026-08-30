@@ -21,7 +21,7 @@ class ResourcesApi {
   /// Get Ad Accounts countries
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> adAccountCountriesGetWithHttpInfo() async {
+  Future<Response> adAccountCountriesGetWithHttpInfo({ Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/resources/ad_account_countries';
 
@@ -43,14 +43,15 @@ class ResourcesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get ad accounts countries
   ///
   /// Get Ad Accounts countries
-  Future<AdAccountsCountryResponse?> adAccountCountriesGet() async {
-    final response = await adAccountCountriesGetWithHttpInfo();
+  Future<AdAccountCountriesGet200Response?> adAccountCountriesGet({ Future<void>? abortTrigger, }) async {
+    final response = await adAccountCountriesGetWithHttpInfo(abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -58,7 +59,7 @@ class ResourcesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdAccountsCountryResponse',) as AdAccountsCountryResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdAccountCountriesGet200Response',) as AdAccountCountriesGet200Response;
     
     }
     return null;
@@ -66,15 +67,15 @@ class ResourcesApi {
 
   /// Get available metrics' definitions
   ///
-  /// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
+  /// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] reportType:
+  /// * [ReportType] reportType:
   ///   Report type.
-  Future<Response> deliveryMetricsGetWithHttpInfo({ String? reportType, }) async {
+  Future<Response> deliveryMetricsGetWithHttpInfo({ ReportType? reportType, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/resources/delivery_metrics';
 
@@ -100,19 +101,20 @@ class ResourcesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get available metrics' definitions
   ///
-  /// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
+  /// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
   ///
   /// Parameters:
   ///
-  /// * [String] reportType:
+  /// * [ReportType] reportType:
   ///   Report type.
-  Future<DeliveryMetricsResponse?> deliveryMetricsGet({ String? reportType, }) async {
-    final response = await deliveryMetricsGetWithHttpInfo( reportType: reportType, );
+  Future<DeliveryMetricsGet200Response?> deliveryMetricsGet({ ReportType? reportType, Future<void>? abortTrigger, }) async {
+    final response = await deliveryMetricsGetWithHttpInfo(reportType: reportType, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -120,7 +122,7 @@ class ResourcesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeliveryMetricsResponse',) as DeliveryMetricsResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeliveryMetricsGet200Response',) as DeliveryMetricsGet200Response;
     
     }
     return null;
@@ -128,7 +130,7 @@ class ResourcesApi {
 
   /// Get interest details
   ///
-  /// <p>Get details of a specific interest given interest ID.</p> <p>Click <a href=\"https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875\" target=\"_blank\">here</a> for a spreadsheet listing interests and their IDs.</p>
+  /// Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875) for a spreadsheet listing interests and their IDs.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -136,7 +138,7 @@ class ResourcesApi {
   ///
   /// * [String] interestId (required):
   ///   Unique identifier of an interest.
-  Future<Response> interestTargetingOptionsGetWithHttpInfo(String interestId,) async {
+  Future<Response> interestTargetingOptionsGetWithHttpInfo(String interestId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/resources/targeting/interests/{interest_id}'
       .replaceAll('{interest_id}', interestId);
@@ -159,19 +161,20 @@ class ResourcesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get interest details
   ///
-  /// <p>Get details of a specific interest given interest ID.</p> <p>Click <a href=\"https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875\" target=\"_blank\">here</a> for a spreadsheet listing interests and their IDs.</p>
+  /// Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875) for a spreadsheet listing interests and their IDs.
   ///
   /// Parameters:
   ///
   /// * [String] interestId (required):
   ///   Unique identifier of an interest.
-  Future<SingleInterestTargetingOptionResponse?> interestTargetingOptionsGet(String interestId,) async {
-    final response = await interestTargetingOptionsGetWithHttpInfo(interestId,);
+  Future<SingleInterestTargetingOption?> interestTargetingOptionsGet(String interestId, { Future<void>? abortTrigger, }) async {
+    final response = await interestTargetingOptionsGetWithHttpInfo(interestId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -179,7 +182,7 @@ class ResourcesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SingleInterestTargetingOptionResponse',) as SingleInterestTargetingOptionResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SingleInterestTargetingOption',) as SingleInterestTargetingOption;
     
     }
     return null;
@@ -187,10 +190,10 @@ class ResourcesApi {
 
   /// Get lead form questions
   ///
-  /// Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+  /// Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> leadFormQuestionsGetWithHttpInfo() async {
+  Future<Response> leadFormQuestionsGetWithHttpInfo({ Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/resources/lead_form_questions';
 
@@ -212,14 +215,15 @@ class ResourcesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get lead form questions
   ///
-  /// Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
-  Future<void> leadFormQuestionsGet() async {
-    final response = await leadFormQuestionsGetWithHttpInfo();
+  /// Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
+  Future<void> leadFormQuestionsGet({ Future<void>? abortTrigger, }) async {
+    final response = await leadFormQuestionsGetWithHttpInfo(abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -235,7 +239,7 @@ class ResourcesApi {
   ///
   /// * [String] date (required):
   ///   Analytics reports request date (UTC). Format: YYYY-MM-DD
-  Future<Response> metricsReadyStateGetWithHttpInfo(String date,) async {
+  Future<Response> metricsReadyStateGetWithHttpInfo(String date, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/resources/metrics_ready_state';
 
@@ -259,6 +263,7 @@ class ResourcesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -270,8 +275,8 @@ class ResourcesApi {
   ///
   /// * [String] date (required):
   ///   Analytics reports request date (UTC). Format: YYYY-MM-DD
-  Future<BookClosedResponse?> metricsReadyStateGet(String date,) async {
-    final response = await metricsReadyStateGetWithHttpInfo(date,);
+  Future<BookClosed?> metricsReadyStateGet(String date, { Future<void>? abortTrigger, }) async {
+    final response = await metricsReadyStateGetWithHttpInfo(date, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -279,7 +284,7 @@ class ResourcesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BookClosedResponse',) as BookClosedResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BookClosed',) as BookClosed;
     
     }
     return null;
@@ -287,30 +292,30 @@ class ResourcesApi {
 
   /// Get targeting options
   ///
-  /// <p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class=\"literal-block\"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>
+  ///     You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      ```     [{\"36313\": \"Australia: Moreton Bay - North\", \"124735\": \"Canada: North Battleford\", \"36109\": \"Australia: Murray\", \"36108\": \"Australia: Mid North Coast\", \"36101\": \"Australia: Capital Region\", \"811\": \"U.S.: Reno\", \"36103\": \"Australia: Central West\", \"36102\": \"Australia: Central Coast\", \"36105\": \"Australia: Far West and Orana\", \"36104\": \"Australia: Coffs Harbour - Grafton\", \"36107\": \"Australia: Illawarra\", \"36106\": \"Australia: Hunter Valley Exc Newcastle\", \"554017\": \"New Zealand: Wanganui\", \"554016\": \"New Zealand: Marlborough\", \"554015\": \"New Zealand: Gisborne\", \"554014\": \"New Zealand: Tararua\", \"554013\": \"New Zealand: Invercargill\", \"GR\": \"Greece\", \"554011\": \"New Zealand: Whangarei\", \"554010\": \"New Zealand: Far North\", \"717\": \"U.S.: Quincy-Hannibal-Keokuk\", \"716\": \"U.S.: Baton Rouge\",...}]     ```
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] targetingType (required):
-  ///   Public targeting type.
+  /// * [PublicTargetingType] targetingType (required):
+  ///   Public targeting type
+  ///
+  /// * [String] adAccountId:
+  ///   Unique identifier of an ad account.
   ///
   /// * [String] clientId:
-  ///   Client ID.
+  ///   Client ID
   ///
   /// * [String] oauthSignature:
   ///   Oauth signature
   ///
   /// * [String] timestamp:
-  ///   Timestamp
-  ///
-  /// * [String] adAccountId:
-  ///   Unique identifier of an ad account.
-  Future<Response> targetingOptionsGetWithHttpInfo(String targetingType, { String? clientId, String? oauthSignature, String? timestamp, String? adAccountId, }) async {
+  ///   Timestamp.
+  Future<Response> targetingOptionsGetWithHttpInfo(PublicTargetingType targetingType, { String? adAccountId, String? clientId, String? oauthSignature, String? timestamp, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/resources/targeting/{targeting_type}'
-      .replaceAll('{targeting_type}', targetingType);
+      .replaceAll('{targeting_type}', targetingType.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -319,6 +324,9 @@ class ResourcesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (adAccountId != null) {
+      queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
+    }
     if (clientId != null) {
       queryParams.addAll(_queryParams('', 'client_id', clientId));
     }
@@ -327,9 +335,6 @@ class ResourcesApi {
     }
     if (timestamp != null) {
       queryParams.addAll(_queryParams('', 'timestamp', timestamp));
-    }
-    if (adAccountId != null) {
-      queryParams.addAll(_queryParams('', 'ad_account_id', adAccountId));
     }
 
     const contentTypes = <String>[];
@@ -343,31 +348,32 @@ class ResourcesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Get targeting options
   ///
-  /// <p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class=\"literal-block\"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>
+  ///     You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      ```     [{\"36313\": \"Australia: Moreton Bay - North\", \"124735\": \"Canada: North Battleford\", \"36109\": \"Australia: Murray\", \"36108\": \"Australia: Mid North Coast\", \"36101\": \"Australia: Capital Region\", \"811\": \"U.S.: Reno\", \"36103\": \"Australia: Central West\", \"36102\": \"Australia: Central Coast\", \"36105\": \"Australia: Far West and Orana\", \"36104\": \"Australia: Coffs Harbour - Grafton\", \"36107\": \"Australia: Illawarra\", \"36106\": \"Australia: Hunter Valley Exc Newcastle\", \"554017\": \"New Zealand: Wanganui\", \"554016\": \"New Zealand: Marlborough\", \"554015\": \"New Zealand: Gisborne\", \"554014\": \"New Zealand: Tararua\", \"554013\": \"New Zealand: Invercargill\", \"GR\": \"Greece\", \"554011\": \"New Zealand: Whangarei\", \"554010\": \"New Zealand: Far North\", \"717\": \"U.S.: Quincy-Hannibal-Keokuk\", \"716\": \"U.S.: Baton Rouge\",...}]     ```
   ///
   /// Parameters:
   ///
-  /// * [String] targetingType (required):
-  ///   Public targeting type.
+  /// * [PublicTargetingType] targetingType (required):
+  ///   Public targeting type
+  ///
+  /// * [String] adAccountId:
+  ///   Unique identifier of an ad account.
   ///
   /// * [String] clientId:
-  ///   Client ID.
+  ///   Client ID
   ///
   /// * [String] oauthSignature:
   ///   Oauth signature
   ///
   /// * [String] timestamp:
-  ///   Timestamp
-  ///
-  /// * [String] adAccountId:
-  ///   Unique identifier of an ad account.
-  Future<List<Object>?> targetingOptionsGet(String targetingType, { String? clientId, String? oauthSignature, String? timestamp, String? adAccountId, }) async {
-    final response = await targetingOptionsGetWithHttpInfo(targetingType,  clientId: clientId, oauthSignature: oauthSignature, timestamp: timestamp, adAccountId: adAccountId, );
+  ///   Timestamp.
+  Future<List<Object>?> targetingOptionsGet(PublicTargetingType targetingType, { String? adAccountId, String? clientId, String? oauthSignature, String? timestamp, Future<void>? abortTrigger, }) async {
+    final response = await targetingOptionsGetWithHttpInfo(targetingType, adAccountId: adAccountId, clientId: clientId, oauthSignature: oauthSignature, timestamp: timestamp, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

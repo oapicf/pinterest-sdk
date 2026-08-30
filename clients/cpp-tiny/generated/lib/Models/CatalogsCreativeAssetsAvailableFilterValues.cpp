@@ -7,7 +7,7 @@ using namespace Tiny;
 CatalogsCreativeAssetsAvailableFilterValues::CatalogsCreativeAssetsAvailableFilterValues()
 {
 	catalog_type = std::string();
-	filter_values = Catalogs_creative_assets_filter_values_map();
+	filter_values = CatalogsCreativeAssetsFilterValuesMap();
 }
 
 CatalogsCreativeAssetsAvailableFilterValues::CatalogsCreativeAssetsAvailableFilterValues(std::string jsonString)
@@ -47,7 +47,7 @@ CatalogsCreativeAssetsAvailableFilterValues::fromJson(std::string jsonObj)
 
 
 
-        Catalogs_creative_assets_filter_values_map* obj = &filter_values;
+        CatalogsCreativeAssetsFilterValuesMap* obj = &filter_values;
 		obj->fromJson(value.dump());
 
     }
@@ -86,19 +86,19 @@ CatalogsCreativeAssetsAvailableFilterValues::getCatalogType()
 }
 
 void
-CatalogsCreativeAssetsAvailableFilterValues::setCatalogType(std::string  catalog_type)
+CatalogsCreativeAssetsAvailableFilterValues::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
 
-Catalogs_creative_assets_filter_values_map
+CatalogsCreativeAssetsFilterValuesMap
 CatalogsCreativeAssetsAvailableFilterValues::getFilterValues()
 {
 	return filter_values;
 }
 
 void
-CatalogsCreativeAssetsAvailableFilterValues::setFilterValues(Catalogs_creative_assets_filter_values_map  filter_values)
+CatalogsCreativeAssetsAvailableFilterValues::setFilterValues(CatalogsCreativeAssetsFilterValuesMap filter_values)
 {
 	this->filter_values = filter_values;
 }

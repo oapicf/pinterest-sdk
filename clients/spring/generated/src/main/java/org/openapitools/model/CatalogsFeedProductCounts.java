@@ -2,29 +2,32 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * The counts can be null early in the process.
  */
 
 @Schema(name = "CatalogsFeedProductCounts", description = "The counts can be null early in the process.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedProductCounts {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ingested;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer original;
 
   public CatalogsFeedProductCounts ingested(@Nullable Integer ingested) {
@@ -43,6 +46,7 @@ public class CatalogsFeedProductCounts {
     return ingested;
   }
 
+  @JsonProperty("ingested")
   public void setIngested(@Nullable Integer ingested) {
     this.ingested = ingested;
   }
@@ -63,6 +67,7 @@ public class CatalogsFeedProductCounts {
     return original;
   }
 
+  @JsonProperty("original")
   public void setOriginal(@Nullable Integer original) {
     this.original = original;
   }
@@ -100,10 +105,7 @@ public class CatalogsFeedProductCounts {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

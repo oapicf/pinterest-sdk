@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,22 +16,23 @@ package openapi
 
 type OptimizationGoalMetadata struct {
 
-	ConversionTagV3GoalMetadata OptimizationGoalMetadataConversionTagV3GoalMetadata `json:"conversion_tag_v3_goal_metadata,omitempty"`
+	ConversionTagV3GoalMetadata ConversionTagV3GoalMetadata `json:"conversion_tag_v3_goal_metadata,omitempty"`
 
-	FrequencyGoalMetadata OptimizationGoalMetadataFrequencyGoalMetadata `json:"frequency_goal_metadata,omitempty"`
+	FrequencyGoalMetadata FrequencyGoalMetadata `json:"frequency_goal_metadata,omitempty"`
 
-	ScrollupGoalMetadata OptimizationGoalMetadataScrollupGoalMetadata `json:"scrollup_goal_metadata,omitempty"`
+	ScrollupGoalMetadata ScrollupGoalMetadata `json:"scrollup_goal_metadata,omitempty"`
 }
 
-// AssertOptimizationGoalMetadataRequired checks if the required fields are not zero-ed
+// AssertOptimizationGoalMetadataRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertOptimizationGoalMetadataRequired(obj OptimizationGoalMetadata) error {
-	if err := AssertOptimizationGoalMetadataConversionTagV3GoalMetadataRequired(obj.ConversionTagV3GoalMetadata); err != nil {
+	if err := AssertConversionTagV3GoalMetadataRequired(obj.ConversionTagV3GoalMetadata); err != nil {
 		return err
 	}
-	if err := AssertOptimizationGoalMetadataFrequencyGoalMetadataRequired(obj.FrequencyGoalMetadata); err != nil {
+	if err := AssertFrequencyGoalMetadataRequired(obj.FrequencyGoalMetadata); err != nil {
 		return err
 	}
-	if err := AssertOptimizationGoalMetadataScrollupGoalMetadataRequired(obj.ScrollupGoalMetadata); err != nil {
+	if err := AssertScrollupGoalMetadataRequired(obj.ScrollupGoalMetadata); err != nil {
 		return err
 	}
 	return nil
@@ -39,13 +40,13 @@ func AssertOptimizationGoalMetadataRequired(obj OptimizationGoalMetadata) error 
 
 // AssertOptimizationGoalMetadataConstraints checks if the values respects the defined constraints
 func AssertOptimizationGoalMetadataConstraints(obj OptimizationGoalMetadata) error {
-	if err := AssertOptimizationGoalMetadataConversionTagV3GoalMetadataConstraints(obj.ConversionTagV3GoalMetadata); err != nil {
+	if err := AssertConversionTagV3GoalMetadataConstraints(obj.ConversionTagV3GoalMetadata); err != nil {
 		return err
 	}
-	if err := AssertOptimizationGoalMetadataFrequencyGoalMetadataConstraints(obj.FrequencyGoalMetadata); err != nil {
+	if err := AssertFrequencyGoalMetadataConstraints(obj.FrequencyGoalMetadata); err != nil {
 		return err
 	}
-	if err := AssertOptimizationGoalMetadataScrollupGoalMetadataConstraints(obj.ScrollupGoalMetadata); err != nil {
+	if err := AssertScrollupGoalMetadataConstraints(obj.ScrollupGoalMetadata); err != nil {
 		return err
 	}
 	return nil

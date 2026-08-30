@@ -1,10 +1,10 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.Error
+import org.openapitools.model.BoardsList200Response
+import org.openapitools.model.PinsList200Response
+import org.openapitools.model.PinterestLibError
 import org.openapitools.model.SearchPartnerPins200Response
-import org.openapitools.model.SearchUserBoardsGet200Response
-import org.openapitools.model.SearchUserPinsList200Response
 
 class SearchApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -18,6 +18,7 @@ class SearchApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -48,24 +49,30 @@ class SearchApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     SearchPartnerPins200Response.class )
 
     }
 
-    def searchUserBoardsGet ( String adAccountId, String bookmark, Integer pageSize, String query, Closure onSuccess, Closure onFailure)  {
+    def searchUserBoardsGet ( String adAccountId, String query, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/search/boards"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
         if (adAccountId != null) {
             queryParams.put("ad_account_id", adAccountId)
+        }
+        if (query != null) {
+            queryParams.put("query", query)
         }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
@@ -73,16 +80,15 @@ class SearchApi {
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
         }
-        if (query != null) {
-            queryParams.put("query", query)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    SearchUserBoardsGet200Response.class )
+                    BoardsList200Response.class )
 
     }
 
@@ -93,6 +99,7 @@ class SearchApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -113,9 +120,11 @@ class SearchApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    SearchUserPinsList200Response.class )
+                    PinsList200Response.class )
 
     }
 

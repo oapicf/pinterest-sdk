@@ -3,10 +3,8 @@ package org.openapitools.client.model
 
 
 case class Exception (
-    /* Exception error code. */
     _code: Option[Integer],
-    /* Exception message. */
-    _message: Option[String]
+    _message: String
 )
 object Exception {
     def toStringBody(var_code: Object, var_message: Object) =

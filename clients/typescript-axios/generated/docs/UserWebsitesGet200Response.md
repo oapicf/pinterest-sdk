@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;UserWebsiteSummary&gt;**](UserWebsiteSummary.md) |  | [default to undefined]
+**items** | [**Array&lt;UserWebsite&gt;**](UserWebsite.md) |  | [default to undefined]
 
 ## Example
 

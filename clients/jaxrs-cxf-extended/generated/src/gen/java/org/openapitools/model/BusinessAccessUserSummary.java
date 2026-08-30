@@ -25,7 +25,7 @@ public class BusinessAccessUserSummary  {
  /**
   * Unique identifier of the business member/partner.
   */
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the business member/partner.")
+  @ApiModelProperty(example = "549755885175", value = "Unique identifier of the business member/partner.")
   private String id;
 
  /**
@@ -142,10 +142,7 @@ public class BusinessAccessUserSummary  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

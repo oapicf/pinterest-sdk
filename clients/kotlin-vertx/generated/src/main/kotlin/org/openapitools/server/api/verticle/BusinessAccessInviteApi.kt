@@ -1,16 +1,17 @@
 package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.AuthRespondInvitesBody
-import org.openapitools.server.api.model.CancelInvitesBody
+import org.openapitools.server.api.model.CancelInvitesRequest
+import org.openapitools.server.api.model.CancelInvitesResponse
 import org.openapitools.server.api.model.CreateAssetAccessRequestBody
 import org.openapitools.server.api.model.CreateAssetAccessRequestResponse
 import org.openapitools.server.api.model.CreateAssetInvitesRequest
 import org.openapitools.server.api.model.CreateInvitesResultsResponseArray
 import org.openapitools.server.api.model.CreateMembershipOrPartnershipInvitesBody
-import org.openapitools.server.api.model.DeleteInvitesResultsResponseArray
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.GetInvites200Response
+import org.openapitools.server.api.model.InviteFilterStatus
 import org.openapitools.server.api.model.InviteType
+import org.openapitools.server.api.model.PinterestLibError
 import org.openapitools.server.api.model.RespondToInvitesResponseArray
 import org.openapitools.server.api.model.UpdateInvitesResultsResponseArray
 import io.vertx.core.Vertx
@@ -34,7 +35,7 @@ interface BusinessAccessInviteApi  {
     suspend fun assetAccessRequestsCreate(businessId:kotlin.String?,createAssetAccessRequestBody:CreateAssetAccessRequestBody?,context:OperationRequest):Response<CreateAssetAccessRequestResponse>
     /* cancelInvitesOrRequests
      * Cancel invites/requests */
-    suspend fun cancelInvitesOrRequests(businessId:kotlin.String?,cancelInvitesBody:CancelInvitesBody?,context:OperationRequest):Response<DeleteInvitesResultsResponseArray>
+    suspend fun cancelInvitesOrRequests(businessId:kotlin.String?,cancelInvitesRequest:CancelInvitesRequest?,context:OperationRequest):Response<CancelInvitesResponse>
     /* createAssetInvites
      * Update invite/request with an asset permission */
     suspend fun createAssetInvites(businessId:kotlin.String?,createAssetInvitesRequest:CreateAssetInvitesRequest?,context:OperationRequest):Response<UpdateInvitesResultsResponseArray>
@@ -43,7 +44,7 @@ interface BusinessAccessInviteApi  {
     suspend fun createMembershipOrPartnershipInvites(businessId:kotlin.String?,createMembershipOrPartnershipInvitesBody:CreateMembershipOrPartnershipInvitesBody?,context:OperationRequest):Response<CreateInvitesResultsResponseArray>
     /* getInvites
      * Get invites/requests */
-    suspend fun getInvites(businessId:kotlin.String?,isMember:kotlin.Boolean?,inviteStatus:kotlin.Array<kotlin.String>?,inviteType:InviteType?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<GetInvites200Response>
+    suspend fun getInvites(businessId:kotlin.String?,isMember:kotlin.Boolean?,inviteStatus:kotlin.Array<InviteFilterStatus>?,inviteType:InviteType?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<GetInvites200Response>
     /* respondBusinessAccessInvites
      * Accept or decline an invite/request */
     suspend fun respondBusinessAccessInvites(authRespondInvitesBody:AuthRespondInvitesBody?,context:OperationRequest):Response<RespondToInvitesResponseArray>

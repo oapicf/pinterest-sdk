@@ -1,0 +1,28 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create or update operation model with required body fields (no OptionalProperties).",
+  "name": "CustomerSegmentUpdateRequestUpdateWithRequiredBody",
+  "fields": [
+    {
+      "name": "audience_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Audience IDs to update the customer segment to. Only applicable for UPDATE operations.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Customer segment ID."
+    },
+    {
+      "name": "operation_type",
+      "type": "model.AudienceUpdateOperationType",
+      "doc": ""
+    }
+  ]
+
+}

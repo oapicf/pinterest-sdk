@@ -1,12 +1,12 @@
 package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.Catalog
+import org.openapitools.server.api.model.CatalogCreate
 import org.openapitools.server.api.model.CatalogsAvailableFilterValues
-import org.openapitools.server.api.model.CatalogsCreateRequest
 import org.openapitools.server.api.model.CatalogsList200Response
 import org.openapitools.server.api.model.CatalogsLocale
 import org.openapitools.server.api.model.Country
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -28,10 +28,10 @@ interface CatalogsApi  {
     suspend fun catalogsAvailableFilterValues(catalogId:kotlin.String?,feedId:kotlin.String?,country:Country?,language:CatalogsLocale?,adAccountId:kotlin.String?,context:OperationRequest):Response<CatalogsAvailableFilterValues>
     /* catalogsCreate
      * Create catalog */
-    suspend fun catalogsCreate(catalogsCreateRequest:CatalogsCreateRequest?,adAccountId:kotlin.String?,context:OperationRequest):Response<Catalog>
+    suspend fun catalogsCreate(catalogCreate:CatalogCreate?,adAccountId:kotlin.String?,context:OperationRequest):Response<Catalog>
     /* catalogsList
      * List catalogs */
-    suspend fun catalogsList(bookmark:kotlin.String?,pageSize:kotlin.Int?,adAccountId:kotlin.String?,context:OperationRequest):Response<CatalogsList200Response>
+    suspend fun catalogsList(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<CatalogsList200Response>
     companion object {
         const val address = "CatalogsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

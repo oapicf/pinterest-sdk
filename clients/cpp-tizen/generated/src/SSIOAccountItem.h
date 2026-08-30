@@ -1,7 +1,7 @@
 /*
  * SSIOAccountItem.h
  *
- * 
+ * Salesforce account item with billing and terms information.
  */
 
 #ifndef _SSIOAccountItem_H_
@@ -22,7 +22,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Salesforce account item with billing and terms information.
  *
  *  \ingroup Models
  *

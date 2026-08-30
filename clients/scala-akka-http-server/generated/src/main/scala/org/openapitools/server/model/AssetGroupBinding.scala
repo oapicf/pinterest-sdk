@@ -15,16 +15,16 @@ package org.openapitools.server.model
  * @param updatedTime The last update time of the asset group for example: ''1646767577816''
 */
 final case class AssetGroupBinding (
-  adAccountsIds: Option[Seq[String]] = None,
-  assetGroupDescription: Option[String] = None,
-  assetGroupName: Option[String] = None,
-  assetGroupTypes: Option[Seq[String]] = None,
-  catalogsIds: Option[Seq[String]] = None,
-  createdBy: Option[BusinessAccessUserSummary] = None,
-  createdTime: Option[Int] = None,
-  id: Option[String] = None,
-  owner: Option[BusinessAccessUserSummary] = None,
-  profilesIds: Option[Seq[String]] = None,
-  updatedTime: Option[Int] = None
+  adAccountsIds: Seq[String],
+  assetGroupDescription: String,
+  assetGroupName: String,
+  assetGroupTypes: Seq[String],
+  catalogsIds: Seq[String],
+  createdBy: BusinessAccessUserSummary,
+  createdTime: Int,
+  id: String,
+  owner: BusinessAccessUserSummary,
+  profilesIds: Seq[String],
+  updatedTime: Int
 )
 

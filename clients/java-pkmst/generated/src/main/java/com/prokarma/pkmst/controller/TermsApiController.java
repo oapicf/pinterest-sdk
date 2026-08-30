@@ -1,7 +1,7 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.Error;
 import java.util.List;
+import com.prokarma.pkmst.model.PinterestLibError;
 import com.prokarma.pkmst.model.RelatedTerms;
 
 import io.swagger.annotations.*;
@@ -25,7 +25,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class TermsApiController implements TermsApi {
     private final ObjectMapper objectMapper;
@@ -52,6 +52,26 @@ public class TermsApiController implements TermsApi {
             return new ResponseEntity<RelatedTerms>(objectMapper.readValue("", RelatedTerms.class), HttpStatus.OK);
         }
 
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<RelatedTerms>(objectMapper.readValue("", RelatedTerms.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<RelatedTerms>(objectMapper.readValue("", RelatedTerms.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<RelatedTerms>(objectMapper.readValue("", RelatedTerms.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<RelatedTerms>(objectMapper.readValue("", RelatedTerms.class), HttpStatus.OK);
+        }
+
         return new ResponseEntity<RelatedTerms>(HttpStatus.OK);
     }
 
@@ -59,6 +79,26 @@ public class TermsApiController implements TermsApi {
         @ApiParam(value = "Max suggested terms to return.", defaultValue = "4")  @RequestParam(value = "limit", required = false, defaultValue="4") Integer limit,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<List<String>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<List<String>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<List<String>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<List<String>>(objectMapper.readValue("", List.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<List<String>>(objectMapper.readValue("", List.class), HttpStatus.OK);

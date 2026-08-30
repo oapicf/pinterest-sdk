@@ -12,11 +12,11 @@ part 'product_type0_filter.g.dart';
 /// ProductType0Filter
 ///
 /// Properties:
-/// * [pRODUCTTYPE0] 
+/// * [PRODUCT_TYPE_0] 
 @BuiltValue()
 abstract class ProductType0Filter implements Built<ProductType0Filter, ProductType0FilterBuilder> {
   @BuiltValueField(wireName: r'PRODUCT_TYPE_0')
-  CatalogsProductGroupMultipleStringListCriteria get pRODUCTTYPE0;
+  CatalogsProductGroupMultipleStringListCriteria get PRODUCT_TYPE_0;
 
   ProductType0Filter._();
 
@@ -43,7 +43,7 @@ class _$ProductType0FilterSerializer implements PrimitiveSerializer<ProductType0
   }) sync* {
     yield r'PRODUCT_TYPE_0';
     yield serializers.serialize(
-      object.pRODUCTTYPE0,
+      object.PRODUCT_TYPE_0,
       specifiedType: const FullType(CatalogsProductGroupMultipleStringListCriteria),
     );
   }
@@ -74,7 +74,7 @@ class _$ProductType0FilterSerializer implements PrimitiveSerializer<ProductType0
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringListCriteria),
           ) as CatalogsProductGroupMultipleStringListCriteria;
-          result.pRODUCTTYPE0 = valueDes;
+          result.PRODUCT_TYPE_0.replace(valueDes);
           break;
         default:
           unhandled.add(key);

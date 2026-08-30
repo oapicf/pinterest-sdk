@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AuthRespondInvitesBodyInvitesInner;
+import org.openapitools.model.AuthRespondInvitesBodyItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,23 +22,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An object with a list of all the invites the user would like to respond to and the action to take.")
 @JsonTypeName("AuthRespondInvitesBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AuthRespondInvitesBody   {
-  private @Valid List<@Valid AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();
+  private @Valid List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();
 
   public AuthRespondInvitesBody() {
   }
 
   @JsonCreator
   public AuthRespondInvitesBody(
-    @JsonProperty(required = true, value = "invites") List<@Valid AuthRespondInvitesBodyInvitesInner> invites
+    @JsonProperty(required = true, value = "invites") List<@Valid AuthRespondInvitesBodyItem> invites
   ) {
     this.invites = invites;
   }
 
   /**
    **/
-  public AuthRespondInvitesBody invites(List<@Valid AuthRespondInvitesBodyInvitesInner> invites) {
+  public AuthRespondInvitesBody invites(List<@Valid AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
     return this;
   }
@@ -46,16 +46,16 @@ public class AuthRespondInvitesBody   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "invites")
-  @NotNull @Valid  @Size(min=1,max=100)public List<@Valid AuthRespondInvitesBodyInvitesInner> getInvites() {
+  @NotNull @Valid  @Size(min=1,max=100)public List<@Valid AuthRespondInvitesBodyItem> getInvites() {
     return invites;
   }
 
   @JsonProperty(required = true, value = "invites")
-  public void setInvites(List<@Valid AuthRespondInvitesBodyInvitesInner> invites) {
+  public void setInvites(List<@Valid AuthRespondInvitesBodyItem> invites) {
     this.invites = invites;
   }
 
-  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyInvitesInner invitesItem) {
+  public AuthRespondInvitesBody addInvitesItem(AuthRespondInvitesBodyItem invitesItem) {
     if (this.invites == null) {
       this.invites = new ArrayList<>();
     }
@@ -64,7 +64,7 @@ public class AuthRespondInvitesBody   {
     return this;
   }
 
-  public AuthRespondInvitesBody removeInvitesItem(AuthRespondInvitesBodyInvitesInner invitesItem) {
+  public AuthRespondInvitesBody removeInvitesItem(AuthRespondInvitesBodyItem invitesItem) {
     if (invitesItem != null && this.invites != null) {
       this.invites.remove(invitesItem);
     }
@@ -104,12 +104,8 @@ public class AuthRespondInvitesBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

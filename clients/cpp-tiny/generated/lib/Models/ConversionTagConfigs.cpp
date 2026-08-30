@@ -250,7 +250,7 @@ ConversionTagConfigs::isAemDbEnabled()
 }
 
 void
-ConversionTagConfigs::setAemDbEnabled(bool  aem_db_enabled)
+ConversionTagConfigs::setAemDbEnabled(bool aem_db_enabled)
 {
 	this->aem_db_enabled = aem_db_enabled;
 }
@@ -262,7 +262,7 @@ ConversionTagConfigs::isAemEnabled()
 }
 
 void
-ConversionTagConfigs::setAemEnabled(bool  aem_enabled)
+ConversionTagConfigs::setAemEnabled(bool aem_enabled)
 {
 	this->aem_enabled = aem_enabled;
 }
@@ -274,7 +274,7 @@ ConversionTagConfigs::isAemExternalIdEnabled()
 }
 
 void
-ConversionTagConfigs::setAemExternalIdEnabled(bool  aem_external_id_enabled)
+ConversionTagConfigs::setAemExternalIdEnabled(bool aem_external_id_enabled)
 {
 	this->aem_external_id_enabled = aem_external_id_enabled;
 }
@@ -286,7 +286,7 @@ ConversionTagConfigs::isAemFnlnEnabled()
 }
 
 void
-ConversionTagConfigs::setAemFnlnEnabled(bool  aem_fnln_enabled)
+ConversionTagConfigs::setAemFnlnEnabled(bool aem_fnln_enabled)
 {
 	this->aem_fnln_enabled = aem_fnln_enabled;
 }
@@ -298,7 +298,7 @@ ConversionTagConfigs::isAemGeEnabled()
 }
 
 void
-ConversionTagConfigs::setAemGeEnabled(bool  aem_ge_enabled)
+ConversionTagConfigs::setAemGeEnabled(bool aem_ge_enabled)
 {
 	this->aem_ge_enabled = aem_ge_enabled;
 }
@@ -310,7 +310,7 @@ ConversionTagConfigs::isAemLocEnabled()
 }
 
 void
-ConversionTagConfigs::setAemLocEnabled(bool  aem_loc_enabled)
+ConversionTagConfigs::setAemLocEnabled(bool aem_loc_enabled)
 {
 	this->aem_loc_enabled = aem_loc_enabled;
 }
@@ -322,7 +322,7 @@ ConversionTagConfigs::isAemPhEnabled()
 }
 
 void
-ConversionTagConfigs::setAemPhEnabled(bool  aem_ph_enabled)
+ConversionTagConfigs::setAemPhEnabled(bool aem_ph_enabled)
 {
 	this->aem_ph_enabled = aem_ph_enabled;
 }
@@ -334,7 +334,7 @@ ConversionTagConfigs::getMdFrequency()
 }
 
 void
-ConversionTagConfigs::setMdFrequency(long  md_frequency)
+ConversionTagConfigs::setMdFrequency(long md_frequency)
 {
 	this->md_frequency = md_frequency;
 }
@@ -346,7 +346,7 @@ ConversionTagConfigs::getNoCodeCapiDomains()
 }
 
 void
-ConversionTagConfigs::setNoCodeCapiDomains(std::list <std::string> no_code_capi_domains)
+ConversionTagConfigs::setNoCodeCapiDomains(std::list<std::string> no_code_capi_domains)
 {
 	this->no_code_capi_domains = no_code_capi_domains;
 }

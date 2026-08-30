@@ -6,28 +6,31 @@
 
 
 static catalogs_item_validation_details_t *catalogs_item_validation_details_create_internal(
-    pinterest_rest_api_nullable_catalogs_item_field_type__e attribute_name,
+    nullable_catalogs_item_field_type_t *attribute_name,
     char *provided_value
     ) {
     catalogs_item_validation_details_t *catalogs_item_validation_details_local_var = malloc(sizeof(catalogs_item_validation_details_t));
     if (!catalogs_item_validation_details_local_var) {
         return NULL;
     }
+    memset(catalogs_item_validation_details_local_var, 0, sizeof(catalogs_item_validation_details_t));
+    catalogs_item_validation_details_local_var->_library_owned = 1;
     catalogs_item_validation_details_local_var->attribute_name = attribute_name;
     catalogs_item_validation_details_local_var->provided_value = provided_value;
-
-    catalogs_item_validation_details_local_var->_library_owned = 1;
     return catalogs_item_validation_details_local_var;
 }
 
 __attribute__((deprecated)) catalogs_item_validation_details_t *catalogs_item_validation_details_create(
-    pinterest_rest_api_nullable_catalogs_item_field_type__e attribute_name,
+    nullable_catalogs_item_field_type_t *attribute_name,
     char *provided_value
     ) {
-    return catalogs_item_validation_details_create_internal (
+    catalogs_item_validation_details_t *result = catalogs_item_validation_details_create_internal (
         attribute_name,
         provided_value
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_item_validation_details_free(catalogs_item_validation_details_t *catalogs_item_validation_details) {
@@ -39,6 +42,10 @@ void catalogs_item_validation_details_free(catalogs_item_validation_details_t *c
         return ;
     }
     listEntry_t *listEntry;
+    if (catalogs_item_validation_details->attribute_name) {
+        nullable_catalogs_item_field_type_free(catalogs_item_validation_details->attribute_name);
+        catalogs_item_validation_details->attribute_name = NULL;
+    }
     if (catalogs_item_validation_details->provided_value) {
         free(catalogs_item_validation_details->provided_value);
         catalogs_item_validation_details->provided_value = NULL;
@@ -50,7 +57,7 @@ cJSON *catalogs_item_validation_details_convertToJSON(catalogs_item_validation_d
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_item_validation_details->attribute_name
-    if (pinterest_rest_api_nullable_catalogs_item_field_type__NULL == catalogs_item_validation_details->attribute_name) {
+    if (!catalogs_item_validation_details->attribute_name) {
         goto fail;
     }
     cJSON *attribute_name_local_JSON = nullable_catalogs_item_field_type_convertToJSON(catalogs_item_validation_details->attribute_name);
@@ -84,7 +91,9 @@ catalogs_item_validation_details_t *catalogs_item_validation_details_parseFromJS
     catalogs_item_validation_details_t *catalogs_item_validation_details_local_var = NULL;
 
     // define the local variable for catalogs_item_validation_details->attribute_name
-    pinterest_rest_api_nullable_catalogs_item_field_type__e attribute_name_local_nonprim = 0;
+    nullable_catalogs_item_field_type_t *attribute_name_local_nonprim = NULL;
+
+    char *provided_value_local_str = NULL;
 
     // catalogs_item_validation_details->attribute_name
     cJSON *attribute_name = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_detailsJSON, "attribute_name");
@@ -114,15 +123,26 @@ catalogs_item_validation_details_t *catalogs_item_validation_details_parseFromJS
     }
 
 
+    if (provided_value && !cJSON_IsNull(provided_value)) provided_value_local_str = strdup(provided_value->valuestring);
+
     catalogs_item_validation_details_local_var = catalogs_item_validation_details_create_internal (
         attribute_name_local_nonprim,
-        strdup(provided_value->valuestring)
+        provided_value_local_str
         );
+
+    if (!catalogs_item_validation_details_local_var) {
+        goto end;
+    }
 
     return catalogs_item_validation_details_local_var;
 end:
     if (attribute_name_local_nonprim) {
-        attribute_name_local_nonprim = 0;
+        nullable_catalogs_item_field_type_free(attribute_name_local_nonprim);
+        attribute_name_local_nonprim = NULL;
+    }
+    if (provided_value_local_str) {
+        free(provided_value_local_str);
+        provided_value_local_str = NULL;
     }
     return NULL;
 

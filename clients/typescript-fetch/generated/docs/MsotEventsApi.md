@@ -10,11 +10,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## msotEventsCreate
 
-> msotEventsCreate(adAccountId, conversionMSOTEvents)
+> msotEventsCreate(adAccountId, conversionMSOTEventsCreate)
 
 Send Measurement Source Of Truth (MSOT) attributed conversion events
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt; &lt;br&gt; &lt;p&gt;Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object.&lt;/p&gt; - These events will NOT be used in Reporting.
+**This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &#x60;ad_account_id&#x60;. The request body should be a JSON object.  - These events will not be used in Reporting.
 
 ### Example
 
@@ -36,8 +36,8 @@ async function example() {
   const body = {
     // string | Unique identifier of an ad account.
     adAccountId: adAccountId_example,
-    // ConversionMSOTEvents | Attributed MSOT conversion events
-    conversionMSOTEvents: ...,
+    // ConversionMSOTEventsCreate
+    conversionMSOTEventsCreate: ...,
   } satisfies MsotEventsCreateRequest;
 
   try {
@@ -58,7 +58,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `string` | Unique identifier of an ad account. | [Defaults to `undefined`] |
-| **conversionMSOTEvents** | [ConversionMSOTEvents](ConversionMSOTEvents.md) | Attributed MSOT conversion events | |
+| **conversionMSOTEventsCreate** | [ConversionMSOTEventsCreate](ConversionMSOTEventsCreate.md) |  | |
 
 ### Return type
 
@@ -77,12 +77,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | The request was invalid |  -  |
-| **401** | Not authorized to send MSOT conversion events |  -  |
-| **403** | Unauthorized access |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
-| **0** | Unexpected errors |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

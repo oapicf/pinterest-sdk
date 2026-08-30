@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**MIN_PRICE** | MIN_PRICE | long NOT NULL |  | [**CatalogsProductGroupPricingCriteria**](.md) |  |  [foreignkey]
+**MIN_PRICE** | MIN_PRICE | long NOT NULL |  | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  |  [foreignkey]
 
 
 

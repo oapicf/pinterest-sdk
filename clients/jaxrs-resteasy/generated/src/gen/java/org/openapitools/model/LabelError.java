@@ -9,15 +9,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.Label;
+import org.openapitools.model.LabelErrorData;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LabelError   {
   
-  private Label data;
+  private LabelErrorData data;
   private List<String> errorMessages = new ArrayList<>();
 
   /**
@@ -26,10 +26,10 @@ public class LabelError   {
   @ApiModelProperty(value = "")
   @JsonProperty("data")
   @Valid
-  public Label getData() {
+  public LabelErrorData getData() {
     return data;
   }
-  public void setData(Label data) {
+  public void setData(LabelErrorData data) {
     this.data = data;
   }
 
@@ -80,10 +80,7 @@ public class LabelError   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

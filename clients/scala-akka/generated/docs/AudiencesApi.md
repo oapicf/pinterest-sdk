@@ -17,11 +17,11 @@ Method | HTTP request | Description
 
 ## audiencesCreate
 
-> audiencesCreate(audiencesCreateRequest): ApiRequest[Audience]
+> audiencesCreate(audiencesCreateRequest): ApiRequest[AdAccountsAudience]
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+Create a new audience for the ad account.
 
 ### Example
 
@@ -47,9 +47,9 @@ object Example extends App {
     val apiInstance = AudiencesApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val audienceCreateRequest: AudienceCreateRequest =  // AudienceCreateRequest | List of ads to create, size limit [1, 30]
+    val adAccountsAudienceCreate: AdAccountsAudienceCreate =  // AdAccountsAudienceCreate | 
     
-    val request = apiInstance.audiencesCreate(adAccountId, audienceCreateRequest)
+    val request = apiInstance.audiencesCreate(adAccountId, adAccountsAudienceCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -78,11 +78,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **audienceCreateRequest** | [**AudienceCreateRequest**](AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] |
+ **adAccountsAudienceCreate** | [**AdAccountsAudienceCreate**](AdAccountsAudienceCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**Audience**](Audience.md)]
+ApiRequest[[**AdAccountsAudience**](AdAccountsAudience.md)]
 
 
 ### Authorization
@@ -97,13 +97,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## audiencesGet
 
-> audiencesGet(audiencesGetRequest): ApiRequest[Audience]
+> audiencesGet(audiencesGetRequest): ApiRequest[AdAccountsAudience]
 
 Get audience
 
@@ -130,11 +136,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = AudiencesApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val audienceId: String = audienceId_example // String | Audience ID.
 
-    val audienceId: String = audienceId_example // String | Unique identifier of an audience
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.audiencesGet(adAccountId, audienceId)
+    val request = apiInstance.audiencesGet(audienceId, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -162,12 +168,12 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **String**| Audience ID. |
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **audienceId** | **String**| Unique identifier of an audience |
 
 ### Return type
 
-ApiRequest[[**Audience**](Audience.md)]
+ApiRequest[[**AdAccountsAudience**](AdAccountsAudience.md)]
 
 
 ### Authorization
@@ -182,9 +188,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Audience not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## audiencesList
@@ -199,6 +209,8 @@ Get list of audiences for the ad account.
 
 ```scala
 // Import classes:
+import 
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -220,13 +232,15 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val order: String = ASCENDING // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val order: PaginationOrder =  // PaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
-    val ownershipType: String = OWNED // String | Filter audiences by ownership type.
+    val ownershipType: AudienceOwnershipType =  // AudienceOwnershipType | 
+
+    val excludeNca: Boolean = true // Boolean | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
     
-    val request = apiInstance.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType)
+    val request = apiInstance.audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -256,9 +270,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **ownershipType** | **String**| Filter audiences by ownership type. | [optional] [enum: OWNED, RECEIVED]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
+ **order** | [**PaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
+ **ownershipType** | [**AudienceOwnershipType**](.md)|  | [optional] [enum: OWNED, RECEIVED]
+ **excludeNca** | **Boolean**| When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). | [optional]
 
 ### Return type
 
@@ -277,18 +292,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account audience parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## audiencesUpdate
 
-> audiencesUpdate(audiencesUpdateRequest): ApiRequest[Audience]
+> audiencesUpdate(audiencesUpdateRequest): ApiRequest[AdAccountsAudience]
 
 Update audience
 
-Update (edit or remove) an existing targeting audience.
+Update an existing audience for the ad account.
 
 ### Example
 
@@ -312,13 +331,13 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = AudiencesApi("https://api.pinterest.com/v5")
+    val audienceId: String = audienceId_example // String | Audience ID.
+
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val audienceId: String = audienceId_example // String | Unique identifier of an audience
-
-    val audienceUpdateRequest: AudienceUpdateRequest =  // AudienceUpdateRequest | The audience to be updated.
+    val adAccountsAudienceUpdate: AdAccountsAudienceUpdate =  // AdAccountsAudienceUpdate | 
     
-    val request = apiInstance.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
+    val request = apiInstance.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -346,13 +365,13 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **audienceId** | **String**| Audience ID. |
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **audienceId** | **String**| Unique identifier of an audience |
- **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md)| The audience to be updated. |
+ **adAccountsAudienceUpdate** | [**AdAccountsAudienceUpdate**](AdAccountsAudienceUpdate.md)|  |
 
 ### Return type
 
-ApiRequest[[**Audience**](Audience.md)]
+ApiRequest[[**AdAccountsAudience**](AdAccountsAudience.md)]
 
 
 ### Authorization
@@ -367,6 +386,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

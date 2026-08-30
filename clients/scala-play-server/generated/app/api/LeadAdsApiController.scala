@@ -9,7 +9,7 @@ import model.Error
 import model.LeadSubscription
 import model.LeadSubscriptionPostParamsCreate
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class LeadAdsApiController @Inject()(cc: ControllerComponents, api: LeadAdsApi) extends AbstractController(cc) {
   /**
@@ -18,12 +18,13 @@ class LeadAdsApiController @Inject()(cc: ControllerComponents, api: LeadAdsApi) 
     * @param subscriptionId Unique identifier of a subscription.
     */
   def adAccountsSubscriptionsDelById(adAccountId: String, subscriptionId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
+    def executeApi(): LeadSubscription = {
       api.adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
     }
 
-    executeApi()
-    Ok
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
   }
 
   /**

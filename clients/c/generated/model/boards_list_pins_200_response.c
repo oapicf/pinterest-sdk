@@ -13,10 +13,10 @@ static boards_list_pins_200_response_t *boards_list_pins_200_response_create_int
     if (!boards_list_pins_200_response_local_var) {
         return NULL;
     }
+    memset(boards_list_pins_200_response_local_var, 0, sizeof(boards_list_pins_200_response_t));
+    boards_list_pins_200_response_local_var->_library_owned = 1;
     boards_list_pins_200_response_local_var->bookmark = bookmark;
     boards_list_pins_200_response_local_var->items = items;
-
-    boards_list_pins_200_response_local_var->_library_owned = 1;
     return boards_list_pins_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) boards_list_pins_200_response_t *boards_list_pins_20
     char *bookmark,
     list_t *items
     ) {
-    return boards_list_pins_200_response_create_internal (
+    boards_list_pins_200_response_t *result = boards_list_pins_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void boards_list_pins_200_response_free(boards_list_pins_200_response_t *boards_list_pins_200_response) {
@@ -45,7 +48,7 @@ void boards_list_pins_200_response_free(boards_list_pins_200_response_t *boards_
     }
     if (boards_list_pins_200_response->items) {
         list_ForEach(listEntry, boards_list_pins_200_response->items) {
-            pin_free(listEntry->data);
+            pin_read_free(listEntry->data);
         }
         list_freeList(boards_list_pins_200_response->items);
         boards_list_pins_200_response->items = NULL;
@@ -76,7 +79,7 @@ cJSON *boards_list_pins_200_response_convertToJSON(boards_list_pins_200_response
     listEntry_t *itemsListEntry;
     if (boards_list_pins_200_response->items) {
     list_ForEach(itemsListEntry, boards_list_pins_200_response->items) {
-    cJSON *itemLocal = pin_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = pin_read_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -95,6 +98,8 @@ fail:
 boards_list_pins_200_response_t *boards_list_pins_200_response_parseFromJSON(cJSON *boards_list_pins_200_responseJSON){
 
     boards_list_pins_200_response_t *boards_list_pins_200_response_local_var = NULL;
+
+    char *bookmark_local_str = NULL;
 
     // define the local list for boards_list_pins_200_response->items
     list_t *itemsList = NULL;
@@ -133,23 +138,33 @@ boards_list_pins_200_response_t *boards_list_pins_200_response_parseFromJSON(cJS
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        pin_t *itemsItem = pin_parseFromJSON(items_local_nonprimitive);
+        pin_read_t *itemsItem = pin_read_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     boards_list_pins_200_response_local_var = boards_list_pins_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!boards_list_pins_200_response_local_var) {
+        goto end;
+    }
+
     return boards_list_pins_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            pin_free(listEntry->data);
+            pin_read_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

@@ -61,9 +61,32 @@ GoogleProductCategory1Filter <- R6::R6Class(
       GoogleProductCategory1FilterObject <- list()
       if (!is.null(self$`GOOGLE_PRODUCT_CATEGORY_1`)) {
         GoogleProductCategory1FilterObject[["GOOGLE_PRODUCT_CATEGORY_1"]] <-
-          self$`GOOGLE_PRODUCT_CATEGORY_1`$toSimpleType()
+          self$extractSimpleType(self$`GOOGLE_PRODUCT_CATEGORY_1`)
       }
       return(GoogleProductCategory1FilterObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

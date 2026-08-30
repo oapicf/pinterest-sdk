@@ -81,7 +81,7 @@ Conversion_tags_list_200_response::getItems()
 }
 
 void
-Conversion_tags_list_200_response::setItems(std::list <ConversionTag> items)
+Conversion_tags_list_200_response::setItems(std::list<ConversionTag> items)
 {
 	this->items = items;
 }

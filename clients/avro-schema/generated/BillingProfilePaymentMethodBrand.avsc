@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Brand of the payment method.",
+  "name": "BillingProfilePaymentMethodBrand",
+  "symbols": [
+    "UNKNOWN",
+    "VISA",
+    "MASTERCARD",
+    "AMERICAN_EXPRESS",
+    "DISCOVER",
+    "SOFORT",
+    "DINERS_CLUB",
+    "ELO",
+    "CARTE_BANCAIRE"
+  ]
+}

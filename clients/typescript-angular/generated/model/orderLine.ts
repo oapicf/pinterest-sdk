@@ -15,11 +15,15 @@ export interface OrderLine {
     /**
      * Ad account ID.
      */
-    ad_account_id?: string;
+    ad_account_id: string;
     /**
      * Order line budget in micro currency.
      */
     budget?: number | null;
+    /**
+     * Associated List of campaign IDs.
+     */
+    campaign_ids: Array<string>;
     /**
      * End time. Unix timestamp.
      */
@@ -27,7 +31,7 @@ export interface OrderLine {
     /**
      * Order line ID.
      */
-    id?: string;
+    id: string;
     /**
      * Order line name.
      */
@@ -51,15 +55,11 @@ export interface OrderLine {
     /**
      * Order line status.
      */
-    status?: OrderLineStatus;
+    status: OrderLineStatus;
     /**
      * Always \"orderline\".
      */
-    type?: string;
-    /**
-     * Associated List of campaign IDs.
-     */
-    campaign_ids: Array<string>;
+    type: string;
 }
 export namespace OrderLine {
 }

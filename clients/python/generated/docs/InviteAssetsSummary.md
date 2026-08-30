@@ -6,8 +6,8 @@ Ad accounts and profiles the member/partner will be granted access to with this 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad_accounts** | [**List[InviteAssetsSummaryAdAccountsInner]**](InviteAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels that will be assigned. | [optional] 
-**profiles** | [**List[InviteAssetsSummaryProfilesInner]**](InviteAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels that will be assigned. | [optional] 
+**ad_accounts** | [**List[InviteAssetsSummaryItem]**](InviteAssetsSummaryItem.md) | List of ad account IDs and respective permission levels that will be assigned. | [optional] 
+**profiles** | [**List[InviteAssetsSummaryItem]**](InviteAssetsSummaryItem.md) | List of profile IDs and respective permission levels that will be assigned. | [optional] 
 
 ## Example
 

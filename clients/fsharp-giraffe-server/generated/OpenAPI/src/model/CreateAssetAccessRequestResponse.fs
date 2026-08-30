@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.CreateAssetAccessRequestErrorMessageInner
+open OpenAPI.Model.AssetAccessRequestError
 open System.Collections.Generic
 
 module CreateAssetAccessRequestResponse =
@@ -11,7 +11,7 @@ module CreateAssetAccessRequestResponse =
 
 
   type CreateAssetAccessRequestResponse = {
-    Exceptions : CreateAssetAccessRequestErrorMessageInner[];
+    Exceptions : AssetAccessRequestError[];
     Invites : IDictionary<string, string>;
   }
   //#endregion

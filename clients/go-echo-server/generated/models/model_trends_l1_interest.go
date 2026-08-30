@@ -1,0 +1,31 @@
+package models
+// TrendsL1Interest : L1 interest categories for filtering trends.
+type TrendsL1Interest string
+
+// List of TrendsL1Interest
+const (
+	ANIMALS TrendsL1Interest = "animals"
+	ARCHITECTURE TrendsL1Interest = "architecture"
+	ART TrendsL1Interest = "art"
+	BEAUTY TrendsL1Interest = "beauty"
+	CHILDRENS_FASHION TrendsL1Interest = "childrens_fashion"
+	DESIGN TrendsL1Interest = "design"
+	DIY_AND_CRAFTS TrendsL1Interest = "diy_and_crafts"
+	EDUCATION TrendsL1Interest = "education"
+	ELECTRONICS TrendsL1Interest = "electronics"
+	ENTERTAINMENT TrendsL1Interest = "entertainment"
+	EVENT_PLANNING TrendsL1Interest = "event_planning"
+	FINANCE TrendsL1Interest = "finance"
+	FOOD_AND_DRINKS TrendsL1Interest = "food_and_drinks"
+	GARDENING TrendsL1Interest = "gardening"
+	HEALTH TrendsL1Interest = "health"
+	HOME_DECOR TrendsL1Interest = "home_decor"
+	MENS_FASHION TrendsL1Interest = "mens_fashion"
+	PARENTING TrendsL1Interest = "parenting"
+	QUOTES TrendsL1Interest = "quotes"
+	SPORT TrendsL1Interest = "sport"
+	TRAVEL TrendsL1Interest = "travel"
+	VEHICLES TrendsL1Interest = "vehicles"
+	WEDDING TrendsL1Interest = "wedding"
+	WOMENS_FASHION TrendsL1Interest = "womens_fashion"
+)

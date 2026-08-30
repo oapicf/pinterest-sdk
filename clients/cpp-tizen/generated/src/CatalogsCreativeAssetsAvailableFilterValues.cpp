@@ -24,7 +24,7 @@ void
 CatalogsCreativeAssetsAvailableFilterValues::__init()
 {
 	//catalog_type = std::string();
-	//filter_values = new Catalogs_creative_assets_filter_values_map();
+	//filter_values = new CatalogsCreativeAssetsFilterValuesMap();
 }
 
 void
@@ -64,11 +64,11 @@ CatalogsCreativeAssetsAvailableFilterValues::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Catalogs_creative_assets_filter_values_map")) {
-			jsonToValue(&filter_values, node, "Catalogs_creative_assets_filter_values_map", "Catalogs_creative_assets_filter_values_map");
+		if (isprimitive("CatalogsCreativeAssetsFilterValuesMap")) {
+			jsonToValue(&filter_values, node, "CatalogsCreativeAssetsFilterValuesMap", "CatalogsCreativeAssetsFilterValuesMap");
 		} else {
 			
-			Catalogs_creative_assets_filter_values_map* obj = static_cast<Catalogs_creative_assets_filter_values_map*> (&filter_values);
+			CatalogsCreativeAssetsFilterValuesMap* obj = static_cast<CatalogsCreativeAssetsFilterValuesMap*> (&filter_values);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -94,13 +94,13 @@ CatalogsCreativeAssetsAvailableFilterValues::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
-	if (isprimitive("Catalogs_creative_assets_filter_values_map")) {
-		Catalogs_creative_assets_filter_values_map obj = getFilterValues();
-		node = converttoJson(&obj, "Catalogs_creative_assets_filter_values_map", "");
+	if (isprimitive("CatalogsCreativeAssetsFilterValuesMap")) {
+		CatalogsCreativeAssetsFilterValuesMap obj = getFilterValues();
+		node = converttoJson(&obj, "CatalogsCreativeAssetsFilterValuesMap", "");
 	}
 	else {
 		
-		Catalogs_creative_assets_filter_values_map obj = static_cast<Catalogs_creative_assets_filter_values_map> (getFilterValues());
+		CatalogsCreativeAssetsFilterValuesMap obj = static_cast<CatalogsCreativeAssetsFilterValuesMap> (getFilterValues());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -128,14 +128,14 @@ CatalogsCreativeAssetsAvailableFilterValues::setCatalogType(std::string  catalog
 	this->catalog_type = catalog_type;
 }
 
-Catalogs_creative_assets_filter_values_map
+CatalogsCreativeAssetsFilterValuesMap
 CatalogsCreativeAssetsAvailableFilterValues::getFilterValues()
 {
 	return filter_values;
 }
 
 void
-CatalogsCreativeAssetsAvailableFilterValues::setFilterValues(Catalogs_creative_assets_filter_values_map  filter_values)
+CatalogsCreativeAssetsAvailableFilterValues::setFilterValues(CatalogsCreativeAssetsFilterValuesMap  filter_values)
 {
 	this->filter_values = filter_values;
 }

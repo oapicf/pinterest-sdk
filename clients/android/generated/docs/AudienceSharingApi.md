@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## adAccountsAudiencesSharedAccountsList
 
-> AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, bookmark, pageSize)
 
 List accounts with access to an audience owned by an ad account
 
@@ -29,13 +29,13 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 //import org.openapitools.client.api.AudienceSharingApi;
 
 AudienceSharingApi apiInstance = new AudienceSharingApi();
-String adAccountId = null; // String | Unique identifier of an ad account.
 String audienceId = null; // String | Unique identifier of the audience to use to filter the results.
 AudienceAccountType accountType = null; // AudienceAccountType | Filter accounts by account type.
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+String adAccountId = null; // String | Unique identifier of an ad account.
 String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    AdAccountsAudiencesSharedAccountsList200Response result = apiInstance.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark);
+    AdAccountsAudiencesSharedAccountsList200Response result = apiInstance.adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudienceSharingApi#adAccountsAudiencesSharedAccountsList");
@@ -48,11 +48,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
  **audienceId** | **String**| Unique identifier of the audience to use to filter the results. | [default to null]
  **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to null] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ## businessAccountAudiencesSharedAccountsList
 
-> AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark)
+> AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize)
 
 List accounts with access to an audience owned by a business
 
@@ -83,13 +83,13 @@ List all ad accounts and/or businesses that have access to a specific audience. 
 //import org.openapitools.client.api.AudienceSharingApi;
 
 AudienceSharingApi apiInstance = new AudienceSharingApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
+String businessId = null; // String | Unique identifier of the requesting business.
 String audienceId = null; // String | Unique identifier of the audience to use to filter the results.
 AudienceAccountType accountType = null; // AudienceAccountType | Filter accounts by account type.
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    AdAccountsAudiencesSharedAccountsList200Response result = apiInstance.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark);
+    AdAccountsAudiencesSharedAccountsList200Response result = apiInstance.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudienceSharingApi#businessAccountAudiencesSharedAccountsList");
@@ -105,8 +105,8 @@ Name | Type | Description  | Notes
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
  **audienceId** | **String**| Unique identifier of the audience to use to filter the results. | [default to null]
  **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to null] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ## sharedAudiencesForBusinessList
 
-> AudiencesList200Response sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize)
+> SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize)
 
 List received audiences for a business
 
@@ -137,12 +137,12 @@ Get a list of received audiences for the given business.
 //import org.openapitools.client.api.AudienceSharingApi;
 
 AudienceSharingApi apiInstance = new AudienceSharingApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
+String businessId = null; // String | Unique identifier of the requesting business.
+Order order = null; // Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 String bookmark = null; // String | Cursor used to fetch the next page of items
-String order = ASCENDING; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    AudiencesList200Response result = apiInstance.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize);
+    SharedAudiencesForBusinessList200Response result = apiInstance.sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudienceSharingApi#sharedAudiencesForBusinessList");
@@ -156,13 +156,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
+ **order** | [**Order**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**AudiencesList200Response**](AudiencesList200Response.md)
+[**SharedAudiencesForBusinessList200Response**](SharedAudiencesForBusinessList200Response.md)
 
 ### Authorization
 
@@ -176,11 +176,11 @@ Name | Type | Description  | Notes
 
 ## updateAdAccountToAdAccountSharedAudience
 
-> SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
+> AdAccountToAdAccountSharedAudience updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -190,9 +190,9 @@ From an ad account, share a specific audience with another ad account, or revoke
 
 AudienceSharingApi apiInstance = new AudienceSharingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-SharedAudience sharedAudience = new SharedAudience(); // SharedAudience | 
+AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = new AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody(); // AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
 try {
-    SharedAudienceResponse result = apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience);
+    AdAccountToAdAccountSharedAudience result = apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudienceSharingApi#updateAdAccountToAdAccountSharedAudience");
@@ -206,11 +206,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  |
+ **adAccountToAdAccountSharedAudienceUpdateWithRequiredBody** | [**AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody**](AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**AdAccountToAdAccountSharedAudience**](AdAccountToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -224,11 +224,11 @@ Name | Type | Description  | Notes
 
 ## updateAdAccountToBusinessSharedAudience
 
-> BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
+> AdAccountToBusinessSharedAudience updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -238,9 +238,9 @@ From an ad account, share a specific audience with a business account, or revoke
 
 AudienceSharingApi apiInstance = new AudienceSharingApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-BusinessSharedAudience businessSharedAudience = new BusinessSharedAudience(); // BusinessSharedAudience | 
+AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody = new AdAccountToBusinessSharedAudienceUpdateWithRequiredBody(); // AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
 try {
-    BusinessSharedAudienceResponse result = apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience);
+    AdAccountToBusinessSharedAudience result = apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudienceSharingApi#updateAdAccountToBusinessSharedAudience");
@@ -254,11 +254,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  |
+ **adAccountToBusinessSharedAudienceUpdateWithRequiredBody** | [**AdAccountToBusinessSharedAudienceUpdateWithRequiredBody**](AdAccountToBusinessSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**AdAccountToBusinessSharedAudience**](AdAccountToBusinessSharedAudience.md)
 
 ### Authorization
 
@@ -272,11 +272,11 @@ Name | Type | Description  | Notes
 
 ## updateBusinessToAdAccountSharedAudience
 
-> SharedAudienceResponse updateBusinessToAdAccountSharedAudience(businessId, sharedAudience)
+> BusinessToAdAccountSharedAudience updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -285,10 +285,10 @@ From a business, share a specific audience with other ad account(s), or revoke a
 //import org.openapitools.client.api.AudienceSharingApi;
 
 AudienceSharingApi apiInstance = new AudienceSharingApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-SharedAudience sharedAudience = new SharedAudience(); // SharedAudience | 
+String businessId = null; // String | Unique identifier of the requesting business.
+BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody = new BusinessToAdAccountSharedAudienceUpdateWithRequiredBody(); // BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
 try {
-    SharedAudienceResponse result = apiInstance.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience);
+    BusinessToAdAccountSharedAudience result = apiInstance.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudienceSharingApi#updateBusinessToAdAccountSharedAudience");
@@ -302,11 +302,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
- **sharedAudience** | [**SharedAudience**](SharedAudience.md)|  |
+ **businessToAdAccountSharedAudienceUpdateWithRequiredBody** | [**BusinessToAdAccountSharedAudienceUpdateWithRequiredBody**](BusinessToAdAccountSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-[**SharedAudienceResponse**](SharedAudienceResponse.md)
+[**BusinessToAdAccountSharedAudience**](BusinessToAdAccountSharedAudience.md)
 
 ### Authorization
 
@@ -320,11 +320,11 @@ Name | Type | Description  | Notes
 
 ## updateBusinessToBusinessSharedAudience
 
-> BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience)
+> BusinessToBusinessSharedAudience updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody)
 
 Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
 ### Example
 
@@ -333,10 +333,10 @@ From a business, share a specific audience with another business account, or rev
 //import org.openapitools.client.api.AudienceSharingApi;
 
 AudienceSharingApi apiInstance = new AudienceSharingApi();
-String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
-BusinessSharedAudience businessSharedAudience = new BusinessSharedAudience(); // BusinessSharedAudience | 
+String businessId = null; // String | Unique identifier of the requesting business.
+BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody = new BusinessToBusinessSharedAudienceUpdateWithRequiredBody(); // BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
 try {
-    BusinessSharedAudienceResponse result = apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience);
+    BusinessToBusinessSharedAudience result = apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AudienceSharingApi#updateBusinessToBusinessSharedAudience");
@@ -350,11 +350,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
- **businessSharedAudience** | [**BusinessSharedAudience**](BusinessSharedAudience.md)|  |
+ **businessToBusinessSharedAudienceUpdateWithRequiredBody** | [**BusinessToBusinessSharedAudienceUpdateWithRequiredBody**](BusinessToBusinessSharedAudienceUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
-[**BusinessSharedAudienceResponse**](BusinessSharedAudienceResponse.md)
+[**BusinessToBusinessSharedAudience**](BusinessToBusinessSharedAudience.md)
 
 ### Authorization
 

@@ -11,33 +11,31 @@
 part of openapi.api;
 
 /// Order Line Paid Type
-class OrderLinePaidType {
-  /// Instantiate a new enum with the provided [value].
-  const OrderLinePaidType._(this.value);
+enum OrderLinePaidType {
+  PAID._(r'PAID'),
+  BONUS._(r'BONUS'),
+  MAKE_GOOD._(r'MAKE_GOOD'),
+  TEST._(r'TEST'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const OrderLinePaidType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const PAID = OrderLinePaidType._(r'PAID');
-  static const BONUS = OrderLinePaidType._(r'BONUS');
-  static const MAKE_GOOD = OrderLinePaidType._(r'MAKE_GOOD');
-  static const TEST = OrderLinePaidType._(r'TEST');
-
-  /// List of all possible values in this [enum][OrderLinePaidType].
-  static const values = <OrderLinePaidType>[
-    PAID,
-    BONUS,
-    MAKE_GOOD,
-    TEST,
-  ];
-
+  /// Returns the instance of [OrderLinePaidType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static OrderLinePaidType? fromJson(dynamic value) => OrderLinePaidTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [OrderLinePaidType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<OrderLinePaidType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <OrderLinePaidType>[];
     if (json is List && json.isNotEmpty) {
@@ -59,9 +57,11 @@ class OrderLinePaidTypeTypeTransformer {
 
   const OrderLinePaidTypeTypeTransformer._();
 
-  String encode(OrderLinePaidType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(OrderLinePaidType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a OrderLinePaidType.
+  /// Returns the instance of [OrderLinePaidType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -70,6 +70,9 @@ class OrderLinePaidTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   OrderLinePaidType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is OrderLinePaidType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'PAID': return OrderLinePaidType.PAID;
@@ -85,7 +88,7 @@ class OrderLinePaidTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [OrderLinePaidTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static OrderLinePaidTypeTypeTransformer? _instance;
 }
 

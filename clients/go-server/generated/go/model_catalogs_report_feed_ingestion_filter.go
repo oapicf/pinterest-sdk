@@ -5,38 +5,100 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type CatalogsReportFeedIngestionFilter struct {
 
 	// ID of the feed entity.
-	FeedId string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+	FeedId string `json:"feed_id" validate:"regexp=^\\d+$"`
 
 	// Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
-	ProcessingResultId string `json:"processing_result_id,omitempty" validate:"regexp=^\\\\d+$"`
+	ProcessingResultId string `json:"processing_result_id,omitempty" validate:"regexp=^\\d+$"`
 
 	ReportType string `json:"report_type"`
 }
-
-// AssertCatalogsReportFeedIngestionFilterRequired checks if the required fields are not zero-ed
-func AssertCatalogsReportFeedIngestionFilterRequired(obj CatalogsReportFeedIngestionFilter) error {
-	elements := map[string]interface{}{
-		"feed_id": obj.FeedId,
-		"report_type": obj.ReportType,
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsReportFeedIngestionFilter
+func (o *CatalogsReportFeedIngestionFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"feed_id",
+		"report_type",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"feed_id": false,
+		"report_type": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"feed_id": {},
+		"processing_result_id": {},
+		"report_type": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsReportFeedIngestionFilter
+
+	if value, exists := allProperties["feed_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.FeedId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["processing_result_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ProcessingResultId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["report_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.ReportType); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsReportFeedIngestionFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCatalogsReportFeedIngestionFilterRequired(obj CatalogsReportFeedIngestionFilter) error {
 	return nil
 }
 

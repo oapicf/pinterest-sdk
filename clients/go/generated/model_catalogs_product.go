@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -17,7 +17,7 @@ import (
 	"gopkg.in/validator.v2"
 )
 
-// CatalogsProduct - Catalogs product for all verticals
+// CatalogsProduct - struct for CatalogsProduct
 type CatalogsProduct struct {
 	CatalogsCreativeAssetsProduct *CatalogsCreativeAssetsProduct
 	CatalogsHotelProduct *CatalogsHotelProduct
@@ -111,7 +111,21 @@ func (dst *CatalogsProduct) UnmarshalJSON(data []byte) error {
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProduct)")
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProduct): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProduct)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProduct): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProduct)")
+        }
+        if err != nil {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProduct): %v", err)
+        } else {
+            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProduct)")
+        }
 	}
 }
 

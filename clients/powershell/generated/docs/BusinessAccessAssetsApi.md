@@ -20,13 +20,13 @@ Method | HTTP request | Description
 
 <a id="Invoke-AssetGroupCreate"></a>
 # **Invoke-AssetGroupCreate**
-> CreateAssetGroupResponse Invoke-AssetGroupCreate<br>
+> AssetGroupInput Invoke-AssetGroupCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateAssetGroupBody] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetGroupInputCreate] <PSCustomObject><br>
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An <a href=""https://help.pinterest.com/en/business/article/asset-groups"">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example
 ```powershell
@@ -35,12 +35,15 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$CreateAssetGroupBody = Initialize-CreateAssetGroupBody -AssetGroupDescription "Asset groups that has ad accounts shared in Canada" -AssetGroupName "Canada Ad Accounts" -AssetGroupTypes "BRAND" # CreateAssetGroupBody | 
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$BusinessAccessUserSummary = Initialize-BusinessAccessUserSummary -Email "business0101@business.com" -Id "549755885175" -Username "business0101"
+$AssetGroupBinding = Initialize-AssetGroupBinding -AdAccountsIds "MyAdAccountsIds" -AssetGroupDescription "Asset group that has ad accounts used in Canada" -AssetGroupName "Canada Ad Accounts" -AssetGroupTypes "MyAssetGroupTypes" -CatalogsIds "MyCatalogsIds" -CreatedBy $BusinessAccessUserSummary -CreatedTime 1646767577816 -Id "666791336903426391" -Owner $BusinessAccessUserSummary -ProfilesIds "MyProfilesIds" -UpdatedTime 1646767577816
+
+$AssetGroupInputCreate = Initialize-AssetGroupInputCreate -AssetGroup $AssetGroupBinding -AssetGroupDescription "Asset groups that has ad accounts shared in Canada" -AssetGroupName "Canada Ad Accounts" -AssetGroupTypes "BRAND" # AssetGroupInputCreate | 
 
 # Create a new asset group.
 try {
-    $Result = Invoke-AssetGroupCreate -BusinessId $BusinessId -CreateAssetGroupBody $CreateAssetGroupBody
+    $Result = Invoke-AssetGroupCreate -BusinessId $BusinessId -AssetGroupInputCreate $AssetGroupInputCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AssetGroupCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -52,11 +55,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **CreateAssetGroupBody** | [**CreateAssetGroupBody**](CreateAssetGroupBody.md)|  | 
+ **AssetGroupInputCreate** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md)|  | 
 
 ### Return type
 
-[**CreateAssetGroupResponse**](CreateAssetGroupResponse.md) (PSCustomObject)
+[**AssetGroupInput**](AssetGroupInput.md) (PSCustomObject)
 
 ### Authorization
 
@@ -71,9 +74,9 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-AssetGroupDelete"></a>
 # **Invoke-AssetGroupDelete**
-> DeleteAssetGroupResponse Invoke-AssetGroupDelete<br>
+> AssetGroupDeletion Invoke-AssetGroupDelete<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DeleteAssetGroupBody] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetGroupDeletionDelete] <PSCustomObject><br>
 
 Delete asset groups.
 
@@ -86,12 +89,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$DeleteAssetGroupBody = Initialize-DeleteAssetGroupBody -AssetGroupsToDelete "MyAssetGroupsToDelete" # DeleteAssetGroupBody | 
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$AssetGroupDeletionDelete = Initialize-AssetGroupDeletionDelete -AssetGroupsToDelete "MyAssetGroupsToDelete" # AssetGroupDeletionDelete | 
 
 # Delete asset groups.
 try {
-    $Result = Invoke-AssetGroupDelete -BusinessId $BusinessId -DeleteAssetGroupBody $DeleteAssetGroupBody
+    $Result = Invoke-AssetGroupDelete -BusinessId $BusinessId -AssetGroupDeletionDelete $AssetGroupDeletionDelete
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AssetGroupDelete: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -103,11 +106,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **DeleteAssetGroupBody** | [**DeleteAssetGroupBody**](DeleteAssetGroupBody.md)|  | 
+ **AssetGroupDeletionDelete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md)|  | 
 
 ### Return type
 
-[**DeleteAssetGroupResponse**](DeleteAssetGroupResponse.md) (PSCustomObject)
+[**AssetGroupDeletion**](AssetGroupDeletion.md) (PSCustomObject)
 
 ### Authorization
 
@@ -122,9 +125,9 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-AssetGroupUpdate"></a>
 # **Invoke-AssetGroupUpdate**
-> UpdateAssetGroupResponse Invoke-AssetGroupUpdate<br>
+> AssetGroupModification Invoke-AssetGroupUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateAssetGroupBody] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetGroupModificationReadOrUpdate] <PSCustomObject><br>
 
 Update asset groups.
 
@@ -137,13 +140,18 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$UpdateAssetGroupBodyAssetGroupsToUpdateInner = Initialize-UpdateAssetGroupBodyAssetGroupsToUpdateInner -AssetGroupId "666791336903426391" -AssetGroupTypes "BRAND" -AssetsToAdd "549755885175" -AssetsToRemove "549755885175" -Description "Asset groups that has ad accounts shared in Canada" -Name "Canada Ad Accounts"
-$UpdateAssetGroupBody = Initialize-UpdateAssetGroupBody -AssetGroupsToUpdate $UpdateAssetGroupBodyAssetGroupsToUpdateInner # UpdateAssetGroupBody | 
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$AssetGroupUpdateItemReadOrUpdateItem = Initialize-AssetGroupUpdateItemReadOrUpdateItem -AssetGroupId "MyAssetGroupId" -AssetGroupTypes "BRAND" -AssetsToAdd "MyAssetsToAdd" -AssetsToRemove "MyAssetsToRemove" -Description "MyDescription" -Name "MyName"
+$AssetGroupUpdateError = Initialize-AssetGroupUpdateError -AssetGroupId "MyAssetGroupId" -Code 0 -Message "MyMessage"
+
+$BusinessAccessUserSummary = Initialize-BusinessAccessUserSummary -Email "business0101@business.com" -Id "549755885175" -Username "business0101"
+$AssetGroupBinding = Initialize-AssetGroupBinding -AdAccountsIds "MyAdAccountsIds" -AssetGroupDescription "Asset group that has ad accounts used in Canada" -AssetGroupName "Canada Ad Accounts" -AssetGroupTypes "MyAssetGroupTypes" -CatalogsIds "MyCatalogsIds" -CreatedBy $BusinessAccessUserSummary -CreatedTime 1646767577816 -Id "666791336903426391" -Owner $BusinessAccessUserSummary -ProfilesIds "MyProfilesIds" -UpdatedTime 1646767577816
+
+$AssetGroupModificationReadOrUpdate = Initialize-AssetGroupModificationReadOrUpdate -AssetGroupsToUpdate $AssetGroupUpdateItemReadOrUpdateItem -Exceptions $AssetGroupUpdateError -UpdatedAssetGroups $AssetGroupBinding # AssetGroupModificationReadOrUpdate | 
 
 # Update asset groups.
 try {
-    $Result = Invoke-AssetGroupUpdate -BusinessId $BusinessId -UpdateAssetGroupBody $UpdateAssetGroupBody
+    $Result = Invoke-AssetGroupUpdate -BusinessId $BusinessId -AssetGroupModificationReadOrUpdate $AssetGroupModificationReadOrUpdate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AssetGroupUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -155,11 +163,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **UpdateAssetGroupBody** | [**UpdateAssetGroupBody**](UpdateAssetGroupBody.md)|  | 
+ **AssetGroupModificationReadOrUpdate** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md)|  | 
 
 ### Return type
 
-[**UpdateAssetGroupResponse**](UpdateAssetGroupResponse.md) (PSCustomObject)
+[**AssetGroupModification**](AssetGroupModification.md) (PSCustomObject)
 
 ### Authorization
 
@@ -177,10 +185,10 @@ Name | Type | Description  | Notes
 > BusinessAssetMembersGet200Response Invoke-BusinessAssetMembersGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartIndex] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FetchSystemUsers] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartIndex] <System.Nullable[Int32]><br>
 
 Get members with access to asset
 
@@ -193,16 +201,16 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$AssetId = "729090764583391194" # String | Unique identifier of a business asset.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$AssetId = "MyAssetId" # String | Unique identifier of a business asset.
+$StartIndex = 56 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 $FetchSystemUsers = $true # Boolean | Fetches system users if True. Fetches regular user employees if False. (optional) (default to $false)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$StartIndex = 0 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get members with access to asset
 try {
-    $Result = Invoke-BusinessAssetMembersGet -BusinessId $BusinessId -AssetId $AssetId -FetchSystemUsers $FetchSystemUsers -Bookmark $Bookmark -PageSize $PageSize -StartIndex $StartIndex
+    $Result = Invoke-BusinessAssetMembersGet -BusinessId $BusinessId -AssetId $AssetId -StartIndex $StartIndex -FetchSystemUsers $FetchSystemUsers -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BusinessAssetMembersGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -215,10 +223,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
  **AssetId** | **String**| Unique identifier of a business asset. | 
+ **StartIndex** | **Int32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **FetchSystemUsers** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to $false]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **StartIndex** | **Int32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -237,7 +245,7 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-BusinessAssetPartnersGet"></a>
 # **Invoke-BusinessAssetPartnersGet**
-> BusinessAssetPartnersGet200Response Invoke-BusinessAssetPartnersGet<br>
+> BusinessAssetMembersGet200Response Invoke-BusinessAssetPartnersGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartIndex] <System.Nullable[Int32]><br>
@@ -255,11 +263,11 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$AssetId = "729090764583391194" # String | Unique identifier of a business asset.
-$StartIndex = 0 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$AssetId = "MyAssetId" # String | Unique identifier of a business asset.
+$StartIndex = 56 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get partners with access to asset
 try {
@@ -278,11 +286,11 @@ Name | Type | Description  | Notes
  **AssetId** | **String**| Unique identifier of a business asset. | 
  **StartIndex** | **Int32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessAssetPartnersGet200Response**](BusinessAssetPartnersGet200Response.md) (PSCustomObject)
+[**BusinessAssetMembersGet200Response**](BusinessAssetMembersGet200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -318,14 +326,14 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
 $Permissions = "ADMIN" # PermissionsWithOwner[] | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional)
-$ChildAssetId = "549764894835" # String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
-$AssetGroupId = "7078106104032" # String | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
+$ChildAssetId = "MyChildAssetId" # String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
+$AssetGroupId = "MyAssetGroupId" # String | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
 $AssetType = "AD_ACCOUNT" # String | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
-$StartIndex = 0 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+$StartIndex = 56 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List business assets
 try {
@@ -347,7 +355,7 @@ Name | Type | Description  | Notes
  **AssetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
  **StartIndex** | **Int32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -366,11 +374,17 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-BusinessMemberAssetsGet"></a>
 # **Invoke-BusinessMemberAssetsGet**
-> BusinessMemberAssetsGet200Response Invoke-BusinessMemberAssetsGet<br>
+> BusinessMemberAssetsGetResponse Invoke-BusinessMemberAssetsGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MemberId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetType] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartIndex] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortAscending] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SearchBy] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SearchValue] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetPermissionType] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountStatuses] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
@@ -385,16 +399,22 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$MemberId = "729090764583391194" # String | The member id to fetch assets for.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$MemberId = "MyMemberId" # String | The member id to fetch assets for.
 $AssetType = "AD_ACCOUNT" # String | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
-$StartIndex = 0 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+$StartIndex = 56 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+$SortBy = "NAME" # AssetSortBy | The field to sort member assets by (optional)
+$SortAscending = $true # Boolean | Sort assets in ascending order (optional) (default to $true)
+$SearchBy = "NAME" # AssetSearchBy | The field to search member assets by (optional)
+$SearchValue = "MySearchValue" # String | The value to search for (optional)
+$AssetPermissionType = "AGGREGATED_PERMISSION" # AssetPermissionType | The type of asset permission to filter by (optional)
+$AdAccountStatuses = "ACTIVE" # NonDraftEntityStatus[] | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get assets assigned to a member
 try {
-    $Result = Invoke-BusinessMemberAssetsGet -BusinessId $BusinessId -MemberId $MemberId -AssetType $AssetType -StartIndex $StartIndex -Bookmark $Bookmark -PageSize $PageSize
+    $Result = Invoke-BusinessMemberAssetsGet -BusinessId $BusinessId -MemberId $MemberId -AssetType $AssetType -StartIndex $StartIndex -SortBy $SortBy -SortAscending $SortAscending -SearchBy $SearchBy -SearchValue $SearchValue -AssetPermissionType $AssetPermissionType -AdAccountStatuses $AdAccountStatuses -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BusinessMemberAssetsGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -409,12 +429,18 @@ Name | Type | Description  | Notes
  **MemberId** | **String**| The member id to fetch assets for. | 
  **AssetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
  **StartIndex** | **Int32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **SortBy** | [**AssetSortBy**](AssetSortBy.md)| The field to sort member assets by | [optional] 
+ **SortAscending** | **Boolean**| Sort assets in ascending order | [optional] [default to $true]
+ **SearchBy** | [**AssetSearchBy**](AssetSearchBy.md)| The field to search member assets by | [optional] 
+ **SearchValue** | **String**| The value to search for | [optional] 
+ **AssetPermissionType** | [**AssetPermissionType**](AssetPermissionType.md)| The type of asset permission to filter by | [optional] 
+ **AdAccountStatuses** | [**NonDraftEntityStatus[]**](NonDraftEntityStatus.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**BusinessMemberAssetsGet200Response**](BusinessMemberAssetsGet200Response.md) (PSCustomObject)
+[**BusinessMemberAssetsGetResponse**](BusinessMemberAssetsGetResponse.md) (PSCustomObject)
 
 ### Authorization
 
@@ -431,7 +457,7 @@ Name | Type | Description  | Notes
 # **Invoke-BusinessMembersAssetAccessDelete**
 > DeleteMemberAccessResultsResponseArray Invoke-BusinessMembersAssetAccessDelete<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessMembersAssetAccessDeleteRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessMembersAssetAccessDeleteBody] <PSCustomObject><br>
 
 Delete member access to asset
 
@@ -444,13 +470,13 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$BusinessMembersAssetAccessDeleteRequestAccessesInner = Initialize-BusinessMembersAssetAccessDeleteRequestAccessesInner -AssetId "549755885175" -MemberId "140943737684417"
-$BusinessMembersAssetAccessDeleteRequest = Initialize-BusinessMembersAssetAccessDeleteRequest -Accesses $BusinessMembersAssetAccessDeleteRequestAccessesInner # BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$DeleteMemberAssetAccessItem = Initialize-DeleteMemberAssetAccessItem -AssetId "MyAssetId" -MemberId "MyMemberId"
+$BusinessMembersAssetAccessDeleteBody = Initialize-BusinessMembersAssetAccessDeleteBody -Accesses $DeleteMemberAssetAccessItem # BusinessMembersAssetAccessDeleteBody | 
 
 # Delete member access to asset
 try {
-    $Result = Invoke-BusinessMembersAssetAccessDelete -BusinessId $BusinessId -BusinessMembersAssetAccessDeleteRequest $BusinessMembersAssetAccessDeleteRequest
+    $Result = Invoke-BusinessMembersAssetAccessDelete -BusinessId $BusinessId -BusinessMembersAssetAccessDeleteBody $BusinessMembersAssetAccessDeleteBody
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BusinessMembersAssetAccessDelete: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -462,7 +488,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **BusinessMembersAssetAccessDeleteRequest** | [**BusinessMembersAssetAccessDeleteRequest**](BusinessMembersAssetAccessDeleteRequest.md)| List member assset permissions to delete. | 
+ **BusinessMembersAssetAccessDeleteBody** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md)|  | 
 
 ### Return type
 
@@ -487,7 +513,7 @@ Name | Type | Description  | Notes
 
 Assign/Update member asset permissions
 
-Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
 ### Example
 ```powershell
@@ -496,9 +522,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$UpdateMemberAssetAccessBodyAccessesInner = Initialize-UpdateMemberAssetAccessBodyAccessesInner -AssetId "549755885175" -MemberId "140943737684417" -Permissions "ADMIN"
-$UpdateMemberAssetAccessBody = Initialize-UpdateMemberAssetAccessBody -Accesses $UpdateMemberAssetAccessBodyAccessesInner # UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$UpdateMemberAssetAccessItem = Initialize-UpdateMemberAssetAccessItem -AssetId "MyAssetId" -MemberId "MyMemberId" -Permissions "ADMIN"
+$UpdateMemberAssetAccessBody = Initialize-UpdateMemberAssetAccessBody -Accesses $UpdateMemberAssetAccessItem # UpdateMemberAssetAccessBody | 
 
 # Assign/Update member asset permissions
 try {
@@ -514,7 +540,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **UpdateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. | 
+ **UpdateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)|  | 
 
 ### Return type
 
@@ -536,11 +562,15 @@ Name | Type | Description  | Notes
 > BusinessPartnerAssetAccessGet200Response Invoke-BusinessPartnerAssetAccessGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PartnerId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PartnerType] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PartnerType] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetType] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartIndex] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortAscending] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SearchBy] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SearchValue] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 Get assets assigned to a partner or assets assigned by a partner
 
@@ -553,17 +583,21 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$PartnerId = "729090764583391194" # String | The partner id to be bound to the Business
-$PartnerType = "INTERNAL" # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$PartnerId = "MyPartnerId" # String | The partner id to be bound to the Business
+$PartnerType = "INTERNAL" # String | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) (default to "INTERNAL")
 $AssetType = "AD_ACCOUNT" # String | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
-$StartIndex = 0 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$StartIndex = 56 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
+$SortBy = "NAME" # AssetSortBy | The field to sort member assets by (optional)
+$SortAscending = $true # Boolean | Sort assets in ascending order (optional) (default to $true)
+$SearchBy = "NAME" # AssetSearchBy | The field to search member assets by (optional)
+$SearchValue = "MySearchValue" # String | The value to search for (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get assets assigned to a partner or assets assigned by a partner
 try {
-    $Result = Invoke-BusinessPartnerAssetAccessGet -BusinessId $BusinessId -PartnerId $PartnerId -PartnerType $PartnerType -AssetType $AssetType -StartIndex $StartIndex -PageSize $PageSize -Bookmark $Bookmark
+    $Result = Invoke-BusinessPartnerAssetAccessGet -BusinessId $BusinessId -PartnerId $PartnerId -PartnerType $PartnerType -AssetType $AssetType -StartIndex $StartIndex -SortBy $SortBy -SortAscending $SortAscending -SearchBy $SearchBy -SearchValue $SearchValue -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BusinessPartnerAssetAccessGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -576,11 +610,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
  **PartnerId** | **String**| The partner id to be bound to the Business | 
- **PartnerType** | [**PartnerType**](PartnerType.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
+ **PartnerType** | **String**| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to &quot;INTERNAL&quot;]
  **AssetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &quot;AD_ACCOUNT&quot;]
  **StartIndex** | **Int32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **SortBy** | [**AssetSortBy**](AssetSortBy.md)| The field to sort member assets by | [optional] 
+ **SortAscending** | **Boolean**| Sort assets in ascending order | [optional] [default to $true]
+ **SearchBy** | [**AssetSearchBy**](AssetSearchBy.md)| The field to search member assets by | [optional] 
+ **SearchValue** | **String**| The value to search for | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -599,7 +637,7 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-DeletePartnerAssetAccessHandlerImpl"></a>
 # **Invoke-DeletePartnerAssetAccessHandlerImpl**
-> DeletePartnerAssetsResultsResponseArray Invoke-DeletePartnerAssetAccessHandlerImpl<br>
+> DeletePartnerAssetAccessResultsResponseArray Invoke-DeletePartnerAssetAccessHandlerImpl<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DeletePartnerAssetAccessBody] <PSCustomObject><br>
 
@@ -614,9 +652,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$DeletePartnerAssetAccessBodyAccessesInner = Initialize-DeletePartnerAssetAccessBodyAccessesInner -AssetId "549755885175" -PartnerId "1234567890123" -PartnerType "INTERNAL"
-$DeletePartnerAssetAccessBody = Initialize-DeletePartnerAssetAccessBody -Accesses $DeletePartnerAssetAccessBodyAccessesInner # DeletePartnerAssetAccessBody | 
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$DeletePartnerAssetAccessItem = Initialize-DeletePartnerAssetAccessItem -AssetId "MyAssetId" -PartnerId "MyPartnerId" -PartnerType "INTERNAL"
+$DeletePartnerAssetAccessBody = Initialize-DeletePartnerAssetAccessBody -Accesses $DeletePartnerAssetAccessItem # DeletePartnerAssetAccessBody | 
 
 # Delete partner access to asset
 try {
@@ -636,7 +674,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeletePartnerAssetsResultsResponseArray**](DeletePartnerAssetsResultsResponseArray.md) (PSCustomObject)
+[**DeletePartnerAssetAccessResultsResponseArray**](DeletePartnerAssetAccessResultsResponseArray.md) (PSCustomObject)
 
 ### Authorization
 
@@ -666,9 +704,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$UpdatePartnerAssetAccessBodyAccessesInner = Initialize-UpdatePartnerAssetAccessBodyAccessesInner -AssetId "549755885175" -PartnerId "1234567890123" -Permissions "ADMIN"
-$UpdatePartnerAssetAccessBody = Initialize-UpdatePartnerAssetAccessBody -Accesses $UpdatePartnerAssetAccessBodyAccessesInner # UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+$BusinessId = "MyBusinessId" # String | Unique identifier of the requesting business.
+$UpdatePartnerAssetAccessItem = Initialize-UpdatePartnerAssetAccessItem -AssetId "MyAssetId" -PartnerId "MyPartnerId" -Permissions "ADMIN"
+$UpdatePartnerAssetAccessBody = Initialize-UpdatePartnerAssetAccessBody -Accesses $UpdatePartnerAssetAccessItem # UpdatePartnerAssetAccessBody | 
 
 # Assign/Update partner asset permissions
 try {
@@ -684,7 +722,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
- **UpdatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. | 
+ **UpdatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)|  | 
 
 ### Return type
 

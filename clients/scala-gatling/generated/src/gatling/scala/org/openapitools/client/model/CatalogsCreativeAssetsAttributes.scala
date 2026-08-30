@@ -25,18 +25,20 @@ case class CatalogsCreativeAssetsAttributes (
     _link: Option[String],
     /* The name of the creative assets. */
     _title: Option[String],
-    /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. */
+    /* Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. */
     _visibility: Option[String],
+    /* AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL. */
+    _aiDisclosures: Option[List[CatalogsAiContentDisclosure]],
     /* The creative assets image. */
     _imageLink: Option[String],
     /* The creative assets video. */
     _videoLink: Option[String]
 )
 object CatalogsCreativeAssetsAttributes {
-    def toStringBody(var_androidDeepLink: Object, var_customLabel0: Object, var_customLabel1: Object, var_customLabel2: Object, var_customLabel3: Object, var_customLabel4: Object, var_description: Object, var_googleProductCategory: Object, var_iosDeepLink: Object, var_link: Object, var_title: Object, var_visibility: Object, var_imageLink: Object, var_videoLink: Object) =
+    def toStringBody(var_androidDeepLink: Object, var_customLabel0: Object, var_customLabel1: Object, var_customLabel2: Object, var_customLabel3: Object, var_customLabel4: Object, var_description: Object, var_googleProductCategory: Object, var_iosDeepLink: Object, var_link: Object, var_title: Object, var_visibility: Object, var_aiDisclosures: Object, var_imageLink: Object, var_videoLink: Object) =
         s"""
         | {
-        | "androidDeepLink":$var_androidDeepLink,"customLabel0":$var_customLabel0,"customLabel1":$var_customLabel1,"customLabel2":$var_customLabel2,"customLabel3":$var_customLabel3,"customLabel4":$var_customLabel4,"description":$var_description,"googleProductCategory":$var_googleProductCategory,"iosDeepLink":$var_iosDeepLink,"link":$var_link,"title":$var_title,"visibility":$var_visibility,"imageLink":$var_imageLink,"videoLink":$var_videoLink
+        | "androidDeepLink":$var_androidDeepLink,"customLabel0":$var_customLabel0,"customLabel1":$var_customLabel1,"customLabel2":$var_customLabel2,"customLabel3":$var_customLabel3,"customLabel4":$var_customLabel4,"description":$var_description,"googleProductCategory":$var_googleProductCategory,"iosDeepLink":$var_iosDeepLink,"link":$var_link,"title":$var_title,"visibility":$var_visibility,"aiDisclosures":$var_aiDisclosures,"imageLink":$var_imageLink,"videoLink":$var_videoLink
         | }
         """.stripMargin
 }

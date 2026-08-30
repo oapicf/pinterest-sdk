@@ -7,9 +7,9 @@ import org.openapitools.api.factories.NotificationsApiServiceFactory;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
-import org.openapitools.model.Error;
 import org.openapitools.model.NotificationPostRequest;
 import org.openapitools.model.NotificationResponse;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import org.openapitools.api.NotFoundException;
@@ -28,7 +28,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the notifications API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class NotificationsApi  {
    private final NotificationsApiService delegate = NotificationsApiServiceFactory.getNotificationsApi();
 
@@ -45,12 +45,12 @@ public class NotificationsApi  {
         })
     }, tags={ "notification", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Successfully received notification", response = NotificationResponse.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "The request has succeeded.", response = NotificationResponse.class),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid request parameter.", response = NotificationResponse.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = NotificationResponse.class),
         
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = NotificationResponse.class) })
-    public Response notificationPost(@ApiParam(value = "notification event." ,required=true) NotificationPostRequest notificationPostRequest
+        @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = NotificationResponse.class) })
+    public Response notificationPost(@ApiParam(value = "" ,required=true) NotificationPostRequest notificationPostRequest
 )
     throws NotFoundException {
         return delegate.notificationPost(notificationPostRequest);

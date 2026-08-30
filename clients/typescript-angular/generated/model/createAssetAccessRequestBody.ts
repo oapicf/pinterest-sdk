@@ -7,13 +7,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CreateAssetAccessRequestBodyAssetRequestsInner } from './createAssetAccessRequestBodyAssetRequestsInner';
+import { CreateAssetAccessRequestItem } from './createAssetAccessRequestItem';
 
 
 /**
  * An object containing a list of all the asset access requests
  */
 export interface CreateAssetAccessRequestBody { 
-    asset_requests: Array<CreateAssetAccessRequestBodyAssetRequestsInner>;
+    asset_requests: Array<CreateAssetAccessRequestItem>;
 }
 

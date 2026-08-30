@@ -5,7 +5,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **feed\_id** | **String** | Catalog Feed id pertaining to the catalog product group filter. | [default to null] |
 | **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [default to null] |
-| **catalog\_id** | **String** | Catalog id pertaining to the creative assets product group. | [default to null] |
+| **catalog\_id** | **String** | Catalog ID pertaining to the product group. | [default to null] |
 | **catalog\_type** | **String** |  | [default to null] |
 | **country** | [**Country**](Country.md) |  | [default to null] |
 | **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [default to null] |

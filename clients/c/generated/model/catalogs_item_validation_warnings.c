@@ -217,6 +217,8 @@ static catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_cr
     if (!catalogs_item_validation_warnings_local_var) {
         return NULL;
     }
+    memset(catalogs_item_validation_warnings_local_var, 0, sizeof(catalogs_item_validation_warnings_t));
+    catalogs_item_validation_warnings_local_var->_library_owned = 1;
     catalogs_item_validation_warnings_local_var->ad_image_0_link_duplicated = ad_image_0_link_duplicated;
     catalogs_item_validation_warnings_local_var->ad_image_0_link_length_too_long = ad_image_0_link_length_too_long;
     catalogs_item_validation_warnings_local_var->ad_image_0_link_required = ad_image_0_link_required;
@@ -423,8 +425,6 @@ static catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_cr
     catalogs_item_validation_warnings_local_var->utm_source_auto_corrected = utm_source_auto_corrected;
     catalogs_item_validation_warnings_local_var->video_required_when_ad_video_provided = video_required_when_ad_video_provided;
     catalogs_item_validation_warnings_local_var->weight_unit_invalid = weight_unit_invalid;
-
-    catalogs_item_validation_warnings_local_var->_library_owned = 1;
     return catalogs_item_validation_warnings_local_var;
 }
 
@@ -636,7 +636,7 @@ __attribute__((deprecated)) catalogs_item_validation_warnings_t *catalogs_item_v
     catalogs_item_validation_details_t *video_required_when_ad_video_provided,
     catalogs_item_validation_details_t *weight_unit_invalid
     ) {
-    return catalogs_item_validation_warnings_create_internal (
+    catalogs_item_validation_warnings_t *result = catalogs_item_validation_warnings_create_internal (
         ad_image_0_link_duplicated,
         ad_image_0_link_length_too_long,
         ad_image_0_link_required,
@@ -844,6 +844,9 @@ __attribute__((deprecated)) catalogs_item_validation_warnings_t *catalogs_item_v
         video_required_when_ad_video_provided,
         weight_unit_invalid
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_item_validation_warnings_free(catalogs_item_validation_warnings_t *catalogs_item_validation_warnings) {
@@ -6847,6 +6850,7 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
     }
 
 
+
     catalogs_item_validation_warnings_local_var = catalogs_item_validation_warnings_create_internal (
         ad_image_0_link_duplicated ? ad_image_0_link_duplicated_local_nonprim : NULL,
         ad_image_0_link_length_too_long ? ad_image_0_link_length_too_long_local_nonprim : NULL,
@@ -7055,6 +7059,10 @@ catalogs_item_validation_warnings_t *catalogs_item_validation_warnings_parseFrom
         video_required_when_ad_video_provided ? video_required_when_ad_video_provided_local_nonprim : NULL,
         weight_unit_invalid ? weight_unit_invalid_local_nonprim : NULL
         );
+
+    if (!catalogs_item_validation_warnings_local_var) {
+        goto end;
+    }
 
     return catalogs_item_validation_warnings_local_var;
 end:

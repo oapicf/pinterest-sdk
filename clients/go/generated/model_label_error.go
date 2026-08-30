@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &LabelError{}
 
 // LabelError struct for LabelError
 type LabelError struct {
-	Data *Label `json:"data,omitempty"`
+	Data *LabelErrorData `json:"data,omitempty"`
 	ErrorMessages []string `json:"error_messages,omitempty"`
 }
 
@@ -42,9 +42,9 @@ func NewLabelErrorWithDefaults() *LabelError {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *LabelError) GetData() Label {
+func (o *LabelError) GetData() LabelErrorData {
 	if o == nil || IsNil(o.Data) {
-		var ret Label
+		var ret LabelErrorData
 		return ret
 	}
 	return *o.Data
@@ -52,7 +52,7 @@ func (o *LabelError) GetData() Label {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LabelError) GetDataOk() (*Label, bool) {
+func (o *LabelError) GetDataOk() (*LabelErrorData, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *LabelError) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given Label and assigns it to the Data field.
-func (o *LabelError) SetData(v Label) {
+// SetData gets a reference to the given LabelErrorData and assigns it to the Data field.
+func (o *LabelError) SetData(v LabelErrorData) {
 	o.Data = &v
 }
 

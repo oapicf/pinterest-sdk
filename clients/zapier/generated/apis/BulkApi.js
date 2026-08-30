@@ -1,10 +1,10 @@
 const samples = require('../samples/BulkApi');
-const BulkDownloadRequest = require('../models/BulkDownloadRequest');
-const BulkDownloadResponse = require('../models/BulkDownloadResponse');
+const BulkDownload = require('../models/BulkDownload');
+const BulkDownloadCreate = require('../models/BulkDownloadCreate');
+const BulkJobData = require('../models/BulkJobData');
 const BulkUpsertRequest = require('../models/BulkUpsertRequest');
 const BulkUpsertResponse = require('../models/BulkUpsertResponse');
-const BulkUpsertStatusResponse = require('../models/BulkUpsertStatusResponse');
-const Error = require('../models/Error');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const utils = require('../utils/utils');
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
         noun: 'bulk',
         display: {
             label: 'Get advertiser entities in bulk',
-            description: 'Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.',
+            description: 'Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.',
             hidden: false,
         },
         operation: {
@@ -24,10 +24,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...BulkDownloadRequest.fields(),
+                ...BulkDownloadCreate.fields(),
             ],
             outputFields: [
-                ...BulkDownloadResponse.fields('', false),
+                ...BulkDownload.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -41,7 +41,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...BulkDownloadRequest.mapping(bundle),
+                        ...BulkDownloadCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -50,7 +50,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['BulkDownloadResponseSample']
+            sample: samples['BulkDownloadSample']samples['BulkDownloadSample']
         }
     },
     bulkRequest/get: {
@@ -58,7 +58,7 @@ module.exports = {
         noun: 'bulk',
         display: {
             label: 'Download advertiser entities in bulk',
-            description: 'Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).',
+            description: 'Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).',
             hidden: false,
         },
         operation: {
@@ -71,18 +71,18 @@ module.exports = {
                 },
                 {
                     key: 'bulk_request_id',
-                    label: 'Unique identifier of a bulk upsert request.',
+                    label: 'Bulk request ID that is from one of the entities bulk endpoints',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'include_details',
-                    label: 'if set to True then attach the errors/details to all the requests',
+                    label: 'If set to True then attach the errors/details to all the requests',
                     type: 'boolean',
                 },
             ],
             outputFields: [
-                ...BulkUpsertStatusResponse.fields('', false),
+                ...BulkJobData.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -105,7 +105,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['BulkUpsertStatusResponseSample']
+            sample: samples['BulkJobDataSample']
         }
     },
     bulkUpsert/create: {
@@ -113,7 +113,7 @@ module.exports = {
         noun: 'bulk',
         display: {
             label: 'Create/update ad entities in bulk',
-            description: 'Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.',
+            description: 'Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.',
             hidden: false,
         },
         operation: {

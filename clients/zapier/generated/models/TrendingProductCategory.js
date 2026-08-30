@@ -1,6 +1,5 @@
 const utils = require('../utils/utils');
 const ProductCategoriesEngagementType = require('../models/ProductCategoriesEngagementType');
-const VerticalProductCategory = require('../models/VerticalProductCategory');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -23,6 +22,12 @@ module.exports = {
                 type: 'integer',
             },
             {
+                key: `${keyPrefix}pinterest_product_category_id`,
+                label: `Pinterest Product Category Id - [${labelPrefix}pinterest_product_category_id]`,
+                required: true,
+                type: 'integer',
+            },
+            {
                 key: `${keyPrefix}product_category`,
                 label: `Product Category Name - [${labelPrefix}product_category]`,
                 required: true,
@@ -30,9 +35,9 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}verticals`,
+                label: `Vertical name associated with the product category - [${labelPrefix}verticals]`,
                 list: true,
                 type: 'string',
-                ...VerticalProductCategory.fields(`${keyPrefix}verticals`, isInput),
             },
         ]
     },
@@ -42,8 +47,9 @@ module.exports = {
             'engagement_type': bundle.inputData?.[`${keyPrefix}engagement_type`],
             'pct_change_mom': bundle.inputData?.[`${keyPrefix}pct_change_mom`],
             'percent_relative_volume': bundle.inputData?.[`${keyPrefix}percent_relative_volume`],
+            'pinterest_product_category_id': bundle.inputData?.[`${keyPrefix}pinterest_product_category_id`],
             'product_category': bundle.inputData?.[`${keyPrefix}product_category`],
-            'verticals': utils.childMapping(bundle.inputData?.[`${keyPrefix}verticals`], `${keyPrefix}verticals`, VerticalProductCategory),
+            'verticals': bundle.inputData?.[`${keyPrefix}verticals`],
         }
     },
 }

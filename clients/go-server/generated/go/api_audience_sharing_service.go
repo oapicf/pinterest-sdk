@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -28,127 +28,205 @@ func NewAudienceSharingAPIService() *AudienceSharingAPIService {
 	return &AudienceSharingAPIService{}
 }
 
+// UpdateAdAccountToAdAccountSharedAudience - Update audience sharing between ad accounts
+func (s *AudienceSharingAPIService) UpdateAdAccountToAdAccountSharedAudience(ctx context.Context, adAccountId string, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody) (ImplResponse, error) {
+	// TODO - update UpdateAdAccountToAdAccountSharedAudience with the required logic for this service method.
+	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, AdAccountToAdAccountSharedAudience{}) or use other options such as http.Ok ...
+	// return Response(200, AdAccountToAdAccountSharedAudience{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("UpdateAdAccountToAdAccountSharedAudience method not implemented")
+}
+
+// UpdateAdAccountToBusinessSharedAudience - Update audience sharing from an ad account to businesses
+func (s *AudienceSharingAPIService) UpdateAdAccountToBusinessSharedAudience(ctx context.Context, adAccountId string, adAccountToBusinessSharedAudienceUpdateWithRequiredBody AdAccountToBusinessSharedAudienceUpdateWithRequiredBody) (ImplResponse, error) {
+	// TODO - update UpdateAdAccountToBusinessSharedAudience with the required logic for this service method.
+	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, AdAccountToBusinessSharedAudience{}) or use other options such as http.Ok ...
+	// return Response(200, AdAccountToBusinessSharedAudience{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("UpdateAdAccountToBusinessSharedAudience method not implemented")
+}
+
 // AdAccountsAudiencesSharedAccountsList - List accounts with access to an audience owned by an ad account
-func (s *AudienceSharingAPIService) AdAccountsAudiencesSharedAccountsList(ctx context.Context, adAccountId string, audienceId string, accountType AudienceAccountType, pageSize int32, bookmark string) (ImplResponse, error) {
+func (s *AudienceSharingAPIService) AdAccountsAudiencesSharedAccountsList(ctx context.Context, audienceId string, accountType AudienceAccountType, adAccountId string, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update AdAccountsAudiencesSharedAccountsList with the required logic for this service method.
 	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, AdAccountsAudiencesSharedAccountsList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, AdAccountsAudiencesSharedAccountsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdAccountsAudiencesSharedAccountsList method not implemented")
 }
 
-// UpdateAdAccountToAdAccountSharedAudience - Update audience sharing between ad accounts
-func (s *AudienceSharingAPIService) UpdateAdAccountToAdAccountSharedAudience(ctx context.Context, adAccountId string, sharedAudience SharedAudience) (ImplResponse, error) {
-	// TODO - update UpdateAdAccountToAdAccountSharedAudience with the required logic for this service method.
-	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, SharedAudienceResponse{}) or use other options such as http.Ok ...
-	// return Response(200, SharedAudienceResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("UpdateAdAccountToAdAccountSharedAudience method not implemented")
-}
-
-// UpdateAdAccountToBusinessSharedAudience - Update audience sharing from an ad account to businesses
-func (s *AudienceSharingAPIService) UpdateAdAccountToBusinessSharedAudience(ctx context.Context, adAccountId string, businessSharedAudience BusinessSharedAudience) (ImplResponse, error) {
-	// TODO - update UpdateAdAccountToBusinessSharedAudience with the required logic for this service method.
-	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, BusinessSharedAudienceResponse{}) or use other options such as http.Ok ...
-	// return Response(200, BusinessSharedAudienceResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("UpdateAdAccountToBusinessSharedAudience method not implemented")
-}
-
 // SharedAudiencesForBusinessList - List received audiences for a business
-func (s *AudienceSharingAPIService) SharedAudiencesForBusinessList(ctx context.Context, businessId string, bookmark string, order string, pageSize int32) (ImplResponse, error) {
+func (s *AudienceSharingAPIService) SharedAudiencesForBusinessList(ctx context.Context, businessId string, order Order, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update SharedAudiencesForBusinessList with the required logic for this service method.
 	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, AudiencesList200Response{}) or use other options such as http.Ok ...
-	// return Response(200, AudiencesList200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, SharedAudiencesForBusinessList200Response{}) or use other options such as http.Ok ...
+	// return Response(200, SharedAudiencesForBusinessList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SharedAudiencesForBusinessList method not implemented")
 }
 
+// UpdateBusinessToAdAccountSharedAudience - Update audience sharing from a business to ad accounts
+func (s *AudienceSharingAPIService) UpdateBusinessToAdAccountSharedAudience(ctx context.Context, businessId string, businessToAdAccountSharedAudienceUpdateWithRequiredBody BusinessToAdAccountSharedAudienceUpdateWithRequiredBody) (ImplResponse, error) {
+	// TODO - update UpdateBusinessToAdAccountSharedAudience with the required logic for this service method.
+	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BusinessToAdAccountSharedAudience{}) or use other options such as http.Ok ...
+	// return Response(200, BusinessToAdAccountSharedAudience{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("UpdateBusinessToAdAccountSharedAudience method not implemented")
+}
+
+// UpdateBusinessToBusinessSharedAudience - Update audience sharing between businesses
+func (s *AudienceSharingAPIService) UpdateBusinessToBusinessSharedAudience(ctx context.Context, businessId string, businessToBusinessSharedAudienceUpdateWithRequiredBody BusinessToBusinessSharedAudienceUpdateWithRequiredBody) (ImplResponse, error) {
+	// TODO - update UpdateBusinessToBusinessSharedAudience with the required logic for this service method.
+	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BusinessToBusinessSharedAudience{}) or use other options such as http.Ok ...
+	// return Response(200, BusinessToBusinessSharedAudience{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("UpdateBusinessToBusinessSharedAudience method not implemented")
+}
+
 // BusinessAccountAudiencesSharedAccountsList - List accounts with access to an audience owned by a business
-func (s *AudienceSharingAPIService) BusinessAccountAudiencesSharedAccountsList(ctx context.Context, businessId string, audienceId string, accountType AudienceAccountType, pageSize int32, bookmark string) (ImplResponse, error) {
+func (s *AudienceSharingAPIService) BusinessAccountAudiencesSharedAccountsList(ctx context.Context, businessId string, audienceId string, accountType AudienceAccountType, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update BusinessAccountAudiencesSharedAccountsList with the required logic for this service method.
 	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, AdAccountsAudiencesSharedAccountsList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, AdAccountsAudiencesSharedAccountsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
-	// return Response(404, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BusinessAccountAudiencesSharedAccountsList method not implemented")
-}
-
-// UpdateBusinessToAdAccountSharedAudience - Update audience sharing from a business to ad accounts
-func (s *AudienceSharingAPIService) UpdateBusinessToAdAccountSharedAudience(ctx context.Context, businessId string, sharedAudience SharedAudience) (ImplResponse, error) {
-	// TODO - update UpdateBusinessToAdAccountSharedAudience with the required logic for this service method.
-	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, SharedAudienceResponse{}) or use other options such as http.Ok ...
-	// return Response(200, SharedAudienceResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("UpdateBusinessToAdAccountSharedAudience method not implemented")
-}
-
-// UpdateBusinessToBusinessSharedAudience - Update audience sharing between businesses
-func (s *AudienceSharingAPIService) UpdateBusinessToBusinessSharedAudience(ctx context.Context, businessId string, businessSharedAudience BusinessSharedAudience) (ImplResponse, error) {
-	// TODO - update UpdateBusinessToBusinessSharedAudience with the required logic for this service method.
-	// Add api_audience_sharing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, BusinessSharedAudienceResponse{}) or use other options such as http.Ok ...
-	// return Response(200, BusinessSharedAudienceResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("UpdateBusinessToBusinessSharedAudience method not implemented")
 }

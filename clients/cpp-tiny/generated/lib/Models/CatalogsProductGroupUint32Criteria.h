@@ -12,6 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "NumericFilterOperatorType.h"
 
 namespace Tiny {
 
@@ -51,26 +52,26 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setNegated(bool  negated);
+	void setNegated(bool negated);
 	/*! \brief Get 
 	 */
-	std::string getROperator();
+	NumericFilterOperatorType getROperator();
 
 	/*! \brief Set 
 	 */
-	void setROperator(std::string  r_operator);
+	void setROperator(NumericFilterOperatorType r_operator);
 	/*! \brief Get 
 	 */
 	int getValue();
 
 	/*! \brief Set 
 	 */
-	void setValue(int  value);
+	void setValue(int value);
 
 
     private:
     bool negated{};
-    std::string r_operator{};
+    NumericFilterOperatorType r_operator;
     int value{};
 };
 }

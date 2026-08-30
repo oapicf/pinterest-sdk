@@ -3,6 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AiDisclosures** | [**AiDisclosures**](AiDisclosures.md) | AI disclosure declarations the creator has made about this Pin. | [optional] 
 **AltText** | **String** |  | [optional] 
 **BoardId** | **String** | The board to which this Pin belongs. | [optional] 
 **BoardSectionId** | **String** | The board section to which this Pin belongs. | [optional] 
@@ -18,7 +19,8 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PinCreate = Initialize-PSOpenAPIToolsPinCreate  -AltText null `
+$PinCreate = Initialize-PSOpenAPIToolsPinCreate  -AiDisclosures null `
+ -AltText null `
  -BoardId null `
  -BoardSectionId null `
  -Description null `

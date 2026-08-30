@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"altText", @"_description", @"_id", @"link", @"media", @"title"];
+  NSArray *optionalProperties = @[@"altText", @"_description", @"link", @"media", @"title"];
   return [optionalProperties containsObject:propertyName];
 }
 

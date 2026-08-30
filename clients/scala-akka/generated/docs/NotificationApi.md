@@ -39,7 +39,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = NotificationApi("https://api.pinterest.com/v5")
-    val notificationPostRequest: NotificationPostRequest =  // NotificationPostRequest | notification event.
+    val notificationPostRequest: NotificationPostRequest =  // NotificationPostRequest | 
     
     val request = apiInstance.notificationPost(notificationPostRequest)
     val response = apiInvoker.execute(request)
@@ -69,7 +69,7 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)| notification event. |
+ **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md)|  |
 
 ### Return type
 
@@ -88,7 +88,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully received notification |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **0** | An unexpected error response. |  -  |
 

@@ -29,14 +29,7 @@
     },
     {
       "name": "event_type",
-      "type": {
-        "type": "enum",
-        "name": "IntegrationLog_eventUnderscoretype",
-        "symbols": [
-          "APP",
-          "API"
-        ]
-      },
+      "type": "model.IntegrationLogEventType",
       "doc": "Log event type"
     },
     {
@@ -53,15 +46,7 @@
     },
     {
       "name": "log_level",
-      "type": {
-        "type": "enum",
-        "name": "IntegrationLog_logUnderscorelevel",
-        "symbols": [
-          "INFO",
-          "WARN",
-          "ERROR"
-        ]
-      },
+      "type": "model.IntegrationLogLevel",
       "doc": "Log level type"
     },
     {

@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Details about ineligible product tags in the request.",
+  "name": "IneligibleProductTagsErrorDetails",
+  "fields": [
+    {
+      "name": "product_tags",
+      "type": {
+        "type": "array",
+        "items": "model.IneligibleProductTagErrorItem"
+      },
+      "doc": "List of product tags that failed eligibility check."
+    }
+  ]
+
+}

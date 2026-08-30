@@ -85,7 +85,7 @@ AdAccountOwner::getId()
 }
 
 void
-AdAccountOwner::setId(std::string  id)
+AdAccountOwner::setId(std::string id)
 {
 	this->id = id;
 }
@@ -97,7 +97,7 @@ AdAccountOwner::getUsername()
 }
 
 void
-AdAccountOwner::setUsername(std::string  username)
+AdAccountOwner::setUsername(std::string username)
 {
 	this->username = username;
 }

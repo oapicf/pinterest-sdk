@@ -28,22 +28,22 @@ pinterest_rest_api_catalogs_retail_product_group_product_counts_CATALOGTYPE_e ca
 
 typedef struct catalogs_retail_product_group_product_counts_t {
     pinterest_rest_api_catalogs_retail_product_group_product_counts_CATALOGTYPE_e catalog_type; //enum
-    double in_stock; //numeric
-    double out_of_stock; //numeric
-    double preorder; //numeric
-    double total; //numeric
-    double videos; //numeric
+    double *in_stock; //numeric
+    double *out_of_stock; //numeric
+    double *preorder; //numeric
+    double *total; //numeric
+    double *videos; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_product_group_product_counts_t;
 
 __attribute__((deprecated)) catalogs_retail_product_group_product_counts_t *catalogs_retail_product_group_product_counts_create(
     pinterest_rest_api_catalogs_retail_product_group_product_counts_CATALOGTYPE_e catalog_type,
-    double in_stock,
-    double out_of_stock,
-    double preorder,
-    double total,
-    double videos
+    double *in_stock,
+    double *out_of_stock,
+    double *preorder,
+    double *total,
+    double *videos
 );
 
 void catalogs_retail_product_group_product_counts_free(catalogs_retail_product_group_product_counts_t *catalogs_retail_product_group_product_counts);

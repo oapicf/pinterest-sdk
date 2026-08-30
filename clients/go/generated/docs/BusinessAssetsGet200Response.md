@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
-**Items** | [**[]GetBusinessAssetsResponse**](GetBusinessAssetsResponse.md) | List of assets the requesting business has access to. | 
+**Items** | [**[]BusinessAssets**](BusinessAssets.md) |  | 
 
 ## Methods
 
 ### NewBusinessAssetsGet200Response
 
-`func NewBusinessAssetsGet200Response(items []GetBusinessAssetsResponse, ) *BusinessAssetsGet200Response`
+`func NewBusinessAssetsGet200Response(items []BusinessAssets, ) *BusinessAssetsGet200Response`
 
 NewBusinessAssetsGet200Response instantiates a new BusinessAssetsGet200Response object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasBookmark returns a boolean if a field has been set.
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
 ### GetItems
 
-`func (o *BusinessAssetsGet200Response) GetItems() []GetBusinessAssetsResponse`
+`func (o *BusinessAssetsGet200Response) GetItems() []BusinessAssets`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *BusinessAssetsGet200Response) GetItemsOk() (*[]GetBusinessAssetsResponse, bool)`
+`func (o *BusinessAssetsGet200Response) GetItemsOk() (*[]BusinessAssets, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *BusinessAssetsGet200Response) SetItems(v []GetBusinessAssetsResponse)`
+`func (o *BusinessAssetsGet200Response) SetItems(v []BusinessAssets)`
 
 SetItems sets Items field to given value.
 

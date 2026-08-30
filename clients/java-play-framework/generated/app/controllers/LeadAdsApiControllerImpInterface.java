@@ -35,12 +35,19 @@ public abstract class LeadAdsApiControllerImpInterface {
             return unauthorized();
         }
 
-        adAccountsSubscriptionsDelById(request, adAccountId, subscriptionId);
-        return ok();
+        LeadSubscription obj = adAccountsSubscriptionsDelById(request, adAccountId, subscriptionId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
 
     }
 
-    public abstract void adAccountsSubscriptionsDelById(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String subscriptionId) throws Exception;
+    public abstract LeadSubscription adAccountsSubscriptionsDelById(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String subscriptionId) throws Exception;
 
     public Result adAccountsSubscriptionsGetByIdHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String subscriptionId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

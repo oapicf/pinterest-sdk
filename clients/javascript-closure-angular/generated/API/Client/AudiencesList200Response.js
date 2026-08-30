@@ -12,7 +12,7 @@ API.Client.AudiencesList200Response = function() {}
 API.Client.AudiencesList200Response.prototype.bookmark;
 
 /**
- * @type {!Array<!API.Client.Audience>}
+ * @type {!Array<!API.Client.AdAccountsAudience>}
  * @export
  */
 API.Client.AudiencesList200Response.prototype.items;

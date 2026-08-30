@@ -8,7 +8,7 @@ RelatedTerms::RelatedTerms()
 {
 	id = std::string();
 	related_term_count = int(0);
-	related_terms_list = std::list<RelatedTerms_related_terms_list_inner>();
+	related_terms_list = std::list<RelatedTermsRelatedTermsListItems>();
 }
 
 RelatedTerms::RelatedTerms(std::string jsonString)
@@ -59,8 +59,8 @@ RelatedTerms::fromJson(std::string jsonObj)
         bourne::json value = object[related_terms_listKey];
 
 
-        std::list<RelatedTerms_related_terms_list_inner> related_terms_list_list;
-        RelatedTerms_related_terms_list_inner element;
+        std::list<RelatedTermsRelatedTermsListItems> related_terms_list_list;
+        RelatedTermsRelatedTermsListItems element;
         for(auto& var : value.array_range())
         {
 
@@ -99,12 +99,12 @@ RelatedTerms::toJson()
 
 
 
-    std::list<RelatedTerms_related_terms_list_inner> related_terms_list_list = getRelatedTermsList();
+    std::list<RelatedTermsRelatedTermsListItems> related_terms_list_list = getRelatedTermsList();
     bourne::json related_terms_list_arr = bourne::json::array();
 
     for(auto& var : related_terms_list_list)
     {
-        RelatedTerms_related_terms_list_inner obj = var;
+        RelatedTermsRelatedTermsListItems obj = var;
         related_terms_list_arr.append(obj.toJson());
     }
     object["related_terms_list"] = related_terms_list_arr;
@@ -123,7 +123,7 @@ RelatedTerms::getId()
 }
 
 void
-RelatedTerms::setId(std::string  id)
+RelatedTerms::setId(std::string id)
 {
 	this->id = id;
 }
@@ -135,19 +135,19 @@ RelatedTerms::getRelatedTermCount()
 }
 
 void
-RelatedTerms::setRelatedTermCount(int  related_term_count)
+RelatedTerms::setRelatedTermCount(int related_term_count)
 {
 	this->related_term_count = related_term_count;
 }
 
-std::list<RelatedTerms_related_terms_list_inner>
+std::list<RelatedTermsRelatedTermsListItems>
 RelatedTerms::getRelatedTermsList()
 {
 	return related_terms_list;
 }
 
 void
-RelatedTerms::setRelatedTermsList(std::list <RelatedTerms_related_terms_list_inner> related_terms_list)
+RelatedTerms::setRelatedTermsList(std::list<RelatedTermsRelatedTermsListItems> related_terms_list)
 {
 	this->related_terms_list = related_terms_list;
 }

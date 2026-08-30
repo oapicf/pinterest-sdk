@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            ConversionAccessTokenResponse
+            ConversionAccessToken
         >
         OauthApi::
         oauth_conversionToken(
@@ -37,20 +37,35 @@ using namespace Tiny;
 
 
 
-            ConversionAccessTokenResponse obj(output_string);
+            ConversionAccessToken obj(output_string);
 
 
-            Response<ConversionAccessTokenResponse> response(obj, httpCode);
+            Response<ConversionAccessToken> response(obj, httpCode);
             return response;
         }
 
         Response<
-            OauthAccessTokenResponse
+            OauthAccessToken
         >
         OauthApi::
         oauth_token(
             
-            std::string grantType
+            TokenGrantType grantType
+            , 
+            
+            std::string code
+            , 
+            
+            std::string continuousRefresh
+            , 
+            
+            std::string redirectUri
+            , 
+            
+            std::string refreshToken
+            , 
+            
+            std::string scope
             
         )
         {
@@ -61,10 +76,15 @@ using namespace Tiny;
 
             // Query    | 
 
-            // Form     | grantType 
+            // Form     | code continuousRefresh grantType redirectUri refreshToken scope 
             addHeader("Content-Type", "application/x-www-form-urlencoded");
 
+            addFormParam("code",code);
+            addFormParam("continuous_refresh",continuousRefresh);
             addFormParam("grant_type",grantType);
+            addFormParam("redirect_uri",redirectUri);
+            addFormParam("refresh_token",refreshToken);
+            addFormParam("scope",scope);
 
 
 
@@ -82,10 +102,10 @@ using namespace Tiny;
 
 
 
-            OauthAccessTokenResponse obj(output_string);
+            OauthAccessToken obj(output_string);
 
 
-            Response<OauthAccessTokenResponse> response(obj, httpCode);
+            Response<OauthAccessToken> response(obj, httpCode);
             return response;
         }
 
@@ -98,7 +118,7 @@ using namespace Tiny;
             std::string token
             , 
             
-            std::string tokenTypeHint
+            TokenTypeHint tokenTypeHint
             
         )
         {

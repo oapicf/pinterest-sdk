@@ -170,7 +170,7 @@ module.exports = {
                     'NG',
                     'NI',
                     'NL',
-                    'NO',
+                    'false',
                     'NP',
                     'NR',
                     'NU',

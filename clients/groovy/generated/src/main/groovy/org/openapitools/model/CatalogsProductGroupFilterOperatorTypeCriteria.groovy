@@ -5,36 +5,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.openapitools.model.FilterOperatorType;
 
 @Canonical
 class CatalogsProductGroupFilterOperatorTypeCriteria {
-
-    enum FilterOperatorTypeEnum {
     
-        IS("IS"),
-        
-        CONTAINS("CONTAINS")
+    FilterOperatorType filterOperatorType
     
-        private final String value
-    
-        FilterOperatorTypeEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    
-    FilterOperatorTypeEnum filterOperatorType = FilterOperatorTypeEnum.IS
-    
-    Boolean negated = false
+    Boolean negated
     
     List<String> values = new ArrayList<>()
 }

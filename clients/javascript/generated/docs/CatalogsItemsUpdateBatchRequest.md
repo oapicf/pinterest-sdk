@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **country** | [**Country**](Country.md) |  | 
 **items** | [**[ItemUpdateBatchRecord]**](ItemUpdateBatchRecord.md) | Array with catalogs items | 
 **language** | **String** | We recommend using the CatalogsLocale values. | 
-**operation** | [**BatchOperation**](BatchOperation.md) |  | 
+**operation** | **String** |  | 
 
 
 
@@ -192,7 +192,7 @@ Name | Type | Description | Notes
 
 * `NL` (value: `"NL"`)
 
-* `NO` (value: `"NO"`)
+* `false` (value: `"false"`)
 
 * `PL` (value: `"PL"`)
 
@@ -227,6 +227,15 @@ Name | Type | Description | Notes
 * `XX` (value: `"XX"`)
 
 * `ZH` (value: `"ZH"`)
+
+
+
+
+
+## Enum: OperationEnum
+
+
+* `UPDATE` (value: `"UPDATE"`)
 
 
 

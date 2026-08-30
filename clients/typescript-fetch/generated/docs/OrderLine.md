@@ -8,6 +8,7 @@ Name | Type
 ------------ | -------------
 `adAccountId` | string
 `budget` | number
+`campaignIds` | Array&lt;string&gt;
 `endTime` | number
 `id` | string
 `name` | string
@@ -17,7 +18,6 @@ Name | Type
 `startTime` | number
 `status` | [OrderLineStatus](OrderLineStatus.md)
 `type` | string
-`campaignIds` | Array&lt;string&gt;
 
 ## Example
 
@@ -26,18 +26,18 @@ import type { OrderLine } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "adAccountId": 549755885175,
-  "budget": 5000000,
-  "endTime": 1461269616,
-  "id": 2680059592705,
-  "name": Order Line Name 1,
-  "paidBudget": 5000000,
-  "paidType": null,
-  "purchaseOrderId": PO12345,
-  "startTime": 1452208622,
-  "status": null,
-  "type": orderline,
+  "adAccountId": null,
+  "budget": null,
   "campaignIds": ["626735565838"],
+  "endTime": null,
+  "id": null,
+  "name": null,
+  "paidBudget": null,
+  "paidType": null,
+  "purchaseOrderId": null,
+  "startTime": null,
+  "status": null,
+  "type": null,
 } satisfies OrderLine
 
 console.log(example)

@@ -27,7 +27,7 @@ abstract class SummaryPin implements Built<SummaryPin, SummaryPinBuilder> {
   String? get description;
 
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
 
   @BuiltValueField(wireName: r'link')
   String? get link;
@@ -75,13 +75,11 @@ class _$SummaryPinSerializer implements PrimitiveSerializer<SummaryPin> {
         specifiedType: const FullType.nullable(String),
       );
     }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     if (object.link != null) {
       yield r'link';
       yield serializers.serialize(
@@ -160,8 +158,9 @@ class _$SummaryPinSerializer implements PrimitiveSerializer<SummaryPin> {
         case r'media':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(PinMedia),
-          ) as PinMedia;
+            specifiedType: const FullType.nullable(PinMedia),
+          ) as PinMedia?;
+          if (valueDes == null) continue;
           result.media.replace(valueDes);
           break;
         case r'title':

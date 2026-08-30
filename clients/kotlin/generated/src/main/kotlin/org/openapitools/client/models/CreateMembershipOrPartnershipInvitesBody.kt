@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.BusinessRoleForInvite
 import org.openapitools.client.models.InviteType
 
 import com.squareup.moshi.Json
@@ -23,7 +32,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Body to be used on path to send Members or Partners Invite or Request
  *
- * @param businessRole The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+ * @param businessRole 
  * @param inviteType 
  * @param members A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
  * @param partners A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
@@ -32,9 +41,8 @@ import com.squareup.moshi.JsonClass
 
 data class CreateMembershipOrPartnershipInvitesBody (
 
-    /* The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you. */
     @Json(name = "business_role")
-    val businessRole: CreateMembershipOrPartnershipInvitesBody.BusinessRole,
+    val businessRole: BusinessRoleForInvite,
 
     @Json(name = "invite_type")
     val inviteType: InviteType,
@@ -49,17 +57,6 @@ data class CreateMembershipOrPartnershipInvitesBody (
 
 ) {
 
-    /**
-     * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-     *
-     * Values: EMPLOYEE,BIZ_ADMIN,PARTNER
-     */
-    @JsonClass(generateAdapter = false)
-    enum class BusinessRole(val value: kotlin.String) {
-        @Json(name = "EMPLOYEE") EMPLOYEE("EMPLOYEE"),
-        @Json(name = "BIZ_ADMIN") BIZ_ADMIN("BIZ_ADMIN"),
-        @Json(name = "PARTNER") PARTNER("PARTNER");
-    }
 
 }
 

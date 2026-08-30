@@ -2,18 +2,12 @@
 Protected Class ModelException
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Exception error code.
-		#tag EndNote
 		code As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Exception message.
-		#tag EndNote
-		message As Xoson.O.OptionalString
+		message As String
 	#tag EndProperty
 
 

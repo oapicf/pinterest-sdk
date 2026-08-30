@@ -13,10 +13,10 @@ static ssio_insertion_orders_status_get_by_ad_account_200_response_t *ssio_inser
     if (!ssio_insertion_orders_status_get_by_ad_account_200_response_local_var) {
         return NULL;
     }
+    memset(ssio_insertion_orders_status_get_by_ad_account_200_response_local_var, 0, sizeof(ssio_insertion_orders_status_get_by_ad_account_200_response_t));
+    ssio_insertion_orders_status_get_by_ad_account_200_response_local_var->_library_owned = 1;
     ssio_insertion_orders_status_get_by_ad_account_200_response_local_var->bookmark = bookmark;
     ssio_insertion_orders_status_get_by_ad_account_200_response_local_var->items = items;
-
-    ssio_insertion_orders_status_get_by_ad_account_200_response_local_var->_library_owned = 1;
     return ssio_insertion_orders_status_get_by_ad_account_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) ssio_insertion_orders_status_get_by_ad_account_200_r
     char *bookmark,
     list_t *items
     ) {
-    return ssio_insertion_orders_status_get_by_ad_account_200_response_create_internal (
+    ssio_insertion_orders_status_get_by_ad_account_200_response_t *result = ssio_insertion_orders_status_get_by_ad_account_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ssio_insertion_orders_status_get_by_ad_account_200_response_free(ssio_insertion_orders_status_get_by_ad_account_200_response_t *ssio_insertion_orders_status_get_by_ad_account_200_response) {
@@ -96,6 +99,8 @@ ssio_insertion_orders_status_get_by_ad_account_200_response_t *ssio_insertion_or
 
     ssio_insertion_orders_status_get_by_ad_account_200_response_t *ssio_insertion_orders_status_get_by_ad_account_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for ssio_insertion_orders_status_get_by_ad_account_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ ssio_insertion_orders_status_get_by_ad_account_200_response_t *ssio_insertion_or
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     ssio_insertion_orders_status_get_by_ad_account_200_response_local_var = ssio_insertion_orders_status_get_by_ad_account_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!ssio_insertion_orders_status_get_by_ad_account_200_response_local_var) {
+        goto end;
+    }
+
     return ssio_insertion_orders_status_get_by_ad_account_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

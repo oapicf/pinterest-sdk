@@ -86,7 +86,7 @@ PinMediaWithImage::getImages()
 }
 
 void
-PinMediaWithImage::setImages(ImageSize  images)
+PinMediaWithImage::setImages(ImageSize images)
 {
 	this->images = images;
 }
@@ -98,7 +98,7 @@ PinMediaWithImage::getMediaType()
 }
 
 void
-PinMediaWithImage::setMediaType(std::string  media_type)
+PinMediaWithImage::setMediaType(std::string media_type)
 {
 	this->media_type = media_type;
 }

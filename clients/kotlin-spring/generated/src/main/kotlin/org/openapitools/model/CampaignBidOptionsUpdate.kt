@@ -2,10 +2,18 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.AgeBucketMultipliers
 import org.openapitools.model.AppTypeMultipliers
 import org.openapitools.model.CampaignAudienceMultipliers
+import org.openapitools.model.CampaignBidOptionsUpdateMaskItems
+import org.openapitools.model.FreqBidMultiplierTimeWindow
+import org.openapitools.model.FrequencyMultipliers
+import org.openapitools.model.GenderMultipliers
 import org.openapitools.model.PlacementMultipliers
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -20,50 +28,59 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Object describing an update to the campaign level bid multipliers.
- * @param updateMask List of fields to update, only the fields in the list will be updated.
- * @param appTypeMultipliers 
- * @param audienceMultipliers 
- * @param placementMultipliers 
+ * @param updateMask List of fields to update. Only the fields in the list will be updated.
+ * @param ageBucketMultipliers Age bucket multipliers for bid adjustments.
+ * @param appTypeMultipliers App type multipliers for bid adjustments.
+ * @param audienceMultipliers Audience multipliers for bid adjustments.
+ * @param freqBidMultiplierTimeWindow The time window for frequency bid multipliers.
+ * @param frequencyMultipliers Frequency multipliers for bid adjustments.
+ * @param genderMultipliers Gender multipliers for bid adjustments.
+ * @param placementMultipliers Placement multipliers for bid adjustments.
  */
 data class CampaignBidOptionsUpdate(
 
-    @Schema(example = "null", required = true, description = "List of fields to update, only the fields in the list will be updated.")
-    @get:JsonProperty("update_mask", required = true) val updateMask: kotlin.collections.List<CampaignBidOptionsUpdate.UpdateMask>,
+    @field:Valid
+    @Schema(required = true, description = "List of fields to update. Only the fields in the list will be updated.")
+    @param:JsonProperty("update_mask")
+    @get:JsonProperty("update_mask", required = true) val updateMask: kotlin.collections.List<CampaignBidOptionsUpdateMaskItems>,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "Age bucket multipliers for bid adjustments.")
+    @param:JsonProperty("age_bucket_multipliers")
+    @get:JsonProperty("age_bucket_multipliers") val ageBucketMultipliers: AgeBucketMultipliers? = null,
+
+    @field:Valid
+    @Schema(description = "App type multipliers for bid adjustments.")
+    @param:JsonProperty("app_type_multipliers")
     @get:JsonProperty("app_type_multipliers") val appTypeMultipliers: AppTypeMultipliers? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "Audience multipliers for bid adjustments.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("audience_multipliers")
     @get:JsonProperty("audience_multipliers") val audienceMultipliers: CampaignAudienceMultipliers? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(description = "The time window for frequency bid multipliers.")
+    @param:JsonProperty("freq_bid_multiplier_time_window")
+    @get:JsonProperty("freq_bid_multiplier_time_window") val freqBidMultiplierTimeWindow: FreqBidMultiplierTimeWindow? = null,
+
+    @field:Valid
+    @Schema(description = "Frequency multipliers for bid adjustments.")
+    @param:JsonProperty("frequency_multipliers")
+    @get:JsonProperty("frequency_multipliers") val frequencyMultipliers: FrequencyMultipliers? = null,
+
+    @field:Valid
+    @Schema(description = "Gender multipliers for bid adjustments.")
+    @param:JsonProperty("gender_multipliers")
+    @get:JsonProperty("gender_multipliers") val genderMultipliers: GenderMultipliers? = null,
+
+    @field:Valid
+    @Schema(description = "Placement multipliers for bid adjustments.")
+    @param:JsonProperty("placement_multipliers")
     @get:JsonProperty("placement_multipliers") val placementMultipliers: PlacementMultipliers? = null
 ) {
-
-    /**
-    * List of fields to update, only the fields in the list will be updated.
-    * Values: AUDIENCE,APP_TYPE,PLACEMENT,GENDER,AGE_BUCKET
-    */
-    enum class UpdateMask(@get:JsonValue val value: kotlin.String) {
-
-        AUDIENCE("AUDIENCE"),
-        APP_TYPE("APP_TYPE"),
-        PLACEMENT("PLACEMENT"),
-        GENDER("GENDER"),
-        AGE_BUCKET("AGE_BUCKET");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): UpdateMask {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignBidOptionsUpdate'")
-            }
-        }
-    }
 
 }
 

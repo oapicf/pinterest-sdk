@@ -18,6 +18,7 @@ static catalogs_creative_assets_attributes_t *catalogs_creative_assets_attribute
     char *link,
     char *title,
     char *visibility,
+    list_t *ai_disclosures,
     char *image_link,
     char *video_link
     ) {
@@ -25,6 +26,8 @@ static catalogs_creative_assets_attributes_t *catalogs_creative_assets_attribute
     if (!catalogs_creative_assets_attributes_local_var) {
         return NULL;
     }
+    memset(catalogs_creative_assets_attributes_local_var, 0, sizeof(catalogs_creative_assets_attributes_t));
+    catalogs_creative_assets_attributes_local_var->_library_owned = 1;
     catalogs_creative_assets_attributes_local_var->android_deep_link = android_deep_link;
     catalogs_creative_assets_attributes_local_var->custom_label_0 = custom_label_0;
     catalogs_creative_assets_attributes_local_var->custom_label_1 = custom_label_1;
@@ -37,10 +40,9 @@ static catalogs_creative_assets_attributes_t *catalogs_creative_assets_attribute
     catalogs_creative_assets_attributes_local_var->link = link;
     catalogs_creative_assets_attributes_local_var->title = title;
     catalogs_creative_assets_attributes_local_var->visibility = visibility;
+    catalogs_creative_assets_attributes_local_var->ai_disclosures = ai_disclosures;
     catalogs_creative_assets_attributes_local_var->image_link = image_link;
     catalogs_creative_assets_attributes_local_var->video_link = video_link;
-
-    catalogs_creative_assets_attributes_local_var->_library_owned = 1;
     return catalogs_creative_assets_attributes_local_var;
 }
 
@@ -57,10 +59,11 @@ __attribute__((deprecated)) catalogs_creative_assets_attributes_t *catalogs_crea
     char *link,
     char *title,
     char *visibility,
+    list_t *ai_disclosures,
     char *image_link,
     char *video_link
     ) {
-    return catalogs_creative_assets_attributes_create_internal (
+    catalogs_creative_assets_attributes_t *result = catalogs_creative_assets_attributes_create_internal (
         android_deep_link,
         custom_label_0,
         custom_label_1,
@@ -73,9 +76,13 @@ __attribute__((deprecated)) catalogs_creative_assets_attributes_t *catalogs_crea
         link,
         title,
         visibility,
+        ai_disclosures,
         image_link,
         video_link
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_creative_assets_attributes_free(catalogs_creative_assets_attributes_t *catalogs_creative_assets_attributes) {
@@ -134,6 +141,13 @@ void catalogs_creative_assets_attributes_free(catalogs_creative_assets_attribute
     if (catalogs_creative_assets_attributes->visibility) {
         free(catalogs_creative_assets_attributes->visibility);
         catalogs_creative_assets_attributes->visibility = NULL;
+    }
+    if (catalogs_creative_assets_attributes->ai_disclosures) {
+        list_ForEach(listEntry, catalogs_creative_assets_attributes->ai_disclosures) {
+            catalogs_ai_content_disclosure_free(listEntry->data);
+        }
+        list_freeList(catalogs_creative_assets_attributes->ai_disclosures);
+        catalogs_creative_assets_attributes->ai_disclosures = NULL;
     }
     if (catalogs_creative_assets_attributes->image_link) {
         free(catalogs_creative_assets_attributes->image_link);
@@ -245,6 +259,26 @@ cJSON *catalogs_creative_assets_attributes_convertToJSON(catalogs_creative_asset
     }
 
 
+    // catalogs_creative_assets_attributes->ai_disclosures
+    if(catalogs_creative_assets_attributes->ai_disclosures) {
+    cJSON *ai_disclosures = cJSON_AddArrayToObject(item, "ai_disclosures");
+    if(ai_disclosures == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *ai_disclosuresListEntry;
+    if (catalogs_creative_assets_attributes->ai_disclosures) {
+    list_ForEach(ai_disclosuresListEntry, catalogs_creative_assets_attributes->ai_disclosures) {
+    cJSON *itemLocal = catalogs_ai_content_disclosure_convertToJSON(ai_disclosuresListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(ai_disclosures, itemLocal);
+    }
+    }
+    }
+
+
     // catalogs_creative_assets_attributes->image_link
     if(catalogs_creative_assets_attributes->image_link) {
     if(cJSON_AddStringToObject(item, "image_link", catalogs_creative_assets_attributes->image_link) == NULL) {
@@ -271,6 +305,37 @@ fail:
 catalogs_creative_assets_attributes_t *catalogs_creative_assets_attributes_parseFromJSON(cJSON *catalogs_creative_assets_attributesJSON){
 
     catalogs_creative_assets_attributes_t *catalogs_creative_assets_attributes_local_var = NULL;
+
+    char *android_deep_link_local_str = NULL;
+
+    char *custom_label_0_local_str = NULL;
+
+    char *custom_label_1_local_str = NULL;
+
+    char *custom_label_2_local_str = NULL;
+
+    char *custom_label_3_local_str = NULL;
+
+    char *custom_label_4_local_str = NULL;
+
+    char *description_local_str = NULL;
+
+    char *google_product_category_local_str = NULL;
+
+    char *ios_deep_link_local_str = NULL;
+
+    char *link_local_str = NULL;
+
+    char *title_local_str = NULL;
+
+    char *visibility_local_str = NULL;
+
+    // define the local list for catalogs_creative_assets_attributes->ai_disclosures
+    list_t *ai_disclosuresList = NULL;
+
+    char *image_link_local_str = NULL;
+
+    char *video_link_local_str = NULL;
 
     // catalogs_creative_assets_attributes->android_deep_link
     cJSON *android_deep_link = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_attributesJSON, "android_deep_link");
@@ -416,6 +481,30 @@ catalogs_creative_assets_attributes_t *catalogs_creative_assets_attributes_parse
     }
     }
 
+    // catalogs_creative_assets_attributes->ai_disclosures
+    cJSON *ai_disclosures = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_attributesJSON, "ai_disclosures");
+    if (cJSON_IsNull(ai_disclosures)) {
+        ai_disclosures = NULL;
+    }
+    if (ai_disclosures) { 
+    cJSON *ai_disclosures_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(ai_disclosures)){
+        goto end; //nonprimitive container
+    }
+
+    ai_disclosuresList = list_createList();
+
+    cJSON_ArrayForEach(ai_disclosures_local_nonprimitive,ai_disclosures )
+    {
+        if(!cJSON_IsObject(ai_disclosures_local_nonprimitive)){
+            goto end;
+        }
+        catalogs_ai_content_disclosure_t *ai_disclosuresItem = catalogs_ai_content_disclosure_parseFromJSON(ai_disclosures_local_nonprimitive);
+
+        list_addElement(ai_disclosuresList, ai_disclosuresItem);
+    }
+    }
+
     // catalogs_creative_assets_attributes->image_link
     cJSON *image_link = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_attributesJSON, "image_link");
     if (cJSON_IsNull(image_link)) {
@@ -441,25 +530,110 @@ catalogs_creative_assets_attributes_t *catalogs_creative_assets_attributes_parse
     }
 
 
+    if (android_deep_link && !cJSON_IsNull(android_deep_link)) android_deep_link_local_str = strdup(android_deep_link->valuestring);
+    if (custom_label_0 && !cJSON_IsNull(custom_label_0)) custom_label_0_local_str = strdup(custom_label_0->valuestring);
+    if (custom_label_1 && !cJSON_IsNull(custom_label_1)) custom_label_1_local_str = strdup(custom_label_1->valuestring);
+    if (custom_label_2 && !cJSON_IsNull(custom_label_2)) custom_label_2_local_str = strdup(custom_label_2->valuestring);
+    if (custom_label_3 && !cJSON_IsNull(custom_label_3)) custom_label_3_local_str = strdup(custom_label_3->valuestring);
+    if (custom_label_4 && !cJSON_IsNull(custom_label_4)) custom_label_4_local_str = strdup(custom_label_4->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (google_product_category && !cJSON_IsNull(google_product_category)) google_product_category_local_str = strdup(google_product_category->valuestring);
+    if (ios_deep_link && !cJSON_IsNull(ios_deep_link)) ios_deep_link_local_str = strdup(ios_deep_link->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+    if (visibility && !cJSON_IsNull(visibility)) visibility_local_str = strdup(visibility->valuestring);
+    if (image_link && !cJSON_IsNull(image_link)) image_link_local_str = strdup(image_link->valuestring);
+    if (video_link && !cJSON_IsNull(video_link)) video_link_local_str = strdup(video_link->valuestring);
+
     catalogs_creative_assets_attributes_local_var = catalogs_creative_assets_attributes_create_internal (
-        android_deep_link && !cJSON_IsNull(android_deep_link) ? strdup(android_deep_link->valuestring) : NULL,
-        custom_label_0 && !cJSON_IsNull(custom_label_0) ? strdup(custom_label_0->valuestring) : NULL,
-        custom_label_1 && !cJSON_IsNull(custom_label_1) ? strdup(custom_label_1->valuestring) : NULL,
-        custom_label_2 && !cJSON_IsNull(custom_label_2) ? strdup(custom_label_2->valuestring) : NULL,
-        custom_label_3 && !cJSON_IsNull(custom_label_3) ? strdup(custom_label_3->valuestring) : NULL,
-        custom_label_4 && !cJSON_IsNull(custom_label_4) ? strdup(custom_label_4->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        google_product_category && !cJSON_IsNull(google_product_category) ? strdup(google_product_category->valuestring) : NULL,
-        ios_deep_link && !cJSON_IsNull(ios_deep_link) ? strdup(ios_deep_link->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
-        visibility && !cJSON_IsNull(visibility) ? strdup(visibility->valuestring) : NULL,
-        image_link && !cJSON_IsNull(image_link) ? strdup(image_link->valuestring) : NULL,
-        video_link && !cJSON_IsNull(video_link) ? strdup(video_link->valuestring) : NULL
+        android_deep_link_local_str,
+        custom_label_0_local_str,
+        custom_label_1_local_str,
+        custom_label_2_local_str,
+        custom_label_3_local_str,
+        custom_label_4_local_str,
+        description_local_str,
+        google_product_category_local_str,
+        ios_deep_link_local_str,
+        link_local_str,
+        title_local_str,
+        visibility_local_str,
+        ai_disclosures ? ai_disclosuresList : NULL,
+        image_link_local_str,
+        video_link_local_str
         );
+
+    if (!catalogs_creative_assets_attributes_local_var) {
+        goto end;
+    }
 
     return catalogs_creative_assets_attributes_local_var;
 end:
+    if (android_deep_link_local_str) {
+        free(android_deep_link_local_str);
+        android_deep_link_local_str = NULL;
+    }
+    if (custom_label_0_local_str) {
+        free(custom_label_0_local_str);
+        custom_label_0_local_str = NULL;
+    }
+    if (custom_label_1_local_str) {
+        free(custom_label_1_local_str);
+        custom_label_1_local_str = NULL;
+    }
+    if (custom_label_2_local_str) {
+        free(custom_label_2_local_str);
+        custom_label_2_local_str = NULL;
+    }
+    if (custom_label_3_local_str) {
+        free(custom_label_3_local_str);
+        custom_label_3_local_str = NULL;
+    }
+    if (custom_label_4_local_str) {
+        free(custom_label_4_local_str);
+        custom_label_4_local_str = NULL;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (google_product_category_local_str) {
+        free(google_product_category_local_str);
+        google_product_category_local_str = NULL;
+    }
+    if (ios_deep_link_local_str) {
+        free(ios_deep_link_local_str);
+        ios_deep_link_local_str = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
+    if (visibility_local_str) {
+        free(visibility_local_str);
+        visibility_local_str = NULL;
+    }
+    if (ai_disclosuresList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, ai_disclosuresList) {
+            catalogs_ai_content_disclosure_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(ai_disclosuresList);
+        ai_disclosuresList = NULL;
+    }
+    if (image_link_local_str) {
+        free(image_link_local_str);
+        image_link_local_str = NULL;
+    }
+    if (video_link_local_str) {
+        free(video_link_local_str);
+        video_link_local_str = NULL;
+    }
     return NULL;
 
 }

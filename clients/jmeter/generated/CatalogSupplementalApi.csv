@@ -1,0 +1,2 @@
+testCase,httpStatusCode,catalogId,localInventoryItemsGetCreate,adAccountId,catalogId,localInventoryItemsBatchCreate,adAccountId,catalogId,localStoreCreate,adAccountId,catalogId,ids,adAccountId,catalogId,ids,adAccountId,bookmark,pageSize,catalogId,localStoreBatchUpdate,adAccountId,catalogId,batchId,adAccountId
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

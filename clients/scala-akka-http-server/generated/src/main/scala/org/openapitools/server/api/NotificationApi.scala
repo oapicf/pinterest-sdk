@@ -40,9 +40,9 @@ trait NotificationApiService {
   def notificationPostDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Successfully received notification, DataType: NotificationResponse
-   * Code: 400, Message: Invalid request parameter., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: NotificationResponse
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def notificationPost(notificationPostRequest: NotificationPostRequest)
       (implicit toEntityMarshallerNotificationResponse: ToEntityMarshaller[NotificationResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route

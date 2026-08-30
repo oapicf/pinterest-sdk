@@ -10,30 +10,30 @@
 
 part of openapi.api;
 
-/// <p>Catalog hotel product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_LISTINGS: Includes every hotel item in your catalog.
-class CatalogsHotelProductGroupType {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsHotelProductGroupType._(this.value);
+/// Catalog hotel product group type
+enum CatalogsHotelProductGroupType {
+  MERCHANT_CREATED._(r'MERCHANT_CREATED'),
+  ALL_LISTINGS._(r'ALL_LISTINGS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsHotelProductGroupType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const MERCHANT_CREATED = CatalogsHotelProductGroupType._(r'MERCHANT_CREATED');
-  static const ALL_LISTINGS = CatalogsHotelProductGroupType._(r'ALL_LISTINGS');
-
-  /// List of all possible values in this [enum][CatalogsHotelProductGroupType].
-  static const values = <CatalogsHotelProductGroupType>[
-    MERCHANT_CREATED,
-    ALL_LISTINGS,
-  ];
-
+  /// Returns the instance of [CatalogsHotelProductGroupType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsHotelProductGroupType? fromJson(dynamic value) => CatalogsHotelProductGroupTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsHotelProductGroupType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsHotelProductGroupType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsHotelProductGroupType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class CatalogsHotelProductGroupTypeTypeTransformer {
 
   const CatalogsHotelProductGroupTypeTypeTransformer._();
 
-  String encode(CatalogsHotelProductGroupType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(CatalogsHotelProductGroupType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsHotelProductGroupType.
+  /// Returns the instance of [CatalogsHotelProductGroupType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class CatalogsHotelProductGroupTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsHotelProductGroupType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsHotelProductGroupType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'MERCHANT_CREATED': return CatalogsHotelProductGroupType.MERCHANT_CREATED;
@@ -79,7 +84,7 @@ class CatalogsHotelProductGroupTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsHotelProductGroupTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsHotelProductGroupTypeTypeTransformer? _instance;
 }
 

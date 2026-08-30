@@ -19,7 +19,7 @@ class CatalogsRetailReportStatsParameters {
 
   CatalogsRetailReportStatsParametersCatalogTypeEnum catalogType;
 
-  CatalogsHotelReportStatsParametersReport report;
+  CatalogsRetailReportStatsParametersReport report;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsRetailReportStatsParameters &&
@@ -53,16 +53,16 @@ class CatalogsRetailReportStatsParameters {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailReportStatsParameters[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailReportStatsParameters[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsRetailReportStatsParameters[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsRetailReportStatsParameters[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'report'), 'Required key "CatalogsRetailReportStatsParameters[report]" is missing from JSON.');
+        assert(json[r'report'] != null, 'Required key "CatalogsRetailReportStatsParameters[report]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsRetailReportStatsParameters(
         catalogType: CatalogsRetailReportStatsParametersCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
-        report: CatalogsHotelReportStatsParametersReport.fromJson(json[r'report'])!,
+        report: CatalogsRetailReportStatsParametersReport.fromJson(json[r'report'])!,
       );
     }
     return null;
@@ -116,27 +116,28 @@ class CatalogsRetailReportStatsParameters {
 }
 
 
-class CatalogsRetailReportStatsParametersCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailReportStatsParametersCatalogTypeEnum._(this.value);
+enum CatalogsRetailReportStatsParametersCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailReportStatsParametersCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const RETAIL = CatalogsRetailReportStatsParametersCatalogTypeEnum._(r'RETAIL');
-
-  /// List of all possible values in this [enum][CatalogsRetailReportStatsParametersCatalogTypeEnum].
-  static const values = <CatalogsRetailReportStatsParametersCatalogTypeEnum>[
-    RETAIL,
-  ];
-
+  /// Returns the instance of [CatalogsRetailReportStatsParametersCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsRetailReportStatsParametersCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailReportStatsParametersCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsRetailReportStatsParametersCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsRetailReportStatsParametersCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsRetailReportStatsParametersCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -158,9 +159,10 @@ class CatalogsRetailReportStatsParametersCatalogTypeEnumTypeTransformer {
 
   const CatalogsRetailReportStatsParametersCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsRetailReportStatsParametersCatalogTypeEnum data) => data.value;
+  String encode(CatalogsRetailReportStatsParametersCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsRetailReportStatsParametersCatalogTypeEnum.
+  /// Returns the instance of [CatalogsRetailReportStatsParametersCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -169,6 +171,9 @@ class CatalogsRetailReportStatsParametersCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsRetailReportStatsParametersCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailReportStatsParametersCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'RETAIL': return CatalogsRetailReportStatsParametersCatalogTypeEnum.RETAIL;
@@ -181,7 +186,7 @@ class CatalogsRetailReportStatsParametersCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsRetailReportStatsParametersCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsRetailReportStatsParametersCatalogTypeEnumTypeTransformer? _instance;
 }
 

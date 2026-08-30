@@ -4,7 +4,7 @@ package org.openapitools.client.model
 
 case class CatalogsRetailReportStatsParameters (
     _catalogType: String,
-    _report: CatalogsHotelReportStatsParametersReport
+    _report: CatalogsRetailReportStatsParametersReport
 )
 object CatalogsRetailReportStatsParameters {
     def toStringBody(var_catalogType: Object, var_report: Object) =

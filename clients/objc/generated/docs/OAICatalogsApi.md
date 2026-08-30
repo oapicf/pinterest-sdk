@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 List available filter values
 
-Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - <code>country</code>, <code>language</code>, and <code>feed_id</code> are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Get the available filter attributes and values associated with a given feed or catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - `country`, `language`, and `feed_id` are only used in retail catalogs. - Note: It is not guaranteed that all available filter values will be returned. Instead this endpoint will return values from a sample of up to 1000 items.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 ```objc
@@ -33,8 +33,8 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* catalogId = @"catalogId_example"; // Filter entities for a given catalog_id.
 NSString* feedId = @"feedId_example"; // Filter entities for a given feed_id. If not given, all feeds are considered. (optional)
-OAICountry country = US; // Country for the Catalogs Items (optional)
-OAICatalogsLocale language = en-US; // Language for the Catalogs Items (optional)
+OAICountry country = [[OAICountry alloc] init]; // Country for the Catalogs Items (optional)
+OAICatalogsLocale language = [[OAICatalogsLocale alloc] init]; // Language for the Catalogs Items (optional)
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAICatalogsApi*apiInstance = [[OAICatalogsApi alloc] init];
@@ -82,14 +82,14 @@ Name | Type | Description  | Notes
 
 # **catalogsCreate**
 ```objc
--(NSURLSessionTask*) catalogsCreateWithCatalogsCreateRequest: (OAICatalogsCreateRequest*) catalogsCreateRequest
+-(NSURLSessionTask*) catalogsCreateWithCatalogCreate: (OAICatalogCreate*) catalogCreate
     adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAICatalog* output, NSError* error)) handler;
 ```
 
 Create catalog
 
-Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Product and Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example
 ```objc
@@ -99,13 +99,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-OAICatalogsCreateRequest* catalogsCreateRequest = [[OAICatalogsCreateRequest alloc] init]; // Request object used to created a feed.
+OAICatalogCreate* catalogCreate = [[OAICatalogCreate alloc] init]; // 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAICatalogsApi*apiInstance = [[OAICatalogsApi alloc] init];
 
 // Create catalog
-[apiInstance catalogsCreateWithCatalogsCreateRequest:catalogsCreateRequest
+[apiInstance catalogsCreateWithCatalogCreate:catalogCreate
               adAccountId:adAccountId
           completionHandler: ^(OAICatalog* output, NSError* error) {
                         if (output) {
@@ -121,7 +121,7 @@ OAICatalogsApi*apiInstance = [[OAICatalogsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogsCreateRequest** | [**OAICatalogsCreateRequest***](OAICatalogsCreateRequest.md)| Request object used to created a feed. | 
+ **catalogCreate** | [**OAICatalogCreate***](OAICatalogCreate.md)|  | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -141,15 +141,15 @@ Name | Type | Description  | Notes
 
 # **catalogsList**
 ```objc
--(NSURLSessionTask*) catalogsListWithBookmark: (NSString*) bookmark
+-(NSURLSessionTask*) catalogsListWithAdAccountId: (NSString*) adAccountId
+    bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
-    adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAICatalogsList200Response* output, NSError* error)) handler;
 ```
 
 List catalogs
 
-Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example
 ```objc
@@ -159,16 +159,16 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
-NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
+NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
 
 OAICatalogsApi*apiInstance = [[OAICatalogsApi alloc] init];
 
 // List catalogs
-[apiInstance catalogsListWithBookmark:bookmark
+[apiInstance catalogsListWithAdAccountId:adAccountId
+              bookmark:bookmark
               pageSize:pageSize
-              adAccountId:adAccountId
           completionHandler: ^(OAICatalogsList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -183,9 +183,9 @@ OAICatalogsApi*apiInstance = [[OAICatalogsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
+ **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
 
 ### Return type
 

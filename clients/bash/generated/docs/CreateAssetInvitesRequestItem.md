@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assetUnderscoreidUnderscoretoUnderscorepermissions** | **map[String, array[Permissions]]** |  | [default to null]
+**assetUnderscoreidUnderscoretoUnderscorepermissions** | **map[String, array]** |  | [default to null]
 **inviteUnderscoreid** | **string** |  | [default to null]
 **inviteUnderscoretype** | [**InviteType**](InviteType.md) |  | [default to null]
 

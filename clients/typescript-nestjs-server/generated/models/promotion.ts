@@ -1,0 +1,55 @@
+import { PromotionType } from './promotion-type';
+import { DiscountStatus } from './discount-status';
+import { EntityStatus } from './entity-status';
+import { PromotionTemplateValue } from './promotion-template-value';
+
+
+export interface Promotion { 
+  /**
+   * The Ad Account ID that this promotion belongs to.
+   */
+  readonly ad_account_id: string;
+  discount_status?: DiscountStatus;
+  /**
+   * Promotion end time. Unix timestamp in seconds. Independent of campaign end time.
+   */
+  end_time?: number;
+  /**
+   * Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.
+   */
+  external_id?: string;
+  /**
+   * Promotion ID
+   */
+  id: string;
+  /**
+   * The source integration platform used when creating the promotion. Currently supported values are \'DEFAULT\' and \'SHOPIFY\'.
+   */
+  platform_type?: string;
+  /**
+   * Code that can be used to redeem a promotion.
+   */
+  promotion_code?: string;
+  /**
+   * An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.
+   */
+  promotion_custom_id?: string;
+  /**
+   * Internal name for the promotion.
+   */
+  promotion_title: string;
+  promotion_type: PromotionType;
+  /**
+   * Promotion start time. Unix timestamp in seconds. Independent of campaign start time.
+   */
+  start_time?: number;
+  readonly status?: EntityStatus;
+  /**
+   * List of values to be inserted in the promotion type-specific template.
+   */
+  template_values?: Array<PromotionTemplateValue>;
+}
+export namespace Promotion {
+}
+
+

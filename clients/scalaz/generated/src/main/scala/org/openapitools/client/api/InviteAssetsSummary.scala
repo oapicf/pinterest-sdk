@@ -13,9 +13,9 @@ import InviteAssetsSummary._
 
 case class InviteAssetsSummary (
   /* List of ad account IDs and respective permission levels that will be assigned. */
-  adAccounts: Option[List[InviteAssetsSummaryAdAccountsInner]],
+  adAccounts: Option[List[InviteAssetsSummaryItem]],
 /* List of profile IDs and respective permission levels that will be assigned. */
-  profiles: Option[List[InviteAssetsSummaryProfilesInner]])
+  profiles: Option[List[InviteAssetsSummaryItem]])
 
 object InviteAssetsSummary {
   import DateTimeCodecs._

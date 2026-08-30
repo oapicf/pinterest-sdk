@@ -1,23 +1,23 @@
 import connexion
 
-from app.openapi_server.models.audience_definition_response import AudienceDefinitionResponse  # noqa: E501
 from app.openapi_server.models.audience_insight_type import AudienceInsightType  # noqa: E501
-from app.openapi_server.models.audience_insights_response import AudienceInsightsResponse  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.audience_insights import AudienceInsights  # noqa: E501
+from app.openapi_server.models.audience_insights_scope_and_type_get200_response import AudienceInsightsScopeAndTypeGet200Response  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from openapi_server import util
 
 
 def audience_insights_get(ad_account_id, audience_insight_type):  # noqa: E501
     """Get audience insights
 
-    Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;. # noqa: E501
+    Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights). # noqa: E501
 
     :param ad_account_id: Unique identifier of an ad account.
     :type ad_account_id: str
     :param audience_insight_type: Type of audience insights.
     :type audience_insight_type: dict | bytes
 
-    :rtype: AudienceInsightsResponse
+    :rtype: AudienceInsights
     """
     if connexion.request.is_json:
         audience_insight_type = .from_dict(connexion.request.get_json())  # noqa: E501
@@ -32,6 +32,6 @@ def audience_insights_scope_and_type_get(ad_account_id):  # noqa: E501
     :param ad_account_id: Unique identifier of an ad account.
     :type ad_account_id: str
 
-    :rtype: AudienceDefinitionResponse
+    :rtype: AudienceInsightsScopeAndTypeGet200Response
     """
     return 'do some magic!'

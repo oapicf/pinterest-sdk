@@ -7,7 +7,7 @@ Request object for updating a feed.
 
 Name | Type
 ------------ | -------------
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
 `defaultAvailability` | [ProductAvailabilityType](ProductAvailabilityType.md)
 `defaultCurrency` | [NullableCurrency](NullableCurrency.md)

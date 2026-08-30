@@ -4,7 +4,7 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.PlacementGroupType
-open OpenAPI.Model.TargetingSpec
+open OpenAPI.Model.TargetingSpecOptimal
 open OpenAPI.Model.TargetingTemplateKeyword
 open OpenAPI.Model.TrackingUrls
 
@@ -23,7 +23,7 @@ module TargetingTemplateCreate =
     [<JsonProperty(PropertyName = "placement_group")>]
     PlacementGroup : PlacementGroupType;
     [<JsonProperty(PropertyName = "targeting_attributes")>]
-    TargetingAttributes : TargetingSpec;
+    TargetingAttributes : TargetingSpecOptimal;
     [<JsonProperty(PropertyName = "tracking_urls")>]
     TrackingUrls : TrackingUrls;
   }

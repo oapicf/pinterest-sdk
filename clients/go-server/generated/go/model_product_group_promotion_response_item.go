@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,19 +18,18 @@ type ProductGroupPromotionResponseItem struct {
 
 	Data ProductGroupPromotion `json:"data,omitempty"`
 
-	Exceptions *[]Exception `json:"exceptions,omitempty"`
+	Exceptions []Exception `json:"exceptions,omitempty"`
 }
 
-// AssertProductGroupPromotionResponseItemRequired checks if the required fields are not zero-ed
+// AssertProductGroupPromotionResponseItemRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertProductGroupPromotionResponseItemRequired(obj ProductGroupPromotionResponseItem) error {
 	if err := AssertProductGroupPromotionRequired(obj.Data); err != nil {
 		return err
 	}
-	if obj.Exceptions != nil {
-		for _, el := range *obj.Exceptions {
-			if err := AssertExceptionRequired(el); err != nil {
-				return err
-			}
+	for _, el := range obj.Exceptions {
+		if err := AssertExceptionRequired(el); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -41,12 +40,10 @@ func AssertProductGroupPromotionResponseItemConstraints(obj ProductGroupPromotio
 	if err := AssertProductGroupPromotionConstraints(obj.Data); err != nil {
 		return err
 	}
-    if obj.Exceptions != nil {
-     	for _, el := range *obj.Exceptions {
-     		if err := AssertExceptionConstraints(el); err != nil {
-     			return err
-     		}
-     	}
-    }
+	for _, el := range obj.Exceptions {
+		if err := AssertExceptionConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

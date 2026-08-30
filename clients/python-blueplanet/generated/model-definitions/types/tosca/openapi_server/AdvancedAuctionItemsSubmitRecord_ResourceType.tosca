@@ -10,7 +10,6 @@ imports {
   AdvancedAuctionBidOptions = openapi_server.resourceTypes.AdvancedAuctionBidOptions
   AdvancedAuctionItemsSubmitDeleteRecord = openapi_server.resourceTypes.AdvancedAuctionItemsSubmitDeleteRecord
   AdvancedAuctionItemsSubmitUpsertRecord = openapi_server.resourceTypes.AdvancedAuctionItemsSubmitUpsertRecord
-  AdvancedAuctionOperation = openapi_server.resourceTypes.AdvancedAuctionOperation
   AdvancedAuctionOperationError = openapi_server.resourceTypes.AdvancedAuctionOperationError
   Country = openapi_server.resourceTypes.Country
   Language = openapi_server.resourceTypes.Language
@@ -23,8 +22,8 @@ resourceTypes {
     description = AdvancedAuctionItemsSubmitRecord
     derivedFrom = Root
     properties {
-        operation {
-          type = AdvancedAuctionOperation
+        bid_options {
+          type = AdvancedAuctionBidOptions
           description = ""
           optional = true
         }
@@ -32,6 +31,12 @@ resourceTypes {
           type = Country
           description = ""
           optional = true
+        }
+        errors {
+          type = array
+          items.type = AdvancedAuctionOperationError
+          description = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied."
+          optional = false
         }
         item_id {
           type =  string
@@ -43,16 +48,11 @@ resourceTypes {
           description = ""
           optional = true
         }
-        bid_options {
-          type = AdvancedAuctionBidOptions
+        operation {
+          type =  string
           description = ""
+          enum = ["DELETE"]
           optional = true
-        }
-        errors {
-          type = array
-          items.type = AdvancedAuctionOperationError
-          description = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied."
-          optional = false
         }
         update_mask {
           type = array

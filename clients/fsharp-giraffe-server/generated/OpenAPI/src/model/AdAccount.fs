@@ -21,6 +21,7 @@ module AdAccount =
     Name : string;
     Owner : AdAccountOwner;
     Permissions : BusinessAccessRole[];
+    TimeZone : string;
     UpdatedTime : int option;
   }
   //#endregion

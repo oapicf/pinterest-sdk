@@ -107,7 +107,7 @@ CatalogsUpsertHotelItem::getAttributes()
 }
 
 void
-CatalogsUpsertHotelItem::setAttributes(CatalogsHotelAttributes  attributes)
+CatalogsUpsertHotelItem::setAttributes(CatalogsHotelAttributes attributes)
 {
 	this->attributes = attributes;
 }
@@ -119,7 +119,7 @@ CatalogsUpsertHotelItem::getHotelId()
 }
 
 void
-CatalogsUpsertHotelItem::setHotelId(std::string  hotel_id)
+CatalogsUpsertHotelItem::setHotelId(std::string hotel_id)
 {
 	this->hotel_id = hotel_id;
 }
@@ -131,7 +131,7 @@ CatalogsUpsertHotelItem::getOperation()
 }
 
 void
-CatalogsUpsertHotelItem::setOperation(std::string  operation)
+CatalogsUpsertHotelItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }

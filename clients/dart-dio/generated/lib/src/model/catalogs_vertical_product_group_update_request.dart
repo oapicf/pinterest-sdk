@@ -24,7 +24,7 @@ part 'catalogs_vertical_product_group_update_request.g.dart';
 /// * [description] 
 /// * [filters] 
 /// * [locale] 
-/// * [name] 
+/// * [name] - Name of catalog product group
 @BuiltValue()
 abstract class CatalogsVerticalProductGroupUpdateRequest implements Built<CatalogsVerticalProductGroupUpdateRequest, CatalogsVerticalProductGroupUpdateRequestBuilder> {
   /// One Of [CatalogsCreativeAssetsProductGroupUpdateRequest], [CatalogsHotelProductGroupUpdateRequest], [CatalogsRetailProductGroupUpdateRequest]

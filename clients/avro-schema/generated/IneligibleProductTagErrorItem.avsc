@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Error item for a product tag that failed eligibility check.",
+  "name": "IneligibleProductTagErrorItem",
+  "fields": [
+    {
+      "name": "error_message",
+      "type": "model.IneligibleProductTagReason",
+      "doc": "Reason why the pin is ineligible for tagging."
+    },
+    {
+      "name": "pin_id",
+      "type": "string",
+      "doc": "Pin ID that failed eligibility check."
+    }
+  ]
+
+}

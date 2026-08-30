@@ -1,0 +1,64 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdAccountsAudienceUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdAccountsAudienceUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdAccountsAudienceRule = openapi_server.resourceTypes.AdAccountsAudienceRule
+  AudienceType = openapi_server.resourceTypes.AudienceType
+  AudienceUpdateOperationType = openapi_server.resourceTypes.AudienceUpdateOperationType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdAccountsAudienceUpdate {
+    title = AdAccountsAudienceUpdate
+    description = AdAccountsAudienceUpdate
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "Ad account ID."
+          optional = false
+        }
+        audience_type {
+          type = AudienceType
+          description = "[Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR"
+          optional = false
+        }
+        description {
+          type =  string
+          description = "Audience description."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Audience name."
+          optional = false
+        }
+        operation_type {
+          type = AudienceUpdateOperationType
+          description = "Audience operation type (update or remove). Only valid in update request body."
+          optional = false
+        }
+        rule {
+          type = AdAccountsAudienceRule
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdAccountsAudienceUpdate {
+    title = AdAccountsAudienceUpdate
+    description = AdAccountsAudienceUpdate
+    implements = openapi_server.resourceTypes.AdAccountsAudienceUpdate
+
+  }
+}

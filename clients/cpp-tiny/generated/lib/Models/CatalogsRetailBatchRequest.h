@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "CatalogsRetailBatchRequest_items_inner.h"
+#include "CatalogsRetailBatchRequestItemsItems.h"
 #include "Country.h"
 #include <list>
 
@@ -54,42 +54,42 @@ public:
 
 	/*! \brief Set Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
 
 	/*! \brief Set 
 	 */
-	void setCountry(Country  country);
+	void setCountry(Country country);
 	/*! \brief Get Array with catalogs item operations
 	 */
-	std::list<CatalogsRetailBatchRequest_items_inner> getItems();
+	std::list<CatalogsRetailBatchRequestItemsItems> getItems();
 
 	/*! \brief Set Array with catalogs item operations
 	 */
-	void setItems(std::list <CatalogsRetailBatchRequest_items_inner> items);
+	void setItems(std::list<CatalogsRetailBatchRequestItemsItems> items);
 	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
 	std::string getLanguage();
 
 	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setLanguage(std::string  language);
+	void setLanguage(std::string language);
 
 
     private:
     std::string catalog_id{};
     std::string catalog_type{};
     Country country;
-    std::list<CatalogsRetailBatchRequest_items_inner> items;
+    std::list<CatalogsRetailBatchRequestItemsItems> items;
     std::string language{};
 };
 }

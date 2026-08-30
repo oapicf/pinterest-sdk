@@ -23,7 +23,7 @@ CatalogsRetailBatchRequest::~CatalogsRetailBatchRequest()
 void
 CatalogsRetailBatchRequest::__init()
 {
-	//catalog_id = std::string();
+	//catalog_id = null;
 	//catalog_type = std::string();
 	//country = new Country();
 	//new std::list()std::list> items;
@@ -109,12 +109,12 @@ CatalogsRetailBatchRequest::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<CatalogsRetailBatchRequest_items_inner> new_list;
-			CatalogsRetailBatchRequest_items_inner inst;
+			list<CatalogsRetailBatchRequestItemsItems> new_list;
+			CatalogsRetailBatchRequestItemsItems inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("CatalogsRetailBatchRequest_items_inner")) {
-					jsonToValue(&inst, temp_json, "CatalogsRetailBatchRequest_items_inner", "");
+				if (isprimitive("CatalogsRetailBatchRequestItemsItems")) {
+					jsonToValue(&inst, temp_json, "CatalogsRetailBatchRequestItemsItems", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -181,18 +181,18 @@ CatalogsRetailBatchRequest::toJson()
 	}
 	const gchar *countryKey = "country";
 	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("CatalogsRetailBatchRequest_items_inner")) {
-		list<CatalogsRetailBatchRequest_items_inner> new_list = static_cast<list <CatalogsRetailBatchRequest_items_inner> > (getItems());
-		node = converttoJson(&new_list, "CatalogsRetailBatchRequest_items_inner", "array");
+	if (isprimitive("CatalogsRetailBatchRequestItemsItems")) {
+		list<CatalogsRetailBatchRequestItemsItems> new_list = static_cast<list <CatalogsRetailBatchRequestItemsItems> > (getItems());
+		node = converttoJson(&new_list, "CatalogsRetailBatchRequestItemsItems", "array");
 	} else {
 		node = json_node_alloc();
-		list<CatalogsRetailBatchRequest_items_inner> new_list = static_cast<list <CatalogsRetailBatchRequest_items_inner> > (getItems());
+		list<CatalogsRetailBatchRequestItemsItems> new_list = static_cast<list <CatalogsRetailBatchRequestItemsItems> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<CatalogsRetailBatchRequest_items_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<CatalogsRetailBatchRequestItemsItems>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			CatalogsRetailBatchRequest_items_inner obj = *it;
+			CatalogsRetailBatchRequestItemsItems obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -259,14 +259,14 @@ CatalogsRetailBatchRequest::setCountry(Country  country)
 	this->country = country;
 }
 
-std::list<CatalogsRetailBatchRequest_items_inner>
+std::list<CatalogsRetailBatchRequestItemsItems>
 CatalogsRetailBatchRequest::getItems()
 {
 	return items;
 }
 
 void
-CatalogsRetailBatchRequest::setItems(std::list <CatalogsRetailBatchRequest_items_inner> items)
+CatalogsRetailBatchRequest::setItems(std::list <CatalogsRetailBatchRequestItemsItems> items)
 {
 	this->items = items;
 }

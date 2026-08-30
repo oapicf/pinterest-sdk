@@ -148,7 +148,7 @@ CatalogsHotelAddress::getAddr1()
 }
 
 void
-CatalogsHotelAddress::setAddr1(std::string  addr1)
+CatalogsHotelAddress::setAddr1(std::string addr1)
 {
 	this->addr1 = addr1;
 }
@@ -160,7 +160,7 @@ CatalogsHotelAddress::getCity()
 }
 
 void
-CatalogsHotelAddress::setCity(std::string  city)
+CatalogsHotelAddress::setCity(std::string city)
 {
 	this->city = city;
 }
@@ -172,7 +172,7 @@ CatalogsHotelAddress::getCountry()
 }
 
 void
-CatalogsHotelAddress::setCountry(std::string  country)
+CatalogsHotelAddress::setCountry(std::string country)
 {
 	this->country = country;
 }
@@ -184,7 +184,7 @@ CatalogsHotelAddress::getPostalCode()
 }
 
 void
-CatalogsHotelAddress::setPostalCode(std::string  postal_code)
+CatalogsHotelAddress::setPostalCode(std::string postal_code)
 {
 	this->postal_code = postal_code;
 }
@@ -196,7 +196,7 @@ CatalogsHotelAddress::getRegion()
 }
 
 void
-CatalogsHotelAddress::setRegion(std::string  region)
+CatalogsHotelAddress::setRegion(std::string region)
 {
 	this->region = region;
 }

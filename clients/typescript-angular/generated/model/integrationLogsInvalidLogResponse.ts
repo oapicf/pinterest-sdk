@@ -7,13 +7,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { IntegrationLogsInvalidLogResponseRejectedLogsInner } from './integrationLogsInvalidLogResponseRejectedLogsInner';
+import { IntegrationLogsInvalidLogResponseRejectedLogsItems } from './integrationLogsInvalidLogResponseRejectedLogsItems';
 
 
 /**
  * Schema describing the response when a log has invalid fields.
  */
 export interface IntegrationLogsInvalidLogResponse { 
-    rejected_logs?: Array<IntegrationLogsInvalidLogResponseRejectedLogsInner>;
+    rejected_logs?: Array<IntegrationLogsInvalidLogResponseRejectedLogsItems>;
 }
 

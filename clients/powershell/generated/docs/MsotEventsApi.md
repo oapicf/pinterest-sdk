@@ -11,11 +11,11 @@ Method | HTTP request | Description
 # **Invoke-MsotEventsCreate**
 > void Invoke-MsotEventsCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ConversionMSOTEvents] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ConversionMSOTEventsCreate] <PSCustomObject><br>
 
 Send Measurement Source Of Truth (MSOT) attributed conversion events
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.
+**This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their `ad_account_id`. The request body should be a JSON object.  - These events will not be used in Reporting.
 
 ### Example
 ```powershell
@@ -25,12 +25,11 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$Currency = Initialize-Currency 
-$ConversionMSOTEvents = Initialize-ConversionMSOTEvents -ActionTimestamps 0 -AdGroupId "2680060704746" -AttributionModel "first_touch" -AttributionScope "view" -AttributionScore 0.5 -CampaignId "626736533506" -Currency $Currency -EventId "eventId0001" -EventName "add_to_cart" -EventTimestamp 1451431341 -TotalEventTouchpoints 2 -TotalEvents 2 -Value 123.45 # ConversionMSOTEvents | Attributed MSOT conversion events
+$ConversionMSOTEventsCreate = Initialize-ConversionMSOTEventsCreate -ActionTimestamps 0 -AdGroupId "2680060704746" -AttributionModel "first_touch" -AttributionScope "view" -AttributionScore 0.5 -CampaignId "626736533506" -ClickWindow "MyClickWindow" -Currency "UNK" -EventId "eventId0001" -EventName "add_to_cart" -EventTimestamp 1451431341 -TotalEventTouchpoints 2 -TotalEvents 2 -TotalEventsFractional 0 -Value 123.45 -ViewWindow "MyViewWindow" # ConversionMSOTEventsCreate | 
 
 # Send Measurement Source Of Truth (MSOT) attributed conversion events
 try {
-    $Result = Invoke-MsotEventsCreate -AdAccountId $AdAccountId -ConversionMSOTEvents $ConversionMSOTEvents
+    $Result = Invoke-MsotEventsCreate -AdAccountId $AdAccountId -ConversionMSOTEventsCreate $ConversionMSOTEventsCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-MsotEventsCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -42,7 +41,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **ConversionMSOTEvents** | [**ConversionMSOTEvents**](ConversionMSOTEvents.md)| Attributed MSOT conversion events | 
+ **ConversionMSOTEventsCreate** | [**ConversionMSOTEventsCreate**](ConversionMSOTEventsCreate.md)|  | 
 
 ### Return type
 

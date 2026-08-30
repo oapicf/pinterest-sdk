@@ -2,118 +2,47 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.openapitools.model.BaseInviteDataResponseInviteData;
+import org.openapitools.model.BusinessAccessUserSummary;
+import org.openapitools.model.InviteDataResponse;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * InviteBusinessRoleBinding
+ * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "InviteBusinessRoleBinding", description = "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class InviteBusinessRoleBinding {
 
-  private @Nullable String id;
-
-  private @Nullable BaseInviteDataResponseInviteData inviteData;
-
-  private @Nullable Boolean isReceivedInvite;
-
-  private @Nullable Object user;
-
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String createdByBusinessId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String createdByUserId;
 
-  public InviteBusinessRoleBinding id(@Nullable String id) {
-    this.id = id;
-    return this;
-  }
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable String id;
 
-  /**
-   * Unique identifier of the invite/request.
-   * @return id
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "383791336903426391", description = "Unique identifier of the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public @Nullable String getId() {
-    return id;
-  }
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable InviteDataResponse inviteData;
 
-  public void setId(@Nullable String id) {
-    this.id = id;
-  }
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable Boolean isReceivedInvite;
 
-  public InviteBusinessRoleBinding inviteData(@Nullable BaseInviteDataResponseInviteData inviteData) {
-    this.inviteData = inviteData;
-    return this;
-  }
-
-  /**
-   * Get inviteData
-   * @return inviteData
-   */
-  @Valid 
-  @Schema(name = "invite_data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("invite_data")
-  public @Nullable BaseInviteDataResponseInviteData getInviteData() {
-    return inviteData;
-  }
-
-  public void setInviteData(@Nullable BaseInviteDataResponseInviteData inviteData) {
-    this.inviteData = inviteData;
-  }
-
-  public InviteBusinessRoleBinding isReceivedInvite(@Nullable Boolean isReceivedInvite) {
-    this.isReceivedInvite = isReceivedInvite;
-    return this;
-  }
-
-  /**
-   * Indicates whether the invite/request was received.
-   * @return isReceivedInvite
-   */
-  
-  @Schema(name = "is_received_invite", description = "Indicates whether the invite/request was received.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("is_received_invite")
-  public @Nullable Boolean getIsReceivedInvite() {
-    return isReceivedInvite;
-  }
-
-  public void setIsReceivedInvite(@Nullable Boolean isReceivedInvite) {
-    this.isReceivedInvite = isReceivedInvite;
-  }
-
-  public InviteBusinessRoleBinding user(@Nullable Object user) {
-    this.user = user;
-    return this;
-  }
-
-  /**
-   * Metadata for the user that updated the invite/request.
-   * @return user
-   */
-  
-  @Schema(name = "user", description = "Metadata for the user that updated the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("user")
-  public @Nullable Object getUser() {
-    return user;
-  }
-
-  public void setUser(@Nullable Object user) {
-    this.user = user;
-  }
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable BusinessAccessUserSummary user;
 
   public InviteBusinessRoleBinding createdByBusinessId(@Nullable String createdByBusinessId) {
     this.createdByBusinessId = createdByBusinessId;
@@ -131,6 +60,7 @@ public class InviteBusinessRoleBinding {
     return createdByBusinessId;
   }
 
+  @JsonProperty("created_by_business_id")
   public void setCreatedByBusinessId(@Nullable String createdByBusinessId) {
     this.createdByBusinessId = createdByBusinessId;
   }
@@ -151,8 +81,93 @@ public class InviteBusinessRoleBinding {
     return createdByUserId;
   }
 
+  @JsonProperty("created_by_user_id")
   public void setCreatedByUserId(@Nullable String createdByUserId) {
     this.createdByUserId = createdByUserId;
+  }
+
+  public InviteBusinessRoleBinding id(@Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Unique identifier of the invite/request.
+   * @return id
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "383791336903426391", description = "Unique identifier of the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public @Nullable String getId() {
+    return id;
+  }
+
+  @JsonProperty("id")
+  public void setId(@Nullable String id) {
+    this.id = id;
+  }
+
+  public InviteBusinessRoleBinding inviteData(@Nullable InviteDataResponse inviteData) {
+    this.inviteData = inviteData;
+    return this;
+  }
+
+  /**
+   * Get inviteData
+   * @return inviteData
+   */
+  @Valid 
+  @Schema(name = "invite_data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("invite_data")
+  public @Nullable InviteDataResponse getInviteData() {
+    return inviteData;
+  }
+
+  @JsonProperty("invite_data")
+  public void setInviteData(@Nullable InviteDataResponse inviteData) {
+    this.inviteData = inviteData;
+  }
+
+  public InviteBusinessRoleBinding isReceivedInvite(@Nullable Boolean isReceivedInvite) {
+    this.isReceivedInvite = isReceivedInvite;
+    return this;
+  }
+
+  /**
+   * Indicates whether the invite/request was received.
+   * @return isReceivedInvite
+   */
+  
+  @Schema(name = "is_received_invite", description = "Indicates whether the invite/request was received.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("is_received_invite")
+  public @Nullable Boolean getIsReceivedInvite() {
+    return isReceivedInvite;
+  }
+
+  @JsonProperty("is_received_invite")
+  public void setIsReceivedInvite(@Nullable Boolean isReceivedInvite) {
+    this.isReceivedInvite = isReceivedInvite;
+  }
+
+  public InviteBusinessRoleBinding user(@Nullable BusinessAccessUserSummary user) {
+    this.user = user;
+    return this;
+  }
+
+  /**
+   * Metadata for the member/partner that was sent the invite/request.
+   * @return user
+   */
+  @Valid 
+  @Schema(name = "user", description = "Metadata for the member/partner that was sent the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("user")
+  public @Nullable BusinessAccessUserSummary getUser() {
+    return user;
+  }
+
+  @JsonProperty("user")
+  public void setUser(@Nullable BusinessAccessUserSummary user) {
+    this.user = user;
   }
 
   @Override
@@ -164,29 +179,29 @@ public class InviteBusinessRoleBinding {
       return false;
     }
     InviteBusinessRoleBinding inviteBusinessRoleBinding = (InviteBusinessRoleBinding) o;
-    return Objects.equals(this.id, inviteBusinessRoleBinding.id) &&
+    return Objects.equals(this.createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
+        Objects.equals(this.createdByUserId, inviteBusinessRoleBinding.createdByUserId) &&
+        Objects.equals(this.id, inviteBusinessRoleBinding.id) &&
         Objects.equals(this.inviteData, inviteBusinessRoleBinding.inviteData) &&
         Objects.equals(this.isReceivedInvite, inviteBusinessRoleBinding.isReceivedInvite) &&
-        Objects.equals(this.user, inviteBusinessRoleBinding.user) &&
-        Objects.equals(this.createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
-        Objects.equals(this.createdByUserId, inviteBusinessRoleBinding.createdByUserId);
+        Objects.equals(this.user, inviteBusinessRoleBinding.user);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, inviteData, isReceivedInvite, user, createdByBusinessId, createdByUserId);
+    return Objects.hash(createdByBusinessId, createdByUserId, id, inviteData, isReceivedInvite, user);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteBusinessRoleBinding {\n");
+    sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
+    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
     sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
-    sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
-    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -196,10 +211,7 @@ public class InviteBusinessRoleBinding {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

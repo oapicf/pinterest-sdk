@@ -12,13 +12,13 @@ Name | Type | Description | Notes
 **cpuCores** | **Integer** | Number of CPU cores |  [optional]
 **externalStorageFreeSpace** | **Integer** | External storage size in GB |  [optional]
 **externalStorageSize** | **Integer** | External storage size in GB |  [optional]
-**formFactor** | [**FormFactorEnum**](#FormFactorEnum) | Device form factor |  [optional]
+**formFactor** | [**FormFactor**](FormFactor.md) | Device form factor |  [optional]
 **kernelVersion** | **String** | Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release |  [optional]
 **languages** | **List&lt;String&gt;** | List of user installed languages. ISO 639-1 format |  [optional]
 **locale** | **String** | Device locale BCP-47 format |  [optional]
 **model** | **String** | Device model name |  [optional]
-**networkType** | [**NetworkTypeEnum**](#NetworkTypeEnum) | Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() |  [optional]
-**osFamily** | [**OsFamilyEnum**](#OsFamilyEnum) | OS Family |  [optional]
+**networkType** | [**NetworkType**](NetworkType.md) | Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities() |  [optional]
+**osFamily** | [**OsFamily**](OsFamily.md) | OS Family |  [optional]
 **osName** | **String** | Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch |  [optional]
 **osReleaseName** | **String** | Marketing name for the release version iOS: Dawn Android: Baklava MacOS: Sequoia Ubuntu Linux: Plucky Puffin |  [optional]
 **osVersion** | **String** | Full name of the version. Examples: iOS: 18.3 Android: 16.1 MacOS: 15.5 Windows: 24H2 Ubuntu Linux: 25.04 |  [optional]
@@ -30,24 +30,6 @@ Name | Type | Description | Notes
 **timezone** | **String** | Device timezone |  [optional]
 **timezoneAbbr** | **String** | Timezone abbreviation |  [optional]
 **type** | **String** | Device type |  [optional]
-
-
-## Enum: FormFactorEnum
-
-Name | Value
----- | -----
-
-
-## Enum: NetworkTypeEnum
-
-Name | Value
----- | -----
-
-
-## Enum: OsFamilyEnum
-
-Name | Value
----- | -----
 
 
 

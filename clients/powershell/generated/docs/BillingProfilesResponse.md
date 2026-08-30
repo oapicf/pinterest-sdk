@@ -4,11 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdvertiserId** | **String** | Advertiser ID of the billing. | [optional] 
-**BillingType** | **String** | Billing type of the advertiser | [optional] 
-**CardType** | **String** | Type of the card. | [optional] 
+**BillingType** | [**BillingType**](BillingType.md) | Billing type of the advertiser | [optional] 
+**CardType** | [**BillingProfileCardType**](BillingProfileCardType.md) | Type of the card. | [optional] 
 **Id** | **String** | Billing ID. | [optional] 
-**PaymentMethodBrand** | **String** | Brand of the payment method. | [optional] 
-**Status** | **String** | Status of the billing. | [optional] 
+**PaymentMethodBrand** | [**BillingProfilePaymentMethodBrand**](BillingProfilePaymentMethodBrand.md) | Brand of the payment method. | [optional] 
+**Status** | [**BillingProfileStatus**](BillingProfileStatus.md) | Status of the billing. | [optional] 
 
 ## Examples
 

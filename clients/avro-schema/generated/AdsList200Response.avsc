@@ -14,7 +14,7 @@
       "name": "items",
       "type": {
         "type": "array",
-        "items": "model.AdResponse"
+        "items": "model.Ad"
       },
       "doc": ""
     }

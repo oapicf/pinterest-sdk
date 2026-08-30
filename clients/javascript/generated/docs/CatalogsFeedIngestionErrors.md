@@ -15,12 +15,3 @@ Name | Type | Description | Notes
 **LINE_LEVEL_INTERNAL_ERROR** | **Number** | We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. | [optional] 
 
 
-
-## Enum: LARGEPRODUCTCOUNTDECREASEEnum
-
-
-* `1` (value: `1`)
-
-
-
-

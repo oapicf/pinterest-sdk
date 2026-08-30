@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const NumericFilterOperatorType = require('../models/NumericFilterOperatorType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -11,15 +12,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}operator`,
-                label: `[${labelPrefix}operator]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'GREATER_THAN',
-                    'GREATER_THAN_OR_EQUALS',
-                    'LESS_THAN',
-                    'LESS_THAN_OR_EQUALS',
-                ],
+                ...NumericFilterOperatorType.fields(`${keyPrefix}operator`, isInput),
             },
             {
                 key: `${keyPrefix}value`,

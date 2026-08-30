@@ -51,49 +51,49 @@ public:
 
 	/*! \brief Set The Amazon storefront id
 	 */
-	void setAmazonStorefrontId(std::string  amazon_storefront_id);
+	void setAmazonStorefrontId(std::string amazon_storefront_id);
 	/*! \brief Get The Amazon storefront name
 	 */
 	std::string getAmazonStorefrontName();
 
 	/*! \brief Set The Amazon storefront name
 	 */
-	void setAmazonStorefrontName(std::string  amazon_storefront_name);
+	void setAmazonStorefrontName(std::string amazon_storefront_name);
 	/*! \brief Get The Amazon storefront url
 	 */
 	std::string getAmazonStorefrontUrl();
 
 	/*! \brief Set The Amazon storefront url
 	 */
-	void setAmazonStorefrontUrl(std::string  amazon_storefront_url);
+	void setAmazonStorefrontUrl(std::string amazon_storefront_url);
 	/*! \brief Get The Amazon user id
 	 */
 	std::string getAmazonUserId();
 
 	/*! \brief Set The Amazon user id
 	 */
-	void setAmazonUserId(std::string  amazon_user_id);
+	void setAmazonUserId(std::string amazon_user_id);
 	/*! \brief Get The Amazon account linking status
 	 */
 	bool isIsAmazonAccountLinked();
 
 	/*! \brief Set The Amazon account linking status
 	 */
-	void setIsAmazonAccountLinked(bool  is_amazon_account_linked);
+	void setIsAmazonAccountLinked(bool is_amazon_account_linked);
 	/*! \brief Get The one time passcode for Pinterest-initiated linking requests
 	 */
 	std::string getOneTimePasscode();
 
 	/*! \brief Set The one time passcode for Pinterest-initiated linking requests
 	 */
-	void setOneTimePasscode(std::string  one_time_passcode);
+	void setOneTimePasscode(std::string one_time_passcode);
 	/*! \brief Get The Pinterest user id for Amazon-initiated linking requests
 	 */
 	std::string getPinterestUserId();
 
 	/*! \brief Set The Pinterest user id for Amazon-initiated linking requests
 	 */
-	void setPinterestUserId(std::string  pinterest_user_id);
+	void setPinterestUserId(std::string pinterest_user_id);
 
 
     private:

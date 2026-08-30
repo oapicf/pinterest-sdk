@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.auth_respond_invites_body_invites_inner import AuthRespondInvitesBodyInvitesInner  # noqa: F401,E501
+from app.openapi_server.models.auth_respond_invites_body_item import AuthRespondInvitesBodyItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class AuthRespondInvitesBody(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, invites: List[AuthRespondInvitesBodyInvitesInner]=None):  # noqa: E501
+    def __init__(self, invites: List[AuthRespondInvitesBodyItem]=None):  # noqa: E501
         """AuthRespondInvitesBody - a model defined in Swagger
 
         :param invites: The invites of this AuthRespondInvitesBody.  # noqa: E501
-        :type invites: List[AuthRespondInvitesBodyInvitesInner]
+        :type invites: List[AuthRespondInvitesBodyItem]
         """
         self.swagger_types = {
-            'invites': List[AuthRespondInvitesBodyInvitesInner]
+            'invites': List[AuthRespondInvitesBodyItem]
         }
 
         self.attribute_map = {
@@ -44,22 +44,22 @@ class AuthRespondInvitesBody(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def invites(self) -> List[AuthRespondInvitesBodyInvitesInner]:
+    def invites(self) -> List[AuthRespondInvitesBodyItem]:
         """Gets the invites of this AuthRespondInvitesBody.
 
 
         :return: The invites of this AuthRespondInvitesBody.
-        :rtype: List[AuthRespondInvitesBodyInvitesInner]
+        :rtype: List[AuthRespondInvitesBodyItem]
         """
         return self._invites
 
     @invites.setter
-    def invites(self, invites: List[AuthRespondInvitesBodyInvitesInner]):
+    def invites(self, invites: List[AuthRespondInvitesBodyItem]):
         """Sets the invites of this AuthRespondInvitesBody.
 
 
         :param invites: The invites of this AuthRespondInvitesBody.
-        :type invites: List[AuthRespondInvitesBodyInvitesInner]
+        :type invites: List[AuthRespondInvitesBodyItem]
         """
         if invites is None:
             raise ValueError("Invalid value for `invites`, must not be `None`")  # noqa: E501

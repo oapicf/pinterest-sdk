@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.UserSummary
+import org.openapitools.client.models.FollowUser
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,7 +39,7 @@ import com.squareup.moshi.JsonClass
 data class FollowersList200Response (
 
     @Json(name = "items")
-    val items: kotlin.collections.List<UserSummary>,
+    val items: kotlin.collections.List<FollowUser>,
 
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null

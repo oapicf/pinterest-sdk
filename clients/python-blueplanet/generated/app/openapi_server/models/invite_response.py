@@ -6,9 +6,9 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.base_invite_data_response_invite_data import BaseInviteDataResponseInviteData  # noqa: F401,E501
 from app.openapi_server.models.business_access_user_summary import BusinessAccessUserSummary  # noqa: F401,E501
 from app.openapi_server.models.invite_assets_summary import InviteAssetsSummary  # noqa: F401,E501
+from app.openapi_server.models.invite_data_response import InviteDataResponse  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -19,61 +19,61 @@ class InviteResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: str=None, invite_data: BaseInviteDataResponseInviteData=None, is_received_invite: bool=None, user: BusinessAccessUserSummary=None, assets_summary: InviteAssetsSummary=None, business_roles: List[str]=None, created_by_business: object=None, created_by_user: object=None, created_time: int=None):  # noqa: E501
+    def __init__(self, assets_summary: InviteAssetsSummary=None, business_roles: List[str]=None, created_by_business: BusinessAccessUserSummary=None, created_by_user: BusinessAccessUserSummary=None, created_time: int=None, id: str=None, invite_data: InviteDataResponse=None, is_received_invite: bool=None, user: BusinessAccessUserSummary=None):  # noqa: E501
         """InviteResponse - a model defined in Swagger
 
-        :param id: The id of this InviteResponse.  # noqa: E501
-        :type id: str
-        :param invite_data: The invite_data of this InviteResponse.  # noqa: E501
-        :type invite_data: BaseInviteDataResponseInviteData
-        :param is_received_invite: The is_received_invite of this InviteResponse.  # noqa: E501
-        :type is_received_invite: bool
-        :param user: The user of this InviteResponse.  # noqa: E501
-        :type user: BusinessAccessUserSummary
         :param assets_summary: The assets_summary of this InviteResponse.  # noqa: E501
         :type assets_summary: InviteAssetsSummary
         :param business_roles: The business_roles of this InviteResponse.  # noqa: E501
         :type business_roles: List[str]
         :param created_by_business: The created_by_business of this InviteResponse.  # noqa: E501
-        :type created_by_business: object
+        :type created_by_business: BusinessAccessUserSummary
         :param created_by_user: The created_by_user of this InviteResponse.  # noqa: E501
-        :type created_by_user: object
+        :type created_by_user: BusinessAccessUserSummary
         :param created_time: The created_time of this InviteResponse.  # noqa: E501
         :type created_time: int
+        :param id: The id of this InviteResponse.  # noqa: E501
+        :type id: str
+        :param invite_data: The invite_data of this InviteResponse.  # noqa: E501
+        :type invite_data: InviteDataResponse
+        :param is_received_invite: The is_received_invite of this InviteResponse.  # noqa: E501
+        :type is_received_invite: bool
+        :param user: The user of this InviteResponse.  # noqa: E501
+        :type user: BusinessAccessUserSummary
         """
         self.swagger_types = {
-            'id': str,
-            'invite_data': BaseInviteDataResponseInviteData,
-            'is_received_invite': bool,
-            'user': BusinessAccessUserSummary,
             'assets_summary': InviteAssetsSummary,
             'business_roles': List[str],
-            'created_by_business': object,
-            'created_by_user': object,
-            'created_time': int
+            'created_by_business': BusinessAccessUserSummary,
+            'created_by_user': BusinessAccessUserSummary,
+            'created_time': int,
+            'id': str,
+            'invite_data': InviteDataResponse,
+            'is_received_invite': bool,
+            'user': BusinessAccessUserSummary
         }
 
         self.attribute_map = {
-            'id': 'id',
-            'invite_data': 'invite_data',
-            'is_received_invite': 'is_received_invite',
-            'user': 'user',
             'assets_summary': 'assets_summary',
             'business_roles': 'business_roles',
             'created_by_business': 'created_by_business',
             'created_by_user': 'created_by_user',
-            'created_time': 'created_time'
+            'created_time': 'created_time',
+            'id': 'id',
+            'invite_data': 'invite_data',
+            'is_received_invite': 'is_received_invite',
+            'user': 'user'
         }
 
-        self._id = id
-        self._invite_data = invite_data
-        self._is_received_invite = is_received_invite
-        self._user = user
         self._assets_summary = assets_summary
         self._business_roles = business_roles
         self._created_by_business = created_by_business
         self._created_by_user = created_by_user
         self._created_time = created_time
+        self._id = id
+        self._invite_data = invite_data
+        self._is_received_invite = is_received_invite
+        self._user = user
 
     @classmethod
     def from_dict(cls, dikt) -> 'InviteResponse':
@@ -85,6 +85,119 @@ class InviteResponse(Model):
         :rtype: InviteResponse
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def assets_summary(self) -> InviteAssetsSummary:
+        """Gets the assets_summary of this InviteResponse.
+
+
+        :return: The assets_summary of this InviteResponse.
+        :rtype: InviteAssetsSummary
+        """
+        return self._assets_summary
+
+    @assets_summary.setter
+    def assets_summary(self, assets_summary: InviteAssetsSummary):
+        """Sets the assets_summary of this InviteResponse.
+
+
+        :param assets_summary: The assets_summary of this InviteResponse.
+        :type assets_summary: InviteAssetsSummary
+        """
+
+        self._assets_summary = assets_summary
+
+    @property
+    def business_roles(self) -> List[str]:
+        """Gets the business_roles of this InviteResponse.
+
+        The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.  # noqa: E501
+
+        :return: The business_roles of this InviteResponse.
+        :rtype: List[str]
+        """
+        return self._business_roles
+
+    @business_roles.setter
+    def business_roles(self, business_roles: List[str]):
+        """Sets the business_roles of this InviteResponse.
+
+        The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.  # noqa: E501
+
+        :param business_roles: The business_roles of this InviteResponse.
+        :type business_roles: List[str]
+        """
+
+        self._business_roles = business_roles
+
+    @property
+    def created_by_business(self) -> BusinessAccessUserSummary:
+        """Gets the created_by_business of this InviteResponse.
+
+        Metadata for the business that created the invite/request.  # noqa: E501
+
+        :return: The created_by_business of this InviteResponse.
+        :rtype: BusinessAccessUserSummary
+        """
+        return self._created_by_business
+
+    @created_by_business.setter
+    def created_by_business(self, created_by_business: BusinessAccessUserSummary):
+        """Sets the created_by_business of this InviteResponse.
+
+        Metadata for the business that created the invite/request.  # noqa: E501
+
+        :param created_by_business: The created_by_business of this InviteResponse.
+        :type created_by_business: BusinessAccessUserSummary
+        """
+
+        self._created_by_business = created_by_business
+
+    @property
+    def created_by_user(self) -> BusinessAccessUserSummary:
+        """Gets the created_by_user of this InviteResponse.
+
+        Metadata for the user that created the invite/request.  # noqa: E501
+
+        :return: The created_by_user of this InviteResponse.
+        :rtype: BusinessAccessUserSummary
+        """
+        return self._created_by_user
+
+    @created_by_user.setter
+    def created_by_user(self, created_by_user: BusinessAccessUserSummary):
+        """Sets the created_by_user of this InviteResponse.
+
+        Metadata for the user that created the invite/request.  # noqa: E501
+
+        :param created_by_user: The created_by_user of this InviteResponse.
+        :type created_by_user: BusinessAccessUserSummary
+        """
+
+        self._created_by_user = created_by_user
+
+    @property
+    def created_time(self) -> int:
+        """Gets the created_time of this InviteResponse.
+
+        The time the invite/request was created. Returned in milliseconds.  # noqa: E501
+
+        :return: The created_time of this InviteResponse.
+        :rtype: int
+        """
+        return self._created_time
+
+    @created_time.setter
+    def created_time(self, created_time: int):
+        """Sets the created_time of this InviteResponse.
+
+        The time the invite/request was created. Returned in milliseconds.  # noqa: E501
+
+        :param created_time: The created_time of this InviteResponse.
+        :type created_time: int
+        """
+
+        self._created_time = created_time
 
     @property
     def id(self) -> str:
@@ -112,22 +225,22 @@ class InviteResponse(Model):
         self._id = id
 
     @property
-    def invite_data(self) -> BaseInviteDataResponseInviteData:
+    def invite_data(self) -> InviteDataResponse:
         """Gets the invite_data of this InviteResponse.
 
 
         :return: The invite_data of this InviteResponse.
-        :rtype: BaseInviteDataResponseInviteData
+        :rtype: InviteDataResponse
         """
         return self._invite_data
 
     @invite_data.setter
-    def invite_data(self, invite_data: BaseInviteDataResponseInviteData):
+    def invite_data(self, invite_data: InviteDataResponse):
         """Sets the invite_data of this InviteResponse.
 
 
         :param invite_data: The invite_data of this InviteResponse.
-        :type invite_data: BaseInviteDataResponseInviteData
+        :type invite_data: InviteDataResponse
         """
 
         self._invite_data = invite_data
@@ -177,116 +290,3 @@ class InviteResponse(Model):
         """
 
         self._user = user
-
-    @property
-    def assets_summary(self) -> InviteAssetsSummary:
-        """Gets the assets_summary of this InviteResponse.
-
-
-        :return: The assets_summary of this InviteResponse.
-        :rtype: InviteAssetsSummary
-        """
-        return self._assets_summary
-
-    @assets_summary.setter
-    def assets_summary(self, assets_summary: InviteAssetsSummary):
-        """Sets the assets_summary of this InviteResponse.
-
-
-        :param assets_summary: The assets_summary of this InviteResponse.
-        :type assets_summary: InviteAssetsSummary
-        """
-
-        self._assets_summary = assets_summary
-
-    @property
-    def business_roles(self) -> List[str]:
-        """Gets the business_roles of this InviteResponse.
-
-        The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.  # noqa: E501
-
-        :return: The business_roles of this InviteResponse.
-        :rtype: List[str]
-        """
-        return self._business_roles
-
-    @business_roles.setter
-    def business_roles(self, business_roles: List[str]):
-        """Sets the business_roles of this InviteResponse.
-
-        The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.  # noqa: E501
-
-        :param business_roles: The business_roles of this InviteResponse.
-        :type business_roles: List[str]
-        """
-
-        self._business_roles = business_roles
-
-    @property
-    def created_by_business(self) -> object:
-        """Gets the created_by_business of this InviteResponse.
-
-        Metadata for the business that created the invite/request.  # noqa: E501
-
-        :return: The created_by_business of this InviteResponse.
-        :rtype: object
-        """
-        return self._created_by_business
-
-    @created_by_business.setter
-    def created_by_business(self, created_by_business: object):
-        """Sets the created_by_business of this InviteResponse.
-
-        Metadata for the business that created the invite/request.  # noqa: E501
-
-        :param created_by_business: The created_by_business of this InviteResponse.
-        :type created_by_business: object
-        """
-
-        self._created_by_business = created_by_business
-
-    @property
-    def created_by_user(self) -> object:
-        """Gets the created_by_user of this InviteResponse.
-
-        Metadata for the user that created the invite/request.  # noqa: E501
-
-        :return: The created_by_user of this InviteResponse.
-        :rtype: object
-        """
-        return self._created_by_user
-
-    @created_by_user.setter
-    def created_by_user(self, created_by_user: object):
-        """Sets the created_by_user of this InviteResponse.
-
-        Metadata for the user that created the invite/request.  # noqa: E501
-
-        :param created_by_user: The created_by_user of this InviteResponse.
-        :type created_by_user: object
-        """
-
-        self._created_by_user = created_by_user
-
-    @property
-    def created_time(self) -> int:
-        """Gets the created_time of this InviteResponse.
-
-        The time the invite/request was created. Returned in milliseconds.  # noqa: E501
-
-        :return: The created_time of this InviteResponse.
-        :rtype: int
-        """
-        return self._created_time
-
-    @created_time.setter
-    def created_time(self, created_time: int):
-        """Sets the created_time of this InviteResponse.
-
-        The time the invite/request was created. Returned in milliseconds.  # noqa: E501
-
-        :param created_time: The created_time of this InviteResponse.
-        :type created_time: int
-        """
-
-        self._created_time = created_time

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -35,6 +43,7 @@ import com.squareup.moshi.JsonClass
  * @param duration Duration (in miliseconds). Field maybe null after creation due to video processing time.
  * @param height Height (in pixels). Field maybe null after creation due to video processing time.
  * @param videoUrl Video url (720p).  **Note:** This field is limited and not available to all apps.
+ * @param videoUrlHls Video url (HLS).  **Note:** This field is limited and not available to all apps.
  * @param width Width (in pixels). Field maybe null after creation due to video processing time.
  * @param items 
  */
@@ -57,6 +66,9 @@ interface PinMedia {
     /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
     @Json(name = "video_url")
     val videoUrl: kotlin.String?
+    /* Video url (HLS).  **Note:** This field is limited and not available to all apps. */
+    @Json(name = "video_url_hls")
+    val videoUrlHls: kotlin.String?
     /* Width (in pixels). Field maybe null after creation due to video processing time. */
     @Json(name = "width")
     val width: kotlin.Int?

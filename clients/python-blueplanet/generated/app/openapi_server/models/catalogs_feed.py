@@ -13,7 +13,6 @@ from app.openapi_server.models.catalogs_format import CatalogsFormat  # noqa: F4
 from app.openapi_server.models.catalogs_hotel_feed import CatalogsHotelFeed  # noqa: F401,E501
 from app.openapi_server.models.catalogs_retail_feed import CatalogsRetailFeed  # noqa: F401,E501
 from app.openapi_server.models.catalogs_status import CatalogsStatus  # noqa: F401,E501
-from app.openapi_server.models.catalogs_type import CatalogsType  # noqa: F401,E501
 from app.openapi_server.models.country import Country  # noqa: F401,E501
 from app.openapi_server.models.nullable_currency import NullableCurrency  # noqa: F401,E501
 from app.openapi_server.models.product_availability_type import ProductAvailabilityType  # noqa: F401,E501
@@ -27,17 +26,13 @@ class CatalogsFeed(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, created_at: datetime=None, id: str=None, updated_at: datetime=None, catalog_type: CatalogsType=None, credentials: CatalogsFeedCredentials=None, default_availability: ProductAvailabilityType=None, default_country: Country=None, default_currency: NullableCurrency=None, default_locale: str=None, format: CatalogsFormat=None, location: str=None, name: str=None, preferred_processing_schedule: CatalogsFeedProcessingSchedule=None, status: CatalogsStatus=None, catalog_id: str=None):  # noqa: E501
+    def __init__(self, catalog_type: str=None, created_at: datetime=None, credentials: CatalogsFeedCredentials=None, default_availability: ProductAvailabilityType=None, default_country: Country=None, default_currency: NullableCurrency=None, default_locale: str=None, format: CatalogsFormat=None, id: str=None, location: str=None, name: str=None, preferred_processing_schedule: CatalogsFeedProcessingSchedule=None, status: CatalogsStatus=None, updated_at: datetime=None, catalog_id: str=None):  # noqa: E501
         """CatalogsFeed - a model defined in Swagger
 
+        :param catalog_type: The catalog_type of this CatalogsFeed.  # noqa: E501
+        :type catalog_type: str
         :param created_at: The created_at of this CatalogsFeed.  # noqa: E501
         :type created_at: datetime
-        :param id: The id of this CatalogsFeed.  # noqa: E501
-        :type id: str
-        :param updated_at: The updated_at of this CatalogsFeed.  # noqa: E501
-        :type updated_at: datetime
-        :param catalog_type: The catalog_type of this CatalogsFeed.  # noqa: E501
-        :type catalog_type: CatalogsType
         :param credentials: The credentials of this CatalogsFeed.  # noqa: E501
         :type credentials: CatalogsFeedCredentials
         :param default_availability: The default_availability of this CatalogsFeed.  # noqa: E501
@@ -50,6 +45,8 @@ class CatalogsFeed(Model):
         :type default_locale: str
         :param format: The format of this CatalogsFeed.  # noqa: E501
         :type format: CatalogsFormat
+        :param id: The id of this CatalogsFeed.  # noqa: E501
+        :type id: str
         :param location: The location of this CatalogsFeed.  # noqa: E501
         :type location: str
         :param name: The name of this CatalogsFeed.  # noqa: E501
@@ -58,59 +55,61 @@ class CatalogsFeed(Model):
         :type preferred_processing_schedule: CatalogsFeedProcessingSchedule
         :param status: The status of this CatalogsFeed.  # noqa: E501
         :type status: CatalogsStatus
+        :param updated_at: The updated_at of this CatalogsFeed.  # noqa: E501
+        :type updated_at: datetime
         :param catalog_id: The catalog_id of this CatalogsFeed.  # noqa: E501
         :type catalog_id: str
         """
         self.swagger_types = {
+            'catalog_type': str,
             'created_at': datetime,
-            'id': str,
-            'updated_at': datetime,
-            'catalog_type': CatalogsType,
             'credentials': CatalogsFeedCredentials,
             'default_availability': ProductAvailabilityType,
             'default_country': Country,
             'default_currency': NullableCurrency,
             'default_locale': str,
             'format': CatalogsFormat,
+            'id': str,
             'location': str,
             'name': str,
             'preferred_processing_schedule': CatalogsFeedProcessingSchedule,
             'status': CatalogsStatus,
+            'updated_at': datetime,
             'catalog_id': str
         }
 
         self.attribute_map = {
-            'created_at': 'created_at',
-            'id': 'id',
-            'updated_at': 'updated_at',
             'catalog_type': 'catalog_type',
+            'created_at': 'created_at',
             'credentials': 'credentials',
             'default_availability': 'default_availability',
             'default_country': 'default_country',
             'default_currency': 'default_currency',
             'default_locale': 'default_locale',
             'format': 'format',
+            'id': 'id',
             'location': 'location',
             'name': 'name',
             'preferred_processing_schedule': 'preferred_processing_schedule',
             'status': 'status',
+            'updated_at': 'updated_at',
             'catalog_id': 'catalog_id'
         }
 
-        self._created_at = created_at
-        self._id = id
-        self._updated_at = updated_at
         self._catalog_type = catalog_type
+        self._created_at = created_at
         self._credentials = credentials
         self._default_availability = default_availability
         self._default_country = default_country
         self._default_currency = default_currency
         self._default_locale = default_locale
         self._format = format
+        self._id = id
         self._location = location
         self._name = name
         self._preferred_processing_schedule = preferred_processing_schedule
         self._status = status
+        self._updated_at = updated_at
         self._catalog_id = catalog_id
 
     @classmethod
@@ -123,6 +122,33 @@ class CatalogsFeed(Model):
         :rtype: CatalogsFeed
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def catalog_type(self) -> str:
+        """Gets the catalog_type of this CatalogsFeed.
+
+
+        :return: The catalog_type of this CatalogsFeed.
+        :rtype: str
+        """
+        return self._catalog_type
+
+    @catalog_type.setter
+    def catalog_type(self, catalog_type: str):
+        """Sets the catalog_type of this CatalogsFeed.
+
+
+        :param catalog_type: The catalog_type of this CatalogsFeed.
+        :type catalog_type: str
+        """
+        allowed_values = ["CREATIVE_ASSETS"]  # noqa: E501
+        if catalog_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `catalog_type` ({0}), must be one of {1}"
+                .format(catalog_type, allowed_values)
+            )
+
+        self._catalog_type = catalog_type
 
     @property
     def created_at(self) -> datetime:
@@ -148,75 +174,6 @@ class CatalogsFeed(Model):
         self._created_at = created_at
 
     @property
-    def id(self) -> str:
-        """Gets the id of this CatalogsFeed.
-
-
-        :return: The id of this CatalogsFeed.
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id: str):
-        """Sets the id of this CatalogsFeed.
-
-
-        :param id: The id of this CatalogsFeed.
-        :type id: str
-        """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
-
-    @property
-    def updated_at(self) -> datetime:
-        """Gets the updated_at of this CatalogsFeed.
-
-
-        :return: The updated_at of this CatalogsFeed.
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at: datetime):
-        """Sets the updated_at of this CatalogsFeed.
-
-
-        :param updated_at: The updated_at of this CatalogsFeed.
-        :type updated_at: datetime
-        """
-        if updated_at is None:
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
-
-        self._updated_at = updated_at
-
-    @property
-    def catalog_type(self) -> CatalogsType:
-        """Gets the catalog_type of this CatalogsFeed.
-
-
-        :return: The catalog_type of this CatalogsFeed.
-        :rtype: CatalogsType
-        """
-        return self._catalog_type
-
-    @catalog_type.setter
-    def catalog_type(self, catalog_type: CatalogsType):
-        """Sets the catalog_type of this CatalogsFeed.
-
-
-        :param catalog_type: The catalog_type of this CatalogsFeed.
-        :type catalog_type: CatalogsType
-        """
-        if catalog_type is None:
-            raise ValueError("Invalid value for `catalog_type`, must not be `None`")  # noqa: E501
-
-        self._catalog_type = catalog_type
-
-    @property
     def credentials(self) -> CatalogsFeedCredentials:
         """Gets the credentials of this CatalogsFeed.
 
@@ -234,8 +191,6 @@ class CatalogsFeed(Model):
         :param credentials: The credentials of this CatalogsFeed.
         :type credentials: CatalogsFeedCredentials
         """
-        if credentials is None:
-            raise ValueError("Invalid value for `credentials`, must not be `None`")  # noqa: E501
 
         self._credentials = credentials
 
@@ -257,8 +212,6 @@ class CatalogsFeed(Model):
         :param default_availability: The default_availability of this CatalogsFeed.
         :type default_availability: ProductAvailabilityType
         """
-        if default_availability is None:
-            raise ValueError("Invalid value for `default_availability`, must not be `None`")  # noqa: E501
 
         self._default_availability = default_availability
 
@@ -303,8 +256,6 @@ class CatalogsFeed(Model):
         :param default_currency: The default_currency of this CatalogsFeed.
         :type default_currency: NullableCurrency
         """
-        if default_currency is None:
-            raise ValueError("Invalid value for `default_currency`, must not be `None`")  # noqa: E501
 
         self._default_currency = default_currency
 
@@ -357,6 +308,33 @@ class CatalogsFeed(Model):
         self._format = format
 
     @property
+    def id(self) -> str:
+        """Gets the id of this CatalogsFeed.
+
+        ID of the feed entity.  # noqa: E501
+
+        :return: The id of this CatalogsFeed.
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id: str):
+        """Sets the id of this CatalogsFeed.
+
+        ID of the feed entity.  # noqa: E501
+
+        :param id: The id of this CatalogsFeed.
+        :type id: str
+        """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
+
+        self._id = id
+
+    @property
     def location(self) -> str:
         """Gets the location of this CatalogsFeed.
 
@@ -378,6 +356,8 @@ class CatalogsFeed(Model):
         """
         if location is None:
             raise ValueError("Invalid value for `location`, must not be `None`")  # noqa: E501
+        if location is not None and not re.search(r'^(http|https|ftp|sftp):\/\/', location):  # noqa: E501
+            raise ValueError("Invalid value for `location`, must be a follow pattern or equal to `/^(http|https|ftp|sftp):\/\//`")  # noqa: E501
 
         self._location = location
 
@@ -424,8 +404,6 @@ class CatalogsFeed(Model):
         :param preferred_processing_schedule: The preferred_processing_schedule of this CatalogsFeed.
         :type preferred_processing_schedule: CatalogsFeedProcessingSchedule
         """
-        if preferred_processing_schedule is None:
-            raise ValueError("Invalid value for `preferred_processing_schedule`, must not be `None`")  # noqa: E501
 
         self._preferred_processing_schedule = preferred_processing_schedule
 
@@ -451,6 +429,29 @@ class CatalogsFeed(Model):
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
         self._status = status
+
+    @property
+    def updated_at(self) -> datetime:
+        """Gets the updated_at of this CatalogsFeed.
+
+
+        :return: The updated_at of this CatalogsFeed.
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at: datetime):
+        """Sets the updated_at of this CatalogsFeed.
+
+
+        :param updated_at: The updated_at of this CatalogsFeed.
+        :type updated_at: datetime
+        """
+        if updated_at is None:
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+
+        self._updated_at = updated_at
 
     @property
     def catalog_id(self) -> str:

@@ -21,7 +21,8 @@ Name | Type | Description | Notes
 **neighborhood** | **array[string]** |  | [optional] [default to null]
 **saleUnderscoreprice** | **string** |  | [optional] [default to null]
 **additionalUnderscoreimageUnderscorelink** | **array[string]** |  | [optional] [default to null]
-**mainUnderscoreimage** | [**CatalogsHotelAttributesAllOfMainImage**](CatalogsHotelAttributesAllOfMainImage.md) |  | [optional] [default to null]
+**aiUnderscoredisclosures** | [**array[CatalogsAiContentDisclosure]**](CatalogsAiContentDisclosure.md) |  | [optional] [default to null]
+**mainUnderscoreimage** | [**CatalogsHotelMainImage**](CatalogsHotelMainImage.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

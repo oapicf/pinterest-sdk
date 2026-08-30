@@ -6,7 +6,7 @@ import javax.validation.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Gets or Sets AudienceAccountType
+ * Account type filter for audience sharing.
  */
 public enum AudienceAccountType {
   

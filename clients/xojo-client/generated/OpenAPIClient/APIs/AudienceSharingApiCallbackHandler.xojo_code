@@ -13,31 +13,31 @@ Protected Interface AudienceSharingApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SharedAudiencesForBusinessListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AudiencesList200Response)
+		Sub SharedAudiencesForBusinessListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SharedAudiencesForBusinessList200Response)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UpdateAdAccountToAdAccountSharedAudienceCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SharedAudienceResponse)
+		Sub UpdateAdAccountToAdAccountSharedAudienceCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdAccountToAdAccountSharedAudience)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UpdateAdAccountToBusinessSharedAudienceCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BusinessSharedAudienceResponse)
+		Sub UpdateAdAccountToBusinessSharedAudienceCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdAccountToBusinessSharedAudience)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UpdateBusinessToAdAccountSharedAudienceCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SharedAudienceResponse)
+		Sub UpdateBusinessToAdAccountSharedAudienceCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BusinessToAdAccountSharedAudience)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UpdateBusinessToBusinessSharedAudienceCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BusinessSharedAudienceResponse)
+		Sub UpdateBusinessToBusinessSharedAudienceCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BusinessToBusinessSharedAudience)
 		  
 		End Sub
 	#tag EndMethod

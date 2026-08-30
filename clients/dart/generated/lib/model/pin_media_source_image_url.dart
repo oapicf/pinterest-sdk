@@ -61,10 +61,10 @@ class PinMediaSourceImageURL {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PinMediaSourceImageURL[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PinMediaSourceImageURL[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'source_type'), 'Required key "PinMediaSourceImageURL[source_type]" is missing from JSON.');
+        assert(json[r'source_type'] != null, 'Required key "PinMediaSourceImageURL[source_type]" has a null value in JSON.');
+        assert(json.containsKey(r'url'), 'Required key "PinMediaSourceImageURL[url]" is missing from JSON.');
+        assert(json[r'url'] != null, 'Required key "PinMediaSourceImageURL[url]" has a null value in JSON.');
         return true;
       }());
 
@@ -125,27 +125,28 @@ class PinMediaSourceImageURL {
 }
 
 /// The source type of the media.
-class PinMediaSourceImageURLSourceTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const PinMediaSourceImageURLSourceTypeEnum._(this.value);
+enum PinMediaSourceImageURLSourceTypeEnum {
+  imageUrl._(r'image_url'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PinMediaSourceImageURLSourceTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const imageUrl = PinMediaSourceImageURLSourceTypeEnum._(r'image_url');
-
-  /// List of all possible values in this [enum][PinMediaSourceImageURLSourceTypeEnum].
-  static const values = <PinMediaSourceImageURLSourceTypeEnum>[
-    imageUrl,
-  ];
-
+  /// Returns the instance of [PinMediaSourceImageURLSourceTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PinMediaSourceImageURLSourceTypeEnum? fromJson(dynamic value) => PinMediaSourceImageURLSourceTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PinMediaSourceImageURLSourceTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PinMediaSourceImageURLSourceTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PinMediaSourceImageURLSourceTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -167,9 +168,10 @@ class PinMediaSourceImageURLSourceTypeEnumTypeTransformer {
 
   const PinMediaSourceImageURLSourceTypeEnumTypeTransformer._();
 
-  String encode(PinMediaSourceImageURLSourceTypeEnum data) => data.value;
+  String encode(PinMediaSourceImageURLSourceTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PinMediaSourceImageURLSourceTypeEnum.
+  /// Returns the instance of [PinMediaSourceImageURLSourceTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -178,6 +180,9 @@ class PinMediaSourceImageURLSourceTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PinMediaSourceImageURLSourceTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PinMediaSourceImageURLSourceTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'image_url': return PinMediaSourceImageURLSourceTypeEnum.imageUrl;
@@ -190,7 +195,7 @@ class PinMediaSourceImageURLSourceTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [PinMediaSourceImageURLSourceTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PinMediaSourceImageURLSourceTypeEnumTypeTransformer? _instance;
 }
 

@@ -1,5 +1,6 @@
 package models
 
+// SsioInsertionOrderStatus - SSIO insertion order status item in a list response.
 type SsioInsertionOrderStatus struct {
 
 	// Salesforce insertion order creation time

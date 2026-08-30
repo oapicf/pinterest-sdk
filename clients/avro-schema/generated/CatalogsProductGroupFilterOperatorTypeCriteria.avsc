@@ -6,22 +6,15 @@
   "fields": [
     {
       "name": "filter_operator_type",
-      "type": [{
-        "type": "enum",
-        "name": "CatalogsProductGroupFilterOperatorTypeCriteria_filterUnderscoreoperatorUnderscoretype",
-        "symbols": [
-          "IS",
-          "CONTAINS"
-        ]
-      }, "null"],
+      "type": ["null", "model.FilterOperatorType"],
       "doc": "",
-      "default": FilterUnderscoreoperatorUnderscoretypeEnum.IS
+      "default": null
     },
     {
       "name": "negated",
-      "type": ["boolean", "null"],
+      "type": ["null", "boolean"],
       "doc": "",
-      "default": false
+      "default": null
     },
     {
       "name": "values",

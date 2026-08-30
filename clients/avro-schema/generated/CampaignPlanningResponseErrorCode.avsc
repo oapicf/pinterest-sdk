@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Error code returned for a campaign planning estimate failure.",
+  "name": "CampaignPlanningResponseErrorCode",
+  "symbols": [
+    "SERVER_ERROR",
+    "AUDIENCE_LIST_MISSING",
+    "INVALID_REQUEST",
+    "PRODUCT_GROUP_MISSING"
+  ]
+}

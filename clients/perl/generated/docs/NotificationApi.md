@@ -31,7 +31,7 @@ my $api_instance = WWW::OpenAPIClient::NotificationApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $notification_post_request = WWW::OpenAPIClient::Object::NotificationPostRequest->new(); # NotificationPostRequest | notification event.
+my $notification_post_request = WWW::OpenAPIClient::Object::NotificationPostRequest->new(); # NotificationPostRequest | 
 
 eval {
     my $result = $api_instance->notification_post(notification_post_request => $notification_post_request);
@@ -46,7 +46,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notification_post_request** | [**NotificationPostRequest**](NotificationPostRequest.md)| notification event. | 
+ **notification_post_request** | [**NotificationPostRequest**](NotificationPostRequest.md)|  | 
 
 ### Return type
 

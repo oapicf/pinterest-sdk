@@ -76,7 +76,7 @@ Get information about an existing conversion tag.
 
 ConversionTagsApi apiInstance = new ConversionTagsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-String conversionTagId = 2617998078212; // String | Id of the conversion tag.
+String conversionTagId = null; // String | Id of the conversion tag.
 try {
     ConversionTag result = apiInstance.conversionTagsGet(adAccountId, conversionTagId);
     System.out.println(result);
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ## pageVisitConversionTagsGet
 
-> PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark)
+> PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order)
 
 Get page visit conversion tags
 
@@ -218,11 +218,11 @@ Get all page visit conversion tag events for an ad account.
 
 ConversionTagsApi apiInstance = new ConversionTagsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-String order = ASCENDING; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 String bookmark = null; // String | Cursor used to fetch the next page of items
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+PinterestLibPaginationOrder order = null; // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 try {
-    PageVisitConversionTagsGet200Response result = apiInstance.pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark);
+    PageVisitConversionTagsGet200Response result = apiInstance.pageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversionTagsApi#pageVisitConversionTagsGet");
@@ -236,9 +236,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING]
 
 ### Return type
 

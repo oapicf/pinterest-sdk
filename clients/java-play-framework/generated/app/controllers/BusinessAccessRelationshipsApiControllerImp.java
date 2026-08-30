@@ -1,21 +1,19 @@
 package controllers;
 
-import apimodels.BrandAccountsCreate200Response;
-import apimodels.BrandAccountsCreateRequest;
-import apimodels.BrandAccountsUpdateRequest;
-import apimodels.DeletePartnersRequest;
-import apimodels.DeletePartnersResponse;
-import apimodels.DeletedMembersResponse;
-import apimodels.Error;
+import apimodels.BrandAccount;
+import apimodels.BrandAccountCreate;
+import apimodels.BrandAccountUpdate;
+import apimodels.BusinessMembershipMember;
+import apimodels.DeleteBusinessMembership200Response;
+import apimodels.DeleteBusinessMembershipBody;
+import apimodels.DeleteBusinessPartners;
+import apimodels.DeleteBusinessPartnersDelete;
 import apimodels.GetBusinessEmployers200Response;
-import apimodels.GetBusinessMembers200Response;
-import apimodels.GetBusinessPartners200Response;
 import apimodels.MemberBusinessRole;
-import apimodels.MembersToDeleteBody;
 import apimodels.PartnerType;
-import apimodels.SystemUserUpdateRequest;
-import apimodels.UpdateMemberBusinessRoleBody;
-import apimodels.UpdateMemberResultsResponseArray;
+import apimodels.PinterestLibError;
+import apimodels.SystemUserUpdateWithRequiredBody;
+import apimodels.UpdateBusinessMembershipsResponse;
 
 import play.mvc.Http;
 import java.util.List;
@@ -26,59 +24,59 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAccessRelationshipsApiControllerImp extends BusinessAccessRelationshipsApiControllerImpInterface {
     @Override
-    public BrandAccountsCreate200Response brandAccountsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest) throws Exception {
+    public BrandAccount brandAccountsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountCreate brandAccountCreate) throws Exception {
         //Do your magic!!!
-        return new BrandAccountsCreate200Response();
+        return new BrandAccount();
     }
 
     @Override
-    public BrandAccountsCreate200Response brandAccountsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest) throws Exception {
+    public BrandAccount brandAccountsUpdate(Http.Request request, String brandAccountId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountUpdate brandAccountUpdate) throws Exception {
         //Do your magic!!!
-        return new BrandAccountsCreate200Response();
+        return new BrandAccount();
     }
 
     @Override
-    public DeletedMembersResponse deleteBusinessMembership(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, MembersToDeleteBody membersToDeleteBody) throws Exception {
+    public DeleteBusinessMembership200Response deleteBusinessMembership(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody) throws Exception {
         //Do your magic!!!
-        return new DeletedMembersResponse();
+        return new DeleteBusinessMembership200Response();
     }
 
     @Override
-    public DeletePartnersResponse deleteBusinessPartners(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeletePartnersRequest deletePartnersRequest) throws Exception {
+    public DeleteBusinessPartners deleteBusinessPartners(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete) throws Exception {
         //Do your magic!!!
-        return new DeletePartnersResponse();
+        return new DeleteBusinessPartners();
     }
 
     @Override
-    public GetBusinessEmployers200Response getBusinessEmployers(Http.Request request,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public GetBusinessEmployers200Response getBusinessEmployers(Http.Request request, Boolean assetsSummary, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new GetBusinessEmployers200Response();
     }
 
     @Override
-    public GetBusinessMembers200Response getBusinessMembers(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles,  @Size(max=500)String memberIds,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public GetBusinessEmployers200Response getBusinessMembers(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles,  @Size(max=500)String memberIds,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
-        return new GetBusinessMembers200Response();
+        return new GetBusinessEmployers200Response();
     }
 
     @Override
-    public GetBusinessPartners200Response getBusinessPartners(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean assetsSummary, PartnerType partnerType,  @Size(max=500)String partnerIds,  @Min(0)Integer startIndex,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public GetBusinessEmployers200Response getBusinessPartners(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean assetsSummary, PartnerType partnerType,  @Size(max=500)String partnerIds,  @Min(0)Integer startIndex, Boolean sortAscending, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
-        return new GetBusinessPartners200Response();
+        return new GetBusinessEmployers200Response();
     }
 
     @Override
-    public void systemUserUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest) throws Exception {
+    public void systemUserUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody) throws Exception {
         //Do your magic!!!
     }
 
     @Override
-    public UpdateMemberResultsResponseArray updateBusinessMemberships(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, List<@Valid UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) throws Exception {
+    public UpdateBusinessMembershipsResponse updateBusinessMemberships(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, List<@Valid BusinessMembershipMember> businessMembershipMember) throws Exception {
         //Do your magic!!!
-        return new UpdateMemberResultsResponseArray();
+        return new UpdateBusinessMembershipsResponse();
     }
 
 }

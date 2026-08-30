@@ -19,11 +19,11 @@ Method | HTTP request | Description
 
 ## leadFormGet
 
-> leadFormGet(leadFormGetRequest): ApiRequest[LeadFormResponse]
+> leadFormGet(leadFormGetRequest): ApiRequest[LeadForm]
 
 Get lead form by id
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -46,11 +46,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = LeadFormsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val leadFormId: String = leadFormId_example // String | The ID of this lead form
 
-    val leadFormId: String = 1234567890123 // String | Unique identifier of a lead form.
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.leadFormGet(adAccountId, leadFormId)
+    val request = apiInstance.leadFormGet(leadFormId, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -78,12 +78,12 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **leadFormId** | **String**| The ID of this lead form |
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **leadFormId** | **String**| Unique identifier of a lead form. |
 
 ### Return type
 
-ApiRequest[[**LeadFormResponse**](LeadFormResponse.md)]
+ApiRequest[[**LeadForm**](LeadForm.md)]
 
 
 ### Authorization
@@ -98,15 +98,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **404** | The lead form ID for the given ad account ID does not exist. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## leadFormTestCreate
 
-> leadFormTestCreate(leadFormTestCreateRequest): ApiRequest[LeadFormTestResponse]
+> leadFormTestCreate(leadFormTestCreateRequest): ApiRequest[LeadFormTest]
 
 Create lead form test data
 
@@ -134,13 +137,13 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = LeadFormsApi("https://api.pinterest.com/v5")
-    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    val adAccountId: String = adAccountId_example // String | 
 
-    val leadFormId: String = 1234567890123 // String | Unique identifier of a lead form.
+    val leadFormId: String = leadFormId_example // String | Unique identifier of a lead form.
 
-    val leadFormTestRequest: LeadFormTestRequest =  // LeadFormTestRequest | Subscription to create.
+    val leadFormTestCreate: LeadFormTestCreate =  // LeadFormTestCreate | 
     
-    val request = apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest)
+    val request = apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -168,13 +171,13 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. |
+ **adAccountId** | **String**|  |
  **leadFormId** | **String**| Unique identifier of a lead form. |
- **leadFormTestRequest** | [**LeadFormTestRequest**](LeadFormTestRequest.md)| Subscription to create. |
+ **leadFormTestCreate** | [**LeadFormTestCreate**](LeadFormTestCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**LeadFormTestResponse**](LeadFormTestResponse.md)]
+ApiRequest[[**LeadFormTest**](LeadFormTest.md)]
 
 
 ### Authorization
@@ -189,19 +192,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **404** | Lead not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## leadFormsCreate
 
-> leadFormsCreate(leadFormsCreateRequest): ApiRequest[LeadFormArrayResponse]
+> leadFormsCreate(leadFormsCreateRequest): ApiRequest[LeadFormsCreate200Response]
 
 Create lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -227,9 +230,9 @@ object Example extends App {
     val apiInstance = LeadFormsApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val leadFormCreateRequest: Seq[LeadFormCreateRequest] =  // Seq[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
+    val leadFormCreate: Seq[LeadFormCreate] =  // Seq[LeadFormCreate] | 
     
-    val request = apiInstance.leadFormsCreate(adAccountId, leadFormCreateRequest)
+    val request = apiInstance.leadFormsCreate(adAccountId, leadFormCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -258,11 +261,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **leadFormCreateRequest** | [**Seq[LeadFormCreateRequest]**](LeadFormCreateRequest.md)| List of lead forms to create, size limit [1, 30]. |
+ **leadFormCreate** | [**Seq[LeadFormCreate]**](LeadFormCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**LeadFormArrayResponse**](LeadFormArrayResponse.md)]
+ApiRequest[[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)]
 
 
 ### Authorization
@@ -277,9 +280,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## leadFormsList
@@ -288,12 +295,13 @@ No authorization required
 
 List lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -313,13 +321,13 @@ object Example extends App {
     val apiInstance = LeadFormsApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-
-    val order: String = ASCENDING // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+
+    val order: PaginationOrder =  // PaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
     
-    val request = apiInstance.leadFormsList(adAccountId, pageSize, order, bookmark)
+    val request = apiInstance.leadFormsList(adAccountId, bookmark, pageSize, order)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -348,9 +356,9 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
+ **order** | [**PaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
 
 ### Return type
 
@@ -369,18 +377,22 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## leadFormsUpdate
 
-> leadFormsUpdate(leadFormsUpdateRequest): ApiRequest[LeadFormArrayResponse]
+> leadFormsUpdate(leadFormsUpdateRequest): ApiRequest[LeadFormsCreate200Response]
 
 Update lead forms
 
-&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+**This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -406,9 +418,9 @@ object Example extends App {
     val apiInstance = LeadFormsApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val leadFormUpdateRequest: Seq[LeadFormUpdateRequest] =  // Seq[LeadFormUpdateRequest] | List of lead forms to update, size limit [1, 30].
+    val leadFormBatchUpdate: Seq[LeadFormBatchUpdate] =  // Seq[LeadFormBatchUpdate] | 
     
-    val request = apiInstance.leadFormsUpdate(adAccountId, leadFormUpdateRequest)
+    val request = apiInstance.leadFormsUpdate(adAccountId, leadFormBatchUpdate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -437,11 +449,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **leadFormUpdateRequest** | [**Seq[LeadFormUpdateRequest]**](LeadFormUpdateRequest.md)| List of lead forms to update, size limit [1, 30]. |
+ **leadFormBatchUpdate** | [**Seq[LeadFormBatchUpdate]**](LeadFormBatchUpdate.md)|  |
 
 ### Return type
 
-ApiRequest[[**LeadFormArrayResponse**](LeadFormArrayResponse.md)]
+ApiRequest[[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)]
 
 
 ### Authorization
@@ -456,7 +468,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account lead forms parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

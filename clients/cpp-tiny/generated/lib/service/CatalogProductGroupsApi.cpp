@@ -13,16 +13,16 @@ using namespace Tiny;
             std::string productGroupId
             , 
             
-            std::string bookmark
-            , 
-            
-            int pageSize
-            , 
-            
             std::string adAccountId
             , 
             
             bool pinMetrics
+            , 
+            
+            std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -31,11 +31,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize adAccountId pinMetrics 
-            addQueryParam("bookmark",bookmark);
-            addQueryParam("page_size",pageSize);
+            // Query    | adAccountId pinMetrics bookmark pageSize 
             addQueryParam("ad_account_id",adAccountId);
             addQueryParam("pin_metrics",pinMetrics);
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 
@@ -77,7 +77,7 @@ using namespace Tiny;
         CatalogProductGroupsApi::
         catalogsProductGroups_create(
             
-            Multiple_product_groups_inner multipleProductGroupsInner
+            CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema
             , 
             
             std::string adAccountId
@@ -102,11 +102,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | multipleProductGroupsInner
+            // Body     | catalogsProductGroupsCreateRequestSchema
 
 
 
-            payload = multipleProductGroupsInner.toJson().dump();
+            payload = catalogsProductGroupsCreateRequestSchema.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -129,7 +129,7 @@ using namespace Tiny;
         >
         CatalogProductGroupsApi::
         catalogsProductGroups_createMany(
-            std::list<Multiple_product_groups_inner> multipleProductGroupsInner
+            std::list<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems
             
             , 
             
@@ -155,11 +155,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | multipleProductGroupsInner
+            // Body     | catalogsProductGroupsCreateManyRequestItems
 
 
             bourne::json tmp_arr = bourne::json::array();
-            for(auto& var : multipleProductGroupsInner)
+            for(auto& var : catalogsProductGroupsCreateManyRequestItems)
             {
                 auto tmp = var.toJson();
                 tmp_arr.append(tmp);
@@ -205,7 +205,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            CatalogsVerticalProductGroup
         >
         CatalogProductGroupsApi::
         catalogsProductGroups_delete(
@@ -250,7 +250,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            CatalogsVerticalProductGroup obj(output_string);
+
+
+            Response<CatalogsVerticalProductGroup> response(obj, httpCode);
             return response;
         }
 
@@ -369,13 +374,13 @@ using namespace Tiny;
             std::string catalogId
             , 
             
+            std::string adAccountId
+            , 
+            
             std::string bookmark
             , 
             
             int pageSize
-            , 
-            
-            std::string adAccountId
             
         )
         {
@@ -384,15 +389,15 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | id feedId catalogId bookmark pageSize adAccountId 
+            // Query    | id feedId catalogId adAccountId bookmark pageSize 
             for (auto &x : id){
                 addQueryParam("id", std::string(x));
             }
             addQueryParam("feed_id",feedId);
             addQueryParam("catalog_id",catalogId);
+            addQueryParam("ad_account_id",adAccountId);
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
-            addQueryParam("ad_account_id",adAccountId);
 
             // Form     | 
 
@@ -484,7 +489,7 @@ using namespace Tiny;
             std::string productGroupId
             , 
             
-            Catalogs_product_groups_update_request catalogsProductGroupsUpdateRequest
+            CatalogsProductGroupsUpdateRequestSchema catalogsProductGroupsUpdateRequestSchema
             , 
             
             std::string adAccountId
@@ -517,11 +522,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | catalogsProductGroupsUpdateRequest
+            // Body     | catalogsProductGroupsUpdateRequestSchema
 
 
 
-            payload = catalogsProductGroupsUpdateRequest.toJson().dump();
+            payload = catalogsProductGroupsUpdateRequestSchema.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 

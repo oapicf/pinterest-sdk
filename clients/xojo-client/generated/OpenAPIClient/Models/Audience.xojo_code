@@ -11,7 +11,7 @@ Protected Class Audience
 
 	#tag Property, Flags = &h0
 		#tag Note
-			<a href="/docs/reference/glossary/#Audience Types">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+			[Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
 		#tag EndNote
 		audience_type As Xoson.O.OptionalString
 	#tag EndProperty
@@ -46,6 +46,14 @@ Protected Class Audience
 			Audience ID.
 		#tag EndNote
 		id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+		#tag EndNote
+		is_nca As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -143,7 +151,7 @@ Protected Class Audience
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="PinnerListType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -179,6 +187,14 @@ Protected Class Audience
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="is_nca"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="name"
 			Visible=false
 			Group="Behavior"
@@ -207,7 +223,7 @@ Protected Class Audience
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="AudienceStatus"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

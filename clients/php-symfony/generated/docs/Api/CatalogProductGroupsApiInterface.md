@@ -28,11 +28,11 @@ services:
 ```
 
 ## **catalogsProductGroupPinsList**
-> OpenAPI\Server\Model\CatalogsProductGroupPinsList200Response catalogsProductGroupPinsList($productGroupId, $bookmark, $pageSize, $adAccountId, $pinMetrics)
+> OpenAPI\Server\Model\CatalogsProductGroupPinsList200Response catalogsProductGroupPinsList($productGroupId, $adAccountId, $pinMetrics, $bookmark, $pageSize)
 
 List products by product group
 
-Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example Implementation
 ```php
@@ -54,12 +54,20 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
      * Implementation of CatalogProductGroupsApiInterface#catalogsProductGroupPinsList
      */
-    public function catalogsProductGroupPinsList(string $productGroupId, ?string $bookmark, int $pageSize, ?string $adAccountId, bool $pinMetrics, int &$responseCode, array &$responseHeaders): array|object|null
+    public function catalogsProductGroupPinsList(string $productGroupId, ?string $adAccountId, bool $pinMetrics, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -73,10 +81,10 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productGroupId** | **string**| Unique identifier of a product group |
- **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **pinMetrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -84,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -94,11 +102,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **catalogsProductGroupsCreate**
-> OpenAPI\Server\Model\CatalogsVerticalProductGroup catalogsProductGroupsCreate($multipleProductGroupsInner, $adAccountId)
+> OpenAPI\Server\Model\CatalogsVerticalProductGroup catalogsProductGroupsCreate($catalogsProductGroupsCreateRequestSchema, $adAccountId)
 
 Create product group
 
-Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example Implementation
 ```php
@@ -125,7 +133,7 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
     /**
      * Implementation of CatalogProductGroupsApiInterface#catalogsProductGroupsCreate
      */
-    public function catalogsProductGroupsCreate(MultipleProductGroupsInner $multipleProductGroupsInner, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function catalogsProductGroupsCreate(CatalogsProductGroupsCreateRequestSchema $catalogsProductGroupsCreateRequestSchema, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -138,7 +146,7 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **multipleProductGroupsInner** | [**OpenAPI\Server\Model\MultipleProductGroupsInner**](../Model/MultipleProductGroupsInner.md)| Request object used to create a single catalogs product groups. |
+ **catalogsProductGroupsCreateRequestSchema** | [**OpenAPI\Server\Model\CatalogsProductGroupsCreateRequestSchema**](../Model/CatalogsProductGroupsCreateRequestSchema.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -157,11 +165,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **catalogsProductGroupsCreateMany**
-> string catalogsProductGroupsCreateMany($multipleProductGroupsInner, $adAccountId)
+> string catalogsProductGroupsCreateMany($catalogsProductGroupsCreateManyRequestItems, $adAccountId)
 
 Create product groups
 
-Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example Implementation
 ```php
@@ -188,7 +196,7 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
     /**
      * Implementation of CatalogProductGroupsApiInterface#catalogsProductGroupsCreateMany
      */
-    public function catalogsProductGroupsCreateMany(array $multipleProductGroupsInner, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function catalogsProductGroupsCreateMany(array $catalogsProductGroupsCreateManyRequestItems, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -201,7 +209,7 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **multipleProductGroupsInner** | [**OpenAPI\Server\Model\MultipleProductGroupsInner**](../Model/MultipleProductGroupsInner.md)| Request object used to create one or more catalogs product groups. |
+ **catalogsProductGroupsCreateManyRequestItems** | [**OpenAPI\Server\Model\CatalogsProductGroupsCreateManyRequestItems**](../Model/CatalogsProductGroupsCreateManyRequestItems.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -220,11 +228,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **catalogsProductGroupsDelete**
-> catalogsProductGroupsDelete($productGroupId, $adAccountId)
+> OpenAPI\Server\Model\CatalogsVerticalProductGroup catalogsProductGroupsDelete($productGroupId, $adAccountId)
 
 Delete product group
 
-Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example Implementation
 ```php
@@ -251,7 +259,7 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
     /**
      * Implementation of CatalogProductGroupsApiInterface#catalogsProductGroupsDelete
      */
-    public function catalogsProductGroupsDelete(string $productGroupId, ?string $adAccountId, int &$responseCode, array &$responseHeaders): void
+    public function catalogsProductGroupsDelete(string $productGroupId, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -269,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OpenAPI\Server\Model\CatalogsVerticalProductGroup**](../Model/CatalogsVerticalProductGroup.md)
 
 ### Authorization
 
@@ -287,7 +295,7 @@ void (empty response body)
 
 Delete product groups
 
-Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example Implementation
 ```php
@@ -350,7 +358,7 @@ void (empty response body)
 
 Get product group
 
-Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Get a single product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example Implementation
 ```php
@@ -409,11 +417,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **catalogsProductGroupsList**
-> OpenAPI\Server\Model\CatalogsProductGroupsList200Response catalogsProductGroupsList($id, $feedId, $catalogId, $bookmark, $pageSize, $adAccountId)
+> OpenAPI\Server\Model\CatalogsProductGroupsList200Response catalogsProductGroupsList($id, $feedId, $catalogId, $adAccountId, $bookmark, $pageSize)
 
 List product groups
 
-Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example Implementation
 ```php
@@ -440,7 +448,7 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
     /**
      * Implementation of CatalogProductGroupsApiInterface#catalogsProductGroupsList
      */
-    public function catalogsProductGroupsList(?array $id, ?string $feedId, ?string $catalogId, ?string $bookmark, int $pageSize, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function catalogsProductGroupsList(?array $id, ?string $feedId, ?string $catalogId, ?string $adAccountId, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -456,9 +464,9 @@ Name | Type | Description  | Notes
  **id** | [**int**](../Model/int.md)| Comma-separated list of product group ids | [optional]
  **feedId** | **string**| Filter entities for a given feed_id. If not given, all feeds are considered. | [optional]
  **catalogId** | **string**| Filter entities for a given catalog_id. If not given, all catalogs are considered. | [optional]
- **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
+ **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -480,7 +488,7 @@ Name | Type | Description  | Notes
 
 Get product counts
 
-Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example Implementation
 ```php
@@ -539,11 +547,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **catalogsProductGroupsUpdate**
-> OpenAPI\Server\Model\CatalogsVerticalProductGroup catalogsProductGroupsUpdate($productGroupId, $catalogsProductGroupsUpdateRequest, $adAccountId)
+> OpenAPI\Server\Model\CatalogsVerticalProductGroup catalogsProductGroupsUpdate($productGroupId, $catalogsProductGroupsUpdateRequestSchema, $adAccountId)
 
 Update single product group
 
-Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \"Catalog-based product groups\" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \"retail feed-based\" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 
 ### Example Implementation
 ```php
@@ -570,7 +578,7 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
     /**
      * Implementation of CatalogProductGroupsApiInterface#catalogsProductGroupsUpdate
      */
-    public function catalogsProductGroupsUpdate(string $productGroupId, CatalogsProductGroupsUpdateRequest $catalogsProductGroupsUpdateRequest, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function catalogsProductGroupsUpdate(string $productGroupId, CatalogsProductGroupsUpdateRequestSchema $catalogsProductGroupsUpdateRequestSchema, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -584,7 +592,7 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productGroupId** | **string**| Unique identifier of a product group |
- **catalogsProductGroupsUpdateRequest** | [**OpenAPI\Server\Model\CatalogsProductGroupsUpdateRequest**](../Model/CatalogsProductGroupsUpdateRequest.md)| Request object used to Update a catalogs product group. |
+ **catalogsProductGroupsUpdateRequestSchema** | [**OpenAPI\Server\Model\CatalogsProductGroupsUpdateRequestSchema**](../Model/CatalogsProductGroupsUpdateRequestSchema.md)|  |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
@@ -607,7 +615,7 @@ Name | Type | Description  | Notes
 
 List products by filter
 
-List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  [Learn more](/docs/api-features/shopping-overview/)
 
 ### Example Implementation
 ```php
@@ -647,9 +655,9 @@ class CatalogProductGroupsApi implements CatalogProductGroupsApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogsListProductsByFilterRequest** | [**OpenAPI\Server\Model\CatalogsListProductsByFilterRequest**](../Model/CatalogsListProductsByFilterRequest.md)| Object holding a group of filters for a catalog product group |
+ **catalogsListProductsByFilterRequest** | [**OpenAPI\Server\Model\CatalogsListProductsByFilterRequest**](../Model/CatalogsListProductsByFilterRequest.md)|  |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **pinMetrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
 

@@ -6,7 +6,7 @@ Request object to list products for a given retail catalog_id and product group 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the retail product group. | [default to undefined]
+**catalog_id** | **string** | Catalog ID pertaining to the product group. | [default to undefined]
 **catalog_type** | **string** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | [default to undefined]
 **country** | [**Country**](Country.md) |  | [default to undefined]
 **filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | [default to undefined]

@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "The ID of the ad account.",
   "name": "TermsOfService",
   "fields": [
     {

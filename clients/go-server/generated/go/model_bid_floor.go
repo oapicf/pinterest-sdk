@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,16 +14,18 @@ package openapi
 
 
 
+// BidFloor - Bid floor request and response model.
 type BidFloor struct {
 
 	// A list of bid floors in micro currency. For example, [100000, 200000]
 	BidFloors []int32 `json:"bid_floors,omitempty"`
 
-	// Always the string 'bidfloor'
+	// Always the string 'bidfloor'.
 	Type string `json:"type,omitempty"`
 }
 
-// AssertBidFloorRequired checks if the required fields are not zero-ed
+// AssertBidFloorRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertBidFloorRequired(obj BidFloor) error {
 	return nil
 }

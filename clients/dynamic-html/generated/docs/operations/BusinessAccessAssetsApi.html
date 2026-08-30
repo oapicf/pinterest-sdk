@@ -5,13 +5,13 @@
   <h2><a name="assetGroup/create"></a>assetGroup/create</h2>
   <hr>
   <p></p>
-  <p>Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.</p>
+  <p>Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/businesses/{business_id}/asset_groups</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="CreateAssetGroupResponse"><a href="">CreateAssetGroupResponse</a></div>
+  <div class="model" data-model="AssetGroupInput"><a href="">AssetGroupInput</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -31,8 +31,8 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">CreateAssetGroupBody</span>
-      <span class="param-type">CreateAssetGroupBody(CreateAssetGroupBody)</span>
+      <span class="param-name">AssetGroupInputCreate</span>
+      <span class="param-type">AssetGroupInputCreate(AssetGroupInputCreate)</span>
       
       <p class="param-description"></p>
       </li>
@@ -46,7 +46,7 @@
   <h3 class="section">HTTP Method</h3>
   <code>DELETE</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="DeleteAssetGroupResponse"><a href="">DeleteAssetGroupResponse</a></div>
+  <div class="model" data-model="AssetGroupDeletion"><a href="">AssetGroupDeletion</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -66,8 +66,8 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">DeleteAssetGroupBody</span>
-      <span class="param-type">DeleteAssetGroupBody(DeleteAssetGroupBody)</span>
+      <span class="param-name">AssetGroupDeletionDelete</span>
+      <span class="param-type">AssetGroupDeletionDelete(AssetGroupDeletionDelete)</span>
       
       <p class="param-description"></p>
       </li>
@@ -81,7 +81,7 @@
   <h3 class="section">HTTP Method</h3>
   <code>PATCH</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="UpdateAssetGroupResponse"><a href="">UpdateAssetGroupResponse</a></div>
+  <div class="model" data-model="AssetGroupModification"><a href="">AssetGroupModification</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -101,8 +101,8 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">UpdateAssetGroupBody</span>
-      <span class="param-type">UpdateAssetGroupBody(UpdateAssetGroupBody)</span>
+      <span class="param-name">AssetGroupModificationReadOrUpdate</span>
+      <span class="param-type">AssetGroupModificationReadOrUpdate(AssetGroupModificationReadOrUpdate)</span>
       
       <p class="param-description"></p>
       </li>
@@ -147,6 +147,17 @@
       
       
       
+      <span class="param-name">start_index</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
       <span class="param-name">fetch_system_users</span>
       <span class="param-type">Boolean</span>
       
@@ -172,18 +183,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
-      <span class="param-name">start_index</span>
-      <span class="param-type">Integer</span>
-      
-      <p class="param-description">An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
   <h2><a name="businessAssetPartners/get"></a>businessAssetPartners/get</h2>
@@ -195,7 +195,7 @@
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="business_asset_partners_get_200_response"><a href="">business_asset_partners_get_200_response</a></div>
+  <div class="model" data-model="business_asset_members_get_200_response"><a href="">business_asset_members_get_200_response</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -251,7 +251,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
   <h2><a name="businessAssets/get"></a>businessAssets/get</h2>
@@ -352,7 +352,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
   <h2><a name="businessMemberAssets/get"></a>businessMemberAssets/get</h2>
@@ -364,7 +364,7 @@
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="business_member_assets_get_200_response"><a href="">business_member_assets_get_200_response</a></div>
+  <div class="model" data-model="BusinessMemberAssetsGetResponse"><a href="">BusinessMemberAssetsGetResponse</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -417,6 +417,72 @@
       
       
       
+      <span class="param-name">sort_by</span>
+      <span class="param-type">AssetSortBy</span>
+      
+      <p class="param-description">The field to sort member assets by</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">sort_ascending</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description">Sort assets in ascending order</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">search_by</span>
+      <span class="param-type">AssetSearchBy</span>
+      
+      <p class="param-description">The field to search member assets by</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">search_value</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The value to search for</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">asset_permission_type</span>
+      <span class="param-type">AssetPermissionType</span>
+      
+      <p class="param-description">The type of asset permission to filter by</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_statuses</span>
+      <span class="param-type">List(NonDraftEntityStatus)</span>
+      
+      <p class="param-description">A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
       <span class="param-name">bookmark</span>
       <span class="param-type">String</span>
       
@@ -431,7 +497,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
       </li>
   </ul>
   <h2><a name="businessMembersAssetAccess/delete"></a>businessMembersAssetAccess/delete</h2>
@@ -463,16 +529,16 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">BusinessMembersAssetAccessDeleteRequest</span>
-      <span class="param-type">BusinessMembersAssetAccessDeleteRequest(BusinessMembersAssetAccessDeleteRequest)</span>
+      <span class="param-name">BusinessMembersAssetAccessDeleteBody</span>
+      <span class="param-type">BusinessMembersAssetAccessDeleteBody(BusinessMembersAssetAccessDeleteBody)</span>
       
-      <p class="param-description">List member assset permissions to delete.</p>
+      <p class="param-description"></p>
       </li>
   </ul>
   <h2><a name="businessMembersAssetAccess/update"></a>businessMembersAssetAccess/update</h2>
   <hr>
   <p></p>
-  <p>Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. </p>
+  <p>Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/businesses/{business_id}/members/assets/access</code>
   <h3 class="section">HTTP Method</h3>
@@ -501,7 +567,7 @@
       <span class="param-name">UpdateMemberAssetAccessBody</span>
       <span class="param-type">UpdateMemberAssetAccessBody(UpdateMemberAssetAccessBody)</span>
       
-      <p class="param-description">List of member asset permissions to create or update.</p>
+      <p class="param-description"></p>
       </li>
   </ul>
   <h2><a name="businessPartnerAssetAccess/get"></a>businessPartnerAssetAccess/get</h2>
@@ -545,9 +611,9 @@
       
       
       <span class="param-name">partner_type</span>
-      <span class="param-type">PartnerType</span>
+      <span class="param-type">String</span>
       
-      <p class="param-description">Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.</p>
+      <p class="param-description">Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.</p>
       </li>
       <li class="parameter">
       
@@ -577,10 +643,43 @@
       
       
       
-      <span class="param-name">page_size</span>
-      <span class="param-type">Integer</span>
+      <span class="param-name">sort_by</span>
+      <span class="param-type">AssetSortBy</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">The field to sort member assets by</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">sort_ascending</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description">Sort assets in ascending order</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">search_by</span>
+      <span class="param-type">AssetSearchBy</span>
+      
+      <p class="param-description">The field to search member assets by</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">search_value</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The value to search for</p>
       </li>
       <li class="parameter">
       
@@ -593,6 +692,17 @@
       
       <p class="param-description">Cursor used to fetch the next page of items</p>
       </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.</p>
+      </li>
   </ul>
   <h2><a name="deletePartnerAssetAccessHandlerImpl"></a>deletePartnerAssetAccessHandlerImpl</h2>
   <hr>
@@ -603,7 +713,7 @@
   <h3 class="section">HTTP Method</h3>
   <code>DELETE</code>
   <h3 class="section">Response Type</h3>
-  <div class="model" data-model="DeletePartnerAssetsResultsResponseArray"><a href="">DeletePartnerAssetsResultsResponseArray</a></div>
+  <div class="model" data-model="DeletePartnerAssetAccessResultsResponseArray"><a href="">DeletePartnerAssetAccessResultsResponseArray</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
       <li class="parameter">
@@ -661,7 +771,7 @@
       <span class="param-name">UpdatePartnerAssetAccessBody</span>
       <span class="param-type">UpdatePartnerAssetAccessBody(UpdatePartnerAssetAccessBody)</span>
       
-      <p class="param-description">A list of assets and permissions to assign to your partners.</p>
+      <p class="param-description"></p>
       </li>
   </ul>
 </div>

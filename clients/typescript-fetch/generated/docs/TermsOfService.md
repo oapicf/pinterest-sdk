@@ -1,6 +1,7 @@
 
 # TermsOfService
 
+The ID of the ad account.
 
 ## Properties
 

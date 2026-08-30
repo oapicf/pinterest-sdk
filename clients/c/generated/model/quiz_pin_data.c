@@ -4,40 +4,23 @@
 #include "quiz_pin_data.h"
 
 
-char* quiz_pin_data_tie_breaker_type_ToString(pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type) {
-    char* tie_breaker_typeArray[] =  { "NULL", "RANDOM", "CUSTOM" };
-    return tie_breaker_typeArray[tie_breaker_type];
-}
-
-pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e quiz_pin_data_tie_breaker_type_FromString(char* tie_breaker_type){
-    int stringToReturn = 0;
-    char *tie_breaker_typeArray[] =  { "NULL", "RANDOM", "CUSTOM" };
-    size_t sizeofArray = sizeof(tie_breaker_typeArray) / sizeof(tie_breaker_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(tie_breaker_type, tie_breaker_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static quiz_pin_data_t *quiz_pin_data_create_internal(
     list_t *questions,
     list_t *results,
     quiz_pin_result_t *tie_breaker_custom_result,
-    pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type
+    pinterest_rest_api_tie_breaker_type__e tie_breaker_type
     ) {
     quiz_pin_data_t *quiz_pin_data_local_var = malloc(sizeof(quiz_pin_data_t));
     if (!quiz_pin_data_local_var) {
         return NULL;
     }
+    memset(quiz_pin_data_local_var, 0, sizeof(quiz_pin_data_t));
+    quiz_pin_data_local_var->_library_owned = 1;
     quiz_pin_data_local_var->questions = questions;
     quiz_pin_data_local_var->results = results;
     quiz_pin_data_local_var->tie_breaker_custom_result = tie_breaker_custom_result;
     quiz_pin_data_local_var->tie_breaker_type = tie_breaker_type;
-
-    quiz_pin_data_local_var->_library_owned = 1;
     return quiz_pin_data_local_var;
 }
 
@@ -45,14 +28,17 @@ __attribute__((deprecated)) quiz_pin_data_t *quiz_pin_data_create(
     list_t *questions,
     list_t *results,
     quiz_pin_result_t *tie_breaker_custom_result,
-    pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_type
+    pinterest_rest_api_tie_breaker_type__e tie_breaker_type
     ) {
-    return quiz_pin_data_create_internal (
+    quiz_pin_data_t *result = quiz_pin_data_create_internal (
         questions,
         results,
         tie_breaker_custom_result,
         tie_breaker_type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void quiz_pin_data_free(quiz_pin_data_t *quiz_pin_data) {
@@ -142,10 +128,14 @@ cJSON *quiz_pin_data_convertToJSON(quiz_pin_data_t *quiz_pin_data) {
 
 
     // quiz_pin_data->tie_breaker_type
-    if(quiz_pin_data->tie_breaker_type != pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "tie_breaker_type", quiz_pin_data_tie_breaker_type_ToString(quiz_pin_data->tie_breaker_type)) == NULL)
-    {
-    goto fail; //Enum
+    if(quiz_pin_data->tie_breaker_type != pinterest_rest_api_tie_breaker_type__NULL) {
+    cJSON *tie_breaker_type_local_JSON = tie_breaker_type_convertToJSON(quiz_pin_data->tie_breaker_type);
+    if(tie_breaker_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "tie_breaker_type", tie_breaker_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -169,6 +159,9 @@ quiz_pin_data_t *quiz_pin_data_parseFromJSON(cJSON *quiz_pin_dataJSON){
 
     // define the local variable for quiz_pin_data->tie_breaker_custom_result
     quiz_pin_result_t *tie_breaker_custom_result_local_nonprim = NULL;
+
+    // define the local variable for quiz_pin_data->tie_breaker_type
+    pinterest_rest_api_tie_breaker_type__e tie_breaker_type_local_nonprim = 0;
 
     // quiz_pin_data->questions
     cJSON *questions = cJSON_GetObjectItemCaseSensitive(quiz_pin_dataJSON, "questions");
@@ -232,22 +225,22 @@ quiz_pin_data_t *quiz_pin_data_parseFromJSON(cJSON *quiz_pin_dataJSON){
     if (cJSON_IsNull(tie_breaker_type)) {
         tie_breaker_type = NULL;
     }
-    pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_e tie_breaker_typeVariable;
     if (tie_breaker_type) { 
-    if(!cJSON_IsString(tie_breaker_type))
-    {
-    goto end; //Enum
+    tie_breaker_type_local_nonprim = tie_breaker_type_parseFromJSON(tie_breaker_type); //custom
     }
-    tie_breaker_typeVariable = quiz_pin_data_tie_breaker_type_FromString(tie_breaker_type->valuestring);
-    }
+
 
 
     quiz_pin_data_local_var = quiz_pin_data_create_internal (
         questions ? questionsList : NULL,
         results ? resultsList : NULL,
         tie_breaker_custom_result ? tie_breaker_custom_result_local_nonprim : NULL,
-        tie_breaker_type ? tie_breaker_typeVariable : pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_NULL
+        tie_breaker_type ? tie_breaker_type_local_nonprim : 0
         );
+
+    if (!quiz_pin_data_local_var) {
+        goto end;
+    }
 
     return quiz_pin_data_local_var;
 end:
@@ -272,6 +265,9 @@ end:
     if (tie_breaker_custom_result_local_nonprim) {
         quiz_pin_result_free(tie_breaker_custom_result_local_nonprim);
         tie_breaker_custom_result_local_nonprim = NULL;
+    }
+    if (tie_breaker_type_local_nonprim) {
+        tie_breaker_type_local_nonprim = 0;
     }
     return NULL;
 

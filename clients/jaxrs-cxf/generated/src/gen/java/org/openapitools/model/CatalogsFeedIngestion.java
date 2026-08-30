@@ -14,25 +14,37 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeedIngestion  {
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+ /**
+  * Timestamp of the feed ingestion.
+  */
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "Timestamp of the feed ingestion.")
 
   private Date createdAt;
 
-  @ApiModelProperty(example = "56789", required = true, value = "")
+ /**
+  * Catalog Feed id pertaining to the feed ingestion.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the feed ingestion.")
 
   private String feedId;
 
-  @ApiModelProperty(example = "01234", required = true, value = "")
+ /**
+  * Unique identifier of a feed ingestion.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Unique identifier of a feed ingestion.")
 
   private String id;
 
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * Status of the feed ingestion.
+  */
+  @ApiModelProperty(required = true, value = "Status of the feed ingestion.")
 
   @Valid
 
   private CatalogsFeedProcessingStatus status;
  /**
-   * Get createdAt
+   * Timestamp of the feed ingestion.
    * @return createdAt
   **/
   @JsonProperty("created_at")
@@ -51,12 +63,12 @@ public class CatalogsFeedIngestion  {
   }
 
  /**
-   * Get feedId
+   * Catalog Feed id pertaining to the feed ingestion.
    * @return feedId
   **/
   @JsonProperty("feed_id")
   @NotNull
-  public String getFeedId() {
+ @Pattern(regexp="^\\d+$")  public String getFeedId() {
     return feedId;
   }
 
@@ -70,12 +82,12 @@ public class CatalogsFeedIngestion  {
   }
 
  /**
-   * Get id
+   * Unique identifier of a feed ingestion.
    * @return id
   **/
   @JsonProperty("id")
   @NotNull
-  public String getId() {
+ @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
 
@@ -89,7 +101,7 @@ public class CatalogsFeedIngestion  {
   }
 
  /**
-   * Get status
+   * Status of the feed ingestion.
    * @return status
   **/
   @JsonProperty("status")
@@ -145,10 +157,7 @@ public class CatalogsFeedIngestion  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

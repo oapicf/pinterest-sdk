@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -66,7 +74,7 @@ data class CatalogsFeedIngestionErrors (
 
     /* The product count has decreased by more than 99% compared to the last successful ingestion. */
     @Json(name = "LARGE_PRODUCT_COUNT_DECREASE")
-    val LARGE_PRODUCT_COUNT_DECREASE: CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASE? = null,
+    val LARGE_PRODUCT_COUNT_DECREASE: kotlin.Int? = null,
 
     /* We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours. */
     @Json(name = "LINE_LEVEL_INTERNAL_ERROR")
@@ -74,15 +82,6 @@ data class CatalogsFeedIngestionErrors (
 
 ) {
 
-    /**
-     * The product count has decreased by more than 99% compared to the last successful ingestion.
-     *
-     * Values: _1
-     */
-    @JsonClass(generateAdapter = false)
-    enum class LARGEPRODUCTCOUNTDECREASE(val value: kotlin.Int) {
-        @Json(name = "1") _1(1);
-    }
 
 }
 

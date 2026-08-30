@@ -1,5 +1,5 @@
 # Org.OpenAPITools.Model.LabelStatus
-The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).
+Label status values.
 
 ## Properties
 

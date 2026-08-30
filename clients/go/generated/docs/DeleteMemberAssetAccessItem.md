@@ -1,0 +1,72 @@
+# DeleteMemberAssetAccessItem
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AssetId** | **string** | Id of the asset on which to remove member permissions. | 
+**MemberId** | **string** | Unique identifier of the member on which to perform the asset permission removal | 
+
+## Methods
+
+### NewDeleteMemberAssetAccessItem
+
+`func NewDeleteMemberAssetAccessItem(assetId string, memberId string, ) *DeleteMemberAssetAccessItem`
+
+NewDeleteMemberAssetAccessItem instantiates a new DeleteMemberAssetAccessItem object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewDeleteMemberAssetAccessItemWithDefaults
+
+`func NewDeleteMemberAssetAccessItemWithDefaults() *DeleteMemberAssetAccessItem`
+
+NewDeleteMemberAssetAccessItemWithDefaults instantiates a new DeleteMemberAssetAccessItem object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetAssetId
+
+`func (o *DeleteMemberAssetAccessItem) GetAssetId() string`
+
+GetAssetId returns the AssetId field if non-nil, zero value otherwise.
+
+### GetAssetIdOk
+
+`func (o *DeleteMemberAssetAccessItem) GetAssetIdOk() (*string, bool)`
+
+GetAssetIdOk returns a tuple with the AssetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssetId
+
+`func (o *DeleteMemberAssetAccessItem) SetAssetId(v string)`
+
+SetAssetId sets AssetId field to given value.
+
+
+### GetMemberId
+
+`func (o *DeleteMemberAssetAccessItem) GetMemberId() string`
+
+GetMemberId returns the MemberId field if non-nil, zero value otherwise.
+
+### GetMemberIdOk
+
+`func (o *DeleteMemberAssetAccessItem) GetMemberIdOk() (*string, bool)`
+
+GetMemberIdOk returns a tuple with the MemberId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMemberId
+
+`func (o *DeleteMemberAssetAccessItem) SetMemberId(v string)`
+
+SetMemberId sets MemberId field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

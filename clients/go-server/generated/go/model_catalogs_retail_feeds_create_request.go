@@ -5,22 +5,27 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 // CatalogsRetailFeedsCreateRequest - Request object for creating a retail feed.
 type CatalogsRetailFeedsCreateRequest struct {
 
-	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 
 	Credentials *CatalogsFeedCredentials `json:"credentials,omitempty"`
 
@@ -30,12 +35,12 @@ type CatalogsRetailFeedsCreateRequest struct {
 
 	DefaultCurrency *NullableCurrency `json:"default_currency,omitempty"`
 
-	DefaultLocale CatalogsFeedsCreateRequestDefaultLocale `json:"default_locale"`
+	DefaultLocale CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale `json:"default_locale"`
 
 	Format CatalogsFormat `json:"format"`
 
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
+	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp)://"`
 
 	// A human-friendly name associated to a given feed.
 	Name string `json:"name"`
@@ -44,16 +49,140 @@ type CatalogsRetailFeedsCreateRequest struct {
 
 	Status CatalogsStatus `json:"status,omitempty"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsRetailFeedsCreateRequest
+func (o *CatalogsRetailFeedsCreateRequest) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_type",
+		"default_country",
+		"default_locale",
+		"format",
+		"location",
+		"name",
+	}
 
-// AssertCatalogsRetailFeedsCreateRequestRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"catalog_type": false,
+		"default_country": false,
+		"default_locale": false,
+		"format": false,
+		"location": false,
+		"name": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"catalog_id": {},
+		"catalog_type": {},
+		"credentials": {},
+		"default_availability": {},
+		"default_country": {},
+		"default_currency": {},
+		"default_locale": {},
+		"format": {},
+		"location": {},
+		"name": {},
+		"preferred_processing_schedule": {},
+		"status": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsRetailFeedsCreateRequest
+
+	if value, exists := allProperties["catalog_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["credentials"]; exists {
+		if err = json.Unmarshal(value, &decoded.Credentials); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["default_availability"]; exists {
+		if err = json.Unmarshal(value, &decoded.DefaultAvailability); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["default_country"]; exists {
+		if err = json.Unmarshal(value, &decoded.DefaultCountry); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["default_currency"]; exists {
+		if err = json.Unmarshal(value, &decoded.DefaultCurrency); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["default_locale"]; exists {
+		if err = json.Unmarshal(value, &decoded.DefaultLocale); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["format"]; exists {
+		if err = json.Unmarshal(value, &decoded.Format); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["location"]; exists {
+		if err = json.Unmarshal(value, &decoded.Location); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["name"]; exists {
+		if err = json.Unmarshal(value, &decoded.Name); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["preferred_processing_schedule"]; exists {
+		if err = json.Unmarshal(value, &decoded.PreferredProcessingSchedule); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsRetailFeedsCreateRequestRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsRetailFeedsCreateRequestRequired(obj CatalogsRetailFeedsCreateRequest) error {
 	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
-		"default_country": obj.DefaultCountry,
 		"default_locale": obj.DefaultLocale,
-		"format": obj.Format,
-		"location": obj.Location,
-		"name": obj.Name,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -66,7 +195,7 @@ func AssertCatalogsRetailFeedsCreateRequestRequired(obj CatalogsRetailFeedsCreat
 			return err
 		}
 	}
-	if err := AssertCatalogsFeedsCreateRequestDefaultLocaleRequired(obj.DefaultLocale); err != nil {
+	if err := AssertCatalogsCreativeAssetsFeedsCreateRequestDefaultLocaleRequired(obj.DefaultLocale); err != nil {
 		return err
 	}
 	if obj.PreferredProcessingSchedule != nil {
@@ -84,7 +213,7 @@ func AssertCatalogsRetailFeedsCreateRequestConstraints(obj CatalogsRetailFeedsCr
      		return err
      	}
     }
-	if err := AssertCatalogsFeedsCreateRequestDefaultLocaleConstraints(obj.DefaultLocale); err != nil {
+	if err := AssertCatalogsCreativeAssetsFeedsCreateRequestDefaultLocaleConstraints(obj.DefaultLocale); err != nil {
 		return err
 	}
     if obj.PreferredProcessingSchedule != nil {

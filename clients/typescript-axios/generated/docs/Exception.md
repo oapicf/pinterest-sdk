@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **number** | Exception error code. | [optional] [default to undefined]
-**message** | **string** | Exception message. | [optional] [default to undefined]
+**code** | **number** |  | [optional] [default to undefined]
+**message** | **string** |  | [default to undefined]
 
 ## Example
 

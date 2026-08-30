@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/non_nullable_product_availability_type.dart';
+import 'package:openapi/src/model/product_availability.dart';
 import 'package:openapi/src/model/non_nullable_catalogs_currency.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -22,7 +22,7 @@ part 'catalogs_retail_product_metadata.g.dart';
 @BuiltValue()
 abstract class CatalogsRetailProductMetadata implements Built<CatalogsRetailProductMetadata, CatalogsRetailProductMetadataBuilder> {
   @BuiltValueField(wireName: r'availability')
-  NonNullableProductAvailabilityType get availability;
+  ProductAvailability get availability;
   // enum availabilityEnum {  IN_STOCK,  OUT_OF_STOCK,  PREORDER,  };
 
   @BuiltValueField(wireName: r'currency')
@@ -71,7 +71,7 @@ class _$CatalogsRetailProductMetadataSerializer implements PrimitiveSerializer<C
     yield r'availability';
     yield serializers.serialize(
       object.availability,
-      specifiedType: const FullType(NonNullableProductAvailabilityType),
+      specifiedType: const FullType(ProductAvailability),
     );
     yield r'currency';
     yield serializers.serialize(
@@ -124,8 +124,8 @@ class _$CatalogsRetailProductMetadataSerializer implements PrimitiveSerializer<C
         case r'availability':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(NonNullableProductAvailabilityType),
-          ) as NonNullableProductAvailabilityType;
+            specifiedType: const FullType(ProductAvailability),
+          ) as ProductAvailability;
           result.availability = valueDes;
           break;
         case r'currency':

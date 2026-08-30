@@ -29,6 +29,8 @@ module LeadAdsApiHandler =
           let serviceArgs = {    pathParams=pathParams;  } : AdAccountsSubscriptionsDelByIdArgs
           let result = LeadAdsApiService.AdAccountsSubscriptionsDelById ctx serviceArgs
           return! (match result with
+                      | AdAccountsSubscriptionsDelByIdStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | AdAccountsSubscriptionsDelByIdStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
                       | AdAccountsSubscriptionsDelByIdStatusCode400 resolved ->

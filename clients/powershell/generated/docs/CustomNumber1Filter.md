@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CUSTOMNUMBER1** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+**CUSTOMNUMBER1** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
 
 ## Examples
 

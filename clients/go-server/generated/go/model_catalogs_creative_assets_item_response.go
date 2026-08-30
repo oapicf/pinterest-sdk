@@ -5,40 +5,118 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
-// CatalogsCreativeAssetsItemResponse - Object describing a hotel record
+
+// CatalogsCreativeAssetsItemResponse - Object describing a creative assets item record
 type CatalogsCreativeAssetsItemResponse struct {
 
 	Attributes CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
 
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 
 	// The catalog creative assets id in the merchant namespace
 	CreativeAssetsId string `json:"creative_assets_id,omitempty"`
 
+	// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	ItemResponseKind string `json:"item_response_kind"`
+
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
 }
-
-// AssertCatalogsCreativeAssetsItemResponseRequired checks if the required fields are not zero-ed
-func AssertCatalogsCreativeAssetsItemResponseRequired(obj CatalogsCreativeAssetsItemResponse) error {
-	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsCreativeAssetsItemResponse
+func (o *CatalogsCreativeAssetsItemResponse) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"catalog_type",
+		"item_response_kind",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"catalog_type": false,
+		"item_response_kind": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"attributes": {},
+		"catalog_type": {},
+		"creative_assets_id": {},
+		"item_response_kind": {},
+		"pins": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsCreativeAssetsItemResponse
+
+	if value, exists := allProperties["attributes"]; exists {
+		if err = json.Unmarshal(value, &decoded.Attributes); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["creative_assets_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.CreativeAssetsId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["item_response_kind"]; exists {
+		if err = json.Unmarshal(value, &decoded.ItemResponseKind); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["pins"]; exists {
+		if err = json.Unmarshal(value, &decoded.Pins); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsCreativeAssetsItemResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCatalogsCreativeAssetsItemResponseRequired(obj CatalogsCreativeAssetsItemResponse) error {
 	if err := AssertCatalogsCreativeAssetsAttributesRequired(obj.Attributes); err != nil {
 		return err
 	}

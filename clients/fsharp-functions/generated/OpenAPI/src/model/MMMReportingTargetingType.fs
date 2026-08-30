@@ -13,6 +13,8 @@ module MMMReportingTargetingType =
   let CREATIVETYPEEnum = "CREATIVE_TYPE"
   let GENDEREnum = "GENDER"
   let LOCATIONEnum = "LOCATION"
+  let PLACEMENTEnum = "PLACEMENT"
+  let AUDIENCEINCLUDEEnum = "AUDIENCE_INCLUDE"
   type MMMReportingTargetingType = string
 
   //#endregion

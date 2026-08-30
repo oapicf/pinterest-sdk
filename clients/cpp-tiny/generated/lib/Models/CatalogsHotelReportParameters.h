@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "CatalogsHotelReportParameters_report.h"
+#include "CatalogsHotelReportParametersReport.h"
 
 namespace Tiny {
 
@@ -52,19 +52,19 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
-	CatalogsHotelReportParameters_report getReport();
+	CatalogsHotelReportParametersReport getReport();
 
 	/*! \brief Set 
 	 */
-	void setReport(CatalogsHotelReportParameters_report  report);
+	void setReport(CatalogsHotelReportParametersReport report);
 
 
     private:
     std::string catalog_type{};
-    CatalogsHotelReportParameters_report report;
+    CatalogsHotelReportParametersReport report;
 };
 }
 

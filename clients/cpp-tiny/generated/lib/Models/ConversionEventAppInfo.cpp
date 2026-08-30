@@ -232,7 +232,7 @@ ConversionEventAppInfo::getAppId()
 }
 
 void
-ConversionEventAppInfo::setAppId(std::string  app_id)
+ConversionEventAppInfo::setAppId(std::string app_id)
 {
 	this->app_id = app_id;
 }
@@ -244,7 +244,7 @@ ConversionEventAppInfo::getAppName()
 }
 
 void
-ConversionEventAppInfo::setAppName(std::string  app_name)
+ConversionEventAppInfo::setAppName(std::string app_name)
 {
 	this->app_name = app_name;
 }
@@ -256,7 +256,7 @@ ConversionEventAppInfo::getAppPackageName()
 }
 
 void
-ConversionEventAppInfo::setAppPackageName(std::string  app_package_name)
+ConversionEventAppInfo::setAppPackageName(std::string app_package_name)
 {
 	this->app_package_name = app_package_name;
 }
@@ -268,7 +268,7 @@ ConversionEventAppInfo::getAppStore()
 }
 
 void
-ConversionEventAppInfo::setAppStore(std::string  app_store)
+ConversionEventAppInfo::setAppStore(std::string app_store)
 {
 	this->app_store = app_store;
 }
@@ -280,7 +280,7 @@ ConversionEventAppInfo::getAppVersion()
 }
 
 void
-ConversionEventAppInfo::setAppVersion(std::string  app_version)
+ConversionEventAppInfo::setAppVersion(std::string app_version)
 {
 	this->app_version = app_version;
 }
@@ -292,7 +292,7 @@ ConversionEventAppInfo::getInstallTime()
 }
 
 void
-ConversionEventAppInfo::setInstallTime(int  install_time)
+ConversionEventAppInfo::setInstallTime(int install_time)
 {
 	this->install_time = install_time;
 }
@@ -304,7 +304,7 @@ ConversionEventAppInfo::getUserAgent()
 }
 
 void
-ConversionEventAppInfo::setUserAgent(std::string  user_agent)
+ConversionEventAppInfo::setUserAgent(std::string user_agent)
 {
 	this->user_agent = user_agent;
 }
@@ -316,7 +316,7 @@ ConversionEventAppInfo::getWindowHeight()
 }
 
 void
-ConversionEventAppInfo::setWindowHeight(int  window_height)
+ConversionEventAppInfo::setWindowHeight(int window_height)
 {
 	this->window_height = window_height;
 }
@@ -328,7 +328,7 @@ ConversionEventAppInfo::getWindowWidth()
 }
 
 void
-ConversionEventAppInfo::setWindowWidth(int  window_width)
+ConversionEventAppInfo::setWindowWidth(int window_width)
 {
 	this->window_width = window_width;
 }

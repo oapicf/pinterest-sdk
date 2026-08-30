@@ -8,7 +8,7 @@ HTTP request details included in the log sent by the client.
 Name | Type
 ------------ | -------------
 `host` | string
-`method` | string
+`method` | [HttpMethod](HttpMethod.md)
 `path` | string
 `requestHeaders` | { [key: string]: string; }
 `responseHeaders` | { [key: string]: string; }

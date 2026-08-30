@@ -53,10 +53,10 @@ class CatalogsRetailAvailableFilterValues {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsRetailAvailableFilterValues[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsRetailAvailableFilterValues[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsRetailAvailableFilterValues[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsRetailAvailableFilterValues[catalog_type]" has a null value in JSON.');
+        assert(json.containsKey(r'filter_values'), 'Required key "CatalogsRetailAvailableFilterValues[filter_values]" is missing from JSON.');
+        assert(json[r'filter_values'] != null, 'Required key "CatalogsRetailAvailableFilterValues[filter_values]" has a null value in JSON.');
         return true;
       }());
 
@@ -116,27 +116,28 @@ class CatalogsRetailAvailableFilterValues {
 }
 
 
-class CatalogsRetailAvailableFilterValuesCatalogTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsRetailAvailableFilterValuesCatalogTypeEnum._(this.value);
+enum CatalogsRetailAvailableFilterValuesCatalogTypeEnum {
+  RETAIL._(r'RETAIL'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsRetailAvailableFilterValuesCatalogTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const RETAIL = CatalogsRetailAvailableFilterValuesCatalogTypeEnum._(r'RETAIL');
-
-  /// List of all possible values in this [enum][CatalogsRetailAvailableFilterValuesCatalogTypeEnum].
-  static const values = <CatalogsRetailAvailableFilterValuesCatalogTypeEnum>[
-    RETAIL,
-  ];
-
+  /// Returns the instance of [CatalogsRetailAvailableFilterValuesCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsRetailAvailableFilterValuesCatalogTypeEnum? fromJson(dynamic value) => CatalogsRetailAvailableFilterValuesCatalogTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsRetailAvailableFilterValuesCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsRetailAvailableFilterValuesCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsRetailAvailableFilterValuesCatalogTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -158,9 +159,10 @@ class CatalogsRetailAvailableFilterValuesCatalogTypeEnumTypeTransformer {
 
   const CatalogsRetailAvailableFilterValuesCatalogTypeEnumTypeTransformer._();
 
-  String encode(CatalogsRetailAvailableFilterValuesCatalogTypeEnum data) => data.value;
+  String encode(CatalogsRetailAvailableFilterValuesCatalogTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsRetailAvailableFilterValuesCatalogTypeEnum.
+  /// Returns the instance of [CatalogsRetailAvailableFilterValuesCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -169,6 +171,9 @@ class CatalogsRetailAvailableFilterValuesCatalogTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsRetailAvailableFilterValuesCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsRetailAvailableFilterValuesCatalogTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'RETAIL': return CatalogsRetailAvailableFilterValuesCatalogTypeEnum.RETAIL;
@@ -181,7 +186,7 @@ class CatalogsRetailAvailableFilterValuesCatalogTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsRetailAvailableFilterValuesCatalogTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsRetailAvailableFilterValuesCatalogTypeEnumTypeTransformer? _instance;
 }
 

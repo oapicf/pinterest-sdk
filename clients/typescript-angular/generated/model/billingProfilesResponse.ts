@@ -7,6 +7,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { BillingProfilePaymentMethodBrand } from './billingProfilePaymentMethodBrand';
+import { BillingProfileStatus } from './billingProfileStatus';
+import { BillingProfileCardType } from './billingProfileCardType';
+import { BillingType } from './billingType';
 
 
 export interface BillingProfilesResponse { 
@@ -17,11 +21,11 @@ export interface BillingProfilesResponse {
     /**
      * Billing type of the advertiser
      */
-    billing_type?: BillingProfilesResponse.BillingTypeEnum;
+    billing_type?: BillingType;
     /**
      * Type of the card.
      */
-    card_type?: BillingProfilesResponse.CardTypeEnum;
+    card_type?: BillingProfileCardType;
     /**
      * Billing ID.
      */
@@ -29,52 +33,13 @@ export interface BillingProfilesResponse {
     /**
      * Brand of the payment method.
      */
-    payment_method_brand?: BillingProfilesResponse.PaymentMethodBrandEnum;
+    payment_method_brand?: BillingProfilePaymentMethodBrand;
     /**
      * Status of the billing.
      */
-    status?: BillingProfilesResponse.StatusEnum;
+    status?: BillingProfileStatus;
 }
 export namespace BillingProfilesResponse {
-    export const BillingTypeEnum = {
-        CreditCard: 'CREDIT_CARD',
-        Invoice: 'INVOICE',
-        Internal: 'INTERNAL',
-        Recurring: 'RECURRING',
-        Prepaid: 'PREPAID'
-    } as const;
-    export type BillingTypeEnum = typeof BillingTypeEnum[keyof typeof BillingTypeEnum];
-    export const CardTypeEnum = {
-        Unknown: 'UNKNOWN',
-        Visa: 'VISA',
-        Mastercard: 'MASTERCARD',
-        AmericanExpress: 'AMERICAN_EXPRESS',
-        Discover: 'DISCOVER',
-        Elo: 'ELO'
-    } as const;
-    export type CardTypeEnum = typeof CardTypeEnum[keyof typeof CardTypeEnum];
-    export const PaymentMethodBrandEnum = {
-        Unknown: 'UNKNOWN',
-        Visa: 'VISA',
-        Mastercard: 'MASTERCARD',
-        AmericanExpress: 'AMERICAN_EXPRESS',
-        Discover: 'DISCOVER',
-        Sofort: 'SOFORT',
-        DinersClub: 'DINERS_CLUB',
-        Elo: 'ELO',
-        CarteBancaire: 'CARTE_BANCAIRE'
-    } as const;
-    export type PaymentMethodBrandEnum = typeof PaymentMethodBrandEnum[keyof typeof PaymentMethodBrandEnum];
-    export const StatusEnum = {
-        Unspecified: 'UNSPECIFIED',
-        Valid: 'VALID',
-        Invalid: 'INVALID',
-        Pending: 'PENDING',
-        Deleted: 'DELETED',
-        Secondary: 'SECONDARY',
-        PendingSecondary: 'PENDING_SECONDARY'
-    } as const;
-    export type StatusEnum = typeof StatusEnum[keyof typeof StatusEnum];
 }
 
 

@@ -13,10 +13,12 @@ Name | Type | Description | Notes
 **adGroups** | [`List&lt;AdGroupCreateRequest&gt;`](AdGroupCreateRequest.md) |  |  [optional property]
 **ads** | [`List&lt;AdCreateRequest&gt;`](AdCreateRequest.md) |  |  [optional property]
 **campaigns** | [`List&lt;CampaignCreateRequest&gt;`](CampaignCreateRequest.md) |  |  [optional property]
-**catalogProductGroups** | [`List&lt;MultipleProductGroupsInner&gt;`](MultipleProductGroupsInner.md) |  |  [optional property]
+**catalogProductGroups** | [`List&lt;BulkUpsertRequestCreateCatalogProductGroupsItems&gt;`](BulkUpsertRequestCreateCatalogProductGroupsItems.md) |  |  [optional property]
 **keywords** | [`List&lt;KeywordsRequest&gt;`](KeywordsRequest.md) |  |  [optional property]
-**labels** | [`List&lt;LabelCreateRequest&gt;`](LabelCreateRequest.md) |  |  [optional property]
+**labels** | [`List&lt;LabelBulkCreateRequest&gt;`](LabelBulkCreateRequest.md) |  |  [optional property]
 **productGroups** | [`List&lt;ProductGroupPromotionCreateRequest&gt;`](ProductGroupPromotionCreateRequest.md) |  |  [optional property]
+**schedules** | [`List&lt;ScheduleCreateRequest&gt;`](ScheduleCreateRequest.md) |  |  [optional property]
+
 
 
 

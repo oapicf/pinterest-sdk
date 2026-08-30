@@ -11,29 +11,29 @@
 part of openapi.api;
 
 /// Audience operation type (update or remove).
-class AudienceUpdateOperationType {
-  /// Instantiate a new enum with the provided [value].
-  const AudienceUpdateOperationType._(this.value);
+enum AudienceUpdateOperationType {
+  UPDATE._(r'UPDATE'),
+  REMOVE._(r'REMOVE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AudienceUpdateOperationType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const UPDATE = AudienceUpdateOperationType._(r'UPDATE');
-  static const REMOVE = AudienceUpdateOperationType._(r'REMOVE');
-
-  /// List of all possible values in this [enum][AudienceUpdateOperationType].
-  static const values = <AudienceUpdateOperationType>[
-    UPDATE,
-    REMOVE,
-  ];
-
+  /// Returns the instance of [AudienceUpdateOperationType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AudienceUpdateOperationType? fromJson(dynamic value) => AudienceUpdateOperationTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AudienceUpdateOperationType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AudienceUpdateOperationType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AudienceUpdateOperationType>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class AudienceUpdateOperationTypeTypeTransformer {
 
   const AudienceUpdateOperationTypeTypeTransformer._();
 
-  String encode(AudienceUpdateOperationType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AudienceUpdateOperationType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AudienceUpdateOperationType.
+  /// Returns the instance of [AudienceUpdateOperationType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class AudienceUpdateOperationTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AudienceUpdateOperationType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AudienceUpdateOperationType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'UPDATE': return AudienceUpdateOperationType.UPDATE;
@@ -79,7 +84,7 @@ class AudienceUpdateOperationTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [AudienceUpdateOperationTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AudienceUpdateOperationTypeTypeTransformer? _instance;
 }
 

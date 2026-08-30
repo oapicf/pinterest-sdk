@@ -16,7 +16,7 @@ import org.openapitools.model.BoardUpdatePrivacy;
  **/
 
 @ApiModel(description = "Resource create or update operation model.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BoardWithUpdatePrivacyUpdate   {
   @JsonProperty("description")
   private String description;
@@ -45,7 +45,7 @@ public class BoardWithUpdatePrivacyUpdate   {
   }
 
   /**
-   *      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+   *     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
    **/
   public BoardWithUpdatePrivacyUpdate name(String name) {
     this.name = name;
@@ -53,7 +53,7 @@ public class BoardWithUpdatePrivacyUpdate   {
   }
 
   
-  @ApiModelProperty(example = "Summer recipes", value = "     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".")
+  @ApiModelProperty(example = "Summer recipes", value = "    Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -116,10 +116,7 @@ public class BoardWithUpdatePrivacyUpdate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -1,0 +1,43 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Store metadata for a specific store location",
+  "name": "StoreMetadata",
+  "fields": [
+    {
+      "name": "geohash",
+      "type": ["null", "string"],
+      "doc": "Geohash of the store location",
+      "default": null
+    },
+    {
+      "name": "latitude",
+      "type": ["null", "double"],
+      "doc": "Geographic latitude coordinate of the store",
+      "default": null
+    },
+    {
+      "name": "longitude",
+      "type": ["null", "double"],
+      "doc": "Geographic longitude coordinate of the store",
+      "default": null
+    },
+    {
+      "name": "store_code",
+      "type": "string",
+      "doc": "Merchant provided store code"
+    },
+    {
+      "name": "store_id",
+      "type": "string",
+      "doc": "Internal store code"
+    },
+    {
+      "name": "store_name",
+      "type": ["null", "string"],
+      "doc": "Store name",
+      "default": null
+    }
+  ]
+
+}

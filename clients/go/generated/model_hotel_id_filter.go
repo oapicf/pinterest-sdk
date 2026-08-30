@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *HotelIdFilter) GetHOTEL_ID() CatalogsProductGroupMultipleStringCriteria
 
 // GetHOTEL_IDOk returns a tuple with the HOTEL_ID field value
 // and a boolean to check if the value has been set.
-func (o *HotelIdFilter) GetHOTEL_IDOk() (CatalogsProductGroupMultipleStringCriteria, bool) {
+func (o *HotelIdFilter) GetHOTEL_IDOk() (*CatalogsProductGroupMultipleStringCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupMultipleStringCriteria{}, false
+		return nil, false
 	}
-	return o.HOTEL_ID, true
+	return &o.HOTEL_ID, true
 }
 
 // SetHOTEL_ID sets field value

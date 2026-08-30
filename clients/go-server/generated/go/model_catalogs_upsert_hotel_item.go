@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -24,13 +29,80 @@ type CatalogsUpsertHotelItem struct {
 
 	Operation string `json:"operation"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsUpsertHotelItem
+func (o *CatalogsUpsertHotelItem) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"attributes",
+		"hotel_id",
+		"operation",
+	}
 
-// AssertCatalogsUpsertHotelItemRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"attributes": false,
+		"hotel_id": false,
+		"operation": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"attributes": {},
+		"hotel_id": {},
+		"operation": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsUpsertHotelItem
+
+	if value, exists := allProperties["attributes"]; exists {
+		if err = json.Unmarshal(value, &decoded.Attributes); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["hotel_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.HotelId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["operation"]; exists {
+		if err = json.Unmarshal(value, &decoded.Operation); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsUpsertHotelItemRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsUpsertHotelItemRequired(obj CatalogsUpsertHotelItem) error {
 	elements := map[string]interface{}{
 		"attributes": obj.Attributes,
-		"hotel_id": obj.HotelId,
-		"operation": obj.Operation,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

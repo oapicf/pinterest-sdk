@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.IntegrationLogsInvalidLogResponseRejectedLogsInner
+open OpenAPI.Model.IntegrationLogsInvalidLogResponseRejectedLogsItems
 
 module IntegrationLogsInvalidLogResponse =
 
@@ -10,6 +10,6 @@ module IntegrationLogsInvalidLogResponse =
 
 
   type IntegrationLogsInvalidLogResponse = {
-    RejectedLogs : IntegrationLogsInvalidLogResponseRejectedLogsInner[];
+    RejectedLogs : IntegrationLogsInvalidLogResponseRejectedLogsItems[];
   }
   //#endregion

@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsHotelListProductsByCatalogBasedFilterRequest (
-    /* Catalog id pertaining to the hotel product group. */
+    /* Catalog ID pertaining to the product group. */
     _catalogId: String,
     _catalogType: String,
     _filters: CatalogsHotelProductGroupFilters

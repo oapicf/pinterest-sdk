@@ -6,6 +6,7 @@ case class CatalogsCreativeAssetsProductGroupUpdateRequest (
     _catalogType: Option[String],
     _description: Option[String],
     _filters: Option[CatalogsCreativeAssetsProductGroupFilters],
+    /* Name of catalog product group */
     _name: Option[String]
 )
 object CatalogsCreativeAssetsProductGroupUpdateRequest {

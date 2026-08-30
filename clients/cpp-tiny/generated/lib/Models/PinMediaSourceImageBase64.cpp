@@ -128,7 +128,7 @@ PinMediaSourceImageBase64::getContentType()
 }
 
 void
-PinMediaSourceImageBase64::setContentType(ContentType  content_type)
+PinMediaSourceImageBase64::setContentType(ContentType content_type)
 {
 	this->content_type = content_type;
 }
@@ -140,7 +140,7 @@ PinMediaSourceImageBase64::getData()
 }
 
 void
-PinMediaSourceImageBase64::setData(std::string  data)
+PinMediaSourceImageBase64::setData(std::string data)
 {
 	this->data = data;
 }
@@ -152,7 +152,7 @@ PinMediaSourceImageBase64::isIsStandard()
 }
 
 void
-PinMediaSourceImageBase64::setIsStandard(bool  is_standard)
+PinMediaSourceImageBase64::setIsStandard(bool is_standard)
 {
 	this->is_standard = is_standard;
 }
@@ -164,7 +164,7 @@ PinMediaSourceImageBase64::getSourceType()
 }
 
 void
-PinMediaSourceImageBase64::setSourceType(std::string  source_type)
+PinMediaSourceImageBase64::setSourceType(std::string source_type)
 {
 	this->source_type = source_type;
 }

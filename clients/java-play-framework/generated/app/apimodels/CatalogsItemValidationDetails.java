@@ -10,7 +10,7 @@ import javax.validation.Valid;
 /**
  * CatalogsItemValidationDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemValidationDetails   {
   @JsonProperty("attribute_name")
@@ -30,7 +30,7 @@ public class CatalogsItemValidationDetails   {
   }
 
    /**
-   * Get attributeName
+   * Attribute that has a validation issue.
    * @return attributeName
   **/
   public NullableCatalogsItemFieldType getAttributeName() {
@@ -94,10 +94,7 @@ public class CatalogsItemValidationDetails   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

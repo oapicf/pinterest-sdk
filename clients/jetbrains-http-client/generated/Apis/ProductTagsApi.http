@@ -1,0 +1,28 @@
+## ProductTagsApi
+
+### Add product tags to pin
+## Add product tags to pin
+POST https://api.pinterest.com/v5/pins/{{pin_id}}/product_tags
+Content-Type: application/json
+Accept: application/json
+
+{
+ "product_tags": "<string>"
+}
+
+
+### Delete product tags from pin
+## Delete product tags from pin
+POST https://api.pinterest.com/v5/pins/{{pin_id}}/product_tags/bulk-delete
+Content-Type: application/json
+Accept: application/json
+
+{
+ "product_tags": "<string>"
+}
+
+
+### Get product tags for pin
+## Get product tags for pin
+GET https://api.pinterest.com/v5/pins/{{pin_id}}/product_tags
+Accept: application/json

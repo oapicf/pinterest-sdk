@@ -3,7 +3,6 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.ItemValidationEvent
 
 module CatalogsRetailItemErrorResponse =
@@ -13,11 +12,13 @@ module CatalogsRetailItemErrorResponse =
   [<CLIMutable>]
   type CatalogsRetailItemErrorResponse = {
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "errors")>]
     Errors : ItemValidationEvent[];
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
+    [<JsonProperty(PropertyName = "item_response_kind")>]
+    ItemResponseKind : string;
   }
 
   //#endregion

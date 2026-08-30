@@ -14,11 +14,11 @@ static featured_trend_t *featured_trend_create_internal(
     if (!featured_trend_local_var) {
         return NULL;
     }
+    memset(featured_trend_local_var, 0, sizeof(featured_trend_t));
+    featured_trend_local_var->_library_owned = 1;
     featured_trend_local_var->interest = interest;
     featured_trend_local_var->market = market;
     featured_trend_local_var->trends = trends;
-
-    featured_trend_local_var->_library_owned = 1;
     return featured_trend_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) featured_trend_t *featured_trend_create(
     product_category_region_t *market,
     list_t *trends
     ) {
-    return featured_trend_create_internal (
+    featured_trend_t *result = featured_trend_create_internal (
         interest,
         market,
         trends
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void featured_trend_free(featured_trend_t *featured_trend) {
@@ -177,11 +180,16 @@ featured_trend_t *featured_trend_parseFromJSON(cJSON *featured_trendJSON){
     }
 
 
+
     featured_trend_local_var = featured_trend_create_internal (
         interest_local_nonprim,
         market ? market_local_nonprim : NULL,
         trends ? trendsList : NULL
         );
+
+    if (!featured_trend_local_var) {
+        goto end;
+    }
 
     return featured_trend_local_var;
 end:

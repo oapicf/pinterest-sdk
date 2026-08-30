@@ -6,7 +6,7 @@ Request object for creating a product group.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **str** | Catalog id pertaining to the retail product group. | 
+**catalog_id** | **str** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **str** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | 
 **country** | [**Country**](Country.md) |  | [optional] 
 **description** | **str** |  | [optional] 

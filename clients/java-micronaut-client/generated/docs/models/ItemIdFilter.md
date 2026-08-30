@@ -8,7 +8,7 @@ The class is defined in **[ItemIdFilter.java](../../src/main/java/org/openapitoo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ITEM_ID** | `CatalogsProductGroupMultipleStringCriteria` |  | 
+**ITEM_ID** | [`CatalogsProductGroupMultipleStringCriteria`](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 
 

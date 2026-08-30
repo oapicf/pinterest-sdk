@@ -15,23 +15,40 @@
 
 typedef struct catalogs_retail_item_error_response_t catalogs_retail_item_error_response_t;
 
-#include "catalogs_type.h"
 #include "item_validation_event.h"
+
+// Enum CATALOGTYPE for catalogs_retail_item_error_response
+
+typedef enum  { pinterest_rest_api_catalogs_retail_item_error_response_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_retail_item_error_response_CATALOGTYPE_RETAIL } pinterest_rest_api_catalogs_retail_item_error_response_CATALOGTYPE_e;
+
+char* catalogs_retail_item_error_response_catalog_type_ToString(pinterest_rest_api_catalogs_retail_item_error_response_CATALOGTYPE_e catalog_type);
+
+pinterest_rest_api_catalogs_retail_item_error_response_CATALOGTYPE_e catalogs_retail_item_error_response_catalog_type_FromString(char* catalog_type);
+
+// Enum ITEMRESPONSEKIND for catalogs_retail_item_error_response
+
+typedef enum  { pinterest_rest_api_catalogs_retail_item_error_response_ITEMRESPONSEKIND_NULL = 0, pinterest_rest_api_catalogs_retail_item_error_response_ITEMRESPONSEKIND_retail_item_error } pinterest_rest_api_catalogs_retail_item_error_response_ITEMRESPONSEKIND_e;
+
+char* catalogs_retail_item_error_response_item_response_kind_ToString(pinterest_rest_api_catalogs_retail_item_error_response_ITEMRESPONSEKIND_e item_response_kind);
+
+pinterest_rest_api_catalogs_retail_item_error_response_ITEMRESPONSEKIND_e catalogs_retail_item_error_response_item_response_kind_FromString(char* item_response_kind);
 
 
 
 typedef struct catalogs_retail_item_error_response_t {
-    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
+    pinterest_rest_api_catalogs_retail_item_error_response_CATALOGTYPE_e catalog_type; //enum
     list_t *errors; //nonprimitive container
     char *item_id; // string
+    pinterest_rest_api_catalogs_retail_item_error_response_ITEMRESPONSEKIND_e item_response_kind; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_item_error_response_t;
 
 __attribute__((deprecated)) catalogs_retail_item_error_response_t *catalogs_retail_item_error_response_create(
-    pinterest_rest_api_catalogs_type__e catalog_type,
+    pinterest_rest_api_catalogs_retail_item_error_response_CATALOGTYPE_e catalog_type,
     list_t *errors,
-    char *item_id
+    char *item_id,
+    pinterest_rest_api_catalogs_retail_item_error_response_ITEMRESPONSEKIND_e item_response_kind
 );
 
 void catalogs_retail_item_error_response_free(catalogs_retail_item_error_response_t *catalogs_retail_item_error_response);

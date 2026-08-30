@@ -5,7 +5,7 @@ const Service = require('./Service');
 * Receive notifications from external partners.
 * Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests' systems. This API is gated and you need to request access to this feature.
 *
-* notificationPostRequest NotificationPostRequest notification event.
+* notificationPostRequest NotificationPostRequest 
 * returns NotificationResponse
 * */
 const notification/post = ({ notificationPostRequest }) => new Promise(

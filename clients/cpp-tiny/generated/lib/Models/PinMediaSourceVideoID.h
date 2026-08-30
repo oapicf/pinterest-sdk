@@ -52,49 +52,49 @@ public:
 
 	/*! \brief Set Content type for cover image Base64.
 	 */
-	void setCoverImageContentType(ContentType  cover_image_content_type);
+	void setCoverImageContentType(ContentType cover_image_content_type);
 	/*! \brief Get Cover image Base64.
 	 */
 	std::string getCoverImageData();
 
 	/*! \brief Set Cover image Base64.
 	 */
-	void setCoverImageData(std::string  cover_image_data);
+	void setCoverImageData(std::string cover_image_data);
 	/*! \brief Get Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
 	 */
 	int getCoverImageKeyFrameTime();
 
 	/*! \brief Set Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
 	 */
-	void setCoverImageKeyFrameTime(int  cover_image_key_frame_time);
+	void setCoverImageKeyFrameTime(int cover_image_key_frame_time);
 	/*! \brief Get Cover image URL.
 	 */
 	std::string getCoverImageUrl();
 
 	/*! \brief Set Cover image URL.
 	 */
-	void setCoverImageUrl(std::string  cover_image_url);
+	void setCoverImageUrl(std::string cover_image_url);
 	/*! \brief Get Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	 */
 	bool isIsStandard();
 
 	/*! \brief Set Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	 */
-	void setIsStandard(bool  is_standard);
+	void setIsStandard(bool is_standard);
 	/*! \brief Get 
 	 */
 	std::string getMediaId();
 
 	/*! \brief Set 
 	 */
-	void setMediaId(std::string  media_id);
+	void setMediaId(std::string media_id);
 	/*! \brief Get 
 	 */
 	std::string getSourceType();
 
 	/*! \brief Set 
 	 */
-	void setSourceType(std::string  source_type);
+	void setSourceType(std::string source_type);
 
 
     private:

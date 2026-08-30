@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -24,18 +29,80 @@ type PinMediaSourceImagesUrlItem struct {
 
 	Url string `json:"url"`
 }
-
-// AssertPinMediaSourceImagesUrlItemRequired checks if the required fields are not zero-ed
-func AssertPinMediaSourceImagesUrlItemRequired(obj PinMediaSourceImagesUrlItem) error {
-	elements := map[string]interface{}{
-		"url": obj.Url,
+// UnmarshalJSON validates required property keys then unmarshals into PinMediaSourceImagesUrlItem
+func (o *PinMediaSourceImagesUrlItem) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"url",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"url": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"description": {},
+		"link": {},
+		"title": {},
+		"url": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded PinMediaSourceImagesUrlItem
+
+	if value, exists := allProperties["description"]; exists {
+		if err = json.Unmarshal(value, &decoded.Description); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["link"]; exists {
+		if err = json.Unmarshal(value, &decoded.Link); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["title"]; exists {
+		if err = json.Unmarshal(value, &decoded.Title); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["url"]; exists {
+		if err = json.Unmarshal(value, &decoded.Url); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertPinMediaSourceImagesUrlItemRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertPinMediaSourceImagesUrlItemRequired(obj PinMediaSourceImagesUrlItem) error {
 	return nil
 }
 

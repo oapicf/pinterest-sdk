@@ -2,7 +2,7 @@
 /*
  * UpdateMemberAssetAccessBody.h
  *
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  */
 
 #ifndef TINY_CPP_CLIENT_UpdateMemberAssetAccessBody_H_
@@ -12,13 +12,13 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "UpdateMemberAssetAccessBody_accesses_inner.h"
+#include "UpdateMemberAssetAccessItem.h"
 #include <list>
 
 namespace Tiny {
 
 
-/*! \brief An object with a list of all the new accesses.
+/*! \brief An object with a list of all the new member asset accesses.
  *
  *  \ingroup Models
  *
@@ -47,17 +47,17 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get 
+	/*! \brief Get List of member asset accesses to assign or update.
 	 */
-	std::list<UpdateMemberAssetAccessBody_accesses_inner> getAccesses();
+	std::list<UpdateMemberAssetAccessItem> getAccesses();
 
-	/*! \brief Set 
+	/*! \brief Set List of member asset accesses to assign or update.
 	 */
-	void setAccesses(std::list <UpdateMemberAssetAccessBody_accesses_inner> accesses);
+	void setAccesses(std::list<UpdateMemberAssetAccessItem> accesses);
 
 
     private:
-    std::list<UpdateMemberAssetAccessBody_accesses_inner> accesses;
+    std::list<UpdateMemberAssetAccessItem> accesses;
 };
 }
 

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 LabelUpdateRequest::LabelUpdateRequest()
 {
-	labels = std::list<LabelUpdateRequest_labels_inner>();
+	labels = std::list<LabelUpdateItem>();
 }
 
 LabelUpdateRequest::LabelUpdateRequest(std::string jsonString)
@@ -31,8 +31,8 @@ LabelUpdateRequest::fromJson(std::string jsonObj)
         bourne::json value = object[labelsKey];
 
 
-        std::list<LabelUpdateRequest_labels_inner> labels_list;
-        LabelUpdateRequest_labels_inner element;
+        std::list<LabelUpdateItem> labels_list;
+        LabelUpdateItem element;
         for(auto& var : value.array_range())
         {
 
@@ -57,12 +57,12 @@ LabelUpdateRequest::toJson()
 
 
 
-    std::list<LabelUpdateRequest_labels_inner> labels_list = getLabels();
+    std::list<LabelUpdateItem> labels_list = getLabels();
     bourne::json labels_arr = bourne::json::array();
 
     for(auto& var : labels_list)
     {
-        LabelUpdateRequest_labels_inner obj = var;
+        LabelUpdateItem obj = var;
         labels_arr.append(obj.toJson());
     }
     object["labels"] = labels_arr;
@@ -74,14 +74,14 @@ LabelUpdateRequest::toJson()
 
 }
 
-std::list<LabelUpdateRequest_labels_inner>
+std::list<LabelUpdateItem>
 LabelUpdateRequest::getLabels()
 {
 	return labels;
 }
 
 void
-LabelUpdateRequest::setLabels(std::list <LabelUpdateRequest_labels_inner> labels)
+LabelUpdateRequest::setLabels(std::list<LabelUpdateItem> labels)
 {
 	this->labels = labels;
 }

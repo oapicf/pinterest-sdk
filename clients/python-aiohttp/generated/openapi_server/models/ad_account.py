@@ -19,7 +19,7 @@ class AdAccount(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, country: Country=None, created_time: int=None, currency: Currency=None, id: str=None, name: str=None, owner: AdAccountOwner=None, permissions: List[BusinessAccessRole]=None, updated_time: int=None):
+    def __init__(self, country: Country=None, created_time: int=None, currency: Currency=None, id: str=None, name: str=None, owner: AdAccountOwner=None, permissions: List[BusinessAccessRole]=None, time_zone: str=None, updated_time: int=None):
         """AdAccount - a model defined in OpenAPI
 
         :param country: The country of this AdAccount.
@@ -29,6 +29,7 @@ class AdAccount(Model):
         :param name: The name of this AdAccount.
         :param owner: The owner of this AdAccount.
         :param permissions: The permissions of this AdAccount.
+        :param time_zone: The time_zone of this AdAccount.
         :param updated_time: The updated_time of this AdAccount.
         """
         self.openapi_types = {
@@ -39,6 +40,7 @@ class AdAccount(Model):
             'name': str,
             'owner': AdAccountOwner,
             'permissions': List[BusinessAccessRole],
+            'time_zone': str,
             'updated_time': int
         }
 
@@ -50,6 +52,7 @@ class AdAccount(Model):
             'name': 'name',
             'owner': 'owner',
             'permissions': 'permissions',
+            'time_zone': 'time_zone',
             'updated_time': 'updated_time'
         }
 
@@ -60,6 +63,7 @@ class AdAccount(Model):
         self._name = name
         self._owner = owner
         self._permissions = permissions
+        self._time_zone = time_zone
         self._updated_time = updated_time
 
     @classmethod
@@ -231,6 +235,29 @@ class AdAccount(Model):
         """
 
         self._permissions = permissions
+
+    @property
+    def time_zone(self):
+        """Gets the time_zone of this AdAccount.
+
+        The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+
+        :return: The time_zone of this AdAccount.
+        :rtype: str
+        """
+        return self._time_zone
+
+    @time_zone.setter
+    def time_zone(self, time_zone):
+        """Sets the time_zone of this AdAccount.
+
+        The time zone of the ad account, in IANA format (e.g., \"America/Los_Angeles\"). Adding your local time zone lets you view your campaigns and ad reporting in your preferred time zone. Future reports will be available in both your local time zone and default UTC time zone. Historical data takes 1-2 months to backfill. Your billing and order lines will remain in UTC.
+
+        :param time_zone: The time_zone of this AdAccount.
+        :type time_zone: str
+        """
+
+        self._time_zone = time_zone
 
     @property
     def updated_time(self):

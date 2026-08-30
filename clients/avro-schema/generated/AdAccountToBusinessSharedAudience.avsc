@@ -1,0 +1,31 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountToBusinessSharedAudience",
+  "fields": [
+    {
+      "name": "audience_id",
+      "type": "string",
+      "doc": "Unique identifier of an audience"
+    },
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Role"
+      }],
+      "doc": "Permissions granted to the recipients.",
+      "default": null
+    },
+    {
+      "name": "recipient_business_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Business IDs to share with or revoke from (request) / that received the audience (response)."
+    }
+  ]
+
+}

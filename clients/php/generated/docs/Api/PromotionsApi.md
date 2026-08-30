@@ -16,7 +16,7 @@ All URIs are relative to https://api.pinterest.com/v5, except if the operation d
 ## `promotionsCreate()`
 
 ```php
-promotionsCreate($ad_account_id, $promotion_create_request): \OpenAPI\Client\Model\PromotionsResponse
+promotionsCreate($ad_account_id, $promotion_create): \OpenAPI\Client\Model\PromotionsResponse
 ```
 
 Create promotions
@@ -41,10 +41,10 @@ $apiInstance = new OpenAPI\Client\Api\PromotionsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$promotion_create_request = array(new \OpenAPI\Client\Model\PromotionCreateRequest()); // \OpenAPI\Client\Model\PromotionCreateRequest[] | List of promotions to create, size limit [1, 30].
+$promotion_create = array(new \OpenAPI\Client\Model\PromotionCreate()); // \OpenAPI\Client\Model\PromotionCreate[]
 
 try {
-    $result = $apiInstance->promotionsCreate($ad_account_id, $promotion_create_request);
+    $result = $apiInstance->promotionsCreate($ad_account_id, $promotion_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PromotionsApi->promotionsCreate: ', $e->getMessage(), PHP_EOL;
@@ -56,7 +56,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **promotion_create_request** | [**\OpenAPI\Client\Model\PromotionCreateRequest[]**](../Model/PromotionCreateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **promotion_create** | [**\OpenAPI\Client\Model\PromotionCreate[]**](../Model/PromotionCreate.md)|  | |
 
 ### Return type
 
@@ -78,7 +78,7 @@ try {
 ## `promotionsDelete()`
 
 ```php
-promotionsDelete($ad_account_id, $promotion_id)
+promotionsDelete($promotion_id, $ad_account_id): \OpenAPI\Client\Model\Promotion
 ```
 
 Delete promotion by id
@@ -102,11 +102,12 @@ $apiInstance = new OpenAPI\Client\Api\PromotionsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$promotion_id = 'promotion_id_example'; // string | Promotion ID
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$promotion_id = 'promotion_id_example'; // string | Unique identifier of a promotion
 
 try {
-    $apiInstance->promotionsDelete($ad_account_id, $promotion_id);
+    $result = $apiInstance->promotionsDelete($promotion_id, $ad_account_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PromotionsApi->promotionsDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -116,12 +117,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **promotion_id** | **string**| Promotion ID | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **promotion_id** | **string**| Unique identifier of a promotion | |
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\Promotion**](../Model/Promotion.md)
 
 ### Authorization
 
@@ -139,7 +140,7 @@ void (empty response body)
 ## `promotionsGet()`
 
 ```php
-promotionsGet($ad_account_id, $promotion_id): \OpenAPI\Client\Model\PromotionResponse
+promotionsGet($promotion_id, $ad_account_id): \OpenAPI\Client\Model\Promotion
 ```
 
 Get promotion by id
@@ -163,11 +164,11 @@ $apiInstance = new OpenAPI\Client\Api\PromotionsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$promotion_id = 'promotion_id_example'; // string | Promotion ID
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$promotion_id = 'promotion_id_example'; // string | Unique identifier of a promotion
 
 try {
-    $result = $apiInstance->promotionsGet($ad_account_id, $promotion_id);
+    $result = $apiInstance->promotionsGet($promotion_id, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PromotionsApi->promotionsGet: ', $e->getMessage(), PHP_EOL;
@@ -178,12 +179,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **promotion_id** | **string**| Promotion ID | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **promotion_id** | **string**| Unique identifier of a promotion | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PromotionResponse**](../Model/PromotionResponse.md)
+[**\OpenAPI\Client\Model\Promotion**](../Model/Promotion.md)
 
 ### Authorization
 
@@ -201,7 +202,7 @@ try {
 ## `promotionsList()`
 
 ```php
-promotionsList($ad_account_id, $page_size, $order, $bookmark): \OpenAPI\Client\Model\PromotionsList200Response
+promotionsList($ad_account_id, $bookmark, $page_size, $order): \OpenAPI\Client\Model\PromotionsList200Response
 ```
 
 Get promotions
@@ -226,12 +227,12 @@ $apiInstance = new OpenAPI\Client\Api\PromotionsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-$order = ASCENDING; // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+$order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\PinterestLibPaginationOrder(); // \OpenAPI\Client\Model\PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
 
 try {
-    $result = $apiInstance->promotionsList($ad_account_id, $page_size, $order, $bookmark);
+    $result = $apiInstance->promotionsList($ad_account_id, $bookmark, $page_size, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PromotionsApi->promotionsList: ', $e->getMessage(), PHP_EOL;
@@ -243,9 +244,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**\OpenAPI\Client\Model\PinterestLibPaginationOrder**](../Model/.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] |
 
 ### Return type
 
@@ -267,7 +268,7 @@ try {
 ## `promotionsUpdate()`
 
 ```php
-promotionsUpdate($ad_account_id, $promotion_update_request): \OpenAPI\Client\Model\PromotionsResponse
+promotionsUpdate($ad_account_id, $promotion_batch_update): \OpenAPI\Client\Model\PromotionsResponse
 ```
 
 Update promotions
@@ -292,10 +293,10 @@ $apiInstance = new OpenAPI\Client\Api\PromotionsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$promotion_update_request = array(new \OpenAPI\Client\Model\PromotionUpdateRequest()); // \OpenAPI\Client\Model\PromotionUpdateRequest[] | List of promotions to create, size limit [1, 30].
+$promotion_batch_update = array(new \OpenAPI\Client\Model\PromotionBatchUpdate()); // \OpenAPI\Client\Model\PromotionBatchUpdate[]
 
 try {
-    $result = $apiInstance->promotionsUpdate($ad_account_id, $promotion_update_request);
+    $result = $apiInstance->promotionsUpdate($ad_account_id, $promotion_batch_update);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PromotionsApi->promotionsUpdate: ', $e->getMessage(), PHP_EOL;
@@ -307,7 +308,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **promotion_update_request** | [**\OpenAPI\Client\Model\PromotionUpdateRequest[]**](../Model/PromotionUpdateRequest.md)| List of promotions to create, size limit [1, 30]. | |
+| **promotion_batch_update** | [**\OpenAPI\Client\Model\PromotionBatchUpdate[]**](../Model/PromotionBatchUpdate.md)|  | |
 
 ### Return type
 

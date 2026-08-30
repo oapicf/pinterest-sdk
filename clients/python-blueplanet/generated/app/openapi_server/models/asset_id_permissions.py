@@ -7,6 +7,7 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.asset_group_binding import AssetGroupBinding  # noqa: F401,E501
+from app.openapi_server.models.asset_type_response import AssetTypeResponse  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -17,7 +18,7 @@ class AssetIdPermissions(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, asset_group_info: AssetGroupBinding=None, asset_id: str=None, asset_type: str=None, permissions: List[str]=None):  # noqa: E501
+    def __init__(self, asset_group_info: AssetGroupBinding=None, asset_id: str=None, asset_type: AssetTypeResponse=None, permissions: List[str]=None):  # noqa: E501
         """AssetIdPermissions - a model defined in Swagger
 
         :param asset_group_info: The asset_group_info of this AssetIdPermissions.  # noqa: E501
@@ -25,14 +26,14 @@ class AssetIdPermissions(Model):
         :param asset_id: The asset_id of this AssetIdPermissions.  # noqa: E501
         :type asset_id: str
         :param asset_type: The asset_type of this AssetIdPermissions.  # noqa: E501
-        :type asset_type: str
+        :type asset_type: AssetTypeResponse
         :param permissions: The permissions of this AssetIdPermissions.  # noqa: E501
         :type permissions: List[str]
         """
         self.swagger_types = {
             'asset_group_info': AssetGroupBinding,
             'asset_id': str,
-            'asset_type': str,
+            'asset_type': AssetTypeResponse,
             'permissions': List[str]
         }
 
@@ -63,6 +64,7 @@ class AssetIdPermissions(Model):
     def asset_group_info(self) -> AssetGroupBinding:
         """Gets the asset_group_info of this AssetIdPermissions.
 
+        An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.  # noqa: E501
 
         :return: The asset_group_info of this AssetIdPermissions.
         :rtype: AssetGroupBinding
@@ -73,6 +75,7 @@ class AssetIdPermissions(Model):
     def asset_group_info(self, asset_group_info: AssetGroupBinding):
         """Sets the asset_group_info of this AssetIdPermissions.
 
+        An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.  # noqa: E501
 
         :param asset_group_info: The asset_group_info of this AssetIdPermissions.
         :type asset_group_info: AssetGroupBinding
@@ -100,6 +103,8 @@ class AssetIdPermissions(Model):
         :param asset_id: The asset_id of this AssetIdPermissions.
         :type asset_id: str
         """
+        if asset_id is None:
+            raise ValueError("Invalid value for `asset_id`, must not be `None`")  # noqa: E501
         if asset_id is not None and len(asset_id) > 20:
             raise ValueError("Invalid value for `asset_id`, length must be less than or equal to `20`")  # noqa: E501
         if asset_id is not None and len(asset_id) < 1:
@@ -110,25 +115,25 @@ class AssetIdPermissions(Model):
         self._asset_id = asset_id
 
     @property
-    def asset_type(self) -> str:
+    def asset_type(self) -> AssetTypeResponse:
         """Gets the asset_type of this AssetIdPermissions.
 
-        Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.  # noqa: E501
 
         :return: The asset_type of this AssetIdPermissions.
-        :rtype: str
+        :rtype: AssetTypeResponse
         """
         return self._asset_type
 
     @asset_type.setter
-    def asset_type(self, asset_type: str):
+    def asset_type(self, asset_type: AssetTypeResponse):
         """Sets the asset_type of this AssetIdPermissions.
 
-        Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.  # noqa: E501
 
         :param asset_type: The asset_type of this AssetIdPermissions.
-        :type asset_type: str
+        :type asset_type: AssetTypeResponse
         """
+        if asset_type is None:
+            raise ValueError("Invalid value for `asset_type`, must not be `None`")  # noqa: E501
 
         self._asset_type = asset_type
 
@@ -152,5 +157,7 @@ class AssetIdPermissions(Model):
         :param permissions: The permissions of this AssetIdPermissions.
         :type permissions: List[str]
         """
+        if permissions is None:
+            raise ValueError("Invalid value for `permissions`, must not be `None`")  # noqa: E501
 
         self._permissions = permissions

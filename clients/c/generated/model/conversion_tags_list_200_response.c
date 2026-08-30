@@ -12,18 +12,21 @@ static conversion_tags_list_200_response_t *conversion_tags_list_200_response_cr
     if (!conversion_tags_list_200_response_local_var) {
         return NULL;
     }
-    conversion_tags_list_200_response_local_var->items = items;
-
+    memset(conversion_tags_list_200_response_local_var, 0, sizeof(conversion_tags_list_200_response_t));
     conversion_tags_list_200_response_local_var->_library_owned = 1;
+    conversion_tags_list_200_response_local_var->items = items;
     return conversion_tags_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) conversion_tags_list_200_response_t *conversion_tags_list_200_response_create(
     list_t *items
     ) {
-    return conversion_tags_list_200_response_create_internal (
+    conversion_tags_list_200_response_t *result = conversion_tags_list_200_response_create_internal (
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void conversion_tags_list_200_response_free(conversion_tags_list_200_response_t *conversion_tags_list_200_response) {
@@ -111,9 +114,14 @@ conversion_tags_list_200_response_t *conversion_tags_list_200_response_parseFrom
     }
 
 
+
     conversion_tags_list_200_response_local_var = conversion_tags_list_200_response_create_internal (
         itemsList
         );
+
+    if (!conversion_tags_list_200_response_local_var) {
+        goto end;
+    }
 
     return conversion_tags_list_200_response_local_var;
 end:

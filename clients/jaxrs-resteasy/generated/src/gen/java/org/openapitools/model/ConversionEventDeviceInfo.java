@@ -10,11 +10,14 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FormFactor;
+import org.openapitools.model.NetworkType;
+import org.openapitools.model.OsFamily;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object containing information about the device where event occurred.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Object containing information about the device where event occurred.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEventDeviceInfo   {
   
   private Integer batteryLevel;
@@ -23,112 +26,13 @@ public class ConversionEventDeviceInfo   {
   private Integer cpuCores;
   private Integer externalStorageFreeSpace;
   private Integer externalStorageSize;
-
-  /**
-   * Device form factor
-   */
-  public enum FormFactorEnum {
-    DESKTOP("desktop"),
-
-        LAPTOP("laptop"),
-
-        CELLPHONE("cellphone"),
-
-        TABLET("tablet"),
-
-        SMARTWATCH("smartwatch"),
-
-        TV("tv"),
-
-        VR("vr"),
-
-        CONSOLE("console"),
-
-        OTHER("other");
-    private String value;
-
-    FormFactorEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private FormFactorEnum formFactor;
+  private FormFactor formFactor;
   private String kernelVersion;
   private List<String> languages = new ArrayList<>();
   private String locale;
   private String model;
-
-  /**
-   * Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-   */
-  public enum NetworkTypeEnum {
-    WIFI("wifi"),
-
-        CELLULAR_2G("cellular_2g"),
-
-        CELLULAR_3G("cellular_3g"),
-
-        CELLULAR_4G("cellular_4g"),
-
-        CELLULAR_5G("cellular_5g"),
-
-        CELLULAR_6G("cellular_6g"),
-
-        ETHERNET("ethernet"),
-
-        UNKNOWN("unknown");
-    private String value;
-
-    NetworkTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private NetworkTypeEnum networkType;
-
-  /**
-   * OS Family
-   */
-  public enum OsFamilyEnum {
-    IOS("ios"),
-
-        ANDROID("android"),
-
-        MACOS("macos"),
-
-        WINDOWS("windows"),
-
-        LINUX("linux"),
-
-        BSD("bsd"),
-
-        OTHER("other");
-    private String value;
-
-    OsFamilyEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private OsFamilyEnum osFamily;
+  private NetworkType networkType;
+  private OsFamily osFamily;
   private String osName;
   private String osReleaseName;
   private String osVersion;
@@ -233,10 +137,11 @@ public class ConversionEventDeviceInfo   {
   
   @ApiModelProperty(example = "cellphone", value = "Device form factor")
   @JsonProperty("form_factor")
-  public FormFactorEnum getFormFactor() {
+  @Valid
+  public FormFactor getFormFactor() {
     return formFactor;
   }
-  public void setFormFactor(FormFactorEnum formFactor) {
+  public void setFormFactor(FormFactor formFactor) {
     this.formFactor = formFactor;
   }
 
@@ -283,7 +188,7 @@ public class ConversionEventDeviceInfo   {
    * Device model name
    **/
   
-  @ApiModelProperty(example = "16 Pro, Galaxy S25 Ultra", value = "Device model name")
+  @ApiModelProperty(value = "Device model name")
   @JsonProperty("model")
  @Size(max=100)  public String getModel() {
     return model;
@@ -298,10 +203,11 @@ public class ConversionEventDeviceInfo   {
   
   @ApiModelProperty(example = "wifi", value = "Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()")
   @JsonProperty("network_type")
-  public NetworkTypeEnum getNetworkType() {
+  @Valid
+  public NetworkType getNetworkType() {
     return networkType;
   }
-  public void setNetworkType(NetworkTypeEnum networkType) {
+  public void setNetworkType(NetworkType networkType) {
     this.networkType = networkType;
   }
 
@@ -311,10 +217,11 @@ public class ConversionEventDeviceInfo   {
   
   @ApiModelProperty(example = "ios", value = "OS Family")
   @JsonProperty("os_family")
-  public OsFamilyEnum getOsFamily() {
+  @Valid
+  public OsFamily getOsFamily() {
     return osFamily;
   }
-  public void setOsFamily(OsFamilyEnum osFamily) {
+  public void setOsFamily(OsFamily osFamily) {
     this.osFamily = osFamily;
   }
 
@@ -550,10 +457,7 @@ public class ConversionEventDeviceInfo   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

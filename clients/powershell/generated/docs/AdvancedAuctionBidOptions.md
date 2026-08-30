@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $AdvancedAuctionBidOptions = Initialize-PSOpenAPIToolsAdvancedAuctionBidOptions  -AppTypeMultipliers null `
- -BidInMicroCurrency 5000000 `
+ -BidInMicroCurrency null `
  -PlacementMultipliers null
 ```
 

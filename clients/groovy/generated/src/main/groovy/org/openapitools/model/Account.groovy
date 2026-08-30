@@ -4,37 +4,15 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.UserAccountType;
 
 @Canonical
 class Account {
     /* Profile about description. */
     String about
-
-    enum AccountTypeEnum {
-    
-        PINNER("PINNER"),
-        
-        BUSINESS("BUSINESS")
-    
-        private final String value
-    
-        AccountTypeEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
     /* Type of account */
-    AccountTypeEnum accountType
-    /* User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
+    UserAccountType accountType
+    /*   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
     Integer boardCount
     
     String businessName

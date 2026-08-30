@@ -5,19 +5,19 @@
 -export_type([openapi_catalogs_hotel_report_stats_parameters_report/0]).
 
 -type openapi_catalogs_hotel_report_stats_parameters_report() ::
-    #{ 'report_type' => binary(),
-       'feed_id' := binary(),
+    #{ 'feed_id' := binary(),
        'processing_result_id' => binary(),
+       'report_type' := binary(),
        'catalog_id' => binary()
      }.
 
-encode(#{ 'report_type' := ReportType,
-          'feed_id' := FeedId,
+encode(#{ 'feed_id' := FeedId,
           'processing_result_id' := ProcessingResultId,
+          'report_type' := ReportType,
           'catalog_id' := CatalogId
         }) ->
-    #{ 'report_type' => ReportType,
-       'feed_id' => FeedId,
+    #{ 'feed_id' => FeedId,
        'processing_result_id' => ProcessingResultId,
+       'report_type' => ReportType,
        'catalog_id' => CatalogId
      }.

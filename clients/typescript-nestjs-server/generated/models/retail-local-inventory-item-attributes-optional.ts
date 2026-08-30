@@ -1,0 +1,28 @@
+import { ItemAvailability } from './item-availability';
+
+
+/**
+ * Local inventory attributes for retail items (all fields optional for update/get)
+ */
+export interface RetailLocalInventoryItemAttributesOptional { 
+  /**
+   * Ad link for the item
+   */
+  ad_link?: string;
+  /**
+   * Availability status of the item
+   */
+  availability?: ItemAvailability;
+  /**
+   * The price of the product. It supports the following formats, \"49.99 USD\", \"49.99USD\" and \"49.99\". If the currency is not included, we default to US dollars.
+   */
+  price?: string;
+  /**
+   * The sale price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
+   */
+  sale_price?: string;
+}
+export namespace RetailLocalInventoryItemAttributesOptional {
+}
+
+

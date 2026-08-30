@@ -7,14 +7,14 @@ goog.provide('API.Client.CatalogsHotelFeedsCreateRequest');
 API.Client.CatalogsHotelFeedsCreateRequest = function() {}
 
 /**
- * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.catalogId;
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.catalogType;
@@ -32,7 +32,7 @@ API.Client.CatalogsHotelFeedsCreateRequest.prototype.credentials;
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.defaultCurrency;
 
 /**
- * @type {!API.Client.CatalogsFeedsCreateRequest_default_locale}
+ * @type {!API.Client.CatalogsCreativeAssetsFeedsCreateRequest_default_locale}
  * @export
  */
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.defaultLocale;
@@ -69,3 +69,7 @@ API.Client.CatalogsHotelFeedsCreateRequest.prototype.preferredProcessingSchedule
  */
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsHotelFeedsCreateRequest.CatalogTypeEnum = { 
+  HOTEL: 'HOTEL',
+}

@@ -1,10 +1,11 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
+import org.openapitools.vertxweb.server.model.TargetingTemplate;
 import org.openapitools.vertxweb.server.model.TargetingTemplateCreate;
-import org.openapitools.vertxweb.server.model.TargetingTemplateGetResponseData;
 import org.openapitools.vertxweb.server.model.TargetingTemplateList200Response;
-import org.openapitools.vertxweb.server.model.TargetingTemplateUpdateRequest;
+import org.openapitools.vertxweb.server.model.TargetingTemplateUpdateRequestReadOrUpdate;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -73,20 +74,20 @@ public class TargetingTemplateApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
-        String order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getString() : null;
+        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        PinterestLibPaginationOrder order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getPinterestLibPaginationOrder() : null;
         Boolean includeSizing = requestParameters.queryParameter("include_sizing") != null ? requestParameters.queryParameter("include_sizing").getBoolean() : false;
         String searchQuery = requestParameters.queryParameter("search_query") != null ? requestParameters.queryParameter("search_query").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
-        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter order is {}", order);
         logger.debug("Parameter includeSizing is {}", includeSizing);
         logger.debug("Parameter searchQuery is {}", searchQuery);
-        logger.debug("Parameter pageSize is {}", pageSize);
-        logger.debug("Parameter bookmark is {}", bookmark);
 
-        api.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark)
+        api.targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -106,12 +107,12 @@ public class TargetingTemplateApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<TargetingTemplateUpdateRequest>(){}) : null;
+        TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<TargetingTemplateUpdateRequestReadOrUpdate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter targetingTemplateUpdateRequest is {}", targetingTemplateUpdateRequest);
+        logger.debug("Parameter targetingTemplateUpdateRequestReadOrUpdate is {}", targetingTemplateUpdateRequestReadOrUpdate);
 
-        api.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
+        api.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

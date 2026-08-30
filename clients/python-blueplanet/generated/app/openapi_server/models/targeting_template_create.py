@@ -7,7 +7,7 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.placement_group_type import PlacementGroupType  # noqa: F401,E501
-from app.openapi_server.models.targeting_spec import TargetingSpec  # noqa: F401,E501
+from app.openapi_server.models.targeting_spec_optimal import TargetingSpecOptimal  # noqa: F401,E501
 from app.openapi_server.models.targeting_template_keyword import TargetingTemplateKeyword  # noqa: F401,E501
 from app.openapi_server.models.tracking_urls import TrackingUrls  # noqa: F401,E501
 from openapi_server import util
@@ -19,7 +19,7 @@ class TargetingTemplateCreate(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, auto_targeting_enabled: bool=True, keywords: List[TargetingTemplateKeyword]=None, name: str=None, placement_group: PlacementGroupType=PlacementGroupType.ALL, targeting_attributes: TargetingSpec=None, tracking_urls: TrackingUrls=None):  # noqa: E501
+    def __init__(self, auto_targeting_enabled: bool=True, keywords: List[TargetingTemplateKeyword]=None, name: str=None, placement_group: PlacementGroupType=PlacementGroupType.ALL, targeting_attributes: TargetingSpecOptimal=None, tracking_urls: TrackingUrls=None):  # noqa: E501
         """TargetingTemplateCreate - a model defined in Swagger
 
         :param auto_targeting_enabled: The auto_targeting_enabled of this TargetingTemplateCreate.  # noqa: E501
@@ -31,7 +31,7 @@ class TargetingTemplateCreate(Model):
         :param placement_group: The placement_group of this TargetingTemplateCreate.  # noqa: E501
         :type placement_group: PlacementGroupType
         :param targeting_attributes: The targeting_attributes of this TargetingTemplateCreate.  # noqa: E501
-        :type targeting_attributes: TargetingSpec
+        :type targeting_attributes: TargetingSpecOptimal
         :param tracking_urls: The tracking_urls of this TargetingTemplateCreate.  # noqa: E501
         :type tracking_urls: TrackingUrls
         """
@@ -40,7 +40,7 @@ class TargetingTemplateCreate(Model):
             'keywords': List[TargetingTemplateKeyword],
             'name': str,
             'placement_group': PlacementGroupType,
-            'targeting_attributes': TargetingSpec,
+            'targeting_attributes': TargetingSpecOptimal,
             'tracking_urls': TrackingUrls
         }
 
@@ -75,7 +75,7 @@ class TargetingTemplateCreate(Model):
     def auto_targeting_enabled(self) -> bool:
         """Gets the auto_targeting_enabled of this TargetingTemplateCreate.
 
-        Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.  # noqa: E501
+        Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).  # noqa: E501
 
         :return: The auto_targeting_enabled of this TargetingTemplateCreate.
         :rtype: bool
@@ -86,7 +86,7 @@ class TargetingTemplateCreate(Model):
     def auto_targeting_enabled(self, auto_targeting_enabled: bool):
         """Sets the auto_targeting_enabled of this TargetingTemplateCreate.
 
-        Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.  # noqa: E501
+        Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting).  # noqa: E501
 
         :param auto_targeting_enabled: The auto_targeting_enabled of this TargetingTemplateCreate.
         :type auto_targeting_enabled: bool
@@ -119,7 +119,7 @@ class TargetingTemplateCreate(Model):
     def name(self) -> str:
         """Gets the name of this TargetingTemplateCreate.
 
-        Name of targeting template.  # noqa: E501
+        targeting template name  # noqa: E501
 
         :return: The name of this TargetingTemplateCreate.
         :rtype: str
@@ -130,7 +130,7 @@ class TargetingTemplateCreate(Model):
     def name(self, name: str):
         """Sets the name of this TargetingTemplateCreate.
 
-        Name of targeting template.  # noqa: E501
+        targeting template name  # noqa: E501
 
         :param name: The name of this TargetingTemplateCreate.
         :type name: str
@@ -162,22 +162,24 @@ class TargetingTemplateCreate(Model):
         self._placement_group = placement_group
 
     @property
-    def targeting_attributes(self) -> TargetingSpec:
+    def targeting_attributes(self) -> TargetingSpecOptimal:
         """Gets the targeting_attributes of this TargetingTemplateCreate.
 
+        targeting profile attributes  # noqa: E501
 
         :return: The targeting_attributes of this TargetingTemplateCreate.
-        :rtype: TargetingSpec
+        :rtype: TargetingSpecOptimal
         """
         return self._targeting_attributes
 
     @targeting_attributes.setter
-    def targeting_attributes(self, targeting_attributes: TargetingSpec):
+    def targeting_attributes(self, targeting_attributes: TargetingSpecOptimal):
         """Sets the targeting_attributes of this TargetingTemplateCreate.
 
+        targeting profile attributes  # noqa: E501
 
         :param targeting_attributes: The targeting_attributes of this TargetingTemplateCreate.
-        :type targeting_attributes: TargetingSpec
+        :type targeting_attributes: TargetingSpecOptimal
         """
         if targeting_attributes is None:
             raise ValueError("Invalid value for `targeting_attributes`, must not be `None`")  # noqa: E501

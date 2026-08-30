@@ -12,6 +12,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
+/**
+ * Salesforce account item with billing and terms information.
+ */
+@ApiModel(description="Salesforce account item with billing and terms information.")
+
 public class SSIOAccountItem  {
   
  /**
@@ -48,7 +53,7 @@ public class SSIOAccountItem  {
  /**
   * Salesforce text for Rest of the World Terms and Conditions
   */
-  @ApiModelProperty(example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
+  @ApiModelProperty(example = "  The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
   private String rowTerms;
 
  /**
@@ -341,10 +346,7 @@ public class SSIOAccountItem  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

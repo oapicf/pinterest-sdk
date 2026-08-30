@@ -18,9 +18,8 @@
     },
     {
       "name": "id",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
+      "type": "string",
+      "doc": ""
     },
     {
       "name": "link",

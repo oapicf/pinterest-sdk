@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "LeadFormTestCreate",
+  "fields": [
+    {
+      "name": "answers",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Test lead answers. Should follow the creation order."
+    }
+  ]
+
+}

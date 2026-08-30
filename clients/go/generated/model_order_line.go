@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,13 +23,15 @@ var _ MappedNullable = &OrderLine{}
 // OrderLine struct for OrderLine
 type OrderLine struct {
 	// Ad account ID.
-	AdAccountId *string `json:"ad_account_id,omitempty"`
+	AdAccountId string `json:"ad_account_id"`
 	// Order line budget in micro currency.
 	Budget NullableFloat32 `json:"budget,omitempty"`
+	// Associated List of campaign IDs.
+	CampaignIds []string `json:"campaign_ids"`
 	// End time. Unix timestamp.
 	EndTime NullableFloat32 `json:"end_time,omitempty"`
 	// Order line ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 	// Order line name.
 	Name NullableString `json:"name,omitempty"`
 	// Order line paid budget in micro currency.
@@ -41,11 +43,9 @@ type OrderLine struct {
 	// Start time. Unix timestamp.
 	StartTime *float32 `json:"start_time,omitempty"`
 	// Order line status.
-	Status *OrderLineStatus `json:"status,omitempty"`
+	Status OrderLineStatus `json:"status"`
 	// Always \"orderline\".
-	Type *string `json:"type,omitempty"`
-	// Associated List of campaign IDs.
-	CampaignIds []string `json:"campaign_ids"`
+	Type string `json:"type"`
 }
 
 type _OrderLine OrderLine
@@ -54,9 +54,13 @@ type _OrderLine OrderLine
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderLine(campaignIds []string) *OrderLine {
+func NewOrderLine(adAccountId string, campaignIds []string, id string, status OrderLineStatus, type_ string) *OrderLine {
 	this := OrderLine{}
+	this.AdAccountId = adAccountId
 	this.CampaignIds = campaignIds
+	this.Id = id
+	this.Status = status
+	this.Type = type_
 	return &this
 }
 
@@ -68,36 +72,28 @@ func NewOrderLineWithDefaults() *OrderLine {
 	return &this
 }
 
-// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
+// GetAdAccountId returns the AdAccountId field value
 func (o *OrderLine) GetAdAccountId() string {
-	if o == nil || IsNil(o.AdAccountId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AdAccountId
+
+	return o.AdAccountId
 }
 
-// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
+// GetAdAccountIdOk returns a tuple with the AdAccountId field value
 // and a boolean to check if the value has been set.
 func (o *OrderLine) GetAdAccountIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AdAccountId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AdAccountId, true
+	return &o.AdAccountId, true
 }
 
-// HasAdAccountId returns a boolean if a field has been set.
-func (o *OrderLine) HasAdAccountId() bool {
-	if o != nil && !IsNil(o.AdAccountId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
+// SetAdAccountId sets field value
 func (o *OrderLine) SetAdAccountId(v string) {
-	o.AdAccountId = &v
+	o.AdAccountId = v
 }
 
 // GetBudget returns the Budget field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -142,6 +138,30 @@ func (o *OrderLine) UnsetBudget() {
 	o.Budget.Unset()
 }
 
+// GetCampaignIds returns the CampaignIds field value
+func (o *OrderLine) GetCampaignIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.CampaignIds
+}
+
+// GetCampaignIdsOk returns a tuple with the CampaignIds field value
+// and a boolean to check if the value has been set.
+func (o *OrderLine) GetCampaignIdsOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CampaignIds, true
+}
+
+// SetCampaignIds sets field value
+func (o *OrderLine) SetCampaignIds(v []string) {
+	o.CampaignIds = v
+}
+
 // GetEndTime returns the EndTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderLine) GetEndTime() float32 {
 	if o == nil || IsNil(o.EndTime.Get()) {
@@ -184,36 +204,28 @@ func (o *OrderLine) UnsetEndTime() {
 	o.EndTime.Unset()
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *OrderLine) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *OrderLine) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *OrderLine) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *OrderLine) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -416,92 +428,52 @@ func (o *OrderLine) SetStartTime(v float32) {
 	o.StartTime = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *OrderLine) GetStatus() OrderLineStatus {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret OrderLineStatus
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *OrderLine) GetStatusOk() (*OrderLineStatus, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *OrderLine) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given OrderLineStatus and assigns it to the Status field.
+// SetStatus sets field value
 func (o *OrderLine) SetStatus(v OrderLineStatus) {
-	o.Status = &v
+	o.Status = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *OrderLine) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *OrderLine) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *OrderLine) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *OrderLine) SetType(v string) {
-	o.Type = &v
-}
-
-// GetCampaignIds returns the CampaignIds field value
-func (o *OrderLine) GetCampaignIds() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.CampaignIds
-}
-
-// GetCampaignIdsOk returns a tuple with the CampaignIds field value
-// and a boolean to check if the value has been set.
-func (o *OrderLine) GetCampaignIdsOk() ([]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CampaignIds, true
-}
-
-// SetCampaignIds sets field value
-func (o *OrderLine) SetCampaignIds(v []string) {
-	o.CampaignIds = v
+	o.Type = v
 }
 
 func (o OrderLine) MarshalJSON() ([]byte, error) {
@@ -514,18 +486,15 @@ func (o OrderLine) MarshalJSON() ([]byte, error) {
 
 func (o OrderLine) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AdAccountId) {
-		toSerialize["ad_account_id"] = o.AdAccountId
-	}
+	toSerialize["ad_account_id"] = o.AdAccountId
 	if o.Budget.IsSet() {
 		toSerialize["budget"] = o.Budget.Get()
 	}
+	toSerialize["campaign_ids"] = o.CampaignIds
 	if o.EndTime.IsSet() {
 		toSerialize["end_time"] = o.EndTime.Get()
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["id"] = o.Id
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -541,13 +510,8 @@ func (o OrderLine) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StartTime) {
 		toSerialize["start_time"] = o.StartTime
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	toSerialize["campaign_ids"] = o.CampaignIds
+	toSerialize["status"] = o.Status
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -556,7 +520,11 @@ func (o *OrderLine) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"ad_account_id",
 		"campaign_ids",
+		"id",
+		"status",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

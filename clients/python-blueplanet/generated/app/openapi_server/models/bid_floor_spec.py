@@ -7,10 +7,10 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.action_type import ActionType  # noqa: F401,E501
+from app.openapi_server.models.bid_floor_objective_type import BidFloorObjectiveType  # noqa: F401,E501
 from app.openapi_server.models.country import Country  # noqa: F401,E501
 from app.openapi_server.models.creative_type import CreativeType  # noqa: F401,E501
 from app.openapi_server.models.currency import Currency  # noqa: F401,E501
-from app.openapi_server.models.objective_type import ObjectiveType  # noqa: F401,E501
 from app.openapi_server.models.optimization_goal_metadata import OptimizationGoalMetadata  # noqa: F401,E501
 from openapi_server import util
 
@@ -21,7 +21,7 @@ class BidFloorSpec(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, billable_event: ActionType=None, countries: List[Country]=None, creative_type: CreativeType=None, currency: Currency=None, objective_type: ObjectiveType=None, optimization_goal_metadata: OptimizationGoalMetadata=None):  # noqa: E501
+    def __init__(self, billable_event: ActionType=None, countries: List[Country]=None, creative_type: CreativeType=None, currency: Currency=None, objective_type: BidFloorObjectiveType=None, optimization_goal_metadata: OptimizationGoalMetadata=None):  # noqa: E501
         """BidFloorSpec - a model defined in Swagger
 
         :param billable_event: The billable_event of this BidFloorSpec.  # noqa: E501
@@ -33,7 +33,7 @@ class BidFloorSpec(Model):
         :param currency: The currency of this BidFloorSpec.  # noqa: E501
         :type currency: Currency
         :param objective_type: The objective_type of this BidFloorSpec.  # noqa: E501
-        :type objective_type: ObjectiveType
+        :type objective_type: BidFloorObjectiveType
         :param optimization_goal_metadata: The optimization_goal_metadata of this BidFloorSpec.  # noqa: E501
         :type optimization_goal_metadata: OptimizationGoalMetadata
         """
@@ -42,7 +42,7 @@ class BidFloorSpec(Model):
             'countries': List[Country],
             'creative_type': CreativeType,
             'currency': Currency,
-            'objective_type': ObjectiveType,
+            'objective_type': BidFloorObjectiveType,
             'optimization_goal_metadata': OptimizationGoalMetadata
         }
 
@@ -77,6 +77,7 @@ class BidFloorSpec(Model):
     def billable_event(self) -> ActionType:
         """Gets the billable_event of this BidFloorSpec.
 
+        Ad group billable event type.  # noqa: E501
 
         :return: The billable_event of this BidFloorSpec.
         :rtype: ActionType
@@ -87,6 +88,7 @@ class BidFloorSpec(Model):
     def billable_event(self, billable_event: ActionType):
         """Sets the billable_event of this BidFloorSpec.
 
+        Ad group billable event type.  # noqa: E501
 
         :param billable_event: The billable_event of this BidFloorSpec.
         :type billable_event: ActionType
@@ -100,6 +102,7 @@ class BidFloorSpec(Model):
     def countries(self) -> List[Country]:
         """Gets the countries of this BidFloorSpec.
 
+        List of ISO 3166-1 alpha-2 country codes.  # noqa: E501
 
         :return: The countries of this BidFloorSpec.
         :rtype: List[Country]
@@ -110,6 +113,7 @@ class BidFloorSpec(Model):
     def countries(self, countries: List[Country]):
         """Sets the countries of this BidFloorSpec.
 
+        List of ISO 3166-1 alpha-2 country codes.  # noqa: E501
 
         :param countries: The countries of this BidFloorSpec.
         :type countries: List[Country]
@@ -121,6 +125,7 @@ class BidFloorSpec(Model):
     def creative_type(self) -> CreativeType:
         """Gets the creative_type of this BidFloorSpec.
 
+        Creative type for the bid floor request.  # noqa: E501
 
         :return: The creative_type of this BidFloorSpec.
         :rtype: CreativeType
@@ -131,6 +136,7 @@ class BidFloorSpec(Model):
     def creative_type(self, creative_type: CreativeType):
         """Sets the creative_type of this BidFloorSpec.
 
+        Creative type for the bid floor request.  # noqa: E501
 
         :param creative_type: The creative_type of this BidFloorSpec.
         :type creative_type: CreativeType
@@ -142,6 +148,7 @@ class BidFloorSpec(Model):
     def currency(self) -> Currency:
         """Gets the currency of this BidFloorSpec.
 
+        Currency for the bid floor value.  # noqa: E501
 
         :return: The currency of this BidFloorSpec.
         :rtype: Currency
@@ -152,6 +159,7 @@ class BidFloorSpec(Model):
     def currency(self, currency: Currency):
         """Sets the currency of this BidFloorSpec.
 
+        Currency for the bid floor value.  # noqa: E501
 
         :param currency: The currency of this BidFloorSpec.
         :type currency: Currency
@@ -162,22 +170,24 @@ class BidFloorSpec(Model):
         self._currency = currency
 
     @property
-    def objective_type(self) -> ObjectiveType:
+    def objective_type(self) -> BidFloorObjectiveType:
         """Gets the objective_type of this BidFloorSpec.
 
+        Campaign objective type.  # noqa: E501
 
         :return: The objective_type of this BidFloorSpec.
-        :rtype: ObjectiveType
+        :rtype: BidFloorObjectiveType
         """
         return self._objective_type
 
     @objective_type.setter
-    def objective_type(self, objective_type: ObjectiveType):
+    def objective_type(self, objective_type: BidFloorObjectiveType):
         """Sets the objective_type of this BidFloorSpec.
 
+        Campaign objective type.  # noqa: E501
 
         :param objective_type: The objective_type of this BidFloorSpec.
-        :type objective_type: ObjectiveType
+        :type objective_type: BidFloorObjectiveType
         """
 
         self._objective_type = objective_type
@@ -186,6 +196,7 @@ class BidFloorSpec(Model):
     def optimization_goal_metadata(self) -> OptimizationGoalMetadata:
         """Gets the optimization_goal_metadata of this BidFloorSpec.
 
+        Optimization goal metadata.  # noqa: E501
 
         :return: The optimization_goal_metadata of this BidFloorSpec.
         :rtype: OptimizationGoalMetadata
@@ -196,6 +207,7 @@ class BidFloorSpec(Model):
     def optimization_goal_metadata(self, optimization_goal_metadata: OptimizationGoalMetadata):
         """Sets the optimization_goal_metadata of this BidFloorSpec.
 
+        Optimization goal metadata.  # noqa: E501
 
         :param optimization_goal_metadata: The optimization_goal_metadata of this BidFloorSpec.
         :type optimization_goal_metadata: OptimizationGoalMetadata

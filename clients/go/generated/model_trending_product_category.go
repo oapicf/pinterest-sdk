@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,10 +28,12 @@ type TrendingProductCategory struct {
 	PctChangeMom int32 `json:"pct_change_mom"`
 	// Relative volume percentage
 	PercentRelativeVolume int32 `json:"percent_relative_volume"`
+	// Pinterest Product Category Id
+	PinterestProductCategoryId int32 `json:"pinterest_product_category_id"`
 	// Product Category Name
 	ProductCategory string `json:"product_category"`
 	// Vertical name associated with the product category
-	Verticals []VerticalProductCategory `json:"verticals,omitempty"`
+	Verticals []string `json:"verticals,omitempty"`
 }
 
 type _TrendingProductCategory TrendingProductCategory
@@ -40,11 +42,12 @@ type _TrendingProductCategory TrendingProductCategory
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrendingProductCategory(engagementType ProductCategoriesEngagementType, pctChangeMom int32, percentRelativeVolume int32, productCategory string) *TrendingProductCategory {
+func NewTrendingProductCategory(engagementType ProductCategoriesEngagementType, pctChangeMom int32, percentRelativeVolume int32, pinterestProductCategoryId int32, productCategory string) *TrendingProductCategory {
 	this := TrendingProductCategory{}
 	this.EngagementType = engagementType
 	this.PctChangeMom = pctChangeMom
 	this.PercentRelativeVolume = percentRelativeVolume
+	this.PinterestProductCategoryId = pinterestProductCategoryId
 	this.ProductCategory = productCategory
 	return &this
 }
@@ -129,6 +132,30 @@ func (o *TrendingProductCategory) SetPercentRelativeVolume(v int32) {
 	o.PercentRelativeVolume = v
 }
 
+// GetPinterestProductCategoryId returns the PinterestProductCategoryId field value
+func (o *TrendingProductCategory) GetPinterestProductCategoryId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.PinterestProductCategoryId
+}
+
+// GetPinterestProductCategoryIdOk returns a tuple with the PinterestProductCategoryId field value
+// and a boolean to check if the value has been set.
+func (o *TrendingProductCategory) GetPinterestProductCategoryIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PinterestProductCategoryId, true
+}
+
+// SetPinterestProductCategoryId sets field value
+func (o *TrendingProductCategory) SetPinterestProductCategoryId(v int32) {
+	o.PinterestProductCategoryId = v
+}
+
 // GetProductCategory returns the ProductCategory field value
 func (o *TrendingProductCategory) GetProductCategory() string {
 	if o == nil {
@@ -154,9 +181,9 @@ func (o *TrendingProductCategory) SetProductCategory(v string) {
 }
 
 // GetVerticals returns the Verticals field value if set, zero value otherwise.
-func (o *TrendingProductCategory) GetVerticals() []VerticalProductCategory {
+func (o *TrendingProductCategory) GetVerticals() []string {
 	if o == nil || IsNil(o.Verticals) {
-		var ret []VerticalProductCategory
+		var ret []string
 		return ret
 	}
 	return o.Verticals
@@ -164,7 +191,7 @@ func (o *TrendingProductCategory) GetVerticals() []VerticalProductCategory {
 
 // GetVerticalsOk returns a tuple with the Verticals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrendingProductCategory) GetVerticalsOk() ([]VerticalProductCategory, bool) {
+func (o *TrendingProductCategory) GetVerticalsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Verticals) {
 		return nil, false
 	}
@@ -180,8 +207,8 @@ func (o *TrendingProductCategory) HasVerticals() bool {
 	return false
 }
 
-// SetVerticals gets a reference to the given []VerticalProductCategory and assigns it to the Verticals field.
-func (o *TrendingProductCategory) SetVerticals(v []VerticalProductCategory) {
+// SetVerticals gets a reference to the given []string and assigns it to the Verticals field.
+func (o *TrendingProductCategory) SetVerticals(v []string) {
 	o.Verticals = v
 }
 
@@ -198,6 +225,7 @@ func (o TrendingProductCategory) ToMap() (map[string]interface{}, error) {
 	toSerialize["engagement_type"] = o.EngagementType
 	toSerialize["pct_change_mom"] = o.PctChangeMom
 	toSerialize["percent_relative_volume"] = o.PercentRelativeVolume
+	toSerialize["pinterest_product_category_id"] = o.PinterestProductCategoryId
 	toSerialize["product_category"] = o.ProductCategory
 	if !IsNil(o.Verticals) {
 		toSerialize["verticals"] = o.Verticals
@@ -213,6 +241,7 @@ func (o *TrendingProductCategory) UnmarshalJSON(data []byte) (err error) {
 		"engagement_type",
 		"pct_change_mom",
 		"percent_relative_volume",
+		"pinterest_product_category_id",
 		"product_category",
 	}
 

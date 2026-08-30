@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -21,21 +26,72 @@ type CatalogsFeedProcessingSchedule struct {
 	Time string `json:"time" validate:"regexp=^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"`
 
 	// The timezone considered for the processing schedule time.
-	Timezone *string `json:"timezone"`
+	Timezone *CatalogsFeedProcessingScheduleTimezone `json:"timezone"`
 }
-
-// AssertCatalogsFeedProcessingScheduleRequired checks if the required fields are not zero-ed
-func AssertCatalogsFeedProcessingScheduleRequired(obj CatalogsFeedProcessingSchedule) error {
-	elements := map[string]interface{}{
-		"time": obj.Time,
-		"timezone": obj.Timezone,
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsFeedProcessingSchedule
+func (o *CatalogsFeedProcessingSchedule) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"time",
+		"timezone",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"time": false,
+		"timezone": true,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"time": {},
+		"timezone": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsFeedProcessingSchedule
+
+	if value, exists := allProperties["time"]; exists {
+		if err = json.Unmarshal(value, &decoded.Time); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["timezone"]; exists {
+		if err = json.Unmarshal(value, &decoded.Timezone); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsFeedProcessingScheduleRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCatalogsFeedProcessingScheduleRequired(obj CatalogsFeedProcessingSchedule) error {
 	return nil
 }
 

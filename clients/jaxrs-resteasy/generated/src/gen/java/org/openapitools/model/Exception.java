@@ -10,17 +10,16 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Exception   {
   
   private Integer code;
   private String message;
 
   /**
-   * Exception error code.
    **/
   
-  @ApiModelProperty(example = "2", value = "Exception error code.")
+  @ApiModelProperty(example = "2", value = "")
   @JsonProperty("code")
   public Integer getCode() {
     return code;
@@ -30,11 +29,11 @@ public class Exception   {
   }
 
   /**
-   * Exception message.
    **/
   
-  @ApiModelProperty(example = "Advertiser not found.", value = "Exception message.")
+  @ApiModelProperty(example = "Advertiser not found.", required = true, value = "")
   @JsonProperty("message")
+  @NotNull
   public String getMessage() {
     return message;
   }
@@ -77,10 +76,7 @@ public class Exception   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

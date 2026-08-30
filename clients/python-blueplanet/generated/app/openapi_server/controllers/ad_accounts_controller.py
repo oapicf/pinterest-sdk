@@ -1,58 +1,61 @@
 import connexion
 
 from app.openapi_server.models.ad_account import AdAccount  # noqa: E501
-from app.openapi_server.models.ad_account_analytics_response_inner import AdAccountAnalyticsResponseInner  # noqa: E501
+from app.openapi_server.models.ad_account_analytics_items import AdAccountAnalyticsItems  # noqa: E501
 from app.openapi_server.models.ad_account_create import AdAccountCreate  # noqa: E501
 from app.openapi_server.models.ad_accounts_list200_response import AdAccountsList200Response  # noqa: E501
+from app.openapi_server.models.ads_analytics_account_targeting_type import AdsAnalyticsAccountTargetingType  # noqa: E501
 from app.openapi_server.models.ads_analytics_create_async_request import AdsAnalyticsCreateAsyncRequest  # noqa: E501
 from app.openapi_server.models.ads_analytics_create_async_response import AdsAnalyticsCreateAsyncResponse  # noqa: E501
 from app.openapi_server.models.ads_analytics_get_async_response import AdsAnalyticsGetAsyncResponse  # noqa: E501
-from app.openapi_server.models.ads_analytics_targeting_type import AdsAnalyticsTargetingType  # noqa: E501
-from app.openapi_server.models.conversion_product_report_request import ConversionProductReportRequest  # noqa: E501
+from app.openapi_server.models.conversion_product_report import ConversionProductReport  # noqa: E501
+from app.openapi_server.models.conversion_product_report_create import ConversionProductReportCreate  # noqa: E501
 from app.openapi_server.models.conversion_report_attribution_type import ConversionReportAttributionType  # noqa: E501
-from app.openapi_server.models.create_mmm_report_request import CreateMMMReportRequest  # noqa: E501
-from app.openapi_server.models.create_mmm_report_response import CreateMMMReportResponse  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
-from app.openapi_server.models.get_mmm_report_response import GetMMMReportResponse  # noqa: E501
 from app.openapi_server.models.granularity import Granularity  # noqa: E501
+from app.openapi_server.models.mmm_report import MMMReport  # noqa: E501
+from app.openapi_server.models.mmm_report_create import MMMReportCreate  # noqa: E501
 from app.openapi_server.models.metrics_response import MetricsResponse  # noqa: E501
 from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: E501
+from app.openapi_server.models.reporting_column_sync import ReportingColumnSync  # noqa: E501
 from app.openapi_server.models.reporting_time_zone import ReportingTimeZone  # noqa: E501
 from app.openapi_server.models.template_based_report import TemplateBasedReport  # noqa: E501
 from app.openapi_server.models.templates_list200_response import TemplatesList200Response  # noqa: E501
 from openapi_server import util
 
 
-def ad_account_analytics(ad_account_id, start_date, end_date, columns, granularity, click_window_days=None, engagement_window_days=None, view_window_days=None, conversion_report_time=None, reporting_timezone=None):  # noqa: E501
+def ad_account_analytics(start_date, end_date, columns, granularity, ad_account_id, click_window_days=None, engagement_window_days=None, view_window_days=None, conversion_report_time=None, reporting_timezone=None):  # noqa: E501
     """Get ad account analytics
 
-    Get analytics for the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time. # noqa: E501
+      Get analytics for the specified &#x60;ad_account_id&#x60;, filtered by the specified options.    - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time. # noqa: E501
 
-    :param ad_account_id: Unique identifier of an ad account.
-    :type ad_account_id: str
     :param start_date: Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     :type start_date: str
     :param end_date: Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
     :type end_date: str
-    :param columns: Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-    :type columns: List[str]
-    :param granularity: TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+    :param columns: Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+    :type columns: list | bytes
+    :param granularity:   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
     :type granularity: dict | bytes
+    :param ad_account_id: Unique identifier of an ad account.
+    :type ad_account_id: str
     :param click_window_days: Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-    :type click_window_days: int
-    :param engagement_window_days: Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
-    :type engagement_window_days: int
+    :type click_window_days: 
+    :param engagement_window_days: Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+    :type engagement_window_days: 
     :param view_window_days: Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
-    :type view_window_days: int
+    :type view_window_days: 
     :param conversion_report_time: The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
     :type conversion_report_time: str
     :param reporting_timezone: Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
     :type reporting_timezone: dict | bytes
 
-    :rtype: List[AdAccountAnalyticsResponseInner]
+    :rtype: List[AdAccountAnalyticsItems]
     """
     start_date = util.deserialize_date(start_date)
     end_date = util.deserialize_date(end_date)
+    if connexion.request.is_json:
+        columns = [ReportingColumnSync.from_dict(d) for d in connexion.request.get_json()]  # noqa: E501
     if connexion.request.is_json:
         granularity = .from_dict(connexion.request.get_json())  # noqa: E501
     if connexion.request.is_json:
@@ -63,7 +66,7 @@ def ad_account_analytics(ad_account_id, start_date, end_date, columns, granulari
 def ad_account_targeting_analytics_get(ad_account_id, start_date, end_date, targeting_types, columns, granularity, click_window_days=None, engagement_window_days=None, view_window_days=None, conversion_report_time=None, attribution_types=None, reporting_timezone=None):  # noqa: E501
     """Get targeting analytics for an ad account
 
-    Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. # noqa: E501
+    Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt;  * The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. # noqa: E501
 
     :param ad_account_id: Unique identifier of an ad account.
     :type ad_account_id: str
@@ -71,18 +74,18 @@ def ad_account_targeting_analytics_get(ad_account_id, start_date, end_date, targ
     :type start_date: str
     :param end_date: Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
     :type end_date: str
-    :param targeting_types: Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+    :param targeting_types: Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
     :type targeting_types: list | bytes
-    :param columns: Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-    :type columns: List[str]
-    :param granularity: TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+    :param columns: Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+    :type columns: list | bytes
+    :param granularity:   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
     :type granularity: dict | bytes
     :param click_window_days: Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-    :type click_window_days: int
-    :param engagement_window_days: Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
-    :type engagement_window_days: int
+    :type click_window_days: 
+    :param engagement_window_days: Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+    :type engagement_window_days: 
     :param view_window_days: Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
-    :type view_window_days: int
+    :type view_window_days: 
     :param conversion_report_time: The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
     :type conversion_report_time: str
     :param attribution_types: List of types of attribution for the conversion report
@@ -95,7 +98,9 @@ def ad_account_targeting_analytics_get(ad_account_id, start_date, end_date, targ
     start_date = util.deserialize_date(start_date)
     end_date = util.deserialize_date(end_date)
     if connexion.request.is_json:
-        targeting_types = [AdsAnalyticsTargetingType.from_dict(d) for d in connexion.request.get_json()]  # noqa: E501
+        targeting_types = [AdsAnalyticsAccountTargetingType.from_dict(d) for d in connexion.request.get_json()]  # noqa: E501
+    if connexion.request.is_json:
+        columns = [ReportingColumnSync.from_dict(d) for d in connexion.request.get_json()]  # noqa: E501
     if connexion.request.is_json:
         granularity = .from_dict(connexion.request.get_json())  # noqa: E501
     if connexion.request.is_json:
@@ -153,41 +158,41 @@ def ad_accounts_list(include_shared_accounts=None, bookmark=None, page_size=None
 def analytics_create_conversion_product_report(ad_account_id, body):  # noqa: E501
     """Create a request for a brand, category, SKU report
 
-    &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready. # noqa: E501
+      [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready. # noqa: E501
 
     :param ad_account_id: Unique identifier of an ad account.
     :type ad_account_id: str
     :param body: 
     :type body: dict | bytes
 
-    :rtype: AdsAnalyticsCreateAsyncResponse
+    :rtype: ConversionProductReport
     """
     if connexion.request.is_json:
-        body = ConversionProductReportRequest.from_dict(connexion.request.get_json())  # noqa: E501
+        body = ConversionProductReportCreate.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
 def analytics_create_mmm_report(ad_account_id, body):  # noqa: E501
     """Create a request for a Marketing Mix Modeling (MMM) report
 
-    This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it&#39;s in beta release. # noqa: E501
+        This creates an asynchronous mmm report based on the given request.     It returns a token that you can use to download the report when it is     ready. NOTE: An additional limit of 5 queries per minute per advertiser     applies to this endpoint while it&#39;s in beta release.     For the ADVERTISER_PAID_SPEND_IN_DOLLAR,     ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR     columns: if you receive bonus media, this value still includes that spend, and it will     need to be removed manually with support from your Pinterest account team for a     fully netted value. Over time, we&#39;ll also subtract bonus media and other incentives as     data becomes available. Production and other non-media fees are excluded. # noqa: E501
 
-    :param ad_account_id: Unique identifier of an ad account.
+    :param ad_account_id: 
     :type ad_account_id: str
     :param body: 
     :type body: dict | bytes
 
-    :rtype: CreateMMMReportResponse
+    :rtype: MMMReport
     """
     if connexion.request.is_json:
-        body = CreateMMMReportRequest.from_dict(connexion.request.get_json())  # noqa: E501
+        body = MMMReportCreate.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
 def analytics_create_report(ad_account_id, body):  # noqa: E501
     """Create async request for an account analytics report
 
-    This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either. # noqa: E501
+      This returns a token that you can use to download the report when it is ready.   Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.   - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.   - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.   - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.   - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either. # noqa: E501
 
     :param ad_account_id: Unique identifier of an ad account.
     :type ad_account_id: str
@@ -204,7 +209,7 @@ def analytics_create_report(ad_account_id, body):  # noqa: E501
 def analytics_create_template_report(ad_account_id, template_id, start_date=None, end_date=None, granularity=None):  # noqa: E501
     """Create async request for an analytics report using a template
 
-       This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready. # noqa: E501
+      This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready. # noqa: E501
 
     :param ad_account_id: 
     :type ad_account_id: str
@@ -214,7 +219,7 @@ def analytics_create_template_report(ad_account_id, template_id, start_date=None
     :type start_date: str
     :param end_date: Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.
     :type end_date: str
-    :param granularity:    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly
+    :param granularity:   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
     :type granularity: dict | bytes
 
     :rtype: TemplateBasedReport
@@ -229,14 +234,14 @@ def analytics_create_template_report(ad_account_id, template_id, start_date=None
 def analytics_get_conversion_product_report(ad_account_id, token):  # noqa: E501
     """Get advertiser brand, category, SKU report
 
-    &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint. # noqa: E501
+      [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint. # noqa: E501
 
     :param ad_account_id: Unique identifier of an ad account.
     :type ad_account_id: str
     :param token: Token returned from the post request creation call
     :type token: str
 
-    :rtype: AdsAnalyticsGetAsyncResponse
+    :rtype: ConversionProductReport
     """
     return 'do some magic!'
 
@@ -244,14 +249,14 @@ def analytics_get_conversion_product_report(ad_account_id, token):  # noqa: E501
 def analytics_get_mmm_report(ad_account_id, token):  # noqa: E501
     """Get advertiser Marketing Mix Modeling (MMM) report.
 
-    Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint. # noqa: E501
+        Get an mmm report for an ad account. This returns a URL to an     mmm metrics report given a token returned from the create mmm report endpoint. # noqa: E501
 
-    :param ad_account_id: Unique identifier of an ad account.
+    :param ad_account_id: 
     :type ad_account_id: str
     :param token: Token returned from the post request creation call
     :type token: str
 
-    :rtype: GetMMMReportResponse
+    :rtype: MMMReport
     """
     return 'do some magic!'
 
@@ -259,7 +264,7 @@ def analytics_get_mmm_report(ad_account_id, token):  # noqa: E501
 def analytics_get_report(ad_account_id, token):  # noqa: E501
     """Get the account analytics report created by the async call
 
-    This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. # noqa: E501
+      This returns a URL to an analytics report given a token returned from the post request report creation call.   You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.   - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. # noqa: E501
 
     :param ad_account_id: Unique identifier of an ad account.
     :type ad_account_id: str
@@ -284,20 +289,22 @@ def sandbox_delete(ad_account_id):  # noqa: E501
     return 'do some magic!'
 
 
-def templates_list(ad_account_id, page_size=None, order=None, bookmark=None):  # noqa: E501
+def templates_list(ad_account_id, bookmark=None, page_size=None, order=None):  # noqa: E501
     """List templates
 
     Gets all Templates associated with an ad account ID. # noqa: E501
 
     :param ad_account_id: Unique identifier of an ad account.
     :type ad_account_id: str
-    :param page_size: Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-    :type page_size: int
-    :param order: The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-    :type order: str
     :param bookmark: Cursor used to fetch the next page of items
     :type bookmark: str
+    :param page_size: Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    :type page_size: int
+    :param order: The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+    :type order: dict | bytes
 
     :rtype: TemplatesList200Response
     """
+    if connexion.request.is_json:
+        order = .from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'

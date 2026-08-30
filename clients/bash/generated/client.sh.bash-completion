@@ -8,7 +8,7 @@
 # ! openapi-generator (https://openapi-generator.tech)
 # ! FROM OPENAPI SPECIFICATION IN JSON.
 # !
-# ! Generator version: 7.18.0
+# ! Generator version: 7.24.0
 # !
 # !
 # ! System wide installation:
@@ -87,10 +87,15 @@ _()
     operations["adGroupsAudienceSizing"]=1
     operations["adGroupsBidFloorGet"]=1
     operations["adGroupsCreate"]=1
+    operations["adGroupsDynamicTitlesDownloadCsv"]=1
+    operations["adGroupsDynamicTitlesGetStatus"]=1
+    operations["adGroupsDynamicTitlesGetUploadUrl"]=1
+    operations["adGroupsDynamicTitlesProcessCsv"]=1
     operations["adGroupsGet"]=1
     operations["adGroupsList"]=1
     operations["adGroupsTargetingAnalyticsGet"]=1
     operations["adGroupsUpdate"]=1
+    operations["getAdGroupsByPromotionIdsList"]=1
     operations["adPreviewsCreate"]=1
     operations["adTargetingAnalyticsGet"]=1
     operations["adsAnalytics"]=1
@@ -98,6 +103,9 @@ _()
     operations["adsGet"]=1
     operations["adsList"]=1
     operations["adsUpdate"]=1
+    operations["campaignAdPreviewCreate"]=1
+    operations["campaignAdPreviewDelete"]=1
+    operations["campaignAdPreviewRead"]=1
     operations["advancedAuctionItemsGetPost"]=1
     operations["advancedAuctionItemsSubmitPost"]=1
     operations["audienceInsightsGet"]=1
@@ -172,6 +180,7 @@ _()
     operations["campaignsGet"]=1
     operations["campaignsList"]=1
     operations["campaignsUpdate"]=1
+    operations["getCampaignDeliveryEstimates"]=1
     operations["feedProcessingResultsList"]=1
     operations["feedsCreate"]=1
     operations["feedsDelete"]=1
@@ -196,9 +205,20 @@ _()
     operations["reportsCreate"]=1
     operations["reportsGet"]=1
     operations["reportsStats"]=1
+    operations["catalogsLocalInventoryItemsBatchOperate"]=1
+    operations["catalogsLocalInventoryItemsPost"]=1
+    operations["catalogsLocalStoresCreate"]=1
+    operations["catalogsLocalStoresDelete"]=1
+    operations["catalogsLocalStoresList"]=1
+    operations["catalogsLocalStoresUpdate"]=1
+    operations["catalogsSupplementalItemsBatchGet"]=1
     operations["catalogsAvailableFilterValues"]=1
     operations["catalogsCreate"]=1
     operations["catalogsList"]=1
+    operations["conversionDeletionRequestCreate"]=1
+    operations["conversionDeletionRequestDelete"]=1
+    operations["conversionDeletionRequestGet"]=1
+    operations["conversionDeletionRequestList"]=1
     operations["conversionEqsList"]=1
     operations["eventsCreate"]=1
     operations["conversionTagsCreate"]=1
@@ -206,7 +226,10 @@ _()
     operations["conversionTagsList"]=1
     operations["ocpmEligibleConversionTagsGet"]=1
     operations["pageVisitConversionTagsGet"]=1
+    operations["advertiserDefinedEventsCreate"]=1
+    operations["advertiserDefinedEventsDelete"]=1
     operations["advertiserDefinedEventsGet"]=1
+    operations["advertiserDefinedEventsUpdate"]=1
     operations["customerListUploadsCreate"]=1
     operations["customerListUploadsGet"]=1
     operations["customerListUploadsRun"]=1
@@ -214,6 +237,9 @@ _()
     operations["customerListsGet"]=1
     operations["customerListsList"]=1
     operations["customerListsUpdate"]=1
+    operations["customerSegmentCreate"]=1
+    operations["customerSegmentList"]=1
+    operations["customerSegmentUpdate"]=1
     operations["integrationsCommerceDel"]=1
     operations["integrationsCommerceGet"]=1
     operations["integrationsCommercePatch"]=1
@@ -226,8 +252,10 @@ _()
     operations["keywordsGet"]=1
     operations["keywordsUpdate"]=1
     operations["trendingKeywordsList"]=1
+    operations["labelsApply"]=1
     operations["labelsCreate"]=1
     operations["labelsList"]=1
+    operations["labelsRemove"]=1
     operations["labelsUpdate"]=1
     operations["adAccountsSubscriptionsDelById"]=1
     operations["adAccountsSubscriptionsGetById"]=1
@@ -258,14 +286,14 @@ _()
     operations["pinsList"]=1
     operations["pinsSave"]=1
     operations["pinsUpdate"]=1
-    operations["trendsFeaturedTopicsList"]=1
-    operations["trendsProductCategoriesDetailsList"]=1
-    operations["trendsProductCategoriesTrendingList"]=1
     operations["productGroupPromotionsCreate"]=1
     operations["productGroupPromotionsGet"]=1
     operations["productGroupPromotionsList"]=1
     operations["productGroupPromotionsUpdate"]=1
     operations["productGroupsAnalytics"]=1
+    operations["productTagsBulkAdd"]=1
+    operations["productTagsBulkDelete"]=1
+    operations["productTagsList"]=1
     operations["promotionsCreate"]=1
     operations["promotionsDelete"]=1
     operations["promotionsGet"]=1
@@ -277,6 +305,9 @@ _()
     operations["leadFormQuestionsGet"]=1
     operations["metricsReadyStateGet"]=1
     operations["targetingOptionsGet"]=1
+    operations["schedulesCreate"]=1
+    operations["schedulesList"]=1
+    operations["schedulesUpdate"]=1
     operations["searchPartnerPins"]=1
     operations["searchUserBoardsGet"]=1
     operations["searchUserPinsList"]=1
@@ -286,6 +317,10 @@ _()
     operations["termsRelatedList"]=1
     operations["termsSuggestedList"]=1
     operations["termsOfServiceGet"]=1
+    operations["trendsEditorialArticlesList"]=1
+    operations["trendsFeaturedTopicsList"]=1
+    operations["trendsProductCategoriesDetailsList"]=1
+    operations["trendsProductCategoriesTrendingList"]=1
     operations["boardsUserFollowsList"]=1
     operations["followUserUpdate"]=1
     operations["followersList"]=1
@@ -317,48 +352,56 @@ _()
     operation_parameters["analyticsGetMmmReport"]="ad_account_id= token= "
     operation_parameters["analyticsGetReport"]="ad_account_id= token= "
     operation_parameters["sandboxDelete"]="ad_account_id= "
-    operation_parameters["templatesList"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["templatesList"]="ad_account_id= bookmark= page_size= order= "
     operation_parameters["adGroupsAnalytics"]="ad_account_id= start_date= end_date= ad_group_ids= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= aggregate_report_rows= reporting_timezone= "
     operation_parameters["adGroupsAudienceSizing"]="ad_account_id= "
     operation_parameters["adGroupsBidFloorGet"]="ad_account_id= "
     operation_parameters["adGroupsCreate"]="ad_account_id= "
-    operation_parameters["adGroupsGet"]="ad_account_id= ad_group_id= "
-    operation_parameters["adGroupsList"]="ad_account_id= campaign_ids= ad_group_ids= entity_statuses= page_size= order= bookmark= translate_interests_to_names= "
-    operation_parameters["adGroupsTargetingAnalyticsGet"]="ad_account_id= ad_group_ids= start_date= end_date= targeting_types= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= attribution_types= reporting_timezone= "
+    operation_parameters["adGroupsDynamicTitlesDownloadCsv"]="ad_account_id= ad_group_id= "
+    operation_parameters["adGroupsDynamicTitlesGetStatus"]="ad_account_id= ad_group_id= "
+    operation_parameters["adGroupsDynamicTitlesGetUploadUrl"]="ad_account_id= ad_group_id= "
+    operation_parameters["adGroupsDynamicTitlesProcessCsv"]="ad_account_id= ad_group_id= "
+    operation_parameters["adGroupsGet"]="ad_group_id= ad_account_id= "
+    operation_parameters["adGroupsList"]="ad_account_id= bookmark= page_size= order= campaign_ids= ad_group_ids= entity_statuses= translate_interests_to_names= "
+    operation_parameters["adGroupsTargetingAnalyticsGet"]="ad_account_id= ad_group_ids= start_date= end_date= targeting_types= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= attribution_types= reporting_timezone= sort_columns= sort_ascending= "
     operation_parameters["adGroupsUpdate"]="ad_account_id= "
+    operation_parameters["getAdGroupsByPromotionIdsList"]="ad_account_id= bookmark= page_size= order= promotion_ids= "
     operation_parameters["adPreviewsCreate"]="ad_account_id= "
-    operation_parameters["adTargetingAnalyticsGet"]="ad_account_id= ad_ids= start_date= end_date= targeting_types= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= attribution_types= reporting_timezone= "
-    operation_parameters["adsAnalytics"]="ad_account_id= start_date= end_date= ad_ids= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= pin_ids= campaign_ids= reporting_timezone= "
+    operation_parameters["adTargetingAnalyticsGet"]="ad_account_id= ad_ids= start_date= end_date= targeting_types= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= attribution_types= reporting_timezone= sort_columns= sort_ascending= "
+    operation_parameters["adsAnalytics"]="ad_account_id= pin_ids= start_date= end_date= ad_ids= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= campaign_ids= reporting_timezone= "
     operation_parameters["adsCreate"]="ad_account_id= "
-    operation_parameters["adsGet"]="ad_account_id= ad_id= "
-    operation_parameters["adsList"]="ad_account_id= campaign_ids= ad_group_ids= ad_ids= entity_statuses= page_size= order= bookmark= "
+    operation_parameters["adsGet"]="ad_id= ad_account_id= "
+    operation_parameters["adsList"]="ad_account_id= bookmark= page_size= order= campaign_ids= ad_group_ids= ad_ids= entity_statuses= "
     operation_parameters["adsUpdate"]="ad_account_id= "
+    operation_parameters["campaignAdPreviewCreate"]="ad_account_id= "
+    operation_parameters["campaignAdPreviewDelete"]="ad_account_id= ad_group_ids= "
+    operation_parameters["campaignAdPreviewRead"]="ad_account_id= ad_group_ids= "
     operation_parameters["advancedAuctionItemsGetPost"]="ad_account_id= "
     operation_parameters["advancedAuctionItemsSubmitPost"]="ad_account_id= "
     operation_parameters["audienceInsightsGet"]="ad_account_id= audience_insight_type= "
     operation_parameters["audienceInsightsScopeAndTypeGet"]="ad_account_id= "
-    operation_parameters["adAccountsAudiencesSharedAccountsList"]="ad_account_id= audience_id= account_type= page_size= bookmark= "
-    operation_parameters["businessAccountAudiencesSharedAccountsList"]="business_id= audience_id= account_type= page_size= bookmark= "
-    operation_parameters["sharedAudiencesForBusinessList"]="business_id= bookmark= order= page_size= "
+    operation_parameters["adAccountsAudiencesSharedAccountsList"]="ad_account_id= audience_id= account_type= bookmark= page_size= "
+    operation_parameters["businessAccountAudiencesSharedAccountsList"]="business_id= audience_id= account_type= bookmark= page_size= "
+    operation_parameters["sharedAudiencesForBusinessList"]="business_id= order= bookmark= page_size= "
     operation_parameters["updateAdAccountToAdAccountSharedAudience"]="ad_account_id= "
     operation_parameters["updateAdAccountToBusinessSharedAudience"]="ad_account_id= "
     operation_parameters["updateBusinessToAdAccountSharedAudience"]="business_id= "
     operation_parameters["updateBusinessToBusinessSharedAudience"]="business_id= "
     operation_parameters["audiencesCreate"]="ad_account_id= "
-    operation_parameters["audiencesGet"]="ad_account_id= audience_id= "
-    operation_parameters["audiencesList"]="ad_account_id= bookmark= order= page_size= ownership_type= "
-    operation_parameters["audiencesUpdate"]="ad_account_id= audience_id= "
+    operation_parameters["audiencesGet"]="audience_id= ad_account_id= "
+    operation_parameters["audiencesList"]="ad_account_id= bookmark= page_size= order= ownership_type= exclude_nca= "
+    operation_parameters["audiencesUpdate"]="audience_id= ad_account_id= "
     operation_parameters["adsCreditRedeem"]="ad_account_id= "
     operation_parameters["adsCreditsDiscountsGet"]="ad_account_id= bookmark= page_size= "
     operation_parameters["billingInvoiceDownloadGet"]="ad_account_id= billing_invoice_id= "
-    operation_parameters["billingInvoicesGet"]="ad_account_id= bookmark= page_size= sort= order= status= document_type= start_due_date= end_due_date= "
+    operation_parameters["billingInvoicesGet"]="ad_account_id= bookmark= page_size= order= sort= status= document_type= start_due_date= end_due_date= "
     operation_parameters["billingProfilesGet"]="ad_account_id= is_active= bookmark= page_size= "
     operation_parameters["ssioAccountsGet"]="ad_account_id= "
     operation_parameters["ssioInsertionOrderCreate"]="ad_account_id= "
     operation_parameters["ssioInsertionOrderEdit"]="ad_account_id= "
     operation_parameters["ssioInsertionOrdersStatusGetByAdAccount"]="ad_account_id= bookmark= page_size= "
     operation_parameters["ssioInsertionOrdersStatusGetByPinOrderId"]="ad_account_id= pin_order_id= "
-    operation_parameters["ssioOrderLinesGetByAdAccount"]="ad_account_id= bookmark= page_size= pin_order_id= "
+    operation_parameters["ssioOrderLinesGetByAdAccount"]="ad_account_id= pin_order_id= bookmark= page_size= "
     operation_parameters["boardSectionsCreate"]="board_id= ad_account_id= "
     operation_parameters["boardSectionsDelete"]="board_id= section_id= ad_account_id= "
     operation_parameters["boardSectionsList"]="board_id= ad_account_id= bookmark= page_size= "
@@ -368,7 +411,7 @@ _()
     operation_parameters["boardsDelete"]="board_id= ad_account_id= "
     operation_parameters["boardsGet"]="board_id= ad_account_id= "
     operation_parameters["boardsList"]="ad_account_id= privacy= bookmark= page_size= "
-    operation_parameters["boardsListPins"]="board_id= bookmark= page_size= creative_types= ad_account_id= pin_metrics= "
+    operation_parameters["boardsListPins"]="board_id= creative_types= ad_account_id= pin_metrics= bookmark= page_size= "
     operation_parameters["boardsUpdate"]="board_id= ad_account_id= "
     operation_parameters["bulkDownloadCreate"]="ad_account_id= "
     operation_parameters["bulkRequestGet"]="ad_account_id= bulk_request_id= include_details= "
@@ -376,13 +419,13 @@ _()
     operation_parameters["assetGroupCreate"]="business_id= "
     operation_parameters["assetGroupDelete"]="business_id= "
     operation_parameters["assetGroupUpdate"]="business_id= "
-    operation_parameters["businessAssetMembersGet"]="business_id= asset_id= fetch_system_users= bookmark= page_size= start_index= "
+    operation_parameters["businessAssetMembersGet"]="business_id= asset_id= start_index= fetch_system_users= bookmark= page_size= "
     operation_parameters["businessAssetPartnersGet"]="business_id= asset_id= start_index= bookmark= page_size= "
     operation_parameters["businessAssetsGet"]="business_id= permissions= child_asset_id= asset_group_id= asset_type= start_index= bookmark= page_size= "
-    operation_parameters["businessMemberAssetsGet"]="business_id= member_id= asset_type= start_index= bookmark= page_size= "
+    operation_parameters["businessMemberAssetsGet"]="business_id= member_id= asset_type= start_index= sort_by= sort_ascending= search_by= search_value= asset_permission_type= ad_account_statuses= bookmark= page_size= "
     operation_parameters["businessMembersAssetAccessDelete"]="business_id= "
     operation_parameters["businessMembersAssetAccessUpdate"]="business_id= "
-    operation_parameters["businessPartnerAssetAccessGet"]="business_id= partner_id= partner_type= asset_type= start_index= page_size= bookmark= "
+    operation_parameters["businessPartnerAssetAccessGet"]="business_id= partner_id= partner_type= asset_type= start_index= sort_by= sort_ascending= search_by= search_value= bookmark= page_size= "
     operation_parameters["deletePartnerAssetAccessHandlerImpl"]="business_id= "
     operation_parameters["updatePartnerAssetAccessHandlerImpl"]="business_id= "
     operation_parameters["assetAccessRequestsCreate"]="business_id= "
@@ -392,63 +435,81 @@ _()
     operation_parameters["getInvites"]="business_id= is_member= invite_status= invite_type= bookmark= page_size= "
     operation_parameters["respondBusinessAccessInvites"]=""
     operation_parameters["brandAccountsCreate"]="business_hierarchy_id= "
-    operation_parameters["brandAccountsUpdate"]="business_hierarchy_id= brand_account_id= "
+    operation_parameters["brandAccountsUpdate"]="brand_account_id= business_hierarchy_id= "
     operation_parameters["deleteBusinessMembership"]="business_id= "
     operation_parameters["deleteBusinessPartners"]="business_id= "
-    operation_parameters["getBusinessEmployers"]="page_size= bookmark= "
+    operation_parameters["getBusinessEmployers"]="assets_summary= bookmark= page_size= "
     operation_parameters["getBusinessMembers"]="business_id= fetch_system_users= assets_summary= business_roles= member_ids= start_index= bookmark= page_size= "
-    operation_parameters["getBusinessPartners"]="business_id= assets_summary= partner_type= partner_ids= start_index= page_size= bookmark= "
+    operation_parameters["getBusinessPartners"]="business_id= assets_summary= partner_type= partner_ids= start_index= sort_ascending= bookmark= page_size= "
     operation_parameters["systemUserUpdate"]="business_id= system_user_id= "
     operation_parameters["updateBusinessMemberships"]="business_id= "
     operation_parameters["adPinsAnalytics"]="ad_account_id= campaign_id= pin_ids= start_date= end_date= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= "
     operation_parameters["campaignTargetingAnalyticsGet"]="ad_account_id= campaign_ids= start_date= end_date= targeting_types= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= attribution_types= reporting_timezone= "
     operation_parameters["campaignsAnalytics"]="ad_account_id= start_date= end_date= campaign_ids= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= aggregate_report_rows= reporting_timezone= "
     operation_parameters["campaignsCreate"]="ad_account_id= "
-    operation_parameters["campaignsGet"]="ad_account_id= campaign_id= "
-    operation_parameters["campaignsList"]="ad_account_id= campaign_ids= entity_statuses= page_size= order= bookmark= "
+    operation_parameters["campaignsGet"]="campaign_id= ad_account_id= "
+    operation_parameters["campaignsList"]="ad_account_id= bookmark= page_size= order= campaign_ids= entity_statuses= "
     operation_parameters["campaignsUpdate"]="ad_account_id= "
-    operation_parameters["feedProcessingResultsList"]="feed_id= bookmark= page_size= ad_account_id= "
+    operation_parameters["getCampaignDeliveryEstimates"]="ad_account_id= "
+    operation_parameters["feedProcessingResultsList"]="feed_id= ad_account_id= bookmark= page_size= "
     operation_parameters["feedsCreate"]="ad_account_id= "
     operation_parameters["feedsDelete"]="feed_id= ad_account_id= "
     operation_parameters["feedsGet"]="feed_id= ad_account_id= "
     operation_parameters["feedsIngest"]="feed_id= ad_account_id= "
-    operation_parameters["feedsList"]="bookmark= page_size= catalog_id= ad_account_id= "
+    operation_parameters["feedsList"]="catalog_id= ad_account_id= bookmark= page_size= "
     operation_parameters["feedsUpdate"]="feed_id= ad_account_id= "
-    operation_parameters["itemsIssuesList"]="processing_result_id= bookmark= page_size= item_numbers= item_validation_issue= ad_account_id= "
+    operation_parameters["itemsIssuesList"]="processing_result_id= item_numbers= item_validation_issue= ad_account_id= bookmark= page_size= "
     operation_parameters["itemsBatchGet"]="batch_id= ad_account_id= "
     operation_parameters["itemsBatchPost"]="ad_account_id= "
     operation_parameters["itemsPost"]="ad_account_id= "
-    operation_parameters["catalogsProductGroupPinsList"]="product_group_id= bookmark= page_size= ad_account_id= pin_metrics= "
+    operation_parameters["catalogsProductGroupPinsList"]="product_group_id= ad_account_id= pin_metrics= bookmark= page_size= "
     operation_parameters["catalogsProductGroupsCreate"]="ad_account_id= "
     operation_parameters["catalogsProductGroupsCreateMany"]="ad_account_id= "
     operation_parameters["catalogsProductGroupsDelete"]="product_group_id= ad_account_id= "
     operation_parameters["catalogsProductGroupsDeleteMany"]="id= ad_account_id= "
     operation_parameters["catalogsProductGroupsGet"]="product_group_id= ad_account_id= "
-    operation_parameters["catalogsProductGroupsList"]="id= feed_id= catalog_id= bookmark= page_size= ad_account_id= "
+    operation_parameters["catalogsProductGroupsList"]="id= feed_id= catalog_id= ad_account_id= bookmark= page_size= "
     operation_parameters["catalogsProductGroupsProductCountsGet"]="product_group_id= ad_account_id= "
     operation_parameters["catalogsProductGroupsUpdate"]="product_group_id= ad_account_id= "
     operation_parameters["productsByProductGroupFilterList"]="bookmark= page_size= ad_account_id= pin_metrics= "
     operation_parameters["reportsCreate"]="ad_account_id= "
     operation_parameters["reportsGet"]="ad_account_id= token= "
-    operation_parameters["reportsStats"]="ad_account_id= page_size= bookmark= parameters= "
+    operation_parameters["reportsStats"]="ad_account_id= parameters= bookmark= page_size= "
+    operation_parameters["catalogsLocalInventoryItemsBatchOperate"]="catalog_id= ad_account_id= "
+    operation_parameters["catalogsLocalInventoryItemsPost"]="catalog_id= ad_account_id= "
+    operation_parameters["catalogsLocalStoresCreate"]="catalog_id= ad_account_id= "
+    operation_parameters["catalogsLocalStoresDelete"]="catalog_id= ids= ad_account_id= "
+    operation_parameters["catalogsLocalStoresList"]="catalog_id= ids= ad_account_id= bookmark= page_size= "
+    operation_parameters["catalogsLocalStoresUpdate"]="catalog_id= ad_account_id= "
+    operation_parameters["catalogsSupplementalItemsBatchGet"]="catalog_id= batch_id= ad_account_id= "
     operation_parameters["catalogsAvailableFilterValues"]="catalog_id= feed_id= country= language= ad_account_id= "
     operation_parameters["catalogsCreate"]="ad_account_id= "
-    operation_parameters["catalogsList"]="bookmark= page_size= ad_account_id= "
+    operation_parameters["catalogsList"]="ad_account_id= bookmark= page_size= "
+    operation_parameters["conversionDeletionRequestCreate"]="ad_account_id= "
+    operation_parameters["conversionDeletionRequestDelete"]="request_id= ad_account_id= "
+    operation_parameters["conversionDeletionRequestGet"]="request_id= ad_account_id= "
+    operation_parameters["conversionDeletionRequestList"]="ad_account_id= bookmark= page_size= order= "
     operation_parameters["conversionEqsList"]="ad_account_id= lookback_period= source_platform= ingestion_source= "
     operation_parameters["eventsCreate"]="ad_account_id= test= "
     operation_parameters["conversionTagsCreate"]="ad_account_id= "
     operation_parameters["conversionTagsGet"]="ad_account_id= conversion_tag_id= "
     operation_parameters["conversionTagsList"]="ad_account_id= filter_deleted= "
     operation_parameters["ocpmEligibleConversionTagsGet"]="ad_account_id= "
-    operation_parameters["pageVisitConversionTagsGet"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["pageVisitConversionTagsGet"]="ad_account_id= bookmark= page_size= order= "
+    operation_parameters["advertiserDefinedEventsCreate"]="ad_account_id= "
+    operation_parameters["advertiserDefinedEventsDelete"]="ad_account_id= event_names= "
     operation_parameters["advertiserDefinedEventsGet"]="ad_account_id= "
+    operation_parameters["advertiserDefinedEventsUpdate"]="ad_account_id= "
     operation_parameters["customerListUploadsCreate"]="ad_account_id= customer_list_id= "
     operation_parameters["customerListUploadsGet"]="ad_account_id= customer_list_id= customer_list_upload_id= "
     operation_parameters["customerListUploadsRun"]="ad_account_id= customer_list_id= customer_list_upload_id= "
     operation_parameters["customerListsCreate"]="ad_account_id= "
     operation_parameters["customerListsGet"]="ad_account_id= customer_list_id= "
-    operation_parameters["customerListsList"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["customerListsList"]="ad_account_id= bookmark= page_size= order= exclude_nca= "
     operation_parameters["customerListsUpdate"]="ad_account_id= customer_list_id= "
+    operation_parameters["customerSegmentCreate"]="ad_account_id= "
+    operation_parameters["customerSegmentList"]="ad_account_id= bookmark= page_size= order= include_sizing= search_query= "
+    operation_parameters["customerSegmentUpdate"]="ad_account_id= "
     operation_parameters["integrationsCommerceDel"]="external_business_id= "
     operation_parameters["integrationsCommerceGet"]="external_business_id= "
     operation_parameters["integrationsCommercePatch"]="external_business_id= "
@@ -458,20 +519,22 @@ _()
     operation_parameters["integrationsLogsPost"]=""
     operation_parameters["countryKeywordsMetricsGet"]="ad_account_id= country_code= keywords= "
     operation_parameters["keywordsCreate"]="ad_account_id= "
-    operation_parameters["keywordsGet"]="ad_account_id= campaign_id= ad_group_id= ad_group_ids= match_types= page_size= bookmark= "
+    operation_parameters["keywordsGet"]="ad_account_id= campaign_id= ad_group_id= ad_group_ids= match_types= bookmark= page_size= "
     operation_parameters["keywordsUpdate"]="ad_account_id= "
-    operation_parameters["trendingKeywordsList"]="region= trend_type= interests= genders= ages= include_keywords= normalize_against_group= limit= include_prediction= include_demographics= "
+    operation_parameters["trendingKeywordsList"]="region= trend_type= interests= genders= ages= include_keywords= normalize_against_group= limit= include_demographics= "
+    operation_parameters["labelsApply"]="ad_account_id= label_id= "
     operation_parameters["labelsCreate"]="ad_account_id= "
-    operation_parameters["labelsList"]="ad_account_id= campaign_ids= label_ids= entity_statuses= label_types= page_size= bookmark= "
+    operation_parameters["labelsList"]="ad_account_id= campaign_ids= label_ids= entity_statuses= label_types= bookmark= page_size= "
+    operation_parameters["labelsRemove"]="ad_account_id= label_id= "
     operation_parameters["labelsUpdate"]="ad_account_id= "
     operation_parameters["adAccountsSubscriptionsDelById"]="ad_account_id= subscription_id= "
     operation_parameters["adAccountsSubscriptionsGetById"]="ad_account_id= subscription_id= "
     operation_parameters["adAccountsSubscriptionsGetList"]="ad_account_id= bookmark= page_size= "
     operation_parameters["adAccountsSubscriptionsPost"]="ad_account_id= "
-    operation_parameters["leadFormGet"]="ad_account_id= lead_form_id= "
+    operation_parameters["leadFormGet"]="lead_form_id= ad_account_id= "
     operation_parameters["leadFormTestCreate"]="ad_account_id= lead_form_id= "
     operation_parameters["leadFormsCreate"]="ad_account_id= "
-    operation_parameters["leadFormsList"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["leadFormsList"]="ad_account_id= bookmark= page_size= order= "
     operation_parameters["leadFormsUpdate"]="ad_account_id= "
     operation_parameters["leadsExportCreate"]="ad_account_id= "
     operation_parameters["leadsExportGet"]="ad_account_id= leads_export_id= "
@@ -483,45 +546,52 @@ _()
     operation_parameters["oauthConversionToken"]=""
     operation_parameters["oauthToken"]=""
     operation_parameters["tokenRevoke"]=""
-    operation_parameters["orderLinesGet"]="ad_account_id= order_line_id= "
-    operation_parameters["orderLinesList"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["orderLinesGet"]="order_line_id= ad_account_id= "
+    operation_parameters["orderLinesList"]="ad_account_id= bookmark= page_size= order= "
     operation_parameters["multiPinsAnalytics"]="pin_ids= start_date= end_date= app_types= metric_types= ad_account_id= "
     operation_parameters["pinsAnalytics"]="pin_id= start_date= end_date= app_types= metric_types= split_field= ad_account_id= "
     operation_parameters["pinsCreate"]="ad_account_id= "
     operation_parameters["pinsDelete"]="pin_id= ad_account_id= "
     operation_parameters["pinsGet"]="pin_id= ad_account_id= pin_metrics= "
-    operation_parameters["pinsList"]="pin_filter= pin_metrics= include_protected_pins= pin_type= creative_types= ad_account_id= bookmark= page_size= "
+    operation_parameters["pinsList"]="pin_filter= pin_metrics= include_protected_pins= pin_type= creative_types= ad_account_id= domain= domains= include_product_tag_obj= bookmark= page_size= "
     operation_parameters["pinsSave"]="pin_id= ad_account_id= "
     operation_parameters["pinsUpdate"]="pin_id= ad_account_id= "
-    operation_parameters["trendsFeaturedTopicsList"]="interest= region= "
-    operation_parameters["trendsProductCategoriesDetailsList"]="product_categories= region= lookback_window= engagement_type= "
-    operation_parameters["trendsProductCategoriesTrendingList"]="region= verticals= ages= genders= engagement_type= "
     operation_parameters["productGroupPromotionsCreate"]="ad_account_id= "
     operation_parameters["productGroupPromotionsGet"]="ad_account_id= product_group_promotion_id= "
-    operation_parameters["productGroupPromotionsList"]="ad_account_id= product_group_promotion_ids= entity_statuses= ad_group_id= page_size= order= bookmark= "
+    operation_parameters["productGroupPromotionsList"]="ad_account_id= bookmark= page_size= order= product_group_promotion_ids= entity_statuses= ad_group_id= "
     operation_parameters["productGroupPromotionsUpdate"]="ad_account_id= "
     operation_parameters["productGroupsAnalytics"]="ad_account_id= start_date= end_date= product_group_ids= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= reporting_timezone= "
+    operation_parameters["productTagsBulkAdd"]="pin_id= "
+    operation_parameters["productTagsBulkDelete"]="pin_id= "
+    operation_parameters["productTagsList"]="pin_id= "
     operation_parameters["promotionsCreate"]="ad_account_id= "
-    operation_parameters["promotionsDelete"]="ad_account_id= promotion_id= "
-    operation_parameters["promotionsGet"]="ad_account_id= promotion_id= "
-    operation_parameters["promotionsList"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["promotionsDelete"]="promotion_id= ad_account_id= "
+    operation_parameters["promotionsGet"]="promotion_id= ad_account_id= "
+    operation_parameters["promotionsList"]="ad_account_id= bookmark= page_size= order= "
     operation_parameters["promotionsUpdate"]="ad_account_id= "
     operation_parameters["adAccountCountriesGet"]=""
     operation_parameters["deliveryMetricsGet"]="report_type= "
     operation_parameters["interestTargetingOptionsGet"]="interest_id= "
     operation_parameters["leadFormQuestionsGet"]=""
     operation_parameters["metricsReadyStateGet"]="date= "
-    operation_parameters["targetingOptionsGet"]="targeting_type= client_id= oauth_signature= timestamp= ad_account_id= "
+    operation_parameters["targetingOptionsGet"]="targeting_type= ad_account_id= client_id= oauth_signature= timestamp= "
+    operation_parameters["schedulesCreate"]="ad_account_id= "
+    operation_parameters["schedulesList"]="ad_account_id= bookmark= page_size= order= schedule_statuses= schedule_type= entity_ids= "
+    operation_parameters["schedulesUpdate"]="ad_account_id= "
     operation_parameters["searchPartnerPins"]="term= country_code= bookmark= locale= limit= "
-    operation_parameters["searchUserBoardsGet"]="ad_account_id= bookmark= page_size= query= "
+    operation_parameters["searchUserBoardsGet"]="ad_account_id= query= bookmark= page_size= "
     operation_parameters["searchUserPinsList"]="ad_account_id= query= bookmark= "
     operation_parameters["targetingTemplateCreate"]="ad_account_id= "
-    operation_parameters["targetingTemplateList"]="ad_account_id= order= include_sizing= search_query= page_size= bookmark= "
+    operation_parameters["targetingTemplateList"]="ad_account_id= bookmark= page_size= order= include_sizing= search_query= "
     operation_parameters["targetingTemplateUpdate"]="ad_account_id= "
     operation_parameters["termsRelatedList"]="terms= "
     operation_parameters["termsSuggestedList"]="term= limit= "
     operation_parameters["termsOfServiceGet"]="ad_account_id= include_html= tos_type= "
-    operation_parameters["boardsUserFollowsList"]="bookmark= page_size= explicit_following= ad_account_id= "
+    operation_parameters["trendsEditorialArticlesList"]="region= "
+    operation_parameters["trendsFeaturedTopicsList"]="interest= region= "
+    operation_parameters["trendsProductCategoriesDetailsList"]="product_categories= region= lookback_window= engagement_type= "
+    operation_parameters["trendsProductCategoriesTrendingList"]="region= verticals= ages= genders= engagement_type= "
+    operation_parameters["boardsUserFollowsList"]="ad_account_id= explicit_following= bookmark= page_size= "
     operation_parameters["followUserUpdate"]="username= "
     operation_parameters["followersList"]="bookmark= page_size= "
     operation_parameters["linkedBusinessAccountsGet"]=""
@@ -531,7 +601,7 @@ _()
     operation_parameters["userAccountAnalyticsTopVideoPins"]="start_date= end_date= sort_by= from_claimed_content= pin_format= app_types= content_type= source= metric_types= num_of_pins= created_in_last_n_days= ad_account_id= "
     operation_parameters["userAccountFollowedInterests"]="username= bookmark= page_size= "
     operation_parameters["userAccountGet"]="ad_account_id= "
-    operation_parameters["userFollowingGet"]="bookmark= page_size= feed_type= explicit_following= ad_account_id= "
+    operation_parameters["userFollowingGet"]="ad_account_id= explicit_following= feed_type= bookmark= page_size= "
     operation_parameters["userWebsitesGet"]="bookmark= page_size= "
     operation_parameters["verifyWebsiteUpdate"]="ad_account_id= "
     operation_parameters["websiteVerificationGet"]="ad_account_id= "
@@ -561,6 +631,42 @@ _()
     operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
     operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
     operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adGroupsTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["adTargetingAnalyticsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["audiencesList::exclude_nca"]="true false"
+    operation_parameters_enum_values["audiencesList::exclude_nca"]="true false"
+    operation_parameters_enum_values["audiencesList::exclude_nca"]="true false"
+    operation_parameters_enum_values["audiencesList::exclude_nca"]="true false"
+    operation_parameters_enum_values["audiencesList::exclude_nca"]="true false"
+    operation_parameters_enum_values["audiencesList::exclude_nca"]="true false"
     operation_parameters_enum_values["billingProfilesGet::is_active"]="true false"
     operation_parameters_enum_values["billingProfilesGet::is_active"]="true false"
     operation_parameters_enum_values["billingProfilesGet::is_active"]="true false"
@@ -580,12 +686,38 @@ _()
     operation_parameters_enum_values["businessAssetMembersGet::fetch_system_users"]="true false"
     operation_parameters_enum_values["businessAssetMembersGet::fetch_system_users"]="true false"
     operation_parameters_enum_values["businessAssetMembersGet::fetch_system_users"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessMemberAssetsGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
+    operation_parameters_enum_values["businessPartnerAssetAccessGet::sort_ascending"]="true false"
     operation_parameters_enum_values["getInvites::is_member"]="true false"
     operation_parameters_enum_values["getInvites::is_member"]="true false"
     operation_parameters_enum_values["getInvites::is_member"]="true false"
     operation_parameters_enum_values["getInvites::is_member"]="true false"
     operation_parameters_enum_values["getInvites::is_member"]="true false"
     operation_parameters_enum_values["getInvites::is_member"]="true false"
+    operation_parameters_enum_values["getBusinessEmployers::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessEmployers::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessEmployers::assets_summary"]="true false"
     operation_parameters_enum_values["getBusinessMembers::fetch_system_users"]="true false"
     operation_parameters_enum_values["getBusinessMembers::assets_summary"]="true false"
     operation_parameters_enum_values["getBusinessMembers::fetch_system_users"]="true false"
@@ -603,12 +735,21 @@ _()
     operation_parameters_enum_values["getBusinessMembers::fetch_system_users"]="true false"
     operation_parameters_enum_values["getBusinessMembers::assets_summary"]="true false"
     operation_parameters_enum_values["getBusinessPartners::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessPartners::sort_ascending"]="true false"
     operation_parameters_enum_values["getBusinessPartners::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessPartners::sort_ascending"]="true false"
     operation_parameters_enum_values["getBusinessPartners::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessPartners::sort_ascending"]="true false"
     operation_parameters_enum_values["getBusinessPartners::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessPartners::sort_ascending"]="true false"
     operation_parameters_enum_values["getBusinessPartners::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessPartners::sort_ascending"]="true false"
     operation_parameters_enum_values["getBusinessPartners::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessPartners::sort_ascending"]="true false"
     operation_parameters_enum_values["getBusinessPartners::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessPartners::sort_ascending"]="true false"
+    operation_parameters_enum_values["getBusinessPartners::assets_summary"]="true false"
+    operation_parameters_enum_values["getBusinessPartners::sort_ascending"]="true false"
     operation_parameters_enum_values["campaignsAnalytics::aggregate_report_rows"]="true false"
     operation_parameters_enum_values["campaignsAnalytics::aggregate_report_rows"]="true false"
     operation_parameters_enum_values["campaignsAnalytics::aggregate_report_rows"]="true false"
@@ -636,60 +777,71 @@ _()
     operation_parameters_enum_values["eventsCreate::test"]="true false"
     operation_parameters_enum_values["conversionTagsList::filter_deleted"]="true false"
     operation_parameters_enum_values["conversionTagsList::filter_deleted"]="true false"
+    operation_parameters_enum_values["customerListsList::exclude_nca"]="true false"
+    operation_parameters_enum_values["customerListsList::exclude_nca"]="true false"
+    operation_parameters_enum_values["customerListsList::exclude_nca"]="true false"
+    operation_parameters_enum_values["customerListsList::exclude_nca"]="true false"
+    operation_parameters_enum_values["customerListsList::exclude_nca"]="true false"
+    operation_parameters_enum_values["customerSegmentList::include_sizing"]="true false"
+    operation_parameters_enum_values["customerSegmentList::include_sizing"]="true false"
+    operation_parameters_enum_values["customerSegmentList::include_sizing"]="true false"
+    operation_parameters_enum_values["customerSegmentList::include_sizing"]="true false"
+    operation_parameters_enum_values["customerSegmentList::include_sizing"]="true false"
+    operation_parameters_enum_values["customerSegmentList::include_sizing"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
-    operation_parameters_enum_values["trendingKeywordsList::include_prediction"]="true false"
     operation_parameters_enum_values["trendingKeywordsList::include_demographics"]="true false"
     operation_parameters_enum_values["pinsGet::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsGet::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsGet::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
     operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
     operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
     operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
     operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
     operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
     operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
     operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
     operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
-    operation_parameters_enum_values["targetingOptionsGet::targeting_type"]=""
-    operation_parameters_enum_values["targetingOptionsGet::targeting_type"]=""
-    operation_parameters_enum_values["targetingOptionsGet::targeting_type"]=""
-    operation_parameters_enum_values["targetingOptionsGet::targeting_type"]=""
-    operation_parameters_enum_values["targetingOptionsGet::targeting_type"]=""
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::include_product_tag_obj"]="true false"
     operation_parameters_enum_values["targetingTemplateList::include_sizing"]="true false"
     operation_parameters_enum_values["targetingTemplateList::include_sizing"]="true false"
     operation_parameters_enum_values["targetingTemplateList::include_sizing"]="true false"

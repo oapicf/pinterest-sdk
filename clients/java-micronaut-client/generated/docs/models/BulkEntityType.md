@@ -21,5 +21,7 @@ The class is defined in **[BulkEntityType.java](../../src/main/java/org/openapit
 
 * `SCHEDULE` (value: `"SCHEDULE"`)
 
+* `ENTITY_HISTORY` (value: `"ENTITY_HISTORY"`)
+
 
 

@@ -9,9 +9,6 @@
  */
 
 
-/**
- * Record processing counts
- */
 export interface RecordCounts { 
     /**
      * Number of invalid records processed

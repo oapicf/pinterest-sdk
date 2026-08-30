@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"altText": @"alt_text", @"boardId": @"board_id", @"boardOwner": @"board_owner", @"boardSectionId": @"board_section_id", @"createdAt": @"created_at", @"creativeType": @"creative_type", @"_description": @"description", @"dominantColor": @"dominant_color", @"hasBeenPromoted": @"has_been_promoted", @"_id": @"id", @"isOwner": @"is_owner", @"isStandard": @"is_standard", @"link": @"link", @"media": @"media", @"parentPinId": @"parent_pin_id", @"pinMetrics": @"pin_metrics", @"title": @"title" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"aiDisclosures": @"ai_disclosures", @"boardId": @"board_id", @"boardOwner": @"board_owner", @"boardSectionId": @"board_section_id", @"createdAt": @"created_at", @"creativeType": @"creative_type", @"dominantColor": @"dominant_color", @"hasBeenPromoted": @"has_been_promoted", @"_id": @"id", @"isOwner": @"is_owner", @"isProduct": @"is_product", @"isStandard": @"is_standard", @"media": @"media", @"parentPinId": @"parent_pin_id", @"pinMetrics": @"pin_metrics", @"altText": @"alt_text", @"_description": @"description", @"link": @"link", @"title": @"title" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"altText", @"boardId", @"boardOwner", @"boardSectionId", @"createdAt", @"creativeType", @"_description", @"dominantColor", @"hasBeenPromoted", @"isOwner", @"isStandard", @"link", @"media", @"parentPinId", @"pinMetrics", @"title"];
+  NSArray *optionalProperties = @[@"aiDisclosures", @"boardId", @"boardOwner", @"boardSectionId", @"createdAt", @"creativeType", @"dominantColor", @"hasBeenPromoted", @"isOwner", @"isProduct", @"isStandard", @"media", @"parentPinId", @"pinMetrics", @"altText", @"_description", @"link", @"title"];
   return [optionalProperties containsObject:propertyName];
 }
 

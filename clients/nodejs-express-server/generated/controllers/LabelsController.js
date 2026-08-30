@@ -8,6 +8,10 @@
 
 const Controller = require('./Controller');
 const service = require('../services/LabelsService');
+const labels/apply = async (request, response) => {
+  await Controller.handleRequest(request, response, service.labels/apply);
+};
+
 const labels/create = async (request, response) => {
   await Controller.handleRequest(request, response, service.labels/create);
 };
@@ -16,13 +20,19 @@ const labels/list = async (request, response) => {
   await Controller.handleRequest(request, response, service.labels/list);
 };
 
+const labels/remove = async (request, response) => {
+  await Controller.handleRequest(request, response, service.labels/remove);
+};
+
 const labels/update = async (request, response) => {
   await Controller.handleRequest(request, response, service.labels/update);
 };
 
 
 module.exports = {
+  labels/apply,
   labels/create,
   labels/list,
+  labels/remove,
   labels/update,
 };

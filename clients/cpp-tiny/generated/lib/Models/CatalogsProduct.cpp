@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsProduct::CatalogsProduct()
 {
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	metadata = CatalogsCreativeAssetsProductMetadata();
 	pin = Pin();
 }
@@ -34,9 +34,8 @@ CatalogsProduct::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -80,8 +79,8 @@ CatalogsProduct::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -102,14 +101,14 @@ CatalogsProduct::toJson()
 
 }
 
-CatalogsType
+std::string
 CatalogsProduct::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsProduct::setCatalogType(CatalogsType  catalog_type)
+CatalogsProduct::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -121,7 +120,7 @@ CatalogsProduct::getMetadata()
 }
 
 void
-CatalogsProduct::setMetadata(CatalogsCreativeAssetsProductMetadata  metadata)
+CatalogsProduct::setMetadata(CatalogsCreativeAssetsProductMetadata metadata)
 {
 	this->metadata = metadata;
 }
@@ -133,7 +132,7 @@ CatalogsProduct::getPin()
 }
 
 void
-CatalogsProduct::setPin(Pin  pin)
+CatalogsProduct::setPin(Pin pin)
 {
 	this->pin = pin;
 }

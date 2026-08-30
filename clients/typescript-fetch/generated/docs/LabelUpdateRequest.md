@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`labels` | [Array&lt;LabelUpdateRequestLabelsInner&gt;](LabelUpdateRequestLabelsInner.md)
+`labels` | [Array&lt;LabelUpdateItem&gt;](LabelUpdateItem.md)
 
 ## Example
 

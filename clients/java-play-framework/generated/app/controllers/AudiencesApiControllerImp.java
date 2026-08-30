@@ -1,10 +1,12 @@
 package controllers;
 
-import apimodels.Audience;
-import apimodels.AudienceCreateRequest;
-import apimodels.AudienceUpdateRequest;
+import apimodels.AdAccountsAudience;
+import apimodels.AdAccountsAudienceCreate;
+import apimodels.AdAccountsAudienceUpdate;
+import apimodels.AudienceOwnershipType;
 import apimodels.AudiencesList200Response;
-import apimodels.Error;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import play.mvc.Http;
 import java.util.List;
@@ -15,30 +17,30 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudiencesApiControllerImp extends AudiencesApiControllerImpInterface {
     @Override
-    public Audience audiencesCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AudienceCreateRequest audienceCreateRequest) throws Exception {
+    public AdAccountsAudience audiencesCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountsAudienceCreate adAccountsAudienceCreate) throws Exception {
         //Do your magic!!!
-        return new Audience();
+        return new AdAccountsAudience();
     }
 
     @Override
-    public Audience audiencesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId) throws Exception {
+    public AdAccountsAudience audiencesGet(Http.Request request,  @Pattern(regexp="^\\d+$")String audienceId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
-        return new Audience();
+        return new AdAccountsAudience();
     }
 
     @Override
-    public AudiencesList200Response audiencesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark, String order,  @Min(1) @Max(250)Integer pageSize, String ownershipType) throws Exception {
+    public AudiencesList200Response audiencesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order, AudienceOwnershipType ownershipType, Boolean excludeNca) throws Exception {
         //Do your magic!!!
         return new AudiencesList200Response();
     }
 
     @Override
-    public Audience audiencesUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId, AudienceUpdateRequest audienceUpdateRequest) throws Exception {
+    public AdAccountsAudience audiencesUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String audienceId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountsAudienceUpdate adAccountsAudienceUpdate) throws Exception {
         //Do your magic!!!
-        return new Audience();
+        return new AdAccountsAudience();
     }
 
 }

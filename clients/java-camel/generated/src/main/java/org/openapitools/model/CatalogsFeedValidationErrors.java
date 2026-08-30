@@ -2,23 +2,24 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedValidationErrors {
 
   private Integer ADULT_INVALID;
@@ -313,11 +314,11 @@ public class CatalogsFeedValidationErrors {
   }
 
   /**
-   * Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+   * Your feed wasn't ingested because it hasn't changed in the previous 90 days.
    * @return FETCH_INACTIVE_FEED_ERROR
    */
   
-  @Schema(name = "FETCH_INACTIVE_FEED_ERROR", description = "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "FETCH_INACTIVE_FEED_ERROR", description = "Your feed wasn't ingested because it hasn't changed in the previous 90 days.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FETCH_INACTIVE_FEED_ERROR")
   public Integer getFETCHINACTIVEFEEDERROR() {
     return FETCH_INACTIVE_FEED_ERROR;
@@ -842,10 +843,7 @@ public class CatalogsFeedValidationErrors {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

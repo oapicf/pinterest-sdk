@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -29,32 +29,79 @@ func NewBusinessAccessAssetsAPIService() *BusinessAccessAssetsAPIService {
 	return &BusinessAccessAssetsAPIService{}
 }
 
-// BusinessAssetMembersGet - Get members with access to asset
-func (s *BusinessAccessAssetsAPIService) BusinessAssetMembersGet(ctx context.Context, businessId string, assetId string, fetchSystemUsers bool, bookmark string, pageSize int32, startIndex int32) (ImplResponse, error) {
-	// TODO - update BusinessAssetMembersGet with the required logic for this service method.
+// AssetGroupCreate - Create a new asset group.
+func (s *BusinessAccessAssetsAPIService) AssetGroupCreate(ctx context.Context, businessId string, assetGroupInputCreate AssetGroupInputCreate) (ImplResponse, error) {
+	// TODO - update AssetGroupCreate with the required logic for this service method.
 	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, BusinessAssetMembersGet200Response{}) or use other options such as http.Ok ...
-	// return Response(200, BusinessAssetMembersGet200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AssetGroupInput{}) or use other options such as http.Ok ...
+	// return Response(200, AssetGroupInput{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, AssetGroupInput{}) or use other options such as http.Ok ...
+	// return Response(201, AssetGroupInput{}), nil
 
-	return Response(http.StatusNotImplemented, nil), errors.New("BusinessAssetMembersGet method not implemented")
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AssetGroupCreate method not implemented")
 }
 
-// BusinessAssetPartnersGet - Get partners with access to asset
-func (s *BusinessAccessAssetsAPIService) BusinessAssetPartnersGet(ctx context.Context, businessId string, assetId string, startIndex int32, bookmark string, pageSize int32) (ImplResponse, error) {
-	// TODO - update BusinessAssetPartnersGet with the required logic for this service method.
+// AssetGroupDelete - Delete asset groups.
+func (s *BusinessAccessAssetsAPIService) AssetGroupDelete(ctx context.Context, businessId string, assetGroupDeletionDelete AssetGroupDeletionDelete) (ImplResponse, error) {
+	// TODO - update AssetGroupDelete with the required logic for this service method.
 	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, BusinessAssetPartnersGet200Response{}) or use other options such as http.Ok ...
-	// return Response(200, BusinessAssetPartnersGet200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, AssetGroupDeletion{}) or use other options such as http.Ok ...
+	// return Response(200, AssetGroupDeletion{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
-	return Response(http.StatusNotImplemented, nil), errors.New("BusinessAssetPartnersGet method not implemented")
+	return Response(http.StatusNotImplemented, nil), errors.New("AssetGroupDelete method not implemented")
+}
+
+// AssetGroupUpdate - Update asset groups.
+func (s *BusinessAccessAssetsAPIService) AssetGroupUpdate(ctx context.Context, businessId string, assetGroupModificationReadOrUpdate AssetGroupModificationReadOrUpdate) (ImplResponse, error) {
+	// TODO - update AssetGroupUpdate with the required logic for this service method.
+	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, AssetGroupModification{}) or use other options such as http.Ok ...
+	// return Response(200, AssetGroupModification{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("AssetGroupUpdate method not implemented")
 }
 
 // BusinessAssetsGet - List business assets
@@ -65,36 +112,95 @@ func (s *BusinessAccessAssetsAPIService) BusinessAssetsGet(ctx context.Context, 
 	// TODO: Uncomment the next line to return response Response(200, BusinessAssetsGet200Response{}) or use other options such as http.Ok ...
 	// return Response(200, BusinessAssetsGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BusinessAssetsGet method not implemented")
 }
 
-// BusinessMemberAssetsGet - Get assets assigned to a member
-func (s *BusinessAccessAssetsAPIService) BusinessMemberAssetsGet(ctx context.Context, businessId string, memberId string, assetType string, startIndex int32, bookmark string, pageSize int32) (ImplResponse, error) {
-	// TODO - update BusinessMemberAssetsGet with the required logic for this service method.
+// BusinessAssetMembersGet - Get members with access to asset
+func (s *BusinessAccessAssetsAPIService) BusinessAssetMembersGet(ctx context.Context, businessId string, assetId string, startIndex int32, fetchSystemUsers bool, bookmark string, pageSize int32) (ImplResponse, error) {
+	// TODO - update BusinessAssetMembersGet with the required logic for this service method.
 	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, BusinessMemberAssetsGet200Response{}) or use other options such as http.Ok ...
-	// return Response(200, BusinessMemberAssetsGet200Response{}), nil
+	// TODO: Uncomment the next line to return response Response(200, BusinessAssetMembersGet200Response{}) or use other options such as http.Ok ...
+	// return Response(200, BusinessAssetMembersGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	return Response(http.StatusNotImplemented, nil), errors.New("BusinessMemberAssetsGet method not implemented")
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BusinessAssetMembersGet method not implemented")
+}
+
+// BusinessAssetPartnersGet - Get partners with access to asset
+func (s *BusinessAccessAssetsAPIService) BusinessAssetPartnersGet(ctx context.Context, businessId string, assetId string, startIndex int32, bookmark string, pageSize int32) (ImplResponse, error) {
+	// TODO - update BusinessAssetPartnersGet with the required logic for this service method.
+	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BusinessAssetMembersGet200Response{}) or use other options such as http.Ok ...
+	// return Response(200, BusinessAssetMembersGet200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BusinessAssetPartnersGet method not implemented")
 }
 
 // BusinessMembersAssetAccessDelete - Delete member access to asset
-func (s *BusinessAccessAssetsAPIService) BusinessMembersAssetAccessDelete(ctx context.Context, businessId string, businessMembersAssetAccessDeleteRequest BusinessMembersAssetAccessDeleteRequest) (ImplResponse, error) {
+func (s *BusinessAccessAssetsAPIService) BusinessMembersAssetAccessDelete(ctx context.Context, businessId string, businessMembersAssetAccessDeleteBody BusinessMembersAssetAccessDeleteBody) (ImplResponse, error) {
 	// TODO - update BusinessMembersAssetAccessDelete with the required logic for this service method.
 	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, DeleteMemberAccessResultsResponseArray{}) or use other options such as http.Ok ...
 	// return Response(200, DeleteMemberAccessResultsResponseArray{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BusinessMembersAssetAccessDelete method not implemented")
 }
@@ -107,10 +213,54 @@ func (s *BusinessAccessAssetsAPIService) BusinessMembersAssetAccessUpdate(ctx co
 	// TODO: Uncomment the next line to return response Response(200, UpdateMemberAssetsResultsResponseArray{}) or use other options such as http.Ok ...
 	// return Response(200, UpdateMemberAssetsResultsResponseArray{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BusinessMembersAssetAccessUpdate method not implemented")
+}
+
+// BusinessMemberAssetsGet - Get assets assigned to a member
+func (s *BusinessAccessAssetsAPIService) BusinessMemberAssetsGet(ctx context.Context, businessId string, memberId string, assetType string, startIndex int32, sortBy AssetSortBy, sortAscending bool, searchBy AssetSearchBy, searchValue string, assetPermissionType AssetPermissionType, adAccountStatuses []NonDraftEntityStatus, bookmark string, pageSize int32) (ImplResponse, error) {
+	// TODO - update BusinessMemberAssetsGet with the required logic for this service method.
+	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BusinessMemberAssetsGetResponse{}) or use other options such as http.Ok ...
+	// return Response(200, BusinessMemberAssetsGetResponse{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BusinessMemberAssetsGet method not implemented")
 }
 
 // DeletePartnerAssetAccessHandlerImpl - Delete partner access to asset
@@ -118,11 +268,11 @@ func (s *BusinessAccessAssetsAPIService) DeletePartnerAssetAccessHandlerImpl(ctx
 	// TODO - update DeletePartnerAssetAccessHandlerImpl with the required logic for this service method.
 	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, DeletePartnerAssetsResultsResponseArray{}) or use other options such as http.Ok ...
-	// return Response(200, DeletePartnerAssetsResultsResponseArray{}), nil
+	// TODO: Uncomment the next line to return response Response(200, DeletePartnerAssetAccessResultsResponseArray{}) or use other options such as http.Ok ...
+	// return Response(200, DeletePartnerAssetAccessResultsResponseArray{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("DeletePartnerAssetAccessHandlerImpl method not implemented")
 }
@@ -135,73 +285,52 @@ func (s *BusinessAccessAssetsAPIService) UpdatePartnerAssetAccessHandlerImpl(ctx
 	// TODO: Uncomment the next line to return response Response(200, UpdatePartnerAssetsResultsResponseArray{}) or use other options such as http.Ok ...
 	// return Response(200, UpdatePartnerAssetsResultsResponseArray{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("UpdatePartnerAssetAccessHandlerImpl method not implemented")
 }
 
 // BusinessPartnerAssetAccessGet - Get assets assigned to a partner or assets assigned by a partner
-func (s *BusinessAccessAssetsAPIService) BusinessPartnerAssetAccessGet(ctx context.Context, businessId string, partnerId string, partnerType PartnerType, assetType string, startIndex int32, pageSize int32, bookmark string) (ImplResponse, error) {
+func (s *BusinessAccessAssetsAPIService) BusinessPartnerAssetAccessGet(ctx context.Context, businessId string, partnerId string, partnerType string, assetType string, startIndex int32, sortBy AssetSortBy, sortAscending bool, searchBy AssetSearchBy, searchValue string, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update BusinessPartnerAssetAccessGet with the required logic for this service method.
 	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, BusinessPartnerAssetAccessGet200Response{}) or use other options such as http.Ok ...
 	// return Response(200, BusinessPartnerAssetAccessGet200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("BusinessPartnerAssetAccessGet method not implemented")
-}
-
-// AssetGroupCreate - Create a new asset group.
-func (s *BusinessAccessAssetsAPIService) AssetGroupCreate(ctx context.Context, businessId string, createAssetGroupBody CreateAssetGroupBody) (ImplResponse, error) {
-	// TODO - update AssetGroupCreate with the required logic for this service method.
-	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, CreateAssetGroupResponse{}) or use other options such as http.Ok ...
-	// return Response(200, CreateAssetGroupResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("AssetGroupCreate method not implemented")
-}
-
-// AssetGroupDelete - Delete asset groups.
-func (s *BusinessAccessAssetsAPIService) AssetGroupDelete(ctx context.Context, businessId string, deleteAssetGroupBody DeleteAssetGroupBody) (ImplResponse, error) {
-	// TODO - update AssetGroupDelete with the required logic for this service method.
-	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, DeleteAssetGroupResponse{}) or use other options such as http.Ok ...
-	// return Response(200, DeleteAssetGroupResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("AssetGroupDelete method not implemented")
-}
-
-// AssetGroupUpdate - Update asset groups.
-func (s *BusinessAccessAssetsAPIService) AssetGroupUpdate(ctx context.Context, businessId string, updateAssetGroupBody UpdateAssetGroupBody) (ImplResponse, error) {
-	// TODO - update AssetGroupUpdate with the required logic for this service method.
-	// Add api_business_access_assets_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	// TODO: Uncomment the next line to return response Response(200, UpdateAssetGroupResponse{}) or use other options such as http.Ok ...
-	// return Response(200, UpdateAssetGroupResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("AssetGroupUpdate method not implemented")
 }

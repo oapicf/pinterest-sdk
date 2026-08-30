@@ -17,13 +17,17 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { TargetingTemplateCreate } from '../model/targetingTemplateCreate';
+import { PinterestLibError } from '../model/pinterestLibError';
 // @ts-ignore
-import { TargetingTemplateGetResponseData } from '../model/targetingTemplateGetResponseData';
+import { PinterestLibPaginationOrder } from '../model/pinterestLibPaginationOrder';
+// @ts-ignore
+import { TargetingTemplate } from '../model/targetingTemplate';
+// @ts-ignore
+import { TargetingTemplateCreate } from '../model/targetingTemplateCreate';
 // @ts-ignore
 import { TargetingTemplateList200Response } from '../model/targetingTemplateList200Response';
 // @ts-ignore
-import { TargetingTemplateUpdateRequest } from '../model/targetingTemplateUpdateRequest';
+import { TargetingTemplateUpdateRequestReadOrUpdate } from '../model/targetingTemplateUpdateRequestReadOrUpdate';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -43,17 +47,17 @@ export class TargetingTemplateService extends BaseService {
 
     /**
      * Create targeting templates
-     * &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+     * Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
      * @endpoint post /ad_accounts/{ad_account_id}/targeting_templates
      * @param adAccountId Unique identifier of an ad account.
-     * @param targetingTemplateCreate targeting template creation entity
+     * @param targetingTemplateCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<TargetingTemplateGetResponseData>;
-    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<TargetingTemplateGetResponseData>>;
-    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<TargetingTemplateGetResponseData>>;
+    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<TargetingTemplate>;
+    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<TargetingTemplate>>;
+    public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<TargetingTemplate>>;
     public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling targetingTemplateCreate.');
@@ -101,7 +105,7 @@ export class TargetingTemplateService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/targeting_templates`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<TargetingTemplateGetResponseData>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<TargetingTemplate>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: targetingTemplateCreate,
@@ -117,27 +121,45 @@ export class TargetingTemplateService extends BaseService {
 
     /**
      * List targeting templates
-     * Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+     * Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
      * @endpoint get /ad_accounts/{ad_account_id}/targeting_templates
      * @param adAccountId Unique identifier of an ad account.
-     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-     * @param includeSizing Include audience sizing in result or not
-     * @param searchQuery Search keyword for targeting templates
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     * @param order The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+     * @param includeSizing Include audience sizing in result or not
+     * @param searchQuery Search query. Can contain pin description keywords or comma-separated pin IDs.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public targetingTemplateList(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<TargetingTemplateList200Response>;
-    public targetingTemplateList(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<TargetingTemplateList200Response>>;
-    public targetingTemplateList(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<TargetingTemplateList200Response>>;
-    public targetingTemplateList(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public targetingTemplateList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, includeSizing?: boolean, searchQuery?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<TargetingTemplateList200Response>;
+    public targetingTemplateList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, includeSizing?: boolean, searchQuery?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<TargetingTemplateList200Response>>;
+    public targetingTemplateList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, includeSizing?: boolean, searchQuery?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<TargetingTemplateList200Response>>;
+    public targetingTemplateList(adAccountId: string, bookmark?: string, pageSize?: number, order?: PinterestLibPaginationOrder, includeSizing?: boolean, searchQuery?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling targetingTemplateList.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
@@ -161,24 +183,6 @@ export class TargetingTemplateService extends BaseService {
             localVarQueryParameters,
             'search_query',
             <any>searchQuery,
-            QueryParamStyle.Form,
-            true,
-        );
-
-
-        localVarQueryParameters = this.addToHttpParams(
-            localVarQueryParameters,
-            'page_size',
-            <any>pageSize,
-            QueryParamStyle.Form,
-            true,
-        );
-
-
-        localVarQueryParameters = this.addToHttpParams(
-            localVarQueryParameters,
-            'bookmark',
-            <any>bookmark,
             QueryParamStyle.Form,
             true,
         );
@@ -233,23 +237,23 @@ export class TargetingTemplateService extends BaseService {
 
     /**
      * Update targeting templates
-     * &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+     * Update the targeting template given advertiser ID and targeting template ID
      * @endpoint patch /ad_accounts/{ad_account_id}/targeting_templates
      * @param adAccountId Unique identifier of an ad account.
-     * @param targetingTemplateUpdateRequest Operation type and targeting template ID
+     * @param targetingTemplateUpdateRequestReadOrUpdate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling targetingTemplateUpdate.');
         }
-        if (targetingTemplateUpdateRequest === null || targetingTemplateUpdateRequest === undefined) {
-            throw new Error('Required parameter targetingTemplateUpdateRequest was null or undefined when calling targetingTemplateUpdate.');
+        if (targetingTemplateUpdateRequestReadOrUpdate === null || targetingTemplateUpdateRequestReadOrUpdate === undefined) {
+            throw new Error('Required parameter targetingTemplateUpdateRequestReadOrUpdate was null or undefined when calling targetingTemplateUpdate.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -294,7 +298,7 @@ export class TargetingTemplateService extends BaseService {
         return this.httpClient.request<any>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: targetingTemplateUpdateRequest,
+                body: targetingTemplateUpdateRequestReadOrUpdate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

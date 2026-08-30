@@ -19,11 +19,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="adsCreditRedeem"></a>
 # **adsCreditRedeem**
-> AdsCreditRedeemResponse adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+> AdsCreditRedeem adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```java
@@ -46,9 +46,9 @@ public class Example {
 
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    AdsCreditRedeemRequest adsCreditRedeemRequest = new AdsCreditRedeemRequest(); // AdsCreditRedeemRequest | Redeem ad credits request.
+    AdsCreditRedeemCreate adsCreditRedeemCreate = new AdsCreditRedeemCreate(); // AdsCreditRedeemCreate | 
     try {
-      AdsCreditRedeemResponse result = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemRequest);
+      AdsCreditRedeem result = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#adsCreditRedeem");
@@ -66,11 +66,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **adsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md)| Redeem ad credits request. | |
+| **adsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md)|  | |
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -84,9 +84,14 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully redeemed ad credits. |  -  |
-| **400** | Error thrown when unable to redeem offer code. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="adsCreditsDiscountsGet"></a>
 # **adsCreditsDiscountsGet**
@@ -94,7 +99,7 @@ public class Example {
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```java
@@ -118,7 +123,7 @@ public class Example {
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
       AdsCreditsDiscountsGet200Response result = apiInstance.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize);
       System.out.println(result);
@@ -139,7 +144,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -157,8 +162,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="billingInvoiceDownloadGet"></a>
 # **billingInvoiceDownloadGet**
@@ -227,13 +237,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully fetched Billing invoice information for a given ad account |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="billingInvoicesGet"></a>
 # **billingInvoicesGet**
-> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
 
 Get billing invoices
 
@@ -261,15 +275,15 @@ public class Example {
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    String sort = "DUE_DATE"; // String | Field of which to sort billing invoices
-    String order = "ASCENDING"; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-    String status = "OPEN"; // String | Status of billing invoices to filter by
-    String documentType = "INVOICE"; // String | Document type of billing invoices to filter by
-    LocalDate startDueDate = LocalDate.parse("Sun Jan 01 00:00:00 UTC 2023"); // LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
-    LocalDate endDueDate = LocalDate.parse("Mon Jan 01 00:00:00 UTC 2024"); // LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING"); // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+    BillingInvoiceSortField sort = BillingInvoiceSortField.fromValue("DUE_DATE"); // BillingInvoiceSortField | Field of which to sort billing invoices
+    BillingInvoiceStatus status = BillingInvoiceStatus.fromValue("OPEN"); // BillingInvoiceStatus | Status of billing invoices to filter by
+    BillingInvoiceDocumentType documentType = BillingInvoiceDocumentType.fromValue("INVOICE"); // BillingInvoiceDocumentType | Document type of billing invoices to filter by
+    LocalDate startDueDate = LocalDate.now(); // LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+    LocalDate endDueDate = LocalDate.now(); // LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
     try {
-      BillingInvoicesGet200Response result = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate);
+      BillingInvoicesGet200Response result = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#billingInvoicesGet");
@@ -288,11 +302,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **sort** | **String**| Field of which to sort billing invoices | [optional] [default to DUE_DATE] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] |
-| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
-| **status** | **String**| Status of billing invoices to filter by | [optional] [enum: OPEN, CLOSED] |
-| **documentType** | **String**| Document type of billing invoices to filter by | [optional] [enum: INVOICE, CREDIT_MEMO] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
+| **sort** | [**BillingInvoiceSortField**](.md)| Field of which to sort billing invoices | [optional] [default to DUE_DATE] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] |
+| **status** | [**BillingInvoiceStatus**](.md)| Status of billing invoices to filter by | [optional] [enum: OPEN, CLOSED] |
+| **documentType** | [**BillingInvoiceDocumentType**](.md)| Document type of billing invoices to filter by | [optional] [enum: INVOICE, CREDIT_MEMO] |
 | **startDueDate** | **LocalDate**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
 | **endDueDate** | **LocalDate**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
 
@@ -312,17 +326,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="billingProfilesGet"></a>
 # **billingProfilesGet**
-> BillingProfilesGet200Response billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
+> BillingProfilesGet200Response billingProfilesGet(isActive, adAccountId, bookmark, pageSize)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 ```java
@@ -344,12 +362,12 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     BillingApi apiInstance = new BillingApi(defaultClient);
-    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     Boolean isActive = true; // Boolean | Return active billing profiles, if false return all billing profiles.
+    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      BillingProfilesGet200Response result = apiInstance.billingProfilesGet(adAccountId, isActive, bookmark, pageSize);
+      BillingProfilesGet200Response result = apiInstance.billingProfilesGet(isActive, adAccountId, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#billingProfilesGet");
@@ -366,10 +384,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | **String**| Unique identifier of an ad account. | |
 | **isActive** | **Boolean**| Return active billing profiles, if false return all billing profiles. | |
+| **adAccountId** | **String**| Unique identifier of an ad account. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -387,16 +405,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="ssioAccountsGet"></a>
 # **ssioAccountsGet**
-> SSIOAccountResponse ssioAccountsGet(adAccountId)
+> SSIOAccount ssioAccountsGet(adAccountId)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```java
@@ -420,7 +443,7 @@ public class Example {
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      SSIOAccountResponse result = apiInstance.ssioAccountsGet(adAccountId);
+      SSIOAccount result = apiInstance.ssioAccountsGet(adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#ssioAccountsGet");
@@ -441,7 +464,7 @@ public class Example {
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -455,17 +478,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="ssioInsertionOrderCreate"></a>
 # **ssioInsertionOrderCreate**
-> SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```java
@@ -488,9 +515,9 @@ public class Example {
 
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest = new SSIOCreateInsertionOrderRequest(); // SSIOCreateInsertionOrderRequest | Order line to create.
+    SSIOInsertionOrderCreate ssIOInsertionOrderCreate = new SSIOInsertionOrderCreate(); // SSIOInsertionOrderCreate | 
     try {
-      SSIOCreateInsertionOrderResponse result = apiInstance.ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest);
+      SSIOInsertionOrder result = apiInstance.ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#ssioInsertionOrderCreate");
@@ -508,11 +535,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **ssIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md)| Order line to create. | |
+| **ssIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md)|  | |
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -526,17 +553,22 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="ssioInsertionOrderEdit"></a>
 # **ssioInsertionOrderEdit**
-> SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```java
@@ -559,9 +591,9 @@ public class Example {
 
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest = new SSIOEditInsertionOrderRequest(); // SSIOEditInsertionOrderRequest | Order line to create.
+    SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate = new SSIOInsertionOrderUpdate(); // SSIOInsertionOrderUpdate | 
     try {
-      SSIOEditInsertionOrderResponse result = apiInstance.ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest);
+      SSIOInsertionOrder result = apiInstance.ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#ssioInsertionOrderEdit");
@@ -579,11 +611,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **ssIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md)| Order line to create. | |
+| **ssIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md)|  | |
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -597,9 +629,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="ssioInsertionOrdersStatusGetByAdAccount"></a>
 # **ssioInsertionOrdersStatusGetByAdAccount**
@@ -607,7 +643,7 @@ public class Example {
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```java
@@ -631,7 +667,7 @@ public class Example {
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
       SsioInsertionOrdersStatusGetByAdAccount200Response result = apiInstance.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize);
       System.out.println(result);
@@ -652,7 +688,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -670,9 +706,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="ssioInsertionOrdersStatusGetByPinOrderId"></a>
 # **ssioInsertionOrdersStatusGetByPinOrderId**
@@ -680,7 +720,7 @@ public class Example {
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```java
@@ -703,7 +743,7 @@ public class Example {
 
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    String pinOrderId = "0Q01N0000015hekSVDFDC"; // String | The pin order id associated with the ssio insertion order
+    String pinOrderId = "pinOrderId_example"; // String | The pin order id associated with the ssio insertion order
     try {
       SSIOInsertionOrderStatusResponse result = apiInstance.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId);
       System.out.println(result);
@@ -741,17 +781,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="ssioOrderLinesGetByAdAccount"></a>
 # **ssioOrderLinesGetByAdAccount**
-> SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+> SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 ```java
@@ -774,11 +818,11 @@ public class Example {
 
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+    String pinOrderId = "pinOrderId_example"; // String | The pin order id associated with the SSIO insertion order
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    String pinOrderId = "0Q01N0000015hekSVDFDC"; // String | The pin order id associated with the ssio insertino order
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      SsioOrderLinesGetByAdAccount200Response result = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId);
+      SsioOrderLinesGetByAdAccount200Response result = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#ssioOrderLinesGetByAdAccount");
@@ -796,9 +840,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
+| **pinOrderId** | **String**| The pin order id associated with the SSIO insertion order | [optional] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **pinOrderId** | **String**| The pin order id associated with the ssio insertino order | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -816,7 +860,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

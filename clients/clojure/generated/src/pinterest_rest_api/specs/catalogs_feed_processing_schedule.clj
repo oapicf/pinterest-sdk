@@ -1,6 +1,7 @@
 (ns pinterest-rest-api.specs.catalogs-feed-processing-schedule
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.catalogs-feed-processing-schedule-timezone :refer :all]
             )
   (:import (java.io File)))
 
@@ -8,7 +9,7 @@
 (def catalogs-feed-processing-schedule-data
   {
    (ds/req :time) string?
-   (ds/req :timezone) string?
+   (ds/req :timezone) catalogs-feed-processing-schedule-timezone-spec
    })
 
 (def catalogs-feed-processing-schedule-spec

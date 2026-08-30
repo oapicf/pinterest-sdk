@@ -13,21 +13,21 @@ Method | HTTP request | Description
 <a id="bulkDownloadCreate"></a>
 # **bulkDownloadCreate**
 ```java
-Mono<BulkDownloadResponse> BulkController.bulkDownloadCreate(adAccountIdbulkDownloadRequest)
+Mono<BulkDownload> BulkController.bulkDownloadCreate(adAccountIdbulkDownloadCreate)
 ```
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **adAccountId** | `String` | Unique identifier of an ad account. |
-**bulkDownloadRequest** | [**BulkDownloadRequest**](../../docs/models/BulkDownloadRequest.md) | Parameters to get ad entities in bulk |
+**bulkDownloadCreate** | [**BulkDownloadCreate**](../../docs/models/BulkDownloadCreate.md) |  |
 
 ### Return type
-[**BulkDownloadResponse**](../../docs/models/BulkDownloadResponse.md)
+[**BulkDownload**](../../docs/models/BulkDownload.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:read`
@@ -39,22 +39,22 @@ Name | Type | Description  | Notes
 <a id="bulkRequestGet"></a>
 # **bulkRequestGet**
 ```java
-Mono<BulkUpsertStatusResponse> BulkController.bulkRequestGet(adAccountIdbulkRequestIdincludeDetails)
+Mono<BulkJobData> BulkController.bulkRequestGet(adAccountIdbulkRequestIdincludeDetails)
 ```
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **adAccountId** | `String` | Unique identifier of an ad account. |
-**bulkRequestId** | `String` | Unique identifier of a bulk upsert request. |
-**includeDetails** | `Boolean` | if set to True then attach the errors/details to all the requests | [optional parameter] [default to `false`]
+**bulkRequestId** | `String` | Bulk request ID that is from one of the entities bulk endpoints |
+**includeDetails** | `Boolean` | If set to True then attach the errors/details to all the requests | [optional parameter] [default to `false`]
 
 ### Return type
-[**BulkUpsertStatusResponse**](../../docs/models/BulkUpsertStatusResponse.md)
+[**BulkJobData**](../../docs/models/BulkJobData.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:read`
@@ -72,7 +72,7 @@ Mono<BulkUpsertResponse> BulkController.bulkUpsertCreate(adAccountIdbulkUpsertRe
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
 
 ### Parameters
 Name | Type | Description  | Notes

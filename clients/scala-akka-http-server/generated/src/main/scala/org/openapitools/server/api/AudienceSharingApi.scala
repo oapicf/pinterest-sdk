@@ -8,14 +8,19 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
+import org.openapitools.server.model.AdAccountToAdAccountSharedAudience
+import org.openapitools.server.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.server.model.AdAccountToBusinessSharedAudience
+import org.openapitools.server.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 import org.openapitools.server.model.AdAccountsAudiencesSharedAccountsList200Response
 import org.openapitools.server.model.AudienceAccountType
-import org.openapitools.server.model.AudiencesList200Response
-import org.openapitools.server.model.BusinessSharedAudience
-import org.openapitools.server.model.BusinessSharedAudienceResponse
+import org.openapitools.server.model.BusinessToAdAccountSharedAudience
+import org.openapitools.server.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.server.model.BusinessToBusinessSharedAudience
+import org.openapitools.server.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
 import org.openapitools.server.model.Error
-import org.openapitools.server.model.SharedAudience
-import org.openapitools.server.model.SharedAudienceResponse
+import org.openapitools.server.model.Order
+import org.openapitools.server.model.SharedAudiencesForBusinessList200Response
 
 
 class AudienceSharingApi(
@@ -31,50 +36,50 @@ import AudienceSharingApiPatterns.adAccountIdPattern
   lazy val route: Route =
     path("ad_accounts" / adAccountIdPattern / "audiences" / "shared" / "accounts") { (adAccountId) => 
       get { 
-        parameters("audience_id".as[String], "account_type".as[String], "page_size".as[Int].?(25), "bookmark".as[String].?) { (audienceId, accountType, pageSize, bookmark) => 
-            audienceSharingService.adAccountsAudiencesSharedAccountsList(adAccountId = adAccountId, audienceId = audienceId, accountType = accountType, pageSize = pageSize, bookmark = bookmark)
+        parameters("audience_id".as[String], "account_type".as[String], "bookmark".as[String].?, "page_size".as[Int].?(25)) { (audienceId, accountType, bookmark, pageSize) => 
+            audienceSharingService.adAccountsAudiencesSharedAccountsList(audienceId = audienceId, accountType = accountType, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
     path("businesses" / businessIdPattern / "audiences" / "shared" / "accounts") { (businessId) => 
       get { 
-        parameters("audience_id".as[String], "account_type".as[String], "page_size".as[Int].?(25), "bookmark".as[String].?) { (audienceId, accountType, pageSize, bookmark) => 
-            audienceSharingService.businessAccountAudiencesSharedAccountsList(businessId = businessId, audienceId = audienceId, accountType = accountType, pageSize = pageSize, bookmark = bookmark)
+        parameters("audience_id".as[String], "account_type".as[String], "bookmark".as[String].?, "page_size".as[Int].?(25)) { (audienceId, accountType, bookmark, pageSize) => 
+            audienceSharingService.businessAccountAudiencesSharedAccountsList(businessId = businessId, audienceId = audienceId, accountType = accountType, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
     path("businesses" / businessIdPattern / "audiences") { (businessId) => 
       get { 
-        parameters("bookmark".as[String].?, "order".as[String].?, "page_size".as[Int].?(25)) { (bookmark, order, pageSize) => 
-            audienceSharingService.sharedAudiencesForBusinessList(businessId = businessId, bookmark = bookmark, order = order, pageSize = pageSize)
+        parameters("order".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25)) { (order, bookmark, pageSize) => 
+            audienceSharingService.sharedAudiencesForBusinessList(businessId = businessId, order = order, bookmark = bookmark, pageSize = pageSize)
         }
       }
     } ~
     path("ad_accounts" / adAccountIdPattern / "audiences" / "ad_accounts" / "shared") { (adAccountId) => 
       patch {  
-            entity(as[SharedAudience]){ sharedAudience =>
-              audienceSharingService.updateAdAccountToAdAccountSharedAudience(adAccountId = adAccountId, sharedAudience = sharedAudience)
+            entity(as[AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody]){ adAccountToAdAccountSharedAudienceUpdateWithRequiredBody =>
+              audienceSharingService.updateAdAccountToAdAccountSharedAudience(adAccountId = adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
             }
       }
     } ~
     path("ad_accounts" / adAccountIdPattern / "audiences" / "businesses" / "shared") { (adAccountId) => 
       patch {  
-            entity(as[BusinessSharedAudience]){ businessSharedAudience =>
-              audienceSharingService.updateAdAccountToBusinessSharedAudience(adAccountId = adAccountId, businessSharedAudience = businessSharedAudience)
+            entity(as[AdAccountToBusinessSharedAudienceUpdateWithRequiredBody]){ adAccountToBusinessSharedAudienceUpdateWithRequiredBody =>
+              audienceSharingService.updateAdAccountToBusinessSharedAudience(adAccountId = adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody = adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
             }
       }
     } ~
     path("businesses" / businessIdPattern / "audiences" / "ad_accounts" / "shared") { (businessId) => 
       patch {  
-            entity(as[SharedAudience]){ sharedAudience =>
-              audienceSharingService.updateBusinessToAdAccountSharedAudience(businessId = businessId, sharedAudience = sharedAudience)
+            entity(as[BusinessToAdAccountSharedAudienceUpdateWithRequiredBody]){ businessToAdAccountSharedAudienceUpdateWithRequiredBody =>
+              audienceSharingService.updateBusinessToAdAccountSharedAudience(businessId = businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody = businessToAdAccountSharedAudienceUpdateWithRequiredBody)
             }
       }
     } ~
     path("businesses" / businessIdPattern / "audiences" / "businesses" / "shared") { (businessId) => 
       patch {  
-            entity(as[BusinessSharedAudience]){ businessSharedAudience =>
-              audienceSharingService.updateBusinessToBusinessSharedAudience(businessId = businessId, businessSharedAudience = businessSharedAudience)
+            entity(as[BusinessToBusinessSharedAudienceUpdateWithRequiredBody]){ businessToBusinessSharedAudienceUpdateWithRequiredBody =>
+              audienceSharingService.updateBusinessToBusinessSharedAudience(businessId = businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody = businessToBusinessSharedAudienceUpdateWithRequiredBody)
             }
       }
     }
@@ -82,8 +87,8 @@ import AudienceSharingApiPatterns.adAccountIdPattern
 
 object AudienceSharingApiPatterns {
 
-    val businessIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
-val adAccountIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val businessIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
+val adAccountIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait AudienceSharingApiService {
@@ -92,124 +97,210 @@ trait AudienceSharingApiService {
     complete((200, responseAdAccountsAudiencesSharedAccountsList200Response))
   def adAccountsAudiencesSharedAccountsList400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def adAccountsAudiencesSharedAccountsList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def adAccountsAudiencesSharedAccountsList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
   def adAccountsAudiencesSharedAccountsList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def adAccountsAudiencesSharedAccountsList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def adAccountsAudiencesSharedAccountsListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: AdAccountsAudiencesSharedAccountsList200Response
-   * Code: 400, Message: Invalid ad account audiences shared accounts parameters., DataType: Error
-   * Code: 404, Message: Shared accounts not found., DataType: Error
-   * Code: 0, Message: Unexpected error., DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AdAccountsAudiencesSharedAccountsList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def adAccountsAudiencesSharedAccountsList(adAccountId: String, audienceId: String, accountType: String, pageSize: Int, bookmark: Option[String])
+  def adAccountsAudiencesSharedAccountsList(audienceId: String, accountType: String, adAccountId: String, bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerAdAccountsAudiencesSharedAccountsList200Response: ToEntityMarshaller[AdAccountsAudiencesSharedAccountsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def businessAccountAudiencesSharedAccountsList200(responseAdAccountsAudiencesSharedAccountsList200Response: AdAccountsAudiencesSharedAccountsList200Response)(implicit toEntityMarshallerAdAccountsAudiencesSharedAccountsList200Response: ToEntityMarshaller[AdAccountsAudiencesSharedAccountsList200Response]): Route =
     complete((200, responseAdAccountsAudiencesSharedAccountsList200Response))
   def businessAccountAudiencesSharedAccountsList400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def businessAccountAudiencesSharedAccountsList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def businessAccountAudiencesSharedAccountsList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
   def businessAccountAudiencesSharedAccountsList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
+  def businessAccountAudiencesSharedAccountsList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def businessAccountAudiencesSharedAccountsListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: AdAccountsAudiencesSharedAccountsList200Response
-   * Code: 400, Message: Invalid business audiences shared accounts parameters., DataType: Error
-   * Code: 404, Message: Shared accounts not found., DataType: Error
-   * Code: 0, Message: Unexpected error., DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AdAccountsAudiencesSharedAccountsList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def businessAccountAudiencesSharedAccountsList(businessId: String, audienceId: String, accountType: String, pageSize: Int, bookmark: Option[String])
+  def businessAccountAudiencesSharedAccountsList(businessId: String, audienceId: String, accountType: String, bookmark: Option[String], pageSize: Int)
       (implicit toEntityMarshallerAdAccountsAudiencesSharedAccountsList200Response: ToEntityMarshaller[AdAccountsAudiencesSharedAccountsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def sharedAudiencesForBusinessList200(responseAudiencesList200Response: AudiencesList200Response)(implicit toEntityMarshallerAudiencesList200Response: ToEntityMarshaller[AudiencesList200Response]): Route =
-    complete((200, responseAudiencesList200Response))
+  def sharedAudiencesForBusinessList200(responseSharedAudiencesForBusinessList200Response: SharedAudiencesForBusinessList200Response)(implicit toEntityMarshallerSharedAudiencesForBusinessList200Response: ToEntityMarshaller[SharedAudiencesForBusinessList200Response]): Route =
+    complete((200, responseSharedAudiencesForBusinessList200Response))
   def sharedAudiencesForBusinessList400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def sharedAudiencesForBusinessList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def sharedAudiencesForBusinessList403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def sharedAudiencesForBusinessList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def sharedAudiencesForBusinessList429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def sharedAudiencesForBusinessListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: AudiencesList200Response
-   * Code: 400, Message: Invalid parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: SharedAudiencesForBusinessList200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def sharedAudiencesForBusinessList(businessId: String, bookmark: Option[String], order: Option[String], pageSize: Int)
-      (implicit toEntityMarshallerAudiencesList200Response: ToEntityMarshaller[AudiencesList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def sharedAudiencesForBusinessList(businessId: String, order: Option[String], bookmark: Option[String], pageSize: Int)
+      (implicit toEntityMarshallerSharedAudiencesForBusinessList200Response: ToEntityMarshaller[SharedAudiencesForBusinessList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def updateAdAccountToAdAccountSharedAudience200(responseSharedAudienceResponse: SharedAudienceResponse)(implicit toEntityMarshallerSharedAudienceResponse: ToEntityMarshaller[SharedAudienceResponse]): Route =
-    complete((200, responseSharedAudienceResponse))
+  def updateAdAccountToAdAccountSharedAudience200(responseAdAccountToAdAccountSharedAudience: AdAccountToAdAccountSharedAudience)(implicit toEntityMarshallerAdAccountToAdAccountSharedAudience: ToEntityMarshaller[AdAccountToAdAccountSharedAudience]): Route =
+    complete((200, responseAdAccountToAdAccountSharedAudience))
   def updateAdAccountToAdAccountSharedAudience400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def updateAdAccountToAdAccountSharedAudience401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def updateAdAccountToAdAccountSharedAudience403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def updateAdAccountToAdAccountSharedAudience404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def updateAdAccountToAdAccountSharedAudience429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def updateAdAccountToAdAccountSharedAudienceDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: SharedAudienceResponse
-   * Code: 400, Message: Invalid ad account id., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AdAccountToAdAccountSharedAudience
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def updateAdAccountToAdAccountSharedAudience(adAccountId: String, sharedAudience: SharedAudience)
-      (implicit toEntityMarshallerSharedAudienceResponse: ToEntityMarshaller[SharedAudienceResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def updateAdAccountToAdAccountSharedAudience(adAccountId: String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
+      (implicit toEntityMarshallerAdAccountToAdAccountSharedAudience: ToEntityMarshaller[AdAccountToAdAccountSharedAudience], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def updateAdAccountToBusinessSharedAudience200(responseBusinessSharedAudienceResponse: BusinessSharedAudienceResponse)(implicit toEntityMarshallerBusinessSharedAudienceResponse: ToEntityMarshaller[BusinessSharedAudienceResponse]): Route =
-    complete((200, responseBusinessSharedAudienceResponse))
+  def updateAdAccountToBusinessSharedAudience200(responseAdAccountToBusinessSharedAudience: AdAccountToBusinessSharedAudience)(implicit toEntityMarshallerAdAccountToBusinessSharedAudience: ToEntityMarshaller[AdAccountToBusinessSharedAudience]): Route =
+    complete((200, responseAdAccountToBusinessSharedAudience))
   def updateAdAccountToBusinessSharedAudience400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def updateAdAccountToBusinessSharedAudience401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def updateAdAccountToBusinessSharedAudience403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def updateAdAccountToBusinessSharedAudience404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def updateAdAccountToBusinessSharedAudience429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def updateAdAccountToBusinessSharedAudienceDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: BusinessSharedAudienceResponse
-   * Code: 400, Message: Invalid ad account id., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AdAccountToBusinessSharedAudience
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def updateAdAccountToBusinessSharedAudience(adAccountId: String, businessSharedAudience: BusinessSharedAudience)
-      (implicit toEntityMarshallerBusinessSharedAudienceResponse: ToEntityMarshaller[BusinessSharedAudienceResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def updateAdAccountToBusinessSharedAudience(adAccountId: String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody)
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerAdAccountToBusinessSharedAudience: ToEntityMarshaller[AdAccountToBusinessSharedAudience]): Route
 
-  def updateBusinessToAdAccountSharedAudience200(responseSharedAudienceResponse: SharedAudienceResponse)(implicit toEntityMarshallerSharedAudienceResponse: ToEntityMarshaller[SharedAudienceResponse]): Route =
-    complete((200, responseSharedAudienceResponse))
+  def updateBusinessToAdAccountSharedAudience200(responseBusinessToAdAccountSharedAudience: BusinessToAdAccountSharedAudience)(implicit toEntityMarshallerBusinessToAdAccountSharedAudience: ToEntityMarshaller[BusinessToAdAccountSharedAudience]): Route =
+    complete((200, responseBusinessToAdAccountSharedAudience))
   def updateBusinessToAdAccountSharedAudience400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def updateBusinessToAdAccountSharedAudience401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def updateBusinessToAdAccountSharedAudience403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def updateBusinessToAdAccountSharedAudience404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def updateBusinessToAdAccountSharedAudience429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def updateBusinessToAdAccountSharedAudienceDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: SharedAudienceResponse
-   * Code: 400, Message: Invalid parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BusinessToAdAccountSharedAudience
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def updateBusinessToAdAccountSharedAudience(businessId: String, sharedAudience: SharedAudience)
-      (implicit toEntityMarshallerSharedAudienceResponse: ToEntityMarshaller[SharedAudienceResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def updateBusinessToAdAccountSharedAudience(businessId: String, businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody)
+      (implicit toEntityMarshallerBusinessToAdAccountSharedAudience: ToEntityMarshaller[BusinessToAdAccountSharedAudience], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def updateBusinessToBusinessSharedAudience200(responseBusinessSharedAudienceResponse: BusinessSharedAudienceResponse)(implicit toEntityMarshallerBusinessSharedAudienceResponse: ToEntityMarshaller[BusinessSharedAudienceResponse]): Route =
-    complete((200, responseBusinessSharedAudienceResponse))
+  def updateBusinessToBusinessSharedAudience200(responseBusinessToBusinessSharedAudience: BusinessToBusinessSharedAudience)(implicit toEntityMarshallerBusinessToBusinessSharedAudience: ToEntityMarshaller[BusinessToBusinessSharedAudience]): Route =
+    complete((200, responseBusinessToBusinessSharedAudience))
   def updateBusinessToBusinessSharedAudience400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
+  def updateBusinessToBusinessSharedAudience401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def updateBusinessToBusinessSharedAudience403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def updateBusinessToBusinessSharedAudience404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def updateBusinessToBusinessSharedAudience429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def updateBusinessToBusinessSharedAudienceDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: BusinessSharedAudienceResponse
-   * Code: 400, Message: Invalid parameters., DataType: Error
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BusinessToBusinessSharedAudience
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def updateBusinessToBusinessSharedAudience(businessId: String, businessSharedAudience: BusinessSharedAudience)
-      (implicit toEntityMarshallerBusinessSharedAudienceResponse: ToEntityMarshaller[BusinessSharedAudienceResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def updateBusinessToBusinessSharedAudience(businessId: String, businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody)
+      (implicit toEntityMarshallerBusinessToBusinessSharedAudience: ToEntityMarshaller[BusinessToBusinessSharedAudience], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
 
 trait AudienceSharingApiMarshaller {
-  implicit def fromEntityUnmarshallerSharedAudience: FromEntityUnmarshaller[SharedAudience]
+  implicit def fromEntityUnmarshallerAdAccountToAdAccountSharedAudienceUpdateWithRequiredBody: FromEntityUnmarshaller[AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody]
 
-  implicit def fromEntityUnmarshallerBusinessSharedAudience: FromEntityUnmarshaller[BusinessSharedAudience]
+  implicit def fromEntityUnmarshallerAdAccountToBusinessSharedAudienceUpdateWithRequiredBody: FromEntityUnmarshaller[AdAccountToBusinessSharedAudienceUpdateWithRequiredBody]
+
+  implicit def fromEntityUnmarshallerBusinessToBusinessSharedAudienceUpdateWithRequiredBody: FromEntityUnmarshaller[BusinessToBusinessSharedAudienceUpdateWithRequiredBody]
+
+  implicit def fromEntityUnmarshallerBusinessToAdAccountSharedAudienceUpdateWithRequiredBody: FromEntityUnmarshaller[BusinessToAdAccountSharedAudienceUpdateWithRequiredBody]
 
 
+
+  implicit def toEntityMarshallerSharedAudiencesForBusinessList200Response: ToEntityMarshaller[SharedAudiencesForBusinessList200Response]
+
+  implicit def toEntityMarshallerBusinessToAdAccountSharedAudience: ToEntityMarshaller[BusinessToAdAccountSharedAudience]
 
   implicit def toEntityMarshallerAdAccountsAudiencesSharedAccountsList200Response: ToEntityMarshaller[AdAccountsAudiencesSharedAccountsList200Response]
 
-  implicit def toEntityMarshallerAudiencesList200Response: ToEntityMarshaller[AudiencesList200Response]
+  implicit def toEntityMarshallerAdAccountToAdAccountSharedAudience: ToEntityMarshaller[AdAccountToAdAccountSharedAudience]
 
-  implicit def toEntityMarshallerBusinessSharedAudienceResponse: ToEntityMarshaller[BusinessSharedAudienceResponse]
-
-  implicit def toEntityMarshallerSharedAudienceResponse: ToEntityMarshaller[SharedAudienceResponse]
+  implicit def toEntityMarshallerBusinessToBusinessSharedAudience: ToEntityMarshaller[BusinessToBusinessSharedAudience]
 
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
+
+  implicit def toEntityMarshallerAdAccountToBusinessSharedAudience: ToEntityMarshaller[AdAccountToBusinessSharedAudience]
 
 }
 

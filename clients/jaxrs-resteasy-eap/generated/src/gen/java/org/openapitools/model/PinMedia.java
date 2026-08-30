@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin media that can be an image, video, or a mix of both.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "media_type", visible = true)
+@ApiModel(description="Pin media that can be an image, video, or a mix of both.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "media_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = PinMediaWithImage.class, name = "image"),
   @JsonSubTypes.Type(value = PinMediaWithImages.class, name = "multiple_images"),
@@ -62,8 +62,9 @@ public class PinMedia   {
   private BigDecimal duration;
   private Integer height;
   private String videoUrl;
+  private String videoUrlHls;
   private Integer width;
-  private List<PinMediaMetadata> items = new ArrayList<>();
+  private List<@Valid PinMediaMetadata> items = new ArrayList<>();
 
   /**
    **/
@@ -142,6 +143,19 @@ public class PinMedia   {
   }
 
   /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   **/
+  
+  @ApiModelProperty(value = "Video url (HLS).  **Note:** This field is limited and not available to all apps.")
+  @JsonProperty("video_url_hls")
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
+  /**
    * Width (in pixels). Field maybe null after creation due to video processing time.
    **/
   
@@ -159,10 +173,10 @@ public class PinMedia   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<PinMediaMetadata> getItems() {
+  public List<@Valid PinMediaMetadata> getItems() {
     return items;
   }
-  public void setItems(List<PinMediaMetadata> items) {
+  public void setItems(List<@Valid PinMediaMetadata> items) {
     this.items = items;
   }
 
@@ -182,13 +196,14 @@ public class PinMedia   {
         Objects.equals(this.duration, pinMedia.duration) &&
         Objects.equals(this.height, pinMedia.height) &&
         Objects.equals(this.videoUrl, pinMedia.videoUrl) &&
+        Objects.equals(this.videoUrlHls, pinMedia.videoUrlHls) &&
         Objects.equals(this.width, pinMedia.width) &&
         Objects.equals(this.items, pinMedia.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, width, items);
+    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, videoUrlHls, width, items);
   }
 
   @Override
@@ -202,6 +217,7 @@ public class PinMedia   {
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
@@ -213,10 +229,7 @@ public class PinMedia   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

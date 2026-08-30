@@ -1,7 +1,8 @@
 use async_trait::async_trait;
 use axum::extract::*;
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
 use bytes::Bytes;
+use headers::Host;
 use http::Method;
 use serde::{Deserialize, Serialize};
 
@@ -11,116 +12,172 @@ use crate::{models, types::*};
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BoardSectionsSlashCreateResponse {
-    /// response
-    Status201_Response
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::BoardSection)
     ,
-    /// Invalid board section parameters.
-    Status400_InvalidBoardSectionParameters
-    (models::Error)
+    /// Resource create operation completed successfully.
+    Status201_ResourceCreateOperationCompletedSuccessfully
+    (models::BoardSection)
     ,
-    /// Not authorized to create board sections.
-    Status403_NotAuthorizedToCreateBoardSections
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Could not get exclusive access to the board to create a new section.
-    Status409_CouldNotGetExclusiveAccessToTheBoardToCreateANewSection
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Could not create a new board section.
-    Status500_CouldNotCreateANewBoardSection
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BoardSectionsSlashDeleteResponse {
-    /// Board section deleted successfully
-    Status204_BoardSectionDeletedSuccessfully
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::BoardSection)
     ,
-    /// Not authorized to delete board section.
-    Status403_NotAuthorizedToDeleteBoardSection
-    (models::Error)
+    /// Resource deleted successfully.
+    Status204_ResourceDeletedSuccessfully
     ,
-    /// Board section not found.
-    Status404_BoardSectionNotFound
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Board section conflict.
-    Status409_BoardSectionConflict
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BoardSectionsSlashListResponse {
-    /// response
-    Status200_Response
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::BoardSectionsList200Response)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
+    ,
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BoardSectionsSlashListPinsResponse {
-    /// response
-    Status200_Response
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::BoardsListPins200Response)
     ,
-    /// Not authorized to access Pins on board section.
-    Status403_NotAuthorizedToAccessPinsOnBoardSection
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Board or section not found.
-    Status404_BoardOrSectionNotFound
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Board section conflict.
-    Status409_BoardSectionConflict
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BoardSectionsSlashUpdateResponse {
-    /// response
-    Status200_Response
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::BoardSection)
     ,
-    /// Invalid board section parameters.
-    Status400_InvalidBoardSectionParameters
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Not authorized to update board section.
-    Status403_NotAuthorizedToUpdateBoardSection
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
     ,
-    /// Board section conflict.
-    Status409_BoardSectionConflict
-    (models::Error)
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -164,6 +221,10 @@ pub enum BoardsSlashCreateResponse {
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BoardsSlashDeleteResponse {
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
+    (models::Board)
+    ,
     /// Resource deleted successfully.
     Status204_ResourceDeletedSuccessfully
     ,
@@ -262,17 +323,33 @@ pub enum BoardsSlashListResponse {
 #[must_use]
 #[allow(clippy::large_enum_variant)]
 pub enum BoardsSlashListPinsResponse {
-    /// response
-    Status200_Response
+    /// The request has succeeded.
+    Status200_TheRequestHasSucceeded
     (models::BoardsListPins200Response)
     ,
-    /// Board not found.
-    Status404_BoardNotFound
-    (models::Error)
+    /// The request could not be understood by the server due to unexpected data.
+    Status400_TheRequestCouldNotBeUnderstoodByTheServerDueToUnexpectedData
+    (models::PinterestLibError)
     ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
+    /// Authentication is required and has either failed or not been provided.
+    Status401_AuthenticationIsRequiredAndHasEitherFailedOrNotBeenProvided
+    (models::PinterestLibError)
+    ,
+    /// The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+    Status403_TheRequestWasValid
+    (models::PinterestLibError)
+    ,
+    /// The requested resource could not be found on this server.
+    Status404_TheRequestedResourceCouldNotBeFoundOnThisServer
+    (models::PinterestLibError)
+    ,
+    /// The user has sent too many requests in a given amount of time and is being rate limited.
+    Status429_TheUserHasSentTooManyRequestsInAGivenAmountOfTimeAndIsBeingRateLimited
+    (models::PinterestLibError)
+    ,
+    /// An unexpected error response.
+    Status0_AnUnexpectedErrorResponse
+    (models::PinterestLibError)
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -326,7 +403,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     cookies: &CookieJar,
       path_params: &models::BoardSectionsSlashCreatePathParams,
       query_params: &models::BoardSectionsSlashCreateQueryParams,
-            body: &models::BoardSection,
+            body: &models::BoardSectionCreate,
     ) -> Result<BoardSectionsSlashCreateResponse, E>;
 
     /// Delete board section.
@@ -379,7 +456,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     cookies: &CookieJar,
       path_params: &models::BoardSectionsSlashUpdatePathParams,
       query_params: &models::BoardSectionsSlashUpdateQueryParams,
-            body: &models::BoardSection,
+            body: &models::BoardSectionUpdateWithRequiredBody,
     ) -> Result<BoardSectionsSlashUpdateResponse, E>;
 
     /// Create board.

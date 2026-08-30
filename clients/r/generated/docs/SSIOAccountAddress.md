@@ -1,5 +1,6 @@
 # openapi::SSIOAccountAddress
 
+Salesforce address information.
 
 ## Properties
 Name | Type | Description | Notes

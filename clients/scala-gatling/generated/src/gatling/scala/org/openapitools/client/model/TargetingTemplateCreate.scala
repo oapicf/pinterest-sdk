@@ -3,13 +3,14 @@ package org.openapitools.client.model
 
 
 case class TargetingTemplateCreate (
-    /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
+    /* Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting). */
     _autoTargetingEnabled: Option[Boolean],
     _keywords: Option[List[TargetingTemplateKeyword]],
-    /* Name of targeting template. */
+    /* targeting template name */
     _name: String,
     _placementGroup: Option[PlacementGroupType],
-    _targetingAttributes: TargetingSpec,
+    /* targeting profile attributes */
+    _targetingAttributes: TargetingSpecOptimal,
     _trackingUrls: Option[TrackingUrls]
 )
 object TargetingTemplateCreate {

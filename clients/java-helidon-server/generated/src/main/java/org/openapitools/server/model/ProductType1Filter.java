@@ -1,0 +1,66 @@
+package org.openapitools.server.model;
+
+import org.openapitools.server.model.CatalogsProductGroupMultipleStringListCriteria;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
+
+
+
+public class ProductType1Filter   {
+
+    private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_1;
+
+    /**
+     * Default constructor.
+     */
+    public ProductType1Filter() {
+    // JSON-B / Jackson
+    }
+
+    /**
+     * Create ProductType1Filter.
+     *
+     * @param PRODUCT_TYPE_1 PRODUCT_TYPE_1
+     */
+    public ProductType1Filter(
+        CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_1
+    ) {
+        this.PRODUCT_TYPE_1 = PRODUCT_TYPE_1;
+    }
+
+
+
+    /**
+     * Get PRODUCT_TYPE_1
+     * @return PRODUCT_TYPE_1
+     */
+    public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE1() {
+        return PRODUCT_TYPE_1;
+    }
+
+    public void setPRODUCTTYPE1(CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_1) {
+        this.PRODUCT_TYPE_1 = PRODUCT_TYPE_1;
+    }
+
+    /**
+      * Create a string representation of this pojo.
+    **/
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ProductType1Filter {\n");
+        
+        sb.append("    PRODUCT_TYPE_1: ").append(toIndentedString(PRODUCT_TYPE_1)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+    */
+    private static String toIndentedString(Object o) {
+        return o == null ? "null" : o.toString().replace("\n", "\n    ");
+    }
+}
+

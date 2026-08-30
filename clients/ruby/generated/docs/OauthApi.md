@@ -11,7 +11,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## oauth_conversion_token
 
-> <ConversionAccessTokenResponse> oauth_conversion_token
+> <ConversionAccessToken> oauth_conversion_token
 
 Generate OAuth access token for conversion API
 
@@ -43,7 +43,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ConversionAccessTokenResponse>, Integer, Hash)> oauth_conversion_token_with_http_info
+> <Array(<ConversionAccessToken>, Integer, Hash)> oauth_conversion_token_with_http_info
 
 ```ruby
 begin
@@ -51,7 +51,7 @@ begin
   data, status_code, headers = api_instance.oauth_conversion_token_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ConversionAccessTokenResponse>
+  p data # => <ConversionAccessToken>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling OauthApi->oauth_conversion_token_with_http_info: #{e}"
 end
@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ConversionAccessTokenResponse**](ConversionAccessTokenResponse.md)
+[**ConversionAccessToken**](ConversionAccessToken.md)
 
 ### Authorization
 
@@ -77,11 +77,11 @@ This endpoint does not need any parameter.
 
 ## oauth_token
 
-> <OauthAccessTokenResponse> oauth_token(grant_type)
+> <OauthAccessToken> oauth_token(grant_type, opts)
 
 Generate OAuth access token
 
-Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the `continuous_refresh` parameter to `true` to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
 
 ### Examples
 
@@ -96,11 +96,18 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::OauthApi.new
-grant_type = 'authorization_code' # String | 
+grant_type = PinterestSdkClient::TokenGrantType::AUTHORIZATION_CODE # TokenGrantType | 
+opts = {
+  code: 'code_example', # String | 
+  continuous_refresh: 'continuous_refresh_example', # String |   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+  redirect_uri: 'redirect_uri_example', # String | 
+  refresh_token: 'refresh_token_example', # String | 
+  scope: 'scope_example' # String | 
+}
 
 begin
   # Generate OAuth access token
-  result = api_instance.oauth_token(grant_type)
+  result = api_instance.oauth_token(grant_type, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling OauthApi->oauth_token: #{e}"
@@ -111,15 +118,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<OauthAccessTokenResponse>, Integer, Hash)> oauth_token_with_http_info(grant_type)
+> <Array(<OauthAccessToken>, Integer, Hash)> oauth_token_with_http_info(grant_type, opts)
 
 ```ruby
 begin
   # Generate OAuth access token
-  data, status_code, headers = api_instance.oauth_token_with_http_info(grant_type)
+  data, status_code, headers = api_instance.oauth_token_with_http_info(grant_type, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <OauthAccessTokenResponse>
+  p data # => <OauthAccessToken>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling OauthApi->oauth_token_with_http_info: #{e}"
 end
@@ -129,11 +136,16 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **grant_type** | **String** |  |  |
+| **grant_type** | [**TokenGrantType**](TokenGrantType.md) |  |  |
+| **code** | **String** |  | [optional] |
+| **continuous_refresh** | **String** |   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | [optional] |
+| **redirect_uri** | **String** |  | [optional] |
+| **refresh_token** | **String** |  | [optional] |
+| **scope** | **String** |  | [optional] |
 
 ### Return type
 
-[**OauthAccessTokenResponse**](OauthAccessTokenResponse.md)
+[**OauthAccessToken**](OauthAccessToken.md)
 
 ### Authorization
 
@@ -168,7 +180,7 @@ end
 api_instance = PinterestSdkClient::OauthApi.new
 token = 'token_example' # String | The token to revoke.
 opts = {
-  token_type_hint: 'access_token' # String | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
+  token_type_hint: PinterestSdkClient::TokenTypeHint::ACCESS_TOKEN # TokenTypeHint | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
 }
 
 begin
@@ -202,7 +214,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **token** | **String** | The token to revoke. |  |
-| **token_type_hint** | **String** | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] |
+| **token_type_hint** | [**TokenTypeHint**](TokenTypeHint.md) | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] |
 
 ### Return type
 

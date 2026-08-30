@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsItemValidationDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemValidationDetails   {
   private NullableCatalogsItemFieldType attributeName;
   private String providedValue;
@@ -35,6 +35,7 @@ public class CatalogsItemValidationDetails   {
   }
 
   /**
+   * Attribute that has a validation issue.
    **/
   public CatalogsItemValidationDetails attributeName(NullableCatalogsItemFieldType attributeName) {
     this.attributeName = attributeName;
@@ -42,7 +43,7 @@ public class CatalogsItemValidationDetails   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Attribute that has a validation issue.")
   @JsonProperty(required = true, value = "attribute_name")
   @NotNull public NullableCatalogsItemFieldType getAttributeName() {
     return attributeName;
@@ -108,12 +109,8 @@ public class CatalogsItemValidationDetails   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

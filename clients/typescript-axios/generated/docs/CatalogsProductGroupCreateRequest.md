@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **string** |  | [optional] [default to undefined]
 **feed_id** | **string** | Catalog Feed id pertaining to the catalog product group. | [default to undefined]
 **filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [default to undefined]
-**is_featured** | **boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to false]
+**is_featured** | **boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to undefined]
 **name** | **string** |  | [default to undefined]
 
 ## Example

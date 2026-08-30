@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type TitleKeywordsFilter struct {
 
 	TITLE_KEYWORDS CatalogsProductGroupMultipleStringCriteria `json:"TITLE_KEYWORDS"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into TitleKeywordsFilter
+func (o *TitleKeywordsFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"TITLE_KEYWORDS",
+	}
 
-// AssertTitleKeywordsFilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"TITLE_KEYWORDS": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"TITLE_KEYWORDS": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded TitleKeywordsFilter
+
+	if value, exists := allProperties["TITLE_KEYWORDS"]; exists {
+		if err = json.Unmarshal(value, &decoded.TITLE_KEYWORDS); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertTitleKeywordsFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertTitleKeywordsFilterRequired(obj TitleKeywordsFilter) error {
 	elements := map[string]interface{}{
 		"TITLE_KEYWORDS": obj.TITLE_KEYWORDS,
@@ -30,10 +88,16 @@ func AssertTitleKeywordsFilterRequired(obj TitleKeywordsFilter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaRequired(obj.TITLE_KEYWORDS); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertTitleKeywordsFilterConstraints checks if the values respects the defined constraints
 func AssertTitleKeywordsFilterConstraints(obj TitleKeywordsFilter) error {
+	if err := AssertCatalogsProductGroupMultipleStringCriteriaConstraints(obj.TITLE_KEYWORDS); err != nil {
+		return err
+	}
 	return nil
 }

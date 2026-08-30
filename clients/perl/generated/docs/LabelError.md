@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::LabelError;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**Label**](Label.md) |  | [optional] 
+**data** | [**LabelErrorData**](LabelErrorData.md) |  | [optional] 
 **error_messages** | **ARRAY[string]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

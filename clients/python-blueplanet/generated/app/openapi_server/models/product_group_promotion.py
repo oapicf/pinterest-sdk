@@ -6,9 +6,12 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.collections_header_type import CollectionsHeaderType  # noqa: F401,E501
 from app.openapi_server.models.creative_type import CreativeType  # noqa: F401,E501
 from app.openapi_server.models.entity_status import EntityStatus  # noqa: F401,E501
 from app.openapi_server.models.grid_click_type import GridClickType  # noqa: F401,E501
+from app.openapi_server.models.preferred_media_type import PreferredMediaType  # noqa: F401,E501
+from app.openapi_server.models.product_group_promotion_customizable_cta_type import ProductGroupPromotionCustomizableCTAType  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -19,7 +22,7 @@ class ProductGroupPromotion(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, ad_group_id: str=None, bid_in_micro_currency: int=None, catalog_product_group_id: str=None, catalog_product_group_name: str=None, collections_header_type: str=None, collections_hero_destination_url: str=None, collections_hero_pin_id: str=None, creative_type: CreativeType=None, customizable_cta_type: str=None, definition: str=None, grid_click_type: GridClickType=None, id: str=None, included: bool=None, is_generate_background: bool=None, is_mdl: bool=None, parent_id: str=None, preferred_media_type: str=None, relative_definition: str=None, selected_image_tag: str=None, selected_video_tag: str=None, slideshow_collections_description: str=None, slideshow_collections_title: str=None, status: EntityStatus=None, tracking_url: str=None):  # noqa: E501
+    def __init__(self, ad_group_id: str=None, bid_in_micro_currency: int=None, catalog_product_group_id: str=None, catalog_product_group_name: str=None, collections_header_type: CollectionsHeaderType=None, collections_hero_destination_url: str=None, collections_hero_pin_id: str=None, creative_type: CreativeType=None, customizable_cta_type: ProductGroupPromotionCustomizableCTAType=None, definition: str=None, grid_click_type: GridClickType=None, id: str=None, included: bool=None, is_generate_background: bool=None, is_image_auto_resizing: bool=None, is_mdl: bool=None, parent_id: str=None, preferred_media_type: PreferredMediaType=None, relative_definition: str=None, selected_image_tag: str=None, selected_video_tag: str=None, slideshow_collections_description: str=None, slideshow_collections_title: str=None, status: EntityStatus=None, tracking_url: str=None):  # noqa: E501
         """ProductGroupPromotion - a model defined in Swagger
 
         :param ad_group_id: The ad_group_id of this ProductGroupPromotion.  # noqa: E501
@@ -31,7 +34,7 @@ class ProductGroupPromotion(Model):
         :param catalog_product_group_name: The catalog_product_group_name of this ProductGroupPromotion.  # noqa: E501
         :type catalog_product_group_name: str
         :param collections_header_type: The collections_header_type of this ProductGroupPromotion.  # noqa: E501
-        :type collections_header_type: str
+        :type collections_header_type: CollectionsHeaderType
         :param collections_hero_destination_url: The collections_hero_destination_url of this ProductGroupPromotion.  # noqa: E501
         :type collections_hero_destination_url: str
         :param collections_hero_pin_id: The collections_hero_pin_id of this ProductGroupPromotion.  # noqa: E501
@@ -39,7 +42,7 @@ class ProductGroupPromotion(Model):
         :param creative_type: The creative_type of this ProductGroupPromotion.  # noqa: E501
         :type creative_type: CreativeType
         :param customizable_cta_type: The customizable_cta_type of this ProductGroupPromotion.  # noqa: E501
-        :type customizable_cta_type: str
+        :type customizable_cta_type: ProductGroupPromotionCustomizableCTAType
         :param definition: The definition of this ProductGroupPromotion.  # noqa: E501
         :type definition: str
         :param grid_click_type: The grid_click_type of this ProductGroupPromotion.  # noqa: E501
@@ -50,12 +53,14 @@ class ProductGroupPromotion(Model):
         :type included: bool
         :param is_generate_background: The is_generate_background of this ProductGroupPromotion.  # noqa: E501
         :type is_generate_background: bool
+        :param is_image_auto_resizing: The is_image_auto_resizing of this ProductGroupPromotion.  # noqa: E501
+        :type is_image_auto_resizing: bool
         :param is_mdl: The is_mdl of this ProductGroupPromotion.  # noqa: E501
         :type is_mdl: bool
         :param parent_id: The parent_id of this ProductGroupPromotion.  # noqa: E501
         :type parent_id: str
         :param preferred_media_type: The preferred_media_type of this ProductGroupPromotion.  # noqa: E501
-        :type preferred_media_type: str
+        :type preferred_media_type: PreferredMediaType
         :param relative_definition: The relative_definition of this ProductGroupPromotion.  # noqa: E501
         :type relative_definition: str
         :param selected_image_tag: The selected_image_tag of this ProductGroupPromotion.  # noqa: E501
@@ -76,19 +81,20 @@ class ProductGroupPromotion(Model):
             'bid_in_micro_currency': int,
             'catalog_product_group_id': str,
             'catalog_product_group_name': str,
-            'collections_header_type': str,
+            'collections_header_type': CollectionsHeaderType,
             'collections_hero_destination_url': str,
             'collections_hero_pin_id': str,
             'creative_type': CreativeType,
-            'customizable_cta_type': str,
+            'customizable_cta_type': ProductGroupPromotionCustomizableCTAType,
             'definition': str,
             'grid_click_type': GridClickType,
             'id': str,
             'included': bool,
             'is_generate_background': bool,
+            'is_image_auto_resizing': bool,
             'is_mdl': bool,
             'parent_id': str,
-            'preferred_media_type': str,
+            'preferred_media_type': PreferredMediaType,
             'relative_definition': str,
             'selected_image_tag': str,
             'selected_video_tag': str,
@@ -113,6 +119,7 @@ class ProductGroupPromotion(Model):
             'id': 'id',
             'included': 'included',
             'is_generate_background': 'is_generate_background',
+            'is_image_auto_resizing': 'is_image_auto_resizing',
             'is_mdl': 'is_mdl',
             'parent_id': 'parent_id',
             'preferred_media_type': 'preferred_media_type',
@@ -139,6 +146,7 @@ class ProductGroupPromotion(Model):
         self._id = id
         self._included = included
         self._is_generate_background = is_generate_background
+        self._is_image_auto_resizing = is_image_auto_resizing
         self._is_mdl = is_mdl
         self._parent_id = parent_id
         self._preferred_media_type = preferred_media_type
@@ -213,7 +221,7 @@ class ProductGroupPromotion(Model):
     def catalog_product_group_id(self) -> str:
         """Gets the catalog_product_group_id of this ProductGroupPromotion.
 
-        ID of the catalogs product group that this product group promotion references  # noqa: E501
+        ID of the catalogs product group that this product group promotion references (required for create operations)  # noqa: E501
 
         :return: The catalog_product_group_id of this ProductGroupPromotion.
         :rtype: str
@@ -224,7 +232,7 @@ class ProductGroupPromotion(Model):
     def catalog_product_group_id(self, catalog_product_group_id: str):
         """Sets the catalog_product_group_id of this ProductGroupPromotion.
 
-        ID of the catalogs product group that this product group promotion references  # noqa: E501
+        ID of the catalogs product group that this product group promotion references (required for create operations)  # noqa: E501
 
         :param catalog_product_group_id: The catalog_product_group_id of this ProductGroupPromotion.
         :type catalog_product_group_id: str
@@ -258,31 +266,23 @@ class ProductGroupPromotion(Model):
         self._catalog_product_group_name = catalog_product_group_name
 
     @property
-    def collections_header_type(self) -> str:
+    def collections_header_type(self) -> CollectionsHeaderType:
         """Gets the collections_header_type of this ProductGroupPromotion.
 
-        Collections ad header type  # noqa: E501
 
         :return: The collections_header_type of this ProductGroupPromotion.
-        :rtype: str
+        :rtype: CollectionsHeaderType
         """
         return self._collections_header_type
 
     @collections_header_type.setter
-    def collections_header_type(self, collections_header_type: str):
+    def collections_header_type(self, collections_header_type: CollectionsHeaderType):
         """Sets the collections_header_type of this ProductGroupPromotion.
 
-        Collections ad header type  # noqa: E501
 
         :param collections_header_type: The collections_header_type of this ProductGroupPromotion.
-        :type collections_header_type: str
+        :type collections_header_type: CollectionsHeaderType
         """
-        allowed_values = ["SHOP_THIS_COLLECTION", "EXPLORE_THIS_COLLECTION", "NO_HEADER", "ON_SALE", "GET_DEAL", ""]  # noqa: E501
-        if collections_header_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `collections_header_type` ({0}), must be one of {1}"
-                .format(collections_header_type, allowed_values)
-            )
 
         self._collections_header_type = collections_header_type
 
@@ -356,31 +356,23 @@ class ProductGroupPromotion(Model):
         self._creative_type = creative_type
 
     @property
-    def customizable_cta_type(self) -> str:
+    def customizable_cta_type(self) -> ProductGroupPromotionCustomizableCTAType:
         """Gets the customizable_cta_type of this ProductGroupPromotion.
 
-        Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE  # noqa: E501
 
         :return: The customizable_cta_type of this ProductGroupPromotion.
-        :rtype: str
+        :rtype: ProductGroupPromotionCustomizableCTAType
         """
         return self._customizable_cta_type
 
     @customizable_cta_type.setter
-    def customizable_cta_type(self, customizable_cta_type: str):
+    def customizable_cta_type(self, customizable_cta_type: ProductGroupPromotionCustomizableCTAType):
         """Sets the customizable_cta_type of this ProductGroupPromotion.
 
-        Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE  # noqa: E501
 
         :param customizable_cta_type: The customizable_cta_type of this ProductGroupPromotion.
-        :type customizable_cta_type: str
+        :type customizable_cta_type: ProductGroupPromotionCustomizableCTAType
         """
-        allowed_values = ["SHOP_NOW", "BOOK_NOW", "ON_SALE", "GET_DEAL", "BUY_ONLINE_PICKUP_IN_STORE", ""]  # noqa: E501
-        if customizable_cta_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `customizable_cta_type` ({0}), must be one of {1}"
-                .format(customizable_cta_type, allowed_values)
-            )
 
         self._customizable_cta_type = customizable_cta_type
 
@@ -432,7 +424,7 @@ class ProductGroupPromotion(Model):
     def id(self) -> str:
         """Gets the id of this ProductGroupPromotion.
 
-        ID of the product group promotion.  # noqa: E501
+        ID of the product group promotion (required for update operations).  # noqa: E501
 
         :return: The id of this ProductGroupPromotion.
         :rtype: str
@@ -443,7 +435,7 @@ class ProductGroupPromotion(Model):
     def id(self, id: str):
         """Sets the id of this ProductGroupPromotion.
 
-        ID of the product group promotion.  # noqa: E501
+        ID of the product group promotion (required for update operations).  # noqa: E501
 
         :param id: The id of this ProductGroupPromotion.
         :type id: str
@@ -500,6 +492,29 @@ class ProductGroupPromotion(Model):
         self._is_generate_background = is_generate_background
 
     @property
+    def is_image_auto_resizing(self) -> bool:
+        """Gets the is_image_auto_resizing of this ProductGroupPromotion.
+
+        Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.  # noqa: E501
+
+        :return: The is_image_auto_resizing of this ProductGroupPromotion.
+        :rtype: bool
+        """
+        return self._is_image_auto_resizing
+
+    @is_image_auto_resizing.setter
+    def is_image_auto_resizing(self, is_image_auto_resizing: bool):
+        """Sets the is_image_auto_resizing of this ProductGroupPromotion.
+
+        Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.  # noqa: E501
+
+        :param is_image_auto_resizing: The is_image_auto_resizing of this ProductGroupPromotion.
+        :type is_image_auto_resizing: bool
+        """
+
+        self._is_image_auto_resizing = is_image_auto_resizing
+
+    @property
     def is_mdl(self) -> bool:
         """Gets the is_mdl of this ProductGroupPromotion.
 
@@ -548,31 +563,23 @@ class ProductGroupPromotion(Model):
         self._parent_id = parent_id
 
     @property
-    def preferred_media_type(self) -> str:
+    def preferred_media_type(self) -> PreferredMediaType:
         """Gets the preferred_media_type of this ProductGroupPromotion.
 
-        Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.  # noqa: E501
 
         :return: The preferred_media_type of this ProductGroupPromotion.
-        :rtype: str
+        :rtype: PreferredMediaType
         """
         return self._preferred_media_type
 
     @preferred_media_type.setter
-    def preferred_media_type(self, preferred_media_type: str):
+    def preferred_media_type(self, preferred_media_type: PreferredMediaType):
         """Sets the preferred_media_type of this ProductGroupPromotion.
 
-        Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.  # noqa: E501
 
         :param preferred_media_type: The preferred_media_type of this ProductGroupPromotion.
-        :type preferred_media_type: str
+        :type preferred_media_type: PreferredMediaType
         """
-        allowed_values = ["VIDEO", "IMAGE", ""]  # noqa: E501
-        if preferred_media_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `preferred_media_type` ({0}), must be one of {1}"
-                .format(preferred_media_type, allowed_values)
-            )
 
         self._preferred_media_type = preferred_media_type
 

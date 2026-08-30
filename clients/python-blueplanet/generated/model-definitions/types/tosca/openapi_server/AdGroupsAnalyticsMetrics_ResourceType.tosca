@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupsAnalyticsMetrics"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupsAnalyticsMetrics"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdGroupsAnalyticsMetrics {
+    title = AdGroupsAnalyticsMetrics
+    description = AdGroupsAnalyticsMetrics
+    derivedFrom = Root
+    properties {
+        ad_group_id {
+          type =  string
+          description = "The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true."
+          optional = false
+        }
+        _date {
+          type =  string
+          description = "Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;)"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupsAnalyticsMetrics {
+    title = AdGroupsAnalyticsMetrics
+    description = AdGroupsAnalyticsMetrics
+    implements = openapi_server.resourceTypes.AdGroupsAnalyticsMetrics
+
+  }
+}

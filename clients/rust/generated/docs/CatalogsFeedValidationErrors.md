@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **feed_length_too_long** | Option<**i32**> | Your feed contains too many items, some items will not be published. | [optional]
 **feed_too_small** | Option<**i32**> | Your feed couldn't be validated because the file doesn't contain the minimum number of lines required. | [optional]
 **fetch_error** | Option<**i32**> | Pinterest couldn't download your feed. | [optional]
-**fetch_inactive_feed_error** | Option<**i32**> | Your feed wasn't ingested because it hasn’t changed in the previous 90 days. | [optional]
+**fetch_inactive_feed_error** | Option<**i32**> | Your feed wasn't ingested because it hasn't changed in the previous 90 days. | [optional]
 **image_link_invalid** | Option<**i32**> | Some image links are formatted incorrectly. | [optional]
 **image_link_length_too_long** | Option<**i32**> | Some items have image_link URLs that contain too many characters, so those items will not be published. | [optional]
 **image_link_missing** | Option<**i32**> | Some items are missing an image link URL in their product metadata, those items will not be published. | [optional]

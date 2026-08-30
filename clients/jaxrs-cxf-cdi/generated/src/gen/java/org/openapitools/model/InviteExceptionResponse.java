@@ -28,7 +28,7 @@ public class InviteExceptionResponse   {
 
   private String message;
 
-  private List<String> usersOrPartnerIds;
+  private List<String> usersOrPartnerIds = new ArrayList<>();
 
   /**
    * Error code associated with the error in performing the action on the invite/request.
@@ -153,10 +153,7 @@ public class InviteExceptionResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

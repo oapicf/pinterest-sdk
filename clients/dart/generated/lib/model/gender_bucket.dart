@@ -11,31 +11,30 @@
 part of openapi.api;
 
 
-class GenderBucket {
-  /// Instantiate a new enum with the provided [value].
-  const GenderBucket._(this.value);
+enum GenderBucket {
+  MALE._(r'MALE'),
+  FEMALE._(r'FEMALE'),
+  UNSPECIFIED._(r'UNSPECIFIED'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const GenderBucket._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const MALE = GenderBucket._(r'MALE');
-  static const FEMALE = GenderBucket._(r'FEMALE');
-  static const UNSPECIFIED = GenderBucket._(r'UNSPECIFIED');
-
-  /// List of all possible values in this [enum][GenderBucket].
-  static const values = <GenderBucket>[
-    MALE,
-    FEMALE,
-    UNSPECIFIED,
-  ];
-
+  /// Returns the instance of [GenderBucket] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static GenderBucket? fromJson(dynamic value) => GenderBucketTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [GenderBucket]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<GenderBucket> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GenderBucket>[];
     if (json is List && json.isNotEmpty) {
@@ -57,9 +56,11 @@ class GenderBucketTypeTransformer {
 
   const GenderBucketTypeTransformer._();
 
-  String encode(GenderBucket data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(GenderBucket data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a GenderBucket.
+  /// Returns the instance of [GenderBucket] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -68,6 +69,9 @@ class GenderBucketTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   GenderBucket? decode(dynamic data, {bool allowNull = true}) {
+    if (data is GenderBucket) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'MALE': return GenderBucket.MALE;
@@ -82,7 +86,7 @@ class GenderBucketTypeTransformer {
     return null;
   }
 
-  /// Singleton [GenderBucketTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static GenderBucketTypeTransformer? _instance;
 }
 

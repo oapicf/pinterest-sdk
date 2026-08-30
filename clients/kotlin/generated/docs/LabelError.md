@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **&#x60;data&#x60;** | [**Label**](Label.md) |  |  [optional] |
+| **&#x60;data&#x60;** | [**LabelErrorData**](LabelErrorData.md) |  |  [optional] |
 | **errorMessages** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional] |
 
 

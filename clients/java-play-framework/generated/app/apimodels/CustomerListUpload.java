@@ -3,6 +3,7 @@ package apimodels;
 import apimodels.ErrorDetail;
 import apimodels.RecordCounts;
 import apimodels.UserListOperationType;
+import apimodels.WorkloadState;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ import javax.validation.Valid;
 /**
  * CustomerListUpload
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CustomerListUpload   {
   @JsonProperty("ad_account_id")
@@ -44,6 +45,7 @@ public class CustomerListUpload   {
   @JsonProperty("id")
   @NotNull
 @Pattern(regexp="^\\d+$")
+@Size(max=18)
 
   private String id;
 
@@ -58,47 +60,11 @@ public class CustomerListUpload   {
 
   private RecordCounts recordCounts;
 
-  /**
-   * Workload processing state
-   */
-  public enum StateEnum {
-    NOT_STARTED("NOT_STARTED"),
-    
-    RUNNING("RUNNING"),
-    
-    PAUSED("PAUSED"),
-    
-    SUCCEEDED("SUCCEEDED"),
-    
-    FAILED("FAILED");
-
-    private final String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String value) {
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("state")
   @NotNull
+@Valid
 
-  private StateEnum state;
+  private WorkloadState state;
 
   @JsonProperty("updated_time")
   @NotNull
@@ -221,7 +187,7 @@ public class CustomerListUpload   {
   }
 
    /**
-   * Get recordCounts
+   * Record processing counts
    * @return recordCounts
   **/
   public RecordCounts getRecordCounts() {
@@ -232,20 +198,20 @@ public class CustomerListUpload   {
     this.recordCounts = recordCounts;
   }
 
-  public CustomerListUpload state(StateEnum state) {
+  public CustomerListUpload state(WorkloadState state) {
     this.state = state;
     return this;
   }
 
    /**
-   * Workload processing state
+   * Get state
    * @return state
   **/
-  public StateEnum getState() {
+  public WorkloadState getState() {
     return state;
   }
 
-  public void setState(StateEnum state) {
+  public void setState(WorkloadState state) {
     this.state = state;
   }
 
@@ -316,10 +282,7 @@ public class CustomerListUpload   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

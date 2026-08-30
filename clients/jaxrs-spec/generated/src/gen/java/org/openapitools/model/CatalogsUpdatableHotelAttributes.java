@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsUpdatableHotelAttributes")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsUpdatableHotelAttributes   {
   private CatalogsHotelAddress address;
   private String basePrice;
@@ -47,6 +47,7 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
   /**
+   * Hotel address
    **/
   public CatalogsUpdatableHotelAttributes address(CatalogsHotelAddress address) {
     this.address = address;
@@ -54,7 +55,7 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Hotel address")
   @JsonProperty("address")
   @Valid public CatalogsHotelAddress getAddress() {
     return address;
@@ -246,6 +247,7 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
   /**
+   * If specified, you must provide all properties
    **/
   public CatalogsUpdatableHotelAttributes guestRatings(CatalogsHotelGuestRatings guestRatings) {
     this.guestRatings = guestRatings;
@@ -253,7 +255,7 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "If specified, you must provide all properties")
   @JsonProperty("guest_ratings")
   @Valid public CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
@@ -465,12 +467,8 @@ public class CatalogsUpdatableHotelAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

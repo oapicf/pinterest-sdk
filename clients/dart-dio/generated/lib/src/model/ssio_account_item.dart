@@ -10,7 +10,7 @@ import 'package:built_value/serializer.dart';
 
 part 'ssio_account_item.g.dart';
 
-/// SSIOAccountItem
+/// Salesforce account item with billing and terms information.
 ///
 /// Properties:
 /// * [addresses] - Address information that is associated with this account.
@@ -172,64 +172,73 @@ class _$SSIOAccountItemSerializer implements PrimitiveSerializer<SSIOAccountItem
         case r'addresses':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(SSIOAccountAddress)]),
-          ) as BuiltList<SSIOAccountAddress>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(SSIOAccountAddress)]),
+          ) as BuiltList<SSIOAccountAddress>?;
+          if (valueDes == null) continue;
           result.addresses.replace(valueDes);
           break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'io_terms':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.ioTerms = valueDes;
           break;
         case r'io_terms_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.ioTermsId = valueDes;
           break;
         case r'io_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.ioType = valueDes;
           break;
         case r'row_terms':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.rowTerms = valueDes;
           break;
         case r'row_terms_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.rowTermsId = valueDes;
           break;
         case r'us_terms':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.usTerms = valueDes;
           break;
         case r'us_terms_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.usTermsId = valueDes;
           break;
         default:

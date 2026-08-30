@@ -8,7 +8,7 @@ case class CatalogsRetailBatchRequest (
     _catalogType: String,
     _country: Country,
     /* Array with catalogs item operations */
-    _items: List[CatalogsRetailBatchRequestItemsInner],
+    _items: List[CatalogsRetailBatchRequestItemsItems],
     /* We recommend using the CatalogsLocale values. */
     _language: String
 )

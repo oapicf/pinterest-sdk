@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **google_product_category_4** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **google_product_category_5** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **google_product_category_6** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
-**media_type** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**media_type** | [**Array&lt;MediaType&gt;**](MediaType.md) |  | [optional] [default to undefined]
 
 ## Example
 

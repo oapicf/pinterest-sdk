@@ -23,15 +23,20 @@ AdvancedAuctionItem::~AdvancedAuctionItem()
 void
 AdvancedAuctionItem::__init()
 {
+	//bid_options = new AdvancedAuctionBidOptions();
 	//country = new Country();
 	//item_id = std::string();
 	//language = new Language();
-	//bid_options = new AdvancedAuctionBidOptions();
 }
 
 void
 AdvancedAuctionItem::__cleanup()
 {
+	//if(bid_options != NULL) {
+	//
+	//delete bid_options;
+	//bid_options = NULL;
+	//}
 	//if(country != NULL) {
 	//
 	//delete country;
@@ -47,11 +52,6 @@ AdvancedAuctionItem::__cleanup()
 	//delete language;
 	//language = NULL;
 	//}
-	//if(bid_options != NULL) {
-	//
-	//delete bid_options;
-	//bid_options = NULL;
-	//}
 	//
 }
 
@@ -60,6 +60,20 @@ AdvancedAuctionItem::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *bid_optionsKey = "bid_options";
+	node = json_object_get_member(pJsonObject, bid_optionsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AdvancedAuctionBidOptions")) {
+			jsonToValue(&bid_options, node, "AdvancedAuctionBidOptions", "AdvancedAuctionBidOptions");
+		} else {
+			
+			AdvancedAuctionBidOptions* obj = static_cast<AdvancedAuctionBidOptions*> (&bid_options);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *countryKey = "country";
 	node = json_object_get_member(pJsonObject, countryKey);
 	if (node !=NULL) {
@@ -99,20 +113,6 @@ AdvancedAuctionItem::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *bid_optionsKey = "bid_options";
-	node = json_object_get_member(pJsonObject, bid_optionsKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("AdvancedAuctionBidOptions")) {
-			jsonToValue(&bid_options, node, "AdvancedAuctionBidOptions", "AdvancedAuctionBidOptions");
-		} else {
-			
-			AdvancedAuctionBidOptions* obj = static_cast<AdvancedAuctionBidOptions*> (&bid_options);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 AdvancedAuctionItem::AdvancedAuctionItem(char* json)
@@ -125,6 +125,20 @@ AdvancedAuctionItem::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("AdvancedAuctionBidOptions")) {
+		AdvancedAuctionBidOptions obj = getBidOptions();
+		node = converttoJson(&obj, "AdvancedAuctionBidOptions", "");
+	}
+	else {
+		
+		AdvancedAuctionBidOptions obj = static_cast<AdvancedAuctionBidOptions> (getBidOptions());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *bid_optionsKey = "bid_options";
+	json_object_set_member(pJsonObject, bid_optionsKey, node);
 	if (isprimitive("Country")) {
 		Country obj = getCountry();
 		node = converttoJson(&obj, "Country", "");
@@ -162,26 +176,24 @@ AdvancedAuctionItem::toJson()
 	}
 	const gchar *languageKey = "language";
 	json_object_set_member(pJsonObject, languageKey, node);
-	if (isprimitive("AdvancedAuctionBidOptions")) {
-		AdvancedAuctionBidOptions obj = getBidOptions();
-		node = converttoJson(&obj, "AdvancedAuctionBidOptions", "");
-	}
-	else {
-		
-		AdvancedAuctionBidOptions obj = static_cast<AdvancedAuctionBidOptions> (getBidOptions());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *bid_optionsKey = "bid_options";
-	json_object_set_member(pJsonObject, bid_optionsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+AdvancedAuctionBidOptions
+AdvancedAuctionItem::getBidOptions()
+{
+	return bid_options;
+}
+
+void
+AdvancedAuctionItem::setBidOptions(AdvancedAuctionBidOptions  bid_options)
+{
+	this->bid_options = bid_options;
 }
 
 Country
@@ -218,18 +230,6 @@ void
 AdvancedAuctionItem::setLanguage(Language  language)
 {
 	this->language = language;
-}
-
-AdvancedAuctionBidOptions
-AdvancedAuctionItem::getBidOptions()
-{
-	return bid_options;
-}
-
-void
-AdvancedAuctionItem::setBidOptions(AdvancedAuctionBidOptions  bid_options)
-{
-	this->bid_options = bid_options;
 }
 
 

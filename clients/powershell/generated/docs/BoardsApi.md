@@ -21,7 +21,7 @@ Method | HTTP request | Description
 # **Invoke-BoardSectionsCreate**
 > BoardSection Invoke-BoardSectionsCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardSection] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardSectionCreate] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Create board section
@@ -36,12 +36,12 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BoardId = "MyBoardId" # String | Unique identifier of a board.
-$BoardSection = Initialize-BoardSection -Id "549755885175" -Name "Salads" # BoardSection | Create a board section.
+$BoardSectionCreate = Initialize-BoardSectionCreate -Id "549755885175" -Name "Salads" # BoardSectionCreate | 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Create board section
 try {
-    $Result = Invoke-BoardSectionsCreate -BoardId $BoardId -BoardSection $BoardSection -AdAccountId $AdAccountId
+    $Result = Invoke-BoardSectionsCreate -BoardId $BoardId -BoardSectionCreate $BoardSectionCreate -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BoardSectionsCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -53,7 +53,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BoardId** | **String**| Unique identifier of a board. | 
- **BoardSection** | [**BoardSection**](BoardSection.md)| Create a board section. | 
+ **BoardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md)|  | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-BoardSectionsDelete"></a>
 # **Invoke-BoardSectionsDelete**
-> void Invoke-BoardSectionsDelete<br>
+> BoardSection Invoke-BoardSectionsDelete<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SectionId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BoardSection**](BoardSection.md) (PSCustomObject)
 
 ### Authorization
 
@@ -150,7 +150,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $BoardId = "MyBoardId" # String | Unique identifier of a board.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List board sections
 try {
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
  **BoardId** | **String**| Unique identifier of a board. | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -212,7 +212,7 @@ $BoardId = "MyBoardId" # String | Unique identifier of a board.
 $SectionId = "MySectionId" # String | Unique identifier of a board section.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List Pins on board section
 try {
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
  **SectionId** | **String**| Unique identifier of a board section. | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 > BoardSection Invoke-BoardSectionsUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SectionId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardSection] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardSectionUpdateWithRequiredBody] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Update board section
@@ -269,12 +269,12 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BoardId = "MyBoardId" # String | Unique identifier of a board.
 $SectionId = "MySectionId" # String | Unique identifier of a board section.
-$BoardSection = Initialize-BoardSection -Id "549755885175" -Name "Salads" # BoardSection | Update a board section.
+$BoardSectionUpdateWithRequiredBody = Initialize-BoardSectionUpdateWithRequiredBody -Id "549755885175" -Name "Salads" # BoardSectionUpdateWithRequiredBody | 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Update board section
 try {
-    $Result = Invoke-BoardSectionsUpdate -BoardId $BoardId -SectionId $SectionId -BoardSection $BoardSection -AdAccountId $AdAccountId
+    $Result = Invoke-BoardSectionsUpdate -BoardId $BoardId -SectionId $SectionId -BoardSectionUpdateWithRequiredBody $BoardSectionUpdateWithRequiredBody -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BoardSectionsUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BoardId** | **String**| Unique identifier of a board. | 
  **SectionId** | **String**| Unique identifier of a board section. | 
- **BoardSection** | [**BoardSection**](BoardSection.md)| Update a board section. | 
+ **BoardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md)|  | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-BoardsDelete"></a>
 # **Invoke-BoardsDelete**
-> void Invoke-BoardsDelete<br>
+> Board Invoke-BoardsDelete<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Board**](Board.md) (PSCustomObject)
 
 ### Authorization
 
@@ -528,11 +528,11 @@ Name | Type | Description  | Notes
 # **Invoke-BoardsListPins**
 > BoardsListPins200Response Invoke-BoardsListPins<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BoardId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreativeTypes] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PinMetrics] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 List Pins on board
 
@@ -549,15 +549,15 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BoardId = "MyBoardId" # String | Unique identifier of a board.
-$Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $CreativeTypes = "REGULAR" # CreativeType[] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 $PinMetrics = $true # Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to $false)
+$Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List Pins on board
 try {
-    $Result = Invoke-BoardsListPins -BoardId $BoardId -Bookmark $Bookmark -PageSize $PageSize -CreativeTypes $CreativeTypes -AdAccountId $AdAccountId -PinMetrics $PinMetrics
+    $Result = Invoke-BoardsListPins -BoardId $BoardId -CreativeTypes $CreativeTypes -AdAccountId $AdAccountId -PinMetrics $PinMetrics -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BoardsListPins: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -569,11 +569,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BoardId** | **String**| Unique identifier of a board. | 
- **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **CreativeTypes** | [**CreativeType[]**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **PinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to $false]
+ **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

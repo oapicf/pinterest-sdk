@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -124,6 +125,13 @@ func (c *CustomerListsAPIController) CustomerListsList(w http.ResponseWriter, r 
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
+
+		bookmarkParam = param
+	} else {
+	}
 	var pageSizeParam int32
 	if query.Has("page_size") {
 		param, err := parseNumericParameter[int32](
@@ -142,21 +150,30 @@ func (c *CustomerListsAPIController) CustomerListsList(w http.ResponseWriter, r 
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var orderParam string
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
+	var excludeNcaParam bool
+	if query.Has("exclude_nca") {
+		param, err := parseBoolParameter(
+			query.Get("exclude_nca"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "exclude_nca", Err: err}, nil)
+			return
+		}
 
-		bookmarkParam = param
+		excludeNcaParam = param
 	} else {
+		var param bool = false
+		excludeNcaParam = param
 	}
-	result, err := c.service.CustomerListsList(r.Context(), adAccountIdParam, pageSizeParam, orderParam, bookmarkParam)
+	result, err := c.service.CustomerListsList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam, excludeNcaParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -174,22 +191,27 @@ func (c *CustomerListsAPIController) CustomerListsCreate(w http.ResponseWriter, 
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var customerListRequestParam CustomerListRequest
+	var customerListCreateParam CustomerListCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&customerListRequestParam); err != nil {
+	if err := d.Decode(&customerListCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertCustomerListRequestRequired(customerListRequestParam); err != nil {
+	if err := AssertCustomerListCreateRequired(customerListCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertCustomerListRequestConstraints(customerListRequestParam); err != nil {
+	if err := AssertCustomerListCreateConstraints(customerListCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CustomerListsCreate(r.Context(), adAccountIdParam, customerListRequestParam)
+	result, err := c.service.CustomerListsCreate(r.Context(), adAccountIdParam, customerListCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -235,22 +257,27 @@ func (c *CustomerListsAPIController) CustomerListsUpdate(w http.ResponseWriter, 
 		c.errorHandler(w, r, &RequiredError{"customer_list_id"}, nil)
 		return
 	}
-	var customerListUpdateRequestParam CustomerListUpdateRequest
+	var customerListUpdateWithRequiredBodyParam CustomerListUpdateWithRequiredBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&customerListUpdateRequestParam); err != nil {
+	if err := d.Decode(&customerListUpdateWithRequiredBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertCustomerListUpdateRequestRequired(customerListUpdateRequestParam); err != nil {
+	if err := AssertCustomerListUpdateWithRequiredBodyRequired(customerListUpdateWithRequiredBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertCustomerListUpdateRequestConstraints(customerListUpdateRequestParam); err != nil {
+	if err := AssertCustomerListUpdateWithRequiredBodyConstraints(customerListUpdateWithRequiredBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CustomerListsUpdate(r.Context(), adAccountIdParam, customerListIdParam, customerListUpdateRequestParam)
+	result, err := c.service.CustomerListsUpdate(r.Context(), adAccountIdParam, customerListIdParam, customerListUpdateWithRequiredBodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

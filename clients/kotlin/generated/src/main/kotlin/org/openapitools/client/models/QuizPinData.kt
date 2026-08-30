@@ -8,15 +8,24 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.QuizPinQuestion
 import org.openapitools.client.models.QuizPinResult
+import org.openapitools.client.models.TieBreakerType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -27,37 +36,26 @@ import com.squareup.moshi.JsonClass
  * @param questions 
  * @param results 
  * @param tieBreakerCustomResult 
- * @param tieBreakerType Quiz ad tie breaker type, default is RANDOM
+ * @param tieBreakerType 
  */
 
 
 data class QuizPinData (
 
     @Json(name = "questions")
-    val questions: kotlin.collections.List<QuizPinQuestion>? = null,
+    val questions: kotlin.collections.List<QuizPinQuestion?>? = null,
 
     @Json(name = "results")
-    val results: kotlin.collections.List<QuizPinResult>? = null,
+    val results: kotlin.collections.List<QuizPinResult?>? = null,
 
     @Json(name = "tie_breaker_custom_result")
     val tieBreakerCustomResult: QuizPinResult? = null,
 
-    /* Quiz ad tie breaker type, default is RANDOM */
     @Json(name = "tie_breaker_type")
-    val tieBreakerType: QuizPinData.TieBreakerType? = null
+    val tieBreakerType: TieBreakerType? = null
 
 ) {
 
-    /**
-     * Quiz ad tie breaker type, default is RANDOM
-     *
-     * Values: RANDOM,CUSTOM
-     */
-    @JsonClass(generateAdapter = false)
-    enum class TieBreakerType(val value: kotlin.String) {
-        @Json(name = "RANDOM") RANDOM("RANDOM"),
-        @Json(name = "CUSTOM") CUSTOM("CUSTOM");
-    }
 
 }
 

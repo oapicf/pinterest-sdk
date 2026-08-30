@@ -1,5 +1,6 @@
 package models
 
+// SsioAccountPmpName - Pinterest marketing partner name.
 type SsioAccountPmpName struct {
 
 	// Salesforce id for PMP

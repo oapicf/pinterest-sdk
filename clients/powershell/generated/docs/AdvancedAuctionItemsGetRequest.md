@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogId** | **String** | Catalog id pertaining to the retail item | 
-**Items** | [**AdvancedAuctionItemsGetRecord[]**](AdvancedAuctionItemsGetRecord.md) | A list of retail catalog items to fetch bid options for | 
+**Items** | [**AdvancedAuctionKey[]**](AdvancedAuctionKey.md) | A list of retail catalog items to fetch bid options for | 
 
 ## Examples
 

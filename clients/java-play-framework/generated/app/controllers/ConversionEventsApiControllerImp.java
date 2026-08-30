@@ -1,9 +1,9 @@
 package controllers;
 
-import apimodels.ConversionApiResponse;
 import apimodels.ConversionEvents;
+import apimodels.ConversionEventsCreate;
 import apimodels.DetailedError;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import play.mvc.Http;
 import java.util.List;
@@ -14,12 +14,12 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEventsApiControllerImp extends ConversionEventsApiControllerImpInterface {
     @Override
-    public ConversionApiResponse eventsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionEvents conversionEvents, Boolean test) throws Exception {
+    public ConversionEvents eventsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionEventsCreate conversionEventsCreate, Boolean test) throws Exception {
         //Do your magic!!!
-        return new ConversionApiResponse();
+        return new ConversionEvents();
     }
 
 }

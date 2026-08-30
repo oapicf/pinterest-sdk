@@ -10,36 +10,33 @@
 
 part of openapi.api;
 
-/// The current status of the invite.
-class InviteStatus {
-  /// Instantiate a new enum with the provided [value].
-  const InviteStatus._(this.value);
+/// The current status of an invite or request.
+enum InviteStatus {
+  PENDING._(r'PENDING'),
+  ACCEPTED._(r'ACCEPTED'),
+  DECLINED._(r'DECLINED'),
+  CANCELLED._(r'CANCELLED'),
+  EXPIRED._(r'EXPIRED'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const InviteStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const PENDING = InviteStatus._(r'PENDING');
-  static const ACCEPTED = InviteStatus._(r'ACCEPTED');
-  static const DECLINED = InviteStatus._(r'DECLINED');
-  static const CANCELLED = InviteStatus._(r'CANCELLED');
-  static const EXPIRED = InviteStatus._(r'EXPIRED');
-
-  /// List of all possible values in this [enum][InviteStatus].
-  static const values = <InviteStatus>[
-    PENDING,
-    ACCEPTED,
-    DECLINED,
-    CANCELLED,
-    EXPIRED,
-  ];
-
+  /// Returns the instance of [InviteStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static InviteStatus? fromJson(dynamic value) => InviteStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [InviteStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<InviteStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <InviteStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -61,9 +58,11 @@ class InviteStatusTypeTransformer {
 
   const InviteStatusTypeTransformer._();
 
-  String encode(InviteStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(InviteStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a InviteStatus.
+  /// Returns the instance of [InviteStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -72,6 +71,9 @@ class InviteStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   InviteStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is InviteStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'PENDING': return InviteStatus.PENDING;
@@ -88,7 +90,7 @@ class InviteStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [InviteStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static InviteStatusTypeTransformer? _instance;
 }
 

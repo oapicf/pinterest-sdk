@@ -77,7 +77,7 @@ AdvancedAuctionBidOptions <- R6::R6Class(
       AdvancedAuctionBidOptionsObject <- list()
       if (!is.null(self$`app_type_multipliers`)) {
         AdvancedAuctionBidOptionsObject[["app_type_multipliers"]] <-
-          self$`app_type_multipliers`$toSimpleType()
+          self$extractSimpleType(self$`app_type_multipliers`)
       }
       if (!is.null(self$`bid_in_micro_currency`)) {
         AdvancedAuctionBidOptionsObject[["bid_in_micro_currency"]] <-
@@ -85,9 +85,32 @@ AdvancedAuctionBidOptions <- R6::R6Class(
       }
       if (!is.null(self$`placement_multipliers`)) {
         AdvancedAuctionBidOptionsObject[["placement_multipliers"]] <-
-          self$`placement_multipliers`$toSimpleType()
+          self$extractSimpleType(self$`placement_multipliers`)
       }
       return(AdvancedAuctionBidOptionsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -66,12 +66,12 @@ Boards_list_pins_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<Pin> new_list;
-			Pin inst;
+			list<PinRead> new_list;
+			PinRead inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("Pin")) {
-					jsonToValue(&inst, temp_json, "Pin", "");
+				if (isprimitive("PinRead")) {
+					jsonToValue(&inst, temp_json, "PinRead", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Boards_list_pins_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("Pin")) {
-		list<Pin> new_list = static_cast<list <Pin> > (getItems());
-		node = converttoJson(&new_list, "Pin", "array");
+	if (isprimitive("PinRead")) {
+		list<PinRead> new_list = static_cast<list <PinRead> > (getItems());
+		node = converttoJson(&new_list, "PinRead", "array");
 	} else {
 		node = json_node_alloc();
-		list<Pin> new_list = static_cast<list <Pin> > (getItems());
+		list<PinRead> new_list = static_cast<list <PinRead> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<Pin>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<PinRead>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			Pin obj = *it;
+			PinRead obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Boards_list_pins_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<Pin>
+std::list<PinRead>
 Boards_list_pins_200_response::getItems()
 {
 	return items;
 }
 
 void
-Boards_list_pins_200_response::setItems(std::list <Pin> items)
+Boards_list_pins_200_response::setItems(std::list <PinRead> items)
 {
 	this->items = items;
 }

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,6 +14,8 @@ package openapi
 
 import (
 	"errors"
+	"encoding/json"
+	"fmt"
 )
 
 
@@ -21,31 +23,115 @@ import (
 // CatalogsCreativeAssetsProductGroupProductCounts - Product counts for a Creative Assets CatalogsProductGroup
 type CatalogsCreativeAssetsProductGroupProductCounts struct {
 
+	AppLinks float32 `json:"app_links"`
+
 	CatalogType string `json:"catalog_type"`
+
+	Images float32 `json:"images"`
 
 	Total float32 `json:"total"`
 
 	Videos float32 `json:"videos"`
 }
-
-// AssertCatalogsCreativeAssetsProductGroupProductCountsRequired checks if the required fields are not zero-ed
-func AssertCatalogsCreativeAssetsProductGroupProductCountsRequired(obj CatalogsCreativeAssetsProductGroupProductCounts) error {
-	elements := map[string]interface{}{
-		"catalog_type": obj.CatalogType,
-		"total": obj.Total,
-		"videos": obj.Videos,
+// UnmarshalJSON validates required property keys then unmarshals into CatalogsCreativeAssetsProductGroupProductCounts
+func (o *CatalogsCreativeAssetsProductGroupProductCounts) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"app_links",
+		"catalog_type",
+		"images",
+		"total",
+		"videos",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"app_links": false,
+		"catalog_type": false,
+		"images": false,
+		"total": false,
+		"videos": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"app_links": {},
+		"catalog_type": {},
+		"images": {},
+		"total": {},
+		"videos": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CatalogsCreativeAssetsProductGroupProductCounts
+
+	if value, exists := allProperties["app_links"]; exists {
+		if err = json.Unmarshal(value, &decoded.AppLinks); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["catalog_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.CatalogType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["images"]; exists {
+		if err = json.Unmarshal(value, &decoded.Images); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["total"]; exists {
+		if err = json.Unmarshal(value, &decoded.Total); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["videos"]; exists {
+		if err = json.Unmarshal(value, &decoded.Videos); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCatalogsCreativeAssetsProductGroupProductCountsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertCatalogsCreativeAssetsProductGroupProductCountsRequired(obj CatalogsCreativeAssetsProductGroupProductCounts) error {
 	return nil
 }
 
 // AssertCatalogsCreativeAssetsProductGroupProductCountsConstraints checks if the values respects the defined constraints
 func AssertCatalogsCreativeAssetsProductGroupProductCountsConstraints(obj CatalogsCreativeAssetsProductGroupProductCounts) error {
+	if obj.AppLinks < 0 {
+		return &ParsingError{Param: "AppLinks", Err: errors.New(errMsgMinValueConstraint)}
+	}
+	if obj.Images < 0 {
+		return &ParsingError{Param: "Images", Err: errors.New(errMsgMinValueConstraint)}
+	}
 	if obj.Total < 0 {
 		return &ParsingError{Param: "Total", Err: errors.New(errMsgMinValueConstraint)}
 	}

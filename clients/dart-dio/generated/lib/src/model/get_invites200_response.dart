@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/invite_response.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,9 +14,15 @@ part 'get_invites200_response.g.dart';
 ///
 /// Properties:
 /// * [bookmark] 
-/// * [items] - List of invite and request data.
+/// * [items] 
 @BuiltValue()
-abstract class GetInvites200Response implements Paginated, Built<GetInvites200Response, GetInvites200ResponseBuilder> {
+abstract class GetInvites200Response implements Built<GetInvites200Response, GetInvites200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<InviteResponse?> get items;
+
   GetInvites200Response._();
 
   factory GetInvites200Response([void updates(GetInvites200ResponseBuilder b)]) = _$GetInvites200Response;
@@ -51,7 +56,7 @@ class _$GetInvites200ResponseSerializer implements PrimitiveSerializer<GetInvite
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType.nullable(InviteResponse)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$GetInvites200ResponseSerializer implements PrimitiveSerializer<GetInvite
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType.nullable(InviteResponse)]),
+          ) as BuiltList<InviteResponse?>;
           result.items.replace(valueDes);
           break;
         default:

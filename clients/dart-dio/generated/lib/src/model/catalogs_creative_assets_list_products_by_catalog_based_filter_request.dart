@@ -13,12 +13,12 @@ part 'catalogs_creative_assets_list_products_by_catalog_based_filter_request.g.d
 /// Request object to list products for a given creative assets catalog_id and product group filter.
 ///
 /// Properties:
-/// * [catalogId] - Catalog id pertaining to the creative assets product group.
+/// * [catalogId] - Catalog ID pertaining to the product group.
 /// * [catalogType] 
 /// * [filters] 
 @BuiltValue()
 abstract class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest implements Built<CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest, CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestBuilder> {
-  /// Catalog id pertaining to the creative assets product group.
+  /// Catalog ID pertaining to the product group.
   @BuiltValueField(wireName: r'catalog_id')
   String get catalogId;
 

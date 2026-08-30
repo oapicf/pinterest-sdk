@@ -8,7 +8,7 @@
       "name": "exceptions",
       "type": ["null", {
         "type": "array",
-        "items": "model.CreateAssetAccessRequestErrorMessageInner"
+        "items": "model.AssetAccessRequestError"
       }],
       "doc": "A list of errors associated with the asset access requests. Will be returned if there is an error.",
       "default": null
@@ -19,7 +19,7 @@
         "type": "map",
         "items": "string"
       }],
-      "doc": "",
+      "doc": "An object mapping each partner id to the asset access request id. Only one request id is returned per partner.",
       "default": null
     }
   ]

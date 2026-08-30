@@ -1,5 +1,9 @@
 package apimodels;
 
+import apimodels.BillingProfileCardType;
+import apimodels.BillingProfilePaymentMethodBrand;
+import apimodels.BillingProfileStatus;
+import apimodels.BillingType;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -9,7 +13,7 @@ import javax.validation.Valid;
 /**
  * BillingProfilesResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BillingProfilesResponse   {
   @JsonProperty("advertiser_id")
@@ -17,188 +21,30 @@ public class BillingProfilesResponse   {
 
   private String advertiserId;
 
-  /**
-   * Billing type of the advertiser
-   */
-  public enum BillingTypeEnum {
-    CREDIT_CARD("CREDIT_CARD"),
-    
-    INVOICE("INVOICE"),
-    
-    INTERNAL("INTERNAL"),
-    
-    RECURRING("RECURRING"),
-    
-    PREPAID("PREPAID");
-
-    private final String value;
-
-    BillingTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BillingTypeEnum fromValue(String value) {
-      for (BillingTypeEnum b : BillingTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("billing_type")
-  
-  private BillingTypeEnum billingType;
+  @Valid
 
-  /**
-   * Type of the card.
-   */
-  public enum CardTypeEnum {
-    UNKNOWN("UNKNOWN"),
-    
-    VISA("VISA"),
-    
-    MASTERCARD("MASTERCARD"),
-    
-    AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-    
-    DISCOVER("DISCOVER"),
-    
-    ELO("ELO");
-
-    private final String value;
-
-    CardTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CardTypeEnum fromValue(String value) {
-      for (CardTypeEnum b : CardTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+  private BillingType billingType;
 
   @JsonProperty("card_type")
-  
-  private CardTypeEnum cardType;
+  @Valid
+
+  private BillingProfileCardType cardType;
 
   @JsonProperty("id")
   @Pattern(regexp="^\\d+$")
 
   private String id;
 
-  /**
-   * Brand of the payment method.
-   */
-  public enum PaymentMethodBrandEnum {
-    UNKNOWN("UNKNOWN"),
-    
-    VISA("VISA"),
-    
-    MASTERCARD("MASTERCARD"),
-    
-    AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-    
-    DISCOVER("DISCOVER"),
-    
-    SOFORT("SOFORT"),
-    
-    DINERS_CLUB("DINERS_CLUB"),
-    
-    ELO("ELO"),
-    
-    CARTE_BANCAIRE("CARTE_BANCAIRE");
-
-    private final String value;
-
-    PaymentMethodBrandEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static PaymentMethodBrandEnum fromValue(String value) {
-      for (PaymentMethodBrandEnum b : PaymentMethodBrandEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @JsonProperty("payment_method_brand")
-  
-  private PaymentMethodBrandEnum paymentMethodBrand;
+  @Valid
 
-  /**
-   * Status of the billing.
-   */
-  public enum StatusEnum {
-    UNSPECIFIED("UNSPECIFIED"),
-    
-    VALID("VALID"),
-    
-    INVALID("INVALID"),
-    
-    PENDING("PENDING"),
-    
-    DELETED("DELETED"),
-    
-    SECONDARY("SECONDARY"),
-    
-    PENDING_SECONDARY("PENDING_SECONDARY");
-
-    private final String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+  private BillingProfilePaymentMethodBrand paymentMethodBrand;
 
   @JsonProperty("status")
-  
-  private StatusEnum status;
+  @Valid
+
+  private BillingProfileStatus status;
 
   public BillingProfilesResponse advertiserId(String advertiserId) {
     this.advertiserId = advertiserId;
@@ -217,7 +63,7 @@ public class BillingProfilesResponse   {
     this.advertiserId = advertiserId;
   }
 
-  public BillingProfilesResponse billingType(BillingTypeEnum billingType) {
+  public BillingProfilesResponse billingType(BillingType billingType) {
     this.billingType = billingType;
     return this;
   }
@@ -226,15 +72,15 @@ public class BillingProfilesResponse   {
    * Billing type of the advertiser
    * @return billingType
   **/
-  public BillingTypeEnum getBillingType() {
+  public BillingType getBillingType() {
     return billingType;
   }
 
-  public void setBillingType(BillingTypeEnum billingType) {
+  public void setBillingType(BillingType billingType) {
     this.billingType = billingType;
   }
 
-  public BillingProfilesResponse cardType(CardTypeEnum cardType) {
+  public BillingProfilesResponse cardType(BillingProfileCardType cardType) {
     this.cardType = cardType;
     return this;
   }
@@ -243,11 +89,11 @@ public class BillingProfilesResponse   {
    * Type of the card.
    * @return cardType
   **/
-  public CardTypeEnum getCardType() {
+  public BillingProfileCardType getCardType() {
     return cardType;
   }
 
-  public void setCardType(CardTypeEnum cardType) {
+  public void setCardType(BillingProfileCardType cardType) {
     this.cardType = cardType;
   }
 
@@ -268,7 +114,7 @@ public class BillingProfilesResponse   {
     this.id = id;
   }
 
-  public BillingProfilesResponse paymentMethodBrand(PaymentMethodBrandEnum paymentMethodBrand) {
+  public BillingProfilesResponse paymentMethodBrand(BillingProfilePaymentMethodBrand paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
     return this;
   }
@@ -277,15 +123,15 @@ public class BillingProfilesResponse   {
    * Brand of the payment method.
    * @return paymentMethodBrand
   **/
-  public PaymentMethodBrandEnum getPaymentMethodBrand() {
+  public BillingProfilePaymentMethodBrand getPaymentMethodBrand() {
     return paymentMethodBrand;
   }
 
-  public void setPaymentMethodBrand(PaymentMethodBrandEnum paymentMethodBrand) {
+  public void setPaymentMethodBrand(BillingProfilePaymentMethodBrand paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
   }
 
-  public BillingProfilesResponse status(StatusEnum status) {
+  public BillingProfilesResponse status(BillingProfileStatus status) {
     this.status = status;
     return this;
   }
@@ -294,11 +140,11 @@ public class BillingProfilesResponse   {
    * Status of the billing.
    * @return status
   **/
-  public StatusEnum getStatus() {
+  public BillingProfileStatus getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(BillingProfileStatus status) {
     this.status = status;
   }
 
@@ -346,10 +192,7 @@ public class BillingProfilesResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

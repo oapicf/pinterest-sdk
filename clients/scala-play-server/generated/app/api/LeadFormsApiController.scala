@@ -5,25 +5,26 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.Error
-import model.LeadFormArrayResponse
-import model.LeadFormCreateRequest
-import model.LeadFormResponse
-import model.LeadFormTestRequest
-import model.LeadFormTestResponse
-import model.LeadFormUpdateRequest
+import model.LeadForm
+import model.LeadFormBatchUpdate
+import model.LeadFormCreate
+import model.LeadFormTest
+import model.LeadFormTestCreate
+import model.LeadFormsCreate200Response
 import model.LeadFormsList200Response
+import model.PaginationOrder
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class LeadFormsApiController @Inject()(cc: ControllerComponents, api: LeadFormsApi) extends AbstractController(cc) {
   /**
     * GET /v5/ad_accounts/:adAccountId/lead_forms/:leadFormId
+    * @param leadFormId The ID of this lead form
     * @param adAccountId Unique identifier of an ad account.
-    * @param leadFormId Unique identifier of a lead form.
     */
-  def leadFormGet(adAccountId: String, leadFormId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): LeadFormResponse = {
-      api.leadFormGet(adAccountId, leadFormId)
+  def leadFormGet(leadFormId: String, adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): LeadForm = {
+      api.leadFormGet(leadFormId, adAccountId)
     }
 
     val result = executeApi()
@@ -33,15 +34,14 @@ class LeadFormsApiController @Inject()(cc: ControllerComponents, api: LeadFormsA
 
   /**
     * POST /v5/ad_accounts/:adAccountId/lead_forms/:leadFormId/test
-    * @param adAccountId Unique identifier of an ad account.
     * @param leadFormId Unique identifier of a lead form.
     */
   def leadFormTestCreate(adAccountId: String, leadFormId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): LeadFormTestResponse = {
-      val leadFormTestRequest = request.body.asJson.map(_.as[LeadFormTestRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "leadFormTestRequest")
+    def executeApi(): LeadFormTest = {
+      val leadFormTestCreate = request.body.asJson.map(_.as[LeadFormTestCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "leadFormTestCreate")
       }
-      api.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest)
+      api.leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate)
     }
 
     val result = executeApi()
@@ -54,11 +54,11 @@ class LeadFormsApiController @Inject()(cc: ControllerComponents, api: LeadFormsA
     * @param adAccountId Unique identifier of an ad account.
     */
   def leadFormsCreate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): LeadFormArrayResponse = {
-      val leadFormCreateRequest = request.body.asJson.map(_.as[List[LeadFormCreateRequest]]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "leadFormCreateRequest")
+    def executeApi(): LeadFormsCreate200Response = {
+      val leadFormCreate = request.body.asJson.map(_.as[List[LeadFormCreate]]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "leadFormCreate")
       }
-      api.leadFormsCreate(adAccountId, leadFormCreateRequest)
+      api.leadFormsCreate(adAccountId, leadFormCreate)
     }
 
     val result = executeApi()
@@ -67,19 +67,20 @@ class LeadFormsApiController @Inject()(cc: ControllerComponents, api: LeadFormsA
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/lead_forms?pageSize=[value]&order=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/lead_forms?bookmark=[value]&pageSize=[value]&order=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def leadFormsList(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): LeadFormsList200Response = {
+      val bookmark = request.getQueryString("bookmark")
+        
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
       val order = request.getQueryString("order")
+        .map(value => )
         
-      val bookmark = request.getQueryString("bookmark")
-        
-      api.leadFormsList(adAccountId, pageSize, order, bookmark)
+      api.leadFormsList(adAccountId, bookmark, pageSize, order)
     }
 
     val result = executeApi()
@@ -92,11 +93,11 @@ class LeadFormsApiController @Inject()(cc: ControllerComponents, api: LeadFormsA
     * @param adAccountId Unique identifier of an ad account.
     */
   def leadFormsUpdate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): LeadFormArrayResponse = {
-      val leadFormUpdateRequest = request.body.asJson.map(_.as[List[LeadFormUpdateRequest]]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "leadFormUpdateRequest")
+    def executeApi(): LeadFormsCreate200Response = {
+      val leadFormBatchUpdate = request.body.asJson.map(_.as[List[LeadFormBatchUpdate]]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "leadFormBatchUpdate")
       }
-      api.leadFormsUpdate(adAccountId, leadFormUpdateRequest)
+      api.leadFormsUpdate(adAccountId, leadFormBatchUpdate)
     }
 
     val result = executeApi()

@@ -53,7 +53,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAnyOf(std::list <CatalogsHotelProductGroupFilterKeys> any_of);
+	void setAnyOf(std::list<CatalogsHotelProductGroupFilterKeys> any_of);
 
 
     private:

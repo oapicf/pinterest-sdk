@@ -52,28 +52,28 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
+	void setDescription(std::string description);
 	/*! \brief Get 
 	 */
 	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
-	/*! \brief Get 
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters filters);
+	/*! \brief Get Name of catalog product group
 	 */
 	std::string getName();
 
-	/*! \brief Set 
+	/*! \brief Set Name of catalog product group
 	 */
-	void setName(std::string  name);
+	void setName(std::string name);
 
 
     private:

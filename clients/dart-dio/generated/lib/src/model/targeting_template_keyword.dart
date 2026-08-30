@@ -87,15 +87,17 @@ class _$TargetingTemplateKeywordSerializer implements PrimitiveSerializer<Target
         case r'match_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(MatchType),
-          ) as MatchType;
+            specifiedType: const FullType.nullable(MatchType),
+          ) as MatchType?;
+          if (valueDes == null) continue;
           result.matchType = valueDes;
           break;
         case r'value':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.value = valueDes;
           break;
         default:

@@ -1,8 +1,9 @@
 package controllers;
 
-import apimodels.Error;
 import apimodels.OrderLine;
 import apimodels.OrderLinesList200Response;
+import apimodels.PinterestLibError;
+import apimodels.PinterestLibPaginationOrder;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -29,12 +30,12 @@ public abstract class OrderLinesApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result orderLinesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String orderLineId) throws Exception {
+    public Result orderLinesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String orderLineId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        OrderLine obj = orderLinesGet(request, adAccountId, orderLineId);
+        OrderLine obj = orderLinesGet(request, orderLineId, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -46,14 +47,14 @@ public abstract class OrderLinesApiControllerImpInterface {
 
     }
 
-    public abstract OrderLine orderLinesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String orderLineId) throws Exception;
+    public abstract OrderLine orderLinesGet(Http.Request request,  @Pattern(regexp="^\\d+$")String orderLineId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result orderLinesListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public Result orderLinesListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        OrderLinesList200Response obj = orderLinesList(request, adAccountId, pageSize, order, bookmark);
+        OrderLinesList200Response obj = orderLinesList(request, adAccountId, bookmark, pageSize, order);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -65,6 +66,6 @@ public abstract class OrderLinesApiControllerImpInterface {
 
     }
 
-    public abstract OrderLinesList200Response orderLinesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception;
+    public abstract OrderLinesList200Response orderLinesList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, PinterestLibPaginationOrder order) throws Exception;
 
 }

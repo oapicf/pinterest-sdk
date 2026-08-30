@@ -70,7 +70,7 @@ using namespace Tiny;
         CatalogsApi::
         catalogs_create(
             
-            CatalogsCreateRequest catalogsCreateRequest
+            CatalogCreate catalogCreate
             , 
             
             std::string adAccountId
@@ -95,11 +95,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | catalogsCreateRequest
+            // Body     | catalogCreate
 
 
 
-            payload = catalogsCreateRequest.toJson().dump();
+            payload = catalogCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -123,13 +123,13 @@ using namespace Tiny;
         CatalogsApi::
         catalogs_list(
             
+            std::string adAccountId
+            , 
+            
             std::string bookmark
             , 
             
             int pageSize
-            , 
-            
-            std::string adAccountId
             
         )
         {
@@ -138,10 +138,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize adAccountId 
+            // Query    | adAccountId bookmark pageSize 
+            addQueryParam("ad_account_id",adAccountId);
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
-            addQueryParam("ad_account_id",adAccountId);
 
             // Form     | 
 

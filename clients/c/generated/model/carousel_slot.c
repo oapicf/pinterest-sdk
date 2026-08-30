@@ -14,11 +14,11 @@ static carousel_slot_t *carousel_slot_create_internal(
     if (!carousel_slot_local_var) {
         return NULL;
     }
+    memset(carousel_slot_local_var, 0, sizeof(carousel_slot_t));
+    carousel_slot_local_var->_library_owned = 1;
     carousel_slot_local_var->description = description;
     carousel_slot_local_var->link = link;
     carousel_slot_local_var->title = title;
-
-    carousel_slot_local_var->_library_owned = 1;
     return carousel_slot_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) carousel_slot_t *carousel_slot_create(
     char *link,
     char *title
     ) {
-    return carousel_slot_create_internal (
+    carousel_slot_t *result = carousel_slot_create_internal (
         description,
         link,
         title
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void carousel_slot_free(carousel_slot_t *carousel_slot) {
@@ -96,6 +99,12 @@ carousel_slot_t *carousel_slot_parseFromJSON(cJSON *carousel_slotJSON){
 
     carousel_slot_t *carousel_slot_local_var = NULL;
 
+    char *description_local_str = NULL;
+
+    char *link_local_str = NULL;
+
+    char *title_local_str = NULL;
+
     // carousel_slot->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(carousel_slotJSON, "description");
     if (cJSON_IsNull(description)) {
@@ -133,14 +142,34 @@ carousel_slot_t *carousel_slot_parseFromJSON(cJSON *carousel_slotJSON){
     }
 
 
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     carousel_slot_local_var = carousel_slot_create_internal (
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL
+        description_local_str,
+        link_local_str,
+        title_local_str
         );
+
+    if (!carousel_slot_local_var) {
+        goto end;
+    }
 
     return carousel_slot_local_var;
 end:
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
     return NULL;
 
 }

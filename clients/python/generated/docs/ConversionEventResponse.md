@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **conversion_event** | [**ConversionTagType**](ConversionTagType.md) |  | [optional] 
 **conversion_tag_id** | **str** | Id of the tag. | [optional] 
 **created_time** | **int** | Creation date in epoch format. | [optional] 
+**reporting_conversion_event** | **str** | For advertiser-defined events, the reporting event label shown in optimization UIs. | [optional] 
 
 ## Example
 

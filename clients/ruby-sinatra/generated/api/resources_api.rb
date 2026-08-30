@@ -5,7 +5,7 @@ MyApp.add_route('GET', '/v5/resources/ad_account_countries', {
   "resourcePath" => "/Resources",
   "summary" => "Get ad accounts countries",
   "nickname" => "ad_account_countries/get",
-  "responseClass" => "AdAccountsCountryResponse",
+  "responseClass" => "ad_account_countries_get_200_response",
   "endpoint" => "/resources/ad_account_countries",
   "notes" => "Get Ad Accounts countries",
   "parameters" => [
@@ -21,14 +21,14 @@ MyApp.add_route('GET', '/v5/resources/delivery_metrics', {
   "resourcePath" => "/Resources",
   "summary" => "Get available metrics' definitions",
   "nickname" => "delivery_metrics/get",
-  "responseClass" => "DeliveryMetricsResponse",
+  "responseClass" => "delivery_metrics_get_200_response",
   "endpoint" => "/resources/delivery_metrics",
-  "notes" => "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.",
+  "notes" => "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.",
   "parameters" => [
     {
       "name" => "report_type",
       "description" => "Report type.",
-      "dataType" => "String",
+      "dataType" => "ReportType",
       "allowableValues" => "[SYNC, ASYNC]",
       "paramType" => "query",
     },
@@ -44,9 +44,9 @@ MyApp.add_route('GET', '/v5/resources/targeting/interests/{interest_id}', {
   "resourcePath" => "/Resources",
   "summary" => "Get interest details",
   "nickname" => "interest_targeting_options/get",
-  "responseClass" => "SingleInterestTargetingOptionResponse",
+  "responseClass" => "SingleInterestTargetingOption",
   "endpoint" => "/resources/targeting/interests/{interest_id}",
-  "notes" => "<p>Get details of a specific interest given interest ID.</p> <p>Click <a href=\"https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875\" target=\"_blank\">here</a> for a spreadsheet listing interests and their IDs.</p>",
+  "notes" => "Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875) for a spreadsheet listing interests and their IDs.",
   "parameters" => [
     {
       "name" => "interest_id",
@@ -68,7 +68,7 @@ MyApp.add_route('GET', '/v5/resources/lead_form_questions', {
   "nickname" => "lead_form_questions/get",
   "responseClass" => "void",
   "endpoint" => "/resources/lead_form_questions",
-  "notes" => "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>",
+  "notes" => "Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**",
   "parameters" => [
     ]}) do
   cross_origin
@@ -82,7 +82,7 @@ MyApp.add_route('GET', '/v5/resources/metrics_ready_state', {
   "resourcePath" => "/Resources",
   "summary" => "Get metrics ready state",
   "nickname" => "metrics_ready_state/get",
-  "responseClass" => "BookClosedResponse",
+  "responseClass" => "BookClosed",
   "endpoint" => "/resources/metrics_ready_state",
   "notes" => "Learn whether conversion or non-conversion metrics are finalized and ready to query.",
   "parameters" => [
@@ -107,11 +107,18 @@ MyApp.add_route('GET', '/v5/resources/targeting/{targeting_type}', {
   "nickname" => "targeting_options/get",
   "responseClass" => "Array<Object>",
   "endpoint" => "/resources/targeting/{targeting_type}",
-  "notes" => "<p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class=\"literal-block\"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>",
+  "notes" => "    You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      ```     [{\"36313\": \"Australia: Moreton Bay - North\", \"124735\": \"Canada: North Battleford\", \"36109\": \"Australia: Murray\", \"36108\": \"Australia: Mid North Coast\", \"36101\": \"Australia: Capital Region\", \"811\": \"U.S.: Reno\", \"36103\": \"Australia: Central West\", \"36102\": \"Australia: Central Coast\", \"36105\": \"Australia: Far West and Orana\", \"36104\": \"Australia: Coffs Harbour - Grafton\", \"36107\": \"Australia: Illawarra\", \"36106\": \"Australia: Hunter Valley Exc Newcastle\", \"554017\": \"New Zealand: Wanganui\", \"554016\": \"New Zealand: Marlborough\", \"554015\": \"New Zealand: Gisborne\", \"554014\": \"New Zealand: Tararua\", \"554013\": \"New Zealand: Invercargill\", \"GR\": \"Greece\", \"554011\": \"New Zealand: Whangarei\", \"554010\": \"New Zealand: Far North\", \"717\": \"U.S.: Quincy-Hannibal-Keokuk\", \"716\": \"U.S.: Baton Rouge\",...}]     ```",
   "parameters" => [
     {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
       "name" => "client_id",
-      "description" => "Client ID.",
+      "description" => "Client ID",
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
@@ -125,22 +132,15 @@ MyApp.add_route('GET', '/v5/resources/targeting/{targeting_type}', {
     },
     {
       "name" => "timestamp",
-      "description" => "Timestamp",
-      "dataType" => "String",
-      "allowableValues" => "",
-      "paramType" => "query",
-    },
-    {
-      "name" => "ad_account_id",
-      "description" => "Unique identifier of an ad account.",
+      "description" => "Timestamp.",
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
     },
     {
       "name" => "targeting_type",
-      "description" => "Public targeting type.",
-      "dataType" => "String",
+      "description" => "Public targeting type",
+      "dataType" => "PublicTargetingType",
       "paramType" => "path",
     },
     ]}) do

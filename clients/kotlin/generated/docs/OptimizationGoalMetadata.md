@@ -4,9 +4,9 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **conversionTagV3GoalMetadata** | [**OptimizationGoalMetadataConversionTagV3GoalMetadata**](OptimizationGoalMetadataConversionTagV3GoalMetadata.md) |  |  [optional] |
-| **frequencyGoalMetadata** | [**OptimizationGoalMetadataFrequencyGoalMetadata**](OptimizationGoalMetadataFrequencyGoalMetadata.md) |  |  [optional] |
-| **scrollupGoalMetadata** | [**OptimizationGoalMetadataScrollupGoalMetadata**](OptimizationGoalMetadataScrollupGoalMetadata.md) |  |  [optional] |
+| **conversionTagV3GoalMetadata** | [**ConversionTagV3GoalMetadata**](ConversionTagV3GoalMetadata.md) |  |  [optional] |
+| **frequencyGoalMetadata** | [**FrequencyGoalMetadata**](FrequencyGoalMetadata.md) |  |  [optional] |
+| **scrollupGoalMetadata** | [**ScrollupGoalMetadata**](ScrollupGoalMetadata.md) |  |  [optional] |
 
 
 

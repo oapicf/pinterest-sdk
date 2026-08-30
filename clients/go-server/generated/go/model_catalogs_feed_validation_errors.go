@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -49,7 +49,7 @@ type CatalogsFeedValidationErrors struct {
 	// Pinterest couldn't download your feed.
 	FETCH_ERROR int32 `json:"FETCH_ERROR,omitempty"`
 
-	// Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+	// Your feed wasn't ingested because it hasn't changed in the previous 90 days.
 	FETCH_INACTIVE_FEED_ERROR int32 `json:"FETCH_INACTIVE_FEED_ERROR,omitempty"`
 
 	// Some image links are formatted incorrectly.
@@ -116,7 +116,8 @@ type CatalogsFeedValidationErrors struct {
 	TITLE_MISSING int32 `json:"TITLE_MISSING,omitempty"`
 }
 
-// AssertCatalogsFeedValidationErrorsRequired checks if the required fields are not zero-ed
+// AssertCatalogsFeedValidationErrorsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsFeedValidationErrorsRequired(obj CatalogsFeedValidationErrors) error {
 	return nil
 }

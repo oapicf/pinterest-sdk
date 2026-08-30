@@ -11,10 +11,10 @@ part 'member_business_role.g.dart';
 
 class MemberBusinessRole extends EnumClass {
 
-  /// The access level a member/partner has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access ad accounts you assign to them. They cannot see details about other employees, external partners or other ad accounts. <br> - BIZ_ADMIN: Have full control of roles and can add employees, external partners as well as grant ad account access.
+  /// The access level a member/partner has to the business. Values are case-sensitive. - EMPLOYEE: Can only view and access ad accounts you assign to them. They cannot see details about other employees, external partners or other ad accounts. - BIZ_ADMIN: Have full control of roles and can add employees, external partners as well as grant ad account access.
   @BuiltValueEnumConst(wireName: r'EMPLOYEE')
   static const MemberBusinessRole EMPLOYEE = _$EMPLOYEE;
-  /// The access level a member/partner has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access ad accounts you assign to them. They cannot see details about other employees, external partners or other ad accounts. <br> - BIZ_ADMIN: Have full control of roles and can add employees, external partners as well as grant ad account access.
+  /// The access level a member/partner has to the business. Values are case-sensitive. - EMPLOYEE: Can only view and access ad accounts you assign to them. They cannot see details about other employees, external partners or other ad accounts. - BIZ_ADMIN: Have full control of roles and can add employees, external partners as well as grant ad account access.
   @BuiltValueEnumConst(wireName: r'BIZ_ADMIN')
   static const MemberBusinessRole BIZ_ADMIN = _$BIZ_ADMIN;
 

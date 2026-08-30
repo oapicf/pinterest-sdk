@@ -11,13 +11,13 @@ Method | HTTP request | Description
 
 <a id="Invoke-TargetingTemplateCreate"></a>
 # **Invoke-TargetingTemplateCreate**
-> TargetingTemplateGetResponseData Invoke-TargetingTemplateCreate<br>
+> TargetingTemplate Invoke-TargetingTemplateCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TargetingTemplateCreate] <PSCustomObject><br>
 
 Create targeting templates
 
-<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
 
 ### Example
 ```powershell
@@ -30,12 +30,10 @@ $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $TargetingTemplateKeyword = Initialize-TargetingTemplateKeyword -MatchType "BROAD" -Value "couples halloween costumes"
 
 $TargetingSpecShoppingRetargeting = Initialize-TargetingSpecShoppingRetargeting -ExclusionWindow 14 -LookbackWindow 30 -TagTypes 0
-"CHOOSE_YOUR_OWN"$TargetingSpec = Initialize-TargetingSpec -AGEBUCKET "18-24" -APPTYPE "android_mobile" -AUDIENCEEXCLUDE "MyAUDIENCEEXCLUDE" -AUDIENCEINCLUDE "MyAUDIENCEINCLUDE" -GENDER "unknown" -GEO "MyGEO" -INTEREST "MyINTEREST" -LOCALE "MyLOCALE" -LOCATION "MyLOCATION" -MAXIMUMAGE "65+" -MINIMUMAGE "18" -SHOPPINGRETARGETING $TargetingSpecShoppingRetargeting -TARGETINGSTRATEGY 
-$TargetingSpecShoppingRetargeting = Initialize-TargetingSpecShoppingRetargeting -ExclusionWindow 14 -LookbackWindow 30 -TagTypes 0
-"CHOOSE_YOUR_OWN"
+$TargetingSpecOptimal = Initialize-TargetingSpecOptimal -AGEBUCKET "18-24" -APPTYPE "android_mobile" -AUDIENCEEXCLUDE "MyAUDIENCEEXCLUDE" -AUDIENCEINCLUDE "MyAUDIENCEINCLUDE" -GENDER "unknown" -GEO "MyGEO" -GEOEXCLUDE "MyGEOEXCLUDE" -INTEREST "MyINTEREST" -LOCALE "MyLOCALE" -LOCATION "MyLOCATION" -LOCATIONEXCLUDE "MyLOCATIONEXCLUDE" -MAXIMUMAGE "MyMAXIMUMAGE" -MINIMUMAGE "MyMINIMUMAGE" -SHOPPINGRETARGETING $TargetingSpecShoppingRetargeting -TARGETINGSTRATEGY "CHOOSE_YOUR_OWN"
 
 $TrackingUrls = Initialize-TrackingUrls -AudienceVerification "MyAudienceVerification" -BuyableButton "MyBuyableButton" -Click "MyClick" -Engagement "MyEngagement" -Impression "MyImpression"
-$TargetingTemplateCreate = Initialize-TargetingTemplateCreate -AutoTargetingEnabled $false -Keywords $TargetingTemplateKeyword -Name "Gaming" -PlacementGroup "ALL" -TargetingAttributes $TargetingSpec -TrackingUrls $TrackingUrls # TargetingTemplateCreate | targeting template creation entity
+$TargetingTemplateCreate = Initialize-TargetingTemplateCreate -AutoTargetingEnabled $false -Keywords $TargetingTemplateKeyword -Name "MyName" -PlacementGroup "ALL" -TargetingAttributes $TargetingSpecOptimal -TrackingUrls $TrackingUrls # TargetingTemplateCreate | 
 
 # Create targeting templates
 try {
@@ -51,11 +49,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **TargetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)| targeting template creation entity | 
+ **TargetingTemplateCreate** | [**TargetingTemplateCreate**](TargetingTemplateCreate.md)|  | 
 
 ### Return type
 
-[**TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md) (PSCustomObject)
+[**TargetingTemplate**](TargetingTemplate.md) (PSCustomObject)
 
 ### Authorization
 
@@ -72,15 +70,15 @@ Name | Type | Description  | Notes
 # **Invoke-TargetingTemplateList**
 > TargetingTemplateList200Response Invoke-TargetingTemplateList<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Order] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeSizing] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SearchQuery] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 
 List targeting templates
 
-Get a list of the targeting templates in the specified <code>ad_account_id</code>
+Get a list of the targeting templates in the specified `ad_account_id`
 
 ### Example
 ```powershell
@@ -93,15 +91,15 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-$IncludeSizing = $true # Boolean | Include audience sizing in result or not (optional) (default to $false)
-$SearchQuery = "gaming" # String | Search keyword for targeting templates (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+$Order = "ASCENDING" # PinterestLibPaginationOrder | The order in which to sort the items returned: ""ASCENDING"" or ""DESCENDING"" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+$IncludeSizing = $true # Boolean | Include audience sizing in result or not (optional) (default to $false)
+$SearchQuery = "MySearchQuery" # String | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
 
 # List targeting templates
 try {
-    $Result = Invoke-TargetingTemplateList -AdAccountId $AdAccountId -Order $Order -IncludeSizing $IncludeSizing -SearchQuery $SearchQuery -PageSize $PageSize -Bookmark $Bookmark
+    $Result = Invoke-TargetingTemplateList -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize -Order $Order -IncludeSizing $IncludeSizing -SearchQuery $SearchQuery
 } catch {
     Write-Host ("Exception occurred when calling Invoke-TargetingTemplateList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -113,11 +111,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **IncludeSizing** | **Boolean**| Include audience sizing in result or not | [optional] [default to $false]
- **SearchQuery** | **String**| Search keyword for targeting templates | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **Order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md)| The order in which to sort the items returned: &quot;&quot;ASCENDING&quot;&quot; or &quot;&quot;DESCENDING&quot;&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **IncludeSizing** | **Boolean**| Include audience sizing in result or not | [optional] [default to $false]
+ **SearchQuery** | **String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
 
 ### Return type
 
@@ -138,11 +136,11 @@ Name | Type | Description  | Notes
 # **Invoke-TargetingTemplateUpdate**
 > void Invoke-TargetingTemplateUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TargetingTemplateUpdateRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TargetingTemplateUpdateRequestReadOrUpdate] <PSCustomObject><br>
 
 Update targeting templates
 
-<p>Update the targeting template given advertiser ID and targeting template ID</p>
+Update the targeting template given advertiser ID and targeting template ID
 
 ### Example
 ```powershell
@@ -153,15 +151,13 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $TargetingSpecShoppingRetargeting = Initialize-TargetingSpecShoppingRetargeting -ExclusionWindow 14 -LookbackWindow 30 -TagTypes 0
-"CHOOSE_YOUR_OWN"$TargetingSpec = Initialize-TargetingSpec -AGEBUCKET "18-24" -APPTYPE "android_mobile" -AUDIENCEEXCLUDE "MyAUDIENCEEXCLUDE" -AUDIENCEINCLUDE "MyAUDIENCEINCLUDE" -GENDER "unknown" -GEO "MyGEO" -INTEREST "MyINTEREST" -LOCALE "MyLOCALE" -LOCATION "MyLOCATION" -MAXIMUMAGE "65+" -MINIMUMAGE "18" -SHOPPINGRETARGETING $TargetingSpecShoppingRetargeting -TARGETINGSTRATEGY 
-$TargetingSpecShoppingRetargeting = Initialize-TargetingSpecShoppingRetargeting -ExclusionWindow 14 -LookbackWindow 30 -TagTypes 0
-"CHOOSE_YOUR_OWN"
+$TargetingSpecOptimal = Initialize-TargetingSpecOptimal -AGEBUCKET "18-24" -APPTYPE "android_mobile" -AUDIENCEEXCLUDE "MyAUDIENCEEXCLUDE" -AUDIENCEINCLUDE "MyAUDIENCEINCLUDE" -GENDER "unknown" -GEO "MyGEO" -GEOEXCLUDE "MyGEOEXCLUDE" -INTEREST "MyINTEREST" -LOCALE "MyLOCALE" -LOCATION "MyLOCATION" -LOCATIONEXCLUDE "MyLOCATIONEXCLUDE" -MAXIMUMAGE "MyMAXIMUMAGE" -MINIMUMAGE "MyMINIMUMAGE" -SHOPPINGRETARGETING $TargetingSpecShoppingRetargeting -TARGETINGSTRATEGY "CHOOSE_YOUR_OWN"
 
-$TargetingTemplateUpdateRequest = Initialize-TargetingTemplateUpdateRequest -Id "643" -OperationType "REMOVE" -TargetingAttributes $TargetingSpec # TargetingTemplateUpdateRequest | Operation type and targeting template ID
+$TargetingTemplateUpdateRequestReadOrUpdate = Initialize-TargetingTemplateUpdateRequestReadOrUpdate -Id "643" -OperationType "UPDATE" -TargetingAttributes $TargetingSpecOptimal # TargetingTemplateUpdateRequestReadOrUpdate | 
 
 # Update targeting templates
 try {
-    $Result = Invoke-TargetingTemplateUpdate -AdAccountId $AdAccountId -TargetingTemplateUpdateRequest $TargetingTemplateUpdateRequest
+    $Result = Invoke-TargetingTemplateUpdate -AdAccountId $AdAccountId -TargetingTemplateUpdateRequestReadOrUpdate $TargetingTemplateUpdateRequestReadOrUpdate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-TargetingTemplateUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -173,7 +169,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **TargetingTemplateUpdateRequest** | [**TargetingTemplateUpdateRequest**](TargetingTemplateUpdateRequest.md)| Operation type and targeting template ID | 
+ **TargetingTemplateUpdateRequestReadOrUpdate** | [**TargetingTemplateUpdateRequestReadOrUpdate**](TargetingTemplateUpdateRequestReadOrUpdate.md)|  | 
 
 ### Return type
 

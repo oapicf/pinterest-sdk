@@ -25,9 +25,9 @@ pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e pin_media_source_video
 static pin_media_source_video_id_t *pin_media_source_video_id_create_internal(
     content_type_t *cover_image_content_type,
     char *cover_image_data,
-    int cover_image_key_frame_time,
+    int *cover_image_key_frame_time,
     char *cover_image_url,
-    int is_standard,
+    int *is_standard,
     char *media_id,
     pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type
     ) {
@@ -35,6 +35,8 @@ static pin_media_source_video_id_t *pin_media_source_video_id_create_internal(
     if (!pin_media_source_video_id_local_var) {
         return NULL;
     }
+    memset(pin_media_source_video_id_local_var, 0, sizeof(pin_media_source_video_id_t));
+    pin_media_source_video_id_local_var->_library_owned = 1;
     pin_media_source_video_id_local_var->cover_image_content_type = cover_image_content_type;
     pin_media_source_video_id_local_var->cover_image_data = cover_image_data;
     pin_media_source_video_id_local_var->cover_image_key_frame_time = cover_image_key_frame_time;
@@ -42,29 +44,42 @@ static pin_media_source_video_id_t *pin_media_source_video_id_create_internal(
     pin_media_source_video_id_local_var->is_standard = is_standard;
     pin_media_source_video_id_local_var->media_id = media_id;
     pin_media_source_video_id_local_var->source_type = source_type;
-
-    pin_media_source_video_id_local_var->_library_owned = 1;
     return pin_media_source_video_id_local_var;
 }
 
 __attribute__((deprecated)) pin_media_source_video_id_t *pin_media_source_video_id_create(
     content_type_t *cover_image_content_type,
     char *cover_image_data,
-    int cover_image_key_frame_time,
+    int *cover_image_key_frame_time,
     char *cover_image_url,
-    int is_standard,
+    int *is_standard,
     char *media_id,
     pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type
     ) {
-    return pin_media_source_video_id_create_internal (
+    int *cover_image_key_frame_time_copy = NULL;
+    if (cover_image_key_frame_time) {
+        cover_image_key_frame_time_copy = malloc(sizeof(int));
+        if (cover_image_key_frame_time_copy) *cover_image_key_frame_time_copy = *cover_image_key_frame_time;
+    }
+    int *is_standard_copy = NULL;
+    if (is_standard) {
+        is_standard_copy = malloc(sizeof(int));
+        if (is_standard_copy) *is_standard_copy = *is_standard;
+    }
+    pin_media_source_video_id_t *result = pin_media_source_video_id_create_internal (
         cover_image_content_type,
         cover_image_data,
-        cover_image_key_frame_time,
+        cover_image_key_frame_time_copy,
         cover_image_url,
-        is_standard,
+        is_standard_copy,
         media_id,
         source_type
         );
+    if (!result) {
+        free(cover_image_key_frame_time_copy);
+        free(is_standard_copy);
+    }
+    return result;
 }
 
 void pin_media_source_video_id_free(pin_media_source_video_id_t *pin_media_source_video_id) {
@@ -84,9 +99,17 @@ void pin_media_source_video_id_free(pin_media_source_video_id_t *pin_media_sourc
         free(pin_media_source_video_id->cover_image_data);
         pin_media_source_video_id->cover_image_data = NULL;
     }
+    if (pin_media_source_video_id->cover_image_key_frame_time) {
+        free(pin_media_source_video_id->cover_image_key_frame_time);
+        pin_media_source_video_id->cover_image_key_frame_time = NULL;
+    }
     if (pin_media_source_video_id->cover_image_url) {
         free(pin_media_source_video_id->cover_image_url);
         pin_media_source_video_id->cover_image_url = NULL;
+    }
+    if (pin_media_source_video_id->is_standard) {
+        free(pin_media_source_video_id->is_standard);
+        pin_media_source_video_id->is_standard = NULL;
     }
     if (pin_media_source_video_id->media_id) {
         free(pin_media_source_video_id->media_id);
@@ -121,7 +144,7 @@ cJSON *pin_media_source_video_id_convertToJSON(pin_media_source_video_id_t *pin_
 
     // pin_media_source_video_id->cover_image_key_frame_time
     if(pin_media_source_video_id->cover_image_key_frame_time) {
-    if(cJSON_AddNumberToObject(item, "cover_image_key_frame_time", pin_media_source_video_id->cover_image_key_frame_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "cover_image_key_frame_time", *pin_media_source_video_id->cover_image_key_frame_time) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -137,7 +160,7 @@ cJSON *pin_media_source_video_id_convertToJSON(pin_media_source_video_id_t *pin_
 
     // pin_media_source_video_id->is_standard
     if(pin_media_source_video_id->is_standard) {
-    if(cJSON_AddBoolToObject(item, "is_standard", pin_media_source_video_id->is_standard) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_standard", *pin_media_source_video_id->is_standard) == NULL) {
     goto fail; //Bool
     }
     }
@@ -176,6 +199,18 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
     // define the local variable for pin_media_source_video_id->cover_image_content_type
     content_type_t *cover_image_content_type_local_nonprim = NULL;
 
+    char *cover_image_data_local_str = NULL;
+
+    // define the local variable for pin_media_source_video_id->cover_image_key_frame_time
+    int *cover_image_key_frame_time_local_var = NULL;
+
+    char *cover_image_url_local_str = NULL;
+
+    // define the local variable for pin_media_source_video_id->is_standard
+    int *is_standard_local_var = NULL;
+
+    char *media_id_local_str = NULL;
+
     // pin_media_source_video_id->cover_image_content_type
     cJSON *cover_image_content_type = cJSON_GetObjectItemCaseSensitive(pin_media_source_video_idJSON, "cover_image_content_type");
     if (cJSON_IsNull(cover_image_content_type)) {
@@ -207,6 +242,12 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
     {
     goto end; //Numeric
     }
+    cover_image_key_frame_time_local_var = malloc(sizeof(int));
+    if(!cover_image_key_frame_time_local_var)
+    {
+        goto end;
+    }
+    *cover_image_key_frame_time_local_var = cover_image_key_frame_time->valuedouble;
     }
 
     // pin_media_source_video_id->cover_image_url
@@ -231,6 +272,12 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
     {
     goto end; //Bool
     }
+    is_standard_local_var = malloc(sizeof(int));
+    if(!is_standard_local_var)
+    {
+        goto end;
+    }
+    *is_standard_local_var = is_standard->valueint;
     }
 
     // pin_media_source_video_id->media_id
@@ -266,21 +313,49 @@ pin_media_source_video_id_t *pin_media_source_video_id_parseFromJSON(cJSON *pin_
     source_typeVariable = pin_media_source_video_id_source_type_FromString(source_type->valuestring);
 
 
+    if (cover_image_data && !cJSON_IsNull(cover_image_data)) cover_image_data_local_str = strdup(cover_image_data->valuestring);
+    if (cover_image_url && !cJSON_IsNull(cover_image_url)) cover_image_url_local_str = strdup(cover_image_url->valuestring);
+    if (media_id && !cJSON_IsNull(media_id)) media_id_local_str = strdup(media_id->valuestring);
+
     pin_media_source_video_id_local_var = pin_media_source_video_id_create_internal (
         cover_image_content_type ? cover_image_content_type_local_nonprim : NULL,
-        cover_image_data && !cJSON_IsNull(cover_image_data) ? strdup(cover_image_data->valuestring) : NULL,
-        cover_image_key_frame_time ? cover_image_key_frame_time->valuedouble : 0,
-        cover_image_url && !cJSON_IsNull(cover_image_url) ? strdup(cover_image_url->valuestring) : NULL,
-        is_standard ? is_standard->valueint : 0,
-        strdup(media_id->valuestring),
+        cover_image_data_local_str,
+        cover_image_key_frame_time_local_var,
+        cover_image_url_local_str,
+        is_standard_local_var,
+        media_id_local_str,
         source_typeVariable
         );
+
+    if (!pin_media_source_video_id_local_var) {
+        goto end;
+    }
 
     return pin_media_source_video_id_local_var;
 end:
     if (cover_image_content_type_local_nonprim) {
         content_type_free(cover_image_content_type_local_nonprim);
         cover_image_content_type_local_nonprim = NULL;
+    }
+    if (cover_image_data_local_str) {
+        free(cover_image_data_local_str);
+        cover_image_data_local_str = NULL;
+    }
+    if (cover_image_key_frame_time_local_var) {
+        free(cover_image_key_frame_time_local_var);
+        cover_image_key_frame_time_local_var = NULL;
+    }
+    if (cover_image_url_local_str) {
+        free(cover_image_url_local_str);
+        cover_image_url_local_str = NULL;
+    }
+    if (is_standard_local_var) {
+        free(is_standard_local_var);
+        is_standard_local_var = NULL;
+    }
+    if (media_id_local_str) {
+        free(media_id_local_str);
+        media_id_local_str = NULL;
     }
     return NULL;
 

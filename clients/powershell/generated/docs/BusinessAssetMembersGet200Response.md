@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**UserSingleAssetBinding[]**](UserSingleAssetBinding.md) | List of members with permissions to the asset. | 
+**Items** | [**UserSingleAssetBinding[]**](UserSingleAssetBinding.md) |  | 
 
 ## Examples
 

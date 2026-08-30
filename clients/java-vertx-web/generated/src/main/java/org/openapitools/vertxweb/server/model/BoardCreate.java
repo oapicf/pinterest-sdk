@@ -16,7 +16,7 @@ public class BoardCreate   {
   private String description;
   private Boolean isAdsOnly = false;
   private String name;
-  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
+  private BoardPrivacy privacy;
 
   public BoardCreate () {
 
@@ -104,9 +104,6 @@ public class BoardCreate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

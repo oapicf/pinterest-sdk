@@ -2,11 +2,12 @@ namespace OpenAPI
 open OpenAPI.Model.CatalogsListProductsByFilterRequest
 open OpenAPI.Model.CatalogsProductGroupPinsList200Response
 open OpenAPI.Model.CatalogsProductGroupProductCountsVertical
+open OpenAPI.Model.CatalogsProductGroupsCreateManyRequestItems
+open OpenAPI.Model.CatalogsProductGroupsCreateRequestSchema
 open OpenAPI.Model.CatalogsProductGroupsList200Response
-open OpenAPI.Model.CatalogsProductGroupsUpdateRequest
+open OpenAPI.Model.CatalogsProductGroupsUpdateRequestSchema
 open OpenAPI.Model.CatalogsVerticalProductGroup
-open OpenAPI.Model.Error
-open OpenAPI.Model.MultipleProductGroupsInner
+open OpenAPI.Model.PinterestLibError
 open CatalogProductGroupsApiHandlerParams
 open CatalogProductGroupsApiServiceInterface
 open System.Collections.Generic
@@ -21,199 +22,238 @@ module CatalogProductGroupsApiServiceImplementation =
 
         member this.CatalogsProductGroupPinsList ctx args =
           if true then
-            let content = "Success" :> obj :?> CatalogsProductGroupPinsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> CatalogsProductGroupPinsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupPinsListStatusCode200 { content = content }
           else if true then
-            let content = "Invalid parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupPinsListStatusCode400 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupPinsListStatusCode401 { content = content }
           else if true then
-            let content = "Catalogs product group not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupPinsListStatusCode403 { content = content }
+          else if true then
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupPinsListStatusCode404 { content = content }
+          else if true then
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupPinsListStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupPinsListDefaultStatusCode { content = content }
 
         member this.CatalogsProductGroupsCreate ctx args =
           if true then
-            let content = "Success" :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateStatusCode200 { content = content }
+          else if true then
+            let content = "Resource create operation completed successfully." :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateStatusCode201 { content = content }
           else if true then
-            let content = "Invalid body." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateStatusCode400 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateStatusCode401 { content = content }
           else if true then
-            let content = "Forbidden. Account not approved for catalog product group mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateStatusCode403 { content = content }
           else if true then
-            let content = "Conflict. Can&#39;t create this catalogs product group with this value." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            CatalogsProductGroupsCreateStatusCode409 { content = content }
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateStatusCode404 { content = content }
+          else if true then
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateDefaultStatusCode { content = content }
 
         member this.CatalogsProductGroupsCreateMany ctx args =
           if true then
-            let content = "Success" :> obj :?> string[] // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded and a new resource has been created as a result." :> obj :?> string[] // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateManyStatusCode201 { content = content }
           else if true then
-            let content = "Invalid body." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateManyStatusCode400 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateManyStatusCode401 { content = content }
           else if true then
-            let content = "Forbidden. Account not approved for catalog product group mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateManyStatusCode403 { content = content }
           else if true then
-            let content = "Conflict. Can&#39;t create this catalogs product group with this value." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            CatalogsProductGroupsCreateManyStatusCode409 { content = content }
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateManyStatusCode404 { content = content }
+          else if true then
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateManyStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateManyDefaultStatusCode { content = content }
 
         member this.CatalogsProductGroupsDelete ctx args =
           if true then
-            let content = "Catalogs Product Group deleted successfully." 
+            let content = "The request has succeeded." :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsDeleteStatusCode200 { content = content }
+          else if true then
+            let content = "Resource deleted successfully." 
             CatalogsProductGroupsDeleteStatusCode204 { content = content }
           else if true then
-            let content = "Invalid catalogs product group id parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteStatusCode400 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteStatusCode401 { content = content }
           else if true then
-            let content = "Forbidden. Account not approved for catalog product group mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteStatusCode403 { content = content }
           else if true then
-            let content = "Catalogs product group not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteStatusCode404 { content = content }
           else if true then
-            let content = "Conflict. Can&#39;t delete this catalogs product group." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            CatalogsProductGroupsDeleteStatusCode409 { content = content }
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsDeleteStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteDefaultStatusCode { content = content }
 
         member this.CatalogsProductGroupsDeleteMany ctx args =
           if true then
-            let content = "Catalogs Product Groups deleted successfully." 
+            let content = "Resource deleted successfully." 
             CatalogsProductGroupsDeleteManyStatusCode204 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsDeleteManyStatusCode400 { content = content }
+          else if true then
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteManyStatusCode401 { content = content }
           else if true then
-            let content = "Forbidden. Account not approved for catalog product group mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteManyStatusCode403 { content = content }
           else if true then
-            let content = "Catalogs product group not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteManyStatusCode404 { content = content }
           else if true then
-            let content = "Conflict. Can&#39;t delete this catalogs product group." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            CatalogsProductGroupsDeleteManyStatusCode409 { content = content }
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsDeleteManyStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteManyDefaultStatusCode { content = content }
 
         member this.CatalogsProductGroupsGet ctx args =
           if true then
-            let content = "Success" :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsGetStatusCode200 { content = content }
           else if true then
-            let content = "Invalid catalogs product group id parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsGetStatusCode400 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsGetStatusCode401 { content = content }
           else if true then
-            let content = "Forbidden. Account not approved for catalog product group mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsGetStatusCode403 { content = content }
           else if true then
-            let content = "Catalogs product group not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsGetStatusCode404 { content = content }
           else if true then
-            let content = "Conflict. Can&#39;t get a catalogs product group without an existing catalog." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            CatalogsProductGroupsGetStatusCode409 { content = content }
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsGetStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsGetDefaultStatusCode { content = content }
 
         member this.CatalogsProductGroupsList ctx args =
           if true then
-            let content = "Success" :> obj :?> CatalogsProductGroupsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> CatalogsProductGroupsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsListStatusCode200 { content = content }
           else if true then
-            let content = "Invalid feed parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsListStatusCode400 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsListStatusCode401 { content = content }
           else if true then
-            let content = "Forbidden. Account not approved for catalog product group mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsListStatusCode403 { content = content }
           else if true then
-            let content = "Data feed not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsListStatusCode404 { content = content }
           else if true then
-            let content = "Conflict. Can&#39;t create this catalogs product group with this value." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            CatalogsProductGroupsListStatusCode409 { content = content }
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsListStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsListDefaultStatusCode { content = content }
 
         member this.CatalogsProductGroupsProductCountsGet ctx args =
           if true then
-            let content = "Success" :> obj :?> CatalogsProductGroupProductCountsVertical // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> CatalogsProductGroupProductCountsVertical // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsProductCountsGetStatusCode200 { content = content }
           else if true then
-            let content = "Product Group Not Found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsProductCountsGetStatusCode400 { content = content }
+          else if true then
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsProductCountsGetStatusCode401 { content = content }
+          else if true then
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsProductCountsGetStatusCode403 { content = content }
+          else if true then
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsProductCountsGetStatusCode404 { content = content }
           else if true then
-            let content = "Can&#39;t access this feature without an existing catalog." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            CatalogsProductGroupsProductCountsGetStatusCode409 { content = content }
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsProductCountsGetStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsProductCountsGetDefaultStatusCode { content = content }
 
         member this.CatalogsProductGroupsUpdate ctx args =
           if true then
-            let content = "Success" :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsUpdateStatusCode200 { content = content }
           else if true then
-            let content = "Invalid parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsUpdateStatusCode400 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsUpdateStatusCode401 { content = content }
           else if true then
-            let content = "Forbidden. Account not approved for catalog product group mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsUpdateStatusCode403 { content = content }
           else if true then
-            let content = "Catalogs product group not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsUpdateStatusCode404 { content = content }
           else if true then
-            let content = "Conflict. Can&#39;t update this catalogs product group to this value." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            CatalogsProductGroupsUpdateStatusCode409 { content = content }
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsUpdateStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsUpdateDefaultStatusCode { content = content }
 
         member this.ProductsByProductGroupFilterList ctx args =
           if true then
-            let content = "Success" :> obj :?> CatalogsProductGroupPinsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request has succeeded." :> obj :?> CatalogsProductGroupPinsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
             ProductsByProductGroupFilterListStatusCode200 { content = content }
           else if true then
-            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "The request could not be understood by the server due to unexpected data." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ProductsByProductGroupFilterListStatusCode400 { content = content }
+          else if true then
+            let content = "Authentication is required and has either failed or not been provided." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             ProductsByProductGroupFilterListStatusCode401 { content = content }
           else if true then
-            let content = "Conflict. Can&#39;t get products." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            ProductsByProductGroupFilterListStatusCode409 { content = content }
+            let content = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ProductsByProductGroupFilterListStatusCode403 { content = content }
+          else if true then
+            let content = "The requested resource could not be found on this server." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ProductsByProductGroupFilterListStatusCode404 { content = content }
+          else if true then
+            let content = "The user has sent too many requests in a given amount of time and is being rate limited." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ProductsByProductGroupFilterListStatusCode429 { content = content }
           else
-            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "An unexpected error response." :> obj :?> PinterestLibError // this cast is obviously wrong, and is only intended to allow generated project to compile   
             ProductsByProductGroupFilterListDefaultStatusCode { content = content }
 
       //#endregion

@@ -51,7 +51,7 @@ public:
 
 	/*! \brief Set Keyword's search frequency. This value is based on keyword frequency in pepsi client response
 	 */
-	void setKeywordQueryVolume(std::string  keyword_query_volume);
+	void setKeywordQueryVolume(std::string keyword_query_volume);
 
 
     private:

@@ -2,12 +2,12 @@
 Protected Class TrendingKeywordDemographics
 
 	#tag Property, Flags = &h0
-		age_distribution As Xoson.O.OptionalTrendingKeywordDemographicsAgeDistribution
+		age_distribution As Xoson.O.OptionalTrendsAgeDistribution
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		gender_distribution As Xoson.O.OptionalTrendingKeywordDemographicsGenderDistribution
+		gender_distribution As Xoson.O.OptionalTrendsGenderDistribution
 	#tag EndProperty
 
 
@@ -52,7 +52,7 @@ Protected Class TrendingKeywordDemographics
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TrendingKeywordDemographicsAgeDistribution"
+			Type="TrendsAgeDistribution"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -60,7 +60,7 @@ Protected Class TrendingKeywordDemographics
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TrendingKeywordDemographicsGenderDistribution"
+			Type="TrendsGenderDistribution"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

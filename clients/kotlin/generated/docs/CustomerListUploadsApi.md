@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Create customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 ```kotlin
@@ -24,9 +24,9 @@ Create customer list upload
 //import org.openapitools.client.models.*
 
 val apiInstance = CustomerListUploadsApi()
-val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val customerListId : kotlin.String = customerListId_example // kotlin.String | Unique identifier of a customer list
-val customerListUploadCreateRequest : CustomerListUploadCreateRequest =  // CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+val customerListId : kotlin.String = customerListId_example // kotlin.String | Customer list ID.
+val customerListUploadCreateRequest : CustomerListUploadCreateRequest =  // CustomerListUploadCreateRequest | 
 try {
     val result : CustomerListUploadCreateResponse = apiInstance.customerListUploadsCreate(adAccountId, customerListId, customerListUploadCreateRequest)
     println(result)
@@ -40,11 +40,11 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **customerListId** | **kotlin.String**| Unique identifier of a customer list | |
+| **adAccountId** | **kotlin.String**|  | |
+| **customerListId** | **kotlin.String**| Customer list ID. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request | |
+| **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)|  | |
 
 ### Return type
 
@@ -53,8 +53,14 @@ try {
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -63,11 +69,11 @@ Configure pinterest_oauth2:
 
 <a id="customerListUploadsGet"></a>
 # **customerListUploadsGet**
-> CustomerListUploadResponse customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
+> CustomerListUpload customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
 
 Get customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
+Get the metadata for a given upload by its ID.
 
 ### Example
 ```kotlin
@@ -76,11 +82,11 @@ Get customer list upload
 //import org.openapitools.client.models.*
 
 val apiInstance = CustomerListUploadsApi()
-val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val customerListId : kotlin.String = customerListId_example // kotlin.String | Unique identifier of a customer list
-val customerListUploadId : kotlin.String = customerListUploadId_example // kotlin.String | Unique identifier of a customer list upload
+val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+val customerListId : kotlin.String = customerListId_example // kotlin.String | Customer list ID.
+val customerListUploadId : kotlin.String = customerListUploadId_example // kotlin.String | Customer List Upload ID.
 try {
-    val result : CustomerListUploadResponse = apiInstance.customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
+    val result : CustomerListUpload = apiInstance.customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CustomerListUploadsApi#customerListUploadsGet")
@@ -92,21 +98,27 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **customerListId** | **kotlin.String**| Unique identifier of a customer list | |
+| **adAccountId** | **kotlin.String**|  | |
+| **customerListId** | **kotlin.String**| Customer list ID. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customerListUploadId** | **kotlin.String**| Unique identifier of a customer list upload | |
+| **customerListUploadId** | **kotlin.String**| Customer List Upload ID. | |
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -115,11 +127,11 @@ Configure pinterest_oauth2:
 
 <a id="customerListUploadsRun"></a>
 # **customerListUploadsRun**
-> CustomerListUploadResponse customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
+> CustomerListUpload customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
 
 Run customer list upload
 
-&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
+Begin processing a customer list upload.
 
 ### Example
 ```kotlin
@@ -128,11 +140,11 @@ Run customer list upload
 //import org.openapitools.client.models.*
 
 val apiInstance = CustomerListUploadsApi()
-val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val customerListId : kotlin.String = customerListId_example // kotlin.String | Unique identifier of a customer list
-val customerListUploadId : kotlin.String = customerListUploadId_example // kotlin.String | Unique identifier of a customer list upload
+val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+val customerListId : kotlin.String = customerListId_example // kotlin.String | Customer list ID.
+val customerListUploadId : kotlin.String = customerListUploadId_example // kotlin.String | Customer List Upload ID.
 try {
-    val result : CustomerListUploadResponse = apiInstance.customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
+    val result : CustomerListUpload = apiInstance.customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CustomerListUploadsApi#customerListUploadsRun")
@@ -144,21 +156,27 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **customerListId** | **kotlin.String**| Unique identifier of a customer list | |
+| **adAccountId** | **kotlin.String**|  | |
+| **customerListId** | **kotlin.String**| Customer list ID. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customerListUploadId** | **kotlin.String**| Unique identifier of a customer list upload | |
+| **customerListUploadId** | **kotlin.String**| Customer List Upload ID. | |
 
 ### Return type
 
-[**CustomerListUploadResponse**](CustomerListUploadResponse.md)
+[**CustomerListUpload**](CustomerListUpload.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

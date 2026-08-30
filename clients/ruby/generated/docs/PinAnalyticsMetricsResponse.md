@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **daily_metrics** | [**Array&lt;PinAnalyticsMetricsResponseDailyMetricsInner&gt;**](PinAnalyticsMetricsResponseDailyMetricsInner.md) | Array with the requested daily metric records | [optional] |
+| **daily_metrics** | [**Array&lt;PinAnalyticsDailyMetrics&gt;**](PinAnalyticsDailyMetrics.md) | Array with the requested daily metric records | [optional] |
 | **lifetime_metrics** | **Hash&lt;String, Integer&gt;** | The lifetime metric name and value. | [optional] |
 | **summary_metrics** | **Hash&lt;String, Float&gt;** | The metric name and value over the requested period for each requested metric | [optional] |
 

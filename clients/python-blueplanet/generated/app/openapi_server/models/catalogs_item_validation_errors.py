@@ -157,6 +157,7 @@ class CatalogsItemValidationErrors(Model):
     def adult_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the adult_invalid of this CatalogsItemValidationErrors.
 
+        Item has an invalid adult value.  # noqa: E501
 
         :return: The adult_invalid of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -167,6 +168,7 @@ class CatalogsItemValidationErrors(Model):
     def adult_invalid(self, adult_invalid: CatalogsItemValidationDetails):
         """Sets the adult_invalid of this CatalogsItemValidationErrors.
 
+        Item has an invalid adult value.  # noqa: E501
 
         :param adult_invalid: The adult_invalid of this CatalogsItemValidationErrors.
         :type adult_invalid: CatalogsItemValidationDetails
@@ -178,6 +180,7 @@ class CatalogsItemValidationErrors(Model):
     def adwords_format_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the adwords_format_invalid of this CatalogsItemValidationErrors.
 
+        Adword link contains too many characters.  # noqa: E501
 
         :return: The adwords_format_invalid of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -188,6 +191,7 @@ class CatalogsItemValidationErrors(Model):
     def adwords_format_invalid(self, adwords_format_invalid: CatalogsItemValidationDetails):
         """Sets the adwords_format_invalid of this CatalogsItemValidationErrors.
 
+        Adword link contains too many characters.  # noqa: E501
 
         :param adwords_format_invalid: The adwords_format_invalid of this CatalogsItemValidationErrors.
         :type adwords_format_invalid: CatalogsItemValidationDetails
@@ -199,6 +203,7 @@ class CatalogsItemValidationErrors(Model):
     def availability_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the availability_invalid of this CatalogsItemValidationErrors.
 
+        Item is missing availability value in its product metadata, this item will not be published.  # noqa: E501
 
         :return: The availability_invalid of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -209,6 +214,7 @@ class CatalogsItemValidationErrors(Model):
     def availability_invalid(self, availability_invalid: CatalogsItemValidationDetails):
         """Sets the availability_invalid of this CatalogsItemValidationErrors.
 
+        Item is missing availability value in its product metadata, this item will not be published.  # noqa: E501
 
         :param availability_invalid: The availability_invalid of this CatalogsItemValidationErrors.
         :type availability_invalid: CatalogsItemValidationDetails
@@ -220,6 +226,7 @@ class CatalogsItemValidationErrors(Model):
     def blocklisted_image_signature(self) -> CatalogsItemValidationDetails:
         """Gets the blocklisted_image_signature of this CatalogsItemValidationErrors.
 
+        Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.  # noqa: E501
 
         :return: The blocklisted_image_signature of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -230,6 +237,7 @@ class CatalogsItemValidationErrors(Model):
     def blocklisted_image_signature(self, blocklisted_image_signature: CatalogsItemValidationDetails):
         """Sets the blocklisted_image_signature of this CatalogsItemValidationErrors.
 
+        Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.  # noqa: E501
 
         :param blocklisted_image_signature: The blocklisted_image_signature of this CatalogsItemValidationErrors.
         :type blocklisted_image_signature: CatalogsItemValidationDetails
@@ -241,6 +249,7 @@ class CatalogsItemValidationErrors(Model):
     def description_missing(self) -> CatalogsItemValidationDetails:
         """Gets the description_missing of this CatalogsItemValidationErrors.
 
+        Item is missing description in its product metadata, this item will not be published.  # noqa: E501
 
         :return: The description_missing of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -251,6 +260,7 @@ class CatalogsItemValidationErrors(Model):
     def description_missing(self, description_missing: CatalogsItemValidationDetails):
         """Sets the description_missing of this CatalogsItemValidationErrors.
 
+        Item is missing description in its product metadata, this item will not be published.  # noqa: E501
 
         :param description_missing: The description_missing of this CatalogsItemValidationErrors.
         :type description_missing: CatalogsItemValidationDetails
@@ -262,6 +272,7 @@ class CatalogsItemValidationErrors(Model):
     def duplicate_products(self) -> CatalogsItemValidationDetails:
         """Gets the duplicate_products of this CatalogsItemValidationErrors.
 
+        This product is duplicated. The duplicate entry will not be published.  # noqa: E501
 
         :return: The duplicate_products of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -272,6 +283,7 @@ class CatalogsItemValidationErrors(Model):
     def duplicate_products(self, duplicate_products: CatalogsItemValidationDetails):
         """Sets the duplicate_products of this CatalogsItemValidationErrors.
 
+        This product is duplicated. The duplicate entry will not be published.  # noqa: E501
 
         :param duplicate_products: The duplicate_products of this CatalogsItemValidationErrors.
         :type duplicate_products: CatalogsItemValidationDetails
@@ -283,6 +295,7 @@ class CatalogsItemValidationErrors(Model):
     def image_link_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the image_link_invalid of this CatalogsItemValidationErrors.
 
+        Image link is invalid.  # noqa: E501
 
         :return: The image_link_invalid of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -293,6 +306,7 @@ class CatalogsItemValidationErrors(Model):
     def image_link_invalid(self, image_link_invalid: CatalogsItemValidationDetails):
         """Sets the image_link_invalid of this CatalogsItemValidationErrors.
 
+        Image link is invalid.  # noqa: E501
 
         :param image_link_invalid: The image_link_invalid of this CatalogsItemValidationErrors.
         :type image_link_invalid: CatalogsItemValidationDetails
@@ -304,6 +318,7 @@ class CatalogsItemValidationErrors(Model):
     def image_link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the image_link_length_too_long of this CatalogsItemValidationErrors.
 
+        Item has image_link URL that contains too many characters, so the item will not be published.  # noqa: E501
 
         :return: The image_link_length_too_long of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -314,6 +329,7 @@ class CatalogsItemValidationErrors(Model):
     def image_link_length_too_long(self, image_link_length_too_long: CatalogsItemValidationDetails):
         """Sets the image_link_length_too_long of this CatalogsItemValidationErrors.
 
+        Item has image_link URL that contains too many characters, so the item will not be published.  # noqa: E501
 
         :param image_link_length_too_long: The image_link_length_too_long of this CatalogsItemValidationErrors.
         :type image_link_length_too_long: CatalogsItemValidationDetails
@@ -325,6 +341,7 @@ class CatalogsItemValidationErrors(Model):
     def image_link_missing(self) -> CatalogsItemValidationDetails:
         """Gets the image_link_missing of this CatalogsItemValidationErrors.
 
+        Item is missing an image link URL in its product metadata, this item will not be published.  # noqa: E501
 
         :return: The image_link_missing of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -335,6 +352,7 @@ class CatalogsItemValidationErrors(Model):
     def image_link_missing(self, image_link_missing: CatalogsItemValidationDetails):
         """Sets the image_link_missing of this CatalogsItemValidationErrors.
 
+        Item is missing an image link URL in its product metadata, this item will not be published.  # noqa: E501
 
         :param image_link_missing: The image_link_missing of this CatalogsItemValidationErrors.
         :type image_link_missing: CatalogsItemValidationDetails
@@ -346,6 +364,7 @@ class CatalogsItemValidationErrors(Model):
     def invalid_domain(self) -> CatalogsItemValidationDetails:
         """Gets the invalid_domain of this CatalogsItemValidationErrors.
 
+        Product link value doesn't match the verified domain associated with this account.  # noqa: E501
 
         :return: The invalid_domain of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -356,6 +375,7 @@ class CatalogsItemValidationErrors(Model):
     def invalid_domain(self, invalid_domain: CatalogsItemValidationDetails):
         """Sets the invalid_domain of this CatalogsItemValidationErrors.
 
+        Product link value doesn't match the verified domain associated with this account.  # noqa: E501
 
         :param invalid_domain: The invalid_domain of this CatalogsItemValidationErrors.
         :type invalid_domain: CatalogsItemValidationDetails
@@ -367,6 +387,7 @@ class CatalogsItemValidationErrors(Model):
     def item_main_image_download_failure(self) -> CatalogsItemValidationDetails:
         """Gets the item_main_image_download_failure of this CatalogsItemValidationErrors.
 
+        Main image can't be found.  # noqa: E501
 
         :return: The item_main_image_download_failure of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -377,6 +398,7 @@ class CatalogsItemValidationErrors(Model):
     def item_main_image_download_failure(self, item_main_image_download_failure: CatalogsItemValidationDetails):
         """Sets the item_main_image_download_failure of this CatalogsItemValidationErrors.
 
+        Main image can't be found.  # noqa: E501
 
         :param item_main_image_download_failure: The item_main_image_download_failure of this CatalogsItemValidationErrors.
         :type item_main_image_download_failure: CatalogsItemValidationDetails
@@ -388,6 +410,7 @@ class CatalogsItemValidationErrors(Model):
     def itemid_missing(self) -> CatalogsItemValidationDetails:
         """Gets the itemid_missing of this CatalogsItemValidationErrors.
 
+        Item is missing item id in its product metadata, this item will not be published.  # noqa: E501
 
         :return: The itemid_missing of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -398,6 +421,7 @@ class CatalogsItemValidationErrors(Model):
     def itemid_missing(self, itemid_missing: CatalogsItemValidationDetails):
         """Sets the itemid_missing of this CatalogsItemValidationErrors.
 
+        Item is missing item id in its product metadata, this item will not be published.  # noqa: E501
 
         :param itemid_missing: The itemid_missing of this CatalogsItemValidationErrors.
         :type itemid_missing: CatalogsItemValidationDetails
@@ -409,6 +433,7 @@ class CatalogsItemValidationErrors(Model):
     def link_format_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the link_format_invalid of this CatalogsItemValidationErrors.
 
+        Link is invalid.  # noqa: E501
 
         :return: The link_format_invalid of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -419,6 +444,7 @@ class CatalogsItemValidationErrors(Model):
     def link_format_invalid(self, link_format_invalid: CatalogsItemValidationDetails):
         """Sets the link_format_invalid of this CatalogsItemValidationErrors.
 
+        Link is invalid.  # noqa: E501
 
         :param link_format_invalid: The link_format_invalid of this CatalogsItemValidationErrors.
         :type link_format_invalid: CatalogsItemValidationDetails
@@ -430,6 +456,7 @@ class CatalogsItemValidationErrors(Model):
     def link_length_too_long(self) -> CatalogsItemValidationDetails:
         """Gets the link_length_too_long of this CatalogsItemValidationErrors.
 
+        Product link contains too many characters, this item will not be published.  # noqa: E501
 
         :return: The link_length_too_long of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -440,6 +467,7 @@ class CatalogsItemValidationErrors(Model):
     def link_length_too_long(self, link_length_too_long: CatalogsItemValidationDetails):
         """Sets the link_length_too_long of this CatalogsItemValidationErrors.
 
+        Product link contains too many characters, this item will not be published.  # noqa: E501
 
         :param link_length_too_long: The link_length_too_long of this CatalogsItemValidationErrors.
         :type link_length_too_long: CatalogsItemValidationDetails
@@ -451,6 +479,7 @@ class CatalogsItemValidationErrors(Model):
     def list_price_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the list_price_invalid of this CatalogsItemValidationErrors.
 
+        Item has a list price formatting error, this item will not be published.  # noqa: E501
 
         :return: The list_price_invalid of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -461,6 +490,7 @@ class CatalogsItemValidationErrors(Model):
     def list_price_invalid(self, list_price_invalid: CatalogsItemValidationDetails):
         """Sets the list_price_invalid of this CatalogsItemValidationErrors.
 
+        Item has a list price formatting error, this item will not be published.  # noqa: E501
 
         :param list_price_invalid: The list_price_invalid of this CatalogsItemValidationErrors.
         :type list_price_invalid: CatalogsItemValidationDetails
@@ -472,6 +502,7 @@ class CatalogsItemValidationErrors(Model):
     def max_items_per_item_group_exceeded(self) -> CatalogsItemValidationDetails:
         """Gets the max_items_per_item_group_exceeded of this CatalogsItemValidationErrors.
 
+        Item exceed the maximum number of items per item group, this item will not be published.  # noqa: E501
 
         :return: The max_items_per_item_group_exceeded of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -482,6 +513,7 @@ class CatalogsItemValidationErrors(Model):
     def max_items_per_item_group_exceeded(self, max_items_per_item_group_exceeded: CatalogsItemValidationDetails):
         """Sets the max_items_per_item_group_exceeded of this CatalogsItemValidationErrors.
 
+        Item exceed the maximum number of items per item group, this item will not be published.  # noqa: E501
 
         :param max_items_per_item_group_exceeded: The max_items_per_item_group_exceeded of this CatalogsItemValidationErrors.
         :type max_items_per_item_group_exceeded: CatalogsItemValidationDetails
@@ -493,6 +525,7 @@ class CatalogsItemValidationErrors(Model):
     def parse_line_error(self) -> CatalogsItemValidationDetails:
         """Gets the parse_line_error of this CatalogsItemValidationErrors.
 
+        Item contains formating errors.  # noqa: E501
 
         :return: The parse_line_error of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -503,6 +536,7 @@ class CatalogsItemValidationErrors(Model):
     def parse_line_error(self, parse_line_error: CatalogsItemValidationDetails):
         """Sets the parse_line_error of this CatalogsItemValidationErrors.
 
+        Item contains formating errors.  # noqa: E501
 
         :param parse_line_error: The parse_line_error of this CatalogsItemValidationErrors.
         :type parse_line_error: CatalogsItemValidationDetails
@@ -514,6 +548,7 @@ class CatalogsItemValidationErrors(Model):
     def pinjoin_content_unsafe(self) -> CatalogsItemValidationDetails:
         """Gets the pinjoin_content_unsafe of this CatalogsItemValidationErrors.
 
+        Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.  # noqa: E501
 
         :return: The pinjoin_content_unsafe of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -524,6 +559,7 @@ class CatalogsItemValidationErrors(Model):
     def pinjoin_content_unsafe(self, pinjoin_content_unsafe: CatalogsItemValidationDetails):
         """Sets the pinjoin_content_unsafe of this CatalogsItemValidationErrors.
 
+        Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.  # noqa: E501
 
         :param pinjoin_content_unsafe: The pinjoin_content_unsafe of this CatalogsItemValidationErrors.
         :type pinjoin_content_unsafe: CatalogsItemValidationDetails
@@ -535,6 +571,7 @@ class CatalogsItemValidationErrors(Model):
     def price_cannot_be_determined(self) -> CatalogsItemValidationDetails:
         """Gets the price_cannot_be_determined of this CatalogsItemValidationErrors.
 
+        Item price cannot be determined because the price, list price, and sale price are all different.  # noqa: E501
 
         :return: The price_cannot_be_determined of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -545,6 +582,7 @@ class CatalogsItemValidationErrors(Model):
     def price_cannot_be_determined(self, price_cannot_be_determined: CatalogsItemValidationDetails):
         """Sets the price_cannot_be_determined of this CatalogsItemValidationErrors.
 
+        Item price cannot be determined because the price, list price, and sale price are all different.  # noqa: E501
 
         :param price_cannot_be_determined: The price_cannot_be_determined of this CatalogsItemValidationErrors.
         :type price_cannot_be_determined: CatalogsItemValidationDetails
@@ -556,6 +594,7 @@ class CatalogsItemValidationErrors(Model):
     def price_missing(self) -> CatalogsItemValidationDetails:
         """Gets the price_missing of this CatalogsItemValidationErrors.
 
+        Product is missing a price, this item will not be published.  # noqa: E501
 
         :return: The price_missing of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -566,6 +605,7 @@ class CatalogsItemValidationErrors(Model):
     def price_missing(self, price_missing: CatalogsItemValidationDetails):
         """Sets the price_missing of this CatalogsItemValidationErrors.
 
+        Product is missing a price, this item will not be published.  # noqa: E501
 
         :param price_missing: The price_missing of this CatalogsItemValidationErrors.
         :type price_missing: CatalogsItemValidationDetails
@@ -577,6 +617,7 @@ class CatalogsItemValidationErrors(Model):
     def product_link_missing(self) -> CatalogsItemValidationDetails:
         """Gets the product_link_missing of this CatalogsItemValidationErrors.
 
+        Item is missing a link URL in its product metadata, this item will not be published.  # noqa: E501
 
         :return: The product_link_missing of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -587,6 +628,7 @@ class CatalogsItemValidationErrors(Model):
     def product_link_missing(self, product_link_missing: CatalogsItemValidationDetails):
         """Sets the product_link_missing of this CatalogsItemValidationErrors.
 
+        Item is missing a link URL in its product metadata, this item will not be published.  # noqa: E501
 
         :param product_link_missing: The product_link_missing of this CatalogsItemValidationErrors.
         :type product_link_missing: CatalogsItemValidationDetails
@@ -598,6 +640,7 @@ class CatalogsItemValidationErrors(Model):
     def product_price_invalid(self) -> CatalogsItemValidationDetails:
         """Gets the product_price_invalid of this CatalogsItemValidationErrors.
 
+        Item has a price formatting error in its product metadata, this item will not be published.  # noqa: E501
 
         :return: The product_price_invalid of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -608,6 +651,7 @@ class CatalogsItemValidationErrors(Model):
     def product_price_invalid(self, product_price_invalid: CatalogsItemValidationDetails):
         """Sets the product_price_invalid of this CatalogsItemValidationErrors.
 
+        Item has a price formatting error in its product metadata, this item will not be published.  # noqa: E501
 
         :param product_price_invalid: The product_price_invalid of this CatalogsItemValidationErrors.
         :type product_price_invalid: CatalogsItemValidationDetails
@@ -619,6 +663,7 @@ class CatalogsItemValidationErrors(Model):
     def title_missing(self) -> CatalogsItemValidationDetails:
         """Gets the title_missing of this CatalogsItemValidationErrors.
 
+        Item is missing title in its product metadata, this item will not be published.  # noqa: E501
 
         :return: The title_missing of this CatalogsItemValidationErrors.
         :rtype: CatalogsItemValidationDetails
@@ -629,6 +674,7 @@ class CatalogsItemValidationErrors(Model):
     def title_missing(self, title_missing: CatalogsItemValidationDetails):
         """Sets the title_missing of this CatalogsItemValidationErrors.
 
+        Item is missing title in its product metadata, this item will not be published.  # noqa: E501
 
         :param title_missing: The title_missing of this CatalogsItemValidationErrors.
         :type title_missing: CatalogsItemValidationDetails

@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("UpdatePartnerAssetsResultsResponseArray")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdatePartnerAssetsResultsResponseArray   {
-  private @Valid List<UpdatePartnerAssetsResult> items = new ArrayList<>();
+  private @Valid List<@Valid UpdatePartnerAssetsResult> items = new ArrayList<>();
 
   public UpdatePartnerAssetsResultsResponseArray() {
   }
@@ -30,7 +30,7 @@ public class UpdatePartnerAssetsResultsResponseArray   {
   /**
    * List of assigned/updated partner asset access.
    **/
-  public UpdatePartnerAssetsResultsResponseArray items(List<UpdatePartnerAssetsResult> items) {
+  public UpdatePartnerAssetsResultsResponseArray items(List<@Valid UpdatePartnerAssetsResult> items) {
     this.items = items;
     return this;
   }
@@ -43,7 +43,7 @@ public class UpdatePartnerAssetsResultsResponseArray   {
   }
 
   @JsonProperty("items")
-  public void setItems(List<UpdatePartnerAssetsResult> items) {
+  public void setItems(List<@Valid UpdatePartnerAssetsResult> items) {
     this.items = items;
   }
 
@@ -96,12 +96,8 @@ public class UpdatePartnerAssetsResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

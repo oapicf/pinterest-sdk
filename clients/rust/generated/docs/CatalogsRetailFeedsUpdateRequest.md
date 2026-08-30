@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**models::CatalogsType**](CatalogsType.md) |  | 
+**catalog_type** | **CatalogType** |  (enum: RETAIL) | 
 **credentials** | Option<[**models::CatalogsFeedCredentials**](CatalogsFeedCredentials.md)> |  | [optional]
 **default_availability** | Option<[**models::ProductAvailabilityType**](ProductAvailabilityType.md)> |  | [optional]
 **default_currency** | Option<[**models::NullableCurrency**](NullableCurrency.md)> |  | [optional]

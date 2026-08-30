@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountsCountry",
+  "fields": [
+    {
+      "name": "code",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "doc": "Country currency."
+    },
+    {
+      "name": "index",
+      "type": "double",
+      "doc": "Country index"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Country name"
+    }
+  ]
+
+}

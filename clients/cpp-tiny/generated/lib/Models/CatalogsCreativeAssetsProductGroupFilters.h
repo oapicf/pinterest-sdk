@@ -55,14 +55,14 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAnyOf(std::list <CatalogsCreativeAssetsProductGroupFilterKeys> any_of);
+	void setAnyOf(std::list<CatalogsCreativeAssetsProductGroupFilterKeys> any_of);
 	/*! \brief Get 
 	 */
 	std::list<CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf();
 
 	/*! \brief Set 
 	 */
-	void setAllOf(std::list <CatalogsCreativeAssetsProductGroupFilterKeys> all_of);
+	void setAllOf(std::list<CatalogsCreativeAssetsProductGroupFilterKeys> all_of);
 
 
     private:

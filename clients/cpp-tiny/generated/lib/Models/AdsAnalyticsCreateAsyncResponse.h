@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setMessage(std::string  message);
+	void setMessage(std::string message);
 	/*! \brief Get 
 	 */
 	BulkReportingJobStatus getReportStatus();
 
 	/*! \brief Set 
 	 */
-	void setReportStatus(BulkReportingJobStatus  report_status);
+	void setReportStatus(BulkReportingJobStatus report_status);
 	/*! \brief Get 
 	 */
 	std::string getToken();
 
 	/*! \brief Set 
 	 */
-	void setToken(std::string  token);
+	void setToken(std::string token);
 
 
     private:

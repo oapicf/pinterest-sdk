@@ -4,9 +4,13 @@ package org.openapitools.client.model
 import java.time.OffsetDateTime
 
 case class CatalogsFeedIngestion (
+    /* Timestamp of the feed ingestion. */
     _createdAt: OffsetDateTime,
+    /* Catalog Feed id pertaining to the feed ingestion. */
     _feedId: String,
+    /* Unique identifier of a feed ingestion. */
     _id: String,
+    /* Status of the feed ingestion. */
     _status: CatalogsFeedProcessingStatus
 )
 object CatalogsFeedIngestion {

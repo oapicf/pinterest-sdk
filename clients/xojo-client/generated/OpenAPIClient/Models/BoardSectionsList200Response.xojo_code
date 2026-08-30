@@ -7,9 +7,6 @@ Protected Class BoardSectionsList200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Board sections
-		#tag EndNote
 		items() As OpenAPIClient.Models.BoardSection
 	#tag EndProperty
 

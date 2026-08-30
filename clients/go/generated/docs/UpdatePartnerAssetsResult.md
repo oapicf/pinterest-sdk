@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssetId** | Pointer to **string** | Unique identifier of a business asset. | [optional] 
-**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
+**AssetType** | Pointer to [**AssetTypeResponse**](AssetTypeResponse.md) |  | [optional] 
 **PartnerId** | Pointer to **string** | Unique identifier of a business partner. | [optional] 
 **Permissions** | Pointer to **[]string** | Permission levels member or partner has on an asset. | [optional] 
 
@@ -55,20 +55,20 @@ HasAssetId returns a boolean if a field has been set.
 
 ### GetAssetType
 
-`func (o *UpdatePartnerAssetsResult) GetAssetType() string`
+`func (o *UpdatePartnerAssetsResult) GetAssetType() AssetTypeResponse`
 
 GetAssetType returns the AssetType field if non-nil, zero value otherwise.
 
 ### GetAssetTypeOk
 
-`func (o *UpdatePartnerAssetsResult) GetAssetTypeOk() (*string, bool)`
+`func (o *UpdatePartnerAssetsResult) GetAssetTypeOk() (*AssetTypeResponse, bool)`
 
 GetAssetTypeOk returns a tuple with the AssetType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssetType
 
-`func (o *UpdatePartnerAssetsResult) SetAssetType(v string)`
+`func (o *UpdatePartnerAssetsResult) SetAssetType(v AssetTypeResponse)`
 
 SetAssetType sets AssetType field to given value.
 

@@ -8,31 +8,35 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.DeletePartnerAssetAccessBodyAccessesInner;
+import org.openapitools.model.DeletePartnerAssetAccessItem;
 
 
 
+/**
+ * An object with a list of partner asset accesses to delete.
+ **/
 
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "An object with a list of partner asset accesses to delete.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class DeletePartnerAssetAccessBody   {
   @JsonProperty("accesses")
-  private List<DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<DeletePartnerAssetAccessItem> accesses = new ArrayList<>();
 
   /**
+   * List of partner asset accesses to delete.
    **/
-  public DeletePartnerAssetAccessBody accesses(List<DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public DeletePartnerAssetAccessBody accesses(List<DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "List of partner asset accesses to delete.")
   @JsonProperty("accesses")
-  public List<DeletePartnerAssetAccessBodyAccessesInner> getAccesses() {
+  public List<DeletePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
-  public void setAccesses(List<DeletePartnerAssetAccessBodyAccessesInner> accesses) {
+  public void setAccesses(List<DeletePartnerAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -69,10 +73,7 @@ public class DeletePartnerAssetAccessBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

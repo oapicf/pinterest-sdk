@@ -6,17 +6,12 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">status : String
-    <br/>Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity.
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>ARCHIVED</dd>
-        </dt>
-      </dl>
+  <li class="param-required-true">parentUnderscoreid : String
+    <br/>Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">value : String
-    <br/>&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit.
+  <li class="param-required-true">status : LabelStatusBulkUpdate
+    <br/>
   </li>
 </ul>

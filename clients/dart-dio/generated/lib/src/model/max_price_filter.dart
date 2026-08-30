@@ -74,7 +74,7 @@ class _$MaxPriceFilterSerializer implements PrimitiveSerializer<MaxPriceFilter> 
             value,
             specifiedType: const FullType(CatalogsProductGroupPricingCriteria),
           ) as CatalogsProductGroupPricingCriteria;
-          result.MAX_PRICE = valueDes;
+          result.MAX_PRICE.replace(valueDes);
           break;
         default:
           unhandled.add(key);

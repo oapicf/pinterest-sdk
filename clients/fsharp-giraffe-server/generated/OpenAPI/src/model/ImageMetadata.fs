@@ -9,11 +9,14 @@ module ImageMetadata =
 
   //#region ImageMetadata
 
+  //#region enums
+  type ItemTypeEnum = ImageEnum of string  
+  //#endregion
 
   type ImageMetadata = {
     Description : string option;
     Images : ImageSize;
-    ItemType : string;
+    ItemType : ItemTypeEnum;
     Link : string option;
     Title : string option;
   }

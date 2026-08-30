@@ -48,22 +48,22 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="adsCreditRedeem"></a>
 # **adsCreditRedeem**
 ```java
-Mono<AdsCreditRedeemResponse> BillingApi.adsCreditRedeem(adAccountIdadsCreditRedeemRequest)
+Mono<AdsCreditRedeem> BillingApi.adsCreditRedeem(adAccountIdadsCreditRedeemCreate)
 ```
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **adsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md)| Redeem ad credits request. | |
+| **adsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md)|  | |
 
 
 ### Return type
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`, `billing:write`
@@ -80,14 +80,14 @@ Mono<AdsCreditsDiscountsGet200Response> BillingApi.adsCreditsDiscountsGet(adAcco
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -130,7 +130,7 @@ Get download url for a billing invoice.
 <a id="billingInvoicesGet"></a>
 # **billingInvoicesGet**
 ```java
-Mono<BillingInvoicesGet200Response> BillingApi.billingInvoicesGet(adAccountIdbookmarkpageSizesortorderstatusdocumentTypestartDueDateendDueDate)
+Mono<BillingInvoicesGet200Response> BillingApi.billingInvoicesGet(adAccountIdbookmarkpageSizeordersortstatusdocumentTypestartDueDateendDueDate)
 ```
 
 Get billing invoices
@@ -142,11 +142,11 @@ Get billing invoices in the advertiser account.
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
-| **sort** | `String`| Field of which to sort billing invoices | [optional parameter] [default to `DUE_DATE`] [enum: `DUE_DATE`, `BILLING_PERIOD`, `DOCUMENT_TYPE`, `TOTAL_AMOUNT`, `INVOICE_NUMBER`] |
-| **order** | `String`| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`] |
-| **status** | `String`| Status of billing invoices to filter by | [optional parameter] [enum: `OPEN`, `CLOSED`] |
-| **documentType** | `String`| Document type of billing invoices to filter by | [optional parameter] [enum: `INVOICE`, `CREDIT_MEMO`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
+| **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional parameter] [enum: `ASCENDING`, `DESCENDING`] |
+| **sort** | [**BillingInvoiceSortField**](.md)| Field of which to sort billing invoices | [optional parameter] [default to `DUE_DATE`] [enum: `DUE_DATE`, `BILLING_PERIOD`, `DOCUMENT_TYPE`, `TOTAL_AMOUNT`, `INVOICE_NUMBER`] |
+| **status** | [**BillingInvoiceStatus**](.md)| Status of billing invoices to filter by | [optional parameter] [enum: `OPEN`, `CLOSED`] |
+| **documentType** | [**BillingInvoiceDocumentType**](.md)| Document type of billing invoices to filter by | [optional parameter] [enum: `INVOICE`, `CREDIT_MEMO`] |
 | **startDueDate** | `LocalDate`| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional parameter] |
 | **endDueDate** | `LocalDate`| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional parameter] |
 
@@ -164,20 +164,20 @@ Get billing invoices in the advertiser account.
 <a id="billingProfilesGet"></a>
 # **billingProfilesGet**
 ```java
-Mono<BillingProfilesGet200Response> BillingApi.billingProfilesGet(adAccountIdisActivebookmarkpageSize)
+Mono<BillingProfilesGet200Response> BillingApi.billingProfilesGet(isActiveadAccountIdbookmarkpageSize)
 ```
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **isActive** | `Boolean`| Return active billing profiles, if false return all billing profiles. | |
+| **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -193,12 +193,12 @@ Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint mig
 <a id="ssioAccountsGet"></a>
 # **ssioAccountsGet**
 ```java
-Mono<SSIOAccountResponse> BillingApi.ssioAccountsGet(adAccountId)
+Mono<SSIOAccount> BillingApi.ssioAccountsGet(adAccountId)
 ```
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Parameters
 | Name | Type | Description  | Notes |
@@ -207,7 +207,7 @@ Get Salesforce account details including bill-to information to be used in inser
 
 
 ### Return type
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
@@ -219,22 +219,22 @@ Get Salesforce account details including bill-to information to be used in inser
 <a id="ssioInsertionOrderCreate"></a>
 # **ssioInsertionOrderCreate**
 ```java
-Mono<SSIOCreateInsertionOrderResponse> BillingApi.ssioInsertionOrderCreate(adAccountIdssIOCreateInsertionOrderRequest)
+Mono<SSIOInsertionOrder> BillingApi.ssioInsertionOrderCreate(adAccountIdssIOInsertionOrderCreate)
 ```
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **ssIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md)| Order line to create. | |
+| **ssIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md)|  | |
 
 
 ### Return type
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`
@@ -246,22 +246,22 @@ Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. 
 <a id="ssioInsertionOrderEdit"></a>
 # **ssioInsertionOrderEdit**
 ```java
-Mono<SSIOEditInsertionOrderResponse> BillingApi.ssioInsertionOrderEdit(adAccountIdssIOEditInsertionOrderRequest)
+Mono<SSIOInsertionOrder> BillingApi.ssioInsertionOrderEdit(adAccountIdssIOInsertionOrderUpdate)
 ```
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **ssIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md)| Order line to create. | |
+| **ssIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md)|  | |
 
 
 ### Return type
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:write`
@@ -278,14 +278,14 @@ Mono<SsioInsertionOrdersStatusGetByAdAccount200Response> BillingApi.ssioInsertio
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -306,7 +306,7 @@ Mono<SSIOInsertionOrderStatusResponse> BillingApi.ssioInsertionOrdersStatusGetBy
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Parameters
 | Name | Type | Description  | Notes |
@@ -328,20 +328,20 @@ Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt
 <a id="ssioOrderLinesGetByAdAccount"></a>
 # **ssioOrderLinesGetByAdAccount**
 ```java
-Mono<SsioOrderLinesGetByAdAccount200Response> BillingApi.ssioOrderLinesGetByAdAccount(adAccountIdbookmarkpageSizepinOrderId)
+Mono<SsioOrderLinesGetByAdAccount200Response> BillingApi.ssioOrderLinesGetByAdAccount(adAccountIdpinOrderIdbookmarkpageSize)
 ```
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
+| **pinOrderId** | `String`| The pin order id associated with the SSIO insertion order | [optional parameter] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
-| **pinOrderId** | `String`| The pin order id associated with the ssio insertino order | [optional parameter] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type

@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -11,23 +12,24 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.QuizPinQuestion;
 import org.openapitools.model.QuizPinResult;
+import org.openapitools.model.TieBreakerType;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * This field includes all quiz data including questions, options, and results.
  */
 
 @Schema(name = "QuizPinData", description = "This field includes all quiz data including questions, options, and results.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class QuizPinData {
 
   @Valid
@@ -38,42 +40,7 @@ public class QuizPinData {
 
   private JsonNullable<QuizPinResult> tieBreakerCustomResult = JsonNullable.<QuizPinResult>undefined();
 
-  /**
-   * Quiz ad tie breaker type, default is RANDOM
-   */
-  public enum TieBreakerTypeEnum {
-    RANDOM("RANDOM"),
-    
-    CUSTOM("CUSTOM");
-
-    private final String value;
-
-    TieBreakerTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TieBreakerTypeEnum fromValue(String value) {
-      for (TieBreakerTypeEnum b : TieBreakerTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private TieBreakerTypeEnum tieBreakerType;
+  private TieBreakerType tieBreakerType;
 
   public QuizPinData questions(List<@Valid QuizPinQuestion> questions) {
     this.questions = questions;
@@ -151,23 +118,23 @@ public class QuizPinData {
     this.tieBreakerCustomResult = tieBreakerCustomResult;
   }
 
-  public QuizPinData tieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public QuizPinData tieBreakerType(TieBreakerType tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
     return this;
   }
 
   /**
-   * Quiz ad tie breaker type, default is RANDOM
+   * Get tieBreakerType
    * @return tieBreakerType
    */
-  
-  @Schema(name = "tie_breaker_type", description = "Quiz ad tie breaker type, default is RANDOM", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "tie_breaker_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tie_breaker_type")
-  public TieBreakerTypeEnum getTieBreakerType() {
+  public TieBreakerType getTieBreakerType() {
     return tieBreakerType;
   }
 
-  public void setTieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public void setTieBreakerType(TieBreakerType tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
   }
 
@@ -219,10 +186,7 @@ public class QuizPinData {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

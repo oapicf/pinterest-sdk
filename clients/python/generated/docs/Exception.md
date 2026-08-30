@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** | Exception error code. | [optional] 
-**message** | **str** | Exception message. | [optional] 
+**code** | **int** |  | [optional] 
+**message** | **str** |  | 
 
 ## Example
 

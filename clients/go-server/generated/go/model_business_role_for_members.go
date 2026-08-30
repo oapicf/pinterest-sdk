@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// BusinessRoleForMembers : The access level a member has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. <br> - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.
+// BusinessRoleForMembers : The access level a member has to the business. Values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.
 type BusinessRoleForMembers string
 
 // List of BusinessRoleForMembers
@@ -56,8 +56,8 @@ func NewBusinessRoleForMembersFromValue(v string) (BusinessRoleForMembers, error
 }
 
 
-
-// AssertBusinessRoleForMembersRequired checks if the required fields are not zero-ed
+// AssertBusinessRoleForMembersRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertBusinessRoleForMembersRequired(obj BusinessRoleForMembers) error {
 	return nil
 }

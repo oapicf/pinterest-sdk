@@ -1,7 +1,7 @@
 (ns pinterest-rest-api.specs.business-assets-get-200-response
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.get-business-assets-response :refer :all]
+            [pinterest-rest-api.specs.business-assets :refer :all]
             )
   (:import (java.io File)))
 
@@ -9,7 +9,7 @@
 (def business-assets-get-200-response-data
   {
    (ds/opt :bookmark) string?
-   (ds/req :items) (s/coll-of get-business-assets-response-spec)
+   (ds/req :items) (s/coll-of business-assets-spec)
    })
 
 (def business-assets-get-200-response-spec

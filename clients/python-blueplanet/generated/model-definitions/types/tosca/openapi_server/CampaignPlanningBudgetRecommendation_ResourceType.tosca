@@ -1,0 +1,54 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningBudgetRecommendation"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningBudgetRecommendation"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignPlanningBudgetRecommendationPoint = openapi_server.resourceTypes.CampaignPlanningBudgetRecommendationPoint
+  CampaignPlanningExperimentBudgetRecommendation = openapi_server.resourceTypes.CampaignPlanningExperimentBudgetRecommendation
+}
+resourceTypes {
+
+  CampaignPlanningBudgetRecommendation {
+    title = CampaignPlanningBudgetRecommendation
+    description = CampaignPlanningBudgetRecommendation
+    derivedFrom = Root
+    properties {
+        budget_recommendation {
+          type =  integer
+          description = "The recommended budget amount."
+          optional = false
+        }
+        experiment_campaign_budget_recommendation {
+          type = array
+          items.type = CampaignPlanningExperimentBudgetRecommendation
+          description = "List of experimental budget recommendations."
+          optional = false
+        }
+        lifetime_days_recommendation {
+          type =  integer
+          description = "Recommended number of days for the campaign lifetime."
+          optional = false
+        }
+        point_estimations {
+          type = array
+          items.type = CampaignPlanningBudgetRecommendationPoint
+          description = "List of point estimations for different budget scenarios."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningBudgetRecommendation {
+    title = CampaignPlanningBudgetRecommendation
+    description = CampaignPlanningBudgetRecommendation
+    implements = openapi_server.resourceTypes.CampaignPlanningBudgetRecommendation
+
+  }
+}

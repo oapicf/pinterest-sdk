@@ -1,0 +1,81 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Local store entity",
+  "name": "LocalStore",
+  "fields": [
+    {
+      "name": "address_primary",
+      "type": ["null", "string"],
+      "doc": "Primary address line of the store.",
+      "default": null
+    },
+    {
+      "name": "address_secondary",
+      "type": ["null", "string"],
+      "doc": "Secondary address line of the store.",
+      "default": null
+    },
+    {
+      "name": "city",
+      "type": ["null", "string"],
+      "doc": "City where the store is located.",
+      "default": null
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": "Country code where the store is located."
+    },
+    {
+      "name": "created_at",
+      "type": "string",
+      "doc": "Creation timestamp"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "The ID of the local store."
+    },
+    {
+      "name": "latitude",
+      "type": ["null", "float"],
+      "doc": "Geographic latitude coordinate of the store.",
+      "default": null
+    },
+    {
+      "name": "longitude",
+      "type": ["null", "float"],
+      "doc": "Geographic longitude coordinate of the store.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "The name of the local store."
+    },
+    {
+      "name": "postal_code",
+      "type": ["null", "string"],
+      "doc": "Postal or ZIP code of the store.",
+      "default": null
+    },
+    {
+      "name": "region",
+      "type": ["null", "string"],
+      "doc": "State or region code where the store is located.",
+      "default": null
+    },
+    {
+      "name": "store_code",
+      "type": "string",
+      "doc": "Merchant provided code for the local store. Unique within the merchant's catalog."
+    },
+    {
+      "name": "updated_at",
+      "type": "string",
+      "doc": "Last update timestamp"
+    }
+  ]
+
+}

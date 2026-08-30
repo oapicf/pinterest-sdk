@@ -4,14 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additionalId1** | **String** |  | [optional] [default to null]
-**connectedAdvertiserId** | **String** |  | [optional] [readonly] [default to null]
+**connectedAdvertiserId** | **String** |  | [optional] [default to null]
 **connectedLbaId** | **String** |  | [optional] [default to null]
 **connectedMerchantId** | **String** |  | [optional] [default to null]
 **connectedTagId** | **String** |  | [optional] [default to null]
-**connectedUserId** | **String!** |  | [optional] [readonly] [default to null]
+**connectedUserId** | **String!** |  | [optional] [default to null]
 **createdTime** | **Int!** |  | [optional] [default to null]
 **externalBusinessId** | **String** |  | [optional] [default to null]
-**Id_** | **String!** |  | [optional] [default to null]
+**Id_** | **String!** | Integration record ID. | [readonly] [default to null]
 **partnerAccessToken** | **String** |  | [optional] [default to null]
 **partnerAccessTokenExpiry** | **Int** |  | [optional] [default to null]
 **partnerMetadata** | **String** |  | [optional] [default to null]

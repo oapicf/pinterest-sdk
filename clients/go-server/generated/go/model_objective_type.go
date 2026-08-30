@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// ObjectiveType : Intended result of the campaign.  You can only update objectives for draft campaigns. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter. 
+// ObjectiveType : Advertiser campaign objective type. You can only update objectives for draft campaigns. `CTV_CONSIDERATION` is in BETA. `WEB_SESSIONS` and `VIDEO_VIEW` objectives are deprecated. We recommend using `VIDEO_COMPLETION` as an alternative for the latter.
 type ObjectiveType string
 
 // List of ObjectiveType
@@ -27,6 +27,9 @@ const (
 	WEB_CONVERSION ObjectiveType = "WEB_CONVERSION"
 	CATALOG_SALES ObjectiveType = "CATALOG_SALES"
 	VIDEO_COMPLETION ObjectiveType = "VIDEO_COMPLETION"
+	SALES ObjectiveType = "SALES"
+	APP_INSTALL ObjectiveType = "APP_INSTALL"
+	CTV_CONSIDERATION ObjectiveType = "CTV_CONSIDERATION"
 )
 
 // AllowedObjectiveTypeEnumValues is all the allowed values of ObjectiveType enum
@@ -36,6 +39,9 @@ var AllowedObjectiveTypeEnumValues = []ObjectiveType{
 	"WEB_CONVERSION",
 	"CATALOG_SALES",
 	"VIDEO_COMPLETION",
+	"SALES",
+	"APP_INSTALL",
+	"CTV_CONSIDERATION",
 }
 
 // validObjectiveTypeEnumValue provides a map of ObjectiveTypes for fast verification of use input
@@ -45,6 +51,9 @@ var validObjectiveTypeEnumValues = map[ObjectiveType]struct{}{
 	"WEB_CONVERSION": {},
 	"CATALOG_SALES": {},
 	"VIDEO_COMPLETION": {},
+	"SALES": {},
+	"APP_INSTALL": {},
+	"CTV_CONSIDERATION": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -65,8 +74,8 @@ func NewObjectiveTypeFromValue(v string) (ObjectiveType, error) {
 }
 
 
-
-// AssertObjectiveTypeRequired checks if the required fields are not zero-ed
+// AssertObjectiveTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertObjectiveTypeRequired(obj ObjectiveType) error {
 	return nil
 }

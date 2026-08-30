@@ -49,127 +49,192 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/account.c
+    model/account_template.c
     model/action_type.c
+    model/ad.c
     model/ad_account.c
-    model/ad_account_analytics_response_inner.c
+    model/ad_account_analytics_items.c
+    model/ad_account_countries_get_200_response.c
     model/ad_account_create.c
-    model/ad_account_create_subscription_request.c
-    model/ad_account_create_subscription_request_partner_metadata.c
-    model/ad_account_create_subscription_response.c
-    model/ad_account_get_subscription_response.c
+    model/ad_account_entity_type.c
     model/ad_account_owner.c
+    model/ad_account_to_ad_account_shared_audience.c
+    model/ad_account_to_ad_account_shared_audience_update_with_required_body.c
+    model/ad_account_to_business_shared_audience.c
+    model/ad_account_to_business_shared_audience_update_with_required_body.c
+    model/ad_accounts_audience.c
+    model/ad_accounts_audience_create.c
+    model/ad_accounts_audience_rule.c
+    model/ad_accounts_audience_update.c
     model/ad_accounts_audiences_shared_accounts_list_200_response.c
-    model/ad_accounts_country_response.c
-    model/ad_accounts_country_response_data.c
+    model/ad_accounts_country.c
     model/ad_accounts_list_200_response.c
     model/ad_accounts_subscriptions_get_list_200_response.c
-    model/ad_array_response.c
-    model/ad_array_response_element.c
-    model/ad_common.c
-    model/ad_country.c
+    model/ad_ads_analytics_async_targeting_types.c
+    model/ad_batch_item.c
+    model/ad_batch_update.c
+    model/ad_batch_write_response_model.c
+    model/ad_collections_header_type.c
+    model/ad_create.c
     model/ad_create_request.c
-    model/ad_group_array_response.c
-    model/ad_group_array_response_element.c
-    model/ad_group_audience_sizing_request.c
-    model/ad_group_audience_sizing_request_keywords_inner.c
-    model/ad_group_audience_sizing_response.c
-    model/ad_group_common.c
+    model/ad_disapproval_reasons.c
+    model/ad_group.c
+    model/ad_group_audience_sizing.c
+    model/ad_group_audience_sizing_create.c
+    model/ad_group_audience_sizing_creative_types.c
+    model/ad_group_audience_sizing_keyword.c
+    model/ad_group_base.c
+    model/ad_group_create.c
+    model/ad_group_create_create.c
     model/ad_group_create_request.c
-    model/ad_group_id_filter.c
-    model/ad_group_response.c
+    model/ad_group_create_request_all_of1.c
+    model/ad_group_delivery_estimates.c
+    model/ad_group_delivery_estimates_keywords_items.c
     model/ad_group_summary_status.c
+    model/ad_group_tracking_urls.c
+    model/ad_group_update.c
+    model/ad_group_update_batch_update.c
     model/ad_group_update_request.c
-    model/ad_groups_analytics_response_inner.c
+    model/ad_group_update_request_all_of1.c
+    model/ad_groups_analytics_metrics.c
+    model/ad_groups_create_200_response.c
+    model/ad_groups_create_200_response_items_inner.c
     model/ad_groups_list_200_response.c
     model/ad_pin_analytics.c
-    model/ad_pin_id.c
-    model/ad_preview_create_from_image.c
-    model/ad_preview_create_from_pin.c
+    model/ad_pin_preview_creative_type.c
     model/ad_preview_request.c
     model/ad_preview_shopping.c
+    model/ad_preview_source_image.c
+    model/ad_preview_source_pin_id.c
     model/ad_preview_url_response.c
-    model/ad_response.c
+    model/ad_review_status.c
+    model/ad_shopping_preview_creative_type.c
     model/ad_update_request.c
+    model/ad_update_request_all_of1.c
+    model/ade_column_type.c
+    model/adgroup_placement_group_type.c
+    model/adgroup_tracking_feature_type.c
+    model/adgroup_tracking_features.c
+    model/ads_analytics.c
+    model/ads_analytics_account_targeting_type.c
     model/ads_analytics_ad_group_targeting_type.c
     model/ads_analytics_ad_targeting_type.c
     model/ads_analytics_campaign_targeting_type.c
     model/ads_analytics_create_async_request.c
-    model/ads_analytics_create_async_request_all_of_custom_conversion_event_metrics.c
     model/ads_analytics_create_async_response.c
     model/ads_analytics_filter_column.c
     model/ads_analytics_filter_operator.c
     model/ads_analytics_get_async_response.c
     model/ads_analytics_metrics_filter.c
-    model/ads_analytics_response_inner.c
-    model/ads_analytics_targeting_type.c
+    model/ads_credit_discount_type.c
     model/ads_credit_discounts_response.c
-    model/ads_credit_redeem_request.c
-    model/ads_credit_redeem_response.c
+    model/ads_credit_redeem.c
+    model/ads_credit_redeem_create.c
     model/ads_credits_discounts_get_200_response.c
     model/ads_list_200_response.c
     model/advanced_auction_bid_options.c
     model/advanced_auction_item.c
     model/advanced_auction_items.c
-    model/advanced_auction_items_get_record.c
     model/advanced_auction_items_get_request.c
     model/advanced_auction_items_submit_delete_record.c
     model/advanced_auction_items_submit_record.c
     model/advanced_auction_items_submit_request.c
     model/advanced_auction_items_submit_upsert_record.c
     model/advanced_auction_key.c
-    model/advanced_auction_operation.c
     model/advanced_auction_operation_error.c
     model/advanced_auction_processed_items.c
     model/advertiser_defined_event.c
-    model/advertiser_defined_events_response.c
+    model/advertiser_defined_event_input.c
+    model/advertiser_defined_event_mapping_type.c
+    model/advertiser_defined_event_processing_record.c
+    model/advertiser_defined_events_create_200_response.c
+    model/advertiser_defined_events_create_request.c
+    model/advertiser_defined_events_get_200_response.c
+    model/age_bucket_multipliers.c
     model/age_trends_bucket.c
-    model/all_of.c
+    model/aggregated_pin_comment.c
+    model/ai_disclosure_item.c
+    model/ai_disclosures.c
+    model/ai_disclosures_update.c
     model/amazon_connect_request.c
+    model/amazon_connect_response.c
     model/analytics_daily_metrics.c
     model/analytics_metrics_response.c
-    model/any_of.c
     model/app_type_multipliers.c
+    model/appsflyer_audience.c
+    model/appsflyer_audience_create.c
+    model/appsflyer_audience_sync_create.c
+    model/appsflyer_platform.c
+    model/asset_access_request_error.c
     model/asset_group_binding.c
+    model/asset_group_delete_error.c
+    model/asset_group_deletion.c
+    model/asset_group_deletion_delete.c
+    model/asset_group_input.c
+    model/asset_group_input_create.c
+    model/asset_group_modification.c
+    model/asset_group_modification_read_or_update.c
     model/asset_group_type.c
+    model/asset_group_update_error.c
+    model/asset_group_update_item_read_or_update_item.c
     model/asset_id_permissions.c
+    model/asset_id_with_permissions.c
+    model/asset_permission_type.c
+    model/asset_search_by.c
+    model/asset_sort_by.c
+    model/asset_type_response.c
+    model/attribution_action_type.c
+    model/attribution_match_type.c
+    model/attribution_model.c
+    model/attribution_scope.c
+    model/attribution_windows.c
     model/audience.c
     model/audience_account_type.c
     model/audience_category.c
-    model/audience_common.c
-    model/audience_create_request.c
     model/audience_definition.c
-    model/audience_definition_response.c
-    model/audience_definition_scope.c
-    model/audience_definition_type.c
     model/audience_demographic_value.c
     model/audience_demographics.c
-    model/audience_insight_category_array_response.c
-    model/audience_insight_category_common.c
     model/audience_insight_type.c
-    model/audience_insights_response.c
+    model/audience_insights.c
+    model/audience_insights_scope_and_type_get_200_response.c
+    model/audience_objective_type.c
+    model/audience_ownership_type.c
     model/audience_rule.c
-    model/audience_share_type.c
+    model/audience_status.c
     model/audience_subcategory.c
     model/audience_type.c
     model/audience_update_operation_type.c
-    model/audience_update_request.c
     model/audiences_list_200_response.c
+    model/auth_respond_invite_action.c
     model/auth_respond_invites_body.c
-    model/auth_respond_invites_body_invites_inner.c
-    model/auth_respond_invites_body_invites_inner_action.c
+    model/auth_respond_invites_body_item.c
     model/availability_filter.c
+    model/base_business_assets.c
     model/base_invite_data_response.c
-    model/base_invite_data_response_invite_data.c
-    model/batch_operation.c
+    model/base_preferred_media_type.c
     model/batch_operation_status.c
     model/bid_floor.c
-    model/bid_floor_request.c
+    model/bid_floor_create.c
+    model/bid_floor_objective_type.c
     model/bid_floor_spec.c
+    model/bid_options_age_bucket_multipliers.c
+    model/bid_options_app_type_multipliers.c
+    model/bid_options_audience_multipliers.c
+    model/bid_options_gender_multipliers.c
+    model/bid_options_placement_multipliers.c
+    model/bid_strategy_type.c
+    model/billing_invoice.c
+    model/billing_invoice_document_type.c
     model/billing_invoice_download_response.c
-    model/billing_invoice_response.c
+    model/billing_invoice_sort_field.c
+    model/billing_invoice_status.c
     model/billing_invoices_get_200_response.c
+    model/billing_profile_card_type.c
+    model/billing_profile_payment_method_brand.c
+    model/billing_profile_status.c
     model/billing_profiles_get_200_response.c
     model/billing_profiles_response.c
+    model/billing_type.c
     model/board.c
     model/board_base.c
     model/board_create.c
@@ -178,76 +243,124 @@ set(SRCS
     model/board_privacy.c
     model/board_privacy_filter.c
     model/board_section.c
+    model/board_section_create.c
+    model/board_section_update_with_required_body.c
     model/board_sections_list_200_response.c
     model/board_update_privacy.c
     model/board_with_update_privacy.c
     model/board_with_update_privacy_update.c
     model/boards_list_200_response.c
     model/boards_list_pins_200_response.c
-    model/boards_user_follows_list_200_response.c
-    model/book_closed_response.c
-    model/brand_accounts_create_200_response.c
-    model/brand_accounts_create_request.c
-    model/brand_accounts_update_request.c
+    model/book_closed.c
+    model/brand_account.c
+    model/brand_account_create.c
+    model/brand_account_profile_image.c
+    model/brand_account_profile_image_update.c
+    model/brand_account_update.c
     model/brand_filter.c
+    model/budget_duration_type.c
     model/budget_type.c
-    model/bulk_download_request.c
-    model/bulk_download_request_campaign_filter.c
-    model/bulk_download_response.c
+    model/bulk_campaign_delivery_estimates_item.c
+    model/bulk_campaign_delivery_estimates_response.c
+    model/bulk_download.c
+    model/bulk_download_campaign_filter.c
+    model/bulk_download_create.c
     model/bulk_entity_type.c
+    model/bulk_job_data.c
     model/bulk_output_format.c
     model/bulk_reporting_job_status.c
+    model/bulk_request_status.c
     model/bulk_upsert_request.c
     model/bulk_upsert_request_create.c
+    model/bulk_upsert_request_create_catalog_product_groups_items.c
     model/bulk_upsert_request_update.c
+    model/bulk_upsert_request_update_catalog_product_groups_items.c
     model/bulk_upsert_response.c
-    model/bulk_upsert_status.c
-    model/bulk_upsert_status_response.c
-    model/business_access_error.c
     model/business_access_role.c
     model/business_access_user_summary.c
     model/business_asset_members_get_200_response.c
-    model/business_asset_partners_get_200_response.c
+    model/business_assets.c
     model/business_assets_get_200_response.c
-    model/business_member_assets_get_200_response.c
+    model/business_member_assets_get_response.c
     model/business_member_assets_summary.c
-    model/business_member_assets_summary_ad_accounts_inner.c
-    model/business_member_assets_summary_profiles_inner.c
-    model/business_members_asset_access_delete_request.c
-    model/business_members_asset_access_delete_request_accesses_inner.c
+    model/business_member_sort_by.c
+    model/business_members_asset_access_delete_body.c
+    model/business_membership_member.c
     model/business_partner_asset_access_get_200_response.c
-    model/business_role.c
-    model/business_role_check_mode.c
+    model/business_role_for_invite.c
     model/business_role_for_members.c
-    model/business_shared_audience.c
-    model/business_shared_audience_response.c
+    model/business_search_by.c
+    model/business_to_ad_account_shared_audience.c
+    model/business_to_ad_account_shared_audience_update_with_required_body.c
+    model/business_to_business_shared_audience.c
+    model/business_to_business_shared_audience_update_with_required_body.c
+    model/campaign.c
+    model/campaign_ad_preview.c
+    model/campaign_ad_preview_create.c
+    model/campaign_ad_preview_create_200_response_inner.c
+    model/campaign_ad_preview_create_200_response_inner_data.c
+    model/campaign_ad_preview_create_200_response_inner_data_one_of.c
+    model/campaign_ad_preview_delete_200_response_inner.c
+    model/campaign_ad_preview_delete_200_response_inner_status.c
     model/campaign_audience_multipliers.c
+    model/campaign_batch_item.c
+    model/campaign_batch_response_data.c
+    model/campaign_batch_update_item.c
+    model/campaign_batch_write_response_model.c
     model/campaign_bid_options.c
     model/campaign_bid_options_create.c
     model/campaign_bid_options_update.c
-    model/campaign_common.c
-    model/campaign_create_common.c
+    model/campaign_bid_options_update_mask_items.c
+    model/campaign_create_item.c
     model/campaign_create_request.c
-    model/campaign_create_response.c
-    model/campaign_create_response_data.c
-    model/campaign_create_response_item.c
-    model/campaign_id.c
-    model/campaign_id_filter.c
-    model/campaign_objectives_filter.c
-    model/campaign_response.c
+    model/campaign_create_request_all_of1.c
+    model/campaign_delivery_estimates_campaign.c
+    model/campaign_delivery_estimates_derived_metrics.c
+    model/campaign_delivery_estimates_response.c
+    model/campaign_objective_type.c
+    model/campaign_planning_ad_group_audience_size.c
+    model/campaign_planning_budget_recommendation.c
+    model/campaign_planning_budget_recommendation_point.c
+    model/campaign_planning_confidence_level_alert.c
+    model/campaign_planning_confidence_level_alert_reason.c
+    model/campaign_planning_confidence_level_alert_severity.c
+    model/campaign_planning_conversion_attribution.c
+    model/campaign_planning_conversion_attribution_window_days.c
+    model/campaign_planning_conversion_event.c
+    model/campaign_planning_conversion_rate.c
+    model/campaign_planning_curve_estimate.c
+    model/campaign_planning_estimation_type.c
+    model/campaign_planning_experiment_budget_recommendation.c
+    model/campaign_planning_point_estimate.c
+    model/campaign_planning_response_error.c
+    model/campaign_planning_response_error_code.c
     model/campaign_summary_status.c
     model/campaign_update_request.c
-    model/campaign_update_response.c
-    model/campaigns_analytics_response_inner.c
+    model/campaign_update_request_all_of2.c
+    model/campaigns_analytics_metrics.c
     model/campaigns_list_200_response.c
-    model/cancel_invites_body.c
+    model/cancel_invite_exception.c
+    model/cancel_invite_result.c
+    model/cancel_invite_result_item.c
+    model/cancel_invite_result_user.c
+    model/cancel_invites_request.c
+    model/cancel_invites_response.c
     model/carousel_slot.c
+    model/carting_product.c
+    model/carting_retailer.c
     model/catalog.c
+    model/catalog_binding.c
+    model/catalog_create.c
+    model/catalog_update.c
+    model/catalogs_ai_content_disclosure.c
+    model/catalogs_ai_content_disclosure_label.c
     model/catalogs_available_filter_values.c
+    model/catalogs_base_filter_keys.c
+    model/catalogs_base_filters_all_of.c
+    model/catalogs_base_filters_any_of.c
     model/catalogs_create_creative_assets_item.c
     model/catalogs_create_hotel_item.c
     model/catalogs_create_report_response.c
-    model/catalogs_create_request.c
     model/catalogs_create_retail_item.c
     model/catalogs_creative_assets_attributes.c
     model/catalogs_creative_assets_available_filter_values.c
@@ -255,12 +368,12 @@ set(SRCS
     model/catalogs_creative_assets_batch_request.c
     model/catalogs_creative_assets_feed.c
     model/catalogs_creative_assets_feeds_create_request.c
+    model/catalogs_creative_assets_feeds_create_request_default_locale.c
     model/catalogs_creative_assets_feeds_update_request.c
     model/catalogs_creative_assets_filter_values_map.c
     model/catalogs_creative_assets_item_error_response.c
     model/catalogs_creative_assets_item_response.c
     model/catalogs_creative_assets_items_batch.c
-    model/catalogs_creative_assets_items_filter.c
     model/catalogs_creative_assets_items_post_filter.c
     model/catalogs_creative_assets_list_products_by_catalog_based_filter_request.c
     model/catalogs_creative_assets_product.c
@@ -273,11 +386,11 @@ set(SRCS
     model/catalogs_creative_assets_product_group_product_counts.c
     model/catalogs_creative_assets_product_group_update_request.c
     model/catalogs_creative_assets_product_metadata.c
-    model/catalogs_db_item.c
     model/catalogs_delete_creative_assets_item.c
     model/catalogs_delete_hotel_item.c
     model/catalogs_delete_retail_item.c
     model/catalogs_feed.c
+    model/catalogs_feed_create_request_schema.c
     model/catalogs_feed_credentials.c
     model/catalogs_feed_ingestion.c
     model/catalogs_feed_ingestion_details.c
@@ -286,19 +399,19 @@ set(SRCS
     model/catalogs_feed_ingestion_warnings.c
     model/catalogs_feed_processing_result.c
     model/catalogs_feed_processing_schedule.c
+    model/catalogs_feed_processing_schedule_timezone.c
     model/catalogs_feed_processing_status.c
     model/catalogs_feed_product_counts.c
+    model/catalogs_feed_update_request_schema.c
     model/catalogs_feed_validation_details.c
     model/catalogs_feed_validation_errors.c
     model/catalogs_feed_validation_warnings.c
     model/catalogs_feed_video_counts.c
     model/catalogs_feeds_create_request.c
-    model/catalogs_feeds_create_request_default_locale.c
     model/catalogs_feeds_update_request.c
     model/catalogs_format.c
     model/catalogs_hotel_address.c
     model/catalogs_hotel_attributes.c
-    model/catalogs_hotel_attributes_all_of_main_image.c
     model/catalogs_hotel_available_filter_values.c
     model/catalogs_hotel_batch_item.c
     model/catalogs_hotel_batch_request.c
@@ -310,9 +423,9 @@ set(SRCS
     model/catalogs_hotel_item_error_response.c
     model/catalogs_hotel_item_response.c
     model/catalogs_hotel_items_batch.c
-    model/catalogs_hotel_items_filter.c
     model/catalogs_hotel_items_post_filter.c
     model/catalogs_hotel_list_products_by_catalog_based_filter_request.c
+    model/catalogs_hotel_main_image.c
     model/catalogs_hotel_product.c
     model/catalogs_hotel_product_group.c
     model/catalogs_hotel_product_group_create_request.c
@@ -333,13 +446,12 @@ set(SRCS
     model/catalogs_item_validation_issue.c
     model/catalogs_item_validation_issues.c
     model/catalogs_item_validation_warnings.c
-    model/catalogs_items.c
     model/catalogs_items_batch.c
+    model/catalogs_items_batch_post_request.c
     model/catalogs_items_batch_request.c
     model/catalogs_items_create_batch_request.c
     model/catalogs_items_delete_batch_request.c
     model/catalogs_items_delete_discontinued_batch_request.c
-    model/catalogs_items_filters.c
     model/catalogs_items_post_filters.c
     model/catalogs_items_request.c
     model/catalogs_items_update_batch_request.c
@@ -347,6 +459,11 @@ set(SRCS
     model/catalogs_list_200_response.c
     model/catalogs_list_products_by_feed_based_filter.c
     model/catalogs_list_products_by_filter_request.c
+    model/catalogs_local_stores_create_200_response_inner.c
+    model/catalogs_local_stores_create_200_response_inner_data.c
+    model/catalogs_local_stores_create_200_response_inner_data_one_of.c
+    model/catalogs_local_stores_delete_200_response_inner.c
+    model/catalogs_local_stores_list_200_response.c
     model/catalogs_locale.c
     model/catalogs_product.c
     model/catalogs_product_group_create_request.c
@@ -357,32 +474,37 @@ set(SRCS
     model/catalogs_product_group_filters_all_of.c
     model/catalogs_product_group_filters_any_of.c
     model/catalogs_product_group_filters_request.c
+    model/catalogs_product_group_filters_request_any_of_items0.c
+    model/catalogs_product_group_filters_request_any_of_items1.c
     model/catalogs_product_group_multiple_countries_criteria.c
     model/catalogs_product_group_multiple_gender_criteria.c
     model/catalogs_product_group_multiple_media_types_criteria.c
+    model/catalogs_product_group_multiple_pinterest_product_category_criteria.c
     model/catalogs_product_group_multiple_string_criteria.c
     model/catalogs_product_group_multiple_string_list_criteria.c
     model/catalogs_product_group_pins_list_200_response.c
     model/catalogs_product_group_pricing_criteria.c
-    model/catalogs_product_group_pricing_currency_criteria.c
     model/catalogs_product_group_product_counts_vertical.c
     model/catalogs_product_group_status.c
     model/catalogs_product_group_type.c
     model/catalogs_product_group_uint32_criteria.c
+    model/catalogs_product_group_update_many_request_items_one_of_items0.c
     model/catalogs_product_group_update_request.c
+    model/catalogs_product_groups_create_many_request_items.c
+    model/catalogs_product_groups_create_request_schema.c
     model/catalogs_product_groups_list_200_response.c
-    model/catalogs_product_groups_update_request.c
+    model/catalogs_product_groups_update_request_schema.c
     model/catalogs_report.c
-    model/catalogs_report_all_items_filter.c
     model/catalogs_report_distribution_issue_filter.c
     model/catalogs_report_distribution_stats.c
     model/catalogs_report_feed_ingestion_filter.c
     model/catalogs_report_feed_ingestion_stats.c
     model/catalogs_report_parameters.c
     model/catalogs_report_stats.c
+    model/catalogs_report_stats_parameters.c
     model/catalogs_retail_available_filter_values.c
     model/catalogs_retail_batch_request.c
-    model/catalogs_retail_batch_request_items_inner.c
+    model/catalogs_retail_batch_request_items_items.c
     model/catalogs_retail_feed.c
     model/catalogs_retail_feeds_create_request.c
     model/catalogs_retail_feeds_update_request.c
@@ -390,7 +512,6 @@ set(SRCS
     model/catalogs_retail_item_error_response.c
     model/catalogs_retail_item_response.c
     model/catalogs_retail_items_batch.c
-    model/catalogs_retail_items_filter.c
     model/catalogs_retail_items_post_filter.c
     model/catalogs_retail_list_products_by_catalog_based_filter_request.c
     model/catalogs_retail_product.c
@@ -399,8 +520,11 @@ set(SRCS
     model/catalogs_retail_product_group_product_counts.c
     model/catalogs_retail_product_group_update_request.c
     model/catalogs_retail_product_metadata.c
+    model/catalogs_retail_report_all_items_filter.c
     model/catalogs_retail_report_parameters.c
+    model/catalogs_retail_report_parameters_report.c
     model/catalogs_retail_report_stats_parameters.c
+    model/catalogs_retail_report_stats_parameters_report.c
     model/catalogs_status.c
     model/catalogs_type.c
     model/catalogs_updatable_creative_assets_attributes.c
@@ -418,24 +542,42 @@ set(SRCS
     model/catalogs_vertical_product_group_create_request.c
     model/catalogs_vertical_product_group_update_request.c
     model/catalogs_verticals_list_products_by_catalog_based_filter_request.c
+    model/change_history_data_type.c
+    model/change_history_operation_type.c
+    model/collections_header_type.c
     model/condition_filter.c
     model/content_type.c
-    model/conversion_access_token_response.c
-    model/conversion_api_response.c
-    model/conversion_api_response_events_inner.c
+    model/conversion_access_token.c
+    model/conversion_api_response_events_items.c
     model/conversion_attribution_window_days.c
+    model/conversion_deletion_request.c
+    model/conversion_deletion_request_create.c
+    model/conversion_deletion_request_epik_targets.c
+    model/conversion_deletion_request_list_200_response.c
+    model/conversion_deletion_request_status.c
+    model/conversion_deletion_request_targets.c
+    model/conversion_deletion_request_user_email_targets.c
+    model/conversion_event.c
     model/conversion_event_app_info.c
     model/conversion_event_device_info.c
+    model/conversion_event_ingestion_source.c
     model/conversion_event_response.c
     model/conversion_events.c
-    model/conversion_events_data_inner.c
-    model/conversion_events_data_inner_custom_data.c
-    model/conversion_events_data_inner_custom_data_contents_inner.c
-    model/conversion_events_user_data.c
+    model/conversion_events_create.c
+    model/conversion_events_data_items.c
+    model/conversion_events_data_items_custom_data.c
+    model/conversion_events_data_items_custom_data_contents_items.c
     model/conversion_events_user_data_properties.c
     model/conversion_health_selection_item.c
-    model/conversion_msot_events.c
-    model/conversion_product_report_request.c
+    model/conversion_learning_mode_type.c
+    model/conversion_msot_events_create.c
+    model/conversion_objective_type.c
+    model/conversion_product_attribution_type.c
+    model/conversion_product_report.c
+    model/conversion_product_report_breakdown_type.c
+    model/conversion_product_report_create.c
+    model/conversion_product_report_granularity.c
+    model/conversion_product_report_level.c
     model/conversion_product_reporting_column.c
     model/conversion_report_attribution_type.c
     model/conversion_report_time_type.c
@@ -443,33 +585,28 @@ set(SRCS
     model/conversion_tag_common.c
     model/conversion_tag_configs.c
     model/conversion_tag_create.c
-    model/conversion_tag_list_response.c
     model/conversion_tag_response.c
     model/conversion_tag_type.c
+    model/conversion_tag_type_optimal.c
+    model/conversion_tag_v3_goal_metadata.c
     model/conversion_tags_list_200_response.c
     model/country.c
     model/country_filter.c
     model/create_asset_access_request_body.c
-    model/create_asset_access_request_body_asset_requests_inner.c
-    model/create_asset_access_request_error_message_inner.c
+    model/create_asset_access_request_item.c
     model/create_asset_access_request_response.c
-    model/create_asset_group_body.c
-    model/create_asset_group_response.c
     model/create_asset_invites_request.c
     model/create_asset_invites_request_item.c
     model/create_invites_results_response_array.c
-    model/create_invites_results_response_array_items_inner.c
-    model/create_invites_results_response_array_items_inner_invite.c
     model/create_membership_or_partnership_invites_body.c
-    model/create_mmm_report_request.c
-    model/create_mmm_report_response.c
-    model/create_mmm_report_response_data.c
+    model/creation_source.c
     model/creative_assets_id_filter.c
     model/creative_assets_processing_record.c
     model/creative_assets_visibility_type.c
     model/creative_type.c
     model/currency.c
     model/currency_filter.c
+    model/custom_conversion_event_metrics.c
     model/custom_label0_filter.c
     model/custom_label1_filter.c
     model/custom_label2_filter.c
@@ -481,64 +618,76 @@ set(SRCS
     model/custom_number3_filter.c
     model/custom_number4_filter.c
     model/customer_list.c
-    model/customer_list_request.c
-    model/customer_list_update_request.c
+    model/customer_list_create.c
+    model/customer_list_record_row.c
+    model/customer_list_status.c
+    model/customer_list_update_with_required_body.c
     model/customer_list_upload.c
     model/customer_list_upload_create_request.c
     model/customer_list_upload_create_response.c
-    model/customer_list_upload_response.c
     model/customer_lists_list_200_response.c
+    model/customer_segment.c
+    model/customer_segment_create.c
+    model/customer_segment_list_200_response.c
+    model/customer_segment_update_request_update_with_required_body.c
     model/customizable_cta_type.c
     model/data_output_format.c
     model/data_status.c
-    model/delete_asset_group_body.c
-    model/delete_asset_group_response.c
-    model/delete_asset_group_response_exceptions_inner.c
-    model/delete_invites_results_response_array.c
-    model/delete_invites_results_response_array_items_inner.c
-    model/delete_invites_results_response_array_items_inner_exception.c
+    model/delete_business_membership_200_response.c
+    model/delete_business_membership_body.c
+    model/delete_business_membership_member.c
+    model/delete_business_partners.c
+    model/delete_business_partners_delete.c
     model/delete_member_access_result.c
     model/delete_member_access_results_response_array.c
+    model/delete_member_asset_access_item.c
     model/delete_partner_asset_access_body.c
-    model/delete_partner_asset_access_body_accesses_inner.c
-    model/delete_partner_assets_result.c
-    model/delete_partner_assets_results_response_array.c
-    model/delete_partners_request.c
-    model/delete_partners_response.c
-    model/deleted_members_response.c
-    model/delivery_metrics_response.c
-    model/delivery_metrics_response_items_inner.c
+    model/delete_partner_asset_access_item.c
+    model/delete_partner_asset_access_result.c
+    model/delete_partner_asset_access_results_response_array.c
+    model/delivery_estimate_objective_type.c
+    model/delivery_metrics_get_200_response.c
+    model/delivery_metrics_response_items_items.c
     model/detailed_error.c
     model/disclosure_type.c
+    model/discount_status.c
+    model/dynamic_titles_download_csv.c
+    model/dynamic_titles_get_status.c
+    model/dynamic_titles_process_csv.c
+    model/dynamic_titles_process_csv_create.c
+    model/dynamic_titles_process_csv_error.c
+    model/dynamic_titles_upload_url.c
     model/enhanced_match_status_type.c
+    model/entity_data_change_history.c
+    model/entity_history.c
+    model/entity_label.c
+    model/entity_label_error.c
+    model/entity_label_status.c
     model/entity_status.c
-    model/error.c
     model/error_detail.c
     model/event_data.c
+    model/event_processing_status.c
     model/event_quality_score.c
     model/exception.c
     model/featured_trend.c
     model/feed_processing_results_list_200_response.c
-    model/feeds_create_request.c
     model/feeds_list_200_response.c
-    model/feeds_update_request.c
-    model/follow_user_request.c
+    model/filter_operator_type.c
+    model/follow_user.c
+    model/follow_user_create.c
     model/followers_list_200_response.c
+    model/form_factor.c
+    model/freq_bid_multiplier_time_window.c
+    model/frequency_goal_metadata.c
+    model/frequency_goal_metadata_timerange.c
+    model/frequency_multipliers.c
     model/gender.c
     model/gender_bucket.c
     model/gender_demographics.c
     model/gender_filter.c
-    model/get_audiences_order_by.c
-    model/get_business_asset_type_response.c
-    model/get_business_assets_response.c
-    model/get_business_assets_response_catalog_info.c
+    model/gender_multipliers.c
     model/get_business_employers_200_response.c
-    model/get_business_members_200_response.c
-    model/get_business_partners_200_response.c
     model/get_invites_200_response.c
-    model/get_mmm_report_response.c
-    model/get_mmm_report_response_data.c
-    model/get_partner_assets_response.c
     model/google_product_category0_filter.c
     model/google_product_category1_filter.c
     model/google_product_category2_filter.c
@@ -550,102 +699,132 @@ set(SRCS
     model/grid_click_type.c
     model/hotel_id_filter.c
     model/hotel_processing_record.c
-    model/image_base64.c
+    model/http_method.c
     model/image_details.c
     model/image_metadata.c
     model/image_size.c
+    model/ineligible_product_tag_error_item.c
+    model/ineligible_product_tag_reason.c
+    model/ineligible_product_tags_error_details.c
+    model/ingestion_source.c
     model/ingestion_source_options.c
     model/inner_product_categories_metrics_highlights.c
     model/integration_log.c
     model/integration_log_client_error.c
     model/integration_log_client_request.c
+    model/integration_log_event_type.c
+    model/integration_log_level.c
     model/integration_logs_invalid_log_response.c
-    model/integration_logs_invalid_log_response_rejected_logs_inner.c
-    model/integration_logs_request.c
+    model/integration_logs_invalid_log_response_rejected_logs_items.c
+    model/integration_logs_request_create.c
     model/integration_logs_success_response.c
     model/integration_metadata.c
+    model/integration_metadata_create.c
+    model/integration_metadata_update.c
     model/integration_record.c
-    model/integration_request.c
-    model/integration_request_patch.c
     model/integrations_get_list_200_response.c
-    model/integrations_logs_post_400_response.c
+    model/intended_promotion_type.c
     model/interest.c
     model/interests_enum.c
+    model/invite_action_result_item.c
     model/invite_assets_summary.c
-    model/invite_assets_summary_ad_accounts_inner.c
-    model/invite_assets_summary_profiles_inner.c
+    model/invite_assets_summary_item.c
     model/invite_business_role_binding.c
+    model/invite_data_response.c
     model/invite_exception_response.c
+    model/invite_filter_status.c
     model/invite_response.c
     model/invite_status.c
     model/invite_type.c
     model/item_attributes.c
     model/item_attributes_request.c
-    model/item_attributes_request_all_of_image_link.c
-    model/item_batch_record.c
+    model/item_attributes_request_image_link.c
+    model/item_availability.c
     model/item_create_batch_record.c
     model/item_delete_batch_record.c
     model/item_delete_discontinued_batch_record.c
     model/item_group_id_filter.c
     model/item_id_filter.c
+    model/item_id_store_code_pair.c
     model/item_processing_record.c
     model/item_processing_status.c
     model/item_response.c
-    model/item_response_one_of.c
-    model/item_response_one_of_1.c
     model/item_update_batch_record.c
     model/item_upsert_batch_record.c
     model/item_validation_event.c
-    model/items_batch_post_request.c
     model/items_issues_list_200_response.c
+    model/items_post_200_response.c
     model/keyword.c
+    model/keyword_create_item.c
     model/keyword_error.c
+    model/keyword_info.c
     model/keyword_metrics.c
     model/keyword_metrics_response.c
-    model/keyword_update.c
-    model/keyword_update_body.c
+    model/keyword_update_generated.c
+    model/keyword_update_item.c
+    model/keywords.c
     model/keywords_common.c
+    model/keywords_create.c
     model/keywords_get_200_response.c
     model/keywords_metrics_array_response.c
     model/keywords_request.c
-    model/keywords_response.c
+    model/keywords_update.c
     model/label.c
+    model/label_bulk_create_request.c
     model/label_bulk_update_request.c
+    model/label_create_item.c
     model/label_create_request.c
-    model/label_create_request_labels_inner.c
     model/label_error.c
+    model/label_error_data.c
     model/label_parent_type.c
     model/label_status.c
+    model/label_status_bulk_update.c
     model/label_type.c
+    model/label_update_item.c
     model/label_update_request.c
-    model/label_update_request_labels_inner.c
+    model/labeled_entities.c
+    model/labeled_entities_create.c
     model/labels_list_200_response.c
     model/labels_response.c
     model/language.c
-    model/lead_form_array_response.c
-    model/lead_form_array_response_items_inner.c
-    model/lead_form_common.c
-    model/lead_form_common_policy_links_inner.c
-    model/lead_form_create_request.c
+    model/lead_form.c
+    model/lead_form_batch_update.c
+    model/lead_form_create.c
+    model/lead_form_policy_link.c
     model/lead_form_question.c
     model/lead_form_question_field_type.c
     model/lead_form_question_type.c
-    model/lead_form_response.c
     model/lead_form_status.c
-    model/lead_form_test_request.c
-    model/lead_form_test_response.c
-    model/lead_form_update_request.c
+    model/lead_form_test.c
+    model/lead_form_test_create.c
+    model/lead_forms_create_200_response.c
+    model/lead_forms_create_200_response_items_inner.c
     model/lead_forms_list_200_response.c
     model/lead_subscription.c
+    model/lead_subscription_create.c
+    model/lead_subscription_post_params.c
     model/lead_subscription_post_params_create.c
-    model/lead_subscription_post_params_create_all_of_partner_metadata.c
-    model/leads_export_create_request.c
-    model/leads_export_create_response.c
     model/leads_export_response_data.c
     model/leads_export_status.c
+    model/leads_exports.c
+    model/leads_exports_create.c
     model/line_item.c
+    model/link_filter.c
     model/linked_business.c
-    model/local_store_update.c
+    model/local_inventory_create_operation.c
+    model/local_inventory_delete_operation.c
+    model/local_inventory_item_response.c
+    model/local_inventory_items_batch.c
+    model/local_inventory_items_batch_create.c
+    model/local_inventory_items_get.c
+    model/local_inventory_items_get_create.c
+    model/local_inventory_operation.c
+    model/local_inventory_operation_result.c
+    model/local_inventory_update_operation.c
+    model/local_inventory_upsert_operation.c
+    model/local_store.c
+    model/local_store_batch_update.c
+    model/local_store_create.c
     model/lookback_period_options.c
     model/match_type.c
     model/match_type_response.c
@@ -660,56 +839,62 @@ set(SRCS
     model/media_upload_status.c
     model/media_upload_type.c
     model/member_business_role.c
-    model/members_to_delete_body.c
-    model/members_to_delete_body_members_inner.c
     model/metrics_reporting_level.c
+    model/metrics_reporting_template_type.c
     model/metrics_response.c
+    model/metrics_response_data_items.c
     model/min_price_filter.c
+    model/mmm_report.c
+    model/mmm_report_create.c
+    model/mmm_report_granularity.c
+    model/mmm_report_level.c
     model/mmm_reporting_column.c
     model/mmm_reporting_targeting_type.c
-    model/multiple_product_groups_inner.c
+    model/mobile_app_platform.c
+    model/msot_event_name.c
+    model/multi_pins_analytics_metric_types_item.c
+    model/network_type.c
     model/non_draft_entity_status.c
     model/non_nullable_catalogs_currency.c
-    model/non_nullable_product_availability_type.c
     model/notification_post_request.c
     model/notification_response.c
     model/nullable_catalogs_item_field_type.c
     model/nullable_currency.c
-    model/oauth_access_token_request_client_credentials.c
-    model/oauth_access_token_request_code.c
-    model/oauth_access_token_request_refresh.c
-    model/oauth_access_token_response.c
-    model/oauth_access_token_response_client_credentials.c
-    model/oauth_access_token_response_code.c
-    model/oauth_access_token_response_integration_refresh.c
-    model/oauth_access_token_response_refresh.c
+    model/nullable_entity_status.c
+    model/nullable_label_status.c
+    model/nullable_label_type.c
+    model/nullable_optimization_goal_metadata.c
+    model/nullable_partner_type.c
+    model/nullalble_match_type.c
+    model/numeric_filter_operator_type.c
+    model/oauth_access_token.c
     model/objective_type.c
     model/operation_type.c
     model/optimization_goal_metadata.c
-    model/optimization_goal_metadata_conversion_tag_v3_goal_metadata.c
-    model/optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows.c
-    model/optimization_goal_metadata_frequency_goal_metadata.c
-    model/optimization_goal_metadata_scrollup_goal_metadata.c
+    model/optimization_type.c
+    model/order.c
     model/order_line.c
-    model/order_line_error.c
+    model/order_line_mutation_error.c
+    model/order_line_mutation_response.c
+    model/order_line_mutation_result.c
     model/order_line_paid_type.c
-    model/order_line_response.c
-    model/order_line_single_response.c
     model/order_line_status.c
-    model/order_lines.c
-    model/order_lines_array_response.c
     model/order_lines_list_200_response.c
+    model/os_family.c
     model/overall_status_options.c
     model/pacing_delivery_type.c
     model/page_visit_conversion_tags_get_200_response.c
-    model/paginated.c
+    model/partner_metadata.c
     model/partner_type.c
+    model/performance_plus_campaign_settings.c
     model/permissions.c
     model/permissions_with_owner.c
     model/pin.c
+    model/pin_analytics_daily_metrics.c
     model/pin_analytics_metrics_response.c
-    model/pin_analytics_metrics_response_daily_metrics_inner.c
+    model/pin_base.c
     model/pin_create.c
+    model/pin_filter.c
     model/pin_media.c
     model/pin_media_metadata.c
     model/pin_media_source.c
@@ -727,16 +912,27 @@ set(SRCS
     model/pin_media_with_video.c
     model/pin_media_with_videos.c
     model/pin_promotion_summary_status.c
+    model/pin_read.c
+    model/pin_type.c
     model/pin_update.c
+    model/pinner_list_type.c
     model/pins_list_200_response.c
-    model/pins_save_request.c
+    model/pins_save_request_create.c
+    model/pinterest_lib_batch_item_exception.c
     model/pinterest_lib_error.c
     model/pinterest_lib_pagination_order.c
     model/pinterest_lib_status204.c
+    model/pinterest_product_categories_filter.c
     model/placement_group_type.c
     model/placement_multipliers.c
+    model/placement_traffic_type.c
+    model/placement_type.c
     model/predicted_time_series.c
+    model/preferred_media_type.c
     model/price_filter.c
+    model/price_filter_price.c
+    model/primary_sort.c
+    model/product_availability.c
     model/product_availability_type.c
     model/product_categories_demographic.c
     model/product_categories_engagement_type.c
@@ -745,161 +941,219 @@ set(SRCS
     model/product_category_details.c
     model/product_category_enum.c
     model/product_category_region.c
-    model/product_group_analytics_response_inner.c
+    model/product_condition.c
+    model/product_group_analytics_items.c
     model/product_group_promotion.c
     model/product_group_promotion_create_request.c
-    model/product_group_promotion_response.c
+    model/product_group_promotion_customizable_cta_type.c
     model/product_group_promotion_response_item.c
     model/product_group_promotion_update_request.c
+    model/product_group_promotions.c
+    model/product_group_promotions_create.c
     model/product_group_promotions_list_200_response.c
+    model/product_group_promotions_update_with_required_body.c
     model/product_group_reference_filter.c
     model/product_group_summary_status.c
+    model/product_tag_item.c
+    model/product_tags_bulk_add_request.c
+    model/product_tags_bulk_delete_request.c
+    model/product_tags_error.c
+    model/product_tags_response.c
     model/product_type0_filter.c
     model/product_type1_filter.c
     model/product_type2_filter.c
     model/product_type3_filter.c
     model/product_type4_filter.c
+    model/promotion.c
+    model/promotion_application_level.c
     model/promotion_array_element.c
-    model/promotion_common.c
-    model/promotion_create_request.c
-    model/promotion_response.c
+    model/promotion_batch_update.c
+    model/promotion_create.c
     model/promotion_template_value.c
     model/promotion_type.c
-    model/promotion_update_request.c
     model/promotions_list_200_response.c
     model/promotions_response.c
+    model/public_targeting_type.c
     model/quality_component_details.c
     model/quality_component_issue.c
     model/quality_components.c
+    model/query_label_entity_statuses_items.c
+    model/query_label_types_items.c
+    model/querymetrictypes_items.c
+    model/querypinanalyticsmetrictypes_items.c
+    model/queryvideopinmetrictypes_items.c
     model/quiz_pin_data.c
     model/quiz_pin_option.c
     model/quiz_pin_question.c
     model/quiz_pin_result.c
     model/record_counts.c
     model/related_terms.c
-    model/related_terms_related_terms_list_inner.c
+    model/related_terms_related_terms_list_items.c
+    model/report_type.c
+    model/reporting_column.c
     model/reporting_column_async.c
+    model/reporting_column_sync.c
     model/reporting_time_zone.c
     model/reports_stats_200_response.c
-    model/reports_stats_parameters_parameter.c
+    model/respond_to_invite_result_item.c
     model/respond_to_invites_response_array.c
-    model/respond_to_invites_response_array_items_inner.c
+    model/retail_local_inventory_item_attributes.c
+    model/retail_local_inventory_item_attributes_optional.c
     model/role.c
     model/s3_file_part.c
     model/s3_multipart_upload_data.c
+    model/schedule.c
+    model/schedule_action.c
+    model/schedule_age_bucket_multipliers.c
+    model/schedule_app_type_multipliers.c
+    model/schedule_audience_multipliers.c
+    model/schedule_batch_update.c
+    model/schedule_bid_multipliers.c
+    model/schedule_bid_options.c
+    model/schedule_bid_options_gender_multipliers.c
+    model/schedule_bid_options_placement_multipliers.c
+    model/schedule_common_delta_value.c
+    model/schedule_create.c
+    model/schedule_create_request.c
+    model/schedule_create_request_all_of1.c
+    model/schedule_delta_value.c
+    model/schedule_gender_multipliers.c
+    model/schedule_placement_multipliers.c
+    model/schedule_status.c
+    model/schedule_type.c
+    model/schedule_update_request.c
+    model/schedule_update_request_all_of1.c
+    model/schedules_create_200_response_inner.c
+    model/schedules_create_200_response_inner_data.c
+    model/schedules_create_200_response_inner_data_one_of.c
+    model/schedules_list_200_response.c
+    model/scrollup_goal_metadata.c
     model/search_partner_pins_200_response.c
-    model/search_user_boards_get_200_response.c
-    model/search_user_pins_list_200_response.c
-    model/shared_audience.c
     model/shared_audience_account.c
-    model/shared_audience_common.c
-    model/shared_audience_response.c
-    model/shared_audience_response_common.c
-    model/single_interest_targeting_option_response.c
+    model/shared_audiences_for_business_list_200_response.c
+    model/single_interest_targeting_option.c
     model/source_platform_options.c
+    model/ssio_account.c
     model/ssio_account_address.c
     model/ssio_account_item.c
     model/ssio_account_pmp_name.c
-    model/ssio_account_response.c
-    model/ssio_create_insertion_order_request.c
-    model/ssio_create_insertion_order_response.c
-    model/ssio_edit_insertion_order_request.c
-    model/ssio_edit_insertion_order_response.c
-    model/ssio_insertion_order_common.c
+    model/ssio_insertion_order.c
+    model/ssio_insertion_order_create.c
     model/ssio_insertion_order_status.c
     model/ssio_insertion_order_status_response.c
+    model/ssio_insertion_order_update.c
     model/ssio_insertion_orders_status_get_by_ad_account_200_response.c
     model/ssio_order_line.c
+    model/ssio_order_line_type.c
     model/ssio_order_lines_get_by_ad_account_200_response.c
+    model/standard_pin_metric_types.c
+    model/store_metadata.c
     model/summary_pin.c
-    model/system_user_update_request.c
+    model/summary_status.c
+    model/supplemental_item_batch_operation_status.c
+    model/supplemental_item_processing_status.c
+    model/supplemental_item_validation_event.c
+    model/supplemental_items_batch_response.c
+    model/supplemental_operation_result.c
+    model/system_user_update_with_required_body.c
     model/targeting_advertiser_country.c
     model/targeting_spec.c
     model/targeting_spec_age_bucket.c
     model/targeting_spec_app_type.c
     model/targeting_spec_gender.c
+    model/targeting_spec_list_operation.c
     model/targeting_spec_operation_age_bucket.c
     model/targeting_spec_operation_app_type.c
+    model/targeting_spec_operation_audience_exclude.c
+    model/targeting_spec_operation_audience_include.c
     model/targeting_spec_operation_gender.c
-    model/targeting_spec_operation_list.c
-    model/targeting_spec_operation_min_max_age.c
+    model/targeting_spec_operation_geo.c
+    model/targeting_spec_operation_geo_exclude.c
+    model/targeting_spec_operation_interest.c
+    model/targeting_spec_operation_locale.c
+    model/targeting_spec_operation_location.c
+    model/targeting_spec_operation_location_exclude.c
+    model/targeting_spec_operation_maximum_age.c
+    model/targeting_spec_operation_minimum_age.c
     model/targeting_spec_operation_shopping_retargeting.c
-    model/targeting_spec_operation_string.c
+    model/targeting_spec_operations.c
+    model/targeting_spec_optimal.c
     model/targeting_spec_shopping_retargeting.c
+    model/targeting_spec_targeting_strategy_items.c
+    model/targeting_strategy.c
+    model/targeting_template.c
     model/targeting_template_audience_sizing.c
     model/targeting_template_audience_sizing_reach_estimate.c
-    model/targeting_template_common.c
     model/targeting_template_create.c
-    model/targeting_template_get_response_data.c
     model/targeting_template_keyword.c
     model/targeting_template_list_200_response.c
-    model/targeting_template_response_data.c
-    model/targeting_template_update_request.c
-    model/targeting_type_filter.c
+    model/targeting_template_status.c
+    model/targeting_template_update_request_read_or_update.c
     model/template_based_report.c
-    model/template_response.c
-    model/template_response_date_range.c
-    model/template_response_date_range_absolute_date_range.c
-    model/template_response_date_range_dynamic_date_range.c
-    model/template_response_date_range_relative_date_range.c
+    model/template_based_report_create.c
     model/templates_list_200_response.c
     model/terms_of_service.c
+    model/tie_breaker_type.c
     model/time_series.c
     model/title_keywords_filter.c
+    model/token_grant_type.c
+    model/token_type_hint.c
     model/top_pins_analytics_response.c
     model/top_pins_analytics_response_date_availability.c
-    model/top_pins_analytics_response_pins_inner.c
+    model/top_pins_analytics_response_pins_items.c
+    model/top_pins_sort_by.c
     model/top_video_pins_analytics_response.c
-    model/top_video_pins_analytics_response_pins_inner.c
+    model/top_video_pins_analytics_response_date_availability.c
+    model/top_video_pins_analytics_response_pins_items.c
+    model/top_video_pins_sort_by.c
+    model/total_count_by_entity_status.c
     model/tracking_urls.c
     model/trend_type.c
     model/trending_keyword.c
     model/trending_keyword_demographics.c
-    model/trending_keyword_demographics_age_distribution.c
-    model/trending_keyword_demographics_gender_distribution.c
     model/trending_keywords_response.c
     model/trending_pin.c
     model/trending_product_category.c
     model/trending_topic.c
+    model/trends_age_bucket.c
+    model/trends_age_distribution.c
+    model/trends_editorial.c
+    model/trends_gender.c
+    model/trends_gender_distribution.c
+    model/trends_gender_filter.c
+    model/trends_l1_interest.c
     model/trends_supported_region.c
     model/updatable_item_attributes.c
     model/updatable_item_attributes_gtin.c
-    model/update_asset_group_body.c
-    model/update_asset_group_body_asset_groups_to_update_inner.c
-    model/update_asset_group_response.c
-    model/update_asset_group_response_exceptions_inner.c
+    model/update_business_memberships_response.c
     model/update_invites_results_response_array.c
-    model/update_invites_results_response_array_items_inner.c
     model/update_mask_bid_option_field.c
     model/update_mask_field_type.c
     model/update_member_asset_access_body.c
-    model/update_member_asset_access_body_accesses_inner.c
+    model/update_member_asset_access_item.c
+    model/update_member_asset_result_item.c
     model/update_member_assets_results_response_array.c
-    model/update_member_assets_results_response_array_items_inner.c
-    model/update_member_business_role_body.c
-    model/update_member_result.c
-    model/update_member_results_response_array.c
     model/update_partner_asset_access_body.c
-    model/update_partner_asset_access_body_accesses_inner.c
+    model/update_partner_asset_access_item.c
     model/update_partner_assets_result.c
     model/update_partner_assets_results_response_array.c
-    model/update_partner_results_response_array.c
-    model/update_partner_results_response_array_items_inner.c
     model/user_account_followed_interests_200_response.c
+    model/user_account_type.c
     model/user_business_role_binding.c
     model/user_following_feed_type.c
-    model/user_following_get_200_response.c
     model/user_list_operation_type.c
     model/user_list_type.c
     model/user_single_asset_binding.c
-    model/user_summary.c
-    model/user_website_summary.c
-    model/user_website_verification_code.c
-    model/user_website_verify_request.c
+    model/user_website.c
+    model/user_website_create.c
+    model/user_website_verification.c
     model/user_websites_get_200_response.c
     model/users_for_individual_asset_response.c
     model/vertical_product_category.c
     model/video_metadata_with_item_type.c
+    model/video_pin_metric_types.c
+    model/website_verification_method.c
+    model/workload_state.c
     api/AdAccountsAPI.c
     api/AdGroupsAPI.c
     api/AdsAPI.c
@@ -918,13 +1172,16 @@ set(SRCS
     api/CatalogItemsAPI.c
     api/CatalogProductGroupsAPI.c
     api/CatalogReportsAPI.c
+    api/CatalogSupplementalAPI.c
     api/CatalogsAPI.c
+    api/ConversionDeletionRequestsAPI.c
     api/ConversionEqsAPI.c
     api/ConversionEventsAPI.c
     api/ConversionTagsAPI.c
     api/ConversionsAPI.c
     api/CustomerListUploadsAPI.c
     api/CustomerListsAPI.c
+    api/CustomerSegmentAPI.c
     api/IntegrationsAPI.c
     api/KeywordsAPI.c
     api/LabelsAPI.c
@@ -937,14 +1194,16 @@ set(SRCS
     api/OauthAPI.c
     api/OrderLinesAPI.c
     api/PinsAPI.c
-    api/ProductCategoriesAPI.c
     api/ProductGroupPromotionsAPI.c
+    api/ProductTagsAPI.c
     api/PromotionsAPI.c
     api/ResourcesAPI.c
+    api/SchedulesAPI.c
     api/SearchAPI.c
     api/TargetingTemplateAPI.c
     api/TermsAPI.c
     api/TermsOfServiceAPI.c
+    api/TrendsAPI.c
     api/UserAccountAPI.c
 
 )
@@ -958,127 +1217,192 @@ set(HDRS
     model/object.h
     model/any_type.h
     model/account.h
+    model/account_template.h
     model/action_type.h
+    model/ad.h
     model/ad_account.h
-    model/ad_account_analytics_response_inner.h
+    model/ad_account_analytics_items.h
+    model/ad_account_countries_get_200_response.h
     model/ad_account_create.h
-    model/ad_account_create_subscription_request.h
-    model/ad_account_create_subscription_request_partner_metadata.h
-    model/ad_account_create_subscription_response.h
-    model/ad_account_get_subscription_response.h
+    model/ad_account_entity_type.h
     model/ad_account_owner.h
+    model/ad_account_to_ad_account_shared_audience.h
+    model/ad_account_to_ad_account_shared_audience_update_with_required_body.h
+    model/ad_account_to_business_shared_audience.h
+    model/ad_account_to_business_shared_audience_update_with_required_body.h
+    model/ad_accounts_audience.h
+    model/ad_accounts_audience_create.h
+    model/ad_accounts_audience_rule.h
+    model/ad_accounts_audience_update.h
     model/ad_accounts_audiences_shared_accounts_list_200_response.h
-    model/ad_accounts_country_response.h
-    model/ad_accounts_country_response_data.h
+    model/ad_accounts_country.h
     model/ad_accounts_list_200_response.h
     model/ad_accounts_subscriptions_get_list_200_response.h
-    model/ad_array_response.h
-    model/ad_array_response_element.h
-    model/ad_common.h
-    model/ad_country.h
+    model/ad_ads_analytics_async_targeting_types.h
+    model/ad_batch_item.h
+    model/ad_batch_update.h
+    model/ad_batch_write_response_model.h
+    model/ad_collections_header_type.h
+    model/ad_create.h
     model/ad_create_request.h
-    model/ad_group_array_response.h
-    model/ad_group_array_response_element.h
-    model/ad_group_audience_sizing_request.h
-    model/ad_group_audience_sizing_request_keywords_inner.h
-    model/ad_group_audience_sizing_response.h
-    model/ad_group_common.h
+    model/ad_disapproval_reasons.h
+    model/ad_group.h
+    model/ad_group_audience_sizing.h
+    model/ad_group_audience_sizing_create.h
+    model/ad_group_audience_sizing_creative_types.h
+    model/ad_group_audience_sizing_keyword.h
+    model/ad_group_base.h
+    model/ad_group_create.h
+    model/ad_group_create_create.h
     model/ad_group_create_request.h
-    model/ad_group_id_filter.h
-    model/ad_group_response.h
+    model/ad_group_create_request_all_of1.h
+    model/ad_group_delivery_estimates.h
+    model/ad_group_delivery_estimates_keywords_items.h
     model/ad_group_summary_status.h
+    model/ad_group_tracking_urls.h
+    model/ad_group_update.h
+    model/ad_group_update_batch_update.h
     model/ad_group_update_request.h
-    model/ad_groups_analytics_response_inner.h
+    model/ad_group_update_request_all_of1.h
+    model/ad_groups_analytics_metrics.h
+    model/ad_groups_create_200_response.h
+    model/ad_groups_create_200_response_items_inner.h
     model/ad_groups_list_200_response.h
     model/ad_pin_analytics.h
-    model/ad_pin_id.h
-    model/ad_preview_create_from_image.h
-    model/ad_preview_create_from_pin.h
+    model/ad_pin_preview_creative_type.h
     model/ad_preview_request.h
     model/ad_preview_shopping.h
+    model/ad_preview_source_image.h
+    model/ad_preview_source_pin_id.h
     model/ad_preview_url_response.h
-    model/ad_response.h
+    model/ad_review_status.h
+    model/ad_shopping_preview_creative_type.h
     model/ad_update_request.h
+    model/ad_update_request_all_of1.h
+    model/ade_column_type.h
+    model/adgroup_placement_group_type.h
+    model/adgroup_tracking_feature_type.h
+    model/adgroup_tracking_features.h
+    model/ads_analytics.h
+    model/ads_analytics_account_targeting_type.h
     model/ads_analytics_ad_group_targeting_type.h
     model/ads_analytics_ad_targeting_type.h
     model/ads_analytics_campaign_targeting_type.h
     model/ads_analytics_create_async_request.h
-    model/ads_analytics_create_async_request_all_of_custom_conversion_event_metrics.h
     model/ads_analytics_create_async_response.h
     model/ads_analytics_filter_column.h
     model/ads_analytics_filter_operator.h
     model/ads_analytics_get_async_response.h
     model/ads_analytics_metrics_filter.h
-    model/ads_analytics_response_inner.h
-    model/ads_analytics_targeting_type.h
+    model/ads_credit_discount_type.h
     model/ads_credit_discounts_response.h
-    model/ads_credit_redeem_request.h
-    model/ads_credit_redeem_response.h
+    model/ads_credit_redeem.h
+    model/ads_credit_redeem_create.h
     model/ads_credits_discounts_get_200_response.h
     model/ads_list_200_response.h
     model/advanced_auction_bid_options.h
     model/advanced_auction_item.h
     model/advanced_auction_items.h
-    model/advanced_auction_items_get_record.h
     model/advanced_auction_items_get_request.h
     model/advanced_auction_items_submit_delete_record.h
     model/advanced_auction_items_submit_record.h
     model/advanced_auction_items_submit_request.h
     model/advanced_auction_items_submit_upsert_record.h
     model/advanced_auction_key.h
-    model/advanced_auction_operation.h
     model/advanced_auction_operation_error.h
     model/advanced_auction_processed_items.h
     model/advertiser_defined_event.h
-    model/advertiser_defined_events_response.h
+    model/advertiser_defined_event_input.h
+    model/advertiser_defined_event_mapping_type.h
+    model/advertiser_defined_event_processing_record.h
+    model/advertiser_defined_events_create_200_response.h
+    model/advertiser_defined_events_create_request.h
+    model/advertiser_defined_events_get_200_response.h
+    model/age_bucket_multipliers.h
     model/age_trends_bucket.h
-    model/all_of.h
+    model/aggregated_pin_comment.h
+    model/ai_disclosure_item.h
+    model/ai_disclosures.h
+    model/ai_disclosures_update.h
     model/amazon_connect_request.h
+    model/amazon_connect_response.h
     model/analytics_daily_metrics.h
     model/analytics_metrics_response.h
-    model/any_of.h
     model/app_type_multipliers.h
+    model/appsflyer_audience.h
+    model/appsflyer_audience_create.h
+    model/appsflyer_audience_sync_create.h
+    model/appsflyer_platform.h
+    model/asset_access_request_error.h
     model/asset_group_binding.h
+    model/asset_group_delete_error.h
+    model/asset_group_deletion.h
+    model/asset_group_deletion_delete.h
+    model/asset_group_input.h
+    model/asset_group_input_create.h
+    model/asset_group_modification.h
+    model/asset_group_modification_read_or_update.h
     model/asset_group_type.h
+    model/asset_group_update_error.h
+    model/asset_group_update_item_read_or_update_item.h
     model/asset_id_permissions.h
+    model/asset_id_with_permissions.h
+    model/asset_permission_type.h
+    model/asset_search_by.h
+    model/asset_sort_by.h
+    model/asset_type_response.h
+    model/attribution_action_type.h
+    model/attribution_match_type.h
+    model/attribution_model.h
+    model/attribution_scope.h
+    model/attribution_windows.h
     model/audience.h
     model/audience_account_type.h
     model/audience_category.h
-    model/audience_common.h
-    model/audience_create_request.h
     model/audience_definition.h
-    model/audience_definition_response.h
-    model/audience_definition_scope.h
-    model/audience_definition_type.h
     model/audience_demographic_value.h
     model/audience_demographics.h
-    model/audience_insight_category_array_response.h
-    model/audience_insight_category_common.h
     model/audience_insight_type.h
-    model/audience_insights_response.h
+    model/audience_insights.h
+    model/audience_insights_scope_and_type_get_200_response.h
+    model/audience_objective_type.h
+    model/audience_ownership_type.h
     model/audience_rule.h
-    model/audience_share_type.h
+    model/audience_status.h
     model/audience_subcategory.h
     model/audience_type.h
     model/audience_update_operation_type.h
-    model/audience_update_request.h
     model/audiences_list_200_response.h
+    model/auth_respond_invite_action.h
     model/auth_respond_invites_body.h
-    model/auth_respond_invites_body_invites_inner.h
-    model/auth_respond_invites_body_invites_inner_action.h
+    model/auth_respond_invites_body_item.h
     model/availability_filter.h
+    model/base_business_assets.h
     model/base_invite_data_response.h
-    model/base_invite_data_response_invite_data.h
-    model/batch_operation.h
+    model/base_preferred_media_type.h
     model/batch_operation_status.h
     model/bid_floor.h
-    model/bid_floor_request.h
+    model/bid_floor_create.h
+    model/bid_floor_objective_type.h
     model/bid_floor_spec.h
+    model/bid_options_age_bucket_multipliers.h
+    model/bid_options_app_type_multipliers.h
+    model/bid_options_audience_multipliers.h
+    model/bid_options_gender_multipliers.h
+    model/bid_options_placement_multipliers.h
+    model/bid_strategy_type.h
+    model/billing_invoice.h
+    model/billing_invoice_document_type.h
     model/billing_invoice_download_response.h
-    model/billing_invoice_response.h
+    model/billing_invoice_sort_field.h
+    model/billing_invoice_status.h
     model/billing_invoices_get_200_response.h
+    model/billing_profile_card_type.h
+    model/billing_profile_payment_method_brand.h
+    model/billing_profile_status.h
     model/billing_profiles_get_200_response.h
     model/billing_profiles_response.h
+    model/billing_type.h
     model/board.h
     model/board_base.h
     model/board_create.h
@@ -1087,76 +1411,124 @@ set(HDRS
     model/board_privacy.h
     model/board_privacy_filter.h
     model/board_section.h
+    model/board_section_create.h
+    model/board_section_update_with_required_body.h
     model/board_sections_list_200_response.h
     model/board_update_privacy.h
     model/board_with_update_privacy.h
     model/board_with_update_privacy_update.h
     model/boards_list_200_response.h
     model/boards_list_pins_200_response.h
-    model/boards_user_follows_list_200_response.h
-    model/book_closed_response.h
-    model/brand_accounts_create_200_response.h
-    model/brand_accounts_create_request.h
-    model/brand_accounts_update_request.h
+    model/book_closed.h
+    model/brand_account.h
+    model/brand_account_create.h
+    model/brand_account_profile_image.h
+    model/brand_account_profile_image_update.h
+    model/brand_account_update.h
     model/brand_filter.h
+    model/budget_duration_type.h
     model/budget_type.h
-    model/bulk_download_request.h
-    model/bulk_download_request_campaign_filter.h
-    model/bulk_download_response.h
+    model/bulk_campaign_delivery_estimates_item.h
+    model/bulk_campaign_delivery_estimates_response.h
+    model/bulk_download.h
+    model/bulk_download_campaign_filter.h
+    model/bulk_download_create.h
     model/bulk_entity_type.h
+    model/bulk_job_data.h
     model/bulk_output_format.h
     model/bulk_reporting_job_status.h
+    model/bulk_request_status.h
     model/bulk_upsert_request.h
     model/bulk_upsert_request_create.h
+    model/bulk_upsert_request_create_catalog_product_groups_items.h
     model/bulk_upsert_request_update.h
+    model/bulk_upsert_request_update_catalog_product_groups_items.h
     model/bulk_upsert_response.h
-    model/bulk_upsert_status.h
-    model/bulk_upsert_status_response.h
-    model/business_access_error.h
     model/business_access_role.h
     model/business_access_user_summary.h
     model/business_asset_members_get_200_response.h
-    model/business_asset_partners_get_200_response.h
+    model/business_assets.h
     model/business_assets_get_200_response.h
-    model/business_member_assets_get_200_response.h
+    model/business_member_assets_get_response.h
     model/business_member_assets_summary.h
-    model/business_member_assets_summary_ad_accounts_inner.h
-    model/business_member_assets_summary_profiles_inner.h
-    model/business_members_asset_access_delete_request.h
-    model/business_members_asset_access_delete_request_accesses_inner.h
+    model/business_member_sort_by.h
+    model/business_members_asset_access_delete_body.h
+    model/business_membership_member.h
     model/business_partner_asset_access_get_200_response.h
-    model/business_role.h
-    model/business_role_check_mode.h
+    model/business_role_for_invite.h
     model/business_role_for_members.h
-    model/business_shared_audience.h
-    model/business_shared_audience_response.h
+    model/business_search_by.h
+    model/business_to_ad_account_shared_audience.h
+    model/business_to_ad_account_shared_audience_update_with_required_body.h
+    model/business_to_business_shared_audience.h
+    model/business_to_business_shared_audience_update_with_required_body.h
+    model/campaign.h
+    model/campaign_ad_preview.h
+    model/campaign_ad_preview_create.h
+    model/campaign_ad_preview_create_200_response_inner.h
+    model/campaign_ad_preview_create_200_response_inner_data.h
+    model/campaign_ad_preview_create_200_response_inner_data_one_of.h
+    model/campaign_ad_preview_delete_200_response_inner.h
+    model/campaign_ad_preview_delete_200_response_inner_status.h
     model/campaign_audience_multipliers.h
+    model/campaign_batch_item.h
+    model/campaign_batch_response_data.h
+    model/campaign_batch_update_item.h
+    model/campaign_batch_write_response_model.h
     model/campaign_bid_options.h
     model/campaign_bid_options_create.h
     model/campaign_bid_options_update.h
-    model/campaign_common.h
-    model/campaign_create_common.h
+    model/campaign_bid_options_update_mask_items.h
+    model/campaign_create_item.h
     model/campaign_create_request.h
-    model/campaign_create_response.h
-    model/campaign_create_response_data.h
-    model/campaign_create_response_item.h
-    model/campaign_id.h
-    model/campaign_id_filter.h
-    model/campaign_objectives_filter.h
-    model/campaign_response.h
+    model/campaign_create_request_all_of1.h
+    model/campaign_delivery_estimates_campaign.h
+    model/campaign_delivery_estimates_derived_metrics.h
+    model/campaign_delivery_estimates_response.h
+    model/campaign_objective_type.h
+    model/campaign_planning_ad_group_audience_size.h
+    model/campaign_planning_budget_recommendation.h
+    model/campaign_planning_budget_recommendation_point.h
+    model/campaign_planning_confidence_level_alert.h
+    model/campaign_planning_confidence_level_alert_reason.h
+    model/campaign_planning_confidence_level_alert_severity.h
+    model/campaign_planning_conversion_attribution.h
+    model/campaign_planning_conversion_attribution_window_days.h
+    model/campaign_planning_conversion_event.h
+    model/campaign_planning_conversion_rate.h
+    model/campaign_planning_curve_estimate.h
+    model/campaign_planning_estimation_type.h
+    model/campaign_planning_experiment_budget_recommendation.h
+    model/campaign_planning_point_estimate.h
+    model/campaign_planning_response_error.h
+    model/campaign_planning_response_error_code.h
     model/campaign_summary_status.h
     model/campaign_update_request.h
-    model/campaign_update_response.h
-    model/campaigns_analytics_response_inner.h
+    model/campaign_update_request_all_of2.h
+    model/campaigns_analytics_metrics.h
     model/campaigns_list_200_response.h
-    model/cancel_invites_body.h
+    model/cancel_invite_exception.h
+    model/cancel_invite_result.h
+    model/cancel_invite_result_item.h
+    model/cancel_invite_result_user.h
+    model/cancel_invites_request.h
+    model/cancel_invites_response.h
     model/carousel_slot.h
+    model/carting_product.h
+    model/carting_retailer.h
     model/catalog.h
+    model/catalog_binding.h
+    model/catalog_create.h
+    model/catalog_update.h
+    model/catalogs_ai_content_disclosure.h
+    model/catalogs_ai_content_disclosure_label.h
     model/catalogs_available_filter_values.h
+    model/catalogs_base_filter_keys.h
+    model/catalogs_base_filters_all_of.h
+    model/catalogs_base_filters_any_of.h
     model/catalogs_create_creative_assets_item.h
     model/catalogs_create_hotel_item.h
     model/catalogs_create_report_response.h
-    model/catalogs_create_request.h
     model/catalogs_create_retail_item.h
     model/catalogs_creative_assets_attributes.h
     model/catalogs_creative_assets_available_filter_values.h
@@ -1164,12 +1536,12 @@ set(HDRS
     model/catalogs_creative_assets_batch_request.h
     model/catalogs_creative_assets_feed.h
     model/catalogs_creative_assets_feeds_create_request.h
+    model/catalogs_creative_assets_feeds_create_request_default_locale.h
     model/catalogs_creative_assets_feeds_update_request.h
     model/catalogs_creative_assets_filter_values_map.h
     model/catalogs_creative_assets_item_error_response.h
     model/catalogs_creative_assets_item_response.h
     model/catalogs_creative_assets_items_batch.h
-    model/catalogs_creative_assets_items_filter.h
     model/catalogs_creative_assets_items_post_filter.h
     model/catalogs_creative_assets_list_products_by_catalog_based_filter_request.h
     model/catalogs_creative_assets_product.h
@@ -1182,11 +1554,11 @@ set(HDRS
     model/catalogs_creative_assets_product_group_product_counts.h
     model/catalogs_creative_assets_product_group_update_request.h
     model/catalogs_creative_assets_product_metadata.h
-    model/catalogs_db_item.h
     model/catalogs_delete_creative_assets_item.h
     model/catalogs_delete_hotel_item.h
     model/catalogs_delete_retail_item.h
     model/catalogs_feed.h
+    model/catalogs_feed_create_request_schema.h
     model/catalogs_feed_credentials.h
     model/catalogs_feed_ingestion.h
     model/catalogs_feed_ingestion_details.h
@@ -1195,19 +1567,19 @@ set(HDRS
     model/catalogs_feed_ingestion_warnings.h
     model/catalogs_feed_processing_result.h
     model/catalogs_feed_processing_schedule.h
+    model/catalogs_feed_processing_schedule_timezone.h
     model/catalogs_feed_processing_status.h
     model/catalogs_feed_product_counts.h
+    model/catalogs_feed_update_request_schema.h
     model/catalogs_feed_validation_details.h
     model/catalogs_feed_validation_errors.h
     model/catalogs_feed_validation_warnings.h
     model/catalogs_feed_video_counts.h
     model/catalogs_feeds_create_request.h
-    model/catalogs_feeds_create_request_default_locale.h
     model/catalogs_feeds_update_request.h
     model/catalogs_format.h
     model/catalogs_hotel_address.h
     model/catalogs_hotel_attributes.h
-    model/catalogs_hotel_attributes_all_of_main_image.h
     model/catalogs_hotel_available_filter_values.h
     model/catalogs_hotel_batch_item.h
     model/catalogs_hotel_batch_request.h
@@ -1219,9 +1591,9 @@ set(HDRS
     model/catalogs_hotel_item_error_response.h
     model/catalogs_hotel_item_response.h
     model/catalogs_hotel_items_batch.h
-    model/catalogs_hotel_items_filter.h
     model/catalogs_hotel_items_post_filter.h
     model/catalogs_hotel_list_products_by_catalog_based_filter_request.h
+    model/catalogs_hotel_main_image.h
     model/catalogs_hotel_product.h
     model/catalogs_hotel_product_group.h
     model/catalogs_hotel_product_group_create_request.h
@@ -1242,13 +1614,12 @@ set(HDRS
     model/catalogs_item_validation_issue.h
     model/catalogs_item_validation_issues.h
     model/catalogs_item_validation_warnings.h
-    model/catalogs_items.h
     model/catalogs_items_batch.h
+    model/catalogs_items_batch_post_request.h
     model/catalogs_items_batch_request.h
     model/catalogs_items_create_batch_request.h
     model/catalogs_items_delete_batch_request.h
     model/catalogs_items_delete_discontinued_batch_request.h
-    model/catalogs_items_filters.h
     model/catalogs_items_post_filters.h
     model/catalogs_items_request.h
     model/catalogs_items_update_batch_request.h
@@ -1256,6 +1627,11 @@ set(HDRS
     model/catalogs_list_200_response.h
     model/catalogs_list_products_by_feed_based_filter.h
     model/catalogs_list_products_by_filter_request.h
+    model/catalogs_local_stores_create_200_response_inner.h
+    model/catalogs_local_stores_create_200_response_inner_data.h
+    model/catalogs_local_stores_create_200_response_inner_data_one_of.h
+    model/catalogs_local_stores_delete_200_response_inner.h
+    model/catalogs_local_stores_list_200_response.h
     model/catalogs_locale.h
     model/catalogs_product.h
     model/catalogs_product_group_create_request.h
@@ -1266,32 +1642,37 @@ set(HDRS
     model/catalogs_product_group_filters_all_of.h
     model/catalogs_product_group_filters_any_of.h
     model/catalogs_product_group_filters_request.h
+    model/catalogs_product_group_filters_request_any_of_items0.h
+    model/catalogs_product_group_filters_request_any_of_items1.h
     model/catalogs_product_group_multiple_countries_criteria.h
     model/catalogs_product_group_multiple_gender_criteria.h
     model/catalogs_product_group_multiple_media_types_criteria.h
+    model/catalogs_product_group_multiple_pinterest_product_category_criteria.h
     model/catalogs_product_group_multiple_string_criteria.h
     model/catalogs_product_group_multiple_string_list_criteria.h
     model/catalogs_product_group_pins_list_200_response.h
     model/catalogs_product_group_pricing_criteria.h
-    model/catalogs_product_group_pricing_currency_criteria.h
     model/catalogs_product_group_product_counts_vertical.h
     model/catalogs_product_group_status.h
     model/catalogs_product_group_type.h
     model/catalogs_product_group_uint32_criteria.h
+    model/catalogs_product_group_update_many_request_items_one_of_items0.h
     model/catalogs_product_group_update_request.h
+    model/catalogs_product_groups_create_many_request_items.h
+    model/catalogs_product_groups_create_request_schema.h
     model/catalogs_product_groups_list_200_response.h
-    model/catalogs_product_groups_update_request.h
+    model/catalogs_product_groups_update_request_schema.h
     model/catalogs_report.h
-    model/catalogs_report_all_items_filter.h
     model/catalogs_report_distribution_issue_filter.h
     model/catalogs_report_distribution_stats.h
     model/catalogs_report_feed_ingestion_filter.h
     model/catalogs_report_feed_ingestion_stats.h
     model/catalogs_report_parameters.h
     model/catalogs_report_stats.h
+    model/catalogs_report_stats_parameters.h
     model/catalogs_retail_available_filter_values.h
     model/catalogs_retail_batch_request.h
-    model/catalogs_retail_batch_request_items_inner.h
+    model/catalogs_retail_batch_request_items_items.h
     model/catalogs_retail_feed.h
     model/catalogs_retail_feeds_create_request.h
     model/catalogs_retail_feeds_update_request.h
@@ -1299,7 +1680,6 @@ set(HDRS
     model/catalogs_retail_item_error_response.h
     model/catalogs_retail_item_response.h
     model/catalogs_retail_items_batch.h
-    model/catalogs_retail_items_filter.h
     model/catalogs_retail_items_post_filter.h
     model/catalogs_retail_list_products_by_catalog_based_filter_request.h
     model/catalogs_retail_product.h
@@ -1308,8 +1688,11 @@ set(HDRS
     model/catalogs_retail_product_group_product_counts.h
     model/catalogs_retail_product_group_update_request.h
     model/catalogs_retail_product_metadata.h
+    model/catalogs_retail_report_all_items_filter.h
     model/catalogs_retail_report_parameters.h
+    model/catalogs_retail_report_parameters_report.h
     model/catalogs_retail_report_stats_parameters.h
+    model/catalogs_retail_report_stats_parameters_report.h
     model/catalogs_status.h
     model/catalogs_type.h
     model/catalogs_updatable_creative_assets_attributes.h
@@ -1327,24 +1710,42 @@ set(HDRS
     model/catalogs_vertical_product_group_create_request.h
     model/catalogs_vertical_product_group_update_request.h
     model/catalogs_verticals_list_products_by_catalog_based_filter_request.h
+    model/change_history_data_type.h
+    model/change_history_operation_type.h
+    model/collections_header_type.h
     model/condition_filter.h
     model/content_type.h
-    model/conversion_access_token_response.h
-    model/conversion_api_response.h
-    model/conversion_api_response_events_inner.h
+    model/conversion_access_token.h
+    model/conversion_api_response_events_items.h
     model/conversion_attribution_window_days.h
+    model/conversion_deletion_request.h
+    model/conversion_deletion_request_create.h
+    model/conversion_deletion_request_epik_targets.h
+    model/conversion_deletion_request_list_200_response.h
+    model/conversion_deletion_request_status.h
+    model/conversion_deletion_request_targets.h
+    model/conversion_deletion_request_user_email_targets.h
+    model/conversion_event.h
     model/conversion_event_app_info.h
     model/conversion_event_device_info.h
+    model/conversion_event_ingestion_source.h
     model/conversion_event_response.h
     model/conversion_events.h
-    model/conversion_events_data_inner.h
-    model/conversion_events_data_inner_custom_data.h
-    model/conversion_events_data_inner_custom_data_contents_inner.h
-    model/conversion_events_user_data.h
+    model/conversion_events_create.h
+    model/conversion_events_data_items.h
+    model/conversion_events_data_items_custom_data.h
+    model/conversion_events_data_items_custom_data_contents_items.h
     model/conversion_events_user_data_properties.h
     model/conversion_health_selection_item.h
-    model/conversion_msot_events.h
-    model/conversion_product_report_request.h
+    model/conversion_learning_mode_type.h
+    model/conversion_msot_events_create.h
+    model/conversion_objective_type.h
+    model/conversion_product_attribution_type.h
+    model/conversion_product_report.h
+    model/conversion_product_report_breakdown_type.h
+    model/conversion_product_report_create.h
+    model/conversion_product_report_granularity.h
+    model/conversion_product_report_level.h
     model/conversion_product_reporting_column.h
     model/conversion_report_attribution_type.h
     model/conversion_report_time_type.h
@@ -1352,33 +1753,28 @@ set(HDRS
     model/conversion_tag_common.h
     model/conversion_tag_configs.h
     model/conversion_tag_create.h
-    model/conversion_tag_list_response.h
     model/conversion_tag_response.h
     model/conversion_tag_type.h
+    model/conversion_tag_type_optimal.h
+    model/conversion_tag_v3_goal_metadata.h
     model/conversion_tags_list_200_response.h
     model/country.h
     model/country_filter.h
     model/create_asset_access_request_body.h
-    model/create_asset_access_request_body_asset_requests_inner.h
-    model/create_asset_access_request_error_message_inner.h
+    model/create_asset_access_request_item.h
     model/create_asset_access_request_response.h
-    model/create_asset_group_body.h
-    model/create_asset_group_response.h
     model/create_asset_invites_request.h
     model/create_asset_invites_request_item.h
     model/create_invites_results_response_array.h
-    model/create_invites_results_response_array_items_inner.h
-    model/create_invites_results_response_array_items_inner_invite.h
     model/create_membership_or_partnership_invites_body.h
-    model/create_mmm_report_request.h
-    model/create_mmm_report_response.h
-    model/create_mmm_report_response_data.h
+    model/creation_source.h
     model/creative_assets_id_filter.h
     model/creative_assets_processing_record.h
     model/creative_assets_visibility_type.h
     model/creative_type.h
     model/currency.h
     model/currency_filter.h
+    model/custom_conversion_event_metrics.h
     model/custom_label0_filter.h
     model/custom_label1_filter.h
     model/custom_label2_filter.h
@@ -1390,64 +1786,76 @@ set(HDRS
     model/custom_number3_filter.h
     model/custom_number4_filter.h
     model/customer_list.h
-    model/customer_list_request.h
-    model/customer_list_update_request.h
+    model/customer_list_create.h
+    model/customer_list_record_row.h
+    model/customer_list_status.h
+    model/customer_list_update_with_required_body.h
     model/customer_list_upload.h
     model/customer_list_upload_create_request.h
     model/customer_list_upload_create_response.h
-    model/customer_list_upload_response.h
     model/customer_lists_list_200_response.h
+    model/customer_segment.h
+    model/customer_segment_create.h
+    model/customer_segment_list_200_response.h
+    model/customer_segment_update_request_update_with_required_body.h
     model/customizable_cta_type.h
     model/data_output_format.h
     model/data_status.h
-    model/delete_asset_group_body.h
-    model/delete_asset_group_response.h
-    model/delete_asset_group_response_exceptions_inner.h
-    model/delete_invites_results_response_array.h
-    model/delete_invites_results_response_array_items_inner.h
-    model/delete_invites_results_response_array_items_inner_exception.h
+    model/delete_business_membership_200_response.h
+    model/delete_business_membership_body.h
+    model/delete_business_membership_member.h
+    model/delete_business_partners.h
+    model/delete_business_partners_delete.h
     model/delete_member_access_result.h
     model/delete_member_access_results_response_array.h
+    model/delete_member_asset_access_item.h
     model/delete_partner_asset_access_body.h
-    model/delete_partner_asset_access_body_accesses_inner.h
-    model/delete_partner_assets_result.h
-    model/delete_partner_assets_results_response_array.h
-    model/delete_partners_request.h
-    model/delete_partners_response.h
-    model/deleted_members_response.h
-    model/delivery_metrics_response.h
-    model/delivery_metrics_response_items_inner.h
+    model/delete_partner_asset_access_item.h
+    model/delete_partner_asset_access_result.h
+    model/delete_partner_asset_access_results_response_array.h
+    model/delivery_estimate_objective_type.h
+    model/delivery_metrics_get_200_response.h
+    model/delivery_metrics_response_items_items.h
     model/detailed_error.h
     model/disclosure_type.h
+    model/discount_status.h
+    model/dynamic_titles_download_csv.h
+    model/dynamic_titles_get_status.h
+    model/dynamic_titles_process_csv.h
+    model/dynamic_titles_process_csv_create.h
+    model/dynamic_titles_process_csv_error.h
+    model/dynamic_titles_upload_url.h
     model/enhanced_match_status_type.h
+    model/entity_data_change_history.h
+    model/entity_history.h
+    model/entity_label.h
+    model/entity_label_error.h
+    model/entity_label_status.h
     model/entity_status.h
-    model/error.h
     model/error_detail.h
     model/event_data.h
+    model/event_processing_status.h
     model/event_quality_score.h
     model/exception.h
     model/featured_trend.h
     model/feed_processing_results_list_200_response.h
-    model/feeds_create_request.h
     model/feeds_list_200_response.h
-    model/feeds_update_request.h
-    model/follow_user_request.h
+    model/filter_operator_type.h
+    model/follow_user.h
+    model/follow_user_create.h
     model/followers_list_200_response.h
+    model/form_factor.h
+    model/freq_bid_multiplier_time_window.h
+    model/frequency_goal_metadata.h
+    model/frequency_goal_metadata_timerange.h
+    model/frequency_multipliers.h
     model/gender.h
     model/gender_bucket.h
     model/gender_demographics.h
     model/gender_filter.h
-    model/get_audiences_order_by.h
-    model/get_business_asset_type_response.h
-    model/get_business_assets_response.h
-    model/get_business_assets_response_catalog_info.h
+    model/gender_multipliers.h
     model/get_business_employers_200_response.h
-    model/get_business_members_200_response.h
-    model/get_business_partners_200_response.h
     model/get_invites_200_response.h
-    model/get_mmm_report_response.h
-    model/get_mmm_report_response_data.h
-    model/get_partner_assets_response.h
     model/google_product_category0_filter.h
     model/google_product_category1_filter.h
     model/google_product_category2_filter.h
@@ -1459,102 +1867,132 @@ set(HDRS
     model/grid_click_type.h
     model/hotel_id_filter.h
     model/hotel_processing_record.h
-    model/image_base64.h
+    model/http_method.h
     model/image_details.h
     model/image_metadata.h
     model/image_size.h
+    model/ineligible_product_tag_error_item.h
+    model/ineligible_product_tag_reason.h
+    model/ineligible_product_tags_error_details.h
+    model/ingestion_source.h
     model/ingestion_source_options.h
     model/inner_product_categories_metrics_highlights.h
     model/integration_log.h
     model/integration_log_client_error.h
     model/integration_log_client_request.h
+    model/integration_log_event_type.h
+    model/integration_log_level.h
     model/integration_logs_invalid_log_response.h
-    model/integration_logs_invalid_log_response_rejected_logs_inner.h
-    model/integration_logs_request.h
+    model/integration_logs_invalid_log_response_rejected_logs_items.h
+    model/integration_logs_request_create.h
     model/integration_logs_success_response.h
     model/integration_metadata.h
+    model/integration_metadata_create.h
+    model/integration_metadata_update.h
     model/integration_record.h
-    model/integration_request.h
-    model/integration_request_patch.h
     model/integrations_get_list_200_response.h
-    model/integrations_logs_post_400_response.h
+    model/intended_promotion_type.h
     model/interest.h
     model/interests_enum.h
+    model/invite_action_result_item.h
     model/invite_assets_summary.h
-    model/invite_assets_summary_ad_accounts_inner.h
-    model/invite_assets_summary_profiles_inner.h
+    model/invite_assets_summary_item.h
     model/invite_business_role_binding.h
+    model/invite_data_response.h
     model/invite_exception_response.h
+    model/invite_filter_status.h
     model/invite_response.h
     model/invite_status.h
     model/invite_type.h
     model/item_attributes.h
     model/item_attributes_request.h
-    model/item_attributes_request_all_of_image_link.h
-    model/item_batch_record.h
+    model/item_attributes_request_image_link.h
+    model/item_availability.h
     model/item_create_batch_record.h
     model/item_delete_batch_record.h
     model/item_delete_discontinued_batch_record.h
     model/item_group_id_filter.h
     model/item_id_filter.h
+    model/item_id_store_code_pair.h
     model/item_processing_record.h
     model/item_processing_status.h
     model/item_response.h
-    model/item_response_one_of.h
-    model/item_response_one_of_1.h
     model/item_update_batch_record.h
     model/item_upsert_batch_record.h
     model/item_validation_event.h
-    model/items_batch_post_request.h
     model/items_issues_list_200_response.h
+    model/items_post_200_response.h
     model/keyword.h
+    model/keyword_create_item.h
     model/keyword_error.h
+    model/keyword_info.h
     model/keyword_metrics.h
     model/keyword_metrics_response.h
-    model/keyword_update.h
-    model/keyword_update_body.h
+    model/keyword_update_generated.h
+    model/keyword_update_item.h
+    model/keywords.h
     model/keywords_common.h
+    model/keywords_create.h
     model/keywords_get_200_response.h
     model/keywords_metrics_array_response.h
     model/keywords_request.h
-    model/keywords_response.h
+    model/keywords_update.h
     model/label.h
+    model/label_bulk_create_request.h
     model/label_bulk_update_request.h
+    model/label_create_item.h
     model/label_create_request.h
-    model/label_create_request_labels_inner.h
     model/label_error.h
+    model/label_error_data.h
     model/label_parent_type.h
     model/label_status.h
+    model/label_status_bulk_update.h
     model/label_type.h
+    model/label_update_item.h
     model/label_update_request.h
-    model/label_update_request_labels_inner.h
+    model/labeled_entities.h
+    model/labeled_entities_create.h
     model/labels_list_200_response.h
     model/labels_response.h
     model/language.h
-    model/lead_form_array_response.h
-    model/lead_form_array_response_items_inner.h
-    model/lead_form_common.h
-    model/lead_form_common_policy_links_inner.h
-    model/lead_form_create_request.h
+    model/lead_form.h
+    model/lead_form_batch_update.h
+    model/lead_form_create.h
+    model/lead_form_policy_link.h
     model/lead_form_question.h
     model/lead_form_question_field_type.h
     model/lead_form_question_type.h
-    model/lead_form_response.h
     model/lead_form_status.h
-    model/lead_form_test_request.h
-    model/lead_form_test_response.h
-    model/lead_form_update_request.h
+    model/lead_form_test.h
+    model/lead_form_test_create.h
+    model/lead_forms_create_200_response.h
+    model/lead_forms_create_200_response_items_inner.h
     model/lead_forms_list_200_response.h
     model/lead_subscription.h
+    model/lead_subscription_create.h
+    model/lead_subscription_post_params.h
     model/lead_subscription_post_params_create.h
-    model/lead_subscription_post_params_create_all_of_partner_metadata.h
-    model/leads_export_create_request.h
-    model/leads_export_create_response.h
     model/leads_export_response_data.h
     model/leads_export_status.h
+    model/leads_exports.h
+    model/leads_exports_create.h
     model/line_item.h
+    model/link_filter.h
     model/linked_business.h
-    model/local_store_update.h
+    model/local_inventory_create_operation.h
+    model/local_inventory_delete_operation.h
+    model/local_inventory_item_response.h
+    model/local_inventory_items_batch.h
+    model/local_inventory_items_batch_create.h
+    model/local_inventory_items_get.h
+    model/local_inventory_items_get_create.h
+    model/local_inventory_operation.h
+    model/local_inventory_operation_result.h
+    model/local_inventory_update_operation.h
+    model/local_inventory_upsert_operation.h
+    model/local_store.h
+    model/local_store_batch_update.h
+    model/local_store_create.h
     model/lookback_period_options.h
     model/match_type.h
     model/match_type_response.h
@@ -1569,56 +2007,62 @@ set(HDRS
     model/media_upload_status.h
     model/media_upload_type.h
     model/member_business_role.h
-    model/members_to_delete_body.h
-    model/members_to_delete_body_members_inner.h
     model/metrics_reporting_level.h
+    model/metrics_reporting_template_type.h
     model/metrics_response.h
+    model/metrics_response_data_items.h
     model/min_price_filter.h
+    model/mmm_report.h
+    model/mmm_report_create.h
+    model/mmm_report_granularity.h
+    model/mmm_report_level.h
     model/mmm_reporting_column.h
     model/mmm_reporting_targeting_type.h
-    model/multiple_product_groups_inner.h
+    model/mobile_app_platform.h
+    model/msot_event_name.h
+    model/multi_pins_analytics_metric_types_item.h
+    model/network_type.h
     model/non_draft_entity_status.h
     model/non_nullable_catalogs_currency.h
-    model/non_nullable_product_availability_type.h
     model/notification_post_request.h
     model/notification_response.h
     model/nullable_catalogs_item_field_type.h
     model/nullable_currency.h
-    model/oauth_access_token_request_client_credentials.h
-    model/oauth_access_token_request_code.h
-    model/oauth_access_token_request_refresh.h
-    model/oauth_access_token_response.h
-    model/oauth_access_token_response_client_credentials.h
-    model/oauth_access_token_response_code.h
-    model/oauth_access_token_response_integration_refresh.h
-    model/oauth_access_token_response_refresh.h
+    model/nullable_entity_status.h
+    model/nullable_label_status.h
+    model/nullable_label_type.h
+    model/nullable_optimization_goal_metadata.h
+    model/nullable_partner_type.h
+    model/nullalble_match_type.h
+    model/numeric_filter_operator_type.h
+    model/oauth_access_token.h
     model/objective_type.h
     model/operation_type.h
     model/optimization_goal_metadata.h
-    model/optimization_goal_metadata_conversion_tag_v3_goal_metadata.h
-    model/optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows.h
-    model/optimization_goal_metadata_frequency_goal_metadata.h
-    model/optimization_goal_metadata_scrollup_goal_metadata.h
+    model/optimization_type.h
+    model/order.h
     model/order_line.h
-    model/order_line_error.h
+    model/order_line_mutation_error.h
+    model/order_line_mutation_response.h
+    model/order_line_mutation_result.h
     model/order_line_paid_type.h
-    model/order_line_response.h
-    model/order_line_single_response.h
     model/order_line_status.h
-    model/order_lines.h
-    model/order_lines_array_response.h
     model/order_lines_list_200_response.h
+    model/os_family.h
     model/overall_status_options.h
     model/pacing_delivery_type.h
     model/page_visit_conversion_tags_get_200_response.h
-    model/paginated.h
+    model/partner_metadata.h
     model/partner_type.h
+    model/performance_plus_campaign_settings.h
     model/permissions.h
     model/permissions_with_owner.h
     model/pin.h
+    model/pin_analytics_daily_metrics.h
     model/pin_analytics_metrics_response.h
-    model/pin_analytics_metrics_response_daily_metrics_inner.h
+    model/pin_base.h
     model/pin_create.h
+    model/pin_filter.h
     model/pin_media.h
     model/pin_media_metadata.h
     model/pin_media_source.h
@@ -1636,16 +2080,27 @@ set(HDRS
     model/pin_media_with_video.h
     model/pin_media_with_videos.h
     model/pin_promotion_summary_status.h
+    model/pin_read.h
+    model/pin_type.h
     model/pin_update.h
+    model/pinner_list_type.h
     model/pins_list_200_response.h
-    model/pins_save_request.h
+    model/pins_save_request_create.h
+    model/pinterest_lib_batch_item_exception.h
     model/pinterest_lib_error.h
     model/pinterest_lib_pagination_order.h
     model/pinterest_lib_status204.h
+    model/pinterest_product_categories_filter.h
     model/placement_group_type.h
     model/placement_multipliers.h
+    model/placement_traffic_type.h
+    model/placement_type.h
     model/predicted_time_series.h
+    model/preferred_media_type.h
     model/price_filter.h
+    model/price_filter_price.h
+    model/primary_sort.h
+    model/product_availability.h
     model/product_availability_type.h
     model/product_categories_demographic.h
     model/product_categories_engagement_type.h
@@ -1654,161 +2109,219 @@ set(HDRS
     model/product_category_details.h
     model/product_category_enum.h
     model/product_category_region.h
-    model/product_group_analytics_response_inner.h
+    model/product_condition.h
+    model/product_group_analytics_items.h
     model/product_group_promotion.h
     model/product_group_promotion_create_request.h
-    model/product_group_promotion_response.h
+    model/product_group_promotion_customizable_cta_type.h
     model/product_group_promotion_response_item.h
     model/product_group_promotion_update_request.h
+    model/product_group_promotions.h
+    model/product_group_promotions_create.h
     model/product_group_promotions_list_200_response.h
+    model/product_group_promotions_update_with_required_body.h
     model/product_group_reference_filter.h
     model/product_group_summary_status.h
+    model/product_tag_item.h
+    model/product_tags_bulk_add_request.h
+    model/product_tags_bulk_delete_request.h
+    model/product_tags_error.h
+    model/product_tags_response.h
     model/product_type0_filter.h
     model/product_type1_filter.h
     model/product_type2_filter.h
     model/product_type3_filter.h
     model/product_type4_filter.h
+    model/promotion.h
+    model/promotion_application_level.h
     model/promotion_array_element.h
-    model/promotion_common.h
-    model/promotion_create_request.h
-    model/promotion_response.h
+    model/promotion_batch_update.h
+    model/promotion_create.h
     model/promotion_template_value.h
     model/promotion_type.h
-    model/promotion_update_request.h
     model/promotions_list_200_response.h
     model/promotions_response.h
+    model/public_targeting_type.h
     model/quality_component_details.h
     model/quality_component_issue.h
     model/quality_components.h
+    model/query_label_entity_statuses_items.h
+    model/query_label_types_items.h
+    model/querymetrictypes_items.h
+    model/querypinanalyticsmetrictypes_items.h
+    model/queryvideopinmetrictypes_items.h
     model/quiz_pin_data.h
     model/quiz_pin_option.h
     model/quiz_pin_question.h
     model/quiz_pin_result.h
     model/record_counts.h
     model/related_terms.h
-    model/related_terms_related_terms_list_inner.h
+    model/related_terms_related_terms_list_items.h
+    model/report_type.h
+    model/reporting_column.h
     model/reporting_column_async.h
+    model/reporting_column_sync.h
     model/reporting_time_zone.h
     model/reports_stats_200_response.h
-    model/reports_stats_parameters_parameter.h
+    model/respond_to_invite_result_item.h
     model/respond_to_invites_response_array.h
-    model/respond_to_invites_response_array_items_inner.h
+    model/retail_local_inventory_item_attributes.h
+    model/retail_local_inventory_item_attributes_optional.h
     model/role.h
     model/s3_file_part.h
     model/s3_multipart_upload_data.h
+    model/schedule.h
+    model/schedule_action.h
+    model/schedule_age_bucket_multipliers.h
+    model/schedule_app_type_multipliers.h
+    model/schedule_audience_multipliers.h
+    model/schedule_batch_update.h
+    model/schedule_bid_multipliers.h
+    model/schedule_bid_options.h
+    model/schedule_bid_options_gender_multipliers.h
+    model/schedule_bid_options_placement_multipliers.h
+    model/schedule_common_delta_value.h
+    model/schedule_create.h
+    model/schedule_create_request.h
+    model/schedule_create_request_all_of1.h
+    model/schedule_delta_value.h
+    model/schedule_gender_multipliers.h
+    model/schedule_placement_multipliers.h
+    model/schedule_status.h
+    model/schedule_type.h
+    model/schedule_update_request.h
+    model/schedule_update_request_all_of1.h
+    model/schedules_create_200_response_inner.h
+    model/schedules_create_200_response_inner_data.h
+    model/schedules_create_200_response_inner_data_one_of.h
+    model/schedules_list_200_response.h
+    model/scrollup_goal_metadata.h
     model/search_partner_pins_200_response.h
-    model/search_user_boards_get_200_response.h
-    model/search_user_pins_list_200_response.h
-    model/shared_audience.h
     model/shared_audience_account.h
-    model/shared_audience_common.h
-    model/shared_audience_response.h
-    model/shared_audience_response_common.h
-    model/single_interest_targeting_option_response.h
+    model/shared_audiences_for_business_list_200_response.h
+    model/single_interest_targeting_option.h
     model/source_platform_options.h
+    model/ssio_account.h
     model/ssio_account_address.h
     model/ssio_account_item.h
     model/ssio_account_pmp_name.h
-    model/ssio_account_response.h
-    model/ssio_create_insertion_order_request.h
-    model/ssio_create_insertion_order_response.h
-    model/ssio_edit_insertion_order_request.h
-    model/ssio_edit_insertion_order_response.h
-    model/ssio_insertion_order_common.h
+    model/ssio_insertion_order.h
+    model/ssio_insertion_order_create.h
     model/ssio_insertion_order_status.h
     model/ssio_insertion_order_status_response.h
+    model/ssio_insertion_order_update.h
     model/ssio_insertion_orders_status_get_by_ad_account_200_response.h
     model/ssio_order_line.h
+    model/ssio_order_line_type.h
     model/ssio_order_lines_get_by_ad_account_200_response.h
+    model/standard_pin_metric_types.h
+    model/store_metadata.h
     model/summary_pin.h
-    model/system_user_update_request.h
+    model/summary_status.h
+    model/supplemental_item_batch_operation_status.h
+    model/supplemental_item_processing_status.h
+    model/supplemental_item_validation_event.h
+    model/supplemental_items_batch_response.h
+    model/supplemental_operation_result.h
+    model/system_user_update_with_required_body.h
     model/targeting_advertiser_country.h
     model/targeting_spec.h
     model/targeting_spec_age_bucket.h
     model/targeting_spec_app_type.h
     model/targeting_spec_gender.h
+    model/targeting_spec_list_operation.h
     model/targeting_spec_operation_age_bucket.h
     model/targeting_spec_operation_app_type.h
+    model/targeting_spec_operation_audience_exclude.h
+    model/targeting_spec_operation_audience_include.h
     model/targeting_spec_operation_gender.h
-    model/targeting_spec_operation_list.h
-    model/targeting_spec_operation_min_max_age.h
+    model/targeting_spec_operation_geo.h
+    model/targeting_spec_operation_geo_exclude.h
+    model/targeting_spec_operation_interest.h
+    model/targeting_spec_operation_locale.h
+    model/targeting_spec_operation_location.h
+    model/targeting_spec_operation_location_exclude.h
+    model/targeting_spec_operation_maximum_age.h
+    model/targeting_spec_operation_minimum_age.h
     model/targeting_spec_operation_shopping_retargeting.h
-    model/targeting_spec_operation_string.h
+    model/targeting_spec_operations.h
+    model/targeting_spec_optimal.h
     model/targeting_spec_shopping_retargeting.h
+    model/targeting_spec_targeting_strategy_items.h
+    model/targeting_strategy.h
+    model/targeting_template.h
     model/targeting_template_audience_sizing.h
     model/targeting_template_audience_sizing_reach_estimate.h
-    model/targeting_template_common.h
     model/targeting_template_create.h
-    model/targeting_template_get_response_data.h
     model/targeting_template_keyword.h
     model/targeting_template_list_200_response.h
-    model/targeting_template_response_data.h
-    model/targeting_template_update_request.h
-    model/targeting_type_filter.h
+    model/targeting_template_status.h
+    model/targeting_template_update_request_read_or_update.h
     model/template_based_report.h
-    model/template_response.h
-    model/template_response_date_range.h
-    model/template_response_date_range_absolute_date_range.h
-    model/template_response_date_range_dynamic_date_range.h
-    model/template_response_date_range_relative_date_range.h
+    model/template_based_report_create.h
     model/templates_list_200_response.h
     model/terms_of_service.h
+    model/tie_breaker_type.h
     model/time_series.h
     model/title_keywords_filter.h
+    model/token_grant_type.h
+    model/token_type_hint.h
     model/top_pins_analytics_response.h
     model/top_pins_analytics_response_date_availability.h
-    model/top_pins_analytics_response_pins_inner.h
+    model/top_pins_analytics_response_pins_items.h
+    model/top_pins_sort_by.h
     model/top_video_pins_analytics_response.h
-    model/top_video_pins_analytics_response_pins_inner.h
+    model/top_video_pins_analytics_response_date_availability.h
+    model/top_video_pins_analytics_response_pins_items.h
+    model/top_video_pins_sort_by.h
+    model/total_count_by_entity_status.h
     model/tracking_urls.h
     model/trend_type.h
     model/trending_keyword.h
     model/trending_keyword_demographics.h
-    model/trending_keyword_demographics_age_distribution.h
-    model/trending_keyword_demographics_gender_distribution.h
     model/trending_keywords_response.h
     model/trending_pin.h
     model/trending_product_category.h
     model/trending_topic.h
+    model/trends_age_bucket.h
+    model/trends_age_distribution.h
+    model/trends_editorial.h
+    model/trends_gender.h
+    model/trends_gender_distribution.h
+    model/trends_gender_filter.h
+    model/trends_l1_interest.h
     model/trends_supported_region.h
     model/updatable_item_attributes.h
     model/updatable_item_attributes_gtin.h
-    model/update_asset_group_body.h
-    model/update_asset_group_body_asset_groups_to_update_inner.h
-    model/update_asset_group_response.h
-    model/update_asset_group_response_exceptions_inner.h
+    model/update_business_memberships_response.h
     model/update_invites_results_response_array.h
-    model/update_invites_results_response_array_items_inner.h
     model/update_mask_bid_option_field.h
     model/update_mask_field_type.h
     model/update_member_asset_access_body.h
-    model/update_member_asset_access_body_accesses_inner.h
+    model/update_member_asset_access_item.h
+    model/update_member_asset_result_item.h
     model/update_member_assets_results_response_array.h
-    model/update_member_assets_results_response_array_items_inner.h
-    model/update_member_business_role_body.h
-    model/update_member_result.h
-    model/update_member_results_response_array.h
     model/update_partner_asset_access_body.h
-    model/update_partner_asset_access_body_accesses_inner.h
+    model/update_partner_asset_access_item.h
     model/update_partner_assets_result.h
     model/update_partner_assets_results_response_array.h
-    model/update_partner_results_response_array.h
-    model/update_partner_results_response_array_items_inner.h
     model/user_account_followed_interests_200_response.h
+    model/user_account_type.h
     model/user_business_role_binding.h
     model/user_following_feed_type.h
-    model/user_following_get_200_response.h
     model/user_list_operation_type.h
     model/user_list_type.h
     model/user_single_asset_binding.h
-    model/user_summary.h
-    model/user_website_summary.h
-    model/user_website_verification_code.h
-    model/user_website_verify_request.h
+    model/user_website.h
+    model/user_website_create.h
+    model/user_website_verification.h
     model/user_websites_get_200_response.h
     model/users_for_individual_asset_response.h
     model/vertical_product_category.h
     model/video_metadata_with_item_type.h
+    model/video_pin_metric_types.h
+    model/website_verification_method.h
+    model/workload_state.h
     api/AdAccountsAPI.h
     api/AdGroupsAPI.h
     api/AdsAPI.h
@@ -1827,13 +2340,16 @@ set(HDRS
     api/CatalogItemsAPI.h
     api/CatalogProductGroupsAPI.h
     api/CatalogReportsAPI.h
+    api/CatalogSupplementalAPI.h
     api/CatalogsAPI.h
+    api/ConversionDeletionRequestsAPI.h
     api/ConversionEqsAPI.h
     api/ConversionEventsAPI.h
     api/ConversionTagsAPI.h
     api/ConversionsAPI.h
     api/CustomerListUploadsAPI.h
     api/CustomerListsAPI.h
+    api/CustomerSegmentAPI.h
     api/IntegrationsAPI.h
     api/KeywordsAPI.h
     api/LabelsAPI.h
@@ -1846,14 +2362,16 @@ set(HDRS
     api/OauthAPI.h
     api/OrderLinesAPI.h
     api/PinsAPI.h
-    api/ProductCategoriesAPI.h
     api/ProductGroupPromotionsAPI.h
+    api/ProductTagsAPI.h
     api/PromotionsAPI.h
     api/ResourcesAPI.h
+    api/SchedulesAPI.h
     api/SearchAPI.h
     api/TargetingTemplateAPI.h
     api/TermsAPI.h
     api/TermsOfServiceAPI.h
+    api/TrendsAPI.h
     api/UserAccountAPI.h
 
 )
@@ -1958,13 +2476,16 @@ set(HDRS "")
 #    unit-tests/manual-CatalogItemsAPI.c
 #    unit-tests/manual-CatalogProductGroupsAPI.c
 #    unit-tests/manual-CatalogReportsAPI.c
+#    unit-tests/manual-CatalogSupplementalAPI.c
 #    unit-tests/manual-CatalogsAPI.c
+#    unit-tests/manual-ConversionDeletionRequestsAPI.c
 #    unit-tests/manual-ConversionEqsAPI.c
 #    unit-tests/manual-ConversionEventsAPI.c
 #    unit-tests/manual-ConversionTagsAPI.c
 #    unit-tests/manual-ConversionsAPI.c
 #    unit-tests/manual-CustomerListUploadsAPI.c
 #    unit-tests/manual-CustomerListsAPI.c
+#    unit-tests/manual-CustomerSegmentAPI.c
 #    unit-tests/manual-IntegrationsAPI.c
 #    unit-tests/manual-KeywordsAPI.c
 #    unit-tests/manual-LabelsAPI.c
@@ -1977,14 +2498,16 @@ set(HDRS "")
 #    unit-tests/manual-OauthAPI.c
 #    unit-tests/manual-OrderLinesAPI.c
 #    unit-tests/manual-PinsAPI.c
-#    unit-tests/manual-ProductCategoriesAPI.c
 #    unit-tests/manual-ProductGroupPromotionsAPI.c
+#    unit-tests/manual-ProductTagsAPI.c
 #    unit-tests/manual-PromotionsAPI.c
 #    unit-tests/manual-ResourcesAPI.c
+#    unit-tests/manual-SchedulesAPI.c
 #    unit-tests/manual-SearchAPI.c
 #    unit-tests/manual-TargetingTemplateAPI.c
 #    unit-tests/manual-TermsAPI.c
 #    unit-tests/manual-TermsOfServiceAPI.c
+#    unit-tests/manual-TrendsAPI.c
 #    unit-tests/manual-UserAccountAPI.c
 #)
 

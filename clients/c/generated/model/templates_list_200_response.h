@@ -15,7 +15,7 @@
 
 typedef struct templates_list_200_response_t templates_list_200_response_t;
 
-#include "template_response.h"
+#include "account_template.h"
 
 
 

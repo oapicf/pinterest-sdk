@@ -83,7 +83,7 @@ class CatalogsCreativeAssetsProductGroup(Model):
     def catalog_id(self) -> str:
         """Gets the catalog_id of this CatalogsCreativeAssetsProductGroup.
 
-        Catalog id pertaining to the creative assets product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :return: The catalog_id of this CatalogsCreativeAssetsProductGroup.
         :rtype: str
@@ -94,7 +94,7 @@ class CatalogsCreativeAssetsProductGroup(Model):
     def catalog_id(self, catalog_id: str):
         """Sets the catalog_id of this CatalogsCreativeAssetsProductGroup.
 
-        Catalog id pertaining to the creative assets product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :param catalog_id: The catalog_id of this CatalogsCreativeAssetsProductGroup.
         :type catalog_id: str
@@ -204,7 +204,7 @@ class CatalogsCreativeAssetsProductGroup(Model):
     def id(self) -> str:
         """Gets the id of this CatalogsCreativeAssetsProductGroup.
 
-        ID of the creative assets product group.  # noqa: E501
+        ID of the catalog product group.  # noqa: E501
 
         :return: The id of this CatalogsCreativeAssetsProductGroup.
         :rtype: str
@@ -215,7 +215,7 @@ class CatalogsCreativeAssetsProductGroup(Model):
     def id(self, id: str):
         """Sets the id of this CatalogsCreativeAssetsProductGroup.
 
-        ID of the creative assets product group.  # noqa: E501
+        ID of the catalog product group.  # noqa: E501
 
         :param id: The id of this CatalogsCreativeAssetsProductGroup.
         :type id: str
@@ -231,7 +231,7 @@ class CatalogsCreativeAssetsProductGroup(Model):
     def name(self) -> str:
         """Gets the name of this CatalogsCreativeAssetsProductGroup.
 
-        Name of creative assets product group  # noqa: E501
+        Name of catalog product group  # noqa: E501
 
         :return: The name of this CatalogsCreativeAssetsProductGroup.
         :rtype: str
@@ -242,7 +242,7 @@ class CatalogsCreativeAssetsProductGroup(Model):
     def name(self, name: str):
         """Sets the name of this CatalogsCreativeAssetsProductGroup.
 
-        Name of creative assets product group  # noqa: E501
+        Name of catalog product group  # noqa: E501
 
         :param name: The name of this CatalogsCreativeAssetsProductGroup.
         :type name: str

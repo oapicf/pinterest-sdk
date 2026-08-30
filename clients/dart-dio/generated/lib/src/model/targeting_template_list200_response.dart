@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/targeting_template_get_response_data.dart';
+import 'package:openapi/src/model/targeting_template.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +16,13 @@ part 'targeting_template_list200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class TargetingTemplateList200Response implements Paginated, Built<TargetingTemplateList200Response, TargetingTemplateList200ResponseBuilder> {
+abstract class TargetingTemplateList200Response implements Built<TargetingTemplateList200Response, TargetingTemplateList200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<TargetingTemplate> get items;
+
   TargetingTemplateList200Response._();
 
   factory TargetingTemplateList200Response([void updates(TargetingTemplateList200ResponseBuilder b)]) = _$TargetingTemplateList200Response;
@@ -51,7 +56,7 @@ class _$TargetingTemplateList200ResponseSerializer implements PrimitiveSerialize
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(TargetingTemplate)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$TargetingTemplateList200ResponseSerializer implements PrimitiveSerialize
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(TargetingTemplate)]),
+          ) as BuiltList<TargetingTemplate>;
           result.items.replace(valueDes);
           break;
         default:

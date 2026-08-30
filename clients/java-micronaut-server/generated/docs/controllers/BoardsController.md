@@ -21,7 +21,7 @@ Method | HTTP request | Description
 <a id="boardSectionsCreate"></a>
 # **boardSectionsCreate**
 ```java
-Mono<BoardSection> BoardsController.boardSectionsCreate(boardIdboardSectionadAccountId)
+Mono<BoardSection> BoardsController.boardSectionsCreate(boardIdboardSectionCreateadAccountId)
 ```
 
 Create board section
@@ -32,7 +32,7 @@ Create a board section on a board owned by the \&quot;operation user_account\&qu
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **boardId** | `String` | Unique identifier of a board. |
-**boardSection** | [**BoardSection**](../../docs/models/BoardSection.md) | Create a board section. |
+**boardSectionCreate** | [**BoardSectionCreate**](../../docs/models/BoardSectionCreate.md) |  |
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 
 ### Return type
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 <a id="boardSectionsDelete"></a>
 # **boardSectionsDelete**
 ```java
-Mono<Object> BoardsController.boardSectionsDelete(boardIdsectionIdadAccountId)
+Mono<BoardSection> BoardsController.boardSectionsDelete(boardIdsectionIdadAccountId)
 ```
 
 Delete board section
@@ -62,6 +62,8 @@ Name | Type | Description  | Notes
 **sectionId** | `String` | Unique identifier of a board section. |
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 
+### Return type
+[**BoardSection**](../../docs/models/BoardSection.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`, `boards:write`
@@ -86,7 +88,7 @@ Name | Type | Description  | Notes
 **boardId** | `String` | Unique identifier of a board. |
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**BoardSectionsList200Response**](../../docs/models/BoardSectionsList200Response.md)
@@ -116,7 +118,7 @@ Name | Type | Description  | Notes
 **sectionId** | `String` | Unique identifier of a board section. |
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**BoardsListPins200Response**](../../docs/models/BoardsListPins200Response.md)
@@ -132,7 +134,7 @@ Name | Type | Description  | Notes
 <a id="boardSectionsUpdate"></a>
 # **boardSectionsUpdate**
 ```java
-Mono<BoardSection> BoardsController.boardSectionsUpdate(boardIdsectionIdboardSectionadAccountId)
+Mono<BoardSection> BoardsController.boardSectionsUpdate(boardIdsectionIdboardSectionUpdateWithRequiredBodyadAccountId)
 ```
 
 Update board section
@@ -144,7 +146,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **boardId** | `String` | Unique identifier of a board. |
 **sectionId** | `String` | Unique identifier of a board section. |
-**boardSection** | [**BoardSection**](../../docs/models/BoardSection.md) | Update a board section. |
+**boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](../../docs/models/BoardSectionUpdateWithRequiredBody.md) |  |
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 
 ### Return type
@@ -187,7 +189,7 @@ Name | Type | Description  | Notes
 <a id="boardsDelete"></a>
 # **boardsDelete**
 ```java
-Mono<Object> BoardsController.boardsDelete(boardIdadAccountId)
+Mono<Board> BoardsController.boardsDelete(boardIdadAccountId)
 ```
 
 Delete board
@@ -200,6 +202,8 @@ Name | Type | Description  | Notes
 **boardId** | `String` |  |
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 
+### Return type
+[**Board**](../../docs/models/Board.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`, `boards:write`
@@ -267,7 +271,7 @@ Name | Type | Description  | Notes
 <a id="boardsListPins"></a>
 # **boardsListPins**
 ```java
-Mono<BoardsListPins200Response> BoardsController.boardsListPins(boardIdbookmarkpageSizecreativeTypesadAccountIdpinMetrics)
+Mono<BoardsListPins200Response> BoardsController.boardsListPins(boardIdcreativeTypesadAccountIdpinMetricsbookmarkpageSize)
 ```
 
 List Pins on board
@@ -278,11 +282,11 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **boardId** | `String` | Unique identifier of a board. |
-**bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 **creativeTypes** | [**List&lt;CreativeType&gt;**](../../docs/models/CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional parameter]
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 **pinMetrics** | `Boolean` | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional parameter] [default to `false`]
+**bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
+**pageSize** | `Integer` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**BoardsListPins200Response**](../../docs/models/BoardsListPins200Response.md)

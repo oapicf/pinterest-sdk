@@ -30,5 +30,7 @@
 
     * `MAX_WIDTH_VIDEO_COLLECTION` (value: `"MAX_WIDTH_VIDEO_COLLECTION"`)
 
+    * `APP` (value: `"APP"`)
+
 
 

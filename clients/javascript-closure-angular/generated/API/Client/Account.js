@@ -1,6 +1,7 @@
 goog.provide('API.Client.Account');
 
 /**
+ * User account model containing properties related to a user's account.
  * @record
  */
 API.Client.Account = function() {}
@@ -14,13 +15,13 @@ API.Client.Account.prototype.about;
 
 /**
  * Type of account
- * @type {!string}
+ * @type {!API.Client.UserAccountType}
  * @export
  */
 API.Client.Account.prototype.accountType;
 
 /**
- * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+ *   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
  * @type {!number}
  * @export
  */
@@ -85,8 +86,3 @@ API.Client.Account.prototype.username;
  */
 API.Client.Account.prototype.websiteUrl;
 
-/** @enum {string} */
-API.Client.Account.AccountTypeEnum = { 
-  PINNER: 'PINNER',
-  BUSINESS: 'BUSINESS',
-}

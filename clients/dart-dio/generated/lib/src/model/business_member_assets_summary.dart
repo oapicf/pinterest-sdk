@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/asset_id_with_permissions.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/business_member_assets_summary_ad_accounts_inner.dart';
-import 'package:openapi/src/model/business_member_assets_summary_profiles_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,11 +19,11 @@ part 'business_member_assets_summary.g.dart';
 abstract class BusinessMemberAssetsSummary implements Built<BusinessMemberAssetsSummary, BusinessMemberAssetsSummaryBuilder> {
   /// List of ad account IDs and respective permission levels.
   @BuiltValueField(wireName: r'ad_accounts')
-  BuiltList<BusinessMemberAssetsSummaryAdAccountsInner>? get adAccounts;
+  BuiltList<AssetIdWithPermissions>? get adAccounts;
 
   /// List of profile IDs and respective permission levels.
   @BuiltValueField(wireName: r'profiles')
-  BuiltList<BusinessMemberAssetsSummaryProfilesInner>? get profiles;
+  BuiltList<AssetIdWithPermissions>? get profiles;
 
   BusinessMemberAssetsSummary._();
 
@@ -53,14 +52,14 @@ class _$BusinessMemberAssetsSummarySerializer implements PrimitiveSerializer<Bus
       yield r'ad_accounts';
       yield serializers.serialize(
         object.adAccounts,
-        specifiedType: const FullType(BuiltList, [FullType(BusinessMemberAssetsSummaryAdAccountsInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(AssetIdWithPermissions)]),
       );
     }
     if (object.profiles != null) {
       yield r'profiles';
       yield serializers.serialize(
         object.profiles,
-        specifiedType: const FullType(BuiltList, [FullType(BusinessMemberAssetsSummaryProfilesInner)]),
+        specifiedType: const FullType(BuiltList, [FullType(AssetIdWithPermissions)]),
       );
     }
   }
@@ -89,15 +88,17 @@ class _$BusinessMemberAssetsSummarySerializer implements PrimitiveSerializer<Bus
         case r'ad_accounts':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BusinessMemberAssetsSummaryAdAccountsInner)]),
-          ) as BuiltList<BusinessMemberAssetsSummaryAdAccountsInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AssetIdWithPermissions)]),
+          ) as BuiltList<AssetIdWithPermissions>?;
+          if (valueDes == null) continue;
           result.adAccounts.replace(valueDes);
           break;
         case r'profiles':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BusinessMemberAssetsSummaryProfilesInner)]),
-          ) as BuiltList<BusinessMemberAssetsSummaryProfilesInner>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AssetIdWithPermissions)]),
+          ) as BuiltList<AssetIdWithPermissions>?;
+          if (valueDes == null) continue;
           result.profiles.replace(valueDes);
           break;
         default:

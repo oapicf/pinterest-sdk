@@ -13,15 +13,15 @@ import javax.validation.Valid;
 /**
  * UpdatePartnerAssetsResultsResponseArray
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class UpdatePartnerAssetsResultsResponseArray   {
   @JsonProperty("items")
   @Valid
 
-  private List<UpdatePartnerAssetsResult> items = null;
+  private List<@Valid UpdatePartnerAssetsResult> items = null;
 
-  public UpdatePartnerAssetsResultsResponseArray items(List<UpdatePartnerAssetsResult> items) {
+  public UpdatePartnerAssetsResultsResponseArray items(List<@Valid UpdatePartnerAssetsResult> items) {
     this.items = items;
     return this;
   }
@@ -38,11 +38,11 @@ public class UpdatePartnerAssetsResultsResponseArray   {
    * List of assigned/updated partner asset access.
    * @return items
   **/
-  public List<UpdatePartnerAssetsResult> getItems() {
+  public List<@Valid UpdatePartnerAssetsResult> getItems() {
     return items;
   }
 
-  public void setItems(List<UpdatePartnerAssetsResult> items) {
+  public void setItems(List<@Valid UpdatePartnerAssetsResult> items) {
     this.items = items;
   }
 
@@ -80,10 +80,7 @@ public class UpdatePartnerAssetsResultsResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

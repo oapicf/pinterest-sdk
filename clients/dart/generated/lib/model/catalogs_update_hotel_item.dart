@@ -60,10 +60,12 @@ class CatalogsUpdateHotelItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsUpdateHotelItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsUpdateHotelItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'attributes'), 'Required key "CatalogsUpdateHotelItem[attributes]" is missing from JSON.');
+        assert(json[r'attributes'] != null, 'Required key "CatalogsUpdateHotelItem[attributes]" has a null value in JSON.');
+        assert(json.containsKey(r'hotel_id'), 'Required key "CatalogsUpdateHotelItem[hotel_id]" is missing from JSON.');
+        assert(json[r'hotel_id'] != null, 'Required key "CatalogsUpdateHotelItem[hotel_id]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsUpdateHotelItem[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsUpdateHotelItem[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -125,27 +127,28 @@ class CatalogsUpdateHotelItem {
 }
 
 
-class CatalogsUpdateHotelItemOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsUpdateHotelItemOperationEnum._(this.value);
+enum CatalogsUpdateHotelItemOperationEnum {
+  UPDATE._(r'UPDATE'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsUpdateHotelItemOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const UPDATE = CatalogsUpdateHotelItemOperationEnum._(r'UPDATE');
-
-  /// List of all possible values in this [enum][CatalogsUpdateHotelItemOperationEnum].
-  static const values = <CatalogsUpdateHotelItemOperationEnum>[
-    UPDATE,
-  ];
-
+  /// Returns the instance of [CatalogsUpdateHotelItemOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsUpdateHotelItemOperationEnum? fromJson(dynamic value) => CatalogsUpdateHotelItemOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsUpdateHotelItemOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsUpdateHotelItemOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsUpdateHotelItemOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -167,9 +170,10 @@ class CatalogsUpdateHotelItemOperationEnumTypeTransformer {
 
   const CatalogsUpdateHotelItemOperationEnumTypeTransformer._();
 
-  String encode(CatalogsUpdateHotelItemOperationEnum data) => data.value;
+  String encode(CatalogsUpdateHotelItemOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsUpdateHotelItemOperationEnum.
+  /// Returns the instance of [CatalogsUpdateHotelItemOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -178,6 +182,9 @@ class CatalogsUpdateHotelItemOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsUpdateHotelItemOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsUpdateHotelItemOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'UPDATE': return CatalogsUpdateHotelItemOperationEnum.UPDATE;
@@ -190,7 +197,7 @@ class CatalogsUpdateHotelItemOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsUpdateHotelItemOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsUpdateHotelItemOperationEnumTypeTransformer? _instance;
 }
 

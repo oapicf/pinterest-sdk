@@ -23,11 +23,9 @@ Label::~Label()
 void
 Label::__init()
 {
-	//id = std::string();
-	//label_type = new LabelType();
-	//parent_id = std::string();
-	//parent_type = std::string();
-	//status = new LabelStatus();
+	//id = null;
+	//label_type = new NullableLabelType();
+	//status = new NullableLabelStatus();
 	//value = std::string();
 }
 
@@ -43,16 +41,6 @@ Label::__cleanup()
 	//
 	//delete label_type;
 	//label_type = NULL;
-	//}
-	//if(parent_id != NULL) {
-	//
-	//delete parent_id;
-	//parent_id = NULL;
-	//}
-	//if(parent_type != NULL) {
-	//
-	//delete parent_type;
-	//parent_type = NULL;
 	//}
 	//if(status != NULL) {
 	//
@@ -88,34 +76,12 @@ Label::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("LabelType")) {
-			jsonToValue(&label_type, node, "LabelType", "LabelType");
+		if (isprimitive("NullableLabelType")) {
+			jsonToValue(&label_type, node, "NullableLabelType", "NullableLabelType");
 		} else {
 			
-			LabelType* obj = static_cast<LabelType*> (&label_type);
+			NullableLabelType* obj = static_cast<NullableLabelType*> (&label_type);
 			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *parent_idKey = "parent_id";
-	node = json_object_get_member(pJsonObject, parent_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&parent_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *parent_typeKey = "parent_type";
-	node = json_object_get_member(pJsonObject, parent_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&parent_type, node, "std::string", "");
-		} else {
 			
 		}
 	}
@@ -124,11 +90,11 @@ Label::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("LabelStatus")) {
-			jsonToValue(&status, node, "LabelStatus", "LabelStatus");
+		if (isprimitive("NullableLabelStatus")) {
+			jsonToValue(&status, node, "NullableLabelStatus", "NullableLabelStatus");
 		} else {
 			
-			LabelStatus* obj = static_cast<LabelStatus*> (&status);
+			NullableLabelStatus* obj = static_cast<NullableLabelStatus*> (&status);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -165,13 +131,13 @@ Label::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("LabelType")) {
-		LabelType obj = getLabelType();
-		node = converttoJson(&obj, "LabelType", "");
+	if (isprimitive("NullableLabelType")) {
+		NullableLabelType obj = getLabelType();
+		node = converttoJson(&obj, "NullableLabelType", "");
 	}
 	else {
 		
-		LabelType obj = static_cast<LabelType> (getLabelType());
+		NullableLabelType obj = static_cast<NullableLabelType> (getLabelType());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -179,31 +145,13 @@ Label::toJson()
 	}
 	const gchar *label_typeKey = "label_type";
 	json_object_set_member(pJsonObject, label_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getParentId();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("NullableLabelStatus")) {
+		NullableLabelStatus obj = getStatus();
+		node = converttoJson(&obj, "NullableLabelStatus", "");
 	}
 	else {
 		
-	}
-	const gchar *parent_idKey = "parent_id";
-	json_object_set_member(pJsonObject, parent_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getParentType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *parent_typeKey = "parent_type";
-	json_object_set_member(pJsonObject, parent_typeKey, node);
-	if (isprimitive("LabelStatus")) {
-		LabelStatus obj = getStatus();
-		node = converttoJson(&obj, "LabelStatus", "");
-	}
-	else {
-		
-		LabelStatus obj = static_cast<LabelStatus> (getStatus());
+		NullableLabelStatus obj = static_cast<NullableLabelStatus> (getStatus());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -240,50 +188,26 @@ Label::setId(std::string  id)
 	this->id = id;
 }
 
-LabelType
+NullableLabelType
 Label::getLabelType()
 {
 	return label_type;
 }
 
 void
-Label::setLabelType(LabelType  label_type)
+Label::setLabelType(NullableLabelType  label_type)
 {
 	this->label_type = label_type;
 }
 
-std::string
-Label::getParentId()
-{
-	return parent_id;
-}
-
-void
-Label::setParentId(std::string  parent_id)
-{
-	this->parent_id = parent_id;
-}
-
-std::string
-Label::getParentType()
-{
-	return parent_type;
-}
-
-void
-Label::setParentType(std::string  parent_type)
-{
-	this->parent_type = parent_type;
-}
-
-LabelStatus
+NullableLabelStatus
 Label::getStatus()
 {
 	return status;
 }
 
 void
-Label::setStatus(LabelStatus  status)
+Label::setStatus(NullableLabelStatus  status)
 {
 	this->status = status;
 }

@@ -7,7 +7,7 @@
 
 static update_partner_assets_result_t *update_partner_assets_result_create_internal(
     char *asset_id,
-    char *asset_type,
+    pinterest_rest_api_asset_type_response__e asset_type,
     char *partner_id,
     list_t *permissions
     ) {
@@ -15,27 +15,30 @@ static update_partner_assets_result_t *update_partner_assets_result_create_inter
     if (!update_partner_assets_result_local_var) {
         return NULL;
     }
+    memset(update_partner_assets_result_local_var, 0, sizeof(update_partner_assets_result_t));
+    update_partner_assets_result_local_var->_library_owned = 1;
     update_partner_assets_result_local_var->asset_id = asset_id;
     update_partner_assets_result_local_var->asset_type = asset_type;
     update_partner_assets_result_local_var->partner_id = partner_id;
     update_partner_assets_result_local_var->permissions = permissions;
-
-    update_partner_assets_result_local_var->_library_owned = 1;
     return update_partner_assets_result_local_var;
 }
 
 __attribute__((deprecated)) update_partner_assets_result_t *update_partner_assets_result_create(
     char *asset_id,
-    char *asset_type,
+    pinterest_rest_api_asset_type_response__e asset_type,
     char *partner_id,
     list_t *permissions
     ) {
-    return update_partner_assets_result_create_internal (
+    update_partner_assets_result_t *result = update_partner_assets_result_create_internal (
         asset_id,
         asset_type,
         partner_id,
         permissions
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void update_partner_assets_result_free(update_partner_assets_result_t *update_partner_assets_result) {
@@ -50,10 +53,6 @@ void update_partner_assets_result_free(update_partner_assets_result_t *update_pa
     if (update_partner_assets_result->asset_id) {
         free(update_partner_assets_result->asset_id);
         update_partner_assets_result->asset_id = NULL;
-    }
-    if (update_partner_assets_result->asset_type) {
-        free(update_partner_assets_result->asset_type);
-        update_partner_assets_result->asset_type = NULL;
     }
     if (update_partner_assets_result->partner_id) {
         free(update_partner_assets_result->partner_id);
@@ -81,9 +80,14 @@ cJSON *update_partner_assets_result_convertToJSON(update_partner_assets_result_t
 
 
     // update_partner_assets_result->asset_type
-    if(update_partner_assets_result->asset_type) {
-    if(cJSON_AddStringToObject(item, "asset_type", update_partner_assets_result->asset_type) == NULL) {
-    goto fail; //String
+    if(update_partner_assets_result->asset_type != pinterest_rest_api_asset_type_response__NULL) {
+    cJSON *asset_type_local_JSON = asset_type_response_convertToJSON(update_partner_assets_result->asset_type);
+    if(asset_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "asset_type", asset_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -124,6 +128,13 @@ update_partner_assets_result_t *update_partner_assets_result_parseFromJSON(cJSON
 
     update_partner_assets_result_t *update_partner_assets_result_local_var = NULL;
 
+    char *asset_id_local_str = NULL;
+
+    // define the local variable for update_partner_assets_result->asset_type
+    pinterest_rest_api_asset_type_response__e asset_type_local_nonprim = 0;
+
+    char *partner_id_local_str = NULL;
+
     // define the local list for update_partner_assets_result->permissions
     list_t *permissionsList = NULL;
 
@@ -145,10 +156,7 @@ update_partner_assets_result_t *update_partner_assets_result_parseFromJSON(cJSON
         asset_type = NULL;
     }
     if (asset_type) { 
-    if(!cJSON_IsString(asset_type) && !cJSON_IsNull(asset_type))
-    {
-    goto end; //String
-    }
+    asset_type_local_nonprim = asset_type_response_parseFromJSON(asset_type); //custom
     }
 
     // update_partner_assets_result->partner_id
@@ -186,15 +194,33 @@ update_partner_assets_result_t *update_partner_assets_result_parseFromJSON(cJSON
     }
 
 
+    if (asset_id && !cJSON_IsNull(asset_id)) asset_id_local_str = strdup(asset_id->valuestring);
+    if (partner_id && !cJSON_IsNull(partner_id)) partner_id_local_str = strdup(partner_id->valuestring);
+
     update_partner_assets_result_local_var = update_partner_assets_result_create_internal (
-        asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
-        asset_type && !cJSON_IsNull(asset_type) ? strdup(asset_type->valuestring) : NULL,
-        partner_id && !cJSON_IsNull(partner_id) ? strdup(partner_id->valuestring) : NULL,
+        asset_id_local_str,
+        asset_type ? asset_type_local_nonprim : 0,
+        partner_id_local_str,
         permissions ? permissionsList : NULL
         );
 
+    if (!update_partner_assets_result_local_var) {
+        goto end;
+    }
+
     return update_partner_assets_result_local_var;
 end:
+    if (asset_id_local_str) {
+        free(asset_id_local_str);
+        asset_id_local_str = NULL;
+    }
+    if (asset_type_local_nonprim) {
+        asset_type_local_nonprim = 0;
+    }
+    if (partner_id_local_str) {
+        free(partner_id_local_str);
+        partner_id_local_str = NULL;
+    }
     if (permissionsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, permissionsList) {

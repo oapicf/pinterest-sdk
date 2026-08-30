@@ -5,15 +5,7 @@ Protected Class LabelCreateRequest
 		#tag Note
 			Labels that you are applying to the campaign.
 		#tag EndNote
-		labels() As OpenAPIClient.Models.LabelCreateRequestLabelsInner
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-		#tag EndNote
-		parent_id As String
+		labels() As OpenAPIClient.Models.LabelCreateItem
 	#tag EndProperty
 
 
@@ -58,15 +50,7 @@ Protected Class LabelCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="LabelCreateRequestLabelsInner"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="parent_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
+			Type="LabelCreateItem"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

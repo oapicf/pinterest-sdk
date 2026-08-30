@@ -7,6 +7,6 @@ package org.openapitools.server.model
 */
 final case class AudiencesList200Response (
   bookmark: Option[String] = None,
-  items: Seq[Audience]
+  items: Seq[AdAccountsAudience]
 )
 

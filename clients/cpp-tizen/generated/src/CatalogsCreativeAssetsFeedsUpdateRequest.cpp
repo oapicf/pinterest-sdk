@@ -23,7 +23,7 @@ CatalogsCreativeAssetsFeedsUpdateRequest::~CatalogsCreativeAssetsFeedsUpdateRequ
 void
 CatalogsCreativeAssetsFeedsUpdateRequest::__init()
 {
-	//catalog_type = new CatalogsType();
+	//catalog_type = std::string();
 	//credentials = new CatalogsFeedCredentials();
 	//default_currency = new NullableCurrency();
 	//format = new CatalogsFormat();
@@ -89,12 +89,9 @@ CatalogsCreativeAssetsFeedsUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
-			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -202,16 +199,11 @@ CatalogsCreativeAssetsFeedsUpdateRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsType")) {
-		CatalogsType obj = getCatalogType();
-		node = converttoJson(&obj, "CatalogsType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *catalog_typeKey = "catalog_type";
@@ -312,14 +304,14 @@ CatalogsCreativeAssetsFeedsUpdateRequest::toJson()
 	return ret;
 }
 
-CatalogsType
+std::string
 CatalogsCreativeAssetsFeedsUpdateRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsCreativeAssetsFeedsUpdateRequest::setCatalogType(CatalogsType  catalog_type)
+CatalogsCreativeAssetsFeedsUpdateRequest::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
 }

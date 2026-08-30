@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccountId** | Pointer to **string** | Ad account ID. | [optional] 
+**AdAccountId** | **string** | Ad account ID. | 
 **Budget** | Pointer to **NullableFloat32** | Order line budget in micro currency. | [optional] 
+**CampaignIds** | **[]string** | Associated List of campaign IDs. | 
 **EndTime** | Pointer to **NullableFloat32** | End time. Unix timestamp. | [optional] 
-**Id** | Pointer to **string** | Order line ID. | [optional] 
+**Id** | **string** | Order line ID. | 
 **Name** | Pointer to **NullableString** | Order line name. | [optional] 
 **PaidBudget** | Pointer to **NullableFloat32** | Order line paid budget in micro currency. | [optional] 
 **PaidType** | Pointer to [**NullableOrderLinePaidType**](OrderLinePaidType.md) | Order line paid type. | [optional] 
 **PurchaseOrderId** | Pointer to **NullableString** | Purchase order ID. | [optional] 
 **StartTime** | Pointer to **float32** | Start time. Unix timestamp. | [optional] 
-**Status** | Pointer to [**OrderLineStatus**](OrderLineStatus.md) | Order line status. | [optional] 
-**Type** | Pointer to **string** | Always \&quot;orderline\&quot;. | [optional] 
-**CampaignIds** | **[]string** | Associated List of campaign IDs. | 
+**Status** | [**OrderLineStatus**](OrderLineStatus.md) | Order line status. | 
+**Type** | **string** | Always \&quot;orderline\&quot;. | 
 
 ## Methods
 
 ### NewOrderLine
 
-`func NewOrderLine(campaignIds []string, ) *OrderLine`
+`func NewOrderLine(adAccountId string, campaignIds []string, id string, status OrderLineStatus, type_ string, ) *OrderLine`
 
 NewOrderLine instantiates a new OrderLine object
 This constructor will assign default values to properties that have it defined,
@@ -55,11 +55,6 @@ and a boolean to check if the value has been set.
 
 SetAdAccountId sets AdAccountId field to given value.
 
-### HasAdAccountId
-
-`func (o *OrderLine) HasAdAccountId() bool`
-
-HasAdAccountId returns a boolean if a field has been set.
 
 ### GetBudget
 
@@ -96,6 +91,26 @@ HasBudget returns a boolean if a field has been set.
 `func (o *OrderLine) UnsetBudget()`
 
 UnsetBudget ensures that no value is present for Budget, not even an explicit nil
+### GetCampaignIds
+
+`func (o *OrderLine) GetCampaignIds() []string`
+
+GetCampaignIds returns the CampaignIds field if non-nil, zero value otherwise.
+
+### GetCampaignIdsOk
+
+`func (o *OrderLine) GetCampaignIdsOk() (*[]string, bool)`
+
+GetCampaignIdsOk returns a tuple with the CampaignIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCampaignIds
+
+`func (o *OrderLine) SetCampaignIds(v []string)`
+
+SetCampaignIds sets CampaignIds field to given value.
+
+
 ### GetEndTime
 
 `func (o *OrderLine) GetEndTime() float32`
@@ -150,11 +165,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *OrderLine) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -340,11 +350,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-### HasStatus
-
-`func (o *OrderLine) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetType
 
@@ -364,31 +369,6 @@ and a boolean to check if the value has been set.
 `func (o *OrderLine) SetType(v string)`
 
 SetType sets Type field to given value.
-
-### HasType
-
-`func (o *OrderLine) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
-### GetCampaignIds
-
-`func (o *OrderLine) GetCampaignIds() []string`
-
-GetCampaignIds returns the CampaignIds field if non-nil, zero value otherwise.
-
-### GetCampaignIdsOk
-
-`func (o *OrderLine) GetCampaignIdsOk() (*[]string, bool)`
-
-GetCampaignIdsOk returns a tuple with the CampaignIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCampaignIds
-
-`func (o *OrderLine) SetCampaignIds(v []string)`
-
-SetCampaignIds sets CampaignIds field to given value.
 
 
 

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PinFilter {
+    title = PinFilter
+    description = PinFilter
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinFilter {
+    title = PinFilter
+    description = PinFilter
+    implements = openapi_server.resourceTypes.PinFilter
+
+  }
+}

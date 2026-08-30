@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *MediaTypeFilter) GetMEDIA_TYPE() CatalogsProductGroupMultipleMediaTypes
 
 // GetMEDIA_TYPEOk returns a tuple with the MEDIA_TYPE field value
 // and a boolean to check if the value has been set.
-func (o *MediaTypeFilter) GetMEDIA_TYPEOk() (CatalogsProductGroupMultipleMediaTypesCriteria, bool) {
+func (o *MediaTypeFilter) GetMEDIA_TYPEOk() (*CatalogsProductGroupMultipleMediaTypesCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupMultipleMediaTypesCriteria{}, false
+		return nil, false
 	}
-	return o.MEDIA_TYPE, true
+	return &o.MEDIA_TYPE, true
 }
 
 // SetMEDIA_TYPE sets field value

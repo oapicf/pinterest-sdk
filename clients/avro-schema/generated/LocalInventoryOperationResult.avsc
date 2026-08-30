@@ -1,0 +1,53 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Result model for local inventory operation",
+  "name": "LocalInventoryOperationResult",
+  "fields": [
+    {
+      "name": "errors",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.SupplementalItemValidationEvent"
+      }],
+      "doc": "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.",
+      "default": null
+    },
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "Catalog item id in the merchant namespace"
+    },
+    {
+      "name": "status",
+      "type": "model.SupplementalItemProcessingStatus",
+      "doc": "Status of the item processing record"
+    },
+    {
+      "name": "store_code",
+      "type": "string",
+      "doc": "Store code for the local inventory item"
+    },
+    {
+      "name": "supplemental_type",
+      "type": {
+        "type": "enum",
+        "name": "LocalInventoryOperationResult_supplementalUnderscoretype",
+        "symbols": [
+          "LOCAL_INVENTORY"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "warnings",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.SupplementalItemValidationEvent"
+      }],
+      "doc": "Array with the validation warnings for the item processing record",
+      "default": null
+    }
+  ]
+
+}

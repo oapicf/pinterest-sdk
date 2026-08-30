@@ -4,24 +4,26 @@ import org.openapitools.api.ApiUtils
 import org.openapitools.model.CatalogsListProductsByFilterRequest
 import org.openapitools.model.CatalogsProductGroupPinsList200Response
 import org.openapitools.model.CatalogsProductGroupProductCountsVertical
+import org.openapitools.model.CatalogsProductGroupsCreateManyRequestItems
+import org.openapitools.model.CatalogsProductGroupsCreateRequestSchema
 import org.openapitools.model.CatalogsProductGroupsList200Response
-import org.openapitools.model.CatalogsProductGroupsUpdateRequest
+import org.openapitools.model.CatalogsProductGroupsUpdateRequestSchema
 import org.openapitools.model.CatalogsVerticalProductGroup
-import org.openapitools.model.Error
-import org.openapitools.model.MultipleProductGroupsInner
+import org.openapitools.model.PinterestLibError
 
 class CatalogProductGroupsApi {
     String basePath = "https://api.pinterest.com/v5"
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def catalogsProductGroupPinsList ( String productGroupId, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics, Closure onSuccess, Closure onFailure)  {
+    def catalogsProductGroupPinsList ( String productGroupId, String adAccountId, Boolean pinMetrics, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/catalogs/product_groups/${product_group_id}/products"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -29,40 +31,43 @@ class CatalogProductGroupsApi {
             throw new RuntimeException("missing required params productGroupId")
         }
 
-        if (bookmark != null) {
-            queryParams.put("bookmark", bookmark)
-        }
-        if (pageSize != null) {
-            queryParams.put("page_size", pageSize)
-        }
         if (adAccountId != null) {
             queryParams.put("ad_account_id", adAccountId)
         }
         if (pinMetrics != null) {
             queryParams.put("pin_metrics", pinMetrics)
         }
+        if (bookmark != null) {
+            queryParams.put("bookmark", bookmark)
+        }
+        if (pageSize != null) {
+            queryParams.put("page_size", pageSize)
+        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     CatalogsProductGroupPinsList200Response.class )
 
     }
 
-    def catalogsProductGroupsCreate ( MultipleProductGroupsInner multipleProductGroupsInner, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def catalogsProductGroupsCreate ( CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/catalogs/product_groups"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
-        if (multipleProductGroupsInner == null) {
-            throw new RuntimeException("missing required params multipleProductGroupsInner")
+        if (catalogsProductGroupsCreateRequestSchema == null) {
+            throw new RuntimeException("missing required params catalogsProductGroupsCreateRequestSchema")
         }
 
         if (adAccountId != null) {
@@ -71,27 +76,30 @@ class CatalogProductGroupsApi {
 
 
         contentType = 'application/json';
-        bodyParams = multipleProductGroupsInner
+        bodyParams = catalogsProductGroupsCreateRequestSchema
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     CatalogsVerticalProductGroup.class )
 
     }
 
-    def catalogsProductGroupsCreateMany ( List<MultipleProductGroupsInner> multipleProductGroupsInner, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def catalogsProductGroupsCreateMany ( List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/catalogs/product_groups/multiple"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
-        if (multipleProductGroupsInner == null) {
-            throw new RuntimeException("missing required params multipleProductGroupsInner")
+        if (catalogsProductGroupsCreateManyRequestItems == null) {
+            throw new RuntimeException("missing required params catalogsProductGroupsCreateManyRequestItems")
         }
 
         if (adAccountId != null) {
@@ -100,10 +108,12 @@ class CatalogProductGroupsApi {
 
 
         contentType = 'application/json';
-        bodyParams = multipleProductGroupsInner
+        bodyParams = catalogsProductGroupsCreateManyRequestItems
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "array",
                     String.class )
 
@@ -116,6 +126,7 @@ class CatalogProductGroupsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -130,9 +141,11 @@ class CatalogProductGroupsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    null )
+                    CatalogsVerticalProductGroup.class )
 
     }
 
@@ -143,6 +156,7 @@ class CatalogProductGroupsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -160,7 +174,9 @@ class CatalogProductGroupsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
                     null )
 
@@ -173,6 +189,7 @@ class CatalogProductGroupsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -187,19 +204,22 @@ class CatalogProductGroupsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     CatalogsVerticalProductGroup.class )
 
     }
 
-    def catalogsProductGroupsList ( List<Integer> id, String feedId, String catalogId, String bookmark, Integer pageSize, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def catalogsProductGroupsList ( List<Integer> id, String feedId, String catalogId, String adAccountId, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/catalogs/product_groups"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
@@ -212,20 +232,22 @@ class CatalogProductGroupsApi {
         if (catalogId != null) {
             queryParams.put("catalog_id", catalogId)
         }
+        if (adAccountId != null) {
+            queryParams.put("ad_account_id", adAccountId)
+        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
         }
-        if (adAccountId != null) {
-            queryParams.put("ad_account_id", adAccountId)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     CatalogsProductGroupsList200Response.class )
 
@@ -238,6 +260,7 @@ class CatalogProductGroupsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -252,19 +275,22 @@ class CatalogProductGroupsApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     CatalogsProductGroupProductCountsVertical.class )
 
     }
 
-    def catalogsProductGroupsUpdate ( String productGroupId, CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def catalogsProductGroupsUpdate ( String productGroupId, CatalogsProductGroupsUpdateRequestSchema catalogsProductGroupsUpdateRequestSchema, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/catalogs/product_groups/${product_group_id}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -272,8 +298,8 @@ class CatalogProductGroupsApi {
             throw new RuntimeException("missing required params productGroupId")
         }
         // verify required params are set
-        if (catalogsProductGroupsUpdateRequest == null) {
-            throw new RuntimeException("missing required params catalogsProductGroupsUpdateRequest")
+        if (catalogsProductGroupsUpdateRequestSchema == null) {
+            throw new RuntimeException("missing required params catalogsProductGroupsUpdateRequestSchema")
         }
 
         if (adAccountId != null) {
@@ -282,10 +308,12 @@ class CatalogProductGroupsApi {
 
 
         contentType = 'application/json';
-        bodyParams = catalogsProductGroupsUpdateRequest
+        bodyParams = catalogsProductGroupsUpdateRequestSchema
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
                     CatalogsVerticalProductGroup.class )
 
@@ -298,6 +326,7 @@ class CatalogProductGroupsApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -323,7 +352,9 @@ class CatalogProductGroupsApi {
         bodyParams = catalogsListProductsByFilterRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     CatalogsProductGroupPinsList200Response.class )
 

@@ -8,10 +8,10 @@
 #include "Helpers.h"
 #include <list>
 
-#include "AudienceDefinitionResponse.h"
 #include "AudienceInsightType.h"
-#include "AudienceInsightsResponse.h"
-#include "Error.h"
+#include "AudienceInsights.h"
+#include "Audience_insights_scope_and_type_get_200_response.h"
+#include "Pinterest.Lib.Error.h"
 
 namespace Tiny {
 
@@ -24,7 +24,7 @@ class AudienceInsightsApi : public Service {
 public:
     AudienceInsightsApi() = default;
 
-    virtual ~AudienceInsightsApi() = default;
+    virtual ~AudienceInsightsApi();
 
     /**
     * Get audience insights scope and type.
@@ -33,7 +33,7 @@ public:
     * \param adAccountId Unique identifier of an ad account. *Required*
     */
     Response<
-                AudienceDefinitionResponse
+                Audience_insights_scope_and_type_get_200_response
         >
     audienceInsightsScopeAndType_get(
             
@@ -43,12 +43,12 @@ public:
     /**
     * Get audience insights.
     *
-    * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
+    * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
     * \param adAccountId Unique identifier of an ad account. *Required*
     * \param audienceInsightType Type of audience insights. *Required*
     */
     Response<
-                AudienceInsightsResponse
+                AudienceInsights
         >
     audienceInsights_get(
             

@@ -13,13 +13,13 @@ using namespace Tiny;
             std::string feedId
             , 
             
+            std::string adAccountId
+            , 
+            
             std::string bookmark
             , 
             
             int pageSize
-            , 
-            
-            std::string adAccountId
             
         )
         {
@@ -28,10 +28,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize adAccountId 
+            // Query    | adAccountId bookmark pageSize 
+            addQueryParam("ad_account_id",adAccountId);
             addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
-            addQueryParam("ad_account_id",adAccountId);
 
             // Form     | 
 
@@ -73,7 +73,7 @@ using namespace Tiny;
         CatalogFeedsApi::
         feeds_create(
             
-            Feeds_create_request feedsCreateRequest
+            CatalogsFeedCreateRequestSchema catalogsFeedCreateRequestSchema
             , 
             
             std::string adAccountId
@@ -98,11 +98,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | feedsCreateRequest
+            // Body     | catalogsFeedCreateRequestSchema
 
 
 
-            payload = feedsCreateRequest.toJson().dump();
+            payload = catalogsFeedCreateRequestSchema.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -121,7 +121,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            CatalogsFeed
         >
         CatalogFeedsApi::
         feeds_delete(
@@ -166,7 +166,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            CatalogsFeed obj(output_string);
+
+
+            Response<CatalogsFeed> response(obj, httpCode);
             return response;
         }
 
@@ -286,16 +291,16 @@ using namespace Tiny;
         CatalogFeedsApi::
         feeds_list(
             
-            std::string bookmark
-            , 
-            
-            int pageSize
-            , 
-            
             std::string catalogId
             , 
             
             std::string adAccountId
+            , 
+            
+            std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -304,11 +309,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize catalogId adAccountId 
-            addQueryParam("bookmark",bookmark);
-            addQueryParam("page_size",pageSize);
+            // Query    | catalogId adAccountId bookmark pageSize 
             addQueryParam("catalog_id",catalogId);
             addQueryParam("ad_account_id",adAccountId);
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 
@@ -345,7 +350,7 @@ using namespace Tiny;
             std::string feedId
             , 
             
-            Feeds_update_request feedsUpdateRequest
+            CatalogsFeedUpdateRequestSchema catalogsFeedUpdateRequestSchema
             , 
             
             std::string adAccountId
@@ -378,11 +383,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | feedsUpdateRequest
+            // Body     | catalogsFeedUpdateRequestSchema
 
 
 
-            payload = feedsUpdateRequest.toJson().dump();
+            payload = catalogsFeedUpdateRequestSchema.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -408,12 +413,6 @@ using namespace Tiny;
             
             std::string processingResultId
             , 
-            
-            std::string bookmark
-            , 
-            
-            int pageSize
-            , 
             std::list<int> itemNumbers
             
             , 
@@ -422,6 +421,12 @@ using namespace Tiny;
             , 
             
             std::string adAccountId
+            , 
+            
+            std::string bookmark
+            , 
+            
+            int pageSize
             
         )
         {
@@ -430,14 +435,14 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | bookmark pageSize itemNumbers itemValidationIssue adAccountId 
-            addQueryParam("bookmark",bookmark);
-            addQueryParam("page_size",pageSize);
+            // Query    | itemNumbers itemValidationIssue adAccountId bookmark pageSize 
             for (auto &x : itemNumbers){
                 addQueryParam("item_numbers", std::string(x));
             }
             addQueryParam("item_validation_issue",itemValidationIssue);
             addQueryParam("ad_account_id",adAccountId);
+            addQueryParam("bookmark",bookmark);
+            addQueryParam("page_size",pageSize);
 
             // Form     | 
 

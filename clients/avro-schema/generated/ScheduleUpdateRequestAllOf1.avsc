@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ScheduleUpdateRequestAllOf1",
+  "fields": [
+    {
+      "name": "entity_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "entity_type",
+      "type": ["null", "string"],
+      "doc": "Entity type",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Schedule ID."
+    }
+  ]
+
+}

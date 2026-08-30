@@ -12,15 +12,9 @@ Name | Type | Description | Notes
 **errorCounts** | [**List&lt;ErrorDetail&gt;**](ErrorDetail.md) | Error counts by error code |  [optional]
 **id** | **String** | Customer List Upload ID. | 
 **operation** | [**UserListOperationType**](UserListOperationType.md) |  | 
-**recordCounts** | [**RecordCounts**](RecordCounts.md) |  |  [optional]
-**state** | [**StateEnum**](#StateEnum) | Workload processing state | 
+**recordCounts** | [**RecordCounts**](RecordCounts.md) | Record processing counts |  [optional]
+**state** | [**WorkloadState**](WorkloadState.md) |  | 
 **updatedTime** | **Integer** | Customer List Upload updated_time. Epoch (seconds). | 
-
-
-## Enum: StateEnum
-
-Name | Value
----- | -----
 
 
 

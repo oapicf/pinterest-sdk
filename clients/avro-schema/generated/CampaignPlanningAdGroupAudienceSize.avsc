@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Range audience size for an ad group.",
+  "name": "CampaignPlanningAdGroupAudienceSize",
+  "fields": [
+    {
+      "name": "count_lower",
+      "type": ["null", "int"],
+      "doc": "Lower bound of the audience size estimate.",
+      "default": null
+    },
+    {
+      "name": "count_upper",
+      "type": ["null", "int"],
+      "doc": "Upper bound of the audience size estimate.",
+      "default": null
+    }
+  ]
+
+}

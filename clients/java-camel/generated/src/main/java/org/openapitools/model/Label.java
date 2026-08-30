@@ -2,75 +2,52 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.LabelStatus;
-import org.openapitools.model.LabelType;
+import org.openapitools.model.NullableLabelStatus;
+import org.openapitools.model.NullableLabelType;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Label
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Label {
 
   private String id;
 
-  private JsonNullable<LabelType> labelType = JsonNullable.<LabelType>undefined();
+  private JsonNullable<NullableLabelType> labelType = JsonNullable.<NullableLabelType>undefined();
 
-  private String parentId;
-
-  /**
-   * Label parent entity type.
-   */
-  public enum ParentTypeEnum {
-    CAMPAIGN("CAMPAIGN");
-
-    private final String value;
-
-    ParentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ParentTypeEnum fromValue(String value) {
-      for (ParentTypeEnum b : ParentTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  private JsonNullable<ParentTypeEnum> parentType = JsonNullable.<ParentTypeEnum>undefined();
-
-  private JsonNullable<LabelStatus> status = JsonNullable.<LabelStatus>undefined();
+  private JsonNullable<NullableLabelStatus> status = JsonNullable.<NullableLabelStatus>undefined();
 
   private String value;
+
+  public Label() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Label(String id, NullableLabelType labelType, String value) {
+    this.id = id;
+    this.labelType = JsonNullable.of(labelType);
+    this.value = value;
+  }
 
   public Label id(String id) {
     this.id = id;
@@ -81,8 +58,8 @@ public class Label {
    * Label ID.
    * @return id
    */
-  
-  @Schema(name = "id", example = "1106385754497", description = "Label ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "1106385754497", description = "Label ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -92,7 +69,7 @@ public class Label {
     this.id = id;
   }
 
-  public Label labelType(LabelType labelType) {
+  public Label labelType(NullableLabelType labelType) {
     this.labelType = JsonNullable.of(labelType);
     return this;
   }
@@ -101,58 +78,18 @@ public class Label {
    * Get labelType
    * @return labelType
    */
-  @Valid 
-  @Schema(name = "label_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "label_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("label_type")
-  public JsonNullable<LabelType> getLabelType() {
+  public JsonNullable<NullableLabelType> getLabelType() {
     return labelType;
   }
 
-  public void setLabelType(JsonNullable<LabelType> labelType) {
+  public void setLabelType(JsonNullable<NullableLabelType> labelType) {
     this.labelType = labelType;
   }
 
-  public Label parentId(String parentId) {
-    this.parentId = parentId;
-    return this;
-  }
-
-  /**
-   * Label parent entity ID.
-   * @return parentId
-   */
-  
-  @Schema(name = "parent_id", example = "626753052072", description = "Label parent entity ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("parent_id")
-  public String getParentId() {
-    return parentId;
-  }
-
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
-  }
-
-  public Label parentType(ParentTypeEnum parentType) {
-    this.parentType = JsonNullable.of(parentType);
-    return this;
-  }
-
-  /**
-   * Label parent entity type.
-   * @return parentType
-   */
-  
-  @Schema(name = "parent_type", example = "CAMPAIGN", description = "Label parent entity type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("parent_type")
-  public JsonNullable<ParentTypeEnum> getParentType() {
-    return parentType;
-  }
-
-  public void setParentType(JsonNullable<ParentTypeEnum> parentType) {
-    this.parentType = parentType;
-  }
-
-  public Label status(LabelStatus status) {
+  public Label status(NullableLabelStatus status) {
     this.status = JsonNullable.of(status);
     return this;
   }
@@ -164,11 +101,11 @@ public class Label {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public JsonNullable<LabelStatus> getStatus() {
+  public JsonNullable<NullableLabelStatus> getStatus() {
     return status;
   }
 
-  public void setStatus(JsonNullable<LabelStatus> status) {
+  public void setStatus(JsonNullable<NullableLabelStatus> status) {
     this.status = status;
   }
 
@@ -178,11 +115,11 @@ public class Label {
   }
 
   /**
-   * Label name.
+   * Label name. 100-character limit.
    * @return value
    */
-  @Size(max = 100) 
-  @Schema(name = "value", description = "Label name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Size(max = 100) 
+  @Schema(name = "value", description = "Label name. 100-character limit.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("value")
   public String getValue() {
     return value;
@@ -202,9 +139,7 @@ public class Label {
     }
     Label label = (Label) o;
     return Objects.equals(this.id, label.id) &&
-        equalsNullable(this.labelType, label.labelType) &&
-        Objects.equals(this.parentId, label.parentId) &&
-        equalsNullable(this.parentType, label.parentType) &&
+        Objects.equals(this.labelType, label.labelType) &&
         equalsNullable(this.status, label.status) &&
         Objects.equals(this.value, label.value);
   }
@@ -215,7 +150,7 @@ public class Label {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, hashCodeNullable(labelType), parentId, hashCodeNullable(parentType), hashCodeNullable(status), value);
+    return Objects.hash(id, labelType, hashCodeNullable(status), value);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -231,8 +166,6 @@ public class Label {
     sb.append("class Label {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    labelType: ").append(toIndentedString(labelType)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
-    sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
@@ -244,10 +177,7 @@ public class Label {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

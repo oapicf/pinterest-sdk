@@ -75,8 +75,9 @@ class _$PromotionsResponseSerializer implements PrimitiveSerializer<PromotionsRe
         case r'promotions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PromotionArrayElement)]),
-          ) as BuiltList<PromotionArrayElement>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(PromotionArrayElement)]),
+          ) as BuiltList<PromotionArrayElement>?;
+          if (valueDes == null) continue;
           result.promotions.replace(valueDes);
           break;
         default:

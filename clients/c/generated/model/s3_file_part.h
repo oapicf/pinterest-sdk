@@ -19,14 +19,14 @@ typedef struct s3_file_part_t s3_file_part_t;
 
 
 typedef struct s3_file_part_t {
-    int part_number; //numeric
+    int *part_number; //numeric
     char *presigned_url; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } s3_file_part_t;
 
 __attribute__((deprecated)) s3_file_part_t *s3_file_part_create(
-    int part_number,
+    int *part_number,
     char *presigned_url
 );
 

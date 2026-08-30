@@ -14,6 +14,13 @@ API.Client.TrendingTopic = function() {}
 API.Client.TrendingTopic.prototype.description;
 
 /**
+ * Unique identifier for the trending topic
+ * @type {!string}
+ * @export
+ */
+API.Client.TrendingTopic.prototype.id;
+
+/**
  * Month-over-month growth percentage
  * @type {!number}
  * @export

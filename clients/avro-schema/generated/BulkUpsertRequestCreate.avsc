@@ -35,7 +35,7 @@
       "name": "catalog_product_groups",
       "type": ["null", {
         "type": "array",
-        "items": "model.MultipleProductGroupsInner"
+        "items": "model.BulkUpsertRequestCreateCatalogProductGroupsItems"
       }],
       "doc": "",
       "default": null
@@ -53,7 +53,7 @@
       "name": "labels",
       "type": ["null", {
         "type": "array",
-        "items": "model.LabelCreateRequest"
+        "items": "model.LabelBulkCreateRequest"
       }],
       "doc": "",
       "default": null
@@ -63,6 +63,15 @@
       "type": ["null", {
         "type": "array",
         "items": "model.ProductGroupPromotionCreateRequest"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "schedules",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ScheduleCreateRequest"
       }],
       "doc": "",
       "default": null

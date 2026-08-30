@@ -7,8 +7,9 @@ using namespace Tiny;
 CatalogsCreativeAssetsItemResponse::CatalogsCreativeAssetsItemResponse()
 {
 	attributes = CatalogsCreativeAssetsAttributes();
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	creative_assets_id = std::string();
+	item_response_kind = std::string();
 	pins = std::list<Pin>();
 }
 
@@ -49,9 +50,8 @@ CatalogsCreativeAssetsItemResponse::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -64,6 +64,19 @@ CatalogsCreativeAssetsItemResponse::fromJson(std::string jsonObj)
 
 
         jsonToValue(&creative_assets_id, value, "std::string");
+
+
+    }
+
+    const char *item_response_kindKey = "item_response_kind";
+
+    if(object.has_key(item_response_kindKey))
+    {
+        bourne::json value = object[item_response_kindKey];
+
+
+
+        jsonToValue(&item_response_kind, value, "std::string");
 
 
     }
@@ -109,14 +122,21 @@ CatalogsCreativeAssetsItemResponse::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
 
 
     object["creative_assets_id"] = getCreativeAssetsId();
+
+
+
+
+
+
+    object["item_response_kind"] = getItemResponseKind();
 
 
 
@@ -146,19 +166,19 @@ CatalogsCreativeAssetsItemResponse::getAttributes()
 }
 
 void
-CatalogsCreativeAssetsItemResponse::setAttributes(CatalogsCreativeAssetsAttributes  attributes)
+CatalogsCreativeAssetsItemResponse::setAttributes(CatalogsCreativeAssetsAttributes attributes)
 {
 	this->attributes = attributes;
 }
 
-CatalogsType
+std::string
 CatalogsCreativeAssetsItemResponse::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsCreativeAssetsItemResponse::setCatalogType(CatalogsType  catalog_type)
+CatalogsCreativeAssetsItemResponse::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -170,9 +190,21 @@ CatalogsCreativeAssetsItemResponse::getCreativeAssetsId()
 }
 
 void
-CatalogsCreativeAssetsItemResponse::setCreativeAssetsId(std::string  creative_assets_id)
+CatalogsCreativeAssetsItemResponse::setCreativeAssetsId(std::string creative_assets_id)
 {
 	this->creative_assets_id = creative_assets_id;
+}
+
+std::string
+CatalogsCreativeAssetsItemResponse::getItemResponseKind()
+{
+	return item_response_kind;
+}
+
+void
+CatalogsCreativeAssetsItemResponse::setItemResponseKind(std::string item_response_kind)
+{
+	this->item_response_kind = item_response_kind;
 }
 
 std::list<Pin>
@@ -182,7 +214,7 @@ CatalogsCreativeAssetsItemResponse::getPins()
 }
 
 void
-CatalogsCreativeAssetsItemResponse::setPins(std::list <Pin> pins)
+CatalogsCreativeAssetsItemResponse::setPins(std::list<Pin> pins)
 {
 	this->pins = pins;
 }

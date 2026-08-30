@@ -6,7 +6,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.model.ProductCategoriesEngagementType;
-import org.openapitools.model.VerticalProductCategory;
 
 @Canonical
 class TrendingProductCategory {
@@ -16,8 +15,10 @@ class TrendingProductCategory {
     Integer pctChangeMom
     /* Relative volume percentage */
     Integer percentRelativeVolume
+    /* Pinterest Product Category Id */
+    Integer pinterestProductCategoryId
     /* Product Category Name */
     String productCategory
     /* Vertical name associated with the product category */
-    List<VerticalProductCategory> verticals = new ArrayList<>()
+    List<String> verticals = new ArrayList<>()
 }

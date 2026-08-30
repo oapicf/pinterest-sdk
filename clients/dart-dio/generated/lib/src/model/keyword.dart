@@ -3,8 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/keywords_common.dart';
-import 'package:openapi/src/model/match_type_response.dart';
+import 'package:openapi/src/model/match_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,34 +12,47 @@ part 'keyword.g.dart';
 /// Keyword
 ///
 /// Properties:
-/// * [bid] - </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-/// * [matchType] 
-/// * [value] - Keyword value (120 chars max).
 /// * [archived] 
+/// * [bid] - **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 /// * [id] - Keyword ID .
+/// * [matchType] - Keyword [match type](/docs/api-features/targeting-overview/)
 /// * [parentId] - Keyword parent entity ID (advertiser, campaign, ad group).
-/// * [parentType] - Parent entity type
+/// * [parentType] - Parent entity type (advertiser, campaign, ad group).
 /// * [type] - Always keyword
+/// * [value] - Keyword value (120 chars max).
 @BuiltValue()
-abstract class Keyword implements KeywordsCommon, Built<Keyword, KeywordBuilder> {
+abstract class Keyword implements Built<Keyword, KeywordBuilder> {
   @BuiltValueField(wireName: r'archived')
   bool? get archived;
 
+  /// **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  @BuiltValueField(wireName: r'bid')
+  int? get bid;
+
   /// Keyword ID .
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
+
+  /// Keyword [match type](/docs/api-features/targeting-overview/)
+  @BuiltValueField(wireName: r'match_type')
+  MatchType? get matchType;
+  // enum matchTypeEnum {  BROAD,  PHRASE,  EXACT,  EXACT_NEGATIVE,  PHRASE_NEGATIVE,  };
+
+  /// Keyword parent entity ID (advertiser, campaign, ad group).
+  @BuiltValueField(wireName: r'parent_id')
+  String get parentId;
+
+  /// Parent entity type (advertiser, campaign, ad group).
+  @BuiltValueField(wireName: r'parent_type')
+  String? get parentType;
 
   /// Always keyword
   @BuiltValueField(wireName: r'type')
   String? get type;
 
-  /// Keyword parent entity ID (advertiser, campaign, ad group).
-  @BuiltValueField(wireName: r'parent_id')
-  String? get parentId;
-
-  /// Parent entity type
-  @BuiltValueField(wireName: r'parent_type')
-  String? get parentType;
+  /// Keyword value (120 chars max).
+  @BuiltValueField(wireName: r'value')
+  String get value;
 
   Keyword._();
 
@@ -72,15 +84,32 @@ class _$KeywordSerializer implements PrimitiveSerializer<Keyword> {
         specifiedType: const FullType(bool),
       );
     }
+    if (object.bid != null) {
+      yield r'bid';
+      yield serializers.serialize(
+        object.bid,
+        specifiedType: const FullType.nullable(int),
+      );
+    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     yield r'match_type';
     yield object.matchType == null ? null : serializers.serialize(
       object.matchType,
-      specifiedType: const FullType.nullable(MatchTypeResponse),
+      specifiedType: const FullType.nullable(MatchType),
     );
-    if (object.id != null) {
-      yield r'id';
+    yield r'parent_id';
+    yield serializers.serialize(
+      object.parentId,
+      specifiedType: const FullType(String),
+    );
+    if (object.parentType != null) {
+      yield r'parent_type';
       yield serializers.serialize(
-        object.id,
+        object.parentType,
         specifiedType: const FullType(String),
       );
     }
@@ -91,32 +120,11 @@ class _$KeywordSerializer implements PrimitiveSerializer<Keyword> {
         specifiedType: const FullType(String),
       );
     }
-    if (object.bid != null) {
-      yield r'bid';
-      yield serializers.serialize(
-        object.bid,
-        specifiedType: const FullType.nullable(int),
-      );
-    }
     yield r'value';
     yield serializers.serialize(
       object.value,
       specifiedType: const FullType(String),
     );
-    if (object.parentId != null) {
-      yield r'parent_id';
-      yield serializers.serialize(
-        object.parentId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.parentType != null) {
-      yield r'parent_type';
-      yield serializers.serialize(
-        object.parentType,
-        specifiedType: const FullType(String),
-      );
-    }
   }
 
   @override
@@ -143,31 +151,10 @@ class _$KeywordSerializer implements PrimitiveSerializer<Keyword> {
         case r'archived':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.archived = valueDes;
-          break;
-        case r'match_type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(MatchTypeResponse),
-          ) as MatchTypeResponse?;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
           if (valueDes == null) continue;
-          result.matchType = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
-          break;
-        case r'type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.type = valueDes;
+          result.archived = valueDes;
           break;
         case r'bid':
           final valueDes = serializers.deserialize(
@@ -177,12 +164,20 @@ class _$KeywordSerializer implements PrimitiveSerializer<Keyword> {
           if (valueDes == null) continue;
           result.bid = valueDes;
           break;
-        case r'value':
+        case r'id':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.value = valueDes;
+          result.id = valueDes;
+          break;
+        case r'match_type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(MatchType),
+          ) as MatchType?;
+          if (valueDes == null) continue;
+          result.matchType = valueDes;
           break;
         case r'parent_id':
           final valueDes = serializers.deserialize(
@@ -194,9 +189,25 @@ class _$KeywordSerializer implements PrimitiveSerializer<Keyword> {
         case r'parent_type':
           final valueDes = serializers.deserialize(
             value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.parentType = valueDes;
+          break;
+        case r'type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.type = valueDes;
+          break;
+        case r'value':
+          final valueDes = serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String;
-          result.parentType = valueDes;
+          result.value = valueDes;
           break;
         default:
           unhandled.add(key);

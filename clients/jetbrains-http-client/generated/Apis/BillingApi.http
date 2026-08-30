@@ -1,0 +1,111 @@
+## BillingApi
+
+### Redeem ad credits
+## Redeem ad credits
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ads_credit/redeem
+Content-Type: application/json
+Accept: application/json
+
+{
+ "offerCodeHash": "<string>",
+ "validateOnly": "<string>"
+}
+
+
+### Get ads credit discounts
+## Get ads credit discounts
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ads_credit/discounts?bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get download url for a billing invoice
+## Get download url for a billing invoice
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/billing_invoice/{{billing_invoice_id}}/download
+Accept: application/json
+
+### Get billing invoices
+## Get billing invoices
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/billing_invoices?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}&sort={{sort}}&status={{status}}&documentType={{documentType}}&startDueDate={{startDueDate}}&endDueDate={{endDueDate}}
+Accept: application/json
+
+### Get billing profiles
+## Get billing profiles
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/billing_profiles?isActive={{isActive}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get Salesforce account details including bill-to information.
+## Get Salesforce account details including bill-to information.
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ssio/accounts
+Accept: application/json
+
+### Create insertion order through SSIO.
+## Create insertion order through SSIO.
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ssio/insertion_orders
+Content-Type: application/json
+Accept: application/json
+
+{
+ "accepted_terms_id": "<string>",
+ "accepted_terms_time": "<number>",
+ "agency_link": "<string>",
+ "billing_contact_email": "<string>",
+ "billing_contact_firstname": "<string>",
+ "billing_contact_lastname": "<string>",
+ "billto_billing_address_id": "<string>",
+ "billto_business_address_id": "<string>",
+ "billto_company_id": "<string>",
+ "budget_amount": "<number>",
+ "currency_info": "<string>",
+ "end_date": "<string>",
+ "estimated_monthly_spend": "<number>",
+ "media_contact_email": "<string>",
+ "media_contact_firstname": "<string>",
+ "media_contact_lastname": "<string>",
+ "order_line_type": "<string>",
+ "order_name": "<string>",
+ "pmp_id": "<string>",
+ "po_number": "<string>",
+ "start_date": "<string>",
+ "user_email": "<string>"
+}
+
+
+### Edit insertion order through SSIO.
+## Edit insertion order through SSIO.
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ssio/insertion_orders
+Content-Type: application/json
+Accept: application/json
+
+{
+ "ads_manager_order_line_id": "<string>",
+ "agency_link": "<string>",
+ "billing_contact_email": "<string>",
+ "billing_contact_firstname": "<string>",
+ "billing_contact_lastname": "<string>",
+ "budget_amount": "<number>",
+ "end_date": "<string>",
+ "media_contact_email": "<string>",
+ "media_contact_firstname": "<string>",
+ "media_contact_lastname": "<string>",
+ "oracle_line_id": "<string>",
+ "po_number": "<string>",
+ "salesforce_order_id": "<string>",
+ "salesforce_order_line_id": "<string>",
+ "start_date": "<string>",
+ "user_email": "<string>"
+}
+
+
+### Get insertion order status by ad account id.
+## Get insertion order status by ad account id.
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ssio/insertion_orders/status?bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Get insertion order status by pin order id.
+## Get insertion order status by pin order id.
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ssio/insertion_orders/{{pin_order_id}}/status
+Accept: application/json
+
+### Get Salesforce order lines by ad account id.
+## Get Salesforce order lines by ad account id.
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/ssio/order_lines?pinOrderId={{pinOrderId}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json

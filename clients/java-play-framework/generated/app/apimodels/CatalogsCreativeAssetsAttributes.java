@@ -1,5 +1,9 @@
 package apimodels;
 
+import apimodels.CatalogsAiContentDisclosure;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -10,7 +14,7 @@ import javax.validation.Valid;
 /**
  * CatalogsCreativeAssetsAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreativeAssetsAttributes   {
   @JsonProperty("android_deep_link")
@@ -60,6 +64,11 @@ public class CatalogsCreativeAssetsAttributes   {
   @JsonProperty("visibility")
   
   private String visibility;
+
+  @JsonProperty("ai_disclosures")
+  @Valid
+
+  private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = null;
 
   @JsonProperty("image_link")
   
@@ -262,7 +271,7 @@ public class CatalogsCreativeAssetsAttributes   {
   }
 
    /**
-   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
    * @return visibility
   **/
   public String getVisibility() {
@@ -271,6 +280,31 @@ public class CatalogsCreativeAssetsAttributes   {
 
   public void setVisibility(String visibility) {
     this.visibility = visibility;
+  }
+
+  public CatalogsCreativeAssetsAttributes aiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  public CatalogsCreativeAssetsAttributes addAiDisclosuresItem(CatalogsAiContentDisclosure aiDisclosuresItem) {
+    if (this.aiDisclosures == null) {
+      this.aiDisclosures = new ArrayList<>();
+    }
+    this.aiDisclosures.add(aiDisclosuresItem);
+    return this;
+  }
+
+   /**
+   * AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
+   * @return aiDisclosures
+  **/
+  public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
   }
 
   public CatalogsCreativeAssetsAttributes imageLink(String imageLink) {
@@ -329,13 +363,14 @@ public class CatalogsCreativeAssetsAttributes   {
         Objects.equals(link, catalogsCreativeAssetsAttributes.link) &&
         Objects.equals(title, catalogsCreativeAssetsAttributes.title) &&
         Objects.equals(visibility, catalogsCreativeAssetsAttributes.visibility) &&
+        Objects.equals(aiDisclosures, catalogsCreativeAssetsAttributes.aiDisclosures) &&
         Objects.equals(imageLink, catalogsCreativeAssetsAttributes.imageLink) &&
         Objects.equals(videoLink, catalogsCreativeAssetsAttributes.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(androidDeepLink, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, googleProductCategory, iosDeepLink, link, title, visibility, imageLink, videoLink);
+    return Objects.hash(androidDeepLink, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, googleProductCategory, iosDeepLink, link, title, visibility, aiDisclosures, imageLink, videoLink);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -356,6 +391,7 @@ public class CatalogsCreativeAssetsAttributes   {
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
@@ -367,10 +403,7 @@ public class CatalogsCreativeAssetsAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

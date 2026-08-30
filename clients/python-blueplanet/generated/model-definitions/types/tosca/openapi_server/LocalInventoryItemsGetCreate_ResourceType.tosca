@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LocalInventoryItemsGetCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LocalInventoryItemsGetCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ItemIdStoreCodePair = openapi_server.resourceTypes.ItemIdStoreCodePair
+}
+resourceTypes {
+
+  LocalInventoryItemsGetCreate {
+    title = LocalInventoryItemsGetCreate
+    description = LocalInventoryItemsGetCreate
+    derivedFrom = Root
+    properties {
+        item_filters {
+          type = array
+          items.type = ItemIdStoreCodePair
+          description = "Array of local inventory item identifiers. Each item requires an item_id and store_code pair. Up to 1000 items."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LocalInventoryItemsGetCreate {
+    title = LocalInventoryItemsGetCreate
+    description = LocalInventoryItemsGetCreate
+    implements = openapi_server.resourceTypes.LocalInventoryItemsGetCreate
+
+  }
+}

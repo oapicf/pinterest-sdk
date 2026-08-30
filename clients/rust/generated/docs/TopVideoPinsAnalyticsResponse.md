@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**date_availability** | Option<[**models::TopPinsAnalyticsResponseDateAvailability**](TopPinsAnalyticsResponse_date_availability.md)> |  | [optional]
-**pins** | Option<[**Vec<models::TopVideoPinsAnalyticsResponsePinsInner>**](TopVideoPinsAnalyticsResponse_pins_inner.md)> |  | [optional]
-**sort_by** | Option<**String**> |  | [optional]
+**date_availability** | Option<[**models::TopVideoPinsAnalyticsResponseDateAvailability**](TopVideoPinsAnalyticsResponseDateAvailability.md)> |  | [optional]
+**pins** | Option<[**Vec<models::TopVideoPinsAnalyticsResponsePinsItems>**](TopVideoPinsAnalyticsResponsePinsItems.md)> |  | [optional]
+**sort_by** | Option<[**models::TopVideoPinsSortBy**](TopVideoPinsSortBy.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

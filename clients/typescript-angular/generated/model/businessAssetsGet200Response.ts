@@ -7,14 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { GetBusinessAssetsResponse } from './getBusinessAssetsResponse';
+import { BusinessAssets } from './businessAssets';
 
 
 export interface BusinessAssetsGet200Response { 
     bookmark?: string | null;
-    /**
-     * List of assets the requesting business has access to.
-     */
-    items: Array<GetBusinessAssetsResponse>;
+    items: Array<BusinessAssets>;
 }
 

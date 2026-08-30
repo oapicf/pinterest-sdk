@@ -1,19 +1,22 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.AdsCreditRedeemRequest
-import org.openapitools.model.AdsCreditRedeemResponse
+import org.openapitools.model.AdsCreditRedeem
+import org.openapitools.model.AdsCreditRedeemCreate
 import org.openapitools.model.AdsCreditsDiscountsGet200Response
+import org.openapitools.model.BillingInvoiceDocumentType
 import org.openapitools.model.BillingInvoiceDownloadResponse
+import org.openapitools.model.BillingInvoiceSortField
+import org.openapitools.model.BillingInvoiceStatus
 import org.openapitools.model.BillingInvoicesGet200Response
 import org.openapitools.model.BillingProfilesGet200Response
-import org.openapitools.model.Error
-import org.openapitools.model.SSIOAccountResponse
-import org.openapitools.model.SSIOCreateInsertionOrderRequest
-import org.openapitools.model.SSIOCreateInsertionOrderResponse
-import org.openapitools.model.SSIOEditInsertionOrderRequest
-import org.openapitools.model.SSIOEditInsertionOrderResponse
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PinterestLibPaginationOrder
+import org.openapitools.model.SSIOAccount
+import org.openapitools.model.SSIOInsertionOrder
+import org.openapitools.model.SSIOInsertionOrderCreate
 import org.openapitools.model.SSIOInsertionOrderStatusResponse
+import org.openapitools.model.SSIOInsertionOrderUpdate
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response
 
@@ -22,13 +25,14 @@ class BillingApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def adsCreditRedeem ( String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest, Closure onSuccess, Closure onFailure)  {
+    def adsCreditRedeem ( String adAccountId, AdsCreditRedeemCreate adsCreditRedeemCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads_credit/redeem"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -36,19 +40,21 @@ class BillingApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (adsCreditRedeemRequest == null) {
-            throw new RuntimeException("missing required params adsCreditRedeemRequest")
+        if (adsCreditRedeemCreate == null) {
+            throw new RuntimeException("missing required params adsCreditRedeemCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = adsCreditRedeemRequest
+        bodyParams = adsCreditRedeemCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    AdsCreditRedeemResponse.class )
+                    AdsCreditRedeem.class )
 
     }
 
@@ -59,6 +65,7 @@ class BillingApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -76,7 +83,9 @@ class BillingApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     AdsCreditsDiscountsGet200Response.class )
 
@@ -89,6 +98,7 @@ class BillingApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -104,19 +114,22 @@ class BillingApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BillingInvoiceDownloadResponse.class )
 
     }
 
-    def billingInvoicesGet ( String adAccountId, String bookmark, Integer pageSize, String sort, String order, String status, String documentType, Date startDueDate, Date endDueDate, Closure onSuccess, Closure onFailure)  {
+    def billingInvoicesGet ( String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, Date startDueDate, Date endDueDate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/billing_invoices"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -130,11 +143,11 @@ class BillingApi {
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
         }
-        if (sort != null) {
-            queryParams.put("sort", sort)
-        }
         if (order != null) {
             queryParams.put("order", order)
+        }
+        if (sort != null) {
+            queryParams.put("sort", sort)
         }
         if (status != null) {
             queryParams.put("status", status)
@@ -152,28 +165,31 @@ class BillingApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BillingInvoicesGet200Response.class )
 
     }
 
-    def billingProfilesGet ( String adAccountId, Boolean isActive, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
+    def billingProfilesGet ( Boolean isActive, String adAccountId, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/billing_profiles"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
-        if (adAccountId == null) {
-            throw new RuntimeException("missing required params adAccountId")
-        }
-        // verify required params are set
         if (isActive == null) {
             throw new RuntimeException("missing required params isActive")
+        }
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
         }
 
         if (isActive != null) {
@@ -189,7 +205,9 @@ class BillingApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     BillingProfilesGet200Response.class )
 
@@ -202,6 +220,7 @@ class BillingApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -213,19 +232,22 @@ class BillingApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    SSIOAccountResponse.class )
+                    SSIOAccount.class )
 
     }
 
-    def ssioInsertionOrderCreate ( String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest, Closure onSuccess, Closure onFailure)  {
+    def ssioInsertionOrderCreate ( String adAccountId, SSIOInsertionOrderCreate ssIOInsertionOrderCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ssio/insertion_orders"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -233,29 +255,32 @@ class BillingApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (ssIOCreateInsertionOrderRequest == null) {
-            throw new RuntimeException("missing required params ssIOCreateInsertionOrderRequest")
+        if (ssIOInsertionOrderCreate == null) {
+            throw new RuntimeException("missing required params ssIOInsertionOrderCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = ssIOCreateInsertionOrderRequest
+        bodyParams = ssIOInsertionOrderCreate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    SSIOCreateInsertionOrderResponse.class )
+                    SSIOInsertionOrder.class )
 
     }
 
-    def ssioInsertionOrderEdit ( String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest, Closure onSuccess, Closure onFailure)  {
+    def ssioInsertionOrderEdit ( String adAccountId, SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ssio/insertion_orders"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -263,19 +288,21 @@ class BillingApi {
             throw new RuntimeException("missing required params adAccountId")
         }
         // verify required params are set
-        if (ssIOEditInsertionOrderRequest == null) {
-            throw new RuntimeException("missing required params ssIOEditInsertionOrderRequest")
+        if (ssIOInsertionOrderUpdate == null) {
+            throw new RuntimeException("missing required params ssIOInsertionOrderUpdate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = ssIOEditInsertionOrderRequest
+        bodyParams = ssIOInsertionOrderUpdate
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "PATCH", "",
-                    SSIOEditInsertionOrderResponse.class )
+                    SSIOInsertionOrder.class )
 
     }
 
@@ -286,6 +313,7 @@ class BillingApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -303,7 +331,9 @@ class BillingApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     SsioInsertionOrdersStatusGetByAdAccount200Response.class )
 
@@ -316,6 +346,7 @@ class BillingApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -331,19 +362,22 @@ class BillingApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     SSIOInsertionOrderStatusResponse.class )
 
     }
 
-    def ssioOrderLinesGetByAdAccount ( String adAccountId, String bookmark, Integer pageSize, String pinOrderId, Closure onSuccess, Closure onFailure)  {
+    def ssioOrderLinesGetByAdAccount ( String adAccountId, String pinOrderId, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ssio/order_lines"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -351,20 +385,22 @@ class BillingApi {
             throw new RuntimeException("missing required params adAccountId")
         }
 
+        if (pinOrderId != null) {
+            queryParams.put("pin_order_id", pinOrderId)
+        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
         }
-        if (pinOrderId != null) {
-            queryParams.put("pin_order_id", pinOrderId)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     SsioOrderLinesGetByAdAccount200Response.class )
 

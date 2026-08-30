@@ -12,6 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "AssetTypeResponse.h"
 #include <list>
 
 namespace Tiny {
@@ -52,33 +53,33 @@ public:
 
 	/*! \brief Set Unique identifier of a business asset.
 	 */
-	void setAssetId(std::string  asset_id);
-	/*! \brief Get Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+	void setAssetId(std::string asset_id);
+	/*! \brief Get 
 	 */
-	std::string getAssetType();
+	AssetTypeResponse getAssetType();
 
-	/*! \brief Set Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+	/*! \brief Set 
 	 */
-	void setAssetType(std::string  asset_type);
+	void setAssetType(AssetTypeResponse asset_type);
 	/*! \brief Get Unique identifier of a business partner.
 	 */
 	std::string getPartnerId();
 
 	/*! \brief Set Unique identifier of a business partner.
 	 */
-	void setPartnerId(std::string  partner_id);
+	void setPartnerId(std::string partner_id);
 	/*! \brief Get Permission levels member or partner has on an asset.
 	 */
 	std::list<std::string> getPermissions();
 
 	/*! \brief Set Permission levels member or partner has on an asset.
 	 */
-	void setPermissions(std::list <std::string> permissions);
+	void setPermissions(std::list<std::string> permissions);
 
 
     private:
     std::string asset_id{};
-    std::string asset_type{};
+    AssetTypeResponse asset_type;
     std::string partner_id{};
     std::list<std::string> permissions;
 };

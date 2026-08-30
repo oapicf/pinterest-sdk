@@ -9,12 +9,12 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/bulk_download_request.dart';
-import 'package:openapi/src/model/bulk_download_response.dart';
+import 'package:openapi/src/model/bulk_download.dart';
+import 'package:openapi/src/model/bulk_download_create.dart';
+import 'package:openapi/src/model/bulk_job_data.dart';
 import 'package:openapi/src/model/bulk_upsert_request.dart';
 import 'package:openapi/src/model/bulk_upsert_response.dart';
-import 'package:openapi/src/model/bulk_upsert_status_response.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 
 class BulkApi {
 
@@ -25,11 +25,11 @@ class BulkApi {
   const BulkApi(this._dio, this._serializers);
 
   /// Get advertiser entities in bulk
-  /// Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+  /// Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [bulkDownloadRequest] - Parameters to get ad entities in bulk
+  /// * [bulkDownloadCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -37,11 +37,11 @@ class BulkApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BulkDownloadResponse] as data
+  /// Returns a [Future] containing a [Response] with a [BulkDownload] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BulkDownloadResponse>> bulkDownloadCreate({ 
+  Future<Response<BulkDownload>> bulkDownloadCreate({ 
     required String adAccountId,
-    required BulkDownloadRequest bulkDownloadRequest,
+    required BulkDownloadCreate bulkDownloadCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -71,8 +71,8 @@ class BulkApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BulkDownloadRequest);
-      _bodyData = _serializers.serialize(bulkDownloadRequest, specifiedType: _type);
+      const _type = FullType(BulkDownloadCreate);
+      _bodyData = _serializers.serialize(bulkDownloadCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -95,14 +95,14 @@ class BulkApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BulkDownloadResponse? _responseData;
+    BulkDownload? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BulkDownloadResponse),
-      ) as BulkDownloadResponse;
+        specifiedType: const FullType(BulkDownload),
+      ) as BulkDownload;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -114,7 +114,7 @@ class BulkApi {
       );
     }
 
-    return Response<BulkDownloadResponse>(
+    return Response<BulkDownload>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -127,12 +127,12 @@ class BulkApi {
   }
 
   /// Download advertiser entities in bulk
-  /// Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+  /// Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [bulkRequestId] - Unique identifier of a bulk upsert request.
-  /// * [includeDetails] - if set to True then attach the errors/details to all the requests
+  /// * [bulkRequestId] - Bulk request ID that is from one of the entities bulk endpoints
+  /// * [includeDetails] - If set to True then attach the errors/details to all the requests
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -140,9 +140,9 @@ class BulkApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BulkUpsertStatusResponse] as data
+  /// Returns a [Future] containing a [Response] with a [BulkJobData] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BulkUpsertStatusResponse>> bulkRequestGet({ 
+  Future<Response<BulkJobData>> bulkRequestGet({ 
     required String adAccountId,
     required String bulkRequestId,
     bool? includeDetails = false,
@@ -187,14 +187,14 @@ class BulkApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BulkUpsertStatusResponse? _responseData;
+    BulkJobData? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BulkUpsertStatusResponse),
-      ) as BulkUpsertStatusResponse;
+        specifiedType: const FullType(BulkJobData),
+      ) as BulkJobData;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -206,7 +206,7 @@ class BulkApi {
       );
     }
 
-    return Response<BulkUpsertStatusResponse>(
+    return Response<BulkJobData>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -219,7 +219,7 @@ class BulkApi {
   }
 
   /// Create/update ad entities in bulk
-  /// Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+  /// Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.

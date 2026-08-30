@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;LeadFormResponse&gt;**](LeadFormResponse.md) |  | [default to undefined]
+**items** | [**Array&lt;LeadForm&gt;**](LeadForm.md) |  | [default to undefined]
 
 ## Example
 

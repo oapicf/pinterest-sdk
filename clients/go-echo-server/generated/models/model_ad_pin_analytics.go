@@ -6,5 +6,5 @@ type AdPinAnalytics struct {
 	DATE string `json:"DATE,omitempty"`
 
 	// The ID of the pin that the metric belongs to.
-	PIN_ID string `json:"PIN_ID" validate:"regexp=^\\\\d+$"`
+	PIN_ID string `json:"PIN_ID" validate:"regexp=^\\d+$"`
 }

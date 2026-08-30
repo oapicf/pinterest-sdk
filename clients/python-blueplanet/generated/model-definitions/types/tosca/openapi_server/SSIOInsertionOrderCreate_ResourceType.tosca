@@ -1,0 +1,143 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SSIOInsertionOrderCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SSIOInsertionOrderCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Currency = openapi_server.resourceTypes.Currency
+  SSIOOrderLineType = openapi_server.resourceTypes.SSIOOrderLineType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  SSIOInsertionOrderCreate {
+    title = SSIOInsertionOrderCreate
+    description = SSIOInsertionOrderCreate
+    derivedFrom = Root
+    properties {
+        accepted_terms_id {
+          type =  string
+          description = "The SFDC id for the terms"
+          optional = true
+        }
+        accepted_terms_time {
+          type =  integer
+          description = "The UTC timestamp (to the nearest sec) of when terms were accepted"
+          optional = false
+        }
+        agency_link {
+          type =  string
+          description = "URL link for agency"
+          optional = false
+        }
+        billing_contact_email {
+          type =  string
+          description = "The billing contact email"
+          optional = true
+        }
+        billing_contact_firstname {
+          type =  string
+          description = "The billing contact first name"
+          optional = true
+        }
+        billing_contact_lastname {
+          type =  string
+          description = "The billing contact last name"
+          optional = true
+        }
+        billto_billing_address_id {
+          type =  string
+          description = "The bill-to billing address id"
+          optional = true
+        }
+        billto_business_address_id {
+          type =  string
+          description = "The bill-to business address id"
+          optional = true
+        }
+        billto_company_id {
+          type =  string
+          description = "The bill-to company id"
+          optional = true
+        }
+        budget_amount {
+          type =  integer
+          description = "If Budget order line, the budget amount."
+          optional = false
+        }
+        currency_info {
+          type = Currency
+          description = ""
+          optional = true
+        }
+        end_date {
+          type =  string
+          description = "End date of time period. Format: YYYY-MM-DD"
+          optional = false
+        }
+        estimated_monthly_spend {
+          type =  integer
+          description = "If Ongoing (perpetual) order line, the estimated monthly spend"
+          optional = false
+        }
+        media_contact_email {
+          type =  string
+          description = "The media contact email"
+          optional = true
+        }
+        media_contact_firstname {
+          type =  string
+          description = "The media contact first name"
+          optional = true
+        }
+        media_contact_lastname {
+          type =  string
+          description = "The media contact last name"
+          optional = true
+        }
+        order_line_type {
+          type = SSIOOrderLineType
+          description = "Type can be Budget or Perpetual"
+          optional = true
+        }
+        order_name {
+          type =  string
+          description = "The order name"
+          optional = true
+        }
+        pmp_id {
+          type =  string
+          description = "The pmp id"
+          optional = true
+        }
+        po_number {
+          type =  string
+          description = "The po number"
+          optional = true
+        }
+        start_date {
+          type =  string
+          description = "Starting date of time period. Format: YYYY-MM-DD"
+          optional = true
+        }
+        user_email {
+          type =  string
+          description = "The email of user submitting the insertion order"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SSIOInsertionOrderCreate {
+    title = SSIOInsertionOrderCreate
+    description = SSIOInsertionOrderCreate
+    implements = openapi_server.resourceTypes.SSIOInsertionOrderCreate
+
+  }
+}

@@ -1,13 +1,13 @@
 #tag Interface
 Protected Interface UserAccountApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub BoardsUserFollowsListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BoardsUserFollowsList200Response)
+		Sub BoardsUserFollowsListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BoardsList200Response)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub FollowUserUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UserSummary)
+		Sub FollowUserUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.FollowUser)
 		  
 		End Sub
 	#tag EndMethod
@@ -25,7 +25,7 @@ Protected Interface UserAccountApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UnverifyWebsiteDeleteCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub UnverifyWebsiteDeleteCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UserWebsite)
 		  
 		End Sub
 	#tag EndMethod
@@ -61,7 +61,7 @@ Protected Interface UserAccountApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UserFollowingGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UserFollowingGet200Response)
+		Sub UserFollowingGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.FollowersList200Response)
 		  
 		End Sub
 	#tag EndMethod
@@ -73,13 +73,13 @@ Protected Interface UserAccountApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub VerifyWebsiteUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UserWebsiteSummary)
+		Sub VerifyWebsiteUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UserWebsite)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub WebsiteVerificationGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UserWebsiteVerificationCode)
+		Sub WebsiteVerificationGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.UserWebsiteVerification)
 		  
 		End Sub
 	#tag EndMethod

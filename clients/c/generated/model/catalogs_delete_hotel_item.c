@@ -30,10 +30,10 @@ static catalogs_delete_hotel_item_t *catalogs_delete_hotel_item_create_internal(
     if (!catalogs_delete_hotel_item_local_var) {
         return NULL;
     }
+    memset(catalogs_delete_hotel_item_local_var, 0, sizeof(catalogs_delete_hotel_item_t));
+    catalogs_delete_hotel_item_local_var->_library_owned = 1;
     catalogs_delete_hotel_item_local_var->hotel_id = hotel_id;
     catalogs_delete_hotel_item_local_var->operation = operation;
-
-    catalogs_delete_hotel_item_local_var->_library_owned = 1;
     return catalogs_delete_hotel_item_local_var;
 }
 
@@ -41,10 +41,13 @@ __attribute__((deprecated)) catalogs_delete_hotel_item_t *catalogs_delete_hotel_
     char *hotel_id,
     pinterest_rest_api_catalogs_delete_hotel_item_OPERATION_e operation
     ) {
-    return catalogs_delete_hotel_item_create_internal (
+    catalogs_delete_hotel_item_t *result = catalogs_delete_hotel_item_create_internal (
         hotel_id,
         operation
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_delete_hotel_item_free(catalogs_delete_hotel_item_t *catalogs_delete_hotel_item) {
@@ -96,6 +99,8 @@ catalogs_delete_hotel_item_t *catalogs_delete_hotel_item_parseFromJSON(cJSON *ca
 
     catalogs_delete_hotel_item_t *catalogs_delete_hotel_item_local_var = NULL;
 
+    char *hotel_id_local_str = NULL;
+
     // catalogs_delete_hotel_item->hotel_id
     cJSON *hotel_id = cJSON_GetObjectItemCaseSensitive(catalogs_delete_hotel_itemJSON, "hotel_id");
     if (cJSON_IsNull(hotel_id)) {
@@ -129,13 +134,23 @@ catalogs_delete_hotel_item_t *catalogs_delete_hotel_item_parseFromJSON(cJSON *ca
     operationVariable = catalogs_delete_hotel_item_operation_FromString(operation->valuestring);
 
 
+    if (hotel_id && !cJSON_IsNull(hotel_id)) hotel_id_local_str = strdup(hotel_id->valuestring);
+
     catalogs_delete_hotel_item_local_var = catalogs_delete_hotel_item_create_internal (
-        strdup(hotel_id->valuestring),
+        hotel_id_local_str,
         operationVariable
         );
 
+    if (!catalogs_delete_hotel_item_local_var) {
+        goto end;
+    }
+
     return catalogs_delete_hotel_item_local_var;
 end:
+    if (hotel_id_local_str) {
+        free(hotel_id_local_str);
+        hotel_id_local_str = NULL;
+    }
     return NULL;
 
 }

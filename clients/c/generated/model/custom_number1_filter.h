@@ -20,7 +20,7 @@ typedef struct custom_number1_filter_t custom_number1_filter_t;
 
 
 typedef struct custom_number1_filter_t {
-    catalogs_product_group_uint32_criteria_t *custom_number_1; //object
+    struct catalogs_product_group_uint32_criteria_t *custom_number_1; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } custom_number1_filter_t;

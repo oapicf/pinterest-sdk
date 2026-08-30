@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountId** | **String** | Account ID (ad account or business ID). | 
 **AccountName** | **String** | Account name. | 
-**AccountType** | **String** | account type | 
+**AccountType** | [**AudienceAccountType**](AudienceAccountType.md) | account type | 
 **SharedOnTimestamp** | **Int32** | Epoch timestamp in seconds for the shared audience event | 
 
 ## Examples

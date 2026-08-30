@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+ * Specify the timezone to be applied for the reporting.
  **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+ * Specify the timezone to be applied for the reporting.
  */
 public enum ReportingTimeZone {
   

@@ -1,42 +1,42 @@
 
 <h2>Keyword</h2>
 <ul class="parameter">
-  <li class="param-required-false">bid : Integer
-    <br/>&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">matchUnderscoretype : MatchTypeResponse
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">value : String
-    <br/>Keyword value (120 chars max).
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">archived : Boolean
     <br/>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">id : String
+  <li class="param-required-false">bid : Integer
+    <br/>**Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">id : String
     <br/>Keyword ID .
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">parentUnderscoreid : String
+  <li class="param-required-true">matchUnderscoretype : MatchType
+    <br/>Keyword [match type](/docs/api-features/targeting-overview/)
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">parentUnderscoreid : String
     <br/>Keyword parent entity ID (advertiser, campaign, ad group).
   </li>
 </ul>
 <ul class="parameter">
   <li class="param-required-false">parentUnderscoretype : String
-    <br/>Parent entity type
+    <br/>Parent entity type (advertiser, campaign, ad group).
   </li>
 </ul>
 <ul class="parameter">
   <li class="param-required-false">type : String
     <br/>Always keyword
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">value : String
+    <br/>Keyword value (120 chars max).
   </li>
 </ul>

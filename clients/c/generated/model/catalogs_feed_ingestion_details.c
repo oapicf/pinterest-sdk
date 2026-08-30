@@ -14,11 +14,11 @@ static catalogs_feed_ingestion_details_t *catalogs_feed_ingestion_details_create
     if (!catalogs_feed_ingestion_details_local_var) {
         return NULL;
     }
+    memset(catalogs_feed_ingestion_details_local_var, 0, sizeof(catalogs_feed_ingestion_details_t));
+    catalogs_feed_ingestion_details_local_var->_library_owned = 1;
     catalogs_feed_ingestion_details_local_var->errors = errors;
     catalogs_feed_ingestion_details_local_var->info = info;
     catalogs_feed_ingestion_details_local_var->warnings = warnings;
-
-    catalogs_feed_ingestion_details_local_var->_library_owned = 1;
     return catalogs_feed_ingestion_details_local_var;
 }
 
@@ -27,11 +27,14 @@ __attribute__((deprecated)) catalogs_feed_ingestion_details_t *catalogs_feed_ing
     catalogs_feed_ingestion_info_t *info,
     catalogs_feed_ingestion_warnings_t *warnings
     ) {
-    return catalogs_feed_ingestion_details_create_internal (
+    catalogs_feed_ingestion_details_t *result = catalogs_feed_ingestion_details_create_internal (
         errors,
         info,
         warnings
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_feed_ingestion_details_free(catalogs_feed_ingestion_details_t *catalogs_feed_ingestion_details) {
@@ -160,11 +163,16 @@ catalogs_feed_ingestion_details_t *catalogs_feed_ingestion_details_parseFromJSON
     warnings_local_nonprim = catalogs_feed_ingestion_warnings_parseFromJSON(warnings); //nonprimitive
 
 
+
     catalogs_feed_ingestion_details_local_var = catalogs_feed_ingestion_details_create_internal (
         errors_local_nonprim,
         info_local_nonprim,
         warnings_local_nonprim
         );
+
+    if (!catalogs_feed_ingestion_details_local_var) {
+        goto end;
+    }
 
     return catalogs_feed_ingestion_details_local_var;
 end:

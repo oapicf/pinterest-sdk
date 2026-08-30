@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Accesses** | [**UpdateMemberAssetAccessBodyAccessesInner[]**](UpdateMemberAssetAccessBodyAccessesInner.md) |  | 
+**Accesses** | [**UpdateMemberAssetAccessItem[]**](UpdateMemberAssetAccessItem.md) | List of member asset accesses to assign or update. | 
 
 ## Examples
 

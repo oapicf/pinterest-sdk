@@ -23,7 +23,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class MediaUploadCreate(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(example = "video", required = true, description = "")
+    @param:JsonProperty("media_type")
     @get:JsonProperty("media_type", required = true) val mediaType: MediaUploadType
 ) {
 

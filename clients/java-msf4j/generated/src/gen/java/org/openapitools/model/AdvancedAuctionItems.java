@@ -14,13 +14,13 @@ import org.openapitools.model.AdvancedAuctionItem;
  * Response object containing item bid options
  */
 @ApiModel(description = "Response object containing item bid options")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdvancedAuctionItems   {
   @JsonProperty("catalog_id")
   private String catalogId;
 
   @JsonProperty("items")
-  private List<AdvancedAuctionItem> items = null;
+  private List<@Valid AdvancedAuctionItem> items = null;
 
   public AdvancedAuctionItems catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -40,7 +40,7 @@ public class AdvancedAuctionItems   {
     this.catalogId = catalogId;
   }
 
-  public AdvancedAuctionItems items(List<AdvancedAuctionItem> items) {
+  public AdvancedAuctionItems items(List<@Valid AdvancedAuctionItem> items) {
     this.items = items;
     return this;
   }
@@ -58,11 +58,11 @@ public class AdvancedAuctionItems   {
    * @return items
   **/
   @ApiModelProperty(value = "Array with item bid options")
-  public List<AdvancedAuctionItem> getItems() {
+  public List<@Valid AdvancedAuctionItem> getItems() {
     return items;
   }
 
-  public void setItems(List<AdvancedAuctionItem> items) {
+  public void setItems(List<@Valid AdvancedAuctionItem> items) {
     this.items = items;
   }
 
@@ -101,10 +101,7 @@ public class AdvancedAuctionItems   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

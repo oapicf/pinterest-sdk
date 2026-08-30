@@ -65,7 +65,7 @@ TimeSeries::getDate()
 }
 
 void
-TimeSeries::setDate(Date  date)
+TimeSeries::setDate(Date date)
 {
 	this->date = date;
 }

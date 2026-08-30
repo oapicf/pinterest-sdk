@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/catalogs_item_validation_issues.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,7 +16,13 @@ part 'items_issues_list200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class ItemsIssuesList200Response implements Paginated, Built<ItemsIssuesList200Response, ItemsIssuesList200ResponseBuilder> {
+abstract class ItemsIssuesList200Response implements Built<ItemsIssuesList200Response, ItemsIssuesList200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<CatalogsItemValidationIssues> get items;
+
   ItemsIssuesList200Response._();
 
   factory ItemsIssuesList200Response([void updates(ItemsIssuesList200ResponseBuilder b)]) = _$ItemsIssuesList200Response;
@@ -51,7 +56,7 @@ class _$ItemsIssuesList200ResponseSerializer implements PrimitiveSerializer<Item
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(CatalogsItemValidationIssues)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$ItemsIssuesList200ResponseSerializer implements PrimitiveSerializer<Item
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(CatalogsItemValidationIssues)]),
+          ) as BuiltList<CatalogsItemValidationIssues>;
           result.items.replace(valueDes);
           break;
         default:

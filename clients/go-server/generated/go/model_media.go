@@ -5,37 +5,97 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type Media struct {
 
 	// Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
-	MediaId string `json:"media_id" validate:"regexp=^\\\\d+$"`
+	MediaId string `json:"media_id" validate:"regexp=^\\d+$"`
 
 	MediaType MediaUploadType `json:"media_type"`
 
 	Status MediaUploadStatus `json:"status,omitempty"`
 }
-
-// AssertMediaRequired checks if the required fields are not zero-ed
-func AssertMediaRequired(obj Media) error {
-	elements := map[string]interface{}{
-		"media_id": obj.MediaId,
-		"media_type": obj.MediaType,
+// UnmarshalJSON validates required property keys then unmarshals into Media
+func (o *Media) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"media_type",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"media_type": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"media_id": {},
+		"media_type": {},
+		"status": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded Media
+
+	if value, exists := allProperties["media_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.MediaId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["media_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.MediaType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["status"]; exists {
+		if err = json.Unmarshal(value, &decoded.Status); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertMediaRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertMediaRequired(obj Media) error {
 	return nil
 }
 

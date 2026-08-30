@@ -9,22 +9,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TargetingSpecAgeBucket;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * TargetingSpecOperationAgeBucket
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class TargetingSpecOperationAgeBucket {
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+public class TargetingSpecOperationAgeBucket implements TargetingSpecOperations {
 
   /**
    * Gets or Sets field
@@ -97,7 +100,7 @@ public class TargetingSpecOperationAgeBucket {
   private OperationEnum operation;
 
   @Valid
-  private JsonNullable<List<TargetingSpecAgeBucket>> values = JsonNullable.<List<TargetingSpecAgeBucket>>undefined();
+  private List<TargetingSpecAgeBucket> values = new ArrayList<>();
 
   public TargetingSpecOperationAgeBucket() {
     super();
@@ -109,7 +112,7 @@ public class TargetingSpecOperationAgeBucket {
   public TargetingSpecOperationAgeBucket(FieldEnum field, OperationEnum operation, List<TargetingSpecAgeBucket> values) {
     this.field = field;
     this.operation = operation;
-    this.values = JsonNullable.of(values);
+    this.values = values;
   }
 
   public TargetingSpecOperationAgeBucket field(FieldEnum field) {
@@ -153,15 +156,15 @@ public class TargetingSpecOperationAgeBucket {
   }
 
   public TargetingSpecOperationAgeBucket values(List<TargetingSpecAgeBucket> values) {
-    this.values = JsonNullable.of(values);
+    this.values = values;
     return this;
   }
 
   public TargetingSpecOperationAgeBucket addValuesItem(TargetingSpecAgeBucket valuesItem) {
-    if (this.values == null || !this.values.isPresent()) {
-      this.values = JsonNullable.of(new ArrayList<>());
+    if (this.values == null) {
+      this.values = new ArrayList<>();
     }
-    this.values.get().add(valuesItem);
+    this.values.add(valuesItem);
     return this;
   }
 
@@ -172,11 +175,11 @@ public class TargetingSpecOperationAgeBucket {
   @NotNull @Valid 
   @Schema(name = "values", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
-  public JsonNullable<List<TargetingSpecAgeBucket>> getValues() {
+  public List<TargetingSpecAgeBucket> getValues() {
     return values;
   }
 
-  public void setValues(JsonNullable<List<TargetingSpecAgeBucket>> values) {
+  public void setValues(List<TargetingSpecAgeBucket> values) {
     this.values = values;
   }
 
@@ -215,10 +218,7 @@ public class TargetingSpecOperationAgeBucket {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

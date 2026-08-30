@@ -1,13 +1,12 @@
 goog.provide('API.Client.CatalogsProduct');
 
 /**
- * Catalogs product for all verticals
  * @record
  */
 API.Client.CatalogsProduct = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsProduct.prototype.catalogType;
@@ -24,3 +23,7 @@ API.Client.CatalogsProduct.prototype.metadata;
  */
 API.Client.CatalogsProduct.prototype.pin;
 
+/** @enum {string} */
+API.Client.CatalogsProduct.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}

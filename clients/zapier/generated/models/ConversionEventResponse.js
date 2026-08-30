@@ -24,6 +24,11 @@ module.exports = {
                 label: `Creation date in epoch format. - [${labelPrefix}created_time]`,
                 type: 'integer',
             },
+            {
+                key: `${keyPrefix}reporting_conversion_event`,
+                label: `For advertiser-defined events, the reporting event label shown in optimization UIs. - [${labelPrefix}reporting_conversion_event]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -33,6 +38,7 @@ module.exports = {
             'conversion_event': bundle.inputData?.[`${keyPrefix}conversion_event`],
             'conversion_tag_id': bundle.inputData?.[`${keyPrefix}conversion_tag_id`],
             'created_time': bundle.inputData?.[`${keyPrefix}created_time`],
+            'reporting_conversion_event': bundle.inputData?.[`${keyPrefix}reporting_conversion_event`],
         }
     },
 }

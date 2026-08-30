@@ -102,8 +102,9 @@ class _$CatalogsDeleteRetailItemSerializer implements PrimitiveSerializer<Catalo
         case r'last_updated_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.lastUpdatedTime = valueDes;
           break;
         case r'operation':

@@ -56,65 +56,65 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setCreatedAt(std::string  created_at);
-	/*! \brief Get 
+	void setCreatedAt(std::string created_at);
+	/*! \brief Get ID of the feed processing result.
 	 */
 	std::string getId();
 
-	/*! \brief Set 
+	/*! \brief Set ID of the feed processing result.
 	 */
-	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getUpdatedAt();
-
-	/*! \brief Set 
-	 */
-	void setUpdatedAt(std::string  updated_at);
+	void setId(std::string id);
 	/*! \brief Get 
 	 */
 	CatalogsFeedIngestionDetails getIngestionDetails();
 
 	/*! \brief Set 
 	 */
-	void setIngestionDetails(CatalogsFeedIngestionDetails  ingestion_details);
+	void setIngestionDetails(CatalogsFeedIngestionDetails ingestion_details);
 	/*! \brief Get 
 	 */
 	CatalogsFeedProductCounts getProductCounts();
 
 	/*! \brief Set 
 	 */
-	void setProductCounts(CatalogsFeedProductCounts  product_counts);
+	void setProductCounts(CatalogsFeedProductCounts product_counts);
 	/*! \brief Get 
 	 */
 	CatalogsFeedProcessingStatus getStatus();
 
 	/*! \brief Set 
 	 */
-	void setStatus(CatalogsFeedProcessingStatus  status);
+	void setStatus(CatalogsFeedProcessingStatus status);
+	/*! \brief Get 
+	 */
+	std::string getUpdatedAt();
+
+	/*! \brief Set 
+	 */
+	void setUpdatedAt(std::string updated_at);
 	/*! \brief Get 
 	 */
 	CatalogsFeedValidationDetails getValidationDetails();
 
 	/*! \brief Set 
 	 */
-	void setValidationDetails(CatalogsFeedValidationDetails  validation_details);
+	void setValidationDetails(CatalogsFeedValidationDetails validation_details);
 	/*! \brief Get 
 	 */
 	CatalogsFeedVideoCounts getVideoCounts();
 
 	/*! \brief Set 
 	 */
-	void setVideoCounts(CatalogsFeedVideoCounts  video_counts);
+	void setVideoCounts(CatalogsFeedVideoCounts video_counts);
 
 
     private:
     std::string created_at{};
     std::string id{};
-    std::string updated_at{};
     CatalogsFeedIngestionDetails ingestion_details;
     CatalogsFeedProductCounts product_counts;
     CatalogsFeedProcessingStatus status;
+    std::string updated_at{};
     CatalogsFeedValidationDetails validation_details;
     CatalogsFeedVideoCounts video_counts;
 };

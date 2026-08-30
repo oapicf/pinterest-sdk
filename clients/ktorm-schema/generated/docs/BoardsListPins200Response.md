@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;Pin&gt;**](Pin.md) | Pins | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;PinRead&gt;**](PinRead.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `BoardsListPins200ResponsePin`**
-(mapped from: BoardsListPins200ResponsePin)
+# **Table `BoardsListPins200ResponsePinRead`**
+(mapped from: BoardsListPins200ResponsePinRead)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 boardsListPins200Response | boardsListPins200Response | long | | kotlin.Long | Primary Key | *one*
-pin | pin | long | | kotlin.Long | Foreign Key | *many*
+pinRead | pinRead | long | | kotlin.Long | Foreign Key | *many*
 
 
 

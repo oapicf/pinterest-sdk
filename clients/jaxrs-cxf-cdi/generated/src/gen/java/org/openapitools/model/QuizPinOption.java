@@ -9,14 +9,14 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- *  This field contains multiple options to a quiz question.
+ * This field contains multiple options to a quiz question.
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = " This field contains multiple options to a quiz question.")
+@ApiModel(description = "This field contains multiple options to a quiz question.")
 public class QuizPinOption   {
   
   private BigDecimal id;
@@ -94,10 +94,7 @@ public class QuizPinOption   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

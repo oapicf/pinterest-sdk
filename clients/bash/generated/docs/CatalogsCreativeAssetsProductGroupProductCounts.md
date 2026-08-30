@@ -3,7 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**appUnderscorelinks** | **integer** |  | [default to null]
 **catalogUnderscoretype** | **string** |  | [default to null]
+**images** | **integer** |  | [default to null]
 **total** | **integer** |  | [default to null]
 **videos** | **integer** |  | [default to null]
 

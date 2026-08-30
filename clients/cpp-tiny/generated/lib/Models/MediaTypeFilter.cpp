@@ -65,7 +65,7 @@ MediaTypeFilter::getMEDIATYPE()
 }
 
 void
-MediaTypeFilter::setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria  mEDIA_TYPE)
+MediaTypeFilter::setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria mEDIA_TYPE)
 {
 	this->mEDIA_TYPE = mEDIA_TYPE;
 }

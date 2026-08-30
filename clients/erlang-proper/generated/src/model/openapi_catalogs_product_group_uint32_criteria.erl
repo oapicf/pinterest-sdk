@@ -10,7 +10,7 @@
 
 -type openapi_catalogs_product_group_uint32_criteria() ::
   [ {'negated', boolean() }
-  | {'operator', binary() }
+  | {'operator', openapi_numeric_filter_operator_type:openapi_numeric_filter_operator_type() }
   | {'value', integer() }
   ].
 
@@ -20,7 +20,7 @@ openapi_catalogs_product_group_uint32_criteria() ->
 
 openapi_catalogs_product_group_uint32_criteria(Fields) ->
   Default = [ {'negated', boolean() }
-            , {'operator', elements([<<"GREATER_THAN">>, <<"GREATER_THAN_OR_EQUALS">>, <<"LESS_THAN">>, <<"LESS_THAN_OR_EQUALS">>]) }
+            , {'operator', openapi_numeric_filter_operator_type:openapi_numeric_filter_operator_type() }
             , {'value', integer(0, 4294967295) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

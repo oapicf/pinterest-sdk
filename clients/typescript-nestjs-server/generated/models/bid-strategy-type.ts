@@ -1,0 +1,12 @@
+
+
+/**
+ * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
+ */
+export const BidStrategyType = {
+    AutomaticBid: 'AUTOMATIC_BID',
+    MaxBid: 'MAX_BID',
+    TargetAvg: 'TARGET_AVG'
+} as const;
+export type BidStrategyType = typeof BidStrategyType[keyof typeof BidStrategyType];
+

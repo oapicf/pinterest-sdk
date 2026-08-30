@@ -7,7 +7,7 @@ Daily processing schedule. This field is **OPTIONAL**. Use this to configure the
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **time** | **string** | A time in format HH:MM with leading 0 (zero) | [default to undefined]
-**timezone** | **string** | The timezone considered for the processing schedule time. | [default to undefined]
+**timezone** | [**CatalogsFeedProcessingScheduleTimezone**](CatalogsFeedProcessingScheduleTimezone.md) | The timezone considered for the processing schedule time. | [default to undefined]
 
 ## Example
 

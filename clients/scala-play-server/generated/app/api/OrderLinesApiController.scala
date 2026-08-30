@@ -7,18 +7,19 @@ import play.api.mvc._
 import model.Error
 import model.OrderLine
 import model.OrderLinesList200Response
+import model.PaginationOrder
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class OrderLinesApiController @Inject()(cc: ControllerComponents, api: OrderLinesApi) extends AbstractController(cc) {
   /**
     * GET /v5/ad_accounts/:adAccountId/order_lines/:orderLineId
+    * @param orderLineId Order line ID.
     * @param adAccountId Unique identifier of an ad account.
-    * @param orderLineId Unique identifier of an order line.
     */
-  def orderLinesGet(adAccountId: String, orderLineId: String): Action[AnyContent] = Action { request =>
+  def orderLinesGet(orderLineId: String, adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): OrderLine = {
-      api.orderLinesGet(adAccountId, orderLineId)
+      api.orderLinesGet(orderLineId, adAccountId)
     }
 
     val result = executeApi()
@@ -27,19 +28,20 @@ class OrderLinesApiController @Inject()(cc: ControllerComponents, api: OrderLine
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/order_lines?pageSize=[value]&order=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/order_lines?bookmark=[value]&pageSize=[value]&order=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def orderLinesList(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): OrderLinesList200Response = {
+      val bookmark = request.getQueryString("bookmark")
+        
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
       val order = request.getQueryString("order")
+        .map(value => )
         
-      val bookmark = request.getQueryString("bookmark")
-        
-      api.orderLinesList(adAccountId, pageSize, order, bookmark)
+      api.orderLinesList(adAccountId, bookmark, pageSize, order)
     }
 
     val result = executeApi()

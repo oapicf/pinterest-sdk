@@ -11,12 +11,11 @@ import { CatalogsFeedProcessingSchedule } from './catalogsFeedProcessingSchedule
 import { ProductAvailabilityType } from './productAvailabilityType';
 import { CatalogsHotelFeedsCreateRequest } from './catalogsHotelFeedsCreateRequest';
 import { CatalogsStatus } from './catalogsStatus';
-import { CatalogsFeedsCreateRequestDefaultLocale } from './catalogsFeedsCreateRequestDefaultLocale';
 import { CatalogsCreativeAssetsFeedsCreateRequest } from './catalogsCreativeAssetsFeedsCreateRequest';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
 import { CatalogsRetailFeedsCreateRequest } from './catalogsRetailFeedsCreateRequest';
-import { CatalogsType } from './catalogsType';
 import { Country } from './country';
+import { CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale } from './catalogsCreativeAssetsFeedsCreateRequestDefaultLocale';
 import { CatalogsFormat } from './catalogsFormat';
 import { NullableCurrency } from './nullableCurrency';
 

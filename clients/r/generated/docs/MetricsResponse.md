@@ -4,6 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **array[object]** |  | [optional] 
+**data** | [**array[MetricsResponseDataItems]**](MetricsResponseDataItems.md) |  | [optional] 
 
 

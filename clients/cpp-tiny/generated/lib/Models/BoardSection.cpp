@@ -85,7 +85,7 @@ BoardSection::getId()
 }
 
 void
-BoardSection::setId(std::string  id)
+BoardSection::setId(std::string id)
 {
 	this->id = id;
 }
@@ -97,7 +97,7 @@ BoardSection::getName()
 }
 
 void
-BoardSection::setName(std::string  name)
+BoardSection::setName(std::string name)
 {
 	this->name = name;
 }

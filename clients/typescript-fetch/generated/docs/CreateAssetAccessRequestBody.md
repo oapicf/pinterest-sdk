@@ -7,7 +7,7 @@ An object containing a list of all the asset access requests
 
 Name | Type
 ------------ | -------------
-`assetRequests` | [Array&lt;CreateAssetAccessRequestBodyAssetRequestsInner&gt;](CreateAssetAccessRequestBodyAssetRequestsInner.md)
+`assetRequests` | [Array&lt;CreateAssetAccessRequestItem&gt;](CreateAssetAccessRequestItem.md)
 
 ## Example
 

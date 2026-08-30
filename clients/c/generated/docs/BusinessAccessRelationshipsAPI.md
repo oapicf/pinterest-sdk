@@ -21,7 +21,7 @@ Method | HTTP request | Description
 //
 // Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
 //
-brand_accounts_create_200_response_t* BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char *business_hierarchy_id, brand_accounts_create_request_t *brand_accounts_create_request);
+brand_account_t* BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char *business_hierarchy_id, brand_account_create_t *brand_account_create);
 ```
 
 ### Parameters
@@ -29,11 +29,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_hierarchy_id** | **char \*** | business hierarchy node id | 
-**brand_accounts_create_request** | **[brand_accounts_create_request_t](brand_accounts_create_request.md) \*** |  | 
+**brand_account_create** | **[brand_account_create_t](brand_account_create.md) \*** |  | 
 
 ### Return type
 
-[brand_accounts_create_200_response_t](brand_accounts_create_200_response.md) *
+[brand_account_t](brand_account.md) *
 
 
 ### Authorization
@@ -53,20 +53,20 @@ Name | Type | Description  | Notes
 //
 // Update an existing Brand Account
 //
-brand_accounts_create_200_response_t* BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char *business_hierarchy_id, char *brand_account_id, brand_accounts_update_request_t *brand_accounts_update_request);
+brand_account_t* BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char *brand_account_id, char *business_hierarchy_id, brand_account_update_t *brand_account_update);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**brand_account_id** | **char \*** |  | 
 **business_hierarchy_id** | **char \*** | business hierarchy node id | 
-**brand_account_id** | **char \*** | Unique identifier of a brand account. | 
-**brand_accounts_update_request** | **[brand_accounts_update_request_t](brand_accounts_update_request.md) \*** |  | 
+**brand_account_update** | **[brand_account_update_t](brand_account_update.md) \*** |  | 
 
 ### Return type
 
-[brand_accounts_create_200_response_t](brand_accounts_create_200_response.md) *
+[brand_account_t](brand_account.md) *
 
 
 ### Authorization
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 //
 // Terminate memberships between the specified members and your business.
 //
-deleted_members_response_t* BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, char *business_id, members_to_delete_body_t *members_to_delete_body);
+delete_business_membership_200_response_t* BusinessAccessRelationshipsAPI_deleteBusinessMembership(apiClient_t *apiClient, char *business_id, delete_business_membership_body_t *delete_business_membership_body);
 ```
 
 ### Parameters
@@ -94,11 +94,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Business id | 
-**members_to_delete_body** | **[members_to_delete_body_t](members_to_delete_body.md) \*** | List of members with role to delete. | 
+**delete_business_membership_body** | **[delete_business_membership_body_t](delete_business_membership_body.md) \*** |  | 
 
 ### Return type
 
-[deleted_members_response_t](deleted_members_response.md) *
+[delete_business_membership_200_response_t](delete_business_membership_200_response.md) *
 
 
 ### Authorization
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 //
 // Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
 //
-delete_partners_response_t* BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, char *business_id, delete_partners_request_t *delete_partners_request);
+delete_business_partners_t* BusinessAccessRelationshipsAPI_deleteBusinessPartners(apiClient_t *apiClient, char *business_id, delete_business_partners_delete_t *delete_business_partners_delete);
 ```
 
 ### Parameters
@@ -126,11 +126,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
-**delete_partners_request** | **[delete_partners_request_t](delete_partners_request.md) \*** | An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  | 
+**delete_business_partners_delete** | **[delete_business_partners_delete_t](delete_business_partners_delete.md) \*** |  | 
 
 ### Return type
 
-[delete_partners_response_t](delete_partners_response.md) *
+[delete_business_partners_t](delete_business_partners.md) *
 
 
 ### Authorization
@@ -150,15 +150,16 @@ Name | Type | Description  | Notes
 //
 // Get all of the viewing user's business employers.
 //
-get_business_employers_200_response_t* BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int *page_size, char *bookmark);
+get_business_employers_200_response_t* BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int *assets_summary, char *bookmark, int *page_size);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**assets_summary** | **int \*** | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true]
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -182,7 +183,7 @@ Name | Type | Description  | Notes
 //
 // Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 //
-get_business_members_200_response_t* BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *business_id, int *fetch_system_users, int *assets_summary, list_t *business_roles, char *member_ids, int *start_index, char *bookmark, int *page_size);
+get_business_employers_200_response_t* BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *business_id, int *fetch_system_users, int *assets_summary, list_t *business_roles, char *member_ids, int *start_index, char *bookmark, int *page_size);
 ```
 
 ### Parameters
@@ -196,11 +197,11 @@ Name | Type | Description  | Notes
 **member_ids** | **char \*** | A list of business members ids separated by comma. | [optional] 
 **start_index** | **int \*** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[get_business_members_200_response_t](get_business_members_200_response.md) *
+[get_business_employers_200_response_t](get_business_employers_200_response.md) *
 
 
 ### Authorization
@@ -220,7 +221,7 @@ Name | Type | Description  | Notes
 //
 // Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.
 //
-get_business_partners_200_response_t* BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char *business_id, int *assets_summary, partner_type_e partner_type, char *partner_ids, int *start_index, int *page_size, char *bookmark);
+get_business_employers_200_response_t* BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char *business_id, int *assets_summary, partner_type_e partner_type, char *partner_ids, int *start_index, int *sort_ascending, char *bookmark, int *page_size);
 ```
 
 ### Parameters
@@ -229,15 +230,16 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
 **assets_summary** | **int \*** | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
-**partner_type** | **partner_type_e** | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
+**partner_type** | **partner_type_e** | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] 
 **partner_ids** | **char \*** | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional] 
 **start_index** | **int \*** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**sort_ascending** | **int \*** | Sort ascending. | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[get_business_partners_200_response_t](get_business_partners_200_response.md) *
+[get_business_employers_200_response_t](get_business_employers_200_response.md) *
 
 
 ### Authorization
@@ -257,7 +259,7 @@ Name | Type | Description  | Notes
 //
 // Update a system user information such as name.
 //
-void BusinessAccessRelationshipsAPI_systemUserUpdate(apiClient_t *apiClient, char *business_id, char *system_user_id, system_user_update_request_t *system_user_update_request);
+void BusinessAccessRelationshipsAPI_systemUserUpdate(apiClient_t *apiClient, char *business_id, char *system_user_id, system_user_update_with_required_body_t *system_user_update_with_required_body);
 ```
 
 ### Parameters
@@ -266,7 +268,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
 **system_user_id** | **char \*** | Unique identifier of a system user. | 
-**system_user_update_request** | **[system_user_update_request_t](system_user_update_request.md) \*** |  | 
+**system_user_update_with_required_body** | **[system_user_update_with_required_body_t](system_user_update_with_required_body.md) \*** |  | 
 
 ### Return type
 
@@ -289,7 +291,7 @@ void
 //
 // Update a member's business role within the business.
 //
-update_member_results_response_array_t* BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient, char *business_id, list_t *update_member_business_role_body);
+update_business_memberships_response_t* BusinessAccessRelationshipsAPI_updateBusinessMemberships(apiClient_t *apiClient, char *business_id, list_t *business_membership_member);
 ```
 
 ### Parameters
@@ -297,11 +299,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Business id | 
-**update_member_business_role_body** | **[list_t](update_member_business_role_body.md) \*** | List of objects with the member id and the business_role. | 
+**business_membership_member** | **[list_t](business_membership_member.md) \*** |  | 
 
 ### Return type
 
-[update_member_results_response_array_t](update_member_results_response_array.md) *
+[update_business_memberships_response_t](update_business_memberships_response.md) *
 
 
 ### Authorization

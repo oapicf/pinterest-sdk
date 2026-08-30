@@ -1,10 +1,9 @@
 const utils = require('../utils/utils');
+const CatalogsCreativeAssetsFeedsCreateRequest_default_locale = require('../models/CatalogsCreativeAssetsFeedsCreateRequest_default_locale');
 const CatalogsFeedCredentials = require('../models/CatalogsFeedCredentials');
 const CatalogsFeedProcessingSchedule = require('../models/CatalogsFeedProcessingSchedule');
-const CatalogsFeedsCreateRequest_default_locale = require('../models/CatalogsFeedsCreateRequest_default_locale');
 const CatalogsFormat = require('../models/CatalogsFormat');
 const CatalogsStatus = require('../models/CatalogsStatus');
-const CatalogsType = require('../models/CatalogsType');
 const Country = require('../models/Country');
 const NullableCurrency = require('../models/NullableCurrency');
 const ProductAvailabilityType = require('../models/ProductAvailabilityType');
@@ -15,12 +14,17 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect. - [${labelPrefix}catalog_id]`,
+                label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. - [${labelPrefix}catalog_id]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'RETAIL',
+                ],
             },
             ...CatalogsFeedCredentials.fields(`${keyPrefix}credentials`, isInput),
             {
@@ -35,7 +39,7 @@ module.exports = {
                 key: `${keyPrefix}default_currency`,
                 ...NullableCurrency.fields(`${keyPrefix}default_currency`, isInput),
             },
-            ...CatalogsFeedsCreateRequest_default_locale.fields(`${keyPrefix}default_locale`, isInput),
+            ...CatalogsCreativeAssetsFeedsCreateRequest_default_locale.fields(`${keyPrefix}default_locale`, isInput),
             {
                 key: `${keyPrefix}format`,
                 ...CatalogsFormat.fields(`${keyPrefix}format`, isInput),
@@ -68,7 +72,7 @@ module.exports = {
             'default_availability': bundle.inputData?.[`${keyPrefix}default_availability`],
             'default_country': bundle.inputData?.[`${keyPrefix}default_country`],
             'default_currency': bundle.inputData?.[`${keyPrefix}default_currency`],
-            'default_locale': utils.removeIfEmpty(CatalogsFeedsCreateRequest_default_locale.mapping(bundle, `${keyPrefix}default_locale`)),
+            'default_locale': utils.removeIfEmpty(CatalogsCreativeAssetsFeedsCreateRequest_default_locale.mapping(bundle, `${keyPrefix}default_locale`)),
             'format': bundle.inputData?.[`${keyPrefix}format`],
             'location': bundle.inputData?.[`${keyPrefix}location`],
             'name': bundle.inputData?.[`${keyPrefix}name`],

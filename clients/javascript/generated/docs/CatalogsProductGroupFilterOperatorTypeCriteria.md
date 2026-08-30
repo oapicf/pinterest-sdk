@@ -4,19 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filterOperatorType** | **String** |  | [optional] [default to &#39;IS&#39;]
-**negated** | **Boolean** |  | [optional] [default to false]
+**filterOperatorType** | [**FilterOperatorType**](FilterOperatorType.md) |  | [optional] 
+**negated** | **Boolean** |  | [optional] 
 **values** | **[String]** |  | 
-
-
-
-## Enum: FilterOperatorTypeEnum
-
-
-* `IS` (value: `"IS"`)
-
-* `CONTAINS` (value: `"CONTAINS"`)
-
-
 
 

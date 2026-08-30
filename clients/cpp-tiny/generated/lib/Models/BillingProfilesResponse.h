@@ -12,6 +12,10 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
+#include "BillingProfileCardType.h"
+#include "BillingProfilePaymentMethodBrand.h"
+#include "BillingProfileStatus.h"
+#include "BillingType.h"
 
 namespace Tiny {
 
@@ -51,51 +55,51 @@ public:
 
 	/*! \brief Set Advertiser ID of the billing.
 	 */
-	void setAdvertiserId(std::string  advertiser_id);
+	void setAdvertiserId(std::string advertiser_id);
 	/*! \brief Get Billing type of the advertiser
 	 */
-	std::string getBillingType();
+	BillingType getBillingType();
 
 	/*! \brief Set Billing type of the advertiser
 	 */
-	void setBillingType(std::string  billing_type);
+	void setBillingType(BillingType billing_type);
 	/*! \brief Get Type of the card.
 	 */
-	std::string getCardType();
+	BillingProfileCardType getCardType();
 
 	/*! \brief Set Type of the card.
 	 */
-	void setCardType(std::string  card_type);
+	void setCardType(BillingProfileCardType card_type);
 	/*! \brief Get Billing ID.
 	 */
 	std::string getId();
 
 	/*! \brief Set Billing ID.
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get Brand of the payment method.
 	 */
-	std::string getPaymentMethodBrand();
+	BillingProfilePaymentMethodBrand getPaymentMethodBrand();
 
 	/*! \brief Set Brand of the payment method.
 	 */
-	void setPaymentMethodBrand(std::string  payment_method_brand);
+	void setPaymentMethodBrand(BillingProfilePaymentMethodBrand payment_method_brand);
 	/*! \brief Get Status of the billing.
 	 */
-	std::string getStatus();
+	BillingProfileStatus getStatus();
 
 	/*! \brief Set Status of the billing.
 	 */
-	void setStatus(std::string  status);
+	void setStatus(BillingProfileStatus status);
 
 
     private:
     std::string advertiser_id{};
-    std::string billing_type{};
-    std::string card_type{};
+    BillingType billing_type;
+    BillingProfileCardType card_type;
     std::string id{};
-    std::string payment_method_brand{};
-    std::string status{};
+    BillingProfilePaymentMethodBrand payment_method_brand;
+    BillingProfileStatus status;
 };
 }
 

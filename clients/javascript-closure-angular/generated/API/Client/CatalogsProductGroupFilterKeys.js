@@ -168,12 +168,6 @@ API.Client.CatalogsProductGroupFilterKeys.prototype.gOOGLEPRODUCTCATEGORY1;
 API.Client.CatalogsProductGroupFilterKeys.prototype.gOOGLEPRODUCTCATEGORY0;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
- * @export
- */
-API.Client.CatalogsProductGroupFilterKeys.prototype.PRODUCT_GROUP;
-
-/**
  * @type {!API.Client.CatalogsProductGroupUint32Criteria}
  * @export
  */
@@ -208,4 +202,16 @@ API.Client.CatalogsProductGroupFilterKeys.prototype.cUSTOMNUMBER4;
  * @export
  */
 API.Client.CatalogsProductGroupFilterKeys.prototype.TITLE_KEYWORDS;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupMultiplePinterestProductCategoryCriteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.PINTEREST_PRODUCT_CATEGORIES;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.PRODUCT_GROUP;
 

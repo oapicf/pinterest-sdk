@@ -1,4 +1,8 @@
 const utils = require('../utils/utils');
+const BillingProfileCardType = require('../models/BillingProfileCardType');
+const BillingProfilePaymentMethodBrand = require('../models/BillingProfilePaymentMethodBrand');
+const BillingProfileStatus = require('../models/BillingProfileStatus');
+const BillingType = require('../models/BillingType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -11,28 +15,11 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}billing_type`,
-                label: `Billing type of the advertiser - [${labelPrefix}billing_type]`,
-                type: 'string',
-                choices: [
-                    'CREDIT_CARD',
-                    'INVOICE',
-                    'INTERNAL',
-                    'RECURRING',
-                    'PREPAID',
-                ],
+                ...BillingType.fields(`${keyPrefix}billing_type`, isInput),
             },
             {
                 key: `${keyPrefix}card_type`,
-                label: `Type of the card. - [${labelPrefix}card_type]`,
-                type: 'string',
-                choices: [
-                    'UNKNOWN',
-                    'VISA',
-                    'MASTERCARD',
-                    'AMERICAN_EXPRESS',
-                    'DISCOVER',
-                    'ELO',
-                ],
+                ...BillingProfileCardType.fields(`${keyPrefix}card_type`, isInput),
             },
             {
                 key: `${keyPrefix}id`,
@@ -41,33 +28,11 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}payment_method_brand`,
-                label: `Brand of the payment method. - [${labelPrefix}payment_method_brand]`,
-                type: 'string',
-                choices: [
-                    'UNKNOWN',
-                    'VISA',
-                    'MASTERCARD',
-                    'AMERICAN_EXPRESS',
-                    'DISCOVER',
-                    'SOFORT',
-                    'DINERS_CLUB',
-                    'ELO',
-                    'CARTE_BANCAIRE',
-                ],
+                ...BillingProfilePaymentMethodBrand.fields(`${keyPrefix}payment_method_brand`, isInput),
             },
             {
                 key: `${keyPrefix}status`,
-                label: `Status of the billing. - [${labelPrefix}status]`,
-                type: 'string',
-                choices: [
-                    'UNSPECIFIED',
-                    'VALID',
-                    'INVALID',
-                    'PENDING',
-                    'DELETED',
-                    'SECONDARY',
-                    'PENDING_SECONDARY',
-                ],
+                ...BillingProfileStatus.fields(`${keyPrefix}status`, isInput),
             },
         ]
     },

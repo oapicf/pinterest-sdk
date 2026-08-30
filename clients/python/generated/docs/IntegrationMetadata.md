@@ -7,19 +7,19 @@ Integration metadata
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additional_id_1** | **str** |  | [optional] 
-**connected_advertiser_id** | **str** |  | [optional] [readonly] 
+**connected_advertiser_id** | **str** |  | [optional] 
 **connected_lba_id** | **str** |  | [optional] 
 **connected_merchant_id** | **str** |  | [optional] 
 **connected_tag_id** | **str** |  | [optional] 
 **connected_user_id** | **str** |  | [optional] [readonly] 
-**created_timestamp** | **float** |  | [optional] 
-**external_business_id** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
+**created_timestamp** | **float** |  | [optional] [readonly] 
+**external_business_id** | **str** | External business ID for the integration. | [optional] 
+**id** | **str** |  | [optional] [readonly] 
 **partner_access_token_expiry** | **float** |  | [optional] 
 **partner_metadata** | **str** |  | [optional] 
 **partner_refresh_token_expiry** | **float** |  | [optional] 
 **scopes** | **str** |  | [optional] 
-**updated_timestamp** | **float** |  | [optional] 
+**updated_timestamp** | **float** |  | [optional] [readonly] 
 
 ## Example
 

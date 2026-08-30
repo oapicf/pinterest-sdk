@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.model.BatchOperation;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemUpsertBatchRecord;
 
@@ -196,7 +195,7 @@ class CatalogsItemsUpsertBatchRequest {
         
         NL2("NL"),
         
-        NO("NO"),
+        FALSE("false"),
         
         PL("PL"),
         
@@ -250,6 +249,27 @@ class CatalogsItemsUpsertBatchRequest {
 
     /* We recommend using the CatalogsLocale values. */
     LanguageEnum language
+
+    enum OperationEnum {
     
-    BatchOperation operation
+        UPSERT("UPSERT")
+    
+        private final String value
+    
+        OperationEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    OperationEnum operation
 }

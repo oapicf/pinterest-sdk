@@ -1,0 +1,9 @@
+
+
+# GridClickType
+
+## Enum
+
+
+
+

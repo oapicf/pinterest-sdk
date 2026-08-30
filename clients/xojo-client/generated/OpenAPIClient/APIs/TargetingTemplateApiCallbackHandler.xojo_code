@@ -1,7 +1,7 @@
 #tag Interface
 Protected Interface TargetingTemplateApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub TargetingTemplateCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.TargetingTemplateGetResponseData)
+		Sub TargetingTemplateCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.TargetingTemplate)
 		  
 		End Sub
 	#tag EndMethod

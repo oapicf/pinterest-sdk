@@ -3,7 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**appLinks** | **Float!** |  | [default to null]
 **catalogType** | **String!** |  | [default to null]
+**images** | **Float!** |  | [default to null]
 **total** | **Float!** |  | [default to null]
 **videos** | **Float!** |  | [default to null]
 

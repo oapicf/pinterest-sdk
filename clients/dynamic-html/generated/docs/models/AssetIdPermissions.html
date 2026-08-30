@@ -2,21 +2,21 @@
 <h2>AssetIdPermissions</h2>
 <ul class="parameter">
   <li class="param-required-false">assetUnderscoregroupUnderscoreinfo : AssetGroupBinding
-    <br/>
+    <br/>An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals &#39;ASSET_GROUP&#39;.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">assetUnderscoreid : String
+  <li class="param-required-true">assetUnderscoreid : String
     <br/>Unique identifier of a business asset.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">assetUnderscoretype : String
-    <br/>Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+  <li class="param-required-true">assetUnderscoretype : AssetTypeResponse
+    <br/>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">permissions : List
+  <li class="param-required-true">permissions : List
     <br/>Permission levels member or partner has on an asset.
   </li>
 </ul>

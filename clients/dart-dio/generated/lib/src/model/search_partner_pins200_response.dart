@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/paginated.dart';
 import 'package:openapi/src/model/summary_pin.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -17,7 +16,13 @@ part 'search_partner_pins200_response.g.dart';
 /// * [bookmark] 
 /// * [items] 
 @BuiltValue()
-abstract class SearchPartnerPins200Response implements Paginated, Built<SearchPartnerPins200Response, SearchPartnerPins200ResponseBuilder> {
+abstract class SearchPartnerPins200Response implements Built<SearchPartnerPins200Response, SearchPartnerPins200ResponseBuilder> {
+  @BuiltValueField(wireName: r'bookmark')
+  String? get bookmark;
+
+  @BuiltValueField(wireName: r'items')
+  BuiltList<SummaryPin> get items;
+
   SearchPartnerPins200Response._();
 
   factory SearchPartnerPins200Response([void updates(SearchPartnerPins200ResponseBuilder b)]) = _$SearchPartnerPins200Response;
@@ -51,7 +56,7 @@ class _$SearchPartnerPins200ResponseSerializer implements PrimitiveSerializer<Se
     yield r'items';
     yield serializers.serialize(
       object.items,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(SummaryPin)]),
     );
   }
 
@@ -87,8 +92,8 @@ class _$SearchPartnerPins200ResponseSerializer implements PrimitiveSerializer<Se
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(SummaryPin)]),
+          ) as BuiltList<SummaryPin>;
           result.items.replace(valueDes);
           break;
         default:

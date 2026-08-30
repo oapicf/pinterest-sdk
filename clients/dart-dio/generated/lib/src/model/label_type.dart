@@ -11,10 +11,10 @@ part 'label_type.g.dart';
 
 class LabelType extends EnumClass {
 
-  /// Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
+  /// Label type values.
   @BuiltValueEnumConst(wireName: r'BRAND')
   static const LabelType BRAND = _$BRAND;
-  /// Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
+  /// Label type values.
   @BuiltValueEnumConst(wireName: r'CUSTOM')
   static const LabelType CUSTOM = _$CUSTOM;
 

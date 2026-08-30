@@ -1,0 +1,14 @@
+package models
+
+// CampaignPlanningConversionAttribution - Attribution windows for a conversion event.
+type CampaignPlanningConversionAttribution struct {
+
+	// Number of days to use as the conversion attribution window for a pin click action.
+	ClickWindowDays CampaignPlanningConversionAttributionWindowDays `json:"click_window_days,omitempty"`
+
+	// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes.
+	EngagementWindowDays CampaignPlanningConversionAttributionWindowDays `json:"engagement_window_days,omitempty"`
+
+	// Number of days to use as the conversion attribution window for a view action.
+	ViewWindowDays CampaignPlanningConversionAttributionWindowDays `json:"view_window_days,omitempty"`
+}

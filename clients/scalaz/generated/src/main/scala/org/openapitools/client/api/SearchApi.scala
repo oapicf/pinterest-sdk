@@ -21,10 +21,10 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
+import org.openapitools.client.api.BoardsList200Response
 import org.openapitools.client.api.Error
+import org.openapitools.client.api.PinsList200Response
 import org.openapitools.client.api.SearchPartnerPins200Response
-import org.openapitools.client.api.SearchUserBoardsGet200Response
-import org.openapitools.client.api.SearchUserPinsList200Response
 
 object SearchApi {
 
@@ -53,8 +53,8 @@ object SearchApi {
     } yield resp
   }
 
-  def searchUserBoardsGet(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, query: String)(implicit adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], queryQuery: QueryParam[String]): Task[SearchUserBoardsGet200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[SearchUserBoardsGet200Response] = jsonOf[SearchUserBoardsGet200Response]
+  def searchUserBoardsGet(host: String, adAccountId: String, query: String, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], queryQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BoardsList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BoardsList200Response] = jsonOf[BoardsList200Response]
 
     val path = "/search/boards"
 
@@ -63,19 +63,19 @@ object SearchApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("query", Some(queryQuery.toParamString(query))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("query", Some(queryQuery.toParamString(query))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SearchUserBoardsGet200Response](req)
+      resp          <- client.expect[BoardsList200Response](req)
 
     } yield resp
   }
 
-  def searchUserPinsList(host: String, query: String, adAccountId: String, bookmark: String)(implicit adAccountIdQuery: QueryParam[String], queryQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[SearchUserPinsList200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[SearchUserPinsList200Response] = jsonOf[SearchUserPinsList200Response]
+  def searchUserPinsList(host: String, query: String, adAccountId: String, bookmark: String)(implicit adAccountIdQuery: QueryParam[String], queryQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[PinsList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[PinsList200Response] = jsonOf[PinsList200Response]
 
     val path = "/search/pins"
 
@@ -90,7 +90,7 @@ object SearchApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SearchUserPinsList200Response](req)
+      resp          <- client.expect[PinsList200Response](req)
 
     } yield resp
   }
@@ -123,8 +123,8 @@ class HttpServiceSearchApi(service: HttpService) {
     } yield resp
   }
 
-  def searchUserBoardsGet(adAccountId: String, bookmark: String, pageSize: Integer = 25, query: String)(implicit adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], queryQuery: QueryParam[String]): Task[SearchUserBoardsGet200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[SearchUserBoardsGet200Response] = jsonOf[SearchUserBoardsGet200Response]
+  def searchUserBoardsGet(adAccountId: String, query: String, bookmark: String, pageSize: Integer = 25)(implicit adAccountIdQuery: QueryParam[String], queryQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[BoardsList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BoardsList200Response] = jsonOf[BoardsList200Response]
 
     val path = "/search/boards"
 
@@ -133,19 +133,19 @@ class HttpServiceSearchApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("query", Some(queryQuery.toParamString(query))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("query", Some(queryQuery.toParamString(query))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SearchUserBoardsGet200Response](req)
+      resp          <- client.expect[BoardsList200Response](req)
 
     } yield resp
   }
 
-  def searchUserPinsList(query: String, adAccountId: String, bookmark: String)(implicit adAccountIdQuery: QueryParam[String], queryQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[SearchUserPinsList200Response] = {
-    implicit val returnTypeDecoder: EntityDecoder[SearchUserPinsList200Response] = jsonOf[SearchUserPinsList200Response]
+  def searchUserPinsList(query: String, adAccountId: String, bookmark: String)(implicit adAccountIdQuery: QueryParam[String], queryQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[PinsList200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[PinsList200Response] = jsonOf[PinsList200Response]
 
     val path = "/search/pins"
 
@@ -160,7 +160,7 @@ class HttpServiceSearchApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SearchUserPinsList200Response](req)
+      resp          <- client.expect[PinsList200Response](req)
 
     } yield resp
   }

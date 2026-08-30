@@ -5,13 +5,13 @@
 
 
 char* catalogs_report_stats_report_type_ToString(pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type) {
-    char* report_typeArray[] =  { "NULL", "FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES" };
+    char* report_typeArray[] =  { "NULL", "DISTRIBUTION_ISSUES" };
     return report_typeArray[report_type];
 }
 
 pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e catalogs_report_stats_report_type_FromString(char* report_type){
     int stringToReturn = 0;
-    char *report_typeArray[] =  { "NULL", "FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES" };
+    char *report_typeArray[] =  { "NULL", "DISTRIBUTION_ISSUES" };
     size_t sizeofArray = sizeof(report_typeArray) / sizeof(report_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(report_type, report_typeArray[stringToReturn]) == 0) {
@@ -40,56 +40,83 @@ pinterest_rest_api_catalogs_report_stats_SEVERITY_e catalogs_report_stats_severi
 }
 
 static catalogs_report_stats_t *catalogs_report_stats_create_internal(
-    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type,
     char *catalog_id,
-    int code,
+    int *code,
     char *code_label,
     char *message,
-    int occurrences,
+    int *occurrences,
+    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type,
     pinterest_rest_api_catalogs_report_stats_SEVERITY_e severity,
-    int ineligible_for_ads,
-    int ineligible_for_organic
+    int *ineligible_for_ads,
+    int *ineligible_for_organic
     ) {
     catalogs_report_stats_t *catalogs_report_stats_local_var = malloc(sizeof(catalogs_report_stats_t));
     if (!catalogs_report_stats_local_var) {
         return NULL;
     }
-    catalogs_report_stats_local_var->report_type = report_type;
+    memset(catalogs_report_stats_local_var, 0, sizeof(catalogs_report_stats_t));
+    catalogs_report_stats_local_var->_library_owned = 1;
     catalogs_report_stats_local_var->catalog_id = catalog_id;
     catalogs_report_stats_local_var->code = code;
     catalogs_report_stats_local_var->code_label = code_label;
     catalogs_report_stats_local_var->message = message;
     catalogs_report_stats_local_var->occurrences = occurrences;
+    catalogs_report_stats_local_var->report_type = report_type;
     catalogs_report_stats_local_var->severity = severity;
     catalogs_report_stats_local_var->ineligible_for_ads = ineligible_for_ads;
     catalogs_report_stats_local_var->ineligible_for_organic = ineligible_for_organic;
-
-    catalogs_report_stats_local_var->_library_owned = 1;
     return catalogs_report_stats_local_var;
 }
 
 __attribute__((deprecated)) catalogs_report_stats_t *catalogs_report_stats_create(
-    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type,
     char *catalog_id,
-    int code,
+    int *code,
     char *code_label,
     char *message,
-    int occurrences,
+    int *occurrences,
+    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_type,
     pinterest_rest_api_catalogs_report_stats_SEVERITY_e severity,
-    int ineligible_for_ads,
-    int ineligible_for_organic
+    int *ineligible_for_ads,
+    int *ineligible_for_organic
     ) {
-    return catalogs_report_stats_create_internal (
-        report_type,
+    int *code_copy = NULL;
+    if (code) {
+        code_copy = malloc(sizeof(int));
+        if (code_copy) *code_copy = *code;
+    }
+    int *occurrences_copy = NULL;
+    if (occurrences) {
+        occurrences_copy = malloc(sizeof(int));
+        if (occurrences_copy) *occurrences_copy = *occurrences;
+    }
+    int *ineligible_for_ads_copy = NULL;
+    if (ineligible_for_ads) {
+        ineligible_for_ads_copy = malloc(sizeof(int));
+        if (ineligible_for_ads_copy) *ineligible_for_ads_copy = *ineligible_for_ads;
+    }
+    int *ineligible_for_organic_copy = NULL;
+    if (ineligible_for_organic) {
+        ineligible_for_organic_copy = malloc(sizeof(int));
+        if (ineligible_for_organic_copy) *ineligible_for_organic_copy = *ineligible_for_organic;
+    }
+    catalogs_report_stats_t *result = catalogs_report_stats_create_internal (
         catalog_id,
-        code,
+        code_copy,
         code_label,
         message,
-        occurrences,
+        occurrences_copy,
+        report_type,
         severity,
-        ineligible_for_ads,
-        ineligible_for_organic
+        ineligible_for_ads_copy,
+        ineligible_for_organic_copy
         );
+    if (!result) {
+        free(code_copy);
+        free(occurrences_copy);
+        free(ineligible_for_ads_copy);
+        free(ineligible_for_organic_copy);
+    }
+    return result;
 }
 
 void catalogs_report_stats_free(catalogs_report_stats_t *catalogs_report_stats) {
@@ -105,6 +132,10 @@ void catalogs_report_stats_free(catalogs_report_stats_t *catalogs_report_stats) 
         free(catalogs_report_stats->catalog_id);
         catalogs_report_stats->catalog_id = NULL;
     }
+    if (catalogs_report_stats->code) {
+        free(catalogs_report_stats->code);
+        catalogs_report_stats->code = NULL;
+    }
     if (catalogs_report_stats->code_label) {
         free(catalogs_report_stats->code_label);
         catalogs_report_stats->code_label = NULL;
@@ -113,21 +144,23 @@ void catalogs_report_stats_free(catalogs_report_stats_t *catalogs_report_stats) 
         free(catalogs_report_stats->message);
         catalogs_report_stats->message = NULL;
     }
+    if (catalogs_report_stats->occurrences) {
+        free(catalogs_report_stats->occurrences);
+        catalogs_report_stats->occurrences = NULL;
+    }
+    if (catalogs_report_stats->ineligible_for_ads) {
+        free(catalogs_report_stats->ineligible_for_ads);
+        catalogs_report_stats->ineligible_for_ads = NULL;
+    }
+    if (catalogs_report_stats->ineligible_for_organic) {
+        free(catalogs_report_stats->ineligible_for_organic);
+        catalogs_report_stats->ineligible_for_organic = NULL;
+    }
     free(catalogs_report_stats);
 }
 
 cJSON *catalogs_report_stats_convertToJSON(catalogs_report_stats_t *catalogs_report_stats) {
     cJSON *item = cJSON_CreateObject();
-
-    // catalogs_report_stats->report_type
-    if (pinterest_rest_api_catalogs_report_stats_REPORTTYPE_NULL == catalogs_report_stats->report_type) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "report_type", catalogs_report_stats_report_type_ToString(catalogs_report_stats->report_type)) == NULL)
-    {
-    goto fail; //Enum
-    }
-
 
     // catalogs_report_stats->catalog_id
     if(catalogs_report_stats->catalog_id) {
@@ -139,7 +172,7 @@ cJSON *catalogs_report_stats_convertToJSON(catalogs_report_stats_t *catalogs_rep
 
     // catalogs_report_stats->code
     if(catalogs_report_stats->code) {
-    if(cJSON_AddNumberToObject(item, "code", catalogs_report_stats->code) == NULL) {
+    if(cJSON_AddNumberToObject(item, "code", *catalogs_report_stats->code) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -163,8 +196,17 @@ cJSON *catalogs_report_stats_convertToJSON(catalogs_report_stats_t *catalogs_rep
 
     // catalogs_report_stats->occurrences
     if(catalogs_report_stats->occurrences) {
-    if(cJSON_AddNumberToObject(item, "occurrences", catalogs_report_stats->occurrences) == NULL) {
+    if(cJSON_AddNumberToObject(item, "occurrences", *catalogs_report_stats->occurrences) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // catalogs_report_stats->report_type
+    if(catalogs_report_stats->report_type != pinterest_rest_api_catalogs_report_stats_REPORTTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "report_type", catalogs_report_stats_report_type_ToString(catalogs_report_stats->report_type)) == NULL)
+    {
+    goto fail; //Enum
     }
     }
 
@@ -180,7 +222,7 @@ cJSON *catalogs_report_stats_convertToJSON(catalogs_report_stats_t *catalogs_rep
 
     // catalogs_report_stats->ineligible_for_ads
     if(catalogs_report_stats->ineligible_for_ads) {
-    if(cJSON_AddBoolToObject(item, "ineligible_for_ads", catalogs_report_stats->ineligible_for_ads) == NULL) {
+    if(cJSON_AddBoolToObject(item, "ineligible_for_ads", *catalogs_report_stats->ineligible_for_ads) == NULL) {
     goto fail; //Bool
     }
     }
@@ -188,7 +230,7 @@ cJSON *catalogs_report_stats_convertToJSON(catalogs_report_stats_t *catalogs_rep
 
     // catalogs_report_stats->ineligible_for_organic
     if(catalogs_report_stats->ineligible_for_organic) {
-    if(cJSON_AddBoolToObject(item, "ineligible_for_organic", catalogs_report_stats->ineligible_for_organic) == NULL) {
+    if(cJSON_AddBoolToObject(item, "ineligible_for_organic", *catalogs_report_stats->ineligible_for_organic) == NULL) {
     goto fail; //Bool
     }
     }
@@ -205,22 +247,23 @@ catalogs_report_stats_t *catalogs_report_stats_parseFromJSON(cJSON *catalogs_rep
 
     catalogs_report_stats_t *catalogs_report_stats_local_var = NULL;
 
-    // catalogs_report_stats->report_type
-    cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_report_statsJSON, "report_type");
-    if (cJSON_IsNull(report_type)) {
-        report_type = NULL;
-    }
-    if (!report_type) {
-        goto end;
-    }
+    char *catalog_id_local_str = NULL;
 
-    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_typeVariable;
-    
-    if(!cJSON_IsString(report_type))
-    {
-    goto end; //Enum
-    }
-    report_typeVariable = catalogs_report_stats_report_type_FromString(report_type->valuestring);
+    // define the local variable for catalogs_report_stats->code
+    int *code_local_var = NULL;
+
+    char *code_label_local_str = NULL;
+
+    char *message_local_str = NULL;
+
+    // define the local variable for catalogs_report_stats->occurrences
+    int *occurrences_local_var = NULL;
+
+    // define the local variable for catalogs_report_stats->ineligible_for_ads
+    int *ineligible_for_ads_local_var = NULL;
+
+    // define the local variable for catalogs_report_stats->ineligible_for_organic
+    int *ineligible_for_organic_local_var = NULL;
 
     // catalogs_report_stats->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_statsJSON, "catalog_id");
@@ -244,6 +287,12 @@ catalogs_report_stats_t *catalogs_report_stats_parseFromJSON(cJSON *catalogs_rep
     {
     goto end; //Numeric
     }
+    code_local_var = malloc(sizeof(int));
+    if(!code_local_var)
+    {
+        goto end;
+    }
+    *code_local_var = code->valuedouble;
     }
 
     // catalogs_report_stats->code_label
@@ -280,6 +329,26 @@ catalogs_report_stats_t *catalogs_report_stats_parseFromJSON(cJSON *catalogs_rep
     {
     goto end; //Numeric
     }
+    occurrences_local_var = malloc(sizeof(int));
+    if(!occurrences_local_var)
+    {
+        goto end;
+    }
+    *occurrences_local_var = occurrences->valuedouble;
+    }
+
+    // catalogs_report_stats->report_type
+    cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_report_statsJSON, "report_type");
+    if (cJSON_IsNull(report_type)) {
+        report_type = NULL;
+    }
+    pinterest_rest_api_catalogs_report_stats_REPORTTYPE_e report_typeVariable;
+    if (report_type) { 
+    if(!cJSON_IsString(report_type))
+    {
+    goto end; //Enum
+    }
+    report_typeVariable = catalogs_report_stats_report_type_FromString(report_type->valuestring);
     }
 
     // catalogs_report_stats->severity
@@ -306,6 +375,12 @@ catalogs_report_stats_t *catalogs_report_stats_parseFromJSON(cJSON *catalogs_rep
     {
     goto end; //Bool
     }
+    ineligible_for_ads_local_var = malloc(sizeof(int));
+    if(!ineligible_for_ads_local_var)
+    {
+        goto end;
+    }
+    *ineligible_for_ads_local_var = ineligible_for_ads->valueint;
     }
 
     // catalogs_report_stats->ineligible_for_organic
@@ -318,23 +393,65 @@ catalogs_report_stats_t *catalogs_report_stats_parseFromJSON(cJSON *catalogs_rep
     {
     goto end; //Bool
     }
+    ineligible_for_organic_local_var = malloc(sizeof(int));
+    if(!ineligible_for_organic_local_var)
+    {
+        goto end;
+    }
+    *ineligible_for_organic_local_var = ineligible_for_organic->valueint;
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+    if (code_label && !cJSON_IsNull(code_label)) code_label_local_str = strdup(code_label->valuestring);
+    if (message && !cJSON_IsNull(message)) message_local_str = strdup(message->valuestring);
+
     catalogs_report_stats_local_var = catalogs_report_stats_create_internal (
-        report_typeVariable,
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
-        code ? code->valuedouble : 0,
-        code_label && !cJSON_IsNull(code_label) ? strdup(code_label->valuestring) : NULL,
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
-        occurrences ? occurrences->valuedouble : 0,
+        catalog_id_local_str,
+        code_local_var,
+        code_label_local_str,
+        message_local_str,
+        occurrences_local_var,
+        report_type ? report_typeVariable : pinterest_rest_api_catalogs_report_stats_REPORTTYPE_NULL,
         severity ? severityVariable : pinterest_rest_api_catalogs_report_stats_SEVERITY_NULL,
-        ineligible_for_ads ? ineligible_for_ads->valueint : 0,
-        ineligible_for_organic ? ineligible_for_organic->valueint : 0
+        ineligible_for_ads_local_var,
+        ineligible_for_organic_local_var
         );
+
+    if (!catalogs_report_stats_local_var) {
+        goto end;
+    }
 
     return catalogs_report_stats_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
+    if (code_local_var) {
+        free(code_local_var);
+        code_local_var = NULL;
+    }
+    if (code_label_local_str) {
+        free(code_label_local_str);
+        code_label_local_str = NULL;
+    }
+    if (message_local_str) {
+        free(message_local_str);
+        message_local_str = NULL;
+    }
+    if (occurrences_local_var) {
+        free(occurrences_local_var);
+        occurrences_local_var = NULL;
+    }
+    if (ineligible_for_ads_local_var) {
+        free(ineligible_for_ads_local_var);
+        ineligible_for_ads_local_var = NULL;
+    }
+    if (ineligible_for_organic_local_var) {
+        free(ineligible_for_organic_local_var);
+        ineligible_for_organic_local_var = NULL;
+    }
     return NULL;
 
 }

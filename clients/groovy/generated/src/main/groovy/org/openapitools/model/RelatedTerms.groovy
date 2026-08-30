@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.model.RelatedTermsRelatedTermsListInner;
+import org.openapitools.model.RelatedTermsRelatedTermsListItems;
 
 @Canonical
 class RelatedTerms {
@@ -14,5 +14,5 @@ class RelatedTerms {
     /* Total number of related terms returned */
     Integer relatedTermCount
     /* The id of the advertiser. */
-    List<RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>()
+    List<RelatedTermsRelatedTermsListItems> relatedTermsList = new ArrayList<>()
 }

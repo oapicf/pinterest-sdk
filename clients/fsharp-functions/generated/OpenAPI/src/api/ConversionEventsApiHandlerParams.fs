@@ -1,9 +1,9 @@
 namespace OpenAPI
 
-open OpenAPI.Model.ConversionApiResponse
 open OpenAPI.Model.ConversionEvents
+open OpenAPI.Model.ConversionEventsCreate
 open OpenAPI.Model.DetailedError
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 open System.Collections.Generic
 open System
 
@@ -26,27 +26,32 @@ module ConversionEventsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type EventsCreateBodyParams = ConversionEvents
+    type EventsCreateBodyParams = ConversionEventsCreate
     //#endregion
 
 
     type EventsCreateStatusCode200Response = {
-      content:ConversionApiResponse;
+      content:ConversionEvents;
       
     }
 
     type EventsCreateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type EventsCreateStatusCode401Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type EventsCreateStatusCode403Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type EventsCreateStatusCode404Response = {
+      content:PinterestLibError;
       
     }
 
@@ -56,20 +61,20 @@ module ConversionEventsApiHandlerParams =
     }
 
     type EventsCreateStatusCode429Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type EventsCreateStatusCode503Response = {
-      content:Error;
+      content:PinterestLibError;
       
     }
 
     type EventsCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type EventsCreateResult = EventsCreateStatusCode200 of EventsCreateStatusCode200Response|EventsCreateStatusCode400 of EventsCreateStatusCode400Response|EventsCreateStatusCode401 of EventsCreateStatusCode401Response|EventsCreateStatusCode403 of EventsCreateStatusCode403Response|EventsCreateStatusCode422 of EventsCreateStatusCode422Response|EventsCreateStatusCode429 of EventsCreateStatusCode429Response|EventsCreateStatusCode503 of EventsCreateStatusCode503Response|EventsCreateDefaultStatusCode of EventsCreateDefaultStatusCodeResponse
+    type EventsCreateResult = EventsCreateStatusCode200 of EventsCreateStatusCode200Response|EventsCreateStatusCode400 of EventsCreateStatusCode400Response|EventsCreateStatusCode401 of EventsCreateStatusCode401Response|EventsCreateStatusCode403 of EventsCreateStatusCode403Response|EventsCreateStatusCode404 of EventsCreateStatusCode404Response|EventsCreateStatusCode422 of EventsCreateStatusCode422Response|EventsCreateStatusCode429 of EventsCreateStatusCode429Response|EventsCreateStatusCode503 of EventsCreateStatusCode503Response|EventsCreateDefaultStatusCode of EventsCreateDefaultStatusCodeResponse
 
     type EventsCreateArgs = {
       pathParams:EventsCreatePathParams;

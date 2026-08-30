@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CampaignAdPreviewCreate200ResponseInnerDataOneOf",
+  "fields": [
+    {
+      "name": "exceptions",
+      "type": "model.PinterestLibError",
+      "doc": ""
+    }
+  ]
+
+}

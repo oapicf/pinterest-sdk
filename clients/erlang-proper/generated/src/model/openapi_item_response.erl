@@ -9,9 +9,10 @@
 -export_type([openapi_item_response/0]).
 
 -type openapi_item_response() ::
-  [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
-  | {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
+  [ {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
+  | {'catalog_type', binary() }
   | {'item_id', binary() }
+  | {'item_response_kind', binary() }
   | {'pins', list(openapi_pin:openapi_pin()) }
   | {'hotel_id', binary() }
   | {'creative_assets_id', binary() }
@@ -23,9 +24,10 @@ openapi_item_response() ->
     openapi_item_response([]).
 
 openapi_item_response(Fields) ->
-  Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
-            , {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
+  Default = [ {'attributes', openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes() }
+            , {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
             , {'item_id', binary() }
+            , {'item_response_kind', elements([<<"creative_assets_item_error">>]) }
             , {'pins', list(openapi_pin:openapi_pin()) }
             , {'hotel_id', binary() }
             , {'creative_assets_id', binary() }

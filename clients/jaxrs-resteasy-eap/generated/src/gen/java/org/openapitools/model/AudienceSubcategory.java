@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceSubcategory   {
   
   private String id;
@@ -21,10 +21,9 @@ public class AudienceSubcategory   {
   private BigDecimal ratio;
 
   /**
-   * Subinterest ID.
    **/
   
-  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
+  @ApiModelProperty(value = "")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -34,10 +33,9 @@ public class AudienceSubcategory   {
   }
 
   /**
-   * Subinterest affinity index.
    **/
   
-  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
+  @ApiModelProperty(value = "")
   @JsonProperty("index")
   public BigDecimal getIndex() {
     return index;
@@ -47,10 +45,9 @@ public class AudienceSubcategory   {
   }
 
   /**
-   * Interest unique key (same as ID).
    **/
   
-  @ApiModelProperty(example = "958862518888", value = "Interest unique key (same as ID).")
+  @ApiModelProperty(value = "")
   @JsonProperty("key")
   public String getKey() {
     return key;
@@ -60,10 +57,9 @@ public class AudienceSubcategory   {
   }
 
   /**
-   * Subinterest name.
    **/
   
-  @ApiModelProperty(example = "travel destinations", value = "Subinterest name.")
+  @ApiModelProperty(value = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -73,10 +69,9 @@ public class AudienceSubcategory   {
   }
 
   /**
-   * Subinterest&#39;s percent of category&#39;s total audience.
    **/
   
-  @ApiModelProperty(example = "0.482", value = "Subinterest's percent of category's total audience.")
+  @ApiModelProperty(value = "")
   @JsonProperty("ratio")
   public BigDecimal getRatio() {
     return ratio;
@@ -126,10 +121,7 @@ public class AudienceSubcategory   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

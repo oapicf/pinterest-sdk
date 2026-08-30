@@ -64,7 +64,7 @@ ItemDeleteDiscontinuedBatchRecord::getItemId()
 }
 
 void
-ItemDeleteDiscontinuedBatchRecord::setItemId(std::string  item_id)
+ItemDeleteDiscontinuedBatchRecord::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }

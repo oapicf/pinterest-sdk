@@ -55,12 +55,12 @@ CreateAssetAccessRequestResponse::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<CreateAssetAccessRequestErrorMessage_inner> new_list;
-			CreateAssetAccessRequestErrorMessage_inner inst;
+			list<AssetAccessRequestError> new_list;
+			AssetAccessRequestError inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("CreateAssetAccessRequestErrorMessage_inner")) {
-					jsonToValue(&inst, temp_json, "CreateAssetAccessRequestErrorMessage_inner", "");
+				if (isprimitive("AssetAccessRequestError")) {
+					jsonToValue(&inst, temp_json, "AssetAccessRequestError", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -96,18 +96,18 @@ CreateAssetAccessRequestResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CreateAssetAccessRequestErrorMessage_inner")) {
-		list<CreateAssetAccessRequestErrorMessage_inner> new_list = static_cast<list <CreateAssetAccessRequestErrorMessage_inner> > (getExceptions());
-		node = converttoJson(&new_list, "CreateAssetAccessRequestErrorMessage_inner", "array");
+	if (isprimitive("AssetAccessRequestError")) {
+		list<AssetAccessRequestError> new_list = static_cast<list <AssetAccessRequestError> > (getExceptions());
+		node = converttoJson(&new_list, "AssetAccessRequestError", "array");
 	} else {
 		node = json_node_alloc();
-		list<CreateAssetAccessRequestErrorMessage_inner> new_list = static_cast<list <CreateAssetAccessRequestErrorMessage_inner> > (getExceptions());
+		list<AssetAccessRequestError> new_list = static_cast<list <AssetAccessRequestError> > (getExceptions());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<CreateAssetAccessRequestErrorMessage_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<AssetAccessRequestError>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			CreateAssetAccessRequestErrorMessage_inner obj = *it;
+			AssetAccessRequestError obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -148,14 +148,14 @@ CreateAssetAccessRequestResponse::toJson()
 	return ret;
 }
 
-std::list<CreateAssetAccessRequestErrorMessage_inner>
+std::list<AssetAccessRequestError>
 CreateAssetAccessRequestResponse::getExceptions()
 {
 	return exceptions;
 }
 
 void
-CreateAssetAccessRequestResponse::setExceptions(std::list <CreateAssetAccessRequestErrorMessage_inner> exceptions)
+CreateAssetAccessRequestResponse::setExceptions(std::list <AssetAccessRequestError> exceptions)
 {
 	this->exceptions = exceptions;
 }

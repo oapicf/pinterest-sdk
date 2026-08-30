@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsVerticalProductGroup  {
   
  /**
-  * Catalog id pertaining to the creative assets product group.
+  * Catalog ID pertaining to the product group.
   */
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
 
   private String catalogId;
 
@@ -83,9 +83,9 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
  /**
-  * ID of the creative assets product group.
+  * ID of the catalog product group.
   */
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the creative assets product group.")
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
 
   private String id;
 
@@ -101,9 +101,9 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   private String locale;
 
  /**
-  * Name of creative assets product group
+  * Name of catalog product group
   */
-  @ApiModelProperty(example = "Most Popular", value = "Name of creative assets product group")
+  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
 
   private String name;
 
@@ -122,7 +122,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   private Integer updatedAt;
  /**
-   * Catalog id pertaining to the creative assets product group.
+   * Catalog ID pertaining to the product group.
    * @return catalogId
   **/
   @JsonProperty("catalog_id")
@@ -251,7 +251,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   }
 
  /**
-   * ID of the creative assets product group.
+   * ID of the catalog product group.
    * @return id
   **/
   @JsonProperty("id")
@@ -305,7 +305,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   }
 
  /**
-   * Name of creative assets product group
+   * Name of catalog product group
    * @return name
   **/
   @JsonProperty("name")
@@ -434,10 +434,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

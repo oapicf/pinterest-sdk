@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LeadFormResponse } from './leadFormResponse';
+import { LeadForm } from './leadForm';
 
 
 export interface LeadFormsList200Response { 
     bookmark?: string | null;
-    items: Array<LeadFormResponse>;
+    items: Array<LeadForm>;
 }
 

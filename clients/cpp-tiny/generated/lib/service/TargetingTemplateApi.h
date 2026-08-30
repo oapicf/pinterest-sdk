@@ -8,10 +8,11 @@
 #include "Helpers.h"
 #include <list>
 
-#include "Error.h"
+#include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
+#include "TargetingTemplate.h"
 #include "TargetingTemplateCreate.h"
-#include "TargetingTemplateGetResponseData.h"
-#include "TargetingTemplateUpdateRequest.h"
+#include "TargetingTemplateUpdateRequestReadOrUpdate.h"
 #include "Targeting_template_list_200_response.h"
 
 namespace Tiny {
@@ -25,17 +26,17 @@ class TargetingTemplateApi : public Service {
 public:
     TargetingTemplateApi() = default;
 
-    virtual ~TargetingTemplateApi() = default;
+    virtual ~TargetingTemplateApi();
 
     /**
     * Create targeting templates.
     *
-    * <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
+    * Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param targetingTemplateCreate targeting template creation entity *Required*
+    * \param targetingTemplateCreate  *Required*
     */
     Response<
-                TargetingTemplateGetResponseData
+                TargetingTemplate
         >
     targetingTemplate_create(
             
@@ -48,13 +49,13 @@ public:
     /**
     * List targeting templates.
     *
-    * Get a list of the targeting templates in the specified <code>ad_account_id</code>
+    * Get a list of the targeting templates in the specified `ad_account_id`
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-    * \param includeSizing Include audience sizing in result or not
-    * \param searchQuery Search keyword for targeting templates
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     * \param bookmark Cursor used to fetch the next page of items
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+    * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+    * \param includeSizing Include audience sizing in result or not
+    * \param searchQuery Search query. Can contain pin description keywords or comma-separated pin IDs.
     */
     Response<
                 Targeting_template_list_200_response
@@ -64,27 +65,27 @@ public:
             std::string adAccountId
             , 
             
-            std::string order
+            std::string bookmark
+            , 
+            
+            int pageSize
+            , 
+            
+            Pinterest.Lib.PaginationOrder order
             , 
             
             bool includeSizing
             , 
             
             std::string searchQuery
-            , 
-            
-            int pageSize
-            , 
-            
-            std::string bookmark
             
     );
     /**
     * Update targeting templates.
     *
-    * <p>Update the targeting template given advertiser ID and targeting template ID</p>
+    * Update the targeting template given advertiser ID and targeting template ID
     * \param adAccountId Unique identifier of an ad account. *Required*
-    * \param targetingTemplateUpdateRequest Operation type and targeting template ID *Required*
+    * \param targetingTemplateUpdateRequestReadOrUpdate  *Required*
     */
     Response<
             String
@@ -94,7 +95,7 @@ public:
             std::string adAccountId
             , 
             
-            TargetingTemplateUpdateRequest targetingTemplateUpdateRequest
+            TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate
             
     );
 }; 

@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/targeting_spec_operation_list.dart';
 import 'package:openapi/src/model/targeting_spec_shopping_retargeting.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -18,7 +17,18 @@ part 'targeting_spec_operation_shopping_retargeting.g.dart';
 /// * [operation] 
 /// * [values] 
 @BuiltValue()
-abstract class TargetingSpecOperationShoppingRetargeting implements TargetingSpecOperationList, Built<TargetingSpecOperationShoppingRetargeting, TargetingSpecOperationShoppingRetargetingBuilder> {
+abstract class TargetingSpecOperationShoppingRetargeting implements Built<TargetingSpecOperationShoppingRetargeting, TargetingSpecOperationShoppingRetargetingBuilder> {
+  @BuiltValueField(wireName: r'field')
+  TargetingSpecOperationShoppingRetargetingFieldEnum get field;
+  // enum fieldEnum {  SHOPPING_RETARGETING,  };
+
+  @BuiltValueField(wireName: r'operation')
+  TargetingSpecOperationShoppingRetargetingOperationEnum get operation;
+  // enum operationEnum {  SET,  };
+
+  @BuiltValueField(wireName: r'values')
+  BuiltList<TargetingSpecShoppingRetargeting> get values;
+
   TargetingSpecOperationShoppingRetargeting._();
 
   factory TargetingSpecOperationShoppingRetargeting([void updates(TargetingSpecOperationShoppingRetargetingBuilder b)]) = _$TargetingSpecOperationShoppingRetargeting;
@@ -45,17 +55,17 @@ class _$TargetingSpecOperationShoppingRetargetingSerializer implements Primitive
     yield r'field';
     yield serializers.serialize(
       object.field,
-      specifiedType: const FullType(String),
+      specifiedType: const FullType(TargetingSpecOperationShoppingRetargetingFieldEnum),
     );
     yield r'operation';
     yield serializers.serialize(
       object.operation,
-      specifiedType: const FullType(TargetingSpecOperationListOperationEnum),
+      specifiedType: const FullType(TargetingSpecOperationShoppingRetargetingOperationEnum),
     );
     yield r'values';
-    yield object.values == null ? null : serializers.serialize(
+    yield serializers.serialize(
       object.values,
-      specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+      specifiedType: const FullType(BuiltList, [FullType(TargetingSpecShoppingRetargeting)]),
     );
   }
 
@@ -83,23 +93,22 @@ class _$TargetingSpecOperationShoppingRetargetingSerializer implements Primitive
         case r'field':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(TargetingSpecOperationShoppingRetargetingFieldEnum),
+          ) as TargetingSpecOperationShoppingRetargetingFieldEnum;
           result.field = valueDes;
           break;
         case r'operation':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TargetingSpecOperationListOperationEnum),
-          ) as TargetingSpecOperationListOperationEnum;
+            specifiedType: const FullType(TargetingSpecOperationShoppingRetargetingOperationEnum),
+          ) as TargetingSpecOperationShoppingRetargetingOperationEnum;
           result.operation = valueDes;
           break;
         case r'values':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BuiltList, [FullType(TargetingSpecShoppingRetargeting)]),
+          ) as BuiltList<TargetingSpecShoppingRetargeting>;
           result.values.replace(valueDes);
           break;
         default:

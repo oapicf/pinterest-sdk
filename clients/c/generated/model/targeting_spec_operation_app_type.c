@@ -21,23 +21,6 @@ pinterest_rest_api_targeting_spec_operation_app_type_FIELD_e targeting_spec_oper
     }
     return 0;
 }
-char* targeting_spec_operation_app_type_operation_ToString(pinterest_rest_api_targeting_spec_operation_app_type_OPERATION_e operation) {
-    char* operationArray[] =  { "NULL", "SET", "ADD", "REMOVE" };
-    return operationArray[operation];
-}
-
-pinterest_rest_api_targeting_spec_operation_app_type_OPERATION_e targeting_spec_operation_app_type_operation_FromString(char* operation){
-    int stringToReturn = 0;
-    char *operationArray[] =  { "NULL", "SET", "ADD", "REMOVE" };
-    size_t sizeofArray = sizeof(operationArray) / sizeof(operationArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(operation, operationArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 char* targeting_spec_operation_app_type_values_ToString(pinterest_rest_api_targeting_spec_operation_app_type__e values) {
     char *valuesArray[] =  { "NULL", "android_mobile", "android_tablet", "ipad", "iphone", "web", "web_mobile" };
     return valuesArray[values - 1];
@@ -58,31 +41,34 @@ pinterest_rest_api_targeting_spec_operation_app_type__e targeting_spec_operation
 
 static targeting_spec_operation_app_type_t *targeting_spec_operation_app_type_create_internal(
     pinterest_rest_api_targeting_spec_operation_app_type_FIELD_e field,
-    pinterest_rest_api_targeting_spec_operation_app_type_OPERATION_e operation,
+    pinterest_rest_api_targeting_spec_list_operation__e operation,
     list_t *values
     ) {
     targeting_spec_operation_app_type_t *targeting_spec_operation_app_type_local_var = malloc(sizeof(targeting_spec_operation_app_type_t));
     if (!targeting_spec_operation_app_type_local_var) {
         return NULL;
     }
+    memset(targeting_spec_operation_app_type_local_var, 0, sizeof(targeting_spec_operation_app_type_t));
+    targeting_spec_operation_app_type_local_var->_library_owned = 1;
     targeting_spec_operation_app_type_local_var->field = field;
     targeting_spec_operation_app_type_local_var->operation = operation;
     targeting_spec_operation_app_type_local_var->values = values;
-
-    targeting_spec_operation_app_type_local_var->_library_owned = 1;
     return targeting_spec_operation_app_type_local_var;
 }
 
 __attribute__((deprecated)) targeting_spec_operation_app_type_t *targeting_spec_operation_app_type_create(
     pinterest_rest_api_targeting_spec_operation_app_type_FIELD_e field,
-    pinterest_rest_api_targeting_spec_operation_app_type_OPERATION_e operation,
+    pinterest_rest_api_targeting_spec_list_operation__e operation,
     list_t *values
     ) {
-    return targeting_spec_operation_app_type_create_internal (
+    targeting_spec_operation_app_type_t *result = targeting_spec_operation_app_type_create_internal (
         field,
         operation,
         values
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void targeting_spec_operation_app_type_free(targeting_spec_operation_app_type_t *targeting_spec_operation_app_type) {
@@ -118,12 +104,16 @@ cJSON *targeting_spec_operation_app_type_convertToJSON(targeting_spec_operation_
 
 
     // targeting_spec_operation_app_type->operation
-    if (pinterest_rest_api_targeting_spec_operation_app_type_OPERATION_NULL == targeting_spec_operation_app_type->operation) {
+    if (pinterest_rest_api_targeting_spec_list_operation__NULL == targeting_spec_operation_app_type->operation) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "operation", targeting_spec_operation_app_type_operation_ToString(targeting_spec_operation_app_type->operation)) == NULL)
-    {
-    goto fail; //Enum
+    cJSON *operation_local_JSON = targeting_spec_list_operation_convertToJSON(targeting_spec_operation_app_type->operation);
+    if(operation_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "operation", operation_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
 
@@ -159,6 +149,9 @@ targeting_spec_operation_app_type_t *targeting_spec_operation_app_type_parseFrom
 
     targeting_spec_operation_app_type_t *targeting_spec_operation_app_type_local_var = NULL;
 
+    // define the local variable for targeting_spec_operation_app_type->operation
+    pinterest_rest_api_targeting_spec_list_operation__e operation_local_nonprim = 0;
+
     // define the local list for targeting_spec_operation_app_type->values
     list_t *valuesList = NULL;
 
@@ -188,13 +181,8 @@ targeting_spec_operation_app_type_t *targeting_spec_operation_app_type_parseFrom
         goto end;
     }
 
-    pinterest_rest_api_targeting_spec_operation_app_type_OPERATION_e operationVariable;
     
-    if(!cJSON_IsString(operation))
-    {
-    goto end; //Enum
-    }
-    operationVariable = targeting_spec_operation_app_type_operation_FromString(operation->valuestring);
+    operation_local_nonprim = targeting_spec_list_operation_parseFromJSON(operation); //custom
 
     // targeting_spec_operation_app_type->values
     cJSON *values = cJSON_GetObjectItemCaseSensitive(targeting_spec_operation_app_typeJSON, "values");
@@ -224,14 +212,22 @@ targeting_spec_operation_app_type_t *targeting_spec_operation_app_type_parseFrom
     }
 
 
+
     targeting_spec_operation_app_type_local_var = targeting_spec_operation_app_type_create_internal (
         fieldVariable,
-        operationVariable,
+        operation_local_nonprim,
         valuesList
         );
 
+    if (!targeting_spec_operation_app_type_local_var) {
+        goto end;
+    }
+
     return targeting_spec_operation_app_type_local_var;
 end:
+    if (operation_local_nonprim) {
+        operation_local_nonprim = 0;
+    }
     if (valuesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, valuesList) {

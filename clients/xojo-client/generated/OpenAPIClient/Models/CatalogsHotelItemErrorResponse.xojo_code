@@ -22,7 +22,49 @@ Protected Class CatalogsHotelItemErrorResponse
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		#tag Note
+			Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+		#tag EndNote
+		item_response_kind As String
+	#tag EndProperty
 
+
+    #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
+        
+        Hotel
+        
+    #tag EndEnum
+
+    #tag Enum, Name = Item_response_kindEnum, Type = Integer, Flags = &h0
+        
+        HotelItemError
+        
+    #tag EndEnum
+
+
+	#tag Method, Flags = &h0
+		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
+		  Select Case value
+		    
+		    Case Catalog_typeEnum.Hotel
+		      Return "HOTEL"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+	#tag Method, Flags = &h0
+		Shared Function Item_response_kindEnumToString(value As Item_response_kindEnum) As String
+		  Select Case value
+		    
+		    Case Item_response_kindEnum.HotelItemError
+		      Return "hotel_item_error"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -56,14 +98,6 @@ Protected Class CatalogsHotelItemErrorResponse
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

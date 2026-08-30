@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **str** |  | [optional] 
-**items** | [**List[SSIOOrderLine]**](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
+**items** | [**List[SSIOOrderLine]**](SSIOOrderLine.md) |  | 
 
 ## Example
 

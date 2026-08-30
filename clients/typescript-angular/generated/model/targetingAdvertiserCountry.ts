@@ -34,7 +34,7 @@ export const TargetingAdvertiserCountry = {
     Jp: 'JP',
     Kr: 'KR',
     Sg: 'SG',
-    No: 'NO',
+    False: 'false',
     Dk: 'DK',
     Fi: 'FI',
     Cy: 'CY',

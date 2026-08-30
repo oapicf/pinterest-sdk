@@ -9,6 +9,9 @@
 
 
 #include <string>
+#include "FormFactor.h"
+#include "NetworkType.h"
+#include "OsFamily.h"
 #include <list>
 #include "Object.h"
 
@@ -90,11 +93,11 @@ public:
 	void setExternalStorageSize(int  external_storage_size);
 	/*! \brief Get Device form factor
 	 */
-	std::string getFormFactor();
+	FormFactor getFormFactor();
 
 	/*! \brief Set Device form factor
 	 */
-	void setFormFactor(std::string  form_factor);
+	void setFormFactor(FormFactor  form_factor);
 	/*! \brief Get Kernel version. Examples: Linux: 6.15. Obtain by running: uname -r MacOS: 24.3.0. Obtain by running: sysctl kern.version Android: 6.6. Obtain from OS.uname().release
 	 */
 	std::string getKernelVersion();
@@ -125,18 +128,18 @@ public:
 	void setModel(std::string  model);
 	/*! \brief Get Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
 	 */
-	std::string getNetworkType();
+	NetworkType getNetworkType();
 
 	/*! \brief Set Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
 	 */
-	void setNetworkType(std::string  network_type);
+	void setNetworkType(NetworkType  network_type);
 	/*! \brief Get OS Family
 	 */
-	std::string getOsFamily();
+	OsFamily getOsFamily();
 
 	/*! \brief Set OS Family
 	 */
-	void setOsFamily(std::string  os_family);
+	void setOsFamily(OsFamily  os_family);
 	/*! \brief Get Short name of the OS. This value if specific to os family. Examples: Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch
 	 */
 	std::string getOsName();
@@ -222,13 +225,13 @@ private:
 	int cpu_cores;
 	int external_storage_free_space;
 	int external_storage_size;
-	std::string form_factor;
+	FormFactor form_factor;
 	std::string kernel_version;
 	std::list <std::string>languages;
 	std::string locale;
 	std::string model;
-	std::string network_type;
-	std::string os_family;
+	NetworkType network_type;
+	OsFamily os_family;
 	std::string os_name;
 	std::string os_release_name;
 	std::string os_version;

@@ -1,0 +1,10 @@
+
+
+# BidFloorObjectiveType
+
+## Enum
+
+
+
+
+

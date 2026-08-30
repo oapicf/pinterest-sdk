@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.CreateAssetAccessRequestBodyAssetRequestsInner
+import org.openapitools.model.CreateAssetAccessRequestItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,8 +22,9 @@ data class CreateAssetAccessRequestBody(
 
     @field:Valid
     @get:Size(min=1,max=100) 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("asset_requests", required = true) val assetRequests: kotlin.collections.List<CreateAssetAccessRequestBodyAssetRequestsInner>
+    @Schema(required = true, description = "")
+    @param:JsonProperty("asset_requests")
+    @get:JsonProperty("asset_requests", required = true) val assetRequests: kotlin.collections.List<CreateAssetAccessRequestItem>
 ) {
 
 }

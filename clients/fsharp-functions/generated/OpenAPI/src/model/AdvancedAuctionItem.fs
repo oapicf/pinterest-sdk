@@ -13,14 +13,14 @@ module AdvancedAuctionItem =
 
   [<CLIMutable>]
   type AdvancedAuctionItem = {
+    [<JsonProperty(PropertyName = "bid_options")>]
+    BidOptions : AdvancedAuctionBidOptions;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
     [<JsonProperty(PropertyName = "language")>]
     Language : Language;
-    [<JsonProperty(PropertyName = "bid_options")>]
-    BidOptions : AdvancedAuctionBidOptions;
   }
 
   //#endregion

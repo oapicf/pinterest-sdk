@@ -1,0 +1,32 @@
+/*
+ * conversion_product_report_breakdown_type.h
+ *
+ * 
+ */
+
+#ifndef _conversion_product_report_breakdown_type_H_
+#define _conversion_product_report_breakdown_type_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct conversion_product_report_breakdown_type_t conversion_product_report_breakdown_type_t;
+
+
+// Enum  for conversion_product_report_breakdown_type
+
+typedef enum { pinterest_rest_api_conversion_product_report_breakdown_type__NULL = 0, pinterest_rest_api_conversion_product_report_breakdown_type__PRODUCT_BRAND, pinterest_rest_api_conversion_product_report_breakdown_type__PRODUCT_CATEGORY, pinterest_rest_api_conversion_product_report_breakdown_type__PRODUCT_BRAND_AND_CATEGORY, pinterest_rest_api_conversion_product_report_breakdown_type__PRODUCT_SKU, pinterest_rest_api_conversion_product_report_breakdown_type__PRODUCT_SKU_GROUP } pinterest_rest_api_conversion_product_report_breakdown_type__e;
+
+char* conversion_product_report_breakdown_type_conversion_product_report_breakdown_type_ToString(pinterest_rest_api_conversion_product_report_breakdown_type__e conversion_product_report_breakdown_type);
+
+pinterest_rest_api_conversion_product_report_breakdown_type__e conversion_product_report_breakdown_type_conversion_product_report_breakdown_type_FromString(char* conversion_product_report_breakdown_type);
+
+cJSON *conversion_product_report_breakdown_type_convertToJSON(pinterest_rest_api_conversion_product_report_breakdown_type__e conversion_product_report_breakdown_type);
+
+pinterest_rest_api_conversion_product_report_breakdown_type__e conversion_product_report_breakdown_type_parseFromJSON(cJSON *conversion_product_report_breakdown_typeJSON);
+
+#endif /* _conversion_product_report_breakdown_type_H_ */
+

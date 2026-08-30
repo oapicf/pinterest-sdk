@@ -10,7 +10,7 @@ static amazon_connect_request_t *amazon_connect_request_create_internal(
     char *amazon_storefront_name,
     char *amazon_storefront_url,
     char *amazon_user_id,
-    int is_amazon_account_linked,
+    int *is_amazon_account_linked,
     char *one_time_passcode,
     char *pinterest_user_id
     ) {
@@ -18,6 +18,8 @@ static amazon_connect_request_t *amazon_connect_request_create_internal(
     if (!amazon_connect_request_local_var) {
         return NULL;
     }
+    memset(amazon_connect_request_local_var, 0, sizeof(amazon_connect_request_t));
+    amazon_connect_request_local_var->_library_owned = 1;
     amazon_connect_request_local_var->amazon_storefront_id = amazon_storefront_id;
     amazon_connect_request_local_var->amazon_storefront_name = amazon_storefront_name;
     amazon_connect_request_local_var->amazon_storefront_url = amazon_storefront_url;
@@ -25,8 +27,6 @@ static amazon_connect_request_t *amazon_connect_request_create_internal(
     amazon_connect_request_local_var->is_amazon_account_linked = is_amazon_account_linked;
     amazon_connect_request_local_var->one_time_passcode = one_time_passcode;
     amazon_connect_request_local_var->pinterest_user_id = pinterest_user_id;
-
-    amazon_connect_request_local_var->_library_owned = 1;
     return amazon_connect_request_local_var;
 }
 
@@ -35,19 +35,28 @@ __attribute__((deprecated)) amazon_connect_request_t *amazon_connect_request_cre
     char *amazon_storefront_name,
     char *amazon_storefront_url,
     char *amazon_user_id,
-    int is_amazon_account_linked,
+    int *is_amazon_account_linked,
     char *one_time_passcode,
     char *pinterest_user_id
     ) {
-    return amazon_connect_request_create_internal (
+    int *is_amazon_account_linked_copy = NULL;
+    if (is_amazon_account_linked) {
+        is_amazon_account_linked_copy = malloc(sizeof(int));
+        if (is_amazon_account_linked_copy) *is_amazon_account_linked_copy = *is_amazon_account_linked;
+    }
+    amazon_connect_request_t *result = amazon_connect_request_create_internal (
         amazon_storefront_id,
         amazon_storefront_name,
         amazon_storefront_url,
         amazon_user_id,
-        is_amazon_account_linked,
+        is_amazon_account_linked_copy,
         one_time_passcode,
         pinterest_user_id
         );
+    if (!result) {
+        free(is_amazon_account_linked_copy);
+    }
+    return result;
 }
 
 void amazon_connect_request_free(amazon_connect_request_t *amazon_connect_request) {
@@ -74,6 +83,10 @@ void amazon_connect_request_free(amazon_connect_request_t *amazon_connect_reques
     if (amazon_connect_request->amazon_user_id) {
         free(amazon_connect_request->amazon_user_id);
         amazon_connect_request->amazon_user_id = NULL;
+    }
+    if (amazon_connect_request->is_amazon_account_linked) {
+        free(amazon_connect_request->is_amazon_account_linked);
+        amazon_connect_request->is_amazon_account_linked = NULL;
     }
     if (amazon_connect_request->one_time_passcode) {
         free(amazon_connect_request->one_time_passcode);
@@ -127,7 +140,7 @@ cJSON *amazon_connect_request_convertToJSON(amazon_connect_request_t *amazon_con
     if (!amazon_connect_request->is_amazon_account_linked) {
         goto fail;
     }
-    if(cJSON_AddBoolToObject(item, "is_amazon_account_linked", amazon_connect_request->is_amazon_account_linked) == NULL) {
+    if(cJSON_AddBoolToObject(item, "is_amazon_account_linked", *amazon_connect_request->is_amazon_account_linked) == NULL) {
     goto fail; //Bool
     }
 
@@ -158,6 +171,21 @@ fail:
 amazon_connect_request_t *amazon_connect_request_parseFromJSON(cJSON *amazon_connect_requestJSON){
 
     amazon_connect_request_t *amazon_connect_request_local_var = NULL;
+
+    char *amazon_storefront_id_local_str = NULL;
+
+    char *amazon_storefront_name_local_str = NULL;
+
+    char *amazon_storefront_url_local_str = NULL;
+
+    char *amazon_user_id_local_str = NULL;
+
+    // define the local variable for amazon_connect_request->is_amazon_account_linked
+    int *is_amazon_account_linked_local_var = NULL;
+
+    char *one_time_passcode_local_str = NULL;
+
+    char *pinterest_user_id_local_str = NULL;
 
     // amazon_connect_request->amazon_storefront_id
     cJSON *amazon_storefront_id = cJSON_GetObjectItemCaseSensitive(amazon_connect_requestJSON, "amazon_storefront_id");
@@ -227,6 +255,12 @@ amazon_connect_request_t *amazon_connect_request_parseFromJSON(cJSON *amazon_con
     {
     goto end; //Bool
     }
+    is_amazon_account_linked_local_var = malloc(sizeof(int));
+    if(!is_amazon_account_linked_local_var)
+    {
+        goto end;
+    }
+    *is_amazon_account_linked_local_var = is_amazon_account_linked->valueint;
 
     // amazon_connect_request->one_time_passcode
     cJSON *one_time_passcode = cJSON_GetObjectItemCaseSensitive(amazon_connect_requestJSON, "one_time_passcode");
@@ -253,18 +287,57 @@ amazon_connect_request_t *amazon_connect_request_parseFromJSON(cJSON *amazon_con
     }
 
 
+    if (amazon_storefront_id && !cJSON_IsNull(amazon_storefront_id)) amazon_storefront_id_local_str = strdup(amazon_storefront_id->valuestring);
+    if (amazon_storefront_name && !cJSON_IsNull(amazon_storefront_name)) amazon_storefront_name_local_str = strdup(amazon_storefront_name->valuestring);
+    if (amazon_storefront_url && !cJSON_IsNull(amazon_storefront_url)) amazon_storefront_url_local_str = strdup(amazon_storefront_url->valuestring);
+    if (amazon_user_id && !cJSON_IsNull(amazon_user_id)) amazon_user_id_local_str = strdup(amazon_user_id->valuestring);
+    if (one_time_passcode && !cJSON_IsNull(one_time_passcode)) one_time_passcode_local_str = strdup(one_time_passcode->valuestring);
+    if (pinterest_user_id && !cJSON_IsNull(pinterest_user_id)) pinterest_user_id_local_str = strdup(pinterest_user_id->valuestring);
+
     amazon_connect_request_local_var = amazon_connect_request_create_internal (
-        amazon_storefront_id && !cJSON_IsNull(amazon_storefront_id) ? strdup(amazon_storefront_id->valuestring) : NULL,
-        strdup(amazon_storefront_name->valuestring),
-        strdup(amazon_storefront_url->valuestring),
-        amazon_user_id && !cJSON_IsNull(amazon_user_id) ? strdup(amazon_user_id->valuestring) : NULL,
-        is_amazon_account_linked->valueint,
-        one_time_passcode && !cJSON_IsNull(one_time_passcode) ? strdup(one_time_passcode->valuestring) : NULL,
-        pinterest_user_id && !cJSON_IsNull(pinterest_user_id) ? strdup(pinterest_user_id->valuestring) : NULL
+        amazon_storefront_id_local_str,
+        amazon_storefront_name_local_str,
+        amazon_storefront_url_local_str,
+        amazon_user_id_local_str,
+        is_amazon_account_linked_local_var,
+        one_time_passcode_local_str,
+        pinterest_user_id_local_str
         );
+
+    if (!amazon_connect_request_local_var) {
+        goto end;
+    }
 
     return amazon_connect_request_local_var;
 end:
+    if (amazon_storefront_id_local_str) {
+        free(amazon_storefront_id_local_str);
+        amazon_storefront_id_local_str = NULL;
+    }
+    if (amazon_storefront_name_local_str) {
+        free(amazon_storefront_name_local_str);
+        amazon_storefront_name_local_str = NULL;
+    }
+    if (amazon_storefront_url_local_str) {
+        free(amazon_storefront_url_local_str);
+        amazon_storefront_url_local_str = NULL;
+    }
+    if (amazon_user_id_local_str) {
+        free(amazon_user_id_local_str);
+        amazon_user_id_local_str = NULL;
+    }
+    if (is_amazon_account_linked_local_var) {
+        free(is_amazon_account_linked_local_var);
+        is_amazon_account_linked_local_var = NULL;
+    }
+    if (one_time_passcode_local_str) {
+        free(one_time_passcode_local_str);
+        one_time_passcode_local_str = NULL;
+    }
+    if (pinterest_user_id_local_str) {
+        free(pinterest_user_id_local_str);
+        pinterest_user_id_local_str = NULL;
+    }
     return NULL;
 
 }

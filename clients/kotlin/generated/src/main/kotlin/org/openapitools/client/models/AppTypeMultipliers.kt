@@ -8,13 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.TargetingSpecAppType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -22,31 +31,18 @@ import com.squareup.moshi.JsonClass
 /**
  * This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
  *
- * @param APP_TYPE 
+ * @param APP_TYPE App type identifier.
  */
 
 
 data class AppTypeMultipliers (
 
+    /* App type identifier. */
     @Json(name = "APP_TYPE")
-    val APP_TYPE: AppTypeMultipliers.APPTYPE? = null
+    val APP_TYPE: TargetingSpecAppType? = null
 
 ) : kotlin.collections.HashMap<String, kotlin.Double>() {
 
-    /**
-     * 
-     *
-     * Values: android_mobile,android_tablet,ipad,iphone,web,web_mobile
-     */
-    @JsonClass(generateAdapter = false)
-    enum class APPTYPE(val value: kotlin.String) {
-        @Json(name = "android_mobile") android_mobile("android_mobile"),
-        @Json(name = "android_tablet") android_tablet("android_tablet"),
-        @Json(name = "ipad") ipad("ipad"),
-        @Json(name = "iphone") iphone("iphone"),
-        @Json(name = "web") web("web"),
-        @Json(name = "web_mobile") web_mobile("web_mobile");
-    }
 
 }
 

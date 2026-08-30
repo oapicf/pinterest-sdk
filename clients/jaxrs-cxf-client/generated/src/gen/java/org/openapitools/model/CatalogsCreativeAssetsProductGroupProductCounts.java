@@ -14,6 +14,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreativeAssetsProductGroupProductCounts  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  private BigDecimal appLinks;
+
 public enum CatalogTypeEnum {
 
 CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
@@ -50,11 +54,34 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   @ApiModelProperty(required = true, value = "")
 
+  private BigDecimal images;
+
+  @ApiModelProperty(required = true, value = "")
+
   private BigDecimal total;
 
   @ApiModelProperty(required = true, value = "")
 
   private BigDecimal videos;
+ /**
+   * Get appLinks
+   * minimum: 0
+   * @return appLinks
+  **/
+  @JsonProperty("app_links")
+  public BigDecimal getAppLinks() {
+    return appLinks;
+  }
+
+  public void setAppLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+  }
+
+  public CatalogsCreativeAssetsProductGroupProductCounts appLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+    return this;
+  }
+
  /**
    * Get catalogType
    * @return catalogType
@@ -73,6 +100,25 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   public CatalogsCreativeAssetsProductGroupProductCounts catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+    return this;
+  }
+
+ /**
+   * Get images
+   * minimum: 0
+   * @return images
+  **/
+  @JsonProperty("images")
+  public BigDecimal getImages() {
+    return images;
+  }
+
+  public void setImages(BigDecimal images) {
+    this.images = images;
+  }
+
+  public CatalogsCreativeAssetsProductGroupProductCounts images(BigDecimal images) {
+    this.images = images;
     return this;
   }
 
@@ -123,14 +169,16 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
       return false;
     }
     CatalogsCreativeAssetsProductGroupProductCounts catalogsCreativeAssetsProductGroupProductCounts = (CatalogsCreativeAssetsProductGroupProductCounts) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+    return Objects.equals(this.appLinks, catalogsCreativeAssetsProductGroupProductCounts.appLinks) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+        Objects.equals(this.images, catalogsCreativeAssetsProductGroupProductCounts.images) &&
         Objects.equals(this.total, catalogsCreativeAssetsProductGroupProductCounts.total) &&
         Objects.equals(this.videos, catalogsCreativeAssetsProductGroupProductCounts.videos);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, total, videos);
+    return Objects.hash(appLinks, catalogType, images, total, videos);
   }
 
   @Override
@@ -138,7 +186,9 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroupProductCounts {\n");
     
+    sb.append("    appLinks: ").append(toIndentedString(appLinks)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    videos: ").append(toIndentedString(videos)).append("\n");
     sb.append("}");
@@ -150,10 +200,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

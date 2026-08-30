@@ -12,6 +12,7 @@
    (ds/opt :conversion_event) conversion-tag-type-spec
    (ds/opt :conversion_tag_id) string?
    (ds/opt :created_time) int?
+   (ds/opt :reporting_conversion_event) string?
    })
 
 (def conversion-event-response-spec

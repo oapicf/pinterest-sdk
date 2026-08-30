@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **time.Time** |  | 
-**Id** | **string** |  | 
-**UpdatedAt** | **time.Time** |  | 
 **CatalogId** | **NullableString** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**Credentials** | [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | 
-**DefaultCurrency** | [**NullableNullableCurrency**](NullableCurrency.md) |  | 
+**CatalogType** | **string** |  | 
+**CreatedAt** | **time.Time** |  | [readonly] 
+**Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
+**DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
 **DefaultLocale** | **string** | The locale used within a feed for product descriptions. | 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
+**Id** | **string** | ID of the feed entity. | [readonly] 
 **Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
 **Name** | **NullableString** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
-**PreferredProcessingSchedule** | [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | 
+**PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | 
+**UpdatedAt** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewCatalogsHotelFeed
 
-`func NewCatalogsHotelFeed(createdAt time.Time, id string, updatedAt time.Time, catalogId NullableString, catalogType CatalogsType, credentials NullableCatalogsFeedCredentials, defaultCurrency NullableNullableCurrency, defaultLocale string, format CatalogsFormat, location string, name NullableString, preferredProcessingSchedule NullableCatalogsFeedProcessingSchedule, status CatalogsStatus, ) *CatalogsHotelFeed`
+`func NewCatalogsHotelFeed(catalogId NullableString, catalogType string, createdAt time.Time, defaultLocale string, format CatalogsFormat, id string, location string, name NullableString, status CatalogsStatus, updatedAt time.Time, ) *CatalogsHotelFeed`
 
 NewCatalogsHotelFeed instantiates a new CatalogsHotelFeed object
 This constructor will assign default values to properties that have it defined,
@@ -36,66 +36,6 @@ will change when the set of required properties is changed
 NewCatalogsHotelFeedWithDefaults instantiates a new CatalogsHotelFeed object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCreatedAt
-
-`func (o *CatalogsHotelFeed) GetCreatedAt() time.Time`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *CatalogsHotelFeed) GetCreatedAtOk() (*time.Time, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *CatalogsHotelFeed) SetCreatedAt(v time.Time)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-
-### GetId
-
-`func (o *CatalogsHotelFeed) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *CatalogsHotelFeed) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *CatalogsHotelFeed) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetUpdatedAt
-
-`func (o *CatalogsHotelFeed) GetUpdatedAt() time.Time`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *CatalogsHotelFeed) GetUpdatedAtOk() (*time.Time, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *CatalogsHotelFeed) SetUpdatedAt(v time.Time)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
-
 
 ### GetCatalogId
 
@@ -129,22 +69,42 @@ SetCatalogId sets CatalogId field to given value.
 UnsetCatalogId ensures that no value is present for CatalogId, not even an explicit nil
 ### GetCatalogType
 
-`func (o *CatalogsHotelFeed) GetCatalogType() CatalogsType`
+`func (o *CatalogsHotelFeed) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsHotelFeed) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsHotelFeed) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsHotelFeed) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsHotelFeed) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
+
+
+### GetCreatedAt
+
+`func (o *CatalogsHotelFeed) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *CatalogsHotelFeed) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *CatalogsHotelFeed) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetCredentials
@@ -166,6 +126,11 @@ and a boolean to check if the value has been set.
 
 SetCredentials sets Credentials field to given value.
 
+### HasCredentials
+
+`func (o *CatalogsHotelFeed) HasCredentials() bool`
+
+HasCredentials returns a boolean if a field has been set.
 
 ### SetCredentialsNil
 
@@ -196,6 +161,11 @@ and a boolean to check if the value has been set.
 
 SetDefaultCurrency sets DefaultCurrency field to given value.
 
+### HasDefaultCurrency
+
+`func (o *CatalogsHotelFeed) HasDefaultCurrency() bool`
+
+HasDefaultCurrency returns a boolean if a field has been set.
 
 ### SetDefaultCurrencyNil
 
@@ -245,6 +215,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsHotelFeed) SetFormat(v CatalogsFormat)`
 
 SetFormat sets Format field to given value.
+
+
+### GetId
+
+`func (o *CatalogsHotelFeed) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CatalogsHotelFeed) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CatalogsHotelFeed) SetId(v string)`
+
+SetId sets Id field to given value.
 
 
 ### GetLocation
@@ -316,6 +306,11 @@ and a boolean to check if the value has been set.
 
 SetPreferredProcessingSchedule sets PreferredProcessingSchedule field to given value.
 
+### HasPreferredProcessingSchedule
+
+`func (o *CatalogsHotelFeed) HasPreferredProcessingSchedule() bool`
+
+HasPreferredProcessingSchedule returns a boolean if a field has been set.
 
 ### SetPreferredProcessingScheduleNil
 
@@ -345,6 +340,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsHotelFeed) SetStatus(v CatalogsStatus)`
 
 SetStatus sets Status field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *CatalogsHotelFeed) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *CatalogsHotelFeed) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *CatalogsHotelFeed) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
 
 
 

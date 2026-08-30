@@ -9,14 +9,19 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
+import 'package:openapi/src/model/ad_account_to_ad_account_shared_audience.dart';
+import 'package:openapi/src/model/ad_account_to_ad_account_shared_audience_update_with_required_body.dart';
+import 'package:openapi/src/model/ad_account_to_business_shared_audience.dart';
+import 'package:openapi/src/model/ad_account_to_business_shared_audience_update_with_required_body.dart';
 import 'package:openapi/src/model/ad_accounts_audiences_shared_accounts_list200_response.dart';
 import 'package:openapi/src/model/audience_account_type.dart';
-import 'package:openapi/src/model/audiences_list200_response.dart';
-import 'package:openapi/src/model/business_shared_audience.dart';
-import 'package:openapi/src/model/business_shared_audience_response.dart';
-import 'package:openapi/src/model/error.dart';
-import 'package:openapi/src/model/shared_audience.dart';
-import 'package:openapi/src/model/shared_audience_response.dart';
+import 'package:openapi/src/model/business_to_ad_account_shared_audience.dart';
+import 'package:openapi/src/model/business_to_ad_account_shared_audience_update_with_required_body.dart';
+import 'package:openapi/src/model/business_to_business_shared_audience.dart';
+import 'package:openapi/src/model/business_to_business_shared_audience_update_with_required_body.dart';
+import 'package:openapi/src/model/order.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
+import 'package:openapi/src/model/shared_audiences_for_business_list200_response.dart';
 
 class AudienceSharingApi {
 
@@ -30,11 +35,11 @@ class AudienceSharingApi {
   /// List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
   ///
   /// Parameters:
-  /// * [adAccountId] - Unique identifier of an ad account.
   /// * [audienceId] - Unique identifier of the audience to use to filter the results.
   /// * [accountType] - Filter accounts by account type.
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [adAccountId] - Unique identifier of an ad account.
   /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -45,11 +50,11 @@ class AudienceSharingApi {
   /// Returns a [Future] containing a [Response] with a [AdAccountsAudiencesSharedAccountsList200Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<AdAccountsAudiencesSharedAccountsList200Response>> adAccountsAudiencesSharedAccountsList({ 
-    required String adAccountId,
     required String audienceId,
     required AudienceAccountType accountType,
-    int? pageSize = 25,
+    required String adAccountId,
     String? bookmark,
+    int? pageSize = 25,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -81,8 +86,8 @@ class AudienceSharingApi {
     final _queryParameters = <String, dynamic>{
       r'audience_id': encodeQueryParameter(_serializers, audienceId, const FullType(String)),
       r'account_type': encodeQueryParameter(_serializers, accountType, const FullType(AudienceAccountType)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -132,8 +137,8 @@ class AudienceSharingApi {
   /// * [businessId] - Unique identifier of the requesting business.
   /// * [audienceId] - Unique identifier of the audience to use to filter the results.
   /// * [accountType] - Filter accounts by account type.
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -147,8 +152,8 @@ class AudienceSharingApi {
     required String businessId,
     required String audienceId,
     required AudienceAccountType accountType,
-    int? pageSize = 25,
     String? bookmark,
+    int? pageSize = 25,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -177,8 +182,8 @@ class AudienceSharingApi {
     final _queryParameters = <String, dynamic>{
       r'audience_id': encodeQueryParameter(_serializers, audienceId, const FullType(String)),
       r'account_type': encodeQueryParameter(_serializers, accountType, const FullType(AudienceAccountType)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -226,9 +231,9 @@ class AudienceSharingApi {
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
+  /// * [order] - The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [order] - The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -236,12 +241,12 @@ class AudienceSharingApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AudiencesList200Response] as data
+  /// Returns a [Future] containing a [Response] with a [SharedAudiencesForBusinessList200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AudiencesList200Response>> sharedAudiencesForBusinessList({ 
+  Future<Response<SharedAudiencesForBusinessList200Response>> sharedAudiencesForBusinessList({ 
     required String businessId,
+    Order? order,
     String? bookmark,
-    String? order,
     int? pageSize = 25,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -269,8 +274,8 @@ class AudienceSharingApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(Order)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
-      if (order != null) r'order': encodeQueryParameter(_serializers, order, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
 
@@ -283,14 +288,14 @@ class AudienceSharingApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AudiencesList200Response? _responseData;
+    SharedAudiencesForBusinessList200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AudiencesList200Response),
-      ) as AudiencesList200Response;
+        specifiedType: const FullType(SharedAudiencesForBusinessList200Response),
+      ) as SharedAudiencesForBusinessList200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -302,7 +307,7 @@ class AudienceSharingApi {
       );
     }
 
-    return Response<AudiencesList200Response>(
+    return Response<SharedAudiencesForBusinessList200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -315,11 +320,11 @@ class AudienceSharingApi {
   }
 
   /// Update audience sharing between ad accounts
-  /// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+  /// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [sharedAudience] 
+  /// * [adAccountToAdAccountSharedAudienceUpdateWithRequiredBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -327,11 +332,11 @@ class AudienceSharingApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SharedAudienceResponse] as data
+  /// Returns a [Future] containing a [Response] with a [AdAccountToAdAccountSharedAudience] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SharedAudienceResponse>> updateAdAccountToAdAccountSharedAudience({ 
+  Future<Response<AdAccountToAdAccountSharedAudience>> updateAdAccountToAdAccountSharedAudience({ 
     required String adAccountId,
-    required SharedAudience sharedAudience,
+    required AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -361,8 +366,8 @@ class AudienceSharingApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(SharedAudience);
-      _bodyData = _serializers.serialize(sharedAudience, specifiedType: _type);
+      const _type = FullType(AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody);
+      _bodyData = _serializers.serialize(adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -385,14 +390,14 @@ class AudienceSharingApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SharedAudienceResponse? _responseData;
+    AdAccountToAdAccountSharedAudience? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SharedAudienceResponse),
-      ) as SharedAudienceResponse;
+        specifiedType: const FullType(AdAccountToAdAccountSharedAudience),
+      ) as AdAccountToAdAccountSharedAudience;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -404,7 +409,7 @@ class AudienceSharingApi {
       );
     }
 
-    return Response<SharedAudienceResponse>(
+    return Response<AdAccountToAdAccountSharedAudience>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -417,11 +422,11 @@ class AudienceSharingApi {
   }
 
   /// Update audience sharing from an ad account to businesses
-  /// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+  /// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Parameters:
   /// * [adAccountId] - Unique identifier of an ad account.
-  /// * [businessSharedAudience] 
+  /// * [adAccountToBusinessSharedAudienceUpdateWithRequiredBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -429,11 +434,11 @@ class AudienceSharingApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BusinessSharedAudienceResponse] as data
+  /// Returns a [Future] containing a [Response] with a [AdAccountToBusinessSharedAudience] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BusinessSharedAudienceResponse>> updateAdAccountToBusinessSharedAudience({ 
+  Future<Response<AdAccountToBusinessSharedAudience>> updateAdAccountToBusinessSharedAudience({ 
     required String adAccountId,
-    required BusinessSharedAudience businessSharedAudience,
+    required AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -463,8 +468,8 @@ class AudienceSharingApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BusinessSharedAudience);
-      _bodyData = _serializers.serialize(businessSharedAudience, specifiedType: _type);
+      const _type = FullType(AdAccountToBusinessSharedAudienceUpdateWithRequiredBody);
+      _bodyData = _serializers.serialize(adAccountToBusinessSharedAudienceUpdateWithRequiredBody, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -487,14 +492,14 @@ class AudienceSharingApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BusinessSharedAudienceResponse? _responseData;
+    AdAccountToBusinessSharedAudience? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BusinessSharedAudienceResponse),
-      ) as BusinessSharedAudienceResponse;
+        specifiedType: const FullType(AdAccountToBusinessSharedAudience),
+      ) as AdAccountToBusinessSharedAudience;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -506,7 +511,7 @@ class AudienceSharingApi {
       );
     }
 
-    return Response<BusinessSharedAudienceResponse>(
+    return Response<AdAccountToBusinessSharedAudience>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -519,11 +524,11 @@ class AudienceSharingApi {
   }
 
   /// Update audience sharing from a business to ad accounts
-  /// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+  /// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [sharedAudience] 
+  /// * [businessToAdAccountSharedAudienceUpdateWithRequiredBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -531,11 +536,11 @@ class AudienceSharingApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SharedAudienceResponse] as data
+  /// Returns a [Future] containing a [Response] with a [BusinessToAdAccountSharedAudience] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SharedAudienceResponse>> updateBusinessToAdAccountSharedAudience({ 
+  Future<Response<BusinessToAdAccountSharedAudience>> updateBusinessToAdAccountSharedAudience({ 
     required String businessId,
-    required SharedAudience sharedAudience,
+    required BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -565,8 +570,8 @@ class AudienceSharingApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(SharedAudience);
-      _bodyData = _serializers.serialize(sharedAudience, specifiedType: _type);
+      const _type = FullType(BusinessToAdAccountSharedAudienceUpdateWithRequiredBody);
+      _bodyData = _serializers.serialize(businessToAdAccountSharedAudienceUpdateWithRequiredBody, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -589,14 +594,14 @@ class AudienceSharingApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SharedAudienceResponse? _responseData;
+    BusinessToAdAccountSharedAudience? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SharedAudienceResponse),
-      ) as SharedAudienceResponse;
+        specifiedType: const FullType(BusinessToAdAccountSharedAudience),
+      ) as BusinessToAdAccountSharedAudience;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -608,7 +613,7 @@ class AudienceSharingApi {
       );
     }
 
-    return Response<SharedAudienceResponse>(
+    return Response<BusinessToAdAccountSharedAudience>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -621,11 +626,11 @@ class AudienceSharingApi {
   }
 
   /// Update audience sharing between businesses
-  /// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+  /// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [businessSharedAudience] 
+  /// * [businessToBusinessSharedAudienceUpdateWithRequiredBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -633,11 +638,11 @@ class AudienceSharingApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BusinessSharedAudienceResponse] as data
+  /// Returns a [Future] containing a [Response] with a [BusinessToBusinessSharedAudience] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BusinessSharedAudienceResponse>> updateBusinessToBusinessSharedAudience({ 
+  Future<Response<BusinessToBusinessSharedAudience>> updateBusinessToBusinessSharedAudience({ 
     required String businessId,
-    required BusinessSharedAudience businessSharedAudience,
+    required BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -667,8 +672,8 @@ class AudienceSharingApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BusinessSharedAudience);
-      _bodyData = _serializers.serialize(businessSharedAudience, specifiedType: _type);
+      const _type = FullType(BusinessToBusinessSharedAudienceUpdateWithRequiredBody);
+      _bodyData = _serializers.serialize(businessToBusinessSharedAudienceUpdateWithRequiredBody, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -691,14 +696,14 @@ class AudienceSharingApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BusinessSharedAudienceResponse? _responseData;
+    BusinessToBusinessSharedAudience? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BusinessSharedAudienceResponse),
-      ) as BusinessSharedAudienceResponse;
+        specifiedType: const FullType(BusinessToBusinessSharedAudience),
+      ) as BusinessToBusinessSharedAudience;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -710,7 +715,7 @@ class AudienceSharingApi {
       );
     }
 
-    return Response<BusinessSharedAudienceResponse>(
+    return Response<BusinessToBusinessSharedAudience>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

@@ -60,10 +60,12 @@ class AdsAnalyticsMetricsFilter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdsAnalyticsMetricsFilter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdsAnalyticsMetricsFilter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'field'), 'Required key "AdsAnalyticsMetricsFilter[field]" is missing from JSON.');
+        assert(json[r'field'] != null, 'Required key "AdsAnalyticsMetricsFilter[field]" has a null value in JSON.');
+        assert(json.containsKey(r'operator'), 'Required key "AdsAnalyticsMetricsFilter[operator]" is missing from JSON.');
+        assert(json[r'operator'] != null, 'Required key "AdsAnalyticsMetricsFilter[operator]" has a null value in JSON.');
+        assert(json.containsKey(r'values'), 'Required key "AdsAnalyticsMetricsFilter[values]" is missing from JSON.');
+        assert(json[r'values'] != null, 'Required key "AdsAnalyticsMetricsFilter[values]" has a null value in JSON.');
         return true;
       }());
 

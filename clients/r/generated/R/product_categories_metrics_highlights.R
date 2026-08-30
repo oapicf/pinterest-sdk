@@ -75,17 +75,40 @@ ProductCategoriesMetricsHighlights <- R6::R6Class(
       ProductCategoriesMetricsHighlightsObject <- list()
       if (!is.null(self$`engagement`)) {
         ProductCategoriesMetricsHighlightsObject[["engagement"]] <-
-          self$`engagement`$toSimpleType()
+          self$extractSimpleType(self$`engagement`)
       }
       if (!is.null(self$`outbound_clicks`)) {
         ProductCategoriesMetricsHighlightsObject[["outbound_clicks"]] <-
-          self$`outbound_clicks`$toSimpleType()
+          self$extractSimpleType(self$`outbound_clicks`)
       }
       if (!is.null(self$`pin_saves`)) {
         ProductCategoriesMetricsHighlightsObject[["pin_saves"]] <-
-          self$`pin_saves`$toSimpleType()
+          self$extractSimpleType(self$`pin_saves`)
       }
       return(ProductCategoriesMetricsHighlightsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

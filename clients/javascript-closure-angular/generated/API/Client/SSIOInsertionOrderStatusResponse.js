@@ -1,6 +1,7 @@
 goog.provide('API.Client.SSIOInsertionOrderStatusResponse');
 
 /**
+ * SSIO insertion order status response for a single pin order id lookup.
  * @record
  */
 API.Client.SSIOInsertionOrderStatusResponse = function() {}

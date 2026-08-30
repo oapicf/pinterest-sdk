@@ -11,41 +11,35 @@
 part of openapi.api;
 
 /// Summary status for ad group
-class AdGroupSummaryStatus {
-  /// Instantiate a new enum with the provided [value].
-  const AdGroupSummaryStatus._(this.value);
+enum AdGroupSummaryStatus {
+  RUNNING._(r'RUNNING'),
+  PAUSED._(r'PAUSED'),
+  NOT_STARTED._(r'NOT_STARTED'),
+  COMPLETED._(r'COMPLETED'),
+  ADVERTISER_DISABLED._(r'ADVERTISER_DISABLED'),
+  ARCHIVED._(r'ARCHIVED'),
+  DRAFT._(r'DRAFT'),
+  DELETED_DRAFT._(r'DELETED_DRAFT'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const AdGroupSummaryStatus._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const RUNNING = AdGroupSummaryStatus._(r'RUNNING');
-  static const PAUSED = AdGroupSummaryStatus._(r'PAUSED');
-  static const NOT_STARTED = AdGroupSummaryStatus._(r'NOT_STARTED');
-  static const COMPLETED = AdGroupSummaryStatus._(r'COMPLETED');
-  static const ADVERTISER_DISABLED = AdGroupSummaryStatus._(r'ADVERTISER_DISABLED');
-  static const ARCHIVED = AdGroupSummaryStatus._(r'ARCHIVED');
-  static const DRAFT = AdGroupSummaryStatus._(r'DRAFT');
-  static const DELETED_DRAFT = AdGroupSummaryStatus._(r'DELETED_DRAFT');
-
-  /// List of all possible values in this [enum][AdGroupSummaryStatus].
-  static const values = <AdGroupSummaryStatus>[
-    RUNNING,
-    PAUSED,
-    NOT_STARTED,
-    COMPLETED,
-    ADVERTISER_DISABLED,
-    ARCHIVED,
-    DRAFT,
-    DELETED_DRAFT,
-  ];
-
+  /// Returns the instance of [AdGroupSummaryStatus] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static AdGroupSummaryStatus? fromJson(dynamic value) => AdGroupSummaryStatusTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [AdGroupSummaryStatus]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<AdGroupSummaryStatus> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <AdGroupSummaryStatus>[];
     if (json is List && json.isNotEmpty) {
@@ -67,9 +61,11 @@ class AdGroupSummaryStatusTypeTransformer {
 
   const AdGroupSummaryStatusTypeTransformer._();
 
-  String encode(AdGroupSummaryStatus data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(AdGroupSummaryStatus data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a AdGroupSummaryStatus.
+  /// Returns the instance of [AdGroupSummaryStatus] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -78,6 +74,9 @@ class AdGroupSummaryStatusTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   AdGroupSummaryStatus? decode(dynamic data, {bool allowNull = true}) {
+    if (data is AdGroupSummaryStatus) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'RUNNING': return AdGroupSummaryStatus.RUNNING;
@@ -97,7 +96,7 @@ class AdGroupSummaryStatusTypeTransformer {
     return null;
   }
 
-  /// Singleton [AdGroupSummaryStatusTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static AdGroupSummaryStatusTypeTransformer? _instance;
 }
 

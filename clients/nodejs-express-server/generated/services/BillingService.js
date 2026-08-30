@@ -3,18 +3,18 @@ const Service = require('./Service');
 
 /**
 * Redeem ad credits
-* Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+* Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* adsCreditRedeemRequest AdsCreditRedeemRequest Redeem ad credits request.
-* returns AdsCreditRedeemResponse
+* adsCreditRedeemCreate AdsCreditRedeemCreate 
+* returns AdsCreditRedeem
 * */
-const ads_credit/redeem = ({ adUnderscoreaccountUnderscoreid, adsCreditRedeemRequest }) => new Promise(
+const ads_credit/redeem = ({ adUnderscoreaccountUnderscoreid, adsCreditRedeemCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
-        adsCreditRedeemRequest,
+        adsCreditRedeemCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -26,11 +26,11 @@ const ads_credit/redeem = ({ adUnderscoreaccountUnderscoreid, adsCreditRedeemReq
 );
 /**
 * Get ads credit discounts
-* Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+* Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns ads_credits_discounts_get_200_response
 * */
 const ads_credits_discounts/get = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
@@ -78,24 +78,24 @@ const billing_invoice_download/get = ({ adUnderscoreaccountUnderscoreid, billing
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* sort String Field of which to sort billing invoices (optional)
-* order String The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-* status String Status of billing invoices to filter by (optional)
-* documentUnderscoretype String Document type of billing invoices to filter by (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+* order PinterestLibPaginationOrder The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+* sort BillingInvoiceSortField Field of which to sort billing invoices (optional)
+* status BillingInvoiceStatus Status of billing invoices to filter by (optional)
+* documentUnderscoretype BillingInvoiceDocumentType Document type of billing invoices to filter by (optional)
 * startUnderscoredueUnderscoredate date Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
 * endUnderscoredueUnderscoredate date Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
 * returns billing_invoices_get_200_response
 * */
-const billing_invoices/get = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize, sort, order, status, documentUnderscoretype, startUnderscoredueUnderscoredate, endUnderscoredueUnderscoredate }) => new Promise(
+const billing_invoices/get = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize, order, sort, status, documentUnderscoretype, startUnderscoredueUnderscoredate, endUnderscoredueUnderscoredate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
         bookmark,
         pageUnderscoresize,
-        sort,
         order,
+        sort,
         status,
         documentUnderscoretype,
         startUnderscoredueUnderscoredate,
@@ -111,20 +111,20 @@ const billing_invoices/get = ({ adUnderscoreaccountUnderscoreid, bookmark, pageU
 );
 /**
 * Get billing profiles
-* Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+* Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 *
-* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * isUnderscoreactive Boolean Return active billing profiles, if false return all billing profiles.
+* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns billing_profiles_get_200_response
 * */
-const billing_profiles/get = ({ adUnderscoreaccountUnderscoreid, isUnderscoreactive, bookmark, pageUnderscoresize }) => new Promise(
+const billing_profiles/get = ({ isUnderscoreactive, adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
-        adUnderscoreaccountUnderscoreid,
         isUnderscoreactive,
+        adUnderscoreaccountUnderscoreid,
         bookmark,
         pageUnderscoresize,
       }));
@@ -138,10 +138,10 @@ const billing_profiles/get = ({ adUnderscoreaccountUnderscoreid, isUnderscoreact
 );
 /**
 * Get Salesforce account details including bill-to information.
-* Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+*   Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* returns SSIOAccountResponse
+* returns SSIOAccount
 * */
 const ssio_accounts/get = ({ adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
@@ -159,18 +159,18 @@ const ssio_accounts/get = ({ adUnderscoreaccountUnderscoreid }) => new Promise(
 );
 /**
 * Create insertion order through SSIO.
-* Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+*   Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* sSIOCreateInsertionOrderRequest SSIOCreateInsertionOrderRequest Order line to create.
-* returns SSIOCreateInsertionOrderResponse
+* sSIOInsertionOrderCreate SSIOInsertionOrderCreate 
+* returns SSIOInsertionOrder
 * */
-const ssio_insertion_order/create = ({ adUnderscoreaccountUnderscoreid, sSIOCreateInsertionOrderRequest }) => new Promise(
+const ssio_insertion_order/create = ({ adUnderscoreaccountUnderscoreid, sSIOInsertionOrderCreate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
-        sSIOCreateInsertionOrderRequest,
+        sSIOInsertionOrderCreate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -182,18 +182,18 @@ const ssio_insertion_order/create = ({ adUnderscoreaccountUnderscoreid, sSIOCrea
 );
 /**
 * Edit insertion order through SSIO.
-* Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+*   Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* sSIOEditInsertionOrderRequest SSIOEditInsertionOrderRequest Order line to create.
-* returns SSIOEditInsertionOrderResponse
+* sSIOInsertionOrderUpdate SSIOInsertionOrderUpdate 
+* returns SSIOInsertionOrder
 * */
-const ssio_insertion_order/edit = ({ adUnderscoreaccountUnderscoreid, sSIOEditInsertionOrderRequest }) => new Promise(
+const ssio_insertion_order/edit = ({ adUnderscoreaccountUnderscoreid, sSIOInsertionOrderUpdate }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
-        sSIOEditInsertionOrderRequest,
+        sSIOInsertionOrderUpdate,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -205,11 +205,11 @@ const ssio_insertion_order/edit = ({ adUnderscoreaccountUnderscoreid, sSIOEditIn
 );
 /**
 * Get insertion order status by ad account id.
-* Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+*   Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns ssio_insertion_orders_status_get_by_ad_account_200_response
 * */
 const ssio_insertion_orders_status/get_by_ad_account = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
@@ -230,7 +230,7 @@ const ssio_insertion_orders_status/get_by_ad_account = ({ adUnderscoreaccountUnd
 );
 /**
 * Get insertion order status by pin order id.
-* Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+*   Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * pinUnderscoreorderUnderscoreid String The pin order id associated with the ssio insertion order
@@ -253,22 +253,22 @@ const ssio_insertion_orders_status/get_by_pin_order_id = ({ adUnderscoreaccountU
 );
 /**
 * Get Salesforce order lines by ad account id.
-* Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+*   Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
+* pinUnderscoreorderUnderscoreid String The pin order id associated with the SSIO insertion order (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-* pinUnderscoreorderUnderscoreid String The pin order id associated with the ssio insertino order (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
 * returns ssio_order_lines_get_by_ad_account_200_response
 * */
-const ssio_order_lines/get_by_ad_account = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize, pinUnderscoreorderUnderscoreid }) => new Promise(
+const ssio_order_lines/get_by_ad_account = ({ adUnderscoreaccountUnderscoreid, pinUnderscoreorderUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         adUnderscoreaccountUnderscoreid,
+        pinUnderscoreorderUnderscoreid,
         bookmark,
         pageUnderscoresize,
-        pinUnderscoreorderUnderscoreid,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

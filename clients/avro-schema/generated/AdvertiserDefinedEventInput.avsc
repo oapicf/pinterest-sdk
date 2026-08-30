@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Advertiser defined event input for create/update operations",
+  "name": "AdvertiserDefinedEventInput",
+  "fields": [
+    {
+      "name": "mapped_conversion_type",
+      "type": "model.AdvertiserDefinedEventMappingType",
+      "doc": "Pinterest standard event type to map this custom event to for campaign optimization and reporting"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Raw string name of the event"
+    }
+  ]
+
+}

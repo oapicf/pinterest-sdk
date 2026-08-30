@@ -15,6 +15,7 @@ PinMediaMetadata::PinMediaMetadata()
 	duration = float(0);
 	height = int(0);
 	video_url = std::string();
+	video_url_hls = std::string();
 	width = int(0);
 }
 
@@ -151,6 +152,19 @@ PinMediaMetadata::fromJson(std::string jsonObj)
 
     }
 
+    const char *video_url_hlsKey = "video_url_hls";
+
+    if(object.has_key(video_url_hlsKey))
+    {
+        bourne::json value = object[video_url_hlsKey];
+
+
+
+        jsonToValue(&video_url_hls, value, "std::string");
+
+
+    }
+
     const char *widthKey = "width";
 
     if(object.has_key(widthKey))
@@ -239,6 +253,13 @@ PinMediaMetadata::toJson()
 
 
 
+    object["video_url_hls"] = getVideoUrlHls();
+
+
+
+
+
+
     object["width"] = getWidth();
 
 
@@ -254,7 +275,7 @@ PinMediaMetadata::getDescription()
 }
 
 void
-PinMediaMetadata::setDescription(std::string  description)
+PinMediaMetadata::setDescription(std::string description)
 {
 	this->description = description;
 }
@@ -266,7 +287,7 @@ PinMediaMetadata::getImages()
 }
 
 void
-PinMediaMetadata::setImages(ImageSize  images)
+PinMediaMetadata::setImages(ImageSize images)
 {
 	this->images = images;
 }
@@ -278,7 +299,7 @@ PinMediaMetadata::getItemType()
 }
 
 void
-PinMediaMetadata::setItemType(std::string  item_type)
+PinMediaMetadata::setItemType(std::string item_type)
 {
 	this->item_type = item_type;
 }
@@ -290,7 +311,7 @@ PinMediaMetadata::getLink()
 }
 
 void
-PinMediaMetadata::setLink(std::string  link)
+PinMediaMetadata::setLink(std::string link)
 {
 	this->link = link;
 }
@@ -302,7 +323,7 @@ PinMediaMetadata::getTitle()
 }
 
 void
-PinMediaMetadata::setTitle(std::string  title)
+PinMediaMetadata::setTitle(std::string title)
 {
 	this->title = title;
 }
@@ -314,7 +335,7 @@ PinMediaMetadata::getCoverImageUrl()
 }
 
 void
-PinMediaMetadata::setCoverImageUrl(std::string  cover_image_url)
+PinMediaMetadata::setCoverImageUrl(std::string cover_image_url)
 {
 	this->cover_image_url = cover_image_url;
 }
@@ -326,7 +347,7 @@ PinMediaMetadata::getDuration()
 }
 
 void
-PinMediaMetadata::setDuration(long  duration)
+PinMediaMetadata::setDuration(long duration)
 {
 	this->duration = duration;
 }
@@ -338,7 +359,7 @@ PinMediaMetadata::getHeight()
 }
 
 void
-PinMediaMetadata::setHeight(int  height)
+PinMediaMetadata::setHeight(int height)
 {
 	this->height = height;
 }
@@ -350,9 +371,21 @@ PinMediaMetadata::getVideoUrl()
 }
 
 void
-PinMediaMetadata::setVideoUrl(std::string  video_url)
+PinMediaMetadata::setVideoUrl(std::string video_url)
 {
 	this->video_url = video_url;
+}
+
+std::string
+PinMediaMetadata::getVideoUrlHls()
+{
+	return video_url_hls;
+}
+
+void
+PinMediaMetadata::setVideoUrlHls(std::string video_url_hls)
+{
+	this->video_url_hls = video_url_hls;
 }
 
 int
@@ -362,7 +395,7 @@ PinMediaMetadata::getWidth()
 }
 
 void
-PinMediaMetadata::setWidth(int  width)
+PinMediaMetadata::setWidth(int width)
 {
 	this->width = width;
 }

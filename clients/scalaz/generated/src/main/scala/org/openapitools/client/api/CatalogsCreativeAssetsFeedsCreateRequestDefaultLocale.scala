@@ -1,0 +1,22 @@
+package org.openapitools.client.api
+
+import argonaut._
+import argonaut.EncodeJson._
+import argonaut.DecodeJson._
+
+import org.http4s.{EntityDecoder, EntityEncoder}
+import org.http4s.argonaut._
+import org.joda.time.DateTime
+
+
+import CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale._
+
+case class CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale (
+  
+object CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale {
+  import DateTimeCodecs._
+
+  implicit val CatalogsCreativeAssetsFeedsCreateRequestDefaultLocaleCodecJson: CodecJson[CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale] = CodecJson.derive[CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale]
+  implicit val CatalogsCreativeAssetsFeedsCreateRequestDefaultLocaleDecoder: EntityDecoder[CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale] = jsonOf[CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale]
+  implicit val CatalogsCreativeAssetsFeedsCreateRequestDefaultLocaleEncoder: EntityEncoder[CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale] = jsonEncoderOf[CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale]
+}

@@ -2,6 +2,11 @@
 Protected Class AdvancedAuctionItem
 
 	#tag Property, Flags = &h0
+		bid_options As OpenAPIClient.Models.AdvancedAuctionBidOptions
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		country As String
 	#tag EndProperty
 
@@ -16,11 +21,6 @@ Protected Class AdvancedAuctionItem
 
 	#tag Property, Flags = &h0
 		language As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		bid_options As OpenAPIClient.Models.AdvancedAuctionBidOptions
 	#tag EndProperty
 
 
@@ -61,6 +61,14 @@ Protected Class AdvancedAuctionItem
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="bid_options"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdvancedAuctionBidOptions"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
@@ -82,14 +90,6 @@ Protected Class AdvancedAuctionItem
 			Group="Behavior"
 			InitialValue=""
 			Type="Language"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="bid_options"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AdvancedAuctionBidOptions"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

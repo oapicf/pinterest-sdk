@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/label_update_request_labels_inner.dart';
+import 'package:openapi/src/model/label_update_item.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,7 +18,7 @@ part 'label_update_request.g.dart';
 abstract class LabelUpdateRequest implements Built<LabelUpdateRequest, LabelUpdateRequestBuilder> {
   /// Labels that you are applying to the campaign.
   @BuiltValueField(wireName: r'labels')
-  BuiltList<LabelUpdateRequestLabelsInner> get labels;
+  BuiltList<LabelUpdateItem> get labels;
 
   LabelUpdateRequest._();
 
@@ -46,7 +46,7 @@ class _$LabelUpdateRequestSerializer implements PrimitiveSerializer<LabelUpdateR
     yield r'labels';
     yield serializers.serialize(
       object.labels,
-      specifiedType: const FullType(BuiltList, [FullType(LabelUpdateRequestLabelsInner)]),
+      specifiedType: const FullType(BuiltList, [FullType(LabelUpdateItem)]),
     );
   }
 
@@ -74,8 +74,8 @@ class _$LabelUpdateRequestSerializer implements PrimitiveSerializer<LabelUpdateR
         case r'labels':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LabelUpdateRequestLabelsInner)]),
-          ) as BuiltList<LabelUpdateRequestLabelsInner>;
+            specifiedType: const FullType(BuiltList, [FullType(LabelUpdateItem)]),
+          ) as BuiltList<LabelUpdateItem>;
           result.labels.replace(valueDes);
           break;
         default:

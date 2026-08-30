@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;SSIOInsertionOrderStatus&gt;**](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;SSIOInsertionOrderStatus&gt;**](SSIOInsertionOrderStatus.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 

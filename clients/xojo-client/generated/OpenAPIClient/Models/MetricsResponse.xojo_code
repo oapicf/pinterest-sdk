@@ -2,7 +2,7 @@
 Protected Class MetricsResponse
 
 	#tag Property, Flags = &h0
-		data() As Object
+		data() As OpenAPIClient.Models.MetricsResponseDataItems
 	#tag EndProperty
 
 
@@ -47,7 +47,7 @@ Protected Class MetricsResponse
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Object"
+			Type="MetricsResponseDataItems"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

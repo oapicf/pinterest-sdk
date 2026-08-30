@@ -6,9 +6,12 @@
 
 Name | Type
 ------------ | -------------
+`bidMultiplier` | number
+`id` | string
+`targetingSpecOperations` | [Array&lt;TargetingSpecOperations&gt;](TargetingSpecOperations.md)
 `autoTargetingEnabled` | boolean
 `bidInMicroCurrency` | number
-`bidStrategyType` | string
+`bidStrategyType` | [BidStrategyType](BidStrategyType.md)
 `billableEvent` | [ActionType](ActionType.md)
 `budgetInMicroCurrency` | number
 `budgetType` | [BudgetType](BudgetType.md)
@@ -17,18 +20,17 @@ Name | Type
 `isCreativeOptimization` | boolean
 `lifetimeFrequencyCap` | number
 `name` | string
-`optimizationGoalMetadata` | [OptimizationGoalMetadata](OptimizationGoalMetadata.md)
+`optimizationGoalMetadata` | object
 `pacingDeliveryType` | [PacingDeliveryType](PacingDeliveryType.md)
 `placementGroup` | [PlacementGroupType](PlacementGroupType.md)
 `promotionApplicationLevel` | string
 `promotionId` | string
+`promotionIds` | Array&lt;string&gt;
 `startTime` | number
 `status` | [EntityStatus](EntityStatus.md)
 `targetingSpec` | [TargetingSpec](TargetingSpec.md)
 `targetingTemplateIds` | Array&lt;string&gt;
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
-`bidMultiplier` | number
-`id` | string
+`trackingUrls` | object
 
 ## Example
 
@@ -37,9 +39,12 @@ import type { AdGroupUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "bidMultiplier": null,
+  "id": null,
+  "targetingSpecOperations": null,
   "autoTargetingEnabled": true,
   "bidInMicroCurrency": 5000000,
-  "bidStrategyType": MAX_BID,
+  "bidStrategyType": null,
   "billableEvent": null,
   "budgetInMicroCurrency": 5000000,
   "budgetType": null,
@@ -53,13 +58,12 @@ const example = {
   "placementGroup": null,
   "promotionApplicationLevel": ITEM,
   "promotionId": 7834020347906,
+  "promotionIds": ["7834020347906","7834020347907"],
   "startTime": 5686848000,
   "status": null,
   "targetingSpec": null,
   "targetingTemplateIds": null,
   "trackingUrls": null,
-  "bidMultiplier": 1,
-  "id": 2680060704746,
 } satisfies AdGroupUpdateRequest
 
 console.log(example)

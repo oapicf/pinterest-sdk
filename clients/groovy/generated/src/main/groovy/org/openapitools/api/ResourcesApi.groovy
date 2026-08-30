@@ -1,11 +1,13 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.AdAccountsCountryResponse
-import org.openapitools.model.BookClosedResponse
-import org.openapitools.model.DeliveryMetricsResponse
-import org.openapitools.model.Error
-import org.openapitools.model.SingleInterestTargetingOptionResponse
+import org.openapitools.model.AdAccountCountriesGet200Response
+import org.openapitools.model.BookClosed
+import org.openapitools.model.DeliveryMetricsGet200Response
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PublicTargetingType
+import org.openapitools.model.ReportType
+import org.openapitools.model.SingleInterestTargetingOption
 
 class ResourcesApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -19,6 +21,7 @@ class ResourcesApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
@@ -26,19 +29,22 @@ class ResourcesApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    AdAccountsCountryResponse.class )
+                    AdAccountCountriesGet200Response.class )
 
     }
 
-    def deliveryMetricsGet ( String reportType, Closure onSuccess, Closure onFailure)  {
+    def deliveryMetricsGet ( ReportType reportType, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/resources/delivery_metrics"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
@@ -49,9 +55,11 @@ class ResourcesApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    DeliveryMetricsResponse.class )
+                    DeliveryMetricsGet200Response.class )
 
     }
 
@@ -62,6 +70,7 @@ class ResourcesApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -73,9 +82,11 @@ class ResourcesApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    SingleInterestTargetingOptionResponse.class )
+                    SingleInterestTargetingOption.class )
 
     }
 
@@ -86,6 +97,7 @@ class ResourcesApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
 
@@ -93,7 +105,9 @@ class ResourcesApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
                     null )
 
@@ -106,6 +120,7 @@ class ResourcesApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -120,19 +135,22 @@ class ResourcesApi {
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    BookClosedResponse.class )
+                    BookClosed.class )
 
     }
 
-    def targetingOptionsGet ( String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def targetingOptionsGet ( PublicTargetingType targetingType, String adAccountId, String clientId, String oauthSignature, String timestamp, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/resources/targeting/${targeting_type}"
 
         // params
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -140,6 +158,9 @@ class ResourcesApi {
             throw new RuntimeException("missing required params targetingType")
         }
 
+        if (adAccountId != null) {
+            queryParams.put("ad_account_id", adAccountId)
+        }
         if (clientId != null) {
             queryParams.put("client_id", clientId)
         }
@@ -149,14 +170,13 @@ class ResourcesApi {
         if (timestamp != null) {
             queryParams.put("timestamp", timestamp)
         }
-        if (adAccountId != null) {
-            queryParams.put("ad_account_id", adAccountId)
-        }
 
 
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "array",
                     Object.class )
 

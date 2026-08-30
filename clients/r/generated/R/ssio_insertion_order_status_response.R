@@ -1,7 +1,7 @@
 #' Create a new SSIOInsertionOrderStatusResponse
 #'
 #' @description
-#' SSIOInsertionOrderStatusResponse Class
+#' SSIO insertion order status response for a single pin order id lookup.
 #'
 #' @docType class
 #' @title SSIOInsertionOrderStatusResponse

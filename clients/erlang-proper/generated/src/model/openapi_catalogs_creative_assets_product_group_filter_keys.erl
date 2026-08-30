@@ -24,6 +24,7 @@
   | {'GOOGLE_PRODUCT_CATEGORY_0', openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria() }
   | {'MEDIA_TYPE', openapi_catalogs_product_group_multiple_media_types_criteria:openapi_catalogs_product_group_multiple_media_types_criteria() }
   | {'TITLE_KEYWORDS', openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria() }
+  | {'LINK', openapi_catalogs_product_group_filter_operator_type_criteria:openapi_catalogs_product_group_filter_operator_type_criteria() }
   ].
 
 
@@ -46,6 +47,7 @@ openapi_catalogs_creative_assets_product_group_filter_keys(Fields) ->
             , {'GOOGLE_PRODUCT_CATEGORY_0', openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria() }
             , {'MEDIA_TYPE', openapi_catalogs_product_group_multiple_media_types_criteria:openapi_catalogs_product_group_multiple_media_types_criteria() }
             , {'TITLE_KEYWORDS', openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria() }
+            , {'LINK', openapi_catalogs_product_group_filter_operator_type_criteria:openapi_catalogs_product_group_filter_operator_type_criteria() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

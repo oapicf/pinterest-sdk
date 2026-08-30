@@ -1,8 +1,8 @@
 const samples = require('../samples/AudienceInsightsApi');
-const AudienceDefinitionResponse = require('../models/AudienceDefinitionResponse');
 const AudienceInsightType = require('../models/AudienceInsightType');
-const AudienceInsightsResponse = require('../models/AudienceInsightsResponse');
-const Error = require('../models/Error');
+const AudienceInsights = require('../models/AudienceInsights');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const audience_insights_scope_and_type_get_200_response = require('../models/audience_insights_scope_and_type_get_200_response');
 const utils = require('../utils/utils');
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
         noun: 'audience_insights',
         display: {
             label: 'Get audience insights',
-            description: 'Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.',
+            description: 'Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).',
             hidden: false,
         },
         operation: {
@@ -25,7 +25,7 @@ module.exports = {
                 ....fields(),
             ],
             outputFields: [
-                ...AudienceInsightsResponse.fields('', false),
+                ...AudienceInsights.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -48,7 +48,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AudienceInsightsResponseSample']
+            sample: samples['AudienceInsightsSample']
         }
     },
     audienceInsightsScopeAndType/get: {
@@ -69,7 +69,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...AudienceDefinitionResponse.fields('', false),
+                ...audience_insights_scope_and_type_get_200_response.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -91,7 +91,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AudienceDefinitionResponseSample']
+            sample: samples['audience_insights_scope_and_type_get_200_responseSample']
         }
     },
 }

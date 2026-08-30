@@ -5,52 +5,147 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type Keyword struct {
 
-	// </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-	Bid *int32 `json:"bid,omitempty"`
-
-	MatchType *MatchTypeResponse `json:"match_type"`
-
-	// Keyword value (120 chars max).
-	Value string `json:"value"`
-
 	Archived bool `json:"archived,omitempty"`
 
+	// **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+	Bid *int32 `json:"bid,omitempty"`
+
 	// Keyword ID .
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id" validate:"regexp=^\\d+$"`
+
+	// Keyword [match type](/docs/api-features/targeting-overview/)
+	MatchType *MatchType `json:"match_type"`
 
 	// Keyword parent entity ID (advertiser, campaign, ad group).
-	ParentId string `json:"parent_id,omitempty" validate:"regexp=^\\\\d+$"`
+	ParentId string `json:"parent_id" validate:"regexp=^\\d+$"`
 
-	// Parent entity type
+	// Parent entity type (advertiser, campaign, ad group).
 	ParentType string `json:"parent_type,omitempty"`
 
 	// Always keyword
 	Type string `json:"type,omitempty"`
-}
 
-// AssertKeywordRequired checks if the required fields are not zero-ed
-func AssertKeywordRequired(obj Keyword) error {
-	elements := map[string]interface{}{
-		"match_type": obj.MatchType,
-		"value": obj.Value,
+	// Keyword value (120 chars max).
+	Value string `json:"value"`
+}
+// UnmarshalJSON validates required property keys then unmarshals into Keyword
+func (o *Keyword) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"id",
+		"match_type",
+		"value",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"id": false,
+		"match_type": true,
+		"value": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"archived": {},
+		"bid": {},
+		"id": {},
+		"match_type": {},
+		"parent_id": {},
+		"parent_type": {},
+		"type": {},
+		"value": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded Keyword
+
+	if value, exists := allProperties["archived"]; exists {
+		if err = json.Unmarshal(value, &decoded.Archived); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["bid"]; exists {
+		if err = json.Unmarshal(value, &decoded.Bid); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["id"]; exists {
+		if err = json.Unmarshal(value, &decoded.Id); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["match_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.MatchType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["parent_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.ParentId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["parent_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.ParentType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["type"]; exists {
+		if err = json.Unmarshal(value, &decoded.Type); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["value"]; exists {
+		if err = json.Unmarshal(value, &decoded.Value); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertKeywordRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertKeywordRequired(obj Keyword) error {
 	return nil
 }
 

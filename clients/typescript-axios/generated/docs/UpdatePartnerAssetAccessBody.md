@@ -1,11 +1,12 @@
 # UpdatePartnerAssetAccessBody
 
+An object with a list of partner asset accesses to assign or update.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accesses** | [**Array&lt;UpdatePartnerAssetAccessBodyAccessesInner&gt;**](UpdatePartnerAssetAccessBodyAccessesInner.md) |  | [default to undefined]
+**accesses** | [**Array&lt;UpdatePartnerAssetAccessItem&gt;**](UpdatePartnerAssetAccessItem.md) | List of partner asset accesses to assign or update. | [default to undefined]
 
 ## Example
 

@@ -4,29 +4,30 @@ package org.openapitools.client.model
 import java.time.OffsetDateTime
 
 case class CatalogsHotelFeed (
-    _createdAt: OffsetDateTime,
-    _id: String,
-    _updatedAt: OffsetDateTime,
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     _catalogId: String,
-    _catalogType: CatalogsType,
-    _credentials: CatalogsFeedCredentials,
-    _defaultCurrency: NullableCurrency,
+    _catalogType: String,
+    _createdAt: OffsetDateTime,
+    _credentials: Option[CatalogsFeedCredentials],
+    _defaultCurrency: Option[NullableCurrency],
     /* The locale used within a feed for product descriptions. */
     _defaultLocale: String,
     _format: CatalogsFormat,
+    /* ID of the feed entity. */
+    _id: String,
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     _location: String,
     /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
     _name: String,
-    _preferredProcessingSchedule: CatalogsFeedProcessingSchedule,
-    _status: CatalogsStatus
+    _preferredProcessingSchedule: Option[CatalogsFeedProcessingSchedule],
+    _status: CatalogsStatus,
+    _updatedAt: OffsetDateTime
 )
 object CatalogsHotelFeed {
-    def toStringBody(var_createdAt: Object, var_id: Object, var_updatedAt: Object, var_catalogId: Object, var_catalogType: Object, var_credentials: Object, var_defaultCurrency: Object, var_defaultLocale: Object, var_format: Object, var_location: Object, var_name: Object, var_preferredProcessingSchedule: Object, var_status: Object) =
+    def toStringBody(var_catalogId: Object, var_catalogType: Object, var_createdAt: Object, var_credentials: Object, var_defaultCurrency: Object, var_defaultLocale: Object, var_format: Object, var_id: Object, var_location: Object, var_name: Object, var_preferredProcessingSchedule: Object, var_status: Object, var_updatedAt: Object) =
         s"""
         | {
-        | "createdAt":$var_createdAt,"id":$var_id,"updatedAt":$var_updatedAt,"catalogId":$var_catalogId,"catalogType":$var_catalogType,"credentials":$var_credentials,"defaultCurrency":$var_defaultCurrency,"defaultLocale":$var_defaultLocale,"format":$var_format,"location":$var_location,"name":$var_name,"preferredProcessingSchedule":$var_preferredProcessingSchedule,"status":$var_status
+        | "catalogId":$var_catalogId,"catalogType":$var_catalogType,"createdAt":$var_createdAt,"credentials":$var_credentials,"defaultCurrency":$var_defaultCurrency,"defaultLocale":$var_defaultLocale,"format":$var_format,"id":$var_id,"location":$var_location,"name":$var_name,"preferredProcessingSchedule":$var_preferredProcessingSchedule,"status":$var_status,"updatedAt":$var_updatedAt
         | }
         """.stripMargin
 }

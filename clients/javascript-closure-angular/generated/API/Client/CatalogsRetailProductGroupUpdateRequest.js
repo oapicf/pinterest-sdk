@@ -38,6 +38,7 @@ API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.filters;
 API.Client.CatalogsRetailProductGroupUpdateRequest.prototype.locale;
 
 /**
+ * Name of catalog product group
  * @type {!string}
  * @export
  */

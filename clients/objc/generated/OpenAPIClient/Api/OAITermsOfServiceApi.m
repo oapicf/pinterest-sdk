@@ -1,7 +1,7 @@
 #import "OAITermsOfServiceApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIError.h"
+#import "OAIPinterestLibError.h"
 #import "OAITermsOfService.h"
 
 

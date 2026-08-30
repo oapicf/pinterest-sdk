@@ -1,9 +1,10 @@
 namespace OpenAPI
 
-open OpenAPI.Model.Error
-open OpenAPI.Model.PromotionCreateRequest
-open OpenAPI.Model.PromotionResponse
-open OpenAPI.Model.PromotionUpdateRequest
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.Promotion
+open OpenAPI.Model.PromotionBatchUpdate
+open OpenAPI.Model.PromotionCreate
 open OpenAPI.Model.PromotionsList200Response
 open OpenAPI.Model.PromotionsResponse
 open System.Collections.Generic
@@ -20,7 +21,7 @@ module PromotionsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type PromotionsCreateBodyParams = PromotionCreateRequest[]
+    type PromotionsCreateBodyParams = PromotionCreate[]
     //#endregion
 
 
@@ -30,15 +31,35 @@ module PromotionsApiHandlerParams =
     }
 
     type PromotionsCreateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsCreateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type PromotionsCreateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type PromotionsCreateResult = PromotionsCreateStatusCode200 of PromotionsCreateStatusCode200Response|PromotionsCreateStatusCode400 of PromotionsCreateStatusCode400Response|PromotionsCreateDefaultStatusCode of PromotionsCreateDefaultStatusCodeResponse
+    type PromotionsCreateResult = PromotionsCreateStatusCode200 of PromotionsCreateStatusCode200Response|PromotionsCreateStatusCode400 of PromotionsCreateStatusCode400Response|PromotionsCreateStatusCode401 of PromotionsCreateStatusCode401Response|PromotionsCreateStatusCode403 of PromotionsCreateStatusCode403Response|PromotionsCreateStatusCode404 of PromotionsCreateStatusCode404Response|PromotionsCreateStatusCode429 of PromotionsCreateStatusCode429Response|PromotionsCreateDefaultStatusCode of PromotionsCreateDefaultStatusCodeResponse
 
     type PromotionsCreateArgs = {
       pathParams:PromotionsCreatePathParams;
@@ -47,23 +68,53 @@ module PromotionsApiHandlerParams =
     //#region Path parameters
     [<CLIMutable>]
     type PromotionsDeletePathParams = {
-      adAccountId : string ;
-    //#endregion
       promotionId : string ;
+    //#endregion
+      adAccountId : string ;
     }
     //#endregion
 
+
+    type PromotionsDeleteStatusCode200Response = {
+      content:Promotion;
+      
+    }
 
     type PromotionsDeleteStatusCode204Response = {
       content:string;
       
     }
 
-    type PromotionsDeleteDefaultStatusCodeResponse = {
-      content:Error;
+    type PromotionsDeleteStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type PromotionsDeleteResult = PromotionsDeleteStatusCode204 of PromotionsDeleteStatusCode204Response|PromotionsDeleteDefaultStatusCode of PromotionsDeleteDefaultStatusCodeResponse
+
+    type PromotionsDeleteStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsDeleteStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsDeleteStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsDeleteStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsDeleteDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type PromotionsDeleteResult = PromotionsDeleteStatusCode200 of PromotionsDeleteStatusCode200Response|PromotionsDeleteStatusCode204 of PromotionsDeleteStatusCode204Response|PromotionsDeleteStatusCode400 of PromotionsDeleteStatusCode400Response|PromotionsDeleteStatusCode401 of PromotionsDeleteStatusCode401Response|PromotionsDeleteStatusCode403 of PromotionsDeleteStatusCode403Response|PromotionsDeleteStatusCode404 of PromotionsDeleteStatusCode404Response|PromotionsDeleteStatusCode429 of PromotionsDeleteStatusCode429Response|PromotionsDeleteDefaultStatusCode of PromotionsDeleteDefaultStatusCodeResponse
 
     type PromotionsDeleteArgs = {
       pathParams:PromotionsDeletePathParams;
@@ -71,28 +122,48 @@ module PromotionsApiHandlerParams =
     //#region Path parameters
     [<CLIMutable>]
     type PromotionsGetPathParams = {
-      adAccountId : string ;
-    //#endregion
       promotionId : string ;
+    //#endregion
+      adAccountId : string ;
     }
     //#endregion
 
 
     type PromotionsGetStatusCode200Response = {
-      content:PromotionResponse;
+      content:Promotion;
+      
+    }
+
+    type PromotionsGetStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsGetStatusCode403Response = {
+      content:PinterestLibError;
       
     }
 
     type PromotionsGetStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsGetStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type PromotionsGetDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type PromotionsGetResult = PromotionsGetStatusCode200 of PromotionsGetStatusCode200Response|PromotionsGetStatusCode404 of PromotionsGetStatusCode404Response|PromotionsGetDefaultStatusCode of PromotionsGetDefaultStatusCodeResponse
+    type PromotionsGetResult = PromotionsGetStatusCode200 of PromotionsGetStatusCode200Response|PromotionsGetStatusCode400 of PromotionsGetStatusCode400Response|PromotionsGetStatusCode401 of PromotionsGetStatusCode401Response|PromotionsGetStatusCode403 of PromotionsGetStatusCode403Response|PromotionsGetStatusCode404 of PromotionsGetStatusCode404Response|PromotionsGetStatusCode429 of PromotionsGetStatusCode429Response|PromotionsGetDefaultStatusCode of PromotionsGetDefaultStatusCodeResponse
 
     type PromotionsGetArgs = {
       pathParams:PromotionsGetPathParams;
@@ -107,13 +178,13 @@ module PromotionsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type PromotionsListQueryParams = {
+      bookmark : string option;
+
+
       pageSize : int option;
 
 
-      order : string option;
-
-
-      bookmark : string option;
+      order : PinterestLibPaginationOrder option;
 
     }
     //#endregion
@@ -125,15 +196,35 @@ module PromotionsApiHandlerParams =
     }
 
     type PromotionsListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type PromotionsListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type PromotionsListResult = PromotionsListStatusCode200 of PromotionsListStatusCode200Response|PromotionsListStatusCode400 of PromotionsListStatusCode400Response|PromotionsListDefaultStatusCode of PromotionsListDefaultStatusCodeResponse
+    type PromotionsListResult = PromotionsListStatusCode200 of PromotionsListStatusCode200Response|PromotionsListStatusCode400 of PromotionsListStatusCode400Response|PromotionsListStatusCode401 of PromotionsListStatusCode401Response|PromotionsListStatusCode403 of PromotionsListStatusCode403Response|PromotionsListStatusCode404 of PromotionsListStatusCode404Response|PromotionsListStatusCode429 of PromotionsListStatusCode429Response|PromotionsListDefaultStatusCode of PromotionsListDefaultStatusCodeResponse
 
     type PromotionsListArgs = {
       pathParams:PromotionsListPathParams;
@@ -148,7 +239,7 @@ module PromotionsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type PromotionsUpdateBodyParams = PromotionUpdateRequest[]
+    type PromotionsUpdateBodyParams = PromotionBatchUpdate[]
     //#endregion
 
 
@@ -158,15 +249,35 @@ module PromotionsApiHandlerParams =
     }
 
     type PromotionsUpdateStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsUpdateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsUpdateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsUpdateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type PromotionsUpdateStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type PromotionsUpdateDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type PromotionsUpdateResult = PromotionsUpdateStatusCode200 of PromotionsUpdateStatusCode200Response|PromotionsUpdateStatusCode400 of PromotionsUpdateStatusCode400Response|PromotionsUpdateDefaultStatusCode of PromotionsUpdateDefaultStatusCodeResponse
+    type PromotionsUpdateResult = PromotionsUpdateStatusCode200 of PromotionsUpdateStatusCode200Response|PromotionsUpdateStatusCode400 of PromotionsUpdateStatusCode400Response|PromotionsUpdateStatusCode401 of PromotionsUpdateStatusCode401Response|PromotionsUpdateStatusCode403 of PromotionsUpdateStatusCode403Response|PromotionsUpdateStatusCode404 of PromotionsUpdateStatusCode404Response|PromotionsUpdateStatusCode429 of PromotionsUpdateStatusCode429Response|PromotionsUpdateDefaultStatusCode of PromotionsUpdateDefaultStatusCodeResponse
 
     type PromotionsUpdateArgs = {
       pathParams:PromotionsUpdatePathParams;

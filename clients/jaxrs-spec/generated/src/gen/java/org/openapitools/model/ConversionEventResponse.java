@@ -17,12 +17,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ConversionEventResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEventResponse   {
   private String adAccountId;
   private ConversionTagType conversionEvent;
   private String conversionTagId;
   private Integer createdTime;
+  private String reportingConversionEvent;
 
   public ConversionEventResponse() {
   }
@@ -106,6 +107,26 @@ public class ConversionEventResponse   {
     this.createdTime = createdTime;
   }
 
+  /**
+   * For advertiser-defined events, the reporting event label shown in optimization UIs.
+   **/
+  public ConversionEventResponse reportingConversionEvent(String reportingConversionEvent) {
+    this.reportingConversionEvent = reportingConversionEvent;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "GET_QUOTE", value = "For advertiser-defined events, the reporting event label shown in optimization UIs.")
+  @JsonProperty("reporting_conversion_event")
+  public String getReportingConversionEvent() {
+    return reportingConversionEvent;
+  }
+
+  @JsonProperty("reporting_conversion_event")
+  public void setReportingConversionEvent(String reportingConversionEvent) {
+    this.reportingConversionEvent = reportingConversionEvent;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -119,12 +140,13 @@ public class ConversionEventResponse   {
     return Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(this.conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(this.createdTime, conversionEventResponse.createdTime);
+        Objects.equals(this.createdTime, conversionEventResponse.createdTime) &&
+        Objects.equals(this.reportingConversionEvent, conversionEventResponse.reportingConversionEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime, reportingConversionEvent);
   }
 
   @Override
@@ -136,6 +158,7 @@ public class ConversionEventResponse   {
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    reportingConversionEvent: ").append(toIndentedString(reportingConversionEvent)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -145,12 +168,8 @@ public class ConversionEventResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

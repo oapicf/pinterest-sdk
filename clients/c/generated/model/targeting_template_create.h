@@ -1,7 +1,7 @@
 /*
  * targeting_template_create.h
  *
- * 
+ * Resource create operation model.
  */
 
 #ifndef _targeting_template_create_H_
@@ -16,29 +16,29 @@
 typedef struct targeting_template_create_t targeting_template_create_t;
 
 #include "placement_group_type.h"
-#include "targeting_spec.h"
+#include "targeting_spec_optimal.h"
 #include "targeting_template_keyword.h"
 #include "tracking_urls.h"
 
 
 
 typedef struct targeting_template_create_t {
-    int auto_targeting_enabled; //boolean
+    int *auto_targeting_enabled; //boolean
     list_t *keywords; //nonprimitive container
     char *name; // string
     pinterest_rest_api_placement_group_type__e placement_group; //referenced enum
-    struct targeting_spec_t *targeting_attributes; //model
+    struct targeting_spec_optimal_t *targeting_attributes; //model
     struct tracking_urls_t *tracking_urls; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } targeting_template_create_t;
 
 __attribute__((deprecated)) targeting_template_create_t *targeting_template_create_create(
-    int auto_targeting_enabled,
+    int *auto_targeting_enabled,
     list_t *keywords,
     char *name,
     pinterest_rest_api_placement_group_type__e placement_group,
-    targeting_spec_t *targeting_attributes,
+    targeting_spec_optimal_t *targeting_attributes,
     tracking_urls_t *tracking_urls
 );
 

@@ -48,10 +48,8 @@ class InnerProductCategoriesMetricsHighlights {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "InnerProductCategoriesMetricsHighlights[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "InnerProductCategoriesMetricsHighlights[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'pct_change_mom'), 'Required key "InnerProductCategoriesMetricsHighlights[pct_change_mom]" is missing from JSON.');
+        assert(json[r'pct_change_mom'] != null, 'Required key "InnerProductCategoriesMetricsHighlights[pct_change_mom]" has a null value in JSON.');
         return true;
       }());
 

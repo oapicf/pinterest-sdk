@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -22,7 +30,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Ad targeting types for MMM report
  *
- * Values: APPTYPE,COUNTRY,CREATIVE_TYPE,GENDER,LOCATION
+ * Values: APPTYPE,COUNTRY,CREATIVE_TYPE,GENDER,LOCATION,PLACEMENT,AUDIENCE_INCLUDE
  */
 
 @JsonClass(generateAdapter = false)
@@ -41,7 +49,13 @@ enum class MMMReportingTargetingType(val value: kotlin.String) {
     GENDER("GENDER"),
 
     @Json(name = "LOCATION")
-    LOCATION("LOCATION");
+    LOCATION("LOCATION"),
+
+    @Json(name = "PLACEMENT")
+    PLACEMENT("PLACEMENT"),
+
+    @Json(name = "AUDIENCE_INCLUDE")
+    AUDIENCE_INCLUDE("AUDIENCE_INCLUDE");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -63,7 +77,7 @@ enum class MMMReportingTargetingType(val value: kotlin.String) {
          */
         fun decode(data: kotlin.Any?): MMMReportingTargetingType? = data?.let {
           val normalizedData = "$it".lowercase()
-          values().firstOrNull { value ->
+          entries.firstOrNull { value ->
             it == value || normalizedData == "$value".lowercase()
           }
         }

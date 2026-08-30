@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CreateInvitesResultsResponseArrayItemsInner
+import org.openapitools.client.models.InviteActionResultItem
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,7 +39,7 @@ data class CreateInvitesResultsResponseArray (
 
     /* List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned. */
     @Json(name = "items")
-    val items: kotlin.collections.List<CreateInvitesResultsResponseArrayItemsInner>? = null
+    val items: kotlin.collections.List<InviteActionResultItem>? = null
 
 ) {
 

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  | 
+**PRICE** | [**PriceFilterPrice**](PriceFilterPrice.md) |  | 
 
 ## Methods
 
 ### NewPriceFilter
 
-`func NewPriceFilter(pRICE CatalogsProductGroupPricingCurrencyCriteria, ) *PriceFilter`
+`func NewPriceFilter(pRICE PriceFilterPrice, ) *PriceFilter`
 
 NewPriceFilter instantiates a new PriceFilter object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPRICE
 
-`func (o *PriceFilter) GetPRICE() CatalogsProductGroupPricingCurrencyCriteria`
+`func (o *PriceFilter) GetPRICE() PriceFilterPrice`
 
 GetPRICE returns the PRICE field if non-nil, zero value otherwise.
 
 ### GetPRICEOk
 
-`func (o *PriceFilter) GetPRICEOk() (*CatalogsProductGroupPricingCurrencyCriteria, bool)`
+`func (o *PriceFilter) GetPRICEOk() (*PriceFilterPrice, bool)`
 
 GetPRICEOk returns a tuple with the PRICE field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPRICE
 
-`func (o *PriceFilter) SetPRICE(v CatalogsProductGroupPricingCurrencyCriteria)`
+`func (o *PriceFilter) SetPRICE(v PriceFilterPrice)`
 
 SetPRICE sets PRICE field to given value.
 

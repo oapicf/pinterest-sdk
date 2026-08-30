@@ -10,7 +10,7 @@
 | **connected\_tag\_id** | **String** |  | [optional] [default to null] |
 | **connected\_user\_id** | **String** |  | [optional] [default to null] |
 | **created\_timestamp** | **BigDecimal** |  | [optional] [default to null] |
-| **external\_business\_id** | **String** |  | [optional] [default to null] |
+| **external\_business\_id** | **String** | External business ID for the integration. | [optional] [default to null] |
 | **id** | **String** |  | [optional] [default to null] |
 | **partner\_access\_token\_expiry** | **BigDecimal** |  | [optional] [default to null] |
 | **partner\_metadata** | **String** |  | [optional] [default to null] |

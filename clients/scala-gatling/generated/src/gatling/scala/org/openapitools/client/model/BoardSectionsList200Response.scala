@@ -4,7 +4,6 @@ package org.openapitools.client.model
 
 case class BoardSectionsList200Response (
     _bookmark: Option[String],
-    /* Board sections */
     _items: List[BoardSection]
 )
 object BoardSectionsList200Response {

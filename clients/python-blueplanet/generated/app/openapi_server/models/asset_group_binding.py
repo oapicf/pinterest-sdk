@@ -114,6 +114,8 @@ class AssetGroupBinding(Model):
         :param ad_accounts_ids: The ad_accounts_ids of this AssetGroupBinding.
         :type ad_accounts_ids: List[str]
         """
+        if ad_accounts_ids is None:
+            raise ValueError("Invalid value for `ad_accounts_ids`, must not be `None`")  # noqa: E501
 
         self._ad_accounts_ids = ad_accounts_ids
 
@@ -137,6 +139,8 @@ class AssetGroupBinding(Model):
         :param asset_group_description: The asset_group_description of this AssetGroupBinding.
         :type asset_group_description: str
         """
+        if asset_group_description is None:
+            raise ValueError("Invalid value for `asset_group_description`, must not be `None`")  # noqa: E501
 
         self._asset_group_description = asset_group_description
 
@@ -160,6 +164,8 @@ class AssetGroupBinding(Model):
         :param asset_group_name: The asset_group_name of this AssetGroupBinding.
         :type asset_group_name: str
         """
+        if asset_group_name is None:
+            raise ValueError("Invalid value for `asset_group_name`, must not be `None`")  # noqa: E501
 
         self._asset_group_name = asset_group_name
 
@@ -183,6 +189,8 @@ class AssetGroupBinding(Model):
         :param asset_group_types: The asset_group_types of this AssetGroupBinding.
         :type asset_group_types: List[str]
         """
+        if asset_group_types is None:
+            raise ValueError("Invalid value for `asset_group_types`, must not be `None`")  # noqa: E501
 
         self._asset_group_types = asset_group_types
 
@@ -206,6 +214,8 @@ class AssetGroupBinding(Model):
         :param catalogs_ids: The catalogs_ids of this AssetGroupBinding.
         :type catalogs_ids: List[str]
         """
+        if catalogs_ids is None:
+            raise ValueError("Invalid value for `catalogs_ids`, must not be `None`")  # noqa: E501
 
         self._catalogs_ids = catalogs_ids
 
@@ -229,6 +239,8 @@ class AssetGroupBinding(Model):
         :param created_by: The created_by of this AssetGroupBinding.
         :type created_by: BusinessAccessUserSummary
         """
+        if created_by is None:
+            raise ValueError("Invalid value for `created_by`, must not be `None`")  # noqa: E501
 
         self._created_by = created_by
 
@@ -252,6 +264,8 @@ class AssetGroupBinding(Model):
         :param created_time: The created_time of this AssetGroupBinding.
         :type created_time: int
         """
+        if created_time is None:
+            raise ValueError("Invalid value for `created_time`, must not be `None`")  # noqa: E501
 
         self._created_time = created_time
 
@@ -275,6 +289,8 @@ class AssetGroupBinding(Model):
         :param id: The id of this AssetGroupBinding.
         :type id: str
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
         if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
             raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
@@ -300,6 +316,8 @@ class AssetGroupBinding(Model):
         :param owner: The owner of this AssetGroupBinding.
         :type owner: BusinessAccessUserSummary
         """
+        if owner is None:
+            raise ValueError("Invalid value for `owner`, must not be `None`")  # noqa: E501
 
         self._owner = owner
 
@@ -323,6 +341,8 @@ class AssetGroupBinding(Model):
         :param profiles_ids: The profiles_ids of this AssetGroupBinding.
         :type profiles_ids: List[str]
         """
+        if profiles_ids is None:
+            raise ValueError("Invalid value for `profiles_ids`, must not be `None`")  # noqa: E501
 
         self._profiles_ids = profiles_ids
 
@@ -346,5 +366,7 @@ class AssetGroupBinding(Model):
         :param updated_time: The updated_time of this AssetGroupBinding.
         :type updated_time: int
         """
+        if updated_time is None:
+            raise ValueError("Invalid value for `updated_time`, must not be `None`")  # noqa: E501
 
         self._updated_time = updated_time

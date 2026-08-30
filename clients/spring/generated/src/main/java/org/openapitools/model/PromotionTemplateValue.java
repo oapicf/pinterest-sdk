@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -10,27 +11,31 @@ import org.openapitools.model.Currency;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * PromotionTemplateValue
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class PromotionTemplateValue {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal amount;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Currency currencyCode;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String customText;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal percent;
 
   public PromotionTemplateValue amount(@Nullable BigDecimal amount) {
@@ -49,6 +54,7 @@ public class PromotionTemplateValue {
     return amount;
   }
 
+  @JsonProperty("amount")
   public void setAmount(@Nullable BigDecimal amount) {
     this.amount = amount;
   }
@@ -69,6 +75,7 @@ public class PromotionTemplateValue {
     return currencyCode;
   }
 
+  @JsonProperty("currency_code")
   public void setCurrencyCode(@Nullable Currency currencyCode) {
     this.currencyCode = currencyCode;
   }
@@ -89,6 +96,7 @@ public class PromotionTemplateValue {
     return customText;
   }
 
+  @JsonProperty("custom_text")
   public void setCustomText(@Nullable String customText) {
     this.customText = customText;
   }
@@ -109,6 +117,7 @@ public class PromotionTemplateValue {
     return percent;
   }
 
+  @JsonProperty("percent")
   public void setPercent(@Nullable BigDecimal percent) {
     this.percent = percent;
   }
@@ -149,11 +158,8 @@ public class PromotionTemplateValue {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

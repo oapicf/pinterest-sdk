@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsProduct (
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _metadata: CatalogsCreativeAssetsProductMetadata,
     _pin: Pin
 )

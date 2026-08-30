@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "AppsflyerAudienceCreate",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "The name of the audience"
+    },
+    {
+      "name": "platform",
+      "type": "model.AppsflyerPlatform",
+      "doc": "The platform of the audience"
+    }
+  ]
+
+}

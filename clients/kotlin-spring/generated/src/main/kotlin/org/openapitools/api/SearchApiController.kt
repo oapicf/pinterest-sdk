@@ -1,9 +1,9 @@
 package org.openapitools.api
 
-import org.openapitools.model.Error
+import org.openapitools.model.BoardsList200Response
+import org.openapitools.model.PinsList200Response
+import org.openapitools.model.PinterestLibError
 import org.openapitools.model.SearchPartnerPins200Response
-import org.openapitools.model.SearchUserBoardsGet200Response
-import org.openapitools.model.SearchUserPinsList200Response
 import io.swagger.v3.oas.annotations.*
 import io.swagger.v3.oas.annotations.enums.*
 import io.swagger.v3.oas.annotations.media.*
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
-import org.openapitools.api.SearchApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -34,24 +33,29 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
+@RequestMapping("\${api.base-path:/v5}")
 class SearchApiController() {
 
     @Operation(
         summary = "Search pins by a given search term",
         operationId = "searchPartnerPins",
-        description = """<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+        description = """**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 Get the top 10 Pins by a given search term.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = SearchPartnerPins200Response::class))]),
-            ApiResponse(responseCode = "400", description = "Invalid pins", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = SearchPartnerPins200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read", "pins:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_SEARCH_PARTNER_PINS /* "/search/partner/pins" */],
+        // "/search/partner/pins"
+        value = [PATH_SEARCH_PARTNER_PINS],
         produces = ["application/json"]
     )
     fun searchPartnerPins(
@@ -70,23 +74,29 @@ Get the top 10 Pins by a given search term.""",
         description = """Search for boards for the "operation user_account". This includes boards of all board types.
 - By default, the "operation user_account" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.""",
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = SearchUserBoardsGet200Response::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = BoardsList200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read", "boards:read_secret" ]),SecurityRequirement(name = "client_credentials", scopes = [ "boards:read", "boards:read_secret" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_SEARCH_USER_BOARDS_GET /* "/search/boards" */],
+        // "/search/boards"
+        value = [PATH_SEARCH_USER_BOARDS_GET],
         produces = ["application/json"]
     )
     fun searchUserBoardsGet(
         @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "Search query. Can contain pin description keywords or comma-separated pin IDs.") @Valid @RequestParam(value = "query", required = false) query: kotlin.String?,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
-        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
-        @Parameter(description = "Search query. Can contain pin description keywords or comma-separated pin IDs.") @Valid @RequestParam(value = "query", required = false) query: kotlin.String?
-    ): ResponseEntity<SearchUserBoardsGet200Response> {
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<BoardsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -96,23 +106,28 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
         description = """Search for pins for the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.""",
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = SearchUserPinsList200Response::class))]),
-            ApiResponse(responseCode = "404", description = "User not found", content = [Content(schema = Schema(implementation = Error::class))]),
-            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(schema = Schema(implementation = PinsList200Response::class))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read", "boards:read_secret", "pins:read", "pins:read_secret" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_SEARCH_USER_PINS_LIST /* "/search/pins" */],
+        // "/search/pins"
+        value = [PATH_SEARCH_USER_PINS_LIST],
         produces = ["application/json"]
     )
     fun searchUserPinsList(
         @NotNull @Parameter(description = "Search query. Can contain pin description keywords or comma-separated pin IDs.", required = true) @Valid @RequestParam(value = "query", required = true) query: kotlin.String,
         @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
-    ): ResponseEntity<SearchUserPinsList200Response> {
+    ): ResponseEntity<PinsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 

@@ -1,14 +1,14 @@
 (ns pinterest-rest-api.specs.update-member-asset-access-body
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.update-member-asset-access-body-accesses-inner :refer :all]
+            [pinterest-rest-api.specs.update-member-asset-access-item :refer :all]
             )
   (:import (java.io File)))
 
 
 (def update-member-asset-access-body-data
   {
-   (ds/req :accesses) (s/coll-of update-member-asset-access-body-accesses-inner-spec)
+   (ds/req :accesses) (s/coll-of update-member-asset-access-item-spec)
    })
 
 (def update-member-asset-access-body-spec

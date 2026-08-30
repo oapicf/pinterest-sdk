@@ -9,7 +9,8 @@
 -export_type([openapi_pin_create/0]).
 
 -type openapi_pin_create() ::
-  [ {'alt_text', binary() }
+  [ {'ai_disclosures', openapi_ai_disclosures:openapi_ai_disclosures() }
+  | {'alt_text', binary() }
   | {'board_id', binary() }
   | {'board_section_id', binary() }
   | {'description', binary() }
@@ -26,7 +27,8 @@ openapi_pin_create() ->
     openapi_pin_create([]).
 
 openapi_pin_create(Fields) ->
-  Default = [ {'alt_text', binary() }
+  Default = [ {'ai_disclosures', openapi_ai_disclosures:openapi_ai_disclosures() }
+            , {'alt_text', binary() }
             , {'board_id', binary() }
             , {'board_section_id', binary() }
             , {'description', binary() }

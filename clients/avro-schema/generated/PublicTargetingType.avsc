@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Public ad targeting type with external names",
+  "name": "PublicTargetingType",
+  "symbols": [
+    "APPTYPE",
+    "GENDER",
+    "LOCALE",
+    "AGE_BUCKET",
+    "LOCATION",
+    "GEO",
+    "INTEREST",
+    "KEYWORD",
+    "AUDIENCE_INCLUDE",
+    "AUDIENCE_EXCLUDE"
+  ]
+}

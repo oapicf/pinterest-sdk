@@ -8,7 +8,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}asset_id_to_permissions`,
-                label: `An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  - [${labelPrefix}asset_id_to_permissions]`,
+                label: `An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. - [${labelPrefix}asset_id_to_permissions]`,
                 required: true,
                 type: 'object',
             },

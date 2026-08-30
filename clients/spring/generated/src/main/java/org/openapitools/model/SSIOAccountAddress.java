@@ -2,32 +2,38 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * SSIOAccountAddress
+ * Salesforce address information.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "SSIOAccountAddress", description = "Salesforce address information.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class SSIOAccountAddress {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String addressId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String display;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String orderLegalEntity;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String purpose;
 
   public SSIOAccountAddress addressId(@Nullable String addressId) {
@@ -46,6 +52,7 @@ public class SSIOAccountAddress {
     return addressId;
   }
 
+  @JsonProperty("address_id")
   public void setAddressId(@Nullable String addressId) {
     this.addressId = addressId;
   }
@@ -66,6 +73,7 @@ public class SSIOAccountAddress {
     return display;
   }
 
+  @JsonProperty("display")
   public void setDisplay(@Nullable String display) {
     this.display = display;
   }
@@ -86,6 +94,7 @@ public class SSIOAccountAddress {
     return orderLegalEntity;
   }
 
+  @JsonProperty("order_legal_entity")
   public void setOrderLegalEntity(@Nullable String orderLegalEntity) {
     this.orderLegalEntity = orderLegalEntity;
   }
@@ -106,6 +115,7 @@ public class SSIOAccountAddress {
     return purpose;
   }
 
+  @JsonProperty("purpose")
   public void setPurpose(@Nullable String purpose) {
     this.purpose = purpose;
   }
@@ -146,11 +156,8 @@ public class SSIOAccountAddress {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

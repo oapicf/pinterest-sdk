@@ -15,7 +15,7 @@ Method | HTTP request | Description
 Get advertiser entities in bulk
 
 Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads,
-keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,
+keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,
 only active entities will return data.
 
 ### Example
@@ -30,11 +30,11 @@ only active entities will return data.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **bulkDownloadRequest** | [**BulkDownloadRequest**](BulkDownloadRequest.md) | Parameters to get ad entities in bulk |
+ **bulkDownloadCreate** | [**BulkDownloadCreate**](BulkDownloadCreate.md) |  |
 
 ### Return type
 
-[**BulkDownloadResponse**](BulkDownloadResponse.md)
+[**BulkDownload**](BulkDownload.md)
 
 ### Authorization
 
@@ -52,8 +52,8 @@ Name | Type | Description  | Notes
 
 Download advertiser entities in bulk
 
-Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the
-new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+Get the status of a bulk request by 'request_id', along with a download URL that will allow you to download the
+new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
 
 ### Example
 
@@ -67,12 +67,12 @@ new or updated entity data (campaigns, ad groups, product groups, ads, or keywor
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **bulkRequestId** | **string** | Unique identifier of a bulk upsert request. | [default to null]
- **includeDetails** | **boolean** | if set to True then attach the errors/details to all the requests | [optional] [default to false]
+ **bulkRequestId** | **string** | Bulk request ID that is from one of the entities bulk endpoints | [default to null]
+ **includeDetails** | **boolean** | If set to True then attach the errors/details to all the requests | [optional] [default to false]
 
 ### Return type
 
-[**BulkUpsertStatusResponse**](BulkUpsertStatusResponse.md)
+[**BulkJobData**](BulkJobData.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels.
 Note that this request will be processed asynchronously; the response will include a <code>request_id</code>
 that can be used to obtain the status of the request.
 

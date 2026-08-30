@@ -38,6 +38,7 @@ class CatalogsItemValidationErrors {
     this.TITLE_MISSING,
   });
 
+  /// Item has an invalid adult value.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -46,6 +47,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? ADULT_INVALID;
 
+  /// Adword link contains too many characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -54,6 +56,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? ADWORDS_FORMAT_INVALID;
 
+  /// Item is missing availability value in its product metadata, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -62,6 +65,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? AVAILABILITY_INVALID;
 
+  /// Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -70,6 +74,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? BLOCKLISTED_IMAGE_SIGNATURE;
 
+  /// Item is missing description in its product metadata, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -78,6 +83,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? DESCRIPTION_MISSING;
 
+  /// This product is duplicated. The duplicate entry will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -86,6 +92,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? DUPLICATE_PRODUCTS;
 
+  /// Image link is invalid.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -94,6 +101,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? IMAGE_LINK_INVALID;
 
+  /// Item has image_link URL that contains too many characters, so the item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -102,6 +110,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? IMAGE_LINK_LENGTH_TOO_LONG;
 
+  /// Item is missing an image link URL in its product metadata, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -110,6 +119,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? IMAGE_LINK_MISSING;
 
+  /// Product link value doesn't match the verified domain associated with this account.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -118,6 +128,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? INVALID_DOMAIN;
 
+  /// Main image can't be found.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -126,6 +137,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
+  /// Item is missing item id in its product metadata, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -134,6 +146,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? ITEMID_MISSING;
 
+  /// Link is invalid.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -142,6 +155,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? LINK_FORMAT_INVALID;
 
+  /// Product link contains too many characters, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -150,6 +164,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? LINK_LENGTH_TOO_LONG;
 
+  /// Item has a list price formatting error, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -158,6 +173,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? LIST_PRICE_INVALID;
 
+  /// Item exceed the maximum number of items per item group, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -166,6 +182,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 
+  /// Item contains formating errors.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -174,6 +191,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? PARSE_LINE_ERROR;
 
+  /// Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -182,6 +200,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? PINJOIN_CONTENT_UNSAFE;
 
+  /// Item price cannot be determined because the price, list price, and sale price are all different.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -190,6 +209,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? PRICE_CANNOT_BE_DETERMINED;
 
+  /// Product is missing a price, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -198,6 +218,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? PRICE_MISSING;
 
+  /// Item is missing a link URL in its product metadata, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -206,6 +227,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? PRODUCT_LINK_MISSING;
 
+  /// Item has a price formatting error in its product metadata, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -214,6 +236,7 @@ class CatalogsItemValidationErrors {
   ///
   CatalogsItemValidationDetails? PRODUCT_PRICE_INVALID;
 
+  /// Item is missing title in its product metadata, this item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -409,10 +432,6 @@ class CatalogsItemValidationErrors {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsItemValidationErrors[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsItemValidationErrors[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

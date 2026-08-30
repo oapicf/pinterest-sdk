@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.TargetingTemplateGetResponseData;
+import apimodels.TargetingTemplate;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * TargetingTemplateList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TargetingTemplateList200Response   {
   @JsonProperty("bookmark")
@@ -26,7 +26,7 @@ public class TargetingTemplateList200Response   {
   @NotNull
 @Valid
 
-  private List<@Valid TargetingTemplateGetResponseData> items = new ArrayList<>();
+  private List<@Valid TargetingTemplate> items = new ArrayList<>();
 
   public TargetingTemplateList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -45,12 +45,12 @@ public class TargetingTemplateList200Response   {
     this.bookmark = bookmark;
   }
 
-  public TargetingTemplateList200Response items(List<@Valid TargetingTemplateGetResponseData> items) {
+  public TargetingTemplateList200Response items(List<@Valid TargetingTemplate> items) {
     this.items = items;
     return this;
   }
 
-  public TargetingTemplateList200Response addItemsItem(TargetingTemplateGetResponseData itemsItem) {
+  public TargetingTemplateList200Response addItemsItem(TargetingTemplate itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -62,11 +62,11 @@ public class TargetingTemplateList200Response   {
    * Get items
    * @return items
   **/
-  public List<@Valid TargetingTemplateGetResponseData> getItems() {
+  public List<@Valid TargetingTemplate> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid TargetingTemplateGetResponseData> items) {
+  public void setItems(List<@Valid TargetingTemplate> items) {
     this.items = items;
   }
 
@@ -106,10 +106,7 @@ public class TargetingTemplateList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

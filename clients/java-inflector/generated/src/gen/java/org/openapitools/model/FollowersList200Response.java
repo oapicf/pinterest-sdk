@@ -10,19 +10,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.UserSummary;
+import org.openapitools.model.FollowUser;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class FollowersList200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
-  private List<UserSummary> items = new ArrayList<>();
+  private List<FollowUser> items = new ArrayList<>();
 
   /**
    **/
@@ -43,7 +43,7 @@ public class FollowersList200Response   {
 
   /**
    **/
-  public FollowersList200Response items(List<UserSummary> items) {
+  public FollowersList200Response items(List<FollowUser> items) {
     this.items = items;
     return this;
   }
@@ -51,10 +51,10 @@ public class FollowersList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<UserSummary> getItems() {
+  public List<FollowUser> getItems() {
     return items;
   }
-  public void setItems(List<UserSummary> items) {
+  public void setItems(List<FollowUser> items) {
     this.items = items;
   }
 
@@ -93,10 +93,7 @@ public class FollowersList200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

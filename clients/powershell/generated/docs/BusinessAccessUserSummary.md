@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $BusinessAccessUserSummary = Initialize-PSOpenAPIToolsBusinessAccessUserSummary  -Email business0101@business.com `
- -Id 383791336903426391 `
+ -Id 549755885175 `
  -Username business0101
 ```
 

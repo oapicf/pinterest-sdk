@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -53,8 +52,7 @@ abstract class CatalogsFeedIngestionErrors implements Built<CatalogsFeedIngestio
 
   /// The product count has decreased by more than 99% compared to the last successful ingestion.
   @BuiltValueField(wireName: r'LARGE_PRODUCT_COUNT_DECREASE')
-  CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum? get LARGE_PRODUCT_COUNT_DECREASE;
-  // enum LARGE_PRODUCT_COUNT_DECREASEEnum {  1,  };
+  int? get LARGE_PRODUCT_COUNT_DECREASE;
 
   /// We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
   @BuiltValueField(wireName: r'LINE_LEVEL_INTERNAL_ERROR')
@@ -136,7 +134,7 @@ class _$CatalogsFeedIngestionErrorsSerializer implements PrimitiveSerializer<Cat
       yield r'LARGE_PRODUCT_COUNT_DECREASE';
       yield serializers.serialize(
         object.LARGE_PRODUCT_COUNT_DECREASE,
-        specifiedType: const FullType(CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum),
+        specifiedType: const FullType(int),
       );
     }
     if (object.LINE_LEVEL_INTERNAL_ERROR != null) {
@@ -172,64 +170,73 @@ class _$CatalogsFeedIngestionErrorsSerializer implements PrimitiveSerializer<Cat
         case r'ACCOUNT_FLAGGED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.ACCOUNT_FLAGGED = valueDes;
           break;
         case r'FETCH_GOOGLE_SHEET_NOT_SHARED':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.FETCH_GOOGLE_SHEET_NOT_SHARED = valueDes;
           break;
         case r'IMAGE_FILE_NOT_ACCESSIBLE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IMAGE_FILE_NOT_ACCESSIBLE = valueDes;
           break;
         case r'IMAGE_FILE_NOT_FOUND':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IMAGE_FILE_NOT_FOUND = valueDes;
           break;
         case r'IMAGE_INVALID_FILE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IMAGE_INVALID_FILE = valueDes;
           break;
         case r'IMAGE_LEVEL_INTERNAL_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IMAGE_LEVEL_INTERNAL_ERROR = valueDes;
           break;
         case r'IMAGE_MALFORMED_URL':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.IMAGE_MALFORMED_URL = valueDes;
           break;
         case r'LARGE_PRODUCT_COUNT_DECREASE':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum),
-          ) as CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.LARGE_PRODUCT_COUNT_DECREASE = valueDes;
           break;
         case r'LINE_LEVEL_INTERNAL_ERROR':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.LINE_LEVEL_INTERNAL_ERROR = valueDes;
           break;
         default:
@@ -259,19 +266,5 @@ class _$CatalogsFeedIngestionErrorsSerializer implements PrimitiveSerializer<Cat
     );
     return result.build();
   }
-}
-
-class CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum extends EnumClass {
-
-  /// The product count has decreased by more than 99% compared to the last successful ingestion.
-  @BuiltValueEnumConst(wireNumber: 1)
-  static const CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum number1 = _$catalogsFeedIngestionErrorsLARGEPRODUCTCOUNTDECREASEEnum_number1;
-
-  static Serializer<CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum> get serializer => _$catalogsFeedIngestionErrorsLARGEPRODUCTCOUNTDECREASEEnumSerializer;
-
-  const CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum._(String name): super(name);
-
-  static BuiltSet<CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum> get values => _$catalogsFeedIngestionErrorsLARGEPRODUCTCOUNTDECREASEEnumValues;
-  static CatalogsFeedIngestionErrorsLARGE_PRODUCT_COUNT_DECREASEEnum valueOf(String name) => _$catalogsFeedIngestionErrorsLARGEPRODUCTCOUNTDECREASEEnumValueOf(name);
 }
 

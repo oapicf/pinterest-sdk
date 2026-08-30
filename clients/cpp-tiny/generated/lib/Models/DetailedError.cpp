@@ -107,7 +107,7 @@ DetailedError::getCode()
 }
 
 void
-DetailedError::setCode(int  code)
+DetailedError::setCode(int code)
 {
 	this->code = code;
 }
@@ -119,7 +119,7 @@ DetailedError::getDetails()
 }
 
 void
-DetailedError::setDetails(Object  details)
+DetailedError::setDetails(Object details)
 {
 	this->details = details;
 }
@@ -131,7 +131,7 @@ DetailedError::getMessage()
 }
 
 void
-DetailedError::setMessage(std::string  message)
+DetailedError::setMessage(std::string message)
 {
 	this->message = message;
 }

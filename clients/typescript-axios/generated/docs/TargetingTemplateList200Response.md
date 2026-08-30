@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;TargetingTemplateGetResponseData&gt;**](TargetingTemplateGetResponseData.md) |  | [default to undefined]
+**items** | [**Array&lt;TargetingTemplate&gt;**](TargetingTemplate.md) |  | [default to undefined]
 
 ## Example
 

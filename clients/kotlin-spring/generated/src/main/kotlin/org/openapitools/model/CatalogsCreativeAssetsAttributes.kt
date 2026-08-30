@@ -1,7 +1,11 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSetter
+import com.fasterxml.jackson.annotation.Nulls
+import org.openapitools.model.CatalogsAiContentDisclosure
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -26,52 +30,84 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param iosDeepLink IOS deep link to the creative assets page.
  * @param link Link to the creative assets page.
  * @param title The name of the creative assets.
- * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+ * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
+ * @param aiDisclosures AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
  * @param imageLink The creative assets image.
  * @param videoLink The creative assets video.
  */
 data class CatalogsCreativeAssetsAttributes(
 
-    @Schema(example = "null", description = "Link to the creative assets page.")
+    @Schema(description = "Link to the creative assets page.")
+    @param:JsonProperty("android_deep_link")
     @get:JsonProperty("android_deep_link") val androidDeepLink: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of creative assets.")
+    @Schema(description = "Custom grouping of creative assets.")
+    @param:JsonProperty("custom_label_0")
     @get:JsonProperty("custom_label_0") val customLabel0: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of creative assets.")
+    @Schema(description = "Custom grouping of creative assets.")
+    @param:JsonProperty("custom_label_1")
     @get:JsonProperty("custom_label_1") val customLabel1: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of creative assets.")
+    @Schema(description = "Custom grouping of creative assets.")
+    @param:JsonProperty("custom_label_2")
     @get:JsonProperty("custom_label_2") val customLabel2: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of creative assets.")
+    @Schema(description = "Custom grouping of creative assets.")
+    @param:JsonProperty("custom_label_3")
     @get:JsonProperty("custom_label_3") val customLabel3: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Custom grouping of creative assets.")
+    @Schema(description = "Custom grouping of creative assets.")
+    @param:JsonProperty("custom_label_4")
     @get:JsonProperty("custom_label_4") val customLabel4: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Brief description of the creative assets.")
+    @Schema(description = "Brief description of the creative assets.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("description")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
-    @Schema(example = "null", description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.")
+    @Schema(description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.")
+    @param:JsonProperty("google_product_category")
     @get:JsonProperty("google_product_category") val googleProductCategory: kotlin.String? = null,
 
-    @Schema(example = "null", description = "IOS deep link to the creative assets page.")
+    @Schema(description = "IOS deep link to the creative assets page.")
+    @param:JsonProperty("ios_deep_link")
     @get:JsonProperty("ios_deep_link") val iosDeepLink: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Link to the creative assets page.")
+    @Schema(description = "Link to the creative assets page.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("link")
     @get:JsonProperty("link") val link: kotlin.String? = null,
 
-    @Schema(example = "null", description = "The name of the creative assets.")
+    @Schema(description = "The name of the creative assets.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("title")
     @get:JsonProperty("title") val title: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.")
+    @Schema(description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.")
+    @param:JsonProperty("visibility")
     @get:JsonProperty("visibility") val visibility: kotlin.String? = null,
 
+    @field:Valid
+    @Schema(example = "[{\"url\":\"https://scene.example.com/image/image_v2.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("ai_disclosures")
+    @get:JsonProperty("ai_disclosures") val aiDisclosures: kotlin.collections.List<CatalogsAiContentDisclosure>? = null,
+
     @Schema(example = "https://scene.example.com/image/image_v2.jpg", description = "The creative assets image.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("image_link")
     @get:JsonProperty("image_link") val imageLink: kotlin.String? = null,
 
     @Schema(example = "https://scene.example.com/image/image_v2.mp4", description = "The creative assets video.")
+    @field:JsonInclude(JsonInclude.Include.NON_NULL)
+    @field:JsonSetter(nulls = Nulls.SKIP)
+    @param:JsonProperty("video_link")
     @get:JsonProperty("video_link") val videoLink: kotlin.String? = null
 ) {
 

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,11 +27,11 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.CatalogsItems
 import org.openapitools.client.models.CatalogsItemsBatch
+import org.openapitools.client.models.CatalogsItemsBatchPostRequest
 import org.openapitools.client.models.CatalogsItemsRequest
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.ItemsBatchPostRequest
+import org.openapitools.client.models.ItemsPost200Response
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -45,14 +53,14 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * GET /catalogs/items/batch/{batch_id}
      * Get item batch status
-     * Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
      * @param batchId Id of a catalogs items batch to fetch
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsItemsBatch
@@ -85,7 +93,7 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * GET /catalogs/items/batch/{batch_id}
      * Get item batch status
-     * Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
      * @param batchId Id of a catalogs items batch to fetch
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsItemsBatch?>
@@ -133,8 +141,8 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * POST /catalogs/items/batch
      * Operate on item batch
-     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
-     * @param itemsBatchPostRequest Request object used to create catalogs items in a batch
+     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+     * @param catalogsItemsBatchPostRequest 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsItemsBatch
      * @throws IllegalStateException If the request is not correctly configured
@@ -145,8 +153,8 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun itemsBatchPost(itemsBatchPostRequest: ItemsBatchPostRequest, adAccountId: kotlin.String? = null) : CatalogsItemsBatch {
-        val localVarResponse = itemsBatchPostWithHttpInfo(itemsBatchPostRequest = itemsBatchPostRequest, adAccountId = adAccountId)
+    fun itemsBatchPost(catalogsItemsBatchPostRequest: CatalogsItemsBatchPostRequest, adAccountId: kotlin.String? = null) : CatalogsItemsBatch {
+        val localVarResponse = itemsBatchPostWithHttpInfo(catalogsItemsBatchPostRequest = catalogsItemsBatchPostRequest, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsItemsBatch
@@ -166,8 +174,8 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * POST /catalogs/items/batch
      * Operate on item batch
-     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
-     * @param itemsBatchPostRequest Request object used to create catalogs items in a batch
+     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+     * @param catalogsItemsBatchPostRequest 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsItemsBatch?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -175,10 +183,10 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun itemsBatchPostWithHttpInfo(itemsBatchPostRequest: ItemsBatchPostRequest, adAccountId: kotlin.String?) : ApiResponse<CatalogsItemsBatch?> {
-        val localVariableConfig = itemsBatchPostRequestConfig(itemsBatchPostRequest = itemsBatchPostRequest, adAccountId = adAccountId)
+    fun itemsBatchPostWithHttpInfo(catalogsItemsBatchPostRequest: CatalogsItemsBatchPostRequest, adAccountId: kotlin.String?) : ApiResponse<CatalogsItemsBatch?> {
+        val localVariableConfig = itemsBatchPostRequestConfig(catalogsItemsBatchPostRequest = catalogsItemsBatchPostRequest, adAccountId = adAccountId)
 
-        return request<ItemsBatchPostRequest, CatalogsItemsBatch>(
+        return request<CatalogsItemsBatchPostRequest, CatalogsItemsBatch>(
             localVariableConfig
         )
     }
@@ -186,12 +194,12 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation itemsBatchPost
      *
-     * @param itemsBatchPostRequest Request object used to create catalogs items in a batch
+     * @param catalogsItemsBatchPostRequest 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun itemsBatchPostRequestConfig(itemsBatchPostRequest: ItemsBatchPostRequest, adAccountId: kotlin.String?) : RequestConfig<ItemsBatchPostRequest> {
-        val localVariableBody = itemsBatchPostRequest
+    fun itemsBatchPostRequestConfig(catalogsItemsBatchPostRequest: CatalogsItemsBatchPostRequest, adAccountId: kotlin.String?) : RequestConfig<CatalogsItemsBatchPostRequest> {
+        val localVariableBody = catalogsItemsBatchPostRequest
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
@@ -215,10 +223,10 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * POST /catalogs/items
      * Get catalogs items (POST)
-     * Get the items of the catalog owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param catalogsItemsRequest Request object used to get catalogs items
+     * Get the items of the catalog owned by the \&quot;operation user_account\&quot;. [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param catalogsItemsRequest 
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return CatalogsItems
+     * @return ItemsPost200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -227,11 +235,11 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: kotlin.String? = null) : CatalogsItems {
+    fun itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: kotlin.String? = null) : ItemsPost200Response {
         val localVarResponse = itemsPostWithHttpInfo(catalogsItemsRequest = catalogsItemsRequest, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CatalogsItems
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ItemsPost200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -248,19 +256,19 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * POST /catalogs/items
      * Get catalogs items (POST)
-     * Get the items of the catalog owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param catalogsItemsRequest Request object used to get catalogs items
+     * Get the items of the catalog owned by the \&quot;operation user_account\&quot;. [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * @param catalogsItemsRequest 
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return ApiResponse<CatalogsItems?>
+     * @return ApiResponse<ItemsPost200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun itemsPostWithHttpInfo(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: kotlin.String?) : ApiResponse<CatalogsItems?> {
+    fun itemsPostWithHttpInfo(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: kotlin.String?) : ApiResponse<ItemsPost200Response?> {
         val localVariableConfig = itemsPostRequestConfig(catalogsItemsRequest = catalogsItemsRequest, adAccountId = adAccountId)
 
-        return request<CatalogsItemsRequest, CatalogsItems>(
+        return request<CatalogsItemsRequest, ItemsPost200Response>(
             localVariableConfig
         )
     }
@@ -268,7 +276,7 @@ open class CatalogItemsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     /**
      * To obtain the request config of the operation itemsPost
      *
-     * @param catalogsItemsRequest Request object used to get catalogs items
+     * @param catalogsItemsRequest 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */

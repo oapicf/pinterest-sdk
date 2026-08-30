@@ -7,6 +7,7 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.pin_media import PinMedia  # noqa: F401,E501
+import re  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -109,6 +110,8 @@ class SummaryPin(Model):
         :param description: The description of this SummaryPin.
         :type description: str
         """
+        if description is not None and len(description) > 800:
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `800`")  # noqa: E501
 
         self._description = description
 
@@ -130,6 +133,10 @@ class SummaryPin(Model):
         :param id: The id of this SummaryPin.
         :type id: str
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._id = id
 
@@ -195,5 +202,7 @@ class SummaryPin(Model):
         :param title: The title of this SummaryPin.
         :type title: str
         """
+        if title is not None and len(title) > 100:
+            raise ValueError("Invalid value for `title`, length must be less than or equal to `100`")  # noqa: E501
 
         self._title = title

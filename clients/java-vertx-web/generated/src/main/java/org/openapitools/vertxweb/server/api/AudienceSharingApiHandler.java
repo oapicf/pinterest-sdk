@@ -1,13 +1,18 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.AdAccountToAdAccountSharedAudience;
+import org.openapitools.vertxweb.server.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.vertxweb.server.model.AdAccountToBusinessSharedAudience;
+import org.openapitools.vertxweb.server.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 import org.openapitools.vertxweb.server.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.vertxweb.server.model.AudienceAccountType;
-import org.openapitools.vertxweb.server.model.AudiencesList200Response;
-import org.openapitools.vertxweb.server.model.BusinessSharedAudience;
-import org.openapitools.vertxweb.server.model.BusinessSharedAudienceResponse;
-import org.openapitools.vertxweb.server.model.Error;
-import org.openapitools.vertxweb.server.model.SharedAudience;
-import org.openapitools.vertxweb.server.model.SharedAudienceResponse;
+import org.openapitools.vertxweb.server.model.BusinessToAdAccountSharedAudience;
+import org.openapitools.vertxweb.server.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.vertxweb.server.model.BusinessToBusinessSharedAudience;
+import org.openapitools.vertxweb.server.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.vertxweb.server.model.Order;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.SharedAudiencesForBusinessList200Response;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -54,19 +59,19 @@ public class AudienceSharingApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
-        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String audienceId = requestParameters.queryParameter("audience_id") != null ? requestParameters.queryParameter("audience_id").getString() : null;
-        AudienceAccountType accountType = requestParameters.queryParameter("account_type") != null ? requestParameters.queryParameter("account_type").getAudienceAccountType() : ;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        AudienceAccountType accountType = requestParameters.queryParameter("account_type") != null ? requestParameters.queryParameter("account_type").getAudienceAccountType() : null;
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
-        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter audienceId is {}", audienceId);
         logger.debug("Parameter accountType is {}", accountType);
-        logger.debug("Parameter pageSize is {}", pageSize);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark)
+        api.adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -86,17 +91,17 @@ public class AudienceSharingApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         String audienceId = requestParameters.queryParameter("audience_id") != null ? requestParameters.queryParameter("audience_id").getString() : null;
-        AudienceAccountType accountType = requestParameters.queryParameter("account_type") != null ? requestParameters.queryParameter("account_type").getAudienceAccountType() : ;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        AudienceAccountType accountType = requestParameters.queryParameter("account_type") != null ? requestParameters.queryParameter("account_type").getAudienceAccountType() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
         logger.debug("Parameter businessId is {}", businessId);
         logger.debug("Parameter audienceId is {}", audienceId);
         logger.debug("Parameter accountType is {}", accountType);
-        logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark)
+        api.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -115,16 +120,16 @@ public class AudienceSharingApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
+        Order order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getOrder() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
-        String order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter order is {}", order);
+        logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize)
+        api.sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -144,12 +149,12 @@ public class AudienceSharingApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        SharedAudience sharedAudience = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<SharedAudience>(){}) : null;
+        AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter sharedAudience is {}", sharedAudience);
+        logger.debug("Parameter adAccountToAdAccountSharedAudienceUpdateWithRequiredBody is {}", adAccountToAdAccountSharedAudienceUpdateWithRequiredBody);
 
-        api.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
+        api.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -169,12 +174,12 @@ public class AudienceSharingApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        BusinessSharedAudience businessSharedAudience = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BusinessSharedAudience>(){}) : null;
+        AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdAccountToBusinessSharedAudienceUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter businessSharedAudience is {}", businessSharedAudience);
+        logger.debug("Parameter adAccountToBusinessSharedAudienceUpdateWithRequiredBody is {}", adAccountToBusinessSharedAudienceUpdateWithRequiredBody);
 
-        api.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
+        api.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -194,12 +199,12 @@ public class AudienceSharingApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        SharedAudience sharedAudience = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<SharedAudience>(){}) : null;
+        BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BusinessToAdAccountSharedAudienceUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter sharedAudience is {}", sharedAudience);
+        logger.debug("Parameter businessToAdAccountSharedAudienceUpdateWithRequiredBody is {}", businessToAdAccountSharedAudienceUpdateWithRequiredBody);
 
-        api.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience)
+        api.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -219,12 +224,12 @@ public class AudienceSharingApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        BusinessSharedAudience businessSharedAudience = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BusinessSharedAudience>(){}) : null;
+        BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BusinessToBusinessSharedAudienceUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter businessSharedAudience is {}", businessSharedAudience);
+        logger.debug("Parameter businessToBusinessSharedAudienceUpdateWithRequiredBody is {}", businessToBusinessSharedAudienceUpdateWithRequiredBody);
 
-        api.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience)
+        api.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

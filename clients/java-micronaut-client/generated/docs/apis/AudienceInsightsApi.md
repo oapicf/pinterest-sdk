@@ -39,22 +39,22 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="audienceInsightsGet"></a>
 # **audienceInsightsGet**
 ```java
-Mono<AudienceInsightsResponse> AudienceInsightsApi.audienceInsightsGet(adAccountIdaudienceInsightType)
+Mono<AudienceInsights> AudienceInsightsApi.audienceInsightsGet(adAccountIdaudienceInsightType)
 ```
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
-| **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [default to `YOUR_TOTAL_AUDIENCE`] [enum: `YOUR_TOTAL_AUDIENCE`, `YOUR_ENGAGED_AUDIENCE`, `PINTEREST_TOTAL_AUDIENCE`] |
+| **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [enum: `YOUR_TOTAL_AUDIENCE`, `YOUR_ENGAGED_AUDIENCE`, `PINTEREST_TOTAL_AUDIENCE`] |
 
 
 ### Return type
-[**AudienceInsightsResponse**](AudienceInsightsResponse.md)
+[**AudienceInsights**](AudienceInsights.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
@@ -67,7 +67,7 @@ Get Audience Insights for an ad account. The response will return insights for 3
 <a id="audienceInsightsScopeAndTypeGet"></a>
 # **audienceInsightsScopeAndTypeGet**
 ```java
-Mono<AudienceDefinitionResponse> AudienceInsightsApi.audienceInsightsScopeAndTypeGet(adAccountId)
+Mono<AudienceInsightsScopeAndTypeGet200Response> AudienceInsightsApi.audienceInsightsScopeAndTypeGet(adAccountId)
 ```
 
 Get audience insights scope and type
@@ -81,7 +81,7 @@ Get the scope and type of available audiences, which along with a date, is an au
 
 
 ### Return type
-[**AudienceDefinitionResponse**](AudienceDefinitionResponse.md)
+[**AudienceInsightsScopeAndTypeGet200Response**](AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`

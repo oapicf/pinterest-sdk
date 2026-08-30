@@ -12,7 +12,7 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "CreateAssetAccessRequestBody_asset_requests_inner.h"
+#include "CreateAssetAccessRequestItem.h"
 #include <list>
 
 namespace Tiny {
@@ -49,15 +49,15 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<CreateAssetAccessRequestBody_asset_requests_inner> getAssetRequests();
+	std::list<CreateAssetAccessRequestItem> getAssetRequests();
 
 	/*! \brief Set 
 	 */
-	void setAssetRequests(std::list <CreateAssetAccessRequestBody_asset_requests_inner> asset_requests);
+	void setAssetRequests(std::list<CreateAssetAccessRequestItem> asset_requests);
 
 
     private:
-    std::list<CreateAssetAccessRequestBody_asset_requests_inner> asset_requests;
+    std::list<CreateAssetAccessRequestItem> asset_requests;
 };
 }
 

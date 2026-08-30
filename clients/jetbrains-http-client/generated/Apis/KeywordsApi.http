@@ -1,0 +1,39 @@
+## KeywordsApi
+
+### Get country&#39;s keyword metrics
+## Get country&#39;s keyword metrics
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/keywords/metrics?countryCode={{countryCode}}&keywords={{keywords}}
+Accept: application/json
+
+### Create keywords
+## Create keywords
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/keywords
+Content-Type: application/json
+Accept: application/json
+
+{
+ "keywords": "<string>",
+ "parent_id": "<string>"
+}
+
+
+### Get keywords
+## Get keywords
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/keywords?campaignId={{campaignId}}&adGroupId={{adGroupId}}&adGroupIds={{adGroupIds}}&matchTypes={{matchTypes}}&bookmark={{bookmark}}&pageSize={{pageSize}}
+Accept: application/json
+
+### Update keywords
+## Update keywords
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/keywords
+Content-Type: application/json
+Accept: application/json
+
+{
+ "keywords": "<string>"
+}
+
+
+### List trending keywords
+## List trending keywords
+GET https://api.pinterest.com/v5/trends/keywords/{{region}}/top/{{trend_type}}?interests={{interests}}&genders={{genders}}&ages={{ages}}&includeKeywords={{includeKeywords}}&normalizeAgainstGroup={{normalizeAgainstGroup}}&limit={{limit}}&includeDemographics={{includeDemographics}}
+Accept: application/json

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupAudienceSizingCreativeTypes"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupAudienceSizingCreativeTypes"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdGroupAudienceSizingCreativeTypes {
+    title = AdGroupAudienceSizingCreativeTypes
+    description = AdGroupAudienceSizingCreativeTypes
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupAudienceSizingCreativeTypes {
+    title = AdGroupAudienceSizingCreativeTypes
+    description = AdGroupAudienceSizingCreativeTypes
+    implements = openapi_server.resourceTypes.AdGroupAudienceSizingCreativeTypes
+
+  }
+}

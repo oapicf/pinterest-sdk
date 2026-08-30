@@ -7,17 +7,19 @@
 Name | Type
 ------------ | -------------
 `imageUrl` | string
+`promotionId` | string
 `title` | string
+`creativeType` | [AdShoppingPreviewCreativeType](AdShoppingPreviewCreativeType.md)
 `pinId` | string
 `catalogProductGroupId` | string
-`creativeType` | string
 `customizableCtaType` | [CustomizableCTAType](CustomizableCTAType.md)
 `heroImageTitle` | string
 `heroImageUrl` | string
 `heroPinId` | string
 `imageTag` | string
 `itemId` | string
-`preferredMediaType` | string
+`preferredMediaType` | [BasePreferredMediaType](BasePreferredMediaType.md)
+`showPromotion` | boolean
 `videoTag` | string
 
 ## Example
@@ -28,10 +30,11 @@ import type { AdPreviewRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "imageUrl": https://somewebsite.com/someimage.jpg,
+  "promotionId": 7834020404549,
   "title": My Preview Image,
+  "creativeType": SHOPPING,
   "pinId": 7389479023,
   "catalogProductGroupId": 123456789,
-  "creativeType": SHOPPING,
   "customizableCtaType": null,
   "heroImageTitle": My Preview Image,
   "heroImageUrl": https://somewebsite.com/someimage.jpg,
@@ -39,6 +42,7 @@ const example = {
   "imageTag": Christmas Sale,
   "itemId": 111111111,
   "preferredMediaType": IMAGE,
+  "showPromotion": null,
   "videoTag": Black Friday Sale,
 } satisfies AdPreviewRequest
 

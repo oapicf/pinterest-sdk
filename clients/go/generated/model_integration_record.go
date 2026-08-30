@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the IntegrationRecord type satisfies the MappedNullable interface at compile time
@@ -28,7 +30,8 @@ type IntegrationRecord struct {
 	ConnectedUserId *string `json:"connected_user_id,omitempty"`
 	CreatedTime *int32 `json:"created_time,omitempty"`
 	ExternalBusinessId NullableString `json:"external_business_id,omitempty"`
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Integration record ID.
+	Id string `json:"id" validate:"regexp=^\\d+$"`
 	PartnerAccessToken NullableString `json:"partner_access_token,omitempty"`
 	PartnerAccessTokenExpiry NullableInt32 `json:"partner_access_token_expiry,omitempty"`
 	PartnerMetadata NullableString `json:"partner_metadata,omitempty"`
@@ -39,12 +42,15 @@ type IntegrationRecord struct {
 	UpdatedTime *int32 `json:"updated_time,omitempty"`
 }
 
+type _IntegrationRecord IntegrationRecord
+
 // NewIntegrationRecord instantiates a new IntegrationRecord object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntegrationRecord() *IntegrationRecord {
+func NewIntegrationRecord(id string) *IntegrationRecord {
 	this := IntegrationRecord{}
+	this.Id = id
 	return &this
 }
 
@@ -372,36 +378,28 @@ func (o *IntegrationRecord) UnsetExternalBusinessId() {
 	o.ExternalBusinessId.Unset()
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *IntegrationRecord) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *IntegrationRecord) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *IntegrationRecord) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *IntegrationRecord) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetPartnerAccessToken returns the PartnerAccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -764,9 +762,7 @@ func (o IntegrationRecord) ToMap() (map[string]interface{}, error) {
 	if o.ExternalBusinessId.IsSet() {
 		toSerialize["external_business_id"] = o.ExternalBusinessId.Get()
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["id"] = o.Id
 	if o.PartnerAccessToken.IsSet() {
 		toSerialize["partner_access_token"] = o.PartnerAccessToken.Get()
 	}
@@ -792,6 +788,43 @@ func (o IntegrationRecord) ToMap() (map[string]interface{}, error) {
 		toSerialize["updated_time"] = o.UpdatedTime
 	}
 	return toSerialize, nil
+}
+
+func (o *IntegrationRecord) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIntegrationRecord := _IntegrationRecord{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varIntegrationRecord)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IntegrationRecord(varIntegrationRecord)
+
+	return err
 }
 
 type NullableIntegrationRecord struct {

@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { UserSummary } from './userSummary';
+import { FollowUser } from './followUser';
 
 
 export interface FollowersList200Response { 
     bookmark?: string | null;
-    items: Array<UserSummary>;
+    items: Array<FollowUser>;
 }
 

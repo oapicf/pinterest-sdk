@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "CatalogsFeedProcessingScheduleTimezone.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -54,15 +55,15 @@ public:
 	void setTime(std::string  time);
 	/*! \brief Get The timezone considered for the processing schedule time.
 	 */
-	std::string getTimezone();
+	CatalogsFeedProcessingScheduleTimezone getTimezone();
 
 	/*! \brief Set The timezone considered for the processing schedule time.
 	 */
-	void setTimezone(std::string  timezone);
+	void setTimezone(CatalogsFeedProcessingScheduleTimezone  timezone);
 
 private:
 	std::string time;
-	std::string timezone;
+	CatalogsFeedProcessingScheduleTimezone timezone;
 	void __init();
 	void __cleanup();
 

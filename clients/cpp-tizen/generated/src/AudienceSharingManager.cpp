@@ -99,6 +99,21 @@ static bool adAccountsAudiencesSharedAccountsListProcessor(MemoryStruct_s p_chun
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -119,7 +134,7 @@ static bool adAccountsAudiencesSharedAccountsListProcessor(MemoryStruct_s p_chun
 }
 
 static bool adAccountsAudiencesSharedAccountsListHelper(char * accessToken,
-	std::string adAccountId, std::string audienceId, AudienceAccountType accountType, int pageSize, std::string bookmark, 
+	std::string audienceId, AudienceAccountType accountType, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_audiences_shared_accounts_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -145,17 +160,17 @@ static bool adAccountsAudiencesSharedAccountsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("account_type", itemAtq));
 
 
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -218,22 +233,22 @@ static bool adAccountsAudiencesSharedAccountsListHelper(char * accessToken,
 
 
 bool AudienceSharingManager::adAccountsAudiencesSharedAccountsListAsync(char * accessToken,
-	std::string adAccountId, std::string audienceId, AudienceAccountType accountType, int pageSize, std::string bookmark, 
+	std::string audienceId, AudienceAccountType accountType, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_audiences_shared_accounts_list_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountsAudiencesSharedAccountsListHelper(accessToken,
-	adAccountId, audienceId, accountType, pageSize, bookmark, 
+	audienceId, accountType, adAccountId, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool AudienceSharingManager::adAccountsAudiencesSharedAccountsListSync(char * accessToken,
-	std::string adAccountId, std::string audienceId, AudienceAccountType accountType, int pageSize, std::string bookmark, 
+	std::string audienceId, AudienceAccountType accountType, std::string adAccountId, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_audiences_shared_accounts_list_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountsAudiencesSharedAccountsListHelper(accessToken,
-	adAccountId, audienceId, accountType, pageSize, bookmark, 
+	audienceId, accountType, adAccountId, bookmark, pageSize, 
 	handler, userData, false);
 }
 
@@ -288,6 +303,21 @@ static bool businessAccountAudiencesSharedAccountsListProcessor(MemoryStruct_s p
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -308,7 +338,7 @@ static bool businessAccountAudiencesSharedAccountsListProcessor(MemoryStruct_s p
 }
 
 static bool businessAccountAudiencesSharedAccountsListHelper(char * accessToken,
-	std::string businessId, std::string audienceId, AudienceAccountType accountType, int pageSize, std::string bookmark, 
+	std::string businessId, std::string audienceId, AudienceAccountType accountType, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_audiences_shared_accounts_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -334,17 +364,17 @@ static bool businessAccountAudiencesSharedAccountsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("account_type", itemAtq));
 
 
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
 	}
 
 	string mBody = "";
@@ -407,36 +437,36 @@ static bool businessAccountAudiencesSharedAccountsListHelper(char * accessToken,
 
 
 bool AudienceSharingManager::businessAccountAudiencesSharedAccountsListAsync(char * accessToken,
-	std::string businessId, std::string audienceId, AudienceAccountType accountType, int pageSize, std::string bookmark, 
+	std::string businessId, std::string audienceId, AudienceAccountType accountType, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_audiences_shared_accounts_list_200_response, Error, void* )
 	, void* userData)
 {
 	return businessAccountAudiencesSharedAccountsListHelper(accessToken,
-	businessId, audienceId, accountType, pageSize, bookmark, 
+	businessId, audienceId, accountType, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool AudienceSharingManager::businessAccountAudiencesSharedAccountsListSync(char * accessToken,
-	std::string businessId, std::string audienceId, AudienceAccountType accountType, int pageSize, std::string bookmark, 
+	std::string businessId, std::string audienceId, AudienceAccountType accountType, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_audiences_shared_accounts_list_200_response, Error, void* )
 	, void* userData)
 {
 	return businessAccountAudiencesSharedAccountsListHelper(accessToken,
-	businessId, audienceId, accountType, pageSize, bookmark, 
+	businessId, audienceId, accountType, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool sharedAudiencesForBusinessListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Audiences_list_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Audiences_list_200_response, Error, void* )> (voidHandler);
+	void(* handler)(Shared_audiences_for_business_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Shared_audiences_for_business_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Audiences_list_200_response out;
+	Shared_audiences_for_business_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -444,18 +474,38 @@ static bool sharedAudiencesForBusinessListProcessor(MemoryStruct_s p_chunk, long
 
 
 
-		if (isprimitive("Audiences_list_200_response")) {
+		if (isprimitive("Shared_audiences_for_business_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Audiences_list_200_response", "Audiences_list_200_response");
+			jsonToValue(&out, pJson, "Shared_audiences_for_business_list_200_response", "Shared_audiences_for_business_list_200_response");
 			json_node_free(pJson);
 
-			if ("Audiences_list_200_response" == "std::string") {
+			if ("Shared_audiences_for_business_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -492,8 +542,8 @@ static bool sharedAudiencesForBusinessListProcessor(MemoryStruct_s p_chunk, long
 }
 
 static bool sharedAudiencesForBusinessListHelper(char * accessToken,
-	std::string businessId, std::string bookmark, std::string order, int pageSize, 
-	void(* handler)(Audiences_list_200_response, Error, void* )
+	std::string businessId, Order order, std::string bookmark, int pageSize, 
+	void(* handler)(Shared_audiences_for_business_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -510,17 +560,17 @@ static bool sharedAudiencesForBusinessListHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&order, "Order");
+	queryParams.insert(pair<string, string>("order", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("order");
+	}
+
+
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("bookmark");
-	}
-
-
-	itemAtq = stringify(&order, "std::string");
-	queryParams.insert(pair<string, string>("order", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("order");
 	}
 
 
@@ -590,36 +640,36 @@ static bool sharedAudiencesForBusinessListHelper(char * accessToken,
 
 
 bool AudienceSharingManager::sharedAudiencesForBusinessListAsync(char * accessToken,
-	std::string businessId, std::string bookmark, std::string order, int pageSize, 
-	void(* handler)(Audiences_list_200_response, Error, void* )
+	std::string businessId, Order order, std::string bookmark, int pageSize, 
+	void(* handler)(Shared_audiences_for_business_list_200_response, Error, void* )
 	, void* userData)
 {
 	return sharedAudiencesForBusinessListHelper(accessToken,
-	businessId, bookmark, order, pageSize, 
+	businessId, order, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool AudienceSharingManager::sharedAudiencesForBusinessListSync(char * accessToken,
-	std::string businessId, std::string bookmark, std::string order, int pageSize, 
-	void(* handler)(Audiences_list_200_response, Error, void* )
+	std::string businessId, Order order, std::string bookmark, int pageSize, 
+	void(* handler)(Shared_audiences_for_business_list_200_response, Error, void* )
 	, void* userData)
 {
 	return sharedAudiencesForBusinessListHelper(accessToken,
-	businessId, bookmark, order, pageSize, 
+	businessId, order, bookmark, pageSize, 
 	handler, userData, false);
 }
 
 static bool updateAdAccountToAdAccountSharedAudienceProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(SharedAudienceResponse, Error, void* )
-	= reinterpret_cast<void(*)(SharedAudienceResponse, Error, void* )> (voidHandler);
+	void(* handler)(AdAccountToAdAccountSharedAudience, Error, void* )
+	= reinterpret_cast<void(*)(AdAccountToAdAccountSharedAudience, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	SharedAudienceResponse out;
+	AdAccountToAdAccountSharedAudience out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -627,18 +677,38 @@ static bool updateAdAccountToAdAccountSharedAudienceProcessor(MemoryStruct_s p_c
 
 
 
-		if (isprimitive("SharedAudienceResponse")) {
+		if (isprimitive("AdAccountToAdAccountSharedAudience")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "SharedAudienceResponse", "SharedAudienceResponse");
+			jsonToValue(&out, pJson, "AdAccountToAdAccountSharedAudience", "AdAccountToAdAccountSharedAudience");
 			json_node_free(pJson);
 
-			if ("SharedAudienceResponse" == "std::string") {
+			if ("AdAccountToAdAccountSharedAudience" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -675,8 +745,8 @@ static bool updateAdAccountToAdAccountSharedAudienceProcessor(MemoryStruct_s p_c
 }
 
 static bool updateAdAccountToAdAccountSharedAudienceHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<SharedAudience> sharedAudience, 
-	void(* handler)(SharedAudienceResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody> adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(AdAccountToAdAccountSharedAudience, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -696,11 +766,11 @@ static bool updateAdAccountToAdAccountSharedAudienceHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("SharedAudience")) {
-		node = converttoJson(&sharedAudience, "SharedAudience", "");
+	if (isprimitive("AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody")) {
+		node = converttoJson(&adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, "AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody", "");
 	}
 	
-	char *jsonStr =  sharedAudience.toJson();
+	char *jsonStr =  adAccountToAdAccountSharedAudienceUpdateWithRequiredBody.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -765,36 +835,36 @@ static bool updateAdAccountToAdAccountSharedAudienceHelper(char * accessToken,
 
 
 bool AudienceSharingManager::updateAdAccountToAdAccountSharedAudienceAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<SharedAudience> sharedAudience, 
-	void(* handler)(SharedAudienceResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody> adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(AdAccountToAdAccountSharedAudience, Error, void* )
 	, void* userData)
 {
 	return updateAdAccountToAdAccountSharedAudienceHelper(accessToken,
-	adAccountId, sharedAudience, 
+	adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, 
 	handler, userData, true);
 }
 
 bool AudienceSharingManager::updateAdAccountToAdAccountSharedAudienceSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<SharedAudience> sharedAudience, 
-	void(* handler)(SharedAudienceResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody> adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(AdAccountToAdAccountSharedAudience, Error, void* )
 	, void* userData)
 {
 	return updateAdAccountToAdAccountSharedAudienceHelper(accessToken,
-	adAccountId, sharedAudience, 
+	adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, 
 	handler, userData, false);
 }
 
 static bool updateAdAccountToBusinessSharedAudienceProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(BusinessSharedAudienceResponse, Error, void* )
-	= reinterpret_cast<void(*)(BusinessSharedAudienceResponse, Error, void* )> (voidHandler);
+	void(* handler)(AdAccountToBusinessSharedAudience, Error, void* )
+	= reinterpret_cast<void(*)(AdAccountToBusinessSharedAudience, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	BusinessSharedAudienceResponse out;
+	AdAccountToBusinessSharedAudience out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -802,18 +872,38 @@ static bool updateAdAccountToBusinessSharedAudienceProcessor(MemoryStruct_s p_ch
 
 
 
-		if (isprimitive("BusinessSharedAudienceResponse")) {
+		if (isprimitive("AdAccountToBusinessSharedAudience")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "BusinessSharedAudienceResponse", "BusinessSharedAudienceResponse");
+			jsonToValue(&out, pJson, "AdAccountToBusinessSharedAudience", "AdAccountToBusinessSharedAudience");
 			json_node_free(pJson);
 
-			if ("BusinessSharedAudienceResponse" == "std::string") {
+			if ("AdAccountToBusinessSharedAudience" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -850,8 +940,8 @@ static bool updateAdAccountToBusinessSharedAudienceProcessor(MemoryStruct_s p_ch
 }
 
 static bool updateAdAccountToBusinessSharedAudienceHelper(char * accessToken,
-	std::string adAccountId, std::shared_ptr<BusinessSharedAudience> businessSharedAudience, 
-	void(* handler)(BusinessSharedAudienceResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountToBusinessSharedAudienceUpdateWithRequiredBody> adAccountToBusinessSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(AdAccountToBusinessSharedAudience, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -871,11 +961,11 @@ static bool updateAdAccountToBusinessSharedAudienceHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("BusinessSharedAudience")) {
-		node = converttoJson(&businessSharedAudience, "BusinessSharedAudience", "");
+	if (isprimitive("AdAccountToBusinessSharedAudienceUpdateWithRequiredBody")) {
+		node = converttoJson(&adAccountToBusinessSharedAudienceUpdateWithRequiredBody, "AdAccountToBusinessSharedAudienceUpdateWithRequiredBody", "");
 	}
 	
-	char *jsonStr =  businessSharedAudience.toJson();
+	char *jsonStr =  adAccountToBusinessSharedAudienceUpdateWithRequiredBody.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -940,36 +1030,36 @@ static bool updateAdAccountToBusinessSharedAudienceHelper(char * accessToken,
 
 
 bool AudienceSharingManager::updateAdAccountToBusinessSharedAudienceAsync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<BusinessSharedAudience> businessSharedAudience, 
-	void(* handler)(BusinessSharedAudienceResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountToBusinessSharedAudienceUpdateWithRequiredBody> adAccountToBusinessSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(AdAccountToBusinessSharedAudience, Error, void* )
 	, void* userData)
 {
 	return updateAdAccountToBusinessSharedAudienceHelper(accessToken,
-	adAccountId, businessSharedAudience, 
+	adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody, 
 	handler, userData, true);
 }
 
 bool AudienceSharingManager::updateAdAccountToBusinessSharedAudienceSync(char * accessToken,
-	std::string adAccountId, std::shared_ptr<BusinessSharedAudience> businessSharedAudience, 
-	void(* handler)(BusinessSharedAudienceResponse, Error, void* )
+	std::string adAccountId, std::shared_ptr<AdAccountToBusinessSharedAudienceUpdateWithRequiredBody> adAccountToBusinessSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(AdAccountToBusinessSharedAudience, Error, void* )
 	, void* userData)
 {
 	return updateAdAccountToBusinessSharedAudienceHelper(accessToken,
-	adAccountId, businessSharedAudience, 
+	adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody, 
 	handler, userData, false);
 }
 
 static bool updateBusinessToAdAccountSharedAudienceProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(SharedAudienceResponse, Error, void* )
-	= reinterpret_cast<void(*)(SharedAudienceResponse, Error, void* )> (voidHandler);
+	void(* handler)(BusinessToAdAccountSharedAudience, Error, void* )
+	= reinterpret_cast<void(*)(BusinessToAdAccountSharedAudience, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	SharedAudienceResponse out;
+	BusinessToAdAccountSharedAudience out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -977,18 +1067,38 @@ static bool updateBusinessToAdAccountSharedAudienceProcessor(MemoryStruct_s p_ch
 
 
 
-		if (isprimitive("SharedAudienceResponse")) {
+		if (isprimitive("BusinessToAdAccountSharedAudience")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "SharedAudienceResponse", "SharedAudienceResponse");
+			jsonToValue(&out, pJson, "BusinessToAdAccountSharedAudience", "BusinessToAdAccountSharedAudience");
 			json_node_free(pJson);
 
-			if ("SharedAudienceResponse" == "std::string") {
+			if ("BusinessToAdAccountSharedAudience" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1025,8 +1135,8 @@ static bool updateBusinessToAdAccountSharedAudienceProcessor(MemoryStruct_s p_ch
 }
 
 static bool updateBusinessToAdAccountSharedAudienceHelper(char * accessToken,
-	std::string businessId, std::shared_ptr<SharedAudience> sharedAudience, 
-	void(* handler)(SharedAudienceResponse, Error, void* )
+	std::string businessId, std::shared_ptr<BusinessToAdAccountSharedAudienceUpdateWithRequiredBody> businessToAdAccountSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(BusinessToAdAccountSharedAudience, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1046,11 +1156,11 @@ static bool updateBusinessToAdAccountSharedAudienceHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("SharedAudience")) {
-		node = converttoJson(&sharedAudience, "SharedAudience", "");
+	if (isprimitive("BusinessToAdAccountSharedAudienceUpdateWithRequiredBody")) {
+		node = converttoJson(&businessToAdAccountSharedAudienceUpdateWithRequiredBody, "BusinessToAdAccountSharedAudienceUpdateWithRequiredBody", "");
 	}
 	
-	char *jsonStr =  sharedAudience.toJson();
+	char *jsonStr =  businessToAdAccountSharedAudienceUpdateWithRequiredBody.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1115,36 +1225,36 @@ static bool updateBusinessToAdAccountSharedAudienceHelper(char * accessToken,
 
 
 bool AudienceSharingManager::updateBusinessToAdAccountSharedAudienceAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<SharedAudience> sharedAudience, 
-	void(* handler)(SharedAudienceResponse, Error, void* )
+	std::string businessId, std::shared_ptr<BusinessToAdAccountSharedAudienceUpdateWithRequiredBody> businessToAdAccountSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(BusinessToAdAccountSharedAudience, Error, void* )
 	, void* userData)
 {
 	return updateBusinessToAdAccountSharedAudienceHelper(accessToken,
-	businessId, sharedAudience, 
+	businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody, 
 	handler, userData, true);
 }
 
 bool AudienceSharingManager::updateBusinessToAdAccountSharedAudienceSync(char * accessToken,
-	std::string businessId, std::shared_ptr<SharedAudience> sharedAudience, 
-	void(* handler)(SharedAudienceResponse, Error, void* )
+	std::string businessId, std::shared_ptr<BusinessToAdAccountSharedAudienceUpdateWithRequiredBody> businessToAdAccountSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(BusinessToAdAccountSharedAudience, Error, void* )
 	, void* userData)
 {
 	return updateBusinessToAdAccountSharedAudienceHelper(accessToken,
-	businessId, sharedAudience, 
+	businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody, 
 	handler, userData, false);
 }
 
 static bool updateBusinessToBusinessSharedAudienceProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(BusinessSharedAudienceResponse, Error, void* )
-	= reinterpret_cast<void(*)(BusinessSharedAudienceResponse, Error, void* )> (voidHandler);
+	void(* handler)(BusinessToBusinessSharedAudience, Error, void* )
+	= reinterpret_cast<void(*)(BusinessToBusinessSharedAudience, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	BusinessSharedAudienceResponse out;
+	BusinessToBusinessSharedAudience out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1152,18 +1262,38 @@ static bool updateBusinessToBusinessSharedAudienceProcessor(MemoryStruct_s p_chu
 
 
 
-		if (isprimitive("BusinessSharedAudienceResponse")) {
+		if (isprimitive("BusinessToBusinessSharedAudience")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "BusinessSharedAudienceResponse", "BusinessSharedAudienceResponse");
+			jsonToValue(&out, pJson, "BusinessToBusinessSharedAudience", "BusinessToBusinessSharedAudience");
 			json_node_free(pJson);
 
-			if ("BusinessSharedAudienceResponse" == "std::string") {
+			if ("BusinessToBusinessSharedAudience" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1200,8 +1330,8 @@ static bool updateBusinessToBusinessSharedAudienceProcessor(MemoryStruct_s p_chu
 }
 
 static bool updateBusinessToBusinessSharedAudienceHelper(char * accessToken,
-	std::string businessId, std::shared_ptr<BusinessSharedAudience> businessSharedAudience, 
-	void(* handler)(BusinessSharedAudienceResponse, Error, void* )
+	std::string businessId, std::shared_ptr<BusinessToBusinessSharedAudienceUpdateWithRequiredBody> businessToBusinessSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(BusinessToBusinessSharedAudience, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1221,11 +1351,11 @@ static bool updateBusinessToBusinessSharedAudienceHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("BusinessSharedAudience")) {
-		node = converttoJson(&businessSharedAudience, "BusinessSharedAudience", "");
+	if (isprimitive("BusinessToBusinessSharedAudienceUpdateWithRequiredBody")) {
+		node = converttoJson(&businessToBusinessSharedAudienceUpdateWithRequiredBody, "BusinessToBusinessSharedAudienceUpdateWithRequiredBody", "");
 	}
 	
-	char *jsonStr =  businessSharedAudience.toJson();
+	char *jsonStr =  businessToBusinessSharedAudienceUpdateWithRequiredBody.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1290,22 +1420,22 @@ static bool updateBusinessToBusinessSharedAudienceHelper(char * accessToken,
 
 
 bool AudienceSharingManager::updateBusinessToBusinessSharedAudienceAsync(char * accessToken,
-	std::string businessId, std::shared_ptr<BusinessSharedAudience> businessSharedAudience, 
-	void(* handler)(BusinessSharedAudienceResponse, Error, void* )
+	std::string businessId, std::shared_ptr<BusinessToBusinessSharedAudienceUpdateWithRequiredBody> businessToBusinessSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(BusinessToBusinessSharedAudience, Error, void* )
 	, void* userData)
 {
 	return updateBusinessToBusinessSharedAudienceHelper(accessToken,
-	businessId, businessSharedAudience, 
+	businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody, 
 	handler, userData, true);
 }
 
 bool AudienceSharingManager::updateBusinessToBusinessSharedAudienceSync(char * accessToken,
-	std::string businessId, std::shared_ptr<BusinessSharedAudience> businessSharedAudience, 
-	void(* handler)(BusinessSharedAudienceResponse, Error, void* )
+	std::string businessId, std::shared_ptr<BusinessToBusinessSharedAudienceUpdateWithRequiredBody> businessToBusinessSharedAudienceUpdateWithRequiredBody, 
+	void(* handler)(BusinessToBusinessSharedAudience, Error, void* )
 	, void* userData)
 {
 	return updateBusinessToBusinessSharedAudienceHelper(accessToken,
-	businessId, businessSharedAudience, 
+	businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody, 
 	handler, userData, false);
 }
 

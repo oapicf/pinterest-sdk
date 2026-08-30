@@ -7,16 +7,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { InviteDataResponse } from './inviteDataResponse';
 import { BusinessAccessUserSummary } from './businessAccessUserSummary';
-import { BaseInviteDataResponseInviteData } from './baseInviteDataResponseInviteData';
 
 
+/**
+ * Common invite/request data returned by the business access endpoints.
+ */
 export interface BaseInviteDataResponse { 
     /**
      * Unique identifier of the invite/request.
      */
     id?: string;
-    invite_data?: BaseInviteDataResponseInviteData;
+    invite_data?: InviteDataResponse;
     /**
      * Indicates whether the invite/request was received.
      */

@@ -3,7 +3,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **app\_links** | **BigDecimal** |  | [default to null] |
 | **catalog\_type** | **String** |  | [default to null] |
+| **images** | **BigDecimal** |  | [default to null] |
 | **total** | **BigDecimal** |  | [default to null] |
 | **videos** | **BigDecimal** |  | [default to null] |
 

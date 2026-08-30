@@ -1,5 +1,5 @@
 
-# Table `UpdatableItemAttributes_gtin`
+# Table `UpdatableItemAttributesGtin`
 (mapped from: UpdatableItemAttributesGtin)
 
 ## Properties

@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.RelatedTermsRelatedTermsListInner
+open OpenAPI.Model.RelatedTermsRelatedTermsListItems
 
 module RelatedTerms =
 
@@ -16,7 +16,7 @@ module RelatedTerms =
     [<JsonProperty(PropertyName = "related_term_count")>]
     RelatedTermCount : int;
     [<JsonProperty(PropertyName = "related_terms_list")>]
-    RelatedTermsList : RelatedTermsRelatedTermsListInner[];
+    RelatedTermsList : RelatedTermsRelatedTermsListItems[];
   }
 
   //#endregion

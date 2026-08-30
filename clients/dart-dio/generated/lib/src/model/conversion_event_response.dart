@@ -16,6 +16,7 @@ part 'conversion_event_response.g.dart';
 /// * [conversionEvent] 
 /// * [conversionTagId] - Id of the tag.
 /// * [createdTime] - Creation date in epoch format.
+/// * [reportingConversionEvent] - For advertiser-defined events, the reporting event label shown in optimization UIs.
 @BuiltValue()
 abstract class ConversionEventResponse implements Built<ConversionEventResponse, ConversionEventResponseBuilder> {
   /// Id of the ad account.
@@ -24,7 +25,7 @@ abstract class ConversionEventResponse implements Built<ConversionEventResponse,
 
   @BuiltValueField(wireName: r'conversion_event')
   ConversionTagType? get conversionEvent;
-  // enum conversionEventEnum {  PAGE_LOAD,  UNKNOWN,  INITIALIZED,  PAGE_VISIT,  SIGNUP,  CHECKOUT,  CUSTOM,  VIEW_CATEGORY,  SEARCH,  ADD_TO_CART,  WATCH_VIDEO,  LEAD,  APP_INSTALL,  WEB_SESSION,  EXTERNAL_MEASUREMENT,  };
+  // enum conversionEventEnum {  PAGE_LOAD,  UNKNOWN,  INITIALIZED,  PAGE_VISIT,  SIGNUP,  CHECKOUT,  CUSTOM,  VIEW_CATEGORY,  SEARCH,  ADD_TO_CART,  WATCH_VIDEO,  LEAD,  APP_INSTALL,  WEB_SESSION,  EXTERNAL_MEASUREMENT,  ADD_PAYMENT_INFO,  ADD_TO_WISHLIST,  INITIATE_CHECKOUT,  SUBSCRIBE,  VIEW_CONTENT,  ADVERTISER_DEFINED_EVENT,  APP_OPEN,  CONTACT,  SCHEDULE,  FIND_LOCATION,  CUSTOMIZE_PRODUCT,  SUBMIT_APPLICATION,  START_TRIAL,  };
 
   /// Id of the tag.
   @BuiltValueField(wireName: r'conversion_tag_id')
@@ -33,6 +34,10 @@ abstract class ConversionEventResponse implements Built<ConversionEventResponse,
   /// Creation date in epoch format.
   @BuiltValueField(wireName: r'created_time')
   int? get createdTime;
+
+  /// For advertiser-defined events, the reporting event label shown in optimization UIs.
+  @BuiltValueField(wireName: r'reporting_conversion_event')
+  String? get reportingConversionEvent;
 
   ConversionEventResponse._();
 
@@ -85,6 +90,13 @@ class _$ConversionEventResponseSerializer implements PrimitiveSerializer<Convers
         specifiedType: const FullType(int),
       );
     }
+    if (object.reportingConversionEvent != null) {
+      yield r'reporting_conversion_event';
+      yield serializers.serialize(
+        object.reportingConversionEvent,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -111,30 +123,42 @@ class _$ConversionEventResponseSerializer implements PrimitiveSerializer<Convers
         case r'ad_account_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.adAccountId = valueDes;
           break;
         case r'conversion_event':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ConversionTagType),
-          ) as ConversionTagType;
+            specifiedType: const FullType.nullable(ConversionTagType),
+          ) as ConversionTagType?;
+          if (valueDes == null) continue;
           result.conversionEvent = valueDes;
           break;
         case r'conversion_tag_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.conversionTagId = valueDes;
           break;
         case r'created_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdTime = valueDes;
+          break;
+        case r'reporting_conversion_event':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.reportingConversionEvent = valueDes;
           break;
         default:
           unhandled.add(key);

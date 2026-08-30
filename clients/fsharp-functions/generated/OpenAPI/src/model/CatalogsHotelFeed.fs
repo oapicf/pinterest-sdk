@@ -7,7 +7,6 @@ open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
 open OpenAPI.Model.CatalogsFormat
 open OpenAPI.Model.CatalogsStatus
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.NullableCurrency
 open OpenAPI.Model.string option
 
@@ -17,16 +16,12 @@ module CatalogsHotelFeed =
 
   [<CLIMutable>]
   type CatalogsHotelFeed = {
-    [<JsonProperty(PropertyName = "created_at")>]
-    CreatedAt : DateTime;
-    [<JsonProperty(PropertyName = "id")>]
-    Id : string;
-    [<JsonProperty(PropertyName = "updated_at")>]
-    UpdatedAt : DateTime;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string option;
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
+    [<JsonProperty(PropertyName = "created_at")>]
+    CreatedAt : DateTime;
     [<JsonProperty(PropertyName = "credentials")>]
     Credentials : CatalogsFeedCredentials;
     [<JsonProperty(PropertyName = "default_currency")>]
@@ -35,6 +30,8 @@ module CatalogsHotelFeed =
     DefaultLocale : string;
     [<JsonProperty(PropertyName = "format")>]
     Format : CatalogsFormat;
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
     [<JsonProperty(PropertyName = "location")>]
     Location : string;
     [<JsonProperty(PropertyName = "name")>]
@@ -43,6 +40,8 @@ module CatalogsHotelFeed =
     PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     [<JsonProperty(PropertyName = "status")>]
     Status : CatalogsStatus;
+    [<JsonProperty(PropertyName = "updated_at")>]
+    UpdatedAt : DateTime;
   }
 
   //#endregion

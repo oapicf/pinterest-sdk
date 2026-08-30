@@ -7,7 +7,7 @@
 #' @title PinAnalyticsMetricsResponse
 #' @description PinAnalyticsMetricsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field daily_metrics Array with the requested daily metric records list(\link{PinAnalyticsMetricsResponseDailyMetricsInner}) [optional]
+#' @field daily_metrics Array with the requested daily metric records list(\link{PinAnalyticsDailyMetrics}) [optional]
 #' @field lifetime_metrics The lifetime metric name and value. named list(integer) [optional]
 #' @field summary_metrics The metric name and value over the requested period for each requested metric named list(numeric) [optional]
 #' @importFrom R6 R6Class
@@ -78,7 +78,7 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
       PinAnalyticsMetricsResponseObject <- list()
       if (!is.null(self$`daily_metrics`)) {
         PinAnalyticsMetricsResponseObject[["daily_metrics"]] <-
-          lapply(self$`daily_metrics`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`daily_metrics`)
       }
       if (!is.null(self$`lifetime_metrics`)) {
         PinAnalyticsMetricsResponseObject[["lifetime_metrics"]] <-
@@ -91,6 +91,29 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
       return(PinAnalyticsMetricsResponseObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of PinAnalyticsMetricsResponse
     #'
@@ -99,7 +122,7 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`daily_metrics`)) {
-        self$`daily_metrics` <- ApiClient$new()$deserializeObj(this_object$`daily_metrics`, "array[PinAnalyticsMetricsResponseDailyMetricsInner]", loadNamespace("openapi"))
+        self$`daily_metrics` <- ApiClient$new()$deserializeObj(this_object$`daily_metrics`, "array[PinAnalyticsDailyMetrics]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`lifetime_metrics`)) {
         self$`lifetime_metrics` <- ApiClient$new()$deserializeObj(this_object$`lifetime_metrics`, "map(integer)", loadNamespace("openapi"))
@@ -128,7 +151,7 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
     #' @return the instance of PinAnalyticsMetricsResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`daily_metrics` <- ApiClient$new()$deserializeObj(this_object$`daily_metrics`, "array[PinAnalyticsMetricsResponseDailyMetricsInner]", loadNamespace("openapi"))
+      self$`daily_metrics` <- ApiClient$new()$deserializeObj(this_object$`daily_metrics`, "array[PinAnalyticsDailyMetrics]", loadNamespace("openapi"))
       self$`lifetime_metrics` <- ApiClient$new()$deserializeObj(this_object$`lifetime_metrics`, "map(integer)", loadNamespace("openapi"))
       self$`summary_metrics` <- ApiClient$new()$deserializeObj(this_object$`summary_metrics`, "map(numeric)", loadNamespace("openapi"))
       self

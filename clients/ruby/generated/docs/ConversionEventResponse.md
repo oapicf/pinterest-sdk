@@ -8,6 +8,7 @@
 | **conversion_event** | [**ConversionTagType**](ConversionTagType.md) |  | [optional] |
 | **conversion_tag_id** | **String** | Id of the tag. | [optional] |
 | **created_time** | **Integer** | Creation date in epoch format. | [optional] |
+| **reporting_conversion_event** | **String** | For advertiser-defined events, the reporting event label shown in optimization UIs. | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = PinterestSdkClient::ConversionEventResponse.new(
   ad_account_id: 549757463328,
   conversion_event: null,
   conversion_tag_id: 2614324385652,
-  created_time: 1564768710
+  created_time: 1564768710,
+  reporting_conversion_event: GET_QUOTE
 )
 ```
 

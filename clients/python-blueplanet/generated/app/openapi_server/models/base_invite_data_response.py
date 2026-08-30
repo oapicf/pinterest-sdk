@@ -6,8 +6,8 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.base_invite_data_response_invite_data import BaseInviteDataResponseInviteData  # noqa: F401,E501
 from app.openapi_server.models.business_access_user_summary import BusinessAccessUserSummary  # noqa: F401,E501
+from app.openapi_server.models.invite_data_response import InviteDataResponse  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -18,13 +18,13 @@ class BaseInviteDataResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: str=None, invite_data: BaseInviteDataResponseInviteData=None, is_received_invite: bool=None, user: BusinessAccessUserSummary=None):  # noqa: E501
+    def __init__(self, id: str=None, invite_data: InviteDataResponse=None, is_received_invite: bool=None, user: BusinessAccessUserSummary=None):  # noqa: E501
         """BaseInviteDataResponse - a model defined in Swagger
 
         :param id: The id of this BaseInviteDataResponse.  # noqa: E501
         :type id: str
         :param invite_data: The invite_data of this BaseInviteDataResponse.  # noqa: E501
-        :type invite_data: BaseInviteDataResponseInviteData
+        :type invite_data: InviteDataResponse
         :param is_received_invite: The is_received_invite of this BaseInviteDataResponse.  # noqa: E501
         :type is_received_invite: bool
         :param user: The user of this BaseInviteDataResponse.  # noqa: E501
@@ -32,7 +32,7 @@ class BaseInviteDataResponse(Model):
         """
         self.swagger_types = {
             'id': str,
-            'invite_data': BaseInviteDataResponseInviteData,
+            'invite_data': InviteDataResponse,
             'is_received_invite': bool,
             'user': BusinessAccessUserSummary
         }
@@ -86,22 +86,22 @@ class BaseInviteDataResponse(Model):
         self._id = id
 
     @property
-    def invite_data(self) -> BaseInviteDataResponseInviteData:
+    def invite_data(self) -> InviteDataResponse:
         """Gets the invite_data of this BaseInviteDataResponse.
 
 
         :return: The invite_data of this BaseInviteDataResponse.
-        :rtype: BaseInviteDataResponseInviteData
+        :rtype: InviteDataResponse
         """
         return self._invite_data
 
     @invite_data.setter
-    def invite_data(self, invite_data: BaseInviteDataResponseInviteData):
+    def invite_data(self, invite_data: InviteDataResponse):
         """Sets the invite_data of this BaseInviteDataResponse.
 
 
         :param invite_data: The invite_data of this BaseInviteDataResponse.
-        :type invite_data: BaseInviteDataResponseInviteData
+        :type invite_data: InviteDataResponse
         """
 
         self._invite_data = invite_data

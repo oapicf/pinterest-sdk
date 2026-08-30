@@ -12,7 +12,8 @@ import org.joda.time.DateTime
 import DeletePartnerAssetAccessBody._
 
 case class DeletePartnerAssetAccessBody (
-  accesses: List[DeletePartnerAssetAccessBodyAccessesInner])
+  /* List of partner asset accesses to delete. */
+  accesses: List[DeletePartnerAssetAccessItem])
 
 object DeletePartnerAssetAccessBody {
   import DateTimeCodecs._

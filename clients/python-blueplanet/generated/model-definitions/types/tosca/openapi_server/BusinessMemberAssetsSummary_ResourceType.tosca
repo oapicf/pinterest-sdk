@@ -7,8 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  BusinessMemberAssetsSummaryAdAccountsInner = openapi_server.resourceTypes.BusinessMemberAssetsSummaryAdAccountsInner
-  BusinessMemberAssetsSummaryProfilesInner = openapi_server.resourceTypes.BusinessMemberAssetsSummaryProfilesInner
+  AssetIdWithPermissions = openapi_server.resourceTypes.AssetIdWithPermissions
 }
 resourceTypes {
 
@@ -19,13 +18,13 @@ resourceTypes {
     properties {
         ad_accounts {
           type = array
-          items.type = BusinessMemberAssetsSummaryAdAccountsInner
+          items.type = AssetIdWithPermissions
           description = "List of ad account IDs and respective permission levels."
           optional = false
         }
         profiles {
           type = array
-          items.type = BusinessMemberAssetsSummaryProfilesInner
+          items.type = AssetIdWithPermissions
           description = "List of profile IDs and respective permission levels."
           optional = false
         }

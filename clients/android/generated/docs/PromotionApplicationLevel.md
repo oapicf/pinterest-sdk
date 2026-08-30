@@ -1,0 +1,10 @@
+
+
+# PromotionApplicationLevel
+
+## Enum
+
+
+
+
+

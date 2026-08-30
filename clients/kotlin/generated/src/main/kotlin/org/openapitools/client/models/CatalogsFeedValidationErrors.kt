@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -33,7 +41,7 @@ import com.squareup.moshi.JsonClass
  * @param FEED_LENGTH_TOO_LONG Your feed contains too many items, some items will not be published.
  * @param FEED_TOO_SMALL Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
  * @param FETCH_ERROR Pinterest couldn't download your feed.
- * @param FETCH_INACTIVE_FEED_ERROR Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+ * @param FETCH_INACTIVE_FEED_ERROR Your feed wasn't ingested because it hasn't changed in the previous 90 days.
  * @param IMAGE_LINK_INVALID Some image links are formatted incorrectly.
  * @param IMAGE_LINK_LENGTH_TOO_LONG Some items have image_link URLs that contain too many characters, so those items will not be published.
  * @param IMAGE_LINK_MISSING Some items are missing an image link URL in their product metadata, those items will not be published.
@@ -104,7 +112,7 @@ data class CatalogsFeedValidationErrors (
     @Json(name = "FETCH_ERROR")
     val FETCH_ERROR: kotlin.Int? = null,
 
-    /* Your feed wasn't ingested because it hasn’t changed in the previous 90 days. */
+    /* Your feed wasn't ingested because it hasn't changed in the previous 90 days. */
     @Json(name = "FETCH_INACTIVE_FEED_ERROR")
     val FETCH_INACTIVE_FEED_ERROR: kotlin.Int? = null,
 

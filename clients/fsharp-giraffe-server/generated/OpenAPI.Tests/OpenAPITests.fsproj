@@ -57,8 +57,12 @@
     <Compile Include="CatalogProductGroupsApiTests.fs" />
     <Compile Include="CatalogReportsApiTestsHelper.fs" />
     <Compile Include="CatalogReportsApiTests.fs" />
+    <Compile Include="CatalogSupplementalApiTestsHelper.fs" />
+    <Compile Include="CatalogSupplementalApiTests.fs" />
     <Compile Include="CatalogsApiTestsHelper.fs" />
     <Compile Include="CatalogsApiTests.fs" />
+    <Compile Include="ConversionDeletionRequestsApiTestsHelper.fs" />
+    <Compile Include="ConversionDeletionRequestsApiTests.fs" />
     <Compile Include="ConversionEqsApiTestsHelper.fs" />
     <Compile Include="ConversionEqsApiTests.fs" />
     <Compile Include="ConversionEventsApiTestsHelper.fs" />
@@ -71,6 +75,8 @@
     <Compile Include="CustomerListUploadsApiTests.fs" />
     <Compile Include="CustomerListsApiTestsHelper.fs" />
     <Compile Include="CustomerListsApiTests.fs" />
+    <Compile Include="CustomerSegmentApiTestsHelper.fs" />
+    <Compile Include="CustomerSegmentApiTests.fs" />
     <Compile Include="IntegrationsApiTestsHelper.fs" />
     <Compile Include="IntegrationsApiTests.fs" />
     <Compile Include="KeywordsApiTestsHelper.fs" />
@@ -95,14 +101,16 @@
     <Compile Include="OrderLinesApiTests.fs" />
     <Compile Include="PinsApiTestsHelper.fs" />
     <Compile Include="PinsApiTests.fs" />
-    <Compile Include="ProductCategoriesApiTestsHelper.fs" />
-    <Compile Include="ProductCategoriesApiTests.fs" />
     <Compile Include="ProductGroupPromotionsApiTestsHelper.fs" />
     <Compile Include="ProductGroupPromotionsApiTests.fs" />
+    <Compile Include="ProductTagsApiTestsHelper.fs" />
+    <Compile Include="ProductTagsApiTests.fs" />
     <Compile Include="PromotionsApiTestsHelper.fs" />
     <Compile Include="PromotionsApiTests.fs" />
     <Compile Include="ResourcesApiTestsHelper.fs" />
     <Compile Include="ResourcesApiTests.fs" />
+    <Compile Include="SchedulesApiTestsHelper.fs" />
+    <Compile Include="SchedulesApiTests.fs" />
     <Compile Include="SearchApiTestsHelper.fs" />
     <Compile Include="SearchApiTests.fs" />
     <Compile Include="TargetingTemplateApiTestsHelper.fs" />
@@ -111,6 +119,8 @@
     <Compile Include="TermsApiTests.fs" />
     <Compile Include="TermsOfServiceApiTestsHelper.fs" />
     <Compile Include="TermsOfServiceApiTests.fs" />
+    <Compile Include="TrendsApiTestsHelper.fs" />
+    <Compile Include="TrendsApiTests.fs" />
     <Compile Include="UserAccountApiTestsHelper.fs" />
     <Compile Include="UserAccountApiTests.fs" />
   </ItemGroup>

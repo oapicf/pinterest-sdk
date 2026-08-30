@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**CATALOGS_HOTEL_ADDRESS**](CatalogsHotelAddress.md) |  | [optional] [default to null]
+**address** | [**CATALOGS_HOTEL_ADDRESS**](CatalogsHotelAddress.md) | Hotel address | [optional] [default to null]
 **base_price** | [**STRING_32**](STRING_32.md) | Base price of the hotel room per night followed by the ISO currency code | [optional] [default to null]
 **brand** | [**STRING_32**](STRING_32.md) | The brand to which this hotel belongs to. | [optional] [default to null]
 **category** | [**STRING_32**](STRING_32.md) | The type of property. The category can be any type of internal description desired. | [optional] [default to null]
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **custom_label_3** | [**STRING_32**](STRING_32.md) | Custom grouping of hotels | [optional] [default to null]
 **custom_label_4** | [**STRING_32**](STRING_32.md) | Custom grouping of hotels | [optional] [default to null]
 **description** | [**STRING_32**](STRING_32.md) | Brief description of the hotel. | [optional] [default to null]
-**guest_ratings** | [**CATALOGS_HOTEL_GUEST_RATINGS**](CatalogsHotelGuestRatings.md) |  | [optional] [default to null]
+**guest_ratings** | [**CATALOGS_HOTEL_GUEST_RATINGS**](CatalogsHotelGuestRatings.md) | If specified, you must provide all properties | [optional] [default to null]
 **latitude** | **REAL_32** | Latitude of the hotel. | [optional] [default to null]
 **link** | [**STRING_32**](STRING_32.md) | Link to the product page | [optional] [default to null]
 **longitude** | **REAL_32** | Longitude of the hotel. | [optional] [default to null]

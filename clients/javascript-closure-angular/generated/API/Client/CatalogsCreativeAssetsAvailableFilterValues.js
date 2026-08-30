@@ -12,7 +12,7 @@ API.Client.CatalogsCreativeAssetsAvailableFilterValues = function() {}
 API.Client.CatalogsCreativeAssetsAvailableFilterValues.prototype.catalogType;
 
 /**
- * @type {!API.Client.catalogs_creative_assets_filter_values_map}
+ * @type {!API.Client.CatalogsCreativeAssetsFilterValuesMap}
  * @export
  */
 API.Client.CatalogsCreativeAssetsAvailableFilterValues.prototype.filterValues;

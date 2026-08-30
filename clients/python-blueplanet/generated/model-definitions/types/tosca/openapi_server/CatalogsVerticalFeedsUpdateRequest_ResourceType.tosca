@@ -14,7 +14,6 @@ imports {
   CatalogsHotelFeedsUpdateRequest = openapi_server.resourceTypes.CatalogsHotelFeedsUpdateRequest
   CatalogsRetailFeedsUpdateRequest = openapi_server.resourceTypes.CatalogsRetailFeedsUpdateRequest
   CatalogsStatus = openapi_server.resourceTypes.CatalogsStatus
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
   NullableCurrency = openapi_server.resourceTypes.NullableCurrency
   ProductAvailabilityType = openapi_server.resourceTypes.ProductAvailabilityType
   import re = openapi_server.resourceTypes.import re
@@ -27,8 +26,9 @@ resourceTypes {
     derivedFrom = Root
     properties {
         catalog_type {
-          type = CatalogsType
+          type =  string
           description = ""
+          enum = ["CREATIVE_ASSETS"]
           optional = true
         }
         credentials {

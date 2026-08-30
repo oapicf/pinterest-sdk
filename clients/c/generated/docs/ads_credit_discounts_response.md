@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 **active** | **int** | True if the offer code is currently active. | [optional] 
 **advertiser_id** | **char \*** | Advertiser ID the offer was applied to. | [optional] 
 **discount_currency** | **char \*** | Currency value for the discount. | [optional] 
-**discount_in_micro_currency** | **double** | The discount applied in the offer’s currency value. | [optional] 
-**discount_type** | **pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_e** | The type of discount of this credit | [optional] 
+**discount_in_micro_currency** | **double** | The discount applied in the offer&#39;s currency value. | [optional] 
+**discount_type** | **ads_credit_discount_type_t \*** | The type of discount of this credit | [optional] 
 **remaining_discount_in_micro_currency** | **double** | The credits left to spend. | [optional] 
 **title** | **char \*** | Human readable title of the offer code. | [optional] 
 

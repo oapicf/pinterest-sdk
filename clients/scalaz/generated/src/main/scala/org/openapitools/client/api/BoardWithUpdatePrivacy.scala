@@ -27,7 +27,7 @@ id: String,
   isAdsOnly: Option[Boolean],
 /* Board media. */
   media: Option[BoardMedia],
-/*      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
+/*     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\". */
   name: String,
 owner: Option[BoardOwner],
 /* Count of Pins on the board. */

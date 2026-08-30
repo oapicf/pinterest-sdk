@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,21 +18,22 @@ package openapi
 type InviteAssetsSummary struct {
 
 	// List of ad account IDs and respective permission levels that will be assigned.
-	AdAccounts []InviteAssetsSummaryAdAccountsInner `json:"ad_accounts,omitempty"`
+	AdAccounts []InviteAssetsSummaryItem `json:"ad_accounts,omitempty"`
 
 	// List of profile IDs and respective permission levels that will be assigned.
-	Profiles []InviteAssetsSummaryProfilesInner `json:"profiles,omitempty"`
+	Profiles []InviteAssetsSummaryItem `json:"profiles,omitempty"`
 }
 
-// AssertInviteAssetsSummaryRequired checks if the required fields are not zero-ed
+// AssertInviteAssetsSummaryRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertInviteAssetsSummaryRequired(obj InviteAssetsSummary) error {
 	for _, el := range obj.AdAccounts {
-		if err := AssertInviteAssetsSummaryAdAccountsInnerRequired(el); err != nil {
+		if err := AssertInviteAssetsSummaryItemRequired(el); err != nil {
 			return err
 		}
 	}
 	for _, el := range obj.Profiles {
-		if err := AssertInviteAssetsSummaryProfilesInnerRequired(el); err != nil {
+		if err := AssertInviteAssetsSummaryItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -42,12 +43,12 @@ func AssertInviteAssetsSummaryRequired(obj InviteAssetsSummary) error {
 // AssertInviteAssetsSummaryConstraints checks if the values respects the defined constraints
 func AssertInviteAssetsSummaryConstraints(obj InviteAssetsSummary) error {
 	for _, el := range obj.AdAccounts {
-		if err := AssertInviteAssetsSummaryAdAccountsInnerConstraints(el); err != nil {
+		if err := AssertInviteAssetsSummaryItemConstraints(el); err != nil {
 			return err
 		}
 	}
 	for _, el := range obj.Profiles {
-		if err := AssertInviteAssetsSummaryProfilesInnerConstraints(el); err != nil {
+		if err := AssertInviteAssetsSummaryItemConstraints(el); err != nil {
 			return err
 		}
 	}

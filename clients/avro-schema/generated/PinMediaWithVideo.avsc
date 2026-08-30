@@ -46,6 +46,12 @@
       "default": null
     },
     {
+      "name": "video_url_hls",
+      "type": ["null", "string"],
+      "doc": "Video url (HLS).  **Note:** This field is limited and not available to all apps.",
+      "default": null
+    },
+    {
       "name": "width",
       "type": ["null", "int"],
       "doc": "Width (in pixels). Field maybe null after creation due to video processing time.",

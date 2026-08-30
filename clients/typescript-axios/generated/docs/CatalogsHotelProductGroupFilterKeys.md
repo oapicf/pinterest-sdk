@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  | [default to undefined]
-**HOTEL_ID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | [default to undefined]
-**COUNTRY** | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  | [default to undefined]
-**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | [default to undefined]
+**PRICE** | [**PriceFilterPrice**](PriceFilterPrice.md) |  | [default to undefined]
+**HOTEL_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**CUSTOM_LABEL_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | [default to undefined]
+**COUNTRY** | [**CatalogsProductGroupMultipleCountriesCriteria**](CatalogsProductGroupMultipleCountriesCriteria.md) |  | [default to undefined]
+**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | [default to undefined]
 
 ## Example
 

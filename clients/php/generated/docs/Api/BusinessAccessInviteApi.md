@@ -41,7 +41,7 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessInviteApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
 $create_asset_access_request_body = new \OpenAPI\Client\Model\CreateAssetAccessRequestBody(); // \OpenAPI\Client\Model\CreateAssetAccessRequestBody
 
 try {
@@ -79,7 +79,7 @@ try {
 ## `cancelInvitesOrRequests()`
 
 ```php
-cancelInvitesOrRequests($business_id, $cancel_invites_body): \OpenAPI\Client\Model\DeleteInvitesResultsResponseArray
+cancelInvitesOrRequests($business_id, $cancel_invites_request): \OpenAPI\Client\Model\CancelInvitesResponse
 ```
 
 Cancel invites/requests
@@ -103,11 +103,11 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessInviteApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$cancel_invites_body = new \OpenAPI\Client\Model\CancelInvitesBody(); // \OpenAPI\Client\Model\CancelInvitesBody | A list with invite ids
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$cancel_invites_request = new \OpenAPI\Client\Model\CancelInvitesRequest(); // \OpenAPI\Client\Model\CancelInvitesRequest
 
 try {
-    $result = $apiInstance->cancelInvitesOrRequests($business_id, $cancel_invites_body);
+    $result = $apiInstance->cancelInvitesOrRequests($business_id, $cancel_invites_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessAccessInviteApi->cancelInvitesOrRequests: ', $e->getMessage(), PHP_EOL;
@@ -119,11 +119,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **cancel_invites_body** | [**\OpenAPI\Client\Model\CancelInvitesBody**](../Model/CancelInvitesBody.md)| A list with invite ids | |
+| **cancel_invites_request** | [**\OpenAPI\Client\Model\CancelInvitesRequest**](../Model/CancelInvitesRequest.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeleteInvitesResultsResponseArray**](../Model/DeleteInvitesResultsResponseArray.md)
+[**\OpenAPI\Client\Model\CancelInvitesResponse**](../Model/CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -165,8 +165,8 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessInviteApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$create_asset_invites_request = new \OpenAPI\Client\Model\CreateAssetInvitesRequest(); // \OpenAPI\Client\Model\CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$create_asset_invites_request = new \OpenAPI\Client\Model\CreateAssetInvitesRequest(); // \OpenAPI\Client\Model\CreateAssetInvitesRequest
 
 try {
     $result = $apiInstance->createAssetInvites($business_id, $create_asset_invites_request);
@@ -181,7 +181,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **create_asset_invites_request** | [**\OpenAPI\Client\Model\CreateAssetInvitesRequest**](../Model/CreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request. | |
+| **create_asset_invites_request** | [**\OpenAPI\Client\Model\CreateAssetInvitesRequest**](../Model/CreateAssetInvitesRequest.md)|  | |
 
 ### Return type
 
@@ -227,8 +227,8 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessInviteApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
-$create_membership_or_partnership_invites_body = new \OpenAPI\Client\Model\CreateMembershipOrPartnershipInvitesBody(); // \OpenAPI\Client\Model\CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
+$create_membership_or_partnership_invites_body = new \OpenAPI\Client\Model\CreateMembershipOrPartnershipInvitesBody(); // \OpenAPI\Client\Model\CreateMembershipOrPartnershipInvitesBody
 
 try {
     $result = $apiInstance->createMembershipOrPartnershipInvites($business_id, $create_membership_or_partnership_invites_body);
@@ -243,7 +243,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
-| **create_membership_or_partnership_invites_body** | [**\OpenAPI\Client\Model\CreateMembershipOrPartnershipInvitesBody**](../Model/CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | |
+| **create_membership_or_partnership_invites_body** | [**\OpenAPI\Client\Model\CreateMembershipOrPartnershipInvitesBody**](../Model/CreateMembershipOrPartnershipInvitesBody.md)|  | |
 
 ### Return type
 
@@ -289,12 +289,12 @@ $apiInstance = new OpenAPI\Client\Api\BusinessAccessInviteApi(
     new GuzzleHttp\Client(),
     $config
 );
-$business_id = 729090764583391194; // string | Unique identifier of the requesting business.
+$business_id = 'business_id_example'; // string | Unique identifier of the requesting business.
 $is_member = true; // bool | A boolean field to indicate whether the invite is to create a partnership or a membership.
-$invite_status = array('invite_status_example'); // string[] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
+$invite_status = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\InviteFilterStatus()); // \OpenAPI\Client\Model\InviteFilterStatus[] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
 $invite_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\InviteType(); // \OpenAPI\Client\Model\InviteType | Invite type to filter invites by. Only invites of the specified type will be returned.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 try {
     $result = $apiInstance->getInvites($business_id, $is_member, $invite_status, $invite_type, $bookmark, $page_size);
@@ -310,10 +310,10 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **business_id** | **string**| Unique identifier of the requesting business. | |
 | **is_member** | **bool**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true] |
-| **invite_status** | [**string[]**](../Model/string.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] |
+| **invite_status** | [**\OpenAPI\Client\Model\InviteFilterStatus[]**](../Model/\OpenAPI\Client\Model\InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] |
 | **invite_type** | [**\OpenAPI\Client\Model\InviteType**](../Model/.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 

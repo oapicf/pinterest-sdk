@@ -8,7 +8,7 @@ package org.openapitools.server.model
 */
 final case class TargetingSpecOperationAppType (
   field: String,
-  operation: String,
+  operation: TargetingSpecListOperation,
   values: Seq[TargetingSpecAppType]
 )
 

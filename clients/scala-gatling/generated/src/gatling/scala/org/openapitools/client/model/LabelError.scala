@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class LabelError (
-    _data: Option[Label],
+    _data: Option[LabelErrorData],
     _errorMessages: Option[List[String]]
 )
 object LabelError {

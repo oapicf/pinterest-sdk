@@ -4,5 +4,5 @@ type BillingInvoicesGet200Response struct {
 
 	Bookmark *string `json:"bookmark,omitempty"`
 
-	Items []BillingInvoiceResponse `json:"items"`
+	Items []BillingInvoice `json:"items"`
 }

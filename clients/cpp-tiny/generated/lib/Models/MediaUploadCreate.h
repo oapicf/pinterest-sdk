@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setMediaType(MediaUploadType  media_type);
+	void setMediaType(MediaUploadType media_type);
 
 
     private:

@@ -23,12 +23,14 @@ CatalogsProductGroupProductCountsVertical::~CatalogsProductGroupProductCountsVer
 void
 CatalogsProductGroupProductCountsVertical::__init()
 {
-	//catalog_type = new CatalogsType();
+	//catalog_type = std::string();
 	//in_stock = double(0);
 	//out_of_stock = double(0);
 	//preorder = double(0);
 	//total = double(0);
 	//videos = double(0);
+	//app_links = double(0);
+	//images = double(0);
 }
 
 void
@@ -64,6 +66,16 @@ CatalogsProductGroupProductCountsVertical::__cleanup()
 	//delete videos;
 	//videos = NULL;
 	//}
+	//if(app_links != NULL) {
+	//
+	//delete app_links;
+	//app_links = NULL;
+	//}
+	//if(images != NULL) {
+	//
+	//delete images;
+	//images = NULL;
+	//}
 	//
 }
 
@@ -77,12 +89,9 @@ CatalogsProductGroupProductCountsVertical::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
-			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -156,6 +165,34 @@ CatalogsProductGroupProductCountsVertical::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *app_linksKey = "app_links";
+	node = json_object_get_member(pJsonObject, app_linksKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&app_links, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&app_links);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *imagesKey = "images";
+	node = json_object_get_member(pJsonObject, imagesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&images, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&images);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 CatalogsProductGroupProductCountsVertical::CatalogsProductGroupProductCountsVertical(char* json)
@@ -168,16 +205,11 @@ CatalogsProductGroupProductCountsVertical::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsType")) {
-		CatalogsType obj = getCatalogType();
-		node = converttoJson(&obj, "CatalogsType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *catalog_typeKey = "catalog_type";
@@ -252,6 +284,34 @@ CatalogsProductGroupProductCountsVertical::toJson()
 	}
 	const gchar *videosKey = "videos";
 	json_object_set_member(pJsonObject, videosKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getAppLinks();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getAppLinks());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *app_linksKey = "app_links";
+	json_object_set_member(pJsonObject, app_linksKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getImages();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getImages());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *imagesKey = "images";
+	json_object_set_member(pJsonObject, imagesKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -260,14 +320,14 @@ CatalogsProductGroupProductCountsVertical::toJson()
 	return ret;
 }
 
-CatalogsType
+std::string
 CatalogsProductGroupProductCountsVertical::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsProductGroupProductCountsVertical::setCatalogType(CatalogsType  catalog_type)
+CatalogsProductGroupProductCountsVertical::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -330,6 +390,30 @@ void
 CatalogsProductGroupProductCountsVertical::setVideos(long long  videos)
 {
 	this->videos = videos;
+}
+
+long long
+CatalogsProductGroupProductCountsVertical::getAppLinks()
+{
+	return app_links;
+}
+
+void
+CatalogsProductGroupProductCountsVertical::setAppLinks(long long  app_links)
+{
+	this->app_links = app_links;
+}
+
+long long
+CatalogsProductGroupProductCountsVertical::getImages()
+{
+	return images;
+}
+
+void
+CatalogsProductGroupProductCountsVertical::setImages(long long  images)
+{
+	this->images = images;
 }
 
 

@@ -16,9 +16,11 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.ConversionAccessTokenResponse
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.OauthAccessTokenResponse
+import org.openapitools.server.api.model.ConversionAccessToken
+import org.openapitools.server.api.model.OauthAccessToken
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.TokenGrantType
+import org.openapitools.server.api.model.TokenTypeHint
 
 class OauthApiVertxProxyHandler(private val vertx: Vertx, private val service: OauthApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -71,12 +73,18 @@ class OauthApiVertxProxyHandler(private val vertx: Vertx, private val service: O
         
                 "oauthToken" -> {
                     val params = context.params
-                    val grantType = ApiHandlerUtils.searchStringInJson(params,"grant_type")
-                    if(grantType == null){
+                    val grantTypeParam = ApiHandlerUtils.searchJsonObjectInJson(params,"grant_type")
+                    if (grantTypeParam == null) {
                         throw IllegalArgumentException("grantType is required")
                     }
+                    val grantType = Gson().fromJson(grantTypeParam.encode(), TokenGrantType::class.java)
+                    val code = ApiHandlerUtils.searchStringInJson(params,"code")
+                    val continuousRefresh = ApiHandlerUtils.searchStringInJson(params,"continuous_refresh")
+                    val redirectUri = ApiHandlerUtils.searchStringInJson(params,"redirect_uri")
+                    val refreshToken = ApiHandlerUtils.searchStringInJson(params,"refresh_token")
+                    val scope = ApiHandlerUtils.searchStringInJson(params,"scope")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.oauthToken(grantType,context)
+                        val result = service.oauthToken(grantType,code,continuousRefresh,redirectUri,refreshToken,scope,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -91,7 +99,8 @@ class OauthApiVertxProxyHandler(private val vertx: Vertx, private val service: O
                     if(token == null){
                         throw IllegalArgumentException("token is required")
                     }
-                    val tokenTypeHint = ApiHandlerUtils.searchStringInJson(params,"token_type_hint")
+                    val tokenTypeHintParam = ApiHandlerUtils.searchJsonObjectInJson(params,"token_type_hint")
+                    val tokenTypeHint = if(tokenTypeHintParam ==null) null else Gson().fromJson(tokenTypeHintParam.encode(), TokenTypeHint::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.tokenRevoke(token,tokenTypeHint,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,14 +31,13 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param items List of employers.
+ * @param items 
  * @param bookmark 
  */
 
 
 data class GetBusinessEmployers200Response (
 
-    /* List of employers. */
     @Json(name = "items")
     val items: kotlin.collections.List<UserBusinessRoleBinding>,
 

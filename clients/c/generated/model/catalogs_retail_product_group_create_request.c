@@ -35,6 +35,8 @@ static catalogs_retail_product_group_create_request_t *catalogs_retail_product_g
     if (!catalogs_retail_product_group_create_request_local_var) {
         return NULL;
     }
+    memset(catalogs_retail_product_group_create_request_local_var, 0, sizeof(catalogs_retail_product_group_create_request_t));
+    catalogs_retail_product_group_create_request_local_var->_library_owned = 1;
     catalogs_retail_product_group_create_request_local_var->catalog_id = catalog_id;
     catalogs_retail_product_group_create_request_local_var->catalog_type = catalog_type;
     catalogs_retail_product_group_create_request_local_var->country = country;
@@ -42,8 +44,6 @@ static catalogs_retail_product_group_create_request_t *catalogs_retail_product_g
     catalogs_retail_product_group_create_request_local_var->filters = filters;
     catalogs_retail_product_group_create_request_local_var->locale = locale;
     catalogs_retail_product_group_create_request_local_var->name = name;
-
-    catalogs_retail_product_group_create_request_local_var->_library_owned = 1;
     return catalogs_retail_product_group_create_request_local_var;
 }
 
@@ -56,7 +56,7 @@ __attribute__((deprecated)) catalogs_retail_product_group_create_request_t *cata
     pinterest_rest_api_catalogs_locale__e locale,
     char *name
     ) {
-    return catalogs_retail_product_group_create_request_create_internal (
+    catalogs_retail_product_group_create_request_t *result = catalogs_retail_product_group_create_request_create_internal (
         catalog_id,
         catalog_type,
         country,
@@ -65,6 +65,9 @@ __attribute__((deprecated)) catalogs_retail_product_group_create_request_t *cata
         locale,
         name
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_retail_product_group_create_request_free(catalogs_retail_product_group_create_request_t *catalogs_retail_product_group_create_request) {
@@ -185,14 +188,20 @@ catalogs_retail_product_group_create_request_t *catalogs_retail_product_group_cr
 
     catalogs_retail_product_group_create_request_t *catalogs_retail_product_group_create_request_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
     // define the local variable for catalogs_retail_product_group_create_request->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
+
+    char *description_local_str = NULL;
 
     // define the local variable for catalogs_retail_product_group_create_request->filters
     catalogs_product_group_filters_request_t *filters_local_nonprim = NULL;
 
     // define the local variable for catalogs_retail_product_group_create_request->locale
     pinterest_rest_api_catalogs_locale__e locale_local_nonprim = 0;
+
+    char *name_local_str = NULL;
 
     // catalogs_retail_product_group_create_request->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_product_group_create_requestJSON, "catalog_id");
@@ -284,20 +293,36 @@ catalogs_retail_product_group_create_request_t *catalogs_retail_product_group_cr
     }
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (name && !cJSON_IsNull(name)) name_local_str = strdup(name->valuestring);
+
     catalogs_retail_product_group_create_request_local_var = catalogs_retail_product_group_create_request_create_internal (
-        strdup(catalog_id->valuestring),
+        catalog_id_local_str,
         catalog_typeVariable,
         country ? country_local_nonprim : 0,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        description_local_str,
         filters_local_nonprim,
         locale ? locale_local_nonprim : 0,
-        strdup(name->valuestring)
+        name_local_str
         );
+
+    if (!catalogs_retail_product_group_create_request_local_var) {
+        goto end;
+    }
 
     return catalogs_retail_product_group_create_request_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
     if (country_local_nonprim) {
         country_local_nonprim = 0;
+    }
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
     }
     if (filters_local_nonprim) {
         catalogs_product_group_filters_request_free(filters_local_nonprim);
@@ -305,6 +330,10 @@ end:
     }
     if (locale_local_nonprim) {
         locale_local_nonprim = 0;
+    }
+    if (name_local_str) {
+        free(name_local_str);
+        name_local_str = NULL;
     }
     return NULL;
 

@@ -15,11 +15,13 @@
 
 typedef struct pin_update_t pin_update_t;
 
+#include "ai_disclosures_update.h"
 #include "carousel_slot.h"
 
 
 
 typedef struct pin_update_t {
+    struct ai_disclosures_update_t *ai_disclosures; //model
     char *alt_text; // string
     char *board_id; // string
     char *board_section_id; // string
@@ -32,6 +34,7 @@ typedef struct pin_update_t {
 } pin_update_t;
 
 __attribute__((deprecated)) pin_update_t *pin_update_create(
+    ai_disclosures_update_t *ai_disclosures,
     char *alt_text,
     char *board_id,
     char *board_section_id,

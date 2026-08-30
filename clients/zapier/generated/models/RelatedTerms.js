@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const RelatedTerms_related_terms_list_inner = require('../models/RelatedTerms_related_terms_list_inner');
+const RelatedTermsRelatedTermsListItems = require('../models/RelatedTermsRelatedTermsListItems');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -18,7 +18,7 @@ module.exports = {
             {
                 key: `${keyPrefix}related_terms_list`,
                 label: `[${labelPrefix}related_terms_list]`,
-                children: RelatedTerms_related_terms_list_inner.fields(`${keyPrefix}related_terms_list${!isInput ? '[]' : ''}`, isInput, true), 
+                children: RelatedTermsRelatedTermsListItems.fields(`${keyPrefix}related_terms_list${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
@@ -27,7 +27,7 @@ module.exports = {
         return {
             'id': bundle.inputData?.[`${keyPrefix}id`],
             'related_term_count': bundle.inputData?.[`${keyPrefix}related_term_count`],
-            'related_terms_list': utils.childMapping(bundle.inputData?.[`${keyPrefix}related_terms_list`], `${keyPrefix}related_terms_list`, RelatedTerms_related_terms_list_inner),
+            'related_terms_list': utils.childMapping(bundle.inputData?.[`${keyPrefix}related_terms_list`], `${keyPrefix}related_terms_list`, RelatedTermsRelatedTermsListItems),
         }
     },
 }

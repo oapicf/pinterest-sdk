@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **string** | Account ID (ad account or business ID). | [default to undefined]
 **account_name** | **string** | Account name. | [default to undefined]
-**account_type** | **string** | account type | [default to undefined]
+**account_type** | [**AudienceAccountType**](AudienceAccountType.md) | account type | [default to undefined]
 **shared_on_timestamp** | **number** | Epoch timestamp in seconds for the shared audience event | [default to undefined]
 
 ## Example

@@ -52,6 +52,7 @@ class CatalogsItemValidationDetails(Model):
     def attribute_name(self) -> NullableCatalogsItemFieldType:
         """Gets the attribute_name of this CatalogsItemValidationDetails.
 
+        Attribute that has a validation issue.  # noqa: E501
 
         :return: The attribute_name of this CatalogsItemValidationDetails.
         :rtype: NullableCatalogsItemFieldType
@@ -62,6 +63,7 @@ class CatalogsItemValidationDetails(Model):
     def attribute_name(self, attribute_name: NullableCatalogsItemFieldType):
         """Sets the attribute_name of this CatalogsItemValidationDetails.
 
+        Attribute that has a validation issue.  # noqa: E501
 
         :param attribute_name: The attribute_name of this CatalogsItemValidationDetails.
         :type attribute_name: NullableCatalogsItemFieldType

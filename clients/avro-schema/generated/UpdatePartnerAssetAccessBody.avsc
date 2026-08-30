@@ -1,16 +1,16 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "An object with a list of partner asset accesses to assign or update.",
   "name": "UpdatePartnerAssetAccessBody",
   "fields": [
     {
       "name": "accesses",
       "type": {
         "type": "array",
-        "items": "model.UpdatePartnerAssetAccessBodyAccessesInner"
+        "items": "model.UpdatePartnerAssetAccessItem"
       },
-      "doc": ""
+      "doc": "List of partner asset accesses to assign or update."
     }
   ]
 

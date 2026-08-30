@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdUpdateRequestAllOf1"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdUpdateRequestAllOf1"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdUpdateRequestAllOf1 {
+    title = AdUpdateRequestAllOf1
+    description = AdUpdateRequestAllOf1
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "The ID of this ad."
+          optional = true
+        }
+        pin_id {
+          type =  string
+          description = "Pin ID. This field may only be updated for draft ads."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdUpdateRequestAllOf1 {
+    title = AdUpdateRequestAllOf1
+    description = AdUpdateRequestAllOf1
+    implements = openapi_server.resourceTypes.AdUpdateRequestAllOf1
+
+  }
+}

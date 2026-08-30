@@ -14,7 +14,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserBusinessRoleBinding  {
   
-  @ApiModelProperty(value = "")
+ /**
+  * Ad accounts and profiles the business member/partner has access to.
+  */
+  @ApiModelProperty(value = "Ad accounts and profiles the business member/partner has access to.")
 
   private BusinessMemberAssetsSummary assetsSummary;
 
@@ -49,14 +52,14 @@ public class UserBusinessRoleBinding  {
  /**
   * Unique identifier of the business member/business partner/employer.
   */
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the business member/business partner/employer.")
+  @ApiModelProperty(example = "549755885175", value = "Unique identifier of the business member/business partner/employer.")
 
   private String id;
 
  /**
-  * This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+  * This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
   */
-  @ApiModelProperty(example = "false", value = "This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.")
+  @ApiModelProperty(example = "false", value = "This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.")
 
   private Boolean isSharedPartner;
 
@@ -67,7 +70,7 @@ public class UserBusinessRoleBinding  {
 
   private BusinessAccessUserSummary user;
  /**
-   * Get assetsSummary
+   * Ad accounts and profiles the business member/partner has access to.
    * @return assetsSummary
   **/
   @JsonProperty("assets_summary")
@@ -180,7 +183,7 @@ public class UserBusinessRoleBinding  {
   }
 
  /**
-   * This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. &lt;br&gt;If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. &lt;br&gt;If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to.
+   * This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to.
    * @return isSharedPartner
   **/
   @JsonProperty("is_shared_partner")
@@ -261,10 +264,7 @@ public class UserBusinessRoleBinding  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

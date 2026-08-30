@@ -1,14 +1,9 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Object describing an item record or error",
+  "doc": "Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).",
   "name": "ItemResponse",
   "fields": [
-    {
-      "name": "catalog_type",
-      "type": "model.CatalogsType",
-      "doc": ""
-    },
     {
       "name": "attributes",
       "type": ["null", "model.CatalogsCreativeAssetsAttributes"],
@@ -16,10 +11,32 @@
       "default": null
     },
     {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "ItemResponse_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
       "name": "item_id",
       "type": ["null", "string"],
       "doc": "The catalog item id in the merchant namespace",
       "default": null
+    },
+    {
+      "name": "item_response_kind",
+      "type": {
+        "type": "enum",
+        "name": "ItemResponse_itemUnderscoreresponseUnderscorekind",
+        "symbols": [
+          "creative_assets_item_error"
+        ]
+      },
+      "doc": "Discriminator literal identifying this leaf inside an `ItemResponse` payload."
     },
     {
       "name": "pins",

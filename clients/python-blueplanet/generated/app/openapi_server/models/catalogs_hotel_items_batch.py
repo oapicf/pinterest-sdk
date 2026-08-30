@@ -7,8 +7,8 @@ from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
 from app.openapi_server.models.batch_operation_status import BatchOperationStatus  # noqa: F401,E501
-from app.openapi_server.models.catalogs_type import CatalogsType  # noqa: F401,E501
 from app.openapi_server.models.hotel_processing_record import HotelProcessingRecord  # noqa: F401,E501
+import re  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -18,13 +18,13 @@ class CatalogsHotelItemsBatch(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, batch_id: str=None, catalog_type: CatalogsType=None, completed_time: datetime=None, created_time: datetime=None, items: List[HotelProcessingRecord]=None, status: BatchOperationStatus=None):  # noqa: E501
+    def __init__(self, batch_id: str=None, catalog_type: str=None, completed_time: datetime=None, created_time: datetime=None, items: List[HotelProcessingRecord]=None, status: BatchOperationStatus=None):  # noqa: E501
         """CatalogsHotelItemsBatch - a model defined in Swagger
 
         :param batch_id: The batch_id of this CatalogsHotelItemsBatch.  # noqa: E501
         :type batch_id: str
         :param catalog_type: The catalog_type of this CatalogsHotelItemsBatch.  # noqa: E501
-        :type catalog_type: CatalogsType
+        :type catalog_type: str
         :param completed_time: The completed_time of this CatalogsHotelItemsBatch.  # noqa: E501
         :type completed_time: datetime
         :param created_time: The created_time of this CatalogsHotelItemsBatch.  # noqa: E501
@@ -36,7 +36,7 @@ class CatalogsHotelItemsBatch(Model):
         """
         self.swagger_types = {
             'batch_id': str,
-            'catalog_type': CatalogsType,
+            'catalog_type': str,
             'completed_time': datetime,
             'created_time': datetime,
             'items': List[HotelProcessingRecord],
@@ -90,29 +90,35 @@ class CatalogsHotelItemsBatch(Model):
         :param batch_id: The batch_id of this CatalogsHotelItemsBatch.
         :type batch_id: str
         """
+        if batch_id is not None and not re.search(r'^\d+$', batch_id):  # noqa: E501
+            raise ValueError("Invalid value for `batch_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._batch_id = batch_id
 
     @property
-    def catalog_type(self) -> CatalogsType:
+    def catalog_type(self) -> str:
         """Gets the catalog_type of this CatalogsHotelItemsBatch.
 
 
         :return: The catalog_type of this CatalogsHotelItemsBatch.
-        :rtype: CatalogsType
+        :rtype: str
         """
         return self._catalog_type
 
     @catalog_type.setter
-    def catalog_type(self, catalog_type: CatalogsType):
+    def catalog_type(self, catalog_type: str):
         """Sets the catalog_type of this CatalogsHotelItemsBatch.
 
 
         :param catalog_type: The catalog_type of this CatalogsHotelItemsBatch.
-        :type catalog_type: CatalogsType
+        :type catalog_type: str
         """
-        if catalog_type is None:
-            raise ValueError("Invalid value for `catalog_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["HOTEL"]  # noqa: E501
+        if catalog_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `catalog_type` ({0}), must be one of {1}"
+                .format(catalog_type, allowed_values)
+            )
 
         self._catalog_type = catalog_type
 

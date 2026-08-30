@@ -365,38 +365,7 @@ public class CatalogsFeedValidationWarnings   {
 
   private Integer EXPIRATION_DATE_INVALID;
 
-
-public enum FETCHSAMESIGNATUREEnum {
-
-    @JsonProperty("1") NUMBER_1(Integer.valueOf(1));
-
-
-    private Integer value;
-
-    FETCHSAMESIGNATUREEnum(Integer v) {
-        value = v;
-    }
-
-    public Integer value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static FETCHSAMESIGNATUREEnum fromValue(Integer value) {
-        for (FETCHSAMESIGNATUREEnum b : FETCHSAMESIGNATUREEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
+  private Integer FETCH_SAME_SIGNATURE;
 
   private Integer GENDER_INVALID;
 
@@ -3796,7 +3765,7 @@ public enum FETCHSAMESIGNATUREEnum {
   /**
    * Ingestion completed early because there are no changes to your feed since the last successful update.
    **/
-  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public CatalogsFeedValidationWarnings FETCH_SAME_SIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
     return this;
   }
@@ -3804,10 +3773,10 @@ public enum FETCHSAMESIGNATUREEnum {
   
   @ApiModelProperty(value = "Ingestion completed early because there are no changes to your feed since the last successful update.")
   @JsonProperty("FETCH_SAME_SIGNATURE")
-  public FETCHSAMESIGNATUREEnum getFETCHSAMESIGNATURE() {
+  public Integer getFETCHSAMESIGNATURE() {
     return FETCH_SAME_SIGNATURE;
   }
-  public void setFETCHSAMESIGNATURE(FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE) {
+  public void setFETCHSAMESIGNATURE(Integer FETCH_SAME_SIGNATURE) {
     this.FETCH_SAME_SIGNATURE = FETCH_SAME_SIGNATURE;
   }
 
@@ -4930,10 +4899,7 @@ public enum FETCHSAMESIGNATUREEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -24,7 +24,7 @@ void
 IntegrationLogClientRequest::__init()
 {
 	//host = std::string();
-	//method = std::string();
+	//method = new HttpMethod();
 	//path = std::string();
 	//new std::map()std::map> request_headers;
 	//new std::map()std::map> response_headers;
@@ -88,9 +88,12 @@ IntegrationLogClientRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&method, node, "std::string", "");
+		if (isprimitive("HttpMethod")) {
+			jsonToValue(&method, node, "HttpMethod", "HttpMethod");
 		} else {
+			
+			HttpMethod* obj = static_cast<HttpMethod*> (&method);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -161,11 +164,16 @@ IntegrationLogClientRequest::toJson()
 	}
 	const gchar *hostKey = "host";
 	json_object_set_member(pJsonObject, hostKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getMethod();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("HttpMethod")) {
+		HttpMethod obj = getMethod();
+		node = converttoJson(&obj, "HttpMethod", "");
 	}
 	else {
+		
+		HttpMethod obj = static_cast<HttpMethod> (getMethod());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *methodKey = "method";
@@ -246,14 +254,14 @@ IntegrationLogClientRequest::setHost(std::string  host)
 	this->host = host;
 }
 
-std::string
+HttpMethod
 IntegrationLogClientRequest::getMethod()
 {
 	return method;
 }
 
 void
-IntegrationLogClientRequest::setMethod(std::string  method)
+IntegrationLogClientRequest::setMethod(HttpMethod  method)
 {
 	this->method = method;
 }

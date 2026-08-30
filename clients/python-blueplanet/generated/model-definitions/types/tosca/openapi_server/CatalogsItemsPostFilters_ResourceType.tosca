@@ -10,7 +10,6 @@ imports {
   CatalogsCreativeAssetsItemsPostFilter = openapi_server.resourceTypes.CatalogsCreativeAssetsItemsPostFilter
   CatalogsHotelItemsPostFilter = openapi_server.resourceTypes.CatalogsHotelItemsPostFilter
   CatalogsRetailItemsPostFilter = openapi_server.resourceTypes.CatalogsRetailItemsPostFilter
-  CatalogsType = openapi_server.resourceTypes.CatalogsType
   import re = openapi_server.resourceTypes.import re
 }
 resourceTypes {
@@ -20,15 +19,16 @@ resourceTypes {
     description = CatalogsItemsPostFilters
     derivedFrom = Root
     properties {
-        catalog_type {
-          type = CatalogsType
-          description = ""
-          optional = true
-        }
         catalog_id {
           type =  string
           description = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog"
           optional = false
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
         }
         item_ids {
           type = array

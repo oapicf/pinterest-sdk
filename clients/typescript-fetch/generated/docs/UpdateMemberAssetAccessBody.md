@@ -1,13 +1,13 @@
 
 # UpdateMemberAssetAccessBody
 
-An object with a list of all the new accesses.
+An object with a list of all the new member asset accesses.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`accesses` | [Array&lt;UpdateMemberAssetAccessBodyAccessesInner&gt;](UpdateMemberAssetAccessBodyAccessesInner.md)
+`accesses` | [Array&lt;UpdateMemberAssetAccessItem&gt;](UpdateMemberAssetAccessItem.md)
 
 ## Example
 

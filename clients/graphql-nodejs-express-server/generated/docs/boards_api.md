@@ -19,14 +19,14 @@ Method | HTTP request | Description
 
 <a name="BoardSectionsCreate"></a>
 # **BoardSectionsCreate**
-> BoardSection BoardSectionsCreate(boardId, boardSection, adAccountId)
+> BoardSection BoardSectionsCreate(boardId, boardSectionCreate, adAccountId)
 
 Create board section
 
 Create a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
 <a name="BoardSectionsDelete"></a>
 # **BoardSectionsDelete**
-> BoardSectionsDelete(boardId, sectionId, adAccountId)
+> BoardSection BoardSectionsDelete(boardId, sectionId, adAccountId)
 
 Delete board section
 
@@ -47,7 +47,7 @@ List Pins on board section
 Get a list of the Pins on a board section of a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
 <a name="BoardSectionsUpdate"></a>
 # **BoardSectionsUpdate**
-> BoardSection BoardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+> BoardSection BoardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
 
 Update board section
 
@@ -61,7 +61,7 @@ Create board
 Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 <a name="BoardsDelete"></a>
 # **BoardsDelete**
-> BoardsDelete(boardId, adAccountId)
+> Board BoardsDelete(boardId, adAccountId)
 
 Delete board
 
@@ -82,7 +82,7 @@ List boards
 Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 <a name="BoardsListPins"></a>
 # **BoardsListPins**
-> BoardsListPins200Response BoardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+> BoardsListPins200Response BoardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
 
 List Pins on board
 

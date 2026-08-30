@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SchedulesCreate200ResponseInnerDataOneOf"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SchedulesCreate200ResponseInnerDataOneOf"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PinterestLibError = openapi_server.resourceTypes.PinterestLibError
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  SchedulesCreate200ResponseInnerDataOneOf {
+    title = SchedulesCreate200ResponseInnerDataOneOf
+    description = SchedulesCreate200ResponseInnerDataOneOf
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        schedule_id {
+          type =  string
+          description = "Schedule ID."
+          optional = true
+        }
+        exceptions {
+          type = PinterestLibError
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SchedulesCreate200ResponseInnerDataOneOf {
+    title = SchedulesCreate200ResponseInnerDataOneOf
+    description = SchedulesCreate200ResponseInnerDataOneOf
+    implements = openapi_server.resourceTypes.SchedulesCreate200ResponseInnerDataOneOf
+
+  }
+}

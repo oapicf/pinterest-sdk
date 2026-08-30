@@ -12,12 +12,15 @@ static bulk_upsert_request_update_t *bulk_upsert_request_update_create_internal(
     list_t *catalog_product_groups,
     list_t *keywords,
     list_t *labels,
-    list_t *product_groups
+    list_t *product_groups,
+    list_t *schedules
     ) {
     bulk_upsert_request_update_t *bulk_upsert_request_update_local_var = malloc(sizeof(bulk_upsert_request_update_t));
     if (!bulk_upsert_request_update_local_var) {
         return NULL;
     }
+    memset(bulk_upsert_request_update_local_var, 0, sizeof(bulk_upsert_request_update_t));
+    bulk_upsert_request_update_local_var->_library_owned = 1;
     bulk_upsert_request_update_local_var->ad_groups = ad_groups;
     bulk_upsert_request_update_local_var->ads = ads;
     bulk_upsert_request_update_local_var->campaigns = campaigns;
@@ -25,8 +28,7 @@ static bulk_upsert_request_update_t *bulk_upsert_request_update_create_internal(
     bulk_upsert_request_update_local_var->keywords = keywords;
     bulk_upsert_request_update_local_var->labels = labels;
     bulk_upsert_request_update_local_var->product_groups = product_groups;
-
-    bulk_upsert_request_update_local_var->_library_owned = 1;
+    bulk_upsert_request_update_local_var->schedules = schedules;
     return bulk_upsert_request_update_local_var;
 }
 
@@ -37,17 +39,22 @@ __attribute__((deprecated)) bulk_upsert_request_update_t *bulk_upsert_request_up
     list_t *catalog_product_groups,
     list_t *keywords,
     list_t *labels,
-    list_t *product_groups
+    list_t *product_groups,
+    list_t *schedules
     ) {
-    return bulk_upsert_request_update_create_internal (
+    bulk_upsert_request_update_t *result = bulk_upsert_request_update_create_internal (
         ad_groups,
         ads,
         campaigns,
         catalog_product_groups,
         keywords,
         labels,
-        product_groups
+        product_groups,
+        schedules
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void bulk_upsert_request_update_free(bulk_upsert_request_update_t *bulk_upsert_request_update) {
@@ -82,14 +89,14 @@ void bulk_upsert_request_update_free(bulk_upsert_request_update_t *bulk_upsert_r
     }
     if (bulk_upsert_request_update->catalog_product_groups) {
         list_ForEach(listEntry, bulk_upsert_request_update->catalog_product_groups) {
-            catalogs_product_groups_update_request_free(listEntry->data);
+            bulk_upsert_request_update_catalog_product_groups_items_free(listEntry->data);
         }
         list_freeList(bulk_upsert_request_update->catalog_product_groups);
         bulk_upsert_request_update->catalog_product_groups = NULL;
     }
     if (bulk_upsert_request_update->keywords) {
         list_ForEach(listEntry, bulk_upsert_request_update->keywords) {
-            keyword_update_free(listEntry->data);
+            keyword_update_generated_free(listEntry->data);
         }
         list_freeList(bulk_upsert_request_update->keywords);
         bulk_upsert_request_update->keywords = NULL;
@@ -107,6 +114,13 @@ void bulk_upsert_request_update_free(bulk_upsert_request_update_t *bulk_upsert_r
         }
         list_freeList(bulk_upsert_request_update->product_groups);
         bulk_upsert_request_update->product_groups = NULL;
+    }
+    if (bulk_upsert_request_update->schedules) {
+        list_ForEach(listEntry, bulk_upsert_request_update->schedules) {
+            schedule_update_request_free(listEntry->data);
+        }
+        list_freeList(bulk_upsert_request_update->schedules);
+        bulk_upsert_request_update->schedules = NULL;
     }
     free(bulk_upsert_request_update);
 }
@@ -184,7 +198,7 @@ cJSON *bulk_upsert_request_update_convertToJSON(bulk_upsert_request_update_t *bu
     listEntry_t *catalog_product_groupsListEntry;
     if (bulk_upsert_request_update->catalog_product_groups) {
     list_ForEach(catalog_product_groupsListEntry, bulk_upsert_request_update->catalog_product_groups) {
-    cJSON *itemLocal = catalogs_product_groups_update_request_convertToJSON(catalog_product_groupsListEntry->data);
+    cJSON *itemLocal = bulk_upsert_request_update_catalog_product_groups_items_convertToJSON(catalog_product_groupsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -204,7 +218,7 @@ cJSON *bulk_upsert_request_update_convertToJSON(bulk_upsert_request_update_t *bu
     listEntry_t *keywordsListEntry;
     if (bulk_upsert_request_update->keywords) {
     list_ForEach(keywordsListEntry, bulk_upsert_request_update->keywords) {
-    cJSON *itemLocal = keyword_update_convertToJSON(keywordsListEntry->data);
+    cJSON *itemLocal = keyword_update_generated_convertToJSON(keywordsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -253,6 +267,26 @@ cJSON *bulk_upsert_request_update_convertToJSON(bulk_upsert_request_update_t *bu
     }
     }
 
+
+    // bulk_upsert_request_update->schedules
+    if(bulk_upsert_request_update->schedules) {
+    cJSON *schedules = cJSON_AddArrayToObject(item, "schedules");
+    if(schedules == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *schedulesListEntry;
+    if (bulk_upsert_request_update->schedules) {
+    list_ForEach(schedulesListEntry, bulk_upsert_request_update->schedules) {
+    cJSON *itemLocal = schedule_update_request_convertToJSON(schedulesListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(schedules, itemLocal);
+    }
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -285,6 +319,9 @@ bulk_upsert_request_update_t *bulk_upsert_request_update_parseFromJSON(cJSON *bu
 
     // define the local list for bulk_upsert_request_update->product_groups
     list_t *product_groupsList = NULL;
+
+    // define the local list for bulk_upsert_request_update->schedules
+    list_t *schedulesList = NULL;
 
     // bulk_upsert_request_update->ad_groups
     cJSON *ad_groups = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_updateJSON, "ad_groups");
@@ -376,7 +413,7 @@ bulk_upsert_request_update_t *bulk_upsert_request_update_parseFromJSON(cJSON *bu
         if(!cJSON_IsObject(catalog_product_groups_local_nonprimitive)){
             goto end;
         }
-        catalogs_product_groups_update_request_t *catalog_product_groupsItem = catalogs_product_groups_update_request_parseFromJSON(catalog_product_groups_local_nonprimitive);
+        bulk_upsert_request_update_catalog_product_groups_items_t *catalog_product_groupsItem = bulk_upsert_request_update_catalog_product_groups_items_parseFromJSON(catalog_product_groups_local_nonprimitive);
 
         list_addElement(catalog_product_groupsList, catalog_product_groupsItem);
     }
@@ -400,7 +437,7 @@ bulk_upsert_request_update_t *bulk_upsert_request_update_parseFromJSON(cJSON *bu
         if(!cJSON_IsObject(keywords_local_nonprimitive)){
             goto end;
         }
-        keyword_update_t *keywordsItem = keyword_update_parseFromJSON(keywords_local_nonprimitive);
+        keyword_update_generated_t *keywordsItem = keyword_update_generated_parseFromJSON(keywords_local_nonprimitive);
 
         list_addElement(keywordsList, keywordsItem);
     }
@@ -454,6 +491,31 @@ bulk_upsert_request_update_t *bulk_upsert_request_update_parseFromJSON(cJSON *bu
     }
     }
 
+    // bulk_upsert_request_update->schedules
+    cJSON *schedules = cJSON_GetObjectItemCaseSensitive(bulk_upsert_request_updateJSON, "schedules");
+    if (cJSON_IsNull(schedules)) {
+        schedules = NULL;
+    }
+    if (schedules) { 
+    cJSON *schedules_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(schedules)){
+        goto end; //nonprimitive container
+    }
+
+    schedulesList = list_createList();
+
+    cJSON_ArrayForEach(schedules_local_nonprimitive,schedules )
+    {
+        if(!cJSON_IsObject(schedules_local_nonprimitive)){
+            goto end;
+        }
+        schedule_update_request_t *schedulesItem = schedule_update_request_parseFromJSON(schedules_local_nonprimitive);
+
+        list_addElement(schedulesList, schedulesItem);
+    }
+    }
+
+
 
     bulk_upsert_request_update_local_var = bulk_upsert_request_update_create_internal (
         ad_groups ? ad_groupsList : NULL,
@@ -462,8 +524,13 @@ bulk_upsert_request_update_t *bulk_upsert_request_update_parseFromJSON(cJSON *bu
         catalog_product_groups ? catalog_product_groupsList : NULL,
         keywords ? keywordsList : NULL,
         labels ? labelsList : NULL,
-        product_groups ? product_groupsList : NULL
+        product_groups ? product_groupsList : NULL,
+        schedules ? schedulesList : NULL
         );
+
+    if (!bulk_upsert_request_update_local_var) {
+        goto end;
+    }
 
     return bulk_upsert_request_update_local_var;
 end:
@@ -497,7 +564,7 @@ end:
     if (catalog_product_groupsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, catalog_product_groupsList) {
-            catalogs_product_groups_update_request_free(listEntry->data);
+            bulk_upsert_request_update_catalog_product_groups_items_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(catalog_product_groupsList);
@@ -506,7 +573,7 @@ end:
     if (keywordsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, keywordsList) {
-            keyword_update_free(listEntry->data);
+            keyword_update_generated_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(keywordsList);
@@ -529,6 +596,15 @@ end:
         }
         list_freeList(product_groupsList);
         product_groupsList = NULL;
+    }
+    if (schedulesList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, schedulesList) {
+            schedule_update_request_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(schedulesList);
+        schedulesList = NULL;
     }
     return NULL;
 

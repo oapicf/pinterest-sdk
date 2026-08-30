@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** |  | [optional] |
-| **items** | [**Array&lt;PromotionResponse&gt;**](PromotionResponse.md) |  |  |
+| **items** | [**Array&lt;Promotion&gt;**](Promotion.md) |  |  |
 
 ## Example
 

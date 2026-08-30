@@ -7,7 +7,7 @@ using namespace Tiny;
 Business_assets_get_200_response::Business_assets_get_200_response()
 {
 	bookmark = std::string();
-	items = std::list<GetBusinessAssetsResponse>();
+	items = std::list<BusinessAssets>();
 }
 
 Business_assets_get_200_response::Business_assets_get_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Business_assets_get_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<GetBusinessAssetsResponse> items_list;
-        GetBusinessAssetsResponse element;
+        std::list<BusinessAssets> items_list;
+        BusinessAssets element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Business_assets_get_200_response::toJson()
 
 
 
-    std::list<GetBusinessAssetsResponse> items_list = getItems();
+    std::list<BusinessAssets> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        GetBusinessAssetsResponse obj = var;
+        BusinessAssets obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Business_assets_get_200_response::getBookmark()
 }
 
 void
-Business_assets_get_200_response::setBookmark(std::string  bookmark)
+Business_assets_get_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<GetBusinessAssetsResponse>
+std::list<BusinessAssets>
 Business_assets_get_200_response::getItems()
 {
 	return items;
 }
 
 void
-Business_assets_get_200_response::setItems(std::list <GetBusinessAssetsResponse> items)
+Business_assets_get_200_response::setItems(std::list<BusinessAssets> items)
 {
 	this->items = items;
 }

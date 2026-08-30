@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CatalogsRetailFeedsUpdateRequest._
 
 case class CatalogsRetailFeedsUpdateRequest (
-  catalogType: CatalogsType,
+  catalogType: CatalogType,
 credentials: Option[CatalogsFeedCredentials],
 defaultAvailability: Option[ProductAvailabilityType],
 defaultCurrency: Option[NullableCurrency],
@@ -26,6 +26,25 @@ status: Option[CatalogsStatus])
 
 object CatalogsRetailFeedsUpdateRequest {
   import DateTimeCodecs._
+  sealed trait CatalogType
+  case object RETAIL extends CatalogType
+
+  object CatalogType {
+    def toCatalogType(s: String): Option[CatalogType] = s match {
+      case "RETAIL" => Some(RETAIL)
+      case _ => None
+    }
+
+    def fromCatalogType(x: CatalogType): String = x match {
+      case RETAIL => "RETAIL"
+    }
+  }
+
+  implicit val CatalogTypeEnumEncoder: EncodeJson[CatalogType] =
+    EncodeJson[CatalogType](is => StringEncodeJson(CatalogType.fromCatalogType(is)))
+
+  implicit val CatalogTypeEnumDecoder: DecodeJson[CatalogType] =
+    DecodeJson.optionDecoder[CatalogType](n => n.string.flatMap(jStr => CatalogType.toCatalogType(jStr)), "CatalogType failed to de-serialize")
 
   implicit val CatalogsRetailFeedsUpdateRequestCodecJson: CodecJson[CatalogsRetailFeedsUpdateRequest] = CodecJson.derive[CatalogsRetailFeedsUpdateRequest]
   implicit val CatalogsRetailFeedsUpdateRequestDecoder: EntityDecoder[CatalogsRetailFeedsUpdateRequest] = jsonOf[CatalogsRetailFeedsUpdateRequest]

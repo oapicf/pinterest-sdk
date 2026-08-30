@@ -56,8 +56,6 @@ type CatalogsProductGroupFilterKeys struct {
 
 	GOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria `json:"GOOGLE_PRODUCT_CATEGORY_0"`
 
-	PRODUCT_GROUP CatalogsProductGroupMultipleStringCriteria `json:"PRODUCT_GROUP"`
-
 	CUSTOMNUMBER0 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_0"`
 
 	CUSTOMNUMBER1 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_1"`
@@ -69,4 +67,8 @@ type CatalogsProductGroupFilterKeys struct {
 	CUSTOMNUMBER4 CatalogsProductGroupUint32Criteria `json:"CUSTOM_NUMBER_4"`
 
 	TITLE_KEYWORDS CatalogsProductGroupMultipleStringCriteria `json:"TITLE_KEYWORDS"`
+
+	PINTEREST_PRODUCT_CATEGORIES CatalogsProductGroupMultiplePinterestProductCategoryCriteria `json:"PINTEREST_PRODUCT_CATEGORIES"`
+
+	PRODUCT_GROUP CatalogsProductGroupMultipleStringCriteria `json:"PRODUCT_GROUP"`
 }

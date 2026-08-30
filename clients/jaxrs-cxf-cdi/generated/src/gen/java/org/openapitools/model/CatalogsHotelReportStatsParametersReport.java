@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.model.CatalogsReportDistributionIssueFilter;
@@ -26,10 +25,14 @@ import java.util.Objects;
 
 public class CatalogsHotelReportStatsParametersReport   {
   
+  private String feedId;
+
+  private String processingResultId;
+
 
 public enum ReportTypeEnum {
 
-    @JsonProperty("FEED_INGESTION_ISSUES") FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), @JsonProperty("DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
+    @JsonProperty("DISTRIBUTION_ISSUES") DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
 
 
     private String value;
@@ -59,29 +62,7 @@ public enum ReportTypeEnum {
 
   private ReportTypeEnum reportType;
 
-  private String feedId;
-
-  private String processingResultId;
-
   private String catalogId;
-
-  /**
-   **/
-  public CatalogsHotelReportStatsParametersReport reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
 
   /**
    * ID of the feed entity.
@@ -123,6 +104,25 @@ public enum ReportTypeEnum {
 
 
   /**
+   **/
+  public CatalogsHotelReportStatsParametersReport reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("report_type")
+  @NotNull
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+
+  /**
    * Unique identifier of a catalog. If not given, oldest catalog will be used
    **/
   public CatalogsHotelReportStatsParametersReport catalogId(String catalogId) {
@@ -151,15 +151,15 @@ public enum ReportTypeEnum {
       return false;
     }
     CatalogsHotelReportStatsParametersReport catalogsHotelReportStatsParametersReport = (CatalogsHotelReportStatsParametersReport) o;
-    return Objects.equals(this.reportType, catalogsHotelReportStatsParametersReport.reportType) &&
-        Objects.equals(this.feedId, catalogsHotelReportStatsParametersReport.feedId) &&
+    return Objects.equals(this.feedId, catalogsHotelReportStatsParametersReport.feedId) &&
         Objects.equals(this.processingResultId, catalogsHotelReportStatsParametersReport.processingResultId) &&
+        Objects.equals(this.reportType, catalogsHotelReportStatsParametersReport.reportType) &&
         Objects.equals(this.catalogId, catalogsHotelReportStatsParametersReport.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId, catalogId);
+    return Objects.hash(feedId, processingResultId, reportType, catalogId);
   }
 
   @Override
@@ -167,9 +167,9 @@ public enum ReportTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelReportStatsParametersReport {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -180,10 +180,7 @@ public enum ReportTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

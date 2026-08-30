@@ -1,6 +1,6 @@
 const utils = require('../utils/utils');
 const NonNullableCatalogsCurrency = require('../models/NonNullableCatalogsCurrency');
-const NonNullableProductAvailabilityType = require('../models/NonNullableProductAvailabilityType');
+const ProductAvailability = require('../models/ProductAvailability');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -8,7 +8,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}availability`,
-                ...NonNullableProductAvailabilityType.fields(`${keyPrefix}availability`, isInput),
+                ...ProductAvailability.fields(`${keyPrefix}availability`, isInput),
             },
             {
                 key: `${keyPrefix}currency`,

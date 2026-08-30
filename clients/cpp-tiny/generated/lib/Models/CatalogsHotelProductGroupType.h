@@ -2,7 +2,7 @@
 /*
  * CatalogsHotelProductGroupType.h
  *
- * &lt;p&gt;Catalog hotel product group type&lt;/p&gt; &lt;p&gt;MERCHANT_CREATED: Product groups created by merchants. &lt;br&gt;ALL_LISTINGS: Includes every hotel item in your catalog.
+ * Catalog hotel product group type
  */
 
 #ifndef TINY_CPP_CLIENT_CatalogsHotelProductGroupType_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief <p>Catalog hotel product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_LISTINGS: Includes every hotel item in your catalog.
+/*! \brief Catalog hotel product group type
  *
  *  \ingroup Models
  *

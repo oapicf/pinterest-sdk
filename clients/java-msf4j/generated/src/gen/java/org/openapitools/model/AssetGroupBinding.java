@@ -8,16 +8,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BusinessAccessUserSummary;
 
 /**
  * AssetGroupBinding
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AssetGroupBinding   {
   @JsonProperty("ad_accounts_ids")
-  private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = null;
+  private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = new ArrayList<>();
 
   @JsonProperty("asset_group_description")
   private String assetGroupDescription;
@@ -26,10 +25,10 @@ public class AssetGroupBinding   {
   private String assetGroupName;
 
   @JsonProperty("asset_group_types")
-  private List<String> assetGroupTypes = null;
+  private List<String> assetGroupTypes = new ArrayList<>();
 
   @JsonProperty("catalogs_ids")
-  private List<@Pattern(regexp = "^\\d+$")String> catalogsIds = null;
+  private List<@Pattern(regexp = "^\\d+$")String> catalogsIds = new ArrayList<>();
 
   @JsonProperty("created_by")
   private BusinessAccessUserSummary createdBy;
@@ -44,7 +43,7 @@ public class AssetGroupBinding   {
   private BusinessAccessUserSummary owner;
 
   @JsonProperty("profiles_ids")
-  private List<@Pattern(regexp = "^\\d+$")String> profilesIds = null;
+  private List<@Pattern(regexp = "^\\d+$")String> profilesIds = new ArrayList<>();
 
   @JsonProperty("updated_time")
   private Integer updatedTime;
@@ -55,9 +54,6 @@ public class AssetGroupBinding   {
   }
 
   public AssetGroupBinding addAdAccountsIdsItem(String adAccountsIdsItem) {
-    if (this.adAccountsIds == null) {
-      this.adAccountsIds = ;
-    }
     this.adAccountsIds.add(adAccountsIdsItem);
     return this;
   }
@@ -66,7 +62,7 @@ public class AssetGroupBinding   {
    * A list of ad account IDs under the asset group
    * @return adAccountsIds
   **/
-  @ApiModelProperty(example = "[\"549755885175\"]", value = "A list of ad account IDs under the asset group")
+  @ApiModelProperty(example = "[\"549755885175\"]", required = true, value = "A list of ad account IDs under the asset group")
   public List<@Pattern(regexp = "^\\d+$")String> getAdAccountsIds() {
     return adAccountsIds;
   }
@@ -84,7 +80,7 @@ public class AssetGroupBinding   {
    * Asset group description
    * @return assetGroupDescription
   **/
-  @ApiModelProperty(example = "Asset group that has ad accounts used in Canada", value = "Asset group description")
+  @ApiModelProperty(example = "Asset group that has ad accounts used in Canada", required = true, value = "Asset group description")
   public String getAssetGroupDescription() {
     return assetGroupDescription;
   }
@@ -102,7 +98,7 @@ public class AssetGroupBinding   {
    * Asset Group name
    * @return assetGroupName
   **/
-  @ApiModelProperty(example = "Canada Ad Accounts", value = "Asset Group name")
+  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
   public String getAssetGroupName() {
     return assetGroupName;
   }
@@ -117,9 +113,6 @@ public class AssetGroupBinding   {
   }
 
   public AssetGroupBinding addAssetGroupTypesItem(String assetGroupTypesItem) {
-    if (this.assetGroupTypes == null) {
-      this.assetGroupTypes = new ArrayList<>();
-    }
     this.assetGroupTypes.add(assetGroupTypesItem);
     return this;
   }
@@ -128,7 +121,7 @@ public class AssetGroupBinding   {
    * Asset group types
    * @return assetGroupTypes
   **/
-  @ApiModelProperty(example = "[\"LOCATION_OR_LANGUAGE\"]", value = "Asset group types")
+  @ApiModelProperty(example = "[\"LOCATION_OR_LANGUAGE\"]", required = true, value = "Asset group types")
   public List<String> getAssetGroupTypes() {
     return assetGroupTypes;
   }
@@ -143,9 +136,6 @@ public class AssetGroupBinding   {
   }
 
   public AssetGroupBinding addCatalogsIdsItem(String catalogsIdsItem) {
-    if (this.catalogsIds == null) {
-      this.catalogsIds = ;
-    }
     this.catalogsIds.add(catalogsIdsItem);
     return this;
   }
@@ -154,7 +144,7 @@ public class AssetGroupBinding   {
    * A list of catalog IDs under asset group
    * @return catalogsIds
   **/
-  @ApiModelProperty(example = "[\"4836859046874\"]", value = "A list of catalog IDs under asset group")
+  @ApiModelProperty(example = "[\"4836859046874\"]", required = true, value = "A list of catalog IDs under asset group")
   public List<@Pattern(regexp = "^\\d+$")String> getCatalogsIds() {
     return catalogsIds;
   }
@@ -172,7 +162,7 @@ public class AssetGroupBinding   {
    * The data of the user that created the asset group.
    * @return createdBy
   **/
-  @ApiModelProperty(value = "The data of the user that created the asset group.")
+  @ApiModelProperty(required = true, value = "The data of the user that created the asset group.")
   public BusinessAccessUserSummary getCreatedBy() {
     return createdBy;
   }
@@ -190,7 +180,7 @@ public class AssetGroupBinding   {
    * The creation time of the asset group
    * @return createdTime
   **/
-  @ApiModelProperty(example = "1646767577816", value = "The creation time of the asset group")
+  @ApiModelProperty(example = "1646767577816", required = true, value = "The creation time of the asset group")
   public Integer getCreatedTime() {
     return createdTime;
   }
@@ -208,7 +198,7 @@ public class AssetGroupBinding   {
    * Asset Group ID.
    * @return id
   **/
-  @ApiModelProperty(example = "666791336903426391", value = "Asset Group ID.")
+  @ApiModelProperty(example = "666791336903426391", required = true, value = "Asset Group ID.")
   public String getId() {
     return id;
   }
@@ -226,7 +216,7 @@ public class AssetGroupBinding   {
    * The data of the business that owns the asset group.
    * @return owner
   **/
-  @ApiModelProperty(value = "The data of the business that owns the asset group.")
+  @ApiModelProperty(required = true, value = "The data of the business that owns the asset group.")
   public BusinessAccessUserSummary getOwner() {
     return owner;
   }
@@ -241,9 +231,6 @@ public class AssetGroupBinding   {
   }
 
   public AssetGroupBinding addProfilesIdsItem(String profilesIdsItem) {
-    if (this.profilesIds == null) {
-      this.profilesIds = ;
-    }
     this.profilesIds.add(profilesIdsItem);
     return this;
   }
@@ -252,7 +239,7 @@ public class AssetGroupBinding   {
    * A list of profile IDs under asset group
    * @return profilesIds
   **/
-  @ApiModelProperty(example = "[\"630433785246278264\"]", value = "A list of profile IDs under asset group")
+  @ApiModelProperty(example = "[\"630433785246278264\"]", required = true, value = "A list of profile IDs under asset group")
   public List<@Pattern(regexp = "^\\d+$")String> getProfilesIds() {
     return profilesIds;
   }
@@ -270,7 +257,7 @@ public class AssetGroupBinding   {
    * The last update time of the asset group
    * @return updatedTime
   **/
-  @ApiModelProperty(example = "1646767577816", value = "The last update time of the asset group")
+  @ApiModelProperty(example = "1646767577816", required = true, value = "The last update time of the asset group")
   public Integer getUpdatedTime() {
     return updatedTime;
   }
@@ -332,10 +319,7 @@ public class AssetGroupBinding   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

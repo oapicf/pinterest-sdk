@@ -1,0 +1,16 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Type of network connection.",
+  "name": "NetworkType",
+  "symbols": [
+    "wifi",
+    "cellular_2g",
+    "cellular_3g",
+    "cellular_4g",
+    "cellular_5g",
+    "cellular_6g",
+    "ethernet",
+    "unknown"
+  ]
+}

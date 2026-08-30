@@ -8,16 +8,24 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
-import org.openapitools.client.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFormat
 import org.openapitools.client.models.CatalogsStatus
 import org.openapitools.client.models.Country
@@ -69,13 +77,13 @@ data class CatalogsFeedsCreateRequest (
     val defaultCurrency: NullableCurrency? = null,
 
     @Json(name = "default_locale")
-    val defaultLocale: CatalogsFeedsCreateRequestDefaultLocale? = null,
+    val defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale? = null,
 
     @Json(name = "preferred_processing_schedule")
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
 
     @Json(name = "status")
-    val status: CatalogsStatus? = "ACTIVE"
+    val status: CatalogsStatus? = null
 
 ) {
 

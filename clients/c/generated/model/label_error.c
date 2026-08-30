@@ -6,28 +6,31 @@
 
 
 static label_error_t *label_error_create_internal(
-    label_t *data,
+    label_error_data_t *data,
     list_t *error_messages
     ) {
     label_error_t *label_error_local_var = malloc(sizeof(label_error_t));
     if (!label_error_local_var) {
         return NULL;
     }
+    memset(label_error_local_var, 0, sizeof(label_error_t));
+    label_error_local_var->_library_owned = 1;
     label_error_local_var->data = data;
     label_error_local_var->error_messages = error_messages;
-
-    label_error_local_var->_library_owned = 1;
     return label_error_local_var;
 }
 
 __attribute__((deprecated)) label_error_t *label_error_create(
-    label_t *data,
+    label_error_data_t *data,
     list_t *error_messages
     ) {
-    return label_error_create_internal (
+    label_error_t *result = label_error_create_internal (
         data,
         error_messages
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void label_error_free(label_error_t *label_error) {
@@ -40,7 +43,7 @@ void label_error_free(label_error_t *label_error) {
     }
     listEntry_t *listEntry;
     if (label_error->data) {
-        label_free(label_error->data);
+        label_error_data_free(label_error->data);
         label_error->data = NULL;
     }
     if (label_error->error_messages) {
@@ -58,7 +61,7 @@ cJSON *label_error_convertToJSON(label_error_t *label_error) {
 
     // label_error->data
     if(label_error->data) {
-    cJSON *data_local_JSON = label_convertToJSON(label_error->data);
+    cJSON *data_local_JSON = label_error_data_convertToJSON(label_error->data);
     if(data_local_JSON == NULL) {
     goto fail; //model
     }
@@ -98,7 +101,7 @@ label_error_t *label_error_parseFromJSON(cJSON *label_errorJSON){
     label_error_t *label_error_local_var = NULL;
 
     // define the local variable for label_error->data
-    label_t *data_local_nonprim = NULL;
+    label_error_data_t *data_local_nonprim = NULL;
 
     // define the local list for label_error->error_messages
     list_t *error_messagesList = NULL;
@@ -109,7 +112,7 @@ label_error_t *label_error_parseFromJSON(cJSON *label_errorJSON){
         data = NULL;
     }
     if (data) { 
-    data_local_nonprim = label_parseFromJSON(data); //nonprimitive
+    data_local_nonprim = label_error_data_parseFromJSON(data); //nonprimitive
     }
 
     // label_error->error_messages
@@ -135,15 +138,20 @@ label_error_t *label_error_parseFromJSON(cJSON *label_errorJSON){
     }
 
 
+
     label_error_local_var = label_error_create_internal (
         data ? data_local_nonprim : NULL,
         error_messages ? error_messagesList : NULL
         );
 
+    if (!label_error_local_var) {
+        goto end;
+    }
+
     return label_error_local_var;
 end:
     if (data_local_nonprim) {
-        label_free(data_local_nonprim);
+        label_error_data_free(data_local_nonprim);
         data_local_nonprim = NULL;
     }
     if (error_messagesList) {

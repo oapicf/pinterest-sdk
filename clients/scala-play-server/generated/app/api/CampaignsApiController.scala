@@ -6,21 +6,26 @@ import play.api.libs.json._
 import play.api.mvc._
 import model.AdPinAnalytics
 import model.AdsAnalyticsCampaignTargetingType
-import model.CampaignCreateRequest
-import model.CampaignCreateResponse
-import model.CampaignResponse
-import model.CampaignUpdateRequest
-import model.CampaignUpdateResponse
-import model.CampaignsAnalyticsResponseInner
+import model.BigDecimal
+import model.Campaign
+import model.CampaignBatchUpdateItem
+import model.CampaignBatchWriteResponseModel
+import model.CampaignCreateItem
+import model.CampaignDeliveryEstimatesCampaign
+import model.CampaignDeliveryEstimatesResponse
+import model.CampaignsAnalyticsMetrics
 import model.CampaignsList200Response
 import model.ConversionReportAttributionType
+import model.EntityStatus
 import model.Error
 import model.Granularity
 import java.time.LocalDate
 import model.MetricsResponse
+import model.PaginationOrder
+import model.ReportingColumnSync
 import model.ReportingTimeZone
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Singleton
 class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsApi) extends AbstractController(cc) {
   /**
@@ -54,6 +59,7 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
         
       val columns = request.getQueryString("columns")
         .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("columns", "query string")
         }
@@ -65,17 +71,17 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
         }
         
       val clickWindowDays = request.getQueryString("click_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val engagementWindowDays = request.getQueryString("engagement_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val viewWindowDays = request.getQueryString("view_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
-      api.adPinsAnalytics(adAccountId, campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+      api.adPinsAnalytics(campaignId, pinIds, startDate, endDate, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
     }
 
     val result = executeApi()
@@ -116,6 +122,7 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
         
       val columns = request.getQueryString("columns")
         .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("columns", "query string")
         }
@@ -127,13 +134,13 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
         }
         
       val clickWindowDays = request.getQueryString("click_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val engagementWindowDays = request.getQueryString("engagement_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val viewWindowDays = request.getQueryString("view_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
@@ -157,7 +164,7 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
     * @param adAccountId Unique identifier of an ad account.
     */
   def campaignsAnalytics(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): List[CampaignsAnalyticsResponseInner] = {
+    def executeApi(): List[CampaignsAnalyticsMetrics] = {
       val startDate = request.getQueryString("start_date")
         .map(value => LocalDate.parse(value))
         .getOrElse {
@@ -178,6 +185,7 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
         
       val columns = request.getQueryString("columns")
         .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("columns", "query string")
         }
@@ -189,13 +197,13 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
         }
         
       val clickWindowDays = request.getQueryString("click_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val engagementWindowDays = request.getQueryString("engagement_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val viewWindowDays = request.getQueryString("view_window_days")
-        .map(value => value.toInt)
+        .map(value => BigDecimal(value))
         
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
@@ -205,7 +213,7 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
       val reportingTimezone = request.getQueryString("reporting_timezone")
         .map(value => )
         
-      api.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
+      api.campaignsAnalytics(startDate, endDate, campaignIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
     }
 
     val result = executeApi()
@@ -218,11 +226,11 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
     * @param adAccountId Unique identifier of an ad account.
     */
   def campaignsCreate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): CampaignCreateResponse = {
-      val campaignCreateRequest = request.body.asJson.map(_.as[List[CampaignCreateRequest]]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "campaignCreateRequest")
+    def executeApi(): CampaignBatchWriteResponseModel = {
+      val campaignCreateItem = request.body.asJson.map(_.as[List[CampaignCreateItem]]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "campaignCreateItem")
       }
-      api.campaignsCreate(adAccountId, campaignCreateRequest)
+      api.campaignsCreate(adAccountId, campaignCreateItem)
     }
 
     val result = executeApi()
@@ -232,12 +240,12 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
 
   /**
     * GET /v5/ad_accounts/:adAccountId/campaigns/:campaignId
-    * @param adAccountId Unique identifier of an ad account.
     * @param campaignId Campaign ID, must be associated with the ad account ID provided in the path.
+    * @param adAccountId Unique identifier of an ad account.
     */
-  def campaignsGet(adAccountId: String, campaignId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): CampaignResponse = {
-      api.campaignsGet(adAccountId, campaignId)
+  def campaignsGet(campaignId: String, adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): Campaign = {
+      api.campaignsGet(campaignId, adAccountId)
     }
 
     val result = executeApi()
@@ -246,25 +254,27 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/campaigns?campaignIds=[value]&entityStatuses=[value]&pageSize=[value]&order=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/campaigns?bookmark=[value]&pageSize=[value]&order=[value]&campaignIds=[value]&entityStatuses=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def campaignsList(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): CampaignsList200Response = {
-      val campaignIds = request.queryString.get("campaign_ids")
-        .map(_.toList)
-        
-      val entityStatuses = request.queryString.get("entity_statuses")
-        .map(_.toList)
+      val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
       val order = request.getQueryString("order")
+        .map(value => )
         
-      val bookmark = request.getQueryString("bookmark")
+      val campaignIds = request.queryString.get("campaign_ids")
+        .map(_.toList)
         
-      api.campaignsList(adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark)
+      val entityStatuses = request.queryString.get("entity_statuses")
+        .map(_.toList)
+        .map(_.map(value => )
+        
+      api.campaignsList(adAccountId, bookmark, pageSize, order, campaignIds, entityStatuses)
     }
 
     val result = executeApi()
@@ -277,11 +287,28 @@ class CampaignsApiController @Inject()(cc: ControllerComponents, api: CampaignsA
     * @param adAccountId Unique identifier of an ad account.
     */
   def campaignsUpdate(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): CampaignUpdateResponse = {
-      val campaignUpdateRequest = request.body.asJson.map(_.as[List[CampaignUpdateRequest]]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "campaignUpdateRequest")
+    def executeApi(): CampaignBatchWriteResponseModel = {
+      val campaignBatchUpdateItem = request.body.asJson.map(_.as[List[CampaignBatchUpdateItem]]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "campaignBatchUpdateItem")
       }
-      api.campaignsUpdate(adAccountId, campaignUpdateRequest)
+      api.campaignsUpdate(adAccountId, campaignBatchUpdateItem)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
+  /**
+    * POST /v5/ad_accounts/:adAccountId/campaigns/delivery_estimates
+    * @param adAccountId Unique identifier of an ad account.
+    */
+  def getCampaignDeliveryEstimates(adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): CampaignDeliveryEstimatesResponse = {
+      val campaignDeliveryEstimatesCampaign = request.body.asJson.map(_.as[List[CampaignDeliveryEstimatesCampaign]]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "campaignDeliveryEstimatesCampaign")
+      }
+      api.getCampaignDeliveryEstimates(adAccountId, campaignDeliveryEstimatesCampaign)
     }
 
     val result = executeApi()

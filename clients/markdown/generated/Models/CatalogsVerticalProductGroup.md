@@ -3,17 +3,17 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **catalog\_id** | **String** | Catalog id pertaining to the creative assets product group. | [default to null] |
+| **catalog\_id** | **String** | Catalog ID pertaining to the product group. | [default to null] |
 | **catalog\_type** | **String** |  | [default to null] |
 | **country** | **String** |  | [optional] [default to null] |
 | **created\_at** | **Integer** | Unix timestamp in seconds of when catalog product group was created. | [optional] [default to null] |
 | **description** | **String** |  | [optional] [default to null] |
 | **feed\_id** | **String** | id of the catalogs feed belonging to this catalog product group | [default to null] |
 | **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [default to null] |
-| **id** | **String** | ID of the creative assets product group. | [default to null] |
+| **id** | **String** | ID of the catalog product group. | [default to null] |
 | **is\_featured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to null] |
 | **locale** | **String** |  | [optional] [default to null] |
-| **name** | **String** | Name of creative assets product group | [optional] [default to null] |
+| **name** | **String** | Name of catalog product group | [optional] [default to null] |
 | **status** | [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] [default to null] |
 | **type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | [default to null] |
 | **updated\_at** | **Integer** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] [default to null] |

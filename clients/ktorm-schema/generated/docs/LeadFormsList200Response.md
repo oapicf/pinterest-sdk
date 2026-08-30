@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;LeadFormResponse&gt;**](LeadFormResponse.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;LeadForm&gt;**](LeadForm.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `LeadFormsList200ResponseLeadFormResponse`**
-(mapped from: LeadFormsList200ResponseLeadFormResponse)
+# **Table `LeadFormsList200ResponseLeadForm`**
+(mapped from: LeadFormsList200ResponseLeadForm)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 leadFormsList200Response | leadFormsList200Response | long | | kotlin.Long | Primary Key | *one*
-leadFormResponse | leadFormResponse | long | | kotlin.Long | Foreign Key | *many*
+leadForm | leadForm | long | | kotlin.Long | Foreign Key | *many*
 
 
 

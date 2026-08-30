@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AppsflyerAudience"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AppsflyerAudience"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AppsflyerPlatform = openapi_server.resourceTypes.AppsflyerPlatform
+}
+resourceTypes {
+
+  AppsflyerAudience {
+    title = AppsflyerAudience
+    description = AppsflyerAudience
+    derivedFrom = Root
+    properties {
+        container_id {
+          type =  string
+          description = "The ID of the audience container"
+          optional = true
+        }
+        name {
+          type =  string
+          description = "The name of the audience"
+          optional = true
+        }
+        platform {
+          type = AppsflyerPlatform
+          description = "The platform of the audience"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AppsflyerAudience {
+    title = AppsflyerAudience
+    description = AppsflyerAudience
+    implements = openapi_server.resourceTypes.AppsflyerAudience
+
+  }
+}

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -18,8 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.BusinessMemberAssetsSummaryAdAccountsInner;
-import org.openapitools.model.BusinessMemberAssetsSummaryProfilesInner;
+import org.openapitools.model.AssetIdWithPermissions;
 
 
 
@@ -28,16 +27,16 @@ import org.openapitools.model.BusinessMemberAssetsSummaryProfilesInner;
  */
 
 @ApiModel(description = "Ad accounts and profiles the business member/partner has access to.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessMemberAssetsSummary   {
   
-  private List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
-  private List<BusinessMemberAssetsSummaryProfilesInner> profiles = new ArrayList<>();
+  private List<AssetIdWithPermissions> adAccounts = new ArrayList<>();
+  private List<AssetIdWithPermissions> profiles = new ArrayList<>();
 
   /**
    * List of ad account IDs and respective permission levels.
    */
-  public BusinessMemberAssetsSummary adAccounts(List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
+  public BusinessMemberAssetsSummary adAccounts(List<AssetIdWithPermissions> adAccounts) {
     this.adAccounts = adAccounts;
     return this;
   }
@@ -45,17 +44,17 @@ public class BusinessMemberAssetsSummary   {
   
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels.")
   @JsonProperty("ad_accounts")
-  public List<BusinessMemberAssetsSummaryAdAccountsInner> getAdAccounts() {
+  public List<AssetIdWithPermissions> getAdAccounts() {
     return adAccounts;
   }
-  public void setAdAccounts(List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts) {
+  public void setAdAccounts(List<AssetIdWithPermissions> adAccounts) {
     this.adAccounts = adAccounts;
   }
 
   /**
    * List of profile IDs and respective permission levels.
    */
-  public BusinessMemberAssetsSummary profiles(List<BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public BusinessMemberAssetsSummary profiles(List<AssetIdWithPermissions> profiles) {
     this.profiles = profiles;
     return this;
   }
@@ -63,10 +62,10 @@ public class BusinessMemberAssetsSummary   {
   
   @ApiModelProperty(value = "List of profile IDs and respective permission levels.")
   @JsonProperty("profiles")
-  public List<BusinessMemberAssetsSummaryProfilesInner> getProfiles() {
+  public List<AssetIdWithPermissions> getProfiles() {
     return profiles;
   }
-  public void setProfiles(List<BusinessMemberAssetsSummaryProfilesInner> profiles) {
+  public void setProfiles(List<AssetIdWithPermissions> profiles) {
     this.profiles = profiles;
   }
 
@@ -105,10 +104,7 @@ public class BusinessMemberAssetsSummary   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -7,28 +7,17 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { TopPinsAnalyticsResponseDateAvailability } from './topPinsAnalyticsResponseDateAvailability';
-import { TopVideoPinsAnalyticsResponsePinsInner } from './topVideoPinsAnalyticsResponsePinsInner';
+import { TopVideoPinsSortBy } from './topVideoPinsSortBy';
+import { TopVideoPinsAnalyticsResponseDateAvailability } from './topVideoPinsAnalyticsResponseDateAvailability';
+import { TopVideoPinsAnalyticsResponsePinsItems } from './topVideoPinsAnalyticsResponsePinsItems';
 
 
 export interface TopVideoPinsAnalyticsResponse { 
-    date_availability?: TopPinsAnalyticsResponseDateAvailability;
-    pins?: Array<TopVideoPinsAnalyticsResponsePinsInner>;
-    sort_by?: TopVideoPinsAnalyticsResponse.SortByEnum;
+    date_availability?: TopVideoPinsAnalyticsResponseDateAvailability;
+    pins?: Array<TopVideoPinsAnalyticsResponsePinsItems>;
+    sort_by?: TopVideoPinsSortBy;
 }
 export namespace TopVideoPinsAnalyticsResponse {
-    export const SortByEnum = {
-        Save: 'SAVE',
-        Impression: 'IMPRESSION',
-        OutboundClick: 'OUTBOUND_CLICK',
-        VideoMrcView: 'VIDEO_MRC_VIEW',
-        VideoAvgWatchTime: 'VIDEO_AVG_WATCH_TIME',
-        VideoV50WatchTime: 'VIDEO_V50_WATCH_TIME',
-        Quartile95PercentView: 'QUARTILE_95_PERCENT_VIEW',
-        Video10SView: 'VIDEO_10S_VIEW',
-        VideoStart: 'VIDEO_START'
-    } as const;
-    export type SortByEnum = typeof SortByEnum[keyof typeof SortByEnum];
 }
 
 

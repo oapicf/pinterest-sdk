@@ -12,8 +12,6 @@ module CatalogsReportStats =
 
   [<CLIMutable>]
   type CatalogsReportStats = {
-    [<JsonProperty(PropertyName = "report_type")>]
-    ReportType : string;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
     [<JsonProperty(PropertyName = "code")>]
@@ -24,6 +22,8 @@ module CatalogsReportStats =
     Message : string;
     [<JsonProperty(PropertyName = "occurrences")>]
     Occurrences : int;
+    [<JsonProperty(PropertyName = "report_type")>]
+    ReportType : string;
     [<JsonProperty(PropertyName = "severity")>]
     Severity : string;
     [<JsonProperty(PropertyName = "ineligible_for_ads")>]

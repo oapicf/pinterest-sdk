@@ -6,9 +6,10 @@ using namespace Tiny;
 
 ItemResponse::ItemResponse()
 {
-	catalog_type = CatalogsType();
 	attributes = CatalogsCreativeAssetsAttributes();
+	catalog_type = std::string();
 	item_id = std::string();
+	item_response_kind = std::string();
 	pins = std::list<Pin>();
 	hotel_id = std::string();
 	creative_assets_id = std::string();
@@ -30,20 +31,6 @@ ItemResponse::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
-    const char *catalog_typeKey = "catalog_type";
-
-    if(object.has_key(catalog_typeKey))
-    {
-        bourne::json value = object[catalog_typeKey];
-
-
-
-
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
-
-    }
-
     const char *attributesKey = "attributes";
 
     if(object.has_key(attributesKey))
@@ -58,6 +45,19 @@ ItemResponse::fromJson(std::string jsonObj)
 
     }
 
+    const char *catalog_typeKey = "catalog_type";
+
+    if(object.has_key(catalog_typeKey))
+    {
+        bourne::json value = object[catalog_typeKey];
+
+
+
+        jsonToValue(&catalog_type, value, "std::string");
+
+
+    }
+
     const char *item_idKey = "item_id";
 
     if(object.has_key(item_idKey))
@@ -67,6 +67,19 @@ ItemResponse::fromJson(std::string jsonObj)
 
 
         jsonToValue(&item_id, value, "std::string");
+
+
+    }
+
+    const char *item_response_kindKey = "item_response_kind";
+
+    if(object.has_key(item_response_kindKey))
+    {
+        bourne::json value = object[item_response_kindKey];
+
+
+
+        jsonToValue(&item_response_kind, value, "std::string");
 
 
     }
@@ -154,20 +167,27 @@ ItemResponse::toJson()
 
 
 
-	object["catalog_type"] = getCatalogType().toJson();
-
-
-
-
-
-
 	object["attributes"] = getAttributes().toJson();
 
 
 
 
 
+    object["catalog_type"] = getCatalogType();
+
+
+
+
+
+
     object["item_id"] = getItemId();
+
+
+
+
+
+
+    object["item_response_kind"] = getItemResponseKind();
 
 
 
@@ -219,18 +239,6 @@ ItemResponse::toJson()
 
 }
 
-CatalogsType
-ItemResponse::getCatalogType()
-{
-	return catalog_type;
-}
-
-void
-ItemResponse::setCatalogType(CatalogsType  catalog_type)
-{
-	this->catalog_type = catalog_type;
-}
-
 CatalogsCreativeAssetsAttributes
 ItemResponse::getAttributes()
 {
@@ -238,9 +246,21 @@ ItemResponse::getAttributes()
 }
 
 void
-ItemResponse::setAttributes(CatalogsCreativeAssetsAttributes  attributes)
+ItemResponse::setAttributes(CatalogsCreativeAssetsAttributes attributes)
 {
 	this->attributes = attributes;
+}
+
+std::string
+ItemResponse::getCatalogType()
+{
+	return catalog_type;
+}
+
+void
+ItemResponse::setCatalogType(std::string catalog_type)
+{
+	this->catalog_type = catalog_type;
 }
 
 std::string
@@ -250,9 +270,21 @@ ItemResponse::getItemId()
 }
 
 void
-ItemResponse::setItemId(std::string  item_id)
+ItemResponse::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
+}
+
+std::string
+ItemResponse::getItemResponseKind()
+{
+	return item_response_kind;
+}
+
+void
+ItemResponse::setItemResponseKind(std::string item_response_kind)
+{
+	this->item_response_kind = item_response_kind;
 }
 
 std::list<Pin>
@@ -262,7 +294,7 @@ ItemResponse::getPins()
 }
 
 void
-ItemResponse::setPins(std::list <Pin> pins)
+ItemResponse::setPins(std::list<Pin> pins)
 {
 	this->pins = pins;
 }
@@ -274,7 +306,7 @@ ItemResponse::getHotelId()
 }
 
 void
-ItemResponse::setHotelId(std::string  hotel_id)
+ItemResponse::setHotelId(std::string hotel_id)
 {
 	this->hotel_id = hotel_id;
 }
@@ -286,7 +318,7 @@ ItemResponse::getCreativeAssetsId()
 }
 
 void
-ItemResponse::setCreativeAssetsId(std::string  creative_assets_id)
+ItemResponse::setCreativeAssetsId(std::string creative_assets_id)
 {
 	this->creative_assets_id = creative_assets_id;
 }
@@ -298,7 +330,7 @@ ItemResponse::getErrors()
 }
 
 void
-ItemResponse::setErrors(std::list <ItemValidationEvent> errors)
+ItemResponse::setErrors(std::list<ItemValidationEvent> errors)
 {
 	this->errors = errors;
 }

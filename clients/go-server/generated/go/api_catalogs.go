@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 )
@@ -104,6 +105,13 @@ func (c *CatalogsAPIController) CatalogsList(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
+	var adAccountIdParam string
+	if query.Has("ad_account_id") {
+		param := query.Get("ad_account_id")
+
+		adAccountIdParam = param
+	} else {
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -129,14 +137,7 @@ func (c *CatalogsAPIController) CatalogsList(w http.ResponseWriter, r *http.Requ
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var adAccountIdParam string
-	if query.Has("ad_account_id") {
-		param := query.Get("ad_account_id")
-
-		adAccountIdParam = param
-	} else {
-	}
-	result, err := c.service.CatalogsList(r.Context(), bookmarkParam, pageSizeParam, adAccountIdParam)
+	result, err := c.service.CatalogsList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -153,18 +154,23 @@ func (c *CatalogsAPIController) CatalogsCreate(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var catalogsCreateRequestParam CatalogsCreateRequest
+	var catalogCreateParam CatalogCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&catalogsCreateRequestParam); err != nil {
+	if err := d.Decode(&catalogCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertCatalogsCreateRequestRequired(catalogsCreateRequestParam); err != nil {
+	if err := AssertCatalogCreateRequired(catalogCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertCatalogsCreateRequestConstraints(catalogsCreateRequestParam); err != nil {
+	if err := AssertCatalogCreateConstraints(catalogCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
@@ -175,7 +181,7 @@ func (c *CatalogsAPIController) CatalogsCreate(w http.ResponseWriter, r *http.Re
 		adAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.CatalogsCreate(r.Context(), catalogsCreateRequestParam, adAccountIdParam)
+	result, err := c.service.CatalogsCreate(r.Context(), catalogCreateParam, adAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

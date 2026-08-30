@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Breakdown of asset counts by entity status.",
+  "name": "TotalCountByEntityStatus",
+  "fields": [
+    {
+      "name": "ACTIVE",
+      "type": ["null", "int"],
+      "doc": "Count of ACTIVE assets",
+      "default": null
+    },
+    {
+      "name": "ARCHIVED",
+      "type": ["null", "int"],
+      "doc": "Count of ARCHIVED assets",
+      "default": null
+    },
+    {
+      "name": "PAUSED",
+      "type": ["null", "int"],
+      "doc": "Count of PAUSED assets",
+      "default": null
+    }
+  ]
+
+}

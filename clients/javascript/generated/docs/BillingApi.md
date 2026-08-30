@@ -20,11 +20,11 @@ Method | HTTP request | Description
 
 ## adsCreditRedeem
 
-> AdsCreditRedeemResponse adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+> AdsCreditRedeem adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -37,8 +37,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let adsCreditRedeemRequest = new PinterestSdk.AdsCreditRedeemRequest(); // AdsCreditRedeemRequest | Redeem ad credits request.
-apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemRequest, (error, data, response) => {
+let adsCreditRedeemCreate = new PinterestSdk.AdsCreditRedeemCreate(); // AdsCreditRedeemCreate | 
+apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -53,11 +53,11 @@ apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemRequest, (error, data, r
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **adsCreditRedeemRequest** | [**AdsCreditRedeemRequest**](AdsCreditRedeemRequest.md)| Redeem ad credits request. | 
+ **adsCreditRedeemCreate** | [**AdsCreditRedeemCreate**](AdsCreditRedeemCreate.md)|  | 
 
 ### Return type
 
-[**AdsCreditRedeemResponse**](AdsCreditRedeemResponse.md)
+[**AdsCreditRedeem**](AdsCreditRedeem.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -90,7 +90,7 @@ let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.adsCreditsDiscountsGet(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -196,13 +196,13 @@ let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'sort': "DUE_DATE", // String | Field of which to sort billing invoices
-  'order': "ASCENDING", // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-  'status': "OPEN", // String | Status of billing invoices to filter by
-  'documentType': "INVOICE", // String | Document type of billing invoices to filter by
-  'startDueDate': new Date("Sun Jan 01 00:00:00 UTC 2023"), // Date | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
-  'endDueDate': new Date("Mon Jan 01 00:00:00 UTC 2024") // Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+  'pageSize': 25, // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  'order': new PinterestSdk.PinterestLibPaginationOrder(), // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+  'sort': new PinterestSdk.BillingInvoiceSortField(), // BillingInvoiceSortField | Field of which to sort billing invoices
+  'status': new PinterestSdk.BillingInvoiceStatus(), // BillingInvoiceStatus | Status of billing invoices to filter by
+  'documentType': new PinterestSdk.BillingInvoiceDocumentType(), // BillingInvoiceDocumentType | Document type of billing invoices to filter by
+  'startDueDate': new Date("2013-10-20"), // Date | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+  'endDueDate': new Date("2013-10-20") // Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
 };
 apiInstance.billingInvoicesGet(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -220,11 +220,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **sort** | **String**| Field of which to sort billing invoices | [optional] [default to &#39;DUE_DATE&#39;]
- **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **status** | **String**| Status of billing invoices to filter by | [optional] 
- **documentType** | **String**| Document type of billing invoices to filter by | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **sort** | [**BillingInvoiceSortField**](.md)| Field of which to sort billing invoices | [optional] 
+ **status** | [**BillingInvoiceStatus**](.md)| Status of billing invoices to filter by | [optional] 
+ **documentType** | [**BillingInvoiceDocumentType**](.md)| Document type of billing invoices to filter by | [optional] 
  **startDueDate** | **Date**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
  **endDueDate** | **Date**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] 
 
@@ -244,11 +244,11 @@ Name | Type | Description  | Notes
 
 ## billingProfilesGet
 
-> BillingProfilesGet200Response billingProfilesGet(adAccountId, isActive, opts)
+> BillingProfilesGet200Response billingProfilesGet(isActive, adAccountId, opts)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 ### Example
 
@@ -260,13 +260,13 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BillingApi();
-let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let isActive = true; // Boolean | Return active billing profiles, if false return all billing profiles.
+let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
-apiInstance.billingProfilesGet(adAccountId, isActive, opts, (error, data, response) => {
+apiInstance.billingProfilesGet(isActive, adAccountId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -280,10 +280,10 @@ apiInstance.billingProfilesGet(adAccountId, isActive, opts, (error, data, respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **String**| Unique identifier of an ad account. | 
  **isActive** | **Boolean**| Return active billing profiles, if false return all billing profiles. | 
+ **adAccountId** | **String**| Unique identifier of an ad account. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -301,11 +301,11 @@ Name | Type | Description  | Notes
 
 ## ssioAccountsGet
 
-> SSIOAccountResponse ssioAccountsGet(adAccountId)
+> SSIOAccount ssioAccountsGet(adAccountId)
 
 Get Salesforce account details including bill-to information.
 
-Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSIOAccountResponse**](SSIOAccountResponse.md)
+[**SSIOAccount**](SSIOAccount.md)
 
 ### Authorization
 
@@ -350,11 +350,11 @@ Name | Type | Description  | Notes
 
 ## ssioInsertionOrderCreate
 
-> SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(adAccountId, sSIOCreateInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderCreate(adAccountId, sSIOInsertionOrderCreate)
 
 Create insertion order through SSIO.
 
-Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -367,8 +367,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let sSIOCreateInsertionOrderRequest = new PinterestSdk.SSIOCreateInsertionOrderRequest(); // SSIOCreateInsertionOrderRequest | Order line to create.
-apiInstance.ssioInsertionOrderCreate(adAccountId, sSIOCreateInsertionOrderRequest, (error, data, response) => {
+let sSIOInsertionOrderCreate = new PinterestSdk.SSIOInsertionOrderCreate(); // SSIOInsertionOrderCreate | 
+apiInstance.ssioInsertionOrderCreate(adAccountId, sSIOInsertionOrderCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -383,11 +383,11 @@ apiInstance.ssioInsertionOrderCreate(adAccountId, sSIOCreateInsertionOrderReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **sSIOCreateInsertionOrderRequest** | [**SSIOCreateInsertionOrderRequest**](SSIOCreateInsertionOrderRequest.md)| Order line to create. | 
+ **sSIOInsertionOrderCreate** | [**SSIOInsertionOrderCreate**](SSIOInsertionOrderCreate.md)|  | 
 
 ### Return type
 
-[**SSIOCreateInsertionOrderResponse**](SSIOCreateInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -401,11 +401,11 @@ Name | Type | Description  | Notes
 
 ## ssioInsertionOrderEdit
 
-> SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(adAccountId, sSIOEditInsertionOrderRequest)
+> SSIOInsertionOrder ssioInsertionOrderEdit(adAccountId, sSIOInsertionOrderUpdate)
 
 Edit insertion order through SSIO.
 
-Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -418,8 +418,8 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let sSIOEditInsertionOrderRequest = new PinterestSdk.SSIOEditInsertionOrderRequest(); // SSIOEditInsertionOrderRequest | Order line to create.
-apiInstance.ssioInsertionOrderEdit(adAccountId, sSIOEditInsertionOrderRequest, (error, data, response) => {
+let sSIOInsertionOrderUpdate = new PinterestSdk.SSIOInsertionOrderUpdate(); // SSIOInsertionOrderUpdate | 
+apiInstance.ssioInsertionOrderEdit(adAccountId, sSIOInsertionOrderUpdate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -434,11 +434,11 @@ apiInstance.ssioInsertionOrderEdit(adAccountId, sSIOEditInsertionOrderRequest, (
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
- **sSIOEditInsertionOrderRequest** | [**SSIOEditInsertionOrderRequest**](SSIOEditInsertionOrderRequest.md)| Order line to create. | 
+ **sSIOInsertionOrderUpdate** | [**SSIOInsertionOrderUpdate**](SSIOInsertionOrderUpdate.md)|  | 
 
 ### Return type
 
-[**SSIOEditInsertionOrderResponse**](SSIOEditInsertionOrderResponse.md)
+[**SSIOInsertionOrder**](SSIOInsertionOrder.md)
 
 ### Authorization
 
@@ -456,7 +456,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by ad account id.
 
-Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -471,7 +471,7 @@ let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 
 Get insertion order status by pin order id.
 
-Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -524,7 +524,7 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let pinOrderId = "0Q01N0000015hekSVDFDC"; // String | The pin order id associated with the ssio insertion order
+let pinOrderId = "pinOrderId_example"; // String | The pin order id associated with the ssio insertion order
 apiInstance.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
 
 Get Salesforce order lines by ad account id.
 
-Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
 
 ### Example
 
@@ -576,9 +576,9 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
+  'pinOrderId': "pinOrderId_example", // String | The pin order id associated with the SSIO insertion order
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  'pinOrderId': "0Q01N0000015hekSVDFDC" // String | The pin order id associated with the ssio insertino order
+  'pageSize': 25 // Number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 };
 apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -595,9 +595,9 @@ apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, opts, (error, data, respon
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
+ **pinOrderId** | **String**| The pin order id associated with the SSIO insertion order | [optional] 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **pinOrderId** | **String**| The pin order id associated with the ssio insertino order | [optional] 
+ **pageSize** | **Number**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

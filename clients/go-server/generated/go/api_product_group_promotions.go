@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"reflect"
@@ -137,19 +138,11 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupPromotionsList(w http.
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var productGroupPromotionIdsParam []string
-	if query.Has("product_group_promotion_ids") {
-		productGroupPromotionIdsParam = strings.Split(query.Get("product_group_promotion_ids"), ",")
-	}
-	var entityStatusesParam []string
-	if query.Has("entity_statuses") {
-		entityStatusesParam = strings.Split(query.Get("entity_statuses"), ",")
-	}
-	var adGroupIdParam string
-	if query.Has("ad_group_id") {
-		param := query.Get("ad_group_id")
+	var bookmarkParam string
+	if query.Has("bookmark") {
+		param := query.Get("bookmark")
 
-		adGroupIdParam = param
+		bookmarkParam = param
 	} else {
 	}
 	var pageSizeParam int32
@@ -170,21 +163,38 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupPromotionsList(w http.
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var orderParam string
+	var orderParam PinterestLibPaginationOrder
 	if query.Has("order") {
-		param := query.Get("order")
+		param := PinterestLibPaginationOrder(query.Get("order"))
 
 		orderParam = param
 	} else {
 	}
-	var bookmarkParam string
-	if query.Has("bookmark") {
-		param := query.Get("bookmark")
+	var productGroupPromotionIdsParam []string
+	if query.Has("product_group_promotion_ids") {
+		productGroupPromotionIdsParam = strings.Split(query.Get("product_group_promotion_ids"), ",")
+	}
+	var entityStatusesParam []EntityStatus
+	if query.Has("entity_statuses") {
+		paramSplits := strings.Split(query.Get("entity_statuses"), ",")
+		entityStatusesParam = make([]EntityStatus, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewEntityStatusFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "entity_statuses", Err: err}, nil)
+				return
+			}
+			entityStatusesParam = append(entityStatusesParam, paramEnum)
+		}
+	}
+	var adGroupIdParam string
+	if query.Has("ad_group_id") {
+		param := query.Get("ad_group_id")
 
-		bookmarkParam = param
+		adGroupIdParam = param
 	} else {
 	}
-	result, err := c.service.ProductGroupPromotionsList(r.Context(), adAccountIdParam, productGroupPromotionIdsParam, entityStatusesParam, adGroupIdParam, pageSizeParam, orderParam, bookmarkParam)
+	result, err := c.service.ProductGroupPromotionsList(r.Context(), adAccountIdParam, bookmarkParam, pageSizeParam, orderParam, productGroupPromotionIdsParam, entityStatusesParam, adGroupIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -202,22 +212,27 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupPromotionsCreate(w htt
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var productGroupPromotionCreateRequestParam ProductGroupPromotionCreateRequest
+	var productGroupPromotionsCreateParam ProductGroupPromotionsCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&productGroupPromotionCreateRequestParam); err != nil {
+	if err := d.Decode(&productGroupPromotionsCreateParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertProductGroupPromotionCreateRequestRequired(productGroupPromotionCreateRequestParam); err != nil {
+	if err := AssertProductGroupPromotionsCreateRequired(productGroupPromotionsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertProductGroupPromotionCreateRequestConstraints(productGroupPromotionCreateRequestParam); err != nil {
+	if err := AssertProductGroupPromotionsCreateConstraints(productGroupPromotionsCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.ProductGroupPromotionsCreate(r.Context(), adAccountIdParam, productGroupPromotionCreateRequestParam)
+	result, err := c.service.ProductGroupPromotionsCreate(r.Context(), adAccountIdParam, productGroupPromotionsCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -235,22 +250,27 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupPromotionsUpdate(w htt
 		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
 		return
 	}
-	var productGroupPromotionUpdateRequestParam ProductGroupPromotionUpdateRequest
+	var productGroupPromotionsUpdateWithRequiredBodyParam ProductGroupPromotionsUpdateWithRequiredBody
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&productGroupPromotionUpdateRequestParam); err != nil {
+	if err := d.Decode(&productGroupPromotionsUpdateWithRequiredBodyParam); err != nil {
+		var requiredErr *RequiredError
+		if errors.As(err, &requiredErr) {
+			c.errorHandler(w, r, err, nil)
+			return
+		}
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertProductGroupPromotionUpdateRequestRequired(productGroupPromotionUpdateRequestParam); err != nil {
+	if err := AssertProductGroupPromotionsUpdateWithRequiredBodyRequired(productGroupPromotionsUpdateWithRequiredBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertProductGroupPromotionUpdateRequestConstraints(productGroupPromotionUpdateRequestParam); err != nil {
+	if err := AssertProductGroupPromotionsUpdateWithRequiredBodyConstraints(productGroupPromotionsUpdateWithRequiredBodyParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.ProductGroupPromotionsUpdate(r.Context(), adAccountIdParam, productGroupPromotionUpdateRequestParam)
+	result, err := c.service.ProductGroupPromotionsUpdate(r.Context(), adAccountIdParam, productGroupPromotionsUpdateWithRequiredBodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -291,11 +311,6 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupsAnalytics(w http.Resp
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	adAccountIdParam := params["ad_account_id"]
-	if adAccountIdParam == "" {
-		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
-		return
-	}
 	var startDateParam string
 	if query.Has("start_date") {
 		param := string(query.Get("start_date"))
@@ -318,9 +333,18 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupsAnalytics(w http.Resp
 	if query.Has("product_group_ids") {
 		productGroupIdsParam = strings.Split(query.Get("product_group_ids"), ",")
 	}
-	var columnsParam []string
+	var columnsParam []ReportingColumnSync
 	if query.Has("columns") {
-		columnsParam = strings.Split(query.Get("columns"), ",")
+		paramSplits := strings.Split(query.Get("columns"), ",")
+		columnsParam = make([]ReportingColumnSync, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewReportingColumnSyncFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "columns", Err: err}, nil)
+				return
+			}
+			columnsParam = append(columnsParam, paramEnum)
+		}
 	}
 	var granularityParam Granularity
 	if query.Has("granularity") {
@@ -331,11 +355,16 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupsAnalytics(w http.Resp
 		c.errorHandler(w, r, &RequiredError{Field: "granularity"}, nil)
 		return
 	}
-	var clickWindowDaysParam int32
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var clickWindowDaysParam float32
 	if query.Has("click_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("click_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "click_window_days", Err: err}, nil)
@@ -344,14 +373,14 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupsAnalytics(w http.Resp
 
 		clickWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		clickWindowDaysParam = param
 	}
-	var engagementWindowDaysParam int32
+	var engagementWindowDaysParam float32
 	if query.Has("engagement_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("engagement_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "engagement_window_days", Err: err}, nil)
@@ -360,14 +389,14 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupsAnalytics(w http.Resp
 
 		engagementWindowDaysParam = param
 	} else {
-		var param int32 = 30
+		var param float32 = 30
 		engagementWindowDaysParam = param
 	}
-	var viewWindowDaysParam int32
+	var viewWindowDaysParam float32
 	if query.Has("view_window_days") {
-		param, err := parseNumericParameter[int32](
+		param, err := parseNumericParameter[float32](
 			query.Get("view_window_days"),
-			WithParse[int32](parseInt32),
+			WithParse[float32](parseFloat32),
 		)
 		if err != nil {
 			c.errorHandler(w, r, &ParsingError{Param: "view_window_days", Err: err}, nil)
@@ -376,7 +405,7 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupsAnalytics(w http.Resp
 
 		viewWindowDaysParam = param
 	} else {
-		var param int32 = 1
+		var param float32 = 1
 		viewWindowDaysParam = param
 	}
 	var conversionReportTimeParam string
@@ -395,7 +424,7 @@ func (c *ProductGroupPromotionsAPIController) ProductGroupsAnalytics(w http.Resp
 		reportingTimezoneParam = param
 	} else {
 	}
-	result, err := c.service.ProductGroupsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, productGroupIdsParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, reportingTimezoneParam)
+	result, err := c.service.ProductGroupsAnalytics(r.Context(), startDateParam, endDateParam, productGroupIdsParam, columnsParam, granularityParam, adAccountIdParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

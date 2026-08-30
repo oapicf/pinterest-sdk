@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SchedulePlacementMultipliers"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SchedulePlacementMultipliers"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  SchedulePlacementMultipliers {
+    title = SchedulePlacementMultipliers
+    description = SchedulePlacementMultipliers
+    derivedFrom = Root
+    properties {
+        browse {
+          type =  integer
+          description = "Browse (home-feed and related surfaces)"
+          optional = false
+        }
+        related_pins {
+          type =  integer
+          description = "Related-Pins placement"
+          optional = false
+        }
+        search {
+          type =  integer
+          description = "Search placement"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SchedulePlacementMultipliers {
+    title = SchedulePlacementMultipliers
+    description = SchedulePlacementMultipliers
+    implements = openapi_server.resourceTypes.SchedulePlacementMultipliers
+
+  }
+}

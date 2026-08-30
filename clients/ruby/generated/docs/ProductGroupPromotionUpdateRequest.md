@@ -13,7 +13,7 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::ProductGroupPromotionUpdateRequest.new(
-  ad_group_id: 2680059592705,
+  ad_group_id: null,
   product_group_promotion: null
 )
 ```

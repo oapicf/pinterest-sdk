@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningResponseErrorCode"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningResponseErrorCode"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CampaignPlanningResponseErrorCode {
+    title = CampaignPlanningResponseErrorCode
+    description = CampaignPlanningResponseErrorCode
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningResponseErrorCode {
+    title = CampaignPlanningResponseErrorCode
+    description = CampaignPlanningResponseErrorCode
+    implements = openapi_server.resourceTypes.CampaignPlanningResponseErrorCode
+
+  }
+}

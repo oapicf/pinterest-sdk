@@ -1,5 +1,5 @@
 
-# Table `catalogs_retail_filter_values_map`
+# Table `CatalogsRetailFilterValuesMap`
 (mapped from: CatalogsRetailFilterValuesMap)
 
 ## Properties
@@ -7,15 +7,15 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **adImageTags** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **adVideoTags** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
-**availability** | `One-To-Many` | `----` | `----`  | [**availability**](#kotlin.Array&lt;Availability&gt;) |  |  [optional]
+**availability** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductAvailability&gt;**](ProductAvailability.md) |  |  [optional]
 **brand** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
-**condition** | `One-To-Many` | `----` | `----`  | [**condition**](#kotlin.Array&lt;Condition&gt;) |  |  [optional]
+**condition** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductCondition&gt;**](ProductCondition.md) |  |  [optional]
 **customLabel0** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **customLabel1** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **customLabel2** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **customLabel3** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **customLabel4** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
-**gender** | `One-To-Many` | `----` | `----`  | [**gender**](#kotlin.Array&lt;Gender&gt;) |  |  [optional]
+**gender** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;Gender&gt;**](Gender.md) |  |  [optional]
 **googleProductCategory0** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **googleProductCategory1** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **googleProductCategory2** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
@@ -23,7 +23,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **googleProductCategory4** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **googleProductCategory5** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **googleProductCategory6** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
-**mediaType** | `One-To-Many` | `----` | `----`  | [**media_type**](#kotlin.Array&lt;MediaType&gt;) |  |  [optional]
+**mediaType** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;MediaType&gt;**](MediaType.md) |  |  [optional]
 **productType0** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **productType1** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
 **productType2** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** |  |  [optional]
@@ -53,14 +53,14 @@ adVideoTags | adVideoTags | text | | kotlin.String | Foreign Key | *many*
 
 
 
-# **Table `CatalogsRetailFilterValuesMapAvailability`**
-(mapped from: CatalogsRetailFilterValuesMapAvailability)
+# **Table `CatalogsRetailFilterValuesMapProductAvailability`**
+(mapped from: CatalogsRetailFilterValuesMapProductAvailability)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 catalogsRetailFilterValuesMap | catalogsRetailFilterValuesMap | long | | kotlin.Long | Primary Key | *one*
-availability | availability | text | | kotlin.String | Foreign Key | *many*
+productAvailability | productAvailability | long | | kotlin.Long | Foreign Key | *many*
 
 
 
@@ -75,14 +75,14 @@ brand | brand | text | | kotlin.String | Foreign Key | *many*
 
 
 
-# **Table `CatalogsRetailFilterValuesMapCondition`**
-(mapped from: CatalogsRetailFilterValuesMapCondition)
+# **Table `CatalogsRetailFilterValuesMapProductCondition`**
+(mapped from: CatalogsRetailFilterValuesMapProductCondition)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 catalogsRetailFilterValuesMap | catalogsRetailFilterValuesMap | long | | kotlin.Long | Primary Key | *one*
-condition | condition | text | | kotlin.String | Foreign Key | *many*
+productCondition | productCondition | long | | kotlin.Long | Foreign Key | *many*
 
 
 
@@ -148,7 +148,7 @@ customLabel4 | customLabel4 | text | | kotlin.String | Foreign Key | *many*
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 catalogsRetailFilterValuesMap | catalogsRetailFilterValuesMap | long | | kotlin.Long | Primary Key | *one*
-gender | gender | text | | kotlin.String | Foreign Key | *many*
+gender | gender | long | | kotlin.Long | Foreign Key | *many*
 
 
 
@@ -236,7 +236,7 @@ googleProductCategory6 | googleProductCategory6 | text | | kotlin.String | Forei
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 catalogsRetailFilterValuesMap | catalogsRetailFilterValuesMap | long | | kotlin.Long | Primary Key | *one*
-mediaType | mediaType | text | | kotlin.String | Foreign Key | *many*
+mediaType | mediaType | long | | kotlin.Long | Foreign Key | *many*
 
 
 

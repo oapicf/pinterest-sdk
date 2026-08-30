@@ -7,9 +7,10 @@ Object describing a retail item error
 
 Name | Type
 ------------ | -------------
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `errors` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
 `itemId` | string
+`itemResponseKind` | string
 
 ## Example
 
@@ -21,6 +22,7 @@ const example = {
   "catalogType": null,
   "errors": null,
   "itemId": DS0294-M,
+  "itemResponseKind": null,
 } satisfies CatalogsRetailItemErrorResponse
 
 console.log(example)

@@ -141,14 +141,14 @@ class BillingApiSimulation extends Simulation {
         .feed(billing_invoices/getPATHFeeder)
         .exec(http("billingInvoicesGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/billing_invoices")
+        .queryParam("document_type","${document_type}")
         .queryParam("start_due_date","${start_due_date}")
-        .queryParam("end_due_date","${end_due_date}")
+        .queryParam("sort","${sort}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
-        .queryParam("status","${status}")
-        .queryParam("sort","${sort}")
-        .queryParam("document_type","${document_type}")
+        .queryParam("end_due_date","${end_due_date}")
         .queryParam("order","${order}")
+        .queryParam("status","${status}")
 )
 
     // Run scnbillingInvoicesGet with warm up and reach a constant rate for entire duration
@@ -164,8 +164,8 @@ class BillingApiSimulation extends Simulation {
         .feed(billing_profiles/getPATHFeeder)
         .exec(http("billingProfilesGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/billing_profiles")
-        .queryParam("is_active","${is_active}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("is_active","${is_active}")
         .queryParam("page_size","${page_size}")
 )
 
@@ -255,9 +255,9 @@ class BillingApiSimulation extends Simulation {
         .feed(ssio_order_lines/get_by_ad_accountPATHFeeder)
         .exec(http("ssioOrderLinesGetByAdAccount")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ssio/order_lines")
+        .queryParam("pin_order_id","${pin_order_id}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
-        .queryParam("pin_order_id","${pin_order_id}")
 )
 
     // Run scnssioOrderLinesGetByAdAccount with warm up and reach a constant rate for entire duration

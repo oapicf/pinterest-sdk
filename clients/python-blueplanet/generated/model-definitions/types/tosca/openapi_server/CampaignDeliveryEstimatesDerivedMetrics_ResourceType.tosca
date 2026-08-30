@@ -1,0 +1,165 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignDeliveryEstimatesDerivedMetrics"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignDeliveryEstimatesDerivedMetrics"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CampaignDeliveryEstimatesDerivedMetrics {
+    title = CampaignDeliveryEstimatesDerivedMetrics
+    description = CampaignDeliveryEstimatesDerivedMetrics
+    derivedFrom = Root
+    properties {
+        cpc {
+          type =  integer
+          description = "Estimated cost per click."
+          optional = false
+        }
+        cpc_lower {
+          type =  integer
+          description = "Lower estimate of the cost per click."
+          optional = false
+        }
+        cpc_upper {
+          type =  integer
+          description = "Upper estimate of the cost per click."
+          optional = false
+        }
+        cpm {
+          type =  integer
+          description = "Estimated cost per thousand impressions."
+          optional = false
+        }
+        cpm_lower {
+          type =  integer
+          description = "Lower estimate of cost per thousand impressions."
+          optional = false
+        }
+        cpm_upper {
+          type =  integer
+          description = "Upper estimate of cost per thousand impressions."
+          optional = false
+        }
+        lifetime_frequency {
+          type =  integer
+          description = "Estimated lifetime frequency."
+          optional = false
+        }
+        lifetime_frequency_lower {
+          type =  integer
+          description = "Lower estimate of lifetime frequency."
+          optional = false
+        }
+        lifetime_frequency_upper {
+          type =  integer
+          description = "Upper estimate of lifetime frequency."
+          optional = false
+        }
+        lifetime_impression {
+          type =  integer
+          description = "Estimated lifetime impressions."
+          optional = false
+        }
+        lifetime_impression_lower {
+          type =  integer
+          description = "Lower estimate of lifetime impressions."
+          optional = false
+        }
+        lifetime_impression_upper {
+          type =  integer
+          description = "Upper estimate of lifetime impressions."
+          optional = false
+        }
+        lifetime_reach {
+          type =  integer
+          description = "Estimated lifetime reach."
+          optional = false
+        }
+        lifetime_reach_lower {
+          type =  integer
+          description = "Lower estimate of lifetime reach."
+          optional = false
+        }
+        lifetime_reach_upper {
+          type =  integer
+          description = "Upper estimate of lifetime reach."
+          optional = false
+        }
+        weekly_click {
+          type =  integer
+          description = "Estimated weekly clicks."
+          optional = false
+        }
+        weekly_click_lower {
+          type =  integer
+          description = "Lower estimate of weekly clicks."
+          optional = false
+        }
+        weekly_click_upper {
+          type =  integer
+          description = "Upper estimate of weekly clicks."
+          optional = false
+        }
+        weekly_frequency {
+          type =  integer
+          description = "Estimated weekly frequency."
+          optional = false
+        }
+        weekly_frequency_lower {
+          type =  integer
+          description = "Lower estimate of weekly frequency."
+          optional = false
+        }
+        weekly_frequency_upper {
+          type =  integer
+          description = "Upper estimate of weekly frequency."
+          optional = false
+        }
+        weekly_impression {
+          type =  integer
+          description = "Estimated weekly impressions."
+          optional = false
+        }
+        weekly_impression_lower {
+          type =  integer
+          description = "Lower estimate of weekly impressions."
+          optional = false
+        }
+        weekly_impression_upper {
+          type =  integer
+          description = "Upper estimate of weekly impressions."
+          optional = false
+        }
+        weekly_reach {
+          type =  integer
+          description = "Estimated weekly reach."
+          optional = false
+        }
+        weekly_reach_lower {
+          type =  integer
+          description = "Lower estimate of weekly reach."
+          optional = false
+        }
+        weekly_reach_upper {
+          type =  integer
+          description = "Upper estimate of weekly reach."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignDeliveryEstimatesDerivedMetrics {
+    title = CampaignDeliveryEstimatesDerivedMetrics
+    description = CampaignDeliveryEstimatesDerivedMetrics
+    implements = openapi_server.resourceTypes.CampaignDeliveryEstimatesDerivedMetrics
+
+  }
+}

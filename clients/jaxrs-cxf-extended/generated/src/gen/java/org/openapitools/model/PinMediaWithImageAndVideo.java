@@ -23,7 +23,7 @@ public class PinMediaWithImageAndVideo  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<PinMediaMetadata> items = new ArrayList<>();
+  private List<@Valid PinMediaMetadata> items = new ArrayList<>();
 
 public enum MediaTypeEnum {
 
@@ -61,21 +61,21 @@ public enum MediaTypeEnum {
   * @return items
   */
   @JsonProperty("items")
-  public List<PinMediaMetadata> getItems() {
+  public List<@Valid PinMediaMetadata> getItems() {
     return items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
- public void setItems(List<PinMediaMetadata> items) {
+ public void setItems(List<@Valid PinMediaMetadata> items) {
     this.items = items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
-  public PinMediaWithImageAndVideo items(List<PinMediaMetadata> items) {
+  public PinMediaWithImageAndVideo items(List<@Valid PinMediaMetadata> items) {
     this.items = items;
     return this;
   }
@@ -148,10 +148,7 @@ public enum MediaTypeEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

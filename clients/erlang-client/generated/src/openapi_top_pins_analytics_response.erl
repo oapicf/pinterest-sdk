@@ -7,7 +7,7 @@
 -type openapi_top_pins_analytics_response() ::
     #{ 'date_availability' => openapi_top_pins_analytics_response_date_availability:openapi_top_pins_analytics_response_date_availability(),
        'pins' => list(),
-       'sort_by' => binary()
+       'sort_by' => openapi_top_pins_sort_by:openapi_top_pins_sort_by()
      }.
 
 encode(#{ 'date_availability' := DateAvailability,

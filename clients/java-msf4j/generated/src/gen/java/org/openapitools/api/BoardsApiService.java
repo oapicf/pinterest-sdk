@@ -10,13 +10,14 @@ import org.openapitools.model.Board;
 import org.openapitools.model.BoardCreate;
 import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
+import org.openapitools.model.BoardSectionCreate;
+import org.openapitools.model.BoardSectionUpdateWithRequiredBody;
 import org.openapitools.model.BoardSectionsList200Response;
 import org.openapitools.model.BoardWithUpdatePrivacy;
 import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
 import org.openapitools.model.CreativeType;
-import org.openapitools.model.Error;
 import java.util.List;
 import org.openapitools.model.PinterestLibError;
 
@@ -28,10 +29,10 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public abstract class BoardsApiService {
     public abstract Response boardSectionsCreate(String boardId
- ,BoardSection boardSection
+ ,BoardSectionCreate boardSectionCreate
  ,String adAccountId
  ) throws NotFoundException;
     public abstract Response boardSectionsDelete(String boardId
@@ -51,7 +52,7 @@ public abstract class BoardsApiService {
  ) throws NotFoundException;
     public abstract Response boardSectionsUpdate(String boardId
  ,String sectionId
- ,BoardSection boardSection
+ ,BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody
  ,String adAccountId
  ) throws NotFoundException;
     public abstract Response boardsCreate(BoardCreate boardCreate
@@ -69,11 +70,11 @@ public abstract class BoardsApiService {
  ,Integer pageSize
  ) throws NotFoundException;
     public abstract Response boardsListPins(String boardId
- ,String bookmark
- ,Integer pageSize
  ,List<CreativeType> creativeTypes
  ,String adAccountId
  ,Boolean pinMetrics
+ ,String bookmark
+ ,Integer pageSize
  ) throws NotFoundException;
     public abstract Response boardsUpdate(String boardId
  ,BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate

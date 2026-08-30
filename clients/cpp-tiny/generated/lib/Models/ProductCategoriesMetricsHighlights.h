@@ -52,21 +52,21 @@ public:
 
 	/*! \brief Set Engagement metric value
 	 */
-	void setEngagement(InnerProductCategoriesMetricsHighlights  engagement);
+	void setEngagement(InnerProductCategoriesMetricsHighlights engagement);
 	/*! \brief Get Number of outbound clicks
 	 */
 	InnerProductCategoriesMetricsHighlights getOutboundClicks();
 
 	/*! \brief Set Number of outbound clicks
 	 */
-	void setOutboundClicks(InnerProductCategoriesMetricsHighlights  outbound_clicks);
+	void setOutboundClicks(InnerProductCategoriesMetricsHighlights outbound_clicks);
 	/*! \brief Get Number of pin saves
 	 */
 	InnerProductCategoriesMetricsHighlights getPinSaves();
 
 	/*! \brief Set Number of pin saves
 	 */
-	void setPinSaves(InnerProductCategoriesMetricsHighlights  pin_saves);
+	void setPinSaves(InnerProductCategoriesMetricsHighlights pin_saves);
 
 
     private:

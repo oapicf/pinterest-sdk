@@ -7,7 +7,7 @@ This represents a mapping from app type targeting criteria to a bid price adjust
 
 Name | Type
 ------------ | -------------
-`aPPTYPE` | string
+`aPPTYPE` | [TargetingSpecAppType](TargetingSpecAppType.md)
 
 ## Example
 

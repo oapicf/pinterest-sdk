@@ -127,7 +127,7 @@ SSIOAccountAddress::getAddressId()
 }
 
 void
-SSIOAccountAddress::setAddressId(std::string  address_id)
+SSIOAccountAddress::setAddressId(std::string address_id)
 {
 	this->address_id = address_id;
 }
@@ -139,7 +139,7 @@ SSIOAccountAddress::getDisplay()
 }
 
 void
-SSIOAccountAddress::setDisplay(std::string  display)
+SSIOAccountAddress::setDisplay(std::string display)
 {
 	this->display = display;
 }
@@ -151,7 +151,7 @@ SSIOAccountAddress::getOrderLegalEntity()
 }
 
 void
-SSIOAccountAddress::setOrderLegalEntity(std::string  order_legal_entity)
+SSIOAccountAddress::setOrderLegalEntity(std::string order_legal_entity)
 {
 	this->order_legal_entity = order_legal_entity;
 }
@@ -163,7 +163,7 @@ SSIOAccountAddress::getPurpose()
 }
 
 void
-SSIOAccountAddress::setPurpose(std::string  purpose)
+SSIOAccountAddress::setPurpose(std::string purpose)
 {
 	this->purpose = purpose;
 }

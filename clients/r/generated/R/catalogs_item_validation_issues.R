@@ -86,7 +86,7 @@ CatalogsItemValidationIssues <- R6::R6Class(
       CatalogsItemValidationIssuesObject <- list()
       if (!is.null(self$`errors`)) {
         CatalogsItemValidationIssuesObject[["errors"]] <-
-          self$`errors`$toSimpleType()
+          self$extractSimpleType(self$`errors`)
       }
       if (!is.null(self$`item_id`)) {
         CatalogsItemValidationIssuesObject[["item_id"]] <-
@@ -98,9 +98,32 @@ CatalogsItemValidationIssues <- R6::R6Class(
       }
       if (!is.null(self$`warnings`)) {
         CatalogsItemValidationIssuesObject[["warnings"]] <-
-          self$`warnings`$toSimpleType()
+          self$extractSimpleType(self$`warnings`)
       }
       return(CatalogsItemValidationIssuesObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -1,8 +1,8 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.Error;
 import com.prokarma.pkmst.model.NotificationPostRequest;
 import com.prokarma.pkmst.model.NotificationResponse;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -25,7 +25,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @Controller
 public class NotificationApiController implements NotificationApi {
     private final ObjectMapper objectMapper;
@@ -34,7 +34,7 @@ public class NotificationApiController implements NotificationApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<NotificationResponse> notificationPost(@ApiParam(value = "notification event." ,required=true )   @RequestBody NotificationPostRequest notificationPostRequest,
+    public ResponseEntity<NotificationResponse> notificationPost(@ApiParam(value = "" ,required=true )   @RequestBody NotificationPostRequest notificationPostRequest,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 

@@ -60,10 +60,12 @@ class CatalogsUpsertHotelItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsUpsertHotelItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsUpsertHotelItem[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'attributes'), 'Required key "CatalogsUpsertHotelItem[attributes]" is missing from JSON.');
+        assert(json[r'attributes'] != null, 'Required key "CatalogsUpsertHotelItem[attributes]" has a null value in JSON.');
+        assert(json.containsKey(r'hotel_id'), 'Required key "CatalogsUpsertHotelItem[hotel_id]" is missing from JSON.');
+        assert(json[r'hotel_id'] != null, 'Required key "CatalogsUpsertHotelItem[hotel_id]" has a null value in JSON.');
+        assert(json.containsKey(r'operation'), 'Required key "CatalogsUpsertHotelItem[operation]" is missing from JSON.');
+        assert(json[r'operation'] != null, 'Required key "CatalogsUpsertHotelItem[operation]" has a null value in JSON.');
         return true;
       }());
 
@@ -125,27 +127,28 @@ class CatalogsUpsertHotelItem {
 }
 
 
-class CatalogsUpsertHotelItemOperationEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsUpsertHotelItemOperationEnum._(this.value);
+enum CatalogsUpsertHotelItemOperationEnum {
+  UPSERT._(r'UPSERT'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsUpsertHotelItemOperationEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const UPSERT = CatalogsUpsertHotelItemOperationEnum._(r'UPSERT');
-
-  /// List of all possible values in this [enum][CatalogsUpsertHotelItemOperationEnum].
-  static const values = <CatalogsUpsertHotelItemOperationEnum>[
-    UPSERT,
-  ];
-
+  /// Returns the instance of [CatalogsUpsertHotelItemOperationEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CatalogsUpsertHotelItemOperationEnum? fromJson(dynamic value) => CatalogsUpsertHotelItemOperationEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CatalogsUpsertHotelItemOperationEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CatalogsUpsertHotelItemOperationEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CatalogsUpsertHotelItemOperationEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -167,9 +170,10 @@ class CatalogsUpsertHotelItemOperationEnumTypeTransformer {
 
   const CatalogsUpsertHotelItemOperationEnumTypeTransformer._();
 
-  String encode(CatalogsUpsertHotelItemOperationEnum data) => data.value;
+  String encode(CatalogsUpsertHotelItemOperationEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CatalogsUpsertHotelItemOperationEnum.
+  /// Returns the instance of [CatalogsUpsertHotelItemOperationEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -178,6 +182,9 @@ class CatalogsUpsertHotelItemOperationEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CatalogsUpsertHotelItemOperationEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsUpsertHotelItemOperationEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'UPSERT': return CatalogsUpsertHotelItemOperationEnum.UPSERT;
@@ -190,7 +197,7 @@ class CatalogsUpsertHotelItemOperationEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CatalogsUpsertHotelItemOperationEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CatalogsUpsertHotelItemOperationEnumTypeTransformer? _instance;
 }
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,7 +27,7 @@ type CatalogsItemsUpsertBatchRequest struct {
 	Items []ItemUpsertBatchRecord `json:"items"`
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
-	Operation BatchOperation `json:"operation"`
+	Operation string `json:"operation"`
 }
 
 type _CatalogsItemsUpsertBatchRequest CatalogsItemsUpsertBatchRequest
@@ -36,7 +36,7 @@ type _CatalogsItemsUpsertBatchRequest CatalogsItemsUpsertBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsUpsertBatchRequest(country Country, items []ItemUpsertBatchRecord, language string, operation BatchOperation) *CatalogsItemsUpsertBatchRequest {
+func NewCatalogsItemsUpsertBatchRequest(country Country, items []ItemUpsertBatchRecord, language string, operation string) *CatalogsItemsUpsertBatchRequest {
 	this := CatalogsItemsUpsertBatchRequest{}
 	this.Country = country
 	this.Items = items
@@ -126,9 +126,9 @@ func (o *CatalogsItemsUpsertBatchRequest) SetLanguage(v string) {
 }
 
 // GetOperation returns the Operation field value
-func (o *CatalogsItemsUpsertBatchRequest) GetOperation() BatchOperation {
+func (o *CatalogsItemsUpsertBatchRequest) GetOperation() string {
 	if o == nil {
-		var ret BatchOperation
+		var ret string
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *CatalogsItemsUpsertBatchRequest) GetOperation() BatchOperation {
 
 // GetOperationOk returns a tuple with the Operation field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemsUpsertBatchRequest) GetOperationOk() (*BatchOperation, bool) {
+func (o *CatalogsItemsUpsertBatchRequest) GetOperationOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *CatalogsItemsUpsertBatchRequest) GetOperationOk() (*BatchOperation, boo
 }
 
 // SetOperation sets field value
-func (o *CatalogsItemsUpsertBatchRequest) SetOperation(v BatchOperation) {
+func (o *CatalogsItemsUpsertBatchRequest) SetOperation(v string) {
 	o.Operation = v
 }
 

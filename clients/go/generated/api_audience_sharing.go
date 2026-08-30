@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,11 +27,11 @@ type AudienceSharingAPIService service
 type ApiAdAccountsAudiencesSharedAccountsListRequest struct {
 	ctx context.Context
 	ApiService *AudienceSharingAPIService
-	adAccountId string
 	audienceId *string
 	accountType *AudienceAccountType
-	pageSize *int32
+	adAccountId string
 	bookmark *string
+	pageSize *int32
 }
 
 // Unique identifier of the audience to use to filter the results.
@@ -46,15 +46,15 @@ func (r ApiAdAccountsAudiencesSharedAccountsListRequest) AccountType(accountType
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiAdAccountsAudiencesSharedAccountsListRequest) PageSize(pageSize int32) ApiAdAccountsAudiencesSharedAccountsListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
 // Cursor used to fetch the next page of items
 func (r ApiAdAccountsAudiencesSharedAccountsListRequest) Bookmark(bookmark string) ApiAdAccountsAudiencesSharedAccountsListRequest {
 	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiAdAccountsAudiencesSharedAccountsListRequest) PageSize(pageSize int32) ApiAdAccountsAudiencesSharedAccountsListRequest {
+	r.pageSize = &pageSize
 	return r
 }
 
@@ -100,9 +100,6 @@ func (a *AudienceSharingAPIService) AdAccountsAudiencesSharedAccountsListExecute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.adAccountId) > 18 {
-		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
-	}
 	if r.audienceId == nil {
 		return localVarReturnValue, nil, reportError("audienceId is required and must be specified")
 	}
@@ -112,18 +109,21 @@ func (a *AudienceSharingAPIService) AdAccountsAudiencesSharedAccountsListExecute
 	if r.accountType == nil {
 		return localVarReturnValue, nil, reportError("accountType is required and must be specified")
 	}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "audience_id", r.audienceId, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "account_type", r.accountType, "form", "")
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -165,7 +165,29 @@ func (a *AudienceSharingAPIService) AdAccountsAudiencesSharedAccountsListExecute
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -176,7 +198,7 @@ func (a *AudienceSharingAPIService) AdAccountsAudiencesSharedAccountsListExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -186,7 +208,18 @@ func (a *AudienceSharingAPIService) AdAccountsAudiencesSharedAccountsListExecute
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -215,8 +248,8 @@ type ApiBusinessAccountAudiencesSharedAccountsListRequest struct {
 	businessId string
 	audienceId *string
 	accountType *AudienceAccountType
-	pageSize *int32
 	bookmark *string
+	pageSize *int32
 }
 
 // Unique identifier of the audience to use to filter the results.
@@ -231,15 +264,15 @@ func (r ApiBusinessAccountAudiencesSharedAccountsListRequest) AccountType(accoun
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiBusinessAccountAudiencesSharedAccountsListRequest) PageSize(pageSize int32) ApiBusinessAccountAudiencesSharedAccountsListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
 // Cursor used to fetch the next page of items
 func (r ApiBusinessAccountAudiencesSharedAccountsListRequest) Bookmark(bookmark string) ApiBusinessAccountAudiencesSharedAccountsListRequest {
 	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiBusinessAccountAudiencesSharedAccountsListRequest) PageSize(pageSize int32) ApiBusinessAccountAudiencesSharedAccountsListRequest {
+	r.pageSize = &pageSize
 	return r
 }
 
@@ -250,9 +283,7 @@ func (r ApiBusinessAccountAudiencesSharedAccountsListRequest) Execute() (*AdAcco
 /*
 BusinessAccountAudiencesSharedAccountsList List accounts with access to an audience owned by a business
 
-List all ad accounts and/or businesses that have access to a specific audience.
-The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business.
-If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
+List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessId Unique identifier of the requesting business.
@@ -305,15 +336,15 @@ func (a *AudienceSharingAPIService) BusinessAccountAudiencesSharedAccountsListEx
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "audience_id", r.audienceId, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "account_type", r.accountType, "form", "")
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
-	}
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -355,7 +386,29 @@ func (a *AudienceSharingAPIService) BusinessAccountAudiencesSharedAccountsListEx
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -366,7 +419,7 @@ func (a *AudienceSharingAPIService) BusinessAccountAudiencesSharedAccountsListEx
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -376,7 +429,18 @@ func (a *AudienceSharingAPIService) BusinessAccountAudiencesSharedAccountsListEx
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -403,9 +467,15 @@ type ApiSharedAudiencesForBusinessListRequest struct {
 	ctx context.Context
 	ApiService *AudienceSharingAPIService
 	businessId string
+	order *Order
 	bookmark *string
-	order *string
 	pageSize *int32
+}
+
+// The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+func (r ApiSharedAudiencesForBusinessListRequest) Order(order Order) ApiSharedAudiencesForBusinessListRequest {
+	r.order = &order
+	return r
 }
 
 // Cursor used to fetch the next page of items
@@ -414,19 +484,13 @@ func (r ApiSharedAudiencesForBusinessListRequest) Bookmark(bookmark string) ApiS
 	return r
 }
 
-// The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-func (r ApiSharedAudiencesForBusinessListRequest) Order(order string) ApiSharedAudiencesForBusinessListRequest {
-	r.order = &order
-	return r
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 func (r ApiSharedAudiencesForBusinessListRequest) PageSize(pageSize int32) ApiSharedAudiencesForBusinessListRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
-func (r ApiSharedAudiencesForBusinessListRequest) Execute() (*AudiencesList200Response, *http.Response, error) {
+func (r ApiSharedAudiencesForBusinessListRequest) Execute() (*SharedAudiencesForBusinessList200Response, *http.Response, error) {
 	return r.ApiService.SharedAudiencesForBusinessListExecute(r)
 }
 
@@ -448,13 +512,13 @@ func (a *AudienceSharingAPIService) SharedAudiencesForBusinessList(ctx context.C
 }
 
 // Execute executes the request
-//  @return AudiencesList200Response
-func (a *AudienceSharingAPIService) SharedAudiencesForBusinessListExecute(r ApiSharedAudiencesForBusinessListRequest) (*AudiencesList200Response, *http.Response, error) {
+//  @return SharedAudiencesForBusinessList200Response
+func (a *AudienceSharingAPIService) SharedAudiencesForBusinessListExecute(r ApiSharedAudiencesForBusinessListRequest) (*SharedAudiencesForBusinessList200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AudiencesList200Response
+		localVarReturnValue  *SharedAudiencesForBusinessList200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AudienceSharingAPIService.SharedAudiencesForBusinessList")
@@ -475,18 +539,18 @@ func (a *AudienceSharingAPIService) SharedAudiencesForBusinessListExecute(r ApiS
 		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
 
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
-	}
 	if r.order != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
+	}
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -528,7 +592,7 @@ func (a *AudienceSharingAPIService) SharedAudiencesForBusinessListExecute(r ApiS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -538,7 +602,51 @@ func (a *AudienceSharingAPIService) SharedAudiencesForBusinessListExecute(r ApiS
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -565,22 +673,24 @@ type ApiUpdateAdAccountToAdAccountSharedAudienceRequest struct {
 	ctx context.Context
 	ApiService *AudienceSharingAPIService
 	adAccountId string
-	sharedAudience *SharedAudience
+	adAccountToAdAccountSharedAudienceUpdateWithRequiredBody *AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
 }
 
-func (r ApiUpdateAdAccountToAdAccountSharedAudienceRequest) SharedAudience(sharedAudience SharedAudience) ApiUpdateAdAccountToAdAccountSharedAudienceRequest {
-	r.sharedAudience = &sharedAudience
+func (r ApiUpdateAdAccountToAdAccountSharedAudienceRequest) AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody(adAccountToAdAccountSharedAudienceUpdateWithRequiredBody AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody) ApiUpdateAdAccountToAdAccountSharedAudienceRequest {
+	r.adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = &adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
 	return r
 }
 
-func (r ApiUpdateAdAccountToAdAccountSharedAudienceRequest) Execute() (*SharedAudienceResponse, *http.Response, error) {
+func (r ApiUpdateAdAccountToAdAccountSharedAudienceRequest) Execute() (*AdAccountToAdAccountSharedAudience, *http.Response, error) {
 	return r.ApiService.UpdateAdAccountToAdAccountSharedAudienceExecute(r)
 }
 
 /*
 UpdateAdAccountToAdAccountSharedAudience Update audience sharing between ad accounts
 
-From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -595,13 +705,13 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToAdAccountSharedAudience(ctx
 }
 
 // Execute executes the request
-//  @return SharedAudienceResponse
-func (a *AudienceSharingAPIService) UpdateAdAccountToAdAccountSharedAudienceExecute(r ApiUpdateAdAccountToAdAccountSharedAudienceRequest) (*SharedAudienceResponse, *http.Response, error) {
+//  @return AdAccountToAdAccountSharedAudience
+func (a *AudienceSharingAPIService) UpdateAdAccountToAdAccountSharedAudienceExecute(r ApiUpdateAdAccountToAdAccountSharedAudienceRequest) (*AdAccountToAdAccountSharedAudience, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SharedAudienceResponse
+		localVarReturnValue  *AdAccountToAdAccountSharedAudience
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AudienceSharingAPIService.UpdateAdAccountToAdAccountSharedAudience")
@@ -618,8 +728,8 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToAdAccountSharedAudienceExec
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.sharedAudience == nil {
-		return localVarReturnValue, nil, reportError("sharedAudience is required and must be specified")
+	if r.adAccountToAdAccountSharedAudienceUpdateWithRequiredBody == nil {
+		return localVarReturnValue, nil, reportError("adAccountToAdAccountSharedAudienceUpdateWithRequiredBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -640,7 +750,7 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToAdAccountSharedAudienceExec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sharedAudience
+	localVarPostBody = r.adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -664,7 +774,7 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToAdAccountSharedAudienceExec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -674,7 +784,51 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToAdAccountSharedAudienceExec
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -701,22 +855,24 @@ type ApiUpdateAdAccountToBusinessSharedAudienceRequest struct {
 	ctx context.Context
 	ApiService *AudienceSharingAPIService
 	adAccountId string
-	businessSharedAudience *BusinessSharedAudience
+	adAccountToBusinessSharedAudienceUpdateWithRequiredBody *AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 }
 
-func (r ApiUpdateAdAccountToBusinessSharedAudienceRequest) BusinessSharedAudience(businessSharedAudience BusinessSharedAudience) ApiUpdateAdAccountToBusinessSharedAudienceRequest {
-	r.businessSharedAudience = &businessSharedAudience
+func (r ApiUpdateAdAccountToBusinessSharedAudienceRequest) AdAccountToBusinessSharedAudienceUpdateWithRequiredBody(adAccountToBusinessSharedAudienceUpdateWithRequiredBody AdAccountToBusinessSharedAudienceUpdateWithRequiredBody) ApiUpdateAdAccountToBusinessSharedAudienceRequest {
+	r.adAccountToBusinessSharedAudienceUpdateWithRequiredBody = &adAccountToBusinessSharedAudienceUpdateWithRequiredBody
 	return r
 }
 
-func (r ApiUpdateAdAccountToBusinessSharedAudienceRequest) Execute() (*BusinessSharedAudienceResponse, *http.Response, error) {
+func (r ApiUpdateAdAccountToBusinessSharedAudienceRequest) Execute() (*AdAccountToBusinessSharedAudience, *http.Response, error) {
 	return r.ApiService.UpdateAdAccountToBusinessSharedAudienceExecute(r)
 }
 
 /*
 UpdateAdAccountToBusinessSharedAudience Update audience sharing from an ad account to businesses
 
-From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -731,13 +887,13 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToBusinessSharedAudience(ctx 
 }
 
 // Execute executes the request
-//  @return BusinessSharedAudienceResponse
-func (a *AudienceSharingAPIService) UpdateAdAccountToBusinessSharedAudienceExecute(r ApiUpdateAdAccountToBusinessSharedAudienceRequest) (*BusinessSharedAudienceResponse, *http.Response, error) {
+//  @return AdAccountToBusinessSharedAudience
+func (a *AudienceSharingAPIService) UpdateAdAccountToBusinessSharedAudienceExecute(r ApiUpdateAdAccountToBusinessSharedAudienceRequest) (*AdAccountToBusinessSharedAudience, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BusinessSharedAudienceResponse
+		localVarReturnValue  *AdAccountToBusinessSharedAudience
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AudienceSharingAPIService.UpdateAdAccountToBusinessSharedAudience")
@@ -754,8 +910,8 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToBusinessSharedAudienceExecu
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.businessSharedAudience == nil {
-		return localVarReturnValue, nil, reportError("businessSharedAudience is required and must be specified")
+	if r.adAccountToBusinessSharedAudienceUpdateWithRequiredBody == nil {
+		return localVarReturnValue, nil, reportError("adAccountToBusinessSharedAudienceUpdateWithRequiredBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -776,7 +932,7 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToBusinessSharedAudienceExecu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.businessSharedAudience
+	localVarPostBody = r.adAccountToBusinessSharedAudienceUpdateWithRequiredBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -800,7 +956,7 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToBusinessSharedAudienceExecu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -810,7 +966,51 @@ func (a *AudienceSharingAPIService) UpdateAdAccountToBusinessSharedAudienceExecu
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -837,22 +1037,27 @@ type ApiUpdateBusinessToAdAccountSharedAudienceRequest struct {
 	ctx context.Context
 	ApiService *AudienceSharingAPIService
 	businessId string
-	sharedAudience *SharedAudience
+	businessToAdAccountSharedAudienceUpdateWithRequiredBody *BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
 }
 
-func (r ApiUpdateBusinessToAdAccountSharedAudienceRequest) SharedAudience(sharedAudience SharedAudience) ApiUpdateBusinessToAdAccountSharedAudienceRequest {
-	r.sharedAudience = &sharedAudience
+func (r ApiUpdateBusinessToAdAccountSharedAudienceRequest) BusinessToAdAccountSharedAudienceUpdateWithRequiredBody(businessToAdAccountSharedAudienceUpdateWithRequiredBody BusinessToAdAccountSharedAudienceUpdateWithRequiredBody) ApiUpdateBusinessToAdAccountSharedAudienceRequest {
+	r.businessToAdAccountSharedAudienceUpdateWithRequiredBody = &businessToAdAccountSharedAudienceUpdateWithRequiredBody
 	return r
 }
 
-func (r ApiUpdateBusinessToAdAccountSharedAudienceRequest) Execute() (*SharedAudienceResponse, *http.Response, error) {
+func (r ApiUpdateBusinessToAdAccountSharedAudienceRequest) Execute() (*BusinessToAdAccountSharedAudience, *http.Response, error) {
 	return r.ApiService.UpdateBusinessToAdAccountSharedAudienceExecute(r)
 }
 
 /*
 UpdateBusinessToAdAccountSharedAudience Update audience sharing from a business to ad accounts
 
-From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.
+
+- If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.
+- If the business is the recipient of the audience, it can share with any of its owned ad accounts.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessId Unique identifier of the requesting business.
@@ -867,13 +1072,13 @@ func (a *AudienceSharingAPIService) UpdateBusinessToAdAccountSharedAudience(ctx 
 }
 
 // Execute executes the request
-//  @return SharedAudienceResponse
-func (a *AudienceSharingAPIService) UpdateBusinessToAdAccountSharedAudienceExecute(r ApiUpdateBusinessToAdAccountSharedAudienceRequest) (*SharedAudienceResponse, *http.Response, error) {
+//  @return BusinessToAdAccountSharedAudience
+func (a *AudienceSharingAPIService) UpdateBusinessToAdAccountSharedAudienceExecute(r ApiUpdateBusinessToAdAccountSharedAudienceRequest) (*BusinessToAdAccountSharedAudience, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SharedAudienceResponse
+		localVarReturnValue  *BusinessToAdAccountSharedAudience
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AudienceSharingAPIService.UpdateBusinessToAdAccountSharedAudience")
@@ -893,8 +1098,8 @@ func (a *AudienceSharingAPIService) UpdateBusinessToAdAccountSharedAudienceExecu
 	if strlen(r.businessId) > 20 {
 		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
-	if r.sharedAudience == nil {
-		return localVarReturnValue, nil, reportError("sharedAudience is required and must be specified")
+	if r.businessToAdAccountSharedAudienceUpdateWithRequiredBody == nil {
+		return localVarReturnValue, nil, reportError("businessToAdAccountSharedAudienceUpdateWithRequiredBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -915,7 +1120,7 @@ func (a *AudienceSharingAPIService) UpdateBusinessToAdAccountSharedAudienceExecu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sharedAudience
+	localVarPostBody = r.businessToAdAccountSharedAudienceUpdateWithRequiredBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -939,7 +1144,7 @@ func (a *AudienceSharingAPIService) UpdateBusinessToAdAccountSharedAudienceExecu
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -949,7 +1154,51 @@ func (a *AudienceSharingAPIService) UpdateBusinessToAdAccountSharedAudienceExecu
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -976,22 +1225,24 @@ type ApiUpdateBusinessToBusinessSharedAudienceRequest struct {
 	ctx context.Context
 	ApiService *AudienceSharingAPIService
 	businessId string
-	businessSharedAudience *BusinessSharedAudience
+	businessToBusinessSharedAudienceUpdateWithRequiredBody *BusinessToBusinessSharedAudienceUpdateWithRequiredBody
 }
 
-func (r ApiUpdateBusinessToBusinessSharedAudienceRequest) BusinessSharedAudience(businessSharedAudience BusinessSharedAudience) ApiUpdateBusinessToBusinessSharedAudienceRequest {
-	r.businessSharedAudience = &businessSharedAudience
+func (r ApiUpdateBusinessToBusinessSharedAudienceRequest) BusinessToBusinessSharedAudienceUpdateWithRequiredBody(businessToBusinessSharedAudienceUpdateWithRequiredBody BusinessToBusinessSharedAudienceUpdateWithRequiredBody) ApiUpdateBusinessToBusinessSharedAudienceRequest {
+	r.businessToBusinessSharedAudienceUpdateWithRequiredBody = &businessToBusinessSharedAudienceUpdateWithRequiredBody
 	return r
 }
 
-func (r ApiUpdateBusinessToBusinessSharedAudienceRequest) Execute() (*BusinessSharedAudienceResponse, *http.Response, error) {
+func (r ApiUpdateBusinessToBusinessSharedAudienceRequest) Execute() (*BusinessToBusinessSharedAudience, *http.Response, error) {
 	return r.ApiService.UpdateBusinessToBusinessSharedAudienceExecute(r)
 }
 
 /*
 UpdateBusinessToBusinessSharedAudience Update audience sharing between businesses
 
-From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.
+From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.
+
+This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessId Unique identifier of the requesting business.
@@ -1006,13 +1257,13 @@ func (a *AudienceSharingAPIService) UpdateBusinessToBusinessSharedAudience(ctx c
 }
 
 // Execute executes the request
-//  @return BusinessSharedAudienceResponse
-func (a *AudienceSharingAPIService) UpdateBusinessToBusinessSharedAudienceExecute(r ApiUpdateBusinessToBusinessSharedAudienceRequest) (*BusinessSharedAudienceResponse, *http.Response, error) {
+//  @return BusinessToBusinessSharedAudience
+func (a *AudienceSharingAPIService) UpdateBusinessToBusinessSharedAudienceExecute(r ApiUpdateBusinessToBusinessSharedAudienceRequest) (*BusinessToBusinessSharedAudience, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BusinessSharedAudienceResponse
+		localVarReturnValue  *BusinessToBusinessSharedAudience
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AudienceSharingAPIService.UpdateBusinessToBusinessSharedAudience")
@@ -1032,8 +1283,8 @@ func (a *AudienceSharingAPIService) UpdateBusinessToBusinessSharedAudienceExecut
 	if strlen(r.businessId) > 20 {
 		return localVarReturnValue, nil, reportError("businessId must have less than 20 elements")
 	}
-	if r.businessSharedAudience == nil {
-		return localVarReturnValue, nil, reportError("businessSharedAudience is required and must be specified")
+	if r.businessToBusinessSharedAudienceUpdateWithRequiredBody == nil {
+		return localVarReturnValue, nil, reportError("businessToBusinessSharedAudienceUpdateWithRequiredBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1054,7 +1305,7 @@ func (a *AudienceSharingAPIService) UpdateBusinessToBusinessSharedAudienceExecut
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.businessSharedAudience
+	localVarPostBody = r.businessToBusinessSharedAudienceUpdateWithRequiredBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1078,7 +1329,7 @@ func (a *AudienceSharingAPIService) UpdateBusinessToBusinessSharedAudienceExecut
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1088,7 +1339,51 @@ func (a *AudienceSharingAPIService) UpdateBusinessToBusinessSharedAudienceExecut
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

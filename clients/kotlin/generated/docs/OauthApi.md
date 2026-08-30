@@ -11,7 +11,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="oauthConversionToken"></a>
 # **oauthConversionToken**
-> ConversionAccessTokenResponse oauthConversionToken()
+> ConversionAccessToken oauthConversionToken()
 
 Generate OAuth access token for conversion API
 
@@ -25,7 +25,7 @@ Generate a new and long-lived OAuth access token dedicated for sending conversio
 
 val apiInstance = OauthApi()
 try {
-    val result : ConversionAccessTokenResponse = apiInstance.oauthConversionToken()
+    val result : ConversionAccessToken = apiInstance.oauthConversionToken()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling OauthApi#oauthConversionToken")
@@ -41,13 +41,19 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ConversionAccessTokenResponse**](ConversionAccessTokenResponse.md)
+[**ConversionAccessToken**](ConversionAccessToken.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -56,11 +62,11 @@ Configure pinterest_oauth2:
 
 <a id="oauthToken"></a>
 # **oauthToken**
-> OauthAccessTokenResponse oauthToken(grantType)
+> OauthAccessToken oauthToken(grantType, code, continuousRefresh, redirectUri, refreshToken, scope)
 
 Generate OAuth access token
 
-Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
+Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the &#x60;continuous_refresh&#x60; parameter to &#x60;true&#x60; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
 
 ### Example
 ```kotlin
@@ -69,9 +75,14 @@ Generate a new OAuth access token using an authorization code; or refresh an exi
 //import org.openapitools.client.models.*
 
 val apiInstance = OauthApi()
-val grantType : kotlin.String = grantType_example // kotlin.String | 
+val grantType : TokenGrantType =  // TokenGrantType | 
+val code : kotlin.String = code_example // kotlin.String | 
+val continuousRefresh : kotlin.String = continuousRefresh_example // kotlin.String |   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+val redirectUri : kotlin.String = redirectUri_example // kotlin.String | 
+val refreshToken : kotlin.String = refreshToken_example // kotlin.String | 
+val scope : kotlin.String = scope_example // kotlin.String | 
 try {
-    val result : OauthAccessTokenResponse = apiInstance.oauthToken(grantType)
+    val result : OauthAccessToken = apiInstance.oauthToken(grantType, code, continuousRefresh, redirectUri, refreshToken, scope)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling OauthApi#oauthToken")
@@ -83,20 +94,31 @@ try {
 ```
 
 ### Parameters
+| **grantType** | [**TokenGrantType**](TokenGrantType.md)|  | [enum: authorization_code, refresh_token, client_credentials] |
+| **code** | **kotlin.String**|  | [optional] |
+| **continuousRefresh** | **kotlin.String**|   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | [optional] |
+| **redirectUri** | **kotlin.String**|  | [optional] |
+| **refreshToken** | **kotlin.String**|  | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **grantType** | **kotlin.String**|  | [enum: authorization_code, refresh_token, client_credentials] |
+| **scope** | **kotlin.String**|  | [optional] |
 
 ### Return type
 
-[**OauthAccessTokenResponse**](OauthAccessTokenResponse.md)
+[**OauthAccessToken**](OauthAccessToken.md)
 
 ### Authorization
 
 
-Configure basic:
-    ApiClient.username = ""
-    ApiClient.password = ""
+Configure basic statically:
+```kotlin
+ApiClient.username = ""
+ApiClient.password = ""
+```
+Configure basic dynamically:
+```kotlin
+apiInstance.userCredentialProvider = { "user" to "pass" }
+```
 
 ### HTTP request headers
 
@@ -119,7 +141,7 @@ Revokes an access or refresh token. Only tokens issued for system users are curr
 
 val apiInstance = OauthApi()
 val token : kotlin.String = token_example // kotlin.String | The token to revoke.
-val tokenTypeHint : kotlin.String = tokenTypeHint_example // kotlin.String | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
+val tokenTypeHint : TokenTypeHint =  // TokenTypeHint | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
 try {
     apiInstance.tokenRevoke(token, tokenTypeHint)
 } catch (e: ClientException) {
@@ -135,7 +157,7 @@ try {
 | **token** | **kotlin.String**| The token to revoke. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tokenTypeHint** | **kotlin.String**| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] [enum: access_token, refresh_token] |
+| **tokenTypeHint** | [**TokenTypeHint**](TokenTypeHint.md)| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] [enum: access_token, refresh_token] |
 
 ### Return type
 
@@ -144,9 +166,15 @@ null (empty response body)
 ### Authorization
 
 
-Configure basic:
-    ApiClient.username = ""
-    ApiClient.password = ""
+Configure basic statically:
+```kotlin
+ApiClient.username = ""
+ApiClient.password = ""
+```
+Configure basic dynamically:
+```kotlin
+apiInstance.userCredentialProvider = { "user" to "pass" }
+```
 
 ### HTTP request headers
 

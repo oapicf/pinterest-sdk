@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**MAX_PRICE** | MAX_PRICE | long NOT NULL |  | [**CatalogsProductGroupPricingCriteria**](.md) |  |  [foreignkey]
+**MAX_PRICE** | MAX_PRICE | long NOT NULL |  | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  |  [foreignkey]
 
 
 

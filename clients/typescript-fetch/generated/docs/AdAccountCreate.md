@@ -11,6 +11,7 @@ Name | Type
 `currency` | [Currency](Currency.md)
 `name` | string
 `ownerUserId` | string
+`timeZone` | string
 
 ## Example
 
@@ -23,6 +24,7 @@ const example = {
   "currency": null,
   "name": null,
   "ownerUserId": null,
+  "timeZone": America/Los_Angeles,
 } satisfies AdAccountCreate
 
 console.log(example)

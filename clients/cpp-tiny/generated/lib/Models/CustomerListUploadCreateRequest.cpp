@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CustomerListUploadCreateRequest::CustomerListUploadCreateRequest()
 {
-	operation = std::string();
+	operation = UserListOperationType();
 	total_parts = int(0);
 }
 
@@ -86,7 +86,7 @@ CustomerListUploadCreateRequest::getOperation()
 }
 
 void
-CustomerListUploadCreateRequest::setOperation(UserListOperationType  operation)
+CustomerListUploadCreateRequest::setOperation(UserListOperationType operation)
 {
 	this->operation = operation;
 }
@@ -98,7 +98,7 @@ CustomerListUploadCreateRequest::getTotalParts()
 }
 
 void
-CustomerListUploadCreateRequest::setTotalParts(int  total_parts)
+CustomerListUploadCreateRequest::setTotalParts(int total_parts)
 {
 	this->total_parts = total_parts;
 }

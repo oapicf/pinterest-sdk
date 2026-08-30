@@ -1,11 +1,11 @@
 /*
- * UpdatableItemAttributes_gtin.h
+ * UpdatableItemAttributesGtin.h
  *
  * The unique universal product identifier.
  */
 
-#ifndef _UpdatableItemAttributes_gtin_H_
-#define _UpdatableItemAttributes_gtin_H_
+#ifndef _UpdatableItemAttributesGtin_H_
+#define _UpdatableItemAttributesGtin_H_
 
 
 #include <string>
@@ -26,16 +26,16 @@ namespace ArtikCloud {
  *
  */
 
-class UpdatableItemAttributes_gtin : public Object {
+class UpdatableItemAttributesGtin : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	UpdatableItemAttributes_gtin();
-	UpdatableItemAttributes_gtin(char* str);
+	UpdatableItemAttributesGtin();
+	UpdatableItemAttributesGtin(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~UpdatableItemAttributes_gtin();
+	virtual ~UpdatableItemAttributesGtin();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -54,4 +54,4 @@ private:
 }
 }
 
-#endif /* _UpdatableItemAttributes_gtin_H_ */
+#endif /* _UpdatableItemAttributesGtin_H_ */

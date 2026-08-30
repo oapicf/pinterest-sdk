@@ -6,20 +6,21 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Images** | Pointer to [**ImageSize**](ImageSize.md) |  | [optional] 
-**ItemType** | Pointer to **string** |  | [optional] 
+**ItemType** | **string** | Discriminator literal identifying this as video metadata inside a &#x60;PinMediaMetadata&#x60; payload. | 
 **Link** | Pointer to **NullableString** |  | [optional] 
 **Title** | Pointer to **NullableString** |  | [optional] 
 **CoverImageUrl** | Pointer to **string** |  | [optional] 
 **Duration** | Pointer to **NullableFloat32** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
 **Height** | Pointer to **NullableInt32** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 **VideoUrl** | Pointer to **NullableString** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**VideoUrlHls** | Pointer to **NullableString** | Video url (HLS).  **Note:** This field is limited and not available to all apps. | [optional] 
 **Width** | Pointer to **NullableInt32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Methods
 
 ### NewPinMediaMetadata
 
-`func NewPinMediaMetadata() *PinMediaMetadata`
+`func NewPinMediaMetadata(itemType string, ) *PinMediaMetadata`
 
 NewPinMediaMetadata instantiates a new PinMediaMetadata object
 This constructor will assign default values to properties that have it defined,
@@ -113,11 +114,6 @@ and a boolean to check if the value has been set.
 
 SetItemType sets ItemType field to given value.
 
-### HasItemType
-
-`func (o *PinMediaMetadata) HasItemType() bool`
-
-HasItemType returns a boolean if a field has been set.
 
 ### GetLink
 
@@ -319,6 +315,41 @@ HasVideoUrl returns a boolean if a field has been set.
 `func (o *PinMediaMetadata) UnsetVideoUrl()`
 
 UnsetVideoUrl ensures that no value is present for VideoUrl, not even an explicit nil
+### GetVideoUrlHls
+
+`func (o *PinMediaMetadata) GetVideoUrlHls() string`
+
+GetVideoUrlHls returns the VideoUrlHls field if non-nil, zero value otherwise.
+
+### GetVideoUrlHlsOk
+
+`func (o *PinMediaMetadata) GetVideoUrlHlsOk() (*string, bool)`
+
+GetVideoUrlHlsOk returns a tuple with the VideoUrlHls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVideoUrlHls
+
+`func (o *PinMediaMetadata) SetVideoUrlHls(v string)`
+
+SetVideoUrlHls sets VideoUrlHls field to given value.
+
+### HasVideoUrlHls
+
+`func (o *PinMediaMetadata) HasVideoUrlHls() bool`
+
+HasVideoUrlHls returns a boolean if a field has been set.
+
+### SetVideoUrlHlsNil
+
+`func (o *PinMediaMetadata) SetVideoUrlHlsNil(b bool)`
+
+ SetVideoUrlHlsNil sets the value for VideoUrlHls to be an explicit nil
+
+### UnsetVideoUrlHls
+`func (o *PinMediaMetadata) UnsetVideoUrlHls()`
+
+UnsetVideoUrlHls ensures that no value is present for VideoUrlHls, not even an explicit nil
 ### GetWidth
 
 `func (o *PinMediaMetadata) GetWidth() int32`

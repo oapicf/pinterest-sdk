@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.LabelStatus;
-import org.openapitools.model.LabelType;
+import org.openapitools.model.NullableLabelStatus;
+import org.openapitools.model.NullableLabelType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,44 +20,9 @@ public class Label   {
   
   private String id;
 
-  private LabelType labelType;
+  private NullableLabelType labelType;
 
-  private String parentId;
-
-
-public enum ParentTypeEnum {
-
-    @JsonProperty("CAMPAIGN") CAMPAIGN(String.valueOf("CAMPAIGN"));
-
-
-    private String value;
-
-    ParentTypeEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static ParentTypeEnum fromValue(String value) {
-        for (ParentTypeEnum b : ParentTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
-  private ParentTypeEnum parentType;
-
-  private LabelStatus status;
+  private NullableLabelStatus status;
 
   private String value;
 
@@ -70,9 +35,10 @@ public enum ParentTypeEnum {
   }
 
   
-  @ApiModelProperty(example = "1106385754497", value = "Label ID.")
+  @ApiModelProperty(example = "1106385754497", required = true, value = "Label ID.")
   @JsonProperty("id")
-  public String getId() {
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getId() {
     return id;
   }
   public void setId(String id) {
@@ -82,63 +48,26 @@ public enum ParentTypeEnum {
 
   /**
    **/
-  public Label labelType(LabelType labelType) {
+  public Label labelType(NullableLabelType labelType) {
     this.labelType = labelType;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("label_type")
-  public LabelType getLabelType() {
+  @NotNull
+  public NullableLabelType getLabelType() {
     return labelType;
   }
-  public void setLabelType(LabelType labelType) {
+  public void setLabelType(NullableLabelType labelType) {
     this.labelType = labelType;
   }
 
 
   /**
-   * Label parent entity ID.
    **/
-  public Label parentId(String parentId) {
-    this.parentId = parentId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "626753052072", value = "Label parent entity ID.")
-  @JsonProperty("parent_id")
-  public String getParentId() {
-    return parentId;
-  }
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
-  }
-
-
-  /**
-   * Label parent entity type.
-   **/
-  public Label parentType(ParentTypeEnum parentType) {
-    this.parentType = parentType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "CAMPAIGN", value = "Label parent entity type.")
-  @JsonProperty("parent_type")
-  public ParentTypeEnum getParentType() {
-    return parentType;
-  }
-  public void setParentType(ParentTypeEnum parentType) {
-    this.parentType = parentType;
-  }
-
-
-  /**
-   **/
-  public Label status(LabelStatus status) {
+  public Label status(NullableLabelStatus status) {
     this.status = status;
     return this;
   }
@@ -146,16 +75,16 @@ public enum ParentTypeEnum {
   
   @ApiModelProperty(value = "")
   @JsonProperty("status")
-  public LabelStatus getStatus() {
+  public NullableLabelStatus getStatus() {
     return status;
   }
-  public void setStatus(LabelStatus status) {
+  public void setStatus(NullableLabelStatus status) {
     this.status = status;
   }
 
 
   /**
-   * Label name.
+   * Label name. 100-character limit.
    **/
   public Label value(String value) {
     this.value = value;
@@ -163,8 +92,9 @@ public enum ParentTypeEnum {
   }
 
   
-  @ApiModelProperty(value = "Label name.")
+  @ApiModelProperty(required = true, value = "Label name. 100-character limit.")
   @JsonProperty("value")
+  @NotNull
  @Size(max=100)  public String getValue() {
     return value;
   }
@@ -185,15 +115,13 @@ public enum ParentTypeEnum {
     Label label = (Label) o;
     return Objects.equals(this.id, label.id) &&
         Objects.equals(this.labelType, label.labelType) &&
-        Objects.equals(this.parentId, label.parentId) &&
-        Objects.equals(this.parentType, label.parentType) &&
         Objects.equals(this.status, label.status) &&
         Objects.equals(this.value, label.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, labelType, parentId, parentType, status, value);
+    return Objects.hash(id, labelType, status, value);
   }
 
   @Override
@@ -203,8 +131,6 @@ public enum ParentTypeEnum {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    labelType: ").append(toIndentedString(labelType)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
-    sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
@@ -216,10 +142,7 @@ public enum ParentTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -7,27 +7,27 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import org.openapitools.model.NonNullableCatalogsCurrency;
-import org.openapitools.model.NonNullableProductAvailabilityType;
+import org.openapitools.model.ProductAvailability;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Retail product metadata entity
  */
 
 @Schema(name = "CatalogsRetailProductMetadata", description = "Retail product metadata entity")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailProductMetadata {
 
-  private NonNullableProductAvailabilityType availability;
+  private ProductAvailability availability;
 
   private NonNullableCatalogsCurrency currency;
 
@@ -46,7 +46,7 @@ public class CatalogsRetailProductMetadata {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailProductMetadata(NonNullableProductAvailabilityType availability, NonNullableCatalogsCurrency currency, String itemGroupId, String itemId, BigDecimal price, BigDecimal salePrice) {
+  public CatalogsRetailProductMetadata(ProductAvailability availability, NonNullableCatalogsCurrency currency, String itemGroupId, String itemId, BigDecimal price, BigDecimal salePrice) {
     this.availability = availability;
     this.currency = currency;
     this.itemGroupId = JsonNullable.of(itemGroupId);
@@ -55,7 +55,7 @@ public class CatalogsRetailProductMetadata {
     this.salePrice = JsonNullable.of(salePrice);
   }
 
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+  public CatalogsRetailProductMetadata availability(ProductAvailability availability) {
     this.availability = availability;
     return this;
   }
@@ -67,11 +67,12 @@ public class CatalogsRetailProductMetadata {
   @NotNull @Valid 
   @Schema(name = "availability", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("availability")
-  public NonNullableProductAvailabilityType getAvailability() {
+  public ProductAvailability getAvailability() {
     return availability;
   }
 
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
+  @JsonProperty("availability")
+  public void setAvailability(ProductAvailability availability) {
     this.availability = availability;
   }
 
@@ -91,6 +92,7 @@ public class CatalogsRetailProductMetadata {
     return currency;
   }
 
+  @JsonProperty("currency")
   public void setCurrency(NonNullableCatalogsCurrency currency) {
     this.currency = currency;
   }
@@ -111,6 +113,7 @@ public class CatalogsRetailProductMetadata {
     return itemGroupId;
   }
 
+  @JsonProperty("item_group_id")
   public void setItemGroupId(JsonNullable<String> itemGroupId) {
     this.itemGroupId = itemGroupId;
   }
@@ -131,6 +134,7 @@ public class CatalogsRetailProductMetadata {
     return itemId;
   }
 
+  @JsonProperty("item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
@@ -151,6 +155,7 @@ public class CatalogsRetailProductMetadata {
     return price;
   }
 
+  @JsonProperty("price")
   public void setPrice(BigDecimal price) {
     this.price = price;
   }
@@ -171,6 +176,7 @@ public class CatalogsRetailProductMetadata {
     return salePrice;
   }
 
+  @JsonProperty("sale_price")
   public void setSalePrice(JsonNullable<BigDecimal> salePrice) {
     this.salePrice = salePrice;
   }
@@ -215,11 +221,8 @@ public class CatalogsRetailProductMetadata {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

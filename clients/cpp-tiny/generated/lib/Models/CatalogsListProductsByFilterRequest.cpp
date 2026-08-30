@@ -8,7 +8,7 @@ CatalogsListProductsByFilterRequest::CatalogsListProductsByFilterRequest()
 {
 	feed_id = std::string();
 	filters = CatalogsCreativeAssetsProductGroupFilters();
-	catalog_id = std::string();
+	catalog_id = null;
 	catalog_type = std::string();
 	country = Country();
 	locale = CatalogsLocale();
@@ -172,7 +172,7 @@ CatalogsListProductsByFilterRequest::getFeedId()
 }
 
 void
-CatalogsListProductsByFilterRequest::setFeedId(std::string  feed_id)
+CatalogsListProductsByFilterRequest::setFeedId(std::string feed_id)
 {
 	this->feed_id = feed_id;
 }
@@ -184,7 +184,7 @@ CatalogsListProductsByFilterRequest::getFilters()
 }
 
 void
-CatalogsListProductsByFilterRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
+CatalogsListProductsByFilterRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters filters)
 {
 	this->filters = filters;
 }
@@ -196,7 +196,7 @@ CatalogsListProductsByFilterRequest::getCatalogId()
 }
 
 void
-CatalogsListProductsByFilterRequest::setCatalogId(std::string  catalog_id)
+CatalogsListProductsByFilterRequest::setCatalogId(std::string catalog_id)
 {
 	this->catalog_id = catalog_id;
 }
@@ -208,7 +208,7 @@ CatalogsListProductsByFilterRequest::getCatalogType()
 }
 
 void
-CatalogsListProductsByFilterRequest::setCatalogType(std::string  catalog_type)
+CatalogsListProductsByFilterRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -220,7 +220,7 @@ CatalogsListProductsByFilterRequest::getCountry()
 }
 
 void
-CatalogsListProductsByFilterRequest::setCountry(Country  country)
+CatalogsListProductsByFilterRequest::setCountry(Country country)
 {
 	this->country = country;
 }
@@ -232,7 +232,7 @@ CatalogsListProductsByFilterRequest::getLocale()
 }
 
 void
-CatalogsListProductsByFilterRequest::setLocale(CatalogsLocale  locale)
+CatalogsListProductsByFilterRequest::setLocale(CatalogsLocale locale)
 {
 	this->locale = locale;
 }

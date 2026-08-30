@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,14 +16,15 @@ package openapi
 
 type PromotionArrayElement struct {
 
-	Data PromotionResponse `json:"data,omitempty"`
+	Data Promotion `json:"data,omitempty"`
 
 	Exception Exception `json:"exception,omitempty"`
 }
 
-// AssertPromotionArrayElementRequired checks if the required fields are not zero-ed
+// AssertPromotionArrayElementRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertPromotionArrayElementRequired(obj PromotionArrayElement) error {
-	if err := AssertPromotionResponseRequired(obj.Data); err != nil {
+	if err := AssertPromotionRequired(obj.Data); err != nil {
 		return err
 	}
 	if err := AssertExceptionRequired(obj.Exception); err != nil {
@@ -34,7 +35,7 @@ func AssertPromotionArrayElementRequired(obj PromotionArrayElement) error {
 
 // AssertPromotionArrayElementConstraints checks if the values respects the defined constraints
 func AssertPromotionArrayElementConstraints(obj PromotionArrayElement) error {
-	if err := AssertPromotionResponseConstraints(obj.Data); err != nil {
+	if err := AssertPromotionConstraints(obj.Data); err != nil {
 		return err
 	}
 	if err := AssertExceptionConstraints(obj.Exception); err != nil {

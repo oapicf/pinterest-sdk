@@ -7,9 +7,11 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  AdPreviewCreateFromImage = openapi_server.resourceTypes.AdPreviewCreateFromImage
-  AdPreviewCreateFromPin = openapi_server.resourceTypes.AdPreviewCreateFromPin
   AdPreviewShopping = openapi_server.resourceTypes.AdPreviewShopping
+  AdPreviewSourceImage = openapi_server.resourceTypes.AdPreviewSourceImage
+  AdPreviewSourcePinId = openapi_server.resourceTypes.AdPreviewSourcePinId
+  AdShoppingPreviewCreativeType = openapi_server.resourceTypes.AdShoppingPreviewCreativeType
+  BasePreferredMediaType = openapi_server.resourceTypes.BasePreferredMediaType
   CustomizableCTAType = openapi_server.resourceTypes.CustomizableCTAType
   import re = openapi_server.resourceTypes.import re
 }
@@ -25,9 +27,19 @@ resourceTypes {
           description = "Image URL."
           optional = true
         }
+        promotion_id {
+          type =  string
+          description = "Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion."
+          optional = false
+        }
         title {
           type =  string
           description = "Title displayed below ad."
+          optional = true
+        }
+        creative_type {
+          type = AdShoppingPreviewCreativeType
+          description = "Ad format of the shopping ad preview."
           optional = true
         }
         pin_id {
@@ -38,12 +50,6 @@ resourceTypes {
         catalog_product_group_id {
           type =  string
           description = "Catalog Product Group Id."
-          optional = true
-        }
-        creative_type {
-          type =  string
-          description = "Ad format of the shopping ad preview."
-          enum = ["SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR"]
           optional = true
         }
         customizable_cta_type {
@@ -77,9 +83,13 @@ resourceTypes {
           optional = false
         }
         preferred_media_type {
-          type =  string
+          type = BasePreferredMediaType
           description = "Preferred media type."
-          enum = ["VIDEO", "IMAGE"]
+          optional = false
+        }
+        show_promotion {
+          type =  boolean
+          description = "Include promotion data in preview when available on catalog item. Defaults to false."
           optional = false
         }
         video_tag {

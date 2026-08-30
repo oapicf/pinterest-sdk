@@ -12,6 +12,7 @@ PinMedia::PinMedia()
 	duration = float(0);
 	height = int(0);
 	video_url = std::string();
+	video_url_hls = std::string();
 	width = int(0);
 	items = std::list<PinMediaMetadata>();
 }
@@ -110,6 +111,19 @@ PinMedia::fromJson(std::string jsonObj)
 
     }
 
+    const char *video_url_hlsKey = "video_url_hls";
+
+    if(object.has_key(video_url_hlsKey))
+    {
+        bourne::json value = object[video_url_hlsKey];
+
+
+
+        jsonToValue(&video_url_hls, value, "std::string");
+
+
+    }
+
     const char *widthKey = "width";
 
     if(object.has_key(widthKey))
@@ -199,6 +213,13 @@ PinMedia::toJson()
 
 
 
+    object["video_url_hls"] = getVideoUrlHls();
+
+
+
+
+
+
     object["width"] = getWidth();
 
 
@@ -229,7 +250,7 @@ PinMedia::getImages()
 }
 
 void
-PinMedia::setImages(ImageSize  images)
+PinMedia::setImages(ImageSize images)
 {
 	this->images = images;
 }
@@ -241,7 +262,7 @@ PinMedia::getMediaType()
 }
 
 void
-PinMedia::setMediaType(std::string  media_type)
+PinMedia::setMediaType(std::string media_type)
 {
 	this->media_type = media_type;
 }
@@ -253,7 +274,7 @@ PinMedia::getCoverImageUrl()
 }
 
 void
-PinMedia::setCoverImageUrl(std::string  cover_image_url)
+PinMedia::setCoverImageUrl(std::string cover_image_url)
 {
 	this->cover_image_url = cover_image_url;
 }
@@ -265,7 +286,7 @@ PinMedia::getDuration()
 }
 
 void
-PinMedia::setDuration(long  duration)
+PinMedia::setDuration(long duration)
 {
 	this->duration = duration;
 }
@@ -277,7 +298,7 @@ PinMedia::getHeight()
 }
 
 void
-PinMedia::setHeight(int  height)
+PinMedia::setHeight(int height)
 {
 	this->height = height;
 }
@@ -289,9 +310,21 @@ PinMedia::getVideoUrl()
 }
 
 void
-PinMedia::setVideoUrl(std::string  video_url)
+PinMedia::setVideoUrl(std::string video_url)
 {
 	this->video_url = video_url;
+}
+
+std::string
+PinMedia::getVideoUrlHls()
+{
+	return video_url_hls;
+}
+
+void
+PinMedia::setVideoUrlHls(std::string video_url_hls)
+{
+	this->video_url_hls = video_url_hls;
 }
 
 int
@@ -301,7 +334,7 @@ PinMedia::getWidth()
 }
 
 void
-PinMedia::setWidth(int  width)
+PinMedia::setWidth(int width)
 {
 	this->width = width;
 }
@@ -313,7 +346,7 @@ PinMedia::getItems()
 }
 
 void
-PinMedia::setItems(std::list <PinMediaMetadata> items)
+PinMedia::setItems(std::list<PinMediaMetadata> items)
 {
 	this->items = items;
 }

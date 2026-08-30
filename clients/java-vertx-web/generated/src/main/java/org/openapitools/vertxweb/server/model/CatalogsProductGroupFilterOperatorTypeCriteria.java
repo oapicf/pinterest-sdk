@@ -7,38 +7,20 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.vertxweb.server.model.FilterOperatorType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupFilterOperatorTypeCriteria   {
   
-
-
-  public enum FilterOperatorTypeEnum {
-    IS("IS"),
-    CONTAINS("CONTAINS");
-
-    private String value;
-
-    FilterOperatorTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private FilterOperatorTypeEnum filterOperatorType = FilterOperatorTypeEnum.IS;
-  private Boolean negated = false;
+  private FilterOperatorType filterOperatorType;
+  private Boolean negated;
   private List<String> values = new ArrayList<>();
 
   public CatalogsProductGroupFilterOperatorTypeCriteria () {
 
   }
 
-  public CatalogsProductGroupFilterOperatorTypeCriteria (FilterOperatorTypeEnum filterOperatorType, Boolean negated, List<String> values) {
+  public CatalogsProductGroupFilterOperatorTypeCriteria (FilterOperatorType filterOperatorType, Boolean negated, List<String> values) {
     this.filterOperatorType = filterOperatorType;
     this.negated = negated;
     this.values = values;
@@ -46,10 +28,10 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
 
     
   @JsonProperty("filter_operator_type")
-  public FilterOperatorTypeEnum getFilterOperatorType() {
+  public FilterOperatorType getFilterOperatorType() {
     return filterOperatorType;
   }
-  public void setFilterOperatorType(FilterOperatorTypeEnum filterOperatorType) {
+  public void setFilterOperatorType(FilterOperatorType filterOperatorType) {
     this.filterOperatorType = filterOperatorType;
   }
 
@@ -108,9 +90,6 @@ public class CatalogsProductGroupFilterOperatorTypeCriteria   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

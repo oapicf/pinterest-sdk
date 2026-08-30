@@ -5,44 +5,114 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 
 
 type SharedAudienceAccount struct {
 
 	// Account ID (ad account or business ID).
-	AccountId string `json:"account_id" validate:"regexp=^\\\\d+$"`
+	AccountId string `json:"account_id" validate:"regexp=^\\d+$"`
 
 	// Account name.
 	AccountName string `json:"account_name"`
 
 	// account type
-	AccountType string `json:"account_type"`
+	AccountType AudienceAccountType `json:"account_type"`
 
 	// Epoch timestamp in seconds for the shared audience event
 	SharedOnTimestamp int32 `json:"shared_on_timestamp"`
 }
-
-// AssertSharedAudienceAccountRequired checks if the required fields are not zero-ed
-func AssertSharedAudienceAccountRequired(obj SharedAudienceAccount) error {
-	elements := map[string]interface{}{
-		"account_id": obj.AccountId,
-		"account_name": obj.AccountName,
-		"account_type": obj.AccountType,
-		"shared_on_timestamp": obj.SharedOnTimestamp,
+// UnmarshalJSON validates required property keys then unmarshals into SharedAudienceAccount
+func (o *SharedAudienceAccount) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"account_id",
+		"account_name",
+		"account_type",
+		"shared_on_timestamp",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"account_id": false,
+		"account_name": false,
+		"account_type": false,
+		"shared_on_timestamp": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"account_id": {},
+		"account_name": {},
+		"account_type": {},
+		"shared_on_timestamp": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded SharedAudienceAccount
+
+	if value, exists := allProperties["account_id"]; exists {
+		if err = json.Unmarshal(value, &decoded.AccountId); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["account_name"]; exists {
+		if err = json.Unmarshal(value, &decoded.AccountName); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["account_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.AccountType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["shared_on_timestamp"]; exists {
+		if err = json.Unmarshal(value, &decoded.SharedOnTimestamp); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertSharedAudienceAccountRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertSharedAudienceAccountRequired(obj SharedAudienceAccount) error {
 	return nil
 }
 

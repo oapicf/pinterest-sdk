@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  AuthRespondInvitesBodyInvitesInner = openapi_server.resourceTypes.AuthRespondInvitesBodyInvitesInner
+  AuthRespondInvitesBodyItem = openapi_server.resourceTypes.AuthRespondInvitesBodyItem
 }
 resourceTypes {
 
@@ -18,7 +18,7 @@ resourceTypes {
     properties {
         invites {
           type = array
-          items.type = AuthRespondInvitesBodyInvitesInner
+          items.type = AuthRespondInvitesBodyItem
           description = ""
           optional = true
         }

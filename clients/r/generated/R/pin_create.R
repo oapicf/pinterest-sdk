@@ -7,6 +7,7 @@
 #' @title PinCreate
 #' @description PinCreate Class
 #' @format An \code{R6Class} generator object
+#' @field ai_disclosures AI disclosure declarations the creator has made about this Pin. \link{AiDisclosures} [optional]
 #' @field alt_text  character [optional]
 #' @field board_id The board to which this Pin belongs. character [optional]
 #' @field board_section_id The board section to which this Pin belongs. character [optional]
@@ -23,6 +24,7 @@
 PinCreate <- R6::R6Class(
   "PinCreate",
   public = list(
+    `ai_disclosures` = NULL,
     `alt_text` = NULL,
     `board_id` = NULL,
     `board_section_id` = NULL,
@@ -37,6 +39,7 @@ PinCreate <- R6::R6Class(
     #' @description
     #' Initialize a new PinCreate class.
     #'
+    #' @param ai_disclosures AI disclosure declarations the creator has made about this Pin.
     #' @param alt_text alt_text
     #' @param board_id The board to which this Pin belongs.
     #' @param board_section_id The board section to which this Pin belongs.
@@ -48,7 +51,11 @@ PinCreate <- R6::R6Class(
     #' @param sponsor_id The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
     #' @param title title
     #' @param ... Other optional arguments.
-    initialize = function(`alt_text` = NULL, `board_id` = NULL, `board_section_id` = NULL, `description` = NULL, `dominant_color` = NULL, `link` = NULL, `media_source` = NULL, `parent_pin_id` = NULL, `sponsor_id` = NULL, `title` = NULL, ...) {
+    initialize = function(`ai_disclosures` = NULL, `alt_text` = NULL, `board_id` = NULL, `board_section_id` = NULL, `description` = NULL, `dominant_color` = NULL, `link` = NULL, `media_source` = NULL, `parent_pin_id` = NULL, `sponsor_id` = NULL, `title` = NULL, ...) {
+      if (!is.null(`ai_disclosures`)) {
+        stopifnot(R6::is.R6(`ai_disclosures`))
+        self$`ai_disclosures` <- `ai_disclosures`
+      }
       if (!is.null(`alt_text`)) {
         if (!(is.character(`alt_text`) && length(`alt_text`) == 1)) {
           stop(paste("Error! Invalid data for `alt_text`. Must be a string:", `alt_text`))
@@ -140,6 +147,10 @@ PinCreate <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       PinCreateObject <- list()
+      if (!is.null(self$`ai_disclosures`)) {
+        PinCreateObject[["ai_disclosures"]] <-
+          self$extractSimpleType(self$`ai_disclosures`)
+      }
       if (!is.null(self$`alt_text`)) {
         PinCreateObject[["alt_text"]] <-
           self$`alt_text`
@@ -166,7 +177,7 @@ PinCreate <- R6::R6Class(
       }
       if (!is.null(self$`media_source`)) {
         PinCreateObject[["media_source"]] <-
-          self$`media_source`$toSimpleType()
+          self$extractSimpleType(self$`media_source`)
       }
       if (!is.null(self$`parent_pin_id`)) {
         PinCreateObject[["parent_pin_id"]] <-
@@ -183,6 +194,29 @@ PinCreate <- R6::R6Class(
       return(PinCreateObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of PinCreate
     #'
@@ -190,6 +224,11 @@ PinCreate <- R6::R6Class(
     #' @return the instance of PinCreate
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`ai_disclosures`)) {
+        `ai_disclosures_object` <- AiDisclosures$new()
+        `ai_disclosures_object`$fromJSON(jsonlite::toJSON(this_object$`ai_disclosures`, auto_unbox = TRUE, digits = NA))
+        self$`ai_disclosures` <- `ai_disclosures_object`
+      }
       if (!is.null(this_object$`alt_text`)) {
         self$`alt_text` <- this_object$`alt_text`
       }
@@ -243,6 +282,7 @@ PinCreate <- R6::R6Class(
     #' @return the instance of PinCreate
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`ai_disclosures` <- AiDisclosures$new()$fromJSON(jsonlite::toJSON(this_object$`ai_disclosures`, auto_unbox = TRUE, digits = NA))
       self$`alt_text` <- this_object$`alt_text`
       self$`board_id` <- this_object$`board_id`
       self$`board_section_id` <- this_object$`board_section_id`

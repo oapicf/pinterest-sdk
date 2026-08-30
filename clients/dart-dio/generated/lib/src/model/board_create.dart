@@ -14,7 +14,7 @@ part 'board_create.g.dart';
 /// Properties:
 /// * [description] 
 /// * [isAdsOnly] - If set to `true`, the board will be ad-only and can store ad-only Pins.
-/// * [name] -      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+/// * [name] -     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
 /// * [privacy] -     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
 @BuiltValue()
 abstract class BoardCreate implements Built<BoardCreate, BoardCreateBuilder> {
@@ -25,7 +25,7 @@ abstract class BoardCreate implements Built<BoardCreate, BoardCreateBuilder> {
   @BuiltValueField(wireName: r'is_ads_only')
   bool? get isAdsOnly;
 
-  ///      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+  ///     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
   @BuiltValueField(wireName: r'name')
   String get name;
 
@@ -119,8 +119,9 @@ class _$BoardCreateSerializer implements PrimitiveSerializer<BoardCreate> {
         case r'is_ads_only':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isAdsOnly = valueDes;
           break;
         case r'name':
@@ -133,8 +134,9 @@ class _$BoardCreateSerializer implements PrimitiveSerializer<BoardCreate> {
         case r'privacy':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BoardPrivacy),
-          ) as BoardPrivacy;
+            specifiedType: const FullType.nullable(BoardPrivacy),
+          ) as BoardPrivacy?;
+          if (valueDes == null) continue;
           result.privacy = valueDes;
           break;
         default:

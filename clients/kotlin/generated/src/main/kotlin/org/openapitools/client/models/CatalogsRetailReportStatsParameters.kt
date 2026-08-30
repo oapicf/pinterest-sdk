@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsHotelReportStatsParametersReport
+import org.openapitools.client.models.CatalogsRetailReportStatsParametersReport
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -34,7 +42,7 @@ data class CatalogsRetailReportStatsParameters (
     val catalogType: CatalogsRetailReportStatsParameters.CatalogType,
 
     @Json(name = "report")
-    val report: CatalogsHotelReportStatsParametersReport
+    val report: CatalogsRetailReportStatsParametersReport
 
 ) {
 

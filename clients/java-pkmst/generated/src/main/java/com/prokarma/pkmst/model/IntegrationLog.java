@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.IntegrationLogClientError;
 import com.prokarma.pkmst.model.IntegrationLogClientRequest;
+import com.prokarma.pkmst.model.IntegrationLogEventType;
+import com.prokarma.pkmst.model.IntegrationLogLevel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -19,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Schema for log sent from an integration application.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLog   {
   @JsonProperty("advertiser_id")
   private String advertiserId;
@@ -33,39 +35,8 @@ public class IntegrationLog   {
   @JsonProperty("error")
   private IntegrationLogClientError error;
 
-  /**
-   * Log event type
-   */
-  public enum EventTypeEnum {
-    APP("APP"),
-    
-    API("API");
-
-    private String value;
-
-    EventTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static EventTypeEnum fromValue(String text) {
-      for (EventTypeEnum b : EventTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("event_type")
-  private EventTypeEnum eventType;
+  private IntegrationLogEventType eventType;
 
   @JsonProperty("external_business_id")
   private String externalBusinessId;
@@ -73,41 +44,8 @@ public class IntegrationLog   {
   @JsonProperty("feed_profile_id")
   private String feedProfileId;
 
-  /**
-   * Log level type
-   */
-  public enum LogLevelEnum {
-    INFO("INFO"),
-    
-    WARN("WARN"),
-    
-    ERROR("ERROR");
-
-    private String value;
-
-    LogLevelEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static LogLevelEnum fromValue(String text) {
-      for (LogLevelEnum b : LogLevelEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("log_level")
-  private LogLevelEnum logLevel;
+  private IntegrationLogLevel logLevel;
 
   @JsonProperty("merchant_id")
   private String merchantId;
@@ -196,7 +134,7 @@ public class IntegrationLog   {
     this.error = error;
   }
 
-  public IntegrationLog eventType(EventTypeEnum eventType) {
+  public IntegrationLog eventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -206,11 +144,11 @@ public class IntegrationLog   {
    * @return eventType
    */
   @ApiModelProperty(required = true, value = "Log event type")
-  public EventTypeEnum getEventType() {
+  public IntegrationLogEventType getEventType() {
     return eventType;
   }
 
-  public void setEventType(EventTypeEnum eventType) {
+  public void setEventType(IntegrationLogEventType eventType) {
     this.eventType = eventType;
   }
 
@@ -250,7 +188,7 @@ public class IntegrationLog   {
     this.feedProfileId = feedProfileId;
   }
 
-  public IntegrationLog logLevel(LogLevelEnum logLevel) {
+  public IntegrationLog logLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
     return this;
   }
@@ -260,11 +198,11 @@ public class IntegrationLog   {
    * @return logLevel
    */
   @ApiModelProperty(required = true, value = "Log level type")
-  public LogLevelEnum getLogLevel() {
+  public IntegrationLogLevel getLogLevel() {
     return logLevel;
   }
 
-  public void setLogLevel(LogLevelEnum logLevel) {
+  public void setLogLevel(IntegrationLogLevel logLevel) {
     this.logLevel = logLevel;
   }
 
@@ -415,10 +353,7 @@ public class IntegrationLog   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

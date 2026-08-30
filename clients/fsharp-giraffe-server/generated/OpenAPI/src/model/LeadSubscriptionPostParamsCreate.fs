@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata
+open OpenAPI.Model.PartnerMetadata
 
 module LeadSubscriptionPostParamsCreate =
 
@@ -13,7 +13,7 @@ module LeadSubscriptionPostParamsCreate =
     LeadFormId : string;
     WebhookUrl : string;
     PartnerAccessToken : string;
-    PartnerMetadata : LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
+    PartnerMetadata : PartnerMetadata;
     PartnerRefreshToken : string;
   }
   //#endregion

@@ -13,169 +13,169 @@ part of openapi.api;
 class CatalogsItemValidationWarnings {
   /// Returns a new [CatalogsItemValidationWarnings] instance.
   CatalogsItemValidationWarnings({
-    this.aDIMAGE0LINKDUPLICATED,
-    this.aDIMAGE0LINKLENGTHTOOLONG,
-    this.aDIMAGE0LINKREQUIRED,
-    this.aDIMAGE0LINKWARNING,
-    this.aDIMAGE0TAGDUPLICATED,
-    this.aDIMAGE0TAGLENGTHTOOLONG,
-    this.aDIMAGE0TAGREQUIRED,
-    this.aDIMAGE10LINKDUPLICATED,
-    this.aDIMAGE10LINKLENGTHTOOLONG,
-    this.aDIMAGE10LINKREQUIRED,
-    this.aDIMAGE10LINKWARNING,
-    this.aDIMAGE10TAGDUPLICATED,
-    this.aDIMAGE10TAGLENGTHTOOLONG,
-    this.aDIMAGE10TAGREQUIRED,
-    this.aDIMAGE11LINKDUPLICATED,
-    this.aDIMAGE11LINKLENGTHTOOLONG,
-    this.aDIMAGE11LINKREQUIRED,
-    this.aDIMAGE11LINKWARNING,
-    this.aDIMAGE11TAGDUPLICATED,
-    this.aDIMAGE11TAGLENGTHTOOLONG,
-    this.aDIMAGE11TAGREQUIRED,
-    this.aDIMAGE12LINKDUPLICATED,
-    this.aDIMAGE12LINKLENGTHTOOLONG,
-    this.aDIMAGE12LINKREQUIRED,
-    this.aDIMAGE12LINKWARNING,
-    this.aDIMAGE12TAGDUPLICATED,
-    this.aDIMAGE12TAGLENGTHTOOLONG,
-    this.aDIMAGE12TAGREQUIRED,
-    this.aDIMAGE13LINKDUPLICATED,
-    this.aDIMAGE13LINKLENGTHTOOLONG,
-    this.aDIMAGE13LINKREQUIRED,
-    this.aDIMAGE13LINKWARNING,
-    this.aDIMAGE13TAGDUPLICATED,
-    this.aDIMAGE13TAGLENGTHTOOLONG,
-    this.aDIMAGE13TAGREQUIRED,
-    this.aDIMAGE14LINKDUPLICATED,
-    this.aDIMAGE14LINKLENGTHTOOLONG,
-    this.aDIMAGE14LINKREQUIRED,
-    this.aDIMAGE14LINKWARNING,
-    this.aDIMAGE14TAGDUPLICATED,
-    this.aDIMAGE14TAGLENGTHTOOLONG,
-    this.aDIMAGE14TAGREQUIRED,
-    this.aDIMAGE15LINKDUPLICATED,
-    this.aDIMAGE15LINKLENGTHTOOLONG,
-    this.aDIMAGE15LINKREQUIRED,
-    this.aDIMAGE15LINKWARNING,
-    this.aDIMAGE15TAGDUPLICATED,
-    this.aDIMAGE15TAGLENGTHTOOLONG,
-    this.aDIMAGE15TAGREQUIRED,
-    this.aDIMAGE16LINKDUPLICATED,
-    this.aDIMAGE16LINKLENGTHTOOLONG,
-    this.aDIMAGE16LINKREQUIRED,
-    this.aDIMAGE16LINKWARNING,
-    this.aDIMAGE16TAGDUPLICATED,
-    this.aDIMAGE16TAGLENGTHTOOLONG,
-    this.aDIMAGE16TAGREQUIRED,
-    this.aDIMAGE17LINKDUPLICATED,
-    this.aDIMAGE17LINKLENGTHTOOLONG,
-    this.aDIMAGE17LINKREQUIRED,
-    this.aDIMAGE17LINKWARNING,
-    this.aDIMAGE17TAGDUPLICATED,
-    this.aDIMAGE17TAGLENGTHTOOLONG,
-    this.aDIMAGE17TAGREQUIRED,
-    this.aDIMAGE18LINKDUPLICATED,
-    this.aDIMAGE18LINKLENGTHTOOLONG,
-    this.aDIMAGE18LINKREQUIRED,
-    this.aDIMAGE18LINKWARNING,
-    this.aDIMAGE18TAGDUPLICATED,
-    this.aDIMAGE18TAGLENGTHTOOLONG,
-    this.aDIMAGE18TAGREQUIRED,
-    this.aDIMAGE19LINKDUPLICATED,
-    this.aDIMAGE19LINKLENGTHTOOLONG,
-    this.aDIMAGE19LINKREQUIRED,
-    this.aDIMAGE19LINKWARNING,
-    this.aDIMAGE19TAGDUPLICATED,
-    this.aDIMAGE19TAGLENGTHTOOLONG,
-    this.aDIMAGE19TAGREQUIRED,
-    this.aDIMAGE1LINKDUPLICATED,
-    this.aDIMAGE1LINKLENGTHTOOLONG,
-    this.aDIMAGE1LINKREQUIRED,
-    this.aDIMAGE1LINKWARNING,
-    this.aDIMAGE1TAGDUPLICATED,
-    this.aDIMAGE1TAGLENGTHTOOLONG,
-    this.aDIMAGE1TAGREQUIRED,
-    this.aDIMAGE2LINKDUPLICATED,
-    this.aDIMAGE2LINKLENGTHTOOLONG,
-    this.aDIMAGE2LINKREQUIRED,
-    this.aDIMAGE2LINKWARNING,
-    this.aDIMAGE2TAGDUPLICATED,
-    this.aDIMAGE2TAGLENGTHTOOLONG,
-    this.aDIMAGE2TAGREQUIRED,
-    this.aDIMAGE3LINKDUPLICATED,
-    this.aDIMAGE3LINKLENGTHTOOLONG,
-    this.aDIMAGE3LINKREQUIRED,
-    this.aDIMAGE3LINKWARNING,
-    this.aDIMAGE3TAGDUPLICATED,
-    this.aDIMAGE3TAGLENGTHTOOLONG,
-    this.aDIMAGE3TAGREQUIRED,
-    this.aDIMAGE4LINKDUPLICATED,
-    this.aDIMAGE4LINKLENGTHTOOLONG,
-    this.aDIMAGE4LINKREQUIRED,
-    this.aDIMAGE4LINKWARNING,
-    this.aDIMAGE4TAGDUPLICATED,
-    this.aDIMAGE4TAGLENGTHTOOLONG,
-    this.aDIMAGE4TAGREQUIRED,
-    this.aDIMAGE5LINKDUPLICATED,
-    this.aDIMAGE5LINKLENGTHTOOLONG,
-    this.aDIMAGE5LINKREQUIRED,
-    this.aDIMAGE5LINKWARNING,
-    this.aDIMAGE5TAGDUPLICATED,
-    this.aDIMAGE5TAGLENGTHTOOLONG,
-    this.aDIMAGE5TAGREQUIRED,
-    this.aDIMAGE6LINKDUPLICATED,
-    this.aDIMAGE6LINKLENGTHTOOLONG,
-    this.aDIMAGE6LINKREQUIRED,
-    this.aDIMAGE6LINKWARNING,
-    this.aDIMAGE6TAGDUPLICATED,
-    this.aDIMAGE6TAGLENGTHTOOLONG,
-    this.aDIMAGE6TAGREQUIRED,
-    this.aDIMAGE7LINKDUPLICATED,
-    this.aDIMAGE7LINKLENGTHTOOLONG,
-    this.aDIMAGE7LINKREQUIRED,
-    this.aDIMAGE7LINKWARNING,
-    this.aDIMAGE7TAGDUPLICATED,
-    this.aDIMAGE7TAGLENGTHTOOLONG,
-    this.aDIMAGE7TAGREQUIRED,
-    this.aDIMAGE8LINKDUPLICATED,
-    this.aDIMAGE8LINKLENGTHTOOLONG,
-    this.aDIMAGE8LINKREQUIRED,
-    this.aDIMAGE8LINKWARNING,
-    this.aDIMAGE8TAGDUPLICATED,
-    this.aDIMAGE8TAGLENGTHTOOLONG,
-    this.aDIMAGE8TAGREQUIRED,
-    this.aDIMAGE9LINKDUPLICATED,
-    this.aDIMAGE9LINKLENGTHTOOLONG,
-    this.aDIMAGE9LINKREQUIRED,
-    this.aDIMAGE9LINKWARNING,
-    this.aDIMAGE9TAGDUPLICATED,
-    this.aDIMAGE9TAGLENGTHTOOLONG,
-    this.aDIMAGE9TAGREQUIRED,
+    this.AD_IMAGE_0_LINK_DUPLICATED,
+    this.AD_IMAGE_0_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_0_LINK_REQUIRED,
+    this.AD_IMAGE_0_LINK_WARNING,
+    this.AD_IMAGE_0_TAG_DUPLICATED,
+    this.AD_IMAGE_0_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_0_TAG_REQUIRED,
+    this.AD_IMAGE_10_LINK_DUPLICATED,
+    this.AD_IMAGE_10_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_10_LINK_REQUIRED,
+    this.AD_IMAGE_10_LINK_WARNING,
+    this.AD_IMAGE_10_TAG_DUPLICATED,
+    this.AD_IMAGE_10_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_10_TAG_REQUIRED,
+    this.AD_IMAGE_11_LINK_DUPLICATED,
+    this.AD_IMAGE_11_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_11_LINK_REQUIRED,
+    this.AD_IMAGE_11_LINK_WARNING,
+    this.AD_IMAGE_11_TAG_DUPLICATED,
+    this.AD_IMAGE_11_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_11_TAG_REQUIRED,
+    this.AD_IMAGE_12_LINK_DUPLICATED,
+    this.AD_IMAGE_12_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_12_LINK_REQUIRED,
+    this.AD_IMAGE_12_LINK_WARNING,
+    this.AD_IMAGE_12_TAG_DUPLICATED,
+    this.AD_IMAGE_12_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_12_TAG_REQUIRED,
+    this.AD_IMAGE_13_LINK_DUPLICATED,
+    this.AD_IMAGE_13_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_13_LINK_REQUIRED,
+    this.AD_IMAGE_13_LINK_WARNING,
+    this.AD_IMAGE_13_TAG_DUPLICATED,
+    this.AD_IMAGE_13_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_13_TAG_REQUIRED,
+    this.AD_IMAGE_14_LINK_DUPLICATED,
+    this.AD_IMAGE_14_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_14_LINK_REQUIRED,
+    this.AD_IMAGE_14_LINK_WARNING,
+    this.AD_IMAGE_14_TAG_DUPLICATED,
+    this.AD_IMAGE_14_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_14_TAG_REQUIRED,
+    this.AD_IMAGE_15_LINK_DUPLICATED,
+    this.AD_IMAGE_15_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_15_LINK_REQUIRED,
+    this.AD_IMAGE_15_LINK_WARNING,
+    this.AD_IMAGE_15_TAG_DUPLICATED,
+    this.AD_IMAGE_15_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_15_TAG_REQUIRED,
+    this.AD_IMAGE_16_LINK_DUPLICATED,
+    this.AD_IMAGE_16_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_16_LINK_REQUIRED,
+    this.AD_IMAGE_16_LINK_WARNING,
+    this.AD_IMAGE_16_TAG_DUPLICATED,
+    this.AD_IMAGE_16_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_16_TAG_REQUIRED,
+    this.AD_IMAGE_17_LINK_DUPLICATED,
+    this.AD_IMAGE_17_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_17_LINK_REQUIRED,
+    this.AD_IMAGE_17_LINK_WARNING,
+    this.AD_IMAGE_17_TAG_DUPLICATED,
+    this.AD_IMAGE_17_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_17_TAG_REQUIRED,
+    this.AD_IMAGE_18_LINK_DUPLICATED,
+    this.AD_IMAGE_18_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_18_LINK_REQUIRED,
+    this.AD_IMAGE_18_LINK_WARNING,
+    this.AD_IMAGE_18_TAG_DUPLICATED,
+    this.AD_IMAGE_18_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_18_TAG_REQUIRED,
+    this.AD_IMAGE_19_LINK_DUPLICATED,
+    this.AD_IMAGE_19_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_19_LINK_REQUIRED,
+    this.AD_IMAGE_19_LINK_WARNING,
+    this.AD_IMAGE_19_TAG_DUPLICATED,
+    this.AD_IMAGE_19_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_19_TAG_REQUIRED,
+    this.AD_IMAGE_1_LINK_DUPLICATED,
+    this.AD_IMAGE_1_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_1_LINK_REQUIRED,
+    this.AD_IMAGE_1_LINK_WARNING,
+    this.AD_IMAGE_1_TAG_DUPLICATED,
+    this.AD_IMAGE_1_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_1_TAG_REQUIRED,
+    this.AD_IMAGE_2_LINK_DUPLICATED,
+    this.AD_IMAGE_2_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_2_LINK_REQUIRED,
+    this.AD_IMAGE_2_LINK_WARNING,
+    this.AD_IMAGE_2_TAG_DUPLICATED,
+    this.AD_IMAGE_2_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_2_TAG_REQUIRED,
+    this.AD_IMAGE_3_LINK_DUPLICATED,
+    this.AD_IMAGE_3_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_3_LINK_REQUIRED,
+    this.AD_IMAGE_3_LINK_WARNING,
+    this.AD_IMAGE_3_TAG_DUPLICATED,
+    this.AD_IMAGE_3_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_3_TAG_REQUIRED,
+    this.AD_IMAGE_4_LINK_DUPLICATED,
+    this.AD_IMAGE_4_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_4_LINK_REQUIRED,
+    this.AD_IMAGE_4_LINK_WARNING,
+    this.AD_IMAGE_4_TAG_DUPLICATED,
+    this.AD_IMAGE_4_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_4_TAG_REQUIRED,
+    this.AD_IMAGE_5_LINK_DUPLICATED,
+    this.AD_IMAGE_5_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_5_LINK_REQUIRED,
+    this.AD_IMAGE_5_LINK_WARNING,
+    this.AD_IMAGE_5_TAG_DUPLICATED,
+    this.AD_IMAGE_5_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_5_TAG_REQUIRED,
+    this.AD_IMAGE_6_LINK_DUPLICATED,
+    this.AD_IMAGE_6_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_6_LINK_REQUIRED,
+    this.AD_IMAGE_6_LINK_WARNING,
+    this.AD_IMAGE_6_TAG_DUPLICATED,
+    this.AD_IMAGE_6_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_6_TAG_REQUIRED,
+    this.AD_IMAGE_7_LINK_DUPLICATED,
+    this.AD_IMAGE_7_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_7_LINK_REQUIRED,
+    this.AD_IMAGE_7_LINK_WARNING,
+    this.AD_IMAGE_7_TAG_DUPLICATED,
+    this.AD_IMAGE_7_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_7_TAG_REQUIRED,
+    this.AD_IMAGE_8_LINK_DUPLICATED,
+    this.AD_IMAGE_8_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_8_LINK_REQUIRED,
+    this.AD_IMAGE_8_LINK_WARNING,
+    this.AD_IMAGE_8_TAG_DUPLICATED,
+    this.AD_IMAGE_8_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_8_TAG_REQUIRED,
+    this.AD_IMAGE_9_LINK_DUPLICATED,
+    this.AD_IMAGE_9_LINK_LENGTH_TOO_LONG,
+    this.AD_IMAGE_9_LINK_REQUIRED,
+    this.AD_IMAGE_9_LINK_WARNING,
+    this.AD_IMAGE_9_TAG_DUPLICATED,
+    this.AD_IMAGE_9_TAG_LENGTH_TOO_LONG,
+    this.AD_IMAGE_9_TAG_REQUIRED,
     this.AD_LINK_FORMAT_WARNING,
     this.AD_LINK_SAME_AS_LINK,
-    this.aDVIDEO0LINKDUPLICATED,
-    this.aDVIDEO0LINKLENGTHTOOLONG,
-    this.aDVIDEO0LINKREQUIRED,
-    this.aDVIDEO0LINKWARNING,
-    this.aDVIDEO0TAGDUPLICATED,
-    this.aDVIDEO0TAGLENGTHTOOLONG,
-    this.aDVIDEO0TAGREQUIRED,
-    this.aDVIDEO1LINKDUPLICATED,
-    this.aDVIDEO1LINKLENGTHTOOLONG,
-    this.aDVIDEO1LINKREQUIRED,
-    this.aDVIDEO1LINKWARNING,
-    this.aDVIDEO1TAGDUPLICATED,
-    this.aDVIDEO1TAGLENGTHTOOLONG,
-    this.aDVIDEO1TAGREQUIRED,
-    this.aDVIDEO2LINKDUPLICATED,
-    this.aDVIDEO2LINKLENGTHTOOLONG,
-    this.aDVIDEO2LINKREQUIRED,
-    this.aDVIDEO2LINKWARNING,
-    this.aDVIDEO2TAGDUPLICATED,
-    this.aDVIDEO2TAGLENGTHTOOLONG,
-    this.aDVIDEO2TAGREQUIRED,
+    this.AD_VIDEO_0_LINK_DUPLICATED,
+    this.AD_VIDEO_0_LINK_LENGTH_TOO_LONG,
+    this.AD_VIDEO_0_LINK_REQUIRED,
+    this.AD_VIDEO_0_LINK_WARNING,
+    this.AD_VIDEO_0_TAG_DUPLICATED,
+    this.AD_VIDEO_0_TAG_LENGTH_TOO_LONG,
+    this.AD_VIDEO_0_TAG_REQUIRED,
+    this.AD_VIDEO_1_LINK_DUPLICATED,
+    this.AD_VIDEO_1_LINK_LENGTH_TOO_LONG,
+    this.AD_VIDEO_1_LINK_REQUIRED,
+    this.AD_VIDEO_1_LINK_WARNING,
+    this.AD_VIDEO_1_TAG_DUPLICATED,
+    this.AD_VIDEO_1_TAG_LENGTH_TOO_LONG,
+    this.AD_VIDEO_1_TAG_REQUIRED,
+    this.AD_VIDEO_2_LINK_DUPLICATED,
+    this.AD_VIDEO_2_LINK_LENGTH_TOO_LONG,
+    this.AD_VIDEO_2_LINK_REQUIRED,
+    this.AD_VIDEO_2_LINK_WARNING,
+    this.AD_VIDEO_2_TAG_DUPLICATED,
+    this.AD_VIDEO_2_TAG_LENGTH_TOO_LONG,
+    this.AD_VIDEO_2_TAG_REQUIRED,
     this.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG,
     this.ADDITIONAL_IMAGE_LINK_WARNING,
     this.ADWORDS_FORMAT_WARNING,
@@ -221,1126 +221,1267 @@ class CatalogsItemValidationWarnings {
     this.WEIGHT_UNIT_INVALID,
   });
 
+  /// ad_image_0_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE0LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_0_LINK_DUPLICATED;
 
+  /// Ad image link 0 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE0LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 0 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE0LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_0_LINK_REQUIRED;
 
+  /// Ad image link 0 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE0LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_0_LINK_WARNING;
 
+  /// ad_image_0_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE0TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_0_TAG_DUPLICATED;
 
+  /// Ad image tag 0 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE0TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 0 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE0TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_0_TAG_REQUIRED;
 
+  /// ad_image_10_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE10LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_10_LINK_DUPLICATED;
 
+  /// Ad image link 10 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE10LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 10 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE10LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_10_LINK_REQUIRED;
 
+  /// Ad image link 10 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE10LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_10_LINK_WARNING;
 
+  /// ad_image_10_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE10TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_10_TAG_DUPLICATED;
 
+  /// Ad image tag 10 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE10TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 10 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE10TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_10_TAG_REQUIRED;
 
+  /// ad_image_11_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE11LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_11_LINK_DUPLICATED;
 
+  /// Ad image link 11 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE11LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 11 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE11LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_11_LINK_REQUIRED;
 
+  /// Ad image link 11 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE11LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_11_LINK_WARNING;
 
+  /// ad_image_11_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE11TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_11_TAG_DUPLICATED;
 
+  /// Ad image tag 11 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE11TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 11 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE11TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_11_TAG_REQUIRED;
 
+  /// ad_image_12_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE12LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_12_LINK_DUPLICATED;
 
+  /// Ad image link 12 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE12LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 12 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE12LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_12_LINK_REQUIRED;
 
+  /// Ad image link 12 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE12LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_12_LINK_WARNING;
 
+  /// ad_image_12_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE12TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_12_TAG_DUPLICATED;
 
+  /// Ad image tag 12 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE12TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 12 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE12TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_12_TAG_REQUIRED;
 
+  /// ad_image_13_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE13LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_13_LINK_DUPLICATED;
 
+  /// Ad image link 13 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE13LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 13 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE13LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_13_LINK_REQUIRED;
 
+  /// Ad image link 13 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE13LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_13_LINK_WARNING;
 
+  /// ad_image_13_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE13TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_13_TAG_DUPLICATED;
 
+  /// Ad image tag 13 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE13TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 13 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE13TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_13_TAG_REQUIRED;
 
+  /// ad_image_14_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE14LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_14_LINK_DUPLICATED;
 
+  /// Ad image link 14 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE14LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 14 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE14LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_14_LINK_REQUIRED;
 
+  /// Ad image link 14 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE14LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_14_LINK_WARNING;
 
+  /// ad_image_14_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE14TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_14_TAG_DUPLICATED;
 
+  /// Ad image tag 14 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE14TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 14 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE14TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_14_TAG_REQUIRED;
 
+  /// ad_image_15_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE15LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_15_LINK_DUPLICATED;
 
+  /// Ad image link 15 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE15LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 15 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE15LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_15_LINK_REQUIRED;
 
+  /// Ad image link 15 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE15LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_15_LINK_WARNING;
 
+  /// ad_image_15_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE15TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_15_TAG_DUPLICATED;
 
+  /// Ad image tag 15 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE15TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 15 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE15TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_15_TAG_REQUIRED;
 
+  /// ad_image_16_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE16LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_16_LINK_DUPLICATED;
 
+  /// Ad image link 16 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE16LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 16 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE16LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_16_LINK_REQUIRED;
 
+  /// Ad image link 16 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE16LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_16_LINK_WARNING;
 
+  /// ad_image_16_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE16TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_16_TAG_DUPLICATED;
 
+  /// Ad image tag 16 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE16TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 16 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE16TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_16_TAG_REQUIRED;
 
+  /// ad_image_17_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE17LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_17_LINK_DUPLICATED;
 
+  /// Ad image link 17 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE17LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 17 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE17LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_17_LINK_REQUIRED;
 
+  /// Ad image link 17 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE17LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_17_LINK_WARNING;
 
+  /// ad_image_17_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE17TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_17_TAG_DUPLICATED;
 
+  /// Ad image tag 17 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE17TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 17 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE17TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_17_TAG_REQUIRED;
 
+  /// ad_image_18_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE18LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_18_LINK_DUPLICATED;
 
+  /// Ad image link 18 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE18LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 18 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE18LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_18_LINK_REQUIRED;
 
+  /// Ad image link 18 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE18LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_18_LINK_WARNING;
 
+  /// ad_image_18_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE18TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_18_TAG_DUPLICATED;
 
+  /// Ad image tag 18 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE18TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 18 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE18TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_18_TAG_REQUIRED;
 
+  /// ad_image_19_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE19LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_19_LINK_DUPLICATED;
 
+  /// Ad image link 19 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE19LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 19 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE19LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_19_LINK_REQUIRED;
 
+  /// Ad image link 19 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE19LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_19_LINK_WARNING;
 
+  /// ad_image_19_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE19TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_19_TAG_DUPLICATED;
 
+  /// Ad image tag 19 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE19TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 19 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE19TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_19_TAG_REQUIRED;
 
+  /// ad_image_1_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE1LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_1_LINK_DUPLICATED;
 
+  /// Ad image link 1 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE1LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 1 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE1LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_1_LINK_REQUIRED;
 
+  /// Ad image link 1 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE1LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_1_LINK_WARNING;
 
+  /// ad_image_1_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE1TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_1_TAG_DUPLICATED;
 
+  /// Ad image tag 1 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE1TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 1 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE1TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_1_TAG_REQUIRED;
 
+  /// ad_image_2_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE2LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_2_LINK_DUPLICATED;
 
+  /// Ad image link 2 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE2LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 2 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE2LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_2_LINK_REQUIRED;
 
+  /// Ad image link 2 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE2LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_2_LINK_WARNING;
 
+  /// ad_image_2_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE2TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_2_TAG_DUPLICATED;
 
+  /// Ad image tag 2 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE2TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 2 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE2TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_2_TAG_REQUIRED;
 
+  /// ad_image_3_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE3LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_3_LINK_DUPLICATED;
 
+  /// Ad image link 3 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE3LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 3 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE3LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_3_LINK_REQUIRED;
 
+  /// Ad image link 3 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE3LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_3_LINK_WARNING;
 
+  /// ad_image_3_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE3TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_3_TAG_DUPLICATED;
 
+  /// Ad image tag 3 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE3TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 3 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE3TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_3_TAG_REQUIRED;
 
+  /// ad_image_4_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE4LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_4_LINK_DUPLICATED;
 
+  /// Ad image link 4 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE4LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 4 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE4LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_4_LINK_REQUIRED;
 
+  /// Ad image link 4 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE4LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_4_LINK_WARNING;
 
+  /// ad_image_4_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE4TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_4_TAG_DUPLICATED;
 
+  /// Ad image tag 4 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE4TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 4 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE4TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_4_TAG_REQUIRED;
 
+  /// ad_image_5_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE5LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_5_LINK_DUPLICATED;
 
+  /// Ad image link 5 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE5LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 5 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE5LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_5_LINK_REQUIRED;
 
+  /// Ad image link 5 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE5LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_5_LINK_WARNING;
 
+  /// ad_image_5_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE5TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_5_TAG_DUPLICATED;
 
+  /// Ad image tag 5 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE5TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 5 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE5TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_5_TAG_REQUIRED;
 
+  /// ad_image_6_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE6LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_6_LINK_DUPLICATED;
 
+  /// Ad image link 6 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE6LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 6 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE6LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_6_LINK_REQUIRED;
 
+  /// Ad image link 6 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE6LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_6_LINK_WARNING;
 
+  /// ad_image_6_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE6TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_6_TAG_DUPLICATED;
 
+  /// Ad image tag 6 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE6TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 6 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE6TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_6_TAG_REQUIRED;
 
+  /// ad_image_7_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE7LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_7_LINK_DUPLICATED;
 
+  /// Ad image link 7 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE7LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 7 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE7LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_7_LINK_REQUIRED;
 
+  /// Ad image link 7 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE7LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_7_LINK_WARNING;
 
+  /// ad_image_7_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE7TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_7_TAG_DUPLICATED;
 
+  /// Ad image tag 7 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE7TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 7 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE7TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_7_TAG_REQUIRED;
 
+  /// ad_image_8_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE8LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_8_LINK_DUPLICATED;
 
+  /// Ad image link 8 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE8LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 8 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE8LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_8_LINK_REQUIRED;
 
+  /// Ad image link 8 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE8LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_8_LINK_WARNING;
 
+  /// ad_image_8_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE8TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_8_TAG_DUPLICATED;
 
+  /// Ad image tag 8 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE8TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 8 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE8TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_8_TAG_REQUIRED;
 
+  /// ad_image_9_link is duplicated with another ad image link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE9LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_9_LINK_DUPLICATED;
 
+  /// Ad image link 9 length is too long. The maximum length is 2047 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE9LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
 
+  /// Ad image link 9 is required because an image tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE9LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_9_LINK_REQUIRED;
 
+  /// Ad image link 9 format is unsupported.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE9LINKWARNING;
+  CatalogsItemValidationDetails? AD_IMAGE_9_LINK_WARNING;
 
+  /// ad_image_9_tag is duplicated with another ad image tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE9TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_IMAGE_9_TAG_DUPLICATED;
 
+  /// Ad image tag 9 length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE9TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
 
+  /// Ad image tag 9 is required because an image link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDIMAGE9TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_IMAGE_9_TAG_REQUIRED;
 
+  /// Item has an ad link that is formatted incorrectly.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1349,6 +1490,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? AD_LINK_FORMAT_WARNING;
 
+  /// Item has an ad link URL that is duplicate of the link URL.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1357,174 +1499,196 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? AD_LINK_SAME_AS_LINK;
 
+  /// ad_video_0_link is duplicated with another ad video link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO0LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_VIDEO_0_LINK_DUPLICATED;
 
+  /// ad_video_0_link length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO0LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
 
+  /// ad_video_0_link is required for this item because ad_video_0_tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO0LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_VIDEO_0_LINK_REQUIRED;
 
+  /// ad_video_0_link is formatted incorrectly and will not be published with your items.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO0LINKWARNING;
+  CatalogsItemValidationDetails? AD_VIDEO_0_LINK_WARNING;
 
+  /// ad_video_0_tag is duplicated with another ad video tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO0TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_VIDEO_0_TAG_DUPLICATED;
 
+  /// ad_video_0_tag length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO0TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
 
+  /// ad_video_0_tag is required because ad_video_0_link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO0TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_VIDEO_0_TAG_REQUIRED;
 
+  /// ad_video_1_link is duplicated with another ad video link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO1LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_VIDEO_1_LINK_DUPLICATED;
 
+  /// ad_video_1_link length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO1LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
 
+  /// ad_video_1_link is required for this item because ad_video_1_tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO1LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_VIDEO_1_LINK_REQUIRED;
 
+  /// ad_video_1_link is formatted incorrectly and will not be published with your items.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO1LINKWARNING;
+  CatalogsItemValidationDetails? AD_VIDEO_1_LINK_WARNING;
 
+  /// ad_video_1_tag is duplicated with another ad video tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO1TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_VIDEO_1_TAG_DUPLICATED;
 
+  /// ad_video_1_tag length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO1TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
 
+  /// ad_video_1_tag is required because ad_video_1_link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO1TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_VIDEO_1_TAG_REQUIRED;
 
+  /// ad_video_2_link is duplicated with another ad video link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO2LINKDUPLICATED;
+  CatalogsItemValidationDetails? AD_VIDEO_2_LINK_DUPLICATED;
 
+  /// ad_video_2_link length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO2LINKLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
 
+  /// ad_video_2_link is required for this item because ad_video_2_tag was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO2LINKREQUIRED;
+  CatalogsItemValidationDetails? AD_VIDEO_2_LINK_REQUIRED;
 
+  /// ad_video_2_link is formatted incorrectly and will not be published with your items.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO2LINKWARNING;
+  CatalogsItemValidationDetails? AD_VIDEO_2_LINK_WARNING;
 
+  /// ad_video_2_tag is duplicated with another ad video tag.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO2TAGDUPLICATED;
+  CatalogsItemValidationDetails? AD_VIDEO_2_TAG_DUPLICATED;
 
+  /// ad_video_2_tag length is too long. The maximum length is 511 characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO2TAGLENGTHTOOLONG;
+  CatalogsItemValidationDetails? AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
 
+  /// ad_video_2_tag is required because ad_video_2_link was provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CatalogsItemValidationDetails? aDVIDEO2TAGREQUIRED;
+  CatalogsItemValidationDetails? AD_VIDEO_2_TAG_REQUIRED;
 
+  /// Item has an additional_image_link URL that contains too many characters, so the item will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1533,6 +1697,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
+  /// Item has additional_image_link URLs that are formatted incorrectly and will not be published with your items.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1541,6 +1706,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? ADDITIONAL_IMAGE_LINK_WARNING;
 
+  /// Item has an adwords_redirect link that is formatted incorrectly.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1549,6 +1715,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? ADWORDS_FORMAT_WARNING;
 
+  /// Item has an adwords_redirect URL that is duplicate of the link URL.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1557,6 +1724,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? ADWORDS_SAME_AS_LINK;
 
+  /// Item has an age group value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1565,6 +1733,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? AGE_GROUP_INVALID;
 
+  /// Item includes an invalid android_deep_link.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1573,6 +1742,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? ANDROID_DEEP_LINK_INVALID;
 
+  /// Item has an availability_date value that is formatted incorrectly, this item will be published without an availability date.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1581,6 +1751,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? AVAILABILITY_DATE_INVALID;
 
+  /// Item includes a currency that doesn't match the usual currency for the location where the product is sold or shipped.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1589,6 +1760,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
+  /// Item has a custom_label value that is too long, this item will be published without that custom label.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1597,6 +1769,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? CUSTOM_LABEL_LENGTH_TOO_LONG;
 
+  /// The description for this item was truncated because it contains too many characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1605,6 +1778,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? DESCRIPTION_LENGTH_TOO_LONG;
 
+  /// Item has an expiration_date value that is formatted incorrectly, this item will be published without an expiration date.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1613,6 +1787,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? EXPIRATION_DATE_INVALID;
 
+  /// Item has a gender value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1621,6 +1796,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? GENDER_INVALID;
 
+  /// Item has a GTIN value that is formatted incorrectly.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1629,6 +1805,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? GTIN_INVALID;
 
+  /// Item has an image_link URL that is formatted incorrectly and will not be published.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1637,6 +1814,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? IMAGE_LINK_WARNING;
 
+  /// Item includes an invalid ios_deep_link value.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1645,6 +1823,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? IOS_DEEP_LINK_INVALID;
 
+  /// Item has an is_bundle value that is formatted incorrectly, this item will be published without being bundled with other products.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1653,6 +1832,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? IS_BUNDLE_INVALID;
 
+  /// Item includes additional_image_links that can't be found.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1661,6 +1841,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
+  /// Item has an invalid product link which contains invalid UTM tracking paramaters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1669,6 +1850,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? LINK_FORMAT_WARNING;
 
+  /// Item includes a min_ad_price value that is formatted incorrectly.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1677,6 +1859,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? MIN_AD_PRICE_INVALID;
 
+  /// Item has a MPN value that is formatted incorrectly.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1685,6 +1868,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? MPN_INVALID;
 
+  /// Item has an invalid multipack value.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1693,6 +1877,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? MULTIPACK_INVALID;
 
+  /// Item includes a condition value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1701,6 +1886,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? OPTIONAL_CONDITION_INVALID;
 
+  /// Item is missing condition value, which may limit visibility in recommendations, search results and shopping experiences.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1709,6 +1895,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? OPTIONAL_CONDITION_MISSING;
 
+  /// Item includes a google_product_category value that is not formatted correctly according to the GPC taxonomy.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1717,6 +1904,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
+  /// Item is missing google_product_category.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1725,6 +1913,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
+  /// Item only has 1 or 2 levels of google_product_category value, which may limit visibility in recommendations, search results and shopping experiences.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1733,6 +1922,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? PRODUCT_CATEGORY_DEPTH_WARNING;
 
+  /// Item has a product_type value that is too long, this item will be published without that product type.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1741,6 +1931,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? PRODUCT_TYPE_LENGTH_TOO_LONG;
 
+  /// Item has a sale_price_effective_date value that is formatted incorrectly, this item will be published without a sale date.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1749,6 +1940,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SALE_DATE_INVALID;
 
+  /// Item has an incorrectly formatted sales price.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1757,6 +1949,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SALES_PRICE_INVALID;
 
+  /// Item has a sale price value that is higher than the original price of the item.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1765,6 +1958,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SALES_PRICE_TOO_HIGH;
 
+  /// Item has a sale price value that is discounted very low compared to the price.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1773,6 +1967,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SALES_PRICE_TOO_LOW;
 
+  /// Item has an incorrectly formatted shipping_height value. The value must first contain a numeric value then a valid dimension unit type.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1781,6 +1976,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SHIPPING_HEIGHT_INVALID;
 
+  /// Item has a shipping value that is formatted incorrectly.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1789,6 +1985,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SHIPPING_INVALID;
 
+  /// Item has an invalid shipping_weight value.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1797,6 +1994,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SHIPPING_WEIGHT_INVALID;
 
+  /// Item has an incorrectly formatted shipping_width value. The value must first contain a numeric value then a valid dimension unit type.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1805,6 +2003,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SHIPPING_WIDTH_INVALID;
 
+  /// Some items have size system values which are not one of the supported size systems.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1813,6 +2012,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SIZE_SYSTEM_INVALID;
 
+  /// Item has a size type value that is formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1821,6 +2021,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? SIZE_TYPE_INVALID;
 
+  /// Item has a tax value that is formatted incorrectly.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1829,6 +2030,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? TAX_INVALID;
 
+  /// The title for the item was truncated because it contains too many characters.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1837,6 +2039,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? TITLE_LENGTH_TOO_LONG;
 
+  /// Item has a additional_image_link value that exceed the limit for additional images, this item will be published without some of your images.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1845,6 +2048,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
+  /// Item includes an utm_source value that is formatted incorrectly and has been automatically corrected.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1853,6 +2057,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? UTM_SOURCE_AUTO_CORRECTED;
 
+  /// A video is required in the item when ad_video fields are provided.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1861,6 +2066,7 @@ class CatalogsItemValidationWarnings {
   ///
   CatalogsItemValidationDetails? VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
 
+  /// Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -1871,169 +2077,169 @@ class CatalogsItemValidationWarnings {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CatalogsItemValidationWarnings &&
-    other.aDIMAGE0LINKDUPLICATED == aDIMAGE0LINKDUPLICATED &&
-    other.aDIMAGE0LINKLENGTHTOOLONG == aDIMAGE0LINKLENGTHTOOLONG &&
-    other.aDIMAGE0LINKREQUIRED == aDIMAGE0LINKREQUIRED &&
-    other.aDIMAGE0LINKWARNING == aDIMAGE0LINKWARNING &&
-    other.aDIMAGE0TAGDUPLICATED == aDIMAGE0TAGDUPLICATED &&
-    other.aDIMAGE0TAGLENGTHTOOLONG == aDIMAGE0TAGLENGTHTOOLONG &&
-    other.aDIMAGE0TAGREQUIRED == aDIMAGE0TAGREQUIRED &&
-    other.aDIMAGE10LINKDUPLICATED == aDIMAGE10LINKDUPLICATED &&
-    other.aDIMAGE10LINKLENGTHTOOLONG == aDIMAGE10LINKLENGTHTOOLONG &&
-    other.aDIMAGE10LINKREQUIRED == aDIMAGE10LINKREQUIRED &&
-    other.aDIMAGE10LINKWARNING == aDIMAGE10LINKWARNING &&
-    other.aDIMAGE10TAGDUPLICATED == aDIMAGE10TAGDUPLICATED &&
-    other.aDIMAGE10TAGLENGTHTOOLONG == aDIMAGE10TAGLENGTHTOOLONG &&
-    other.aDIMAGE10TAGREQUIRED == aDIMAGE10TAGREQUIRED &&
-    other.aDIMAGE11LINKDUPLICATED == aDIMAGE11LINKDUPLICATED &&
-    other.aDIMAGE11LINKLENGTHTOOLONG == aDIMAGE11LINKLENGTHTOOLONG &&
-    other.aDIMAGE11LINKREQUIRED == aDIMAGE11LINKREQUIRED &&
-    other.aDIMAGE11LINKWARNING == aDIMAGE11LINKWARNING &&
-    other.aDIMAGE11TAGDUPLICATED == aDIMAGE11TAGDUPLICATED &&
-    other.aDIMAGE11TAGLENGTHTOOLONG == aDIMAGE11TAGLENGTHTOOLONG &&
-    other.aDIMAGE11TAGREQUIRED == aDIMAGE11TAGREQUIRED &&
-    other.aDIMAGE12LINKDUPLICATED == aDIMAGE12LINKDUPLICATED &&
-    other.aDIMAGE12LINKLENGTHTOOLONG == aDIMAGE12LINKLENGTHTOOLONG &&
-    other.aDIMAGE12LINKREQUIRED == aDIMAGE12LINKREQUIRED &&
-    other.aDIMAGE12LINKWARNING == aDIMAGE12LINKWARNING &&
-    other.aDIMAGE12TAGDUPLICATED == aDIMAGE12TAGDUPLICATED &&
-    other.aDIMAGE12TAGLENGTHTOOLONG == aDIMAGE12TAGLENGTHTOOLONG &&
-    other.aDIMAGE12TAGREQUIRED == aDIMAGE12TAGREQUIRED &&
-    other.aDIMAGE13LINKDUPLICATED == aDIMAGE13LINKDUPLICATED &&
-    other.aDIMAGE13LINKLENGTHTOOLONG == aDIMAGE13LINKLENGTHTOOLONG &&
-    other.aDIMAGE13LINKREQUIRED == aDIMAGE13LINKREQUIRED &&
-    other.aDIMAGE13LINKWARNING == aDIMAGE13LINKWARNING &&
-    other.aDIMAGE13TAGDUPLICATED == aDIMAGE13TAGDUPLICATED &&
-    other.aDIMAGE13TAGLENGTHTOOLONG == aDIMAGE13TAGLENGTHTOOLONG &&
-    other.aDIMAGE13TAGREQUIRED == aDIMAGE13TAGREQUIRED &&
-    other.aDIMAGE14LINKDUPLICATED == aDIMAGE14LINKDUPLICATED &&
-    other.aDIMAGE14LINKLENGTHTOOLONG == aDIMAGE14LINKLENGTHTOOLONG &&
-    other.aDIMAGE14LINKREQUIRED == aDIMAGE14LINKREQUIRED &&
-    other.aDIMAGE14LINKWARNING == aDIMAGE14LINKWARNING &&
-    other.aDIMAGE14TAGDUPLICATED == aDIMAGE14TAGDUPLICATED &&
-    other.aDIMAGE14TAGLENGTHTOOLONG == aDIMAGE14TAGLENGTHTOOLONG &&
-    other.aDIMAGE14TAGREQUIRED == aDIMAGE14TAGREQUIRED &&
-    other.aDIMAGE15LINKDUPLICATED == aDIMAGE15LINKDUPLICATED &&
-    other.aDIMAGE15LINKLENGTHTOOLONG == aDIMAGE15LINKLENGTHTOOLONG &&
-    other.aDIMAGE15LINKREQUIRED == aDIMAGE15LINKREQUIRED &&
-    other.aDIMAGE15LINKWARNING == aDIMAGE15LINKWARNING &&
-    other.aDIMAGE15TAGDUPLICATED == aDIMAGE15TAGDUPLICATED &&
-    other.aDIMAGE15TAGLENGTHTOOLONG == aDIMAGE15TAGLENGTHTOOLONG &&
-    other.aDIMAGE15TAGREQUIRED == aDIMAGE15TAGREQUIRED &&
-    other.aDIMAGE16LINKDUPLICATED == aDIMAGE16LINKDUPLICATED &&
-    other.aDIMAGE16LINKLENGTHTOOLONG == aDIMAGE16LINKLENGTHTOOLONG &&
-    other.aDIMAGE16LINKREQUIRED == aDIMAGE16LINKREQUIRED &&
-    other.aDIMAGE16LINKWARNING == aDIMAGE16LINKWARNING &&
-    other.aDIMAGE16TAGDUPLICATED == aDIMAGE16TAGDUPLICATED &&
-    other.aDIMAGE16TAGLENGTHTOOLONG == aDIMAGE16TAGLENGTHTOOLONG &&
-    other.aDIMAGE16TAGREQUIRED == aDIMAGE16TAGREQUIRED &&
-    other.aDIMAGE17LINKDUPLICATED == aDIMAGE17LINKDUPLICATED &&
-    other.aDIMAGE17LINKLENGTHTOOLONG == aDIMAGE17LINKLENGTHTOOLONG &&
-    other.aDIMAGE17LINKREQUIRED == aDIMAGE17LINKREQUIRED &&
-    other.aDIMAGE17LINKWARNING == aDIMAGE17LINKWARNING &&
-    other.aDIMAGE17TAGDUPLICATED == aDIMAGE17TAGDUPLICATED &&
-    other.aDIMAGE17TAGLENGTHTOOLONG == aDIMAGE17TAGLENGTHTOOLONG &&
-    other.aDIMAGE17TAGREQUIRED == aDIMAGE17TAGREQUIRED &&
-    other.aDIMAGE18LINKDUPLICATED == aDIMAGE18LINKDUPLICATED &&
-    other.aDIMAGE18LINKLENGTHTOOLONG == aDIMAGE18LINKLENGTHTOOLONG &&
-    other.aDIMAGE18LINKREQUIRED == aDIMAGE18LINKREQUIRED &&
-    other.aDIMAGE18LINKWARNING == aDIMAGE18LINKWARNING &&
-    other.aDIMAGE18TAGDUPLICATED == aDIMAGE18TAGDUPLICATED &&
-    other.aDIMAGE18TAGLENGTHTOOLONG == aDIMAGE18TAGLENGTHTOOLONG &&
-    other.aDIMAGE18TAGREQUIRED == aDIMAGE18TAGREQUIRED &&
-    other.aDIMAGE19LINKDUPLICATED == aDIMAGE19LINKDUPLICATED &&
-    other.aDIMAGE19LINKLENGTHTOOLONG == aDIMAGE19LINKLENGTHTOOLONG &&
-    other.aDIMAGE19LINKREQUIRED == aDIMAGE19LINKREQUIRED &&
-    other.aDIMAGE19LINKWARNING == aDIMAGE19LINKWARNING &&
-    other.aDIMAGE19TAGDUPLICATED == aDIMAGE19TAGDUPLICATED &&
-    other.aDIMAGE19TAGLENGTHTOOLONG == aDIMAGE19TAGLENGTHTOOLONG &&
-    other.aDIMAGE19TAGREQUIRED == aDIMAGE19TAGREQUIRED &&
-    other.aDIMAGE1LINKDUPLICATED == aDIMAGE1LINKDUPLICATED &&
-    other.aDIMAGE1LINKLENGTHTOOLONG == aDIMAGE1LINKLENGTHTOOLONG &&
-    other.aDIMAGE1LINKREQUIRED == aDIMAGE1LINKREQUIRED &&
-    other.aDIMAGE1LINKWARNING == aDIMAGE1LINKWARNING &&
-    other.aDIMAGE1TAGDUPLICATED == aDIMAGE1TAGDUPLICATED &&
-    other.aDIMAGE1TAGLENGTHTOOLONG == aDIMAGE1TAGLENGTHTOOLONG &&
-    other.aDIMAGE1TAGREQUIRED == aDIMAGE1TAGREQUIRED &&
-    other.aDIMAGE2LINKDUPLICATED == aDIMAGE2LINKDUPLICATED &&
-    other.aDIMAGE2LINKLENGTHTOOLONG == aDIMAGE2LINKLENGTHTOOLONG &&
-    other.aDIMAGE2LINKREQUIRED == aDIMAGE2LINKREQUIRED &&
-    other.aDIMAGE2LINKWARNING == aDIMAGE2LINKWARNING &&
-    other.aDIMAGE2TAGDUPLICATED == aDIMAGE2TAGDUPLICATED &&
-    other.aDIMAGE2TAGLENGTHTOOLONG == aDIMAGE2TAGLENGTHTOOLONG &&
-    other.aDIMAGE2TAGREQUIRED == aDIMAGE2TAGREQUIRED &&
-    other.aDIMAGE3LINKDUPLICATED == aDIMAGE3LINKDUPLICATED &&
-    other.aDIMAGE3LINKLENGTHTOOLONG == aDIMAGE3LINKLENGTHTOOLONG &&
-    other.aDIMAGE3LINKREQUIRED == aDIMAGE3LINKREQUIRED &&
-    other.aDIMAGE3LINKWARNING == aDIMAGE3LINKWARNING &&
-    other.aDIMAGE3TAGDUPLICATED == aDIMAGE3TAGDUPLICATED &&
-    other.aDIMAGE3TAGLENGTHTOOLONG == aDIMAGE3TAGLENGTHTOOLONG &&
-    other.aDIMAGE3TAGREQUIRED == aDIMAGE3TAGREQUIRED &&
-    other.aDIMAGE4LINKDUPLICATED == aDIMAGE4LINKDUPLICATED &&
-    other.aDIMAGE4LINKLENGTHTOOLONG == aDIMAGE4LINKLENGTHTOOLONG &&
-    other.aDIMAGE4LINKREQUIRED == aDIMAGE4LINKREQUIRED &&
-    other.aDIMAGE4LINKWARNING == aDIMAGE4LINKWARNING &&
-    other.aDIMAGE4TAGDUPLICATED == aDIMAGE4TAGDUPLICATED &&
-    other.aDIMAGE4TAGLENGTHTOOLONG == aDIMAGE4TAGLENGTHTOOLONG &&
-    other.aDIMAGE4TAGREQUIRED == aDIMAGE4TAGREQUIRED &&
-    other.aDIMAGE5LINKDUPLICATED == aDIMAGE5LINKDUPLICATED &&
-    other.aDIMAGE5LINKLENGTHTOOLONG == aDIMAGE5LINKLENGTHTOOLONG &&
-    other.aDIMAGE5LINKREQUIRED == aDIMAGE5LINKREQUIRED &&
-    other.aDIMAGE5LINKWARNING == aDIMAGE5LINKWARNING &&
-    other.aDIMAGE5TAGDUPLICATED == aDIMAGE5TAGDUPLICATED &&
-    other.aDIMAGE5TAGLENGTHTOOLONG == aDIMAGE5TAGLENGTHTOOLONG &&
-    other.aDIMAGE5TAGREQUIRED == aDIMAGE5TAGREQUIRED &&
-    other.aDIMAGE6LINKDUPLICATED == aDIMAGE6LINKDUPLICATED &&
-    other.aDIMAGE6LINKLENGTHTOOLONG == aDIMAGE6LINKLENGTHTOOLONG &&
-    other.aDIMAGE6LINKREQUIRED == aDIMAGE6LINKREQUIRED &&
-    other.aDIMAGE6LINKWARNING == aDIMAGE6LINKWARNING &&
-    other.aDIMAGE6TAGDUPLICATED == aDIMAGE6TAGDUPLICATED &&
-    other.aDIMAGE6TAGLENGTHTOOLONG == aDIMAGE6TAGLENGTHTOOLONG &&
-    other.aDIMAGE6TAGREQUIRED == aDIMAGE6TAGREQUIRED &&
-    other.aDIMAGE7LINKDUPLICATED == aDIMAGE7LINKDUPLICATED &&
-    other.aDIMAGE7LINKLENGTHTOOLONG == aDIMAGE7LINKLENGTHTOOLONG &&
-    other.aDIMAGE7LINKREQUIRED == aDIMAGE7LINKREQUIRED &&
-    other.aDIMAGE7LINKWARNING == aDIMAGE7LINKWARNING &&
-    other.aDIMAGE7TAGDUPLICATED == aDIMAGE7TAGDUPLICATED &&
-    other.aDIMAGE7TAGLENGTHTOOLONG == aDIMAGE7TAGLENGTHTOOLONG &&
-    other.aDIMAGE7TAGREQUIRED == aDIMAGE7TAGREQUIRED &&
-    other.aDIMAGE8LINKDUPLICATED == aDIMAGE8LINKDUPLICATED &&
-    other.aDIMAGE8LINKLENGTHTOOLONG == aDIMAGE8LINKLENGTHTOOLONG &&
-    other.aDIMAGE8LINKREQUIRED == aDIMAGE8LINKREQUIRED &&
-    other.aDIMAGE8LINKWARNING == aDIMAGE8LINKWARNING &&
-    other.aDIMAGE8TAGDUPLICATED == aDIMAGE8TAGDUPLICATED &&
-    other.aDIMAGE8TAGLENGTHTOOLONG == aDIMAGE8TAGLENGTHTOOLONG &&
-    other.aDIMAGE8TAGREQUIRED == aDIMAGE8TAGREQUIRED &&
-    other.aDIMAGE9LINKDUPLICATED == aDIMAGE9LINKDUPLICATED &&
-    other.aDIMAGE9LINKLENGTHTOOLONG == aDIMAGE9LINKLENGTHTOOLONG &&
-    other.aDIMAGE9LINKREQUIRED == aDIMAGE9LINKREQUIRED &&
-    other.aDIMAGE9LINKWARNING == aDIMAGE9LINKWARNING &&
-    other.aDIMAGE9TAGDUPLICATED == aDIMAGE9TAGDUPLICATED &&
-    other.aDIMAGE9TAGLENGTHTOOLONG == aDIMAGE9TAGLENGTHTOOLONG &&
-    other.aDIMAGE9TAGREQUIRED == aDIMAGE9TAGREQUIRED &&
+    other.AD_IMAGE_0_LINK_DUPLICATED == AD_IMAGE_0_LINK_DUPLICATED &&
+    other.AD_IMAGE_0_LINK_LENGTH_TOO_LONG == AD_IMAGE_0_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_0_LINK_REQUIRED == AD_IMAGE_0_LINK_REQUIRED &&
+    other.AD_IMAGE_0_LINK_WARNING == AD_IMAGE_0_LINK_WARNING &&
+    other.AD_IMAGE_0_TAG_DUPLICATED == AD_IMAGE_0_TAG_DUPLICATED &&
+    other.AD_IMAGE_0_TAG_LENGTH_TOO_LONG == AD_IMAGE_0_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_0_TAG_REQUIRED == AD_IMAGE_0_TAG_REQUIRED &&
+    other.AD_IMAGE_10_LINK_DUPLICATED == AD_IMAGE_10_LINK_DUPLICATED &&
+    other.AD_IMAGE_10_LINK_LENGTH_TOO_LONG == AD_IMAGE_10_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_10_LINK_REQUIRED == AD_IMAGE_10_LINK_REQUIRED &&
+    other.AD_IMAGE_10_LINK_WARNING == AD_IMAGE_10_LINK_WARNING &&
+    other.AD_IMAGE_10_TAG_DUPLICATED == AD_IMAGE_10_TAG_DUPLICATED &&
+    other.AD_IMAGE_10_TAG_LENGTH_TOO_LONG == AD_IMAGE_10_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_10_TAG_REQUIRED == AD_IMAGE_10_TAG_REQUIRED &&
+    other.AD_IMAGE_11_LINK_DUPLICATED == AD_IMAGE_11_LINK_DUPLICATED &&
+    other.AD_IMAGE_11_LINK_LENGTH_TOO_LONG == AD_IMAGE_11_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_11_LINK_REQUIRED == AD_IMAGE_11_LINK_REQUIRED &&
+    other.AD_IMAGE_11_LINK_WARNING == AD_IMAGE_11_LINK_WARNING &&
+    other.AD_IMAGE_11_TAG_DUPLICATED == AD_IMAGE_11_TAG_DUPLICATED &&
+    other.AD_IMAGE_11_TAG_LENGTH_TOO_LONG == AD_IMAGE_11_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_11_TAG_REQUIRED == AD_IMAGE_11_TAG_REQUIRED &&
+    other.AD_IMAGE_12_LINK_DUPLICATED == AD_IMAGE_12_LINK_DUPLICATED &&
+    other.AD_IMAGE_12_LINK_LENGTH_TOO_LONG == AD_IMAGE_12_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_12_LINK_REQUIRED == AD_IMAGE_12_LINK_REQUIRED &&
+    other.AD_IMAGE_12_LINK_WARNING == AD_IMAGE_12_LINK_WARNING &&
+    other.AD_IMAGE_12_TAG_DUPLICATED == AD_IMAGE_12_TAG_DUPLICATED &&
+    other.AD_IMAGE_12_TAG_LENGTH_TOO_LONG == AD_IMAGE_12_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_12_TAG_REQUIRED == AD_IMAGE_12_TAG_REQUIRED &&
+    other.AD_IMAGE_13_LINK_DUPLICATED == AD_IMAGE_13_LINK_DUPLICATED &&
+    other.AD_IMAGE_13_LINK_LENGTH_TOO_LONG == AD_IMAGE_13_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_13_LINK_REQUIRED == AD_IMAGE_13_LINK_REQUIRED &&
+    other.AD_IMAGE_13_LINK_WARNING == AD_IMAGE_13_LINK_WARNING &&
+    other.AD_IMAGE_13_TAG_DUPLICATED == AD_IMAGE_13_TAG_DUPLICATED &&
+    other.AD_IMAGE_13_TAG_LENGTH_TOO_LONG == AD_IMAGE_13_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_13_TAG_REQUIRED == AD_IMAGE_13_TAG_REQUIRED &&
+    other.AD_IMAGE_14_LINK_DUPLICATED == AD_IMAGE_14_LINK_DUPLICATED &&
+    other.AD_IMAGE_14_LINK_LENGTH_TOO_LONG == AD_IMAGE_14_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_14_LINK_REQUIRED == AD_IMAGE_14_LINK_REQUIRED &&
+    other.AD_IMAGE_14_LINK_WARNING == AD_IMAGE_14_LINK_WARNING &&
+    other.AD_IMAGE_14_TAG_DUPLICATED == AD_IMAGE_14_TAG_DUPLICATED &&
+    other.AD_IMAGE_14_TAG_LENGTH_TOO_LONG == AD_IMAGE_14_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_14_TAG_REQUIRED == AD_IMAGE_14_TAG_REQUIRED &&
+    other.AD_IMAGE_15_LINK_DUPLICATED == AD_IMAGE_15_LINK_DUPLICATED &&
+    other.AD_IMAGE_15_LINK_LENGTH_TOO_LONG == AD_IMAGE_15_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_15_LINK_REQUIRED == AD_IMAGE_15_LINK_REQUIRED &&
+    other.AD_IMAGE_15_LINK_WARNING == AD_IMAGE_15_LINK_WARNING &&
+    other.AD_IMAGE_15_TAG_DUPLICATED == AD_IMAGE_15_TAG_DUPLICATED &&
+    other.AD_IMAGE_15_TAG_LENGTH_TOO_LONG == AD_IMAGE_15_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_15_TAG_REQUIRED == AD_IMAGE_15_TAG_REQUIRED &&
+    other.AD_IMAGE_16_LINK_DUPLICATED == AD_IMAGE_16_LINK_DUPLICATED &&
+    other.AD_IMAGE_16_LINK_LENGTH_TOO_LONG == AD_IMAGE_16_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_16_LINK_REQUIRED == AD_IMAGE_16_LINK_REQUIRED &&
+    other.AD_IMAGE_16_LINK_WARNING == AD_IMAGE_16_LINK_WARNING &&
+    other.AD_IMAGE_16_TAG_DUPLICATED == AD_IMAGE_16_TAG_DUPLICATED &&
+    other.AD_IMAGE_16_TAG_LENGTH_TOO_LONG == AD_IMAGE_16_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_16_TAG_REQUIRED == AD_IMAGE_16_TAG_REQUIRED &&
+    other.AD_IMAGE_17_LINK_DUPLICATED == AD_IMAGE_17_LINK_DUPLICATED &&
+    other.AD_IMAGE_17_LINK_LENGTH_TOO_LONG == AD_IMAGE_17_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_17_LINK_REQUIRED == AD_IMAGE_17_LINK_REQUIRED &&
+    other.AD_IMAGE_17_LINK_WARNING == AD_IMAGE_17_LINK_WARNING &&
+    other.AD_IMAGE_17_TAG_DUPLICATED == AD_IMAGE_17_TAG_DUPLICATED &&
+    other.AD_IMAGE_17_TAG_LENGTH_TOO_LONG == AD_IMAGE_17_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_17_TAG_REQUIRED == AD_IMAGE_17_TAG_REQUIRED &&
+    other.AD_IMAGE_18_LINK_DUPLICATED == AD_IMAGE_18_LINK_DUPLICATED &&
+    other.AD_IMAGE_18_LINK_LENGTH_TOO_LONG == AD_IMAGE_18_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_18_LINK_REQUIRED == AD_IMAGE_18_LINK_REQUIRED &&
+    other.AD_IMAGE_18_LINK_WARNING == AD_IMAGE_18_LINK_WARNING &&
+    other.AD_IMAGE_18_TAG_DUPLICATED == AD_IMAGE_18_TAG_DUPLICATED &&
+    other.AD_IMAGE_18_TAG_LENGTH_TOO_LONG == AD_IMAGE_18_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_18_TAG_REQUIRED == AD_IMAGE_18_TAG_REQUIRED &&
+    other.AD_IMAGE_19_LINK_DUPLICATED == AD_IMAGE_19_LINK_DUPLICATED &&
+    other.AD_IMAGE_19_LINK_LENGTH_TOO_LONG == AD_IMAGE_19_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_19_LINK_REQUIRED == AD_IMAGE_19_LINK_REQUIRED &&
+    other.AD_IMAGE_19_LINK_WARNING == AD_IMAGE_19_LINK_WARNING &&
+    other.AD_IMAGE_19_TAG_DUPLICATED == AD_IMAGE_19_TAG_DUPLICATED &&
+    other.AD_IMAGE_19_TAG_LENGTH_TOO_LONG == AD_IMAGE_19_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_19_TAG_REQUIRED == AD_IMAGE_19_TAG_REQUIRED &&
+    other.AD_IMAGE_1_LINK_DUPLICATED == AD_IMAGE_1_LINK_DUPLICATED &&
+    other.AD_IMAGE_1_LINK_LENGTH_TOO_LONG == AD_IMAGE_1_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_1_LINK_REQUIRED == AD_IMAGE_1_LINK_REQUIRED &&
+    other.AD_IMAGE_1_LINK_WARNING == AD_IMAGE_1_LINK_WARNING &&
+    other.AD_IMAGE_1_TAG_DUPLICATED == AD_IMAGE_1_TAG_DUPLICATED &&
+    other.AD_IMAGE_1_TAG_LENGTH_TOO_LONG == AD_IMAGE_1_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_1_TAG_REQUIRED == AD_IMAGE_1_TAG_REQUIRED &&
+    other.AD_IMAGE_2_LINK_DUPLICATED == AD_IMAGE_2_LINK_DUPLICATED &&
+    other.AD_IMAGE_2_LINK_LENGTH_TOO_LONG == AD_IMAGE_2_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_2_LINK_REQUIRED == AD_IMAGE_2_LINK_REQUIRED &&
+    other.AD_IMAGE_2_LINK_WARNING == AD_IMAGE_2_LINK_WARNING &&
+    other.AD_IMAGE_2_TAG_DUPLICATED == AD_IMAGE_2_TAG_DUPLICATED &&
+    other.AD_IMAGE_2_TAG_LENGTH_TOO_LONG == AD_IMAGE_2_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_2_TAG_REQUIRED == AD_IMAGE_2_TAG_REQUIRED &&
+    other.AD_IMAGE_3_LINK_DUPLICATED == AD_IMAGE_3_LINK_DUPLICATED &&
+    other.AD_IMAGE_3_LINK_LENGTH_TOO_LONG == AD_IMAGE_3_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_3_LINK_REQUIRED == AD_IMAGE_3_LINK_REQUIRED &&
+    other.AD_IMAGE_3_LINK_WARNING == AD_IMAGE_3_LINK_WARNING &&
+    other.AD_IMAGE_3_TAG_DUPLICATED == AD_IMAGE_3_TAG_DUPLICATED &&
+    other.AD_IMAGE_3_TAG_LENGTH_TOO_LONG == AD_IMAGE_3_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_3_TAG_REQUIRED == AD_IMAGE_3_TAG_REQUIRED &&
+    other.AD_IMAGE_4_LINK_DUPLICATED == AD_IMAGE_4_LINK_DUPLICATED &&
+    other.AD_IMAGE_4_LINK_LENGTH_TOO_LONG == AD_IMAGE_4_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_4_LINK_REQUIRED == AD_IMAGE_4_LINK_REQUIRED &&
+    other.AD_IMAGE_4_LINK_WARNING == AD_IMAGE_4_LINK_WARNING &&
+    other.AD_IMAGE_4_TAG_DUPLICATED == AD_IMAGE_4_TAG_DUPLICATED &&
+    other.AD_IMAGE_4_TAG_LENGTH_TOO_LONG == AD_IMAGE_4_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_4_TAG_REQUIRED == AD_IMAGE_4_TAG_REQUIRED &&
+    other.AD_IMAGE_5_LINK_DUPLICATED == AD_IMAGE_5_LINK_DUPLICATED &&
+    other.AD_IMAGE_5_LINK_LENGTH_TOO_LONG == AD_IMAGE_5_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_5_LINK_REQUIRED == AD_IMAGE_5_LINK_REQUIRED &&
+    other.AD_IMAGE_5_LINK_WARNING == AD_IMAGE_5_LINK_WARNING &&
+    other.AD_IMAGE_5_TAG_DUPLICATED == AD_IMAGE_5_TAG_DUPLICATED &&
+    other.AD_IMAGE_5_TAG_LENGTH_TOO_LONG == AD_IMAGE_5_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_5_TAG_REQUIRED == AD_IMAGE_5_TAG_REQUIRED &&
+    other.AD_IMAGE_6_LINK_DUPLICATED == AD_IMAGE_6_LINK_DUPLICATED &&
+    other.AD_IMAGE_6_LINK_LENGTH_TOO_LONG == AD_IMAGE_6_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_6_LINK_REQUIRED == AD_IMAGE_6_LINK_REQUIRED &&
+    other.AD_IMAGE_6_LINK_WARNING == AD_IMAGE_6_LINK_WARNING &&
+    other.AD_IMAGE_6_TAG_DUPLICATED == AD_IMAGE_6_TAG_DUPLICATED &&
+    other.AD_IMAGE_6_TAG_LENGTH_TOO_LONG == AD_IMAGE_6_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_6_TAG_REQUIRED == AD_IMAGE_6_TAG_REQUIRED &&
+    other.AD_IMAGE_7_LINK_DUPLICATED == AD_IMAGE_7_LINK_DUPLICATED &&
+    other.AD_IMAGE_7_LINK_LENGTH_TOO_LONG == AD_IMAGE_7_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_7_LINK_REQUIRED == AD_IMAGE_7_LINK_REQUIRED &&
+    other.AD_IMAGE_7_LINK_WARNING == AD_IMAGE_7_LINK_WARNING &&
+    other.AD_IMAGE_7_TAG_DUPLICATED == AD_IMAGE_7_TAG_DUPLICATED &&
+    other.AD_IMAGE_7_TAG_LENGTH_TOO_LONG == AD_IMAGE_7_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_7_TAG_REQUIRED == AD_IMAGE_7_TAG_REQUIRED &&
+    other.AD_IMAGE_8_LINK_DUPLICATED == AD_IMAGE_8_LINK_DUPLICATED &&
+    other.AD_IMAGE_8_LINK_LENGTH_TOO_LONG == AD_IMAGE_8_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_8_LINK_REQUIRED == AD_IMAGE_8_LINK_REQUIRED &&
+    other.AD_IMAGE_8_LINK_WARNING == AD_IMAGE_8_LINK_WARNING &&
+    other.AD_IMAGE_8_TAG_DUPLICATED == AD_IMAGE_8_TAG_DUPLICATED &&
+    other.AD_IMAGE_8_TAG_LENGTH_TOO_LONG == AD_IMAGE_8_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_8_TAG_REQUIRED == AD_IMAGE_8_TAG_REQUIRED &&
+    other.AD_IMAGE_9_LINK_DUPLICATED == AD_IMAGE_9_LINK_DUPLICATED &&
+    other.AD_IMAGE_9_LINK_LENGTH_TOO_LONG == AD_IMAGE_9_LINK_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_9_LINK_REQUIRED == AD_IMAGE_9_LINK_REQUIRED &&
+    other.AD_IMAGE_9_LINK_WARNING == AD_IMAGE_9_LINK_WARNING &&
+    other.AD_IMAGE_9_TAG_DUPLICATED == AD_IMAGE_9_TAG_DUPLICATED &&
+    other.AD_IMAGE_9_TAG_LENGTH_TOO_LONG == AD_IMAGE_9_TAG_LENGTH_TOO_LONG &&
+    other.AD_IMAGE_9_TAG_REQUIRED == AD_IMAGE_9_TAG_REQUIRED &&
     other.AD_LINK_FORMAT_WARNING == AD_LINK_FORMAT_WARNING &&
     other.AD_LINK_SAME_AS_LINK == AD_LINK_SAME_AS_LINK &&
-    other.aDVIDEO0LINKDUPLICATED == aDVIDEO0LINKDUPLICATED &&
-    other.aDVIDEO0LINKLENGTHTOOLONG == aDVIDEO0LINKLENGTHTOOLONG &&
-    other.aDVIDEO0LINKREQUIRED == aDVIDEO0LINKREQUIRED &&
-    other.aDVIDEO0LINKWARNING == aDVIDEO0LINKWARNING &&
-    other.aDVIDEO0TAGDUPLICATED == aDVIDEO0TAGDUPLICATED &&
-    other.aDVIDEO0TAGLENGTHTOOLONG == aDVIDEO0TAGLENGTHTOOLONG &&
-    other.aDVIDEO0TAGREQUIRED == aDVIDEO0TAGREQUIRED &&
-    other.aDVIDEO1LINKDUPLICATED == aDVIDEO1LINKDUPLICATED &&
-    other.aDVIDEO1LINKLENGTHTOOLONG == aDVIDEO1LINKLENGTHTOOLONG &&
-    other.aDVIDEO1LINKREQUIRED == aDVIDEO1LINKREQUIRED &&
-    other.aDVIDEO1LINKWARNING == aDVIDEO1LINKWARNING &&
-    other.aDVIDEO1TAGDUPLICATED == aDVIDEO1TAGDUPLICATED &&
-    other.aDVIDEO1TAGLENGTHTOOLONG == aDVIDEO1TAGLENGTHTOOLONG &&
-    other.aDVIDEO1TAGREQUIRED == aDVIDEO1TAGREQUIRED &&
-    other.aDVIDEO2LINKDUPLICATED == aDVIDEO2LINKDUPLICATED &&
-    other.aDVIDEO2LINKLENGTHTOOLONG == aDVIDEO2LINKLENGTHTOOLONG &&
-    other.aDVIDEO2LINKREQUIRED == aDVIDEO2LINKREQUIRED &&
-    other.aDVIDEO2LINKWARNING == aDVIDEO2LINKWARNING &&
-    other.aDVIDEO2TAGDUPLICATED == aDVIDEO2TAGDUPLICATED &&
-    other.aDVIDEO2TAGLENGTHTOOLONG == aDVIDEO2TAGLENGTHTOOLONG &&
-    other.aDVIDEO2TAGREQUIRED == aDVIDEO2TAGREQUIRED &&
+    other.AD_VIDEO_0_LINK_DUPLICATED == AD_VIDEO_0_LINK_DUPLICATED &&
+    other.AD_VIDEO_0_LINK_LENGTH_TOO_LONG == AD_VIDEO_0_LINK_LENGTH_TOO_LONG &&
+    other.AD_VIDEO_0_LINK_REQUIRED == AD_VIDEO_0_LINK_REQUIRED &&
+    other.AD_VIDEO_0_LINK_WARNING == AD_VIDEO_0_LINK_WARNING &&
+    other.AD_VIDEO_0_TAG_DUPLICATED == AD_VIDEO_0_TAG_DUPLICATED &&
+    other.AD_VIDEO_0_TAG_LENGTH_TOO_LONG == AD_VIDEO_0_TAG_LENGTH_TOO_LONG &&
+    other.AD_VIDEO_0_TAG_REQUIRED == AD_VIDEO_0_TAG_REQUIRED &&
+    other.AD_VIDEO_1_LINK_DUPLICATED == AD_VIDEO_1_LINK_DUPLICATED &&
+    other.AD_VIDEO_1_LINK_LENGTH_TOO_LONG == AD_VIDEO_1_LINK_LENGTH_TOO_LONG &&
+    other.AD_VIDEO_1_LINK_REQUIRED == AD_VIDEO_1_LINK_REQUIRED &&
+    other.AD_VIDEO_1_LINK_WARNING == AD_VIDEO_1_LINK_WARNING &&
+    other.AD_VIDEO_1_TAG_DUPLICATED == AD_VIDEO_1_TAG_DUPLICATED &&
+    other.AD_VIDEO_1_TAG_LENGTH_TOO_LONG == AD_VIDEO_1_TAG_LENGTH_TOO_LONG &&
+    other.AD_VIDEO_1_TAG_REQUIRED == AD_VIDEO_1_TAG_REQUIRED &&
+    other.AD_VIDEO_2_LINK_DUPLICATED == AD_VIDEO_2_LINK_DUPLICATED &&
+    other.AD_VIDEO_2_LINK_LENGTH_TOO_LONG == AD_VIDEO_2_LINK_LENGTH_TOO_LONG &&
+    other.AD_VIDEO_2_LINK_REQUIRED == AD_VIDEO_2_LINK_REQUIRED &&
+    other.AD_VIDEO_2_LINK_WARNING == AD_VIDEO_2_LINK_WARNING &&
+    other.AD_VIDEO_2_TAG_DUPLICATED == AD_VIDEO_2_TAG_DUPLICATED &&
+    other.AD_VIDEO_2_TAG_LENGTH_TOO_LONG == AD_VIDEO_2_TAG_LENGTH_TOO_LONG &&
+    other.AD_VIDEO_2_TAG_REQUIRED == AD_VIDEO_2_TAG_REQUIRED &&
     other.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG == ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG &&
     other.ADDITIONAL_IMAGE_LINK_WARNING == ADDITIONAL_IMAGE_LINK_WARNING &&
     other.ADWORDS_FORMAT_WARNING == ADWORDS_FORMAT_WARNING &&
@@ -2081,169 +2287,169 @@ class CatalogsItemValidationWarnings {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (aDIMAGE0LINKDUPLICATED == null ? 0 : aDIMAGE0LINKDUPLICATED!.hashCode) +
-    (aDIMAGE0LINKLENGTHTOOLONG == null ? 0 : aDIMAGE0LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE0LINKREQUIRED == null ? 0 : aDIMAGE0LINKREQUIRED!.hashCode) +
-    (aDIMAGE0LINKWARNING == null ? 0 : aDIMAGE0LINKWARNING!.hashCode) +
-    (aDIMAGE0TAGDUPLICATED == null ? 0 : aDIMAGE0TAGDUPLICATED!.hashCode) +
-    (aDIMAGE0TAGLENGTHTOOLONG == null ? 0 : aDIMAGE0TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE0TAGREQUIRED == null ? 0 : aDIMAGE0TAGREQUIRED!.hashCode) +
-    (aDIMAGE10LINKDUPLICATED == null ? 0 : aDIMAGE10LINKDUPLICATED!.hashCode) +
-    (aDIMAGE10LINKLENGTHTOOLONG == null ? 0 : aDIMAGE10LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE10LINKREQUIRED == null ? 0 : aDIMAGE10LINKREQUIRED!.hashCode) +
-    (aDIMAGE10LINKWARNING == null ? 0 : aDIMAGE10LINKWARNING!.hashCode) +
-    (aDIMAGE10TAGDUPLICATED == null ? 0 : aDIMAGE10TAGDUPLICATED!.hashCode) +
-    (aDIMAGE10TAGLENGTHTOOLONG == null ? 0 : aDIMAGE10TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE10TAGREQUIRED == null ? 0 : aDIMAGE10TAGREQUIRED!.hashCode) +
-    (aDIMAGE11LINKDUPLICATED == null ? 0 : aDIMAGE11LINKDUPLICATED!.hashCode) +
-    (aDIMAGE11LINKLENGTHTOOLONG == null ? 0 : aDIMAGE11LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE11LINKREQUIRED == null ? 0 : aDIMAGE11LINKREQUIRED!.hashCode) +
-    (aDIMAGE11LINKWARNING == null ? 0 : aDIMAGE11LINKWARNING!.hashCode) +
-    (aDIMAGE11TAGDUPLICATED == null ? 0 : aDIMAGE11TAGDUPLICATED!.hashCode) +
-    (aDIMAGE11TAGLENGTHTOOLONG == null ? 0 : aDIMAGE11TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE11TAGREQUIRED == null ? 0 : aDIMAGE11TAGREQUIRED!.hashCode) +
-    (aDIMAGE12LINKDUPLICATED == null ? 0 : aDIMAGE12LINKDUPLICATED!.hashCode) +
-    (aDIMAGE12LINKLENGTHTOOLONG == null ? 0 : aDIMAGE12LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE12LINKREQUIRED == null ? 0 : aDIMAGE12LINKREQUIRED!.hashCode) +
-    (aDIMAGE12LINKWARNING == null ? 0 : aDIMAGE12LINKWARNING!.hashCode) +
-    (aDIMAGE12TAGDUPLICATED == null ? 0 : aDIMAGE12TAGDUPLICATED!.hashCode) +
-    (aDIMAGE12TAGLENGTHTOOLONG == null ? 0 : aDIMAGE12TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE12TAGREQUIRED == null ? 0 : aDIMAGE12TAGREQUIRED!.hashCode) +
-    (aDIMAGE13LINKDUPLICATED == null ? 0 : aDIMAGE13LINKDUPLICATED!.hashCode) +
-    (aDIMAGE13LINKLENGTHTOOLONG == null ? 0 : aDIMAGE13LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE13LINKREQUIRED == null ? 0 : aDIMAGE13LINKREQUIRED!.hashCode) +
-    (aDIMAGE13LINKWARNING == null ? 0 : aDIMAGE13LINKWARNING!.hashCode) +
-    (aDIMAGE13TAGDUPLICATED == null ? 0 : aDIMAGE13TAGDUPLICATED!.hashCode) +
-    (aDIMAGE13TAGLENGTHTOOLONG == null ? 0 : aDIMAGE13TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE13TAGREQUIRED == null ? 0 : aDIMAGE13TAGREQUIRED!.hashCode) +
-    (aDIMAGE14LINKDUPLICATED == null ? 0 : aDIMAGE14LINKDUPLICATED!.hashCode) +
-    (aDIMAGE14LINKLENGTHTOOLONG == null ? 0 : aDIMAGE14LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE14LINKREQUIRED == null ? 0 : aDIMAGE14LINKREQUIRED!.hashCode) +
-    (aDIMAGE14LINKWARNING == null ? 0 : aDIMAGE14LINKWARNING!.hashCode) +
-    (aDIMAGE14TAGDUPLICATED == null ? 0 : aDIMAGE14TAGDUPLICATED!.hashCode) +
-    (aDIMAGE14TAGLENGTHTOOLONG == null ? 0 : aDIMAGE14TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE14TAGREQUIRED == null ? 0 : aDIMAGE14TAGREQUIRED!.hashCode) +
-    (aDIMAGE15LINKDUPLICATED == null ? 0 : aDIMAGE15LINKDUPLICATED!.hashCode) +
-    (aDIMAGE15LINKLENGTHTOOLONG == null ? 0 : aDIMAGE15LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE15LINKREQUIRED == null ? 0 : aDIMAGE15LINKREQUIRED!.hashCode) +
-    (aDIMAGE15LINKWARNING == null ? 0 : aDIMAGE15LINKWARNING!.hashCode) +
-    (aDIMAGE15TAGDUPLICATED == null ? 0 : aDIMAGE15TAGDUPLICATED!.hashCode) +
-    (aDIMAGE15TAGLENGTHTOOLONG == null ? 0 : aDIMAGE15TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE15TAGREQUIRED == null ? 0 : aDIMAGE15TAGREQUIRED!.hashCode) +
-    (aDIMAGE16LINKDUPLICATED == null ? 0 : aDIMAGE16LINKDUPLICATED!.hashCode) +
-    (aDIMAGE16LINKLENGTHTOOLONG == null ? 0 : aDIMAGE16LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE16LINKREQUIRED == null ? 0 : aDIMAGE16LINKREQUIRED!.hashCode) +
-    (aDIMAGE16LINKWARNING == null ? 0 : aDIMAGE16LINKWARNING!.hashCode) +
-    (aDIMAGE16TAGDUPLICATED == null ? 0 : aDIMAGE16TAGDUPLICATED!.hashCode) +
-    (aDIMAGE16TAGLENGTHTOOLONG == null ? 0 : aDIMAGE16TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE16TAGREQUIRED == null ? 0 : aDIMAGE16TAGREQUIRED!.hashCode) +
-    (aDIMAGE17LINKDUPLICATED == null ? 0 : aDIMAGE17LINKDUPLICATED!.hashCode) +
-    (aDIMAGE17LINKLENGTHTOOLONG == null ? 0 : aDIMAGE17LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE17LINKREQUIRED == null ? 0 : aDIMAGE17LINKREQUIRED!.hashCode) +
-    (aDIMAGE17LINKWARNING == null ? 0 : aDIMAGE17LINKWARNING!.hashCode) +
-    (aDIMAGE17TAGDUPLICATED == null ? 0 : aDIMAGE17TAGDUPLICATED!.hashCode) +
-    (aDIMAGE17TAGLENGTHTOOLONG == null ? 0 : aDIMAGE17TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE17TAGREQUIRED == null ? 0 : aDIMAGE17TAGREQUIRED!.hashCode) +
-    (aDIMAGE18LINKDUPLICATED == null ? 0 : aDIMAGE18LINKDUPLICATED!.hashCode) +
-    (aDIMAGE18LINKLENGTHTOOLONG == null ? 0 : aDIMAGE18LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE18LINKREQUIRED == null ? 0 : aDIMAGE18LINKREQUIRED!.hashCode) +
-    (aDIMAGE18LINKWARNING == null ? 0 : aDIMAGE18LINKWARNING!.hashCode) +
-    (aDIMAGE18TAGDUPLICATED == null ? 0 : aDIMAGE18TAGDUPLICATED!.hashCode) +
-    (aDIMAGE18TAGLENGTHTOOLONG == null ? 0 : aDIMAGE18TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE18TAGREQUIRED == null ? 0 : aDIMAGE18TAGREQUIRED!.hashCode) +
-    (aDIMAGE19LINKDUPLICATED == null ? 0 : aDIMAGE19LINKDUPLICATED!.hashCode) +
-    (aDIMAGE19LINKLENGTHTOOLONG == null ? 0 : aDIMAGE19LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE19LINKREQUIRED == null ? 0 : aDIMAGE19LINKREQUIRED!.hashCode) +
-    (aDIMAGE19LINKWARNING == null ? 0 : aDIMAGE19LINKWARNING!.hashCode) +
-    (aDIMAGE19TAGDUPLICATED == null ? 0 : aDIMAGE19TAGDUPLICATED!.hashCode) +
-    (aDIMAGE19TAGLENGTHTOOLONG == null ? 0 : aDIMAGE19TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE19TAGREQUIRED == null ? 0 : aDIMAGE19TAGREQUIRED!.hashCode) +
-    (aDIMAGE1LINKDUPLICATED == null ? 0 : aDIMAGE1LINKDUPLICATED!.hashCode) +
-    (aDIMAGE1LINKLENGTHTOOLONG == null ? 0 : aDIMAGE1LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE1LINKREQUIRED == null ? 0 : aDIMAGE1LINKREQUIRED!.hashCode) +
-    (aDIMAGE1LINKWARNING == null ? 0 : aDIMAGE1LINKWARNING!.hashCode) +
-    (aDIMAGE1TAGDUPLICATED == null ? 0 : aDIMAGE1TAGDUPLICATED!.hashCode) +
-    (aDIMAGE1TAGLENGTHTOOLONG == null ? 0 : aDIMAGE1TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE1TAGREQUIRED == null ? 0 : aDIMAGE1TAGREQUIRED!.hashCode) +
-    (aDIMAGE2LINKDUPLICATED == null ? 0 : aDIMAGE2LINKDUPLICATED!.hashCode) +
-    (aDIMAGE2LINKLENGTHTOOLONG == null ? 0 : aDIMAGE2LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE2LINKREQUIRED == null ? 0 : aDIMAGE2LINKREQUIRED!.hashCode) +
-    (aDIMAGE2LINKWARNING == null ? 0 : aDIMAGE2LINKWARNING!.hashCode) +
-    (aDIMAGE2TAGDUPLICATED == null ? 0 : aDIMAGE2TAGDUPLICATED!.hashCode) +
-    (aDIMAGE2TAGLENGTHTOOLONG == null ? 0 : aDIMAGE2TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE2TAGREQUIRED == null ? 0 : aDIMAGE2TAGREQUIRED!.hashCode) +
-    (aDIMAGE3LINKDUPLICATED == null ? 0 : aDIMAGE3LINKDUPLICATED!.hashCode) +
-    (aDIMAGE3LINKLENGTHTOOLONG == null ? 0 : aDIMAGE3LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE3LINKREQUIRED == null ? 0 : aDIMAGE3LINKREQUIRED!.hashCode) +
-    (aDIMAGE3LINKWARNING == null ? 0 : aDIMAGE3LINKWARNING!.hashCode) +
-    (aDIMAGE3TAGDUPLICATED == null ? 0 : aDIMAGE3TAGDUPLICATED!.hashCode) +
-    (aDIMAGE3TAGLENGTHTOOLONG == null ? 0 : aDIMAGE3TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE3TAGREQUIRED == null ? 0 : aDIMAGE3TAGREQUIRED!.hashCode) +
-    (aDIMAGE4LINKDUPLICATED == null ? 0 : aDIMAGE4LINKDUPLICATED!.hashCode) +
-    (aDIMAGE4LINKLENGTHTOOLONG == null ? 0 : aDIMAGE4LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE4LINKREQUIRED == null ? 0 : aDIMAGE4LINKREQUIRED!.hashCode) +
-    (aDIMAGE4LINKWARNING == null ? 0 : aDIMAGE4LINKWARNING!.hashCode) +
-    (aDIMAGE4TAGDUPLICATED == null ? 0 : aDIMAGE4TAGDUPLICATED!.hashCode) +
-    (aDIMAGE4TAGLENGTHTOOLONG == null ? 0 : aDIMAGE4TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE4TAGREQUIRED == null ? 0 : aDIMAGE4TAGREQUIRED!.hashCode) +
-    (aDIMAGE5LINKDUPLICATED == null ? 0 : aDIMAGE5LINKDUPLICATED!.hashCode) +
-    (aDIMAGE5LINKLENGTHTOOLONG == null ? 0 : aDIMAGE5LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE5LINKREQUIRED == null ? 0 : aDIMAGE5LINKREQUIRED!.hashCode) +
-    (aDIMAGE5LINKWARNING == null ? 0 : aDIMAGE5LINKWARNING!.hashCode) +
-    (aDIMAGE5TAGDUPLICATED == null ? 0 : aDIMAGE5TAGDUPLICATED!.hashCode) +
-    (aDIMAGE5TAGLENGTHTOOLONG == null ? 0 : aDIMAGE5TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE5TAGREQUIRED == null ? 0 : aDIMAGE5TAGREQUIRED!.hashCode) +
-    (aDIMAGE6LINKDUPLICATED == null ? 0 : aDIMAGE6LINKDUPLICATED!.hashCode) +
-    (aDIMAGE6LINKLENGTHTOOLONG == null ? 0 : aDIMAGE6LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE6LINKREQUIRED == null ? 0 : aDIMAGE6LINKREQUIRED!.hashCode) +
-    (aDIMAGE6LINKWARNING == null ? 0 : aDIMAGE6LINKWARNING!.hashCode) +
-    (aDIMAGE6TAGDUPLICATED == null ? 0 : aDIMAGE6TAGDUPLICATED!.hashCode) +
-    (aDIMAGE6TAGLENGTHTOOLONG == null ? 0 : aDIMAGE6TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE6TAGREQUIRED == null ? 0 : aDIMAGE6TAGREQUIRED!.hashCode) +
-    (aDIMAGE7LINKDUPLICATED == null ? 0 : aDIMAGE7LINKDUPLICATED!.hashCode) +
-    (aDIMAGE7LINKLENGTHTOOLONG == null ? 0 : aDIMAGE7LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE7LINKREQUIRED == null ? 0 : aDIMAGE7LINKREQUIRED!.hashCode) +
-    (aDIMAGE7LINKWARNING == null ? 0 : aDIMAGE7LINKWARNING!.hashCode) +
-    (aDIMAGE7TAGDUPLICATED == null ? 0 : aDIMAGE7TAGDUPLICATED!.hashCode) +
-    (aDIMAGE7TAGLENGTHTOOLONG == null ? 0 : aDIMAGE7TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE7TAGREQUIRED == null ? 0 : aDIMAGE7TAGREQUIRED!.hashCode) +
-    (aDIMAGE8LINKDUPLICATED == null ? 0 : aDIMAGE8LINKDUPLICATED!.hashCode) +
-    (aDIMAGE8LINKLENGTHTOOLONG == null ? 0 : aDIMAGE8LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE8LINKREQUIRED == null ? 0 : aDIMAGE8LINKREQUIRED!.hashCode) +
-    (aDIMAGE8LINKWARNING == null ? 0 : aDIMAGE8LINKWARNING!.hashCode) +
-    (aDIMAGE8TAGDUPLICATED == null ? 0 : aDIMAGE8TAGDUPLICATED!.hashCode) +
-    (aDIMAGE8TAGLENGTHTOOLONG == null ? 0 : aDIMAGE8TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE8TAGREQUIRED == null ? 0 : aDIMAGE8TAGREQUIRED!.hashCode) +
-    (aDIMAGE9LINKDUPLICATED == null ? 0 : aDIMAGE9LINKDUPLICATED!.hashCode) +
-    (aDIMAGE9LINKLENGTHTOOLONG == null ? 0 : aDIMAGE9LINKLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE9LINKREQUIRED == null ? 0 : aDIMAGE9LINKREQUIRED!.hashCode) +
-    (aDIMAGE9LINKWARNING == null ? 0 : aDIMAGE9LINKWARNING!.hashCode) +
-    (aDIMAGE9TAGDUPLICATED == null ? 0 : aDIMAGE9TAGDUPLICATED!.hashCode) +
-    (aDIMAGE9TAGLENGTHTOOLONG == null ? 0 : aDIMAGE9TAGLENGTHTOOLONG!.hashCode) +
-    (aDIMAGE9TAGREQUIRED == null ? 0 : aDIMAGE9TAGREQUIRED!.hashCode) +
+    (AD_IMAGE_0_LINK_DUPLICATED == null ? 0 : AD_IMAGE_0_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_0_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_0_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_0_LINK_REQUIRED == null ? 0 : AD_IMAGE_0_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_0_LINK_WARNING == null ? 0 : AD_IMAGE_0_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_0_TAG_DUPLICATED == null ? 0 : AD_IMAGE_0_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_0_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_0_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_0_TAG_REQUIRED == null ? 0 : AD_IMAGE_0_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_10_LINK_DUPLICATED == null ? 0 : AD_IMAGE_10_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_10_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_10_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_10_LINK_REQUIRED == null ? 0 : AD_IMAGE_10_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_10_LINK_WARNING == null ? 0 : AD_IMAGE_10_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_10_TAG_DUPLICATED == null ? 0 : AD_IMAGE_10_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_10_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_10_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_10_TAG_REQUIRED == null ? 0 : AD_IMAGE_10_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_11_LINK_DUPLICATED == null ? 0 : AD_IMAGE_11_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_11_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_11_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_11_LINK_REQUIRED == null ? 0 : AD_IMAGE_11_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_11_LINK_WARNING == null ? 0 : AD_IMAGE_11_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_11_TAG_DUPLICATED == null ? 0 : AD_IMAGE_11_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_11_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_11_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_11_TAG_REQUIRED == null ? 0 : AD_IMAGE_11_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_12_LINK_DUPLICATED == null ? 0 : AD_IMAGE_12_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_12_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_12_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_12_LINK_REQUIRED == null ? 0 : AD_IMAGE_12_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_12_LINK_WARNING == null ? 0 : AD_IMAGE_12_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_12_TAG_DUPLICATED == null ? 0 : AD_IMAGE_12_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_12_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_12_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_12_TAG_REQUIRED == null ? 0 : AD_IMAGE_12_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_13_LINK_DUPLICATED == null ? 0 : AD_IMAGE_13_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_13_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_13_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_13_LINK_REQUIRED == null ? 0 : AD_IMAGE_13_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_13_LINK_WARNING == null ? 0 : AD_IMAGE_13_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_13_TAG_DUPLICATED == null ? 0 : AD_IMAGE_13_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_13_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_13_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_13_TAG_REQUIRED == null ? 0 : AD_IMAGE_13_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_14_LINK_DUPLICATED == null ? 0 : AD_IMAGE_14_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_14_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_14_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_14_LINK_REQUIRED == null ? 0 : AD_IMAGE_14_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_14_LINK_WARNING == null ? 0 : AD_IMAGE_14_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_14_TAG_DUPLICATED == null ? 0 : AD_IMAGE_14_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_14_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_14_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_14_TAG_REQUIRED == null ? 0 : AD_IMAGE_14_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_15_LINK_DUPLICATED == null ? 0 : AD_IMAGE_15_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_15_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_15_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_15_LINK_REQUIRED == null ? 0 : AD_IMAGE_15_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_15_LINK_WARNING == null ? 0 : AD_IMAGE_15_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_15_TAG_DUPLICATED == null ? 0 : AD_IMAGE_15_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_15_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_15_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_15_TAG_REQUIRED == null ? 0 : AD_IMAGE_15_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_16_LINK_DUPLICATED == null ? 0 : AD_IMAGE_16_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_16_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_16_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_16_LINK_REQUIRED == null ? 0 : AD_IMAGE_16_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_16_LINK_WARNING == null ? 0 : AD_IMAGE_16_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_16_TAG_DUPLICATED == null ? 0 : AD_IMAGE_16_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_16_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_16_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_16_TAG_REQUIRED == null ? 0 : AD_IMAGE_16_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_17_LINK_DUPLICATED == null ? 0 : AD_IMAGE_17_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_17_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_17_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_17_LINK_REQUIRED == null ? 0 : AD_IMAGE_17_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_17_LINK_WARNING == null ? 0 : AD_IMAGE_17_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_17_TAG_DUPLICATED == null ? 0 : AD_IMAGE_17_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_17_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_17_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_17_TAG_REQUIRED == null ? 0 : AD_IMAGE_17_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_18_LINK_DUPLICATED == null ? 0 : AD_IMAGE_18_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_18_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_18_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_18_LINK_REQUIRED == null ? 0 : AD_IMAGE_18_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_18_LINK_WARNING == null ? 0 : AD_IMAGE_18_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_18_TAG_DUPLICATED == null ? 0 : AD_IMAGE_18_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_18_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_18_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_18_TAG_REQUIRED == null ? 0 : AD_IMAGE_18_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_19_LINK_DUPLICATED == null ? 0 : AD_IMAGE_19_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_19_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_19_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_19_LINK_REQUIRED == null ? 0 : AD_IMAGE_19_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_19_LINK_WARNING == null ? 0 : AD_IMAGE_19_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_19_TAG_DUPLICATED == null ? 0 : AD_IMAGE_19_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_19_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_19_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_19_TAG_REQUIRED == null ? 0 : AD_IMAGE_19_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_1_LINK_DUPLICATED == null ? 0 : AD_IMAGE_1_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_1_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_1_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_1_LINK_REQUIRED == null ? 0 : AD_IMAGE_1_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_1_LINK_WARNING == null ? 0 : AD_IMAGE_1_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_1_TAG_DUPLICATED == null ? 0 : AD_IMAGE_1_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_1_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_1_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_1_TAG_REQUIRED == null ? 0 : AD_IMAGE_1_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_2_LINK_DUPLICATED == null ? 0 : AD_IMAGE_2_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_2_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_2_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_2_LINK_REQUIRED == null ? 0 : AD_IMAGE_2_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_2_LINK_WARNING == null ? 0 : AD_IMAGE_2_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_2_TAG_DUPLICATED == null ? 0 : AD_IMAGE_2_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_2_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_2_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_2_TAG_REQUIRED == null ? 0 : AD_IMAGE_2_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_3_LINK_DUPLICATED == null ? 0 : AD_IMAGE_3_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_3_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_3_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_3_LINK_REQUIRED == null ? 0 : AD_IMAGE_3_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_3_LINK_WARNING == null ? 0 : AD_IMAGE_3_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_3_TAG_DUPLICATED == null ? 0 : AD_IMAGE_3_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_3_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_3_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_3_TAG_REQUIRED == null ? 0 : AD_IMAGE_3_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_4_LINK_DUPLICATED == null ? 0 : AD_IMAGE_4_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_4_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_4_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_4_LINK_REQUIRED == null ? 0 : AD_IMAGE_4_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_4_LINK_WARNING == null ? 0 : AD_IMAGE_4_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_4_TAG_DUPLICATED == null ? 0 : AD_IMAGE_4_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_4_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_4_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_4_TAG_REQUIRED == null ? 0 : AD_IMAGE_4_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_5_LINK_DUPLICATED == null ? 0 : AD_IMAGE_5_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_5_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_5_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_5_LINK_REQUIRED == null ? 0 : AD_IMAGE_5_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_5_LINK_WARNING == null ? 0 : AD_IMAGE_5_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_5_TAG_DUPLICATED == null ? 0 : AD_IMAGE_5_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_5_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_5_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_5_TAG_REQUIRED == null ? 0 : AD_IMAGE_5_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_6_LINK_DUPLICATED == null ? 0 : AD_IMAGE_6_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_6_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_6_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_6_LINK_REQUIRED == null ? 0 : AD_IMAGE_6_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_6_LINK_WARNING == null ? 0 : AD_IMAGE_6_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_6_TAG_DUPLICATED == null ? 0 : AD_IMAGE_6_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_6_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_6_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_6_TAG_REQUIRED == null ? 0 : AD_IMAGE_6_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_7_LINK_DUPLICATED == null ? 0 : AD_IMAGE_7_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_7_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_7_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_7_LINK_REQUIRED == null ? 0 : AD_IMAGE_7_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_7_LINK_WARNING == null ? 0 : AD_IMAGE_7_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_7_TAG_DUPLICATED == null ? 0 : AD_IMAGE_7_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_7_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_7_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_7_TAG_REQUIRED == null ? 0 : AD_IMAGE_7_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_8_LINK_DUPLICATED == null ? 0 : AD_IMAGE_8_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_8_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_8_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_8_LINK_REQUIRED == null ? 0 : AD_IMAGE_8_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_8_LINK_WARNING == null ? 0 : AD_IMAGE_8_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_8_TAG_DUPLICATED == null ? 0 : AD_IMAGE_8_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_8_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_8_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_8_TAG_REQUIRED == null ? 0 : AD_IMAGE_8_TAG_REQUIRED!.hashCode) +
+    (AD_IMAGE_9_LINK_DUPLICATED == null ? 0 : AD_IMAGE_9_LINK_DUPLICATED!.hashCode) +
+    (AD_IMAGE_9_LINK_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_9_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_9_LINK_REQUIRED == null ? 0 : AD_IMAGE_9_LINK_REQUIRED!.hashCode) +
+    (AD_IMAGE_9_LINK_WARNING == null ? 0 : AD_IMAGE_9_LINK_WARNING!.hashCode) +
+    (AD_IMAGE_9_TAG_DUPLICATED == null ? 0 : AD_IMAGE_9_TAG_DUPLICATED!.hashCode) +
+    (AD_IMAGE_9_TAG_LENGTH_TOO_LONG == null ? 0 : AD_IMAGE_9_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_IMAGE_9_TAG_REQUIRED == null ? 0 : AD_IMAGE_9_TAG_REQUIRED!.hashCode) +
     (AD_LINK_FORMAT_WARNING == null ? 0 : AD_LINK_FORMAT_WARNING!.hashCode) +
     (AD_LINK_SAME_AS_LINK == null ? 0 : AD_LINK_SAME_AS_LINK!.hashCode) +
-    (aDVIDEO0LINKDUPLICATED == null ? 0 : aDVIDEO0LINKDUPLICATED!.hashCode) +
-    (aDVIDEO0LINKLENGTHTOOLONG == null ? 0 : aDVIDEO0LINKLENGTHTOOLONG!.hashCode) +
-    (aDVIDEO0LINKREQUIRED == null ? 0 : aDVIDEO0LINKREQUIRED!.hashCode) +
-    (aDVIDEO0LINKWARNING == null ? 0 : aDVIDEO0LINKWARNING!.hashCode) +
-    (aDVIDEO0TAGDUPLICATED == null ? 0 : aDVIDEO0TAGDUPLICATED!.hashCode) +
-    (aDVIDEO0TAGLENGTHTOOLONG == null ? 0 : aDVIDEO0TAGLENGTHTOOLONG!.hashCode) +
-    (aDVIDEO0TAGREQUIRED == null ? 0 : aDVIDEO0TAGREQUIRED!.hashCode) +
-    (aDVIDEO1LINKDUPLICATED == null ? 0 : aDVIDEO1LINKDUPLICATED!.hashCode) +
-    (aDVIDEO1LINKLENGTHTOOLONG == null ? 0 : aDVIDEO1LINKLENGTHTOOLONG!.hashCode) +
-    (aDVIDEO1LINKREQUIRED == null ? 0 : aDVIDEO1LINKREQUIRED!.hashCode) +
-    (aDVIDEO1LINKWARNING == null ? 0 : aDVIDEO1LINKWARNING!.hashCode) +
-    (aDVIDEO1TAGDUPLICATED == null ? 0 : aDVIDEO1TAGDUPLICATED!.hashCode) +
-    (aDVIDEO1TAGLENGTHTOOLONG == null ? 0 : aDVIDEO1TAGLENGTHTOOLONG!.hashCode) +
-    (aDVIDEO1TAGREQUIRED == null ? 0 : aDVIDEO1TAGREQUIRED!.hashCode) +
-    (aDVIDEO2LINKDUPLICATED == null ? 0 : aDVIDEO2LINKDUPLICATED!.hashCode) +
-    (aDVIDEO2LINKLENGTHTOOLONG == null ? 0 : aDVIDEO2LINKLENGTHTOOLONG!.hashCode) +
-    (aDVIDEO2LINKREQUIRED == null ? 0 : aDVIDEO2LINKREQUIRED!.hashCode) +
-    (aDVIDEO2LINKWARNING == null ? 0 : aDVIDEO2LINKWARNING!.hashCode) +
-    (aDVIDEO2TAGDUPLICATED == null ? 0 : aDVIDEO2TAGDUPLICATED!.hashCode) +
-    (aDVIDEO2TAGLENGTHTOOLONG == null ? 0 : aDVIDEO2TAGLENGTHTOOLONG!.hashCode) +
-    (aDVIDEO2TAGREQUIRED == null ? 0 : aDVIDEO2TAGREQUIRED!.hashCode) +
+    (AD_VIDEO_0_LINK_DUPLICATED == null ? 0 : AD_VIDEO_0_LINK_DUPLICATED!.hashCode) +
+    (AD_VIDEO_0_LINK_LENGTH_TOO_LONG == null ? 0 : AD_VIDEO_0_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_VIDEO_0_LINK_REQUIRED == null ? 0 : AD_VIDEO_0_LINK_REQUIRED!.hashCode) +
+    (AD_VIDEO_0_LINK_WARNING == null ? 0 : AD_VIDEO_0_LINK_WARNING!.hashCode) +
+    (AD_VIDEO_0_TAG_DUPLICATED == null ? 0 : AD_VIDEO_0_TAG_DUPLICATED!.hashCode) +
+    (AD_VIDEO_0_TAG_LENGTH_TOO_LONG == null ? 0 : AD_VIDEO_0_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_VIDEO_0_TAG_REQUIRED == null ? 0 : AD_VIDEO_0_TAG_REQUIRED!.hashCode) +
+    (AD_VIDEO_1_LINK_DUPLICATED == null ? 0 : AD_VIDEO_1_LINK_DUPLICATED!.hashCode) +
+    (AD_VIDEO_1_LINK_LENGTH_TOO_LONG == null ? 0 : AD_VIDEO_1_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_VIDEO_1_LINK_REQUIRED == null ? 0 : AD_VIDEO_1_LINK_REQUIRED!.hashCode) +
+    (AD_VIDEO_1_LINK_WARNING == null ? 0 : AD_VIDEO_1_LINK_WARNING!.hashCode) +
+    (AD_VIDEO_1_TAG_DUPLICATED == null ? 0 : AD_VIDEO_1_TAG_DUPLICATED!.hashCode) +
+    (AD_VIDEO_1_TAG_LENGTH_TOO_LONG == null ? 0 : AD_VIDEO_1_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_VIDEO_1_TAG_REQUIRED == null ? 0 : AD_VIDEO_1_TAG_REQUIRED!.hashCode) +
+    (AD_VIDEO_2_LINK_DUPLICATED == null ? 0 : AD_VIDEO_2_LINK_DUPLICATED!.hashCode) +
+    (AD_VIDEO_2_LINK_LENGTH_TOO_LONG == null ? 0 : AD_VIDEO_2_LINK_LENGTH_TOO_LONG!.hashCode) +
+    (AD_VIDEO_2_LINK_REQUIRED == null ? 0 : AD_VIDEO_2_LINK_REQUIRED!.hashCode) +
+    (AD_VIDEO_2_LINK_WARNING == null ? 0 : AD_VIDEO_2_LINK_WARNING!.hashCode) +
+    (AD_VIDEO_2_TAG_DUPLICATED == null ? 0 : AD_VIDEO_2_TAG_DUPLICATED!.hashCode) +
+    (AD_VIDEO_2_TAG_LENGTH_TOO_LONG == null ? 0 : AD_VIDEO_2_TAG_LENGTH_TOO_LONG!.hashCode) +
+    (AD_VIDEO_2_TAG_REQUIRED == null ? 0 : AD_VIDEO_2_TAG_REQUIRED!.hashCode) +
     (ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG == null ? 0 : ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG!.hashCode) +
     (ADDITIONAL_IMAGE_LINK_WARNING == null ? 0 : ADDITIONAL_IMAGE_LINK_WARNING!.hashCode) +
     (ADWORDS_FORMAT_WARNING == null ? 0 : ADWORDS_FORMAT_WARNING!.hashCode) +
@@ -2289,707 +2495,707 @@ class CatalogsItemValidationWarnings {
     (WEIGHT_UNIT_INVALID == null ? 0 : WEIGHT_UNIT_INVALID!.hashCode);
 
   @override
-  String toString() => 'CatalogsItemValidationWarnings[aDIMAGE0LINKDUPLICATED=$aDIMAGE0LINKDUPLICATED, aDIMAGE0LINKLENGTHTOOLONG=$aDIMAGE0LINKLENGTHTOOLONG, aDIMAGE0LINKREQUIRED=$aDIMAGE0LINKREQUIRED, aDIMAGE0LINKWARNING=$aDIMAGE0LINKWARNING, aDIMAGE0TAGDUPLICATED=$aDIMAGE0TAGDUPLICATED, aDIMAGE0TAGLENGTHTOOLONG=$aDIMAGE0TAGLENGTHTOOLONG, aDIMAGE0TAGREQUIRED=$aDIMAGE0TAGREQUIRED, aDIMAGE10LINKDUPLICATED=$aDIMAGE10LINKDUPLICATED, aDIMAGE10LINKLENGTHTOOLONG=$aDIMAGE10LINKLENGTHTOOLONG, aDIMAGE10LINKREQUIRED=$aDIMAGE10LINKREQUIRED, aDIMAGE10LINKWARNING=$aDIMAGE10LINKWARNING, aDIMAGE10TAGDUPLICATED=$aDIMAGE10TAGDUPLICATED, aDIMAGE10TAGLENGTHTOOLONG=$aDIMAGE10TAGLENGTHTOOLONG, aDIMAGE10TAGREQUIRED=$aDIMAGE10TAGREQUIRED, aDIMAGE11LINKDUPLICATED=$aDIMAGE11LINKDUPLICATED, aDIMAGE11LINKLENGTHTOOLONG=$aDIMAGE11LINKLENGTHTOOLONG, aDIMAGE11LINKREQUIRED=$aDIMAGE11LINKREQUIRED, aDIMAGE11LINKWARNING=$aDIMAGE11LINKWARNING, aDIMAGE11TAGDUPLICATED=$aDIMAGE11TAGDUPLICATED, aDIMAGE11TAGLENGTHTOOLONG=$aDIMAGE11TAGLENGTHTOOLONG, aDIMAGE11TAGREQUIRED=$aDIMAGE11TAGREQUIRED, aDIMAGE12LINKDUPLICATED=$aDIMAGE12LINKDUPLICATED, aDIMAGE12LINKLENGTHTOOLONG=$aDIMAGE12LINKLENGTHTOOLONG, aDIMAGE12LINKREQUIRED=$aDIMAGE12LINKREQUIRED, aDIMAGE12LINKWARNING=$aDIMAGE12LINKWARNING, aDIMAGE12TAGDUPLICATED=$aDIMAGE12TAGDUPLICATED, aDIMAGE12TAGLENGTHTOOLONG=$aDIMAGE12TAGLENGTHTOOLONG, aDIMAGE12TAGREQUIRED=$aDIMAGE12TAGREQUIRED, aDIMAGE13LINKDUPLICATED=$aDIMAGE13LINKDUPLICATED, aDIMAGE13LINKLENGTHTOOLONG=$aDIMAGE13LINKLENGTHTOOLONG, aDIMAGE13LINKREQUIRED=$aDIMAGE13LINKREQUIRED, aDIMAGE13LINKWARNING=$aDIMAGE13LINKWARNING, aDIMAGE13TAGDUPLICATED=$aDIMAGE13TAGDUPLICATED, aDIMAGE13TAGLENGTHTOOLONG=$aDIMAGE13TAGLENGTHTOOLONG, aDIMAGE13TAGREQUIRED=$aDIMAGE13TAGREQUIRED, aDIMAGE14LINKDUPLICATED=$aDIMAGE14LINKDUPLICATED, aDIMAGE14LINKLENGTHTOOLONG=$aDIMAGE14LINKLENGTHTOOLONG, aDIMAGE14LINKREQUIRED=$aDIMAGE14LINKREQUIRED, aDIMAGE14LINKWARNING=$aDIMAGE14LINKWARNING, aDIMAGE14TAGDUPLICATED=$aDIMAGE14TAGDUPLICATED, aDIMAGE14TAGLENGTHTOOLONG=$aDIMAGE14TAGLENGTHTOOLONG, aDIMAGE14TAGREQUIRED=$aDIMAGE14TAGREQUIRED, aDIMAGE15LINKDUPLICATED=$aDIMAGE15LINKDUPLICATED, aDIMAGE15LINKLENGTHTOOLONG=$aDIMAGE15LINKLENGTHTOOLONG, aDIMAGE15LINKREQUIRED=$aDIMAGE15LINKREQUIRED, aDIMAGE15LINKWARNING=$aDIMAGE15LINKWARNING, aDIMAGE15TAGDUPLICATED=$aDIMAGE15TAGDUPLICATED, aDIMAGE15TAGLENGTHTOOLONG=$aDIMAGE15TAGLENGTHTOOLONG, aDIMAGE15TAGREQUIRED=$aDIMAGE15TAGREQUIRED, aDIMAGE16LINKDUPLICATED=$aDIMAGE16LINKDUPLICATED, aDIMAGE16LINKLENGTHTOOLONG=$aDIMAGE16LINKLENGTHTOOLONG, aDIMAGE16LINKREQUIRED=$aDIMAGE16LINKREQUIRED, aDIMAGE16LINKWARNING=$aDIMAGE16LINKWARNING, aDIMAGE16TAGDUPLICATED=$aDIMAGE16TAGDUPLICATED, aDIMAGE16TAGLENGTHTOOLONG=$aDIMAGE16TAGLENGTHTOOLONG, aDIMAGE16TAGREQUIRED=$aDIMAGE16TAGREQUIRED, aDIMAGE17LINKDUPLICATED=$aDIMAGE17LINKDUPLICATED, aDIMAGE17LINKLENGTHTOOLONG=$aDIMAGE17LINKLENGTHTOOLONG, aDIMAGE17LINKREQUIRED=$aDIMAGE17LINKREQUIRED, aDIMAGE17LINKWARNING=$aDIMAGE17LINKWARNING, aDIMAGE17TAGDUPLICATED=$aDIMAGE17TAGDUPLICATED, aDIMAGE17TAGLENGTHTOOLONG=$aDIMAGE17TAGLENGTHTOOLONG, aDIMAGE17TAGREQUIRED=$aDIMAGE17TAGREQUIRED, aDIMAGE18LINKDUPLICATED=$aDIMAGE18LINKDUPLICATED, aDIMAGE18LINKLENGTHTOOLONG=$aDIMAGE18LINKLENGTHTOOLONG, aDIMAGE18LINKREQUIRED=$aDIMAGE18LINKREQUIRED, aDIMAGE18LINKWARNING=$aDIMAGE18LINKWARNING, aDIMAGE18TAGDUPLICATED=$aDIMAGE18TAGDUPLICATED, aDIMAGE18TAGLENGTHTOOLONG=$aDIMAGE18TAGLENGTHTOOLONG, aDIMAGE18TAGREQUIRED=$aDIMAGE18TAGREQUIRED, aDIMAGE19LINKDUPLICATED=$aDIMAGE19LINKDUPLICATED, aDIMAGE19LINKLENGTHTOOLONG=$aDIMAGE19LINKLENGTHTOOLONG, aDIMAGE19LINKREQUIRED=$aDIMAGE19LINKREQUIRED, aDIMAGE19LINKWARNING=$aDIMAGE19LINKWARNING, aDIMAGE19TAGDUPLICATED=$aDIMAGE19TAGDUPLICATED, aDIMAGE19TAGLENGTHTOOLONG=$aDIMAGE19TAGLENGTHTOOLONG, aDIMAGE19TAGREQUIRED=$aDIMAGE19TAGREQUIRED, aDIMAGE1LINKDUPLICATED=$aDIMAGE1LINKDUPLICATED, aDIMAGE1LINKLENGTHTOOLONG=$aDIMAGE1LINKLENGTHTOOLONG, aDIMAGE1LINKREQUIRED=$aDIMAGE1LINKREQUIRED, aDIMAGE1LINKWARNING=$aDIMAGE1LINKWARNING, aDIMAGE1TAGDUPLICATED=$aDIMAGE1TAGDUPLICATED, aDIMAGE1TAGLENGTHTOOLONG=$aDIMAGE1TAGLENGTHTOOLONG, aDIMAGE1TAGREQUIRED=$aDIMAGE1TAGREQUIRED, aDIMAGE2LINKDUPLICATED=$aDIMAGE2LINKDUPLICATED, aDIMAGE2LINKLENGTHTOOLONG=$aDIMAGE2LINKLENGTHTOOLONG, aDIMAGE2LINKREQUIRED=$aDIMAGE2LINKREQUIRED, aDIMAGE2LINKWARNING=$aDIMAGE2LINKWARNING, aDIMAGE2TAGDUPLICATED=$aDIMAGE2TAGDUPLICATED, aDIMAGE2TAGLENGTHTOOLONG=$aDIMAGE2TAGLENGTHTOOLONG, aDIMAGE2TAGREQUIRED=$aDIMAGE2TAGREQUIRED, aDIMAGE3LINKDUPLICATED=$aDIMAGE3LINKDUPLICATED, aDIMAGE3LINKLENGTHTOOLONG=$aDIMAGE3LINKLENGTHTOOLONG, aDIMAGE3LINKREQUIRED=$aDIMAGE3LINKREQUIRED, aDIMAGE3LINKWARNING=$aDIMAGE3LINKWARNING, aDIMAGE3TAGDUPLICATED=$aDIMAGE3TAGDUPLICATED, aDIMAGE3TAGLENGTHTOOLONG=$aDIMAGE3TAGLENGTHTOOLONG, aDIMAGE3TAGREQUIRED=$aDIMAGE3TAGREQUIRED, aDIMAGE4LINKDUPLICATED=$aDIMAGE4LINKDUPLICATED, aDIMAGE4LINKLENGTHTOOLONG=$aDIMAGE4LINKLENGTHTOOLONG, aDIMAGE4LINKREQUIRED=$aDIMAGE4LINKREQUIRED, aDIMAGE4LINKWARNING=$aDIMAGE4LINKWARNING, aDIMAGE4TAGDUPLICATED=$aDIMAGE4TAGDUPLICATED, aDIMAGE4TAGLENGTHTOOLONG=$aDIMAGE4TAGLENGTHTOOLONG, aDIMAGE4TAGREQUIRED=$aDIMAGE4TAGREQUIRED, aDIMAGE5LINKDUPLICATED=$aDIMAGE5LINKDUPLICATED, aDIMAGE5LINKLENGTHTOOLONG=$aDIMAGE5LINKLENGTHTOOLONG, aDIMAGE5LINKREQUIRED=$aDIMAGE5LINKREQUIRED, aDIMAGE5LINKWARNING=$aDIMAGE5LINKWARNING, aDIMAGE5TAGDUPLICATED=$aDIMAGE5TAGDUPLICATED, aDIMAGE5TAGLENGTHTOOLONG=$aDIMAGE5TAGLENGTHTOOLONG, aDIMAGE5TAGREQUIRED=$aDIMAGE5TAGREQUIRED, aDIMAGE6LINKDUPLICATED=$aDIMAGE6LINKDUPLICATED, aDIMAGE6LINKLENGTHTOOLONG=$aDIMAGE6LINKLENGTHTOOLONG, aDIMAGE6LINKREQUIRED=$aDIMAGE6LINKREQUIRED, aDIMAGE6LINKWARNING=$aDIMAGE6LINKWARNING, aDIMAGE6TAGDUPLICATED=$aDIMAGE6TAGDUPLICATED, aDIMAGE6TAGLENGTHTOOLONG=$aDIMAGE6TAGLENGTHTOOLONG, aDIMAGE6TAGREQUIRED=$aDIMAGE6TAGREQUIRED, aDIMAGE7LINKDUPLICATED=$aDIMAGE7LINKDUPLICATED, aDIMAGE7LINKLENGTHTOOLONG=$aDIMAGE7LINKLENGTHTOOLONG, aDIMAGE7LINKREQUIRED=$aDIMAGE7LINKREQUIRED, aDIMAGE7LINKWARNING=$aDIMAGE7LINKWARNING, aDIMAGE7TAGDUPLICATED=$aDIMAGE7TAGDUPLICATED, aDIMAGE7TAGLENGTHTOOLONG=$aDIMAGE7TAGLENGTHTOOLONG, aDIMAGE7TAGREQUIRED=$aDIMAGE7TAGREQUIRED, aDIMAGE8LINKDUPLICATED=$aDIMAGE8LINKDUPLICATED, aDIMAGE8LINKLENGTHTOOLONG=$aDIMAGE8LINKLENGTHTOOLONG, aDIMAGE8LINKREQUIRED=$aDIMAGE8LINKREQUIRED, aDIMAGE8LINKWARNING=$aDIMAGE8LINKWARNING, aDIMAGE8TAGDUPLICATED=$aDIMAGE8TAGDUPLICATED, aDIMAGE8TAGLENGTHTOOLONG=$aDIMAGE8TAGLENGTHTOOLONG, aDIMAGE8TAGREQUIRED=$aDIMAGE8TAGREQUIRED, aDIMAGE9LINKDUPLICATED=$aDIMAGE9LINKDUPLICATED, aDIMAGE9LINKLENGTHTOOLONG=$aDIMAGE9LINKLENGTHTOOLONG, aDIMAGE9LINKREQUIRED=$aDIMAGE9LINKREQUIRED, aDIMAGE9LINKWARNING=$aDIMAGE9LINKWARNING, aDIMAGE9TAGDUPLICATED=$aDIMAGE9TAGDUPLICATED, aDIMAGE9TAGLENGTHTOOLONG=$aDIMAGE9TAGLENGTHTOOLONG, aDIMAGE9TAGREQUIRED=$aDIMAGE9TAGREQUIRED, AD_LINK_FORMAT_WARNING=$AD_LINK_FORMAT_WARNING, AD_LINK_SAME_AS_LINK=$AD_LINK_SAME_AS_LINK, aDVIDEO0LINKDUPLICATED=$aDVIDEO0LINKDUPLICATED, aDVIDEO0LINKLENGTHTOOLONG=$aDVIDEO0LINKLENGTHTOOLONG, aDVIDEO0LINKREQUIRED=$aDVIDEO0LINKREQUIRED, aDVIDEO0LINKWARNING=$aDVIDEO0LINKWARNING, aDVIDEO0TAGDUPLICATED=$aDVIDEO0TAGDUPLICATED, aDVIDEO0TAGLENGTHTOOLONG=$aDVIDEO0TAGLENGTHTOOLONG, aDVIDEO0TAGREQUIRED=$aDVIDEO0TAGREQUIRED, aDVIDEO1LINKDUPLICATED=$aDVIDEO1LINKDUPLICATED, aDVIDEO1LINKLENGTHTOOLONG=$aDVIDEO1LINKLENGTHTOOLONG, aDVIDEO1LINKREQUIRED=$aDVIDEO1LINKREQUIRED, aDVIDEO1LINKWARNING=$aDVIDEO1LINKWARNING, aDVIDEO1TAGDUPLICATED=$aDVIDEO1TAGDUPLICATED, aDVIDEO1TAGLENGTHTOOLONG=$aDVIDEO1TAGLENGTHTOOLONG, aDVIDEO1TAGREQUIRED=$aDVIDEO1TAGREQUIRED, aDVIDEO2LINKDUPLICATED=$aDVIDEO2LINKDUPLICATED, aDVIDEO2LINKLENGTHTOOLONG=$aDVIDEO2LINKLENGTHTOOLONG, aDVIDEO2LINKREQUIRED=$aDVIDEO2LINKREQUIRED, aDVIDEO2LINKWARNING=$aDVIDEO2LINKWARNING, aDVIDEO2TAGDUPLICATED=$aDVIDEO2TAGDUPLICATED, aDVIDEO2TAGLENGTHTOOLONG=$aDVIDEO2TAGLENGTHTOOLONG, aDVIDEO2TAGREQUIRED=$aDVIDEO2TAGREQUIRED, ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG=$ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, ADDITIONAL_IMAGE_LINK_WARNING=$ADDITIONAL_IMAGE_LINK_WARNING, ADWORDS_FORMAT_WARNING=$ADWORDS_FORMAT_WARNING, ADWORDS_SAME_AS_LINK=$ADWORDS_SAME_AS_LINK, AGE_GROUP_INVALID=$AGE_GROUP_INVALID, ANDROID_DEEP_LINK_INVALID=$ANDROID_DEEP_LINK_INVALID, AVAILABILITY_DATE_INVALID=$AVAILABILITY_DATE_INVALID, COUNTRY_DOES_NOT_MAP_TO_CURRENCY=$COUNTRY_DOES_NOT_MAP_TO_CURRENCY, CUSTOM_LABEL_LENGTH_TOO_LONG=$CUSTOM_LABEL_LENGTH_TOO_LONG, DESCRIPTION_LENGTH_TOO_LONG=$DESCRIPTION_LENGTH_TOO_LONG, EXPIRATION_DATE_INVALID=$EXPIRATION_DATE_INVALID, GENDER_INVALID=$GENDER_INVALID, GTIN_INVALID=$GTIN_INVALID, IMAGE_LINK_WARNING=$IMAGE_LINK_WARNING, IOS_DEEP_LINK_INVALID=$IOS_DEEP_LINK_INVALID, IS_BUNDLE_INVALID=$IS_BUNDLE_INVALID, ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE=$ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, LINK_FORMAT_WARNING=$LINK_FORMAT_WARNING, MIN_AD_PRICE_INVALID=$MIN_AD_PRICE_INVALID, MPN_INVALID=$MPN_INVALID, MULTIPACK_INVALID=$MULTIPACK_INVALID, OPTIONAL_CONDITION_INVALID=$OPTIONAL_CONDITION_INVALID, OPTIONAL_CONDITION_MISSING=$OPTIONAL_CONDITION_MISSING, OPTIONAL_PRODUCT_CATEGORY_INVALID=$OPTIONAL_PRODUCT_CATEGORY_INVALID, OPTIONAL_PRODUCT_CATEGORY_MISSING=$OPTIONAL_PRODUCT_CATEGORY_MISSING, PRODUCT_CATEGORY_DEPTH_WARNING=$PRODUCT_CATEGORY_DEPTH_WARNING, PRODUCT_TYPE_LENGTH_TOO_LONG=$PRODUCT_TYPE_LENGTH_TOO_LONG, SALE_DATE_INVALID=$SALE_DATE_INVALID, SALES_PRICE_INVALID=$SALES_PRICE_INVALID, SALES_PRICE_TOO_HIGH=$SALES_PRICE_TOO_HIGH, SALES_PRICE_TOO_LOW=$SALES_PRICE_TOO_LOW, SHIPPING_HEIGHT_INVALID=$SHIPPING_HEIGHT_INVALID, SHIPPING_INVALID=$SHIPPING_INVALID, SHIPPING_WEIGHT_INVALID=$SHIPPING_WEIGHT_INVALID, SHIPPING_WIDTH_INVALID=$SHIPPING_WIDTH_INVALID, SIZE_SYSTEM_INVALID=$SIZE_SYSTEM_INVALID, SIZE_TYPE_INVALID=$SIZE_TYPE_INVALID, TAX_INVALID=$TAX_INVALID, TITLE_LENGTH_TOO_LONG=$TITLE_LENGTH_TOO_LONG, TOO_MANY_ADDITIONAL_IMAGE_LINKS=$TOO_MANY_ADDITIONAL_IMAGE_LINKS, UTM_SOURCE_AUTO_CORRECTED=$UTM_SOURCE_AUTO_CORRECTED, VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED=$VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED, WEIGHT_UNIT_INVALID=$WEIGHT_UNIT_INVALID]';
+  String toString() => 'CatalogsItemValidationWarnings[AD_IMAGE_0_LINK_DUPLICATED=$AD_IMAGE_0_LINK_DUPLICATED, AD_IMAGE_0_LINK_LENGTH_TOO_LONG=$AD_IMAGE_0_LINK_LENGTH_TOO_LONG, AD_IMAGE_0_LINK_REQUIRED=$AD_IMAGE_0_LINK_REQUIRED, AD_IMAGE_0_LINK_WARNING=$AD_IMAGE_0_LINK_WARNING, AD_IMAGE_0_TAG_DUPLICATED=$AD_IMAGE_0_TAG_DUPLICATED, AD_IMAGE_0_TAG_LENGTH_TOO_LONG=$AD_IMAGE_0_TAG_LENGTH_TOO_LONG, AD_IMAGE_0_TAG_REQUIRED=$AD_IMAGE_0_TAG_REQUIRED, AD_IMAGE_10_LINK_DUPLICATED=$AD_IMAGE_10_LINK_DUPLICATED, AD_IMAGE_10_LINK_LENGTH_TOO_LONG=$AD_IMAGE_10_LINK_LENGTH_TOO_LONG, AD_IMAGE_10_LINK_REQUIRED=$AD_IMAGE_10_LINK_REQUIRED, AD_IMAGE_10_LINK_WARNING=$AD_IMAGE_10_LINK_WARNING, AD_IMAGE_10_TAG_DUPLICATED=$AD_IMAGE_10_TAG_DUPLICATED, AD_IMAGE_10_TAG_LENGTH_TOO_LONG=$AD_IMAGE_10_TAG_LENGTH_TOO_LONG, AD_IMAGE_10_TAG_REQUIRED=$AD_IMAGE_10_TAG_REQUIRED, AD_IMAGE_11_LINK_DUPLICATED=$AD_IMAGE_11_LINK_DUPLICATED, AD_IMAGE_11_LINK_LENGTH_TOO_LONG=$AD_IMAGE_11_LINK_LENGTH_TOO_LONG, AD_IMAGE_11_LINK_REQUIRED=$AD_IMAGE_11_LINK_REQUIRED, AD_IMAGE_11_LINK_WARNING=$AD_IMAGE_11_LINK_WARNING, AD_IMAGE_11_TAG_DUPLICATED=$AD_IMAGE_11_TAG_DUPLICATED, AD_IMAGE_11_TAG_LENGTH_TOO_LONG=$AD_IMAGE_11_TAG_LENGTH_TOO_LONG, AD_IMAGE_11_TAG_REQUIRED=$AD_IMAGE_11_TAG_REQUIRED, AD_IMAGE_12_LINK_DUPLICATED=$AD_IMAGE_12_LINK_DUPLICATED, AD_IMAGE_12_LINK_LENGTH_TOO_LONG=$AD_IMAGE_12_LINK_LENGTH_TOO_LONG, AD_IMAGE_12_LINK_REQUIRED=$AD_IMAGE_12_LINK_REQUIRED, AD_IMAGE_12_LINK_WARNING=$AD_IMAGE_12_LINK_WARNING, AD_IMAGE_12_TAG_DUPLICATED=$AD_IMAGE_12_TAG_DUPLICATED, AD_IMAGE_12_TAG_LENGTH_TOO_LONG=$AD_IMAGE_12_TAG_LENGTH_TOO_LONG, AD_IMAGE_12_TAG_REQUIRED=$AD_IMAGE_12_TAG_REQUIRED, AD_IMAGE_13_LINK_DUPLICATED=$AD_IMAGE_13_LINK_DUPLICATED, AD_IMAGE_13_LINK_LENGTH_TOO_LONG=$AD_IMAGE_13_LINK_LENGTH_TOO_LONG, AD_IMAGE_13_LINK_REQUIRED=$AD_IMAGE_13_LINK_REQUIRED, AD_IMAGE_13_LINK_WARNING=$AD_IMAGE_13_LINK_WARNING, AD_IMAGE_13_TAG_DUPLICATED=$AD_IMAGE_13_TAG_DUPLICATED, AD_IMAGE_13_TAG_LENGTH_TOO_LONG=$AD_IMAGE_13_TAG_LENGTH_TOO_LONG, AD_IMAGE_13_TAG_REQUIRED=$AD_IMAGE_13_TAG_REQUIRED, AD_IMAGE_14_LINK_DUPLICATED=$AD_IMAGE_14_LINK_DUPLICATED, AD_IMAGE_14_LINK_LENGTH_TOO_LONG=$AD_IMAGE_14_LINK_LENGTH_TOO_LONG, AD_IMAGE_14_LINK_REQUIRED=$AD_IMAGE_14_LINK_REQUIRED, AD_IMAGE_14_LINK_WARNING=$AD_IMAGE_14_LINK_WARNING, AD_IMAGE_14_TAG_DUPLICATED=$AD_IMAGE_14_TAG_DUPLICATED, AD_IMAGE_14_TAG_LENGTH_TOO_LONG=$AD_IMAGE_14_TAG_LENGTH_TOO_LONG, AD_IMAGE_14_TAG_REQUIRED=$AD_IMAGE_14_TAG_REQUIRED, AD_IMAGE_15_LINK_DUPLICATED=$AD_IMAGE_15_LINK_DUPLICATED, AD_IMAGE_15_LINK_LENGTH_TOO_LONG=$AD_IMAGE_15_LINK_LENGTH_TOO_LONG, AD_IMAGE_15_LINK_REQUIRED=$AD_IMAGE_15_LINK_REQUIRED, AD_IMAGE_15_LINK_WARNING=$AD_IMAGE_15_LINK_WARNING, AD_IMAGE_15_TAG_DUPLICATED=$AD_IMAGE_15_TAG_DUPLICATED, AD_IMAGE_15_TAG_LENGTH_TOO_LONG=$AD_IMAGE_15_TAG_LENGTH_TOO_LONG, AD_IMAGE_15_TAG_REQUIRED=$AD_IMAGE_15_TAG_REQUIRED, AD_IMAGE_16_LINK_DUPLICATED=$AD_IMAGE_16_LINK_DUPLICATED, AD_IMAGE_16_LINK_LENGTH_TOO_LONG=$AD_IMAGE_16_LINK_LENGTH_TOO_LONG, AD_IMAGE_16_LINK_REQUIRED=$AD_IMAGE_16_LINK_REQUIRED, AD_IMAGE_16_LINK_WARNING=$AD_IMAGE_16_LINK_WARNING, AD_IMAGE_16_TAG_DUPLICATED=$AD_IMAGE_16_TAG_DUPLICATED, AD_IMAGE_16_TAG_LENGTH_TOO_LONG=$AD_IMAGE_16_TAG_LENGTH_TOO_LONG, AD_IMAGE_16_TAG_REQUIRED=$AD_IMAGE_16_TAG_REQUIRED, AD_IMAGE_17_LINK_DUPLICATED=$AD_IMAGE_17_LINK_DUPLICATED, AD_IMAGE_17_LINK_LENGTH_TOO_LONG=$AD_IMAGE_17_LINK_LENGTH_TOO_LONG, AD_IMAGE_17_LINK_REQUIRED=$AD_IMAGE_17_LINK_REQUIRED, AD_IMAGE_17_LINK_WARNING=$AD_IMAGE_17_LINK_WARNING, AD_IMAGE_17_TAG_DUPLICATED=$AD_IMAGE_17_TAG_DUPLICATED, AD_IMAGE_17_TAG_LENGTH_TOO_LONG=$AD_IMAGE_17_TAG_LENGTH_TOO_LONG, AD_IMAGE_17_TAG_REQUIRED=$AD_IMAGE_17_TAG_REQUIRED, AD_IMAGE_18_LINK_DUPLICATED=$AD_IMAGE_18_LINK_DUPLICATED, AD_IMAGE_18_LINK_LENGTH_TOO_LONG=$AD_IMAGE_18_LINK_LENGTH_TOO_LONG, AD_IMAGE_18_LINK_REQUIRED=$AD_IMAGE_18_LINK_REQUIRED, AD_IMAGE_18_LINK_WARNING=$AD_IMAGE_18_LINK_WARNING, AD_IMAGE_18_TAG_DUPLICATED=$AD_IMAGE_18_TAG_DUPLICATED, AD_IMAGE_18_TAG_LENGTH_TOO_LONG=$AD_IMAGE_18_TAG_LENGTH_TOO_LONG, AD_IMAGE_18_TAG_REQUIRED=$AD_IMAGE_18_TAG_REQUIRED, AD_IMAGE_19_LINK_DUPLICATED=$AD_IMAGE_19_LINK_DUPLICATED, AD_IMAGE_19_LINK_LENGTH_TOO_LONG=$AD_IMAGE_19_LINK_LENGTH_TOO_LONG, AD_IMAGE_19_LINK_REQUIRED=$AD_IMAGE_19_LINK_REQUIRED, AD_IMAGE_19_LINK_WARNING=$AD_IMAGE_19_LINK_WARNING, AD_IMAGE_19_TAG_DUPLICATED=$AD_IMAGE_19_TAG_DUPLICATED, AD_IMAGE_19_TAG_LENGTH_TOO_LONG=$AD_IMAGE_19_TAG_LENGTH_TOO_LONG, AD_IMAGE_19_TAG_REQUIRED=$AD_IMAGE_19_TAG_REQUIRED, AD_IMAGE_1_LINK_DUPLICATED=$AD_IMAGE_1_LINK_DUPLICATED, AD_IMAGE_1_LINK_LENGTH_TOO_LONG=$AD_IMAGE_1_LINK_LENGTH_TOO_LONG, AD_IMAGE_1_LINK_REQUIRED=$AD_IMAGE_1_LINK_REQUIRED, AD_IMAGE_1_LINK_WARNING=$AD_IMAGE_1_LINK_WARNING, AD_IMAGE_1_TAG_DUPLICATED=$AD_IMAGE_1_TAG_DUPLICATED, AD_IMAGE_1_TAG_LENGTH_TOO_LONG=$AD_IMAGE_1_TAG_LENGTH_TOO_LONG, AD_IMAGE_1_TAG_REQUIRED=$AD_IMAGE_1_TAG_REQUIRED, AD_IMAGE_2_LINK_DUPLICATED=$AD_IMAGE_2_LINK_DUPLICATED, AD_IMAGE_2_LINK_LENGTH_TOO_LONG=$AD_IMAGE_2_LINK_LENGTH_TOO_LONG, AD_IMAGE_2_LINK_REQUIRED=$AD_IMAGE_2_LINK_REQUIRED, AD_IMAGE_2_LINK_WARNING=$AD_IMAGE_2_LINK_WARNING, AD_IMAGE_2_TAG_DUPLICATED=$AD_IMAGE_2_TAG_DUPLICATED, AD_IMAGE_2_TAG_LENGTH_TOO_LONG=$AD_IMAGE_2_TAG_LENGTH_TOO_LONG, AD_IMAGE_2_TAG_REQUIRED=$AD_IMAGE_2_TAG_REQUIRED, AD_IMAGE_3_LINK_DUPLICATED=$AD_IMAGE_3_LINK_DUPLICATED, AD_IMAGE_3_LINK_LENGTH_TOO_LONG=$AD_IMAGE_3_LINK_LENGTH_TOO_LONG, AD_IMAGE_3_LINK_REQUIRED=$AD_IMAGE_3_LINK_REQUIRED, AD_IMAGE_3_LINK_WARNING=$AD_IMAGE_3_LINK_WARNING, AD_IMAGE_3_TAG_DUPLICATED=$AD_IMAGE_3_TAG_DUPLICATED, AD_IMAGE_3_TAG_LENGTH_TOO_LONG=$AD_IMAGE_3_TAG_LENGTH_TOO_LONG, AD_IMAGE_3_TAG_REQUIRED=$AD_IMAGE_3_TAG_REQUIRED, AD_IMAGE_4_LINK_DUPLICATED=$AD_IMAGE_4_LINK_DUPLICATED, AD_IMAGE_4_LINK_LENGTH_TOO_LONG=$AD_IMAGE_4_LINK_LENGTH_TOO_LONG, AD_IMAGE_4_LINK_REQUIRED=$AD_IMAGE_4_LINK_REQUIRED, AD_IMAGE_4_LINK_WARNING=$AD_IMAGE_4_LINK_WARNING, AD_IMAGE_4_TAG_DUPLICATED=$AD_IMAGE_4_TAG_DUPLICATED, AD_IMAGE_4_TAG_LENGTH_TOO_LONG=$AD_IMAGE_4_TAG_LENGTH_TOO_LONG, AD_IMAGE_4_TAG_REQUIRED=$AD_IMAGE_4_TAG_REQUIRED, AD_IMAGE_5_LINK_DUPLICATED=$AD_IMAGE_5_LINK_DUPLICATED, AD_IMAGE_5_LINK_LENGTH_TOO_LONG=$AD_IMAGE_5_LINK_LENGTH_TOO_LONG, AD_IMAGE_5_LINK_REQUIRED=$AD_IMAGE_5_LINK_REQUIRED, AD_IMAGE_5_LINK_WARNING=$AD_IMAGE_5_LINK_WARNING, AD_IMAGE_5_TAG_DUPLICATED=$AD_IMAGE_5_TAG_DUPLICATED, AD_IMAGE_5_TAG_LENGTH_TOO_LONG=$AD_IMAGE_5_TAG_LENGTH_TOO_LONG, AD_IMAGE_5_TAG_REQUIRED=$AD_IMAGE_5_TAG_REQUIRED, AD_IMAGE_6_LINK_DUPLICATED=$AD_IMAGE_6_LINK_DUPLICATED, AD_IMAGE_6_LINK_LENGTH_TOO_LONG=$AD_IMAGE_6_LINK_LENGTH_TOO_LONG, AD_IMAGE_6_LINK_REQUIRED=$AD_IMAGE_6_LINK_REQUIRED, AD_IMAGE_6_LINK_WARNING=$AD_IMAGE_6_LINK_WARNING, AD_IMAGE_6_TAG_DUPLICATED=$AD_IMAGE_6_TAG_DUPLICATED, AD_IMAGE_6_TAG_LENGTH_TOO_LONG=$AD_IMAGE_6_TAG_LENGTH_TOO_LONG, AD_IMAGE_6_TAG_REQUIRED=$AD_IMAGE_6_TAG_REQUIRED, AD_IMAGE_7_LINK_DUPLICATED=$AD_IMAGE_7_LINK_DUPLICATED, AD_IMAGE_7_LINK_LENGTH_TOO_LONG=$AD_IMAGE_7_LINK_LENGTH_TOO_LONG, AD_IMAGE_7_LINK_REQUIRED=$AD_IMAGE_7_LINK_REQUIRED, AD_IMAGE_7_LINK_WARNING=$AD_IMAGE_7_LINK_WARNING, AD_IMAGE_7_TAG_DUPLICATED=$AD_IMAGE_7_TAG_DUPLICATED, AD_IMAGE_7_TAG_LENGTH_TOO_LONG=$AD_IMAGE_7_TAG_LENGTH_TOO_LONG, AD_IMAGE_7_TAG_REQUIRED=$AD_IMAGE_7_TAG_REQUIRED, AD_IMAGE_8_LINK_DUPLICATED=$AD_IMAGE_8_LINK_DUPLICATED, AD_IMAGE_8_LINK_LENGTH_TOO_LONG=$AD_IMAGE_8_LINK_LENGTH_TOO_LONG, AD_IMAGE_8_LINK_REQUIRED=$AD_IMAGE_8_LINK_REQUIRED, AD_IMAGE_8_LINK_WARNING=$AD_IMAGE_8_LINK_WARNING, AD_IMAGE_8_TAG_DUPLICATED=$AD_IMAGE_8_TAG_DUPLICATED, AD_IMAGE_8_TAG_LENGTH_TOO_LONG=$AD_IMAGE_8_TAG_LENGTH_TOO_LONG, AD_IMAGE_8_TAG_REQUIRED=$AD_IMAGE_8_TAG_REQUIRED, AD_IMAGE_9_LINK_DUPLICATED=$AD_IMAGE_9_LINK_DUPLICATED, AD_IMAGE_9_LINK_LENGTH_TOO_LONG=$AD_IMAGE_9_LINK_LENGTH_TOO_LONG, AD_IMAGE_9_LINK_REQUIRED=$AD_IMAGE_9_LINK_REQUIRED, AD_IMAGE_9_LINK_WARNING=$AD_IMAGE_9_LINK_WARNING, AD_IMAGE_9_TAG_DUPLICATED=$AD_IMAGE_9_TAG_DUPLICATED, AD_IMAGE_9_TAG_LENGTH_TOO_LONG=$AD_IMAGE_9_TAG_LENGTH_TOO_LONG, AD_IMAGE_9_TAG_REQUIRED=$AD_IMAGE_9_TAG_REQUIRED, AD_LINK_FORMAT_WARNING=$AD_LINK_FORMAT_WARNING, AD_LINK_SAME_AS_LINK=$AD_LINK_SAME_AS_LINK, AD_VIDEO_0_LINK_DUPLICATED=$AD_VIDEO_0_LINK_DUPLICATED, AD_VIDEO_0_LINK_LENGTH_TOO_LONG=$AD_VIDEO_0_LINK_LENGTH_TOO_LONG, AD_VIDEO_0_LINK_REQUIRED=$AD_VIDEO_0_LINK_REQUIRED, AD_VIDEO_0_LINK_WARNING=$AD_VIDEO_0_LINK_WARNING, AD_VIDEO_0_TAG_DUPLICATED=$AD_VIDEO_0_TAG_DUPLICATED, AD_VIDEO_0_TAG_LENGTH_TOO_LONG=$AD_VIDEO_0_TAG_LENGTH_TOO_LONG, AD_VIDEO_0_TAG_REQUIRED=$AD_VIDEO_0_TAG_REQUIRED, AD_VIDEO_1_LINK_DUPLICATED=$AD_VIDEO_1_LINK_DUPLICATED, AD_VIDEO_1_LINK_LENGTH_TOO_LONG=$AD_VIDEO_1_LINK_LENGTH_TOO_LONG, AD_VIDEO_1_LINK_REQUIRED=$AD_VIDEO_1_LINK_REQUIRED, AD_VIDEO_1_LINK_WARNING=$AD_VIDEO_1_LINK_WARNING, AD_VIDEO_1_TAG_DUPLICATED=$AD_VIDEO_1_TAG_DUPLICATED, AD_VIDEO_1_TAG_LENGTH_TOO_LONG=$AD_VIDEO_1_TAG_LENGTH_TOO_LONG, AD_VIDEO_1_TAG_REQUIRED=$AD_VIDEO_1_TAG_REQUIRED, AD_VIDEO_2_LINK_DUPLICATED=$AD_VIDEO_2_LINK_DUPLICATED, AD_VIDEO_2_LINK_LENGTH_TOO_LONG=$AD_VIDEO_2_LINK_LENGTH_TOO_LONG, AD_VIDEO_2_LINK_REQUIRED=$AD_VIDEO_2_LINK_REQUIRED, AD_VIDEO_2_LINK_WARNING=$AD_VIDEO_2_LINK_WARNING, AD_VIDEO_2_TAG_DUPLICATED=$AD_VIDEO_2_TAG_DUPLICATED, AD_VIDEO_2_TAG_LENGTH_TOO_LONG=$AD_VIDEO_2_TAG_LENGTH_TOO_LONG, AD_VIDEO_2_TAG_REQUIRED=$AD_VIDEO_2_TAG_REQUIRED, ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG=$ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, ADDITIONAL_IMAGE_LINK_WARNING=$ADDITIONAL_IMAGE_LINK_WARNING, ADWORDS_FORMAT_WARNING=$ADWORDS_FORMAT_WARNING, ADWORDS_SAME_AS_LINK=$ADWORDS_SAME_AS_LINK, AGE_GROUP_INVALID=$AGE_GROUP_INVALID, ANDROID_DEEP_LINK_INVALID=$ANDROID_DEEP_LINK_INVALID, AVAILABILITY_DATE_INVALID=$AVAILABILITY_DATE_INVALID, COUNTRY_DOES_NOT_MAP_TO_CURRENCY=$COUNTRY_DOES_NOT_MAP_TO_CURRENCY, CUSTOM_LABEL_LENGTH_TOO_LONG=$CUSTOM_LABEL_LENGTH_TOO_LONG, DESCRIPTION_LENGTH_TOO_LONG=$DESCRIPTION_LENGTH_TOO_LONG, EXPIRATION_DATE_INVALID=$EXPIRATION_DATE_INVALID, GENDER_INVALID=$GENDER_INVALID, GTIN_INVALID=$GTIN_INVALID, IMAGE_LINK_WARNING=$IMAGE_LINK_WARNING, IOS_DEEP_LINK_INVALID=$IOS_DEEP_LINK_INVALID, IS_BUNDLE_INVALID=$IS_BUNDLE_INVALID, ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE=$ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, LINK_FORMAT_WARNING=$LINK_FORMAT_WARNING, MIN_AD_PRICE_INVALID=$MIN_AD_PRICE_INVALID, MPN_INVALID=$MPN_INVALID, MULTIPACK_INVALID=$MULTIPACK_INVALID, OPTIONAL_CONDITION_INVALID=$OPTIONAL_CONDITION_INVALID, OPTIONAL_CONDITION_MISSING=$OPTIONAL_CONDITION_MISSING, OPTIONAL_PRODUCT_CATEGORY_INVALID=$OPTIONAL_PRODUCT_CATEGORY_INVALID, OPTIONAL_PRODUCT_CATEGORY_MISSING=$OPTIONAL_PRODUCT_CATEGORY_MISSING, PRODUCT_CATEGORY_DEPTH_WARNING=$PRODUCT_CATEGORY_DEPTH_WARNING, PRODUCT_TYPE_LENGTH_TOO_LONG=$PRODUCT_TYPE_LENGTH_TOO_LONG, SALE_DATE_INVALID=$SALE_DATE_INVALID, SALES_PRICE_INVALID=$SALES_PRICE_INVALID, SALES_PRICE_TOO_HIGH=$SALES_PRICE_TOO_HIGH, SALES_PRICE_TOO_LOW=$SALES_PRICE_TOO_LOW, SHIPPING_HEIGHT_INVALID=$SHIPPING_HEIGHT_INVALID, SHIPPING_INVALID=$SHIPPING_INVALID, SHIPPING_WEIGHT_INVALID=$SHIPPING_WEIGHT_INVALID, SHIPPING_WIDTH_INVALID=$SHIPPING_WIDTH_INVALID, SIZE_SYSTEM_INVALID=$SIZE_SYSTEM_INVALID, SIZE_TYPE_INVALID=$SIZE_TYPE_INVALID, TAX_INVALID=$TAX_INVALID, TITLE_LENGTH_TOO_LONG=$TITLE_LENGTH_TOO_LONG, TOO_MANY_ADDITIONAL_IMAGE_LINKS=$TOO_MANY_ADDITIONAL_IMAGE_LINKS, UTM_SOURCE_AUTO_CORRECTED=$UTM_SOURCE_AUTO_CORRECTED, VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED=$VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED, WEIGHT_UNIT_INVALID=$WEIGHT_UNIT_INVALID]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.aDIMAGE0LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_0_LINK_DUPLICATED'] = this.aDIMAGE0LINKDUPLICATED;
+    if (this.AD_IMAGE_0_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_0_LINK_DUPLICATED'] = this.AD_IMAGE_0_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_0_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE0LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE0LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_0_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE0LINKREQUIRED != null) {
-      json[r'AD_IMAGE_0_LINK_REQUIRED'] = this.aDIMAGE0LINKREQUIRED;
+    if (this.AD_IMAGE_0_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_0_LINK_REQUIRED'] = this.AD_IMAGE_0_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_0_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE0LINKWARNING != null) {
-      json[r'AD_IMAGE_0_LINK_WARNING'] = this.aDIMAGE0LINKWARNING;
+    if (this.AD_IMAGE_0_LINK_WARNING != null) {
+      json[r'AD_IMAGE_0_LINK_WARNING'] = this.AD_IMAGE_0_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_0_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE0TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_0_TAG_DUPLICATED'] = this.aDIMAGE0TAGDUPLICATED;
+    if (this.AD_IMAGE_0_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_0_TAG_DUPLICATED'] = this.AD_IMAGE_0_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_0_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE0TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE0TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_0_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE0TAGREQUIRED != null) {
-      json[r'AD_IMAGE_0_TAG_REQUIRED'] = this.aDIMAGE0TAGREQUIRED;
+    if (this.AD_IMAGE_0_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_0_TAG_REQUIRED'] = this.AD_IMAGE_0_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_0_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE10LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_10_LINK_DUPLICATED'] = this.aDIMAGE10LINKDUPLICATED;
+    if (this.AD_IMAGE_10_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_10_LINK_DUPLICATED'] = this.AD_IMAGE_10_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_10_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE10LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE10LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_10_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE10LINKREQUIRED != null) {
-      json[r'AD_IMAGE_10_LINK_REQUIRED'] = this.aDIMAGE10LINKREQUIRED;
+    if (this.AD_IMAGE_10_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_10_LINK_REQUIRED'] = this.AD_IMAGE_10_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_10_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE10LINKWARNING != null) {
-      json[r'AD_IMAGE_10_LINK_WARNING'] = this.aDIMAGE10LINKWARNING;
+    if (this.AD_IMAGE_10_LINK_WARNING != null) {
+      json[r'AD_IMAGE_10_LINK_WARNING'] = this.AD_IMAGE_10_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_10_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE10TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_10_TAG_DUPLICATED'] = this.aDIMAGE10TAGDUPLICATED;
+    if (this.AD_IMAGE_10_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_10_TAG_DUPLICATED'] = this.AD_IMAGE_10_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_10_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE10TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE10TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_10_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE10TAGREQUIRED != null) {
-      json[r'AD_IMAGE_10_TAG_REQUIRED'] = this.aDIMAGE10TAGREQUIRED;
+    if (this.AD_IMAGE_10_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_10_TAG_REQUIRED'] = this.AD_IMAGE_10_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_10_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE11LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_11_LINK_DUPLICATED'] = this.aDIMAGE11LINKDUPLICATED;
+    if (this.AD_IMAGE_11_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_11_LINK_DUPLICATED'] = this.AD_IMAGE_11_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_11_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE11LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE11LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_11_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE11LINKREQUIRED != null) {
-      json[r'AD_IMAGE_11_LINK_REQUIRED'] = this.aDIMAGE11LINKREQUIRED;
+    if (this.AD_IMAGE_11_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_11_LINK_REQUIRED'] = this.AD_IMAGE_11_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_11_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE11LINKWARNING != null) {
-      json[r'AD_IMAGE_11_LINK_WARNING'] = this.aDIMAGE11LINKWARNING;
+    if (this.AD_IMAGE_11_LINK_WARNING != null) {
+      json[r'AD_IMAGE_11_LINK_WARNING'] = this.AD_IMAGE_11_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_11_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE11TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_11_TAG_DUPLICATED'] = this.aDIMAGE11TAGDUPLICATED;
+    if (this.AD_IMAGE_11_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_11_TAG_DUPLICATED'] = this.AD_IMAGE_11_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_11_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE11TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE11TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_11_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE11TAGREQUIRED != null) {
-      json[r'AD_IMAGE_11_TAG_REQUIRED'] = this.aDIMAGE11TAGREQUIRED;
+    if (this.AD_IMAGE_11_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_11_TAG_REQUIRED'] = this.AD_IMAGE_11_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_11_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE12LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_12_LINK_DUPLICATED'] = this.aDIMAGE12LINKDUPLICATED;
+    if (this.AD_IMAGE_12_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_12_LINK_DUPLICATED'] = this.AD_IMAGE_12_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_12_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE12LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE12LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_12_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE12LINKREQUIRED != null) {
-      json[r'AD_IMAGE_12_LINK_REQUIRED'] = this.aDIMAGE12LINKREQUIRED;
+    if (this.AD_IMAGE_12_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_12_LINK_REQUIRED'] = this.AD_IMAGE_12_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_12_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE12LINKWARNING != null) {
-      json[r'AD_IMAGE_12_LINK_WARNING'] = this.aDIMAGE12LINKWARNING;
+    if (this.AD_IMAGE_12_LINK_WARNING != null) {
+      json[r'AD_IMAGE_12_LINK_WARNING'] = this.AD_IMAGE_12_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_12_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE12TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_12_TAG_DUPLICATED'] = this.aDIMAGE12TAGDUPLICATED;
+    if (this.AD_IMAGE_12_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_12_TAG_DUPLICATED'] = this.AD_IMAGE_12_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_12_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE12TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE12TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_12_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE12TAGREQUIRED != null) {
-      json[r'AD_IMAGE_12_TAG_REQUIRED'] = this.aDIMAGE12TAGREQUIRED;
+    if (this.AD_IMAGE_12_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_12_TAG_REQUIRED'] = this.AD_IMAGE_12_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_12_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE13LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_13_LINK_DUPLICATED'] = this.aDIMAGE13LINKDUPLICATED;
+    if (this.AD_IMAGE_13_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_13_LINK_DUPLICATED'] = this.AD_IMAGE_13_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_13_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE13LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE13LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_13_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE13LINKREQUIRED != null) {
-      json[r'AD_IMAGE_13_LINK_REQUIRED'] = this.aDIMAGE13LINKREQUIRED;
+    if (this.AD_IMAGE_13_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_13_LINK_REQUIRED'] = this.AD_IMAGE_13_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_13_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE13LINKWARNING != null) {
-      json[r'AD_IMAGE_13_LINK_WARNING'] = this.aDIMAGE13LINKWARNING;
+    if (this.AD_IMAGE_13_LINK_WARNING != null) {
+      json[r'AD_IMAGE_13_LINK_WARNING'] = this.AD_IMAGE_13_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_13_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE13TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_13_TAG_DUPLICATED'] = this.aDIMAGE13TAGDUPLICATED;
+    if (this.AD_IMAGE_13_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_13_TAG_DUPLICATED'] = this.AD_IMAGE_13_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_13_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE13TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE13TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_13_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE13TAGREQUIRED != null) {
-      json[r'AD_IMAGE_13_TAG_REQUIRED'] = this.aDIMAGE13TAGREQUIRED;
+    if (this.AD_IMAGE_13_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_13_TAG_REQUIRED'] = this.AD_IMAGE_13_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_13_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE14LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_14_LINK_DUPLICATED'] = this.aDIMAGE14LINKDUPLICATED;
+    if (this.AD_IMAGE_14_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_14_LINK_DUPLICATED'] = this.AD_IMAGE_14_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_14_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE14LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE14LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_14_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE14LINKREQUIRED != null) {
-      json[r'AD_IMAGE_14_LINK_REQUIRED'] = this.aDIMAGE14LINKREQUIRED;
+    if (this.AD_IMAGE_14_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_14_LINK_REQUIRED'] = this.AD_IMAGE_14_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_14_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE14LINKWARNING != null) {
-      json[r'AD_IMAGE_14_LINK_WARNING'] = this.aDIMAGE14LINKWARNING;
+    if (this.AD_IMAGE_14_LINK_WARNING != null) {
+      json[r'AD_IMAGE_14_LINK_WARNING'] = this.AD_IMAGE_14_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_14_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE14TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_14_TAG_DUPLICATED'] = this.aDIMAGE14TAGDUPLICATED;
+    if (this.AD_IMAGE_14_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_14_TAG_DUPLICATED'] = this.AD_IMAGE_14_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_14_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE14TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE14TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_14_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE14TAGREQUIRED != null) {
-      json[r'AD_IMAGE_14_TAG_REQUIRED'] = this.aDIMAGE14TAGREQUIRED;
+    if (this.AD_IMAGE_14_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_14_TAG_REQUIRED'] = this.AD_IMAGE_14_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_14_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE15LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_15_LINK_DUPLICATED'] = this.aDIMAGE15LINKDUPLICATED;
+    if (this.AD_IMAGE_15_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_15_LINK_DUPLICATED'] = this.AD_IMAGE_15_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_15_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE15LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE15LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_15_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE15LINKREQUIRED != null) {
-      json[r'AD_IMAGE_15_LINK_REQUIRED'] = this.aDIMAGE15LINKREQUIRED;
+    if (this.AD_IMAGE_15_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_15_LINK_REQUIRED'] = this.AD_IMAGE_15_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_15_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE15LINKWARNING != null) {
-      json[r'AD_IMAGE_15_LINK_WARNING'] = this.aDIMAGE15LINKWARNING;
+    if (this.AD_IMAGE_15_LINK_WARNING != null) {
+      json[r'AD_IMAGE_15_LINK_WARNING'] = this.AD_IMAGE_15_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_15_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE15TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_15_TAG_DUPLICATED'] = this.aDIMAGE15TAGDUPLICATED;
+    if (this.AD_IMAGE_15_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_15_TAG_DUPLICATED'] = this.AD_IMAGE_15_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_15_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE15TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE15TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_15_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE15TAGREQUIRED != null) {
-      json[r'AD_IMAGE_15_TAG_REQUIRED'] = this.aDIMAGE15TAGREQUIRED;
+    if (this.AD_IMAGE_15_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_15_TAG_REQUIRED'] = this.AD_IMAGE_15_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_15_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE16LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_16_LINK_DUPLICATED'] = this.aDIMAGE16LINKDUPLICATED;
+    if (this.AD_IMAGE_16_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_16_LINK_DUPLICATED'] = this.AD_IMAGE_16_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_16_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE16LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE16LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_16_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE16LINKREQUIRED != null) {
-      json[r'AD_IMAGE_16_LINK_REQUIRED'] = this.aDIMAGE16LINKREQUIRED;
+    if (this.AD_IMAGE_16_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_16_LINK_REQUIRED'] = this.AD_IMAGE_16_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_16_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE16LINKWARNING != null) {
-      json[r'AD_IMAGE_16_LINK_WARNING'] = this.aDIMAGE16LINKWARNING;
+    if (this.AD_IMAGE_16_LINK_WARNING != null) {
+      json[r'AD_IMAGE_16_LINK_WARNING'] = this.AD_IMAGE_16_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_16_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE16TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_16_TAG_DUPLICATED'] = this.aDIMAGE16TAGDUPLICATED;
+    if (this.AD_IMAGE_16_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_16_TAG_DUPLICATED'] = this.AD_IMAGE_16_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_16_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE16TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE16TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_16_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE16TAGREQUIRED != null) {
-      json[r'AD_IMAGE_16_TAG_REQUIRED'] = this.aDIMAGE16TAGREQUIRED;
+    if (this.AD_IMAGE_16_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_16_TAG_REQUIRED'] = this.AD_IMAGE_16_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_16_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE17LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_17_LINK_DUPLICATED'] = this.aDIMAGE17LINKDUPLICATED;
+    if (this.AD_IMAGE_17_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_17_LINK_DUPLICATED'] = this.AD_IMAGE_17_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_17_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE17LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE17LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_17_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE17LINKREQUIRED != null) {
-      json[r'AD_IMAGE_17_LINK_REQUIRED'] = this.aDIMAGE17LINKREQUIRED;
+    if (this.AD_IMAGE_17_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_17_LINK_REQUIRED'] = this.AD_IMAGE_17_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_17_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE17LINKWARNING != null) {
-      json[r'AD_IMAGE_17_LINK_WARNING'] = this.aDIMAGE17LINKWARNING;
+    if (this.AD_IMAGE_17_LINK_WARNING != null) {
+      json[r'AD_IMAGE_17_LINK_WARNING'] = this.AD_IMAGE_17_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_17_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE17TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_17_TAG_DUPLICATED'] = this.aDIMAGE17TAGDUPLICATED;
+    if (this.AD_IMAGE_17_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_17_TAG_DUPLICATED'] = this.AD_IMAGE_17_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_17_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE17TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE17TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_17_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE17TAGREQUIRED != null) {
-      json[r'AD_IMAGE_17_TAG_REQUIRED'] = this.aDIMAGE17TAGREQUIRED;
+    if (this.AD_IMAGE_17_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_17_TAG_REQUIRED'] = this.AD_IMAGE_17_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_17_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE18LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_18_LINK_DUPLICATED'] = this.aDIMAGE18LINKDUPLICATED;
+    if (this.AD_IMAGE_18_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_18_LINK_DUPLICATED'] = this.AD_IMAGE_18_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_18_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE18LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE18LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_18_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE18LINKREQUIRED != null) {
-      json[r'AD_IMAGE_18_LINK_REQUIRED'] = this.aDIMAGE18LINKREQUIRED;
+    if (this.AD_IMAGE_18_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_18_LINK_REQUIRED'] = this.AD_IMAGE_18_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_18_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE18LINKWARNING != null) {
-      json[r'AD_IMAGE_18_LINK_WARNING'] = this.aDIMAGE18LINKWARNING;
+    if (this.AD_IMAGE_18_LINK_WARNING != null) {
+      json[r'AD_IMAGE_18_LINK_WARNING'] = this.AD_IMAGE_18_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_18_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE18TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_18_TAG_DUPLICATED'] = this.aDIMAGE18TAGDUPLICATED;
+    if (this.AD_IMAGE_18_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_18_TAG_DUPLICATED'] = this.AD_IMAGE_18_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_18_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE18TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE18TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_18_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE18TAGREQUIRED != null) {
-      json[r'AD_IMAGE_18_TAG_REQUIRED'] = this.aDIMAGE18TAGREQUIRED;
+    if (this.AD_IMAGE_18_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_18_TAG_REQUIRED'] = this.AD_IMAGE_18_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_18_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE19LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_19_LINK_DUPLICATED'] = this.aDIMAGE19LINKDUPLICATED;
+    if (this.AD_IMAGE_19_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_19_LINK_DUPLICATED'] = this.AD_IMAGE_19_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_19_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE19LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE19LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_19_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE19LINKREQUIRED != null) {
-      json[r'AD_IMAGE_19_LINK_REQUIRED'] = this.aDIMAGE19LINKREQUIRED;
+    if (this.AD_IMAGE_19_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_19_LINK_REQUIRED'] = this.AD_IMAGE_19_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_19_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE19LINKWARNING != null) {
-      json[r'AD_IMAGE_19_LINK_WARNING'] = this.aDIMAGE19LINKWARNING;
+    if (this.AD_IMAGE_19_LINK_WARNING != null) {
+      json[r'AD_IMAGE_19_LINK_WARNING'] = this.AD_IMAGE_19_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_19_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE19TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_19_TAG_DUPLICATED'] = this.aDIMAGE19TAGDUPLICATED;
+    if (this.AD_IMAGE_19_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_19_TAG_DUPLICATED'] = this.AD_IMAGE_19_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_19_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE19TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE19TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_19_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE19TAGREQUIRED != null) {
-      json[r'AD_IMAGE_19_TAG_REQUIRED'] = this.aDIMAGE19TAGREQUIRED;
+    if (this.AD_IMAGE_19_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_19_TAG_REQUIRED'] = this.AD_IMAGE_19_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_19_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE1LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_1_LINK_DUPLICATED'] = this.aDIMAGE1LINKDUPLICATED;
+    if (this.AD_IMAGE_1_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_1_LINK_DUPLICATED'] = this.AD_IMAGE_1_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_1_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE1LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE1LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_1_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE1LINKREQUIRED != null) {
-      json[r'AD_IMAGE_1_LINK_REQUIRED'] = this.aDIMAGE1LINKREQUIRED;
+    if (this.AD_IMAGE_1_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_1_LINK_REQUIRED'] = this.AD_IMAGE_1_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_1_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE1LINKWARNING != null) {
-      json[r'AD_IMAGE_1_LINK_WARNING'] = this.aDIMAGE1LINKWARNING;
+    if (this.AD_IMAGE_1_LINK_WARNING != null) {
+      json[r'AD_IMAGE_1_LINK_WARNING'] = this.AD_IMAGE_1_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_1_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE1TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_1_TAG_DUPLICATED'] = this.aDIMAGE1TAGDUPLICATED;
+    if (this.AD_IMAGE_1_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_1_TAG_DUPLICATED'] = this.AD_IMAGE_1_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_1_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE1TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE1TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_1_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE1TAGREQUIRED != null) {
-      json[r'AD_IMAGE_1_TAG_REQUIRED'] = this.aDIMAGE1TAGREQUIRED;
+    if (this.AD_IMAGE_1_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_1_TAG_REQUIRED'] = this.AD_IMAGE_1_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_1_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE2LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_2_LINK_DUPLICATED'] = this.aDIMAGE2LINKDUPLICATED;
+    if (this.AD_IMAGE_2_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_2_LINK_DUPLICATED'] = this.AD_IMAGE_2_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_2_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE2LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE2LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_2_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE2LINKREQUIRED != null) {
-      json[r'AD_IMAGE_2_LINK_REQUIRED'] = this.aDIMAGE2LINKREQUIRED;
+    if (this.AD_IMAGE_2_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_2_LINK_REQUIRED'] = this.AD_IMAGE_2_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_2_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE2LINKWARNING != null) {
-      json[r'AD_IMAGE_2_LINK_WARNING'] = this.aDIMAGE2LINKWARNING;
+    if (this.AD_IMAGE_2_LINK_WARNING != null) {
+      json[r'AD_IMAGE_2_LINK_WARNING'] = this.AD_IMAGE_2_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_2_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE2TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_2_TAG_DUPLICATED'] = this.aDIMAGE2TAGDUPLICATED;
+    if (this.AD_IMAGE_2_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_2_TAG_DUPLICATED'] = this.AD_IMAGE_2_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_2_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE2TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE2TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_2_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE2TAGREQUIRED != null) {
-      json[r'AD_IMAGE_2_TAG_REQUIRED'] = this.aDIMAGE2TAGREQUIRED;
+    if (this.AD_IMAGE_2_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_2_TAG_REQUIRED'] = this.AD_IMAGE_2_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_2_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE3LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_3_LINK_DUPLICATED'] = this.aDIMAGE3LINKDUPLICATED;
+    if (this.AD_IMAGE_3_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_3_LINK_DUPLICATED'] = this.AD_IMAGE_3_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_3_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE3LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE3LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_3_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE3LINKREQUIRED != null) {
-      json[r'AD_IMAGE_3_LINK_REQUIRED'] = this.aDIMAGE3LINKREQUIRED;
+    if (this.AD_IMAGE_3_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_3_LINK_REQUIRED'] = this.AD_IMAGE_3_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_3_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE3LINKWARNING != null) {
-      json[r'AD_IMAGE_3_LINK_WARNING'] = this.aDIMAGE3LINKWARNING;
+    if (this.AD_IMAGE_3_LINK_WARNING != null) {
+      json[r'AD_IMAGE_3_LINK_WARNING'] = this.AD_IMAGE_3_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_3_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE3TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_3_TAG_DUPLICATED'] = this.aDIMAGE3TAGDUPLICATED;
+    if (this.AD_IMAGE_3_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_3_TAG_DUPLICATED'] = this.AD_IMAGE_3_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_3_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE3TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE3TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_3_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE3TAGREQUIRED != null) {
-      json[r'AD_IMAGE_3_TAG_REQUIRED'] = this.aDIMAGE3TAGREQUIRED;
+    if (this.AD_IMAGE_3_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_3_TAG_REQUIRED'] = this.AD_IMAGE_3_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_3_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE4LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_4_LINK_DUPLICATED'] = this.aDIMAGE4LINKDUPLICATED;
+    if (this.AD_IMAGE_4_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_4_LINK_DUPLICATED'] = this.AD_IMAGE_4_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_4_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE4LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE4LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_4_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE4LINKREQUIRED != null) {
-      json[r'AD_IMAGE_4_LINK_REQUIRED'] = this.aDIMAGE4LINKREQUIRED;
+    if (this.AD_IMAGE_4_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_4_LINK_REQUIRED'] = this.AD_IMAGE_4_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_4_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE4LINKWARNING != null) {
-      json[r'AD_IMAGE_4_LINK_WARNING'] = this.aDIMAGE4LINKWARNING;
+    if (this.AD_IMAGE_4_LINK_WARNING != null) {
+      json[r'AD_IMAGE_4_LINK_WARNING'] = this.AD_IMAGE_4_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_4_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE4TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_4_TAG_DUPLICATED'] = this.aDIMAGE4TAGDUPLICATED;
+    if (this.AD_IMAGE_4_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_4_TAG_DUPLICATED'] = this.AD_IMAGE_4_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_4_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE4TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE4TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_4_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE4TAGREQUIRED != null) {
-      json[r'AD_IMAGE_4_TAG_REQUIRED'] = this.aDIMAGE4TAGREQUIRED;
+    if (this.AD_IMAGE_4_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_4_TAG_REQUIRED'] = this.AD_IMAGE_4_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_4_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE5LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_5_LINK_DUPLICATED'] = this.aDIMAGE5LINKDUPLICATED;
+    if (this.AD_IMAGE_5_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_5_LINK_DUPLICATED'] = this.AD_IMAGE_5_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_5_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE5LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE5LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_5_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE5LINKREQUIRED != null) {
-      json[r'AD_IMAGE_5_LINK_REQUIRED'] = this.aDIMAGE5LINKREQUIRED;
+    if (this.AD_IMAGE_5_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_5_LINK_REQUIRED'] = this.AD_IMAGE_5_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_5_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE5LINKWARNING != null) {
-      json[r'AD_IMAGE_5_LINK_WARNING'] = this.aDIMAGE5LINKWARNING;
+    if (this.AD_IMAGE_5_LINK_WARNING != null) {
+      json[r'AD_IMAGE_5_LINK_WARNING'] = this.AD_IMAGE_5_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_5_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE5TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_5_TAG_DUPLICATED'] = this.aDIMAGE5TAGDUPLICATED;
+    if (this.AD_IMAGE_5_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_5_TAG_DUPLICATED'] = this.AD_IMAGE_5_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_5_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE5TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE5TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_5_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE5TAGREQUIRED != null) {
-      json[r'AD_IMAGE_5_TAG_REQUIRED'] = this.aDIMAGE5TAGREQUIRED;
+    if (this.AD_IMAGE_5_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_5_TAG_REQUIRED'] = this.AD_IMAGE_5_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_5_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE6LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_6_LINK_DUPLICATED'] = this.aDIMAGE6LINKDUPLICATED;
+    if (this.AD_IMAGE_6_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_6_LINK_DUPLICATED'] = this.AD_IMAGE_6_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_6_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE6LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE6LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_6_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE6LINKREQUIRED != null) {
-      json[r'AD_IMAGE_6_LINK_REQUIRED'] = this.aDIMAGE6LINKREQUIRED;
+    if (this.AD_IMAGE_6_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_6_LINK_REQUIRED'] = this.AD_IMAGE_6_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_6_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE6LINKWARNING != null) {
-      json[r'AD_IMAGE_6_LINK_WARNING'] = this.aDIMAGE6LINKWARNING;
+    if (this.AD_IMAGE_6_LINK_WARNING != null) {
+      json[r'AD_IMAGE_6_LINK_WARNING'] = this.AD_IMAGE_6_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_6_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE6TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_6_TAG_DUPLICATED'] = this.aDIMAGE6TAGDUPLICATED;
+    if (this.AD_IMAGE_6_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_6_TAG_DUPLICATED'] = this.AD_IMAGE_6_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_6_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE6TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE6TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_6_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE6TAGREQUIRED != null) {
-      json[r'AD_IMAGE_6_TAG_REQUIRED'] = this.aDIMAGE6TAGREQUIRED;
+    if (this.AD_IMAGE_6_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_6_TAG_REQUIRED'] = this.AD_IMAGE_6_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_6_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE7LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_7_LINK_DUPLICATED'] = this.aDIMAGE7LINKDUPLICATED;
+    if (this.AD_IMAGE_7_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_7_LINK_DUPLICATED'] = this.AD_IMAGE_7_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_7_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE7LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE7LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_7_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE7LINKREQUIRED != null) {
-      json[r'AD_IMAGE_7_LINK_REQUIRED'] = this.aDIMAGE7LINKREQUIRED;
+    if (this.AD_IMAGE_7_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_7_LINK_REQUIRED'] = this.AD_IMAGE_7_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_7_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE7LINKWARNING != null) {
-      json[r'AD_IMAGE_7_LINK_WARNING'] = this.aDIMAGE7LINKWARNING;
+    if (this.AD_IMAGE_7_LINK_WARNING != null) {
+      json[r'AD_IMAGE_7_LINK_WARNING'] = this.AD_IMAGE_7_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_7_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE7TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_7_TAG_DUPLICATED'] = this.aDIMAGE7TAGDUPLICATED;
+    if (this.AD_IMAGE_7_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_7_TAG_DUPLICATED'] = this.AD_IMAGE_7_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_7_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE7TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE7TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_7_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE7TAGREQUIRED != null) {
-      json[r'AD_IMAGE_7_TAG_REQUIRED'] = this.aDIMAGE7TAGREQUIRED;
+    if (this.AD_IMAGE_7_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_7_TAG_REQUIRED'] = this.AD_IMAGE_7_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_7_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE8LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_8_LINK_DUPLICATED'] = this.aDIMAGE8LINKDUPLICATED;
+    if (this.AD_IMAGE_8_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_8_LINK_DUPLICATED'] = this.AD_IMAGE_8_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_8_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE8LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE8LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_8_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE8LINKREQUIRED != null) {
-      json[r'AD_IMAGE_8_LINK_REQUIRED'] = this.aDIMAGE8LINKREQUIRED;
+    if (this.AD_IMAGE_8_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_8_LINK_REQUIRED'] = this.AD_IMAGE_8_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_8_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE8LINKWARNING != null) {
-      json[r'AD_IMAGE_8_LINK_WARNING'] = this.aDIMAGE8LINKWARNING;
+    if (this.AD_IMAGE_8_LINK_WARNING != null) {
+      json[r'AD_IMAGE_8_LINK_WARNING'] = this.AD_IMAGE_8_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_8_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE8TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_8_TAG_DUPLICATED'] = this.aDIMAGE8TAGDUPLICATED;
+    if (this.AD_IMAGE_8_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_8_TAG_DUPLICATED'] = this.AD_IMAGE_8_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_8_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE8TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE8TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_8_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE8TAGREQUIRED != null) {
-      json[r'AD_IMAGE_8_TAG_REQUIRED'] = this.aDIMAGE8TAGREQUIRED;
+    if (this.AD_IMAGE_8_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_8_TAG_REQUIRED'] = this.AD_IMAGE_8_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_8_TAG_REQUIRED'] = null;
     }
-    if (this.aDIMAGE9LINKDUPLICATED != null) {
-      json[r'AD_IMAGE_9_LINK_DUPLICATED'] = this.aDIMAGE9LINKDUPLICATED;
+    if (this.AD_IMAGE_9_LINK_DUPLICATED != null) {
+      json[r'AD_IMAGE_9_LINK_DUPLICATED'] = this.AD_IMAGE_9_LINK_DUPLICATED;
     } else {
       json[r'AD_IMAGE_9_LINK_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE9LINKLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG'] = this.aDIMAGE9LINKLENGTHTOOLONG;
+    if (this.AD_IMAGE_9_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG'] = this.AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE9LINKREQUIRED != null) {
-      json[r'AD_IMAGE_9_LINK_REQUIRED'] = this.aDIMAGE9LINKREQUIRED;
+    if (this.AD_IMAGE_9_LINK_REQUIRED != null) {
+      json[r'AD_IMAGE_9_LINK_REQUIRED'] = this.AD_IMAGE_9_LINK_REQUIRED;
     } else {
       json[r'AD_IMAGE_9_LINK_REQUIRED'] = null;
     }
-    if (this.aDIMAGE9LINKWARNING != null) {
-      json[r'AD_IMAGE_9_LINK_WARNING'] = this.aDIMAGE9LINKWARNING;
+    if (this.AD_IMAGE_9_LINK_WARNING != null) {
+      json[r'AD_IMAGE_9_LINK_WARNING'] = this.AD_IMAGE_9_LINK_WARNING;
     } else {
       json[r'AD_IMAGE_9_LINK_WARNING'] = null;
     }
-    if (this.aDIMAGE9TAGDUPLICATED != null) {
-      json[r'AD_IMAGE_9_TAG_DUPLICATED'] = this.aDIMAGE9TAGDUPLICATED;
+    if (this.AD_IMAGE_9_TAG_DUPLICATED != null) {
+      json[r'AD_IMAGE_9_TAG_DUPLICATED'] = this.AD_IMAGE_9_TAG_DUPLICATED;
     } else {
       json[r'AD_IMAGE_9_TAG_DUPLICATED'] = null;
     }
-    if (this.aDIMAGE9TAGLENGTHTOOLONG != null) {
-      json[r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG'] = this.aDIMAGE9TAGLENGTHTOOLONG;
+    if (this.AD_IMAGE_9_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG'] = this.AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDIMAGE9TAGREQUIRED != null) {
-      json[r'AD_IMAGE_9_TAG_REQUIRED'] = this.aDIMAGE9TAGREQUIRED;
+    if (this.AD_IMAGE_9_TAG_REQUIRED != null) {
+      json[r'AD_IMAGE_9_TAG_REQUIRED'] = this.AD_IMAGE_9_TAG_REQUIRED;
     } else {
       json[r'AD_IMAGE_9_TAG_REQUIRED'] = null;
     }
@@ -3003,108 +3209,108 @@ class CatalogsItemValidationWarnings {
     } else {
       json[r'AD_LINK_SAME_AS_LINK'] = null;
     }
-    if (this.aDVIDEO0LINKDUPLICATED != null) {
-      json[r'AD_VIDEO_0_LINK_DUPLICATED'] = this.aDVIDEO0LINKDUPLICATED;
+    if (this.AD_VIDEO_0_LINK_DUPLICATED != null) {
+      json[r'AD_VIDEO_0_LINK_DUPLICATED'] = this.AD_VIDEO_0_LINK_DUPLICATED;
     } else {
       json[r'AD_VIDEO_0_LINK_DUPLICATED'] = null;
     }
-    if (this.aDVIDEO0LINKLENGTHTOOLONG != null) {
-      json[r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG'] = this.aDVIDEO0LINKLENGTHTOOLONG;
+    if (this.AD_VIDEO_0_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG'] = this.AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDVIDEO0LINKREQUIRED != null) {
-      json[r'AD_VIDEO_0_LINK_REQUIRED'] = this.aDVIDEO0LINKREQUIRED;
+    if (this.AD_VIDEO_0_LINK_REQUIRED != null) {
+      json[r'AD_VIDEO_0_LINK_REQUIRED'] = this.AD_VIDEO_0_LINK_REQUIRED;
     } else {
       json[r'AD_VIDEO_0_LINK_REQUIRED'] = null;
     }
-    if (this.aDVIDEO0LINKWARNING != null) {
-      json[r'AD_VIDEO_0_LINK_WARNING'] = this.aDVIDEO0LINKWARNING;
+    if (this.AD_VIDEO_0_LINK_WARNING != null) {
+      json[r'AD_VIDEO_0_LINK_WARNING'] = this.AD_VIDEO_0_LINK_WARNING;
     } else {
       json[r'AD_VIDEO_0_LINK_WARNING'] = null;
     }
-    if (this.aDVIDEO0TAGDUPLICATED != null) {
-      json[r'AD_VIDEO_0_TAG_DUPLICATED'] = this.aDVIDEO0TAGDUPLICATED;
+    if (this.AD_VIDEO_0_TAG_DUPLICATED != null) {
+      json[r'AD_VIDEO_0_TAG_DUPLICATED'] = this.AD_VIDEO_0_TAG_DUPLICATED;
     } else {
       json[r'AD_VIDEO_0_TAG_DUPLICATED'] = null;
     }
-    if (this.aDVIDEO0TAGLENGTHTOOLONG != null) {
-      json[r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG'] = this.aDVIDEO0TAGLENGTHTOOLONG;
+    if (this.AD_VIDEO_0_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG'] = this.AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDVIDEO0TAGREQUIRED != null) {
-      json[r'AD_VIDEO_0_TAG_REQUIRED'] = this.aDVIDEO0TAGREQUIRED;
+    if (this.AD_VIDEO_0_TAG_REQUIRED != null) {
+      json[r'AD_VIDEO_0_TAG_REQUIRED'] = this.AD_VIDEO_0_TAG_REQUIRED;
     } else {
       json[r'AD_VIDEO_0_TAG_REQUIRED'] = null;
     }
-    if (this.aDVIDEO1LINKDUPLICATED != null) {
-      json[r'AD_VIDEO_1_LINK_DUPLICATED'] = this.aDVIDEO1LINKDUPLICATED;
+    if (this.AD_VIDEO_1_LINK_DUPLICATED != null) {
+      json[r'AD_VIDEO_1_LINK_DUPLICATED'] = this.AD_VIDEO_1_LINK_DUPLICATED;
     } else {
       json[r'AD_VIDEO_1_LINK_DUPLICATED'] = null;
     }
-    if (this.aDVIDEO1LINKLENGTHTOOLONG != null) {
-      json[r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG'] = this.aDVIDEO1LINKLENGTHTOOLONG;
+    if (this.AD_VIDEO_1_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG'] = this.AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDVIDEO1LINKREQUIRED != null) {
-      json[r'AD_VIDEO_1_LINK_REQUIRED'] = this.aDVIDEO1LINKREQUIRED;
+    if (this.AD_VIDEO_1_LINK_REQUIRED != null) {
+      json[r'AD_VIDEO_1_LINK_REQUIRED'] = this.AD_VIDEO_1_LINK_REQUIRED;
     } else {
       json[r'AD_VIDEO_1_LINK_REQUIRED'] = null;
     }
-    if (this.aDVIDEO1LINKWARNING != null) {
-      json[r'AD_VIDEO_1_LINK_WARNING'] = this.aDVIDEO1LINKWARNING;
+    if (this.AD_VIDEO_1_LINK_WARNING != null) {
+      json[r'AD_VIDEO_1_LINK_WARNING'] = this.AD_VIDEO_1_LINK_WARNING;
     } else {
       json[r'AD_VIDEO_1_LINK_WARNING'] = null;
     }
-    if (this.aDVIDEO1TAGDUPLICATED != null) {
-      json[r'AD_VIDEO_1_TAG_DUPLICATED'] = this.aDVIDEO1TAGDUPLICATED;
+    if (this.AD_VIDEO_1_TAG_DUPLICATED != null) {
+      json[r'AD_VIDEO_1_TAG_DUPLICATED'] = this.AD_VIDEO_1_TAG_DUPLICATED;
     } else {
       json[r'AD_VIDEO_1_TAG_DUPLICATED'] = null;
     }
-    if (this.aDVIDEO1TAGLENGTHTOOLONG != null) {
-      json[r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG'] = this.aDVIDEO1TAGLENGTHTOOLONG;
+    if (this.AD_VIDEO_1_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG'] = this.AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDVIDEO1TAGREQUIRED != null) {
-      json[r'AD_VIDEO_1_TAG_REQUIRED'] = this.aDVIDEO1TAGREQUIRED;
+    if (this.AD_VIDEO_1_TAG_REQUIRED != null) {
+      json[r'AD_VIDEO_1_TAG_REQUIRED'] = this.AD_VIDEO_1_TAG_REQUIRED;
     } else {
       json[r'AD_VIDEO_1_TAG_REQUIRED'] = null;
     }
-    if (this.aDVIDEO2LINKDUPLICATED != null) {
-      json[r'AD_VIDEO_2_LINK_DUPLICATED'] = this.aDVIDEO2LINKDUPLICATED;
+    if (this.AD_VIDEO_2_LINK_DUPLICATED != null) {
+      json[r'AD_VIDEO_2_LINK_DUPLICATED'] = this.AD_VIDEO_2_LINK_DUPLICATED;
     } else {
       json[r'AD_VIDEO_2_LINK_DUPLICATED'] = null;
     }
-    if (this.aDVIDEO2LINKLENGTHTOOLONG != null) {
-      json[r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG'] = this.aDVIDEO2LINKLENGTHTOOLONG;
+    if (this.AD_VIDEO_2_LINK_LENGTH_TOO_LONG != null) {
+      json[r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG'] = this.AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
     } else {
       json[r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDVIDEO2LINKREQUIRED != null) {
-      json[r'AD_VIDEO_2_LINK_REQUIRED'] = this.aDVIDEO2LINKREQUIRED;
+    if (this.AD_VIDEO_2_LINK_REQUIRED != null) {
+      json[r'AD_VIDEO_2_LINK_REQUIRED'] = this.AD_VIDEO_2_LINK_REQUIRED;
     } else {
       json[r'AD_VIDEO_2_LINK_REQUIRED'] = null;
     }
-    if (this.aDVIDEO2LINKWARNING != null) {
-      json[r'AD_VIDEO_2_LINK_WARNING'] = this.aDVIDEO2LINKWARNING;
+    if (this.AD_VIDEO_2_LINK_WARNING != null) {
+      json[r'AD_VIDEO_2_LINK_WARNING'] = this.AD_VIDEO_2_LINK_WARNING;
     } else {
       json[r'AD_VIDEO_2_LINK_WARNING'] = null;
     }
-    if (this.aDVIDEO2TAGDUPLICATED != null) {
-      json[r'AD_VIDEO_2_TAG_DUPLICATED'] = this.aDVIDEO2TAGDUPLICATED;
+    if (this.AD_VIDEO_2_TAG_DUPLICATED != null) {
+      json[r'AD_VIDEO_2_TAG_DUPLICATED'] = this.AD_VIDEO_2_TAG_DUPLICATED;
     } else {
       json[r'AD_VIDEO_2_TAG_DUPLICATED'] = null;
     }
-    if (this.aDVIDEO2TAGLENGTHTOOLONG != null) {
-      json[r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG'] = this.aDVIDEO2TAGLENGTHTOOLONG;
+    if (this.AD_VIDEO_2_TAG_LENGTH_TOO_LONG != null) {
+      json[r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG'] = this.AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
     } else {
       json[r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG'] = null;
     }
-    if (this.aDVIDEO2TAGREQUIRED != null) {
-      json[r'AD_VIDEO_2_TAG_REQUIRED'] = this.aDVIDEO2TAGREQUIRED;
+    if (this.AD_VIDEO_2_TAG_REQUIRED != null) {
+      json[r'AD_VIDEO_2_TAG_REQUIRED'] = this.AD_VIDEO_2_TAG_REQUIRED;
     } else {
       json[r'AD_VIDEO_2_TAG_REQUIRED'] = null;
     }
@@ -3337,177 +3543,173 @@ class CatalogsItemValidationWarnings {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsItemValidationWarnings[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsItemValidationWarnings[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return CatalogsItemValidationWarnings(
-        aDIMAGE0LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_LINK_DUPLICATED']),
-        aDIMAGE0LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE0LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_LINK_REQUIRED']),
-        aDIMAGE0LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_LINK_WARNING']),
-        aDIMAGE0TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_TAG_DUPLICATED']),
-        aDIMAGE0TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE0TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_TAG_REQUIRED']),
-        aDIMAGE10LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_LINK_DUPLICATED']),
-        aDIMAGE10LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE10LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_LINK_REQUIRED']),
-        aDIMAGE10LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_LINK_WARNING']),
-        aDIMAGE10TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_TAG_DUPLICATED']),
-        aDIMAGE10TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE10TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_TAG_REQUIRED']),
-        aDIMAGE11LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_LINK_DUPLICATED']),
-        aDIMAGE11LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE11LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_LINK_REQUIRED']),
-        aDIMAGE11LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_LINK_WARNING']),
-        aDIMAGE11TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_TAG_DUPLICATED']),
-        aDIMAGE11TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE11TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_TAG_REQUIRED']),
-        aDIMAGE12LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_LINK_DUPLICATED']),
-        aDIMAGE12LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE12LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_LINK_REQUIRED']),
-        aDIMAGE12LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_LINK_WARNING']),
-        aDIMAGE12TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_TAG_DUPLICATED']),
-        aDIMAGE12TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE12TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_TAG_REQUIRED']),
-        aDIMAGE13LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_LINK_DUPLICATED']),
-        aDIMAGE13LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE13LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_LINK_REQUIRED']),
-        aDIMAGE13LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_LINK_WARNING']),
-        aDIMAGE13TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_TAG_DUPLICATED']),
-        aDIMAGE13TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE13TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_TAG_REQUIRED']),
-        aDIMAGE14LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_LINK_DUPLICATED']),
-        aDIMAGE14LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE14LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_LINK_REQUIRED']),
-        aDIMAGE14LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_LINK_WARNING']),
-        aDIMAGE14TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_TAG_DUPLICATED']),
-        aDIMAGE14TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE14TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_TAG_REQUIRED']),
-        aDIMAGE15LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_LINK_DUPLICATED']),
-        aDIMAGE15LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE15LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_LINK_REQUIRED']),
-        aDIMAGE15LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_LINK_WARNING']),
-        aDIMAGE15TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_TAG_DUPLICATED']),
-        aDIMAGE15TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE15TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_TAG_REQUIRED']),
-        aDIMAGE16LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_LINK_DUPLICATED']),
-        aDIMAGE16LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE16LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_LINK_REQUIRED']),
-        aDIMAGE16LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_LINK_WARNING']),
-        aDIMAGE16TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_TAG_DUPLICATED']),
-        aDIMAGE16TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE16TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_TAG_REQUIRED']),
-        aDIMAGE17LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_LINK_DUPLICATED']),
-        aDIMAGE17LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE17LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_LINK_REQUIRED']),
-        aDIMAGE17LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_LINK_WARNING']),
-        aDIMAGE17TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_TAG_DUPLICATED']),
-        aDIMAGE17TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE17TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_TAG_REQUIRED']),
-        aDIMAGE18LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_LINK_DUPLICATED']),
-        aDIMAGE18LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE18LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_LINK_REQUIRED']),
-        aDIMAGE18LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_LINK_WARNING']),
-        aDIMAGE18TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_TAG_DUPLICATED']),
-        aDIMAGE18TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE18TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_TAG_REQUIRED']),
-        aDIMAGE19LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_LINK_DUPLICATED']),
-        aDIMAGE19LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE19LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_LINK_REQUIRED']),
-        aDIMAGE19LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_LINK_WARNING']),
-        aDIMAGE19TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_TAG_DUPLICATED']),
-        aDIMAGE19TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE19TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_TAG_REQUIRED']),
-        aDIMAGE1LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_LINK_DUPLICATED']),
-        aDIMAGE1LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE1LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_LINK_REQUIRED']),
-        aDIMAGE1LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_LINK_WARNING']),
-        aDIMAGE1TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_TAG_DUPLICATED']),
-        aDIMAGE1TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE1TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_TAG_REQUIRED']),
-        aDIMAGE2LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_LINK_DUPLICATED']),
-        aDIMAGE2LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE2LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_LINK_REQUIRED']),
-        aDIMAGE2LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_LINK_WARNING']),
-        aDIMAGE2TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_TAG_DUPLICATED']),
-        aDIMAGE2TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE2TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_TAG_REQUIRED']),
-        aDIMAGE3LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_LINK_DUPLICATED']),
-        aDIMAGE3LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE3LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_LINK_REQUIRED']),
-        aDIMAGE3LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_LINK_WARNING']),
-        aDIMAGE3TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_TAG_DUPLICATED']),
-        aDIMAGE3TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE3TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_TAG_REQUIRED']),
-        aDIMAGE4LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_LINK_DUPLICATED']),
-        aDIMAGE4LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE4LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_LINK_REQUIRED']),
-        aDIMAGE4LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_LINK_WARNING']),
-        aDIMAGE4TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_TAG_DUPLICATED']),
-        aDIMAGE4TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE4TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_TAG_REQUIRED']),
-        aDIMAGE5LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_LINK_DUPLICATED']),
-        aDIMAGE5LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE5LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_LINK_REQUIRED']),
-        aDIMAGE5LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_LINK_WARNING']),
-        aDIMAGE5TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_TAG_DUPLICATED']),
-        aDIMAGE5TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE5TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_TAG_REQUIRED']),
-        aDIMAGE6LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_LINK_DUPLICATED']),
-        aDIMAGE6LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE6LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_LINK_REQUIRED']),
-        aDIMAGE6LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_LINK_WARNING']),
-        aDIMAGE6TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_TAG_DUPLICATED']),
-        aDIMAGE6TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE6TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_TAG_REQUIRED']),
-        aDIMAGE7LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_LINK_DUPLICATED']),
-        aDIMAGE7LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE7LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_LINK_REQUIRED']),
-        aDIMAGE7LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_LINK_WARNING']),
-        aDIMAGE7TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_TAG_DUPLICATED']),
-        aDIMAGE7TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE7TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_TAG_REQUIRED']),
-        aDIMAGE8LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_LINK_DUPLICATED']),
-        aDIMAGE8LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE8LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_LINK_REQUIRED']),
-        aDIMAGE8LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_LINK_WARNING']),
-        aDIMAGE8TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_TAG_DUPLICATED']),
-        aDIMAGE8TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE8TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_TAG_REQUIRED']),
-        aDIMAGE9LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_LINK_DUPLICATED']),
-        aDIMAGE9LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG']),
-        aDIMAGE9LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_LINK_REQUIRED']),
-        aDIMAGE9LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_LINK_WARNING']),
-        aDIMAGE9TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_TAG_DUPLICATED']),
-        aDIMAGE9TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG']),
-        aDIMAGE9TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_TAG_REQUIRED']),
+        AD_IMAGE_0_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_LINK_DUPLICATED']),
+        AD_IMAGE_0_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_0_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_LINK_REQUIRED']),
+        AD_IMAGE_0_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_LINK_WARNING']),
+        AD_IMAGE_0_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_TAG_DUPLICATED']),
+        AD_IMAGE_0_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_0_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_0_TAG_REQUIRED']),
+        AD_IMAGE_10_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_LINK_DUPLICATED']),
+        AD_IMAGE_10_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_10_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_LINK_REQUIRED']),
+        AD_IMAGE_10_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_LINK_WARNING']),
+        AD_IMAGE_10_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_TAG_DUPLICATED']),
+        AD_IMAGE_10_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_10_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_10_TAG_REQUIRED']),
+        AD_IMAGE_11_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_LINK_DUPLICATED']),
+        AD_IMAGE_11_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_11_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_LINK_REQUIRED']),
+        AD_IMAGE_11_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_LINK_WARNING']),
+        AD_IMAGE_11_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_TAG_DUPLICATED']),
+        AD_IMAGE_11_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_11_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_11_TAG_REQUIRED']),
+        AD_IMAGE_12_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_LINK_DUPLICATED']),
+        AD_IMAGE_12_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_12_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_LINK_REQUIRED']),
+        AD_IMAGE_12_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_LINK_WARNING']),
+        AD_IMAGE_12_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_TAG_DUPLICATED']),
+        AD_IMAGE_12_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_12_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_12_TAG_REQUIRED']),
+        AD_IMAGE_13_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_LINK_DUPLICATED']),
+        AD_IMAGE_13_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_13_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_LINK_REQUIRED']),
+        AD_IMAGE_13_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_LINK_WARNING']),
+        AD_IMAGE_13_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_TAG_DUPLICATED']),
+        AD_IMAGE_13_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_13_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_13_TAG_REQUIRED']),
+        AD_IMAGE_14_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_LINK_DUPLICATED']),
+        AD_IMAGE_14_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_14_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_LINK_REQUIRED']),
+        AD_IMAGE_14_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_LINK_WARNING']),
+        AD_IMAGE_14_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_TAG_DUPLICATED']),
+        AD_IMAGE_14_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_14_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_14_TAG_REQUIRED']),
+        AD_IMAGE_15_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_LINK_DUPLICATED']),
+        AD_IMAGE_15_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_15_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_LINK_REQUIRED']),
+        AD_IMAGE_15_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_LINK_WARNING']),
+        AD_IMAGE_15_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_TAG_DUPLICATED']),
+        AD_IMAGE_15_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_15_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_15_TAG_REQUIRED']),
+        AD_IMAGE_16_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_LINK_DUPLICATED']),
+        AD_IMAGE_16_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_16_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_LINK_REQUIRED']),
+        AD_IMAGE_16_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_LINK_WARNING']),
+        AD_IMAGE_16_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_TAG_DUPLICATED']),
+        AD_IMAGE_16_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_16_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_16_TAG_REQUIRED']),
+        AD_IMAGE_17_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_LINK_DUPLICATED']),
+        AD_IMAGE_17_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_17_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_LINK_REQUIRED']),
+        AD_IMAGE_17_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_LINK_WARNING']),
+        AD_IMAGE_17_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_TAG_DUPLICATED']),
+        AD_IMAGE_17_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_17_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_17_TAG_REQUIRED']),
+        AD_IMAGE_18_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_LINK_DUPLICATED']),
+        AD_IMAGE_18_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_18_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_LINK_REQUIRED']),
+        AD_IMAGE_18_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_LINK_WARNING']),
+        AD_IMAGE_18_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_TAG_DUPLICATED']),
+        AD_IMAGE_18_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_18_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_18_TAG_REQUIRED']),
+        AD_IMAGE_19_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_LINK_DUPLICATED']),
+        AD_IMAGE_19_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_19_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_LINK_REQUIRED']),
+        AD_IMAGE_19_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_LINK_WARNING']),
+        AD_IMAGE_19_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_TAG_DUPLICATED']),
+        AD_IMAGE_19_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_19_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_19_TAG_REQUIRED']),
+        AD_IMAGE_1_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_LINK_DUPLICATED']),
+        AD_IMAGE_1_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_1_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_LINK_REQUIRED']),
+        AD_IMAGE_1_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_LINK_WARNING']),
+        AD_IMAGE_1_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_TAG_DUPLICATED']),
+        AD_IMAGE_1_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_1_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_1_TAG_REQUIRED']),
+        AD_IMAGE_2_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_LINK_DUPLICATED']),
+        AD_IMAGE_2_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_2_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_LINK_REQUIRED']),
+        AD_IMAGE_2_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_LINK_WARNING']),
+        AD_IMAGE_2_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_TAG_DUPLICATED']),
+        AD_IMAGE_2_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_2_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_2_TAG_REQUIRED']),
+        AD_IMAGE_3_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_LINK_DUPLICATED']),
+        AD_IMAGE_3_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_3_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_LINK_REQUIRED']),
+        AD_IMAGE_3_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_LINK_WARNING']),
+        AD_IMAGE_3_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_TAG_DUPLICATED']),
+        AD_IMAGE_3_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_3_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_3_TAG_REQUIRED']),
+        AD_IMAGE_4_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_LINK_DUPLICATED']),
+        AD_IMAGE_4_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_4_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_LINK_REQUIRED']),
+        AD_IMAGE_4_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_LINK_WARNING']),
+        AD_IMAGE_4_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_TAG_DUPLICATED']),
+        AD_IMAGE_4_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_4_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_4_TAG_REQUIRED']),
+        AD_IMAGE_5_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_LINK_DUPLICATED']),
+        AD_IMAGE_5_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_5_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_LINK_REQUIRED']),
+        AD_IMAGE_5_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_LINK_WARNING']),
+        AD_IMAGE_5_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_TAG_DUPLICATED']),
+        AD_IMAGE_5_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_5_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_5_TAG_REQUIRED']),
+        AD_IMAGE_6_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_LINK_DUPLICATED']),
+        AD_IMAGE_6_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_6_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_LINK_REQUIRED']),
+        AD_IMAGE_6_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_LINK_WARNING']),
+        AD_IMAGE_6_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_TAG_DUPLICATED']),
+        AD_IMAGE_6_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_6_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_6_TAG_REQUIRED']),
+        AD_IMAGE_7_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_LINK_DUPLICATED']),
+        AD_IMAGE_7_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_7_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_LINK_REQUIRED']),
+        AD_IMAGE_7_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_LINK_WARNING']),
+        AD_IMAGE_7_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_TAG_DUPLICATED']),
+        AD_IMAGE_7_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_7_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_7_TAG_REQUIRED']),
+        AD_IMAGE_8_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_LINK_DUPLICATED']),
+        AD_IMAGE_8_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_8_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_LINK_REQUIRED']),
+        AD_IMAGE_8_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_LINK_WARNING']),
+        AD_IMAGE_8_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_TAG_DUPLICATED']),
+        AD_IMAGE_8_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_8_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_8_TAG_REQUIRED']),
+        AD_IMAGE_9_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_LINK_DUPLICATED']),
+        AD_IMAGE_9_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_LINK_LENGTH_TOO_LONG']),
+        AD_IMAGE_9_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_LINK_REQUIRED']),
+        AD_IMAGE_9_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_LINK_WARNING']),
+        AD_IMAGE_9_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_TAG_DUPLICATED']),
+        AD_IMAGE_9_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_TAG_LENGTH_TOO_LONG']),
+        AD_IMAGE_9_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_IMAGE_9_TAG_REQUIRED']),
         AD_LINK_FORMAT_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_LINK_FORMAT_WARNING']),
         AD_LINK_SAME_AS_LINK: CatalogsItemValidationDetails.fromJson(json[r'AD_LINK_SAME_AS_LINK']),
-        aDVIDEO0LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_LINK_DUPLICATED']),
-        aDVIDEO0LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG']),
-        aDVIDEO0LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_LINK_REQUIRED']),
-        aDVIDEO0LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_LINK_WARNING']),
-        aDVIDEO0TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_TAG_DUPLICATED']),
-        aDVIDEO0TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG']),
-        aDVIDEO0TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_TAG_REQUIRED']),
-        aDVIDEO1LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_LINK_DUPLICATED']),
-        aDVIDEO1LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG']),
-        aDVIDEO1LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_LINK_REQUIRED']),
-        aDVIDEO1LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_LINK_WARNING']),
-        aDVIDEO1TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_TAG_DUPLICATED']),
-        aDVIDEO1TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG']),
-        aDVIDEO1TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_TAG_REQUIRED']),
-        aDVIDEO2LINKDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_LINK_DUPLICATED']),
-        aDVIDEO2LINKLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG']),
-        aDVIDEO2LINKREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_LINK_REQUIRED']),
-        aDVIDEO2LINKWARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_LINK_WARNING']),
-        aDVIDEO2TAGDUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_TAG_DUPLICATED']),
-        aDVIDEO2TAGLENGTHTOOLONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG']),
-        aDVIDEO2TAGREQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_TAG_REQUIRED']),
+        AD_VIDEO_0_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_LINK_DUPLICATED']),
+        AD_VIDEO_0_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_LINK_LENGTH_TOO_LONG']),
+        AD_VIDEO_0_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_LINK_REQUIRED']),
+        AD_VIDEO_0_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_LINK_WARNING']),
+        AD_VIDEO_0_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_TAG_DUPLICATED']),
+        AD_VIDEO_0_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_TAG_LENGTH_TOO_LONG']),
+        AD_VIDEO_0_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_0_TAG_REQUIRED']),
+        AD_VIDEO_1_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_LINK_DUPLICATED']),
+        AD_VIDEO_1_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_LINK_LENGTH_TOO_LONG']),
+        AD_VIDEO_1_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_LINK_REQUIRED']),
+        AD_VIDEO_1_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_LINK_WARNING']),
+        AD_VIDEO_1_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_TAG_DUPLICATED']),
+        AD_VIDEO_1_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_TAG_LENGTH_TOO_LONG']),
+        AD_VIDEO_1_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_1_TAG_REQUIRED']),
+        AD_VIDEO_2_LINK_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_LINK_DUPLICATED']),
+        AD_VIDEO_2_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_LINK_LENGTH_TOO_LONG']),
+        AD_VIDEO_2_LINK_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_LINK_REQUIRED']),
+        AD_VIDEO_2_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_LINK_WARNING']),
+        AD_VIDEO_2_TAG_DUPLICATED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_TAG_DUPLICATED']),
+        AD_VIDEO_2_TAG_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_TAG_LENGTH_TOO_LONG']),
+        AD_VIDEO_2_TAG_REQUIRED: CatalogsItemValidationDetails.fromJson(json[r'AD_VIDEO_2_TAG_REQUIRED']),
         ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails.fromJson(json[r'ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG']),
         ADDITIONAL_IMAGE_LINK_WARNING: CatalogsItemValidationDetails.fromJson(json[r'ADDITIONAL_IMAGE_LINK_WARNING']),
         ADWORDS_FORMAT_WARNING: CatalogsItemValidationDetails.fromJson(json[r'ADWORDS_FORMAT_WARNING']),

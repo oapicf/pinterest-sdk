@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -20,20 +25,70 @@ type AdPinAnalytics struct {
 	DATE string `json:"DATE,omitempty"`
 
 	// The ID of the pin that the metric belongs to.
-	PIN_ID string `json:"PIN_ID" validate:"regexp=^\\\\d+$"`
+	PIN_ID string `json:"PIN_ID" validate:"regexp=^\\d+$"`
 }
-
-// AssertAdPinAnalyticsRequired checks if the required fields are not zero-ed
-func AssertAdPinAnalyticsRequired(obj AdPinAnalytics) error {
-	elements := map[string]interface{}{
-		"PIN_ID": obj.PIN_ID,
+// UnmarshalJSON validates required property keys then unmarshals into AdPinAnalytics
+func (o *AdPinAnalytics) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"PIN_ID",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"PIN_ID": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"DATE": {},
+		"PIN_ID": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded AdPinAnalytics
+
+	if value, exists := allProperties["DATE"]; exists {
+		if err = json.Unmarshal(value, &decoded.DATE); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["PIN_ID"]; exists {
+		if err = json.Unmarshal(value, &decoded.PIN_ID); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertAdPinAnalyticsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertAdPinAnalyticsRequired(obj AdPinAnalytics) error {
 	return nil
 }
 

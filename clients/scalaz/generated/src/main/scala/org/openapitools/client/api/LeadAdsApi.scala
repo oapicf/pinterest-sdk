@@ -32,7 +32,9 @@ object LeadAdsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adAccountsSubscriptionsDelById(host: String, adAccountId: String, subscriptionId: String): Task[Unit] = {
+  def adAccountsSubscriptionsDelById(host: String, adAccountId: String, subscriptionId: String): Task[LeadSubscription] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadSubscription] = jsonOf[LeadSubscription]
+
     val path = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "subscription_id" + "\\}",escape(subscriptionId.toString))
 
     val httpMethod = Method.DELETE
@@ -46,7 +48,7 @@ object LeadAdsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[LeadSubscription](req)
 
     } yield resp
   }
@@ -121,7 +123,9 @@ class HttpServiceLeadAdsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adAccountsSubscriptionsDelById(adAccountId: String, subscriptionId: String): Task[Unit] = {
+  def adAccountsSubscriptionsDelById(adAccountId: String, subscriptionId: String): Task[LeadSubscription] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadSubscription] = jsonOf[LeadSubscription]
+
     val path = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "subscription_id" + "\\}",escape(subscriptionId.toString))
 
     val httpMethod = Method.DELETE
@@ -135,7 +139,7 @@ class HttpServiceLeadAdsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[LeadSubscription](req)
 
     } yield resp
   }

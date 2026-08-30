@@ -1,9 +1,9 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.LeadsExportCreateRequest
-import org.openapitools.server.api.model.LeadsExportCreateResponse
 import org.openapitools.server.api.model.LeadsExportResponseData
+import org.openapitools.server.api.model.LeadsExports
+import org.openapitools.server.api.model.LeadsExportsCreate
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -22,7 +22,7 @@ interface LeadsExportApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* leadsExportCreate
      * Create a request to export leads collected from a lead ad */
-    suspend fun leadsExportCreate(adAccountId:kotlin.String?,leadsExportCreateRequest:LeadsExportCreateRequest?,context:OperationRequest):Response<LeadsExportCreateResponse>
+    suspend fun leadsExportCreate(adAccountId:kotlin.String?,leadsExportsCreate:LeadsExportsCreate?,context:OperationRequest):Response<LeadsExports>
     /* leadsExportGet
      * Get the lead export from the lead export create call */
     suspend fun leadsExportGet(adAccountId:kotlin.String?,leadsExportId:kotlin.String?,context:OperationRequest):Response<LeadsExportResponseData>

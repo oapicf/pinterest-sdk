@@ -11,10 +11,10 @@ part 'ad_preview_url_response.g.dart';
 /// AdPreviewURLResponse
 ///
 /// Properties:
-/// * [url] - 'Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19'
+/// * [url] - Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19
 @BuiltValue()
 abstract class AdPreviewURLResponse implements Built<AdPreviewURLResponse, AdPreviewURLResponseBuilder> {
-  /// 'Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19'
+  /// Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19
   @BuiltValueField(wireName: r'url')
   String? get url;
 
@@ -74,8 +74,9 @@ class _$AdPreviewURLResponseSerializer implements PrimitiveSerializer<AdPreviewU
         case r'url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.url = valueDes;
           break;
         default:

@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId,bulkDownloadRequest,adAccountId,bulkRequestId,includeDetails,adAccountId,bulkUpsertRequest
+testCase,httpStatusCode,adAccountId,bulkDownloadCreate,adAccountId,bulkRequestId,includeDetails,adAccountId,bulkUpsertRequest
 Success,200,0,0,0,0,0,0,0

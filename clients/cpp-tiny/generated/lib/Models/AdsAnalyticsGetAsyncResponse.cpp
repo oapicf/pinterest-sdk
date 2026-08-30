@@ -6,7 +6,7 @@ using namespace Tiny;
 
 AdsAnalyticsGetAsyncResponse::AdsAnalyticsGetAsyncResponse()
 {
-	report_status = std::string();
+	report_status = BulkReportingJobStatus();
 	size = float(0);
 	url = std::string();
 }
@@ -107,7 +107,7 @@ AdsAnalyticsGetAsyncResponse::getReportStatus()
 }
 
 void
-AdsAnalyticsGetAsyncResponse::setReportStatus(BulkReportingJobStatus  report_status)
+AdsAnalyticsGetAsyncResponse::setReportStatus(BulkReportingJobStatus report_status)
 {
 	this->report_status = report_status;
 }
@@ -119,7 +119,7 @@ AdsAnalyticsGetAsyncResponse::getSize()
 }
 
 void
-AdsAnalyticsGetAsyncResponse::setSize(long  size)
+AdsAnalyticsGetAsyncResponse::setSize(long size)
 {
 	this->size = size;
 }
@@ -131,7 +131,7 @@ AdsAnalyticsGetAsyncResponse::getUrl()
 }
 
 void
-AdsAnalyticsGetAsyncResponse::setUrl(std::string  url)
+AdsAnalyticsGetAsyncResponse::setUrl(std::string url)
 {
 	this->url = url;
 }

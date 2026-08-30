@@ -1,0 +1,38 @@
+## PromotionsApi
+
+### Create promotions
+## Create promotions
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/promotions
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+
+
+### Delete promotion by id
+## Delete promotion by id
+DELETE https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/promotions/{{promotion_id}}
+Accept: application/json
+
+### Get promotion by id
+## Get promotion by id
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/promotions/{{promotion_id}}
+Accept: application/json
+
+### Get promotions
+## Get promotions
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/promotions?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}
+Accept: application/json
+
+### Update promotions
+## Update promotions
+PATCH https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/promotions
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+}
+

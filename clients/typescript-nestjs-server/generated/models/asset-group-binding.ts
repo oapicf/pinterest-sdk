@@ -1,0 +1,50 @@
+import { BusinessAccessUserSummary } from './business-access-user-summary';
+
+
+export interface AssetGroupBinding { 
+  /**
+   * A list of ad account IDs under the asset group
+   */
+  ad_accounts_ids: Array<string>;
+  /**
+   * Asset group description
+   */
+  asset_group_description: string | null;
+  /**
+   * Asset Group name
+   */
+  asset_group_name: string | null;
+  /**
+   * Asset group types
+   */
+  asset_group_types: Array<string>;
+  /**
+   * A list of catalog IDs under asset group
+   */
+  catalogs_ids: Array<string>;
+  /**
+   * The data of the user that created the asset group.
+   */
+  created_by: BusinessAccessUserSummary;
+  /**
+   * The creation time of the asset group
+   */
+  created_time: number | null;
+  /**
+   * Asset Group ID.
+   */
+  id: string;
+  /**
+   * The data of the business that owns the asset group.
+   */
+  owner: BusinessAccessUserSummary;
+  /**
+   * A list of profile IDs under asset group
+   */
+  profiles_ids: Array<string>;
+  /**
+   * The last update time of the asset group
+   */
+  updated_time: number | null;
+}
+

@@ -7,7 +7,9 @@
 #' @title CatalogsCreativeAssetsProductGroupProductCounts
 #' @description CatalogsCreativeAssetsProductGroupProductCounts Class
 #' @format An \code{R6Class} generator object
+#' @field app_links  numeric
 #' @field catalog_type  character
+#' @field images  numeric
 #' @field total  numeric
 #' @field videos  numeric
 #' @importFrom R6 R6Class
@@ -16,18 +18,25 @@
 CatalogsCreativeAssetsProductGroupProductCounts <- R6::R6Class(
   "CatalogsCreativeAssetsProductGroupProductCounts",
   public = list(
+    `app_links` = NULL,
     `catalog_type` = NULL,
+    `images` = NULL,
     `total` = NULL,
     `videos` = NULL,
 
     #' @description
     #' Initialize a new CatalogsCreativeAssetsProductGroupProductCounts class.
     #'
+    #' @param app_links app_links
     #' @param catalog_type catalog_type
+    #' @param images images
     #' @param total total
     #' @param videos videos
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type`, `total`, `videos`, ...) {
+    initialize = function(`app_links`, `catalog_type`, `images`, `total`, `videos`, ...) {
+      if (!missing(`app_links`)) {
+        self$`app_links` <- `app_links`
+      }
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c("CREATIVE_ASSETS"))) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"CREATIVE_ASSETS\".", sep = ""))
@@ -36,6 +45,9 @@ CatalogsCreativeAssetsProductGroupProductCounts <- R6::R6Class(
           stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", `catalog_type`))
         }
         self$`catalog_type` <- `catalog_type`
+      }
+      if (!missing(`images`)) {
+        self$`images` <- `images`
       }
       if (!missing(`total`)) {
         self$`total` <- `total`
@@ -76,9 +88,17 @@ CatalogsCreativeAssetsProductGroupProductCounts <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsCreativeAssetsProductGroupProductCountsObject <- list()
+      if (!is.null(self$`app_links`)) {
+        CatalogsCreativeAssetsProductGroupProductCountsObject[["app_links"]] <-
+          self$`app_links`
+      }
       if (!is.null(self$`catalog_type`)) {
         CatalogsCreativeAssetsProductGroupProductCountsObject[["catalog_type"]] <-
           self$`catalog_type`
+      }
+      if (!is.null(self$`images`)) {
+        CatalogsCreativeAssetsProductGroupProductCountsObject[["images"]] <-
+          self$`images`
       }
       if (!is.null(self$`total`)) {
         CatalogsCreativeAssetsProductGroupProductCountsObject[["total"]] <-
@@ -98,11 +118,17 @@ CatalogsCreativeAssetsProductGroupProductCounts <- R6::R6Class(
     #' @return the instance of CatalogsCreativeAssetsProductGroupProductCounts
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`app_links`)) {
+        self$`app_links` <- this_object$`app_links`
+      }
       if (!is.null(this_object$`catalog_type`)) {
         if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("CREATIVE_ASSETS"))) {
           stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"CREATIVE_ASSETS\".", sep = ""))
         }
         self$`catalog_type` <- this_object$`catalog_type`
+      }
+      if (!is.null(this_object$`images`)) {
+        self$`images` <- this_object$`images`
       }
       if (!is.null(this_object$`total`)) {
         self$`total` <- this_object$`total`
@@ -131,10 +157,12 @@ CatalogsCreativeAssetsProductGroupProductCounts <- R6::R6Class(
     #' @return the instance of CatalogsCreativeAssetsProductGroupProductCounts
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`app_links` <- this_object$`app_links`
       if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("CREATIVE_ASSETS"))) {
         stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"CREATIVE_ASSETS\".", sep = ""))
       }
       self$`catalog_type` <- this_object$`catalog_type`
+      self$`images` <- this_object$`images`
       self$`total` <- this_object$`total`
       self$`videos` <- this_object$`videos`
       self
@@ -146,6 +174,11 @@ CatalogsCreativeAssetsProductGroupProductCounts <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `app_links`
+      if (!is.null(input_json$`app_links`)) {
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsProductGroupProductCounts: the required field `app_links` is missing."))
+      }
       # check the required field `catalog_type`
       if (!is.null(input_json$`catalog_type`)) {
         if (!(is.character(input_json$`catalog_type`) && length(input_json$`catalog_type`) == 1)) {
@@ -153,6 +186,11 @@ CatalogsCreativeAssetsProductGroupProductCounts <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsProductGroupProductCounts: the required field `catalog_type` is missing."))
+      }
+      # check the required field `images`
+      if (!is.null(input_json$`images`)) {
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsProductGroupProductCounts: the required field `images` is missing."))
       }
       # check the required field `total`
       if (!is.null(input_json$`total`)) {
@@ -179,8 +217,26 @@ CatalogsCreativeAssetsProductGroupProductCounts <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `app_links` is null
+      if (is.null(self$`app_links`)) {
+        return(FALSE)
+      }
+
+      if (self$`app_links` < 0) {
+        return(FALSE)
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
+        return(FALSE)
+      }
+
+      # check if the required `images` is null
+      if (is.null(self$`images`)) {
+        return(FALSE)
+      }
+
+      if (self$`images` < 0) {
         return(FALSE)
       }
 
@@ -211,9 +267,27 @@ CatalogsCreativeAssetsProductGroupProductCounts <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `app_links` is null
+      if (is.null(self$`app_links`)) {
+        invalid_fields["app_links"] <- "Non-nullable required field `app_links` cannot be null."
+      }
+
+      if (self$`app_links` < 0) {
+        invalid_fields["app_links"] <- "Invalid value for `app_links`, must be bigger than or equal to 0."
+      }
+
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
+      }
+
+      # check if the required `images` is null
+      if (is.null(self$`images`)) {
+        invalid_fields["images"] <- "Non-nullable required field `images` cannot be null."
+      }
+
+      if (self$`images` < 0) {
+        invalid_fields["images"] <- "Invalid value for `images`, must be bigger than or equal to 0."
       }
 
       # check if the required `total` is null

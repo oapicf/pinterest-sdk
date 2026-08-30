@@ -52,7 +52,7 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria  pRODUCT_GROUP);
+	void setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria pRODUCT_GROUP);
 
 
     private:

@@ -1,9 +1,10 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.PromotionCreateRequest
-import org.openapitools.server.api.model.PromotionResponse
-import org.openapitools.server.api.model.PromotionUpdateRequest
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
+import org.openapitools.server.api.model.Promotion
+import org.openapitools.server.api.model.PromotionBatchUpdate
+import org.openapitools.server.api.model.PromotionCreate
 import org.openapitools.server.api.model.PromotionsList200Response
 import org.openapitools.server.api.model.PromotionsResponse
 import io.vertx.core.Vertx
@@ -24,19 +25,19 @@ interface PromotionsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* promotionsCreate
      * Create promotions */
-    suspend fun promotionsCreate(adAccountId:kotlin.String?,promotionCreateRequest:kotlin.Array<PromotionCreateRequest>?,context:OperationRequest):Response<PromotionsResponse>
+    suspend fun promotionsCreate(adAccountId:kotlin.String?,promotionCreate:kotlin.Array<PromotionCreate>?,context:OperationRequest):Response<PromotionsResponse>
     /* promotionsDelete
      * Delete promotion by id */
-    suspend fun promotionsDelete(adAccountId:kotlin.String?,promotionId:kotlin.String?,context:OperationRequest):Response<Void>
+    suspend fun promotionsDelete(promotionId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<Promotion>
     /* promotionsGet
      * Get promotion by id */
-    suspend fun promotionsGet(adAccountId:kotlin.String?,promotionId:kotlin.String?,context:OperationRequest):Response<PromotionResponse>
+    suspend fun promotionsGet(promotionId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<Promotion>
     /* promotionsList
      * Get promotions */
-    suspend fun promotionsList(adAccountId:kotlin.String?,pageSize:kotlin.Int?,order:kotlin.String?,bookmark:kotlin.String?,context:OperationRequest):Response<PromotionsList200Response>
+    suspend fun promotionsList(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,order:PinterestLibPaginationOrder?,context:OperationRequest):Response<PromotionsList200Response>
     /* promotionsUpdate
      * Update promotions */
-    suspend fun promotionsUpdate(adAccountId:kotlin.String?,promotionUpdateRequest:kotlin.Array<PromotionUpdateRequest>?,context:OperationRequest):Response<PromotionsResponse>
+    suspend fun promotionsUpdate(adAccountId:kotlin.String?,promotionBatchUpdate:kotlin.Array<PromotionBatchUpdate>?,context:OperationRequest):Response<PromotionsResponse>
     companion object {
         const val address = "PromotionsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

@@ -64,7 +64,7 @@ IntegrationLogsSuccessResponse::getMessage()
 }
 
 void
-IntegrationLogsSuccessResponse::setMessage(std::string  message)
+IntegrationLogsSuccessResponse::setMessage(std::string message)
 {
 	this->message = message;
 }

@@ -2,8 +2,6 @@
 
 # CatalogsHotelGuestRatings
 
-If specified, you must provide all properties
-
 The class is defined in **[CatalogsHotelGuestRatings.java](../../src/main/java/org/openapitools/model/CatalogsHotelGuestRatings.java)**
 
 ## Properties

@@ -4,34 +4,17 @@
 #include "account.h"
 
 
-char* account_account_type_ToString(pinterest_rest_api_account_ACCOUNTTYPE_e account_type) {
-    char* account_typeArray[] =  { "NULL", "PINNER", "BUSINESS" };
-    return account_typeArray[account_type];
-}
-
-pinterest_rest_api_account_ACCOUNTTYPE_e account_account_type_FromString(char* account_type){
-    int stringToReturn = 0;
-    char *account_typeArray[] =  { "NULL", "PINNER", "BUSINESS" };
-    size_t sizeofArray = sizeof(account_typeArray) / sizeof(account_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(account_type, account_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static account_t *account_create_internal(
     char *about,
-    pinterest_rest_api_account_ACCOUNTTYPE_e account_type,
-    int board_count,
+    user_account_type_t *account_type,
+    int *board_count,
     char *business_name,
-    int follower_count,
-    int following_count,
+    int *follower_count,
+    int *following_count,
     char *id,
-    int monthly_views,
-    int pin_count,
+    int *monthly_views,
+    int *pin_count,
     char *profile_image,
     char *username,
     char *website_url
@@ -40,6 +23,8 @@ static account_t *account_create_internal(
     if (!account_local_var) {
         return NULL;
     }
+    memset(account_local_var, 0, sizeof(account_t));
+    account_local_var->_library_owned = 1;
     account_local_var->about = about;
     account_local_var->account_type = account_type;
     account_local_var->board_count = board_count;
@@ -52,39 +37,70 @@ static account_t *account_create_internal(
     account_local_var->profile_image = profile_image;
     account_local_var->username = username;
     account_local_var->website_url = website_url;
-
-    account_local_var->_library_owned = 1;
     return account_local_var;
 }
 
 __attribute__((deprecated)) account_t *account_create(
     char *about,
-    pinterest_rest_api_account_ACCOUNTTYPE_e account_type,
-    int board_count,
+    user_account_type_t *account_type,
+    int *board_count,
     char *business_name,
-    int follower_count,
-    int following_count,
+    int *follower_count,
+    int *following_count,
     char *id,
-    int monthly_views,
-    int pin_count,
+    int *monthly_views,
+    int *pin_count,
     char *profile_image,
     char *username,
     char *website_url
     ) {
-    return account_create_internal (
+    int *board_count_copy = NULL;
+    if (board_count) {
+        board_count_copy = malloc(sizeof(int));
+        if (board_count_copy) *board_count_copy = *board_count;
+    }
+    int *follower_count_copy = NULL;
+    if (follower_count) {
+        follower_count_copy = malloc(sizeof(int));
+        if (follower_count_copy) *follower_count_copy = *follower_count;
+    }
+    int *following_count_copy = NULL;
+    if (following_count) {
+        following_count_copy = malloc(sizeof(int));
+        if (following_count_copy) *following_count_copy = *following_count;
+    }
+    int *monthly_views_copy = NULL;
+    if (monthly_views) {
+        monthly_views_copy = malloc(sizeof(int));
+        if (monthly_views_copy) *monthly_views_copy = *monthly_views;
+    }
+    int *pin_count_copy = NULL;
+    if (pin_count) {
+        pin_count_copy = malloc(sizeof(int));
+        if (pin_count_copy) *pin_count_copy = *pin_count;
+    }
+    account_t *result = account_create_internal (
         about,
         account_type,
-        board_count,
+        board_count_copy,
         business_name,
-        follower_count,
-        following_count,
+        follower_count_copy,
+        following_count_copy,
         id,
-        monthly_views,
-        pin_count,
+        monthly_views_copy,
+        pin_count_copy,
         profile_image,
         username,
         website_url
         );
+    if (!result) {
+        free(board_count_copy);
+        free(follower_count_copy);
+        free(following_count_copy);
+        free(monthly_views_copy);
+        free(pin_count_copy);
+    }
+    return result;
 }
 
 void account_free(account_t *account) {
@@ -100,13 +116,37 @@ void account_free(account_t *account) {
         free(account->about);
         account->about = NULL;
     }
+    if (account->account_type) {
+        user_account_type_free(account->account_type);
+        account->account_type = NULL;
+    }
+    if (account->board_count) {
+        free(account->board_count);
+        account->board_count = NULL;
+    }
     if (account->business_name) {
         free(account->business_name);
         account->business_name = NULL;
     }
+    if (account->follower_count) {
+        free(account->follower_count);
+        account->follower_count = NULL;
+    }
+    if (account->following_count) {
+        free(account->following_count);
+        account->following_count = NULL;
+    }
     if (account->id) {
         free(account->id);
         account->id = NULL;
+    }
+    if (account->monthly_views) {
+        free(account->monthly_views);
+        account->monthly_views = NULL;
+    }
+    if (account->pin_count) {
+        free(account->pin_count);
+        account->pin_count = NULL;
     }
     if (account->profile_image) {
         free(account->profile_image);
@@ -135,17 +175,21 @@ cJSON *account_convertToJSON(account_t *account) {
 
 
     // account->account_type
-    if(account->account_type != pinterest_rest_api_account_ACCOUNTTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "account_type", account_account_type_ToString(account->account_type)) == NULL)
-    {
-    goto fail; //Enum
+    if(account->account_type) {
+    cJSON *account_type_local_JSON = user_account_type_convertToJSON(account->account_type);
+    if(account_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "account_type", account_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
 
     // account->board_count
     if(account->board_count) {
-    if(cJSON_AddNumberToObject(item, "board_count", account->board_count) == NULL) {
+    if(cJSON_AddNumberToObject(item, "board_count", *account->board_count) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -161,7 +205,7 @@ cJSON *account_convertToJSON(account_t *account) {
 
     // account->follower_count
     if(account->follower_count) {
-    if(cJSON_AddNumberToObject(item, "follower_count", account->follower_count) == NULL) {
+    if(cJSON_AddNumberToObject(item, "follower_count", *account->follower_count) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -169,7 +213,7 @@ cJSON *account_convertToJSON(account_t *account) {
 
     // account->following_count
     if(account->following_count) {
-    if(cJSON_AddNumberToObject(item, "following_count", account->following_count) == NULL) {
+    if(cJSON_AddNumberToObject(item, "following_count", *account->following_count) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -185,7 +229,7 @@ cJSON *account_convertToJSON(account_t *account) {
 
     // account->monthly_views
     if(account->monthly_views) {
-    if(cJSON_AddNumberToObject(item, "monthly_views", account->monthly_views) == NULL) {
+    if(cJSON_AddNumberToObject(item, "monthly_views", *account->monthly_views) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -193,7 +237,7 @@ cJSON *account_convertToJSON(account_t *account) {
 
     // account->pin_count
     if(account->pin_count) {
-    if(cJSON_AddNumberToObject(item, "pin_count", account->pin_count) == NULL) {
+    if(cJSON_AddNumberToObject(item, "pin_count", *account->pin_count) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -234,6 +278,36 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
 
     account_t *account_local_var = NULL;
 
+    char *about_local_str = NULL;
+
+    // define the local variable for account->account_type
+    user_account_type_t *account_type_local_nonprim = NULL;
+
+    // define the local variable for account->board_count
+    int *board_count_local_var = NULL;
+
+    char *business_name_local_str = NULL;
+
+    // define the local variable for account->follower_count
+    int *follower_count_local_var = NULL;
+
+    // define the local variable for account->following_count
+    int *following_count_local_var = NULL;
+
+    char *id_local_str = NULL;
+
+    // define the local variable for account->monthly_views
+    int *monthly_views_local_var = NULL;
+
+    // define the local variable for account->pin_count
+    int *pin_count_local_var = NULL;
+
+    char *profile_image_local_str = NULL;
+
+    char *username_local_str = NULL;
+
+    char *website_url_local_str = NULL;
+
     // account->about
     cJSON *about = cJSON_GetObjectItemCaseSensitive(accountJSON, "about");
     if (cJSON_IsNull(about)) {
@@ -251,13 +325,8 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
     if (cJSON_IsNull(account_type)) {
         account_type = NULL;
     }
-    pinterest_rest_api_account_ACCOUNTTYPE_e account_typeVariable;
     if (account_type) { 
-    if(!cJSON_IsString(account_type))
-    {
-    goto end; //Enum
-    }
-    account_typeVariable = account_account_type_FromString(account_type->valuestring);
+    account_type_local_nonprim = user_account_type_parseFromJSON(account_type); //custom
     }
 
     // account->board_count
@@ -270,6 +339,12 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
     {
     goto end; //Numeric
     }
+    board_count_local_var = malloc(sizeof(int));
+    if(!board_count_local_var)
+    {
+        goto end;
+    }
+    *board_count_local_var = board_count->valuedouble;
     }
 
     // account->business_name
@@ -294,6 +369,12 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
     {
     goto end; //Numeric
     }
+    follower_count_local_var = malloc(sizeof(int));
+    if(!follower_count_local_var)
+    {
+        goto end;
+    }
+    *follower_count_local_var = follower_count->valuedouble;
     }
 
     // account->following_count
@@ -306,6 +387,12 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
     {
     goto end; //Numeric
     }
+    following_count_local_var = malloc(sizeof(int));
+    if(!following_count_local_var)
+    {
+        goto end;
+    }
+    *following_count_local_var = following_count->valuedouble;
     }
 
     // account->id
@@ -330,6 +417,12 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
     {
     goto end; //Numeric
     }
+    monthly_views_local_var = malloc(sizeof(int));
+    if(!monthly_views_local_var)
+    {
+        goto end;
+    }
+    *monthly_views_local_var = monthly_views->valuedouble;
     }
 
     // account->pin_count
@@ -342,6 +435,12 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
     {
     goto end; //Numeric
     }
+    pin_count_local_var = malloc(sizeof(int));
+    if(!pin_count_local_var)
+    {
+        goto end;
+    }
+    *pin_count_local_var = pin_count->valuedouble;
     }
 
     // account->profile_image
@@ -381,23 +480,82 @@ account_t *account_parseFromJSON(cJSON *accountJSON){
     }
 
 
+    if (about && !cJSON_IsNull(about)) about_local_str = strdup(about->valuestring);
+    if (business_name && !cJSON_IsNull(business_name)) business_name_local_str = strdup(business_name->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (profile_image && !cJSON_IsNull(profile_image)) profile_image_local_str = strdup(profile_image->valuestring);
+    if (username && !cJSON_IsNull(username)) username_local_str = strdup(username->valuestring);
+    if (website_url && !cJSON_IsNull(website_url)) website_url_local_str = strdup(website_url->valuestring);
+
     account_local_var = account_create_internal (
-        about && !cJSON_IsNull(about) ? strdup(about->valuestring) : NULL,
-        account_type ? account_typeVariable : pinterest_rest_api_account_ACCOUNTTYPE_NULL,
-        board_count ? board_count->valuedouble : 0,
-        business_name && !cJSON_IsNull(business_name) ? strdup(business_name->valuestring) : NULL,
-        follower_count ? follower_count->valuedouble : 0,
-        following_count ? following_count->valuedouble : 0,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        monthly_views ? monthly_views->valuedouble : 0,
-        pin_count ? pin_count->valuedouble : 0,
-        profile_image && !cJSON_IsNull(profile_image) ? strdup(profile_image->valuestring) : NULL,
-        username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL,
-        website_url && !cJSON_IsNull(website_url) ? strdup(website_url->valuestring) : NULL
+        about_local_str,
+        account_type ? account_type_local_nonprim : NULL,
+        board_count_local_var,
+        business_name_local_str,
+        follower_count_local_var,
+        following_count_local_var,
+        id_local_str,
+        monthly_views_local_var,
+        pin_count_local_var,
+        profile_image_local_str,
+        username_local_str,
+        website_url_local_str
         );
+
+    if (!account_local_var) {
+        goto end;
+    }
 
     return account_local_var;
 end:
+    if (about_local_str) {
+        free(about_local_str);
+        about_local_str = NULL;
+    }
+    if (account_type_local_nonprim) {
+        user_account_type_free(account_type_local_nonprim);
+        account_type_local_nonprim = NULL;
+    }
+    if (board_count_local_var) {
+        free(board_count_local_var);
+        board_count_local_var = NULL;
+    }
+    if (business_name_local_str) {
+        free(business_name_local_str);
+        business_name_local_str = NULL;
+    }
+    if (follower_count_local_var) {
+        free(follower_count_local_var);
+        follower_count_local_var = NULL;
+    }
+    if (following_count_local_var) {
+        free(following_count_local_var);
+        following_count_local_var = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (monthly_views_local_var) {
+        free(monthly_views_local_var);
+        monthly_views_local_var = NULL;
+    }
+    if (pin_count_local_var) {
+        free(pin_count_local_var);
+        pin_count_local_var = NULL;
+    }
+    if (profile_image_local_str) {
+        free(profile_image_local_str);
+        profile_image_local_str = NULL;
+    }
+    if (username_local_str) {
+        free(username_local_str);
+        username_local_str = NULL;
+    }
+    if (website_url_local_str) {
+        free(website_url_local_str);
+        website_url_local_str = NULL;
+    }
     return NULL;
 
 }

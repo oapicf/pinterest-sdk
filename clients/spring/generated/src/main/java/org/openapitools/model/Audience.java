@@ -2,52 +2,71 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.AudienceRule;
+import org.openapitools.model.AudienceStatus;
+import org.openapitools.model.PinnerListType;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Audience
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class Audience {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountId;
 
-  private @Nullable String audienceType;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable PinnerListType audienceType;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> createdByCompanyName = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> createdTimestamp = JsonNullable.<Integer>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable Boolean isNca;
+
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AudienceRule rule;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> size = JsonNullable.<Integer>undefined();
 
-  private @Nullable String status;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable AudienceStatus status;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String type;
 
+  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> updatedTimestamp = JsonNullable.<Integer>undefined();
 
   public Audience adAccountId(@Nullable String adAccountId) {
@@ -66,27 +85,29 @@ public class Audience {
     return adAccountId;
   }
 
+  @JsonProperty("ad_account_id")
   public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public Audience audienceType(@Nullable String audienceType) {
+  public Audience audienceType(@Nullable PinnerListType audienceType) {
     this.audienceType = audienceType;
     return this;
   }
 
   /**
-   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+   * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
    * @return audienceType
    */
-  
-  @Schema(name = "audience_type", description = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "audience_type", description = "[Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_type")
-  public @Nullable String getAudienceType() {
+  public @Nullable PinnerListType getAudienceType() {
     return audienceType;
   }
 
-  public void setAudienceType(@Nullable String audienceType) {
+  @JsonProperty("audience_type")
+  public void setAudienceType(@Nullable PinnerListType audienceType) {
     this.audienceType = audienceType;
   }
 
@@ -166,8 +187,30 @@ public class Audience {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(@Nullable String id) {
     this.id = id;
+  }
+
+  public Audience isNca(@Nullable Boolean isNca) {
+    this.isNca = isNca;
+    return this;
+  }
+
+  /**
+   * Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
+   * @return isNca
+   */
+  
+  @Schema(name = "is_nca", description = "Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("is_nca")
+  public @Nullable Boolean getIsNca() {
+    return isNca;
+  }
+
+  @JsonProperty("is_nca")
+  public void setIsNca(@Nullable Boolean isNca) {
+    this.isNca = isNca;
   }
 
   public Audience name(@Nullable String name) {
@@ -186,6 +229,7 @@ public class Audience {
     return name;
   }
 
+  @JsonProperty("name")
   public void setName(@Nullable String name) {
     this.name = name;
   }
@@ -206,6 +250,7 @@ public class Audience {
     return rule;
   }
 
+  @JsonProperty("rule")
   public void setRule(@Nullable AudienceRule rule) {
     this.rule = rule;
   }
@@ -230,7 +275,7 @@ public class Audience {
     this.size = size;
   }
 
-  public Audience status(@Nullable String status) {
+  public Audience status(@Nullable AudienceStatus status) {
     this.status = status;
     return this;
   }
@@ -239,14 +284,15 @@ public class Audience {
    * Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
    * @return status
    */
-  
+  @Valid 
   @Schema(name = "status", description = "Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public @Nullable String getStatus() {
+  public @Nullable AudienceStatus getStatus() {
     return status;
   }
 
-  public void setStatus(@Nullable String status) {
+  @JsonProperty("status")
+  public void setStatus(@Nullable AudienceStatus status) {
     this.status = status;
   }
 
@@ -266,6 +312,7 @@ public class Audience {
     return type;
   }
 
+  @JsonProperty("type")
   public void setType(@Nullable String type) {
     this.type = type;
   }
@@ -305,6 +352,7 @@ public class Audience {
         equalsNullable(this.createdTimestamp, audience.createdTimestamp) &&
         equalsNullable(this.description, audience.description) &&
         Objects.equals(this.id, audience.id) &&
+        Objects.equals(this.isNca, audience.isNca) &&
         Objects.equals(this.name, audience.name) &&
         Objects.equals(this.rule, audience.rule) &&
         equalsNullable(this.size, audience.size) &&
@@ -319,7 +367,7 @@ public class Audience {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, audienceType, hashCodeNullable(createdByCompanyName), hashCodeNullable(createdTimestamp), hashCodeNullable(description), id, name, rule, hashCodeNullable(size), status, type, hashCodeNullable(updatedTimestamp));
+    return Objects.hash(adAccountId, audienceType, hashCodeNullable(createdByCompanyName), hashCodeNullable(createdTimestamp), hashCodeNullable(description), id, isNca, name, rule, hashCodeNullable(size), status, type, hashCodeNullable(updatedTimestamp));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -339,6 +387,7 @@ public class Audience {
     sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isNca: ").append(toIndentedString(isNca)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
@@ -353,11 +402,8 @@ public class Audience {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

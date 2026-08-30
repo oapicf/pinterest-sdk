@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server FollowUser"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a FollowUser"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  FollowUser {
+    title = FollowUser
+    description = FollowUser
+    derivedFrom = Root
+    properties {
+        type {
+          type =  string
+          description = "Always &#39;user&#39;"
+          optional = false
+        }
+        username {
+          type =  string
+          description = "Username"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  FollowUser {
+    title = FollowUser
+    description = FollowUser
+    implements = openapi_server.resourceTypes.FollowUser
+
+  }
+}

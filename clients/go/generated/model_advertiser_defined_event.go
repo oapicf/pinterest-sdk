@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,12 +18,12 @@ import (
 // checks if the AdvertiserDefinedEvent type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AdvertiserDefinedEvent{}
 
-// AdvertiserDefinedEvent struct for AdvertiserDefinedEvent
+// AdvertiserDefinedEvent Advertiser defined event
 type AdvertiserDefinedEvent struct {
-	// raw string name of the event, usually logged as raw_event_name in our dataset
+	// Standard type mapped to ADE for optimization
+	MappedConversionType *ConversionTagTypeOptimal `json:"mapped_conversion_type,omitempty"`
+	// Raw string name of the event, usually logged as raw_event_name in our dataset
 	Name *string `json:"name,omitempty"`
-	// standard type mapped to ADE for optimization
-	MappedConversionType NullableString `json:"mapped_conversion_type,omitempty"`
 }
 
 // NewAdvertiserDefinedEvent instantiates a new AdvertiserDefinedEvent object
@@ -41,6 +41,38 @@ func NewAdvertiserDefinedEvent() *AdvertiserDefinedEvent {
 func NewAdvertiserDefinedEventWithDefaults() *AdvertiserDefinedEvent {
 	this := AdvertiserDefinedEvent{}
 	return &this
+}
+
+// GetMappedConversionType returns the MappedConversionType field value if set, zero value otherwise.
+func (o *AdvertiserDefinedEvent) GetMappedConversionType() ConversionTagTypeOptimal {
+	if o == nil || IsNil(o.MappedConversionType) {
+		var ret ConversionTagTypeOptimal
+		return ret
+	}
+	return *o.MappedConversionType
+}
+
+// GetMappedConversionTypeOk returns a tuple with the MappedConversionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdvertiserDefinedEvent) GetMappedConversionTypeOk() (*ConversionTagTypeOptimal, bool) {
+	if o == nil || IsNil(o.MappedConversionType) {
+		return nil, false
+	}
+	return o.MappedConversionType, true
+}
+
+// HasMappedConversionType returns a boolean if a field has been set.
+func (o *AdvertiserDefinedEvent) HasMappedConversionType() bool {
+	if o != nil && !IsNil(o.MappedConversionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetMappedConversionType gets a reference to the given ConversionTagTypeOptimal and assigns it to the MappedConversionType field.
+func (o *AdvertiserDefinedEvent) SetMappedConversionType(v ConversionTagTypeOptimal) {
+	o.MappedConversionType = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -75,48 +107,6 @@ func (o *AdvertiserDefinedEvent) SetName(v string) {
 	o.Name = &v
 }
 
-// GetMappedConversionType returns the MappedConversionType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdvertiserDefinedEvent) GetMappedConversionType() string {
-	if o == nil || IsNil(o.MappedConversionType.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.MappedConversionType.Get()
-}
-
-// GetMappedConversionTypeOk returns a tuple with the MappedConversionType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdvertiserDefinedEvent) GetMappedConversionTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.MappedConversionType.Get(), o.MappedConversionType.IsSet()
-}
-
-// HasMappedConversionType returns a boolean if a field has been set.
-func (o *AdvertiserDefinedEvent) HasMappedConversionType() bool {
-	if o != nil && o.MappedConversionType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMappedConversionType gets a reference to the given NullableString and assigns it to the MappedConversionType field.
-func (o *AdvertiserDefinedEvent) SetMappedConversionType(v string) {
-	o.MappedConversionType.Set(&v)
-}
-// SetMappedConversionTypeNil sets the value for MappedConversionType to be an explicit nil
-func (o *AdvertiserDefinedEvent) SetMappedConversionTypeNil() {
-	o.MappedConversionType.Set(nil)
-}
-
-// UnsetMappedConversionType ensures that no value is present for MappedConversionType, not even an explicit nil
-func (o *AdvertiserDefinedEvent) UnsetMappedConversionType() {
-	o.MappedConversionType.Unset()
-}
-
 func (o AdvertiserDefinedEvent) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -127,11 +117,11 @@ func (o AdvertiserDefinedEvent) MarshalJSON() ([]byte, error) {
 
 func (o AdvertiserDefinedEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MappedConversionType) {
+		toSerialize["mapped_conversion_type"] = o.MappedConversionType
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
-	}
-	if o.MappedConversionType.IsSet() {
-		toSerialize["mapped_conversion_type"] = o.MappedConversionType.Get()
 	}
 	return toSerialize, nil
 }

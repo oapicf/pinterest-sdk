@@ -1,0 +1,32 @@
+/*
+ * video_pin_metric_types.h
+ *
+ * Video Pin metric types
+ */
+
+#ifndef _video_pin_metric_types_H_
+#define _video_pin_metric_types_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct video_pin_metric_types_t video_pin_metric_types_t;
+
+
+// Enum  for video_pin_metric_types
+
+typedef enum { pinterest_rest_api_video_pin_metric_types__NULL = 0, pinterest_rest_api_video_pin_metric_types__IMPRESSION, pinterest_rest_api_video_pin_metric_types__OUTBOUND_CLICK, pinterest_rest_api_video_pin_metric_types__PIN_CLICK, pinterest_rest_api_video_pin_metric_types__SAVE, pinterest_rest_api_video_pin_metric_types__SAVE_RATE, pinterest_rest_api_video_pin_metric_types__VIDEO_MRC_VIEW, pinterest_rest_api_video_pin_metric_types__VIDEO_10S_VIEW, pinterest_rest_api_video_pin_metric_types__QUARTILE_95_PERCENT_VIEW, pinterest_rest_api_video_pin_metric_types__VIDEO_V50_WATCH_TIME, pinterest_rest_api_video_pin_metric_types__VIDEO_START, pinterest_rest_api_video_pin_metric_types__VIDEO_AVG_WATCH_TIME, pinterest_rest_api_video_pin_metric_types__TOTAL_COMMENTS, pinterest_rest_api_video_pin_metric_types__TOTAL_REACTIONS } pinterest_rest_api_video_pin_metric_types__e;
+
+char* video_pin_metric_types_video_pin_metric_types_ToString(pinterest_rest_api_video_pin_metric_types__e video_pin_metric_types);
+
+pinterest_rest_api_video_pin_metric_types__e video_pin_metric_types_video_pin_metric_types_FromString(char* video_pin_metric_types);
+
+cJSON *video_pin_metric_types_convertToJSON(pinterest_rest_api_video_pin_metric_types__e video_pin_metric_types);
+
+pinterest_rest_api_video_pin_metric_types__e video_pin_metric_types_parseFromJSON(cJSON *video_pin_metric_typesJSON);
+
+#endif /* _video_pin_metric_types_H_ */
+

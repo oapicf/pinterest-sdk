@@ -10,12 +10,12 @@ import java.util.List;
 
 import org.openapitools.model.*;
 
-import org.openapitools.model.BrandAccountsCreate200Response;
-import org.openapitools.model.BrandAccountsCreateRequest;
-import org.openapitools.model.BrandAccountsUpdateRequest;
-import org.openapitools.model.Error;
+import org.openapitools.model.BrandAccount;
+import org.openapitools.model.BrandAccountCreate;
+import org.openapitools.model.BrandAccountUpdate;
+import org.openapitools.model.PinterestLibError;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAccessController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -24,13 +24,13 @@ public class BusinessAccessController  {
    **/
 
   /*
-    public ResponseContext brandAccountsCreate(RequestContext request , String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest) {
+    public ResponseContext brandAccountsCreate(RequestContext request , String businessHierarchyId, BrandAccountCreate brandAccountCreate) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext brandAccountsUpdate(RequestContext request , String businessHierarchyId, String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest) {
+    public ResponseContext brandAccountsUpdate(RequestContext request , String brandAccountId, String businessHierarchyId, BrandAccountUpdate brandAccountUpdate) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,12 +28,11 @@ type ApiPromotionsCreateRequest struct {
 	ctx context.Context
 	ApiService *PromotionsAPIService
 	adAccountId string
-	promotionCreateRequest *[]PromotionCreateRequest
+	promotionCreate *[]PromotionCreate
 }
 
-// List of promotions to create, size limit [1, 30].
-func (r ApiPromotionsCreateRequest) PromotionCreateRequest(promotionCreateRequest []PromotionCreateRequest) ApiPromotionsCreateRequest {
-	r.promotionCreateRequest = &promotionCreateRequest
+func (r ApiPromotionsCreateRequest) PromotionCreate(promotionCreate []PromotionCreate) ApiPromotionsCreateRequest {
+	r.promotionCreate = &promotionCreate
 	return r
 }
 
@@ -82,14 +81,14 @@ func (a *PromotionsAPIService) PromotionsCreateExecute(r ApiPromotionsCreateRequ
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.promotionCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("promotionCreateRequest is required and must be specified")
+	if r.promotionCreate == nil {
+		return localVarReturnValue, nil, reportError("promotionCreate is required and must be specified")
 	}
-	if len(*r.promotionCreateRequest) < 1 {
-		return localVarReturnValue, nil, reportError("promotionCreateRequest must have at least 1 elements")
+	if len(*r.promotionCreate) < 1 {
+		return localVarReturnValue, nil, reportError("promotionCreate must have at least 1 elements")
 	}
-	if len(*r.promotionCreateRequest) > 30 {
-		return localVarReturnValue, nil, reportError("promotionCreateRequest must have less than 30 elements")
+	if len(*r.promotionCreate) > 30 {
+		return localVarReturnValue, nil, reportError("promotionCreate must have less than 30 elements")
 	}
 
 	// to determine the Content-Type header
@@ -110,7 +109,7 @@ func (a *PromotionsAPIService) PromotionsCreateExecute(r ApiPromotionsCreateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.promotionCreateRequest
+	localVarPostBody = r.promotionCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -134,7 +133,7 @@ func (a *PromotionsAPIService) PromotionsCreateExecute(r ApiPromotionsCreateRequ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +143,51 @@ func (a *PromotionsAPIService) PromotionsCreateExecute(r ApiPromotionsCreateRequ
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -170,11 +213,11 @@ func (a *PromotionsAPIService) PromotionsCreateExecute(r ApiPromotionsCreateRequ
 type ApiPromotionsDeleteRequest struct {
 	ctx context.Context
 	ApiService *PromotionsAPIService
-	adAccountId string
 	promotionId string
+	adAccountId string
 }
 
-func (r ApiPromotionsDeleteRequest) Execute() (*http.Response, error) {
+func (r ApiPromotionsDeleteRequest) Execute() (*Promotion, *http.Response, error) {
 	return r.ApiService.PromotionsDeleteExecute(r)
 }
 
@@ -184,156 +227,46 @@ PromotionsDelete Delete promotion by id
 Delete a promotion within Pinterest.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param promotionId Promotion ID
  @param adAccountId Unique identifier of an ad account.
- @param promotionId Unique identifier of a promotion
  @return ApiPromotionsDeleteRequest
 */
-func (a *PromotionsAPIService) PromotionsDelete(ctx context.Context, adAccountId string, promotionId string) ApiPromotionsDeleteRequest {
+func (a *PromotionsAPIService) PromotionsDelete(ctx context.Context, promotionId string, adAccountId string) ApiPromotionsDeleteRequest {
 	return ApiPromotionsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
-		adAccountId: adAccountId,
 		promotionId: promotionId,
+		adAccountId: adAccountId,
 	}
 }
 
 // Execute executes the request
-func (a *PromotionsAPIService) PromotionsDeleteExecute(r ApiPromotionsDeleteRequest) (*http.Response, error) {
+//  @return Promotion
+func (a *PromotionsAPIService) PromotionsDeleteExecute(r ApiPromotionsDeleteRequest) (*Promotion, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *Promotion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PromotionsAPIService.PromotionsDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/promotions/{promotion_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"promotion_id"+"}", url.PathEscape(parameterValueToString(r.promotionId, "promotionId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if strlen(r.adAccountId) > 18 {
-		return nil, reportError("adAccountId must have less than 18 elements")
-	}
-	if strlen(r.promotionId) > 18 {
-		return nil, reportError("promotionId must have less than 18 elements")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiPromotionsGetRequest struct {
-	ctx context.Context
-	ApiService *PromotionsAPIService
-	adAccountId string
-	promotionId string
-}
-
-func (r ApiPromotionsGetRequest) Execute() (*PromotionResponse, *http.Response, error) {
-	return r.ApiService.PromotionsGetExecute(r)
-}
-
-/*
-PromotionsGet Get promotion by id
-
-Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
- @param promotionId Unique identifier of a promotion
- @return ApiPromotionsGetRequest
-*/
-func (a *PromotionsAPIService) PromotionsGet(ctx context.Context, adAccountId string, promotionId string) ApiPromotionsGetRequest {
-	return ApiPromotionsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		adAccountId: adAccountId,
-		promotionId: promotionId,
-	}
-}
-
-// Execute executes the request
-//  @return PromotionResponse
-func (a *PromotionsAPIService) PromotionsGetExecute(r ApiPromotionsGetRequest) (*PromotionResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PromotionResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PromotionsAPIService.PromotionsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/promotions/{promotion_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"promotion_id"+"}", url.PathEscape(parameterValueToString(r.promotionId, "promotionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.adAccountId) > 18 {
-		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
-	}
 	if strlen(r.promotionId) > 18 {
 		return localVarReturnValue, nil, reportError("promotionId must have less than 18 elements")
+	}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
 
 	// to determine the Content-Type header
@@ -375,8 +308,8 @@ func (a *PromotionsAPIService) PromotionsGetExecute(r ApiPromotionsGetRequest) (
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -386,7 +319,227 @@ func (a *PromotionsAPIService) PromotionsGetExecute(r ApiPromotionsGetRequest) (
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPromotionsGetRequest struct {
+	ctx context.Context
+	ApiService *PromotionsAPIService
+	promotionId string
+	adAccountId string
+}
+
+func (r ApiPromotionsGetRequest) Execute() (*Promotion, *http.Response, error) {
+	return r.ApiService.PromotionsGetExecute(r)
+}
+
+/*
+PromotionsGet Get promotion by id
+
+Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param promotionId Promotion ID
+ @param adAccountId Unique identifier of an ad account.
+ @return ApiPromotionsGetRequest
+*/
+func (a *PromotionsAPIService) PromotionsGet(ctx context.Context, promotionId string, adAccountId string) ApiPromotionsGetRequest {
+	return ApiPromotionsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		promotionId: promotionId,
+		adAccountId: adAccountId,
+	}
+}
+
+// Execute executes the request
+//  @return Promotion
+func (a *PromotionsAPIService) PromotionsGetExecute(r ApiPromotionsGetRequest) (*Promotion, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Promotion
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PromotionsAPIService.PromotionsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/promotions/{promotion_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"promotion_id"+"}", url.PathEscape(parameterValueToString(r.promotionId, "promotionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.promotionId) > 18 {
+		return localVarReturnValue, nil, reportError("promotionId must have less than 18 elements")
+	}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -413,26 +566,26 @@ type ApiPromotionsListRequest struct {
 	ctx context.Context
 	ApiService *PromotionsAPIService
 	adAccountId string
-	pageSize *int32
-	order *string
 	bookmark *string
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiPromotionsListRequest) PageSize(pageSize int32) ApiPromotionsListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-func (r ApiPromotionsListRequest) Order(order string) ApiPromotionsListRequest {
-	r.order = &order
-	return r
+	pageSize *int32
+	order *PinterestLibPaginationOrder
 }
 
 // Cursor used to fetch the next page of items
 func (r ApiPromotionsListRequest) Bookmark(bookmark string) ApiPromotionsListRequest {
 	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiPromotionsListRequest) PageSize(pageSize int32) ApiPromotionsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+func (r ApiPromotionsListRequest) Order(order PinterestLibPaginationOrder) ApiPromotionsListRequest {
+	r.order = &order
 	return r
 }
 
@@ -443,7 +596,9 @@ func (r ApiPromotionsListRequest) Execute() (*PromotionsList200Response, *http.R
 /*
 PromotionsList Get promotions
 
-Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
+Gets all promotions associated with an ad account ID that can be
+applied to an ad group. Can be either internally-saved promotions or external
+promotions imported from a commerce integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -482,18 +637,18 @@ func (a *PromotionsAPIService) PromotionsListExecute(r ApiPromotionsListRequest)
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
 
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
-	}
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -535,7 +690,7 @@ func (a *PromotionsAPIService) PromotionsListExecute(r ApiPromotionsListRequest)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -545,7 +700,51 @@ func (a *PromotionsAPIService) PromotionsListExecute(r ApiPromotionsListRequest)
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -572,12 +771,11 @@ type ApiPromotionsUpdateRequest struct {
 	ctx context.Context
 	ApiService *PromotionsAPIService
 	adAccountId string
-	promotionUpdateRequest *[]PromotionUpdateRequest
+	promotionBatchUpdate *[]PromotionBatchUpdate
 }
 
-// List of promotions to create, size limit [1, 30].
-func (r ApiPromotionsUpdateRequest) PromotionUpdateRequest(promotionUpdateRequest []PromotionUpdateRequest) ApiPromotionsUpdateRequest {
-	r.promotionUpdateRequest = &promotionUpdateRequest
+func (r ApiPromotionsUpdateRequest) PromotionBatchUpdate(promotionBatchUpdate []PromotionBatchUpdate) ApiPromotionsUpdateRequest {
+	r.promotionBatchUpdate = &promotionBatchUpdate
 	return r
 }
 
@@ -626,14 +824,14 @@ func (a *PromotionsAPIService) PromotionsUpdateExecute(r ApiPromotionsUpdateRequ
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.promotionUpdateRequest == nil {
-		return localVarReturnValue, nil, reportError("promotionUpdateRequest is required and must be specified")
+	if r.promotionBatchUpdate == nil {
+		return localVarReturnValue, nil, reportError("promotionBatchUpdate is required and must be specified")
 	}
-	if len(*r.promotionUpdateRequest) < 1 {
-		return localVarReturnValue, nil, reportError("promotionUpdateRequest must have at least 1 elements")
+	if len(*r.promotionBatchUpdate) < 1 {
+		return localVarReturnValue, nil, reportError("promotionBatchUpdate must have at least 1 elements")
 	}
-	if len(*r.promotionUpdateRequest) > 30 {
-		return localVarReturnValue, nil, reportError("promotionUpdateRequest must have less than 30 elements")
+	if len(*r.promotionBatchUpdate) > 30 {
+		return localVarReturnValue, nil, reportError("promotionBatchUpdate must have less than 30 elements")
 	}
 
 	// to determine the Content-Type header
@@ -654,7 +852,7 @@ func (a *PromotionsAPIService) PromotionsUpdateExecute(r ApiPromotionsUpdateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.promotionUpdateRequest
+	localVarPostBody = r.promotionBatchUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -678,7 +876,7 @@ func (a *PromotionsAPIService) PromotionsUpdateExecute(r ApiPromotionsUpdateRequ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -688,7 +886,51 @@ func (a *PromotionsAPIService) PromotionsUpdateExecute(r ApiPromotionsUpdateRequ
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -6,9 +6,9 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.optimization_goal_metadata_conversion_tag_v3_goal_metadata import OptimizationGoalMetadataConversionTagV3GoalMetadata  # noqa: F401,E501
-from app.openapi_server.models.optimization_goal_metadata_frequency_goal_metadata import OptimizationGoalMetadataFrequencyGoalMetadata  # noqa: F401,E501
-from app.openapi_server.models.optimization_goal_metadata_scrollup_goal_metadata import OptimizationGoalMetadataScrollupGoalMetadata  # noqa: F401,E501
+from app.openapi_server.models.conversion_tag_v3_goal_metadata import ConversionTagV3GoalMetadata  # noqa: F401,E501
+from app.openapi_server.models.frequency_goal_metadata import FrequencyGoalMetadata  # noqa: F401,E501
+from app.openapi_server.models.scrollup_goal_metadata import ScrollupGoalMetadata  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -18,20 +18,20 @@ class OptimizationGoalMetadata(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, conversion_tag_v3_goal_metadata: OptimizationGoalMetadataConversionTagV3GoalMetadata=None, frequency_goal_metadata: OptimizationGoalMetadataFrequencyGoalMetadata=None, scrollup_goal_metadata: OptimizationGoalMetadataScrollupGoalMetadata=None):  # noqa: E501
+    def __init__(self, conversion_tag_v3_goal_metadata: ConversionTagV3GoalMetadata=None, frequency_goal_metadata: FrequencyGoalMetadata=None, scrollup_goal_metadata: ScrollupGoalMetadata=None):  # noqa: E501
         """OptimizationGoalMetadata - a model defined in Swagger
 
         :param conversion_tag_v3_goal_metadata: The conversion_tag_v3_goal_metadata of this OptimizationGoalMetadata.  # noqa: E501
-        :type conversion_tag_v3_goal_metadata: OptimizationGoalMetadataConversionTagV3GoalMetadata
+        :type conversion_tag_v3_goal_metadata: ConversionTagV3GoalMetadata
         :param frequency_goal_metadata: The frequency_goal_metadata of this OptimizationGoalMetadata.  # noqa: E501
-        :type frequency_goal_metadata: OptimizationGoalMetadataFrequencyGoalMetadata
+        :type frequency_goal_metadata: FrequencyGoalMetadata
         :param scrollup_goal_metadata: The scrollup_goal_metadata of this OptimizationGoalMetadata.  # noqa: E501
-        :type scrollup_goal_metadata: OptimizationGoalMetadataScrollupGoalMetadata
+        :type scrollup_goal_metadata: ScrollupGoalMetadata
         """
         self.swagger_types = {
-            'conversion_tag_v3_goal_metadata': OptimizationGoalMetadataConversionTagV3GoalMetadata,
-            'frequency_goal_metadata': OptimizationGoalMetadataFrequencyGoalMetadata,
-            'scrollup_goal_metadata': OptimizationGoalMetadataScrollupGoalMetadata
+            'conversion_tag_v3_goal_metadata': ConversionTagV3GoalMetadata,
+            'frequency_goal_metadata': FrequencyGoalMetadata,
+            'scrollup_goal_metadata': ScrollupGoalMetadata
         }
 
         self.attribute_map = {
@@ -56,64 +56,64 @@ class OptimizationGoalMetadata(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def conversion_tag_v3_goal_metadata(self) -> OptimizationGoalMetadataConversionTagV3GoalMetadata:
+    def conversion_tag_v3_goal_metadata(self) -> ConversionTagV3GoalMetadata:
         """Gets the conversion_tag_v3_goal_metadata of this OptimizationGoalMetadata.
 
 
         :return: The conversion_tag_v3_goal_metadata of this OptimizationGoalMetadata.
-        :rtype: OptimizationGoalMetadataConversionTagV3GoalMetadata
+        :rtype: ConversionTagV3GoalMetadata
         """
         return self._conversion_tag_v3_goal_metadata
 
     @conversion_tag_v3_goal_metadata.setter
-    def conversion_tag_v3_goal_metadata(self, conversion_tag_v3_goal_metadata: OptimizationGoalMetadataConversionTagV3GoalMetadata):
+    def conversion_tag_v3_goal_metadata(self, conversion_tag_v3_goal_metadata: ConversionTagV3GoalMetadata):
         """Sets the conversion_tag_v3_goal_metadata of this OptimizationGoalMetadata.
 
 
         :param conversion_tag_v3_goal_metadata: The conversion_tag_v3_goal_metadata of this OptimizationGoalMetadata.
-        :type conversion_tag_v3_goal_metadata: OptimizationGoalMetadataConversionTagV3GoalMetadata
+        :type conversion_tag_v3_goal_metadata: ConversionTagV3GoalMetadata
         """
 
         self._conversion_tag_v3_goal_metadata = conversion_tag_v3_goal_metadata
 
     @property
-    def frequency_goal_metadata(self) -> OptimizationGoalMetadataFrequencyGoalMetadata:
+    def frequency_goal_metadata(self) -> FrequencyGoalMetadata:
         """Gets the frequency_goal_metadata of this OptimizationGoalMetadata.
 
 
         :return: The frequency_goal_metadata of this OptimizationGoalMetadata.
-        :rtype: OptimizationGoalMetadataFrequencyGoalMetadata
+        :rtype: FrequencyGoalMetadata
         """
         return self._frequency_goal_metadata
 
     @frequency_goal_metadata.setter
-    def frequency_goal_metadata(self, frequency_goal_metadata: OptimizationGoalMetadataFrequencyGoalMetadata):
+    def frequency_goal_metadata(self, frequency_goal_metadata: FrequencyGoalMetadata):
         """Sets the frequency_goal_metadata of this OptimizationGoalMetadata.
 
 
         :param frequency_goal_metadata: The frequency_goal_metadata of this OptimizationGoalMetadata.
-        :type frequency_goal_metadata: OptimizationGoalMetadataFrequencyGoalMetadata
+        :type frequency_goal_metadata: FrequencyGoalMetadata
         """
 
         self._frequency_goal_metadata = frequency_goal_metadata
 
     @property
-    def scrollup_goal_metadata(self) -> OptimizationGoalMetadataScrollupGoalMetadata:
+    def scrollup_goal_metadata(self) -> ScrollupGoalMetadata:
         """Gets the scrollup_goal_metadata of this OptimizationGoalMetadata.
 
 
         :return: The scrollup_goal_metadata of this OptimizationGoalMetadata.
-        :rtype: OptimizationGoalMetadataScrollupGoalMetadata
+        :rtype: ScrollupGoalMetadata
         """
         return self._scrollup_goal_metadata
 
     @scrollup_goal_metadata.setter
-    def scrollup_goal_metadata(self, scrollup_goal_metadata: OptimizationGoalMetadataScrollupGoalMetadata):
+    def scrollup_goal_metadata(self, scrollup_goal_metadata: ScrollupGoalMetadata):
         """Sets the scrollup_goal_metadata of this OptimizationGoalMetadata.
 
 
         :param scrollup_goal_metadata: The scrollup_goal_metadata of this OptimizationGoalMetadata.
-        :type scrollup_goal_metadata: OptimizationGoalMetadataScrollupGoalMetadata
+        :type scrollup_goal_metadata: ScrollupGoalMetadata
         """
 
         self._scrollup_goal_metadata = scrollup_goal_metadata

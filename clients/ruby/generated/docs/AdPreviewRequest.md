@@ -14,9 +14,9 @@ require 'pinterest_sdk'
 PinterestSdkClient::AdPreviewRequest.openapi_one_of
 # =>
 # [
-#   :'AdPreviewCreateFromImage',
-#   :'AdPreviewCreateFromPin',
-#   :'AdPreviewShopping'
+#   :'AdPreviewShopping',
+#   :'AdPreviewSourceImage',
+#   :'AdPreviewSourcePinId'
 # ]
 ```
 
@@ -30,7 +30,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'pinterest_sdk'
 
 PinterestSdkClient::AdPreviewRequest.build(data)
-# => #<AdPreviewCreateFromImage:0x00007fdd4aab02a0>
+# => #<AdPreviewShopping:0x00007fdd4aab02a0>
 
 PinterestSdkClient::AdPreviewRequest.build(data_that_doesnt_match)
 # => nil
@@ -44,8 +44,8 @@ PinterestSdkClient::AdPreviewRequest.build(data_that_doesnt_match)
 
 #### Return type
 
-- `AdPreviewCreateFromImage`
-- `AdPreviewCreateFromPin`
 - `AdPreviewShopping`
+- `AdPreviewSourceImage`
+- `AdPreviewSourcePinId`
 - `nil` (if no type matches)
 

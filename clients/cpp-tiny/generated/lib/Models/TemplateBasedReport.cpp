@@ -128,7 +128,7 @@ TemplateBasedReport::getMessage()
 }
 
 void
-TemplateBasedReport::setMessage(std::string  message)
+TemplateBasedReport::setMessage(std::string message)
 {
 	this->message = message;
 }
@@ -140,7 +140,7 @@ TemplateBasedReport::getReportStatus()
 }
 
 void
-TemplateBasedReport::setReportStatus(BulkReportingJobStatus  report_status)
+TemplateBasedReport::setReportStatus(BulkReportingJobStatus report_status)
 {
 	this->report_status = report_status;
 }
@@ -152,7 +152,7 @@ TemplateBasedReport::getTemplateId()
 }
 
 void
-TemplateBasedReport::setTemplateId(std::string  template_id)
+TemplateBasedReport::setTemplateId(std::string template_id)
 {
 	this->template_id = template_id;
 }
@@ -164,7 +164,7 @@ TemplateBasedReport::getToken()
 }
 
 void
-TemplateBasedReport::setToken(std::string  token)
+TemplateBasedReport::setToken(std::string token)
 {
 	this->token = token;
 }

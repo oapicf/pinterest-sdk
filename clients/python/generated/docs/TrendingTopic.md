@@ -7,7 +7,8 @@ Individual trending topic within an interest category
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** | Description of the trending topic | 
-**percent_growth_mom** | **int** | Month-over-month growth percentage | 
+**id** | **str** | Unique identifier for the trending topic | 
+**percent_growth_mom** | **int** | Month-over-month growth percentage | [optional] 
 **pins** | [**List[TrendingPin]**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | 
 **related_interests** | **List[str]** | List of related interest categories | 
 **related_searches** | **List[str]** | List of related search terms | 

@@ -217,7 +217,7 @@ CatalogsFeedsUpdateRequest::getCredentials()
 }
 
 void
-CatalogsFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -229,7 +229,7 @@ CatalogsFeedsUpdateRequest::getDefaultAvailability()
 }
 
 void
-CatalogsFeedsUpdateRequest::setDefaultAvailability(ProductAvailabilityType  default_availability)
+CatalogsFeedsUpdateRequest::setDefaultAvailability(ProductAvailabilityType default_availability)
 {
 	this->default_availability = default_availability;
 }
@@ -241,7 +241,7 @@ CatalogsFeedsUpdateRequest::getDefaultCurrency()
 }
 
 void
-CatalogsFeedsUpdateRequest::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsFeedsUpdateRequest::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
@@ -253,7 +253,7 @@ CatalogsFeedsUpdateRequest::getFormat()
 }
 
 void
-CatalogsFeedsUpdateRequest::setFormat(CatalogsFormat  format)
+CatalogsFeedsUpdateRequest::setFormat(CatalogsFormat format)
 {
 	this->format = format;
 }
@@ -265,7 +265,7 @@ CatalogsFeedsUpdateRequest::getLocation()
 }
 
 void
-CatalogsFeedsUpdateRequest::setLocation(std::string  location)
+CatalogsFeedsUpdateRequest::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -277,7 +277,7 @@ CatalogsFeedsUpdateRequest::getName()
 }
 
 void
-CatalogsFeedsUpdateRequest::setName(std::string  name)
+CatalogsFeedsUpdateRequest::setName(std::string name)
 {
 	this->name = name;
 }
@@ -289,7 +289,7 @@ CatalogsFeedsUpdateRequest::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsFeedsUpdateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsFeedsUpdateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -301,7 +301,7 @@ CatalogsFeedsUpdateRequest::getStatus()
 }
 
 void
-CatalogsFeedsUpdateRequest::setStatus(CatalogsStatus  status)
+CatalogsFeedsUpdateRequest::setStatus(CatalogsStatus status)
 {
 	this->status = status;
 }

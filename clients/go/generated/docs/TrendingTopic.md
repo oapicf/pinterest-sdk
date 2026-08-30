@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | **string** | Description of the trending topic | 
-**PercentGrowthMom** | **int32** | Month-over-month growth percentage | 
+**Id** | **string** | Unique identifier for the trending topic | 
+**PercentGrowthMom** | Pointer to **int32** | Month-over-month growth percentage | [optional] 
 **Pins** | [**[]TrendingPin**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | 
 **RelatedInterests** | **[]string** | List of related interest categories | 
 **RelatedSearches** | **[]string** | List of related search terms | 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewTrendingTopic
 
-`func NewTrendingTopic(description string, percentGrowthMom int32, pins []TrendingPin, relatedInterests []string, relatedSearches []string, timeSeries map[string]float32, title string, ) *TrendingTopic`
+`func NewTrendingTopic(description string, id string, pins []TrendingPin, relatedInterests []string, relatedSearches []string, timeSeries map[string]float32, title string, ) *TrendingTopic`
 
 NewTrendingTopic instantiates a new TrendingTopic object
 This constructor will assign default values to properties that have it defined,
@@ -51,6 +52,26 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
+### GetId
+
+`func (o *TrendingTopic) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *TrendingTopic) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *TrendingTopic) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
 ### GetPercentGrowthMom
 
 `func (o *TrendingTopic) GetPercentGrowthMom() int32`
@@ -70,6 +91,11 @@ and a boolean to check if the value has been set.
 
 SetPercentGrowthMom sets PercentGrowthMom field to given value.
 
+### HasPercentGrowthMom
+
+`func (o *TrendingTopic) HasPercentGrowthMom() bool`
+
+HasPercentGrowthMom returns a boolean if a field has been set.
 
 ### GetPins
 

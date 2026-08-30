@@ -1,18 +1,18 @@
 #' Create a new BidFloorSpec
 #'
 #' @description
-#' BidFloorSpec Class
+#' Bid floor specification for a given campaign configuration.
 #'
 #' @docType class
 #' @title BidFloorSpec
 #' @description BidFloorSpec Class
 #' @format An \code{R6Class} generator object
-#' @field billable_event  \link{ActionType}
-#' @field countries  list(\link{Country}) [optional]
-#' @field creative_type  \link{CreativeType} [optional]
-#' @field currency  \link{Currency}
-#' @field objective_type  \link{ObjectiveType} [optional]
-#' @field optimization_goal_metadata  \link{OptimizationGoalMetadata} [optional]
+#' @field billable_event Ad group billable event type. \link{ActionType}
+#' @field countries List of ISO 3166-1 alpha-2 country codes. list(\link{Country}) [optional]
+#' @field creative_type Creative type for the bid floor request. \link{CreativeType} [optional]
+#' @field currency Currency for the bid floor value. \link{Currency}
+#' @field objective_type Campaign objective type. \link{BidFloorObjectiveType} [optional]
+#' @field optimization_goal_metadata Optimization goal metadata. \link{OptimizationGoalMetadata} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -29,12 +29,12 @@ BidFloorSpec <- R6::R6Class(
     #' @description
     #' Initialize a new BidFloorSpec class.
     #'
-    #' @param billable_event billable_event
-    #' @param currency currency
-    #' @param countries countries
-    #' @param creative_type creative_type
-    #' @param objective_type objective_type
-    #' @param optimization_goal_metadata optimization_goal_metadata
+    #' @param billable_event Ad group billable event type.
+    #' @param currency Currency for the bid floor value.
+    #' @param countries List of ISO 3166-1 alpha-2 country codes.
+    #' @param creative_type Creative type for the bid floor request.
+    #' @param objective_type Campaign objective type.
+    #' @param optimization_goal_metadata Optimization goal metadata.
     #' @param ... Other optional arguments.
     initialize = function(`billable_event`, `currency`, `countries` = NULL, `creative_type` = NULL, `objective_type` = NULL, `optimization_goal_metadata` = NULL, ...) {
       if (!missing(`billable_event`)) {
@@ -109,29 +109,52 @@ BidFloorSpec <- R6::R6Class(
       BidFloorSpecObject <- list()
       if (!is.null(self$`billable_event`)) {
         BidFloorSpecObject[["billable_event"]] <-
-          self$`billable_event`$toSimpleType()
+          self$extractSimpleType(self$`billable_event`)
       }
       if (!is.null(self$`countries`)) {
         BidFloorSpecObject[["countries"]] <-
-          lapply(self$`countries`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`countries`)
       }
       if (!is.null(self$`creative_type`)) {
         BidFloorSpecObject[["creative_type"]] <-
-          self$`creative_type`$toSimpleType()
+          self$extractSimpleType(self$`creative_type`)
       }
       if (!is.null(self$`currency`)) {
         BidFloorSpecObject[["currency"]] <-
-          self$`currency`$toSimpleType()
+          self$extractSimpleType(self$`currency`)
       }
       if (!is.null(self$`objective_type`)) {
         BidFloorSpecObject[["objective_type"]] <-
-          self$`objective_type`$toSimpleType()
+          self$extractSimpleType(self$`objective_type`)
       }
       if (!is.null(self$`optimization_goal_metadata`)) {
         BidFloorSpecObject[["optimization_goal_metadata"]] <-
-          self$`optimization_goal_metadata`$toSimpleType()
+          self$extractSimpleType(self$`optimization_goal_metadata`)
       }
       return(BidFloorSpecObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -160,7 +183,7 @@ BidFloorSpec <- R6::R6Class(
         self$`currency` <- `currency_object`
       }
       if (!is.null(this_object$`objective_type`)) {
-        `objective_type_object` <- ObjectiveType$new()
+        `objective_type_object` <- BidFloorObjectiveType$new()
         `objective_type_object`$fromJSON(jsonlite::toJSON(this_object$`objective_type`, auto_unbox = TRUE, digits = NA))
         self$`objective_type` <- `objective_type_object`
       }
@@ -194,7 +217,7 @@ BidFloorSpec <- R6::R6Class(
       self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[Country]", loadNamespace("openapi"))
       self$`creative_type` <- CreativeType$new()$fromJSON(jsonlite::toJSON(this_object$`creative_type`, auto_unbox = TRUE, digits = NA))
       self$`currency` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
-      self$`objective_type` <- ObjectiveType$new()$fromJSON(jsonlite::toJSON(this_object$`objective_type`, auto_unbox = TRUE, digits = NA))
+      self$`objective_type` <- BidFloorObjectiveType$new()$fromJSON(jsonlite::toJSON(this_object$`objective_type`, auto_unbox = TRUE, digits = NA))
       self$`optimization_goal_metadata` <- OptimizationGoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`optimization_goal_metadata`, auto_unbox = TRUE, digits = NA))
       self
     },

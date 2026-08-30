@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Gender category for trends demographic distribution.",
+  "name": "TrendsGender",
+  "symbols": [
+    "male",
+    "female",
+    "unspecified"
+  ]
+}

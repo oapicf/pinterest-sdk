@@ -7,8 +7,9 @@ Object describing a retail item record
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attributes** | [**ItemAttributes**](ItemAttributes.md) |  | [optional] 
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalog_type** | **str** |  | 
 **item_id** | **str** | The catalog retail item id in the merchant namespace | [optional] 
+**item_response_kind** | **str** | Discriminator literal identifying this leaf inside an &#x60;ItemResponse&#x60; payload. | 
 **pins** | [**List[Pin]**](Pin.md) | The pins mapped to the item | [optional] 
 
 ## Example

@@ -22,14 +22,6 @@ Protected Class TargetingSpecOperationGender
         
     #tag EndEnum
 
-    #tag Enum, Name = OperationEnum, Type = Integer, Flags = &h0
-        
-        Set
-        Add
-        Remove
-        
-    #tag EndEnum
-
 
 	#tag Method, Flags = &h0
 		Shared Function FieldEnumToString(value As FieldEnum) As String
@@ -37,21 +29,6 @@ Protected Class TargetingSpecOperationGender
 		    
 		    Case FieldEnum.Gender
 		      Return "GENDER"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function OperationEnumToString(value As OperationEnum) As String
-		  Select Case value
-		    
-		    Case OperationEnum.Set
-		      Return "SET"
-		    Case OperationEnum.Add
-		      Return "ADD"
-		    Case OperationEnum.Remove
-		      Return "REMOVE"
 		    
 		  End Select
 		  Return ""
@@ -90,6 +67,14 @@ Protected Class TargetingSpecOperationGender
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="operation"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="TargetingSpecListOperation"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

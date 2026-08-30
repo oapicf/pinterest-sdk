@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;CatalogsProduct&gt;**](CatalogsProduct.md) | Pins | [default to undefined]
+**items** | [**Array&lt;CatalogsProduct&gt;**](CatalogsProduct.md) |  | [default to undefined]
 
 ## Example
 

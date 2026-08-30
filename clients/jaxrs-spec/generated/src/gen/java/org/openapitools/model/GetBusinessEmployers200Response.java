@@ -22,7 +22,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("get_business_employers_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class GetBusinessEmployers200Response   {
   private String bookmark;
   private @Valid List<@Valid UserBusinessRoleBinding> items = new ArrayList<>();
@@ -57,7 +57,6 @@ public class GetBusinessEmployers200Response   {
   }
 
   /**
-   * List of employers.
    **/
   public GetBusinessEmployers200Response items(List<@Valid UserBusinessRoleBinding> items) {
     this.items = items;
@@ -65,7 +64,7 @@ public class GetBusinessEmployers200Response   {
   }
 
   
-  @ApiModelProperty(required = true, value = "List of employers.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
   @NotNull @Valid public List<@Valid UserBusinessRoleBinding> getItems() {
     return items;
@@ -127,12 +126,8 @@ public class GetBusinessEmployers200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

@@ -1,0 +1,14 @@
+-module(openapi_ad_disapproval_reasons).
+
+-include("openapi.hrl").
+
+-export([openapi_ad_disapproval_reasons/0]).
+
+-export_type([openapi_ad_disapproval_reasons/0]).
+
+-type openapi_ad_disapproval_reasons() ::
+  binary().
+
+openapi_ad_disapproval_reasons() ->
+  elements([<<"HASHTAGS">>, <<"PROMOTIONS_AND_PRICES">>, <<"TARGETING">>, <<"LANDING_PAGE">>, <<"CAPS_AND_SYMBOLS">>, <<"SHOCKING">>, <<"WEIGHT_LOSS">>, <<"PROHIBITED_PRODUCT">>, <<"AUTHENTICITY">>, <<"NUDITY">>, <<"CONFUSING_DESIGN">>, <<"URGENCY">>, <<"RATINGS">>, <<"APP">>, <<"ALCOHOL">>, <<"CONTESTS">>, <<"POLITICAL">>, <<"OTHER">>, <<"IMAGE">>, <<"NAR">>, <<"INCONSISTENT">>, <<"CLICKBAIT">>, <<"NO_DESCRIPTION">>, <<"LOW_QUALITY">>, <<"EXAGGERATED_CLAIMS">>, <<"PINTEREST_BRAND">>, <<"ALCOHOL_NO_SALE">>, <<"LANDING_PAGE_SPEED">>, <<"LANDING_PAGE_HARDWALL">>, <<"LANDING_PAGE_BROKEN">>, <<"LANDING_PAGE_QUALITY">>, <<"OUT_OF_STOCK">>, <<"IMAGE_LOW_QUALITY">>, <<"IMAGE_BUSY">>, <<"IMAGE_POORLY_EDITED">>, <<"IMAGE_BEFORE_AFTER">>, <<"UGC">>, <<"FAKE_BUTTONS">>, <<"WEAPONS">>, <<"SENSITIVE">>, <<"UNACCEPTABLE_BUSINESS">>, <<"SUSPICIOUS_CLAIMS">>, <<"PHARMA">>, <<"SUSPICIOUS_SUPPLEMENTS">>, <<"ILLEGAL_RECREATIONAL_DRUG">>, <<"LOW_QUALITY_LANDING_PAGE">>, <<"RESTRICTED_HEALTHCARE">>, <<"INCONSISTENT_LANG_FR">>]).
+

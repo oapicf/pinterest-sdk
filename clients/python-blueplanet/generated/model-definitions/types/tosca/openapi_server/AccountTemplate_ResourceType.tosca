@@ -1,0 +1,193 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AccountTemplate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AccountTemplate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionReportTimeType = openapi_server.resourceTypes.ConversionReportTimeType
+  CreationSource = openapi_server.resourceTypes.CreationSource
+  DataOutputFormat = openapi_server.resourceTypes.DataOutputFormat
+  Granularity = openapi_server.resourceTypes.Granularity
+  IngestionSource = openapi_server.resourceTypes.IngestionSource
+  MetricsReportingLevel = openapi_server.resourceTypes.MetricsReportingLevel
+  ReportingColumn = openapi_server.resourceTypes.ReportingColumn
+  ReportingTimeZone = openapi_server.resourceTypes.ReportingTimeZone
+}
+resourceTypes {
+
+  AccountTemplate {
+    title = AccountTemplate
+    description = AccountTemplate
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "ID of the Ad Account that owns the template"
+          optional = false
+        }
+        ad_account_ids {
+          type = array
+          items.type =  string
+          description = "IDs of the Ad Accounts that have access to this template"
+          optional = false
+        }
+        ade_columns {
+          type = array
+          items.type =  string
+          description = "A list of ADE columns"
+          optional = false
+        }
+        attribution_type {
+          type =  
+          description = "Attribution type for Brand/Category/SKU reports"
+          optional = false
+        }
+        click_window_days {
+          type =  
+          description = "The length of the sliding window over which click conversions will be attributed"
+          optional = false
+        }
+        columns {
+          type = array
+          items.type = ReportingColumn
+          description = "A list of columns to be included in the report"
+          optional = false
+        }
+        conversion_report_time_type {
+          type = ConversionReportTimeType
+          description = "Conversion report time type"
+          optional = false
+        }
+        creation_source {
+          type = CreationSource
+          description = "The surface used to create this template"
+          optional = false
+        }
+        custom_column_ids {
+          type = array
+          items.type =  string
+          description = "A list of custom column IDs"
+          optional = false
+        }
+        display_metadata {
+          type =  string
+          description = "Additional metadata about this reporting template"
+          optional = false
+        }
+        engagement_window_days {
+          type =  
+          description = "The length of the sliding window over which engagement conversions will be attributed"
+          optional = false
+        }
+        filters_json {
+          type =  string
+          description = "A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:\\ \&quot;field\&quot;: The column name\\ \&quot;operator\&quot;: The operator. Allowed operators: [\&quot;&#x3D;\&quot;, \&quot;!&#x3D;\&quot;, \&quot;in\&quot;, \&quot;not_in\&quot;, \&quot;~\&quot;, \&quot;&gt;\&quot;, \&quot;&lt;\&quot;, \&quot;contains_substring\&quot;]\\ \&quot;value\&quot;: A single value or a list of values"
+          optional = false
+        }
+        granularity {
+          type = Granularity
+          description = ""
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Template ID"
+          optional = true
+        }
+        ingestion_sources {
+          type = array
+          items.type = IngestionSource
+          description = "The filter on the conversion ingestion source method for conversion metrics"
+          optional = false
+        }
+        is_default {
+          type =  boolean
+          description = "A boolean representing if this is the default view that loads for this template type"
+          optional = false
+        }
+        is_deleted {
+          type =  boolean
+          description = "A boolean that indicates if the template has been deleted"
+          optional = false
+        }
+        is_owned_by_user {
+          type =  boolean
+          description = "A boolean value that indicates if the user owns the template"
+          optional = false
+        }
+        is_scheduled {
+          type =  boolean
+          description = "A boolean value that indicates if this template has been used to create a scheduled report"
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Template Name"
+          optional = false
+        }
+        report_end_relative_days_in_past {
+          type =  
+          description = "The number of days prior to the day the report will be delivered at which the report will end"
+          optional = false
+        }
+        report_format {
+          type = DataOutputFormat
+          description = ""
+          optional = false
+        }
+        report_level {
+          type = MetricsReportingLevel
+          description = ""
+          optional = false
+        }
+        report_start_relative_days_in_past {
+          type =  
+          description = "The number of days prior to the day the report will be delivered at which the report will start"
+          optional = false
+        }
+        reporting_time_zone {
+          type = ReportingTimeZone
+          description = "Timezone for reporting data"
+          optional = false
+        }
+        sort_by {
+          type =  
+          description = "Unified metric sort configuration"
+          optional = false
+        }
+        type {
+          type =  string
+          description = "Type of the template"
+          optional = false
+        }
+        updated_time {
+          type =  
+          description = "Time of last update in seconds since Unix epoch"
+          optional = false
+        }
+        user_id {
+          type =  string
+          description = "ID of the user who created the template"
+          optional = false
+        }
+        view_window_days {
+          type =  
+          description = "The length of the sliding window over which view conversions will be attributed"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AccountTemplate {
+    title = AccountTemplate
+    description = AccountTemplate
+    implements = openapi_server.resourceTypes.AccountTemplate
+
+  }
+}

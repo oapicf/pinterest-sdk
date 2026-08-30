@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BusinessRole** | **string** | The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you. | 
+**BusinessRole** | [**BusinessRoleForInvite**](BusinessRoleForInvite.md) |  | 
 **InviteType** | [**InviteType**](InviteType.md) |  | 
 **Members** | Pointer to **[]string** | A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE | [optional] 
 **Partners** | Pointer to **[]string** | A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewCreateMembershipOrPartnershipInvitesBody
 
-`func NewCreateMembershipOrPartnershipInvitesBody(businessRole string, inviteType InviteType, ) *CreateMembershipOrPartnershipInvitesBody`
+`func NewCreateMembershipOrPartnershipInvitesBody(businessRole BusinessRoleForInvite, inviteType InviteType, ) *CreateMembershipOrPartnershipInvitesBody`
 
 NewCreateMembershipOrPartnershipInvitesBody instantiates a new CreateMembershipOrPartnershipInvitesBody object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBusinessRole
 
-`func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRole() string`
+`func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRole() BusinessRoleForInvite`
 
 GetBusinessRole returns the BusinessRole field if non-nil, zero value otherwise.
 
 ### GetBusinessRoleOk
 
-`func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRoleOk() (*string, bool)`
+`func (o *CreateMembershipOrPartnershipInvitesBody) GetBusinessRoleOk() (*BusinessRoleForInvite, bool)`
 
 GetBusinessRoleOk returns a tuple with the BusinessRole field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBusinessRole
 
-`func (o *CreateMembershipOrPartnershipInvitesBody) SetBusinessRole(v string)`
+`func (o *CreateMembershipOrPartnershipInvitesBody) SetBusinessRole(v BusinessRoleForInvite)`
 
 SetBusinessRole sets BusinessRole field to given value.
 

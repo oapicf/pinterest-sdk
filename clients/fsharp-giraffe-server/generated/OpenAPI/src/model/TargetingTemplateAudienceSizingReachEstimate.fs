@@ -8,7 +8,7 @@ module TargetingTemplateAudienceSizingReachEstimate =
   //#region TargetingTemplateAudienceSizingReachEstimate
 
 
-  type TargetingTemplateAudienceSizing_reach_estimate = {
+  type TargetingTemplateAudienceSizingReachEstimate = {
     Estimate : int64;
     LowerBound : int64;
     UpperBound : int64;

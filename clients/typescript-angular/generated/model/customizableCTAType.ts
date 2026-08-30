@@ -36,12 +36,14 @@ export const CustomizableCTAType = {
     Download: 'DOWNLOAD',
     ExploreMore: 'EXPLORE_MORE',
     FindALocation: 'FIND_A_LOCATION',
+    FindRetailers: 'FIND_RETAILERS',
     GetDeal: 'GET_DEAL',
     GetRecipe: 'GET_RECIPE',
     GetShowtimes: 'GET_SHOWTIMES',
     OnSale: 'ON_SALE',
     PlayGame: 'PLAY_GAME',
-    TryIt: 'TRY_IT'
+    TryIt: 'TRY_IT',
+    TakeAPeek: 'TAKE_A_PEEK'
 } as const;
 export type CustomizableCTAType = typeof CustomizableCTAType[keyof typeof CustomizableCTAType];
 

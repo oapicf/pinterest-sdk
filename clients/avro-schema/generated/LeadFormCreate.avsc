@@ -1,0 +1,58 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create operation model.",
+  "name": "LeadFormCreate",
+  "fields": [
+    {
+      "name": "completion_message",
+      "type": "string",
+      "doc": "A message for people who complete the form to let them know what happens next."
+    },
+    {
+      "name": "disclosure_language",
+      "type": ["null", "string"],
+      "doc": "Additional disclosure language to be included in the lead form.",
+      "default": null
+    },
+    {
+      "name": "has_accepted_terms",
+      "type": "boolean",
+      "doc": "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's [Lead Ad Terms](https://policy.pinterest.com/en/lead-ad-terms). As a reminder, all advertising on Pinterest is subject to the [Pinterest Advertising Services Agreement](https://business.pinterest.com/en/pinterest-advertising-services-agreement/) or an equivalent agreement as set forth on an IO"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Internal name of the lead form."
+    },
+    {
+      "name": "policy_links",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.LeadFormPolicyLink"
+      }],
+      "doc": "List of additional policy links to be displayed on the lead form.",
+      "default": null
+    },
+    {
+      "name": "privacy_policy_link",
+      "type": "string",
+      "doc": "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language."
+    },
+    {
+      "name": "questions",
+      "type": {
+        "type": "array",
+        "items": "model.LeadFormQuestion"
+      },
+      "doc": "List of questions to be displayed on the lead form."
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.LeadFormStatus"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

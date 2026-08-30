@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsProductGroupProductCounts;
 import org.openapitools.vertxweb.server.model.CatalogsHotelProductGroupProductCounts;
 import org.openapitools.vertxweb.server.model.CatalogsRetailProductGroupProductCounts;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 
 /**
  * Product counts for a CatalogsProductGroup
@@ -16,32 +15,54 @@ import org.openapitools.vertxweb.server.model.CatalogsType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupProductCountsVertical   {
   
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private BigDecimal inStock;
   private BigDecimal outOfStock;
   private BigDecimal preorder;
   private BigDecimal total;
   private BigDecimal videos;
+  private BigDecimal appLinks;
+  private BigDecimal images;
 
   public CatalogsProductGroupProductCountsVertical () {
 
   }
 
-  public CatalogsProductGroupProductCountsVertical (CatalogsType catalogType, BigDecimal inStock, BigDecimal outOfStock, BigDecimal preorder, BigDecimal total, BigDecimal videos) {
+  public CatalogsProductGroupProductCountsVertical (CatalogTypeEnum catalogType, BigDecimal inStock, BigDecimal outOfStock, BigDecimal preorder, BigDecimal total, BigDecimal videos, BigDecimal appLinks, BigDecimal images) {
     this.catalogType = catalogType;
     this.inStock = inStock;
     this.outOfStock = outOfStock;
     this.preorder = preorder;
     this.total = total;
     this.videos = videos;
+    this.appLinks = appLinks;
+    this.images = images;
   }
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -90,6 +111,24 @@ public class CatalogsProductGroupProductCountsVertical   {
     this.videos = videos;
   }
 
+    
+  @JsonProperty("app_links")
+  public BigDecimal getAppLinks() {
+    return appLinks;
+  }
+  public void setAppLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+  }
+
+    
+  @JsonProperty("images")
+  public BigDecimal getImages() {
+    return images;
+  }
+  public void setImages(BigDecimal images) {
+    this.images = images;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -105,12 +144,14 @@ public class CatalogsProductGroupProductCountsVertical   {
         Objects.equals(outOfStock, catalogsProductGroupProductCountsVertical.outOfStock) &&
         Objects.equals(preorder, catalogsProductGroupProductCountsVertical.preorder) &&
         Objects.equals(total, catalogsProductGroupProductCountsVertical.total) &&
-        Objects.equals(videos, catalogsProductGroupProductCountsVertical.videos);
+        Objects.equals(videos, catalogsProductGroupProductCountsVertical.videos) &&
+        Objects.equals(appLinks, catalogsProductGroupProductCountsVertical.appLinks) &&
+        Objects.equals(images, catalogsProductGroupProductCountsVertical.images);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, inStock, outOfStock, preorder, total, videos);
+    return Objects.hash(catalogType, inStock, outOfStock, preorder, total, videos, appLinks, images);
   }
 
   @Override
@@ -124,6 +165,8 @@ public class CatalogsProductGroupProductCountsVertical   {
     sb.append("    preorder: ").append(toIndentedString(preorder)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    videos: ").append(toIndentedString(videos)).append("\n");
+    sb.append("    appLinks: ").append(toIndentedString(appLinks)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -133,9 +176,6 @@ public class CatalogsProductGroupProductCountsVertical   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -7,9 +7,6 @@ Protected Class SsioInsertionOrdersStatusGetByAdAccount200Response
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Insertion orders status by ad acount id
-		#tag EndNote
 		items() As OpenAPIClient.Models.SSIOInsertionOrderStatus
 	#tag EndProperty
 

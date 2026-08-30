@@ -7,10 +7,16 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { DeletePartnerAssetAccessBodyAccessesInner } from './deletePartnerAssetAccessBodyAccessesInner';
+import { DeletePartnerAssetAccessItem } from './deletePartnerAssetAccessItem';
 
 
+/**
+ * An object with a list of partner asset accesses to delete.
+ */
 export interface DeletePartnerAssetAccessBody { 
-    accesses: Array<DeletePartnerAssetAccessBodyAccessesInner>;
+    /**
+     * List of partner asset accesses to delete.
+     */
+    accesses: Array<DeletePartnerAssetAccessItem>;
 }
 

@@ -1,10 +1,12 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Audience
-import org.openapitools.server.api.model.AudienceCreateRequest
-import org.openapitools.server.api.model.AudienceUpdateRequest
+import org.openapitools.server.api.model.AdAccountsAudience
+import org.openapitools.server.api.model.AdAccountsAudienceCreate
+import org.openapitools.server.api.model.AdAccountsAudienceUpdate
+import org.openapitools.server.api.model.AudienceOwnershipType
 import org.openapitools.server.api.model.AudiencesList200Response
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.PinterestLibPaginationOrder
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -23,16 +25,16 @@ interface AudiencesApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* audiencesCreate
      * Create audience */
-    suspend fun audiencesCreate(adAccountId:kotlin.String?,audienceCreateRequest:AudienceCreateRequest?,context:OperationRequest):Response<Audience>
+    suspend fun audiencesCreate(adAccountId:kotlin.String?,adAccountsAudienceCreate:AdAccountsAudienceCreate?,context:OperationRequest):Response<AdAccountsAudience>
     /* audiencesGet
      * Get audience */
-    suspend fun audiencesGet(adAccountId:kotlin.String?,audienceId:kotlin.String?,context:OperationRequest):Response<Audience>
+    suspend fun audiencesGet(audienceId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<AdAccountsAudience>
     /* audiencesList
      * List audiences */
-    suspend fun audiencesList(adAccountId:kotlin.String?,bookmark:kotlin.String?,order:kotlin.String?,pageSize:kotlin.Int?,ownershipType:kotlin.String?,context:OperationRequest):Response<AudiencesList200Response>
+    suspend fun audiencesList(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,order:PinterestLibPaginationOrder?,ownershipType:AudienceOwnershipType?,excludeNca:kotlin.Boolean?,context:OperationRequest):Response<AudiencesList200Response>
     /* audiencesUpdate
      * Update audience */
-    suspend fun audiencesUpdate(adAccountId:kotlin.String?,audienceId:kotlin.String?,audienceUpdateRequest:AudienceUpdateRequest?,context:OperationRequest):Response<Audience>
+    suspend fun audiencesUpdate(audienceId:kotlin.String?,adAccountId:kotlin.String?,adAccountsAudienceUpdate:AdAccountsAudienceUpdate?,context:OperationRequest):Response<AdAccountsAudience>
     companion object {
         const val address = "AudiencesApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

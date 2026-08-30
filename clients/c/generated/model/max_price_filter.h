@@ -20,7 +20,7 @@ typedef struct max_price_filter_t max_price_filter_t;
 
 
 typedef struct max_price_filter_t {
-    catalogs_product_group_pricing_criteria_t *max_price; //object
+    struct catalogs_product_group_pricing_criteria_t *max_price; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } max_price_filter_t;

@@ -18,7 +18,7 @@ Mono<SearchPartnerPins200Response> SearchController.searchPartnerPins(termcountr
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
 
 ### Parameters
 Name | Type | Description  | Notes
@@ -42,23 +42,23 @@ Name | Type | Description  | Notes
 <a id="searchUserBoardsGet"></a>
 # **searchUserBoardsGet**
 ```java
-Mono<SearchUserBoardsGet200Response> SearchController.searchUserBoardsGet(adAccountIdbookmarkpageSizequery)
+Mono<BoardsList200Response> SearchController.searchUserBoardsGet(adAccountIdquerybookmarkpageSize)
 ```
 
 Search user&#39;s boards
 
-Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
-**bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 **query** | `String` | Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional parameter]
+**bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
+**pageSize** | `Integer` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`]
 
 ### Return type
-[**SearchUserBoardsGet200Response**](../../docs/models/SearchUserBoardsGet200Response.md)
+[**BoardsList200Response**](../../docs/models/BoardsList200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`, `boards:read_secret`
@@ -71,12 +71,12 @@ Name | Type | Description  | Notes
 <a id="searchUserPinsList"></a>
 # **searchUserPinsList**
 ```java
-Mono<SearchUserPinsList200Response> SearchController.searchUserPinsList(queryadAccountIdbookmark)
+Mono<PinsList200Response> SearchController.searchUserPinsList(queryadAccountIdbookmark)
 ```
 
 Search user&#39;s Pins
 
-Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
 
 ### Parameters
 Name | Type | Description  | Notes
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
 
 ### Return type
-[**SearchUserPinsList200Response**](../../docs/models/SearchUserPinsList200Response.md)
+[**PinsList200Response**](../../docs/models/PinsList200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`, `boards:read_secret`, `pins:read`, `pins:read_secret`

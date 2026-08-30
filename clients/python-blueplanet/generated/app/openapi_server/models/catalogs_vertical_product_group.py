@@ -118,7 +118,7 @@ class CatalogsVerticalProductGroup(Model):
     def catalog_id(self) -> str:
         """Gets the catalog_id of this CatalogsVerticalProductGroup.
 
-        Catalog id pertaining to the creative assets product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :return: The catalog_id of this CatalogsVerticalProductGroup.
         :rtype: str
@@ -129,7 +129,7 @@ class CatalogsVerticalProductGroup(Model):
     def catalog_id(self, catalog_id: str):
         """Sets the catalog_id of this CatalogsVerticalProductGroup.
 
-        Catalog id pertaining to the creative assets product group.  # noqa: E501
+        Catalog ID pertaining to the product group.  # noqa: E501
 
         :param catalog_id: The catalog_id of this CatalogsVerticalProductGroup.
         :type catalog_id: str
@@ -287,7 +287,7 @@ class CatalogsVerticalProductGroup(Model):
     def id(self) -> str:
         """Gets the id of this CatalogsVerticalProductGroup.
 
-        ID of the creative assets product group.  # noqa: E501
+        ID of the catalog product group.  # noqa: E501
 
         :return: The id of this CatalogsVerticalProductGroup.
         :rtype: str
@@ -298,7 +298,7 @@ class CatalogsVerticalProductGroup(Model):
     def id(self, id: str):
         """Sets the id of this CatalogsVerticalProductGroup.
 
-        ID of the creative assets product group.  # noqa: E501
+        ID of the catalog product group.  # noqa: E501
 
         :param id: The id of this CatalogsVerticalProductGroup.
         :type id: str
@@ -358,7 +358,7 @@ class CatalogsVerticalProductGroup(Model):
     def name(self) -> str:
         """Gets the name of this CatalogsVerticalProductGroup.
 
-        Name of creative assets product group  # noqa: E501
+        Name of catalog product group  # noqa: E501
 
         :return: The name of this CatalogsVerticalProductGroup.
         :rtype: str
@@ -369,7 +369,7 @@ class CatalogsVerticalProductGroup(Model):
     def name(self, name: str):
         """Sets the name of this CatalogsVerticalProductGroup.
 
-        Name of creative assets product group  # noqa: E501
+        Name of catalog product group  # noqa: E501
 
         :param name: The name of this CatalogsVerticalProductGroup.
         :type name: str

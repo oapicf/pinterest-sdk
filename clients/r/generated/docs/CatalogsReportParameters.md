@@ -5,7 +5,7 @@ Report parameters
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [Enum: ] 
-**report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParameters_report.md) |  | 
+**catalog_type** | **character** |  | [Enum: [HOTEL]] 
+**report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  | 
 
 

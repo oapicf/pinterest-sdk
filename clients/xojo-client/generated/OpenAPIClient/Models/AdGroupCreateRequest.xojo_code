@@ -11,6 +11,24 @@ Protected Class AdGroupCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
+			<a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href="/docs/api-features/pinterest-performance-plus-setup/" target="blank">Pinterest Performance+ campaigns</a>.
+		#tag EndNote
+		bid_multiplier As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		budget_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		pacing_delivery_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
 		#tag EndNote
 		bid_in_micro_currency As Xoson.O.OptionalInteger
@@ -18,9 +36,6 @@ Protected Class AdGroupCreateRequest
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as "Pinterest Performance+ bidding".
-		#tag EndNote
 		bid_strategy_type As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -35,11 +50,6 @@ Protected Class AdGroupCreateRequest
 			Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
 		#tag EndNote
 		budget_in_micro_currency As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		budget_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -87,12 +97,7 @@ Protected Class AdGroupCreateRequest
 		#tag Note
 			Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `"WEB_CONVERSION"`.
 		#tag EndNote
-		optimization_goal_metadata As OpenAPIClient.Models.OptimizationGoalMetadata
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		pacing_delivery_type As Xoson.O.OptionalString
+		optimization_goal_metadata As Object
 	#tag EndProperty
 
 
@@ -117,6 +122,14 @@ Protected Class AdGroupCreateRequest
 			Promotion ID. To clear this field, set to null.
 		#tag EndNote
 		promotion_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Promotion IDs list. To clear this field, set to an empty array [].
+		#tag EndNote
+		promotion_ids() As String
 	#tag EndProperty
 
 
@@ -151,27 +164,11 @@ Protected Class AdGroupCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Third-party tracking URLs.<br> JSON object with the format: {"<a href="/docs/redoc/#section/Tracking-URL-event">Tracking event enum</a>":[URL string array],...}<br> For example: {"impression": ["URL1", "URL2"], "click": ["URL1", "URL2", "URL3"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href="https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking" target="_blank">Third-party and dynamic tracking</a>.
+			Third-party tracking URLs.<br> JSON object with the format: {"<a href="/docs/redoc/#section/Tracking-URL-event">Tracking event enum</a>":[URL string array],...}<br> For example: {"impression": ["URL1", "URL2"], "click": ["URL1", "URL2", "URL3"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href="https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking" target="_blank">Third-party and dynamic tracking</a>.
 		#tag EndNote
-		tracking_urls As OpenAPIClient.Models.TrackingUrls
+		tracking_urls As Object
 	#tag EndProperty
 
-
-	#tag Property, Flags = &h0
-		#tag Note
-			<a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href="/docs/api-features/pinterest-performance-plus-setup/" target="blank">Pinterest Performance+ campaigns</a>.
-		#tag EndNote
-		bid_multiplier As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-    #tag Enum, Name = Bid_strategy_typeEnum, Type = Integer, Flags = &h0
-        
-        AutomaticBid
-        MaxBid
-        TargetAvg
-        
-    #tag EndEnum
 
     #tag Enum, Name = Promotion_application_levelEnum, Type = Integer, Flags = &h0
         
@@ -182,21 +179,6 @@ Protected Class AdGroupCreateRequest
     #tag EndEnum
 
 
-	#tag Method, Flags = &h0
-		Shared Function Bid_strategy_typeEnumToString(value As Bid_strategy_typeEnum) As String
-		  Select Case value
-		    
-		    Case Bid_strategy_typeEnum.AutomaticBid
-		      Return "AUTOMATIC_BID"
-		    Case Bid_strategy_typeEnum.MaxBid
-		      Return "MAX_BID"
-		    Case Bid_strategy_typeEnum.TargetAvg
-		      Return "TARGET_AVG"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 	#tag Method, Flags = &h0
 		Shared Function Promotion_application_levelEnumToString(value As Promotion_application_levelEnum) As String
 		  Select Case value
@@ -256,11 +238,43 @@ Protected Class AdGroupCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="bid_multiplier"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="budget_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BudgetType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="pacing_delivery_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="PacingDeliveryType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="bid_in_micro_currency"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="bid_strategy_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BidStrategyType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -277,14 +291,6 @@ Protected Class AdGroupCreateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="budget_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BudgetType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -332,15 +338,7 @@ Protected Class AdGroupCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="OptimizationGoalMetadata"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="pacing_delivery_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="PacingDeliveryType"
+			Type="Object"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -353,6 +351,14 @@ Protected Class AdGroupCreateRequest
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="promotion_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="promotion_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -396,15 +402,7 @@ Protected Class AdGroupCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TrackingUrls"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="bid_multiplier"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
+			Type="Object"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

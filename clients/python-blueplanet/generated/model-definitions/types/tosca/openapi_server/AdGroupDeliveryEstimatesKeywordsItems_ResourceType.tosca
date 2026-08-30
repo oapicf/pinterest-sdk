@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupDeliveryEstimatesKeywordsItems"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupDeliveryEstimatesKeywordsItems"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  NullalbleMatchType = openapi_server.resourceTypes.NullalbleMatchType
+}
+resourceTypes {
+
+  AdGroupDeliveryEstimatesKeywordsItems {
+    title = AdGroupDeliveryEstimatesKeywordsItems
+    description = AdGroupDeliveryEstimatesKeywordsItems
+    derivedFrom = Root
+    properties {
+        match_type {
+          type = NullalbleMatchType
+          description = ""
+          optional = true
+        }
+        value {
+          type =  string
+          description = "Keyword value (120 chars max)."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupDeliveryEstimatesKeywordsItems {
+    title = AdGroupDeliveryEstimatesKeywordsItems
+    description = AdGroupDeliveryEstimatesKeywordsItems
+    implements = openapi_server.resourceTypes.AdGroupDeliveryEstimatesKeywordsItems
+
+  }
+}

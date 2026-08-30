@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            LeadsExportCreateResponse
+            LeadsExports
         >
         LeadsExportApi::
         leadsExport_create(
@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            LeadsExportCreateRequest leadsExportCreateRequest
+            LeadsExportsCreate leadsExportsCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | leadsExportCreateRequest
+            // Body     | leadsExportsCreate
 
 
 
-            payload = leadsExportCreateRequest.toJson().dump();
+            payload = leadsExportsCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -57,10 +57,10 @@ using namespace Tiny;
 
 
 
-            LeadsExportCreateResponse obj(output_string);
+            LeadsExports obj(output_string);
 
 
-            Response<LeadsExportCreateResponse> response(obj, httpCode);
+            Response<LeadsExports> response(obj, httpCode);
             return response;
         }
 

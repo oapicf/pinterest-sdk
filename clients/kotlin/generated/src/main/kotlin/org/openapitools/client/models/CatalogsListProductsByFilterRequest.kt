@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -29,7 +37,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param feedId Catalog Feed id pertaining to the catalog product group filter.
  * @param filters 
- * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogId Catalog ID pertaining to the product group.
  * @param catalogType 
  * @param country 
  * @param locale 
@@ -45,7 +53,7 @@ data class CatalogsListProductsByFilterRequest (
     @Json(name = "filters")
     val filters: CatalogsProductGroupFilters,
 
-    /* Catalog id pertaining to the creative assets product group. */
+    /* Catalog ID pertaining to the product group. */
     @Json(name = "catalog_id")
     override val catalogId: kotlin.String,
 

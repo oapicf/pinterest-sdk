@@ -7,14 +7,14 @@ goog.provide('API.Client.CatalogsCreativeAssetsFeedsCreateRequest');
 API.Client.CatalogsCreativeAssetsFeedsCreateRequest = function() {}
 
 /**
- * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+ * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.catalogId;
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.catalogType;
@@ -38,7 +38,7 @@ API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.defaultCountry;
 API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.defaultCurrency;
 
 /**
- * @type {!API.Client.CatalogsFeedsCreateRequest_default_locale}
+ * @type {!API.Client.CatalogsCreativeAssetsFeedsCreateRequest_default_locale}
  * @export
  */
 API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.defaultLocale;
@@ -75,3 +75,7 @@ API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.preferredProcessin
  */
 API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}

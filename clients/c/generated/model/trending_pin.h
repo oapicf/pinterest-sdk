@@ -19,19 +19,23 @@ typedef struct trending_pin_t trending_pin_t;
 
 
 typedef struct trending_pin_t {
-    int height; //numeric
+    char *color; // string
+    int *height; //numeric
     char *id; // string
     char *src; // string
-    int width; //numeric
+    double *vertical_offset; //numeric
+    int *width; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } trending_pin_t;
 
 __attribute__((deprecated)) trending_pin_t *trending_pin_create(
-    int height,
+    char *color,
+    int *height,
     char *id,
     char *src,
-    int width
+    double *vertical_offset,
+    int *width
 );
 
 void trending_pin_free(trending_pin_t *trending_pin);

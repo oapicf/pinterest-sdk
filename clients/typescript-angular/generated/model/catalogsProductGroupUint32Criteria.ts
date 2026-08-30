@@ -7,21 +7,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { NumericFilterOperatorType } from './numericFilterOperatorType';
 
 
 export interface CatalogsProductGroupUint32Criteria { 
     negated?: boolean;
-    operator: CatalogsProductGroupUint32Criteria.OperatorEnum;
+    operator: NumericFilterOperatorType;
     value: number;
 }
 export namespace CatalogsProductGroupUint32Criteria {
-    export const OperatorEnum = {
-        GreaterThan: 'GREATER_THAN',
-        GreaterThanOrEquals: 'GREATER_THAN_OR_EQUALS',
-        LessThan: 'LESS_THAN',
-        LessThanOrEquals: 'LESS_THAN_OR_EQUALS'
-    } as const;
-    export type OperatorEnum = typeof OperatorEnum[keyof typeof OperatorEnum];
 }
 
 

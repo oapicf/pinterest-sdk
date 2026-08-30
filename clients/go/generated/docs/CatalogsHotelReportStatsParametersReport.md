@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportType** | Pointer to **string** |  | [optional] 
 **FeedId** | **string** | ID of the feed entity. | 
 **ProcessingResultId** | Pointer to **string** | Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result. | [optional] 
+**ReportType** | **string** |  | 
 **CatalogId** | Pointer to **string** | Unique identifier of a catalog. If not given, oldest catalog will be used | [optional] 
 
 ## Methods
 
 ### NewCatalogsHotelReportStatsParametersReport
 
-`func NewCatalogsHotelReportStatsParametersReport(feedId string, ) *CatalogsHotelReportStatsParametersReport`
+`func NewCatalogsHotelReportStatsParametersReport(feedId string, reportType string, ) *CatalogsHotelReportStatsParametersReport`
 
 NewCatalogsHotelReportStatsParametersReport instantiates a new CatalogsHotelReportStatsParametersReport object
 This constructor will assign default values to properties that have it defined,
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewCatalogsHotelReportStatsParametersReportWithDefaults instantiates a new CatalogsHotelReportStatsParametersReport object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetReportType
-
-`func (o *CatalogsHotelReportStatsParametersReport) GetReportType() string`
-
-GetReportType returns the ReportType field if non-nil, zero value otherwise.
-
-### GetReportTypeOk
-
-`func (o *CatalogsHotelReportStatsParametersReport) GetReportTypeOk() (*string, bool)`
-
-GetReportTypeOk returns a tuple with the ReportType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReportType
-
-`func (o *CatalogsHotelReportStatsParametersReport) SetReportType(v string)`
-
-SetReportType sets ReportType field to given value.
-
-### HasReportType
-
-`func (o *CatalogsHotelReportStatsParametersReport) HasReportType() bool`
-
-HasReportType returns a boolean if a field has been set.
 
 ### GetFeedId
 
@@ -97,6 +72,26 @@ SetProcessingResultId sets ProcessingResultId field to given value.
 `func (o *CatalogsHotelReportStatsParametersReport) HasProcessingResultId() bool`
 
 HasProcessingResultId returns a boolean if a field has been set.
+
+### GetReportType
+
+`func (o *CatalogsHotelReportStatsParametersReport) GetReportType() string`
+
+GetReportType returns the ReportType field if non-nil, zero value otherwise.
+
+### GetReportTypeOk
+
+`func (o *CatalogsHotelReportStatsParametersReport) GetReportTypeOk() (*string, bool)`
+
+GetReportTypeOk returns a tuple with the ReportType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportType
+
+`func (o *CatalogsHotelReportStatsParametersReport) SetReportType(v string)`
+
+SetReportType sets ReportType field to given value.
+
 
 ### GetCatalogId
 

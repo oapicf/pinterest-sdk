@@ -7,14 +7,19 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open AudienceSharingApiHandlerParams
 open AudienceSharingApiServiceInterface
 open AudienceSharingApiServiceImplementation
+open OpenAPI.Model.AdAccountToAdAccountSharedAudience
+open OpenAPI.Model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+open OpenAPI.Model.AdAccountToBusinessSharedAudience
+open OpenAPI.Model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 open OpenAPI.Model.AdAccountsAudiencesSharedAccountsList200Response
 open OpenAPI.Model.AudienceAccountType
-open OpenAPI.Model.AudiencesList200Response
-open OpenAPI.Model.BusinessSharedAudience
-open OpenAPI.Model.BusinessSharedAudienceResponse
-open OpenAPI.Model.Error
-open OpenAPI.Model.SharedAudience
-open OpenAPI.Model.SharedAudienceResponse
+open OpenAPI.Model.BusinessToAdAccountSharedAudience
+open OpenAPI.Model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+open OpenAPI.Model.BusinessToBusinessSharedAudience
+open OpenAPI.Model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+open OpenAPI.Model.Order
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.SharedAudiencesForBusinessList200Response
 
 module AudienceSharingApiHandler =
 
@@ -38,8 +43,14 @@ module AudienceSharingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AdAccountsAudiencesSharedAccountsListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AdAccountsAudiencesSharedAccountsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdAccountsAudiencesSharedAccountsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | AdAccountsAudiencesSharedAccountsListStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | AdAccountsAudiencesSharedAccountsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountsAudiencesSharedAccountsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -62,8 +73,14 @@ module AudienceSharingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | BusinessAccountAudiencesSharedAccountsListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | BusinessAccountAudiencesSharedAccountsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BusinessAccountAudiencesSharedAccountsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | BusinessAccountAudiencesSharedAccountsListStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | BusinessAccountAudiencesSharedAccountsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BusinessAccountAudiencesSharedAccountsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -86,6 +103,14 @@ module AudienceSharingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | SharedAudiencesForBusinessListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SharedAudiencesForBusinessListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SharedAudiencesForBusinessListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SharedAudiencesForBusinessListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SharedAudiencesForBusinessListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SharedAudiencesForBusinessListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -109,6 +134,14 @@ module AudienceSharingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | UpdateAdAccountToAdAccountSharedAudienceStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | UpdateAdAccountToAdAccountSharedAudienceStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | UpdateAdAccountToAdAccountSharedAudienceStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | UpdateAdAccountToAdAccountSharedAudienceStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UpdateAdAccountToAdAccountSharedAudienceStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UpdateAdAccountToAdAccountSharedAudienceDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -132,6 +165,14 @@ module AudienceSharingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | UpdateAdAccountToBusinessSharedAudienceStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | UpdateAdAccountToBusinessSharedAudienceStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | UpdateAdAccountToBusinessSharedAudienceStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | UpdateAdAccountToBusinessSharedAudienceStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UpdateAdAccountToBusinessSharedAudienceStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UpdateAdAccountToBusinessSharedAudienceDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -155,6 +196,14 @@ module AudienceSharingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | UpdateBusinessToAdAccountSharedAudienceStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | UpdateBusinessToAdAccountSharedAudienceStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | UpdateBusinessToAdAccountSharedAudienceStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | UpdateBusinessToAdAccountSharedAudienceStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UpdateBusinessToAdAccountSharedAudienceStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UpdateBusinessToAdAccountSharedAudienceDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -178,6 +227,14 @@ module AudienceSharingApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | UpdateBusinessToBusinessSharedAudienceStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | UpdateBusinessToBusinessSharedAudienceStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | UpdateBusinessToBusinessSharedAudienceStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | UpdateBusinessToBusinessSharedAudienceStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UpdateBusinessToBusinessSharedAudienceStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UpdateBusinessToBusinessSharedAudienceDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

@@ -2,37 +2,43 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.AssetTypeResponse;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * An object containing the permissions a business partner has on the asset.
  */
 
 @Schema(name = "UpdatePartnerAssetsResult", description = "An object containing the permissions a business partner has on the asset.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdatePartnerAssetsResult {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String assetId;
 
-  private @Nullable String assetType;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable AssetTypeResponse assetType;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerId;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> permissions = new ArrayList<>();
 
   public UpdatePartnerAssetsResult assetId(@Nullable String assetId) {
@@ -51,27 +57,29 @@ public class UpdatePartnerAssetsResult {
     return assetId;
   }
 
+  @JsonProperty("asset_id")
   public void setAssetId(@Nullable String assetId) {
     this.assetId = assetId;
   }
 
-  public UpdatePartnerAssetsResult assetType(@Nullable String assetType) {
+  public UpdatePartnerAssetsResult assetType(@Nullable AssetTypeResponse assetType) {
     this.assetType = assetType;
     return this;
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+   * Get assetType
    * @return assetType
    */
-  
-  @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "asset_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_type")
-  public @Nullable String getAssetType() {
+  public @Nullable AssetTypeResponse getAssetType() {
     return assetType;
   }
 
-  public void setAssetType(@Nullable String assetType) {
+  @JsonProperty("asset_type")
+  public void setAssetType(@Nullable AssetTypeResponse assetType) {
     this.assetType = assetType;
   }
 
@@ -91,6 +99,7 @@ public class UpdatePartnerAssetsResult {
     return partnerId;
   }
 
+  @JsonProperty("partner_id")
   public void setPartnerId(@Nullable String partnerId) {
     this.partnerId = partnerId;
   }
@@ -119,6 +128,7 @@ public class UpdatePartnerAssetsResult {
     return permissions;
   }
 
+  @JsonProperty("permissions")
   public void setPermissions(List<String> permissions) {
     this.permissions = permissions;
   }
@@ -159,11 +169,8 @@ public class UpdatePartnerAssetsResult {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

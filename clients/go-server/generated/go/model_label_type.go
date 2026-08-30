@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ import (
 )
 
 
-// LabelType : Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
+// LabelType : Label type values.
 type LabelType string
 
 // List of LabelType
@@ -56,8 +56,8 @@ func NewLabelTypeFromValue(v string) (LabelType, error) {
 }
 
 
-
-// AssertLabelTypeRequired checks if the required fields are not zero-ed
+// AssertLabelTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertLabelTypeRequired(obj LabelType) error {
 	return nil
 }

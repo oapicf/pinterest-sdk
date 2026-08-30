@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`data` | [Label](Label.md)
+`data` | [LabelErrorData](LabelErrorData.md)
 `errorMessages` | Array&lt;string&gt;
 
 ## Example

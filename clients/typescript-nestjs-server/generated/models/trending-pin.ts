@@ -1,0 +1,32 @@
+
+
+/**
+ * Pin image data for trending topics
+ */
+export interface TrendingPin { 
+  /**
+   * Dominant color of the pin image in hex format
+   */
+  color: string;
+  /**
+   * Height of the pin image in pixels
+   */
+  height: number;
+  /**
+   * Unique identifier for the pin
+   */
+  id: string;
+  /**
+   * URL of the pin image
+   */
+  src: string;
+  /**
+   * The vertical offset of the pin image as a percentage from 0 to 100, where 0 is the top of the image and 100 is the bottom.
+   */
+  vertical_offset?: number;
+  /**
+   * Width of the pin image in pixels
+   */
+  width: number;
+}
+

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DailyMetrics** | [**PinAnalyticsMetricsResponseDailyMetricsInner[]**](PinAnalyticsMetricsResponseDailyMetricsInner.md) | Array with the requested daily metric records | [optional] 
+**DailyMetrics** | [**PinAnalyticsDailyMetrics[]**](PinAnalyticsDailyMetrics.md) | Array with the requested daily metric records | [optional] 
 **LifetimeMetrics** | **System.Collections.Hashtable** | The lifetime metric name and value. | [optional] 
 **SummaryMetrics** | **System.Collections.Hashtable** | The metric name and value over the requested period for each requested metric | [optional] 
 

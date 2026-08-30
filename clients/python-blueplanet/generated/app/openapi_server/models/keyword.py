@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.match_type_response import MatchTypeResponse  # noqa: F401,E501
+from app.openapi_server.models.match_type import MatchType  # noqa: F401,E501
 import re  # noqa: F401,E501
 from openapi_server import util
 
@@ -17,56 +17,56 @@ class Keyword(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bid: int=None, match_type: MatchTypeResponse=None, value: str=None, archived: bool=None, id: str=None, parent_id: str=None, parent_type: str=None, type: str=None):  # noqa: E501
+    def __init__(self, archived: bool=None, bid: int=None, id: str=None, match_type: MatchType=None, parent_id: str=None, parent_type: str=None, type: str=None, value: str=None):  # noqa: E501
         """Keyword - a model defined in Swagger
 
-        :param bid: The bid of this Keyword.  # noqa: E501
-        :type bid: int
-        :param match_type: The match_type of this Keyword.  # noqa: E501
-        :type match_type: MatchTypeResponse
-        :param value: The value of this Keyword.  # noqa: E501
-        :type value: str
         :param archived: The archived of this Keyword.  # noqa: E501
         :type archived: bool
+        :param bid: The bid of this Keyword.  # noqa: E501
+        :type bid: int
         :param id: The id of this Keyword.  # noqa: E501
         :type id: str
+        :param match_type: The match_type of this Keyword.  # noqa: E501
+        :type match_type: MatchType
         :param parent_id: The parent_id of this Keyword.  # noqa: E501
         :type parent_id: str
         :param parent_type: The parent_type of this Keyword.  # noqa: E501
         :type parent_type: str
         :param type: The type of this Keyword.  # noqa: E501
         :type type: str
+        :param value: The value of this Keyword.  # noqa: E501
+        :type value: str
         """
         self.swagger_types = {
-            'bid': int,
-            'match_type': MatchTypeResponse,
-            'value': str,
             'archived': bool,
+            'bid': int,
             'id': str,
+            'match_type': MatchType,
             'parent_id': str,
             'parent_type': str,
-            'type': str
+            'type': str,
+            'value': str
         }
 
         self.attribute_map = {
-            'bid': 'bid',
-            'match_type': 'match_type',
-            'value': 'value',
             'archived': 'archived',
+            'bid': 'bid',
             'id': 'id',
+            'match_type': 'match_type',
             'parent_id': 'parent_id',
             'parent_type': 'parent_type',
-            'type': 'type'
+            'type': 'type',
+            'value': 'value'
         }
 
-        self._bid = bid
-        self._match_type = match_type
-        self._value = value
         self._archived = archived
+        self._bid = bid
         self._id = id
+        self._match_type = match_type
         self._parent_id = parent_id
         self._parent_type = parent_type
         self._type = type
+        self._value = value
 
     @classmethod
     def from_dict(cls, dikt) -> 'Keyword':
@@ -78,77 +78,6 @@ class Keyword(Model):
         :rtype: Keyword
         """
         return util.deserialize_model(dikt, cls)
-
-    @property
-    def bid(self) -> int:
-        """Gets the bid of this Keyword.
-
-        </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.  # noqa: E501
-
-        :return: The bid of this Keyword.
-        :rtype: int
-        """
-        return self._bid
-
-    @bid.setter
-    def bid(self, bid: int):
-        """Sets the bid of this Keyword.
-
-        </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.  # noqa: E501
-
-        :param bid: The bid of this Keyword.
-        :type bid: int
-        """
-
-        self._bid = bid
-
-    @property
-    def match_type(self) -> MatchTypeResponse:
-        """Gets the match_type of this Keyword.
-
-
-        :return: The match_type of this Keyword.
-        :rtype: MatchTypeResponse
-        """
-        return self._match_type
-
-    @match_type.setter
-    def match_type(self, match_type: MatchTypeResponse):
-        """Sets the match_type of this Keyword.
-
-
-        :param match_type: The match_type of this Keyword.
-        :type match_type: MatchTypeResponse
-        """
-        if match_type is None:
-            raise ValueError("Invalid value for `match_type`, must not be `None`")  # noqa: E501
-
-        self._match_type = match_type
-
-    @property
-    def value(self) -> str:
-        """Gets the value of this Keyword.
-
-        Keyword value (120 chars max).  # noqa: E501
-
-        :return: The value of this Keyword.
-        :rtype: str
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value: str):
-        """Sets the value of this Keyword.
-
-        Keyword value (120 chars max).  # noqa: E501
-
-        :param value: The value of this Keyword.
-        :type value: str
-        """
-        if value is None:
-            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
-
-        self._value = value
 
     @property
     def archived(self) -> bool:
@@ -172,6 +101,29 @@ class Keyword(Model):
         self._archived = archived
 
     @property
+    def bid(self) -> int:
+        """Gets the bid of this Keyword.
+
+        **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.  # noqa: E501
+
+        :return: The bid of this Keyword.
+        :rtype: int
+        """
+        return self._bid
+
+    @bid.setter
+    def bid(self, bid: int):
+        """Sets the bid of this Keyword.
+
+        **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.  # noqa: E501
+
+        :param bid: The bid of this Keyword.
+        :type bid: int
+        """
+
+        self._bid = bid
+
+    @property
     def id(self) -> str:
         """Gets the id of this Keyword.
 
@@ -191,10 +143,37 @@ class Keyword(Model):
         :param id: The id of this Keyword.
         :type id: str
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
         if id is not None and not re.search(r'^\d+$', id):  # noqa: E501
             raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def match_type(self) -> MatchType:
+        """Gets the match_type of this Keyword.
+
+        Keyword [match type](/docs/api-features/targeting-overview/)  # noqa: E501
+
+        :return: The match_type of this Keyword.
+        :rtype: MatchType
+        """
+        return self._match_type
+
+    @match_type.setter
+    def match_type(self, match_type: MatchType):
+        """Sets the match_type of this Keyword.
+
+        Keyword [match type](/docs/api-features/targeting-overview/)  # noqa: E501
+
+        :param match_type: The match_type of this Keyword.
+        :type match_type: MatchType
+        """
+        if match_type is None:
+            raise ValueError("Invalid value for `match_type`, must not be `None`")  # noqa: E501
+
+        self._match_type = match_type
 
     @property
     def parent_id(self) -> str:
@@ -216,6 +195,8 @@ class Keyword(Model):
         :param parent_id: The parent_id of this Keyword.
         :type parent_id: str
         """
+        if parent_id is None:
+            raise ValueError("Invalid value for `parent_id`, must not be `None`")  # noqa: E501
         if parent_id is not None and not re.search(r'^\d+$', parent_id):  # noqa: E501
             raise ValueError("Invalid value for `parent_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
@@ -225,7 +206,7 @@ class Keyword(Model):
     def parent_type(self) -> str:
         """Gets the parent_type of this Keyword.
 
-        Parent entity type  # noqa: E501
+        Parent entity type (advertiser, campaign, ad group).  # noqa: E501
 
         :return: The parent_type of this Keyword.
         :rtype: str
@@ -236,7 +217,7 @@ class Keyword(Model):
     def parent_type(self, parent_type: str):
         """Sets the parent_type of this Keyword.
 
-        Parent entity type  # noqa: E501
+        Parent entity type (advertiser, campaign, ad group).  # noqa: E501
 
         :param parent_type: The parent_type of this Keyword.
         :type parent_type: str
@@ -266,3 +247,28 @@ class Keyword(Model):
         """
 
         self._type = type
+
+    @property
+    def value(self) -> str:
+        """Gets the value of this Keyword.
+
+        Keyword value (120 chars max).  # noqa: E501
+
+        :return: The value of this Keyword.
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value: str):
+        """Sets the value of this Keyword.
+
+        Keyword value (120 chars max).  # noqa: E501
+
+        :param value: The value of this Keyword.
+        :type value: str
+        """
+        if value is None:
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
+
+        self._value = value

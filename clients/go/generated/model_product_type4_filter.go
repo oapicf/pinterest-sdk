@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *ProductType4Filter) GetPRODUCTTYPE4() CatalogsProductGroupMultipleStrin
 
 // GetPRODUCTTYPE4Ok returns a tuple with the PRODUCTTYPE4 field value
 // and a boolean to check if the value has been set.
-func (o *ProductType4Filter) GetPRODUCTTYPE4Ok() (CatalogsProductGroupMultipleStringListCriteria, bool) {
+func (o *ProductType4Filter) GetPRODUCTTYPE4Ok() (*CatalogsProductGroupMultipleStringListCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupMultipleStringListCriteria{}, false
+		return nil, false
 	}
-	return o.PRODUCTTYPE4, true
+	return &o.PRODUCTTYPE4, true
 }
 
 // SetPRODUCTTYPE4 sets field value

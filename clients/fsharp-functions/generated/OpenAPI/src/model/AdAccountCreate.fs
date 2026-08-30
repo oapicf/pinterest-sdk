@@ -20,6 +20,8 @@ module AdAccountCreate =
     Name : string;
     [<JsonProperty(PropertyName = "owner_user_id")>]
     OwnerUserId : string;
+    [<JsonProperty(PropertyName = "time_zone")>]
+    TimeZone : string;
   }
 
   //#endregion

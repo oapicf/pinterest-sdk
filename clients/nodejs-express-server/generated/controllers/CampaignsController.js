@@ -36,6 +36,10 @@ const campaigns/update = async (request, response) => {
   await Controller.handleRequest(request, response, service.campaigns/update);
 };
 
+const get_campaign_delivery_estimates = async (request, response) => {
+  await Controller.handleRequest(request, response, service.get_campaign_delivery_estimates);
+};
+
 
 module.exports = {
   ad_pins/analytics,
@@ -45,4 +49,5 @@ module.exports = {
   campaigns/get,
   campaigns/list,
   campaigns/update,
+  get_campaign_delivery_estimates,
 };

@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accesses** | [**[UpdatePartnerAssetAccessBodyAccessesInner]**](UpdatePartnerAssetAccessBodyAccessesInner.md) |  | 
+**accesses** | [**[UpdatePartnerAssetAccessItem]**](UpdatePartnerAssetAccessItem.md) | List of partner asset accesses to assign or update. | 
 
 

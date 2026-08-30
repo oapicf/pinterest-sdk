@@ -29,7 +29,7 @@ class LeadAdsApi {
   ///
   /// * [String] subscriptionId (required):
   ///   Unique identifier of a subscription.
-  Future<Response> adAccountsSubscriptionsDelByIdWithHttpInfo(String adAccountId, String subscriptionId,) async {
+  Future<Response> adAccountsSubscriptionsDelByIdWithHttpInfo(String adAccountId, String subscriptionId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}'
       .replaceAll('{ad_account_id}', adAccountId)
@@ -53,6 +53,7 @@ class LeadAdsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -67,11 +68,19 @@ class LeadAdsApi {
   ///
   /// * [String] subscriptionId (required):
   ///   Unique identifier of a subscription.
-  Future<void> adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId,) async {
-    final response = await adAccountsSubscriptionsDelByIdWithHttpInfo(adAccountId, subscriptionId,);
+  Future<LeadSubscription?> adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId, { Future<void>? abortTrigger, }) async {
+    final response = await adAccountsSubscriptionsDelByIdWithHttpInfo(adAccountId, subscriptionId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LeadSubscription',) as LeadSubscription;
+    
+    }
+    return null;
   }
 
   /// Get lead ads subscription by ID
@@ -87,7 +96,7 @@ class LeadAdsApi {
   ///
   /// * [String] subscriptionId (required):
   ///   Unique identifier of a subscription.
-  Future<Response> adAccountsSubscriptionsGetByIdWithHttpInfo(String adAccountId, String subscriptionId,) async {
+  Future<Response> adAccountsSubscriptionsGetByIdWithHttpInfo(String adAccountId, String subscriptionId, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}'
       .replaceAll('{ad_account_id}', adAccountId)
@@ -111,6 +120,7 @@ class LeadAdsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -125,8 +135,8 @@ class LeadAdsApi {
   ///
   /// * [String] subscriptionId (required):
   ///   Unique identifier of a subscription.
-  Future<LeadSubscription?> adAccountsSubscriptionsGetById(String adAccountId, String subscriptionId,) async {
-    final response = await adAccountsSubscriptionsGetByIdWithHttpInfo(adAccountId, subscriptionId,);
+  Future<LeadSubscription?> adAccountsSubscriptionsGetById(String adAccountId, String subscriptionId, { Future<void>? abortTrigger, }) async {
+    final response = await adAccountsSubscriptionsGetByIdWithHttpInfo(adAccountId, subscriptionId, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -156,7 +166,7 @@ class LeadAdsApi {
   ///
   /// * [int] pageSize:
   ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
-  Future<Response> adAccountsSubscriptionsGetListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, }) async {
+  Future<Response> adAccountsSubscriptionsGetListWithHttpInfo(String adAccountId, { String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/leads/subscriptions'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -186,6 +196,7 @@ class LeadAdsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -203,8 +214,8 @@ class LeadAdsApi {
   ///
   /// * [int] pageSize:
   ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
-  Future<AdAccountsSubscriptionsGetList200Response?> adAccountsSubscriptionsGetList(String adAccountId, { String? bookmark, int? pageSize, }) async {
-    final response = await adAccountsSubscriptionsGetListWithHttpInfo(adAccountId,  bookmark: bookmark, pageSize: pageSize, );
+  Future<AdAccountsSubscriptionsGetList200Response?> adAccountsSubscriptionsGetList(String adAccountId, { String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await adAccountsSubscriptionsGetListWithHttpInfo(adAccountId, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -230,7 +241,7 @@ class LeadAdsApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [LeadSubscriptionPostParamsCreate] leadSubscriptionPostParamsCreate (required):
-  Future<Response> adAccountsSubscriptionsPostWithHttpInfo(String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate,) async {
+  Future<Response> adAccountsSubscriptionsPostWithHttpInfo(String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/leads/subscriptions'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -253,6 +264,7 @@ class LeadAdsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -266,8 +278,8 @@ class LeadAdsApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [LeadSubscriptionPostParamsCreate] leadSubscriptionPostParamsCreate (required):
-  Future<LeadSubscription?> adAccountsSubscriptionsPost(String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate,) async {
-    final response = await adAccountsSubscriptionsPostWithHttpInfo(adAccountId, leadSubscriptionPostParamsCreate,);
+  Future<LeadSubscription?> adAccountsSubscriptionsPost(String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate, { Future<void>? abortTrigger, }) async {
+    final response = await adAccountsSubscriptionsPostWithHttpInfo(adAccountId, leadSubscriptionPostParamsCreate, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

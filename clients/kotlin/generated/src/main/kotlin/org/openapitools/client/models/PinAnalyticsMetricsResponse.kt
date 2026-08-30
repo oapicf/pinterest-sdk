@@ -8,14 +8,22 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.PinAnalyticsMetricsResponseDailyMetricsInner
+import org.openapitools.client.models.PinAnalyticsDailyMetrics
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -33,7 +41,7 @@ data class PinAnalyticsMetricsResponse (
 
     /* Array with the requested daily metric records */
     @Json(name = "daily_metrics")
-    val dailyMetrics: kotlin.collections.List<PinAnalyticsMetricsResponseDailyMetricsInner>? = null,
+    val dailyMetrics: kotlin.collections.List<PinAnalyticsDailyMetrics>? = null,
 
     /* The lifetime metric name and value. */
     @Json(name = "lifetime_metrics")

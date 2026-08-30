@@ -145,7 +145,7 @@ CatalogsUpdateRetailItem::getAttributes()
 }
 
 void
-CatalogsUpdateRetailItem::setAttributes(UpdatableItemAttributes  attributes)
+CatalogsUpdateRetailItem::setAttributes(UpdatableItemAttributes attributes)
 {
 	this->attributes = attributes;
 }
@@ -157,7 +157,7 @@ CatalogsUpdateRetailItem::getItemId()
 }
 
 void
-CatalogsUpdateRetailItem::setItemId(std::string  item_id)
+CatalogsUpdateRetailItem::setItemId(std::string item_id)
 {
 	this->item_id = item_id;
 }
@@ -169,7 +169,7 @@ CatalogsUpdateRetailItem::getOperation()
 }
 
 void
-CatalogsUpdateRetailItem::setOperation(std::string  operation)
+CatalogsUpdateRetailItem::setOperation(std::string operation)
 {
 	this->operation = operation;
 }
@@ -181,7 +181,7 @@ CatalogsUpdateRetailItem::getUpdateMask()
 }
 
 void
-CatalogsUpdateRetailItem::setUpdateMask(std::list <UpdateMaskFieldType> update_mask)
+CatalogsUpdateRetailItem::setUpdateMask(std::list<UpdateMaskFieldType> update_mask)
 {
 	this->update_mask = update_mask;
 }

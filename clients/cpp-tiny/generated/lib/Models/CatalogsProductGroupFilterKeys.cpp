@@ -33,13 +33,14 @@ CatalogsProductGroupFilterKeys::CatalogsProductGroupFilterKeys()
 	gOOGLE_PRODUCT_CATEGORY_2 = CatalogsProductGroupMultipleStringListCriteria();
 	gOOGLE_PRODUCT_CATEGORY_1 = CatalogsProductGroupMultipleStringListCriteria();
 	gOOGLE_PRODUCT_CATEGORY_0 = CatalogsProductGroupMultipleStringListCriteria();
-	pRODUCT_GROUP = CatalogsProductGroupMultipleStringCriteria();
 	cUSTOM_NUMBER_0 = CatalogsProductGroupUint32Criteria();
 	cUSTOM_NUMBER_1 = CatalogsProductGroupUint32Criteria();
 	cUSTOM_NUMBER_2 = CatalogsProductGroupUint32Criteria();
 	cUSTOM_NUMBER_3 = CatalogsProductGroupUint32Criteria();
 	cUSTOM_NUMBER_4 = CatalogsProductGroupUint32Criteria();
 	tITLE_KEYWORDS = CatalogsProductGroupMultipleStringCriteria();
+	pINTEREST_PRODUCT_CATEGORIES = CatalogsProductGroupMultiplePinterestProductCategoryCriteria();
+	pRODUCT_GROUP = CatalogsProductGroupMultipleStringCriteria();
 }
 
 CatalogsProductGroupFilterKeys::CatalogsProductGroupFilterKeys(std::string jsonString)
@@ -435,20 +436,6 @@ CatalogsProductGroupFilterKeys::fromJson(std::string jsonObj)
 
     }
 
-    const char *pRODUCT_GROUPKey = "PRODUCT_GROUP";
-
-    if(object.has_key(pRODUCT_GROUPKey))
-    {
-        bourne::json value = object[pRODUCT_GROUPKey];
-
-
-
-
-        CatalogsProductGroupMultipleStringCriteria* obj = &pRODUCT_GROUP;
-		obj->fromJson(value.dump());
-
-    }
-
     const char *cUSTOM_NUMBER_0Key = "CUSTOM_NUMBER_0";
 
     if(object.has_key(cUSTOM_NUMBER_0Key))
@@ -529,6 +516,34 @@ CatalogsProductGroupFilterKeys::fromJson(std::string jsonObj)
 
 
         CatalogsProductGroupMultipleStringCriteria* obj = &tITLE_KEYWORDS;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *pINTEREST_PRODUCT_CATEGORIESKey = "PINTEREST_PRODUCT_CATEGORIES";
+
+    if(object.has_key(pINTEREST_PRODUCT_CATEGORIESKey))
+    {
+        bourne::json value = object[pINTEREST_PRODUCT_CATEGORIESKey];
+
+
+
+
+        CatalogsProductGroupMultiplePinterestProductCategoryCriteria* obj = &pINTEREST_PRODUCT_CATEGORIES;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *pRODUCT_GROUPKey = "PRODUCT_GROUP";
+
+    if(object.has_key(pRODUCT_GROUPKey))
+    {
+        bourne::json value = object[pRODUCT_GROUPKey];
+
+
+
+
+        CatalogsProductGroupMultipleStringCriteria* obj = &pRODUCT_GROUP;
 		obj->fromJson(value.dump());
 
     }
@@ -735,13 +750,6 @@ CatalogsProductGroupFilterKeys::toJson()
 
 
 
-	object["pRODUCT_GROUP"] = getPRODUCTGROUP().toJson();
-
-
-
-
-
-
 	object["cUSTOM_NUMBER_0"] = getCUSTOMNUMBER0().toJson();
 
 
@@ -780,6 +788,20 @@ CatalogsProductGroupFilterKeys::toJson()
 	object["tITLE_KEYWORDS"] = getTITLEKEYWORDS().toJson();
 
 
+
+
+
+
+	object["pINTEREST_PRODUCT_CATEGORIES"] = getPINTERESTPRODUCTCATEGORIES().toJson();
+
+
+
+
+
+
+	object["pRODUCT_GROUP"] = getPRODUCTGROUP().toJson();
+
+
     return object;
 
 }
@@ -791,7 +813,7 @@ CatalogsProductGroupFilterKeys::getMINPRICE()
 }
 
 void
-CatalogsProductGroupFilterKeys::setMINPRICE(CatalogsProductGroupPricingCriteria  mIN_PRICE)
+CatalogsProductGroupFilterKeys::setMINPRICE(CatalogsProductGroupPricingCriteria mIN_PRICE)
 {
 	this->mIN_PRICE = mIN_PRICE;
 }
@@ -803,7 +825,7 @@ CatalogsProductGroupFilterKeys::getMAXPRICE()
 }
 
 void
-CatalogsProductGroupFilterKeys::setMAXPRICE(CatalogsProductGroupPricingCriteria  mAX_PRICE)
+CatalogsProductGroupFilterKeys::setMAXPRICE(CatalogsProductGroupPricingCriteria mAX_PRICE)
 {
 	this->mAX_PRICE = mAX_PRICE;
 }
@@ -815,7 +837,7 @@ CatalogsProductGroupFilterKeys::getCURRENCY()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCURRENCY(CatalogsProductGroupCurrencyCriteria  cURRENCY)
+CatalogsProductGroupFilterKeys::setCURRENCY(CatalogsProductGroupCurrencyCriteria cURRENCY)
 {
 	this->cURRENCY = cURRENCY;
 }
@@ -827,7 +849,7 @@ CatalogsProductGroupFilterKeys::getITEMID()
 }
 
 void
-CatalogsProductGroupFilterKeys::setITEMID(CatalogsProductGroupMultipleStringCriteria  iTEM_ID)
+CatalogsProductGroupFilterKeys::setITEMID(CatalogsProductGroupMultipleStringCriteria iTEM_ID)
 {
 	this->iTEM_ID = iTEM_ID;
 }
@@ -839,7 +861,7 @@ CatalogsProductGroupFilterKeys::getAVAILABILITY()
 }
 
 void
-CatalogsProductGroupFilterKeys::setAVAILABILITY(CatalogsProductGroupMultipleStringCriteria  aVAILABILITY)
+CatalogsProductGroupFilterKeys::setAVAILABILITY(CatalogsProductGroupMultipleStringCriteria aVAILABILITY)
 {
 	this->aVAILABILITY = aVAILABILITY;
 }
@@ -851,7 +873,7 @@ CatalogsProductGroupFilterKeys::getBRAND()
 }
 
 void
-CatalogsProductGroupFilterKeys::setBRAND(CatalogsProductGroupMultipleStringCriteria  bRAND)
+CatalogsProductGroupFilterKeys::setBRAND(CatalogsProductGroupMultipleStringCriteria bRAND)
 {
 	this->bRAND = bRAND;
 }
@@ -863,7 +885,7 @@ CatalogsProductGroupFilterKeys::getCONDITION()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCONDITION(CatalogsProductGroupMultipleStringCriteria  cONDITION)
+CatalogsProductGroupFilterKeys::setCONDITION(CatalogsProductGroupMultipleStringCriteria cONDITION)
 {
 	this->cONDITION = cONDITION;
 }
@@ -875,7 +897,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMLABEL0()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_0)
+CatalogsProductGroupFilterKeys::setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_0)
 {
 	this->cUSTOM_LABEL_0 = cUSTOM_LABEL_0;
 }
@@ -887,7 +909,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMLABEL1()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_1)
+CatalogsProductGroupFilterKeys::setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_1)
 {
 	this->cUSTOM_LABEL_1 = cUSTOM_LABEL_1;
 }
@@ -899,7 +921,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMLABEL2()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_2)
+CatalogsProductGroupFilterKeys::setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_2)
 {
 	this->cUSTOM_LABEL_2 = cUSTOM_LABEL_2;
 }
@@ -911,7 +933,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMLABEL3()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_3)
+CatalogsProductGroupFilterKeys::setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_3)
 {
 	this->cUSTOM_LABEL_3 = cUSTOM_LABEL_3;
 }
@@ -923,7 +945,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMLABEL4()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_4)
+CatalogsProductGroupFilterKeys::setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_4)
 {
 	this->cUSTOM_LABEL_4 = cUSTOM_LABEL_4;
 }
@@ -935,7 +957,7 @@ CatalogsProductGroupFilterKeys::getITEMGROUPID()
 }
 
 void
-CatalogsProductGroupFilterKeys::setITEMGROUPID(CatalogsProductGroupMultipleStringCriteria  iTEM_GROUP_ID)
+CatalogsProductGroupFilterKeys::setITEMGROUPID(CatalogsProductGroupMultipleStringCriteria iTEM_GROUP_ID)
 {
 	this->iTEM_GROUP_ID = iTEM_GROUP_ID;
 }
@@ -947,7 +969,7 @@ CatalogsProductGroupFilterKeys::getGENDER()
 }
 
 void
-CatalogsProductGroupFilterKeys::setGENDER(CatalogsProductGroupMultipleGenderCriteria  gENDER)
+CatalogsProductGroupFilterKeys::setGENDER(CatalogsProductGroupMultipleGenderCriteria gENDER)
 {
 	this->gENDER = gENDER;
 }
@@ -959,7 +981,7 @@ CatalogsProductGroupFilterKeys::getMEDIATYPE()
 }
 
 void
-CatalogsProductGroupFilterKeys::setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria  mEDIA_TYPE)
+CatalogsProductGroupFilterKeys::setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria mEDIA_TYPE)
 {
 	this->mEDIA_TYPE = mEDIA_TYPE;
 }
@@ -971,7 +993,7 @@ CatalogsProductGroupFilterKeys::getPRODUCTTYPE4()
 }
 
 void
-CatalogsProductGroupFilterKeys::setPRODUCTTYPE4(CatalogsProductGroupMultipleStringListCriteria  pRODUCT_TYPE_4)
+CatalogsProductGroupFilterKeys::setPRODUCTTYPE4(CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_4)
 {
 	this->pRODUCT_TYPE_4 = pRODUCT_TYPE_4;
 }
@@ -983,7 +1005,7 @@ CatalogsProductGroupFilterKeys::getPRODUCTTYPE3()
 }
 
 void
-CatalogsProductGroupFilterKeys::setPRODUCTTYPE3(CatalogsProductGroupMultipleStringListCriteria  pRODUCT_TYPE_3)
+CatalogsProductGroupFilterKeys::setPRODUCTTYPE3(CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_3)
 {
 	this->pRODUCT_TYPE_3 = pRODUCT_TYPE_3;
 }
@@ -995,7 +1017,7 @@ CatalogsProductGroupFilterKeys::getPRODUCTTYPE2()
 }
 
 void
-CatalogsProductGroupFilterKeys::setPRODUCTTYPE2(CatalogsProductGroupMultipleStringListCriteria  pRODUCT_TYPE_2)
+CatalogsProductGroupFilterKeys::setPRODUCTTYPE2(CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_2)
 {
 	this->pRODUCT_TYPE_2 = pRODUCT_TYPE_2;
 }
@@ -1007,7 +1029,7 @@ CatalogsProductGroupFilterKeys::getPRODUCTTYPE1()
 }
 
 void
-CatalogsProductGroupFilterKeys::setPRODUCTTYPE1(CatalogsProductGroupMultipleStringListCriteria  pRODUCT_TYPE_1)
+CatalogsProductGroupFilterKeys::setPRODUCTTYPE1(CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_1)
 {
 	this->pRODUCT_TYPE_1 = pRODUCT_TYPE_1;
 }
@@ -1019,7 +1041,7 @@ CatalogsProductGroupFilterKeys::getPRODUCTTYPE0()
 }
 
 void
-CatalogsProductGroupFilterKeys::setPRODUCTTYPE0(CatalogsProductGroupMultipleStringListCriteria  pRODUCT_TYPE_0)
+CatalogsProductGroupFilterKeys::setPRODUCTTYPE0(CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_0)
 {
 	this->pRODUCT_TYPE_0 = pRODUCT_TYPE_0;
 }
@@ -1031,7 +1053,7 @@ CatalogsProductGroupFilterKeys::getGOOGLEPRODUCTCATEGORY6()
 }
 
 void
-CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY6(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_6)
+CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY6(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_6)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_6 = gOOGLE_PRODUCT_CATEGORY_6;
 }
@@ -1043,7 +1065,7 @@ CatalogsProductGroupFilterKeys::getGOOGLEPRODUCTCATEGORY5()
 }
 
 void
-CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY5(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_5)
+CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY5(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_5)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_5 = gOOGLE_PRODUCT_CATEGORY_5;
 }
@@ -1055,7 +1077,7 @@ CatalogsProductGroupFilterKeys::getGOOGLEPRODUCTCATEGORY4()
 }
 
 void
-CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY4(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_4)
+CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY4(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_4)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_4 = gOOGLE_PRODUCT_CATEGORY_4;
 }
@@ -1067,7 +1089,7 @@ CatalogsProductGroupFilterKeys::getGOOGLEPRODUCTCATEGORY3()
 }
 
 void
-CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY3(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_3)
+CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY3(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_3)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_3 = gOOGLE_PRODUCT_CATEGORY_3;
 }
@@ -1079,7 +1101,7 @@ CatalogsProductGroupFilterKeys::getGOOGLEPRODUCTCATEGORY2()
 }
 
 void
-CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY2(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_2)
+CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY2(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_2)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_2 = gOOGLE_PRODUCT_CATEGORY_2;
 }
@@ -1091,7 +1113,7 @@ CatalogsProductGroupFilterKeys::getGOOGLEPRODUCTCATEGORY1()
 }
 
 void
-CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY1(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_1)
+CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY1(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_1)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_1 = gOOGLE_PRODUCT_CATEGORY_1;
 }
@@ -1103,21 +1125,9 @@ CatalogsProductGroupFilterKeys::getGOOGLEPRODUCTCATEGORY0()
 }
 
 void
-CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY0(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_0)
+CatalogsProductGroupFilterKeys::setGOOGLEPRODUCTCATEGORY0(CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_0)
 {
 	this->gOOGLE_PRODUCT_CATEGORY_0 = gOOGLE_PRODUCT_CATEGORY_0;
-}
-
-CatalogsProductGroupMultipleStringCriteria
-CatalogsProductGroupFilterKeys::getPRODUCTGROUP()
-{
-	return pRODUCT_GROUP;
-}
-
-void
-CatalogsProductGroupFilterKeys::setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria  pRODUCT_GROUP)
-{
-	this->pRODUCT_GROUP = pRODUCT_GROUP;
 }
 
 CatalogsProductGroupUint32Criteria
@@ -1127,7 +1137,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMNUMBER0()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMNUMBER0(CatalogsProductGroupUint32Criteria  cUSTOM_NUMBER_0)
+CatalogsProductGroupFilterKeys::setCUSTOMNUMBER0(CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_0)
 {
 	this->cUSTOM_NUMBER_0 = cUSTOM_NUMBER_0;
 }
@@ -1139,7 +1149,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMNUMBER1()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMNUMBER1(CatalogsProductGroupUint32Criteria  cUSTOM_NUMBER_1)
+CatalogsProductGroupFilterKeys::setCUSTOMNUMBER1(CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_1)
 {
 	this->cUSTOM_NUMBER_1 = cUSTOM_NUMBER_1;
 }
@@ -1151,7 +1161,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMNUMBER2()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMNUMBER2(CatalogsProductGroupUint32Criteria  cUSTOM_NUMBER_2)
+CatalogsProductGroupFilterKeys::setCUSTOMNUMBER2(CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_2)
 {
 	this->cUSTOM_NUMBER_2 = cUSTOM_NUMBER_2;
 }
@@ -1163,7 +1173,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMNUMBER3()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMNUMBER3(CatalogsProductGroupUint32Criteria  cUSTOM_NUMBER_3)
+CatalogsProductGroupFilterKeys::setCUSTOMNUMBER3(CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_3)
 {
 	this->cUSTOM_NUMBER_3 = cUSTOM_NUMBER_3;
 }
@@ -1175,7 +1185,7 @@ CatalogsProductGroupFilterKeys::getCUSTOMNUMBER4()
 }
 
 void
-CatalogsProductGroupFilterKeys::setCUSTOMNUMBER4(CatalogsProductGroupUint32Criteria  cUSTOM_NUMBER_4)
+CatalogsProductGroupFilterKeys::setCUSTOMNUMBER4(CatalogsProductGroupUint32Criteria cUSTOM_NUMBER_4)
 {
 	this->cUSTOM_NUMBER_4 = cUSTOM_NUMBER_4;
 }
@@ -1187,9 +1197,33 @@ CatalogsProductGroupFilterKeys::getTITLEKEYWORDS()
 }
 
 void
-CatalogsProductGroupFilterKeys::setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS)
+CatalogsProductGroupFilterKeys::setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria tITLE_KEYWORDS)
 {
 	this->tITLE_KEYWORDS = tITLE_KEYWORDS;
+}
+
+CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+CatalogsProductGroupFilterKeys::getPINTERESTPRODUCTCATEGORIES()
+{
+	return pINTEREST_PRODUCT_CATEGORIES;
+}
+
+void
+CatalogsProductGroupFilterKeys::setPINTERESTPRODUCTCATEGORIES(CatalogsProductGroupMultiplePinterestProductCategoryCriteria pINTEREST_PRODUCT_CATEGORIES)
+{
+	this->pINTEREST_PRODUCT_CATEGORIES = pINTEREST_PRODUCT_CATEGORIES;
+}
+
+CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterKeys::getPRODUCTGROUP()
+{
+	return pRODUCT_GROUP;
+}
+
+void
+CatalogsProductGroupFilterKeys::setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria pRODUCT_GROUP)
+{
+	this->pRODUCT_GROUP = pRODUCT_GROUP;
 }
 
 

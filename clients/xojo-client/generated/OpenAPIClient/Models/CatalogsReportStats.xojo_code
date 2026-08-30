@@ -2,11 +2,6 @@
 Protected Class CatalogsReportStats
 
 	#tag Property, Flags = &h0
-		report_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			ID of the catalog entity.
 		#tag EndNote
@@ -47,6 +42,11 @@ Protected Class CatalogsReportStats
 
 
 	#tag Property, Flags = &h0
+		report_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
 		#tag EndNote
@@ -72,7 +72,6 @@ Protected Class CatalogsReportStats
 
     #tag Enum, Name = Report_typeEnum, Type = Integer, Flags = &h0
         
-        FeedIngestionIssues
         DistributionIssues
         
     #tag EndEnum
@@ -89,8 +88,6 @@ Protected Class CatalogsReportStats
 		Shared Function Report_typeEnumToString(value As Report_typeEnum) As String
 		  Select Case value
 		    
-		    Case Report_typeEnum.FeedIngestionIssues
-		      Return "FEED_INGESTION_ISSUES"
 		    Case Report_typeEnum.DistributionIssues
 		      Return "DISTRIBUTION_ISSUES"
 		    

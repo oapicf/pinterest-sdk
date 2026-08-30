@@ -5,10 +5,13 @@ type CatalogsRetailItemResponse struct {
 
 	Attributes ItemAttributes `json:"attributes,omitempty"`
 
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id,omitempty"`
+
+	// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	ItemResponseKind string `json:"item_response_kind"`
 
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`

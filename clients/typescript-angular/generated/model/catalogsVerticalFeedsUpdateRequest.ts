@@ -13,7 +13,6 @@ import { CatalogsHotelFeedsUpdateRequest } from './catalogsHotelFeedsUpdateReque
 import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
 import { CatalogsCreativeAssetsFeedsUpdateRequest } from './catalogsCreativeAssetsFeedsUpdateRequest';
-import { CatalogsType } from './catalogsType';
 import { CatalogsFormat } from './catalogsFormat';
 import { NullableCurrency } from './nullableCurrency';
 import { CatalogsRetailFeedsUpdateRequest } from './catalogsRetailFeedsUpdateRequest';

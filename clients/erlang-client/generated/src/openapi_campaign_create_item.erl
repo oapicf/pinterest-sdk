@@ -1,0 +1,74 @@
+-module(openapi_campaign_create_item).
+
+-export([encode/1]).
+
+-export_type([openapi_campaign_create_item/0]).
+
+-type openapi_campaign_create_item() ::
+    #{ 'ad_account_id' => binary(),
+       'app_id' => binary(),
+       'app_platform' => openapi_mobile_app_platform:openapi_mobile_app_platform(),
+       'bid_options' => openapi_campaign_bid_options:openapi_campaign_bid_options(),
+       'daily_spend_cap' => integer(),
+       'default_ad_group_budget_in_micro_currency' => integer(),
+       'end_time' => integer(),
+       'intended_promotion_type' => openapi_intended_promotion_type:openapi_intended_promotion_type(),
+       'is_automated_campaign' => boolean(),
+       'is_campaign_budget_optimization' => boolean(),
+       'is_flexible_daily_budgets' => boolean(),
+       'is_ltv_optimized' => boolean(),
+       'is_performance_plus' => boolean(),
+       'is_top_of_search' => boolean(),
+       'lifetime_spend_cap' => integer(),
+       'name' := binary(),
+       'objective_type' := openapi_conversion_objective_type:openapi_conversion_objective_type(),
+       'order_line_id' => binary(),
+       'start_time' => integer(),
+       'status' => openapi_entity_status:openapi_entity_status(),
+       'tracking_urls' => openapi_tracking_urls:openapi_tracking_urls()
+     }.
+
+encode(#{ 'ad_account_id' := AdAccountId,
+          'app_id' := AppId,
+          'app_platform' := AppPlatform,
+          'bid_options' := BidOptions,
+          'daily_spend_cap' := DailySpendCap,
+          'default_ad_group_budget_in_micro_currency' := DefaultAdGroupBudgetInMicroCurrency,
+          'end_time' := EndTime,
+          'intended_promotion_type' := IntendedPromotionType,
+          'is_automated_campaign' := IsAutomatedCampaign,
+          'is_campaign_budget_optimization' := IsCampaignBudgetOptimization,
+          'is_flexible_daily_budgets' := IsFlexibleDailyBudgets,
+          'is_ltv_optimized' := IsLtvOptimized,
+          'is_performance_plus' := IsPerformancePlus,
+          'is_top_of_search' := IsTopOfSearch,
+          'lifetime_spend_cap' := LifetimeSpendCap,
+          'name' := Name,
+          'objective_type' := ObjectiveType,
+          'order_line_id' := OrderLineId,
+          'start_time' := StartTime,
+          'status' := Status,
+          'tracking_urls' := TrackingUrls
+        }) ->
+    #{ 'ad_account_id' => AdAccountId,
+       'app_id' => AppId,
+       'app_platform' => AppPlatform,
+       'bid_options' => BidOptions,
+       'daily_spend_cap' => DailySpendCap,
+       'default_ad_group_budget_in_micro_currency' => DefaultAdGroupBudgetInMicroCurrency,
+       'end_time' => EndTime,
+       'intended_promotion_type' => IntendedPromotionType,
+       'is_automated_campaign' => IsAutomatedCampaign,
+       'is_campaign_budget_optimization' => IsCampaignBudgetOptimization,
+       'is_flexible_daily_budgets' => IsFlexibleDailyBudgets,
+       'is_ltv_optimized' => IsLtvOptimized,
+       'is_performance_plus' => IsPerformancePlus,
+       'is_top_of_search' => IsTopOfSearch,
+       'lifetime_spend_cap' => LifetimeSpendCap,
+       'name' => Name,
+       'objective_type' => ObjectiveType,
+       'order_line_id' => OrderLineId,
+       'start_time' => StartTime,
+       'status' => Status,
+       'tracking_urls' => TrackingUrls
+     }.

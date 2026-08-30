@@ -17,12 +17,20 @@ typedef struct image_metadata_t image_metadata_t;
 
 #include "image_size.h"
 
+// Enum ITEMTYPE for image_metadata
+
+typedef enum  { pinterest_rest_api_image_metadata_ITEMTYPE_NULL = 0, pinterest_rest_api_image_metadata_ITEMTYPE_image } pinterest_rest_api_image_metadata_ITEMTYPE_e;
+
+char* image_metadata_item_type_ToString(pinterest_rest_api_image_metadata_ITEMTYPE_e item_type);
+
+pinterest_rest_api_image_metadata_ITEMTYPE_e image_metadata_item_type_FromString(char* item_type);
+
 
 
 typedef struct image_metadata_t {
     char *description; // string
     struct image_size_t *images; //model
-    char *item_type; // string
+    pinterest_rest_api_image_metadata_ITEMTYPE_e item_type; //enum
     char *link; // string
     char *title; // string
 
@@ -32,7 +40,7 @@ typedef struct image_metadata_t {
 __attribute__((deprecated)) image_metadata_t *image_metadata_create(
     char *description,
     image_size_t *images,
-    char *item_type,
+    pinterest_rest_api_image_metadata_ITEMTYPE_e item_type,
     char *link,
     char *title
 );

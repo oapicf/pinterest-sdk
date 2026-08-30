@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.Label;
+import org.openapitools.model.LabelErrorData;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,13 +19,13 @@ import java.util.Objects;
 
 public class LabelError   {
   
-  private Label data;
+  private LabelErrorData data;
 
   private List<String> errorMessages = new ArrayList<>();
 
   /**
    **/
-  public LabelError data(Label data) {
+  public LabelError data(LabelErrorData data) {
     this.data = data;
     return this;
   }
@@ -33,10 +33,10 @@ public class LabelError   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  public Label getData() {
+  public LabelErrorData getData() {
     return data;
   }
-  public void setData(Label data) {
+  public void setData(LabelErrorData data) {
     this.data = data;
   }
 
@@ -102,10 +102,7 @@ public class LabelError   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

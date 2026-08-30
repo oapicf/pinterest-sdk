@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *AvailabilityFilter) GetAVAILABILITY() CatalogsProductGroupMultipleStrin
 
 // GetAVAILABILITYOk returns a tuple with the AVAILABILITY field value
 // and a boolean to check if the value has been set.
-func (o *AvailabilityFilter) GetAVAILABILITYOk() (CatalogsProductGroupMultipleStringCriteria, bool) {
+func (o *AvailabilityFilter) GetAVAILABILITYOk() (*CatalogsProductGroupMultipleStringCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupMultipleStringCriteria{}, false
+		return nil, false
 	}
-	return o.AVAILABILITY, true
+	return &o.AVAILABILITY, true
 }
 
 // SetAVAILABILITY sets field value

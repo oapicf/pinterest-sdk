@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | **NSString*** | Profile about description. | [optional] 
-**accountType** | **NSString*** | Type of account | [optional] 
-**boardCount** | **NSNumber*** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
+**accountType** | [**OAIUserAccountType***](OAIUserAccountType.md) | Type of account | [optional] 
+**boardCount** | **NSNumber*** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
 **businessName** | **NSString*** |  | [optional] 
 **followerCount** | **NSNumber*** | User account follower count. | [optional] [readonly] 
 **followingCount** | **NSNumber*** | User account following count. | [optional] [readonly] 

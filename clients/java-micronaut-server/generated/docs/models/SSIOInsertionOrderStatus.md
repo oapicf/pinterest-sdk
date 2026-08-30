@@ -2,6 +2,8 @@
 
 # SSIOInsertionOrderStatus
 
+SSIO insertion order status item in a list response.
+
 The class is defined in **[SSIOInsertionOrderStatus.java](../../src/main/java/org/openapitools/model/SSIOInsertionOrderStatus.java)**
 
 ## Properties

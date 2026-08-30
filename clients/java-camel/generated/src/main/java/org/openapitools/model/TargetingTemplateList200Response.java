@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -9,30 +10,30 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TargetingTemplateGetResponseData;
+import org.openapitools.model.TargetingTemplate;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * TargetingTemplateList200Response
  */
 
 @JsonTypeName("targeting_template_list_200_response")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingTemplateList200Response {
 
   private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   @Valid
-  private List<@Valid TargetingTemplateGetResponseData> items = new ArrayList<>();
+  private List<@Valid TargetingTemplate> items = new ArrayList<>();
 
   public TargetingTemplateList200Response() {
     super();
@@ -41,7 +42,7 @@ public class TargetingTemplateList200Response {
   /**
    * Constructor with only required parameters
    */
-  public TargetingTemplateList200Response(List<@Valid TargetingTemplateGetResponseData> items) {
+  public TargetingTemplateList200Response(List<@Valid TargetingTemplate> items) {
     this.items = items;
   }
 
@@ -65,12 +66,12 @@ public class TargetingTemplateList200Response {
     this.bookmark = bookmark;
   }
 
-  public TargetingTemplateList200Response items(List<@Valid TargetingTemplateGetResponseData> items) {
+  public TargetingTemplateList200Response items(List<@Valid TargetingTemplate> items) {
     this.items = items;
     return this;
   }
 
-  public TargetingTemplateList200Response addItemsItem(TargetingTemplateGetResponseData itemsItem) {
+  public TargetingTemplateList200Response addItemsItem(TargetingTemplate itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -85,11 +86,11 @@ public class TargetingTemplateList200Response {
   @NotNull @Valid 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
-  public List<@Valid TargetingTemplateGetResponseData> getItems() {
+  public List<@Valid TargetingTemplate> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid TargetingTemplateGetResponseData> items) {
+  public void setItems(List<@Valid TargetingTemplate> items) {
     this.items = items;
   }
 
@@ -137,10 +138,7 @@ public class TargetingTemplateList200Response {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

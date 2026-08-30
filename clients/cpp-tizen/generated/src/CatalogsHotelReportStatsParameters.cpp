@@ -24,7 +24,7 @@ void
 CatalogsHotelReportStatsParameters::__init()
 {
 	//catalog_type = std::string();
-	//report = new CatalogsHotelReportStatsParameters_report();
+	//report = new CatalogsHotelReportStatsParametersReport();
 }
 
 void
@@ -64,11 +64,11 @@ CatalogsHotelReportStatsParameters::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsHotelReportStatsParameters_report")) {
-			jsonToValue(&report, node, "CatalogsHotelReportStatsParameters_report", "CatalogsHotelReportStatsParameters_report");
+		if (isprimitive("CatalogsHotelReportStatsParametersReport")) {
+			jsonToValue(&report, node, "CatalogsHotelReportStatsParametersReport", "CatalogsHotelReportStatsParametersReport");
 		} else {
 			
-			CatalogsHotelReportStatsParameters_report* obj = static_cast<CatalogsHotelReportStatsParameters_report*> (&report);
+			CatalogsHotelReportStatsParametersReport* obj = static_cast<CatalogsHotelReportStatsParametersReport*> (&report);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -94,13 +94,13 @@ CatalogsHotelReportStatsParameters::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
-	if (isprimitive("CatalogsHotelReportStatsParameters_report")) {
-		CatalogsHotelReportStatsParameters_report obj = getReport();
-		node = converttoJson(&obj, "CatalogsHotelReportStatsParameters_report", "");
+	if (isprimitive("CatalogsHotelReportStatsParametersReport")) {
+		CatalogsHotelReportStatsParametersReport obj = getReport();
+		node = converttoJson(&obj, "CatalogsHotelReportStatsParametersReport", "");
 	}
 	else {
 		
-		CatalogsHotelReportStatsParameters_report obj = static_cast<CatalogsHotelReportStatsParameters_report> (getReport());
+		CatalogsHotelReportStatsParametersReport obj = static_cast<CatalogsHotelReportStatsParametersReport> (getReport());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -128,14 +128,14 @@ CatalogsHotelReportStatsParameters::setCatalogType(std::string  catalog_type)
 	this->catalog_type = catalog_type;
 }
 
-CatalogsHotelReportStatsParameters_report
+CatalogsHotelReportStatsParametersReport
 CatalogsHotelReportStatsParameters::getReport()
 {
 	return report;
 }
 
 void
-CatalogsHotelReportStatsParameters::setReport(CatalogsHotelReportStatsParameters_report  report)
+CatalogsHotelReportStatsParameters::setReport(CatalogsHotelReportStatsParametersReport  report)
 {
 	this->report = report;
 }

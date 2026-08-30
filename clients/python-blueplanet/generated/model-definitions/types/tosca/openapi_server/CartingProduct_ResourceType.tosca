@@ -1,0 +1,58 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CartingProduct"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CartingProduct"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CartingRetailer = openapi_server.resourceTypes.CartingRetailer
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CartingProduct {
+    title = CartingProduct
+    description = CartingProduct
+    derivedFrom = Root
+    properties {
+        carting_product_id {
+          type =  string
+          description = "the internal Pinterest carting product id (different from industry product id)"
+          optional = true
+        }
+        display_preferred_retailers_only {
+          type =  boolean
+          description = "Whether to display only the preferred retailers for the carting product"
+          optional = false
+        }
+        display_product_price {
+          type =  boolean
+          description = "Whether to display the price for the carting product"
+          optional = false
+        }
+        preferred_retailers {
+          type = array
+          items.type = CartingRetailer
+          description = "A sorted array of preferred retailers for the carting product"
+          optional = false
+        }
+        randomize_preferred_retailers {
+          type =  boolean
+          description = "Whether to randomize preferred retailers for the carting product"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CartingProduct {
+    title = CartingProduct
+    description = CartingProduct
+    implements = openapi_server.resourceTypes.CartingProduct
+
+  }
+}

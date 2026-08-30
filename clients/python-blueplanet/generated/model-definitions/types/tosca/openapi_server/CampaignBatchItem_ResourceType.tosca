@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignBatchItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignBatchItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignBatchResponseData = openapi_server.resourceTypes.CampaignBatchResponseData
+  Exception = openapi_server.resourceTypes.Exception
+}
+resourceTypes {
+
+  CampaignBatchItem {
+    title = CampaignBatchItem
+    description = CampaignBatchItem
+    derivedFrom = Root
+    properties {
+        data {
+          type = CampaignBatchResponseData
+          description = "Campaign data on success."
+          optional = false
+        }
+        exceptions {
+          type = array
+          items.type = Exception
+          description = "Exceptions on failure."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignBatchItem {
+    title = CampaignBatchItem
+    description = CampaignBatchItem
+    implements = openapi_server.resourceTypes.CampaignBatchItem
+
+  }
+}

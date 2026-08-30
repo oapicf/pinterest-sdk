@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PinType {
+    title = PinType
+    description = PinType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinType {
+    title = PinType
+    description = PinType
+    implements = openapi_server.resourceTypes.PinType
+
+  }
+}

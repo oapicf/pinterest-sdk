@@ -3,6 +3,7 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class VideoMetadataWithItemType   {
   @JsonProperty("cover_image_url")
   private String coverImageUrl;
@@ -23,11 +24,43 @@ public class VideoMetadataWithItemType   {
   @JsonProperty("height")
   private Integer height;
 
+  /**
+   * Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+   */
+  public enum ItemTypeEnum {
+    VIDEO("video");
+
+    private String value;
+
+    ItemTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemTypeEnum fromValue(String text) {
+      for (ItemTypeEnum b : ItemTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("item_type")
-  private String itemType;
+  private ItemTypeEnum itemType;
 
   @JsonProperty("video_url")
   private String videoUrl;
+
+  @JsonProperty("video_url_hls")
+  private String videoUrlHls;
 
   @JsonProperty("width")
   private Integer width;
@@ -86,19 +119,20 @@ public class VideoMetadataWithItemType   {
   }
 
   /**
+   * Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
    **/
-  public VideoMetadataWithItemType itemType(String itemType) {
+  public VideoMetadataWithItemType itemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.")
   @JsonProperty("item_type")
-  public String getItemType() {
+  public ItemTypeEnum getItemType() {
     return itemType;
   }
-  public void setItemType(String itemType) {
+  public void setItemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
   }
 
@@ -118,6 +152,24 @@ public class VideoMetadataWithItemType   {
   }
   public void setVideoUrl(String videoUrl) {
     this.videoUrl = videoUrl;
+  }
+
+  /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   **/
+  public VideoMetadataWithItemType videoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Video url (HLS).  **Note:** This field is limited and not available to all apps.")
+  @JsonProperty("video_url_hls")
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
   }
 
   /**
@@ -153,12 +205,13 @@ public class VideoMetadataWithItemType   {
         Objects.equals(height, videoMetadataWithItemType.height) &&
         Objects.equals(itemType, videoMetadataWithItemType.itemType) &&
         Objects.equals(videoUrl, videoMetadataWithItemType.videoUrl) &&
+        Objects.equals(videoUrlHls, videoMetadataWithItemType.videoUrlHls) &&
         Objects.equals(width, videoMetadataWithItemType.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coverImageUrl, duration, height, itemType, videoUrl, width);
+    return Objects.hash(coverImageUrl, duration, height, itemType, videoUrl, videoUrlHls, width);
   }
 
   @Override
@@ -171,6 +224,7 @@ public class VideoMetadataWithItemType   {
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -181,10 +235,7 @@ public class VideoMetadataWithItemType   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

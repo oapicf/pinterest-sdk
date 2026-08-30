@@ -1,14 +1,14 @@
 
 # CatalogsHotelItemsBatch
 
-Object describing the catalogs hotel items batch
+Object describing the catalogs hotel items batch. If specified, you must provide all properties.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
 `batchId` | string
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `completedTime` | Date
 `createdTime` | Date
 `items` | [Array&lt;HotelProcessingRecord&gt;](HotelProcessingRecord.md)
@@ -21,10 +21,10 @@ import type { CatalogsHotelItemsBatch } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "batchId": 595953100599279259-66753b9bb65c46c49bd8503b27fecf9e,
+  "batchId": 595953100599279259,
   "catalogType": null,
-  "completedTime": null,
-  "createdTime": null,
+  "completedTime": 2024-01-01T20:20Z,
+  "createdTime": 2024-01-01T20:10:40Z,
   "items": null,
   "status": null,
 } satisfies CatalogsHotelItemsBatch

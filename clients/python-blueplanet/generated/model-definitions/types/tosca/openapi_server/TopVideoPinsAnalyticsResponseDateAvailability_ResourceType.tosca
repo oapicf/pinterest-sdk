@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TopVideoPinsAnalyticsResponseDateAvailability"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TopVideoPinsAnalyticsResponseDateAvailability"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TopVideoPinsAnalyticsResponseDateAvailability {
+    title = TopVideoPinsAnalyticsResponseDateAvailability
+    description = TopVideoPinsAnalyticsResponseDateAvailability
+    derivedFrom = Root
+    properties {
+        is_realtime {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        latest_available_timestamp {
+          type =  
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TopVideoPinsAnalyticsResponseDateAvailability {
+    title = TopVideoPinsAnalyticsResponseDateAvailability
+    description = TopVideoPinsAnalyticsResponseDateAvailability
+    implements = openapi_server.resourceTypes.TopVideoPinsAnalyticsResponseDateAvailability
+
+  }
+}

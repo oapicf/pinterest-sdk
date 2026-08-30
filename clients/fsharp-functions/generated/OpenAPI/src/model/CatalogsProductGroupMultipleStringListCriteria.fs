@@ -13,7 +13,7 @@ module CatalogsProductGroupMultipleStringListCriteria =
     [<JsonProperty(PropertyName = "negated")>]
     Negated : bool;
     [<JsonProperty(PropertyName = "values")>]
-    Values : string[][];
+    Values : list[];
   }
 
   //#endregion

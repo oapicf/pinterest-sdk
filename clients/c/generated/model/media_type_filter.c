@@ -12,18 +12,21 @@ static media_type_filter_t *media_type_filter_create_internal(
     if (!media_type_filter_local_var) {
         return NULL;
     }
-    media_type_filter_local_var->media_type = media_type;
-
+    memset(media_type_filter_local_var, 0, sizeof(media_type_filter_t));
     media_type_filter_local_var->_library_owned = 1;
+    media_type_filter_local_var->media_type = media_type;
     return media_type_filter_local_var;
 }
 
 __attribute__((deprecated)) media_type_filter_t *media_type_filter_create(
     catalogs_product_group_multiple_media_types_criteria_t *media_type
     ) {
-    return media_type_filter_create_internal (
+    media_type_filter_t *result = media_type_filter_create_internal (
         media_type
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void media_type_filter_free(media_type_filter_t *media_type_filter) {
@@ -36,7 +39,7 @@ void media_type_filter_free(media_type_filter_t *media_type_filter) {
     }
     listEntry_t *listEntry;
     if (media_type_filter->media_type) {
-        object_free(media_type_filter->media_type);
+        catalogs_product_group_multiple_media_types_criteria_free(media_type_filter->media_type);
         media_type_filter->media_type = NULL;
     }
     free(media_type_filter);
@@ -49,11 +52,11 @@ cJSON *media_type_filter_convertToJSON(media_type_filter_t *media_type_filter) {
     if (!media_type_filter->media_type) {
         goto fail;
     }
-    cJSON *media_type_object = object_convertToJSON(media_type_filter->media_type);
-    if(media_type_object == NULL) {
+    cJSON *media_type_local_JSON = catalogs_product_group_multiple_media_types_criteria_convertToJSON(media_type_filter->media_type);
+    if(media_type_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "MEDIA_TYPE", media_type_object);
+    cJSON_AddItemToObject(item, "MEDIA_TYPE", media_type_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ media_type_filter_t *media_type_filter_parseFromJSON(cJSON *media_type_filterJSO
 
     media_type_filter_t *media_type_filter_local_var = NULL;
 
+    // define the local variable for media_type_filter->media_type
+    catalogs_product_group_multiple_media_types_criteria_t *media_type_local_nonprim = NULL;
+
     // media_type_filter->media_type
     cJSON *media_type = cJSON_GetObjectItemCaseSensitive(media_type_filterJSON, "MEDIA_TYPE");
     if (cJSON_IsNull(media_type)) {
@@ -79,17 +85,25 @@ media_type_filter_t *media_type_filter_parseFromJSON(cJSON *media_type_filterJSO
         goto end;
     }
 
-    object_t *media_type_local_object = NULL;
     
-    media_type_local_object = object_parseFromJSON(media_type); //object
+    media_type_local_nonprim = catalogs_product_group_multiple_media_types_criteria_parseFromJSON(media_type); //nonprimitive
+
 
 
     media_type_filter_local_var = media_type_filter_create_internal (
-        media_type_local_object
+        media_type_local_nonprim
         );
+
+    if (!media_type_filter_local_var) {
+        goto end;
+    }
 
     return media_type_filter_local_var;
 end:
+    if (media_type_local_nonprim) {
+        catalogs_product_group_multiple_media_types_criteria_free(media_type_local_nonprim);
+        media_type_local_nonprim = NULL;
+    }
     return NULL;
 
 }

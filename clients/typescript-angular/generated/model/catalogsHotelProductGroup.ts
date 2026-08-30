@@ -13,7 +13,7 @@ import { CatalogsHotelProductGroupType } from './catalogsHotelProductGroupType';
 
 export interface CatalogsHotelProductGroup { 
     /**
-     * Catalog id pertaining to the hotel product group.
+     * Catalog ID pertaining to the product group.
      */
     catalog_id: string;
     catalog_type: CatalogsHotelProductGroup.CatalogTypeEnum;
@@ -24,11 +24,11 @@ export interface CatalogsHotelProductGroup {
     description?: string | null;
     filters: CatalogsHotelProductGroupFilters;
     /**
-     * ID of the hotel product group.
+     * ID of the catalog product group.
      */
     id: string;
     /**
-     * Name of hotel product group
+     * Name of catalog product group
      */
     name?: string;
     type: CatalogsHotelProductGroupType;

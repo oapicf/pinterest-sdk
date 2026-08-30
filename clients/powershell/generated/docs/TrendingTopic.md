@@ -4,7 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | **String** | Description of the trending topic | 
-**PercentGrowthMom** | **Int32** | Month-over-month growth percentage | 
+**Id** | **String** | Unique identifier for the trending topic | 
+**PercentGrowthMom** | **Int32** | Month-over-month growth percentage | [optional] 
 **Pins** | [**TrendingPin[]**](TrendingPin.md) | Array of pin images related to this trend (up to 6) | 
 **RelatedInterests** | **String[]** | List of related interest categories | 
 **RelatedSearches** | **String[]** | List of related search terms | 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $TrendingTopic = Initialize-PSOpenAPIToolsTrendingTopic  -Description null `
+ -Id null `
  -PercentGrowthMom null `
  -Pins null `
  -RelatedInterests null `

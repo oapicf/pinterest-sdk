@@ -47,11 +47,25 @@ public:
 
 	/*! \brief Get 
 	 */
+	long long getAppLinks();
+
+	/*! \brief Set 
+	 */
+	void setAppLinks(long long  app_links);
+	/*! \brief Get 
+	 */
 	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
 	void setCatalogType(std::string  catalog_type);
+	/*! \brief Get 
+	 */
+	long long getImages();
+
+	/*! \brief Set 
+	 */
+	void setImages(long long  images);
 	/*! \brief Get 
 	 */
 	long long getTotal();
@@ -68,7 +82,9 @@ public:
 	void setVideos(long long  videos);
 
 private:
+	long long app_links;
 	std::string catalog_type;
+	long long images;
 	long long total;
 	long long videos;
 	void __init();

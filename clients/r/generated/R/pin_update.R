@@ -7,6 +7,7 @@
 #' @title PinUpdate
 #' @description PinUpdate Class
 #' @format An \code{R6Class} generator object
+#' @field ai_disclosures AI disclosure declarations the creator has made about this Pin. \link{AiDisclosuresUpdate} [optional]
 #' @field alt_text  character [optional]
 #' @field board_id The board to which this Pin belongs. character [optional]
 #' @field board_section_id The board section to which this Pin belongs. character [optional]
@@ -20,6 +21,7 @@
 PinUpdate <- R6::R6Class(
   "PinUpdate",
   public = list(
+    `ai_disclosures` = NULL,
     `alt_text` = NULL,
     `board_id` = NULL,
     `board_section_id` = NULL,
@@ -31,6 +33,7 @@ PinUpdate <- R6::R6Class(
     #' @description
     #' Initialize a new PinUpdate class.
     #'
+    #' @param ai_disclosures AI disclosure declarations the creator has made about this Pin.
     #' @param alt_text alt_text
     #' @param board_id The board to which this Pin belongs.
     #' @param board_section_id The board section to which this Pin belongs.
@@ -39,7 +42,11 @@ PinUpdate <- R6::R6Class(
     #' @param link link
     #' @param title title
     #' @param ... Other optional arguments.
-    initialize = function(`alt_text` = NULL, `board_id` = NULL, `board_section_id` = NULL, `carousel_slots` = NULL, `description` = NULL, `link` = NULL, `title` = NULL, ...) {
+    initialize = function(`ai_disclosures` = NULL, `alt_text` = NULL, `board_id` = NULL, `board_section_id` = NULL, `carousel_slots` = NULL, `description` = NULL, `link` = NULL, `title` = NULL, ...) {
+      if (!is.null(`ai_disclosures`)) {
+        stopifnot(R6::is.R6(`ai_disclosures`))
+        self$`ai_disclosures` <- `ai_disclosures`
+      }
       if (!is.null(`alt_text`)) {
         if (!(is.character(`alt_text`) && length(`alt_text`) == 1)) {
           stop(paste("Error! Invalid data for `alt_text`. Must be a string:", `alt_text`))
@@ -114,6 +121,10 @@ PinUpdate <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       PinUpdateObject <- list()
+      if (!is.null(self$`ai_disclosures`)) {
+        PinUpdateObject[["ai_disclosures"]] <-
+          self$extractSimpleType(self$`ai_disclosures`)
+      }
       if (!is.null(self$`alt_text`)) {
         PinUpdateObject[["alt_text"]] <-
           self$`alt_text`
@@ -128,7 +139,7 @@ PinUpdate <- R6::R6Class(
       }
       if (!is.null(self$`carousel_slots`)) {
         PinUpdateObject[["carousel_slots"]] <-
-          lapply(self$`carousel_slots`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`carousel_slots`)
       }
       if (!is.null(self$`description`)) {
         PinUpdateObject[["description"]] <-
@@ -145,6 +156,29 @@ PinUpdate <- R6::R6Class(
       return(PinUpdateObject)
     },
 
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
+    },
+
     #' @description
     #' Deserialize JSON string into an instance of PinUpdate
     #'
@@ -152,6 +186,11 @@ PinUpdate <- R6::R6Class(
     #' @return the instance of PinUpdate
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`ai_disclosures`)) {
+        `ai_disclosures_object` <- AiDisclosuresUpdate$new()
+        `ai_disclosures_object`$fromJSON(jsonlite::toJSON(this_object$`ai_disclosures`, auto_unbox = TRUE, digits = NA))
+        self$`ai_disclosures` <- `ai_disclosures_object`
+      }
       if (!is.null(this_object$`alt_text`)) {
         self$`alt_text` <- this_object$`alt_text`
       }
@@ -194,6 +233,7 @@ PinUpdate <- R6::R6Class(
     #' @return the instance of PinUpdate
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`ai_disclosures` <- AiDisclosuresUpdate$new()$fromJSON(jsonlite::toJSON(this_object$`ai_disclosures`, auto_unbox = TRUE, digits = NA))
       self$`alt_text` <- this_object$`alt_text`
       self$`board_id` <- this_object$`board_id`
       self$`board_section_id` <- this_object$`board_section_id`

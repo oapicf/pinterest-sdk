@@ -8,16 +8,16 @@ OrderLine::OrderLine()
 {
 	ad_account_id = std::string();
 	budget = float(0);
+	campaign_ids = std::list<std::string>();
 	end_time = float(0);
 	id = std::string();
 	name = std::string();
 	paid_budget = float(0);
-	paid_type = std::string();
+	paid_type = null;
 	purchase_order_id = std::string();
 	start_time = float(0);
-	status = std::string();
+	status = null;
 	type = std::string();
-	campaign_ids = std::list<std::string>();
 }
 
 OrderLine::OrderLine(std::string jsonString)
@@ -57,6 +57,28 @@ OrderLine::fromJson(std::string jsonObj)
 
 
         jsonToValue(&budget, value, "long");
+
+
+    }
+
+    const char *campaign_idsKey = "campaign_ids";
+
+    if(object.has_key(campaign_idsKey))
+    {
+        bourne::json value = object[campaign_idsKey];
+
+
+        std::list<std::string> campaign_ids_list;
+        std::string element;
+        for(auto& var : value.array_range())
+        {
+
+            jsonToValue(&element, var, "std::string");
+
+
+            campaign_ids_list.push_back(element);
+        }
+        campaign_ids = campaign_ids_list;
 
 
     }
@@ -180,28 +202,6 @@ OrderLine::fromJson(std::string jsonObj)
 
     }
 
-    const char *campaign_idsKey = "campaign_ids";
-
-    if(object.has_key(campaign_idsKey))
-    {
-        bourne::json value = object[campaign_idsKey];
-
-
-        std::list<std::string> campaign_ids_list;
-        std::string element;
-        for(auto& var : value.array_range())
-        {
-
-            jsonToValue(&element, var, "std::string");
-
-
-            campaign_ids_list.push_back(element);
-        }
-        campaign_ids = campaign_ids_list;
-
-
-    }
-
 
 }
 
@@ -222,6 +222,22 @@ OrderLine::toJson()
 
 
     object["budget"] = getBudget();
+
+
+
+
+
+    std::list<std::string> campaign_ids_list = getCampaignIds();
+    bourne::json campaign_ids_arr = bourne::json::array();
+
+    for(auto& var : campaign_ids_list)
+    {
+        campaign_ids_arr.append(var);
+    }
+    object["campaign_ids"] = campaign_ids_arr;
+
+
+
 
 
 
@@ -288,22 +304,6 @@ OrderLine::toJson()
 
 
 
-
-
-    std::list<std::string> campaign_ids_list = getCampaignIds();
-    bourne::json campaign_ids_arr = bourne::json::array();
-
-    for(auto& var : campaign_ids_list)
-    {
-        campaign_ids_arr.append(var);
-    }
-    object["campaign_ids"] = campaign_ids_arr;
-
-
-
-
-
-
     return object;
 
 }
@@ -315,7 +315,7 @@ OrderLine::getAdAccountId()
 }
 
 void
-OrderLine::setAdAccountId(std::string  ad_account_id)
+OrderLine::setAdAccountId(std::string ad_account_id)
 {
 	this->ad_account_id = ad_account_id;
 }
@@ -327,9 +327,21 @@ OrderLine::getBudget()
 }
 
 void
-OrderLine::setBudget(long  budget)
+OrderLine::setBudget(long budget)
 {
 	this->budget = budget;
+}
+
+std::list<std::string>
+OrderLine::getCampaignIds()
+{
+	return campaign_ids;
+}
+
+void
+OrderLine::setCampaignIds(std::list<std::string> campaign_ids)
+{
+	this->campaign_ids = campaign_ids;
 }
 
 long
@@ -339,7 +351,7 @@ OrderLine::getEndTime()
 }
 
 void
-OrderLine::setEndTime(long  end_time)
+OrderLine::setEndTime(long end_time)
 {
 	this->end_time = end_time;
 }
@@ -351,7 +363,7 @@ OrderLine::getId()
 }
 
 void
-OrderLine::setId(std::string  id)
+OrderLine::setId(std::string id)
 {
 	this->id = id;
 }
@@ -363,7 +375,7 @@ OrderLine::getName()
 }
 
 void
-OrderLine::setName(std::string  name)
+OrderLine::setName(std::string name)
 {
 	this->name = name;
 }
@@ -375,7 +387,7 @@ OrderLine::getPaidBudget()
 }
 
 void
-OrderLine::setPaidBudget(long  paid_budget)
+OrderLine::setPaidBudget(long paid_budget)
 {
 	this->paid_budget = paid_budget;
 }
@@ -387,7 +399,7 @@ OrderLine::getPaidType()
 }
 
 void
-OrderLine::setPaidType(OrderLinePaidType  paid_type)
+OrderLine::setPaidType(OrderLinePaidType paid_type)
 {
 	this->paid_type = paid_type;
 }
@@ -399,7 +411,7 @@ OrderLine::getPurchaseOrderId()
 }
 
 void
-OrderLine::setPurchaseOrderId(std::string  purchase_order_id)
+OrderLine::setPurchaseOrderId(std::string purchase_order_id)
 {
 	this->purchase_order_id = purchase_order_id;
 }
@@ -411,7 +423,7 @@ OrderLine::getStartTime()
 }
 
 void
-OrderLine::setStartTime(long  start_time)
+OrderLine::setStartTime(long start_time)
 {
 	this->start_time = start_time;
 }
@@ -423,7 +435,7 @@ OrderLine::getStatus()
 }
 
 void
-OrderLine::setStatus(OrderLineStatus  status)
+OrderLine::setStatus(OrderLineStatus status)
 {
 	this->status = status;
 }
@@ -435,21 +447,9 @@ OrderLine::getType()
 }
 
 void
-OrderLine::setType(std::string  type)
+OrderLine::setType(std::string type)
 {
 	this->type = type;
-}
-
-std::list<std::string>
-OrderLine::getCampaignIds()
-{
-	return campaign_ids;
-}
-
-void
-OrderLine::setCampaignIds(std::list <std::string> campaign_ids)
-{
-	this->campaign_ids = campaign_ids;
 }
 
 

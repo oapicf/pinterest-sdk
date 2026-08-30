@@ -1,0 +1,40 @@
+## ConversionTagsApi
+
+### Create conversion tag
+## Create conversion tag
+POST https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_tags
+Content-Type: application/json
+Accept: application/json
+
+{
+ "aem_db_enabled": "<string>",
+ "aem_enabled": "<string>",
+ "aem_external_id_enabled": "<string>",
+ "aem_fnln_enabled": "<string>",
+ "aem_ge_enabled": "<string>",
+ "aem_loc_enabled": "<string>",
+ "aem_ph_enabled": "<string>",
+ "md_frequency": "<number>",
+ "name": "<string>"
+}
+
+
+### Get conversion tag
+## Get conversion tag
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_tags/{{conversion_tag_id}}
+Accept: application/json
+
+### List conversion tags
+## List conversion tags
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_tags?filterDeleted={{filterDeleted}}
+Accept: application/json
+
+### Get Ocpm eligible conversion tags
+## Get Ocpm eligible conversion tags
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_tags/ocpm_eligible
+Accept: application/json
+
+### Get page visit conversion tags
+## Get page visit conversion tags
+GET https://api.pinterest.com/v5/ad_accounts/{{ad_account_id}}/conversion_tags/page_visit?bookmark={{bookmark}}&pageSize={{pageSize}}&order={{order}}
+Accept: application/json

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 //
 // Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
-void IntegrationsAPI_integrationsCommerceDel(apiClient_t *apiClient, char *external_business_id);
+integration_metadata_t* IntegrationsAPI_integrationsCommerceDel(apiClient_t *apiClient, char *external_business_id);
 ```
 
 ### Parameters
@@ -30,7 +30,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[integration_metadata_t](integration_metadata.md) *
+
 
 ### Authorization
 
@@ -80,7 +81,7 @@ Name | Type | Description  | Notes
 //
 // Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
-integration_metadata_t* IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external_business_id, integration_request_patch_t *integration_request_patch);
+integration_metadata_t* IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external_business_id, integration_metadata_update_t *integration_metadata_update);
 ```
 
 ### Parameters
@@ -88,7 +89,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **external_business_id** | **char \*** | External business ID for the integration. | 
-**integration_request_patch** | **[integration_request_patch_t](integration_request_patch.md) \*** | Parameters to get create/update the Integration Metadata | 
+**integration_metadata_update** | **[integration_metadata_update_t](integration_metadata_update.md) \*** |  | 
 
 ### Return type
 
@@ -112,14 +113,14 @@ Name | Type | Description  | Notes
 //
 // Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
-integration_metadata_t* IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_request_t *integration_request);
+integration_metadata_t* IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_metadata_create_t *integration_metadata_create);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**integration_request** | **[integration_request_t](integration_request.md) \*** | Parameters to get create/update the Integration Metadata | 
+**integration_metadata_create** | **[integration_metadata_create_t](integration_metadata_create.md) \*** |  | 
 
 ### Return type
 
@@ -150,7 +151,7 @@ integration_record_t* IntegrationsAPI_integrationsGetById(apiClient_t *apiClient
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**id** | **char \*** | Integration ID. | 
+**id** | **char \*** | Integration record ID. | 
 
 ### Return type
 
@@ -182,7 +183,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -206,14 +207,14 @@ Name | Type | Description  | Notes
 //
 // This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
-integration_logs_success_response_t* IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_request_t *integration_logs_request);
+integration_logs_success_response_t* IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_request_create_t *integration_logs_request_create);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**integration_logs_request** | **[integration_logs_request_t](integration_logs_request.md) \*** | Ingest log information from external integration application. | 
+**integration_logs_request_create** | **[integration_logs_request_create_t](integration_logs_request_create.md) \*** |  | 
 
 ### Return type
 

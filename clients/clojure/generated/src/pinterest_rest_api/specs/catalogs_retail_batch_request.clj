@@ -2,7 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.country :refer :all]
-            [pinterest-rest-api.specs.catalogs-retail-batch-request-items-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-batch-request-items-items :refer :all]
             )
   (:import (java.io File)))
 
@@ -12,7 +12,7 @@
    (ds/opt :catalog_id) string?
    (ds/req :catalog_type) string?
    (ds/req :country) country-spec
-   (ds/req :items) (s/coll-of catalogs-retail-batch-request-items-inner-spec)
+   (ds/req :items) (s/coll-of catalogs-retail-batch-request-items-items-spec)
    (ds/req :language) string?
    })
 

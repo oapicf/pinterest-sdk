@@ -1,14 +1,15 @@
 package models
 
+// Account - User account model containing properties related to a user's account.
 type Account struct {
 
 	// Profile about description.
 	About string `json:"about,omitempty"`
 
 	// Type of account
-	AccountType string `json:"account_type,omitempty"`
+	AccountType UserAccountType `json:"account_type,omitempty"`
 
-	// User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+	//   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 	BoardCount *int32 `json:"board_count,omitempty"`
 
 	BusinessName *string `json:"business_name,omitempty"`
@@ -20,7 +21,7 @@ type Account struct {
 	FollowingCount *int32 `json:"following_count,omitempty"`
 
 	// User account ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\d+$"`
 
 	// User account monthly views.
 	MonthlyViews *int32 `json:"monthly_views,omitempty"`

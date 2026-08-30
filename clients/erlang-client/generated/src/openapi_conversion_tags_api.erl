@@ -105,7 +105,7 @@ page_visit_conversion_tags/get(Ctx, AdAccountId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/conversion_tags/page_visit"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['page_size', 'order', 'bookmark'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'order'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

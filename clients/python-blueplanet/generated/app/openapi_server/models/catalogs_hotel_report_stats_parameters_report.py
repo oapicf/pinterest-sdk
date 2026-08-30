@@ -18,35 +18,35 @@ class CatalogsHotelReportStatsParametersReport(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, report_type: str=None, feed_id: str=None, processing_result_id: str=None, catalog_id: str=None):  # noqa: E501
+    def __init__(self, feed_id: str=None, processing_result_id: str=None, report_type: str=None, catalog_id: str=None):  # noqa: E501
         """CatalogsHotelReportStatsParametersReport - a model defined in Swagger
 
-        :param report_type: The report_type of this CatalogsHotelReportStatsParametersReport.  # noqa: E501
-        :type report_type: str
         :param feed_id: The feed_id of this CatalogsHotelReportStatsParametersReport.  # noqa: E501
         :type feed_id: str
         :param processing_result_id: The processing_result_id of this CatalogsHotelReportStatsParametersReport.  # noqa: E501
         :type processing_result_id: str
+        :param report_type: The report_type of this CatalogsHotelReportStatsParametersReport.  # noqa: E501
+        :type report_type: str
         :param catalog_id: The catalog_id of this CatalogsHotelReportStatsParametersReport.  # noqa: E501
         :type catalog_id: str
         """
         self.swagger_types = {
-            'report_type': str,
             'feed_id': str,
             'processing_result_id': str,
+            'report_type': str,
             'catalog_id': str
         }
 
         self.attribute_map = {
-            'report_type': 'report_type',
             'feed_id': 'feed_id',
             'processing_result_id': 'processing_result_id',
+            'report_type': 'report_type',
             'catalog_id': 'catalog_id'
         }
 
-        self._report_type = report_type
         self._feed_id = feed_id
         self._processing_result_id = processing_result_id
+        self._report_type = report_type
         self._catalog_id = catalog_id
 
     @classmethod
@@ -55,37 +55,10 @@ class CatalogsHotelReportStatsParametersReport(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The CatalogsHotelReportStatsParameters_report of this CatalogsHotelReportStatsParametersReport.  # noqa: E501
+        :return: The CatalogsHotelReportStatsParametersReport of this CatalogsHotelReportStatsParametersReport.  # noqa: E501
         :rtype: CatalogsHotelReportStatsParametersReport
         """
         return util.deserialize_model(dikt, cls)
-
-    @property
-    def report_type(self) -> str:
-        """Gets the report_type of this CatalogsHotelReportStatsParametersReport.
-
-
-        :return: The report_type of this CatalogsHotelReportStatsParametersReport.
-        :rtype: str
-        """
-        return self._report_type
-
-    @report_type.setter
-    def report_type(self, report_type: str):
-        """Sets the report_type of this CatalogsHotelReportStatsParametersReport.
-
-
-        :param report_type: The report_type of this CatalogsHotelReportStatsParametersReport.
-        :type report_type: str
-        """
-        allowed_values = ["FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES"]  # noqa: E501
-        if report_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `report_type` ({0}), must be one of {1}"
-                .format(report_type, allowed_values)
-            )
-
-        self._report_type = report_type
 
     @property
     def feed_id(self) -> str:
@@ -138,6 +111,33 @@ class CatalogsHotelReportStatsParametersReport(Model):
             raise ValueError("Invalid value for `processing_result_id`, must be a follow pattern or equal to `/^\d+$/`")  # noqa: E501
 
         self._processing_result_id = processing_result_id
+
+    @property
+    def report_type(self) -> str:
+        """Gets the report_type of this CatalogsHotelReportStatsParametersReport.
+
+
+        :return: The report_type of this CatalogsHotelReportStatsParametersReport.
+        :rtype: str
+        """
+        return self._report_type
+
+    @report_type.setter
+    def report_type(self, report_type: str):
+        """Sets the report_type of this CatalogsHotelReportStatsParametersReport.
+
+
+        :param report_type: The report_type of this CatalogsHotelReportStatsParametersReport.
+        :type report_type: str
+        """
+        allowed_values = ["DISTRIBUTION_ISSUES"]  # noqa: E501
+        if report_type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `report_type` ({0}), must be one of {1}"
+                .format(report_type, allowed_values)
+            )
+
+        self._report_type = report_type
 
     @property
     def catalog_id(self) -> str:

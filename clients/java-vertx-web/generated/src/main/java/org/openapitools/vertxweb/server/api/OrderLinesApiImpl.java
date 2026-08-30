@@ -1,8 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.OrderLine;
 import org.openapitools.vertxweb.server.model.OrderLinesList200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
+import org.openapitools.vertxweb.server.model.PinterestLibPaginationOrder;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -16,11 +17,11 @@ import java.util.Map;
 // Implement this class
 
 public class OrderLinesApiImpl implements OrderLinesApi {
-    public Future<ApiResponse<OrderLine>> orderLinesGet(String adAccountId, String orderLineId) {
+    public Future<ApiResponse<OrderLine>> orderLinesGet(String orderLineId, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<OrderLinesList200Response>> orderLinesList(String adAccountId, Integer pageSize, String order, String bookmark) {
+    public Future<ApiResponse<OrderLinesList200Response>> orderLinesList(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order) {
         return Future.failedFuture(new HttpException(501));
     }
 

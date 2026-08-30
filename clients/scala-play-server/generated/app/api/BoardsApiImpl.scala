@@ -4,6 +4,8 @@ import model.Board
 import model.BoardCreate
 import model.BoardPrivacyFilter
 import model.BoardSection
+import model.BoardSectionCreate
+import model.BoardSectionUpdateWithRequiredBody
 import model.BoardSectionsList200Response
 import model.BoardWithUpdatePrivacy
 import model.BoardWithUpdatePrivacyUpdate
@@ -15,12 +17,12 @@ import model.Error
 /**
   * Provides a default implementation for [[BoardsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class BoardsApiImpl extends BoardsApi {
   /**
     * @inheritdoc
     */
-  override def boardSectionsCreate(boardId: String, boardSection: BoardSection, adAccountId: Option[String]): BoardSection = {
+  override def boardSectionsCreate(boardId: String, boardSectionCreate: BoardSectionCreate, adAccountId: Option[String]): BoardSection = {
     // TODO: Implement better logic
 
     BoardSection(None, "")
@@ -29,10 +31,10 @@ class BoardsApiImpl extends BoardsApi {
   /**
     * @inheritdoc
     */
-  override def boardSectionsDelete(boardId: String, sectionId: String, adAccountId: Option[String]): Unit = {
+  override def boardSectionsDelete(boardId: String, sectionId: String, adAccountId: Option[String]): BoardSection = {
     // TODO: Implement better logic
 
-    
+    BoardSection(None, "")
   }
 
   /**
@@ -50,13 +52,13 @@ class BoardsApiImpl extends BoardsApi {
   override def boardSectionsListPins(boardId: String, sectionId: String, adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int]): BoardsListPins200Response = {
     // TODO: Implement better logic
 
-    BoardsListPins200Response(None, List.empty[Pin])
+    BoardsListPins200Response(None, List.empty[PinRead])
   }
 
   /**
     * @inheritdoc
     */
-  override def boardSectionsUpdate(boardId: String, sectionId: String, boardSection: BoardSection, adAccountId: Option[String]): BoardSection = {
+  override def boardSectionsUpdate(boardId: String, sectionId: String, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId: Option[String]): BoardSection = {
     // TODO: Implement better logic
 
     BoardSection(None, "")
@@ -74,10 +76,10 @@ class BoardsApiImpl extends BoardsApi {
   /**
     * @inheritdoc
     */
-  override def boardsDelete(boardId: String, adAccountId: Option[String]): Unit = {
+  override def boardsDelete(boardId: String, adAccountId: Option[String]): Board = {
     // TODO: Implement better logic
 
-    
+    Board(None, None, None, None, None, "", None, None, "", None, None, None, Map.empty)
   }
 
   /**
@@ -101,10 +103,10 @@ class BoardsApiImpl extends BoardsApi {
   /**
     * @inheritdoc
     */
-  override def boardsListPins(boardId: String, bookmark: Option[String], pageSize: Option[Int], creativeTypes: Option[List[CreativeType]], adAccountId: Option[String], pinMetrics: Option[Boolean]): BoardsListPins200Response = {
+  override def boardsListPins(boardId: String, creativeTypes: Option[List[CreativeType]], adAccountId: Option[String], pinMetrics: Option[Boolean], bookmark: Option[String], pageSize: Option[Int]): BoardsListPins200Response = {
     // TODO: Implement better logic
 
-    BoardsListPins200Response(None, List.empty[Pin])
+    BoardsListPins200Response(None, List.empty[PinRead])
   }
 
   /**

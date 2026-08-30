@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarData** | [**PromotionResponse**](PromotionResponse.md) |  | [optional] 
+**VarData** | [**Promotion**](Promotion.md) |  | [optional] 
 **Exception** | [**Exception**](Exception.md) |  | [optional] 
 
 ## Examples

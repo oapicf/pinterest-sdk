@@ -51,35 +51,35 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAndroidDeepLink(std::string  android_deep_link);
+	void setAndroidDeepLink(std::string android_deep_link);
 	/*! \brief Get 
 	 */
 	std::string getDestinationUrl();
 
 	/*! \brief Set 
 	 */
-	void setDestinationUrl(std::string  destination_url);
+	void setDestinationUrl(std::string destination_url);
 	/*! \brief Get 
 	 */
 	std::string getIosDeepLink();
 
 	/*! \brief Set 
 	 */
-	void setIosDeepLink(std::string  ios_deep_link);
+	void setIosDeepLink(std::string ios_deep_link);
 	/*! \brief Get 
 	 */
 	std::string getOrganicPinId();
 
 	/*! \brief Set 
 	 */
-	void setOrganicPinId(std::string  organic_pin_id);
+	void setOrganicPinId(std::string organic_pin_id);
 	/*! \brief Get 
 	 */
 	long getResultId();
 
 	/*! \brief Set 
 	 */
-	void setResultId(long  result_id);
+	void setResultId(long result_id);
 
 
     private:

@@ -5,13 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.ActionType;
+import com.prokarma.pkmst.model.BidStrategyType;
 import com.prokarma.pkmst.model.BudgetType;
 import com.prokarma.pkmst.model.EntityStatus;
-import com.prokarma.pkmst.model.OptimizationGoalMetadata;
 import com.prokarma.pkmst.model.PacingDeliveryType;
 import com.prokarma.pkmst.model.PlacementGroupType;
 import com.prokarma.pkmst.model.TargetingSpec;
-import com.prokarma.pkmst.model.TrackingUrls;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -28,58 +27,31 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * AdGroupCreateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AdGroupCreateRequest   {
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled;
 
+  @JsonProperty("bid_multiplier")
+  private BigDecimal bidMultiplier;
+
+  @JsonProperty("budget_type")
+  private BudgetType budgetType;
+
+  @JsonProperty("pacing_delivery_type")
+  private PacingDeliveryType pacingDeliveryType;
+
   @JsonProperty("bid_in_micro_currency")
   private Integer bidInMicroCurrency;
 
-  /**
-   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-   */
-  public enum BidStrategyTypeEnum {
-    AUTOMATIC_BID("AUTOMATIC_BID"),
-    
-    MAX_BID("MAX_BID"),
-    
-    TARGET_AVG("TARGET_AVG");
-
-    private String value;
-
-    BidStrategyTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BidStrategyTypeEnum fromValue(String text) {
-      for (BidStrategyTypeEnum b : BidStrategyTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("bid_strategy_type")
-  private BidStrategyTypeEnum bidStrategyType;
+  private BidStrategyType bidStrategyType;
 
   @JsonProperty("billable_event")
   private ActionType billableEvent;
 
   @JsonProperty("budget_in_micro_currency")
   private Integer budgetInMicroCurrency;
-
-  @JsonProperty("budget_type")
-  private BudgetType budgetType = "DAILY";
 
   @JsonProperty("campaign_id")
   private String campaignId;
@@ -97,10 +69,7 @@ public class AdGroupCreateRequest   {
   private String name;
 
   @JsonProperty("optimization_goal_metadata")
-  private OptimizationGoalMetadata optimizationGoalMetadata;
-
-  @JsonProperty("pacing_delivery_type")
-  private PacingDeliveryType pacingDeliveryType = "STANDARD";
+  private Object optimizationGoalMetadata;
 
   @JsonProperty("placement_group")
   private PlacementGroupType placementGroup;
@@ -144,6 +113,10 @@ public class AdGroupCreateRequest   {
   @JsonProperty("promotion_id")
   private String promotionId = "0";
 
+  @JsonProperty("promotion_ids")
+  
+  private List<String> promotionIds = null;
+
   @JsonProperty("start_time")
   private Integer startTime;
 
@@ -158,10 +131,7 @@ public class AdGroupCreateRequest   {
   private List<String> targetingTemplateIds = null;
 
   @JsonProperty("tracking_urls")
-  private TrackingUrls trackingUrls;
-
-  @JsonProperty("bid_multiplier")
-  private BigDecimal bidMultiplier;
+  private Object trackingUrls;
 
   public AdGroupCreateRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
@@ -172,13 +142,69 @@ public class AdGroupCreateRequest   {
    * Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
    * @return autoTargetingEnabled
    */
-  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.")
+  @ApiModelProperty(value = "Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.")
   public Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
   }
 
   public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
+  }
+
+  public AdGroupCreateRequest bidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+    return this;
+  }
+
+  /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
+   * minimum: 0
+   * maximum: 10
+   * @return bidMultiplier
+   */
+  @ApiModelProperty(value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.")
+  public BigDecimal getBidMultiplier() {
+    return bidMultiplier;
+  }
+
+  public void setBidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+  }
+
+  public AdGroupCreateRequest budgetType(BudgetType budgetType) {
+    this.budgetType = budgetType;
+    return this;
+  }
+
+  /**
+   * Get budgetType
+   * @return budgetType
+   */
+  @ApiModelProperty(value = "")
+  public BudgetType getBudgetType() {
+    return budgetType;
+  }
+
+  public void setBudgetType(BudgetType budgetType) {
+    this.budgetType = budgetType;
+  }
+
+  public AdGroupCreateRequest pacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+    this.pacingDeliveryType = pacingDeliveryType;
+    return this;
+  }
+
+  /**
+   * Get pacingDeliveryType
+   * @return pacingDeliveryType
+   */
+  @ApiModelProperty(value = "")
+  public PacingDeliveryType getPacingDeliveryType() {
+    return pacingDeliveryType;
+  }
+
+  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+    this.pacingDeliveryType = pacingDeliveryType;
   }
 
   public AdGroupCreateRequest bidInMicroCurrency(Integer bidInMicroCurrency) {
@@ -199,21 +225,21 @@ public class AdGroupCreateRequest   {
     this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
-  public AdGroupCreateRequest bidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+  public AdGroupCreateRequest bidStrategyType(BidStrategyType bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
     return this;
   }
 
   /**
-   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
+   * Get bidStrategyType
    * @return bidStrategyType
    */
-  @ApiModelProperty(example = "MAX_BID", value = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".")
-  public BidStrategyTypeEnum getBidStrategyType() {
+  @ApiModelProperty(value = "")
+  public BidStrategyType getBidStrategyType() {
     return bidStrategyType;
   }
 
-  public void setBidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+  public void setBidStrategyType(BidStrategyType bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
   }
 
@@ -251,24 +277,6 @@ public class AdGroupCreateRequest   {
 
   public void setBudgetInMicroCurrency(Integer budgetInMicroCurrency) {
     this.budgetInMicroCurrency = budgetInMicroCurrency;
-  }
-
-  public AdGroupCreateRequest budgetType(BudgetType budgetType) {
-    this.budgetType = budgetType;
-    return this;
-  }
-
-  /**
-   * Get budgetType
-   * @return budgetType
-   */
-  @ApiModelProperty(value = "")
-  public BudgetType getBudgetType() {
-    return budgetType;
-  }
-
-  public void setBudgetType(BudgetType budgetType) {
-    this.budgetType = budgetType;
   }
 
   public AdGroupCreateRequest campaignId(String campaignId) {
@@ -361,7 +369,7 @@ public class AdGroupCreateRequest   {
     this.name = name;
   }
 
-  public AdGroupCreateRequest optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public AdGroupCreateRequest optimizationGoalMetadata(Object optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
     return this;
   }
@@ -371,30 +379,12 @@ public class AdGroupCreateRequest   {
    * @return optimizationGoalMetadata
    */
   @ApiModelProperty(value = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.")
-  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
+  public Object getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
 
-  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(Object optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
-  }
-
-  public AdGroupCreateRequest pacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
-    this.pacingDeliveryType = pacingDeliveryType;
-    return this;
-  }
-
-  /**
-   * Get pacingDeliveryType
-   * @return pacingDeliveryType
-   */
-  @ApiModelProperty(value = "")
-  public PacingDeliveryType getPacingDeliveryType() {
-    return pacingDeliveryType;
-  }
-
-  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
-    this.pacingDeliveryType = pacingDeliveryType;
   }
 
   public AdGroupCreateRequest placementGroup(PlacementGroupType placementGroup) {
@@ -449,6 +439,32 @@ public class AdGroupCreateRequest   {
 
   public void setPromotionId(String promotionId) {
     this.promotionId = promotionId;
+  }
+
+  public AdGroupCreateRequest promotionIds(List<String> promotionIds) {
+    this.promotionIds = promotionIds;
+    return this;
+  }
+
+  public AdGroupCreateRequest addPromotionIdsItem(String promotionIdsItem) {
+    if (this.promotionIds == null) {
+      this.promotionIds = new ArrayList<>();
+    }
+    this.promotionIds.add(promotionIdsItem);
+    return this;
+  }
+
+  /**
+   * Promotion IDs list. To clear this field, set to an empty array [].
+   * @return promotionIds
+   */
+  @ApiModelProperty(example = "[\"7834020347906\",\"7834020347907\"]", value = "Promotion IDs list. To clear this field, set to an empty array [].")
+  public List<String> getPromotionIds() {
+    return promotionIds;
+  }
+
+  public void setPromotionIds(List<String> promotionIds) {
+    this.promotionIds = promotionIds;
   }
 
   public AdGroupCreateRequest startTime(Integer startTime) {
@@ -531,42 +547,22 @@ public class AdGroupCreateRequest   {
     this.targetingTemplateIds = targetingTemplateIds;
   }
 
-  public AdGroupCreateRequest trackingUrls(TrackingUrls trackingUrls) {
+  public AdGroupCreateRequest trackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
 
   /**
-   * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+   * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
    * @return trackingUrls
    */
-  @ApiModelProperty(value = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
-  public TrackingUrls getTrackingUrls() {
+  @ApiModelProperty(value = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - EmptyObject - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
+  public Object getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
+  public void setTrackingUrls(Object trackingUrls) {
     this.trackingUrls = trackingUrls;
-  }
-
-  public AdGroupCreateRequest bidMultiplier(BigDecimal bidMultiplier) {
-    this.bidMultiplier = bidMultiplier;
-    return this;
-  }
-
-  /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.
-   * minimum: 0
-   * maximum: 10
-   * @return bidMultiplier
-   */
-  @ApiModelProperty(example = "1", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.")
-  public BigDecimal getBidMultiplier() {
-    return bidMultiplier;
-  }
-
-  public void setBidMultiplier(BigDecimal bidMultiplier) {
-    this.bidMultiplier = bidMultiplier;
   }
 
 
@@ -580,32 +576,33 @@ public class AdGroupCreateRequest   {
     }
     AdGroupCreateRequest adGroupCreateRequest = (AdGroupCreateRequest) o;
     return Objects.equals(this.autoTargetingEnabled, adGroupCreateRequest.autoTargetingEnabled) &&
+        Objects.equals(this.bidMultiplier, adGroupCreateRequest.bidMultiplier) &&
+        Objects.equals(this.budgetType, adGroupCreateRequest.budgetType) &&
+        Objects.equals(this.pacingDeliveryType, adGroupCreateRequest.pacingDeliveryType) &&
         Objects.equals(this.bidInMicroCurrency, adGroupCreateRequest.bidInMicroCurrency) &&
         Objects.equals(this.bidStrategyType, adGroupCreateRequest.bidStrategyType) &&
         Objects.equals(this.billableEvent, adGroupCreateRequest.billableEvent) &&
         Objects.equals(this.budgetInMicroCurrency, adGroupCreateRequest.budgetInMicroCurrency) &&
-        Objects.equals(this.budgetType, adGroupCreateRequest.budgetType) &&
         Objects.equals(this.campaignId, adGroupCreateRequest.campaignId) &&
         Objects.equals(this.endTime, adGroupCreateRequest.endTime) &&
         Objects.equals(this.isCreativeOptimization, adGroupCreateRequest.isCreativeOptimization) &&
         Objects.equals(this.lifetimeFrequencyCap, adGroupCreateRequest.lifetimeFrequencyCap) &&
         Objects.equals(this.name, adGroupCreateRequest.name) &&
         Objects.equals(this.optimizationGoalMetadata, adGroupCreateRequest.optimizationGoalMetadata) &&
-        Objects.equals(this.pacingDeliveryType, adGroupCreateRequest.pacingDeliveryType) &&
         Objects.equals(this.placementGroup, adGroupCreateRequest.placementGroup) &&
         Objects.equals(this.promotionApplicationLevel, adGroupCreateRequest.promotionApplicationLevel) &&
         Objects.equals(this.promotionId, adGroupCreateRequest.promotionId) &&
+        Objects.equals(this.promotionIds, adGroupCreateRequest.promotionIds) &&
         Objects.equals(this.startTime, adGroupCreateRequest.startTime) &&
         Objects.equals(this.status, adGroupCreateRequest.status) &&
         Objects.equals(this.targetingSpec, adGroupCreateRequest.targetingSpec) &&
         Objects.equals(this.targetingTemplateIds, adGroupCreateRequest.targetingTemplateIds) &&
-        Objects.equals(this.trackingUrls, adGroupCreateRequest.trackingUrls) &&
-        Objects.equals(this.bidMultiplier, adGroupCreateRequest.bidMultiplier);
+        Objects.equals(this.trackingUrls, adGroupCreateRequest.trackingUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoTargetingEnabled, bidInMicroCurrency, bidStrategyType, billableEvent, budgetInMicroCurrency, budgetType, campaignId, endTime, isCreativeOptimization, lifetimeFrequencyCap, name, optimizationGoalMetadata, pacingDeliveryType, placementGroup, promotionApplicationLevel, promotionId, startTime, status, targetingSpec, targetingTemplateIds, trackingUrls, bidMultiplier);
+    return Objects.hash(autoTargetingEnabled, bidMultiplier, budgetType, pacingDeliveryType, bidInMicroCurrency, bidStrategyType, billableEvent, budgetInMicroCurrency, campaignId, endTime, isCreativeOptimization, lifetimeFrequencyCap, name, optimizationGoalMetadata, placementGroup, promotionApplicationLevel, promotionId, promotionIds, startTime, status, targetingSpec, targetingTemplateIds, trackingUrls);
   }
 
   @Override
@@ -614,27 +611,28 @@ public class AdGroupCreateRequest   {
     sb.append("class AdGroupCreateRequest {\n");
     
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
+    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
+    sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
+    sb.append("    pacingDeliveryType: ").append(toIndentedString(pacingDeliveryType)).append("\n");
     sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
     sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    budgetInMicroCurrency: ").append(toIndentedString(budgetInMicroCurrency)).append("\n");
-    sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    isCreativeOptimization: ").append(toIndentedString(isCreativeOptimization)).append("\n");
     sb.append("    lifetimeFrequencyCap: ").append(toIndentedString(lifetimeFrequencyCap)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    optimizationGoalMetadata: ").append(toIndentedString(optimizationGoalMetadata)).append("\n");
-    sb.append("    pacingDeliveryType: ").append(toIndentedString(pacingDeliveryType)).append("\n");
     sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    promotionApplicationLevel: ").append(toIndentedString(promotionApplicationLevel)).append("\n");
     sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
+    sb.append("    promotionIds: ").append(toIndentedString(promotionIds)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -644,10 +642,7 @@ public class AdGroupCreateRequest   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

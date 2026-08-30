@@ -2,7 +2,7 @@
 Protected Class HotelIdFilter
 
 	#tag Property, Flags = &h0
-		HOTEL_ID As CatalogsProductGroupMultipleStringCriteria
+		HOTEL_ID As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 

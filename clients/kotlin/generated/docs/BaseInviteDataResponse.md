@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **id** | **kotlin.String** | Unique identifier of the invite/request. |  [optional] |
-| **inviteData** | [**BaseInviteDataResponseInviteData**](BaseInviteDataResponseInviteData.md) |  |  [optional] |
+| **inviteData** | [**InviteDataResponse**](InviteDataResponse.md) |  |  [optional] |
 | **isReceivedInvite** | **kotlin.Boolean** | Indicates whether the invite/request was received. |  [optional] |
 | **user** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | Metadata for the member/partner that was sent the invite/request. |  [optional] |
 

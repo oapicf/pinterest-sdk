@@ -15,12 +15,12 @@ static hotel_processing_record_t *hotel_processing_record_create_internal(
     if (!hotel_processing_record_local_var) {
         return NULL;
     }
+    memset(hotel_processing_record_local_var, 0, sizeof(hotel_processing_record_t));
+    hotel_processing_record_local_var->_library_owned = 1;
     hotel_processing_record_local_var->errors = errors;
     hotel_processing_record_local_var->hotel_id = hotel_id;
     hotel_processing_record_local_var->status = status;
     hotel_processing_record_local_var->warnings = warnings;
-
-    hotel_processing_record_local_var->_library_owned = 1;
     return hotel_processing_record_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) hotel_processing_record_t *hotel_processing_record_c
     pinterest_rest_api_item_processing_status__e status,
     list_t *warnings
     ) {
-    return hotel_processing_record_create_internal (
+    hotel_processing_record_t *result = hotel_processing_record_create_internal (
         errors,
         hotel_id,
         status,
         warnings
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void hotel_processing_record_free(hotel_processing_record_t *hotel_processing_record) {
@@ -146,6 +149,8 @@ hotel_processing_record_t *hotel_processing_record_parseFromJSON(cJSON *hotel_pr
     // define the local list for hotel_processing_record->errors
     list_t *errorsList = NULL;
 
+    char *hotel_id_local_str = NULL;
+
     // define the local variable for hotel_processing_record->status
     pinterest_rest_api_item_processing_status__e status_local_nonprim = 0;
 
@@ -222,12 +227,18 @@ hotel_processing_record_t *hotel_processing_record_parseFromJSON(cJSON *hotel_pr
     }
 
 
+    if (hotel_id && !cJSON_IsNull(hotel_id)) hotel_id_local_str = strdup(hotel_id->valuestring);
+
     hotel_processing_record_local_var = hotel_processing_record_create_internal (
         errors ? errorsList : NULL,
-        hotel_id && !cJSON_IsNull(hotel_id) ? strdup(hotel_id->valuestring) : NULL,
+        hotel_id_local_str,
         status ? status_local_nonprim : 0,
         warnings ? warningsList : NULL
         );
+
+    if (!hotel_processing_record_local_var) {
+        goto end;
+    }
 
     return hotel_processing_record_local_var;
 end:
@@ -239,6 +250,10 @@ end:
         }
         list_freeList(errorsList);
         errorsList = NULL;
+    }
+    if (hotel_id_local_str) {
+        free(hotel_id_local_str);
+        hotel_id_local_str = NULL;
     }
     if (status_local_nonprim) {
         status_local_nonprim = 0;

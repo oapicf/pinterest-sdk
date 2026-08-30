@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;TargetingTemplateGetResponseData&gt;](TargetingTemplateGetResponseData.md)
+`items` | [Array&lt;TargetingTemplate&gt;](TargetingTemplate.md)
 
 ## Example
 

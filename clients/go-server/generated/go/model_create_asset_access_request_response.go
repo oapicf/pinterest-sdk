@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,18 +17,18 @@ package openapi
 type CreateAssetAccessRequestResponse struct {
 
 	// A list of errors associated with the asset access requests. Will be returned if there is an error.
-	Exceptions *[]CreateAssetAccessRequestErrorMessageInner `json:"exceptions,omitempty"`
+	Exceptions []AssetAccessRequestError `json:"exceptions,omitempty"`
 
-	Invites *map[string]string `json:"invites,omitempty"`
+	// An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
+	Invites map[string]string `json:"invites,omitempty"`
 }
 
-// AssertCreateAssetAccessRequestResponseRequired checks if the required fields are not zero-ed
+// AssertCreateAssetAccessRequestResponseRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCreateAssetAccessRequestResponseRequired(obj CreateAssetAccessRequestResponse) error {
-	if obj.Exceptions != nil {
-		for _, el := range *obj.Exceptions {
-			if err := AssertCreateAssetAccessRequestErrorMessageInnerRequired(el); err != nil {
-				return err
-			}
+	for _, el := range obj.Exceptions {
+		if err := AssertAssetAccessRequestErrorRequired(el); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -36,12 +36,10 @@ func AssertCreateAssetAccessRequestResponseRequired(obj CreateAssetAccessRequest
 
 // AssertCreateAssetAccessRequestResponseConstraints checks if the values respects the defined constraints
 func AssertCreateAssetAccessRequestResponseConstraints(obj CreateAssetAccessRequestResponse) error {
-    if obj.Exceptions != nil {
-     	for _, el := range *obj.Exceptions {
-     		if err := AssertCreateAssetAccessRequestErrorMessageInnerConstraints(el); err != nil {
-     			return err
-     		}
-     	}
-    }
+	for _, el := range obj.Exceptions {
+		if err := AssertAssetAccessRequestErrorConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

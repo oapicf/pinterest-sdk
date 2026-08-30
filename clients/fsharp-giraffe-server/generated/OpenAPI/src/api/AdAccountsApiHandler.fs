@@ -8,22 +8,23 @@ open AdAccountsApiHandlerParams
 open AdAccountsApiServiceInterface
 open AdAccountsApiServiceImplementation
 open OpenAPI.Model.AdAccount
-open OpenAPI.Model.AdAccountAnalyticsResponseInner
+open OpenAPI.Model.AdAccountAnalyticsItems
 open OpenAPI.Model.AdAccountCreate
 open OpenAPI.Model.AdAccountsList200Response
+open OpenAPI.Model.AdsAnalyticsAccountTargetingType
 open OpenAPI.Model.AdsAnalyticsCreateAsyncRequest
 open OpenAPI.Model.AdsAnalyticsCreateAsyncResponse
 open OpenAPI.Model.AdsAnalyticsGetAsyncResponse
-open OpenAPI.Model.AdsAnalyticsTargetingType
-open OpenAPI.Model.ConversionProductReportRequest
+open OpenAPI.Model.ConversionProductReport
+open OpenAPI.Model.ConversionProductReportCreate
 open OpenAPI.Model.ConversionReportAttributionType
-open OpenAPI.Model.CreateMMMReportRequest
-open OpenAPI.Model.CreateMMMReportResponse
-open OpenAPI.Model.Error
-open OpenAPI.Model.GetMMMReportResponse
 open OpenAPI.Model.Granularity
+open OpenAPI.Model.MMMReport
+open OpenAPI.Model.MMMReportCreate
 open OpenAPI.Model.MetricsResponse
 open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.ReportingColumnSync
 open OpenAPI.Model.ReportingTimeZone
 open OpenAPI.Model.TemplateBasedReport
 open OpenAPI.Model.TemplatesList200Response
@@ -50,6 +51,14 @@ module AdAccountsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AdAccountAnalyticsStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AdAccountAnalyticsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdAccountAnalyticsStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AdAccountAnalyticsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdAccountAnalyticsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountAnalyticsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -70,6 +79,16 @@ module AdAccountsApiHandler =
           return! (match result with
                       | AdAccountTargetingAnalyticsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AdAccountTargetingAnalyticsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AdAccountTargetingAnalyticsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AdAccountTargetingAnalyticsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AdAccountTargetingAnalyticsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdAccountTargetingAnalyticsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountTargetingAnalyticsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -183,8 +202,18 @@ module AdAccountsApiHandler =
           return! (match result with
                       | AnalyticsCreateConversionProductReportStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AnalyticsCreateConversionProductReportStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
                       | AnalyticsCreateConversionProductReportStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AnalyticsCreateConversionProductReportStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AnalyticsCreateConversionProductReportStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AnalyticsCreateConversionProductReportStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AnalyticsCreateConversionProductReportStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AnalyticsCreateConversionProductReportDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -206,8 +235,18 @@ module AdAccountsApiHandler =
           return! (match result with
                       | AnalyticsCreateMmmReportStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AnalyticsCreateMmmReportStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
                       | AnalyticsCreateMmmReportStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AnalyticsCreateMmmReportStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AnalyticsCreateMmmReportStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AnalyticsCreateMmmReportStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AnalyticsCreateMmmReportStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AnalyticsCreateMmmReportDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -231,6 +270,14 @@ module AdAccountsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AnalyticsCreateReportStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AnalyticsCreateReportStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AnalyticsCreateReportStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AnalyticsCreateReportStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AnalyticsCreateReportStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AnalyticsCreateReportDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -285,6 +332,14 @@ module AdAccountsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AnalyticsGetConversionProductReportStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AnalyticsGetConversionProductReportStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AnalyticsGetConversionProductReportStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AnalyticsGetConversionProductReportStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AnalyticsGetConversionProductReportStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AnalyticsGetConversionProductReportDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -307,6 +362,14 @@ module AdAccountsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AnalyticsGetMmmReportStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AnalyticsGetMmmReportStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AnalyticsGetMmmReportStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AnalyticsGetMmmReportStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AnalyticsGetMmmReportStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AnalyticsGetMmmReportDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -329,6 +392,14 @@ module AdAccountsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AnalyticsGetReportStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AnalyticsGetReportStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AnalyticsGetReportStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AnalyticsGetReportStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AnalyticsGetReportStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AnalyticsGetReportDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -350,6 +421,14 @@ module AdAccountsApiHandler =
                             setStatusCode 200 >=> text resolved.content
                       | SandboxDeleteStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | SandboxDeleteStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | SandboxDeleteStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | SandboxDeleteStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | SandboxDeleteStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | SandboxDeleteDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -372,6 +451,14 @@ module AdAccountsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | TemplatesListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | TemplatesListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | TemplatesListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | TemplatesListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | TemplatesListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | TemplatesListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

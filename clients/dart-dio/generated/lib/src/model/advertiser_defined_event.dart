@@ -3,26 +3,27 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/conversion_tag_type_optimal.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'advertiser_defined_event.g.dart';
 
-/// AdvertiserDefinedEvent
+/// Advertiser defined event
 ///
 /// Properties:
-/// * [name] - raw string name of the event, usually logged as raw_event_name in our dataset
-/// * [mappedConversionType] - standard type mapped to ADE for optimization
+/// * [mappedConversionType] - Standard type mapped to ADE for optimization
+/// * [name] - Raw string name of the event, usually logged as raw_event_name in our dataset
 @BuiltValue()
 abstract class AdvertiserDefinedEvent implements Built<AdvertiserDefinedEvent, AdvertiserDefinedEventBuilder> {
-  /// raw string name of the event, usually logged as raw_event_name in our dataset
+  /// Standard type mapped to ADE for optimization
+  @BuiltValueField(wireName: r'mapped_conversion_type')
+  ConversionTagTypeOptimal? get mappedConversionType;
+  // enum mappedConversionTypeEnum {  PAGE_LOAD,  UNKNOWN,  INITIALIZED,  PAGE_VISIT,  SIGNUP,  CHECKOUT,  CUSTOM,  VIEW_CATEGORY,  SEARCH,  ADD_TO_CART,  WATCH_VIDEO,  LEAD,  APP_INSTALL,  WEB_SESSION,  EXTERNAL_MEASUREMENT,  ADD_PAYMENT_INFO,  ADD_TO_WISHLIST,  INITIATE_CHECKOUT,  SUBSCRIBE,  VIEW_CONTENT,  ADVERTISER_DEFINED_EVENT,  APP_OPEN,  CONTACT,  SCHEDULE,  FIND_LOCATION,  CUSTOMIZE_PRODUCT,  SUBMIT_APPLICATION,  START_TRIAL,  };
+
+  /// Raw string name of the event, usually logged as raw_event_name in our dataset
   @BuiltValueField(wireName: r'name')
   String? get name;
-
-  /// standard type mapped to ADE for optimization
-  @BuiltValueField(wireName: r'mapped_conversion_type')
-  MappedConversionTypeEnum? get mappedConversionType;
-  // enum mappedConversionTypeEnum {  PAGE_LOAD,  UNKNOWN,  INITIALIZED,  PAGE_VISIT,  SIGNUP,  CHECKOUT,  CUSTOM,  VIEW_CATEGORY,  SEARCH,  ADD_TO_CART,  WATCH_VIDEO,  LEAD,  APP_INSTALL,  WEB_SESSION,  EXTERNAL_MEASUREMENT,  ADD_PAYMENT_INFO,  ADD_TO_WISHLIST,  INITIATE_CHECKOUT,  SUBSCRIBE,  VIEW_CONTENT,  ADVERTISER_DEFINED_EVENT,  APP_OPEN,  CONTACT,  SCHEDULE,  FIND_LOCATION,  CUSTOMIZE_PRODUCT,  SUBMIT_APPLICATION,  START_TRIAL,  ,  };
 
   AdvertiserDefinedEvent._();
 
@@ -47,18 +48,18 @@ class _$AdvertiserDefinedEventSerializer implements PrimitiveSerializer<Advertis
     AdvertiserDefinedEvent object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.mappedConversionType != null) {
+      yield r'mapped_conversion_type';
+      yield serializers.serialize(
+        object.mappedConversionType,
+        specifiedType: const FullType(ConversionTagTypeOptimal),
+      );
+    }
     if (object.name != null) {
       yield r'name';
       yield serializers.serialize(
         object.name,
         specifiedType: const FullType(String),
-      );
-    }
-    if (object.mappedConversionType != null) {
-      yield r'mapped_conversion_type';
-      yield serializers.serialize(
-        object.mappedConversionType,
-        specifiedType: const FullType.nullable(MappedConversionTypeEnum),
       );
     }
   }
@@ -84,20 +85,21 @@ class _$AdvertiserDefinedEventSerializer implements PrimitiveSerializer<Advertis
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.name = valueDes;
-          break;
         case r'mapped_conversion_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(MappedConversionTypeEnum),
-          ) as MappedConversionTypeEnum?;
+            specifiedType: const FullType.nullable(ConversionTagTypeOptimal),
+          ) as ConversionTagTypeOptimal?;
           if (valueDes == null) continue;
           result.mappedConversionType = valueDes;
+          break;
+        case r'name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.name = valueDes;
           break;
         default:
           unhandled.add(key);

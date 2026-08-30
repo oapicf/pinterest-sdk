@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -18,8 +23,61 @@ type CountryFilter struct {
 
 	COUNTRY CatalogsProductGroupMultipleCountriesCriteria `json:"COUNTRY"`
 }
+// UnmarshalJSON validates required property keys then unmarshals into CountryFilter
+func (o *CountryFilter) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"COUNTRY",
+	}
 
-// AssertCountryFilterRequired checks if the required fields are not zero-ed
+	requiredNullableProperties := map[string]bool{
+		"COUNTRY": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"COUNTRY": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
+		}
+	}
+
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded CountryFilter
+
+	if value, exists := allProperties["COUNTRY"]; exists {
+		if err = json.Unmarshal(value, &decoded.COUNTRY); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertCountryFilterRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCountryFilterRequired(obj CountryFilter) error {
 	elements := map[string]interface{}{
 		"COUNTRY": obj.COUNTRY,
@@ -30,10 +88,16 @@ func AssertCountryFilterRequired(obj CountryFilter) error {
 		}
 	}
 
+	if err := AssertCatalogsProductGroupMultipleCountriesCriteriaRequired(obj.COUNTRY); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertCountryFilterConstraints checks if the values respects the defined constraints
 func AssertCountryFilterConstraints(obj CountryFilter) error {
+	if err := AssertCatalogsProductGroupMultipleCountriesCriteriaConstraints(obj.COUNTRY); err != nil {
+		return err
+	}
 	return nil
 }

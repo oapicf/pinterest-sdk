@@ -1,27 +1,27 @@
 
 
-#include "TrendingKeyword_demographics.h"
+#include "TrendingKeywordDemographics.h"
 
 using namespace Tiny;
 
-TrendingKeyword_demographics::TrendingKeyword_demographics()
+TrendingKeywordDemographics::TrendingKeywordDemographics()
 {
-	age_distribution = TrendingKeyword_demographics_age_distribution();
-	gender_distribution = TrendingKeyword_demographics_gender_distribution();
+	age_distribution = TrendsAgeDistribution();
+	gender_distribution = TrendsGenderDistribution();
 }
 
-TrendingKeyword_demographics::TrendingKeyword_demographics(std::string jsonString)
+TrendingKeywordDemographics::TrendingKeywordDemographics(std::string jsonString)
 {
 	this->fromJson(jsonString);
 }
 
-TrendingKeyword_demographics::~TrendingKeyword_demographics()
+TrendingKeywordDemographics::~TrendingKeywordDemographics()
 {
 
 }
 
 void
-TrendingKeyword_demographics::fromJson(std::string jsonObj)
+TrendingKeywordDemographics::fromJson(std::string jsonObj)
 {
     bourne::json object = bourne::json::parse(jsonObj);
 
@@ -34,7 +34,7 @@ TrendingKeyword_demographics::fromJson(std::string jsonObj)
 
 
 
-        TrendingKeyword_demographics_age_distribution* obj = &age_distribution;
+        TrendsAgeDistribution* obj = &age_distribution;
 		obj->fromJson(value.dump());
 
     }
@@ -48,7 +48,7 @@ TrendingKeyword_demographics::fromJson(std::string jsonObj)
 
 
 
-        TrendingKeyword_demographics_gender_distribution* obj = &gender_distribution;
+        TrendsGenderDistribution* obj = &gender_distribution;
 		obj->fromJson(value.dump());
 
     }
@@ -57,7 +57,7 @@ TrendingKeyword_demographics::fromJson(std::string jsonObj)
 }
 
 bourne::json
-TrendingKeyword_demographics::toJson()
+TrendingKeywordDemographics::toJson()
 {
     bourne::json object = bourne::json::object();
 
@@ -80,26 +80,26 @@ TrendingKeyword_demographics::toJson()
 
 }
 
-TrendingKeyword_demographics_age_distribution
-TrendingKeyword_demographics::getAgeDistribution()
+TrendsAgeDistribution&lt;std::string, double&gt;
+TrendingKeywordDemographics::getAgeDistribution()
 {
 	return age_distribution;
 }
 
 void
-TrendingKeyword_demographics::setAgeDistribution(TrendingKeyword_demographics_age_distribution  age_distribution)
+TrendingKeywordDemographics::setAgeDistribution(TrendsAgeDistribution&lt;std::string, double&gt; age_distribution)
 {
 	this->age_distribution = age_distribution;
 }
 
-TrendingKeyword_demographics_gender_distribution
-TrendingKeyword_demographics::getGenderDistribution()
+TrendsGenderDistribution&lt;std::string, double&gt;
+TrendingKeywordDemographics::getGenderDistribution()
 {
 	return gender_distribution;
 }
 
 void
-TrendingKeyword_demographics::setGenderDistribution(TrendingKeyword_demographics_gender_distribution  gender_distribution)
+TrendingKeywordDemographics::setGenderDistribution(TrendsGenderDistribution&lt;std::string, double&gt; gender_distribution)
 {
 	this->gender_distribution = gender_distribution;
 }

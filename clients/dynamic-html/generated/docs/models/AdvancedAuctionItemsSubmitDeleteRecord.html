@@ -6,6 +6,11 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-false">errors : List
+    <br/>Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-true">itemUnderscoreid : String
     <br/>The catalog retail item id in the merchant namespace
   </li>
@@ -16,7 +21,12 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">errors : List
-    <br/>Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+  <li class="param-required-true">operation : String
+    <br/>
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>DELETE</dd>
+        </dt>
+      </dl>
   </li>
 </ul>

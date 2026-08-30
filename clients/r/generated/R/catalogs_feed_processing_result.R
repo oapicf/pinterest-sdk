@@ -8,11 +8,11 @@
 #' @description CatalogsFeedProcessingResult Class
 #' @format An \code{R6Class} generator object
 #' @field created_at  character
-#' @field id  character
-#' @field updated_at  character
+#' @field id ID of the feed processing result. character
 #' @field ingestion_details  \link{CatalogsFeedIngestionDetails}
 #' @field product_counts  \link{CatalogsFeedProductCounts}
 #' @field status  \link{CatalogsFeedProcessingStatus}
+#' @field updated_at  character
 #' @field validation_details  \link{CatalogsFeedValidationDetails}
 #' @field video_counts  \link{CatalogsFeedVideoCounts} [optional]
 #' @importFrom R6 R6Class
@@ -23,10 +23,10 @@ CatalogsFeedProcessingResult <- R6::R6Class(
   public = list(
     `created_at` = NULL,
     `id` = NULL,
-    `updated_at` = NULL,
     `ingestion_details` = NULL,
     `product_counts` = NULL,
     `status` = NULL,
+    `updated_at` = NULL,
     `validation_details` = NULL,
     `video_counts` = NULL,
 
@@ -34,15 +34,15 @@ CatalogsFeedProcessingResult <- R6::R6Class(
     #' Initialize a new CatalogsFeedProcessingResult class.
     #'
     #' @param created_at created_at
-    #' @param id id
-    #' @param updated_at updated_at
+    #' @param id ID of the feed processing result.
     #' @param ingestion_details ingestion_details
     #' @param product_counts product_counts
     #' @param status status
+    #' @param updated_at updated_at
     #' @param validation_details validation_details
     #' @param video_counts video_counts
     #' @param ... Other optional arguments.
-    initialize = function(`created_at`, `id`, `updated_at`, `ingestion_details`, `product_counts`, `status`, `validation_details`, `video_counts` = NULL, ...) {
+    initialize = function(`created_at`, `id`, `ingestion_details`, `product_counts`, `status`, `updated_at`, `validation_details`, `video_counts` = NULL, ...) {
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
@@ -54,12 +54,6 @@ CatalogsFeedProcessingResult <- R6::R6Class(
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
         self$`id` <- `id`
-      }
-      if (!missing(`updated_at`)) {
-        if (!(is.character(`updated_at`) && length(`updated_at`) == 1)) {
-          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
-        }
-        self$`updated_at` <- `updated_at`
       }
       if (!missing(`ingestion_details`)) {
         stopifnot(R6::is.R6(`ingestion_details`))
@@ -75,6 +69,12 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         }
         stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
+      }
+      if (!missing(`updated_at`)) {
+        if (!(is.character(`updated_at`) && length(`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
+        }
+        self$`updated_at` <- `updated_at`
       }
       if (!missing(`validation_details`)) {
         stopifnot(R6::is.R6(`validation_details`))
@@ -125,31 +125,54 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         CatalogsFeedProcessingResultObject[["id"]] <-
           self$`id`
       }
+      if (!is.null(self$`ingestion_details`)) {
+        CatalogsFeedProcessingResultObject[["ingestion_details"]] <-
+          self$extractSimpleType(self$`ingestion_details`)
+      }
+      if (!is.null(self$`product_counts`)) {
+        CatalogsFeedProcessingResultObject[["product_counts"]] <-
+          self$extractSimpleType(self$`product_counts`)
+      }
+      if (!is.null(self$`status`)) {
+        CatalogsFeedProcessingResultObject[["status"]] <-
+          self$extractSimpleType(self$`status`)
+      }
       if (!is.null(self$`updated_at`)) {
         CatalogsFeedProcessingResultObject[["updated_at"]] <-
           self$`updated_at`
       }
-      if (!is.null(self$`ingestion_details`)) {
-        CatalogsFeedProcessingResultObject[["ingestion_details"]] <-
-          self$`ingestion_details`$toSimpleType()
-      }
-      if (!is.null(self$`product_counts`)) {
-        CatalogsFeedProcessingResultObject[["product_counts"]] <-
-          self$`product_counts`$toSimpleType()
-      }
-      if (!is.null(self$`status`)) {
-        CatalogsFeedProcessingResultObject[["status"]] <-
-          self$`status`$toSimpleType()
-      }
       if (!is.null(self$`validation_details`)) {
         CatalogsFeedProcessingResultObject[["validation_details"]] <-
-          self$`validation_details`$toSimpleType()
+          self$extractSimpleType(self$`validation_details`)
       }
       if (!is.null(self$`video_counts`)) {
         CatalogsFeedProcessingResultObject[["video_counts"]] <-
-          self$`video_counts`$toSimpleType()
+          self$extractSimpleType(self$`video_counts`)
       }
       return(CatalogsFeedProcessingResultObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -165,9 +188,6 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
-      if (!is.null(this_object$`updated_at`)) {
-        self$`updated_at` <- this_object$`updated_at`
-      }
       if (!is.null(this_object$`ingestion_details`)) {
         `ingestion_details_object` <- CatalogsFeedIngestionDetails$new()
         `ingestion_details_object`$fromJSON(jsonlite::toJSON(this_object$`ingestion_details`, auto_unbox = TRUE, digits = NA))
@@ -182,6 +202,9 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         `status_object` <- CatalogsFeedProcessingStatus$new()
         `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
         self$`status` <- `status_object`
+      }
+      if (!is.null(this_object$`updated_at`)) {
+        self$`updated_at` <- this_object$`updated_at`
       }
       if (!is.null(this_object$`validation_details`)) {
         `validation_details_object` <- CatalogsFeedValidationDetails$new()
@@ -216,10 +239,10 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`created_at` <- this_object$`created_at`
       self$`id` <- this_object$`id`
-      self$`updated_at` <- this_object$`updated_at`
       self$`ingestion_details` <- CatalogsFeedIngestionDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ingestion_details`, auto_unbox = TRUE, digits = NA))
       self$`product_counts` <- CatalogsFeedProductCounts$new()$fromJSON(jsonlite::toJSON(this_object$`product_counts`, auto_unbox = TRUE, digits = NA))
       self$`status` <- CatalogsFeedProcessingStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+      self$`updated_at` <- this_object$`updated_at`
       self$`validation_details` <- CatalogsFeedValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`validation_details`, auto_unbox = TRUE, digits = NA))
       self$`video_counts` <- CatalogsFeedVideoCounts$new()$fromJSON(jsonlite::toJSON(this_object$`video_counts`, auto_unbox = TRUE, digits = NA))
       self
@@ -247,14 +270,6 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `id` is missing."))
       }
-      # check the required field `updated_at`
-      if (!is.null(input_json$`updated_at`)) {
-        if (!(is.character(input_json$`updated_at`) && length(input_json$`updated_at`) == 1)) {
-          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", input_json$`updated_at`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `updated_at` is missing."))
-      }
       # check the required field `ingestion_details`
       if (!is.null(input_json$`ingestion_details`)) {
         stopifnot(R6::is.R6(input_json$`ingestion_details`))
@@ -272,6 +287,14 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`status`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `status` is missing."))
+      }
+      # check the required field `updated_at`
+      if (!is.null(input_json$`updated_at`)) {
+        if (!(is.character(input_json$`updated_at`) && length(input_json$`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", input_json$`updated_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `updated_at` is missing."))
       }
       # check the required field `validation_details`
       if (!is.null(input_json$`validation_details`)) {
@@ -304,8 +327,7 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `updated_at` is null
-      if (is.null(self$`updated_at`)) {
+      if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
       }
 
@@ -316,6 +338,11 @@ CatalogsFeedProcessingResult <- R6::R6Class(
 
       # check if the required `status` is null
       if (is.null(self$`status`)) {
+        return(FALSE)
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
         return(FALSE)
       }
 
@@ -343,9 +370,8 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
-      # check if the required `updated_at` is null
-      if (is.null(self$`updated_at`)) {
-        invalid_fields["updated_at"] <- "Non-nullable required field `updated_at` cannot be null."
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
       }
 
       # check if the required `ingestion_details` is null
@@ -356,6 +382,11 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       # check if the required `status` is null
       if (is.null(self$`status`)) {
         invalid_fields["status"] <- "Non-nullable required field `status` cannot be null."
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
+        invalid_fields["updated_at"] <- "Non-nullable required field `updated_at` cannot be null."
       }
 
       # check if the required `validation_details` is null

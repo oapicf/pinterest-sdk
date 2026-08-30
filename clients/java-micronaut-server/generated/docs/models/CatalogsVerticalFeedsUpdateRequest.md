@@ -10,7 +10,7 @@ The class is defined in **[CatalogsVerticalFeedsUpdateRequest.java](../../src/ma
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | `CatalogsType` |  | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **credentials** | [`CatalogsFeedCredentials`](CatalogsFeedCredentials.md) |  |  [optional property]
 **defaultAvailability** | `ProductAvailabilityType` |  |  [optional property]
 **defaultCurrency** | `NullableCurrency` |  |  [optional property]
@@ -20,6 +20,11 @@ Name | Type | Description | Notes
 **preferredProcessingSchedule** | [`CatalogsFeedProcessingSchedule`](CatalogsFeedProcessingSchedule.md) |  |  [optional property]
 **status** | `CatalogsStatus` |  |  [optional property]
 
+## CatalogTypeEnum
+
+Name | Value
+---- | -----
+CREATIVE_ASSETS | `"CREATIVE_ASSETS"`
 
 
 

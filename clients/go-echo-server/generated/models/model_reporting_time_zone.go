@@ -1,5 +1,5 @@
 package models
-// ReportingTimeZone : [Closed beta](/docs/getting-started/using-beta-and-restricted-features/) Specify the timezone to be applied for the reporting.
+// ReportingTimeZone : Specify the timezone to be applied for the reporting.
 type ReportingTimeZone string
 
 // List of ReportingTimeZone

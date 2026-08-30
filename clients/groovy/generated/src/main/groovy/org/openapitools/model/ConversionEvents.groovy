@@ -5,10 +5,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.model.ConversionEventsDataInner;
+import org.openapitools.model.ConversionApiResponseEventsItems;
 
 @Canonical
 class ConversionEvents {
-    
-    List<ConversionEventsDataInner> data = new ArrayList<>()
+    /* Specific messages for each event received. The order will match the order in which the events were received in the request. */
+    List<ConversionApiResponseEventsItems> events = new ArrayList<>()
+    /* Number of events that were successfully processed from the events. */
+    Integer numEventsProcessed
+    /* Total number of events received in the request. */
+    Integer numEventsReceived
 }

@@ -15,12 +15,12 @@ static pin_media_source_images_url_item_t *pin_media_source_images_url_item_crea
     if (!pin_media_source_images_url_item_local_var) {
         return NULL;
     }
+    memset(pin_media_source_images_url_item_local_var, 0, sizeof(pin_media_source_images_url_item_t));
+    pin_media_source_images_url_item_local_var->_library_owned = 1;
     pin_media_source_images_url_item_local_var->description = description;
     pin_media_source_images_url_item_local_var->link = link;
     pin_media_source_images_url_item_local_var->title = title;
     pin_media_source_images_url_item_local_var->url = url;
-
-    pin_media_source_images_url_item_local_var->_library_owned = 1;
     return pin_media_source_images_url_item_local_var;
 }
 
@@ -30,12 +30,15 @@ __attribute__((deprecated)) pin_media_source_images_url_item_t *pin_media_source
     char *title,
     char *url
     ) {
-    return pin_media_source_images_url_item_create_internal (
+    pin_media_source_images_url_item_t *result = pin_media_source_images_url_item_create_internal (
         description,
         link,
         title,
         url
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void pin_media_source_images_url_item_free(pin_media_source_images_url_item_t *pin_media_source_images_url_item) {
@@ -113,6 +116,14 @@ pin_media_source_images_url_item_t *pin_media_source_images_url_item_parseFromJS
 
     pin_media_source_images_url_item_t *pin_media_source_images_url_item_local_var = NULL;
 
+    char *description_local_str = NULL;
+
+    char *link_local_str = NULL;
+
+    char *title_local_str = NULL;
+
+    char *url_local_str = NULL;
+
     // pin_media_source_images_url_item->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(pin_media_source_images_url_itemJSON, "description");
     if (cJSON_IsNull(description)) {
@@ -165,15 +176,40 @@ pin_media_source_images_url_item_t *pin_media_source_images_url_item_parseFromJS
     }
 
 
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (link && !cJSON_IsNull(link)) link_local_str = strdup(link->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+    if (url && !cJSON_IsNull(url)) url_local_str = strdup(url->valuestring);
+
     pin_media_source_images_url_item_local_var = pin_media_source_images_url_item_create_internal (
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
-        strdup(url->valuestring)
+        description_local_str,
+        link_local_str,
+        title_local_str,
+        url_local_str
         );
+
+    if (!pin_media_source_images_url_item_local_var) {
+        goto end;
+    }
 
     return pin_media_source_images_url_item_local_var;
 end:
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (link_local_str) {
+        free(link_local_str);
+        link_local_str = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
+    }
+    if (url_local_str) {
+        free(url_local_str);
+        url_local_str = NULL;
+    }
     return NULL;
 
 }

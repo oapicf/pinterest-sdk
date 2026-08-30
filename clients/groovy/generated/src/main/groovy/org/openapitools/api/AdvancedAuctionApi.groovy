@@ -5,7 +5,7 @@ import org.openapitools.model.AdvancedAuctionItems
 import org.openapitools.model.AdvancedAuctionItemsGetRequest
 import org.openapitools.model.AdvancedAuctionItemsSubmitRequest
 import org.openapitools.model.AdvancedAuctionProcessedItems
-import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
 
 class AdvancedAuctionApi {
     String basePath = "https://api.pinterest.com/v5"
@@ -19,6 +19,7 @@ class AdvancedAuctionApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -35,7 +36,9 @@ class AdvancedAuctionApi {
         bodyParams = advancedAuctionItemsGetRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     AdvancedAuctionItems.class )
 
@@ -48,6 +51,7 @@ class AdvancedAuctionApi {
         def queryParams = [:]
         def headerParams = [:]
         def bodyParams
+        def accept
         def contentType
 
         // verify required params are set
@@ -64,7 +68,9 @@ class AdvancedAuctionApi {
         bodyParams = advancedAuctionItemsSubmitRequest
 
 
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+        accept = apiUtils.selectHeaderAccept(["application/json"])
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
                     AdvancedAuctionProcessedItems.class )
 

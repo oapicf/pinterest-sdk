@@ -20,7 +20,7 @@ typedef struct detailed_error_t detailed_error_t;
 
 
 typedef struct detailed_error_t {
-    int code; //numeric
+    int *code; //numeric
     object_t *details; //object
     char *message; // string
 
@@ -28,7 +28,7 @@ typedef struct detailed_error_t {
 } detailed_error_t;
 
 __attribute__((deprecated)) detailed_error_t *detailed_error_create(
-    int code,
+    int *code,
     object_t *details,
     char *message
 );

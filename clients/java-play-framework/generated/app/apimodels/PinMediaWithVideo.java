@@ -12,7 +12,7 @@ import javax.validation.Valid;
 /**
  * Pin with video.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinMediaWithVideo   {
   @JsonProperty("cover_image_url")
@@ -70,6 +70,10 @@ public class PinMediaWithVideo   {
   @JsonProperty("video_url")
   
   private String videoUrl;
+
+  @JsonProperty("video_url_hls")
+  
+  private String videoUrlHls;
 
   @JsonProperty("width")
   
@@ -177,6 +181,23 @@ public class PinMediaWithVideo   {
     this.videoUrl = videoUrl;
   }
 
+  public PinMediaWithVideo videoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+    return this;
+  }
+
+   /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   * @return videoUrlHls
+  **/
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
   public PinMediaWithVideo width(Integer width) {
     this.width = width;
     return this;
@@ -210,12 +231,13 @@ public class PinMediaWithVideo   {
         Objects.equals(images, pinMediaWithVideo.images) &&
         Objects.equals(mediaType, pinMediaWithVideo.mediaType) &&
         Objects.equals(videoUrl, pinMediaWithVideo.videoUrl) &&
+        Objects.equals(videoUrlHls, pinMediaWithVideo.videoUrlHls) &&
         Objects.equals(width, pinMediaWithVideo.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, width);
+    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, videoUrlHls, width);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -230,6 +252,7 @@ public class PinMediaWithVideo   {
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -240,10 +263,7 @@ public class PinMediaWithVideo   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

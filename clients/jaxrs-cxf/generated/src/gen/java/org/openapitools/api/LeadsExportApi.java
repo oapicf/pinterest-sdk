@@ -1,9 +1,9 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.LeadsExportCreateRequest;
-import org.openapitools.model.LeadsExportCreateResponse;
 import org.openapitools.model.LeadsExportResponseData;
+import org.openapitools.model.LeadsExports;
+import org.openapitools.model.LeadsExportsCreate;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import java.util.Map;
@@ -31,7 +31,7 @@ public interface LeadsExportApi  {
     /**
      * Create a request to export leads collected from a lead ad
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a &#x60;leads_export_id&#x60; token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      */
     @POST
@@ -40,15 +40,20 @@ public interface LeadsExportApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create a request to export leads collected from a lead ad", tags={ "leads_export" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LeadsExportCreateResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public LeadsExportCreateResponse leadsExportCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull LeadsExportCreateRequest leadsExportCreateRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadsExports.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = LeadsExports.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public LeadsExports leadsExportCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull LeadsExportsCreate leadsExportsCreate);
 
     /**
      * Get the lead export from the lead export create call
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      */
     @GET
@@ -56,9 +61,12 @@ public interface LeadsExportApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get the lead export from the lead export create call", tags={ "leads_export" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LeadsExportResponseData.class),
-        @ApiResponse(code = 400, message = "Invalid ad account parameter.", response = Error.class),
-        @ApiResponse(code = 404, message = "Invalid leads export id parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadsExportResponseData.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public LeadsExportResponseData leadsExportGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @PathParam("leads_export_id") @Pattern(regexp="^\\d+$") String leadsExportId);
 }

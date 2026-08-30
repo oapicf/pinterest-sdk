@@ -82,7 +82,7 @@ static bool multiPinsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool multiPinsAnalyticsHelper(char * accessToken,
-	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string adAccountId, 
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<MultiPinsAnalyticsMetricTypesItem> metricTypes, std::string appTypes, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -121,8 +121,8 @@ static bool multiPinsAnalyticsHelper(char * accessToken,
 	}
 
 	for (std::list
-	<std::string>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<MultiPinsAnalyticsMetricTypesItem>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "MultiPinsAnalyticsMetricTypesItem");
 		queryParams.insert(pair<string, string>("metricTypes", itemAt));
 	}
 	
@@ -187,7 +187,7 @@ static bool multiPinsAnalyticsHelper(char * accessToken,
 
 
 bool PinsManager::multiPinsAnalyticsAsync(char * accessToken,
-	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string adAccountId, 
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<MultiPinsAnalyticsMetricTypesItem> metricTypes, std::string appTypes, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
@@ -197,7 +197,7 @@ bool PinsManager::multiPinsAnalyticsAsync(char * accessToken,
 }
 
 bool PinsManager::multiPinsAnalyticsSync(char * accessToken,
-	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string adAccountId, 
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<MultiPinsAnalyticsMetricTypesItem> metricTypes, std::string appTypes, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
@@ -240,7 +240,7 @@ static bool pinsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool pinsAnalyticsHelper(char * accessToken,
-	std::string pinId, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
+	std::string pinId, Date startDate, Date endDate, std::list<QuerypinanalyticsmetrictypesItems> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -273,8 +273,8 @@ static bool pinsAnalyticsHelper(char * accessToken,
 	}
 
 	for (std::list
-	<std::string>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
+	<QuerypinanalyticsmetrictypesItems>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "QuerypinanalyticsmetrictypesItems");
 		queryParams.insert(pair<string, string>("metricTypes", itemAt));
 	}
 	
@@ -352,7 +352,7 @@ static bool pinsAnalyticsHelper(char * accessToken,
 
 
 bool PinsManager::pinsAnalyticsAsync(char * accessToken,
-	std::string pinId, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
+	std::string pinId, Date startDate, Date endDate, std::list<QuerypinanalyticsmetrictypesItems> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
@@ -362,7 +362,7 @@ bool PinsManager::pinsAnalyticsAsync(char * accessToken,
 }
 
 bool PinsManager::pinsAnalyticsSync(char * accessToken,
-	std::string pinId, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
+	std::string pinId, Date startDate, Date endDate, std::list<QuerypinanalyticsmetrictypesItems> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
@@ -575,21 +575,73 @@ bool PinsManager::pinsCreateSync(char * accessToken,
 static bool pinsDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(Pin, Error, void* )
+	= reinterpret_cast<void(*)(Pin, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	Pin out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("Pin")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "Pin", "Pin");
+			json_node_free(pJson);
+
+			if ("Pin" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -600,15 +652,15 @@ static bool pinsDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool pinsDeleteHelper(char * accessToken,
 	std::string pinId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(Pin, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -691,8 +743,8 @@ static bool pinsDeleteHelper(char * accessToken,
 
 bool PinsManager::pinsDeleteAsync(char * accessToken,
 	std::string pinId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(Pin, Error, void* )
+	, void* userData)
 {
 	return pinsDeleteHelper(accessToken,
 	pinId, adAccountId, 
@@ -701,8 +753,8 @@ bool PinsManager::pinsDeleteAsync(char * accessToken,
 
 bool PinsManager::pinsDeleteSync(char * accessToken,
 	std::string pinId, std::string adAccountId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(Pin, Error, void* )
+	, void* userData)
 {
 	return pinsDeleteHelper(accessToken,
 	pinId, adAccountId, 
@@ -991,7 +1043,7 @@ static bool pinsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 }
 
 static bool pinsListHelper(char * accessToken,
-	std::string pinFilter, bool pinMetrics, bool includeProtectedPins, std::string pinType, std::list<CreativeType> creativeTypes, std::string adAccountId, std::string bookmark, int pageSize, 
+	PinFilter pinFilter, bool pinMetrics, bool includeProtectedPins, PinType pinType, std::list<CreativeType> creativeTypes, std::string adAccountId, std::string domain, std::list<std::string> domains, bool includeProductTagObj, std::string bookmark, int pageSize, 
 	void(* handler)(Pins_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1009,7 +1061,7 @@ static bool pinsListHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&pinFilter, "std::string");
+	itemAtq = stringify(&pinFilter, "PinFilter");
 	queryParams.insert(pair<string, string>("pin_filter", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("pin_filter");
@@ -1030,7 +1082,7 @@ static bool pinsListHelper(char * accessToken,
 	}
 
 
-	itemAtq = stringify(&pinType, "std::string");
+	itemAtq = stringify(&pinType, "PinType");
 	queryParams.insert(pair<string, string>("pin_type", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("pin_type");
@@ -1050,6 +1102,29 @@ static bool pinsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&domain, "std::string");
+	queryParams.insert(pair<string, string>("domain", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("domain");
+	}
+
+	for (std::list
+	<std::string>::iterator queryIter = domains.begin(); queryIter != domains.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("domains", itemAt));
+	}
+	
+
+	itemAtq = stringify(&includeProductTagObj, "bool");
+	queryParams.insert(pair<string, string>("include_product_tag_obj", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("include_product_tag_obj");
 	}
 
 
@@ -1120,22 +1195,22 @@ static bool pinsListHelper(char * accessToken,
 
 
 bool PinsManager::pinsListAsync(char * accessToken,
-	std::string pinFilter, bool pinMetrics, bool includeProtectedPins, std::string pinType, std::list<CreativeType> creativeTypes, std::string adAccountId, std::string bookmark, int pageSize, 
+	PinFilter pinFilter, bool pinMetrics, bool includeProtectedPins, PinType pinType, std::list<CreativeType> creativeTypes, std::string adAccountId, std::string domain, std::list<std::string> domains, bool includeProductTagObj, std::string bookmark, int pageSize, 
 	void(* handler)(Pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return pinsListHelper(accessToken,
-	pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize, 
+	pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, domain, domains, includeProductTagObj, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool PinsManager::pinsListSync(char * accessToken,
-	std::string pinFilter, bool pinMetrics, bool includeProtectedPins, std::string pinType, std::list<CreativeType> creativeTypes, std::string adAccountId, std::string bookmark, int pageSize, 
+	PinFilter pinFilter, bool pinMetrics, bool includeProtectedPins, PinType pinType, std::list<CreativeType> creativeTypes, std::string adAccountId, std::string domain, std::list<std::string> domains, bool includeProductTagObj, std::string bookmark, int pageSize, 
 	void(* handler)(Pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return pinsListHelper(accessToken,
-	pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize, 
+	pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, domain, domains, includeProductTagObj, bookmark, pageSize, 
 	handler, userData, false);
 }
 
@@ -1190,6 +1265,21 @@ static bool pinsSaveProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -1210,7 +1300,7 @@ static bool pinsSaveProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 }
 
 static bool pinsSaveHelper(char * accessToken,
-	std::string pinId, std::shared_ptr<Pins_save_request> pinsSaveRequest, std::string adAccountId, 
+	std::string pinId, std::shared_ptr<PinsSaveRequestCreate> pinsSaveRequestCreate, std::string adAccountId, 
 	void(* handler)(Pin, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1238,11 +1328,11 @@ static bool pinsSaveHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Pins_save_request")) {
-		node = converttoJson(&pinsSaveRequest, "Pins_save_request", "");
+	if (isprimitive("PinsSaveRequestCreate")) {
+		node = converttoJson(&pinsSaveRequestCreate, "PinsSaveRequestCreate", "");
 	}
 	
-	char *jsonStr =  pinsSaveRequest.toJson();
+	char *jsonStr =  pinsSaveRequestCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -1307,22 +1397,22 @@ static bool pinsSaveHelper(char * accessToken,
 
 
 bool PinsManager::pinsSaveAsync(char * accessToken,
-	std::string pinId, std::shared_ptr<Pins_save_request> pinsSaveRequest, std::string adAccountId, 
+	std::string pinId, std::shared_ptr<PinsSaveRequestCreate> pinsSaveRequestCreate, std::string adAccountId, 
 	void(* handler)(Pin, Error, void* )
 	, void* userData)
 {
 	return pinsSaveHelper(accessToken,
-	pinId, pinsSaveRequest, adAccountId, 
+	pinId, pinsSaveRequestCreate, adAccountId, 
 	handler, userData, true);
 }
 
 bool PinsManager::pinsSaveSync(char * accessToken,
-	std::string pinId, std::shared_ptr<Pins_save_request> pinsSaveRequest, std::string adAccountId, 
+	std::string pinId, std::shared_ptr<PinsSaveRequestCreate> pinsSaveRequestCreate, std::string adAccountId, 
 	void(* handler)(Pin, Error, void* )
 	, void* userData)
 {
 	return pinsSaveHelper(accessToken,
-	pinId, pinsSaveRequest, adAccountId, 
+	pinId, pinsSaveRequestCreate, adAccountId, 
 	handler, userData, false);
 }
 

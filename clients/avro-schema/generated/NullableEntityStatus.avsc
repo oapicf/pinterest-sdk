@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Entity status",
+  "name": "NullableEntityStatus",
+  "symbols": [
+    "ACTIVE",
+    "PAUSED",
+    "ARCHIVED",
+    "DRAFT",
+    "DELETED_DRAFT"
+  ]
+}

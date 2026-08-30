@@ -69,13 +69,36 @@ ProductGroupPromotionResponseItem <- R6::R6Class(
       ProductGroupPromotionResponseItemObject <- list()
       if (!is.null(self$`data`)) {
         ProductGroupPromotionResponseItemObject[["data"]] <-
-          self$`data`$toSimpleType()
+          self$extractSimpleType(self$`data`)
       }
       if (!is.null(self$`exceptions`)) {
         ProductGroupPromotionResponseItemObject[["exceptions"]] <-
-          lapply(self$`exceptions`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`exceptions`)
       }
       return(ProductGroupPromotionResponseItemObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

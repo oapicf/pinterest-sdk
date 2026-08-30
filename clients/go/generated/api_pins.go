@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -31,7 +31,7 @@ type ApiMultiPinsAnalyticsRequest struct {
 	pinIds *[]string
 	startDate *string
 	endDate *string
-	metricTypes *[]string
+	metricTypes *[]MultiPinsAnalyticsMetricTypesItem
 	appTypes *string
 	adAccountId *string
 }
@@ -55,7 +55,7 @@ func (r ApiMultiPinsAnalyticsRequest) EndDate(endDate string) ApiMultiPinsAnalyt
 }
 
 // Pin metric types to get data for.
-func (r ApiMultiPinsAnalyticsRequest) MetricTypes(metricTypes []string) ApiMultiPinsAnalyticsRequest {
+func (r ApiMultiPinsAnalyticsRequest) MetricTypes(metricTypes []MultiPinsAnalyticsMetricTypesItem) ApiMultiPinsAnalyticsRequest {
 	r.metricTypes = &metricTypes
 	return r
 }
@@ -79,18 +79,18 @@ func (r ApiMultiPinsAnalyticsRequest) Execute() (*map[string]map[string]PinAnaly
 /*
 MultiPinsAnalytics Get multiple Pin analytics
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
 
 Get analytics for multiple pins owned by the "operation user_account" - or on a group board that has been shared with this account.
 - The maximum number of pins supported in a single request is 100.
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:
 
 - For Pins on public or protected boards: Admin, Analyst.
 - For Pins on secret boards: Admin.
 
-If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiMultiPinsAnalyticsRequest
@@ -157,9 +157,9 @@ func (a *PinsAPIService) MultiPinsAnalyticsExecute(r ApiMultiPinsAnalyticsReques
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
-        r.appTypes = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+		r.appTypes = &defaultValue
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
 	if r.adAccountId != nil {
@@ -205,7 +205,7 @@ func (a *PinsAPIService) MultiPinsAnalyticsExecute(r ApiMultiPinsAnalyticsReques
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -216,7 +216,18 @@ func (a *PinsAPIService) MultiPinsAnalyticsExecute(r ApiMultiPinsAnalyticsReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -227,7 +238,7 @@ func (a *PinsAPIService) MultiPinsAnalyticsExecute(r ApiMultiPinsAnalyticsReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -238,7 +249,7 @@ func (a *PinsAPIService) MultiPinsAnalyticsExecute(r ApiMultiPinsAnalyticsReques
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -248,7 +259,7 @@ func (a *PinsAPIService) MultiPinsAnalyticsExecute(r ApiMultiPinsAnalyticsReques
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -277,7 +288,7 @@ type ApiPinsAnalyticsRequest struct {
 	pinId string
 	startDate *string
 	endDate *string
-	metricTypes *[]string
+	metricTypes *[]QuerypinanalyticsmetrictypesItems
 	appTypes *string
 	splitField *string
 	adAccountId *string
@@ -295,8 +306,8 @@ func (r ApiPinsAnalyticsRequest) EndDate(endDate string) ApiPinsAnalyticsRequest
 	return r
 }
 
-// Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
-func (r ApiPinsAnalyticsRequest) MetricTypes(metricTypes []string) ApiPinsAnalyticsRequest {
+// Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;.
+func (r ApiPinsAnalyticsRequest) MetricTypes(metricTypes []QuerypinanalyticsmetrictypesItems) ApiPinsAnalyticsRequest {
 	r.metricTypes = &metricTypes
 	return r
 }
@@ -329,12 +340,12 @@ PinsAnalytics Get Pin analytics
 Get analytics for a Pin owned by the "operation user_account" - or on a group board that has been shared with this account.
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:
 
 - For Pins on public or protected boards: Admin, Analyst.
 - For Pins on secret boards: Admin.
 
-If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pinId Unique identifier of a Pin.
@@ -384,17 +395,17 @@ func (a *PinsAPIService) PinsAnalyticsExecute(r ApiPinsAnalyticsRequest) (*map[s
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-        var defaultValue string = "ALL"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
-        r.appTypes = &defaultValue
+		var defaultValue string = "ALL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+		r.appTypes = &defaultValue
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
 	if r.splitField != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", r.splitField, "form", "")
 	} else {
-        var defaultValue string = "NO_SPLIT"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", defaultValue, "form", "")
-        r.splitField = &defaultValue
+		var defaultValue string = "NO_SPLIT"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", defaultValue, "form", "")
+		r.splitField = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -439,7 +450,18 @@ func (a *PinsAPIService) PinsAnalyticsExecute(r ApiPinsAnalyticsRequest) (*map[s
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -450,7 +472,7 @@ func (a *PinsAPIService) PinsAnalyticsExecute(r ApiPinsAnalyticsRequest) (*map[s
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -461,7 +483,7 @@ func (a *PinsAPIService) PinsAnalyticsExecute(r ApiPinsAnalyticsRequest) (*map[s
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -471,7 +493,18 @@ func (a *PinsAPIService) PinsAnalyticsExecute(r ApiPinsAnalyticsRequest) (*map[s
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -518,7 +551,6 @@ func (r ApiPinsCreateRequest) Execute() (*Pin, *http.Response, error) {
 
 /*
 PinsCreate Create Pin
-
 
  Create a Pin on a board or board section owned by the "operation user_account".
 
@@ -699,13 +731,12 @@ func (r ApiPinsDeleteRequest) AdAccountId(adAccountId string) ApiPinsDeleteReque
 	return r
 }
 
-func (r ApiPinsDeleteRequest) Execute() (*http.Response, error) {
+func (r ApiPinsDeleteRequest) Execute() (*Pin, *http.Response, error) {
 	return r.ApiService.PinsDeleteExecute(r)
 }
 
 /*
 PinsDelete Delete Pin
-
 
   Delete a Pins owned by the "operation user_account" - or on a group board that has been shared with this account.
   - By default, the "operation user_account" is the token user_account.
@@ -728,16 +759,18 @@ func (a *PinsAPIService) PinsDelete(ctx context.Context, pinId string) ApiPinsDe
 }
 
 // Execute executes the request
-func (a *PinsAPIService) PinsDeleteExecute(r ApiPinsDeleteRequest) (*http.Response, error) {
+//  @return Pin
+func (a *PinsAPIService) PinsDeleteExecute(r ApiPinsDeleteRequest) (*Pin, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *Pin
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PinsAPIService.PinsDelete")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/pins/{pin_id}"
@@ -769,19 +802,19 @@ func (a *PinsAPIService) PinsDeleteExecute(r ApiPinsDeleteRequest) (*http.Respon
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -794,68 +827,77 @@ func (a *PinsAPIService) PinsDeleteExecute(r ApiPinsDeleteRequest) (*http.Respon
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiPinsGetRequest struct {
@@ -884,7 +926,6 @@ func (r ApiPinsGetRequest) Execute() (*Pin, *http.Response, error) {
 
 /*
 PinsGet Get Pin
-
 
   Get a Pin owned by the "operation user_account" - or on a group board that has been shared with this account.
   - By default, the "operation user_account" is the token user_account.
@@ -934,9 +975,9 @@ func (a *PinsAPIService) PinsGetExecute(r ApiPinsGetRequest) (*Pin, *http.Respon
 	if r.pinMetrics != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
-        r.pinMetrics = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
+		r.pinMetrics = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1058,18 +1099,21 @@ func (a *PinsAPIService) PinsGetExecute(r ApiPinsGetRequest) (*Pin, *http.Respon
 type ApiPinsListRequest struct {
 	ctx context.Context
 	ApiService *PinsAPIService
-	pinFilter *string
+	pinFilter *PinFilter
 	pinMetrics *bool
 	includeProtectedPins *bool
-	pinType *string
+	pinType *PinType
 	creativeTypes *[]CreativeType
 	adAccountId *string
+	domain *string
+	domains *[]string
+	includeProductTagObj *bool
 	bookmark *string
 	pageSize *int32
 }
 
 // The filter to apply to the pins
-func (r ApiPinsListRequest) PinFilter(pinFilter string) ApiPinsListRequest {
+func (r ApiPinsListRequest) PinFilter(pinFilter PinFilter) ApiPinsListRequest {
 	r.pinFilter = &pinFilter
 	return r
 }
@@ -1087,7 +1131,7 @@ func (r ApiPinsListRequest) IncludeProtectedPins(includeProtectedPins bool) ApiP
 }
 
 // The type of pins to return, currently only enabled for private pins
-func (r ApiPinsListRequest) PinType(pinType string) ApiPinsListRequest {
+func (r ApiPinsListRequest) PinType(pinType PinType) ApiPinsListRequest {
 	r.pinType = &pinType
 	return r
 }
@@ -1101,6 +1145,24 @@ func (r ApiPinsListRequest) CreativeTypes(creativeTypes []CreativeType) ApiPinsL
 // Unique identifier of an ad account.
 func (r ApiPinsListRequest) AdAccountId(adAccountId string) ApiPinsListRequest {
 	r.adAccountId = &adAccountId
+	return r
+}
+
+// Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins).
+func (r ApiPinsListRequest) Domain(domain string) ApiPinsListRequest {
+	r.domain = &domain
+	return r
+}
+
+// Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;).
+func (r ApiPinsListRequest) Domains(domains []string) ApiPinsListRequest {
+	r.domains = &domains
+	return r
+}
+
+// Include product tag objects in the response with their associated links.
+func (r ApiPinsListRequest) IncludeProductTagObj(includeProductTagObj bool) ApiPinsListRequest {
+	r.includeProductTagObj = &includeProductTagObj
 	return r
 }
 
@@ -1122,7 +1184,6 @@ func (r ApiPinsListRequest) Execute() (*PinsList200Response, *http.Response, err
 
 /*
 PinsList List Pins
-
 
     Get a list of the Pins owned by the "operation user_account".
     - By default, the "operation user_account" is the token user_account.
@@ -1170,16 +1231,16 @@ func (a *PinsAPIService) PinsListExecute(r ApiPinsListRequest) (*PinsList200Resp
 	if r.pinMetrics != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
-        r.pinMetrics = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
+		r.pinMetrics = &defaultValue
 	}
 	if r.includeProtectedPins != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_protected_pins", r.includeProtectedPins, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "include_protected_pins", defaultValue, "form", "")
-        r.includeProtectedPins = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_protected_pins", defaultValue, "form", "")
+		r.includeProtectedPins = &defaultValue
 	}
 	if r.pinType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_type", r.pinType, "form", "")
@@ -1198,15 +1259,32 @@ func (a *PinsAPIService) PinsListExecute(r ApiPinsListRequest) (*PinsList200Resp
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
+	if r.domain != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "domain", r.domain, "form", "")
+	}
+	if r.domains != nil {
+		t := *r.domains
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "domains", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "domains", t, "form", "multi")
+		}
+	}
+	if r.includeProductTagObj != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_product_tag_obj", r.includeProductTagObj, "form", "")
+	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1329,13 +1407,12 @@ type ApiPinsSaveRequest struct {
 	ctx context.Context
 	ApiService *PinsAPIService
 	pinId string
-	pinsSaveRequest *PinsSaveRequest
+	pinsSaveRequestCreate *PinsSaveRequestCreate
 	adAccountId *string
 }
 
-// Request object used to save an existing pin
-func (r ApiPinsSaveRequest) PinsSaveRequest(pinsSaveRequest PinsSaveRequest) ApiPinsSaveRequest {
-	r.pinsSaveRequest = &pinsSaveRequest
+func (r ApiPinsSaveRequest) PinsSaveRequestCreate(pinsSaveRequestCreate PinsSaveRequestCreate) ApiPinsSaveRequest {
+	r.pinsSaveRequestCreate = &pinsSaveRequestCreate
 	return r
 }
 
@@ -1354,7 +1431,7 @@ PinsSave Save Pin
 
 Save a Pin on a board or board section owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:
+Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:
 
 - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.
 - For Pins on secret boards: Owner, Admin.
@@ -1395,8 +1472,8 @@ func (a *PinsAPIService) PinsSaveExecute(r ApiPinsSaveRequest) (*Pin, *http.Resp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.pinsSaveRequest == nil {
-		return localVarReturnValue, nil, reportError("pinsSaveRequest is required and must be specified")
+	if r.pinsSaveRequestCreate == nil {
+		return localVarReturnValue, nil, reportError("pinsSaveRequestCreate is required and must be specified")
 	}
 
 	if r.adAccountId != nil {
@@ -1420,7 +1497,7 @@ func (a *PinsAPIService) PinsSaveExecute(r ApiPinsSaveRequest) (*Pin, *http.Resp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.pinsSaveRequest
+	localVarPostBody = r.pinsSaveRequestCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1443,8 +1520,30 @@ func (a *PinsAPIService) PinsSaveExecute(r ApiPinsSaveRequest) (*Pin, *http.Resp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1455,7 +1554,7 @@ func (a *PinsAPIService) PinsSaveExecute(r ApiPinsSaveRequest) (*Pin, *http.Resp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1465,7 +1564,18 @@ func (a *PinsAPIService) PinsSaveExecute(r ApiPinsSaveRequest) (*Pin, *http.Resp
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

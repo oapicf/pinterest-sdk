@@ -10,11 +10,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="audienceInsightsGet"></a>
 # **audienceInsightsGet**
-> AudienceInsightsResponse audienceInsightsGet(adAccountId, audienceInsightType)
+> AudienceInsights audienceInsightsGet(adAccountId, audienceInsightType)
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Example
 ```java
@@ -43,7 +43,7 @@ public class Example {
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     AudienceInsightType audienceInsightType = AudienceInsightType.fromValue("YOUR_TOTAL_AUDIENCE"); // AudienceInsightType | Type of audience insights.
     try {
-      AudienceInsightsResponse result = apiInstance.audienceInsightsGet(adAccountId, audienceInsightType);
+      AudienceInsights result = apiInstance.audienceInsightsGet(adAccountId, audienceInsightType);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AudienceInsightsApi#audienceInsightsGet");
@@ -61,11 +61,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
-| **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [default to YOUR_TOTAL_AUDIENCE] [enum: YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE] |
+| **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [enum: YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE] |
 
 ### Return type
 
-[**AudienceInsightsResponse**](AudienceInsightsResponse.md)
+[**AudienceInsights**](AudienceInsights.md)
 
 ### Authorization
 
@@ -79,12 +79,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="audienceInsightsScopeAndTypeGet"></a>
 # **audienceInsightsScopeAndTypeGet**
-> AudienceDefinitionResponse audienceInsightsScopeAndTypeGet(adAccountId)
+> AudienceInsightsScopeAndTypeGet200Response audienceInsightsScopeAndTypeGet(adAccountId)
 
 Get audience insights scope and type
 
@@ -116,7 +121,7 @@ public class Example {
     AudienceInsightsApi apiInstance = new AudienceInsightsApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      AudienceDefinitionResponse result = apiInstance.audienceInsightsScopeAndTypeGet(adAccountId);
+      AudienceInsightsScopeAndTypeGet200Response result = apiInstance.audienceInsightsScopeAndTypeGet(adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AudienceInsightsApi#audienceInsightsScopeAndTypeGet");
@@ -137,7 +142,7 @@ public class Example {
 
 ### Return type
 
-[**AudienceDefinitionResponse**](AudienceDefinitionResponse.md)
+[**AudienceInsightsScopeAndTypeGet200Response**](AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 
@@ -151,6 +156,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

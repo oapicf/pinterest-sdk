@@ -1,6 +1,6 @@
 const utils = require('../utils/utils');
 const PlacementGroupType = require('../models/PlacementGroupType');
-const TargetingSpec = require('../models/TargetingSpec');
+const TargetingSpecOptimal = require('../models/TargetingSpecOptimal');
 const TargetingTemplateKeyword = require('../models/TargetingTemplateKeyword');
 const TrackingUrls = require('../models/TrackingUrls');
 
@@ -10,7 +10,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}auto_targeting_enabled`,
-                label: `Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. - [${labelPrefix}auto_targeting_enabled]`,
+                label: `Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting). - [${labelPrefix}auto_targeting_enabled]`,
                 type: 'boolean',
             },
             {
@@ -20,7 +20,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}name`,
-                label: `Name of targeting template. - [${labelPrefix}name]`,
+                label: `targeting template name - [${labelPrefix}name]`,
                 required: true,
                 type: 'string',
             },
@@ -28,7 +28,7 @@ module.exports = {
                 key: `${keyPrefix}placement_group`,
                 ...PlacementGroupType.fields(`${keyPrefix}placement_group`, isInput),
             },
-            ...TargetingSpec.fields(`${keyPrefix}targeting_attributes`, isInput),
+            ...TargetingSpecOptimal.fields(`${keyPrefix}targeting_attributes`, isInput),
             ...TrackingUrls.fields(`${keyPrefix}tracking_urls`, isInput),
         ]
     },
@@ -39,7 +39,7 @@ module.exports = {
             'keywords': utils.childMapping(bundle.inputData?.[`${keyPrefix}keywords`], `${keyPrefix}keywords`, TargetingTemplateKeyword),
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'placement_group': bundle.inputData?.[`${keyPrefix}placement_group`],
-            'targeting_attributes': utils.removeIfEmpty(TargetingSpec.mapping(bundle, `${keyPrefix}targeting_attributes`)),
+            'targeting_attributes': utils.removeIfEmpty(TargetingSpecOptimal.mapping(bundle, `${keyPrefix}targeting_attributes`)),
             'tracking_urls': utils.removeIfEmpty(TrackingUrls.mapping(bundle, `${keyPrefix}tracking_urls`)),
         }
     },

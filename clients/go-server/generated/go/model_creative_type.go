@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -35,6 +35,7 @@ const (
 	COLLAGE CreativeType = "COLLAGE"
 	MAX_WIDTH_REGULAR_COLLECTION CreativeType = "MAX_WIDTH_REGULAR_COLLECTION"
 	MAX_WIDTH_VIDEO_COLLECTION CreativeType = "MAX_WIDTH_VIDEO_COLLECTION"
+	APP CreativeType = "APP"
 )
 
 // AllowedCreativeTypeEnumValues is all the allowed values of CreativeType enum
@@ -52,6 +53,7 @@ var AllowedCreativeTypeEnumValues = []CreativeType{
 	"COLLAGE",
 	"MAX_WIDTH_REGULAR_COLLECTION",
 	"MAX_WIDTH_VIDEO_COLLECTION",
+	"APP",
 }
 
 // validCreativeTypeEnumValue provides a map of CreativeTypes for fast verification of use input
@@ -69,6 +71,7 @@ var validCreativeTypeEnumValues = map[CreativeType]struct{}{
 	"COLLAGE": {},
 	"MAX_WIDTH_REGULAR_COLLECTION": {},
 	"MAX_WIDTH_VIDEO_COLLECTION": {},
+	"APP": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
@@ -89,8 +92,8 @@ func NewCreativeTypeFromValue(v string) (CreativeType, error) {
 }
 
 
-
-// AssertCreativeTypeRequired checks if the required fields are not zero-ed
+// AssertCreativeTypeRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCreativeTypeRequired(obj CreativeType) error {
 	return nil
 }

@@ -10,12 +10,12 @@ module NotificationResponse =
 
   [<CLIMutable>]
   type NotificationResponse = {
-    [<JsonProperty(PropertyName = "success")>]
-    Success : bool;
-    [<JsonProperty(PropertyName = "received_at")>]
-    ReceivedAt : int;
     [<JsonProperty(PropertyName = "error_msg")>]
     ErrorMsg : string;
+    [<JsonProperty(PropertyName = "received_at")>]
+    ReceivedAt : int;
+    [<JsonProperty(PropertyName = "success")>]
+    Success : bool;
   }
 
   //#endregion

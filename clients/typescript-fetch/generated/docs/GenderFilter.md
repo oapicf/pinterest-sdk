@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`gENDER` | [CatalogsProductGroupMultipleGenderCriteria](.md)
+`gENDER` | [CatalogsProductGroupMultipleGenderCriteria](CatalogsProductGroupMultipleGenderCriteria.md)
 
 ## Example
 

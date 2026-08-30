@@ -4,102 +4,33 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.Gender;
+import org.openapitools.model.MediaType;
+import org.openapitools.model.ProductAvailability;
+import org.openapitools.model.ProductCondition;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A map of filter attributes to their available values.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="A map of filter attributes to their available values.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailFilterValuesMap   {
   
   private List<String> adImageTags = new ArrayList<>();
   private List<String> adVideoTags = new ArrayList<>();
-
-  /**
-   * Gets or Sets availability
-   */
-  public enum AvailabilityEnum {
-    IN_STOCK("IN_STOCK"),
-
-        OUT_OF_STOCK("OUT_OF_STOCK"),
-
-        PREORDER("PREORDER"),
-
-        UNAVAILABLE("UNAVAILABLE");
-    private String value;
-
-    AvailabilityEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private List<AvailabilityEnum> availability = new ArrayList<>();
+  private List<ProductAvailability> availability = new ArrayList<>();
   private List<String> brand = new ArrayList<>();
-
-  /**
-   * Gets or Sets condition
-   */
-  public enum ConditionEnum {
-    NEW("NEW"),
-
-        USED("USED"),
-
-        REFURBISHED("REFURBISHED");
-    private String value;
-
-    ConditionEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private List<ConditionEnum> condition = new ArrayList<>();
+  private List<ProductCondition> condition = new ArrayList<>();
   private List<String> customLabel0 = new ArrayList<>();
   private List<String> customLabel1 = new ArrayList<>();
   private List<String> customLabel2 = new ArrayList<>();
   private List<String> customLabel3 = new ArrayList<>();
   private List<String> customLabel4 = new ArrayList<>();
-
-  /**
-   * Gets or Sets gender
-   */
-  public enum GenderEnum {
-    FEMALE("FEMALE"),
-
-        MALE("MALE"),
-
-        UNISEX("UNISEX");
-    private String value;
-
-    GenderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private List<GenderEnum> gender = new ArrayList<>();
+  private List<Gender> gender = new ArrayList<>();
   private List<String> googleProductCategory0 = new ArrayList<>();
   private List<String> googleProductCategory1 = new ArrayList<>();
   private List<String> googleProductCategory2 = new ArrayList<>();
@@ -107,28 +38,7 @@ public class CatalogsRetailFilterValuesMap   {
   private List<String> googleProductCategory4 = new ArrayList<>();
   private List<String> googleProductCategory5 = new ArrayList<>();
   private List<String> googleProductCategory6 = new ArrayList<>();
-
-  /**
-   * Gets or Sets mediaType
-   */
-  public enum MediaTypeEnum {
-    IMAGE("IMAGE"),
-
-        VIDEO("VIDEO");
-    private String value;
-
-    MediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private List<MediaTypeEnum> mediaType = new ArrayList<>();
+  private List<MediaType> mediaType = new ArrayList<>();
   private List<String> productType0 = new ArrayList<>();
   private List<String> productType1 = new ArrayList<>();
   private List<String> productType2 = new ArrayList<>();
@@ -164,10 +74,11 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("availability")
-  public List<AvailabilityEnum> getAvailability() {
+  @Valid
+  public List<ProductAvailability> getAvailability() {
     return availability;
   }
-  public void setAvailability(List<AvailabilityEnum> availability) {
+  public void setAvailability(List<ProductAvailability> availability) {
     this.availability = availability;
   }
 
@@ -188,10 +99,11 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("condition")
-  public List<ConditionEnum> getCondition() {
+  @Valid
+  public List<ProductCondition> getCondition() {
     return condition;
   }
-  public void setCondition(List<ConditionEnum> condition) {
+  public void setCondition(List<ProductCondition> condition) {
     this.condition = condition;
   }
 
@@ -260,10 +172,11 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("gender")
-  public List<GenderEnum> getGender() {
+  @Valid
+  public List<Gender> getGender() {
     return gender;
   }
-  public void setGender(List<GenderEnum> gender) {
+  public void setGender(List<Gender> gender) {
     this.gender = gender;
   }
 
@@ -356,10 +269,11 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media_type")
-  public List<MediaTypeEnum> getMediaType() {
+  @Valid
+  public List<MediaType> getMediaType() {
     return mediaType;
   }
-  public void setMediaType(List<MediaTypeEnum> mediaType) {
+  public void setMediaType(List<MediaType> mediaType) {
     this.mediaType = mediaType;
   }
 
@@ -502,10 +416,7 @@ public class CatalogsRetailFilterValuesMap   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

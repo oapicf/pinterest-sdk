@@ -12,18 +12,21 @@ static min_price_filter_t *min_price_filter_create_internal(
     if (!min_price_filter_local_var) {
         return NULL;
     }
-    min_price_filter_local_var->min_price = min_price;
-
+    memset(min_price_filter_local_var, 0, sizeof(min_price_filter_t));
     min_price_filter_local_var->_library_owned = 1;
+    min_price_filter_local_var->min_price = min_price;
     return min_price_filter_local_var;
 }
 
 __attribute__((deprecated)) min_price_filter_t *min_price_filter_create(
     catalogs_product_group_pricing_criteria_t *min_price
     ) {
-    return min_price_filter_create_internal (
+    min_price_filter_t *result = min_price_filter_create_internal (
         min_price
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void min_price_filter_free(min_price_filter_t *min_price_filter) {
@@ -36,7 +39,7 @@ void min_price_filter_free(min_price_filter_t *min_price_filter) {
     }
     listEntry_t *listEntry;
     if (min_price_filter->min_price) {
-        object_free(min_price_filter->min_price);
+        catalogs_product_group_pricing_criteria_free(min_price_filter->min_price);
         min_price_filter->min_price = NULL;
     }
     free(min_price_filter);
@@ -49,11 +52,11 @@ cJSON *min_price_filter_convertToJSON(min_price_filter_t *min_price_filter) {
     if (!min_price_filter->min_price) {
         goto fail;
     }
-    cJSON *min_price_object = object_convertToJSON(min_price_filter->min_price);
-    if(min_price_object == NULL) {
+    cJSON *min_price_local_JSON = catalogs_product_group_pricing_criteria_convertToJSON(min_price_filter->min_price);
+    if(min_price_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "MIN_PRICE", min_price_object);
+    cJSON_AddItemToObject(item, "MIN_PRICE", min_price_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -70,6 +73,9 @@ min_price_filter_t *min_price_filter_parseFromJSON(cJSON *min_price_filterJSON){
 
     min_price_filter_t *min_price_filter_local_var = NULL;
 
+    // define the local variable for min_price_filter->min_price
+    catalogs_product_group_pricing_criteria_t *min_price_local_nonprim = NULL;
+
     // min_price_filter->min_price
     cJSON *min_price = cJSON_GetObjectItemCaseSensitive(min_price_filterJSON, "MIN_PRICE");
     if (cJSON_IsNull(min_price)) {
@@ -79,17 +85,25 @@ min_price_filter_t *min_price_filter_parseFromJSON(cJSON *min_price_filterJSON){
         goto end;
     }
 
-    object_t *min_price_local_object = NULL;
     
-    min_price_local_object = object_parseFromJSON(min_price); //object
+    min_price_local_nonprim = catalogs_product_group_pricing_criteria_parseFromJSON(min_price); //nonprimitive
+
 
 
     min_price_filter_local_var = min_price_filter_create_internal (
-        min_price_local_object
+        min_price_local_nonprim
         );
+
+    if (!min_price_filter_local_var) {
+        goto end;
+    }
 
     return min_price_filter_local_var;
 end:
+    if (min_price_local_nonprim) {
+        catalogs_product_group_pricing_criteria_free(min_price_local_nonprim);
+        min_price_local_nonprim = NULL;
+    }
     return NULL;
 
 }

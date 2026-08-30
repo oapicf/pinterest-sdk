@@ -10,22 +10,20 @@ import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/brand_accounts_create200_response.dart';
-import 'package:openapi/src/model/brand_accounts_create_request.dart';
-import 'package:openapi/src/model/brand_accounts_update_request.dart';
-import 'package:openapi/src/model/delete_partners_request.dart';
-import 'package:openapi/src/model/delete_partners_response.dart';
-import 'package:openapi/src/model/deleted_members_response.dart';
-import 'package:openapi/src/model/error.dart';
+import 'package:openapi/src/model/brand_account.dart';
+import 'package:openapi/src/model/brand_account_create.dart';
+import 'package:openapi/src/model/brand_account_update.dart';
+import 'package:openapi/src/model/business_membership_member.dart';
+import 'package:openapi/src/model/delete_business_membership200_response.dart';
+import 'package:openapi/src/model/delete_business_membership_body.dart';
+import 'package:openapi/src/model/delete_business_partners.dart';
+import 'package:openapi/src/model/delete_business_partners_delete.dart';
 import 'package:openapi/src/model/get_business_employers200_response.dart';
-import 'package:openapi/src/model/get_business_members200_response.dart';
-import 'package:openapi/src/model/get_business_partners200_response.dart';
 import 'package:openapi/src/model/member_business_role.dart';
-import 'package:openapi/src/model/members_to_delete_body.dart';
 import 'package:openapi/src/model/partner_type.dart';
-import 'package:openapi/src/model/system_user_update_request.dart';
-import 'package:openapi/src/model/update_member_business_role_body.dart';
-import 'package:openapi/src/model/update_member_results_response_array.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
+import 'package:openapi/src/model/system_user_update_with_required_body.dart';
+import 'package:openapi/src/model/update_business_memberships_response.dart';
 
 class BusinessAccessRelationshipsApi {
 
@@ -40,7 +38,7 @@ class BusinessAccessRelationshipsApi {
   ///
   /// Parameters:
   /// * [businessHierarchyId] - business hierarchy node id
-  /// * [brandAccountsCreateRequest] 
+  /// * [brandAccountCreate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -48,11 +46,11 @@ class BusinessAccessRelationshipsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BrandAccountsCreate200Response] as data
+  /// Returns a [Future] containing a [Response] with a [BrandAccount] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BrandAccountsCreate200Response>> brandAccountsCreate({ 
+  Future<Response<BrandAccount>> brandAccountsCreate({ 
     required String businessHierarchyId,
-    required BrandAccountsCreateRequest brandAccountsCreateRequest,
+    required BrandAccountCreate brandAccountCreate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -82,8 +80,8 @@ class BusinessAccessRelationshipsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BrandAccountsCreateRequest);
-      _bodyData = _serializers.serialize(brandAccountsCreateRequest, specifiedType: _type);
+      const _type = FullType(BrandAccountCreate);
+      _bodyData = _serializers.serialize(brandAccountCreate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -106,14 +104,14 @@ class BusinessAccessRelationshipsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BrandAccountsCreate200Response? _responseData;
+    BrandAccount? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BrandAccountsCreate200Response),
-      ) as BrandAccountsCreate200Response;
+        specifiedType: const FullType(BrandAccount),
+      ) as BrandAccount;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -125,7 +123,7 @@ class BusinessAccessRelationshipsApi {
       );
     }
 
-    return Response<BrandAccountsCreate200Response>(
+    return Response<BrandAccount>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -141,9 +139,9 @@ class BusinessAccessRelationshipsApi {
   /// Update an existing Brand Account
   ///
   /// Parameters:
+  /// * [brandAccountId] 
   /// * [businessHierarchyId] - business hierarchy node id
-  /// * [brandAccountId] - Unique identifier of a brand account.
-  /// * [brandAccountsUpdateRequest] 
+  /// * [brandAccountUpdate] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -151,12 +149,12 @@ class BusinessAccessRelationshipsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BrandAccountsCreate200Response] as data
+  /// Returns a [Future] containing a [Response] with a [BrandAccount] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BrandAccountsCreate200Response>> brandAccountsUpdate({ 
-    required String businessHierarchyId,
+  Future<Response<BrandAccount>> brandAccountsUpdate({ 
     required String brandAccountId,
-    required BrandAccountsUpdateRequest brandAccountsUpdateRequest,
+    required String businessHierarchyId,
+    required BrandAccountUpdate brandAccountUpdate,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -164,7 +162,7 @@ class BusinessAccessRelationshipsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}'.replaceAll('{' r'business_hierarchy_id' '}', encodeQueryParameter(_serializers, businessHierarchyId, const FullType(String)).toString()).replaceAll('{' r'brand_account_id' '}', encodeQueryParameter(_serializers, brandAccountId, const FullType(String)).toString());
+    final _path = r'/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}'.replaceAll('{' r'brand_account_id' '}', encodeQueryParameter(_serializers, brandAccountId, const FullType(String)).toString()).replaceAll('{' r'business_hierarchy_id' '}', encodeQueryParameter(_serializers, businessHierarchyId, const FullType(String)).toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -186,8 +184,8 @@ class BusinessAccessRelationshipsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BrandAccountsUpdateRequest);
-      _bodyData = _serializers.serialize(brandAccountsUpdateRequest, specifiedType: _type);
+      const _type = FullType(BrandAccountUpdate);
+      _bodyData = _serializers.serialize(brandAccountUpdate, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -210,14 +208,14 @@ class BusinessAccessRelationshipsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BrandAccountsCreate200Response? _responseData;
+    BrandAccount? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BrandAccountsCreate200Response),
-      ) as BrandAccountsCreate200Response;
+        specifiedType: const FullType(BrandAccount),
+      ) as BrandAccount;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -229,7 +227,7 @@ class BusinessAccessRelationshipsApi {
       );
     }
 
-    return Response<BrandAccountsCreate200Response>(
+    return Response<BrandAccount>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -246,7 +244,7 @@ class BusinessAccessRelationshipsApi {
   ///
   /// Parameters:
   /// * [businessId] - Business id
-  /// * [membersToDeleteBody] - List of members with role to delete.
+  /// * [deleteBusinessMembershipBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -254,11 +252,11 @@ class BusinessAccessRelationshipsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [DeletedMembersResponse] as data
+  /// Returns a [Future] containing a [Response] with a [DeleteBusinessMembership200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DeletedMembersResponse>> deleteBusinessMembership({ 
+  Future<Response<DeleteBusinessMembership200Response>> deleteBusinessMembership({ 
     required String businessId,
-    required MembersToDeleteBody membersToDeleteBody,
+    required DeleteBusinessMembershipBody deleteBusinessMembershipBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -288,8 +286,8 @@ class BusinessAccessRelationshipsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(MembersToDeleteBody);
-      _bodyData = _serializers.serialize(membersToDeleteBody, specifiedType: _type);
+      const _type = FullType(DeleteBusinessMembershipBody);
+      _bodyData = _serializers.serialize(deleteBusinessMembershipBody, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -312,14 +310,14 @@ class BusinessAccessRelationshipsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    DeletedMembersResponse? _responseData;
+    DeleteBusinessMembership200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(DeletedMembersResponse),
-      ) as DeletedMembersResponse;
+        specifiedType: const FullType(DeleteBusinessMembership200Response),
+      ) as DeleteBusinessMembership200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -331,7 +329,7 @@ class BusinessAccessRelationshipsApi {
       );
     }
 
-    return Response<DeletedMembersResponse>(
+    return Response<DeleteBusinessMembership200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -348,7 +346,7 @@ class BusinessAccessRelationshipsApi {
   ///
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
-  /// * [deletePartnersRequest] - An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
+  /// * [deleteBusinessPartnersDelete] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -356,11 +354,11 @@ class BusinessAccessRelationshipsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [DeletePartnersResponse] as data
+  /// Returns a [Future] containing a [Response] with a [DeleteBusinessPartners] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DeletePartnersResponse>> deleteBusinessPartners({ 
+  Future<Response<DeleteBusinessPartners>> deleteBusinessPartners({ 
     required String businessId,
-    required DeletePartnersRequest deletePartnersRequest,
+    required DeleteBusinessPartnersDelete deleteBusinessPartnersDelete,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -390,8 +388,8 @@ class BusinessAccessRelationshipsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(DeletePartnersRequest);
-      _bodyData = _serializers.serialize(deletePartnersRequest, specifiedType: _type);
+      const _type = FullType(DeleteBusinessPartnersDelete);
+      _bodyData = _serializers.serialize(deleteBusinessPartnersDelete, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -414,14 +412,14 @@ class BusinessAccessRelationshipsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    DeletePartnersResponse? _responseData;
+    DeleteBusinessPartners? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(DeletePartnersResponse),
-      ) as DeletePartnersResponse;
+        specifiedType: const FullType(DeleteBusinessPartners),
+      ) as DeleteBusinessPartners;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -433,7 +431,7 @@ class BusinessAccessRelationshipsApi {
       );
     }
 
-    return Response<DeletePartnersResponse>(
+    return Response<DeleteBusinessPartners>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -449,8 +447,9 @@ class BusinessAccessRelationshipsApi {
   /// Get all of the viewing user&#39;s business employers.
   ///
   /// Parameters:
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [assetsSummary] - Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
   /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -461,8 +460,9 @@ class BusinessAccessRelationshipsApi {
   /// Returns a [Future] containing a [Response] with a [GetBusinessEmployers200Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<GetBusinessEmployers200Response>> getBusinessEmployers({ 
-    int? pageSize = 25,
+    bool? assetsSummary = true,
     String? bookmark,
+    int? pageSize = 25,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -489,8 +489,9 @@ class BusinessAccessRelationshipsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (assetsSummary != null) r'assets_summary': encodeQueryParameter(_serializers, assetsSummary, const FullType(bool)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -544,7 +545,7 @@ class BusinessAccessRelationshipsApi {
   /// * [memberIds] - A list of business members ids separated by comma.
   /// * [startIndex] - An index to start fetching the results from. Only the results starting from this index will be returned.
   /// * [bookmark] - Cursor used to fetch the next page of items
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -552,9 +553,9 @@ class BusinessAccessRelationshipsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GetBusinessMembers200Response] as data
+  /// Returns a [Future] containing a [Response] with a [GetBusinessEmployers200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GetBusinessMembers200Response>> getBusinessMembers({ 
+  Future<Response<GetBusinessEmployers200Response>> getBusinessMembers({ 
     required String businessId,
     bool? fetchSystemUsers = false,
     bool? assetsSummary = false,
@@ -607,14 +608,14 @@ class BusinessAccessRelationshipsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    GetBusinessMembers200Response? _responseData;
+    GetBusinessEmployers200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(GetBusinessMembers200Response),
-      ) as GetBusinessMembers200Response;
+        specifiedType: const FullType(GetBusinessEmployers200Response),
+      ) as GetBusinessEmployers200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -626,7 +627,7 @@ class BusinessAccessRelationshipsApi {
       );
     }
 
-    return Response<GetBusinessMembers200Response>(
+    return Response<GetBusinessEmployers200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -644,11 +645,12 @@ class BusinessAccessRelationshipsApi {
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
   /// * [assetsSummary] - Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-  /// * [partnerType] - Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+  /// * [partnerType] - Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
   /// * [partnerIds] - A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
   /// * [startIndex] - An index to start fetching the results from. Only the results starting from this index will be returned.
-  /// * [pageSize] - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  /// * [sortAscending] - Sort ascending.
   /// * [bookmark] - Cursor used to fetch the next page of items
+  /// * [pageSize] - Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -656,16 +658,17 @@ class BusinessAccessRelationshipsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GetBusinessPartners200Response] as data
+  /// Returns a [Future] containing a [Response] with a [GetBusinessEmployers200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GetBusinessPartners200Response>> getBusinessPartners({ 
+  Future<Response<GetBusinessEmployers200Response>> getBusinessPartners({ 
     required String businessId,
     bool? assetsSummary = false,
     PartnerType? partnerType,
     String? partnerIds,
     int? startIndex = 0,
-    int? pageSize = 25,
+    bool? sortAscending,
     String? bookmark,
+    int? pageSize = 25,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -696,8 +699,9 @@ class BusinessAccessRelationshipsApi {
       if (partnerType != null) r'partner_type': encodeQueryParameter(_serializers, partnerType, const FullType(PartnerType)),
       if (partnerIds != null) r'partner_ids': encodeQueryParameter(_serializers, partnerIds, const FullType(String)),
       if (startIndex != null) r'start_index': encodeQueryParameter(_serializers, startIndex, const FullType(int)),
-      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (sortAscending != null) r'sort_ascending': encodeQueryParameter(_serializers, sortAscending, const FullType(bool)),
       if (bookmark != null) r'bookmark': encodeQueryParameter(_serializers, bookmark, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -709,14 +713,14 @@ class BusinessAccessRelationshipsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    GetBusinessPartners200Response? _responseData;
+    GetBusinessEmployers200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(GetBusinessPartners200Response),
-      ) as GetBusinessPartners200Response;
+        specifiedType: const FullType(GetBusinessEmployers200Response),
+      ) as GetBusinessEmployers200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -728,7 +732,7 @@ class BusinessAccessRelationshipsApi {
       );
     }
 
-    return Response<GetBusinessPartners200Response>(
+    return Response<GetBusinessEmployers200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -746,7 +750,7 @@ class BusinessAccessRelationshipsApi {
   /// Parameters:
   /// * [businessId] - Unique identifier of the requesting business.
   /// * [systemUserId] - Unique identifier of a system user.
-  /// * [systemUserUpdateRequest] 
+  /// * [systemUserUpdateWithRequiredBody] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -759,7 +763,7 @@ class BusinessAccessRelationshipsApi {
   Future<Response<void>> systemUserUpdate({ 
     required String businessId,
     required String systemUserId,
-    required SystemUserUpdateRequest systemUserUpdateRequest,
+    required SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -789,8 +793,8 @@ class BusinessAccessRelationshipsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(SystemUserUpdateRequest);
-      _bodyData = _serializers.serialize(systemUserUpdateRequest, specifiedType: _type);
+      const _type = FullType(SystemUserUpdateWithRequiredBody);
+      _bodyData = _serializers.serialize(systemUserUpdateWithRequiredBody, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -821,7 +825,7 @@ class BusinessAccessRelationshipsApi {
   ///
   /// Parameters:
   /// * [businessId] - Business id
-  /// * [updateMemberBusinessRoleBody] - List of objects with the member id and the business_role.
+  /// * [businessMembershipMember] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -829,11 +833,11 @@ class BusinessAccessRelationshipsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UpdateMemberResultsResponseArray] as data
+  /// Returns a [Future] containing a [Response] with a [UpdateBusinessMembershipsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UpdateMemberResultsResponseArray>> updateBusinessMemberships({ 
+  Future<Response<UpdateBusinessMembershipsResponse>> updateBusinessMemberships({ 
     required String businessId,
-    required BuiltList<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody,
+    required BuiltList<BusinessMembershipMember> businessMembershipMember,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -863,8 +867,8 @@ class BusinessAccessRelationshipsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BuiltList, [FullType(UpdateMemberBusinessRoleBody)]);
-      _bodyData = _serializers.serialize(updateMemberBusinessRoleBody, specifiedType: _type);
+      const _type = FullType(BuiltList, [FullType(BusinessMembershipMember)]);
+      _bodyData = _serializers.serialize(businessMembershipMember, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -887,14 +891,14 @@ class BusinessAccessRelationshipsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UpdateMemberResultsResponseArray? _responseData;
+    UpdateBusinessMembershipsResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UpdateMemberResultsResponseArray),
-      ) as UpdateMemberResultsResponseArray;
+        specifiedType: const FullType(UpdateBusinessMembershipsResponse),
+      ) as UpdateBusinessMembershipsResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -906,7 +910,7 @@ class BusinessAccessRelationshipsApi {
       );
     }
 
-    return Response<UpdateMemberResultsResponseArray>(
+    return Response<UpdateBusinessMembershipsResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

@@ -4,7 +4,6 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -12,7 +11,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TopPinsAnalyticsResponseDateAvailability   {
   
   private Boolean isRealtime;
@@ -21,7 +20,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
   /**
    **/
   
-  @ApiModelProperty(example = "false", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("is_realtime")
   public Boolean getIsRealtime() {
     return isRealtime;
@@ -33,7 +32,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
   /**
    **/
   
-  @ApiModelProperty(example = "1649116799000", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("latest_available_timestamp")
   @Valid
   public BigDecimal getLatestAvailableTimestamp() {
@@ -78,10 +77,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

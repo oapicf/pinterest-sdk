@@ -7,8 +7,8 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open MsotEventsApiHandlerParams
 open MsotEventsApiServiceInterface
 open MsotEventsApiServiceImplementation
-open OpenAPI.Model.ConversionMSOTEvents
-open OpenAPI.Model.Error
+open OpenAPI.Model.ConversionMSOTEventsCreate
+open OpenAPI.Model.PinterestLibError
 
 module MsotEventsApiHandler =
 
@@ -31,12 +31,16 @@ module MsotEventsApiHandler =
           return! (match result with
                       | MsotEventsCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> text resolved.content
+                      | MsotEventsCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=>  resolved.content
                       | MsotEventsCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
                       | MsotEventsCreateStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
                       | MsotEventsCreateStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | MsotEventsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
                       | MsotEventsCreateStatusCode429 resolved ->
                             setStatusCode 429 >=> json resolved.content
                       | MsotEventsCreateDefaultStatusCode resolved ->

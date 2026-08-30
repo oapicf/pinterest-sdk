@@ -1,113 +1,143 @@
 package org.openapitools.api;
 
+import org.openapitools.model.Ad;
 import org.openapitools.model.AdAccount;
-import org.openapitools.model.AdAccountAnalyticsResponseInner;
+import org.openapitools.model.AdAccountAnalyticsItems;
 import org.openapitools.model.AdAccountCreate;
+import org.openapitools.model.AdAccountToAdAccountSharedAudience;
+import org.openapitools.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.AdAccountToBusinessSharedAudience;
+import org.openapitools.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.AdAccountsAudience;
+import org.openapitools.model.AdAccountsAudienceCreate;
+import org.openapitools.model.AdAccountsAudienceUpdate;
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
-import org.openapitools.model.AdArrayResponse;
-import org.openapitools.model.AdCreateRequest;
-import org.openapitools.model.AdGroupArrayResponse;
-import org.openapitools.model.AdGroupAudienceSizingRequest;
-import org.openapitools.model.AdGroupAudienceSizingResponse;
-import org.openapitools.model.AdGroupCreateRequest;
-import org.openapitools.model.AdGroupResponse;
-import org.openapitools.model.AdGroupUpdateRequest;
-import org.openapitools.model.AdGroupsAnalyticsResponseInner;
+import org.openapitools.model.AdBatchUpdate;
+import org.openapitools.model.AdBatchWriteResponseModel;
+import org.openapitools.model.AdCreate;
+import org.openapitools.model.AdGroup;
+import org.openapitools.model.AdGroupAudienceSizing;
+import org.openapitools.model.AdGroupAudienceSizingCreate;
+import org.openapitools.model.AdGroupCreateCreate;
+import org.openapitools.model.AdGroupUpdateBatchUpdate;
+import org.openapitools.model.AdGroupsAnalyticsMetrics;
+import org.openapitools.model.AdGroupsCreate200Response;
 import org.openapitools.model.AdGroupsList200Response;
 import org.openapitools.model.AdPinAnalytics;
 import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
-import org.openapitools.model.AdResponse;
-import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalytics;
+import org.openapitools.model.AdsAnalyticsAccountTargetingType;
 import org.openapitools.model.AdsAnalyticsAdGroupTargetingType;
 import org.openapitools.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse;
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse;
-import org.openapitools.model.AdsAnalyticsResponseInner;
-import org.openapitools.model.AdsAnalyticsTargetingType;
-import org.openapitools.model.AdsCreditRedeemRequest;
-import org.openapitools.model.AdsCreditRedeemResponse;
+import org.openapitools.model.AdsCreditRedeem;
+import org.openapitools.model.AdsCreditRedeemCreate;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
-import org.openapitools.model.AdvertiserDefinedEventsResponse;
-import org.openapitools.model.Audience;
+import org.openapitools.model.AdvertiserDefinedEventsCreate200Response;
+import org.openapitools.model.AdvertiserDefinedEventsCreateRequest;
+import org.openapitools.model.AdvertiserDefinedEventsGet200Response;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudienceCreateRequest;
-import org.openapitools.model.AudienceDefinitionResponse;
 import org.openapitools.model.AudienceInsightType;
-import org.openapitools.model.AudienceInsightsResponse;
-import org.openapitools.model.AudienceUpdateRequest;
+import org.openapitools.model.AudienceInsights;
+import org.openapitools.model.AudienceInsightsScopeAndTypeGet200Response;
+import org.openapitools.model.AudienceOwnershipType;
 import org.openapitools.model.AudiencesList200Response;
 import org.openapitools.model.BidFloor;
-import org.openapitools.model.BidFloorRequest;
+import org.openapitools.model.BidFloorCreate;
+import java.math.BigDecimal;
+import org.openapitools.model.BillingInvoiceDocumentType;
 import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoiceSortField;
+import org.openapitools.model.BillingInvoiceStatus;
 import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
-import org.openapitools.model.BulkDownloadRequest;
-import org.openapitools.model.BulkDownloadResponse;
+import org.openapitools.model.BulkDownload;
+import org.openapitools.model.BulkDownloadCreate;
+import org.openapitools.model.BulkJobData;
 import org.openapitools.model.BulkUpsertRequest;
 import org.openapitools.model.BulkUpsertResponse;
-import org.openapitools.model.BulkUpsertStatusResponse;
-import org.openapitools.model.BusinessSharedAudience;
-import org.openapitools.model.BusinessSharedAudienceResponse;
-import org.openapitools.model.CampaignCreateRequest;
-import org.openapitools.model.CampaignCreateResponse;
-import org.openapitools.model.CampaignResponse;
-import org.openapitools.model.CampaignUpdateRequest;
-import org.openapitools.model.CampaignUpdateResponse;
-import org.openapitools.model.CampaignsAnalyticsResponseInner;
+import org.openapitools.model.Campaign;
+import org.openapitools.model.CampaignAdPreview;
+import org.openapitools.model.CampaignAdPreviewCreate;
+import org.openapitools.model.CampaignAdPreviewCreate200ResponseInner;
+import org.openapitools.model.CampaignAdPreviewDelete200ResponseInner;
+import org.openapitools.model.CampaignBatchUpdateItem;
+import org.openapitools.model.CampaignBatchWriteResponseModel;
+import org.openapitools.model.CampaignCreateItem;
+import org.openapitools.model.CampaignDeliveryEstimatesCampaign;
+import org.openapitools.model.CampaignDeliveryEstimatesResponse;
+import org.openapitools.model.CampaignsAnalyticsMetrics;
 import org.openapitools.model.CampaignsList200Response;
-import org.openapitools.model.ConversionApiResponse;
+import org.openapitools.model.ConversionAttributionWindowDays;
+import org.openapitools.model.ConversionDeletionRequest;
+import org.openapitools.model.ConversionDeletionRequestCreate;
+import org.openapitools.model.ConversionDeletionRequestList200Response;
 import org.openapitools.model.ConversionEventResponse;
 import org.openapitools.model.ConversionEvents;
-import org.openapitools.model.ConversionMSOTEvents;
-import org.openapitools.model.ConversionProductReportRequest;
+import org.openapitools.model.ConversionEventsCreate;
+import org.openapitools.model.ConversionMSOTEventsCreate;
+import org.openapitools.model.ConversionProductReport;
+import org.openapitools.model.ConversionProductReportCreate;
 import org.openapitools.model.ConversionReportAttributionType;
+import org.openapitools.model.ConversionReportTimeType;
 import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
 import org.openapitools.model.ConversionTagsList200Response;
-import org.openapitools.model.CreateMMMReportRequest;
-import org.openapitools.model.CreateMMMReportResponse;
 import org.openapitools.model.CustomerList;
-import org.openapitools.model.CustomerListRequest;
-import org.openapitools.model.CustomerListUpdateRequest;
+import org.openapitools.model.CustomerListCreate;
+import org.openapitools.model.CustomerListUpdateWithRequiredBody;
+import org.openapitools.model.CustomerListUpload;
 import org.openapitools.model.CustomerListUploadCreateRequest;
 import org.openapitools.model.CustomerListUploadCreateResponse;
-import org.openapitools.model.CustomerListUploadResponse;
 import org.openapitools.model.CustomerListsList200Response;
+import org.openapitools.model.CustomerSegment;
+import org.openapitools.model.CustomerSegmentCreate;
+import org.openapitools.model.CustomerSegmentList200Response;
+import org.openapitools.model.CustomerSegmentUpdateRequestUpdateWithRequiredBody;
 import org.openapitools.model.DetailedError;
-import org.openapitools.model.Error;
+import org.openapitools.model.DynamicTitlesDownloadCSV;
+import org.openapitools.model.DynamicTitlesGetStatus;
+import org.openapitools.model.DynamicTitlesProcessCSV;
+import org.openapitools.model.DynamicTitlesProcessCSVCreate;
+import org.openapitools.model.DynamicTitlesUploadURL;
+import org.openapitools.model.EntityStatus;
 import org.openapitools.model.EventQualityScore;
-import org.openapitools.model.GetMMMReportResponse;
 import org.openapitools.model.Granularity;
 import org.openapitools.model.IngestionSourceOptions;
-import org.openapitools.model.KeywordUpdateBody;
+import org.openapitools.model.Keywords;
+import org.openapitools.model.KeywordsCreate;
 import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
-import org.openapitools.model.KeywordsRequest;
-import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.KeywordsUpdate;
 import org.openapitools.model.LabelCreateRequest;
 import org.openapitools.model.LabelUpdateRequest;
+import org.openapitools.model.LabeledEntities;
+import org.openapitools.model.LabeledEntitiesCreate;
 import org.openapitools.model.LabelsList200Response;
 import org.openapitools.model.LabelsResponse;
-import org.openapitools.model.LeadFormArrayResponse;
-import org.openapitools.model.LeadFormCreateRequest;
-import org.openapitools.model.LeadFormResponse;
-import org.openapitools.model.LeadFormTestRequest;
-import org.openapitools.model.LeadFormTestResponse;
-import org.openapitools.model.LeadFormUpdateRequest;
+import org.openapitools.model.LeadForm;
+import org.openapitools.model.LeadFormBatchUpdate;
+import org.openapitools.model.LeadFormCreate;
+import org.openapitools.model.LeadFormTest;
+import org.openapitools.model.LeadFormTestCreate;
+import org.openapitools.model.LeadFormsCreate200Response;
 import org.openapitools.model.LeadFormsList200Response;
 import org.openapitools.model.LeadSubscription;
 import org.openapitools.model.LeadSubscriptionPostParamsCreate;
-import org.openapitools.model.LeadsExportCreateRequest;
-import org.openapitools.model.LeadsExportCreateResponse;
 import org.openapitools.model.LeadsExportResponseData;
+import org.openapitools.model.LeadsExports;
+import org.openapitools.model.LeadsExportsCreate;
 import org.joda.time.LocalDate;
 import org.openapitools.model.LookbackPeriodOptions;
+import org.openapitools.model.MMMReport;
+import org.openapitools.model.MMMReportCreate;
 import java.util.Map;
 import org.openapitools.model.MatchType;
 import org.openapitools.model.MetricsResponse;
@@ -115,33 +145,41 @@ import org.openapitools.model.OrderLine;
 import org.openapitools.model.OrderLinesList200Response;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
 import org.openapitools.model.PinterestLibError;
-import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.ProductGroupAnalyticsItems;
 import org.openapitools.model.ProductGroupPromotion;
-import org.openapitools.model.ProductGroupPromotionCreateRequest;
-import org.openapitools.model.ProductGroupPromotionResponse;
-import org.openapitools.model.ProductGroupPromotionUpdateRequest;
+import org.openapitools.model.ProductGroupPromotions;
+import org.openapitools.model.ProductGroupPromotionsCreate;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
-import org.openapitools.model.PromotionCreateRequest;
-import org.openapitools.model.PromotionResponse;
-import org.openapitools.model.PromotionUpdateRequest;
+import org.openapitools.model.ProductGroupPromotionsUpdateWithRequiredBody;
+import org.openapitools.model.Promotion;
+import org.openapitools.model.PromotionBatchUpdate;
+import org.openapitools.model.PromotionCreate;
 import org.openapitools.model.PromotionsList200Response;
 import org.openapitools.model.PromotionsResponse;
+import org.openapitools.model.QueryLabelEntityStatusesItems;
+import org.openapitools.model.QueryLabelTypesItems;
+import org.openapitools.model.ReportingColumnSync;
 import org.openapitools.model.ReportingTimeZone;
-import org.openapitools.model.SSIOAccountResponse;
-import org.openapitools.model.SSIOCreateInsertionOrderRequest;
-import org.openapitools.model.SSIOCreateInsertionOrderResponse;
-import org.openapitools.model.SSIOEditInsertionOrderRequest;
-import org.openapitools.model.SSIOEditInsertionOrderResponse;
+import org.openapitools.model.SSIOAccount;
+import org.openapitools.model.SSIOInsertionOrder;
+import org.openapitools.model.SSIOInsertionOrderCreate;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
-import org.openapitools.model.SharedAudience;
-import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SSIOInsertionOrderUpdate;
+import org.openapitools.model.Schedule;
+import org.openapitools.model.ScheduleBatchUpdate;
+import org.openapitools.model.ScheduleCreate;
+import org.openapitools.model.ScheduleStatus;
+import org.openapitools.model.ScheduleType;
+import org.openapitools.model.SchedulesCreate200ResponseInner;
+import org.openapitools.model.SchedulesList200Response;
 import org.openapitools.model.SourcePlatformOptions;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
+import org.openapitools.model.TargetingTemplate;
 import org.openapitools.model.TargetingTemplateCreate;
-import org.openapitools.model.TargetingTemplateGetResponseData;
 import org.openapitools.model.TargetingTemplateList200Response;
-import org.openapitools.model.TargetingTemplateUpdateRequest;
+import org.openapitools.model.TargetingTemplateUpdateRequestReadOrUpdate;
 import org.openapitools.model.TemplateBasedReport;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
@@ -171,7 +209,7 @@ import javax.validation.Valid;
 @Api
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-08-30T09:54:04.171825690Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 
 public class AdAccountsApi  {
 
@@ -184,34 +222,43 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get ad account analytics", notes = "Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.", response = AdAccountAnalyticsResponseInner.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Get ad account analytics", notes = "  Get analytics for the specified `ad_account_id`, filtered by the specified options.    - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.", response = AdAccountAnalyticsItems.class, responseContainer = "List", authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdAccountAnalyticsResponseInner.class, responseContainer = "List"),
-        @ApiResponse(code = 400, message = "Invalid ad account analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adAccountAnalytics( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
-        return delegate.adAccountAnalytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountAnalyticsItems.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adAccountAnalytics( @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") BigDecimal clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") BigDecimal engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") BigDecimal viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
+        return delegate.adAccountAnalytics(startDate, endDate, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/targeting_analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get targeting analytics for an ad account", notes = "Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = MetricsResponse.class, authorizations = {
+    @ApiOperation(value = "Get targeting analytics for an ad account", notes = "Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/>  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = MetricsResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = MetricsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adAccountTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=15)@ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.",required=true)  @QueryParam("targeting_types") List<AdsAnalyticsTargetingType> targetingTypes,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime,  @Size(max=2)@ApiParam(value = "List of types of attribution for the conversion report")  @QueryParam("attribution_types") List<ConversionReportAttributionType> attributionTypes, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MetricsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adAccountTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=15)@ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.",required=true)  @QueryParam("targeting_types") List<AdsAnalyticsAccountTargetingType> targetingTypes,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") BigDecimal clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") BigDecimal engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") BigDecimal viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime,  @Size(max=2)@ApiParam(value = "List of types of attribution for the conversion report")  @QueryParam("attribution_types") List<ConversionReportAttributionType> attributionTypes, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
         return delegate.adAccountTargetingAnalyticsGet(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, securityContext);
     }
 
@@ -226,12 +273,15 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdAccountsAudiencesSharedAccountsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account audiences shared accounts parameters.", response = Error.class),
-        @ApiResponse(code = 404, message = "Shared accounts not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Response adAccountsAudiencesSharedAccountsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of the audience to use to filter the results.",required=true)  @QueryParam("audience_id") String audienceId,  @NotNull @ApiParam(value = "Filter accounts by account type.",required=true, allowableValues="AD_ACCOUNT, BUSINESS_ACCOUNT", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT")  @QueryParam("account_type") AudienceAccountType accountType,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsAudiencesSharedAccountsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adAccountsAudiencesSharedAccountsList( @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of the audience to use to filter the results.",required=true)  @QueryParam("audience_id") String audienceId,  @NotNull @ApiParam(value = "Filter accounts by account type.",required=true, allowableValues="AD_ACCOUNT, BUSINESS_ACCOUNT")  @QueryParam("account_type") AudienceAccountType accountType,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+        return delegate.adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, bookmark, pageSize, securityContext);
     }
 
     @POST
@@ -303,11 +353,12 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/leads/subscriptions/{subscription_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Delete lead ads subscription", notes = "Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'", response = Void.class, authorizations = {
+    @ApiOperation(value = "Delete lead ads subscription", notes = "Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'", response = LeadSubscription.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "lead_ads" })
     @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadSubscription.class),
         @ApiResponse(code = 204, message = "Resource deleted successfully.", response = Void.class),
         @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
         @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
@@ -382,169 +433,297 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/ad_groups/analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get ad group analytics", notes = "Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = AdGroupsAnalyticsResponseInner.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Get ad group analytics", notes = "Get analytics for the specified ad groups in the specified `ad_account_id`, filtered by the specified options.  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = AdGroupsAnalyticsMetrics.class, responseContainer = "List", authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_groups" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdGroupsAnalyticsResponseInner.class, responseContainer = "List"),
-        @ApiResponse(code = 400, message = "Invalid ad account group analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsAnalytics( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to use to filter the results.",required=true)  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime, @ApiParam(value = "Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.", defaultValue="false") @DefaultValue("false")  @QueryParam("aggregate_report_rows") Boolean aggregateReportRows, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
-        return delegate.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdGroupsAnalyticsMetrics.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsAnalytics( @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to use to filter the results.",required=true)  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") BigDecimal clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") BigDecimal engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") BigDecimal viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime, @ApiParam(value = "Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.", defaultValue="false") @DefaultValue("false")  @QueryParam("aggregate_report_rows") Boolean aggregateReportRows, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
+        return delegate.adGroupsAnalytics(startDate, endDate, adGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/ad_groups/audience_sizing")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get audience sizing", notes = "Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.", response = AdGroupAudienceSizingResponse.class, authorizations = {
+    @ApiOperation(value = "Get audience sizing", notes = "Get potential audience size for an ad group with given targeting criteria. Potential audience size estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.", response = AdGroupAudienceSizing.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_groups" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdGroupAudienceSizingResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad group audience sizing parameters.", response = Error.class),
-        @ApiResponse(code = 403, message = "No access to requested audience list or product group.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsAudienceSizing( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdGroupAudienceSizingRequest adGroupAudienceSizingRequest) {
-        return delegate.adGroupsAudienceSizing(adAccountId, adGroupAudienceSizingRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdGroupAudienceSizing.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = AdGroupAudienceSizing.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsAudienceSizing( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdGroupAudienceSizingCreate adGroupAudienceSizingCreate) {
+        return delegate.adGroupsAudienceSizing(adAccountId, adGroupAudienceSizingCreate, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/bid_floor")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get bid floors", notes = "List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.", response = BidFloor.class, authorizations = {
+    @ApiOperation(value = "Get bid floors", notes = "List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification.  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  * $1 = 1,000,000 microdollars * 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  * To convert dollars to microdollars, mutiply dollars by 1,000,000 * To convert microdollars to dollars, divide microdollars by 1,000,000  For more on bid floors see [Set your bid](https://help.pinterest.com/en/business/article/set-your-bid).", response = BidFloor.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_groups" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BidFloor.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsBidFloorGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Parameters to get bid_floor info" ,required=true) BidFloorRequest bidFloorRequest) {
-        return delegate.adGroupsBidFloorGet(adAccountId, bidFloorRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BidFloor.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = BidFloor.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsBidFloorGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) BidFloorCreate bidFloorCreate) {
+        return delegate.adGroupsBidFloorGet(adAccountId, bidFloorCreate, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/ad_groups")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create ad groups", notes = "Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>. <strong>Notes:</strong> - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. ", response = AdGroupArrayResponse.class, authorizations = {
+    @ApiOperation(value = "Create ad groups", notes = "Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other).  For more information, [click here](https://help.pinterest.com/en/business/article/campaign-structure).  **Notes:** - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile. A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency: - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency: - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000  - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with [closed beta](/docs/getting-started/using-beta-and-restricted-features/) access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule.", response = AdGroupsCreate200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "ad_groups" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdGroupArrayResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of ad groups to create, size limit [1, 30]." ,required=true) List<@Valid AdGroupCreateRequest> adGroupCreateRequest) {
-        return delegate.adGroupsCreate(adAccountId, adGroupCreateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdGroupsCreate200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid AdGroupCreateCreate> adGroupCreateCreate) {
+        return delegate.adGroupsCreate(adAccountId, adGroupCreateCreate, securityContext);
+    }
+
+    @GET
+    @Path("/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/csv")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Get dynamic titles CSV download URL", notes = "Get a presigned S3 download URL for the dynamic titles review CSV. Returns 400 if titles have not been generated yet.", response = DynamicTitlesDownloadCSV.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "ad_groups" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = DynamicTitlesDownloadCSV.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsDynamicTitlesDownloadCsv( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Ad group ID.",required=true) @PathParam("ad_group_id") String adGroupId) {
+        return delegate.adGroupsDynamicTitlesDownloadCsv(adAccountId, adGroupId, securityContext);
+    }
+
+    @GET
+    @Path("/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/status")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Get dynamic titles status", notes = "Get dynamic titles generation status for an ad group, including whether titles are ready for review and counts of generated and reviewed titles.", response = DynamicTitlesGetStatus.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "ad_groups" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = DynamicTitlesGetStatus.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsDynamicTitlesGetStatus( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Ad group ID.",required=true) @PathParam("ad_group_id") String adGroupId) {
+        return delegate.adGroupsDynamicTitlesGetStatus(adAccountId, adGroupId, securityContext);
+    }
+
+    @GET
+    @Path("/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/uploads")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Get dynamic titles upload URL", notes = "Get a presigned S3 upload URL for the dynamic titles review CSV and a request_id for submission.", response = DynamicTitlesUploadURL.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "ad_groups" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = DynamicTitlesUploadURL.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsDynamicTitlesGetUploadUrl( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Ad group ID.",required=true) @PathParam("ad_group_id") String adGroupId) {
+        return delegate.adGroupsDynamicTitlesGetUploadUrl(adAccountId, adGroupId, securityContext);
+    }
+
+    @POST
+    @Path("/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Process dynamic titles CSV", notes = "Validate and process the uploaded dynamic titles review CSV. Returns validation errors if the CSV is invalid.", response = DynamicTitlesProcessCSV.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "ad_groups" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = DynamicTitlesProcessCSV.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = DynamicTitlesProcessCSV.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsDynamicTitlesProcessCsv( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Ad group ID.",required=true) @PathParam("ad_group_id") String adGroupId, @ApiParam(value = "" ,required=true) DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate) {
+        return delegate.adGroupsDynamicTitlesProcessCsv(adAccountId, adGroupId, dynamicTitlesProcessCSVCreate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/ad_groups/{ad_group_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get ad group", notes = "Get a specific ad group given the ad group ID.", response = AdGroupResponse.class, authorizations = {
+    @ApiOperation(value = "Get ad group", notes = "Get a specific ad group given the ad group ID.", response = AdGroup.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_groups" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdGroupResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad group.",required=true) @PathParam("ad_group_id") String adGroupId) {
-        return delegate.adGroupsGet(adAccountId, adGroupId, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdGroup.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Ad group ID.",required=true) @PathParam("ad_group_id") String adGroupId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.adGroupsGet(adGroupId, adAccountId, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/ad_groups")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List ad groups", notes = "List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id. Do not provide both.", response = AdGroupsList200Response.class, authorizations = {
+    @ApiOperation(value = "List ad groups", notes = "List ad groups based on provided campaign IDs or ad group IDs.(campaign_ids or ad_group_ids). **Note:** Provide only campaign_id or ad_group_id. Do not provide both.", response = AdGroupsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_groups" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdGroupsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account group parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to use to filter the results.")  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")String> adGroupIds, @ApiParam(value = "Entity status")  @QueryParam("entity_statuses") List<String> entityStatuses,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark, @ApiParam(value = "Return interests as text names (if value is true) rather than topic IDs.", defaultValue="false") @DefaultValue("false")  @QueryParam("translate_interests_to_names") Boolean translateInterestsToNames) {
-        return delegate.adGroupsList(adAccountId, campaignIds, adGroupIds, entityStatuses, pageSize, order, bookmark, translateInterestsToNames, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdGroupsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")String> adGroupIds, @ApiParam(value = "Entity status")  @QueryParam("entity_statuses") List<EntityStatus> entityStatuses, @ApiParam(value = "Return interests as text names (if value is true) rather than topic IDs.", defaultValue="false") @DefaultValue("false")  @QueryParam("translate_interests_to_names") Boolean translateInterestsToNames) {
+        return delegate.adGroupsList(adAccountId, bookmark, pageSize, order, campaignIds, adGroupIds, entityStatuses, translateInterestsToNames, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/ad_groups/targeting_analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get targeting analytics for ad groups", notes = "Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = MetricsResponse.class, authorizations = {
+    @ApiOperation(value = "Get targeting analytics for ad groups", notes = "Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = MetricsResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_groups" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = MetricsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to use to filter the results.",required=true)  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=14)@ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.",required=true)  @QueryParam("targeting_types") List<AdsAnalyticsAdGroupTargetingType> targetingTypes,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime,  @Size(max=2)@ApiParam(value = "List of types of attribution for the conversion report")  @QueryParam("attribution_types") List<ConversionReportAttributionType> attributionTypes, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
-        return delegate.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MetricsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to use to filter the results.",required=true)  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=14)@ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.",required=true)  @QueryParam("targeting_types") List<AdsAnalyticsAdGroupTargetingType> targetingTypes,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") BigDecimal clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") BigDecimal engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") BigDecimal viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime,  @Size(max=2)@ApiParam(value = "List of types of attribution for the conversion report")  @QueryParam("attribution_types") List<ConversionReportAttributionType> attributionTypes, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone,  @Size(min=1,max=2)@ApiParam(value = "Sort Columns.")  @QueryParam("sort_columns") List<String> sortColumns, @ApiParam(value = "Sort ascending.")  @QueryParam("sort_ascending") Boolean sortAscending) {
+        return delegate.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, sortColumns, sortAscending, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/ad_groups")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update ad groups", notes = "Update multiple existing ad groups.", response = AdGroupArrayResponse.class, authorizations = {
+    @ApiOperation(value = "Update ad groups", notes = "Update multiple existing ad groups.", response = AdGroupsCreate200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "ad_groups" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdGroupArrayResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of ad groups to update, size limit [1, 30]." ,required=true) List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest) {
-        return delegate.adGroupsUpdate(adAccountId, adGroupUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdGroupsCreate200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adGroupsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate) {
+        return delegate.adGroupsUpdate(adAccountId, adGroupUpdateBatchUpdate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/pins/analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get pins analytics", notes = "Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.", response = AdPinAnalytics.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Get pins analytics", notes = "Get analytics for the pins given a campaign and pins in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.", response = AdPinAnalytics.class, responseContainer = "List", authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "campaigns" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdPinAnalytics.class, responseContainer = "List"),
-        @ApiResponse(code = 400, message = "Invalid ad account pins analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adPinsAnalytics( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Campaign Id to use to filter the results.",required=true)  @QueryParam("campaign_id") String campaignId,  @NotNull  @Size(min=1,max=100)@ApiParam(value = "List of Pin IDs.",required=true)  @QueryParam("pin_ids") List<@Pattern(regexp = "^\\d+$")String> pinIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime) {
-        return delegate.adPinsAnalytics(adAccountId, campaignId, pinIds, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdPinAnalytics.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adPinsAnalytics( @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Campaign Id to use to filter the results.",required=true)  @QueryParam("campaign_id") String campaignId,  @NotNull  @Size(min=1,max=100)@ApiParam(value = "List of Pin IDs.",required=true)  @QueryParam("pin_ids") List<@Pattern(regexp = "^\\d+$")String> pinIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") BigDecimal clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") BigDecimal engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") BigDecimal viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime) {
+        return delegate.adPinsAnalytics(campaignId, pinIds, startDate, endDate, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/ad_previews")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create ad preview with pin or image", notes = "Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.", response = AdPreviewURLResponse.class, authorizations = {
+    @ApiOperation(value = "Create ad preview with pin or image", notes = "Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad.  If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See [Ads Overview](https://help.pinterest.com/en/business/article/promoted-pins-overview).)  You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.", response = AdPreviewURLResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "ads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful ad preview creation.", response = AdPreviewURLResponse.class),
-        @ApiResponse(code = 400, message = "Invalid Pin parameters response", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adPreviewsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Create ad preview with pin or image." ,required=true) AdPreviewRequest adPreviewRequest) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdPreviewURLResponse.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = AdPreviewURLResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adPreviewsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdPreviewRequest adPreviewRequest) {
         return delegate.adPreviewsCreate(adAccountId, adPreviewRequest, securityContext);
     }
 
@@ -552,82 +731,106 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/ads/targeting_analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get targeting analytics for ads", notes = "Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = MetricsResponse.class, authorizations = {
+    @ApiOperation(value = "Get targeting analytics for ads", notes = "Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = MetricsResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = MetricsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Ad Ids to use to filter the results.",required=true)  @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=14)@ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.",required=true)  @QueryParam("targeting_types") List<AdsAnalyticsAdTargetingType> targetingTypes,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime,  @Size(max=2)@ApiParam(value = "List of types of attribution for the conversion report")  @QueryParam("attribution_types") List<ConversionReportAttributionType> attributionTypes, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
-        return delegate.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MetricsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Ad Ids to use to filter the results.",required=true)  @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=14)@ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.",required=true)  @QueryParam("targeting_types") List<AdsAnalyticsAdTargetingType> targetingTypes,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60")  @QueryParam("click_window_days") ConversionAttributionWindowDays clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60")  @QueryParam("engagement_window_days") ConversionAttributionWindowDays engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60")  @QueryParam("view_window_days") ConversionAttributionWindowDays viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION")  @QueryParam("conversion_report_time") ConversionReportTimeType conversionReportTime,  @Size(max=2)@ApiParam(value = "List of types of attribution for the conversion report")  @QueryParam("attribution_types") List<ConversionReportAttributionType> attributionTypes, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone,  @Size(min=1,max=2)@ApiParam(value = "Sort Columns.")  @QueryParam("sort_columns") List<String> sortColumns, @ApiParam(value = "Sort ascending.")  @QueryParam("sort_ascending") Boolean sortAscending) {
+        return delegate.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, sortColumns, sortAscending, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/ads/analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get ad analytics", notes = "Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = AdsAnalyticsResponseInner.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Get ad analytics", notes = "    Get analytics for the specified ads in the specified `ad_account_id`, filtered by the specified options.     - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.     - The request must contain either ad_ids or both campaign_ids and pin_ids.     - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.     - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = AdsAnalytics.class, responseContainer = "List", authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdsAnalyticsResponseInner.class, responseContainer = "List"),
-        @ApiResponse(code = 400, message = "Invalid ad account ads analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adsAnalytics( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity,  @Size(min=1,max=250)@ApiParam(value = "List of Ad Ids to use to filter the results.")  @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime,  @Size(min=1,max=100)@ApiParam(value = "List of Pin IDs.")  @QueryParam("pin_ids") List<@Pattern(regexp = "^\\d+$")String> pinIds,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
-        return delegate.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, reportingTimezone, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdsAnalytics.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adsAnalytics( @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Size(min=1,max=100)@ApiParam(value = "List of Pin IDs.")  @QueryParam("pin_ids") List<String> pinIds,  @Size(min=1,max=250)@ApiParam(value = "List of Ad Ids to use to filter the results.")  @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") BigDecimal clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") BigDecimal engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") BigDecimal viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
+        return delegate.adsAnalytics(startDate, endDate, columns, granularity, adAccountId, pinIds, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, campaignIds, reportingTimezone, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/ads")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create ads", notes = "Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.", response = AdArrayResponse.class, authorizations = {
+    @ApiOperation(value = "Create ads", notes = "Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.", response = AdBatchWriteResponseModel.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "ads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdArrayResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of ads to create, size limit [1, 30]." ,required=true) List<@Valid AdCreateRequest> adCreateRequest) {
-        return delegate.adsCreate(adAccountId, adCreateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdBatchWriteResponseModel.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid AdCreate> adCreate) {
+        return delegate.adsCreate(adAccountId, adCreate, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/ads_credit/redeem")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Redeem ad credits", notes = "Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>", response = AdsCreditRedeemResponse.class, authorizations = {
+    @ApiOperation(value = "Redeem ad credits", notes = "Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**", response = AdsCreditRedeem.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc."),
             @AuthorizationScope(scope = "billing:write", description = "Create, update, or delete billing data, billing profiles, etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successfully redeemed ad credits.", response = AdsCreditRedeemResponse.class),
-        @ApiResponse(code = 400, message = "Error thrown when unable to redeem offer code.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adsCreditRedeem( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Redeem ad credits request." ,required=true) AdsCreditRedeemRequest adsCreditRedeemRequest) {
-        return delegate.adsCreditRedeem(adAccountId, adsCreditRedeemRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdsCreditRedeem.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = AdsCreditRedeem.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adsCreditRedeem( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdsCreditRedeemCreate adsCreditRedeemCreate) {
+        return delegate.adsCreditRedeem(adAccountId, adsCreditRedeemCreate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/ads_credit/discounts")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get ads credit discounts", notes = "Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>", response = AdsCreditsDiscountsGet200Response.class, authorizations = {
+    @ApiOperation(value = "Get ads credit discounts", notes = "Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**", response = AdsCreditsDiscountsGet200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
             @AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdsCreditsDiscountsGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Response adsCreditsDiscountsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdsCreditsDiscountsGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adsCreditsDiscountsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
         return delegate.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize, securityContext);
     }
 
@@ -635,113 +838,212 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/ads/{ad_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get ad", notes = "Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.", response = AdResponse.class, authorizations = {
+    @ApiOperation(value = "Get ad", notes = "Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the [Pinterest advertising standards](https://www.pinterest.com/_/_/policy/advertising-guidelines/).", response = Ad.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad.",required=true) @PathParam("ad_id") String adId) {
-        return delegate.adsGet(adAccountId, adId, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Ad.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "The ID of this ad.",required=true) @PathParam("ad_id") String adId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.adsGet(adId, adAccountId, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/ads")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List ads", notes = "List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses <p/> If no filter is provided, all ads in the ad account are returned. <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. <p/> Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see <a href=\"https://policy.pinterest.com/en/advertising-guidelines\">Pinterest advertising standards</a>.", response = AdsList200Response.class, authorizations = {
+    @ApiOperation(value = "List ads", notes = "List ads that meet the filters provided:     - Listed campaign ids or ad group ids or ad ids     - Listed entity statuses  If no filter is provided, all ads in the ad account are returned.  **Note:** Provide only `campaign_id` or `ad_group_id` or `ad_id`. Do not provide more than one type.  Review status is provided for each ad; if `review_status` is `REJECTED`, the `rejected_reasons` field will contain additional information.  For more, see [Pinterest advertising standards](https://policy.pinterest.com/en/advertising-guidelines).", response = AdsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account ads parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to use to filter the results.")  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")String> adGroupIds,  @Size(min=1,max=250)@ApiParam(value = "List of Ad Ids to use to filter the results.")  @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds, @ApiParam(value = "Entity status")  @QueryParam("entity_statuses") List<String> entityStatuses,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.adsList(adAccountId, campaignIds, adGroupIds, adIds, entityStatuses, pageSize, order, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")String> adGroupIds,  @Size(min=1,max=250)@ApiParam(value = "List of Ad Ids to use to filter the results.")  @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds, @ApiParam(value = "Entity status")  @QueryParam("entity_statuses") List<EntityStatus> entityStatuses) {
+        return delegate.adsList(adAccountId, bookmark, pageSize, order, campaignIds, adGroupIds, adIds, entityStatuses, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/ads")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update ads", notes = "Update multiple existing ads", response = AdArrayResponse.class, authorizations = {
+    @ApiOperation(value = "Update ads", notes = "Update multiple existing ads", response = AdBatchWriteResponseModel.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "ads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdArrayResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of ads to update, size limit [1, 30]" ,required=true) List<@Valid AdUpdateRequest> adUpdateRequest) {
-        return delegate.adsUpdate(adAccountId, adUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdBatchWriteResponseModel.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response adsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid AdBatchUpdate> adBatchUpdate) {
+        return delegate.adsUpdate(adAccountId, adBatchUpdate, securityContext);
+    }
+
+    @POST
+    @Path("/{ad_account_id}/advertiser_defined_events")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Create advertiser defined events", notes = "Map advertiser defined events to standard events for the given ad account.", response = AdvertiserDefinedEventsCreate200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "conversions" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdvertiserDefinedEventsCreate200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response advertiserDefinedEventsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) {
+        return delegate.advertiserDefinedEventsCreate(adAccountId, advertiserDefinedEventsCreateRequest, securityContext);
+    }
+
+    @DELETE
+    @Path("/{ad_account_id}/advertiser_defined_events")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Delete advertiser defined events", notes = "Untrack advertiser defined events for the given ad account.", response = AdvertiserDefinedEventsCreate200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "conversions" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdvertiserDefinedEventsCreate200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response advertiserDefinedEventsDelete( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "List of event names to delete",required=true)  @QueryParam("event_names") List<String> eventNames) {
+        return delegate.advertiserDefinedEventsDelete(adAccountId, eventNames, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/advertiser_defined_events")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get advertiser defined events", notes = "<p>Get advertiser defined events for the given ad account.</p>", response = AdvertiserDefinedEventsResponse.class, authorizations = {
+    @ApiOperation(value = "Get advertiser defined events", notes = "Get advertiser defined events for the given ad account.", response = AdvertiserDefinedEventsGet200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "conversions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdvertiserDefinedEventsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdvertiserDefinedEventsGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response advertiserDefinedEventsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
         return delegate.advertiserDefinedEventsGet(adAccountId, securityContext);
+    }
+
+    @PATCH
+    @Path("/{ad_account_id}/advertiser_defined_events")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Update advertiser defined events", notes = "Update advertiser defined event names or mappings for the given ad account.", response = AdvertiserDefinedEventsCreate200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "conversions" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdvertiserDefinedEventsCreate200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response advertiserDefinedEventsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) {
+        return delegate.advertiserDefinedEventsUpdate(adAccountId, advertiserDefinedEventsCreateRequest, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/reports/brand_category_sku")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create a request for a brand, category, SKU report", notes = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.", response = AdsAnalyticsCreateAsyncResponse.class, authorizations = {
+    @ApiOperation(value = "Create a request for a brand, category, SKU report", notes = "  [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.", response = ConversionProductReport.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdsAnalyticsCreateAsyncResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account ads analytics brand, category, SKU parameters", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response analyticsCreateConversionProductReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) ConversionProductReportRequest conversionProductReportRequest) {
-        return delegate.analyticsCreateConversionProductReport(adAccountId, conversionProductReportRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionProductReport.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = ConversionProductReport.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response analyticsCreateConversionProductReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) ConversionProductReportCreate conversionProductReportCreate) {
+        return delegate.analyticsCreateConversionProductReport(adAccountId, conversionProductReportCreate, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/mmm_reports")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create a request for a Marketing Mix Modeling (MMM) report", notes = "This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it's in beta release.", response = CreateMMMReportResponse.class, authorizations = {
+    @ApiOperation(value = "Create a request for a Marketing Mix Modeling (MMM) report", notes = "    This creates an asynchronous mmm report based on the given request.     It returns a token that you can use to download the report when it is     ready. NOTE: An additional limit of 5 queries per minute per advertiser     applies to this endpoint while it's in beta release.     For the ADVERTISER_PAID_SPEND_IN_DOLLAR,     ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR     columns: if you receive bonus media, this value still includes that spend, and it will     need to be removed manually with support from your Pinterest account team for a     fully netted value. Over time, we'll also subtract bonus media and other incentives as     data becomes available. Production and other non-media fees are excluded.", response = MMMReport.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CreateMMMReportResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account ads analytics mmm parameters", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response analyticsCreateMmmReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) CreateMMMReportRequest createMMMReportRequest) {
-        return delegate.analyticsCreateMmmReport(adAccountId, createMMMReportRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MMMReport.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = MMMReport.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response analyticsCreateMmmReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) MMMReportCreate mmMReportCreate) {
+        return delegate.analyticsCreateMmmReport(adAccountId, mmMReportCreate, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/reports")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create async request for an account analytics report", notes = "This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.", response = AdsAnalyticsCreateAsyncResponse.class, authorizations = {
+    @ApiOperation(value = "Create async request for an account analytics report", notes = "  This returns a token that you can use to download the report when it is ready.   Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.   - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.   - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.   - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.", response = AdsAnalyticsCreateAsyncResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdsAnalyticsCreateAsyncResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account ads analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdsAnalyticsCreateAsyncResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response analyticsCreateReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest) {
         return delegate.analyticsCreateReport(adAccountId, adsAnalyticsCreateAsyncRequest, securityContext);
     }
@@ -750,7 +1052,7 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/templates/{template_id}/reports")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create async request for an analytics report using a template", notes = "   This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.", response = TemplateBasedReport.class, authorizations = {
+    @ApiOperation(value = "Create async request for an analytics report using a template", notes = "  This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.", response = TemplateBasedReport.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
@@ -763,7 +1065,7 @@ public class AdAccountsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response analyticsCreateTemplateReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @Size(max=18)@ApiParam(value = "Unique identifier of a template.",required=true) @PathParam("template_id") String templateId, @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today.")  @QueryParam("start_date") LocalDate startDate, @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.")  @QueryParam("end_date") LocalDate endDate, @ApiParam(value = "   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly", allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity) {
+    public Response analyticsCreateTemplateReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @Size(max=18)@ApiParam(value = "Unique identifier of a template.",required=true) @PathParam("template_id") String templateId, @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today.")  @QueryParam("start_date") LocalDate startDate, @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.")  @QueryParam("end_date") LocalDate endDate, @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly", allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity) {
         return delegate.analyticsCreateTemplateReport(adAccountId, templateId, startDate, endDate, granularity, securityContext);
     }
 
@@ -771,14 +1073,18 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/reports/brand_category_sku")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get advertiser brand, category, SKU report", notes = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.", response = AdsAnalyticsGetAsyncResponse.class, authorizations = {
+    @ApiOperation(value = "Get advertiser brand, category, SKU report", notes = "  [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.", response = ConversionProductReport.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdsAnalyticsGetAsyncResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account ads analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionProductReport.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response analyticsGetConversionProductReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Token returned from the post request creation call",required=true)  @QueryParam("token") String token) {
         return delegate.analyticsGetConversionProductReport(adAccountId, token, securityContext);
     }
@@ -787,15 +1093,19 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/mmm_reports")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get advertiser Marketing Mix Modeling (MMM) report.", notes = "Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.", response = GetMMMReportResponse.class, authorizations = {
+    @ApiOperation(value = "Get advertiser Marketing Mix Modeling (MMM) report.", notes = "    Get an mmm report for an ad account. This returns a URL to an     mmm metrics report given a token returned from the create mmm report endpoint.", response = MMMReport.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = GetMMMReportResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account ads analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response analyticsGetMmmReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Token returned from the post request creation call",required=true)  @QueryParam("token") String token) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MMMReport.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response analyticsGetMmmReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Token returned from the post request creation call",required=true)  @QueryParam("token") String token) {
         return delegate.analyticsGetMmmReport(adAccountId, token, securityContext);
     }
 
@@ -803,14 +1113,18 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/reports")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get the account analytics report created by the async call", notes = "This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.", response = AdsAnalyticsGetAsyncResponse.class, authorizations = {
+    @ApiOperation(value = "Get the account analytics report created by the async call", notes = "  This returns a URL to an analytics report given a token returned from the post request report creation call.   You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.", response = AdsAnalyticsGetAsyncResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AdsAnalyticsGetAsyncResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account ads analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdsAnalyticsGetAsyncResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response analyticsGetReport( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Token returned from the post request creation call",required=true)  @QueryParam("token") String token) {
         return delegate.analyticsGetReport(adAccountId, token, securityContext);
     }
@@ -819,16 +1133,21 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/audience_insights")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get audience insights", notes = "Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.", response = AudienceInsightsResponse.class, authorizations = {
+    @ApiOperation(value = "Get audience insights", notes = "Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).", response = AudienceInsights.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "audience_insights" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AudienceInsightsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response audienceInsightsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Type of audience insights.",required=true, allowableValues="YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE", defaultValue="YOUR_TOTAL_AUDIENCE") @DefaultValue("YOUR_TOTAL_AUDIENCE")  @QueryParam("audience_insight_type") AudienceInsightType audienceInsightType) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AudienceInsights.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response audienceInsightsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Type of audience insights.",required=true, allowableValues="YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE")  @QueryParam("audience_insight_type") AudienceInsightType audienceInsightType) {
         return delegate.audienceInsightsGet(adAccountId, audienceInsightType, securityContext);
     }
 
@@ -836,15 +1155,20 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/insights/audiences")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get audience insights scope and type", notes = "Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.", response = AudienceDefinitionResponse.class, authorizations = {
+    @ApiOperation(value = "Get audience insights scope and type", notes = "Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.", response = AudienceInsightsScopeAndTypeGet200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "audience_insights" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AudienceDefinitionResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AudienceInsightsScopeAndTypeGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response audienceInsightsScopeAndTypeGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
         return delegate.audienceInsightsScopeAndTypeGet(adAccountId, securityContext);
     }
@@ -853,33 +1177,43 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/audiences")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create audience", notes = "Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.", response = Audience.class, authorizations = {
+    @ApiOperation(value = "Create audience", notes = "Create a new audience for the ad account.", response = AdAccountsAudience.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "audiences" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = Audience.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response audiencesCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of ads to create, size limit [1, 30]" ,required=true) AudienceCreateRequest audienceCreateRequest) {
-        return delegate.audiencesCreate(adAccountId, audienceCreateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsAudience.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = AdAccountsAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response audiencesCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdAccountsAudienceCreate adAccountsAudienceCreate) {
+        return delegate.audiencesCreate(adAccountId, adAccountsAudienceCreate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/audiences/{audience_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get audience", notes = "Get a specific audience given the audience ID.", response = Audience.class, authorizations = {
+    @ApiOperation(value = "Get audience", notes = "Get a specific audience given the audience ID.", response = AdAccountsAudience.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "audiences" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = Audience.class),
-        @ApiResponse(code = 404, message = "Audience not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Response audiencesGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an audience",required=true) @PathParam("audience_id") String audienceId) {
-        return delegate.audiencesGet(adAccountId, audienceId, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response audiencesGet( @Pattern(regexp="^\\d+$")@ApiParam(value = "Audience ID.",required=true) @PathParam("audience_id") String audienceId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.audiencesGet(audienceId, adAccountId, securityContext);
     }
 
     @GET
@@ -893,26 +1227,35 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "audiences" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = AudiencesList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account audience parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response audiencesList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Filter audiences by ownership type.", allowableValues="OWNED, RECEIVED", defaultValue="OWNED") @DefaultValue("OWNED")  @QueryParam("ownership_type") String ownershipType) {
-        return delegate.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AudiencesList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response audiencesList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order, @ApiParam(value = "", allowableValues="OWNED, RECEIVED")  @QueryParam("ownership_type") AudienceOwnershipType ownershipType, @ApiParam(value = "When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).", defaultValue="false") @DefaultValue("false")  @QueryParam("exclude_nca") Boolean excludeNca) {
+        return delegate.audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/audiences/{audience_id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update audience", notes = "Update (edit or remove) an existing targeting audience.", response = Audience.class, authorizations = {
+    @ApiOperation(value = "Update audience", notes = "Update an existing audience for the ad account.", response = AdAccountsAudience.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "audiences" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = Audience.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response audiencesUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an audience",required=true) @PathParam("audience_id") String audienceId, @ApiParam(value = "The audience to be updated." ,required=true) AudienceUpdateRequest audienceUpdateRequest) {
-        return delegate.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountsAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response audiencesUpdate( @Pattern(regexp="^\\d+$")@ApiParam(value = "Audience ID.",required=true) @PathParam("audience_id") String audienceId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdAccountsAudienceUpdate adAccountsAudienceUpdate) {
+        return delegate.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate, securityContext);
     }
 
     @GET
@@ -925,9 +1268,13 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successfully fetched Billing invoice information for a given ad account", response = BillingInvoiceDownloadResponse.class),
-        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BillingInvoiceDownloadResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response billingInvoiceDownloadGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a billing invoice.",required=true) @PathParam("billing_invoice_id") String billingInvoiceId) {
         return delegate.billingInvoiceDownloadGet(adAccountId, billingInvoiceId, securityContext);
     }
@@ -942,58 +1289,78 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BillingInvoicesGet200Response.class),
-        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response billingInvoicesGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Field of which to sort billing invoices", allowableValues="DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER", defaultValue="DUE_DATE") @DefaultValue("DUE_DATE")  @QueryParam("sort") String sort, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Status of billing invoices to filter by", allowableValues="OPEN, CLOSED")  @QueryParam("status") String status, @ApiParam(value = "Document type of billing invoices to filter by", allowableValues="INVOICE, CREDIT_MEMO")  @QueryParam("document_type") String documentType,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")@ApiParam(value = "Starting point for due dates when searching for invoices. Format: YYYY-MM-DD")  @QueryParam("start_due_date") LocalDate startDueDate,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")@ApiParam(value = "Ending point for due dates when searching for invoices. Format: YYYY-MM-DD")  @QueryParam("end_due_date") LocalDate endDueDate) {
-        return delegate.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BillingInvoicesGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response billingInvoicesGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order, @ApiParam(value = "Field of which to sort billing invoices", allowableValues="DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER", defaultValue="DUE_DATE") @DefaultValue("DUE_DATE")  @QueryParam("sort") BillingInvoiceSortField sort, @ApiParam(value = "Status of billing invoices to filter by", allowableValues="OPEN, CLOSED")  @QueryParam("status") BillingInvoiceStatus status, @ApiParam(value = "Document type of billing invoices to filter by", allowableValues="INVOICE, CREDIT_MEMO")  @QueryParam("document_type") BillingInvoiceDocumentType documentType, @ApiParam(value = "Starting point for due dates when searching for invoices. Format: YYYY-MM-DD")  @QueryParam("start_due_date") LocalDate startDueDate, @ApiParam(value = "Ending point for due dates when searching for invoices. Format: YYYY-MM-DD")  @QueryParam("end_due_date") LocalDate endDueDate) {
+        return delegate.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/billing_profiles")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get billing profiles", notes = "Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>", response = BillingProfilesGet200Response.class, authorizations = {
+    @ApiOperation(value = "Get billing profiles", notes = "Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**", response = BillingProfilesGet200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
             @AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BillingProfilesGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Response billingProfilesGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Return active billing profiles, if false return all billing profiles.",required=true)  @QueryParam("is_active") Boolean isActive, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
-        return delegate.billingProfilesGet(adAccountId, isActive, bookmark, pageSize, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BillingProfilesGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response billingProfilesGet( @NotNull @ApiParam(value = "Return active billing profiles, if false return all billing profiles.",required=true)  @QueryParam("is_active") Boolean isActive,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+        return delegate.billingProfilesGet(isActive, adAccountId, bookmark, pageSize, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/bulk/download")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get advertiser entities in bulk", notes = "Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.", response = BulkDownloadResponse.class, authorizations = {
+    @ApiOperation(value = "Get advertiser entities in bulk", notes = "Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.", response = BulkDownload.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "bulk" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BulkDownloadResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response bulkDownloadCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Parameters to get ad entities in bulk" ,required=true) BulkDownloadRequest bulkDownloadRequest) {
-        return delegate.bulkDownloadCreate(adAccountId, bulkDownloadRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BulkDownload.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = BulkDownload.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response bulkDownloadCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) BulkDownloadCreate bulkDownloadCreate) {
+        return delegate.bulkDownloadCreate(adAccountId, bulkDownloadCreate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/bulk/{bulk_request_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Download advertiser entities in bulk", notes = "Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).", response = BulkUpsertStatusResponse.class, authorizations = {
+    @ApiOperation(value = "Download advertiser entities in bulk", notes = "Get the status of a bulk request by `request_id`, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).", response = BulkJobData.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "bulk" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BulkUpsertStatusResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response bulkRequestGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Unique identifier of a bulk upsert request.",required=true) @PathParam("bulk_request_id") String bulkRequestId, @ApiParam(value = "if set to True then attach the errors/details to all the requests", defaultValue="false") @DefaultValue("false")  @QueryParam("include_details") Boolean includeDetails) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BulkJobData.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response bulkRequestGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Bulk request ID that is from one of the entities bulk endpoints",required=true) @PathParam("bulk_request_id") String bulkRequestId, @ApiParam(value = "If set to True then attach the errors/details to all the requests", defaultValue="false") @DefaultValue("false")  @QueryParam("include_details") Boolean includeDetails) {
         return delegate.bulkRequestGet(adAccountId, bulkRequestId, includeDetails, securityContext);
     }
 
@@ -1001,31 +1368,98 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/bulk/upsert")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create/update ad entities in bulk", notes = "Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.", response = BulkUpsertResponse.class, authorizations = {
+    @ApiOperation(value = "Create/update ad entities in bulk", notes = "Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.", response = BulkUpsertResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "bulk" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BulkUpsertResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BulkUpsertResponse.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = PinterestLibError.class) })
     public Response bulkUpsertCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Parameters to get create/update ad entities in bulk" ,required=true) BulkUpsertRequest bulkUpsertRequest) {
         return delegate.bulkUpsertCreate(adAccountId, bulkUpsertRequest, securityContext);
+    }
+
+    @POST
+    @Path("/{ad_account_id}/campaign_ad_preview")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Create ad preview records for one or more ad groups", notes = "Create ad preview records for one or more ad groups that can be shared. Each ad group is processed independently; individual failures do not block other previews.", response = CampaignAdPreviewCreate200ResponseInner.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "ads" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CampaignAdPreviewCreate200ResponseInner.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = CampaignAdPreview.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response campaignAdPreviewCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate) {
+        return delegate.campaignAdPreviewCreate(adAccountId, campaignAdPreviewCreate, securityContext);
+    }
+
+    @DELETE
+    @Path("/{ad_account_id}/campaign_ad_preview")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Delete ad preview records for one or more ad groups", notes = "Delete ad preview records for one or more ad groups. All ad groups are validated before deleting any records.", response = CampaignAdPreviewDelete200ResponseInner.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "ads" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CampaignAdPreviewDelete200ResponseInner.class, responseContainer = "List"),
+        @ApiResponse(code = 204, message = "Resource deleted successfully.", response = Void.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response campaignAdPreviewDelete( @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to use to filter the results.",required=true)  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.campaignAdPreviewDelete(adGroupIds, adAccountId, securityContext);
+    }
+
+    @GET
+    @Path("/{ad_account_id}/campaign_ad_preview")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Fetch ad preview records for one or more ad groups", notes = "Fetch ad preview records for one or more ad groups. Returns all active previews associated with the provided ad group IDs.", response = CampaignAdPreview.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "ads" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CampaignAdPreview.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response campaignAdPreviewRead( @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to use to filter the results.",required=true)  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.campaignAdPreviewRead(adGroupIds, adAccountId, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/campaigns/targeting_analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get targeting analytics for campaigns", notes = "Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = MetricsResponse.class, authorizations = {
+    @ApiOperation(value = "Get targeting analytics for campaigns", notes = "Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = MetricsResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "campaigns" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = MetricsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response campaignTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.",required=true)  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=14)@ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.",required=true)  @QueryParam("targeting_types") List<AdsAnalyticsCampaignTargetingType> targetingTypes,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime,  @Size(max=2)@ApiParam(value = "List of types of attribution for the conversion report")  @QueryParam("attribution_types") List<ConversionReportAttributionType> attributionTypes, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MetricsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response campaignTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.",required=true)  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=14)@ApiParam(value = "Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.",required=true)  @QueryParam("targeting_types") List<AdsAnalyticsCampaignTargetingType> targetingTypes,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") BigDecimal clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") BigDecimal engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") BigDecimal viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime,  @Size(max=2)@ApiParam(value = "List of types of attribution for the conversion report")  @QueryParam("attribution_types") List<ConversionReportAttributionType> attributionTypes, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
         return delegate.campaignTargetingAnalyticsGet(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, securityContext);
     }
 
@@ -1033,83 +1467,196 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/campaigns/analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get campaign analytics", notes = "Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = CampaignsAnalyticsResponseInner.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Get campaign analytics", notes = "Get analytics for the specified campaigns in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = CampaignsAnalyticsMetrics.class, responseContainer = "List", authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "campaigns" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CampaignsAnalyticsResponseInner.class, responseContainer = "List"),
-        @ApiResponse(code = 400, message = "Invalid ad account campaign analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response campaignsAnalytics( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.",required=true)  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime, @ApiParam(value = "Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.", defaultValue="false") @DefaultValue("false")  @QueryParam("aggregate_report_rows") Boolean aggregateReportRows, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
-        return delegate.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CampaignsAnalyticsMetrics.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response campaignsAnalytics( @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.",required=true)  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") BigDecimal clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") BigDecimal engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") BigDecimal viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime, @ApiParam(value = "Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.", defaultValue="false") @DefaultValue("false")  @QueryParam("aggregate_report_rows") Boolean aggregateReportRows, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
+        return delegate.campaignsAnalytics(startDate, endDate, campaignIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/campaigns")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create campaigns", notes = "Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>", response = CampaignCreateResponse.class, authorizations = {
+    @ApiOperation(value = "Create campaigns", notes = "Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads.  For more, see [Set up your campaign](https://help.pinterest.com/en/business/article/set-up-your-campaign/).  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000", response = CampaignBatchWriteResponseModel.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "campaigns" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = CampaignCreateResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response campaignsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Array of campaigns." ,required=true) List<@Valid CampaignCreateRequest> campaignCreateRequest) {
-        return delegate.campaignsCreate(adAccountId, campaignCreateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CampaignBatchWriteResponseModel.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response campaignsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid CampaignCreateItem> campaignCreateItem) {
+        return delegate.campaignsCreate(adAccountId, campaignCreateItem, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/campaigns/{campaign_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get campaign", notes = "Get a specific campaign given the campaign ID.", response = CampaignResponse.class, authorizations = {
+    @ApiOperation(value = "Get campaign", notes = "Get a specific campaign given the campaign ID.", response = Campaign.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "campaigns" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CampaignResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response campaignsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Campaign ID, must be associated with the ad account ID provided in the path.",required=true) @PathParam("campaign_id") String campaignId) {
-        return delegate.campaignsGet(adAccountId, campaignId, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Campaign.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response campaignsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Campaign ID, must be associated with the ad account ID provided in the path.",required=true) @PathParam("campaign_id") String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.campaignsGet(campaignId, adAccountId, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/campaigns")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List campaigns", notes = "Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.", response = CampaignsList200Response.class, authorizations = {
+    @ApiOperation(value = "List campaigns", notes = "Get a list of the campaigns in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.", response = CampaignsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "campaigns" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CampaignsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account campaign parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response campaignsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, @ApiParam(value = "Entity status")  @QueryParam("entity_statuses") List<String> entityStatuses,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.campaignsList(adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CampaignsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response campaignsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, @ApiParam(value = "Entity status")  @QueryParam("entity_statuses") List<EntityStatus> entityStatuses) {
+        return delegate.campaignsList(adAccountId, bookmark, pageSize, order, campaignIds, entityStatuses, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/campaigns")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update campaigns", notes = "<p>Update multiple ad campaigns based on campaign_ids. </p> <p><strong>Note:</strong></p> - <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>", response = CampaignUpdateResponse.class, authorizations = {
+    @ApiOperation(value = "Update campaigns", notes = "Update multiple ad campaigns based on campaign_ids.  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000", response = CampaignBatchWriteResponseModel.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "campaigns" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = CampaignUpdateResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response campaignsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Array of campaigns." ,required=true) List<@Valid CampaignUpdateRequest> campaignUpdateRequest) {
-        return delegate.campaignsUpdate(adAccountId, campaignUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CampaignBatchWriteResponseModel.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response campaignsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem) {
+        return delegate.campaignsUpdate(adAccountId, campaignBatchUpdateItem, securityContext);
+    }
+
+    @POST
+    @Path("/{ad_account_id}/conversion_deletion_requests")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Create a conversion deletion request", notes = "**This endpoint is currently in beta and not available to all apps.** [Learn more](/docs/key-concepts/using-beta-and-restricted-features/). Create a request to delete conversion data for a list of user emails and/or EPIKs, limited to the specified `ad_account_id`. After 72 hours the request is processed and submitted to our deletion process. Then the deletion process ensures deletion within a 30 days period, once the request is submitted to the deletion process it cannot be canceled.", response = ConversionDeletionRequest.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "conversion_deletion_requests" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionDeletionRequest.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = ConversionDeletionRequest.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response conversionDeletionRequestCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) ConversionDeletionRequestCreate conversionDeletionRequestCreate) {
+        return delegate.conversionDeletionRequestCreate(adAccountId, conversionDeletionRequestCreate, securityContext);
+    }
+
+    @DELETE
+    @Path("/{ad_account_id}/conversion_deletion_requests/{request_id}")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Delete a conversion deletion request", notes = "**This endpoint is currently in beta and not available to all apps.** [Learn more](/docs/key-concepts/using-beta-and-restricted-features/). Delete a conversion deletion request from `ad_account_id` with `request_id`. This will cancel the request and prevent it from being processed. This can only be done if the request is in the `PENDING` status and before the 72 hours mark.", response = ConversionDeletionRequest.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "conversion_deletion_requests" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionDeletionRequest.class),
+        @ApiResponse(code = 204, message = "Resource deleted successfully.", response = Void.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response conversionDeletionRequestDelete( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of the conversion deletion request",required=true) @PathParam("request_id") String requestId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.conversionDeletionRequestDelete(requestId, adAccountId, securityContext);
+    }
+
+    @GET
+    @Path("/{ad_account_id}/conversion_deletion_requests/{request_id}")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Get a single conversion deletion request", notes = "**This endpoint is currently in beta and not available to all apps.** [Learn more](/docs/key-concepts/using-beta-and-restricted-features/). Get a single conversion deletion request from `ad_account_id` with `request_id`.", response = ConversionDeletionRequest.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "conversion_deletion_requests" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionDeletionRequest.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response conversionDeletionRequestGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of the conversion deletion request",required=true) @PathParam("request_id") String requestId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.conversionDeletionRequestGet(requestId, adAccountId, securityContext);
+    }
+
+    @GET
+    @Path("/{ad_account_id}/conversion_deletion_requests")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "List conversion deletion requests", notes = "**This endpoint is currently in beta and not available to all apps.** [Learn more](/docs/key-concepts/using-beta-and-restricted-features/). Get a list of the conversion deletion requests for the specified `ad_account_id`.", response = ConversionDeletionRequestList200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
+        @Authorization(value = "client_credentials", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "conversion_deletion_requests" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionDeletionRequestList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response conversionDeletionRequestList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order) {
+        return delegate.conversionDeletionRequestList(adAccountId, bookmark, pageSize, order, securityContext);
     }
 
     @GET
@@ -1166,8 +1713,13 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "conversion_tags" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionTag.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionTag.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response conversionTagsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Id of the conversion tag.",required=true) @PathParam("conversion_tag_id") String conversionTagId) {
         return delegate.conversionTagsGet(adAccountId, conversionTagId, securityContext);
     }
@@ -1198,15 +1750,20 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/keywords/metrics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get country's keyword metrics", notes = "See keyword metrics for a specified country, aggregated across all of Pinterest. (Definitions are available from the \"Get delivery metrics definitions\" <a href=\"/docs/api/v5/#operation/delivery_metrics/get\">API endpoint</a>).", response = KeywordsMetricsArrayResponse.class, authorizations = {
+    @ApiOperation(value = "Get country's keyword metrics", notes = "  See keyword metrics for a specified country, aggregated across all of Pinterest.   (Definitions are available from the \"Get delivery metrics definitions\"   [API endpoint](/docs/api/v5/#operation/delivery_metrics/get)).", response = KeywordsMetricsArrayResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "keywords" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = KeywordsMetricsArrayResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = KeywordsMetricsArrayResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response countryKeywordsMetricsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Two letter country code (ISO 3166-1 alpha-2)",required=true)  @QueryParam("country_code") String countryCode,  @NotNull  @Size(min=1,max=2000)@ApiParam(value = "Comma-separated keywords",required=true)  @QueryParam("keywords") List<String> keywords) {
         return delegate.countryKeywordsMetricsGet(adAccountId, countryCode, keywords, securityContext);
     }
@@ -1215,14 +1772,19 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/customer_lists/{customer_list_id}/uploads")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create customer list upload", notes = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>", response = CustomerListUploadCreateResponse.class, authorizations = {
+    @ApiOperation(value = "Create customer list upload", notes = "Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**", response = CustomerListUploadCreateResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "customer_list_uploads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerListUploadCreateResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response customerListUploadsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a customer list",required=true) @PathParam("customer_list_id") String customerListId, @ApiParam(value = "Parameters to create a customer list upload request" ,required=true) CustomerListUploadCreateRequest customerListUploadCreateRequest) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerListUploadCreateResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerListUploadsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Customer list ID.",required=true) @PathParam("customer_list_id") String customerListId, @ApiParam(value = "" ,required=true) CustomerListUploadCreateRequest customerListUploadCreateRequest) {
         return delegate.customerListUploadsCreate(adAccountId, customerListId, customerListUploadCreateRequest, securityContext);
     }
 
@@ -1230,14 +1792,19 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get customer list upload", notes = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>", response = CustomerListUploadResponse.class, authorizations = {
+    @ApiOperation(value = "Get customer list upload", notes = "Get the metadata for a given upload by its ID.", response = CustomerListUpload.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "customer_list_uploads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerListUploadResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response customerListUploadsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a customer list",required=true) @PathParam("customer_list_id") String customerListId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a customer list upload",required=true) @PathParam("customer_list_upload_id") String customerListUploadId) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerListUpload.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerListUploadsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Customer list ID.",required=true) @PathParam("customer_list_id") String customerListId,  @Pattern(regexp="^\\d+$")@ApiParam(value = "Customer List Upload ID.",required=true) @PathParam("customer_list_upload_id") String customerListUploadId) {
         return delegate.customerListUploadsGet(adAccountId, customerListId, customerListUploadId, securityContext);
     }
 
@@ -1245,14 +1812,19 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Run customer list upload", notes = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>", response = CustomerListUploadResponse.class, authorizations = {
+    @ApiOperation(value = "Run customer list upload", notes = "Begin processing a customer list upload.", response = CustomerListUpload.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "customer_list_uploads" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerListUploadResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response customerListUploadsRun( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a customer list",required=true) @PathParam("customer_list_id") String customerListId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a customer list upload",required=true) @PathParam("customer_list_upload_id") String customerListUploadId) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerListUpload.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerListUploadsRun( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Customer list ID.",required=true) @PathParam("customer_list_id") String customerListId,  @Pattern(regexp="^\\d+$")@ApiParam(value = "Customer List Upload ID.",required=true) @PathParam("customer_list_upload_id") String customerListUploadId) {
         return delegate.customerListUploadsRun(adAccountId, customerListId, customerListUploadId, securityContext);
     }
 
@@ -1260,15 +1832,21 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/customer_lists")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create customer lists", notes = "<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>", response = CustomerList.class, authorizations = {
+    @ApiOperation(value = "Create customer lists", notes = "Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).", response = CustomerList.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "customer_lists" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerList.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response customerListsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Parameters to get Customer lists info" ,required=true) CustomerListRequest customerListRequest) {
-        return delegate.customerListsCreate(adAccountId, customerListRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerList.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = CustomerList.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerListsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) CustomerListCreate customerListCreate) {
+        return delegate.customerListsCreate(adAccountId, customerListCreate, securityContext);
     }
 
     @GET
@@ -1282,9 +1860,14 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "customer_lists" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerList.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response customerListsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a customer list",required=true) @PathParam("customer_list_id") String customerListId) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerList.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerListsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Customer list ID.",required=true) @PathParam("customer_list_id") String customerListId) {
         return delegate.customerListsGet(adAccountId, customerListId, securityContext);
     }
 
@@ -1292,113 +1875,268 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/customer_lists")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get customer lists", notes = "<p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>", response = CustomerListsList200Response.class, authorizations = {
+    @ApiOperation(value = "Get customer lists", notes = "Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.", response = CustomerListsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "customer_lists" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerListsList200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response customerListsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.customerListsList(adAccountId, pageSize, order, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerListsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerListsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order, @ApiParam(value = "When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).", defaultValue="false") @DefaultValue("false")  @QueryParam("exclude_nca") Boolean excludeNca) {
+        return delegate.customerListsList(adAccountId, bookmark, pageSize, order, excludeNca, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/customer_lists/{customer_list_id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update customer list", notes = "<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>", response = CustomerList.class, authorizations = {
+    @ApiOperation(value = "Update customer list", notes = "Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \"CUSTOMER_LIST\" audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.", response = CustomerList.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "customer_lists" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CustomerList.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response customerListsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a customer list",required=true) @PathParam("customer_list_id") String customerListId, @ApiParam(value = "" ,required=true) CustomerListUpdateRequest customerListUpdateRequest) {
-        return delegate.customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerList.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerListsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Customer list ID.",required=true) @PathParam("customer_list_id") String customerListId, @ApiParam(value = "" ,required=true) CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody) {
+        return delegate.customerListsUpdate(adAccountId, customerListId, customerListUpdateWithRequiredBody, securityContext);
+    }
+
+    @POST
+    @Path("/{ad_account_id}/customer_segments")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Create customer segments", notes = "Customer segments allow advertisers to define existing customers for Pinterest Performance+ campaigns. Customer segments are made up of audience lists.", response = CustomerSegment.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "customer_segment" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerSegment.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = CustomerSegment.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerSegmentCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) CustomerSegmentCreate customerSegmentCreate) {
+        return delegate.customerSegmentCreate(adAccountId, customerSegmentCreate, securityContext);
+    }
+
+    @GET
+    @Path("/{ad_account_id}/customer_segments")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "List customer segments", notes = "Get a list of the customer segments in the specified `ad_account_id`.", response = CustomerSegmentList200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "customer_segment" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CustomerSegmentList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerSegmentList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order, @ApiParam(value = "Include audience sizing in result or not", defaultValue="false") @DefaultValue("false")  @QueryParam("include_sizing") Boolean includeSizing, @ApiParam(value = "Search query. Can contain pin description keywords or comma-separated pin IDs.")  @QueryParam("search_query") String searchQuery) {
+        return delegate.customerSegmentList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery, securityContext);
+    }
+
+    @PATCH
+    @Path("/{ad_account_id}/customer_segments")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Update customer segments", notes = "Update the customer segment given advertiser ID and customer segment ID", response = Void.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "customer_segment" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Void.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response customerSegmentUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) CustomerSegmentUpdateRequestUpdateWithRequiredBody customerSegmentUpdateRequestUpdateWithRequiredBody) {
+        return delegate.customerSegmentUpdate(adAccountId, customerSegmentUpdateRequestUpdateWithRequiredBody, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/events")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Send conversions", notes = "The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object. - This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href=\"/docs/api-features/conversion-overview/\">Conversions Guide</a> for more details. (Note that the authorization header required is <code>Authorization: Bearer &lt;access_token&gt;</code>). - The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)", response = ConversionApiResponse.class, authorizations = {
+    @ApiOperation(value = "Send conversions", notes = "The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their `ad_account_id`. The request body should be a JSON object. - This endpoint requires an `access_token` be generated through Ads Manager. Review the [Conversions Guide](/docs/api-features/conversion-overview/) for more details. (Note that the authorization header required is `Authorization: Bearer <access_token>`). - The token's `user_account` must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)", response = ConversionEvents.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") }),
         
         @Authorization(value = "conversion_token")
          }, tags={ "conversion_events" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionApiResponse.class),
-        @ApiResponse(code = 400, message = "The request was invalid.", response = Error.class),
-        @ApiResponse(code = 401, message = "Not authorized to send conversion events", response = Error.class),
-        @ApiResponse(code = 403, message = "Unauthorized access.", response = Error.class),
-        @ApiResponse(code = 422, message = "Not all events were successfully processed.", response = DetailedError.class),
-        @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.", response = Error.class),
-        @ApiResponse(code = 503, message = "The endpoint has been ramped down and is currently not accepting any traffic.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected errors", response = Error.class) })
-    public Response eventsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Conversion events." ,required=true) ConversionEvents conversionEvents, @ApiParam(value = "Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.")  @QueryParam("test") Boolean test) {
-        return delegate.eventsCreate(adAccountId, conversionEvents, test, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionEvents.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 422, message = "The request was well-formed but was unable to be followed due to semantic errors.", response = DetailedError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 503, message = "The server is currently unable to handle the request due to a temporary overload or scheduled maintenance.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response eventsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) ConversionEventsCreate conversionEventsCreate, @ApiParam(value = "Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.")  @QueryParam("test") Boolean test) {
+        return delegate.eventsCreate(adAccountId, conversionEventsCreate, test, securityContext);
+    }
+
+    @GET
+    @Path("/{ad_account_id}/promotion_applied_entities")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "List of ad groups using promotions IDs.", notes = "  Get a list of ad groups that are associated with those promotion ids", response = AdGroupsList200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "ad_groups" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdGroupsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response getAdGroupsByPromotionIdsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Size(min=1,max=50)@ApiParam(value = "List of Promotion IDs to use to filter the results.",required=true)  @QueryParam("promotion_ids") List<String> promotionIds, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order) {
+        return delegate.getAdGroupsByPromotionIdsList(adAccountId, promotionIds, bookmark, pageSize, order, securityContext);
+    }
+
+    @POST
+    @Path("/{ad_account_id}/campaigns/delivery_estimates")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Get campaign delivery estimates", notes = "Get delivery estimates for an ads campaign  **This endpoint is currently in beta and is not available to all apps [Learn more](/docs/new/about-beta-access/).**", response = CampaignDeliveryEstimatesResponse.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "campaigns" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = CampaignDeliveryEstimatesResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 503, message = "The service is temporarily unavailable.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response getCampaignDeliveryEstimates( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign) {
+        return delegate.getCampaignDeliveryEstimates(adAccountId, campaignDeliveryEstimatesCampaign, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/keywords")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create keywords", notes = "<p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul> <p><b>Rate limit</b>: <a href=\"/docs/reference/rate-limits/\">WRITE</a>.</p>", response = KeywordsResponse.class, authorizations = {
+    @ApiOperation(value = "Create keywords", notes = "  Create keywords for the following entity types (advertiser, campaign, ad group, or ad). For more information, see [Keyword targeting](https://help.pinterest.com/en/business/article/keyword-targeting).    **Notes:**   - Advertisers and campaigns can only be assigned keywords with excluding (`_NEGATIVE`).   - All keyword match types are available for ad groups.    For more information on match types, see [match type enums](/docs/api-features/targeting-overview/).    **Returns:**   - A successful call returns an object containing an array of new keyword objects and an empty `errors` object array.   - An unsuccessful call returns an empty keywords array, and instead, inserts the entire object with nulled/negated properties into the `errors` object array:     ```json     {       \"keywords\": [],       \"errors\": [         {           \"data\": {             \"archived\": null,             \"match_type\": \"EXACT\",             \"parent_type\": null,             \"value\": \"foobar\",             \"parent_id\": null,             \"type\": \"keyword\",             \"id\": null           },           \"error_messages\": [             \"Advertisers and Campaigns only accept excluded targeting attributes.\"           ]         }       ]     }", response = Keywords.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "keywords" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = KeywordsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response keywordsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) KeywordsRequest keywordsRequest) {
-        return delegate.keywordsCreate(adAccountId, keywordsRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Keywords.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = Keywords.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response keywordsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) KeywordsCreate keywordsCreate) {
+        return delegate.keywordsCreate(adAccountId, keywordsCreate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/keywords")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get keywords", notes = "<p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>", response = KeywordsGet200Response.class, authorizations = {
+    @ApiOperation(value = "Get keywords", notes = "    Get a list of keywords based on the filters provided. If no filter is provided, it will default to the `ad_account_id` filter, which means it will only return keywords that specifically have `parent_id` set to the `ad_account_id`. Note: Keywords can have `ad_account_ids`, `campaign_ids`, and `ad_group_ids` set as their `parent_ids`. Keywords created through Ads Manager will have their `parent_id` set to an `ad_group_id`, not `ad_account_id`.      For more information, see [Keyword targeting](https://help.pinterest.com/en/business/article/keyword-targeting).      **Notes:**     - Advertisers and campaigns can only be assigned keywords with excluding (`_NEGATIVE`).     - All keyword match types are available for ad groups.      For more information on match types, see [match type enums](/docs/api-features/targeting-overview/).      **Returns:**     - A successful call returns an object containing an array of new keyword objects and an empty `errors` object array.     - An unsuccessful call returns an empty keywords array, and instead, inserts the entire object with nulled/negated properties into the `errors` object array:       ```json       {         \"keywords\": [],         \"errors\": [           {             \"data\": {               \"archived\": null,               \"match_type\": \"EXACT\",               \"parent_type\": null,               \"value\": \"foobar\",               \"parent_id\": null,               \"type\": \"keyword\",               \"id\": null             },             \"error_messages\": [               \"Advertisers and Campaigns only accept excluded targeting attributes.\"             ]           }         ]       }", response = KeywordsGet200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "keywords" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = KeywordsGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response keywordsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Campaign Id to use to filter the results.")  @QueryParam("campaign_id") String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Ad group Id.")  @QueryParam("ad_group_id") String adGroupId,  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,  @Size(min=1,max=5)@ApiParam(value = "Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>")  @QueryParam("match_types") List<MatchType> matchTypes,  @Min(1)@ApiParam(value = "Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = KeywordsGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response keywordsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Campaign Id to use to filter the results.")  @QueryParam("campaign_id") String campaignId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Ad group Id.")  @QueryParam("ad_group_id") String adGroupId,  @Size(min=1,max=250)@ApiParam(value = "List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")String> adGroupIds,  @Size(min=1,max=5)@ApiParam(value = "Keyword [match type](/docs/api-features/targeting-overview/)")  @QueryParam("match_types") List<MatchType> matchTypes, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+        return delegate.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, bookmark, pageSize, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/keywords")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update keywords", notes = "<p>Update one or more keywords' bid and archived fields.</p> <p>Archiving a keyword effectively deletes it - keywords no longer receive metrics and no longer visible within the parent entity's keywords list.</p>", response = KeywordsResponse.class, authorizations = {
+    @ApiOperation(value = "Update keywords", notes = "  Update one or more keywords' bid and archived fields. Archiving   a keyword effectively deletes it - keywords no longer receive metrics and   are no longer visible within the parent entity's keywords list.", response = Keywords.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "keywords" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = KeywordsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response keywordsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) KeywordUpdateBody keywordUpdateBody) {
-        return delegate.keywordsUpdate(adAccountId, keywordUpdateBody, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Keywords.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response keywordsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) KeywordsUpdate keywordsUpdate) {
+        return delegate.keywordsUpdate(adAccountId, keywordsUpdate, securityContext);
+    }
+
+    @POST
+    @Path("/{ad_account_id}/labels/{label_id}/apply")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Apply label to entity", notes = "  [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.", response = LabeledEntities.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "labels" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LabeledEntities.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = LabeledEntities.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response labelsApply( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Label ID.",required=true) @PathParam("label_id") String labelId, @ApiParam(value = "" ,required=true) LabeledEntitiesCreate labeledEntitiesCreate) {
+        return delegate.labelsApply(adAccountId, labelId, labeledEntitiesCreate, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/labels")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create labels", notes = "<p> <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> This endpoint is not available to all users. </p> <p>   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    <b>Note:</b> You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  </p>", response = LabelsResponse.class, authorizations = {
+    @ApiOperation(value = "Create labels", notes = "[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.", response = LabelsResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "labels" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LabelsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LabelsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response labelsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) LabelCreateRequest labelCreateRequest) {
         return delegate.labelsCreate(adAccountId, labelCreateRequest, securityContext);
     }
@@ -1407,29 +2145,59 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/labels")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List labels", notes = "<p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   See a list of labels for assets that your account owns, and filter the list by different criteria. </p>", response = LabelsList200Response.class, authorizations = {
+    @ApiOperation(value = "List labels", notes = "[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.", response = LabelsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "labels" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LabelsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account ads parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response labelsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @Size(min=1,max=250)@ApiParam(value = "List of Label Ids to use to filter the results.")  @QueryParam("label_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds, @ApiParam(value = "Label entity status")  @QueryParam("entity_statuses") List<String> entityStatuses, @ApiParam(value = "Label type.")  @QueryParam("label_types") List<String> labelTypes,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.labelsList(adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, pageSize, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LabelsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response labelsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Size(min=1,max=250)@ApiParam(value = "List of Campaign Ids to use to filter the results.")  @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,  @Size(min=1,max=250)@ApiParam(value = "List of Label Ids to use to filter the results.")  @QueryParam("label_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds, @ApiParam(value = "Label entity status")  @QueryParam("entity_statuses") List<QueryLabelEntityStatusesItems> entityStatuses, @ApiParam(value = "Label type.")  @QueryParam("label_types") List<QueryLabelTypesItems> labelTypes, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+        return delegate.labelsList(adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, bookmark, pageSize, securityContext);
+    }
+
+    @POST
+    @Path("/{ad_account_id}/labels/{label_id}/remove")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Remove label from entities", notes = "  [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.", response = LabeledEntities.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "labels" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LabeledEntities.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = LabeledEntities.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response labelsRemove( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Label ID.",required=true) @PathParam("label_id") String labelId, @ApiParam(value = "" ,required=true) LabeledEntitiesCreate labeledEntitiesCreate) {
+        return delegate.labelsRemove(adAccountId, labelId, labeledEntitiesCreate, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/labels")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update labels", notes = "<p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   Change the properties of one or more labels. </p>", response = LabelsResponse.class, authorizations = {
+    @ApiOperation(value = "Update labels", notes = "[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.", response = LabelsResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "labels" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LabelsResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LabelsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response labelsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) LabelUpdateRequest labelUpdateRequest) {
         return delegate.labelsUpdate(adAccountId, labelUpdateRequest, securityContext);
     }
@@ -1438,113 +2206,136 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/lead_forms/{lead_form_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get lead form by id", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadFormResponse.class, authorizations = {
+    @ApiOperation(value = "Get lead form by id", notes = "**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).", response = LeadForm.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "lead_forms" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LeadFormResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account lead forms parameters.", response = Error.class),
-        @ApiResponse(code = 404, message = "The lead form ID for the given ad account ID does not exist.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response leadFormGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a lead form.",required=true) @PathParam("lead_form_id") String leadFormId) {
-        return delegate.leadFormGet(adAccountId, leadFormId, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadForm.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response leadFormGet( @Pattern(regexp="^\\d+$")@ApiParam(value = "The ID of this lead form",required=true) @PathParam("lead_form_id") String leadFormId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.leadFormGet(leadFormId, adAccountId, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/lead_forms/{lead_form_id}/test")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create lead form test data", notes = "Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.", response = LeadFormTestResponse.class, authorizations = {
+    @ApiOperation(value = "Create lead form test data", notes = "Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.", response = LeadFormTest.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "lead_forms" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LeadFormTestResponse.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 404, message = "Lead not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response leadFormTestCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a lead form.",required=true) @PathParam("lead_form_id") String leadFormId, @ApiParam(value = "Subscription to create." ,required=true) LeadFormTestRequest leadFormTestRequest) {
-        return delegate.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadFormTest.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response leadFormTestCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a lead form.",required=true) @PathParam("lead_form_id") String leadFormId, @ApiParam(value = "" ,required=true) LeadFormTestCreate leadFormTestCreate) {
+        return delegate.leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/lead_forms")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create lead forms", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadFormArrayResponse.class, authorizations = {
+    @ApiOperation(value = "Create lead forms", notes = "**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).", response = LeadFormsCreate200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "lead_forms" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LeadFormArrayResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account lead forms parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response leadFormsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of lead forms to create, size limit [1, 30]." ,required=true) List<@Valid LeadFormCreateRequest> leadFormCreateRequest) {
-        return delegate.leadFormsCreate(adAccountId, leadFormCreateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadFormsCreate200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response leadFormsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid LeadFormCreate> leadFormCreate) {
+        return delegate.leadFormsCreate(adAccountId, leadFormCreate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/lead_forms")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List lead forms", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadFormsList200Response.class, authorizations = {
+    @ApiOperation(value = "List lead forms", notes = "**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).", response = LeadFormsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "lead_forms" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LeadFormsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account lead forms parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response leadFormsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.leadFormsList(adAccountId, pageSize, order, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadFormsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response leadFormsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order) {
+        return delegate.leadFormsList(adAccountId, bookmark, pageSize, order, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/lead_forms")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update lead forms", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadFormArrayResponse.class, authorizations = {
+    @ApiOperation(value = "Update lead forms", notes = "**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).", response = LeadFormsCreate200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "lead_forms" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LeadFormArrayResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account lead forms parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response leadFormsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of lead forms to update, size limit [1, 30]." ,required=true) List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest) {
-        return delegate.leadFormsUpdate(adAccountId, leadFormUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadFormsCreate200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response leadFormsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate) {
+        return delegate.leadFormsUpdate(adAccountId, leadFormBatchUpdate, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/leads_export")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create a request to export leads collected from a lead ad", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadsExportCreateResponse.class, authorizations = {
+    @ApiOperation(value = "Create a request to export leads collected from a lead ad", notes = "**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Create an export of leads collected from a lead ad. This returns a `leads_export_id` token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).", response = LeadsExports.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "leads_export" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LeadsExportCreateResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response leadsExportCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) LeadsExportCreateRequest leadsExportCreateRequest) {
-        return delegate.leadsExportCreate(adAccountId, leadsExportCreateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadsExports.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = LeadsExports.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response leadsExportCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) LeadsExportsCreate leadsExportsCreate) {
+        return delegate.leadsExportCreate(adAccountId, leadsExportsCreate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/leads_export/{leads_export_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get the lead export from the lead export create call", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadsExportResponseData.class, authorizations = {
+    @ApiOperation(value = "Get the lead export from the lead export create call", notes = "**This feature is currently in beta and not available to all apps. If you're interested in joining the beta, please reach out to your Pinterest account manager.**  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).", response = LeadsExportResponseData.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "leads_export" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = LeadsExportResponseData.class),
-        @ApiResponse(code = 400, message = "Invalid ad account parameter.", response = Error.class),
-        @ApiResponse(code = 404, message = "Invalid leads export id parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = LeadsExportResponseData.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response leadsExportGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$")@ApiParam(value = "lead_export_id token returned from the create a lead export endpoint",required=true) @PathParam("leads_export_id") String leadsExportId) {
         return delegate.leadsExportGet(adAccountId, leadsExportId, securityContext);
     }
@@ -1553,19 +2344,21 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/msot/events")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Send Measurement Source Of Truth (MSOT) attributed conversion events", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.", response = Void.class, authorizations = {
+    @ApiOperation(value = "Send Measurement Source Of Truth (MSOT) attributed conversion events", notes = "**This feature is currently in beta and not available to all apps.** If you are interested in joining the beta, reach out to your Pinterest account manager.  Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their `ad_account_id`. The request body should be a JSON object.  - These events will not be used in Reporting.", response = Void.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "msot:write", description = "Create measurement source of truth events") })
          }, tags={ "msot_events" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = Void.class),
-        @ApiResponse(code = 400, message = "The request was invalid", response = Error.class),
-        @ApiResponse(code = 401, message = "Not authorized to send MSOT conversion events", response = Error.class),
-        @ApiResponse(code = 403, message = "Unauthorized access", response = Error.class),
-        @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected errors", response = Error.class) })
-    public Response msotEventsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Attributed MSOT conversion events" ,required=true) ConversionMSOTEvents conversionMSOTEvents) {
-        return delegate.msotEventsCreate(adAccountId, conversionMSOTEvents, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Void.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = Object.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response msotEventsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) ConversionMSOTEventsCreate conversionMSOTEventsCreate) {
+        return delegate.msotEventsCreate(adAccountId, conversionMSOTEventsCreate, securityContext);
     }
 
     @GET
@@ -1579,8 +2372,13 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "conversion_tags" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionEventResponse.class, responseContainer = "Map"),
-        @ApiResponse(code = 200, message = "Unexpected errors", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionEventResponse.class, responseContainer = "Map"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response ocpmEligibleConversionTagsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
         return delegate.ocpmEligibleConversionTagsGet(adAccountId, securityContext);
     }
@@ -1594,25 +2392,35 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "order_lines" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = OrderLine.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response orderLinesGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an order line.",required=true) @PathParam("order_line_id") String orderLineId) {
-        return delegate.orderLinesGet(adAccountId, orderLineId, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = OrderLine.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response orderLinesGet( @Pattern(regexp="^\\d+$")@ApiParam(value = "Order line ID.",required=true) @PathParam("order_line_id") String orderLineId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.orderLinesGet(orderLineId, adAccountId, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/order_lines")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get order lines", notes = "List existing order lines associated with an ad account.", response = OrderLinesList200Response.class, authorizations = {
+    @ApiOperation(value = "Get order lines.", notes = "List existing order lines associated with an ad account.", response = OrderLinesList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "order_lines" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = OrderLinesList200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response orderLinesList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.orderLinesList(adAccountId, pageSize, order, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = OrderLinesList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response orderLinesList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order) {
+        return delegate.orderLinesList(adAccountId, bookmark, pageSize, order, securityContext);
     }
 
     @GET
@@ -1626,25 +2434,36 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "conversion_tags" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PageVisitConversionTagsGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response pageVisitConversionTagsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = PageVisitConversionTagsGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response pageVisitConversionTagsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order) {
+        return delegate.pageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/product_group_promotions")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create product group promotions", notes = "Add one or more product groups from your catalog to an existing ad group. (Product groups added to an ad group are a 'product group promotion.')", response = ProductGroupPromotionResponse.class, authorizations = {
+    @ApiOperation(value = "Create product group promotions", notes = "Add one or more product groups from your catalog to an existing ad group. (Product groups added to an ad group are a 'product group promotion.')", response = ProductGroupPromotions.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "product_group_promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ProductGroupPromotionResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response productGroupPromotionsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of Product Group Promotions to create, size limit [1, 30]." ,required=true) ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) {
-        return delegate.productGroupPromotionsCreate(adAccountId, productGroupPromotionCreateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ProductGroupPromotions.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = ProductGroupPromotions.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response productGroupPromotionsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) ProductGroupPromotionsCreate productGroupPromotionsCreate) {
+        return delegate.productGroupPromotionsCreate(adAccountId, productGroupPromotionsCreate, securityContext);
     }
 
     @GET
@@ -1656,8 +2475,13 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "product_group_promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ProductGroupPromotion.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ProductGroupPromotion.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response productGroupPromotionsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a product group promotion",required=true) @PathParam("product_group_promotion_id") String productGroupPromotionId) {
         return delegate.productGroupPromotionsGet(adAccountId, productGroupPromotionId, securityContext);
     }
@@ -1666,48 +2490,62 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/product_group_promotions")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get product group promotions", notes = "List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.", response = ProductGroupPromotionsList200Response.class, authorizations = {
+    @ApiOperation(value = "Get product group promotions", notes = "List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.", response = ProductGroupPromotionsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "product_group_promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ProductGroupPromotionsList200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response productGroupPromotionsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Size(min=1,max=250)@ApiParam(value = "List of Product group promotion Ids.")  @QueryParam("product_group_promotion_ids") List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, @ApiParam(value = "Entity status")  @QueryParam("entity_statuses") List<String> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Ad group Id.")  @QueryParam("ad_group_id") String adGroupId,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.productGroupPromotionsList(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ProductGroupPromotionsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response productGroupPromotionsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order,  @Size(min=1,max=250)@ApiParam(value = "List of Product group promotion Ids.")  @QueryParam("product_group_promotion_ids") List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, @ApiParam(value = "Entity status")  @QueryParam("entity_statuses") List<EntityStatus> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Ad group Id.")  @QueryParam("ad_group_id") String adGroupId) {
+        return delegate.productGroupPromotionsList(adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/product_group_promotions")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update product group promotions", notes = "Update multiple existing Product Group Promotions (by product_group_id)", response = ProductGroupPromotionResponse.class, authorizations = {
+    @ApiOperation(value = "Update product group promotions", notes = "Update multiple existing Product Group Promotions (by product_group_id)", response = ProductGroupPromotions.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "product_group_promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ProductGroupPromotionResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response productGroupPromotionsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Parameters to update Product group promotions" ,required=true) ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest) {
-        return delegate.productGroupPromotionsUpdate(adAccountId, productGroupPromotionUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ProductGroupPromotions.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response productGroupPromotionsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody) {
+        return delegate.productGroupPromotionsUpdate(adAccountId, productGroupPromotionsUpdateWithRequiredBody, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/product_groups/analytics")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get product group analytics", notes = "Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = ProductGroupAnalyticsResponseInner.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Get product group analytics", notes = "Get analytics for the specified product groups in the specified `ad_account_id`, filtered by the specified options.  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.", response = ProductGroupAnalyticsItems.class, responseContainer = "List", authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "product_group_promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ProductGroupAnalyticsResponseInner.class, responseContainer = "List"),
-        @ApiResponse(code = 400, message = "Invalid ad account ads analytics parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response productGroupsAnalytics( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Product group Ids to use to filter the results.",required=true)  @QueryParam("product_group_ids") List<@Pattern(regexp = "^\\d+$")String> productGroupIds,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned",required=true)  @QueryParam("columns") List<String> columns,  @NotNull @ApiParam(value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") Integer clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") Integer engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") Integer viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
-        return delegate.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ProductGroupAnalyticsItems.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response productGroupsAnalytics( @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull  @Size(min=1,max=250)@ApiParam(value = "List of Product group Ids to use to filter the results.",required=true)  @QueryParam("product_group_ids") List<@Pattern(regexp = "^\\d+$")String> productGroupIds,  @NotNull @ApiParam(value = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.",required=true)  @QueryParam("columns") List<ReportingColumnSync> columns,  @NotNull @ApiParam(value = "  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly",required=true, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH")  @QueryParam("granularity") Granularity granularity,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("click_window_days") BigDecimal clickWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="30") @DefaultValue("30")  @QueryParam("engagement_window_days") BigDecimal engagementWindowDays, @ApiParam(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", allowableValues="0, 1, 7, 14, 30, 60", defaultValue="1") @DefaultValue("1")  @QueryParam("view_window_days") BigDecimal viewWindowDays, @ApiParam(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION", defaultValue="TIME_OF_AD_ACTION") @DefaultValue("TIME_OF_AD_ACTION")  @QueryParam("conversion_report_time") String conversionReportTime, @ApiParam(value = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", allowableValues="PINTEREST_TIME_ZONE, AD_ACCOUNT_TIME_ZONE")  @QueryParam("reporting_timezone") ReportingTimeZone reportingTimezone) {
+        return delegate.productGroupsAnalytics(startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, securityContext);
     }
 
     @POST
@@ -1719,42 +2557,56 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PromotionsResponse.class),
-        @ApiResponse(code = 400, message = "Invalid create promotions request parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response promotionsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of promotions to create, size limit [1, 30]." ,required=true) List<@Valid PromotionCreateRequest> promotionCreateRequest) {
-        return delegate.promotionsCreate(adAccountId, promotionCreateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = PromotionsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response promotionsCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid PromotionCreate> promotionCreate) {
+        return delegate.promotionsCreate(adAccountId, promotionCreate, securityContext);
     }
 
     @DELETE
     @Path("/{ad_account_id}/promotions/{promotion_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Delete promotion by id", notes = "Delete a promotion within Pinterest.", response = Void.class, authorizations = {
+    @ApiOperation(value = "Delete promotion by id", notes = "Delete a promotion within Pinterest.", response = Promotion.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 204, message = "Promotion deleted successfully", response = Void.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response promotionsDelete( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a promotion",required=true) @PathParam("promotion_id") String promotionId) {
-        return delegate.promotionsDelete(adAccountId, promotionId, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Promotion.class),
+        @ApiResponse(code = 204, message = "Resource deleted successfully.", response = Void.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response promotionsDelete( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Promotion ID",required=true) @PathParam("promotion_id") String promotionId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.promotionsDelete(promotionId, adAccountId, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/promotions/{promotion_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get promotion by id", notes = "Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.", response = PromotionResponse.class, authorizations = {
+    @ApiOperation(value = "Get promotion by id", notes = "Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.", response = Promotion.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PromotionResponse.class),
-        @ApiResponse(code = 404, message = "The promotion ID for the given ad account ID was not found.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response promotionsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of a promotion",required=true) @PathParam("promotion_id") String promotionId) {
-        return delegate.promotionsGet(adAccountId, promotionId, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Promotion.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response promotionsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Promotion ID",required=true) @PathParam("promotion_id") String promotionId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
+        return delegate.promotionsGet(promotionId, adAccountId, securityContext);
     }
 
     @GET
@@ -1766,11 +2618,15 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PromotionsList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account promotions parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response promotionsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.promotionsList(adAccountId, pageSize, order, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = PromotionsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response promotionsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order) {
+        return delegate.promotionsList(adAccountId, bookmark, pageSize, order, securityContext);
     }
 
     @PATCH
@@ -1782,11 +2638,15 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "promotions" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = PromotionsResponse.class),
-        @ApiResponse(code = 400, message = "Invalid create promotions request parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response promotionsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "List of promotions to create, size limit [1, 30]." ,required=true) List<@Valid PromotionUpdateRequest> promotionUpdateRequest) {
-        return delegate.promotionsUpdate(adAccountId, promotionUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = PromotionsResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response promotionsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid PromotionBatchUpdate> promotionBatchUpdate) {
+        return delegate.promotionsUpdate(adAccountId, promotionBatchUpdate, securityContext);
     }
 
     @DELETE
@@ -1798,25 +2658,94 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = String.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response sandboxDelete( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
         return delegate.sandboxDelete(adAccountId, securityContext);
+    }
+
+    @POST
+    @Path("/{ad_account_id}/schedules")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Create schedules", notes = "Batch create schedules", response = SchedulesCreate200ResponseInner.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "schedules" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SchedulesCreate200ResponseInner.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = Schedule.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response schedulesCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid ScheduleCreate> scheduleCreate) {
+        return delegate.schedulesCreate(adAccountId, scheduleCreate, securityContext);
+    }
+
+    @GET
+    @Path("/{ad_account_id}/schedules")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Get Schedules", notes = "Get schedules for a specific advertiser", response = SchedulesList200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
+         }, tags={ "schedules" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SchedulesList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response schedulesList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId,  @NotNull  @Size(min=1)@ApiParam(value = "List of Entity IDs, must be associated with the Ad Accound ID provided in the path.",required=true)  @QueryParam("entity_ids") List<@Pattern(regexp = "^\\d+$")String> entityIds, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order, @ApiParam(value = "Filter schedules by status (one or more)")  @QueryParam("schedule_statuses") List<ScheduleStatus> scheduleStatuses, @ApiParam(value = "Filter schedules by a type", allowableValues="CAMPAIGN_BUDGET_CHANGE, CAMPAIGN_BID_MULTIPLIERS")  @QueryParam("schedule_type") ScheduleType scheduleType) {
+        return delegate.schedulesList(adAccountId, entityIds, bookmark, pageSize, order, scheduleStatuses, scheduleType, securityContext);
+    }
+
+    @PATCH
+    @Path("/{ad_account_id}/schedules")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Update schedules", notes = "Update one or more schedules", response = SchedulesCreate200ResponseInner.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
+         }, tags={ "schedules" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SchedulesCreate200ResponseInner.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response schedulesUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate) {
+        return delegate.schedulesUpdate(adAccountId, scheduleBatchUpdate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/ssio/accounts")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get Salesforce account details including bill-to information.", notes = "Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.", response = SSIOAccountResponse.class, authorizations = {
+    @ApiOperation(value = "Get Salesforce account details including bill-to information.", notes = "  Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.", response = SSIOAccount.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SSIOAccountResponse.class),
-        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SSIOAccount.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response ssioAccountsGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId) {
         return delegate.ssioAccountsGet(adAccountId, securityContext);
     }
@@ -1825,47 +2754,60 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/ssio/insertion_orders")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create insertion order through SSIO.", notes = "Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.", response = SSIOCreateInsertionOrderResponse.class, authorizations = {
+    @ApiOperation(value = "Create insertion order through SSIO.", notes = "  Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.", response = SSIOInsertionOrder.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SSIOCreateInsertionOrderResponse.class),
-        @ApiResponse(code = 400, message = "Invalid request.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response ssioInsertionOrderCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Order line to create." ,required=true) SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) {
-        return delegate.ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SSIOInsertionOrder.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = SSIOInsertionOrder.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response ssioInsertionOrderCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) SSIOInsertionOrderCreate ssIOInsertionOrderCreate) {
+        return delegate.ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/ssio/insertion_orders")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Edit insertion order through SSIO.", notes = "Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.", response = SSIOEditInsertionOrderResponse.class, authorizations = {
+    @ApiOperation(value = "Edit insertion order through SSIO.", notes = "  Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.", response = SSIOInsertionOrder.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SSIOEditInsertionOrderResponse.class),
-        @ApiResponse(code = 400, message = "Invalid request.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response ssioInsertionOrderEdit( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Order line to create." ,required=true) SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) {
-        return delegate.ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SSIOInsertionOrder.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response ssioInsertionOrderEdit( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate) {
+        return delegate.ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate, securityContext);
     }
 
     @GET
     @Path("/{ad_account_id}/ssio/insertion_orders/status")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get insertion order status by ad account id.", notes = "Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.", response = SsioInsertionOrdersStatusGetByAdAccount200Response.class, authorizations = {
+    @ApiOperation(value = "Get insertion order status by ad account id.", notes = "  Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.", response = SsioInsertionOrdersStatusGetByAdAccount200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SsioInsertionOrdersStatusGetByAdAccount200Response.class),
-        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response ssioInsertionOrdersStatusGetByAdAccount( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SsioInsertionOrdersStatusGetByAdAccount200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response ssioInsertionOrdersStatusGetByAdAccount( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
         return delegate.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize, securityContext);
     }
 
@@ -1873,14 +2815,18 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get insertion order status by pin order id.", notes = "Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.", response = SSIOInsertionOrderStatusResponse.class, authorizations = {
+    @ApiOperation(value = "Get insertion order status by pin order id.", notes = "  Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.", response = SSIOInsertionOrderStatusResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SSIOInsertionOrderStatusResponse.class),
-        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SSIOInsertionOrderStatusResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response ssioInsertionOrdersStatusGetByPinOrderId( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "The pin order id associated with the ssio insertion order",required=true) @PathParam("pin_order_id") String pinOrderId) {
         return delegate.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId, securityContext);
     }
@@ -1889,31 +2835,40 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/ssio/order_lines")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get Salesforce order lines by ad account id.", notes = "Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.", response = SsioOrderLinesGetByAdAccount200Response.class, authorizations = {
+    @ApiOperation(value = "Get Salesforce order lines by ad account id.", notes = "  Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.", response = SsioOrderLinesGetByAdAccount200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "billing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SsioOrderLinesGetByAdAccount200Response.class),
-        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response ssioOrderLinesGetByAdAccount( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The pin order id associated with the ssio insertino order")  @QueryParam("pin_order_id") String pinOrderId) {
-        return delegate.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = SsioOrderLinesGetByAdAccount200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response ssioOrderLinesGetByAdAccount( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "The pin order id associated with the SSIO insertion order")  @QueryParam("pin_order_id") String pinOrderId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+        return delegate.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize, securityContext);
     }
 
     @POST
     @Path("/{ad_account_id}/targeting_templates")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create targeting templates", notes = "<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>", response = TargetingTemplateGetResponseData.class, authorizations = {
+    @ApiOperation(value = "Create targeting templates", notes = "Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords & interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.", response = TargetingTemplate.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "targeting_template" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = TargetingTemplateGetResponseData.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response targetingTemplateCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "targeting template creation entity" ,required=true) TargetingTemplateCreate targetingTemplateCreate) {
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = TargetingTemplate.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = TargetingTemplate.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response targetingTemplateCreate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) TargetingTemplateCreate targetingTemplateCreate) {
         return delegate.targetingTemplateCreate(adAccountId, targetingTemplateCreate, securityContext);
     }
 
@@ -1921,34 +2876,42 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/targeting_templates")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List targeting templates", notes = "Get a list of the targeting templates in the specified <code>ad_account_id</code>", response = TargetingTemplateList200Response.class, authorizations = {
+    @ApiOperation(value = "List targeting templates", notes = "Get a list of the targeting templates in the specified `ad_account_id`", response = TargetingTemplateList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") }),
         @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "targeting_template" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = TargetingTemplateList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response targetingTemplateList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Include audience sizing in result or not", defaultValue="false") @DefaultValue("false")  @QueryParam("include_sizing") Boolean includeSizing, @ApiParam(value = "Search keyword for targeting templates")  @QueryParam("search_query") String searchQuery,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = TargetingTemplateList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response targetingTemplateList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order, @ApiParam(value = "Include audience sizing in result or not", defaultValue="false") @DefaultValue("false")  @QueryParam("include_sizing") Boolean includeSizing, @ApiParam(value = "Search query. Can contain pin description keywords or comma-separated pin IDs.")  @QueryParam("search_query") String searchQuery) {
+        return delegate.targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/targeting_templates")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update targeting templates", notes = "<p>Update the targeting template given advertiser ID and targeting template ID</p>", response = Void.class, authorizations = {
+    @ApiOperation(value = "Update targeting templates", notes = "Update the targeting template given advertiser ID and targeting template ID", response = Void.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "targeting_template" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = Void.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response targetingTemplateUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Operation type and targeting template ID" ,required=true) TargetingTemplateUpdateRequest targetingTemplateUpdateRequest) {
-        return delegate.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Void.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response targetingTemplateUpdate( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate) {
+        return delegate.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate, securityContext);
     }
 
     @GET
@@ -1960,11 +2923,15 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "ad_accounts" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = TemplatesList200Response.class),
-        @ApiResponse(code = 400, message = "Invalid ad account template parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response templatesList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") String order, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
-        return delegate.templatesList(adAccountId, pageSize, order, bookmark, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = TemplatesList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response templatesList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.", allowableValues="ASCENDING, DESCENDING")  @QueryParam("order") PinterestLibPaginationOrder order) {
+        return delegate.templatesList(adAccountId, bookmark, pageSize, order, securityContext);
     }
 
     @GET
@@ -1976,8 +2943,13 @@ public class AdAccountsApi  {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "terms_of_service" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = TermsOfService.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = TermsOfService.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public Response termsOfServiceGet( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "Return HTML in TOS text.", defaultValue="false") @DefaultValue("false")  @QueryParam("include_html") Boolean includeHtml, @ApiParam(value = "Request type.")  @QueryParam("tos_type") String tosType) {
         return delegate.termsOfServiceGet(adAccountId, includeHtml, tosType, securityContext);
     }
@@ -1986,31 +2958,39 @@ public class AdAccountsApi  {
     @Path("/{ad_account_id}/audiences/ad_accounts/shared")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update audience sharing between ad accounts", notes = "From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.", response = SharedAudienceResponse.class, authorizations = {
+    @ApiOperation(value = "Update audience sharing between ad accounts", notes = "From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).", response = AdAccountToAdAccountSharedAudience.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SharedAudienceResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response updateAdAccountToAdAccountSharedAudience( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) SharedAudience sharedAudience) {
-        return delegate.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountToAdAccountSharedAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response updateAdAccountToAdAccountSharedAudience( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody) {
+        return delegate.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody, securityContext);
     }
 
     @PATCH
     @Path("/{ad_account_id}/audiences/businesses/shared")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update audience sharing from an ad account to businesses", notes = "From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.", response = BusinessSharedAudienceResponse.class, authorizations = {
+    @ApiOperation(value = "Update audience sharing from an ad account to businesses", notes = "From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).", response = AdAccountToBusinessSharedAudience.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.") })
          }, tags={ "audience_sharing" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BusinessSharedAudienceResponse.class),
-        @ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response updateAdAccountToBusinessSharedAudience( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) BusinessSharedAudience businessSharedAudience) {
-        return delegate.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience, securityContext);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AdAccountToBusinessSharedAudience.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public Response updateAdAccountToBusinessSharedAudience( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.",required=true) @PathParam("ad_account_id") String adAccountId, @ApiParam(value = "" ,required=true) AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody) {
+        return delegate.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody, securityContext);
     }
 }

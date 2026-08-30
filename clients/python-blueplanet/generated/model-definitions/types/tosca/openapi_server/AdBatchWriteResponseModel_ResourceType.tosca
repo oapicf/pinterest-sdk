@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdBatchWriteResponseModel"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdBatchWriteResponseModel"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdBatchItem = openapi_server.resourceTypes.AdBatchItem
+}
+resourceTypes {
+
+  AdBatchWriteResponseModel {
+    title = AdBatchWriteResponseModel
+    description = AdBatchWriteResponseModel
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = AdBatchItem
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdBatchWriteResponseModel {
+    title = AdBatchWriteResponseModel
+    description = AdBatchWriteResponseModel
+    implements = openapi_server.resourceTypes.AdBatchWriteResponseModel
+
+  }
+}

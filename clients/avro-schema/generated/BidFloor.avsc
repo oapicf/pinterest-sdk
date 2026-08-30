@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "Bid floor request and response model.",
   "name": "BidFloor",
   "fields": [
     {
@@ -16,7 +16,7 @@
     {
       "name": "type",
       "type": ["string", "null"],
-      "doc": "Always the string 'bidfloor'",
+      "doc": "Always the string 'bidfloor'.",
       "default": "bidfloor"
     }
   ]

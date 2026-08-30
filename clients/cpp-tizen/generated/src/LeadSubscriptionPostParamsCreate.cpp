@@ -26,7 +26,7 @@ LeadSubscriptionPostParamsCreate::__init()
 	//lead_form_id = std::string();
 	//webhook_url = std::string();
 	//partner_access_token = std::string();
-	//partner_metadata = new LeadSubscriptionPostParamsCreate_allOf_partner_metadata();
+	//partner_metadata = null;
 	//partner_refresh_token = std::string();
 }
 
@@ -104,11 +104,11 @@ LeadSubscriptionPostParamsCreate::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("LeadSubscriptionPostParamsCreate_allOf_partner_metadata")) {
-			jsonToValue(&partner_metadata, node, "LeadSubscriptionPostParamsCreate_allOf_partner_metadata", "LeadSubscriptionPostParamsCreate_allOf_partner_metadata");
+		if (isprimitive("PartnerMetadata")) {
+			jsonToValue(&partner_metadata, node, "PartnerMetadata", "PartnerMetadata");
 		} else {
 			
-			LeadSubscriptionPostParamsCreate_allOf_partner_metadata* obj = static_cast<LeadSubscriptionPostParamsCreate_allOf_partner_metadata*> (&partner_metadata);
+			PartnerMetadata* obj = static_cast<PartnerMetadata*> (&partner_metadata);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -163,13 +163,13 @@ LeadSubscriptionPostParamsCreate::toJson()
 	}
 	const gchar *partner_access_tokenKey = "partner_access_token";
 	json_object_set_member(pJsonObject, partner_access_tokenKey, node);
-	if (isprimitive("LeadSubscriptionPostParamsCreate_allOf_partner_metadata")) {
-		LeadSubscriptionPostParamsCreate_allOf_partner_metadata obj = getPartnerMetadata();
-		node = converttoJson(&obj, "LeadSubscriptionPostParamsCreate_allOf_partner_metadata", "");
+	if (isprimitive("PartnerMetadata")) {
+		PartnerMetadata obj = getPartnerMetadata();
+		node = converttoJson(&obj, "PartnerMetadata", "");
 	}
 	else {
 		
-		LeadSubscriptionPostParamsCreate_allOf_partner_metadata obj = static_cast<LeadSubscriptionPostParamsCreate_allOf_partner_metadata> (getPartnerMetadata());
+		PartnerMetadata obj = static_cast<PartnerMetadata> (getPartnerMetadata());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -230,14 +230,14 @@ LeadSubscriptionPostParamsCreate::setPartnerAccessToken(std::string  partner_acc
 	this->partner_access_token = partner_access_token;
 }
 
-LeadSubscriptionPostParamsCreate_allOf_partner_metadata
+PartnerMetadata
 LeadSubscriptionPostParamsCreate::getPartnerMetadata()
 {
 	return partner_metadata;
 }
 
 void
-LeadSubscriptionPostParamsCreate::setPartnerMetadata(LeadSubscriptionPostParamsCreate_allOf_partner_metadata  partner_metadata)
+LeadSubscriptionPostParamsCreate::setPartnerMetadata(PartnerMetadata  partner_metadata)
 {
 	this->partner_metadata = partner_metadata;
 }

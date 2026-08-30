@@ -13,10 +13,10 @@ static customer_list_upload_create_response_t *customer_list_upload_create_respo
     if (!customer_list_upload_create_response_local_var) {
         return NULL;
     }
+    memset(customer_list_upload_create_response_local_var, 0, sizeof(customer_list_upload_create_response_t));
+    customer_list_upload_create_response_local_var->_library_owned = 1;
     customer_list_upload_create_response_local_var->customer_list_upload = customer_list_upload;
     customer_list_upload_create_response_local_var->s3_multipart_upload_data = s3_multipart_upload_data;
-
-    customer_list_upload_create_response_local_var->_library_owned = 1;
     return customer_list_upload_create_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) customer_list_upload_create_response_t *customer_lis
     customer_list_upload_t *customer_list_upload,
     s3_multipart_upload_data_t *s3_multipart_upload_data
     ) {
-    return customer_list_upload_create_response_create_internal (
+    customer_list_upload_create_response_t *result = customer_list_upload_create_response_create_internal (
         customer_list_upload,
         s3_multipart_upload_data
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void customer_list_upload_create_response_free(customer_list_upload_create_response_t *customer_list_upload_create_response) {
@@ -123,10 +126,15 @@ customer_list_upload_create_response_t *customer_list_upload_create_response_par
     s3_multipart_upload_data_local_nonprim = s3_multipart_upload_data_parseFromJSON(s3_multipart_upload_data); //nonprimitive
 
 
+
     customer_list_upload_create_response_local_var = customer_list_upload_create_response_create_internal (
         customer_list_upload_local_nonprim,
         s3_multipart_upload_data_local_nonprim
         );
+
+    if (!customer_list_upload_create_response_local_var) {
+        goto end;
+    }
 
     return customer_list_upload_create_response_local_var;
 end:

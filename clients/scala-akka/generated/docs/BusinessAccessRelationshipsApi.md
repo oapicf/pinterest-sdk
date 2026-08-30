@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 ## brandAccountsCreate
 
-> brandAccountsCreate(brandAccountsCreateRequest): ApiRequest[BrandAccountsCreate200Response]
+> brandAccountsCreate(brandAccountsCreateRequest): ApiRequest[BrandAccount]
 
 Create a Brand Account
 
@@ -55,11 +55,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
-    val businessHierarchyId: String = 7009386637860 // String | business hierarchy node id
+    val businessHierarchyId: String = businessHierarchyId_example // String | business hierarchy node id
 
-    val brandAccountsCreateRequest: BrandAccountsCreateRequest =  // BrandAccountsCreateRequest | 
+    val brandAccountCreate: BrandAccountCreate =  // BrandAccountCreate | 
     
-    val request = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+    val request = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountCreate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -88,11 +88,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessHierarchyId** | **String**| business hierarchy node id |
- **brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md)|  |
+ **brandAccountCreate** | [**BrandAccountCreate**](BrandAccountCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)]
+ApiRequest[[**BrandAccount**](BrandAccount.md)]
 
 
 ### Authorization
@@ -107,14 +107,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## brandAccountsUpdate
 
-> brandAccountsUpdate(brandAccountsUpdateRequest): ApiRequest[BrandAccountsCreate200Response]
+> brandAccountsUpdate(brandAccountsUpdateRequest): ApiRequest[BrandAccount]
 
 Update a Brand Account
 
@@ -142,13 +147,13 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
-    val businessHierarchyId: String = 7009386637860 // String | business hierarchy node id
+    val brandAccountId: String = brandAccountId_example // String | 
 
-    val brandAccountId: String = 729090764583391194 // String | Unique identifier of a brand account.
+    val businessHierarchyId: String = businessHierarchyId_example // String | business hierarchy node id
 
-    val brandAccountsUpdateRequest: BrandAccountsUpdateRequest =  // BrandAccountsUpdateRequest | 
+    val brandAccountUpdate: BrandAccountUpdate =  // BrandAccountUpdate | 
     
-    val request = apiInstance.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+    val request = apiInstance.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -176,13 +181,13 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **brandAccountId** | **String**|  |
  **businessHierarchyId** | **String**| business hierarchy node id |
- **brandAccountId** | **String**| Unique identifier of a brand account. |
- **brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md)|  |
+ **brandAccountUpdate** | [**BrandAccountUpdate**](BrandAccountUpdate.md)|  |
 
 ### Return type
 
-ApiRequest[[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)]
+ApiRequest[[**BrandAccount**](BrandAccount.md)]
 
 
 ### Authorization
@@ -197,19 +202,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid parameters. |  -  |
-| **401** | Not authenticated to update Brand Account |  -  |
-| **403** | Not authorized to update Brand Account |  -  |
-| **404** | Brand account not found |  -  |
-| **409** | This account is not a brand account. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **409** | The request could not be processed because of a conflict in the current state of the resource. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## deleteBusinessMembership
 
-> deleteBusinessMembership(deleteBusinessMembershipRequest): ApiRequest[DeletedMembersResponse]
+> deleteBusinessMembership(deleteBusinessMembershipRequest): ApiRequest[DeleteBusinessMembership200Response]
 
 Terminate business memberships
 
@@ -237,11 +242,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Business id
+    val businessId: String = businessId_example // String | Business id
 
-    val membersToDeleteBody: MembersToDeleteBody =  // MembersToDeleteBody | List of members with role to delete.
+    val deleteBusinessMembershipBody: DeleteBusinessMembershipBody =  // DeleteBusinessMembershipBody | 
     
-    val request = apiInstance.deleteBusinessMembership(businessId, membersToDeleteBody)
+    val request = apiInstance.deleteBusinessMembership(businessId, deleteBusinessMembershipBody)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -270,11 +275,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Business id |
- **membersToDeleteBody** | [**MembersToDeleteBody**](MembersToDeleteBody.md)| List of members with role to delete. |
+ **deleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md)|  |
 
 ### Return type
 
-ApiRequest[[**DeletedMembersResponse**](DeletedMembersResponse.md)]
+ApiRequest[[**DeleteBusinessMembership200Response**](DeleteBusinessMembership200Response.md)]
 
 
 ### Authorization
@@ -289,13 +294,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## deleteBusinessPartners
 
-> deleteBusinessPartners(deleteBusinessPartnersRequest): ApiRequest[DeletePartnersResponse]
+> deleteBusinessPartners(deleteBusinessPartnersRequest): ApiRequest[DeleteBusinessPartners]
 
 Terminate business partnerships
 
@@ -323,11 +328,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val deletePartnersRequest: DeletePartnersRequest =  // DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
+    val deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete =  // DeleteBusinessPartnersDelete | 
     
-    val request = apiInstance.deleteBusinessPartners(businessId, deletePartnersRequest)
+    val request = apiInstance.deleteBusinessPartners(businessId, deleteBusinessPartnersDelete)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -356,11 +361,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
- **deletePartnersRequest** | [**DeletePartnersRequest**](DeletePartnersRequest.md)| An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete.  |
+ **deleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md)|  |
 
 ### Return type
 
-ApiRequest[[**DeletePartnersResponse**](DeletePartnersResponse.md)]
+ApiRequest[[**DeleteBusinessPartners**](DeleteBusinessPartners.md)]
 
 
 ### Authorization
@@ -375,9 +380,9 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | A supplied partner id doesn&#39;t exist |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## getBusinessEmployers
@@ -409,11 +414,13 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val assetsSummary: Boolean = true // Boolean | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.getBusinessEmployers(pageSize, bookmark)
+    val request = apiInstance.getBusinessEmployers(assetsSummary, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -441,8 +448,9 @@ object Example extends App {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **assetsSummary** | **Boolean**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
@@ -461,13 +469,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## getBusinessMembers
 
-> getBusinessMembers(getBusinessMembersRequest): ApiRequest[GetBusinessMembers200Response]
+> getBusinessMembers(getBusinessMembersRequest): ApiRequest[GetBusinessEmployers200Response]
 
 Get business members
 
@@ -495,7 +508,7 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
     val fetchSystemUsers: Boolean = true // Boolean | Fetches system users if True. Fetches regular user employees if False.
 
@@ -503,13 +516,13 @@ object Example extends App {
 
     val businessRoles: Seq[MemberBusinessRole] =  // Seq[MemberBusinessRole] | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
 
-    val memberIds: String = 00101010101,2222220101 // String | A list of business members ids separated by comma.
+    val memberIds: String = memberIds_example // String | A list of business members ids separated by comma.
 
-    val startIndex: Int = 0 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+    val startIndex: Int = 56 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
     val request = apiInstance.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -546,11 +559,11 @@ Name | Type | Description  | Notes
  **memberIds** | **String**| A list of business members ids separated by comma. | [optional]
  **startIndex** | **Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
-ApiRequest[[**GetBusinessMembers200Response**](GetBusinessMembers200Response.md)]
+ApiRequest[[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)]
 
 
 ### Authorization
@@ -565,13 +578,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## getBusinessPartners
 
-> getBusinessPartners(getBusinessPartnersRequest): ApiRequest[GetBusinessPartners200Response]
+> getBusinessPartners(getBusinessPartnersRequest): ApiRequest[GetBusinessEmployers200Response]
 
 Get business partners
 
@@ -599,21 +617,23 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
     val assetsSummary: Boolean = true // Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
 
-    val partnerType: PartnerType = INTERNAL // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+    val partnerType: PartnerType =  // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
 
-    val partnerIds: String = 00101010101,2222220101 // String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
+    val partnerIds: String = partnerIds_example // String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
 
-    val startIndex: Int = 0 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+    val startIndex: Int = 56 // Int | An index to start fetching the results from. Only the results starting from this index will be returned.
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    val sortAscending: Boolean = true // Boolean | Sort ascending.
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     
-    val request = apiInstance.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark)
+    val request = apiInstance.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -643,15 +663,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
  **assetsSummary** | **Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional]
- **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [enum: INTERNAL, EXTERNAL]
+ **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [enum: INTERNAL, EXTERNAL]
  **partnerIds** | **String**| A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. | [optional]
  **startIndex** | **Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **sortAscending** | **Boolean**| Sort ascending. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional]
 
 ### Return type
 
-ApiRequest[[**GetBusinessPartners200Response**](GetBusinessPartners200Response.md)]
+ApiRequest[[**GetBusinessEmployers200Response**](GetBusinessEmployers200Response.md)]
 
 
 ### Authorization
@@ -666,8 +687,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## systemUserUpdate
@@ -699,13 +725,13 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Unique identifier of the requesting business.
+    val businessId: String = businessId_example // String | Unique identifier of the requesting business.
 
-    val systemUserId: String = 729090764583391194 // String | Unique identifier of a system user.
+    val systemUserId: String = systemUserId_example // String | Unique identifier of a system user.
 
-    val systemUserUpdateRequest: SystemUserUpdateRequest =  // SystemUserUpdateRequest | 
+    val systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody =  // SystemUserUpdateWithRequiredBody | 
     
-    val request = apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+    val request = apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -734,7 +760,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
  **systemUserId** | **String**| Unique identifier of a system user. |
- **systemUserUpdateRequest** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md)|  |
+ **systemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md)|  |
 
 ### Return type
 
@@ -753,14 +779,18 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | System user updated successfully. |  -  |
-| **400** | Invalid parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## updateBusinessMemberships
 
-> updateBusinessMemberships(updateBusinessMembershipsRequest): ApiRequest[UpdateMemberResultsResponseArray]
+> updateBusinessMemberships(updateBusinessMembershipsRequest): ApiRequest[UpdateBusinessMembershipsResponse]
 
 Update member&#39;s business role
 
@@ -788,11 +818,11 @@ object Example extends App {
     
     val apiInvoker = ApiInvoker()
     val apiInstance = BusinessAccessRelationshipsApi("https://api.pinterest.com/v5")
-    val businessId: String = 729090764583391194 // String | Business id
+    val businessId: String = businessId_example // String | Business id
 
-    val updateMemberBusinessRoleBody: Seq[UpdateMemberBusinessRoleBody] =  // Seq[UpdateMemberBusinessRoleBody] | List of objects with the member id and the business_role.
+    val businessMembershipMember: Seq[BusinessMembershipMember] =  // Seq[BusinessMembershipMember] | 
     
-    val request = apiInstance.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody)
+    val request = apiInstance.updateBusinessMemberships(businessId, businessMembershipMember)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -821,11 +851,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Business id |
- **updateMemberBusinessRoleBody** | [**Seq[UpdateMemberBusinessRoleBody]**](UpdateMemberBusinessRoleBody.md)| List of objects with the member id and the business_role. |
+ **businessMembershipMember** | [**Seq[BusinessMembershipMember]**](BusinessMembershipMember.md)|  |
 
 ### Return type
 
-ApiRequest[[**UpdateMemberResultsResponseArray**](UpdateMemberResultsResponseArray.md)]
+ApiRequest[[**UpdateBusinessMembershipsResponse**](UpdateBusinessMembershipsResponse.md)]
 
 
 ### Authorization
@@ -840,6 +870,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

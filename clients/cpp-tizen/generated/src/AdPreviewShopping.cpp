@@ -24,14 +24,15 @@ void
 AdPreviewShopping::__init()
 {
 	//catalog_product_group_id = std::string();
-	//creative_type = std::string();
+	//creative_type = null;
 	//customizable_cta_type = null;
 	//hero_image_title = std::string();
 	//hero_image_url = std::string();
 	//hero_pin_id = std::string();
 	//image_tag = std::string();
 	//item_id = std::string();
-	//preferred_media_type = std::string();
+	//preferred_media_type = null;
+	//show_promotion = bool(false);
 	//video_tag = std::string();
 }
 
@@ -83,6 +84,11 @@ AdPreviewShopping::__cleanup()
 	//delete preferred_media_type;
 	//preferred_media_type = NULL;
 	//}
+	//if(show_promotion != NULL) {
+	//
+	//delete show_promotion;
+	//show_promotion = NULL;
+	//}
 	//if(video_tag != NULL) {
 	//
 	//delete video_tag;
@@ -112,9 +118,12 @@ AdPreviewShopping::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&creative_type, node, "std::string", "");
+		if (isprimitive("AdShoppingPreviewCreativeType")) {
+			jsonToValue(&creative_type, node, "AdShoppingPreviewCreativeType", "AdShoppingPreviewCreativeType");
 		} else {
+			
+			AdShoppingPreviewCreativeType* obj = static_cast<AdShoppingPreviewCreativeType*> (&creative_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -192,8 +201,22 @@ AdPreviewShopping::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&preferred_media_type, node, "std::string", "");
+		if (isprimitive("BasePreferredMediaType")) {
+			jsonToValue(&preferred_media_type, node, "BasePreferredMediaType", "BasePreferredMediaType");
+		} else {
+			
+			BasePreferredMediaType* obj = static_cast<BasePreferredMediaType*> (&preferred_media_type);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *show_promotionKey = "show_promotion";
+	node = json_object_get_member(pJsonObject, show_promotionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&show_promotion, node, "bool", "");
 		} else {
 			
 		}
@@ -230,11 +253,16 @@ AdPreviewShopping::toJson()
 	}
 	const gchar *catalog_product_group_idKey = "catalog_product_group_id";
 	json_object_set_member(pJsonObject, catalog_product_group_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCreativeType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("AdShoppingPreviewCreativeType")) {
+		AdShoppingPreviewCreativeType obj = getCreativeType();
+		node = converttoJson(&obj, "AdShoppingPreviewCreativeType", "");
 	}
 	else {
+		
+		AdShoppingPreviewCreativeType obj = static_cast<AdShoppingPreviewCreativeType> (getCreativeType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *creative_typeKey = "creative_type";
@@ -298,15 +326,29 @@ AdPreviewShopping::toJson()
 	}
 	const gchar *item_idKey = "item_id";
 	json_object_set_member(pJsonObject, item_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getPreferredMediaType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("BasePreferredMediaType")) {
+		BasePreferredMediaType obj = getPreferredMediaType();
+		node = converttoJson(&obj, "BasePreferredMediaType", "");
 	}
 	else {
+		
+		BasePreferredMediaType obj = static_cast<BasePreferredMediaType> (getPreferredMediaType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *preferred_media_typeKey = "preferred_media_type";
 	json_object_set_member(pJsonObject, preferred_media_typeKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getShowPromotion();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *show_promotionKey = "show_promotion";
+	json_object_set_member(pJsonObject, show_promotionKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getVideoTag();
 		node = converttoJson(&obj, "std::string", "");
@@ -336,14 +378,14 @@ AdPreviewShopping::setCatalogProductGroupId(std::string  catalog_product_group_i
 	this->catalog_product_group_id = catalog_product_group_id;
 }
 
-std::string
+AdShoppingPreviewCreativeType
 AdPreviewShopping::getCreativeType()
 {
 	return creative_type;
 }
 
 void
-AdPreviewShopping::setCreativeType(std::string  creative_type)
+AdPreviewShopping::setCreativeType(AdShoppingPreviewCreativeType  creative_type)
 {
 	this->creative_type = creative_type;
 }
@@ -420,16 +462,28 @@ AdPreviewShopping::setItemId(std::string  item_id)
 	this->item_id = item_id;
 }
 
-std::string
+BasePreferredMediaType
 AdPreviewShopping::getPreferredMediaType()
 {
 	return preferred_media_type;
 }
 
 void
-AdPreviewShopping::setPreferredMediaType(std::string  preferred_media_type)
+AdPreviewShopping::setPreferredMediaType(BasePreferredMediaType  preferred_media_type)
 {
 	this->preferred_media_type = preferred_media_type;
+}
+
+bool
+AdPreviewShopping::getShowPromotion()
+{
+	return show_promotion;
+}
+
+void
+AdPreviewShopping::setShowPromotion(bool  show_promotion)
+{
+	this->show_promotion = show_promotion;
 }
 
 std::string

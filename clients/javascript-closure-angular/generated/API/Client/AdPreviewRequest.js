@@ -13,11 +13,25 @@ API.Client.AdPreviewRequest = function() {}
 API.Client.AdPreviewRequest.prototype.imageUrl;
 
 /**
+ * Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdPreviewRequest.prototype.promotionId;
+
+/**
  * Title displayed below ad.
  * @type {!string}
  * @export
  */
 API.Client.AdPreviewRequest.prototype.title;
+
+/**
+ * Ad format of the shopping ad preview.
+ * @type {!API.Client.AdShoppingPreviewCreativeType}
+ * @export
+ */
+API.Client.AdPreviewRequest.prototype.creativeType;
 
 /**
  * Pin ID.
@@ -32,13 +46,6 @@ API.Client.AdPreviewRequest.prototype.pinId;
  * @export
  */
 API.Client.AdPreviewRequest.prototype.catalogProductGroupId;
-
-/**
- * Ad format of the shopping ad preview.
- * @type {!string}
- * @export
- */
-API.Client.AdPreviewRequest.prototype.creativeType;
 
 /**
  * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
@@ -84,10 +91,17 @@ API.Client.AdPreviewRequest.prototype.itemId;
 
 /**
  * Preferred media type.
- * @type {!string}
+ * @type {!API.Client.BasePreferredMediaType}
  * @export
  */
 API.Client.AdPreviewRequest.prototype.preferredMediaType;
+
+/**
+ * Include promotion data in preview when available on catalog item. Defaults to false.
+ * @type {!boolean}
+ * @export
+ */
+API.Client.AdPreviewRequest.prototype.showPromotion;
 
 /**
  * Multi video template tag, image_tag and video_tag are mutual exclusive.
@@ -96,15 +110,3 @@ API.Client.AdPreviewRequest.prototype.preferredMediaType;
  */
 API.Client.AdPreviewRequest.prototype.videoTag;
 
-/** @enum {string} */
-API.Client.AdPreviewRequest.CreativeTypeEnum = { 
-  SHOPPING: 'SHOPPING',
-  CAROUSEL: 'CAROUSEL',
-  COLLECTION: 'COLLECTION',
-  REGULAR: 'REGULAR',
-}
-/** @enum {string} */
-API.Client.AdPreviewRequest.PreferredMediaTypeEnum = { 
-  VIDEO: 'VIDEO',
-  IMAGE: 'IMAGE',
-}

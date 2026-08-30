@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const AdvancedAuctionItemsGetRecord = require('../models/AdvancedAuctionItemsGetRecord');
+const AdvancedAuctionKey = require('../models/AdvancedAuctionKey');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -14,7 +14,7 @@ module.exports = {
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
-                children: AdvancedAuctionItemsGetRecord.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+                children: AdvancedAuctionKey.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
@@ -22,7 +22,7 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
-            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, AdvancedAuctionItemsGetRecord),
+            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, AdvancedAuctionKey),
         }
     },
 }

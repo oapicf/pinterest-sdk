@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -119,18 +119,30 @@ func (s *AdAccountsAPIService) AdAccountsGet(ctx context.Context, adAccountId st
 }
 
 // AdAccountAnalytics - Get ad account analytics
-func (s *AdAccountsAPIService) AdAccountAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
+func (s *AdAccountsAPIService) AdAccountAnalytics(ctx context.Context, startDate string, endDate string, columns []ReportingColumnSync, granularity Granularity, adAccountId string, clickWindowDays float32, engagementWindowDays float32, viewWindowDays float32, conversionReportTime string, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update AdAccountAnalytics with the required logic for this service method.
 	// Add api_ad_accounts_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, []AdAccountAnalyticsResponseInner{}) or use other options such as http.Ok ...
-	// return Response(200, []AdAccountAnalyticsResponseInner{}), nil
+	// TODO: Uncomment the next line to return response Response(200, []AdAccountAnalyticsItems{}) or use other options such as http.Ok ...
+	// return Response(200, []AdAccountAnalyticsItems{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdAccountAnalytics method not implemented")
 }
@@ -140,31 +152,58 @@ func (s *AdAccountsAPIService) AnalyticsGetMmmReport(ctx context.Context, adAcco
 	// TODO - update AnalyticsGetMmmReport with the required logic for this service method.
 	// Add api_ad_accounts_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, GetMmmReportResponse{}) or use other options such as http.Ok ...
-	// return Response(200, GetMmmReportResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, MmmReport{}) or use other options such as http.Ok ...
+	// return Response(200, MmmReport{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AnalyticsGetMmmReport method not implemented")
 }
 
 // AnalyticsCreateMmmReport - Create a request for a Marketing Mix Modeling (MMM) report
-func (s *AdAccountsAPIService) AnalyticsCreateMmmReport(ctx context.Context, adAccountId string, createMmmReportRequest CreateMmmReportRequest) (ImplResponse, error) {
+func (s *AdAccountsAPIService) AnalyticsCreateMmmReport(ctx context.Context, adAccountId string, mmmReportCreate MmmReportCreate) (ImplResponse, error) {
 	// TODO - update AnalyticsCreateMmmReport with the required logic for this service method.
 	// Add api_ad_accounts_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, CreateMmmReportResponse{}) or use other options such as http.Ok ...
-	// return Response(200, CreateMmmReportResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, MmmReport{}) or use other options such as http.Ok ...
+	// return Response(200, MmmReport{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, MmmReport{}) or use other options such as http.Ok ...
+	// return Response(201, MmmReport{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AnalyticsCreateMmmReport method not implemented")
 }
@@ -177,11 +216,23 @@ func (s *AdAccountsAPIService) AnalyticsGetReport(ctx context.Context, adAccount
 	// TODO: Uncomment the next line to return response Response(200, AdsAnalyticsGetAsyncResponse{}) or use other options such as http.Ok ...
 	// return Response(200, AdsAnalyticsGetAsyncResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AnalyticsGetReport method not implemented")
 }
@@ -194,11 +245,23 @@ func (s *AdAccountsAPIService) AnalyticsCreateReport(ctx context.Context, adAcco
 	// TODO: Uncomment the next line to return response Response(200, AdsAnalyticsCreateAsyncResponse{}) or use other options such as http.Ok ...
 	// return Response(200, AdsAnalyticsCreateAsyncResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AnalyticsCreateReport method not implemented")
 }
@@ -208,31 +271,58 @@ func (s *AdAccountsAPIService) AnalyticsGetConversionProductReport(ctx context.C
 	// TODO - update AnalyticsGetConversionProductReport with the required logic for this service method.
 	// Add api_ad_accounts_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, AdsAnalyticsGetAsyncResponse{}) or use other options such as http.Ok ...
-	// return Response(200, AdsAnalyticsGetAsyncResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ConversionProductReport{}) or use other options such as http.Ok ...
+	// return Response(200, ConversionProductReport{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AnalyticsGetConversionProductReport method not implemented")
 }
 
 // AnalyticsCreateConversionProductReport - Create a request for a brand, category, SKU report
-func (s *AdAccountsAPIService) AnalyticsCreateConversionProductReport(ctx context.Context, adAccountId string, conversionProductReportRequest ConversionProductReportRequest) (ImplResponse, error) {
+func (s *AdAccountsAPIService) AnalyticsCreateConversionProductReport(ctx context.Context, adAccountId string, conversionProductReportCreate ConversionProductReportCreate) (ImplResponse, error) {
 	// TODO - update AnalyticsCreateConversionProductReport with the required logic for this service method.
 	// Add api_ad_accounts_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, AdsAnalyticsCreateAsyncResponse{}) or use other options such as http.Ok ...
-	// return Response(200, AdsAnalyticsCreateAsyncResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ConversionProductReport{}) or use other options such as http.Ok ...
+	// return Response(200, ConversionProductReport{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, ConversionProductReport{}) or use other options such as http.Ok ...
+	// return Response(201, ConversionProductReport{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AnalyticsCreateConversionProductReport method not implemented")
 }
@@ -245,42 +335,81 @@ func (s *AdAccountsAPIService) SandboxDelete(ctx context.Context, adAccountId st
 	// TODO: Uncomment the next line to return response Response(200, string{}) or use other options such as http.Ok ...
 	// return Response(200, string{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("SandboxDelete method not implemented")
 }
 
 // AdAccountTargetingAnalyticsGet - Get targeting analytics for an ad account
-func (s *AdAccountsAPIService) AdAccountTargetingAnalyticsGet(ctx context.Context, adAccountId string, startDate string, endDate string, targetingTypes []AdsAnalyticsTargetingType, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, attributionTypes []ConversionReportAttributionType, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
+func (s *AdAccountsAPIService) AdAccountTargetingAnalyticsGet(ctx context.Context, adAccountId string, startDate string, endDate string, targetingTypes []AdsAnalyticsAccountTargetingType, columns []ReportingColumnSync, granularity Granularity, clickWindowDays float32, engagementWindowDays float32, viewWindowDays float32, conversionReportTime string, attributionTypes []ConversionReportAttributionType, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update AdAccountTargetingAnalyticsGet with the required logic for this service method.
 	// Add api_ad_accounts_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, MetricsResponse{}) or use other options such as http.Ok ...
 	// return Response(200, MetricsResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("AdAccountTargetingAnalyticsGet method not implemented")
 }
 
 // TemplatesList - List templates
-func (s *AdAccountsAPIService) TemplatesList(ctx context.Context, adAccountId string, pageSize int32, order string, bookmark string) (ImplResponse, error) {
+func (s *AdAccountsAPIService) TemplatesList(ctx context.Context, adAccountId string, bookmark string, pageSize int32, order PinterestLibPaginationOrder) (ImplResponse, error) {
 	// TODO - update TemplatesList with the required logic for this service method.
 	// Add api_ad_accounts_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, TemplatesList200Response{}) or use other options such as http.Ok ...
 	// return Response(200, TemplatesList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
-	// return Response(400, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("TemplatesList method not implemented")
 }

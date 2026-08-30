@@ -12,18 +12,21 @@ static predicted_time_series_t *predicted_time_series_create_internal(
     if (!predicted_time_series_local_var) {
         return NULL;
     }
-    predicted_time_series_local_var->date = date;
-
+    memset(predicted_time_series_local_var, 0, sizeof(predicted_time_series_t));
     predicted_time_series_local_var->_library_owned = 1;
+    predicted_time_series_local_var->date = date;
     return predicted_time_series_local_var;
 }
 
 __attribute__((deprecated)) predicted_time_series_t *predicted_time_series_create(
     char *date
     ) {
-    return predicted_time_series_create_internal (
+    predicted_time_series_t *result = predicted_time_series_create_internal (
         date
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void predicted_time_series_free(predicted_time_series_t *predicted_time_series) {
@@ -64,6 +67,8 @@ predicted_time_series_t *predicted_time_series_parseFromJSON(cJSON *predicted_ti
 
     predicted_time_series_t *predicted_time_series_local_var = NULL;
 
+    char *date_local_str = NULL;
+
     // predicted_time_series->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(predicted_time_seriesJSON, "date");
     if (cJSON_IsNull(date)) {
@@ -77,12 +82,22 @@ predicted_time_series_t *predicted_time_series_parseFromJSON(cJSON *predicted_ti
     }
 
 
+    if (date) date_local_str = strdup(date->valuestring);
+
     predicted_time_series_local_var = predicted_time_series_create_internal (
-        date ? strdup(date->valuestring) : NULL
+        date_local_str
         );
+
+    if (!predicted_time_series_local_var) {
+        goto end;
+    }
 
     return predicted_time_series_local_var;
 end:
+    if (date_local_str) {
+        free(date_local_str);
+        date_local_str = NULL;
+    }
     return NULL;
 
 }

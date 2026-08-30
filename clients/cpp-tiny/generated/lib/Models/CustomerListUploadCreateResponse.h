@@ -47,20 +47,20 @@ public:
 	 */
     void fromJson(std::string jsonObj);
 
-	/*! \brief Get 
+	/*! \brief Get The Customer List Upload created.
 	 */
 	CustomerListUpload getCustomerListUpload();
 
-	/*! \brief Set 
+	/*! \brief Set The Customer List Upload created.
 	 */
-	void setCustomerListUpload(CustomerListUpload  customer_list_upload);
-	/*! \brief Get 
+	void setCustomerListUpload(CustomerListUpload customer_list_upload);
+	/*! \brief Get Pre-signed upload URLs corresponding to each part of the upload.
 	 */
 	S3MultipartUploadData getS3MultipartUploadData();
 
-	/*! \brief Set 
+	/*! \brief Set Pre-signed upload URLs corresponding to each part of the upload.
 	 */
-	void setS3MultipartUploadData(S3MultipartUploadData  s3_multipart_upload_data);
+	void setS3MultipartUploadData(S3MultipartUploadData s3_multipart_upload_data);
 
 
     private:

@@ -12,12 +12,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}accepted_terms_time`,
-                label: `The UTC timestamp (to the nearest sec) of when terms were accepted - [${labelPrefix}accepted_terms_time]`,
+                label: `The UTC timestamp (to the nearest second) when terms were accepted. - [${labelPrefix}accepted_terms_time]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}ads_manager_order_line_id`,
-                label: `Ads manager OrderLineId - [${labelPrefix}ads_manager_order_line_id]`,
+                label: `Ads manager order line id - [${labelPrefix}ads_manager_order_line_id]`,
                 type: 'string',
             },
             {
@@ -27,7 +27,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}bill_to_company_name`,
-                label: `Bill To Company name - [${labelPrefix}bill_to_company_name]`,
+                label: `Bill-to company name - [${labelPrefix}bill_to_company_name]`,
                 type: 'string',
             },
             {
@@ -47,7 +47,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}budget_amount`,
-                label: `If Budget order line, the budget amount. - [${labelPrefix}budget_amount]`,
+                label: `If budget order line, the budget amount. - [${labelPrefix}budget_amount]`,
                 type: 'number',
             },
             {
@@ -61,7 +61,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}estimated_monthly_spend`,
-                label: `If Ongoing (perpetual) order line, the estimated monthly spend - [${labelPrefix}estimated_monthly_spend]`,
+                label: `If ongoing (perpetual) order line, the estimated monthly spend. - [${labelPrefix}estimated_monthly_spend]`,
                 type: 'number',
             },
             {
@@ -76,12 +76,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}media_contact_firstname`,
-                label: `Billing contact first name - [${labelPrefix}media_contact_firstname]`,
+                label: `Billing media contact first name - [${labelPrefix}media_contact_firstname]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}media_contact_lastname`,
-                label: `Billing contact first name - [${labelPrefix}media_contact_lastname]`,
+                label: `Billing media contact last name - [${labelPrefix}media_contact_lastname]`,
                 type: 'string',
             },
             {
@@ -101,12 +101,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}po_number`,
-                label: `The po number - [${labelPrefix}po_number]`,
+                label: `The PO number - [${labelPrefix}po_number]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}salesforce_order_line_id`,
-                label: `OrderLineId in SFDC - [${labelPrefix}salesforce_order_line_id]`,
+                label: `Order line id in SFDC - [${labelPrefix}salesforce_order_line_id]`,
                 type: 'string',
             },
             {

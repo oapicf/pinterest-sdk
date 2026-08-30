@@ -12,7 +12,6 @@
 #include <string>
 #include "bourne/json.hpp"
 #include "Helpers.h"
-#include "CatalogsType.h"
 #include "ItemValidationEvent.h"
 #include <list>
 
@@ -50,31 +49,39 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get The catalog creative assets id in the merchant namespace
 	 */
 	std::string getCreativeAssetsId();
 
 	/*! \brief Set The catalog creative assets id in the merchant namespace
 	 */
-	void setCreativeAssetsId(std::string  creative_assets_id);
+	void setCreativeAssetsId(std::string creative_assets_id);
 	/*! \brief Get Array with the errors for the item id requested
 	 */
 	std::list<ItemValidationEvent> getErrors();
 
 	/*! \brief Set Array with the errors for the item id requested
 	 */
-	void setErrors(std::list <ItemValidationEvent> errors);
+	void setErrors(std::list<ItemValidationEvent> errors);
+	/*! \brief Get Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	std::string getItemResponseKind();
+
+	/*! \brief Set Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	void setItemResponseKind(std::string item_response_kind);
 
 
     private:
-    CatalogsType catalog_type;
+    std::string catalog_type{};
     std::string creative_assets_id{};
     std::list<ItemValidationEvent> errors;
+    std::string item_response_kind{};
 };
 }
 

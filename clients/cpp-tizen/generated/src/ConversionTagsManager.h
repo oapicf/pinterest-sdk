@@ -9,9 +9,9 @@
 #include "ConversionTag.h"
 #include "ConversionTagCreate.h"
 #include "Conversion_tags_list_200_response.h"
-#include "Error.h"
 #include "Page_visit_conversion_tags_get_200_response.h"
 #include "Pinterest.Lib.Error.h"
+#include "Pinterest.Lib.PaginationOrder.h"
 #include <list>
 #include <map>
 #include "Error.h"
@@ -150,15 +150,15 @@ bool ocpmEligibleConversionTagsGetAsync(char * accessToken,
  *
  * Get all page visit conversion tag events for an ad account.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
  * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+ * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool pageVisitConversionTagsGetSync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Page_visit_conversion_tags_get_200_response, Error, void* )
 	, void* userData);
 
@@ -166,15 +166,15 @@ bool pageVisitConversionTagsGetSync(char * accessToken,
  *
  * Get all page visit conversion tag events for an ad account.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
- * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
  * \param bookmark Cursor used to fetch the next page of items
+ * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+ * \param order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool pageVisitConversionTagsGetAsync(char * accessToken,
-	std::string adAccountId, int pageSize, std::string order, std::string bookmark, 
+	std::string adAccountId, std::string bookmark, int pageSize, Pinterest.Lib.PaginationOrder order, 
 	void(* handler)(Page_visit_conversion_tags_get_200_response, Error, void* )
 	, void* userData);
 

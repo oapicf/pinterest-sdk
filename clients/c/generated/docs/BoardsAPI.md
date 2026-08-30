@@ -23,7 +23,7 @@ Method | HTTP request | Description
 //
 // Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 //
-board_section_t* BoardsAPI_boardSectionsCreate(apiClient_t *apiClient, char *board_id, board_section_t *board_section, char *ad_account_id);
+board_section_t* BoardsAPI_boardSectionsCreate(apiClient_t *apiClient, char *board_id, board_section_create_t *board_section_create, char *ad_account_id);
 ```
 
 ### Parameters
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **board_id** | **char \*** | Unique identifier of a board. | 
-**board_section** | **[board_section_t](board_section.md) \*** | Create a board section. | 
+**board_section_create** | **[board_section_create_t](board_section_create.md) \*** |  | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 //
 // Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 //
-void BoardsAPI_boardSectionsDelete(apiClient_t *apiClient, char *board_id, char *section_id, char *ad_account_id);
+board_section_t* BoardsAPI_boardSectionsDelete(apiClient_t *apiClient, char *board_id, char *section_id, char *ad_account_id);
 ```
 
 ### Parameters
@@ -69,7 +69,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[board_section_t](board_section.md) *
+
 
 ### Authorization
 
@@ -98,7 +99,7 @@ Name | Type | Description  | Notes
 **board_id** | **char \*** | Unique identifier of a board. | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -133,7 +134,7 @@ Name | Type | Description  | Notes
 **section_id** | **char \*** | Unique identifier of a board section. | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -157,7 +158,7 @@ Name | Type | Description  | Notes
 //
 // Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 //
-board_section_t* BoardsAPI_boardSectionsUpdate(apiClient_t *apiClient, char *board_id, char *section_id, board_section_t *board_section, char *ad_account_id);
+board_section_t* BoardsAPI_boardSectionsUpdate(apiClient_t *apiClient, char *board_id, char *section_id, board_section_update_with_required_body_t *board_section_update_with_required_body, char *ad_account_id);
 ```
 
 ### Parameters
@@ -166,7 +167,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **board_id** | **char \*** | Unique identifier of a board. | 
 **section_id** | **char \*** | Unique identifier of a board section. | 
-**board_section** | **[board_section_t](board_section.md) \*** | Update a board section. | 
+**board_section_update_with_required_body** | **[board_section_update_with_required_body_t](board_section_update_with_required_body.md) \*** |  | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -223,7 +224,7 @@ Name | Type | Description  | Notes
 //
 // Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 //
-void BoardsAPI_boardsDelete(apiClient_t *apiClient, char *board_id, char *ad_account_id);
+board_t* BoardsAPI_boardsDelete(apiClient_t *apiClient, char *board_id, char *ad_account_id);
 ```
 
 ### Parameters
@@ -235,7 +236,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[board_t](board.md) *
+
 
 ### Authorization
 
@@ -320,7 +322,7 @@ Name | Type | Description  | Notes
 //
 // Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 //
-boards_list_pins_200_response_t* BoardsAPI_boardsListPins(apiClient_t *apiClient, char *board_id, char *bookmark, int *page_size, list_t *creative_types, char *ad_account_id, int *pin_metrics);
+boards_list_pins_200_response_t* BoardsAPI_boardsListPins(apiClient_t *apiClient, char *board_id, list_t *creative_types, char *ad_account_id, int *pin_metrics, char *bookmark, int *page_size);
 ```
 
 ### Parameters
@@ -328,11 +330,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **board_id** | **char \*** | Unique identifier of a board. | 
-**bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 **creative_types** | **[list_t](creative_type.md) \*** | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 **pin_metrics** | **int \*** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+**bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

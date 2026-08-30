@@ -102,7 +102,7 @@ Boards_list_200_response::getBookmark()
 }
 
 void
-Boards_list_200_response::setBookmark(std::string  bookmark)
+Boards_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Boards_list_200_response::getItems()
 }
 
 void
-Boards_list_200_response::setItems(std::list <Board> items)
+Boards_list_200_response::setItems(std::list<Board> items)
 {
 	this->items = items;
 }

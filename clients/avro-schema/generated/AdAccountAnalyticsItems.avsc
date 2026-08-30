@@ -1,0 +1,20 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountAnalyticsItems",
+  "fields": [
+    {
+      "name": "AD_ACCOUNT_ID",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "DATE",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

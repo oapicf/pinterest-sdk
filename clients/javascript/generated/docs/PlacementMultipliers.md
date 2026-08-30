@@ -4,19 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PLACEMENT** | **String** |  | [optional] 
-
-
-
-## Enum: PLACEMENTEnum
-
-
-* `SEARCH` (value: `"SEARCH"`)
-
-* `BROWSE` (value: `"BROWSE"`)
-
-* `RELATED_PINS` (value: `"RELATED_PINS"`)
-
-
+**PLACEMENT** | [**PlacementType**](PlacementType.md) | Placement type identifier. | [optional] 
 
 

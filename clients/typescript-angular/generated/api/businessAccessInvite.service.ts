@@ -19,7 +19,9 @@ import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 // @ts-ignore
 import { AuthRespondInvitesBody } from '../model/authRespondInvitesBody';
 // @ts-ignore
-import { CancelInvitesBody } from '../model/cancelInvitesBody';
+import { CancelInvitesRequest } from '../model/cancelInvitesRequest';
+// @ts-ignore
+import { CancelInvitesResponse } from '../model/cancelInvitesResponse';
 // @ts-ignore
 import { CreateAssetAccessRequestBody } from '../model/createAssetAccessRequestBody';
 // @ts-ignore
@@ -31,11 +33,13 @@ import { CreateInvitesResultsResponseArray } from '../model/createInvitesResults
 // @ts-ignore
 import { CreateMembershipOrPartnershipInvitesBody } from '../model/createMembershipOrPartnershipInvitesBody';
 // @ts-ignore
-import { DeleteInvitesResultsResponseArray } from '../model/deleteInvitesResultsResponseArray';
-// @ts-ignore
 import { GetInvites200Response } from '../model/getInvites200Response';
 // @ts-ignore
+import { InviteFilterStatus } from '../model/inviteFilterStatus';
+// @ts-ignore
 import { InviteType } from '../model/inviteType';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
 // @ts-ignore
 import { RespondToInvitesResponseArray } from '../model/respondToInvitesResponseArray';
 // @ts-ignore
@@ -136,20 +140,20 @@ export class BusinessAccessInviteService extends BaseService {
      * Cancel membership/partnership invites and/or requests.
      * @endpoint delete /businesses/{business_id}/invites
      * @param businessId Unique identifier of the requesting business.
-     * @param cancelInvitesBody A list with invite ids
+     * @param cancelInvitesRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteInvitesResultsResponseArray>;
-    public cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteInvitesResultsResponseArray>>;
-    public cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeleteInvitesResultsResponseArray>>;
-    public cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public cancelInvitesOrRequests(businessId: string, cancelInvitesRequest: CancelInvitesRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CancelInvitesResponse>;
+    public cancelInvitesOrRequests(businessId: string, cancelInvitesRequest: CancelInvitesRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CancelInvitesResponse>>;
+    public cancelInvitesOrRequests(businessId: string, cancelInvitesRequest: CancelInvitesRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CancelInvitesResponse>>;
+    public cancelInvitesOrRequests(businessId: string, cancelInvitesRequest: CancelInvitesRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling cancelInvitesOrRequests.');
         }
-        if (cancelInvitesBody === null || cancelInvitesBody === undefined) {
-            throw new Error('Required parameter cancelInvitesBody was null or undefined when calling cancelInvitesOrRequests.');
+        if (cancelInvitesRequest === null || cancelInvitesRequest === undefined) {
+            throw new Error('Required parameter cancelInvitesRequest was null or undefined when calling cancelInvitesOrRequests.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -191,10 +195,10 @@ export class BusinessAccessInviteService extends BaseService {
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/invites`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<DeleteInvitesResultsResponseArray>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<CancelInvitesResponse>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: cancelInvitesBody,
+                body: cancelInvitesRequest,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
@@ -210,7 +214,7 @@ export class BusinessAccessInviteService extends BaseService {
      * Assign asset permissions information to an existing invite/request. Can be used to: - Request access to a partner\&#39;s asset. Note: This is only for when no existing partnership exists. If an existing   partnership exists, use \&quot;Create a request to access an existing partner\&#39;s assets\&quot; to request access to your   partner\&#39;s assets.     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot; - Invite a partner to access your business assets. Note: This is only for when there is no existing partnership.   If there is an existing partnership, use \&quot;Assign/Update partner asset permissions\&quot; to assign a partner access to   new assets.     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot; - Invite a member to access your business assets. Note: This is only for when there is no existing membership.   If there is an existing membership, use \&quot;Assign/Update member asset permissions\&quot; to assign a member access to new   assets.     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;  To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview.
      * @endpoint post /businesses/{business_id}/invites/assets/access
      * @param businessId Unique identifier of the requesting business.
-     * @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+     * @param createAssetInvitesRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -284,7 +288,7 @@ export class BusinessAccessInviteService extends BaseService {
      * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners
      * @endpoint post /businesses/{business_id}/invites
      * @param businessId Unique identifier of the requesting business.
-     * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
+     * @param createMembershipOrPartnershipInvitesBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
@@ -362,15 +366,15 @@ export class BusinessAccessInviteService extends BaseService {
      * @param inviteStatus A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
      * @param inviteType Invite type to filter invites by. Only invites of the specified type will be returned.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetInvites200Response>;
-    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetInvites200Response>>;
-    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetInvites200Response>>;
-    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<InviteFilterStatus>, inviteType?: InviteType, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetInvites200Response>;
+    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<InviteFilterStatus>, inviteType?: InviteType, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetInvites200Response>>;
+    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<InviteFilterStatus>, inviteType?: InviteType, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetInvites200Response>>;
+    public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<InviteFilterStatus>, inviteType?: InviteType, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling getInvites.');
         }

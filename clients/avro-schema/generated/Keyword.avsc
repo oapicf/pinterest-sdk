@@ -5,43 +5,36 @@
   "name": "Keyword",
   "fields": [
     {
-      "name": "bid",
-      "type": ["null", "int"],
-      "doc": "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.",
-      "default": null
-    },
-    {
-      "name": "match_type",
-      "type": "model.MatchTypeResponse",
-      "doc": ""
-    },
-    {
-      "name": "value",
-      "type": "string",
-      "doc": "Keyword value (120 chars max)."
-    },
-    {
       "name": "archived",
       "type": ["null", "boolean"],
       "doc": "",
       "default": null
     },
     {
-      "name": "id",
-      "type": ["null", "string"],
-      "doc": "Keyword ID .",
+      "name": "bid",
+      "type": ["null", "int"],
+      "doc": "**Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.",
       "default": null
     },
     {
+      "name": "id",
+      "type": "string",
+      "doc": "Keyword ID ."
+    },
+    {
+      "name": "match_type",
+      "type": "model.MatchType",
+      "doc": "Keyword [match type](/docs/api-features/targeting-overview/)"
+    },
+    {
       "name": "parent_id",
-      "type": ["null", "string"],
-      "doc": "Keyword parent entity ID (advertiser, campaign, ad group).",
-      "default": null
+      "type": "string",
+      "doc": "Keyword parent entity ID (advertiser, campaign, ad group)."
     },
     {
       "name": "parent_type",
       "type": ["null", "string"],
-      "doc": "Parent entity type",
+      "doc": "Parent entity type (advertiser, campaign, ad group).",
       "default": null
     },
     {
@@ -49,6 +42,11 @@
       "type": ["null", "string"],
       "doc": "Always keyword",
       "default": null
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": "Keyword value (120 chars max)."
     }
   ]
 

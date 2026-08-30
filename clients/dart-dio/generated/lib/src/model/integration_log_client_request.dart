@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/http_method.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -25,7 +26,7 @@ abstract class IntegrationLogClientRequest implements Built<IntegrationLogClient
   String get host;
 
   @BuiltValueField(wireName: r'method')
-  IntegrationLogClientRequestMethodEnum get method;
+  HttpMethod get method;
   // enum methodEnum {  GET,  HEAD,  POST,  PUT,  DELETE,  CONNECT,  OPTIONS,  TRACE,  PATCH,  };
 
   /// HTTP request path.
@@ -74,7 +75,7 @@ class _$IntegrationLogClientRequestSerializer implements PrimitiveSerializer<Int
     yield r'method';
     yield serializers.serialize(
       object.method,
-      specifiedType: const FullType(IntegrationLogClientRequestMethodEnum),
+      specifiedType: const FullType(HttpMethod),
     );
     yield r'path';
     yield serializers.serialize(
@@ -135,8 +136,8 @@ class _$IntegrationLogClientRequestSerializer implements PrimitiveSerializer<Int
         case r'method':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(IntegrationLogClientRequestMethodEnum),
-          ) as IntegrationLogClientRequestMethodEnum;
+            specifiedType: const FullType(HttpMethod),
+          ) as HttpMethod;
           result.method = valueDes;
           break;
         case r'path':
@@ -149,22 +150,25 @@ class _$IntegrationLogClientRequestSerializer implements PrimitiveSerializer<Int
         case r'request_headers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
-          ) as BuiltMap<String, String>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(String)]),
+          ) as BuiltMap<String, String>?;
+          if (valueDes == null) continue;
           result.requestHeaders.replace(valueDes);
           break;
         case r'response_headers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
-          ) as BuiltMap<String, String>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(String)]),
+          ) as BuiltMap<String, String>?;
+          if (valueDes == null) continue;
           result.responseHeaders.replace(valueDes);
           break;
         case r'response_status_code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.responseStatusCode = valueDes;
           break;
         default:
@@ -194,34 +198,5 @@ class _$IntegrationLogClientRequestSerializer implements PrimitiveSerializer<Int
     );
     return result.build();
   }
-}
-
-class IntegrationLogClientRequestMethodEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'GET')
-  static const IntegrationLogClientRequestMethodEnum GET = _$integrationLogClientRequestMethodEnum_GET;
-  @BuiltValueEnumConst(wireName: r'HEAD')
-  static const IntegrationLogClientRequestMethodEnum HEAD = _$integrationLogClientRequestMethodEnum_HEAD;
-  @BuiltValueEnumConst(wireName: r'POST')
-  static const IntegrationLogClientRequestMethodEnum POST = _$integrationLogClientRequestMethodEnum_POST;
-  @BuiltValueEnumConst(wireName: r'PUT')
-  static const IntegrationLogClientRequestMethodEnum PUT = _$integrationLogClientRequestMethodEnum_PUT;
-  @BuiltValueEnumConst(wireName: r'DELETE')
-  static const IntegrationLogClientRequestMethodEnum DELETE = _$integrationLogClientRequestMethodEnum_DELETE;
-  @BuiltValueEnumConst(wireName: r'CONNECT')
-  static const IntegrationLogClientRequestMethodEnum CONNECT = _$integrationLogClientRequestMethodEnum_CONNECT;
-  @BuiltValueEnumConst(wireName: r'OPTIONS')
-  static const IntegrationLogClientRequestMethodEnum OPTIONS = _$integrationLogClientRequestMethodEnum_OPTIONS;
-  @BuiltValueEnumConst(wireName: r'TRACE')
-  static const IntegrationLogClientRequestMethodEnum TRACE = _$integrationLogClientRequestMethodEnum_TRACE;
-  @BuiltValueEnumConst(wireName: r'PATCH')
-  static const IntegrationLogClientRequestMethodEnum PATCH = _$integrationLogClientRequestMethodEnum_PATCH;
-
-  static Serializer<IntegrationLogClientRequestMethodEnum> get serializer => _$integrationLogClientRequestMethodEnumSerializer;
-
-  const IntegrationLogClientRequestMethodEnum._(String name): super(name);
-
-  static BuiltSet<IntegrationLogClientRequestMethodEnum> get values => _$integrationLogClientRequestMethodEnumValues;
-  static IntegrationLogClientRequestMethodEnum valueOf(String name) => _$integrationLogClientRequestMethodEnumValueOf(name);
 }
 

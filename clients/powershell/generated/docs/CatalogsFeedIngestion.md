@@ -3,18 +3,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **System.DateTime** |  | 
-**FeedId** | **String** |  | 
-**Id** | **String** |  | 
-**Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
+**CreatedAt** | **System.DateTime** | Timestamp of the feed ingestion. | 
+**FeedId** | **String** | Catalog Feed id pertaining to the feed ingestion. | 
+**Id** | **String** | Unique identifier of a feed ingestion. | 
+**Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) | Status of the feed ingestion. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsFeedIngestion = Initialize-PSOpenAPIToolsCatalogsFeedIngestion  -CreatedAt 2022-03-14T15:16:34Z `
- -FeedId 56789 `
- -Id 01234 `
+$CatalogsFeedIngestion = Initialize-PSOpenAPIToolsCatalogsFeedIngestion  -CreatedAt 2022-03-14T15:15:22Z `
+ -FeedId 2680059592705 `
+ -Id 2680059592705 `
  -Status null
 ```
 

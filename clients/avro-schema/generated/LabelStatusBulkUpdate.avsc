@@ -1,0 +1,9 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Set status to `ARCHIVED` to remove the label from the parent entity.",
+  "name": "LabelStatusBulkUpdate",
+  "symbols": [
+    "ARCHIVED"
+  ]
+}

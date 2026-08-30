@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 AdAccountsApi.csv
 AdAccountsApi.jmx
 AdGroupsApi.csv
@@ -35,8 +34,12 @@ CatalogProductGroupsApi.csv
 CatalogProductGroupsApi.jmx
 CatalogReportsApi.csv
 CatalogReportsApi.jmx
+CatalogSupplementalApi.csv
+CatalogSupplementalApi.jmx
 CatalogsApi.csv
 CatalogsApi.jmx
+ConversionDeletionRequestsApi.csv
+ConversionDeletionRequestsApi.jmx
 ConversionEqsApi.csv
 ConversionEqsApi.jmx
 ConversionEventsApi.csv
@@ -49,6 +52,8 @@ CustomerListUploadsApi.csv
 CustomerListUploadsApi.jmx
 CustomerListsApi.csv
 CustomerListsApi.jmx
+CustomerSegmentApi.csv
+CustomerSegmentApi.jmx
 IntegrationsApi.csv
 IntegrationsApi.jmx
 KeywordsApi.csv
@@ -73,14 +78,16 @@ OrderLinesApi.csv
 OrderLinesApi.jmx
 PinsApi.csv
 PinsApi.jmx
-ProductCategoriesApi.csv
-ProductCategoriesApi.jmx
 ProductGroupPromotionsApi.csv
 ProductGroupPromotionsApi.jmx
+ProductTagsApi.csv
+ProductTagsApi.jmx
 PromotionsApi.csv
 PromotionsApi.jmx
 ResourcesApi.csv
 ResourcesApi.jmx
+SchedulesApi.csv
+SchedulesApi.jmx
 SearchApi.csv
 SearchApi.jmx
 TargetingTemplateApi.csv
@@ -89,5 +96,7 @@ TermsApi.csv
 TermsApi.jmx
 TermsOfServiceApi.csv
 TermsOfServiceApi.jmx
+TrendsApi.csv
+TrendsApi.jmx
 UserAccountApi.csv
 UserAccountApi.jmx

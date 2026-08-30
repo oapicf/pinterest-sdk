@@ -8,7 +8,7 @@ An object containing the permissions a business partner has on the asset.
 Name | Type
 ------------ | -------------
 `assetId` | string
-`assetType` | string
+`assetType` | [AssetTypeResponse](AssetTypeResponse.md)
 `partnerId` | string
 `permissions` | Array&lt;string&gt;
 
@@ -20,7 +20,7 @@ import type { UpdatePartnerAssetsResult } from ''
 // TODO: Update the object below with actual values
 const example = {
   "assetId": 549755885175,
-  "assetType": AD_ACCOUNT,
+  "assetType": null,
   "partnerId": 140943737684417,
   "permissions": ["FINANCE_MANAGER","CATALOGS_MANAGER","AUDIENCE_MANAGER"],
 } satisfies UpdatePartnerAssetsResult

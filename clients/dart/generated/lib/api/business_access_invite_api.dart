@@ -28,7 +28,7 @@ class BusinessAccessInviteApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [CreateAssetAccessRequestBody] createAssetAccessRequestBody (required):
-  Future<Response> assetAccessRequestsCreateWithHttpInfo(String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody,) async {
+  Future<Response> assetAccessRequestsCreateWithHttpInfo(String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/requests/assets/access'
       .replaceAll('{business_id}', businessId);
@@ -51,6 +51,7 @@ class BusinessAccessInviteApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -64,8 +65,8 @@ class BusinessAccessInviteApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [CreateAssetAccessRequestBody] createAssetAccessRequestBody (required):
-  Future<CreateAssetAccessRequestResponse?> assetAccessRequestsCreate(String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody,) async {
-    final response = await assetAccessRequestsCreateWithHttpInfo(businessId, createAssetAccessRequestBody,);
+  Future<CreateAssetAccessRequestResponse?> assetAccessRequestsCreate(String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody, { Future<void>? abortTrigger, }) async {
+    final response = await assetAccessRequestsCreateWithHttpInfo(businessId, createAssetAccessRequestBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -90,15 +91,14 @@ class BusinessAccessInviteApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [CancelInvitesBody] cancelInvitesBody (required):
-  ///   A list with invite ids
-  Future<Response> cancelInvitesOrRequestsWithHttpInfo(String businessId, CancelInvitesBody cancelInvitesBody,) async {
+  /// * [CancelInvitesRequest] cancelInvitesRequest (required):
+  Future<Response> cancelInvitesOrRequestsWithHttpInfo(String businessId, CancelInvitesRequest cancelInvitesRequest, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/invites'
       .replaceAll('{business_id}', businessId);
 
     // ignore: prefer_final_locals
-    Object? postBody = cancelInvitesBody;
+    Object? postBody = cancelInvitesRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -115,6 +115,7 @@ class BusinessAccessInviteApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -127,10 +128,9 @@ class BusinessAccessInviteApi {
   /// * [String] businessId (required):
   ///   Unique identifier of the requesting business.
   ///
-  /// * [CancelInvitesBody] cancelInvitesBody (required):
-  ///   A list with invite ids
-  Future<DeleteInvitesResultsResponseArray?> cancelInvitesOrRequests(String businessId, CancelInvitesBody cancelInvitesBody,) async {
-    final response = await cancelInvitesOrRequestsWithHttpInfo(businessId, cancelInvitesBody,);
+  /// * [CancelInvitesRequest] cancelInvitesRequest (required):
+  Future<CancelInvitesResponse?> cancelInvitesOrRequests(String businessId, CancelInvitesRequest cancelInvitesRequest, { Future<void>? abortTrigger, }) async {
+    final response = await cancelInvitesOrRequestsWithHttpInfo(businessId, cancelInvitesRequest, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -138,7 +138,7 @@ class BusinessAccessInviteApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeleteInvitesResultsResponseArray',) as DeleteInvitesResultsResponseArray;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CancelInvitesResponse',) as CancelInvitesResponse;
     
     }
     return null;
@@ -156,8 +156,7 @@ class BusinessAccessInviteApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [CreateAssetInvitesRequest] createAssetInvitesRequest (required):
-  ///   A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
-  Future<Response> createAssetInvitesWithHttpInfo(String businessId, CreateAssetInvitesRequest createAssetInvitesRequest,) async {
+  Future<Response> createAssetInvitesWithHttpInfo(String businessId, CreateAssetInvitesRequest createAssetInvitesRequest, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/invites/assets/access'
       .replaceAll('{business_id}', businessId);
@@ -180,6 +179,7 @@ class BusinessAccessInviteApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -193,9 +193,8 @@ class BusinessAccessInviteApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [CreateAssetInvitesRequest] createAssetInvitesRequest (required):
-  ///   A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
-  Future<UpdateInvitesResultsResponseArray?> createAssetInvites(String businessId, CreateAssetInvitesRequest createAssetInvitesRequest,) async {
-    final response = await createAssetInvitesWithHttpInfo(businessId, createAssetInvitesRequest,);
+  Future<UpdateInvitesResultsResponseArray?> createAssetInvites(String businessId, CreateAssetInvitesRequest createAssetInvitesRequest, { Future<void>? abortTrigger, }) async {
+    final response = await createAssetInvitesWithHttpInfo(businessId, createAssetInvitesRequest, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -221,8 +220,7 @@ class BusinessAccessInviteApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [CreateMembershipOrPartnershipInvitesBody] createMembershipOrPartnershipInvitesBody (required):
-  ///   An object with the properties: invite_type, partners, members, business_role
-  Future<Response> createMembershipOrPartnershipInvitesWithHttpInfo(String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody,) async {
+  Future<Response> createMembershipOrPartnershipInvitesWithHttpInfo(String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/invites'
       .replaceAll('{business_id}', businessId);
@@ -245,6 +243,7 @@ class BusinessAccessInviteApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -258,9 +257,8 @@ class BusinessAccessInviteApi {
   ///   Unique identifier of the requesting business.
   ///
   /// * [CreateMembershipOrPartnershipInvitesBody] createMembershipOrPartnershipInvitesBody (required):
-  ///   An object with the properties: invite_type, partners, members, business_role
-  Future<CreateInvitesResultsResponseArray?> createMembershipOrPartnershipInvites(String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody,) async {
-    final response = await createMembershipOrPartnershipInvitesWithHttpInfo(businessId, createMembershipOrPartnershipInvitesBody,);
+  Future<CreateInvitesResultsResponseArray?> createMembershipOrPartnershipInvites(String businessId, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody, { Future<void>? abortTrigger, }) async {
+    final response = await createMembershipOrPartnershipInvitesWithHttpInfo(businessId, createMembershipOrPartnershipInvitesBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -288,7 +286,7 @@ class BusinessAccessInviteApi {
   /// * [bool] isMember:
   ///   A boolean field to indicate whether the invite is to create a partnership or a membership.
   ///
-  /// * [List<String>] inviteStatus:
+  /// * [List<InviteFilterStatus>] inviteStatus:
   ///   A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
   ///
   /// * [InviteType] inviteType:
@@ -298,8 +296,8 @@ class BusinessAccessInviteApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<Response> getInvitesWithHttpInfo(String businessId, { bool? isMember, List<String>? inviteStatus, InviteType? inviteType, String? bookmark, int? pageSize, }) async {
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> getInvitesWithHttpInfo(String businessId, { bool? isMember, List<InviteFilterStatus>? inviteStatus, InviteType? inviteType, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/{business_id}/invites'
       .replaceAll('{business_id}', businessId);
@@ -338,6 +336,7 @@ class BusinessAccessInviteApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -353,7 +352,7 @@ class BusinessAccessInviteApi {
   /// * [bool] isMember:
   ///   A boolean field to indicate whether the invite is to create a partnership or a membership.
   ///
-  /// * [List<String>] inviteStatus:
+  /// * [List<InviteFilterStatus>] inviteStatus:
   ///   A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
   ///
   /// * [InviteType] inviteType:
@@ -363,9 +362,9 @@ class BusinessAccessInviteApi {
   ///   Cursor used to fetch the next page of items
   ///
   /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  Future<GetInvites200Response?> getInvites(String businessId, { bool? isMember, List<String>? inviteStatus, InviteType? inviteType, String? bookmark, int? pageSize, }) async {
-    final response = await getInvitesWithHttpInfo(businessId,  isMember: isMember, inviteStatus: inviteStatus, inviteType: inviteType, bookmark: bookmark, pageSize: pageSize, );
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<GetInvites200Response?> getInvites(String businessId, { bool? isMember, List<InviteFilterStatus>? inviteStatus, InviteType? inviteType, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await getInvitesWithHttpInfo(businessId, isMember: isMember, inviteStatus: inviteStatus, inviteType: inviteType, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -388,7 +387,7 @@ class BusinessAccessInviteApi {
   /// Parameters:
   ///
   /// * [AuthRespondInvitesBody] authRespondInvitesBody (required):
-  Future<Response> respondBusinessAccessInvitesWithHttpInfo(AuthRespondInvitesBody authRespondInvitesBody,) async {
+  Future<Response> respondBusinessAccessInvitesWithHttpInfo(AuthRespondInvitesBody authRespondInvitesBody, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/businesses/invites';
 
@@ -410,6 +409,7 @@ class BusinessAccessInviteApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -420,8 +420,8 @@ class BusinessAccessInviteApi {
   /// Parameters:
   ///
   /// * [AuthRespondInvitesBody] authRespondInvitesBody (required):
-  Future<RespondToInvitesResponseArray?> respondBusinessAccessInvites(AuthRespondInvitesBody authRespondInvitesBody,) async {
-    final response = await respondBusinessAccessInvitesWithHttpInfo(authRespondInvitesBody,);
+  Future<RespondToInvitesResponseArray?> respondBusinessAccessInvites(AuthRespondInvitesBody authRespondInvitesBody, { Future<void>? abortTrigger, }) async {
+    final response = await respondBusinessAccessInvitesWithHttpInfo(authRespondInvitesBody, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

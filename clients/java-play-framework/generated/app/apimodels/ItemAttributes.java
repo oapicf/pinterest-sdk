@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.CatalogsAiContentDisclosure;
 import apimodels.UpdatableItemAttributesGtin;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -15,167 +16,207 @@ import javax.validation.Valid;
 /**
  * ItemAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemAttributes   {
   @JsonProperty("ad_image_0_link")
-  
+  @Size(max=2000)
+
   private String adImage0Link;
 
   @JsonProperty("ad_image_0_tag")
-  
+  @Size(max=511)
+
   private String adImage0Tag;
 
   @JsonProperty("ad_image_10_link")
-  
+  @Size(max=2000)
+
   private String adImage10Link;
 
   @JsonProperty("ad_image_10_tag")
-  
+  @Size(max=511)
+
   private String adImage10Tag;
 
   @JsonProperty("ad_image_11_link")
-  
+  @Size(max=2000)
+
   private String adImage11Link;
 
   @JsonProperty("ad_image_11_tag")
-  
+  @Size(max=511)
+
   private String adImage11Tag;
 
   @JsonProperty("ad_image_12_link")
-  
+  @Size(max=2000)
+
   private String adImage12Link;
 
   @JsonProperty("ad_image_12_tag")
-  
+  @Size(max=511)
+
   private String adImage12Tag;
 
   @JsonProperty("ad_image_13_link")
-  
+  @Size(max=2000)
+
   private String adImage13Link;
 
   @JsonProperty("ad_image_13_tag")
-  
+  @Size(max=511)
+
   private String adImage13Tag;
 
   @JsonProperty("ad_image_14_link")
-  
+  @Size(max=2000)
+
   private String adImage14Link;
 
   @JsonProperty("ad_image_14_tag")
-  
+  @Size(max=511)
+
   private String adImage14Tag;
 
   @JsonProperty("ad_image_15_link")
-  
+  @Size(max=2000)
+
   private String adImage15Link;
 
   @JsonProperty("ad_image_15_tag")
-  
+  @Size(max=511)
+
   private String adImage15Tag;
 
   @JsonProperty("ad_image_16_link")
-  
+  @Size(max=2000)
+
   private String adImage16Link;
 
   @JsonProperty("ad_image_16_tag")
-  
+  @Size(max=511)
+
   private String adImage16Tag;
 
   @JsonProperty("ad_image_17_link")
-  
+  @Size(max=2000)
+
   private String adImage17Link;
 
   @JsonProperty("ad_image_17_tag")
-  
+  @Size(max=511)
+
   private String adImage17Tag;
 
   @JsonProperty("ad_image_18_link")
-  
+  @Size(max=2000)
+
   private String adImage18Link;
 
   @JsonProperty("ad_image_18_tag")
-  
+  @Size(max=511)
+
   private String adImage18Tag;
 
   @JsonProperty("ad_image_19_link")
-  
+  @Size(max=2000)
+
   private String adImage19Link;
 
   @JsonProperty("ad_image_19_tag")
-  
+  @Size(max=511)
+
   private String adImage19Tag;
 
   @JsonProperty("ad_image_1_link")
-  
+  @Size(max=2000)
+
   private String adImage1Link;
 
   @JsonProperty("ad_image_1_tag")
-  
+  @Size(max=511)
+
   private String adImage1Tag;
 
   @JsonProperty("ad_image_2_link")
-  
+  @Size(max=2000)
+
   private String adImage2Link;
 
   @JsonProperty("ad_image_2_tag")
-  
+  @Size(max=511)
+
   private String adImage2Tag;
 
   @JsonProperty("ad_image_3_link")
-  
+  @Size(max=2000)
+
   private String adImage3Link;
 
   @JsonProperty("ad_image_3_tag")
-  
+  @Size(max=511)
+
   private String adImage3Tag;
 
   @JsonProperty("ad_image_4_link")
-  
+  @Size(max=2000)
+
   private String adImage4Link;
 
   @JsonProperty("ad_image_4_tag")
-  
+  @Size(max=511)
+
   private String adImage4Tag;
 
   @JsonProperty("ad_image_5_link")
-  
+  @Size(max=2000)
+
   private String adImage5Link;
 
   @JsonProperty("ad_image_5_tag")
-  
+  @Size(max=511)
+
   private String adImage5Tag;
 
   @JsonProperty("ad_image_6_link")
-  
+  @Size(max=2000)
+
   private String adImage6Link;
 
   @JsonProperty("ad_image_6_tag")
-  
+  @Size(max=511)
+
   private String adImage6Tag;
 
   @JsonProperty("ad_image_7_link")
-  
+  @Size(max=2000)
+
   private String adImage7Link;
 
   @JsonProperty("ad_image_7_tag")
-  
+  @Size(max=511)
+
   private String adImage7Tag;
 
   @JsonProperty("ad_image_8_link")
-  
+  @Size(max=2000)
+
   private String adImage8Link;
 
   @JsonProperty("ad_image_8_tag")
-  
+  @Size(max=511)
+
   private String adImage8Tag;
 
   @JsonProperty("ad_image_9_link")
-  
+  @Size(max=2000)
+
   private String adImage9Link;
 
   @JsonProperty("ad_image_9_tag")
-  
+  @Size(max=511)
+
   private String adImage9Tag;
 
   @JsonProperty("ad_link")
@@ -183,27 +224,33 @@ public class ItemAttributes   {
   private String adLink;
 
   @JsonProperty("ad_video_0_link")
-  
+  @Size(max=2000)
+
   private String adVideo0Link;
 
   @JsonProperty("ad_video_0_tag")
-  
+  @Size(max=511)
+
   private String adVideo0Tag;
 
   @JsonProperty("ad_video_1_link")
-  
+  @Size(max=2000)
+
   private String adVideo1Link;
 
   @JsonProperty("ad_video_1_tag")
-  
+  @Size(max=511)
+
   private String adVideo1Tag;
 
   @JsonProperty("ad_video_2_link")
-  
+  @Size(max=2000)
+
   private String adVideo2Link;
 
   @JsonProperty("ad_video_2_tag")
-  
+  @Size(max=511)
+
   private String adVideo2Tag;
 
   @JsonProperty("adult")
@@ -441,6 +488,11 @@ public class ItemAttributes   {
   
   private List<String> additionalImageLink = null;
 
+  @JsonProperty("ai_disclosures")
+  @Valid
+
+  private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = null;
+
   @JsonProperty("image_link")
   @Size(min=1)
 
@@ -456,7 +508,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage0Link
   **/
   public String getAdImage0Link() {
@@ -473,7 +525,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage0Tag
   **/
   public String getAdImage0Tag() {
@@ -490,7 +542,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage10Link
   **/
   public String getAdImage10Link() {
@@ -507,7 +559,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage10Tag
   **/
   public String getAdImage10Tag() {
@@ -524,7 +576,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage11Link
   **/
   public String getAdImage11Link() {
@@ -541,7 +593,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage11Tag
   **/
   public String getAdImage11Tag() {
@@ -558,7 +610,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage12Link
   **/
   public String getAdImage12Link() {
@@ -575,7 +627,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage12Tag
   **/
   public String getAdImage12Tag() {
@@ -592,7 +644,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage13Link
   **/
   public String getAdImage13Link() {
@@ -609,7 +661,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage13Tag
   **/
   public String getAdImage13Tag() {
@@ -626,7 +678,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage14Link
   **/
   public String getAdImage14Link() {
@@ -643,7 +695,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage14Tag
   **/
   public String getAdImage14Tag() {
@@ -660,7 +712,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage15Link
   **/
   public String getAdImage15Link() {
@@ -677,7 +729,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage15Tag
   **/
   public String getAdImage15Tag() {
@@ -694,7 +746,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage16Link
   **/
   public String getAdImage16Link() {
@@ -711,7 +763,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage16Tag
   **/
   public String getAdImage16Tag() {
@@ -728,7 +780,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage17Link
   **/
   public String getAdImage17Link() {
@@ -745,7 +797,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage17Tag
   **/
   public String getAdImage17Tag() {
@@ -762,7 +814,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage18Link
   **/
   public String getAdImage18Link() {
@@ -779,7 +831,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage18Tag
   **/
   public String getAdImage18Tag() {
@@ -796,7 +848,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage19Link
   **/
   public String getAdImage19Link() {
@@ -813,7 +865,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage19Tag
   **/
   public String getAdImage19Tag() {
@@ -830,7 +882,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage1Link
   **/
   public String getAdImage1Link() {
@@ -847,7 +899,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage1Tag
   **/
   public String getAdImage1Tag() {
@@ -864,7 +916,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage2Link
   **/
   public String getAdImage2Link() {
@@ -881,7 +933,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage2Tag
   **/
   public String getAdImage2Tag() {
@@ -898,7 +950,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage3Link
   **/
   public String getAdImage3Link() {
@@ -915,7 +967,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage3Tag
   **/
   public String getAdImage3Tag() {
@@ -932,7 +984,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage4Link
   **/
   public String getAdImage4Link() {
@@ -949,7 +1001,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage4Tag
   **/
   public String getAdImage4Tag() {
@@ -966,7 +1018,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage5Link
   **/
   public String getAdImage5Link() {
@@ -983,7 +1035,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage5Tag
   **/
   public String getAdImage5Tag() {
@@ -1000,7 +1052,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage6Link
   **/
   public String getAdImage6Link() {
@@ -1017,7 +1069,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage6Tag
   **/
   public String getAdImage6Tag() {
@@ -1034,7 +1086,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage7Link
   **/
   public String getAdImage7Link() {
@@ -1051,7 +1103,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage7Tag
   **/
   public String getAdImage7Tag() {
@@ -1068,7 +1120,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage8Link
   **/
   public String getAdImage8Link() {
@@ -1085,7 +1137,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage8Tag
   **/
   public String getAdImage8Tag() {
@@ -1102,7 +1154,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adImage9Link
   **/
   public String getAdImage9Link() {
@@ -1119,7 +1171,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
    * @return adImage9Tag
   **/
   public String getAdImage9Tag() {
@@ -1136,7 +1188,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
+   * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.
    * @return adLink
   **/
   public String getAdLink() {
@@ -1153,7 +1205,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adVideo0Link
   **/
   public String getAdVideo0Link() {
@@ -1170,7 +1222,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+   * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
    * @return adVideo0Tag
   **/
   public String getAdVideo0Tag() {
@@ -1187,7 +1239,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adVideo1Link
   **/
   public String getAdVideo1Link() {
@@ -1204,7 +1256,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+   * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
    * @return adVideo1Tag
   **/
   public String getAdVideo1Tag() {
@@ -1221,7 +1273,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
    * @return adVideo2Link
   **/
   public String getAdVideo2Link() {
@@ -1238,7 +1290,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+   * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
    * @return adVideo2Tag
   **/
   public String getAdVideo2Tag() {
@@ -1255,7 +1307,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
+   * Set this attribute to TRUE if you're submitting items that are considered \"adult\". These will not be shown on Pinterest.
    * @return adult
   **/
   public Boolean getAdult() {
@@ -1272,7 +1324,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'.
    * @return ageGroup
   **/
   public String getAgeGroup() {
@@ -1306,7 +1358,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+   * The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'.
    * @return availability
   **/
   public String getAvailability() {
@@ -1391,7 +1443,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
+   * The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'.
    * @return condition
   **/
   public String getCondition() {
@@ -1408,7 +1460,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
    * @return customLabel0
   **/
   public String getCustomLabel0() {
@@ -1425,7 +1477,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
    * @return customLabel1
   **/
   public String getCustomLabel1() {
@@ -1442,7 +1494,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
    * @return customLabel2
   **/
   public String getCustomLabel2() {
@@ -1459,7 +1511,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
    * @return customLabel3
   **/
   public String getCustomLabel3() {
@@ -1476,7 +1528,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
+   * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
    * @return customLabel4
   **/
   public String getCustomLabel4() {
@@ -1493,7 +1545,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    * @return customNumber0
   **/
   public Integer getCustomNumber0() {
@@ -1510,7 +1562,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    * @return customNumber1
   **/
   public Integer getCustomNumber1() {
@@ -1527,7 +1579,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    * @return customNumber2
   **/
   public Integer getCustomNumber2() {
@@ -1544,7 +1596,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    * @return customNumber3
   **/
   public Integer getCustomNumber3() {
@@ -1561,7 +1613,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
    * @return customNumber4
   **/
   public Integer getCustomNumber4() {
@@ -1578,7 +1630,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 10000 characters</p> <p>The description of the product.</p>
+   * <= 10000 characters. The description of the product.
    * @return description
   **/
   public String getDescription() {
@@ -1629,7 +1681,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+   * The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'.
    * @return gender
   **/
   public String getGender() {
@@ -1680,7 +1732,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
+   * <= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.
    * @return id
   **/
   public String getId() {
@@ -1697,7 +1749,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>
+   * Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>
    * @return installmentPrice
   **/
   public String getInstallmentPrice() {
@@ -1731,7 +1783,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 127 characters</p> <p>The parent ID of the product.</p>
+   * <= 127 characters. The parent ID of the product.
    * @return itemGroupId
   **/
   public String getItemGroupId() {
@@ -1765,7 +1817,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 511 characters</p> <p>The landing page for the product.</p>
+   * <= 511 characters. The landing page for the product.
    * @return link
   **/
   public String getLink() {
@@ -1799,7 +1851,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
+   * The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
    * @return minAdPrice
   **/
   public String getMinAdPrice() {
@@ -1901,7 +1953,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
+   * The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
    * @return price
   **/
   public String getPrice() {
@@ -1918,7 +1970,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
+   * <= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \".
    * @return productType
   **/
   public String getProductType() {
@@ -1952,7 +2004,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
+   * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\".
    * @return salePrice
   **/
   public String getSalePrice() {
@@ -2071,7 +2123,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+   * Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'.
    * @return sizeSystem
   **/
   public String getSizeSystem() {
@@ -2088,7 +2140,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+   * Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'.
    * @return sizeType
   **/
   public String getSizeType() {
@@ -2122,7 +2174,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 500 characters</p> <p>The name of the product.</p>
+   * <= 500 characters. The name of the product.
    * @return title
   **/
   public String getTitle() {
@@ -2139,7 +2191,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>
+   * Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>
    * @return unitPricingBaseMeasure
   **/
   public String getUnitPricingBaseMeasure() {
@@ -2156,7 +2208,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>
+   * Unit pricing total measure of the product. Expected format: <total_units> <unit_type>
    * @return unitPricingMeasure
   **/
   public String getUnitPricingMeasure() {
@@ -2231,7 +2283,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>
+   * <= 2000 characters. The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.
    * @return additionalImageLink
   **/
   public List<String> getAdditionalImageLink() {
@@ -2240,6 +2292,31 @@ public class ItemAttributes   {
 
   public void setAdditionalImageLink(List<String> additionalImageLink) {
     this.additionalImageLink = additionalImageLink;
+  }
+
+  public ItemAttributes aiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
+    return this;
+  }
+
+  public ItemAttributes addAiDisclosuresItem(CatalogsAiContentDisclosure aiDisclosuresItem) {
+    if (this.aiDisclosures == null) {
+      this.aiDisclosures = new ArrayList<>();
+    }
+    this.aiDisclosures.add(aiDisclosuresItem);
+    return this;
+  }
+
+   /**
+   * AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.
+   * @return aiDisclosures
+  **/
+  public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
+    return aiDisclosures;
+  }
+
+  public void setAiDisclosures(List<@Valid CatalogsAiContentDisclosure> aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
   }
 
   public ItemAttributes imageLink(List<String> imageLink) {
@@ -2256,7 +2333,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p>
+   * <= 2000 characters. The links to the main product images. Images should be at least 75x75 pixels to avoid errors. Must start with http:// or https://.
    * @return imageLink
   **/
   public List<String> getImageLink() {
@@ -2273,7 +2350,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+   * <= 2,000 characters. Hosted link to the product video. File types must be .mp4, .mov or .m4v. File size cannot exceed 2GB.
    * @return videoLink
   **/
   public String getVideoLink() {
@@ -2398,13 +2475,14 @@ public class ItemAttributes   {
         Objects.equals(variantNames, itemAttributes.variantNames) &&
         Objects.equals(variantValues, itemAttributes.variantValues) &&
         Objects.equals(additionalImageLink, itemAttributes.additionalImageLink) &&
+        Objects.equals(aiDisclosures, itemAttributes.aiDisclosures) &&
         Objects.equals(imageLink, itemAttributes.imageLink) &&
         Objects.equals(videoLink, itemAttributes.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, adult, ageGroup, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, additionalImageLink, imageLink, videoLink);
+    return Objects.hash(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, adult, ageGroup, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, additionalImageLink, aiDisclosures, imageLink, videoLink);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -2517,6 +2595,7 @@ public class ItemAttributes   {
     sb.append("    variantNames: ").append(toIndentedString(variantNames)).append("\n");
     sb.append("    variantValues: ").append(toIndentedString(variantValues)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
@@ -2528,10 +2607,7 @@ public class ItemAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

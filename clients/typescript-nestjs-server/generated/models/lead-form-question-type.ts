@@ -1,0 +1,23 @@
+
+
+/**
+ * Lead form question type
+ */
+export const LeadFormQuestionType = {
+    Custom: 'CUSTOM',
+    FullName: 'FULL_NAME',
+    FirstName: 'FIRST_NAME',
+    LastName: 'LAST_NAME',
+    Email: 'EMAIL',
+    PhoneNumber: 'PHONE_NUMBER',
+    ZipCode: 'ZIP_CODE',
+    Gender: 'GENDER',
+    City: 'CITY',
+    Country: 'COUNTRY',
+    StateProvince: 'STATE_PROVINCE',
+    Address: 'ADDRESS',
+    DateOfBirth: 'DATE_OF_BIRTH',
+    Age: 'AGE'
+} as const;
+export type LeadFormQuestionType = typeof LeadFormQuestionType[keyof typeof LeadFormQuestionType];
+

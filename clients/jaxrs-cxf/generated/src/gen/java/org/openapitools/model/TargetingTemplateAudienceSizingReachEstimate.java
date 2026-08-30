@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -11,15 +10,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TargetingTemplateAudienceSizingReachEstimate  {
   
-  @ApiModelProperty(example = "63492000", value = "")
+  @ApiModelProperty(value = "")
 
   private Long estimate;
 
-  @ApiModelProperty(example = "47619000", value = "")
+  @ApiModelProperty(value = "")
 
   private Long lowerBound;
 
-  @ApiModelProperty(example = "79365000", value = "")
+  @ApiModelProperty(value = "")
 
   private Long upperBound;
  /**
@@ -112,10 +111,7 @@ public class TargetingTemplateAudienceSizingReachEstimate  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

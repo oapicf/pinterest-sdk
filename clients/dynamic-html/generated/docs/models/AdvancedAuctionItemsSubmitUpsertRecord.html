@@ -1,8 +1,18 @@
 
 <h2>AdvancedAuctionItemsSubmitUpsertRecord</h2>
 <ul class="parameter">
+  <li class="param-required-true">bidUnderscoreoptions : AdvancedAuctionBidOptions
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-true">country : Country
     <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">errors : List
+    <br/>Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
   </li>
 </ul>
 <ul class="parameter">
@@ -16,13 +26,13 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">bidUnderscoreoptions : AdvancedAuctionBidOptions
+  <li class="param-required-true">operation : String
     <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">errors : List
-    <br/>Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>UPSERT</dd>
+        </dt>
+      </dl>
   </li>
 </ul>
 <ul class="parameter">

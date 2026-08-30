@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Resource create or update operation model.",
+  "name": "KeywordsUpdate",
+  "fields": [
+    {
+      "name": "keywords",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.KeywordUpdateItem"
+      }],
+      "doc": "Keywords",
+      "default": null
+    }
+  ]
+
+}

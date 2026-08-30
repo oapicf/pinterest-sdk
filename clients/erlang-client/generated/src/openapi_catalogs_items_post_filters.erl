@@ -5,21 +5,21 @@
 -export_type([openapi_catalogs_items_post_filters/0]).
 
 -type openapi_catalogs_items_post_filters() ::
-    #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
-       'catalog_id' => binary(),
+    #{ 'catalog_id' => binary(),
+       'catalog_type' := binary(),
        'item_ids' := list(),
        'hotel_ids' := list(),
        'creative_assets_ids' := list()
      }.
 
-encode(#{ 'catalog_type' := CatalogType,
-          'catalog_id' := CatalogId,
+encode(#{ 'catalog_id' := CatalogId,
+          'catalog_type' := CatalogType,
           'item_ids' := ItemIds,
           'hotel_ids' := HotelIds,
           'creative_assets_ids' := CreativeAssetsIds
         }) ->
-    #{ 'catalog_type' => CatalogType,
-       'catalog_id' => CatalogId,
+    #{ 'catalog_id' => CatalogId,
+       'catalog_type' => CatalogType,
        'item_ids' => ItemIds,
        'hotel_ids' => HotelIds,
        'creative_assets_ids' => CreativeAssetsIds

@@ -7,8 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { UserAccountType } from './userAccountType';
 
 
+/**
+ * User account model containing properties related to a user\'s account.
+ */
 export interface Account { 
     /**
      * Profile about description.
@@ -17,9 +21,9 @@ export interface Account {
     /**
      * Type of account
      */
-    account_type?: Account.AccountTypeEnum;
+    account_type?: UserAccountType;
     /**
-     * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+     *   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
      */
     readonly board_count?: number | null;
     business_name?: string | null;
@@ -48,11 +52,6 @@ export interface Account {
     website_url?: string;
 }
 export namespace Account {
-    export const AccountTypeEnum = {
-        Pinner: 'PINNER',
-        Business: 'BUSINESS'
-    } as const;
-    export type AccountTypeEnum = typeof AccountTypeEnum[keyof typeof AccountTypeEnum];
 }
 
 

@@ -9,7 +9,6 @@
  */
 import { CatalogsCreativeAssetsItemsPostFilter } from './catalogsCreativeAssetsItemsPostFilter';
 import { CatalogsHotelItemsPostFilter } from './catalogsHotelItemsPostFilter';
-import { CatalogsType } from './catalogsType';
 import { CatalogsRetailItemsPostFilter } from './catalogsRetailItemsPostFilter';
 
 

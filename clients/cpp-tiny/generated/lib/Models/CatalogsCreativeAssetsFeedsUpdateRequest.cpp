@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CatalogsCreativeAssetsFeedsUpdateRequest::CatalogsCreativeAssetsFeedsUpdateRequest()
 {
-	catalog_type = CatalogsType();
+	catalog_type = std::string();
 	credentials = CatalogsFeedCredentials();
 	default_currency = NullableCurrency();
 	format = CatalogsFormat();
@@ -39,9 +39,8 @@ CatalogsCreativeAssetsFeedsUpdateRequest::fromJson(std::string jsonObj)
 
 
 
+        jsonToValue(&catalog_type, value, "std::string");
 
-        CatalogsType* obj = &catalog_type;
-		obj->fromJson(value.dump());
 
     }
 
@@ -153,8 +152,8 @@ CatalogsCreativeAssetsFeedsUpdateRequest::toJson()
 
 
 
+    object["catalog_type"] = getCatalogType();
 
-	object["catalog_type"] = getCatalogType().toJson();
 
 
 
@@ -210,14 +209,14 @@ CatalogsCreativeAssetsFeedsUpdateRequest::toJson()
 
 }
 
-CatalogsType
+std::string
 CatalogsCreativeAssetsFeedsUpdateRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsCreativeAssetsFeedsUpdateRequest::setCatalogType(CatalogsType  catalog_type)
+CatalogsCreativeAssetsFeedsUpdateRequest::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -229,7 +228,7 @@ CatalogsCreativeAssetsFeedsUpdateRequest::getCredentials()
 }
 
 void
-CatalogsCreativeAssetsFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials  credentials)
+CatalogsCreativeAssetsFeedsUpdateRequest::setCredentials(CatalogsFeedCredentials credentials)
 {
 	this->credentials = credentials;
 }
@@ -241,7 +240,7 @@ CatalogsCreativeAssetsFeedsUpdateRequest::getDefaultCurrency()
 }
 
 void
-CatalogsCreativeAssetsFeedsUpdateRequest::setDefaultCurrency(NullableCurrency  default_currency)
+CatalogsCreativeAssetsFeedsUpdateRequest::setDefaultCurrency(NullableCurrency default_currency)
 {
 	this->default_currency = default_currency;
 }
@@ -253,7 +252,7 @@ CatalogsCreativeAssetsFeedsUpdateRequest::getFormat()
 }
 
 void
-CatalogsCreativeAssetsFeedsUpdateRequest::setFormat(CatalogsFormat  format)
+CatalogsCreativeAssetsFeedsUpdateRequest::setFormat(CatalogsFormat format)
 {
 	this->format = format;
 }
@@ -265,7 +264,7 @@ CatalogsCreativeAssetsFeedsUpdateRequest::getLocation()
 }
 
 void
-CatalogsCreativeAssetsFeedsUpdateRequest::setLocation(std::string  location)
+CatalogsCreativeAssetsFeedsUpdateRequest::setLocation(std::string location)
 {
 	this->location = location;
 }
@@ -277,7 +276,7 @@ CatalogsCreativeAssetsFeedsUpdateRequest::getName()
 }
 
 void
-CatalogsCreativeAssetsFeedsUpdateRequest::setName(std::string  name)
+CatalogsCreativeAssetsFeedsUpdateRequest::setName(std::string name)
 {
 	this->name = name;
 }
@@ -289,7 +288,7 @@ CatalogsCreativeAssetsFeedsUpdateRequest::getPreferredProcessingSchedule()
 }
 
 void
-CatalogsCreativeAssetsFeedsUpdateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule)
+CatalogsCreativeAssetsFeedsUpdateRequest::setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferred_processing_schedule)
 {
 	this->preferred_processing_schedule = preferred_processing_schedule;
 }
@@ -301,7 +300,7 @@ CatalogsCreativeAssetsFeedsUpdateRequest::getStatus()
 }
 
 void
-CatalogsCreativeAssetsFeedsUpdateRequest::setStatus(CatalogsStatus  status)
+CatalogsCreativeAssetsFeedsUpdateRequest::setStatus(CatalogsStatus status)
 {
 	this->status = status;
 }

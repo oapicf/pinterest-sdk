@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsProductGroupFiltersAllOf(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("all_of")
     @get:JsonProperty("all_of", required = true) val allOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>
 ) {
 

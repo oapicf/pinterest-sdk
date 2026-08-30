@@ -21,13 +21,16 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class GenderDemographics(
 
-    @Schema(example = "null", required = true, description = "Percentage of female users")
+    @Schema(required = true, description = "Percentage of female users")
+    @param:JsonProperty("female")
     @get:JsonProperty("female", required = true) val female: java.math.BigDecimal,
 
-    @Schema(example = "null", required = true, description = "Percentage of male users")
+    @Schema(required = true, description = "Percentage of male users")
+    @param:JsonProperty("male")
     @get:JsonProperty("male", required = true) val male: java.math.BigDecimal,
 
-    @Schema(example = "null", required = true, description = "Percentage of users with unspecified gender")
+    @Schema(required = true, description = "Percentage of users with unspecified gender")
+    @param:JsonProperty("unspecified")
     @get:JsonProperty("unspecified", required = true) val unspecified: java.math.BigDecimal
 ) {
 

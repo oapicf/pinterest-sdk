@@ -1,0 +1,52 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupCreateRequestAllOf1"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupCreateRequestAllOf1"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BudgetType = openapi_server.resourceTypes.BudgetType
+  PacingDeliveryType = openapi_server.resourceTypes.PacingDeliveryType
+}
+resourceTypes {
+
+  AdGroupCreateRequestAllOf1 {
+    title = AdGroupCreateRequestAllOf1
+    description = AdGroupCreateRequestAllOf1
+    derivedFrom = Root
+    properties {
+        auto_targeting_enabled {
+          type =  boolean
+          description = "Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;."
+          optional = false
+        }
+        bid_multiplier {
+          type =  
+          description = "&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;."
+          optional = false
+        }
+        budget_type {
+          type = BudgetType
+          description = ""
+          optional = false
+        }
+        pacing_delivery_type {
+          type = PacingDeliveryType
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupCreateRequestAllOf1 {
+    title = AdGroupCreateRequestAllOf1
+    description = AdGroupCreateRequestAllOf1
+    implements = openapi_server.resourceTypes.AdGroupCreateRequestAllOf1
+
+  }
+}

@@ -4,13 +4,15 @@ Protected Class LeadAdsApi
 		Sub AdAccountsSubscriptionsDelById(, adAccountId As String, subscriptionId As String)
 		  // Operation ad_accounts_subscriptions/del_by_id
 		  // Delete lead ads subscription
+		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter subscriptionId: (path) Unique identifier of a subscription. 
 		  //
-		  // Invokes LeadAdsApiCallbackHandler.AdAccountsSubscriptionsDelByIdCallback() on completion. 
+		  // Invokes LeadAdsApiCallbackHandler.AdAccountsSubscriptionsDelByIdCallback(LeadSubscription) on completion. Note that the response is optional. 
 		  //
 		  // - DELETE /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
 		  // - Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
+		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -35,8 +37,9 @@ Protected Class LeadAdsApi
 		  localVarPath = localVarPath.ReplaceAllB("{subscription_id}", localVarPathStringsubscriptionId)
 		  
 		  
-		  AddHandler localVarHTTPSocket.PageReceived, addressof Me.AdAccountsSubscriptionsDelById_handler
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.AdAccountsSubscriptionsDelById_handler
 		  AddHandler localVarHTTPSocket.Error, addressof Me.AdAccountsSubscriptionsDelById_error
+		  
 		  
 		  localVarHTTPSocket.SendRequest("DELETE", Me.BasePath + localVarPath)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
@@ -47,29 +50,86 @@ Protected Class LeadAdsApi
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function AdAccountsSubscriptionsDelByIdPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.LeadSubscription) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.LeadSubscription
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub AdAccountsSubscriptionsDelById_error(sender As HTTPSecureSocket, Code As Integer)
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  CallbackHandler.AdAccountsSubscriptionsDelByIdCallback(error)
+		  Dim data As OpenAPIClient.Models.LeadSubscription
+		  CallbackHandler.AdAccountsSubscriptionsDelByIdCallback(error, data)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub AdAccountsSubscriptionsDelById_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
 		  #Pragma Unused URL
-		  #Pragma Unused Headers
-		  #Pragma Unused Content
+		  
 
 		  If sender <> nil Then sender.Close()
 		  
-		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", "")
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
+		  Dim data As OpenAPIClient.Models.LeadSubscription
+		  Call AdAccountsSubscriptionsDelByIdPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
-		  
-		  CallbackHandler.AdAccountsSubscriptionsDelByIdCallback(error)
+		  CallbackHandler.AdAccountsSubscriptionsDelByIdCallback(error, data)
 		End Sub
 	#tag EndMethod
 

@@ -2,35 +2,40 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.openapitools.model.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata;
+import org.openapitools.model.PartnerMetadata;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * LeadSubscriptionPostParamsCreate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class LeadSubscriptionPostParamsCreate {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String leadFormId;
 
   private String webhookUrl;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerAccessToken;
 
-  private @Nullable LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable PartnerMetadata partnerMetadata;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerRefreshToken;
 
   public LeadSubscriptionPostParamsCreate() {
@@ -60,6 +65,7 @@ public class LeadSubscriptionPostParamsCreate {
     return leadFormId;
   }
 
+  @JsonProperty("lead_form_id")
   public void setLeadFormId(@Nullable String leadFormId) {
     this.leadFormId = leadFormId;
   }
@@ -80,6 +86,7 @@ public class LeadSubscriptionPostParamsCreate {
     return webhookUrl;
   }
 
+  @JsonProperty("webhook_url")
   public void setWebhookUrl(String webhookUrl) {
     this.webhookUrl = webhookUrl;
   }
@@ -100,27 +107,29 @@ public class LeadSubscriptionPostParamsCreate {
     return partnerAccessToken;
   }
 
+  @JsonProperty("partner_access_token")
   public void setPartnerAccessToken(@Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
   }
 
-  public LeadSubscriptionPostParamsCreate partnerMetadata(@Nullable LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  public LeadSubscriptionPostParamsCreate partnerMetadata(@Nullable PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
 
   /**
-   * Get partnerMetadata
+   * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
    * @return partnerMetadata
    */
   @Valid 
-  @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "partner_metadata", description = "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_metadata")
-  public @Nullable LeadSubscriptionPostParamsCreateAllOfPartnerMetadata getPartnerMetadata() {
+  public @Nullable PartnerMetadata getPartnerMetadata() {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(@Nullable LeadSubscriptionPostParamsCreateAllOfPartnerMetadata partnerMetadata) {
+  @JsonProperty("partner_metadata")
+  public void setPartnerMetadata(@Nullable PartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 
@@ -140,6 +149,7 @@ public class LeadSubscriptionPostParamsCreate {
     return partnerRefreshToken;
   }
 
+  @JsonProperty("partner_refresh_token")
   public void setPartnerRefreshToken(@Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
   }
@@ -182,11 +192,8 @@ public class LeadSubscriptionPostParamsCreate {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -2,7 +2,7 @@
 Protected Class TitleKeywordsFilter
 
 	#tag Property, Flags = &h0
-		TITLE_KEYWORDS As CatalogsProductGroupMultipleStringCriteria
+		TITLE_KEYWORDS As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 

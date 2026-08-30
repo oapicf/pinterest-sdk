@@ -40,7 +40,7 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // CreateAssetAccessRequestBody
     createAssetAccessRequestBody: ...,
   } satisfies AssetAccessRequestsCreateRequest;
@@ -82,15 +82,21 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## cancelInvitesOrRequests
 
-> DeleteInvitesResultsResponseArray cancelInvitesOrRequests(businessId, cancelInvitesBody)
+> CancelInvitesResponse cancelInvitesOrRequests(businessId, cancelInvitesRequest)
 
 Cancel invites/requests
 
@@ -115,9 +121,9 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // CancelInvitesBody | A list with invite ids
-    cancelInvitesBody: ...,
+    businessId: businessId_example,
+    // CancelInvitesRequest
+    cancelInvitesRequest: ...,
   } satisfies CancelInvitesOrRequestsRequest;
 
   try {
@@ -138,11 +144,11 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **cancelInvitesBody** | [CancelInvitesBody](CancelInvitesBody.md) | A list with invite ids | |
+| **cancelInvitesRequest** | [CancelInvitesRequest](CancelInvitesRequest.md) |  | |
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -157,8 +163,8 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -190,8 +196,8 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+    businessId: businessId_example,
+    // CreateAssetInvitesRequest
     createAssetInvitesRequest: ...,
   } satisfies CreateAssetInvitesOperationRequest;
 
@@ -213,7 +219,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **createAssetInvitesRequest** | [CreateAssetInvitesRequest](CreateAssetInvitesRequest.md) | A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | |
+| **createAssetInvitesRequest** | [CreateAssetInvitesRequest](CreateAssetInvitesRequest.md) |  | |
 
 ### Return type
 
@@ -232,8 +238,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -265,8 +277,8 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
-    // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+    businessId: businessId_example,
+    // CreateMembershipOrPartnershipInvitesBody
     createMembershipOrPartnershipInvitesBody: ...,
   } satisfies CreateMembershipOrPartnershipInvitesRequest;
 
@@ -288,7 +300,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
-| **createMembershipOrPartnershipInvitesBody** | [CreateMembershipOrPartnershipInvitesBody](CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role | |
+| **createMembershipOrPartnershipInvitesBody** | [CreateMembershipOrPartnershipInvitesBody](CreateMembershipOrPartnershipInvitesBody.md) |  | |
 
 ### Return type
 
@@ -307,8 +319,14 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -340,16 +358,16 @@ async function example() {
 
   const body = {
     // string | Unique identifier of the requesting business.
-    businessId: 729090764583391194,
+    businessId: businessId_example,
     // boolean | A boolean field to indicate whether the invite is to create a partnership or a membership. (optional)
     isMember: true,
-    // Array<'PENDING' | 'EXPIRED'> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
+    // Array<InviteFilterStatus> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. (optional)
     inviteStatus: ...,
     // InviteType | Invite type to filter invites by. Only invites of the specified type will be returned. (optional)
     inviteType: ...,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
-    // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
+    // number | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
     pageSize: 56,
   } satisfies GetInvitesRequest;
 
@@ -372,10 +390,10 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **isMember** | `boolean` | A boolean field to indicate whether the invite is to create a partnership or a membership. | [Optional] [Defaults to `true`] |
-| **inviteStatus** | `PENDING`, `EXPIRED` | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [Optional] [Enum: PENDING, EXPIRED] |
+| **inviteStatus** | `Array<InviteFilterStatus>` | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [Optional] |
 | **inviteType** | `InviteType` | Invite type to filter invites by. Only invites of the specified type will be returned. | [Optional] [Defaults to `undefined`] [Enum: MEMBER_INVITE, PARTNER_INVITE, PARTNER_REQUEST] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
-| **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
+| **pageSize** | `number` | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [Optional] [Defaults to `25`] |
 
 ### Return type
 
@@ -394,8 +412,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -466,8 +489,13 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

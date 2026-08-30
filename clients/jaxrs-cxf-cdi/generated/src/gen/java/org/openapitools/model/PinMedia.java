@@ -84,9 +84,11 @@ public enum MediaTypeEnum {
 
   private String videoUrl;
 
+  private String videoUrlHls;
+
   private Integer width;
 
-  private List<PinMediaMetadata> items = new ArrayList<>();
+  private List<@Valid PinMediaMetadata> items = new ArrayList<>();
 
   /**
    **/
@@ -201,6 +203,25 @@ public enum MediaTypeEnum {
 
 
   /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   **/
+  public PinMedia videoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Video url (HLS).  **Note:** This field is limited and not available to all apps.")
+  @JsonProperty("video_url_hls")
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
+
+  /**
    * Width (in pixels). Field maybe null after creation due to video processing time.
    **/
   public PinMedia width(Integer width) {
@@ -221,7 +242,7 @@ public enum MediaTypeEnum {
 
   /**
    **/
-  public PinMedia items(List<PinMediaMetadata> items) {
+  public PinMedia items(List<@Valid PinMediaMetadata> items) {
     this.items = items;
     return this;
   }
@@ -229,10 +250,10 @@ public enum MediaTypeEnum {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<PinMediaMetadata> getItems() {
+  public List<@Valid PinMediaMetadata> getItems() {
     return items;
   }
-  public void setItems(List<PinMediaMetadata> items) {
+  public void setItems(List<@Valid PinMediaMetadata> items) {
     this.items = items;
   }
 
@@ -261,13 +282,14 @@ public enum MediaTypeEnum {
         Objects.equals(this.duration, pinMedia.duration) &&
         Objects.equals(this.height, pinMedia.height) &&
         Objects.equals(this.videoUrl, pinMedia.videoUrl) &&
+        Objects.equals(this.videoUrlHls, pinMedia.videoUrlHls) &&
         Objects.equals(this.width, pinMedia.width) &&
         Objects.equals(this.items, pinMedia.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, width, items);
+    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, videoUrlHls, width, items);
   }
 
   @Override
@@ -281,6 +303,7 @@ public enum MediaTypeEnum {
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
@@ -292,10 +315,7 @@ public enum MediaTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

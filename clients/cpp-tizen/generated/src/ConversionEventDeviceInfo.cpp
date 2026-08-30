@@ -29,13 +29,13 @@ ConversionEventDeviceInfo::__init()
 	//cpu_cores = int(0);
 	//external_storage_free_space = int(0);
 	//external_storage_size = int(0);
-	//form_factor = std::string();
+	//form_factor = null;
 	//kernel_version = std::string();
 	//new std::list()std::list> languages;
 	//locale = std::string();
 	//model = std::string();
-	//network_type = std::string();
-	//os_family = std::string();
+	//network_type = null;
+	//os_family = null;
 	//os_name = std::string();
 	//os_release_name = std::string();
 	//os_version = std::string();
@@ -251,9 +251,12 @@ ConversionEventDeviceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&form_factor, node, "std::string", "");
+		if (isprimitive("FormFactor")) {
+			jsonToValue(&form_factor, node, "FormFactor", "FormFactor");
 		} else {
+			
+			FormFactor* obj = static_cast<FormFactor*> (&form_factor);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -317,9 +320,12 @@ ConversionEventDeviceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&network_type, node, "std::string", "");
+		if (isprimitive("NetworkType")) {
+			jsonToValue(&network_type, node, "NetworkType", "NetworkType");
 		} else {
+			
+			NetworkType* obj = static_cast<NetworkType*> (&network_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -328,9 +334,12 @@ ConversionEventDeviceInfo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&os_family, node, "std::string", "");
+		if (isprimitive("OsFamily")) {
+			jsonToValue(&os_family, node, "OsFamily", "OsFamily");
 		} else {
+			
+			OsFamily* obj = static_cast<OsFamily*> (&os_family);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -521,11 +530,16 @@ ConversionEventDeviceInfo::toJson()
 	}
 	const gchar *external_storage_sizeKey = "external_storage_size";
 	json_object_set_member(pJsonObject, external_storage_sizeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getFormFactor();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("FormFactor")) {
+		FormFactor obj = getFormFactor();
+		node = converttoJson(&obj, "FormFactor", "");
 	}
 	else {
+		
+		FormFactor obj = static_cast<FormFactor> (getFormFactor());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *form_factorKey = "form_factor";
@@ -572,20 +586,30 @@ ConversionEventDeviceInfo::toJson()
 	}
 	const gchar *modelKey = "model";
 	json_object_set_member(pJsonObject, modelKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getNetworkType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("NetworkType")) {
+		NetworkType obj = getNetworkType();
+		node = converttoJson(&obj, "NetworkType", "");
 	}
 	else {
+		
+		NetworkType obj = static_cast<NetworkType> (getNetworkType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *network_typeKey = "network_type";
 	json_object_set_member(pJsonObject, network_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getOsFamily();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("OsFamily")) {
+		OsFamily obj = getOsFamily();
+		node = converttoJson(&obj, "OsFamily", "");
 	}
 	else {
+		
+		OsFamily obj = static_cast<OsFamily> (getOsFamily());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *os_familyKey = "os_family";
@@ -769,14 +793,14 @@ ConversionEventDeviceInfo::setExternalStorageSize(int  external_storage_size)
 	this->external_storage_size = external_storage_size;
 }
 
-std::string
+FormFactor
 ConversionEventDeviceInfo::getFormFactor()
 {
 	return form_factor;
 }
 
 void
-ConversionEventDeviceInfo::setFormFactor(std::string  form_factor)
+ConversionEventDeviceInfo::setFormFactor(FormFactor  form_factor)
 {
 	this->form_factor = form_factor;
 }
@@ -829,26 +853,26 @@ ConversionEventDeviceInfo::setModel(std::string  model)
 	this->model = model;
 }
 
-std::string
+NetworkType
 ConversionEventDeviceInfo::getNetworkType()
 {
 	return network_type;
 }
 
 void
-ConversionEventDeviceInfo::setNetworkType(std::string  network_type)
+ConversionEventDeviceInfo::setNetworkType(NetworkType  network_type)
 {
 	this->network_type = network_type;
 }
 
-std::string
+OsFamily
 ConversionEventDeviceInfo::getOsFamily()
 {
 	return os_family;
 }
 
 void
-ConversionEventDeviceInfo::setOsFamily(std::string  os_family)
+ConversionEventDeviceInfo::setOsFamily(OsFamily  os_family)
 {
 	this->os_family = os_family;
 }

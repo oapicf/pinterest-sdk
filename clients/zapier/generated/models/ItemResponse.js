@@ -1,8 +1,11 @@
 const utils = require('../utils/utils');
 const CatalogsCreativeAssetsAttributes = require('../models/CatalogsCreativeAssetsAttributes');
-const CatalogsType = require('../models/CatalogsType');
-const ItemResponse_oneOf = require('../models/ItemResponse_oneOf');
-const ItemResponse_oneOf_1 = require('../models/ItemResponse_oneOf_1');
+const CatalogsCreativeAssetsItemErrorResponse = require('../models/CatalogsCreativeAssetsItemErrorResponse');
+const CatalogsCreativeAssetsItemResponse = require('../models/CatalogsCreativeAssetsItemResponse');
+const CatalogsHotelItemErrorResponse = require('../models/CatalogsHotelItemErrorResponse');
+const CatalogsHotelItemResponse = require('../models/CatalogsHotelItemResponse');
+const CatalogsRetailItemErrorResponse = require('../models/CatalogsRetailItemErrorResponse');
+const CatalogsRetailItemResponse = require('../models/CatalogsRetailItemResponse');
 const ItemValidationEvent = require('../models/ItemValidationEvent');
 const Pin = require('../models/Pin');
 
@@ -10,15 +13,29 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...CatalogsCreativeAssetsAttributes.fields(`${keyPrefix}attributes`, isInput),
             {
                 key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'CREATIVE_ASSETS',
+                ],
             },
-            ...CatalogsCreativeAssetsAttributes.fields(`${keyPrefix}attributes`, isInput),
             {
                 key: `${keyPrefix}item_id`,
                 label: `The catalog item id in the merchant namespace - [${labelPrefix}item_id]`,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}item_response_kind`,
+                label: `Discriminator literal identifying this leaf inside an `ItemResponse` payload. - [${labelPrefix}item_response_kind]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'creative_assets_item_error',
+                ],
             },
             {
                 key: `${keyPrefix}pins`,
@@ -45,9 +62,10 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'attributes': utils.removeIfEmpty(CatalogsCreativeAssetsAttributes.mapping(bundle, `${keyPrefix}attributes`)),
+            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
+            'item_response_kind': bundle.inputData?.[`${keyPrefix}item_response_kind`],
             'pins': utils.childMapping(bundle.inputData?.[`${keyPrefix}pins`], `${keyPrefix}pins`, Pin),
             'hotel_id': bundle.inputData?.[`${keyPrefix}hotel_id`],
             'creative_assets_id': bundle.inputData?.[`${keyPrefix}creative_assets_id`],

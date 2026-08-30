@@ -5,13 +5,13 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * conversion tag type
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public enum ConversionTagType {
   
   PAGE_LOAD("PAGE_LOAD"),
@@ -51,7 +51,33 @@ public enum ConversionTagType {
   
   WEB_SESSION("WEB_SESSION"),
   
-  EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT");
+  EXTERNAL_MEASUREMENT("EXTERNAL_MEASUREMENT"),
+  
+  ADD_PAYMENT_INFO("ADD_PAYMENT_INFO"),
+  
+  ADD_TO_WISHLIST("ADD_TO_WISHLIST"),
+  
+  INITIATE_CHECKOUT("INITIATE_CHECKOUT"),
+  
+  SUBSCRIBE("SUBSCRIBE"),
+  
+  VIEW_CONTENT("VIEW_CONTENT"),
+  
+  ADVERTISER_DEFINED_EVENT("ADVERTISER_DEFINED_EVENT"),
+  
+  APP_OPEN("APP_OPEN"),
+  
+  CONTACT("CONTACT"),
+  
+  SCHEDULE("SCHEDULE"),
+  
+  FIND_LOCATION("FIND_LOCATION"),
+  
+  CUSTOMIZE_PRODUCT("CUSTOMIZE_PRODUCT"),
+  
+  SUBMIT_APPLICATION("SUBMIT_APPLICATION"),
+  
+  START_TRIAL("START_TRIAL");
 
   private final String value;
 

@@ -3,6 +3,9 @@ package apimodels;
 import apimodels.ImageMetadata;
 import apimodels.ImageSize;
 import apimodels.VideoMetadataWithItemType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
@@ -12,9 +15,9 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * PinMediaMetadata
+ * Per-item entry inside &#x60;PinMedia.items&#x60; for mixed image/video pins. Discriminated by &#x60;item_type&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinMediaMetadata   {
   @JsonProperty("description")
@@ -26,9 +29,39 @@ public class PinMediaMetadata   {
 
   private ImageSize images;
 
+  /**
+   * Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+   */
+  public enum ItemTypeEnum {
+    VIDEO("video");
+
+    private final String value;
+
+    ItemTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ItemTypeEnum fromValue(String value) {
+      for (ItemTypeEnum b : ItemTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("item_type")
-  
-  private String itemType;
+  @NotNull
+
+  private ItemTypeEnum itemType;
 
   @JsonProperty("link")
   
@@ -54,6 +87,10 @@ public class PinMediaMetadata   {
   @JsonProperty("video_url")
   
   private String videoUrl;
+
+  @JsonProperty("video_url_hls")
+  
+  private String videoUrlHls;
 
   @JsonProperty("width")
   
@@ -93,20 +130,20 @@ public class PinMediaMetadata   {
     this.images = images;
   }
 
-  public PinMediaMetadata itemType(String itemType) {
+  public PinMediaMetadata itemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
     return this;
   }
 
    /**
-   * Get itemType
+   * Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
    * @return itemType
   **/
-  public String getItemType() {
+  public ItemTypeEnum getItemType() {
     return itemType;
   }
 
-  public void setItemType(String itemType) {
+  public void setItemType(ItemTypeEnum itemType) {
     this.itemType = itemType;
   }
 
@@ -212,6 +249,23 @@ public class PinMediaMetadata   {
     this.videoUrl = videoUrl;
   }
 
+  public PinMediaMetadata videoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+    return this;
+  }
+
+   /**
+   * Video url (HLS).  **Note:** This field is limited and not available to all apps.
+   * @return videoUrlHls
+  **/
+  public String getVideoUrlHls() {
+    return videoUrlHls;
+  }
+
+  public void setVideoUrlHls(String videoUrlHls) {
+    this.videoUrlHls = videoUrlHls;
+  }
+
   public PinMediaMetadata width(Integer width) {
     this.width = width;
     return this;
@@ -248,12 +302,13 @@ public class PinMediaMetadata   {
         Objects.equals(duration, pinMediaMetadata.duration) &&
         Objects.equals(height, pinMediaMetadata.height) &&
         Objects.equals(videoUrl, pinMediaMetadata.videoUrl) &&
+        Objects.equals(videoUrlHls, pinMediaMetadata.videoUrlHls) &&
         Objects.equals(width, pinMediaMetadata.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, images, itemType, link, title, coverImageUrl, duration, height, videoUrl, width);
+    return Objects.hash(description, images, itemType, link, title, coverImageUrl, duration, height, videoUrl, videoUrlHls, width);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -271,6 +326,7 @@ public class PinMediaMetadata   {
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    videoUrlHls: ").append(toIndentedString(videoUrlHls)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -281,10 +337,7 @@ public class PinMediaMetadata   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

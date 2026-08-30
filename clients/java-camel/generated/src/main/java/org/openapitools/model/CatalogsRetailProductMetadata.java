@@ -7,26 +7,26 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import org.openapitools.model.NonNullableCatalogsCurrency;
-import org.openapitools.model.NonNullableProductAvailabilityType;
+import org.openapitools.model.ProductAvailability;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Retail product metadata entity
  */
 
 @Schema(name = "CatalogsRetailProductMetadata", description = "Retail product metadata entity")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsRetailProductMetadata {
 
-  private NonNullableProductAvailabilityType availability;
+  private ProductAvailability availability;
 
   private NonNullableCatalogsCurrency currency;
 
@@ -45,7 +45,7 @@ public class CatalogsRetailProductMetadata {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailProductMetadata(NonNullableProductAvailabilityType availability, NonNullableCatalogsCurrency currency, String itemGroupId, String itemId, BigDecimal price, BigDecimal salePrice) {
+  public CatalogsRetailProductMetadata(ProductAvailability availability, NonNullableCatalogsCurrency currency, String itemGroupId, String itemId, BigDecimal price, BigDecimal salePrice) {
     this.availability = availability;
     this.currency = currency;
     this.itemGroupId = JsonNullable.of(itemGroupId);
@@ -54,7 +54,7 @@ public class CatalogsRetailProductMetadata {
     this.salePrice = JsonNullable.of(salePrice);
   }
 
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+  public CatalogsRetailProductMetadata availability(ProductAvailability availability) {
     this.availability = availability;
     return this;
   }
@@ -66,11 +66,11 @@ public class CatalogsRetailProductMetadata {
   @NotNull @Valid 
   @Schema(name = "availability", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("availability")
-  public NonNullableProductAvailabilityType getAvailability() {
+  public ProductAvailability getAvailability() {
     return availability;
   }
 
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
+  public void setAvailability(ProductAvailability availability) {
     this.availability = availability;
   }
 
@@ -215,10 +215,7 @@ public class CatalogsRetailProductMetadata {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

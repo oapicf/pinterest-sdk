@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **AdAccountsSubscriptionsDelById**
-> AdAccountsSubscriptionsDelById(ad_account_id, subscription_id)
+> LeadSubscription AdAccountsSubscriptionsDelById(ad_account_id, subscription_id)
 
 Delete lead ads subscription
 
@@ -30,7 +30,10 @@ var_subscription_id <- "subscription_id_example" # character | Unique identifier
 api_instance <- LeadAdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
-api_instance$AdAccountsSubscriptionsDelById(var_ad_account_id, var_subscription_id)
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$AdAccountsSubscriptionsDelById(var_ad_account_id, var_subscription_iddata_file = "result.txt")
+result <- api_instance$AdAccountsSubscriptionsDelById(var_ad_account_id, var_subscription_id)
+dput(result)
 ```
 
 ### Parameters
@@ -42,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**LeadSubscription**](LeadSubscription.md)
 
 ### Authorization
 
@@ -56,6 +59,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
 | **204** | Resource deleted successfully. |  -  |
 | **400** | The request could not be understood by the server due to unexpected data. |  -  |
 | **401** | Authentication is required and has either failed or not been provided. |  -  |
@@ -197,7 +201,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_lead_subscription_post_params_create <- LeadSubscriptionPostParamsCreate$new("webhook_url_example", "lead_form_id_example", "partner_access_token_example", LeadSubscriptionPostParamsCreate_allOf_partner_metadata$new("subscriber_key_example"), "partner_refresh_token_example") # LeadSubscriptionPostParamsCreate | 
+var_lead_subscription_post_params_create <- LeadSubscriptionPostParamsCreate$new("webhook_url_example", "lead_form_id_example", "partner_access_token_example", PartnerMetadata$new("subscriber_key_example"), "partner_refresh_token_example") # LeadSubscriptionPostParamsCreate | 
 
 api_instance <- LeadAdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2

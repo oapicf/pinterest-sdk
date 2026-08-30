@@ -24,7 +24,8 @@ Name | Type
 `neighborhood` | Array&lt;string&gt;
 `salePrice` | string
 `additionalImageLink` | Array&lt;string&gt;
-`mainImage` | [CatalogsHotelAttributesAllOfMainImage](CatalogsHotelAttributesAllOfMainImage.md)
+`aiDisclosures` | [Array&lt;CatalogsAiContentDisclosure&gt;](CatalogsAiContentDisclosure.md)
+`mainImage` | [CatalogsHotelMainImage](CatalogsHotelMainImage.md)
 
 ## Example
 
@@ -51,6 +52,7 @@ const example = {
   "neighborhood": null,
   "salePrice": 90 USD,
   "additionalImageLink": ["https://scene.example.com/image/image_v2.jpg","https://scene.example.com/image/image_v3.jpg"],
+  "aiDisclosures": [{"url":"https://scene.example.com/image/image_v3.jpg","disclosure":["ai_modified"]}],
   "mainImage": null,
 } satisfies CatalogsHotelAttributes
 

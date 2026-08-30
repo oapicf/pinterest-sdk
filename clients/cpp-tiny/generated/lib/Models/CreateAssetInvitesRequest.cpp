@@ -81,7 +81,7 @@ CreateAssetInvitesRequest::getInvites()
 }
 
 void
-CreateAssetInvitesRequest::setInvites(std::list <CreateAssetInvitesRequestItem> invites)
+CreateAssetInvitesRequest::setInvites(std::list<CreateAssetInvitesRequestItem> invites)
 {
 	this->invites = invites;
 }

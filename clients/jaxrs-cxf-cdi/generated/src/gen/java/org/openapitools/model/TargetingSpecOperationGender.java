@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.TargetingSpecGender;
+import org.openapitools.model.TargetingSpecListOperation;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -52,40 +53,9 @@ public enum FieldEnum {
 
   private FieldEnum field;
 
+  private TargetingSpecListOperation operation;
 
-public enum OperationEnum {
-
-    @JsonProperty("SET") SET(String.valueOf("SET")), @JsonProperty("ADD") ADD(String.valueOf("ADD")), @JsonProperty("REMOVE") REMOVE(String.valueOf("REMOVE"));
-
-
-    private String value;
-
-    OperationEnum(String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static OperationEnum fromValue(String value) {
-        for (OperationEnum b : OperationEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  private OperationEnum operation;
-
-  private List<TargetingSpecGender> values;
+  private List<TargetingSpecGender> values = new ArrayList<>();
 
   /**
    **/
@@ -108,7 +78,7 @@ public enum OperationEnum {
 
   /**
    **/
-  public TargetingSpecOperationGender operation(OperationEnum operation) {
+  public TargetingSpecOperationGender operation(TargetingSpecListOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -117,10 +87,10 @@ public enum OperationEnum {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation")
   @NotNull
-  public OperationEnum getOperation() {
+  public TargetingSpecListOperation getOperation() {
     return operation;
   }
-  public void setOperation(OperationEnum operation) {
+  public void setOperation(TargetingSpecListOperation operation) {
     this.operation = operation;
   }
 
@@ -189,10 +159,7 @@ public enum OperationEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

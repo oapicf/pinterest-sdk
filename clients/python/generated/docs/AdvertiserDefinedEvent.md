@@ -1,12 +1,13 @@
 # AdvertiserDefinedEvent
 
+Advertiser defined event
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | raw string name of the event, usually logged as raw_event_name in our dataset | [optional] 
-**mapped_conversion_type** | **str** | standard type mapped to ADE for optimization | [optional] 
+**mapped_conversion_type** | [**ConversionTagTypeOptimal**](ConversionTagTypeOptimal.md) | Standard type mapped to ADE for optimization | [optional] 
+**name** | **str** | Raw string name of the event, usually logged as raw_event_name in our dataset | [optional] 
 
 ## Example
 

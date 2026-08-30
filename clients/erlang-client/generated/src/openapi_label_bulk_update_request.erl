@@ -6,15 +6,15 @@
 
 -type openapi_label_bulk_update_request() ::
     #{ 'id' := binary(),
-       'status' => binary(),
-       'value' => binary()
+       'parent_id' := binary(),
+       'status' := openapi_label_status_bulk_update:openapi_label_status_bulk_update()
      }.
 
 encode(#{ 'id' := Id,
-          'status' := Status,
-          'value' := Value
+          'parent_id' := ParentId,
+          'status' := Status
         }) ->
     #{ 'id' => Id,
-       'status' => Status,
-       'value' => Value
+       'parent_id' => ParentId,
+       'status' => Status
      }.

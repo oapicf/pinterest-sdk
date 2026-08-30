@@ -15,7 +15,7 @@
 
 typedef struct business_partner_asset_access_get_200_response_t business_partner_asset_access_get_200_response_t;
 
-#include "get_partner_assets_response.h"
+#include "base_business_assets.h"
 
 
 

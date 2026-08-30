@@ -1,14 +1,17 @@
 const samples = require('../samples/BillingApi');
-const AdsCreditRedeemRequest = require('../models/AdsCreditRedeemRequest');
-const AdsCreditRedeemResponse = require('../models/AdsCreditRedeemResponse');
+const AdsCreditRedeem = require('../models/AdsCreditRedeem');
+const AdsCreditRedeemCreate = require('../models/AdsCreditRedeemCreate');
+const BillingInvoiceDocumentType = require('../models/BillingInvoiceDocumentType');
 const BillingInvoiceDownloadResponse = require('../models/BillingInvoiceDownloadResponse');
-const Error = require('../models/Error');
-const SSIOAccountResponse = require('../models/SSIOAccountResponse');
-const SSIOCreateInsertionOrderRequest = require('../models/SSIOCreateInsertionOrderRequest');
-const SSIOCreateInsertionOrderResponse = require('../models/SSIOCreateInsertionOrderResponse');
-const SSIOEditInsertionOrderRequest = require('../models/SSIOEditInsertionOrderRequest');
-const SSIOEditInsertionOrderResponse = require('../models/SSIOEditInsertionOrderResponse');
+const BillingInvoiceSortField = require('../models/BillingInvoiceSortField');
+const BillingInvoiceStatus = require('../models/BillingInvoiceStatus');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
+const Pinterest.Lib.PaginationOrder = require('../models/Pinterest.Lib.PaginationOrder');
+const SSIOAccount = require('../models/SSIOAccount');
+const SSIOInsertionOrder = require('../models/SSIOInsertionOrder');
+const SSIOInsertionOrderCreate = require('../models/SSIOInsertionOrderCreate');
 const SSIOInsertionOrderStatusResponse = require('../models/SSIOInsertionOrderStatusResponse');
+const SSIOInsertionOrderUpdate = require('../models/SSIOInsertionOrderUpdate');
 const ads_credits_discounts_get_200_response = require('../models/ads_credits_discounts_get_200_response');
 const billing_invoices_get_200_response = require('../models/billing_invoices_get_200_response');
 const billing_profiles_get_200_response = require('../models/billing_profiles_get_200_response');
@@ -22,7 +25,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Redeem ad credits',
-            description: 'Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            description: 'Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**',
             hidden: false,
         },
         operation: {
@@ -33,10 +36,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...AdsCreditRedeemRequest.fields(),
+                ...AdsCreditRedeemCreate.fields(),
             ],
             outputFields: [
-                ...AdsCreditRedeemResponse.fields('', false),
+                ...AdsCreditRedeem.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -50,7 +53,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...AdsCreditRedeemRequest.mapping(bundle),
+                        ...AdsCreditRedeemCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -59,7 +62,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdsCreditRedeemResponseSample']
+            sample: samples['AdsCreditRedeemSample']samples['AdsCreditRedeemSample']
         }
     },
     adsCreditsDiscounts/get: {
@@ -67,7 +70,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Get ads credit discounts',
-            description: 'Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            description: 'Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**',
             hidden: false,
         },
         operation: {
@@ -85,7 +88,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -189,48 +192,13 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
-                {
-                    key: 'sort',
-                    label: 'Field of which to sort billing invoices',
-                    type: 'string',
-                    choices: [
-                        'DUE_DATE',
-                        'BILLING_PERIOD',
-                        'DOCUMENT_TYPE',
-                        'TOTAL_AMOUNT',
-                        'INVOICE_NUMBER',
-                    ],
-                },
-                {
-                    key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
-                    type: 'string',
-                    choices: [
-                        'ASCENDING',
-                        'DESCENDING',
-                    ],
-                },
-                {
-                    key: 'status',
-                    label: 'Status of billing invoices to filter by',
-                    type: 'string',
-                    choices: [
-                        'OPEN',
-                        'CLOSED',
-                    ],
-                },
-                {
-                    key: 'document_type',
-                    label: 'Document type of billing invoices to filter by',
-                    type: 'string',
-                    choices: [
-                        'INVOICE',
-                        'CREDIT_MEMO',
-                    ],
-                },
+                ....fields(),
+                ....fields(),
+                ....fields(),
+                ....fields(),
                 {
                     key: 'start_due_date',
                     label: 'Starting point for due dates when searching for invoices. Format: YYYY-MM-DD',
@@ -257,8 +225,8 @@ module.exports = {
                     params: {
                         'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
-                        'sort': bundle.inputData?.['sort'],
                         'order': bundle.inputData?.['order'],
+                        'sort': bundle.inputData?.['sort'],
                         'status': bundle.inputData?.['status'],
                         'document_type': bundle.inputData?.['document_type'],
                         'start_due_date': bundle.inputData?.['start_due_date'],
@@ -281,21 +249,21 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Get billing profiles',
-            description: 'Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            description: 'Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
-                    key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
-                    type: 'string',
-                    required: true,
-                },
-                {
                     key: 'is_active',
                     label: 'Return active billing profiles, if false return all billing profiles.',
                     type: 'boolean',
+                    required: true,
+                },
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
                     required: true,
                 },
                 {
@@ -305,7 +273,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -343,7 +311,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Get Salesforce account details including bill-to information.',
-            description: 'Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.',
+            description: '  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.',
             hidden: false,
         },
         operation: {
@@ -356,7 +324,7 @@ module.exports = {
                 },
             ],
             outputFields: [
-                ...SSIOAccountResponse.fields('', false),
+                ...SSIOAccount.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -378,7 +346,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['SSIOAccountResponseSample']
+            sample: samples['SSIOAccountSample']
         }
     },
     ssioInsertionOrder/create: {
@@ -386,7 +354,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Create insertion order through SSIO.',
-            description: 'Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.',
+            description: '  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.',
             hidden: false,
         },
         operation: {
@@ -397,10 +365,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...SSIOCreateInsertionOrderRequest.fields(),
+                ...SSIOInsertionOrderCreate.fields(),
             ],
             outputFields: [
-                ...SSIOCreateInsertionOrderResponse.fields('', false),
+                ...SSIOInsertionOrder.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -414,7 +382,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...SSIOCreateInsertionOrderRequest.mapping(bundle),
+                        ...SSIOInsertionOrderCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -423,7 +391,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['SSIOCreateInsertionOrderResponseSample']
+            sample: samples['SSIOInsertionOrderSample']samples['SSIOInsertionOrderSample']
         }
     },
     ssioInsertionOrder/edit: {
@@ -431,7 +399,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Edit insertion order through SSIO.',
-            description: 'Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.',
+            description: '  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.',
             hidden: false,
         },
         operation: {
@@ -442,10 +410,10 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
-                ...SSIOEditInsertionOrderRequest.fields(),
+                ...SSIOInsertionOrderUpdate.fields(),
             ],
             outputFields: [
-                ...SSIOEditInsertionOrderResponse.fields('', false),
+                ...SSIOInsertionOrder.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -459,7 +427,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...SSIOEditInsertionOrderRequest.mapping(bundle),
+                        ...SSIOInsertionOrderUpdate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -468,7 +436,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['SSIOEditInsertionOrderResponseSample']
+            sample: samples['SSIOInsertionOrderSample']
         }
     },
     ssioInsertionOrdersStatus/getByAdAccount: {
@@ -476,7 +444,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Get insertion order status by ad account id.',
-            description: 'Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.',
+            description: '  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.',
             hidden: false,
         },
         operation: {
@@ -494,7 +462,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
                 },
             ],
@@ -531,7 +499,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Get insertion order status by pin order id.',
-            description: 'Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.',
+            description: '  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.',
             hidden: false,
         },
         operation: {
@@ -580,7 +548,7 @@ module.exports = {
         noun: 'billing',
         display: {
             label: 'Get Salesforce order lines by ad account id.',
-            description: 'Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.',
+            description: '  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.',
             hidden: false,
         },
         operation: {
@@ -592,19 +560,19 @@ module.exports = {
                     required: true,
                 },
                 {
+                    key: 'pin_order_id',
+                    label: 'The pin order id associated with the SSIO insertion order',
+                    type: 'string',
+                },
+                {
                     key: 'bookmark',
                     label: 'Cursor used to fetch the next page of items',
                     type: 'string',
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.',
                     type: 'integer',
-                },
-                {
-                    key: 'pin_order_id',
-                    label: 'The pin order id associated with the ssio insertino order',
-                    type: 'string',
                 },
             ],
             outputFields: [
@@ -620,9 +588,9 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'pin_order_id': bundle.inputData?.['pin_order_id'],
                         'bookmark': bundle.inputData?.['bookmark'],
                         'page_size': bundle.inputData?.['page_size'],
-                        'pin_order_id': bundle.inputData?.['pin_order_id'],
                     },
                     body: {
                     },

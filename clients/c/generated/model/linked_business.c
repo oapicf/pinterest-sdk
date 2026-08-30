@@ -16,13 +16,13 @@ static linked_business_t *linked_business_create_internal(
     if (!linked_business_local_var) {
         return NULL;
     }
+    memset(linked_business_local_var, 0, sizeof(linked_business_t));
+    linked_business_local_var->_library_owned = 1;
     linked_business_local_var->image_large_url = image_large_url;
     linked_business_local_var->image_medium_url = image_medium_url;
     linked_business_local_var->image_small_url = image_small_url;
     linked_business_local_var->image_xlarge_url = image_xlarge_url;
     linked_business_local_var->username = username;
-
-    linked_business_local_var->_library_owned = 1;
     return linked_business_local_var;
 }
 
@@ -33,13 +33,16 @@ __attribute__((deprecated)) linked_business_t *linked_business_create(
     char *image_xlarge_url,
     char *username
     ) {
-    return linked_business_create_internal (
+    linked_business_t *result = linked_business_create_internal (
         image_large_url,
         image_medium_url,
         image_small_url,
         image_xlarge_url,
         username
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void linked_business_free(linked_business_t *linked_business) {
@@ -128,6 +131,16 @@ linked_business_t *linked_business_parseFromJSON(cJSON *linked_businessJSON){
 
     linked_business_t *linked_business_local_var = NULL;
 
+    char *image_large_url_local_str = NULL;
+
+    char *image_medium_url_local_str = NULL;
+
+    char *image_small_url_local_str = NULL;
+
+    char *image_xlarge_url_local_str = NULL;
+
+    char *username_local_str = NULL;
+
     // linked_business->image_large_url
     cJSON *image_large_url = cJSON_GetObjectItemCaseSensitive(linked_businessJSON, "image_large_url");
     if (cJSON_IsNull(image_large_url)) {
@@ -189,16 +202,46 @@ linked_business_t *linked_business_parseFromJSON(cJSON *linked_businessJSON){
     }
 
 
+    if (image_large_url && !cJSON_IsNull(image_large_url)) image_large_url_local_str = strdup(image_large_url->valuestring);
+    if (image_medium_url && !cJSON_IsNull(image_medium_url)) image_medium_url_local_str = strdup(image_medium_url->valuestring);
+    if (image_small_url && !cJSON_IsNull(image_small_url)) image_small_url_local_str = strdup(image_small_url->valuestring);
+    if (image_xlarge_url && !cJSON_IsNull(image_xlarge_url)) image_xlarge_url_local_str = strdup(image_xlarge_url->valuestring);
+    if (username && !cJSON_IsNull(username)) username_local_str = strdup(username->valuestring);
+
     linked_business_local_var = linked_business_create_internal (
-        image_large_url && !cJSON_IsNull(image_large_url) ? strdup(image_large_url->valuestring) : NULL,
-        image_medium_url && !cJSON_IsNull(image_medium_url) ? strdup(image_medium_url->valuestring) : NULL,
-        image_small_url && !cJSON_IsNull(image_small_url) ? strdup(image_small_url->valuestring) : NULL,
-        image_xlarge_url && !cJSON_IsNull(image_xlarge_url) ? strdup(image_xlarge_url->valuestring) : NULL,
-        username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL
+        image_large_url_local_str,
+        image_medium_url_local_str,
+        image_small_url_local_str,
+        image_xlarge_url_local_str,
+        username_local_str
         );
+
+    if (!linked_business_local_var) {
+        goto end;
+    }
 
     return linked_business_local_var;
 end:
+    if (image_large_url_local_str) {
+        free(image_large_url_local_str);
+        image_large_url_local_str = NULL;
+    }
+    if (image_medium_url_local_str) {
+        free(image_medium_url_local_str);
+        image_medium_url_local_str = NULL;
+    }
+    if (image_small_url_local_str) {
+        free(image_small_url_local_str);
+        image_small_url_local_str = NULL;
+    }
+    if (image_xlarge_url_local_str) {
+        free(image_xlarge_url_local_str);
+        image_xlarge_url_local_str = NULL;
+    }
+    if (username_local_str) {
+        free(username_local_str);
+        username_local_str = NULL;
+    }
     return NULL;
 
 }

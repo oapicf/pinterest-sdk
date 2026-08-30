@@ -3,11 +3,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoTargetingEnabled** | **Boolean** | Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;&quot;&quot;https://help.pinterest.com/en/business/article/expanded-targeting&quot;&quot; target&#x3D;&quot;&quot;_blank&quot;&quot;&gt;&quot;&quot;expanded targeting&quot;&quot;&lt;/a&gt;. | [optional] [default to $true]
+**AutoTargetingEnabled** | **Boolean** | Enable auto-targeting for ad group. Also known as [&quot;&quot;expanded targeting&quot;&quot;](https://help.pinterest.com/en/business/article/expanded-targeting). | [optional] [default to $true]
 **Keywords** | [**TargetingTemplateKeyword[]**](TargetingTemplateKeyword.md) |  | [optional] 
-**Name** | **String** | Name of targeting template. | 
+**Name** | **String** | targeting template name | 
 **PlacementGroup** | [**PlacementGroupType**](PlacementGroupType.md) |  | [optional] 
-**TargetingAttributes** | [**TargetingSpec**](TargetingSpec.md) |  | 
+**TargetingAttributes** | [**TargetingSpecOptimal**](TargetingSpecOptimal.md) | targeting profile attributes | 
 **TrackingUrls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] 
 
 ## Examples
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $TargetingTemplateCreate = Initialize-PSOpenAPIToolsTargetingTemplateCreate  -AutoTargetingEnabled null `
- -Keywords [{value&#x3D;cats, match_type&#x3D;EXACT_NEGATIVE}] `
- -Name Gaming `
+ -Keywords null `
+ -Name null `
  -PlacementGroup null `
  -TargetingAttributes null `
  -TrackingUrls null

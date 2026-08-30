@@ -8,10 +8,10 @@ Request object for creating a feed. Please, be aware that \"default_country\" an
 Name | Type
 ------------ | -------------
 `catalogId` | string
-`catalogType` | [CatalogsType](CatalogsType.md)
+`catalogType` | string
 `credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
 `defaultCurrency` | [NullableCurrency](NullableCurrency.md)
-`defaultLocale` | [CatalogsFeedsCreateRequestDefaultLocale](CatalogsFeedsCreateRequestDefaultLocale.md)
+`defaultLocale` | [CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md)
 `format` | [CatalogsFormat](CatalogsFormat.md)
 `location` | string
 `name` | string

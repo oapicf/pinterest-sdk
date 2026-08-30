@@ -8,9 +8,9 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:openapi/src/model/error.dart';
 import 'package:openapi/src/model/notification_post_request.dart';
 import 'package:openapi/src/model/notification_response.dart';
+import 'package:openapi/src/model/pinterest_lib_error.dart';
 
 class NotificationApi {
 
@@ -24,7 +24,7 @@ class NotificationApi {
   /// Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests&#39; systems. This API is gated and you need to request access to this feature.
   ///
   /// Parameters:
-  /// * [notificationPostRequest] - notification event.
+  /// * [notificationPostRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -35,7 +35,7 @@ class NotificationApi {
   /// Returns a [Future] containing a [Response] with a [NotificationResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<NotificationResponse>> notificationPost({ 
-    required NotificationPostRequest notificationPostRequest,
+    NotificationPostRequest? notificationPostRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,

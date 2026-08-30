@@ -7,29 +7,29 @@
 #' @title CatalogsItemValidationErrors
 #' @description CatalogsItemValidationErrors Class
 #' @format An \code{R6Class} generator object
-#' @field ADULT_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field ADWORDS_FORMAT_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field AVAILABILITY_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field BLOCKLISTED_IMAGE_SIGNATURE  \link{CatalogsItemValidationDetails} [optional]
-#' @field DESCRIPTION_MISSING  \link{CatalogsItemValidationDetails} [optional]
-#' @field DUPLICATE_PRODUCTS  \link{CatalogsItemValidationDetails} [optional]
-#' @field IMAGE_LINK_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field IMAGE_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
-#' @field IMAGE_LINK_MISSING  \link{CatalogsItemValidationDetails} [optional]
-#' @field INVALID_DOMAIN  \link{CatalogsItemValidationDetails} [optional]
-#' @field ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE  \link{CatalogsItemValidationDetails} [optional]
-#' @field ITEMID_MISSING  \link{CatalogsItemValidationDetails} [optional]
-#' @field LINK_FORMAT_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
-#' @field LIST_PRICE_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED  \link{CatalogsItemValidationDetails} [optional]
-#' @field PARSE_LINE_ERROR  \link{CatalogsItemValidationDetails} [optional]
-#' @field PINJOIN_CONTENT_UNSAFE  \link{CatalogsItemValidationDetails} [optional]
-#' @field PRICE_CANNOT_BE_DETERMINED  \link{CatalogsItemValidationDetails} [optional]
-#' @field PRICE_MISSING  \link{CatalogsItemValidationDetails} [optional]
-#' @field PRODUCT_LINK_MISSING  \link{CatalogsItemValidationDetails} [optional]
-#' @field PRODUCT_PRICE_INVALID  \link{CatalogsItemValidationDetails} [optional]
-#' @field TITLE_MISSING  \link{CatalogsItemValidationDetails} [optional]
+#' @field ADULT_INVALID Item has an invalid adult value. \link{CatalogsItemValidationDetails} [optional]
+#' @field ADWORDS_FORMAT_INVALID Adword link contains too many characters. \link{CatalogsItemValidationDetails} [optional]
+#' @field AVAILABILITY_INVALID Item is missing availability value in its product metadata, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field BLOCKLISTED_IMAGE_SIGNATURE Item will not be published because it doesn't meet Pinterest's Merchant Guidelines. \link{CatalogsItemValidationDetails} [optional]
+#' @field DESCRIPTION_MISSING Item is missing description in its product metadata, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field DUPLICATE_PRODUCTS This product is duplicated. The duplicate entry will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field IMAGE_LINK_INVALID Image link is invalid. \link{CatalogsItemValidationDetails} [optional]
+#' @field IMAGE_LINK_LENGTH_TOO_LONG Item has image_link URL that contains too many characters, so the item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field IMAGE_LINK_MISSING Item is missing an image link URL in its product metadata, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field INVALID_DOMAIN Product link value doesn't match the verified domain associated with this account. \link{CatalogsItemValidationDetails} [optional]
+#' @field ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE Main image can't be found. \link{CatalogsItemValidationDetails} [optional]
+#' @field ITEMID_MISSING Item is missing item id in its product metadata, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field LINK_FORMAT_INVALID Link is invalid. \link{CatalogsItemValidationDetails} [optional]
+#' @field LINK_LENGTH_TOO_LONG Product link contains too many characters, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field LIST_PRICE_INVALID Item has a list price formatting error, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED Item exceed the maximum number of items per item group, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field PARSE_LINE_ERROR Item contains formating errors. \link{CatalogsItemValidationDetails} [optional]
+#' @field PINJOIN_CONTENT_UNSAFE Item will not be published because it doesn't meet Pinterest's Merchant Guidelines. \link{CatalogsItemValidationDetails} [optional]
+#' @field PRICE_CANNOT_BE_DETERMINED Item price cannot be determined because the price, list price, and sale price are all different. \link{CatalogsItemValidationDetails} [optional]
+#' @field PRICE_MISSING Product is missing a price, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field PRODUCT_LINK_MISSING Item is missing a link URL in its product metadata, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field PRODUCT_PRICE_INVALID Item has a price formatting error in its product metadata, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
+#' @field TITLE_MISSING Item is missing title in its product metadata, this item will not be published. \link{CatalogsItemValidationDetails} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -63,29 +63,29 @@ CatalogsItemValidationErrors <- R6::R6Class(
     #' @description
     #' Initialize a new CatalogsItemValidationErrors class.
     #'
-    #' @param ADULT_INVALID ADULT_INVALID
-    #' @param ADWORDS_FORMAT_INVALID ADWORDS_FORMAT_INVALID
-    #' @param AVAILABILITY_INVALID AVAILABILITY_INVALID
-    #' @param BLOCKLISTED_IMAGE_SIGNATURE BLOCKLISTED_IMAGE_SIGNATURE
-    #' @param DESCRIPTION_MISSING DESCRIPTION_MISSING
-    #' @param DUPLICATE_PRODUCTS DUPLICATE_PRODUCTS
-    #' @param IMAGE_LINK_INVALID IMAGE_LINK_INVALID
-    #' @param IMAGE_LINK_LENGTH_TOO_LONG IMAGE_LINK_LENGTH_TOO_LONG
-    #' @param IMAGE_LINK_MISSING IMAGE_LINK_MISSING
-    #' @param INVALID_DOMAIN INVALID_DOMAIN
-    #' @param ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
-    #' @param ITEMID_MISSING ITEMID_MISSING
-    #' @param LINK_FORMAT_INVALID LINK_FORMAT_INVALID
-    #' @param LINK_LENGTH_TOO_LONG LINK_LENGTH_TOO_LONG
-    #' @param LIST_PRICE_INVALID LIST_PRICE_INVALID
-    #' @param MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
-    #' @param PARSE_LINE_ERROR PARSE_LINE_ERROR
-    #' @param PINJOIN_CONTENT_UNSAFE PINJOIN_CONTENT_UNSAFE
-    #' @param PRICE_CANNOT_BE_DETERMINED PRICE_CANNOT_BE_DETERMINED
-    #' @param PRICE_MISSING PRICE_MISSING
-    #' @param PRODUCT_LINK_MISSING PRODUCT_LINK_MISSING
-    #' @param PRODUCT_PRICE_INVALID PRODUCT_PRICE_INVALID
-    #' @param TITLE_MISSING TITLE_MISSING
+    #' @param ADULT_INVALID Item has an invalid adult value.
+    #' @param ADWORDS_FORMAT_INVALID Adword link contains too many characters.
+    #' @param AVAILABILITY_INVALID Item is missing availability value in its product metadata, this item will not be published.
+    #' @param BLOCKLISTED_IMAGE_SIGNATURE Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
+    #' @param DESCRIPTION_MISSING Item is missing description in its product metadata, this item will not be published.
+    #' @param DUPLICATE_PRODUCTS This product is duplicated. The duplicate entry will not be published.
+    #' @param IMAGE_LINK_INVALID Image link is invalid.
+    #' @param IMAGE_LINK_LENGTH_TOO_LONG Item has image_link URL that contains too many characters, so the item will not be published.
+    #' @param IMAGE_LINK_MISSING Item is missing an image link URL in its product metadata, this item will not be published.
+    #' @param INVALID_DOMAIN Product link value doesn't match the verified domain associated with this account.
+    #' @param ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE Main image can't be found.
+    #' @param ITEMID_MISSING Item is missing item id in its product metadata, this item will not be published.
+    #' @param LINK_FORMAT_INVALID Link is invalid.
+    #' @param LINK_LENGTH_TOO_LONG Product link contains too many characters, this item will not be published.
+    #' @param LIST_PRICE_INVALID Item has a list price formatting error, this item will not be published.
+    #' @param MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED Item exceed the maximum number of items per item group, this item will not be published.
+    #' @param PARSE_LINE_ERROR Item contains formating errors.
+    #' @param PINJOIN_CONTENT_UNSAFE Item will not be published because it doesn't meet Pinterest's Merchant Guidelines.
+    #' @param PRICE_CANNOT_BE_DETERMINED Item price cannot be determined because the price, list price, and sale price are all different.
+    #' @param PRICE_MISSING Product is missing a price, this item will not be published.
+    #' @param PRODUCT_LINK_MISSING Item is missing a link URL in its product metadata, this item will not be published.
+    #' @param PRODUCT_PRICE_INVALID Item has a price formatting error in its product metadata, this item will not be published.
+    #' @param TITLE_MISSING Item is missing title in its product metadata, this item will not be published.
     #' @param ... Other optional arguments.
     initialize = function(`ADULT_INVALID` = NULL, `ADWORDS_FORMAT_INVALID` = NULL, `AVAILABILITY_INVALID` = NULL, `BLOCKLISTED_IMAGE_SIGNATURE` = NULL, `DESCRIPTION_MISSING` = NULL, `DUPLICATE_PRODUCTS` = NULL, `IMAGE_LINK_INVALID` = NULL, `IMAGE_LINK_LENGTH_TOO_LONG` = NULL, `IMAGE_LINK_MISSING` = NULL, `INVALID_DOMAIN` = NULL, `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` = NULL, `ITEMID_MISSING` = NULL, `LINK_FORMAT_INVALID` = NULL, `LINK_LENGTH_TOO_LONG` = NULL, `LIST_PRICE_INVALID` = NULL, `MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED` = NULL, `PARSE_LINE_ERROR` = NULL, `PINJOIN_CONTENT_UNSAFE` = NULL, `PRICE_CANNOT_BE_DETERMINED` = NULL, `PRICE_MISSING` = NULL, `PRODUCT_LINK_MISSING` = NULL, `PRODUCT_PRICE_INVALID` = NULL, `TITLE_MISSING` = NULL, ...) {
       if (!is.null(`ADULT_INVALID`)) {
@@ -215,97 +215,120 @@ CatalogsItemValidationErrors <- R6::R6Class(
       CatalogsItemValidationErrorsObject <- list()
       if (!is.null(self$`ADULT_INVALID`)) {
         CatalogsItemValidationErrorsObject[["ADULT_INVALID"]] <-
-          self$`ADULT_INVALID`$toSimpleType()
+          self$extractSimpleType(self$`ADULT_INVALID`)
       }
       if (!is.null(self$`ADWORDS_FORMAT_INVALID`)) {
         CatalogsItemValidationErrorsObject[["ADWORDS_FORMAT_INVALID"]] <-
-          self$`ADWORDS_FORMAT_INVALID`$toSimpleType()
+          self$extractSimpleType(self$`ADWORDS_FORMAT_INVALID`)
       }
       if (!is.null(self$`AVAILABILITY_INVALID`)) {
         CatalogsItemValidationErrorsObject[["AVAILABILITY_INVALID"]] <-
-          self$`AVAILABILITY_INVALID`$toSimpleType()
+          self$extractSimpleType(self$`AVAILABILITY_INVALID`)
       }
       if (!is.null(self$`BLOCKLISTED_IMAGE_SIGNATURE`)) {
         CatalogsItemValidationErrorsObject[["BLOCKLISTED_IMAGE_SIGNATURE"]] <-
-          self$`BLOCKLISTED_IMAGE_SIGNATURE`$toSimpleType()
+          self$extractSimpleType(self$`BLOCKLISTED_IMAGE_SIGNATURE`)
       }
       if (!is.null(self$`DESCRIPTION_MISSING`)) {
         CatalogsItemValidationErrorsObject[["DESCRIPTION_MISSING"]] <-
-          self$`DESCRIPTION_MISSING`$toSimpleType()
+          self$extractSimpleType(self$`DESCRIPTION_MISSING`)
       }
       if (!is.null(self$`DUPLICATE_PRODUCTS`)) {
         CatalogsItemValidationErrorsObject[["DUPLICATE_PRODUCTS"]] <-
-          self$`DUPLICATE_PRODUCTS`$toSimpleType()
+          self$extractSimpleType(self$`DUPLICATE_PRODUCTS`)
       }
       if (!is.null(self$`IMAGE_LINK_INVALID`)) {
         CatalogsItemValidationErrorsObject[["IMAGE_LINK_INVALID"]] <-
-          self$`IMAGE_LINK_INVALID`$toSimpleType()
+          self$extractSimpleType(self$`IMAGE_LINK_INVALID`)
       }
       if (!is.null(self$`IMAGE_LINK_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationErrorsObject[["IMAGE_LINK_LENGTH_TOO_LONG"]] <-
-          self$`IMAGE_LINK_LENGTH_TOO_LONG`$toSimpleType()
+          self$extractSimpleType(self$`IMAGE_LINK_LENGTH_TOO_LONG`)
       }
       if (!is.null(self$`IMAGE_LINK_MISSING`)) {
         CatalogsItemValidationErrorsObject[["IMAGE_LINK_MISSING"]] <-
-          self$`IMAGE_LINK_MISSING`$toSimpleType()
+          self$extractSimpleType(self$`IMAGE_LINK_MISSING`)
       }
       if (!is.null(self$`INVALID_DOMAIN`)) {
         CatalogsItemValidationErrorsObject[["INVALID_DOMAIN"]] <-
-          self$`INVALID_DOMAIN`$toSimpleType()
+          self$extractSimpleType(self$`INVALID_DOMAIN`)
       }
       if (!is.null(self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`)) {
         CatalogsItemValidationErrorsObject[["ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"]] <-
-          self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`$toSimpleType()
+          self$extractSimpleType(self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`)
       }
       if (!is.null(self$`ITEMID_MISSING`)) {
         CatalogsItemValidationErrorsObject[["ITEMID_MISSING"]] <-
-          self$`ITEMID_MISSING`$toSimpleType()
+          self$extractSimpleType(self$`ITEMID_MISSING`)
       }
       if (!is.null(self$`LINK_FORMAT_INVALID`)) {
         CatalogsItemValidationErrorsObject[["LINK_FORMAT_INVALID"]] <-
-          self$`LINK_FORMAT_INVALID`$toSimpleType()
+          self$extractSimpleType(self$`LINK_FORMAT_INVALID`)
       }
       if (!is.null(self$`LINK_LENGTH_TOO_LONG`)) {
         CatalogsItemValidationErrorsObject[["LINK_LENGTH_TOO_LONG"]] <-
-          self$`LINK_LENGTH_TOO_LONG`$toSimpleType()
+          self$extractSimpleType(self$`LINK_LENGTH_TOO_LONG`)
       }
       if (!is.null(self$`LIST_PRICE_INVALID`)) {
         CatalogsItemValidationErrorsObject[["LIST_PRICE_INVALID"]] <-
-          self$`LIST_PRICE_INVALID`$toSimpleType()
+          self$extractSimpleType(self$`LIST_PRICE_INVALID`)
       }
       if (!is.null(self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`)) {
         CatalogsItemValidationErrorsObject[["MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED"]] <-
-          self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`$toSimpleType()
+          self$extractSimpleType(self$`MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED`)
       }
       if (!is.null(self$`PARSE_LINE_ERROR`)) {
         CatalogsItemValidationErrorsObject[["PARSE_LINE_ERROR"]] <-
-          self$`PARSE_LINE_ERROR`$toSimpleType()
+          self$extractSimpleType(self$`PARSE_LINE_ERROR`)
       }
       if (!is.null(self$`PINJOIN_CONTENT_UNSAFE`)) {
         CatalogsItemValidationErrorsObject[["PINJOIN_CONTENT_UNSAFE"]] <-
-          self$`PINJOIN_CONTENT_UNSAFE`$toSimpleType()
+          self$extractSimpleType(self$`PINJOIN_CONTENT_UNSAFE`)
       }
       if (!is.null(self$`PRICE_CANNOT_BE_DETERMINED`)) {
         CatalogsItemValidationErrorsObject[["PRICE_CANNOT_BE_DETERMINED"]] <-
-          self$`PRICE_CANNOT_BE_DETERMINED`$toSimpleType()
+          self$extractSimpleType(self$`PRICE_CANNOT_BE_DETERMINED`)
       }
       if (!is.null(self$`PRICE_MISSING`)) {
         CatalogsItemValidationErrorsObject[["PRICE_MISSING"]] <-
-          self$`PRICE_MISSING`$toSimpleType()
+          self$extractSimpleType(self$`PRICE_MISSING`)
       }
       if (!is.null(self$`PRODUCT_LINK_MISSING`)) {
         CatalogsItemValidationErrorsObject[["PRODUCT_LINK_MISSING"]] <-
-          self$`PRODUCT_LINK_MISSING`$toSimpleType()
+          self$extractSimpleType(self$`PRODUCT_LINK_MISSING`)
       }
       if (!is.null(self$`PRODUCT_PRICE_INVALID`)) {
         CatalogsItemValidationErrorsObject[["PRODUCT_PRICE_INVALID"]] <-
-          self$`PRODUCT_PRICE_INVALID`$toSimpleType()
+          self$extractSimpleType(self$`PRODUCT_PRICE_INVALID`)
       }
       if (!is.null(self$`TITLE_MISSING`)) {
         CatalogsItemValidationErrorsObject[["TITLE_MISSING"]] <-
-          self$`TITLE_MISSING`$toSimpleType()
+          self$extractSimpleType(self$`TITLE_MISSING`)
       }
       return(CatalogsItemValidationErrorsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

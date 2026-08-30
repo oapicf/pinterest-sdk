@@ -13,7 +13,7 @@ import CatalogsRetailReportStatsParameters._
 
 case class CatalogsRetailReportStatsParameters (
   catalogType: CatalogType,
-report: CatalogsHotelReportStatsParametersReport)
+report: CatalogsRetailReportStatsParametersReport)
 
 object CatalogsRetailReportStatsParameters {
   import DateTimeCodecs._

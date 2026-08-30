@@ -8,11 +8,13 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
-import org.openapitools.server.model.AdAccountsCountryResponse
-import org.openapitools.server.model.BookClosedResponse
-import org.openapitools.server.model.DeliveryMetricsResponse
+import org.openapitools.server.model.AdAccountCountriesGet200Response
+import org.openapitools.server.model.BookClosed
+import org.openapitools.server.model.DeliveryMetricsGet200Response
 import org.openapitools.server.model.Error
-import org.openapitools.server.model.SingleInterestTargetingOptionResponse
+import org.openapitools.server.model.PublicTargetingType
+import org.openapitools.server.model.ReportType
+import org.openapitools.server.model.SingleInterestTargetingOption
 
 
 class ResourcesApi(
@@ -56,8 +58,8 @@ class ResourcesApi(
     } ~
     path("resources" / "targeting" / Segment) { (targetingType) => 
       get { 
-        parameters("client_id".as[String].?, "oauth_signature".as[String].?, "timestamp".as[String].?, "ad_account_id".as[String].?) { (clientId, oauthSignature, timestamp, adAccountId) => 
-            resourcesService.targetingOptionsGet(targetingType = targetingType, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp, adAccountId = adAccountId)
+        parameters("ad_account_id".as[String].?, "client_id".as[String].?, "oauth_signature".as[String].?, "timestamp".as[String].?) { (adAccountId, clientId, oauthSignature, timestamp) => 
+            resourcesService.targetingOptionsGet(targetingType = targetingType, adAccountId = adAccountId, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp)
         }
       }
     }
@@ -65,75 +67,165 @@ class ResourcesApi(
 
 object ResourcesApiPatterns {
 
-    val interestIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
+    val interestIdPattern: PathMatcher1[String] = PathMatcher("""^\\d+$""".r)
 }
 
 trait ResourcesApiService {
 
-  def adAccountCountriesGet200(responseAdAccountsCountryResponse: AdAccountsCountryResponse)(implicit toEntityMarshallerAdAccountsCountryResponse: ToEntityMarshaller[AdAccountsCountryResponse]): Route =
-    complete((200, responseAdAccountsCountryResponse))
+  def adAccountCountriesGet200(responseAdAccountCountriesGet200Response: AdAccountCountriesGet200Response)(implicit toEntityMarshallerAdAccountCountriesGet200Response: ToEntityMarshaller[AdAccountCountriesGet200Response]): Route =
+    complete((200, responseAdAccountCountriesGet200Response))
+  def adAccountCountriesGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def adAccountCountriesGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def adAccountCountriesGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def adAccountCountriesGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def adAccountCountriesGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def adAccountCountriesGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: AdAccountsCountryResponse
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: AdAccountCountriesGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def adAccountCountriesGet()
-      (implicit toEntityMarshallerAdAccountsCountryResponse: ToEntityMarshaller[AdAccountsCountryResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerAdAccountCountriesGet200Response: ToEntityMarshaller[AdAccountCountriesGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def deliveryMetricsGet200(responseDeliveryMetricsResponse: DeliveryMetricsResponse)(implicit toEntityMarshallerDeliveryMetricsResponse: ToEntityMarshaller[DeliveryMetricsResponse]): Route =
-    complete((200, responseDeliveryMetricsResponse))
+  def deliveryMetricsGet200(responseDeliveryMetricsGet200Response: DeliveryMetricsGet200Response)(implicit toEntityMarshallerDeliveryMetricsGet200Response: ToEntityMarshaller[DeliveryMetricsGet200Response]): Route =
+    complete((200, responseDeliveryMetricsGet200Response))
+  def deliveryMetricsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def deliveryMetricsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def deliveryMetricsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def deliveryMetricsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def deliveryMetricsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def deliveryMetricsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: DeliveryMetricsResponse
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: DeliveryMetricsGet200Response
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def deliveryMetricsGet(reportType: Option[String])
-      (implicit toEntityMarshallerDeliveryMetricsResponse: ToEntityMarshaller[DeliveryMetricsResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerDeliveryMetricsGet200Response: ToEntityMarshaller[DeliveryMetricsGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def interestTargetingOptionsGet200(responseSingleInterestTargetingOptionResponse: SingleInterestTargetingOptionResponse)(implicit toEntityMarshallerSingleInterestTargetingOptionResponse: ToEntityMarshaller[SingleInterestTargetingOptionResponse]): Route =
-    complete((200, responseSingleInterestTargetingOptionResponse))
+  def interestTargetingOptionsGet200(responseSingleInterestTargetingOption: SingleInterestTargetingOption)(implicit toEntityMarshallerSingleInterestTargetingOption: ToEntityMarshaller[SingleInterestTargetingOption]): Route =
+    complete((200, responseSingleInterestTargetingOption))
+  def interestTargetingOptionsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def interestTargetingOptionsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def interestTargetingOptionsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def interestTargetingOptionsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def interestTargetingOptionsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def interestTargetingOptionsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: SingleInterestTargetingOptionResponse
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: SingleInterestTargetingOption
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def interestTargetingOptionsGet(interestId: String)
-      (implicit toEntityMarshallerSingleInterestTargetingOptionResponse: ToEntityMarshaller[SingleInterestTargetingOptionResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerSingleInterestTargetingOption: ToEntityMarshaller[SingleInterestTargetingOption], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def leadFormQuestionsGet200: Route =
-    complete((200, "Success"))
+    complete((200, "The request has succeeded."))
+  def leadFormQuestionsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def leadFormQuestionsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def leadFormQuestionsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def leadFormQuestionsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def leadFormQuestionsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def leadFormQuestionsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded.
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def leadFormQuestionsGet()
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def metricsReadyStateGet200(responseBookClosedResponse: BookClosedResponse)(implicit toEntityMarshallerBookClosedResponse: ToEntityMarshaller[BookClosedResponse]): Route =
-    complete((200, responseBookClosedResponse))
+  def metricsReadyStateGet200(responseBookClosed: BookClosed)(implicit toEntityMarshallerBookClosed: ToEntityMarshaller[BookClosed]): Route =
+    complete((200, responseBookClosed))
+  def metricsReadyStateGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def metricsReadyStateGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def metricsReadyStateGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def metricsReadyStateGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def metricsReadyStateGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def metricsReadyStateGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: BookClosedResponse
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: BookClosed
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
   def metricsReadyStateGet(date: String)
-      (implicit toEntityMarshallerBookClosedResponse: ToEntityMarshaller[BookClosedResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerBookClosed: ToEntityMarshaller[BookClosed], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def targetingOptionsGet200(responseAnyarray: Seq[Any])(implicit toEntityMarshallerAnyarray: ToEntityMarshaller[Seq[Any]]): Route =
     complete((200, responseAnyarray))
+  def targetingOptionsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def targetingOptionsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def targetingOptionsGet403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def targetingOptionsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def targetingOptionsGet429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
   def targetingOptionsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: Seq[Any]
-   * Code: 0, Message: Unexpected error, DataType: Error
+   * Code: 200, Message: The request has succeeded., DataType: Seq[Any]
+   * Code: 400, Message: The request could not be understood by the server due to unexpected data., DataType: Error
+   * Code: 401, Message: Authentication is required and has either failed or not been provided., DataType: Error
+   * Code: 403, Message: The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource., DataType: Error
+   * Code: 404, Message: The requested resource could not be found on this server., DataType: Error
+   * Code: 429, Message: The user has sent too many requests in a given amount of time and is being rate limited., DataType: Error
+   * Code: 0, Message: An unexpected error response., DataType: Error
    */
-  def targetingOptionsGet(targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String], adAccountId: Option[String])
+  def targetingOptionsGet(targetingType: String, adAccountId: Option[String], clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String])
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
@@ -141,15 +233,15 @@ trait ResourcesApiService {
 trait ResourcesApiMarshaller {
 
 
-  implicit def toEntityMarshallerAdAccountsCountryResponse: ToEntityMarshaller[AdAccountsCountryResponse]
+  implicit def toEntityMarshallerAdAccountCountriesGet200Response: ToEntityMarshaller[AdAccountCountriesGet200Response]
 
-  implicit def toEntityMarshallerSingleInterestTargetingOptionResponse: ToEntityMarshaller[SingleInterestTargetingOptionResponse]
-
-  implicit def toEntityMarshallerBookClosedResponse: ToEntityMarshaller[BookClosedResponse]
-
-  implicit def toEntityMarshallerDeliveryMetricsResponse: ToEntityMarshaller[DeliveryMetricsResponse]
+  implicit def toEntityMarshallerBookClosed: ToEntityMarshaller[BookClosed]
 
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
+
+  implicit def toEntityMarshallerDeliveryMetricsGet200Response: ToEntityMarshaller[DeliveryMetricsGet200Response]
+
+  implicit def toEntityMarshallerSingleInterestTargetingOption: ToEntityMarshaller[SingleInterestTargetingOption]
 
 }
 

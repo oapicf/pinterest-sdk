@@ -10,13 +10,14 @@
   {
    (ds/opt :description) string?
    (ds/opt :images) image-size-spec
-   (ds/opt :item_type) string?
+   (ds/req :item_type) string?
    (ds/opt :link) string?
    (ds/opt :title) string?
    (ds/opt :cover_image_url) string?
    (ds/opt :duration) float?
    (ds/opt :height) int?
    (ds/opt :video_url) string?
+   (ds/opt :video_url_hls) string?
    (ds/opt :width) int?
    })
 

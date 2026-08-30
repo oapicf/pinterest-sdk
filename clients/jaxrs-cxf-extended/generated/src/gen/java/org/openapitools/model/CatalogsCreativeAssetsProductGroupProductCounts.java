@@ -18,6 +18,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreativeAssetsProductGroupProductCounts  {
   
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private BigDecimal appLinks;
+
 public enum CatalogTypeEnum {
 
     @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
@@ -52,11 +56,41 @@ public enum CatalogTypeEnum {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
+  private BigDecimal images;
+
+  @ApiModelProperty(required = true, value = "")
+  @Valid
   private BigDecimal total;
 
   @ApiModelProperty(required = true, value = "")
   @Valid
   private BigDecimal videos;
+ /**
+  * Get appLinks
+  * minimum: 0
+  * @return appLinks
+  */
+  @JsonProperty("app_links")
+  @NotNull
+ @DecimalMin("0")  public BigDecimal getAppLinks() {
+    return appLinks;
+  }
+
+  /**
+   * Sets the <code>appLinks</code> property.
+   */
+ public void setAppLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+  }
+
+  /**
+   * Sets the <code>appLinks</code> property.
+   */
+  public CatalogsCreativeAssetsProductGroupProductCounts appLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+    return this;
+  }
+
  /**
   * Get catalogType
   * @return catalogType
@@ -79,6 +113,32 @@ public enum CatalogTypeEnum {
    */
   public CatalogsCreativeAssetsProductGroupProductCounts catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+    return this;
+  }
+
+ /**
+  * Get images
+  * minimum: 0
+  * @return images
+  */
+  @JsonProperty("images")
+  @NotNull
+ @DecimalMin("0")  public BigDecimal getImages() {
+    return images;
+  }
+
+  /**
+   * Sets the <code>images</code> property.
+   */
+ public void setImages(BigDecimal images) {
+    this.images = images;
+  }
+
+  /**
+   * Sets the <code>images</code> property.
+   */
+  public CatalogsCreativeAssetsProductGroupProductCounts images(BigDecimal images) {
+    this.images = images;
     return this;
   }
 
@@ -144,14 +204,16 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsCreativeAssetsProductGroupProductCounts catalogsCreativeAssetsProductGroupProductCounts = (CatalogsCreativeAssetsProductGroupProductCounts) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+    return Objects.equals(this.appLinks, catalogsCreativeAssetsProductGroupProductCounts.appLinks) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+        Objects.equals(this.images, catalogsCreativeAssetsProductGroupProductCounts.images) &&
         Objects.equals(this.total, catalogsCreativeAssetsProductGroupProductCounts.total) &&
         Objects.equals(this.videos, catalogsCreativeAssetsProductGroupProductCounts.videos);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, total, videos);
+    return Objects.hash(appLinks, catalogType, images, total, videos);
   }
 
   @Override
@@ -159,7 +221,9 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroupProductCounts {\n");
     
+    sb.append("    appLinks: ").append(toIndentedString(appLinks)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    videos: ").append(toIndentedString(videos)).append("\n");
     sb.append("}");
@@ -171,10 +235,7 @@ public enum CatalogTypeEnum {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

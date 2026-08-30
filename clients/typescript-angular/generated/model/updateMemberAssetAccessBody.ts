@@ -7,13 +7,16 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { UpdateMemberAssetAccessBodyAccessesInner } from './updateMemberAssetAccessBodyAccessesInner';
+import { UpdateMemberAssetAccessItem } from './updateMemberAssetAccessItem';
 
 
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  */
 export interface UpdateMemberAssetAccessBody { 
-    accesses: Array<UpdateMemberAssetAccessBodyAccessesInner>;
+    /**
+     * List of member asset accesses to assign or update.
+     */
+    accesses: Array<UpdateMemberAssetAccessItem>;
 }
 

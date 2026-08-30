@@ -337,7 +337,7 @@ The class is defined in **[Country.java](../../src/main/java/org/openapitools/mo
 
 * `NL` (value: `"NL"`)
 
-* `NO` (value: `"NO"`)
+* `FALSE` (value: `"false"`)
 
 * `NP` (value: `"NP"`)
 

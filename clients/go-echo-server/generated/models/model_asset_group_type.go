@@ -1,5 +1,5 @@
 package models
-// AssetGroupType : Asset group type
+// AssetGroupType : Asset group type.
 type AssetGroupType string
 
 // List of AssetGroupType

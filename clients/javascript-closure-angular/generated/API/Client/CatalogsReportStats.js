@@ -7,12 +7,6 @@ goog.provide('API.Client.CatalogsReportStats');
 API.Client.CatalogsReportStats = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsReportStats.prototype.reportType;
-
-/**
  * ID of the catalog entity.
  * @type {!string}
  * @export
@@ -48,6 +42,12 @@ API.Client.CatalogsReportStats.prototype.message;
 API.Client.CatalogsReportStats.prototype.occurrences;
 
 /**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsReportStats.prototype.reportType;
+
+/**
  * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
  * @type {!string}
  * @export
@@ -70,7 +70,6 @@ API.Client.CatalogsReportStats.prototype.ineligibleForOrganic;
 
 /** @enum {string} */
 API.Client.CatalogsReportStats.ReportTypeEnum = { 
-  FEED_INGESTION_ISSUES: 'FEED_INGESTION_ISSUES',
   DISTRIBUTION_ISSUES: 'DISTRIBUTION_ISSUES',
 }
 /** @enum {string} */

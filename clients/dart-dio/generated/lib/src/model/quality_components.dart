@@ -188,78 +188,89 @@ class _$QualityComponentsSerializer implements PrimitiveSerializer<QualityCompon
         case r'advertiser_external_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.advertiserExternalId.replace(valueDes);
           break;
         case r'click_id_epik':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.clickIdEpik.replace(valueDes);
           break;
         case r'external_event_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.externalEventId.replace(valueDes);
           break;
         case r'hashed_email':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.hashedEmail.replace(valueDes);
           break;
         case r'hashed_maid':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.hashedMaid.replace(valueDes);
           break;
         case r'ip_address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.ipAddress.replace(valueDes);
           break;
         case r'order_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.orderId.replace(valueDes);
           break;
         case r'order_value':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.orderValue.replace(valueDes);
           break;
         case r'product_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.productId.replace(valueDes);
           break;
         case r'source_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.sourceUrl.replace(valueDes);
           break;
         case r'user_agent':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
-          ) as BuiltMap<String, QualityComponentDetails>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType(QualityComponentDetails)]),
+          ) as BuiltMap<String, QualityComponentDetails>?;
+          if (valueDes == null) continue;
           result.userAgent.replace(valueDes);
           break;
         default:

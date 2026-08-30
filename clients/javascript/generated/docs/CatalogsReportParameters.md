@@ -4,7 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalogType** | **String** |  | 
 **report** | [**CatalogsHotelReportParametersReport**](CatalogsHotelReportParametersReport.md) |  | 
+
+
+
+## Enum: CatalogTypeEnum
+
+
+* `HOTEL` (value: `"HOTEL"`)
+
+
 
 

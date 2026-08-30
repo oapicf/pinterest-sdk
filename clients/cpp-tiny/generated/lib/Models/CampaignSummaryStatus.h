@@ -2,7 +2,7 @@
 /*
  * CampaignSummaryStatus.h
  *
- * Summary status for campaign
+ * 
  */
 
 #ifndef TINY_CPP_CLIENT_CampaignSummaryStatus_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief Summary status for campaign
+/*! \brief 
  *
  *  \ingroup Models
  *

@@ -1,12 +1,37 @@
 
 <h2>InviteResponse</h2>
 <ul class="parameter">
+  <li class="param-required-false">assetsUnderscoresummary : InviteAssetsSummary
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">businessUnderscoreroles : List
+    <br/>The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscorebyUnderscorebusiness : BusinessAccessUserSummary
+    <br/>Metadata for the business that created the invite/request.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscorebyUnderscoreuser : BusinessAccessUserSummary
+    <br/>Metadata for the user that created the invite/request.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscoretime : Integer
+    <br/>The time the invite/request was created. Returned in milliseconds.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">id : String
     <br/>Unique identifier of the invite/request.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">inviteUnderscoredata : BaseInviteDataResponse_invite_data
+  <li class="param-required-false">inviteUnderscoredata : InviteDataResponse
     <br/>
   </li>
 </ul>
@@ -18,30 +43,5 @@
 <ul class="parameter">
   <li class="param-required-false">user : BusinessAccessUserSummary
     <br/>Metadata for the member/partner that was sent the invite/request.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">assetsUnderscoresummary : InviteAssetsSummary
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">businessUnderscoreroles : List
-    <br/>The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">createdUnderscorebyUnderscorebusiness : Object
-    <br/>Metadata for the business that created the invite/request.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">createdUnderscorebyUnderscoreuser : Object
-    <br/>Metadata for the user that created the invite/request.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">createdUnderscoretime : Integer
-    <br/>The time the invite/request was created. Returned in milliseconds.
   </li>
 </ul>

@@ -6,7 +6,7 @@ using namespace Tiny;
 
 CreateAssetAccessRequestBody::CreateAssetAccessRequestBody()
 {
-	asset_requests = std::list<CreateAssetAccessRequestBody_asset_requests_inner>();
+	asset_requests = std::list<CreateAssetAccessRequestItem>();
 }
 
 CreateAssetAccessRequestBody::CreateAssetAccessRequestBody(std::string jsonString)
@@ -31,8 +31,8 @@ CreateAssetAccessRequestBody::fromJson(std::string jsonObj)
         bourne::json value = object[asset_requestsKey];
 
 
-        std::list<CreateAssetAccessRequestBody_asset_requests_inner> asset_requests_list;
-        CreateAssetAccessRequestBody_asset_requests_inner element;
+        std::list<CreateAssetAccessRequestItem> asset_requests_list;
+        CreateAssetAccessRequestItem element;
         for(auto& var : value.array_range())
         {
 
@@ -57,12 +57,12 @@ CreateAssetAccessRequestBody::toJson()
 
 
 
-    std::list<CreateAssetAccessRequestBody_asset_requests_inner> asset_requests_list = getAssetRequests();
+    std::list<CreateAssetAccessRequestItem> asset_requests_list = getAssetRequests();
     bourne::json asset_requests_arr = bourne::json::array();
 
     for(auto& var : asset_requests_list)
     {
-        CreateAssetAccessRequestBody_asset_requests_inner obj = var;
+        CreateAssetAccessRequestItem obj = var;
         asset_requests_arr.append(obj.toJson());
     }
     object["asset_requests"] = asset_requests_arr;
@@ -74,14 +74,14 @@ CreateAssetAccessRequestBody::toJson()
 
 }
 
-std::list<CreateAssetAccessRequestBody_asset_requests_inner>
+std::list<CreateAssetAccessRequestItem>
 CreateAssetAccessRequestBody::getAssetRequests()
 {
 	return asset_requests;
 }
 
 void
-CreateAssetAccessRequestBody::setAssetRequests(std::list <CreateAssetAccessRequestBody_asset_requests_inner> asset_requests)
+CreateAssetAccessRequestBody::setAssetRequests(std::list<CreateAssetAccessRequestItem> asset_requests)
 {
 	this->asset_requests = asset_requests;
 }

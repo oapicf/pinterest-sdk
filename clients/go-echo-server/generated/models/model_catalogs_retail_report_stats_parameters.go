@@ -5,5 +5,5 @@ type CatalogsRetailReportStatsParameters struct {
 
 	CatalogType string `json:"catalog_type"`
 
-	Report CatalogsHotelReportStatsParametersReport `json:"report"`
+	Report CatalogsRetailReportStatsParametersReport `json:"report"`
 }

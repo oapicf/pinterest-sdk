@@ -9,7 +9,6 @@
  */
 import { ItemDeleteDiscontinuedBatchRecord } from './itemDeleteDiscontinuedBatchRecord';
 import { Country } from './country';
-import { BatchOperation } from './batchOperation';
 
 
 /**
@@ -25,7 +24,7 @@ export interface CatalogsItemsDeleteDiscontinuedBatchRequest {
      * We recommend using the CatalogsLocale values.
      */
     language: CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum;
-    operation: BatchOperation;
+    operation: CatalogsItemsDeleteDiscontinuedBatchRequest.OperationEnum;
 }
 export namespace CatalogsItemsDeleteDiscontinuedBatchRequest {
     export const LanguageEnum = {
@@ -118,7 +117,7 @@ export namespace CatalogsItemsDeleteDiscontinuedBatchRequest {
         Nb: 'NB',
         Ne: 'NE',
         Nl2: 'NL',
-        No: 'NO',
+        False: 'false',
         Pl: 'PL',
         Pt: 'PT',
         Ro: 'RO',
@@ -138,6 +137,10 @@ export namespace CatalogsItemsDeleteDiscontinuedBatchRequest {
         Zh: 'ZH'
     } as const;
     export type LanguageEnum = typeof LanguageEnum[keyof typeof LanguageEnum];
+    export const OperationEnum = {
+        DeleteDiscontinued: 'DELETE_DISCONTINUED'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

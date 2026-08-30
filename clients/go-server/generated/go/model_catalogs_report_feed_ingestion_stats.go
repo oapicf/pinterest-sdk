@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,7 +17,7 @@ package openapi
 type CatalogsReportFeedIngestionStats struct {
 
 	// ID of the catalog entity.
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// The event code that a diagnostics aggregated number references
 	Code int32 `json:"code,omitempty"`
@@ -37,7 +37,8 @@ type CatalogsReportFeedIngestionStats struct {
 	Severity string `json:"severity,omitempty"`
 }
 
-// AssertCatalogsReportFeedIngestionStatsRequired checks if the required fields are not zero-ed
+// AssertCatalogsReportFeedIngestionStatsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsReportFeedIngestionStatsRequired(obj CatalogsReportFeedIngestionStats) error {
 	return nil
 }

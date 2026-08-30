@@ -49,6 +49,6 @@ class BaseLeadAdsApi:
         self,
         ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
         subscription_id: Annotated[str, Field(strict=True, description="Unique identifier of a subscription.")],
-    ) -> None:
+    ) -> LeadSubscription:
         """Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;"""
         ...

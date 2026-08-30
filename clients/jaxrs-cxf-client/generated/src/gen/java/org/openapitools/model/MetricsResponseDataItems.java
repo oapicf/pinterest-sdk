@@ -1,0 +1,124 @@
+package org.openapitools.model;
+
+
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class MetricsResponseDataItems  {
+  
+ /**
+  * Metrics object containing the requested metric columns and their values. The keys are metric names (e.g., AD_GROUP_ID, DATE, SPEND_IN_DOLLAR) and values are the metric values (strings or numbers).
+  */
+  @ApiModelProperty(required = true, value = "Metrics object containing the requested metric columns and their values. The keys are metric names (e.g., AD_GROUP_ID, DATE, SPEND_IN_DOLLAR) and values are the metric values (strings or numbers).")
+
+  private Object metrics;
+
+ /**
+  * The targeting type for this data item (e.g., KEYWORD, APPTYPE, GENDER)
+  */
+  @ApiModelProperty(required = true, value = "The targeting type for this data item (e.g., KEYWORD, APPTYPE, GENDER)")
+
+  private String targetingType;
+
+ /**
+  * The targeting value for this data item (e.g., 'christmas decor ideas', 'iphone', 'female')
+  */
+  @ApiModelProperty(required = true, value = "The targeting value for this data item (e.g., 'christmas decor ideas', 'iphone', 'female')")
+
+  private String targetingValue;
+ /**
+   * Metrics object containing the requested metric columns and their values. The keys are metric names (e.g., AD_GROUP_ID, DATE, SPEND_IN_DOLLAR) and values are the metric values (strings or numbers).
+   * @return metrics
+  **/
+  @JsonProperty("metrics")
+  public Object getMetrics() {
+    return metrics;
+  }
+
+  public void setMetrics(Object metrics) {
+    this.metrics = metrics;
+  }
+
+  public MetricsResponseDataItems metrics(Object metrics) {
+    this.metrics = metrics;
+    return this;
+  }
+
+ /**
+   * The targeting type for this data item (e.g., KEYWORD, APPTYPE, GENDER)
+   * @return targetingType
+  **/
+  @JsonProperty("targeting_type")
+  public String getTargetingType() {
+    return targetingType;
+  }
+
+  public void setTargetingType(String targetingType) {
+    this.targetingType = targetingType;
+  }
+
+  public MetricsResponseDataItems targetingType(String targetingType) {
+    this.targetingType = targetingType;
+    return this;
+  }
+
+ /**
+   * The targeting value for this data item (e.g., &#39;christmas decor ideas&#39;, &#39;iphone&#39;, &#39;female&#39;)
+   * @return targetingValue
+  **/
+  @JsonProperty("targeting_value")
+  public String getTargetingValue() {
+    return targetingValue;
+  }
+
+  public void setTargetingValue(String targetingValue) {
+    this.targetingValue = targetingValue;
+  }
+
+  public MetricsResponseDataItems targetingValue(String targetingValue) {
+    this.targetingValue = targetingValue;
+    return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    MetricsResponseDataItems metricsResponseDataItems = (MetricsResponseDataItems) o;
+    return Objects.equals(this.metrics, metricsResponseDataItems.metrics) &&
+        Objects.equals(this.targetingType, metricsResponseDataItems.targetingType) &&
+        Objects.equals(this.targetingValue, metricsResponseDataItems.targetingValue);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(metrics, targetingType, targetingValue);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class MetricsResponseDataItems {\n");
+    
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
+    sb.append("    targetingType: ").append(toIndentedString(targetingType)).append("\n");
+    sb.append("    targetingValue: ").append(toIndentedString(targetingValue)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

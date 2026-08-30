@@ -23,14 +23,14 @@ TrendingKeyword::~TrendingKeyword()
 void
 TrendingKeyword::__init()
 {
-	//demographics = new TrendingKeyword_demographics();
+	//demographics = new TrendingKeywordDemographics();
 	//has_prediction = bool(false);
 	//keyword = std::string();
 	//pct_growth_mom = int(0);
 	//pct_growth_wow = int(0);
 	//pct_growth_yoy = int(0);
-	//predicted_time_series = new PredictedTimeSeries();
-	//time_series = new TimeSeries();
+	//predicted_time_series = null;
+	//time_series = null;
 }
 
 void
@@ -89,11 +89,11 @@ TrendingKeyword::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TrendingKeyword_demographics")) {
-			jsonToValue(&demographics, node, "TrendingKeyword_demographics", "TrendingKeyword_demographics");
+		if (isprimitive("TrendingKeywordDemographics")) {
+			jsonToValue(&demographics, node, "TrendingKeywordDemographics", "TrendingKeywordDemographics");
 		} else {
 			
-			TrendingKeyword_demographics* obj = static_cast<TrendingKeyword_demographics*> (&demographics);
+			TrendingKeywordDemographics* obj = static_cast<TrendingKeywordDemographics*> (&demographics);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -193,13 +193,13 @@ TrendingKeyword::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("TrendingKeyword_demographics")) {
-		TrendingKeyword_demographics obj = getDemographics();
-		node = converttoJson(&obj, "TrendingKeyword_demographics", "");
+	if (isprimitive("TrendingKeywordDemographics")) {
+		TrendingKeywordDemographics obj = getDemographics();
+		node = converttoJson(&obj, "TrendingKeywordDemographics", "");
 	}
 	else {
 		
-		TrendingKeyword_demographics obj = static_cast<TrendingKeyword_demographics> (getDemographics());
+		TrendingKeywordDemographics obj = static_cast<TrendingKeywordDemographics> (getDemographics());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -288,14 +288,14 @@ TrendingKeyword::toJson()
 	return ret;
 }
 
-TrendingKeyword_demographics
+TrendingKeywordDemographics
 TrendingKeyword::getDemographics()
 {
 	return demographics;
 }
 
 void
-TrendingKeyword::setDemographics(TrendingKeyword_demographics  demographics)
+TrendingKeyword::setDemographics(TrendingKeywordDemographics  demographics)
 {
 	this->demographics = demographics;
 }

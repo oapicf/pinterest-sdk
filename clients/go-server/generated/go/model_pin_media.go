@@ -5,12 +5,17 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
+
+import (
+	"encoding/json"
+	"fmt"
+)
 
 
 
@@ -32,23 +37,118 @@ type PinMedia struct {
 	// Video url (720p).  **Note:** This field is limited and not available to all apps.
 	VideoUrl *string `json:"video_url,omitempty"`
 
+	// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	VideoUrlHls *string `json:"video_url_hls,omitempty"`
+
 	// Width (in pixels). Field maybe null after creation due to video processing time.
 	Width *int32 `json:"width,omitempty"`
 
 	Items []PinMediaMetadata `json:"items,omitempty"`
 }
-
-// AssertPinMediaRequired checks if the required fields are not zero-ed
-func AssertPinMediaRequired(obj PinMedia) error {
-	elements := map[string]interface{}{
-		"media_type": obj.MediaType,
+// UnmarshalJSON validates required property keys then unmarshals into PinMedia
+func (o *PinMedia) UnmarshalJSON(data []byte) (err error) {
+	// Presence is checked against required fields that exist on this struct,
+	// including fields promoted from embedded allOf parents.
+	requiredProperties := []string{
+		"media_type",
 	}
-	for name, el := range elements {
-		if isZero := IsZeroValue(el); isZero {
-			return &RequiredError{Field: name}
+
+	requiredNullableProperties := map[string]bool{
+		"media_type": false,
+	}
+
+	allowedJsonKeys := map[string]struct{}{
+		"images": {},
+		"media_type": {},
+		"cover_image_url": {},
+		"duration": {},
+		"height": {},
+		"video_url": {},
+		"video_url_hls": {},
+		"width": {},
+		"items": {},
+	}
+
+	allProperties := make(map[string]json.RawMessage)
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		value, exists := allProperties[requiredProperty]
+		if !exists {
+			return &RequiredError{Field: requiredProperty}
+		}
+		if string(value) == "null" && !requiredNullableProperties[requiredProperty] {
+			return &RequiredError{Field: requiredProperty}
 		}
 	}
 
+	for key := range allProperties {
+		if _, exists := allowedJsonKeys[key]; !exists {
+			return fmt.Errorf("json: unknown field %q", key)
+		}
+	}
+
+	var decoded PinMedia
+
+	if value, exists := allProperties["images"]; exists {
+		if err = json.Unmarshal(value, &decoded.Images); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["media_type"]; exists {
+		if err = json.Unmarshal(value, &decoded.MediaType); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["cover_image_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.CoverImageUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["duration"]; exists {
+		if err = json.Unmarshal(value, &decoded.Duration); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["height"]; exists {
+		if err = json.Unmarshal(value, &decoded.Height); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["video_url"]; exists {
+		if err = json.Unmarshal(value, &decoded.VideoUrl); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["video_url_hls"]; exists {
+		if err = json.Unmarshal(value, &decoded.VideoUrlHls); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["width"]; exists {
+		if err = json.Unmarshal(value, &decoded.Width); err != nil {
+			return err
+		}
+	}
+	if value, exists := allProperties["items"]; exists {
+		if err = json.Unmarshal(value, &decoded.Items); err != nil {
+			return err
+		}
+	}
+
+	*o = decoded
+
+	return nil
+}
+
+// AssertPinMediaRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
+func AssertPinMediaRequired(obj PinMedia) error {
 	if err := AssertImageSizeRequired(obj.Images); err != nil {
 		return err
 	}

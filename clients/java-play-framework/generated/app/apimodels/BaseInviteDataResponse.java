@@ -1,7 +1,7 @@
 package apimodels;
 
-import apimodels.BaseInviteDataResponseInviteData;
 import apimodels.BusinessAccessUserSummary;
+import apimodels.InviteDataResponse;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -9,9 +9,9 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * BaseInviteDataResponse
+ * Common invite/request data returned by the business access endpoints.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BaseInviteDataResponse   {
   @JsonProperty("id")
@@ -22,7 +22,7 @@ public class BaseInviteDataResponse   {
   @JsonProperty("invite_data")
   @Valid
 
-  private BaseInviteDataResponseInviteData inviteData;
+  private InviteDataResponse inviteData;
 
   @JsonProperty("is_received_invite")
   
@@ -50,7 +50,7 @@ public class BaseInviteDataResponse   {
     this.id = id;
   }
 
-  public BaseInviteDataResponse inviteData(BaseInviteDataResponseInviteData inviteData) {
+  public BaseInviteDataResponse inviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
     return this;
   }
@@ -59,11 +59,11 @@ public class BaseInviteDataResponse   {
    * Get inviteData
    * @return inviteData
   **/
-  public BaseInviteDataResponseInviteData getInviteData() {
+  public InviteDataResponse getInviteData() {
     return inviteData;
   }
 
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
+  public void setInviteData(InviteDataResponse inviteData) {
     this.inviteData = inviteData;
   }
 
@@ -141,10 +141,7 @@ public class BaseInviteDataResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

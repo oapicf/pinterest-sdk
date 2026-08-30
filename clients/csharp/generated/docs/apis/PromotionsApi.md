@@ -12,7 +12,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="promotionscreate"></a>
 # **PromotionsCreate**
-> PromotionsResponse PromotionsCreate (string adAccountId, List<PromotionCreateRequest> promotionCreateRequest)
+> PromotionsResponse PromotionsCreate (string adAccountId, List<PromotionCreate> promotionCreate)
 
 Create promotions
 
@@ -24,7 +24,7 @@ Create multiple new promotions.
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
-| **promotionCreateRequest** | [**List&lt;PromotionCreateRequest&gt;**](PromotionCreateRequest.md) | List of promotions to create, size limit [1, 30]. |  |
+| **promotionCreate** | [**List&lt;PromotionCreate&gt;**](PromotionCreate.md) |  |  |
 
 ### Return type
 
@@ -43,15 +43,19 @@ Create multiple new promotions.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid create promotions request parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="promotionsdelete"></a>
 # **PromotionsDelete**
-> void PromotionsDelete (string adAccountId, string promotionId)
+> Promotion PromotionsDelete (string promotionId, string adAccountId)
 
 Delete promotion by id
 
@@ -62,12 +66,12 @@ Delete a promotion within Pinterest.
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| **promotionId** | **string** | Promotion ID |  |
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
-| **promotionId** | **string** | Unique identifier of a promotion |  |
 
 ### Return type
 
-void (empty response body)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -82,14 +86,20 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Promotion deleted successfully |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="promotionsget"></a>
 # **PromotionsGet**
-> PromotionResponse PromotionsGet (string adAccountId, string promotionId)
+> Promotion PromotionsGet (string promotionId, string adAccountId)
 
 Get promotion by id
 
@@ -100,12 +110,12 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| **promotionId** | **string** | Promotion ID |  |
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
-| **promotionId** | **string** | Unique identifier of a promotion |  |
 
 ### Return type
 
-[**PromotionResponse**](PromotionResponse.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -120,15 +130,19 @@ Get a promotion by its Pinterest-specific id. It must be associated with the pro
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | The promotion ID for the given ad account ID was not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="promotionslist"></a>
 # **PromotionsList**
-> PromotionsList200Response PromotionsList (string adAccountId, int pageSize = null, string order = null, string bookmark = null)
+> PromotionsList200Response PromotionsList (string adAccountId, string bookmark = null, int pageSize = null, PinterestLibPaginationOrder order = null)
 
 Get promotions
 
@@ -140,9 +154,9 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
-| **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]  |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
+| **pageSize** | **int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
+| **order** | **PinterestLibPaginationOrder** | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional]  |
 
 ### Return type
 
@@ -161,15 +175,19 @@ Gets all promotions associated with an ad account ID that can be applied to an a
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid ad account promotions parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="promotionsupdate"></a>
 # **PromotionsUpdate**
-> PromotionsResponse PromotionsUpdate (string adAccountId, List<PromotionUpdateRequest> promotionUpdateRequest)
+> PromotionsResponse PromotionsUpdate (string adAccountId, List<PromotionBatchUpdate> promotionBatchUpdate)
 
 Update promotions
 
@@ -181,7 +199,7 @@ Update multiple promotions.
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
-| **promotionUpdateRequest** | [**List&lt;PromotionUpdateRequest&gt;**](PromotionUpdateRequest.md) | List of promotions to create, size limit [1, 30]. |  |
+| **promotionBatchUpdate** | [**List&lt;PromotionBatchUpdate&gt;**](PromotionBatchUpdate.md) |  |  |
 
 ### Return type
 
@@ -200,9 +218,13 @@ Update multiple promotions.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Invalid create promotions request parameters. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const CatalogsRetailBatchRequest_items_inner = require('../models/CatalogsRetailBatchRequest_items_inner');
+const CatalogsRetailBatchRequestItemsItems = require('../models/CatalogsRetailBatchRequestItemsItems');
 const Country = require('../models/Country');
 
 module.exports = {
@@ -27,7 +27,7 @@ module.exports = {
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
-                children: CatalogsRetailBatchRequest_items_inner.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+                children: CatalogsRetailBatchRequestItemsItems.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
                 key: `${keyPrefix}language`,
@@ -124,7 +124,7 @@ module.exports = {
                     'NB',
                     'NE',
                     'NL',
-                    'NO',
+                    'false',
                     'PL',
                     'PT',
                     'RO',
@@ -152,7 +152,7 @@ module.exports = {
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'country': bundle.inputData?.[`${keyPrefix}country`],
-            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, CatalogsRetailBatchRequest_items_inner),
+            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, CatalogsRetailBatchRequestItemsItems),
             'language': bundle.inputData?.[`${keyPrefix}language`],
         }
     },

@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.integration_logs_invalid_log_response_rejected_logs_inner import IntegrationLogsInvalidLogResponseRejectedLogsInner  # noqa: F401,E501
+from app.openapi_server.models.integration_logs_invalid_log_response_rejected_logs_items import IntegrationLogsInvalidLogResponseRejectedLogsItems  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class IntegrationLogsInvalidLogResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, rejected_logs: List[IntegrationLogsInvalidLogResponseRejectedLogsInner]=None):  # noqa: E501
+    def __init__(self, rejected_logs: List[IntegrationLogsInvalidLogResponseRejectedLogsItems]=None):  # noqa: E501
         """IntegrationLogsInvalidLogResponse - a model defined in Swagger
 
         :param rejected_logs: The rejected_logs of this IntegrationLogsInvalidLogResponse.  # noqa: E501
-        :type rejected_logs: List[IntegrationLogsInvalidLogResponseRejectedLogsInner]
+        :type rejected_logs: List[IntegrationLogsInvalidLogResponseRejectedLogsItems]
         """
         self.swagger_types = {
-            'rejected_logs': List[IntegrationLogsInvalidLogResponseRejectedLogsInner]
+            'rejected_logs': List[IntegrationLogsInvalidLogResponseRejectedLogsItems]
         }
 
         self.attribute_map = {
@@ -44,22 +44,22 @@ class IntegrationLogsInvalidLogResponse(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def rejected_logs(self) -> List[IntegrationLogsInvalidLogResponseRejectedLogsInner]:
+    def rejected_logs(self) -> List[IntegrationLogsInvalidLogResponseRejectedLogsItems]:
         """Gets the rejected_logs of this IntegrationLogsInvalidLogResponse.
 
 
         :return: The rejected_logs of this IntegrationLogsInvalidLogResponse.
-        :rtype: List[IntegrationLogsInvalidLogResponseRejectedLogsInner]
+        :rtype: List[IntegrationLogsInvalidLogResponseRejectedLogsItems]
         """
         return self._rejected_logs
 
     @rejected_logs.setter
-    def rejected_logs(self, rejected_logs: List[IntegrationLogsInvalidLogResponseRejectedLogsInner]):
+    def rejected_logs(self, rejected_logs: List[IntegrationLogsInvalidLogResponseRejectedLogsItems]):
         """Sets the rejected_logs of this IntegrationLogsInvalidLogResponse.
 
 
         :param rejected_logs: The rejected_logs of this IntegrationLogsInvalidLogResponse.
-        :type rejected_logs: List[IntegrationLogsInvalidLogResponseRejectedLogsInner]
+        :type rejected_logs: List[IntegrationLogsInvalidLogResponseRejectedLogsItems]
         """
 
         self._rejected_logs = rejected_logs

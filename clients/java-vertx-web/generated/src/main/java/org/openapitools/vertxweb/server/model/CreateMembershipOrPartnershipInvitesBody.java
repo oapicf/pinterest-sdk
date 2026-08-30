@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.vertxweb.server.model.BusinessRoleForInvite;
 import org.openapitools.vertxweb.server.model.InviteType;
 
 /**
@@ -15,27 +16,7 @@ import org.openapitools.vertxweb.server.model.InviteType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateMembershipOrPartnershipInvitesBody   {
   
-
-
-  public enum BusinessRoleEnum {
-    EMPLOYEE("EMPLOYEE"),
-    BIZ_ADMIN("BIZ_ADMIN"),
-    PARTNER("PARTNER");
-
-    private String value;
-
-    BusinessRoleEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private BusinessRoleEnum businessRole;
+  private BusinessRoleForInvite businessRole;
   private InviteType inviteType;
   private List<String> members = new ArrayList<>();
   private List<String> partners = new ArrayList<>();
@@ -44,7 +25,7 @@ public class CreateMembershipOrPartnershipInvitesBody   {
 
   }
 
-  public CreateMembershipOrPartnershipInvitesBody (BusinessRoleEnum businessRole, InviteType inviteType, List<String> members, List<String> partners) {
+  public CreateMembershipOrPartnershipInvitesBody (BusinessRoleForInvite businessRole, InviteType inviteType, List<String> members, List<String> partners) {
     this.businessRole = businessRole;
     this.inviteType = inviteType;
     this.members = members;
@@ -53,10 +34,10 @@ public class CreateMembershipOrPartnershipInvitesBody   {
 
     
   @JsonProperty("business_role")
-  public BusinessRoleEnum getBusinessRole() {
+  public BusinessRoleForInvite getBusinessRole() {
     return businessRole;
   }
-  public void setBusinessRole(BusinessRoleEnum businessRole) {
+  public void setBusinessRole(BusinessRoleForInvite businessRole) {
     this.businessRole = businessRole;
   }
 
@@ -126,9 +107,6 @@ public class CreateMembershipOrPartnershipInvitesBody   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

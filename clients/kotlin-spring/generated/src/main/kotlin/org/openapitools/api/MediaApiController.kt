@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
-import org.openapitools.api.MediaApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -35,7 +34,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
+@RequestMapping("\${api.base-path:/v5}")
 class MediaApiController() {
 
     @Operation(
@@ -56,12 +55,13 @@ To upload the media, make an HTTP POST request (using `curl`, for example) to `u
             ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
             ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
             ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
-            ApiResponse(responseCode = "200", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "pins:read", "pins:write" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = [PATH_MEDIA_CREATE /* "/media" */],
+        // "/media"
+        value = [PATH_MEDIA_CREATE],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
@@ -84,12 +84,13 @@ To upload the media, make an HTTP POST request (using `curl`, for example) to `u
             ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
             ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
             ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
-            ApiResponse(responseCode = "200", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "pins:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_MEDIA_GET /* "/media/{media_id}" */],
+        // "/media/{media_id}"
+        value = [PATH_MEDIA_GET],
         produces = ["application/json"]
     )
     fun mediaGet(
@@ -111,12 +112,13 @@ To upload the media, make an HTTP POST request (using `curl`, for example) to `u
             ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
             ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
             ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
-            ApiResponse(responseCode = "200", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
+            ApiResponse(responseCode = "default", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "pins:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = [PATH_MEDIA_LIST /* "/media" */],
+        // "/media"
+        value = [PATH_MEDIA_LIST],
         produces = ["application/json"]
     )
     fun mediaList(

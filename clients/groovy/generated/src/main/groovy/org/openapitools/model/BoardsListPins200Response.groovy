@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.Pin;
+import org.openapitools.model.PinRead;
 
 @Canonical
 class BoardsListPins200Response {
     
     String bookmark
-    /* Pins */
-    List<Pin> items = new ArrayList<>()
+    
+    List<PinRead> items = new ArrayList<>()
 }

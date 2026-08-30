@@ -27,5 +27,5 @@ type CatalogsCreativeAssetsFilterValuesMap struct {
 
 	GoogleProductCategory6 []string `json:"google_product_category_6,omitempty"`
 
-	MediaType []string `json:"media_type,omitempty"`
+	MediaType []MediaType `json:"media_type,omitempty"`
 }

@@ -3,16 +3,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AppTypeMultipliers** | [**AppTypeMultipliers**](AppTypeMultipliers.md) |  | [optional] 
-**AudienceMultipliers** | [**CampaignAudienceMultipliers**](CampaignAudienceMultipliers.md) |  | [optional] 
-**PlacementMultipliers** | [**PlacementMultipliers**](PlacementMultipliers.md) |  | [optional] 
+**AgeBucketMultipliers** | [**AgeBucketMultipliers**](AgeBucketMultipliers.md) | Age bucket multipliers for bid adjustments. | [optional] 
+**AppTypeMultipliers** | [**AppTypeMultipliers**](AppTypeMultipliers.md) | App type multipliers for bid adjustments. | [optional] 
+**AudienceMultipliers** | [**CampaignAudienceMultipliers**](CampaignAudienceMultipliers.md) | Audience multipliers for bid adjustments. | [optional] 
+**FreqBidMultiplierTimeWindow** | [**FreqBidMultiplierTimeWindow**](FreqBidMultiplierTimeWindow.md) | The time window for frequency bid multipliers. | [optional] 
+**FrequencyMultipliers** | [**FrequencyMultipliers**](FrequencyMultipliers.md) | Frequency multipliers for bid adjustments. | [optional] 
+**GenderMultipliers** | [**GenderMultipliers**](GenderMultipliers.md) | Gender multipliers for bid adjustments. | [optional] 
+**PlacementMultipliers** | [**PlacementMultipliers**](PlacementMultipliers.md) | Placement multipliers for bid adjustments. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CampaignBidOptions = Initialize-PSOpenAPIToolsCampaignBidOptions  -AppTypeMultipliers null `
+$CampaignBidOptions = Initialize-PSOpenAPIToolsCampaignBidOptions  -AgeBucketMultipliers null `
+ -AppTypeMultipliers null `
  -AudienceMultipliers null `
+ -FreqBidMultiplierTimeWindow null `
+ -FrequencyMultipliers null `
+ -GenderMultipliers null `
  -PlacementMultipliers null
 ```
 

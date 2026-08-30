@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class Exception {
-    /* Exception error code. */
+    
     Integer code
-    /* Exception message. */
+    
     String message
 }

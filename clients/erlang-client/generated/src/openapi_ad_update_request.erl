@@ -5,7 +5,9 @@
 -export_type([openapi_ad_update_request/0]).
 
 -type openapi_ad_update_request() ::
-    #{ 'ad_group_id' => binary(),
+    #{ 'id' := binary(),
+       'pin_id' => binary(),
+       'ad_group_id' => binary(),
        'android_deep_link' => binary(),
        'carousel_android_deep_links' => list(),
        'carousel_destination_urls' => list(),
@@ -18,19 +20,20 @@
        'disclosure_url' => binary(),
        'grid_click_type' => openapi_grid_click_type:openapi_grid_click_type(),
        'ios_deep_link' => binary(),
+       'is_carting' => boolean(),
        'is_pin_deleted' => boolean(),
        'is_removable' => boolean(),
        'lead_form_id' => binary(),
        'name' => binary(),
-       'quiz_pin_data' => openapi_quiz_pin_data:openapi_quiz_pin_data(),
+       'quiz_pin_data' => maps:map(),
        'status' => openapi_entity_status:openapi_entity_status(),
-       'tracking_urls' => openapi_tracking_urls:openapi_tracking_urls(),
-       'view_tracking_url' => binary(),
-       'id' := binary(),
-       'pin_id' => binary()
+       'tracking_urls' => maps:map(),
+       'view_tracking_url' => binary()
      }.
 
-encode(#{ 'ad_group_id' := AdGroupId,
+encode(#{ 'id' := Id,
+          'pin_id' := PinId,
+          'ad_group_id' := AdGroupId,
           'android_deep_link' := AndroidDeepLink,
           'carousel_android_deep_links' := CarouselAndroidDeepLinks,
           'carousel_destination_urls' := CarouselDestinationUrls,
@@ -43,6 +46,7 @@ encode(#{ 'ad_group_id' := AdGroupId,
           'disclosure_url' := DisclosureUrl,
           'grid_click_type' := GridClickType,
           'ios_deep_link' := IosDeepLink,
+          'is_carting' := IsCarting,
           'is_pin_deleted' := IsPinDeleted,
           'is_removable' := IsRemovable,
           'lead_form_id' := LeadFormId,
@@ -50,11 +54,11 @@ encode(#{ 'ad_group_id' := AdGroupId,
           'quiz_pin_data' := QuizPinData,
           'status' := Status,
           'tracking_urls' := TrackingUrls,
-          'view_tracking_url' := ViewTrackingUrl,
-          'id' := Id,
-          'pin_id' := PinId
+          'view_tracking_url' := ViewTrackingUrl
         }) ->
-    #{ 'ad_group_id' => AdGroupId,
+    #{ 'id' => Id,
+       'pin_id' => PinId,
+       'ad_group_id' => AdGroupId,
        'android_deep_link' => AndroidDeepLink,
        'carousel_android_deep_links' => CarouselAndroidDeepLinks,
        'carousel_destination_urls' => CarouselDestinationUrls,
@@ -67,6 +71,7 @@ encode(#{ 'ad_group_id' := AdGroupId,
        'disclosure_url' => DisclosureUrl,
        'grid_click_type' => GridClickType,
        'ios_deep_link' => IosDeepLink,
+       'is_carting' => IsCarting,
        'is_pin_deleted' => IsPinDeleted,
        'is_removable' => IsRemovable,
        'lead_form_id' => LeadFormId,
@@ -74,7 +79,5 @@ encode(#{ 'ad_group_id' := AdGroupId,
        'quiz_pin_data' => QuizPinData,
        'status' => Status,
        'tracking_urls' => TrackingUrls,
-       'view_tracking_url' => ViewTrackingUrl,
-       'id' => Id,
-       'pin_id' => PinId
+       'view_tracking_url' => ViewTrackingUrl
      }.

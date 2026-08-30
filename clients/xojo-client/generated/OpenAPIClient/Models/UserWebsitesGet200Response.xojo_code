@@ -7,7 +7,7 @@ Protected Class UserWebsitesGet200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.UserWebsiteSummary
+		items() As OpenAPIClient.Models.UserWebsite
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class UserWebsitesGet200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="UserWebsiteSummary"
+			Type="UserWebsite"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -46,7 +46,10 @@ public class IntegrationMetadata  {
 
   private BigDecimal createdTimestamp;
 
-  @ApiModelProperty(value = "")
+ /**
+  * External business ID for the integration.
+  */
+  @ApiModelProperty(value = "External business ID for the integration.")
 
   private String externalBusinessId;
 
@@ -106,6 +109,14 @@ public class IntegrationMetadata  {
     return connectedAdvertiserId;
   }
 
+  public void setConnectedAdvertiserId(String connectedAdvertiserId) {
+    this.connectedAdvertiserId = connectedAdvertiserId;
+  }
+
+  public IntegrationMetadata connectedAdvertiserId(String connectedAdvertiserId) {
+    this.connectedAdvertiserId = connectedAdvertiserId;
+    return this;
+  }
 
  /**
    * Get connectedLbaId
@@ -180,17 +191,9 @@ public class IntegrationMetadata  {
     return createdTimestamp;
   }
 
-  public void setCreatedTimestamp(BigDecimal createdTimestamp) {
-    this.createdTimestamp = createdTimestamp;
-  }
-
-  public IntegrationMetadata createdTimestamp(BigDecimal createdTimestamp) {
-    this.createdTimestamp = createdTimestamp;
-    return this;
-  }
 
  /**
-   * Get externalBusinessId
+   * External business ID for the integration.
    * @return externalBusinessId
   **/
   @JsonProperty("external_business_id")
@@ -216,14 +219,6 @@ public class IntegrationMetadata  {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public IntegrationMetadata id(String id) {
-    this.id = id;
-    return this;
-  }
 
  /**
    * Get partnerAccessTokenExpiry
@@ -306,14 +301,6 @@ public class IntegrationMetadata  {
     return updatedTimestamp;
   }
 
-  public void setUpdatedTimestamp(BigDecimal updatedTimestamp) {
-    this.updatedTimestamp = updatedTimestamp;
-  }
-
-  public IntegrationMetadata updatedTimestamp(BigDecimal updatedTimestamp) {
-    this.updatedTimestamp = updatedTimestamp;
-    return this;
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -373,10 +360,7 @@ public class IntegrationMetadata  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

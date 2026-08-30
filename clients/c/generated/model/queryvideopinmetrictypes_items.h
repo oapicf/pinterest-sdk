@@ -1,0 +1,32 @@
+/*
+ * queryvideopinmetrictypes_items.h
+ *
+ * 
+ */
+
+#ifndef _queryvideopinmetrictypes_items_H_
+#define _queryvideopinmetrictypes_items_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct queryvideopinmetrictypes_items_t queryvideopinmetrictypes_items_t;
+
+
+// Enum  for queryvideopinmetrictypes_items
+
+typedef enum { pinterest_rest_api_queryvideopinmetrictypes_items__NULL = 0, pinterest_rest_api_queryvideopinmetrictypes_items__IMPRESSION, pinterest_rest_api_queryvideopinmetrictypes_items__SAVE, pinterest_rest_api_queryvideopinmetrictypes_items__VIDEO_MRC_VIEW, pinterest_rest_api_queryvideopinmetrictypes_items__VIDEO_AVG_WATCH_TIME, pinterest_rest_api_queryvideopinmetrictypes_items__VIDEO_V50_WATCH_TIME, pinterest_rest_api_queryvideopinmetrictypes_items__QUARTILE_95_PERCENT_VIEW, pinterest_rest_api_queryvideopinmetrictypes_items__VIDEO_10S_VIEW, pinterest_rest_api_queryvideopinmetrictypes_items__VIDEO_START, pinterest_rest_api_queryvideopinmetrictypes_items__OUTBOUND_CLICK } pinterest_rest_api_queryvideopinmetrictypes_items__e;
+
+char* queryvideopinmetrictypes_items_queryvideopinmetrictypes_items_ToString(pinterest_rest_api_queryvideopinmetrictypes_items__e queryvideopinmetrictypes_items);
+
+pinterest_rest_api_queryvideopinmetrictypes_items__e queryvideopinmetrictypes_items_queryvideopinmetrictypes_items_FromString(char* queryvideopinmetrictypes_items);
+
+cJSON *queryvideopinmetrictypes_items_convertToJSON(pinterest_rest_api_queryvideopinmetrictypes_items__e queryvideopinmetrictypes_items);
+
+pinterest_rest_api_queryvideopinmetrictypes_items__e queryvideopinmetrictypes_items_parseFromJSON(cJSON *queryvideopinmetrictypes_itemsJSON);
+
+#endif /* _queryvideopinmetrictypes_items_H_ */
+

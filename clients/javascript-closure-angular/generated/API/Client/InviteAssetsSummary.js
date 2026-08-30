@@ -8,14 +8,14 @@ API.Client.InviteAssetsSummary = function() {}
 
 /**
  * List of ad account IDs and respective permission levels that will be assigned.
- * @type {!Array<!API.Client.InviteAssetsSummary_ad_accounts_inner>}
+ * @type {!Array<!API.Client.InviteAssetsSummaryItem>}
  * @export
  */
 API.Client.InviteAssetsSummary.prototype.adAccounts;
 
 /**
  * List of profile IDs and respective permission levels that will be assigned.
- * @type {!Array<!API.Client.InviteAssetsSummary_profiles_inner>}
+ * @type {!Array<!API.Client.InviteAssetsSummaryItem>}
  * @export
  */
 API.Client.InviteAssetsSummary.prototype.profiles;

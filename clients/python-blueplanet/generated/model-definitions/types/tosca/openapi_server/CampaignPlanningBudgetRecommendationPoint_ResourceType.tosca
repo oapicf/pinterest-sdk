@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignPlanningBudgetRecommendationPoint"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignPlanningBudgetRecommendationPoint"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CampaignPlanningEstimationType = openapi_server.resourceTypes.CampaignPlanningEstimationType
+  CampaignPlanningPointEstimate = openapi_server.resourceTypes.CampaignPlanningPointEstimate
+}
+resourceTypes {
+
+  CampaignPlanningBudgetRecommendationPoint {
+    title = CampaignPlanningBudgetRecommendationPoint
+    description = CampaignPlanningBudgetRecommendationPoint
+    derivedFrom = Root
+    properties {
+        estimation_type {
+          type = CampaignPlanningEstimationType
+          description = "Estimation type for this point."
+          optional = false
+        }
+        point_estimate {
+          type = CampaignPlanningPointEstimate
+          description = "Point estimate data."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignPlanningBudgetRecommendationPoint {
+    title = CampaignPlanningBudgetRecommendationPoint
+    description = CampaignPlanningBudgetRecommendationPoint
+    implements = openapi_server.resourceTypes.CampaignPlanningBudgetRecommendationPoint
+
+  }
+}

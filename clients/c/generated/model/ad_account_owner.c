@@ -13,10 +13,10 @@ static ad_account_owner_t *ad_account_owner_create_internal(
     if (!ad_account_owner_local_var) {
         return NULL;
     }
+    memset(ad_account_owner_local_var, 0, sizeof(ad_account_owner_t));
+    ad_account_owner_local_var->_library_owned = 1;
     ad_account_owner_local_var->id = id;
     ad_account_owner_local_var->username = username;
-
-    ad_account_owner_local_var->_library_owned = 1;
     return ad_account_owner_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) ad_account_owner_t *ad_account_owner_create(
     char *id,
     char *username
     ) {
-    return ad_account_owner_create_internal (
+    ad_account_owner_t *result = ad_account_owner_create_internal (
         id,
         username
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void ad_account_owner_free(ad_account_owner_t *ad_account_owner) {
@@ -80,6 +83,10 @@ ad_account_owner_t *ad_account_owner_parseFromJSON(cJSON *ad_account_ownerJSON){
 
     ad_account_owner_t *ad_account_owner_local_var = NULL;
 
+    char *id_local_str = NULL;
+
+    char *username_local_str = NULL;
+
     // ad_account_owner->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(ad_account_ownerJSON, "id");
     if (cJSON_IsNull(id)) {
@@ -105,13 +112,28 @@ ad_account_owner_t *ad_account_owner_parseFromJSON(cJSON *ad_account_ownerJSON){
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (username && !cJSON_IsNull(username)) username_local_str = strdup(username->valuestring);
+
     ad_account_owner_local_var = ad_account_owner_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        username && !cJSON_IsNull(username) ? strdup(username->valuestring) : NULL
+        id_local_str,
+        username_local_str
         );
+
+    if (!ad_account_owner_local_var) {
+        goto end;
+    }
 
     return ad_account_owner_local_var;
 end:
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (username_local_str) {
+        free(username_local_str);
+        username_local_str = NULL;
+    }
     return NULL;
 
 }

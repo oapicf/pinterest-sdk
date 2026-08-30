@@ -1,40 +1,44 @@
 #tag Class
 Protected Class CatalogProductGroupsApi
 	#tag Method, Flags = &h0
-		Sub CatalogsProductGroupPinsList(, productGroupId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional adAccountId As Xoson.O.OptionalString, Optional pinMetrics As Xoson.O.OptionalBoolean)
+		Sub CatalogsProductGroupPinsList(, productGroupId As String, Optional adAccountId As Xoson.O.OptionalString, Optional pinMetrics As Xoson.O.OptionalBoolean, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation catalogs_product_group_pins/list
 		  // List products by product group
 		  // - 
 		  // - parameter productGroupId: (path) Unique identifier of a product group 
-		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupPinsListCallback(CatalogsProductGroupPinsList200Response) on completion. 
 		  //
 		  // - GET /catalogs/product_groups/{product_group_id}/products
-		  // - Get a list of product pins for a given Catalogs Product Group Id owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+		  // - Get a list of product pins for a given Catalogs Product Group Id owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
-		  
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
-		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 		  If pinMetrics <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("pin_metrics") + "=" + EncodeURLComponent(pinMetrics.ToString)
 		  
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  
 
+		  
 		  
 		  
 
@@ -146,17 +150,17 @@ Protected Class CatalogProductGroupsApi
 
 
 	#tag Method, Flags = &h0
-		Sub CatalogsProductGroupsCreate(, multipleProductGroupsInner As OpenAPIClient.Models.MultipleProductGroupsInner, Optional adAccountId As Xoson.O.OptionalString)
+		Sub CatalogsProductGroupsCreate(, catalogsProductGroupsCreateRequestSchema As OpenAPIClient.Models.CatalogsProductGroupsCreateRequestSchema, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation catalogs_product_groups/create
 		  // Create product group
 		  // - 
-		  // - parameter multipleProductGroupsInner: (body) Request object used to create a single catalogs product groups. 
+		  // - parameter catalogsProductGroupsCreateRequestSchema: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupsCreateCallback(CatalogsVerticalProductGroup) on completion. 
 		  //
 		  // - POST /catalogs/product_groups
-		  // - Create product group to use in Catalogs owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. "Catalog-based product groups" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the "retail feed-based" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+		  // - Create product group to use in Catalogs owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. "Catalog-based product groups" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the "retail feed-based" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -166,7 +170,7 @@ Protected Class CatalogProductGroupsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(multipleProductGroupsInner), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(catalogsProductGroupsCreateRequestSchema), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
@@ -279,17 +283,17 @@ Protected Class CatalogProductGroupsApi
 
 
 	#tag Method, Flags = &h0
-		Sub CatalogsProductGroupsCreateMany(, multipleProductGroupsInner() As OpenAPIClient.Models.MultipleProductGroupsInner, Optional adAccountId As Xoson.O.OptionalString)
+		Sub CatalogsProductGroupsCreateMany(, catalogsProductGroupsCreateManyRequestItems() As OpenAPIClient.Models.CatalogsProductGroupsCreateManyRequestItems, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation catalogs_product_groups/create_many
 		  // Create product groups
 		  // - 
-		  // - parameter multipleProductGroupsInner: (body) Request object used to create one or more catalogs product groups. 
+		  // - parameter catalogsProductGroupsCreateManyRequestItems: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupsCreateManyCallback(String) on completion. 
 		  //
 		  // - POST /catalogs/product_groups/multiple
-		  // - Create product group to use in Catalogs owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+		  // - Create product group to use in Catalogs owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -299,7 +303,7 @@ Protected Class CatalogProductGroupsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(multipleProductGroupsInner), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(catalogsProductGroupsCreateManyRequestItems), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
@@ -413,13 +417,15 @@ Protected Class CatalogProductGroupsApi
 		Sub CatalogsProductGroupsDelete(, productGroupId As String, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation catalogs_product_groups/delete
 		  // Delete product group
+		  // - 
 		  // - parameter productGroupId: (path) Unique identifier of a product group 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
-		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupsDeleteCallback() on completion. 
+		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupsDeleteCallback(CatalogsVerticalProductGroup) on completion. Note that the response is optional. 
 		  //
 		  // - DELETE /catalogs/product_groups/{product_group_id}
-		  // - Delete a product group owned by the "operation user_account" from being in use in Catalogs. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+		  // - Delete a product group owned by the "operation user_account" from being in use in Catalogs. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
+		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -444,8 +450,9 @@ Protected Class CatalogProductGroupsApi
 		  localVarPath = localVarPath.ReplaceAllB("{product_group_id}", localVarPathStringproductGroupId)
 		  
 		  
-		  AddHandler localVarHTTPSocket.PageReceived, addressof Me.CatalogsProductGroupsDelete_handler
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.CatalogsProductGroupsDelete_handler
 		  AddHandler localVarHTTPSocket.Error, addressof Me.CatalogsProductGroupsDelete_error
+		  
 		  
 		  localVarHTTPSocket.SendRequest("DELETE", Me.BasePath + localVarPath + localVarQueryParams)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
@@ -456,29 +463,86 @@ Protected Class CatalogProductGroupsApi
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function CatalogsProductGroupsDeletePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.CatalogsVerticalProductGroup) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.CatalogsVerticalProductGroup
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub CatalogsProductGroupsDelete_error(sender As HTTPSecureSocket, Code As Integer)
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  CallbackHandler.CatalogsProductGroupsDeleteCallback(error)
+		  Dim data As OpenAPIClient.Models.CatalogsVerticalProductGroup
+		  CallbackHandler.CatalogsProductGroupsDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub CatalogsProductGroupsDelete_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
 		  #Pragma Unused URL
-		  #Pragma Unused Headers
-		  #Pragma Unused Content
+		  
 
 		  If sender <> nil Then sender.Close()
 		  
-		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", "")
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
+		  Dim data As OpenAPIClient.Models.CatalogsVerticalProductGroup
+		  Call CatalogsProductGroupsDeletePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
-		  
-		  CallbackHandler.CatalogsProductGroupsDeleteCallback(error)
+		  CallbackHandler.CatalogsProductGroupsDeleteCallback(error, data)
 		End Sub
 	#tag EndMethod
 
@@ -495,7 +559,7 @@ Protected Class CatalogProductGroupsApi
 		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupsDeleteManyCallback() on completion. 
 		  //
 		  // - DELETE /catalogs/product_groups/multiple
-		  // - Delete product groups owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+		  // - Delete product groups owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -588,7 +652,7 @@ Protected Class CatalogProductGroupsApi
 		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupsGetCallback(CatalogsVerticalProductGroup) on completion. 
 		  //
 		  // - GET /catalogs/product_groups/{product_group_id}
-		  // - Get a singe product group for a given Catalogs Product Group Id owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+		  // - Get a single product group for a given Catalogs Product Group Id owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -714,21 +778,21 @@ Protected Class CatalogProductGroupsApi
 
 
 	#tag Method, Flags = &h0
-		Sub CatalogsProductGroupsList(, id() As Integer, Optional feedId As Xoson.O.OptionalString, Optional catalogId As Xoson.O.OptionalString, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, Optional adAccountId As Xoson.O.OptionalString)
+		Sub CatalogsProductGroupsList(, id() As Integer, Optional feedId As Xoson.O.OptionalString, Optional catalogId As Xoson.O.OptionalString, Optional adAccountId As Xoson.O.OptionalString, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation catalogs_product_groups/list
 		  // List product groups
 		  // - 
 		  // - parameter id: (query) Comma-separated list of product group ids (optional, default to Nil)
 		  // - parameter feedId: (query) Filter entities for a given feed_id. If not given, all feeds are considered. (optional, default to Sample)
 		  // - parameter catalogId: (query) Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional, default to Sample)
-		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
+		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupsListCallback(CatalogsProductGroupsList200Response) on completion. 
 		  //
 		  // - GET /catalogs/product_groups
-		  // - Get a list of product groups for a given Catalogs Feed Id owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+		  // - Get a list of product groups for a given Catalogs Feed Id owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -763,11 +827,11 @@ Protected Class CatalogProductGroupsApi
 		  
 		  If catalogId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("catalog_id") + "=" + EncodeURLComponent(catalogId)
 		  
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
+		  
 		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
-		  
-		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
 		  
@@ -888,7 +952,7 @@ Protected Class CatalogProductGroupsApi
 		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupsProductCountsGetCallback(CatalogsProductGroupProductCountsVertical) on completion. 
 		  //
 		  // - GET /catalogs/product_groups/{product_group_id}/product_counts
-		  // - Get a product counts for a given Catalogs Product Group owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+		  // - Get a product counts for a given Catalogs Product Group owned by the "operation user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1014,18 +1078,18 @@ Protected Class CatalogProductGroupsApi
 
 
 	#tag Method, Flags = &h0
-		Sub CatalogsProductGroupsUpdate(, productGroupId As String, catalogsProductGroupsUpdateRequest As OpenAPIClient.Models.CatalogsProductGroupsUpdateRequest, Optional adAccountId As Xoson.O.OptionalString)
+		Sub CatalogsProductGroupsUpdate(, productGroupId As String, catalogsProductGroupsUpdateRequestSchema As OpenAPIClient.Models.CatalogsProductGroupsUpdateRequestSchema, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation catalogs_product_groups/update
 		  // Update single product group
 		  // - 
 		  // - parameter productGroupId: (path) Unique identifier of a product group 
-		  // - parameter catalogsProductGroupsUpdateRequest: (body) Request object used to Update a catalogs product group. 
+		  // - parameter catalogsProductGroupsUpdateRequestSchema: (body)  
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes CatalogProductGroupsApiCallbackHandler.CatalogsProductGroupsUpdateCallback(CatalogsVerticalProductGroup) on completion. 
 		  //
 		  // - PATCH /catalogs/product_groups/{product_group_id}
-		  // - Update product group owned by the "operation user_account" to use in Catalogs. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager. "Catalog-based product groups" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the "retail feed-based" option. <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+		  // - Update product group owned by the "operation user_account" to use in Catalogs. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. "Catalog-based product groups" can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the "retail feed-based" option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1035,7 +1099,7 @@ Protected Class CatalogProductGroupsApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(catalogsProductGroupsUpdateRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(catalogsProductGroupsUpdateRequestSchema), "application/json")
 		  Dim localVarQueryParams As String = "?"
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
@@ -1155,16 +1219,16 @@ Protected Class CatalogProductGroupsApi
 		  // Operation products_by_product_group_filter/list
 		  // List products by filter
 		  // - 
-		  // - parameter catalogsListProductsByFilterRequest: (body) Object holding a group of filters for a catalog product group 
+		  // - parameter catalogsListProductsByFilterRequest: (body)  
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
 		  //
 		  // Invokes CatalogProductGroupsApiCallbackHandler.ProductsByProductGroupFilterListCallback(CatalogsProductGroupPinsList200Response) on completion. 
 		  //
 		  // - POST /catalogs/products/get_by_product_group_filters
-		  // - List products Pins owned by the "operation user_account" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+		  // - List products Pins owned by the "operation user_account" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  [Learn more](/docs/api-features/shopping-overview/)
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:

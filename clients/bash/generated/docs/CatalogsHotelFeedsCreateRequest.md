@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogUnderscoreid** | **string** |  | [optional] [default to null]
-**catalogUnderscoretype** | [**CatalogsType**](CatalogsType.md) |  | [default to null]
+**catalogUnderscoretype** | **string** |  | [default to null]
 **credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to null]
 **defaultUnderscorecurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [default to null]
-**defaultUnderscorelocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | [default to null]
+**defaultUnderscorelocale** | [**CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale**](CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale.md) |  | [default to null]
 **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [default to null]
 **location** | **string** |  | [default to null]
 **name** | **string** |  | [default to null]

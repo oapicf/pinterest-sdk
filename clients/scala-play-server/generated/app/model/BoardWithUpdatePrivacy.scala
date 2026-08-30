@@ -11,11 +11,11 @@ import java.time.OffsetDateTime
   * @param followerCount Board follower count.
   * @param isAdsOnly If set to `true`, the board will be ad-only and can store ad-only Pins.
   * @param media Board media.
-  * @param name      Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
+  * @param name     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes \"Ad-only Pins\".
   * @param pinCount Count of Pins on the board.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class BoardWithUpdatePrivacy(
   boardPinsModifiedAt: Option[OffsetDateTime],
   collaboratorCount: Option[Int],

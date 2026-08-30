@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -12,27 +13,29 @@ import org.openapitools.model.QuizPinOption;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * A specific quiz inquiry.
  */
 
 @Schema(name = "QuizPinQuestion", description = "A specific quiz inquiry.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class QuizPinQuestion {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid QuizPinOption> options = new ArrayList<>();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal questionId;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String questionText;
 
   public QuizPinQuestion options(List<@Valid QuizPinOption> options) {
@@ -59,6 +62,7 @@ public class QuizPinQuestion {
     return options;
   }
 
+  @JsonProperty("options")
   public void setOptions(List<@Valid QuizPinOption> options) {
     this.options = options;
   }
@@ -79,6 +83,7 @@ public class QuizPinQuestion {
     return questionId;
   }
 
+  @JsonProperty("question_id")
   public void setQuestionId(@Nullable BigDecimal questionId) {
     this.questionId = questionId;
   }
@@ -99,6 +104,7 @@ public class QuizPinQuestion {
     return questionText;
   }
 
+  @JsonProperty("question_text")
   public void setQuestionText(@Nullable String questionText) {
     this.questionText = questionText;
   }
@@ -138,10 +144,7 @@ public class QuizPinQuestion {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

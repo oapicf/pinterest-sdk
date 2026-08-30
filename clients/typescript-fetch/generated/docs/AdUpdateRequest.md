@@ -6,6 +6,8 @@
 
 Name | Type
 ------------ | -------------
+`id` | string
+`pinId` | string
 `adGroupId` | string
 `androidDeepLink` | string
 `carouselAndroidDeepLinks` | Array&lt;string&gt;
@@ -19,16 +21,15 @@ Name | Type
 `disclosureUrl` | string
 `gridClickType` | [GridClickType](GridClickType.md)
 `iosDeepLink` | string
+`isCarting` | boolean
 `isPinDeleted` | boolean
 `isRemovable` | boolean
 `leadFormId` | string
 `name` | string
-`quizPinData` | [QuizPinData](QuizPinData.md)
+`quizPinData` | object
 `status` | [EntityStatus](EntityStatus.md)
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
+`trackingUrls` | object
 `viewTrackingUrl` | string
-`id` | string
-`pinId` | string
 
 ## Example
 
@@ -37,7 +38,9 @@ import type { AdUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "adGroupId": 2680059592705,
+  "id": null,
+  "pinId": null,
+  "adGroupId": null,
   "androidDeepLink": null,
   "carouselAndroidDeepLinks": null,
   "carouselDestinationUrls": null,
@@ -50,6 +53,7 @@ const example = {
   "disclosureUrl": null,
   "gridClickType": null,
   "iosDeepLink": null,
+  "isCarting": null,
   "isPinDeleted": false,
   "isRemovable": false,
   "leadFormId": null,
@@ -58,8 +62,6 @@ const example = {
   "status": null,
   "trackingUrls": null,
   "viewTrackingUrl": null,
-  "id": 687195134316,
-  "pinId": 394205773611545468,
 } satisfies AdUpdateRequest
 
 console.log(example)

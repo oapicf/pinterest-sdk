@@ -6,7 +6,7 @@
 
 -type openapi_catalogs_retail_items_batch() ::
     #{ 'batch_id' => binary(),
-       'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
+       'catalog_type' := binary(),
        'completed_time' => openapi_date_time:openapi_date_time(),
        'created_time' := openapi_date_time:openapi_date_time(),
        'items' => list(),

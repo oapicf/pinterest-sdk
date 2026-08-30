@@ -1,23 +1,25 @@
 package org.openapitools.api;
 
+import org.openapitools.model.AssetGroupDeletion;
+import org.openapitools.model.AssetGroupDeletionDelete;
+import org.openapitools.model.AssetGroupInput;
+import org.openapitools.model.AssetGroupInputCreate;
+import org.openapitools.model.AssetGroupModification;
+import org.openapitools.model.AssetGroupModificationReadOrUpdate;
+import org.openapitools.model.AssetPermissionType;
+import org.openapitools.model.AssetSearchBy;
+import org.openapitools.model.AssetSortBy;
 import org.openapitools.model.BusinessAssetMembersGet200Response;
-import org.openapitools.model.BusinessAssetPartnersGet200Response;
 import org.openapitools.model.BusinessAssetsGet200Response;
-import org.openapitools.model.BusinessMemberAssetsGet200Response;
-import org.openapitools.model.BusinessMembersAssetAccessDeleteRequest;
+import org.openapitools.model.BusinessMemberAssetsGetResponse;
+import org.openapitools.model.BusinessMembersAssetAccessDeleteBody;
 import org.openapitools.model.BusinessPartnerAssetAccessGet200Response;
-import org.openapitools.model.CreateAssetGroupBody;
-import org.openapitools.model.CreateAssetGroupResponse;
-import org.openapitools.model.DeleteAssetGroupBody;
-import org.openapitools.model.DeleteAssetGroupResponse;
 import org.openapitools.model.DeleteMemberAccessResultsResponseArray;
 import org.openapitools.model.DeletePartnerAssetAccessBody;
-import org.openapitools.model.DeletePartnerAssetsResultsResponseArray;
-import org.openapitools.model.Error;
-import org.openapitools.model.PartnerType;
+import org.openapitools.model.DeletePartnerAssetAccessResultsResponseArray;
+import org.openapitools.model.NonDraftEntityStatus;
 import org.openapitools.model.PermissionsWithOwner;
-import org.openapitools.model.UpdateAssetGroupBody;
-import org.openapitools.model.UpdateAssetGroupResponse;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.UpdateMemberAssetAccessBody;
 import org.openapitools.model.UpdateMemberAssetsResultsResponseArray;
 import org.openapitools.model.UpdatePartnerAssetAccessBody;
@@ -46,26 +48,31 @@ import javax.validation.Valid;
  * <p>Pinterest's REST API
  *
  */
-@Path("/businesses/{business_id}")
+@Path("")
 @Api(value = "/", description = "")
 public interface BusinessAccessAssetsApi  {
 
     /**
      * Create a new asset group.
      *
-     * Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+     * Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
      *
      */
     @POST
-    @Path("/asset_groups")
+    @Path("/businesses/{business_id}/asset_groups")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Create a new asset group.", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = CreateAssetGroupResponse.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public CreateAssetGroupResponse assetGroupCreate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid CreateAssetGroupBody createAssetGroupBody);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AssetGroupInput.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = AssetGroupInput.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AssetGroupInput assetGroupCreate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid AssetGroupInputCreate assetGroupInputCreate);
 
     /**
      * Delete asset groups.
@@ -74,15 +81,14 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @DELETE
-    @Path("/asset_groups")
+    @Path("/businesses/{business_id}/asset_groups")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Delete asset groups.", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = DeleteAssetGroupResponse.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public DeleteAssetGroupResponse assetGroupDelete(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid DeleteAssetGroupBody deleteAssetGroupBody);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AssetGroupDeletion.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AssetGroupDeletion assetGroupDelete(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid AssetGroupDeletionDelete assetGroupDeletionDelete);
 
     /**
      * Update asset groups.
@@ -91,15 +97,19 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @PATCH
-    @Path("/asset_groups")
+    @Path("/businesses/{business_id}/asset_groups")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Update asset groups.", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = UpdateAssetGroupResponse.class),
-        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public UpdateAssetGroupResponse assetGroupUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid UpdateAssetGroupBody updateAssetGroupBody);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = AssetGroupModification.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public AssetGroupModification assetGroupUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate);
 
     /**
      * Get members with access to asset
@@ -108,13 +118,18 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @GET
-    @Path("/assets/{asset_id}/members")
+    @Path("/businesses/{business_id}/assets/{asset_id}/members")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get members with access to asset", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Sucess", response = BusinessAssetMembersGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BusinessAssetMembersGet200Response businessAssetMembersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String assetId, @QueryParam("fetch_system_users") @DefaultValue("false") Boolean fetchSystemUsers, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BusinessAssetMembersGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BusinessAssetMembersGet200Response businessAssetMembersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String assetId, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("fetch_system_users") @DefaultValue("false") Boolean fetchSystemUsers, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize);
 
     /**
      * Get partners with access to asset
@@ -123,13 +138,18 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @GET
-    @Path("/assets/{asset_id}/partners")
+    @Path("/businesses/{business_id}/assets/{asset_id}/partners")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get partners with access to asset", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Sucess", response = BusinessAssetPartnersGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BusinessAssetPartnersGet200Response businessAssetPartnersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String assetId, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BusinessAssetMembersGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BusinessAssetMembersGet200Response businessAssetPartnersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String assetId, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize);
 
     /**
      * List business assets
@@ -138,12 +158,17 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @GET
-    @Path("/assets")
+    @Path("/businesses/{business_id}/assets")
     @Produces({ "application/json" })
     @ApiOperation(value = "List business assets", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BusinessAssetsGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BusinessAssetsGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public BusinessAssetsGet200Response businessAssetsGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @QueryParam("permissions") List<PermissionsWithOwner> permissions, @QueryParam("child_asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String childAssetId, @QueryParam("asset_group_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String assetGroupId, @QueryParam("asset_type") @DefaultValue("AD_ACCOUNT") String assetType, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize);
 
     /**
@@ -153,13 +178,18 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @GET
-    @Path("/members/{member_id}/assets")
+    @Path("/businesses/{business_id}/members/{member_id}/assets")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get assets assigned to a member", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BusinessMemberAssetsGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BusinessMemberAssetsGet200Response businessMemberAssetsGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("member_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String memberId, @QueryParam("asset_type") @DefaultValue("AD_ACCOUNT") String assetType, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BusinessMemberAssetsGetResponse.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BusinessMemberAssetsGetResponse businessMemberAssetsGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("member_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String memberId, @QueryParam("asset_type") @DefaultValue("AD_ACCOUNT") String assetType, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("sort_by") AssetSortBy sortBy, @QueryParam("sort_ascending") @DefaultValue("true") Boolean sortAscending, @QueryParam("search_by") AssetSearchBy searchBy, @QueryParam("search_value") String searchValue, @QueryParam("asset_permission_type") AssetPermissionType assetPermissionType, @QueryParam("ad_account_statuses") List<NonDraftEntityStatus> adAccountStatuses, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize);
 
     /**
      * Delete member access to asset
@@ -168,29 +198,34 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @DELETE
-    @Path("/members/assets/access")
+    @Path("/businesses/{business_id}/members/assets/access")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Delete member access to asset", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = DeleteMemberAccessResultsResponseArray.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = DeleteMemberAccessResultsResponseArray.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody);
 
     /**
      * Assign/Update member asset permissions
      *
-     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      *
      */
     @PATCH
-    @Path("/members/assets/access")
+    @Path("/businesses/{business_id}/members/assets/access")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Assign/Update member asset permissions", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = UpdateMemberAssetsResultsResponseArray.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = UpdateMemberAssetsResultsResponseArray.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public UpdateMemberAssetsResultsResponseArray businessMembersAssetAccessUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid UpdateMemberAssetAccessBody updateMemberAssetAccessBody);
 
     /**
@@ -200,13 +235,18 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @GET
-    @Path("/partners/{partner_id}/assets")
+    @Path("/businesses/{business_id}/partners/{partner_id}/assets")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get assets assigned to a partner or assets assigned by a partner", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = BusinessPartnerAssetAccessGet200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("partner_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String partnerId, @QueryParam("partner_type") @DefaultValue("INTERNAL") PartnerType partnerType, @QueryParam("asset_type") @DefaultValue("AD_ACCOUNT") String assetType, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize, @QueryParam("bookmark") String bookmark);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = BusinessPartnerAssetAccessGet200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("partner_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String partnerId, @QueryParam("partner_type") @DefaultValue("INTERNAL") String partnerType, @QueryParam("asset_type") @DefaultValue("AD_ACCOUNT") String assetType, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("sort_by") AssetSortBy sortBy, @QueryParam("sort_ascending") @DefaultValue("true") Boolean sortAscending, @QueryParam("search_by") AssetSearchBy searchBy, @QueryParam("search_value") String searchValue, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize);
 
     /**
      * Delete partner access to asset
@@ -215,14 +255,14 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @DELETE
-    @Path("/partners/assets")
+    @Path("/businesses/{business_id}/partners/assets")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Delete partner access to asset", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = DeletePartnerAssetsResultsResponseArray.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public DeletePartnerAssetsResultsResponseArray deletePartnerAssetAccessHandlerImpl(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid DeletePartnerAssetAccessBody deletePartnerAssetAccessBody);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = DeletePartnerAssetAccessResultsResponseArray.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public DeletePartnerAssetAccessResultsResponseArray deletePartnerAssetAccessHandlerImpl(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid DeletePartnerAssetAccessBody deletePartnerAssetAccessBody);
 
     /**
      * Assign/Update partner asset permissions
@@ -231,12 +271,17 @@ public interface BusinessAccessAssetsApi  {
      *
      */
     @PATCH
-    @Path("/partners/assets")
+    @Path("/businesses/{business_id}/partners/assets")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Assign/Update partner asset permissions", tags={ "business_access_assets" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = UpdatePartnerAssetsResultsResponseArray.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = UpdatePartnerAssetsResultsResponseArray.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     public UpdatePartnerAssetsResultsResponseArray updatePartnerAssetAccessHandlerImpl(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody);
 }

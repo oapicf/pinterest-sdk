@@ -13,9 +13,7 @@ import LabelCreateRequest._
 
 case class LabelCreateRequest (
   /* Labels that you are applying to the campaign. */
-  labels: List[LabelCreateRequestLabelsInner],
-/* Unique identifier of the asset you are labelling. Currently, you can only label campaigns. */
-  parentId: String)
+  labels: List[LabelCreateItem])
 
 object LabelCreateRequest {
   import DateTimeCodecs._

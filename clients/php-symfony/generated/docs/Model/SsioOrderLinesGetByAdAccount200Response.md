@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bookmark** | **string** |  | [optional] 
-**items** | [**OpenAPI\Server\Model\SSIOOrderLine**](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
+**items** | [**OpenAPI\Server\Model\SSIOOrderLine**](SSIOOrderLine.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

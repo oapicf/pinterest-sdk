@@ -49,31 +49,31 @@ public:
 
 	/*! \brief Get 
 	 */
-	AppTypeMultipliers getAppTypeMultipliers();
+	AppTypeMultipliers&lt;std::string, double&gt; getAppTypeMultipliers();
 
 	/*! \brief Set 
 	 */
-	void setAppTypeMultipliers(AppTypeMultipliers  app_type_multipliers);
+	void setAppTypeMultipliers(AppTypeMultipliers&lt;std::string, double&gt; app_type_multipliers);
 	/*! \brief Get Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
 	 */
 	long getBidInMicroCurrency();
 
 	/*! \brief Set Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
 	 */
-	void setBidInMicroCurrency(long  bid_in_micro_currency);
+	void setBidInMicroCurrency(long bid_in_micro_currency);
 	/*! \brief Get 
 	 */
-	PlacementMultipliers getPlacementMultipliers();
+	PlacementMultipliers&lt;std::string, double&gt; getPlacementMultipliers();
 
 	/*! \brief Set 
 	 */
-	void setPlacementMultipliers(PlacementMultipliers  placement_multipliers);
+	void setPlacementMultipliers(PlacementMultipliers&lt;std::string, double&gt; placement_multipliers);
 
 
     private:
-    AppTypeMultipliers app_type_multipliers;
+    AppTypeMultipliers&lt;std::string, double&gt; app_type_multipliers;
     long bid_in_micro_currency{};
-    PlacementMultipliers placement_multipliers;
+    PlacementMultipliers&lt;std::string, double&gt; placement_multipliers;
 };
 }
 

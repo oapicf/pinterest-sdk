@@ -7,14 +7,15 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open LeadFormsApiHandlerParams
 open LeadFormsApiServiceInterface
 open LeadFormsApiServiceImplementation
-open OpenAPI.Model.Error
-open OpenAPI.Model.LeadFormArrayResponse
-open OpenAPI.Model.LeadFormCreateRequest
-open OpenAPI.Model.LeadFormResponse
-open OpenAPI.Model.LeadFormTestRequest
-open OpenAPI.Model.LeadFormTestResponse
-open OpenAPI.Model.LeadFormUpdateRequest
+open OpenAPI.Model.LeadForm
+open OpenAPI.Model.LeadFormBatchUpdate
+open OpenAPI.Model.LeadFormCreate
+open OpenAPI.Model.LeadFormTest
+open OpenAPI.Model.LeadFormTestCreate
+open OpenAPI.Model.LeadFormsCreate200Response
 open OpenAPI.Model.LeadFormsList200Response
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
 
 module LeadFormsApiHandler =
 
@@ -37,8 +38,14 @@ module LeadFormsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | LeadFormGetStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | LeadFormGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | LeadFormGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | LeadFormGetStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | LeadFormGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | LeadFormGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -87,6 +94,14 @@ module LeadFormsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | LeadFormsCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | LeadFormsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | LeadFormsCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | LeadFormsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | LeadFormsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | LeadFormsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -109,6 +124,14 @@ module LeadFormsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | LeadFormsListStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | LeadFormsListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | LeadFormsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | LeadFormsListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | LeadFormsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | LeadFormsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -132,6 +155,14 @@ module LeadFormsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | LeadFormsUpdateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | LeadFormsUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | LeadFormsUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | LeadFormsUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | LeadFormsUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | LeadFormsUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

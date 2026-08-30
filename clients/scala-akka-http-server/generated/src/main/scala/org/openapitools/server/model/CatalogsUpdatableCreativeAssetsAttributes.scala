@@ -13,7 +13,7 @@ package org.openapitools.server.model
  * @param iosDeepLink IOS deep link to the creative assets page. for example: ''null''
  * @param link Link to the creative assets page. for example: ''null''
  * @param title The name of the creative assets. for example: ''null''
- * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. for example: ''null''
+ * @param visibility Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'. for example: ''null''
 */
 final case class CatalogsUpdatableCreativeAssetsAttributes (
   androidDeepLink: Option[String] = None,

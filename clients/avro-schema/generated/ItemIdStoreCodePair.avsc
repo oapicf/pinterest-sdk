@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A pair of item_id and store_code that uniquely identifies a local inventory item",
+  "name": "ItemIdStoreCodePair",
+  "fields": [
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "Catalog item id in the merchant namespace"
+    },
+    {
+      "name": "store_code",
+      "type": "string",
+      "doc": "Store code for the local inventory item"
+    }
+  ]
+
+}

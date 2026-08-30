@@ -1,5 +1,4 @@
 const utils = require('../utils/utils');
-const BatchOperation = require('../models/BatchOperation');
 const CatalogsItemsCreateBatchRequest = require('../models/CatalogsItemsCreateBatchRequest');
 const CatalogsItemsDeleteBatchRequest = require('../models/CatalogsItemsDeleteBatchRequest');
 const CatalogsItemsDeleteDiscontinuedBatchRequest = require('../models/CatalogsItemsDeleteDiscontinuedBatchRequest');
@@ -116,7 +115,7 @@ module.exports = {
                     'NB',
                     'NE',
                     'NL',
-                    'NO',
+                    'false',
                     'PL',
                     'PT',
                     'RO',
@@ -138,7 +137,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}operation`,
-                ...BatchOperation.fields(`${keyPrefix}operation`, isInput),
+                label: `[${labelPrefix}operation]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'DELETE',
+                ],
             },
         ]
     },

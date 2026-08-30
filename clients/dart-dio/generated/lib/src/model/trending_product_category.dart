@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/product_categories_engagement_type.dart';
-import 'package:openapi/src/model/vertical_product_category.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,6 +16,7 @@ part 'trending_product_category.g.dart';
 /// * [engagementType] - Engagement type
 /// * [pctChangeMom] - Month-over-month change percentage
 /// * [percentRelativeVolume] - Relative volume percentage
+/// * [pinterestProductCategoryId] - Pinterest Product Category Id
 /// * [productCategory] - Product Category Name
 /// * [verticals] - Vertical name associated with the product category
 @BuiltValue()
@@ -34,13 +34,17 @@ abstract class TrendingProductCategory implements Built<TrendingProductCategory,
   @BuiltValueField(wireName: r'percent_relative_volume')
   int get percentRelativeVolume;
 
+  /// Pinterest Product Category Id
+  @BuiltValueField(wireName: r'pinterest_product_category_id')
+  int get pinterestProductCategoryId;
+
   /// Product Category Name
   @BuiltValueField(wireName: r'product_category')
   String get productCategory;
 
   /// Vertical name associated with the product category
   @BuiltValueField(wireName: r'verticals')
-  BuiltList<VerticalProductCategory>? get verticals;
+  BuiltList<String>? get verticals;
 
   TrendingProductCategory._();
 
@@ -80,6 +84,11 @@ class _$TrendingProductCategorySerializer implements PrimitiveSerializer<Trendin
       object.percentRelativeVolume,
       specifiedType: const FullType(int),
     );
+    yield r'pinterest_product_category_id';
+    yield serializers.serialize(
+      object.pinterestProductCategoryId,
+      specifiedType: const FullType(int),
+    );
     yield r'product_category';
     yield serializers.serialize(
       object.productCategory,
@@ -89,7 +98,7 @@ class _$TrendingProductCategorySerializer implements PrimitiveSerializer<Trendin
       yield r'verticals';
       yield serializers.serialize(
         object.verticals,
-        specifiedType: const FullType(BuiltList, [FullType(VerticalProductCategory)]),
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
   }
@@ -136,6 +145,13 @@ class _$TrendingProductCategorySerializer implements PrimitiveSerializer<Trendin
           ) as int;
           result.percentRelativeVolume = valueDes;
           break;
+        case r'pinterest_product_category_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.pinterestProductCategoryId = valueDes;
+          break;
         case r'product_category':
           final valueDes = serializers.deserialize(
             value,
@@ -146,8 +162,9 @@ class _$TrendingProductCategorySerializer implements PrimitiveSerializer<Trendin
         case r'verticals':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(VerticalProductCategory)]),
-          ) as BuiltList<VerticalProductCategory>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.verticals.replace(valueDes);
           break;
         default:

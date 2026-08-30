@@ -32,6 +32,7 @@ class CatalogsUpdatableHotelAttributes {
     this.salePrice,
   });
 
+  /// Hotel address
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -67,6 +68,7 @@ class CatalogsUpdatableHotelAttributes {
   /// Brief description of the hotel.
   String? description;
 
+  /// If specified, you must provide all properties
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -244,10 +246,6 @@ class CatalogsUpdatableHotelAttributes {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsUpdatableHotelAttributes[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsUpdatableHotelAttributes[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

@@ -7,13 +7,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CreateInvitesResultsResponseArrayItemsInner } from './createInvitesResultsResponseArrayItemsInner';
+import { InviteActionResultItem } from './inviteActionResultItem';
 
 
 export interface CreateInvitesResultsResponseArray { 
     /**
      * List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
      */
-    items?: Array<CreateInvitesResultsResponseArrayItemsInner>;
+    items?: Array<InviteActionResultItem>;
 }
 

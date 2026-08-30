@@ -65,10 +65,8 @@ class AdPinAnalytics {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdPinAnalytics[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdPinAnalytics[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'PIN_ID'), 'Required key "AdPinAnalytics[PIN_ID]" is missing from JSON.');
+        assert(json[r'PIN_ID'] != null, 'Required key "AdPinAnalytics[PIN_ID]" has a null value in JSON.');
         return true;
       }());
 

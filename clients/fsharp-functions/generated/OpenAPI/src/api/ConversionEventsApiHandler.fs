@@ -52,6 +52,10 @@ module ConversionEventsApiHandlers =
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | EventsCreateStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
       | EventsCreateStatusCode422 resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"

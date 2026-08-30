@@ -7,9 +7,9 @@
 #' @title OptimizationGoalMetadata
 #' @description OptimizationGoalMetadata Class
 #' @format An \code{R6Class} generator object
-#' @field conversion_tag_v3_goal_metadata  \link{OptimizationGoalMetadataConversionTagV3GoalMetadata} [optional]
-#' @field frequency_goal_metadata  \link{OptimizationGoalMetadataFrequencyGoalMetadata} [optional]
-#' @field scrollup_goal_metadata  \link{OptimizationGoalMetadataScrollupGoalMetadata} [optional]
+#' @field conversion_tag_v3_goal_metadata  \link{ConversionTagV3GoalMetadata} [optional]
+#' @field frequency_goal_metadata  \link{FrequencyGoalMetadata} [optional]
+#' @field scrollup_goal_metadata  \link{ScrollupGoalMetadata} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -75,17 +75,40 @@ OptimizationGoalMetadata <- R6::R6Class(
       OptimizationGoalMetadataObject <- list()
       if (!is.null(self$`conversion_tag_v3_goal_metadata`)) {
         OptimizationGoalMetadataObject[["conversion_tag_v3_goal_metadata"]] <-
-          self$`conversion_tag_v3_goal_metadata`$toSimpleType()
+          self$extractSimpleType(self$`conversion_tag_v3_goal_metadata`)
       }
       if (!is.null(self$`frequency_goal_metadata`)) {
         OptimizationGoalMetadataObject[["frequency_goal_metadata"]] <-
-          self$`frequency_goal_metadata`$toSimpleType()
+          self$extractSimpleType(self$`frequency_goal_metadata`)
       }
       if (!is.null(self$`scrollup_goal_metadata`)) {
         OptimizationGoalMetadataObject[["scrollup_goal_metadata"]] <-
-          self$`scrollup_goal_metadata`$toSimpleType()
+          self$extractSimpleType(self$`scrollup_goal_metadata`)
       }
       return(OptimizationGoalMetadataObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -96,17 +119,17 @@ OptimizationGoalMetadata <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`conversion_tag_v3_goal_metadata`)) {
-        `conversion_tag_v3_goal_metadata_object` <- OptimizationGoalMetadataConversionTagV3GoalMetadata$new()
+        `conversion_tag_v3_goal_metadata_object` <- ConversionTagV3GoalMetadata$new()
         `conversion_tag_v3_goal_metadata_object`$fromJSON(jsonlite::toJSON(this_object$`conversion_tag_v3_goal_metadata`, auto_unbox = TRUE, digits = NA))
         self$`conversion_tag_v3_goal_metadata` <- `conversion_tag_v3_goal_metadata_object`
       }
       if (!is.null(this_object$`frequency_goal_metadata`)) {
-        `frequency_goal_metadata_object` <- OptimizationGoalMetadataFrequencyGoalMetadata$new()
+        `frequency_goal_metadata_object` <- FrequencyGoalMetadata$new()
         `frequency_goal_metadata_object`$fromJSON(jsonlite::toJSON(this_object$`frequency_goal_metadata`, auto_unbox = TRUE, digits = NA))
         self$`frequency_goal_metadata` <- `frequency_goal_metadata_object`
       }
       if (!is.null(this_object$`scrollup_goal_metadata`)) {
-        `scrollup_goal_metadata_object` <- OptimizationGoalMetadataScrollupGoalMetadata$new()
+        `scrollup_goal_metadata_object` <- ScrollupGoalMetadata$new()
         `scrollup_goal_metadata_object`$fromJSON(jsonlite::toJSON(this_object$`scrollup_goal_metadata`, auto_unbox = TRUE, digits = NA))
         self$`scrollup_goal_metadata` <- `scrollup_goal_metadata_object`
       }
@@ -131,9 +154,9 @@ OptimizationGoalMetadata <- R6::R6Class(
     #' @return the instance of OptimizationGoalMetadata
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`conversion_tag_v3_goal_metadata` <- OptimizationGoalMetadataConversionTagV3GoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`conversion_tag_v3_goal_metadata`, auto_unbox = TRUE, digits = NA))
-      self$`frequency_goal_metadata` <- OptimizationGoalMetadataFrequencyGoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`frequency_goal_metadata`, auto_unbox = TRUE, digits = NA))
-      self$`scrollup_goal_metadata` <- OptimizationGoalMetadataScrollupGoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`scrollup_goal_metadata`, auto_unbox = TRUE, digits = NA))
+      self$`conversion_tag_v3_goal_metadata` <- ConversionTagV3GoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`conversion_tag_v3_goal_metadata`, auto_unbox = TRUE, digits = NA))
+      self$`frequency_goal_metadata` <- FrequencyGoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`frequency_goal_metadata`, auto_unbox = TRUE, digits = NA))
+      self$`scrollup_goal_metadata` <- ScrollupGoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`scrollup_goal_metadata`, auto_unbox = TRUE, digits = NA))
       self
     },
 

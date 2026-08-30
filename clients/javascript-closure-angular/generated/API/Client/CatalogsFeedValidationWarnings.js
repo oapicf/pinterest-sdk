@@ -1482,7 +1482,3 @@ API.Client.CatalogsFeedValidationWarnings.prototype.VIDEO_REQUIRED_WHEN_AD_VIDEO
  */
 API.Client.CatalogsFeedValidationWarnings.prototype.WEIGHT_UNIT_INVALID;
 
-/** @enum {string} */
-API.Client.CatalogsFeedValidationWarnings.FETCH_SAME_SIGNATUREEnum = { 
-  1: '1',
-}

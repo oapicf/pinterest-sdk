@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Field** | **String** |  | 
-**Operation** | **String** |  | 
+**Operation** | [**TargetingSpecListOperation**](TargetingSpecListOperation.md) |  | 
 **Values** | [**TargetingSpecGender[]**](TargetingSpecGender.md) |  | 
 
 ## Examples

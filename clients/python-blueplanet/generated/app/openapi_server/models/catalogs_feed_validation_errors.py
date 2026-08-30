@@ -459,7 +459,7 @@ class CatalogsFeedValidationErrors(Model):
     def fetch_inactive_feed_error(self) -> int:
         """Gets the fetch_inactive_feed_error of this CatalogsFeedValidationErrors.
 
-        Your feed wasn't ingested because it hasn’t changed in the previous 90 days.  # noqa: E501
+        Your feed wasn't ingested because it hasn't changed in the previous 90 days.  # noqa: E501
 
         :return: The fetch_inactive_feed_error of this CatalogsFeedValidationErrors.
         :rtype: int
@@ -470,7 +470,7 @@ class CatalogsFeedValidationErrors(Model):
     def fetch_inactive_feed_error(self, fetch_inactive_feed_error: int):
         """Sets the fetch_inactive_feed_error of this CatalogsFeedValidationErrors.
 
-        Your feed wasn't ingested because it hasn’t changed in the previous 90 days.  # noqa: E501
+        Your feed wasn't ingested because it hasn't changed in the previous 90 days.  # noqa: E501
 
         :param fetch_inactive_feed_error: The fetch_inactive_feed_error of this CatalogsFeedValidationErrors.
         :type fetch_inactive_feed_error: int

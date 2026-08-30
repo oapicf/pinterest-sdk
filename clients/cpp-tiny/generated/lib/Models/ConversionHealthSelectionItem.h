@@ -53,28 +53,28 @@ public:
 
 	/*! \brief Set Status for conversion types
 	 */
-	void setConversionType(Object  conversionType);
+	void setConversionType(Object conversionType);
 	/*! \brief Get Status for criteria
 	 */
 	Object getCriteria();
 
 	/*! \brief Set Status for criteria
 	 */
-	void setCriteria(Object  criteria);
+	void setCriteria(Object criteria);
 	/*! \brief Get Status for ingestion sources
 	 */
 	Object getIngestionSource();
 
 	/*! \brief Set Status for ingestion sources
 	 */
-	void setIngestionSource(Object  ingestionSource);
+	void setIngestionSource(Object ingestionSource);
 	/*! \brief Get Overall status for this selection item
 	 */
 	AnyType getStatus();
 
 	/*! \brief Set Overall status for this selection item
 	 */
-	void setStatus(AnyType  status);
+	void setStatus(AnyType status);
 
 
     private:

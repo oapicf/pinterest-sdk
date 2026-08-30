@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Bulk campaign delivery estimates response.",
+  "name": "BulkCampaignDeliveryEstimatesResponse",
+  "fields": [
+    {
+      "name": "data",
+      "type": {
+        "type": "array",
+        "items": "model.BulkCampaignDeliveryEstimatesItem"
+      },
+      "doc": "Per-campaign delivery estimate results, in the same order as the request."
+    }
+  ]
+
+}

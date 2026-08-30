@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **string** |  | [default to undefined]
-**feed_id** | **string** |  | [default to undefined]
-**id** | **string** |  | [default to undefined]
-**status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | [default to undefined]
+**created_at** | **string** | Timestamp of the feed ingestion. | [default to undefined]
+**feed_id** | **string** | Catalog Feed id pertaining to the feed ingestion. | [default to undefined]
+**id** | **string** | Unique identifier of a feed ingestion. | [default to undefined]
+**status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) | Status of the feed ingestion. | [default to undefined]
 
 ## Example
 

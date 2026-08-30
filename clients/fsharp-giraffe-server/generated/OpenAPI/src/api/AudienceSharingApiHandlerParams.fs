@@ -1,13 +1,18 @@
 namespace OpenAPI
 
+open OpenAPI.Model.AdAccountToAdAccountSharedAudience
+open OpenAPI.Model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+open OpenAPI.Model.AdAccountToBusinessSharedAudience
+open OpenAPI.Model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 open OpenAPI.Model.AdAccountsAudiencesSharedAccountsList200Response
 open OpenAPI.Model.AudienceAccountType
-open OpenAPI.Model.AudiencesList200Response
-open OpenAPI.Model.BusinessSharedAudience
-open OpenAPI.Model.BusinessSharedAudienceResponse
-open OpenAPI.Model.Error
-open OpenAPI.Model.SharedAudience
-open OpenAPI.Model.SharedAudienceResponse
+open OpenAPI.Model.BusinessToAdAccountSharedAudience
+open OpenAPI.Model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+open OpenAPI.Model.BusinessToBusinessSharedAudience
+open OpenAPI.Model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+open OpenAPI.Model.Order
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.SharedAudiencesForBusinessList200Response
 open System.Collections.Generic
 open System
 
@@ -29,10 +34,10 @@ module AudienceSharingApiHandlerParams =
       accountType : AudienceAccountType ;
 
 
-      pageSize : int option;
-
-
       bookmark : string option;
+
+
+      pageSize : int option;
 
     }
     //#endregion
@@ -44,20 +49,35 @@ module AudienceSharingApiHandlerParams =
     }
 
     type AdAccountsAudiencesSharedAccountsListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsAudiencesSharedAccountsListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsAudiencesSharedAccountsListStatusCode403Response = {
+      content:PinterestLibError;
       
     }
 
     type AdAccountsAudiencesSharedAccountsListStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsAudiencesSharedAccountsListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AdAccountsAudiencesSharedAccountsListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AdAccountsAudiencesSharedAccountsListResult = AdAccountsAudiencesSharedAccountsListStatusCode200 of AdAccountsAudiencesSharedAccountsListStatusCode200Response|AdAccountsAudiencesSharedAccountsListStatusCode400 of AdAccountsAudiencesSharedAccountsListStatusCode400Response|AdAccountsAudiencesSharedAccountsListStatusCode404 of AdAccountsAudiencesSharedAccountsListStatusCode404Response|AdAccountsAudiencesSharedAccountsListDefaultStatusCode of AdAccountsAudiencesSharedAccountsListDefaultStatusCodeResponse
+    type AdAccountsAudiencesSharedAccountsListResult = AdAccountsAudiencesSharedAccountsListStatusCode200 of AdAccountsAudiencesSharedAccountsListStatusCode200Response|AdAccountsAudiencesSharedAccountsListStatusCode400 of AdAccountsAudiencesSharedAccountsListStatusCode400Response|AdAccountsAudiencesSharedAccountsListStatusCode401 of AdAccountsAudiencesSharedAccountsListStatusCode401Response|AdAccountsAudiencesSharedAccountsListStatusCode403 of AdAccountsAudiencesSharedAccountsListStatusCode403Response|AdAccountsAudiencesSharedAccountsListStatusCode404 of AdAccountsAudiencesSharedAccountsListStatusCode404Response|AdAccountsAudiencesSharedAccountsListStatusCode429 of AdAccountsAudiencesSharedAccountsListStatusCode429Response|AdAccountsAudiencesSharedAccountsListDefaultStatusCode of AdAccountsAudiencesSharedAccountsListDefaultStatusCodeResponse
 
     type AdAccountsAudiencesSharedAccountsListArgs = {
       pathParams:AdAccountsAudiencesSharedAccountsListPathParams;
@@ -79,10 +99,10 @@ module AudienceSharingApiHandlerParams =
       accountType : AudienceAccountType ;
 
 
-      pageSize : int option;
-
-
       bookmark : string option;
+
+
+      pageSize : int option;
 
     }
     //#endregion
@@ -94,20 +114,35 @@ module AudienceSharingApiHandlerParams =
     }
 
     type BusinessAccountAudiencesSharedAccountsListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAccountAudiencesSharedAccountsListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAccountAudiencesSharedAccountsListStatusCode403Response = {
+      content:PinterestLibError;
       
     }
 
     type BusinessAccountAudiencesSharedAccountsListStatusCode404Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type BusinessAccountAudiencesSharedAccountsListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type BusinessAccountAudiencesSharedAccountsListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type BusinessAccountAudiencesSharedAccountsListResult = BusinessAccountAudiencesSharedAccountsListStatusCode200 of BusinessAccountAudiencesSharedAccountsListStatusCode200Response|BusinessAccountAudiencesSharedAccountsListStatusCode400 of BusinessAccountAudiencesSharedAccountsListStatusCode400Response|BusinessAccountAudiencesSharedAccountsListStatusCode404 of BusinessAccountAudiencesSharedAccountsListStatusCode404Response|BusinessAccountAudiencesSharedAccountsListDefaultStatusCode of BusinessAccountAudiencesSharedAccountsListDefaultStatusCodeResponse
+    type BusinessAccountAudiencesSharedAccountsListResult = BusinessAccountAudiencesSharedAccountsListStatusCode200 of BusinessAccountAudiencesSharedAccountsListStatusCode200Response|BusinessAccountAudiencesSharedAccountsListStatusCode400 of BusinessAccountAudiencesSharedAccountsListStatusCode400Response|BusinessAccountAudiencesSharedAccountsListStatusCode401 of BusinessAccountAudiencesSharedAccountsListStatusCode401Response|BusinessAccountAudiencesSharedAccountsListStatusCode403 of BusinessAccountAudiencesSharedAccountsListStatusCode403Response|BusinessAccountAudiencesSharedAccountsListStatusCode404 of BusinessAccountAudiencesSharedAccountsListStatusCode404Response|BusinessAccountAudiencesSharedAccountsListStatusCode429 of BusinessAccountAudiencesSharedAccountsListStatusCode429Response|BusinessAccountAudiencesSharedAccountsListDefaultStatusCode of BusinessAccountAudiencesSharedAccountsListDefaultStatusCodeResponse
 
     type BusinessAccountAudiencesSharedAccountsListArgs = {
       pathParams:BusinessAccountAudiencesSharedAccountsListPathParams;
@@ -123,10 +158,10 @@ module AudienceSharingApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type SharedAudiencesForBusinessListQueryParams = {
+      order : Order option;
+
+
       bookmark : string option;
-
-
-      order : string option;
 
 
       pageSize : int option;
@@ -136,20 +171,40 @@ module AudienceSharingApiHandlerParams =
 
 
     type SharedAudiencesForBusinessListStatusCode200Response = {
-      content:AudiencesList200Response;
+      content:SharedAudiencesForBusinessList200Response;
       
     }
 
     type SharedAudiencesForBusinessListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type SharedAudiencesForBusinessListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type SharedAudiencesForBusinessListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type SharedAudiencesForBusinessListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type SharedAudiencesForBusinessListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type SharedAudiencesForBusinessListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type SharedAudiencesForBusinessListResult = SharedAudiencesForBusinessListStatusCode200 of SharedAudiencesForBusinessListStatusCode200Response|SharedAudiencesForBusinessListStatusCode400 of SharedAudiencesForBusinessListStatusCode400Response|SharedAudiencesForBusinessListDefaultStatusCode of SharedAudiencesForBusinessListDefaultStatusCodeResponse
+    type SharedAudiencesForBusinessListResult = SharedAudiencesForBusinessListStatusCode200 of SharedAudiencesForBusinessListStatusCode200Response|SharedAudiencesForBusinessListStatusCode400 of SharedAudiencesForBusinessListStatusCode400Response|SharedAudiencesForBusinessListStatusCode401 of SharedAudiencesForBusinessListStatusCode401Response|SharedAudiencesForBusinessListStatusCode403 of SharedAudiencesForBusinessListStatusCode403Response|SharedAudiencesForBusinessListStatusCode404 of SharedAudiencesForBusinessListStatusCode404Response|SharedAudiencesForBusinessListStatusCode429 of SharedAudiencesForBusinessListStatusCode429Response|SharedAudiencesForBusinessListDefaultStatusCode of SharedAudiencesForBusinessListDefaultStatusCodeResponse
 
     type SharedAudiencesForBusinessListArgs = {
       pathParams:SharedAudiencesForBusinessListPathParams;
@@ -164,25 +219,45 @@ module AudienceSharingApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type UpdateAdAccountToAdAccountSharedAudienceBodyParams = SharedAudience
+    type UpdateAdAccountToAdAccountSharedAudienceBodyParams = AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
     //#endregion
 
 
     type UpdateAdAccountToAdAccountSharedAudienceStatusCode200Response = {
-      content:SharedAudienceResponse;
+      content:AdAccountToAdAccountSharedAudience;
       
     }
 
     type UpdateAdAccountToAdAccountSharedAudienceStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateAdAccountToAdAccountSharedAudienceStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateAdAccountToAdAccountSharedAudienceStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateAdAccountToAdAccountSharedAudienceStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateAdAccountToAdAccountSharedAudienceStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type UpdateAdAccountToAdAccountSharedAudienceDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type UpdateAdAccountToAdAccountSharedAudienceResult = UpdateAdAccountToAdAccountSharedAudienceStatusCode200 of UpdateAdAccountToAdAccountSharedAudienceStatusCode200Response|UpdateAdAccountToAdAccountSharedAudienceStatusCode400 of UpdateAdAccountToAdAccountSharedAudienceStatusCode400Response|UpdateAdAccountToAdAccountSharedAudienceDefaultStatusCode of UpdateAdAccountToAdAccountSharedAudienceDefaultStatusCodeResponse
+    type UpdateAdAccountToAdAccountSharedAudienceResult = UpdateAdAccountToAdAccountSharedAudienceStatusCode200 of UpdateAdAccountToAdAccountSharedAudienceStatusCode200Response|UpdateAdAccountToAdAccountSharedAudienceStatusCode400 of UpdateAdAccountToAdAccountSharedAudienceStatusCode400Response|UpdateAdAccountToAdAccountSharedAudienceStatusCode401 of UpdateAdAccountToAdAccountSharedAudienceStatusCode401Response|UpdateAdAccountToAdAccountSharedAudienceStatusCode403 of UpdateAdAccountToAdAccountSharedAudienceStatusCode403Response|UpdateAdAccountToAdAccountSharedAudienceStatusCode404 of UpdateAdAccountToAdAccountSharedAudienceStatusCode404Response|UpdateAdAccountToAdAccountSharedAudienceStatusCode429 of UpdateAdAccountToAdAccountSharedAudienceStatusCode429Response|UpdateAdAccountToAdAccountSharedAudienceDefaultStatusCode of UpdateAdAccountToAdAccountSharedAudienceDefaultStatusCodeResponse
 
     type UpdateAdAccountToAdAccountSharedAudienceArgs = {
       pathParams:UpdateAdAccountToAdAccountSharedAudiencePathParams;
@@ -197,25 +272,45 @@ module AudienceSharingApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type UpdateAdAccountToBusinessSharedAudienceBodyParams = BusinessSharedAudience
+    type UpdateAdAccountToBusinessSharedAudienceBodyParams = AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
     //#endregion
 
 
     type UpdateAdAccountToBusinessSharedAudienceStatusCode200Response = {
-      content:BusinessSharedAudienceResponse;
+      content:AdAccountToBusinessSharedAudience;
       
     }
 
     type UpdateAdAccountToBusinessSharedAudienceStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateAdAccountToBusinessSharedAudienceStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateAdAccountToBusinessSharedAudienceStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateAdAccountToBusinessSharedAudienceStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateAdAccountToBusinessSharedAudienceStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type UpdateAdAccountToBusinessSharedAudienceDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type UpdateAdAccountToBusinessSharedAudienceResult = UpdateAdAccountToBusinessSharedAudienceStatusCode200 of UpdateAdAccountToBusinessSharedAudienceStatusCode200Response|UpdateAdAccountToBusinessSharedAudienceStatusCode400 of UpdateAdAccountToBusinessSharedAudienceStatusCode400Response|UpdateAdAccountToBusinessSharedAudienceDefaultStatusCode of UpdateAdAccountToBusinessSharedAudienceDefaultStatusCodeResponse
+    type UpdateAdAccountToBusinessSharedAudienceResult = UpdateAdAccountToBusinessSharedAudienceStatusCode200 of UpdateAdAccountToBusinessSharedAudienceStatusCode200Response|UpdateAdAccountToBusinessSharedAudienceStatusCode400 of UpdateAdAccountToBusinessSharedAudienceStatusCode400Response|UpdateAdAccountToBusinessSharedAudienceStatusCode401 of UpdateAdAccountToBusinessSharedAudienceStatusCode401Response|UpdateAdAccountToBusinessSharedAudienceStatusCode403 of UpdateAdAccountToBusinessSharedAudienceStatusCode403Response|UpdateAdAccountToBusinessSharedAudienceStatusCode404 of UpdateAdAccountToBusinessSharedAudienceStatusCode404Response|UpdateAdAccountToBusinessSharedAudienceStatusCode429 of UpdateAdAccountToBusinessSharedAudienceStatusCode429Response|UpdateAdAccountToBusinessSharedAudienceDefaultStatusCode of UpdateAdAccountToBusinessSharedAudienceDefaultStatusCodeResponse
 
     type UpdateAdAccountToBusinessSharedAudienceArgs = {
       pathParams:UpdateAdAccountToBusinessSharedAudiencePathParams;
@@ -230,25 +325,45 @@ module AudienceSharingApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type UpdateBusinessToAdAccountSharedAudienceBodyParams = SharedAudience
+    type UpdateBusinessToAdAccountSharedAudienceBodyParams = BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
     //#endregion
 
 
     type UpdateBusinessToAdAccountSharedAudienceStatusCode200Response = {
-      content:SharedAudienceResponse;
+      content:BusinessToAdAccountSharedAudience;
       
     }
 
     type UpdateBusinessToAdAccountSharedAudienceStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessToAdAccountSharedAudienceStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessToAdAccountSharedAudienceStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessToAdAccountSharedAudienceStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessToAdAccountSharedAudienceStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type UpdateBusinessToAdAccountSharedAudienceDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type UpdateBusinessToAdAccountSharedAudienceResult = UpdateBusinessToAdAccountSharedAudienceStatusCode200 of UpdateBusinessToAdAccountSharedAudienceStatusCode200Response|UpdateBusinessToAdAccountSharedAudienceStatusCode400 of UpdateBusinessToAdAccountSharedAudienceStatusCode400Response|UpdateBusinessToAdAccountSharedAudienceDefaultStatusCode of UpdateBusinessToAdAccountSharedAudienceDefaultStatusCodeResponse
+    type UpdateBusinessToAdAccountSharedAudienceResult = UpdateBusinessToAdAccountSharedAudienceStatusCode200 of UpdateBusinessToAdAccountSharedAudienceStatusCode200Response|UpdateBusinessToAdAccountSharedAudienceStatusCode400 of UpdateBusinessToAdAccountSharedAudienceStatusCode400Response|UpdateBusinessToAdAccountSharedAudienceStatusCode401 of UpdateBusinessToAdAccountSharedAudienceStatusCode401Response|UpdateBusinessToAdAccountSharedAudienceStatusCode403 of UpdateBusinessToAdAccountSharedAudienceStatusCode403Response|UpdateBusinessToAdAccountSharedAudienceStatusCode404 of UpdateBusinessToAdAccountSharedAudienceStatusCode404Response|UpdateBusinessToAdAccountSharedAudienceStatusCode429 of UpdateBusinessToAdAccountSharedAudienceStatusCode429Response|UpdateBusinessToAdAccountSharedAudienceDefaultStatusCode of UpdateBusinessToAdAccountSharedAudienceDefaultStatusCodeResponse
 
     type UpdateBusinessToAdAccountSharedAudienceArgs = {
       pathParams:UpdateBusinessToAdAccountSharedAudiencePathParams;
@@ -263,25 +378,45 @@ module AudienceSharingApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type UpdateBusinessToBusinessSharedAudienceBodyParams = BusinessSharedAudience
+    type UpdateBusinessToBusinessSharedAudienceBodyParams = BusinessToBusinessSharedAudienceUpdateWithRequiredBody
     //#endregion
 
 
     type UpdateBusinessToBusinessSharedAudienceStatusCode200Response = {
-      content:BusinessSharedAudienceResponse;
+      content:BusinessToBusinessSharedAudience;
       
     }
 
     type UpdateBusinessToBusinessSharedAudienceStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessToBusinessSharedAudienceStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessToBusinessSharedAudienceStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessToBusinessSharedAudienceStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type UpdateBusinessToBusinessSharedAudienceStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type UpdateBusinessToBusinessSharedAudienceDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type UpdateBusinessToBusinessSharedAudienceResult = UpdateBusinessToBusinessSharedAudienceStatusCode200 of UpdateBusinessToBusinessSharedAudienceStatusCode200Response|UpdateBusinessToBusinessSharedAudienceStatusCode400 of UpdateBusinessToBusinessSharedAudienceStatusCode400Response|UpdateBusinessToBusinessSharedAudienceDefaultStatusCode of UpdateBusinessToBusinessSharedAudienceDefaultStatusCodeResponse
+    type UpdateBusinessToBusinessSharedAudienceResult = UpdateBusinessToBusinessSharedAudienceStatusCode200 of UpdateBusinessToBusinessSharedAudienceStatusCode200Response|UpdateBusinessToBusinessSharedAudienceStatusCode400 of UpdateBusinessToBusinessSharedAudienceStatusCode400Response|UpdateBusinessToBusinessSharedAudienceStatusCode401 of UpdateBusinessToBusinessSharedAudienceStatusCode401Response|UpdateBusinessToBusinessSharedAudienceStatusCode403 of UpdateBusinessToBusinessSharedAudienceStatusCode403Response|UpdateBusinessToBusinessSharedAudienceStatusCode404 of UpdateBusinessToBusinessSharedAudienceStatusCode404Response|UpdateBusinessToBusinessSharedAudienceStatusCode429 of UpdateBusinessToBusinessSharedAudienceStatusCode429Response|UpdateBusinessToBusinessSharedAudienceDefaultStatusCode of UpdateBusinessToBusinessSharedAudienceDefaultStatusCodeResponse
 
     type UpdateBusinessToBusinessSharedAudienceArgs = {
       pathParams:UpdateBusinessToBusinessSharedAudiencePathParams;

@@ -15,6 +15,7 @@
    (ds/opt :duration) float?
    (ds/opt :height) int?
    (ds/opt :video_url) string?
+   (ds/opt :video_url_hls) string?
    (ds/opt :width) int?
    (ds/opt :items) (s/coll-of pin-media-metadata-spec)
    })

@@ -16,9 +16,78 @@ class LabelsApi {
 
   final ApiClient apiClient;
 
+  /// Apply label to entity
+  ///
+  ///   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///
+  /// * [String] labelId (required):
+  ///   Label ID.
+  ///
+  /// * [LabeledEntitiesCreate] labeledEntitiesCreate (required):
+  Future<Response> labelsApplyWithHttpInfo(String adAccountId, String labelId, LabeledEntitiesCreate labeledEntitiesCreate, { Future<void>? abortTrigger, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/ad_accounts/{ad_account_id}/labels/{label_id}/apply'
+      .replaceAll('{ad_account_id}', adAccountId)
+      .replaceAll('{label_id}', labelId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = labeledEntitiesCreate;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
+    );
+  }
+
+  /// Apply label to entity
+  ///
+  ///   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///
+  /// * [String] labelId (required):
+  ///   Label ID.
+  ///
+  /// * [LabeledEntitiesCreate] labeledEntitiesCreate (required):
+  Future<LabeledEntities?> labelsApply(String adAccountId, String labelId, LabeledEntitiesCreate labeledEntitiesCreate, { Future<void>? abortTrigger, }) async {
+    final response = await labelsApplyWithHttpInfo(adAccountId, labelId, labeledEntitiesCreate, abortTrigger: abortTrigger,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LabeledEntities',) as LabeledEntities;
+    
+    }
+    return null;
+  }
+
   /// Create labels
   ///
-  /// <p> <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> This endpoint is not available to all users. </p> <p>   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    <b>Note:</b> You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  </p>
+  /// [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -28,7 +97,7 @@ class LabelsApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [LabelCreateRequest] labelCreateRequest (required):
-  Future<Response> labelsCreateWithHttpInfo(String adAccountId, LabelCreateRequest labelCreateRequest,) async {
+  Future<Response> labelsCreateWithHttpInfo(String adAccountId, LabelCreateRequest labelCreateRequest, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/labels'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -51,12 +120,13 @@ class LabelsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Create labels
   ///
-  /// <p> <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> This endpoint is not available to all users. </p> <p>   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    <b>Note:</b> You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  </p>
+  /// [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
   ///
   /// Parameters:
   ///
@@ -64,8 +134,8 @@ class LabelsApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [LabelCreateRequest] labelCreateRequest (required):
-  Future<LabelsResponse?> labelsCreate(String adAccountId, LabelCreateRequest labelCreateRequest,) async {
-    final response = await labelsCreateWithHttpInfo(adAccountId, labelCreateRequest,);
+  Future<LabelsResponse?> labelsCreate(String adAccountId, LabelCreateRequest labelCreateRequest, { Future<void>? abortTrigger, }) async {
+    final response = await labelsCreateWithHttpInfo(adAccountId, labelCreateRequest, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -81,7 +151,7 @@ class LabelsApi {
 
   /// List labels
   ///
-  /// <p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   See a list of labels for assets that your account owns, and filter the list by different criteria. </p>
+  /// [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -96,18 +166,18 @@ class LabelsApi {
   /// * [List<String>] labelIds:
   ///   List of Label Ids to use to filter the results.
   ///
-  /// * [List<String>] entityStatuses:
+  /// * [List<QueryLabelEntityStatusesItems>] entityStatuses:
   ///   Label entity status
   ///
-  /// * [List<String>] labelTypes:
+  /// * [List<QueryLabelTypesItems>] labelTypes:
   ///   Label type.
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<Response> labelsListWithHttpInfo(String adAccountId, { List<String>? campaignIds, List<String>? labelIds, List<String>? entityStatuses, List<String>? labelTypes, int? pageSize, String? bookmark, }) async {
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<Response> labelsListWithHttpInfo(String adAccountId, { List<String>? campaignIds, List<String>? labelIds, List<QueryLabelEntityStatusesItems>? entityStatuses, List<QueryLabelTypesItems>? labelTypes, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/labels'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -131,11 +201,11 @@ class LabelsApi {
     if (labelTypes != null) {
       queryParams.addAll(_queryParams('multi', 'label_types', labelTypes));
     }
-    if (pageSize != null) {
-      queryParams.addAll(_queryParams('', 'page_size', pageSize));
-    }
     if (bookmark != null) {
       queryParams.addAll(_queryParams('', 'bookmark', bookmark));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'page_size', pageSize));
     }
 
     const contentTypes = <String>[];
@@ -149,12 +219,13 @@ class LabelsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// List labels
   ///
-  /// <p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   See a list of labels for assets that your account owns, and filter the list by different criteria. </p>
+  /// [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
   ///
   /// Parameters:
   ///
@@ -167,19 +238,19 @@ class LabelsApi {
   /// * [List<String>] labelIds:
   ///   List of Label Ids to use to filter the results.
   ///
-  /// * [List<String>] entityStatuses:
+  /// * [List<QueryLabelEntityStatusesItems>] entityStatuses:
   ///   Label entity status
   ///
-  /// * [List<String>] labelTypes:
+  /// * [List<QueryLabelTypesItems>] labelTypes:
   ///   Label type.
-  ///
-  /// * [int] pageSize:
-  ///   Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   ///
   /// * [String] bookmark:
   ///   Cursor used to fetch the next page of items
-  Future<LabelsList200Response?> labelsList(String adAccountId, { List<String>? campaignIds, List<String>? labelIds, List<String>? entityStatuses, List<String>? labelTypes, int? pageSize, String? bookmark, }) async {
-    final response = await labelsListWithHttpInfo(adAccountId,  campaignIds: campaignIds, labelIds: labelIds, entityStatuses: entityStatuses, labelTypes: labelTypes, pageSize: pageSize, bookmark: bookmark, );
+  ///
+  /// * [int] pageSize:
+  ///   Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+  Future<LabelsList200Response?> labelsList(String adAccountId, { List<String>? campaignIds, List<String>? labelIds, List<QueryLabelEntityStatusesItems>? entityStatuses, List<QueryLabelTypesItems>? labelTypes, String? bookmark, int? pageSize, Future<void>? abortTrigger, }) async {
+    final response = await labelsListWithHttpInfo(adAccountId, campaignIds: campaignIds, labelIds: labelIds, entityStatuses: entityStatuses, labelTypes: labelTypes, bookmark: bookmark, pageSize: pageSize, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -193,9 +264,78 @@ class LabelsApi {
     return null;
   }
 
+  /// Remove label from entities
+  ///
+  ///   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///
+  /// * [String] labelId (required):
+  ///   Label ID.
+  ///
+  /// * [LabeledEntitiesCreate] labeledEntitiesCreate (required):
+  Future<Response> labelsRemoveWithHttpInfo(String adAccountId, String labelId, LabeledEntitiesCreate labeledEntitiesCreate, { Future<void>? abortTrigger, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/ad_accounts/{ad_account_id}/labels/{label_id}/remove'
+      .replaceAll('{ad_account_id}', adAccountId)
+      .replaceAll('{label_id}', labelId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = labeledEntitiesCreate;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
+    );
+  }
+
+  /// Remove label from entities
+  ///
+  ///   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] adAccountId (required):
+  ///
+  /// * [String] labelId (required):
+  ///   Label ID.
+  ///
+  /// * [LabeledEntitiesCreate] labeledEntitiesCreate (required):
+  Future<LabeledEntities?> labelsRemove(String adAccountId, String labelId, LabeledEntitiesCreate labeledEntitiesCreate, { Future<void>? abortTrigger, }) async {
+    final response = await labelsRemoveWithHttpInfo(adAccountId, labelId, labeledEntitiesCreate, abortTrigger: abortTrigger,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LabeledEntities',) as LabeledEntities;
+    
+    }
+    return null;
+  }
+
   /// Update labels
   ///
-  /// <p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   Change the properties of one or more labels. </p>
+  /// [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -205,7 +345,7 @@ class LabelsApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [LabelUpdateRequest] labelUpdateRequest (required):
-  Future<Response> labelsUpdateWithHttpInfo(String adAccountId, LabelUpdateRequest labelUpdateRequest,) async {
+  Future<Response> labelsUpdateWithHttpInfo(String adAccountId, LabelUpdateRequest labelUpdateRequest, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ad_accounts/{ad_account_id}/labels'
       .replaceAll('{ad_account_id}', adAccountId);
@@ -228,12 +368,13 @@ class LabelsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
   /// Update labels
   ///
-  /// <p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   Change the properties of one or more labels. </p>
+  /// [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
   ///
   /// Parameters:
   ///
@@ -241,8 +382,8 @@ class LabelsApi {
   ///   Unique identifier of an ad account.
   ///
   /// * [LabelUpdateRequest] labelUpdateRequest (required):
-  Future<LabelsResponse?> labelsUpdate(String adAccountId, LabelUpdateRequest labelUpdateRequest,) async {
-    final response = await labelsUpdateWithHttpInfo(adAccountId, labelUpdateRequest,);
+  Future<LabelsResponse?> labelsUpdate(String adAccountId, LabelUpdateRequest labelUpdateRequest, { Future<void>? abortTrigger, }) async {
+    final response = await labelsUpdateWithHttpInfo(adAccountId, labelUpdateRequest, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

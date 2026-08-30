@@ -30,9 +30,9 @@ from openapi_server.models.conversion_event_response import ConversionEventRespo
 from openapi_server.models.conversion_tag import ConversionTag
 from openapi_server.models.conversion_tag_create import ConversionTagCreate
 from openapi_server.models.conversion_tags_list200_response import ConversionTagsList200Response
-from openapi_server.models.error import Error
 from openapi_server.models.page_visit_conversion_tags_get200_response import PageVisitConversionTagsGet200Response
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -105,8 +105,13 @@ async def conversion_tags_create(
 @router.get(
     "/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible",
     responses={
-        200: {"model": Dict[str, List[ConversionEventResponse]], "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected errors"},
+        200: {"model": Dict[str, List[ConversionEventResponse]], "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["conversion_tags"],
     summary="Get Ocpm eligible conversion tags",
@@ -130,8 +135,13 @@ async def ocpm_eligible_conversion_tags_get(
 @router.get(
     "/ad_accounts/{ad_account_id}/conversion_tags/page_visit",
     responses={
-        200: {"model": PageVisitConversionTagsGet200Response, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
+        200: {"model": PageVisitConversionTagsGet200Response, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["conversion_tags"],
     summary="Get page visit conversion tags",
@@ -139,9 +149,9 @@ async def ocpm_eligible_conversion_tags_get(
 )
 async def page_visit_conversion_tags_get(
     ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.")] = Query(25, description="Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.", alias="page_size", ge=1, le=250),
-    order: Annotated[Optional[StrictStr], Field(description="The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.")] = Query(None, description="The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", alias="order"),
     bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    order: Annotated[Optional[PinterestLibPaginationOrder], Field(description="The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.")] = Query(None, description="The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.", alias="order"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -152,14 +162,19 @@ async def page_visit_conversion_tags_get(
     """Get all page visit conversion tag events for an ad account."""
     if not BaseConversionTagsApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseConversionTagsApi.subclasses[0]().page_visit_conversion_tags_get(ad_account_id, page_size, order, bookmark)
+    return await BaseConversionTagsApi.subclasses[0]().page_visit_conversion_tags_get(ad_account_id, bookmark, page_size, order)
 
 
 @router.get(
     "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}",
     responses={
-        200: {"model": ConversionTag, "description": "Success"},
-        "default": {"model": Error, "description": "Unexpected error"},
+        200: {"model": ConversionTag, "description": "The request has succeeded."},
+        400: {"model": PinterestLibError, "description": "The request could not be understood by the server due to unexpected data."},
+        401: {"model": PinterestLibError, "description": "Authentication is required and has either failed or not been provided."},
+        403: {"model": PinterestLibError, "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource."},
+        404: {"model": PinterestLibError, "description": "The requested resource could not be found on this server."},
+        429: {"model": PinterestLibError, "description": "The user has sent too many requests in a given amount of time and is being rate limited."},
+        "default": {"model": PinterestLibError, "description": "An unexpected error response."},
     },
     tags=["conversion_tags"],
     summary="Get conversion tag",

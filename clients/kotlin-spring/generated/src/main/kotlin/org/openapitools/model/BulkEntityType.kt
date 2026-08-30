@@ -16,8 +16,8 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Refers ads entity type. Schedule enum is only applicable to beta users
-* Values: CAMPAIGN,AD_GROUP,PRODUCT_GROUP,AD,KEYWORD,LABEL,SCHEDULE
+* Refers ads entity type.
+* Values: CAMPAIGN,AD_GROUP,PRODUCT_GROUP,AD,KEYWORD,LABEL,SCHEDULE,ENTITY_HISTORY
 */
 enum class BulkEntityType(@get:JsonValue val value: kotlin.String) {
 
@@ -27,7 +27,8 @@ enum class BulkEntityType(@get:JsonValue val value: kotlin.String) {
     AD("AD"),
     KEYWORD("KEYWORD"),
     LABEL("LABEL"),
-    SCHEDULE("SCHEDULE");
+    SCHEDULE("SCHEDULE"),
+    ENTITY_HISTORY("ENTITY_HISTORY");
 
     companion object {
         @JvmStatic

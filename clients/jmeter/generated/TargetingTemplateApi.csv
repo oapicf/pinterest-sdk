@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId,targetingTemplateCreate,adAccountId,order,includeSizing,searchQuery,pageSize,bookmark,adAccountId,targetingTemplateUpdateRequest
+testCase,httpStatusCode,adAccountId,targetingTemplateCreate,adAccountId,bookmark,pageSize,order,includeSizing,searchQuery,adAccountId,targetingTemplateUpdateRequestReadOrUpdate
 Success,200,0,0,0,0,0,0,0,0,0,0

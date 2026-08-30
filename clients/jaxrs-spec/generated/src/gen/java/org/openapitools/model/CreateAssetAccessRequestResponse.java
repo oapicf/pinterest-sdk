@@ -7,8 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreateAssetAccessRequestErrorMessageInner;
+import org.openapitools.model.AssetAccessRequestError;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CreateAssetAccessRequestResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CreateAssetAccessRequestResponse   {
-  private @Valid List<@Valid CreateAssetAccessRequestErrorMessageInner> exceptions;
-  private @Valid Map<String, String> invites;
+  private @Valid List<@Valid AssetAccessRequestError> exceptions = new ArrayList<>();
+  private @Valid Map<String, String> invites = new HashMap<>();
 
   public CreateAssetAccessRequestResponse() {
   }
@@ -34,7 +33,7 @@ public class CreateAssetAccessRequestResponse   {
   /**
    * A list of errors associated with the asset access requests. Will be returned if there is an error.
    **/
-  public CreateAssetAccessRequestResponse exceptions(List<@Valid CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public CreateAssetAccessRequestResponse exceptions(List<@Valid AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -42,16 +41,16 @@ public class CreateAssetAccessRequestResponse   {
   
   @ApiModelProperty(value = "A list of errors associated with the asset access requests. Will be returned if there is an error.")
   @JsonProperty("exceptions")
-  @Valid public List<@Valid CreateAssetAccessRequestErrorMessageInner> getExceptions() {
+  @Valid public List<@Valid AssetAccessRequestError> getExceptions() {
     return exceptions;
   }
 
   @JsonProperty("exceptions")
-  public void setExceptions(List<@Valid CreateAssetAccessRequestErrorMessageInner> exceptions) {
+  public void setExceptions(List<@Valid AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
   }
 
-  public CreateAssetAccessRequestResponse addExceptionsItem(CreateAssetAccessRequestErrorMessageInner exceptionsItem) {
+  public CreateAssetAccessRequestResponse addExceptionsItem(AssetAccessRequestError exceptionsItem) {
     if (this.exceptions == null) {
       this.exceptions = new ArrayList<>();
     }
@@ -60,7 +59,7 @@ public class CreateAssetAccessRequestResponse   {
     return this;
   }
 
-  public CreateAssetAccessRequestResponse removeExceptionsItem(CreateAssetAccessRequestErrorMessageInner exceptionsItem) {
+  public CreateAssetAccessRequestResponse removeExceptionsItem(AssetAccessRequestError exceptionsItem) {
     if (exceptionsItem != null && this.exceptions != null) {
       this.exceptions.remove(exceptionsItem);
     }
@@ -68,6 +67,7 @@ public class CreateAssetAccessRequestResponse   {
     return this;
   }
   /**
+   * An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
    **/
   public CreateAssetAccessRequestResponse invites(Map<String, String> invites) {
     this.invites = invites;
@@ -75,7 +75,7 @@ public class CreateAssetAccessRequestResponse   {
   }
 
   
-  @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "")
+  @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "An object mapping each partner id to the asset access request id. Only one request id is returned per partner.")
   @JsonProperty("invites")
   public Map<String, String> getInvites() {
     return invites;
@@ -137,12 +137,8 @@ public class CreateAssetAccessRequestResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
 }
-

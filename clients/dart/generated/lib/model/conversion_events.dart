@@ -13,26 +13,41 @@ part of openapi.api;
 class ConversionEvents {
   /// Returns a new [ConversionEvents] instance.
   ConversionEvents({
-    this.data = const [],
+    this.events = const [],
+    required this.numEventsProcessed,
+    required this.numEventsReceived,
   });
 
-  List<ConversionEventsDataInner> data;
+  /// Specific messages for each event received. The order will match the order in which the events were received in the request.
+  List<ConversionApiResponseEventsItems> events;
+
+  /// Number of events that were successfully processed from the events.
+  int numEventsProcessed;
+
+  /// Total number of events received in the request.
+  int numEventsReceived;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConversionEvents &&
-    _deepEquality.equals(other.data, data);
+    _deepEquality.equals(other.events, events) &&
+    other.numEventsProcessed == numEventsProcessed &&
+    other.numEventsReceived == numEventsReceived;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (data.hashCode);
+    (events.hashCode) +
+    (numEventsProcessed.hashCode) +
+    (numEventsReceived.hashCode);
 
   @override
-  String toString() => 'ConversionEvents[data=$data]';
+  String toString() => 'ConversionEvents[events=$events, numEventsProcessed=$numEventsProcessed, numEventsReceived=$numEventsReceived]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'data'] = this.data;
+      json[r'events'] = this.events;
+      json[r'num_events_processed'] = this.numEventsProcessed;
+      json[r'num_events_received'] = this.numEventsReceived;
     return json;
   }
 
@@ -47,15 +62,19 @@ class ConversionEvents {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConversionEvents[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConversionEvents[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'events'), 'Required key "ConversionEvents[events]" is missing from JSON.');
+        assert(json[r'events'] != null, 'Required key "ConversionEvents[events]" has a null value in JSON.');
+        assert(json.containsKey(r'num_events_processed'), 'Required key "ConversionEvents[num_events_processed]" is missing from JSON.');
+        assert(json[r'num_events_processed'] != null, 'Required key "ConversionEvents[num_events_processed]" has a null value in JSON.');
+        assert(json.containsKey(r'num_events_received'), 'Required key "ConversionEvents[num_events_received]" is missing from JSON.');
+        assert(json[r'num_events_received'] != null, 'Required key "ConversionEvents[num_events_received]" has a null value in JSON.');
         return true;
       }());
 
       return ConversionEvents(
-        data: ConversionEventsDataInner.listFromJson(json[r'data']),
+        events: ConversionApiResponseEventsItems.listFromJson(json[r'events']),
+        numEventsProcessed: mapValueOfType<int>(json, r'num_events_processed')!,
+        numEventsReceived: mapValueOfType<int>(json, r'num_events_received')!,
       );
     }
     return null;
@@ -103,7 +122,9 @@ class ConversionEvents {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'data',
+    'events',
+    'num_events_processed',
+    'num_events_received',
   };
 }
 

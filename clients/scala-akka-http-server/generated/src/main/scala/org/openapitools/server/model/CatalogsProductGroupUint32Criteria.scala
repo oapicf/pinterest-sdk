@@ -10,7 +10,7 @@ package org.openapitools.server.model
 */
 final case class CatalogsProductGroupUint32Criteria (
   negated: Option[Boolean] = None,
-  operator: String,
+  operator: NumericFilterOperatorType,
   value: Int
 )
 

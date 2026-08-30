@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.AiDisclosures;
 import org.openapitools.model.BoardOwner;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.PinMedia;
@@ -15,15 +16,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-/**
- * Pin model containing properties related to a Pinterest Pin.
- */
-@ApiModel(description="Pin model containing properties related to a Pinterest Pin.")
-
 public class Pin  {
   
-  @ApiModelProperty(value = "")
-  private String altText;
+ /**
+  * AI disclosure declarations the creator has made about this Pin.
+  */
+  @ApiModelProperty(value = "AI disclosure declarations the creator has made about this Pin.")
+  @Valid
+  private AiDisclosures aiDisclosures;
 
  /**
   * The board to which this Pin belongs.
@@ -49,9 +49,6 @@ public class Pin  {
   @Valid
   private CreativeType creativeType;
 
-  @ApiModelProperty(value = "")
-  private String description;
-
  /**
   * Dominant pin color. Hex number, e.g. `#6E7874`.
   */
@@ -74,13 +71,16 @@ public class Pin  {
   private Boolean isOwner;
 
  /**
+  * Whether the Pin is a product Pin.
+  */
+  @ApiModelProperty(value = "Whether the Pin is a product Pin.")
+  private Boolean isProduct;
+
+ /**
   * Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
   */
   @ApiModelProperty(value = "Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.")
   private Boolean isStandard;
-
-  @ApiModelProperty(value = "")
-  private String link;
 
   @ApiModelProperty(value = "")
   @Valid
@@ -95,32 +95,41 @@ public class Pin  {
  /**
   * Pin metrics with associated time intervals if any.
   */
-  @ApiModelProperty(example = "{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"lifetime_metrics\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}}", value = "Pin metrics with associated time intervals if any.")
+  @ApiModelProperty(example = "{90d={pin_click=7, impression=2, clickthrough=3}, lifetime_metrics={pin_click=7, impression=2, clickthrough=3, reaction=10, comment=2}}", value = "Pin metrics with associated time intervals if any.")
   private Object pinMetrics;
+
+  @ApiModelProperty(value = "")
+  private String altText;
+
+  @ApiModelProperty(value = "")
+  private String description;
+
+  @ApiModelProperty(value = "")
+  private String link;
 
   @ApiModelProperty(value = "")
   private String title;
  /**
-  * Get altText
-  * @return altText
+  * AI disclosure declarations the creator has made about this Pin.
+  * @return aiDisclosures
   */
-  @JsonProperty("alt_text")
- @Size(max=500)  public String getAltText() {
-    return altText;
+  @JsonProperty("ai_disclosures")
+  public AiDisclosures getAiDisclosures() {
+    return aiDisclosures;
   }
 
   /**
-   * Sets the <code>altText</code> property.
+   * Sets the <code>aiDisclosures</code> property.
    */
- public void setAltText(String altText) {
-    this.altText = altText;
+ public void setAiDisclosures(AiDisclosures aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
   }
 
   /**
-   * Sets the <code>altText</code> property.
+   * Sets the <code>aiDisclosures</code> property.
    */
-  public Pin altText(String altText) {
-    this.altText = altText;
+  public Pin aiDisclosures(AiDisclosures aiDisclosures) {
+    this.aiDisclosures = aiDisclosures;
     return this;
   }
 
@@ -251,30 +260,6 @@ public class Pin  {
   }
 
  /**
-  * Get description
-  * @return description
-  */
-  @JsonProperty("description")
- @Size(max=800)  public String getDescription() {
-    return description;
-  }
-
-  /**
-   * Sets the <code>description</code> property.
-   */
- public void setDescription(String description) {
-    this.description = description;
-  }
-
-  /**
-   * Sets the <code>description</code> property.
-   */
-  public Pin description(String description) {
-    this.description = description;
-    return this;
-  }
-
- /**
   * Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;.
   * @return dominantColor
   */
@@ -376,6 +361,32 @@ public class Pin  {
   }
 
  /**
+  * Whether the Pin is a product Pin.
+  * @return isProduct
+  */
+  @JsonProperty("is_product")
+  public Boolean getIsProduct() {
+    return isProduct;
+  }
+
+  /**
+   * Sets the <code>isProduct</code> property.
+   * <br><em>N.B. <code>isProduct</code> is <b>read only</b>; client code should not call this method</em>.
+   */
+ public void setIsProduct(Boolean isProduct) {
+    this.isProduct = isProduct;
+  }
+
+  /**
+   * Sets the <code>isProduct</code> property.
+   * <br><em>N.B. <code>isProduct</code> is <b>read only</b>; client code should not call this method</em>.
+   */
+  public Pin isProduct(Boolean isProduct) {
+    this.isProduct = isProduct;
+    return this;
+  }
+
+ /**
   * Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
   * @return isStandard
   */
@@ -398,30 +409,6 @@ public class Pin  {
    */
   public Pin isStandard(Boolean isStandard) {
     this.isStandard = isStandard;
-    return this;
-  }
-
- /**
-  * Get link
-  * @return link
-  */
-  @JsonProperty("link")
- @Size(max=2048)  public String getLink() {
-    return link;
-  }
-
-  /**
-   * Sets the <code>link</code> property.
-   */
- public void setLink(String link) {
-    this.link = link;
-  }
-
-  /**
-   * Sets the <code>link</code> property.
-   */
-  public Pin link(String link) {
-    this.link = link;
     return this;
   }
 
@@ -502,6 +489,78 @@ public class Pin  {
   }
 
  /**
+  * Get altText
+  * @return altText
+  */
+  @JsonProperty("alt_text")
+ @Size(max=500)  public String getAltText() {
+    return altText;
+  }
+
+  /**
+   * Sets the <code>altText</code> property.
+   */
+ public void setAltText(String altText) {
+    this.altText = altText;
+  }
+
+  /**
+   * Sets the <code>altText</code> property.
+   */
+  public Pin altText(String altText) {
+    this.altText = altText;
+    return this;
+  }
+
+ /**
+  * Get description
+  * @return description
+  */
+  @JsonProperty("description")
+ @Size(max=800)  public String getDescription() {
+    return description;
+  }
+
+  /**
+   * Sets the <code>description</code> property.
+   */
+ public void setDescription(String description) {
+    this.description = description;
+  }
+
+  /**
+   * Sets the <code>description</code> property.
+   */
+  public Pin description(String description) {
+    this.description = description;
+    return this;
+  }
+
+ /**
+  * Get link
+  * @return link
+  */
+  @JsonProperty("link")
+ @Size(max=2048)  public String getLink() {
+    return link;
+  }
+
+  /**
+   * Sets the <code>link</code> property.
+   */
+ public void setLink(String link) {
+    this.link = link;
+  }
+
+  /**
+   * Sets the <code>link</code> property.
+   */
+  public Pin link(String link) {
+    this.link = link;
+    return this;
+  }
+
+ /**
   * Get title
   * @return title
   */
@@ -535,28 +594,30 @@ public class Pin  {
       return false;
     }
     Pin pin = (Pin) o;
-    return Objects.equals(this.altText, pin.altText) &&
+    return Objects.equals(this.aiDisclosures, pin.aiDisclosures) &&
         Objects.equals(this.boardId, pin.boardId) &&
         Objects.equals(this.boardOwner, pin.boardOwner) &&
         Objects.equals(this.boardSectionId, pin.boardSectionId) &&
         Objects.equals(this.createdAt, pin.createdAt) &&
         Objects.equals(this.creativeType, pin.creativeType) &&
-        Objects.equals(this.description, pin.description) &&
         Objects.equals(this.dominantColor, pin.dominantColor) &&
         Objects.equals(this.hasBeenPromoted, pin.hasBeenPromoted) &&
         Objects.equals(this.id, pin.id) &&
         Objects.equals(this.isOwner, pin.isOwner) &&
+        Objects.equals(this.isProduct, pin.isProduct) &&
         Objects.equals(this.isStandard, pin.isStandard) &&
-        Objects.equals(this.link, pin.link) &&
         Objects.equals(this.media, pin.media) &&
         Objects.equals(this.parentPinId, pin.parentPinId) &&
         Objects.equals(this.pinMetrics, pin.pinMetrics) &&
+        Objects.equals(this.altText, pin.altText) &&
+        Objects.equals(this.description, pin.description) &&
+        Objects.equals(this.link, pin.link) &&
         Objects.equals(this.title, pin.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(altText, boardId, boardOwner, boardSectionId, createdAt, creativeType, description, dominantColor, hasBeenPromoted, id, isOwner, isStandard, link, media, parentPinId, pinMetrics, title);
+    return Objects.hash(aiDisclosures, boardId, boardOwner, boardSectionId, createdAt, creativeType, dominantColor, hasBeenPromoted, id, isOwner, isProduct, isStandard, media, parentPinId, pinMetrics, altText, description, link, title);
   }
 
   @Override
@@ -564,22 +625,24 @@ public class Pin  {
     StringBuilder sb = new StringBuilder();
     sb.append("class Pin {\n");
     
-    sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
+    sb.append("    aiDisclosures: ").append(toIndentedString(aiDisclosures)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardOwner: ").append(toIndentedString(boardOwner)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    dominantColor: ").append(toIndentedString(dominantColor)).append("\n");
     sb.append("    hasBeenPromoted: ").append(toIndentedString(hasBeenPromoted)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    isOwner: ").append(toIndentedString(isOwner)).append("\n");
+    sb.append("    isProduct: ").append(toIndentedString(isProduct)).append("\n");
     sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    parentPinId: ").append(toIndentedString(parentPinId)).append("\n");
     sb.append("    pinMetrics: ").append(toIndentedString(pinMetrics)).append("\n");
+    sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -590,10 +653,7 @@ public class Pin  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

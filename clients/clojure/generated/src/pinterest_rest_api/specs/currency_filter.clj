@@ -1,7 +1,7 @@
 (ns pinterest-rest-api.specs.currency-filter
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs. :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-currency-criteria :refer :all]
             )
   (:import (java.io File)))
 

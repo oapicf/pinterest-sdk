@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The type of an SSIO order line.",
+  "name": "SSIOOrderLineType",
+  "symbols": [
+    "BUDGET",
+    "PERPETUALS"
+  ]
+}

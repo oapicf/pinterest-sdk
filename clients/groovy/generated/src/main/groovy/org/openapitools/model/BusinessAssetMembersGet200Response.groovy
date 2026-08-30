@@ -12,6 +12,6 @@ import org.openapitools.model.UserSingleAssetBinding;
 class BusinessAssetMembersGet200Response {
     
     String bookmark
-    /* List of members with permissions to the asset. */
+    
     List<UserSingleAssetBinding> items = new ArrayList<>()
 }

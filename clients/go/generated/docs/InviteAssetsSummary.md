@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccounts** | Pointer to [**[]InviteAssetsSummaryAdAccountsInner**](InviteAssetsSummaryAdAccountsInner.md) | List of ad account IDs and respective permission levels that will be assigned. | [optional] 
-**Profiles** | Pointer to [**[]InviteAssetsSummaryProfilesInner**](InviteAssetsSummaryProfilesInner.md) | List of profile IDs and respective permission levels that will be assigned. | [optional] 
+**AdAccounts** | Pointer to [**[]InviteAssetsSummaryItem**](InviteAssetsSummaryItem.md) | List of ad account IDs and respective permission levels that will be assigned. | [optional] 
+**Profiles** | Pointer to [**[]InviteAssetsSummaryItem**](InviteAssetsSummaryItem.md) | List of profile IDs and respective permission levels that will be assigned. | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAdAccounts
 
-`func (o *InviteAssetsSummary) GetAdAccounts() []InviteAssetsSummaryAdAccountsInner`
+`func (o *InviteAssetsSummary) GetAdAccounts() []InviteAssetsSummaryItem`
 
 GetAdAccounts returns the AdAccounts field if non-nil, zero value otherwise.
 
 ### GetAdAccountsOk
 
-`func (o *InviteAssetsSummary) GetAdAccountsOk() (*[]InviteAssetsSummaryAdAccountsInner, bool)`
+`func (o *InviteAssetsSummary) GetAdAccountsOk() (*[]InviteAssetsSummaryItem, bool)`
 
 GetAdAccountsOk returns a tuple with the AdAccounts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAdAccounts
 
-`func (o *InviteAssetsSummary) SetAdAccounts(v []InviteAssetsSummaryAdAccountsInner)`
+`func (o *InviteAssetsSummary) SetAdAccounts(v []InviteAssetsSummaryItem)`
 
 SetAdAccounts sets AdAccounts field to given value.
 
@@ -53,20 +53,20 @@ HasAdAccounts returns a boolean if a field has been set.
 
 ### GetProfiles
 
-`func (o *InviteAssetsSummary) GetProfiles() []InviteAssetsSummaryProfilesInner`
+`func (o *InviteAssetsSummary) GetProfiles() []InviteAssetsSummaryItem`
 
 GetProfiles returns the Profiles field if non-nil, zero value otherwise.
 
 ### GetProfilesOk
 
-`func (o *InviteAssetsSummary) GetProfilesOk() (*[]InviteAssetsSummaryProfilesInner, bool)`
+`func (o *InviteAssetsSummary) GetProfilesOk() (*[]InviteAssetsSummaryItem, bool)`
 
 GetProfilesOk returns a tuple with the Profiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProfiles
 
-`func (o *InviteAssetsSummary) SetProfiles(v []InviteAssetsSummaryProfilesInner)`
+`func (o *InviteAssetsSummary) SetProfiles(v []InviteAssetsSummaryItem)`
 
 SetProfiles sets Profiles field to given value.
 

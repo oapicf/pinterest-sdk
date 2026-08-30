@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsProduct;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalog_type** | **string** |  | 
 **metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
 **pin** | [**Pin**](Pin.md) |  | 
 

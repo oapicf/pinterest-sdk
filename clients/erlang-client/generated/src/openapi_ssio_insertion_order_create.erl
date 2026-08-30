@@ -1,0 +1,77 @@
+-module(openapi_ssio_insertion_order_create).
+
+-export([encode/1]).
+
+-export_type([openapi_ssio_insertion_order_create/0]).
+
+-type openapi_ssio_insertion_order_create() ::
+    #{ 'accepted_terms_id' := binary(),
+       'accepted_terms_time' => integer(),
+       'agency_link' => binary(),
+       'billing_contact_email' := binary(),
+       'billing_contact_firstname' := binary(),
+       'billing_contact_lastname' := binary(),
+       'billto_billing_address_id' := binary(),
+       'billto_business_address_id' := binary(),
+       'billto_company_id' := binary(),
+       'budget_amount' => float(),
+       'currency_info' := openapi_currency:openapi_currency(),
+       'end_date' => binary(),
+       'estimated_monthly_spend' => float(),
+       'media_contact_email' := binary(),
+       'media_contact_firstname' := binary(),
+       'media_contact_lastname' := binary(),
+       'order_line_type' := openapi_s_sio_order_line_type:openapi_s_sio_order_line_type(),
+       'order_name' := binary(),
+       'pmp_id' := binary(),
+       'po_number' := binary(),
+       'start_date' := binary(),
+       'user_email' => binary()
+     }.
+
+encode(#{ 'accepted_terms_id' := AcceptedTermsId,
+          'accepted_terms_time' := AcceptedTermsTime,
+          'agency_link' := AgencyLink,
+          'billing_contact_email' := BillingContactEmail,
+          'billing_contact_firstname' := BillingContactFirstname,
+          'billing_contact_lastname' := BillingContactLastname,
+          'billto_billing_address_id' := BilltoBillingAddressId,
+          'billto_business_address_id' := BilltoBusinessAddressId,
+          'billto_company_id' := BilltoCompanyId,
+          'budget_amount' := BudgetAmount,
+          'currency_info' := CurrencyInfo,
+          'end_date' := EndDate,
+          'estimated_monthly_spend' := EstimatedMonthlySpend,
+          'media_contact_email' := MediaContactEmail,
+          'media_contact_firstname' := MediaContactFirstname,
+          'media_contact_lastname' := MediaContactLastname,
+          'order_line_type' := OrderLineType,
+          'order_name' := OrderName,
+          'pmp_id' := PmpId,
+          'po_number' := PoNumber,
+          'start_date' := StartDate,
+          'user_email' := UserEmail
+        }) ->
+    #{ 'accepted_terms_id' => AcceptedTermsId,
+       'accepted_terms_time' => AcceptedTermsTime,
+       'agency_link' => AgencyLink,
+       'billing_contact_email' => BillingContactEmail,
+       'billing_contact_firstname' => BillingContactFirstname,
+       'billing_contact_lastname' => BillingContactLastname,
+       'billto_billing_address_id' => BilltoBillingAddressId,
+       'billto_business_address_id' => BilltoBusinessAddressId,
+       'billto_company_id' => BilltoCompanyId,
+       'budget_amount' => BudgetAmount,
+       'currency_info' => CurrencyInfo,
+       'end_date' => EndDate,
+       'estimated_monthly_spend' => EstimatedMonthlySpend,
+       'media_contact_email' => MediaContactEmail,
+       'media_contact_firstname' => MediaContactFirstname,
+       'media_contact_lastname' => MediaContactLastname,
+       'order_line_type' => OrderLineType,
+       'order_name' => OrderName,
+       'pmp_id' => PmpId,
+       'po_number' => PoNumber,
+       'start_date' => StartDate,
+       'user_email' => UserEmail
+     }.

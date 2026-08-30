@@ -53,10 +53,10 @@ class CatalogsProductGroupFiltersRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsProductGroupFiltersRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsProductGroupFiltersRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'any_of'), 'Required key "CatalogsProductGroupFiltersRequest[any_of]" is missing from JSON.');
+        assert(json[r'any_of'] != null, 'Required key "CatalogsProductGroupFiltersRequest[any_of]" has a null value in JSON.');
+        assert(json.containsKey(r'all_of'), 'Required key "CatalogsProductGroupFiltersRequest[all_of]" is missing from JSON.');
+        assert(json[r'all_of'] != null, 'Required key "CatalogsProductGroupFiltersRequest[all_of]" has a null value in JSON.');
         return true;
       }());
 

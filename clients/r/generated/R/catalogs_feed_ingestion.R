@@ -7,10 +7,10 @@
 #' @title CatalogsFeedIngestion
 #' @description CatalogsFeedIngestion Class
 #' @format An \code{R6Class} generator object
-#' @field created_at  character
-#' @field feed_id  character
-#' @field id  character
-#' @field status  \link{CatalogsFeedProcessingStatus}
+#' @field created_at Timestamp of the feed ingestion. character
+#' @field feed_id Catalog Feed id pertaining to the feed ingestion. character
+#' @field id Unique identifier of a feed ingestion. character
+#' @field status Status of the feed ingestion. \link{CatalogsFeedProcessingStatus}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -25,10 +25,10 @@ CatalogsFeedIngestion <- R6::R6Class(
     #' @description
     #' Initialize a new CatalogsFeedIngestion class.
     #'
-    #' @param created_at created_at
-    #' @param feed_id feed_id
-    #' @param id id
-    #' @param status status
+    #' @param created_at Timestamp of the feed ingestion.
+    #' @param feed_id Catalog Feed id pertaining to the feed ingestion.
+    #' @param id Unique identifier of a feed ingestion.
+    #' @param status Status of the feed ingestion.
     #' @param ... Other optional arguments.
     initialize = function(`created_at`, `feed_id`, `id`, `status`, ...) {
       if (!missing(`created_at`)) {
@@ -103,9 +103,32 @@ CatalogsFeedIngestion <- R6::R6Class(
       }
       if (!is.null(self$`status`)) {
         CatalogsFeedIngestionObject[["status"]] <-
-          self$`status`$toSimpleType()
+          self$extractSimpleType(self$`status`)
       }
       return(CatalogsFeedIngestionObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description
@@ -218,8 +241,16 @@ CatalogsFeedIngestion <- R6::R6Class(
         return(FALSE)
       }
 
+      if (!str_detect(self$`feed_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       # check if the required `id` is null
       if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
       }
 
@@ -247,9 +278,17 @@ CatalogsFeedIngestion <- R6::R6Class(
         invalid_fields["feed_id"] <- "Non-nullable required field `feed_id` cannot be null."
       }
 
+      if (!str_detect(self$`feed_id`, "^\\d+$")) {
+        invalid_fields["feed_id"] <- "Invalid value for `feed_id`, must conform to the pattern ^\\d+$."
+      }
+
       # check if the required `id` is null
       if (is.null(self$`id`)) {
         invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
       }
 
       # check if the required `status` is null

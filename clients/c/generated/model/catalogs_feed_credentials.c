@@ -13,10 +13,10 @@ static catalogs_feed_credentials_t *catalogs_feed_credentials_create_internal(
     if (!catalogs_feed_credentials_local_var) {
         return NULL;
     }
+    memset(catalogs_feed_credentials_local_var, 0, sizeof(catalogs_feed_credentials_t));
+    catalogs_feed_credentials_local_var->_library_owned = 1;
     catalogs_feed_credentials_local_var->password = password;
     catalogs_feed_credentials_local_var->username = username;
-
-    catalogs_feed_credentials_local_var->_library_owned = 1;
     return catalogs_feed_credentials_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) catalogs_feed_credentials_t *catalogs_feed_credentia
     char *password,
     char *username
     ) {
-    return catalogs_feed_credentials_create_internal (
+    catalogs_feed_credentials_t *result = catalogs_feed_credentials_create_internal (
         password,
         username
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_feed_credentials_free(catalogs_feed_credentials_t *catalogs_feed_credentials) {
@@ -82,6 +85,10 @@ catalogs_feed_credentials_t *catalogs_feed_credentials_parseFromJSON(cJSON *cata
 
     catalogs_feed_credentials_t *catalogs_feed_credentials_local_var = NULL;
 
+    char *password_local_str = NULL;
+
+    char *username_local_str = NULL;
+
     // catalogs_feed_credentials->password
     cJSON *password = cJSON_GetObjectItemCaseSensitive(catalogs_feed_credentialsJSON, "password");
     if (cJSON_IsNull(password)) {
@@ -113,13 +120,28 @@ catalogs_feed_credentials_t *catalogs_feed_credentials_parseFromJSON(cJSON *cata
     }
 
 
+    if (password && !cJSON_IsNull(password)) password_local_str = strdup(password->valuestring);
+    if (username && !cJSON_IsNull(username)) username_local_str = strdup(username->valuestring);
+
     catalogs_feed_credentials_local_var = catalogs_feed_credentials_create_internal (
-        strdup(password->valuestring),
-        strdup(username->valuestring)
+        password_local_str,
+        username_local_str
         );
+
+    if (!catalogs_feed_credentials_local_var) {
+        goto end;
+    }
 
     return catalogs_feed_credentials_local_var;
 end:
+    if (password_local_str) {
+        free(password_local_str);
+        password_local_str = NULL;
+    }
+    if (username_local_str) {
+        free(username_local_str);
+        username_local_str = NULL;
+    }
     return NULL;
 
 }

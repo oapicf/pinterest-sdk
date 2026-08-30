@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **List[object]** |  | [optional] 
+**data** | [**List[MetricsResponseDataItems]**](MetricsResponseDataItems.md) |  | [optional] 
 
 ## Example
 

@@ -17,10 +17,10 @@ Name | Type | Description | Notes
 ```powershell
 $ConversionTagCommon = Initialize-PSOpenAPIToolsConversionTagCommon  -CodeSnippet &lt;script type&#x3D;text/javascript&gt; [...] `
  -Configs null `
- -EnhancedMatchStatus null `
+ -EnhancedMatchStatus VALIDATION_COMPLETE `
  -Id 2617998078212 `
  -LastFiredTimeMs 1599030000000 `
- -Name ACME Checkout Test Tag `
+ -Name download_picture `
  -Version 3
 ```
 

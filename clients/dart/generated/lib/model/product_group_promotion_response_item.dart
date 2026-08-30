@@ -25,7 +25,7 @@ class ProductGroupPromotionResponseItem {
   ///
   ProductGroupPromotion? data;
 
-  List<Exception>? exceptions;
+  List<Exception> exceptions;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductGroupPromotionResponseItem &&
@@ -36,7 +36,7 @@ class ProductGroupPromotionResponseItem {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (data == null ? 0 : data!.hashCode) +
-    (exceptions == null ? 0 : exceptions!.hashCode);
+    (exceptions.hashCode);
 
   @override
   String toString() => 'ProductGroupPromotionResponseItem[data=$data, exceptions=$exceptions]';
@@ -48,11 +48,7 @@ class ProductGroupPromotionResponseItem {
     } else {
       json[r'data'] = null;
     }
-    if (this.exceptions != null) {
       json[r'exceptions'] = this.exceptions;
-    } else {
-      json[r'exceptions'] = null;
-    }
     return json;
   }
 
@@ -67,10 +63,6 @@ class ProductGroupPromotionResponseItem {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductGroupPromotionResponseItem[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductGroupPromotionResponseItem[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

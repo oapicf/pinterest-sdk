@@ -13,14 +13,20 @@ part of openapi.api;
 class CatalogsProductGroupUint32Criteria {
   /// Returns a new [CatalogsProductGroupUint32Criteria] instance.
   CatalogsProductGroupUint32Criteria({
-    this.negated = false,
+    this.negated,
     required this.operator_,
     required this.value,
   });
 
-  bool negated;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? negated;
 
-  CatalogsProductGroupUint32CriteriaOperator_Enum operator_;
+  NumericFilterOperatorType operator_;
 
   /// Minimum value: 0
   /// Maximum value: 4294967295
@@ -35,7 +41,7 @@ class CatalogsProductGroupUint32Criteria {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (negated.hashCode) +
+    (negated == null ? 0 : negated!.hashCode) +
     (operator_.hashCode) +
     (value.hashCode);
 
@@ -44,7 +50,11 @@ class CatalogsProductGroupUint32Criteria {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.negated != null) {
       json[r'negated'] = this.negated;
+    } else {
+      json[r'negated'] = null;
+    }
       json[r'operator'] = this.operator_;
       json[r'value'] = this.value;
     return json;
@@ -61,16 +71,16 @@ class CatalogsProductGroupUint32Criteria {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsProductGroupUint32Criteria[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsProductGroupUint32Criteria[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'operator'), 'Required key "CatalogsProductGroupUint32Criteria[operator]" is missing from JSON.');
+        assert(json[r'operator'] != null, 'Required key "CatalogsProductGroupUint32Criteria[operator]" has a null value in JSON.');
+        assert(json.containsKey(r'value'), 'Required key "CatalogsProductGroupUint32Criteria[value]" is missing from JSON.');
+        assert(json[r'value'] != null, 'Required key "CatalogsProductGroupUint32Criteria[value]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsProductGroupUint32Criteria(
-        negated: mapValueOfType<bool>(json, r'negated') ?? false,
-        operator_: CatalogsProductGroupUint32CriteriaOperator_Enum.fromJson(json[r'operator'])!,
+        negated: mapValueOfType<bool>(json, r'negated'),
+        operator_: NumericFilterOperatorType.fromJson(json[r'operator'])!,
         value: mapValueOfType<int>(json, r'value')!,
       );
     }
@@ -123,84 +133,4 @@ class CatalogsProductGroupUint32Criteria {
     'value',
   };
 }
-
-
-class CatalogsProductGroupUint32CriteriaOperator_Enum {
-  /// Instantiate a new enum with the provided [value].
-  const CatalogsProductGroupUint32CriteriaOperator_Enum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const GREATER_THAN = CatalogsProductGroupUint32CriteriaOperator_Enum._(r'GREATER_THAN');
-  static const GREATER_THAN_OR_EQUALS = CatalogsProductGroupUint32CriteriaOperator_Enum._(r'GREATER_THAN_OR_EQUALS');
-  static const LESS_THAN = CatalogsProductGroupUint32CriteriaOperator_Enum._(r'LESS_THAN');
-  static const LESS_THAN_OR_EQUALS = CatalogsProductGroupUint32CriteriaOperator_Enum._(r'LESS_THAN_OR_EQUALS');
-
-  /// List of all possible values in this [enum][CatalogsProductGroupUint32CriteriaOperator_Enum].
-  static const values = <CatalogsProductGroupUint32CriteriaOperator_Enum>[
-    GREATER_THAN,
-    GREATER_THAN_OR_EQUALS,
-    LESS_THAN,
-    LESS_THAN_OR_EQUALS,
-  ];
-
-  static CatalogsProductGroupUint32CriteriaOperator_Enum? fromJson(dynamic value) => CatalogsProductGroupUint32CriteriaOperator_EnumTypeTransformer().decode(value);
-
-  static List<CatalogsProductGroupUint32CriteriaOperator_Enum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CatalogsProductGroupUint32CriteriaOperator_Enum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CatalogsProductGroupUint32CriteriaOperator_Enum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CatalogsProductGroupUint32CriteriaOperator_Enum] to String,
-/// and [decode] dynamic data back to [CatalogsProductGroupUint32CriteriaOperator_Enum].
-class CatalogsProductGroupUint32CriteriaOperator_EnumTypeTransformer {
-  factory CatalogsProductGroupUint32CriteriaOperator_EnumTypeTransformer() => _instance ??= const CatalogsProductGroupUint32CriteriaOperator_EnumTypeTransformer._();
-
-  const CatalogsProductGroupUint32CriteriaOperator_EnumTypeTransformer._();
-
-  String encode(CatalogsProductGroupUint32CriteriaOperator_Enum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CatalogsProductGroupUint32CriteriaOperator_Enum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CatalogsProductGroupUint32CriteriaOperator_Enum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'GREATER_THAN': return CatalogsProductGroupUint32CriteriaOperator_Enum.GREATER_THAN;
-        case r'GREATER_THAN_OR_EQUALS': return CatalogsProductGroupUint32CriteriaOperator_Enum.GREATER_THAN_OR_EQUALS;
-        case r'LESS_THAN': return CatalogsProductGroupUint32CriteriaOperator_Enum.LESS_THAN;
-        case r'LESS_THAN_OR_EQUALS': return CatalogsProductGroupUint32CriteriaOperator_Enum.LESS_THAN_OR_EQUALS;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CatalogsProductGroupUint32CriteriaOperator_EnumTypeTransformer] instance.
-  static CatalogsProductGroupUint32CriteriaOperator_EnumTypeTransformer? _instance;
-}
-
 

@@ -3,8 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.BaseInviteDataResponseInviteData
 open OpenAPI.Model.BusinessAccessUserSummary
+open OpenAPI.Model.InviteDataResponse
 
 module BaseInviteDataResponse =
 
@@ -15,7 +15,7 @@ module BaseInviteDataResponse =
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "invite_data")>]
-    InviteData : BaseInviteDataResponseInviteData;
+    InviteData : InviteDataResponse;
     [<JsonProperty(PropertyName = "is_received_invite")>]
     IsReceivedInvite : bool;
     [<JsonProperty(PropertyName = "user")>]

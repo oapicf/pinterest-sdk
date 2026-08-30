@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **altUnderscoretext** | **string** |  | [optional] [default to null]
 **description** | **string** |  | [optional] [default to null]
-**id** | **string** |  | [optional] [default to null]
+**id** | **string** |  | [default to null]
 **link** | **string** |  | [optional] [default to null]
 **media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] [default to null]
 **title** | **string** |  | [optional] [default to null]

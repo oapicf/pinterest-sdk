@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.prokarma.pkmst.model.GetBusinessAssetsResponse;
+import com.prokarma.pkmst.model.BusinessAssets;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -20,14 +20,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * BusinessAssetsGet200Response
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BusinessAssetsGet200Response   {
   @JsonProperty("bookmark")
   private String bookmark;
 
   @JsonProperty("items")
   
-  private List<GetBusinessAssetsResponse> items = new ArrayList<>();
+  private List<BusinessAssets> items = new ArrayList<>();
 
   public BusinessAssetsGet200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -47,12 +47,12 @@ public class BusinessAssetsGet200Response   {
     this.bookmark = bookmark;
   }
 
-  public BusinessAssetsGet200Response items(List<GetBusinessAssetsResponse> items) {
+  public BusinessAssetsGet200Response items(List<BusinessAssets> items) {
     this.items = items;
     return this;
   }
 
-  public BusinessAssetsGet200Response addItemsItem(GetBusinessAssetsResponse itemsItem) {
+  public BusinessAssetsGet200Response addItemsItem(BusinessAssets itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -61,15 +61,15 @@ public class BusinessAssetsGet200Response   {
   }
 
   /**
-   * List of assets the requesting business has access to.
+   * Get items
    * @return items
    */
-  @ApiModelProperty(required = true, value = "List of assets the requesting business has access to.")
-  public List<GetBusinessAssetsResponse> getItems() {
+  @ApiModelProperty(required = true, value = "")
+  public List<BusinessAssets> getItems() {
     return items;
   }
 
-  public void setItems(List<GetBusinessAssetsResponse> items) {
+  public void setItems(List<BusinessAssets> items) {
     this.items = items;
   }
 
@@ -108,10 +108,7 @@ public class BusinessAssetsGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

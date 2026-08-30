@@ -1,22 +1,23 @@
 namespace OpenAPI
 
 open OpenAPI.Model.AdAccount
-open OpenAPI.Model.AdAccountAnalyticsResponseInner
+open OpenAPI.Model.AdAccountAnalyticsItems
 open OpenAPI.Model.AdAccountCreate
 open OpenAPI.Model.AdAccountsList200Response
+open OpenAPI.Model.AdsAnalyticsAccountTargetingType
 open OpenAPI.Model.AdsAnalyticsCreateAsyncRequest
 open OpenAPI.Model.AdsAnalyticsCreateAsyncResponse
 open OpenAPI.Model.AdsAnalyticsGetAsyncResponse
-open OpenAPI.Model.AdsAnalyticsTargetingType
-open OpenAPI.Model.ConversionProductReportRequest
+open OpenAPI.Model.ConversionProductReport
+open OpenAPI.Model.ConversionProductReportCreate
 open OpenAPI.Model.ConversionReportAttributionType
-open OpenAPI.Model.CreateMMMReportRequest
-open OpenAPI.Model.CreateMMMReportResponse
-open OpenAPI.Model.Error
-open OpenAPI.Model.GetMMMReportResponse
 open OpenAPI.Model.Granularity
+open OpenAPI.Model.MMMReport
+open OpenAPI.Model.MMMReportCreate
 open OpenAPI.Model.MetricsResponse
 open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.PinterestLibPaginationOrder
+open OpenAPI.Model.ReportingColumnSync
 open OpenAPI.Model.ReportingTimeZone
 open OpenAPI.Model.TemplateBasedReport
 open OpenAPI.Model.TemplatesList200Response
@@ -41,19 +42,19 @@ module AdAccountsApiHandlerParams =
       endDate : DateTime ;
 
 
-      columns : string[] ;
+      columns : ReportingColumnSync[] ;
 
 
       granularity : Granularity ;
 
 
-      clickWindowDays : int option;
+      clickWindowDays : decimal option;
 
 
-      engagementWindowDays : int option;
+      engagementWindowDays : decimal option;
 
 
-      viewWindowDays : int option;
+      viewWindowDays : decimal option;
 
 
       conversionReportTime : string option;
@@ -66,20 +67,40 @@ module AdAccountsApiHandlerParams =
 
 
     type AdAccountAnalyticsStatusCode200Response = {
-      content:AdAccountAnalyticsResponseInner[];
+      content:AdAccountAnalyticsItems[];
       
     }
 
     type AdAccountAnalyticsStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountAnalyticsStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountAnalyticsStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountAnalyticsStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountAnalyticsStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AdAccountAnalyticsDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AdAccountAnalyticsResult = AdAccountAnalyticsStatusCode200 of AdAccountAnalyticsStatusCode200Response|AdAccountAnalyticsStatusCode400 of AdAccountAnalyticsStatusCode400Response|AdAccountAnalyticsDefaultStatusCode of AdAccountAnalyticsDefaultStatusCodeResponse
+    type AdAccountAnalyticsResult = AdAccountAnalyticsStatusCode200 of AdAccountAnalyticsStatusCode200Response|AdAccountAnalyticsStatusCode400 of AdAccountAnalyticsStatusCode400Response|AdAccountAnalyticsStatusCode401 of AdAccountAnalyticsStatusCode401Response|AdAccountAnalyticsStatusCode403 of AdAccountAnalyticsStatusCode403Response|AdAccountAnalyticsStatusCode404 of AdAccountAnalyticsStatusCode404Response|AdAccountAnalyticsStatusCode429 of AdAccountAnalyticsStatusCode429Response|AdAccountAnalyticsDefaultStatusCode of AdAccountAnalyticsDefaultStatusCodeResponse
 
     type AdAccountAnalyticsArgs = {
       pathParams:AdAccountAnalyticsPathParams;
@@ -101,22 +122,22 @@ module AdAccountsApiHandlerParams =
       endDate : DateTime ;
 
 
-      targetingTypes : AdsAnalyticsTargetingType[] ;
+      targetingTypes : AdsAnalyticsAccountTargetingType[] ;
 
 
-      columns : string[] ;
+      columns : ReportingColumnSync[] ;
 
 
       granularity : Granularity ;
 
 
-      clickWindowDays : int option;
+      clickWindowDays : decimal option;
 
 
-      engagementWindowDays : int option;
+      engagementWindowDays : decimal option;
 
 
-      viewWindowDays : int option;
+      viewWindowDays : decimal option;
 
 
       conversionReportTime : string option;
@@ -136,11 +157,36 @@ module AdAccountsApiHandlerParams =
       
     }
 
-    type AdAccountTargetingAnalyticsGetDefaultStatusCodeResponse = {
-      content:Error;
+    type AdAccountTargetingAnalyticsGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type AdAccountTargetingAnalyticsGetResult = AdAccountTargetingAnalyticsGetStatusCode200 of AdAccountTargetingAnalyticsGetStatusCode200Response|AdAccountTargetingAnalyticsGetDefaultStatusCode of AdAccountTargetingAnalyticsGetDefaultStatusCodeResponse
+
+    type AdAccountTargetingAnalyticsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountTargetingAnalyticsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountTargetingAnalyticsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountTargetingAnalyticsGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountTargetingAnalyticsGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type AdAccountTargetingAnalyticsGetResult = AdAccountTargetingAnalyticsGetStatusCode200 of AdAccountTargetingAnalyticsGetStatusCode200Response|AdAccountTargetingAnalyticsGetStatusCode400 of AdAccountTargetingAnalyticsGetStatusCode400Response|AdAccountTargetingAnalyticsGetStatusCode401 of AdAccountTargetingAnalyticsGetStatusCode401Response|AdAccountTargetingAnalyticsGetStatusCode403 of AdAccountTargetingAnalyticsGetStatusCode403Response|AdAccountTargetingAnalyticsGetStatusCode404 of AdAccountTargetingAnalyticsGetStatusCode404Response|AdAccountTargetingAnalyticsGetStatusCode429 of AdAccountTargetingAnalyticsGetStatusCode429Response|AdAccountTargetingAnalyticsGetDefaultStatusCode of AdAccountTargetingAnalyticsGetDefaultStatusCodeResponse
 
     type AdAccountTargetingAnalyticsGetArgs = {
       pathParams:AdAccountTargetingAnalyticsGetPathParams;
@@ -308,25 +354,50 @@ module AdAccountsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type AnalyticsCreateConversionProductReportBodyParams = ConversionProductReportRequest
+    type AnalyticsCreateConversionProductReportBodyParams = ConversionProductReportCreate
     //#endregion
 
 
     type AnalyticsCreateConversionProductReportStatusCode200Response = {
-      content:AdsAnalyticsCreateAsyncResponse;
+      content:ConversionProductReport;
+      
+    }
+
+    type AnalyticsCreateConversionProductReportStatusCode201Response = {
+      content:ConversionProductReport;
       
     }
 
     type AnalyticsCreateConversionProductReportStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateConversionProductReportStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateConversionProductReportStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateConversionProductReportStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateConversionProductReportStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AnalyticsCreateConversionProductReportDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AnalyticsCreateConversionProductReportResult = AnalyticsCreateConversionProductReportStatusCode200 of AnalyticsCreateConversionProductReportStatusCode200Response|AnalyticsCreateConversionProductReportStatusCode400 of AnalyticsCreateConversionProductReportStatusCode400Response|AnalyticsCreateConversionProductReportDefaultStatusCode of AnalyticsCreateConversionProductReportDefaultStatusCodeResponse
+    type AnalyticsCreateConversionProductReportResult = AnalyticsCreateConversionProductReportStatusCode200 of AnalyticsCreateConversionProductReportStatusCode200Response|AnalyticsCreateConversionProductReportStatusCode201 of AnalyticsCreateConversionProductReportStatusCode201Response|AnalyticsCreateConversionProductReportStatusCode400 of AnalyticsCreateConversionProductReportStatusCode400Response|AnalyticsCreateConversionProductReportStatusCode401 of AnalyticsCreateConversionProductReportStatusCode401Response|AnalyticsCreateConversionProductReportStatusCode403 of AnalyticsCreateConversionProductReportStatusCode403Response|AnalyticsCreateConversionProductReportStatusCode404 of AnalyticsCreateConversionProductReportStatusCode404Response|AnalyticsCreateConversionProductReportStatusCode429 of AnalyticsCreateConversionProductReportStatusCode429Response|AnalyticsCreateConversionProductReportDefaultStatusCode of AnalyticsCreateConversionProductReportDefaultStatusCodeResponse
 
     type AnalyticsCreateConversionProductReportArgs = {
       pathParams:AnalyticsCreateConversionProductReportPathParams;
@@ -341,25 +412,50 @@ module AdAccountsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type AnalyticsCreateMmmReportBodyParams = CreateMMMReportRequest
+    type AnalyticsCreateMmmReportBodyParams = MMMReportCreate
     //#endregion
 
 
     type AnalyticsCreateMmmReportStatusCode200Response = {
-      content:CreateMMMReportResponse;
+      content:MMMReport;
+      
+    }
+
+    type AnalyticsCreateMmmReportStatusCode201Response = {
+      content:MMMReport;
       
     }
 
     type AnalyticsCreateMmmReportStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateMmmReportStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateMmmReportStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateMmmReportStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateMmmReportStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AnalyticsCreateMmmReportDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AnalyticsCreateMmmReportResult = AnalyticsCreateMmmReportStatusCode200 of AnalyticsCreateMmmReportStatusCode200Response|AnalyticsCreateMmmReportStatusCode400 of AnalyticsCreateMmmReportStatusCode400Response|AnalyticsCreateMmmReportDefaultStatusCode of AnalyticsCreateMmmReportDefaultStatusCodeResponse
+    type AnalyticsCreateMmmReportResult = AnalyticsCreateMmmReportStatusCode200 of AnalyticsCreateMmmReportStatusCode200Response|AnalyticsCreateMmmReportStatusCode201 of AnalyticsCreateMmmReportStatusCode201Response|AnalyticsCreateMmmReportStatusCode400 of AnalyticsCreateMmmReportStatusCode400Response|AnalyticsCreateMmmReportStatusCode401 of AnalyticsCreateMmmReportStatusCode401Response|AnalyticsCreateMmmReportStatusCode403 of AnalyticsCreateMmmReportStatusCode403Response|AnalyticsCreateMmmReportStatusCode404 of AnalyticsCreateMmmReportStatusCode404Response|AnalyticsCreateMmmReportStatusCode429 of AnalyticsCreateMmmReportStatusCode429Response|AnalyticsCreateMmmReportDefaultStatusCode of AnalyticsCreateMmmReportDefaultStatusCodeResponse
 
     type AnalyticsCreateMmmReportArgs = {
       pathParams:AnalyticsCreateMmmReportPathParams;
@@ -384,15 +480,35 @@ module AdAccountsApiHandlerParams =
     }
 
     type AnalyticsCreateReportStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateReportStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateReportStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateReportStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateReportStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AnalyticsCreateReportDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AnalyticsCreateReportResult = AnalyticsCreateReportStatusCode200 of AnalyticsCreateReportStatusCode200Response|AnalyticsCreateReportStatusCode400 of AnalyticsCreateReportStatusCode400Response|AnalyticsCreateReportDefaultStatusCode of AnalyticsCreateReportDefaultStatusCodeResponse
+    type AnalyticsCreateReportResult = AnalyticsCreateReportStatusCode200 of AnalyticsCreateReportStatusCode200Response|AnalyticsCreateReportStatusCode400 of AnalyticsCreateReportStatusCode400Response|AnalyticsCreateReportStatusCode401 of AnalyticsCreateReportStatusCode401Response|AnalyticsCreateReportStatusCode403 of AnalyticsCreateReportStatusCode403Response|AnalyticsCreateReportStatusCode404 of AnalyticsCreateReportStatusCode404Response|AnalyticsCreateReportStatusCode429 of AnalyticsCreateReportStatusCode429Response|AnalyticsCreateReportDefaultStatusCode of AnalyticsCreateReportDefaultStatusCodeResponse
 
     type AnalyticsCreateReportArgs = {
       pathParams:AnalyticsCreateReportPathParams;
@@ -484,20 +600,40 @@ module AdAccountsApiHandlerParams =
 
 
     type AnalyticsGetConversionProductReportStatusCode200Response = {
-      content:AdsAnalyticsGetAsyncResponse;
+      content:ConversionProductReport;
       
     }
 
     type AnalyticsGetConversionProductReportStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetConversionProductReportStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetConversionProductReportStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetConversionProductReportStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetConversionProductReportStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AnalyticsGetConversionProductReportDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AnalyticsGetConversionProductReportResult = AnalyticsGetConversionProductReportStatusCode200 of AnalyticsGetConversionProductReportStatusCode200Response|AnalyticsGetConversionProductReportStatusCode400 of AnalyticsGetConversionProductReportStatusCode400Response|AnalyticsGetConversionProductReportDefaultStatusCode of AnalyticsGetConversionProductReportDefaultStatusCodeResponse
+    type AnalyticsGetConversionProductReportResult = AnalyticsGetConversionProductReportStatusCode200 of AnalyticsGetConversionProductReportStatusCode200Response|AnalyticsGetConversionProductReportStatusCode400 of AnalyticsGetConversionProductReportStatusCode400Response|AnalyticsGetConversionProductReportStatusCode401 of AnalyticsGetConversionProductReportStatusCode401Response|AnalyticsGetConversionProductReportStatusCode403 of AnalyticsGetConversionProductReportStatusCode403Response|AnalyticsGetConversionProductReportStatusCode404 of AnalyticsGetConversionProductReportStatusCode404Response|AnalyticsGetConversionProductReportStatusCode429 of AnalyticsGetConversionProductReportStatusCode429Response|AnalyticsGetConversionProductReportDefaultStatusCode of AnalyticsGetConversionProductReportDefaultStatusCodeResponse
 
     type AnalyticsGetConversionProductReportArgs = {
       pathParams:AnalyticsGetConversionProductReportPathParams;
@@ -520,20 +656,40 @@ module AdAccountsApiHandlerParams =
 
 
     type AnalyticsGetMmmReportStatusCode200Response = {
-      content:GetMMMReportResponse;
+      content:MMMReport;
       
     }
 
     type AnalyticsGetMmmReportStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetMmmReportStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetMmmReportStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetMmmReportStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetMmmReportStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AnalyticsGetMmmReportDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AnalyticsGetMmmReportResult = AnalyticsGetMmmReportStatusCode200 of AnalyticsGetMmmReportStatusCode200Response|AnalyticsGetMmmReportStatusCode400 of AnalyticsGetMmmReportStatusCode400Response|AnalyticsGetMmmReportDefaultStatusCode of AnalyticsGetMmmReportDefaultStatusCodeResponse
+    type AnalyticsGetMmmReportResult = AnalyticsGetMmmReportStatusCode200 of AnalyticsGetMmmReportStatusCode200Response|AnalyticsGetMmmReportStatusCode400 of AnalyticsGetMmmReportStatusCode400Response|AnalyticsGetMmmReportStatusCode401 of AnalyticsGetMmmReportStatusCode401Response|AnalyticsGetMmmReportStatusCode403 of AnalyticsGetMmmReportStatusCode403Response|AnalyticsGetMmmReportStatusCode404 of AnalyticsGetMmmReportStatusCode404Response|AnalyticsGetMmmReportStatusCode429 of AnalyticsGetMmmReportStatusCode429Response|AnalyticsGetMmmReportDefaultStatusCode of AnalyticsGetMmmReportDefaultStatusCodeResponse
 
     type AnalyticsGetMmmReportArgs = {
       pathParams:AnalyticsGetMmmReportPathParams;
@@ -561,15 +717,35 @@ module AdAccountsApiHandlerParams =
     }
 
     type AnalyticsGetReportStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetReportStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetReportStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetReportStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsGetReportStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AnalyticsGetReportDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AnalyticsGetReportResult = AnalyticsGetReportStatusCode200 of AnalyticsGetReportStatusCode200Response|AnalyticsGetReportStatusCode400 of AnalyticsGetReportStatusCode400Response|AnalyticsGetReportDefaultStatusCode of AnalyticsGetReportDefaultStatusCodeResponse
+    type AnalyticsGetReportResult = AnalyticsGetReportStatusCode200 of AnalyticsGetReportStatusCode200Response|AnalyticsGetReportStatusCode400 of AnalyticsGetReportStatusCode400Response|AnalyticsGetReportStatusCode401 of AnalyticsGetReportStatusCode401Response|AnalyticsGetReportStatusCode403 of AnalyticsGetReportStatusCode403Response|AnalyticsGetReportStatusCode404 of AnalyticsGetReportStatusCode404Response|AnalyticsGetReportStatusCode429 of AnalyticsGetReportStatusCode429Response|AnalyticsGetReportDefaultStatusCode of AnalyticsGetReportDefaultStatusCodeResponse
 
     type AnalyticsGetReportArgs = {
       pathParams:AnalyticsGetReportPathParams;
@@ -589,15 +765,35 @@ module AdAccountsApiHandlerParams =
     }
 
     type SandboxDeleteStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type SandboxDeleteStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type SandboxDeleteStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type SandboxDeleteStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type SandboxDeleteStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type SandboxDeleteDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type SandboxDeleteResult = SandboxDeleteStatusCode200 of SandboxDeleteStatusCode200Response|SandboxDeleteStatusCode400 of SandboxDeleteStatusCode400Response|SandboxDeleteDefaultStatusCode of SandboxDeleteDefaultStatusCodeResponse
+    type SandboxDeleteResult = SandboxDeleteStatusCode200 of SandboxDeleteStatusCode200Response|SandboxDeleteStatusCode400 of SandboxDeleteStatusCode400Response|SandboxDeleteStatusCode401 of SandboxDeleteStatusCode401Response|SandboxDeleteStatusCode403 of SandboxDeleteStatusCode403Response|SandboxDeleteStatusCode404 of SandboxDeleteStatusCode404Response|SandboxDeleteStatusCode429 of SandboxDeleteStatusCode429Response|SandboxDeleteDefaultStatusCode of SandboxDeleteDefaultStatusCodeResponse
 
     type SandboxDeleteArgs = {
       pathParams:SandboxDeletePathParams;
@@ -612,13 +808,13 @@ module AdAccountsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type TemplatesListQueryParams = {
+      bookmark : string option;
+
+
       pageSize : int option;
 
 
-      order : string option;
-
-
-      bookmark : string option;
+      order : PinterestLibPaginationOrder option;
 
     }
     //#endregion
@@ -630,15 +826,35 @@ module AdAccountsApiHandlerParams =
     }
 
     type TemplatesListStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type TemplatesListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TemplatesListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TemplatesListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type TemplatesListStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type TemplatesListDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type TemplatesListResult = TemplatesListStatusCode200 of TemplatesListStatusCode200Response|TemplatesListStatusCode400 of TemplatesListStatusCode400Response|TemplatesListDefaultStatusCode of TemplatesListDefaultStatusCodeResponse
+    type TemplatesListResult = TemplatesListStatusCode200 of TemplatesListStatusCode200Response|TemplatesListStatusCode400 of TemplatesListStatusCode400Response|TemplatesListStatusCode401 of TemplatesListStatusCode401Response|TemplatesListStatusCode403 of TemplatesListStatusCode403Response|TemplatesListStatusCode404 of TemplatesListStatusCode404Response|TemplatesListStatusCode429 of TemplatesListStatusCode429Response|TemplatesListDefaultStatusCode of TemplatesListDefaultStatusCodeResponse
 
     type TemplatesListArgs = {
       pathParams:TemplatesListPathParams;

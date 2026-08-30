@@ -25,7 +25,7 @@ SharedAudienceAccount::__init()
 {
 	//account_id = std::string();
 	//account_name = std::string();
-	//account_type = std::string();
+	//account_type = null;
 	//shared_on_timestamp = int(0);
 }
 
@@ -87,9 +87,12 @@ SharedAudienceAccount::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&account_type, node, "std::string", "");
+		if (isprimitive("AudienceAccountType")) {
+			jsonToValue(&account_type, node, "AudienceAccountType", "AudienceAccountType");
 		} else {
+			
+			AudienceAccountType* obj = static_cast<AudienceAccountType*> (&account_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -134,11 +137,16 @@ SharedAudienceAccount::toJson()
 	}
 	const gchar *account_nameKey = "account_name";
 	json_object_set_member(pJsonObject, account_nameKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getAccountType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("AudienceAccountType")) {
+		AudienceAccountType obj = getAccountType();
+		node = converttoJson(&obj, "AudienceAccountType", "");
 	}
 	else {
+		
+		AudienceAccountType obj = static_cast<AudienceAccountType> (getAccountType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *account_typeKey = "account_type";
@@ -184,14 +192,14 @@ SharedAudienceAccount::setAccountName(std::string  account_name)
 	this->account_name = account_name;
 }
 
-std::string
+AudienceAccountType
 SharedAudienceAccount::getAccountType()
 {
 	return account_type;
 }
 
 void
-SharedAudienceAccount::setAccountType(std::string  account_type)
+SharedAudienceAccount::setAccountType(AudienceAccountType  account_type)
 {
 	this->account_type = account_type;
 }

@@ -30,9 +30,9 @@ pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e pin_media_source_video
 typedef struct pin_media_source_video_id_t {
     content_type_t *cover_image_content_type; // custom
     char *cover_image_data; // string
-    int cover_image_key_frame_time; //numeric
+    int *cover_image_key_frame_time; //numeric
     char *cover_image_url; // string
-    int is_standard; //boolean
+    int *is_standard; //boolean
     char *media_id; // string
     pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type; //enum
 
@@ -42,9 +42,9 @@ typedef struct pin_media_source_video_id_t {
 __attribute__((deprecated)) pin_media_source_video_id_t *pin_media_source_video_id_create(
     content_type_t *cover_image_content_type,
     char *cover_image_data,
-    int cover_image_key_frame_time,
+    int *cover_image_key_frame_time,
     char *cover_image_url,
-    int is_standard,
+    int *is_standard,
     char *media_id,
     pinterest_rest_api_pin_media_source_video_id_SOURCETYPE_e source_type
 );

@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**data** | data | long |  | [**PromotionResponse**](PromotionResponse.md) |  |  [optional] [foreignkey]
+**data** | data | long |  | [**Promotion**](Promotion.md) |  |  [optional] [foreignkey]
 **exception** | exception | long |  | [**Exception**](Exception.md) |  |  [optional] [foreignkey]
 
 

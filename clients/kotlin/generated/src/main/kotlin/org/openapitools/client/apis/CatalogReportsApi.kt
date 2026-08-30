@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -22,9 +30,9 @@ import okhttp3.HttpUrl
 import org.openapitools.client.models.CatalogsCreateReportResponse
 import org.openapitools.client.models.CatalogsReport
 import org.openapitools.client.models.CatalogsReportParameters
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.CatalogsReportStatsParameters
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.ReportsStats200Response
-import org.openapitools.client.models.ReportsStatsParametersParameter
 
 import com.squareup.moshi.Json
 
@@ -46,15 +54,15 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
+            System.getProperties().getProperty(ApiClient.BASE_URL_KEY, "https://api.pinterest.com/v5")
         }
     }
 
     /**
      * POST /catalogs/reports
      * Build catalogs report
-     * Async request to create a report of the catalog owned by the \&quot;operation user_account\&quot;. This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param catalogsReportParameters Request object to asynchronously create a report.
+     * Async request to create a report of the catalog owned by the \&quot;operation user_account\&quot;. This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
+     * @param catalogsReportParameters 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsCreateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -86,8 +94,8 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
     /**
      * POST /catalogs/reports
      * Build catalogs report
-     * Async request to create a report of the catalog owned by the \&quot;operation user_account\&quot;. This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the All Items report type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
-     * @param catalogsReportParameters Request object to asynchronously create a report.
+     * Async request to create a report of the catalog owned by the \&quot;operation user_account\&quot;. This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: The All Items report is limited to 25 million items per catalog.
+     * @param catalogsReportParameters 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsCreateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -106,7 +114,7 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
     /**
      * To obtain the request config of the operation reportsCreate
      *
-     * @param catalogsReportParameters Request object to asynchronously create a report.
+     * @param catalogsReportParameters 
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
@@ -135,8 +143,8 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
     /**
      * GET /catalogs/reports
      * Get catalogs report
-     * This returns a URL to a report given a token returned from &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/create&#39;&gt;Build catalogs report&lt;/a&gt;. You can use the URL to download the report. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * @param token Token returned from async build report call
+     * This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * @param token Token returned from the post request creation call
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return CatalogsReport
      * @throws IllegalStateException If the request is not correctly configured
@@ -168,8 +176,8 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
     /**
      * GET /catalogs/reports
      * Get catalogs report
-     * This returns a URL to a report given a token returned from &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/create&#39;&gt;Build catalogs report&lt;/a&gt;. You can use the URL to download the report. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
-     * @param token Token returned from async build report call
+     * This returns a URL to a report given a token returned from [Build catalogs report](/docs/api/v5/#operation/reports/create). You can use the URL to download the report. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * @param token Token returned from the post request creation call
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<CatalogsReport?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -188,7 +196,7 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
     /**
      * To obtain the request config of the operation reportsGet
      *
-     * @param token Token returned from async build report call
+     * @param token Token returned from the post request creation call
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
@@ -217,11 +225,11 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
     /**
      * GET /catalogs/reports/stats
      * List report stats
-     * List aggregated numbers of issues for a catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * List aggregated numbers of issues for a catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
      * @param parameters Contains the parameters for report identification.
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ReportsStats200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -231,8 +239,8 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun reportsStats(parameters: ReportsStatsParametersParameter, adAccountId: kotlin.String? = null, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : ReportsStats200Response {
-        val localVarResponse = reportsStatsWithHttpInfo(parameters = parameters, adAccountId = adAccountId, pageSize = pageSize, bookmark = bookmark)
+    fun reportsStats(parameters: CatalogsReportStatsParameters, adAccountId: kotlin.String? = null, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : ReportsStats200Response {
+        val localVarResponse = reportsStatsWithHttpInfo(parameters = parameters, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as ReportsStats200Response
@@ -252,19 +260,19 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
     /**
      * GET /catalogs/reports/stats
      * List report stats
-     * List aggregated numbers of issues for a catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * List aggregated numbers of issues for a catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
      * @param parameters Contains the parameters for report identification.
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<ReportsStats200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun reportsStatsWithHttpInfo(parameters: ReportsStatsParametersParameter, adAccountId: kotlin.String?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : ApiResponse<ReportsStats200Response?> {
-        val localVariableConfig = reportsStatsRequestConfig(parameters = parameters, adAccountId = adAccountId, pageSize = pageSize, bookmark = bookmark)
+    fun reportsStatsWithHttpInfo(parameters: CatalogsReportStatsParameters, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<ReportsStats200Response?> {
+        val localVariableConfig = reportsStatsRequestConfig(parameters = parameters, adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, ReportsStats200Response>(
             localVariableConfig
@@ -276,25 +284,22 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
      *
      * @param parameters Contains the parameters for report identification.
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun reportsStatsRequestConfig(parameters: ReportsStatsParametersParameter, adAccountId: kotlin.String?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun reportsStatsRequestConfig(parameters: CatalogsReportStatsParameters, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (adAccountId != null) {
                     put("ad_account_id", listOf(adAccountId.toString()))
                 }
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
-                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
-                if (parameters.catalogType != null) {
-                    put("parameters[catalog_type]", listOf(parameters.catalogType.toString()))
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

@@ -3,7 +3,7 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsHotelReportParametersReport;
+import org.openapitools.model.CatalogsRetailReportParametersReport;
 
 @Canonical
 class CatalogsRetailReportParameters {
@@ -31,5 +31,5 @@ class CatalogsRetailReportParameters {
     
     CatalogTypeEnum catalogType
     
-    CatalogsHotelReportParametersReport report
+    CatalogsRetailReportParametersReport report
 }

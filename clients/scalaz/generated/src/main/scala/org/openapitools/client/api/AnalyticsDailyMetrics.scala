@@ -15,8 +15,7 @@ case class AnalyticsDailyMetrics (
   dataStatus: Option[DataStatus],
 /* Metrics date (UTC): YYYY-MM-DD. */
   date: Option[String],
-/* The metric name and daily value for each requested metric */
-  metrics: Option[Map[String, BigDecimal]])
+metrics: Option[Map[String, BigDecimal]])
 
 object AnalyticsDailyMetrics {
   import DateTimeCodecs._

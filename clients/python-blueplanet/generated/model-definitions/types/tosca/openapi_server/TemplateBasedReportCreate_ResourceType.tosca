@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TemplateBasedReportCreate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TemplateBasedReportCreate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BulkReportingJobStatus = openapi_server.resourceTypes.BulkReportingJobStatus
+}
+resourceTypes {
+
+  TemplateBasedReportCreate {
+    title = TemplateBasedReportCreate
+    description = TemplateBasedReportCreate
+    derivedFrom = Root
+    properties {
+        message {
+          type =  string
+          description = ""
+          optional = false
+        }
+        report_status {
+          type = BulkReportingJobStatus
+          description = ""
+          optional = true
+        }
+        token {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TemplateBasedReportCreate {
+    title = TemplateBasedReportCreate
+    description = TemplateBasedReportCreate
+    implements = openapi_server.resourceTypes.TemplateBasedReportCreate
+
+  }
+}

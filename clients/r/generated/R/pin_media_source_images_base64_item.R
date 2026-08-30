@@ -100,7 +100,7 @@ PinMediaSourceImagesBase64Item <- R6::R6Class(
       PinMediaSourceImagesBase64ItemObject <- list()
       if (!is.null(self$`content_type`)) {
         PinMediaSourceImagesBase64ItemObject[["content_type"]] <-
-          self$`content_type`$toSimpleType()
+          self$extractSimpleType(self$`content_type`)
       }
       if (!is.null(self$`data`)) {
         PinMediaSourceImagesBase64ItemObject[["data"]] <-
@@ -119,6 +119,29 @@ PinMediaSourceImagesBase64Item <- R6::R6Class(
           self$`title`
       }
       return(PinMediaSourceImagesBase64ItemObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

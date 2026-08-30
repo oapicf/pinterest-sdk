@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**aiDisclosures** | [**OpenAPI\Server\Model\AiDisclosuresUpdate**](AiDisclosuresUpdate.md) | AI disclosure declarations the creator has made about this Pin. | [optional] 
 **altText** | **string** |  | [optional] 
 **boardId** | **string** | The board to which this Pin belongs. | [optional] 
 **boardSectionId** | **string** | The board section to which this Pin belongs. | [optional] 

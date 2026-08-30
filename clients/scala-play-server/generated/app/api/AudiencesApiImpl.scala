@@ -1,49 +1,51 @@
 package api
 
-import model.Audience
-import model.AudienceCreateRequest
-import model.AudienceUpdateRequest
+import model.AdAccountsAudience
+import model.AdAccountsAudienceCreate
+import model.AdAccountsAudienceUpdate
+import model.AudienceOwnershipType
 import model.AudiencesList200Response
 import model.Error
+import model.PaginationOrder
 
 /**
   * Provides a default implementation for [[AudiencesApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 class AudiencesApiImpl extends AudiencesApi {
   /**
     * @inheritdoc
     */
-  override def audiencesCreate(adAccountId: String, audienceCreateRequest: AudienceCreateRequest): Audience = {
+  override def audiencesCreate(adAccountId: String, adAccountsAudienceCreate: AdAccountsAudienceCreate): AdAccountsAudience = {
     // TODO: Implement better logic
 
-    Audience(None, None, None, None, None, None, None, None, None, None, None, None)
+    AdAccountsAudience(None, None, None, None, None, "", None, None, None, None, None, None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def audiencesGet(adAccountId: String, audienceId: String): Audience = {
+  override def audiencesGet(audienceId: String, adAccountId: String): AdAccountsAudience = {
     // TODO: Implement better logic
 
-    Audience(None, None, None, None, None, None, None, None, None, None, None, None)
+    AdAccountsAudience(None, None, None, None, None, "", None, None, None, None, None, None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def audiencesList(adAccountId: String, bookmark: Option[String], order: Option[String], pageSize: Option[Int], ownershipType: Option[String]): AudiencesList200Response = {
+  override def audiencesList(adAccountId: String, bookmark: Option[String], pageSize: Option[Int], order: Option[PaginationOrder], ownershipType: Option[AudienceOwnershipType], excludeNca: Option[Boolean]): AudiencesList200Response = {
     // TODO: Implement better logic
 
-    AudiencesList200Response(None, List.empty[Audience])
+    AudiencesList200Response(None, List.empty[AdAccountsAudience])
   }
 
   /**
     * @inheritdoc
     */
-  override def audiencesUpdate(adAccountId: String, audienceId: String, audienceUpdateRequest: AudienceUpdateRequest): Audience = {
+  override def audiencesUpdate(audienceId: String, adAccountId: String, adAccountsAudienceUpdate: AdAccountsAudienceUpdate): AdAccountsAudience = {
     // TODO: Implement better logic
 
-    Audience(None, None, None, None, None, None, None, None, None, None, None, None)
+    AdAccountsAudience(None, None, None, None, None, "", None, None, None, None, None, None, None)
   }
 }

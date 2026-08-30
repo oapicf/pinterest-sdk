@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -57,11 +57,11 @@ func (o *ConditionFilter) GetCONDITION() CatalogsProductGroupMultipleStringCrite
 
 // GetCONDITIONOk returns a tuple with the CONDITION field value
 // and a boolean to check if the value has been set.
-func (o *ConditionFilter) GetCONDITIONOk() (CatalogsProductGroupMultipleStringCriteria, bool) {
+func (o *ConditionFilter) GetCONDITIONOk() (*CatalogsProductGroupMultipleStringCriteria, bool) {
 	if o == nil {
-		return CatalogsProductGroupMultipleStringCriteria{}, false
+		return nil, false
 	}
-	return o.CONDITION, true
+	return &o.CONDITION, true
 }
 
 // SetCONDITION sets field value

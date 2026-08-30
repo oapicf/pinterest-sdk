@@ -7,28 +7,27 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdateMemberAssetAccessBodyAccessesInner;
+import org.openapitools.model.UpdateMemberAssetAccessItem;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
- * An object with a list of all the new accesses.
+ * An object with a list of all the new member asset accesses.
  */
 
-@Schema(name = "UpdateMemberAssetAccessBody", description = "An object with a list of all the new accesses.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "UpdateMemberAssetAccessBody", description = "An object with a list of all the new member asset accesses.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class UpdateMemberAssetAccessBody {
 
-  @Valid
-  private List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
+  private List<@Valid UpdateMemberAssetAccessItem> accesses = new ArrayList<>();
 
   public UpdateMemberAssetAccessBody() {
     super();
@@ -37,16 +36,16 @@ public class UpdateMemberAssetAccessBody {
   /**
    * Constructor with only required parameters
    */
-  public UpdateMemberAssetAccessBody(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public UpdateMemberAssetAccessBody(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
-  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  public UpdateMemberAssetAccessBody accesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
     return this;
   }
 
-  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessBodyAccessesInner accessesItem) {
+  public UpdateMemberAssetAccessBody addAccessesItem(UpdateMemberAssetAccessItem accessesItem) {
     if (this.accesses == null) {
       this.accesses = new ArrayList<>();
     }
@@ -55,17 +54,18 @@ public class UpdateMemberAssetAccessBody {
   }
 
   /**
-   * Get accesses
+   * List of member asset accesses to assign or update.
    * @return accesses
    */
   @NotNull @Valid @Size(min = 1, max = 50) 
-  @Schema(name = "accesses", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "accesses", description = "List of member asset accesses to assign or update.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("accesses")
-  public List<@Valid UpdateMemberAssetAccessBodyAccessesInner> getAccesses() {
+  public List<@Valid UpdateMemberAssetAccessItem> getAccesses() {
     return accesses;
   }
 
-  public void setAccesses(List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses) {
+  @JsonProperty("accesses")
+  public void setAccesses(List<@Valid UpdateMemberAssetAccessItem> accesses) {
     this.accesses = accesses;
   }
 
@@ -99,11 +99,8 @@ public class UpdateMemberAssetAccessBody {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

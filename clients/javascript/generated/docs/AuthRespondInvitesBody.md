@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**invites** | [**[AuthRespondInvitesBodyInvitesInner]**](AuthRespondInvitesBodyInvitesInner.md) |  | 
+**invites** | [**[AuthRespondInvitesBodyItem]**](AuthRespondInvitesBodyItem.md) |  | 
 
 

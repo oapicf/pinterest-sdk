@@ -2,9 +2,9 @@ package models
 
 type TopVideoPinsAnalyticsResponse struct {
 
-	DateAvailability TopPinsAnalyticsResponseDateAvailability `json:"date_availability,omitempty"`
+	DateAvailability TopVideoPinsAnalyticsResponseDateAvailability `json:"date_availability,omitempty"`
 
-	Pins []TopVideoPinsAnalyticsResponsePinsInner `json:"pins,omitempty"`
+	Pins []TopVideoPinsAnalyticsResponsePinsItems `json:"pins,omitempty"`
 
-	SortBy string `json:"sort_by,omitempty"`
+	SortBy TopVideoPinsSortBy `json:"sort_by,omitempty"`
 }

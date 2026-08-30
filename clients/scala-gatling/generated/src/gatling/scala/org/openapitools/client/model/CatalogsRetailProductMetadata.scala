@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsRetailProductMetadata (
-    _availability: NonNullableProductAvailabilityType,
+    _availability: ProductAvailability,
     _currency: NonNullableCatalogsCurrency,
     /* The parent ID of the product. */
     _itemGroupId: String,

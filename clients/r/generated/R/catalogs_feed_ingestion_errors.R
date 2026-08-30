@@ -89,9 +89,6 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
         self$`IMAGE_MALFORMED_URL` <- `IMAGE_MALFORMED_URL`
       }
       if (!is.null(`LARGE_PRODUCT_COUNT_DECREASE`)) {
-        if (!(`LARGE_PRODUCT_COUNT_DECREASE` %in% c("1"))) {
-          stop(paste("Error! \"", `LARGE_PRODUCT_COUNT_DECREASE`, "\" cannot be assigned to `LARGE_PRODUCT_COUNT_DECREASE`. Must be \"1\".", sep = ""))
-        }
         if (!(is.numeric(`LARGE_PRODUCT_COUNT_DECREASE`) && length(`LARGE_PRODUCT_COUNT_DECREASE`) == 1)) {
           stop(paste("Error! Invalid data for `LARGE_PRODUCT_COUNT_DECREASE`. Must be an integer:", `LARGE_PRODUCT_COUNT_DECREASE`))
         }
@@ -204,9 +201,6 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
         self$`IMAGE_MALFORMED_URL` <- this_object$`IMAGE_MALFORMED_URL`
       }
       if (!is.null(this_object$`LARGE_PRODUCT_COUNT_DECREASE`)) {
-        if (!is.null(this_object$`LARGE_PRODUCT_COUNT_DECREASE`) && !(this_object$`LARGE_PRODUCT_COUNT_DECREASE` %in% c("1"))) {
-          stop(paste("Error! \"", this_object$`LARGE_PRODUCT_COUNT_DECREASE`, "\" cannot be assigned to `LARGE_PRODUCT_COUNT_DECREASE`. Must be \"1\".", sep = ""))
-        }
         self$`LARGE_PRODUCT_COUNT_DECREASE` <- this_object$`LARGE_PRODUCT_COUNT_DECREASE`
       }
       if (!is.null(this_object$`LINE_LEVEL_INTERNAL_ERROR`)) {
@@ -240,9 +234,6 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
       self$`IMAGE_INVALID_FILE` <- this_object$`IMAGE_INVALID_FILE`
       self$`IMAGE_LEVEL_INTERNAL_ERROR` <- this_object$`IMAGE_LEVEL_INTERNAL_ERROR`
       self$`IMAGE_MALFORMED_URL` <- this_object$`IMAGE_MALFORMED_URL`
-      if (!is.null(this_object$`LARGE_PRODUCT_COUNT_DECREASE`) && !(this_object$`LARGE_PRODUCT_COUNT_DECREASE` %in% c("1"))) {
-        stop(paste("Error! \"", this_object$`LARGE_PRODUCT_COUNT_DECREASE`, "\" cannot be assigned to `LARGE_PRODUCT_COUNT_DECREASE`. Must be \"1\".", sep = ""))
-      }
       self$`LARGE_PRODUCT_COUNT_DECREASE` <- this_object$`LARGE_PRODUCT_COUNT_DECREASE`
       self$`LINE_LEVEL_INTERNAL_ERROR` <- this_object$`LINE_LEVEL_INTERNAL_ERROR`
       self

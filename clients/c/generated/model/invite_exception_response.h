@@ -19,7 +19,7 @@ typedef struct invite_exception_response_t invite_exception_response_t;
 
 
 typedef struct invite_exception_response_t {
-    int code; //numeric
+    int *code; //numeric
     char *invite_or_request_id; // string
     char *message; // string
     list_t *users_or_partner_ids; //primitive container
@@ -28,7 +28,7 @@ typedef struct invite_exception_response_t {
 } invite_exception_response_t;
 
 __attribute__((deprecated)) invite_exception_response_t *invite_exception_response_create(
-    int code,
+    int *code,
     char *invite_or_request_id,
     char *message,
     list_t *users_or_partner_ids

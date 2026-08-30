@@ -26,21 +26,21 @@ Method | HTTP request | Description
 //
 // Get a list of the boards a user follows. The request returns a board summary object array.
 //
-boards_user_follows_list_200_response_t* UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int *page_size, int *explicit_following, char *ad_account_id);
+boards_list_200_response_t* UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *ad_account_id, int *explicit_following, char *bookmark, int *page_size);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
-**explicit_following** | **int \*** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
+**explicit_following** | **int \*** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
+**bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[boards_user_follows_list_200_response_t](boards_user_follows_list_200_response.md) *
+[boards_list_200_response_t](boards_list_200_response.md) *
 
 
 ### Authorization
@@ -58,9 +58,9 @@ Name | Type | Description  | Notes
 ```c
 // Follow user
 //
-// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+// **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
 //
-user_summary_t* UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_user_request_t *follow_user_request);
+follow_user_t* UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_user_create_t *follow_user_create);
 ```
 
 ### Parameters
@@ -68,11 +68,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **username** | **char \*** | A valid username | 
-**follow_user_request** | **[follow_user_request_t](follow_user_request.md) \*** | Follow a user. | 
+**follow_user_create** | **[follow_user_create_t](follow_user_create.md) \*** |  | 
 
 ### Return type
 
-[user_summary_t](user_summary.md) *
+[follow_user_t](follow_user.md) *
 
 
 ### Authorization
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -152,9 +152,9 @@ Name | Type | Description  | Notes
 ```c
 // Unverify website
 //
-// Unverifu a website verified by the signed-in user.
+// Unverify a website verified by the signed-in user.
 //
-void UserAccountAPI_unverifyWebsiteDelete(apiClient_t *apiClient, char *website);
+user_website_t* UserAccountAPI_unverifyWebsiteDelete(apiClient_t *apiClient, char *website);
 ```
 
 ### Parameters
@@ -165,7 +165,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[user_website_t](user_website.md) *
+
 
 ### Authorization
 
@@ -198,7 +199,7 @@ Name | Type | Description  | Notes
 **app_types** | **pinterest_rest_api_userAccountAnalytics_app_types_e** | Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
 **content_type** | **pinterest_rest_api_userAccountAnalytics_content_type_e** | Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
 **source** | **pinterest_rest_api_userAccountAnalytics_source_e** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
-**metric_types** | **[list_t](char.md) \*** | Metric types to get data for, default is all.  | [optional] 
+**metric_types** | **[list_t](querymetrictypes_items.md) \*** | Metric types to get data for, default is all. | [optional] 
 **split_field** | **pinterest_rest_api_userAccountAnalytics_split_field_e** | How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &#39;NO_SPLIT&#39;]
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
@@ -224,7 +225,7 @@ Name | Type | Description  | Notes
 //
 // Gets analytics data about a user's top pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
 //
-top_pins_analytics_response_t* UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_date, char end_date, pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopPins_source_e source, list_t *metric_types, int *num_of_pins, int *created_in_last_n_days, char *ad_account_id);
+top_pins_analytics_response_t* UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_date, char end_date, top_pins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopPins_source_e source, list_t *metric_types, int *num_of_pins, double created_in_last_n_days, char *ad_account_id);
 ```
 
 ### Parameters
@@ -233,15 +234,15 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **start_date** | **char** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
 **end_date** | **char** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
-**sort_by** | **pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e** | Specify sorting order for metrics | 
+**sort_by** | **top_pins_sort_by_e** | Specify sorting order for metrics | 
 **from_claimed_content** | **pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e** | Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;]
 **pin_format** | **pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e** | Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
 **app_types** | **pinterest_rest_api_userAccountAnalyticsTopPins_app_types_e** | Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
 **content_type** | **pinterest_rest_api_userAccountAnalyticsTopPins_content_type_e** | Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
 **source** | **pinterest_rest_api_userAccountAnalyticsTopPins_source_e** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
-**metric_types** | **[list_t](char.md) \*** | Metric types to get data for, default is all.  | [optional] 
+**metric_types** | **[list_t](querymetrictypes_items.md) \*** | Metric types to get data for, default is all. | [optional] 
 **num_of_pins** | **int \*** | Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
-**created_in_last_n_days** | **int \*** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
+**created_in_last_n_days** | **double** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -266,7 +267,7 @@ Name | Type | Description  | Notes
 //
 // Gets analytics data about a user's top video pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
 //
-top_video_pins_analytics_response_t* UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char start_date, char end_date, pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopVideoPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopVideoPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopVideoPins_source_e source, list_t *metric_types, int *num_of_pins, int *created_in_last_n_days, char *ad_account_id);
+top_video_pins_analytics_response_t* UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char start_date, char end_date, top_video_pins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopVideoPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopVideoPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopVideoPins_source_e source, list_t *metric_types, int *num_of_pins, double created_in_last_n_days, char *ad_account_id);
 ```
 
 ### Parameters
@@ -275,15 +276,15 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **start_date** | **char** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
 **end_date** | **char** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
-**sort_by** | **pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e** | Specify sorting order for video metrics | 
+**sort_by** | **top_video_pins_sort_by_e** | Specify sorting order for video metrics | 
 **from_claimed_content** | **pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e** | Filter on Pins that match your claimed domain. | [optional] [default to &#39;BOTH&#39;]
 **pin_format** | **pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e** | Pin formats to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
 **app_types** | **pinterest_rest_api_userAccountAnalyticsTopVideoPins_app_types_e** | Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
 **content_type** | **pinterest_rest_api_userAccountAnalyticsTopVideoPins_content_type_e** | Filter to paid or organic data. Default is all. | [optional] [default to &#39;ALL&#39;]
 **source** | **pinterest_rest_api_userAccountAnalyticsTopVideoPins_source_e** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &#39;ALL&#39;]
-**metric_types** | **[list_t](char.md) \*** | Metric types to get video data for, default is all.  | [optional] 
+**metric_types** | **[list_t](queryvideopinmetrictypes_items.md) \*** | Metric types to get video data for, default is all. | [optional] 
 **num_of_pins** | **int \*** | Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
-**created_in_last_n_days** | **int \*** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
+**created_in_last_n_days** | **double** | Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -317,7 +318,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **username** | **char \*** | A valid username | 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -339,7 +340,7 @@ Name | Type | Description  | Notes
 ```c
 // Get user account
 //
-// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
+// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \"Understanding Business Access\" If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See [Understanding Business Access] for more information.
 //
 account_t* UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id);
 ```
@@ -372,22 +373,22 @@ Name | Type | Description  | Notes
 //
 // Get a list of who a certain user follows.
 //
-user_following_get_200_response_t* UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *page_size, pinterest_rest_api_userFollowingGet_feed_type_e feed_type, int *explicit_following, char *ad_account_id);
+followers_list_200_response_t* UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *ad_account_id, int *explicit_following, user_following_feed_type_e feed_type, char *bookmark, int *page_size);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
-**feed_type** | **pinterest_rest_api_userFollowingGet_feed_type_e** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
-**explicit_following** | **int \*** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
+**explicit_following** | **int \*** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
+**feed_type** | **user_following_feed_type_e** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
+**bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[user_following_get_200_response_t](user_following_get_200_response.md) *
+[followers_list_200_response_t](followers_list_200_response.md) *
 
 
 ### Authorization
@@ -415,7 +416,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -439,19 +440,19 @@ Name | Type | Description  | Notes
 //
 // Verify a website as a signed-in user.
 //
-user_website_summary_t* UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_request_t *user_website_verify_request, char *ad_account_id);
+user_website_t* UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_create_t *user_website_create, char *ad_account_id);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**user_website_verify_request** | **[user_website_verify_request_t](user_website_verify_request.md) \*** | Verify a website. | 
+**user_website_create** | **[user_website_create_t](user_website_create.md) \*** |  | 
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[user_website_summary_t](user_website_summary.md) *
+[user_website_t](user_website.md) *
 
 
 ### Authorization
@@ -471,7 +472,7 @@ Name | Type | Description  | Notes
 //
 // Get verification code for user to install on the website to claim it.
 //
-user_website_verification_code_t* UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient, char *ad_account_id);
+user_website_verification_t* UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient, char *ad_account_id);
 ```
 
 ### Parameters
@@ -482,7 +483,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[user_website_verification_code_t](user_website_verification_code.md) *
+[user_website_verification_t](user_website_verification.md) *
 
 
 ### Authorization

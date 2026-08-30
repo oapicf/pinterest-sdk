@@ -32,7 +32,7 @@ public class ConversionTagCommon  {
  /**
   * The enhanced match status of the tag
   */
-  @ApiModelProperty(value = "The enhanced match status of the tag")
+  @ApiModelProperty(example = "VALIDATION_COMPLETE", value = "The enhanced match status of the tag")
 
   @Valid
 
@@ -57,7 +57,7 @@ public class ConversionTagCommon  {
  /**
   * Conversion tag name.
   */
-  @ApiModelProperty(example = "ACME Checkout Test Tag", required = true, value = "Conversion tag name.")
+  @ApiModelProperty(example = "download_picture", required = true, value = "Conversion tag name.")
 
   private String name;
 
@@ -190,10 +190,7 @@ public class ConversionTagCommon  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

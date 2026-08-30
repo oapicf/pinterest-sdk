@@ -2,219 +2,105 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.FormFactor;
+import org.openapitools.model.NetworkType;
+import org.openapitools.model.OsFamily;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Object containing information about the device where event occurred.
  */
 
 @Schema(name = "ConversionEventDeviceInfo", description = "Object containing information about the device where event occurred.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ConversionEventDeviceInfo {
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer batteryLevel;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String brand;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String carrier;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer cpuCores;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer externalStorageFreeSpace;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer externalStorageSize;
 
-  /**
-   * Device form factor
-   */
-  public enum FormFactorEnum {
-    DESKTOP("desktop"),
-    
-    LAPTOP("laptop"),
-    
-    CELLPHONE("cellphone"),
-    
-    TABLET("tablet"),
-    
-    SMARTWATCH("smartwatch"),
-    
-    TV("tv"),
-    
-    VR("vr"),
-    
-    CONSOLE("console"),
-    
-    OTHER("other");
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable FormFactor formFactor;
 
-    private final String value;
-
-    FormFactorEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FormFactorEnum fromValue(String value) {
-      for (FormFactorEnum b : FormFactorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable FormFactorEnum formFactor;
-
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String kernelVersion;
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> languages = new ArrayList<>();
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String locale;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String model;
 
-  /**
-   * Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
-   */
-  public enum NetworkTypeEnum {
-    WIFI("wifi"),
-    
-    CELLULAR_2G("cellular_2g"),
-    
-    CELLULAR_3G("cellular_3g"),
-    
-    CELLULAR_4G("cellular_4g"),
-    
-    CELLULAR_5G("cellular_5g"),
-    
-    CELLULAR_6G("cellular_6g"),
-    
-    ETHERNET("ethernet"),
-    
-    UNKNOWN("unknown");
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable NetworkType networkType;
 
-    private final String value;
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  private @Nullable OsFamily osFamily;
 
-    NetworkTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static NetworkTypeEnum fromValue(String value) {
-      for (NetworkTypeEnum b : NetworkTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable NetworkTypeEnum networkType;
-
-  /**
-   * OS Family
-   */
-  public enum OsFamilyEnum {
-    IOS("ios"),
-    
-    ANDROID("android"),
-    
-    MACOS("macos"),
-    
-    WINDOWS("windows"),
-    
-    LINUX("linux"),
-    
-    BSD("bsd"),
-    
-    OTHER("other");
-
-    private final String value;
-
-    OsFamilyEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OsFamilyEnum fromValue(String value) {
-      for (OsFamilyEnum b : OsFamilyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private @Nullable OsFamilyEnum osFamily;
-
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String osName;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String osReleaseName;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String osVersion;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer screenDensity;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer screenHeight;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer screenWidth;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer storageFreeSpace;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer storageSize;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String timezone;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String timezoneAbbr;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String type;
 
   public ConversionEventDeviceInfo batteryLevel(@Nullable Integer batteryLevel) {
@@ -235,6 +121,7 @@ public class ConversionEventDeviceInfo {
     return batteryLevel;
   }
 
+  @JsonProperty("battery_level")
   public void setBatteryLevel(@Nullable Integer batteryLevel) {
     this.batteryLevel = batteryLevel;
   }
@@ -255,6 +142,7 @@ public class ConversionEventDeviceInfo {
     return brand;
   }
 
+  @JsonProperty("brand")
   public void setBrand(@Nullable String brand) {
     this.brand = brand;
   }
@@ -275,6 +163,7 @@ public class ConversionEventDeviceInfo {
     return carrier;
   }
 
+  @JsonProperty("carrier")
   public void setCarrier(@Nullable String carrier) {
     this.carrier = carrier;
   }
@@ -297,6 +186,7 @@ public class ConversionEventDeviceInfo {
     return cpuCores;
   }
 
+  @JsonProperty("cpu_cores")
   public void setCpuCores(@Nullable Integer cpuCores) {
     this.cpuCores = cpuCores;
   }
@@ -319,6 +209,7 @@ public class ConversionEventDeviceInfo {
     return externalStorageFreeSpace;
   }
 
+  @JsonProperty("external_storage_free_space")
   public void setExternalStorageFreeSpace(@Nullable Integer externalStorageFreeSpace) {
     this.externalStorageFreeSpace = externalStorageFreeSpace;
   }
@@ -341,11 +232,12 @@ public class ConversionEventDeviceInfo {
     return externalStorageSize;
   }
 
+  @JsonProperty("external_storage_size")
   public void setExternalStorageSize(@Nullable Integer externalStorageSize) {
     this.externalStorageSize = externalStorageSize;
   }
 
-  public ConversionEventDeviceInfo formFactor(@Nullable FormFactorEnum formFactor) {
+  public ConversionEventDeviceInfo formFactor(@Nullable FormFactor formFactor) {
     this.formFactor = formFactor;
     return this;
   }
@@ -354,14 +246,15 @@ public class ConversionEventDeviceInfo {
    * Device form factor
    * @return formFactor
    */
-  
+  @Valid 
   @Schema(name = "form_factor", example = "cellphone", description = "Device form factor", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("form_factor")
-  public @Nullable FormFactorEnum getFormFactor() {
+  public @Nullable FormFactor getFormFactor() {
     return formFactor;
   }
 
-  public void setFormFactor(@Nullable FormFactorEnum formFactor) {
+  @JsonProperty("form_factor")
+  public void setFormFactor(@Nullable FormFactor formFactor) {
     this.formFactor = formFactor;
   }
 
@@ -381,6 +274,7 @@ public class ConversionEventDeviceInfo {
     return kernelVersion;
   }
 
+  @JsonProperty("kernel_version")
   public void setKernelVersion(@Nullable String kernelVersion) {
     this.kernelVersion = kernelVersion;
   }
@@ -409,6 +303,7 @@ public class ConversionEventDeviceInfo {
     return languages;
   }
 
+  @JsonProperty("languages")
   public void setLanguages(List<String> languages) {
     this.languages = languages;
   }
@@ -429,6 +324,7 @@ public class ConversionEventDeviceInfo {
     return locale;
   }
 
+  @JsonProperty("locale")
   public void setLocale(@Nullable String locale) {
     this.locale = locale;
   }
@@ -443,17 +339,18 @@ public class ConversionEventDeviceInfo {
    * @return model
    */
   @Size(max = 100) 
-  @Schema(name = "model", example = "16 Pro, Galaxy S25 Ultra", description = "Device model name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "model", description = "Device model name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("model")
   public @Nullable String getModel() {
     return model;
   }
 
+  @JsonProperty("model")
   public void setModel(@Nullable String model) {
     this.model = model;
   }
 
-  public ConversionEventDeviceInfo networkType(@Nullable NetworkTypeEnum networkType) {
+  public ConversionEventDeviceInfo networkType(@Nullable NetworkType networkType) {
     this.networkType = networkType;
     return this;
   }
@@ -462,18 +359,19 @@ public class ConversionEventDeviceInfo {
    * Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()
    * @return networkType
    */
-  
+  @Valid 
   @Schema(name = "network_type", example = "wifi", description = "Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("network_type")
-  public @Nullable NetworkTypeEnum getNetworkType() {
+  public @Nullable NetworkType getNetworkType() {
     return networkType;
   }
 
-  public void setNetworkType(@Nullable NetworkTypeEnum networkType) {
+  @JsonProperty("network_type")
+  public void setNetworkType(@Nullable NetworkType networkType) {
     this.networkType = networkType;
   }
 
-  public ConversionEventDeviceInfo osFamily(@Nullable OsFamilyEnum osFamily) {
+  public ConversionEventDeviceInfo osFamily(@Nullable OsFamily osFamily) {
     this.osFamily = osFamily;
     return this;
   }
@@ -482,14 +380,15 @@ public class ConversionEventDeviceInfo {
    * OS Family
    * @return osFamily
    */
-  
+  @Valid 
   @Schema(name = "os_family", example = "ios", description = "OS Family", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("os_family")
-  public @Nullable OsFamilyEnum getOsFamily() {
+  public @Nullable OsFamily getOsFamily() {
     return osFamily;
   }
 
-  public void setOsFamily(@Nullable OsFamilyEnum osFamily) {
+  @JsonProperty("os_family")
+  public void setOsFamily(@Nullable OsFamily osFamily) {
     this.osFamily = osFamily;
   }
 
@@ -509,6 +408,7 @@ public class ConversionEventDeviceInfo {
     return osName;
   }
 
+  @JsonProperty("os_name")
   public void setOsName(@Nullable String osName) {
     this.osName = osName;
   }
@@ -529,6 +429,7 @@ public class ConversionEventDeviceInfo {
     return osReleaseName;
   }
 
+  @JsonProperty("os_release_name")
   public void setOsReleaseName(@Nullable String osReleaseName) {
     this.osReleaseName = osReleaseName;
   }
@@ -549,6 +450,7 @@ public class ConversionEventDeviceInfo {
     return osVersion;
   }
 
+  @JsonProperty("os_version")
   public void setOsVersion(@Nullable String osVersion) {
     this.osVersion = osVersion;
   }
@@ -571,6 +473,7 @@ public class ConversionEventDeviceInfo {
     return screenDensity;
   }
 
+  @JsonProperty("screen_density")
   public void setScreenDensity(@Nullable Integer screenDensity) {
     this.screenDensity = screenDensity;
   }
@@ -593,6 +496,7 @@ public class ConversionEventDeviceInfo {
     return screenHeight;
   }
 
+  @JsonProperty("screen_height")
   public void setScreenHeight(@Nullable Integer screenHeight) {
     this.screenHeight = screenHeight;
   }
@@ -615,6 +519,7 @@ public class ConversionEventDeviceInfo {
     return screenWidth;
   }
 
+  @JsonProperty("screen_width")
   public void setScreenWidth(@Nullable Integer screenWidth) {
     this.screenWidth = screenWidth;
   }
@@ -637,6 +542,7 @@ public class ConversionEventDeviceInfo {
     return storageFreeSpace;
   }
 
+  @JsonProperty("storage_free_space")
   public void setStorageFreeSpace(@Nullable Integer storageFreeSpace) {
     this.storageFreeSpace = storageFreeSpace;
   }
@@ -659,6 +565,7 @@ public class ConversionEventDeviceInfo {
     return storageSize;
   }
 
+  @JsonProperty("storage_size")
   public void setStorageSize(@Nullable Integer storageSize) {
     this.storageSize = storageSize;
   }
@@ -679,6 +586,7 @@ public class ConversionEventDeviceInfo {
     return timezone;
   }
 
+  @JsonProperty("timezone")
   public void setTimezone(@Nullable String timezone) {
     this.timezone = timezone;
   }
@@ -699,6 +607,7 @@ public class ConversionEventDeviceInfo {
     return timezoneAbbr;
   }
 
+  @JsonProperty("timezone_abbr")
   public void setTimezoneAbbr(@Nullable String timezoneAbbr) {
     this.timezoneAbbr = timezoneAbbr;
   }
@@ -719,6 +628,7 @@ public class ConversionEventDeviceInfo {
     return type;
   }
 
+  @JsonProperty("type")
   public void setType(@Nullable String type) {
     this.type = type;
   }
@@ -799,11 +709,8 @@ public class ConversionEventDeviceInfo {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

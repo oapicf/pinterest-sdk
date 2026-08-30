@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BoardSection&gt;**](BoardSection.md) | Board sections | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BoardSection&gt;**](BoardSection.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 

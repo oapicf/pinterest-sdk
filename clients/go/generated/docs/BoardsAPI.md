@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## BoardSectionsCreate
 
-> BoardSection BoardSectionsCreate(ctx, boardId).BoardSection(boardSection).AdAccountId(adAccountId).Execute()
+> BoardSection BoardSectionsCreate(ctx, boardId).BoardSectionCreate(boardSectionCreate).AdAccountId(adAccountId).Execute()
 
 Create board section
 
@@ -40,12 +40,12 @@ import (
 
 func main() {
 	boardId := "boardId_example" // string | Unique identifier of a board.
-	boardSection := *openapiclient.NewBoardSection("Salads") // BoardSection | Create a board section.
+	boardSectionCreate := *openapiclient.NewBoardSectionCreate("Salads") // BoardSectionCreate | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BoardsAPI.BoardSectionsCreate(context.Background(), boardId).BoardSection(boardSection).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.BoardsAPI.BoardSectionsCreate(context.Background(), boardId).BoardSectionCreate(boardSectionCreate).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BoardsAPI.BoardSectionsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -71,7 +71,7 @@ Other parameters are passed through a pointer to a apiBoardSectionsCreateRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **boardSection** | [**BoardSection**](BoardSection.md) | Create a board section. | 
+ **boardSectionCreate** | [**BoardSectionCreate**](BoardSectionCreate.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## BoardSectionsDelete
 
-> BoardSectionsDelete(ctx, boardId, sectionId).AdAccountId(adAccountId).Execute()
+> BoardSection BoardSectionsDelete(ctx, boardId, sectionId).AdAccountId(adAccountId).Execute()
 
 Delete board section
 
@@ -119,11 +119,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BoardsAPI.BoardSectionsDelete(context.Background(), boardId, sectionId).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.BoardsAPI.BoardSectionsDelete(context.Background(), boardId, sectionId).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BoardsAPI.BoardSectionsDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `BoardSectionsDelete`: BoardSection
+	fmt.Fprintf(os.Stdout, "Response from `BoardsAPI.BoardSectionsDelete`: %v\n", resp)
 }
 ```
 
@@ -149,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**BoardSection**](BoardSection.md)
 
 ### Authorization
 
@@ -189,7 +191,7 @@ func main() {
 	boardId := "boardId_example" // string | Unique identifier of a board.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -221,7 +223,7 @@ Name | Type | Description  | Notes
 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -266,7 +268,7 @@ func main() {
 	sectionId := "sectionId_example" // string | Unique identifier of a board section.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -300,7 +302,7 @@ Name | Type | Description  | Notes
 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -322,7 +324,7 @@ Name | Type | Description  | Notes
 
 ## BoardSectionsUpdate
 
-> BoardSection BoardSectionsUpdate(ctx, boardId, sectionId).BoardSection(boardSection).AdAccountId(adAccountId).Execute()
+> BoardSection BoardSectionsUpdate(ctx, boardId, sectionId).BoardSectionUpdateWithRequiredBody(boardSectionUpdateWithRequiredBody).AdAccountId(adAccountId).Execute()
 
 Update board section
 
@@ -343,12 +345,12 @@ import (
 func main() {
 	boardId := "boardId_example" // string | Unique identifier of a board.
 	sectionId := "sectionId_example" // string | Unique identifier of a board section.
-	boardSection := *openapiclient.NewBoardSection("Salads") // BoardSection | Update a board section.
+	boardSectionUpdateWithRequiredBody := *openapiclient.NewBoardSectionUpdateWithRequiredBody("Salads") // BoardSectionUpdateWithRequiredBody | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BoardsAPI.BoardSectionsUpdate(context.Background(), boardId, sectionId).BoardSection(boardSection).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.BoardsAPI.BoardSectionsUpdate(context.Background(), boardId, sectionId).BoardSectionUpdateWithRequiredBody(boardSectionUpdateWithRequiredBody).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BoardsAPI.BoardSectionsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -376,7 +378,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **boardSection** | [**BoardSection**](BoardSection.md) | Update a board section. | 
+ **boardSectionUpdateWithRequiredBody** | [**BoardSectionUpdateWithRequiredBody**](BoardSectionUpdateWithRequiredBody.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -467,7 +469,7 @@ Name | Type | Description  | Notes
 
 ## BoardsDelete
 
-> BoardsDelete(ctx, boardId).AdAccountId(adAccountId).Execute()
+> Board BoardsDelete(ctx, boardId).AdAccountId(adAccountId).Execute()
 
 Delete board
 
@@ -491,11 +493,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BoardsAPI.BoardsDelete(context.Background(), boardId).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.BoardsAPI.BoardsDelete(context.Background(), boardId).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BoardsAPI.BoardsDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `BoardsDelete`: Board
+	fmt.Fprintf(os.Stdout, "Response from `BoardsAPI.BoardsDelete`: %v\n", resp)
 }
 ```
 
@@ -519,7 +523,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Board**](Board.md)
 
 ### Authorization
 
@@ -681,7 +685,7 @@ Name | Type | Description  | Notes
 
 ## BoardsListPins
 
-> BoardsListPins200Response BoardsListPins(ctx, boardId).Bookmark(bookmark).PageSize(pageSize).CreativeTypes(creativeTypes).AdAccountId(adAccountId).PinMetrics(pinMetrics).Execute()
+> BoardsListPins200Response BoardsListPins(ctx, boardId).CreativeTypes(creativeTypes).AdAccountId(adAccountId).PinMetrics(pinMetrics).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List Pins on board
 
@@ -701,15 +705,15 @@ import (
 
 func main() {
 	boardId := "boardId_example" // string | Unique identifier of a board.
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	creativeTypes := []openapiclient.CreativeType{openapiclient.CreativeType("REGULAR")} // []CreativeType | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 	pinMetrics := true // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BoardsAPI.BoardsListPins(context.Background(), boardId).Bookmark(bookmark).PageSize(pageSize).CreativeTypes(creativeTypes).AdAccountId(adAccountId).PinMetrics(pinMetrics).Execute()
+	resp, r, err := apiClient.BoardsAPI.BoardsListPins(context.Background(), boardId).CreativeTypes(creativeTypes).AdAccountId(adAccountId).PinMetrics(pinMetrics).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BoardsAPI.BoardsListPins``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -735,11 +739,11 @@ Other parameters are passed through a pointer to a apiBoardsListPinsRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **creativeTypes** | [**[]CreativeType**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
  **pinMetrics** | **bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [default to false]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 

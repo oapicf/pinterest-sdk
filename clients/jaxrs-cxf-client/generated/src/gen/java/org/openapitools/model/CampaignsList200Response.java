@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CampaignResponse;
+import org.openapitools.model.Campaign;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class CampaignsList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  private List<CampaignResponse> items = new ArrayList<>();
+  private List<Campaign> items = new ArrayList<>();
  /**
    * Get bookmark
    * @return bookmark
@@ -43,20 +43,20 @@ public class CampaignsList200Response  {
    * @return items
   **/
   @JsonProperty("items")
-  public List<CampaignResponse> getItems() {
+  public List<Campaign> getItems() {
     return items;
   }
 
-  public void setItems(List<CampaignResponse> items) {
+  public void setItems(List<Campaign> items) {
     this.items = items;
   }
 
-  public CampaignsList200Response items(List<CampaignResponse> items) {
+  public CampaignsList200Response items(List<Campaign> items) {
     this.items = items;
     return this;
   }
 
-  public CampaignsList200Response addItemsItem(CampaignResponse itemsItem) {
+  public CampaignsList200Response addItemsItem(Campaign itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -95,10 +95,7 @@ public class CampaignsList200Response  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

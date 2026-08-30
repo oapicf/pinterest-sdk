@@ -19,7 +19,7 @@ Used by third-party partners to send notifications to Pinterest. These notificat
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md) | notification event. |  |
+| **notificationPostRequest** | [**NotificationPostRequest**](NotificationPostRequest.md) |  |  |
 
 ### Return type
 
@@ -38,9 +38,9 @@ Used by third-party partners to send notifications to Pinterest. These notificat
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully received notification |  -  |
-| **400** | Invalid request parameter. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

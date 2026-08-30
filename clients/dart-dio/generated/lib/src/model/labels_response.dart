@@ -88,15 +88,17 @@ class _$LabelsResponseSerializer implements PrimitiveSerializer<LabelsResponse> 
         case r'errors':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LabelError)]),
-          ) as BuiltList<LabelError>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(LabelError)]),
+          ) as BuiltList<LabelError>?;
+          if (valueDes == null) continue;
           result.errors.replace(valueDes);
           break;
         case r'labels':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(Label)]),
-          ) as BuiltList<Label>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(Label)]),
+          ) as BuiltList<Label>?;
+          if (valueDes == null) continue;
           result.labels.replace(valueDes);
           break;
         default:

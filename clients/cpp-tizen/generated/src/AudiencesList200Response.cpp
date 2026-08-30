@@ -66,12 +66,12 @@ Audiences_list_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<Audience> new_list;
-			Audience inst;
+			list<AdAccountsAudience> new_list;
+			AdAccountsAudience inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("Audience")) {
-					jsonToValue(&inst, temp_json, "Audience", "");
+				if (isprimitive("AdAccountsAudience")) {
+					jsonToValue(&inst, temp_json, "AdAccountsAudience", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Audiences_list_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("Audience")) {
-		list<Audience> new_list = static_cast<list <Audience> > (getItems());
-		node = converttoJson(&new_list, "Audience", "array");
+	if (isprimitive("AdAccountsAudience")) {
+		list<AdAccountsAudience> new_list = static_cast<list <AdAccountsAudience> > (getItems());
+		node = converttoJson(&new_list, "AdAccountsAudience", "array");
 	} else {
 		node = json_node_alloc();
-		list<Audience> new_list = static_cast<list <Audience> > (getItems());
+		list<AdAccountsAudience> new_list = static_cast<list <AdAccountsAudience> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<Audience>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<AdAccountsAudience>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			Audience obj = *it;
+			AdAccountsAudience obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Audiences_list_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<Audience>
+std::list<AdAccountsAudience>
 Audiences_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Audiences_list_200_response::setItems(std::list <Audience> items)
+Audiences_list_200_response::setItems(std::list <AdAccountsAudience> items)
 {
 	this->items = items;
 }

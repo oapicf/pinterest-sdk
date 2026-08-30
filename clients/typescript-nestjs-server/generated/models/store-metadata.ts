@@ -1,0 +1,32 @@
+
+
+/**
+ * Store metadata for a specific store location
+ */
+export interface StoreMetadata { 
+  /**
+   * Geohash of the store location
+   */
+  geohash?: string;
+  /**
+   * Geographic latitude coordinate of the store
+   */
+  latitude?: number;
+  /**
+   * Geographic longitude coordinate of the store
+   */
+  longitude?: number;
+  /**
+   * Merchant provided store code
+   */
+  store_code: string;
+  /**
+   * Internal store code
+   */
+  store_id: string;
+  /**
+   * Store name
+   */
+  store_name?: string;
+}
+

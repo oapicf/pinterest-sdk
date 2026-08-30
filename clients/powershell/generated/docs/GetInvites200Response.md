@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bookmark** | **String** |  | [optional] 
-**Items** | [**InviteResponse[]**](InviteResponse.md) | List of invite and request data. | 
+**Items** | [**InviteResponse[]**](InviteResponse.md) |  | 
 
 ## Examples
 

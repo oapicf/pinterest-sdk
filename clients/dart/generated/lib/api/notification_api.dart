@@ -25,8 +25,7 @@ class NotificationApi {
   /// Parameters:
   ///
   /// * [NotificationPostRequest] notificationPostRequest (required):
-  ///   notification event.
-  Future<Response> notificationPostWithHttpInfo(NotificationPostRequest notificationPostRequest,) async {
+  Future<Response> notificationPostWithHttpInfo(NotificationPostRequest notificationPostRequest, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/notifications';
 
@@ -48,6 +47,7 @@ class NotificationApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
@@ -58,9 +58,8 @@ class NotificationApi {
   /// Parameters:
   ///
   /// * [NotificationPostRequest] notificationPostRequest (required):
-  ///   notification event.
-  Future<NotificationResponse?> notificationPost(NotificationPostRequest notificationPostRequest,) async {
-    final response = await notificationPostWithHttpInfo(notificationPostRequest,);
+  Future<NotificationResponse?> notificationPost(NotificationPostRequest notificationPostRequest, { Future<void>? abortTrigger, }) async {
+    final response = await notificationPostWithHttpInfo(notificationPostRequest, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

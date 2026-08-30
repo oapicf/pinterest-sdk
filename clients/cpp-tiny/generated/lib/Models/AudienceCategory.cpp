@@ -186,7 +186,7 @@ AudienceCategory::getId()
 }
 
 void
-AudienceCategory::setId(std::string  id)
+AudienceCategory::setId(std::string id)
 {
 	this->id = id;
 }
@@ -198,7 +198,7 @@ AudienceCategory::getIndex()
 }
 
 void
-AudienceCategory::setIndex(long  index)
+AudienceCategory::setIndex(long index)
 {
 	this->index = index;
 }
@@ -210,7 +210,7 @@ AudienceCategory::getKey()
 }
 
 void
-AudienceCategory::setKey(std::string  key)
+AudienceCategory::setKey(std::string key)
 {
 	this->key = key;
 }
@@ -222,7 +222,7 @@ AudienceCategory::getName()
 }
 
 void
-AudienceCategory::setName(std::string  name)
+AudienceCategory::setName(std::string name)
 {
 	this->name = name;
 }
@@ -234,7 +234,7 @@ AudienceCategory::getRatio()
 }
 
 void
-AudienceCategory::setRatio(long  ratio)
+AudienceCategory::setRatio(long ratio)
 {
 	this->ratio = ratio;
 }
@@ -246,7 +246,7 @@ AudienceCategory::getSubcategories()
 }
 
 void
-AudienceCategory::setSubcategories(std::list <AudienceSubcategory> subcategories)
+AudienceCategory::setSubcategories(std::list<AudienceSubcategory> subcategories)
 {
 	this->subcategories = subcategories;
 }

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.ActionType;
+import com.prokarma.pkmst.model.BidFloorObjectiveType;
 import com.prokarma.pkmst.model.Country;
 import com.prokarma.pkmst.model.CreativeType;
 import com.prokarma.pkmst.model.Currency;
-import com.prokarma.pkmst.model.ObjectiveType;
 import com.prokarma.pkmst.model.OptimizationGoalMetadata;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,10 +21,11 @@ import java.util.List;
  *
  */
 /**
- * BidFloorSpec
+ * Bid floor specification for a given campaign configuration.
  */
+@ApiModel(description = "Bid floor specification for a given campaign configuration.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BidFloorSpec   {
   @JsonProperty("billable_event")
   private ActionType billableEvent;
@@ -40,7 +41,7 @@ public class BidFloorSpec   {
   private Currency currency;
 
   @JsonProperty("objective_type")
-  private ObjectiveType objectiveType;
+  private BidFloorObjectiveType objectiveType;
 
   @JsonProperty("optimization_goal_metadata")
   private OptimizationGoalMetadata optimizationGoalMetadata;
@@ -51,10 +52,10 @@ public class BidFloorSpec   {
   }
 
   /**
-   * Get billableEvent
+   * Ad group billable event type.
    * @return billableEvent
    */
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Ad group billable event type.")
   public ActionType getBillableEvent() {
     return billableEvent;
   }
@@ -77,10 +78,10 @@ public class BidFloorSpec   {
   }
 
   /**
-   * Get countries
+   * List of ISO 3166-1 alpha-2 country codes.
    * @return countries
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "List of ISO 3166-1 alpha-2 country codes.")
   public List<Country> getCountries() {
     return countries;
   }
@@ -95,10 +96,10 @@ public class BidFloorSpec   {
   }
 
   /**
-   * Get creativeType
+   * Creative type for the bid floor request.
    * @return creativeType
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Creative type for the bid floor request.")
   public CreativeType getCreativeType() {
     return creativeType;
   }
@@ -113,10 +114,10 @@ public class BidFloorSpec   {
   }
 
   /**
-   * Get currency
+   * Currency for the bid floor value.
    * @return currency
    */
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Currency for the bid floor value.")
   public Currency getCurrency() {
     return currency;
   }
@@ -125,21 +126,21 @@ public class BidFloorSpec   {
     this.currency = currency;
   }
 
-  public BidFloorSpec objectiveType(ObjectiveType objectiveType) {
+  public BidFloorSpec objectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
 
   /**
-   * Get objectiveType
+   * Campaign objective type.
    * @return objectiveType
    */
-  @ApiModelProperty(value = "")
-  public ObjectiveType getObjectiveType() {
+  @ApiModelProperty(value = "Campaign objective type.")
+  public BidFloorObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(BidFloorObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
@@ -149,10 +150,10 @@ public class BidFloorSpec   {
   }
 
   /**
-   * Get optimizationGoalMetadata
+   * Optimization goal metadata.
    * @return optimizationGoalMetadata
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Optimization goal metadata.")
   public OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
@@ -204,10 +205,7 @@ public class BidFloorSpec   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

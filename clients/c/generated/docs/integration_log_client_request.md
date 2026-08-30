@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **host** | **char \*** | HTTP request host from host header. | 
-**method** | **pinterest_rest_api_integration_log_client_request_METHOD_e** |  | 
+**method** | **http_method_t \*** |  | 
 **path** | **char \*** | HTTP request path. | 
 **request_headers** | **list_t*** | HTTP request headers as key-value pairs. | [optional] 
 **response_headers** | **list_t*** | HTTP response headers as key-value pairs. | [optional] 

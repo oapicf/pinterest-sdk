@@ -8,7 +8,7 @@ The class is defined in **[ProductType3Filter.java](../../src/main/java/org/open
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRODUCT_TYPE_3** | `CatalogsProductGroupMultipleStringListCriteria` |  | 
+**PRODUCT_TYPE_3** | [`CatalogsProductGroupMultipleStringListCriteria`](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 
 
 

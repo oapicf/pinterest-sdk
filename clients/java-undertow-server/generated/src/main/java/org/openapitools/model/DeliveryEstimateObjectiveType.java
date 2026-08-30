@@ -1,0 +1,59 @@
+/*
+ * Pinterest REST API
+ *
+ * Pinterest's REST API
+ *
+ * OpenAPI document version: 5.28.0
+ * Maintained by: blah+oapicf@cliffano.com
+ *
+ * AUTO-GENERATED FILE, DO NOT MODIFY!
+ */
+package org.openapitools.model;
+
+import java.util.Objects;
+import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+
+
+/**
+ * Objective type for delivery estimates.
+ */
+
+/**
+ * Objective type for delivery estimates.
+ */
+public enum DeliveryEstimateObjectiveType {
+    
+        AWARENESS("AWARENESS"),
+        
+        CONSIDERATION("CONSIDERATION"),
+        
+        CATALOG_SALES("CATALOG_SALES"),
+        
+        WEB_CONVERSION("WEB_CONVERSION");
+
+private String value;
+
+DeliveryEstimateObjectiveType(String value) {
+this.value = value;
+}
+
+@Override
+@JsonValue
+public String toString() {
+return String.valueOf(value);
+}
+
+@JsonCreator
+public static DeliveryEstimateObjectiveType fromValue(String text) {
+for (DeliveryEstimateObjectiveType b : DeliveryEstimateObjectiveType.values()) {
+if (String.valueOf(b.value).equals(text)) {
+return b;
+}
+}
+throw new IllegalArgumentException("Unexpected value '" + text + "'");
+}
+}
+
+

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data_status** | [**DataStatus**](DataStatus.md) |  | [optional] 
 **var_date** | **str** | Metrics date (UTC): YYYY-MM-DD. | [optional] 
-**metrics** | **Dict[str, float]** | The metric name and daily value for each requested metric | [optional] 
+**metrics** | **Dict[str, float]** |  | [optional] 
 
 ## Example
 

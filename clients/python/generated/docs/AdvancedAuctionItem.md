@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**bid_options** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 **country** | [**Country**](Country.md) |  | 
 **item_id** | **str** | The catalog retail item id in the merchant namespace | 
 **language** | [**Language**](Language.md) |  | 
-**bid_options** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
 
 ## Example
 

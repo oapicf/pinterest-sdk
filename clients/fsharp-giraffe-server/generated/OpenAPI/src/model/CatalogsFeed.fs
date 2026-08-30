@@ -9,7 +9,6 @@ open OpenAPI.Model.CatalogsFormat
 open OpenAPI.Model.CatalogsHotelFeed
 open OpenAPI.Model.CatalogsRetailFeed
 open OpenAPI.Model.CatalogsStatus
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Country
 open OpenAPI.Model.NullableCurrency
 open OpenAPI.Model.ProductAvailabilityType
@@ -19,22 +18,25 @@ module CatalogsFeed =
 
   //#region CatalogsFeed
 
+  //#region enums
+  type CatalogTypeEnum = CREATIVEASSETSEnum of string  
+  //#endregion
 
   type CatalogsFeed = {
+    CatalogType : CatalogTypeEnum;
     CreatedAt : DateTime;
-    Id : string;
-    UpdatedAt : DateTime;
-    CatalogType : CatalogsType;
     Credentials : CatalogsFeedCredentials;
     DefaultAvailability : ProductAvailabilityType;
     DefaultCountry : Country;
     DefaultCurrency : NullableCurrency;
     DefaultLocale : string;
     Format : CatalogsFormat;
+    Id : string;
     Location : string;
     Name : string option;
     PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     Status : CatalogsStatus;
+    UpdatedAt : DateTime;
     CatalogId : string;
   }
   //#endregion

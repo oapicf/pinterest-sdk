@@ -11,29 +11,29 @@
 part of openapi.api;
 
 /// Days in lookback window in the GET Conversion EQS response.
-class LookbackPeriodOptions {
-  /// Instantiate a new enum with the provided [value].
-  const LookbackPeriodOptions._(this.value);
+enum LookbackPeriodOptions {
+  n1d._(r'1d'),
+  n14d._(r'14d'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const LookbackPeriodOptions._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const n1d = LookbackPeriodOptions._(r'1d');
-  static const n14d = LookbackPeriodOptions._(r'14d');
-
-  /// List of all possible values in this [enum][LookbackPeriodOptions].
-  static const values = <LookbackPeriodOptions>[
-    n1d,
-    n14d,
-  ];
-
+  /// Returns the instance of [LookbackPeriodOptions] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static LookbackPeriodOptions? fromJson(dynamic value) => LookbackPeriodOptionsTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [LookbackPeriodOptions]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<LookbackPeriodOptions> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <LookbackPeriodOptions>[];
     if (json is List && json.isNotEmpty) {
@@ -55,9 +55,11 @@ class LookbackPeriodOptionsTypeTransformer {
 
   const LookbackPeriodOptionsTypeTransformer._();
 
-  String encode(LookbackPeriodOptions data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(LookbackPeriodOptions data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a LookbackPeriodOptions.
+  /// Returns the instance of [LookbackPeriodOptions] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -66,6 +68,9 @@ class LookbackPeriodOptionsTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   LookbackPeriodOptions? decode(dynamic data, {bool allowNull = true}) {
+    if (data is LookbackPeriodOptions) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'1d': return LookbackPeriodOptions.n1d;
@@ -79,7 +84,7 @@ class LookbackPeriodOptionsTypeTransformer {
     return null;
   }
 
-  /// Singleton [LookbackPeriodOptionsTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static LookbackPeriodOptionsTypeTransformer? _instance;
 }
 

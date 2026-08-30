@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,7 +18,7 @@ import (
 // checks if the QuizPinOption type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &QuizPinOption{}
 
-// QuizPinOption  This field contains multiple options to a quiz question.
+// QuizPinOption This field contains multiple options to a quiz question.
 type QuizPinOption struct {
 	Id *float32 `json:"id,omitempty"`
 	Text *string `json:"text,omitempty"`

@@ -5,13 +5,13 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**OrderLinesGet**](OrderLinesAPI.md#OrderLinesGet) | **Get** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line
-[**OrderLinesList**](OrderLinesAPI.md#OrderLinesList) | **Get** /ad_accounts/{ad_account_id}/order_lines | Get order lines
+[**OrderLinesList**](OrderLinesAPI.md#OrderLinesList) | **Get** /ad_accounts/{ad_account_id}/order_lines | Get order lines.
 
 
 
 ## OrderLinesGet
 
-> OrderLine OrderLinesGet(ctx, adAccountId, orderLineId).Execute()
+> OrderLine OrderLinesGet(ctx, orderLineId, adAccountId).Execute()
 
 Get order line
 
@@ -30,12 +30,12 @@ import (
 )
 
 func main() {
+	orderLineId := "orderLineId_example" // string | Order line ID.
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	orderLineId := "orderLineId_example" // string | Unique identifier of an order line.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderLinesAPI.OrderLinesGet(context.Background(), adAccountId, orderLineId).Execute()
+	resp, r, err := apiClient.OrderLinesAPI.OrderLinesGet(context.Background(), orderLineId, adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderLinesAPI.OrderLinesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -51,8 +51,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orderLineId** | **string** | Order line ID. | 
 **adAccountId** | **string** | Unique identifier of an ad account. | 
-**orderLineId** | **string** | Unique identifier of an order line. | 
 
 ### Other Parameters
 
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 
 ## OrderLinesList
 
-> OrderLinesList200Response OrderLinesList(ctx, adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+> OrderLinesList200Response OrderLinesList(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Execute()
 
-Get order lines
+Get order lines.
 
 
 
@@ -104,13 +104,13 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
+	order := openapiclient.Pinterest.Lib.PaginationOrder("ASCENDING") // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderLinesAPI.OrderLinesList(context.Background(), adAccountId).PageSize(pageSize).Order(order).Bookmark(bookmark).Execute()
+	resp, r, err := apiClient.OrderLinesAPI.OrderLinesList(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Order(order).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderLinesAPI.OrderLinesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -136,9 +136,9 @@ Other parameters are passed through a pointer to a apiOrderLinesListRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](PinterestLibPaginationOrder.md) | The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | 
 
 ### Return type
 

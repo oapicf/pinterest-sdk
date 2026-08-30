@@ -354,7 +354,7 @@ class CatalogsUpdatableCreativeAssetsAttributes(Model):
     def visibility(self) -> str:
         """Gets the visibility of this CatalogsUpdatableCreativeAssetsAttributes.
 
-        Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.  # noqa: E501
+        Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.  # noqa: E501
 
         :return: The visibility of this CatalogsUpdatableCreativeAssetsAttributes.
         :rtype: str
@@ -365,7 +365,7 @@ class CatalogsUpdatableCreativeAssetsAttributes(Model):
     def visibility(self, visibility: str):
         """Sets the visibility of this CatalogsUpdatableCreativeAssetsAttributes.
 
-        Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.  # noqa: E501
+        Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.  # noqa: E501
 
         :param visibility: The visibility of this CatalogsUpdatableCreativeAssetsAttributes.
         :type visibility: str

@@ -2,7 +2,7 @@
 /*
  * TrackingUrls.h
  *
- * Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
+ *   Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for   each event type. Tracking URLs set at the ad group or ad level can override   those set at the campaign level. For more information, see [Third-party and dynamic tracking](https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking).
  */
 
 #ifndef TINY_CPP_CLIENT_TrackingUrls_H_
@@ -17,7 +17,7 @@
 namespace Tiny {
 
 
-/*! \brief Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+/*! \brief   Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for   each event type. Tracking URLs set at the ad group or ad level can override   those set at the campaign level. For more information, see [Third-party and dynamic tracking](https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking).
  *
  *  \ingroup Models
  *
@@ -52,35 +52,35 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAudienceVerification(std::list <std::string> audience_verification);
+	void setAudienceVerification(std::list<std::string> audience_verification);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getBuyableButton();
 
 	/*! \brief Set 
 	 */
-	void setBuyableButton(std::list <std::string> buyable_button);
+	void setBuyableButton(std::list<std::string> buyable_button);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getClick();
 
 	/*! \brief Set 
 	 */
-	void setClick(std::list <std::string> click);
+	void setClick(std::list<std::string> click);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getEngagement();
 
 	/*! \brief Set 
 	 */
-	void setEngagement(std::list <std::string> engagement);
+	void setEngagement(std::list<std::string> engagement);
 	/*! \brief Get 
 	 */
 	std::list<std::string> getImpression();
 
 	/*! \brief Set 
 	 */
-	void setImpression(std::list <std::string> impression);
+	void setImpression(std::list<std::string> impression);
 
 
     private:

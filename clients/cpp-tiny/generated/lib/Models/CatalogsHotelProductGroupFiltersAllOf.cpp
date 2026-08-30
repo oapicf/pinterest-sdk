@@ -81,7 +81,7 @@ CatalogsHotelProductGroupFiltersAllOf::getAllOf()
 }
 
 void
-CatalogsHotelProductGroupFiltersAllOf::setAllOf(std::list <CatalogsHotelProductGroupFilterKeys> all_of)
+CatalogsHotelProductGroupFiltersAllOf::setAllOf(std::list<CatalogsHotelProductGroupFilterKeys> all_of)
 {
 	this->all_of = all_of;
 }

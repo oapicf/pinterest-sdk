@@ -12,26 +12,50 @@ import play.api.libs.json._
   * @param severity An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
   * @param ineligibleForAds Indicates if issue makes items ineligible for ads distribution
   * @param ineligibleForOrganic Indicates if issue makes items ineligible for organic distribution
+  * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 case class CatalogsReportStats(
-  reportType: CatalogsReportStats.ReportType.Value,
   catalogId: Option[String],
   code: Option[Int],
   codeLabel: Option[String],
   message: Option[String],
   occurrences: Option[Int],
+  reportType: Option[CatalogsReportStats.ReportType.Value],
   severity: Option[CatalogsReportStats.Severity.Value],
   ineligibleForAds: Option[Boolean],
   ineligibleForOrganic: Option[Boolean]
+  additionalProperties: 
 )
 
 object CatalogsReportStats {
-  implicit lazy val catalogsReportStatsJsonFormat: Format[CatalogsReportStats] = Json.format[CatalogsReportStats]
+  implicit lazy val catalogsReportStatsJsonFormat: Format[CatalogsReportStats] = {
+    val realJsonFormat = Json.format[CatalogsReportStats]
+    val declaredPropNames = Set("catalogId", "code", "codeLabel", "message", "occurrences", "reportType", "severity", "ineligibleForAds", "ineligibleForOrganic")
+    
+    Format(
+      Reads {
+        case JsObject(xs) =>
+          val declaredProps = xs.filterKeys(declaredPropNames)
+          val additionalProps = JsObject(xs -- declaredPropNames)
+          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
+          val newObj = JsObject(restructuredProps)
+          realJsonFormat.reads(newObj)
+        case _ =>
+          JsError("error.expected.jsobject")
+      },
+      Writes { catalogsReportStats =>
+        val jsObj = realJsonFormat.writes(catalogsReportStats)
+        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
+        val declaredProps = jsObj - "additionalProperties"
+        val newObj = declaredProps ++ additionalProps
+        newObj
+      }
+    )
+  }
 
   // noinspection TypeAnnotation
   object ReportType extends Enumeration {
-    val FEEDINGESTIONISSUES = Value("FEED_INGESTION_ISSUES")
     val DISTRIBUTIONISSUES = Value("DISTRIBUTION_ISSUES")
 
     type ReportType = Value

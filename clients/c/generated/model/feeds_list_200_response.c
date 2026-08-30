@@ -13,10 +13,10 @@ static feeds_list_200_response_t *feeds_list_200_response_create_internal(
     if (!feeds_list_200_response_local_var) {
         return NULL;
     }
+    memset(feeds_list_200_response_local_var, 0, sizeof(feeds_list_200_response_t));
+    feeds_list_200_response_local_var->_library_owned = 1;
     feeds_list_200_response_local_var->bookmark = bookmark;
     feeds_list_200_response_local_var->items = items;
-
-    feeds_list_200_response_local_var->_library_owned = 1;
     return feeds_list_200_response_local_var;
 }
 
@@ -24,10 +24,13 @@ __attribute__((deprecated)) feeds_list_200_response_t *feeds_list_200_response_c
     char *bookmark,
     list_t *items
     ) {
-    return feeds_list_200_response_create_internal (
+    feeds_list_200_response_t *result = feeds_list_200_response_create_internal (
         bookmark,
         items
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void feeds_list_200_response_free(feeds_list_200_response_t *feeds_list_200_response) {
@@ -96,6 +99,8 @@ feeds_list_200_response_t *feeds_list_200_response_parseFromJSON(cJSON *feeds_li
 
     feeds_list_200_response_t *feeds_list_200_response_local_var = NULL;
 
+    char *bookmark_local_str = NULL;
+
     // define the local list for feeds_list_200_response->items
     list_t *itemsList = NULL;
 
@@ -139,13 +144,23 @@ feeds_list_200_response_t *feeds_list_200_response_parseFromJSON(cJSON *feeds_li
     }
 
 
+    if (bookmark && !cJSON_IsNull(bookmark)) bookmark_local_str = strdup(bookmark->valuestring);
+
     feeds_list_200_response_local_var = feeds_list_200_response_create_internal (
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        bookmark_local_str,
         itemsList
         );
 
+    if (!feeds_list_200_response_local_var) {
+        goto end;
+    }
+
     return feeds_list_200_response_local_var;
 end:
+    if (bookmark_local_str) {
+        free(bookmark_local_str);
+        bookmark_local_str = NULL;
+    }
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {

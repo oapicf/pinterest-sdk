@@ -20,7 +20,7 @@
       "name": "related_terms_list",
       "type": ["null", {
         "type": "array",
-        "items": "model.RelatedTermsRelatedTermsListInner"
+        "items": "model.RelatedTermsRelatedTermsListItems"
       }],
       "doc": "The id of the advertiser.",
       "default": null

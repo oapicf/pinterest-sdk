@@ -2,35 +2,6 @@
 Protected Class InviteResponse
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Unique identifier of the invite/request.
-		#tag EndNote
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		invite_data As OpenAPIClient.Models.BaseInviteDataResponseInviteData
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Indicates whether the invite/request was received.
-		#tag EndNote
-		is_received_invite As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Metadata for the member/partner that was sent the invite/request.
-		#tag EndNote
-		user As OpenAPIClient.Models.BusinessAccessUserSummary
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		assets_summary As OpenAPIClient.Models.InviteAssetsSummary
 	#tag EndProperty
 
@@ -47,7 +18,7 @@ Protected Class InviteResponse
 		#tag Note
 			Metadata for the business that created the invite/request.
 		#tag EndNote
-		created_by_business As Object
+		created_by_business As OpenAPIClient.Models.BusinessAccessUserSummary
 	#tag EndProperty
 
 
@@ -55,7 +26,7 @@ Protected Class InviteResponse
 		#tag Note
 			Metadata for the user that created the invite/request.
 		#tag EndNote
-		created_by_user As Object
+		created_by_user As OpenAPIClient.Models.BusinessAccessUserSummary
 	#tag EndProperty
 
 
@@ -64,6 +35,35 @@ Protected Class InviteResponse
 			The time the invite/request was created. Returned in milliseconds.
 		#tag EndNote
 		created_time As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Unique identifier of the invite/request.
+		#tag EndNote
+		id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		invite_data As OpenAPIClient.Models.InviteDataResponse
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Indicates whether the invite/request was received.
+		#tag EndNote
+		is_received_invite As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Metadata for the member/partner that was sent the invite/request.
+		#tag EndNote
+		user As OpenAPIClient.Models.BusinessAccessUserSummary
 	#tag EndProperty
 
 
@@ -104,38 +104,6 @@ Protected Class InviteResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="invite_data"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BaseInviteDataResponseInviteData"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="is_received_invite"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Boolean"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="user"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BusinessAccessUserSummary"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="assets_summary"
 			Visible=false
 			Group="Behavior"
@@ -156,7 +124,7 @@ Protected Class InviteResponse
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Object"
+			Type="BusinessAccessUserSummary"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -164,7 +132,7 @@ Protected Class InviteResponse
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Object"
+			Type="BusinessAccessUserSummary"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -173,6 +141,38 @@ Protected Class InviteResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="invite_data"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="InviteDataResponse"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="is_received_invite"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="user"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BusinessAccessUserSummary"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

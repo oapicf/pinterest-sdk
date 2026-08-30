@@ -1,8 +1,8 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.NotificationPostRequest
 import org.openapitools.server.api.model.NotificationResponse
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray

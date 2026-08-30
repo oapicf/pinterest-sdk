@@ -85,7 +85,7 @@ Exception::getCode()
 }
 
 void
-Exception::setCode(int  code)
+Exception::setCode(int code)
 {
 	this->code = code;
 }
@@ -97,7 +97,7 @@ Exception::getMessage()
 }
 
 void
-Exception::setMessage(std::string  message)
+Exception::setMessage(std::string message)
 {
 	this->message = message;
 }

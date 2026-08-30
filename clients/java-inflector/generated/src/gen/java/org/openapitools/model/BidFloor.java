@@ -11,9 +11,12 @@ import java.util.List;
 
 
 
+/**
+ * Bid floor request and response model.
+ **/
 
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Bid floor request and response model.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class BidFloor   {
   @JsonProperty("bid_floors")
   private List<Integer> bidFloors = null;
@@ -40,7 +43,7 @@ public class BidFloor   {
   }
 
   /**
-   * Always the string 'bidfloor'
+   * Always the string 'bidfloor'.
    **/
   public BidFloor type(String type) {
     this.type = type;
@@ -48,7 +51,7 @@ public class BidFloor   {
   }
 
   
-  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
+  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'.")
   @JsonProperty("type")
   public String getType() {
     return type;
@@ -92,10 +95,7 @@ public class BidFloor   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

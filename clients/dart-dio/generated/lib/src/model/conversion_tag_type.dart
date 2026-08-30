@@ -56,6 +56,45 @@ class ConversionTagType extends EnumClass {
   /// conversion tag type
   @BuiltValueEnumConst(wireName: r'EXTERNAL_MEASUREMENT')
   static const ConversionTagType EXTERNAL_MEASUREMENT = _$EXTERNAL_MEASUREMENT;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'ADD_PAYMENT_INFO')
+  static const ConversionTagType ADD_PAYMENT_INFO = _$ADD_PAYMENT_INFO;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'ADD_TO_WISHLIST')
+  static const ConversionTagType ADD_TO_WISHLIST = _$ADD_TO_WISHLIST;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'INITIATE_CHECKOUT')
+  static const ConversionTagType INITIATE_CHECKOUT = _$INITIATE_CHECKOUT;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'SUBSCRIBE')
+  static const ConversionTagType SUBSCRIBE = _$SUBSCRIBE;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'VIEW_CONTENT')
+  static const ConversionTagType VIEW_CONTENT = _$VIEW_CONTENT;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'ADVERTISER_DEFINED_EVENT')
+  static const ConversionTagType ADVERTISER_DEFINED_EVENT = _$ADVERTISER_DEFINED_EVENT;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'APP_OPEN')
+  static const ConversionTagType APP_OPEN = _$APP_OPEN;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'CONTACT')
+  static const ConversionTagType CONTACT = _$CONTACT;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'SCHEDULE')
+  static const ConversionTagType SCHEDULE = _$SCHEDULE;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'FIND_LOCATION')
+  static const ConversionTagType FIND_LOCATION = _$FIND_LOCATION;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'CUSTOMIZE_PRODUCT')
+  static const ConversionTagType CUSTOMIZE_PRODUCT = _$CUSTOMIZE_PRODUCT;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'SUBMIT_APPLICATION')
+  static const ConversionTagType SUBMIT_APPLICATION = _$SUBMIT_APPLICATION;
+  /// conversion tag type
+  @BuiltValueEnumConst(wireName: r'START_TRIAL')
+  static const ConversionTagType START_TRIAL = _$START_TRIAL;
 
   static Serializer<ConversionTagType> get serializer => _$conversionTagTypeSerializer;
 

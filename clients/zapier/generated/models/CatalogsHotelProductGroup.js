@@ -8,7 +8,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the hotel product group. - [${labelPrefix}catalog_id]`,
+                label: `Catalog ID pertaining to the product group. - [${labelPrefix}catalog_id]`,
                 required: true,
                 type: 'string',
             },
@@ -34,13 +34,13 @@ module.exports = {
             ...CatalogsHotelProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
             {
                 key: `${keyPrefix}id`,
-                label: `ID of the hotel product group. - [${labelPrefix}id]`,
+                label: `ID of the catalog product group. - [${labelPrefix}id]`,
                 required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}name`,
-                label: `Name of hotel product group - [${labelPrefix}name]`,
+                label: `Name of catalog product group - [${labelPrefix}name]`,
                 type: 'string',
             },
             {

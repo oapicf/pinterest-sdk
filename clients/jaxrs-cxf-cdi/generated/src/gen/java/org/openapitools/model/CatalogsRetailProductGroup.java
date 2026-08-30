@@ -79,7 +79,7 @@ public enum CatalogTypeEnum {
   private Integer updatedAt;
 
   /**
-   * Catalog id pertaining to the retail product group.
+   * Catalog ID pertaining to the product group.
    **/
   public CatalogsRetailProductGroup catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -87,7 +87,7 @@ public enum CatalogTypeEnum {
   }
 
   
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the retail product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog ID pertaining to the product group.")
   @JsonProperty("catalog_id")
   @NotNull
  @Pattern(regexp="^\\d+$")  public String getCatalogId() {
@@ -402,10 +402,7 @@ public enum CatalogTypeEnum {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

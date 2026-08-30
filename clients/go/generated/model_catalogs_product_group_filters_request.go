@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -17,39 +17,39 @@ import (
 )
 
 
-// CatalogsProductGroupFiltersRequest Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
+// CatalogsProductGroupFiltersRequest Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
 type CatalogsProductGroupFiltersRequest struct {
-	AllOf *AllOf
-	AnyOf *AnyOf
+	CatalogsProductGroupFiltersRequestAnyOfItems0 *CatalogsProductGroupFiltersRequestAnyOfItems0
+	CatalogsProductGroupFiltersRequestAnyOfItems1 *CatalogsProductGroupFiltersRequestAnyOfItems1
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *CatalogsProductGroupFiltersRequest) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into AllOf
-	err = json.Unmarshal(data, &dst.AllOf);
+	// try to unmarshal JSON data into CatalogsProductGroupFiltersRequestAnyOfItems0
+	err = json.Unmarshal(data, &dst.CatalogsProductGroupFiltersRequestAnyOfItems0);
 	if err == nil {
-		jsonAllOf, _ := json.Marshal(dst.AllOf)
-		if string(jsonAllOf) == "{}" { // empty struct
-			dst.AllOf = nil
+		jsonCatalogsProductGroupFiltersRequestAnyOfItems0, _ := json.Marshal(dst.CatalogsProductGroupFiltersRequestAnyOfItems0)
+		if string(jsonCatalogsProductGroupFiltersRequestAnyOfItems0) == "{}" { // empty struct
+			dst.CatalogsProductGroupFiltersRequestAnyOfItems0 = nil
 		} else {
-			return nil // data stored in dst.AllOf, return on the first match
+			return nil // data stored in dst.CatalogsProductGroupFiltersRequestAnyOfItems0, return on the first match
 		}
 	} else {
-		dst.AllOf = nil
+		dst.CatalogsProductGroupFiltersRequestAnyOfItems0 = nil
 	}
 
-	// try to unmarshal JSON data into AnyOf
-	err = json.Unmarshal(data, &dst.AnyOf);
+	// try to unmarshal JSON data into CatalogsProductGroupFiltersRequestAnyOfItems1
+	err = json.Unmarshal(data, &dst.CatalogsProductGroupFiltersRequestAnyOfItems1);
 	if err == nil {
-		jsonAnyOf, _ := json.Marshal(dst.AnyOf)
-		if string(jsonAnyOf) == "{}" { // empty struct
-			dst.AnyOf = nil
+		jsonCatalogsProductGroupFiltersRequestAnyOfItems1, _ := json.Marshal(dst.CatalogsProductGroupFiltersRequestAnyOfItems1)
+		if string(jsonCatalogsProductGroupFiltersRequestAnyOfItems1) == "{}" { // empty struct
+			dst.CatalogsProductGroupFiltersRequestAnyOfItems1 = nil
 		} else {
-			return nil // data stored in dst.AnyOf, return on the first match
+			return nil // data stored in dst.CatalogsProductGroupFiltersRequestAnyOfItems1, return on the first match
 		}
 	} else {
-		dst.AnyOf = nil
+		dst.CatalogsProductGroupFiltersRequestAnyOfItems1 = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(CatalogsProductGroupFiltersRequest)")
@@ -57,12 +57,12 @@ func (dst *CatalogsProductGroupFiltersRequest) UnmarshalJSON(data []byte) error 
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CatalogsProductGroupFiltersRequest) MarshalJSON() ([]byte, error) {
-	if src.AllOf != nil {
-		return json.Marshal(&src.AllOf)
+	if src.CatalogsProductGroupFiltersRequestAnyOfItems0 != nil {
+		return json.Marshal(&src.CatalogsProductGroupFiltersRequestAnyOfItems0)
 	}
 
-	if src.AnyOf != nil {
-		return json.Marshal(&src.AnyOf)
+	if src.CatalogsProductGroupFiltersRequestAnyOfItems1 != nil {
+		return json.Marshal(&src.CatalogsProductGroupFiltersRequestAnyOfItems1)
 	}
 
 	return nil, nil // no data in anyOf schemas

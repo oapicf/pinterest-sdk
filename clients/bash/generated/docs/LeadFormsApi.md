@@ -16,16 +16,16 @@ Method | HTTP request | Description
 
 Get lead form by id
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 Gets a lead form given it's ID. It must also be associated with the provided ad account ID.
 
-For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
 ```bash
- leadFormGet ad_account_id=value lead_form_id=value
+ leadFormGet lead_form_id=value ad_account_id=value
 ```
 
 ### Parameters
@@ -33,12 +33,12 @@ For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **leadFormId** | **string** | The ID of this lead form | [default to null]
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **leadFormId** | **string** | Unique identifier of a lead form. | [default to null]
 
 ### Return type
 
-[**LeadFormResponse**](LeadFormResponse.md)
+[**LeadForm**](LeadForm.md)
 
 ### Authorization
 
@@ -70,13 +70,13 @@ Create lead form test data based on the list of answers provided as part of the 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
+ **adAccountId** | **string** |  | [default to null]
  **leadFormId** | **string** | Unique identifier of a lead form. | [default to null]
- **leadFormTestRequest** | [**LeadFormTestRequest**](LeadFormTestRequest.md) | Subscription to create. |
+ **leadFormTestCreate** | [**LeadFormTestCreate**](LeadFormTestCreate.md) |  |
 
 ### Return type
 
-[**LeadFormTestResponse**](LeadFormTestResponse.md)
+[**LeadFormTest**](LeadFormTest.md)
 
 ### Authorization
 
@@ -94,11 +94,11 @@ Name | Type | Description  | Notes
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
-Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.
+Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.
 
-For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -112,11 +112,11 @@ For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **leadFormCreateRequest** | [**array[LeadFormCreateRequest]**](LeadFormCreateRequest.md) | List of lead forms to create, size limit [1, 30]. |
+ **leadFormCreate** | [**array[LeadFormCreate]**](LeadFormCreate.md) |  |
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 
@@ -134,16 +134,16 @@ Name | Type | Description  | Notes
 
 List lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 List lead forms associated with an ad account ID.
 
-For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
 ```bash
- leadFormsList ad_account_id=value  page_size=value  order=value  bookmark=value
+ leadFormsList ad_account_id=value  bookmark=value  page_size=value  order=value
 ```
 
 ### Parameters
@@ -152,11 +152,11 @@ For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
- **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
-by ID. Note that higher-value IDs are associated with more-recently added
-items. | [optional] [default to null]
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
+ **pageSize** | **integer** | Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
+ **order** | [**PinterestLibPaginationOrder**](.md) | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID.
+Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
 
 ### Return type
 
@@ -178,11 +178,11 @@ items. | [optional] [default to null]
 
 Update lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.
 
-For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
 ### Example
 
@@ -196,11 +196,11 @@ For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
- **leadFormUpdateRequest** | [**array[LeadFormUpdateRequest]**](LeadFormUpdateRequest.md) | List of lead forms to update, size limit [1, 30]. |
+ **leadFormBatchUpdate** | [**array[LeadFormBatchUpdate]**](LeadFormBatchUpdate.md) |  |
 
 ### Return type
 
-[**LeadFormArrayResponse**](LeadFormArrayResponse.md)
+[**LeadFormsCreate200Response**](LeadFormsCreate200Response.md)
 
 ### Authorization
 

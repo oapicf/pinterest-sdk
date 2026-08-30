@@ -1,7 +1,7 @@
 /*
  * CampaignSummaryStatus.h
  *
- * Summary status for campaign
+ * 
  */
 
 #ifndef _CampaignSummaryStatus_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Summary status for campaign
+/*! \brief 
  *
  *  \ingroup Models
  *

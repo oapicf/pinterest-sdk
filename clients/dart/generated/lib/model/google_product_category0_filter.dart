@@ -13,26 +13,26 @@ part of openapi.api;
 class GoogleProductCategory0Filter {
   /// Returns a new [GoogleProductCategory0Filter] instance.
   GoogleProductCategory0Filter({
-    required this.gOOGLEPRODUCTCATEGORY0,
+    required this.GOOGLE_PRODUCT_CATEGORY_0,
   });
 
-  CatalogsProductGroupMultipleStringListCriteria gOOGLEPRODUCTCATEGORY0;
+  CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GoogleProductCategory0Filter &&
-    other.gOOGLEPRODUCTCATEGORY0 == gOOGLEPRODUCTCATEGORY0;
+    other.GOOGLE_PRODUCT_CATEGORY_0 == GOOGLE_PRODUCT_CATEGORY_0;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (gOOGLEPRODUCTCATEGORY0.hashCode);
+    (GOOGLE_PRODUCT_CATEGORY_0.hashCode);
 
   @override
-  String toString() => 'GoogleProductCategory0Filter[gOOGLEPRODUCTCATEGORY0=$gOOGLEPRODUCTCATEGORY0]';
+  String toString() => 'GoogleProductCategory0Filter[GOOGLE_PRODUCT_CATEGORY_0=$GOOGLE_PRODUCT_CATEGORY_0]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'GOOGLE_PRODUCT_CATEGORY_0'] = this.gOOGLEPRODUCTCATEGORY0;
+      json[r'GOOGLE_PRODUCT_CATEGORY_0'] = this.GOOGLE_PRODUCT_CATEGORY_0;
     return json;
   }
 
@@ -47,15 +47,13 @@ class GoogleProductCategory0Filter {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GoogleProductCategory0Filter[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GoogleProductCategory0Filter[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'GOOGLE_PRODUCT_CATEGORY_0'), 'Required key "GoogleProductCategory0Filter[GOOGLE_PRODUCT_CATEGORY_0]" is missing from JSON.');
+        assert(json[r'GOOGLE_PRODUCT_CATEGORY_0'] != null, 'Required key "GoogleProductCategory0Filter[GOOGLE_PRODUCT_CATEGORY_0]" has a null value in JSON.');
         return true;
       }());
 
       return GoogleProductCategory0Filter(
-        gOOGLEPRODUCTCATEGORY0: mapValueOfType<CatalogsProductGroupMultipleStringListCriteria>(json, r'GOOGLE_PRODUCT_CATEGORY_0')!,
+        GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria.fromJson(json[r'GOOGLE_PRODUCT_CATEGORY_0'])!,
       );
     }
     return null;

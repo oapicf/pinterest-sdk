@@ -1,12 +1,12 @@
 #tag Class
 Protected Class OrderLinesApi
 	#tag Method, Flags = &h0
-		Sub OrderLinesGet(, adAccountId As String, orderLineId As String)
+		Sub OrderLinesGet(, orderLineId As String, adAccountId As String)
 		  // Operation order_lines/get
 		  // Get order line
 		  // - 
+		  // - parameter orderLineId: (path) Order line ID. 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter orderLineId: (path) Unique identifier of an order line. 
 		  //
 		  // Invokes OrderLinesApiCallbackHandler.OrderLinesGetCallback(OrderLine) on completion. 
 		  //
@@ -29,12 +29,12 @@ Protected Class OrderLinesApi
 
 		  Dim localVarPath As String = "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}"
 		  
-		  Dim localVarPathStringadAccountId As String = adAccountId
-		  
-		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  Dim localVarPathStringorderLineId As String = orderLineId
 		  
 		  localVarPath = localVarPath.ReplaceAllB("{order_line_id}", localVarPathStringorderLineId)
+		  Dim localVarPathStringadAccountId As String = adAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{ad_account_id}", localVarPathStringadAccountId)
 		  
 		  
 		  AddHandler localVarHTTPSocket.PageReceived, addressof me.OrderLinesGet_handler
@@ -137,14 +137,14 @@ Protected Class OrderLinesApi
 
 
 	#tag Method, Flags = &h0
-		Sub OrderLinesList(, adAccountId As String, Optional pageSize As Xoson.O.OptionalInteger, order As OrderEnum_OrderLinesList, Optional bookmark As Xoson.O.OptionalString)
+		Sub OrderLinesList(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, order As OpenAPIClient.Models.PinterestLibPaginationOrderOptional)
 		  // Operation order_lines/list
-		  // Get order lines
+		  // Get order lines.
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+		  // - parameter order: (query) The order in which to sort the items returned: &quot;ASCENDING&quot; or &quot;DESCENDING&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Nil)
 		  //
 		  // Invokes OrderLinesApiCallbackHandler.OrderLinesListCallback(OrderLinesList200Response) on completion. 
 		  //
@@ -161,11 +161,11 @@ Protected Class OrderLinesApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(OrderEnum_OrderLinesListToString(order))
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If order <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(Xoson.toJSON(order))
 		  
 
 		  
@@ -277,19 +277,6 @@ Protected Class OrderLinesApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function OrderEnum_OrderLinesListToString(value As OrderEnum_OrderLinesList) As String
-		  Select Case value
-		    
-		    Case OrderEnum_OrderLinesList.Ascending
-		      Return "ASCENDING"
-		    Case OrderEnum_OrderLinesList.Descending
-		      Return "DESCENDING"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 
@@ -366,13 +353,6 @@ Protected Class OrderLinesApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = OrderEnum_OrderLinesList, Type = Integer, Flags = &h0
-		
-        Ascending
-        Descending
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

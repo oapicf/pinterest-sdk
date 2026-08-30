@@ -2,7 +2,7 @@
 /*
  * SSIOInsertionOrderStatus.h
  *
- * 
+ * SSIO insertion order status item in a list response.
  */
 
 #ifndef TINY_CPP_CLIENT_SSIOInsertionOrderStatus_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief 
+/*! \brief SSIO insertion order status item in a list response.
  *
  *  \ingroup Models
  *
@@ -51,21 +51,21 @@ public:
 
 	/*! \brief Set Salesforce insertion order creation time
 	 */
-	void setCreationTime(std::string  creation_time);
+	void setCreationTime(std::string creation_time);
 	/*! \brief Get Salesforce order id
 	 */
 	std::string getPinOrderId();
 
 	/*! \brief Set Salesforce order id
 	 */
-	void setPinOrderId(std::string  pin_order_id);
+	void setPinOrderId(std::string pin_order_id);
 	/*! \brief Get Salesforce insertion order status
 	 */
 	std::string getStatus();
 
 	/*! \brief Set Salesforce insertion order status
 	 */
-	void setStatus(std::string  status);
+	void setStatus(std::string status);
 
 
     private:

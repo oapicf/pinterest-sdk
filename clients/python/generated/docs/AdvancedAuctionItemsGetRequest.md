@@ -7,7 +7,7 @@ Request object used to get bid options values for a batch of retail catalog item
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_id** | **str** | Catalog id pertaining to the retail item | 
-**items** | [**List[AdvancedAuctionItemsGetRecord]**](AdvancedAuctionItemsGetRecord.md) | A list of retail catalog items to fetch bid options for | 
+**items** | [**List[AdvancedAuctionKey]**](AdvancedAuctionKey.md) | A list of retail catalog items to fetch bid options for | 
 
 ## Example
 

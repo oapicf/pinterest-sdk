@@ -10,11 +10,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="audienceInsightsGet"></a>
 # **audienceInsightsGet**
-> AudienceInsightsResponse audienceInsightsGet(adAccountId, audienceInsightType)
+> AudienceInsights audienceInsightsGet(adAccountId, audienceInsightType)
 
 Get audience insights
 
-Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
 
 ### Example
 ```kotlin
@@ -26,7 +26,7 @@ val apiInstance = AudienceInsightsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val audienceInsightType : AudienceInsightType =  // AudienceInsightType | Type of audience insights.
 try {
-    val result : AudienceInsightsResponse = apiInstance.audienceInsightsGet(adAccountId, audienceInsightType)
+    val result : AudienceInsights = apiInstance.audienceInsightsGet(adAccountId, audienceInsightType)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudienceInsightsApi#audienceInsightsGet")
@@ -41,19 +41,31 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [default to AudienceInsightType.YOUR_TOTAL_AUDIENCE] [enum: YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE] |
+| **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [enum: YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE] |
 
 ### Return type
 
-[**AudienceInsightsResponse**](AudienceInsightsResponse.md)
+[**AudienceInsights**](AudienceInsights.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 
@@ -62,7 +74,7 @@ Configure client_credentials:
 
 <a id="audienceInsightsScopeAndTypeGet"></a>
 # **audienceInsightsScopeAndTypeGet**
-> AudienceDefinitionResponse audienceInsightsScopeAndTypeGet(adAccountId)
+> AudienceInsightsScopeAndTypeGet200Response audienceInsightsScopeAndTypeGet(adAccountId)
 
 Get audience insights scope and type
 
@@ -77,7 +89,7 @@ Get the scope and type of available audiences, which along with a date, is an au
 val apiInstance = AudienceInsightsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    val result : AudienceDefinitionResponse = apiInstance.audienceInsightsScopeAndTypeGet(adAccountId)
+    val result : AudienceInsightsScopeAndTypeGet200Response = apiInstance.audienceInsightsScopeAndTypeGet(adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AudienceInsightsApi#audienceInsightsScopeAndTypeGet")
@@ -95,15 +107,27 @@ try {
 
 ### Return type
 
-[**AudienceDefinitionResponse**](AudienceDefinitionResponse.md)
+[**AudienceInsightsScopeAndTypeGet200Response**](AudienceInsightsScopeAndTypeGet200Response.md)
 
 ### Authorization
 
 
-Configure pinterest_oauth2:
-    ApiClient.accessToken = ""
-Configure client_credentials:
-    ApiClient.accessToken = ""
+Configure pinterest_oauth2 statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure pinterest_oauth2 dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
+Configure client_credentials statically:
+```kotlin
+ApiClient.accessToken = ""
+```
+Configure client_credentials dynamically:
+```kotlin
+apiInstance.accessTokenProvider = { "" }
+```
 
 ### HTTP request headers
 

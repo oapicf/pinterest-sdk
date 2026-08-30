@@ -1,0 +1,11 @@
+## TermsApi
+
+### List related terms
+## List related terms
+GET https://api.pinterest.com/v5/terms/related?terms={{terms}}
+Accept: application/json
+
+### List suggested terms
+## List suggested terms
+GET https://api.pinterest.com/v5/terms/suggested?term={{term}}&limit={{limit}}
+Accept: application/json

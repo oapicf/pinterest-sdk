@@ -23,7 +23,8 @@
        'neighborhood' => list(),
        'sale_price' => binary(),
        'additional_image_link' => list(),
-       'main_image' => openapi_catalogs_hotel_attributes_all_of_main_image:openapi_catalogs_hotel_attributes_all_of_main_image()
+       'ai_disclosures' => list(),
+       'main_image' => openapi_catalogs_hotel_main_image:openapi_catalogs_hotel_main_image()
      }.
 
 encode(#{ 'address' := Address,
@@ -44,6 +45,7 @@ encode(#{ 'address' := Address,
           'neighborhood' := Neighborhood,
           'sale_price' := SalePrice,
           'additional_image_link' := AdditionalImageLink,
+          'ai_disclosures' := AiDisclosures,
           'main_image' := MainImage
         }) ->
     #{ 'address' => Address,
@@ -64,5 +66,6 @@ encode(#{ 'address' := Address,
        'neighborhood' => Neighborhood,
        'sale_price' => SalePrice,
        'additional_image_link' => AdditionalImageLink,
+       'ai_disclosures' => AiDisclosures,
        'main_image' => MainImage
      }.

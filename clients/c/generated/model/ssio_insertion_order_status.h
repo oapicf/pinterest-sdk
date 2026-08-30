@@ -1,7 +1,7 @@
 /*
  * ssio_insertion_order_status.h
  *
- * 
+ * SSIO insertion order status item in a list response.
  */
 
 #ifndef _ssio_insertion_order_status_H_

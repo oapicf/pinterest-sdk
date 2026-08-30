@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
+from app.openapi_server.models.http_method import HttpMethod  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -15,13 +16,13 @@ class IntegrationLogClientRequest(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, host: str=None, method: str=None, path: str=None, request_headers: Dict[str, str]=None, response_headers: Dict[str, str]=None, response_status_code: int=None):  # noqa: E501
+    def __init__(self, host: str=None, method: HttpMethod=None, path: str=None, request_headers: Dict[str, str]=None, response_headers: Dict[str, str]=None, response_status_code: int=None):  # noqa: E501
         """IntegrationLogClientRequest - a model defined in Swagger
 
         :param host: The host of this IntegrationLogClientRequest.  # noqa: E501
         :type host: str
         :param method: The method of this IntegrationLogClientRequest.  # noqa: E501
-        :type method: str
+        :type method: HttpMethod
         :param path: The path of this IntegrationLogClientRequest.  # noqa: E501
         :type path: str
         :param request_headers: The request_headers of this IntegrationLogClientRequest.  # noqa: E501
@@ -33,7 +34,7 @@ class IntegrationLogClientRequest(Model):
         """
         self.swagger_types = {
             'host': str,
-            'method': str,
+            'method': HttpMethod,
             'path': str,
             'request_headers': Dict[str, str],
             'response_headers': Dict[str, str],
@@ -93,29 +94,25 @@ class IntegrationLogClientRequest(Model):
         self._host = host
 
     @property
-    def method(self) -> str:
+    def method(self) -> HttpMethod:
         """Gets the method of this IntegrationLogClientRequest.
 
 
         :return: The method of this IntegrationLogClientRequest.
-        :rtype: str
+        :rtype: HttpMethod
         """
         return self._method
 
     @method.setter
-    def method(self, method: str):
+    def method(self, method: HttpMethod):
         """Sets the method of this IntegrationLogClientRequest.
 
 
         :param method: The method of this IntegrationLogClientRequest.
-        :type method: str
+        :type method: HttpMethod
         """
-        allowed_values = ["GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]  # noqa: E501
-        if method not in allowed_values:
-            raise ValueError(
-                "Invalid value for `method` ({0}), must be one of {1}"
-                .format(method, allowed_values)
-            )
+        if method is None:
+            raise ValueError("Invalid value for `method`, must not be `None`")  # noqa: E501
 
         self._method = method
 

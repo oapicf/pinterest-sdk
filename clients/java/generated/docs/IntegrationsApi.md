@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 <a id="integrationsCommerceDel"></a>
 # **integrationsCommerceDel**
-> integrationsCommerceDel(externalBusinessId)
+> IntegrationMetadata integrationsCommerceDel(externalBusinessId)
 
 Delete commerce integration
 
@@ -43,7 +43,8 @@ public class Example {
     IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
     String externalBusinessId = "externalBusinessId_example"; // String | External business ID for the integration.
     try {
-      apiInstance.integrationsCommerceDel(externalBusinessId);
+      IntegrationMetadata result = apiInstance.integrationsCommerceDel(externalBusinessId);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationsApi#integrationsCommerceDel");
       System.err.println("Status code: " + e.getCode());
@@ -63,7 +64,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**IntegrationMetadata**](IntegrationMetadata.md)
 
 ### Authorization
 
@@ -77,8 +78,14 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Commerce Integration deleted successfully |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="integrationsCommerceGet"></a>
 # **integrationsCommerceGet**
@@ -145,14 +152,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="integrationsCommercePatch"></a>
 # **integrationsCommercePatch**
-> IntegrationMetadata integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+> IntegrationMetadata integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
 
 Update commerce integration
 
@@ -179,9 +189,9 @@ public class Example {
 
     IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
     String externalBusinessId = "externalBusinessId_example"; // String | External business ID for the integration.
-    IntegrationRequestPatch integrationRequestPatch = new IntegrationRequestPatch(); // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
+    IntegrationMetadataUpdate integrationMetadataUpdate = new IntegrationMetadataUpdate(); // IntegrationMetadataUpdate | 
     try {
-      IntegrationMetadata result = apiInstance.integrationsCommercePatch(externalBusinessId, integrationRequestPatch);
+      IntegrationMetadata result = apiInstance.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationsApi#integrationsCommercePatch");
@@ -199,7 +209,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **externalBusinessId** | **String**| External business ID for the integration. | |
-| **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataUpdate** | [**IntegrationMetadataUpdate**](IntegrationMetadataUpdate.md)|  | |
 
 ### Return type
 
@@ -217,14 +227,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="integrationsCommercePost"></a>
 # **integrationsCommercePost**
-> IntegrationMetadata integrationsCommercePost(integrationRequest)
+> IntegrationMetadata integrationsCommercePost(integrationMetadataCreate)
 
 Create commerce integration
 
@@ -250,9 +263,9 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-    IntegrationRequest integrationRequest = new IntegrationRequest(); // IntegrationRequest | Parameters to get create/update the Integration Metadata
+    IntegrationMetadataCreate integrationMetadataCreate = new IntegrationMetadataCreate(); // IntegrationMetadataCreate | 
     try {
-      IntegrationMetadata result = apiInstance.integrationsCommercePost(integrationRequest);
+      IntegrationMetadata result = apiInstance.integrationsCommercePost(integrationMetadataCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationsApi#integrationsCommercePost");
@@ -269,7 +282,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | |
+| **integrationMetadataCreate** | [**IntegrationMetadataCreate**](IntegrationMetadataCreate.md)|  | |
 
 ### Return type
 
@@ -287,10 +300,14 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **409** | Can&#39;t access this integration metadata. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="integrationsGetById"></a>
 # **integrationsGetById**
@@ -320,7 +337,7 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-    String id = "id_example"; // String | Integration ID.
+    String id = "id_example"; // String | Integration record ID.
     try {
       IntegrationRecord result = apiInstance.integrationsGetById(id);
       System.out.println(result);
@@ -339,7 +356,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Integration ID. | |
+| **id** | **String**| Integration record ID. | |
 
 ### Return type
 
@@ -357,9 +374,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Integration not found. |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="integrationsGetList"></a>
 # **integrationsGetList**
@@ -390,7 +411,7 @@ public class Example {
 
     IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
       IntegrationsGetList200Response result = apiInstance.integrationsGetList(bookmark, pageSize);
       System.out.println(result);
@@ -410,7 +431,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -428,12 +449,17 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error. |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="integrationsLogsPost"></a>
 # **integrationsLogsPost**
-> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequest)
+> IntegrationLogsSuccessResponse integrationsLogsPost(integrationLogsRequestCreate)
 
 Receives batched logs from integration applications.
 
@@ -459,9 +485,9 @@ public class Example {
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-    IntegrationLogsRequest integrationLogsRequest = new IntegrationLogsRequest(); // IntegrationLogsRequest | Ingest log information from external integration application.
+    IntegrationLogsRequestCreate integrationLogsRequestCreate = new IntegrationLogsRequestCreate(); // IntegrationLogsRequestCreate | 
     try {
-      IntegrationLogsSuccessResponse result = apiInstance.integrationsLogsPost(integrationLogsRequest);
+      IntegrationLogsSuccessResponse result = apiInstance.integrationsLogsPost(integrationLogsRequestCreate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationsApi#integrationsLogsPost");
@@ -478,7 +504,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationLogsRequest** | [**IntegrationLogsRequest**](IntegrationLogsRequest.md)| Ingest log information from external integration application. | |
+| **integrationLogsRequestCreate** | [**IntegrationLogsRequestCreate**](IntegrationLogsRequestCreate.md)|  | |
 
 ### Return type
 
@@ -496,7 +522,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success. |  -  |
-| **400** | Bad request. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The server could not understand the request due to invalid syntax. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

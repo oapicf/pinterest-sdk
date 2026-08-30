@@ -10,72 +10,51 @@
 
 part of openapi.api;
 
-/// Determines the displayed promotion text along with what parameters (if any) are needed to complete the template. This list is not finalized, and will be updated as new types are supported.
-class PromotionType {
-  /// Instantiate a new enum with the provided [value].
-  const PromotionType._(this.value);
+/// Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
+enum PromotionType {
+  VARIABLE._(r'VARIABLE'),
+  SITEWIDE._(r'SITEWIDE'),
+  CHECKOUT._(r'CHECKOUT'),
+  SAVE_X_ON_Y._(r'SAVE_X_ON_Y'),
+  BUY_X_GET_Y._(r'BUY_X_GET_Y'),
+  SPEND_X_SAVE_Y._(r'SPEND_X_SAVE_Y'),
+  FREE_SHIPPING._(r'FREE_SHIPPING'),
+  FREE_SHIPPING_MINIMUM._(r'FREE_SHIPPING_MINIMUM'),
+  FREE_SHIPPING_WITH_DISCOUNT._(r'FREE_SHIPPING_WITH_DISCOUNT'),
+  SITEWIDE_IN_STORES._(r'SITEWIDE_IN_STORES'),
+  EXTRA_PERCENT_OFF._(r'EXTRA_PERCENT_OFF'),
+  GIFT_WITH_PURCHASE._(r'GIFT_WITH_PURCHASE'),
+  GIFT_WITH_PURCHASE_MINIMUM._(r'GIFT_WITH_PURCHASE_MINIMUM'),
+  FIXED._(r'FIXED'),
+  PERCENT_OFF_CLEARANCE._(r'PERCENT_OFF_CLEARANCE'),
+  X_OFF_Y._(r'X_OFF_Y'),
+  GIFT_WITH_FIRST_PURCHASE._(r'GIFT_WITH_FIRST_PURCHASE'),
+  BUY_X_GET_ONE_FREE._(r'BUY_X_GET_ONE_FREE'),
+  CASH_BACK._(r'CASH_BACK'),
+  POINTS_ON_ALL_PURCHASES._(r'POINTS_ON_ALL_PURCHASES'),
+  BONUS._(r'BONUS'),
+  POINTS_WITH_PURCHASE._(r'POINTS_WITH_PURCHASE'),
+  CUSTOM._(r'CUSTOM'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const PromotionType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const VARIABLE = PromotionType._(r'VARIABLE');
-  static const SITEWIDE = PromotionType._(r'SITEWIDE');
-  static const CHECKOUT = PromotionType._(r'CHECKOUT');
-  static const SAVE_X_ON_Y = PromotionType._(r'SAVE_X_ON_Y');
-  static const BUY_X_GET_Y = PromotionType._(r'BUY_X_GET_Y');
-  static const SPEND_X_SAVE_Y = PromotionType._(r'SPEND_X_SAVE_Y');
-  static const FREE_SHIPPING = PromotionType._(r'FREE_SHIPPING');
-  static const FREE_SHIPPING_MINIMUM = PromotionType._(r'FREE_SHIPPING_MINIMUM');
-  static const FREE_SHIPPING_WITH_DISCOUNT = PromotionType._(r'FREE_SHIPPING_WITH_DISCOUNT');
-  static const SITEWIDE_IN_STORES = PromotionType._(r'SITEWIDE_IN_STORES');
-  static const EXTRA_PERCENT_OFF = PromotionType._(r'EXTRA_PERCENT_OFF');
-  static const GIFT_WITH_PURCHASE = PromotionType._(r'GIFT_WITH_PURCHASE');
-  static const GIFT_WITH_PURCHASE_MINIMUM = PromotionType._(r'GIFT_WITH_PURCHASE_MINIMUM');
-  static const FIXED = PromotionType._(r'FIXED');
-  static const PERCENT_OFF_CLEARANCE = PromotionType._(r'PERCENT_OFF_CLEARANCE');
-  static const X_OFF_Y = PromotionType._(r'X_OFF_Y');
-  static const GIFT_WITH_FIRST_PURCHASE = PromotionType._(r'GIFT_WITH_FIRST_PURCHASE');
-  static const BUY_X_GET_ONE_FREE = PromotionType._(r'BUY_X_GET_ONE_FREE');
-  static const CASH_BACK = PromotionType._(r'CASH_BACK');
-  static const POINTS_ON_ALL_PURCHASES = PromotionType._(r'POINTS_ON_ALL_PURCHASES');
-  static const BONUS = PromotionType._(r'BONUS');
-  static const POINTS_WITH_PURCHASE = PromotionType._(r'POINTS_WITH_PURCHASE');
-  static const CUSTOM = PromotionType._(r'CUSTOM');
-
-  /// List of all possible values in this [enum][PromotionType].
-  static const values = <PromotionType>[
-    VARIABLE,
-    SITEWIDE,
-    CHECKOUT,
-    SAVE_X_ON_Y,
-    BUY_X_GET_Y,
-    SPEND_X_SAVE_Y,
-    FREE_SHIPPING,
-    FREE_SHIPPING_MINIMUM,
-    FREE_SHIPPING_WITH_DISCOUNT,
-    SITEWIDE_IN_STORES,
-    EXTRA_PERCENT_OFF,
-    GIFT_WITH_PURCHASE,
-    GIFT_WITH_PURCHASE_MINIMUM,
-    FIXED,
-    PERCENT_OFF_CLEARANCE,
-    X_OFF_Y,
-    GIFT_WITH_FIRST_PURCHASE,
-    BUY_X_GET_ONE_FREE,
-    CASH_BACK,
-    POINTS_ON_ALL_PURCHASES,
-    BONUS,
-    POINTS_WITH_PURCHASE,
-    CUSTOM,
-  ];
-
+  /// Returns the instance of [PromotionType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static PromotionType? fromJson(dynamic value) => PromotionTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [PromotionType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<PromotionType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PromotionType>[];
     if (json is List && json.isNotEmpty) {
@@ -97,9 +76,11 @@ class PromotionTypeTypeTransformer {
 
   const PromotionTypeTypeTransformer._();
 
-  String encode(PromotionType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(PromotionType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a PromotionType.
+  /// Returns the instance of [PromotionType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -108,6 +89,9 @@ class PromotionTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   PromotionType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is PromotionType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'VARIABLE': return PromotionType.VARIABLE;
@@ -142,7 +126,7 @@ class PromotionTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [PromotionTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static PromotionTypeTypeTransformer? _instance;
 }
 

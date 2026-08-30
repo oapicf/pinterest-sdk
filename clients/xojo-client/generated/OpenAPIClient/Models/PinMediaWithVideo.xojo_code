@@ -42,6 +42,14 @@ Protected Class PinMediaWithVideo
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Video url (HLS).  **Note:** This field is limited and not available to all apps.
+		#tag EndNote
+		video_url_hls As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Width (in pixels). Field maybe null after creation due to video processing time.
 		#tag EndNote
 		width As Xoson.O.OptionalInteger
@@ -135,6 +143,14 @@ Protected Class PinMediaWithVideo
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="video_url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="video_url_hls"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

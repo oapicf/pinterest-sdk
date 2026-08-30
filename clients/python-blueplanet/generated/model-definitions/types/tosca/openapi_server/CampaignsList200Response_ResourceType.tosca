@@ -7,7 +7,7 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
-  CampaignResponse = openapi_server.resourceTypes.CampaignResponse
+  Campaign = openapi_server.resourceTypes.Campaign
 }
 resourceTypes {
 
@@ -23,7 +23,7 @@ resourceTypes {
         }
         items {
           type = array
-          items.type = CampaignResponse
+          items.type = Campaign
           description = ""
           optional = true
         }

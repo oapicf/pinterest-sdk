@@ -12,7 +12,8 @@ import org.joda.time.DateTime
 import UpdateMemberAssetAccessBody._
 
 case class UpdateMemberAssetAccessBody (
-  accesses: List[UpdateMemberAssetAccessBodyAccessesInner])
+  /* List of member asset accesses to assign or update. */
+  accesses: List[UpdateMemberAssetAccessItem])
 
 object UpdateMemberAssetAccessBody {
   import DateTimeCodecs._

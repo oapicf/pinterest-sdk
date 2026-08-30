@@ -30,11 +30,11 @@ services:
 ```
 
 ## **assetGroupCreate**
-> OpenAPI\Server\Model\CreateAssetGroupResponse assetGroupCreate($businessId, $createAssetGroupBody)
+> OpenAPI\Server\Model\AssetGroupInput assetGroupCreate($businessId, $assetGroupInputCreate)
 
 Create a new asset group.
 
-Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
 
 ### Example Implementation
 ```php
@@ -61,7 +61,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
     /**
      * Implementation of BusinessAccessAssetsApiInterface#assetGroupCreate
      */
-    public function assetGroupCreate(string $businessId, CreateAssetGroupBody $createAssetGroupBody, int &$responseCode, array &$responseHeaders): array|object|null
+    public function assetGroupCreate(string $businessId, AssetGroupInputCreate $assetGroupInputCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -75,11 +75,11 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **createAssetGroupBody** | [**OpenAPI\Server\Model\CreateAssetGroupBody**](../Model/CreateAssetGroupBody.md)|  |
+ **assetGroupInputCreate** | [**OpenAPI\Server\Model\AssetGroupInputCreate**](../Model/AssetGroupInputCreate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\CreateAssetGroupResponse**](../Model/CreateAssetGroupResponse.md)
+[**OpenAPI\Server\Model\AssetGroupInput**](../Model/AssetGroupInput.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **assetGroupDelete**
-> OpenAPI\Server\Model\DeleteAssetGroupResponse assetGroupDelete($businessId, $deleteAssetGroupBody)
+> OpenAPI\Server\Model\AssetGroupDeletion assetGroupDelete($businessId, $assetGroupDeletionDelete)
 
 Delete asset groups.
 
@@ -124,7 +124,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
     /**
      * Implementation of BusinessAccessAssetsApiInterface#assetGroupDelete
      */
-    public function assetGroupDelete(string $businessId, DeleteAssetGroupBody $deleteAssetGroupBody, int &$responseCode, array &$responseHeaders): array|object|null
+    public function assetGroupDelete(string $businessId, AssetGroupDeletionDelete $assetGroupDeletionDelete, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -138,11 +138,11 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **deleteAssetGroupBody** | [**OpenAPI\Server\Model\DeleteAssetGroupBody**](../Model/DeleteAssetGroupBody.md)|  |
+ **assetGroupDeletionDelete** | [**OpenAPI\Server\Model\AssetGroupDeletionDelete**](../Model/AssetGroupDeletionDelete.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\DeleteAssetGroupResponse**](../Model/DeleteAssetGroupResponse.md)
+[**OpenAPI\Server\Model\AssetGroupDeletion**](../Model/AssetGroupDeletion.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **assetGroupUpdate**
-> OpenAPI\Server\Model\UpdateAssetGroupResponse assetGroupUpdate($businessId, $updateAssetGroupBody)
+> OpenAPI\Server\Model\AssetGroupModification assetGroupUpdate($businessId, $assetGroupModificationReadOrUpdate)
 
 Update asset groups.
 
@@ -187,7 +187,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
     /**
      * Implementation of BusinessAccessAssetsApiInterface#assetGroupUpdate
      */
-    public function assetGroupUpdate(string $businessId, UpdateAssetGroupBody $updateAssetGroupBody, int &$responseCode, array &$responseHeaders): array|object|null
+    public function assetGroupUpdate(string $businessId, AssetGroupModificationReadOrUpdate $assetGroupModificationReadOrUpdate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -201,11 +201,11 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **updateAssetGroupBody** | [**OpenAPI\Server\Model\UpdateAssetGroupBody**](../Model/UpdateAssetGroupBody.md)|  |
+ **assetGroupModificationReadOrUpdate** | [**OpenAPI\Server\Model\AssetGroupModificationReadOrUpdate**](../Model/AssetGroupModificationReadOrUpdate.md)|  |
 
 ### Return type
 
-[**OpenAPI\Server\Model\UpdateAssetGroupResponse**](../Model/UpdateAssetGroupResponse.md)
+[**OpenAPI\Server\Model\AssetGroupModification**](../Model/AssetGroupModification.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **businessAssetMembersGet**
-> OpenAPI\Server\Model\BusinessAssetMembersGet200Response businessAssetMembersGet($businessId, $assetId, $fetchSystemUsers, $bookmark, $pageSize, $startIndex)
+> OpenAPI\Server\Model\BusinessAssetMembersGet200Response businessAssetMembersGet($businessId, $assetId, $startIndex, $fetchSystemUsers, $bookmark, $pageSize)
 
 Get members with access to asset
 
@@ -250,7 +250,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
     /**
      * Implementation of BusinessAccessAssetsApiInterface#businessAssetMembersGet
      */
-    public function businessAssetMembersGet(string $businessId, string $assetId, bool $fetchSystemUsers, ?string $bookmark, int $pageSize, int $startIndex, int &$responseCode, array &$responseHeaders): array|object|null
+    public function businessAssetMembersGet(string $businessId, string $assetId, int $startIndex, bool $fetchSystemUsers, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -265,10 +265,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
  **assetId** | **string**| Unique identifier of a business asset. |
+ **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **fetchSystemUsers** | **bool**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **businessAssetPartnersGet**
-> OpenAPI\Server\Model\BusinessAssetPartnersGet200Response businessAssetPartnersGet($businessId, $assetId, $startIndex, $bookmark, $pageSize)
+> OpenAPI\Server\Model\BusinessAssetMembersGet200Response businessAssetPartnersGet($businessId, $assetId, $startIndex, $bookmark, $pageSize)
 
 Get partners with access to asset
 
@@ -334,11 +334,11 @@ Name | Type | Description  | Notes
  **assetId** | **string**| Unique identifier of a business asset. |
  **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**OpenAPI\Server\Model\BusinessAssetPartnersGet200Response**](../Model/BusinessAssetPartnersGet200Response.md)
+[**OpenAPI\Server\Model\BusinessAssetMembersGet200Response**](../Model/BusinessAssetMembersGet200Response.md)
 
 ### Authorization
 
@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
  **assetType** | **string**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **businessMemberAssetsGet**
-> OpenAPI\Server\Model\BusinessMemberAssetsGet200Response businessMemberAssetsGet($businessId, $memberId, $assetType, $startIndex, $bookmark, $pageSize)
+> OpenAPI\Server\Model\BusinessMemberAssetsGetResponse businessMemberAssetsGet($businessId, $memberId, $assetType, $startIndex, $sortBy, $sortAscending, $searchBy, $searchValue, $assetPermissionType, $adAccountStatuses, $bookmark, $pageSize)
 
 Get assets assigned to a member
 
@@ -452,7 +452,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
     /**
      * Implementation of BusinessAccessAssetsApiInterface#businessMemberAssetsGet
      */
-    public function businessMemberAssetsGet(string $businessId, string $memberId, string $assetType, int $startIndex, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
+    public function businessMemberAssetsGet(string $businessId, string $memberId, string $assetType, int $startIndex, ?AssetSortBy $sortBy, bool $sortAscending, ?AssetSearchBy $searchBy, ?string $searchValue, ?AssetPermissionType $assetPermissionType, ?array $adAccountStatuses, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -469,12 +469,18 @@ Name | Type | Description  | Notes
  **memberId** | **string**| The member id to fetch assets for. |
  **assetType** | **string**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
+ **sortBy** | [**AssetSortBy**](../Model/.md)| The field to sort member assets by | [optional]
+ **sortAscending** | **bool**| Sort assets in ascending order | [optional] [default to true]
+ **searchBy** | [**AssetSearchBy**](../Model/.md)| The field to search member assets by | [optional]
+ **searchValue** | **string**| The value to search for | [optional]
+ **assetPermissionType** | [**AssetPermissionType**](../Model/.md)| The type of asset permission to filter by | [optional]
+ **adAccountStatuses** | [**OpenAPI\Server\Model\NonDraftEntityStatus**](../Model/OpenAPI\Server\Model\NonDraftEntityStatus.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
-[**OpenAPI\Server\Model\BusinessMemberAssetsGet200Response**](../Model/BusinessMemberAssetsGet200Response.md)
+[**OpenAPI\Server\Model\BusinessMemberAssetsGetResponse**](../Model/BusinessMemberAssetsGetResponse.md)
 
 ### Authorization
 
@@ -488,7 +494,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **businessMembersAssetAccessDelete**
-> OpenAPI\Server\Model\DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete($businessId, $businessMembersAssetAccessDeleteRequest)
+> OpenAPI\Server\Model\DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete($businessId, $businessMembersAssetAccessDeleteBody)
 
 Delete member access to asset
 
@@ -519,7 +525,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
     /**
      * Implementation of BusinessAccessAssetsApiInterface#businessMembersAssetAccessDelete
      */
-    public function businessMembersAssetAccessDelete(string $businessId, BusinessMembersAssetAccessDeleteRequest $businessMembersAssetAccessDeleteRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function businessMembersAssetAccessDelete(string $businessId, BusinessMembersAssetAccessDeleteBody $businessMembersAssetAccessDeleteBody, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -533,7 +539,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **businessMembersAssetAccessDeleteRequest** | [**OpenAPI\Server\Model\BusinessMembersAssetAccessDeleteRequest**](../Model/BusinessMembersAssetAccessDeleteRequest.md)| List member assset permissions to delete. |
+ **businessMembersAssetAccessDeleteBody** | [**OpenAPI\Server\Model\BusinessMembersAssetAccessDeleteBody**](../Model/BusinessMembersAssetAccessDeleteBody.md)|  |
 
 ### Return type
 
@@ -596,7 +602,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **updateMemberAssetAccessBody** | [**OpenAPI\Server\Model\UpdateMemberAssetAccessBody**](../Model/UpdateMemberAssetAccessBody.md)| List of member asset permissions to create or update. |
+ **updateMemberAssetAccessBody** | [**OpenAPI\Server\Model\UpdateMemberAssetAccessBody**](../Model/UpdateMemberAssetAccessBody.md)|  |
 
 ### Return type
 
@@ -614,7 +620,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **businessPartnerAssetAccessGet**
-> OpenAPI\Server\Model\BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet($businessId, $partnerId, $partnerType, $assetType, $startIndex, $pageSize, $bookmark)
+> OpenAPI\Server\Model\BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet($businessId, $partnerId, $partnerType, $assetType, $startIndex, $sortBy, $sortAscending, $searchBy, $searchValue, $bookmark, $pageSize)
 
 Get assets assigned to a partner or assets assigned by a partner
 
@@ -645,7 +651,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
     /**
      * Implementation of BusinessAccessAssetsApiInterface#businessPartnerAssetAccessGet
      */
-    public function businessPartnerAssetAccessGet(string $businessId, string $partnerId, ?$partnerType, string $assetType, int $startIndex, int $pageSize, ?string $bookmark, int &$responseCode, array &$responseHeaders): array|object|null
+    public function businessPartnerAssetAccessGet(string $businessId, string $partnerId, string $partnerType, string $assetType, int $startIndex, ?AssetSortBy $sortBy, bool $sortAscending, ?AssetSearchBy $searchBy, ?string $searchValue, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -660,11 +666,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
  **partnerId** | **string**| The partner id to be bound to the Business |
- **partnerType** | [**OpenAPIServerModelPartnerType**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional]
+ **partnerType** | **string**| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to &#39;INTERNAL&#39;]
  **assetType** | **string**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **sortBy** | [**AssetSortBy**](../Model/.md)| The field to sort member assets by | [optional]
+ **sortAscending** | **bool**| Sort assets in ascending order | [optional] [default to true]
+ **searchBy** | [**AssetSearchBy**](../Model/.md)| The field to search member assets by | [optional]
+ **searchValue** | **string**| The value to search for | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -682,7 +692,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **deletePartnerAssetAccessHandlerImpl**
-> OpenAPI\Server\Model\DeletePartnerAssetsResultsResponseArray deletePartnerAssetAccessHandlerImpl($businessId, $deletePartnerAssetAccessBody)
+> OpenAPI\Server\Model\DeletePartnerAssetAccessResultsResponseArray deletePartnerAssetAccessHandlerImpl($businessId, $deletePartnerAssetAccessBody)
 
 Delete partner access to asset
 
@@ -731,7 +741,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OpenAPI\Server\Model\DeletePartnerAssetsResultsResponseArray**](../Model/DeletePartnerAssetsResultsResponseArray.md)
+[**OpenAPI\Server\Model\DeletePartnerAssetAccessResultsResponseArray**](../Model/DeletePartnerAssetAccessResultsResponseArray.md)
 
 ### Authorization
 
@@ -790,7 +800,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
- **updatePartnerAssetAccessBody** | [**OpenAPI\Server\Model\UpdatePartnerAssetAccessBody**](../Model/UpdatePartnerAssetAccessBody.md)| A list of assets and permissions to assign to your partners. |
+ **updatePartnerAssetAccessBody** | [**OpenAPI\Server\Model\UpdatePartnerAssetAccessBody**](../Model/UpdatePartnerAssetAccessBody.md)|  |
 
 ### Return type
 

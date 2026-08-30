@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,11 +18,11 @@ import (
 // checks if the BidFloor type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BidFloor{}
 
-// BidFloor struct for BidFloor
+// BidFloor Bid floor request and response model.
 type BidFloor struct {
 	// A list of bid floors in micro currency. For example, [100000, 200000]
 	BidFloors []int32 `json:"bid_floors,omitempty"`
-	// Always the string 'bidfloor'
+	// Always the string 'bidfloor'.
 	Type *string `json:"type,omitempty"`
 }
 
@@ -32,8 +32,6 @@ type BidFloor struct {
 // will change when the set of required properties is changed
 func NewBidFloor() *BidFloor {
 	this := BidFloor{}
-	var type_ string = "bidfloor"
-	this.Type = &type_
 	return &this
 }
 
@@ -42,8 +40,6 @@ func NewBidFloor() *BidFloor {
 // but it doesn't guarantee that properties required by API are set
 func NewBidFloorWithDefaults() *BidFloor {
 	this := BidFloor{}
-	var type_ string = "bidfloor"
-	this.Type = &type_
 	return &this
 }
 

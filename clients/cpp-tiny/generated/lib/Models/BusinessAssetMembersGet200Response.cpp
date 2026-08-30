@@ -102,7 +102,7 @@ Business_asset_members_get_200_response::getBookmark()
 }
 
 void
-Business_asset_members_get_200_response::setBookmark(std::string  bookmark)
+Business_asset_members_get_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
@@ -114,7 +114,7 @@ Business_asset_members_get_200_response::getItems()
 }
 
 void
-Business_asset_members_get_200_response::setItems(std::list <UserSingleAssetBinding> items)
+Business_asset_members_get_200_response::setItems(std::list<UserSingleAssetBinding> items)
 {
 	this->items = items;
 }

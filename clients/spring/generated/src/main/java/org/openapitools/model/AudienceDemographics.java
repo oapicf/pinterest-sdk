@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -11,35 +12,35 @@ import org.openapitools.model.AudienceDemographicValue;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Audience demographics
  */
 
 @Schema(name = "AudienceDemographics", description = "Audience demographics")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class AudienceDemographics {
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AudienceDemographicValue> devices = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
 
-  @Valid
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
 
   public AudienceDemographics ages(List<@Valid AudienceDemographicValue> ages) {
@@ -66,6 +67,7 @@ public class AudienceDemographics {
     return ages;
   }
 
+  @JsonProperty("ages")
   public void setAges(List<@Valid AudienceDemographicValue> ages) {
     this.ages = ages;
   }
@@ -94,6 +96,7 @@ public class AudienceDemographics {
     return countries;
   }
 
+  @JsonProperty("countries")
   public void setCountries(List<@Valid AudienceDemographicValue> countries) {
     this.countries = countries;
   }
@@ -122,6 +125,7 @@ public class AudienceDemographics {
     return devices;
   }
 
+  @JsonProperty("devices")
   public void setDevices(List<@Valid AudienceDemographicValue> devices) {
     this.devices = devices;
   }
@@ -150,6 +154,7 @@ public class AudienceDemographics {
     return genders;
   }
 
+  @JsonProperty("genders")
   public void setGenders(List<@Valid AudienceDemographicValue> genders) {
     this.genders = genders;
   }
@@ -178,6 +183,7 @@ public class AudienceDemographics {
     return metros;
   }
 
+  @JsonProperty("metros")
   public void setMetros(List<@Valid AudienceDemographicValue> metros) {
     this.metros = metros;
   }
@@ -220,11 +226,8 @@ public class AudienceDemographics {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -20,7 +20,7 @@ notification_response_t* NotificationAPI_notificationPost(apiClient_t *apiClient
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**notification_post_request** | **[notification_post_request_t](notification_post_request.md) \*** | notification event. | 
+**notification_post_request** | **[notification_post_request_t](notification_post_request.md) \*** |  | 
 
 ### Return type
 

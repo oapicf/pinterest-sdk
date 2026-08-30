@@ -51,98 +51,98 @@ public:
 
 	/*! \brief Set 
 	 */
-	void setAdditionalId1(std::string  additional_id_1);
+	void setAdditionalId1(std::string additional_id_1);
 	/*! \brief Get 
 	 */
 	std::string getConnectedAdvertiserId();
 
 	/*! \brief Set 
 	 */
-	void setConnectedAdvertiserId(std::string  connected_advertiser_id);
+	void setConnectedAdvertiserId(std::string connected_advertiser_id);
 	/*! \brief Get 
 	 */
 	std::string getConnectedLbaId();
 
 	/*! \brief Set 
 	 */
-	void setConnectedLbaId(std::string  connected_lba_id);
+	void setConnectedLbaId(std::string connected_lba_id);
 	/*! \brief Get 
 	 */
 	std::string getConnectedMerchantId();
 
 	/*! \brief Set 
 	 */
-	void setConnectedMerchantId(std::string  connected_merchant_id);
+	void setConnectedMerchantId(std::string connected_merchant_id);
 	/*! \brief Get 
 	 */
 	std::string getConnectedTagId();
 
 	/*! \brief Set 
 	 */
-	void setConnectedTagId(std::string  connected_tag_id);
+	void setConnectedTagId(std::string connected_tag_id);
 	/*! \brief Get 
 	 */
 	std::string getConnectedUserId();
 
 	/*! \brief Set 
 	 */
-	void setConnectedUserId(std::string  connected_user_id);
+	void setConnectedUserId(std::string connected_user_id);
 	/*! \brief Get 
 	 */
 	long getCreatedTimestamp();
 
 	/*! \brief Set 
 	 */
-	void setCreatedTimestamp(long  created_timestamp);
-	/*! \brief Get 
+	void setCreatedTimestamp(long created_timestamp);
+	/*! \brief Get External business ID for the integration.
 	 */
 	std::string getExternalBusinessId();
 
-	/*! \brief Set 
+	/*! \brief Set External business ID for the integration.
 	 */
-	void setExternalBusinessId(std::string  external_business_id);
+	void setExternalBusinessId(std::string external_business_id);
 	/*! \brief Get 
 	 */
 	std::string getId();
 
 	/*! \brief Set 
 	 */
-	void setId(std::string  id);
+	void setId(std::string id);
 	/*! \brief Get 
 	 */
 	long getPartnerAccessTokenExpiry();
 
 	/*! \brief Set 
 	 */
-	void setPartnerAccessTokenExpiry(long  partner_access_token_expiry);
+	void setPartnerAccessTokenExpiry(long partner_access_token_expiry);
 	/*! \brief Get 
 	 */
 	std::string getPartnerMetadata();
 
 	/*! \brief Set 
 	 */
-	void setPartnerMetadata(std::string  partner_metadata);
+	void setPartnerMetadata(std::string partner_metadata);
 	/*! \brief Get 
 	 */
 	long getPartnerRefreshTokenExpiry();
 
 	/*! \brief Set 
 	 */
-	void setPartnerRefreshTokenExpiry(long  partner_refresh_token_expiry);
+	void setPartnerRefreshTokenExpiry(long partner_refresh_token_expiry);
 	/*! \brief Get 
 	 */
 	std::string getScopes();
 
 	/*! \brief Set 
 	 */
-	void setScopes(std::string  scopes);
+	void setScopes(std::string scopes);
 	/*! \brief Get 
 	 */
 	long getUpdatedTimestamp();
 
 	/*! \brief Set 
 	 */
-	void setUpdatedTimestamp(long  updated_timestamp);
+	void setUpdatedTimestamp(long updated_timestamp);
 
 
     private:

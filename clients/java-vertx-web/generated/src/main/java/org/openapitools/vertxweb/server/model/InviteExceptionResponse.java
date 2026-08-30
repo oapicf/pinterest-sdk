@@ -17,7 +17,7 @@ public class InviteExceptionResponse   {
   private Integer code;
   private String inviteOrRequestId;
   private String message;
-  private List<String> usersOrPartnerIds;
+  private List<String> usersOrPartnerIds = new ArrayList<>();
 
   public InviteExceptionResponse () {
 
@@ -105,9 +105,6 @@ public class InviteExceptionResponse   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

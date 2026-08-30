@@ -2,7 +2,7 @@
 Protected Class AvailabilityFilter
 
 	#tag Property, Flags = &h0
-		AVAILABILITY As CatalogsProductGroupMultipleStringCriteria
+		AVAILABILITY As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 

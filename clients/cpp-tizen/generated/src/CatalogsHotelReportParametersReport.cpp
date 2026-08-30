@@ -5,38 +5,33 @@
 #include "Helpers.h"
 
 
-#include "CatalogsHotelReportParameters_report.h"
+#include "CatalogsHotelReportParametersReport.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-CatalogsHotelReportParameters_report::CatalogsHotelReportParameters_report()
+CatalogsHotelReportParametersReport::CatalogsHotelReportParametersReport()
 {
 	//__init();
 }
 
-CatalogsHotelReportParameters_report::~CatalogsHotelReportParameters_report()
+CatalogsHotelReportParametersReport::~CatalogsHotelReportParametersReport()
 {
 	//__cleanup();
 }
 
 void
-CatalogsHotelReportParameters_report::__init()
+CatalogsHotelReportParametersReport::__init()
 {
-	//report_type = std::string();
 	//feed_id = std::string();
 	//processing_result_id = std::string();
+	//report_type = std::string();
 	//catalog_id = std::string();
 }
 
 void
-CatalogsHotelReportParameters_report::__cleanup()
+CatalogsHotelReportParametersReport::__cleanup()
 {
-	//if(report_type != NULL) {
-	//
-	//delete report_type;
-	//report_type = NULL;
-	//}
 	//if(feed_id != NULL) {
 	//
 	//delete feed_id;
@@ -47,6 +42,11 @@ CatalogsHotelReportParameters_report::__cleanup()
 	//delete processing_result_id;
 	//processing_result_id = NULL;
 	//}
+	//if(report_type != NULL) {
+	//
+	//delete report_type;
+	//report_type = NULL;
+	//}
 	//if(catalog_id != NULL) {
 	//
 	//delete catalog_id;
@@ -56,21 +56,10 @@ CatalogsHotelReportParameters_report::__cleanup()
 }
 
 void
-CatalogsHotelReportParameters_report::fromJson(char* jsonStr)
+CatalogsHotelReportParametersReport::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *report_typeKey = "report_type";
-	node = json_object_get_member(pJsonObject, report_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&report_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *feed_idKey = "feed_id";
 	node = json_object_get_member(pJsonObject, feed_idKey);
 	if (node !=NULL) {
@@ -93,6 +82,17 @@ CatalogsHotelReportParameters_report::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *report_typeKey = "report_type";
+	node = json_object_get_member(pJsonObject, report_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&report_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *catalog_idKey = "catalog_id";
 	node = json_object_get_member(pJsonObject, catalog_idKey);
 	if (node !=NULL) {
@@ -106,25 +106,16 @@ CatalogsHotelReportParameters_report::fromJson(char* jsonStr)
 	}
 }
 
-CatalogsHotelReportParameters_report::CatalogsHotelReportParameters_report(char* json)
+CatalogsHotelReportParametersReport::CatalogsHotelReportParametersReport(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-CatalogsHotelReportParameters_report::toJson()
+CatalogsHotelReportParametersReport::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getReportType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *report_typeKey = "report_type";
-	json_object_set_member(pJsonObject, report_typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getFeedId();
 		node = converttoJson(&obj, "std::string", "");
@@ -144,6 +135,15 @@ CatalogsHotelReportParameters_report::toJson()
 	const gchar *processing_result_idKey = "processing_result_id";
 	json_object_set_member(pJsonObject, processing_result_idKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getReportType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *report_typeKey = "report_type";
+	json_object_set_member(pJsonObject, report_typeKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getCatalogId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -161,49 +161,49 @@ CatalogsHotelReportParameters_report::toJson()
 }
 
 std::string
-CatalogsHotelReportParameters_report::getReportType()
-{
-	return report_type;
-}
-
-void
-CatalogsHotelReportParameters_report::setReportType(std::string  report_type)
-{
-	this->report_type = report_type;
-}
-
-std::string
-CatalogsHotelReportParameters_report::getFeedId()
+CatalogsHotelReportParametersReport::getFeedId()
 {
 	return feed_id;
 }
 
 void
-CatalogsHotelReportParameters_report::setFeedId(std::string  feed_id)
+CatalogsHotelReportParametersReport::setFeedId(std::string  feed_id)
 {
 	this->feed_id = feed_id;
 }
 
 std::string
-CatalogsHotelReportParameters_report::getProcessingResultId()
+CatalogsHotelReportParametersReport::getProcessingResultId()
 {
 	return processing_result_id;
 }
 
 void
-CatalogsHotelReportParameters_report::setProcessingResultId(std::string  processing_result_id)
+CatalogsHotelReportParametersReport::setProcessingResultId(std::string  processing_result_id)
 {
 	this->processing_result_id = processing_result_id;
 }
 
 std::string
-CatalogsHotelReportParameters_report::getCatalogId()
+CatalogsHotelReportParametersReport::getReportType()
+{
+	return report_type;
+}
+
+void
+CatalogsHotelReportParametersReport::setReportType(std::string  report_type)
+{
+	this->report_type = report_type;
+}
+
+std::string
+CatalogsHotelReportParametersReport::getCatalogId()
 {
 	return catalog_id;
 }
 
 void
-CatalogsHotelReportParameters_report::setCatalogId(std::string  catalog_id)
+CatalogsHotelReportParametersReport::setCatalogId(std::string  catalog_id)
 {
 	this->catalog_id = catalog_id;
 }

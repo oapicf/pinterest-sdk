@@ -1,7 +1,7 @@
 (ns pinterest-rest-api.specs.user-websites-get-200-response
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
-            [pinterest-rest-api.specs.user-website-summary :refer :all]
+            [pinterest-rest-api.specs.user-website :refer :all]
             )
   (:import (java.io File)))
 
@@ -9,7 +9,7 @@
 (def user-websites-get-200-response-data
   {
    (ds/opt :bookmark) string?
-   (ds/req :items) (s/coll-of user-website-summary-spec)
+   (ds/req :items) (s/coll-of user-website-spec)
    })
 
 (def user-websites-get-200-response-spec

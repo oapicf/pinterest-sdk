@@ -84,50 +84,7 @@ Protected Class IntegrationLog
 	#tag EndProperty
 
 
-    #tag Enum, Name = Event_typeEnum, Type = Integer, Flags = &h0
-        
-        App
-        Api
-        
-    #tag EndEnum
 
-    #tag Enum, Name = Log_levelEnum, Type = Integer, Flags = &h0
-        
-        Info
-        Warn
-        Error
-        
-    #tag EndEnum
-
-
-	#tag Method, Flags = &h0
-		Shared Function Event_typeEnumToString(value As Event_typeEnum) As String
-		  Select Case value
-		    
-		    Case Event_typeEnum.App
-		      Return "APP"
-		    Case Event_typeEnum.Api
-		      Return "API"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Log_levelEnumToString(value As Log_levelEnum) As String
-		  Select Case value
-		    
-		    Case Log_levelEnum.Info
-		      Return "INFO"
-		    Case Log_levelEnum.Warn
-		      Return "WARN"
-		    Case Log_levelEnum.Error
-		      Return "ERROR"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -196,6 +153,14 @@ Protected Class IntegrationLog
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="event_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="IntegrationLogEventType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="external_business_id"
 			Visible=false
 			Group="Behavior"
@@ -209,6 +174,14 @@ Protected Class IntegrationLog
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="log_level"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="IntegrationLogLevel"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

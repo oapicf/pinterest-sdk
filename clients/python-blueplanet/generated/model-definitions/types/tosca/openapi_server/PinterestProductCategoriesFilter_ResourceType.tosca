@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinterestProductCategoriesFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinterestProductCategoriesFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultiplePinterestProductCategoryCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+}
+resourceTypes {
+
+  PinterestProductCategoriesFilter {
+    title = PinterestProductCategoriesFilter
+    description = PinterestProductCategoriesFilter
+    derivedFrom = Root
+    properties {
+        pinterest_product_categories {
+          type = CatalogsProductGroupMultiplePinterestProductCategoryCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinterestProductCategoriesFilter {
+    title = PinterestProductCategoriesFilter
+    description = PinterestProductCategoriesFilter
+    implements = openapi_server.resourceTypes.PinterestProductCategoriesFilter
+
+  }
+}

@@ -7,17 +7,17 @@ goog.provide('API.Client.CatalogsItemsBatch');
 API.Client.CatalogsItemsBatch = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsItemsBatch.prototype.catalogType;
-
-/**
  * Id of the catalogs items batch
  * @type {!string}
  * @export
  */
 API.Client.CatalogsItemsBatch.prototype.batchId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsItemsBatch.prototype.catalogType;
 
 /**
  * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
@@ -46,3 +46,7 @@ API.Client.CatalogsItemsBatch.prototype.items;
  */
 API.Client.CatalogsItemsBatch.prototype.status;
 
+/** @enum {string} */
+API.Client.CatalogsItemsBatch.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}

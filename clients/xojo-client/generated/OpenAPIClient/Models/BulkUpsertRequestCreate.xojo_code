@@ -17,7 +17,7 @@ Protected Class BulkUpsertRequestCreate
 
 
 	#tag Property, Flags = &h0
-		catalog_product_groups() As OpenAPIClient.Models.MultipleProductGroupsInner
+		catalog_product_groups() As OpenAPIClient.Models.BulkUpsertRequestCreateCatalogProductGroupsItems
 	#tag EndProperty
 
 
@@ -27,12 +27,17 @@ Protected Class BulkUpsertRequestCreate
 
 
 	#tag Property, Flags = &h0
-		labels() As OpenAPIClient.Models.LabelCreateRequest
+		labels() As OpenAPIClient.Models.LabelBulkCreateRequest
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		product_groups() As OpenAPIClient.Models.ProductGroupPromotionCreateRequest
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		schedules() As OpenAPIClient.Models.ScheduleCreateRequest
 	#tag EndProperty
 
 
@@ -101,7 +106,7 @@ Protected Class BulkUpsertRequestCreate
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="MultipleProductGroupsInner"
+			Type="BulkUpsertRequestCreateCatalogProductGroupsItems"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -117,7 +122,7 @@ Protected Class BulkUpsertRequestCreate
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="LabelCreateRequest"
+			Type="LabelBulkCreateRequest"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -126,6 +131,14 @@ Protected Class BulkUpsertRequestCreate
 			Group="Behavior"
 			InitialValue=""
 			Type="ProductGroupPromotionCreateRequest"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="schedules"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ScheduleCreateRequest"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

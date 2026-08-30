@@ -2,7 +2,7 @@
 /*
  * LabelType.h
  *
- * Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
+ * Label type values.
  */
 
 #ifndef TINY_CPP_CLIENT_LabelType_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
+/*! \brief Label type values.
  *
  *  \ingroup Models
  *

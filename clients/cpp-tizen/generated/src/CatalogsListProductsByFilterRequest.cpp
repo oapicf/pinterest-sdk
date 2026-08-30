@@ -25,7 +25,7 @@ CatalogsListProductsByFilterRequest::__init()
 {
 	//feed_id = std::string();
 	//filters = new CatalogsCreativeAssetsProductGroupFilters();
-	//catalog_id = std::string();
+	//catalog_id = null;
 	//catalog_type = std::string();
 	//country = new Country();
 	//locale = new CatalogsLocale();

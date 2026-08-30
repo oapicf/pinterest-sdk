@@ -85,7 +85,7 @@ CatalogsHotelProductGroupProductCounts::getCatalogType()
 }
 
 void
-CatalogsHotelProductGroupProductCounts::setCatalogType(std::string  catalog_type)
+CatalogsHotelProductGroupProductCounts::setCatalogType(std::string catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -97,7 +97,7 @@ CatalogsHotelProductGroupProductCounts::getTotal()
 }
 
 void
-CatalogsHotelProductGroupProductCounts::setTotal(long  total)
+CatalogsHotelProductGroupProductCounts::setTotal(long total)
 {
 	this->total = total;
 }

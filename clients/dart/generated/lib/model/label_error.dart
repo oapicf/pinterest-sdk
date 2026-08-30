@@ -23,7 +23,7 @@ class LabelError {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  Label? data;
+  LabelErrorData? data;
 
   List<String> errorMessages;
 
@@ -63,15 +63,11 @@ class LabelError {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "LabelError[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "LabelError[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return LabelError(
-        data: Label.fromJson(json[r'data']),
+        data: LabelErrorData.fromJson(json[r'data']),
         errorMessages: json[r'error_messages'] is Iterable
             ? (json[r'error_messages'] as Iterable).cast<String>().toList(growable: false)
             : const [],

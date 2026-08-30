@@ -1,9 +1,9 @@
 package controllers;
 
+import apimodels.CustomerListUpload;
 import apimodels.CustomerListUploadCreateRequest;
 import apimodels.CustomerListUploadCreateResponse;
-import apimodels.CustomerListUploadResponse;
-import apimodels.Error;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -27,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CustomerListUploadsApiController extends Controller {
     private final CustomerListUploadsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -56,12 +56,12 @@ public class CustomerListUploadsApiController extends Controller {
     }
 
     @ApiAction
-    public Result customerListUploadsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId, @Pattern(regexp="^\\d+$") @Size(max=18)String customerListUploadId) throws Exception {
+    public Result customerListUploadsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId, @Pattern(regexp="^\\d+$")String customerListUploadId) throws Exception {
         return imp.customerListUploadsGetHttp(request, adAccountId, customerListId, customerListUploadId);
     }
 
     @ApiAction
-    public Result customerListUploadsRun(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId, @Pattern(regexp="^\\d+$") @Size(max=18)String customerListUploadId) throws Exception {
+    public Result customerListUploadsRun(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String customerListId, @Pattern(regexp="^\\d+$")String customerListUploadId) throws Exception {
         return imp.customerListUploadsRunHttp(request, adAccountId, customerListId, customerListUploadId);
     }
 

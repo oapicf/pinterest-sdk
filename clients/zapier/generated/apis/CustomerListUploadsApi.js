@@ -1,8 +1,8 @@
 const samples = require('../samples/CustomerListUploadsApi');
+const CustomerListUpload = require('../models/CustomerListUpload');
 const CustomerListUploadCreateRequest = require('../models/CustomerListUploadCreateRequest');
 const CustomerListUploadCreateResponse = require('../models/CustomerListUploadCreateResponse');
-const CustomerListUploadResponse = require('../models/CustomerListUploadResponse');
-const Error = require('../models/Error');
+const Pinterest.Lib.Error = require('../models/Pinterest.Lib.Error');
 const utils = require('../utils/utils');
 
 module.exports = {
@@ -11,20 +11,20 @@ module.exports = {
         noun: 'customer_list_uploads',
         display: {
             label: 'Create customer list upload',
-            description: '&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;',
+            description: 'Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
                     key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
+                    label: '',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'customer_list_id',
-                    label: 'Unique identifier of a customer list',
+                    label: 'Customer list ID.',
                     type: 'string',
                     required: true,
                 },
@@ -62,32 +62,32 @@ module.exports = {
         noun: 'customer_list_uploads',
         display: {
             label: 'Get customer list upload',
-            description: '&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;',
+            description: 'Get the metadata for a given upload by its ID.',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
                     key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
+                    label: '',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'customer_list_id',
-                    label: 'Unique identifier of a customer list',
+                    label: 'Customer list ID.',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'customer_list_upload_id',
-                    label: 'Unique identifier of a customer list upload',
+                    label: 'Customer List Upload ID.',
                     type: 'string',
                     required: true,
                 },
             ],
             outputFields: [
-                ...CustomerListUploadResponse.fields('', false),
+                ...CustomerListUpload.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -109,7 +109,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['CustomerListUploadResponseSample']
+            sample: samples['CustomerListUploadSample']
         }
     },
     customerListUploads/run: {
@@ -117,32 +117,32 @@ module.exports = {
         noun: 'customer_list_uploads',
         display: {
             label: 'Run customer list upload',
-            description: '&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;',
+            description: 'Begin processing a customer list upload.',
             hidden: false,
         },
         operation: {
             inputFields: [
                 {
                     key: 'ad_account_id',
-                    label: 'Unique identifier of an ad account.',
+                    label: '',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'customer_list_id',
-                    label: 'Unique identifier of a customer list',
+                    label: 'Customer list ID.',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'customer_list_upload_id',
-                    label: 'Unique identifier of a customer list upload',
+                    label: 'Customer List Upload ID.',
                     type: 'string',
                     required: true,
                 },
             ],
             outputFields: [
-                ...CustomerListUploadResponse.fields('', false),
+                ...CustomerListUpload.fields('', false),
             ],
             perform: async (z, bundle) => {
                 const options = {
@@ -164,7 +164,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['CustomerListUploadResponseSample']
+            sample: samples['CustomerListUploadSample']
         }
     },
 }

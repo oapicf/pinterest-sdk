@@ -33,13 +33,13 @@ static catalogs_creative_assets_batch_request_t *catalogs_creative_assets_batch_
     if (!catalogs_creative_assets_batch_request_local_var) {
         return NULL;
     }
+    memset(catalogs_creative_assets_batch_request_local_var, 0, sizeof(catalogs_creative_assets_batch_request_t));
+    catalogs_creative_assets_batch_request_local_var->_library_owned = 1;
     catalogs_creative_assets_batch_request_local_var->catalog_id = catalog_id;
     catalogs_creative_assets_batch_request_local_var->catalog_type = catalog_type;
     catalogs_creative_assets_batch_request_local_var->country = country;
     catalogs_creative_assets_batch_request_local_var->items = items;
     catalogs_creative_assets_batch_request_local_var->language = language;
-
-    catalogs_creative_assets_batch_request_local_var->_library_owned = 1;
     return catalogs_creative_assets_batch_request_local_var;
 }
 
@@ -50,13 +50,16 @@ __attribute__((deprecated)) catalogs_creative_assets_batch_request_t *catalogs_c
     list_t *items,
     pinterest_rest_api_catalogs_creative_assets_batch_request_LANGUAGE_e language
     ) {
-    return catalogs_creative_assets_batch_request_create_internal (
+    catalogs_creative_assets_batch_request_t *result = catalogs_creative_assets_batch_request_create_internal (
         catalog_id,
         catalog_type,
         country,
         items,
         language
         );
+    if (!result) {
+    }
+    return result;
 }
 
 void catalogs_creative_assets_batch_request_free(catalogs_creative_assets_batch_request_t *catalogs_creative_assets_batch_request) {
@@ -159,6 +162,8 @@ catalogs_creative_assets_batch_request_t *catalogs_creative_assets_batch_request
 
     catalogs_creative_assets_batch_request_t *catalogs_creative_assets_batch_request_local_var = NULL;
 
+    char *catalog_id_local_str = NULL;
+
     // define the local variable for catalogs_creative_assets_batch_request->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
 
@@ -251,16 +256,26 @@ catalogs_creative_assets_batch_request_t *catalogs_creative_assets_batch_request
     languageVariable = catalogs_creative_assets_batch_request_language_FromString(language->valuestring);
 
 
+    if (catalog_id && !cJSON_IsNull(catalog_id)) catalog_id_local_str = strdup(catalog_id->valuestring);
+
     catalogs_creative_assets_batch_request_local_var = catalogs_creative_assets_batch_request_create_internal (
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        catalog_id_local_str,
         catalog_typeVariable,
         country_local_nonprim,
         itemsList,
         languageVariable
         );
 
+    if (!catalogs_creative_assets_batch_request_local_var) {
+        goto end;
+    }
+
     return catalogs_creative_assets_batch_request_local_var;
 end:
+    if (catalog_id_local_str) {
+        free(catalog_id_local_str);
+        catalog_id_local_str = NULL;
+    }
     if (country_local_nonprim) {
         country_local_nonprim = 0;
     }

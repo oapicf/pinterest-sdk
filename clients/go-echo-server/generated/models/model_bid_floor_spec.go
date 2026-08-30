@@ -1,16 +1,23 @@
 package models
 
+// BidFloorSpec - Bid floor specification for a given campaign configuration.
 type BidFloorSpec struct {
 
+	// Ad group billable event type.
 	BillableEvent ActionType `json:"billable_event"`
 
+	// List of ISO 3166-1 alpha-2 country codes.
 	Countries []Country `json:"countries,omitempty"`
 
+	// Creative type for the bid floor request.
 	CreativeType CreativeType `json:"creative_type,omitempty"`
 
+	// Currency for the bid floor value.
 	Currency Currency `json:"currency"`
 
-	ObjectiveType ObjectiveType `json:"objective_type,omitempty"`
+	// Campaign objective type.
+	ObjectiveType BidFloorObjectiveType `json:"objective_type,omitempty"`
 
+	// Optimization goal metadata.
 	OptimizationGoalMetadata OptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
 }

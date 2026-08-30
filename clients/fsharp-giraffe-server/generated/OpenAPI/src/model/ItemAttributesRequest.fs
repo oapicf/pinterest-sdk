@@ -2,7 +2,8 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ItemAttributesRequestAllOfImageLink
+open OpenAPI.Model.CatalogsAiContentDisclosure
+open OpenAPI.Model.ItemAttributesRequestImageLink
 open OpenAPI.Model.UpdatableItemAttributesGtin
 open OpenAPI.Model.bool option
 open OpenAPI.Model.decimal option
@@ -62,8 +63,10 @@ module ItemAttributesRequest =
     AdVideo1Tag : string option;
     AdVideo2Link : string option;
     AdVideo2Tag : string option;
+    AdditionalImageLink : string[];
     Adult : bool option;
     AgeGroup : string option;
+    AiDisclosures : CatalogsAiContentDisclosure[];
     AndroidDeepLink : string;
     Availability : string;
     AverageReviewRating : decimal option;
@@ -88,6 +91,7 @@ module ItemAttributesRequest =
     GoogleProductCategory : string option;
     Gtin : UpdatableItemAttributesGtin;
     Id : string;
+    ImageLink : ItemAttributesRequestImageLink;
     InstallmentPrice : string option;
     IosDeepLink : string;
     ItemGroupId : string option;
@@ -105,6 +109,7 @@ module ItemAttributesRequest =
     PromotionId : string option;
     SalePrice : string option;
     SalePriceEffectiveDate : string option;
+    SavePinDisabled : bool;
     Shipping : string option;
     ShippingHeight : string option;
     ShippingWeight : string option;
@@ -118,9 +123,6 @@ module ItemAttributesRequest =
     UnitPricingMeasure : string option;
     VariantNames : string[];
     VariantValues : string[];
-    AdditionalImageLink : string[];
-    ImageLink : ItemAttributesRequestAllOfImageLink;
-    SavePinDisabled : bool;
     VideoLink : string option;
   }
   //#endregion

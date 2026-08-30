@@ -17,8 +17,11 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "Product counts for a Creative Assets CatalogsProductGroup")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsCreativeAssetsProductGroupProductCounts   {
+  @JsonProperty("app_links")
+  private BigDecimal appLinks;
+
   /**
    * Gets or Sets catalogType
    */
@@ -51,11 +54,33 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
   @JsonProperty("catalog_type")
   private CatalogTypeEnum catalogType;
 
+  @JsonProperty("images")
+  private BigDecimal images;
+
   @JsonProperty("total")
   private BigDecimal total;
 
   @JsonProperty("videos")
   private BigDecimal videos;
+
+  public CatalogsCreativeAssetsProductGroupProductCounts appLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+    return this;
+  }
+
+  /**
+   * Get appLinks
+   * minimum: 0
+   * @return appLinks
+   */
+  @ApiModelProperty(required = true, value = "")
+  public BigDecimal getAppLinks() {
+    return appLinks;
+  }
+
+  public void setAppLinks(BigDecimal appLinks) {
+    this.appLinks = appLinks;
+  }
 
   public CatalogsCreativeAssetsProductGroupProductCounts catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -73,6 +98,25 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
 
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public CatalogsCreativeAssetsProductGroupProductCounts images(BigDecimal images) {
+    this.images = images;
+    return this;
+  }
+
+  /**
+   * Get images
+   * minimum: 0
+   * @return images
+   */
+  @ApiModelProperty(required = true, value = "")
+  public BigDecimal getImages() {
+    return images;
+  }
+
+  public void setImages(BigDecimal images) {
+    this.images = images;
   }
 
   public CatalogsCreativeAssetsProductGroupProductCounts total(BigDecimal total) {
@@ -123,14 +167,16 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
       return false;
     }
     CatalogsCreativeAssetsProductGroupProductCounts catalogsCreativeAssetsProductGroupProductCounts = (CatalogsCreativeAssetsProductGroupProductCounts) o;
-    return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+    return Objects.equals(this.appLinks, catalogsCreativeAssetsProductGroupProductCounts.appLinks) &&
+        Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupProductCounts.catalogType) &&
+        Objects.equals(this.images, catalogsCreativeAssetsProductGroupProductCounts.images) &&
         Objects.equals(this.total, catalogsCreativeAssetsProductGroupProductCounts.total) &&
         Objects.equals(this.videos, catalogsCreativeAssetsProductGroupProductCounts.videos);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, total, videos);
+    return Objects.hash(appLinks, catalogType, images, total, videos);
   }
 
   @Override
@@ -138,7 +184,9 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroupProductCounts {\n");
     
+    sb.append("    appLinks: ").append(toIndentedString(appLinks)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    videos: ").append(toIndentedString(videos)).append("\n");
     sb.append("}");
@@ -150,10 +198,7 @@ public class CatalogsCreativeAssetsProductGroupProductCounts   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

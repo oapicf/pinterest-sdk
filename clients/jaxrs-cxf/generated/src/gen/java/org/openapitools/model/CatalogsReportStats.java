@@ -27,42 +27,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsReportStats  {
   
-public enum ReportTypeEnum {
-
-FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
-
-
-    private String value;
-
-    ReportTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ReportTypeEnum fromValue(String value) {
-        for (ReportTypeEnum b : ReportTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
-  @ApiModelProperty(required = true, value = "")
-
-  private ReportTypeEnum reportType;
-
  /**
   * ID of the catalog entity.
   */
@@ -97,6 +61,42 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISS
   @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
 
   private Integer occurrences;
+
+public enum ReportTypeEnum {
+
+DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
+
+
+    private String value;
+
+    ReportTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ReportTypeEnum fromValue(String value) {
+        for (ReportTypeEnum b : ReportTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  @ApiModelProperty(value = "")
+
+  private ReportTypeEnum reportType;
 
 public enum SeverityEnum {
 
@@ -150,28 +150,6 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
   @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for organic distribution")
 
   private Boolean ineligibleForOrganic;
- /**
-   * Get reportType
-   * @return reportType
-  **/
-  @JsonProperty("report_type")
-  @NotNull
-  public String getReportType() {
-    if (reportType == null) {
-      return null;
-    }
-    return reportType.value();
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
-  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
  /**
    * ID of the catalog entity.
    * @return catalogId
@@ -263,6 +241,27 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
   }
 
  /**
+   * Get reportType
+   * @return reportType
+  **/
+  @JsonProperty("report_type")
+  public String getReportType() {
+    if (reportType == null) {
+      return null;
+    }
+    return reportType.value();
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  public CatalogsReportStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+ /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
    * @return severity
   **/
@@ -328,12 +327,12 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
       return false;
     }
     CatalogsReportStats catalogsReportStats = (CatalogsReportStats) o;
-    return Objects.equals(this.reportType, catalogsReportStats.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportStats.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsReportStats.catalogId) &&
         Objects.equals(this.code, catalogsReportStats.code) &&
         Objects.equals(this.codeLabel, catalogsReportStats.codeLabel) &&
         Objects.equals(this.message, catalogsReportStats.message) &&
         Objects.equals(this.occurrences, catalogsReportStats.occurrences) &&
+        Objects.equals(this.reportType, catalogsReportStats.reportType) &&
         Objects.equals(this.severity, catalogsReportStats.severity) &&
         Objects.equals(this.ineligibleForAds, catalogsReportStats.ineligibleForAds) &&
         Objects.equals(this.ineligibleForOrganic, catalogsReportStats.ineligibleForOrganic);
@@ -341,7 +340,7 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity, ineligibleForAds, ineligibleForOrganic);
   }
 
   @Override
@@ -349,12 +348,12 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
@@ -367,10 +366,7 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

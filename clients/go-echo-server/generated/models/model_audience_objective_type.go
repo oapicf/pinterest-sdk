@@ -1,0 +1,13 @@
+package models
+// AudienceObjectiveType : Objective for engagement audience filter. Used only on ad account audience rule; matches baseline ObjectiveType (no VIDEO_VIEW, WEB_SESSIONS).
+type AudienceObjectiveType string
+
+// List of AudienceObjectiveType
+const (
+	AWARENESS AudienceObjectiveType = "AWARENESS"
+	CONSIDERATION AudienceObjectiveType = "CONSIDERATION"
+	WEB_CONVERSION AudienceObjectiveType = "WEB_CONVERSION"
+	CATALOG_SALES AudienceObjectiveType = "CATALOG_SALES"
+	VIDEO_COMPLETION AudienceObjectiveType = "VIDEO_COMPLETION"
+	SALES AudienceObjectiveType = "SALES"
+)

@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.RelatedTermsRelatedTermsListInner
+open OpenAPI.Model.RelatedTermsRelatedTermsListItems
 
 module RelatedTerms =
 
@@ -12,6 +12,6 @@ module RelatedTerms =
   type RelatedTerms = {
     Id : string;
     RelatedTermCount : int;
-    RelatedTermsList : RelatedTermsRelatedTermsListInner[];
+    RelatedTermsList : RelatedTermsRelatedTermsListItems[];
   }
   //#endregion

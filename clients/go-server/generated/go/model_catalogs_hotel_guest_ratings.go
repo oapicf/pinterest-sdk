@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,7 +14,6 @@ package openapi
 
 
 
-// CatalogsHotelGuestRatings - If specified, you must provide all properties
 type CatalogsHotelGuestRatings struct {
 
 	// Max value for the hotel rating score.
@@ -30,7 +29,8 @@ type CatalogsHotelGuestRatings struct {
 	Score *float32 `json:"score,omitempty"`
 }
 
-// AssertCatalogsHotelGuestRatingsRequired checks if the required fields are not zero-ed
+// AssertCatalogsHotelGuestRatingsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsHotelGuestRatingsRequired(obj CatalogsHotelGuestRatings) error {
 	return nil
 }

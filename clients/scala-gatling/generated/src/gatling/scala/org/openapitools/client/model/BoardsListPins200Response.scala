@@ -4,8 +4,7 @@ package org.openapitools.client.model
 
 case class BoardsListPins200Response (
     _bookmark: Option[String],
-    /* Pins */
-    _items: List[Pin]
+    _items: List[PinRead]
 )
 object BoardsListPins200Response {
     def toStringBody(var_bookmark: Object, var_items: Object) =

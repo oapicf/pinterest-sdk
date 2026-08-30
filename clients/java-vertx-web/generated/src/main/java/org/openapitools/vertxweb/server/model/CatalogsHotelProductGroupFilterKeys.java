@@ -7,7 +7,6 @@ import org.openapitools.vertxweb.server.model.BrandFilter;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupMultipleCountriesCriteria;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupMultipleStringCriteria;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupPricingCurrencyCriteria;
 import org.openapitools.vertxweb.server.model.CountryFilter;
 import org.openapitools.vertxweb.server.model.CustomLabel0Filter;
 import org.openapitools.vertxweb.server.model.CustomLabel1Filter;
@@ -16,12 +15,13 @@ import org.openapitools.vertxweb.server.model.CustomLabel3Filter;
 import org.openapitools.vertxweb.server.model.CustomLabel4Filter;
 import org.openapitools.vertxweb.server.model.HotelIdFilter;
 import org.openapitools.vertxweb.server.model.PriceFilter;
+import org.openapitools.vertxweb.server.model.PriceFilterPrice;
 import org.openapitools.vertxweb.server.model.TitleKeywordsFilter;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelProductGroupFilterKeys   {
   
-  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private PriceFilterPrice PRICE;
   private CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
   private CatalogsProductGroupMultipleStringCriteria BRAND;
   private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0;
@@ -36,7 +36,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
 
   }
 
-  public CatalogsHotelProductGroupFilterKeys (CatalogsProductGroupPricingCurrencyCriteria PRICE, CatalogsProductGroupMultipleStringCriteria HOTEL_ID, CatalogsProductGroupMultipleStringCriteria BRAND, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4, CatalogsProductGroupMultipleCountriesCriteria COUNTRY, CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
+  public CatalogsHotelProductGroupFilterKeys (PriceFilterPrice PRICE, CatalogsProductGroupMultipleStringCriteria HOTEL_ID, CatalogsProductGroupMultipleStringCriteria BRAND, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4, CatalogsProductGroupMultipleCountriesCriteria COUNTRY, CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
     this.PRICE = PRICE;
     this.HOTEL_ID = HOTEL_ID;
     this.BRAND = BRAND;
@@ -51,10 +51,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
 
     
   @JsonProperty("PRICE")
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  public PriceFilterPrice getPRICE() {
     return PRICE;
   }
-  public void setPRICE(CatalogsProductGroupPricingCurrencyCriteria PRICE) {
+  public void setPRICE(PriceFilterPrice PRICE) {
     this.PRICE = PRICE;
   }
 
@@ -190,9 +190,6 @@ public class CatalogsHotelProductGroupFilterKeys   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

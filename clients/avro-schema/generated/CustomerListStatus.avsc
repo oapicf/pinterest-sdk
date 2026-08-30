@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.",
+  "name": "CustomerListStatus",
+  "symbols": [
+    "PROCESSING",
+    "READY",
+    "TOO_SMALL",
+    "UPLOADING"
+  ]
+}

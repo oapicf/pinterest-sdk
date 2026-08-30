@@ -62,10 +62,12 @@ class GenderDemographics {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "GenderDemographics[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "GenderDemographics[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'female'), 'Required key "GenderDemographics[female]" is missing from JSON.');
+        assert(json[r'female'] != null, 'Required key "GenderDemographics[female]" has a null value in JSON.');
+        assert(json.containsKey(r'male'), 'Required key "GenderDemographics[male]" is missing from JSON.');
+        assert(json[r'male'] != null, 'Required key "GenderDemographics[male]" has a null value in JSON.');
+        assert(json.containsKey(r'unspecified'), 'Required key "GenderDemographics[unspecified]" is missing from JSON.');
+        assert(json[r'unspecified'] != null, 'Required key "GenderDemographics[unspecified]" has a null value in JSON.');
         return true;
       }());
 

@@ -1,7 +1,7 @@
 /*
  * ItemResponse.h
  *
- * Object describing an item record or error
+ * Object describing an item record or error. Discriminated by &#x60;item_response_kind&#x60; (one unique value per leaf).
  */
 
 #ifndef _ItemResponse_H_
@@ -10,9 +10,12 @@
 
 #include <string>
 #include "CatalogsCreativeAssetsAttributes.h"
-#include "CatalogsType.h"
-#include "ItemResponse_oneOf.h"
-#include "ItemResponse_oneOf_1.h"
+#include "CatalogsCreativeAssetsItemErrorResponse.h"
+#include "CatalogsCreativeAssetsItemResponse.h"
+#include "CatalogsHotelItemErrorResponse.h"
+#include "CatalogsHotelItemResponse.h"
+#include "CatalogsRetailItemErrorResponse.h"
+#include "CatalogsRetailItemResponse.h"
 #include "ItemValidationEvent.h"
 #include "Pin.h"
 #include <list>
@@ -27,7 +30,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Object describing an item record or error
+/*! \brief Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).
  *
  *  \ingroup Models
  *
@@ -54,18 +57,18 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
-
-	/*! \brief Set 
-	 */
-	void setCatalogType(CatalogsType  catalog_type);
-	/*! \brief Get 
-	 */
 	CatalogsCreativeAssetsAttributes getAttributes();
 
 	/*! \brief Set 
 	 */
 	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
+	/*! \brief Get 
+	 */
+	std::string getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get The catalog item id in the merchant namespace
 	 */
 	std::string getItemId();
@@ -73,6 +76,13 @@ public:
 	/*! \brief Set The catalog item id in the merchant namespace
 	 */
 	void setItemId(std::string  item_id);
+	/*! \brief Get Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	std::string getItemResponseKind();
+
+	/*! \brief Set Discriminator literal identifying this leaf inside an `ItemResponse` payload.
+	 */
+	void setItemResponseKind(std::string  item_response_kind);
 	/*! \brief Get The pins mapped to the item
 	 */
 	std::list<Pin> getPins();
@@ -103,9 +113,10 @@ public:
 	void setErrors(std::list <ItemValidationEvent> errors);
 
 private:
-	CatalogsType catalog_type;
 	CatalogsCreativeAssetsAttributes attributes;
+	std::string catalog_type;
 	std::string item_id;
+	std::string item_response_kind;
 	std::list <Pin>pins;
 	std::string hotel_id;
 	std::string creative_assets_id;

@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TargetingTemplateGetResponseData;
+import org.openapitools.model.TargetingTemplate;
 
 @Canonical
 class TargetingTemplateList200Response {
     
     String bookmark
     
-    List<TargetingTemplateGetResponseData> items = new ArrayList<>()
+    List<TargetingTemplate> items = new ArrayList<>()
 }

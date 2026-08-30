@@ -19,7 +19,6 @@ class SsioInsertionOrdersStatusGetByAdAccount200Response {
 
   String? bookmark;
 
-  /// Insertion orders status by ad acount id
   List<SSIOInsertionOrderStatus> items;
 
   @override
@@ -58,10 +57,8 @@ class SsioInsertionOrdersStatusGetByAdAccount200Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SsioInsertionOrdersStatusGetByAdAccount200Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SsioInsertionOrdersStatusGetByAdAccount200Response[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'items'), 'Required key "SsioInsertionOrdersStatusGetByAdAccount200Response[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "SsioInsertionOrdersStatusGetByAdAccount200Response[items]" has a null value in JSON.');
         return true;
       }());
 

@@ -550,14 +550,14 @@ Protected Class ConversionTagsApi
 
 
 	#tag Method, Flags = &h0
-		Sub PageVisitConversionTagsGet(, adAccountId As String, Optional pageSize As Xoson.O.OptionalInteger, order As OrderEnum_PageVisitConversionTagsGet, Optional bookmark As Xoson.O.OptionalString)
+		Sub PageVisitConversionTagsGet(, adAccountId As String, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger, order As OpenAPIClient.Models.PinterestLibPaginationOrderOptional)
 		  // Operation page_visit_conversion_tags/get
 		  // Get page visit conversion tags
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+		  // - parameter order: (query) The order in which to sort the items returned: &quot;ASCENDING&quot; or &quot;DESCENDING&quot; by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Nil)
 		  //
 		  // Invokes ConversionTagsApiCallbackHandler.PageVisitConversionTagsGetCallback(PageVisitConversionTagsGet200Response) on completion. 
 		  //
@@ -577,11 +577,11 @@ Protected Class ConversionTagsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
+		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
 		  
-		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(OrderEnum_PageVisitConversionTagsGetToString(order))
+		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
-		  If bookmark <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("bookmark") + "=" + EncodeURLComponent(bookmark)
+		  If order <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("order") + "=" + EncodeURLComponent(Xoson.toJSON(order))
 		  
 
 		  
@@ -694,19 +694,6 @@ Protected Class ConversionTagsApi
 
 
 
-	#tag Method, Flags = &h21
-		Private Function OrderEnum_PageVisitConversionTagsGetToString(value As OrderEnum_PageVisitConversionTagsGet) As String
-		  Select Case value
-		    
-		    Case OrderEnum_PageVisitConversionTagsGet.Ascending
-		      Return "ASCENDING"
-		    Case OrderEnum_PageVisitConversionTagsGet.Descending
-		      Return "DESCENDING"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 
@@ -783,13 +770,6 @@ Protected Class ConversionTagsApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
-
-	#tag Enum, Name = OrderEnum_PageVisitConversionTagsGet, Type = Integer, Flags = &h0
-		
-        Ascending
-        Descending
-		
-	#tag EndEnum
 
 
 	#tag ViewBehavior

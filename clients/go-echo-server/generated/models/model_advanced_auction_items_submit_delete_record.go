@@ -5,11 +5,13 @@ type AdvancedAuctionItemsSubmitDeleteRecord struct {
 
 	Country Country `json:"country"`
 
+	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
+
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
 
 	Language Language `json:"language"`
 
-	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
+	Operation string `json:"operation"`
 }

@@ -7,13 +7,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsAiContentDisclosure;
 import org.openapitools.model.CatalogsHotelAddress;
-import org.openapitools.model.CatalogsHotelAttributesAllOfMainImage;
 import org.openapitools.model.CatalogsHotelGuestRatings;
+import org.openapitools.model.CatalogsHotelMainImage;
 
 @Canonical
 class CatalogsHotelAttributes {
-    
+    /* Hotel address */
     CatalogsHotelAddress address
     /* Base price of the hotel room per night followed by the ISO currency code */
     String basePrice
@@ -33,7 +34,7 @@ class CatalogsHotelAttributes {
     String customLabel4
     /* Brief description of the hotel. */
     String description
-    
+    /* If specified, you must provide all properties */
     CatalogsHotelGuestRatings guestRatings
     /* Latitude of the hotel. */
     BigDecimal latitude
@@ -47,8 +48,10 @@ class CatalogsHotelAttributes {
     List<String> neighborhood
     /* Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. */
     String salePrice
-    /* <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p> */
+    /* <= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://. */
     List<String> additionalImageLink
-    
-    CatalogsHotelAttributesAllOfMainImage mainImage
+    /* AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL. */
+    List<CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>()
+    /* The main hotel image */
+    CatalogsHotelMainImage mainImage
 }

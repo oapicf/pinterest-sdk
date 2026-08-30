@@ -31,7 +31,7 @@ class UpdatableItemAttributesGtin(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The UpdatableItemAttributes_gtin of this UpdatableItemAttributesGtin.  # noqa: E501
+        :return: The UpdatableItemAttributesGtin of this UpdatableItemAttributesGtin.  # noqa: E501
         :rtype: UpdatableItemAttributesGtin
         """
         return util.deserialize_model(dikt, cls)

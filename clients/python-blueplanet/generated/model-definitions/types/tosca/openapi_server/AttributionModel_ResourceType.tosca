@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AttributionModel"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AttributionModel"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AttributionModel {
+    title = AttributionModel
+    description = AttributionModel
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AttributionModel {
+    title = AttributionModel
+    description = AttributionModel
+    implements = openapi_server.resourceTypes.AttributionModel
+
+  }
+}

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,13 +18,14 @@ package openapi
 type AdvancedAuctionItems struct {
 
 	// Response object of item bid options
-	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\d+$"`
 
 	// Array with item bid options
 	Items []AdvancedAuctionItem `json:"items,omitempty"`
 }
 
-// AssertAdvancedAuctionItemsRequired checks if the required fields are not zero-ed
+// AssertAdvancedAuctionItemsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertAdvancedAuctionItemsRequired(obj AdvancedAuctionItems) error {
 	for _, el := range obj.Items {
 		if err := AssertAdvancedAuctionItemRequired(el); err != nil {

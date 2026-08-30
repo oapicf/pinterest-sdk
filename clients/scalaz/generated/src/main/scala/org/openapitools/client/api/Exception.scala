@@ -12,10 +12,8 @@ import org.joda.time.DateTime
 import Exception._
 
 case class Exception (
-  /* Exception error code. */
   code: Option[Integer],
-/* Exception message. */
-  message: Option[String])
+message: String)
 
 object Exception {
   import DateTimeCodecs._

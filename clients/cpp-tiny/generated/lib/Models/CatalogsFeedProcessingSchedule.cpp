@@ -7,7 +7,7 @@ using namespace Tiny;
 CatalogsFeedProcessingSchedule::CatalogsFeedProcessingSchedule()
 {
 	time = std::string();
-	timezone = std::string();
+	timezone = null;
 }
 
 CatalogsFeedProcessingSchedule::CatalogsFeedProcessingSchedule(std::string jsonString)
@@ -46,8 +46,9 @@ CatalogsFeedProcessingSchedule::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&timezone, value, "std::string");
 
+        CatalogsFeedProcessingScheduleTimezone* obj = &timezone;
+		obj->fromJson(value.dump());
 
     }
 
@@ -70,8 +71,8 @@ CatalogsFeedProcessingSchedule::toJson()
 
 
 
-    object["timezone"] = getTimezone();
 
+	object["timezone"] = getTimezone().toJson();
 
 
     return object;
@@ -85,19 +86,19 @@ CatalogsFeedProcessingSchedule::getTime()
 }
 
 void
-CatalogsFeedProcessingSchedule::setTime(std::string  time)
+CatalogsFeedProcessingSchedule::setTime(std::string time)
 {
 	this->time = time;
 }
 
-std::string
+CatalogsFeedProcessingScheduleTimezone
 CatalogsFeedProcessingSchedule::getTimezone()
 {
 	return timezone;
 }
 
 void
-CatalogsFeedProcessingSchedule::setTimezone(std::string  timezone)
+CatalogsFeedProcessingSchedule::setTimezone(CatalogsFeedProcessingScheduleTimezone timezone)
 {
 	this->timezone = timezone;
 }

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -18,7 +26,6 @@ package org.openapitools.client.models
 import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupProductCounts
 import org.openapitools.client.models.CatalogsHotelProductGroupProductCounts
 import org.openapitools.client.models.CatalogsRetailProductGroupProductCounts
-import org.openapitools.client.models.CatalogsType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -32,13 +39,15 @@ import com.squareup.moshi.JsonClass
  * @param preorder 
  * @param total 
  * @param videos 
+ * @param appLinks 
+ * @param images 
  */
 
 
 interface CatalogsProductGroupProductCountsVertical {
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType
+    val catalogType: CatalogsProductGroupProductCountsVertical.CatalogType
     @Json(name = "in_stock")
     val inStock: java.math.BigDecimal
     @Json(name = "out_of_stock")
@@ -49,6 +58,19 @@ interface CatalogsProductGroupProductCountsVertical {
     val total: java.math.BigDecimal
     @Json(name = "videos")
     val videos: java.math.BigDecimal
+    @Json(name = "app_links")
+    val appLinks: java.math.BigDecimal
+    @Json(name = "images")
+    val images: java.math.BigDecimal
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
 
 }
 

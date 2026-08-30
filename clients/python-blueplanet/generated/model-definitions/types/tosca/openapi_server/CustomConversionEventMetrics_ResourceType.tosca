@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomConversionEventMetrics"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomConversionEventMetrics"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdeColumnType = openapi_server.resourceTypes.AdeColumnType
+}
+resourceTypes {
+
+  CustomConversionEventMetrics {
+    title = CustomConversionEventMetrics
+    description = CustomConversionEventMetrics
+    derivedFrom = Root
+    properties {
+        custom_event_metrics_type {
+          type = AdeColumnType
+          description = ""
+          optional = true
+        }
+        custom_event_name {
+          type =  string
+          description = "Name of the advertiser-defined custom conversion event"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomConversionEventMetrics {
+    title = CustomConversionEventMetrics
+    description = CustomConversionEventMetrics
+    implements = openapi_server.resourceTypes.CustomConversionEventMetrics
+
+  }
+}

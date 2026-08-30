@@ -48,11 +48,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Ad accounts and profiles the business member/partner has access to.
 	 */
 	BusinessMemberAssetsSummary getAssetsSummary();
 
-	/*! \brief Set 
+	/*! \brief Set Ad accounts and profiles the business member/partner has access to.
 	 */
 	void setAssetsSummary(BusinessMemberAssetsSummary  assets_summary);
 	/*! \brief Get The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
@@ -90,11 +90,11 @@ public:
 	/*! \brief Set Unique identifier of the business member/business partner/employer.
 	 */
 	void setId(std::string  id);
-	/*! \brief Get This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+	/*! \brief Get This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
 	 */
 	bool getIsSharedPartner();
 
-	/*! \brief Set This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+	/*! \brief Set This field is only relevant when business_role=\"PARTNER\". If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
 	 */
 	void setIsSharedPartner(bool  is_shared_partner);
 	/*! \brief Get Metadata for the business member/business partner/employer.

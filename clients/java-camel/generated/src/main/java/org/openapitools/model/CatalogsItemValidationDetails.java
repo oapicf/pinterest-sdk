@@ -8,19 +8,19 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.model.NullableCatalogsItemFieldType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsItemValidationDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsItemValidationDetails {
 
   private JsonNullable<NullableCatalogsItemFieldType> attributeName = JsonNullable.<NullableCatalogsItemFieldType>undefined();
@@ -45,11 +45,11 @@ public class CatalogsItemValidationDetails {
   }
 
   /**
-   * Get attributeName
+   * Attribute that has a validation issue.
    * @return attributeName
    */
   @NotNull @Valid 
-  @Schema(name = "attribute_name", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "attribute_name", description = "Attribute that has a validation issue.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("attribute_name")
   public JsonNullable<NullableCatalogsItemFieldType> getAttributeName() {
     return attributeName;
@@ -112,10 +112,7 @@ public class CatalogsItemValidationDetails {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

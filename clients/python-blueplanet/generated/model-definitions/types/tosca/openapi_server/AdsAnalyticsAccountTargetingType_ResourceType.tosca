@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdsAnalyticsAccountTargetingType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdsAnalyticsAccountTargetingType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdsAnalyticsAccountTargetingType {
+    title = AdsAnalyticsAccountTargetingType
+    description = AdsAnalyticsAccountTargetingType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdsAnalyticsAccountTargetingType {
+    title = AdsAnalyticsAccountTargetingType
+    description = AdsAnalyticsAccountTargetingType
+    implements = openapi_server.resourceTypes.AdsAnalyticsAccountTargetingType
+
+  }
+}

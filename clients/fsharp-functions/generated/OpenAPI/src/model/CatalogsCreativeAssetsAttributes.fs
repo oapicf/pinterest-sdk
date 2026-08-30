@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CatalogsAiContentDisclosure
 open OpenAPI.Model.string option
 
 module CatalogsCreativeAssetsAttributes =
@@ -35,6 +36,8 @@ module CatalogsCreativeAssetsAttributes =
     Title : string;
     [<JsonProperty(PropertyName = "visibility")>]
     Visibility : string option;
+    [<JsonProperty(PropertyName = "ai_disclosures")>]
+    AiDisclosures : CatalogsAiContentDisclosure[];
     [<JsonProperty(PropertyName = "image_link")>]
     ImageLink : string;
     [<JsonProperty(PropertyName = "video_link")>]

@@ -20,6 +20,7 @@ import org.openapitools.vertxweb.server.model.GoogleProductCategory3Filter;
 import org.openapitools.vertxweb.server.model.GoogleProductCategory4Filter;
 import org.openapitools.vertxweb.server.model.GoogleProductCategory5Filter;
 import org.openapitools.vertxweb.server.model.GoogleProductCategory6Filter;
+import org.openapitools.vertxweb.server.model.LinkFilter;
 import org.openapitools.vertxweb.server.model.MediaTypeFilter;
 import org.openapitools.vertxweb.server.model.TitleKeywordsFilter;
 
@@ -41,12 +42,13 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0;
   private CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE;
   private CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS;
+  private CatalogsProductGroupFilterOperatorTypeCriteria LINK;
 
   public CatalogsCreativeAssetsProductGroupFilterKeys () {
 
   }
 
-  public CatalogsCreativeAssetsProductGroupFilterKeys (CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_4, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0, CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE, CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
+  public CatalogsCreativeAssetsProductGroupFilterKeys (CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3, CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_4, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1, CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0, CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE, CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS, CatalogsProductGroupFilterOperatorTypeCriteria LINK) {
     this.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID;
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
     this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
@@ -62,6 +64,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
     this.GOOGLE_PRODUCT_CATEGORY_0 = GOOGLE_PRODUCT_CATEGORY_0;
     this.MEDIA_TYPE = MEDIA_TYPE;
     this.TITLE_KEYWORDS = TITLE_KEYWORDS;
+    this.LINK = LINK;
   }
 
     
@@ -199,6 +202,15 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
     this.TITLE_KEYWORDS = TITLE_KEYWORDS;
   }
 
+    
+  @JsonProperty("LINK")
+  public CatalogsProductGroupFilterOperatorTypeCriteria getLINK() {
+    return LINK;
+  }
+  public void setLINK(CatalogsProductGroupFilterOperatorTypeCriteria LINK) {
+    this.LINK = LINK;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -223,12 +235,13 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
         Objects.equals(GOOGLE_PRODUCT_CATEGORY_1, catalogsCreativeAssetsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_1) &&
         Objects.equals(GOOGLE_PRODUCT_CATEGORY_0, catalogsCreativeAssetsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_0) &&
         Objects.equals(MEDIA_TYPE, catalogsCreativeAssetsProductGroupFilterKeys.MEDIA_TYPE) &&
-        Objects.equals(TITLE_KEYWORDS, catalogsCreativeAssetsProductGroupFilterKeys.TITLE_KEYWORDS);
+        Objects.equals(TITLE_KEYWORDS, catalogsCreativeAssetsProductGroupFilterKeys.TITLE_KEYWORDS) &&
+        Objects.equals(LINK, catalogsCreativeAssetsProductGroupFilterKeys.LINK);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(CREATIVE_ASSETS_ID, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, MEDIA_TYPE, TITLE_KEYWORDS);
+    return Objects.hash(CREATIVE_ASSETS_ID, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, MEDIA_TYPE, TITLE_KEYWORDS, LINK);
   }
 
   @Override
@@ -251,6 +264,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
     sb.append("    GOOGLE_PRODUCT_CATEGORY_0: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_0)).append("\n");
     sb.append("    MEDIA_TYPE: ").append(toIndentedString(MEDIA_TYPE)).append("\n");
     sb.append("    TITLE_KEYWORDS: ").append(toIndentedString(TITLE_KEYWORDS)).append("\n");
+    sb.append("    LINK: ").append(toIndentedString(LINK)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -260,9 +274,6 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -179,134 +179,134 @@ QualityComponents::toJson()
 
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getAdvertiserExternalId()
 {
 	return advertiser_external_id;
 }
 
 void
-QualityComponents::setAdvertiserExternalId(Map <string, string> advertiser_external_id)
+QualityComponents::setAdvertiserExternalId(std::map<std::string, QualityComponentDetails> advertiser_external_id)
 {
 	this->advertiser_external_id = advertiser_external_id;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getClickIdEpik()
 {
 	return click_id_epik;
 }
 
 void
-QualityComponents::setClickIdEpik(Map <string, string> click_id_epik)
+QualityComponents::setClickIdEpik(std::map<std::string, QualityComponentDetails> click_id_epik)
 {
 	this->click_id_epik = click_id_epik;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getExternalEventId()
 {
 	return external_event_id;
 }
 
 void
-QualityComponents::setExternalEventId(Map <string, string> external_event_id)
+QualityComponents::setExternalEventId(std::map<std::string, QualityComponentDetails> external_event_id)
 {
 	this->external_event_id = external_event_id;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getHashedEmail()
 {
 	return hashed_email;
 }
 
 void
-QualityComponents::setHashedEmail(Map <string, string> hashed_email)
+QualityComponents::setHashedEmail(std::map<std::string, QualityComponentDetails> hashed_email)
 {
 	this->hashed_email = hashed_email;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getHashedMaid()
 {
 	return hashed_maid;
 }
 
 void
-QualityComponents::setHashedMaid(Map <string, string> hashed_maid)
+QualityComponents::setHashedMaid(std::map<std::string, QualityComponentDetails> hashed_maid)
 {
 	this->hashed_maid = hashed_maid;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getIpAddress()
 {
 	return ip_address;
 }
 
 void
-QualityComponents::setIpAddress(Map <string, string> ip_address)
+QualityComponents::setIpAddress(std::map<std::string, QualityComponentDetails> ip_address)
 {
 	this->ip_address = ip_address;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getOrderId()
 {
 	return order_id;
 }
 
 void
-QualityComponents::setOrderId(Map <string, string> order_id)
+QualityComponents::setOrderId(std::map<std::string, QualityComponentDetails> order_id)
 {
 	this->order_id = order_id;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getOrderValue()
 {
 	return order_value;
 }
 
 void
-QualityComponents::setOrderValue(Map <string, string> order_value)
+QualityComponents::setOrderValue(std::map<std::string, QualityComponentDetails> order_value)
 {
 	this->order_value = order_value;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getProductId()
 {
 	return product_id;
 }
 
 void
-QualityComponents::setProductId(Map <string, string> product_id)
+QualityComponents::setProductId(std::map<std::string, QualityComponentDetails> product_id)
 {
 	this->product_id = product_id;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getSourceUrl()
 {
 	return source_url;
 }
 
 void
-QualityComponents::setSourceUrl(Map <string, string> source_url)
+QualityComponents::setSourceUrl(std::map<std::string, QualityComponentDetails> source_url)
 {
 	this->source_url = source_url;
 }
 
-Map<string, string>
+std::map<std::string, QualityComponentDetails>
 QualityComponents::getUserAgent()
 {
 	return user_agent;
 }
 
 void
-QualityComponents::setUserAgent(Map <string, string> user_agent)
+QualityComponents::setUserAgent(std::map<std::string, QualityComponentDetails> user_agent)
 {
 	this->user_agent = user_agent;
 }

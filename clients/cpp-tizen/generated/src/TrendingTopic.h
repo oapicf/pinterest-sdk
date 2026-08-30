@@ -55,6 +55,13 @@ public:
 	/*! \brief Set Description of the trending topic
 	 */
 	void setDescription(std::string  description);
+	/*! \brief Get Unique identifier for the trending topic
+	 */
+	std::string getId();
+
+	/*! \brief Set Unique identifier for the trending topic
+	 */
+	void setId(std::string  id);
 	/*! \brief Get Month-over-month growth percentage
 	 */
 	int getPercentGrowthMom();
@@ -100,6 +107,7 @@ public:
 
 private:
 	std::string description;
+	std::string id;
 	int percent_growth_mom;
 	std::list <TrendingPin>pins;
 	std::list <std::string>related_interests;

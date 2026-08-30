@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomerSegmentUpdateRequestUpdateWithRequiredBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomerSegmentUpdateRequestUpdateWithRequiredBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AudienceUpdateOperationType = openapi_server.resourceTypes.AudienceUpdateOperationType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CustomerSegmentUpdateRequestUpdateWithRequiredBody {
+    title = CustomerSegmentUpdateRequestUpdateWithRequiredBody
+    description = CustomerSegmentUpdateRequestUpdateWithRequiredBody
+    derivedFrom = Root
+    properties {
+        audience_ids {
+          type = array
+          items.type =  string
+          description = "Audience IDs to update the customer segment to. Only applicable for UPDATE operations."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Customer segment ID."
+          optional = true
+        }
+        operation_type {
+          type = AudienceUpdateOperationType
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomerSegmentUpdateRequestUpdateWithRequiredBody {
+    title = CustomerSegmentUpdateRequestUpdateWithRequiredBody
+    description = CustomerSegmentUpdateRequestUpdateWithRequiredBody
+    implements = openapi_server.resourceTypes.CustomerSegmentUpdateRequestUpdateWithRequiredBody
+
+  }
+}

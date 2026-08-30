@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
@@ -23,20 +31,20 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogId Catalog ID pertaining to the product group.
  * @param catalogType 
  * @param filters 
- * @param id ID of the creative assets product group.
+ * @param id ID of the catalog product group.
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
  * @param description 
- * @param name Name of creative assets product group
+ * @param name Name of catalog product group
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
  */
 
 
 data class CatalogsCreativeAssetsProductGroup (
 
-    /* Catalog id pertaining to the creative assets product group. */
+    /* Catalog ID pertaining to the product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String,
 
@@ -46,7 +54,7 @@ data class CatalogsCreativeAssetsProductGroup (
     @Json(name = "filters")
     val filters: CatalogsCreativeAssetsProductGroupFilters,
 
-    /* ID of the creative assets product group. */
+    /* ID of the catalog product group. */
     @Json(name = "id")
     val id: kotlin.String,
 
@@ -57,7 +65,7 @@ data class CatalogsCreativeAssetsProductGroup (
     @Json(name = "description")
     val description: kotlin.String? = null,
 
-    /* Name of creative assets product group */
+    /* Name of catalog product group */
     @Json(name = "name")
     val name: kotlin.String? = null,
 

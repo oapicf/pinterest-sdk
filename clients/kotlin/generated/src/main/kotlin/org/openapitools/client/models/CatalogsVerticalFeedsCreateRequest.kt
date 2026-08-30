@@ -8,22 +8,29 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.models
 
 import org.openapitools.client.models.CatalogsCreativeAssetsFeedsCreateRequest
+import org.openapitools.client.models.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
-import org.openapitools.client.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFormat
 import org.openapitools.client.models.CatalogsHotelFeedsCreateRequest
 import org.openapitools.client.models.CatalogsRetailFeedsCreateRequest
 import org.openapitools.client.models.CatalogsStatus
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.NullableCurrency
 import org.openapitools.client.models.ProductAvailabilityType
@@ -40,7 +47,7 @@ import com.squareup.moshi.JsonClass
  * @param format 
  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @param name A human-friendly name associated to a given feed.
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @param credentials 
  * @param defaultAvailability 
  * @param defaultCurrency 
@@ -52,11 +59,11 @@ import com.squareup.moshi.JsonClass
 interface CatalogsVerticalFeedsCreateRequest {
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType
+    val catalogType: CatalogsVerticalFeedsCreateRequest.CatalogType
     @Json(name = "default_country")
     val defaultCountry: Country
     @Json(name = "default_locale")
-    val defaultLocale: CatalogsFeedsCreateRequestDefaultLocale
+    val defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
     @Json(name = "format")
     val format: CatalogsFormat
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
@@ -65,7 +72,7 @@ interface CatalogsVerticalFeedsCreateRequest {
     /* A human-friendly name associated to a given feed. */
     @Json(name = "name")
     val name: kotlin.String
-    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String?
     @Json(name = "credentials")
@@ -78,6 +85,15 @@ interface CatalogsVerticalFeedsCreateRequest {
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
     @Json(name = "status")
     val status: CatalogsStatus?
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
 
 }
 

@@ -10,7 +10,7 @@ The class is defined in **[CatalogsHotelProductGroupCreateRequest.java](../../sr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogId** | `String` | Catalog id pertaining to the hotel product group. | 
+**catalogId** | `String` | Catalog ID pertaining to the product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsHotelProductGroupFilters`](CatalogsHotelProductGroupFilters.md) |  | 

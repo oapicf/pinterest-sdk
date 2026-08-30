@@ -6,9 +6,9 @@ using namespace Tiny;
 
 TopVideoPinsAnalyticsResponse::TopVideoPinsAnalyticsResponse()
 {
-	date_availability = TopPinsAnalyticsResponse_date_availability();
-	pins = std::list<TopVideoPinsAnalyticsResponse_pins_inner>();
-	sort_by = std::string();
+	date_availability = TopVideoPinsAnalyticsResponseDateAvailability();
+	pins = std::list<TopVideoPinsAnalyticsResponsePinsItems>();
+	sort_by = TopVideoPinsSortBy();
 }
 
 TopVideoPinsAnalyticsResponse::TopVideoPinsAnalyticsResponse(std::string jsonString)
@@ -35,7 +35,7 @@ TopVideoPinsAnalyticsResponse::fromJson(std::string jsonObj)
 
 
 
-        TopPinsAnalyticsResponse_date_availability* obj = &date_availability;
+        TopVideoPinsAnalyticsResponseDateAvailability* obj = &date_availability;
 		obj->fromJson(value.dump());
 
     }
@@ -47,8 +47,8 @@ TopVideoPinsAnalyticsResponse::fromJson(std::string jsonObj)
         bourne::json value = object[pinsKey];
 
 
-        std::list<TopVideoPinsAnalyticsResponse_pins_inner> pins_list;
-        TopVideoPinsAnalyticsResponse_pins_inner element;
+        std::list<TopVideoPinsAnalyticsResponsePinsItems> pins_list;
+        TopVideoPinsAnalyticsResponsePinsItems element;
         for(auto& var : value.array_range())
         {
 
@@ -70,8 +70,9 @@ TopVideoPinsAnalyticsResponse::fromJson(std::string jsonObj)
 
 
 
-        jsonToValue(&sort_by, value, "std::string");
 
+        TopVideoPinsSortBy* obj = &sort_by;
+		obj->fromJson(value.dump());
 
     }
 
@@ -93,12 +94,12 @@ TopVideoPinsAnalyticsResponse::toJson()
 
 
 
-    std::list<TopVideoPinsAnalyticsResponse_pins_inner> pins_list = getPins();
+    std::list<TopVideoPinsAnalyticsResponsePinsItems> pins_list = getPins();
     bourne::json pins_arr = bourne::json::array();
 
     for(auto& var : pins_list)
     {
-        TopVideoPinsAnalyticsResponse_pins_inner obj = var;
+        TopVideoPinsAnalyticsResponsePinsItems obj = var;
         pins_arr.append(obj.toJson());
     }
     object["pins"] = pins_arr;
@@ -109,46 +110,46 @@ TopVideoPinsAnalyticsResponse::toJson()
 
 
 
-    object["sort_by"] = getSortBy();
 
+	object["sort_by"] = getSortBy().toJson();
 
 
     return object;
 
 }
 
-TopPinsAnalyticsResponse_date_availability
+TopVideoPinsAnalyticsResponseDateAvailability
 TopVideoPinsAnalyticsResponse::getDateAvailability()
 {
 	return date_availability;
 }
 
 void
-TopVideoPinsAnalyticsResponse::setDateAvailability(TopPinsAnalyticsResponse_date_availability  date_availability)
+TopVideoPinsAnalyticsResponse::setDateAvailability(TopVideoPinsAnalyticsResponseDateAvailability date_availability)
 {
 	this->date_availability = date_availability;
 }
 
-std::list<TopVideoPinsAnalyticsResponse_pins_inner>
+std::list<TopVideoPinsAnalyticsResponsePinsItems>
 TopVideoPinsAnalyticsResponse::getPins()
 {
 	return pins;
 }
 
 void
-TopVideoPinsAnalyticsResponse::setPins(std::list <TopVideoPinsAnalyticsResponse_pins_inner> pins)
+TopVideoPinsAnalyticsResponse::setPins(std::list<TopVideoPinsAnalyticsResponsePinsItems> pins)
 {
 	this->pins = pins;
 }
 
-std::string
+TopVideoPinsSortBy
 TopVideoPinsAnalyticsResponse::getSortBy()
 {
 	return sort_by;
 }
 
 void
-TopVideoPinsAnalyticsResponse::setSortBy(std::string  sort_by)
+TopVideoPinsAnalyticsResponse::setSortBy(TopVideoPinsSortBy sort_by)
 {
 	this->sort_by = sort_by;
 }

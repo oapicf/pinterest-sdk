@@ -11,7 +11,6 @@ imports {
   CatalogsProductGroupFilterOperatorTypeCriteria = openapi_server.resourceTypes.CatalogsProductGroupFilterOperatorTypeCriteria
   CatalogsProductGroupMultipleCountriesCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleCountriesCriteria
   CatalogsProductGroupMultipleStringCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringCriteria
-  CatalogsProductGroupPricingCurrencyCriteria = openapi_server.resourceTypes.CatalogsProductGroupPricingCurrencyCriteria
   CountryFilter = openapi_server.resourceTypes.CountryFilter
   CustomLabel0Filter = openapi_server.resourceTypes.CustomLabel0Filter
   CustomLabel1Filter = openapi_server.resourceTypes.CustomLabel1Filter
@@ -20,6 +19,7 @@ imports {
   CustomLabel4Filter = openapi_server.resourceTypes.CustomLabel4Filter
   HotelIdFilter = openapi_server.resourceTypes.HotelIdFilter
   PriceFilter = openapi_server.resourceTypes.PriceFilter
+  PriceFilterPrice = openapi_server.resourceTypes.PriceFilterPrice
   TitleKeywordsFilter = openapi_server.resourceTypes.TitleKeywordsFilter
 }
 resourceTypes {
@@ -30,7 +30,7 @@ resourceTypes {
     derivedFrom = Root
     properties {
         price {
-          type = CatalogsProductGroupPricingCurrencyCriteria
+          type = PriceFilterPrice
           description = ""
           optional = true
         }

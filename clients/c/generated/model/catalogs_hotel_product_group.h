@@ -31,13 +31,13 @@ pinterest_rest_api_catalogs_hotel_product_group_CATALOGTYPE_e catalogs_hotel_pro
 typedef struct catalogs_hotel_product_group_t {
     char *catalog_id; // string
     pinterest_rest_api_catalogs_hotel_product_group_CATALOGTYPE_e catalog_type; //enum
-    int created_at; //numeric
+    int *created_at; //numeric
     char *description; // string
     struct catalogs_hotel_product_group_filters_t *filters; //model
     char *id; // string
     char *name; // string
     pinterest_rest_api_catalogs_hotel_product_group_type__e type; //referenced enum
-    int updated_at; //numeric
+    int *updated_at; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_product_group_t;
@@ -45,13 +45,13 @@ typedef struct catalogs_hotel_product_group_t {
 __attribute__((deprecated)) catalogs_hotel_product_group_t *catalogs_hotel_product_group_create(
     char *catalog_id,
     pinterest_rest_api_catalogs_hotel_product_group_CATALOGTYPE_e catalog_type,
-    int created_at,
+    int *created_at,
     char *description,
     catalogs_hotel_product_group_filters_t *filters,
     char *id,
     char *name,
     pinterest_rest_api_catalogs_hotel_product_group_type__e type,
-    int updated_at
+    int *updated_at
 );
 
 void catalogs_hotel_product_group_free(catalogs_hotel_product_group_t *catalogs_hotel_product_group);

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** |  | [optional] 
 **FeedId** | **string** | Catalog Feed id pertaining to the catalog product group. | 
 **Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
-**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] [default to false]
+**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
 **Name** | **string** |  | 
 
 ## Methods

@@ -74,7 +74,7 @@ class _$BrandFilterSerializer implements PrimitiveSerializer<BrandFilter> {
             value,
             specifiedType: const FullType(CatalogsProductGroupMultipleStringCriteria),
           ) as CatalogsProductGroupMultipleStringCriteria;
-          result.BRAND = valueDes;
+          result.BRAND.replace(valueDes);
           break;
         default:
           unhandled.add(key);

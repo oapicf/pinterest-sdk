@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`filterOperatorType` | string
+`filterOperatorType` | [FilterOperatorType](FilterOperatorType.md)
 `negated` | boolean
 `values` | Array&lt;string&gt;
 

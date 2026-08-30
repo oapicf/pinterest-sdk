@@ -3,7 +3,6 @@ const CatalogsCreativeAssetsProduct = require('../models/CatalogsCreativeAssetsP
 const CatalogsCreativeAssetsProductMetadata = require('../models/CatalogsCreativeAssetsProductMetadata');
 const CatalogsHotelProduct = require('../models/CatalogsHotelProduct');
 const CatalogsRetailProduct = require('../models/CatalogsRetailProduct');
-const CatalogsType = require('../models/CatalogsType');
 const Pin = require('../models/Pin');
 
 module.exports = {
@@ -12,7 +11,12 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'CREATIVE_ASSETS',
+                ],
             },
             ...CatalogsCreativeAssetsProductMetadata.fields(`${keyPrefix}metadata`, isInput),
             ...Pin.fields(`${keyPrefix}pin`, isInput),

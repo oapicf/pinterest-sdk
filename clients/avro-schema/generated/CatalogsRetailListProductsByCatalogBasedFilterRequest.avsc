@@ -7,7 +7,7 @@
     {
       "name": "catalog_id",
       "type": "string",
-      "doc": "Catalog id pertaining to the retail product group."
+      "doc": "Catalog ID pertaining to the product group."
     },
     {
       "name": "catalog_type",

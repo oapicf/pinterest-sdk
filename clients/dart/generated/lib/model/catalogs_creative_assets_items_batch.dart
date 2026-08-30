@@ -30,7 +30,7 @@ class CatalogsCreativeAssetsItemsBatch {
   ///
   String? batchId;
 
-  CatalogsType catalogType;
+  CatalogsCreativeAssetsItemsBatchCatalogTypeEnum catalogType;
 
   /// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   DateTime? completedTime;
@@ -115,16 +115,14 @@ class CatalogsCreativeAssetsItemsBatch {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CatalogsCreativeAssetsItemsBatch[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CatalogsCreativeAssetsItemsBatch[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_type'), 'Required key "CatalogsCreativeAssetsItemsBatch[catalog_type]" is missing from JSON.');
+        assert(json[r'catalog_type'] != null, 'Required key "CatalogsCreativeAssetsItemsBatch[catalog_type]" has a null value in JSON.');
         return true;
       }());
 
       return CatalogsCreativeAssetsItemsBatch(
         batchId: mapValueOfType<String>(json, r'batch_id'),
-        catalogType: CatalogsType.fromJson(json[r'catalog_type'])!,
+        catalogType: CatalogsCreativeAssetsItemsBatchCatalogTypeEnum.fromJson(json[r'catalog_type'])!,
         completedTime: mapDateTime(json, r'completed_time', r''),
         createdTime: mapDateTime(json, r'created_time', r''),
         items: CreativeAssetsProcessingRecord.listFromJson(json[r'items']),
@@ -179,4 +177,80 @@ class CatalogsCreativeAssetsItemsBatch {
     'catalog_type',
   };
 }
+
+
+enum CatalogsCreativeAssetsItemsBatchCatalogTypeEnum {
+  CREATIVE_ASSETS._(r'CREATIVE_ASSETS'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CatalogsCreativeAssetsItemsBatchCatalogTypeEnum._(this._value);
+
+  /// The underlying value of this enum member.
+  final String _value;
+
+  @override
+  String toString() => _value;
+
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
+
+  /// Returns the instance of [CatalogsCreativeAssetsItemsBatchCatalogTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
+  static CatalogsCreativeAssetsItemsBatchCatalogTypeEnum? fromJson(dynamic value) => CatalogsCreativeAssetsItemsBatchCatalogTypeEnumTypeTransformer().decode(value);
+
+  /// Returns a [List] containing instances of [CatalogsCreativeAssetsItemsBatchCatalogTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
+  static List<CatalogsCreativeAssetsItemsBatchCatalogTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CatalogsCreativeAssetsItemsBatchCatalogTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CatalogsCreativeAssetsItemsBatchCatalogTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CatalogsCreativeAssetsItemsBatchCatalogTypeEnum] to String,
+/// and [decode] dynamic data back to [CatalogsCreativeAssetsItemsBatchCatalogTypeEnum].
+class CatalogsCreativeAssetsItemsBatchCatalogTypeEnumTypeTransformer {
+  factory CatalogsCreativeAssetsItemsBatchCatalogTypeEnumTypeTransformer() => _instance ??= const CatalogsCreativeAssetsItemsBatchCatalogTypeEnumTypeTransformer._();
+
+  const CatalogsCreativeAssetsItemsBatchCatalogTypeEnumTypeTransformer._();
+
+  String encode(CatalogsCreativeAssetsItemsBatchCatalogTypeEnum data) => data._value;
+
+  /// Returns the instance of [CatalogsCreativeAssetsItemsBatchCatalogTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CatalogsCreativeAssetsItemsBatchCatalogTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CatalogsCreativeAssetsItemsBatchCatalogTypeEnum) {
+      return data;
+    }
+    if (data != null) {
+      switch (data) {
+        case r'CREATIVE_ASSETS': return CatalogsCreativeAssetsItemsBatchCatalogTypeEnum.CREATIVE_ASSETS;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// The singleton instance of this transformer.
+  static CatalogsCreativeAssetsItemsBatchCatalogTypeEnumTypeTransformer? _instance;
+}
+
 

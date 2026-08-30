@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assetRequests** | [**[CreateAssetAccessRequestBodyAssetRequestsInner]**](CreateAssetAccessRequestBodyAssetRequestsInner.md) |  | 
+**assetRequests** | [**[CreateAssetAccessRequestItem]**](CreateAssetAccessRequestItem.md) |  | 
 
 

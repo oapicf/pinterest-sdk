@@ -5,13 +5,13 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**orderLinesGet**](OAIOrderLinesApi.md#orderlinesget) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line
-[**orderLinesList**](OAIOrderLinesApi.md#orderlineslist) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines
+[**orderLinesList**](OAIOrderLinesApi.md#orderlineslist) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines.
 
 
 # **orderLinesGet**
 ```objc
--(NSURLSessionTask*) orderLinesGetWithAdAccountId: (NSString*) adAccountId
-    orderLineId: (NSString*) orderLineId
+-(NSURLSessionTask*) orderLinesGetWithOrderLineId: (NSString*) orderLineId
+    adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAIOrderLine* output, NSError* error)) handler;
 ```
 
@@ -27,14 +27,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
+NSString* orderLineId = @"orderLineId_example"; // Order line ID.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSString* orderLineId = @"orderLineId_example"; // Unique identifier of an order line.
 
 OAIOrderLinesApi*apiInstance = [[OAIOrderLinesApi alloc] init];
 
 // Get order line
-[apiInstance orderLinesGetWithAdAccountId:adAccountId
-              orderLineId:orderLineId
+[apiInstance orderLinesGetWithOrderLineId:orderLineId
+              adAccountId:adAccountId
           completionHandler: ^(OAIOrderLine* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -49,8 +49,8 @@ OAIOrderLinesApi*apiInstance = [[OAIOrderLinesApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **orderLineId** | **NSString***| Order line ID. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **orderLineId** | **NSString***| Unique identifier of an order line. | 
 
 ### Return type
 
@@ -70,13 +70,13 @@ Name | Type | Description  | Notes
 # **orderLinesList**
 ```objc
 -(NSURLSessionTask*) orderLinesListWithAdAccountId: (NSString*) adAccountId
-    pageSize: (NSNumber*) pageSize
-    order: (NSString*) order
     bookmark: (NSString*) bookmark
+    pageSize: (NSNumber*) pageSize
+    order: (OAIPinterestLibPaginationOrder) order
         completionHandler: (void (^)(OAIOrderLinesList200Response* output, NSError* error)) handler;
 ```
 
-Get order lines
+Get order lines.
 
 List existing order lines associated with an ad account.
 
@@ -89,17 +89,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
-NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to @25)
+OAIPinterestLibPaginationOrder order = [[OAIPinterestLibPaginationOrder alloc] init]; // The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 OAIOrderLinesApi*apiInstance = [[OAIOrderLinesApi alloc] init];
 
-// Get order lines
+// Get order lines.
 [apiInstance orderLinesListWithAdAccountId:adAccountId
+              bookmark:bookmark
               pageSize:pageSize
               order:order
-              bookmark:bookmark
           completionHandler: ^(OAIOrderLinesList200Response* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -115,9 +115,9 @@ OAIOrderLinesApi*apiInstance = [[OAIOrderLinesApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
- **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to @25]
+ **order** | [**OAIPinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
 
 ### Return type
 

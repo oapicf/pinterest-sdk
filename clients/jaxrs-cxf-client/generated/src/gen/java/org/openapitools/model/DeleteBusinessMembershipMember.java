@@ -1,0 +1,100 @@
+package org.openapitools.model;
+
+import org.openapitools.model.BusinessRoleForMembers;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * Single instance of a business member to be removed from the business.
+ */
+@ApiModel(description="Single instance of a business member to be removed from the business.")
+
+public class DeleteBusinessMembershipMember  {
+  
+  @ApiModelProperty(required = true, value = "")
+
+  private BusinessRoleForMembers businessRole;
+
+ /**
+  * Unique identifier of the member
+  */
+  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member")
+
+  private String memberId;
+ /**
+   * Get businessRole
+   * @return businessRole
+  **/
+  @JsonProperty("business_role")
+  public BusinessRoleForMembers getBusinessRole() {
+    return businessRole;
+  }
+
+  public void setBusinessRole(BusinessRoleForMembers businessRole) {
+    this.businessRole = businessRole;
+  }
+
+  public DeleteBusinessMembershipMember businessRole(BusinessRoleForMembers businessRole) {
+    this.businessRole = businessRole;
+    return this;
+  }
+
+ /**
+   * Unique identifier of the member
+   * @return memberId
+  **/
+  @JsonProperty("member_id")
+  public String getMemberId() {
+    return memberId;
+  }
+
+  public void setMemberId(String memberId) {
+    this.memberId = memberId;
+  }
+
+  public DeleteBusinessMembershipMember memberId(String memberId) {
+    this.memberId = memberId;
+    return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    DeleteBusinessMembershipMember deleteBusinessMembershipMember = (DeleteBusinessMembershipMember) o;
+    return Objects.equals(this.businessRole, deleteBusinessMembershipMember.businessRole) &&
+        Objects.equals(this.memberId, deleteBusinessMembershipMember.memberId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(businessRole, memberId);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class DeleteBusinessMembershipMember {\n");
+    
+    sb.append("    businessRole: ").append(toIndentedString(businessRole)).append("\n");
+    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}
+

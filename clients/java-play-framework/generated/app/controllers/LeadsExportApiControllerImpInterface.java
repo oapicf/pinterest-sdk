@@ -1,9 +1,9 @@
 package controllers;
 
-import apimodels.Error;
-import apimodels.LeadsExportCreateRequest;
-import apimodels.LeadsExportCreateResponse;
 import apimodels.LeadsExportResponseData;
+import apimodels.LeadsExports;
+import apimodels.LeadsExportsCreate;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -30,12 +30,12 @@ public abstract class LeadsExportApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result leadsExportCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, LeadsExportCreateRequest leadsExportCreateRequest) throws Exception {
+    public Result leadsExportCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, LeadsExportsCreate leadsExportsCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        LeadsExportCreateResponse obj = leadsExportCreate(request, adAccountId, leadsExportCreateRequest);
+        LeadsExports obj = leadsExportCreate(request, adAccountId, leadsExportsCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -47,7 +47,7 @@ public abstract class LeadsExportApiControllerImpInterface {
 
     }
 
-    public abstract LeadsExportCreateResponse leadsExportCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, LeadsExportCreateRequest leadsExportCreateRequest) throws Exception;
+    public abstract LeadsExports leadsExportCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, LeadsExportsCreate leadsExportsCreate) throws Exception;
 
     public Result leadsExportGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String leadsExportId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

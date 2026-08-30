@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.LabelCreateRequestLabelsInner
+import org.openapitools.model.LabelCreateItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -17,17 +17,13 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * 
  * @param labels Labels that you are applying to the campaign.
- * @param parentId Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
  */
 data class LabelCreateRequest(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "Labels that you are applying to the campaign.")
-    @get:JsonProperty("labels", required = true) val labels: kotlin.collections.List<LabelCreateRequestLabelsInner>,
-
-    @get:Pattern(regexp="^[C]?\\d+$")
-    @Schema(example = "626753052072", required = true, description = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
-    @get:JsonProperty("parent_id", required = true) val parentId: kotlin.String
+    @Schema(required = true, description = "Labels that you are applying to the campaign.")
+    @param:JsonProperty("labels")
+    @get:JsonProperty("labels", required = true) val labels: kotlin.collections.List<LabelCreateItem>
 ) {
 
 }

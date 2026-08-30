@@ -7,7 +7,8 @@
 
 static trending_topic_t *trending_topic_create_internal(
     char *description,
-    int percent_growth_mom,
+    char *id,
+    int *percent_growth_mom,
     list_t *pins,
     list_t *related_interests,
     list_t *related_searches,
@@ -18,36 +19,48 @@ static trending_topic_t *trending_topic_create_internal(
     if (!trending_topic_local_var) {
         return NULL;
     }
+    memset(trending_topic_local_var, 0, sizeof(trending_topic_t));
+    trending_topic_local_var->_library_owned = 1;
     trending_topic_local_var->description = description;
+    trending_topic_local_var->id = id;
     trending_topic_local_var->percent_growth_mom = percent_growth_mom;
     trending_topic_local_var->pins = pins;
     trending_topic_local_var->related_interests = related_interests;
     trending_topic_local_var->related_searches = related_searches;
     trending_topic_local_var->time_series = time_series;
     trending_topic_local_var->title = title;
-
-    trending_topic_local_var->_library_owned = 1;
     return trending_topic_local_var;
 }
 
 __attribute__((deprecated)) trending_topic_t *trending_topic_create(
     char *description,
-    int percent_growth_mom,
+    char *id,
+    int *percent_growth_mom,
     list_t *pins,
     list_t *related_interests,
     list_t *related_searches,
     list_t* time_series,
     char *title
     ) {
-    return trending_topic_create_internal (
+    int *percent_growth_mom_copy = NULL;
+    if (percent_growth_mom) {
+        percent_growth_mom_copy = malloc(sizeof(int));
+        if (percent_growth_mom_copy) *percent_growth_mom_copy = *percent_growth_mom;
+    }
+    trending_topic_t *result = trending_topic_create_internal (
         description,
-        percent_growth_mom,
+        id,
+        percent_growth_mom_copy,
         pins,
         related_interests,
         related_searches,
         time_series,
         title
         );
+    if (!result) {
+        free(percent_growth_mom_copy);
+    }
+    return result;
 }
 
 void trending_topic_free(trending_topic_t *trending_topic) {
@@ -62,6 +75,14 @@ void trending_topic_free(trending_topic_t *trending_topic) {
     if (trending_topic->description) {
         free(trending_topic->description);
         trending_topic->description = NULL;
+    }
+    if (trending_topic->id) {
+        free(trending_topic->id);
+        trending_topic->id = NULL;
+    }
+    if (trending_topic->percent_growth_mom) {
+        free(trending_topic->percent_growth_mom);
+        trending_topic->percent_growth_mom = NULL;
     }
     if (trending_topic->pins) {
         list_ForEach(listEntry, trending_topic->pins) {
@@ -113,12 +134,20 @@ cJSON *trending_topic_convertToJSON(trending_topic_t *trending_topic) {
     }
 
 
-    // trending_topic->percent_growth_mom
-    if (!trending_topic->percent_growth_mom) {
+    // trending_topic->id
+    if (!trending_topic->id) {
         goto fail;
     }
-    if(cJSON_AddNumberToObject(item, "percent_growth_mom", trending_topic->percent_growth_mom) == NULL) {
+    if(cJSON_AddStringToObject(item, "id", trending_topic->id) == NULL) {
+    goto fail; //String
+    }
+
+
+    // trending_topic->percent_growth_mom
+    if(trending_topic->percent_growth_mom) {
+    if(cJSON_AddNumberToObject(item, "percent_growth_mom", *trending_topic->percent_growth_mom) == NULL) {
     goto fail; //Numeric
+    }
     }
 
 
@@ -220,6 +249,13 @@ trending_topic_t *trending_topic_parseFromJSON(cJSON *trending_topicJSON){
 
     trending_topic_t *trending_topic_local_var = NULL;
 
+    char *description_local_str = NULL;
+
+    char *id_local_str = NULL;
+
+    // define the local variable for trending_topic->percent_growth_mom
+    int *percent_growth_mom_local_var = NULL;
+
     // define the local list for trending_topic->pins
     list_t *pinsList = NULL;
 
@@ -231,6 +267,8 @@ trending_topic_t *trending_topic_parseFromJSON(cJSON *trending_topicJSON){
 
     // define the local map for trending_topic->time_series
     list_t *time_seriesList = NULL;
+
+    char *title_local_str = NULL;
 
     // trending_topic->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(trending_topicJSON, "description");
@@ -247,19 +285,37 @@ trending_topic_t *trending_topic_parseFromJSON(cJSON *trending_topicJSON){
     goto end; //String
     }
 
+    // trending_topic->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(trending_topicJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
+    if (!id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(id))
+    {
+    goto end; //String
+    }
+
     // trending_topic->percent_growth_mom
     cJSON *percent_growth_mom = cJSON_GetObjectItemCaseSensitive(trending_topicJSON, "percent_growth_mom");
     if (cJSON_IsNull(percent_growth_mom)) {
         percent_growth_mom = NULL;
     }
-    if (!percent_growth_mom) {
-        goto end;
-    }
-
-    
+    if (percent_growth_mom) { 
     if(!cJSON_IsNumber(percent_growth_mom))
     {
     goto end; //Numeric
+    }
+    percent_growth_mom_local_var = malloc(sizeof(int));
+    if(!percent_growth_mom_local_var)
+    {
+        goto end;
+    }
+    *percent_growth_mom_local_var = percent_growth_mom->valuedouble;
     }
 
     // trending_topic->pins
@@ -386,18 +442,39 @@ trending_topic_t *trending_topic_parseFromJSON(cJSON *trending_topicJSON){
     }
 
 
+    if (description && !cJSON_IsNull(description)) description_local_str = strdup(description->valuestring);
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+    if (title && !cJSON_IsNull(title)) title_local_str = strdup(title->valuestring);
+
     trending_topic_local_var = trending_topic_create_internal (
-        strdup(description->valuestring),
-        percent_growth_mom->valuedouble,
+        description_local_str,
+        id_local_str,
+        percent_growth_mom_local_var,
         pinsList,
         related_interestsList,
         related_searchesList,
         time_seriesList,
-        strdup(title->valuestring)
+        title_local_str
         );
+
+    if (!trending_topic_local_var) {
+        goto end;
+    }
 
     return trending_topic_local_var;
 end:
+    if (description_local_str) {
+        free(description_local_str);
+        description_local_str = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (percent_growth_mom_local_var) {
+        free(percent_growth_mom_local_var);
+        percent_growth_mom_local_var = NULL;
+    }
     if (pinsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, pinsList) {
@@ -436,6 +513,10 @@ end:
         }
         list_freeList(time_seriesList);
         time_seriesList = NULL;
+    }
+    if (title_local_str) {
+        free(title_local_str);
+        title_local_str = NULL;
     }
     return NULL;
 

@@ -42,8 +42,7 @@ abstract class CatalogsProductGroupCreateRequest implements Built<CatalogsProduc
   factory CatalogsProductGroupCreateRequest([void updates(CatalogsProductGroupCreateRequestBuilder b)]) = _$CatalogsProductGroupCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogsProductGroupCreateRequestBuilder b) => b
-      ..isFeatured = false;
+  static void _defaults(CatalogsProductGroupCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CatalogsProductGroupCreateRequest> get serializer => _$CatalogsProductGroupCreateRequestSerializer();
@@ -138,8 +137,9 @@ class _$CatalogsProductGroupCreateRequestSerializer implements PrimitiveSerializ
         case r'is_featured':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isFeatured = valueDes;
           break;
         case r'name':

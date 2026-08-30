@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.user_summary import UserSummary  # noqa: F401,E501
+from app.openapi_server.models.follow_user import FollowUser  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class FollowersList200Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, bookmark: str=None, items: List[UserSummary]=None):  # noqa: E501
+    def __init__(self, bookmark: str=None, items: List[FollowUser]=None):  # noqa: E501
         """FollowersList200Response - a model defined in Swagger
 
         :param bookmark: The bookmark of this FollowersList200Response.  # noqa: E501
         :type bookmark: str
         :param items: The items of this FollowersList200Response.  # noqa: E501
-        :type items: List[UserSummary]
+        :type items: List[FollowUser]
         """
         self.swagger_types = {
             'bookmark': str,
-            'items': List[UserSummary]
+            'items': List[FollowUser]
         }
 
         self.attribute_map = {
@@ -70,22 +70,22 @@ class FollowersList200Response(Model):
         self._bookmark = bookmark
 
     @property
-    def items(self) -> List[UserSummary]:
+    def items(self) -> List[FollowUser]:
         """Gets the items of this FollowersList200Response.
 
 
         :return: The items of this FollowersList200Response.
-        :rtype: List[UserSummary]
+        :rtype: List[FollowUser]
         """
         return self._items
 
     @items.setter
-    def items(self, items: List[UserSummary]):
+    def items(self, items: List[FollowUser]):
         """Sets the items of this FollowersList200Response.
 
 
         :param items: The items of this FollowersList200Response.
-        :type items: List[UserSummary]
+        :type items: List[FollowUser]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")  # noqa: E501

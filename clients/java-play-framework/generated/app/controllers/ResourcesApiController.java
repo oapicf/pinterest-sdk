@@ -1,10 +1,12 @@
 package controllers;
 
-import apimodels.AdAccountsCountryResponse;
-import apimodels.BookClosedResponse;
-import apimodels.DeliveryMetricsResponse;
-import apimodels.Error;
-import apimodels.SingleInterestTargetingOptionResponse;
+import apimodels.AdAccountCountriesGet200Response;
+import apimodels.BookClosed;
+import apimodels.DeliveryMetricsGet200Response;
+import apimodels.PinterestLibError;
+import apimodels.PublicTargetingType;
+import apimodels.ReportType;
+import apimodels.SingleInterestTargetingOption;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -28,7 +30,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class ResourcesApiController extends Controller {
     private final ResourcesApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -49,7 +51,7 @@ public class ResourcesApiController extends Controller {
     @ApiAction
     public Result deliveryMetricsGet(Http.Request request) throws Exception {
         String valuereportType = request.getQueryString("report_type");
-        String reportType;
+        ReportType reportType;
         if (valuereportType != null) {
             reportType = valuereportType;
         } else {
@@ -81,7 +83,14 @@ public class ResourcesApiController extends Controller {
     }
 
     @ApiAction
-    public Result targetingOptionsGet(Http.Request request, String targetingType) throws Exception {
+    public Result targetingOptionsGet(Http.Request request, PublicTargetingType targetingType) throws Exception {
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
         String valueclientId = request.getQueryString("client_id");
         String clientId;
         if (valueclientId != null) {
@@ -103,14 +112,7 @@ public class ResourcesApiController extends Controller {
         } else {
             timestamp = null;
         }
-        String valueadAccountId = request.getQueryString("ad_account_id");
-        String adAccountId;
-        if (valueadAccountId != null) {
-            adAccountId = valueadAccountId;
-        } else {
-            adAccountId = null;
-        }
-        return imp.targetingOptionsGetHttp(request, targetingType, clientId, oauthSignature, timestamp, adAccountId);
+        return imp.targetingOptionsGetHttp(request, targetingType, adAccountId, clientId, oauthSignature, timestamp);
     }
 
 }

@@ -34,7 +34,7 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessInviteApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
 my $create_asset_access_request_body = WWW::OpenAPIClient::Object::CreateAssetAccessRequestBody->new(); # CreateAssetAccessRequestBody | 
 
 eval {
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_invites_or_requests**
-> DeleteInvitesResultsResponseArray cancel_invites_or_requests(business_id => $business_id, cancel_invites_body => $cancel_invites_body)
+> CancelInvitesResponse cancel_invites_or_requests(business_id => $business_id, cancel_invites_request => $cancel_invites_request)
 
 Cancel invites/requests
 
@@ -85,11 +85,11 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessInviteApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
-my $cancel_invites_body = WWW::OpenAPIClient::Object::CancelInvitesBody->new(); # CancelInvitesBody | A list with invite ids
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
+my $cancel_invites_request = WWW::OpenAPIClient::Object::CancelInvitesRequest->new(); # CancelInvitesRequest | 
 
 eval {
-    my $result = $api_instance->cancel_invites_or_requests(business_id => $business_id, cancel_invites_body => $cancel_invites_body);
+    my $result = $api_instance->cancel_invites_or_requests(business_id => $business_id, cancel_invites_request => $cancel_invites_request);
     print Dumper($result);
 };
 if ($@) {
@@ -102,11 +102,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
- **cancel_invites_body** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | 
+ **cancel_invites_request** | [**CancelInvitesRequest**](CancelInvitesRequest.md)|  | 
 
 ### Return type
 
-[**DeleteInvitesResultsResponseArray**](DeleteInvitesResultsResponseArray.md)
+[**CancelInvitesResponse**](CancelInvitesResponse.md)
 
 ### Authorization
 
@@ -136,8 +136,8 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessInviteApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
-my $create_asset_invites_request = WWW::OpenAPIClient::Object::CreateAssetInvitesRequest->new(); # CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
+my $create_asset_invites_request = WWW::OpenAPIClient::Object::CreateAssetInvitesRequest->new(); # CreateAssetInvitesRequest | 
 
 eval {
     my $result = $api_instance->create_asset_invites(business_id => $business_id, create_asset_invites_request => $create_asset_invites_request);
@@ -153,7 +153,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
- **create_asset_invites_request** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)| A list of invites/requests together with the asset permissions to be assigned to the invite/request.  | 
+ **create_asset_invites_request** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)|  | 
 
 ### Return type
 
@@ -187,8 +187,8 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessInviteApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
-my $create_membership_or_partnership_invites_body = WWW::OpenAPIClient::Object::CreateMembershipOrPartnershipInvitesBody->new(); # CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
+my $create_membership_or_partnership_invites_body = WWW::OpenAPIClient::Object::CreateMembershipOrPartnershipInvitesBody->new(); # CreateMembershipOrPartnershipInvitesBody | 
 
 eval {
     my $result = $api_instance->create_membership_or_partnership_invites(business_id => $business_id, create_membership_or_partnership_invites_body => $create_membership_or_partnership_invites_body);
@@ -204,7 +204,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
- **create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | 
+ **create_membership_or_partnership_invites_body** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)|  | 
 
 ### Return type
 
@@ -238,12 +238,12 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessInviteApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
+my $business_id = "business_id_example"; # string | Unique identifier of the requesting business.
 my $is_member = true; # boolean | A boolean field to indicate whether the invite is to create a partnership or a membership.
-my $invite_status = [("PENDING")]; # ARRAY[string] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
+my $invite_status = [(new WWW::OpenAPIClient.InviteFilterStatus())]; # ARRAY[InviteFilterStatus] | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
 my $invite_type = new WWW::OpenAPIClient.InviteType(); # InviteType | Invite type to filter invites by. Only invites of the specified type will be returned.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
     my $result = $api_instance->get_invites(business_id => $business_id, is_member => $is_member, invite_status => $invite_status, invite_type => $invite_type, bookmark => $bookmark, page_size => $page_size);
@@ -260,10 +260,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
  **is_member** | **boolean**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true]
- **invite_status** | [**ARRAY[string]**](string.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
+ **invite_status** | [**ARRAY[InviteFilterStatus]**](InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] 
  **invite_type** | [**InviteType**](.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

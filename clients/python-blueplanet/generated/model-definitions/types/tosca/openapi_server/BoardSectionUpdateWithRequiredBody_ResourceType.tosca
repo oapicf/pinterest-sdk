@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BoardSectionUpdateWithRequiredBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BoardSectionUpdateWithRequiredBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BoardSectionUpdateWithRequiredBody {
+    title = BoardSectionUpdateWithRequiredBody
+    description = BoardSectionUpdateWithRequiredBody
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BoardSectionUpdateWithRequiredBody {
+    title = BoardSectionUpdateWithRequiredBody
+    description = BoardSectionUpdateWithRequiredBody
+    implements = openapi_server.resourceTypes.BoardSectionUpdateWithRequiredBody
+
+  }
+}

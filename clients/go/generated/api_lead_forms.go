@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.23.0
+API version: 5.28.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,45 +27,45 @@ type LeadFormsAPIService service
 type ApiLeadFormGetRequest struct {
 	ctx context.Context
 	ApiService *LeadFormsAPIService
-	adAccountId string
 	leadFormId string
+	adAccountId string
 }
 
-func (r ApiLeadFormGetRequest) Execute() (*LeadFormResponse, *http.Response, error) {
+func (r ApiLeadFormGetRequest) Execute() (*LeadForm, *http.Response, error) {
 	return r.ApiService.LeadFormGetExecute(r)
 }
 
 /*
 LeadFormGet Get lead form by id
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 Gets a lead form given it's ID. It must also be associated with the provided ad account ID.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param leadFormId The ID of this lead form
  @param adAccountId Unique identifier of an ad account.
- @param leadFormId Unique identifier of a lead form.
  @return ApiLeadFormGetRequest
 */
-func (a *LeadFormsAPIService) LeadFormGet(ctx context.Context, adAccountId string, leadFormId string) ApiLeadFormGetRequest {
+func (a *LeadFormsAPIService) LeadFormGet(ctx context.Context, leadFormId string, adAccountId string) ApiLeadFormGetRequest {
 	return ApiLeadFormGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		adAccountId: adAccountId,
 		leadFormId: leadFormId,
+		adAccountId: adAccountId,
 	}
 }
 
 // Execute executes the request
-//  @return LeadFormResponse
-func (a *LeadFormsAPIService) LeadFormGetExecute(r ApiLeadFormGetRequest) (*LeadFormResponse, *http.Response, error) {
+//  @return LeadForm
+func (a *LeadFormsAPIService) LeadFormGetExecute(r ApiLeadFormGetRequest) (*LeadForm, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *LeadFormResponse
+		localVarReturnValue  *LeadForm
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LeadFormsAPIService.LeadFormGet")
@@ -74,8 +74,8 @@ func (a *LeadFormsAPIService) LeadFormGetExecute(r ApiLeadFormGetRequest) (*Lead
 	}
 
 	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"lead_form_id"+"}", url.PathEscape(parameterValueToString(r.leadFormId, "leadFormId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -124,7 +124,29 @@ func (a *LeadFormsAPIService) LeadFormGetExecute(r ApiLeadFormGetRequest) (*Lead
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -135,7 +157,7 @@ func (a *LeadFormsAPIService) LeadFormGetExecute(r ApiLeadFormGetRequest) (*Lead
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -145,7 +167,18 @@ func (a *LeadFormsAPIService) LeadFormGetExecute(r ApiLeadFormGetRequest) (*Lead
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -173,16 +206,15 @@ type ApiLeadFormTestCreateRequest struct {
 	ApiService *LeadFormsAPIService
 	adAccountId string
 	leadFormId string
-	leadFormTestRequest *LeadFormTestRequest
+	leadFormTestCreate *LeadFormTestCreate
 }
 
-// Subscription to create.
-func (r ApiLeadFormTestCreateRequest) LeadFormTestRequest(leadFormTestRequest LeadFormTestRequest) ApiLeadFormTestCreateRequest {
-	r.leadFormTestRequest = &leadFormTestRequest
+func (r ApiLeadFormTestCreateRequest) LeadFormTestCreate(leadFormTestCreate LeadFormTestCreate) ApiLeadFormTestCreateRequest {
+	r.leadFormTestCreate = &leadFormTestCreate
 	return r
 }
 
-func (r ApiLeadFormTestCreateRequest) Execute() (*LeadFormTestResponse, *http.Response, error) {
+func (r ApiLeadFormTestCreateRequest) Execute() (*LeadFormTest, *http.Response, error) {
 	return r.ApiService.LeadFormTestCreateExecute(r)
 }
 
@@ -193,7 +225,7 @@ Create lead form test data based on the list of answers provided as part of the 
 - List of answers should follow the questions creation order.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
+ @param adAccountId
  @param leadFormId Unique identifier of a lead form.
  @return ApiLeadFormTestCreateRequest
 */
@@ -207,13 +239,13 @@ func (a *LeadFormsAPIService) LeadFormTestCreate(ctx context.Context, adAccountI
 }
 
 // Execute executes the request
-//  @return LeadFormTestResponse
-func (a *LeadFormsAPIService) LeadFormTestCreateExecute(r ApiLeadFormTestCreateRequest) (*LeadFormTestResponse, *http.Response, error) {
+//  @return LeadFormTest
+func (a *LeadFormsAPIService) LeadFormTestCreateExecute(r ApiLeadFormTestCreateRequest) (*LeadFormTest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *LeadFormTestResponse
+		localVarReturnValue  *LeadFormTest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LeadFormsAPIService.LeadFormTestCreate")
@@ -231,8 +263,8 @@ func (a *LeadFormsAPIService) LeadFormTestCreateExecute(r ApiLeadFormTestCreateR
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.leadFormTestRequest == nil {
-		return localVarReturnValue, nil, reportError("leadFormTestRequest is required and must be specified")
+	if r.leadFormTestCreate == nil {
+		return localVarReturnValue, nil, reportError("leadFormTestCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -253,7 +285,7 @@ func (a *LeadFormsAPIService) LeadFormTestCreateExecute(r ApiLeadFormTestCreateR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.leadFormTestRequest
+	localVarPostBody = r.leadFormTestCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -277,7 +309,7 @@ func (a *LeadFormsAPIService) LeadFormTestCreateExecute(r ApiLeadFormTestCreateR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -288,7 +320,7 @@ func (a *LeadFormsAPIService) LeadFormTestCreateExecute(r ApiLeadFormTestCreateR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -298,7 +330,7 @@ func (a *LeadFormsAPIService) LeadFormTestCreateExecute(r ApiLeadFormTestCreateR
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -325,27 +357,26 @@ type ApiLeadFormsCreateRequest struct {
 	ctx context.Context
 	ApiService *LeadFormsAPIService
 	adAccountId string
-	leadFormCreateRequest *[]LeadFormCreateRequest
+	leadFormCreate *[]LeadFormCreate
 }
 
-// List of lead forms to create, size limit [1, 30].
-func (r ApiLeadFormsCreateRequest) LeadFormCreateRequest(leadFormCreateRequest []LeadFormCreateRequest) ApiLeadFormsCreateRequest {
-	r.leadFormCreateRequest = &leadFormCreateRequest
+func (r ApiLeadFormsCreateRequest) LeadFormCreate(leadFormCreate []LeadFormCreate) ApiLeadFormsCreateRequest {
+	r.leadFormCreate = &leadFormCreate
 	return r
 }
 
-func (r ApiLeadFormsCreateRequest) Execute() (*LeadFormArrayResponse, *http.Response, error) {
+func (r ApiLeadFormsCreateRequest) Execute() (*LeadFormsCreate200Response, *http.Response, error) {
 	return r.ApiService.LeadFormsCreateExecute(r)
 }
 
 /*
 LeadFormsCreate Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
-Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.
+Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form's description, questions and confirmation sections.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -360,13 +391,13 @@ func (a *LeadFormsAPIService) LeadFormsCreate(ctx context.Context, adAccountId s
 }
 
 // Execute executes the request
-//  @return LeadFormArrayResponse
-func (a *LeadFormsAPIService) LeadFormsCreateExecute(r ApiLeadFormsCreateRequest) (*LeadFormArrayResponse, *http.Response, error) {
+//  @return LeadFormsCreate200Response
+func (a *LeadFormsAPIService) LeadFormsCreateExecute(r ApiLeadFormsCreateRequest) (*LeadFormsCreate200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *LeadFormArrayResponse
+		localVarReturnValue  *LeadFormsCreate200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LeadFormsAPIService.LeadFormsCreate")
@@ -383,14 +414,14 @@ func (a *LeadFormsAPIService) LeadFormsCreateExecute(r ApiLeadFormsCreateRequest
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.leadFormCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("leadFormCreateRequest is required and must be specified")
+	if r.leadFormCreate == nil {
+		return localVarReturnValue, nil, reportError("leadFormCreate is required and must be specified")
 	}
-	if len(*r.leadFormCreateRequest) < 1 {
-		return localVarReturnValue, nil, reportError("leadFormCreateRequest must have at least 1 elements")
+	if len(*r.leadFormCreate) < 1 {
+		return localVarReturnValue, nil, reportError("leadFormCreate must have at least 1 elements")
 	}
-	if len(*r.leadFormCreateRequest) > 30 {
-		return localVarReturnValue, nil, reportError("leadFormCreateRequest must have less than 30 elements")
+	if len(*r.leadFormCreate) > 30 {
+		return localVarReturnValue, nil, reportError("leadFormCreate must have less than 30 elements")
 	}
 
 	// to determine the Content-Type header
@@ -411,7 +442,7 @@ func (a *LeadFormsAPIService) LeadFormsCreateExecute(r ApiLeadFormsCreateRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.leadFormCreateRequest
+	localVarPostBody = r.leadFormCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -435,7 +466,7 @@ func (a *LeadFormsAPIService) LeadFormsCreateExecute(r ApiLeadFormsCreateRequest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -445,7 +476,51 @@ func (a *LeadFormsAPIService) LeadFormsCreateExecute(r ApiLeadFormsCreateRequest
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -472,26 +547,26 @@ type ApiLeadFormsListRequest struct {
 	ctx context.Context
 	ApiService *LeadFormsAPIService
 	adAccountId string
-	pageSize *int32
-	order *string
 	bookmark *string
-}
-
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
-func (r ApiLeadFormsListRequest) PageSize(pageSize int32) ApiLeadFormsListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-func (r ApiLeadFormsListRequest) Order(order string) ApiLeadFormsListRequest {
-	r.order = &order
-	return r
+	pageSize *int32
+	order *PinterestLibPaginationOrder
 }
 
 // Cursor used to fetch the next page of items
 func (r ApiLeadFormsListRequest) Bookmark(bookmark string) ApiLeadFormsListRequest {
 	r.bookmark = &bookmark
+	return r
+}
+
+// Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+func (r ApiLeadFormsListRequest) PageSize(pageSize int32) ApiLeadFormsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.
+func (r ApiLeadFormsListRequest) Order(order PinterestLibPaginationOrder) ApiLeadFormsListRequest {
+	r.order = &order
 	return r
 }
 
@@ -502,11 +577,11 @@ func (r ApiLeadFormsListRequest) Execute() (*LeadFormsList200Response, *http.Res
 /*
 LeadFormsList List lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 List lead forms associated with an ad account ID.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -545,18 +620,18 @@ func (a *LeadFormsAPIService) LeadFormsListExecute(r ApiLeadFormsListRequest) (*
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
 
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int32 = 25
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int32 = 25
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
-	}
-	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -598,7 +673,7 @@ func (a *LeadFormsAPIService) LeadFormsListExecute(r ApiLeadFormsListRequest) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -608,7 +683,51 @@ func (a *LeadFormsAPIService) LeadFormsListExecute(r ApiLeadFormsListRequest) (*
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -635,27 +754,26 @@ type ApiLeadFormsUpdateRequest struct {
 	ctx context.Context
 	ApiService *LeadFormsAPIService
 	adAccountId string
-	leadFormUpdateRequest *[]LeadFormUpdateRequest
+	leadFormBatchUpdate *[]LeadFormBatchUpdate
 }
 
-// List of lead forms to update, size limit [1, 30].
-func (r ApiLeadFormsUpdateRequest) LeadFormUpdateRequest(leadFormUpdateRequest []LeadFormUpdateRequest) ApiLeadFormsUpdateRequest {
-	r.leadFormUpdateRequest = &leadFormUpdateRequest
+func (r ApiLeadFormsUpdateRequest) LeadFormBatchUpdate(leadFormBatchUpdate []LeadFormBatchUpdate) ApiLeadFormsUpdateRequest {
+	r.leadFormBatchUpdate = &leadFormBatchUpdate
 	return r
 }
 
-func (r ApiLeadFormsUpdateRequest) Execute() (*LeadFormArrayResponse, *http.Response, error) {
+func (r ApiLeadFormsUpdateRequest) Execute() (*LeadFormsCreate200Response, *http.Response, error) {
 	return r.ApiService.LeadFormsUpdateExecute(r)
 }
 
 /*
 LeadFormsUpdate Update lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+**This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.**
 
 Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.
 
-For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -670,13 +788,13 @@ func (a *LeadFormsAPIService) LeadFormsUpdate(ctx context.Context, adAccountId s
 }
 
 // Execute executes the request
-//  @return LeadFormArrayResponse
-func (a *LeadFormsAPIService) LeadFormsUpdateExecute(r ApiLeadFormsUpdateRequest) (*LeadFormArrayResponse, *http.Response, error) {
+//  @return LeadFormsCreate200Response
+func (a *LeadFormsAPIService) LeadFormsUpdateExecute(r ApiLeadFormsUpdateRequest) (*LeadFormsCreate200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *LeadFormArrayResponse
+		localVarReturnValue  *LeadFormsCreate200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LeadFormsAPIService.LeadFormsUpdate")
@@ -693,14 +811,14 @@ func (a *LeadFormsAPIService) LeadFormsUpdateExecute(r ApiLeadFormsUpdateRequest
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
-	if r.leadFormUpdateRequest == nil {
-		return localVarReturnValue, nil, reportError("leadFormUpdateRequest is required and must be specified")
+	if r.leadFormBatchUpdate == nil {
+		return localVarReturnValue, nil, reportError("leadFormBatchUpdate is required and must be specified")
 	}
-	if len(*r.leadFormUpdateRequest) < 1 {
-		return localVarReturnValue, nil, reportError("leadFormUpdateRequest must have at least 1 elements")
+	if len(*r.leadFormBatchUpdate) < 1 {
+		return localVarReturnValue, nil, reportError("leadFormBatchUpdate must have at least 1 elements")
 	}
-	if len(*r.leadFormUpdateRequest) > 30 {
-		return localVarReturnValue, nil, reportError("leadFormUpdateRequest must have less than 30 elements")
+	if len(*r.leadFormBatchUpdate) > 30 {
+		return localVarReturnValue, nil, reportError("leadFormBatchUpdate must have less than 30 elements")
 	}
 
 	// to determine the Content-Type header
@@ -721,7 +839,7 @@ func (a *LeadFormsAPIService) LeadFormsUpdateExecute(r ApiLeadFormsUpdateRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.leadFormUpdateRequest
+	localVarPostBody = r.leadFormBatchUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -745,7 +863,7 @@ func (a *LeadFormsAPIService) LeadFormsUpdateExecute(r ApiLeadFormsUpdateRequest
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -755,7 +873,51 @@ func (a *LeadFormsAPIService) LeadFormsUpdateExecute(r ApiLeadFormsUpdateRequest
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -9,6 +9,9 @@
  */
 
 
+/**
+ * Permission levels available on a business asset.
+ */
 export const Permissions = {
     Admin: 'ADMIN',
     Analyst: 'ANALYST',
@@ -20,7 +23,8 @@ export const Permissions = {
     CatalogsManager: 'CATALOGS_MANAGER',
     CatalogsViewer: 'CATALOGS_VIEWER',
     ProfilePublisher: 'PROFILE_PUBLISHER',
-    ConsumerUser: 'CONSUMER_USER'
+    ConsumerUser: 'CONSUMER_USER',
+    BizPinnerListSharer: 'BIZ_PINNER_LIST_SHARER'
 } as const;
 export type Permissions = typeof Permissions[keyof typeof Permissions];
 

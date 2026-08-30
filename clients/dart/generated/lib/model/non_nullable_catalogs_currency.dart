@@ -11,351 +11,190 @@
 part of openapi.api;
 
 /// Currency Codes from ISO 4217.
-class NonNullableCatalogsCurrency {
-  /// Instantiate a new enum with the provided [value].
-  const NonNullableCatalogsCurrency._(this.value);
+enum NonNullableCatalogsCurrency {
+  AED._(r'AED'),
+  AFN._(r'AFN'),
+  ALL._(r'ALL'),
+  AMD._(r'AMD'),
+  ANG._(r'ANG'),
+  AOA._(r'AOA'),
+  ARS._(r'ARS'),
+  AUD._(r'AUD'),
+  AWG._(r'AWG'),
+  AZN._(r'AZN'),
+  BAM._(r'BAM'),
+  BBD._(r'BBD'),
+  BDT._(r'BDT'),
+  BGN._(r'BGN'),
+  BHD._(r'BHD'),
+  BIF._(r'BIF'),
+  BMD._(r'BMD'),
+  BND._(r'BND'),
+  BOB._(r'BOB'),
+  BRL._(r'BRL'),
+  BSD._(r'BSD'),
+  BTN._(r'BTN'),
+  BWP._(r'BWP'),
+  BYN._(r'BYN'),
+  BYR._(r'BYR'),
+  BZD._(r'BZD'),
+  CAD._(r'CAD'),
+  CDF._(r'CDF'),
+  CHF._(r'CHF'),
+  CLP._(r'CLP'),
+  CNY._(r'CNY'),
+  COP._(r'COP'),
+  CRC._(r'CRC'),
+  CUC._(r'CUC'),
+  CUP._(r'CUP'),
+  CVE._(r'CVE'),
+  CZK._(r'CZK'),
+  DJF._(r'DJF'),
+  DKK._(r'DKK'),
+  DOP._(r'DOP'),
+  DZD._(r'DZD'),
+  EGP._(r'EGP'),
+  ERN._(r'ERN'),
+  ETB._(r'ETB'),
+  EUR._(r'EUR'),
+  FJD._(r'FJD'),
+  FKP._(r'FKP'),
+  GBP._(r'GBP'),
+  GEL._(r'GEL'),
+  GGP._(r'GGP'),
+  GHS._(r'GHS'),
+  GIP._(r'GIP'),
+  GMD._(r'GMD'),
+  GNF._(r'GNF'),
+  GTQ._(r'GTQ'),
+  GYD._(r'GYD'),
+  HKD._(r'HKD'),
+  HNL._(r'HNL'),
+  HRK._(r'HRK'),
+  HTG._(r'HTG'),
+  HUF._(r'HUF'),
+  IDR._(r'IDR'),
+  ILS._(r'ILS'),
+  IMP._(r'IMP'),
+  INR._(r'INR'),
+  IQD._(r'IQD'),
+  IRR._(r'IRR'),
+  ISK._(r'ISK'),
+  JEP._(r'JEP'),
+  JMD._(r'JMD'),
+  JOD._(r'JOD'),
+  JPY._(r'JPY'),
+  KES._(r'KES'),
+  KGS._(r'KGS'),
+  KHR._(r'KHR'),
+  KMF._(r'KMF'),
+  KPW._(r'KPW'),
+  KRW._(r'KRW'),
+  KWD._(r'KWD'),
+  KYD._(r'KYD'),
+  KZT._(r'KZT'),
+  LAK._(r'LAK'),
+  LBP._(r'LBP'),
+  LKR._(r'LKR'),
+  LRD._(r'LRD'),
+  LSL._(r'LSL'),
+  LYD._(r'LYD'),
+  MAD._(r'MAD'),
+  MDL._(r'MDL'),
+  MGA._(r'MGA'),
+  MKD._(r'MKD'),
+  MMK._(r'MMK'),
+  MNT._(r'MNT'),
+  MOP._(r'MOP'),
+  MRO._(r'MRO'),
+  MUR._(r'MUR'),
+  MVR._(r'MVR'),
+  MWK._(r'MWK'),
+  MXN._(r'MXN'),
+  MYR._(r'MYR'),
+  MZN._(r'MZN'),
+  NAD._(r'NAD'),
+  NGN._(r'NGN'),
+  NIO._(r'NIO'),
+  NOK._(r'NOK'),
+  NPR._(r'NPR'),
+  NZD._(r'NZD'),
+  OMR._(r'OMR'),
+  PAB._(r'PAB'),
+  PEN._(r'PEN'),
+  PGK._(r'PGK'),
+  PHP._(r'PHP'),
+  PKR._(r'PKR'),
+  PLN._(r'PLN'),
+  PYG._(r'PYG'),
+  QAR._(r'QAR'),
+  RON._(r'RON'),
+  RSD._(r'RSD'),
+  RUB._(r'RUB'),
+  RWF._(r'RWF'),
+  SAR._(r'SAR'),
+  SBD._(r'SBD'),
+  SCR._(r'SCR'),
+  SDG._(r'SDG'),
+  SEK._(r'SEK'),
+  SGD._(r'SGD'),
+  SHP._(r'SHP'),
+  SLL._(r'SLL'),
+  SOS._(r'SOS'),
+  SPL._(r'SPL'),
+  SRD._(r'SRD'),
+  STD._(r'STD'),
+  SVC._(r'SVC'),
+  SYP._(r'SYP'),
+  SZL._(r'SZL'),
+  THB._(r'THB'),
+  TJS._(r'TJS'),
+  TMT._(r'TMT'),
+  TND._(r'TND'),
+  TOP._(r'TOP'),
+  TRY._(r'TRY'),
+  TTD._(r'TTD'),
+  TVD._(r'TVD'),
+  TWD._(r'TWD'),
+  TZS._(r'TZS'),
+  UAH._(r'UAH'),
+  UGX._(r'UGX'),
+  USD._(r'USD'),
+  UYU._(r'UYU'),
+  UZS._(r'UZS'),
+  VEF._(r'VEF'),
+  VND._(r'VND'),
+  VUV._(r'VUV'),
+  WST._(r'WST'),
+  XAF._(r'XAF'),
+  XCD._(r'XCD'),
+  XDR._(r'XDR'),
+  XOF._(r'XOF'),
+  XPF._(r'XPF'),
+  YER._(r'YER'),
+  ZAR._(r'ZAR'),
+  ZMW._(r'ZMW'),
+  ZWD._(r'ZWD'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const NonNullableCatalogsCurrency._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const AED = NonNullableCatalogsCurrency._(r'AED');
-  static const AFN = NonNullableCatalogsCurrency._(r'AFN');
-  static const ALL = NonNullableCatalogsCurrency._(r'ALL');
-  static const AMD = NonNullableCatalogsCurrency._(r'AMD');
-  static const ANG = NonNullableCatalogsCurrency._(r'ANG');
-  static const AOA = NonNullableCatalogsCurrency._(r'AOA');
-  static const ARS = NonNullableCatalogsCurrency._(r'ARS');
-  static const AUD = NonNullableCatalogsCurrency._(r'AUD');
-  static const AWG = NonNullableCatalogsCurrency._(r'AWG');
-  static const AZN = NonNullableCatalogsCurrency._(r'AZN');
-  static const BAM = NonNullableCatalogsCurrency._(r'BAM');
-  static const BBD = NonNullableCatalogsCurrency._(r'BBD');
-  static const BDT = NonNullableCatalogsCurrency._(r'BDT');
-  static const BGN = NonNullableCatalogsCurrency._(r'BGN');
-  static const BHD = NonNullableCatalogsCurrency._(r'BHD');
-  static const BIF = NonNullableCatalogsCurrency._(r'BIF');
-  static const BMD = NonNullableCatalogsCurrency._(r'BMD');
-  static const BND = NonNullableCatalogsCurrency._(r'BND');
-  static const BOB = NonNullableCatalogsCurrency._(r'BOB');
-  static const BRL = NonNullableCatalogsCurrency._(r'BRL');
-  static const BSD = NonNullableCatalogsCurrency._(r'BSD');
-  static const BTN = NonNullableCatalogsCurrency._(r'BTN');
-  static const BWP = NonNullableCatalogsCurrency._(r'BWP');
-  static const BYN = NonNullableCatalogsCurrency._(r'BYN');
-  static const BYR = NonNullableCatalogsCurrency._(r'BYR');
-  static const BZD = NonNullableCatalogsCurrency._(r'BZD');
-  static const CAD = NonNullableCatalogsCurrency._(r'CAD');
-  static const CDF = NonNullableCatalogsCurrency._(r'CDF');
-  static const CHF = NonNullableCatalogsCurrency._(r'CHF');
-  static const CLP = NonNullableCatalogsCurrency._(r'CLP');
-  static const CNY = NonNullableCatalogsCurrency._(r'CNY');
-  static const COP = NonNullableCatalogsCurrency._(r'COP');
-  static const CRC = NonNullableCatalogsCurrency._(r'CRC');
-  static const CUC = NonNullableCatalogsCurrency._(r'CUC');
-  static const CUP = NonNullableCatalogsCurrency._(r'CUP');
-  static const CVE = NonNullableCatalogsCurrency._(r'CVE');
-  static const CZK = NonNullableCatalogsCurrency._(r'CZK');
-  static const DJF = NonNullableCatalogsCurrency._(r'DJF');
-  static const DKK = NonNullableCatalogsCurrency._(r'DKK');
-  static const DOP = NonNullableCatalogsCurrency._(r'DOP');
-  static const DZD = NonNullableCatalogsCurrency._(r'DZD');
-  static const EGP = NonNullableCatalogsCurrency._(r'EGP');
-  static const ERN = NonNullableCatalogsCurrency._(r'ERN');
-  static const ETB = NonNullableCatalogsCurrency._(r'ETB');
-  static const EUR = NonNullableCatalogsCurrency._(r'EUR');
-  static const FJD = NonNullableCatalogsCurrency._(r'FJD');
-  static const FKP = NonNullableCatalogsCurrency._(r'FKP');
-  static const GBP = NonNullableCatalogsCurrency._(r'GBP');
-  static const GEL = NonNullableCatalogsCurrency._(r'GEL');
-  static const GGP = NonNullableCatalogsCurrency._(r'GGP');
-  static const GHS = NonNullableCatalogsCurrency._(r'GHS');
-  static const GIP = NonNullableCatalogsCurrency._(r'GIP');
-  static const GMD = NonNullableCatalogsCurrency._(r'GMD');
-  static const GNF = NonNullableCatalogsCurrency._(r'GNF');
-  static const GTQ = NonNullableCatalogsCurrency._(r'GTQ');
-  static const GYD = NonNullableCatalogsCurrency._(r'GYD');
-  static const HKD = NonNullableCatalogsCurrency._(r'HKD');
-  static const HNL = NonNullableCatalogsCurrency._(r'HNL');
-  static const HRK = NonNullableCatalogsCurrency._(r'HRK');
-  static const HTG = NonNullableCatalogsCurrency._(r'HTG');
-  static const HUF = NonNullableCatalogsCurrency._(r'HUF');
-  static const IDR = NonNullableCatalogsCurrency._(r'IDR');
-  static const ILS = NonNullableCatalogsCurrency._(r'ILS');
-  static const IMP = NonNullableCatalogsCurrency._(r'IMP');
-  static const INR = NonNullableCatalogsCurrency._(r'INR');
-  static const IQD = NonNullableCatalogsCurrency._(r'IQD');
-  static const IRR = NonNullableCatalogsCurrency._(r'IRR');
-  static const ISK = NonNullableCatalogsCurrency._(r'ISK');
-  static const JEP = NonNullableCatalogsCurrency._(r'JEP');
-  static const JMD = NonNullableCatalogsCurrency._(r'JMD');
-  static const JOD = NonNullableCatalogsCurrency._(r'JOD');
-  static const JPY = NonNullableCatalogsCurrency._(r'JPY');
-  static const KES = NonNullableCatalogsCurrency._(r'KES');
-  static const KGS = NonNullableCatalogsCurrency._(r'KGS');
-  static const KHR = NonNullableCatalogsCurrency._(r'KHR');
-  static const KMF = NonNullableCatalogsCurrency._(r'KMF');
-  static const KPW = NonNullableCatalogsCurrency._(r'KPW');
-  static const KRW = NonNullableCatalogsCurrency._(r'KRW');
-  static const KWD = NonNullableCatalogsCurrency._(r'KWD');
-  static const KYD = NonNullableCatalogsCurrency._(r'KYD');
-  static const KZT = NonNullableCatalogsCurrency._(r'KZT');
-  static const LAK = NonNullableCatalogsCurrency._(r'LAK');
-  static const LBP = NonNullableCatalogsCurrency._(r'LBP');
-  static const LKR = NonNullableCatalogsCurrency._(r'LKR');
-  static const LRD = NonNullableCatalogsCurrency._(r'LRD');
-  static const LSL = NonNullableCatalogsCurrency._(r'LSL');
-  static const LYD = NonNullableCatalogsCurrency._(r'LYD');
-  static const MAD = NonNullableCatalogsCurrency._(r'MAD');
-  static const MDL = NonNullableCatalogsCurrency._(r'MDL');
-  static const MGA = NonNullableCatalogsCurrency._(r'MGA');
-  static const MKD = NonNullableCatalogsCurrency._(r'MKD');
-  static const MMK = NonNullableCatalogsCurrency._(r'MMK');
-  static const MNT = NonNullableCatalogsCurrency._(r'MNT');
-  static const MOP = NonNullableCatalogsCurrency._(r'MOP');
-  static const MRO = NonNullableCatalogsCurrency._(r'MRO');
-  static const MUR = NonNullableCatalogsCurrency._(r'MUR');
-  static const MVR = NonNullableCatalogsCurrency._(r'MVR');
-  static const MWK = NonNullableCatalogsCurrency._(r'MWK');
-  static const MXN = NonNullableCatalogsCurrency._(r'MXN');
-  static const MYR = NonNullableCatalogsCurrency._(r'MYR');
-  static const MZN = NonNullableCatalogsCurrency._(r'MZN');
-  static const NAD = NonNullableCatalogsCurrency._(r'NAD');
-  static const NGN = NonNullableCatalogsCurrency._(r'NGN');
-  static const NIO = NonNullableCatalogsCurrency._(r'NIO');
-  static const NOK = NonNullableCatalogsCurrency._(r'NOK');
-  static const NPR = NonNullableCatalogsCurrency._(r'NPR');
-  static const NZD = NonNullableCatalogsCurrency._(r'NZD');
-  static const OMR = NonNullableCatalogsCurrency._(r'OMR');
-  static const PAB = NonNullableCatalogsCurrency._(r'PAB');
-  static const PEN = NonNullableCatalogsCurrency._(r'PEN');
-  static const PGK = NonNullableCatalogsCurrency._(r'PGK');
-  static const PHP = NonNullableCatalogsCurrency._(r'PHP');
-  static const PKR = NonNullableCatalogsCurrency._(r'PKR');
-  static const PLN = NonNullableCatalogsCurrency._(r'PLN');
-  static const PYG = NonNullableCatalogsCurrency._(r'PYG');
-  static const QAR = NonNullableCatalogsCurrency._(r'QAR');
-  static const RON = NonNullableCatalogsCurrency._(r'RON');
-  static const RSD = NonNullableCatalogsCurrency._(r'RSD');
-  static const RUB = NonNullableCatalogsCurrency._(r'RUB');
-  static const RWF = NonNullableCatalogsCurrency._(r'RWF');
-  static const SAR = NonNullableCatalogsCurrency._(r'SAR');
-  static const SBD = NonNullableCatalogsCurrency._(r'SBD');
-  static const SCR = NonNullableCatalogsCurrency._(r'SCR');
-  static const SDG = NonNullableCatalogsCurrency._(r'SDG');
-  static const SEK = NonNullableCatalogsCurrency._(r'SEK');
-  static const SGD = NonNullableCatalogsCurrency._(r'SGD');
-  static const SHP = NonNullableCatalogsCurrency._(r'SHP');
-  static const SLL = NonNullableCatalogsCurrency._(r'SLL');
-  static const SOS = NonNullableCatalogsCurrency._(r'SOS');
-  static const SPL = NonNullableCatalogsCurrency._(r'SPL');
-  static const SRD = NonNullableCatalogsCurrency._(r'SRD');
-  static const STD = NonNullableCatalogsCurrency._(r'STD');
-  static const SVC = NonNullableCatalogsCurrency._(r'SVC');
-  static const SYP = NonNullableCatalogsCurrency._(r'SYP');
-  static const SZL = NonNullableCatalogsCurrency._(r'SZL');
-  static const THB = NonNullableCatalogsCurrency._(r'THB');
-  static const TJS = NonNullableCatalogsCurrency._(r'TJS');
-  static const TMT = NonNullableCatalogsCurrency._(r'TMT');
-  static const TND = NonNullableCatalogsCurrency._(r'TND');
-  static const TOP = NonNullableCatalogsCurrency._(r'TOP');
-  static const TRY = NonNullableCatalogsCurrency._(r'TRY');
-  static const TTD = NonNullableCatalogsCurrency._(r'TTD');
-  static const TVD = NonNullableCatalogsCurrency._(r'TVD');
-  static const TWD = NonNullableCatalogsCurrency._(r'TWD');
-  static const TZS = NonNullableCatalogsCurrency._(r'TZS');
-  static const UAH = NonNullableCatalogsCurrency._(r'UAH');
-  static const UGX = NonNullableCatalogsCurrency._(r'UGX');
-  static const USD = NonNullableCatalogsCurrency._(r'USD');
-  static const UYU = NonNullableCatalogsCurrency._(r'UYU');
-  static const UZS = NonNullableCatalogsCurrency._(r'UZS');
-  static const VEF = NonNullableCatalogsCurrency._(r'VEF');
-  static const VND = NonNullableCatalogsCurrency._(r'VND');
-  static const VUV = NonNullableCatalogsCurrency._(r'VUV');
-  static const WST = NonNullableCatalogsCurrency._(r'WST');
-  static const XAF = NonNullableCatalogsCurrency._(r'XAF');
-  static const XCD = NonNullableCatalogsCurrency._(r'XCD');
-  static const XDR = NonNullableCatalogsCurrency._(r'XDR');
-  static const XOF = NonNullableCatalogsCurrency._(r'XOF');
-  static const XPF = NonNullableCatalogsCurrency._(r'XPF');
-  static const YER = NonNullableCatalogsCurrency._(r'YER');
-  static const ZAR = NonNullableCatalogsCurrency._(r'ZAR');
-  static const ZMW = NonNullableCatalogsCurrency._(r'ZMW');
-  static const ZWD = NonNullableCatalogsCurrency._(r'ZWD');
-
-  /// List of all possible values in this [enum][NonNullableCatalogsCurrency].
-  static const values = <NonNullableCatalogsCurrency>[
-    AED,
-    AFN,
-    ALL,
-    AMD,
-    ANG,
-    AOA,
-    ARS,
-    AUD,
-    AWG,
-    AZN,
-    BAM,
-    BBD,
-    BDT,
-    BGN,
-    BHD,
-    BIF,
-    BMD,
-    BND,
-    BOB,
-    BRL,
-    BSD,
-    BTN,
-    BWP,
-    BYN,
-    BYR,
-    BZD,
-    CAD,
-    CDF,
-    CHF,
-    CLP,
-    CNY,
-    COP,
-    CRC,
-    CUC,
-    CUP,
-    CVE,
-    CZK,
-    DJF,
-    DKK,
-    DOP,
-    DZD,
-    EGP,
-    ERN,
-    ETB,
-    EUR,
-    FJD,
-    FKP,
-    GBP,
-    GEL,
-    GGP,
-    GHS,
-    GIP,
-    GMD,
-    GNF,
-    GTQ,
-    GYD,
-    HKD,
-    HNL,
-    HRK,
-    HTG,
-    HUF,
-    IDR,
-    ILS,
-    IMP,
-    INR,
-    IQD,
-    IRR,
-    ISK,
-    JEP,
-    JMD,
-    JOD,
-    JPY,
-    KES,
-    KGS,
-    KHR,
-    KMF,
-    KPW,
-    KRW,
-    KWD,
-    KYD,
-    KZT,
-    LAK,
-    LBP,
-    LKR,
-    LRD,
-    LSL,
-    LYD,
-    MAD,
-    MDL,
-    MGA,
-    MKD,
-    MMK,
-    MNT,
-    MOP,
-    MRO,
-    MUR,
-    MVR,
-    MWK,
-    MXN,
-    MYR,
-    MZN,
-    NAD,
-    NGN,
-    NIO,
-    NOK,
-    NPR,
-    NZD,
-    OMR,
-    PAB,
-    PEN,
-    PGK,
-    PHP,
-    PKR,
-    PLN,
-    PYG,
-    QAR,
-    RON,
-    RSD,
-    RUB,
-    RWF,
-    SAR,
-    SBD,
-    SCR,
-    SDG,
-    SEK,
-    SGD,
-    SHP,
-    SLL,
-    SOS,
-    SPL,
-    SRD,
-    STD,
-    SVC,
-    SYP,
-    SZL,
-    THB,
-    TJS,
-    TMT,
-    TND,
-    TOP,
-    TRY,
-    TTD,
-    TVD,
-    TWD,
-    TZS,
-    UAH,
-    UGX,
-    USD,
-    UYU,
-    UZS,
-    VEF,
-    VND,
-    VUV,
-    WST,
-    XAF,
-    XCD,
-    XDR,
-    XOF,
-    XPF,
-    YER,
-    ZAR,
-    ZMW,
-    ZWD,
-  ];
-
+  /// Returns the instance of [NonNullableCatalogsCurrency] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static NonNullableCatalogsCurrency? fromJson(dynamic value) => NonNullableCatalogsCurrencyTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [NonNullableCatalogsCurrency]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<NonNullableCatalogsCurrency> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <NonNullableCatalogsCurrency>[];
     if (json is List && json.isNotEmpty) {
@@ -377,9 +216,11 @@ class NonNullableCatalogsCurrencyTypeTransformer {
 
   const NonNullableCatalogsCurrencyTypeTransformer._();
 
-  String encode(NonNullableCatalogsCurrency data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(NonNullableCatalogsCurrency data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a NonNullableCatalogsCurrency.
+  /// Returns the instance of [NonNullableCatalogsCurrency] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -388,6 +229,9 @@ class NonNullableCatalogsCurrencyTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   NonNullableCatalogsCurrency? decode(dynamic data, {bool allowNull = true}) {
+    if (data is NonNullableCatalogsCurrency) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'AED': return NonNullableCatalogsCurrency.AED;
@@ -562,7 +406,7 @@ class NonNullableCatalogsCurrencyTypeTransformer {
     return null;
   }
 
-  /// Singleton [NonNullableCatalogsCurrencyTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static NonNullableCatalogsCurrencyTypeTransformer? _instance;
 }
 

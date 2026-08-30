@@ -27,6 +27,7 @@ ConversionEventResponse::__init()
 	//conversion_event = new ConversionTagType();
 	//conversion_tag_id = std::string();
 	//created_time = int(0);
+	//reporting_conversion_event = std::string();
 }
 
 void
@@ -51,6 +52,11 @@ ConversionEventResponse::__cleanup()
 	//
 	//delete created_time;
 	//created_time = NULL;
+	//}
+	//if(reporting_conversion_event != NULL) {
+	//
+	//delete reporting_conversion_event;
+	//reporting_conversion_event = NULL;
 	//}
 	//
 }
@@ -80,6 +86,9 @@ ConversionEventResponse::fromJson(char* jsonStr)
 			jsonToValue(&conversion_event, node, "ConversionTagType", "ConversionTagType");
 		} else {
 			
+			ConversionTagType* obj = static_cast<ConversionTagType*> (&conversion_event);
+			obj->fromJson(json_to_string(node, false));
+			
 		}
 	}
 	const gchar *conversion_tag_idKey = "conversion_tag_id";
@@ -100,6 +109,17 @@ ConversionEventResponse::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&created_time, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *reporting_conversion_eventKey = "reporting_conversion_event";
+	node = json_object_get_member(pJsonObject, reporting_conversion_eventKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&reporting_conversion_event, node, "std::string", "");
 		} else {
 			
 		}
@@ -131,6 +151,11 @@ ConversionEventResponse::toJson()
 	}
 	else {
 		
+		ConversionTagType obj = static_cast<ConversionTagType> (getConversionEvent());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
 	}
 	const gchar *conversion_eventKey = "conversion_event";
 	json_object_set_member(pJsonObject, conversion_eventKey, node);
@@ -152,6 +177,15 @@ ConversionEventResponse::toJson()
 	}
 	const gchar *created_timeKey = "created_time";
 	json_object_set_member(pJsonObject, created_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getReportingConversionEvent();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *reporting_conversion_eventKey = "reporting_conversion_event";
+	json_object_set_member(pJsonObject, reporting_conversion_eventKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -206,6 +240,18 @@ void
 ConversionEventResponse::setCreatedTime(int  created_time)
 {
 	this->created_time = created_time;
+}
+
+std::string
+ConversionEventResponse::getReportingConversionEvent()
+{
+	return reporting_conversion_event;
+}
+
+void
+ConversionEventResponse::setReportingConversionEvent(std::string  reporting_conversion_event)
+{
+	this->reporting_conversion_event = reporting_conversion_event;
 }
 
 

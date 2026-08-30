@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.",
+  "name": "TrendsGenderDistribution",
+  "fields": [
+    {
+      "name": "gender_distribution",
+      "type": ["null", "model.TrendsGender"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Ad targeting types for MMM report
-* Values: APPTYPE,COUNTRY,CREATIVE_TYPE,GENDER,LOCATION
+* Values: APPTYPE,COUNTRY,CREATIVE_TYPE,GENDER,LOCATION,PLACEMENT,AUDIENCE_INCLUDE
 */
 enum class MMMReportingTargetingType(@get:JsonValue val value: kotlin.String) {
 
@@ -25,7 +25,9 @@ enum class MMMReportingTargetingType(@get:JsonValue val value: kotlin.String) {
     COUNTRY("COUNTRY"),
     CREATIVE_TYPE("CREATIVE_TYPE"),
     GENDER("GENDER"),
-    LOCATION("LOCATION");
+    LOCATION("LOCATION"),
+    PLACEMENT("PLACEMENT"),
+    AUDIENCE_INCLUDE("AUDIENCE_INCLUDE");
 
     companion object {
         @JvmStatic

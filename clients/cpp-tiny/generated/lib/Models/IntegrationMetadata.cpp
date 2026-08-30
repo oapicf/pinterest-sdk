@@ -14,7 +14,7 @@ IntegrationMetadata::IntegrationMetadata()
 	connected_user_id = std::string();
 	created_timestamp = float(0);
 	external_business_id = std::string();
-	id = std::string();
+	id = null;
 	partner_access_token_expiry = float(0);
 	partner_metadata = std::string();
 	partner_refresh_token_expiry = float(0);
@@ -337,7 +337,7 @@ IntegrationMetadata::getAdditionalId1()
 }
 
 void
-IntegrationMetadata::setAdditionalId1(std::string  additional_id_1)
+IntegrationMetadata::setAdditionalId1(std::string additional_id_1)
 {
 	this->additional_id_1 = additional_id_1;
 }
@@ -349,7 +349,7 @@ IntegrationMetadata::getConnectedAdvertiserId()
 }
 
 void
-IntegrationMetadata::setConnectedAdvertiserId(std::string  connected_advertiser_id)
+IntegrationMetadata::setConnectedAdvertiserId(std::string connected_advertiser_id)
 {
 	this->connected_advertiser_id = connected_advertiser_id;
 }
@@ -361,7 +361,7 @@ IntegrationMetadata::getConnectedLbaId()
 }
 
 void
-IntegrationMetadata::setConnectedLbaId(std::string  connected_lba_id)
+IntegrationMetadata::setConnectedLbaId(std::string connected_lba_id)
 {
 	this->connected_lba_id = connected_lba_id;
 }
@@ -373,7 +373,7 @@ IntegrationMetadata::getConnectedMerchantId()
 }
 
 void
-IntegrationMetadata::setConnectedMerchantId(std::string  connected_merchant_id)
+IntegrationMetadata::setConnectedMerchantId(std::string connected_merchant_id)
 {
 	this->connected_merchant_id = connected_merchant_id;
 }
@@ -385,7 +385,7 @@ IntegrationMetadata::getConnectedTagId()
 }
 
 void
-IntegrationMetadata::setConnectedTagId(std::string  connected_tag_id)
+IntegrationMetadata::setConnectedTagId(std::string connected_tag_id)
 {
 	this->connected_tag_id = connected_tag_id;
 }
@@ -397,7 +397,7 @@ IntegrationMetadata::getConnectedUserId()
 }
 
 void
-IntegrationMetadata::setConnectedUserId(std::string  connected_user_id)
+IntegrationMetadata::setConnectedUserId(std::string connected_user_id)
 {
 	this->connected_user_id = connected_user_id;
 }
@@ -409,7 +409,7 @@ IntegrationMetadata::getCreatedTimestamp()
 }
 
 void
-IntegrationMetadata::setCreatedTimestamp(long  created_timestamp)
+IntegrationMetadata::setCreatedTimestamp(long created_timestamp)
 {
 	this->created_timestamp = created_timestamp;
 }
@@ -421,7 +421,7 @@ IntegrationMetadata::getExternalBusinessId()
 }
 
 void
-IntegrationMetadata::setExternalBusinessId(std::string  external_business_id)
+IntegrationMetadata::setExternalBusinessId(std::string external_business_id)
 {
 	this->external_business_id = external_business_id;
 }
@@ -433,7 +433,7 @@ IntegrationMetadata::getId()
 }
 
 void
-IntegrationMetadata::setId(std::string  id)
+IntegrationMetadata::setId(std::string id)
 {
 	this->id = id;
 }
@@ -445,7 +445,7 @@ IntegrationMetadata::getPartnerAccessTokenExpiry()
 }
 
 void
-IntegrationMetadata::setPartnerAccessTokenExpiry(long  partner_access_token_expiry)
+IntegrationMetadata::setPartnerAccessTokenExpiry(long partner_access_token_expiry)
 {
 	this->partner_access_token_expiry = partner_access_token_expiry;
 }
@@ -457,7 +457,7 @@ IntegrationMetadata::getPartnerMetadata()
 }
 
 void
-IntegrationMetadata::setPartnerMetadata(std::string  partner_metadata)
+IntegrationMetadata::setPartnerMetadata(std::string partner_metadata)
 {
 	this->partner_metadata = partner_metadata;
 }
@@ -469,7 +469,7 @@ IntegrationMetadata::getPartnerRefreshTokenExpiry()
 }
 
 void
-IntegrationMetadata::setPartnerRefreshTokenExpiry(long  partner_refresh_token_expiry)
+IntegrationMetadata::setPartnerRefreshTokenExpiry(long partner_refresh_token_expiry)
 {
 	this->partner_refresh_token_expiry = partner_refresh_token_expiry;
 }
@@ -481,7 +481,7 @@ IntegrationMetadata::getScopes()
 }
 
 void
-IntegrationMetadata::setScopes(std::string  scopes)
+IntegrationMetadata::setScopes(std::string scopes)
 {
 	this->scopes = scopes;
 }
@@ -493,7 +493,7 @@ IntegrationMetadata::getUpdatedTimestamp()
 }
 
 void
-IntegrationMetadata::setUpdatedTimestamp(long  updated_timestamp)
+IntegrationMetadata::setUpdatedTimestamp(long updated_timestamp)
 {
 	this->updated_timestamp = updated_timestamp;
 }

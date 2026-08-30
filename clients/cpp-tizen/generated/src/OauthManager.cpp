@@ -51,14 +51,14 @@ static gpointer __OauthManagerthreadFunc(gpointer data)
 static bool oauthConversionTokenProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(ConversionAccessTokenResponse, Error, void* )
-	= reinterpret_cast<void(*)(ConversionAccessTokenResponse, Error, void* )> (voidHandler);
+	void(* handler)(ConversionAccessToken, Error, void* )
+	= reinterpret_cast<void(*)(ConversionAccessToken, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	ConversionAccessTokenResponse out;
+	ConversionAccessToken out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,18 +66,43 @@ static bool oauthConversionTokenProcessor(MemoryStruct_s p_chunk, long code, cha
 
 
 
-		if (isprimitive("ConversionAccessTokenResponse")) {
+		if (isprimitive("ConversionAccessToken")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "ConversionAccessTokenResponse", "ConversionAccessTokenResponse");
+			jsonToValue(&out, pJson, "ConversionAccessToken", "ConversionAccessToken");
 			json_node_free(pJson);
 
-			if ("ConversionAccessTokenResponse" == "std::string") {
+			if ("ConversionAccessToken" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -110,7 +135,7 @@ static bool oauthConversionTokenProcessor(MemoryStruct_s p_chunk, long code, cha
 
 static bool oauthConversionTokenHelper(char * accessToken,
 	
-	void(* handler)(ConversionAccessTokenResponse, Error, void* )
+	void(* handler)(ConversionAccessToken, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -181,7 +206,7 @@ static bool oauthConversionTokenHelper(char * accessToken,
 
 bool OauthManager::oauthConversionTokenAsync(char * accessToken,
 	
-	void(* handler)(ConversionAccessTokenResponse, Error, void* )
+	void(* handler)(ConversionAccessToken, Error, void* )
 	, void* userData)
 {
 	return oauthConversionTokenHelper(accessToken,
@@ -191,7 +216,7 @@ bool OauthManager::oauthConversionTokenAsync(char * accessToken,
 
 bool OauthManager::oauthConversionTokenSync(char * accessToken,
 	
-	void(* handler)(ConversionAccessTokenResponse, Error, void* )
+	void(* handler)(ConversionAccessToken, Error, void* )
 	, void* userData)
 {
 	return oauthConversionTokenHelper(accessToken,
@@ -202,14 +227,14 @@ bool OauthManager::oauthConversionTokenSync(char * accessToken,
 static bool oauthTokenProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(OauthAccessTokenResponse, Error, void* )
-	= reinterpret_cast<void(*)(OauthAccessTokenResponse, Error, void* )> (voidHandler);
+	void(* handler)(OauthAccessToken, Error, void* )
+	= reinterpret_cast<void(*)(OauthAccessToken, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	OauthAccessTokenResponse out;
+	OauthAccessToken out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -217,18 +242,48 @@ static bool oauthTokenProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 
 
 
-		if (isprimitive("OauthAccessTokenResponse")) {
+		if (isprimitive("OauthAccessToken")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "OauthAccessTokenResponse", "OauthAccessTokenResponse");
+			jsonToValue(&out, pJson, "OauthAccessToken", "OauthAccessToken");
 			json_node_free(pJson);
 
-			if ("OauthAccessTokenResponse" == "std::string") {
+			if ("OauthAccessToken" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -260,8 +315,8 @@ static bool oauthTokenProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 }
 
 static bool oauthTokenHelper(char * accessToken,
-	std::string grantType, 
-	void(* handler)(OauthAccessTokenResponse, Error, void* )
+	TokenGrantType grantType, std::string code, std::string continuousRefresh, std::string redirectUri, std::string refreshToken, std::string scope, 
+	void(* handler)(OauthAccessToken, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -331,22 +386,22 @@ static bool oauthTokenHelper(char * accessToken,
 
 
 bool OauthManager::oauthTokenAsync(char * accessToken,
-	std::string grantType, 
-	void(* handler)(OauthAccessTokenResponse, Error, void* )
+	TokenGrantType grantType, std::string code, std::string continuousRefresh, std::string redirectUri, std::string refreshToken, std::string scope, 
+	void(* handler)(OauthAccessToken, Error, void* )
 	, void* userData)
 {
 	return oauthTokenHelper(accessToken,
-	grantType, 
+	grantType, code, continuousRefresh, redirectUri, refreshToken, scope, 
 	handler, userData, true);
 }
 
 bool OauthManager::oauthTokenSync(char * accessToken,
-	std::string grantType, 
-	void(* handler)(OauthAccessTokenResponse, Error, void* )
+	TokenGrantType grantType, std::string code, std::string continuousRefresh, std::string redirectUri, std::string refreshToken, std::string scope, 
+	void(* handler)(OauthAccessToken, Error, void* )
 	, void* userData)
 {
 	return oauthTokenHelper(accessToken,
-	grantType, 
+	grantType, code, continuousRefresh, redirectUri, refreshToken, scope, 
 	handler, userData, false);
 }
 
@@ -384,7 +439,7 @@ static bool tokenRevokeProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool tokenRevokeHelper(char * accessToken,
-	std::string token, std::string tokenTypeHint, 
+	std::string token, TokenTypeHint tokenTypeHint, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -455,7 +510,7 @@ static bool tokenRevokeHelper(char * accessToken,
 
 
 bool OauthManager::tokenRevokeAsync(char * accessToken,
-	std::string token, std::string tokenTypeHint, 
+	std::string token, TokenTypeHint tokenTypeHint, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
@@ -465,7 +520,7 @@ bool OauthManager::tokenRevokeAsync(char * accessToken,
 }
 
 bool OauthManager::tokenRevokeSync(char * accessToken,
-	std::string token, std::string tokenTypeHint, 
+	std::string token, TokenTypeHint tokenTypeHint, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {

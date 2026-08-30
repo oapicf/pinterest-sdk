@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **Integer** | Exception error code. |  [optional]
-**message** | **String** | Exception message. |  [optional]
+**code** | **Integer** |  |  [optional]
+**message** | **String** |  | 
 
 
 

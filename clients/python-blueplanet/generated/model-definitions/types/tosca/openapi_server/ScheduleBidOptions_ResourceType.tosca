@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ScheduleBidOptions"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ScheduleBidOptions"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ScheduleAgeBucketMultipliers = openapi_server.resourceTypes.ScheduleAgeBucketMultipliers
+  ScheduleAppTypeMultipliers = openapi_server.resourceTypes.ScheduleAppTypeMultipliers
+  ScheduleAudienceMultipliers = openapi_server.resourceTypes.ScheduleAudienceMultipliers
+  ScheduleBidOptionsGenderMultipliers = openapi_server.resourceTypes.ScheduleBidOptionsGenderMultipliers
+  ScheduleBidOptionsPlacementMultipliers = openapi_server.resourceTypes.ScheduleBidOptionsPlacementMultipliers
+}
+resourceTypes {
+
+  ScheduleBidOptions {
+    title = ScheduleBidOptions
+    description = ScheduleBidOptions
+    derivedFrom = Root
+    properties {
+        age_bucket_multipliers {
+          type = ScheduleAgeBucketMultipliers
+          description = ""
+          optional = false
+        }
+        app_type_multipliers {
+          type = ScheduleAppTypeMultipliers
+          description = ""
+          optional = false
+        }
+        audience_multipliers {
+          type = ScheduleAudienceMultipliers
+          description = ""
+          optional = false
+        }
+        gender_multipliers {
+          type = ScheduleBidOptionsGenderMultipliers
+          description = ""
+          optional = false
+        }
+        placement_multipliers {
+          type = ScheduleBidOptionsPlacementMultipliers
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ScheduleBidOptions {
+    title = ScheduleBidOptions
+    description = ScheduleBidOptions
+    implements = openapi_server.resourceTypes.ScheduleBidOptions
+
+  }
+}

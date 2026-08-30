@@ -45,7 +45,7 @@ public class InviteExceptionResponse  {
   */
   @ApiModelProperty(example = "[\"businessMember0101\",\"business+member@business.com\"]", value = "A list of users' usernames or emails OR a list of partner ids that caused the error.")
 
-  private List<String> usersOrPartnerIds;
+  private List<String> usersOrPartnerIds = new ArrayList<>();
  /**
    * Error code associated with the error in performing the action on the invite/request.
    * @return code
@@ -161,10 +161,7 @@ public class InviteExceptionResponse  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **items** | [**kotlin.collections.List&lt;CampaignResponse&gt;**](CampaignResponse.md) |  |  |
+| **items** | [**kotlin.collections.List&lt;Campaign&gt;**](Campaign.md) |  |  |
 | **bookmark** | **kotlin.String** |  |  [optional] |
 
 

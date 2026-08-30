@@ -10,8 +10,9 @@
 #' @field cover_image_url  character [optional]
 #' @field duration Duration (in miliseconds). Field maybe null after creation due to video processing time. numeric [optional]
 #' @field height Height (in pixels). Field maybe null after creation due to video processing time. integer [optional]
-#' @field item_type  character [optional]
+#' @field item_type Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload. character
 #' @field video_url Video url (720p).  **Note:** This field is limited and not available to all apps. character [optional]
+#' @field video_url_hls Video url (HLS).  **Note:** This field is limited and not available to all apps. character [optional]
 #' @field width Width (in pixels). Field maybe null after creation due to video processing time. integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -24,19 +25,30 @@ VideoMetadataWithItemType <- R6::R6Class(
     `height` = NULL,
     `item_type` = NULL,
     `video_url` = NULL,
+    `video_url_hls` = NULL,
     `width` = NULL,
 
     #' @description
     #' Initialize a new VideoMetadataWithItemType class.
     #'
+    #' @param item_type Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
     #' @param cover_image_url cover_image_url
     #' @param duration Duration (in miliseconds). Field maybe null after creation due to video processing time.
     #' @param height Height (in pixels). Field maybe null after creation due to video processing time.
-    #' @param item_type item_type
     #' @param video_url Video url (720p).  **Note:** This field is limited and not available to all apps.
+    #' @param video_url_hls Video url (HLS).  **Note:** This field is limited and not available to all apps.
     #' @param width Width (in pixels). Field maybe null after creation due to video processing time.
     #' @param ... Other optional arguments.
-    initialize = function(`cover_image_url` = NULL, `duration` = NULL, `height` = NULL, `item_type` = NULL, `video_url` = NULL, `width` = NULL, ...) {
+    initialize = function(`item_type`, `cover_image_url` = NULL, `duration` = NULL, `height` = NULL, `video_url` = NULL, `video_url_hls` = NULL, `width` = NULL, ...) {
+      if (!missing(`item_type`)) {
+        if (!(`item_type` %in% c("video"))) {
+          stop(paste("Error! \"", `item_type`, "\" cannot be assigned to `item_type`. Must be \"video\".", sep = ""))
+        }
+        if (!(is.character(`item_type`) && length(`item_type`) == 1)) {
+          stop(paste("Error! Invalid data for `item_type`. Must be a string:", `item_type`))
+        }
+        self$`item_type` <- `item_type`
+      }
       if (!is.null(`cover_image_url`)) {
         if (!(is.character(`cover_image_url`) && length(`cover_image_url`) == 1)) {
           stop(paste("Error! Invalid data for `cover_image_url`. Must be a string:", `cover_image_url`))
@@ -52,17 +64,17 @@ VideoMetadataWithItemType <- R6::R6Class(
         }
         self$`height` <- `height`
       }
-      if (!is.null(`item_type`)) {
-        if (!(is.character(`item_type`) && length(`item_type`) == 1)) {
-          stop(paste("Error! Invalid data for `item_type`. Must be a string:", `item_type`))
-        }
-        self$`item_type` <- `item_type`
-      }
       if (!is.null(`video_url`)) {
         if (!(is.character(`video_url`) && length(`video_url`) == 1)) {
           stop(paste("Error! Invalid data for `video_url`. Must be a string:", `video_url`))
         }
         self$`video_url` <- `video_url`
+      }
+      if (!is.null(`video_url_hls`)) {
+        if (!(is.character(`video_url_hls`) && length(`video_url_hls`) == 1)) {
+          stop(paste("Error! Invalid data for `video_url_hls`. Must be a string:", `video_url_hls`))
+        }
+        self$`video_url_hls` <- `video_url_hls`
       }
       if (!is.null(`width`)) {
         if (!(is.numeric(`width`) && length(`width`) == 1)) {
@@ -123,6 +135,10 @@ VideoMetadataWithItemType <- R6::R6Class(
         VideoMetadataWithItemTypeObject[["video_url"]] <-
           self$`video_url`
       }
+      if (!is.null(self$`video_url_hls`)) {
+        VideoMetadataWithItemTypeObject[["video_url_hls"]] <-
+          self$`video_url_hls`
+      }
       if (!is.null(self$`width`)) {
         VideoMetadataWithItemTypeObject[["width"]] <-
           self$`width`
@@ -147,10 +163,16 @@ VideoMetadataWithItemType <- R6::R6Class(
         self$`height` <- this_object$`height`
       }
       if (!is.null(this_object$`item_type`)) {
+        if (!is.null(this_object$`item_type`) && !(this_object$`item_type` %in% c("video"))) {
+          stop(paste("Error! \"", this_object$`item_type`, "\" cannot be assigned to `item_type`. Must be \"video\".", sep = ""))
+        }
         self$`item_type` <- this_object$`item_type`
       }
       if (!is.null(this_object$`video_url`)) {
         self$`video_url` <- this_object$`video_url`
+      }
+      if (!is.null(this_object$`video_url_hls`)) {
+        self$`video_url_hls` <- this_object$`video_url_hls`
       }
       if (!is.null(this_object$`width`)) {
         self$`width` <- this_object$`width`
@@ -179,8 +201,12 @@ VideoMetadataWithItemType <- R6::R6Class(
       self$`cover_image_url` <- this_object$`cover_image_url`
       self$`duration` <- this_object$`duration`
       self$`height` <- this_object$`height`
+      if (!is.null(this_object$`item_type`) && !(this_object$`item_type` %in% c("video"))) {
+        stop(paste("Error! \"", this_object$`item_type`, "\" cannot be assigned to `item_type`. Must be \"video\".", sep = ""))
+      }
       self$`item_type` <- this_object$`item_type`
       self$`video_url` <- this_object$`video_url`
+      self$`video_url_hls` <- this_object$`video_url_hls`
       self$`width` <- this_object$`width`
       self
     },
@@ -191,6 +217,14 @@ VideoMetadataWithItemType <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `item_type`
+      if (!is.null(input_json$`item_type`)) {
+        if (!(is.character(input_json$`item_type`) && length(input_json$`item_type`) == 1)) {
+          stop(paste("Error! Invalid data for `item_type`. Must be a string:", input_json$`item_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for VideoMetadataWithItemType: the required field `item_type` is missing."))
+      }
     },
 
     #' @description
@@ -206,6 +240,11 @@ VideoMetadataWithItemType <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `item_type` is null
+      if (is.null(self$`item_type`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -215,6 +254,11 @@ VideoMetadataWithItemType <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `item_type` is null
+      if (is.null(self$`item_type`)) {
+        invalid_fields["item_type"] <- "Non-nullable required field `item_type` cannot be null."
+      }
+
       invalid_fields
     },
 

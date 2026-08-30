@@ -1,12 +1,14 @@
 package models
 
+// PinMediaMetadata - Per-item entry inside `PinMedia.items` for mixed image/video pins. Discriminated by `item_type`.
 type PinMediaMetadata struct {
 
 	Description *string `json:"description,omitempty"`
 
 	Images ImageSize `json:"images,omitempty"`
 
-	ItemType string `json:"item_type,omitempty"`
+	// Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
+	ItemType string `json:"item_type"`
 
 	Link *string `json:"link,omitempty"`
 
@@ -22,6 +24,9 @@ type PinMediaMetadata struct {
 
 	// Video url (720p).  **Note:** This field is limited and not available to all apps.
 	VideoUrl *string `json:"video_url,omitempty"`
+
+	// Video url (HLS).  **Note:** This field is limited and not available to all apps.
+	VideoUrlHls *string `json:"video_url_hls,omitempty"`
 
 	// Width (in pixels). Field maybe null after creation due to video processing time.
 	Width *int32 `json:"width,omitempty"`

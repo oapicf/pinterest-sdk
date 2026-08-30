@@ -16,10 +16,10 @@ module CatalogsFeedProcessingResult =
   type CatalogsFeedProcessingResult = {
     CreatedAt : DateTime;
     Id : string;
-    UpdatedAt : DateTime;
     IngestionDetails : CatalogsFeedIngestionDetails;
     ProductCounts : CatalogsFeedProductCounts;
     Status : CatalogsFeedProcessingStatus;
+    UpdatedAt : DateTime;
     ValidationDetails : CatalogsFeedValidationDetails;
     VideoCounts : CatalogsFeedVideoCounts;
   }

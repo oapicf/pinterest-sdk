@@ -22,13 +22,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class BusinessAccessUserSummary(
 
     @Schema(example = "business0101@business.com", description = "Email of the business member/partner.")
+    @param:JsonProperty("email")
     @get:JsonProperty("email") val email: kotlin.String? = null,
 
     @get:Size(min=1,max=20)
-    @Schema(example = "383791336903426391", description = "Unique identifier of the business member/partner.")
+    @Schema(example = "549755885175", description = "Unique identifier of the business member/partner.")
+    @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
     @Schema(example = "business0101", description = "Username of the business member/partner.")
+    @param:JsonProperty("username")
     @get:JsonProperty("username") val username: kotlin.String? = null
 ) {
 

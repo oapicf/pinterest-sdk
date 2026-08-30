@@ -1,0 +1,230 @@
+package org.openapitools.model;
+
+import java.util.Objects;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.annotation.Generated;
+import java.time.*;
+import java.math.*;
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+
+/**
+ * System error details included in the log sent by the client.
+ */
+public class IntegrationLogClientError implements Serializable {
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Original cause of the error.
+   */
+  @JsonProperty("cause")
+  private String cause;
+
+  /**
+   * Column number in the line of the file that raised the error.
+   */
+  @JsonProperty("column_number")
+  private Integer columnNumber;
+
+  /**
+   * Filename where the error happened.
+   */
+  @JsonProperty("file_name")
+  private String fileName;
+
+  /**
+   * Line number where the error happened.
+   */
+  @JsonProperty("line_number")
+  private Integer lineNumber;
+
+  /**
+   * Human-readable description of the error.
+   */
+  @JsonProperty("message")
+  private String message;
+
+  /**
+   * More detail about the message.
+   */
+  @JsonProperty("message_detail")
+  private String messageDetail;
+
+  /**
+   * Filename where the error happened.
+   */
+  @JsonProperty("name")
+  private String name;
+
+  /**
+   * Integer that specifies the error code.
+   */
+  @JsonProperty("number")
+  private Integer number;
+
+  /**
+   * Stack trace of where the error happened.
+   */
+  @JsonProperty("stack_trace")
+  private String stackTrace;
+
+  /**
+   * Original cause of the error.
+   * @return cause
+   */
+  public String getCause() {
+    return cause;
+  }
+
+  public void setCause(String cause) {
+    this.cause = cause;
+  }
+
+  /**
+   * Column number in the line of the file that raised the error.
+   * @return columnNumber
+   */
+  public Integer getColumnNumber() {
+    return columnNumber;
+  }
+
+  public void setColumnNumber(Integer columnNumber) {
+    this.columnNumber = columnNumber;
+  }
+
+  /**
+   * Filename where the error happened.
+   * @return fileName
+   */
+  public String getFileName() {
+    return fileName;
+  }
+
+  public void setFileName(String fileName) {
+    this.fileName = fileName;
+  }
+
+  /**
+   * Line number where the error happened.
+   * @return lineNumber
+   */
+  public Integer getLineNumber() {
+    return lineNumber;
+  }
+
+  public void setLineNumber(Integer lineNumber) {
+    this.lineNumber = lineNumber;
+  }
+
+  /**
+   * Human-readable description of the error.
+   * @return message
+   */
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  /**
+   * More detail about the message.
+   * @return messageDetail
+   */
+  public String getMessageDetail() {
+    return messageDetail;
+  }
+
+  public void setMessageDetail(String messageDetail) {
+    this.messageDetail = messageDetail;
+  }
+
+  /**
+   * Filename where the error happened.
+   * @return name
+   */
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Integer that specifies the error code.
+   * @return number
+   */
+  public Integer getNumber() {
+    return number;
+  }
+
+  public void setNumber(Integer number) {
+    this.number = number;
+  }
+
+  /**
+   * Stack trace of where the error happened.
+   * @return stackTrace
+   */
+  public String getStackTrace() {
+    return stackTrace;
+  }
+
+  public void setStackTrace(String stackTrace) {
+    this.stackTrace = stackTrace;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    IntegrationLogClientError integrationLogClientError = (IntegrationLogClientError) o;
+    return Objects.equals(this.cause, integrationLogClientError.cause) &&
+        Objects.equals(this.columnNumber, integrationLogClientError.columnNumber) &&
+        Objects.equals(this.fileName, integrationLogClientError.fileName) &&
+        Objects.equals(this.lineNumber, integrationLogClientError.lineNumber) &&
+        Objects.equals(this.message, integrationLogClientError.message) &&
+        Objects.equals(this.messageDetail, integrationLogClientError.messageDetail) &&
+        Objects.equals(this.name, integrationLogClientError.name) &&
+        Objects.equals(this.number, integrationLogClientError.number) &&
+        Objects.equals(this.stackTrace, integrationLogClientError.stackTrace);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(cause, columnNumber, fileName, lineNumber, message, messageDetail, name, number, stackTrace);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class IntegrationLogClientError {\n");
+    
+    sb.append("    cause: ").append(toIndentedString(cause)).append("\n");
+    sb.append("    columnNumber: ").append(toIndentedString(columnNumber)).append("\n");
+    sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
+    sb.append("    lineNumber: ").append(toIndentedString(lineNumber)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    messageDetail: ").append(toIndentedString(messageDetail)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    number: ").append(toIndentedString(number)).append("\n");
+    sb.append("    stackTrace: ").append(toIndentedString(stackTrace)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
+}

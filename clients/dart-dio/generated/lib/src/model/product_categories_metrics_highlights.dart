@@ -99,22 +99,25 @@ class _$ProductCategoriesMetricsHighlightsSerializer implements PrimitiveSeriali
         case r'engagement':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(InnerProductCategoriesMetricsHighlights),
-          ) as InnerProductCategoriesMetricsHighlights;
+            specifiedType: const FullType.nullable(InnerProductCategoriesMetricsHighlights),
+          ) as InnerProductCategoriesMetricsHighlights?;
+          if (valueDes == null) continue;
           result.engagement.replace(valueDes);
           break;
         case r'outbound_clicks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(InnerProductCategoriesMetricsHighlights),
-          ) as InnerProductCategoriesMetricsHighlights;
+            specifiedType: const FullType.nullable(InnerProductCategoriesMetricsHighlights),
+          ) as InnerProductCategoriesMetricsHighlights?;
+          if (valueDes == null) continue;
           result.outboundClicks.replace(valueDes);
           break;
         case r'pin_saves':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(InnerProductCategoriesMetricsHighlights),
-          ) as InnerProductCategoriesMetricsHighlights;
+            specifiedType: const FullType.nullable(InnerProductCategoriesMetricsHighlights),
+          ) as InnerProductCategoriesMetricsHighlights?;
+          if (valueDes == null) continue;
           result.pinSaves.replace(valueDes);
           break;
         default:

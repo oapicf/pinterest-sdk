@@ -6,56 +6,71 @@
 
 
 static invite_response_t *invite_response_create_internal(
-    char *id,
-    base_invite_data_response_invite_data_t *invite_data,
-    int is_received_invite,
-    business_access_user_summary_t *user,
     invite_assets_summary_t *assets_summary,
     list_t *business_roles,
-    object_t *created_by_business,
-    object_t *created_by_user,
-    int created_time
+    business_access_user_summary_t *created_by_business,
+    business_access_user_summary_t *created_by_user,
+    int *created_time,
+    char *id,
+    invite_data_response_t *invite_data,
+    int *is_received_invite,
+    business_access_user_summary_t *user
     ) {
     invite_response_t *invite_response_local_var = malloc(sizeof(invite_response_t));
     if (!invite_response_local_var) {
         return NULL;
     }
-    invite_response_local_var->id = id;
-    invite_response_local_var->invite_data = invite_data;
-    invite_response_local_var->is_received_invite = is_received_invite;
-    invite_response_local_var->user = user;
+    memset(invite_response_local_var, 0, sizeof(invite_response_t));
+    invite_response_local_var->_library_owned = 1;
     invite_response_local_var->assets_summary = assets_summary;
     invite_response_local_var->business_roles = business_roles;
     invite_response_local_var->created_by_business = created_by_business;
     invite_response_local_var->created_by_user = created_by_user;
     invite_response_local_var->created_time = created_time;
-
-    invite_response_local_var->_library_owned = 1;
+    invite_response_local_var->id = id;
+    invite_response_local_var->invite_data = invite_data;
+    invite_response_local_var->is_received_invite = is_received_invite;
+    invite_response_local_var->user = user;
     return invite_response_local_var;
 }
 
 __attribute__((deprecated)) invite_response_t *invite_response_create(
-    char *id,
-    base_invite_data_response_invite_data_t *invite_data,
-    int is_received_invite,
-    business_access_user_summary_t *user,
     invite_assets_summary_t *assets_summary,
     list_t *business_roles,
-    object_t *created_by_business,
-    object_t *created_by_user,
-    int created_time
+    business_access_user_summary_t *created_by_business,
+    business_access_user_summary_t *created_by_user,
+    int *created_time,
+    char *id,
+    invite_data_response_t *invite_data,
+    int *is_received_invite,
+    business_access_user_summary_t *user
     ) {
-    return invite_response_create_internal (
-        id,
-        invite_data,
-        is_received_invite,
-        user,
+    int *created_time_copy = NULL;
+    if (created_time) {
+        created_time_copy = malloc(sizeof(int));
+        if (created_time_copy) *created_time_copy = *created_time;
+    }
+    int *is_received_invite_copy = NULL;
+    if (is_received_invite) {
+        is_received_invite_copy = malloc(sizeof(int));
+        if (is_received_invite_copy) *is_received_invite_copy = *is_received_invite;
+    }
+    invite_response_t *result = invite_response_create_internal (
         assets_summary,
         business_roles,
         created_by_business,
         created_by_user,
-        created_time
+        created_time_copy,
+        id,
+        invite_data,
+        is_received_invite_copy,
+        user
         );
+    if (!result) {
+        free(created_time_copy);
+        free(is_received_invite_copy);
+    }
+    return result;
 }
 
 void invite_response_free(invite_response_t *invite_response) {
@@ -67,18 +82,6 @@ void invite_response_free(invite_response_t *invite_response) {
         return ;
     }
     listEntry_t *listEntry;
-    if (invite_response->id) {
-        free(invite_response->id);
-        invite_response->id = NULL;
-    }
-    if (invite_response->invite_data) {
-        base_invite_data_response_invite_data_free(invite_response->invite_data);
-        invite_response->invite_data = NULL;
-    }
-    if (invite_response->user) {
-        business_access_user_summary_free(invite_response->user);
-        invite_response->user = NULL;
-    }
     if (invite_response->assets_summary) {
         invite_assets_summary_free(invite_response->assets_summary);
         invite_response->assets_summary = NULL;
@@ -91,60 +94,38 @@ void invite_response_free(invite_response_t *invite_response) {
         invite_response->business_roles = NULL;
     }
     if (invite_response->created_by_business) {
-        object_free(invite_response->created_by_business);
+        business_access_user_summary_free(invite_response->created_by_business);
         invite_response->created_by_business = NULL;
     }
     if (invite_response->created_by_user) {
-        object_free(invite_response->created_by_user);
+        business_access_user_summary_free(invite_response->created_by_user);
         invite_response->created_by_user = NULL;
+    }
+    if (invite_response->created_time) {
+        free(invite_response->created_time);
+        invite_response->created_time = NULL;
+    }
+    if (invite_response->id) {
+        free(invite_response->id);
+        invite_response->id = NULL;
+    }
+    if (invite_response->invite_data) {
+        invite_data_response_free(invite_response->invite_data);
+        invite_response->invite_data = NULL;
+    }
+    if (invite_response->is_received_invite) {
+        free(invite_response->is_received_invite);
+        invite_response->is_received_invite = NULL;
+    }
+    if (invite_response->user) {
+        business_access_user_summary_free(invite_response->user);
+        invite_response->user = NULL;
     }
     free(invite_response);
 }
 
 cJSON *invite_response_convertToJSON(invite_response_t *invite_response) {
     cJSON *item = cJSON_CreateObject();
-
-    // invite_response->id
-    if(invite_response->id) {
-    if(cJSON_AddStringToObject(item, "id", invite_response->id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // invite_response->invite_data
-    if(invite_response->invite_data) {
-    cJSON *invite_data_local_JSON = base_invite_data_response_invite_data_convertToJSON(invite_response->invite_data);
-    if(invite_data_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "invite_data", invite_data_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
-    // invite_response->is_received_invite
-    if(invite_response->is_received_invite) {
-    if(cJSON_AddBoolToObject(item, "is_received_invite", invite_response->is_received_invite) == NULL) {
-    goto fail; //Bool
-    }
-    }
-
-
-    // invite_response->user
-    if(invite_response->user) {
-    cJSON *user_local_JSON = business_access_user_summary_convertToJSON(invite_response->user);
-    if(user_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "user", user_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
 
     // invite_response->assets_summary
     if(invite_response->assets_summary) {
@@ -178,11 +159,11 @@ cJSON *invite_response_convertToJSON(invite_response_t *invite_response) {
 
     // invite_response->created_by_business
     if(invite_response->created_by_business) {
-    cJSON *created_by_business_object = object_convertToJSON(invite_response->created_by_business);
-    if(created_by_business_object == NULL) {
+    cJSON *created_by_business_local_JSON = business_access_user_summary_convertToJSON(invite_response->created_by_business);
+    if(created_by_business_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "created_by_business", created_by_business_object);
+    cJSON_AddItemToObject(item, "created_by_business", created_by_business_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -191,11 +172,11 @@ cJSON *invite_response_convertToJSON(invite_response_t *invite_response) {
 
     // invite_response->created_by_user
     if(invite_response->created_by_user) {
-    cJSON *created_by_user_object = object_convertToJSON(invite_response->created_by_user);
-    if(created_by_user_object == NULL) {
+    cJSON *created_by_user_local_JSON = business_access_user_summary_convertToJSON(invite_response->created_by_user);
+    if(created_by_user_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "created_by_user", created_by_user_object);
+    cJSON_AddItemToObject(item, "created_by_user", created_by_user_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -204,8 +185,50 @@ cJSON *invite_response_convertToJSON(invite_response_t *invite_response) {
 
     // invite_response->created_time
     if(invite_response->created_time) {
-    if(cJSON_AddNumberToObject(item, "created_time", invite_response->created_time) == NULL) {
+    if(cJSON_AddNumberToObject(item, "created_time", *invite_response->created_time) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // invite_response->id
+    if(invite_response->id) {
+    if(cJSON_AddStringToObject(item, "id", invite_response->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // invite_response->invite_data
+    if(invite_response->invite_data) {
+    cJSON *invite_data_local_JSON = invite_data_response_convertToJSON(invite_response->invite_data);
+    if(invite_data_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "invite_data", invite_data_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // invite_response->is_received_invite
+    if(invite_response->is_received_invite) {
+    if(cJSON_AddBoolToObject(item, "is_received_invite", *invite_response->is_received_invite) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // invite_response->user
+    if(invite_response->user) {
+    cJSON *user_local_JSON = business_access_user_summary_convertToJSON(invite_response->user);
+    if(user_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "user", user_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -221,59 +244,31 @@ invite_response_t *invite_response_parseFromJSON(cJSON *invite_responseJSON){
 
     invite_response_t *invite_response_local_var = NULL;
 
-    // define the local variable for invite_response->invite_data
-    base_invite_data_response_invite_data_t *invite_data_local_nonprim = NULL;
-
-    // define the local variable for invite_response->user
-    business_access_user_summary_t *user_local_nonprim = NULL;
-
     // define the local variable for invite_response->assets_summary
     invite_assets_summary_t *assets_summary_local_nonprim = NULL;
 
     // define the local list for invite_response->business_roles
     list_t *business_rolesList = NULL;
 
-    // invite_response->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(invite_responseJSON, "id");
-    if (cJSON_IsNull(id)) {
-        id = NULL;
-    }
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
-    {
-    goto end; //String
-    }
-    }
+    // define the local variable for invite_response->created_by_business
+    business_access_user_summary_t *created_by_business_local_nonprim = NULL;
 
-    // invite_response->invite_data
-    cJSON *invite_data = cJSON_GetObjectItemCaseSensitive(invite_responseJSON, "invite_data");
-    if (cJSON_IsNull(invite_data)) {
-        invite_data = NULL;
-    }
-    if (invite_data) { 
-    invite_data_local_nonprim = base_invite_data_response_invite_data_parseFromJSON(invite_data); //nonprimitive
-    }
+    // define the local variable for invite_response->created_by_user
+    business_access_user_summary_t *created_by_user_local_nonprim = NULL;
 
-    // invite_response->is_received_invite
-    cJSON *is_received_invite = cJSON_GetObjectItemCaseSensitive(invite_responseJSON, "is_received_invite");
-    if (cJSON_IsNull(is_received_invite)) {
-        is_received_invite = NULL;
-    }
-    if (is_received_invite) { 
-    if(!cJSON_IsBool(is_received_invite))
-    {
-    goto end; //Bool
-    }
-    }
+    // define the local variable for invite_response->created_time
+    int *created_time_local_var = NULL;
 
-    // invite_response->user
-    cJSON *user = cJSON_GetObjectItemCaseSensitive(invite_responseJSON, "user");
-    if (cJSON_IsNull(user)) {
-        user = NULL;
-    }
-    if (user) { 
-    user_local_nonprim = business_access_user_summary_parseFromJSON(user); //nonprimitive
-    }
+    char *id_local_str = NULL;
+
+    // define the local variable for invite_response->invite_data
+    invite_data_response_t *invite_data_local_nonprim = NULL;
+
+    // define the local variable for invite_response->is_received_invite
+    int *is_received_invite_local_var = NULL;
+
+    // define the local variable for invite_response->user
+    business_access_user_summary_t *user_local_nonprim = NULL;
 
     // invite_response->assets_summary
     cJSON *assets_summary = cJSON_GetObjectItemCaseSensitive(invite_responseJSON, "assets_summary");
@@ -311,9 +306,8 @@ invite_response_t *invite_response_parseFromJSON(cJSON *invite_responseJSON){
     if (cJSON_IsNull(created_by_business)) {
         created_by_business = NULL;
     }
-    object_t *created_by_business_local_object = NULL;
     if (created_by_business) { 
-    created_by_business_local_object = object_parseFromJSON(created_by_business); //object
+    created_by_business_local_nonprim = business_access_user_summary_parseFromJSON(created_by_business); //nonprimitive
     }
 
     // invite_response->created_by_user
@@ -321,9 +315,8 @@ invite_response_t *invite_response_parseFromJSON(cJSON *invite_responseJSON){
     if (cJSON_IsNull(created_by_user)) {
         created_by_user = NULL;
     }
-    object_t *created_by_user_local_object = NULL;
     if (created_by_user) { 
-    created_by_user_local_object = object_parseFromJSON(created_by_user); //object
+    created_by_user_local_nonprim = business_access_user_summary_parseFromJSON(created_by_user); //nonprimitive
     }
 
     // invite_response->created_time
@@ -336,31 +329,83 @@ invite_response_t *invite_response_parseFromJSON(cJSON *invite_responseJSON){
     {
     goto end; //Numeric
     }
+    created_time_local_var = malloc(sizeof(int));
+    if(!created_time_local_var)
+    {
+        goto end;
+    }
+    *created_time_local_var = created_time->valuedouble;
+    }
+
+    // invite_response->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(invite_responseJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // invite_response->invite_data
+    cJSON *invite_data = cJSON_GetObjectItemCaseSensitive(invite_responseJSON, "invite_data");
+    if (cJSON_IsNull(invite_data)) {
+        invite_data = NULL;
+    }
+    if (invite_data) { 
+    invite_data_local_nonprim = invite_data_response_parseFromJSON(invite_data); //nonprimitive
+    }
+
+    // invite_response->is_received_invite
+    cJSON *is_received_invite = cJSON_GetObjectItemCaseSensitive(invite_responseJSON, "is_received_invite");
+    if (cJSON_IsNull(is_received_invite)) {
+        is_received_invite = NULL;
+    }
+    if (is_received_invite) { 
+    if(!cJSON_IsBool(is_received_invite))
+    {
+    goto end; //Bool
+    }
+    is_received_invite_local_var = malloc(sizeof(int));
+    if(!is_received_invite_local_var)
+    {
+        goto end;
+    }
+    *is_received_invite_local_var = is_received_invite->valueint;
+    }
+
+    // invite_response->user
+    cJSON *user = cJSON_GetObjectItemCaseSensitive(invite_responseJSON, "user");
+    if (cJSON_IsNull(user)) {
+        user = NULL;
+    }
+    if (user) { 
+    user_local_nonprim = business_access_user_summary_parseFromJSON(user); //nonprimitive
     }
 
 
+    if (id && !cJSON_IsNull(id)) id_local_str = strdup(id->valuestring);
+
     invite_response_local_var = invite_response_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        invite_data ? invite_data_local_nonprim : NULL,
-        is_received_invite ? is_received_invite->valueint : 0,
-        user ? user_local_nonprim : NULL,
         assets_summary ? assets_summary_local_nonprim : NULL,
         business_roles ? business_rolesList : NULL,
-        created_by_business ? created_by_business_local_object : NULL,
-        created_by_user ? created_by_user_local_object : NULL,
-        created_time ? created_time->valuedouble : 0
+        created_by_business ? created_by_business_local_nonprim : NULL,
+        created_by_user ? created_by_user_local_nonprim : NULL,
+        created_time_local_var,
+        id_local_str,
+        invite_data ? invite_data_local_nonprim : NULL,
+        is_received_invite_local_var,
+        user ? user_local_nonprim : NULL
         );
+
+    if (!invite_response_local_var) {
+        goto end;
+    }
 
     return invite_response_local_var;
 end:
-    if (invite_data_local_nonprim) {
-        base_invite_data_response_invite_data_free(invite_data_local_nonprim);
-        invite_data_local_nonprim = NULL;
-    }
-    if (user_local_nonprim) {
-        business_access_user_summary_free(user_local_nonprim);
-        user_local_nonprim = NULL;
-    }
     if (assets_summary_local_nonprim) {
         invite_assets_summary_free(assets_summary_local_nonprim);
         assets_summary_local_nonprim = NULL;
@@ -373,6 +418,34 @@ end:
         }
         list_freeList(business_rolesList);
         business_rolesList = NULL;
+    }
+    if (created_by_business_local_nonprim) {
+        business_access_user_summary_free(created_by_business_local_nonprim);
+        created_by_business_local_nonprim = NULL;
+    }
+    if (created_by_user_local_nonprim) {
+        business_access_user_summary_free(created_by_user_local_nonprim);
+        created_by_user_local_nonprim = NULL;
+    }
+    if (created_time_local_var) {
+        free(created_time_local_var);
+        created_time_local_var = NULL;
+    }
+    if (id_local_str) {
+        free(id_local_str);
+        id_local_str = NULL;
+    }
+    if (invite_data_local_nonprim) {
+        invite_data_response_free(invite_data_local_nonprim);
+        invite_data_local_nonprim = NULL;
+    }
+    if (is_received_invite_local_var) {
+        free(is_received_invite_local_var);
+        is_received_invite_local_var = NULL;
+    }
+    if (user_local_nonprim) {
+        business_access_user_summary_free(user_local_nonprim);
+        user_local_nonprim = NULL;
     }
     return NULL;
 

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server VideoPinMetricTypes"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a VideoPinMetricTypes"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  VideoPinMetricTypes {
+    title = VideoPinMetricTypes
+    description = VideoPinMetricTypes
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  VideoPinMetricTypes {
+    title = VideoPinMetricTypes
+    description = VideoPinMetricTypes
+    implements = openapi_server.resourceTypes.VideoPinMetricTypes
+
+  }
+}

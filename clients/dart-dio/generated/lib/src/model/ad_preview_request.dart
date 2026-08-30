@@ -3,11 +3,12 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/ad_preview_create_from_pin.dart';
 import 'package:openapi/src/model/ad_preview_shopping.dart';
+import 'package:openapi/src/model/ad_preview_source_image.dart';
 import 'package:openapi/src/model/customizable_cta_type.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/ad_preview_create_from_image.dart';
+import 'package:openapi/src/model/ad_shopping_preview_creative_type.dart';
+import 'package:openapi/src/model/ad_preview_source_pin_id.dart';
+import 'package:openapi/src/model/base_preferred_media_type.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -18,10 +19,11 @@ part 'ad_preview_request.g.dart';
 ///
 /// Properties:
 /// * [imageUrl] - Image URL.
+/// * [promotionId] - Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
 /// * [title] - Title displayed below ad.
+/// * [creativeType] - Ad format of the shopping ad preview.
 /// * [pinId] - Pin ID.
 /// * [catalogProductGroupId] - Catalog Product Group Id.
-/// * [creativeType] - Ad format of the shopping ad preview.
 /// * [customizableCtaType] - Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
 /// * [heroImageTitle] - Title displayed below ad.
 /// * [heroImageUrl] - Hero image URL.
@@ -29,10 +31,11 @@ part 'ad_preview_request.g.dart';
 /// * [imageTag] - Multi image template tag.
 /// * [itemId] - Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.
 /// * [preferredMediaType] - Preferred media type.
+/// * [showPromotion] - Include promotion data in preview when available on catalog item. Defaults to false.
 /// * [videoTag] - Multi video template tag, image_tag and video_tag are mutual exclusive.
 @BuiltValue()
 abstract class AdPreviewRequest implements Built<AdPreviewRequest, AdPreviewRequestBuilder> {
-  /// One Of [AdPreviewCreateFromImage], [AdPreviewCreateFromPin], [AdPreviewShopping]
+  /// One Of [AdPreviewShopping], [AdPreviewSourceImage], [AdPreviewSourcePinId]
   OneOf get oneOf;
 
   AdPreviewRequest._();
@@ -78,50 +81,10 @@ class _$AdPreviewRequestSerializer implements PrimitiveSerializer<AdPreviewReque
   }) {
     final result = AdPreviewRequestBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(AdPreviewCreateFromImage), FullType(AdPreviewCreateFromPin), FullType(AdPreviewShopping), ]);
+    final targetType = const FullType(OneOf, [FullType(AdPreviewSourceImage), FullType(AdPreviewSourcePinId), FullType(AdPreviewShopping), ]);
     oneOfDataSrc = serialized;
     result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
     return result.build();
   }
-}
-
-class AdPreviewRequestCreativeTypeEnum extends EnumClass {
-
-  /// Ad format of the shopping ad preview.
-  @BuiltValueEnumConst(wireName: r'SHOPPING')
-  static const AdPreviewRequestCreativeTypeEnum SHOPPING = _$adPreviewRequestCreativeTypeEnum_SHOPPING;
-  /// Ad format of the shopping ad preview.
-  @BuiltValueEnumConst(wireName: r'CAROUSEL')
-  static const AdPreviewRequestCreativeTypeEnum CAROUSEL = _$adPreviewRequestCreativeTypeEnum_CAROUSEL;
-  /// Ad format of the shopping ad preview.
-  @BuiltValueEnumConst(wireName: r'COLLECTION')
-  static const AdPreviewRequestCreativeTypeEnum COLLECTION = _$adPreviewRequestCreativeTypeEnum_COLLECTION;
-  /// Ad format of the shopping ad preview.
-  @BuiltValueEnumConst(wireName: r'REGULAR')
-  static const AdPreviewRequestCreativeTypeEnum REGULAR = _$adPreviewRequestCreativeTypeEnum_REGULAR;
-
-  static Serializer<AdPreviewRequestCreativeTypeEnum> get serializer => _$adPreviewRequestCreativeTypeEnumSerializer;
-
-  const AdPreviewRequestCreativeTypeEnum._(String name): super(name);
-
-  static BuiltSet<AdPreviewRequestCreativeTypeEnum> get values => _$adPreviewRequestCreativeTypeEnumValues;
-  static AdPreviewRequestCreativeTypeEnum valueOf(String name) => _$adPreviewRequestCreativeTypeEnumValueOf(name);
-}
-
-class AdPreviewRequestPreferredMediaTypeEnum extends EnumClass {
-
-  /// Preferred media type.
-  @BuiltValueEnumConst(wireName: r'VIDEO')
-  static const AdPreviewRequestPreferredMediaTypeEnum VIDEO = _$adPreviewRequestPreferredMediaTypeEnum_VIDEO;
-  /// Preferred media type.
-  @BuiltValueEnumConst(wireName: r'IMAGE')
-  static const AdPreviewRequestPreferredMediaTypeEnum IMAGE = _$adPreviewRequestPreferredMediaTypeEnum_IMAGE;
-
-  static Serializer<AdPreviewRequestPreferredMediaTypeEnum> get serializer => _$adPreviewRequestPreferredMediaTypeEnumSerializer;
-
-  const AdPreviewRequestPreferredMediaTypeEnum._(String name): super(name);
-
-  static BuiltSet<AdPreviewRequestPreferredMediaTypeEnum> get values => _$adPreviewRequestPreferredMediaTypeEnumValues;
-  static AdPreviewRequestPreferredMediaTypeEnum valueOf(String name) => _$adPreviewRequestPreferredMediaTypeEnumValueOf(name);
 }
 

@@ -22,9 +22,9 @@
     },
     {
       "name": "is_featured",
-      "type": ["boolean", "null"],
+      "type": ["null", "boolean"],
       "doc": "boolean indicator of whether the product group is being featured or not",
-      "default": false
+      "default": null
     },
     {
       "name": "name",

@@ -333,7 +333,7 @@
 
 * `NL` (value: `"NL"`)
 
-* `NO` (value: `"NO"`)
+* `FALSE` (value: `"false"`)
 
 * `NP` (value: `"NP"`)
 

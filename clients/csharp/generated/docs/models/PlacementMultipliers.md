@@ -5,7 +5,7 @@ This represents a mapping from placement to a bid price adjustment.  Multiplier 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PLACEMENT** | **string** |  | [optional] 
+**PLACEMENT** | **PlacementType** | Placement type identifier. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

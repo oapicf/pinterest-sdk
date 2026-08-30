@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.NonNullableCatalogsCurrency
-import org.openapitools.model.NonNullableProductAvailabilityType
+import org.openapitools.model.ProductAvailability
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -29,23 +29,29 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsRetailProductMetadata(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("availability", required = true) val availability: NonNullableProductAvailabilityType,
+    @Schema(required = true, description = "")
+    @param:JsonProperty("availability")
+    @get:JsonProperty("availability", required = true) val availability: ProductAvailability,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
+    @Schema(required = true, description = "")
+    @param:JsonProperty("currency")
     @get:JsonProperty("currency", required = true) val currency: NonNullableCatalogsCurrency,
 
     @Schema(example = "DS0294", required = true, description = "The parent ID of the product.")
+    @param:JsonProperty("item_group_id")
     @get:JsonProperty("item_group_id", required = true) val itemGroupId: kotlin.String?,
 
     @Schema(example = "DS0294-L", required = true, description = "The user-created unique ID that represents the product.")
+    @param:JsonProperty("item_id")
     @get:JsonProperty("item_id", required = true) val itemId: kotlin.String,
 
     @Schema(example = "24.99", required = true, description = "The price of the product.")
+    @param:JsonProperty("price")
     @get:JsonProperty("price", required = true) val price: java.math.BigDecimal,
 
     @Schema(example = "14.99", required = true, description = "The discounted price of the product.")
+    @param:JsonProperty("sale_price")
     @get:JsonProperty("sale_price", required = true) val salePrice: java.math.BigDecimal?
 ) {
 

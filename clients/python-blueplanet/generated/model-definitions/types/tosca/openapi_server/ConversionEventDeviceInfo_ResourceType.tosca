@@ -7,6 +7,9 @@ authors     = ["F. Bar (foo@bar.baz)"]
 
 imports {
   Root = tosca.resourceTypes.Root
+  FormFactor = openapi_server.resourceTypes.FormFactor
+  NetworkType = openapi_server.resourceTypes.NetworkType
+  OsFamily = openapi_server.resourceTypes.OsFamily
 }
 resourceTypes {
 
@@ -46,9 +49,8 @@ resourceTypes {
           optional = false
         }
         form_factor {
-          type =  string
+          type = FormFactor
           description = "Device form factor"
-          enum = ["desktop", "laptop", "cellphone", "tablet", "smartwatch", "tv", "vr", "console", "other"]
           optional = false
         }
         kernel_version {
@@ -73,15 +75,13 @@ resourceTypes {
           optional = false
         }
         network_type {
-          type =  string
+          type = NetworkType
           description = "Network type: 4G, 5G, ethernet, wifi In Android: NetworkCapabilities.getNetworkCapabilities()"
-          enum = ["wifi", "cellular_2g", "cellular_3g", "cellular_4g", "cellular_5g", "cellular_6g", "ethernet", "unknown"]
           optional = false
         }
         os_family {
-          type =  string
+          type = OsFamily
           description = "OS Family"
-          enum = ["ios", "android", "macos", "windows", "linux", "bsd", "other"]
           optional = false
         }
         os_name {

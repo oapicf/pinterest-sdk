@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.catalogs_hotel_report_parameters_report import CatalogsHotelReportParametersReport  # noqa: F401,E501
+from app.openapi_server.models.catalogs_retail_report_parameters_report import CatalogsRetailReportParametersReport  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,17 +16,17 @@ class CatalogsRetailReportParameters(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, catalog_type: str=None, report: CatalogsHotelReportParametersReport=None):  # noqa: E501
+    def __init__(self, catalog_type: str=None, report: CatalogsRetailReportParametersReport=None):  # noqa: E501
         """CatalogsRetailReportParameters - a model defined in Swagger
 
         :param catalog_type: The catalog_type of this CatalogsRetailReportParameters.  # noqa: E501
         :type catalog_type: str
         :param report: The report of this CatalogsRetailReportParameters.  # noqa: E501
-        :type report: CatalogsHotelReportParametersReport
+        :type report: CatalogsRetailReportParametersReport
         """
         self.swagger_types = {
             'catalog_type': str,
-            'report': CatalogsHotelReportParametersReport
+            'report': CatalogsRetailReportParametersReport
         }
 
         self.attribute_map = {
@@ -76,22 +76,22 @@ class CatalogsRetailReportParameters(Model):
         self._catalog_type = catalog_type
 
     @property
-    def report(self) -> CatalogsHotelReportParametersReport:
+    def report(self) -> CatalogsRetailReportParametersReport:
         """Gets the report of this CatalogsRetailReportParameters.
 
 
         :return: The report of this CatalogsRetailReportParameters.
-        :rtype: CatalogsHotelReportParametersReport
+        :rtype: CatalogsRetailReportParametersReport
         """
         return self._report
 
     @report.setter
-    def report(self, report: CatalogsHotelReportParametersReport):
+    def report(self, report: CatalogsRetailReportParametersReport):
         """Sets the report of this CatalogsRetailReportParameters.
 
 
         :param report: The report of this CatalogsRetailReportParameters.
-        :type report: CatalogsHotelReportParametersReport
+        :type report: CatalogsRetailReportParametersReport
         """
         if report is None:
             raise ValueError("Invalid value for `report`, must not be `None`")  # noqa: E501

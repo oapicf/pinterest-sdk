@@ -3,12 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **NSDate*** |  | 
-**_id** | **NSString*** |  | 
-**updatedAt** | **NSDate*** |  | 
+**createdAt** | **NSDate*** |  | [readonly] 
+**_id** | **NSString*** | ID of the feed processing result. | 
 **ingestionDetails** | [**OAICatalogsFeedIngestionDetails***](OAICatalogsFeedIngestionDetails.md) |  | 
 **productCounts** | [**OAICatalogsFeedProductCounts***](OAICatalogsFeedProductCounts.md) |  | 
 **status** | [**OAICatalogsFeedProcessingStatus***](OAICatalogsFeedProcessingStatus.md) |  | 
+**updatedAt** | **NSDate*** |  | [readonly] 
 **validationDetails** | [**OAICatalogsFeedValidationDetails***](OAICatalogsFeedValidationDetails.md) |  | 
 **videoCounts** | [**OAICatalogsFeedVideoCounts***](OAICatalogsFeedVideoCounts.md) |  | [optional] 
 

@@ -10,11 +10,12 @@ open CatalogProductGroupsApiServiceImplementation
 open OpenAPI.Model.CatalogsListProductsByFilterRequest
 open OpenAPI.Model.CatalogsProductGroupPinsList200Response
 open OpenAPI.Model.CatalogsProductGroupProductCountsVertical
+open OpenAPI.Model.CatalogsProductGroupsCreateManyRequestItems
+open OpenAPI.Model.CatalogsProductGroupsCreateRequestSchema
 open OpenAPI.Model.CatalogsProductGroupsList200Response
-open OpenAPI.Model.CatalogsProductGroupsUpdateRequest
+open OpenAPI.Model.CatalogsProductGroupsUpdateRequestSchema
 open OpenAPI.Model.CatalogsVerticalProductGroup
-open OpenAPI.Model.Error
-open OpenAPI.Model.MultipleProductGroupsInner
+open OpenAPI.Model.PinterestLibError
 
 module CatalogProductGroupsApiHandler =
 
@@ -40,8 +41,12 @@ module CatalogProductGroupsApiHandler =
                             setStatusCode 400 >=> json resolved.content
                       | CatalogsProductGroupPinsListStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
+                      | CatalogsProductGroupPinsListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | CatalogsProductGroupPinsListStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | CatalogsProductGroupPinsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsProductGroupPinsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -62,6 +67,8 @@ module CatalogProductGroupsApiHandler =
           let serviceArgs = {  queryParams=queryParams;   bodyParams=bodyParams } : CatalogsProductGroupsCreateArgs
           let result = CatalogProductGroupsApiService.CatalogsProductGroupsCreate ctx serviceArgs
           return! (match result with
+                      | CatalogsProductGroupsCreateStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | CatalogsProductGroupsCreateStatusCode201 resolved ->
                             setStatusCode 201 >=> json resolved.content
                       | CatalogsProductGroupsCreateStatusCode400 resolved ->
@@ -70,8 +77,10 @@ module CatalogProductGroupsApiHandler =
                             setStatusCode 401 >=> json resolved.content
                       | CatalogsProductGroupsCreateStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
-                      | CatalogsProductGroupsCreateStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CatalogsProductGroupsCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsProductGroupsCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -100,8 +109,10 @@ module CatalogProductGroupsApiHandler =
                             setStatusCode 401 >=> json resolved.content
                       | CatalogsProductGroupsCreateManyStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
-                      | CatalogsProductGroupsCreateManyStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsCreateManyStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CatalogsProductGroupsCreateManyStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsProductGroupsCreateManyDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -120,6 +131,8 @@ module CatalogProductGroupsApiHandler =
           let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams;  } : CatalogsProductGroupsDeleteArgs
           let result = CatalogProductGroupsApiService.CatalogsProductGroupsDelete ctx serviceArgs
           return! (match result with
+                      | CatalogsProductGroupsDeleteStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
                       | CatalogsProductGroupsDeleteStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
                       | CatalogsProductGroupsDeleteStatusCode400 resolved ->
@@ -130,8 +143,8 @@ module CatalogProductGroupsApiHandler =
                             setStatusCode 403 >=> json resolved.content
                       | CatalogsProductGroupsDeleteStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | CatalogsProductGroupsDeleteStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsDeleteStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsProductGroupsDeleteDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -152,14 +165,16 @@ module CatalogProductGroupsApiHandler =
           return! (match result with
                       | CatalogsProductGroupsDeleteManyStatusCode204 resolved ->
                             setStatusCode 204 >=> text resolved.content
+                      | CatalogsProductGroupsDeleteManyStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
                       | CatalogsProductGroupsDeleteManyStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
                       | CatalogsProductGroupsDeleteManyStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | CatalogsProductGroupsDeleteManyStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | CatalogsProductGroupsDeleteManyStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsDeleteManyStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsProductGroupsDeleteManyDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -188,8 +203,8 @@ module CatalogProductGroupsApiHandler =
                             setStatusCode 403 >=> json resolved.content
                       | CatalogsProductGroupsGetStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | CatalogsProductGroupsGetStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsProductGroupsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -218,8 +233,8 @@ module CatalogProductGroupsApiHandler =
                             setStatusCode 403 >=> json resolved.content
                       | CatalogsProductGroupsListStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | CatalogsProductGroupsListStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsProductGroupsListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -240,10 +255,16 @@ module CatalogProductGroupsApiHandler =
           return! (match result with
                       | CatalogsProductGroupsProductCountsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | CatalogsProductGroupsProductCountsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CatalogsProductGroupsProductCountsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CatalogsProductGroupsProductCountsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
                       | CatalogsProductGroupsProductCountsGetStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | CatalogsProductGroupsProductCountsGetStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsProductCountsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsProductGroupsProductCountsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -274,8 +295,8 @@ module CatalogProductGroupsApiHandler =
                             setStatusCode 403 >=> json resolved.content
                       | CatalogsProductGroupsUpdateStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
-                      | CatalogsProductGroupsUpdateStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | CatalogsProductGroupsUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -298,10 +319,16 @@ module CatalogProductGroupsApiHandler =
           return! (match result with
                       | ProductsByProductGroupFilterListStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | ProductsByProductGroupFilterListStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
                       | ProductsByProductGroupFilterListStatusCode401 resolved ->
                             setStatusCode 401 >=> json resolved.content
-                      | ProductsByProductGroupFilterListStatusCode409 resolved ->
-                            setStatusCode 409 >=> json resolved.content
+                      | ProductsByProductGroupFilterListStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | ProductsByProductGroupFilterListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | ProductsByProductGroupFilterListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | ProductsByProductGroupFilterListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

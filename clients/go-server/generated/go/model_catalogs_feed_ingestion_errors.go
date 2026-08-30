@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.23.0
+ * API version: 5.28.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -44,7 +44,8 @@ type CatalogsFeedIngestionErrors struct {
 	LINE_LEVEL_INTERNAL_ERROR int32 `json:"LINE_LEVEL_INTERNAL_ERROR,omitempty"`
 }
 
-// AssertCatalogsFeedIngestionErrorsRequired checks if the required fields are not zero-ed
+// AssertCatalogsFeedIngestionErrorsRequired checks complex required fields (models, arrays, maps) and embedded parents.
+// Primitive required fields are validated for JSON request bodies in UnmarshalJSON so zero values remain valid.
 func AssertCatalogsFeedIngestionErrorsRequired(obj CatalogsFeedIngestionErrors) error {
 	return nil
 }

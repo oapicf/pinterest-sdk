@@ -1,36 +1,79 @@
 # PinterestSdkClient::PinMediaMetadata
 
-## Properties
+## Class instance methods
 
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **description** | **String** |  | [optional] |
-| **images** | [**ImageSize**](ImageSize.md) |  | [optional] |
-| **item_type** | **String** |  | [optional] |
-| **link** | **String** |  | [optional] |
-| **title** | **String** |  | [optional] |
-| **cover_image_url** | **String** |  | [optional] |
-| **duration** | **Float** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] |
-| **height** | **Integer** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] |
-| **video_url** | **String** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] |
-| **width** | **Integer** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] |
+### `openapi_one_of`
 
-## Example
+Returns the list of classes defined in oneOf.
+
+#### Example
 
 ```ruby
 require 'pinterest_sdk'
 
-instance = PinterestSdkClient::PinMediaMetadata.new(
-  description: null,
-  images: null,
-  item_type: null,
-  link: null,
-  title: null,
-  cover_image_url: null,
-  duration: null,
-  height: null,
-  video_url: null,
-  width: null
-)
+PinterestSdkClient::PinMediaMetadata.openapi_one_of
+# =>
+# [
+#   :'ImageMetadata',
+#   :'VideoMetadataWithItemType'
+# ]
 ```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's property name.
+
+#### Example
+
+```ruby
+require 'pinterest_sdk'
+
+PinterestSdkClient::PinMediaMetadata.openapi_discriminator_name
+# => :'item_type'
+```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's mapping.
+
+#### Example
+
+```ruby
+require 'pinterest_sdk'
+
+PinterestSdkClient::PinMediaMetadata.openapi_discriminator_mapping
+# =>
+# {
+#   :'image' => :'ImageMetadata',
+#   :'video' => :'VideoMetadataWithItemType'
+# }
+```
+
+### build
+
+Find the appropriate object from the `openapi_one_of` list and casts the data into it.
+
+#### Example
+
+```ruby
+require 'pinterest_sdk'
+
+PinterestSdkClient::PinMediaMetadata.build(data)
+# => #<ImageMetadata:0x00007fdd4aab02a0>
+
+PinterestSdkClient::PinMediaMetadata.build(data_that_doesnt_match)
+# => nil
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| **data** | **Mixed** | data to be matched against the list of oneOf items |
+
+#### Return type
+
+- `ImageMetadata`
+- `VideoMetadataWithItemType`
+- `nil` (if no type matches)
 

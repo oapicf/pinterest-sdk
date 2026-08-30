@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.23.0
+ * OpenAPI document version: 5.28.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -18,21 +18,21 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.RespondToInvitesResponseArrayItemsInner;
+import org.openapitools.model.RespondToInviteResultItem;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class RespondToInvitesResponseArray   {
   
-  private List<RespondToInvitesResponseArrayItemsInner> items = new ArrayList<>();
+  private List<RespondToInviteResultItem> items = new ArrayList<>();
 
   /**
    * List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
    */
-  public RespondToInvitesResponseArray items(List<RespondToInvitesResponseArrayItemsInner> items) {
+  public RespondToInvitesResponseArray items(List<RespondToInviteResultItem> items) {
     this.items = items;
     return this;
   }
@@ -40,10 +40,10 @@ public class RespondToInvitesResponseArray   {
   
   @ApiModelProperty(value = "List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.")
   @JsonProperty("items")
-  public List<RespondToInvitesResponseArrayItemsInner> getItems() {
+  public List<RespondToInviteResultItem> getItems() {
     return items;
   }
-  public void setItems(List<RespondToInvitesResponseArrayItemsInner> items) {
+  public void setItems(List<RespondToInviteResultItem> items) {
     this.items = items;
   }
 
@@ -80,10 +80,7 @@ public class RespondToInvitesResponseArray   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

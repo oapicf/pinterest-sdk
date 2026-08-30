@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.UserWebsiteSummary;
+import apimodels.UserWebsite;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * UserWebsitesGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class UserWebsitesGet200Response   {
   @JsonProperty("bookmark")
@@ -26,7 +26,7 @@ public class UserWebsitesGet200Response   {
   @NotNull
 @Valid
 
-  private List<@Valid UserWebsiteSummary> items = new ArrayList<>();
+  private List<@Valid UserWebsite> items = new ArrayList<>();
 
   public UserWebsitesGet200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -45,12 +45,12 @@ public class UserWebsitesGet200Response   {
     this.bookmark = bookmark;
   }
 
-  public UserWebsitesGet200Response items(List<@Valid UserWebsiteSummary> items) {
+  public UserWebsitesGet200Response items(List<@Valid UserWebsite> items) {
     this.items = items;
     return this;
   }
 
-  public UserWebsitesGet200Response addItemsItem(UserWebsiteSummary itemsItem) {
+  public UserWebsitesGet200Response addItemsItem(UserWebsite itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -62,11 +62,11 @@ public class UserWebsitesGet200Response   {
    * Get items
    * @return items
   **/
-  public List<@Valid UserWebsiteSummary> getItems() {
+  public List<@Valid UserWebsite> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid UserWebsiteSummary> items) {
+  public void setItems(List<@Valid UserWebsite> items) {
     this.items = items;
   }
 
@@ -106,10 +106,7 @@ public class UserWebsitesGet200Response   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

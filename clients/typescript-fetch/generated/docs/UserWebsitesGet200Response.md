@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `bookmark` | string
-`items` | [Array&lt;UserWebsiteSummary&gt;](UserWebsiteSummary.md)
+`items` | [Array&lt;UserWebsite&gt;](UserWebsite.md)
 
 ## Example
 

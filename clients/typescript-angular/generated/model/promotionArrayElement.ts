@@ -7,12 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PromotionResponse } from './promotionResponse';
+import { Promotion } from './promotion';
 import { Exception } from './exception';
 
 
 export interface PromotionArrayElement { 
-    data?: PromotionResponse;
+    data?: Promotion;
     exception?: Exception;
 }
 

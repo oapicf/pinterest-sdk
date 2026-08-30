@@ -8,13 +8,13 @@ use WWW::OpenAPIClient::Object::CatalogsHotelProductGroup;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_id** | **string** | Catalog id pertaining to the hotel product group. | 
+**catalog_id** | **string** | Catalog ID pertaining to the product group. | 
 **catalog_type** | **string** |  | 
 **created_at** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **description** | **string** |  | [optional] 
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**id** | **string** | ID of the hotel product group. | 
-**name** | **string** | Name of hotel product group | [optional] 
+**id** | **string** | ID of the catalog product group. | 
+**name** | **string** | Name of catalog product group | [optional] 
 **type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | 
 **updated_at** | **int** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
 

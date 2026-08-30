@@ -1,6 +1,7 @@
 (ns pinterest-rest-api.specs.account
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.user-account-type :refer :all]
             )
   (:import (java.io File)))
 
@@ -8,7 +9,7 @@
 (def account-data
   {
    (ds/opt :about) string?
-   (ds/opt :account_type) string?
+   (ds/opt :account_type) user-account-type-spec
    (ds/opt :board_count) int?
    (ds/opt :business_name) string?
    (ds/opt :follower_count) int?

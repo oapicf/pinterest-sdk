@@ -4,9 +4,9 @@ package org.openapitools.server.model
 /**
  * = ErrorDetail =
  *
- * @param count Number of records with this error for example: ''20''
- * @param errorCode Numeric error code for example: ''42''
- * @param message Error message description for example: ''Invalid email''
+ * @param count Number of records with this error for example: ''null''
+ * @param errorCode Numeric error code for example: ''null''
+ * @param message Error message description for example: ''null''
 */
 final case class ErrorDetail (
   count: Int,

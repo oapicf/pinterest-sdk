@@ -21,7 +21,7 @@ class AdvancedAuctionItemsGetRequest {
   String catalogId;
 
   /// A list of retail catalog items to fetch bid options for
-  List<AdvancedAuctionItemsGetRecord> items;
+  List<AdvancedAuctionKey> items;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AdvancedAuctionItemsGetRequest &&
@@ -55,16 +55,16 @@ class AdvancedAuctionItemsGetRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AdvancedAuctionItemsGetRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AdvancedAuctionItemsGetRequest[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'catalog_id'), 'Required key "AdvancedAuctionItemsGetRequest[catalog_id]" is missing from JSON.');
+        assert(json[r'catalog_id'] != null, 'Required key "AdvancedAuctionItemsGetRequest[catalog_id]" has a null value in JSON.');
+        assert(json.containsKey(r'items'), 'Required key "AdvancedAuctionItemsGetRequest[items]" is missing from JSON.');
+        assert(json[r'items'] != null, 'Required key "AdvancedAuctionItemsGetRequest[items]" has a null value in JSON.');
         return true;
       }());
 
       return AdvancedAuctionItemsGetRequest(
         catalogId: mapValueOfType<String>(json, r'catalog_id')!,
-        items: AdvancedAuctionItemsGetRecord.listFromJson(json[r'items']),
+        items: AdvancedAuctionKey.listFromJson(json[r'items']),
       );
     }
     return null;

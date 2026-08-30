@@ -66,12 +66,12 @@ Labels_list_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<LabelsResponse> new_list;
-			LabelsResponse inst;
+			list<Label> new_list;
+			Label inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("LabelsResponse")) {
-					jsonToValue(&inst, temp_json, "LabelsResponse", "");
+				if (isprimitive("Label")) {
+					jsonToValue(&inst, temp_json, "Label", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ Labels_list_200_response::toJson()
 	}
 	const gchar *bookmarkKey = "bookmark";
 	json_object_set_member(pJsonObject, bookmarkKey, node);
-	if (isprimitive("LabelsResponse")) {
-		list<LabelsResponse> new_list = static_cast<list <LabelsResponse> > (getItems());
-		node = converttoJson(&new_list, "LabelsResponse", "array");
+	if (isprimitive("Label")) {
+		list<Label> new_list = static_cast<list <Label> > (getItems());
+		node = converttoJson(&new_list, "Label", "array");
 	} else {
 		node = json_node_alloc();
-		list<LabelsResponse> new_list = static_cast<list <LabelsResponse> > (getItems());
+		list<Label> new_list = static_cast<list <Label> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<LabelsResponse>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<Label>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			LabelsResponse obj = *it;
+			Label obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ Labels_list_200_response::setBookmark(std::string  bookmark)
 	this->bookmark = bookmark;
 }
 
-std::list<LabelsResponse>
+std::list<Label>
 Labels_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Labels_list_200_response::setItems(std::list <LabelsResponse> items)
+Labels_list_200_response::setItems(std::list <Label> items)
 {
 	this->items = items;
 }

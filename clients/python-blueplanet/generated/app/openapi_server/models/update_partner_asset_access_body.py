@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from app.openapi_server.models.base_model import Model
-from app.openapi_server.models.update_partner_asset_access_body_accesses_inner import UpdatePartnerAssetAccessBodyAccessesInner  # noqa: F401,E501
+from app.openapi_server.models.update_partner_asset_access_item import UpdatePartnerAssetAccessItem  # noqa: F401,E501
 from openapi_server import util
 
 
@@ -16,14 +16,14 @@ class UpdatePartnerAssetAccessBody(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, accesses: List[UpdatePartnerAssetAccessBodyAccessesInner]=None):  # noqa: E501
+    def __init__(self, accesses: List[UpdatePartnerAssetAccessItem]=None):  # noqa: E501
         """UpdatePartnerAssetAccessBody - a model defined in Swagger
 
         :param accesses: The accesses of this UpdatePartnerAssetAccessBody.  # noqa: E501
-        :type accesses: List[UpdatePartnerAssetAccessBodyAccessesInner]
+        :type accesses: List[UpdatePartnerAssetAccessItem]
         """
         self.swagger_types = {
-            'accesses': List[UpdatePartnerAssetAccessBodyAccessesInner]
+            'accesses': List[UpdatePartnerAssetAccessItem]
         }
 
         self.attribute_map = {
@@ -44,22 +44,24 @@ class UpdatePartnerAssetAccessBody(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def accesses(self) -> List[UpdatePartnerAssetAccessBodyAccessesInner]:
+    def accesses(self) -> List[UpdatePartnerAssetAccessItem]:
         """Gets the accesses of this UpdatePartnerAssetAccessBody.
 
+        List of partner asset accesses to assign or update.  # noqa: E501
 
         :return: The accesses of this UpdatePartnerAssetAccessBody.
-        :rtype: List[UpdatePartnerAssetAccessBodyAccessesInner]
+        :rtype: List[UpdatePartnerAssetAccessItem]
         """
         return self._accesses
 
     @accesses.setter
-    def accesses(self, accesses: List[UpdatePartnerAssetAccessBodyAccessesInner]):
+    def accesses(self, accesses: List[UpdatePartnerAssetAccessItem]):
         """Sets the accesses of this UpdatePartnerAssetAccessBody.
 
+        List of partner asset accesses to assign or update.  # noqa: E501
 
         :param accesses: The accesses of this UpdatePartnerAssetAccessBody.
-        :type accesses: List[UpdatePartnerAssetAccessBodyAccessesInner]
+        :type accesses: List[UpdatePartnerAssetAccessItem]
         """
         if accesses is None:
             raise ValueError("Invalid value for `accesses`, must not be `None`")  # noqa: E501

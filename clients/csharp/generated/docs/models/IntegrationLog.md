@@ -6,8 +6,8 @@ Schema for log sent from an integration application.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientTimestamp** | **int** | Timestamp in milliseconds of when the log was executed at the client. | 
-**EventType** | **string** | Log event type | 
-**LogLevel** | **string** | Log level type | 
+**EventType** | **IntegrationLogEventType** | Log event type | 
+**LogLevel** | **IntegrationLogLevel** | Log level type | 
 **AdvertiserId** | **string** |  | [optional] 
 **AppVersionNumber** | **string** | Version number of the integration application. | [optional] 
 **Error** | [**IntegrationLogClientError**](IntegrationLogClientError.md) |  | [optional] 

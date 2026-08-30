@@ -1,0 +1,31 @@
+## ResourcesApi
+
+### Get ad accounts countries
+## Get ad accounts countries
+GET https://api.pinterest.com/v5/resources/ad_account_countries
+Accept: application/json
+
+### Get available metrics&#39; definitions
+## Get available metrics&#39; definitions
+GET https://api.pinterest.com/v5/resources/delivery_metrics?reportType={{reportType}}
+Accept: application/json
+
+### Get interest details
+## Get interest details
+GET https://api.pinterest.com/v5/resources/targeting/interests/{{interest_id}}
+Accept: application/json
+
+### Get lead form questions
+## Get lead form questions
+GET https://api.pinterest.com/v5/resources/lead_form_questions
+Accept: application/json
+
+### Get metrics ready state
+## Get metrics ready state
+GET https://api.pinterest.com/v5/resources/metrics_ready_state?date={{date}}
+Accept: application/json
+
+### Get targeting options
+## Get targeting options
+GET https://api.pinterest.com/v5/resources/targeting/{{targeting_type}}?adAccountId={{adAccountId}}&clientId={{clientId}}&oauthSignature={{oauthSignature}}&timestamp={{timestamp}}
+Accept: application/json

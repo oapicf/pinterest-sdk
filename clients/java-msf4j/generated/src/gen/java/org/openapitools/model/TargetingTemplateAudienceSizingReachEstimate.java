@@ -3,14 +3,13 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * TargetingTemplateAudienceSizingReachEstimate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class TargetingTemplateAudienceSizingReachEstimate   {
   @JsonProperty("estimate")
   private Long estimate;
@@ -30,7 +29,7 @@ public class TargetingTemplateAudienceSizingReachEstimate   {
    * Get estimate
    * @return estimate
   **/
-  @ApiModelProperty(example = "63492000", value = "")
+  @ApiModelProperty(value = "")
   public Long getEstimate() {
     return estimate;
   }
@@ -48,7 +47,7 @@ public class TargetingTemplateAudienceSizingReachEstimate   {
    * Get lowerBound
    * @return lowerBound
   **/
-  @ApiModelProperty(example = "47619000", value = "")
+  @ApiModelProperty(value = "")
   public Long getLowerBound() {
     return lowerBound;
   }
@@ -66,7 +65,7 @@ public class TargetingTemplateAudienceSizingReachEstimate   {
    * Get upperBound
    * @return upperBound
   **/
-  @ApiModelProperty(example = "79365000", value = "")
+  @ApiModelProperty(value = "")
   public Long getUpperBound() {
     return upperBound;
   }
@@ -112,10 +111,7 @@ public class TargetingTemplateAudienceSizingReachEstimate   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

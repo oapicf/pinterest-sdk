@@ -56,42 +56,42 @@ public:
 
 	/*! \brief Set Catalog Feed id pertaining to the catalog product group filter.
 	 */
-	void setFeedId(std::string  feed_id);
+	void setFeedId(std::string feed_id);
 	/*! \brief Get 
 	 */
 	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
-	/*! \brief Get Catalog id pertaining to the creative assets product group.
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters filters);
+	/*! \brief Get Catalog ID pertaining to the product group.
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the creative assets product group.
+	/*! \brief Set Catalog ID pertaining to the product group.
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setCatalogId(std::string catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(std::string catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
 
 	/*! \brief Set 
 	 */
-	void setCountry(Country  country);
+	void setCountry(Country country);
 	/*! \brief Get 
 	 */
 	CatalogsLocale getLocale();
 
 	/*! \brief Set 
 	 */
-	void setLocale(CatalogsLocale  locale);
+	void setLocale(CatalogsLocale locale);
 
 
     private:

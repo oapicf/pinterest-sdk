@@ -1,7 +1,7 @@
 #' Create a new QuizPinOption
 #'
 #' @description
-#'  This field contains multiple options to a quiz question.
+#' This field contains multiple options to a quiz question.
 #'
 #' @docType class
 #' @title QuizPinOption

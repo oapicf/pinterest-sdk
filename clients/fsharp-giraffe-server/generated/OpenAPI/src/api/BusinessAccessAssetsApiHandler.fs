@@ -7,24 +7,26 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open BusinessAccessAssetsApiHandlerParams
 open BusinessAccessAssetsApiServiceInterface
 open BusinessAccessAssetsApiServiceImplementation
+open OpenAPI.Model.AssetGroupDeletion
+open OpenAPI.Model.AssetGroupDeletionDelete
+open OpenAPI.Model.AssetGroupInput
+open OpenAPI.Model.AssetGroupInputCreate
+open OpenAPI.Model.AssetGroupModification
+open OpenAPI.Model.AssetGroupModificationReadOrUpdate
+open OpenAPI.Model.AssetPermissionType
+open OpenAPI.Model.AssetSearchBy
+open OpenAPI.Model.AssetSortBy
 open OpenAPI.Model.BusinessAssetMembersGet200Response
-open OpenAPI.Model.BusinessAssetPartnersGet200Response
 open OpenAPI.Model.BusinessAssetsGet200Response
-open OpenAPI.Model.BusinessMemberAssetsGet200Response
-open OpenAPI.Model.BusinessMembersAssetAccessDeleteRequest
+open OpenAPI.Model.BusinessMemberAssetsGetResponse
+open OpenAPI.Model.BusinessMembersAssetAccessDeleteBody
 open OpenAPI.Model.BusinessPartnerAssetAccessGet200Response
-open OpenAPI.Model.CreateAssetGroupBody
-open OpenAPI.Model.CreateAssetGroupResponse
-open OpenAPI.Model.DeleteAssetGroupBody
-open OpenAPI.Model.DeleteAssetGroupResponse
 open OpenAPI.Model.DeleteMemberAccessResultsResponseArray
 open OpenAPI.Model.DeletePartnerAssetAccessBody
-open OpenAPI.Model.DeletePartnerAssetsResultsResponseArray
-open OpenAPI.Model.Error
-open OpenAPI.Model.PartnerType
+open OpenAPI.Model.DeletePartnerAssetAccessResultsResponseArray
+open OpenAPI.Model.NonDraftEntityStatus
 open OpenAPI.Model.PermissionsWithOwner
-open OpenAPI.Model.UpdateAssetGroupBody
-open OpenAPI.Model.UpdateAssetGroupResponse
+open OpenAPI.Model.PinterestLibError
 open OpenAPI.Model.UpdateMemberAssetAccessBody
 open OpenAPI.Model.UpdateMemberAssetsResultsResponseArray
 open OpenAPI.Model.UpdatePartnerAssetAccessBody
@@ -51,8 +53,18 @@ module BusinessAccessAssetsApiHandler =
           return! (match result with
                       | AssetGroupCreateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AssetGroupCreateStatusCode201 resolved ->
+                            setStatusCode 201 >=> json resolved.content
                       | AssetGroupCreateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AssetGroupCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AssetGroupCreateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AssetGroupCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AssetGroupCreateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AssetGroupCreateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -74,8 +86,6 @@ module BusinessAccessAssetsApiHandler =
           return! (match result with
                       | AssetGroupDeleteStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
-                      | AssetGroupDeleteStatusCode400 resolved ->
-                            setStatusCode 400 >=> json resolved.content
                       | AssetGroupDeleteDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -99,6 +109,14 @@ module BusinessAccessAssetsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AssetGroupUpdateStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AssetGroupUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | AssetGroupUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | AssetGroupUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AssetGroupUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AssetGroupUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -119,6 +137,16 @@ module BusinessAccessAssetsApiHandler =
           return! (match result with
                       | BusinessAssetMembersGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BusinessAssetMembersGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BusinessAssetMembersGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BusinessAssetMembersGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BusinessAssetMembersGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BusinessAssetMembersGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BusinessAssetMembersGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -139,6 +167,16 @@ module BusinessAccessAssetsApiHandler =
           return! (match result with
                       | BusinessAssetPartnersGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BusinessAssetPartnersGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BusinessAssetPartnersGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BusinessAssetPartnersGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BusinessAssetPartnersGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BusinessAssetPartnersGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BusinessAssetPartnersGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -159,6 +197,16 @@ module BusinessAccessAssetsApiHandler =
           return! (match result with
                       | BusinessAssetsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BusinessAssetsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BusinessAssetsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BusinessAssetsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BusinessAssetsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BusinessAssetsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BusinessAssetsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -179,6 +227,16 @@ module BusinessAccessAssetsApiHandler =
           return! (match result with
                       | BusinessMemberAssetsGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BusinessMemberAssetsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BusinessMemberAssetsGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BusinessMemberAssetsGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BusinessMemberAssetsGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BusinessMemberAssetsGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BusinessMemberAssetsGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -221,6 +279,16 @@ module BusinessAccessAssetsApiHandler =
           return! (match result with
                       | BusinessMembersAssetAccessUpdateStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BusinessMembersAssetAccessUpdateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BusinessMembersAssetAccessUpdateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BusinessMembersAssetAccessUpdateStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BusinessMembersAssetAccessUpdateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BusinessMembersAssetAccessUpdateStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BusinessMembersAssetAccessUpdateDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -241,6 +309,16 @@ module BusinessAccessAssetsApiHandler =
           return! (match result with
                       | BusinessPartnerAssetAccessGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | BusinessPartnerAssetAccessGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | BusinessPartnerAssetAccessGetStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | BusinessPartnerAssetAccessGetStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | BusinessPartnerAssetAccessGetStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | BusinessPartnerAssetAccessGetStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | BusinessPartnerAssetAccessGetDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -283,6 +361,16 @@ module BusinessAccessAssetsApiHandler =
           return! (match result with
                       | UpdatePartnerAssetAccessHandlerImplStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | UpdatePartnerAssetAccessHandlerImplStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | UpdatePartnerAssetAccessHandlerImplStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | UpdatePartnerAssetAccessHandlerImplStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | UpdatePartnerAssetAccessHandlerImplStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | UpdatePartnerAssetAccessHandlerImplStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | UpdatePartnerAssetAccessHandlerImplDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

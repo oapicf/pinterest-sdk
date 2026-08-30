@@ -21,11 +21,11 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
-import org.openapitools.client.api.CatalogsItems
 import org.openapitools.client.api.CatalogsItemsBatch
+import org.openapitools.client.api.CatalogsItemsBatchPostRequest
 import org.openapitools.client.api.CatalogsItemsRequest
 import org.openapitools.client.api.Error
-import org.openapitools.client.api.ItemsBatchPostRequest
+import org.openapitools.client.api.ItemsPost200Response
 
 object CatalogItemsApi {
 
@@ -54,7 +54,7 @@ object CatalogItemsApi {
     } yield resp
   }
 
-  def itemsBatchPost(host: String, itemsBatchPostRequest: ItemsBatchPostRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsItemsBatch] = {
+  def itemsBatchPost(host: String, catalogsItemsBatchPostRequest: CatalogsItemsBatchPostRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsItemsBatch] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsItemsBatch] = jsonOf[CatalogsItemsBatch]
 
     val path = "/catalogs/items/batch"
@@ -69,14 +69,14 @@ object CatalogItemsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(itemsBatchPostRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsItemsBatchPostRequest)
       resp          <- client.expect[CatalogsItemsBatch](req)
 
     } yield resp
   }
 
-  def itemsPost(host: String, catalogsItemsRequest: CatalogsItemsRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsItems] = {
-    implicit val returnTypeDecoder: EntityDecoder[CatalogsItems] = jsonOf[CatalogsItems]
+  def itemsPost(host: String, catalogsItemsRequest: CatalogsItemsRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[ItemsPost200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[ItemsPost200Response] = jsonOf[ItemsPost200Response]
 
     val path = "/catalogs/items"
 
@@ -91,7 +91,7 @@ object CatalogItemsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsItemsRequest)
-      resp          <- client.expect[CatalogsItems](req)
+      resp          <- client.expect[ItemsPost200Response](req)
 
     } yield resp
   }
@@ -124,7 +124,7 @@ class HttpServiceCatalogItemsApi(service: HttpService) {
     } yield resp
   }
 
-  def itemsBatchPost(itemsBatchPostRequest: ItemsBatchPostRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsItemsBatch] = {
+  def itemsBatchPost(catalogsItemsBatchPostRequest: CatalogsItemsBatchPostRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsItemsBatch] = {
     implicit val returnTypeDecoder: EntityDecoder[CatalogsItemsBatch] = jsonOf[CatalogsItemsBatch]
 
     val path = "/catalogs/items/batch"
@@ -139,14 +139,14 @@ class HttpServiceCatalogItemsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(itemsBatchPostRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsItemsBatchPostRequest)
       resp          <- client.expect[CatalogsItemsBatch](req)
 
     } yield resp
   }
 
-  def itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[CatalogsItems] = {
-    implicit val returnTypeDecoder: EntityDecoder[CatalogsItems] = jsonOf[CatalogsItems]
+  def itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[ItemsPost200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[ItemsPost200Response] = jsonOf[ItemsPost200Response]
 
     val path = "/catalogs/items"
 
@@ -161,7 +161,7 @@ class HttpServiceCatalogItemsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(catalogsItemsRequest)
-      resp          <- client.expect[CatalogsItems](req)
+      resp          <- client.expect[ItemsPost200Response](req)
 
     } yield resp
   }

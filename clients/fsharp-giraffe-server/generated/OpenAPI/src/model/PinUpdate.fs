@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.AiDisclosuresUpdate
 open OpenAPI.Model.CarouselSlot
 open OpenAPI.Model.string option
 
@@ -11,6 +12,7 @@ module PinUpdate =
 
 
   type PinUpdate = {
+    AiDisclosures : AiDisclosuresUpdate;
     AltText : string option;
     BoardId : string;
     BoardSectionId : string option;

@@ -2,81 +2,34 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.model.HttpMethod;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * HTTP request details included in the log sent by the client.
  */
 
 @Schema(name = "IntegrationLogClientRequest", description = "HTTP request details included in the log sent by the client.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class IntegrationLogClientRequest {
 
   private String host;
 
-  /**
-   * Gets or Sets method
-   */
-  public enum MethodEnum {
-    GET("GET"),
-    
-    HEAD("HEAD"),
-    
-    POST("POST"),
-    
-    PUT("PUT"),
-    
-    DELETE("DELETE"),
-    
-    CONNECT("CONNECT"),
-    
-    OPTIONS("OPTIONS"),
-    
-    TRACE("TRACE"),
-    
-    PATCH("PATCH");
-
-    private final String value;
-
-    MethodEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static MethodEnum fromValue(String value) {
-      for (MethodEnum b : MethodEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private MethodEnum method;
+  private HttpMethod method;
 
   private String path;
 
@@ -95,7 +48,7 @@ public class IntegrationLogClientRequest {
   /**
    * Constructor with only required parameters
    */
-  public IntegrationLogClientRequest(String host, MethodEnum method, String path) {
+  public IntegrationLogClientRequest(String host, HttpMethod method, String path) {
     this.host = host;
     this.method = method;
     this.path = path;
@@ -121,7 +74,7 @@ public class IntegrationLogClientRequest {
     this.host = host;
   }
 
-  public IntegrationLogClientRequest method(MethodEnum method) {
+  public IntegrationLogClientRequest method(HttpMethod method) {
     this.method = method;
     return this;
   }
@@ -130,14 +83,14 @@ public class IntegrationLogClientRequest {
    * Get method
    * @return method
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "method", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("method")
-  public MethodEnum getMethod() {
+  public HttpMethod getMethod() {
     return method;
   }
 
-  public void setMethod(MethodEnum method) {
+  public void setMethod(HttpMethod method) {
     this.method = method;
   }
 
@@ -278,10 +231,7 @@ public class IntegrationLogClientRequest {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

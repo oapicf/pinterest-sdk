@@ -11,19 +11,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * CatalogsFeedIngestion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsFeedIngestion {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -55,16 +55,17 @@ public class CatalogsFeedIngestion {
   }
 
   /**
-   * Get createdAt
+   * Timestamp of the feed ingestion.
    * @return createdAt
    */
   @NotNull @Valid 
-  @Schema(name = "created_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", description = "Timestamp of the feed ingestion.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_at")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
 
+  @JsonProperty("created_at")
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
@@ -75,16 +76,17 @@ public class CatalogsFeedIngestion {
   }
 
   /**
-   * Get feedId
+   * Catalog Feed id pertaining to the feed ingestion.
    * @return feedId
    */
-  @NotNull 
-  @Schema(name = "feed_id", example = "56789", requiredMode = Schema.RequiredMode.REQUIRED)
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "feed_id", example = "2680059592705", description = "Catalog Feed id pertaining to the feed ingestion.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("feed_id")
   public String getFeedId() {
     return feedId;
   }
 
+  @JsonProperty("feed_id")
   public void setFeedId(String feedId) {
     this.feedId = feedId;
   }
@@ -95,16 +97,17 @@ public class CatalogsFeedIngestion {
   }
 
   /**
-   * Get id
+   * Unique identifier of a feed ingestion.
    * @return id
    */
-  @NotNull 
-  @Schema(name = "id", example = "01234", requiredMode = Schema.RequiredMode.REQUIRED)
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "2680059592705", description = "Unique identifier of a feed ingestion.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
   }
 
+  @JsonProperty("id")
   public void setId(String id) {
     this.id = id;
   }
@@ -115,16 +118,17 @@ public class CatalogsFeedIngestion {
   }
 
   /**
-   * Get status
+   * Status of the feed ingestion.
    * @return status
    */
   @NotNull @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "status", description = "Status of the feed ingestion.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("status")
   public CatalogsFeedProcessingStatus getStatus() {
     return status;
   }
 
+  @JsonProperty("status")
   public void setStatus(CatalogsFeedProcessingStatus status) {
     this.status = status;
   }
@@ -165,11 +169,8 @@ public class CatalogsFeedIngestion {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  private String toIndentedString(@Nullable Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RecordCounts = Initialize-PSOpenAPIToolsRecordCounts  -Invalid 50 `
- -Processed 1000 `
- -Valid 950
+$RecordCounts = Initialize-PSOpenAPIToolsRecordCounts  -Invalid null `
+ -Processed null `
+ -Valid null
 ```
 
 - Convert the resource to JSON

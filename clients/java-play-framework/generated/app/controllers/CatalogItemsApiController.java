@@ -1,10 +1,10 @@
 package controllers;
 
-import apimodels.CatalogsItems;
 import apimodels.CatalogsItemsBatch;
+import apimodels.CatalogsItemsBatchPostRequest;
 import apimodels.CatalogsItemsRequest;
-import apimodels.Error;
-import apimodels.ItemsBatchPostRequest;
+import apimodels.ItemsPost200Response;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -28,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogItemsApiController extends Controller {
     private final CatalogItemsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,7 +42,7 @@ public class CatalogItemsApiController extends Controller {
     }
 
     @ApiAction
-    public Result itemsBatchGet(Http.Request request,  @Pattern(regexp="^[a-zA-Z0-9]+$")String batchId) throws Exception {
+    public Result itemsBatchGet(Http.Request request,  @Pattern(regexp="^\\d+$")String batchId) throws Exception {
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
         if (valueadAccountId != null) {
@@ -55,15 +55,15 @@ public class CatalogItemsApiController extends Controller {
 
     @ApiAction
     public Result itemsBatchPost(Http.Request request) throws Exception {
-        JsonNode nodeitemsBatchPostRequest = request.body().asJson();
-        ItemsBatchPostRequest itemsBatchPostRequest;
-        if (nodeitemsBatchPostRequest != null) {
-            itemsBatchPostRequest = mapper.readValue(nodeitemsBatchPostRequest.toString(), ItemsBatchPostRequest.class);
+        JsonNode nodecatalogsItemsBatchPostRequest = request.body().asJson();
+        CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest;
+        if (nodecatalogsItemsBatchPostRequest != null) {
+            catalogsItemsBatchPostRequest = mapper.readValue(nodecatalogsItemsBatchPostRequest.toString(), CatalogsItemsBatchPostRequest.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(itemsBatchPostRequest);
+                OpenAPIUtils.validate(catalogsItemsBatchPostRequest);
             }
         } else {
-            throw new IllegalArgumentException("'ItemsBatchPostRequest' parameter is required");
+            throw new IllegalArgumentException("'CatalogsItemsBatchPostRequest' parameter is required");
         }
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
@@ -72,7 +72,7 @@ public class CatalogItemsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.itemsBatchPostHttp(request, itemsBatchPostRequest, adAccountId);
+        return imp.itemsBatchPostHttp(request, catalogsItemsBatchPostRequest, adAccountId);
     }
 
     @ApiAction

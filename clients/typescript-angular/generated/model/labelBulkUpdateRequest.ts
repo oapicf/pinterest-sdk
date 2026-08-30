@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { LabelStatusBulkUpdate } from './labelStatusBulkUpdate';
 
 
 export interface LabelBulkUpdateRequest { 
@@ -15,19 +16,12 @@ export interface LabelBulkUpdateRequest {
      */
     id: string;
     /**
-     * Set status to `ARCHIVED` to remove the label from the parent entity.
+     * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
      */
-    status?: LabelBulkUpdateRequest.StatusEnum;
-    /**
-     * </p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.
-     */
-    value?: string;
+    parent_id: string;
+    status: LabelStatusBulkUpdate;
 }
 export namespace LabelBulkUpdateRequest {
-    export const StatusEnum = {
-        Archived: 'ARCHIVED'
-    } as const;
-    export type StatusEnum = typeof StatusEnum[keyof typeof StatusEnum];
 }
 
 

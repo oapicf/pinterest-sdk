@@ -7,7 +7,7 @@ Protected Class BillingInvoicesGet200Response
 
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.BillingInvoiceResponse
+		items() As OpenAPIClient.Models.BillingInvoice
 	#tag EndProperty
 
 
@@ -60,7 +60,7 @@ Protected Class BillingInvoicesGet200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="BillingInvoiceResponse"
+			Type="BillingInvoice"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

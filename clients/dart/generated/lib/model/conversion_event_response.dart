@@ -17,6 +17,7 @@ class ConversionEventResponse {
     this.conversionEvent,
     this.conversionTagId,
     this.createdTime,
+    this.reportingConversionEvent,
   });
 
   /// Id of the ad account.
@@ -54,12 +55,22 @@ class ConversionEventResponse {
   ///
   int? createdTime;
 
+  /// For advertiser-defined events, the reporting event label shown in optimization UIs.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? reportingConversionEvent;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConversionEventResponse &&
     other.adAccountId == adAccountId &&
     other.conversionEvent == conversionEvent &&
     other.conversionTagId == conversionTagId &&
-    other.createdTime == createdTime;
+    other.createdTime == createdTime &&
+    other.reportingConversionEvent == reportingConversionEvent;
 
   @override
   int get hashCode =>
@@ -67,10 +78,11 @@ class ConversionEventResponse {
     (adAccountId == null ? 0 : adAccountId!.hashCode) +
     (conversionEvent == null ? 0 : conversionEvent!.hashCode) +
     (conversionTagId == null ? 0 : conversionTagId!.hashCode) +
-    (createdTime == null ? 0 : createdTime!.hashCode);
+    (createdTime == null ? 0 : createdTime!.hashCode) +
+    (reportingConversionEvent == null ? 0 : reportingConversionEvent!.hashCode);
 
   @override
-  String toString() => 'ConversionEventResponse[adAccountId=$adAccountId, conversionEvent=$conversionEvent, conversionTagId=$conversionTagId, createdTime=$createdTime]';
+  String toString() => 'ConversionEventResponse[adAccountId=$adAccountId, conversionEvent=$conversionEvent, conversionTagId=$conversionTagId, createdTime=$createdTime, reportingConversionEvent=$reportingConversionEvent]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -94,6 +106,11 @@ class ConversionEventResponse {
     } else {
       json[r'created_time'] = null;
     }
+    if (this.reportingConversionEvent != null) {
+      json[r'reporting_conversion_event'] = this.reportingConversionEvent;
+    } else {
+      json[r'reporting_conversion_event'] = null;
+    }
     return json;
   }
 
@@ -108,10 +125,6 @@ class ConversionEventResponse {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConversionEventResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConversionEventResponse[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -120,6 +133,7 @@ class ConversionEventResponse {
         conversionEvent: ConversionTagType.fromJson(json[r'conversion_event']),
         conversionTagId: mapValueOfType<String>(json, r'conversion_tag_id'),
         createdTime: mapValueOfType<int>(json, r'created_time'),
+        reportingConversionEvent: mapValueOfType<String>(json, r'reporting_conversion_event'),
       );
     }
     return null;

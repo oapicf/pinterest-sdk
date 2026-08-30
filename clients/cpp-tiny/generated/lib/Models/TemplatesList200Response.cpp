@@ -7,7 +7,7 @@ using namespace Tiny;
 Templates_list_200_response::Templates_list_200_response()
 {
 	bookmark = std::string();
-	items = std::list<TemplateResponse>();
+	items = std::list<AccountTemplate>();
 }
 
 Templates_list_200_response::Templates_list_200_response(std::string jsonString)
@@ -45,8 +45,8 @@ Templates_list_200_response::fromJson(std::string jsonObj)
         bourne::json value = object[itemsKey];
 
 
-        std::list<TemplateResponse> items_list;
-        TemplateResponse element;
+        std::list<AccountTemplate> items_list;
+        AccountTemplate element;
         for(auto& var : value.array_range())
         {
 
@@ -78,12 +78,12 @@ Templates_list_200_response::toJson()
 
 
 
-    std::list<TemplateResponse> items_list = getItems();
+    std::list<AccountTemplate> items_list = getItems();
     bourne::json items_arr = bourne::json::array();
 
     for(auto& var : items_list)
     {
-        TemplateResponse obj = var;
+        AccountTemplate obj = var;
         items_arr.append(obj.toJson());
     }
     object["items"] = items_arr;
@@ -102,19 +102,19 @@ Templates_list_200_response::getBookmark()
 }
 
 void
-Templates_list_200_response::setBookmark(std::string  bookmark)
+Templates_list_200_response::setBookmark(std::string bookmark)
 {
 	this->bookmark = bookmark;
 }
 
-std::list<TemplateResponse>
+std::list<AccountTemplate>
 Templates_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Templates_list_200_response::setItems(std::list <TemplateResponse> items)
+Templates_list_200_response::setItems(std::list<AccountTemplate> items)
 {
 	this->items = items;
 }

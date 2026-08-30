@@ -19,7 +19,7 @@ customerListUploadsCreate($ad_account_id, $customer_list_id, $customer_list_uplo
 
 Create customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>
+Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**
 
 ### Example
 
@@ -38,9 +38,9 @@ $apiInstance = new OpenAPI\Client\Api\CustomerListUploadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$customer_list_id = 'customer_list_id_example'; // string | Unique identifier of a customer list
-$customer_list_upload_create_request = new \OpenAPI\Client\Model\CustomerListUploadCreateRequest(); // \OpenAPI\Client\Model\CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+$ad_account_id = 'ad_account_id_example'; // string
+$customer_list_id = 'customer_list_id_example'; // string | Customer list ID.
+$customer_list_upload_create_request = new \OpenAPI\Client\Model\CustomerListUploadCreateRequest(); // \OpenAPI\Client\Model\CustomerListUploadCreateRequest
 
 try {
     $result = $apiInstance->customerListUploadsCreate($ad_account_id, $customer_list_id, $customer_list_upload_create_request);
@@ -54,9 +54,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **customer_list_id** | **string**| Unique identifier of a customer list | |
-| **customer_list_upload_create_request** | [**\OpenAPI\Client\Model\CustomerListUploadCreateRequest**](../Model/CustomerListUploadCreateRequest.md)| Parameters to create a customer list upload request | |
+| **ad_account_id** | **string**|  | |
+| **customer_list_id** | **string**| Customer list ID. | |
+| **customer_list_upload_create_request** | [**\OpenAPI\Client\Model\CustomerListUploadCreateRequest**](../Model/CustomerListUploadCreateRequest.md)|  | |
 
 ### Return type
 
@@ -78,12 +78,12 @@ try {
 ## `customerListUploadsGet()`
 
 ```php
-customerListUploadsGet($ad_account_id, $customer_list_id, $customer_list_upload_id): \OpenAPI\Client\Model\CustomerListUploadResponse
+customerListUploadsGet($ad_account_id, $customer_list_id, $customer_list_upload_id): \OpenAPI\Client\Model\CustomerListUpload
 ```
 
 Get customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>
+Get the metadata for a given upload by its ID.
 
 ### Example
 
@@ -102,9 +102,9 @@ $apiInstance = new OpenAPI\Client\Api\CustomerListUploadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$customer_list_id = 'customer_list_id_example'; // string | Unique identifier of a customer list
-$customer_list_upload_id = 'customer_list_upload_id_example'; // string | Unique identifier of a customer list upload
+$ad_account_id = 'ad_account_id_example'; // string
+$customer_list_id = 'customer_list_id_example'; // string | Customer list ID.
+$customer_list_upload_id = 'customer_list_upload_id_example'; // string | Customer List Upload ID.
 
 try {
     $result = $apiInstance->customerListUploadsGet($ad_account_id, $customer_list_id, $customer_list_upload_id);
@@ -118,13 +118,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **customer_list_id** | **string**| Unique identifier of a customer list | |
-| **customer_list_upload_id** | **string**| Unique identifier of a customer list upload | |
+| **ad_account_id** | **string**|  | |
+| **customer_list_id** | **string**| Customer list ID. | |
+| **customer_list_upload_id** | **string**| Customer List Upload ID. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CustomerListUploadResponse**](../Model/CustomerListUploadResponse.md)
+[**\OpenAPI\Client\Model\CustomerListUpload**](../Model/CustomerListUpload.md)
 
 ### Authorization
 
@@ -142,12 +142,12 @@ try {
 ## `customerListUploadsRun()`
 
 ```php
-customerListUploadsRun($ad_account_id, $customer_list_id, $customer_list_upload_id): \OpenAPI\Client\Model\CustomerListUploadResponse
+customerListUploadsRun($ad_account_id, $customer_list_id, $customer_list_upload_id): \OpenAPI\Client\Model\CustomerListUpload
 ```
 
 Run customer list upload
 
-<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>
+Begin processing a customer list upload.
 
 ### Example
 
@@ -166,9 +166,9 @@ $apiInstance = new OpenAPI\Client\Api\CustomerListUploadsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$customer_list_id = 'customer_list_id_example'; // string | Unique identifier of a customer list
-$customer_list_upload_id = 'customer_list_upload_id_example'; // string | Unique identifier of a customer list upload
+$ad_account_id = 'ad_account_id_example'; // string
+$customer_list_id = 'customer_list_id_example'; // string | Customer list ID.
+$customer_list_upload_id = 'customer_list_upload_id_example'; // string | Customer List Upload ID.
 
 try {
     $result = $apiInstance->customerListUploadsRun($ad_account_id, $customer_list_id, $customer_list_upload_id);
@@ -182,13 +182,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **customer_list_id** | **string**| Unique identifier of a customer list | |
-| **customer_list_upload_id** | **string**| Unique identifier of a customer list upload | |
+| **ad_account_id** | **string**|  | |
+| **customer_list_id** | **string**| Customer list ID. | |
+| **customer_list_upload_id** | **string**| Customer List Upload ID. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CustomerListUploadResponse**](../Model/CustomerListUploadResponse.md)
+[**\OpenAPI\Client\Model\CustomerListUpload**](../Model/CustomerListUpload.md)
 
 ### Authorization
 

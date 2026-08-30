@@ -13,7 +13,7 @@
 //
 // Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
-void
+integration_metadata_t*
 IntegrationsAPI_integrationsCommerceDel(apiClient_t *apiClient, char *external_business_id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -58,15 +58,49 @@ IntegrationsAPI_integrationsCommerceDel(apiClient_t *apiClient, char *external_b
                     "DELETE");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 204) {
-    //    printf("%s\n","Commerce Integration deleted successfully");
+    //    printf("%s\n","Resource deleted successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
-    //No return type
-end:
+    //nonprimitive not container
+    integration_metadata_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *IntegrationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = integration_metadata_parseFromJSON(IntegrationsAPIlocalVarJSON);
+        cJSON_Delete(IntegrationsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -79,6 +113,10 @@ end:
     
     free(localVarPath);
     free(localVarToReplace_external_business_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -132,19 +170,31 @@ IntegrationsAPI_integrationsCommerceGet(apiClient_t *apiClient, char *external_b
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Integration not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Can&#39;t access this integration metadata.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     integration_metadata_t *elementToReturn = NULL;
@@ -182,7 +232,7 @@ end:
 // Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
 integration_metadata_t*
-IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external_business_id, integration_request_patch_t *integration_request_patch)
+IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external_business_id, integration_metadata_update_t *integration_metadata_update)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -215,12 +265,12 @@ IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_integration_request_patch = NULL;
-    if (integration_request_patch != NULL)
+    cJSON *localVarSingleItemJSON_integration_metadata_update = NULL;
+    if (integration_metadata_update != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_integration_request_patch = integration_request_patch_convertToJSON(integration_request_patch);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_integration_request_patch);
+        localVarSingleItemJSON_integration_metadata_update = integration_metadata_update_convertToJSON(integration_metadata_update);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_integration_metadata_update);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -238,19 +288,31 @@ IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Integration not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Can&#39;t access this integration metadata.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     integration_metadata_t *elementToReturn = NULL;
@@ -276,9 +338,9 @@ IntegrationsAPI_integrationsCommercePatch(apiClient_t *apiClient, char *external
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_external_business_id);
-    if (localVarSingleItemJSON_integration_request_patch) {
-        cJSON_Delete(localVarSingleItemJSON_integration_request_patch);
-        localVarSingleItemJSON_integration_request_patch = NULL;
+    if (localVarSingleItemJSON_integration_metadata_update) {
+        cJSON_Delete(localVarSingleItemJSON_integration_metadata_update);
+        localVarSingleItemJSON_integration_metadata_update = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -293,7 +355,7 @@ end:
 // Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
 integration_metadata_t*
-IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_request_t *integration_request)
+IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_metadata_create_t *integration_metadata_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -314,12 +376,12 @@ IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_req
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_integration_request = NULL;
-    if (integration_request != NULL)
+    cJSON *localVarSingleItemJSON_integration_metadata_create = NULL;
+    if (integration_metadata_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_integration_request = integration_request_convertToJSON(integration_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_integration_request);
+        localVarSingleItemJSON_integration_metadata_create = integration_metadata_create_convertToJSON(integration_metadata_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_integration_metadata_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -337,19 +399,35 @@ IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_req
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Integration not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 409) {
-    //    printf("%s\n","Can&#39;t access this integration metadata.");
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     integration_metadata_t *elementToReturn = NULL;
@@ -374,9 +452,9 @@ IntegrationsAPI_integrationsCommercePost(apiClient_t *apiClient, integration_req
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarSingleItemJSON_integration_request) {
-        cJSON_Delete(localVarSingleItemJSON_integration_request);
-        localVarSingleItemJSON_integration_request = NULL;
+    if (localVarSingleItemJSON_integration_metadata_create) {
+        cJSON_Delete(localVarSingleItemJSON_integration_metadata_create);
+        localVarSingleItemJSON_integration_metadata_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -436,15 +514,31 @@ IntegrationsAPI_integrationsGetById(apiClient_t *apiClient, char *id)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Integration not found.");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     integration_record_t *elementToReturn = NULL;
@@ -540,11 +634,31 @@ IntegrationsAPI_integrationsGetList(apiClient_t *apiClient, char *bookmark, int 
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error.");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     integrations_get_list_200_response_t *elementToReturn = NULL;
@@ -605,7 +719,7 @@ end:
 // This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 //
 integration_logs_success_response_t*
-IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_request_t *integration_logs_request)
+IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_request_create_t *integration_logs_request_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -626,12 +740,12 @@ IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_re
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_integration_logs_request = NULL;
-    if (integration_logs_request != NULL)
+    cJSON *localVarSingleItemJSON_integration_logs_request_create = NULL;
+    if (integration_logs_request_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_integration_logs_request = integration_logs_request_convertToJSON(integration_logs_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_integration_logs_request);
+        localVarSingleItemJSON_integration_logs_request_create = integration_logs_request_create_convertToJSON(integration_logs_request_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_integration_logs_request_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -649,15 +763,31 @@ IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_re
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success.");
+    //    printf("%s\n","The request has succeeded.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
-    //    printf("%s\n","Bad request.");
+    //    printf("%s\n","The server could not understand the request due to invalid syntax.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     integration_logs_success_response_t *elementToReturn = NULL;
@@ -682,9 +812,9 @@ IntegrationsAPI_integrationsLogsPost(apiClient_t *apiClient, integration_logs_re
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarSingleItemJSON_integration_logs_request) {
-        cJSON_Delete(localVarSingleItemJSON_integration_logs_request);
-        localVarSingleItemJSON_integration_logs_request = NULL;
+    if (localVarSingleItemJSON_integration_logs_request_create) {
+        cJSON_Delete(localVarSingleItemJSON_integration_logs_request_create);
+        localVarSingleItemJSON_integration_logs_request_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;

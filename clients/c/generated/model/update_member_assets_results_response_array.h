@@ -15,7 +15,7 @@
 
 typedef struct update_member_assets_results_response_array_t update_member_assets_results_response_array_t;
 
-#include "update_member_assets_results_response_array_items_inner.h"
+#include "update_member_asset_result_item.h"
 
 
 

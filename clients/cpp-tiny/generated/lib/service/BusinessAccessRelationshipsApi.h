@@ -8,22 +8,20 @@
 #include "Helpers.h"
 #include <list>
 
-#include "Brand_accounts_create_200_response.h"
-#include "Brand_accounts_create_request.h"
-#include "Brand_accounts_update_request.h"
-#include "DeletePartnersRequest.h"
-#include "DeletePartnersResponse.h"
-#include "DeletedMembersResponse.h"
-#include "Error.h"
+#include "BrandAccount.h"
+#include "BrandAccountCreate.h"
+#include "BrandAccountUpdate.h"
+#include "BusinessMembershipMember.h"
+#include "DeleteBusinessMembershipBody.h"
+#include "DeleteBusinessPartners.h"
+#include "DeleteBusinessPartnersDelete.h"
+#include "Delete_business_membership_200_response.h"
 #include "Get_business_employers_200_response.h"
-#include "Get_business_members_200_response.h"
-#include "Get_business_partners_200_response.h"
 #include "MemberBusinessRole.h"
-#include "MembersToDeleteBody.h"
 #include "PartnerType.h"
-#include "System_user_update_request.h"
-#include "UpdateMemberBusinessRoleBody.h"
-#include "UpdateMemberResultsResponseArray.h"
+#include "Pinterest.Lib.Error.h"
+#include "SystemUserUpdateWithRequiredBody.h"
+#include "UpdateBusinessMembershipsResponse.h"
 
 namespace Tiny {
 
@@ -36,46 +34,46 @@ class BusinessAccessRelationshipsApi : public Service {
 public:
     BusinessAccessRelationshipsApi() = default;
 
-    virtual ~BusinessAccessRelationshipsApi() = default;
+    virtual ~BusinessAccessRelationshipsApi();
 
     /**
     * Create a Brand Account.
     *
     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
     * \param businessHierarchyId business hierarchy node id *Required*
-    * \param brandAccountsCreateRequest  *Required*
+    * \param brandAccountCreate  *Required*
     */
     Response<
-                Brand_accounts_create_200_response
+                BrandAccount
         >
     brandAccounts_create(
             
             std::string businessHierarchyId
             , 
             
-            Brand_accounts_create_request brandAccountsCreateRequest
+            BrandAccountCreate brandAccountCreate
             
     );
     /**
     * Update a Brand Account.
     *
     * Update an existing Brand Account
+    * \param brandAccountId  *Required*
     * \param businessHierarchyId business hierarchy node id *Required*
-    * \param brandAccountId Unique identifier of a brand account. *Required*
-    * \param brandAccountsUpdateRequest  *Required*
+    * \param brandAccountUpdate  *Required*
     */
     Response<
-                Brand_accounts_create_200_response
+                BrandAccount
         >
     brandAccounts_update(
-            
-            std::string businessHierarchyId
-            , 
             
             std::string brandAccountId
             , 
             
-            Brand_accounts_update_request brandAccountsUpdateRequest
+            std::string businessHierarchyId
+            , 
+            
+            BrandAccountUpdate brandAccountUpdate
             
     );
     /**
@@ -83,17 +81,17 @@ public:
     *
     * Terminate memberships between the specified members and your business.
     * \param businessId Business id *Required*
-    * \param membersToDeleteBody List of members with role to delete. *Required*
+    * \param deleteBusinessMembershipBody  *Required*
     */
     Response<
-                DeletedMembersResponse
+                Delete_business_membership_200_response
         >
     deleteBusinessMembership(
             
             std::string businessId
             , 
             
-            MembersToDeleteBody membersToDeleteBody
+            DeleteBusinessMembershipBody deleteBusinessMembershipBody
             
     );
     /**
@@ -101,35 +99,39 @@ public:
     *
     * Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
     * \param businessId Unique identifier of the requesting business. *Required*
-    * \param deletePartnersRequest An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete.  *Required*
+    * \param deleteBusinessPartnersDelete  *Required*
     */
     Response<
-                DeletePartnersResponse
+                DeleteBusinessPartners
         >
     deleteBusinessPartners(
             
             std::string businessId
             , 
             
-            DeletePartnersRequest deletePartnersRequest
+            DeleteBusinessPartnersDelete deleteBusinessPartnersDelete
             
     );
     /**
     * List business employers for user.
     *
     * Get all of the viewing user's business employers.
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param assetsSummary Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
     * \param bookmark Cursor used to fetch the next page of items
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
                 Get_business_employers_200_response
         >
     get_businessEmployers(
             
-            int pageSize
+            bool assetsSummary
             , 
             
             std::string bookmark
+            , 
+            
+            int pageSize
             
     );
     /**
@@ -143,10 +145,10 @@ public:
     * \param memberIds A list of business members ids separated by comma.
     * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
     * \param bookmark Cursor used to fetch the next page of items
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
-                Get_business_members_200_response
+                Get_business_employers_200_response
         >
     get_businessMembers(
             
@@ -180,14 +182,15 @@ public:
     * Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.
     * \param businessId Unique identifier of the requesting business. *Required*
     * \param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-    * \param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+    * \param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
     * \param partnerIds A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
     * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
-    * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    * \param sortAscending Sort ascending.
     * \param bookmark Cursor used to fetch the next page of items
+    * \param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     */
     Response<
-                Get_business_partners_200_response
+                Get_business_employers_200_response
         >
     get_businessPartners(
             
@@ -206,10 +209,13 @@ public:
             int startIndex
             , 
             
-            int pageSize
+            bool sortAscending
             , 
             
             std::string bookmark
+            , 
+            
+            int pageSize
             
     );
     /**
@@ -218,7 +224,7 @@ public:
     * Update a system user information such as name.
     * \param businessId Unique identifier of the requesting business. *Required*
     * \param systemUserId Unique identifier of a system user. *Required*
-    * \param systemUserUpdateRequest  *Required*
+    * \param systemUserUpdateWithRequiredBody  *Required*
     */
     Response<
             String
@@ -231,7 +237,7 @@ public:
             std::string systemUserId
             , 
             
-            System_user_update_request systemUserUpdateRequest
+            SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody
             
     );
     /**
@@ -239,16 +245,16 @@ public:
     *
     * Update a member's business role within the business.
     * \param businessId Business id *Required*
-    * \param updateMemberBusinessRoleBody List of objects with the member id and the business_role. *Required*
+    * \param businessMembershipMember  *Required*
     */
     Response<
-                UpdateMemberResultsResponseArray
+                UpdateBusinessMembershipsResponse
         >
     update_businessMemberships(
             
             std::string businessId
             , 
-            std::list<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody
+            std::list<BusinessMembershipMember> businessMembershipMember
             
             
     );

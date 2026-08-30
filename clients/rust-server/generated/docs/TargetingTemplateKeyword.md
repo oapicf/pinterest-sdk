@@ -1,0 +1,11 @@
+# TargetingTemplateKeyword
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**match_type** | [***models::MatchType**](MatchType.md) |  | [optional] [default to None]
+**value** | **String** | The keyword targeting (120 chars max). | [optional] [default to None]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

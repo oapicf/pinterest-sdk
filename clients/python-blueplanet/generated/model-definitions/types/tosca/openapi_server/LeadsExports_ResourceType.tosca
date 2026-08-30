@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadsExports"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadsExports"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  LeadsExports {
+    title = LeadsExports
+    description = LeadsExports
+    derivedFrom = Root
+    properties {
+        leads_export_id {
+          type =  string
+          description = "ID for the leads export job."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadsExports {
+    title = LeadsExports
+    description = LeadsExports
+    implements = openapi_server.resourceTypes.LeadsExports
+
+  }
+}

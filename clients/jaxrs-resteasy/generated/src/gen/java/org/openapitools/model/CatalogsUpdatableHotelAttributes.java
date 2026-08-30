@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
 public class CatalogsUpdatableHotelAttributes   {
   
   private CatalogsHotelAddress address;
@@ -39,9 +39,10 @@ public class CatalogsUpdatableHotelAttributes   {
   private String salePrice;
 
   /**
+   * Hotel address
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Hotel address")
   @JsonProperty("address")
   @Valid
   public CatalogsHotelAddress getAddress() {
@@ -169,9 +170,10 @@ public class CatalogsUpdatableHotelAttributes   {
   }
 
   /**
+   * If specified, you must provide all properties
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "If specified, you must provide all properties")
   @JsonProperty("guest_ratings")
   @Valid
   public CatalogsHotelGuestRatings getGuestRatings() {
@@ -326,10 +328,7 @@ public class CatalogsUpdatableHotelAttributes   {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

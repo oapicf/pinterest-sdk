@@ -1,9 +1,9 @@
 const utils = require('../utils/utils');
 const ActionType = require('../models/ActionType');
+const BidFloorObjectiveType = require('../models/BidFloorObjectiveType');
 const Country = require('../models/Country');
 const CreativeType = require('../models/CreativeType');
 const Currency = require('../models/Currency');
-const ObjectiveType = require('../models/ObjectiveType');
 const OptimizationGoalMetadata = require('../models/OptimizationGoalMetadata');
 
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}objective_type`,
-                ...ObjectiveType.fields(`${keyPrefix}objective_type`, isInput),
+                ...BidFloorObjectiveType.fields(`${keyPrefix}objective_type`, isInput),
             },
             ...OptimizationGoalMetadata.fields(`${keyPrefix}optimization_goal_metadata`, isInput),
         ]

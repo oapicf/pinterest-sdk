@@ -1,2 +1,2 @@
-testCase,httpStatusCode,adAccountId,audienceCreateRequest,adAccountId,audienceId,adAccountId,bookmark,order,pageSize,ownershipType,adAccountId,audienceId,audienceUpdateRequest
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,adAccountId,adAccountsAudienceCreate,audienceId,adAccountId,adAccountId,bookmark,pageSize,order,ownershipType,excludeNca,audienceId,adAccountId,adAccountsAudienceUpdate
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0

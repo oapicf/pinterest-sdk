@@ -13,7 +13,7 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
-            CustomerListRequest customerListRequest
+            CustomerListCreate customerListCreate
             
         )
         {
@@ -42,11 +42,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | customerListRequest
+            // Body     | customerListCreate
 
 
 
-            payload = customerListRequest.toJson().dump();
+            payload = customerListCreate.toJson().dump();
 
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
@@ -135,13 +135,16 @@ using namespace Tiny;
             std::string adAccountId
             , 
             
+            std::string bookmark
+            , 
+            
             int pageSize
             , 
             
-            std::string order
+            Pinterest.Lib.PaginationOrder order
             , 
             
-            std::string bookmark
+            bool excludeNca
             
         )
         {
@@ -150,10 +153,11 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | pageSize order bookmark 
+            // Query    | bookmark pageSize order excludeNca 
+            addQueryParam("bookmark",bookmark);
             addQueryParam("page_size",pageSize);
             addQueryParam("order",order);
-            addQueryParam("bookmark",bookmark);
+            addQueryParam("exclude_nca",excludeNca);
 
             // Form     | 
 
@@ -201,7 +205,7 @@ using namespace Tiny;
             std::string customerListId
             , 
             
-            CustomerListUpdateRequest customerListUpdateRequest
+            CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody
             
         )
         {
@@ -238,11 +242,11 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | customerListUpdateRequest
+            // Body     | customerListUpdateWithRequiredBody
 
 
 
-            payload = customerListUpdateRequest.toJson().dump();
+            payload = customerListUpdateWithRequiredBody.toJson().dump();
 
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 

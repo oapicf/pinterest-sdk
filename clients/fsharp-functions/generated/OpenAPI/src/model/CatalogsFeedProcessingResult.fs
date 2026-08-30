@@ -19,14 +19,14 @@ module CatalogsFeedProcessingResult =
     CreatedAt : DateTime;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
-    [<JsonProperty(PropertyName = "updated_at")>]
-    UpdatedAt : DateTime;
     [<JsonProperty(PropertyName = "ingestion_details")>]
     IngestionDetails : CatalogsFeedIngestionDetails;
     [<JsonProperty(PropertyName = "product_counts")>]
     ProductCounts : CatalogsFeedProductCounts;
     [<JsonProperty(PropertyName = "status")>]
     Status : CatalogsFeedProcessingStatus;
+    [<JsonProperty(PropertyName = "updated_at")>]
+    UpdatedAt : DateTime;
     [<JsonProperty(PropertyName = "validation_details")>]
     ValidationDetails : CatalogsFeedValidationDetails;
     [<JsonProperty(PropertyName = "video_counts")>]

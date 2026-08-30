@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **About** | **String** | Profile about description. | [optional] 
-**AccountType** | **String** | Type of account | [optional] 
-**BoardCount** | **Int32** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
+**AccountType** | [**UserAccountType**](UserAccountType.md) | Type of account | [optional] 
+**BoardCount** | **Int32** |   User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
 **BusinessName** | **String** |  | [optional] 
 **FollowerCount** | **Int32** | User account follower count. | [optional] [readonly] 
 **FollowingCount** | **Int32** | User account following count. | [optional] [readonly] 

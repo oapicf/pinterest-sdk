@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.UpdateMemberAssetsResultsResponseArrayItemsInner;
+import org.openapitools.model.UpdateMemberAssetResultItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,27 +19,27 @@ public class UpdateMemberAssetsResultsResponseArray  {
   */
   @ApiModelProperty(value = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.")
   @Valid
-  private List<@Valid UpdateMemberAssetsResultsResponseArrayItemsInner> items = new ArrayList<>();
+  private List<@Valid UpdateMemberAssetResultItem> items = new ArrayList<>();
  /**
   * List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
   * @return items
   */
   @JsonProperty("items")
-  public List<@Valid UpdateMemberAssetsResultsResponseArrayItemsInner> getItems() {
+  public List<@Valid UpdateMemberAssetResultItem> getItems() {
     return items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
- public void setItems(List<@Valid UpdateMemberAssetsResultsResponseArrayItemsInner> items) {
+ public void setItems(List<@Valid UpdateMemberAssetResultItem> items) {
     this.items = items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
-  public UpdateMemberAssetsResultsResponseArray items(List<@Valid UpdateMemberAssetsResultsResponseArrayItemsInner> items) {
+  public UpdateMemberAssetsResultsResponseArray items(List<@Valid UpdateMemberAssetResultItem> items) {
     this.items = items;
     return this;
   }
@@ -47,7 +47,7 @@ public class UpdateMemberAssetsResultsResponseArray  {
   /**
    * Adds a new item to the <code>items</code> list.
    */
-  public UpdateMemberAssetsResultsResponseArray addItemsItem(UpdateMemberAssetsResultsResponseArrayItemsInner itemsItem) {
+  public UpdateMemberAssetsResultsResponseArray addItemsItem(UpdateMemberAssetResultItem itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -85,10 +85,7 @@ public class UpdateMemberAssetsResultsResponseArray  {
    * (except the first line).
    */
   private static String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
 

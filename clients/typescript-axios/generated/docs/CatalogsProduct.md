@@ -1,12 +1,11 @@
 # CatalogsProduct
 
-Catalogs product for all verticals
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
+**catalog_type** | **string** |  | [default to undefined]
 **metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | [default to undefined]
 **pin** | [**Pin**](Pin.md) |  | [default to undefined]
 

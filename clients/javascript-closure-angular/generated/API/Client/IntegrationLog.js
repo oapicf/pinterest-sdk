@@ -34,7 +34,7 @@ API.Client.IntegrationLog.prototype.error;
 
 /**
  * Log event type
- * @type {!string}
+ * @type {!API.Client.IntegrationLogEventType}
  * @export
  */
 API.Client.IntegrationLog.prototype.eventType;
@@ -53,7 +53,7 @@ API.Client.IntegrationLog.prototype.feedProfileId;
 
 /**
  * Log level type
- * @type {!string}
+ * @type {!API.Client.IntegrationLogLevel}
  * @export
  */
 API.Client.IntegrationLog.prototype.logLevel;
@@ -90,14 +90,3 @@ API.Client.IntegrationLog.prototype.request;
  */
 API.Client.IntegrationLog.prototype.tagId;
 
-/** @enum {string} */
-API.Client.IntegrationLog.EventTypeEnum = { 
-  APP: 'APP',
-  API: 'API',
-}
-/** @enum {string} */
-API.Client.IntegrationLog.LogLevelEnum = { 
-  INFO: 'INFO',
-  WARN: 'WARN',
-  ERROR: 'ERROR',
-}

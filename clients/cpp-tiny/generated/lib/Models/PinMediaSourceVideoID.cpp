@@ -191,7 +191,7 @@ PinMediaSourceVideoID::getCoverImageContentType()
 }
 
 void
-PinMediaSourceVideoID::setCoverImageContentType(ContentType  cover_image_content_type)
+PinMediaSourceVideoID::setCoverImageContentType(ContentType cover_image_content_type)
 {
 	this->cover_image_content_type = cover_image_content_type;
 }
@@ -203,7 +203,7 @@ PinMediaSourceVideoID::getCoverImageData()
 }
 
 void
-PinMediaSourceVideoID::setCoverImageData(std::string  cover_image_data)
+PinMediaSourceVideoID::setCoverImageData(std::string cover_image_data)
 {
 	this->cover_image_data = cover_image_data;
 }
@@ -215,7 +215,7 @@ PinMediaSourceVideoID::getCoverImageKeyFrameTime()
 }
 
 void
-PinMediaSourceVideoID::setCoverImageKeyFrameTime(int  cover_image_key_frame_time)
+PinMediaSourceVideoID::setCoverImageKeyFrameTime(int cover_image_key_frame_time)
 {
 	this->cover_image_key_frame_time = cover_image_key_frame_time;
 }
@@ -227,7 +227,7 @@ PinMediaSourceVideoID::getCoverImageUrl()
 }
 
 void
-PinMediaSourceVideoID::setCoverImageUrl(std::string  cover_image_url)
+PinMediaSourceVideoID::setCoverImageUrl(std::string cover_image_url)
 {
 	this->cover_image_url = cover_image_url;
 }
@@ -239,7 +239,7 @@ PinMediaSourceVideoID::isIsStandard()
 }
 
 void
-PinMediaSourceVideoID::setIsStandard(bool  is_standard)
+PinMediaSourceVideoID::setIsStandard(bool is_standard)
 {
 	this->is_standard = is_standard;
 }
@@ -251,7 +251,7 @@ PinMediaSourceVideoID::getMediaId()
 }
 
 void
-PinMediaSourceVideoID::setMediaId(std::string  media_id)
+PinMediaSourceVideoID::setMediaId(std::string media_id)
 {
 	this->media_id = media_id;
 }
@@ -263,7 +263,7 @@ PinMediaSourceVideoID::getSourceType()
 }
 
 void
-PinMediaSourceVideoID::setSourceType(std::string  source_type)
+PinMediaSourceVideoID::setSourceType(std::string source_type)
 {
 	this->source_type = source_type;
 }
